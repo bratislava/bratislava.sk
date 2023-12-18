@@ -1,7 +1,6 @@
-// @ts-strict-ignore
 import ChevronDown from '@assets/images/chevron-down-thin.svg'
 import ChevronDownSmall from '@assets/images/chevron-down-thin-small.svg'
-import { GetGroupMembersRecursiveResult } from '@backend/ms-graph/server/getGroupMembers'
+import { GetGroupMembersRecursiveResult } from '@backend/ms-graph/types'
 import cx from 'classnames'
 import { useToggle } from 'rooks'
 
@@ -12,12 +11,12 @@ export interface OrganizationalStructureTopLevelAccordionProps {
   group: GetGroupMembersRecursiveResult
 }
 
+// TODO rewrite from scratch to use our Accordion and fix accessibility, but wait for new design first
 export const OrganizationalStructureTopLevelAccordion = ({
   group,
 }: OrganizationalStructureTopLevelAccordionProps) => {
   const [open, setOpen] = useToggle()
 
-  const orderedGroups = group.groups?.sort((a, b) => a.displayName.localeCompare(b.displayName))
   return (
     <div className="flex flex-col">
       <div className="flex cursor-pointer flex-col gap-y-8 pt-8" onClick={setOpen}>
@@ -33,10 +32,10 @@ export const OrganizationalStructureTopLevelAccordion = ({
         <div className="h-1 w-full rounded-sm border border-transparent bg-category-200" />
       </div>
       {open && (
-        <div className="pt-8">
-          {group.users?.length > 0 && <OrganizationalStructureAccordionCards users={group.users} />}
-          {orderedGroups.map((group) => (
-            <OrganizationalStructureAccordion key={group.id} group={group} level={1} />
+        <div className="px-5 pt-8">
+          {group.users.length > 0 && <OrganizationalStructureAccordionCards users={group.users} />}
+          {group.groups.map((groupInner) => (
+            <OrganizationalStructureAccordion key={groupInner.id} group={groupInner} level={1} />
           ))}
         </div>
       )}

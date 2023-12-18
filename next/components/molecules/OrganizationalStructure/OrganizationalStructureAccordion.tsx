@@ -1,7 +1,6 @@
-// @ts-strict-ignore
 import ChevronDown from '@assets/images/chevron-down-thin.svg'
 import ChevronDownSmall from '@assets/images/chevron-down-thin-small.svg'
-import { GetGroupMembersRecursiveResult } from '@backend/ms-graph/server/getGroupMembers'
+import { GetGroupMembersRecursiveResult } from '@backend/ms-graph/types'
 import cx from 'classnames'
 import { useToggle } from 'rooks'
 
@@ -12,8 +11,8 @@ export interface OrganizationalStructureAccordionProps {
   level: number
 }
 
-// TODO replace custom accordion for unstyled lib (radix?) accordion to fix accessibility
-// level 1 - always open, empty circle
+// TODO rewrite from scratch to use our Accordion and fix accessibility, but wait for new design first
+// level 1 - toggleable, empty circle (before, it was always open
 // level 2 - toggleable, filled secondary circle
 // level >2 - toggleable, no circle
 export const OrganizationalStructureAccordion = ({
@@ -21,17 +20,16 @@ export const OrganizationalStructureAccordion = ({
   level,
 }: OrganizationalStructureAccordionProps) => {
   const [open, setOpen] = useToggle()
-  const alwaysOpen = level === 1
 
   return (
     <div className="flex flex-col">
       <div
-        className={cx('lg-gap-x-6 flex items-start gap-x-3 lg:items-center', {
-          'cursor-pointer': !alwaysOpen,
-          'pb-8': !alwaysOpen && !open,
+        role="button"
+        onClick={setOpen}
+        onKeyDown={setOpen}
+        className={cx('lg-gap-x-6 flex cursor-pointer items-start gap-x-3 lg:items-center', {
+          'pb-8': !open,
         })}
-        onClick={alwaysOpen ? null : setOpen}
-        onKeyDown={alwaysOpen ? null : setOpen}
       >
         <div
           className={cx('h-6 w-6 min-w-[24px] rounded-full', {
@@ -43,16 +41,18 @@ export const OrganizationalStructureAccordion = ({
         <div className="text-h4">{group.displayName}</div>
         {/* TODO fix chevron toggles - rotating 180 isn't quite right as the chevron 'jumps' higher - we should use
         different up-down asset */}
-        <div className={cx('ml-auto pt-2.5', { 'rotate-180 pt-5': open, hidden: alwaysOpen })}>
+        <div className={cx('ml-auto pt-2.5', { 'rotate-180 pt-5': open })}>
           <ChevronDown className="hidden lg:flex" />
           <ChevronDownSmall className="flex lg:hidden" />
         </div>
       </div>
 
-      {(open || alwaysOpen) && (
+      {open && (
         <div className={cx({ 'pt-8': !group.users?.length })}>
-          {!!group.users?.length && <OrganizationalStructureAccordionCards users={group.users} />}
-          {!!group.groups?.length && (
+          {group.users?.length ? (
+            <OrganizationalStructureAccordionCards users={group.users} />
+          ) : null}
+          {group.groups?.length ? (
             <div className="lg:ml-8">
               {group.groups.map((groupTmp) => (
                 <OrganizationalStructureAccordion
@@ -62,7 +62,7 @@ export const OrganizationalStructureAccordion = ({
                 />
               ))}
             </div>
-          )}
+          ) : null}
         </div>
       )}
     </div>

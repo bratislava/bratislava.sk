@@ -1,7 +1,8 @@
-// @ts-strict-ignore
 import cx from 'classnames'
-import React, { useEffect, useState } from 'react'
+import React, { ReactNode, useEffect, useState } from 'react'
+import { useIsClient } from 'usehooks-ts'
 
+import screens from '../../../tailwind.config.screens'
 import BookFullWidth from './dividers/book-full-width.svg'
 import BookMobileWidth from './dividers/book-mobile-width.svg'
 import BookNarrowWidth from './dividers/book-narrow-width.svg'
@@ -132,38 +133,37 @@ interface DividerProps {
 }
 
 export const getDivider = (dividerStyle?: string) => {
-  if (!dividerStyle)
-    return function () {
-      return null
-    }
-  let key = 'display'
-  if (typeof window !== 'undefined') {
-    // Client-side-only code
+  const isClient = useIsClient()
+
+  const md = parseInt(screens.md.slice(0, -2), 10)
+  const lg = parseInt(screens.lg.slice(0, -2), 10)
+
+  if (!dividerStyle) {
+    return null
+  }
+
+  let screenSize: keyof typeof DIVIDER.mesto = 'display'
+  if (isClient) {
     const { innerWidth } = window
-    if (innerWidth <= 400) {
-      key = 'mobile'
-    } else if (innerWidth > 400 && innerWidth <= 800) {
-      key = 'tablet'
+    if (innerWidth < md) {
+      screenSize = 'mobile'
+    } else if (innerWidth >= md && innerWidth <= lg) {
+      screenSize = 'tablet'
     }
   }
 
-  const dividerType = dividerStyle.split('_')[0]
+  const dividerType = dividerStyle.split('_')[0] as keyof typeof DIVIDER
 
-  let Comp = DIVIDER[dividerType][key]
-
-  if (!Comp) {
-    Comp = DIVIDER.hrad[key]
-  }
-
-  return Comp
+  return dividerType ? DIVIDER[dividerType][screenSize] : DIVIDER.hrad[screenSize]
 }
 
 export const Divider = ({ className, dividerStyle }: DividerProps) => {
-  const [Component, setComponent] = useState(null)
+  const [Component, setComponent] = useState<ReactNode>(null)
 
   useEffect(() => {
     const DividerComponent = getDivider(dividerStyle)
     setComponent(DividerComponent)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return <div className={cx('flex justify-center', className)}>{Component}</div>

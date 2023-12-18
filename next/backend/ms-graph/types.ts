@@ -50,11 +50,26 @@ export type MSGraphGroup = {
   onPremisesProvisioningErrors: any[]
 }
 
-// we display only selected properties on frontend - don't leak anything unwanted
-export type MSGraphFilteredGroup = Pick<MSGraphGroup, '@odata.type' | 'id' | 'displayName'>
-export type MSGraphFilteredGroupUser = Pick<
+// We display only selected properties on frontend
+// !! Don't leak anything unwanted
+// Keep in sync with PARAMS_FROM_MS_GRAPH_API
+// Keep '@odata.type' for grouping
+export type MSGraphFilteredGroup = {
+  displayName: string
+} & Pick<MSGraphGroup, '@odata.type' | 'id'>
+
+export type MSGraphFilteredGroupUser = {
+  displayName: string
+} & Pick<
   MSGraphGroupUser,
-  'id' | 'displayName' | 'mail' | 'businessPhones' | 'jobTitle' | 'otherMails'
+  '@odata.type' | 'id' | 'mail' | 'businessPhones' | 'jobTitle' | 'otherMails'
 >
 
 export type MSGraphGroupResponse = Array<MSGraphFilteredGroupUser | MSGraphFilteredGroup>
+
+export type GetGroupMembersRecursiveResult = {
+  id: string
+  displayName: string | null
+  users: MSGraphFilteredGroupUser[]
+  groups: GetGroupMembersRecursiveResult[]
+}

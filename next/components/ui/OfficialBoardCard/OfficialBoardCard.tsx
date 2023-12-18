@@ -1,4 +1,3 @@
-// @ts-strict-ignore
 import { EyeIcon } from '@assets/ui-icons'
 import { Typography } from '@bratislava/component-library'
 import Button from '@components/forms/simple-components/Button'
