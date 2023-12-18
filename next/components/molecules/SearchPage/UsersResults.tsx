@@ -1,9 +1,12 @@
-import { MSGraphFilteredGroupUser } from '@backend/services/ms-graph'
-import { userSearchFetcher } from '@backend/utils/organisationalStructure'
+import {
+  getMsGraphSearchQueryKey,
+  msGraphSearchFetcher,
+} from '@backend/ms-graph/fetchers/msGraphSearch.fetcher'
+import { MSGraphFilteredGroupUser } from '@backend/ms-graph/types'
+import { Typography } from '@bratislava/component-library'
 import { LoadingSpinner } from '@bratislava/ui-bratislava/LoadingSpinner/LoadingSpinner'
-import useGetSwrExtras from '@utils/useGetSwrExtras'
+import { useQuery } from '@tanstack/react-query'
 import { useTranslations } from 'next-intl'
-import useSwr from 'swr'
 
 import { OrganizationalStructureAccordionCards } from '../OrganizationalStructure/OrganizationalStructureAccordionCards'
 import LoadingOverlay from './LoadingOverlay'
@@ -16,48 +19,50 @@ interface UsersResultsProps {
   filters: UsersFilters
 }
 
-const Users = ({ data }: { data: MSGraphFilteredGroupUser[]; filters: UsersFilters }) => {
+const Users = ({ users }: { users: MSGraphFilteredGroupUser[]; filters: UsersFilters }) => {
   const t = useTranslations()
 
-  // TODO: Tmp fix - MSGraphFilteredGroupUser ignores '| null' in properties
-  const filteredUsers = data.filter((user) => user.displayName && user.jobTitle)
-
-  if (filteredUsers.length > 0) {
-    return <OrganizationalStructureAccordionCards users={filteredUsers} />
+  if (users.length > 0) {
+    return <OrganizationalStructureAccordionCards users={users} />
   }
   return <div>{t('noUsersToShow')}</div>
 }
 
-const DataWrapper = ({ filters }: { filters: UsersFilters }) => {
-  const t = useTranslations()
-
-  const { data, error } = useSwr(['Users', filters], () => userSearchFetcher(filters.search))
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-call
-  const { dataToDisplay, loadingAndNoDataToDisplay, delayedLoading } = useGetSwrExtras({
-    data,
-    error,
+const DataWrapper = ({ filters }: UsersResultsProps) => {
+  const { data, isLoading, isError, error } = useQuery({
+    queryKey: getMsGraphSearchQueryKey(filters.search),
+    queryFn: () => msGraphSearchFetcher(filters.search),
+    keepPreviousData: true,
+    select: (res) => res.data,
   })
 
-  if (loadingAndNoDataToDisplay) {
+  if (isLoading) {
     return <LoadingSpinner />
   }
 
   // TODO replace by proper error
-  if (error) {
+  if (isError) {
     return <div className="whitespace-pre">Error: {JSON.stringify(error, null, 2)}</div>
   }
 
   return (
-    <LoadingOverlay loading={delayedLoading}>
-      <h2 className="text-h5 pb-6">{t('organisationalStructure')}</h2>
-      {/* eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion,@typescript-eslint/no-non-null-assertion */}
-      <Users data={dataToDisplay!} filters={filters} />
+    <LoadingOverlay loading={isLoading}>
+      <Users users={data} filters={filters} />
     </LoadingOverlay>
   )
 }
 
 const UsersResults = ({ filters }: UsersResultsProps) => {
-  return <DataWrapper filters={filters} />
+  const t = useTranslations()
+
+  return (
+    <div>
+      <Typography type="h2" size="h5" className="pb-6">
+        {t('organisationalStructure')}
+      </Typography>
+      <DataWrapper filters={filters} />
+    </div>
+  )
 }
 
 export default UsersResults

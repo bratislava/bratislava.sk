@@ -5,6 +5,7 @@ import {
   inbaArticlesDefaultFilters,
   inbaArticlesFetcher,
 } from '@backend/meili/fetchers/inbaArticlesFetcher'
+import { Typography } from '@bratislava/component-library'
 import BlogPostCard from '@components/molecules/presentation/BlogPostCard'
 import InbaFeaturedArticlesSection from '@components/molecules/sections/general/InbaFeaturedArticlesSection'
 import InbaArticlesFilter from '@components/ui/InbaArticlesFilter/InbaArticlesFilter'
@@ -59,8 +60,8 @@ const InbaArticlesList = ({ section }: Props) => {
       <InbaArticlesFilter tags={tagData?.inbaTags?.data || []} onChange={handleTagFilterChange} />
       {title || text ? (
         <div className="flex flex-col gap-2">
-          {title && <h2 className="text-h2">{title}</h2>}
-          {text && <div>{text}</div>}
+          {title && <Typography type="h2">{title}</Typography>}
+          {text && <Typography type="p">{text}</Typography>}
         </div>
       ) : null}
       <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">

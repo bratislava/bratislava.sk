@@ -1,4 +1,5 @@
 import { IconTitleDescSectionFragment } from '@backend/graphql'
+import { Typography } from '@bratislava/component-library'
 import { IconTitleDescItem } from '@components/ui/IconTitleDescItem/IconTitleDescItem'
 import { isDefined } from '@utils/isDefined'
 import cx from 'classnames'
@@ -17,7 +18,9 @@ const IconTitleDescSection = ({ section }: IconTitleDescSectionProps) => {
     <div className="flex flex-col items-center gap-6 lg:gap-12">
       {title ? (
         <div className="flex">
-          <div className="grow text-center">{title && <h2 className="text-h2">{title}</h2>}</div>
+          <div className="grow text-center">
+            {title && <Typography type="h2">{title}</Typography>}
+          </div>
           {/* TODO showMoreLink, subtext */}
           {/* <div>button</div> */}
         </div>

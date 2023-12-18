@@ -44,7 +44,7 @@ type ButtonBase = {
   fullWidth?: boolean
   fullWidthMobile?: boolean
   isLoading?: boolean
-  isLoadingText?: string
+  loadingText?: string
 } & ButtonOrIconButton
 
 export type ButtonProps = Omit<RACButtonProps, 'className' | 'style'> &
@@ -76,11 +76,11 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
       icon,
       startIcon,
       endIcon,
-      hasLinkIcon,
+      hasLinkIcon = true,
       fullWidth,
       fullWidthMobile,
       isLoading,
-      isLoadingText,
+      loadingText,
       ...rest
     },
     ref,
@@ -117,7 +117,7 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
               {
                 // NOTE: there are some style overrides for link variants below in "twMerge"
 
-                'font-medium underline': isLinkVariant,
+                'font-medium underline underline-offset-2': isLinkVariant,
 
                 // disabled or loading
                 'opacity-50': isLoadingOrDisabled,
@@ -187,7 +187,7 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
 
                 // colors:hover - bg, border, text
                 'hover:border-category-600 hover:bg-category-600': variant === 'category-solid',
-                'text-gray-600 hover:border-category-600': variant === 'category-outline',
+                'hover:text-gray-600 hover:border-category-600': variant === 'category-outline',
                 'hover:bg-category-100 hover:text-category-600': variant === 'category-plain',
 
                 'hover:border-gray-600 hover:bg-gray-600': variant === 'black-solid',
@@ -238,7 +238,7 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
         {!isLoading && startIcon}
         {isLoading ? (
           <>
-            {isLoadingText}
+            {loadingText}
             <Spinner size="sm" />
           </>
         ) : (

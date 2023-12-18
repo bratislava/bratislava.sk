@@ -1,4 +1,5 @@
 import { ChevronRightIcon } from '@assets/ui-icons'
+import { Typography } from '@bratislava/component-library'
 import ImagePlaceholder from '@components/atoms/ImagePlaceholder'
 import Markdown from '@components/atoms/Markdown'
 import MLink from '@components/forms/simple-components/MLink'
@@ -44,14 +45,20 @@ const InbaReleaseHorizontalCard = ({
         </div>
         <div className="flex grow flex-col gap-2">
           <MLink href={linkHref} stretched>
-            <h3 className="text-h5 line-clamp-3 group-hover:underline">{title}</h3>
+            <Typography type="h3" size="h5" className="line-clamp-3 group-hover:underline">
+              {title}
+            </Typography>
           </MLink>
           {text && (
             <div className="max-md:hidden">
               <Markdown variant="small" content={text} />
             </div>
           )}
-          {date && <div className="mt-1 text-font">{t('releasedOn', { date })}</div>}
+          {date && (
+            <Typography type="p" className="mt-1">
+              {t('releasedOn', { date })}
+            </Typography>
+          )}
         </div>
         <div aria-hidden className="flex items-center max-md:hidden">
           <ChevronRightIcon />

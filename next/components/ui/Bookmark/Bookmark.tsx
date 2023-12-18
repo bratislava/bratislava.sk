@@ -1,4 +1,5 @@
 import { CrossIcon } from '@assets/ui-icons'
+import { Typography } from '@bratislava/component-library'
 import Button from '@components/forms/simple-components/Button'
 import cx from 'classnames'
 import { useTranslations } from 'next-intl'
@@ -116,8 +117,12 @@ export const Bookmark = ({
         </div>
 
         <div className="flex w-80 flex-col justify-center">
-          <h3 className="text-h4 leading-[36px]">{title}</h3>
-          <p className="my-3">{content}</p>
+          <Typography type="h3" size="h4" className="leading-[36px]">
+            {title}
+          </Typography>
+          <Typography type="p" className="my-3">
+            {content}
+          </Typography>
           {link.href && link.title ? (
             <Button
               href={link.href}

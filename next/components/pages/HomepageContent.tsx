@@ -14,6 +14,7 @@ const HomepageContent = () => {
   return (
     <>
       <BookmarksHomepageSection />
+
       <WelcomeHomepageSection />
 
       <Waves waveColor="rgb(var(--color-gray-50))" wavePosition="top" />

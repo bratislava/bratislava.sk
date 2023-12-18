@@ -5,6 +5,7 @@ import {
   blogPostsFetcher,
   getBlogPostsQueryKey,
 } from '@backend/meili/fetchers/blogPostsFetcherReactQuery'
+import { Typography } from '@bratislava/component-library'
 import BlogPostCard from '@components/molecules/presentation/BlogPostCard'
 import BlogPostsFilter from '@components/ui/BlogPostsFilter/BlogPostsFilter'
 import Pagination from '@components/ui/Pagination/Pagination'
@@ -67,8 +68,8 @@ const BlogPostsByTags = ({ section }: Props) => {
       />
       {title || text ? (
         <div className="flex flex-col gap-2">
-          {title && <h2 className="text-h2">{title}</h2>}
-          {text && <div>{text}</div>}
+          {title && <Typography type="h2">{title}</Typography>}
+          {text && <Typography type="p">{text}</Typography>}
         </div>
       ) : null}
       <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">

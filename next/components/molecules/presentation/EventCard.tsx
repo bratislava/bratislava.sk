@@ -1,3 +1,4 @@
+import { Typography } from '@bratislava/component-library'
 import FormatEventDateRange from '@components/atoms/FormatEventDateRange'
 import MLink from '@components/forms/simple-components/MLink'
 import CardBase from '@components/molecules/presentation/CardBase'
@@ -43,12 +44,14 @@ const EventCard = ({
       <Image src={imageSrc} alt="" fill className="absolute object-cover" sizes={imageSizes} />
       <CardContent className="relative inline-flex h-full w-full flex-col items-start justify-end text-clip bg-gradient-to-b from-transparent to-[black] p-4 lg:p-5">
         <div className="flex w-full flex-col items-start gap-4 self-stretch">
-          <h3 className="text-h5 line-clamp-2">
+          <Typography type="h3" size="h5">
             <MLink href={linkHref} target="_blank" stretched variant="underlineOnHover">
               {title}
             </MLink>
-          </h3>
+          </Typography>
+
           <div className="text-small flex flex-col items-start font-medium">
+            {/* FIXME Typography: Convert to use Typography. Issue: Different size and weight than typography have */}
             {address && <span className="line-clamp-1">{address}</span>}
             <span className="line-clamp-1">
               {isLongTerm && `${t('from')} `}

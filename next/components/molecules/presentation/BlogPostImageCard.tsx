@@ -1,3 +1,4 @@
+import { Typography } from '@bratislava/component-library'
 import ImagePlaceholder from '@components/atoms/ImagePlaceholder'
 import MLink from '@components/forms/simple-components/MLink'
 import Tag from '@components/forms/simple-components/Tag'
@@ -37,9 +38,11 @@ const BlogPostImageCard = ({
       <CardContent className="absolute flex h-full w-full flex-col justify-end gap-2 bg-gradient-to-t from-gray-800 to-transparent text-white">
         {tag && <Tag text={tag} isColored />}
         <MLink href={linkHref} stretched variant="underlineOnHover">
-          <h2 className="text-h4">{title}</h2>
+          <Typography type="h2" size="h4">
+            {title}
+          </Typography>
         </MLink>
-        {date && <div>{date}</div>}
+        {date && <Typography type="p">{date}</Typography>}
       </CardContent>
     </CardBase>
   )

@@ -1,4 +1,3 @@
-import { ArrowRightIcon } from '@assets/ui-icons'
 import { Waves } from '@bratislava/ui-bratislava/Waves/Waves'
 import Button from '@components/forms/simple-components/Button'
 import cx from 'classnames'
@@ -53,12 +52,7 @@ export const NumericalListSectionUI = ({
           <NumericalList items={items} hasBackground={hasBackground} variant={variant} />
         </div>
         {variant !== 'roadmap' && buttonText && (
-          <Button
-            href={href}
-            className="pt-10"
-            variant="category-outline"
-            endIcon={<ArrowRightIcon />}
-          >
+          <Button href={href} className="pt-10" variant="category-outline">
             {buttonText}
           </Button>
         )}

@@ -1,5 +1,6 @@
 import { InfoIcon } from '@assets/ui-icons'
 import { ComparisonSectionFragment } from '@backend/graphql'
+import { Typography } from '@bratislava/component-library'
 import { isDefined } from '@utils/isDefined'
 import cx from 'classnames'
 import Image from 'next/image'
@@ -18,8 +19,12 @@ const ComparisonSection = ({ section }: ComparisonSectionProps) => {
       {title || text ? (
         <div className="flex">
           <div className={cx('grow', { 'text-center': textAlign === 'center' })}>
-            {title && <h2 className="text-h2">{title}</h2>}
-            {text && <div className="not-first:mt-2">{text}</div>}
+            {title && <Typography type="h2">{title}</Typography>}
+            {text && (
+              <Typography type="p" className="not-first:mt-2">
+                {text}
+              </Typography>
+            )}
           </div>
           {/* TODO showMoreLink */}
           {/* <div>button</div> */}

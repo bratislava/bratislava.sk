@@ -8,7 +8,6 @@ const range = (start: number, end: number) => {
   return Array.from({ length }, (_, i) => start + i)
 }
 
-// eslint-disable-next-line no-secrets/no-secrets
 /**
  * @mui/material contains a really useful hook for pagination, so this is a copied version with added types.
  *

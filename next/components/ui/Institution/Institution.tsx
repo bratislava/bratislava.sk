@@ -1,3 +1,4 @@
+import { Typography } from '@bratislava/component-library'
 import Markdown from '@components/atoms/Markdown'
 import Button from '@components/forms/simple-components/Button'
 import { useId } from 'react'
@@ -16,9 +17,10 @@ export const Institution = ({ title, subtitle, content, url, urlLabel }: Institu
   return (
     <div className="relative h-full rounded-lg border-2 border-[rgba(51,51,51,0.25)] bg-white p-8">
       <div className="flex flex-col">
-        <h4 id={titleId} className="text-h5">
+        <Typography type="h4" size="h5" id={titleId} className="text-h5">
           {title}
-        </h4>
+        </Typography>
+
         {subtitle && <Markdown content={subtitle} />}
         {content?.length && (
           <div className="mt-6 grid w-full grid-cols-1 gap-8 md:auto-cols-fr md:grid-flow-col">

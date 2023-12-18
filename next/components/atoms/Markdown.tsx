@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars,jsx-a11y/heading-has-content */
+import { Typography } from '@bratislava/component-library'
 import MLink from '@components/forms/simple-components/MLink'
 import cx from 'classnames'
 import ReactMarkdown from 'react-markdown'
@@ -24,6 +25,8 @@ export interface MarkdownProps {
  * This is the closest design we have:
  * https://www.figma.com/file/zVMiy9wMv6JYpab68Zm24A/DEPRECATED%3A-DS-ESBS%3A-Template-pages?type=design&node-id=19-2181&t=dkGyoRUm089BWYWu-0
  */
+
+// FIXME Typography. Convert to Typography. Headers and p.
 const Markdown = ({ content, variant = 'default' }: MarkdownProps) => {
   return (
     <ReactMarkdown
@@ -39,15 +42,17 @@ const Markdown = ({ content, variant = 'default' }: MarkdownProps) => {
         // Accordion uses h3 as its own heading, we want to display all the headings in markdown smaller or equal to h4.
         h1: 'p',
         h2: ({ node, level, ...props }) => (
-          <h2 className={variant === 'accordion' ? 'text-h4' : 'text-h2'} {...props} />
+          <Typography type="h2" size={variant === 'accordion' ? 'h4' : 'h2'} {...props} />
         ),
         h3: ({ node, level, ...props }) => (
-          <h3 className={variant === 'accordion' ? 'text-h4' : 'text-h3'} {...props} />
+          <Typography type="h3" size={variant === 'accordion' ? 'h4' : 'h3'} {...props} />
         ),
         h4: ({ node, level, ...props }) => <h4 className="text-h4" {...props} />,
         h5: ({ node, level, ...props }) => <h5 className="text-h4 font-medium" {...props} />,
         h6: ({ node, level, ...props }) => <h6 className="text-h5" {...props} />,
-        p: ({ node, ...props }) => <p className="whitespace-pre-wrap" {...props} />,
+        p: ({ node, ...props }) => (
+          <Typography type="p" size="p-large" className="whitespace-pre-wrap" {...props} />
+        ),
         strong: ({ node, ...props }) => <strong className="font-semibold" {...props} />,
         a: ({ node, href, title, children, ...props }) => {
           const isExternal = href?.startsWith('http')
@@ -59,9 +64,10 @@ const Markdown = ({ content, variant = 'default' }: MarkdownProps) => {
               target={isExternal ? '_blank' : undefined}
             >
               {children[0]}
+              {/* add nbsp and arrow to indicate external link */}
               {/* \u{0000FE0E} is Unicode variation selector that prevents symbols to be rendered as emojis on iOS
                https://stackoverflow.com/questions/8335724/unicode-characters-being-drawn-differently-in-ios5 */}
-              {isExternal && ' ↗\u{0000FE0E}'}
+              {isExternal && `${String.fromCodePoint(160)}↗\u{0000FE0E}`}
             </MLink>
           )
         },

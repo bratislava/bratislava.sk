@@ -3,6 +3,7 @@ import {
   ContactsSectionFragment,
   Enum_Componentsectionscontactssection_Type,
 } from '@backend/graphql'
+import { Typography } from '@bratislava/component-library'
 import Markdown from '@components/atoms/Markdown'
 import ContactCtaCard, {
   ContactCtaCardType,
@@ -41,7 +42,7 @@ const Contacts = ({ section }: ContactsProps) => {
           'md:col-span-5': isHorizontal,
         })}
       >
-        <h2 className="text-h2">{section.title}</h2>
+        <Typography type="h2">{section.title}</Typography>
         {section.description && <Markdown content={section.description} variant="small-no-respo" />}
       </div>
       <div

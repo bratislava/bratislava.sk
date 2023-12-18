@@ -1,5 +1,6 @@
+import { ParsedOfficialBoardDocument } from '@backend/ginis/types'
+import { Typography } from '@bratislava/component-library'
 import { OfficialBoardCard } from '@components/ui/OfficialBoardCard/OfficialBoardCard'
-import { ParsedOfficialBoardDocument } from 'backend/services/ginis'
 import { useEffect, useState } from 'react'
 
 import Divider from '../Divider/Divider'
@@ -39,7 +40,8 @@ export const OfficialBoardCards = ({
 
   return (
     <div className="flex flex-col gap-y-5 lg:gap-y-6">
-      <div className="text-h4 font-medium">{title}</div>
+      <Typography type="h2">{title}</Typography>
+
       <div className="hidden flex-col lg:flex">
         <div className="flex flex-col gap-y-5 pb-14">
           {documents

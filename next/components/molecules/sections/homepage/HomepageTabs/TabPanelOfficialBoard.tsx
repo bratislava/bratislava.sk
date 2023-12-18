@@ -1,13 +1,15 @@
-import { ArrowRightIcon } from '@assets/ui-icons'
-import { ParsedOfficialBoardDocument } from '@backend/services/ginis'
+import {
+  getGinisOfficialBoardHomepageQueryKey,
+  ginisOfficialBoardHomepageFetcher,
+} from '@backend/ginis/fetchers/ginisOfficialBoardHomepage.fetcher'
 import Button from '@components/forms/simple-components/Button'
 import { OfficialBoardCard } from '@components/ui/OfficialBoardCard/OfficialBoardCard'
+import { useQuery } from '@tanstack/react-query'
 import { getCommonLinkProps } from '@utils/getCommonLinkProps'
 import { useHomepageContext } from '@utils/homepageContext'
 import { useTranslations } from 'next-intl'
 import React from 'react'
 import { TabPanel } from 'react-aria-components'
-import useSWR from 'swr'
 
 const TabPanelOfficialBoard = () => {
   const t = useTranslations('HomepageTabs')
@@ -16,10 +18,12 @@ const TabPanelOfficialBoard = () => {
   const { tabs } = homepage?.attributes ?? {}
 
   // TODO handle loading and errors
-  const { data: officialBoardData } = useSWR<ParsedOfficialBoardDocument[]>(
-    '/api/ginis/newest',
-    () => fetch('/api/ginis/newest').then((res) => res.json()),
-  )
+  const { data: officialBoardData } = useQuery({
+    queryKey: getGinisOfficialBoardHomepageQueryKey(),
+    queryFn: () => ginisOfficialBoardHomepageFetcher(),
+    select: (res) => res.data,
+  })
+
   const documents = officialBoardData || []
 
   return (
@@ -42,7 +46,6 @@ const TabPanelOfficialBoard = () => {
           <div className="flex justify-center">
             <Button
               variant="category-outline"
-              endIcon={<ArrowRightIcon />}
               {...getCommonLinkProps(tabs.officialBoardPageLink)}
             />
           </div>

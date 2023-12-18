@@ -1,4 +1,5 @@
 import { UploadImageSrcEntityFragment } from '@backend/graphql'
+import { Typography } from '@bratislava/component-library'
 import Markdown from '@components/atoms/Markdown'
 import cx from 'classnames'
 import Image from 'next/image'
@@ -31,8 +32,10 @@ export const IconTitleDescItem = ({
         )}
       </div>
       <div className="flex w-full flex-col gap-2 text-center">
-        <h3 className="text-h4">{title}</h3>
-        <Markdown content={text}/>
+        <Typography type="h3" size="h4">
+          {title}
+        </Typography>
+        <Markdown content={text} />
       </div>
     </li>
   )

@@ -232,44 +232,44 @@ const ButtonShowCase = () => {
       <ButtonStacks variant="black" />
       <ButtonStacks variant="negative" />
       <Stack>
-        <Button variant="category-link" href="#" hasLinkIcon>
+        <Button variant="category-link" href="#">
           Link
         </Button>
-        <Button variant="category-link" href="#" size="small" hasLinkIcon>
+        <Button variant="category-link" href="#" size="small">
           Link
         </Button>
-        <Button variant="category-link" href="https://bratislava.sk" hasLinkIcon>
+        <Button variant="category-link" href="https://bratislava.sk">
           External link
         </Button>
-        <Button variant="category-link" href="https://bratislava.sk" size="small" hasLinkIcon>
-          External link
-        </Button>
-      </Stack>
-      <Stack>
-        <Button variant="black-link" href="#" hasLinkIcon>
-          Link
-        </Button>
-        <Button variant="black-link" href="#" size="small" hasLinkIcon>
-          Link
-        </Button>
-        <Button variant="black-link" href="https://bratislava.sk" hasLinkIcon>
-          External link
-        </Button>
-        <Button variant="black-link" href="https://bratislava.sk" size="small" hasLinkIcon>
+        <Button variant="category-link" href="https://bratislava.sk" size="small">
           External link
         </Button>
       </Stack>
       <Stack>
-        <Button variant="category-solid" href="#" hasLinkIcon>
+        <Button variant="black-link" href="#">
           Link
         </Button>
-        <Button variant="category-solid" href="#" size="small" hasLinkIcon>
+        <Button variant="black-link" href="#" size="small">
           Link
         </Button>
-        <Button variant="category-solid" href="https://bratislava.sk" hasLinkIcon>
+        <Button variant="black-link" href="https://bratislava.sk">
           External link
         </Button>
-        <Button variant="category-solid" href="https://bratislava.sk" size="small" hasLinkIcon>
+        <Button variant="black-link" href="https://bratislava.sk" size="small">
+          External link
+        </Button>
+      </Stack>
+      <Stack>
+        <Button variant="category-solid" href="#">
+          Link
+        </Button>
+        <Button variant="category-solid" href="#" size="small">
+          Link
+        </Button>
+        <Button variant="category-solid" href="https://bratislava.sk">
+          External link
+        </Button>
+        <Button variant="category-solid" href="https://bratislava.sk" size="small">
           External link
         </Button>
       </Stack>

@@ -1,4 +1,5 @@
 import { ChevronLeftIcon } from '@assets/ui-icons'
+import Button from '@components/forms/simple-components/Button'
 import * as NavigationMenu from '@radix-ui/react-navigation-menu'
 import { useTranslations } from 'next-intl'
 import React, { CSSProperties } from 'react'
@@ -30,14 +31,14 @@ const MobileNavMenuContent = ({ menuItem, colorStyle }: NavMenuContentProps) => 
       {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */}
       <ul className="flex w-full flex-col gap-2 px-4 py-8">
         <li className="w-full">
-          <button
-            type="button"
-            onClick={() => setMenuValue('')}
+          <Button
+            onPress={() => setMenuValue('')}
             className="-my-2 flex w-full items-center gap-2 py-2"
             aria-label={t('aria.backTo', { backTo: parentLabel })}
+            startIcon={<ChevronLeftIcon />}
           >
-            <ChevronLeftIcon aria-hidden /> {parentLabel}
-          </button>
+            {parentLabel}
+          </Button>
         </li>
 
         <NavBarHorizontalDivider categoryColor />

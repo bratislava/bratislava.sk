@@ -1,3 +1,4 @@
+import { Typography } from '@bratislava/component-library'
 import Button from '@components/forms/simple-components/Button'
 import { isExternalLink } from '@utils/isExternalLink'
 import cx from 'classnames'
@@ -12,7 +13,11 @@ export interface LinksProps {
 export const Links = ({ className, title, pageLinks }: LinksProps) => {
   return (
     <div className={cx(className, 'flex w-full flex-col md:w-10/12')}>
-      {title && <h2 className="text-h4">{title}</h2>}
+      {title && (
+        <Typography type="h2" size="h4">
+          {title}
+        </Typography>
+      )}
       <ul className="flex flex-col space-y-4 pt-6">
         {pageLinks?.map((pageLink, index) => (
           // eslint-disable-next-line react/no-array-index-key

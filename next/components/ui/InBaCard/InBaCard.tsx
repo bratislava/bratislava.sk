@@ -1,4 +1,4 @@
-import { ArrowRightIcon } from '@assets/ui-icons'
+import { Typography } from '@bratislava/component-library'
 import Button from '@components/forms/simple-components/Button'
 import CardBase from '@components/molecules/presentation/CardBase'
 import { CommonLinkProps } from '@utils/getCommonLinkProps'
@@ -51,9 +51,11 @@ export const InBaCard = ({
           'md:items-start md:py-8 md:pl-12 md:pr-96 md:text-left',
         )}
       >
-        <h2 className="text-h4">{title}</h2>
-        <div>{content}</div>
-        <Button variant="black-link" {...linkProps} stretched endIcon={<ArrowRightIcon />} />
+        <Typography type="h2" size="h4">
+          {title}
+        </Typography>
+        <Typography type="p">{content}</Typography>
+        <Button variant="black-link" {...linkProps} stretched />
       </div>
     </CardBase>
   )

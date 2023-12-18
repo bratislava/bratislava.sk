@@ -1,6 +1,6 @@
 import CircleArrowRight from '@assets/images/circle-arrow-right.svg'
+import Button from '@components/forms/simple-components/Button'
 import cx from 'classnames'
-import Link from 'next/link'
 import { ReactNode } from 'react'
 
 type ServiceCardBase = {
@@ -44,13 +44,13 @@ const ServiceCard = ({
   )
 
   return href ? (
-    <Link href={href} className={style}>
+    <Button href={href} className={style}>
       <Card />
-    </Link>
+    </Button>
   ) : (
-    <button type="button" onClick={onPress} className={style}>
+    <Button variant="unstyled" onPress={onPress} className={style}>
       <Card />
-    </button>
+    </Button>
   )
 }
 

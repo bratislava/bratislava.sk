@@ -1,4 +1,5 @@
 import EULogo from '@assets/images/EULogo.svg'
+import { Typography } from '@bratislava/component-library'
 import { Brand } from '@components/ui/Brand/Brand'
 import HorizontalDivider from '@components/ui/Divider/HorizontalDivider'
 import {
@@ -48,7 +49,9 @@ const DesktopFooter = () => {
           {attributes.columns?.filter(isDefined).map((column, index) => (
             // eslint-disable-next-line react/no-array-index-key
             <div className="flex flex-col gap-3 lg:gap-4" key={index}>
-              <p className="text-h5 text-gray-800">{column.title}</p>
+              <Typography type="p" size="p-large" className="text-gray-800">
+                {column.title}
+              </Typography>
               <div className="flex flex-col gap-3">
                 <FooterColumnLinks {...column} />
               </div>

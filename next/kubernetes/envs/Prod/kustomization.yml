@@ -1,5 +1,7 @@
 resources:
   - ../../base
+  - ./odhrnieme.ingress.yml
+  - ./10000stromov.ingress.yml
 
 configMapGenerator:
   - name: ${BUILD_REPOSITORY_NAME}-env

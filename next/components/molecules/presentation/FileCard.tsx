@@ -1,4 +1,5 @@
 import { DownloadIcon } from '@assets/ui-icons'
+import { Typography } from '@bratislava/component-library'
 import MLink from '@components/forms/simple-components/MLink'
 import { isDefined } from '@utils/isDefined'
 import { useTranslations } from 'next-intl'
@@ -37,6 +38,7 @@ const FileCard = ({
       )}
     >
       <div className="flex flex-col gap-1">
+        {/* FIXME Typography. Convert to use Typography. Issue: Different font weight than figma h3 */}
         <MLink
           href={downloadLink ?? '#'}
           className="text-h5 line-clamp-1 break-words font-bold lg:line-clamp-3"
@@ -50,6 +52,8 @@ const FileCard = ({
         >
           {title}
         </MLink>
+
+        {/* FIXME Typography. Convert to use Typography. Issue: Different font size and weight than figma span or p */}
         {(uploadDate || format || size) && (
           <span className="text-small line-clamp-1 text-gray-700">
             {[uploadDate, format, size].filter(isDefined).join(' • ')}
@@ -60,7 +64,7 @@ const FileCard = ({
         <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-category-100 text-category-700 lg:h-10 lg:w-10">
           <DownloadIcon className="h-4 w-4" />
         </div>
-        <div className="font-semibold text-gray-700">{t('download')}</div>
+        <Typography type="span">{t('download')}</Typography>
       </div>
     </div>
   )

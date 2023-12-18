@@ -1,10 +1,9 @@
 import Checkbox from '@assets/images/checkbox.svg'
 import SearchIcon from '@assets/images/search-icon.svg'
+import Button from '@components/forms/simple-components/Button'
 import cx from 'classnames'
 import { useTranslations } from 'next-intl'
 import { Dispatch, KeyboardEventHandler, SetStateAction } from 'react'
-
-import { Button } from '../Button/Button'
 
 export interface AdvancedSearchProps {
   className?: string
@@ -66,6 +65,7 @@ export const AdvancedSearch = ({
 
   return (
     <div className={cx('flex w-full flex-col', className)}>
+      {/* FIXME Typography. Convert to use Typography. Issue: Different font weight */}
       <h1 className="text-h3 scroll-mt-24 pb-3 font-medium lg:scroll-mt-48">{title}</h1>
       <div className="hidden pb-6 lg:flex">
         <input
@@ -79,13 +79,10 @@ export const AdvancedSearch = ({
           autoFocus
         />
         <Button
-          icon={<SearchIcon />}
-          hoverIcon={<SearchIcon />}
-          className={cx(
-            'text-large hover:color-white h-14 rounded-l-none px-6 font-medium shadow-none hover:bg-category-600 hover:text-white',
-          )}
-          variant="secondary-dark-text"
-          onClick={handleSearch}
+          endIcon={<SearchIcon />}
+          className="h-14 rounded-l-none"
+          variant="category-solid"
+          onPress={handleSearch}
         >
           {buttonText}
         </Button>
@@ -101,11 +98,10 @@ export const AdvancedSearch = ({
           onKeyDown={handleKeyDown}
         />
         <Button
-          icon={<SearchIcon />}
-          hoverIcon={<SearchIcon />}
-          className="hover:color-white text-large h-14 rounded-l-none pr-6 font-medium shadow-none hover:bg-category-600 hover:text-white"
-          variant="secondary-dark-text"
-          onClick={handleSearch}
+          endIcon={<SearchIcon />}
+          className="h-14 rounded-l-none"
+          variant="category-solid"
+          onPress={handleSearch}
         />
       </div>
       <div className="flex flex-col gap-x-14 gap-y-6 lg:flex-row">
@@ -122,7 +118,7 @@ export const AdvancedSearch = ({
               {checkedOptions?.some(({ key }) => key === option.key) ? (
                 <Checkbox />
               ) : (
-                <div className="border-slate-300 mr-px h-6 w-6 rounded border-2 border-solid" />
+                <div className="mr-px h-6 w-6 rounded border-2 border-solid" />
               )}
 
               {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}

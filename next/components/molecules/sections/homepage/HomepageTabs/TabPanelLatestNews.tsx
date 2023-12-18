@@ -1,4 +1,4 @@
-import { ArrowRightIcon } from '@assets/ui-icons'
+import { Typography } from '@bratislava/component-library'
 import Button from '@components/forms/simple-components/Button'
 import MLink from '@components/forms/simple-components/MLink'
 import Tag from '@components/forms/simple-components/Tag'
@@ -105,7 +105,9 @@ const TabPanelLatestNews = () => {
                     variant="underlineOnHover"
                     className="line-clamp-3"
                   >
-                    <h3 className="text-h5">{title}</h3>
+                    <Typography type="h3" size="h5">
+                      {title}
+                    </Typography>
                   </MLink>
                 </div>
               )
@@ -117,7 +119,7 @@ const TabPanelLatestNews = () => {
         <div className="flex justify-center">
           <Button
             variant="category-outline"
-            endIcon={<ArrowRightIcon />}
+            hasLinkIcon
             {...getCommonLinkProps(tabs?.newsPageLink)}
           />
         </div>

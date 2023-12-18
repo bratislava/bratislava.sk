@@ -32,6 +32,7 @@ export const Timeline = ({ timelineItems }: TimelineProps) => {
               height={0}
             />
           )}
+          {/* FIXME Typography. Convert to use Typography. Issue: Probably safe to convert but cant find page where is this used for testing */}
           <h3 className="text-h4">{timelineItem.title}</h3>
           <Markdown content={timelineItem.content} />
         </VerticalTimelineElement>

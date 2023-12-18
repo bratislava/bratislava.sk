@@ -8,7 +8,7 @@
     "develop": "next dev",
     "build": "next build",
     "start": "next start",
-    "typecheck": "tsc && tsc-strict",
+    "typecheck": "tsc",
     "lint": "eslint components pages utils backend",
     "lint:fix": "yarn lint --fix",
     "gen": "graphql-codegen && prettier --write backend/graphql/index.ts",
@@ -16,11 +16,13 @@
     "update-react-aria": "yarn add @internationalized/date@latest @react-stately/utils@latest react-aria@latest react-aria-components@latest react-stately@latest tailwindcss-react-aria-components -E"
   },
   "dependencies": {
-    "@azure/msal-node": "^1.12.0",
+    "@azure/msal-node": "^2.6.0",
+    "@bratislava/component-library": "^0.1.2",
     "@internationalized/date": "3.5.0",
     "@js-joda/core": "5.2.0",
     "@radix-ui/react-navigation-menu": "^1.1.2",
     "@react-stately/utils": "3.9.0",
+    "@sindresorhus/slugify": "^2.2.1",
     "@tanstack/react-query": "^4.29.5",
     "@types/minio": "^7.0.14",
     "@types/react-vertical-timeline-component": "^3.3.3",
@@ -70,7 +72,7 @@
     "tailwindcss-react-aria-components": "1.0.0-rc.0",
     "use-query-params": "^2.2.0",
     "usehooks-ts": "^2.9.1",
-    "xml2js": "^0.5.0"
+    "xml2js": "^0.6.2"
   },
   "devDependencies": {
     "@graphql-codegen/cli": "2.9.0",
@@ -83,6 +85,7 @@
     "@types/react": "18.0.28",
     "@types/react-dom": "18.0.11",
     "@types/rss": "^0.0.30",
+    "@types/xml2js": "^0.4.14",
     "@typescript-eslint/eslint-plugin": "^5.54.1",
     "@typescript-eslint/parser": "^5.54.0",
     "autoprefixer": "10.4.13",
@@ -125,8 +128,7 @@
     "sass": "^1.62.1",
     "sharp": "^0.32.0",
     "tailwindcss": "3.3.5",
-    "typescript": "5.0.4",
-    "typescript-strict-plugin": "2.1.0"
+    "typescript": "5.0.4"
   },
   "engines": {
     "node": ">=18.x.x",

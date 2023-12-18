@@ -1,5 +1,6 @@
 import { FacebookIcon, InstagramIcon } from '@assets/images'
 import { FooterColumnBlockFragment, FooterFragment } from '@backend/graphql'
+import { Typography } from '@bratislava/component-library'
 import MLink from '@components/forms/simple-components/MLink'
 import { useLocalizations } from '@components/providers/LocalizationsProvider'
 import { getCommonLinkProps } from '@utils/getCommonLinkProps'
@@ -27,8 +28,14 @@ export const FooterSocialLinks = ({ facebookUrl, instagramUrl }: FooterFragment)
 export const FooterContacts = ({ address, contacts }: FooterFragment) => {
   return (
     <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-1">
-      {address && <p className="whitespace-pre-wrap">{address}</p>}
+      {address && (
+        <Typography type="p" className="whitespace-pre-wrap">
+          {address}
+        </Typography>
+      )}
+
       <div className="flex flex-col gap-y-3">
+        {/* FIXME Typography. Convert to use Typography. */}
         {contacts?.filter(isDefined).map((contactItem, index) => (
           // eslint-disable-next-line react/no-array-index-key
           <div key={index}>
@@ -90,12 +97,12 @@ export const FooterLanguageSwitcher = () => {
       {otherLanguage && (
         <>
           <MLink href={otherLanguage.path} variant="underlined" locale={otherLanguage.locale}>
-            {otherLanguage.longName}
+            <Typography type="p">{otherLanguage.longName}</Typography>
           </MLink>
           <span>/</span>
         </>
       )}
-      <span className="font-semibold">{currentLanguage.longName}</span>
+      <Typography type="span">{currentLanguage.longName}</Typography>
     </>
   )
 }

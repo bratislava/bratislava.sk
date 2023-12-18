@@ -1,3 +1,4 @@
+import { Typography } from '@bratislava/component-library'
 import Button from '@components/forms/simple-components/Button'
 import MLink from '@components/forms/simple-components/MLink'
 import * as NavigationMenu from '@radix-ui/react-navigation-menu'
@@ -21,7 +22,7 @@ const NavMenuLink = ({ label, url, variant = 'simple' }: NavMenuLinkProps) => {
         <li className="flex">
           <NavigationMenu.Link asChild onClick={() => setMobileMenuOpen(false)}>
             <MLink href={url} variant="underlineOnHover" className="w-full py-1">
-              {label}
+              <Typography type="p">{label}</Typography>
             </MLink>
           </NavigationMenu.Link>
         </li>
