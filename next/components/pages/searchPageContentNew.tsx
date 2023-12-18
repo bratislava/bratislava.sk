@@ -123,6 +123,7 @@ const SearchPageContentNew = () => {
                   searchOption={option}
                   filters={searchFilters}
                   handleShowMore={setSelectedOptionKey}
+                  key={option.key}
                 />
               )
             })}

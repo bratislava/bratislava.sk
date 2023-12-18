@@ -47,25 +47,25 @@ export const GeneralSearchResults = ({
       {data?.length > 0 ? (
         <div className="flex flex-col gap-y-2">
           {variant === 'allResults'
-            ? data.slice(0, RESULTS_SHOWN).map((item) => {
+            ? data.slice(0, RESULTS_SHOWN).map((item, index) => {
                 return (
                   <SearchCardComposed
                     data={{ ...item }}
                     tagText={searchOption.displayName}
                     variant="withPicture"
-                    key={item.slug}
+                    key={`allResults-item${item.slug}-${index}`}
                   />
                 )
               })
             : null}
           {variant === 'specificResults'
-            ? data.map((item) => {
+            ? data.map((item, index) => {
                 return (
                   <SearchCardComposed
                     data={{ ...item }}
                     tagText={searchOption.displayName}
                     variant="withPicture"
-                    key={item.slug}
+                    key={`specificResults-item${item.slug}-${index}`}
                   />
                 )
               })
