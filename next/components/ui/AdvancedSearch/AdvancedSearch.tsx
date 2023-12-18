@@ -118,7 +118,7 @@ export const AdvancedSearch = ({
               {checkedOptions?.some(({ key }) => key === option.key) ? (
                 <Checkbox />
               ) : (
-                <div className="border-slate-300 mr-px h-6 w-6 rounded border-2 border-solid" />
+                <div className="mr-px h-6 w-6 rounded border-2 border-solid" />
               )}
 
               {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
