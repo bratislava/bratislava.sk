@@ -71,6 +71,7 @@ export const InbaFeaturedArticles = ({ articles }: InbaFeaturedArticlesProps) =>
               linkProps={{ children: t('readMore'), href: `/inba/text/${slug}` }}
               imgSrc={coverImage?.data?.attributes?.url}
               imgSizes={generateImageSizes({ default: '100vw', lg: '33vw' })}
+              isCarousel
             />
           )
         })}

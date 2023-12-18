@@ -14,7 +14,6 @@ import { generateImageSizes } from '@utils/generateImageSizes'
 import { isDefined } from '@utils/isDefined'
 import { getNumericLocalDate } from '@utils/local-date'
 import { useRoutePreservedState } from '@utils/useRoutePreservedState'
-import { filter } from 'lodash'
 import { useLocale, useTranslations } from 'next-intl'
 import React, { useEffect } from 'react'
 
@@ -50,6 +49,7 @@ const BlogPostsByTags = ({ section }: Props) => {
 
   useEffect(() => {
     setFilters({ ...filters, tagIds })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [blogPostsTagsData])
 
   // TODO prefetch section

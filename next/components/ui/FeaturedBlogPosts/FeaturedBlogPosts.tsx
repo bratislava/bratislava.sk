@@ -83,6 +83,7 @@ export const FeaturedBlogPosts = ({ blogPosts }: FeaturedBlogPostsProps) => {
               linkProps={{ children: t('readMore'), href: `/blog/${slug}` }}
               imgSrc={coverImage?.data?.attributes?.url}
               imgSizes={generateImageSizes({ default: '100vw', lg: '33vw' })}
+              isCarousel
             />
           )
         })}

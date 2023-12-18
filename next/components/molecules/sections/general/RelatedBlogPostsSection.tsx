@@ -65,6 +65,7 @@ const RelatedBlogPostsSection = ({ page, className }: Props) => {
                 title={title ?? ''}
                 tag={tagTitle ?? undefined}
                 linkProps={{ children: t('readMore'), href: `/blog/${slug}` }}
+                isCarousel
               />
             )
           })}
