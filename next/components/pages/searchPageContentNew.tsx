@@ -24,17 +24,22 @@ export type SearchOption = {
 const SearchPageContentNew = () => {
   const t = useTranslations()
 
-  const [routerQueryValue] = useQueryParam('keyword', withDefault(StringParam, ''))
+  const [routerQueryValue, setRouterQueryValue] = useQueryParam(
+    'keyword',
+    withDefault(StringParam, ''),
+  )
   const [input, setInput] = useState<string>('')
   const debouncedInput = useDebounce<string>(input, 300)
   const [searchValue, setSearchValue] = useState<string>(debouncedInput)
 
+  // TODO: on enter
   useEffect(() => {
     setInput(routerQueryValue)
   }, [routerQueryValue])
 
   useEffect(() => {
     setSearchValue(debouncedInput)
+    setRouterQueryValue(debouncedInput)
   }, [debouncedInput])
 
   const searchOptions: SearchOption[] = [

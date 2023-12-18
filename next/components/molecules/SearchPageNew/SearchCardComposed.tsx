@@ -59,7 +59,9 @@ export const SearchCardComposed = ({
             <SearchCardComposed.ImageFromURL imgURL={data.coverImageURL} />
           ) : data.pageColor ? (
             <SearchCardComposed.ImageFromPageColor pageColor={data.pageColor} />
-          ) : null}
+          ) : (
+            <SearchCardComposed.ImageFromPageColor pageColor={Enum_Pagecategory_Color.Red} />
+          )}
           <div className="flex w-full flex-row gap-6 py-4 sm:p-6">
             <SearchCardComposed.InfoContainer className="flex flex-col gap-3">
               <div className="flex flex-col gap-y-2">
@@ -77,10 +79,8 @@ export const SearchCardComposed = ({
 }
 
 SearchCardComposed.ImageFromPageColor = function ({ pageColor, className }: any) {
-  const colorStyle = getCategoryColorLocalStyle({ color: pageColor ?? Enum_Pagecategory_Color.Red })
-  const { default: PageIcon, small: SmallPageIcon } = findIconByPageColor(
-    pageColor ?? Enum_Pagecategory_Color.Red,
-  )
+  const colorStyle = getCategoryColorLocalStyle({ color: pageColor })
+  const { default: PageIcon } = findIconByPageColor(pageColor)
 
   return (
     <div
@@ -91,7 +91,6 @@ SearchCardComposed.ImageFromPageColor = function ({ pageColor, className }: any)
       )}
     >
       <PageIcon />
-      {/* <SmallPageIcon className="md:hidden" /> */}
     </div>
   )
 }
