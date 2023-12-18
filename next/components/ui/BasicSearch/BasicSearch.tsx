@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import SearchIcon from '@assets/images/search-icon.svg'
 import Button from '@components/forms/simple-components/Button'
 import cx from 'classnames'

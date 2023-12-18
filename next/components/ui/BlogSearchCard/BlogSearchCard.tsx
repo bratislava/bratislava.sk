@@ -1,4 +1,3 @@
-// @ts-strict-ignore
 import { Enum_Pagecategory_Color } from '@backend/graphql'
 import MLink from '@components/forms/simple-components/MLink'
 import Tag from '@components/forms/simple-components/Tag'
@@ -7,25 +6,6 @@ import CardContent from '@components/molecules/presentation/CardContent'
 import { getCategoryColorLocalStyle } from '@utils/colors'
 import { getNumericLocalDate } from '@utils/local-date'
 import cx from 'classnames'
-
-export interface BlogImage {
-  url: string
-}
-
-export interface BlogTag {
-  data?: {
-    attributes?: {
-      pageCategory?: {
-        data?: {
-          attributes?: {
-            color?: string
-            shortTitle?: string
-          }
-        }
-      }
-    }
-  }
-}
 
 export interface BlogItem {
   attributes?: {
@@ -70,10 +50,11 @@ export const BlogSearchCard = ({
   fullCardSizeImage,
   item,
 }: BlogSearchCardProps) => {
-  const { slug, tag, coverImage, title, publishedAt, date_added } = item.attributes
-  const { shortTitle: tagTitle, color } = tag.data.attributes.pageCategory.data.attributes
+  const { slug, tag, coverImage, title, publishedAt, date_added } = item.attributes ?? {}
+  const { shortTitle: tagTitle, color } =
+    tag?.data?.attributes?.pageCategory?.data?.attributes ?? {}
 
-  const date = getNumericLocalDate(date_added ?? publishedAt)
+  const date = getNumericLocalDate(date_added ?? publishedAt ?? '')
 
   const colorStyle = getCategoryColorLocalStyle({ color })
 
@@ -89,11 +70,11 @@ export const BlogSearchCard = ({
           { hidden: fullCardSizeImage },
         )}
       >
-        {coverImage.data.attributes && (
+        {coverImage?.data?.attributes && (
           <div
             className={cx('flex flex-shrink-0', imageClassName)}
             style={{
-              backgroundImage: `url(${coverImage.data.attributes.url})`,
+              backgroundImage: `url(${coverImage?.data?.attributes.url})`,
               backgroundRepeat: 'no-repeat',
               backgroundSize: 'cover',
             }}
@@ -125,7 +106,7 @@ export const BlogSearchCard = ({
         <div
           className="flex h-full w-full flex-col justify-end rounded"
           style={{
-            backgroundImage: `url(${coverImage.data.attributes.url})`,
+            backgroundImage: `url(${coverImage?.data?.attributes?.url})`,
             backgroundSize: 'cover',
             backgroundRepeat: 'no-repeat',
           }}

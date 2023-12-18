@@ -2,13 +2,14 @@ import {
   getGinisOfficialBoardQueryKey,
   ginisOfficialBoardFetcher,
 } from '@backend/ginis/fetchers/ginisOfficialBoard.fetcher'
-import { BasicSearchOld } from '@bratislava/ui-bratislava/BasicSearchOld/BasicSearchOld'
 import { NoResultsFound } from '@bratislava/ui-bratislava/NoResultsFound/NoResultsFound'
+import { BasicSearch } from '@components/ui/BasicSearch/BasicSearch'
 import LoadingSpinner from '@components/ui/LoadingSpinner/LoadingSpinner'
 import { OfficialBoardCards } from '@components/ui/OfficialBoardCards/OfficialBoardCards'
 import { useQuery } from '@tanstack/react-query'
 import { useTranslations } from 'next-intl'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { useDebounce } from 'usehooks-ts'
 
 const DataWrapper = ({ search }: { search: string }) => {
   const t = useTranslations()
@@ -46,20 +47,26 @@ const DataWrapper = ({ search }: { search: string }) => {
 const OfficialBoardSection = () => {
   const t = useTranslations()
 
-  const [search, setSearch] = useState('')
+  const [input, setInput] = useState<string>('')
+  const debouncedInput = useDebounce<string>(input, 300)
+  const [searchValue, setSearchValue] = useState<string>(input)
+
+  useEffect(() => {
+    setSearchValue(debouncedInput)
+  }, [debouncedInput])
 
   return (
     <>
-      <BasicSearchOld
-        className="pb-14 lg:pb-24"
+      <BasicSearch
         placeholder={t('enterKeyword')}
         title={t('searching')}
         buttonText={t('search')}
-        onSubmit={(newSearch) => setSearch(newSearch)}
-        initialValue={search}
+        input={input}
+        setInput={setInput}
+        setSearchQuery={setSearchValue}
       />
 
-      <DataWrapper search={search} />
+      <DataWrapper search={searchValue} />
     </>
   )
 }

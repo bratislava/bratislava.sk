@@ -8,7 +8,7 @@
     "develop": "next dev",
     "build": "next build",
     "start": "next start",
-    "typecheck": "tsc && tsc-strict",
+    "typecheck": "tsc",
     "lint": "eslint components pages utils backend",
     "lint:fix": "yarn lint --fix",
     "gen": "graphql-codegen && prettier --write backend/graphql/index.ts",
@@ -127,8 +127,7 @@
     "sass": "^1.62.1",
     "sharp": "^0.32.0",
     "tailwindcss": "3.3.5",
-    "typescript": "5.0.4",
-    "typescript-strict-plugin": "2.1.0"
+    "typescript": "5.0.4"
   },
   "engines": {
     "node": ">=18.x.x",
