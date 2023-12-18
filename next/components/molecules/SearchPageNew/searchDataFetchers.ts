@@ -3,10 +3,9 @@ import {
   Enum_Pagecategory_Color,
   LatestBlogPostEntityFragment,
 } from '@backend/graphql'
-import { BlogPostsFilters } from '@backend/meili/fetchers/blogPostsFetcher'
 import {
-  blogPostsDefaultFilters,
   blogPostsFetcher,
+  BlogPostsFilters,
   getBlogPostsQueryKey,
 } from '@backend/meili/fetchers/blogPostsFetcherReactQuery'
 import {
@@ -15,41 +14,34 @@ import {
   InbaArticlesFilters,
 } from '@backend/meili/fetchers/inbaArticlesFetcher'
 import {
-  getPagesSwrKey,
-  pagesFetcher,
+  getPagesQueryKey,
   pagesFetcherUseQuery,
   PagesFilters,
 } from '@backend/meili/fetchers/pagesFetcher'
 import { PageMeili } from '@backend/meili/types'
-import { MSGraphFilteredGroupUser } from '@backend/services/ms-graph'
-import { userSearchFetcher } from '@backend/utils/organisationalStructure'
-import { BlogItem } from '@components/ui/BlogSearchCard/BlogSearchCard'
+import { SearchOption } from '@components/pages/searchPageContentNew'
 import { useQuery } from '@tanstack/react-query'
 import { formatDate } from '@utils/local-date'
 import { useLocale, useTranslations } from 'next-intl'
-import useSwr from 'swr'
 
-export type UsersFilters = {
-  search: string
+export type SearchFilters = PagesFilters | BlogPostsFilters | InbaArticlesFilters
+
+export type SearchResult = {
+  title: string | null | undefined
+  slug: string | null | undefined
+  metadata?: (string | null | undefined)[]
+  coverImageURL?: string | null | undefined
+  pageColor?: Enum_Page_Pagecolor | Enum_Pagecategory_Color
 }
 
-// TODO: split to separate types
-export type GeneralSearchResult = {
-  title?: string
-  slug?: string
-  tag?: string
-  metadata?: string[]
-  picture?: any
-  pageColor?: Enum_Pagecategory_Color | Enum_Page_Pagecolor
-}
+type SearchResults = SearchResult[] | []
 
 export const getSearchPagesTotalHits = (filters: PagesFilters): number => {
   const t = useTranslations()
   const locale = useLocale()
 
   const { data } = useQuery({
-    // FIXME: get query key and fix fetcher name
-    queryKey: ['hii', filters, locale],
+    queryKey: getPagesQueryKey(filters, locale),
     queryFn: () => pagesFetcherUseQuery(filters, locale),
     keepPreviousData: true,
   })
@@ -57,72 +49,29 @@ export const getSearchPagesTotalHits = (filters: PagesFilters): number => {
   return data?.estimatedTotalHits ?? 0
 }
 
-export const getSearchPagesData = (filters: PagesFilters): GeneralSearchResult[] => {
+export const getSearchPagesData = (filters: PagesFilters): SearchResults => {
   const t = useTranslations()
   const locale = useLocale()
 
-  // TODO: estimate total hits
-  const { status, data } = useQuery({
-    // FIXME: get query key
-    queryKey: ['hii', filters, locale],
+  const { data } = useQuery({
+    queryKey: getPagesQueryKey(filters, locale),
     queryFn: () => pagesFetcherUseQuery(filters, locale),
     keepPreviousData: true,
   })
 
-  const formattedData =
+  return (
     data?.hits.map((page: PageMeili) => {
       return {
-        title: page.title ?? '',
-        slug: page.slug ?? '',
-        metadata: [page.pageCategory?.title ?? '', formatDate(page.publishedAt)] ?? [],
-        picture: page.pageBackgroundImage,
+        title: page.title,
+        slug: page.slug,
+        metadata: [page.pageCategory?.title, formatDate(page.publishedAt)],
         pageColor: page.pageColor,
-      } as GeneralSearchResult
+      } as SearchResult
     }) ?? []
-
-  return formattedData ?? []
+  )
 }
 
-export const getSearchUsersData = (filters: UsersFilters): GeneralSearchResult[] => {
-  const t = useTranslations()
-
-  const { data } = useSwr(['Users', filters], () => userSearchFetcher(filters.search))
-
-  // const { data, status } = useQuery({
-  //   queryKey: ['user', filters.search],
-  //   queryFn: () => userSearchFetcher(filters.search),
-  //   keepPreviousData: true,
-  // })
-
-  // if (status !== 'success')
-  //   return [
-  //     {
-  //       title: `status: ${status}`,
-  //       slug: '',
-  //       metadata: [],
-  //     },
-  //   ]
-
-  const formattedData =
-    data?.hits?.map((userData: MSGraphFilteredGroupUser) => {
-      return {
-        title: userData.displayName,
-        slug: '',
-        metadata: [] ?? [],
-      }
-    }) ?? []
-
-  return formattedData ?? []
-}
-export const getSearchUsersTotalHits = (filters: UsersFilters): number => {
-  const t = useTranslations()
-
-  const { data } = useSwr(['Users', filters], () => userSearchFetcher(filters.search))
-
-  return data?.estimatedTotalHits ?? 0
-}
-
-export const getSearchBlogPostsData = (filters: BlogPostsFilters): GeneralSearchResult[] => {
+export const getSearchBlogPostsData = (filters: BlogPostsFilters): SearchResults => {
   const t = useTranslations()
   const locale = useLocale()
 
@@ -132,22 +81,21 @@ export const getSearchBlogPostsData = (filters: BlogPostsFilters): GeneralSearch
     keepPreviousData: true,
   })
 
-  const formattedData =
-    data?.hits?.map((blogPostData: Pick<LatestBlogPostEntityFragment, 'attributes'>) => {
-      return {
-        title: blogPostData.attributes?.title ?? '',
-        slug: `blog/${blogPostData.attributes?.slug}` ?? '',
-        metadata:
-          [
-            blogPostData.attributes?.tag?.data?.attributes?.pageCategory?.data?.attributes?.title ??
-              '',
+  return (
+    data?.hits?.map(
+      (blogPostData: Pick<LatestBlogPostEntityFragment, 'attributes'>): SearchResult => {
+        return {
+          title: blogPostData.attributes?.title,
+          slug: `blog/${blogPostData.attributes?.slug}`,
+          metadata: [
+            blogPostData.attributes?.tag?.data?.attributes?.title,
             formatDate(blogPostData.attributes?.publishedAt),
-          ] ?? [],
-        picture: blogPostData.attributes?.coverImage?.data?.attributes?.url,
-      }
-    }) ?? []
-
-  return formattedData ?? []
+          ],
+          coverImageURL: blogPostData.attributes?.coverImage?.data?.attributes?.url,
+        }
+      },
+    ) ?? []
+  )
 }
 
 export const getSearchBlogPostsTotalHits = (filters: BlogPostsFilters): number => {
@@ -163,7 +111,7 @@ export const getSearchBlogPostsTotalHits = (filters: BlogPostsFilters): number =
   return data?.estimatedTotalHits ?? 0
 }
 
-export const getSearchInbaArticlesData = (filters: InbaArticlesFilters): GeneralSearchResult[] => {
+export const getSearchInbaArticlesData = (filters: InbaArticlesFilters): SearchResults => {
   const t = useTranslations()
   const locale = useLocale()
 
@@ -173,22 +121,19 @@ export const getSearchInbaArticlesData = (filters: InbaArticlesFilters): General
     keepPreviousData: true,
   })
 
-  const formattedData =
-    data?.hits?.map((blogPostData: BlogItem) => {
+  return (
+    data?.hits?.map((inbaArticle): SearchResult => {
       return {
-        title: blogPostData.attributes?.title ?? '',
-        slug: `inba/text/${blogPostData.attributes?.slug}` ?? '',
-        metadata:
-          [
-            blogPostData.attributes?.tag?.data?.attributes?.pageCategory?.data?.attributes
-              ?.shortTitle ?? '',
-            formatDate(blogPostData.attributes?.publishedAt),
-          ] ?? [],
-        picture: blogPostData.attributes?.coverImage?.data?.attributes?.url,
+        title: inbaArticle.attributes.title,
+        slug: `inba/text/${inbaArticle.attributes.title}`,
+        metadata: [
+          inbaArticle.attributes?.inbaTag?.data?.attributes?.title,
+          formatDate(inbaArticle.attributes.publishedAt),
+        ],
+        coverImageURL: inbaArticle.attributes.coverImage.data.attributes.url,
       }
     }) ?? []
-
-  return formattedData ?? []
+  )
 }
 
 export const getSearchInbaArticlesTotalHits = (filters: InbaArticlesFilters): number => {
@@ -203,3 +148,63 @@ export const getSearchInbaArticlesTotalHits = (filters: InbaArticlesFilters): nu
 
   return data?.estimatedTotalHits ?? 0
 }
+
+export const getDataBySearchOptionKey = (optionKey: SearchOption['key']) => {
+  switch (optionKey) {
+    case 'pages':
+      return { dataFetcher: getSearchPagesData, numberOfHits: getSearchPagesTotalHits }
+
+    case 'articles':
+      return { dataFetcher: getSearchBlogPostsData, numberOfHits: getSearchBlogPostsTotalHits }
+
+    case 'inbaArticles':
+      return {
+        dataFetcher: getSearchInbaArticlesData,
+        numberOfHits: getSearchInbaArticlesTotalHits,
+      }
+
+    default:
+      return {
+        dataFetcher: getSearchPagesData,
+        numberOfHits: getSearchPagesTotalHits,
+      }
+
+    // default:
+    //   return {
+    //     dataFetcher: () => {
+    //       // console.warn('no data fetcher available for this search option')
+    //       return []
+    //     },
+    //     numberOfHits: () => 0,
+    //   }
+  }
+}
+
+// type UsersFilters = {
+//   search: string
+// }
+
+// export const getSearchUsersData = (filters: UsersFilters): GeneralSearchResults => {
+//   const t = useTranslations()
+
+//   const { data } = useSwr(['Users', filters], () => userSearchFetcher(filters.search))
+
+//   const formattedData =
+//     data?.hits?.map((userData: MSGraphFilteredGroupUser) => {
+//       return {
+//         title: userData.displayName,
+//         slug: '',
+//         metadata: [] ?? [],
+//       }
+//     }) ?? []
+
+//   return formattedData ?? []
+// }
+
+// export const getSearchUsersTotalHits = (filters: UsersFilters): number => {
+//   const t = useTranslations()
+
+//   const { data } = useSwr(['Users', filters], () => userSearchFetcher(filters.search))
+
+//   return data?.estimatedTotalHits ?? 0
+// }

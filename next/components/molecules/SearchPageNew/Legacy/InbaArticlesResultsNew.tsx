@@ -3,10 +3,6 @@ import { InbaArticlesFilters } from '@backend/meili/fetchers/inbaArticlesFetcher
 import Pagination from '@bratislava/ui-bratislava/Pagination/Pagination'
 import { SearchCardComposed } from '@components/molecules/SearchPageNew/SearchCardComposed'
 import {
-  SearchCardNew,
-  SearchCardWithPictureNew,
-} from '@components/molecules/SearchPageNew/SearchCardNew'
-import {
   getSearchInbaArticlesData,
   getSearchInbaArticlesTotalHits,
 } from '@components/molecules/SearchPageNew/searchDataFetchers'
@@ -56,7 +52,7 @@ const InbaArticlesResultsNew = ({
             'flex flex-col gap-y-2': variant === 'advanced',
           })}
         >
-          {variant === 'basic'
+          {/* {variant === 'basic'
             ? data.slice(0, RESULTS_SHOWN).map((item) => {
                 return (
                   <SearchCardComposed data={{ ...item, tag: t('inbaArticle') }} variant="default" />
@@ -72,7 +68,7 @@ const InbaArticlesResultsNew = ({
                   />
                 )
               })
-            : null}
+            : null} */}
         </div>
       ) : (
         <p>{t('SearchPage.noResults')}</p>

@@ -52,7 +52,7 @@ const BlogPostsResultsNew = ({
               'flex flex-col gap-y-2': variant === 'advanced',
             })}
           >
-            {variant === 'basic'
+            {/* {variant === 'basic'
               ? data.slice(0, RESULTS_SHOWN).map((item) => {
                   return (
                     <SearchCardComposed data={{ ...item, tag: t('article') }} variant="default" />
@@ -68,7 +68,7 @@ const BlogPostsResultsNew = ({
                     />
                   )
                 })
-              : null}
+              : null} */}
           </div>
         ) : (
           <p>{t('SearchPage.noResults')}</p>

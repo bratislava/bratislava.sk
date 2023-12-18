@@ -11,24 +11,29 @@ import PageRedIconSmall from '@assets/images/page-red-icon-small.svg'
 import PageYellowIcon from '@assets/images/page-yellow-icon.svg'
 import PageYellowIconSmall from '@assets/images/page-yellow-icon-small.svg'
 import { ChevronRightIcon } from '@assets/ui-icons'
-import { Enum_Page_Pagecolor, Enum_Pagecategory_Color } from '@backend/graphql'
+import { Enum_Pagecategory_Color } from '@backend/graphql'
 import ImagePlaceholder from '@components/atoms/ImagePlaceholder'
 import MLink from '@components/forms/simple-components/MLink'
 import Tag from '@components/forms/simple-components/Tag'
-import { GeneralSearchResult } from '@components/molecules/SearchPageNew/searchDataFetchers'
+import { SearchResult } from '@components/molecules/SearchPageNew/searchDataFetchers'
 import { getCategoryColorLocalStyle } from '@utils/colors'
+import { generateImageSizes } from '@utils/generateImageSizes'
 import { isDefined } from '@utils/isDefined'
-import cx from 'classnames'
 import Image from 'next/image'
-import React, { ReactNode } from 'react'
+import React from 'react'
 import { twMerge } from 'tailwind-merge'
 
-export type SearchCardComposedProps = {
-  data: GeneralSearchResult
+type SearchCardComposedProps = {
+  data: SearchResult
+  tagText?: string
   variant: 'default' | 'withPicture'
 }
 
-export const SearchCardComposed = ({ data, variant = 'default' }: SearchCardComposedProps) => {
+export const SearchCardComposed = ({
+  data,
+  variant = 'default',
+  tagText,
+}: SearchCardComposedProps) => {
   return (
     <>
       {variant === 'default' && (
@@ -37,7 +42,7 @@ export const SearchCardComposed = ({ data, variant = 'default' }: SearchCardComp
             <SearchCardComposed.InfoContainer className="gap-1.5">
               <div className="flex flex-row flex-wrap items-center gap-x-3 gap-y-1.5 sm:flex-nowrap">
                 <SearchCardComposed.Title title={data.title} />
-                <SearchCardComposed.Tag text={data.tag} />
+                <SearchCardComposed.Tag text={tagText} />
               </div>
               <SearchCardComposed.Metadata metadata={data.metadata} />
             </SearchCardComposed.InfoContainer>
@@ -47,13 +52,17 @@ export const SearchCardComposed = ({ data, variant = 'default' }: SearchCardComp
       )}
       {variant === 'withPicture' && (
         <MLink
-          className="group flex flex-row overflow-hidden rounded-lg border-2"
+          className="group flex flex-row items-stretch overflow-hidden rounded-lg border-2"
           href={`/../${data.slug}`}
         >
-          <SearchCardComposed.Image />
+          {data.coverImageURL ? (
+            <SearchCardComposed.ImageFromURL imgURL={data.coverImageURL} />
+          ) : data.pageColor ? (
+            <SearchCardComposed.ImageFromPageColor pageColor={data.pageColor} />
+          ) : null}
           <div className="flex w-full flex-row gap-6 p-6">
             <SearchCardComposed.InfoContainer className="gap-3">
-              <SearchCardComposed.Tag text={data.tag} />
+              <SearchCardComposed.Tag text={tagText} />
               <SearchCardComposed.Title title={data.title} />
               <SearchCardComposed.Metadata metadata={data.metadata} />
             </SearchCardComposed.InfoContainer>
@@ -65,17 +74,17 @@ export const SearchCardComposed = ({ data, variant = 'default' }: SearchCardComp
   )
 }
 
-SearchCardComposed.Image = function ({ className }: any) {
-  const colorStyle = getCategoryColorLocalStyle({ color: Enum_Pagecategory_Color.Blue })
+SearchCardComposed.ImageFromPageColor = function ({ pageColor, className }: any) {
+  const colorStyle = getCategoryColorLocalStyle({ color: pageColor ?? Enum_Pagecategory_Color.Red })
   const { default: PageIcon, small: SmallPageIcon } = findIconByPageColor(
-    Enum_Pagecategory_Color.Blue,
+    pageColor ?? Enum_Pagecategory_Color.Red,
   )
 
   return (
     <div
       style={colorStyle}
       className={twMerge(
-        'relative flex h-[150px] w-[150px] shrink-0 items-center justify-center overflow-hidden bg-category-200',
+        'relative flex w-[150px] shrink-0 items-center justify-center overflow-hidden bg-category-200',
         className,
       )}
     >
@@ -83,6 +92,30 @@ SearchCardComposed.Image = function ({ className }: any) {
       <SmallPageIcon className="md:hidden" />
     </div>
   )
+}
+
+SearchCardComposed.ImageFromURL = function ({ imgURL, className }: any) {
+  if (true)
+    return (
+      <div
+        className={twMerge(
+          'relative flex w-[150px] shrink-0 items-center justify-center overflow-hidden bg-category-200',
+          className,
+        )}
+      >
+        {imgURL ? (
+          <Image
+            src={imgURL}
+            alt=""
+            sizes={generateImageSizes({ default: '150px' })}
+            fill
+            className="h-full object-cover"
+          />
+        ) : (
+          <ImagePlaceholder />
+        )}
+      </div>
+    )
 }
 
 SearchCardComposed.InfoContainer = function ({ children, className }: any) {
@@ -116,6 +149,7 @@ SearchCardComposed.Metadata = function ({ metadata, className }: any) {
       ?.filter(isDefined)
       .filter((item: any) => item !== '')
       .join(' • ') ?? []
+  // return <div className={twMerge('', className)}>{JSON.stringify(metadata)}</div>
   return <div className={twMerge('', className)}>{cleanedMetadata}</div>
 }
 

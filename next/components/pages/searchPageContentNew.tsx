@@ -1,19 +1,23 @@
 import Chip from '@components/forms/simple-components/Chip'
 import { AdvancedSearchNew } from '@components/molecules/SearchPageNew/AdvancedSearchNew'
-import GeneralSearchResults from '@components/molecules/SearchPageNew/GeneralSearchResults'
+import { GeneralSearchResults } from '@components/molecules/SearchPageNew/GeneralSearchResults'
+import { SearchFilters } from '@components/molecules/SearchPageNew/searchDataFetchers'
 import { SectionContainer } from '@components/ui/SectionContainer/SectionContainer'
 import { useTranslations } from 'next-intl'
-import React, { useEffect, useLayoutEffect, useState } from 'react'
+import React, { createContext, useEffect, useLayoutEffect, useState } from 'react'
 import { Selection, TagGroup, TagList } from 'react-aria-components'
 import { StringParam, useQueryParam, withDefault } from 'use-query-params'
 import { useDebounce } from 'usehooks-ts'
 
-// React-aria-components library recommends Selection as a type for selection state, which should behave like a Set object. However, common set methods such as .size and .values don't work on Selection, so as a workaround we transform the Selection to an array to find size and spread operator to find the first element
+// React-aria-components library recommends Selection as a type for selection state, which should behave like a Set object. However, common set methods such as .size and .values don't work on Selection, so as a workaround we use [...selectedOptionKey][0] to transform the Selection to an array to het its size and values
 
-type SearchOption = {
-  key: string
-  title: string
+export type SearchOption = {
+  key: 'allResults' | 'pages' | 'articles' | 'inbaArticles'
+  displayName: string
+  displayContentType?: string
 }
+
+export const SearchContext = createContext<any>(undefined)
 
 const SearchPageContentNew = () => {
   const t = useTranslations()
@@ -31,32 +35,27 @@ const SearchPageContentNew = () => {
     setSearchValue(debouncedInput)
   }, [debouncedInput])
 
-  const options: SearchOption[] = [
-    { key: 'allResults', title: t('SearchPage.allResults') },
-    { key: 'pages', title: t('websites') },
-    { key: 'articles', title: t('articles') },
-    { key: 'inbaArticles', title: t('inbaArticles') },
-    // TODO: enable when users are searchable
+  const searchOptions: SearchOption[] = [
+    { key: 'allResults', displayName: t('SearchPage.allResults') },
+    { key: 'pages', displayName: t('websites'), displayContentType: t('website') },
+    { key: 'articles', displayName: t('articles'), displayContentType: t('article') },
+    { key: 'inbaArticles', displayName: t('inbaArticles'), displayContentType: t('inbaArticle') },
     // { key: 'users', title: t('organisationalStructure') },
   ]
+  const defaultOption = searchOptions[0]
 
-  const defaultOptionKey = 'allResults'
-
-  const getOptionByKey = (key: string): SearchOption | null => {
-    // TODO: maybe use .find
-    const filteredOptions = options.filter((option) => {
-      return option.key === key
-    })
-    if (filteredOptions?.length > 0) return filteredOptions[0]
-    return null
+  const getSearchOptionByKey = (key: string): SearchOption => {
+    return searchOptions.find((option) => option.key === key) ?? defaultOption
   }
 
-  const [selectedOptionKey, setSelectedOptionKey] = useState<Selection>(new Set([defaultOptionKey]))
+  const [selectedOptionKey, setSelectedOptionKey] = useState<Selection>(
+    new Set([defaultOption.key]),
+  )
   const [currentPage, setCurrentPage] = useState(1)
 
   useLayoutEffect(() => {
-    if (Array.from(selectedOptionKey).length === 0) {
-      setSelectedOptionKey(new Set([defaultOptionKey]))
+    if ([...selectedOptionKey].length === 0) {
+      setSelectedOptionKey(new Set([defaultOption.key]))
     }
   }, [selectedOptionKey])
 
@@ -64,72 +63,88 @@ const SearchPageContentNew = () => {
     setCurrentPage(1)
   }, [searchValue, selectedOptionKey])
 
-  const commonFilters = { search: searchValue, page: currentPage, pageSize: 10, tagIds: [] }
+  const searchFilters: SearchFilters = {
+    search: searchValue,
+    page: currentPage,
+    pageSize: 10,
+    // TODO tagIds need to be here for now, because fetchers filter by tagIds
+    tagIds: [],
+  }
+
+  // const [resultsCount, setResultsCount] = useState(
+  //   searchOptions.map((option) => {
+  //     return { key: option.key, count: 0 }
+  //   }),
+  // )
 
   return (
-    <SectionContainer className="mb-8">
-      <div className="flex w-full flex-col gap-y-8 pt-12 md:pt-18">
-        <div className="flex flex-col">
-          <AdvancedSearchNew
-            placeholder={t('enterKeyword')}
-            title={t('searching')}
-            input={input}
-            setInput={setInput}
-            setSearchQuery={setSearchValue}
-          />
-          <TagGroup
-            selectionMode="single"
-            selectedKeys={selectedOptionKey}
-            defaultSelectedKeys={new Set([defaultOptionKey])}
-            onSelectionChange={setSelectedOptionKey}
-          >
-            <TagList className="mt-4 flex flex-wrap gap-2 lg:justify-start">
-              {options.map((option) => {
+    <SearchContext.Provider value={{ searchOptions }}>
+      <SectionContainer className="mb-8">
+        <div className="flex w-full flex-col gap-y-8 pt-12 md:pt-18">
+          <div className="flex flex-col">
+            <AdvancedSearchNew
+              placeholder={t('enterKeyword')}
+              title={t('searching')}
+              input={input}
+              setInput={setInput}
+              setSearchQuery={setSearchValue}
+            />
+            <TagGroup
+              selectionMode="single"
+              selectedKeys={selectedOptionKey}
+              defaultSelectedKeys={new Set([defaultOption.key])}
+              onSelectionChange={setSelectedOptionKey}
+            >
+              <TagList className="mt-4 flex flex-wrap gap-2 lg:justify-start">
+                {searchOptions.map((option) => {
+                  return (
+                    <Chip
+                      className="selected:border-gray-700 selected:bg-gray-700 hover:selected:bg-gray-700"
+                      variant="small"
+                      key={option.key}
+                      id={option.key}
+                    >
+                      {`${option.displayName} `}
+                    </Chip>
+                  )
+                })}
+              </TagList>
+            </TagGroup>
+            <p className="mt-8">
+              {t('SearchPage.showingResults', { resultsCount: 'XXXX (value hardcoded)' })}
+            </p>
+          </div>
+          {[...selectedOptionKey][0] === defaultOption.key ? (
+            <div className="flex flex-col gap-8">
+              {searchOptions.slice(1).map((option) => {
                 return (
-                  <Chip
-                    className="selected:border-gray-700 selected:bg-gray-700 hover:selected:bg-gray-700"
-                    variant="small"
-                    key={option.key}
-                    id={option.key}
-                  >
-                    {option.title}
-                  </Chip>
+                  <GeneralSearchResults
+                    variant="advanced"
+                    searchOption={option}
+                    filters={searchFilters}
+                    handleShowMore={setSelectedOptionKey}
+                  />
                 )
               })}
-            </TagList>
-          </TagGroup>
-          <p className="mt-8">
-            {t('SearchPage.showingResults', { resultsCount: 'XXXX (value hardcoded)' })}
-          </p>
+            </div>
+          ) : null}
+          {
+            // eslint-disable-next-line unicorn/no-negated-condition
+            [...selectedOptionKey][0] !== defaultOption.key ? (
+              <GeneralSearchResults
+                variant="advanced"
+                searchOption={getSearchOptionByKey(
+                  [...selectedOptionKey][0]?.toString() ?? defaultOption.key,
+                )}
+                filters={searchFilters}
+                handleShowMore={setSelectedOptionKey}
+                handlePageChange={setCurrentPage}
+              />
+            ) : null
+          }
         </div>
-        {[...selectedOptionKey][0] === 'allResults' ? (
-          <div className="flex flex-col gap-8">
-            {options.slice(1).map((option) => {
-              return (
-                <GeneralSearchResults
-                  variant="basic"
-                  searchOption={option}
-                  filters={commonFilters}
-                  handleShowMore={setSelectedOptionKey}
-                />
-              )
-            })}
-          </div>
-        ) : null}
-        {
-          // eslint-disable-next-line unicorn/no-negated-condition
-          [...selectedOptionKey][0] !== 'allResults' ? (
-            <GeneralSearchResults
-              variant="advanced"
-              searchOption={getOptionByKey([...selectedOptionKey][0]?.toString() ?? 'allResults')}
-              filters={commonFilters}
-              handleShowMore={setSelectedOptionKey}
-              handlePageChange={setCurrentPage}
-            />
-          ) : null
-        }
-      </div>
-    </SectionContainer>
+      </SectionContainer>
+    </SearchContext.Provider>
   )
 }
 

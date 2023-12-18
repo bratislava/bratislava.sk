@@ -120,14 +120,14 @@ const SearchPageContentNew = () => {
                 setSelectedOption(new Set(['inbaArticles']))
               }}
             />
-            <UsersResultsNew
+            {/* <UsersResultsNew
               variant="basic"
               title={t('organisationalStructure')}
               filters={usersFilters}
               handleShowMore={() => {
                 setSelectedOption(new Set(['users']))
               }}
-            />
+            /> */}
           </div>
         ) : null}
         {[...selectedOption][0] === 'articles' ? (
@@ -148,9 +148,9 @@ const SearchPageContentNew = () => {
             filters={pagesFilters}
             handlePageChange={setCurrentPage}
           />
-        ) : [...selectedOption][0] === 'users' ? (
-          <UsersResultsNew variant="advanced" filters={usersFilters} />
-        ) : null}
+        ) : // ) : [...selectedOption][0] === 'users' ? (
+        //   <UsersResultsNew variant="advanced" filters={usersFilters} />
+        null}
       </div>
     </SectionContainer>
   )
