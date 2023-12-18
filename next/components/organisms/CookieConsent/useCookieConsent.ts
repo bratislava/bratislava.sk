@@ -1,13 +1,15 @@
-// @ts-strict-ignore
+import { isDefined } from '@utils/isDefined'
 import { isBrowser } from '@utils/utils'
 import mapValues from 'lodash/mapValues'
 import pick from 'lodash/pick'
 import { useCallback, useEffect, useState } from 'react'
-// todo swap for js-cookie
+// TODO swap for js-cookie
 import { Cookies } from 'react-cookie-consent'
 
+// TODO revisit
+
 const availableConsents = ['statistics']
-const pickConsents = (consents: any) => mapValues(pick(consents, availableConsents), Boolean)
+const pickConsents = (consents: object) => mapValues(pick(consents, availableConsents), Boolean)
 
 // returns all 'consents' given (currently only 'statistics', can be easily expanded)
 // along with a refresh function and whether the banner was ever dismissed
@@ -40,13 +42,13 @@ export const useCookieConsent = () => {
   }, [refresh])
 
   const setConsents = useCallback(
-    (value) => {
-      if (typeof value !== 'object') return
-      const consentValue = pickConsents(value)
-      const mergedConsents = { ...consents, ...consentValue }
-      Cookies.set('gdpr-consents', mergedConsents, { expires: 365 })
-      setConsentsState(mergedConsents)
-      console.log('rerender')
+    (value: unknown) => {
+      if (typeof value === 'object' && isDefined(value)) {
+        const consentValue = pickConsents(value)
+        const mergedConsents = { ...consents, ...consentValue }
+        Cookies.set('gdpr-consents', mergedConsents, { expires: 365 })
+        setConsentsState(mergedConsents)
+      }
     },
     [consents],
   )

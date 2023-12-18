@@ -1,10 +1,9 @@
 import Checkbox from '@assets/images/checkbox.svg'
 import SearchIcon from '@assets/images/search-icon.svg'
+import Button from '@components/forms/simple-components/Button'
 import cx from 'classnames'
 import { useTranslations } from 'next-intl'
 import { Dispatch, KeyboardEventHandler, SetStateAction } from 'react'
-
-import { Button } from '../Button/Button'
 
 export interface AdvancedSearchProps {
   className?: string
@@ -80,13 +79,10 @@ export const AdvancedSearch = ({
           autoFocus
         />
         <Button
-          icon={<SearchIcon />}
-          hoverIcon={<SearchIcon />}
-          className={cx(
-            'text-large hover:color-white h-14 rounded-l-none px-6 font-medium shadow-none hover:bg-category-600 hover:text-white',
-          )}
-          variant="secondary-dark-text"
-          onClick={handleSearch}
+          endIcon={<SearchIcon />}
+          className="h-14 rounded-l-none"
+          variant="category-solid"
+          onPress={handleSearch}
         >
           {buttonText}
         </Button>
@@ -102,11 +98,10 @@ export const AdvancedSearch = ({
           onKeyDown={handleKeyDown}
         />
         <Button
-          icon={<SearchIcon />}
-          hoverIcon={<SearchIcon />}
-          className="hover:color-white text-large h-14 rounded-l-none pr-6 font-medium shadow-none hover:bg-category-600 hover:text-white"
-          variant="secondary-dark-text"
-          onClick={handleSearch}
+          endIcon={<SearchIcon />}
+          className="h-14 rounded-l-none"
+          variant="category-solid"
+          onPress={handleSearch}
         />
       </div>
       <div className="flex flex-col gap-x-14 gap-y-6 lg:flex-row">
