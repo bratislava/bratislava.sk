@@ -20,7 +20,7 @@ import { getCategoryColorLocalStyle } from '@utils/colors'
 import { generateImageSizes } from '@utils/generateImageSizes'
 import { isDefined } from '@utils/isDefined'
 import Image from 'next/image'
-import React from 'react'
+import React, { Suspense } from 'react'
 import { twMerge } from 'tailwind-merge'
 
 type SearchCardComposedProps = {
@@ -52,7 +52,7 @@ export const SearchCardComposed = ({
       )}
       {variant === 'withPicture' && (
         <MLink
-          className="group flex flex-row items-stretch overflow-hidden rounded-lg border-2"
+          className="group flex flex-row items-stretch overflow-hidden rounded-none border-b-2 sm:rounded-lg sm:border-2"
           href={`/../${data.slug}`}
         >
           {data.coverImageURL ? (
@@ -60,13 +60,15 @@ export const SearchCardComposed = ({
           ) : data.pageColor ? (
             <SearchCardComposed.ImageFromPageColor pageColor={data.pageColor} />
           ) : null}
-          <div className="flex w-full flex-row gap-6 p-6">
-            <SearchCardComposed.InfoContainer className="gap-3">
-              <SearchCardComposed.Tag text={tagText} />
-              <SearchCardComposed.Title title={data.title} />
+          <div className="flex w-full flex-row gap-6 py-4 sm:p-6">
+            <SearchCardComposed.InfoContainer className="flex flex-col gap-3">
+              <div className="flex flex-col gap-y-2">
+                <SearchCardComposed.Tag className="" text={tagText} />
+                <SearchCardComposed.Title className="" title={data.title} />
+              </div>
               <SearchCardComposed.Metadata metadata={data.metadata} />
             </SearchCardComposed.InfoContainer>
-            <SearchCardComposed.Button />
+            <SearchCardComposed.Button className="hidden sm:block" />
           </div>
         </MLink>
       )}
@@ -84,12 +86,12 @@ SearchCardComposed.ImageFromPageColor = function ({ pageColor, className }: any)
     <div
       style={colorStyle}
       className={twMerge(
-        'relative flex w-[150px] shrink-0 items-center justify-center overflow-hidden bg-category-200',
+        'relative hidden w-[150px] shrink-0 items-center justify-center overflow-hidden bg-category-200 sm:flex',
         className,
       )}
     >
-      <PageIcon className="max-md:hidden" />
-      <SmallPageIcon className="md:hidden" />
+      <PageIcon />
+      {/* <SmallPageIcon className="md:hidden" /> */}
     </div>
   )
 }
@@ -99,21 +101,18 @@ SearchCardComposed.ImageFromURL = function ({ imgURL, className }: any) {
     return (
       <div
         className={twMerge(
-          'relative flex w-[150px] shrink-0 items-center justify-center overflow-hidden bg-category-200',
+          'relative hidden w-[150px] shrink-0 items-center justify-center overflow-hidden bg-category-200 sm:flex',
           className,
         )}
       >
-        {imgURL ? (
-          <Image
-            src={imgURL}
-            alt=""
-            sizes={generateImageSizes({ default: '150px' })}
-            fill
-            className="h-full object-cover"
-          />
-        ) : (
-          <ImagePlaceholder />
-        )}
+        <Image
+          src={imgURL}
+          alt=""
+          sizes={generateImageSizes({ default: '150px' })}
+          fill
+          className="h-full object-cover"
+        />
+        <ImagePlaceholder />
       </div>
     )
 }
@@ -144,16 +143,28 @@ SearchCardComposed.Tag = function ({ text, className }: any) {
 }
 
 SearchCardComposed.Metadata = function ({ metadata, className }: any) {
-  const cleanedMetadata =
-    metadata
-      ?.filter(isDefined)
-      .filter((item: any) => item !== '')
-      .join(' • ') ?? []
-  // return <div className={twMerge('', className)}>{JSON.stringify(metadata)}</div>
-  return <div className={twMerge('', className)}>{cleanedMetadata}</div>
+  const cleanedMetadata = metadata?.filter(isDefined).filter((item: any) => item !== '')
+  const metaDataRow = cleanedMetadata.map((item: string, index: number) => {
+    return (
+      <>
+        {index > 0 && <p className="hidden sm:block">•</p>}
+        <p className="first-of-type:underline max-sm:first-of-type:font-medium">{item}</p>
+      </>
+    )
+  })
+  return (
+    <div
+      className={twMerge(
+        'flex flex-col flex-wrap items-stretch gap-x-3 gap-y-1 text-gray-700 sm:flex-row',
+        className,
+      )}
+    >
+      {metaDataRow}
+    </div>
+  )
 }
 
-SearchCardComposed.Button = function ({ text, className }: any) {
+SearchCardComposed.Button = function ({ className }: any) {
   return (
     <div className={twMerge('my-auto self-end text-main-700', className)}>
       <ChevronRightIcon />

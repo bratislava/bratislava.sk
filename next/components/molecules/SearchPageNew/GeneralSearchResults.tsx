@@ -2,16 +2,17 @@ import Pagination from '@bratislava/ui-bratislava/Pagination/Pagination'
 import { SearchCardComposed } from '@components/molecules/SearchPageNew/SearchCardComposed'
 import {
   getDataBySearchOptionKey,
+  SearchFilters,
   SearchResult,
 } from '@components/molecules/SearchPageNew/searchDataFetchers'
 import { SearchResultsHeader } from '@components/molecules/SearchPageNew/SearchResultsHeader'
 import { SearchOption } from '@components/pages/searchPageContentNew'
-import cx from 'classnames'
+import { isDefined } from '@utils/isDefined'
 import { useTranslations } from 'next-intl'
 
 type GeneralSearchResultsProps = {
   filters: any
-  variant: 'basic' | 'advanced'
+  variant: 'allResults' | 'specificResults'
   searchOption: SearchOption
   handleShowMore?: any
   handlePageChange?: any
@@ -22,7 +23,7 @@ export const GeneralSearchResults = ({
   handleShowMore,
   handlePageChange,
   searchOption,
-  variant = 'basic',
+  variant,
 }: GeneralSearchResultsProps) => {
   const t = useTranslations()
 
@@ -35,39 +36,34 @@ export const GeneralSearchResults = ({
 
   return (
     <div>
-      {variant === 'basic' && (
+      {variant === 'allResults' && (
         <SearchResultsHeader
-          title={`${searchOption?.displayName}` ?? ''}
+          title={`${searchOption?.displayNamePlural}` ?? ''}
           handleShowMore={() => {
             handleShowMore(new Set([searchOption.key]))
           }}
         />
       )}
       {data?.length > 0 ? (
-        <div
-          className={cx({
-            'divide-y-2 rounded-lg border-2': variant === 'basic',
-            'flex flex-col gap-y-2': variant === 'advanced',
-          })}
-        >
-          {variant === 'basic'
+        <div className="flex flex-col gap-y-2">
+          {variant === 'allResults'
             ? data.slice(0, RESULTS_SHOWN).map((item) => {
                 return (
                   <SearchCardComposed
                     data={{ ...item }}
-                    tagText={searchOption.displayContentType}
-                    variant="default"
+                    tagText={searchOption.displayName}
+                    variant="withPicture"
                     key={item.slug}
                   />
                 )
               })
             : null}
-          {variant === 'advanced'
+          {variant === 'specificResults'
             ? data.map((item) => {
                 return (
                   <SearchCardComposed
                     data={{ ...item }}
-                    tagText={searchOption.displayContentType}
+                    tagText={searchOption.displayName}
                     variant="withPicture"
                     key={item.slug}
                   />
@@ -78,12 +74,13 @@ export const GeneralSearchResults = ({
       ) : (
         <p>{t('SearchPage.noResults')}</p>
       )}
-      {variant === 'advanced' && !isPaginationNeeded ? (
+      {variant === 'specificResults' && !isPaginationNeeded ? (
         <div className="mt-8">
           <Pagination
             currentPage={filters.page}
             totalCount={Math.ceil(totalResultsCount / filters.pageSize)}
             onPageChange={(pageNumber) => {
+              if (!isDefined(handlePageChange)) return
               handlePageChange(pageNumber)
               window.scrollTo({ top: 0 })
             }}
