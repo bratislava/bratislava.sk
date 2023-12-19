@@ -48,25 +48,25 @@ const GeneralSearchResults = ({
         {searchResultsHits?.length > 0 ? (
           <div className="flex flex-col gap-y-2">
             {variant === 'allResults'
-              ? searchResultsHits.slice(0, DEFAULT_PAGE_SIZE).map((item, index) => {
+              ? searchResultsHits.slice(0, DEFAULT_PAGE_SIZE).map((item) => {
                   return (
                     <SearchCardComposed
                       data={{ ...item }}
                       tagText={searchOption.displayName}
                       variant="withPicture"
-                      key={`allResults-item${item.slug}-${index}`}
+                      key={`allResults-item${item.slug}`}
                     />
                   )
                 })
               : null}
             {variant === 'specificResults'
-              ? searchResultsHits.map((item, index) => {
+              ? searchResultsHits.map((item) => {
                   return (
                     <SearchCardComposed
                       data={{ ...item }}
                       tagText={searchOption.displayName}
                       variant="withPicture"
-                      key={`specificResults-item${item.slug}-${index}`}
+                      key={`specificResults-item${item.slug}`}
                     />
                   )
                 })
