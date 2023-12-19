@@ -34,22 +34,31 @@ export type SearchResult = {
   pageColor?: Enum_Page_Pagecolor | Enum_Pagecategory_Color
 }
 
-type SearchResults = SearchResult[] | []
-
-export const getSearchPagesTotalHits = (filters: PagesFilters): number => {
-  const t = useTranslations()
-  const locale = useLocale()
-
-  const { data } = useQuery({
-    queryKey: getPagesQueryKey(filters, locale),
-    queryFn: () => pagesFetcherUseQuery(filters, locale),
-    keepPreviousData: true,
-  })
-
-  return data?.estimatedTotalHits ?? 0
+export type SearchResponse = {
+  hits: SearchResult[]
+  estimatedTotalHits: number
 }
 
-export const getSearchPagesData = (filters: PagesFilters): SearchResults => {
+export const getDataBySearchOptionKey = (
+  optionKey: SearchOption['key'],
+  filters: SearchFilters,
+): SearchResponse => {
+  switch (optionKey) {
+    case 'pages':
+      return getSearchPagesData(filters as PagesFilters)
+
+    case 'articles':
+      return getSearchBlogPostsData(filters as BlogPostsFilters)
+
+    case 'inbaArticles':
+      return getSearchInbaArticlesData(filters as InbaArticlesFilters)
+
+    default:
+      return getSearchInbaArticlesData(filters as InbaArticlesFilters)
+  }
+}
+
+const getSearchPagesData = (filters: PagesFilters): SearchResponse => {
   const t = useTranslations()
   const locale = useLocale()
 
@@ -59,7 +68,7 @@ export const getSearchPagesData = (filters: PagesFilters): SearchResults => {
     keepPreviousData: true,
   })
 
-  return (
+  const formattedData =
     data?.hits.map((page: PageMeili) => {
       return {
         title: page.title,
@@ -68,10 +77,11 @@ export const getSearchPagesData = (filters: PagesFilters): SearchResults => {
         pageColor: page.pageColor,
       } as SearchResult
     }) ?? []
-  )
+
+  return { hits: formattedData, estimatedTotalHits: data?.estimatedTotalHits ?? 0 }
 }
 
-export const getSearchBlogPostsData = (filters: BlogPostsFilters): SearchResults => {
+const getSearchBlogPostsData = (filters: BlogPostsFilters): SearchResponse => {
   const t = useTranslations()
   const locale = useLocale()
 
@@ -81,7 +91,7 @@ export const getSearchBlogPostsData = (filters: BlogPostsFilters): SearchResults
     keepPreviousData: true,
   })
 
-  return (
+  const formattedData =
     data?.hits?.map(
       (blogPostData: Pick<LatestBlogPostEntityFragment, 'attributes'>): SearchResult => {
         return {
@@ -95,23 +105,11 @@ export const getSearchBlogPostsData = (filters: BlogPostsFilters): SearchResults
         }
       },
     ) ?? []
-  )
+
+  return { searchResultsHits: formattedData, estimatedTotalHits: data?.estimatedTotalHits ?? 0 }
 }
 
-export const getSearchBlogPostsTotalHits = (filters: BlogPostsFilters): number => {
-  const t = useTranslations()
-  const locale = useLocale()
-
-  const { data } = useQuery({
-    queryKey: getBlogPostsQueryKey(filters, locale),
-    queryFn: () => blogPostsFetcher(filters, locale),
-    keepPreviousData: true,
-  })
-
-  return data?.estimatedTotalHits ?? 0
-}
-
-export const getSearchInbaArticlesData = (filters: InbaArticlesFilters): SearchResults => {
+const getSearchInbaArticlesData = (filters: InbaArticlesFilters): SearchResponse => {
   const t = useTranslations()
   const locale = useLocale()
 
@@ -121,7 +119,7 @@ export const getSearchInbaArticlesData = (filters: InbaArticlesFilters): SearchR
     keepPreviousData: true,
   })
 
-  return (
+  const formattedData =
     data?.hits?.map((inbaArticle): SearchResult => {
       return {
         title: inbaArticle.attributes.title,
@@ -133,78 +131,6 @@ export const getSearchInbaArticlesData = (filters: InbaArticlesFilters): SearchR
         coverImageURL: inbaArticle.attributes.coverImage.data.attributes.url,
       }
     }) ?? []
-  )
+
+  return { searchResultsHits: formattedData, estimatedTotalHits: data?.estimatedTotalHits ?? 0 }
 }
-
-export const getSearchInbaArticlesTotalHits = (filters: InbaArticlesFilters): number => {
-  const t = useTranslations()
-  const locale = useLocale()
-
-  const { data } = useQuery({
-    queryKey: getInbaArticlesQueryKey(filters, locale),
-    queryFn: () => inbaArticlesFetcher(filters, locale),
-    keepPreviousData: true,
-  })
-
-  return data?.estimatedTotalHits ?? 0
-}
-
-export const getDataBySearchOptionKey = (optionKey: SearchOption['key']) => {
-  switch (optionKey) {
-    case 'pages':
-      return { dataFetcher: getSearchPagesData, numberOfHits: getSearchPagesTotalHits }
-
-    case 'articles':
-      return { dataFetcher: getSearchBlogPostsData, numberOfHits: getSearchBlogPostsTotalHits }
-
-    case 'inbaArticles':
-      return {
-        dataFetcher: getSearchInbaArticlesData,
-        numberOfHits: getSearchInbaArticlesTotalHits,
-      }
-
-    default:
-      return {
-        dataFetcher: getSearchPagesData,
-        numberOfHits: getSearchPagesTotalHits,
-      }
-
-    // default:
-    //   return {
-    //     dataFetcher: () => {
-    //       // console.warn('no data fetcher available for this search option')
-    //       return []
-    //     },
-    //     numberOfHits: () => 0,
-    //   }
-  }
-}
-
-// type UsersFilters = {
-//   search: string
-// }
-
-// export const getSearchUsersData = (filters: UsersFilters): GeneralSearchResults => {
-//   const t = useTranslations()
-
-//   const { data } = useSwr(['Users', filters], () => userSearchFetcher(filters.search))
-
-//   const formattedData =
-//     data?.hits?.map((userData: MSGraphFilteredGroupUser) => {
-//       return {
-//         title: userData.displayName,
-//         slug: '',
-//         metadata: [] ?? [],
-//       }
-//     }) ?? []
-
-//   return formattedData ?? []
-// }
-
-// export const getSearchUsersTotalHits = (filters: UsersFilters): number => {
-//   const t = useTranslations()
-
-//   const { data } = useSwr(['Users', filters], () => userSearchFetcher(filters.search))
-
-//   return data?.estimatedTotalHits ?? 0
-// }

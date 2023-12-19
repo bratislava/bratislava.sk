@@ -27,12 +27,13 @@ export const GeneralSearchResults = ({
 }: GeneralSearchResultsProps) => {
   const t = useTranslations()
 
-  const { dataFetcher, numberOfHits } = getDataBySearchOptionKey(searchOption.key)
-  const data: SearchResult[] = dataFetcher({ ...filters })
-  const totalResultsCount = numberOfHits({ ...filters })
-  const RESULTS_SHOWN = 5
+  const { hits: searchResultsHits, estimatedTotalHits } = getDataBySearchOptionKey(
+    searchOption.key,
+    filters,
+  )
+  const DEFAULT_PAGE_SIZE = 5
   const isPaginationNeeded =
-    totalResultsCount <= RESULTS_SHOWN && totalResultsCount <= filters.pageSize
+    estimatedTotalHits <= DEFAULT_PAGE_SIZE && estimatedTotalHits <= filters.pageSize
 
   return (
     <div>
@@ -44,10 +45,10 @@ export const GeneralSearchResults = ({
           }}
         />
       )}
-      {data?.length > 0 ? (
+      {searchResultsHits?.length > 0 ? (
         <div className="flex flex-col gap-y-2">
           {variant === 'allResults'
-            ? data.slice(0, RESULTS_SHOWN).map((item, index) => {
+            ? searchResultsHits.slice(0, DEFAULT_PAGE_SIZE).map((item, index) => {
                 return (
                   <SearchCardComposed
                     data={{ ...item }}
@@ -59,7 +60,7 @@ export const GeneralSearchResults = ({
               })
             : null}
           {variant === 'specificResults'
-            ? data.map((item, index) => {
+            ? searchResultsHits.map((item, index) => {
                 return (
                   <SearchCardComposed
                     data={{ ...item }}
@@ -78,7 +79,7 @@ export const GeneralSearchResults = ({
         <div className="mt-8">
           <Pagination
             currentPage={filters.page}
-            totalCount={Math.ceil(totalResultsCount / filters.pageSize)}
+            totalCount={Math.ceil(estimatedTotalHits / filters.pageSize)}
             onPageChange={(pageNumber) => {
               if (!isDefined(handlePageChange)) return
               handlePageChange(pageNumber)

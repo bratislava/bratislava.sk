@@ -1,12 +1,9 @@
-import { Breadcrumb } from '@bratislava/ui-bratislava/Breadcrumbs/Breadcrumbs'
-import PageHeader from '@bratislava/ui-bratislava/PageHeader/PageHeader'
 import Chip from '@components/forms/simple-components/Chip'
 import { AdvancedSearchNew } from '@components/molecules/SearchPageNew/AdvancedSearchNew'
 import { GeneralSearchResults } from '@components/molecules/SearchPageNew/GeneralSearchResults'
 import { SearchFilters } from '@components/molecules/SearchPageNew/searchDataFetchers'
 import { SectionContainer } from '@components/ui/SectionContainer/SectionContainer'
-import { useGeneralContext } from '@utils/generalContext'
-import { getPageBreadcrumbs } from '@utils/page'
+import { useRouter } from 'next/router'
 import { useTranslations } from 'next-intl'
 import React, { useEffect, useLayoutEffect, useMemo, useState } from 'react'
 import { Selection, TagGroup, TagList } from 'react-aria-components'
@@ -24,15 +21,18 @@ export type SearchOption = {
 const SearchPageContentNew = () => {
   const t = useTranslations()
 
+  const { asPath } = useRouter()
+
   const [routerQueryValue, setRouterQueryValue] = useQueryParam(
     'keyword',
-    withDefault(StringParam, ''),
+    // FIXME: be better
+    withDefault(StringParam, asPath.split('keyword=')[1] ?? ''),
+    // withDefault(StringParam, ''),
   )
-  const [input, setInput] = useState<string>('')
+  const [input, setInput] = useState<string>(routerQueryValue)
   const debouncedInput = useDebounce<string>(input, 300)
   const [searchValue, setSearchValue] = useState<string>(debouncedInput)
 
-  // TODO: on enter
   useEffect(() => {
     setInput(routerQueryValue)
   }, [routerQueryValue])
@@ -95,7 +95,7 @@ const SearchPageContentNew = () => {
             defaultSelectedKeys={new Set([defaultOption.key])}
             onSelectionChange={setSelectedOptionKey}
           >
-            <TagList className="mt-3 flex flex-wrap gap-2 sm:mt-4 lg:justify-start">
+            <TagList className="mt-3 flex flex-wrap gap-2 md:mt-4 lg:justify-start">
               {searchOptions.map((option) => {
                 return (
                   <Chip
@@ -110,9 +110,6 @@ const SearchPageContentNew = () => {
               })}
             </TagList>
           </TagGroup>
-          {/* <p className="mt-8">
-            {t('SearchPage.showingResults', { resultsCount: 'XXXX (value hardcoded)' })}
-          </p> */}
         </div>
         {[...selectedOptionKey][0] === defaultOption.key ? (
           <div className="flex flex-col gap-8">
