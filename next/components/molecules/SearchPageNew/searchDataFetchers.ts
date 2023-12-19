@@ -106,7 +106,7 @@ const getSearchBlogPostsData = (filters: BlogPostsFilters): SearchResponse => {
       },
     ) ?? []
 
-  return { searchResultsHits: formattedData, estimatedTotalHits: data?.estimatedTotalHits ?? 0 }
+  return { hits: formattedData, estimatedTotalHits: data?.estimatedTotalHits ?? 0 }
 }
 
 const getSearchInbaArticlesData = (filters: InbaArticlesFilters): SearchResponse => {
@@ -132,5 +132,5 @@ const getSearchInbaArticlesData = (filters: InbaArticlesFilters): SearchResponse
       }
     }) ?? []
 
-  return { searchResultsHits: formattedData, estimatedTotalHits: data?.estimatedTotalHits ?? 0 }
+  return { hits: formattedData, estimatedTotalHits: data?.estimatedTotalHits ?? 0 }
 }
