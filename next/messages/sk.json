@@ -19,11 +19,7 @@
   "searchTheSite": "Vyhľadávanie na stránke",
   "search": "Hľadať",
   "searching": "Vyhľadávanie",
-  "article": "Článok",
   "articles": "Články",
-  "inbaArticle": "in.ba článok",
-  "inbaArticles": "in.ba články",
-  "page": "Stránka",
   "pages": "Stránky",
   "documents": "Dokumenty",
   "files": "Súbory",
@@ -262,6 +258,12 @@
     "showingResults": "Zobrazujeme {resultsCount} výsledkov",
     "allResults": "Všetky výsledky",
     "moreResults": "Viac výsledkov",
-    "noResults": "Žiadne výsledky"
+    "noResults": "Žiadne výsledky",
+    "article": "Článok",
+    "articles": "Články",
+    "inbaArticle": "in.ba článok",
+    "inbaArticles": "in.ba články",
+    "page": "Stránka",
+    "pages": "Stránky"
   }
 }

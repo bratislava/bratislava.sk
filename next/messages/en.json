@@ -19,11 +19,7 @@
   "searchTheSite": "Search the site",
   "search": "Search",
   "searching": "Search",
-  "article": "Article",
   "articles": "Articles",
-  "inbaArticle": "in.ba article",
-  "inbaArticles": "in.ba articles",
-  "page": "Page",
   "pages": "Pages",
   "documents": "Documents",
   "files": "Files",
@@ -262,6 +258,12 @@
     "showingResults": "Showing {resultsCount} results",
     "allResults": "All results",
     "moreResults": "More results",
-    "noResults": "No results found"
+    "noResults": "No results found",
+    "article": "Article",
+    "articles": "Articles",
+    "inbaArticle": "in.ba article",
+    "inbaArticles": "in.ba articles",
+    "page": "Page",
+    "pages": "Pages"
   }
 }

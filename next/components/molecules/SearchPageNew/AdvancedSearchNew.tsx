@@ -2,6 +2,7 @@ import cx from 'classnames'
 import { useTranslations } from 'next-intl'
 import { Dispatch, SetStateAction } from 'react'
 import { Input, SearchField, Text } from 'react-aria-components'
+import { twMerge } from 'tailwind-merge'
 
 export interface AdvancedSearchProps {
   className?: string
@@ -18,7 +19,7 @@ export interface SearchOptionProps {
 }
 
 // TODO use BasicSearch instead of duplicating
-export const AdvancedSearchNew = ({
+const AdvancedSearchNew = ({
   className,
   placeholder,
   title,
@@ -53,5 +54,7 @@ export const AdvancedSearchNew = ({
     </div>
   )
 
-  return <div className={cx('flex w-full flex-col', className)}>{newSearch}</div>
+  return <div className={twMerge('flex w-full flex-col', className)}>{newSearch}</div>
 }
+
+export default AdvancedSearchNew

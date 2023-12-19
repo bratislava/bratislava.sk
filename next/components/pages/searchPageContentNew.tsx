@@ -1,6 +1,6 @@
 import Chip from '@components/forms/simple-components/Chip'
-import { AdvancedSearchNew } from '@components/molecules/SearchPageNew/AdvancedSearchNew'
-import { GeneralSearchResults } from '@components/molecules/SearchPageNew/GeneralSearchResults'
+import AdvancedSearchNew from '@components/molecules/SearchPageNew/AdvancedSearchNew'
+import GeneralSearchResults from '@components/molecules/SearchPageNew/GeneralSearchResults'
 import { SearchFilters } from '@components/molecules/SearchPageNew/searchDataFetchers'
 import { SectionContainer } from '@components/ui/SectionContainer/SectionContainer'
 import { useRouter } from 'next/router'
@@ -29,9 +29,9 @@ const SearchPageContentNew = () => {
     withDefault(StringParam, asPath.split('keyword=')[1] ?? ''),
     // withDefault(StringParam, ''),
   )
-  const [input, setInput] = useState<string>(routerQueryValue)
-  const debouncedInput = useDebounce<string>(input, 300)
-  const [searchValue, setSearchValue] = useState<string>(debouncedInput)
+  const [input, setInput] = useState(routerQueryValue)
+  const debouncedInput = useDebounce(input, 300)
+  const [searchValue, setSearchValue] = useState(debouncedInput)
 
   useEffect(() => {
     setInput(routerQueryValue)
@@ -44,9 +44,17 @@ const SearchPageContentNew = () => {
 
   const searchOptions: SearchOption[] = [
     { key: 'allResults', displayName: t('SearchPage.allResults') },
-    { key: 'pages', displayName: t('page'), displayNamePlural: t('pages') },
-    { key: 'articles', displayName: t('article'), displayNamePlural: t('articles') },
-    { key: 'inbaArticles', displayName: t('inbaArticle'), displayNamePlural: t('inbaArticles') },
+    { key: 'pages', displayName: t('SearchPage.page'), displayNamePlural: t('SearchPage.pages') },
+    {
+      key: 'articles',
+      displayName: t('SearchPage.article'),
+      displayNamePlural: t('SearchPage.articles'),
+    },
+    {
+      key: 'inbaArticles',
+      displayName: t('SearchPage.inbaArticle'),
+      displayNamePlural: t('SearchPage.inbaArticles'),
+    },
     // { key: 'users', displayName: t('organisationalStructure') },
   ]
   const defaultOption = searchOptions[0]
@@ -125,21 +133,17 @@ const SearchPageContentNew = () => {
               )
             })}
           </div>
-        ) : null}
-        {
-          // eslint-disable-next-line unicorn/no-negated-condition
-          [...selectedOptionKey][0] !== defaultOption.key ? (
-            <GeneralSearchResults
-              variant="specificResults"
-              searchOption={getSearchOptionByKey(
-                [...selectedOptionKey][0]?.toString() ?? defaultOption.key,
-              )}
-              filters={searchFilters}
-              handleShowMore={setSelectedOptionKey}
-              handlePageChange={setCurrentPage}
-            />
-          ) : null
-        }
+        ) : (
+          <GeneralSearchResults
+            variant="specificResults"
+            searchOption={getSearchOptionByKey(
+              [...selectedOptionKey][0]?.toString() ?? defaultOption.key,
+            )}
+            filters={searchFilters}
+            handleShowMore={setSelectedOptionKey}
+            handlePageChange={setCurrentPage}
+          />
+        )}
       </div>
     </SectionContainer>
   )

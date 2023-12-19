@@ -1,10 +1,6 @@
 import Pagination from '@bratislava/ui-bratislava/Pagination/Pagination'
-import { SearchCardComposed } from '@components/molecules/SearchPageNew/SearchCardComposed'
-import {
-  getDataBySearchOptionKey,
-  SearchFilters,
-  SearchResult,
-} from '@components/molecules/SearchPageNew/searchDataFetchers'
+import SearchCardComposed from '@components/molecules/SearchPageNew/SearchCardComposed'
+import { getDataBySearchOptionKey } from '@components/molecules/SearchPageNew/searchDataFetchers'
 import { SearchResultsHeader } from '@components/molecules/SearchPageNew/SearchResultsHeader'
 import { SearchOption } from '@components/pages/searchPageContentNew'
 import { isDefined } from '@utils/isDefined'
@@ -18,7 +14,7 @@ type GeneralSearchResultsProps = {
   handlePageChange?: any
 }
 
-export const GeneralSearchResults = ({
+const GeneralSearchResults = ({
   filters,
   handleShowMore,
   handlePageChange,
@@ -36,47 +32,49 @@ export const GeneralSearchResults = ({
     estimatedTotalHits <= DEFAULT_PAGE_SIZE && estimatedTotalHits <= filters.pageSize
 
   return (
-    <div>
-      {variant === 'allResults' && (
-        <SearchResultsHeader
-          title={`${searchOption?.displayNamePlural}` ?? ''}
-          handleShowMore={() => {
-            handleShowMore(new Set([searchOption.key]))
-          }}
-        />
-      )}
-      {searchResultsHits?.length > 0 ? (
-        <div className="flex flex-col gap-y-2">
-          {variant === 'allResults'
-            ? searchResultsHits.slice(0, DEFAULT_PAGE_SIZE).map((item, index) => {
-                return (
-                  <SearchCardComposed
-                    data={{ ...item }}
-                    tagText={searchOption.displayName}
-                    variant="withPicture"
-                    key={`allResults-item${item.slug}-${index}`}
-                  />
-                )
-              })
-            : null}
-          {variant === 'specificResults'
-            ? searchResultsHits.map((item, index) => {
-                return (
-                  <SearchCardComposed
-                    data={{ ...item }}
-                    tagText={searchOption.displayName}
-                    variant="withPicture"
-                    key={`specificResults-item${item.slug}-${index}`}
-                  />
-                )
-              })
-            : null}
-        </div>
-      ) : (
-        <p>{t('SearchPage.noResults')}</p>
-      )}
+    <div className="flex flex-col gap-y-8 border border-warning-300">
+      <div className="flex flex-col gap-y-4">
+        {variant === 'allResults' && (
+          <SearchResultsHeader
+            title={`${searchOption?.displayNamePlural}` ?? ''}
+            handleShowMore={() => {
+              handleShowMore(new Set([searchOption.key]))
+            }}
+          />
+        )}
+        {searchResultsHits?.length > 0 ? (
+          <div className="flex flex-col gap-y-2">
+            {variant === 'allResults'
+              ? searchResultsHits.slice(0, DEFAULT_PAGE_SIZE).map((item, index) => {
+                  return (
+                    <SearchCardComposed
+                      data={{ ...item }}
+                      tagText={searchOption.displayName}
+                      variant="withPicture"
+                      key={`allResults-item${item.slug}-${index}`}
+                    />
+                  )
+                })
+              : null}
+            {variant === 'specificResults'
+              ? searchResultsHits.map((item, index) => {
+                  return (
+                    <SearchCardComposed
+                      data={{ ...item }}
+                      tagText={searchOption.displayName}
+                      variant="withPicture"
+                      key={`specificResults-item${item.slug}-${index}`}
+                    />
+                  )
+                })
+              : null}
+          </div>
+        ) : (
+          <p>{t('SearchPage.noResults')}</p>
+        )}
+      </div>
       {variant === 'specificResults' && !isPaginationNeeded ? (
-        <div className="mt-8">
+        <div>
           <Pagination
             currentPage={filters.page}
             totalCount={Math.ceil(estimatedTotalHits / filters.pageSize)}
@@ -91,3 +89,5 @@ export const GeneralSearchResults = ({
     </div>
   )
 }
+
+export default GeneralSearchResults

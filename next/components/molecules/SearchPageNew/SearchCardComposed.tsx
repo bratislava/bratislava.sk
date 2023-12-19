@@ -29,11 +29,7 @@ type SearchCardComposedProps = {
   variant: 'default' | 'withPicture'
 }
 
-export const SearchCardComposed = ({
-  data,
-  variant = 'default',
-  tagText,
-}: SearchCardComposedProps) => {
+const SearchCardComposed = ({ data, variant = 'default', tagText }: SearchCardComposedProps) => {
   return (
     <>
       {variant === 'default' && (
@@ -183,3 +179,5 @@ const findIconByPageColor = (pageColor: Enum_Pagecategory_Color) => {
 
   return icons[pageColor] ?? icons.red
 }
+
+export default SearchCardComposed
