@@ -3,6 +3,7 @@ import AdvancedSearchNew from '@components/molecules/SearchPageNew/AdvancedSearc
 import GeneralSearchResults from '@components/molecules/SearchPageNew/GeneralSearchResults'
 import { SearchFilters } from '@components/molecules/SearchPageNew/searchDataFetchers'
 import { SectionContainer } from '@components/ui/SectionContainer/SectionContainer'
+import { ColorCategory, getCategoryColorLocalStyle } from '@utils/colors'
 import { useRouter } from 'next/router'
 import { useTranslations } from 'next-intl'
 import React, { useEffect, useLayoutEffect, useMemo, useState } from 'react'
@@ -21,15 +22,8 @@ export type SearchOption = {
 const SearchPageContentNew = () => {
   const t = useTranslations()
 
-  const { asPath } = useRouter()
-
-  const [routerQueryValue, setRouterQueryValue] = useQueryParam(
-    'keyword',
-    // FIXME: be better
-    withDefault(StringParam, asPath.split('keyword=')[1] ?? ''),
-    // withDefault(StringParam, ''),
-  )
-  const [input, setInput] = useState(routerQueryValue)
+  const [routerQueryValue] = useQueryParam('keyword', withDefault(StringParam, ''))
+  const [input, setInput] = useState('')
   const debouncedInput = useDebounce(input, 300)
   const [searchValue, setSearchValue] = useState(debouncedInput)
 
@@ -39,7 +33,6 @@ const SearchPageContentNew = () => {
 
   useEffect(() => {
     setSearchValue(debouncedInput)
-    setRouterQueryValue(debouncedInput)
   }, [debouncedInput])
 
   const searchOptions: SearchOption[] = [
@@ -107,10 +100,10 @@ const SearchPageContentNew = () => {
               {searchOptions.map((option) => {
                 return (
                   <Chip
-                    className="selected:border-gray-700 selected:bg-gray-700 hover:selected:bg-gray-700"
                     variant="large"
                     key={option.key}
                     id={option.key}
+                    style={getCategoryColorLocalStyle({ category: 'gray' })}
                   >
                     {`${option.displayName} `}
                   </Chip>

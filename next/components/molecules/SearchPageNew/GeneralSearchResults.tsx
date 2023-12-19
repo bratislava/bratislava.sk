@@ -32,7 +32,7 @@ const GeneralSearchResults = ({
     estimatedTotalHits <= DEFAULT_PAGE_SIZE && estimatedTotalHits <= filters.pageSize
 
   return (
-    <div className="flex flex-col gap-y-8 border border-warning-300">
+    <div className="flex flex-col gap-y-8">
       <div className="flex flex-col gap-y-4">
         {variant === 'allResults' && (
           <SearchResultsHeader
