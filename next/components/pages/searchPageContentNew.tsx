@@ -3,15 +3,18 @@ import AdvancedSearchNew from '@components/molecules/SearchPageNew/AdvancedSearc
 import GeneralSearchResults from '@components/molecules/SearchPageNew/GeneralSearchResults'
 import { SearchFilters } from '@components/molecules/SearchPageNew/searchDataFetchers'
 import { SectionContainer } from '@components/ui/SectionContainer/SectionContainer'
-import { ColorCategory, getCategoryColorLocalStyle } from '@utils/colors'
-import { useRouter } from 'next/router'
+import { getCategoryColorLocalStyle } from '@utils/colors'
 import { useTranslations } from 'next-intl'
 import React, { useEffect, useLayoutEffect, useMemo, useState } from 'react'
 import { Selection, TagGroup, TagList } from 'react-aria-components'
 import { StringParam, useQueryParam, withDefault } from 'use-query-params'
 import { useDebounce } from 'usehooks-ts'
 
-// React-aria-components library recommends Selection as a type for selection state, which should behave like a Set object. However, common set methods such as .size and .values don't work on Selection, so as a workaround we use [...selectedOptionKey][0] to transform the Selection to an array to het its size and values
+/*
+ * React-aria-components library recommends Selection as a type for selection state, which should behave like a Set object.
+ * However, common set methods such as .size and .values don't work on Selection,
+ * so as a workaround we use [...selectedOptionKey] to transform the Selection to an array to get its size and values.
+ */
 
 export type SearchOption = {
   key: 'allResults' | 'pages' | 'articles' | 'inbaArticles'
@@ -52,20 +55,21 @@ const SearchPageContentNew = () => {
   ]
   const defaultOption = searchOptions[0]
 
-  const getSearchOptionByKey = (key: string): SearchOption => {
+  const getSearchOptionByKeyValue = (key: string): SearchOption => {
     return searchOptions.find((option) => option.key === key) ?? defaultOption
   }
 
   const [selectedOptionKey, setSelectedOptionKey] = useState<Selection>(
     new Set([defaultOption.key]),
   )
-  const [currentPage, setCurrentPage] = useState(1)
 
   useLayoutEffect(() => {
     if ([...selectedOptionKey].length === 0) {
       setSelectedOptionKey(new Set([defaultOption.key]))
     }
   }, [selectedOptionKey])
+
+  const [currentPage, setCurrentPage] = useState(1)
 
   useLayoutEffect(() => {
     setCurrentPage(1)
@@ -75,7 +79,7 @@ const SearchPageContentNew = () => {
     search: searchValue,
     page: currentPage,
     pageSize: 24,
-    // TODO tagIds need to be here for now, because fetchers filter by tagIds
+    // TODO tagIds need to be here for now, because BlogPost and InbaArticle fetchers filter by tagIds
     tagIds: [],
   }
 
@@ -129,7 +133,7 @@ const SearchPageContentNew = () => {
         ) : (
           <GeneralSearchResults
             variant="specificResults"
-            searchOption={getSearchOptionByKey(
+            searchOption={getSearchOptionByKeyValue(
               [...selectedOptionKey][0]?.toString() ?? defaultOption.key,
             )}
             filters={searchFilters}

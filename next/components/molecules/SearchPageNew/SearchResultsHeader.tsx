@@ -4,7 +4,7 @@ import { useTranslations } from 'next-intl'
 
 type SearchResultsHeaderProps = {
   title: string
-  handleShowMore: any
+  handleShowMore: () => void
 }
 
 export const SearchResultsHeader = ({ title, handleShowMore }: SearchResultsHeaderProps) => {

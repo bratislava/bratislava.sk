@@ -11,7 +11,7 @@ import PageRedIconSmall from '@assets/images/page-red-icon-small.svg'
 import PageYellowIcon from '@assets/images/page-yellow-icon.svg'
 import PageYellowIconSmall from '@assets/images/page-yellow-icon-small.svg'
 import { ChevronRightIcon } from '@assets/ui-icons'
-import { Enum_Pagecategory_Color } from '@backend/graphql'
+import { Enum_Page_Pagecolor, Enum_Pagecategory_Color } from '@backend/graphql'
 import ImagePlaceholder from '@components/atoms/ImagePlaceholder'
 import MLink from '@components/forms/simple-components/MLink'
 import Tag from '@components/forms/simple-components/Tag'
@@ -20,7 +20,7 @@ import { getCategoryColorLocalStyle } from '@utils/colors'
 import { generateImageSizes } from '@utils/generateImageSizes'
 import { isDefined } from '@utils/isDefined'
 import Image from 'next/image'
-import React, { Suspense } from 'react'
+import React, { ReactNode } from 'react'
 import { twMerge } from 'tailwind-merge'
 
 type SearchCardComposedProps = {
@@ -74,9 +74,15 @@ const SearchCardComposed = ({ data, variant = 'default', tagText }: SearchCardCo
   )
 }
 
-SearchCardComposed.ImageFromPageColor = function ({ pageColor, className }: any) {
-  const colorStyle = getCategoryColorLocalStyle({ color: pageColor })
-  const { default: PageIcon } = findIconByPageColor(pageColor)
+SearchCardComposed.ImageFromPageColor = function ({
+  pageColor,
+  className,
+}: {
+  pageColor: Enum_Page_Pagecolor | Enum_Pagecategory_Color
+  className?: string
+}) {
+  const colorStyle = getCategoryColorLocalStyle({ color: pageColor as Enum_Pagecategory_Color })
+  const { default: PageIcon } = findIconByPageColor(pageColor as Enum_Pagecategory_Color)
 
   return (
     <div
@@ -91,32 +97,43 @@ SearchCardComposed.ImageFromPageColor = function ({ pageColor, className }: any)
   )
 }
 
-SearchCardComposed.ImageFromURL = function ({ imgURL, className }: any) {
-  if (true)
-    return (
-      <div
-        className={twMerge(
-          'relative hidden w-[150px] shrink-0 items-center justify-center overflow-hidden bg-category-200 sm:flex',
-          className,
-        )}
-      >
-        <Image
-          src={imgURL}
-          alt=""
-          sizes={generateImageSizes({ default: '150px' })}
-          fill
-          className="h-full object-cover"
-        />
-        <ImagePlaceholder />
-      </div>
-    )
+SearchCardComposed.ImageFromURL = function ({
+  imgURL,
+  className,
+}: {
+  imgURL: string
+  className?: string
+}) {
+  return (
+    <div
+      className={twMerge(
+        'relative hidden w-[150px] shrink-0 items-center justify-center overflow-hidden bg-category-200 sm:flex',
+        className,
+      )}
+    >
+      <Image
+        src={imgURL}
+        alt=""
+        sizes={generateImageSizes({ default: '150px' })}
+        fill
+        className="h-full object-cover"
+      />
+      <ImagePlaceholder />
+    </div>
+  )
 }
 
-SearchCardComposed.InfoContainer = function ({ children, className }: any) {
+SearchCardComposed.InfoContainer = function ({
+  children,
+  className,
+}: {
+  children: React.PropsWithChildren<ReactNode>
+  className?: string
+}) {
   return <div className={twMerge('flex w-full flex-col justify-center', className)}>{children}</div>
 }
 
-SearchCardComposed.Title = function ({ title, className }: any) {
+SearchCardComposed.Title = function ({ title, className }: { title: string; className?: string }) {
   return (
     <div
       className={twMerge(
@@ -129,7 +146,7 @@ SearchCardComposed.Title = function ({ title, className }: any) {
   )
 }
 
-SearchCardComposed.Tag = function ({ text, className }: any) {
+SearchCardComposed.Tag = function ({ text, className }: { text: string; className?: string }) {
   return (
     <div className={twMerge('', className)}>
       <Tag text={text} size="small" />
@@ -137,8 +154,14 @@ SearchCardComposed.Tag = function ({ text, className }: any) {
   )
 }
 
-SearchCardComposed.Metadata = function ({ metadata, className }: any) {
-  const cleanedMetadata = metadata?.filter(isDefined).filter((item: any) => item !== '')
+SearchCardComposed.Metadata = function ({
+  metadata,
+  className,
+}: {
+  metadata: string[]
+  className?: string
+}) {
+  const cleanedMetadata = metadata?.filter(isDefined).filter((item: string) => item !== '')
   const metaDataRow = cleanedMetadata.map((item: string, index: number) => {
     return (
       <>
@@ -159,7 +182,7 @@ SearchCardComposed.Metadata = function ({ metadata, className }: any) {
   )
 }
 
-SearchCardComposed.Button = function ({ className }: any) {
+SearchCardComposed.Button = function ({ className }: { className?: string }) {
   return (
     <div className={twMerge('my-auto self-end text-main-700', className)}>
       <ChevronRightIcon />

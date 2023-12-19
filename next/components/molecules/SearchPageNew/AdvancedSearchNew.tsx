@@ -18,7 +18,6 @@ export interface SearchOptionProps {
   value: string
 }
 
-// TODO use BasicSearch instead of duplicating
 const AdvancedSearchNew = ({
   className,
   placeholder,

@@ -1,17 +1,20 @@
 import Pagination from '@bratislava/ui-bratislava/Pagination/Pagination'
 import SearchCardComposed from '@components/molecules/SearchPageNew/SearchCardComposed'
-import { getDataBySearchOptionKey } from '@components/molecules/SearchPageNew/searchDataFetchers'
+import {
+  getDataBySearchOptionKey,
+  SearchFilters,
+} from '@components/molecules/SearchPageNew/searchDataFetchers'
 import { SearchResultsHeader } from '@components/molecules/SearchPageNew/SearchResultsHeader'
 import { SearchOption } from '@components/pages/searchPageContentNew'
 import { isDefined } from '@utils/isDefined'
 import { useTranslations } from 'next-intl'
 
 type GeneralSearchResultsProps = {
-  filters: any
+  filters: SearchFilters
   variant: 'allResults' | 'specificResults'
   searchOption: SearchOption
-  handleShowMore?: any
-  handlePageChange?: any
+  handleShowMore?: React.Dispatch<React.SetStateAction<Set<SearchOption['key']>>>
+  handlePageChange?: React.Dispatch<React.SetStateAction<number>>
 }
 
 const GeneralSearchResults = ({

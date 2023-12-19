@@ -1,8 +1,4 @@
-import {
-  Enum_Page_Pagecolor,
-  Enum_Pagecategory_Color,
-  LatestBlogPostEntityFragment,
-} from '@backend/graphql'
+import { Enum_Page_Pagecolor, LatestBlogPostEntityFragment } from '@backend/graphql'
 import {
   blogPostsFetcher,
   BlogPostsFilters,
@@ -31,7 +27,7 @@ export type SearchResult = {
   slug: string | null | undefined
   metadata?: (string | null | undefined)[]
   coverImageURL?: string | null | undefined
-  pageColor?: Enum_Page_Pagecolor | Enum_Pagecategory_Color
+  pageColor?: Enum_Page_Pagecolor
 }
 
 export type SearchResponse = {
