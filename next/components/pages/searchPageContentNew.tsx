@@ -5,7 +5,7 @@ import { SearchFilters } from '@components/molecules/SearchPageNew/searchDataFet
 import { SectionContainer } from '@components/ui/SectionContainer/SectionContainer'
 import { getCategoryColorLocalStyle } from '@utils/colors'
 import { useTranslations } from 'next-intl'
-import React, { useEffect, useLayoutEffect, useMemo, useState } from 'react'
+import React, { useEffect, useLayoutEffect, useState } from 'react'
 import { Selection, TagGroup, TagList } from 'react-aria-components'
 import { StringParam, useQueryParam, withDefault } from 'use-query-params'
 import { useDebounce } from 'usehooks-ts'

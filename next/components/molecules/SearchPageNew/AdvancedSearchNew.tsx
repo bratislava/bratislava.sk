@@ -1,8 +1,7 @@
 import Button from '@components/forms/simple-components/Button'
-import cx from 'classnames'
 import { useTranslations } from 'next-intl'
-import { Dispatch, ReactNode, SetStateAction } from 'react'
-import { Button as AriaButton, Input, SearchField, Text } from 'react-aria-components'
+import { Dispatch, SetStateAction } from 'react'
+import { Input, SearchField, Text } from 'react-aria-components'
 import { twMerge } from 'tailwind-merge'
 
 import SearchIcon from '../../../assets/images/search-icon.svg'

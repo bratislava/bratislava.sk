@@ -1,4 +1,4 @@
-import { ArrowLeftIcon, ArrowRightIcon } from '@assets/ui-icons'
+import { ArrowRightIcon } from '@assets/ui-icons'
 import Button from '@components/forms/simple-components/Button'
 import { useTranslations } from 'next-intl'
 
