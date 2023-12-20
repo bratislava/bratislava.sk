@@ -1,3 +1,7 @@
+import {
+  getGinisOfficialBoardQueryKey,
+  ginisOfficialBoardFetcher,
+} from '@backend/ginis/fetchers/ginisOfficialBoard.fetcher'
 import { Enum_Page_Pagecolor, LatestBlogPostEntityFragment } from '@backend/graphql'
 import {
   blogPostsFetcher,
@@ -15,6 +19,10 @@ import {
   PagesFilters,
 } from '@backend/meili/fetchers/pagesFetcher'
 import { PageMeili } from '@backend/meili/types'
+import {
+  getMsGraphSearchQueryKey,
+  msGraphSearchFetcher,
+} from '@backend/ms-graph/fetchers/msGraphSearch.fetcher'
 import { SearchOption } from '@components/pages/searchPageContentNew'
 import { useQuery } from '@tanstack/react-query'
 import { formatDate } from '@utils/local-date'
@@ -24,7 +32,7 @@ export type SearchFilters = PagesFilters | BlogPostsFilters | InbaArticlesFilter
 
 export type SearchResult = {
   title: string | null | undefined
-  slug: string | null | undefined
+  slug?: string | null | undefined
   metadata?: (string | null | undefined)[]
   coverImageUrl?: string | null | undefined
   pageColor?: Enum_Page_Pagecolor
@@ -49,8 +57,15 @@ export const getDataBySearchOptionKey = (
     case 'inbaArticles':
       return getSearchInbaArticlesData(filters as InbaArticlesFilters)
 
+    case 'users':
+      // TODO type filters
+      return getSearchUsersData(filters as PagesFilters)
+
+    case 'officialBoard':
+      // TODO type filters
+      return getSearchOfficialBoardData(filters as PagesFilters)
+
     default:
-      console.error('Unknown search option key')
       return {
         searchResultsData: [],
         searchResultsCount: 0,
@@ -133,4 +148,43 @@ const getSearchInbaArticlesData = (filters: InbaArticlesFilters): SearchResponse
     }) ?? []
 
   return { searchResultsData: formattedData, searchResultsCount: data?.estimatedTotalHits ?? 0 }
+}
+
+const getSearchOfficialBoardData = (filters: PagesFilters): SearchResponse => {
+  const { data } = useQuery({
+    queryKey: getGinisOfficialBoardQueryKey(filters.search),
+    queryFn: () => ginisOfficialBoardFetcher(filters.search),
+    keepPreviousData: true,
+    select: (res) => res.data,
+  })
+
+  const formattedData =
+    data?.map((boardItem) => {
+      return {
+        title: boardItem.title,
+        metadata: [boardItem.createdAt],
+      } as SearchResult
+    }) ?? []
+
+  // TODO get better result count
+  return { searchResultsData: formattedData, searchResultsCount: 10 }
+}
+
+const getSearchUsersData = (filters: PagesFilters): SearchResponse => {
+  const { data } = useQuery({
+    queryKey: getMsGraphSearchQueryKey(filters.search),
+    queryFn: () => msGraphSearchFetcher(filters.search),
+    keepPreviousData: true,
+  })
+
+  const formattedData =
+    data?.data.map((user) => {
+      return {
+        title: user.displayName,
+        metadata: [user.jobTitle],
+      } as SearchResult
+    }) ?? []
+
+  // TODO get better result count
+  return { searchResultsData: formattedData, searchResultsCount: 10 }
 }

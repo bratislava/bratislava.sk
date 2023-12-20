@@ -17,9 +17,9 @@ import { useDebounce } from 'usehooks-ts'
  */
 
 export type SearchOption = {
-  id: 'allResults' | 'pages' | 'articles' | 'inbaArticles'
-  displayName: string
-  displayNamePlural?: string
+  id: 'allResults' | 'pages' | 'articles' | 'inbaArticles' | 'users' | 'officialBoard'
+  displayName?: string
+  displayNamePlural: string
 }
 
 const SearchPageContentNew = () => {
@@ -40,7 +40,7 @@ const SearchPageContentNew = () => {
 
   const defaultSearchOption: SearchOption = {
     id: 'allResults',
-    displayName: t('SearchPage.allResults'),
+    displayNamePlural: t('SearchPage.allResults'),
   }
   const searchOptions: SearchOption[] = [
     { id: 'pages', displayName: t('SearchPage.page'), displayNamePlural: t('SearchPage.pages') },
@@ -53,6 +53,16 @@ const SearchPageContentNew = () => {
       id: 'inbaArticles',
       displayName: t('SearchPage.inbaArticle'),
       displayNamePlural: t('SearchPage.inbaArticles'),
+    },
+    {
+      id: 'users',
+      displayName: t('SearchPage.contact'),
+      displayNamePlural: t('SearchPage.contacts'),
+    },
+    {
+      id: 'officialBoard',
+      displayName: t('SearchPage.document'),
+      displayNamePlural: t('officialBoard'),
     },
   ]
 
@@ -111,7 +121,7 @@ const SearchPageContentNew = () => {
                     id={option.id}
                     style={getCategoryColorLocalStyle({ category: 'gray' })}
                   >
-                    {`${option.displayName}`}
+                    {`${option.displayNamePlural}`}
                   </Chip>
                 )
               })}
