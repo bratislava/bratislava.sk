@@ -50,9 +50,11 @@ export const getDataBySearchOptionKey = (
       return getSearchInbaArticlesData(filters as InbaArticlesFilters)
 
     default:
-      return getSearchInbaArticlesData(filters as InbaArticlesFilters)
-    // TODO: fix fix fix
-    // return { hits: [], estimatedTotalHits: 0 }
+      console.error('Unknown search option key')
+      return {
+        searchResultsData: [],
+        searchResultsCount: 0,
+      }
   }
 }
 

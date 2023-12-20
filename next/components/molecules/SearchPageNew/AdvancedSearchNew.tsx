@@ -45,7 +45,6 @@ const AdvancedSearchNew = ({
           defaultValue={placeholder}
           value={input}
           name="Searchinput"
-          // onChange={setInput}
           onChange={(val) => {
             return setInput(val)
           }}

@@ -38,8 +38,11 @@ const SearchPageContentNew = () => {
     setSearchValue(debouncedInput)
   }, [debouncedInput])
 
+  const defaultSearchOption: SearchOption = {
+    id: 'allResults',
+    displayName: t('SearchPage.allResults'),
+  }
   const searchOptions: SearchOption[] = [
-    { id: 'allResults', displayName: t('SearchPage.allResults') },
     { id: 'pages', displayName: t('SearchPage.page'), displayNamePlural: t('SearchPage.pages') },
     {
       id: 'articles',
@@ -51,20 +54,20 @@ const SearchPageContentNew = () => {
       displayName: t('SearchPage.inbaArticle'),
       displayNamePlural: t('SearchPage.inbaArticles'),
     },
-    // { id: 'users', displayName: t('organisationalStructure') },
   ]
-  const defaultOption = searchOptions[0]
 
   const getSearchOptionByKeyValue = (key: string) => {
-    return searchOptions.find((option) => option.id === key) ?? defaultOption
+    return searchOptions.find((option) => option.id === key) ?? defaultSearchOption
   }
 
-  const [selectedOptionKey, setSelectedOptionKey] = useState<Selection>(new Set([defaultOption.id]))
+  const [selectedOptionKey, setSelectedOptionKey] = useState<Selection>(
+    new Set([defaultSearchOption.id]),
+  )
 
   // When clicking on an already selected option, we want to set the default option as selected. We use useLayoutEffect to avoid page flickering.
   useLayoutEffect(() => {
     if ([...selectedOptionKey].length === 0) {
-      setSelectedOptionKey(new Set([defaultOption.id]))
+      setSelectedOptionKey(new Set([defaultSearchOption.id]))
     }
   }, [selectedOptionKey])
 
@@ -96,11 +99,11 @@ const SearchPageContentNew = () => {
           <TagGroup
             selectionMode="single"
             selectedKeys={selectedOptionKey}
-            defaultSelectedKeys={new Set([defaultOption.id])}
+            defaultSelectedKeys={new Set([defaultSearchOption.id])}
             onSelectionChange={setSelectedOptionKey}
           >
             <TagList className="mt-3 flex flex-wrap gap-2 md:mt-4 lg:justify-start">
-              {searchOptions.map((option) => {
+              {[defaultSearchOption, ...searchOptions].map((option) => {
                 return (
                   <Chip
                     variant="large"
@@ -108,23 +111,23 @@ const SearchPageContentNew = () => {
                     id={option.id}
                     style={getCategoryColorLocalStyle({ category: 'gray' })}
                   >
-                    {`${option.displayName} `}
+                    {`${option.displayName}`}
                   </Chip>
                 )
               })}
             </TagList>
           </TagGroup>
         </div>
-        {[...selectedOptionKey][0] === defaultOption.id ? (
+        {[...selectedOptionKey][0] === defaultSearchOption.id ? (
           <div className="flex flex-col gap-8">
-            {searchOptions.slice(1).map((option) => {
+            {searchOptions.map((option) => {
               return (
                 <GeneralSearchResults
                   variant="allResults"
                   searchOption={option}
                   filters={searchFilters}
                   handleShowMore={setSelectedOptionKey}
-                  key={option.id}
+                  key={`allResults-${option.id}`}
                 />
               )
             })}
@@ -133,11 +136,12 @@ const SearchPageContentNew = () => {
           <GeneralSearchResults
             variant="specificResults"
             searchOption={getSearchOptionByKeyValue(
-              [...selectedOptionKey][0]?.toString() ?? defaultOption.id,
+              [...selectedOptionKey][0]?.toString() ?? defaultSearchOption.id,
             )}
             filters={searchFilters}
             handleShowMore={setSelectedOptionKey}
             handlePageChange={setCurrentPage}
+            key={`specificResults-${[...selectedOptionKey][0]}`}
           />
         )}
       </div>

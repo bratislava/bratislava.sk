@@ -162,14 +162,15 @@ SearchCardComposed.Metadata = function ({
   className?: string
 }) {
   const cleanedMetadata = metadata?.filter(isDefined).filter((item: string) => item !== '')
-  const metaDataRow = cleanedMetadata.map((item: string, index: number) => {
-    return (
-      <>
-        {index > 0 && <p className="hidden sm:block">•</p>}
-        <p className="max-sm:first-of-type:font-medium">{item}</p>
-      </>
-    )
-  })
+  const metaDataRow =
+    cleanedMetadata?.map((item: string, index: number) => {
+      return (
+        <>
+          {index > 0 && <p className="max-sm:hidden">•</p>}
+          <p className="max-sm:first-of-type:font-medium">{item}</p>
+        </>
+      )
+    }) ?? null
   return (
     <div
       className={twMerge(
