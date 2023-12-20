@@ -25,7 +25,7 @@ const SearchCardComposed = ({ data, variant = 'default', tagText }: SearchCardCo
         <MLink
           className="group flex flex-row overflow-hidden"
           // TODO fix href to accomodate cards with no slug
-          href={isDefined(data.slug) ? `/../${data.slug}` : '#'}
+          href={isDefined(data.slug) ? `${data.slug}` : '#'}
         >
           <div className="flex w-full flex-row gap-6 px-6 py-4">
             <SearchCardComposed.InfoContainer className="gap-1.5">

@@ -83,14 +83,14 @@ const getSearchPagesData = (filters: PagesFilters): SearchResponse => {
     keepPreviousData: true,
   })
 
-  const formattedData =
+  const formattedData: SearchResult[] =
     data?.hits.map((page: PageMeili) => {
       return {
         title: page.title,
         slug: page.slug,
         metadata: [page.pageCategory?.title, formatDate(page.publishedAt)],
         pageColor: page.pageColor,
-      } as SearchResult
+      }
     }) ?? []
 
   return { searchResultsData: formattedData, searchResultsCount: data?.estimatedTotalHits ?? 0 }
@@ -106,7 +106,7 @@ const getSearchBlogPostsData = (filters: BlogPostsFilters): SearchResponse => {
     keepPreviousData: true,
   })
 
-  const formattedData =
+  const formattedData: SearchResult[] =
     data?.hits?.map(
       (blogPostData: Pick<LatestBlogPostEntityFragment, 'attributes'>): SearchResult => {
         return {
@@ -134,11 +134,11 @@ const getSearchInbaArticlesData = (filters: InbaArticlesFilters): SearchResponse
     keepPreviousData: true,
   })
 
-  const formattedData =
+  const formattedData: SearchResult[] =
     data?.hits?.map((inbaArticle): SearchResult => {
       return {
         title: inbaArticle.attributes.title,
-        slug: `inba/text/${inbaArticle.attributes.title}`,
+        slug: `inba/text/${inbaArticle.attributes.slug}`,
         metadata: [
           inbaArticle.attributes?.inbaTag?.data?.attributes?.title,
           formatDate(inbaArticle.attributes.publishedAt),
@@ -158,16 +158,16 @@ const getSearchOfficialBoardData = (filters: PagesFilters): SearchResponse => {
     select: (res) => res.data,
   })
 
-  const formattedData =
+  const formattedData: SearchResult[] =
     data?.map((boardItem) => {
       return {
         title: boardItem.title,
         metadata: [boardItem.createdAt],
-      } as SearchResult
+      }
     }) ?? []
 
   // TODO get better result count
-  return { searchResultsData: formattedData, searchResultsCount: 10 }
+  return { searchResultsData: formattedData, searchResultsCount: formattedData.length }
 }
 
 const getSearchUsersData = (filters: PagesFilters): SearchResponse => {
@@ -177,14 +177,14 @@ const getSearchUsersData = (filters: PagesFilters): SearchResponse => {
     keepPreviousData: true,
   })
 
-  const formattedData =
+  const formattedData: SearchResult[] =
     data?.data.map((user) => {
       return {
         title: user.displayName,
         metadata: [user.jobTitle],
-      } as SearchResult
+      }
     }) ?? []
 
   // TODO get better result count
-  return { searchResultsData: formattedData, searchResultsCount: 10 }
+  return { searchResultsData: formattedData, searchResultsCount: formattedData.length }
 }
