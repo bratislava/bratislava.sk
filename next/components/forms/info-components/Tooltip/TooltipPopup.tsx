@@ -18,29 +18,34 @@ type TooltipBase = {
     | 'left-bottom'
 }
 
+const BOTTOM_RIGHT = 'bottom-right'
+const BOTTOM_LEFT = 'bottom-left'
+const RIGHT_BOTTOM = 'right-bottom'
+const LEFT_BOTTOM = 'left-bottom'
+
 const TooltipPopup = ({ arrow = true, className, text, position = 'top-left' }: TooltipBase) => {
   const tooltipPopupStyle = cx('absolute z-20 w-fit', {
     'bottom-8 -left-3.5 sm:bottom-9 sm:-left-3': position === 'top-right',
     'bottom-8 -right-3.5 sm:bottom-9 sm:-right-3': position === 'top-left',
-    'top-8 -left-3.5 sm:top-9 sm:-left-3': position === 'bottom-right',
-    'top-8 -right-3.5 sm:top-9 sm:-right-3': position === 'bottom-left',
+    'top-8 -left-3.5 sm:top-9 sm:-left-3': position === BOTTOM_RIGHT,
+    'top-8 -right-3.5 sm:top-9 sm:-right-3': position === BOTTOM_LEFT,
 
     'left-8 -top-3.5 sm:left-9 sm:-top-3': position === 'right-top',
-    'left-8 -bottom-3.5 sm:left-9 sm:-bottom-3': position === 'right-bottom',
+    'left-8 -bottom-3.5 sm:left-9 sm:-bottom-3': position === RIGHT_BOTTOM,
     'right-8 -top-3.5 sm:right-9 sm:-top-3': position === 'left-top',
-    'right-8 -bottom-3.5 sm:right-9 sm:-bottom-3': position === 'left-bottom',
+    'right-8 -bottom-3.5 sm:right-9 sm:-bottom-3': position === LEFT_BOTTOM,
   })
 
   const tooltipArrowStyle = cx('absolute', {
     'left-4 w-4 h-2': position === 'top-right',
     'right-4 w-4 h-2': position === 'top-left',
-    'left-4 top-[-7px] w-4 h-2': position === 'bottom-right',
-    'right-4 top-[-7px] w-4 h-2': position === 'bottom-left',
+    'left-4 top-[-7px] w-4 h-2': position === BOTTOM_RIGHT,
+    'right-4 top-[-7px] w-4 h-2': position === BOTTOM_LEFT,
 
     '-left-[7px] top-4 w-2 h-4': position === 'right-top',
-    '-left-[7px] bottom-4 w-2 h-4': position === 'right-bottom',
+    '-left-[7px] bottom-4 w-2 h-4': position === RIGHT_BOTTOM,
     '-right-[7px] top-4 w-2 h-4': position === 'left-top',
-    '-right-[7px] bottom-4 w-2 h-4': position === 'left-bottom',
+    '-right-[7px] bottom-4 w-2 h-4': position === LEFT_BOTTOM,
   })
 
   return (
@@ -60,23 +65,23 @@ const TooltipPopup = ({ arrow = true, className, text, position = 'top-left' }: 
         <span className={tooltipArrowStyle}>
           {(position === 'top-left' ||
             position === 'top-right' ||
-            position === 'bottom-left' ||
-            position === 'bottom-right') && (
+            position === BOTTOM_LEFT ||
+            position === BOTTOM_RIGHT) && (
             <VerticalArrowIcon
               className={cx({
                 'rotate-180': position === 'top-right' || position === 'top-left',
-                'rotate-0': position === 'bottom-right' || position === 'bottom-left',
+                'rotate-0': position === BOTTOM_RIGHT || position === BOTTOM_LEFT,
               })}
             />
           )}
           {(position === 'right-top' ||
-            position === 'right-bottom' ||
+            position === RIGHT_BOTTOM ||
             position === 'left-top' ||
-            position === 'left-bottom') && (
+            position === LEFT_BOTTOM) && (
             <HorizontalArrowIcon
               className={cx({
-                'rotate-0': position === 'right-top' || position === 'right-bottom',
-                'rotate-180': position === 'left-top' || position === 'left-bottom',
+                'rotate-0': position === 'right-top' || position === RIGHT_BOTTOM,
+                'rotate-180': position === 'left-top' || position === LEFT_BOTTOM,
               })}
             />
           )}

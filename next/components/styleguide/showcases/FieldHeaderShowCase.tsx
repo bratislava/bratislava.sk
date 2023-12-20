@@ -5,9 +5,7 @@ import React from 'react'
 import { Stack } from '../Stack'
 import { Wrapper } from '../Wrapper'
 
-interface FieldHeaderShowCaseProps {}
-
-const FieldHeaderShowCase = ({}: FieldHeaderShowCaseProps) => {
+const FieldHeaderShowCase = () => {
   return (
     <>
       <Wrapper direction="column" title="Field header">

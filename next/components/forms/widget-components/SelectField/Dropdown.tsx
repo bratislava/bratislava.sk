@@ -86,9 +86,9 @@ const Dropdown: FC<DropdownProps> = (props: DropdownProps) => {
             isEverythingSelected={isEverythingSelected}
           />
         )}
-        {enumOptions?.map((option, key) => (
+        {enumOptions?.map((option) => (
           <DropdownRow
-            key={key}
+            key={option.const}
             option={option}
             divider={divider}
             selected={isSelected(option)}
