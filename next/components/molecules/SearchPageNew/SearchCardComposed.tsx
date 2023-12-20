@@ -51,8 +51,8 @@ const SearchCardComposed = ({ data, variant = 'default', tagText }: SearchCardCo
           className="group flex flex-row items-stretch overflow-hidden rounded-none border-b-2 sm:rounded-lg sm:border-2"
           href={`/../${data.slug}`}
         >
-          {data.coverImageURL ? (
-            <SearchCardComposed.ImageFromURL imgURL={data.coverImageURL} />
+          {data.coverImageUrl ? (
+            <SearchCardComposed.ImageFromUrl imgUrl={data.coverImageUrl} />
           ) : data.pageColor ? (
             <SearchCardComposed.ImageFromPageColor pageColor={data.pageColor} />
           ) : (
@@ -97,11 +97,11 @@ SearchCardComposed.ImageFromPageColor = function ({
   )
 }
 
-SearchCardComposed.ImageFromURL = function ({
-  imgURL,
+SearchCardComposed.ImageFromUrl = function ({
+  imgUrl,
   className,
 }: {
-  imgURL: string
+  imgUrl: string
   className?: string
 }) {
   return (
@@ -112,7 +112,7 @@ SearchCardComposed.ImageFromURL = function ({
       )}
     >
       <Image
-        src={imgURL}
+        src={imgUrl}
         alt=""
         sizes={generateImageSizes({ default: '150px' })}
         fill
@@ -166,7 +166,7 @@ SearchCardComposed.Metadata = function ({
     return (
       <>
         {index > 0 && <p className="hidden sm:block">•</p>}
-        <p className="first-of-type:underline max-sm:first-of-type:font-medium">{item}</p>
+        <p className="max-sm:first-of-type:font-medium">{item}</p>
       </>
     )
   })

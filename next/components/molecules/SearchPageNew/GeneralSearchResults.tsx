@@ -13,7 +13,7 @@ type GeneralSearchResultsProps = {
   filters: SearchFilters
   variant: 'allResults' | 'specificResults'
   searchOption: SearchOption
-  handleShowMore?: React.Dispatch<React.SetStateAction<Set<SearchOption['key']>>>
+  handleShowMore?: React.Dispatch<React.SetStateAction<Set<SearchOption['id']>>>
   handlePageChange?: React.Dispatch<React.SetStateAction<number>>
 }
 
@@ -26,13 +26,11 @@ const GeneralSearchResults = ({
 }: GeneralSearchResultsProps) => {
   const t = useTranslations()
 
-  const { hits: searchResultsHits, estimatedTotalHits } = getDataBySearchOptionKey(
-    searchOption.key,
+  const { searchResultsData, searchResultsCount } = getDataBySearchOptionKey(
+    searchOption.id,
     filters,
   )
   const DEFAULT_PAGE_SIZE = 5
-  const isPaginationNeeded =
-    estimatedTotalHits <= DEFAULT_PAGE_SIZE && estimatedTotalHits <= filters.pageSize
 
   return (
     <div className="flex flex-col gap-y-8">
@@ -41,32 +39,32 @@ const GeneralSearchResults = ({
           <SearchResultsHeader
             title={`${searchOption?.displayNamePlural}` ?? ''}
             handleShowMore={() => {
-              handleShowMore(new Set([searchOption.key]))
+              handleShowMore(new Set([searchOption.id]))
             }}
           />
         )}
-        {searchResultsHits?.length > 0 ? (
+        {searchResultsData.length > 0 ? (
           <div className="flex flex-col gap-y-2">
             {variant === 'allResults'
-              ? searchResultsHits.slice(0, DEFAULT_PAGE_SIZE).map((item) => {
+              ? searchResultsData.slice(0, DEFAULT_PAGE_SIZE).map((item) => {
                   return (
                     <SearchCardComposed
                       data={{ ...item }}
                       tagText={searchOption.displayName}
                       variant="withPicture"
-                      key={`allResults-item${item.slug}`}
+                      key={`item-${variant}-${searchOption.id}-${item.slug}`}
                     />
                   )
                 })
               : null}
             {variant === 'specificResults'
-              ? searchResultsHits.map((item) => {
+              ? searchResultsData.map((item) => {
                   return (
                     <SearchCardComposed
                       data={{ ...item }}
                       tagText={searchOption.displayName}
                       variant="withPicture"
-                      key={`specificResults-item${item.slug}`}
+                      key={`item-${variant}-${searchOption.id}-${item.slug}`}
                     />
                   )
                 })
@@ -76,11 +74,11 @@ const GeneralSearchResults = ({
           <p>{t('SearchPage.noResults')}</p>
         )}
       </div>
-      {variant === 'specificResults' && !isPaginationNeeded ? (
+      {variant === 'specificResults' ? (
         <div>
           <Pagination
             currentPage={filters.page}
-            totalCount={Math.ceil(estimatedTotalHits / filters.pageSize)}
+            totalCount={Math.ceil(searchResultsCount / filters.pageSize)}
             onPageChange={(pageNumber) => {
               if (!isDefined(handlePageChange)) return
               handlePageChange(pageNumber)

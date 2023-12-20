@@ -17,7 +17,7 @@ import { useDebounce } from 'usehooks-ts'
  */
 
 export type SearchOption = {
-  key: 'allResults' | 'pages' | 'articles' | 'inbaArticles'
+  id: 'allResults' | 'pages' | 'articles' | 'inbaArticles'
   displayName: string
   displayNamePlural?: string
 }
@@ -39,33 +39,32 @@ const SearchPageContentNew = () => {
   }, [debouncedInput])
 
   const searchOptions: SearchOption[] = [
-    { key: 'allResults', displayName: t('SearchPage.allResults') },
-    { key: 'pages', displayName: t('SearchPage.page'), displayNamePlural: t('SearchPage.pages') },
+    { id: 'allResults', displayName: t('SearchPage.allResults') },
+    { id: 'pages', displayName: t('SearchPage.page'), displayNamePlural: t('SearchPage.pages') },
     {
-      key: 'articles',
+      id: 'articles',
       displayName: t('SearchPage.article'),
       displayNamePlural: t('SearchPage.articles'),
     },
     {
-      key: 'inbaArticles',
+      id: 'inbaArticles',
       displayName: t('SearchPage.inbaArticle'),
       displayNamePlural: t('SearchPage.inbaArticles'),
     },
-    // { key: 'users', displayName: t('organisationalStructure') },
+    // { id: 'users', displayName: t('organisationalStructure') },
   ]
   const defaultOption = searchOptions[0]
 
-  const getSearchOptionByKeyValue = (key: string): SearchOption => {
-    return searchOptions.find((option) => option.key === key) ?? defaultOption
+  const getSearchOptionByKeyValue = (key: string) => {
+    return searchOptions.find((option) => option.id === key) ?? defaultOption
   }
 
-  const [selectedOptionKey, setSelectedOptionKey] = useState<Selection>(
-    new Set([defaultOption.key]),
-  )
+  const [selectedOptionKey, setSelectedOptionKey] = useState<Selection>(new Set([defaultOption.id]))
 
+  // When clicking on an already selected option, we want to set the default option as selected. We use useLayoutEffect to avoid page flickering.
   useLayoutEffect(() => {
     if ([...selectedOptionKey].length === 0) {
-      setSelectedOptionKey(new Set([defaultOption.key]))
+      setSelectedOptionKey(new Set([defaultOption.id]))
     }
   }, [selectedOptionKey])
 
@@ -79,7 +78,7 @@ const SearchPageContentNew = () => {
     search: searchValue,
     page: currentPage,
     pageSize: 24,
-    // TODO tagIds need to be here for now, because BlogPost and InbaArticle fetchers filter by tagIds
+    // tagIds need to be here for now, because BlogPost and InbaArticle fetchers filter by tagIds
     tagIds: [],
   }
 
@@ -97,7 +96,7 @@ const SearchPageContentNew = () => {
           <TagGroup
             selectionMode="single"
             selectedKeys={selectedOptionKey}
-            defaultSelectedKeys={new Set([defaultOption.key])}
+            defaultSelectedKeys={new Set([defaultOption.id])}
             onSelectionChange={setSelectedOptionKey}
           >
             <TagList className="mt-3 flex flex-wrap gap-2 md:mt-4 lg:justify-start">
@@ -105,8 +104,8 @@ const SearchPageContentNew = () => {
                 return (
                   <Chip
                     variant="large"
-                    key={option.key}
-                    id={option.key}
+                    key={option.id}
+                    id={option.id}
                     style={getCategoryColorLocalStyle({ category: 'gray' })}
                   >
                     {`${option.displayName} `}
@@ -116,7 +115,7 @@ const SearchPageContentNew = () => {
             </TagList>
           </TagGroup>
         </div>
-        {[...selectedOptionKey][0] === defaultOption.key ? (
+        {[...selectedOptionKey][0] === defaultOption.id ? (
           <div className="flex flex-col gap-8">
             {searchOptions.slice(1).map((option) => {
               return (
@@ -125,7 +124,7 @@ const SearchPageContentNew = () => {
                   searchOption={option}
                   filters={searchFilters}
                   handleShowMore={setSelectedOptionKey}
-                  key={option.key}
+                  key={option.id}
                 />
               )
             })}
@@ -134,7 +133,7 @@ const SearchPageContentNew = () => {
           <GeneralSearchResults
             variant="specificResults"
             searchOption={getSearchOptionByKeyValue(
-              [...selectedOptionKey][0]?.toString() ?? defaultOption.key,
+              [...selectedOptionKey][0]?.toString() ?? defaultOption.id,
             )}
             filters={searchFilters}
             handleShowMore={setSelectedOptionKey}

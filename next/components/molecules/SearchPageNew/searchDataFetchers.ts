@@ -26,17 +26,17 @@ export type SearchResult = {
   title: string | null | undefined
   slug: string | null | undefined
   metadata?: (string | null | undefined)[]
-  coverImageURL?: string | null | undefined
+  coverImageUrl?: string | null | undefined
   pageColor?: Enum_Page_Pagecolor
 }
 
 export type SearchResponse = {
-  hits: SearchResult[]
-  estimatedTotalHits: number
+  searchResultsData: SearchResult[]
+  searchResultsCount: number
 }
 
 export const getDataBySearchOptionKey = (
-  optionKey: SearchOption['key'],
+  optionKey: SearchOption['id'],
   filters: SearchFilters,
 ): SearchResponse => {
   switch (optionKey) {
@@ -51,6 +51,8 @@ export const getDataBySearchOptionKey = (
 
     default:
       return getSearchInbaArticlesData(filters as InbaArticlesFilters)
+    // TODO: fix fix fix
+    // return { hits: [], estimatedTotalHits: 0 }
   }
 }
 
@@ -74,7 +76,7 @@ const getSearchPagesData = (filters: PagesFilters): SearchResponse => {
       } as SearchResult
     }) ?? []
 
-  return { hits: formattedData, estimatedTotalHits: data?.estimatedTotalHits ?? 0 }
+  return { searchResultsData: formattedData, searchResultsCount: data?.estimatedTotalHits ?? 0 }
 }
 
 const getSearchBlogPostsData = (filters: BlogPostsFilters): SearchResponse => {
@@ -97,12 +99,12 @@ const getSearchBlogPostsData = (filters: BlogPostsFilters): SearchResponse => {
             blogPostData.attributes?.tag?.data?.attributes?.title,
             formatDate(blogPostData.attributes?.publishedAt),
           ],
-          coverImageURL: blogPostData.attributes?.coverImage?.data?.attributes?.url,
+          coverImageUrl: blogPostData.attributes?.coverImage?.data?.attributes?.url,
         }
       },
     ) ?? []
 
-  return { hits: formattedData, estimatedTotalHits: data?.estimatedTotalHits ?? 0 }
+  return { searchResultsData: formattedData, searchResultsCount: data?.estimatedTotalHits ?? 0 }
 }
 
 const getSearchInbaArticlesData = (filters: InbaArticlesFilters): SearchResponse => {
@@ -124,9 +126,9 @@ const getSearchInbaArticlesData = (filters: InbaArticlesFilters): SearchResponse
           inbaArticle.attributes?.inbaTag?.data?.attributes?.title,
           formatDate(inbaArticle.attributes.publishedAt),
         ],
-        coverImageURL: inbaArticle.attributes.coverImage.data.attributes.url,
+        coverImageUrl: inbaArticle.attributes.coverImage.data.attributes.url,
       }
     }) ?? []
 
-  return { hits: formattedData, estimatedTotalHits: data?.estimatedTotalHits ?? 0 }
+  return { searchResultsData: formattedData, searchResultsCount: data?.estimatedTotalHits ?? 0 }
 }
