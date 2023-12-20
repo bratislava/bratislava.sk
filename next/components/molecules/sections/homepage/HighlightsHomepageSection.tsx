@@ -45,7 +45,6 @@ export const HighlightsHomepageSection = () => {
                   ...linkProps,
                 }}
                 imgSrc={highlight.image?.data?.attributes?.url}
-                isCarousel
               />
               <HomepageHorizontalCard
                 className="max-lg:hidden"

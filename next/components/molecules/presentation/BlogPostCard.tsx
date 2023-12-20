@@ -5,7 +5,6 @@ import Tag from '@components/forms/simple-components/Tag'
 import CardBase, { CardBaseProps } from '@components/molecules/presentation/CardBase'
 import CardContent from '@components/molecules/presentation/CardContent'
 import { CommonLinkProps } from '@utils/getCommonLinkProps'
-import cx from 'classnames'
 import Image from 'next/image'
 import React from 'react'
 
@@ -17,22 +16,11 @@ type Props = {
   date?: string
   tag?: string
   text?: string
-  isCarousel?: boolean
 } & CardBaseProps
 
-const BlogPostCard = ({
-  imgSrc,
-  imgSizes,
-  date,
-  tag,
-  title,
-  text,
-  linkProps,
-  isCarousel,
-  ...rest
-}: Props) => {
+const BlogPostCard = ({ imgSrc, imgSizes, date, tag, title, text, linkProps, ...rest }: Props) => {
   return (
-    <CardBase className={cx({ 'h-full': isCarousel })} {...rest}>
+    <CardBase {...rest}>
       <div className="relative aspect-16/10 shrink-0">
         {imgSrc ? (
           <Image src={imgSrc} alt="" sizes={imgSizes} fill className="object-cover" />

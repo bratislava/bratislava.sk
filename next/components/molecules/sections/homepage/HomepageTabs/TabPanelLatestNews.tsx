@@ -54,7 +54,6 @@ const TabPanelLatestNews = () => {
               linkProps={{ children: t('readMore'), href: `/blog/${slug}` }}
               imgSrc={coverImage?.data?.attributes?.url}
               imgSizes={imageSizes}
-              isCarousel
             />
           )
         })}
