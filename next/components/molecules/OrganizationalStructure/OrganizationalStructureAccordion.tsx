@@ -1,6 +1,7 @@
 import ChevronDown from '@assets/images/chevron-down-thin.svg'
 import ChevronDownSmall from '@assets/images/chevron-down-thin-small.svg'
 import { GetGroupMembersRecursiveResult } from '@backend/ms-graph/types'
+import { onEnterOrSpaceKeyDown } from '@utils/onEnterOrSpaceKeyDown'
 import cx from 'classnames'
 import { useToggle } from 'rooks'
 
@@ -25,8 +26,9 @@ export const OrganizationalStructureAccordion = ({
     <div className="flex flex-col">
       <div
         role="button"
+        tabIndex={0}
         onClick={setOpen}
-        onKeyDown={setOpen}
+        onKeyUp={onEnterOrSpaceKeyDown(() => setOpen)}
         className={cx('lg-gap-x-6 flex cursor-pointer items-start gap-x-3 lg:items-center', {
           'pb-8': !open,
         })}

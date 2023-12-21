@@ -5,6 +5,7 @@ import { Stack } from '../Stack'
 import { Wrapper } from '../Wrapper'
 
 const TextAreaFieldShowCase = () => {
+  const ERROR_MESSAGE = 'Error message'
   return (
     <Wrapper direction="column" title="Text Area Field">
       <Stack direction="column">
@@ -18,13 +19,13 @@ const TextAreaFieldShowCase = () => {
         <TextAreaField
           label="Label"
           placeholder="Placeholder"
-          errorMessage={['Error message']}
+          errorMessage={[ERROR_MESSAGE]}
           className="h-[200px]"
         />
         <TextAreaField
           label="Label"
           placeholder="Placeholder"
-          errorMessage={['Error message']}
+          errorMessage={[ERROR_MESSAGE]}
           helptext="Help text"
           disabled
         />
@@ -36,7 +37,7 @@ const TextAreaFieldShowCase = () => {
           label="Label"
           tooltip="InputField"
           placeholder="Placeholder"
-          errorMessage={['Error message']}
+          errorMessage={[ERROR_MESSAGE]}
         />
         <TextAreaField
           label="Label"
@@ -44,7 +45,7 @@ const TextAreaFieldShowCase = () => {
           tooltip="InputField"
           placeholder="Placeholder"
           helptext="Help text"
-          errorMessage={['Error message']}
+          errorMessage={[ERROR_MESSAGE]}
           disabled
         />
       </Stack>

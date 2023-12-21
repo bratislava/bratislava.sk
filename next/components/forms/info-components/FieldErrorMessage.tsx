@@ -11,8 +11,9 @@ const FieldErrorMessage: FC<FieldErrorMessageProps> = ({
 }) => {
   return errorMessage.length > 0 ? (
     <div className="text-default-respo mt-1 text-error" {...errorMessageProps}>
-      {errorMessage?.map((error) => (
-        <div key={error}>{`${error.slice(0, 1).toUpperCase()}${error.slice(1).toLowerCase()}${
+      {errorMessage?.map((error, index) => (
+        // eslint-disable-next-line react/no-array-index-key
+        <div key={index}>{`${error.slice(0, 1).toUpperCase()}${error.slice(1).toLowerCase()}${
           error.trim().slice(-1) === '.' ? '' : '.'
         }`}</div>
       ))}

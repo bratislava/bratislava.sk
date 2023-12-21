@@ -35,10 +35,11 @@ export const parsePageLink = (
     locale: pageLink?.page?.data?.attributes?.locale,
     slug: pageLink?.page?.data?.attributes?.slug,
   }
-  if (pageLink.url === '') pageLink.url = null
+  const pageLinkUrl = pageLink.url === '' ? null : pageLink.url
+
   return {
     title: pageLink.title || pageLink.page?.data?.attributes?.title || '',
-    url: pageLink.url ?? pagePath(param) ?? pageLink.page?.data?.attributes?.slug ?? '#',
+    url: pageLinkUrl ?? pagePath(param) ?? pageLink.page?.data?.attributes?.slug ?? '#',
     anchor: pageLink.anchor ?? '',
   }
 }

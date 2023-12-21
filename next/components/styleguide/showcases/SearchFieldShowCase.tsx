@@ -5,17 +5,18 @@ import { Stack } from '../Stack'
 import { Wrapper } from '../Wrapper'
 
 const SearchFieldShowCase = () => {
+  const ERROR_MESSAGE = 'Error message'
   return (
     <Wrapper direction="column" title="Search Field">
       <Stack direction="column">
         <SearchField label="Label" value="Value" placeholder="Placeholder" resetIcon />
         <SearchField label="Label" placeholder="Placeholder" resetIcon />
         <SearchField label="Label" placeholder="Placeholder" />
-        <SearchField label="Label" placeholder="Placeholder" errorMessage={['Error message']} />
+        <SearchField label="Label" placeholder="Placeholder" errorMessage={[ERROR_MESSAGE]} />
         <SearchField
           label="Label"
           placeholder="Placeholder"
-          errorMessage={['Error message']}
+          errorMessage={[ERROR_MESSAGE]}
           disabled
         />
       </Stack>
@@ -40,7 +41,7 @@ const SearchFieldShowCase = () => {
           helptext="Help text"
           tooltip="SearchField"
           placeholder="Placeholder"
-          errorMessage={['Error message']}
+          errorMessage={[ERROR_MESSAGE]}
         />
         <SearchField
           label="Label"
@@ -48,7 +49,7 @@ const SearchFieldShowCase = () => {
           helptext="Help text"
           tooltip="SearchField"
           placeholder="Placeholder"
-          errorMessage={['Error message']}
+          errorMessage={[ERROR_MESSAGE]}
           disabled
         />
       </Stack>

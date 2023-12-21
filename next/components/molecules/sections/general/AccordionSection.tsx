@@ -9,7 +9,6 @@ import AccordionV2 from '@components/ui/AccordionV2/AccordionV2'
 import { isDefined } from '@utils/isDefined'
 import { groupByCategory, parsePageLink } from '@utils/page'
 import { isPresent } from '@utils/utils'
-import { useTranslations } from 'next-intl'
 import React from 'react'
 
 type AccordionSectionProps = {
@@ -17,8 +16,6 @@ type AccordionSectionProps = {
 }
 
 const AccordionSection = ({ section }: AccordionSectionProps) => {
-  const t = useTranslations()
-
   return (
     <>
       {section.title && (

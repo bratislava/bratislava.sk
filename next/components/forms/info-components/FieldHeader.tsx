@@ -35,7 +35,8 @@ const FieldHeader = ({
     helptext
       .trim()
       .split('\n')
-      .map((sentence) => <span key={sentence}>{sentence}</span>)
+      // eslint-disable-next-line react/no-array-index-key
+      .map((sentence, index) => <span key={index}>{sentence}</span>)
 
   /** FIXME eslint: leaving disable here, because I burned a lot of time already trying to figure it out  */
   /* eslint-disable-next-line xss/no-mixed-html */

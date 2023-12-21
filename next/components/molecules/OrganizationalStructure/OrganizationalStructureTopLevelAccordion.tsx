@@ -1,6 +1,7 @@
 import ChevronDown from '@assets/images/chevron-down-thin.svg'
 import ChevronDownSmall from '@assets/images/chevron-down-thin-small.svg'
 import { GetGroupMembersRecursiveResult } from '@backend/ms-graph/types'
+import { onEnterOrSpaceKeyDown } from '@utils/onEnterOrSpaceKeyDown'
 import cx from 'classnames'
 import { useToggle } from 'rooks'
 
@@ -19,7 +20,13 @@ export const OrganizationalStructureTopLevelAccordion = ({
 
   return (
     <div className="flex flex-col">
-      <div className="flex cursor-pointer flex-col gap-y-8 pt-8" onClick={setOpen}>
+      <div
+        role="button"
+        tabIndex={0}
+        className="flex cursor-pointer flex-col gap-y-8 pt-8"
+        onClick={setOpen}
+        onKeyUp={onEnterOrSpaceKeyDown(() => setOpen)}
+      >
         <div className="flex items-center lg:px-5">
           <div className="mr-6 h-6 w-6 shrink-0 rounded-full bg-category-600 lg:h-8 lg:w-8" />
           {/* FIXME Typography. Convert to use Typography. Issue: Header size for not header element */}

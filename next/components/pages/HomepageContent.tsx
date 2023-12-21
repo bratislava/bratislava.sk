@@ -5,12 +5,9 @@ import NewsAndInfoHomepageSection from '@components/molecules/sections/homepage/
 import TopServicesHomepageSection from '@components/molecules/sections/homepage/TopServicesHomepageSection'
 import { WelcomeHomepageSection } from '@components/molecules/sections/homepage/WelcomeHomepageSection'
 import { Waves } from '@components/ui/Waves/Waves'
-import { useTranslations } from 'next-intl'
 import React from 'react'
 
 const HomepageContent = () => {
-  const t = useTranslations()
-
   return (
     <>
       <BookmarksHomepageSection />

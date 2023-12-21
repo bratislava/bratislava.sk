@@ -1,7 +1,4 @@
-import {
-  ColumnedTextSectionFragment,
-  Enum_Componentsectionscolumnedtext_Contentalignment,
-} from '@backend/graphql'
+import { ColumnedTextSectionFragment } from '@backend/graphql'
 import { ColumnedText } from '@bratislava/ui-bratislava/ColumnedText/ColumnedText'
 import React from 'react'
 
@@ -11,7 +8,6 @@ const ColumnedTextSection = ({ section }: ColumnedTextSectionProps) => {
   return (
     <ColumnedText
       content={section.content ?? ''}
-      hasBackground={section.hasBackground ?? false}
       contentAlignment={section.contentAlignment ?? undefined}
     />
   )
