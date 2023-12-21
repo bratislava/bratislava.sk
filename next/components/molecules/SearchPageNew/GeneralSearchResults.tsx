@@ -52,7 +52,7 @@ const GeneralSearchResults = ({
                       data={{ ...item }}
                       tagText={searchOption.displayName}
                       variant="withPicture"
-                      key={`item-${variant}-${searchOption.id}-${item.slug}`}
+                      key={`item-${variant}-${searchOption.id}-${item.url}`}
                     />
                   )
                 })
@@ -64,7 +64,7 @@ const GeneralSearchResults = ({
                       data={{ ...item }}
                       tagText={searchOption.displayName}
                       variant="withPicture"
-                      key={`item-${variant}-${searchOption.id}-${item.slug}`}
+                      key={`item-${variant}-${searchOption.id}-${item.url}`}
                     />
                   )
                 })
@@ -78,7 +78,9 @@ const GeneralSearchResults = ({
         <div>
           <Pagination
             currentPage={filters.page}
-            totalCount={Math.ceil(searchResultsCount / filters.pageSize)}
+            totalCount={
+              searchResultsCount > 0 ? Math.ceil(searchResultsCount / filters.pageSize) : 1
+            }
             onPageChange={(pageNumber) => {
               if (!isDefined(handlePageChange)) return
               handlePageChange(pageNumber)

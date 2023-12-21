@@ -32,9 +32,9 @@ export type SearchFilters = PagesFilters | BlogPostsFilters | InbaArticlesFilter
 
 export type SearchResult = {
   title: string | null | undefined
-  slug?: string | null | undefined
+  url?: string | null | undefined
   metadata?: (string | null | undefined)[]
-  coverImageUrl?: string | null | undefined
+  coverImageSrc?: string | null | undefined
   pageColor?: Enum_Page_Pagecolor
 }
 
@@ -84,10 +84,10 @@ const getSearchPagesData = (filters: PagesFilters): SearchResponse => {
   })
 
   const formattedData: SearchResult[] =
-    data?.hits.map((page: PageMeili) => {
+    data?.hits.map((page: PageMeili): SearchResult => {
       return {
         title: page.title,
-        slug: page.slug,
+        url: page.slug,
         metadata: [page.pageCategory?.title, formatDate(page.publishedAt)],
         pageColor: page.pageColor,
       }
@@ -111,12 +111,12 @@ const getSearchBlogPostsData = (filters: BlogPostsFilters): SearchResponse => {
       (blogPostData: Pick<LatestBlogPostEntityFragment, 'attributes'>): SearchResult => {
         return {
           title: blogPostData.attributes?.title,
-          slug: `blog/${blogPostData.attributes?.slug}`,
+          url: `blog/${blogPostData.attributes?.slug}`,
           metadata: [
             blogPostData.attributes?.tag?.data?.attributes?.title,
             formatDate(blogPostData.attributes?.publishedAt),
           ],
-          coverImageUrl: blogPostData.attributes?.coverImage?.data?.attributes?.url,
+          coverImageSrc: blogPostData.attributes?.coverImage?.data?.attributes?.url,
         }
       },
     ) ?? []
@@ -138,12 +138,12 @@ const getSearchInbaArticlesData = (filters: InbaArticlesFilters): SearchResponse
     data?.hits?.map((inbaArticle): SearchResult => {
       return {
         title: inbaArticle.attributes.title,
-        slug: `inba/text/${inbaArticle.attributes.slug}`,
+        url: `inba/text/${inbaArticle.attributes.slug}`,
         metadata: [
           inbaArticle.attributes?.inbaTag?.data?.attributes?.title,
           formatDate(inbaArticle.attributes.publishedAt),
         ],
-        coverImageUrl: inbaArticle.attributes.coverImage.data.attributes.url,
+        coverImageSrc: inbaArticle.attributes.coverImage.data.attributes.url,
       }
     }) ?? []
 

@@ -25,7 +25,7 @@ const SearchCardComposed = ({ data, variant = 'default', tagText }: SearchCardCo
         <MLink
           className="group flex flex-row overflow-hidden"
           // TODO fix href to accomodate cards with no slug
-          href={isDefined(data.slug) ? `${data.slug}` : '#'}
+          href={isDefined(data.url) ? `${data.url}` : '#'}
         >
           <div className="flex w-full flex-row gap-6 px-6 py-4">
             <SearchCardComposed.InfoContainer className="gap-1.5">
@@ -42,10 +42,10 @@ const SearchCardComposed = ({ data, variant = 'default', tagText }: SearchCardCo
       {variant === 'withPicture' && (
         <MLink
           className="group flex flex-row items-stretch overflow-hidden rounded-none border-b-2 sm:rounded-lg sm:border-2"
-          href={`/../${data.slug}`}
+          href={`/../${data.url}`}
         >
-          {data.coverImageUrl ? (
-            <SearchCardComposed.ImageFromUrl imgUrl={data.coverImageUrl} />
+          {data.coverImageSrc ? (
+            <SearchCardComposed.ImageFromUrl imgUrl={data.coverImageSrc} />
           ) : data.pageColor ? (
             <SearchCardComposed.ImageFromPageColor pageColor={data.pageColor} />
           ) : (
