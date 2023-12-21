@@ -1,3 +1,4 @@
+import { Typography } from '@bratislava/component-library'
 import Pagination from '@bratislava/ui-bratislava/Pagination/Pagination'
 import SearchCardComposed from '@components/molecules/SearchPageNew/SearchCardComposed'
 import {
@@ -71,7 +72,7 @@ const GeneralSearchResults = ({
               : null}
           </div>
         ) : (
-          <p>{t('SearchPage.noResults')}</p>
+          <Typography type="p">{t('SearchPage.noResults')}</Typography>
         )}
       </div>
       {variant === 'specificResults' ? (

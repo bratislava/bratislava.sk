@@ -1,5 +1,6 @@
 import { ChevronRightIcon } from '@assets/ui-icons'
 import { Enum_Page_Pagecolor, Enum_Pagecategory_Color } from '@backend/graphql'
+import { Typography } from '@bratislava/component-library'
 import ImagePlaceholder from '@components/atoms/ImagePlaceholder'
 import MLink from '@components/forms/simple-components/MLink'
 import Tag from '@components/forms/simple-components/Tag'
@@ -128,14 +129,16 @@ SearchCardComposed.InfoContainer = function ({
 
 SearchCardComposed.Title = function ({ title, className }: { title: string; className?: string }) {
   return (
-    <div
+    <Typography
+      type="h3"
+      size="h5"
       className={twMerge(
-        'line-clamp-3 text-size-h5 font-semibold group-hover:underline md:line-clamp-2 lg:line-clamp-1',
+        'line-clamp-3 font-semibold group-hover:underline md:line-clamp-2 lg:line-clamp-1',
         className,
       )}
     >
       {title}
-    </div>
+    </Typography>
   )
 }
 
@@ -159,8 +162,14 @@ SearchCardComposed.Metadata = function ({
     cleanedMetadata?.map((item: string, index: number) => {
       return (
         <>
-          {index > 0 && <p className="max-sm:hidden">•</p>}
-          <p className="max-sm:first-of-type:font-medium">{item}</p>
+          {index > 0 && (
+            <Typography type="p" className="max-sm:hidden">
+              •
+            </Typography>
+          )}
+          <Typography type="p" className="max-sm:first-of-type:font-medium">
+            {item}
+          </Typography>
         </>
       )
     }) ?? null

@@ -1,3 +1,4 @@
+import { Typography } from '@bratislava/component-library'
 import Button from '@components/forms/simple-components/Button'
 import { useTranslations } from 'next-intl'
 import { Dispatch, SetStateAction } from 'react'
@@ -36,30 +37,34 @@ const AdvancedSearchNew = ({
 
   const newSearch = (
     <div className="flex flex-col items-start gap-8 self-stretch">
-      <h1 className="text-h1 font-semibold text-gray-800 lg:w-[800px]">{title}</h1>
+      <Typography type="h1" className="text-gray-800 lg:w-[800px]">
+        {title}
+      </Typography>
       <div className="flex w-full flex-col gap-y-2">
-        <SearchField
-          className="flex w-full flex-col [&>*>input>button]:hidden"
-          aria-label={t('search')}
-          defaultValue={placeholder}
-          value={input}
-          name="Searchinput"
-          onChange={(val) => {
-            return setInput(val)
-          }}
-          onSubmit={handleSearch}
-        >
-          <Text slot="description" className="mb-1 font-semibold">
+        <div className="flex flex-col gap-y-1">
+          <Typography type="p" className="font-semibold text-gray-800">
             {t('SearchPage.whatAreYouLookingFor')}
-          </Text>
-          <div className="relative">
-            <Input
-              type="search"
-              className="w-full rounded-lg border-2 py-5 pl-[60px] pr-6 text-gray-700"
-            />
-            <Button className="absolute left-6 h-full" isDisabled startIcon={<SearchIcon />} />
-          </div>
-        </SearchField>
+          </Typography>
+          <SearchField
+            className="flex w-full flex-col [&>*>input>button]:hidden"
+            aria-label={t('search')}
+            defaultValue={placeholder}
+            value={input}
+            name="Searchinput"
+            onChange={(val) => {
+              return setInput(val)
+            }}
+            onSubmit={handleSearch}
+          >
+            <div className="relative">
+              <Input
+                type="search"
+                className="w-full rounded-lg border-2 py-5 pl-[60px] pr-6 text-gray-700"
+              />
+              <Button className="absolute left-6 h-full" isDisabled startIcon={<SearchIcon />} />
+            </div>
+          </SearchField>
+        </div>
       </div>
     </div>
   )
