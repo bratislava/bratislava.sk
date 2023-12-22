@@ -25,12 +25,12 @@ const SearchCardComposed = ({ data, variant = 'default', tagText }: SearchCardCo
       {variant === 'default' && (
         <MLink
           className="group flex flex-row overflow-hidden"
-          // TODO fix href to accomodate cards with no slug
+          // TODO: fix href to accomodate cards with no slug
           href={isDefined(data.url) ? `${data.url}` : '#'}
         >
           <div className="flex w-full flex-row gap-6 px-6 py-4">
             <SearchCardComposed.InfoContainer className="gap-1.5">
-              <div className="flex flex-row flex-wrap items-center gap-x-3 gap-y-1.5 sm:flex-nowrap">
+              <div className="flex flex-row flex-wrap items-center gap-x-3 gap-y-1.5 lg:flex-nowrap">
                 <SearchCardComposed.Title title={data.title} />
                 <SearchCardComposed.Tag text={tagText} />
               </div>
@@ -42,7 +42,7 @@ const SearchCardComposed = ({ data, variant = 'default', tagText }: SearchCardCo
       )}
       {variant === 'withPicture' && (
         <MLink
-          className="group flex flex-row items-stretch overflow-hidden rounded-none border-b-2 sm:rounded-lg sm:border-2"
+          className="group flex flex-row items-stretch overflow-hidden rounded-none border-b-2 lg:rounded-lg lg:border-2"
           href={`/../${data.url}`}
         >
           {data.coverImageSrc ? (
@@ -52,7 +52,7 @@ const SearchCardComposed = ({ data, variant = 'default', tagText }: SearchCardCo
           ) : (
             <SearchCardComposed.ImageFromPageColor pageColor={Enum_Pagecategory_Color.Red} />
           )}
-          <div className="flex w-full flex-row gap-6 py-4 sm:p-6">
+          <div className="flex w-full flex-row gap-6 py-4 lg:p-6">
             <SearchCardComposed.InfoContainer className="flex flex-col gap-3">
               <div className="flex flex-col gap-y-2">
                 <SearchCardComposed.Tag className="" text={tagText} />
@@ -60,7 +60,7 @@ const SearchCardComposed = ({ data, variant = 'default', tagText }: SearchCardCo
               </div>
               <SearchCardComposed.Metadata metadata={data.metadata} />
             </SearchCardComposed.InfoContainer>
-            <SearchCardComposed.Button className="hidden sm:block" />
+            <SearchCardComposed.Button className="hidden lg:block" />
           </div>
         </MLink>
       )}
@@ -82,7 +82,7 @@ SearchCardComposed.ImageFromPageColor = function ({
     <div
       style={colorStyle}
       className={twMerge(
-        'relative hidden w-[150px] shrink-0 items-center justify-center overflow-hidden bg-category-200 sm:flex',
+        'relative hidden w-[150px] shrink-0 items-center justify-center overflow-hidden bg-category-200 lg:flex',
         className,
       )}
     >
@@ -101,7 +101,7 @@ SearchCardComposed.ImageFromUrl = function ({
   return (
     <div
       className={twMerge(
-        'relative hidden w-[150px] shrink-0 items-center justify-center overflow-hidden bg-category-200 sm:flex',
+        'relative hidden w-[150px] shrink-0 items-center justify-center overflow-hidden bg-category-200 lg:flex',
         className,
       )}
     >
@@ -163,11 +163,11 @@ SearchCardComposed.Metadata = function ({
       return (
         <>
           {index > 0 && (
-            <Typography type="p" className="max-sm:hidden">
+            <Typography type="p" className="max-lg:hidden">
               •
             </Typography>
           )}
-          <Typography type="p" className="max-sm:first-of-type:font-medium">
+          <Typography type="p" className="max-lg:first-of-type:font-medium">
             {item}
           </Typography>
         </>
@@ -176,7 +176,7 @@ SearchCardComposed.Metadata = function ({
   return (
     <div
       className={twMerge(
-        'flex flex-col flex-wrap items-stretch gap-x-3 gap-y-1 text-gray-700 sm:flex-row',
+        'flex flex-col flex-wrap items-stretch gap-x-3 gap-y-1 text-gray-700 lg:flex-row',
         className,
       )}
     >

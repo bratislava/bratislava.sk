@@ -112,7 +112,7 @@ const SearchPageContentNew = () => {
             defaultSelectedKeys={new Set([defaultSearchOption.id])}
             onSelectionChange={setSelectedOptionKey}
           >
-            <TagList className="mt-3 flex flex-wrap gap-2 md:mt-4 lg:justify-start">
+            <TagList className="mt-3 flex flex-wrap gap-2 lg:mt-4 lg:justify-start">
               {[defaultSearchOption, ...searchOptions].map((option) => {
                 return (
                   <Chip

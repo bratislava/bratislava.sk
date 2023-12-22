@@ -12,7 +12,7 @@ export const SearchResultsHeader = ({ title, handleShowMore }: SearchResultsHead
   const t = useTranslations()
 
   return (
-    <div className="flex flex-col flex-wrap items-baseline justify-between gap-y-2 text-gray-800 sm:flex-row">
+    <div className="flex flex-col flex-wrap items-baseline justify-between gap-y-2 text-gray-800 lg:flex-row">
       <Typography type="h2" size="h4" className="text-gray-800">
         {title}
       </Typography>

@@ -46,7 +46,7 @@ const AdvancedSearchNew = ({
             {t('SearchPage.whatAreYouLookingFor')}
           </Typography>
           <SearchField
-            className="flex w-full flex-col [&>*>input>button]:hidden"
+            className="flex w-full flex-col"
             aria-label={t('search')}
             defaultValue={placeholder}
             value={input}
