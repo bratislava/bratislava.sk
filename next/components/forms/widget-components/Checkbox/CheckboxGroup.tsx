@@ -13,7 +13,7 @@ type CheckBoxGroupBase = {
   value?: string[]
   label: string
   className?: string
-  onChange: (value: any[]) => void
+  onChange: (value: string[]) => void
   rawErrors?: string[]
   disabled?: boolean
   required?: boolean

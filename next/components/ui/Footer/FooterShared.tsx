@@ -69,9 +69,7 @@ export const FooterCopyright = ({ innovationsLink }: FooterFragment) => {
   return (
     <>
       {t.rich('Footer.copyright', {
-        innovations: (chunks) => (
-          <MLink variant="underlined" {...getCommonLinkProps(innovationsLink)} />
-        ),
+        innovations: () => <MLink variant="underlined" {...getCommonLinkProps(innovationsLink)} />,
         year: new Date().getFullYear(),
       })}
     </>

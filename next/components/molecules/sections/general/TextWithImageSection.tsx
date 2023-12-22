@@ -14,7 +14,6 @@ const TextWithImageSection = ({ section }: TextWithImageSectionProps) => {
       imageHeight={section.imageSrc?.data?.attributes?.height}
       imagePosition={section.imagePosition ?? 'left'}
       content={section.content ?? ''}
-      imageShadow={section.imageShadow ?? false}
       imageAlternativeText={section.imageSrc?.data?.attributes?.alternativeText ?? undefined}
     />
   )

@@ -1,6 +1,5 @@
 import BreadcrumbsChevronIcon from '@assets/images/breadcrumbs-chevron.svg'
 import BreadcrumbsHomeIcon from '@assets/images/breadcrumbs-home.svg'
-import Button from '@components/forms/simple-components/Button'
 import MLink from '@components/forms/simple-components/MLink'
 import type { BreadcrumbsProps } from '@components/ui/Breadcrumbs/Breadcrumbs'
 import { useTranslations } from 'next-intl'

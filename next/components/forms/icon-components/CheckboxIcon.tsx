@@ -17,14 +17,8 @@ const CheckboxIcon = ({ checked, className }: SelectCheckboxProps) => {
     className,
   )
 
-  const iconClassName = cx('m-auto', {
-    dropdown: className && className.split(' ').includes('dropdown'),
-  })
-
   // RENDER
-  return (
-    <div className={checkboxClassName}>{checked && <SelectedIcon className={iconClassName} />}</div>
-  )
+  return <div className={checkboxClassName}>{checked && <SelectedIcon className="m-auto" />}</div>
 }
 
 export default CheckboxIcon

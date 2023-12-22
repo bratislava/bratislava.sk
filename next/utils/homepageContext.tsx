@@ -1,14 +1,14 @@
-import type { HomepageContext } from '@backend/fetchers/homepageContextFetcher'
+import type { HomepageContext as HompepageContextType } from '@backend/fetchers/homepageContextFetcher'
 import { createContext, ReactNode, useContext } from 'react'
 
-const HomepageContext = createContext<HomepageContext | null>(null)
+const HomepageContext = createContext<HompepageContextType | null>(null)
 
 export const HomepageContextProvider = ({
   children,
   homepageContext,
 }: {
   children: ReactNode
-  homepageContext: HomepageContext
+  homepageContext: HompepageContextType
 }) => {
   return <HomepageContext.Provider value={homepageContext}>{children}</HomepageContext.Provider>
 }

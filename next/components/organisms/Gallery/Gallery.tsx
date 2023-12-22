@@ -1,7 +1,3 @@
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/interactive-supports-focus */
-
 import { UploadImageEntityFragment } from '@backend/graphql'
 import StrapiImage from '@components/atoms/StrapiImage'
 import { onEnterOrSpaceKeyDown } from '@utils/onEnterOrSpaceKeyDown'
@@ -62,13 +58,15 @@ const Gallery = ({ images = [] }: GalleryProps) => {
                 .filter((image) => image.attributes)
                 .map((image, index) => (
                   <div
+                    role="button"
+                    tabIndex={0}
                     onClick={() => openAtImageIndex(index)}
+                    onKeyUp={onEnterOrSpaceKeyDown(() => openAtImageIndex(index))}
                     key={image.id}
                     className="relative h-[100%] w-full cursor-pointer overflow-hidden rounded-lg pt-[100%] shadow-lg"
                   >
                     <StrapiImage
-                      // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
-                      image={image.attributes!}
+                      image={image.attributes}
                       fill
                       className="absolute top-0 object-cover"
                     />
@@ -78,7 +76,10 @@ const Gallery = ({ images = [] }: GalleryProps) => {
               {/* more images button */}
               {moreImagesCount > 1 && (
                 <div
+                  role="button"
+                  tabIndex={0}
                   onClick={() => openAtImageIndex(0)}
+                  onKeyUp={onEnterOrSpaceKeyDown(() => openAtImageIndex(0))}
                   className="relative w-full cursor-pointer overflow-hidden rounded-lg border-2 border-category-700 pt-[100%]"
                 >
                   <div className="absolute top-0 flex h-full w-full flex-col items-center justify-center gap-0.5 bg-white p-2 text-center">

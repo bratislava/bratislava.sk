@@ -4,7 +4,7 @@ import { getCategoryColorLocalStyle } from '@utils/colors'
 import { isDefined } from '@utils/isDefined'
 import { useTranslations } from 'next-intl'
 import React, { useEffect, useState } from 'react'
-import { Label, Selection, Tag, TagGroup, TagList, Text } from 'react-aria-components'
+import { Label, Selection, TagGroup, TagList, Text } from 'react-aria-components'
 
 export interface InbaArticlesFilterProps {
   tags: InbaTagEntityFragment[]
@@ -28,6 +28,7 @@ const InbaArticlesFilter = ({
 
   useEffect(() => {
     onChange(Array.from(selectedTags, (item) => item.toString()))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedTags])
 
   return (

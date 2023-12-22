@@ -1,4 +1,4 @@
-import { useTranslations } from 'next-intl'
+import { onEnterOrSpaceKeyDown } from '@utils/onEnterOrSpaceKeyDown'
 
 interface SelectAllDropdownRowProps {
   divider?: boolean
@@ -17,18 +17,21 @@ const SelectAllDropdownRow = ({
 
   return (
     <div
-      className="dropdown flex h-14 w-full cursor-pointer flex-col bg-white px-5 hover:text-gray-600"
+      role="button"
+      tabIndex={0}
       onClick={handleOnClick}
+      onKeyUp={onEnterOrSpaceKeyDown(() => handleOnClick)}
+      className="flex h-14 w-full cursor-pointer flex-col bg-white px-5 hover:text-gray-600"
     >
-      <div className="dropdown flex h-full flex-col justify-center">
-        <div className="dropdown flex flex-row justify-center">
-          <p className={` dropdown text-default w-full font-semibold`}>
+      <div className="flex h-full flex-col justify-center">
+        <div className="flex flex-row justify-center">
+          <p className="text-default w-full font-semibold">
             {/* Forms translations */}
             {/* {isEverythingSelected ? t('selectAll') : t('deselectAll')} */}
           </p>
         </div>
       </div>
-      {divider && <div className="dropdown border-form-input-default border-b-2" />}
+      {divider && <div className="border-b-2" />}
     </div>
   )
 }

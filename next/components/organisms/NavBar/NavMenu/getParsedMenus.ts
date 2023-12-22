@@ -9,8 +9,8 @@ export const getParsedMenus = (menu: GeneralQuery['menu'], moreLabel: string): M
       ?.map((menuItem) => {
         if (!menuItem?.page?.data?.attributes?.slug) return null
 
-        const { label, icon } = menuItem
-        const linkHref = `/${menuItem.page.data.attributes.slug}`
+        const { label, icon, page } = menuItem
+        const linkHref = `/${page.data.attributes.slug}`
         const items =
           // eslint-disable-next-line unicorn/consistent-destructuring
           menuItem.sections

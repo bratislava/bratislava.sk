@@ -1,5 +1,7 @@
 import ArrowDownIcon from '@assets/images/forms/chevron-down.svg'
 import ArrowUpIcon from '@assets/images/forms/chevron-up.svg'
+import { SelectOption } from '@components/forms/types/SelectField'
+import { onEnterOrSpaceKeyDown } from '@utils/onEnterOrSpaceKeyDown'
 import cx from 'classnames'
 import React, {
   ForwardedRef,
@@ -7,7 +9,6 @@ import React, {
   ForwardRefRenderFunction,
   RefObject,
   useEffect,
-  useId,
   useState,
 } from 'react'
 
@@ -16,12 +17,6 @@ import FieldHeader from '../../info-components/FieldHeader'
 import { ExplicitOptionalType } from '../../types/ExplicitOptional'
 import Dropdown from './Dropdown'
 import SelectFieldBox from './SelectFieldBox'
-
-export interface SelectOption {
-  const: string | number
-  title?: string
-  description?: string
-}
 
 interface SelectFieldProps {
   label: string
@@ -71,16 +66,13 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
   const [filterRef] = useState<RefObject<HTMLInputElement>>(React.createRef<HTMLInputElement>())
 
   // STYLES
-  const selectClassName = cx(
-    'border-form-input-default flex flex-row items-center rounded-lg border-2 bg-white',
-    {
-      'hover:border-form-input-hover focus:border-form-input-pressed active:border-form-input-pressed':
-        !disabled,
-      'border-negative-700 hover:border-negative-700 focus:border-negative-700':
-        errorMessage?.length > 0 && !disabled,
-      'border-form-input-disabled opacity-50': disabled,
-    },
-  )
+  const selectClassName = cx('flex flex-row items-center rounded-lg border-2 bg-white', {
+    'hover:border-form-input-hover focus:border-form-input-pressed active:border-form-input-pressed':
+      !disabled,
+    'border-negative-700 hover:border-negative-700 focus:border-negative-700':
+      errorMessage?.length > 0 && !disabled,
+    'border-form-input-disabled opacity-50': disabled,
+  })
 
   useEffect(() => {
     if (!isDropdownOpened) {
@@ -180,7 +172,7 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
   return (
     <section
       className={cx(
-        'relative flex w-full max-w-[200px] flex-col transition-all xs:max-w-[320px]',
+        'xs:max-w-[320px] relative flex w-full max-w-[200px] flex-col transition-all',
         className,
       )}
     >
@@ -194,7 +186,14 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
       />
 
       {/* SELECT PART */}
-      <div className={selectClassName} ref={ref} onClick={handleOnSelectFieldClick}>
+      <div
+        role="button"
+        tabIndex={0}
+        onKeyUp={onEnterOrSpaceKeyDown(() => handleOnSelectFieldClick)}
+        onClick={handleOnSelectFieldClick}
+        className={selectClassName}
+        ref={ref}
+      >
         {/* MAIN BODY OF SELECT */}
         <SelectFieldBox
           ref={ref}
@@ -210,10 +209,10 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
         />
 
         {/* DROPDOWN ARROW */}
-        <div className="dropdownButton flex h-10 cursor-pointer select-none flex-col items-center rounded-lg px-3 sm:h-12 sm:px-4 [&>svg]:m-1">
-          <div className="dropdownButton relative flex h-6 h-full w-6 flex-col items-center justify-center">
+        <div className="flex h-10 cursor-pointer select-none flex-col items-center rounded-lg px-3 sm:h-12 sm:px-4 [&>svg]:m-1">
+          <div className="relative flex h-full w-6 flex-col items-center justify-center">
             {isDropdownOpened ? <ArrowUpIcon /> : <ArrowDownIcon />}
-            <div className="dropdownButton absolute inset-0 z-10" />
+            <div className="absolute inset-0 z-10" />
           </div>
         </div>
 
@@ -221,7 +220,7 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
       </div>
 
       {/* DROPDOWN */}
-      <div className="dropdown relative">
+      <div className="relative">
         {isDropdownOpened && (
           <Dropdown
             enumOptions={getFilteredOptions()}

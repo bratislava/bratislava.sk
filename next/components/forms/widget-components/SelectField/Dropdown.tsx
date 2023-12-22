@@ -1,10 +1,10 @@
+import { SelectOption } from '@components/forms/types/SelectField'
 import cx from 'classnames'
 import { FC, useRef } from 'react'
 import { useOnClickOutside } from 'usehooks-ts'
 
 import DropdownRow from './DropdownRow'
 import SelectAllDropdownRow from './SelectAllDropdownRow'
-import { SelectOption } from './SelectField'
 
 interface DropdownProps {
   enumOptions: SelectOption[]
@@ -86,9 +86,9 @@ const Dropdown: FC<DropdownProps> = (props: DropdownProps) => {
             isEverythingSelected={isEverythingSelected}
           />
         )}
-        {enumOptions?.map((option, key) => (
+        {enumOptions?.map((option) => (
           <DropdownRow
-            key={key}
+            key={option.const}
             option={option}
             divider={divider}
             selected={isSelected(option)}

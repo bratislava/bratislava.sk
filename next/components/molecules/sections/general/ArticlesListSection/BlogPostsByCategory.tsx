@@ -14,7 +14,6 @@ import { generateImageSizes } from '@utils/generateImageSizes'
 import { isDefined } from '@utils/isDefined'
 import { getNumericLocalDate } from '@utils/local-date'
 import { useRoutePreservedState } from '@utils/useRoutePreservedState'
-import { filter } from 'lodash'
 import { useLocale, useTranslations } from 'next-intl'
 import React, { useEffect } from 'react'
 

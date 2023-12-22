@@ -76,7 +76,6 @@ export const AdvancedSearch = ({
           value={input}
           onChange={(event) => setInput(event.target.value)}
           onKeyDown={handleKeyDown}
-          autoFocus
         />
         <Button
           endIcon={<SearchIcon />}
@@ -105,8 +104,8 @@ export const AdvancedSearch = ({
         />
       </div>
       <div className="flex flex-col gap-x-14 gap-y-6 lg:flex-row">
-        {options.map((option, index) => (
-          <div key={index} className="flex items-center gap-x-4">
+        {options.map((option) => (
+          <div key={option.key} className="flex items-center gap-x-4">
             {/* TODO refactor to use label properly and to make it accessible by keyboard */}
             {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */}
             <div

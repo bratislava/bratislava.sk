@@ -6,7 +6,6 @@ import { Breadcrumb } from '@components/ui/Breadcrumbs/Breadcrumbs'
 import { useGeneralContext } from '@utils/generalContext'
 import { getNumericLocalDate } from '@utils/local-date'
 import { getPageBreadcrumbs } from '@utils/page'
-import { useTranslations } from 'next-intl'
 import * as React from 'react'
 import { PropsWithChildren, useMemo } from 'react'
 
@@ -19,8 +18,8 @@ export const SocialMediaButton = ({
   const openSharePage = () => {
     const w = 600
     const h = 400
-    const l = screen.width / 2 - w / 2
-    const t = screen.height / 2 - h / 2
+    const l = window.screen.width / 2 - w / 2
+    const t = window.screen.height / 2 - h / 2
 
     window.open(
       getLink(window.location.href),
@@ -38,8 +37,6 @@ export type BlogPostPageContentProps = {
 
 const BlogPostPageContent = ({ blogPost }: BlogPostPageContentProps) => {
   const tag = blogPost.attributes?.tag?.data?.attributes
-
-  const t = useTranslations()
 
   const { general } = useGeneralContext()
   const newsPage = general?.data?.attributes?.newsPage?.data

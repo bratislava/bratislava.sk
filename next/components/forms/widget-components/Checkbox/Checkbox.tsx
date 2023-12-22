@@ -68,7 +68,7 @@ const CheckboxGroupItem = ({
 
   return (
     <div>
-      <label className={containerStyle}>
+      <label className={containerStyle} htmlFor={rest.value}>
         <VisuallyHidden>
           <input id={rest.value} {...inputProps} {...focusProps} ref={ref} />
         </VisuallyHidden>

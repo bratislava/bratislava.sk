@@ -57,7 +57,7 @@ export const Bookmark = ({
 
     setWidth(ref.current.offsetWidth)
     setHeight(ref.current.offsetHeight)
-  }, [ref.current])
+  }, [ref])
 
   const contentLoaded = width !== undefined && height !== undefined
 
