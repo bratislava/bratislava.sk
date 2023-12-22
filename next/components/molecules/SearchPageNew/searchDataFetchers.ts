@@ -166,7 +166,6 @@ const getSearchOfficialBoardData = (filters: PagesFilters): SearchResponse => {
       }
     }) ?? []
 
-  // TODO get better result count
   return { searchResultsData: formattedData, searchResultsCount: formattedData.length }
 }
 
@@ -181,10 +180,9 @@ const getSearchUsersData = (filters: PagesFilters): SearchResponse => {
     data?.data.map((user) => {
       return {
         title: user.displayName,
-        metadata: [user.jobTitle],
+        metadata: [user.jobTitle, user.mail, user.businessPhones?.join(', ')],
       }
     }) ?? []
 
-  // TODO get better result count
   return { searchResultsData: formattedData, searchResultsCount: formattedData.length }
 }

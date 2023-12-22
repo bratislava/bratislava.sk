@@ -23,28 +23,21 @@ const SearchCardComposed = ({ data, variant = 'default', tagText }: SearchCardCo
   return (
     <>
       {variant === 'default' && (
-        <MLink
-          className="group flex flex-row overflow-hidden"
-          // TODO: fix href to accomodate cards with no slug
-          href={isDefined(data.url) ? `${data.url}` : '#'}
-        >
+        <div className="group relative flex flex-row overflow-hidden">
           <div className="flex w-full flex-row gap-6 px-6 py-4">
             <SearchCardComposed.InfoContainer className="gap-1.5">
               <div className="flex flex-row flex-wrap items-center gap-x-3 gap-y-1.5 lg:flex-nowrap">
-                <SearchCardComposed.Title title={data.title} />
+                <SearchCardComposed.TitleWithLink title={data.title} url={data.url} />
                 <SearchCardComposed.Tag text={tagText} />
               </div>
               <SearchCardComposed.Metadata metadata={data.metadata} />
             </SearchCardComposed.InfoContainer>
-            <SearchCardComposed.Button />
+            {isDefined(data.url) && <SearchCardComposed.Button />}
           </div>
-        </MLink>
+        </div>
       )}
       {variant === 'withPicture' && (
-        <MLink
-          className="group flex flex-row items-stretch overflow-hidden rounded-none border-b-2 lg:rounded-lg lg:border-2"
-          href={`/../${data.url}`}
-        >
+        <div className="group relative flex flex-row items-stretch overflow-hidden rounded-none border-b-2 lg:rounded-lg lg:border-2">
           {data.coverImageSrc ? (
             <SearchCardComposed.ImageFromUrl imgUrl={data.coverImageSrc} />
           ) : data.pageColor ? (
@@ -56,13 +49,13 @@ const SearchCardComposed = ({ data, variant = 'default', tagText }: SearchCardCo
             <SearchCardComposed.InfoContainer className="flex flex-col gap-3">
               <div className="flex flex-col gap-y-2">
                 <SearchCardComposed.Tag className="" text={tagText} />
-                <SearchCardComposed.Title className="" title={data.title} />
+                <SearchCardComposed.TitleWithLink className="" title={data.title} url={data.url} />
               </div>
               <SearchCardComposed.Metadata metadata={data.metadata} />
             </SearchCardComposed.InfoContainer>
-            <SearchCardComposed.Button className="hidden lg:block" />
+            {isDefined(data.url) && <SearchCardComposed.Button className="hidden lg:block" />}
           </div>
-        </MLink>
+        </div>
       )}
     </>
   )
@@ -127,18 +120,43 @@ SearchCardComposed.InfoContainer = function ({
   return <div className={twMerge('flex w-full flex-col justify-center', className)}>{children}</div>
 }
 
-SearchCardComposed.Title = function ({ title, className }: { title: string; className?: string }) {
+SearchCardComposed.TitleWithLink = function ({
+  title,
+  url,
+  className,
+}: {
+  title: string
+  url?: string
+  className?: string
+}) {
   return (
-    <Typography
-      type="h3"
-      size="h5"
-      className={twMerge(
-        'line-clamp-3 font-semibold group-hover:underline md:line-clamp-2 lg:line-clamp-1',
-        className,
+    <>
+      {isDefined(url) ? (
+        <MLink stretched href={url ?? ''}>
+          <Typography
+            type="h3"
+            size="h5"
+            className={twMerge(
+              'line-clamp-3 font-semibold group-hover:underline md:line-clamp-2 lg:line-clamp-1',
+              className,
+            )}
+          >
+            {title}
+          </Typography>
+        </MLink>
+      ) : (
+        <Typography
+          type="h3"
+          size="h5"
+          className={twMerge(
+            'line-clamp-3 font-semibold md:line-clamp-2 lg:line-clamp-1',
+            className,
+          )}
+        >
+          {title}
+        </Typography>
       )}
-    >
-      {title}
-    </Typography>
+    </>
   )
 }
 

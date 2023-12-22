@@ -59,11 +59,11 @@ const SearchPageContentNew = () => {
       displayName: t('SearchPage.contact'),
       displayNamePlural: t('SearchPage.contacts'),
     },
-    {
-      id: 'officialBoard',
-      displayName: t('SearchPage.document'),
-      displayNamePlural: t('officialBoard'),
-    },
+    // {
+    //   id: 'officialBoard',
+    //   displayName: t('SearchPage.document'),
+    //   displayNamePlural: t('officialBoard'),
+    // },
   ]
 
   const getSearchOptionByKeyValue = (key: string) => {
