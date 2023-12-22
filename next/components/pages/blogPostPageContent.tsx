@@ -18,8 +18,8 @@ export const SocialMediaButton = ({
   const openSharePage = () => {
     const w = 600
     const h = 400
-    const l = screen.width / 2 - w / 2
-    const t = screen.height / 2 - h / 2
+    const l = window.screen.width / 2 - w / 2
+    const t = window.screen.height / 2 - h / 2
 
     window.open(
       getLink(window.location.href),

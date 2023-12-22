@@ -22,6 +22,7 @@ type Props = {
 
 const imageSizes = generateImageSizes({ default: '100vw', md: '50vw', lg: '33vw' })
 
+/** FIXME ESLint assign type to data */
 const RelatedBlogPostsSection = ({ page, className }: Props) => {
   const t = useTranslations('RelatedBlogPostsSection')
   const locale = useLocale()
@@ -64,6 +65,7 @@ const RelatedBlogPostsSection = ({ page, className }: Props) => {
                 date={getNumericLocalDate(date_added ?? publishedAt)}
                 title={title ?? ''}
                 tag={tagTitle ?? undefined}
+                // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
                 linkProps={{ children: t('readMore'), href: `/blog/${slug}` }}
               />
             )

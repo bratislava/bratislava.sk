@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import Tag from 'components/forms/simple-components/Tag'
 
 import { Stack } from '../Stack'

@@ -3,20 +3,19 @@ import Markdown from '@components/atoms/Markdown'
 import cx from 'classnames'
 
 export interface ColumnedTextProps {
-  className?: string
   content: string
-  hasBackground?: boolean
   contentAlignment?: Enum_Componentsectionscolumnedtext_Contentalignment | null
 }
 
 export const ColumnedText = ({
   content,
-  hasBackground,
   contentAlignment = Enum_Componentsectionscolumnedtext_Contentalignment.Left,
 }: ColumnedTextProps) => {
-  const breakWord = '<break>'
+  const breakWord = '&lt;break&gt;'
   const columns = content.split(breakWord)
+
   if (!content) return null
+
   return (
     <div
       className={cx('grid gap-6', {
@@ -29,9 +28,10 @@ export const ColumnedText = ({
         'grid-cols-2 md:grid-cols-4 lg:grid-cols-6': columns.length > 6,
       })}
     >
-      {columns.map((column, i) => (
+      {columns.map((column, index) => (
         <div
-          key={i}
+          // eslint-disable-next-line react/no-array-index-key
+          key={index}
           className={cx({
             'text-left':
               contentAlignment === Enum_Componentsectionscolumnedtext_Contentalignment.Left,

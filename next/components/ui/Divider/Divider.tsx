@@ -132,9 +132,7 @@ interface DividerProps {
   dividerStyle?: string
 }
 
-export const getDivider = (dividerStyle?: string) => {
-  const isClient = useIsClient()
-
+export const getDivider = (isClient: boolean, dividerStyle?: string) => {
   const md = parseInt(screens.md.slice(0, -2), 10)
   const lg = parseInt(screens.lg.slice(0, -2), 10)
 
@@ -157,11 +155,12 @@ export const getDivider = (dividerStyle?: string) => {
   return dividerType ? DIVIDER[dividerType][screenSize] : DIVIDER.hrad[screenSize]
 }
 
-export const Divider = ({ className, dividerStyle }: DividerProps) => {
+const Divider = ({ className, dividerStyle }: DividerProps) => {
   const [Component, setComponent] = useState<ReactNode>(null)
+  const isClient = useIsClient()
 
   useEffect(() => {
-    const DividerComponent = getDivider(dividerStyle)
+    const DividerComponent = getDivider(isClient, dividerStyle)
     setComponent(DividerComponent)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])

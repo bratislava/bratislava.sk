@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 import BasketServiceIcon from '@assets/images/account/municipal-services/basket-icon.svg'
 import CompassServiceIcon from '@assets/images/account/municipal-services/compass-icon.svg'
 import MoneyServiceIcon from '@assets/images/account/municipal-services/money-icon.svg'

@@ -21,7 +21,7 @@ const data = {
   emailContacts: [
     {
       overrideLabel: null,
-      value: 'sekretariat.gr@dpb.sk',
+      value: 'sekretariat.gr(at)dpb.sk',
     },
   ],
   webContacts: [

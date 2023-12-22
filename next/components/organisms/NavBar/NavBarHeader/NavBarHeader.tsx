@@ -68,14 +68,14 @@ const NavBarHeader = ({ className }: NavBarProps) => {
               {...getCommonLinkProps(accountLink)}
             />
           ) : (
-            <Divider />
+            <Divider className={className} />
           )}
 
           <MLink href={t('searchLink')} className="-mx-4 p-4">
             <SearchIcon />
           </MLink>
 
-          <Divider />
+          <Divider className={className} />
 
           {otherLanguage && (
             <MLink variant="underlined" href={otherLanguage.path} locale={otherLanguage.locale}>
