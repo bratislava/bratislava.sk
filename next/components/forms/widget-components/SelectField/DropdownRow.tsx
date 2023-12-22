@@ -1,11 +1,12 @@
 import ChevronRightIcon from '@assets/images/forms/chevron-right.svg'
 import FilledSelectedIcon from '@assets/images/forms/circle-filled-selected.svg'
+import { SelectOption } from '@components/forms/types/SelectField'
+import { onEnterOrSpaceKeyDown } from '@utils/onEnterOrSpaceKeyDown'
 import cx from 'classnames'
 import React from 'react'
 
 import CheckboxIcon from '../../icon-components/CheckboxIcon'
 import RadioButtonIcon from '../../icon-components/RadioButtonIcon'
-import { SelectOption } from './SelectField'
 
 interface DropdownRowProps {
   option: SelectOption
@@ -71,18 +72,24 @@ const DropdownRow = ({
 
   // RENDER
   return (
-    <div className={rowClassName} onClick={handleOnClick}>
-      <div className="dropdown flex h-full flex-col justify-center">
-        <div className="dropdown flex flex-row justify-center">
+    <div
+      role="button"
+      tabIndex={0}
+      onKeyUp={onEnterOrSpaceKeyDown(() => handleOnClick)}
+      className={rowClassName}
+      onClick={handleOnClick}
+    >
+      <div className="flex h-full flex-col justify-center">
+        <div className="flex flex-row justify-center">
           <p className={optionClassName}>{transformedOptionText}</p>
-          <div className="dropdown relative flex flex-col justify-center">
+          <div className="relative flex flex-col justify-center">
             {rowIcon}
-            <div className="dropdown absolute inset-0 z-10" />
+            <div className="absolute inset-0 z-10" />
           </div>
         </div>
-        {option.description && <p className="dropdown text-small">{option.description}</p>}
+        {option.description && <p className="text-small">{option.description}</p>}
       </div>
-      {divider && <div className="dropdown border-form-input-default border-b-2" />}
+      {divider && <div className="border-b-2" />}
     </div>
   )
 }

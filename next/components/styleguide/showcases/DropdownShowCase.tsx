@@ -1,5 +1,5 @@
+import { SelectOption } from '@components/forms/types/SelectField'
 import Dropdown from '@components/forms/widget-components/SelectField/Dropdown'
-import { SelectOption } from '@components/forms/widget-components/SelectField/SelectField'
 
 import { Stack } from '../Stack'
 import { Wrapper } from '../Wrapper'

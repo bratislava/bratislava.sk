@@ -1,7 +1,6 @@
 /* eslint-disable no-console */
-import SelectField, {
-  SelectOption,
-} from '@components/forms/widget-components/SelectField/SelectField'
+import { SelectOption } from '@components/forms/types/SelectField'
+import SelectField from '@components/forms/widget-components/SelectField/SelectField'
 import React, { useState } from 'react'
 
 import { Stack } from '../Stack'
