@@ -1,11 +1,11 @@
 import { Typography } from '@bratislava/component-library'
 import Pagination from '@bratislava/ui-bratislava/Pagination/Pagination'
 import SearchCardComposed from '@components/molecules/SearchPageNew/SearchCardComposed'
-import {
-  getDataBySearchOptionKey,
-  SearchFilters,
-} from '@components/molecules/SearchPageNew/searchDataFetchers'
 import SearchResultsHeader from '@components/molecules/SearchPageNew/SearchResultsHeader'
+import {
+  SearchFilters,
+  useQueryBySearchOption,
+} from '@components/molecules/SearchPageNew/useQueryBySearchOption'
 import { SearchOption } from '@components/pages/searchPageContentNew'
 import { useTranslations } from 'next-intl'
 import { Dispatch, SetStateAction } from 'react'
@@ -27,10 +27,11 @@ const GeneralSearchResults = ({
 }: GeneralSearchResultsProps) => {
   const t = useTranslations()
 
-  const { searchResultsData, searchResultsCount } = getDataBySearchOptionKey(
-    searchOption.id,
-    filters,
-  )
+  const searchQuery = useQueryBySearchOption(searchOption.id, filters)
+
+  const { data } = searchQuery
+  const { searchResultsData, searchResultsCount } = data ?? {}
+
   const GENERAL_RESULTS_COUNT = 5
 
   return (
@@ -44,7 +45,7 @@ const GeneralSearchResults = ({
             }}
           />
         )}
-        {searchResultsData.length > 0 ? (
+        {searchResultsData?.length > 0 ? (
           <div className="flex flex-col gap-y-2">
             {variant === 'allResults'
               ? searchResultsData.slice(0, GENERAL_RESULTS_COUNT).map((item) => {
@@ -71,8 +72,11 @@ const GeneralSearchResults = ({
                 })
               : null}
           </div>
-        ) : (
+        ) : filters.search ? (
           <Typography type="p">{t('SearchPage.noResults')}</Typography>
+        ) : (
+          /* Contacts show only for non empty search query */
+          <Typography type="p">{t('SearchPage.enterSearchQuery')}</Typography>
         )}
       </div>
       {variant === 'specificResults' && onPageChange ? (

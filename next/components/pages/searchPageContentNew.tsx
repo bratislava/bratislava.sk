@@ -2,7 +2,7 @@ import { Typography } from '@bratislava/component-library'
 import Chip from '@components/forms/simple-components/Chip'
 import AdvancedSearchNew from '@components/molecules/SearchPageNew/AdvancedSearchNew'
 import GeneralSearchResults from '@components/molecules/SearchPageNew/GeneralSearchResults'
-import { SearchFilters } from '@components/molecules/SearchPageNew/searchDataFetchers'
+import { SearchFilters } from '@components/molecules/SearchPageNew/useQueryBySearchOption'
 import { SectionContainer } from '@components/ui/SectionContainer/SectionContainer'
 import { getCategoryColorLocalStyle } from '@utils/colors'
 import { useTranslations } from 'next-intl'
@@ -43,6 +43,7 @@ const SearchPageContentNew = () => {
     id: 'allResults',
     displayNamePlural: t('SearchPage.allResults'),
   }
+
   const searchOptions: SearchOption[] = [
     { id: 'pages', displayName: t('SearchPage.page'), displayNamePlural: t('SearchPage.pages') },
     {
@@ -50,11 +51,11 @@ const SearchPageContentNew = () => {
       displayName: t('SearchPage.article'),
       displayNamePlural: t('SearchPage.articles'),
     },
-    {
-      id: 'inbaArticles',
-      displayName: t('SearchPage.inbaArticle'),
-      displayNamePlural: t('SearchPage.inbaArticles'),
-    },
+    // {
+    //   id: 'inbaArticles',
+    //   displayName: t('SearchPage.inbaArticle'),
+    //   displayNamePlural: t('SearchPage.inbaArticles'),
+    // },
     {
       id: 'users',
       displayName: t('SearchPage.contact'),
