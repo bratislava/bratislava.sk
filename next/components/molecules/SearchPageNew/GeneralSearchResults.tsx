@@ -29,7 +29,8 @@ const GeneralSearchResults = ({
 
   const searchQuery = useQueryBySearchOption(searchOption.id, filters)
 
-  const { data } = searchQuery
+  // FIXME types - ts doesn't know that this can be undefined or null, I added "?? {}" manually
+  const { data } = searchQuery ?? {}
   const { searchResultsData, searchResultsCount } = data ?? {}
 
   const GENERAL_RESULTS_COUNT = 5
