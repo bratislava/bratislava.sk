@@ -15,7 +15,7 @@ const Chip = ({ variant = 'large', ...props }: ChipProps) => {
     <Tag
       {...props}
       className={cx(
-        'flex cursor-pointer items-center rounded-lg border-2 hover:bg-gray-200 selected:border-category-700 selected:bg-category-700 selected:text-gray-0 hover:selected:bg-category-700',
+        'flex cursor-pointer items-center rounded-lg border-2 outline-none hover:bg-gray-200 focus-visible:ring focus-visible:ring-offset-2 selected:border-category-700 selected:bg-category-700 selected:text-gray-0 hover:selected:bg-category-700',
         {
           'px-3 py-1.5 text-size-p-small lg:px-4 lg:py-2.5 lg:text-size-p-default':
             variant === 'large',

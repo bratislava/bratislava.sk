@@ -38,10 +38,11 @@ const AdvancedSearchNew = forwardRef<HTMLInputElement, AdvancedSearchProps>(
           </Typography>
         </Label>
         <div className="relative">
-          <Input className="relative w-full rounded-lg border-2 px-[60px] py-5" />
+          {/* 3.75rem = 60px, 0.75rem = 12px */}
+          <Input className="relative w-full rounded-lg border-2 px-[3.75rem] py-5 outline-none hover:border-gray-400 focus:border-gray-800 focus-visible:ring focus-visible:ring-offset-2" />
           <SearchIcon
             aria-hidden
-            className="pointer-events-none absolute left-6 top-[calc(50%_-_12px)]"
+            className="pointer-events-none absolute left-6 top-[calc(50%_-_0.75rem)]"
           />
           {input ? (
             <Button
@@ -51,7 +52,7 @@ const AdvancedSearchNew = forwardRef<HTMLInputElement, AdvancedSearchProps>(
               variant="icon-wrapped-negative-margin"
               // Keyboard users use Escape to erase the input, they can't focus this button, so empty aria-label is okay
               aria-label=""
-              className="absolute right-6 top-[calc(50%_-_12px)]"
+              className="absolute right-6 top-[calc(50%_-_0.75rem)]"
             />
           ) : null}
         </div>
