@@ -5,23 +5,23 @@ import {
   getDataBySearchOptionKey,
   SearchFilters,
 } from '@components/molecules/SearchPageNew/searchDataFetchers'
-import { SearchResultsHeader } from '@components/molecules/SearchPageNew/SearchResultsHeader'
+import SearchResultsHeader from '@components/molecules/SearchPageNew/SearchResultsHeader'
 import { SearchOption } from '@components/pages/searchPageContentNew'
-import { isDefined } from '@utils/isDefined'
 import { useTranslations } from 'next-intl'
+import { Dispatch, SetStateAction } from 'react'
 
 type GeneralSearchResultsProps = {
   filters: SearchFilters
   variant: 'allResults' | 'specificResults'
   searchOption: SearchOption
-  handleShowMore?: React.Dispatch<React.SetStateAction<Set<SearchOption['id']>>>
-  handlePageChange?: React.Dispatch<React.SetStateAction<number>>
+  onShowMore?: Dispatch<SetStateAction<Set<SearchOption['id']>>>
+  onPageChange?: Dispatch<SetStateAction<number>>
 }
 
 const GeneralSearchResults = ({
   filters,
-  handleShowMore,
-  handlePageChange,
+  onShowMore,
+  onPageChange,
   searchOption,
   variant,
 }: GeneralSearchResultsProps) => {
@@ -31,7 +31,7 @@ const GeneralSearchResults = ({
     searchOption.id,
     filters,
   )
-  const DEFAULT_PAGE_SIZE = 5
+  const GENERAL_RESULTS_COUNT = 5
 
   return (
     <div className="flex flex-col gap-y-8">
@@ -40,20 +40,20 @@ const GeneralSearchResults = ({
           <SearchResultsHeader
             title={`${searchOption?.displayNamePlural}` ?? ''}
             handleShowMore={() => {
-              handleShowMore(new Set([searchOption.id]))
+              onShowMore(new Set([searchOption.id]))
             }}
           />
         )}
         {searchResultsData.length > 0 ? (
           <div className="flex flex-col gap-y-2">
             {variant === 'allResults'
-              ? searchResultsData.slice(0, DEFAULT_PAGE_SIZE).map((item) => {
+              ? searchResultsData.slice(0, GENERAL_RESULTS_COUNT).map((item) => {
                   return (
                     <SearchCardComposed
                       data={{ ...item }}
                       tagText={searchOption.displayName}
                       variant="withPicture"
-                      key={`item-${variant}-${searchOption.id}-${item.url}`}
+                      key={`item-${variant}-${searchOption.id}-${item.linkHref}`}
                     />
                   )
                 })
@@ -65,7 +65,7 @@ const GeneralSearchResults = ({
                       data={{ ...item }}
                       tagText={searchOption.displayName}
                       variant="withPicture"
-                      key={`item-${variant}-${searchOption.id}-${item.url}`}
+                      key={`item-${variant}-${searchOption.id}-${item.linkHref}`}
                     />
                   )
                 })
@@ -75,7 +75,7 @@ const GeneralSearchResults = ({
           <Typography type="p">{t('SearchPage.noResults')}</Typography>
         )}
       </div>
-      {variant === 'specificResults' ? (
+      {variant === 'specificResults' && onPageChange ? (
         <div>
           <Pagination
             currentPage={filters.page}
@@ -83,8 +83,7 @@ const GeneralSearchResults = ({
               searchResultsCount > 0 ? Math.ceil(searchResultsCount / filters.pageSize) : 1
             }
             onPageChange={(pageNumber) => {
-              if (!isDefined(handlePageChange)) return
-              handlePageChange(pageNumber)
+              onPageChange(pageNumber)
               window.scrollTo({ top: 0 })
             }}
           />

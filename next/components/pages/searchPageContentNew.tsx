@@ -1,3 +1,4 @@
+import { Typography } from '@bratislava/component-library'
 import Chip from '@components/forms/simple-components/Chip'
 import AdvancedSearchNew from '@components/molecules/SearchPageNew/AdvancedSearchNew'
 import GeneralSearchResults from '@components/molecules/SearchPageNew/GeneralSearchResults'
@@ -98,14 +99,16 @@ const SearchPageContentNew = () => {
   return (
     <SectionContainer className="mb-8">
       <div className="flex w-full flex-col gap-y-8 pt-12">
+        <Typography type="h1">{t('searching')}</Typography>
+
         <div className="flex flex-col">
           <AdvancedSearchNew
             placeholder={t('enterKeyword')}
-            title={t('searching')}
             input={input}
             setInput={setInput}
             setSearchQuery={setSearchValue}
           />
+
           <TagGroup
             selectionMode="single"
             selectedKeys={selectedOptionKey}
@@ -136,7 +139,7 @@ const SearchPageContentNew = () => {
                   variant="allResults"
                   searchOption={option}
                   filters={searchFilters}
-                  handleShowMore={setSelectedOptionKey}
+                  onShowMore={setSelectedOptionKey}
                   key={`allResults-${option.id}`}
                 />
               )
@@ -149,8 +152,8 @@ const SearchPageContentNew = () => {
               [...selectedOptionKey][0]?.toString() ?? defaultSearchOption.id,
             )}
             filters={searchFilters}
-            handleShowMore={setSelectedOptionKey}
-            handlePageChange={setCurrentPage}
+            onShowMore={setSelectedOptionKey}
+            onPageChange={setCurrentPage}
             key={`specificResults-${[...selectedOptionKey][0]}`}
           />
         )}

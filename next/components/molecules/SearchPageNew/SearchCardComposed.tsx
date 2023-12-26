@@ -27,17 +27,17 @@ const SearchCardComposed = ({ data, variant = 'default', tagText }: SearchCardCo
           <div className="flex w-full flex-row gap-6 px-6 py-4">
             <SearchCardComposed.InfoContainer className="gap-1.5">
               <div className="flex flex-row flex-wrap items-center gap-x-3 gap-y-1.5 lg:flex-nowrap">
-                <SearchCardComposed.TitleWithLink title={data.title} url={data.url} />
+                <SearchCardComposed.TitleWithLink title={data.title} url={data.linkHref} />
                 <SearchCardComposed.Tag text={tagText} />
               </div>
               <SearchCardComposed.Metadata metadata={data.metadata} />
             </SearchCardComposed.InfoContainer>
-            {isDefined(data.url) && <SearchCardComposed.Button />}
+            {data.linkHref && <SearchCardComposed.Button />}
           </div>
         </div>
       )}
       {variant === 'withPicture' && (
-        <div className="group relative flex flex-row items-stretch overflow-hidden rounded-none border-b-2 lg:rounded-lg lg:border-2">
+        <div className="group relative flex flex-row items-stretch overflow-hidden rounded-none border-b-2 hover:border-gray-400 lg:rounded-lg lg:border-2">
           {data.coverImageSrc ? (
             <SearchCardComposed.ImageFromUrl imgUrl={data.coverImageSrc} />
           ) : data.pageColor ? (
@@ -48,12 +48,16 @@ const SearchCardComposed = ({ data, variant = 'default', tagText }: SearchCardCo
           <div className="flex w-full flex-row gap-6 py-4 lg:p-6">
             <SearchCardComposed.InfoContainer className="flex flex-col gap-3">
               <div className="flex flex-col gap-y-2">
-                <SearchCardComposed.Tag className="" text={tagText} />
-                <SearchCardComposed.TitleWithLink className="" title={data.title} url={data.url} />
+                <SearchCardComposed.Tag text={tagText} />
+                <SearchCardComposed.TitleWithLink
+                  className=""
+                  title={data.title}
+                  url={data.linkHref}
+                />
               </div>
               <SearchCardComposed.Metadata metadata={data.metadata} />
             </SearchCardComposed.InfoContainer>
-            {isDefined(data.url) && <SearchCardComposed.Button className="hidden lg:block" />}
+            {data.linkHref && <SearchCardComposed.Button className="hidden lg:block" />}
           </div>
         </div>
       )}
@@ -131,13 +135,13 @@ SearchCardComposed.TitleWithLink = function ({
 }) {
   return (
     <>
-      {isDefined(url) ? (
+      {url ? (
         <MLink stretched href={url ?? ''}>
           <Typography
             type="h3"
             size="h5"
             className={twMerge(
-              'line-clamp-3 font-semibold group-hover:underline md:line-clamp-2 lg:line-clamp-1',
+              'line-clamp-3 group-hover:underline md:line-clamp-2 lg:line-clamp-1',
               className,
             )}
           >
@@ -148,10 +152,7 @@ SearchCardComposed.TitleWithLink = function ({
         <Typography
           type="h3"
           size="h5"
-          className={twMerge(
-            'line-clamp-3 font-semibold md:line-clamp-2 lg:line-clamp-1',
-            className,
-          )}
+          className={twMerge('line-clamp-3 md:line-clamp-2 lg:line-clamp-1', className)}
         >
           {title}
         </Typography>

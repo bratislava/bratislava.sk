@@ -32,7 +32,7 @@ export type SearchFilters = PagesFilters | BlogPostsFilters | InbaArticlesFilter
 
 export type SearchResult = {
   title: string | null | undefined
-  url?: string | null | undefined
+  linkHref?: string | null | undefined
   metadata?: (string | null | undefined)[]
   coverImageSrc?: string | null | undefined
   pageColor?: Enum_Page_Pagecolor
@@ -87,7 +87,7 @@ const getSearchPagesData = (filters: PagesFilters): SearchResponse => {
     data?.hits.map((page: PageMeili): SearchResult => {
       return {
         title: page.title,
-        url: page.slug,
+        linkHref: `/${page.slug}`,
         metadata: [page.pageCategory?.title, formatDate(page.publishedAt)],
         pageColor: page.pageColor,
       }
@@ -111,7 +111,7 @@ const getSearchBlogPostsData = (filters: BlogPostsFilters): SearchResponse => {
       (blogPostData: Pick<LatestBlogPostEntityFragment, 'attributes'>): SearchResult => {
         return {
           title: blogPostData.attributes?.title,
-          url: `blog/${blogPostData.attributes?.slug}`,
+          linkHref: `/blog/${blogPostData.attributes?.slug}`,
           metadata: [
             blogPostData.attributes?.tag?.data?.attributes?.title,
             formatDate(blogPostData.attributes?.publishedAt),
@@ -138,7 +138,7 @@ const getSearchInbaArticlesData = (filters: InbaArticlesFilters): SearchResponse
     data?.hits?.map((inbaArticle): SearchResult => {
       return {
         title: inbaArticle.attributes.title,
-        url: `inba/text/${inbaArticle.attributes.slug}`,
+        linkHref: `/inba/text/${inbaArticle.attributes.slug}`,
         metadata: [
           inbaArticle.attributes?.inbaTag?.data?.attributes?.title,
           formatDate(inbaArticle.attributes.publishedAt),
