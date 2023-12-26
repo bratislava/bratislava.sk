@@ -76,7 +76,8 @@ const GeneralSearchResults = ({
         ) : filters.search ? (
           <Typography type="p">{t('SearchPage.noResults')}</Typography>
         ) : (
-          /* Contacts show only for non empty search query */
+          /* Contacts show only for non-empty search query */
+          // TODO keep this also during the first loading
           <Typography type="p">{t('SearchPage.enterSearchQuery')}</Typography>
         )}
       </div>
@@ -87,10 +88,7 @@ const GeneralSearchResults = ({
             totalCount={
               searchResultsCount > 0 ? Math.ceil(searchResultsCount / filters.pageSize) : 1
             }
-            onPageChange={(pageNumber) => {
-              onPageChange(pageNumber)
-              window.scrollTo({ top: 0 })
-            }}
+            onPageChange={onPageChange}
           />
         </div>
       ) : null}

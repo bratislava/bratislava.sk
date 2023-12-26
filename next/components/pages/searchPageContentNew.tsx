@@ -6,7 +6,7 @@ import { SearchFilters } from '@components/molecules/SearchPageNew/useQueryBySea
 import { SectionContainer } from '@components/ui/SectionContainer/SectionContainer'
 import { getCategoryColorLocalStyle } from '@utils/colors'
 import { useTranslations } from 'next-intl'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { Selection, TagGroup, TagList } from 'react-aria-components'
 import { StringParam, useQueryParam, withDefault } from 'use-query-params'
 import { useDebounce } from 'usehooks-ts'
@@ -108,10 +108,16 @@ const SearchPageContentNew = () => {
   const searchFilters: SearchFilters = {
     search: searchValue,
     page: currentPage,
-    pageSize: 24,
+    pageSize: 12,
     // tagIds need to be here for now, because BlogPost and InbaArticle fetchers filter by tagIds
     tagIds: [],
   }
+
+  const searchRef = useRef(null)
+
+  useEffect(() => {
+    searchRef.current?.scrollIntoView({ behavior: 'smooth' })
+  }, [searchFilters.page, searchFilters.pageSize])
 
   return (
     <SectionContainer className="mb-8">
@@ -120,6 +126,7 @@ const SearchPageContentNew = () => {
 
         <div className="flex flex-col gap-3 lg:gap-4">
           <AdvancedSearchNew
+            ref={searchRef}
             placeholder={t('enterKeyword')}
             input={input}
             setInput={setInput}
