@@ -45,6 +45,8 @@ const AdvancedSearchNew = ({
           className="pointer-events-none absolute left-6 top-[calc(50%_-_12px)]"
         />
         <Button
+          // We don't want responsive sizing, to keep the button well aligned with the input
+          size="large"
           icon={<CrossInCircleIcon />}
           variant="icon-wrapped-negative-margin"
           // Keyboard users use Escape to erase the input, they can't focus this button, so empty aria-label is okay

@@ -9,6 +9,7 @@ import { getCategoryColorLocalStyle } from '@utils/colors'
 import { generateImageSizes } from '@utils/generateImageSizes'
 import { isDefined } from '@utils/isDefined'
 import { findIconByPageColor } from '@utils/pageIcons'
+import cx from 'classnames'
 import Image from 'next/image'
 import React, { ReactNode } from 'react'
 import { twMerge } from 'tailwind-merge'
@@ -37,7 +38,12 @@ const SearchCardComposed = ({ data, variant = 'default', tagText }: SearchCardCo
         </div>
       )}
       {variant === 'withPicture' && (
-        <div className="group relative flex flex-row items-stretch overflow-hidden rounded-none border-b-2 hover:border-gray-400 lg:rounded-lg lg:border-2">
+        <div
+          className={cx(
+            'group relative flex flex-row items-stretch overflow-hidden rounded-none border-b-2 lg:rounded-lg lg:border-2',
+            { 'hover:border-gray-400': data.linkHref },
+          )}
+        >
           {data.coverImageSrc ? (
             <SearchCardComposed.ImageFromUrl imgUrl={data.coverImageSrc} />
           ) : data.pageColor ? (
