@@ -28,7 +28,7 @@ const SearchCardComposed = ({ data, variant = 'default', tagText }: SearchCardCo
           <div className="flex w-full flex-row gap-6 px-6 py-4">
             <SearchCardComposed.InfoContainer className="gap-1.5">
               <div className="flex flex-row flex-wrap items-center gap-x-3 gap-y-1.5 lg:flex-nowrap">
-                <SearchCardComposed.TitleWithLink title={data.title} url={data.linkHref} />
+                <SearchCardComposed.TitleWithLink title={data.title} href={data.linkHref} />
                 <SearchCardComposed.Tag text={tagText} />
               </div>
               <SearchCardComposed.Metadata metadata={data.metadata} />
@@ -58,7 +58,7 @@ const SearchCardComposed = ({ data, variant = 'default', tagText }: SearchCardCo
                 <SearchCardComposed.TitleWithLink
                   className=""
                   title={data.title}
-                  url={data.linkHref}
+                  href={data.linkHref}
                 />
               </div>
               <SearchCardComposed.Metadata metadata={data.metadata} />
@@ -113,7 +113,7 @@ SearchCardComposed.ImageFromUrl = function ({
         alt=""
         sizes={generateImageSizes({ default: '150px' })}
         fill
-        className="h-full object-cover"
+        className="object-cover"
       />
       <ImagePlaceholder />
     </div>
@@ -132,17 +132,17 @@ SearchCardComposed.InfoContainer = function ({
 
 SearchCardComposed.TitleWithLink = function ({
   title,
-  url,
+  href,
   className,
 }: {
   title: string
-  url?: string
+  href?: string
   className?: string
 }) {
   return (
     <>
-      {url ? (
-        <MLink stretched href={url ?? ''}>
+      {href ? (
+        <MLink stretched href={href}>
           <Typography
             type="h3"
             size="h5"
