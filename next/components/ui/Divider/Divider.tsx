@@ -1,8 +1,6 @@
 import cx from 'classnames'
-import React, { ReactNode, useEffect, useState } from 'react'
-import { useIsClient } from 'usehooks-ts'
+import React from 'react'
 
-import screens from '../../../tailwind.config.screens'
 import BookFullWidth from './dividers/book-full-width.svg'
 import BookMobileWidth from './dividers/book-mobile-width.svg'
 import BookNarrowWidth from './dividers/book-narrow-width.svg'
@@ -51,79 +49,79 @@ import TreesNarrowWidth from './dividers/trees-narrow-width.svg'
 
 const DIVIDER = {
   mesto: {
-    display: <FamousAttractionsFullWidth />,
-    tablet: <FamousAttractionsNarrowWidth />,
-    mobile: <FamousAttractionsMobileWidth />,
+    display: FamousAttractionsFullWidth,
+    tablet: FamousAttractionsNarrowWidth,
+    mobile: FamousAttractionsMobileWidth,
   },
   hrad: {
-    display: <CastleFullWidth />,
-    tablet: <CastleNarrowWidth />,
-    mobile: <CastleMobileWidth />,
+    display: CastleFullWidth,
+    tablet: CastleNarrowWidth,
+    mobile: CastleMobileWidth,
   },
   doprava: {
-    display: <CarsFullWidth />,
-    tablet: <CarsNarrowWidth />,
-    mobile: <CarsMobileWidth />,
+    display: CarsFullWidth,
+    tablet: CarsNarrowWidth,
+    mobile: CarsMobileWidth,
   },
   parkovanie: {
-    display: <ParkingSpaceFullWidth />,
-    tablet: <ParkingSpaceNarrowWidth />,
-    mobile: <ParkingSpaceMobileWidth />,
+    display: ParkingSpaceFullWidth,
+    tablet: ParkingSpaceNarrowWidth,
+    mobile: ParkingSpaceMobileWidth,
   },
   bicykel: {
-    display: <CyclistsFullWidth />,
-    tablet: <CyclistsNarrowWidth />,
-    mobile: <CyclistsMobileWidth />,
+    display: CyclistsFullWidth,
+    tablet: CyclistsNarrowWidth,
+    mobile: CyclistsMobileWidth,
   },
   lod: {
-    display: <ShipFullWidth />,
-    tablet: <ShipNarrowWidth />,
-    mobile: <ShipMobileWidth />,
+    display: ShipFullWidth,
+    tablet: ShipNarrowWidth,
+    mobile: ShipMobileWidth,
   },
   stromy: {
-    display: <TreesFullWidth />,
-    tablet: <TreesNarrowWidth />,
-    mobile: <TreesMobileWidth />,
+    display: TreesFullWidth,
+    tablet: TreesNarrowWidth,
+    mobile: TreesMobileWidth,
   },
   vystavba: {
-    display: <ConstructionSiteFullWidth />,
-    tablet: <ConstructionSiteNarrowWidth />,
-    mobile: <ConstructionSiteMobileWidth />,
+    display: ConstructionSiteFullWidth,
+    tablet: ConstructionSiteNarrowWidth,
+    mobile: ConstructionSiteMobileWidth,
   },
   park: {
-    display: <ParkWithFountainFullWidth />,
-    tablet: <ParkWithFountainNarrowWidth />,
-    mobile: <ParkWithFountainMobileWidth />,
+    display: ParkWithFountainFullWidth,
+    tablet: ParkWithFountainNarrowWidth,
+    mobile: ParkWithFountainMobileWidth,
   },
   byvanie: {
-    display: <LowRiseBuildingsFullWidth />,
-    tablet: <LowRiseBuildingsNarrowWidth />,
-    mobile: <LowRiseBuildingsMobileWidth />,
+    display: LowRiseBuildingsFullWidth,
+    tablet: LowRiseBuildingsNarrowWidth,
+    mobile: LowRiseBuildingsMobileWidth,
   },
   budovy: {
-    display: <HighRiseBuildingsFullWidth />,
-    tablet: <HighRiseNarrowWidth />,
-    mobile: <HighRiseBuildingsMobileWidth />,
+    display: HighRiseBuildingsFullWidth,
+    tablet: HighRiseNarrowWidth,
+    mobile: HighRiseBuildingsMobileWidth,
   },
   vzdelavanie: {
-    display: <BookFullWidth />,
-    tablet: <BookNarrowWidth />,
-    mobile: <BookMobileWidth />,
+    display: BookFullWidth,
+    tablet: BookNarrowWidth,
+    mobile: BookMobileWidth,
   },
   skola: {
-    display: <SchoolFullWidth />,
-    tablet: <SchoolNarrowWidth />,
-    mobile: <SchoolMobileWidth />,
+    display: SchoolFullWidth,
+    tablet: SchoolNarrowWidth,
+    mobile: SchoolMobileWidth,
   },
   divadlo: {
-    display: <TheaterFullWidth />,
-    tablet: <TheaterNarrowWidth />,
-    mobile: <TheaterMobileWidth />,
+    display: TheaterFullWidth,
+    tablet: TheaterNarrowWidth,
+    mobile: TheaterMobileWidth,
   },
   footer: {
-    display: <FooterWidth />,
-    tablet: <FooterTablet />,
-    mobile: <FooterMobile />,
+    display: FooterWidth,
+    tablet: FooterTablet,
+    mobile: FooterMobile,
   },
 }
 
@@ -132,41 +130,26 @@ interface DividerProps {
   dividerStyle?: string
 }
 
-export const getDivider = (dividerStyle?: string) => {
-  const isClient = useIsClient()
-
-  const md = parseInt(screens.md.slice(0, -2), 10)
-  const lg = parseInt(screens.lg.slice(0, -2), 10)
-
-  if (!dividerStyle) {
-    return null
-  }
-
-  let screenSize: keyof typeof DIVIDER.mesto = 'display'
-  if (isClient) {
-    const { innerWidth } = window
-    if (innerWidth < md) {
-      screenSize = 'mobile'
-    } else if (innerWidth >= md && innerWidth <= lg) {
-      screenSize = 'tablet'
-    }
-  }
-
-  const dividerType = dividerStyle.split('_')[0] as keyof typeof DIVIDER
-
-  return dividerType ? DIVIDER[dividerType][screenSize] : DIVIDER.hrad[screenSize]
-}
-
 export const Divider = ({ className, dividerStyle }: DividerProps) => {
-  const [Component, setComponent] = useState<ReactNode>(null)
+  const dividerType = (dividerStyle?.split('_')[0] ?? 'hrad') as keyof typeof DIVIDER
+  const dividerByType = DIVIDER[dividerType];
+  if (!dividerByType) {
+    return null;
+  }
 
-  useEffect(() => {
-    const DividerComponent = getDivider(dividerStyle)
-    setComponent(DividerComponent)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  const {
+    display: DisplayComponent,
+    mobile: MobileComponent,
+    tablet: TabletComponent,
+  } = dividerByType
 
-  return <div className={cx('flex justify-center', className)}>{Component}</div>
+  return (
+    <div className={cx('flex justify-center', className)}>
+      <DisplayComponent className="hidden lg:block" />
+      <TabletComponent className="hidden md:block lg:hidden" />
+      <MobileComponent className="md:hidden" />
+    </div>
+  )
 }
 
 export default Divider
