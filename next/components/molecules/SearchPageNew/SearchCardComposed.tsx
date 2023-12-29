@@ -11,7 +11,7 @@ import { isDefined } from '@utils/isDefined'
 import { findIconByPageColor } from '@utils/pageIcons'
 import cx from 'classnames'
 import Image from 'next/image'
-import React, { ReactNode } from 'react'
+import React, { Fragment, ReactNode } from 'react'
 import { twMerge } from 'tailwind-merge'
 
 type SearchCardComposedProps = {
@@ -186,7 +186,7 @@ SearchCardComposed.Metadata = function ({
   const metaDataRow =
     cleanedMetadata?.map((item: string, index: number) => {
       return (
-        <>
+        <Fragment key={index}>
           {index > 0 && (
             <Typography type="p" className="max-lg:hidden">
               •
@@ -195,7 +195,7 @@ SearchCardComposed.Metadata = function ({
           <Typography type="p" className="max-lg:first-of-type:font-medium">
             {item}
           </Typography>
-        </>
+        </Fragment>
       )
     }) ?? null
   return (

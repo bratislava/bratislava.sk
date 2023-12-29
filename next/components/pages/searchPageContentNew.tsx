@@ -88,8 +88,8 @@ const SearchPageContentNew = () => {
   }, [searchValue, selection])
 
   /**
-   * If the user clicks other Chip then the selected one, the new selection size will be 1. We can safely set the selected option to the new selection.
-   * If the user click the selected Chip, the new selection size will be 0, and therefore we set the default selection.
+   * If the user clicks other Chip than the selected one, the new selection size will be 1. We can safely set the selected option to the new selection.
+   * If the user clicks the selected Chip, the new selection size will be 0, and therefore we set the default selection.
    *
    * Prerequisites are selectionMode="single" (and disallowEmptySelection={false} but it's default) on TagGroup.
    *
