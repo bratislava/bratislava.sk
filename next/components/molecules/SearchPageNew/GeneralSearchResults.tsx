@@ -55,7 +55,7 @@ const GeneralSearchResults = ({
                       data={{ ...item }}
                       tagText={searchOption.displayName}
                       variant="withPicture"
-                      key={`item-${variant}-${searchOption.id}-${item.linkHref}`}
+                      key={`item-${variant}-${searchOption.id}-${item.title}`}
                     />
                   )
                 })

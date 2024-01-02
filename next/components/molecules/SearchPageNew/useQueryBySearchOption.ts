@@ -115,7 +115,7 @@ export const useQueryBySearchOption = (optionKey: SearchOption['id'], filters: S
     select: (axiosResponse) => {
       const formattedData: SearchResult[] =
         axiosResponse?.data.map((user) => {
-          const mail = user.otherMails.length > 0 ? user.otherMails[0] : user.mail
+          const mail = user.otherMails?.length > 0 ? user.otherMails[0] : user.mail
 
           return {
             title: user.displayName,
