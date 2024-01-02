@@ -255,6 +255,7 @@
   },
   "SearchPage": {
     "whatAreYouLookingFor": "Čo hľadáte?",
+    "searchOptions": "Možnosti vyhľadávania",
     "showingResults": "Zobrazujeme {resultsCount} výsledkov",
     "allResults": "Všetky výsledky",
     "moreResults": "Viac výsledkov",

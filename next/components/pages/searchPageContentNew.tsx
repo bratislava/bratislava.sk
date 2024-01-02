@@ -134,6 +134,7 @@ const SearchPageContentNew = () => {
           />
 
           <TagGroup
+            aria-label={t('SearchPage.searchOptions')}
             selectionMode="single"
             selectedKeys={selection}
             onSelectionChange={handleSelection}
