@@ -2,7 +2,12 @@ import {
   getGinisOfficialBoardQueryKey,
   ginisOfficialBoardFetcher,
 } from '@backend/ginis/fetchers/ginisOfficialBoard.fetcher'
-import { Enum_Page_Pagecolor, LatestBlogPostEntityFragment } from '@backend/graphql'
+import {
+  Enum_Componentblockstopservicesitem_Icon,
+  Enum_Page_Pagecolor,
+  Enum_Pagecategory_Color,
+  LatestBlogPostEntityFragment,
+} from '@backend/graphql'
 import {
   blogPostsFetcher,
   BlogPostsFilters,
@@ -35,7 +40,8 @@ export type SearchResult = {
   linkHref?: string | null | undefined
   metadata?: (string | null | undefined)[]
   coverImageSrc?: string | null | undefined
-  pageColor?: Enum_Page_Pagecolor
+  pageColor?: Enum_Page_Pagecolor | Enum_Pagecategory_Color
+  customIconName?: string
 }
 
 export const useQueryBySearchOption = (optionKey: SearchOption['id'], filters: SearchFilters) => {
@@ -52,7 +58,7 @@ export const useQueryBySearchOption = (optionKey: SearchOption['id'], filters: S
             title: page.title,
             linkHref: `/${page.slug}`,
             metadata: [page.pageCategory?.title, formatDate(page.publishedAt)],
-            pageColor: page.pageColor,
+            pageColor: page.pageColor ?? page.pageCategory?.color,
           }
         }) ?? []
 
@@ -120,6 +126,7 @@ export const useQueryBySearchOption = (optionKey: SearchOption['id'], filters: S
           return {
             title: user.displayName,
             metadata: [user.jobTitle, mail, user.businessPhones?.join(', ')],
+            customIconName: Enum_Componentblockstopservicesitem_Icon.UradneHodiny,
           }
         }) ?? []
 

@@ -1,6 +1,7 @@
 import { ChevronRightIcon } from '@assets/ui-icons'
 import { Enum_Page_Pagecolor, Enum_Pagecategory_Color } from '@backend/graphql'
 import { Typography } from '@bratislava/component-library'
+import { Icon } from '@components/atoms/icon/Icon'
 import ImagePlaceholder from '@components/atoms/ImagePlaceholder'
 import MLink from '@components/forms/simple-components/MLink'
 import Tag from '@components/forms/simple-components/Tag'
@@ -46,10 +47,12 @@ const SearchCardComposed = ({ data, variant = 'default', tagText }: SearchCardCo
         >
           {data.coverImageSrc ? (
             <SearchCardComposed.ImageFromUrl imgUrl={data.coverImageSrc} />
+          ) : data.customIconName ? (
+            <SearchCardComposed.ImageFromIcon iconName={data.customIconName} />
           ) : data.pageColor ? (
             <SearchCardComposed.ImageFromPageColor pageColor={data.pageColor} />
           ) : (
-            <SearchCardComposed.ImageFromPageColor pageColor={Enum_Pagecategory_Color.Red} />
+            <SearchCardComposed.ImageFromIcon iconName={null} />
           )}
           <div className="flex w-full flex-row gap-6 py-4 lg:p-6">
             <SearchCardComposed.InfoContainer className="flex flex-col gap-3">
@@ -68,6 +71,25 @@ const SearchCardComposed = ({ data, variant = 'default', tagText }: SearchCardCo
         </div>
       )}
     </>
+  )
+}
+
+SearchCardComposed.ImageFromIcon = function ({
+  iconName,
+  className,
+}: {
+  iconName?: string
+  className?: string
+}) {
+  return (
+    <div
+      className={twMerge(
+        'hidden w-[150px] shrink-0 items-center justify-center bg-gray-200 lg:flex',
+        className,
+      )}
+    >
+      {iconName ? <Icon iconName={iconName} /> : null}
+    </div>
   )
 }
 
@@ -186,7 +208,7 @@ SearchCardComposed.Metadata = function ({
   const metaDataRow =
     cleanedMetadata?.map((item: string, index: number) => {
       return (
-        <Fragment key={index}>
+        <Fragment key={item}>
           {index > 0 && (
             <Typography type="p" className="max-lg:hidden">
               •
