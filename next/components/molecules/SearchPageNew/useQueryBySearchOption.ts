@@ -144,6 +144,7 @@ export const useQueryBySearchOption = (optionKey: SearchOption['id'], filters: S
           return {
             title: boardItem.title,
             metadata: [boardItem.createdAt],
+            customIconName: 'ostatne',
           }
         }) ?? []
 
