@@ -92,6 +92,7 @@ const GeneralSearchResults = ({
         <div>
           <Pagination
             currentPage={filters.page}
+            style="black"
             totalCount={
               searchResultsCount > 0 ? Math.ceil(searchResultsCount / filters.pageSize) : 1
             }

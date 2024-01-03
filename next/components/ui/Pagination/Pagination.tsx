@@ -8,6 +8,7 @@ import React, { ReactNode } from 'react'
 type PaginationProps = {
   currentPage: number
   totalCount: number
+  style?: 'black' | 'category'
   onPageChange?: (value: number) => void
 }
 
@@ -23,6 +24,7 @@ type PaginationProps = {
 export const Pagination = ({
   currentPage,
   totalCount,
+  style = 'category',
   onPageChange = () => {},
 }: PaginationProps) => {
   const t = useTranslations('Pagination')
@@ -50,7 +52,15 @@ export const Pagination = ({
             } else if (type === 'page') {
               children = (
                 <Button
-                  variant={selected ? 'category-solid' : 'category-outline'}
+                  variant={
+                    selected
+                      ? style === 'black'
+                        ? 'black-solid'
+                        : 'category-solid'
+                      : style === 'black'
+                      ? 'black-outline'
+                      : 'category-outline'
+                  }
                   isDisabled={disabled}
                   onPress={onPress}
                   aria-current={ariaCurrent}
@@ -74,7 +84,7 @@ export const Pagination = ({
 
               children = (
                 <Button
-                  variant="category-plain"
+                  variant={style === 'black' ? 'black-plain' : 'category-plain'}
                   isDisabled={disabled}
                   onPress={onPress}
                   aria-label={ariaLabel}
