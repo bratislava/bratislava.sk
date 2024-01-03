@@ -41,6 +41,7 @@ const GeneralSearchResults = ({
         {variant === 'allResults' && (
           <SearchResultsHeader
             title={`${searchOption?.displayNamePlural}` ?? ''}
+            showButton={searchResultsCount > 0}
             handleShowMore={() => {
               onShowMore(new Set([searchOption.id]))
             }}

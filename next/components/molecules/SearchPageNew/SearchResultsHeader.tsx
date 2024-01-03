@@ -5,10 +5,11 @@ import { useTranslations } from 'next-intl'
 
 type SearchResultsHeaderProps = {
   title: string
+  showButton?: boolean
   handleShowMore: () => void
 }
 
-const SearchResultsHeader = ({ title, handleShowMore }: SearchResultsHeaderProps) => {
+const SearchResultsHeader = ({ title, showButton, handleShowMore }: SearchResultsHeaderProps) => {
   const t = useTranslations()
 
   return (
@@ -16,9 +17,11 @@ const SearchResultsHeader = ({ title, handleShowMore }: SearchResultsHeaderProps
       <Typography type="h2" size="h4" className="text-gray-800">
         {title}
       </Typography>
-      <Button variant="black-link" endIcon={<ArrowRightIcon />} onPress={handleShowMore}>
-        {t('SearchPage.moreResults')}
-      </Button>
+      {showButton ? (
+        <Button variant="black-link" endIcon={<ArrowRightIcon />} onPress={handleShowMore}>
+          {t('SearchPage.moreResults')}
+        </Button>
+      ) : null}
     </div>
   )
 }
