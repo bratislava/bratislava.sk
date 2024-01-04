@@ -8,12 +8,13 @@ import {
 } from '@components/molecules/SearchPageNew/useQueryBySearchOption'
 import { SearchOption } from '@components/pages/searchPageContentNew'
 import { useTranslations } from 'next-intl'
-import { Dispatch, SetStateAction } from 'react'
+import { Dispatch, SetStateAction, useEffect } from 'react'
 
 type GeneralSearchResultsProps = {
   filters: SearchFilters
   variant: 'allResults' | 'specificResults'
   searchOption: SearchOption
+  handleSetResultsCount?: (searchOptionId: SearchOption['id'], count: number) => void
   onShowMore?: Dispatch<SetStateAction<Set<SearchOption['id']>>>
   onPageChange?: Dispatch<SetStateAction<number>>
 }
@@ -22,6 +23,7 @@ const GeneralSearchResults = ({
   filters,
   onShowMore,
   onPageChange,
+  handleSetResultsCount,
   searchOption,
   variant,
 }: GeneralSearchResultsProps) => {
@@ -34,6 +36,10 @@ const GeneralSearchResults = ({
   const { searchResultsData, searchResultsCount } = data ?? {}
 
   const GENERAL_RESULTS_COUNT = 5
+
+  useEffect(() => {
+    handleSetResultsCount(searchOption?.id, searchResultsCount)
+  }, [searchResultsCount])
 
   return (
     <div className="flex flex-col gap-y-8">

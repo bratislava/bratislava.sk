@@ -87,6 +87,20 @@ const SearchPageContentNew = () => {
     setCurrentPage(1)
   }, [searchValue, selection])
 
+  const defaultResultsCount = new Map([[defaultSearchOption.id, 0]])
+  searchOptions.forEach((option) => {
+    defaultResultsCount.set(option.id, 0)
+  })
+
+  const [resultsCount, setResultsCount] =
+    useState<Map<SearchOption['id'], number>>(defaultResultsCount)
+
+  const setResultsCountById = (optionId: SearchOption['id'], count: number) => {
+    const newResultsCount = new Map(resultsCount)
+    newResultsCount.set(optionId, count)
+    setResultsCount(newResultsCount)
+  }
+
   /**
    * If the user clicks other Chip than the selected one, the new selection size will be 1. We can safely set the selected option to the new selection.
    * If the user clicks the selected Chip, the new selection size will be 0, and therefore we set the default selection.
@@ -140,7 +154,15 @@ const SearchPageContentNew = () => {
             onSelectionChange={handleSelection}
           >
             <TagList className="max-md:negative-x-spacing flex gap-x-2 overflow-auto scrollbar-hide max-md:flex-nowrap">
-              {[defaultSearchOption, ...searchOptions].map((option) => {
+              <Chip
+                variant="large"
+                key={defaultSearchOption.id}
+                id={defaultSearchOption.id}
+                style={getCategoryColorLocalStyle({ category: 'gray' })}
+              >
+                {`${defaultSearchOption.displayNamePlural}`}
+              </Chip>
+              {[...searchOptions].map((option) => {
                 return (
                   <Chip
                     variant="large"
@@ -148,14 +170,28 @@ const SearchPageContentNew = () => {
                     id={option.id}
                     style={getCategoryColorLocalStyle({ category: 'gray' })}
                   >
-                    {`${option.displayNamePlural}`}
+                    {/* {`${option.displayNamePlural}${
+                      searchValue === '' ? '' : ` (${resultsCount.get(option.id)})` ?? 0
+                    }`} */}
+                    {option.displayNamePlural}
                   </Chip>
                 )
               })}
             </TagList>
           </TagGroup>
         </div>
-
+        {resultsCount.get(selectedKey) > 0 ? (
+          <p>Zobrazujeme {resultsCount.get(selectedKey)} výsledkov</p>
+        ) : null}
+        {/* FIXME: DEBUG ↓ */}
+        {false && (
+          <div className="rounded-full bg-social-500 px-5 py-2">
+            <Typography fontWeight="semibold" type="p">
+              RESULTS {[...resultsCount]}
+            </Typography>
+          </div>
+        )}
+        {/* FIXME: DEBUG ↑ */}
         {selectedKey === defaultSearchOption.id ? (
           <div className="flex flex-col gap-8">
             {searchOptions.map((option) => {
@@ -164,6 +200,7 @@ const SearchPageContentNew = () => {
                   variant="allResults"
                   searchOption={option}
                   filters={searchFilters}
+                  handleSetResultsCount={setResultsCountById}
                   onShowMore={setSelection}
                   key={`allResults-${option.id}`}
                 />
@@ -175,6 +212,7 @@ const SearchPageContentNew = () => {
             variant="specificResults"
             searchOption={getSearchOptionByKeyValue(selectedKey)}
             filters={searchFilters}
+            handleSetResultsCount={setResultsCountById}
             onShowMore={setSelection}
             onPageChange={setCurrentPage}
             key={`specificResults-${selectedKey}`}
