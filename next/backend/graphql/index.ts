@@ -1068,19 +1068,6 @@ export type ComponentSectionsComparisonSectionCardsArgs = {
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
 }
 
-export type ComponentSectionsContact = {
-  __typename?: 'ComponentSectionsContact'
-  address?: Maybe<Scalars['String']['output']>
-  description?: Maybe<Scalars['String']['output']>
-  email?: Maybe<Scalars['String']['output']>
-  emailLabel?: Maybe<Scalars['String']['output']>
-  hasBackground?: Maybe<Scalars['Boolean']['output']>
-  id: Scalars['ID']['output']
-  phone?: Maybe<Scalars['String']['output']>
-  phoneLabel?: Maybe<Scalars['String']['output']>
-  title?: Maybe<Scalars['String']['output']>
-}
-
 export type ComponentSectionsContactsSection = {
   __typename?: 'ComponentSectionsContactsSection'
   addressContacts?: Maybe<Array<Maybe<ComponentBlocksContactCard>>>
@@ -1947,7 +1934,6 @@ export type GenericMorph =
   | ComponentSectionsCalculator
   | ComponentSectionsColumnedText
   | ComponentSectionsComparisonSection
-  | ComponentSectionsContact
   | ComponentSectionsContactsSection
   | ComponentSectionsDivider
   | ComponentSectionsDocumentList
@@ -3096,7 +3082,6 @@ export type PageSectionsDynamicZone =
   | ComponentSectionsCalculator
   | ComponentSectionsColumnedText
   | ComponentSectionsComparisonSection
-  | ComponentSectionsContact
   | ComponentSectionsContactsSection
   | ComponentSectionsDivider
   | ComponentSectionsDocumentList
@@ -7642,17 +7627,6 @@ export type PageBySlugQuery = {
               } | null>
             }
           | {
-              __typename: 'ComponentSectionsContact'
-              title?: string | null
-              hasBackground?: boolean | null
-              description?: string | null
-              phone?: string | null
-              phoneLabel?: string | null
-              email?: string | null
-              emailLabel?: string | null
-              address?: string | null
-            }
-          | {
               __typename: 'ComponentSectionsContactsSection'
               id: string
               title?: string | null
@@ -8629,17 +8603,6 @@ export type PageEntityFragment = {
               } | null
             } | null
           } | null>
-        }
-      | {
-          __typename: 'ComponentSectionsContact'
-          title?: string | null
-          hasBackground?: boolean | null
-          description?: string | null
-          phone?: string | null
-          phoneLabel?: string | null
-          email?: string | null
-          emailLabel?: string | null
-          address?: string | null
         }
       | {
           __typename: 'ComponentSectionsContactsSection'
@@ -9755,18 +9718,6 @@ export type LinksSectionFragment = {
   } | null> | null
 }
 
-export type ContactSectionFragment = {
-  __typename?: 'ComponentSectionsContact'
-  title?: string | null
-  hasBackground?: boolean | null
-  description?: string | null
-  phone?: string | null
-  phoneLabel?: string | null
-  email?: string | null
-  emailLabel?: string | null
-  address?: string | null
-}
-
 export type ComponentAccordionItemsInstitutionNarrowFragment = {
   __typename?: 'ComponentAccordionItemsInstitutionNarrow'
   title?: string | null
@@ -10469,18 +10420,6 @@ type Sections_ComponentSectionsComparisonSection_Fragment = {
   } | null>
 }
 
-type Sections_ComponentSectionsContact_Fragment = {
-  __typename: 'ComponentSectionsContact'
-  title?: string | null
-  hasBackground?: boolean | null
-  description?: string | null
-  phone?: string | null
-  phoneLabel?: string | null
-  email?: string | null
-  emailLabel?: string | null
-  address?: string | null
-}
-
 type Sections_ComponentSectionsContactsSection_Fragment = {
   __typename: 'ComponentSectionsContactsSection'
   id: string
@@ -11036,7 +10975,6 @@ export type SectionsFragment =
   | Sections_ComponentSectionsCalculator_Fragment
   | Sections_ComponentSectionsColumnedText_Fragment
   | Sections_ComponentSectionsComparisonSection_Fragment
-  | Sections_ComponentSectionsContact_Fragment
   | Sections_ComponentSectionsContactsSection_Fragment
   | Sections_ComponentSectionsDivider_Fragment
   | Sections_ComponentSectionsDocumentList_Fragment
@@ -11444,18 +11382,6 @@ export const LinksSectionFragmentDoc = gql`
     }
   }
   ${PageLinkBlockFragmentDoc}
-`
-export const ContactSectionFragmentDoc = gql`
-  fragment ContactSection on ComponentSectionsContact {
-    title
-    hasBackground
-    description
-    phone
-    phoneLabel
-    email
-    emailLabel
-    address
-  }
 `
 export const ComponentAccordionItemsInstitutionFragmentDoc = gql`
   fragment ComponentAccordionItemsInstitution on ComponentAccordionItemsInstitution {
@@ -11905,9 +11831,6 @@ export const SectionsFragmentDoc = gql`
     ... on ComponentSectionsLinks {
       ...LinksSection
     }
-    ... on ComponentSectionsContact {
-      ...ContactSection
-    }
     ... on ComponentSectionsAccordion {
       ...AccordionSection
     }
@@ -11968,7 +11891,6 @@ export const SectionsFragmentDoc = gql`
   ${NarrowTextSectionFragmentDoc}
   ${WavesSectionFragmentDoc}
   ${LinksSectionFragmentDoc}
-  ${ContactSectionFragmentDoc}
   ${AccordionSectionFragmentDoc}
   ${CalculatorSectionFragmentDoc}
   ${VideosSectionFragmentDoc}
