@@ -98,6 +98,10 @@ const SearchPageContentNew = () => {
   const setResultsCountById = (optionId: SearchOption['id'], count: number) => {
     const newResultsCount = new Map(resultsCount)
     newResultsCount.set(optionId, count)
+    newResultsCount.set(
+      defaultSearchOption.id,
+      [...newResultsCount.values()].slice(1).reduce((a, b) => a + b, 0),
+    )
     setResultsCount(newResultsCount)
   }
 
@@ -154,15 +158,7 @@ const SearchPageContentNew = () => {
             onSelectionChange={handleSelection}
           >
             <TagList className="max-md:negative-x-spacing flex gap-x-2 overflow-auto scrollbar-hide max-md:flex-nowrap">
-              <Chip
-                variant="large"
-                key={defaultSearchOption.id}
-                id={defaultSearchOption.id}
-                style={getCategoryColorLocalStyle({ category: 'gray' })}
-              >
-                {`${defaultSearchOption.displayNamePlural}`}
-              </Chip>
-              {[...searchOptions].map((option) => {
+              {[defaultSearchOption, ...searchOptions].map((option) => {
                 return (
                   <Chip
                     variant="large"
@@ -170,22 +166,18 @@ const SearchPageContentNew = () => {
                     id={option.id}
                     style={getCategoryColorLocalStyle({ category: 'gray' })}
                   >
-                    {/* {`${option.displayNamePlural}${
-                      searchValue === '' ? '' : ` (${resultsCount.get(option.id)})` ?? 0
-                    }`} */}
-                    {option.displayNamePlural}
+                    {`${option.displayNamePlural} (${resultsCount.get(option.id) ?? 0})`}
                   </Chip>
                 )
               })}
             </TagList>
           </TagGroup>
         </div>
-        {/* TODO: also show summed number of all results  */}
         {resultsCount.get(selectedKey) > 0 ? (
           <p>{t('SearchPage.showingResults', { count: resultsCount.get(selectedKey) })}</p>
         ) : null}
         {/* FIXME: DEBUG ↓ */}
-        {true && (
+        {false && (
           <div className="rounded-full bg-social-500 px-5 py-2">
             <Typography fontWeight="semibold" type="p">
               RESULTS {[...resultsCount]}
