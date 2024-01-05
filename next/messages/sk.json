@@ -256,7 +256,7 @@
   "SearchPage": {
     "whatAreYouLookingFor": "Čo hľadáte?",
     "searchOptions": "Možnosti vyhľadávania",
-    "showingResults": "Zobrazujeme {resultsCount} výsledkov",
+    "showingResults": "Zobrazujeme {count} {count, plural, zero {vysledkov} one {výsledok} few {výsledky} other {výsledkov}}",
     "allResults": "Všetky výsledky",
     "moreResults": "Viac výsledkov",
     "noResults": "Žiadne výsledky",

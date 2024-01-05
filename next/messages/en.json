@@ -256,7 +256,7 @@
   "SearchPage": {
     "whatAreYouLookingFor": "What are you looking for?",
     "searchOptions": "Search options",
-    "showingResults": "Showing {resultsCount} results",
+    "showingResults": "Showing {count} {count, plural, zero {results} one {result} other {results}}",
     "allResults": "All results",
     "moreResults": "More results",
     "noResults": "No results found",

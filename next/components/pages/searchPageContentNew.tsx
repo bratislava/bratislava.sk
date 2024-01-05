@@ -180,11 +180,12 @@ const SearchPageContentNew = () => {
             </TagList>
           </TagGroup>
         </div>
+        {/* TODO: also show summed number of all results  */}
         {resultsCount.get(selectedKey) > 0 ? (
-          <p>Zobrazujeme {resultsCount.get(selectedKey)} výsledkov</p>
+          <p>{t('SearchPage.showingResults', { count: resultsCount.get(selectedKey) })}</p>
         ) : null}
         {/* FIXME: DEBUG ↓ */}
-        {false && (
+        {true && (
           <div className="rounded-full bg-social-500 px-5 py-2">
             <Typography fontWeight="semibold" type="p">
               RESULTS {[...resultsCount]}
