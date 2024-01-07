@@ -18,21 +18,13 @@ type Props = {
 const ResponsiveCarousel = ({ mobile = 1, tablet = 2, desktop = 3, className, ...rest }: Props) => {
   return (
     <>
+      <Carousel className={twMerge('md:hidden', className)} visibleCount={mobile} {...rest} />
       <Carousel
-        className={twMerge('md:hidden [&>ul>li>div]:h-full', className)}
-        visibleCount={mobile}
-        {...rest}
-      />
-      <Carousel
-        className={twMerge('hidden md:block lg:hidden [&>ul>li>div]:h-full', className)}
+        className={twMerge('hidden md:block lg:hidden', className)}
         visibleCount={tablet}
         {...rest}
       />
-      <Carousel
-        className={twMerge('max-lg:hidden [&>ul>li>div]:h-full', className)}
-        visibleCount={desktop}
-        {...rest}
-      />
+      <Carousel className={twMerge('max-lg:hidden', className)} visibleCount={desktop} {...rest} />
     </>
   )
 }
