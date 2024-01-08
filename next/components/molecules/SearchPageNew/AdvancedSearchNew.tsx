@@ -1,4 +1,4 @@
-import { CrossInCircleIcon, SearchIcon } from '@assets/ui-icons'
+import { RemoveIcon, SearchIcon } from '@assets/ui-icons'
 import { Typography } from '@bratislava/component-library'
 import Button from '@components/forms/simple-components/Button'
 import { useTranslations } from 'next-intl'
@@ -48,7 +48,7 @@ const AdvancedSearchNew = forwardRef<HTMLInputElement, AdvancedSearchProps>(
             <Button
               // We don't want responsive sizing, to keep the button well aligned with the input
               size="large"
-              icon={<CrossInCircleIcon />}
+              icon={<RemoveIcon />}
               variant="icon-wrapped-negative-margin"
               // Keyboard users use Escape to erase the input, they can't focus this button, so empty aria-label is okay
               aria-label=""
