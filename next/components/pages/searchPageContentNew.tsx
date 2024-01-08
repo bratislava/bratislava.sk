@@ -87,21 +87,27 @@ const SearchPageContentNew = () => {
     setCurrentPage(1)
   }, [searchValue, selection])
 
-  const [resultsCount, setResultsCount] = useState<Record<SearchOption['id'], number>>(
-    Object.fromEntries([
-      [defaultSearchOption.id, 0],
-      ...searchOptions.map((option) => [option.id, 0]),
-    ]),
+  const [resultsCount, setResultsCount] = useState(
+    Object.fromEntries(searchOptions.map((option): [string, number] => [option.id, 0])),
   )
 
   const setResultsCountById = (optionId: SearchOption['id'], count: number) => {
-    setResultsCount((prevResultsCount) => ({
-      ...prevResultsCount,
-      [optionId]: count,
-      [defaultSearchOption.id]: Object.values(prevResultsCount)
-        .slice(1)
-        .reduce((a, b) => a + b, 0),
-    }))
+    setResultsCount((prevResultsCount) => {
+      return {
+        ...prevResultsCount,
+        [optionId]: count,
+      }
+    })
+  }
+
+  const getResultsCountById = (optionId: SearchOption['id']): number => {
+    if (optionId === defaultSearchOption.id) {
+      return Object.values(resultsCount).reduce((a, b) => a + b, 0)
+    }
+    if (optionId in resultsCount) {
+      return resultsCount[optionId]
+    }
+    return 0
   }
 
   /**
@@ -140,7 +146,6 @@ const SearchPageContentNew = () => {
     <SectionContainer className="mb-8">
       <div className="flex w-full flex-col gap-y-8 pt-12">
         <Typography type="h1">{t('searching')}</Typography>
-
         <div className="flex flex-col gap-3 lg:gap-4">
           <AdvancedSearchNew
             ref={searchRef}
@@ -172,8 +177,12 @@ const SearchPageContentNew = () => {
             </TagList>
           </TagGroup>
         </div>
-        {resultsCount[selectedKey] > 0 ? (
-          <p>{t('SearchPage.showingResults', { count: resultsCount[selectedKey] })}</p>
+        {getResultsCountById(selectedKey) > 0 ? (
+          <p>
+            {t('SearchPage.showingResults', {
+              count: getResultsCountById(selectedKey),
+            })}
+          </p>
         ) : null}
         {selectedKey === defaultSearchOption.id ? (
           <div className="flex flex-col gap-8">

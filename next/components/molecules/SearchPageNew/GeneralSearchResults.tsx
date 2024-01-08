@@ -38,7 +38,7 @@ const GeneralSearchResults = ({
   const GENERAL_RESULTS_COUNT = 5
 
   useEffect(() => {
-    onSetResultsCount(searchOption?.id, searchResultsCount)
+    onSetResultsCount(searchOption?.id, searchResultsCount ?? 0)
   }, [searchResultsCount])
 
   return (
