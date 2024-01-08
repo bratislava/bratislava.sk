@@ -87,22 +87,21 @@ const SearchPageContentNew = () => {
     setCurrentPage(1)
   }, [searchValue, selection])
 
-  const defaultResultsCount = new Map([[defaultSearchOption.id, 0]])
-  searchOptions.forEach((option) => {
-    defaultResultsCount.set(option.id, 0)
-  })
-
-  const [resultsCount, setResultsCount] =
-    useState<Map<SearchOption['id'], number>>(defaultResultsCount)
+  const [resultsCount, setResultsCount] = useState<Record<SearchOption['id'], number>>(
+    Object.fromEntries([
+      [defaultSearchOption.id, 0],
+      ...searchOptions.map((option) => [option.id, 0]),
+    ]),
+  )
 
   const setResultsCountById = (optionId: SearchOption['id'], count: number) => {
-    const newResultsCount = new Map(resultsCount)
-    newResultsCount.set(optionId, count)
-    newResultsCount.set(
-      defaultSearchOption.id,
-      [...newResultsCount.values()].slice(1).reduce((a, b) => a + b, 0),
-    )
-    setResultsCount(newResultsCount)
+    setResultsCount((prevResultsCount) => ({
+      ...prevResultsCount,
+      [optionId]: count,
+      [defaultSearchOption.id]: Object.values(prevResultsCount)
+        .slice(1)
+        .reduce((a, b) => a + b, 0),
+    }))
   }
 
   /**
@@ -173,8 +172,8 @@ const SearchPageContentNew = () => {
             </TagList>
           </TagGroup>
         </div>
-        {resultsCount.get(selectedKey) > 0 ? (
-          <p>{t('SearchPage.showingResults', { count: resultsCount.get(selectedKey) })}</p>
+        {resultsCount[selectedKey] > 0 ? (
+          <p>{t('SearchPage.showingResults', { count: resultsCount[selectedKey] })}</p>
         ) : null}
         {selectedKey === defaultSearchOption.id ? (
           <div className="flex flex-col gap-8">
