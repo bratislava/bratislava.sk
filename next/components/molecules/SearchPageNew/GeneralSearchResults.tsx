@@ -14,7 +14,7 @@ type GeneralSearchResultsProps = {
   filters: SearchFilters
   variant: 'allResults' | 'specificResults'
   searchOption: SearchOption
-  handleSetResultsCount?: (searchOptionId: SearchOption['id'], count: number) => void
+  onSetResultsCount?: (searchOptionId: SearchOption['id'], count: number) => void
   onShowMore?: Dispatch<SetStateAction<Set<SearchOption['id']>>>
   onPageChange?: Dispatch<SetStateAction<number>>
 }
@@ -23,7 +23,7 @@ const GeneralSearchResults = ({
   filters,
   onShowMore,
   onPageChange,
-  handleSetResultsCount,
+  onSetResultsCount,
   searchOption,
   variant,
 }: GeneralSearchResultsProps) => {
@@ -38,7 +38,7 @@ const GeneralSearchResults = ({
   const GENERAL_RESULTS_COUNT = 5
 
   useEffect(() => {
-    handleSetResultsCount(searchOption?.id, searchResultsCount)
+    onSetResultsCount(searchOption?.id, searchResultsCount)
   }, [searchResultsCount])
 
   return (

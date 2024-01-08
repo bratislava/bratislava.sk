@@ -14,7 +14,7 @@ const SearchResultsHeader = ({ title, showButton, handleShowMore }: SearchResult
 
   return (
     <div className="flex flex-col flex-wrap items-baseline justify-between gap-y-2 lg:flex-row">
-      <Typography type="h2" size="h4" className="text-gray-800">
+      <Typography type="h2" size="h4">
         {title}
       </Typography>
       {showButton ? (

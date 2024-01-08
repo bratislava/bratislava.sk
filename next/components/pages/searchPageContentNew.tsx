@@ -193,7 +193,7 @@ const SearchPageContentNew = () => {
                   variant="allResults"
                   searchOption={option}
                   filters={searchFilters}
-                  handleSetResultsCount={setResultsCountById}
+                  onSetResultsCount={setResultsCountById}
                   onShowMore={setSelection}
                   key={`allResults-${option.id}`}
                 />
@@ -205,7 +205,7 @@ const SearchPageContentNew = () => {
             variant="specificResults"
             searchOption={getSearchOptionByKeyValue(selectedKey)}
             filters={searchFilters}
-            handleSetResultsCount={setResultsCountById}
+            onSetResultsCount={setResultsCountById}
             onShowMore={setSelection}
             onPageChange={setCurrentPage}
             key={`specificResults-${selectedKey}`}
