@@ -166,7 +166,7 @@ const SearchPageContentNew = () => {
                     id={option.id}
                     style={getCategoryColorLocalStyle({ category: 'gray' })}
                   >
-                    {`${option.displayNamePlural} (${resultsCount.get(option.id) ?? 0})`}
+                    {option.displayNamePlural}
                   </Chip>
                 )
               })}
@@ -176,15 +176,6 @@ const SearchPageContentNew = () => {
         {resultsCount.get(selectedKey) > 0 ? (
           <p>{t('SearchPage.showingResults', { count: resultsCount.get(selectedKey) })}</p>
         ) : null}
-        {/* FIXME: DEBUG ↓ */}
-        {false && (
-          <div className="rounded-full bg-social-500 px-5 py-2">
-            <Typography fontWeight="semibold" type="p">
-              RESULTS {[...resultsCount]}
-            </Typography>
-          </div>
-        )}
-        {/* FIXME: DEBUG ↑ */}
         {selectedKey === defaultSearchOption.id ? (
           <div className="flex flex-col gap-8">
             {searchOptions.map((option) => {

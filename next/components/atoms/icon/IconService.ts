@@ -1,3 +1,4 @@
+import Documents64pxIcon from '@assets/images/dokumenty.svg'
 import EServices48pxIcon from '@assets/images/EServices.svg'
 import Accommodation48pxIcon from '@assets/images/menu-icons/48px/accommodation_48px.svg'
 import Bike48pxIcon from '@assets/images/menu-icons/48px/bike_48px.svg'
@@ -183,7 +184,7 @@ export const ICON_URL_MAP: IconUrlMap = {
     turistom_v_hlavnom_meste: TopServices_TuristomVHlavnomMeste,
     prenajom_priestorov: TopServices_PrenajomPriestorov,
     // Others
-    ostatne: Ostatne48pxIcon,
+    ostatne: Documents64pxIcon,
   },
   size_64: {
     mesto_01: Castle64pxStrokeIcon,
