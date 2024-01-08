@@ -157,7 +157,7 @@ const SearchPageContentNew = () => {
             selectedKeys={selection}
             onSelectionChange={handleSelection}
           >
-            <TagList className="max-md:negative-x-spacing flex gap-x-2 overflow-auto scrollbar-hide max-md:flex-nowrap">
+            <TagList className="max-md:negative-x-spacing -m-1.5 flex gap-x-2 overflow-auto p-1.5 scrollbar-hide max-md:flex-nowrap">
               {[defaultSearchOption, ...searchOptions].map((option) => {
                 return (
                   <Chip
