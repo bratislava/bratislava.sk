@@ -8,6 +8,7 @@ export type ColorCategory =
   | 'social'
   | 'education'
   | 'culture'
+  | 'gray'
 
 const colorCategoryMap = {
   red: 'main',

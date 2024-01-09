@@ -252,5 +252,24 @@
     "articleFilter": "Filter článkov",
     "allArticles": "Všetky články",
     "subcategories": "Podkategórie"
+  },
+  "SearchPage": {
+    "whatAreYouLookingFor": "Čo hľadáte?",
+    "searchOptions": "Možnosti vyhľadávania",
+    "showingResults": "Zobrazujeme {count} {count, plural, one {výsledok} few {výsledky} other {výsledkov}}",
+    "allResults": "Všetky výsledky",
+    "moreResults": "Viac výsledkov",
+    "noResults": "Žiadne výsledky",
+    "enterSearchQuery": "Zadajte hľadaný výraz",
+    "article": "Článok",
+    "articles": "Články",
+    "inbaArticle": "in.ba článok",
+    "inbaArticles": "in.ba články",
+    "page": "Stránka",
+    "pages": "Stránky",
+    "contact": "Kontakt",
+    "contacts": "Kontakty",
+    "document": "Dokument",
+    "documents": "Dokumenty"
   }
 }

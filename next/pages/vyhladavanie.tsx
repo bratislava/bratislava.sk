@@ -1,6 +1,8 @@
 import { GeneralQuery } from '@backend/graphql'
 import { client } from '@backend/graphql/gql'
+import PageHeader from '@bratislava/ui-bratislava/PageHeader/PageHeader'
 import SearchPageContent from '@components/pages/searchPageContent'
+import SearchPageContentNew from '@components/pages/searchPageContentNew'
 import { LocalizationsProvider } from '@components/providers/LocalizationsProvider'
 import { GeneralContextProvider } from '@utils/generalContext'
 import { useTitle } from '@utils/useTitle'
@@ -46,7 +48,8 @@ const Page = ({ general }: PageProps) => {
           <title>{title}</title>
         </Head>
         <PageLayout>
-          <SearchPageContent />
+          <PageHeader breadcrumbs={[{ title: t('searching'), path: null }]} />
+          <SearchPageContentNew />
         </PageLayout>
       </LocalizationsProvider>
     </GeneralContextProvider>

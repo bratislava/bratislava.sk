@@ -252,5 +252,24 @@
     "articleFilter": "Article filter",
     "allArticles": "All articles",
     "subcategories": "Subcategories"
+  },
+  "SearchPage": {
+    "whatAreYouLookingFor": "What are you looking for?",
+    "searchOptions": "Search options",
+    "showingResults": "Showing {count} {count, plural, one {result} other {results}}",
+    "allResults": "All results",
+    "moreResults": "More results",
+    "noResults": "No results found",
+    "enterSearchQuery": "Enter a search query",
+    "article": "Article",
+    "articles": "Articles",
+    "inbaArticle": "in.ba article",
+    "inbaArticles": "in.ba articles",
+    "page": "Page",
+    "pages": "Pages",
+    "contact": "Contact",
+    "contacts": "Contacts",
+    "document": "Document",
+    "documents": "Documents"
   }
 }
