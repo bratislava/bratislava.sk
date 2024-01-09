@@ -178,11 +178,11 @@ const SearchPageContentNew = () => {
           </TagGroup>
         </div>
         {getResultsCountById(selectedKey) > 0 ? (
-          <p>
+          <Typography type="p">
             {t('SearchPage.showingResults', {
               count: getResultsCountById(selectedKey),
             })}
-          </p>
+          </Typography>
         ) : null}
         {selectedKey === defaultSearchOption.id ? (
           <div className="flex flex-col gap-8">
