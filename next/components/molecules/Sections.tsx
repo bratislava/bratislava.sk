@@ -15,7 +15,6 @@ import BannerSection from './sections/general/BannerSection'
 import CalculatorSection from './sections/general/CalculatorSection/CalculatorSection'
 import ColumnedTextSection from './sections/general/ColumnedTextSection'
 import ComparisonSection from './sections/general/ComparisonSection'
-import ContactSection from './sections/general/ContactSection'
 import DividerSection from './sections/general/DividerSection'
 import DocumentListSection from './sections/general/DocumentListSection/DocumentListSection'
 import FileListSection from './sections/general/FileListSection'
@@ -58,9 +57,6 @@ const SectionContent = ({ section }: { section: SectionsFragment }) => {
 
     case 'ComponentSectionsLinks':
       return <LinksSection section={section} />
-
-    case 'ComponentSectionsContact':
-      return <ContactSection section={section} />
 
     case 'ComponentSectionsAccordion':
       return <AccordionSection section={section} />
