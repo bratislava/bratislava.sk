@@ -7,6 +7,23 @@ const customVariants = plugin(function ({ addVariant }) {
   addVariant('not-first', '&:not(:first-child)')
 })
 
+/**
+ * This plugin remove X button and decorations in native search input.
+ * https://github.com/tailwindlabs/tailwindcss/discussions/10190#discussioncomment-4994363
+ *
+ * Similar styles are used also in RAC example styling https://react-spectrum.adobe.com/react-aria/SearchField.html#example
+ *
+ * @type {{handler: PluginCreator, config?: Partial<Config>}}
+ */
+const removeNativeSearchInputStyling = plugin(function ({ addBase }) {
+  addBase({
+    '[type="search"]::-webkit-search-decoration': { display: 'none' },
+    '[type="search"]::-webkit-search-cancel-button': { display: 'none' },
+    '[type="search"]::-webkit-search-results-button': { display: 'none' },
+    '[type="search"]::-webkit-search-results-decoration': { display: 'none' },
+  })
+})
+
 const toRem = (px) => `${px / 16}rem`
 const getFontSize = (size) => [toRem(size[0]), toRem(size[1])]
 
@@ -17,6 +34,7 @@ module.exports = {
   ],
   plugins: [
     customVariants,
+    removeNativeSearchInputStyling,
     require('tailwind-scrollbar-hide'),
     require('tailwindcss-react-aria-components'),
     require('tailwindcss-animate'),

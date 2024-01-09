@@ -1,10 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="none" viewBox="0 0 64 64">
-  <g clip-path="url(#a)">
     <path stroke="currentColor" stroke-miterlimit="10" stroke-width="1.5"
           d="M29.93 28.175v-5.22m3.76 13.63v17.07h-3.76v-17.07m3.759-13.63v5.22m-3.759-13.62v-2.34a1.88 1.88 0 0 1 1.88-1.87 1.88 1.88 0 0 1 1.88 1.87v2.34"/>
     <path stroke="currentColor" stroke-miterlimit="10" stroke-width="1.5"
           d="M47.72 22.955h-33.4v-8.4h33.4l3.58 4.2-3.58 4.2Zm-13.03 13.63H16.28l-3.58-4.21 3.58-4.2h33.4v8.41H34.69Zm-12.86-17.83h-4.18m21.68 0h-4.18m10.03 0H41m-17.38 13.62h-4.17m13.85-13.62h-9.68m22.45 13.62H36.4m-1.63 0h-9.68"/>
-  </g>
   <defs>
     <clipPath id="a">
       <path fill="#fff" d="M0 0h64v64H0z"/>
