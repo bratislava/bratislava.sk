@@ -37,10 +37,7 @@ const EventCard = ({
   const t = useTranslations('EventCard')
 
   return (
-    <CardBase
-      variant="shadow"
-      className={twMerge('h-[232px] rounded-lg text-white lg:h-[300px]', className)}
-    >
+    <CardBase variant="shadow" className={twMerge('rounded-lg text-white', className)}>
       <Image src={imageSrc} alt="" fill className="absolute object-cover" sizes={imageSizes} />
       <CardContent className="relative inline-flex h-full w-full flex-col items-start justify-end text-clip bg-gradient-to-b from-transparent to-[black] p-4 lg:p-5">
         <div className="flex w-full flex-col items-start gap-4 self-stretch">

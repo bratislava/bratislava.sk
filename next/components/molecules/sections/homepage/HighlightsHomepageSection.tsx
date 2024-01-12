@@ -6,7 +6,7 @@ import { getCommonLinkProps } from '@utils/getCommonLinkProps'
 import { useHomepageContext } from '@utils/homepageContext'
 import { isDefined } from '@utils/isDefined'
 import { useTranslations } from 'next-intl'
-import React from 'react'
+import React, { Fragment } from 'react'
 
 export const HighlightsHomepageSection = () => {
   const t = useTranslations()
@@ -35,9 +35,9 @@ export const HighlightsHomepageSection = () => {
           const { children: postTitle, ...linkProps } = getCommonLinkProps(highlight.link)
 
           return (
-            <div key={highlight.id} className="h-full">
+            <Fragment key={highlight.id}>
               <BlogPostCard
-                className="h-full lg:hidden"
+                className="lg:hidden"
                 variant="shadow"
                 title={postTitle ?? ''}
                 linkProps={{
@@ -56,7 +56,7 @@ export const HighlightsHomepageSection = () => {
                 }}
                 imgSrc={highlight.image?.data?.attributes?.url}
               />
-            </div>
+            </Fragment>
           )
         })}
       />

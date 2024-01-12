@@ -86,10 +86,11 @@ const Carousel = ({
         {items?.map((item) => {
           if (React.isValidElement(item)) {
             return (
+              // <li> applies h-full to its (first) child. Custom items height can be achieved by using itemClassName
               <li
                 key={item.key}
                 className={twMerge(
-                  'shrink-0 transform transition-all duration-200 lg:scroll-mx-2',
+                  'shrink-0 transform transition-all duration-200 lg:scroll-mx-2 [&>*:first-child]:h-full',
                   cx({
                     // 1rem represents 1 gap-4, if gap is changed, also change card width
                     'w-[calc(100%-1rem)] snap-center': visibleCount === 1,
