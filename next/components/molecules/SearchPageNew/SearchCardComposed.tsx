@@ -18,59 +18,40 @@ import { twMerge } from 'tailwind-merge'
 type SearchCardComposedProps = {
   data: SearchResult
   tagText?: string
-  variant: 'default' | 'withPicture'
 }
 
-const SearchCardComposed = ({ data, variant = 'default', tagText }: SearchCardComposedProps) => {
+const SearchCardComposed = ({ data, tagText }: SearchCardComposedProps) => {
   return (
-    <>
-      {variant === 'default' && (
-        <div className="group relative flex flex-row overflow-hidden">
-          <div className="flex w-full flex-row gap-6 px-6 py-4">
-            <SearchCardComposed.InfoContainer className="gap-1.5">
-              <div className="flex flex-row flex-wrap items-center gap-x-3 gap-y-1.5 lg:flex-nowrap">
-                <SearchCardComposed.TitleWithLink title={data.title} href={data.linkHref} />
-                <SearchCardComposed.Tag text={tagText} />
-              </div>
-              <SearchCardComposed.Metadata metadata={data.metadata} />
-            </SearchCardComposed.InfoContainer>
-            {data.linkHref && <SearchCardComposed.Button />}
-          </div>
-        </div>
+    <div
+      className={cx(
+        'group relative flex flex-row items-stretch overflow-hidden rounded-none border-b-2 lg:rounded-lg lg:border-2',
+        { 'hover:border-gray-400': data.linkHref },
       )}
-      {variant === 'withPicture' && (
-        <div
-          className={cx(
-            'group relative flex flex-row items-stretch overflow-hidden rounded-none border-b-2 lg:rounded-lg lg:border-2',
-            { 'hover:border-gray-400': data.linkHref },
-          )}
-        >
-          {data.coverImageSrc ? (
-            <SearchCardComposed.ImageFromUrl imgUrl={data.coverImageSrc} />
-          ) : data.customIconName ? (
-            <SearchCardComposed.ImageFromIcon iconName={data.customIconName} />
-          ) : data.pageColor ? (
-            <SearchCardComposed.ImageFromPageColor pageColor={data.pageColor} />
-          ) : (
-            <SearchCardComposed.ImageFromIcon iconName={null} />
-          )}
-          <div className="flex w-full flex-row gap-6 py-4 lg:p-6">
-            <SearchCardComposed.InfoContainer className="flex flex-col gap-3">
-              <div className="flex flex-col gap-y-2">
-                <SearchCardComposed.Tag text={tagText} />
-                <SearchCardComposed.TitleWithLink
-                  className=""
-                  title={data.title}
-                  href={data.linkHref}
-                />
-              </div>
-              <SearchCardComposed.Metadata metadata={data.metadata} />
-            </SearchCardComposed.InfoContainer>
-            {data.linkHref && <SearchCardComposed.Button className="hidden lg:block" />}
-          </div>
-        </div>
+    >
+      {data.coverImageSrc ? (
+        <SearchCardComposed.ImageFromUrl imgUrl={data.coverImageSrc} />
+      ) : data.customIconName ? (
+        <SearchCardComposed.ImageFromIcon iconName={data.customIconName} />
+      ) : data.pageColor ? (
+        <SearchCardComposed.ImageFromPageColor pageColor={data.pageColor} />
+      ) : (
+        <SearchCardComposed.ImageFromIcon iconName={null} />
       )}
-    </>
+      <div className="flex w-full flex-row gap-6 py-4 lg:p-6">
+        <SearchCardComposed.InfoContainer className="flex flex-col gap-3">
+          <div className="flex flex-col gap-y-2">
+            <SearchCardComposed.Tag text={tagText} />
+            <SearchCardComposed.TitleWithLink
+              className=""
+              title={data.title}
+              href={data.linkHref}
+            />
+          </div>
+          <SearchCardComposed.Metadata metadata={data.metadata} />
+        </SearchCardComposed.InfoContainer>
+        {data.linkHref && <SearchCardComposed.Button className="hidden lg:block" />}
+      </div>
+    </div>
   )
 }
 

@@ -61,7 +61,6 @@ const GeneralSearchResults = ({
                     <SearchCardComposed
                       data={{ ...item }}
                       tagText={searchOption.displayName}
-                      variant="withPicture"
                       key={`item-${variant}-${searchOption.id}-${[
                         item.title,
                         ...item.metadata,
@@ -76,7 +75,6 @@ const GeneralSearchResults = ({
                     <SearchCardComposed
                       data={{ ...item }}
                       tagText={searchOption.displayName}
-                      variant="withPicture"
                       key={`item-${variant}-${searchOption.id}-${[
                         item.title,
                         ...item.metadata,
