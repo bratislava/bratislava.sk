@@ -1,0 +1,19 @@
+{
+  "kind": "collectionType",
+  "collectionName": "regulationtest1s",
+  "info": {
+    "singularName": "regulationtest1",
+    "pluralName": "regulationtest1s",
+    "displayName": "regulationtest1",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Title": {
+      "type": "string"
+    }
+  }
+}
