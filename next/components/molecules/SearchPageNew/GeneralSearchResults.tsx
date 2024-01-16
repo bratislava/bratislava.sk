@@ -60,7 +60,6 @@ const GeneralSearchResults = ({
                   return (
                     <SearchCardComposed
                       data={{ ...item }}
-                      tagText={searchOption.displayName}
                       key={`item-${variant}-${searchOption.id}-${[
                         item.title,
                         ...item.metadata,
@@ -74,7 +73,6 @@ const GeneralSearchResults = ({
                   return (
                     <SearchCardComposed
                       data={{ ...item }}
-                      tagText={searchOption.displayName}
                       key={`item-${variant}-${searchOption.id}-${[
                         item.title,
                         ...item.metadata,
