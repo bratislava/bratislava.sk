@@ -1,15 +1,12 @@
 import { ChevronDownIcon } from '@assets/ui-icons'
+import { Typography } from '@bratislava/component-library'
 import { AnimateHeight } from '@components/atoms/AnimateHeight'
 import cx from 'classnames'
 import { ReactNode } from 'react'
 
 type BoxedScreenSizes = 'h3' | 'h4' | 'h5' | 'h6'
 type BoxedTypes = 'boxed' | 'boxed-with-shadow'
-/**
- * In design for accordion is a smaller gap between the header and content, but some usages have larger ones.
- */
-type BoxedGapType = '' | '-large-gap'
-type BoxedScreenType = `${BoxedTypes}-${BoxedScreenSizes}${BoxedGapType}`
+type BoxedScreenType = `${BoxedTypes}-${BoxedScreenSizes}`
 
 export type AccordionProps = {
   variant: BoxedScreenType | 'footer'
@@ -27,7 +24,6 @@ const AccordionV2 = ({ variant, title, children }: AccordionProps) => {
   const isBoxedWithShadow = /^boxed-with-shadow-h[3-6]/.test(variant)
   const isBoxed = isBoxedOrdinary || isBoxedWithShadow
   const boxedSize = isBoxed ? (variant.split('-')[1] as BoxedScreenSizes) : undefined
-  const boxedLargeGap = isBoxed ? variant.endsWith('-large-gap') : undefined
 
   const animateHeightStyles = cx({
     'rounded-xl shadow-accordion': isBoxedWithShadow, // shadows must be on <AnimateHeight />, because it has overflow: hidden
@@ -40,23 +36,15 @@ const AccordionV2 = ({ variant, title, children }: AccordionProps) => {
     'shadow-accordion': isBoxedWithShadow,
   })
 
-  const headingStyles = cx('min-w-0 grow', {
-    'font-semibold': isBoxed,
-    'text-h3': isBoxed && boxedSize === 'h3',
-    'text-h4': isBoxed && boxedSize === 'h4',
-    'text-h5': (isBoxed && boxedSize === 'h5') || variant === 'footer',
-    'text-h6': isBoxed && boxedSize === 'h6',
-  })
-
   const buttonStyles = cx('flex cursor-pointer items-center gap-4 text-left', {
     'px-6 py-5 lg:px-10 lg:py-8 text-h3': isBoxed && boxedSize === 'h3',
     'px-4 py-4 lg:px-8 lg:py-6 text-h4': isBoxed && boxedSize === 'h4',
     'px-4 py-4 lg:px-5 lg:py-5 text-h5': isBoxed && boxedSize === 'h5',
-    'px-3 py-3 group-open:pb-1 lg:px-4 lg:py-4 text-h6': isBoxed && boxedSize === 'h6',
+    'px-3 py-3 lg:px-4 lg:py-4 text-h6': isBoxed && boxedSize === 'h6',
     'py-6 group-open:pb-4': variant === 'footer',
     'group-open:pb-2 group-open:lg:pb-4':
-      isBoxed && (boxedSize === 'h3' || boxedSize === 'h4' || boxedSize === 'h5') && !boxedLargeGap,
-    'group-open:pb-1': isBoxed && boxedSize === 'h6' && !boxedLargeGap,
+      isBoxed && (boxedSize === 'h3' || boxedSize === 'h4' || boxedSize === 'h5'),
+    'group-open:pb-1 group-open:lg:pb-4': isBoxed && boxedSize === 'h6',
   })
 
   const chevronStyles = cx('transform transition-transform group-open:rotate-180', {
@@ -79,9 +67,15 @@ const AccordionV2 = ({ variant, title, children }: AccordionProps) => {
     <AnimateHeight isVisible className={animateHeightStyles}>
       <details className={borderStyles}>
         <summary className={buttonStyles}>
-          {/* FIXME Typograhpy. Convert to use Typograpy. Issue: Usage of conditional size, optional font weight. */}
           {/* TODO accordions often have no parent title, so they should act as h2 */}
-          <h3 className={headingStyles}>{title}</h3>
+          <Typography
+            type="h3"
+            size={variant === 'footer' ? 'h5' : boxedSize}
+            className="min-w-0 grow"
+          >
+            {title}
+          </Typography>
+
           <span className="shrink-0" aria-hidden>
             <ChevronDownIcon className={chevronStyles} />
           </span>

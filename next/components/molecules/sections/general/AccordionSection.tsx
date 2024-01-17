@@ -9,7 +9,6 @@ import AccordionV2 from '@components/ui/AccordionV2/AccordionV2'
 import { isDefined } from '@utils/isDefined'
 import { groupByCategory, parsePageLink } from '@utils/page'
 import { isPresent } from '@utils/utils'
-import { useTranslations } from 'next-intl'
 import React from 'react'
 
 type AccordionSectionProps = {
@@ -17,8 +16,6 @@ type AccordionSectionProps = {
 }
 
 const AccordionSection = ({ section }: AccordionSectionProps) => {
-  const t = useTranslations()
-
   return (
     <>
       {section.title && (
@@ -30,7 +27,7 @@ const AccordionSection = ({ section }: AccordionSectionProps) => {
         {groupByCategory(section.institutions?.filter(isPresent) ?? []).map(
           (institution, index) => (
             <AccordionV2
-              variant="boxed-h3-large-gap"
+              variant="boxed-h3"
               // eslint-disable-next-line react/no-array-index-key
               key={`institution-${index}`}
               title={institution.category}
@@ -56,7 +53,7 @@ const AccordionSection = ({ section }: AccordionSectionProps) => {
 
         {groupByCategory(section.flatText?.filter(isPresent) ?? []).map((text, index) => (
           // eslint-disable-next-line react/no-array-index-key
-          <AccordionV2 variant="boxed-h3-large-gap" key={`flatText-${index}`} title={text.category}>
+          <AccordionV2 variant="boxed-h3" key={`flatText-${index}`} title={text.category}>
             {text.items.filter(isPresent).map((item, itemIndex) => {
               const link = parsePageLink({
                 title: item.moreLinkTitle,
@@ -90,7 +87,7 @@ const AccordionSection = ({ section }: AccordionSectionProps) => {
         {groupByCategory(section.institutionsNarrow?.filter(isPresent) ?? []).map((text, index) => (
           // eslint-disable-next-line react/no-array-index-key
           <AccordionV2
-            variant="boxed-h3-large-gap"
+            variant="boxed-h3"
             // eslint-disable-next-line react/no-array-index-key
             key={`institutionsNarrow-${index}`}
             title={text.category}
