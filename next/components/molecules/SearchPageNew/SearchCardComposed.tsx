@@ -16,14 +16,15 @@ import { twMerge } from 'tailwind-merge'
 
 type SearchCardComposedProps = {
   data: SearchResult
+  showBottomDivdivider: boolean
 }
 
-const SearchCardComposed = ({ data }: SearchCardComposedProps) => {
+const SearchCardComposed = ({ data, showBottomDivdivider }: SearchCardComposedProps) => {
   return (
     <div
       className={cx(
-        'group relative flex flex-row items-stretch overflow-hidden rounded-none border-b-2 lg:rounded-lg lg:border-2',
-        { 'hover:border-gray-400': data.linkHref },
+        'group relative flex flex-row items-stretch overflow-hidden rounded-none lg:rounded-lg lg:border-2',
+        { 'hover:border-gray-400': data.linkHref, 'border-b-2': showBottomDivdivider },
       )}
     >
       {data.coverImageSrc ? (
@@ -36,7 +37,7 @@ const SearchCardComposed = ({ data }: SearchCardComposedProps) => {
         <SearchCardComposed.ImageFromIcon iconName={null} />
       )}
       <div className="flex w-full flex-row gap-6 py-4 lg:p-6">
-        <div className="flex w-full flex-col justify-center gap-2">
+        <div className="flex w-full flex-col justify-center gap-3 lg:gap-2">
           <SearchCardComposed.TitleWithLink title={data.title} href={data.linkHref} />
           <SearchCardComposed.Metadata metadata={data.metadata} />
         </div>
