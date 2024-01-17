@@ -53,6 +53,7 @@ SearchCardComposed.ImageFromIcon = function ({
   iconName?: string
   className?: string
 }) {
+  if (!iconName) return null
   return (
     <div
       className={twMerge(
@@ -60,7 +61,7 @@ SearchCardComposed.ImageFromIcon = function ({
         className,
       )}
     >
-      {iconName ? <Icon iconName={iconName} /> : null}
+      <Icon iconName={iconName} />
     </div>
   )
 }
@@ -73,7 +74,7 @@ SearchCardComposed.ImageFromPageColor = function ({
   className?: string
 }) {
   const colorStyle = getCategoryColorLocalStyle({ color: pageColor as Enum_Pagecategory_Color })
-  const { default: PageIcon } = findIconByPageColor(pageColor as Enum_Pagecategory_Color)
+  const { small: PageIcon } = findIconByPageColor(pageColor as Enum_Pagecategory_Color)
 
   return (
     <div

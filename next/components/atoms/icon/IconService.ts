@@ -88,10 +88,13 @@ import Travel64pxFilledIcon from '@assets/images/menu-icons/64px/travel_64px_fil
 import Travel64pxStrokeIcon from '@assets/images/menu-icons/64px/travel_64px_stroke.svg'
 import Tree64pxIcon from '@assets/images/menu-icons/64px/tree_64px.svg'
 import Trolleybus64pxIcon from '@assets/images/menu-icons/64px/trolleybus_64px.svg'
-import Ostatne48pxIcon from '@assets/images/ostatne.svg'
 import Phone48pxIcon from '@assets/images/phone-medium.svg'
 import TouristSign48pxIcon from '@assets/images/Tourist-icon.svg'
 
+import {
+  SearchResults_Contacts48pxIcon,
+  SearchResults_Document48pxIcon,
+} from '../../../assets/icons-search-results'
 import {
   TopServices_BratislavskeKontoIcon,
   TopServices_DaneAPoplatkyIcon,
@@ -183,8 +186,9 @@ export const ICON_URL_MAP: IconUrlMap = {
     pracovne_prilezitosti: TopServices_PracovnePrilezitosti,
     turistom_v_hlavnom_meste: TopServices_TuristomVHlavnomMeste,
     prenajom_priestorov: TopServices_PrenajomPriestorov,
-    // Others
-    ostatne: Documents64pxIcon,
+    // Search results
+    search_result_official_board: SearchResults_Document48pxIcon,
+    search_result_contacts: SearchResults_Contacts48pxIcon,
   },
   size_64: {
     mesto_01: Castle64pxStrokeIcon,
