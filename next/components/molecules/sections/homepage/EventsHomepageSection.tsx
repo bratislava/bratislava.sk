@@ -27,6 +27,7 @@ export const EventsHomepageSection = () => {
 
         <ResponsiveCarousel
           shiftVariant="byPage"
+          itemClassName="h-[14.5rem] lg:h-[18.75rem]" // 232px, lg: 300px
           items={
             tootootEvents?.map((event) => {
               const {
