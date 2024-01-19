@@ -58,7 +58,7 @@ SearchCardComposed.ImageFromIcon = function ({
   return (
     <div
       className={twMerge(
-        'hidden w-[104px] shrink-0 items-center justify-center bg-gray-100 lg:flex',
+        'hidden w-[6.5rem] shrink-0 items-center justify-center bg-gray-100 lg:flex',
         className,
       )}
     >
@@ -81,7 +81,7 @@ SearchCardComposed.ImageFromPageColor = function ({
     <div
       style={colorStyle}
       className={twMerge(
-        'relative hidden w-[104px] shrink-0 items-center justify-center overflow-hidden bg-category-100 lg:flex',
+        'relative hidden w-[6.5rem] shrink-0 items-center justify-center overflow-hidden bg-category-100 lg:flex',
         className,
       )}
     >
@@ -100,7 +100,7 @@ SearchCardComposed.ImageFromUrl = function ({
   return (
     <div
       className={twMerge(
-        'relative hidden w-[104px] shrink-0 items-center justify-center overflow-hidden bg-category-200 lg:flex',
+        'relative hidden w-[6.5rem] shrink-0 items-center justify-center overflow-hidden bg-category-200 lg:flex',
         className,
       )}
     >
