@@ -3,7 +3,6 @@ import {
   ginisOfficialBoardFetcher,
 } from '@backend/ginis/fetchers/ginisOfficialBoard.fetcher'
 import {
-  Enum_Componentblockstopservicesitem_Icon,
   Enum_Page_Pagecolor,
   Enum_Pagecategory_Color,
   LatestBlogPostEntityFragment,
@@ -126,7 +125,7 @@ export const useQueryBySearchOption = (optionKey: SearchOption['id'], filters: S
           return {
             title: user.displayName,
             metadata: [user.jobTitle, mail, user.businessPhones?.join(', ')],
-            customIconName: Enum_Componentblockstopservicesitem_Icon.UradneHodiny,
+            customIconName: 'search_result_contacts',
           }
         }) ?? []
 
@@ -144,7 +143,7 @@ export const useQueryBySearchOption = (optionKey: SearchOption['id'], filters: S
           return {
             title: boardItem.title,
             metadata: [boardItem.createdAt],
-            customIconName: 'ostatne',
+            customIconName: 'search_result_official_board',
           }
         }) ?? []
 
