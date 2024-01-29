@@ -2167,6 +2167,17 @@ enum ENUM_PAGE_PAGECOLOR {
   yellow
 }
 
+enum ENUM_REGULATIONTEST1_CATEGORY {
+  archiv
+  daneAPoplatky
+  hospodarenie
+  ostatne
+  pomenovanieUlic
+  poriadokACistota
+  socialnaPomocASkolstvo
+  uzemnePlanovanie
+}
+
 enum ENUM_VZN_CATEGORY {
   archiv
   daneAPoplatky
@@ -3142,9 +3153,19 @@ type Query {
 }
 
 type Regulationtest1 {
-  Title: String
+  amending(filters: Regulationtest1FiltersInput, pagination: PaginationArg = {}, sort: [String] = []): Regulationtest1RelationResponseCollection
+  amendments(filters: Regulationtest1FiltersInput, pagination: PaginationArg = {}, sort: [String] = []): Regulationtest1RelationResponseCollection
+  attachments(filters: UploadFileFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UploadFileRelationResponseCollection
+  cancellation: Regulationtest1EntityResponse
+  cancelling(filters: Regulationtest1FiltersInput, pagination: PaginationArg = {}, sort: [String] = []): Regulationtest1RelationResponseCollection
+  category: ENUM_REGULATIONTEST1_CATEGORY
+  consolidatedText: UploadFileEntityResponse
   createdAt: DateTime
+  details: String
+  mainDocument: UploadFileEntityResponse
+  title: String!
   updatedAt: DateTime
+  validFrom: Date
 }
 
 type Regulationtest1Entity {
@@ -3162,17 +3183,34 @@ type Regulationtest1EntityResponseCollection {
 }
 
 input Regulationtest1FiltersInput {
-  Title: StringFilterInput
+  amending: Regulationtest1FiltersInput
+  amendments: Regulationtest1FiltersInput
   and: [Regulationtest1FiltersInput]
+  cancellation: Regulationtest1FiltersInput
+  cancelling: Regulationtest1FiltersInput
+  category: StringFilterInput
   createdAt: DateTimeFilterInput
+  details: StringFilterInput
   id: IDFilterInput
   not: Regulationtest1FiltersInput
   or: [Regulationtest1FiltersInput]
+  title: StringFilterInput
   updatedAt: DateTimeFilterInput
+  validFrom: DateFilterInput
 }
 
 input Regulationtest1Input {
-  Title: String
+  amending: [ID]
+  amendments: [ID]
+  attachments: [ID]
+  cancellation: ID
+  cancelling: [ID]
+  category: ENUM_REGULATIONTEST1_CATEGORY
+  consolidatedText: ID
+  details: String
+  mainDocument: ID
+  title: String
+  validFrom: Date
 }
 
 type Regulationtest1RelationResponseCollection {

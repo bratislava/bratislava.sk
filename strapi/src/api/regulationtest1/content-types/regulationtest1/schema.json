@@ -12,8 +12,85 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "Title": {
-      "type": "string"
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "amendments": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::regulationtest1.regulationtest1",
+      "inversedBy": "amending"
+    },
+    "amending": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::regulationtest1.regulationtest1",
+      "inversedBy": "amendments"
+    },
+    "mainDocument": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "attachments": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "cancelling": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::regulationtest1.regulationtest1",
+      "mappedBy": "cancellation"
+    },
+    "details": {
+      "type": "richtext"
+    },
+    "consolidatedText": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "validFrom": {
+      "type": "date"
+    },
+    "cancellation": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::regulationtest1.regulationtest1",
+      "inversedBy": "cancelling"
+    },
+    "category": {
+      "type": "enumeration",
+      "enum": [
+        "daneAPoplatky",
+        "pomenovanieUlic",
+        "hospodarenie",
+        "uzemnePlanovanie",
+        "poriadokACistota",
+        "socialnaPomocASkolstvo",
+        "ostatne",
+        "archiv"
+      ]
     }
   }
 }
