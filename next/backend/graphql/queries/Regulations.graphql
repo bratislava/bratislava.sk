@@ -86,6 +86,7 @@ fragment RegulationTest1Entity on Regulationtest1Entity {
   id
   attributes {
     title
+    fullTitle
     validFrom
     category
     details
@@ -117,6 +118,15 @@ fragment RegulationTest1Entity on Regulationtest1Entity {
         id
         attributes {
           title
+          cancellation {
+            data {
+              id
+              attributes {
+                title
+                validFrom
+              }
+            }
+          }
         }
       }
     }
@@ -125,6 +135,7 @@ fragment RegulationTest1Entity on Regulationtest1Entity {
         id
         attributes {
           title
+          validFrom
         }
       }
     }

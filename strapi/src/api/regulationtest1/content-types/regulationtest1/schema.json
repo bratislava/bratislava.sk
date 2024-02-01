@@ -91,6 +91,13 @@
         "ostatne",
         "archiv"
       ]
+    },
+    "fullTitle": {
+      "type": "text"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title"
     }
   }
 }

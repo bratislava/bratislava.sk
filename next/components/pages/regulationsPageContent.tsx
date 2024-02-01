@@ -1,16 +1,10 @@
-import { type } from 'node:os'
-
 import { RegulationTest1EntityFragment } from '@backend/graphql'
 import { client } from '@backend/graphql/gql'
-import RegulationDetail from '@components/molecules/Regulations/RegulationDetail'
+import RegulationDetail from '@components/pages/RegulationDetailPage/RegulationDetail'
 import { SectionContainer } from '@components/ui/SectionContainer/SectionContainer'
 import { useQuery } from '@tanstack/react-query'
 import { useTranslations } from 'next-intl'
-import React, { useEffect, useState } from 'react'
-
-type RegulationsProps = {
-  data: RegulationTest1EntityFragment[]
-}
+import React from 'react'
 
 type RegulationProps = {
   data: RegulationTest1EntityFragment

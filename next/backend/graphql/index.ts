@@ -3469,6 +3469,7 @@ export type Regulationtest1 = {
   consolidatedText?: Maybe<UploadFileEntityResponse>
   createdAt?: Maybe<Scalars['DateTime']['output']>
   details?: Maybe<Scalars['String']['output']>
+  fullTitle?: Maybe<Scalars['String']['output']>
   mainDocument?: Maybe<UploadFileEntityResponse>
   title: Scalars['String']['output']
   updatedAt?: Maybe<Scalars['DateTime']['output']>
@@ -3525,6 +3526,7 @@ export type Regulationtest1FiltersInput = {
   category?: InputMaybe<StringFilterInput>
   createdAt?: InputMaybe<DateTimeFilterInput>
   details?: InputMaybe<StringFilterInput>
+  fullTitle?: InputMaybe<StringFilterInput>
   id?: InputMaybe<IdFilterInput>
   not?: InputMaybe<Regulationtest1FiltersInput>
   or?: InputMaybe<Array<InputMaybe<Regulationtest1FiltersInput>>>
@@ -3542,6 +3544,7 @@ export type Regulationtest1Input = {
   category?: InputMaybe<Enum_Regulationtest1_Category>
   consolidatedText?: InputMaybe<Scalars['ID']['input']>
   details?: InputMaybe<Scalars['String']['input']>
+  fullTitle?: InputMaybe<Scalars['String']['input']>
   mainDocument?: InputMaybe<Scalars['ID']['input']>
   title?: InputMaybe<Scalars['String']['input']>
   validFrom?: InputMaybe<Scalars['Date']['input']>
@@ -9401,6 +9404,7 @@ export type AllRegulationTest1sQuery = {
       attributes?: {
         __typename?: 'Regulationtest1'
         title: string
+        fullTitle?: string | null
         validFrom?: any | null
         category?: Enum_Regulationtest1_Category | null
         details?: string | null
@@ -9465,7 +9469,22 @@ export type AllRegulationTest1sQuery = {
           data: Array<{
             __typename?: 'Regulationtest1Entity'
             id?: string | null
-            attributes?: { __typename?: 'Regulationtest1'; title: string } | null
+            attributes?: {
+              __typename?: 'Regulationtest1'
+              title: string
+              cancellation?: {
+                __typename?: 'Regulationtest1EntityResponse'
+                data?: {
+                  __typename?: 'Regulationtest1Entity'
+                  id?: string | null
+                  attributes?: {
+                    __typename?: 'Regulationtest1'
+                    title: string
+                    validFrom?: any | null
+                  } | null
+                } | null
+              } | null
+            } | null
           }>
         } | null
         cancellation?: {
@@ -9473,7 +9492,11 @@ export type AllRegulationTest1sQuery = {
           data?: {
             __typename?: 'Regulationtest1Entity'
             id?: string | null
-            attributes?: { __typename?: 'Regulationtest1'; title: string } | null
+            attributes?: {
+              __typename?: 'Regulationtest1'
+              title: string
+              validFrom?: any | null
+            } | null
           } | null
         } | null
         cancelling?: {
@@ -9503,6 +9526,7 @@ export type RegulationByIdQuery = {
       attributes?: {
         __typename?: 'Regulationtest1'
         title: string
+        fullTitle?: string | null
         validFrom?: any | null
         category?: Enum_Regulationtest1_Category | null
         details?: string | null
@@ -9567,7 +9591,22 @@ export type RegulationByIdQuery = {
           data: Array<{
             __typename?: 'Regulationtest1Entity'
             id?: string | null
-            attributes?: { __typename?: 'Regulationtest1'; title: string } | null
+            attributes?: {
+              __typename?: 'Regulationtest1'
+              title: string
+              cancellation?: {
+                __typename?: 'Regulationtest1EntityResponse'
+                data?: {
+                  __typename?: 'Regulationtest1Entity'
+                  id?: string | null
+                  attributes?: {
+                    __typename?: 'Regulationtest1'
+                    title: string
+                    validFrom?: any | null
+                  } | null
+                } | null
+              } | null
+            } | null
           }>
         } | null
         cancellation?: {
@@ -9575,7 +9614,11 @@ export type RegulationByIdQuery = {
           data?: {
             __typename?: 'Regulationtest1Entity'
             id?: string | null
-            attributes?: { __typename?: 'Regulationtest1'; title: string } | null
+            attributes?: {
+              __typename?: 'Regulationtest1'
+              title: string
+              validFrom?: any | null
+            } | null
           } | null
         } | null
         cancelling?: {
@@ -9673,6 +9716,7 @@ export type RegulationTest1EntityFragment = {
   attributes?: {
     __typename?: 'Regulationtest1'
     title: string
+    fullTitle?: string | null
     validFrom?: any | null
     category?: Enum_Regulationtest1_Category | null
     details?: string | null
@@ -9737,7 +9781,22 @@ export type RegulationTest1EntityFragment = {
       data: Array<{
         __typename?: 'Regulationtest1Entity'
         id?: string | null
-        attributes?: { __typename?: 'Regulationtest1'; title: string } | null
+        attributes?: {
+          __typename?: 'Regulationtest1'
+          title: string
+          cancellation?: {
+            __typename?: 'Regulationtest1EntityResponse'
+            data?: {
+              __typename?: 'Regulationtest1Entity'
+              id?: string | null
+              attributes?: {
+                __typename?: 'Regulationtest1'
+                title: string
+                validFrom?: any | null
+              } | null
+            } | null
+          } | null
+        } | null
       }>
     } | null
     cancellation?: {
@@ -9745,7 +9804,11 @@ export type RegulationTest1EntityFragment = {
       data?: {
         __typename?: 'Regulationtest1Entity'
         id?: string | null
-        attributes?: { __typename?: 'Regulationtest1'; title: string } | null
+        attributes?: {
+          __typename?: 'Regulationtest1'
+          title: string
+          validFrom?: any | null
+        } | null
       } | null
     } | null
     cancelling?: {
@@ -12976,6 +13039,7 @@ export const RegulationTest1EntityFragmentDoc = gql`
     id
     attributes {
       title
+      fullTitle
       validFrom
       category
       details
@@ -13007,6 +13071,15 @@ export const RegulationTest1EntityFragmentDoc = gql`
           id
           attributes {
             title
+            cancellation {
+              data {
+                id
+                attributes {
+                  title
+                  validFrom
+                }
+              }
+            }
           }
         }
       }
@@ -13015,6 +13088,7 @@ export const RegulationTest1EntityFragmentDoc = gql`
           id
           attributes {
             title
+            validFrom
           }
         }
       }

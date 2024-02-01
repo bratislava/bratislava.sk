@@ -3162,7 +3162,9 @@ type Regulationtest1 {
   consolidatedText: UploadFileEntityResponse
   createdAt: DateTime
   details: String
+  fullTitle: String
   mainDocument: UploadFileEntityResponse
+  slug: String
   title: String!
   updatedAt: DateTime
   validFrom: Date
@@ -3191,9 +3193,11 @@ input Regulationtest1FiltersInput {
   category: StringFilterInput
   createdAt: DateTimeFilterInput
   details: StringFilterInput
+  fullTitle: StringFilterInput
   id: IDFilterInput
   not: Regulationtest1FiltersInput
   or: [Regulationtest1FiltersInput]
+  slug: StringFilterInput
   title: StringFilterInput
   updatedAt: DateTimeFilterInput
   validFrom: DateFilterInput
@@ -3208,7 +3212,9 @@ input Regulationtest1Input {
   category: ENUM_REGULATIONTEST1_CATEGORY
   consolidatedText: ID
   details: String
+  fullTitle: String
   mainDocument: ID
+  slug: String
   title: String
   validFrom: Date
 }
