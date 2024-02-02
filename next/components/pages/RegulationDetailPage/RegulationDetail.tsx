@@ -19,6 +19,11 @@ type RegulationDetailProps = {
   regulation: RegulationTest1EntityFragment
 }
 
+const getPathByRegulation = (regulation: RegulationTest1EntityFragment): string => {
+  if (!regulation?.id) return ''
+  return `/vzn/${regulation.id}`
+}
+
 const RegulationDetail = ({ regulation }: RegulationDetailProps) => {
   const mainDocument = regulation.attributes?.mainDocument?.data?.attributes
   const consolidatedDocument = regulation.attributes?.consolidatedText?.data?.attributes
@@ -41,11 +46,6 @@ const RegulationDetail = ({ regulation }: RegulationDetailProps) => {
 
   const cancelledAmendees = amending?.filter((amendee) => amendee.attributes?.cancellation?.data)
   const isAmendeningCancelled = cancelledAmendees?.length
-
-  const getPathByRegulation = (regulation: RegulationTest1EntityFragment): string => {
-    if (!regulation?.id) return ''
-    return `/vzn/${regulation.id}`
-  }
 
   /* TODO As a temporary solution, we use alert incorrectly here, as its content should receive only string,
    * but we need the ability to use bold text and links in the content.
@@ -70,42 +70,79 @@ const RegulationDetail = ({ regulation }: RegulationDetailProps) => {
       </Typography>
     ) : isAmendeningCancelled ? (
       <Typography type="p" className="whitespace-normal">
-        Toto VZN je dodatkom k nariadeniu{' '}
-        <MLink
-          variant="underlined-medium"
-          className="whitespace-nowrap"
-          href={getPathByRegulation(cancelledAmendees[0])}
-        >
-          {
-            parseRegulationCodeFromTitle(
-              amending?.find((amended) => amended.attributes?.cancellation?.data)?.attributes
-                ?.title,
-            ).code
-          }
-        </MLink>
-        , ktoré bolo zrušené nariadením{' '}
-        <MLink
-          variant="underlined-medium"
-          className="whitespace-nowrap"
-          href={getPathByRegulation(cancelledAmendees[0].attributes.cancellation.data)}
-        >
-          {
-            parseRegulationCodeFromTitle(
-              amending?.find((amended) => amended.attributes?.cancellation?.data)?.attributes
-                ?.cancellation?.data?.attributes?.title,
-            ).code
-          }
-        </MLink>{' '}
-        s účinnosťou od{' '}
-        <span className="font-semibold">
-          {formatDate(
-            amending?.find((amended) => amended.attributes?.cancellation?.data)?.attributes
-              ?.cancellation?.data?.attributes?.validFrom,
-          )}
-        </span>
+        Toto VZN je dodatkom
+        {cancelledAmendees.map((cancelledAmendee, index) => {
+          return (
+            <>
+              {index === 0 ? ' k ' : index === cancelledAmendees.length - 1 ? ' a k ' : ', k '}
+              <MLink
+                variant="underlined-medium"
+                className="whitespace-nowrap"
+                href={getPathByRegulation(cancelledAmendee)}
+              >
+                {parseRegulationCodeFromTitle(cancelledAmendee.attributes.title).code}
+              </MLink>
+              , ktoré bolo zrušené nariadením{' '}
+              <MLink
+                variant="underlined-medium"
+                className="whitespace-nowrap"
+                href={getPathByRegulation(cancelledAmendee.attributes.cancellation.data)}
+              >
+                {
+                  parseRegulationCodeFromTitle(
+                    cancelledAmendee.attributes.cancellation.data.attributes.title,
+                  ).code
+                }
+              </MLink>{' '}
+              s účinnosťou od{' '}
+              <span className="font-semibold">
+                {formatDate(
+                  amending?.find((amended) => amended.attributes?.cancellation?.data)?.attributes
+                    ?.cancellation?.data?.attributes?.validFrom,
+                )}
+              </span>
+            </>
+          )
+        })}
         .
       </Typography>
     ) : (
+      // <Typography type="p" className="whitespace-normal">
+      //   Toto VZN je dodatkom k {' '}
+      //   <MLink
+      //     variant="underlined-medium"
+      //     className="whitespace-nowrap"
+      //     href={getPathByRegulation(cancelledAmendees[0])}
+      //   >
+      //     {
+      //       parseRegulationCodeFromTitle(
+      //         amending?.find((amended) => amended.attributes?.cancellation?.data)?.attributes
+      //           ?.title,
+      //       ).code
+      //     }
+      //   </MLink>
+      //   , ktoré bolo zrušené nariadením{' '}
+      //   <MLink
+      //     variant="underlined-medium"
+      //     className="whitespace-nowrap"
+      //     href={getPathByRegulation(cancelledAmendees[0].attributes.cancellation.data)}
+      //   >
+      //     {
+      //       parseRegulationCodeFromTitle(
+      //         amending?.find((amended) => amended.attributes?.cancellation?.data)?.attributes
+      //           ?.cancellation?.data?.attributes?.title,
+      //       ).code
+      //     }
+      //   </MLink>{' '}
+      //   s účinnosťou od{' '}
+      //   <span className="font-semibold">
+      //     {formatDate(
+      //       amending?.find((amended) => amended.attributes?.cancellation?.data)?.attributes
+      //         ?.cancellation?.data?.attributes?.validFrom,
+      //     )}
+      //   </span>
+      //   .
+      // </Typography>
       <Typography type="p" className="whitespace-normal">
         Toto VZN je aktuálne platné, s dátumom účinnosti od{' '}
         <span className="font-semibold">{formatDate(regulation.attributes?.validFrom)}</span>.
