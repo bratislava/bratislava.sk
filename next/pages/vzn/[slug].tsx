@@ -5,7 +5,7 @@
 
 import { ParsedUrlQuery } from 'node:querystring'
 
-import { GeneralQuery, RegulationTest1EntityFragment } from '@backend/graphql'
+import { GeneralQuery, RegulationEntityFragment } from '@backend/graphql'
 import { client } from '@backend/graphql/gql'
 import PageLayout from '@components/layouts/PageLayout'
 import RegulationDetail from '@components/pages/RegulationDetailPage/RegulationDetail'
@@ -18,47 +18,28 @@ import { GetStaticPaths, GetStaticProps } from 'next'
 import Head from 'next/head'
 import * as React from 'react'
 
-export const getStaticPaths: GetStaticPaths<StaticParams> = async () => {
-  let paths: { params: { slug: string } }[] = []
-
-  let defaultStart = 0
-  // Fetch all pages to prerender
-  const allRegulations: RegulationTest1EntityFragment[] = []
-
-  while (defaultStart !== 0) {
-    // eslint-disable-next-line no-await-in-loop
-    const { regulationtest1S: regulations } = await client.allRegulationTest1s()
-    if (regulations) {
-      allRegulations.push(...regulations.data)
-    }
-    if (regulations?.data.length === 0) {
-      defaultStart = 0
-      break
-    }
-    defaultStart += 1
-  }
-
-  if (allRegulations) {
-    paths = allRegulations
-      .map((regulation) => {
-        if (regulation.attributes?.slug) {
-          return {
-            params: {
-              slug: regulation.attributes?.slug,
-            },
-          }
-        }
-        return null
-      })
-      .filter(isPresent)
-  }
-
-  console.log(`GENERATED STATIC PATHS FOR ${paths.length} SLUGS`)
-  return { paths, fallback: 'blocking' }
-}
-
 interface StaticParams extends ParsedUrlQuery {
   slug: string
+}
+
+type RegulationPageProps = {
+  general: GeneralQuery
+  regulation: RegulationEntityFragment
+}
+
+export const getStaticPaths: GetStaticPaths<StaticParams> = async () => {
+  const { regulations } = await client.allRegulations()
+
+  const paths = (regulations?.data ?? [])
+    .filter((regulation) => regulation?.attributes?.slug)
+    .map((regulation) => ({
+      params: {
+        slug: regulation.attributes!.slug,
+      },
+    }))
+
+  console.log(`GENERATED STATIC PATHS FOR ${paths.length} SLUGS - REGULATIONS`)
+  return { paths, fallback: 'blocking' }
 }
 
 export const getStaticProps: GetStaticProps<RegulationPageProps, StaticParams> = async (ctx) => {
@@ -66,13 +47,13 @@ export const getStaticProps: GetStaticProps<RegulationPageProps, StaticParams> =
   const locale = ctx.locale ?? 'sk'
   const slug = ctx.params?.slug ?? ''
 
-  const [{ regulationtest1S }, general, messages] = await Promise.all([
+  const [{ regulations }, general, messages] = await Promise.all([
     client.RegulationBySlug({ slug }),
     client.General({ locale }),
     import(`../../messages/${locale}.json`),
   ])
 
-  if (!regulationtest1S?.data?.length) {
+  if (!regulations || !regulations?.data?.length) {
     return {
       notFound: true,
     } as const
@@ -81,18 +62,11 @@ export const getStaticProps: GetStaticProps<RegulationPageProps, StaticParams> =
   return {
     props: {
       general,
-      id: slug,
-      regulation: regulationtest1S.data[0],
-      // regulation: regulationtest1.data,
+      regulation: regulations.data[0],
       messages: messages.default,
     },
     revalidate: 14_400, // revalidate after 4 hours
   }
-}
-
-type RegulationPageProps = {
-  general: GeneralQuery
-  regulation: RegulationTest1EntityFragment
 }
 
 const VznPage = ({ general, regulation }: RegulationPageProps) => {
@@ -100,9 +74,7 @@ const VznPage = ({ general, regulation }: RegulationPageProps) => {
     return null
   }
 
-  const [regulationNumber, regulationYear] = regulation.attributes.title.split('/')
-
-  const expandedTitleExcerpt = regulation.attributes.title.split(' ').slice(2).join(' ') ?? ''
+  const [regulationNumber, regulationYear] = regulation.attributes.code.split('/')
 
   const breadcrumbs = [
     { title: `Všeobecne záväzné nariadenie č. ${regulationNumber}/${regulationYear}`, path: null },
@@ -118,10 +90,7 @@ const VznPage = ({ general, regulation }: RegulationPageProps) => {
           <PageHeader
             title={`VZN ${regulationNumber}/${regulationYear}`}
             tag={regulation.attributes.category}
-            subtext={
-              regulation.attributes?.fullTitle?.split(' ').slice(2).join(' ') ??
-              expandedTitleExcerpt
-            }
+            subtext={regulation.attributes.fullTitle}
             breadcrumbs={breadcrumbs}
           />
           <SectionContainer className="my-8">

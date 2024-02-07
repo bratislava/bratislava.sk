@@ -9611,7 +9611,9 @@ export type AllRegulationsQuery = {
             attributes?: {
               __typename?: 'Regulation'
               code: string
+              slug: string
               effectiveFrom?: any | null
+              isFullTextRegulation: boolean
             } | null
           }>
         } | null
@@ -9623,6 +9625,7 @@ export type AllRegulationsQuery = {
             attributes?: {
               __typename?: 'Regulation'
               code: string
+              slug: string
               effectiveFrom?: any | null
               cancellation?: {
                 __typename?: 'RegulationEntityResponse'
@@ -9632,6 +9635,7 @@ export type AllRegulationsQuery = {
                   attributes?: {
                     __typename?: 'Regulation'
                     code: string
+                    slug: string
                     effectiveFrom?: any | null
                   } | null
                 } | null
@@ -9644,6 +9648,7 @@ export type AllRegulationsQuery = {
                   attributes?: {
                     __typename?: 'Regulation'
                     code: string
+                    slug: string
                     cancellation?: {
                       __typename?: 'RegulationEntityResponse'
                       data?: {
@@ -9652,6 +9657,7 @@ export type AllRegulationsQuery = {
                         attributes?: {
                           __typename?: 'Regulation'
                           code: string
+                          slug: string
                           effectiveFrom?: any | null
                         } | null
                       } | null
@@ -9670,6 +9676,7 @@ export type AllRegulationsQuery = {
             attributes?: {
               __typename?: 'Regulation'
               code: string
+              slug: string
               effectiveFrom?: any | null
             } | null
           } | null
@@ -9682,6 +9689,7 @@ export type AllRegulationsQuery = {
             attributes?: {
               __typename?: 'Regulation'
               code: string
+              slug: string
               effectiveFrom?: any | null
             } | null
           }>
@@ -9766,7 +9774,9 @@ export type RegulationByIdQuery = {
             attributes?: {
               __typename?: 'Regulation'
               code: string
+              slug: string
               effectiveFrom?: any | null
+              isFullTextRegulation: boolean
             } | null
           }>
         } | null
@@ -9778,6 +9788,7 @@ export type RegulationByIdQuery = {
             attributes?: {
               __typename?: 'Regulation'
               code: string
+              slug: string
               effectiveFrom?: any | null
               cancellation?: {
                 __typename?: 'RegulationEntityResponse'
@@ -9787,6 +9798,7 @@ export type RegulationByIdQuery = {
                   attributes?: {
                     __typename?: 'Regulation'
                     code: string
+                    slug: string
                     effectiveFrom?: any | null
                   } | null
                 } | null
@@ -9799,6 +9811,7 @@ export type RegulationByIdQuery = {
                   attributes?: {
                     __typename?: 'Regulation'
                     code: string
+                    slug: string
                     cancellation?: {
                       __typename?: 'RegulationEntityResponse'
                       data?: {
@@ -9807,6 +9820,7 @@ export type RegulationByIdQuery = {
                         attributes?: {
                           __typename?: 'Regulation'
                           code: string
+                          slug: string
                           effectiveFrom?: any | null
                         } | null
                       } | null
@@ -9825,6 +9839,7 @@ export type RegulationByIdQuery = {
             attributes?: {
               __typename?: 'Regulation'
               code: string
+              slug: string
               effectiveFrom?: any | null
             } | null
           } | null
@@ -9837,6 +9852,7 @@ export type RegulationByIdQuery = {
             attributes?: {
               __typename?: 'Regulation'
               code: string
+              slug: string
               effectiveFrom?: any | null
             } | null
           }>
@@ -9921,7 +9937,9 @@ export type RegulationBySlugQuery = {
             attributes?: {
               __typename?: 'Regulation'
               code: string
+              slug: string
               effectiveFrom?: any | null
+              isFullTextRegulation: boolean
             } | null
           }>
         } | null
@@ -9933,6 +9951,7 @@ export type RegulationBySlugQuery = {
             attributes?: {
               __typename?: 'Regulation'
               code: string
+              slug: string
               effectiveFrom?: any | null
               cancellation?: {
                 __typename?: 'RegulationEntityResponse'
@@ -9942,6 +9961,7 @@ export type RegulationBySlugQuery = {
                   attributes?: {
                     __typename?: 'Regulation'
                     code: string
+                    slug: string
                     effectiveFrom?: any | null
                   } | null
                 } | null
@@ -9954,6 +9974,7 @@ export type RegulationBySlugQuery = {
                   attributes?: {
                     __typename?: 'Regulation'
                     code: string
+                    slug: string
                     cancellation?: {
                       __typename?: 'RegulationEntityResponse'
                       data?: {
@@ -9962,6 +9983,7 @@ export type RegulationBySlugQuery = {
                         attributes?: {
                           __typename?: 'Regulation'
                           code: string
+                          slug: string
                           effectiveFrom?: any | null
                         } | null
                       } | null
@@ -9980,6 +10002,7 @@ export type RegulationBySlugQuery = {
             attributes?: {
               __typename?: 'Regulation'
               code: string
+              slug: string
               effectiveFrom?: any | null
             } | null
           } | null
@@ -9992,6 +10015,7 @@ export type RegulationBySlugQuery = {
             attributes?: {
               __typename?: 'Regulation'
               code: string
+              slug: string
               effectiveFrom?: any | null
             } | null
           }>
@@ -10076,7 +10100,9 @@ export type RegulationByYearQuery = {
             attributes?: {
               __typename?: 'Regulation'
               code: string
+              slug: string
               effectiveFrom?: any | null
+              isFullTextRegulation: boolean
             } | null
           }>
         } | null
@@ -10088,6 +10114,7 @@ export type RegulationByYearQuery = {
             attributes?: {
               __typename?: 'Regulation'
               code: string
+              slug: string
               effectiveFrom?: any | null
               cancellation?: {
                 __typename?: 'RegulationEntityResponse'
@@ -10097,6 +10124,7 @@ export type RegulationByYearQuery = {
                   attributes?: {
                     __typename?: 'Regulation'
                     code: string
+                    slug: string
                     effectiveFrom?: any | null
                   } | null
                 } | null
@@ -10109,6 +10137,7 @@ export type RegulationByYearQuery = {
                   attributes?: {
                     __typename?: 'Regulation'
                     code: string
+                    slug: string
                     cancellation?: {
                       __typename?: 'RegulationEntityResponse'
                       data?: {
@@ -10117,6 +10146,7 @@ export type RegulationByYearQuery = {
                         attributes?: {
                           __typename?: 'Regulation'
                           code: string
+                          slug: string
                           effectiveFrom?: any | null
                         } | null
                       } | null
@@ -10135,6 +10165,7 @@ export type RegulationByYearQuery = {
             attributes?: {
               __typename?: 'Regulation'
               code: string
+              slug: string
               effectiveFrom?: any | null
             } | null
           } | null
@@ -10147,6 +10178,7 @@ export type RegulationByYearQuery = {
             attributes?: {
               __typename?: 'Regulation'
               code: string
+              slug: string
               effectiveFrom?: any | null
             } | null
           }>
@@ -10284,7 +10316,13 @@ export type RegulationEntityFragment = {
       data: Array<{
         __typename?: 'RegulationEntity'
         id?: string | null
-        attributes?: { __typename?: 'Regulation'; code: string; effectiveFrom?: any | null } | null
+        attributes?: {
+          __typename?: 'Regulation'
+          code: string
+          slug: string
+          effectiveFrom?: any | null
+          isFullTextRegulation: boolean
+        } | null
       }>
     } | null
     amending?: {
@@ -10295,6 +10333,7 @@ export type RegulationEntityFragment = {
         attributes?: {
           __typename?: 'Regulation'
           code: string
+          slug: string
           effectiveFrom?: any | null
           cancellation?: {
             __typename?: 'RegulationEntityResponse'
@@ -10304,6 +10343,7 @@ export type RegulationEntityFragment = {
               attributes?: {
                 __typename?: 'Regulation'
                 code: string
+                slug: string
                 effectiveFrom?: any | null
               } | null
             } | null
@@ -10316,6 +10356,7 @@ export type RegulationEntityFragment = {
               attributes?: {
                 __typename?: 'Regulation'
                 code: string
+                slug: string
                 cancellation?: {
                   __typename?: 'RegulationEntityResponse'
                   data?: {
@@ -10324,6 +10365,7 @@ export type RegulationEntityFragment = {
                     attributes?: {
                       __typename?: 'Regulation'
                       code: string
+                      slug: string
                       effectiveFrom?: any | null
                     } | null
                   } | null
@@ -10339,7 +10381,12 @@ export type RegulationEntityFragment = {
       data?: {
         __typename?: 'RegulationEntity'
         id?: string | null
-        attributes?: { __typename?: 'Regulation'; code: string; effectiveFrom?: any | null } | null
+        attributes?: {
+          __typename?: 'Regulation'
+          code: string
+          slug: string
+          effectiveFrom?: any | null
+        } | null
       } | null
     } | null
     cancelling?: {
@@ -10347,7 +10394,12 @@ export type RegulationEntityFragment = {
       data: Array<{
         __typename?: 'RegulationEntity'
         id?: string | null
-        attributes?: { __typename?: 'Regulation'; code: string; effectiveFrom?: any | null } | null
+        attributes?: {
+          __typename?: 'Regulation'
+          code: string
+          slug: string
+          effectiveFrom?: any | null
+        } | null
       }>
     } | null
   } | null
@@ -13595,7 +13647,9 @@ export const RegulationEntityFragmentDoc = gql`
           id
           attributes {
             code
+            slug
             effectiveFrom
+            isFullTextRegulation
           }
         }
       }
@@ -13604,12 +13658,14 @@ export const RegulationEntityFragmentDoc = gql`
           id
           attributes {
             code
+            slug
             effectiveFrom
             cancellation {
               data {
                 id
                 attributes {
                   code
+                  slug
                   effectiveFrom
                 }
               }
@@ -13619,11 +13675,13 @@ export const RegulationEntityFragmentDoc = gql`
                 id
                 attributes {
                   code
+                  slug
                   cancellation {
                     data {
                       id
                       attributes {
                         code
+                        slug
                         effectiveFrom
                       }
                     }
@@ -13639,6 +13697,7 @@ export const RegulationEntityFragmentDoc = gql`
           id
           attributes {
             code
+            slug
             effectiveFrom
           }
         }
@@ -13648,6 +13707,7 @@ export const RegulationEntityFragmentDoc = gql`
           id
           attributes {
             code
+            slug
             effectiveFrom
           }
         }

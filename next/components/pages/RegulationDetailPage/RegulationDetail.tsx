@@ -1,11 +1,10 @@
 import {
   Enum_Componentsectionsfilelist_Variant,
   FileItemBlockFragment,
-  RegulationTest1EntityFragment,
+  RegulationEntityFragment,
 } from '@backend/graphql'
 import { Typography } from '@bratislava/component-library'
 import FileList from '@bratislava/ui-bratislava/FileList/FileList'
-import Markdown from '@components/atoms/Markdown'
 import Alert from '@components/forms/info-components/Alert'
 import MLink from '@components/forms/simple-components/MLink'
 import FileCard from '@components/molecules/presentation/FileCard'
@@ -16,14 +15,7 @@ import { formatDate } from '@utils/local-date'
 import React, { Fragment } from 'react'
 
 type RegulationDetailProps = {
-  regulation: RegulationTest1EntityFragment
-}
-
-const getPathByRegulation = (
-  regulation: RegulationTest1EntityFragment | null | undefined,
-): string => {
-  if (!regulation || !regulation?.id) return ''
-  return `/vzn/${regulation.id}`
+  regulation: RegulationEntityFragment
 }
 
 const RegulationDetail = ({ regulation }: RegulationDetailProps) => {
@@ -32,13 +24,8 @@ const RegulationDetail = ({ regulation }: RegulationDetailProps) => {
   const amendments = regulation.attributes?.amendments?.data
     .filter((amendment) => isDefined(amendment))
     .sort((a, b) => {
-      if (!a.attributes?.validFrom || !b.attributes?.validFrom) return 0
-      // TODO simplify by isUplneZnenie field in Strapi
-      if (a.attributes.validFrom === b.attributes.validFrom) {
-        if (/[uú]pln[eé] znenie/i.test(a.attributes.title)) return -1
-        if (/[uú]pln[eé] znenie/i.test(b.attributes.title)) return 1
-      }
-      return a.attributes.validFrom < b.attributes.validFrom ? 1 : -1
+      // TODO now we are just reversing the order of items in strapi, but we could sort by regulation year and number
+      return -1
     })
   const amending = regulation.attributes?.amending?.data.filter(isDefined)
   const cancellation = regulation.attributes?.cancellation?.data
@@ -71,12 +58,13 @@ const RegulationDetail = ({ regulation }: RegulationDetailProps) => {
         <MLink
           variant="underlined-medium"
           className="whitespace-nowrap"
-          href={getPathByRegulation(cancellation)}
+          href={`/vzn/${cancellation?.attributes?.slug}`}
         >
-          {parseRegulationCodeFromTitle(cancellation?.attributes?.title).code}
+          {parseRegulationCodeFromTitle(`VZN ${cancellation?.attributes?.code}`).code}
         </MLink>{' '}
         od dňa{' '}
-        <span className="font-semibold">{formatDate(cancellation?.attributes?.validFrom)}</span>.
+        <span className="font-semibold">{formatDate(cancellation?.attributes?.effectiveFrom)}</span>
+        .
       </Typography>
     ) : isAmendeningCancelled ? (
       <Typography type="p" className="whitespace-normal">
@@ -88,19 +76,21 @@ const RegulationDetail = ({ regulation }: RegulationDetailProps) => {
               <MLink
                 variant="underlined-medium"
                 className="whitespace-nowrap"
-                href={getPathByRegulation(cancelledAmendee)}
+                href={`/vzn/${cancelledAmendee.attributes?.slug}`}
               >
-                {parseRegulationCodeFromTitle(cancelledAmendee.attributes?.title).code}
+                {parseRegulationCodeFromTitle(`VZN ${cancelledAmendee.attributes?.code}`).code}
               </MLink>
               , ktoré bolo zrušené nariadením{' '}
               <MLink
                 variant="underlined-medium"
                 className="whitespace-nowrap"
-                href={getPathByRegulation(cancelledAmendee.attributes?.cancellation?.data)}
+                href={`/vzn/${cancelledAmendee.attributes?.cancellation?.data?.attributes?.slug}`}
               >
                 {
                   parseRegulationCodeFromTitle(
-                    cancelledAmendee.attributes?.cancellation?.data?.attributes?.title,
+                    `VZN ${
+                      cancelledAmendee.attributes?.cancellation?.data?.attributes?.code ?? ''
+                    }`,
                   ).code
                 }
               </MLink>{' '}
@@ -108,7 +98,7 @@ const RegulationDetail = ({ regulation }: RegulationDetailProps) => {
               <span className="font-semibold">
                 {formatDate(
                   amending?.find((amended) => amended.attributes?.cancellation?.data)?.attributes
-                    ?.cancellation?.data?.attributes?.validFrom,
+                    ?.cancellation?.data?.attributes?.effectiveFrom,
                 )}
               </span>
             </Fragment>
@@ -119,7 +109,7 @@ const RegulationDetail = ({ regulation }: RegulationDetailProps) => {
     ) : (
       <Typography type="p" className="whitespace-normal">
         Toto VZN je aktuálne platné, s dátumom účinnosti od{' '}
-        <span className="font-semibold">{formatDate(regulation.attributes?.validFrom)}</span>.
+        <span className="font-semibold">{formatDate(regulation.attributes?.effectiveFrom)}</span>.
       </Typography>
     ),
     button: isCancelled ? { title: 'Zobraziť zrušujúce VZN', handler: () => {} } : null,
@@ -132,7 +122,7 @@ const RegulationDetail = ({ regulation }: RegulationDetailProps) => {
         <Typography type="h2" size="h4">
           Dátum účinnosti
         </Typography>
-        <Typography type="p">{formatDate(regulation.attributes?.validFrom)}</Typography>
+        <Typography type="p">{formatDate(regulation.attributes?.effectiveFrom)}</Typography>
       </div>
       {isCancelled || isAmendeningCancelled ? (
         <Alert
@@ -191,11 +181,11 @@ const RegulationDetail = ({ regulation }: RegulationDetailProps) => {
             {amendments?.map((amendment) => {
               return (
                 <RegulationCard
-                  title={parseRegulationCodeFromTitle(amendment.attributes?.title).code}
+                  title={parseRegulationCodeFromTitle(`VZN ${amendment.attributes?.code}`).code}
                   key={amendment.id}
                   // TODO simplify by isUplneZnenie field in Strapi
-                  isUplneZnenie={amendment.attributes?.title.match(/[uú]pln[eé] znenie/i) !== null}
-                  path={getPathByRegulation(amendment)}
+                  isUplneZnenie={amendment.attributes?.isFullTextRegulation}
+                  path={`/vzn/${amendment.attributes?.slug}`}
                 />
               )
             })}
@@ -204,14 +194,6 @@ const RegulationDetail = ({ regulation }: RegulationDetailProps) => {
           <Typography type="p">K tomuto VZN neexistujú dodatky.</Typography>
         )}
       </div>
-      {regulation.attributes?.details ? (
-        <div className="flex flex-col gap-y-4">
-          <Typography type="h2" size="h4">
-            Detail
-          </Typography>
-          <Markdown content={regulation.attributes?.details ?? ''} />
-        </div>
-      ) : null}
       <div className="flex flex-col gap-y-4">
         <Typography type="h2" size="h4">
           Vplyv na iné VZN
@@ -226,10 +208,13 @@ const RegulationDetail = ({ regulation }: RegulationDetailProps) => {
                   {amending.map((amendedRegulation, index) => (
                     <Fragment key={amendedRegulation.id}>
                       <MLink
-                        href={getPathByRegulation(amendedRegulation)}
+                        href={`/vzn/${amendedRegulation.attributes?.slug}`}
                         variant="underlined-medium"
                       >
-                        {parseRegulationCodeFromTitle(amendedRegulation.attributes?.title).code}
+                        {
+                          parseRegulationCodeFromTitle(`VZN ${amendedRegulation.attributes?.code}`)
+                            .code
+                        }
                       </MLink>
                       {index < amending.length - 1 ? ', ' : '.'}
                     </Fragment>
@@ -248,10 +233,13 @@ const RegulationDetail = ({ regulation }: RegulationDetailProps) => {
                 {cancelling.map((cancelledRegulation, index) => (
                   <Fragment key={cancelledRegulation.id}>
                     <MLink
-                      href={getPathByRegulation(cancelledRegulation)}
+                      href={`/vzn/${cancelledRegulation.attributes?.slug}`}
                       variant="underlined-medium"
                     >
-                      {parseRegulationCodeFromTitle(cancelledRegulation.attributes?.title).code}
+                      {
+                        parseRegulationCodeFromTitle(`VZN ${cancelledRegulation.attributes?.code}`)
+                          .code
+                      }
                     </MLink>
                     {index < cancelling.length - 1 ? ', ' : '.'}
                   </Fragment>
