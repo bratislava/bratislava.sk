@@ -3,7 +3,7 @@ import { ArrowRightIcon, ExportIcon } from '@assets/ui-icons'
 import cx from 'classnames'
 import Spinner from 'components/forms/simple-components/Spinner'
 import NextLink from 'next/link'
-import { ComponentProps, forwardRef, PropsWithChildren, ReactNode, RefObject } from 'react'
+import { ComponentProps, forwardRef, PropsWithChildren, ReactNode, useEffect, useRef } from 'react'
 import { AriaButtonProps } from 'react-aria'
 import { Button as RACButton, ButtonProps as RACButtonProps } from 'react-aria-components'
 import { twMerge } from 'tailwind-merge'
@@ -208,6 +208,24 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
             ),
             className,
           )
+    // To pass ref and also add event listener you need forwardRef https://stackoverflow.com/a/62238917,
+    // this is the only way got it to work
+    const myRef = useRef<HTMLButtonElement | HTMLAnchorElement | null>(null)
+    // eslint-disable-next-line consistent-return
+    useEffect(() => {
+      const node = myRef.current
+
+      if (node) {
+        // to forbid event propagation on mobile devices when using onPress this is suggested workaround
+        // https://github.com/adobe/react-spectrum/issues/1513#issuecomment-1172267250
+        node.addEventListener('touchend', (e) => {
+          e.preventDefault()
+        })
+        return () => {
+          node.addEventListener('touchend', (e) => e.preventDefault())
+        }
+      }
+    }, [ref])
 
     if (rest.href) {
       const isExternal = rest.href.startsWith('http')
@@ -216,7 +234,14 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
       return (
         <MLink
           href={rest.href}
-          ref={ref as RefObject<HTMLAnchorElement>}
+          ref={(node) => {
+            myRef.current = node
+            if (typeof ref === 'function') {
+              ref(node)
+            } else if (ref) {
+              ref.current = node
+            }
+          }}
           className={styles}
           plausibleProps={rest.plausibleProps}
           {...rest}
@@ -230,7 +255,14 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
 
     return (
       <RACButton
-        ref={ref as RefObject<HTMLButtonElement>}
+        ref={(node) => {
+          myRef.current = node
+          if (typeof ref === 'function') {
+            ref(node)
+          } else if (ref) {
+            ref.current = node
+          }
+        }}
         isDisabled={isLoadingOrDisabled}
         className={styles}
         {...rest}
