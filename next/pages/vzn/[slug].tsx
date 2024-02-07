@@ -8,7 +8,6 @@ import { ParsedUrlQuery } from 'node:querystring'
 import { GeneralQuery, RegulationTest1EntityFragment } from '@backend/graphql'
 import { client } from '@backend/graphql/gql'
 import PageLayout from '@components/layouts/PageLayout'
-import parseRegulationCodeFromTitle from '@components/pages/RegulationDetailPage/parseRegulationCodeFromTitle'
 import RegulationDetail from '@components/pages/RegulationDetailPage/RegulationDetail'
 import { LocalizationsProvider } from '@components/providers/LocalizationsProvider'
 import PageHeader from '@components/ui/PageHeader/PageHeader'
@@ -21,7 +20,6 @@ import * as React from 'react'
 
 export const getStaticPaths: GetStaticPaths<StaticParams> = async () => {
   let paths: { params: { slug: string } }[] = []
-  // if (shouldSkipStaticPaths()) return { paths, fallback: 'blocking' }
 
   let defaultStart = 0
   // Fetch all pages to prerender
@@ -42,13 +40,14 @@ export const getStaticPaths: GetStaticPaths<StaticParams> = async () => {
 
   if (allRegulations) {
     paths = allRegulations
-      .map(({ id }) => {
-        if (id)
+      .map((regulation) => {
+        if (regulation.attributes?.slug) {
           return {
             params: {
-              slug: id,
+              slug: regulation.attributes?.slug,
             },
           }
+        }
         return null
       })
       .filter(isPresent)
@@ -67,13 +66,13 @@ export const getStaticProps: GetStaticProps<RegulationPageProps, StaticParams> =
   const locale = ctx.locale ?? 'sk'
   const slug = ctx.params?.slug ?? ''
 
-  const [{ regulationtest1 }, general, messages] = await Promise.all([
-    client.RegulationById({ id: slug }),
+  const [{ regulationtest1S }, general, messages] = await Promise.all([
+    client.RegulationBySlug({ slug }),
     client.General({ locale }),
     import(`../../messages/${locale}.json`),
   ])
 
-  if (!regulationtest1?.data) {
+  if (!regulationtest1S?.data?.length) {
     return {
       notFound: true,
     } as const
@@ -83,8 +82,8 @@ export const getStaticProps: GetStaticProps<RegulationPageProps, StaticParams> =
     props: {
       general,
       id: slug,
-      regulation: regulationtest1.data,
-      vzn: regulationtest1.data,
+      regulation: regulationtest1S.data[0],
+      // regulation: regulationtest1.data,
       messages: messages.default,
     },
     revalidate: 14_400, // revalidate after 4 hours
@@ -97,34 +96,33 @@ type RegulationPageProps = {
 }
 
 const VznPage = ({ general, regulation }: RegulationPageProps) => {
-  if (!regulation || !regulation.id || !regulation.attributes) {
+  if (!regulation || !regulation.id || !regulation.attributes || !regulation.attributes.slug) {
     return null
   }
 
-  const {
-    code: regulationCode,
-    year,
-    number,
-  } = parseRegulationCodeFromTitle(regulation.attributes.title)
+  const [regulationNumber, regulationYear] = regulation.attributes.title.split('/')
 
   const expandedTitleExcerpt = regulation.attributes.title.split(' ').slice(2).join(' ') ?? ''
+
+  const breadcrumbs = [
+    { title: `Všeobecne záväzné nariadenie č. ${regulationNumber}/${regulationYear}`, path: null },
+  ]
 
   return (
     <GeneralContextProvider general={general}>
       <LocalizationsProvider localizations={{ sk: '/vzn', en: '/vzn' }}>
         <Head>
-          <title>{regulation.attributes.title}</title>
+          <title>{`VZN ${regulationNumber}/${regulationYear}`}</title>
         </Head>
         <PageLayout>
           <PageHeader
-            title={regulationCode}
+            title={`VZN ${regulationNumber}/${regulationYear}`}
             tag={regulation.attributes.category}
             subtext={
-              regulation.attributes.fullTitle.split(' ').slice(2).join(' ') ?? expandedTitleExcerpt
+              regulation.attributes?.fullTitle?.split(' ').slice(2).join(' ') ??
+              expandedTitleExcerpt
             }
-            breadcrumbs={[
-              { title: `Všeobecne záväzné nariadenie č. ${number}/${year}`, path: null },
-            ]}
+            breadcrumbs={breadcrumbs}
           />
           <SectionContainer className="my-8">
             <RegulationDetail regulation={regulation} />

@@ -13,23 +13,33 @@ import parseRegulationCodeFromTitle from '@components/pages/RegulationDetailPage
 import RegulationCard from '@components/pages/RegulationDetailPage/RegulationCard'
 import { isDefined } from '@utils/isDefined'
 import { formatDate } from '@utils/local-date'
-import React from 'react'
+import React, { Fragment } from 'react'
 
 type RegulationDetailProps = {
   regulation: RegulationTest1EntityFragment
 }
 
-const getPathByRegulation = (regulation: RegulationTest1EntityFragment): string => {
-  if (!regulation?.id) return ''
+const getPathByRegulation = (
+  regulation: RegulationTest1EntityFragment | null | undefined,
+): string => {
+  if (!regulation || !regulation?.id) return ''
   return `/vzn/${regulation.id}`
 }
 
 const RegulationDetail = ({ regulation }: RegulationDetailProps) => {
   const mainDocument = regulation.attributes?.mainDocument?.data?.attributes
   const consolidatedDocument = regulation.attributes?.consolidatedText?.data?.attributes
-  const amendments = regulation.attributes?.amendments?.data.filter(
-    (amendment): amendment is RegulationTest1EntityFragment => isDefined(amendment),
-  )
+  const amendments = regulation.attributes?.amendments?.data
+    .filter((amendment) => isDefined(amendment))
+    .sort((a, b) => {
+      if (!a.attributes?.validFrom || !b.attributes?.validFrom) return 0
+      // TODO simplify by isUplneZnenie field in Strapi
+      if (a.attributes.validFrom === b.attributes.validFrom) {
+        if (/[uú]pln[eé] znenie/i.test(a.attributes.title)) return -1
+        if (/[uú]pln[eé] znenie/i.test(b.attributes.title)) return 1
+      }
+      return a.attributes.validFrom < b.attributes.validFrom ? 1 : -1
+    })
   const amending = regulation.attributes?.amending?.data.filter(isDefined)
   const cancellation = regulation.attributes?.cancellation?.data
   const cancelling = regulation.attributes?.cancelling?.data.filter(isDefined)
@@ -54,7 +64,7 @@ const RegulationDetail = ({ regulation }: RegulationDetailProps) => {
 
   const alertProps = {
     type: isCancelled ? 'error' : isAmendeningCancelled ? 'warning' : 'success',
-    message: isCancelled ? 'Zrušené' : isAmendeningCancelled ? 'Dopĺňa zrušené VZN' : 'Platné',
+    message: isCancelled ? 'Zrušené' : isAmendeningCancelled ? 'Dopĺňa neplatné VZN' : 'Platné',
     content: isCancelled ? (
       <Typography type="p" className="whitespace-normal">
         Toto VZN bolo zrušené všeobecne záväzným nariadením{' '}
@@ -73,24 +83,24 @@ const RegulationDetail = ({ regulation }: RegulationDetailProps) => {
         Toto VZN je dodatkom
         {cancelledAmendees.map((cancelledAmendee, index) => {
           return (
-            <>
+            <Fragment key={cancelledAmendee.id}>
               {index === 0 ? ' k ' : index === cancelledAmendees.length - 1 ? ' a k ' : ', k '}
               <MLink
                 variant="underlined-medium"
                 className="whitespace-nowrap"
                 href={getPathByRegulation(cancelledAmendee)}
               >
-                {parseRegulationCodeFromTitle(cancelledAmendee.attributes.title).code}
+                {parseRegulationCodeFromTitle(cancelledAmendee.attributes?.title).code}
               </MLink>
               , ktoré bolo zrušené nariadením{' '}
               <MLink
                 variant="underlined-medium"
                 className="whitespace-nowrap"
-                href={getPathByRegulation(cancelledAmendee.attributes.cancellation.data)}
+                href={getPathByRegulation(cancelledAmendee.attributes?.cancellation?.data)}
               >
                 {
                   parseRegulationCodeFromTitle(
-                    cancelledAmendee.attributes.cancellation.data.attributes.title,
+                    cancelledAmendee.attributes?.cancellation?.data?.attributes?.title,
                   ).code
                 }
               </MLink>{' '}
@@ -101,48 +111,12 @@ const RegulationDetail = ({ regulation }: RegulationDetailProps) => {
                     ?.cancellation?.data?.attributes?.validFrom,
                 )}
               </span>
-            </>
+            </Fragment>
           )
         })}
         .
       </Typography>
     ) : (
-      // <Typography type="p" className="whitespace-normal">
-      //   Toto VZN je dodatkom k {' '}
-      //   <MLink
-      //     variant="underlined-medium"
-      //     className="whitespace-nowrap"
-      //     href={getPathByRegulation(cancelledAmendees[0])}
-      //   >
-      //     {
-      //       parseRegulationCodeFromTitle(
-      //         amending?.find((amended) => amended.attributes?.cancellation?.data)?.attributes
-      //           ?.title,
-      //       ).code
-      //     }
-      //   </MLink>
-      //   , ktoré bolo zrušené nariadením{' '}
-      //   <MLink
-      //     variant="underlined-medium"
-      //     className="whitespace-nowrap"
-      //     href={getPathByRegulation(cancelledAmendees[0].attributes.cancellation.data)}
-      //   >
-      //     {
-      //       parseRegulationCodeFromTitle(
-      //         amending?.find((amended) => amended.attributes?.cancellation?.data)?.attributes
-      //           ?.cancellation?.data?.attributes?.title,
-      //       ).code
-      //     }
-      //   </MLink>{' '}
-      //   s účinnosťou od{' '}
-      //   <span className="font-semibold">
-      //     {formatDate(
-      //       amending?.find((amended) => amended.attributes?.cancellation?.data)?.attributes
-      //         ?.cancellation?.data?.attributes?.validFrom,
-      //     )}
-      //   </span>
-      //   .
-      // </Typography>
       <Typography type="p" className="whitespace-normal">
         Toto VZN je aktuálne platné, s dátumom účinnosti od{' '}
         <span className="font-semibold">{formatDate(regulation.attributes?.validFrom)}</span>.
@@ -154,14 +128,22 @@ const RegulationDetail = ({ regulation }: RegulationDetailProps) => {
   return (
     <div className="mb-8 flex flex-col gap-y-8">
       {/* TODO use something else than alert */}
-      <Alert
-        type={alertProps.type as any}
-        message={alertProps.message}
-        variant="message"
-        content={alertProps.content as any}
-        // workaround for width, so it fits to grid
-        className="lg:max-w-[584px] "
-      />
+      <div className="flex flex-col gap-y-2">
+        <Typography type="h2" size="h4">
+          Dátum účinnosti
+        </Typography>
+        <Typography type="p">{formatDate(regulation.attributes?.validFrom)}</Typography>
+      </div>
+      {isCancelled || isAmendeningCancelled ? (
+        <Alert
+          type={alertProps.type as any}
+          message={alertProps.message}
+          variant="message"
+          content={alertProps.content as any}
+          // workaround for width, so it fits to implied grid
+          className="lg:max-w-[584px] "
+        />
+      ) : null}
       <div className="flex flex-row flex-wrap gap-6">
         <div className="flex shrink-0 basis-[280px] flex-col gap-y-4">
           <Typography type="h2" size="h4">
@@ -210,6 +192,9 @@ const RegulationDetail = ({ regulation }: RegulationDetailProps) => {
               return (
                 <RegulationCard
                   title={parseRegulationCodeFromTitle(amendment.attributes?.title).code}
+                  key={amendment.id}
+                  // TODO simplify by isUplneZnenie field in Strapi
+                  isUplneZnenie={amendment.attributes?.title.match(/[uú]pln[eé] znenie/i) !== null}
                   path={getPathByRegulation(amendment)}
                 />
               )
@@ -239,7 +224,7 @@ const RegulationDetail = ({ regulation }: RegulationDetailProps) => {
                 <>
                   je dodatkom k{' '}
                   {amending.map((amendedRegulation, index) => (
-                    <>
+                    <Fragment key={amendedRegulation.id}>
                       <MLink
                         href={getPathByRegulation(amendedRegulation)}
                         variant="underlined-medium"
@@ -247,7 +232,7 @@ const RegulationDetail = ({ regulation }: RegulationDetailProps) => {
                         {parseRegulationCodeFromTitle(amendedRegulation.attributes?.title).code}
                       </MLink>
                       {index < amending.length - 1 ? ', ' : '.'}
-                    </>
+                    </Fragment>
                   ))}
                 </>
               ) : (
@@ -261,7 +246,7 @@ const RegulationDetail = ({ regulation }: RegulationDetailProps) => {
               <>
                 zrušuje{' '}
                 {cancelling.map((cancelledRegulation, index) => (
-                  <>
+                  <Fragment key={cancelledRegulation.id}>
                     <MLink
                       href={getPathByRegulation(cancelledRegulation)}
                       variant="underlined-medium"
@@ -269,7 +254,7 @@ const RegulationDetail = ({ regulation }: RegulationDetailProps) => {
                       {parseRegulationCodeFromTitle(cancelledRegulation.attributes?.title).code}
                     </MLink>
                     {index < cancelling.length - 1 ? ', ' : '.'}
-                  </>
+                  </Fragment>
                 ))}
               </>
             ) : (

@@ -98,6 +98,9 @@
     "slug": {
       "type": "uid",
       "targetField": "title"
+    },
+    "isUplneZnenie": {
+      "type": "boolean"
     }
   }
 }

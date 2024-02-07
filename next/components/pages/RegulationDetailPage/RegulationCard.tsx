@@ -11,6 +11,7 @@ export type RegulationCardProps = {
   path?: string
   className?: string
   ariaLabel?: string
+  isUplneZnenie?: boolean
 }
 
 /**
@@ -18,13 +19,19 @@ export type RegulationCardProps = {
  * Figma for FileCard: https://www.figma.com/file/17wbd0MDQcMW9NbXl6UPs8/DS-ESBS%2BBK%3A-Component-library?type=design&node-id=7367-17767&t=Km8W7qXXiWIDWSYw-0
  */
 
-const RegulationCard = ({ title, path, className, ariaLabel }: RegulationCardProps) => {
+const RegulationCard = ({
+  title,
+  path,
+  className,
+  ariaLabel,
+  isUplneZnenie,
+}: RegulationCardProps) => {
   const t = useTranslations()
 
   return (
     <div
       className={twMerge(
-        'relative flex h-[132px] flex-col justify-between rounded-lg border-2 border-gray-600 bg-white p-4 lg:h-32',
+        'relative flex h-[132px] flex-col justify-between rounded-lg border-2 border-gray-600 bg-white p-4 lg:h-36',
         className,
       )}
     >
@@ -43,10 +50,10 @@ const RegulationCard = ({ title, path, className, ariaLabel }: RegulationCardPro
         </MLink>
 
         {/* FIXME Typography. Convert to use Typography. Issue: Different font size and weight than figma span or p */}
-        {false && (
-          <span className="text-small line-clamp-1 text-gray-700">
-            {['metadata'].filter(isDefined).join(' • ')}
-          </span>
+        {isUplneZnenie && (
+          <Typography type="p" size="p-small" className="line-clamp-1">
+            Úplné znenie
+          </Typography>
         )}
       </div>
       <div className="flex items-center gap-2 lg:gap-3">

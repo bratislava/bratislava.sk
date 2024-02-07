@@ -3471,6 +3471,7 @@ export type Regulationtest1 = {
   details?: Maybe<Scalars['String']['output']>
   fullTitle?: Maybe<Scalars['String']['output']>
   mainDocument?: Maybe<UploadFileEntityResponse>
+  slug?: Maybe<Scalars['String']['output']>
   title: Scalars['String']['output']
   updatedAt?: Maybe<Scalars['DateTime']['output']>
   validFrom?: Maybe<Scalars['Date']['output']>
@@ -3530,6 +3531,7 @@ export type Regulationtest1FiltersInput = {
   id?: InputMaybe<IdFilterInput>
   not?: InputMaybe<Regulationtest1FiltersInput>
   or?: InputMaybe<Array<InputMaybe<Regulationtest1FiltersInput>>>
+  slug?: InputMaybe<StringFilterInput>
   title?: InputMaybe<StringFilterInput>
   updatedAt?: InputMaybe<DateTimeFilterInput>
   validFrom?: InputMaybe<DateFilterInput>
@@ -3546,6 +3548,7 @@ export type Regulationtest1Input = {
   details?: InputMaybe<Scalars['String']['input']>
   fullTitle?: InputMaybe<Scalars['String']['input']>
   mainDocument?: InputMaybe<Scalars['ID']['input']>
+  slug?: InputMaybe<Scalars['String']['input']>
   title?: InputMaybe<Scalars['String']['input']>
   validFrom?: InputMaybe<Scalars['Date']['input']>
 }
@@ -9404,6 +9407,7 @@ export type AllRegulationTest1sQuery = {
       attributes?: {
         __typename?: 'Regulationtest1'
         title: string
+        slug?: string | null
         fullTitle?: string | null
         validFrom?: any | null
         category?: Enum_Regulationtest1_Category | null
@@ -9461,7 +9465,11 @@ export type AllRegulationTest1sQuery = {
           data: Array<{
             __typename?: 'Regulationtest1Entity'
             id?: string | null
-            attributes?: { __typename?: 'Regulationtest1'; title: string } | null
+            attributes?: {
+              __typename?: 'Regulationtest1'
+              title: string
+              validFrom?: any | null
+            } | null
           }>
         } | null
         amending?: {
@@ -9472,6 +9480,7 @@ export type AllRegulationTest1sQuery = {
             attributes?: {
               __typename?: 'Regulationtest1'
               title: string
+              validFrom?: any | null
               cancellation?: {
                 __typename?: 'Regulationtest1EntityResponse'
                 data?: {
@@ -9504,7 +9513,11 @@ export type AllRegulationTest1sQuery = {
           data: Array<{
             __typename?: 'Regulationtest1Entity'
             id?: string | null
-            attributes?: { __typename?: 'Regulationtest1'; title: string } | null
+            attributes?: {
+              __typename?: 'Regulationtest1'
+              title: string
+              validFrom?: any | null
+            } | null
           }>
         } | null
       } | null
@@ -9526,6 +9539,7 @@ export type RegulationByIdQuery = {
       attributes?: {
         __typename?: 'Regulationtest1'
         title: string
+        slug?: string | null
         fullTitle?: string | null
         validFrom?: any | null
         category?: Enum_Regulationtest1_Category | null
@@ -9583,7 +9597,11 @@ export type RegulationByIdQuery = {
           data: Array<{
             __typename?: 'Regulationtest1Entity'
             id?: string | null
-            attributes?: { __typename?: 'Regulationtest1'; title: string } | null
+            attributes?: {
+              __typename?: 'Regulationtest1'
+              title: string
+              validFrom?: any | null
+            } | null
           }>
         } | null
         amending?: {
@@ -9594,6 +9612,7 @@ export type RegulationByIdQuery = {
             attributes?: {
               __typename?: 'Regulationtest1'
               title: string
+              validFrom?: any | null
               cancellation?: {
                 __typename?: 'Regulationtest1EntityResponse'
                 data?: {
@@ -9626,11 +9645,147 @@ export type RegulationByIdQuery = {
           data: Array<{
             __typename?: 'Regulationtest1Entity'
             id?: string | null
-            attributes?: { __typename?: 'Regulationtest1'; title: string } | null
+            attributes?: {
+              __typename?: 'Regulationtest1'
+              title: string
+              validFrom?: any | null
+            } | null
           }>
         } | null
       } | null
     } | null
+  } | null
+}
+
+export type RegulationBySlugQueryVariables = Exact<{
+  slug?: InputMaybe<Scalars['String']['input']>
+}>
+
+export type RegulationBySlugQuery = {
+  __typename?: 'Query'
+  regulationtest1S?: {
+    __typename?: 'Regulationtest1EntityResponseCollection'
+    data: Array<{
+      __typename?: 'Regulationtest1Entity'
+      id?: string | null
+      attributes?: {
+        __typename?: 'Regulationtest1'
+        title: string
+        slug?: string | null
+        fullTitle?: string | null
+        validFrom?: any | null
+        category?: Enum_Regulationtest1_Category | null
+        details?: string | null
+        mainDocument?: {
+          __typename?: 'UploadFileEntityResponse'
+          data?: {
+            __typename?: 'UploadFileEntity'
+            id?: string | null
+            attributes?: {
+              __typename?: 'UploadFile'
+              url: string
+              name: string
+              ext?: string | null
+              size: number
+              createdAt?: any | null
+              updatedAt?: any | null
+            } | null
+          } | null
+        } | null
+        consolidatedText?: {
+          __typename?: 'UploadFileEntityResponse'
+          data?: {
+            __typename?: 'UploadFileEntity'
+            id?: string | null
+            attributes?: {
+              __typename?: 'UploadFile'
+              url: string
+              name: string
+              ext?: string | null
+              size: number
+              createdAt?: any | null
+              updatedAt?: any | null
+            } | null
+          } | null
+        } | null
+        attachments?: {
+          __typename?: 'UploadFileRelationResponseCollection'
+          data: Array<{
+            __typename?: 'UploadFileEntity'
+            id?: string | null
+            attributes?: {
+              __typename?: 'UploadFile'
+              url: string
+              name: string
+              ext?: string | null
+              size: number
+              createdAt?: any | null
+              updatedAt?: any | null
+            } | null
+          }>
+        } | null
+        amendments?: {
+          __typename?: 'Regulationtest1RelationResponseCollection'
+          data: Array<{
+            __typename?: 'Regulationtest1Entity'
+            id?: string | null
+            attributes?: {
+              __typename?: 'Regulationtest1'
+              title: string
+              validFrom?: any | null
+            } | null
+          }>
+        } | null
+        amending?: {
+          __typename?: 'Regulationtest1RelationResponseCollection'
+          data: Array<{
+            __typename?: 'Regulationtest1Entity'
+            id?: string | null
+            attributes?: {
+              __typename?: 'Regulationtest1'
+              title: string
+              validFrom?: any | null
+              cancellation?: {
+                __typename?: 'Regulationtest1EntityResponse'
+                data?: {
+                  __typename?: 'Regulationtest1Entity'
+                  id?: string | null
+                  attributes?: {
+                    __typename?: 'Regulationtest1'
+                    title: string
+                    validFrom?: any | null
+                  } | null
+                } | null
+              } | null
+            } | null
+          }>
+        } | null
+        cancellation?: {
+          __typename?: 'Regulationtest1EntityResponse'
+          data?: {
+            __typename?: 'Regulationtest1Entity'
+            id?: string | null
+            attributes?: {
+              __typename?: 'Regulationtest1'
+              title: string
+              validFrom?: any | null
+            } | null
+          } | null
+        } | null
+        cancelling?: {
+          __typename?: 'Regulationtest1RelationResponseCollection'
+          data: Array<{
+            __typename?: 'Regulationtest1Entity'
+            id?: string | null
+            attributes?: {
+              __typename?: 'Regulationtest1'
+              title: string
+              validFrom?: any | null
+            } | null
+          }>
+        } | null
+      } | null
+    }>
   } | null
 }
 
@@ -9716,6 +9871,7 @@ export type RegulationTest1EntityFragment = {
   attributes?: {
     __typename?: 'Regulationtest1'
     title: string
+    slug?: string | null
     fullTitle?: string | null
     validFrom?: any | null
     category?: Enum_Regulationtest1_Category | null
@@ -9773,7 +9929,11 @@ export type RegulationTest1EntityFragment = {
       data: Array<{
         __typename?: 'Regulationtest1Entity'
         id?: string | null
-        attributes?: { __typename?: 'Regulationtest1'; title: string } | null
+        attributes?: {
+          __typename?: 'Regulationtest1'
+          title: string
+          validFrom?: any | null
+        } | null
       }>
     } | null
     amending?: {
@@ -9784,6 +9944,7 @@ export type RegulationTest1EntityFragment = {
         attributes?: {
           __typename?: 'Regulationtest1'
           title: string
+          validFrom?: any | null
           cancellation?: {
             __typename?: 'Regulationtest1EntityResponse'
             data?: {
@@ -9816,7 +9977,11 @@ export type RegulationTest1EntityFragment = {
       data: Array<{
         __typename?: 'Regulationtest1Entity'
         id?: string | null
-        attributes?: { __typename?: 'Regulationtest1'; title: string } | null
+        attributes?: {
+          __typename?: 'Regulationtest1'
+          title: string
+          validFrom?: any | null
+        } | null
       }>
     } | null
   } | null
@@ -13039,6 +13204,7 @@ export const RegulationTest1EntityFragmentDoc = gql`
     id
     attributes {
       title
+      slug
       fullTitle
       validFrom
       category
@@ -13063,6 +13229,7 @@ export const RegulationTest1EntityFragmentDoc = gql`
           id
           attributes {
             title
+            validFrom
           }
         }
       }
@@ -13071,6 +13238,7 @@ export const RegulationTest1EntityFragmentDoc = gql`
           id
           attributes {
             title
+            validFrom
             cancellation {
               data {
                 id
@@ -13097,6 +13265,7 @@ export const RegulationTest1EntityFragmentDoc = gql`
           id
           attributes {
             title
+            validFrom
           }
         }
       }
@@ -13471,6 +13640,16 @@ export const AllRegulationTest1sDocument = gql`
 export const RegulationByIdDocument = gql`
   query RegulationById($id: ID!) {
     regulationtest1(id: $id) {
+      data {
+        ...RegulationTest1Entity
+      }
+    }
+  }
+  ${RegulationTest1EntityFragmentDoc}
+`
+export const RegulationBySlugDocument = gql`
+  query RegulationBySlug($slug: String) {
+    regulationtest1S(filters: { slug: { eq: $slug } }) {
       data {
         ...RegulationTest1Entity
       }
@@ -13957,6 +14136,21 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
             ...wrappedRequestHeaders,
           }),
         'RegulationById',
+        'query',
+        variables,
+      )
+    },
+    RegulationBySlug(
+      variables?: RegulationBySlugQueryVariables,
+      requestHeaders?: GraphQLClientRequestHeaders,
+    ): Promise<RegulationBySlugQuery> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<RegulationBySlugQuery>(RegulationBySlugDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
+          }),
+        'RegulationBySlug',
         'query',
         variables,
       )

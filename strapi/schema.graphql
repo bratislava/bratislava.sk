@@ -2178,6 +2178,17 @@ enum ENUM_REGULATIONTEST1_CATEGORY {
   uzemnePlanovanie
 }
 
+enum ENUM_REGULATION_CATEGORY {
+  archiv
+  daneAPoplatky
+  hospodarenie
+  ostatne
+  pomenovanieUlic
+  poriadokACistota
+  socialnaPomocASkolstvo
+  uzemnePlanovanie
+}
+
 enum ENUM_VZN_CATEGORY {
   archiv
   daneAPoplatky
@@ -2345,7 +2356,7 @@ type GeneralRelationResponseCollection {
   data: [GeneralEntity!]!
 }
 
-union GenericMorph = Alert | BlogPost | ComponentAccordionItemsFlatText | ComponentAccordionItemsInstitution | ComponentAccordionItemsInstitutionNarrow | ComponentBlocksBlogPostLink | ComponentBlocksBookmarkLink | ComponentBlocksCommonLink | ComponentBlocksComparisonCard | ComponentBlocksComparisonItem | ComponentBlocksContactCard | ComponentBlocksDocListExtensions | ComponentBlocksFile | ComponentBlocksFileItem | ComponentBlocksFooterColumn | ComponentBlocksFooterContactItem | ComponentBlocksFooterSection | ComponentBlocksGalleryItem | ComponentBlocksHomepageBookmark | ComponentBlocksHomepageHighlightsItem | ComponentBlocksIconWithTitleAndDescription | ComponentBlocksInBa | ComponentBlocksNumericalListItem | ComponentBlocksPageLink | ComponentBlocksProsAndConsCard | ComponentBlocksSpaceInfo | ComponentBlocksSubpage | ComponentBlocksTimelineItem | ComponentBlocksTopServicesItem | ComponentBlocksVideo | ComponentGeneralHeader | ComponentGeneralHeaderLink | ComponentMenuMenuItem | ComponentMenuMenuLink | ComponentMenuMenuSection | ComponentOsItemsAdvancedAccordionDepartment | ComponentOsItemsAdvancedAccordionItem | ComponentOsItemsAdvancedAccordionSubItem | ComponentOsItemsAdvancedAccordionSubSubItem | ComponentSectionsAccordion | ComponentSectionsBanner | ComponentSectionsBlogPostsByCategory | ComponentSectionsBlogPostsByTags | ComponentSectionsBlogPostsList | ComponentSectionsCalculator | ComponentSectionsColumnedText | ComponentSectionsComparisonSection | ComponentSectionsContactsSection | ComponentSectionsDivider | ComponentSectionsDocumentList | ComponentSectionsFeaturedBlogPosts | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsHomepageEvents | ComponentSectionsHomepageHighlights | ComponentSectionsHomepageMayorAndCouncil | ComponentSectionsHomepageTabs | ComponentSectionsIconTitleDesc | ComponentSectionsIframe | ComponentSectionsInbaArticlesList | ComponentSectionsInbaReleases | ComponentSectionsLinks | ComponentSectionsNarrowText | ComponentSectionsNumericalList | ComponentSectionsOfficialBoard | ComponentSectionsOrganizationalStructure | ComponentSectionsProsAndConsSection | ComponentSectionsSpace | ComponentSectionsSubpageList | ComponentSectionsTextWithImage | ComponentSectionsTimeline | ComponentSectionsTopServices | ComponentSectionsVideos | ComponentSectionsWaves | Footer | General | Homepage | I18NLocale | InbaArticle | InbaRelease | InbaTag | Menu | Page | PageCategory | PageSubcategory | Regulationtest1 | Tag | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser | Vzn
+union GenericMorph = Alert | BlogPost | ComponentAccordionItemsFlatText | ComponentAccordionItemsInstitution | ComponentAccordionItemsInstitutionNarrow | ComponentBlocksBlogPostLink | ComponentBlocksBookmarkLink | ComponentBlocksCommonLink | ComponentBlocksComparisonCard | ComponentBlocksComparisonItem | ComponentBlocksContactCard | ComponentBlocksDocListExtensions | ComponentBlocksFile | ComponentBlocksFileItem | ComponentBlocksFooterColumn | ComponentBlocksFooterContactItem | ComponentBlocksFooterSection | ComponentBlocksGalleryItem | ComponentBlocksHomepageBookmark | ComponentBlocksHomepageHighlightsItem | ComponentBlocksIconWithTitleAndDescription | ComponentBlocksInBa | ComponentBlocksNumericalListItem | ComponentBlocksPageLink | ComponentBlocksProsAndConsCard | ComponentBlocksSpaceInfo | ComponentBlocksSubpage | ComponentBlocksTimelineItem | ComponentBlocksTopServicesItem | ComponentBlocksVideo | ComponentGeneralHeader | ComponentGeneralHeaderLink | ComponentMenuMenuItem | ComponentMenuMenuLink | ComponentMenuMenuSection | ComponentOsItemsAdvancedAccordionDepartment | ComponentOsItemsAdvancedAccordionItem | ComponentOsItemsAdvancedAccordionSubItem | ComponentOsItemsAdvancedAccordionSubSubItem | ComponentSectionsAccordion | ComponentSectionsBanner | ComponentSectionsBlogPostsByCategory | ComponentSectionsBlogPostsByTags | ComponentSectionsBlogPostsList | ComponentSectionsCalculator | ComponentSectionsColumnedText | ComponentSectionsComparisonSection | ComponentSectionsContactsSection | ComponentSectionsDivider | ComponentSectionsDocumentList | ComponentSectionsFeaturedBlogPosts | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsHomepageEvents | ComponentSectionsHomepageHighlights | ComponentSectionsHomepageMayorAndCouncil | ComponentSectionsHomepageTabs | ComponentSectionsIconTitleDesc | ComponentSectionsIframe | ComponentSectionsInbaArticlesList | ComponentSectionsInbaReleases | ComponentSectionsLinks | ComponentSectionsNarrowText | ComponentSectionsNumericalList | ComponentSectionsOfficialBoard | ComponentSectionsOrganizationalStructure | ComponentSectionsProsAndConsSection | ComponentSectionsSpace | ComponentSectionsSubpageList | ComponentSectionsTextWithImage | ComponentSectionsTimeline | ComponentSectionsTopServices | ComponentSectionsVideos | ComponentSectionsWaves | Footer | General | Homepage | I18NLocale | InbaArticle | InbaRelease | InbaTag | Menu | Page | PageCategory | PageSubcategory | Regulation | Regulationtest1 | Tag | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser | Vzn
 
 type Homepage {
   bookmarkTourists: ComponentBlocksHomepageBookmark
@@ -2812,6 +2823,7 @@ type Mutation {
   createPageLocalization(data: PageInput, id: ID, locale: I18NLocaleCode): PageEntityResponse
   createPageSubcategory(data: PageSubcategoryInput!, locale: I18NLocaleCode): PageSubcategoryEntityResponse
   createPageSubcategoryLocalization(data: PageSubcategoryInput, id: ID, locale: I18NLocaleCode): PageSubcategoryEntityResponse
+  createRegulation(data: RegulationInput!): RegulationEntityResponse
   createRegulationtest1(data: Regulationtest1Input!): Regulationtest1EntityResponse
   createTag(data: TagInput!, locale: I18NLocaleCode): TagEntityResponse
   createTagLocalization(data: TagInput, id: ID, locale: I18NLocaleCode): TagEntityResponse
@@ -2836,6 +2848,7 @@ type Mutation {
   deletePage(id: ID!, locale: I18NLocaleCode): PageEntityResponse
   deletePageCategory(id: ID!, locale: I18NLocaleCode): PageCategoryEntityResponse
   deletePageSubcategory(id: ID!, locale: I18NLocaleCode): PageSubcategoryEntityResponse
+  deleteRegulation(id: ID!): RegulationEntityResponse
   deleteRegulationtest1(id: ID!): Regulationtest1EntityResponse
   deleteTag(id: ID!, locale: I18NLocaleCode): TagEntityResponse
   deleteUploadFile(id: ID!): UploadFileEntityResponse
@@ -2877,6 +2890,7 @@ type Mutation {
   updatePage(data: PageInput!, id: ID!, locale: I18NLocaleCode): PageEntityResponse
   updatePageCategory(data: PageCategoryInput!, id: ID!, locale: I18NLocaleCode): PageCategoryEntityResponse
   updatePageSubcategory(data: PageSubcategoryInput!, id: ID!, locale: I18NLocaleCode): PageSubcategoryEntityResponse
+  updateRegulation(data: RegulationInput!, id: ID!): RegulationEntityResponse
   updateRegulationtest1(data: Regulationtest1Input!, id: ID!): Regulationtest1EntityResponse
   updateTag(data: TagInput!, id: ID!, locale: I18NLocaleCode): TagEntityResponse
   updateUploadFile(data: UploadFileInput!, id: ID!): UploadFileEntityResponse
@@ -3136,6 +3150,8 @@ type Query {
   pageSubcategories(filters: PageSubcategoryFiltersInput, locale: I18NLocaleCode, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): PageSubcategoryEntityResponseCollection
   pageSubcategory(id: ID, locale: I18NLocaleCode): PageSubcategoryEntityResponse
   pages(filters: PageFiltersInput, locale: I18NLocaleCode, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): PageEntityResponseCollection
+  regulation(id: ID): RegulationEntityResponse
+  regulations(filters: RegulationFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): RegulationEntityResponseCollection
   regulationtest1(id: ID): Regulationtest1EntityResponse
   regulationtest1S(filters: Regulationtest1FiltersInput, pagination: PaginationArg = {}, sort: [String] = []): Regulationtest1EntityResponseCollection
   tag(id: ID, locale: I18NLocaleCode): TagEntityResponse
@@ -3152,6 +3168,74 @@ type Query {
   vzns(filters: VznFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): VznEntityResponseCollection
 }
 
+type Regulation {
+  amending(filters: RegulationFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): RegulationRelationResponseCollection
+  amendments(filters: RegulationFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): RegulationRelationResponseCollection
+  attachments(filters: UploadFileFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UploadFileRelationResponseCollection
+  cancellation: RegulationEntityResponse
+  cancelling(filters: RegulationFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): RegulationRelationResponseCollection
+  category: ENUM_REGULATION_CATEGORY
+  code: String!
+  consolidatedText: UploadFileEntityResponse
+  createdAt: DateTime
+  effectiveFrom: Date
+  fullTitle: String!
+  mainDocument: UploadFileEntityResponse!
+  slug: String!
+  updatedAt: DateTime
+}
+
+type RegulationEntity {
+  attributes: Regulation
+  id: ID
+}
+
+type RegulationEntityResponse {
+  data: RegulationEntity
+}
+
+type RegulationEntityResponseCollection {
+  data: [RegulationEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input RegulationFiltersInput {
+  amending: RegulationFiltersInput
+  amendments: RegulationFiltersInput
+  and: [RegulationFiltersInput]
+  cancellation: RegulationFiltersInput
+  cancelling: RegulationFiltersInput
+  category: StringFilterInput
+  code: StringFilterInput
+  createdAt: DateTimeFilterInput
+  effectiveFrom: DateFilterInput
+  fullTitle: StringFilterInput
+  id: IDFilterInput
+  not: RegulationFiltersInput
+  or: [RegulationFiltersInput]
+  slug: StringFilterInput
+  updatedAt: DateTimeFilterInput
+}
+
+input RegulationInput {
+  amending: [ID]
+  amendments: [ID]
+  attachments: [ID]
+  cancellation: ID
+  cancelling: [ID]
+  category: ENUM_REGULATION_CATEGORY
+  code: String
+  consolidatedText: ID
+  effectiveFrom: Date
+  fullTitle: String
+  mainDocument: ID
+  slug: String
+}
+
+type RegulationRelationResponseCollection {
+  data: [RegulationEntity!]!
+}
+
 type Regulationtest1 {
   amending(filters: Regulationtest1FiltersInput, pagination: PaginationArg = {}, sort: [String] = []): Regulationtest1RelationResponseCollection
   amendments(filters: Regulationtest1FiltersInput, pagination: PaginationArg = {}, sort: [String] = []): Regulationtest1RelationResponseCollection
@@ -3163,6 +3247,7 @@ type Regulationtest1 {
   createdAt: DateTime
   details: String
   fullTitle: String
+  isUplneZnenie: Boolean
   mainDocument: UploadFileEntityResponse
   slug: String
   title: String!
@@ -3195,6 +3280,7 @@ input Regulationtest1FiltersInput {
   details: StringFilterInput
   fullTitle: StringFilterInput
   id: IDFilterInput
+  isUplneZnenie: BooleanFilterInput
   not: Regulationtest1FiltersInput
   or: [Regulationtest1FiltersInput]
   slug: StringFilterInput
@@ -3213,6 +3299,7 @@ input Regulationtest1Input {
   consolidatedText: ID
   details: String
   fullTitle: String
+  isUplneZnenie: Boolean
   mainDocument: ID
   slug: String
   title: String
