@@ -234,6 +234,7 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
       return (
         <MLink
           href={rest.href}
+          // made forwardRef possible with useEffect https://stackoverflow.com/a/62238917,
           ref={(node) => {
             myRef.current = node
             if (typeof ref === 'function') {
@@ -255,6 +256,7 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
 
     return (
       <RACButton
+        // made forwardRef possible with useEffect https://stackoverflow.com/a/62238917,
         ref={(node) => {
           myRef.current = node
           if (typeof ref === 'function') {
