@@ -1,29 +1,37 @@
-query allRegulationTest1s {
-  regulationtest1S(pagination: { limit: -1 }) {
+query allRegulations {
+  regulations(pagination: { limit: -1 }) {
     data {
-      ...RegulationTest1Entity
+      ...RegulationEntity
     }
   }
 }
 
 query RegulationById($id: ID!) {
-  regulationtest1(id: $id) {
+  regulation(id: $id) {
     data {
-      ...RegulationTest1Entity
+      ...RegulationEntity
     }
   }
 }
 
 query RegulationBySlug($slug: String) {
-  regulationtest1S(filters: { slug: { eq: $slug } }) {
+  regulations(filters: { slug: { eq: $slug } }) {
     data {
-      ...RegulationTest1Entity
+      ...RegulationEntity
+    }
+  }
+}
+
+query RegulationByYear($year: String) {
+  regulations(filters: { slug: { endsWith: $year } }) {
+    data {
+      ...RegulationEntity
     }
   }
 }
 
 mutation setCancellationToRegulation($regulationId: ID!, $cancellationId: ID!) {
-  updateRegulationtest1(id: $regulationId, data: { cancellation: $cancellationId }) {
+  updateRegulation(id: $regulationId, data: { cancellation: $cancellationId }) {
     data {
       id
     }
@@ -31,51 +39,40 @@ mutation setCancellationToRegulation($regulationId: ID!, $cancellationId: ID!) {
 }
 
 mutation setAmendmentsToRegulation($regulationId: ID!, $amendmentsIds: [ID!]) {
-  updateRegulationtest1(id: $regulationId, data: { amendments: $amendmentsIds }) {
+  updateRegulation(id: $regulationId, data: { amendments: $amendmentsIds }) {
     data {
       id
     }
   }
 }
 
-mutation setAmendmentsAndCancellationsToRegulation(
-  $regulationId: ID!
-  $amendmentsIds: [ID!]
-  $cancellationId: ID!
-) {
-  updateRegulationtest1(
-    id: $regulationId
-    data: { amendments: $amendmentsIds, cancellation: $cancellationId }
-  ) {
+mutation deleteRegulationById($id: ID!) {
+  deleteRegulation(id: $id) {
     data {
       id
     }
   }
 }
 
-mutation deleteRegulationTest1ById($id: ID!) {
-  deleteRegulationtest1(id: $id) {
-    data {
-      id
-    }
-  }
-}
-
-mutation createBareRegulationTest1(
-  $title: String!
-  $validFrom: Date
-  $category: ENUM_REGULATIONTEST1_CATEGORY
-  $details: String
+mutation createBareRegulation(
+  $code: String!
+  $slug: String!
+  $fullTitle: String
+  $effectiveFrom: Date
+  $category: ENUM_REGULATION_CATEGORY
+  $isFullTextRegulation: Boolean
   $mainDocumentId: ID
   $consolidatedTextId: ID
   $attachmentsIds: [ID]
 ) {
-  createRegulationtest1(
+  createRegulation(
     data: {
-      title: $title
-      validFrom: $validFrom
+      code: $code
+      slug: $slug
+      fullTitle: $fullTitle
+      effectiveFrom: $effectiveFrom
       category: $category
-      details: $details
+      isFullTextRegulation: $isFullTextRegulation
       mainDocument: $mainDocumentId
       consolidatedText: $consolidatedTextId
       attachments: $attachmentsIds
@@ -84,21 +81,21 @@ mutation createBareRegulationTest1(
     data {
       id
       attributes {
-        title
+        code
       }
     }
   }
 }
 
-fragment RegulationTest1Entity on Regulationtest1Entity {
+fragment RegulationEntity on RegulationEntity {
   id
   attributes {
-    title
+    code
     slug
     fullTitle
-    validFrom
+    effectiveFrom
     category
-    details
+    isFullTextRegulation
     mainDocument {
       data {
         ...UploadFileEntity
@@ -118,8 +115,8 @@ fragment RegulationTest1Entity on Regulationtest1Entity {
       data {
         id
         attributes {
-          title
-          validFrom
+          code
+          effectiveFrom
         }
       }
     }
@@ -127,14 +124,31 @@ fragment RegulationTest1Entity on Regulationtest1Entity {
       data {
         id
         attributes {
-          title
-          validFrom
+          code
+          effectiveFrom
           cancellation {
             data {
               id
               attributes {
-                title
-                validFrom
+                code
+                effectiveFrom
+              }
+            }
+          }
+          amending {
+            data {
+              id
+              attributes {
+                code
+                cancellation {
+                  data {
+                    id
+                    attributes {
+                      code
+                      effectiveFrom
+                    }
+                  }
+                }
               }
             }
           }
@@ -145,8 +159,8 @@ fragment RegulationTest1Entity on Regulationtest1Entity {
       data {
         id
         attributes {
-          title
-          validFrom
+          code
+          effectiveFrom
         }
       }
     }
@@ -154,10 +168,22 @@ fragment RegulationTest1Entity on Regulationtest1Entity {
       data {
         id
         attributes {
-          title
-          validFrom
+          code
+          effectiveFrom
         }
       }
     }
+  }
+}
+
+fragment UploadFileEntity on UploadFileEntity {
+  id
+  attributes {
+    url
+    name
+    ext
+    size
+    createdAt
+    updatedAt
   }
 }

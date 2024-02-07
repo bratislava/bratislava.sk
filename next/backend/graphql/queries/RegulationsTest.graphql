@@ -1,163 +1,163 @@
-query allRegulationTest1s {
-  regulationtest1S(pagination: { limit: -1 }) {
-    data {
-      ...RegulationTest1Entity
-    }
-  }
-}
+# query allRegulationTest1s {
+#   regulationtest1S(pagination: { limit: -1 }) {
+#     data {
+#       ...RegulationTest1Entity
+#     }
+#   }
+# }
 
-query RegulationById($id: ID!) {
-  regulationtest1(id: $id) {
-    data {
-      ...RegulationTest1Entity
-    }
-  }
-}
+# query RegulationById($id: ID!) {
+#   regulationtest1(id: $id) {
+#     data {
+#       ...RegulationTest1Entity
+#     }
+#   }
+# }
 
-query RegulationBySlug($slug: String) {
-  regulationtest1S(filters: { slug: { eq: $slug } }) {
-    data {
-      ...RegulationTest1Entity
-    }
-  }
-}
+# query RegulationBySlug($slug: String) {
+#   regulationtest1S(filters: { slug: { eq: $slug } }) {
+#     data {
+#       ...RegulationTest1Entity
+#     }
+#   }
+# }
 
-mutation setCancellationToRegulation($regulationId: ID!, $cancellationId: ID!) {
-  updateRegulationtest1(id: $regulationId, data: { cancellation: $cancellationId }) {
-    data {
-      id
-    }
-  }
-}
+# mutation setCancellationToRegulation($regulationId: ID!, $cancellationId: ID!) {
+#   updateRegulationtest1(id: $regulationId, data: { cancellation: $cancellationId }) {
+#     data {
+#       id
+#     }
+#   }
+# }
 
-mutation setAmendmentsToRegulation($regulationId: ID!, $amendmentsIds: [ID!]) {
-  updateRegulationtest1(id: $regulationId, data: { amendments: $amendmentsIds }) {
-    data {
-      id
-    }
-  }
-}
+# mutation setAmendmentsToRegulation($regulationId: ID!, $amendmentsIds: [ID!]) {
+#   updateRegulationtest1(id: $regulationId, data: { amendments: $amendmentsIds }) {
+#     data {
+#       id
+#     }
+#   }
+# }
 
-mutation setAmendmentsAndCancellationsToRegulation(
-  $regulationId: ID!
-  $amendmentsIds: [ID!]
-  $cancellationId: ID!
-) {
-  updateRegulationtest1(
-    id: $regulationId
-    data: { amendments: $amendmentsIds, cancellation: $cancellationId }
-  ) {
-    data {
-      id
-    }
-  }
-}
+# mutation setAmendmentsAndCancellationsToRegulation(
+#   $regulationId: ID!
+#   $amendmentsIds: [ID!]
+#   $cancellationId: ID!
+# ) {
+#   updateRegulationtest1(
+#     id: $regulationId
+#     data: { amendments: $amendmentsIds, cancellation: $cancellationId }
+#   ) {
+#     data {
+#       id
+#     }
+#   }
+# }
 
-mutation deleteRegulationTest1ById($id: ID!) {
-  deleteRegulationtest1(id: $id) {
-    data {
-      id
-    }
-  }
-}
+# mutation deleteRegulationTest1ById($id: ID!) {
+#   deleteRegulationtest1(id: $id) {
+#     data {
+#       id
+#     }
+#   }
+# }
 
-mutation createBareRegulationTest1(
-  $title: String!
-  $validFrom: Date
-  $category: ENUM_REGULATIONTEST1_CATEGORY
-  $details: String
-  $mainDocumentId: ID
-  $consolidatedTextId: ID
-  $attachmentsIds: [ID]
-) {
-  createRegulationtest1(
-    data: {
-      title: $title
-      validFrom: $validFrom
-      category: $category
-      details: $details
-      mainDocument: $mainDocumentId
-      consolidatedText: $consolidatedTextId
-      attachments: $attachmentsIds
-    }
-  ) {
-    data {
-      id
-      attributes {
-        title
-      }
-    }
-  }
-}
+# mutation createBareRegulationTest1(
+#   $title: String!
+#   $validFrom: Date
+#   $category: ENUM_REGULATIONTEST1_CATEGORY
+#   $details: String
+#   $mainDocumentId: ID
+#   $consolidatedTextId: ID
+#   $attachmentsIds: [ID]
+# ) {
+#   createRegulationtest1(
+#     data: {
+#       title: $title
+#       validFrom: $validFrom
+#       category: $category
+#       details: $details
+#       mainDocument: $mainDocumentId
+#       consolidatedText: $consolidatedTextId
+#       attachments: $attachmentsIds
+#     }
+#   ) {
+#     data {
+#       id
+#       attributes {
+#         title
+#       }
+#     }
+#   }
+# }
 
-fragment RegulationTest1Entity on Regulationtest1Entity {
-  id
-  attributes {
-    title
-    slug
-    fullTitle
-    validFrom
-    category
-    details
-    mainDocument {
-      data {
-        ...UploadFileEntity
-      }
-    }
-    consolidatedText {
-      data {
-        ...UploadFileEntity
-      }
-    }
-    attachments {
-      data {
-        ...UploadFileEntity
-      }
-    }
-    amendments {
-      data {
-        id
-        attributes {
-          title
-          validFrom
-        }
-      }
-    }
-    amending {
-      data {
-        id
-        attributes {
-          title
-          validFrom
-          cancellation {
-            data {
-              id
-              attributes {
-                title
-                validFrom
-              }
-            }
-          }
-        }
-      }
-    }
-    cancellation {
-      data {
-        id
-        attributes {
-          title
-          validFrom
-        }
-      }
-    }
-    cancelling {
-      data {
-        id
-        attributes {
-          title
-          validFrom
-        }
-      }
-    }
-  }
-}
+# fragment RegulationTest1Entity on Regulationtest1Entity {
+#   id
+#   attributes {
+#     title
+#     slug
+#     fullTitle
+#     validFrom
+#     category
+#     details
+#     mainDocument {
+#       data {
+#         ...UploadFileEntity
+#       }
+#     }
+#     consolidatedText {
+#       data {
+#         ...UploadFileEntity
+#       }
+#     }
+#     attachments {
+#       data {
+#         ...UploadFileEntity
+#       }
+#     }
+#     amendments {
+#       data {
+#         id
+#         attributes {
+#           title
+#           validFrom
+#         }
+#       }
+#     }
+#     amending {
+#       data {
+#         id
+#         attributes {
+#           title
+#           validFrom
+#           cancellation {
+#             data {
+#               id
+#               attributes {
+#                 title
+#                 validFrom
+#               }
+#             }
+#           }
+#         }
+#       }
+#     }
+#     cancellation {
+#       data {
+#         id
+#         attributes {
+#           title
+#           validFrom
+#         }
+#       }
+#     }
+#     cancelling {
+#       data {
+#         id
+#         attributes {
+#           title
+#           validFrom
+#         }
+#       }
+#     }
+#   }
+# }
