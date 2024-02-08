@@ -1,0 +1,197 @@
+query allRegulations {
+  regulations(pagination: { limit: -1 }) {
+    data {
+      ...RegulationEntity
+    }
+  }
+}
+
+query RegulationById($id: ID!) {
+  regulation(id: $id) {
+    data {
+      ...RegulationEntity
+    }
+  }
+}
+
+query RegulationBySlug($slug: String) {
+  regulations(filters: { slug: { eq: $slug } }) {
+    data {
+      ...RegulationEntity
+    }
+  }
+}
+
+query RegulationByYear($year: String) {
+  regulations(filters: { slug: { endsWith: $year } }) {
+    data {
+      ...RegulationEntity
+    }
+  }
+}
+
+mutation setCancellationToRegulation($regulationId: ID!, $cancellationId: ID!) {
+  updateRegulation(id: $regulationId, data: { cancellation: $cancellationId }) {
+    data {
+      id
+    }
+  }
+}
+
+mutation setAmendmentsToRegulation($regulationId: ID!, $amendmentsIds: [ID!]) {
+  updateRegulation(id: $regulationId, data: { amendments: $amendmentsIds }) {
+    data {
+      id
+    }
+  }
+}
+
+mutation deleteRegulationById($id: ID!) {
+  deleteRegulation(id: $id) {
+    data {
+      id
+    }
+  }
+}
+
+mutation createBareRegulation(
+  $code: String!
+  $slug: String!
+  $fullTitle: String
+  $effectiveFrom: Date
+  $category: ENUM_REGULATION_CATEGORY
+  $isFullTextRegulation: Boolean
+  $mainDocumentId: ID
+  $consolidatedTextId: ID
+  $attachmentsIds: [ID]
+) {
+  createRegulation(
+    data: {
+      code: $code
+      slug: $slug
+      fullTitle: $fullTitle
+      effectiveFrom: $effectiveFrom
+      category: $category
+      isFullTextRegulation: $isFullTextRegulation
+      mainDocument: $mainDocumentId
+      consolidatedText: $consolidatedTextId
+      attachments: $attachmentsIds
+    }
+  ) {
+    data {
+      id
+      attributes {
+        code
+      }
+    }
+  }
+}
+
+fragment RegulationEntity on RegulationEntity {
+  id
+  attributes {
+    code
+    slug
+    fullTitle
+    effectiveFrom
+    category
+    isFullTextRegulation
+    mainDocument {
+      data {
+        ...UploadFileEntity
+      }
+    }
+    consolidatedText {
+      data {
+        ...UploadFileEntity
+      }
+    }
+    attachments {
+      data {
+        ...UploadFileEntity
+      }
+    }
+    amendments {
+      data {
+        id
+        attributes {
+          code
+          slug
+          effectiveFrom
+          isFullTextRegulation
+        }
+      }
+    }
+    amending {
+      data {
+        id
+        attributes {
+          code
+          slug
+          effectiveFrom
+          cancellation {
+            data {
+              id
+              attributes {
+                code
+                slug
+                effectiveFrom
+              }
+            }
+          }
+          amending {
+            data {
+              id
+              attributes {
+                code
+                slug
+                cancellation {
+                  data {
+                    id
+                    attributes {
+                      code
+                      slug
+                      effectiveFrom
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    cancellation {
+      data {
+        id
+        attributes {
+          code
+          slug
+          effectiveFrom
+        }
+      }
+    }
+    cancelling {
+      data {
+        id
+        attributes {
+          code
+          slug
+          effectiveFrom
+        }
+      }
+    }
+  }
+}
+
+fragment UploadFileEntity on UploadFileEntity {
+  id
+  attributes {
+    url
+    name
+    ext
+    size
+    createdAt
+    updatedAt
+  }
+}
