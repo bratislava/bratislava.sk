@@ -30,6 +30,14 @@ query RegulationByYear($year: String) {
   }
 }
 
+mutation setFullTitleToRegulation($regulationId: ID!, $fullTitle: String) {
+  updateRegulation(id: $regulationId, data: { fullTitle: $fullTitle }) {
+    data {
+      id
+    }
+  }
+}
+
 mutation setCancellationToRegulation($regulationId: ID!, $cancellationId: ID!) {
   updateRegulation(id: $regulationId, data: { cancellation: $cancellationId }) {
     data {
@@ -55,7 +63,7 @@ mutation deleteRegulationById($id: ID!) {
 }
 
 mutation createBareRegulation(
-  $code: String!
+  $regNumber: String!
   $slug: String!
   $fullTitle: String
   $effectiveFrom: Date
@@ -67,7 +75,7 @@ mutation createBareRegulation(
 ) {
   createRegulation(
     data: {
-      code: $code
+      regNumber: $regNumber
       slug: $slug
       fullTitle: $fullTitle
       effectiveFrom: $effectiveFrom
@@ -81,7 +89,7 @@ mutation createBareRegulation(
     data {
       id
       attributes {
-        code
+        regNumber
       }
     }
   }
@@ -90,7 +98,7 @@ mutation createBareRegulation(
 fragment RegulationEntity on RegulationEntity {
   id
   attributes {
-    code
+    regNumber
     slug
     fullTitle
     effectiveFrom
@@ -115,8 +123,7 @@ fragment RegulationEntity on RegulationEntity {
       data {
         id
         attributes {
-          code
-          slug
+          regNumber
           effectiveFrom
           isFullTextRegulation
         }
@@ -126,15 +133,13 @@ fragment RegulationEntity on RegulationEntity {
       data {
         id
         attributes {
-          code
-          slug
+          regNumber
           effectiveFrom
           cancellation {
             data {
               id
               attributes {
-                code
-                slug
+                regNumber
                 effectiveFrom
               }
             }
@@ -143,14 +148,12 @@ fragment RegulationEntity on RegulationEntity {
             data {
               id
               attributes {
-                code
-                slug
+                regNumber
                 cancellation {
                   data {
                     id
                     attributes {
-                      code
-                      slug
+                      regNumber
                       effectiveFrom
                     }
                   }
@@ -165,8 +168,7 @@ fragment RegulationEntity on RegulationEntity {
       data {
         id
         attributes {
-          code
-          slug
+          regNumber
           effectiveFrom
         }
       }
@@ -175,23 +177,10 @@ fragment RegulationEntity on RegulationEntity {
       data {
         id
         attributes {
-          code
-          slug
+          regNumber
           effectiveFrom
         }
       }
     }
-  }
-}
-
-fragment UploadFileEntity on UploadFileEntity {
-  id
-  attributes {
-    url
-    name
-    ext
-    size
-    createdAt
-    updatedAt
   }
 }

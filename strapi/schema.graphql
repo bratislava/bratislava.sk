@@ -3159,7 +3159,6 @@ type Regulation {
   cancellation: RegulationEntityResponse
   cancelling(filters: RegulationFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): RegulationRelationResponseCollection
   category: ENUM_REGULATION_CATEGORY
-  code: String!
   consolidatedText: UploadFileEntityResponse
   createdAt: DateTime
   effectiveFrom: Date
@@ -3167,7 +3166,9 @@ type Regulation {
   isFullTextRegulation: Boolean
   mainDocument: UploadFileEntityResponse!
   publishedAt: DateTime
+  regNumber: String!
   slug: String!
+  titleText: String
   updatedAt: DateTime
 }
 
@@ -3192,7 +3193,6 @@ input RegulationFiltersInput {
   cancellation: RegulationFiltersInput
   cancelling: RegulationFiltersInput
   category: StringFilterInput
-  code: StringFilterInput
   createdAt: DateTimeFilterInput
   effectiveFrom: DateFilterInput
   fullTitle: StringFilterInput
@@ -3201,7 +3201,9 @@ input RegulationFiltersInput {
   not: RegulationFiltersInput
   or: [RegulationFiltersInput]
   publishedAt: DateTimeFilterInput
+  regNumber: StringFilterInput
   slug: StringFilterInput
+  titleText: StringFilterInput
   updatedAt: DateTimeFilterInput
 }
 
@@ -3212,14 +3214,15 @@ input RegulationInput {
   cancellation: ID
   cancelling: [ID]
   category: ENUM_REGULATION_CATEGORY
-  code: String
   consolidatedText: ID
   effectiveFrom: Date
   fullTitle: String
   isFullTextRegulation: Boolean
   mainDocument: ID
   publishedAt: DateTime
+  regNumber: String
   slug: String
+  titleText: String
 }
 
 type RegulationRelationResponseCollection {

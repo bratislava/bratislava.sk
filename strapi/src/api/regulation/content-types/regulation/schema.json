@@ -12,7 +12,7 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "code": {
+    "regNumber": {
       "type": "string",
       "required": true,
       "unique": true,
@@ -20,8 +20,11 @@
     },
     "slug": {
       "type": "uid",
-      "targetField": "code",
-      "required": true
+      "required": true,
+      "targetField": "regNumber"
+    },
+    "titleText": {
+      "type": "string"
     },
     "fullTitle": {
       "type": "text",
@@ -44,7 +47,8 @@
       ]
     },
     "isFullTextRegulation": {
-      "type": "boolean"
+      "type": "boolean",
+      "required": false
     },
     "mainDocument": {
       "type": "media",
