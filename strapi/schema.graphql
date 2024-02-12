@@ -3137,7 +3137,7 @@ type Query {
   pageSubcategory(id: ID, locale: I18NLocaleCode): PageSubcategoryEntityResponse
   pages(filters: PageFiltersInput, locale: I18NLocaleCode, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): PageEntityResponseCollection
   regulation(id: ID): RegulationEntityResponse
-  regulations(filters: RegulationFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): RegulationEntityResponseCollection
+  regulations(filters: RegulationFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): RegulationEntityResponseCollection
   tag(id: ID, locale: I18NLocaleCode): TagEntityResponse
   tags(filters: TagFiltersInput, locale: I18NLocaleCode, pagination: PaginationArg = {}, sort: [String] = []): TagEntityResponseCollection
   uploadFile(id: ID): UploadFileEntityResponse
@@ -3153,11 +3153,11 @@ type Query {
 }
 
 type Regulation {
-  amending(filters: RegulationFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): RegulationRelationResponseCollection
-  amendments(filters: RegulationFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): RegulationRelationResponseCollection
+  amending(filters: RegulationFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): RegulationRelationResponseCollection
+  amendments(filters: RegulationFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): RegulationRelationResponseCollection
   attachments(filters: UploadFileFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UploadFileRelationResponseCollection
   cancellation: RegulationEntityResponse
-  cancelling(filters: RegulationFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): RegulationRelationResponseCollection
+  cancelling(filters: RegulationFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): RegulationRelationResponseCollection
   category: ENUM_REGULATION_CATEGORY
   consolidatedText: UploadFileEntityResponse
   createdAt: DateTime
@@ -3165,7 +3165,6 @@ type Regulation {
   fullTitle: String!
   isFullTextRegulation: Boolean
   mainDocument: UploadFileEntityResponse!
-  publishedAt: DateTime
   regNumber: String!
   slug: String!
   titleText: String
@@ -3200,7 +3199,6 @@ input RegulationFiltersInput {
   isFullTextRegulation: BooleanFilterInput
   not: RegulationFiltersInput
   or: [RegulationFiltersInput]
-  publishedAt: DateTimeFilterInput
   regNumber: StringFilterInput
   slug: StringFilterInput
   titleText: StringFilterInput
@@ -3219,7 +3217,6 @@ input RegulationInput {
   fullTitle: String
   isFullTextRegulation: Boolean
   mainDocument: ID
-  publishedAt: DateTime
   regNumber: String
   slug: String
   titleText: String

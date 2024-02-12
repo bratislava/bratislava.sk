@@ -65,6 +65,7 @@ mutation deleteRegulationById($id: ID!) {
 mutation createBareRegulation(
   $regNumber: String!
   $slug: String!
+  $titleText: String
   $fullTitle: String
   $effectiveFrom: Date
   $category: ENUM_REGULATION_CATEGORY
@@ -77,6 +78,7 @@ mutation createBareRegulation(
     data: {
       regNumber: $regNumber
       slug: $slug
+      titleText: $titleText
       fullTitle: $fullTitle
       effectiveFrom: $effectiveFrom
       category: $category
@@ -100,6 +102,7 @@ fragment RegulationEntity on RegulationEntity {
   attributes {
     regNumber
     slug
+    titleText
     fullTitle
     effectiveFrom
     category
