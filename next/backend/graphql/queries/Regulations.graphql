@@ -127,6 +127,7 @@ fragment RegulationEntity on RegulationEntity {
         id
         attributes {
           regNumber
+          slug
           effectiveFrom
           isFullTextRegulation
         }
@@ -137,12 +138,14 @@ fragment RegulationEntity on RegulationEntity {
         id
         attributes {
           regNumber
+          slug
           effectiveFrom
           cancellation {
             data {
               id
               attributes {
                 regNumber
+                slug
                 effectiveFrom
               }
             }
@@ -152,11 +155,13 @@ fragment RegulationEntity on RegulationEntity {
               id
               attributes {
                 regNumber
+                slug
                 cancellation {
                   data {
                     id
                     attributes {
                       regNumber
+                      slug
                       effectiveFrom
                     }
                   }
@@ -172,6 +177,7 @@ fragment RegulationEntity on RegulationEntity {
         id
         attributes {
           regNumber
+          slug
           effectiveFrom
         }
       }
@@ -181,6 +187,7 @@ fragment RegulationEntity on RegulationEntity {
         id
         attributes {
           regNumber
+          slug
           effectiveFrom
         }
       }

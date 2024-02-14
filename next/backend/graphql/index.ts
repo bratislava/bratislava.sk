@@ -3392,7 +3392,6 @@ export type QueryRegulationArgs = {
 export type QueryRegulationsArgs = {
   filters?: InputMaybe<RegulationFiltersInput>
   pagination?: InputMaybe<PaginationArg>
-  publicationState?: InputMaybe<PublicationState>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
 }
 
@@ -3473,7 +3472,6 @@ export type Regulation = {
   fullTitle: Scalars['String']['output']
   isFullTextRegulation?: Maybe<Scalars['Boolean']['output']>
   mainDocument: UploadFileEntityResponse
-  publishedAt?: Maybe<Scalars['DateTime']['output']>
   regNumber: Scalars['String']['output']
   slug: Scalars['String']['output']
   titleText?: Maybe<Scalars['String']['output']>
@@ -3483,14 +3481,12 @@ export type Regulation = {
 export type RegulationAmendingArgs = {
   filters?: InputMaybe<RegulationFiltersInput>
   pagination?: InputMaybe<PaginationArg>
-  publicationState?: InputMaybe<PublicationState>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
 }
 
 export type RegulationAmendmentsArgs = {
   filters?: InputMaybe<RegulationFiltersInput>
   pagination?: InputMaybe<PaginationArg>
-  publicationState?: InputMaybe<PublicationState>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
 }
 
@@ -3503,7 +3499,6 @@ export type RegulationAttachmentsArgs = {
 export type RegulationCancellingArgs = {
   filters?: InputMaybe<RegulationFiltersInput>
   pagination?: InputMaybe<PaginationArg>
-  publicationState?: InputMaybe<PublicationState>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
 }
 
@@ -3538,7 +3533,6 @@ export type RegulationFiltersInput = {
   isFullTextRegulation?: InputMaybe<BooleanFilterInput>
   not?: InputMaybe<RegulationFiltersInput>
   or?: InputMaybe<Array<InputMaybe<RegulationFiltersInput>>>
-  publishedAt?: InputMaybe<DateTimeFilterInput>
   regNumber?: InputMaybe<StringFilterInput>
   slug?: InputMaybe<StringFilterInput>
   titleText?: InputMaybe<StringFilterInput>
@@ -3557,7 +3551,6 @@ export type RegulationInput = {
   fullTitle?: InputMaybe<Scalars['String']['input']>
   isFullTextRegulation?: InputMaybe<Scalars['Boolean']['input']>
   mainDocument?: InputMaybe<Scalars['ID']['input']>
-  publishedAt?: InputMaybe<Scalars['DateTime']['input']>
   regNumber?: InputMaybe<Scalars['String']['input']>
   slug?: InputMaybe<Scalars['String']['input']>
   titleText?: InputMaybe<Scalars['String']['input']>
@@ -9418,6 +9411,7 @@ export type AllRegulationsQuery = {
         __typename?: 'Regulation'
         regNumber: string
         slug: string
+        titleText?: string | null
         fullTitle: string
         effectiveFrom?: any | null
         category?: Enum_Regulation_Category | null
@@ -9478,6 +9472,7 @@ export type AllRegulationsQuery = {
             attributes?: {
               __typename?: 'Regulation'
               regNumber: string
+              slug: string
               effectiveFrom?: any | null
               isFullTextRegulation?: boolean | null
             } | null
@@ -9491,6 +9486,7 @@ export type AllRegulationsQuery = {
             attributes?: {
               __typename?: 'Regulation'
               regNumber: string
+              slug: string
               effectiveFrom?: any | null
               cancellation?: {
                 __typename?: 'RegulationEntityResponse'
@@ -9500,6 +9496,7 @@ export type AllRegulationsQuery = {
                   attributes?: {
                     __typename?: 'Regulation'
                     regNumber: string
+                    slug: string
                     effectiveFrom?: any | null
                   } | null
                 } | null
@@ -9512,6 +9509,7 @@ export type AllRegulationsQuery = {
                   attributes?: {
                     __typename?: 'Regulation'
                     regNumber: string
+                    slug: string
                     cancellation?: {
                       __typename?: 'RegulationEntityResponse'
                       data?: {
@@ -9520,6 +9518,7 @@ export type AllRegulationsQuery = {
                         attributes?: {
                           __typename?: 'Regulation'
                           regNumber: string
+                          slug: string
                           effectiveFrom?: any | null
                         } | null
                       } | null
@@ -9538,6 +9537,7 @@ export type AllRegulationsQuery = {
             attributes?: {
               __typename?: 'Regulation'
               regNumber: string
+              slug: string
               effectiveFrom?: any | null
             } | null
           } | null
@@ -9550,6 +9550,7 @@ export type AllRegulationsQuery = {
             attributes?: {
               __typename?: 'Regulation'
               regNumber: string
+              slug: string
               effectiveFrom?: any | null
             } | null
           }>
@@ -9574,6 +9575,7 @@ export type RegulationByIdQuery = {
         __typename?: 'Regulation'
         regNumber: string
         slug: string
+        titleText?: string | null
         fullTitle: string
         effectiveFrom?: any | null
         category?: Enum_Regulation_Category | null
@@ -9634,6 +9636,7 @@ export type RegulationByIdQuery = {
             attributes?: {
               __typename?: 'Regulation'
               regNumber: string
+              slug: string
               effectiveFrom?: any | null
               isFullTextRegulation?: boolean | null
             } | null
@@ -9647,6 +9650,7 @@ export type RegulationByIdQuery = {
             attributes?: {
               __typename?: 'Regulation'
               regNumber: string
+              slug: string
               effectiveFrom?: any | null
               cancellation?: {
                 __typename?: 'RegulationEntityResponse'
@@ -9656,6 +9660,7 @@ export type RegulationByIdQuery = {
                   attributes?: {
                     __typename?: 'Regulation'
                     regNumber: string
+                    slug: string
                     effectiveFrom?: any | null
                   } | null
                 } | null
@@ -9668,6 +9673,7 @@ export type RegulationByIdQuery = {
                   attributes?: {
                     __typename?: 'Regulation'
                     regNumber: string
+                    slug: string
                     cancellation?: {
                       __typename?: 'RegulationEntityResponse'
                       data?: {
@@ -9676,6 +9682,7 @@ export type RegulationByIdQuery = {
                         attributes?: {
                           __typename?: 'Regulation'
                           regNumber: string
+                          slug: string
                           effectiveFrom?: any | null
                         } | null
                       } | null
@@ -9694,6 +9701,7 @@ export type RegulationByIdQuery = {
             attributes?: {
               __typename?: 'Regulation'
               regNumber: string
+              slug: string
               effectiveFrom?: any | null
             } | null
           } | null
@@ -9706,6 +9714,7 @@ export type RegulationByIdQuery = {
             attributes?: {
               __typename?: 'Regulation'
               regNumber: string
+              slug: string
               effectiveFrom?: any | null
             } | null
           }>
@@ -9730,6 +9739,7 @@ export type RegulationBySlugQuery = {
         __typename?: 'Regulation'
         regNumber: string
         slug: string
+        titleText?: string | null
         fullTitle: string
         effectiveFrom?: any | null
         category?: Enum_Regulation_Category | null
@@ -9790,6 +9800,7 @@ export type RegulationBySlugQuery = {
             attributes?: {
               __typename?: 'Regulation'
               regNumber: string
+              slug: string
               effectiveFrom?: any | null
               isFullTextRegulation?: boolean | null
             } | null
@@ -9803,6 +9814,7 @@ export type RegulationBySlugQuery = {
             attributes?: {
               __typename?: 'Regulation'
               regNumber: string
+              slug: string
               effectiveFrom?: any | null
               cancellation?: {
                 __typename?: 'RegulationEntityResponse'
@@ -9812,6 +9824,7 @@ export type RegulationBySlugQuery = {
                   attributes?: {
                     __typename?: 'Regulation'
                     regNumber: string
+                    slug: string
                     effectiveFrom?: any | null
                   } | null
                 } | null
@@ -9824,6 +9837,7 @@ export type RegulationBySlugQuery = {
                   attributes?: {
                     __typename?: 'Regulation'
                     regNumber: string
+                    slug: string
                     cancellation?: {
                       __typename?: 'RegulationEntityResponse'
                       data?: {
@@ -9832,6 +9846,7 @@ export type RegulationBySlugQuery = {
                         attributes?: {
                           __typename?: 'Regulation'
                           regNumber: string
+                          slug: string
                           effectiveFrom?: any | null
                         } | null
                       } | null
@@ -9850,6 +9865,7 @@ export type RegulationBySlugQuery = {
             attributes?: {
               __typename?: 'Regulation'
               regNumber: string
+              slug: string
               effectiveFrom?: any | null
             } | null
           } | null
@@ -9862,6 +9878,7 @@ export type RegulationBySlugQuery = {
             attributes?: {
               __typename?: 'Regulation'
               regNumber: string
+              slug: string
               effectiveFrom?: any | null
             } | null
           }>
@@ -9886,6 +9903,7 @@ export type RegulationByYearQuery = {
         __typename?: 'Regulation'
         regNumber: string
         slug: string
+        titleText?: string | null
         fullTitle: string
         effectiveFrom?: any | null
         category?: Enum_Regulation_Category | null
@@ -9946,6 +9964,7 @@ export type RegulationByYearQuery = {
             attributes?: {
               __typename?: 'Regulation'
               regNumber: string
+              slug: string
               effectiveFrom?: any | null
               isFullTextRegulation?: boolean | null
             } | null
@@ -9959,6 +9978,7 @@ export type RegulationByYearQuery = {
             attributes?: {
               __typename?: 'Regulation'
               regNumber: string
+              slug: string
               effectiveFrom?: any | null
               cancellation?: {
                 __typename?: 'RegulationEntityResponse'
@@ -9968,6 +9988,7 @@ export type RegulationByYearQuery = {
                   attributes?: {
                     __typename?: 'Regulation'
                     regNumber: string
+                    slug: string
                     effectiveFrom?: any | null
                   } | null
                 } | null
@@ -9980,6 +10001,7 @@ export type RegulationByYearQuery = {
                   attributes?: {
                     __typename?: 'Regulation'
                     regNumber: string
+                    slug: string
                     cancellation?: {
                       __typename?: 'RegulationEntityResponse'
                       data?: {
@@ -9988,6 +10010,7 @@ export type RegulationByYearQuery = {
                         attributes?: {
                           __typename?: 'Regulation'
                           regNumber: string
+                          slug: string
                           effectiveFrom?: any | null
                         } | null
                       } | null
@@ -10006,6 +10029,7 @@ export type RegulationByYearQuery = {
             attributes?: {
               __typename?: 'Regulation'
               regNumber: string
+              slug: string
               effectiveFrom?: any | null
             } | null
           } | null
@@ -10018,6 +10042,7 @@ export type RegulationByYearQuery = {
             attributes?: {
               __typename?: 'Regulation'
               regNumber: string
+              slug: string
               effectiveFrom?: any | null
             } | null
           }>
@@ -10081,6 +10106,7 @@ export type DeleteRegulationByIdMutation = {
 export type CreateBareRegulationMutationVariables = Exact<{
   regNumber: Scalars['String']['input']
   slug: Scalars['String']['input']
+  titleText?: InputMaybe<Scalars['String']['input']>
   fullTitle?: InputMaybe<Scalars['String']['input']>
   effectiveFrom?: InputMaybe<Scalars['Date']['input']>
   category?: InputMaybe<Enum_Regulation_Category>
@@ -10111,6 +10137,7 @@ export type RegulationEntityFragment = {
     __typename?: 'Regulation'
     regNumber: string
     slug: string
+    titleText?: string | null
     fullTitle: string
     effectiveFrom?: any | null
     category?: Enum_Regulation_Category | null
@@ -10171,6 +10198,7 @@ export type RegulationEntityFragment = {
         attributes?: {
           __typename?: 'Regulation'
           regNumber: string
+          slug: string
           effectiveFrom?: any | null
           isFullTextRegulation?: boolean | null
         } | null
@@ -10184,6 +10212,7 @@ export type RegulationEntityFragment = {
         attributes?: {
           __typename?: 'Regulation'
           regNumber: string
+          slug: string
           effectiveFrom?: any | null
           cancellation?: {
             __typename?: 'RegulationEntityResponse'
@@ -10193,6 +10222,7 @@ export type RegulationEntityFragment = {
               attributes?: {
                 __typename?: 'Regulation'
                 regNumber: string
+                slug: string
                 effectiveFrom?: any | null
               } | null
             } | null
@@ -10205,6 +10235,7 @@ export type RegulationEntityFragment = {
               attributes?: {
                 __typename?: 'Regulation'
                 regNumber: string
+                slug: string
                 cancellation?: {
                   __typename?: 'RegulationEntityResponse'
                   data?: {
@@ -10213,6 +10244,7 @@ export type RegulationEntityFragment = {
                     attributes?: {
                       __typename?: 'Regulation'
                       regNumber: string
+                      slug: string
                       effectiveFrom?: any | null
                     } | null
                   } | null
@@ -10231,6 +10263,7 @@ export type RegulationEntityFragment = {
         attributes?: {
           __typename?: 'Regulation'
           regNumber: string
+          slug: string
           effectiveFrom?: any | null
         } | null
       } | null
@@ -10243,6 +10276,7 @@ export type RegulationEntityFragment = {
         attributes?: {
           __typename?: 'Regulation'
           regNumber: string
+          slug: string
           effectiveFrom?: any | null
         } | null
       }>
@@ -13468,6 +13502,7 @@ export const RegulationEntityFragmentDoc = gql`
     attributes {
       regNumber
       slug
+      titleText
       fullTitle
       effectiveFrom
       category
@@ -13492,6 +13527,7 @@ export const RegulationEntityFragmentDoc = gql`
           id
           attributes {
             regNumber
+            slug
             effectiveFrom
             isFullTextRegulation
           }
@@ -13502,12 +13538,14 @@ export const RegulationEntityFragmentDoc = gql`
           id
           attributes {
             regNumber
+            slug
             effectiveFrom
             cancellation {
               data {
                 id
                 attributes {
                   regNumber
+                  slug
                   effectiveFrom
                 }
               }
@@ -13517,11 +13555,13 @@ export const RegulationEntityFragmentDoc = gql`
                 id
                 attributes {
                   regNumber
+                  slug
                   cancellation {
                     data {
                       id
                       attributes {
                         regNumber
+                        slug
                         effectiveFrom
                       }
                     }
@@ -13537,6 +13577,7 @@ export const RegulationEntityFragmentDoc = gql`
           id
           attributes {
             regNumber
+            slug
             effectiveFrom
           }
         }
@@ -13546,6 +13587,7 @@ export const RegulationEntityFragmentDoc = gql`
           id
           attributes {
             regNumber
+            slug
             effectiveFrom
           }
         }
@@ -13988,6 +14030,7 @@ export const CreateBareRegulationDocument = gql`
   mutation createBareRegulation(
     $regNumber: String!
     $slug: String!
+    $titleText: String
     $fullTitle: String
     $effectiveFrom: Date
     $category: ENUM_REGULATION_CATEGORY
@@ -14000,6 +14043,7 @@ export const CreateBareRegulationDocument = gql`
       data: {
         regNumber: $regNumber
         slug: $slug
+        titleText: $titleText
         fullTitle: $fullTitle
         effectiveFrom: $effectiveFrom
         category: $category
