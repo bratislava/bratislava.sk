@@ -1,8 +1,3 @@
-/* eslint-disable @typescript-eslint/restrict-template-expressions */
-/* eslint-disable @typescript-eslint/no-unsafe-call */
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-/* eslint-disable @typescript-eslint/no-unsafe-return */
-
 import { ParsedUrlQuery } from 'node:querystring'
 
 import { GeneralQuery, RegulationEntityFragment } from '@backend/graphql'
@@ -73,31 +68,28 @@ const VznPage = ({ general, regulation }: RegulationPageProps) => {
     return null
   }
 
-  const { regNumber } = regulation.attributes
+  const { regNumber, category, fullTitle } = regulation.attributes
 
   const breadcrumbs = [{ title: `Všeobecne záväzné nariadenie č. ${regNumber}`, path: null }]
 
   return (
     <GeneralContextProvider general={general}>
-      {' '}
       <LocalizationsProvider localizations={{ sk: '/vzn', en: '/vzn' }}>
-        {' '}
         <Head>
-          <title>{`VZN ${regNumber}`}</title>{' '}
-        </Head>{' '}
+          <title>{`VZN ${regNumber}`}</title>
+        </Head>
         <PageLayout>
-          {' '}
           <PageHeader
             title={`VZN ${regNumber}`}
-            tag={regulation.attributes.category}
-            subtext={regulation.attributes.fullTitle}
+            tag={category}
+            subtext={fullTitle}
             breadcrumbs={breadcrumbs}
-          />{' '}
+          />
           <SectionContainer className="my-8">
-            <RegulationDetailPageContent regulation={regulation} />{' '}
-          </SectionContainer>{' '}
-        </PageLayout>{' '}
-      </LocalizationsProvider>{' '}
+            <RegulationDetailPageContent regulation={regulation} />
+          </SectionContainer>
+        </PageLayout>
+      </LocalizationsProvider>
     </GeneralContextProvider>
   )
 }

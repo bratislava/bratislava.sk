@@ -34,10 +34,7 @@ const RegulationCard = ({
         className,
       )}
     >
-      {' '}
       <div className="flex flex-col gap-1">
-        {' '}
-        {/* FIXME Typography. Convert to use Typography. Issue: Different font weight than figma h3 */}{' '}
         <MLink
           href={path ?? '#'}
           className="text-h5 line-clamp-1 break-words font-bold lg:line-clamp-3"
@@ -47,22 +44,20 @@ const RegulationCard = ({
           rel="noreferrer"
           aria-label={ariaLabel ?? t('FileList.aria.downloadFileAriaLabel', { title })}
         >
-          {title}{' '}
-        </MLink>{' '}
-        {/* FIXME Typography. Convert to use Typography. Issue: Different font size and weight than figma span or p */}{' '}
+          {title}
+        </MLink>
         {isUplneZnenie && (
           <Typography type="p" size="p-small" className="line-clamp-1">
-            Úplné znenie{' '}
+            Úplné znenie
           </Typography>
-        )}{' '}
-      </div>{' '}
+        )}
+      </div>
       <div className="flex items-center gap-2 lg:gap-3">
-        {' '}
         <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-gray-100 text-gray-700 lg:h-10 lg:w-10">
-          <ArrowRightIcon className="h-4 w-4" />{' '}
+          <ArrowRightIcon className="h-4 w-4" />
         </div>
-        <Typography type="span">Prejsť na VZN</Typography>{' '}
-      </div>{' '}
+        <Typography type="span">Prejsť na VZN</Typography>
+      </div>
     </div>
   )
 }
