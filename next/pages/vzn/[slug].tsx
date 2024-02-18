@@ -3,10 +3,11 @@ import { ParsedUrlQuery } from 'node:querystring'
 import { GeneralQuery, RegulationEntityFragment } from '@backend/graphql'
 import { client } from '@backend/graphql/gql'
 import PageLayout from '@components/layouts/PageLayout'
-import RegulationDetailPageContent from '@components/pages/RegulationDetailPageContent'
+import RegulationPageContent from '@components/pages/RegulationPageContent'
 import { LocalizationsProvider } from '@components/providers/LocalizationsProvider'
 import PageHeader from '@components/ui/PageHeader/PageHeader'
 import { SectionContainer } from '@components/ui/SectionContainer/SectionContainer'
+import { slugifyWithCounter } from '@sindresorhus/slugify'
 import { GeneralContextProvider } from '@utils/generalContext'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import Head from 'next/head'
@@ -28,7 +29,8 @@ export const getStaticPaths: GetStaticPaths<StaticParams> = async () => {
     .filter((regulation) => regulation?.attributes?.slug)
     .map((regulation) => ({
       params: {
-        slug: regulation?.attributes?.slug ?? '',
+        // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
+        slug: regulation.attributes!.slug!,
       },
     }))
 
@@ -36,10 +38,16 @@ export const getStaticPaths: GetStaticPaths<StaticParams> = async () => {
   return { paths, fallback: 'blocking' }
 }
 
-export const getStaticProps: GetStaticProps<RegulationPageProps, StaticParams> = async (ctx) => {
-  console.log(`Revalidating ${ctx}`)
-  const locale = ctx.locale ?? 'sk'
-  const slug = ctx.params?.slug ?? ''
+export const getStaticProps: GetStaticProps<RegulationPageProps, StaticParams> = async ({
+  locale,
+  params,
+}) => {
+  const slug = params?.slug
+
+  // eslint-disable-next-line no-console
+  console.log(`Revalidating page ${locale === 'en' ? '/en' : ''}/${slug}`)
+
+  if (!slug || !locale) return { notFound: true }
 
   const [{ regulations }, general, messages] = await Promise.all([
     client.RegulationBySlug({ slug }),
@@ -47,51 +55,36 @@ export const getStaticProps: GetStaticProps<RegulationPageProps, StaticParams> =
     import(`../../messages/${locale}.json`),
   ])
 
-  if (!regulations || !regulations?.data?.length) {
-    return {
-      notFound: true,
-    } as const
+  const regulation = regulations?.data?.[0]
+  if (!regulation) {
+    return { notFound: true }
   }
 
   return {
     props: {
       general,
-      regulation: regulations.data[0],
+      regulation,
       messages: messages.default,
     },
-    revalidate: 14_400, // revalidate after 4 hours
+    revalidate: 10,
   }
 }
 
-const VznPage = ({ general, regulation }: RegulationPageProps) => {
-  if (!regulation || !regulation.attributes || !regulation.attributes.slug) {
+const RegulationPage = ({ general, regulation }: RegulationPageProps) => {
+  if (!regulation || !regulation.attributes) {
     return null
   }
 
-  const { regNumber, category, fullTitle } = regulation.attributes
-
-  const breadcrumbs = [{ title: `Všeobecne záväzné nariadenie č. ${regNumber}`, path: null }]
-
   return (
     <GeneralContextProvider general={general}>
-      <LocalizationsProvider localizations={{ sk: '/vzn', en: '/vzn' }}>
-        <Head>
-          <title>{`VZN ${regNumber}`}</title>
-        </Head>
-        <PageLayout>
-          <PageHeader
-            title={`VZN ${regNumber}`}
-            tag={category}
-            subtext={fullTitle}
-            breadcrumbs={breadcrumbs}
-          />
-          <SectionContainer className="my-8">
-            <RegulationDetailPageContent regulation={regulation} />
-          </SectionContainer>
-        </PageLayout>
-      </LocalizationsProvider>
+      <Head>
+        <title>{`VZN ${regulation.attributes.regNumber}`}</title>
+      </Head>
+      <PageLayout>
+        <RegulationPageContent regulation={regulation} />
+      </PageLayout>
     </GeneralContextProvider>
   )
 }
 
-export default VznPage
+export default RegulationPage
