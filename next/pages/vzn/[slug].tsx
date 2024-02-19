@@ -41,7 +41,7 @@ export const getStaticProps: GetStaticProps<RegulationPageProps, StaticParams> =
   const slug = params?.slug
 
   // eslint-disable-next-line no-console
-  console.log(`Revalidating page ${locale === 'en' ? '/en' : ''}/${slug}`)
+  console.log(`Revalidating regulation ${locale === 'en' ? '/en' : ''}/${slug}`)
 
   if (!slug || !locale) return { notFound: true }
 
