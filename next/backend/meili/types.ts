@@ -5,6 +5,7 @@ import {
   InbaTag,
   Page,
   PageCategory,
+  Regulation,
   Tag,
   UploadFile,
   Vzn,
@@ -69,3 +70,5 @@ export type VznMeili = Omit<
     'id' | 'title' | 'document' | 'validFrom'
   >[]
 }
+
+export type RegulationMeili = Omit<Regulation, '__typenamee'>
