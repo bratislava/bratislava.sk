@@ -34,6 +34,7 @@ import {
 } from '@backend/ms-graph/fetchers/msGraphSearch.fetcher'
 import { SearchOption } from '@components/pages/searchPageContentNew'
 import { useQuery } from '@tanstack/react-query'
+import { isDefined } from '@utils/isDefined'
 import { formatDate } from '@utils/local-date'
 import { useLocale, useTranslations } from 'next-intl'
 
@@ -131,10 +132,14 @@ export const useQueryBySearchOption = (optionKey: SearchOption['id'], filters: S
     select: (data) => {
       const formattedData: SearchResult[] =
         data?.hits?.map((regulation): SearchResult => {
+          const categoryDisplayName = isDefined(regulation.category)
+            ? t(`Regulation.category.${regulation.category}`)
+            : null
+
           return {
-            title: `VZN ${regulation.regNumber}${regulation.titleText}`,
+            title: `VZN ${regulation.regNumber}${regulation.titleText ?? null}`,
             linkHref: `/vzn/${regulation.slug}`,
-            metadata: [regulation.category],
+            metadata: [categoryDisplayName, formatDate(regulation.effectiveFrom)],
             // TODO: fix icons
             customIconName: 'search_result_official_board',
           }
