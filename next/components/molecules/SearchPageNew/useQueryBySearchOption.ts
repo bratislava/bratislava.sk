@@ -22,6 +22,11 @@ import {
   pagesFetcherUseQuery,
   PagesFilters,
 } from '@backend/meili/fetchers/pagesFetcher'
+import {
+  getRegulationsQueryKey,
+  RegulationFilters,
+  regulationsFetcher,
+} from '@backend/meili/fetchers/regulationsFetcher'
 import { PageMeili } from '@backend/meili/types'
 import {
   getMsGraphSearchQueryKey,
@@ -30,9 +35,13 @@ import {
 import { SearchOption } from '@components/pages/searchPageContentNew'
 import { useQuery } from '@tanstack/react-query'
 import { formatDate } from '@utils/local-date'
-import { useLocale } from 'next-intl'
+import { useLocale, useTranslations } from 'next-intl'
 
-export type SearchFilters = PagesFilters | BlogPostsFilters | InbaArticlesFilters
+export type SearchFilters =
+  | PagesFilters
+  | BlogPostsFilters
+  | InbaArticlesFilters
+  | RegulationFilters
 
 export type SearchResult = {
   title: string | null | undefined
@@ -44,6 +53,7 @@ export type SearchResult = {
 }
 
 export const useQueryBySearchOption = (optionKey: SearchOption['id'], filters: SearchFilters) => {
+  const t = useTranslations()
   const locale = useLocale()
 
   const pagesQuery = useQuery({
@@ -113,6 +123,27 @@ export const useQueryBySearchOption = (optionKey: SearchOption['id'], filters: S
     },
   })
 
+  const regulationsQuery = useQuery({
+    // TODO filters type
+    queryKey: getRegulationsQueryKey(filters),
+    queryFn: () => regulationsFetcher(filters),
+    keepPreviousData: true,
+    select: (data) => {
+      const formattedData: SearchResult[] =
+        data?.hits?.map((regulation): SearchResult => {
+          return {
+            title: `VZN ${regulation.regNumber}${regulation.titleText}`,
+            linkHref: `/vzn/${regulation.slug}`,
+            metadata: [regulation.category],
+            // TODO: fix icons
+            customIconName: 'search_result_official_board',
+          }
+        }) ?? []
+
+      return { searchResultsData: formattedData, searchResultsCount: data?.estimatedTotalHits ?? 0 }
+    },
+  })
+
   const usersQuery = useQuery({
     queryKey: getMsGraphSearchQueryKey(filters.search),
     queryFn: () => msGraphSearchFetcher(filters.search),
@@ -163,6 +194,9 @@ export const useQueryBySearchOption = (optionKey: SearchOption['id'], filters: S
 
     case 'users':
       return usersQuery
+
+    case 'regulations':
+      return regulationsQuery
 
     case 'officialBoard':
       return officialBoardQuery

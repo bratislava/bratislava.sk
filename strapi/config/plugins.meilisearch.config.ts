@@ -30,6 +30,9 @@ const searchIndexSettings = {
     'vzn.title',
     'vzn.amedmentDocument.title', // yes, it's a typo in the field name
     'vzn.cancellationDocument.title',
+    'regulation.regNumber',
+    'regulation.titleText',
+    'regulation.fullTitle',
   ],
   filterableAttributes: [
     // All
@@ -38,6 +41,8 @@ const searchIndexSettings = {
     'locale',
     'blog-post.tag.id',
     'inba-article.inbaTag.id',
+    // Regulation
+    'regulation.category',
   ],
   sortableAttributes: [
     // Blog post
@@ -51,6 +56,8 @@ const searchIndexSettings = {
     'vzn.validFrom',
     'vzn.publishedAt', // TODO is it needed?
     'vzn.publishedAtTimestamp',
+    // Regulation
+    'regulation.validFrom',
   ],
   pagination: {
     // https://docs.meilisearch.com/learn/advanced/known_limitations.html#maximum-number-of-results-per-search
@@ -107,6 +114,21 @@ const config = {
     settings: searchIndexSettings,
     transformEntry: ({ entry }) =>
       wrapSearchIndexEntry('vzn', {
+        ...entry,
+        // Meilisearch doesn't support filtering dates as ISO strings, therefore we convert it to UNIX timestamp to
+        // use (number) filters.
+        publishedAtTimestamp: entry.publishedAt ? new Date(entry.publishedAt).getTime() : undefined,
+      }),
+  },
+  regulation: {
+    indexName: 'search_index',
+    //TODO: erase if not needed
+    // entriesQuery: {
+    //   locale: 'all',
+    // },
+    settings: searchIndexSettings,
+    transformEntry: ({ entry }) =>
+      wrapSearchIndexEntry('regulation', {
         ...entry,
         // Meilisearch doesn't support filtering dates as ISO strings, therefore we convert it to UNIX timestamp to
         // use (number) filters.
