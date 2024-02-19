@@ -30,7 +30,7 @@ const RegulationDetailMessage = ({ regulation }: RegulationDetailMessageProps) =
 
   const isCancelled = isDefined(cancellation)
 
-  // We want to show if this regulation is amending any cancelled regulations, because in that case, this regulation is also cancelled
+  // We want to show whether this regulation is amending any cancelled regulations, because in that case, this regulation is also cancelled
   const cancelledAmendees = amending?.filter(
     (amendee) => isDefined(amendee) && amendee.attributes?.cancellation?.data,
   )
@@ -49,6 +49,7 @@ const RegulationDetailMessage = ({ regulation }: RegulationDetailMessageProps) =
     ? 'Dopĺňa neplatné VZN'
     : 'Platné'
 
+  // TODO Add sk localization after this component is refactored
   const alertContent = isCancelled ? (
     <Typography type="p" className="whitespace-normal">
       Toto VZN bolo zrušené všeobecne záväzným nariadením{' '}

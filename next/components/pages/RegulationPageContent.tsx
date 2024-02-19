@@ -12,8 +12,7 @@ import FileCard from '@components/molecules/presentation/FileCard'
 import RegulationCard from '@components/molecules/Regulations/RegulationCard'
 import RegulationDetailMessage from '@components/molecules/Regulations/RegulationDetailMessage'
 import { isDefined } from '@utils/isDefined'
-import { formatDate } from '@utils/local-date'
-import { useLocale } from 'next-intl'
+import { useLocale, useTranslations } from 'next-intl'
 import React, { Fragment } from 'react'
 
 type RegulationPageContentProps = {
@@ -23,6 +22,7 @@ type RegulationPageContentProps = {
 const RegulationPageContent = ({ regulation }: RegulationPageContentProps) => {
   const regulationShortTitle = `VZN ${regulation.attributes?.regNumber}`
 
+  const t = useTranslations('Regulation')
   const locale = useLocale()
 
   const mainDocument = regulation.attributes?.mainDocument?.data?.attributes
@@ -68,7 +68,7 @@ const RegulationPageContent = ({ regulation }: RegulationPageContentProps) => {
           <div className="flex flex-row flex-wrap gap-6">
             <div className="flex shrink-0 basis-[280px] flex-col gap-y-4">
               <Typography type="h2" size="h4">
-                Hlavný dokument
+                {t('mainDocument')}
               </Typography>
               {mainDocument ? (
                 <FileCard
@@ -79,7 +79,7 @@ const RegulationPageContent = ({ regulation }: RegulationPageContentProps) => {
             </div>
             <div className="flex shrink-0 basis-[280px] flex-col gap-y-4">
               <Typography type="h2" size="h4">
-                Konsolidované znenie
+                {t('consolidatedText')}
               </Typography>
               {consolidatedDocument ? (
                 <FileCard
@@ -87,12 +87,12 @@ const RegulationPageContent = ({ regulation }: RegulationPageContentProps) => {
                   downloadLink={consolidatedDocument.url}
                 />
               ) : (
-                <Typography type="p">K tomuto VZN neexistuje konsolidované znenie.</Typography>
+                <Typography type="p">{t('noConsolidatedTextMessage')}</Typography>
               )}
             </div>
             <div className="flex grow flex-col gap-4 md:basis-[400px]">
               <Typography type="h2" size="h4">
-                Prílohy
+                {t('attachments')}
               </Typography>
               {attachmentFiles?.length ? (
                 <FileList
@@ -102,13 +102,13 @@ const RegulationPageContent = ({ regulation }: RegulationPageContentProps) => {
                   className="-mt-10"
                 />
               ) : (
-                <Typography type="p">Toto VZN nemá prílohy.</Typography>
+                <Typography type="p">{t('noAttachmentsMessage')}</Typography>
               )}
             </div>
           </div>
           <div className="flex flex-col gap-y-4">
             <Typography type="h2" size="h4">
-              Dodatky
+              {t('amendments')}
             </Typography>
             {amendments?.length ? (
               <div className="flex flex-row flex-wrap gap-6 [&>*]:basis-[280px]">
@@ -124,18 +124,18 @@ const RegulationPageContent = ({ regulation }: RegulationPageContentProps) => {
                 })}
               </div>
             ) : (
-              <Typography type="p">K tomuto VZN neexistujú dodatky.</Typography>
+              <Typography type="p">{t('noAmendmentsMessage')}</Typography>
             )}
           </div>
           <div className="flex flex-col gap-y-4">
             <Typography type="h2" size="h4">
-              Vplyv na iné VZN
+              {t('influenceOnOtherRegulations')}
             </Typography>
             <div className="flex flex-col gap-2">
               <Typography type="p">
                 {amending?.length ? (
                   <>
-                    Toto VZN je dodatkom k{' '}
+                    {t('thisRegulationAmends')}{' '}
                     {amending.map((amendedRegulation, index) => (
                       <Fragment key={amendedRegulation.id}>
                         <MLink
@@ -149,13 +149,13 @@ const RegulationPageContent = ({ regulation }: RegulationPageContentProps) => {
                     ))}
                   </>
                 ) : (
-                  <> Toto VZN nie je dodatkom k žiadnemu VZN.</>
+                  <>{t('thisRegulationDoesntAmend')}</>
                 )}
               </Typography>
               <Typography type="p">
                 {cancelling?.length ? (
                   <>
-                    Toto VZN zrušuje{' '}
+                    {t('thisRegulationCancells')}{' '}
                     {cancelling.map((cancelledRegulation, index) => (
                       <Fragment key={cancelledRegulation.id}>
                         <MLink
@@ -169,7 +169,7 @@ const RegulationPageContent = ({ regulation }: RegulationPageContentProps) => {
                     ))}
                   </>
                 ) : (
-                  <>Toto VZN nezrušuje žiadne VZN.</>
+                  <>{t('thisRegulationDoesntCancell')}</>
                 )}
               </Typography>
             </div>
