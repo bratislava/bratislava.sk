@@ -48,16 +48,15 @@ export const getStaticProps: GetStaticProps<PageProps, StaticParams> = async ({
   if (!slug || !locale) return { notFound: true }
 
   const [{ blogPosts }, general, messages] = await Promise.all([
-    client.BlogPostBySlug({
-      slug,
-      locale,
-    }),
+    client.BlogPostBySlug({ slug, locale }),
     client.General({ locale }),
     import(`../../messages/${locale}.json`),
   ])
 
   const blogPost = blogPosts?.data[0]
-  if (!blogPost) return { notFound: true }
+  if (!blogPost) {
+    return { notFound: true }
+  }
 
   return {
     props: {
