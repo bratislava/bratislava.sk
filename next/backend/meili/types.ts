@@ -71,4 +71,11 @@ export type VznMeili = Omit<
   >[]
 }
 
-export type RegulationMeili = Omit<Regulation, '__typenamee'>
+export type RegulationMeili = Omit<
+  Regulation,
+  '__typename' | 'amending' | 'cancellation' | 'effectiveFrom'
+> & {
+  amending?: RegulationMeili[]
+  cancellation?: RegulationMeili
+  effectiveFrom?: string
+}

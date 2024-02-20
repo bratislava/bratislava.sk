@@ -271,5 +271,9 @@
     "contacts": "Contacts",
     "document": "Document",
     "documents": "Documents"
+  },
+  "Regulation": {
+    "regulation": "Generally binding ordinance",
+    "regulations": "Generally binding ordinances"
   }
 }

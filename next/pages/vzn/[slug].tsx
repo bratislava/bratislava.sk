@@ -75,6 +75,10 @@ const RegulationPage = ({ general, regulation }: RegulationPageProps) => {
     <GeneralContextProvider general={general}>
       <Head>
         <title>{`VZN ${regulation.attributes.regNumber}`}</title>
+        <meta
+          name="description"
+          content={`Všeobecné záväzné nariadenie ${regulation.attributes.fullTitle}`}
+        />
       </Head>
       <PageLayout>
         <RegulationPageContent regulation={regulation} />

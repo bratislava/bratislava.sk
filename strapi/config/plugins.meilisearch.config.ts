@@ -122,18 +122,18 @@ const config = {
   },
   regulation: {
     indexName: 'search_index',
-    //TODO: erase if not needed
-    // entriesQuery: {
-    //   locale: 'all',
-    // },
+    entriesQuery: {
+      populate: ['amending', 'amending.cancellation', 'cancellation'],
+    },
     settings: searchIndexSettings,
-    transformEntry: ({ entry }) =>
-      wrapSearchIndexEntry('regulation', {
+    transformEntry: ({ entry }) => {
+      return wrapSearchIndexEntry('regulation', {
         ...entry,
         // Meilisearch doesn't support filtering dates as ISO strings, therefore we convert it to UNIX timestamp to
         // use (number) filters.
         publishedAtTimestamp: entry.publishedAt ? new Date(entry.publishedAt).getTime() : undefined,
-      }),
+      })
+    },
   },
 }
 

@@ -6,6 +6,7 @@ import {
   Enum_Page_Pagecolor,
   Enum_Pagecategory_Color,
   LatestBlogPostEntityFragment,
+  Maybe,
 } from '@backend/graphql'
 import {
   blogPostsFetcher,
@@ -49,7 +50,7 @@ export type SearchResult = {
   linkHref?: string | null | undefined
   metadata?: (string | null | undefined)[]
   coverImageSrc?: string | null | undefined
-  pageColor?: Enum_Page_Pagecolor | Enum_Pagecategory_Color
+  pageColor?: Enum_Page_Pagecolor | Maybe<Enum_Pagecategory_Color>
   customIconName?: string
 }
 
@@ -136,11 +137,25 @@ export const useQueryBySearchOption = (optionKey: SearchOption['id'], filters: S
             ? t(`Regulation.category.${regulation.category}`)
             : null
 
+          // we want to see whether this regulation is amending any cancelled regulations, because in that case, this regulation is also cancelled
+          const cancelledAmendees =
+            regulation.amending?.filter(
+              (amendee) => isDefined(amendee) && isDefined(amendee.cancellation),
+            ) ?? []
+
+          const effectiveFromMessage = `účinné od ${formatDate(regulation.effectiveFrom)}`
+          const effectiveUntilMessage = regulation.cancellation
+            ? `do ${formatDate(regulation.cancellation.effectiveFrom)}`
+            : cancelledAmendees?.length
+            ? `do ${formatDate(cancelledAmendees[0].cancellation?.effectiveFrom)}`
+            : ''
+
+          const effectivityMessage = `${effectiveFromMessage} ${effectiveUntilMessage}`
+
           return {
-            title: `VZN ${regulation.regNumber}${regulation.titleText ?? null}`,
+            title: `VZN ${regulation.regNumber} ${regulation.titleText ?? ''}`,
             linkHref: `/vzn/${regulation.slug}`,
-            metadata: [categoryDisplayName, formatDate(regulation.effectiveFrom)],
-            // TODO: fix icons
+            metadata: [categoryDisplayName, effectivityMessage],
             customIconName: 'search_result_official_board',
           }
         }) ?? []

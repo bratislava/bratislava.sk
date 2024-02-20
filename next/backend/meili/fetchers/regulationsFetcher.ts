@@ -1,5 +1,3 @@
-import { Key } from 'swr'
-
 import { meiliClient } from '../meiliClient'
 import { RegulationMeili, SearchIndexWrapped } from '../types'
 import { getMeilisearchPageOptions, unwrapFromSearchIndex } from '../utils'
