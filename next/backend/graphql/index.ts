@@ -3392,6 +3392,7 @@ export type QueryRegulationArgs = {
 export type QueryRegulationsArgs = {
   filters?: InputMaybe<RegulationFiltersInput>
   pagination?: InputMaybe<PaginationArg>
+  publicationState?: InputMaybe<PublicationState>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
 }
 
@@ -3472,6 +3473,7 @@ export type Regulation = {
   fullTitle: Scalars['String']['output']
   isFullTextRegulation?: Maybe<Scalars['Boolean']['output']>
   mainDocument: UploadFileEntityResponse
+  publishedAt?: Maybe<Scalars['DateTime']['output']>
   regNumber: Scalars['String']['output']
   slug: Scalars['String']['output']
   titleText?: Maybe<Scalars['String']['output']>
@@ -3481,12 +3483,14 @@ export type Regulation = {
 export type RegulationAmendingArgs = {
   filters?: InputMaybe<RegulationFiltersInput>
   pagination?: InputMaybe<PaginationArg>
+  publicationState?: InputMaybe<PublicationState>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
 }
 
 export type RegulationAmendmentsArgs = {
   filters?: InputMaybe<RegulationFiltersInput>
   pagination?: InputMaybe<PaginationArg>
+  publicationState?: InputMaybe<PublicationState>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
 }
 
@@ -3499,6 +3503,7 @@ export type RegulationAttachmentsArgs = {
 export type RegulationCancellingArgs = {
   filters?: InputMaybe<RegulationFiltersInput>
   pagination?: InputMaybe<PaginationArg>
+  publicationState?: InputMaybe<PublicationState>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
 }
 
@@ -3533,6 +3538,7 @@ export type RegulationFiltersInput = {
   isFullTextRegulation?: InputMaybe<BooleanFilterInput>
   not?: InputMaybe<RegulationFiltersInput>
   or?: InputMaybe<Array<InputMaybe<RegulationFiltersInput>>>
+  publishedAt?: InputMaybe<DateTimeFilterInput>
   regNumber?: InputMaybe<StringFilterInput>
   slug?: InputMaybe<StringFilterInput>
   titleText?: InputMaybe<StringFilterInput>
@@ -3551,6 +3557,7 @@ export type RegulationInput = {
   fullTitle?: InputMaybe<Scalars['String']['input']>
   isFullTextRegulation?: InputMaybe<Scalars['Boolean']['input']>
   mainDocument?: InputMaybe<Scalars['ID']['input']>
+  publishedAt?: InputMaybe<Scalars['DateTime']['input']>
   regNumber?: InputMaybe<Scalars['String']['input']>
   slug?: InputMaybe<Scalars['String']['input']>
   titleText?: InputMaybe<Scalars['String']['input']>
@@ -9560,6 +9567,20 @@ export type AllRegulationsQuery = {
   } | null
 }
 
+export type RegulationsStaticPathsQueryVariables = Exact<{ [key: string]: never }>
+
+export type RegulationsStaticPathsQuery = {
+  __typename?: 'Query'
+  regulations?: {
+    __typename?: 'RegulationEntityResponseCollection'
+    data: Array<{
+      __typename?: 'RegulationEntity'
+      id?: string | null
+      attributes?: { __typename?: 'Regulation'; slug: string } | null
+    }>
+  } | null
+}
+
 export type RegulationByIdQueryVariables = Exact<{
   id: Scalars['ID']['input']
 }>
@@ -13960,6 +13981,18 @@ export const AllRegulationsDocument = gql`
   }
   ${RegulationEntityFragmentDoc}
 `
+export const RegulationsStaticPathsDocument = gql`
+  query RegulationsStaticPaths {
+    regulations(sort: "publishedAt:desc", pagination: { limit: -1 }) {
+      data {
+        id
+        attributes {
+          slug
+        }
+      }
+    }
+  }
+`
 export const RegulationByIdDocument = gql`
   query RegulationById($id: ID!) {
     regulation(id: $id) {
@@ -14453,6 +14486,21 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
             ...wrappedRequestHeaders,
           }),
         'allRegulations',
+        'query',
+        variables,
+      )
+    },
+    RegulationsStaticPaths(
+      variables?: RegulationsStaticPathsQueryVariables,
+      requestHeaders?: GraphQLClientRequestHeaders,
+    ): Promise<RegulationsStaticPathsQuery> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<RegulationsStaticPathsQuery>(RegulationsStaticPathsDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
+          }),
+        'RegulationsStaticPaths',
         'query',
         variables,
       )

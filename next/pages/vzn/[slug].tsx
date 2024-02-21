@@ -19,7 +19,7 @@ type RegulationPageProps = {
 }
 
 export const getStaticPaths: GetStaticPaths<StaticParams> = async () => {
-  const { regulations } = await client.allRegulations()
+  const { regulations } = await client.RegulationsStaticPaths()
 
   const paths = (regulations?.data ?? [])
     .filter((regulation) => regulation?.attributes?.slug)

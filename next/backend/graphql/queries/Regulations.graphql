@@ -6,6 +6,18 @@ query allRegulations {
   }
 }
 
+query RegulationsStaticPaths {
+  # Prerender only newest 100 Regulations
+  regulations(sort: "publishedAt:desc", pagination: { limit: -1 }) {
+    data {
+      id
+      attributes {
+        slug
+      }
+    }
+  }
+}
+
 query RegulationById($id: ID!) {
   regulation(id: $id) {
     data {
