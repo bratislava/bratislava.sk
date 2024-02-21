@@ -1,7 +1,6 @@
 import { ArrowRightIcon } from '@assets/ui-icons'
 import { Typography } from '@bratislava/component-library'
 import MLink from '@components/forms/simple-components/MLink'
-import { useTranslations } from 'next-intl'
 import React from 'react'
 import { twMerge } from 'tailwind-merge'
 
@@ -9,7 +8,6 @@ export type RegulationCardProps = {
   title: string
   path?: string
   className?: string
-  ariaLabel?: string
   isUplneZnenie?: boolean | null | undefined
 }
 
@@ -18,15 +16,7 @@ export type RegulationCardProps = {
  * Figma for FileCard: https://www.figma.com/file/17wbd0MDQcMW9NbXl6UPs8/DS-ESBS%2BBK%3A-Component-library?type=design&node-id=7367-17767&t=Km8W7qXXiWIDWSYw-0
  */
 
-const RegulationCard = ({
-  title,
-  path,
-  className,
-  ariaLabel,
-  isUplneZnenie,
-}: RegulationCardProps) => {
-  const t = useTranslations()
-
+const RegulationCard = ({ title, path, className, isUplneZnenie }: RegulationCardProps) => {
   return (
     <div
       className={twMerge(
@@ -42,7 +32,6 @@ const RegulationCard = ({
           variant="underlineOnHover"
           target="_blank"
           rel="noreferrer"
-          aria-label={ariaLabel ?? t('FileList.aria.downloadFileAriaLabel', { title })}
         >
           {title}
         </MLink>

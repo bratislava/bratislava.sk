@@ -25,11 +25,12 @@ export const getStaticPaths: GetStaticPaths<StaticParams> = async () => {
     .filter((regulation) => regulation?.attributes?.slug)
     .map((regulation) => ({
       params: {
-        // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
+        // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion,@typescript-eslint/no-non-null-assertion
         slug: regulation.attributes!.slug!,
       },
     }))
 
+  // eslint-disable-next-line no-console
   console.log(`GENERATED STATIC PATHS FOR ${paths.length} SLUGS - REGULATIONS`)
   return { paths, fallback: 'blocking' }
 }
