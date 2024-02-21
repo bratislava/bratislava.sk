@@ -6,7 +6,6 @@ import {
   Enum_Page_Pagecolor,
   Enum_Pagecategory_Color,
   LatestBlogPostEntityFragment,
-  Maybe,
 } from '@backend/graphql'
 import {
   blogPostsFetcher,
@@ -50,7 +49,7 @@ export type SearchResult = {
   linkHref?: string | null | undefined
   metadata?: (string | null | undefined)[]
   coverImageSrc?: string | null | undefined
-  pageColor?: Enum_Page_Pagecolor | Maybe<Enum_Pagecategory_Color>
+  pageColor?: Enum_Page_Pagecolor | Enum_Pagecategory_Color | null
   customIconName?: string
 }
 
