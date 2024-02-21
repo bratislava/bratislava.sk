@@ -132,9 +132,9 @@ interface DividerProps {
 
 export const Divider = ({ className, dividerStyle }: DividerProps) => {
   const dividerType = (dividerStyle?.split('_')[0] ?? 'hrad') as keyof typeof DIVIDER
-  const dividerByType = DIVIDER[dividerType];
+  const dividerByType = DIVIDER[dividerType]
   if (!dividerByType) {
-    return null;
+    return null
   }
 
   const {

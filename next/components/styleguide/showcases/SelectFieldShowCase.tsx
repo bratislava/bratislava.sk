@@ -6,8 +6,6 @@ import React, { useState } from 'react'
 import { Stack } from '../Stack'
 import { Wrapper } from '../Wrapper'
 
-interface SelectFieldShowCaseProps {}
-
 const SelectFieldShowCase = () => {
   const enumOptions: SelectOption[] = [
     {

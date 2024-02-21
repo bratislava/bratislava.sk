@@ -37,7 +37,6 @@ const TabPanelOfficialBoard = () => {
               {...document}
               className="min-w-full max-w-4xl"
               viewButtonText={t('files')}
-              downloadButtonText="TODO-fix"
             />
           ))}
         </div>

@@ -17,7 +17,6 @@ export interface OfficialBoardCardProps {
   content: string
   className?: string
   viewButtonText: string
-  downloadButtonText: string
 }
 
 export const OfficialBoardCard = ({

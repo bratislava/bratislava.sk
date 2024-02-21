@@ -6,9 +6,11 @@ import Head from 'next/head'
 import { useTranslations } from 'next-intl'
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
+  const [messages] = await Promise.all([import(`../messages/${locale}.json`)])
+
   return {
     props: {
-      messages: (await import(`../messages/${locale}.json`)).default,
+      messages: messages.default,
     },
     revalidate: 10,
   }
