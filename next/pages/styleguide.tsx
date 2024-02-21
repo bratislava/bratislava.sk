@@ -68,9 +68,11 @@ export const getServerSideProps: GetServerSideProps = async ({ locale }) => {
     return { notFound: true }
   }
 
+  const [messages] = await Promise.all([import(`../messages/${locale}.json`)])
+
   return {
     props: {
-      messages: (await import(`../messages/${locale}.json`)).default,
+      messages: messages.default,
     },
   }
 }

@@ -36,7 +36,6 @@ const DataWrapper = ({ search }: { search: string }) => {
       query={search}
       title={t('recentlyAddedDocuments')}
       viewButtonText={t('viewTheDocument')}
-      downloadButtonText={t('download')}
       documents={data}
     />
   ) : (
