@@ -143,7 +143,9 @@ export const useQueryBySearchOption = (optionKey: SearchOption['id'], filters: S
             ) ?? []
           const isCancelled = cancelledAmendees.length > 0 || isDefined(regulation.cancellation)
 
-          const effectivityStatus = isCancelled ? t('Regulation.cancelled') : t('Regulation.valid')
+          const effectivityStatus = isCancelled
+            ? t('Regulation.validity.cancelled')
+            : t('Regulation.validity.valid')
           const effectiveFrom = formatDate(regulation.effectiveFrom)
           const effectiveUntil = formatDate(
             regulation.cancellation?.effectiveFrom ??
@@ -151,7 +153,7 @@ export const useQueryBySearchOption = (optionKey: SearchOption['id'], filters: S
           )
 
           const effectivityMessage = `${effectivityStatus} (${
-            isCancelled ? '' : 'od '
+            isCancelled ? '' : `${t('Regulation.validity.since')} `
           }${effectiveFrom}${isCancelled ? ` – ${effectiveUntil}` : ''})`
 
           return {

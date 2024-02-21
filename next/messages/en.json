@@ -270,10 +270,27 @@
     "contact": "Contact",
     "contacts": "Contacts",
     "document": "Document",
-    "documents": "Documents"
+    "documents": "Documents",
+    "regulation": "Regulation",
+    "regulations": "Regulations"
   },
   "Regulation": {
     "regulation": "Generally binding ordinance",
-    "regulations": "Generally binding ordinances"
+    "regulations": "Generally binding ordinances",
+    "validity": {
+      "cancelled": "Cancelled",
+      "valid": "Valid",
+      "since": "since"
+    },
+    "category": {
+      "daneAPoplatky": "Tax and fees",
+      "pomenovanieUlic": "Street naming",
+      "hospodarenie": "Economy",
+      "uzemnePlanovanie": "Zoning",
+      "poriadokACistota": "Order and cleanliness",
+      "socialnaPomocASkolstvo": "Social services and Education",
+      "ostatne": "Other",
+      "archiv": "Archive"
+    }
   }
 }
