@@ -19,18 +19,16 @@ type RegulationPageProps = {
 }
 
 export const getStaticPaths: GetStaticPaths<StaticParams> = async () => {
-  // const { regulations } = await client.allRegulations()
-  //
-  // const paths = (regulations?.data ?? [])
-  //   .filter((regulation) => regulation?.attributes?.slug)
-  //   .map((regulation) => ({
-  //     params: {
-  //       // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
-  //       slug: regulation.attributes!.slug!,
-  //     },
-  //   }))
+  const { regulations } = await client.allRegulations()
 
-  const paths = []
+  const paths = (regulations?.data ?? [])
+    .filter((regulation) => regulation?.attributes?.slug)
+    .map((regulation) => ({
+      params: {
+        // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion,@typescript-eslint/no-non-null-assertion
+        slug: regulation.attributes!.slug!,
+      },
+    }))
 
   // eslint-disable-next-line no-console
   console.log(`GENERATED STATIC PATHS FOR ${paths.length} SLUGS - REGULATIONS`)
