@@ -22,7 +22,7 @@ export const regulationsFetcher = (filters: RegulationFilters) => {
     .search<SearchIndexWrapped<'regulation', RegulationMeili>>(filters.search, {
       ...getMeilisearchPageOptions({ page: filters.page, pageSize: filters.pageSize }),
       filter: ['type = "regulation"'],
-      sort: ['vzn.publishedAtTimestamp:desc'],
+      sort: ['regulation.effectiveFromTimestamp:desc'],
     })
     .then(unwrapFromSearchIndex('regulation'))
 }

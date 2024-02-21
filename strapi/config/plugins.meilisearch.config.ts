@@ -49,6 +49,7 @@ const searchIndexSettings = {
     'blog-post.title',
     'blog-post.publishedAt', // TODO is it needed?
     'blog-post.publishedAtTimestamp',
+    'regulation.effectiveFromTimestamp',
     // Inba article
     'inba-article.title',
     'inba-article.publishedAtTimestamp',
@@ -131,7 +132,9 @@ const config = {
         ...entry,
         // Meilisearch doesn't support filtering dates as ISO strings, therefore we convert it to UNIX timestamp to
         // use (number) filters.
-        publishedAtTimestamp: entry.publishedAt ? new Date(entry.publishedAt).getTime() : undefined,
+        effectiveFromTimestamp: entry.effectiveFrom
+          ? new Date(entry.effectiveFrom).getTime()
+          : undefined,
       })
     },
   },
