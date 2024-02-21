@@ -1366,6 +1366,13 @@ export type ComponentSectionsProsAndConsSection = {
   title?: Maybe<Scalars['String']['output']>
 }
 
+export type ComponentSectionsRegulationsList = {
+  __typename?: 'ComponentSectionsRegulationsList'
+  id: Scalars['ID']['output']
+  text?: Maybe<Scalars['String']['output']>
+  title?: Maybe<Scalars['String']['output']>
+}
+
 export type ComponentSectionsSpace = {
   __typename?: 'ComponentSectionsSpace'
   id: Scalars['ID']['output']
@@ -1965,6 +1972,7 @@ export type GenericMorph =
   | ComponentSectionsOfficialBoard
   | ComponentSectionsOrganizationalStructure
   | ComponentSectionsProsAndConsSection
+  | ComponentSectionsRegulationsList
   | ComponentSectionsSpace
   | ComponentSectionsSubpageList
   | ComponentSectionsTextWithImage
@@ -3126,6 +3134,7 @@ export type PageSectionsDynamicZone =
   | ComponentSectionsOfficialBoard
   | ComponentSectionsOrganizationalStructure
   | ComponentSectionsProsAndConsSection
+  | ComponentSectionsRegulationsList
   | ComponentSectionsSpace
   | ComponentSectionsTextWithImage
   | ComponentSectionsTimeline
@@ -8247,6 +8256,11 @@ export type PageBySlugQuery = {
                 items: Array<{ __typename?: 'ComponentBlocksComparisonItem'; label: string } | null>
               }
             }
+          | {
+              __typename: 'ComponentSectionsRegulationsList'
+              title?: string | null
+              text?: string | null
+            }
           | { __typename: 'ComponentSectionsSpace' }
           | {
               __typename: 'ComponentSectionsTextWithImage'
@@ -9220,6 +9234,11 @@ export type PageEntityFragment = {
             title: string
             items: Array<{ __typename?: 'ComponentBlocksComparisonItem'; label: string } | null>
           }
+        }
+      | {
+          __typename: 'ComponentSectionsRegulationsList'
+          title?: string | null
+          text?: string | null
         }
       | { __typename: 'ComponentSectionsSpace' }
       | {
@@ -11259,6 +11278,12 @@ export type ContactsSectionFragment = {
   } | null> | null
 }
 
+export type RegulationsListSectionFragment = {
+  __typename?: 'ComponentSectionsRegulationsList'
+  title?: string | null
+  text?: string | null
+}
+
 type Sections_ComponentSectionsAccordion_Fragment = {
   __typename: 'ComponentSectionsAccordion'
   title?: string | null
@@ -11962,6 +11987,12 @@ type Sections_ComponentSectionsProsAndConsSection_Fragment = {
   }
 }
 
+type Sections_ComponentSectionsRegulationsList_Fragment = {
+  __typename: 'ComponentSectionsRegulationsList'
+  title?: string | null
+  text?: string | null
+}
+
 type Sections_ComponentSectionsSpace_Fragment = { __typename: 'ComponentSectionsSpace' }
 
 type Sections_ComponentSectionsTextWithImage_Fragment = {
@@ -12041,6 +12072,7 @@ export type SectionsFragment =
   | Sections_ComponentSectionsOfficialBoard_Fragment
   | Sections_ComponentSectionsOrganizationalStructure_Fragment
   | Sections_ComponentSectionsProsAndConsSection_Fragment
+  | Sections_ComponentSectionsRegulationsList_Fragment
   | Sections_ComponentSectionsSpace_Fragment
   | Sections_ComponentSectionsTextWithImage_Fragment
   | Sections_ComponentSectionsTimeline_Fragment
@@ -12845,6 +12877,12 @@ export const ContactsSectionFragmentDoc = gql`
   }
   ${ContactCardBlockFragmentDoc}
 `
+export const RegulationsListSectionFragmentDoc = gql`
+  fragment RegulationsListSection on ComponentSectionsRegulationsList {
+    title
+    text
+  }
+`
 export const SectionsFragmentDoc = gql`
   fragment Sections on PageSectionsDynamicZone {
     __typename
@@ -12929,6 +12967,9 @@ export const SectionsFragmentDoc = gql`
     ... on ComponentSectionsContactsSection {
       ...ContactsSection
     }
+    ... on ComponentSectionsRegulationsList {
+      ...RegulationsListSection
+    }
   }
   ${IconTitleDescSectionFragmentDoc}
   ${DocumentListSectionFragmentDoc}
@@ -12957,6 +12998,7 @@ export const SectionsFragmentDoc = gql`
   ${TimelineSectionFragmentDoc}
   ${FeaturedBlogPostsSectionFragmentDoc}
   ${ContactsSectionFragmentDoc}
+  ${RegulationsListSectionFragmentDoc}
 `
 export const BlogPostEntityFragmentDoc = gql`
   fragment BlogPostEntity on BlogPostEntity {
