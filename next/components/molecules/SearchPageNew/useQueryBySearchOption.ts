@@ -141,15 +141,18 @@ export const useQueryBySearchOption = (optionKey: SearchOption['id'], filters: S
             regulation.amending?.filter(
               (amendee) => isDefined(amendee) && isDefined(amendee.cancellation),
             ) ?? []
+          const isCancelled = cancelledAmendees.length > 0 || isDefined(regulation.cancellation)
 
-          const effectiveFromMessage = `účinné od ${formatDate(regulation.effectiveFrom)}`
-          const effectiveUntilMessage = regulation.cancellation
-            ? `do ${formatDate(regulation.cancellation.effectiveFrom)}`
-            : cancelledAmendees?.length
-            ? `do ${formatDate(cancelledAmendees[0].cancellation?.effectiveFrom)}`
-            : ''
+          const effectivityStatus = isCancelled ? t('Regulation.cancelled') : t('Regulation.valid')
+          const effectiveFrom = formatDate(regulation.effectiveFrom)
+          const effectiveUntil = formatDate(
+            regulation.cancellation?.effectiveFrom ??
+              cancelledAmendees[0]?.cancellation?.effectiveFrom,
+          )
 
-          const effectivityMessage = `${effectiveFromMessage} ${effectiveUntilMessage}`
+          const effectivityMessage = `${effectivityStatus} (${
+            isCancelled ? '' : 'od '
+          }${effectiveFrom}${isCancelled ? ` – ${effectiveUntil}` : ''})`
 
           return {
             title: `VZN ${regulation.regNumber} ${regulation.titleText ?? ''}`,

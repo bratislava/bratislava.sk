@@ -277,6 +277,8 @@
   "Regulation": {
     "regulation": "Všeobecne záväzné nariadenie",
     "regulations": "Všeobecne záväzné nariadenia",
+    "cancelled": "Zrušené",
+    "valid": "Platné",
     "mainDocument": "Hlavný dokument",
     "consolidatedText": "Konsolidované znenie",
     "noConsolidatedTextMessage": "K tomuto VZN neexistuje konsolidované znenie.",
