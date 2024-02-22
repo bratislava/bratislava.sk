@@ -5,6 +5,7 @@ resources:
   - ukrajina.ingress.yml
   - platbadane.ingress.yml
   - izba.ingress.yml
+  - old_aliases.ingress.yml
 configurations:
   - configuration.yml
 
