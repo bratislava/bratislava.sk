@@ -16,30 +16,28 @@ import { twMerge } from 'tailwind-merge'
 
 type SearchCardComposedProps = {
   data: SearchResult
-  showBottomDivdivider: boolean
+  showBottomDivider: boolean
 }
 
-const SearchCardComposed = ({ data, showBottomDivdivider }: SearchCardComposedProps) => {
+const SearchCardComposed = ({ data, showBottomDivider }: SearchCardComposedProps) => {
   return (
     <div
       className={cx(
         'group relative flex flex-row items-stretch overflow-hidden rounded-none lg:rounded-lg lg:border-2',
-        { 'hover:border-gray-400': data.linkHref, 'border-b-2': showBottomDivdivider },
+        { 'hover:border-gray-400': data.linkHref, 'border-b-2': showBottomDivider },
       )}
     >
       {data.coverImageSrc ? (
         <SearchCardComposed.ImageFromUrl imgUrl={data.coverImageSrc} />
       ) : data.customIconName ? (
-        <SearchCardComposed.ImageFromIcon iconName={data.customIconName} />
+        <SearchCardComposed.ImageFromIconName iconName={data.customIconName} />
       ) : data.pageColor ? (
         <SearchCardComposed.ImageFromPageColor pageColor={data.pageColor} />
-      ) : (
-        <SearchCardComposed.ImageFromIcon iconName={null} />
-      )}
+      ) : null}
       <div className="flex w-full flex-row gap-6 py-4 lg:p-6">
         <div className="flex w-full flex-col justify-center gap-3 lg:gap-2">
-          <SearchCardComposed.TitleWithLink title={data.title} href={data.linkHref} />
-          <SearchCardComposed.Metadata metadata={data.metadata} />
+          <SearchCardComposed.TitleWithLink title={data.title ?? ''} href={data.linkHref ?? ''} />
+          <SearchCardComposed.Metadata metadata={data.metadata?.filter(isDefined) ?? []} />
         </div>
         {data.linkHref && <SearchCardComposed.Button className="hidden lg:block" />}
       </div>
@@ -47,7 +45,26 @@ const SearchCardComposed = ({ data, showBottomDivdivider }: SearchCardComposedPr
   )
 }
 
-SearchCardComposed.ImageFromIcon = function ({
+SearchCardComposed.IconContainer = function ({
+  children,
+  className,
+}: {
+  children: any
+  className?: string
+}) {
+  return (
+    <div
+      className={twMerge(
+        'hidden w-[6.5rem] shrink-0 items-center justify-center bg-gray-100 lg:flex',
+        className,
+      )}
+    >
+      {children}
+    </div>
+  )
+}
+
+SearchCardComposed.ImageFromIconName = function ({
   iconName,
   className,
 }: {
@@ -56,14 +73,9 @@ SearchCardComposed.ImageFromIcon = function ({
 }) {
   if (!iconName) return null
   return (
-    <div
-      className={twMerge(
-        'hidden w-[6.5rem] shrink-0 items-center justify-center bg-gray-100 lg:flex',
-        className,
-      )}
-    >
+    <SearchCardComposed.IconContainer className={className}>
       <Icon iconName={iconName} />
-    </div>
+    </SearchCardComposed.IconContainer>
   )
 }
 

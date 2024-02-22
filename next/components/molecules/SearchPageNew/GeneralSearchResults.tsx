@@ -64,7 +64,7 @@ const GeneralSearchResults = ({
                         item.title,
                         ...item.metadata,
                       ].join('')}`}
-                      showBottomDivdivider={index < GENERAL_RESULTS_COUNT - 1}
+                      showBottomDivider={index < GENERAL_RESULTS_COUNT - 1}
                     />
                   )
                 })
@@ -78,7 +78,7 @@ const GeneralSearchResults = ({
                         item.title,
                         ...item.metadata,
                       ].join('')}`}
-                      showBottomDivdivider={index < searchResultsData.length - 1}
+                      showBottomDivider={index < searchResultsData.length - 1}
                     />
                   )
                 })

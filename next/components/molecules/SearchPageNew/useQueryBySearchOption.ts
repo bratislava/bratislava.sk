@@ -1,3 +1,4 @@
+import PageYellowIcon from '@assets/images/page-yellow-icon.svg'
 import {
   getGinisOfficialBoardQueryKey,
   ginisOfficialBoardFetcher,
@@ -36,7 +37,10 @@ import { SearchOption } from '@components/pages/searchPageContentNew'
 import { useQuery } from '@tanstack/react-query'
 import { isDefined } from '@utils/isDefined'
 import { formatDate } from '@utils/local-date'
+import { findIconByPageColor } from '@utils/pageIcons'
+import DocumentListCategorysMap, { findIconByRegulationCategory } from '@utils/regulationIcons'
 import { useLocale, useTranslations } from 'next-intl'
+import { FunctionComponent, SVGProps } from 'react'
 
 export type SearchFilters =
   | PagesFilters
@@ -51,6 +55,7 @@ export type SearchResult = {
   coverImageSrc?: string | null | undefined
   pageColor?: Enum_Page_Pagecolor | Enum_Pagecategory_Color | null
   customIconName?: string
+  customIcon?: React.ReactNode | FunctionComponent<SVGProps<SVGSVGElement>> | undefined
 }
 
 export const useQueryBySearchOption = (optionKey: SearchOption['id'], filters: SearchFilters) => {
@@ -160,7 +165,7 @@ export const useQueryBySearchOption = (optionKey: SearchOption['id'], filters: S
             title: `VZN ${regulation.regNumber} ${regulation.titleText ?? ''}`,
             linkHref: `/vzn/${regulation.slug}`,
             metadata: [categoryDisplayName, effectivityMessage],
-            customIconName: 'search_result_official_board',
+            customIconName: `regulation_${regulation.category}` ?? 'search_result_official_board',
           }
         }) ?? []
 
