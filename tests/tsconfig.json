@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": ["es5", "dom", "es2016.array.include"],
+    "types": ["cypress", "cypress-file-upload", "node"],
+    "allowJs": true,
+    "isolatedModules": false,
+    "baseUrl": "./",
+    "noEmit": true,
+    "skipLibCheck": true
+  },
+  "include": ["**/*.ts"],
+  "exclude": ["node_modules"]
+}
