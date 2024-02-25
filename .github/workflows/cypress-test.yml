@@ -24,8 +24,22 @@ jobs:
       
       - name: Screenshots of errors during E2E tests
         uses: actions/upload-artifact@v3
-        if: always()
+        if: always() 
         with:
           name: cypress-screenshots
           path: tests/cypress/screenshots
           retention-days: 1
+
+      - name: Notify on Slack
+        if: ${{ always() }}
+        uses: rtCamp/action-slack-notify@v2
+        with:
+          status: ${{ job.status }}
+          text: |
+            ${{ if eq(job.status, 'success') }} 
+              Cypress tests after deployment to production passed successfully!
+            ${{ else }}
+              Cypress tests after deployment to production failed. Investigate and fix the issues.
+            ${{ endif }}
+        env:
+          SLACK_WEBHOOK_URL: https://hooks.slack.com/services/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
