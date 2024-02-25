@@ -13,7 +13,7 @@ describe('Cypress test', { testIsolation: false }, () => {
         })
         
         it('1. Test init', () => {
-					cy.get("body")
+					cy.get("bodyasdadsasd")
         })
 			})
 		})
