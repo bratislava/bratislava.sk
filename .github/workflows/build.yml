@@ -1,8 +1,6 @@
 name: Build with bratiska-cli
-on:
-  pull_request:
-    branches:
-      - master
+on: [pull_request, push]
+
 jobs:
   conditions:
     name: Check for build conditions
