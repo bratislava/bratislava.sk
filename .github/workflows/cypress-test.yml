@@ -36,6 +36,6 @@ jobs:
         
         env:
           SLACK_COLOR: '#ff0000'
-          SLACK_TITLE: Cypress tests failed
+          SLACK_TITLE: 'Cypress tests failed'
           SLACK_MESSAGE: '@here Cypress tests after deployment to production failed. Investigate and fix the issues.'
-          SLACK_WEBHOOK: https://hooks.slack.com/services/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
+          SLACK_WEBHOOK: 'https://hooks.slack.com/services/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'
