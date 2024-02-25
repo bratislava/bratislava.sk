@@ -31,15 +31,10 @@ jobs:
           retention-days: 1
 
       - name: Notify on Slack
-        if: ${{ always() }}
+        if: ${{ failure() }}
         uses: rtCamp/action-slack-notify@v2
         with:
-          status: ${{ job.status }}
-          text: |
-            ${{ if eq(job.status, 'success') }} 
-              Cypress tests after deployment to production passed successfully!
-            ${{ else }}
-              Cypress tests after deployment to production failed. Investigate and fix the issues.
-            ${{ endif }}
+          status: failure
+          text: '@here Cypress tests after deployment to production failed. Investigate and fix the issues.'
         env:
-          SLACK_WEBHOOK_URL: https://hooks.slack.com/services/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
+            SLACK_WEBHOOK_URL: https://hooks.slack.com/services/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
