@@ -7,8 +7,8 @@ query allRegulations {
 }
 
 query RegulationsStaticPaths {
-  # Prerender only newest 100 Regulations
-  regulations(sort: "publishedAt:desc", pagination: { limit: -1 }) {
+  # Prerender only 30 most recently updated Regulations
+  regulations(sort: "updatedAt:desc", pagination: { limit: 30 }) {
     data {
       id
       attributes {
