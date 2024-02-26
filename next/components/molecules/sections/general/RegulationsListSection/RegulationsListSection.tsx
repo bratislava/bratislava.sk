@@ -5,7 +5,7 @@ import GeneralSearchResults from '@components/molecules/SearchPageNew/GeneralSea
 import { SearchFilters } from '@components/molecules/SearchPageNew/useQueryBySearchOption'
 import { SectionContainer } from '@components/ui/SectionContainer/SectionContainer'
 import { useTranslations } from 'next-intl'
-import React, { useEffect, useRef, useState } from 'react'
+import React, { ReactNode, useEffect, useRef, useState } from 'react'
 import { StringParam, useQueryParam, withDefault } from 'use-query-params'
 import { useDebounce } from 'usehooks-ts'
 
@@ -71,7 +71,7 @@ const RegulationsListSection = ({ section }: RegulationsListSectionProps) => {
     tagIds: [],
   }
 
-  const searchRef = useRef(null)
+  const searchRef = useRef<null | HTMLInputElement>(null)
 
   useEffect(() => {
     searchRef.current?.scrollIntoView({ behavior: 'smooth' })
