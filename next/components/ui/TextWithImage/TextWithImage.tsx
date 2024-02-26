@@ -10,7 +10,6 @@ export interface TextWithImageProps {
   imageWidth?: number | null
   imageHeight?: number | null
   imagePosition?: 'left' | 'right'
-  imageShadow: boolean
   imageAlternativeText?: string
 }
 
@@ -21,7 +20,6 @@ export const TextWithImage = ({
   imageWidth,
   imageHeight,
   imagePosition = 'left',
-  imageShadow = false,
   imageAlternativeText,
 }: TextWithImageProps) => {
   if (!content && !imageSrc) return null

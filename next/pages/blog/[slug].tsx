@@ -32,6 +32,7 @@ export const getStaticPaths: GetStaticPaths<StaticParams> = async () => {
       locale: blogPost.attributes!.locale!,
     }))
 
+  // eslint-disable-next-line no-console
   console.log(`GENERATED STATIC PATHS FOR ${paths.length} SLUGS - BLOGS`)
   return { paths, fallback: 'blocking' }
 }
@@ -48,16 +49,15 @@ export const getStaticProps: GetStaticProps<PageProps, StaticParams> = async ({
   if (!slug || !locale) return { notFound: true }
 
   const [{ blogPosts }, general, messages] = await Promise.all([
-    client.BlogPostBySlug({
-      slug,
-      locale,
-    }),
+    client.BlogPostBySlug({ slug, locale }),
     client.General({ locale }),
     import(`../../messages/${locale}.json`),
   ])
 
   const blogPost = blogPosts?.data[0]
-  if (!blogPost) return { notFound: true }
+  if (!blogPost) {
+    return { notFound: true }
+  }
 
   return {
     props: {

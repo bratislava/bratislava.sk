@@ -34,13 +34,8 @@ const InbaArticlePageContent = ({ inbaArticle }: InbaArticlePageContentProps) =>
 
   const inbaTagTitle = inbaArticle.attributes?.inbaTag?.data?.attributes?.title
 
-  const {
-    title: inbaReleaseTitle,
-    releaseDate: inbaReleaseDate,
-    slug: inbaReleaseSlug,
-  } = inbaArticle.attributes?.inbaRelease?.data?.attributes ?? {}
-
-  const inbaReleaseLink = `/inba/archiv/${inbaReleaseSlug}`
+  const inbaRelease = inbaArticle.attributes?.inbaRelease?.data?.attributes
+  const inbaReleaseLink = `/inba/archiv/${inbaRelease?.slug}`
 
   return (
     <>
@@ -64,16 +59,19 @@ const InbaArticlePageContent = ({ inbaArticle }: InbaArticlePageContentProps) =>
       <SectionContainer className="pt-10 md:pt-18">
         <NarrowText align="left" width="wide">
           <Markdown content={inbaArticle.attributes?.content} />
-          <div className="pt-4">
-            <MLink href={inbaReleaseLink} variant="underlined">
-              <Markdown
-                content={t('InbaArticle.publishedInThisRelease', {
-                  releaseTitle: inbaReleaseTitle,
-                  releaseDate: formatDate(inbaReleaseDate),
-                })}
-              />
-            </MLink>
-          </div>
+          {inbaRelease ? (
+            <div className="pt-4">
+              {/* TODO Typography */}
+              <MLink href={inbaReleaseLink} variant="underlined">
+                <Markdown
+                  content={t('InbaArticle.publishedInThisRelease', {
+                    releaseTitle: inbaRelease.title,
+                    releaseDate: formatDate(inbaRelease.releaseDate),
+                  })}
+                />
+              </MLink>
+            </div>
+          ) : null}
         </NarrowText>
       </SectionContainer>
       <ShareButtons twitterTitle={inbaArticle.attributes?.title} />

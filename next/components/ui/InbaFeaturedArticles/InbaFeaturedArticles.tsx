@@ -25,7 +25,7 @@ export const InbaFeaturedArticles = ({ articles }: InbaFeaturedArticlesProps) =>
           <BlogPostImageCard
             variant="shadow"
             title={majorArticle?.title ?? ''}
-            linkHref={`/inba/text/${majorArticle?.slug}`}
+            linkHref={`/inba/clanky/${majorArticle?.slug}`}
             imgSrc={majorArticle?.coverImage?.data?.attributes?.url}
             tag={majorArticle?.inbaTag?.data?.attributes?.title ?? undefined}
             date={getNumericLocalDate(majorArticle?.publishedAt)}
@@ -45,7 +45,7 @@ export const InbaFeaturedArticles = ({ articles }: InbaFeaturedArticlesProps) =>
                 key={index}
                 variant="shadow"
                 title={title ?? ''}
-                linkHref={`/inba/text/${slug}`}
+                linkHref={`/inba/clanky/${slug}`}
                 imgSrc={coverImage?.data?.attributes?.url}
                 imgSizes={generateImageSizes({ default: '25vw' })}
                 tag={tagTitle ?? undefined}
@@ -68,7 +68,7 @@ export const InbaFeaturedArticles = ({ articles }: InbaFeaturedArticlesProps) =>
               date={getNumericLocalDate(publishedAt)}
               tag={tagTitle ?? undefined}
               title={title ?? ''}
-              linkProps={{ children: t('readMore'), href: `/inba/text/${slug}` }}
+              linkProps={{ children: t('readMore'), href: `/inba/clanky/${slug}` }}
               imgSrc={coverImage?.data?.attributes?.url}
               imgSizes={generateImageSizes({ default: '100vw', lg: '33vw' })}
             />

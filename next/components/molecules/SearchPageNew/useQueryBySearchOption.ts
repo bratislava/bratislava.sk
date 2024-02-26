@@ -113,7 +113,7 @@ export const useQueryBySearchOption = (optionKey: SearchOption['id'], filters: S
         data?.hits?.map((inbaArticle): SearchResult => {
           return {
             title: inbaArticle.attributes.title,
-            linkHref: `/inba/text/${inbaArticle.attributes.slug}`,
+            linkHref: `/inba/clanky/${inbaArticle.attributes.slug}`,
             metadata: [
               inbaArticle.attributes?.inbaTag?.data?.attributes?.title,
               formatDate(inbaArticle.attributes.publishedAt),

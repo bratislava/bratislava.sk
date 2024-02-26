@@ -1,17 +1,15 @@
 import { ParsedOfficialBoardDocument } from '@backend/ginis/types'
 import { Typography } from '@bratislava/component-library'
+import Divider from '@components/ui/Divider/Divider'
 import { OfficialBoardCard } from '@components/ui/OfficialBoardCard/OfficialBoardCard'
+import Pagination from '@components/ui/Pagination/Pagination'
 import { useEffect, useState } from 'react'
-
-import Divider from '../Divider/Divider'
-import Pagination from '../Pagination/Pagination'
 
 export interface OfficialBoardCardsProps {
   documents: ParsedOfficialBoardDocument[]
   dividerStyle?: string
   title: string
   viewButtonText: string
-  downloadButtonText: string
   query: string | string[]
 }
 
@@ -20,7 +18,6 @@ export const OfficialBoardCards = ({
   dividerStyle,
   title,
   viewButtonText,
-  downloadButtonText,
   query,
 }: OfficialBoardCardsProps) => {
   const [currentPage, setCurrentPage] = useState(1)
@@ -49,11 +46,7 @@ export const OfficialBoardCards = ({
             .map((doc, index) => (
               // eslint-disable-next-line react/no-array-index-key
               <div key={index}>
-                <OfficialBoardCard
-                  {...doc}
-                  viewButtonText={viewButtonText}
-                  downloadButtonText={downloadButtonText}
-                />
+                <OfficialBoardCard {...doc} viewButtonText={viewButtonText} />
                 {dividerBugSolved &&
                   index === dividerBreakpointDesktop - 1 &&
                   currentItemsCountDesktop > dividerBreakpointDesktop && (
@@ -75,11 +68,7 @@ export const OfficialBoardCards = ({
             .map((doc, index) => (
               // eslint-disable-next-line react/no-array-index-key
               <div key={index}>
-                <OfficialBoardCard
-                  {...doc}
-                  viewButtonText={viewButtonText}
-                  downloadButtonText={downloadButtonText}
-                />
+                <OfficialBoardCard {...doc} viewButtonText={viewButtonText} />
                 {dividerBugSolved &&
                   index === dividerBreakpointMobile - 1 &&
                   currentItemsCountMobile > dividerBreakpointMobile && (

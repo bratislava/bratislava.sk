@@ -6,14 +6,14 @@ on:
 jobs:
   conditions:
     name: Check for build conditions
-    uses: bratislava/github-actions/.github/workflows/build-conditions.yml@stable
+    uses: bratislava/github-actions/.github/workflows/build-conditions-inhouse.yml@stable
     permissions: write-all
 
   strapi:
     name: build Strapi
     needs: conditions
     if: needs.conditions.outputs.strapi == 'true'
-    uses: bratislava/github-actions/.github/workflows/build-with-bratiska-cli.yml@stable
+    uses: bratislava/github-actions/.github/workflows/build-with-bratiska-cli-inhouse.yml@stable
     with:
       directory: strapi/
       debug: --debug
@@ -25,7 +25,7 @@ jobs:
     name: build next
     needs: conditions
     if: needs.conditions.outputs.next == 'true'
-    uses: bratislava/github-actions/.github/workflows/build-with-bratiska-cli.yml@stable
+    uses: bratislava/github-actions/.github/workflows/build-with-bratiska-cli-inhouse.yml@stable
     with:
       directory: next/
       debug: --debug

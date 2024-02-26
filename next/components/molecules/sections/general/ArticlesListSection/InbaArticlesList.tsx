@@ -87,7 +87,7 @@ const InbaArticlesList = ({ section }: Props) => {
               tag={tagTitle}
               title={inbaArticleTitle}
               text={perex ?? undefined}
-              linkProps={{ children: t('readMore'), href: `/inba/text/${slug}` }}
+              linkProps={{ children: t('readMore'), href: `/inba/clanky/${slug}` }}
               imgSrc={coverImage?.data?.attributes?.url}
               imgSizes={imageSizes}
             />

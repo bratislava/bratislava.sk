@@ -1,7 +1,6 @@
 import { GeneralQuery } from '@backend/graphql'
 import { client } from '@backend/graphql/gql'
 import PageHeader from '@bratislava/ui-bratislava/PageHeader/PageHeader'
-import SearchPageContent from '@components/pages/searchPageContent'
 import SearchPageContentNew from '@components/pages/searchPageContentNew'
 import { LocalizationsProvider } from '@components/providers/LocalizationsProvider'
 import { GeneralContextProvider } from '@utils/generalContext'

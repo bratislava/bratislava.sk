@@ -20,11 +20,7 @@ type PaginationProps = {
  * @param onPageChange
  * @constructor
  */
-export const Pagination = ({
-  currentPage,
-  totalCount,
-  onPageChange = () => {},
-}: PaginationProps) => {
+const Pagination = ({ currentPage, totalCount, onPageChange = () => {} }: PaginationProps) => {
   const t = useTranslations('Pagination')
 
   const { items } = usePagination({

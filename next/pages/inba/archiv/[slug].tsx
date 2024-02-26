@@ -41,7 +41,7 @@ export const getStaticProps: GetStaticProps<PageProps, StaticParams> = async ({
   const slug = params?.slug
 
   // eslint-disable-next-line no-console
-  console.log(`Revalidating inba article ${locale === 'en' ? '/en' : ''}/inba/archiv/${slug}`)
+  console.log(`Revalidating inba release ${locale === 'en' ? '/en' : ''}/inba/archiv/${slug}`)
 
   if (!slug || !locale) return { notFound: true }
 
