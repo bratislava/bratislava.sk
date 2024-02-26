@@ -27,6 +27,7 @@ import NumericalListSection from './sections/general/NumericalListSection'
 import OfficialBoardSection from './sections/general/OfficialBoardSection/OfficialBoardSection'
 import OrganizationalStructureSection from './sections/general/OrganizationalStructureSection'
 import ProsAndConsSection from './sections/general/ProsAndConsSection'
+import RegulationsListSection from './sections/general/RegulationsListSection/RegulationsListSection'
 import TextWithImageSection from './sections/general/TextWithImageSection'
 import TimelineSection from './sections/general/TimelineSection'
 import VideosSection from './sections/general/VideosSection'
@@ -111,6 +112,9 @@ const SectionContent = ({ section }: { section: SectionsFragment }) => {
 
     case 'ComponentSectionsContactsSection':
       return <ContactsSection section={section} />
+
+    case 'ComponentSectionsRegulationsList':
+      return <RegulationsListSection section={section} />
 
     default:
       return null

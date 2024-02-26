@@ -277,6 +277,11 @@
   "Regulation": {
     "regulation": "Všeobecne záväzné nariadenie",
     "regulations": "Všeobecne záväzné nariadenia",
+    "validity": {
+      "cancelled": "Zrušené",
+      "valid": "Platné",
+      "since": "od"
+    },
     "mainDocument": "Hlavný dokument",
     "consolidatedText": "Konsolidované znenie",
     "noConsolidatedTextMessage": "K tomuto VZN neexistuje konsolidované znenie.",
@@ -288,6 +293,16 @@
     "thisRegulationAmends": "Toto VZN je dodatom k",
     "thisRegulationDoesntAmend": "Toto VZN nie je dodatkom k žiadnemu VZN.",
     "thisRegulationCancells": "Toto VZN zrušuje",
-    "thisRegulationDoesntCancell": "Toto VZN nezrušuje žiadne VZN."
+    "thisRegulationDoesntCancell": "Toto VZN nezrušuje žiadne VZN.",
+    "category": {
+      "daneAPoplatky": "Dane a poplatky",
+      "pomenovanieUlic": "Pomenovanie ulíc",
+      "hospodarenie": "Hospodárenie",
+      "uzemnePlanovanie": "Územné plánovanie",
+      "poriadokACistota": "Poriadok a čistota",
+      "socialnaPomocASkolstvo": "Sociálna pomoc a školstvo",
+      "ostatne": "Ostatné",
+      "archiv": "Archív"
+    }
   }
 }

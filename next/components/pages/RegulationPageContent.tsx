@@ -45,7 +45,7 @@ const RegulationPageContent = ({ regulation }: RegulationPageContentProps) => {
 
   const breadcrumbs = [
     {
-      title: locale === 'en' ? 'Regular binding ordinances' : 'Všoebecne záväzné nariadenia',
+      title: t('regulations'),
       path:
         locale === 'en'
           ? '/city-of-bratislava/city-administration/legislation/generally-binding-ordinances'

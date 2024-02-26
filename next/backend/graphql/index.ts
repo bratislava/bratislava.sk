@@ -1366,6 +1366,13 @@ export type ComponentSectionsProsAndConsSection = {
   title?: Maybe<Scalars['String']['output']>
 }
 
+export type ComponentSectionsRegulationsList = {
+  __typename?: 'ComponentSectionsRegulationsList'
+  id: Scalars['ID']['output']
+  text?: Maybe<Scalars['String']['output']>
+  title?: Maybe<Scalars['String']['output']>
+}
+
 export type ComponentSectionsSpace = {
   __typename?: 'ComponentSectionsSpace'
   id: Scalars['ID']['output']
@@ -1965,6 +1972,7 @@ export type GenericMorph =
   | ComponentSectionsOfficialBoard
   | ComponentSectionsOrganizationalStructure
   | ComponentSectionsProsAndConsSection
+  | ComponentSectionsRegulationsList
   | ComponentSectionsSpace
   | ComponentSectionsSubpageList
   | ComponentSectionsTextWithImage
@@ -3126,6 +3134,7 @@ export type PageSectionsDynamicZone =
   | ComponentSectionsOfficialBoard
   | ComponentSectionsOrganizationalStructure
   | ComponentSectionsProsAndConsSection
+  | ComponentSectionsRegulationsList
   | ComponentSectionsSpace
   | ComponentSectionsTextWithImage
   | ComponentSectionsTimeline
@@ -3392,6 +3401,7 @@ export type QueryRegulationArgs = {
 export type QueryRegulationsArgs = {
   filters?: InputMaybe<RegulationFiltersInput>
   pagination?: InputMaybe<PaginationArg>
+  publicationState?: InputMaybe<PublicationState>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
 }
 
@@ -3472,6 +3482,7 @@ export type Regulation = {
   fullTitle: Scalars['String']['output']
   isFullTextRegulation?: Maybe<Scalars['Boolean']['output']>
   mainDocument: UploadFileEntityResponse
+  publishedAt?: Maybe<Scalars['DateTime']['output']>
   regNumber: Scalars['String']['output']
   slug: Scalars['String']['output']
   titleText?: Maybe<Scalars['String']['output']>
@@ -3481,12 +3492,14 @@ export type Regulation = {
 export type RegulationAmendingArgs = {
   filters?: InputMaybe<RegulationFiltersInput>
   pagination?: InputMaybe<PaginationArg>
+  publicationState?: InputMaybe<PublicationState>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
 }
 
 export type RegulationAmendmentsArgs = {
   filters?: InputMaybe<RegulationFiltersInput>
   pagination?: InputMaybe<PaginationArg>
+  publicationState?: InputMaybe<PublicationState>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
 }
 
@@ -3499,6 +3512,7 @@ export type RegulationAttachmentsArgs = {
 export type RegulationCancellingArgs = {
   filters?: InputMaybe<RegulationFiltersInput>
   pagination?: InputMaybe<PaginationArg>
+  publicationState?: InputMaybe<PublicationState>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
 }
 
@@ -3533,6 +3547,7 @@ export type RegulationFiltersInput = {
   isFullTextRegulation?: InputMaybe<BooleanFilterInput>
   not?: InputMaybe<RegulationFiltersInput>
   or?: InputMaybe<Array<InputMaybe<RegulationFiltersInput>>>
+  publishedAt?: InputMaybe<DateTimeFilterInput>
   regNumber?: InputMaybe<StringFilterInput>
   slug?: InputMaybe<StringFilterInput>
   titleText?: InputMaybe<StringFilterInput>
@@ -3551,6 +3566,7 @@ export type RegulationInput = {
   fullTitle?: InputMaybe<Scalars['String']['input']>
   isFullTextRegulation?: InputMaybe<Scalars['Boolean']['input']>
   mainDocument?: InputMaybe<Scalars['ID']['input']>
+  publishedAt?: InputMaybe<Scalars['DateTime']['input']>
   regNumber?: InputMaybe<Scalars['String']['input']>
   slug?: InputMaybe<Scalars['String']['input']>
   titleText?: InputMaybe<Scalars['String']['input']>
@@ -8240,6 +8256,11 @@ export type PageBySlugQuery = {
                 items: Array<{ __typename?: 'ComponentBlocksComparisonItem'; label: string } | null>
               }
             }
+          | {
+              __typename: 'ComponentSectionsRegulationsList'
+              title?: string | null
+              text?: string | null
+            }
           | { __typename: 'ComponentSectionsSpace' }
           | {
               __typename: 'ComponentSectionsTextWithImage'
@@ -9214,6 +9235,11 @@ export type PageEntityFragment = {
             items: Array<{ __typename?: 'ComponentBlocksComparisonItem'; label: string } | null>
           }
         }
+      | {
+          __typename: 'ComponentSectionsRegulationsList'
+          title?: string | null
+          text?: string | null
+        }
       | { __typename: 'ComponentSectionsSpace' }
       | {
           __typename: 'ComponentSectionsTextWithImage'
@@ -9556,6 +9582,20 @@ export type AllRegulationsQuery = {
           }>
         } | null
       } | null
+    }>
+  } | null
+}
+
+export type RegulationsStaticPathsQueryVariables = Exact<{ [key: string]: never }>
+
+export type RegulationsStaticPathsQuery = {
+  __typename?: 'Query'
+  regulations?: {
+    __typename?: 'RegulationEntityResponseCollection'
+    data: Array<{
+      __typename?: 'RegulationEntity'
+      id?: string | null
+      attributes?: { __typename?: 'Regulation'; slug: string } | null
     }>
   } | null
 }
@@ -11238,6 +11278,12 @@ export type ContactsSectionFragment = {
   } | null> | null
 }
 
+export type RegulationsListSectionFragment = {
+  __typename?: 'ComponentSectionsRegulationsList'
+  title?: string | null
+  text?: string | null
+}
+
 type Sections_ComponentSectionsAccordion_Fragment = {
   __typename: 'ComponentSectionsAccordion'
   title?: string | null
@@ -11941,6 +11987,12 @@ type Sections_ComponentSectionsProsAndConsSection_Fragment = {
   }
 }
 
+type Sections_ComponentSectionsRegulationsList_Fragment = {
+  __typename: 'ComponentSectionsRegulationsList'
+  title?: string | null
+  text?: string | null
+}
+
 type Sections_ComponentSectionsSpace_Fragment = { __typename: 'ComponentSectionsSpace' }
 
 type Sections_ComponentSectionsTextWithImage_Fragment = {
@@ -12020,6 +12072,7 @@ export type SectionsFragment =
   | Sections_ComponentSectionsOfficialBoard_Fragment
   | Sections_ComponentSectionsOrganizationalStructure_Fragment
   | Sections_ComponentSectionsProsAndConsSection_Fragment
+  | Sections_ComponentSectionsRegulationsList_Fragment
   | Sections_ComponentSectionsSpace_Fragment
   | Sections_ComponentSectionsTextWithImage_Fragment
   | Sections_ComponentSectionsTimeline_Fragment
@@ -12824,6 +12877,12 @@ export const ContactsSectionFragmentDoc = gql`
   }
   ${ContactCardBlockFragmentDoc}
 `
+export const RegulationsListSectionFragmentDoc = gql`
+  fragment RegulationsListSection on ComponentSectionsRegulationsList {
+    title
+    text
+  }
+`
 export const SectionsFragmentDoc = gql`
   fragment Sections on PageSectionsDynamicZone {
     __typename
@@ -12908,6 +12967,9 @@ export const SectionsFragmentDoc = gql`
     ... on ComponentSectionsContactsSection {
       ...ContactsSection
     }
+    ... on ComponentSectionsRegulationsList {
+      ...RegulationsListSection
+    }
   }
   ${IconTitleDescSectionFragmentDoc}
   ${DocumentListSectionFragmentDoc}
@@ -12936,6 +12998,7 @@ export const SectionsFragmentDoc = gql`
   ${TimelineSectionFragmentDoc}
   ${FeaturedBlogPostsSectionFragmentDoc}
   ${ContactsSectionFragmentDoc}
+  ${RegulationsListSectionFragmentDoc}
 `
 export const BlogPostEntityFragmentDoc = gql`
   fragment BlogPostEntity on BlogPostEntity {
@@ -13960,6 +14023,18 @@ export const AllRegulationsDocument = gql`
   }
   ${RegulationEntityFragmentDoc}
 `
+export const RegulationsStaticPathsDocument = gql`
+  query RegulationsStaticPaths {
+    regulations(sort: "publishedAt:desc", pagination: { limit: -1 }) {
+      data {
+        id
+        attributes {
+          slug
+        }
+      }
+    }
+  }
+`
 export const RegulationByIdDocument = gql`
   query RegulationById($id: ID!) {
     regulation(id: $id) {
@@ -14453,6 +14528,21 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
             ...wrappedRequestHeaders,
           }),
         'allRegulations',
+        'query',
+        variables,
+      )
+    },
+    RegulationsStaticPaths(
+      variables?: RegulationsStaticPathsQueryVariables,
+      requestHeaders?: GraphQLClientRequestHeaders,
+    ): Promise<RegulationsStaticPathsQuery> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<RegulationsStaticPathsQuery>(RegulationsStaticPathsDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
+          }),
+        'RegulationsStaticPaths',
         'query',
         variables,
       )

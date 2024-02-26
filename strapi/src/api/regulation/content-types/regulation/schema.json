@@ -48,7 +48,8 @@
     },
     "isFullTextRegulation": {
       "type": "boolean",
-      "required": false
+      "required": false,
+      "default": false
     },
     "mainDocument": {
       "type": "media",

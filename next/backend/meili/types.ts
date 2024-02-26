@@ -5,6 +5,7 @@ import {
   InbaTag,
   Page,
   PageCategory,
+  Regulation,
   Tag,
   UploadFile,
   Vzn,
@@ -68,4 +69,13 @@ export type VznMeili = Omit<
     ComponentBlocksDocListExtensions,
     'id' | 'title' | 'document' | 'validFrom'
   >[]
+}
+
+export type RegulationMeili = Omit<
+  Regulation,
+  '__typename' | 'amending' | 'cancellation' | 'effectiveFrom'
+> & {
+  amending?: RegulationMeili[]
+  cancellation?: RegulationMeili
+  effectiveFrom?: string
 }

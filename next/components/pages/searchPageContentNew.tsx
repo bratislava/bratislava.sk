@@ -18,7 +18,14 @@ import { useDebounce } from 'usehooks-ts'
  */
 
 export type SearchOption = {
-  id: 'allResults' | 'pages' | 'articles' | 'inbaArticles' | 'users' | 'officialBoard'
+  id:
+    | 'allResults'
+    | 'pages'
+    | 'articles'
+    | 'inbaArticles'
+    | 'regulations'
+    | 'users'
+    | 'officialBoard'
   displayName?: string
   displayNamePlural: string
 }
@@ -60,6 +67,11 @@ const SearchPageContentNew = () => {
       id: 'users',
       displayName: t('SearchPage.contact'),
       displayNamePlural: t('SearchPage.contacts'),
+    },
+    {
+      id: 'regulations',
+      displayName: t('SearchPage.regulation'),
+      displayNamePlural: t('SearchPage.regulations'),
     },
     // {
     //   id: 'officialBoard',

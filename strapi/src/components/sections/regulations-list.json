@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_sections_regulations_lists",
+  "info": {
+    "displayName": "Regulations list"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "text": {
+      "type": "text"
+    }
+  }
+}

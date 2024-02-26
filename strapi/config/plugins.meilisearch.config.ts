@@ -30,6 +30,9 @@ const searchIndexSettings = {
     'vzn.title',
     'vzn.amedmentDocument.title', // yes, it's a typo in the field name
     'vzn.cancellationDocument.title',
+    'regulation.regNumber',
+    'regulation.titleText',
+    'regulation.fullTitle',
   ],
   filterableAttributes: [
     // All
@@ -38,6 +41,8 @@ const searchIndexSettings = {
     'locale',
     'blog-post.tag.id',
     'inba-article.inbaTag.id',
+    // Regulation
+    'regulation.category',
   ],
   sortableAttributes: [
     // Blog post
@@ -51,6 +56,8 @@ const searchIndexSettings = {
     'vzn.validFrom',
     'vzn.publishedAt', // TODO is it needed?
     'vzn.publishedAtTimestamp',
+    // Regulation
+    'regulation.effectiveFromTimestamp',
   ],
   pagination: {
     // https://docs.meilisearch.com/learn/advanced/known_limitations.html#maximum-number-of-results-per-search
@@ -112,6 +119,23 @@ const config = {
         // use (number) filters.
         publishedAtTimestamp: entry.publishedAt ? new Date(entry.publishedAt).getTime() : undefined,
       }),
+  },
+  regulation: {
+    indexName: 'search_index',
+    entriesQuery: {
+      populate: ['amending', 'amending.cancellation', 'cancellation'],
+    },
+    settings: searchIndexSettings,
+    transformEntry: ({ entry }) => {
+      return wrapSearchIndexEntry('regulation', {
+        ...entry,
+        // Meilisearch doesn't support filtering dates as ISO strings, therefore we convert it to UNIX timestamp to
+        // use (number) filters.
+        effectiveFromTimestamp: entry.effectiveFrom
+          ? new Date(entry.effectiveFrom).getTime()
+          : undefined,
+      })
+    },
   },
 }
 
