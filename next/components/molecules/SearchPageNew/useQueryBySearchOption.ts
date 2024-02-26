@@ -1,4 +1,3 @@
-import PageYellowIcon from '@assets/images/page-yellow-icon.svg'
 import {
   getGinisOfficialBoardQueryKey,
   ginisOfficialBoardFetcher,
@@ -37,10 +36,8 @@ import { SearchOption } from '@components/pages/searchPageContentNew'
 import { useQuery } from '@tanstack/react-query'
 import { isDefined } from '@utils/isDefined'
 import { formatDate } from '@utils/local-date'
-import { findIconByPageColor } from '@utils/pageIcons'
-import DocumentListCategorysMap, { findIconByRegulationCategory } from '@utils/regulationIcons'
 import { useLocale, useTranslations } from 'next-intl'
-import { FunctionComponent, SVGProps } from 'react'
+import { FunctionComponent, ReactNode, SVGProps } from 'react'
 
 export type SearchFilters =
   | PagesFilters
@@ -55,7 +52,7 @@ export type SearchResult = {
   coverImageSrc?: string | null | undefined
   pageColor?: Enum_Page_Pagecolor | Enum_Pagecategory_Color | null
   customIconName?: string
-  customIcon?: React.ReactNode | FunctionComponent<SVGProps<SVGSVGElement>> | undefined
+  customIcon?: ReactNode
 }
 
 export const useQueryBySearchOption = (optionKey: SearchOption['id'], filters: SearchFilters) => {

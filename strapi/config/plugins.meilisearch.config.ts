@@ -49,7 +49,6 @@ const searchIndexSettings = {
     'blog-post.title',
     'blog-post.publishedAt', // TODO is it needed?
     'blog-post.publishedAtTimestamp',
-    'regulation.effectiveFromTimestamp',
     // Inba article
     'inba-article.title',
     'inba-article.publishedAtTimestamp',
@@ -58,7 +57,7 @@ const searchIndexSettings = {
     'vzn.publishedAt', // TODO is it needed?
     'vzn.publishedAtTimestamp',
     // Regulation
-    'regulation.validFrom',
+    'regulation.effectiveFromTimestamp',
   ],
   pagination: {
     // https://docs.meilisearch.com/learn/advanced/known_limitations.html#maximum-number-of-results-per-search
