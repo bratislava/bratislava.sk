@@ -1,13 +1,16 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": ["es5", "dom", "es2016.array.include"],
-    "types": ["cypress", "cypress-file-upload", "node"],
+    "lib": ["es5", "dom"],
+    "types": ["cypress", "node"],
     "allowJs": true,
-    "isolatedModules": false,
+    "noEmit": true, // Prevents the conversion of ts to js.
+    "skipLibCheck": true, // Prevents the generation of errors from cypress lib (e.g. common.d.ts).
     "baseUrl": "./",
-    "noEmit": true,
-    "skipLibCheck": true
+    "paths": {
+      "@support/*": ["./cypress/support/*"],
+      "@fixtures/*": ["./cypress/fixtures/*"],
+    }
   },
   "include": ["**/*.ts"],
   "exclude": ["node_modules"]

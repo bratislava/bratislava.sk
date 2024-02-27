@@ -9,11 +9,11 @@ yarn start:e2e
 ## Run Cypress locally
 
 ```
-npm run cypress:open //for open mode (Running tests in chrome browser)
+yarn cypress:open //for open mode (Running tests in chrome browser)
 ```
 
 ```
-npm run cypress:run // for terminal mode
+yarn cypress:run // for terminal mode
 ```
 
 or
@@ -31,10 +31,10 @@ Example: ./cypress.sh open chrome all https://bratislava.sk/
 
 ## Running Cypress against production
 ```
-npm run cypress // for open mode
+yarn cypress // for open mode
 ```
 
 ## Running Cypress in CI against production
 ```
-npm run cypress:ci // for terminal mode
+yarn cypress:ci // for terminal mode
 ```
