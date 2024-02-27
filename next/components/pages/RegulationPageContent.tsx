@@ -58,7 +58,7 @@ const RegulationPageContent = ({ regulation }: RegulationPageContentProps) => {
     <>
       <PageHeader
         title={regulationShortTitle}
-        tag={regulation.attributes?.category}
+        tag={t(`category.${regulation.attributes?.category ?? 'ostatne'}`)}
         subtext={regulation.attributes?.titleText}
         breadcrumbs={breadcrumbs}
       />

@@ -162,7 +162,7 @@ export const useQueryBySearchOption = (optionKey: SearchOption['id'], filters: S
             title: `VZN ${regulation.regNumber} ${regulation.titleText ?? ''}`,
             linkHref: `/vzn/${regulation.slug}`,
             metadata: [categoryDisplayName, effectivityMessage],
-            customIconName: `regulation_${regulation.category}` ?? 'search_result_official_board',
+            customIconName: `regulation_${regulation.category ?? 'ostatne'}`,
           }
         }) ?? []
 

@@ -14025,7 +14025,7 @@ export const AllRegulationsDocument = gql`
 `
 export const RegulationsStaticPathsDocument = gql`
   query RegulationsStaticPaths {
-    regulations(sort: "publishedAt:desc", pagination: { limit: -1 }) {
+    regulations(sort: "updatedAt:desc", pagination: { limit: 30 }) {
       data {
         id
         attributes {
