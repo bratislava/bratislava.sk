@@ -78,35 +78,33 @@ const RegulationsListSection = ({ section }: RegulationsListSectionProps) => {
   }, [searchFilters.page, searchFilters.pageSize])
 
   return (
-    <SectionContainer className="mb-8">
-      <div className="flex w-full flex-col gap-y-8 pt-12">
-        <Typography type="h1">{t('searching')}</Typography>
-        <div className="flex flex-col gap-3 lg:gap-4">
-          <AdvancedSearchNew
-            ref={searchRef}
-            placeholder={t('enterKeyword')}
-            input={input}
-            setInput={setInput}
-            setSearchQuery={setSearchValue}
-          />
-        </div>
-        {resultsCount > 0 ? (
-          <Typography type="p">
-            {t('SearchPage.showingResults', {
-              count: resultsCount,
-            })}
-          </Typography>
-        ) : null}
-        <GeneralSearchResults
-          variant="specificResults"
-          searchOption={defaultSearchOption}
-          filters={searchFilters}
-          onSetResultsCount={setResultsCountById}
-          onPageChange={setCurrentPage}
-          key={`specificResults-${defaultSearchOption.id}`}
+    <div className="flex w-full flex-col gap-y-8">
+      <Typography type="h1">{t('searching')}</Typography>
+      <div className="flex flex-col gap-3 lg:gap-4">
+        <AdvancedSearchNew
+          ref={searchRef}
+          placeholder={t('enterKeyword')}
+          input={input}
+          setInput={setInput}
+          setSearchQuery={setSearchValue}
         />
       </div>
-    </SectionContainer>
+      {resultsCount > 0 ? (
+        <Typography type="p">
+          {t('SearchPage.showingResults', {
+            count: resultsCount,
+          })}
+        </Typography>
+      ) : null}
+      <GeneralSearchResults
+        variant="specificResults"
+        searchOption={defaultSearchOption}
+        filters={searchFilters}
+        onSetResultsCount={setResultsCountById}
+        onPageChange={setCurrentPage}
+        key={`specificResults-${defaultSearchOption.id}`}
+      />
+    </div>
   )
 }
 
