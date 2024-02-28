@@ -20,7 +20,7 @@ const RegulationCard = ({ title, path, className, isUplneZnenie }: RegulationCar
   return (
     <div
       className={twMerge(
-        'relative flex h-[132px] flex-col justify-between rounded-lg border-2 border-gray-600 bg-white p-4 lg:h-36',
+        'relative flex h-[132px] flex-col justify-between rounded-lg border-2 border-category-600 bg-white p-4 lg:h-36',
         className,
       )}
     >
@@ -37,14 +37,16 @@ const RegulationCard = ({ title, path, className, isUplneZnenie }: RegulationCar
         </MLink>
         {isUplneZnenie && (
           <Typography type="p" size="p-small" className="line-clamp-1">
+            {/* FIXME: localisation */}
             Úplné znenie
           </Typography>
         )}
       </div>
       <div className="flex items-center gap-2 lg:gap-3">
-        <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-gray-100 text-gray-700 lg:h-10 lg:w-10">
+        <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-category-100 text-category-700 lg:h-10 lg:w-10">
           <ArrowRightIcon className="h-4 w-4" />
         </div>
+        {/* FIXME: localisation */}
         <Typography type="span">Prejsť na VZN</Typography>
       </div>
     </div>
