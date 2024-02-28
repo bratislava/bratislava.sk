@@ -284,6 +284,7 @@
     },
     "mainDocument": "Main document",
     "consolidatedText": "Consolidated text",
+    "fullTextRegulation": "Full text regulation",
     "noConsolidatedTextMessage": "This regulation has no consolidated text document.",
     "attachments": "Attachments",
     "noAttachmentsMessage": "This regulation has no attachments.",
@@ -294,6 +295,8 @@
     "thisRegulationDoesntAmend": "This regulation doesn't amend any regulations.",
     "thisRegulationCancells": "This regulation cancels",
     "thisRegulationDoesntCancell": "This regulation doesn't cancel any regulation.",
+    "linkToRegulationMessage": "Go to regulation",
+    "relatedRegulations": "Related generally binding regulations",
     "category": {
       "daneAPoplatky": "Tax and fees",
       "pomenovanieUlic": "Street naming",

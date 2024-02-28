@@ -1,6 +1,7 @@
 import { ArrowRightIcon } from '@assets/ui-icons'
 import { Typography } from '@bratislava/component-library'
 import MLink from '@components/forms/simple-components/MLink'
+import { useTranslations } from 'next-intl'
 import React from 'react'
 import { twMerge } from 'tailwind-merge'
 
@@ -17,6 +18,8 @@ export type RegulationCardProps = {
  */
 
 const RegulationCard = ({ title, path, className, isUplneZnenie }: RegulationCardProps) => {
+  const t = useTranslations()
+
   return (
     <div
       className={twMerge(
@@ -37,8 +40,7 @@ const RegulationCard = ({ title, path, className, isUplneZnenie }: RegulationCar
         </MLink>
         {isUplneZnenie && (
           <Typography type="p" size="p-small" className="line-clamp-1">
-            {/* FIXME: localisation */}
-            Úplné znenie
+            {t('Regulation.fullTextRegulation')}
           </Typography>
         )}
       </div>
@@ -46,8 +48,7 @@ const RegulationCard = ({ title, path, className, isUplneZnenie }: RegulationCar
         <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-category-100 text-category-700 lg:h-10 lg:w-10">
           <ArrowRightIcon className="h-4 w-4" />
         </div>
-        {/* FIXME: localisation */}
-        <Typography type="span">Prejsť na VZN</Typography>
+        <Typography type="span">{t('Regulation.linkToRegulationMessage')}</Typography>
       </div>
     </div>
   )
