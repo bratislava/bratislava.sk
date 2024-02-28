@@ -7,7 +7,7 @@ type Props = {
 }
 
 const RegulationsSection = ({ section }: Props) => {
-  return <Regulations title={section.title ?? ''} regulations={section.regulations?.data} />
+  return <Regulations regulations={section.regulations?.data} />
 }
 
 export default RegulationsSection

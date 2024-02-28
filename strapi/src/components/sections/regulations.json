@@ -6,9 +6,6 @@
   },
   "options": {},
   "attributes": {
-    "title": {
-      "type": "string"
-    },
     "regulations": {
       "type": "relation",
       "relation": "oneToMany",

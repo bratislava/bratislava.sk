@@ -465,7 +465,6 @@ fragment RegulationsListSection on ComponentSectionsRegulationsList {
 }
 
 fragment RegulationsSection on ComponentSectionsRegulations {
-  title
   regulations {
     data {
       ...RegulationEntity

@@ -1729,7 +1729,6 @@ input ComponentSectionsProsAndConsSectionInput {
 type ComponentSectionsRegulations {
   id: ID!
   regulations(filters: RegulationFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): RegulationRelationResponseCollection
-  title: String
 }
 
 input ComponentSectionsRegulationsFiltersInput {
@@ -1737,13 +1736,11 @@ input ComponentSectionsRegulationsFiltersInput {
   not: ComponentSectionsRegulationsFiltersInput
   or: [ComponentSectionsRegulationsFiltersInput]
   regulations: RegulationFiltersInput
-  title: StringFilterInput
 }
 
 input ComponentSectionsRegulationsInput {
   id: ID
   regulations: [ID]
-  title: String
 }
 
 type ComponentSectionsRegulationsList {

@@ -1371,7 +1371,6 @@ export type ComponentSectionsRegulations = {
   __typename?: 'ComponentSectionsRegulations'
   id: Scalars['ID']['output']
   regulations?: Maybe<RegulationRelationResponseCollection>
-  title?: Maybe<Scalars['String']['output']>
 }
 
 export type ComponentSectionsRegulationsRegulationsArgs = {
@@ -4298,7 +4297,6 @@ export type BlogPostBySlugQuery = {
             }
           | {
               __typename: 'ComponentSectionsRegulations'
-              title?: string | null
               regulations?: {
                 __typename?: 'RegulationRelationResponseCollection'
                 data: Array<{
@@ -4669,7 +4667,6 @@ export type LatestPostsByTagsQuery = {
             }
           | {
               __typename: 'ComponentSectionsRegulations'
-              title?: string | null
               regulations?: {
                 __typename?: 'RegulationRelationResponseCollection'
                 data: Array<{
@@ -5241,7 +5238,6 @@ export type BlogPostEntityFragment = {
         }
       | {
           __typename: 'ComponentSectionsRegulations'
-          title?: string | null
           regulations?: {
             __typename?: 'RegulationRelationResponseCollection'
             data: Array<{
@@ -8755,7 +8751,6 @@ export type PageBySlugQuery = {
             }
           | {
               __typename: 'ComponentSectionsRegulations'
-              title?: string | null
               regulations?: {
                 __typename?: 'RegulationRelationResponseCollection'
                 data: Array<{
@@ -9894,7 +9889,6 @@ export type PageEntityFragment = {
         }
       | {
           __typename: 'ComponentSectionsRegulations'
-          title?: string | null
           regulations?: {
             __typename?: 'RegulationRelationResponseCollection'
             data: Array<{
@@ -12103,7 +12097,6 @@ export type RegulationsListSectionFragment = {
 
 export type RegulationsSectionFragment = {
   __typename?: 'ComponentSectionsRegulations'
-  title?: string | null
   regulations?: {
     __typename?: 'RegulationRelationResponseCollection'
     data: Array<{
@@ -12967,7 +12960,6 @@ type Sections_ComponentSectionsProsAndConsSection_Fragment = {
 
 type Sections_ComponentSectionsRegulations_Fragment = {
   __typename: 'ComponentSectionsRegulations'
-  title?: string | null
   regulations?: {
     __typename?: 'RegulationRelationResponseCollection'
     data: Array<{
@@ -14125,7 +14117,6 @@ export const RegulationEntityFragmentDoc = gql`
 `
 export const RegulationsSectionFragmentDoc = gql`
   fragment RegulationsSection on ComponentSectionsRegulations {
-    title
     regulations {
       data {
         ...RegulationEntity

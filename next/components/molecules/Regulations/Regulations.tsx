@@ -6,16 +6,16 @@ import { useLocale, useTranslations } from 'next-intl'
 
 export interface Props {
   className?: string
-  title?: string
   regulations?: RegulationEntityFragment[]
 }
 
-export const Regulations = ({ className, title, regulations }: Props) => {
+export const Regulations = ({ className, regulations }: Props) => {
+  const t = useTranslations()
   const locale = useLocale()
 
   return (
     <div className={className}>
-      <Typography type="h2">{title}</Typography>
+      <Typography type="h2">{t('Regulation.relatedRegulations')}</Typography>
       {regulations?.length ? (
         <>
           <div className="mt-6 hidden grid-cols-3 gap-8 lg:grid">
@@ -40,7 +40,7 @@ export const Regulations = ({ className, title, regulations }: Props) => {
           <div className="block lg:hidden">
             <ResponsiveCarousel
               items={regulations?.map((regulation) => (
-                // eslint-disable-next-line react/no-array-index-key
+                // TODO: consider adding english translation GBR instead of VZN
                 <RegulationCard
                   title={`VZN ${regulation.attributes?.regNumber ?? ''}`}
                   key={regulation.attributes?.regNumber}
