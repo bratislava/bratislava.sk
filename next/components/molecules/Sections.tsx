@@ -32,6 +32,7 @@ import TextWithImageSection from './sections/general/TextWithImageSection'
 import TimelineSection from './sections/general/TimelineSection'
 import VideosSection from './sections/general/VideosSection'
 import WavesSection from './sections/general/WavesSection'
+import RegulationsSection from '@components/molecules/sections/general/RegulationsSection'
 
 const SectionContent = ({ section }: { section: SectionsFragment }) => {
   switch (section.__typename) {
@@ -115,6 +116,9 @@ const SectionContent = ({ section }: { section: SectionsFragment }) => {
 
     case 'ComponentSectionsRegulationsList':
       return <RegulationsListSection section={section} />
+
+    case 'ComponentSectionsRegulations':
+      return <RegulationsSection section={section} />
 
     default:
       return null

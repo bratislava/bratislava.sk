@@ -464,6 +464,14 @@ fragment RegulationsListSection on ComponentSectionsRegulationsList {
   text
 }
 
+fragment RegulationsSection on ComponentSectionsRegulations {
+  regulations {
+    data {
+      ...RegulationEntity
+    }
+  }
+}
+
 fragment Sections on PageSectionsDynamicZone {
   __typename
 
@@ -579,6 +587,10 @@ fragment Sections on PageSectionsDynamicZone {
 
   ... on ComponentSectionsRegulationsList {
     ...RegulationsListSection
+  }
+
+  ... on ComponentSectionsRegulations {
+    ...RegulationsSection
   }
 }
 
