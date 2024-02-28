@@ -23,7 +23,7 @@ const RegulationCard = ({ title, path, className, isUplneZnenie }: RegulationCar
   return (
     <div
       className={twMerge(
-        'relative flex h-[132px] flex-col justify-between rounded-lg border-2 border-category-600 bg-white p-4 lg:h-36',
+        'relative flex flex-col justify-between gap-2 rounded-lg border-2 border-category-600 bg-white p-4 lg:h-36',
         className,
       )}
     >

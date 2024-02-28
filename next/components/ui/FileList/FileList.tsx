@@ -55,7 +55,7 @@ export const FileList = ({
                     </div>
                   ))}
                 </div>
-                <div className="block lg:hidden">
+                <div className="lg:hidden">
                   <ResponsiveCarousel
                     items={fileSection?.files.map((file, fileIndex) => (
                       // eslint-disable-next-line react/no-array-index-key
