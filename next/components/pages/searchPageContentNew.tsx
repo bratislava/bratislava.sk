@@ -68,11 +68,11 @@ const SearchPageContentNew = () => {
       displayName: t('SearchPage.contact'),
       displayNamePlural: t('SearchPage.contacts'),
     },
-    {
-      id: 'regulations',
-      displayName: t('SearchPage.regulation'),
-      displayNamePlural: t('SearchPage.regulations'),
-    },
+    // {
+    //   id: 'regulations',
+    //   displayName: t('SearchPage.regulation'),
+    //   displayNamePlural: t('SearchPage.regulations'),
+    // },
     // {
     //   id: 'officialBoard',
     //   displayName: t('SearchPage.document'),
