@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_sections_regulations",
+  "info": {
+    "displayName": "Regulations",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "regulations": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::regulation.regulation"
+    }
+  }
+}
