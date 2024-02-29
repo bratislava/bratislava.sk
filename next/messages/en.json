@@ -306,6 +306,9 @@
       "socialnaPomocASkolstvo": "Social services and Education",
       "ostatne": "Other",
       "archiv": "Archive"
+    },
+    "aria": {
+      "linkToRegulationAriaLabel": "Go to regulation {title}"
     }
   }
 }
