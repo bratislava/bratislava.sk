@@ -1,6 +1,5 @@
 import {
   Enum_Componentsectionsfilelist_Variant,
-  FileItemBlockFragment,
   RegulationEntityFragment,
 } from '@backend/graphql'
 import { Typography } from '@bratislava/component-library'
@@ -8,7 +7,6 @@ import FileList from '@bratislava/ui-bratislava/FileList/FileList'
 import PageHeader from '@bratislava/ui-bratislava/PageHeader/PageHeader'
 import SectionContainer from '@bratislava/ui-bratislava/SectionContainer/SectionContainer'
 import MLink from '@components/forms/simple-components/MLink'
-import FileCard from '@components/molecules/presentation/FileCard'
 import RegulationCard from '@components/molecules/Regulations/RegulationCard'
 import RegulationDetailMessage from '@components/molecules/Regulations/RegulationDetailMessage'
 import { isDefined } from '@utils/isDefined'
@@ -25,8 +23,8 @@ const RegulationPageContent = ({ regulation }: RegulationPageContentProps) => {
   const t = useTranslations('Regulation')
   const locale = useLocale()
 
-  const mainDocument = regulation.attributes?.mainDocument?.data?.attributes
-  const consolidatedDocument = regulation.attributes?.consolidatedText?.data?.attributes
+  const mainDocument = regulation.attributes?.mainDocument
+  const consolidatedDocument = regulation.attributes?.consolidatedText
   const amendments = regulation.attributes?.amendments?.data
     .filter((amendment) => isDefined(amendment))
     .sort((a, b) => {
@@ -35,13 +33,19 @@ const RegulationPageContent = ({ regulation }: RegulationPageContentProps) => {
   const amending = regulation.attributes?.amending?.data.filter(isDefined)
   const cancelling = regulation.attributes?.cancelling?.data.filter(isDefined)
 
-  const attachmentFiles: FileItemBlockFragment[] =
+  const attachmentFiles =
     regulation.attributes?.attachments?.data.map((attachment) => {
       return {
         title: attachment.attributes?.name ?? 'Príloha',
         media: { data: attachment },
       }
     }) ?? []
+
+  if (consolidatedDocument?.data)
+    attachmentFiles.unshift({
+      title: `${t('consolidatedText')} - ${consolidatedDocument.data.attributes?.name}`,
+      media: { data: consolidatedDocument?.data },
+    })
 
   const breadcrumbs = [
     {
@@ -66,31 +70,32 @@ const RegulationPageContent = ({ regulation }: RegulationPageContentProps) => {
         <div className="mb-8 flex flex-col gap-y-8">
           <RegulationDetailMessage regulation={regulation} />
           <div className="flex flex-row flex-wrap gap-6">
-            <div className="flex shrink-0 basis-[280px] flex-col gap-y-4">
+            <div className="flex grow basis-full flex-col gap-4">
               <Typography type="h2" size="h4">
                 {t('mainDocument')}
               </Typography>
               {mainDocument ? (
-                <FileCard
-                  title={`VZN ${regulation.attributes?.regNumber ?? ''}`}
-                  downloadLink={mainDocument.url}
-                />
-              ) : null}
-            </div>
-            <div className="flex shrink-0 basis-[280px] flex-col gap-y-4">
-              <Typography type="h2" size="h4">
-                {t('consolidatedText')}
-              </Typography>
-              {consolidatedDocument ? (
-                <FileCard
-                  title={consolidatedDocument.name}
-                  downloadLink={consolidatedDocument.url}
+                <FileList
+                  variantFileList={Enum_Componentsectionsfilelist_Variant.Rows}
+                  fileSections={[
+                    {
+                      category: '',
+                      files: [
+                        {
+                          title: `VZN ${regulation.attributes?.regNumber}`,
+                          media: mainDocument,
+                        },
+                      ],
+                    },
+                  ]}
+                  hideCategory
+                  className="-mt-10"
                 />
               ) : (
-                <Typography type="p">{t('noConsolidatedTextMessage')}</Typography>
+                <Typography type="p">{t('noAttachmentsMessage')}</Typography>
               )}
             </div>
-            <div className="flex grow flex-col gap-4 md:basis-[400px]">
+            <div className="flex grow basis-full flex-col gap-4">
               <Typography type="h2" size="h4">
                 {t('attachments')}
               </Typography>
@@ -106,16 +111,17 @@ const RegulationPageContent = ({ regulation }: RegulationPageContentProps) => {
               )}
             </div>
           </div>
-          <div className="flex flex-col gap-y-4">
+          <div className="flex w-full flex-col gap-y-4">
             <Typography type="h2" size="h4">
               {t('amendments')}
             </Typography>
             {amendments?.length ? (
-              <div className="flex flex-row flex-wrap gap-6 [&>*]:basis-[280px]">
+              <div className="grid grid-cols-4 gap-6">
                 {amendments?.map((amendment) => {
                   return (
                     <RegulationCard
                       title={`VZN ${amendment.attributes?.regNumber ?? ''}`}
+                      className="w-full"
                       key={amendment.id}
                       isUplneZnenie={amendment.attributes?.isFullTextRegulation}
                       path={`/vzn/${amendment.attributes?.slug ?? ''}`}
