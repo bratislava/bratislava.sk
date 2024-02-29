@@ -9,6 +9,7 @@ export type RegulationCardProps = {
   title: string
   path?: string
   className?: string
+  ariaLabel?: string
   isUplneZnenie?: boolean | null | undefined
 }
 
@@ -17,7 +18,13 @@ export type RegulationCardProps = {
  * Figma for FileCard: https://www.figma.com/file/17wbd0MDQcMW9NbXl6UPs8/DS-ESBS%2BBK%3A-Component-library?type=design&node-id=7367-17767&t=Km8W7qXXiWIDWSYw-0
  */
 
-const RegulationCard = ({ title, path, className, isUplneZnenie }: RegulationCardProps) => {
+const RegulationCard = ({
+  title,
+  path,
+  className,
+  isUplneZnenie,
+  ariaLabel,
+}: RegulationCardProps) => {
   const t = useTranslations()
 
   return (
@@ -35,6 +42,7 @@ const RegulationCard = ({ title, path, className, isUplneZnenie }: RegulationCar
           variant="underlineOnHover"
           target="_blank"
           rel="noreferrer"
+          aria-label={ariaLabel ?? t('Regulation.aria.linkToRegulationAriaLabel', { title })}
         >
           {title}
         </MLink>
