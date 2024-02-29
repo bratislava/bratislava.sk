@@ -21,7 +21,6 @@ const Regulations = ({ className, regulations }: Props) => {
             {regulations?.map((regulation) => {
               return (
                 <div className="w-full">
-                  {/* TODO: consider adding english translation GBR instead of VZN  */}
                   <RegulationCard
                     title={`VZN ${regulation.attributes?.regNumber ?? ''}`}
                     key={regulation.attributes?.regNumber}
@@ -35,7 +34,6 @@ const Regulations = ({ className, regulations }: Props) => {
           <div className="lg:hidden">
             <ResponsiveCarousel
               items={regulations?.map((regulation) => (
-                // TODO: consider adding english translation GBR instead of VZN
                 <RegulationCard
                   title={`VZN ${regulation.attributes?.regNumber ?? ''}`}
                   key={regulation.attributes?.regNumber}
