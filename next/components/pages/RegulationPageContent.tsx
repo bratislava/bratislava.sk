@@ -1,7 +1,4 @@
-import {
-  Enum_Componentsectionsfilelist_Variant,
-  RegulationEntityFragment,
-} from '@backend/graphql'
+import { Enum_Componentsectionsfilelist_Variant, RegulationEntityFragment } from '@backend/graphql'
 import { Typography } from '@bratislava/component-library'
 import FileList from '@bratislava/ui-bratislava/FileList/FileList'
 import PageHeader from '@bratislava/ui-bratislava/PageHeader/PageHeader'
@@ -71,7 +68,7 @@ const RegulationPageContent = ({ regulation }: RegulationPageContentProps) => {
           <RegulationDetailMessage regulation={regulation} />
           <div className="flex flex-row flex-wrap gap-6">
             <div className="flex grow basis-full flex-col gap-4">
-              <Typography type="h2" size="h4">
+              <Typography type="h2" size="h3">
                 {t('mainDocument')}
               </Typography>
               {mainDocument ? (
@@ -96,7 +93,7 @@ const RegulationPageContent = ({ regulation }: RegulationPageContentProps) => {
               )}
             </div>
             <div className="flex grow basis-full flex-col gap-4">
-              <Typography type="h2" size="h4">
+              <Typography type="h2" size="h3">
                 {t('attachments')}
               </Typography>
               {attachmentFiles?.length ? (
@@ -112,7 +109,7 @@ const RegulationPageContent = ({ regulation }: RegulationPageContentProps) => {
             </div>
           </div>
           <div className="flex w-full flex-col gap-y-4">
-            <Typography type="h2" size="h4">
+            <Typography type="h2" size="h3">
               {t('amendments')}
             </Typography>
             {amendments?.length ? (
