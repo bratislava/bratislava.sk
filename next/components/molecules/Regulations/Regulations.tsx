@@ -24,7 +24,7 @@ const Regulations = ({ className, regulations }: Props) => {
                   <RegulationCard
                     title={`VZN ${regulation.attributes?.regNumber ?? ''}`}
                     key={regulation.attributes?.regNumber}
-                    isUplneZnenie={false}
+                    isUplneZnenie={regulation.attributes?.isFullTextRegulation}
                     path={`/vzn/${regulation.attributes?.slug}`}
                   />
                 </div>
@@ -37,7 +37,7 @@ const Regulations = ({ className, regulations }: Props) => {
                 <RegulationCard
                   title={`VZN ${regulation.attributes?.regNumber ?? ''}`}
                   key={regulation.attributes?.regNumber}
-                  isUplneZnenie={false}
+                  isUplneZnenie={regulation.attributes?.isFullTextRegulation}
                   path={`/vzn/${regulation.attributes?.slug ?? ''}`}
                 />
               ))}
