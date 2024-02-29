@@ -306,6 +306,9 @@
       "socialnaPomocASkolstvo": "Sociálna pomoc a školstvo",
       "ostatne": "Ostatné",
       "archiv": "Archív"
+    },
+    "aria": {
+      "linkToRegulationAriaLabel": "Prejsť na {title}"
     }
   }
 }

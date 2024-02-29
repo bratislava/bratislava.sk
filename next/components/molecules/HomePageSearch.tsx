@@ -52,8 +52,8 @@ const HomePageSearch = ({ isOpen, setOpen }: HomePageSearchProps) => {
 
   const handleSearchPressed = useCallback(() => {
     // eslint-disable-next-line @typescript-eslint/no-floating-promises
-    router.push(`${t('searchLink')}?keyword=${searchValue}`)
-  }, [router, searchValue, t])
+    router.push(`${t('searchLink')}?keyword=${input}`)
+  }, [router, input, t])
 
   return (
     <div ref={ref} className="relative">
