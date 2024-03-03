@@ -1,5 +1,5 @@
 import { RegulationsSectionFragment } from '@backend/graphql'
-import Regulations from '@components/molecules/Regulations/Regulations'
+import Regulations from '@components/molecules/sections/general/Regulations'
 import React from 'react'
 
 type Props = {
