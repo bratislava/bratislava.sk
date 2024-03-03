@@ -6,7 +6,7 @@ import {
   SearchFilters,
   useQueryBySearchOption,
 } from '@components/molecules/SearchPageNew/useQueryBySearchOption'
-import { SearchOption } from '@components/pages/searchPageContentNew'
+import { SearchOption } from '@components/pages/searchPageContent'
 import { useTranslations } from 'next-intl'
 import { Dispatch, SetStateAction, useEffect } from 'react'
 

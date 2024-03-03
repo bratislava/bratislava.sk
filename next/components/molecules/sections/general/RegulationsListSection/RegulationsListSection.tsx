@@ -9,7 +9,7 @@ import React, { ReactNode, useEffect, useRef, useState } from 'react'
 import { StringParam, useQueryParam, withDefault } from 'use-query-params'
 import { useDebounce } from 'usehooks-ts'
 
-// This component was created by reducing some functionality from the main search component SearchPageContentNew
+// This component was created by reducing some functionality from the main search component SearchPageContent
 // TODO there's too much code duplication here, it would be better to have one component that takes selected search options as props
 
 export type SearchOption = {
