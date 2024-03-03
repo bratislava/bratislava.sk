@@ -37,7 +37,7 @@ import { useQuery } from '@tanstack/react-query'
 import { isDefined } from '@utils/isDefined'
 import { formatDate } from '@utils/local-date'
 import { useLocale, useTranslations } from 'next-intl'
-import { FunctionComponent, ReactNode, SVGProps } from 'react'
+import { ReactNode } from 'react'
 
 export type SearchFilters =
   | PagesFilters
