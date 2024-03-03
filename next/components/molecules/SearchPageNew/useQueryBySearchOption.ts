@@ -32,7 +32,7 @@ import {
   getMsGraphSearchQueryKey,
   msGraphSearchFetcher,
 } from '@backend/ms-graph/fetchers/msGraphSearch.fetcher'
-import { SearchOption } from '@components/pages/searchPageContent'
+import { SearchOption } from '@components/pages/SearchPageContent'
 import { useQuery } from '@tanstack/react-query'
 import { isDefined } from '@utils/isDefined'
 import { formatDate } from '@utils/local-date'

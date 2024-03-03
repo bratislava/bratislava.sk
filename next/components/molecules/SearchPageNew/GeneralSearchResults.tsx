@@ -1,12 +1,12 @@
 import { Typography } from '@bratislava/component-library'
 import Pagination from '@bratislava/ui-bratislava/Pagination/Pagination'
-import SearchCardComposed from '@components/molecules/SearchPageNew/SearchCardComposed'
+import SearchResultCard from '@components/molecules/SearchPageNew/SearchResultCard'
 import SearchResultsHeader from '@components/molecules/SearchPageNew/SearchResultsHeader'
 import {
   SearchFilters,
   useQueryBySearchOption,
 } from '@components/molecules/SearchPageNew/useQueryBySearchOption'
-import { SearchOption } from '@components/pages/searchPageContent'
+import { SearchOption } from '@components/pages/SearchPageContent'
 import { useTranslations } from 'next-intl'
 import { Dispatch, SetStateAction, useEffect } from 'react'
 
@@ -58,7 +58,7 @@ const GeneralSearchResults = ({
             {variant === 'allResults'
               ? searchResultsData.slice(0, GENERAL_RESULTS_COUNT).map((item, index) => {
                   return (
-                    <SearchCardComposed
+                    <SearchResultCard
                       data={{ ...item }}
                       key={`item-${variant}-${searchOption.id}-${[
                         item.title,
@@ -72,7 +72,7 @@ const GeneralSearchResults = ({
             {variant === 'specificResults'
               ? searchResultsData.map((item, index) => {
                   return (
-                    <SearchCardComposed
+                    <SearchResultCard
                       data={{ ...item }}
                       key={`item-${variant}-${searchOption.id}-${[
                         item.title,
