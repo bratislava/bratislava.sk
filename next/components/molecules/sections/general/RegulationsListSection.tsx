@@ -1,6 +1,6 @@
 import { RegulationsListSectionFragment } from '@backend/graphql'
 import { Typography } from '@bratislava/component-library'
-import AdvancedSearchNew from '@components/organisms/SearchPage/AdvancedSearchNew'
+import SearchBarRAC from '@components/organisms/SearchPage/SearchBarRAC'
 import SearchResults from '@components/organisms/SearchPage/SearchResults'
 import { SearchFilters } from '@components/organisms/SearchPage/useQueryBySearchOption'
 import { SectionContainer } from '@components/ui/SectionContainer/SectionContainer'
@@ -81,7 +81,7 @@ const RegulationsListSection = ({ section }: RegulationsListSectionProps) => {
     <div className="flex w-full flex-col gap-y-8">
       <Typography type="h1">{t('searching')}</Typography>
       <div className="flex flex-col gap-3 lg:gap-4">
-        <AdvancedSearchNew
+        <SearchBarRAC
           ref={searchRef}
           placeholder={t('enterKeyword')}
           input={input}
