@@ -1,11 +1,11 @@
 import { Typography } from '@bratislava/component-library'
 import Pagination from '@bratislava/ui-bratislava/Pagination/Pagination'
-import SearchResultCard from '@components/molecules/SearchPage/SearchResultCard'
-import SearchResultsHeader from '@components/molecules/SearchPage/SearchResultsHeader'
+import SearchResultCard from '@components/organisms/SearchPage/SearchResultCard'
+import SearchResultsHeader from '@components/organisms/SearchPage/SearchResultsHeader'
 import {
   SearchFilters,
   useQueryBySearchOption,
-} from '@components/molecules/SearchPage/useQueryBySearchOption'
+} from '@components/organisms/SearchPage/useQueryBySearchOption'
 import { SearchOption } from '@components/pages/SearchPageContent'
 import { useTranslations } from 'next-intl'
 import { Dispatch, SetStateAction, useEffect } from 'react'

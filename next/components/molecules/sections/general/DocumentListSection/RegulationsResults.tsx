@@ -11,7 +11,7 @@ import { SearchResponse } from 'meilisearch'
 import { useTranslations } from 'next-intl'
 import useSwr from 'swr'
 
-import LoadingOverlay from '../../../SearchPage/LoadingOverlay'
+import LoadingOverlay from '../../../../organisms/SearchPage/LoadingOverlay'
 
 const Documents = ({ data }: { data: SearchResponse<VznMeili>; filters: VznFilters }) => {
   const t = useTranslations()
