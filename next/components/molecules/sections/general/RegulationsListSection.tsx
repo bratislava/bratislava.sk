@@ -1,7 +1,7 @@
 import { RegulationsListSectionFragment } from '@backend/graphql'
 import { Typography } from '@bratislava/component-library'
 import AdvancedSearchNew from '@components/organisms/SearchPage/AdvancedSearchNew'
-import GeneralSearchResults from '@components/organisms/SearchPage/GeneralSearchResults'
+import SearchResults from '@components/organisms/SearchPage/SearchResults'
 import { SearchFilters } from '@components/organisms/SearchPage/useQueryBySearchOption'
 import { SectionContainer } from '@components/ui/SectionContainer/SectionContainer'
 import { useTranslations } from 'next-intl'
@@ -96,7 +96,7 @@ const RegulationsListSection = ({ section }: RegulationsListSectionProps) => {
           })}
         </Typography>
       ) : null}
-      <GeneralSearchResults
+      <SearchResults
         variant="specificResults"
         searchOption={defaultSearchOption}
         filters={searchFilters}

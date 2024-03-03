@@ -10,7 +10,7 @@ import { SearchOption } from '@components/pages/SearchPageContent'
 import { useTranslations } from 'next-intl'
 import { Dispatch, SetStateAction, useEffect } from 'react'
 
-type GeneralSearchResultsProps = {
+type SearchResultsProps = {
   filters: SearchFilters
   variant: 'allResults' | 'specificResults'
   searchOption: SearchOption
@@ -19,14 +19,14 @@ type GeneralSearchResultsProps = {
   onPageChange?: Dispatch<SetStateAction<number>>
 }
 
-const GeneralSearchResults = ({
+const SearchResults = ({
   filters,
   onShowMore,
   onPageChange,
   onSetResultsCount,
   searchOption,
   variant,
-}: GeneralSearchResultsProps) => {
+}: SearchResultsProps) => {
   const t = useTranslations()
 
   const searchQuery = useQueryBySearchOption(searchOption.id, filters)
@@ -107,4 +107,4 @@ const GeneralSearchResults = ({
   )
 }
 
-export default GeneralSearchResults
+export default SearchResults

@@ -1,7 +1,7 @@
 import { Typography } from '@bratislava/component-library'
 import Chip from '@components/forms/simple-components/Chip'
 import AdvancedSearchNew from '@components/organisms/SearchPage/AdvancedSearchNew'
-import GeneralSearchResults from '@components/organisms/SearchPage/GeneralSearchResults'
+import SearchResults from '@components/organisms/SearchPage/SearchResults'
 import { SearchFilters } from '@components/organisms/SearchPage/useQueryBySearchOption'
 import { SectionContainer } from '@components/ui/SectionContainer/SectionContainer'
 import { getCategoryColorLocalStyle } from '@utils/colors'
@@ -200,7 +200,7 @@ const SearchPageContent = () => {
           <div className="flex flex-col gap-8">
             {searchOptions.map((option) => {
               return (
-                <GeneralSearchResults
+                <SearchResults
                   variant="allResults"
                   searchOption={option}
                   filters={searchFilters}
@@ -212,7 +212,7 @@ const SearchPageContent = () => {
             })}
           </div>
         ) : (
-          <GeneralSearchResults
+          <SearchResults
             variant="specificResults"
             searchOption={getSearchOptionByKeyValue(selectedKey)}
             filters={searchFilters}
