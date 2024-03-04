@@ -8,7 +8,7 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 const handler = async (req: NextApiRequest, res: NextApiResponse<MSGraphFilteredGroupUser[]>) => {
   const { query: queryParam } = req.query
 
-  const query = typeof queryParam === 'string' ? queryParam : queryParam[0]
+  const query = typeof queryParam === 'string' ? queryParam : queryParam?.[0]
 
   if (!query) {
     res.status(200).json([])
