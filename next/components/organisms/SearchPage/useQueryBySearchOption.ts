@@ -32,12 +32,12 @@ import {
   getMsGraphSearchQueryKey,
   msGraphSearchFetcher,
 } from '@backend/ms-graph/fetchers/msGraphSearch.fetcher'
-import { SearchOption } from '@components/pages/searchPageContentNew'
+import { SearchOption } from '@components/pages/SearchPageContent'
 import { useQuery } from '@tanstack/react-query'
 import { isDefined } from '@utils/isDefined'
 import { formatDate } from '@utils/local-date'
 import { useLocale, useTranslations } from 'next-intl'
-import { FunctionComponent, ReactNode, SVGProps } from 'react'
+import { ReactNode } from 'react'
 
 export type SearchFilters =
   | PagesFilters
@@ -138,7 +138,7 @@ export const useQueryBySearchOption = (optionKey: SearchOption['id'], filters: S
             ? t(`Regulation.category.${regulation.category}`)
             : null
 
-          // we want to see whether this regulation is amending any cancelled regulations, because in that case, this regulation is also cancelled
+          // we want to see, whether this regulation is amending any cancelled regulations, because in that case, this regulation is also cancelled
           const cancelledAmendees =
             regulation.amending?.filter(
               (amendee) => isDefined(amendee) && isDefined(amendee.cancellation),

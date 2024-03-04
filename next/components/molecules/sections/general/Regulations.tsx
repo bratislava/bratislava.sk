@@ -1,6 +1,6 @@
 import { RegulationEntityFragment } from '@backend/graphql'
 import { Typography } from '@bratislava/component-library'
-import RegulationCard from '@components/molecules/Regulations/RegulationCard'
+import RegulationCard from '@components/molecules/presentation/RegulationCard/RegulationCard'
 import ResponsiveCarousel from '@components/organisms/Carousel/ResponsiveCarousel'
 import { useTranslations } from 'next-intl'
 

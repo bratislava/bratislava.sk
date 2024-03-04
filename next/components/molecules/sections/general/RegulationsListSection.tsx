@@ -1,15 +1,14 @@
 import { RegulationsListSectionFragment } from '@backend/graphql'
 import { Typography } from '@bratislava/component-library'
-import AdvancedSearchNew from '@components/molecules/SearchPageNew/AdvancedSearchNew'
-import GeneralSearchResults from '@components/molecules/SearchPageNew/GeneralSearchResults'
-import { SearchFilters } from '@components/molecules/SearchPageNew/useQueryBySearchOption'
-import { SectionContainer } from '@components/ui/SectionContainer/SectionContainer'
+import SearchBar from '@components/organisms/SearchPage/SearchBar'
+import SearchResults from '@components/organisms/SearchPage/SearchResults'
+import { SearchFilters } from '@components/organisms/SearchPage/useQueryBySearchOption'
 import { useTranslations } from 'next-intl'
-import React, { ReactNode, useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { StringParam, useQueryParam, withDefault } from 'use-query-params'
 import { useDebounce } from 'usehooks-ts'
 
-// This component was created by reducing some functionality from the main search component SearchPageContentNew
+// This component was created by reducing some functionality from the main search component SearchPageContent
 // TODO there's too much code duplication here, it would be better to have one component that takes selected search options as props
 
 export type SearchOption = {
@@ -81,7 +80,7 @@ const RegulationsListSection = ({ section }: RegulationsListSectionProps) => {
     <div className="flex w-full flex-col gap-y-8">
       <Typography type="h1">{t('searching')}</Typography>
       <div className="flex flex-col gap-3 lg:gap-4">
-        <AdvancedSearchNew
+        <SearchBar
           ref={searchRef}
           placeholder={t('enterKeyword')}
           input={input}
@@ -96,7 +95,7 @@ const RegulationsListSection = ({ section }: RegulationsListSectionProps) => {
           })}
         </Typography>
       ) : null}
-      <GeneralSearchResults
+      <SearchResults
         variant="specificResults"
         searchOption={defaultSearchOption}
         filters={searchFilters}
