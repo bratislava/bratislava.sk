@@ -1,4 +1,5 @@
 import { Enum_Componentsectionsfilelist_Variant, RegulationEntityFragment } from '@backend/graphql'
+import { Enum_Componentsectionsfilelist_Variant, RegulationEntityFragment } from '@backend/graphql'
 import { Typography } from '@bratislava/component-library'
 import FileList from '@bratislava/ui-bratislava/FileList/FileList'
 import PageHeader from '@bratislava/ui-bratislava/PageHeader/PageHeader'
