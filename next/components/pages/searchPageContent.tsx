@@ -134,6 +134,7 @@ const SearchPageContent = () => {
     // Checking 'all' just to get pure Set type, 'all' is not used in our case
     if (newSelection !== 'all' && newSelection.size === 1) {
       // If user click other chip than the selected one, the selection is changed to the new chip
+      // If user click an already selected chip, the selection is changed to default (no filtering)
       setSelection(newSelection)
     } else {
       setSelection(defaultSelection)
@@ -148,7 +149,7 @@ const SearchPageContent = () => {
     tagIds: [],
   }
 
-  const searchRef = useRef(null)
+  const searchRef = useRef<null | HTMLInputElement>(null)
 
   useEffect(() => {
     searchRef.current?.scrollIntoView({ behavior: 'smooth' })

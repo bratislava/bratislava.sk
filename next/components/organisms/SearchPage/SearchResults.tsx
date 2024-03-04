@@ -9,13 +9,14 @@ import {
 import { SearchOption } from '@components/pages/SearchPageContent'
 import { useTranslations } from 'next-intl'
 import { Dispatch, SetStateAction, useEffect } from 'react'
+import { Selection } from 'react-aria-components'
 
 type SearchResultsProps = {
   filters: SearchFilters
   variant: 'allResults' | 'specificResults'
   searchOption: SearchOption
-  onSetResultsCount?: (searchOptionId: SearchOption['id'], count: number) => void
-  onShowMore?: Dispatch<SetStateAction<Set<SearchOption['id']>>>
+  onSetResultsCount: (searchOptionId: SearchOption['id'], count: number) => void
+  onShowMore?: Dispatch<SetStateAction<Selection>>
   onPageChange?: Dispatch<SetStateAction<number>>
 }
 
@@ -33,7 +34,7 @@ const SearchResults = ({
 
   // FIXME types - ts doesn't know that this can be undefined or null, I added "?? {}" manually
   const { data } = searchQuery ?? {}
-  const { searchResultsData, searchResultsCount } = data ?? {}
+  const { searchResultsData, searchResultsCount } = data ?? { searchResultsCount: 0 }
 
   const GENERAL_RESULTS_COUNT = 5
 
@@ -49,11 +50,12 @@ const SearchResults = ({
             title={`${searchOption?.displayNamePlural}` ?? ''}
             showButton={searchResultsCount > 0}
             handleShowMore={() => {
+              if (!onShowMore) return
               onShowMore(new Set([searchOption.id]))
             }}
           />
         )}
-        {searchResultsData?.length > 0 ? (
+        {searchResultsData?.length ? (
           <div className="flex flex-col gap-y-2">
             {variant === 'allResults'
               ? searchResultsData.slice(0, GENERAL_RESULTS_COUNT).map((item, index) => {
@@ -62,7 +64,7 @@ const SearchResults = ({
                       data={{ ...item }}
                       key={`item-${variant}-${searchOption.id}-${[
                         item.title,
-                        ...item.metadata,
+                        ...(item?.metadata ?? []),
                       ].join('')}`}
                       showBottomDivider={index < GENERAL_RESULTS_COUNT - 1}
                     />
@@ -76,7 +78,7 @@ const SearchResults = ({
                       data={{ ...item }}
                       key={`item-${variant}-${searchOption.id}-${[
                         item.title,
-                        ...item.metadata,
+                        ...(item.metadata ?? []),
                       ].join('')}`}
                       showBottomDivider={index < searchResultsData.length - 1}
                     />
