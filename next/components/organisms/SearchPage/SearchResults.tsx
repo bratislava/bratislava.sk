@@ -6,7 +6,7 @@ import {
   SearchFilters,
   useQueryBySearchOption,
 } from '@components/organisms/SearchPage/useQueryBySearchOption'
-import { SearchOption } from '@components/pages/SearchPageContent2'
+import { SearchOption } from '@components/pages/SearchPageContent'
 import { useTranslations } from 'next-intl'
 import { Dispatch, SetStateAction, useEffect } from 'react'
 import { Selection } from 'react-aria-components'
