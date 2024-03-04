@@ -1,7 +1,7 @@
 import CircleArrowRight from '@assets/images/circle-arrow-right.svg'
 import Button from '@components/forms/simple-components/Button'
-import cx from 'classnames'
 import { ReactNode } from 'react'
+import { twMerge } from 'tailwind-merge'
 
 type ServiceCardBase = {
   title: string
@@ -22,7 +22,7 @@ const ServiceCard = ({
   href,
   onPress,
 }: ServiceCardBase) => {
-  const style = cx(
+  const style = twMerge(
     'group flex min-w-[280px] max-w-[280px] cursor-pointer flex-col items-start gap-5 rounded-lg border-2 border-solid border-gray-200 bg-gray-0 p-4',
     className,
   )

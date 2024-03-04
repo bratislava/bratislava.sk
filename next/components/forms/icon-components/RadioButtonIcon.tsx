@@ -1,4 +1,4 @@
-import cx from 'classnames'
+import { twMerge } from 'tailwind-merge'
 
 type RadioButtonIconProps = {
   selected?: boolean
@@ -6,7 +6,7 @@ type RadioButtonIconProps = {
 }
 
 const RadioButtonIcon = ({ selected, className }: RadioButtonIconProps) => {
-  const radioButtonClassName = cx(
+  const radioButtonClassName = twMerge(
     'justify-align flex h-6 w-6 flex-col rounded-full border-2 border-gray-800',
     className,
   )

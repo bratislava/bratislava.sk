@@ -1,7 +1,7 @@
 import Markdown from '@components/atoms/Markdown'
 import { generateImageSizes } from '@utils/generateImageSizes'
-import cx from 'classnames'
 import Image from 'next/image'
+import { twMerge } from 'tailwind-merge'
 
 export type TextWithImageProps = {
   className?: string
@@ -25,7 +25,7 @@ const TextWithImage = ({
   if (!content && !imageSrc) return null
 
   return (
-    <div className={cx(className, 'grid grid-cols-1 items-center gap-8 md:grid-cols-2')}>
+    <div className={twMerge('grid grid-cols-1 items-center gap-8 md:grid-cols-2', className)}>
       {imagePosition === 'left' && imageSrc && (
         <div>
           <Image

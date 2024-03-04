@@ -1,8 +1,8 @@
 import SearchIcon from '@assets/images/search-icon.svg'
-import cx from 'classnames'
 import * as React from 'react'
 
 import Input from '../Input/Input'
+import { twMerge } from 'tailwind-merge'
 
 type SearchBarProps = React.DetailedHTMLProps<
   React.InputHTMLAttributes<HTMLInputElement>,
@@ -19,7 +19,7 @@ const SearchBar = ({
   placeholder = 'Vyhľadávanie',
   ...etcProps
 }: SearchBarProps) => (
-  <div className={cx(className, 'relative w-96')}>
+  <div className={twMerge('relative w-96', className)}>
     <Input className="w-11/12 text-font" placeholder={placeholder} value={value} {...etcProps} />
     <div className="absolute bottom-4 right-4">
       <SearchIcon />

@@ -1,9 +1,9 @@
 import BALogo from '@assets/images/BALogo.svg'
 import { Typography } from '@bratislava/component-library'
 import MLink from '@components/forms/simple-components/MLink'
-import cx from 'classnames'
 import { useTranslations } from 'next-intl'
 import React from 'react'
+import { twMerge } from 'tailwind-merge'
 
 export type BrandProps = {
   className?: string
@@ -15,7 +15,7 @@ const Brand = ({ className, url = '#', withTitle }: BrandProps) => {
   const t = useTranslations()
 
   return (
-    <div className={cx('flex', className)} aria-label="brand">
+    <div className={twMerge('flex', className)} aria-label="brand">
       <MLink className="flex items-center gap-x-3 text-[#F23005]" href={url}>
         <BALogo className="shrink-0" />
         {withTitle && (

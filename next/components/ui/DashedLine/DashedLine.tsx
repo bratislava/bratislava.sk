@@ -1,4 +1,4 @@
-import cx from 'classnames'
+import { twMerge } from 'tailwind-merge'
 
 import CompleteDashedLine from './dashedLines/CompleteDashedLine'
 
@@ -10,7 +10,7 @@ export type DashedLineProps = {
 
 const DashedLine = ({ position, className, color }: DashedLineProps) => {
   return (
-    <div className={cx('relative h-[170px] overflow-hidden md:h-24', className)}>
+    <div className={twMerge('relative h-[170px] overflow-hidden md:h-24', className)}>
       {position === 'right' ? (
         <CompleteDashedLine color={color} />
       ) : (

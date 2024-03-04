@@ -1,8 +1,8 @@
 import SearchIcon from '@assets/images/search-icon.svg'
 import Button from '@components/forms/simple-components/Button'
-import cx from 'classnames'
 import { useTranslations } from 'next-intl'
 import { Dispatch, SetStateAction } from 'react'
+import { twMerge } from 'tailwind-merge'
 
 export type BasicSearchProps = {
   className?: string
@@ -38,7 +38,7 @@ const BasicSearch = ({
   }
 
   return (
-    <div className={cx('flex w-full flex-col', className)}>
+    <div className={twMerge('flex w-full flex-col', className)}>
       <div className="text-h4 scroll-mt-24 pb-3 font-medium lg:scroll-mt-48">{title}</div>
       <div className="flex pb-6">
         <input

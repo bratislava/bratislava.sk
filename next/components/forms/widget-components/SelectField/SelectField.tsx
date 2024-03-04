@@ -10,6 +10,7 @@ import React, {
   useId,
   useState,
 } from 'react'
+import { twMerge } from 'tailwind-merge'
 
 import FieldErrorMessage from '../../info-components/FieldErrorMessage'
 import FieldHeader from '../../info-components/FieldHeader'
@@ -179,7 +180,7 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
   // RENDER
   return (
     <section
-      className={cx(
+      className={twMerge(
         'xs:max-w-[320px] relative flex w-full max-w-[200px] flex-col transition-all',
         className,
       )}

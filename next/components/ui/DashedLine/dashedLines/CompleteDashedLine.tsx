@@ -1,4 +1,4 @@
-import cx from 'classnames'
+import { twMerge } from 'tailwind-merge'
 
 export type CompleteDashedLineProps = {
   className?: string
@@ -7,7 +7,7 @@ export type CompleteDashedLineProps = {
 const CompleteDashedLine = ({ className, color }: CompleteDashedLineProps) => {
   return (
     <svg
-      className={cx('absolute', className)}
+      className={twMerge('absolute', className)}
       width="56"
       height="164"
       viewBox="0 0 56 164"

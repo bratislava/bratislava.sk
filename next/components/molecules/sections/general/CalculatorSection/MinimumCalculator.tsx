@@ -3,9 +3,9 @@ import PlusIcon from '@assets/images/plus.svg'
 import { Typography } from '@bratislava/component-library'
 import Input from '@bratislava/ui-bratislava/Input/Input'
 import Button from '@components/forms/simple-components/Button'
-import cx from 'classnames'
 import { useTranslations } from 'next-intl'
 import React, { FormEvent } from 'react'
+import { twMerge } from 'tailwind-merge'
 
 type MinimumCalculatorProps = {
   className?: string
@@ -110,7 +110,7 @@ const MinimumCalculator = ({
   }
 
   return (
-    <div className={cx('bg-category-200 text-center text-font', className)}>
+    <div className={twMerge('bg-category-200 text-center text-font', className)}>
       <Typography type="h2" size="h3">
         {t('title')}
       </Typography>
