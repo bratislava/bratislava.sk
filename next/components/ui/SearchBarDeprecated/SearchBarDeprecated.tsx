@@ -11,7 +11,7 @@ interface IProps
   placeholder?: string
 }
 
-export const SearchBar = ({
+export const SearchBarDeprecated = ({
   className,
   value,
   placeholder = 'Vyhľadávanie',
@@ -24,4 +24,4 @@ export const SearchBar = ({
     </div>
   </div>
 )
-export default SearchBar
+export default SearchBarDeprecated

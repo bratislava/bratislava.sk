@@ -5,14 +5,14 @@ import { useTranslations } from 'next-intl'
 import { Dispatch, forwardRef, SetStateAction } from 'react'
 import { Input, Label, SearchField } from 'react-aria-components'
 
-type SearchBarRACProps = {
+type SearchBarProps = {
   placeholder?: string
   input: string
   setInput: Dispatch<SetStateAction<string>>
   setSearchQuery: Dispatch<SetStateAction<string>>
 }
 
-const SearchBarRAC = forwardRef<HTMLInputElement, SearchBarRACProps>(
+const SearchBar = forwardRef<HTMLInputElement, SearchBarProps>(
   ({ placeholder, input, setInput, setSearchQuery }, forwardedRef) => {
     const t = useTranslations()
 
@@ -61,4 +61,4 @@ const SearchBarRAC = forwardRef<HTMLInputElement, SearchBarRACProps>(
   },
 )
 
-export default SearchBarRAC
+export default SearchBar
