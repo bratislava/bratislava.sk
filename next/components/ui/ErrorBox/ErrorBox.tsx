@@ -5,7 +5,7 @@ export type ErrorBoxProps = {
   error?: Error | string
 }
 
-export const ErrorBox = ({ className, error }: ErrorBoxProps) => {
+const ErrorBox = ({ className, error }: ErrorBoxProps) => {
   if (!error) return null
 
   const message = typeof error === 'string' ? error : error.message

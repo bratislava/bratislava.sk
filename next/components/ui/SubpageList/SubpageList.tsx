@@ -7,7 +7,7 @@ export type SubpageListProps = {
   subpageList?: { title?: string; url?: string; anchor?: string }[]
 }
 
-export const SubpageList = ({ className, subpageList }: SubpageListProps) => {
+const SubpageList = ({ className, subpageList }: SubpageListProps) => {
   if (!subpageList || subpageList.length === 0) {
     return null
   }

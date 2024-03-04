@@ -10,7 +10,7 @@ export type LinksProps = {
   pageLinks: { title?: string; url?: string; anchor?: string }[]
 }
 
-export const Links = ({ className, title, pageLinks }: LinksProps) => {
+const Links = ({ className, title, pageLinks }: LinksProps) => {
   return (
     <div className={cx(className, 'flex w-full flex-col md:w-10/12')}>
       {title && (

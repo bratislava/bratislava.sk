@@ -9,7 +9,7 @@ type TimelineProps = {
   timelineItems: TimelineItemBlockFragment[]
 }
 
-export const Timeline = ({ timelineItems }: TimelineProps) => {
+const Timeline = ({ timelineItems }: TimelineProps) => {
   return (
     <VerticalTimeline animate={false} lineColor="rgb(var(--color-category-600))">
       {timelineItems.map((timelineItem, index) => (

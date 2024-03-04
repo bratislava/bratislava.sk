@@ -11,12 +11,7 @@ type IconTitleDescProps = {
   hasBackground?: boolean | null | undefined
 }
 
-export const IconTitleDescItem = ({
-  icon,
-  title,
-  text,
-  hasBackground = false,
-}: IconTitleDescProps) => {
+const IconTitleDescItem = ({ icon, title, text, hasBackground = false }: IconTitleDescProps) => {
   return (
     <li className="relative flex flex-col items-center gap-6">
       <div

@@ -8,7 +8,7 @@ import { isDefined } from '@utils/isDefined'
 import { useTranslations } from 'next-intl'
 import React, { Fragment } from 'react'
 
-export const HighlightsHomepageSection = () => {
+const HighlightsHomepageSection = () => {
   const t = useTranslations()
 
   const { homepage } = useHomepageContext()

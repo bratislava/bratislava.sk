@@ -13,7 +13,7 @@ export type TextWithImageProps = {
   imageAlternativeText?: string
 }
 
-export const TextWithImage = ({
+const TextWithImage = ({
   className,
   content,
   imageSrc,

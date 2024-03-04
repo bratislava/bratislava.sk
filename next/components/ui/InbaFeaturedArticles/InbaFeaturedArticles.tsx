@@ -13,7 +13,7 @@ export type InbaFeaturedArticlesProps = {
 }
 
 // This component is copied from FeaturedBlogPosts component and adjusted for inba articles
-export const InbaFeaturedArticles = ({ articles }: InbaFeaturedArticlesProps) => {
+const InbaFeaturedArticles = ({ articles }: InbaFeaturedArticlesProps) => {
   const t = useTranslations()
 
   const majorArticle = articles[0]?.attributes
@@ -78,3 +78,5 @@ export const InbaFeaturedArticles = ({ articles }: InbaFeaturedArticlesProps) =>
     </>
   )
 }
+
+export default InbaFeaturedArticles

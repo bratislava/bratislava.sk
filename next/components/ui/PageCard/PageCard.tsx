@@ -36,7 +36,7 @@ export type PageCardProps = {
   slug: string
 }
 
-export const PageCard = ({ pageColor, title, slug }: PageCardProps) => {
+const PageCard = ({ pageColor, title, slug }: PageCardProps) => {
   const colorStyle = getCategoryColorLocalStyle({ color: pageColor as Enum_Pagecategory_Color })
 
   const { default: PageIcon, small: SmallPageIcon } = findIconByColor(
@@ -61,3 +61,5 @@ export const PageCard = ({ pageColor, title, slug }: PageCardProps) => {
     </CardBase>
   )
 }
+
+export default PageCard

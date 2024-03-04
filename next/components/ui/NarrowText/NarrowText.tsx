@@ -7,7 +7,7 @@ export type NarrowTextProps = {
   align?: 'left' | 'center' | 'right' | null
 }
 
-export const NarrowText = ({
+const NarrowText = ({
   className,
   width = 'default',
   align = 'center',

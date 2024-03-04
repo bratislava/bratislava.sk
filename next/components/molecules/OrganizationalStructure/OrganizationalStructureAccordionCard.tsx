@@ -3,7 +3,7 @@ import Phone from '@assets/images/phone-small.svg'
 import TownHall from '@assets/images/town-hall.svg'
 import TownHallSmall from '@assets/images/town-hall-small.svg'
 import { Typography } from '@bratislava/component-library'
-import { Panel } from '@bratislava/ui-bratislava/Panel/Panel'
+import Panel from '@bratislava/ui-bratislava/Panel/Panel'
 import cx from 'classnames'
 
 // TODO do not refactor, but rewrite from scratch
@@ -19,7 +19,7 @@ export type OrganizationalStructureAccordionCardProps = {
   className?: string
 }
 
-export const OrganizationalStructureAccordionCard = ({
+const OrganizationalStructureAccordionCard = ({
   displayName,
   jobTitle,
   businessPhones,
@@ -89,3 +89,5 @@ export const OrganizationalStructureAccordionCard = ({
     ) : null
   )
 }
+
+export default OrganizationalStructureAccordionCard

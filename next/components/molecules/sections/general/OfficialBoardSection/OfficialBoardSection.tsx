@@ -2,10 +2,10 @@ import {
   getGinisOfficialBoardQueryKey,
   ginisOfficialBoardFetcher,
 } from '@backend/ginis/fetchers/ginisOfficialBoard.fetcher'
-import { NoResultsFound } from '@bratislava/ui-bratislava/NoResultsFound/NoResultsFound'
-import { BasicSearch } from '@components/ui/BasicSearch/BasicSearch'
+import NoResultsFound from '@bratislava/ui-bratislava/NoResultsFound/NoResultsFound'
+import BasicSearch from '@components/ui/BasicSearch/BasicSearch'
 import LoadingSpinner from '@components/ui/LoadingSpinner/LoadingSpinner'
-import { OfficialBoardCards } from '@components/ui/OfficialBoardCards/OfficialBoardCards'
+import OfficialBoardCards from '@components/ui/OfficialBoardCards/OfficialBoardCards'
 import { useQuery } from '@tanstack/react-query'
 import { useTranslations } from 'next-intl'
 import React, { useEffect, useState } from 'react'

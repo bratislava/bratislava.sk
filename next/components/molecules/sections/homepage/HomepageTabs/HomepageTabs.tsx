@@ -10,7 +10,7 @@ export type HomepageTabsProps = {
   className?: string
 }
 
-export const HomepageTabs = ({ className }: HomepageTabsProps) => {
+const HomepageTabs = ({ className }: HomepageTabsProps) => {
   const t = useTranslations('HomepageTabs')
 
   const tabs = useMemo(() => {

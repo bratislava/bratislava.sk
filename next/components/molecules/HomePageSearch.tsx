@@ -10,7 +10,7 @@ import { twMerge } from 'tailwind-merge'
 import { useDebounce, useOnClickOutside } from 'usehooks-ts'
 
 import useGetSwrExtras from '../../utils/useGetSwrExtras'
-import { AnimateHeight } from '../atoms/AnimateHeight'
+import AnimateHeight from '../atoms/AnimateHeight'
 import HomePageSearchField from './HomePageSearchField'
 import HomePageSearchResults from './HomePageSearchResults'
 

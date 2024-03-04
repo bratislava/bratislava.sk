@@ -9,7 +9,7 @@ export type ColumnedTextProps = {
   contentAlignment?: Enum_Componentsectionscolumnedtext_Contentalignment | null
 }
 
-export const ColumnedText = ({
+const ColumnedText = ({
   content,
   hasBackground,
   contentAlignment = Enum_Componentsectionscolumnedtext_Contentalignment.Left,

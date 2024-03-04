@@ -4,7 +4,7 @@ export type CompleteDashedLineProps = {
   className?: string
   color: string
 }
-export const CompleteDashedLine = ({ className, color }: CompleteDashedLineProps) => {
+const CompleteDashedLine = ({ className, color }: CompleteDashedLineProps) => {
   return (
     <svg
       className={cx('absolute', className)}
@@ -24,3 +24,5 @@ export const CompleteDashedLine = ({ className, color }: CompleteDashedLineProps
     </svg>
   )
 }
+
+export default CompleteDashedLine

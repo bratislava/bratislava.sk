@@ -1,8 +1,8 @@
 import Toggle from '@components/forms/simple-components/Toggle'
 import { useState } from 'react'
 
-import { Stack } from '../Stack'
-import { Wrapper } from '../Wrapper'
+import Stack from '../Stack'
+import Wrapper from '../Wrapper'
 
 const ToggleShowCase = () => {
   const [secondToggleSelected, setSecondToggleSelected] = useState<boolean>(true)

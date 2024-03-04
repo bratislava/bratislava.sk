@@ -2,7 +2,8 @@ import Markdown from '@components/atoms/Markdown'
 import { NumericalListItemObject } from '@components/ui/NumericalListSectionUI/NumericalListSectionUI'
 import cx from 'classnames'
 
-import { DashedLine } from '../DashedLine/DashedLine'
+import DashedLine from '../DashedLine/DashedLine'
+import exp from 'constants'
 
 export type NumericalListItemProps = {
   index: number
@@ -13,7 +14,7 @@ export type NumericalListItemProps = {
   className?: string
 }
 
-export const NumericalListItem = ({
+const NumericalListItem = ({
   index,
   item,
   variant,
@@ -82,3 +83,5 @@ export const NumericalListItem = ({
     </div>
   )
 }
+
+export default NumericalListItem

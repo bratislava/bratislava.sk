@@ -44,7 +44,7 @@ export type BlogSearchCardProps = {
   item: BlogItem
 }
 
-export const BlogSearchCard = ({
+const BlogSearchCard = ({
   className,
   imageClassName,
   fullCardSizeImage,
@@ -125,3 +125,5 @@ export const BlogSearchCard = ({
     </>
   )
 }
+
+export default BlogSearchCard

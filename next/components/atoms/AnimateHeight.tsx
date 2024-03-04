@@ -13,7 +13,7 @@ type AnimateHeightProps = {
   className?: string
 }
 
-export const AnimateHeight = ({
+const AnimateHeight = ({
   duration,
   ease = 'easeInOut',
   openedVariant = { opacity: 1, visibility: 'visible' },
@@ -53,3 +53,5 @@ export const AnimateHeight = ({
     </motion.div>
   )
 }
+
+export default AnimateHeight

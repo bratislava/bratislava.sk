@@ -1,4 +1,4 @@
-import { Wrapper } from '@components/styleguide/Wrapper'
+import Wrapper from '@components/styleguide/Wrapper'
 import AccordionV2 from '@components/ui/AccordionV2/AccordionV2'
 import React from 'react'
 

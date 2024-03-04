@@ -1,5 +1,5 @@
 import { CrossIcon, HamburgerIcon, SearchIcon } from '@assets/ui-icons'
-import { Brand } from '@bratislava/ui-bratislava/Brand/Brand'
+import Brand from '@bratislava/ui-bratislava/Brand/Brand'
 import Button from '@components/forms/simple-components/Button'
 import MLink from '@components/forms/simple-components/MLink'
 import AlertBanner from '@components/organisms/NavBar/AlertBanner'

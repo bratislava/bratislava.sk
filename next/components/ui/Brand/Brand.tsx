@@ -11,7 +11,7 @@ export type BrandProps = {
   withTitle?: boolean
 }
 
-export const Brand = ({ className, url = '#', withTitle }: BrandProps) => {
+const Brand = ({ className, url = '#', withTitle }: BrandProps) => {
   const t = useTranslations()
 
   return (

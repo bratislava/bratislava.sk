@@ -14,7 +14,7 @@ export type BasicSearchProps = {
   setSearchQuery: (query: string) => void
 }
 
-export const BasicSearch = ({
+const BasicSearch = ({
   className,
   placeholder,
   title,
@@ -69,3 +69,5 @@ export const BasicSearch = ({
     </div>
   )
 }
+
+export default BasicSearch

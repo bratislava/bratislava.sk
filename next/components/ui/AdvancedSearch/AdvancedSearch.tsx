@@ -23,7 +23,7 @@ export type SearchOptionProps = {
 }
 
 // TODO use BasicSearch instead of duplicating
-export const AdvancedSearch = ({
+const AdvancedSearch = ({
   className,
   placeholder,
   title,
@@ -130,3 +130,5 @@ export const AdvancedSearch = ({
     </div>
   )
 }
+
+export default AdvancedSearch

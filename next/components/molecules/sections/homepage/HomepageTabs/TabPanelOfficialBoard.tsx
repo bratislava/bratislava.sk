@@ -3,7 +3,7 @@ import {
   ginisOfficialBoardHomepageFetcher,
 } from '@backend/ginis/fetchers/ginisOfficialBoardHomepage.fetcher'
 import Button from '@components/forms/simple-components/Button'
-import { OfficialBoardCard } from '@components/ui/OfficialBoardCard/OfficialBoardCard'
+import OfficialBoardCard from '@components/ui/OfficialBoardCard/OfficialBoardCard'
 import { useQuery } from '@tanstack/react-query'
 import { getCommonLinkProps } from '@utils/getCommonLinkProps'
 import { useHomepageContext } from '@utils/homepageContext'

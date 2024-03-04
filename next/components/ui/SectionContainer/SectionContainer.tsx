@@ -6,7 +6,7 @@ type SectionContainerProps = {
   hasBackground?: boolean
 } & HTMLAttributes<HTMLDivElement>
 
-export const SectionContainer = ({
+const SectionContainer = ({
   hasBackground = false,
   className,
   children,

@@ -3,8 +3,8 @@ import {
   BlogPostsFilters,
   getBlogPostsSwrKey,
 } from '@backend/meili/fetchers/blogPostsFetcher'
-import { BlogSearchCards } from '@bratislava/ui-bratislava/BlogSearchCards/BlogSearchCards'
-import { LoadingSpinner } from '@bratislava/ui-bratislava/LoadingSpinner/LoadingSpinner'
+import BlogSearchCards from '@bratislava/ui-bratislava/BlogSearchCards/BlogSearchCards'
+import LoadingSpinner from '@bratislava/ui-bratislava/LoadingSpinner/LoadingSpinner'
 import { BlogItem } from '@components/ui/BlogSearchCard/BlogSearchCard'
 import useGetSwrExtras from '@utils/useGetSwrExtras'
 import { SearchResponse } from 'meilisearch'

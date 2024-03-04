@@ -2,7 +2,7 @@ import SearchIcon from '@assets/images/search-icon.svg'
 import cx from 'classnames'
 import * as React from 'react'
 
-import { Input } from '../Input/Input'
+import Input from '../Input/Input'
 
 type SearchBarProps = React.DetailedHTMLProps<
   React.InputHTMLAttributes<HTMLInputElement>,
@@ -13,7 +13,7 @@ type SearchBarProps = React.DetailedHTMLProps<
   placeholder?: string
 }
 
-export const SearchBar = ({
+const SearchBar = ({
   className,
   value,
   placeholder = 'Vyhľadávanie',

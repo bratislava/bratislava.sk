@@ -5,7 +5,7 @@ type InputProps = {
   hasError?: boolean
 }
 
-export const Input = ({
+const Input = ({
   className,
   hasError,
   ...props

@@ -6,7 +6,7 @@ export type NoResultsFoundProps = {
   messageClassName?: string
 }
 
-export const NoResultsFound = ({ title, message, messageClassName }: NoResultsFoundProps) => (
+const NoResultsFound = ({ title, message, messageClassName }: NoResultsFoundProps) => (
   <div className="mt-6 flex flex-col items-center">
     <img src="/NoResults-Found_300px.png" alt="" />
     {/* FIXME Typography. Convert to use Typography. Issue: Header size for not header element */}
@@ -16,3 +16,5 @@ export const NoResultsFound = ({ title, message, messageClassName }: NoResultsFo
     </Typography>
   </div>
 )
+
+export default NoResultsFound

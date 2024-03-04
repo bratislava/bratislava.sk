@@ -10,7 +10,7 @@ export type WelcomeCardProps = {
   item: MenuItem
 }
 
-export const WelcomeCard = ({ item }: WelcomeCardProps) => {
+const WelcomeCard = ({ item }: WelcomeCardProps) => {
   const hoverRef = useRef<HTMLDivElement>(null)
   const isHover = useHover(hoverRef)
 

@@ -23,7 +23,7 @@ export type BookmarkProps = {
 }
 
 // TODO: needs major refactoring
-export const Bookmark = ({
+const Bookmark = ({
   className,
   bookmarkTitle,
   title,

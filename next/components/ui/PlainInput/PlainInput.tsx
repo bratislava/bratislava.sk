@@ -6,7 +6,7 @@ type PlainInputProps = {
   iconPosition?: 'left' | 'right'
 }
 
-export const PlainInput = ({
+const PlainInput = ({
   className,
   icon,
   iconPosition = 'right',

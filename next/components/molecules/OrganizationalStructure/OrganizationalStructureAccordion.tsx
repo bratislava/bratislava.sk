@@ -4,7 +4,7 @@ import { GetGroupMembersRecursiveResult } from '@backend/ms-graph/types'
 import cx from 'classnames'
 import { useToggle } from 'rooks'
 
-import { OrganizationalStructureAccordionCards } from './OrganizationalStructureAccordionCards'
+import OrganizationalStructureAccordionCards from './OrganizationalStructureAccordionCards'
 
 export type OrganizationalStructureAccordionProps = {
   group: GetGroupMembersRecursiveResult
@@ -15,7 +15,7 @@ export type OrganizationalStructureAccordionProps = {
 // level 1 - toggleable, empty circle (before, it was always open
 // level 2 - toggleable, filled secondary circle
 // level >2 - toggleable, no circle
-export const OrganizationalStructureAccordion = ({
+const OrganizationalStructureAccordion = ({
   group,
   level,
 }: OrganizationalStructureAccordionProps) => {
@@ -68,3 +68,5 @@ export const OrganizationalStructureAccordion = ({
     </div>
   )
 }
+
+export default OrganizationalStructureAccordion

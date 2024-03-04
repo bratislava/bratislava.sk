@@ -13,7 +13,7 @@ type CookieConsentProps = {
 }
 
 // also takes care of loading all the consented 3rd parties - TODO consider better component name ?
-export const CookieConsent = ({ className }: CookieConsentProps) => {
+const CookieConsent = ({ className }: CookieConsentProps) => {
   const { shouldShowBanner, setConsents, consents } = useCookieConsent()
   const t = useTranslations()
 

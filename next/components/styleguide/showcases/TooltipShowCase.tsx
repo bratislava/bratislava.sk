@@ -1,8 +1,8 @@
 import Tooltip from '@components/forms/info-components/Tooltip/Tooltip'
 import { FC } from 'react'
 
-import { Stack } from '../Stack'
-import { Wrapper } from '../Wrapper'
+import Stack from '../Stack'
+import Wrapper from '../Wrapper'
 
 type TooltipShowCaseProps = {}
 

@@ -1,7 +1,7 @@
 import MinusIcon from '@assets/images/minus.svg'
 import PlusIcon from '@assets/images/plus.svg'
 import { Typography } from '@bratislava/component-library'
-import { Input } from '@bratislava/ui-bratislava/Input/Input'
+import Input from '@bratislava/ui-bratislava/Input/Input'
 import Button from '@components/forms/simple-components/Button'
 import cx from 'classnames'
 import { useTranslations } from 'next-intl'

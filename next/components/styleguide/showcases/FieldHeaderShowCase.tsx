@@ -2,8 +2,8 @@ import FieldErrorMessage from '@components/forms/info-components/FieldErrorMessa
 import FieldHeader from '@components/forms/info-components/FieldHeader'
 import React from 'react'
 
-import { Stack } from '../Stack'
-import { Wrapper } from '../Wrapper'
+import Stack from '../Stack'
+import Wrapper from '../Wrapper'
 
 type FieldHeaderShowCaseProps = {}
 

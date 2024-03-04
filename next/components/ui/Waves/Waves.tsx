@@ -12,7 +12,7 @@ type WavesProps = {
   className?: string
 }
 
-export const Waves = ({
+const Waves = ({
   className,
   backgroundColor = 'transparent',
   waveColor,

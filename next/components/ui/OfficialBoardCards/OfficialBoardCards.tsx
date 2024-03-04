@@ -1,7 +1,7 @@
 import { ParsedOfficialBoardDocument } from '@backend/ginis/types'
 import { Typography } from '@bratislava/component-library'
 import Divider from '@components/ui/Divider/Divider'
-import { OfficialBoardCard } from '@components/ui/OfficialBoardCard/OfficialBoardCard'
+import OfficialBoardCard from '@components/ui/OfficialBoardCard/OfficialBoardCard'
 import Pagination from '@components/ui/Pagination/Pagination'
 import { useEffect, useState } from 'react'
 
@@ -13,7 +13,7 @@ export type OfficialBoardCardsProps = {
   query: string | string[]
 }
 
-export const OfficialBoardCards = ({
+const OfficialBoardCards = ({
   documents,
   dividerStyle,
   title,
@@ -86,3 +86,5 @@ export const OfficialBoardCards = ({
     </div>
   )
 }
+
+export default OfficialBoardCards

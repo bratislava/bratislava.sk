@@ -7,7 +7,7 @@ type Props = {
   className?: string
 }
 
-export const Icon: FC<Props> = ({ iconName, className }) => {
+const Icon: FC<Props> = ({ iconName, className }) => {
   const iconCollection = useMemo(() => getIcon(iconName), [iconName])
 
   if (!iconCollection?.size_48) {
@@ -16,3 +16,5 @@ export const Icon: FC<Props> = ({ iconName, className }) => {
 
   return <iconCollection.size_48 className={className} />
 }
+
+export default Icon

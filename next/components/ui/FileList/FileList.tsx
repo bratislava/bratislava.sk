@@ -20,7 +20,7 @@ export type FileListProps = {
  * Figma: https://www.figma.com/file/17wbd0MDQcMW9NbXl6UPs8/DS-ESBS%2BBK%3A-Component-library?type=design&node-id=7940-21473&mode=dev
  */
 
-export const FileList = ({
+const FileList = ({
   className,
   fileSections,
   hideCategory,

@@ -1,8 +1,8 @@
 import TextAreaField from 'components/forms/widget-components/TextAreaField/TextAreaField'
 import React from 'react'
 
-import { Stack } from '../Stack'
-import { Wrapper } from '../Wrapper'
+import Stack from '../Stack'
+import Wrapper from '../Wrapper'
 
 const TextAreaFieldShowCase = () => {
   return (

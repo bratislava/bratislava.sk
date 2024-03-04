@@ -4,11 +4,11 @@ import {
 } from '@backend/ms-graph/fetchers/msGraphSearch.fetcher'
 import { MSGraphFilteredGroupUser } from '@backend/ms-graph/types'
 import { Typography } from '@bratislava/component-library'
-import { LoadingSpinner } from '@bratislava/ui-bratislava/LoadingSpinner/LoadingSpinner'
+import LoadingSpinner from '@bratislava/ui-bratislava/LoadingSpinner/LoadingSpinner'
 import { useQuery } from '@tanstack/react-query'
 import { useTranslations } from 'next-intl'
 
-import { OrganizationalStructureAccordionCards } from '../OrganizationalStructure/OrganizationalStructureAccordionCards'
+import OrganizationalStructureAccordionCards from '../OrganizationalStructure/OrganizationalStructureAccordionCards'
 import LoadingOverlay from './LoadingOverlay'
 
 type UsersFilters = {

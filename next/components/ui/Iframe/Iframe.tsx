@@ -10,7 +10,7 @@ export type IframeProps = {
   css?: string | null
 }
 
-export const Iframe = ({
+const Iframe = ({
   url,
   iframeWidth,
   iframeHeight,

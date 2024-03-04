@@ -14,7 +14,7 @@ export type InBaCardProps = {
   linkProps: CommonLinkProps
 }
 
-export const InBaCard = ({
+const InBaCard = ({
   className,
   frontImageUrl,
   rearImageUrl,

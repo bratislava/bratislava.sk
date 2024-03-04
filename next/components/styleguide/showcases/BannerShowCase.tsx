@@ -2,8 +2,8 @@ import { CommonLinkFragment, Enum_Componentsectionsbanner_Variant } from '@backe
 import Banner from '@components/ui/Banner/Banner'
 import React from 'react'
 
-import { Stack } from '../Stack'
-import { Wrapper } from '../Wrapper'
+import Stack from '../Stack'
+import Wrapper from '../Wrapper'
 
 const BannerShowCase = () => {
   return (

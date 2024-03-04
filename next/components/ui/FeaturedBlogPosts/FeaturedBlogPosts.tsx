@@ -14,7 +14,7 @@ export type FeaturedBlogPostsProps = {
 }
 
 // Component InbaFeaturedArticles is copied from this component
-export const FeaturedBlogPosts = ({ blogPosts }: FeaturedBlogPostsProps) => {
+const FeaturedBlogPosts = ({ blogPosts }: FeaturedBlogPostsProps) => {
   const t = useTranslations()
 
   const majorBlog = blogPosts?.[0]
@@ -90,3 +90,5 @@ export const FeaturedBlogPosts = ({ blogPosts }: FeaturedBlogPostsProps) => {
     </>
   )
 }
+
+export default FeaturedBlogPosts

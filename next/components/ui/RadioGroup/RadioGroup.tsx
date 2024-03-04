@@ -1,4 +1,4 @@
-import { Radio, RadioProps } from '../Radio/Radio'
+import Radio, { RadioProps } from '../Radio/Radio'
 
 export type RadioGroupProps<T> = {
   className?: string
@@ -8,7 +8,7 @@ export type RadioGroupProps<T> = {
   value?: string | T
 }
 
-export const RadioGroup = <T extends RadioProps>({
+const RadioGroup = <T extends RadioProps>({
   className,
   radioClassName,
   options,

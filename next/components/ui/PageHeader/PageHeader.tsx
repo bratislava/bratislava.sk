@@ -1,7 +1,7 @@
 import { CommonLinkFragment } from '@backend/graphql'
 import { Typography } from '@bratislava/component-library'
 import Breadcrumbs, { BreadcrumbsProps } from '@bratislava/ui-bratislava/Breadcrumbs/Breadcrumbs'
-import { Waves } from '@bratislava/ui-bratislava/Waves/Waves'
+import Waves from '@bratislava/ui-bratislava/Waves/Waves'
 import { generateImageSizes } from '@utils/generateImageSizes'
 import { getCommonLinkProps } from '@utils/getCommonLinkProps'
 import Image from 'next/image'
@@ -22,7 +22,7 @@ type PageHeaderProps = {
 /**
  * Figma: https://www.figma.com/file/17wbd0MDQcMW9NbXl6UPs8/DS-ESBS%3A-Component-library?node-id=888%3A3162&t=7uti0MQv3SyaK3Tk-4
  */
-export const PageHeader = ({
+const PageHeader = ({
   title,
   subtext,
   breadcrumbs,

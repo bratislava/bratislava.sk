@@ -1,4 +1,4 @@
-import { Bookmark, BookmarkProps } from '@bratislava/ui-bratislava/Bookmark/Bookmark'
+import Bookmark, { BookmarkProps } from '@bratislava/ui-bratislava/Bookmark/Bookmark'
 import cx from 'classnames'
 import isEmpty from 'lodash/isEmpty'
 
@@ -7,7 +7,7 @@ export type BookmarksProps = {
   bookmarks?: BookmarkProps[]
 }
 
-export const Bookmarks = ({ className, bookmarks }: BookmarksProps) => {
+const Bookmarks = ({ className, bookmarks }: BookmarksProps) => {
   if (isEmpty(bookmarks)) return null
   return (
     <div

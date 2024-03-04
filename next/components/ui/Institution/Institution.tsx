@@ -11,7 +11,7 @@ export type InstitutionProps = {
   urlLabel?: string
 }
 
-export const Institution = ({ title, subtitle, content, url, urlLabel }: InstitutionProps) => {
+const Institution = ({ title, subtitle, content, url, urlLabel }: InstitutionProps) => {
   const titleId = useId()
 
   return (

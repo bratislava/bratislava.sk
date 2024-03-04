@@ -1,8 +1,8 @@
 import ProgressBar from 'components/forms/simple-components/ProgressBar'
 import React from 'react'
 
-import { Stack } from '../Stack'
-import { Wrapper } from '../Wrapper'
+import Stack from '../Stack'
+import Wrapper from '../Wrapper'
 
 const ProgressBarShowCase = () => {
   return (

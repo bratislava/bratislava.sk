@@ -6,7 +6,7 @@ type LoadingSpinnerProps = {
   size?: 'small' | 'default' | 'medium'
 }
 
-export const LoadingSpinner = ({ className, size = 'default', text }: LoadingSpinnerProps) => (
+const LoadingSpinner = ({ className, size = 'default', text }: LoadingSpinnerProps) => (
   <div className={cx('flex flex-col items-center gap-20 text-center', className)}>
     <div
       style={{

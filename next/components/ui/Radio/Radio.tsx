@@ -8,7 +8,7 @@ export type RadioProps = React.DetailedHTMLProps<
   key: string
   title: string
 }
-export const Radio = ({ className, id, title, ...rest }: RadioProps) => {
+const Radio = ({ className, id, title, ...rest }: RadioProps) => {
   return (
     <label
       htmlFor={id}

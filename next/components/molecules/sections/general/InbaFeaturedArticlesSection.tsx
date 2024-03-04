@@ -1,5 +1,5 @@
 import { InbaArticleEntityFragment } from '@backend/graphql'
-import { InbaFeaturedArticles } from '@components/ui/InbaFeaturedArticles/InbaFeaturedArticles'
+import InbaFeaturedArticles from '@components/ui/InbaFeaturedArticles/InbaFeaturedArticles'
 import { isDefined } from '@utils/isDefined'
 import React from 'react'
 
