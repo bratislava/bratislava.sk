@@ -5,7 +5,7 @@ import { OfficialBoardCard } from '@components/ui/OfficialBoardCard/OfficialBoar
 import Pagination from '@components/ui/Pagination/Pagination'
 import { useEffect, useState } from 'react'
 
-export interface OfficialBoardCardsProps {
+export type OfficialBoardCardsProps = {
   documents: ParsedOfficialBoardDocument[]
   dividerStyle?: string
   title: string

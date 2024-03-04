@@ -1,7 +1,7 @@
 import cx from 'classnames'
 import { Tag, TagProps } from 'react-aria-components'
 
-interface ChipProps extends TagProps {
+type ChipProps = TagProps & {
   variant?: 'large' | 'small'
 }
 

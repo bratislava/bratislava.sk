@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 
-export interface IframeProps {
+export type IframeProps = {
   url?: string
   iframeWidth: 'container' | 'full'
   iframeHeight: string

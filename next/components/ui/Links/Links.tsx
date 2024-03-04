@@ -4,7 +4,7 @@ import { isExternalLink } from '@utils/isExternalLink'
 import cx from 'classnames'
 import React from 'react'
 
-export interface LinksProps {
+export type LinksProps = {
   className?: string
   title?: string
   pageLinks: { title?: string; url?: string; anchor?: string }[]

@@ -1,4 +1,4 @@
-export interface RequestGinisBodyDocumentsList {
+export type RequestGinisBodyDocumentsList = {
   state: RequestGinisBodyDocumentsListStates // Stav
   tableId: string // Id-uredni-desky
   // It is possible to have more parameters, for check them go to https://robot.gordic.cz/xrg/Default.html#
@@ -9,7 +9,7 @@ export enum RequestGinisBodyDocumentsListStates {
   DELETED = 'sejmuto',
 }
 
-export interface ResponseGinisDocumentsList {
+export type ResponseGinisDocumentsList = {
   'Id-zaznamu': string // id of post of document - use for ID
   Stav: RequestGinisBodyDocumentsListStates
   Kategorie: string // category
@@ -51,17 +51,17 @@ export interface ResponseGinisDocumentsList {
   'Mena-sml': string
 }
 
-export interface RequestGinisBodyDocumentDetail {
+export type RequestGinisBodyDocumentDetail = {
   documentId: string
   // It is possible to have more parameters, for check them go to https://robot.gordic.cz/xrg/Default.html#
 }
 
-export interface ResponseGinisBodyDocumentDetail {
+export type ResponseGinisBodyDocumentDetail = {
   'Detail-dokumentu': ResponseGinisBodyDocumentDetailDetail
   'Soubory-dokumentu': ResponseGinisBodyDocumentDetailFile[]
 }
 
-export interface ResponseGinisBodyDocumentDetailDetail {
+export type ResponseGinisBodyDocumentDetailDetail = {
   'Id-zaznamu': string
   Stav: RequestGinisBodyDocumentsListStates
   Kategorie: string
@@ -83,7 +83,7 @@ export interface ResponseGinisBodyDocumentDetailDetail {
   'Odbor-sml': string
 }
 
-export interface ResponseGinisBodyDocumentDetailFile {
+export type ResponseGinisBodyDocumentDetailFile = {
   'Id-souboru': string // file id - use for download file - fileId param
   Nazev: string
   Velikost: string
@@ -92,11 +92,11 @@ export interface ResponseGinisBodyDocumentDetailFile {
   'Priznak-podpis': string
 }
 
-export interface RequestGinisBodyLoadFile {
+export type RequestGinisBodyLoadFile = {
   fileId: string
 }
 
-export interface ResponseGinisBodyLoadFile {
+export type ResponseGinisBodyLoadFile = {
   'Jmeno-souboru': string // file name
   Data: string // base64 string
 }

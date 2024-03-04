@@ -2,7 +2,7 @@ import { Bookmark, BookmarkProps } from '@bratislava/ui-bratislava/Bookmark/Book
 import cx from 'classnames'
 import isEmpty from 'lodash/isEmpty'
 
-export interface BookmarksProps {
+export type BookmarksProps = {
   className?: string
   bookmarks?: BookmarkProps[]
 }

@@ -11,11 +11,11 @@ import { useTranslations } from 'next-intl'
 import { OrganizationalStructureAccordionCards } from '../OrganizationalStructure/OrganizationalStructureAccordionCards'
 import LoadingOverlay from './LoadingOverlay'
 
-interface UsersFilters {
+type UsersFilters = {
   search: string
 }
 
-interface UsersResultsProps {
+type UsersResultsProps = {
   filters: UsersFilters
 }
 

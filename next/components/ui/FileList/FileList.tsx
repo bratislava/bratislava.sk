@@ -9,7 +9,7 @@ export type TFileSection = {
   files: FileItemBlockFragment[]
 }
 
-export interface FileListProps {
+export type FileListProps = {
   className?: string
   fileSections?: TFileSection[]
   hideCategory?: boolean

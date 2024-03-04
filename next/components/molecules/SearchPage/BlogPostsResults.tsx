@@ -13,7 +13,7 @@ import useSwr from 'swr'
 
 import LoadingOverlay from './LoadingOverlay'
 
-interface BlogPostsResultsProps {
+type BlogPostsResultsProps = {
   filters: BlogPostsFilters
 }
 

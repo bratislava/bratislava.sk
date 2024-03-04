@@ -9,7 +9,7 @@ import remarkUnwrapImages from 'remark-unwrap-images'
 
 import styles from './Markdown.module.scss'
 
-export interface MarkdownProps {
+export type MarkdownProps = {
   content: string | null | undefined
   variant?: 'default' | 'small' | 'small-no-respo' | 'accordion'
 }

@@ -1,6 +1,6 @@
 import { Typography } from '@bratislava/component-library'
 
-export interface NoResultsFoundProps {
+export type NoResultsFoundProps = {
   title: string
   message: string
   messageClassName?: string

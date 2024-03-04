@@ -1,6 +1,6 @@
 import { PageCard, PageCardProps } from '../PageCard/PageCard'
 
-export interface PageCardsProps {
+export type PageCardsProps = {
   pages: PageCardProps[]
 }
 

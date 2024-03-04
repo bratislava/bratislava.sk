@@ -5,11 +5,11 @@ import React from 'react'
 
 import { NumericalList } from '../NumericalList/NumericalList'
 
-export interface NumericalListItemObject {
+export type NumericalListItemObject = {
   text?: string | null
 }
 
-export interface NumericalListSectionProps {
+export type NumericalListSectionProps = {
   title: string | null | undefined
   items: NumericalListItemObject[] | null | undefined
   hasBackground: boolean | null | undefined

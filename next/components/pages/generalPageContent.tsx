@@ -9,7 +9,7 @@ import { useMemo } from 'react'
 import PageHeaderSections from '../molecules/PageHeaderSections'
 import Sections from '../molecules/Sections'
 
-export interface GeneralPageProps {
+export type GeneralPageProps = {
   page: PageEntityFragment
 }
 

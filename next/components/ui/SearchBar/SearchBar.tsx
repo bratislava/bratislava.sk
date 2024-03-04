@@ -4,8 +4,10 @@ import * as React from 'react'
 
 import { Input } from '../Input/Input'
 
-interface IProps
-  extends React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> {
+type SearchBarProps = React.DetailedHTMLProps<
+  React.InputHTMLAttributes<HTMLInputElement>,
+  HTMLInputElement
+> & {
   className?: string
   value?: string
   placeholder?: string
@@ -16,7 +18,7 @@ export const SearchBar = ({
   value,
   placeholder = 'Vyhľadávanie',
   ...etcProps
-}: IProps) => (
+}: SearchBarProps) => (
   <div className={cx(className, 'relative w-96')}>
     <Input className="w-11/12 text-font" placeholder={placeholder} value={value} {...etcProps} />
     <div className="absolute bottom-4 right-4">

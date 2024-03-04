@@ -6,7 +6,7 @@ import { useHover } from 'usehooks-ts'
 
 import { MenuItem } from '../../organisms/NavBar/NavMenu/navMenuTypes'
 
-export interface WelcomeCardProps {
+export type WelcomeCardProps = {
   item: MenuItem
 }
 

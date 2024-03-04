@@ -1,7 +1,7 @@
 import cx from 'classnames'
 import React from 'react'
 
-export interface PanelProps extends React.HTMLAttributes<HTMLDivElement> {
+export type PanelProps = React.HTMLAttributes<HTMLDivElement> & {
   hoverable?: boolean
   overflowVisible?: boolean
 }

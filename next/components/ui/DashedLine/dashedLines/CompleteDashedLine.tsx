@@ -1,6 +1,6 @@
 import cx from 'classnames'
 
-export interface CompleteDashedLineProps {
+export type CompleteDashedLineProps = {
   className?: string
   color: string
 }

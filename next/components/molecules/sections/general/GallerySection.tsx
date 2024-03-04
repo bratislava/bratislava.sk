@@ -3,7 +3,7 @@ import { Typography } from '@bratislava/component-library'
 import Gallery from '@components/organisms/Gallery/Gallery'
 import React from 'react'
 
-export interface GallerySectionProps {
+export type GallerySectionProps = {
   section: GallerySectionFragment
 }
 

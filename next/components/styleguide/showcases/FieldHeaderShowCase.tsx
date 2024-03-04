@@ -5,7 +5,7 @@ import React from 'react'
 import { Stack } from '../Stack'
 import { Wrapper } from '../Wrapper'
 
-interface FieldHeaderShowCaseProps {}
+type FieldHeaderShowCaseProps = {}
 
 const FieldHeaderShowCase = ({}: FieldHeaderShowCaseProps) => {
   return (

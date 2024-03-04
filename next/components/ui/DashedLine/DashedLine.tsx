@@ -2,7 +2,7 @@ import cx from 'classnames'
 
 import { CompleteDashedLine } from './dashedLines/CompleteDashedLine'
 
-export interface DashedLineProps {
+export type DashedLineProps = {
   position: string
   className: string
   color: string

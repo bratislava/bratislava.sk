@@ -5,7 +5,7 @@ import { CommonLinkProps } from '@utils/getCommonLinkProps'
 import cx from 'classnames'
 import Image from 'next/image'
 
-export interface InBaCardProps {
+export type InBaCardProps = {
   className?: string
   frontImageUrl: string | null | undefined
   rearImageUrl: string | null | undefined

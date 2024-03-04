@@ -1,6 +1,6 @@
 import cx from 'classnames'
 
-interface RadioButtonIconProps {
+type RadioButtonIconProps = {
   selected?: boolean
   className?: string
 }

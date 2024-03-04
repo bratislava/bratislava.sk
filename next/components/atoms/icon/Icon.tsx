@@ -2,7 +2,7 @@ import { FC, useMemo } from 'react'
 
 import { getIcon, MenuIcon } from './IconService'
 
-interface Props {
+type Props = {
   iconName: MenuIcon | undefined
   className?: string
 }

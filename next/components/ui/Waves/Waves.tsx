@@ -5,7 +5,7 @@ import WaveBottomSmall from './waves/WaveBottomSmall'
 import WaveTopLarge from './waves/WaveTopLarge'
 import WaveTopSmall from './waves/WaveTopSmall'
 
-interface WavesProps {
+type WavesProps = {
   wavePosition: 'top' | 'bottom'
   waveColor: string
   backgroundColor?: string

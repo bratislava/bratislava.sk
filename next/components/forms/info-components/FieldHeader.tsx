@@ -4,7 +4,7 @@ import { DOMAttributes } from 'react'
 
 import { ExplicitOptionalType } from '../types/ExplicitOptional'
 
-interface FieldHeaderProps {
+type FieldHeaderProps = {
   label: string
   htmlFor?: string
   required?: boolean

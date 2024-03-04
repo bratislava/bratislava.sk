@@ -7,12 +7,12 @@ import React, { FocusEvent, useRef } from 'react'
 
 const PADDING = 20 // py-5
 
-export interface BookmarkLink {
+export type BookmarkLink = {
   title: string | null | undefined
   href: string | null | undefined
 }
 
-export interface BookmarkProps {
+export type BookmarkProps = {
   className?: string
   bookmarkTitle: string | null | undefined
   title: string | null | undefined

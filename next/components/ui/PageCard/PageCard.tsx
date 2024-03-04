@@ -30,7 +30,7 @@ const findIconByColor = (pageColor: Enum_Pagecategory_Color) => {
   return icons[pageColor] ?? icons.red
 }
 
-export interface PageCardProps {
+export type PageCardProps = {
   pageColor: Enum_Pagecategory_Color | Enum_Page_Pagecolor
   title: string
   slug: string

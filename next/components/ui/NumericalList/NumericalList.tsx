@@ -2,7 +2,7 @@ import { NumericalListItemObject } from '@components/ui/NumericalListSectionUI/N
 
 import { NumericalListItem } from '../NumericalListItem/NumericalListItem'
 
-export interface NumericalListProps {
+export type NumericalListProps = {
   items: NumericalListItemObject[] | null | undefined
   hasBackground: boolean | null | undefined
   variant?: 'basic' | 'combined' | 'roadmap'

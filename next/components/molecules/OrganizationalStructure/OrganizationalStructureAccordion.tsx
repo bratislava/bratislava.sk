@@ -6,7 +6,7 @@ import { useToggle } from 'rooks'
 
 import { OrganizationalStructureAccordionCards } from './OrganizationalStructureAccordionCards'
 
-export interface OrganizationalStructureAccordionProps {
+export type OrganizationalStructureAccordionProps = {
   group: GetGroupMembersRecursiveResult
   level: number
 }

@@ -4,7 +4,7 @@ import cx from 'classnames'
 
 import { DashedLine } from '../DashedLine/DashedLine'
 
-export interface NumericalListItemProps {
+export type NumericalListItemProps = {
   index: number
   item?: NumericalListItemObject
   variant: 'basic' | 'combined' | 'roadmap'

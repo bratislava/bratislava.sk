@@ -14,7 +14,7 @@ import { AnimateHeight } from '../atoms/AnimateHeight'
 import HomePageSearchField from './HomePageSearchField'
 import HomePageSearchResults from './HomePageSearchResults'
 
-interface HomePageSearchProps {
+type HomePageSearchProps = {
   isOpen: boolean
   setOpen: Dispatch<SetStateAction<boolean>>
 }

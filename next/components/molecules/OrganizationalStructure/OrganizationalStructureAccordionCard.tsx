@@ -8,7 +8,7 @@ import cx from 'classnames'
 
 // TODO do not refactor, but rewrite from scratch
 
-export interface OrganizationalStructureAccordionCardProps {
+export type OrganizationalStructureAccordionCardProps = {
   displayName: string
   jobTitle: string
   businessPhones?: string[]

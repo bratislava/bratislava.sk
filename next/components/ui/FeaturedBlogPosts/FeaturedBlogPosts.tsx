@@ -9,7 +9,7 @@ import { getNumericLocalDate } from '@utils/local-date'
 import { useTranslations } from 'next-intl'
 import React from 'react'
 
-export interface FeaturedBlogPostsProps {
+export type FeaturedBlogPostsProps = {
   blogPosts: LatestBlogPostEntityFragment[]
 }
 

@@ -5,7 +5,7 @@ import cx from 'classnames'
 import { useTranslations } from 'next-intl'
 import { Dispatch, KeyboardEventHandler, SetStateAction } from 'react'
 
-export interface AdvancedSearchProps {
+export type AdvancedSearchProps = {
   className?: string
   placeholder?: string
   title?: string
@@ -17,7 +17,7 @@ export interface AdvancedSearchProps {
   setSearchQuery: (query: string) => void
 }
 
-export interface SearchOptionProps {
+export type SearchOptionProps = {
   key: string
   value: string
 }

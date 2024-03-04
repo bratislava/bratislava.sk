@@ -8,7 +8,7 @@ import { useQuery } from '@tanstack/react-query'
 
 import { OrganizationalStructureTopLevelAccordion } from './OrganizationalStructureTopLevelAccordion'
 
-export interface OrganizationalStructureProps {
+export type OrganizationalStructureProps = {
   title?: string | null
 }
 

@@ -2,7 +2,7 @@ import MLink from '@components/forms/simple-components/MLink'
 import { isExternalLink } from '@utils/isExternalLink'
 import cx from 'classnames'
 
-export interface SubpageListProps {
+export type SubpageListProps = {
   className?: string
   subpageList?: { title?: string; url?: string; anchor?: string }[]
 }

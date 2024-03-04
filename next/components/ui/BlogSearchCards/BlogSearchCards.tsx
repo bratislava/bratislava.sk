@@ -4,7 +4,7 @@ import ResponsiveCarousel from '@components/organisms/Carousel/ResponsiveCarouse
 import { useTranslations } from 'next-intl'
 import { useState } from 'react'
 
-export interface BlogSearchCardsProps {
+export type BlogSearchCardsProps = {
   blogs: BlogItem[]
 }
 

@@ -1,6 +1,6 @@
 import { Radio, RadioProps } from '../Radio/Radio'
 
-export interface RadioGroupProps<T> {
+export type RadioGroupProps<T> = {
   className?: string
   radioClassName?: string
   options: T[]

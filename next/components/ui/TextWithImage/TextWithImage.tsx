@@ -3,7 +3,7 @@ import { generateImageSizes } from '@utils/generateImageSizes'
 import cx from 'classnames'
 import Image from 'next/image'
 
-export interface TextWithImageProps {
+export type TextWithImageProps = {
   className?: string
   content?: string
   imageSrc?: string

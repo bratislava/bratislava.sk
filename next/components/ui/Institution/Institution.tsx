@@ -3,7 +3,7 @@ import Markdown from '@components/atoms/Markdown'
 import Button from '@components/forms/simple-components/Button'
 import { useId } from 'react'
 
-export interface InstitutionProps {
+export type InstitutionProps = {
   title?: string
   subtitle?: string
   content?: string[]

@@ -5,7 +5,7 @@ import cx from 'classnames'
 import { useTranslations } from 'next-intl'
 import React from 'react'
 
-export interface BrandProps {
+export type BrandProps = {
   className?: string
   url?: string
   withTitle?: boolean

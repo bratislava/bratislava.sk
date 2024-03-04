@@ -1,6 +1,6 @@
 import cx from 'classnames'
 
-export interface ErrorBoxProps {
+export type ErrorBoxProps = {
   className?: string
   error?: Error | string
 }

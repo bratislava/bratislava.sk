@@ -18,7 +18,7 @@ const Divider = ({ className }: { className?: string }) => {
   return <div aria-hidden className={`h-6 border-r ${className}`} />
 }
 
-interface MobileNavBarProps {
+type MobileNavBarProps = {
   className?: string
 }
 

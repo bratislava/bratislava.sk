@@ -17,13 +17,13 @@ import { ExplicitOptionalType } from '../../types/ExplicitOptional'
 import Dropdown from './Dropdown'
 import SelectFieldBox from './SelectFieldBox'
 
-export interface SelectOption {
+export type SelectOption = {
   const: string | number
   title?: string
   description?: string
 }
 
-interface SelectFieldProps {
+type SelectFieldProps = {
   label: string
   type?: 'one' | 'multiple' | 'arrow' | 'radio'
   value?: SelectOption[]
@@ -180,7 +180,7 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
   return (
     <section
       className={cx(
-        'relative flex w-full max-w-[200px] flex-col transition-all xs:max-w-[320px]',
+        'xs:max-w-[320px] relative flex w-full max-w-[200px] flex-col transition-all',
         className,
       )}
     >

@@ -10,7 +10,7 @@ import useSwr from 'swr'
 import { PageCardProps } from '../../ui/PageCard/PageCard'
 import LoadingOverlay from './LoadingOverlay'
 
-interface PagesResultsProps {
+type PagesResultsProps = {
   filters: PagesFilters
 }
 

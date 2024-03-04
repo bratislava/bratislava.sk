@@ -50,7 +50,7 @@ const Documents = ({ data }: { data: SearchResponse<VznMeili>; filters: VznFilte
   )
 }
 
-interface DocumentsResultsProps {
+type DocumentsResultsProps = {
   filters: VznFilters
   onPageChange: (page: number) => void
 }

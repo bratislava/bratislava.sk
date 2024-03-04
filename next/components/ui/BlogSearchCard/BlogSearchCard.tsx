@@ -7,7 +7,7 @@ import { getCategoryColorLocalStyle } from '@utils/colors'
 import { getNumericLocalDate } from '@utils/local-date'
 import cx from 'classnames'
 
-export interface BlogItem {
+export type BlogItem = {
   attributes?: {
     coverImage?: {
       data?: {
@@ -37,7 +37,7 @@ export interface BlogItem {
   }
 }
 
-export interface BlogSearchCardProps {
+export type BlogSearchCardProps = {
   className?: string
   imageClassName?: string
   fullCardSizeImage?: boolean

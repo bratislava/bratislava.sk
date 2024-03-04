@@ -1,7 +1,7 @@
 import cx from 'classnames'
 import React from 'react'
 
-interface IProps {
+type PlainInputProps = {
   icon?: React.ReactNode
   iconPosition?: 'left' | 'right'
 }
@@ -12,7 +12,7 @@ export const PlainInput = ({
   iconPosition = 'right',
   ...props
 }: React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> &
-  IProps) => {
+  PlainInputProps) => {
   const hasIcon = !!icon
   const hasIconLeft = hasIcon && iconPosition === 'left'
   const hasIconRight = hasIcon && iconPosition === 'right'

@@ -1,8 +1,10 @@
 import cx from 'classnames'
 import * as React from 'react'
 
-export interface RadioProps
-  extends React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> {
+export type RadioProps = React.DetailedHTMLProps<
+  React.InputHTMLAttributes<HTMLInputElement>,
+  HTMLInputElement
+> & {
   key: string
   title: string
 }

@@ -4,7 +4,7 @@ import cx from 'classnames'
 import { useTranslations } from 'next-intl'
 import { Dispatch, SetStateAction } from 'react'
 
-export interface BasicSearchProps {
+export type BasicSearchProps = {
   className?: string
   placeholder?: string
   title?: string

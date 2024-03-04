@@ -4,7 +4,7 @@ import { FC } from 'react'
 import { Stack } from '../Stack'
 import { Wrapper } from '../Wrapper'
 
-interface TooltipShowCaseProps {}
+type TooltipShowCaseProps = {}
 
 const TooltipShowCase: FC<TooltipShowCaseProps> = ({}: TooltipShowCaseProps) => {
   return (

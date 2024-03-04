@@ -125,7 +125,7 @@ const DIVIDER = {
   },
 }
 
-interface DividerProps {
+type DividerProps = {
   className?: string
   dividerStyle?: string
 }

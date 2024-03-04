@@ -10,7 +10,7 @@ import { DialogTrigger } from 'react-aria-components'
 
 import { Panel } from '../Panel/Panel'
 
-export interface OfficialBoardCardProps {
+export type OfficialBoardCardProps = {
   title: string
   id: string
   createdAt: string

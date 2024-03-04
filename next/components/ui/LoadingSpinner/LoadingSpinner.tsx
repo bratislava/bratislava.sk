@@ -1,12 +1,12 @@
 import cx from 'classnames'
 
-interface IProps {
+type LoadingSpinnerProps = {
   className?: string
   text?: string
   size?: 'small' | 'default' | 'medium'
 }
 
-export const LoadingSpinner = ({ className, size = 'default', text }: IProps) => (
+export const LoadingSpinner = ({ className, size = 'default', text }: LoadingSpinnerProps) => (
   <div className={cx('flex flex-col items-center gap-20 text-center', className)}>
     <div
       style={{

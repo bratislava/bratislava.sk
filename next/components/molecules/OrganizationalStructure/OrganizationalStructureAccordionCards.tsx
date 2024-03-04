@@ -3,7 +3,7 @@ import { OrganizationalStructureAccordionCard } from '@components/molecules/Orga
 import ResponsiveCarousel from '@components/organisms/Carousel/ResponsiveCarousel'
 import { useMemo } from 'react'
 
-export interface OrganizationalStructureAccordionCardsProps {
+export type OrganizationalStructureAccordionCardsProps = {
   users: MSGraphFilteredGroupUser[]
 }
 

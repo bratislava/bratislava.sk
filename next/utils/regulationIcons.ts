@@ -8,7 +8,7 @@ import SocialnaPomocASkolstvo from '@assets/images/socialnaPomocASkolstvo.svg'
 import UzemnePlanovanie from '@assets/images/uzemnePlanovanie.svg'
 import { FunctionComponent, SVGProps } from 'react'
 
-interface DocumentListCategorysType {
+type DocumentListCategorysType = {
   key: string
   value: string
   icon: FunctionComponent<SVGProps<SVGSVGElement>>
@@ -28,19 +28,6 @@ export const findIconByRegulationCategory = (category: string) => {
 
   return icons.uzemnePlanovanie
 }
-
-// export const findIconByPageColor = (pageColor: Enum_Pagecategory_Color) => {
-//   const icons = {
-//     red: { default: PageRedIcon, small: PageRedIconSmall },
-//     blue: { default: PageBlueIcon, small: PageBlueIconSmall },
-//     green: { default: PageGreenIcon, small: PageGreenIconSmall },
-//     yellow: { default: PageYellowIcon, small: PageYellowIconSmall },
-//     purple: { default: PagePurpleIcon, small: PagePurpleIconSmall },
-//     brown: { default: PageBrownIcon, small: PageBrownIconSmall },
-//   }
-
-//   return icons[pageColor] ?? icons.red
-// }
 
 const DocumentListCategorys: DocumentListCategorysType[] = [
   {
