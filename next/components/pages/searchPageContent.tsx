@@ -133,7 +133,7 @@ const SearchPageContent = () => {
   const handleSelection = (newSelection: Selection) => {
     // Checking 'all' just to get pure Set type, 'all' is not used in our case
     if (newSelection !== 'all' && newSelection.size === 1) {
-      /** If user click other chip than the selected one, and */
+      // If user click other chip than the selected one, the selection is changed to the new chip
       setSelection(newSelection)
     } else {
       setSelection(defaultSelection)

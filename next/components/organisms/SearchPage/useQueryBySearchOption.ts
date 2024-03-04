@@ -138,7 +138,7 @@ export const useQueryBySearchOption = (optionKey: SearchOption['id'], filters: S
             ? t(`Regulation.category.${regulation.category}`)
             : null
 
-          // we want to see whether this regulation is amending any cancelled regulations, because in that case, this regulation is also cancelled
+          // we want to see, whether this regulation is amending any cancelled regulations, because in that case, this regulation is also cancelled
           const cancelledAmendees =
             regulation.amending?.filter(
               (amendee) => isDefined(amendee) && isDefined(amendee.cancellation),
