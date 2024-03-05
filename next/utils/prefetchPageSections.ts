@@ -1,7 +1,7 @@
 import {
-  getGinisOfficialBoardQueryKey,
-  ginisOfficialBoardFetcher,
-} from '@backend/ginis/fetchers/ginisOfficialBoard.fetcher'
+  getGinisOfficialBoardQueryKeyJson,
+  ginisOfficialBoardFetcherJson,
+} from '@backend/ginis/fetchers/ginisOfficialBoardJson.fetcher'
 import { PageEntityFragment } from '@backend/graphql'
 import {
   getRelatedBlogPostsQueryKey,
@@ -38,8 +38,8 @@ export const prefetchPageSections = async (page: PageEntityFragment, locale: str
   }
 
   if (sectionTypes.includes('ComponentSectionsOfficialBoard')) {
-    await queryClient.prefetchQuery(getGinisOfficialBoardQueryKey(''), () =>
-      ginisOfficialBoardFetcher(''),
+    await queryClient.prefetchQuery(getGinisOfficialBoardQueryKeyJson(), () =>
+      ginisOfficialBoardFetcherJson(),
     )
   }
 

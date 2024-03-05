@@ -1,7 +1,7 @@
 import {
-  getGinisOfficialBoardQueryKey,
-  ginisOfficialBoardFetcher,
-} from '@backend/ginis/fetchers/ginisOfficialBoard.fetcher'
+  getGinisOfficialBoardQueryKeyJson,
+  ginisOfficialBoardFetcherJson,
+} from '@backend/ginis/fetchers/ginisOfficialBoardJson.fetcher'
 import {
   Enum_Page_Pagecolor,
   Enum_Pagecategory_Color,
@@ -191,8 +191,8 @@ export const useQueryBySearchOption = (optionKey: SearchOption['id'], filters: S
   })
 
   const officialBoardQuery = useQuery({
-    queryKey: getGinisOfficialBoardQueryKey(filters.search),
-    queryFn: () => ginisOfficialBoardFetcher(filters.search),
+    queryKey: getGinisOfficialBoardQueryKeyJson({ search: filters.search }),
+    queryFn: () => ginisOfficialBoardFetcherJson({ search: filters.search }),
     keepPreviousData: true,
     select: (axiosResponse) => {
       const formattedData: SearchResult[] =
