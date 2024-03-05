@@ -8,8 +8,7 @@
     "skipLibCheck": true, // Prevents the generation of errors from cypress lib (e.g. common.d.ts).
     "baseUrl": "./",
     "paths": {
-      "@support/*": ["./cypress/support/*"],
-      "@fixtures/*": ["./cypress/fixtures/*"],
+      "@/*": ["./*"]
     }
   },
   "include": ["**/*.ts"],

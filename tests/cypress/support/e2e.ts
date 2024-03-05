@@ -1,5 +1,5 @@
-import './commands/global'
-import './triggers/before'
+import '@/cypress/support/commands/global'
+import '@/cypress/support/triggers/before'
 
 const app = window.top;
 if (!app.document.head.querySelector('[data-testid="snapshot-controls]')) {

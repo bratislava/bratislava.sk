@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/no-namespace */
 /// <reference types="cypress" />
 
+/* eslint-disable-next-line @typescript-eslint/no-namespace */
 declare namespace Cypress {
   interface Chainable {
     /**
@@ -18,3 +18,4 @@ Cypress.Commands.add('dataCy', (attribute, specify) => {
   const selector = `[data-cy=${attribute}]${specify ? specify : ''}`
   cy.get(selector)
 })
+/* eslint-enable @typescript-eslint/no-explicit-any */
