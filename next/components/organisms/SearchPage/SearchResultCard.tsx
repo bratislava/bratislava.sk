@@ -4,7 +4,7 @@ import { Typography } from '@bratislava/component-library'
 import Icon from '@components/atoms/icon/Icon'
 import ImagePlaceholder from '@components/atoms/ImagePlaceholder'
 import MLink from '@components/forms/simple-components/MLink'
-import { SearchResult } from '@components/molecules/SearchPageNew/useQueryBySearchOption'
+import { SearchResult } from '@components/organisms/SearchPage/useQueryBySearchOption'
 import { getCategoryColorLocalStyle } from '@utils/colors'
 import { generateImageSizes } from '@utils/generateImageSizes'
 import { isDefined } from '@utils/isDefined'
@@ -14,12 +14,12 @@ import Image from 'next/image'
 import React, { Fragment } from 'react'
 import { twMerge } from 'tailwind-merge'
 
-type SearchCardComposedProps = {
+type SearchResultCardProps = {
   data: SearchResult
   showBottomDivider: boolean
 }
 
-const SearchCardComposed = ({ data, showBottomDivider }: SearchCardComposedProps) => {
+const SearchResultCard = ({ data, showBottomDivider }: SearchResultCardProps) => {
   return (
     <div
       className={cx(
@@ -28,24 +28,24 @@ const SearchCardComposed = ({ data, showBottomDivider }: SearchCardComposedProps
       )}
     >
       {data.coverImageSrc ? (
-        <SearchCardComposed.ImageFromUrl imgUrl={data.coverImageSrc} />
+        <SearchResultCard.ImageFromUrl imgUrl={data.coverImageSrc} />
       ) : data.customIconName ? (
-        <SearchCardComposed.ImageFromIconName iconName={data.customIconName} />
+        <SearchResultCard.ImageFromIconName iconName={data.customIconName} />
       ) : data.pageColor ? (
-        <SearchCardComposed.ImageFromPageColor pageColor={data.pageColor} />
+        <SearchResultCard.ImageFromPageColor pageColor={data.pageColor} />
       ) : null}
       <div className="flex w-full flex-row gap-6 py-4 lg:p-6">
         <div className="flex w-full flex-col justify-center gap-3 lg:gap-2">
-          <SearchCardComposed.TitleWithLink title={data.title ?? ''} href={data.linkHref ?? ''} />
-          <SearchCardComposed.Metadata metadata={data.metadata?.filter(isDefined) ?? []} />
+          <SearchResultCard.TitleWithLink title={data.title ?? ''} href={data.linkHref ?? ''} />
+          <SearchResultCard.Metadata metadata={data.metadata?.filter(isDefined) ?? []} />
         </div>
-        {data.linkHref && <SearchCardComposed.Button className="hidden lg:block" />}
+        {data.linkHref && <SearchResultCard.Button className="hidden lg:block" />}
       </div>
     </div>
   )
 }
 
-SearchCardComposed.IconContainer = function ({
+SearchResultCard.IconContainer = function ({
   children,
   className,
 }: {
@@ -64,7 +64,7 @@ SearchCardComposed.IconContainer = function ({
   )
 }
 
-SearchCardComposed.ImageFromIconName = function ({
+SearchResultCard.ImageFromIconName = function ({
   iconName,
   className,
 }: {
@@ -73,13 +73,13 @@ SearchCardComposed.ImageFromIconName = function ({
 }) {
   if (!iconName) return null
   return (
-    <SearchCardComposed.IconContainer className={className}>
+    <SearchResultCard.IconContainer className={className}>
       <Icon iconName={iconName} />
-    </SearchCardComposed.IconContainer>
+    </SearchResultCard.IconContainer>
   )
 }
 
-SearchCardComposed.ImageFromPageColor = function ({
+SearchResultCard.ImageFromPageColor = function ({
   pageColor,
   className,
 }: {
@@ -102,7 +102,7 @@ SearchCardComposed.ImageFromPageColor = function ({
   )
 }
 
-SearchCardComposed.ImageFromUrl = function ({
+SearchResultCard.ImageFromUrl = function ({
   imgUrl,
   className,
 }: {
@@ -128,7 +128,7 @@ SearchCardComposed.ImageFromUrl = function ({
   )
 }
 
-SearchCardComposed.TitleWithLink = function ({
+SearchResultCard.TitleWithLink = function ({
   title,
   href,
   className,
@@ -165,7 +165,7 @@ SearchCardComposed.TitleWithLink = function ({
   )
 }
 
-SearchCardComposed.Metadata = function ({
+SearchResultCard.Metadata = function ({
   metadata,
   className,
 }: {
@@ -200,7 +200,7 @@ SearchCardComposed.Metadata = function ({
   )
 }
 
-SearchCardComposed.Button = function ({ className }: { className?: string }) {
+SearchResultCard.Button = function ({ className }: { className?: string }) {
   return (
     <div className={twMerge('my-auto self-end text-main-700', className)}>
       <ChevronRightIcon />
@@ -208,4 +208,4 @@ SearchCardComposed.Button = function ({ className }: { className?: string }) {
   )
 }
 
-export default SearchCardComposed
+export default SearchResultCard

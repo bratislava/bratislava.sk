@@ -13,7 +13,7 @@ type SearchBarProps = React.DetailedHTMLProps<
   placeholder?: string
 }
 
-const SearchBar = ({
+const SearchBarDeprecated = ({
   className,
   value,
   placeholder = 'Vyhľadávanie',
@@ -26,4 +26,4 @@ const SearchBar = ({
     </div>
   </div>
 )
-export default SearchBar
+export default SearchBarDeprecated
