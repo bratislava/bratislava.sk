@@ -1,7 +1,7 @@
 import { InbaReleaseEntityFragment } from '@backend/graphql'
 import { Typography } from '@bratislava/component-library'
 import PageHeader from '@bratislava/ui-bratislava/PageHeader/PageHeader'
-import { SectionContainer } from '@bratislava/ui-bratislava/SectionContainer/SectionContainer'
+import SectionContainer from '@bratislava/ui-bratislava/SectionContainer/SectionContainer'
 import ImagePlaceholder from '@components/atoms/ImagePlaceholder'
 import Markdown from '@components/atoms/Markdown'
 import StrapiImage from '@components/atoms/StrapiImage'

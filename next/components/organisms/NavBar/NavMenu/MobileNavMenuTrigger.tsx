@@ -1,5 +1,5 @@
 import { ChevronRightIcon } from '@assets/ui-icons'
-import { Icon } from '@components/atoms/icon/Icon'
+import Icon from '@components/atoms/icon/Icon'
 import * as NavigationMenu from '@radix-ui/react-navigation-menu'
 import React, { forwardRef } from 'react'
 

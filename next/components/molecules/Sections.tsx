@@ -1,5 +1,5 @@
 import { SectionsFragment } from '@backend/graphql'
-import { SectionContainer } from '@bratislava/ui-bratislava/SectionContainer/SectionContainer'
+import SectionContainer from '@bratislava/ui-bratislava/SectionContainer/SectionContainer'
 import BlogPostsByCategory from '@components/molecules/sections/general/ArticlesListSection/BlogPostsByCategory'
 import BlogPostsByTags from '@components/molecules/sections/general/ArticlesListSection/BlogPostsByTags'
 import BlogPostsList from '@components/molecules/sections/general/ArticlesListSection/BlogPostsList'

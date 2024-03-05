@@ -9,7 +9,7 @@ import { GetStaticPaths, GetStaticProps } from 'next'
 import Head from 'next/head'
 import * as React from 'react'
 
-interface StaticParams extends ParsedUrlQuery {
+type StaticParams = ParsedUrlQuery & {
   slug: string
 }
 

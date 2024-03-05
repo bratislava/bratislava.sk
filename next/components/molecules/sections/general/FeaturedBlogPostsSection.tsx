@@ -1,5 +1,5 @@
 import { FeaturedBlogPostsSectionFragment } from '@backend/graphql'
-import { FeaturedBlogPosts } from '@components/ui/FeaturedBlogPosts/FeaturedBlogPosts'
+import FeaturedBlogPosts from '@components/ui/FeaturedBlogPosts/FeaturedBlogPosts'
 import { isDefined } from '@utils/isDefined'
 import React from 'react'
 

@@ -1,5 +1,5 @@
-import cx from 'classnames'
 import React from 'react'
+import { twMerge } from 'tailwind-merge'
 
 import BookFullWidth from './dividers/book-full-width.svg'
 import BookMobileWidth from './dividers/book-mobile-width.svg'
@@ -125,12 +125,12 @@ const DIVIDER = {
   },
 }
 
-interface DividerProps {
+type DividerProps = {
   className?: string
   dividerStyle?: string
 }
 
-export const Divider = ({ className, dividerStyle }: DividerProps) => {
+const Divider = ({ className, dividerStyle }: DividerProps) => {
   const dividerType = (dividerStyle?.split('_')[0] ?? 'hrad') as keyof typeof DIVIDER
   const dividerByType = DIVIDER[dividerType]
   if (!dividerByType) {
@@ -144,7 +144,7 @@ export const Divider = ({ className, dividerStyle }: DividerProps) => {
   } = dividerByType
 
   return (
-    <div className={cx('flex justify-center', className)}>
+    <div className={twMerge('flex justify-center', className)}>
       <DisplayComponent className="hidden lg:block" />
       <TabletComponent className="hidden md:block lg:hidden" />
       <MobileComponent className="md:hidden" />

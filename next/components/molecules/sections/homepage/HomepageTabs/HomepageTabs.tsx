@@ -6,11 +6,11 @@ import { useTranslations } from 'next-intl'
 import React, { useMemo } from 'react'
 import { Tab, TabList, Tabs } from 'react-aria-components'
 
-export interface HomepageTabsProps {
+export type HomepageTabsProps = {
   className?: string
 }
 
-export const HomepageTabs = ({ className }: HomepageTabsProps) => {
+const HomepageTabs = ({ className }: HomepageTabsProps) => {
   const t = useTranslations('HomepageTabs')
 
   const tabs = useMemo(() => {

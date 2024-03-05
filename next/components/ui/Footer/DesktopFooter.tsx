@@ -1,6 +1,6 @@
 import EULogo from '@assets/images/EULogo.svg'
 import { Typography } from '@bratislava/component-library'
-import { Brand } from '@components/ui/Brand/Brand'
+import Brand from '@components/ui/Brand/Brand'
 import HorizontalDivider from '@components/ui/Divider/HorizontalDivider'
 import {
   FooterAccessibilityLink,
@@ -10,7 +10,7 @@ import {
   FooterLanguageSwitcher,
   FooterSocialLinks,
 } from '@components/ui/Footer/FooterShared'
-import { SectionContainer } from '@components/ui/SectionContainer/SectionContainer'
+import SectionContainer from '@components/ui/SectionContainer/SectionContainer'
 import { useGeneralContext } from '@utils/generalContext'
 import { isDefined } from '@utils/isDefined'
 import * as React from 'react'

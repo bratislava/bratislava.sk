@@ -1,7 +1,7 @@
 import { ChevronRightIcon } from '@assets/ui-icons'
 import { Enum_Page_Pagecolor, Enum_Pagecategory_Color } from '@backend/graphql'
 import { Typography } from '@bratislava/component-library'
-import { Icon } from '@components/atoms/icon/Icon'
+import Icon from '@components/atoms/icon/Icon'
 import ImagePlaceholder from '@components/atoms/ImagePlaceholder'
 import MLink from '@components/forms/simple-components/MLink'
 import { SearchResult } from '@components/organisms/SearchPage/useQueryBySearchOption'

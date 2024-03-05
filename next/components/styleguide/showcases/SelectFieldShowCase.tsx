@@ -3,8 +3,8 @@ import SelectField, {
 } from '@components/forms/widget-components/SelectField/SelectField'
 import React, { useState } from 'react'
 
-import { Stack } from '../Stack'
-import { Wrapper } from '../Wrapper'
+import Stack from '../Stack'
+import Wrapper from '../Wrapper'
 
 const SelectFieldShowCase = () => {
   const enumOptions: SelectOption[] = [

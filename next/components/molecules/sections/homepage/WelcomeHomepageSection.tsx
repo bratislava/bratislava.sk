@@ -1,5 +1,5 @@
 import { Typography } from '@bratislava/component-library'
-import { SectionContainer } from '@bratislava/ui-bratislava/SectionContainer/SectionContainer'
+import SectionContainer from '@bratislava/ui-bratislava/SectionContainer/SectionContainer'
 import WelcomeCard from '@components/ui/WelcomeCard/WelcomeCard'
 import { useGeneralContext } from '@utils/generalContext'
 import { generateImageSizes } from '@utils/generateImageSizes'
@@ -12,7 +12,7 @@ import { useMemo, useState } from 'react'
 import { getParsedMenus } from '../../../organisms/NavBar/NavMenu/getParsedMenus'
 import HomePageSearch from '../../HomePageSearch'
 
-export const WelcomeHomepageSection = () => {
+const WelcomeHomepageSection = () => {
   const t = useTranslations()
   const { menu } = useGeneralContext()
   const { homepage } = useHomepageContext()
@@ -65,3 +65,5 @@ export const WelcomeHomepageSection = () => {
     </SectionContainer>
   )
 }
+
+export default WelcomeHomepageSection

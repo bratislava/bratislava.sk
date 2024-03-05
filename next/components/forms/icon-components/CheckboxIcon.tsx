@@ -1,7 +1,7 @@
 import SelectedIcon from '@assets/images/forms/selected.svg'
 import cx from 'classnames'
 
-interface SelectCheckboxProps {
+type SelectCheckboxProps = {
   checked?: boolean
   className?: string
 }

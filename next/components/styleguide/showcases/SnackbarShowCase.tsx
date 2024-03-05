@@ -1,8 +1,8 @@
 import Button from '@components/forms/simple-components/Button'
 import { useSnackbar } from 'react-simple-snackbar'
 
-import { Stack } from '../Stack'
-import { Wrapper } from '../Wrapper'
+import Stack from '../Stack'
+import Wrapper from '../Wrapper'
 
 const SnackbarShowCase = () => {
   const optionsSuccess = {

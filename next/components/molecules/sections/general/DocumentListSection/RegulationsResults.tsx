@@ -3,9 +3,9 @@ import { getVznSwrKey, vznFetcher, VznFilters } from '@backend/meili/fetchers/vz
 import { VznMeili } from '@backend/meili/types'
 import LoadingOverlay from '@components/organisms/SearchPage/LoadingOverlay'
 import LoadingSpinner from '@components/ui/LoadingSpinner/LoadingSpinner'
-import { NoResultsFound } from '@components/ui/NoResultsFound/NoResultsFound'
+import NoResultsFound from '@components/ui/NoResultsFound/NoResultsFound'
 import Pagination from '@components/ui/Pagination/Pagination'
-import { RegulationListItem } from '@components/ui/RegulationListItem/RegulationListItem'
+import RegulationListItem from '@components/ui/RegulationListItem/RegulationListItem'
 import DocumentListCategorysMap from '@utils/documentListCategory'
 import useGetSwrExtras from '@utils/useGetSwrExtras'
 import { isPresent } from '@utils/utils'
@@ -53,7 +53,7 @@ const Documents = ({ data }: { data: SearchResponse<VznMeili>; filters: VznFilte
   )
 }
 
-interface DocumentsResultsProps {
+type DocumentsResultsProps = {
   filters: VznFilters
   onPageChange: (page: number) => void
 }

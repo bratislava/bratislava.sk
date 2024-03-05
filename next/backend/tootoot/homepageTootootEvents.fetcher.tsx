@@ -7,7 +7,7 @@ import sortBy from 'lodash/sortBy'
 const eventsCountToFetch = 24
 const eventsCountToShow = 12
 
-interface TootootEventResponse {
+type TootootEventResponse = {
   ProfileName: string
   ProfilePicture: string
   ShareImage: string
@@ -77,7 +77,7 @@ interface TootootEventResponse {
   EntityType: string
 }
 
-interface Profile {
+type Profile = {
   ProfileName: string
   ProfilePicture: null | string
   IsOrganizer: boolean
@@ -86,7 +86,7 @@ interface Profile {
   Confirmed?: boolean
 }
 
-interface Venue {
+type Venue = {
   Name: string
   _id: string
   EntityType: string

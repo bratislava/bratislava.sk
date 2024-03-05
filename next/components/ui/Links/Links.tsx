@@ -3,16 +3,17 @@ import Button from '@components/forms/simple-components/Button'
 import { isExternalLink } from '@utils/isExternalLink'
 import cx from 'classnames'
 import React from 'react'
+import { twMerge } from 'tailwind-merge'
 
-export interface LinksProps {
+export type LinksProps = {
   className?: string
   title?: string
   pageLinks: { title?: string; url?: string; anchor?: string }[]
 }
 
-export const Links = ({ className, title, pageLinks }: LinksProps) => {
+const Links = ({ className, title, pageLinks }: LinksProps) => {
   return (
-    <div className={cx(className, 'flex w-full flex-col md:w-10/12')}>
+    <div className={twMerge('flex w-full flex-col md:w-10/12', className)}>
       {title && (
         <Typography type="h2" size="h4">
           {title}

@@ -1,11 +1,11 @@
 import Checkbox from '@assets/images/checkbox.svg'
 import SearchIcon from '@assets/images/search-icon.svg'
 import Button from '@components/forms/simple-components/Button'
-import cx from 'classnames'
 import { useTranslations } from 'next-intl'
 import { Dispatch, KeyboardEventHandler, SetStateAction } from 'react'
+import { twMerge } from 'tailwind-merge'
 
-export interface AdvancedSearchProps {
+export type AdvancedSearchProps = {
   className?: string
   placeholder?: string
   title?: string
@@ -17,13 +17,13 @@ export interface AdvancedSearchProps {
   setSearchQuery: (query: string) => void
 }
 
-export interface SearchOptionProps {
+export type SearchOptionProps = {
   key: string
   value: string
 }
 
 // TODO use BasicSearch instead of duplicating
-export const AdvancedSearch = ({
+const AdvancedSearch = ({
   className,
   placeholder,
   title,
@@ -64,7 +64,7 @@ export const AdvancedSearch = ({
   }
 
   return (
-    <div className={cx('flex w-full flex-col', className)}>
+    <div className={twMerge('flex w-full flex-col', className)}>
       {/* FIXME Typography. Convert to use Typography. Issue: Different font weight */}
       <h1 className="text-h3 scroll-mt-24 pb-3 font-medium lg:scroll-mt-48">{title}</h1>
       <div className="hidden pb-6 lg:flex">
@@ -130,3 +130,5 @@ export const AdvancedSearch = ({
     </div>
   )
 }
+
+export default AdvancedSearch

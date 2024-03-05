@@ -6,7 +6,7 @@ import { useTranslations } from 'next-intl'
 import React, { useEffect, useState } from 'react'
 import { Label, Selection, TagGroup, TagList, Text } from 'react-aria-components'
 
-export interface InbaArticlesFilterProps {
+export type InbaArticlesFilterProps = {
   tags: InbaTagEntityFragment[]
   subCategories?: string[]
   subtext?: string

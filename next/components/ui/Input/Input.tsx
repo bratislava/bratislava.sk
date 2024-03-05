@@ -1,16 +1,16 @@
 import cx from 'classnames'
 import * as React from 'react'
 
-interface IProps {
+type InputProps = {
   hasError?: boolean
 }
 
-export const Input = ({
+const Input = ({
   className,
   hasError,
   ...props
 }: React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> &
-  IProps) => (
+  InputProps) => (
   <input
     className={cx('base-input w-full', className, {
       'base-input--with-error': hasError,

@@ -1,13 +1,13 @@
 import MinusIcon from '@assets/images/minus.svg'
 import PlusIcon from '@assets/images/plus.svg'
 import { Typography } from '@bratislava/component-library'
-import { Input } from '@bratislava/ui-bratislava/Input/Input'
+import Input from '@bratislava/ui-bratislava/Input/Input'
 import Button from '@components/forms/simple-components/Button'
-import cx from 'classnames'
 import { useTranslations } from 'next-intl'
 import React, { FormEvent } from 'react'
+import { twMerge } from 'tailwind-merge'
 
-interface IProps {
+type MinimumCalculatorProps = {
   className?: string
   singleAdultValue: number
   anotherAdultValue: number
@@ -27,7 +27,7 @@ const calculateLivingSituation = (
   return [minimumWage, canAccomodate]
 }
 
-interface IInputFieldProps {
+type InputFieldProps = {
   id: string
   label: string
   value: number
@@ -42,7 +42,7 @@ const InputField = ({
   onChange,
   onAddSub,
   ...rest
-}: IInputFieldProps &
+}: InputFieldProps &
   Omit<
     React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>,
     'onChange'
@@ -87,7 +87,7 @@ const MinimumCalculator = ({
   singleAdultValue,
   anotherAdultValue,
   childValue,
-}: IProps) => {
+}: MinimumCalculatorProps) => {
   const t = useTranslations('MinimumCalculator')
 
   const [adults, setAdults] = React.useState(1)
@@ -110,7 +110,7 @@ const MinimumCalculator = ({
   }
 
   return (
-    <div className={cx('bg-category-200 text-center text-font', className)}>
+    <div className={twMerge('bg-category-200 text-center text-font', className)}>
       <Typography type="h2" size="h3">
         {t('title')}
       </Typography>

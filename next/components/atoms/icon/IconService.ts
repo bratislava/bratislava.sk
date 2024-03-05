@@ -122,12 +122,12 @@ export type MenuIcon = string
 // The type of any icon is fine.
 type IconComponent = typeof Accommodation48pxIcon
 
-interface IconUrlMap {
+type IconUrlMap = {
   size_48: { [key: MenuIcon]: IconComponent }
   size_64: { [key: MenuIcon]: IconComponent }
 }
 
-interface IconCollection {
+type IconCollection = {
   size_64: IconComponent
   size_48: IconComponent
 }

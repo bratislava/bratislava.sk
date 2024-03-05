@@ -10,6 +10,7 @@ import React, {
   useId,
   useState,
 } from 'react'
+import { twMerge } from 'tailwind-merge'
 
 import FieldErrorMessage from '../../info-components/FieldErrorMessage'
 import FieldHeader from '../../info-components/FieldHeader'
@@ -17,13 +18,13 @@ import { ExplicitOptionalType } from '../../types/ExplicitOptional'
 import Dropdown from './Dropdown'
 import SelectFieldBox from './SelectFieldBox'
 
-export interface SelectOption {
+export type SelectOption = {
   const: string | number
   title?: string
   description?: string
 }
 
-interface SelectFieldProps {
+type SelectFieldProps = {
   label: string
   type?: 'one' | 'multiple' | 'arrow' | 'radio'
   value?: SelectOption[]
@@ -179,10 +180,7 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
   // RENDER
   return (
     <section
-      className={cx(
-        'relative flex w-full max-w-[200px] flex-col transition-all xs:max-w-[320px]',
-        className,
-      )}
+      className={twMerge('relative flex w-full max-w-[200px] flex-col transition-all', className)}
     >
       {/* FIELD HEADER WITH DESCRIPTION AND LABEL */}
       <FieldHeader

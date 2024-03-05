@@ -8,9 +8,9 @@ import { formatDate } from '@utils/local-date'
 import React from 'react'
 import { DialogTrigger } from 'react-aria-components'
 
-import { Panel } from '../Panel/Panel'
+import Panel from '../Panel/Panel'
 
-export interface OfficialBoardCardProps {
+export type OfficialBoardCardProps = {
   title: string
   id: string
   createdAt: string
@@ -19,7 +19,7 @@ export interface OfficialBoardCardProps {
   viewButtonText: string
 }
 
-export const OfficialBoardCard = ({
+const OfficialBoardCard = ({
   title,
   createdAt,
   id,
@@ -59,3 +59,5 @@ export const OfficialBoardCard = ({
     </Panel>
   )
 }
+
+export default OfficialBoardCard

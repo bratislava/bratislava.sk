@@ -2,14 +2,14 @@ import { Enum_Componentsectionscolumnedtext_Contentalignment } from '@backend/gr
 import Markdown from '@components/atoms/Markdown'
 import cx from 'classnames'
 
-export interface ColumnedTextProps {
+export type ColumnedTextProps = {
   className?: string
   content: string
   hasBackground?: boolean
   contentAlignment?: Enum_Componentsectionscolumnedtext_Contentalignment | null
 }
 
-export const ColumnedText = ({
+const ColumnedText = ({
   content,
   hasBackground,
   contentAlignment = Enum_Componentsectionscolumnedtext_Contentalignment.Left,

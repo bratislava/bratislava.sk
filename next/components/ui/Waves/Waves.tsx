@@ -1,18 +1,17 @@
-import cx from 'classnames'
-
 import WaveBottomLarge from './waves/WaveBottomLarge'
 import WaveBottomSmall from './waves/WaveBottomSmall'
 import WaveTopLarge from './waves/WaveTopLarge'
 import WaveTopSmall from './waves/WaveTopSmall'
+import { twMerge } from 'tailwind-merge'
 
-interface WavesProps {
+type WavesProps = {
   wavePosition: 'top' | 'bottom'
   waveColor: string
   backgroundColor?: string
   className?: string
 }
 
-export const Waves = ({
+const Waves = ({
   className,
   backgroundColor = 'transparent',
   waveColor,
@@ -22,7 +21,7 @@ export const Waves = ({
     <div
       aria-hidden
       style={{ backgroundColor, color: waveColor }}
-      className={cx('overflow-hidden', className)}
+      className={twMerge('overflow-hidden', className)}
     >
       {wavePosition === 'top' && (
         <>

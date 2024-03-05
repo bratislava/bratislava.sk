@@ -1,7 +1,7 @@
 import Alert from 'components/forms/info-components/Alert'
 
-import { Stack } from '../Stack'
-import { Wrapper } from '../Wrapper'
+import Stack from '../Stack'
+import Wrapper from '../Wrapper'
 
 const AlertShowCase = () => {
   return (

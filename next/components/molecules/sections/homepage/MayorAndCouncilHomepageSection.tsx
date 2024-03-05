@@ -10,7 +10,7 @@ type Props = {
   className?: string
 }
 
-export const MayorAndCouncilHomepageSection = ({ className }: Props) => {
+const MayorAndCouncilHomepageSection = ({ className }: Props) => {
   const t = useTranslations()
 
   const { homepage } = useHomepageContext()

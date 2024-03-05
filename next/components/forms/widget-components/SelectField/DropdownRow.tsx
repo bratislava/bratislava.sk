@@ -7,7 +7,7 @@ import CheckboxIcon from '../../icon-components/CheckboxIcon'
 import RadioButtonIcon from '../../icon-components/RadioButtonIcon'
 import { SelectOption } from './SelectField'
 
-interface DropdownRowProps {
+type DropdownRowProps = {
   option: SelectOption
   isBold?: boolean
   selected?: boolean

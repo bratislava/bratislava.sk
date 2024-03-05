@@ -6,11 +6,11 @@ import { useHover } from 'usehooks-ts'
 
 import { MenuItem } from '../../organisms/NavBar/NavMenu/navMenuTypes'
 
-export interface WelcomeCardProps {
+export type WelcomeCardProps = {
   item: MenuItem
 }
 
-export const WelcomeCard = ({ item }: WelcomeCardProps) => {
+const WelcomeCard = ({ item }: WelcomeCardProps) => {
   const hoverRef = useRef<HTMLDivElement>(null)
   const isHover = useHover(hoverRef)
 

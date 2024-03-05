@@ -10,7 +10,7 @@ import React from 'react'
 
 const imageSizes = generateImageSizes({ default: '100vw', lg: '33vw' })
 
-export const EventsHomepageSection = () => {
+const EventsHomepageSection = () => {
   const { homepage, tootootEvents } = useHomepageContext()
   const { eventsSection } = homepage?.attributes ?? {}
   const { title, text, eventsPageLink } = eventsSection ?? {}

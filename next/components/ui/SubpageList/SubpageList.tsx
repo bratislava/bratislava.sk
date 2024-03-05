@@ -1,20 +1,20 @@
 import MLink from '@components/forms/simple-components/MLink'
 import { isExternalLink } from '@utils/isExternalLink'
-import cx from 'classnames'
+import { twMerge } from 'tailwind-merge'
 
-export interface SubpageListProps {
+export type SubpageListProps = {
   className?: string
   subpageList?: { title?: string; url?: string; anchor?: string }[]
 }
 
-export const SubpageList = ({ className, subpageList }: SubpageListProps) => {
+const SubpageList = ({ className, subpageList }: SubpageListProps) => {
   if (!subpageList || subpageList.length === 0) {
     return null
   }
 
   return (
     <div
-      className={cx(
+      className={twMerge(
         'mb-10 mt-10 grid grid-cols-1 gap-x-8 gap-y-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 lg:gap-x-10',
         className,
       )}

@@ -3,7 +3,7 @@ import Chip from '@components/forms/simple-components/Chip'
 import SearchBar from '@components/organisms/SearchPage/SearchBar'
 import SearchResults from '@components/organisms/SearchPage/SearchResults'
 import { SearchFilters } from '@components/organisms/SearchPage/useQueryBySearchOption'
-import { SectionContainer } from '@components/ui/SectionContainer/SectionContainer'
+import SectionContainer from '@components/ui/SectionContainer/SectionContainer'
 import { getCategoryColorLocalStyle } from '@utils/colors'
 import { useTranslations } from 'next-intl'
 import React, { useEffect, useRef, useState } from 'react'
@@ -30,7 +30,7 @@ export type SearchOption = {
   displayNamePlural: string
 }
 
-const SearchPageContent = () => {
+const GlobalSearchPageContent = () => {
   const t = useTranslations()
 
   const [routerQueryValue] = useQueryParam('keyword', withDefault(StringParam, ''))
@@ -228,4 +228,4 @@ const SearchPageContent = () => {
   )
 }
 
-export default SearchPageContent
+export default GlobalSearchPageContent

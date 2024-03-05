@@ -1,14 +1,13 @@
 import { TopServicesItemFragment } from '@backend/graphql'
+import TopServicesItem from '@bratislava/ui-bratislava/TopServicesItem/TopServicesItem'
 import Carousel from '@components/organisms/Carousel/Carousel'
 import chunk from 'lodash/chunk'
 
-import { TopServicesItem } from '../TopServicesItem/TopServicesItem'
-
-interface IProps {
+type TopServicesProps = {
   items: TopServicesItemFragment[] | null | undefined
 }
 
-export const TopServices = ({ items }: IProps) => (
+const TopServices = ({ items }: TopServicesProps) => (
   <>
     <Carousel
       className="md:hidden"

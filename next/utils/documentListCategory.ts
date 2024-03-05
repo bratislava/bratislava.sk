@@ -8,7 +8,7 @@ import SocialnaPomocASkolstvo from '@assets/images/socialnaPomocASkolstvo.svg'
 import UzemnePlanovanie from '@assets/images/uzemnePlanovanie.svg'
 import { FunctionComponent, SVGProps } from 'react'
 
-interface DocumentListCategorysType {
+type DocumentListCategorysType = {
   key: string
   value: string
   icon: FunctionComponent<SVGProps<SVGSVGElement>>

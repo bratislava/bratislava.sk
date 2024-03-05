@@ -18,7 +18,7 @@ type RegulationListItemProps = {
   moreDocuments: string[]
 }
 
-export const RegulationListItem = ({
+const RegulationListItem = ({
   categoryName,
   title,
   Icon,
@@ -74,3 +74,5 @@ export const RegulationListItem = ({
     </div>
   )
 }
+
+export default RegulationListItem

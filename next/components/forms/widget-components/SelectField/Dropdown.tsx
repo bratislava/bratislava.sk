@@ -6,7 +6,7 @@ import DropdownRow from './DropdownRow'
 import SelectAllDropdownRow from './SelectAllDropdownRow'
 import { SelectOption } from './SelectField'
 
-interface DropdownProps {
+type DropdownProps = {
   enumOptions: SelectOption[]
   value: SelectOption[]
   selectAllOption?: boolean

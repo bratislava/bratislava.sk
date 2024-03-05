@@ -1,8 +1,8 @@
 import SingleCheckbox from 'components/forms/widget-components/Checkbox/SingleCheckbox'
 import React from 'react'
 
-import { Stack } from '../Stack'
-import { Wrapper } from '../Wrapper'
+import Stack from '../Stack'
+import Wrapper from '../Wrapper'
 
 const SingleCheckboxShowCase = () => {
   return (
