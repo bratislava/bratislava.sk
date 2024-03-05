@@ -180,10 +180,7 @@ const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectField
   // RENDER
   return (
     <section
-      className={twMerge(
-        'xs:max-w-[320px] relative flex w-full max-w-[200px] flex-col transition-all',
-        className,
-      )}
+      className={twMerge('relative flex w-full max-w-[200px] flex-col transition-all', className)}
     >
       {/* FIELD HEADER WITH DESCRIPTION AND LABEL */}
       <FieldHeader

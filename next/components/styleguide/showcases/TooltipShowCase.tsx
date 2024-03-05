@@ -4,9 +4,7 @@ import { FC } from 'react'
 import Stack from '../Stack'
 import Wrapper from '../Wrapper'
 
-type TooltipShowCaseProps = {}
-
-const TooltipShowCase: FC<TooltipShowCaseProps> = ({}: TooltipShowCaseProps) => {
+const TooltipShowCase: FC = () => {
   return (
     <Wrapper title="Tooltip" direction="column">
       <Stack direction="row">

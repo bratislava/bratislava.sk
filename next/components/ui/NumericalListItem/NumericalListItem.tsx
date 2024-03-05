@@ -3,7 +3,6 @@ import { NumericalListItemObject } from '@components/ui/NumericalListSectionUI/N
 import cx from 'classnames'
 
 import DashedLine from '../DashedLine/DashedLine'
-import exp from 'constants'
 
 export type NumericalListItemProps = {
   index: number
