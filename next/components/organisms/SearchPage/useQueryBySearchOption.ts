@@ -22,28 +22,41 @@ import {
   pagesFetcherUseQuery,
   PagesFilters,
 } from '@backend/meili/fetchers/pagesFetcher'
+import {
+  getRegulationsQueryKey,
+  RegulationFilters,
+  regulationsFetcher,
+} from '@backend/meili/fetchers/regulationsFetcher'
 import { PageMeili } from '@backend/meili/types'
 import {
   getMsGraphSearchQueryKey,
   msGraphSearchFetcher,
 } from '@backend/ms-graph/fetchers/msGraphSearch.fetcher'
-import { SearchOption } from '@components/pages/searchPageContentNew'
+import { SearchOption } from '@components/pages/SearchPageContent'
 import { useQuery } from '@tanstack/react-query'
+import { isDefined } from '@utils/isDefined'
 import { formatDate } from '@utils/local-date'
-import { useLocale } from 'next-intl'
+import { useLocale, useTranslations } from 'next-intl'
+import { ReactNode } from 'react'
 
-export type SearchFilters = PagesFilters | BlogPostsFilters | InbaArticlesFilters
+export type SearchFilters =
+  | PagesFilters
+  | BlogPostsFilters
+  | InbaArticlesFilters
+  | RegulationFilters
 
 export type SearchResult = {
   title: string | null | undefined
   linkHref?: string | null | undefined
   metadata?: (string | null | undefined)[]
   coverImageSrc?: string | null | undefined
-  pageColor?: Enum_Page_Pagecolor | Enum_Pagecategory_Color
+  pageColor?: Enum_Page_Pagecolor | Enum_Pagecategory_Color | null
   customIconName?: string
+  customIcon?: ReactNode
 }
 
 export const useQueryBySearchOption = (optionKey: SearchOption['id'], filters: SearchFilters) => {
+  const t = useTranslations()
   const locale = useLocale()
 
   const pagesQuery = useQuery({
@@ -113,6 +126,50 @@ export const useQueryBySearchOption = (optionKey: SearchOption['id'], filters: S
     },
   })
 
+  const regulationsQuery = useQuery({
+    // TODO filters type
+    queryKey: getRegulationsQueryKey(filters),
+    queryFn: () => regulationsFetcher(filters),
+    keepPreviousData: true,
+    select: (data) => {
+      const formattedData: SearchResult[] =
+        data?.hits?.map((regulation): SearchResult => {
+          const categoryDisplayName = isDefined(regulation.category)
+            ? t(`Regulation.category.${regulation.category}`)
+            : null
+
+          // we want to see, whether this regulation is amending any cancelled regulations, because in that case, this regulation is also cancelled
+          const cancelledAmendees =
+            regulation.amending?.filter(
+              (amendee) => isDefined(amendee) && isDefined(amendee.cancellation),
+            ) ?? []
+          const isCancelled = cancelledAmendees.length > 0 || isDefined(regulation.cancellation)
+
+          const effectivityStatus = isCancelled
+            ? t('Regulation.validity.cancelled')
+            : t('Regulation.validity.valid')
+          const effectiveFrom = formatDate(regulation.effectiveFrom)
+          const effectiveUntil = formatDate(
+            regulation.cancellation?.effectiveFrom ??
+              cancelledAmendees[0]?.cancellation?.effectiveFrom,
+          )
+
+          const effectivityMessage = `${effectivityStatus} (${
+            isCancelled ? '' : `${t('Regulation.validity.since')} `
+          }${effectiveFrom}${isCancelled ? ` – ${effectiveUntil}` : ''})`
+
+          return {
+            title: `VZN ${regulation.regNumber} ${regulation.titleText ?? ''}`,
+            linkHref: `/vzn/${regulation.slug}`,
+            metadata: [categoryDisplayName, effectivityMessage],
+            customIconName: `regulation_${regulation.category ?? 'ostatne'}`,
+          }
+        }) ?? []
+
+      return { searchResultsData: formattedData, searchResultsCount: data?.estimatedTotalHits ?? 0 }
+    },
+  })
+
   const usersQuery = useQuery({
     queryKey: getMsGraphSearchQueryKey(filters.search),
     queryFn: () => msGraphSearchFetcher(filters.search),
@@ -163,6 +220,9 @@ export const useQueryBySearchOption = (optionKey: SearchOption['id'], filters: S
 
     case 'users':
       return usersQuery
+
+    case 'regulations':
+      return regulationsQuery
 
     case 'officialBoard':
       return officialBoardQuery

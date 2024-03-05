@@ -459,6 +459,19 @@ fragment ContactsSection on ComponentSectionsContactsSection {
   type
 }
 
+fragment RegulationsListSection on ComponentSectionsRegulationsList {
+  title
+  text
+}
+
+fragment RegulationsSection on ComponentSectionsRegulations {
+  regulations {
+    data {
+      ...RegulationEntity
+    }
+  }
+}
+
 fragment Sections on PageSectionsDynamicZone {
   __typename
 
@@ -570,6 +583,14 @@ fragment Sections on PageSectionsDynamicZone {
 
   ... on ComponentSectionsContactsSection {
     ...ContactsSection
+  }
+
+  ... on ComponentSectionsRegulationsList {
+    ...RegulationsListSection
+  }
+
+  ... on ComponentSectionsRegulations {
+    ...RegulationsSection
   }
 }
 

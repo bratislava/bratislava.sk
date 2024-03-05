@@ -1,5 +1,7 @@
+import Ostatne from '@assets/images/ostatne.svg'
 import { getVznSwrKey, vznFetcher, VznFilters } from '@backend/meili/fetchers/vznFetcher'
 import { VznMeili } from '@backend/meili/types'
+import LoadingOverlay from '@components/organisms/SearchPage/LoadingOverlay'
 import LoadingSpinner from '@components/ui/LoadingSpinner/LoadingSpinner'
 import { NoResultsFound } from '@components/ui/NoResultsFound/NoResultsFound'
 import Pagination from '@components/ui/Pagination/Pagination'
@@ -11,8 +13,6 @@ import { SearchResponse } from 'meilisearch'
 import { useTranslations } from 'next-intl'
 import useSwr from 'swr'
 
-import LoadingOverlay from '../../../SearchPage/LoadingOverlay'
-
 const Documents = ({ data }: { data: SearchResponse<VznMeili>; filters: VznFilters }) => {
   const t = useTranslations()
 
@@ -22,7 +22,10 @@ const Documents = ({ data }: { data: SearchResponse<VznMeili>; filters: VznFilte
         <div className="text-h4 pb-5 pt-14 font-medium lg:pb-6">{t('listOfDocuments')}</div>
         <div className="modal-content-rent mb-6 flex flex-col gap-4 md:w-auto lg:gap-6">
           {data.hits.map((vzn) => {
-            const category = DocumentListCategorysMap.get(vzn.category)
+            const category = DocumentListCategorysMap.get(vzn.category ?? 'ostatne') ?? {
+              value: 'Ostatné',
+              icon: Ostatne,
+            }
             return (
               <RegulationListItem
                 categoryName={category.value}

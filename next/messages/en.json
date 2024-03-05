@@ -270,6 +270,45 @@
     "contact": "Contact",
     "contacts": "Contacts",
     "document": "Document",
-    "documents": "Documents"
+    "documents": "Documents",
+    "regulation": "Regulation",
+    "regulations": "Regulations"
+  },
+  "Regulation": {
+    "regulation": "Generally binding ordinance",
+    "regulations": "Generally binding ordinances",
+    "validity": {
+      "cancelled": "Cancelled",
+      "valid": "Valid",
+      "since": "since"
+    },
+    "mainDocument": "Main document",
+    "consolidatedText": "Consolidated text",
+    "fullTextRegulation": "Full text regulation",
+    "noConsolidatedTextMessage": "This regulation has no consolidated text document.",
+    "attachments": "Attachments",
+    "noAttachmentsMessage": "This regulation has no attachments.",
+    "amendments": "Amendments",
+    "noAmendmentsMessage": "There are no amendments to this regulation.",
+    "influenceOnOtherRegulations": "Influence on other regulations",
+    "thisRegulationAmends": "This regulation amends",
+    "thisRegulationDoesntAmend": "This regulation doesn't amend any regulations.",
+    "thisRegulationCancells": "This regulation cancels",
+    "thisRegulationDoesntCancell": "This regulation doesn't cancel any regulation.",
+    "linkToRegulationMessage": "Go to regulation",
+    "relatedRegulations": "Related generally binding regulations",
+    "category": {
+      "daneAPoplatky": "Tax and fees",
+      "pomenovanieUlic": "Street naming",
+      "hospodarenie": "Economy",
+      "uzemnePlanovanie": "Zoning",
+      "poriadokACistota": "Order and cleanliness",
+      "socialnaPomocASkolstvo": "Social services and Education",
+      "ostatne": "Other",
+      "archiv": "Archive"
+    },
+    "aria": {
+      "linkToRegulationAriaLabel": "Go to regulation {title}"
+    }
   }
 }

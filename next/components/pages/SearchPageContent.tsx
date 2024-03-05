@@ -1,8 +1,8 @@
 import { Typography } from '@bratislava/component-library'
 import Chip from '@components/forms/simple-components/Chip'
-import AdvancedSearchNew from '@components/molecules/SearchPageNew/AdvancedSearchNew'
-import GeneralSearchResults from '@components/molecules/SearchPageNew/GeneralSearchResults'
-import { SearchFilters } from '@components/molecules/SearchPageNew/useQueryBySearchOption'
+import SearchBar from '@components/organisms/SearchPage/SearchBar'
+import SearchResults from '@components/organisms/SearchPage/SearchResults'
+import { SearchFilters } from '@components/organisms/SearchPage/useQueryBySearchOption'
 import { SectionContainer } from '@components/ui/SectionContainer/SectionContainer'
 import { getCategoryColorLocalStyle } from '@utils/colors'
 import { useTranslations } from 'next-intl'
@@ -18,12 +18,19 @@ import { useDebounce } from 'usehooks-ts'
  */
 
 export type SearchOption = {
-  id: 'allResults' | 'pages' | 'articles' | 'inbaArticles' | 'users' | 'officialBoard'
+  id:
+    | 'allResults'
+    | 'pages'
+    | 'articles'
+    | 'inbaArticles'
+    | 'regulations'
+    | 'users'
+    | 'officialBoard'
   displayName?: string
   displayNamePlural: string
 }
 
-const SearchPageContentNew = () => {
+const SearchPageContent = () => {
   const t = useTranslations()
 
   const [routerQueryValue] = useQueryParam('keyword', withDefault(StringParam, ''))
@@ -61,6 +68,11 @@ const SearchPageContentNew = () => {
       displayName: t('SearchPage.contact'),
       displayNamePlural: t('SearchPage.contacts'),
     },
+    // {
+    //   id: 'regulations',
+    //   displayName: t('SearchPage.regulation'),
+    //   displayNamePlural: t('SearchPage.regulations'),
+    // },
     // {
     //   id: 'officialBoard',
     //   displayName: t('SearchPage.document'),
@@ -121,7 +133,8 @@ const SearchPageContentNew = () => {
   const handleSelection = (newSelection: Selection) => {
     // Checking 'all' just to get pure Set type, 'all' is not used in our case
     if (newSelection !== 'all' && newSelection.size === 1) {
-      /** If user click other chip than the selected one, and */
+      // If user click other chip than the selected one, the selection is changed to the new chip
+      // If user click an already selected chip, the selection is changed to default (no filtering)
       setSelection(newSelection)
     } else {
       setSelection(defaultSelection)
@@ -136,7 +149,7 @@ const SearchPageContentNew = () => {
     tagIds: [],
   }
 
-  const searchRef = useRef(null)
+  const searchRef = useRef<null | HTMLInputElement>(null)
 
   useEffect(() => {
     searchRef.current?.scrollIntoView({ behavior: 'smooth' })
@@ -147,7 +160,7 @@ const SearchPageContentNew = () => {
       <div className="flex w-full flex-col gap-y-8 pt-12">
         <Typography type="h1">{t('searching')}</Typography>
         <div className="flex flex-col gap-3 lg:gap-4">
-          <AdvancedSearchNew
+          <SearchBar
             ref={searchRef}
             placeholder={t('enterKeyword')}
             input={input}
@@ -188,7 +201,7 @@ const SearchPageContentNew = () => {
           <div className="flex flex-col gap-8">
             {searchOptions.map((option) => {
               return (
-                <GeneralSearchResults
+                <SearchResults
                   variant="allResults"
                   searchOption={option}
                   filters={searchFilters}
@@ -200,7 +213,7 @@ const SearchPageContentNew = () => {
             })}
           </div>
         ) : (
-          <GeneralSearchResults
+          <SearchResults
             variant="specificResults"
             searchOption={getSearchOptionByKeyValue(selectedKey)}
             filters={searchFilters}
@@ -215,4 +228,4 @@ const SearchPageContentNew = () => {
   )
 }
 
-export default SearchPageContentNew
+export default SearchPageContent
