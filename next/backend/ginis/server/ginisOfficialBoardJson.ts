@@ -29,6 +29,11 @@ export const getParsedUDEDocumentsListJson = async (searchQuery?: string) => {
     console.log(error)
   }
 
+  // TODO keeping for reference from old XML endpoint to double check if documents are always an array
+  // if (!documents) return []
+  // if (!Array.isArray(documents)) return [documents]
+  // return documents
+
   const parsedDocuments: ParsedOfficialBoardDocument[] = documents
     .map((document) => {
       return {

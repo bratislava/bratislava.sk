@@ -1,10 +1,14 @@
-import { getDocumentDetailURL, getDocumentFileURL } from '@backend/ginis/server/ginisOfficialBoard'
+import {
+  getGinisOfficialBoardDetailQueryKeyJson,
+  ginisOfficialBoardDetailFetcherJson,
+} from '@backend/ginis/fetchers/ginisOfficialBoardDetailJson.fetcher'
+import { getDocumentFileURL } from '@backend/ginis/server/ginisOfficialBoard'
 import { Typography } from '@bratislava/component-library'
 import FileCard, { FileCardProps } from '@components/molecules/presentation/FileCard'
+import { useQuery } from '@tanstack/react-query'
 import { formatDate } from '@utils/local-date'
 import { useTranslations } from 'next-intl'
 import React from 'react'
-import useSWR from 'swr'
 
 type Props = {
   id: string
@@ -14,16 +18,19 @@ type Props = {
 const OfficialBoardCardModalContent = ({ id, createdAt }: Props) => {
   const t = useTranslations()
 
-  // Returns mocks for local development, check /services/ginis.ts
-  const { data } = useSWR(getDocumentDetailURL(id), () =>
-    fetch(getDocumentDetailURL(id)).then((res) => res.json()),
-  )
+  const { data, isLoading, isError, error } = useQuery({
+    queryKey: getGinisOfficialBoardDetailQueryKeyJson(id),
+    queryFn: () => ginisOfficialBoardDetailFetcherJson(id),
+    keepPreviousData: true,
+    select: (res) => res.data,
+  })
 
+  // TODO move parsing into endpoint
   const files: FileCardProps[] =
     data?.['Soubory-dokumentu']?.map(
       (file: any): FileCardProps => ({
         title: `${file.Nazev}`,
-        downloadLink: getDocumentFileURL(file['Id-souboru']),
+        downloadLink: getDocumentFileURL(file.IdSouboru),
         format: file.Pripona?.replace(/^\./, '').toUpperCase().trim(),
         size: file.Velikost, // It comes as formatted string already, e.g. "1,2 MB" or "126 KB"
         uploadDate: formatDate(createdAt),
@@ -40,7 +47,7 @@ const OfficialBoardCardModalContent = ({ id, createdAt }: Props) => {
       </Typography>
       <div className="grid grid-cols-1 gap-4">
         {files.map((fileItem) => (
-          <FileCard {...fileItem} />
+          <FileCard key={fileItem.downloadLink} {...fileItem} />
         ))}
       </div>
     </>
