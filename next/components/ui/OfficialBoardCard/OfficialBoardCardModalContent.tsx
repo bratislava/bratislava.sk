@@ -30,7 +30,7 @@ const OfficialBoardCardModalContent = ({ id, createdAt }: Props) => {
     data?.['Soubory-dokumentu']?.map(
       (file: any): FileCardProps => ({
         title: `${file.Nazev}`,
-        downloadLink: getUrlForGinisOfficialBoardLoadFile(file.IdSouboru),
+        downloadLink: getUrlForGinisOfficialBoardLoadFile(file.IdSouboru, file.Nazev),
         format: file.Pripona?.replace(/^\./, '').toUpperCase().trim(),
         size: file.Velikost, // It comes as formatted string already, e.g. "1,2 MB" or "126 KB"
         uploadDate: formatDate(createdAt),

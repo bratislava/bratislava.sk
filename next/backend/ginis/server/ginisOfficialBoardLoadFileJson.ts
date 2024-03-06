@@ -5,8 +5,6 @@ import { NacistSouborResponseXrg } from '../../../ginis/api/json/ude/nacist-soub
 export const getUDEDocumentFileJson = async (fileId: string) => {
   let loadedFile: NacistSouborResponseXrg['NacistSoubor']
 
-  console.log('server function: fileId', fileId)
-
   try {
     /**
      * The `bodyObj` uses same keys as the requests in Ginis docs, i.e. https://robot.gordic.cz/xrg/Default.html?c=OpenMethodDetail&moduleName=UDE&version=524&methodName=nacist-soubor&type=request#
@@ -19,11 +17,10 @@ export const getUDEDocumentFileJson = async (fileId: string) => {
       'Id-souboru': fileId,
     })
 
-    console.log('dataXrg', dataXrg)
     loadedFile = dataXrg.NacistSoubor
 
     if (Array.isArray(loadedFile)) {
-      // pass TODO
+      // do nothing
     } else if (typeof loadedFile === 'object') {
       loadedFile = [loadedFile]
     } else {
@@ -32,8 +29,7 @@ export const getUDEDocumentFileJson = async (fileId: string) => {
 
     return loadedFile
   } catch (error) {
+    // TODO handle error
     console.log(error)
   }
-
-  // TODO Keeping for reference from old XML endpoint to double check if documents are always an array
 }

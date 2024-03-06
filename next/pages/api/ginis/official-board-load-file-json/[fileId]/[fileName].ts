@@ -1,4 +1,4 @@
-import { getUDEDocumentFileJson } from '@backend/ginis/server/ginisOfficialBoardLodaFileJson'
+import { getUDEDocumentFileJson } from '@backend/ginis/server/ginisOfficialBoardLoadFileJson'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 const handler = async (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
@@ -7,8 +7,6 @@ const handler = async (req: NextApiRequest, res: NextApiResponse): Promise<void>
 
   const fileId = Buffer.from(encodedFileId, 'base64').toString('utf8')
 
-  console.log('handler: fileId', fileId)
-
   if (!fileId) {
     return res.status(400).json({ message: 'Missing fileId' })
   }
@@ -16,18 +14,19 @@ const handler = async (req: NextApiRequest, res: NextApiResponse): Promise<void>
   try {
     const result = await getUDEDocumentFileJson(fileId)
 
-    const loadedFile = result?.[0]
-
-    if (!loadedFile) {
+    if (!result?.length) {
       return res.status(404).json({ message: 'File not found' })
     }
 
-    const buffer = Buffer.from(loadedFile.Data, 'base64')
+    // Result should contain only one item
+    const buffer = Buffer.from(result[0].Data, 'base64')
+
     res.setHeader('Content-Type', 'application/pdf')
-    res.setHeader('Content-Disposition', `attachment; filename=${loadedFile.JmenoSouboru}`)
-    return res.json(result)
+    res.setHeader('Content-Disposition', 'inline')
+
+    return res.send(buffer)
   } catch (error) {
-    console.log(error)
+    res.status(500).json(error)
   }
 }
 
