@@ -2,7 +2,7 @@ import {
   getGinisOfficialBoardDetailQueryKeyJson,
   ginisOfficialBoardDetailFetcherJson,
 } from '@backend/ginis/fetchers/ginisOfficialBoardDetailJson.fetcher'
-import { getDocumentFileURL } from '@backend/ginis/server/ginisOfficialBoard'
+import { getUrlForGinisOfficialBoardLoadFile } from '@backend/ginis/getUrlForGinisOfficialBoardLoadFile'
 import { Typography } from '@bratislava/component-library'
 import FileCard, { FileCardProps } from '@components/molecules/presentation/FileCard'
 import { useQuery } from '@tanstack/react-query'
@@ -30,7 +30,7 @@ const OfficialBoardCardModalContent = ({ id, createdAt }: Props) => {
     data?.['Soubory-dokumentu']?.map(
       (file: any): FileCardProps => ({
         title: `${file.Nazev}`,
-        downloadLink: getDocumentFileURL(file.IdSouboru),
+        downloadLink: getUrlForGinisOfficialBoardLoadFile(file.IdSouboru),
         format: file.Pripona?.replace(/^\./, '').toUpperCase().trim(),
         size: file.Velikost, // It comes as formatted string already, e.g. "1,2 MB" or "126 KB"
         uploadDate: formatDate(createdAt),
