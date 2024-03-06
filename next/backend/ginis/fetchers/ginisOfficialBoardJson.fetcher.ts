@@ -20,6 +20,8 @@ export const ginisOfficialBoardFetcherJson = async (filters?: GinisOfficialBoard
     `/api/ginis/official-board-json?${[
       filters?.search ? `searchQuery=${filters.search}` : '',
       filters?.limit ? `limit=${filters.limit.toString()}` : '',
-    ].join('&')}`,
+    ]
+      .filter(Boolean)
+      .join('&')}`,
   )
 }
