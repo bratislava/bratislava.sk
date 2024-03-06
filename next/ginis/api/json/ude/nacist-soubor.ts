@@ -25,7 +25,7 @@ export type NacistSouborResponseXrg = {
   /**
    * Nacist-soubor - vyžadován: Ne , max. výskyt: 1
    */
-  NacistSoubor?: NacistSouborResponseItem | NacistSouborResponseItem[]
+  NacistSoubor?: NacistSouborResponseItem[]
 }
 
 type NacistSouborResponse = {
