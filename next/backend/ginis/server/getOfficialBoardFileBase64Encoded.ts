@@ -1,6 +1,6 @@
 import { ginis } from '@backend/ginis/ginis'
 
-import { NacistSouborResponseXrg } from '../../../ginis/api/json/ude/nacist-soubor'
+import { NacistSouborResponseXrg } from '../../../ginis-sdk/api/json/ude/nacist-soubor'
 
 export const getOfficialBoardFileBase64Encoded = async (fileId: string) => {
   let loadedFile: NacistSouborResponseXrg['NacistSoubor'] = []

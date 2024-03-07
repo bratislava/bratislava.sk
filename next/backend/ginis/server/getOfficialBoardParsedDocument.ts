@@ -1,6 +1,6 @@
 import { ginis } from '@backend/ginis/ginis'
 
-import { DetailDokumentuResponseXrg } from '../../../ginis/api/json/ude/detail-dokumentu'
+import { DetailDokumentuResponseXrg } from '../../../ginis-sdk/api/json/ude/detail-dokumentu'
 
 export const getOfficialBoardParsedDocument = async (documentId: string) => {
   let documentDetail: DetailDokumentuResponseXrg['DetailDokumentu']

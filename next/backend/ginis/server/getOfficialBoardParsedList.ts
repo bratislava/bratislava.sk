@@ -2,7 +2,7 @@ import { ginis } from '@backend/ginis/ginis'
 import { ParsedOfficialBoardDocument } from '@backend/ginis/types'
 import { isDefined } from '@utils/isDefined'
 
-import { SeznamDokumentuResponseItem } from '../../../ginis/api/json/ude/seznam-dokumentu'
+import { SeznamDokumentuResponseItem } from '../../../ginis-sdk/api/json/ude/seznam-dokumentu'
 
 export const getOfficialBoardParsedList = async (searchQuery?: string) => {
   let documents: SeznamDokumentuResponseItem[] = []
