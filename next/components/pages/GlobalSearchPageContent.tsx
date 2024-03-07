@@ -182,6 +182,7 @@ const GlobalSearchPageContent = () => {
                     key={option.id}
                     id={option.id}
                     style={getCategoryColorLocalStyle({ category: 'gray' })}
+                    data-cy={`${option.id}-tab`}
                   >
                     {option.displayNamePlural}
                   </Chip>

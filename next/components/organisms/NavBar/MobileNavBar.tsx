@@ -52,7 +52,7 @@ const MobileNavBar = ({ className }: MobileNavBarProps) => {
                 </MLink>
               )}
               <Divider />
-              <MLink href={t('searchLink')} className="p-4">
+              <MLink data-cy="search-button-mobile" href={t('searchLink')} className="p-4">
                 <SearchIcon />
               </MLink>
               <Divider />

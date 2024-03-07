@@ -43,7 +43,7 @@ const SearchResults = ({
   }, [searchResultsCount])
 
   return (
-    <div className="flex flex-col gap-y-8">
+    <div className="flex flex-col gap-y-8" data-cy={`search-section-${searchOption?.displayNamePlural}`}>
       <div className="flex flex-col gap-y-4">
         {variant === 'allResults' && (
           <SearchResultsHeader
@@ -53,10 +53,11 @@ const SearchResults = ({
               if (!onShowMore) return
               onShowMore(new Set([searchOption.id]))
             }}
+            data-cy="search-section-more-button"
           />
         )}
         {searchResultsData?.length ? (
-          <div className="flex flex-col gap-y-2">
+          <div className="flex flex-col gap-y-2" data-cy="section-section-results">
             {variant === 'allResults'
               ? searchResultsData.slice(0, GENERAL_RESULTS_COUNT).map((item, index) => {
                   return (

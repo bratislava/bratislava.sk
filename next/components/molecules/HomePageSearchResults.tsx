@@ -42,7 +42,7 @@ const HomePageSearchResults = ({ searchValue, data, isLoading }: HomePageSearchR
       <LoadingSpinner size="medium" />
     </div>
   ) : data && data.hits?.length > 0 ? (
-    <div className="flex flex-col">
+    <div className="flex flex-col" data-cy="homepage-search-results">
       {data.hits.map(({ title, link }, index) => (
         <Link
           href={link}

@@ -34,6 +34,7 @@ const HomepageTabs = ({ className }: HomepageTabsProps) => {
               key={id}
               id={id}
               className="text-large-respo relative cursor-pointer whitespace-nowrap py-3 text-center selected:font-semibold md:py-5"
+              data-cy={`homepage-tab-` + id}
             >
               {({ isSelected }) => (
                 <>
