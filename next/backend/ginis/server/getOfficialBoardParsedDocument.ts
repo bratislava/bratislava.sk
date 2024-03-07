@@ -2,7 +2,7 @@ import { ginis } from '@backend/ginis/ginis'
 
 import { DetailDokumentuResponseXrg } from '../../../ginis/api/json/ude/detail-dokumentu'
 
-export const getParsedUDEDocumentDetailJson = async (documentId: string) => {
+export const getOfficialBoardParsedDocument = async (documentId: string) => {
   let documentDetail: DetailDokumentuResponseXrg['DetailDokumentu']
   let documentFiles: DetailDokumentuResponseXrg['SouboryDokumentu']
 
@@ -20,8 +20,9 @@ export const getParsedUDEDocumentDetailJson = async (documentId: string) => {
     documentDetail = dataXrg.DetailDokumentu
     documentFiles = dataXrg.SouboryDokumentu
 
+    // Keeping the approach from old XML endpoint to double-check if documentFiles are always an array
     if (Array.isArray(documentFiles)) {
-      // pass TODO
+      // do nothing, needed for TS
     } else if (typeof documentFiles === 'object') {
       documentFiles = [documentFiles]
     } else {

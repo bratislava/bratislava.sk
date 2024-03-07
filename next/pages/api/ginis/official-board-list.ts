@@ -1,7 +1,7 @@
 import { mockedParsedDocuments } from '@backend/ginis/mocks'
-import { getParsedUDEDocumentsListJson } from '@backend/ginis/server/ginisOfficialBoardJson'
+import { getOfficialBoardParsedList } from '@backend/ginis/server/getOfficialBoardParsedList'
 import { ParsedOfficialBoardDocument } from '@backend/ginis/types'
-import { shouldMockGinis } from '@backend/ginis/utils'
+import { shouldMockGinis } from '@backend/ginis/utils/shouldMockGinis'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 const handler = async (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
@@ -15,11 +15,13 @@ const handler = async (req: NextApiRequest, res: NextApiResponse): Promise<void>
   try {
     result = shouldMockGinis()
       ? mockedParsedDocuments
-      : await getParsedUDEDocumentsListJson(searchQuery)
+      : await getOfficialBoardParsedList(searchQuery)
   } catch (error) {
+    // TODO handle error
     console.log(error)
   }
 
+  // If limit is undefined, slice returns all results
   return res.json(result.slice(0, limit))
 }
 

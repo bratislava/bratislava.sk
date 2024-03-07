@@ -2,8 +2,8 @@ import { ginis } from '@backend/ginis/ginis'
 
 import { NacistSouborResponseXrg } from '../../../ginis/api/json/ude/nacist-soubor'
 
-export const getUDEDocumentFileJson = async (fileId: string) => {
-  let loadedFile: NacistSouborResponseXrg['NacistSoubor']
+export const getOfficialBoardFileBase64Encoded = async (fileId: string) => {
+  let loadedFile: NacistSouborResponseXrg['NacistSoubor'] = []
 
   try {
     /**
@@ -19,6 +19,7 @@ export const getUDEDocumentFileJson = async (fileId: string) => {
 
     loadedFile = dataXrg.NacistSoubor
 
+    // Keeping the approach from old XML endpoint to double-check if loadedFile is always returned as an array (even though it's a single item array)
     if (Array.isArray(loadedFile)) {
       // do nothing
     } else if (typeof loadedFile === 'object') {
@@ -26,10 +27,10 @@ export const getUDEDocumentFileJson = async (fileId: string) => {
     } else {
       loadedFile = []
     }
-
-    return loadedFile
   } catch (error) {
     // TODO handle error
     console.log(error)
   }
+
+  return loadedFile
 }

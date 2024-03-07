@@ -4,35 +4,41 @@ import { isDefined } from '@utils/isDefined'
 
 import { SeznamDokumentuResponseItem } from '../../../ginis/api/json/ude/seznam-dokumentu'
 
-export const getParsedUDEDocumentsListJson = async (searchQuery?: string) => {
+export const getOfficialBoardParsedList = async (searchQuery?: string) => {
   let documents: SeznamDokumentuResponseItem[] = []
 
+  // Nazev - Max. délka: 254
   const searchQueryTrimmed = searchQuery?.trim().slice(0, 254) ?? ''
 
   try {
     /**
-     * The `bodyObj` uses same keys as the requests in Ginis docs, i.e. https://robot.gordic.cz/xrg/Default.html?c=OpenMethodDetail&moduleName=UDE&version=390&methodName=seznam-dokumentu&type=request
+     * The `bodyObj` uses same keys as the requests in Ginis docs
      * It will throw an Axios error if the request fails.
+     * https://robot.gordic.cz/xrg/Default.html?c=OpenMethodDetail&moduleName=UDE&version=390&methodName=seznam-dokumentu&type=request
      *
      * IMPORTANT: The order of the keys in the `bodyObj` is important, as it has to match the order in the Ginis docs.
      * Otherwise, it will throw 400 Bad Request error.
      */
     const dataXrg = await ginis.json.ude.seznamDokumentu({
       Stav: 'vyveseno',
-      // VyvesenoOd: '2024-03-05',
-      // IdKategorie: 'Iné úradné oznamy',
+      // IdKategorie: 'Iné úradné oznamy', // TODO filtering by categories
       Nazev: searchQueryTrimmed,
-      // Popis: searchQueryTrimmed,
     })
-    documents = dataXrg.SeznamDokumentu
+
+    const documentsResponse = dataXrg.SeznamDokumentu
+
+    // Keeping the approach from old XML endpoint to double-check if documents are always an array
+    if (Array.isArray(documentsResponse)) {
+      documents = documentsResponse
+    } else if (typeof documentsResponse === 'object') {
+      documents = [documentsResponse]
+    } else {
+      documents = []
+    }
   } catch (error) {
+    // TOD handle error
     console.log(error)
   }
-
-  // TODO keeping for reference from old XML endpoint to double check if documents are always an array
-  // if (!documents) return []
-  // if (!Array.isArray(documents)) return [documents]
-  // return documents
 
   const parsedDocuments: ParsedOfficialBoardDocument[] = documents
     .map((document) => {
@@ -41,7 +47,7 @@ export const getParsedUDEDocumentsListJson = async (searchQuery?: string) => {
         title: document.Nazev,
         createdAt: document.VyvesenoDne,
         content: document.Popis ?? '',
-        // numberOfFiles: parseInt(document.PocetSouboru, 10),
+        numberOfFiles: parseInt(document.PocetSouboru ?? 0, 10), // added "?? 0" just in case
       }
     })
     .filter(isDefined)

@@ -1,8 +1,8 @@
 import {
-  getGinisOfficialBoardDetailQueryKeyJson,
-  ginisOfficialBoardDetailFetcherJson,
-} from '@backend/ginis/fetchers/ginisOfficialBoardDetailJson.fetcher'
-import { getUrlForGinisOfficialBoardLoadFile } from '@backend/ginis/getUrlForGinisOfficialBoardLoadFile'
+  getOfficialBoardDocumentQueryKey,
+  officialBoardDocumentFetcher,
+} from '@backend/ginis/fetchers/officialBoardDocumentFetcher'
+import { generateUrlForOfficialBoardFile } from '@backend/ginis/utils/generateUrlForOfficialBoardFile'
 import { Typography } from '@bratislava/component-library'
 import FileCard, { FileCardProps } from '@components/molecules/presentation/FileCard'
 import { useQuery } from '@tanstack/react-query'
@@ -19,8 +19,8 @@ const OfficialBoardCardModalContent = ({ id, createdAt }: Props) => {
   const t = useTranslations()
 
   const { data, isLoading, isError, error } = useQuery({
-    queryKey: getGinisOfficialBoardDetailQueryKeyJson(id),
-    queryFn: () => ginisOfficialBoardDetailFetcherJson(id),
+    queryKey: getOfficialBoardDocumentQueryKey(id),
+    queryFn: () => officialBoardDocumentFetcher(id),
     keepPreviousData: true,
     select: (res) => res.data,
   })
@@ -30,7 +30,7 @@ const OfficialBoardCardModalContent = ({ id, createdAt }: Props) => {
     data?.['Soubory-dokumentu']?.map(
       (file: any): FileCardProps => ({
         title: `${file.Nazev}`,
-        downloadLink: getUrlForGinisOfficialBoardLoadFile(file.IdSouboru, file.Nazev),
+        downloadLink: generateUrlForOfficialBoardFile(file.IdSouboru, file.Nazev),
         format: file.Pripona?.replace(/^\./, '').toUpperCase().trim(),
         size: file.Velikost, // It comes as formatted string already, e.g. "1,2 MB" or "126 KB"
         uploadDate: formatDate(createdAt),

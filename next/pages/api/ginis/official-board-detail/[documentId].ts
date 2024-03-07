@@ -1,4 +1,4 @@
-import { getParsedUDEDocumentDetailJson } from '@backend/ginis/server/ginisOfficialBoardDocumentDetailJson'
+import { getOfficialBoardParsedDocument } from '@backend/ginis/server/getOfficialBoardParsedDocument'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 const handler = async (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
@@ -13,9 +13,10 @@ const handler = async (req: NextApiRequest, res: NextApiResponse): Promise<void>
   }
 
   try {
-    const result = await getParsedUDEDocumentDetailJson(documentId)
+    const result = await getOfficialBoardParsedDocument(documentId)
     return res.json(result)
   } catch (error) {
+    // TODO handle error
     console.log(error)
   }
 }

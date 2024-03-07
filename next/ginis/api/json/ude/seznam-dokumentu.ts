@@ -187,23 +187,22 @@ export type SeznamDokumentuResponseItem = {
 }
 
 // https://robot.gordic.cz/xrg/Default.html?c=OpenMethodDetail&moduleName=SSL&version=390&methodName=Detail-dokumentu&type=response
-export interface SeznamDokumentuXrg {
+export interface SeznamDokumentuResponseXrg {
   Atribut_Xrg_IxsExt: string
-  /**
-   * Documentation says it's `Seznam-dokumentu` but it's actually `SeznamDokumentu`
-   */
-  SeznamDokumentu: SeznamDokumentuResponseItem[]
+  SeznamDokumentu?: SeznamDokumentuResponseItem | SeznamDokumentuResponseItem[]
+  // SejmuteDokumenty?: ...
+  // ZruseneDokumenty?: ...
 }
 
 export type SeznamDokumentuResponse = {
   GRestHeader: GRestHeader
-  Xrg: SeznamDokumentuXrg
+  Xrg: SeznamDokumentuResponseXrg
 }
 
 export async function seznamDokumentu(
   this: Ginis,
   bodyObj: SeznamDokumentuRequestBody,
-): Promise<SeznamDokumentuXrg> {
+): Promise<SeznamDokumentuResponseXrg> {
   const url = this.config.urls.ude
   if (!url) throw new GinisError('GINIS SDK Error: Missing UDE url in GINIS config')
 

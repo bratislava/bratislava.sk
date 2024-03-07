@@ -9,18 +9,21 @@ export const mockedParsedDocuments = [
     title: 'Mocked document title 1',
     createdAt: '2022-01-01',
     content: 'hello world',
+    numberOfFiles: 1,
   },
   {
     id: '2',
     title: 'Mocked document title 1',
     createdAt: '2022-01-01',
     content: 'hello world',
+    numberOfFiles: 2,
   },
   {
     id: '3',
     title: 'Mocked document title 1',
     createdAt: '2022-01-01',
     content: 'hello world',
+    numberOfFiles: 1,
   },
 ]
 

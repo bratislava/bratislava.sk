@@ -1,8 +1,8 @@
 import {
-  getGinisOfficialBoardQueryKeyJson,
-  ginisOfficialBoardFetcherJson,
-  GinisOfficialBoardFilters,
-} from '@backend/ginis/fetchers/ginisOfficialBoardJson.fetcher'
+  getOfficialBoardListQueryKey,
+  ginisOfficialBoardListFetcher,
+  OfficialBoardListFilters,
+} from '@backend/ginis/fetchers/ginisOfficialBoardList.fetcher'
 import NoResultsFound from '@bratislava/ui-bratislava/NoResultsFound/NoResultsFound'
 import BasicSearch from '@components/ui/BasicSearch/BasicSearch'
 import LoadingSpinner from '@components/ui/LoadingSpinner/LoadingSpinner'
@@ -15,11 +15,11 @@ import { useDebounce } from 'usehooks-ts'
 const DataWrapper = ({ search }: { search: string }) => {
   const t = useTranslations()
 
-  const filters: GinisOfficialBoardFilters = { search }
+  const filters: OfficialBoardListFilters = { search }
 
   const { data, isLoading, isError, error } = useQuery({
-    queryKey: getGinisOfficialBoardQueryKeyJson(filters),
-    queryFn: () => ginisOfficialBoardFetcherJson(filters),
+    queryKey: getOfficialBoardListQueryKey(filters),
+    queryFn: () => ginisOfficialBoardListFetcher(filters),
     keepPreviousData: true,
     select: (res) => res.data,
   })

@@ -1,23 +1,23 @@
 import { ParsedOfficialBoardDocument } from '@backend/ginis/types'
 import axios from 'axios'
 
-export type GinisOfficialBoardFilters = {
+export type OfficialBoardListFilters = {
   search?: string
   limit?: number
 }
 
-export const ginisOfficialBoardDefaultFilters: GinisOfficialBoardFilters = {
+export const officialBoardListDefaultFilters: OfficialBoardListFilters = {
   search: '',
 }
 
-export const getGinisOfficialBoardQueryKeyJson = (filters?: GinisOfficialBoardFilters) => [
-  'ginisOfficialBoardJson',
+export const getOfficialBoardListQueryKey = (filters?: OfficialBoardListFilters) => [
+  'OfficialBoardList',
   filters,
 ]
 
-export const ginisOfficialBoardFetcherJson = async (filters?: GinisOfficialBoardFilters) => {
+export const ginisOfficialBoardListFetcher = async (filters?: OfficialBoardListFilters) => {
   return axios.get<ParsedOfficialBoardDocument[]>(
-    `/api/ginis/official-board-json?${[
+    `/api/ginis/official-board-list?${[
       filters?.search ? `searchQuery=${filters.search}` : '',
       filters?.limit ? `limit=${filters.limit.toString()}` : '',
     ]
