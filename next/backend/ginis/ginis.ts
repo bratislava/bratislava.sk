@@ -1,4 +1,4 @@
-import { Ginis } from '../../ginis-sdk'
+import { Ginis } from '@ginis-sdk/ginis'
 
 export const ginis = new Ginis({
   // connect to any subset of services needed, all the urls are optional but requests to services missing urls will fail
