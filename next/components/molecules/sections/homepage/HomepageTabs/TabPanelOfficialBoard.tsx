@@ -29,7 +29,7 @@ const TabPanelOfficialBoard = () => {
   return (
     <TabPanel id="OfficialBoard">
       <div className="mt-8 flex flex-col gap-y-10 lg:mt-14">
-        <div className="flex flex-col items-center gap-y-5">
+        <div className="flex flex-col items-center gap-y-5" data-cy="homepage-tab-results">
           {documents.map((document, index) => (
             <OfficialBoardCard
               // eslint-disable-next-line react/no-array-index-key
@@ -46,6 +46,7 @@ const TabPanelOfficialBoard = () => {
             <Button
               variant="category-outline"
               {...getCommonLinkProps(tabs.officialBoardPageLink)}
+              data-cy="homepage-button-officialBoard"
             />
           </div>
         ) : null}

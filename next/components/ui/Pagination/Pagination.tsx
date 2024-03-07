@@ -34,7 +34,7 @@ const Pagination = ({ currentPage, totalCount, onPageChange = () => {} }: Pagina
   })
 
   return (
-    <nav>
+    <nav data-cy="pagination">
       <ul className="flex flex-wrap items-center justify-center gap-1 lg:gap-2">
         {items.map(
           ({ page, type, selected, disabled, onPress, 'aria-current': ariaCurrent }, index) => {

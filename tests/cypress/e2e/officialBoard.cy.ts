@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-describe('Cypress test', { testIsolation: false }, () => {
+describe('B01 - ', { testIsolation: false }, () => {
   const devices = ['desktop', 'mobile']
 
   devices
@@ -12,8 +12,8 @@ describe('Cypress test', { testIsolation: false }, () => {
           cy.visit('/')
         })
         
-        it('1. Test init', () => {
-					cy.get("body")
+        it('1. Showing official board', () => {
+          //cy.dataCy('homepage-tab-OfficialBoard').scrollIntoView().click()
         })
 			})
 		})
