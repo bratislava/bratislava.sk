@@ -1,8 +1,8 @@
 import {
   getOfficialBoardListQueryKey,
-  ginisOfficialBoardListFetcher,
+  officialBoardListFetcher,
   OfficialBoardListFilters,
-} from '@backend/ginis/fetchers/ginisOfficialBoardList.fetcher'
+} from '@backend/ginis/fetchers/officialBoardListFetcher'
 import NoResultsFound from '@bratislava/ui-bratislava/NoResultsFound/NoResultsFound'
 import BasicSearch from '@components/ui/BasicSearch/BasicSearch'
 import LoadingSpinner from '@components/ui/LoadingSpinner/LoadingSpinner'
@@ -19,7 +19,7 @@ const DataWrapper = ({ search }: { search: string }) => {
 
   const { data, isLoading, isError, error } = useQuery({
     queryKey: getOfficialBoardListQueryKey(filters),
-    queryFn: () => ginisOfficialBoardListFetcher(filters),
+    queryFn: () => officialBoardListFetcher(filters),
     keepPreviousData: true,
     select: (res) => res.data,
   })

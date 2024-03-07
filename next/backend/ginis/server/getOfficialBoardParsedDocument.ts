@@ -28,7 +28,7 @@ export const getOfficialBoardParsedDocument = async (documentId: string) => {
       documentFiles = []
     }
 
-    // TODO Detail-dokumentu is currently not used, modal gets infor from parent componet, but we keep it here for future, when we will want to have detail page for official board documents
+    // TODO Detail-dokumentu is currently not used, modal gets info from parent component, but we keep it here for future, when we will want to have detail page for official board documents
     // TODO return in more readable parsed format
     return { 'Detail-dokumentu': documentDetail, 'Soubory-dokumentu': documentFiles }
   } catch (error) {

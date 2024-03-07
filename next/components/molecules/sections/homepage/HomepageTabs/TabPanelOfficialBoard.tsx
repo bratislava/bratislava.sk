@@ -1,8 +1,8 @@
 import {
   getOfficialBoardListQueryKey,
-  ginisOfficialBoardListFetcher,
+  officialBoardListFetcher,
   OfficialBoardListFilters,
-} from '@backend/ginis/fetchers/ginisOfficialBoardList.fetcher'
+} from '@backend/ginis/fetchers/officialBoardListFetcher'
 import Button from '@components/forms/simple-components/Button'
 import OfficialBoardCard from '@components/ui/OfficialBoardCard/OfficialBoardCard'
 import { useQuery } from '@tanstack/react-query'
@@ -23,7 +23,7 @@ const TabPanelOfficialBoard = () => {
   // TODO handle loading and errors
   const { data: officialBoardData } = useQuery({
     queryKey: getOfficialBoardListQueryKey(filters),
-    queryFn: () => ginisOfficialBoardListFetcher(filters),
+    queryFn: () => officialBoardListFetcher(filters),
     select: (res) => res.data,
   })
 

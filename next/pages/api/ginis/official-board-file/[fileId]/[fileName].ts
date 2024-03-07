@@ -8,7 +8,7 @@ import type { NextApiRequest, NextApiResponse } from 'next'
  * Query params:
  * - fileId: base64 encoded file id
  * - fileName: not used specifically, but it is used automatically as filename when downloading the file
- *   (the last part of url is used as filename by default if non is specified in headers)
+ *   (the last part of url is used as filename by default if none is specified in headers)
  *
  * @param req
  * @param res

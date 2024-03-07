@@ -35,7 +35,7 @@ export const getOfficialBoardParsedList = async (searchQuery?: string) => {
       documents = []
     }
   } catch (error) {
-    // TOD handle error
+    // TODO handle error
     console.log(error)
   }
 
