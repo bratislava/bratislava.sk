@@ -272,7 +272,8 @@
     "document": "Dokument",
     "documents": "Dokumenty",
     "regulation": "VZN",
-    "regulations": "VZN"
+    "regulations": "VZN",
+    "numberOfFiles": "{count} {count, plural, one {súbor} few {súbory} other {súborov}}"
   },
   "Regulation": {
     "regulation": "Všeobecne záväzné nariadenie",

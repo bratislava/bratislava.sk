@@ -1,6 +1,7 @@
 import {
   getOfficialBoardListQueryKey,
   officialBoardListFetcher,
+  OfficialBoardListFilters,
 } from '@backend/ginis/fetchers/officialBoardListFetcher'
 import {
   Enum_Page_Pagecolor,
@@ -44,9 +45,11 @@ export type SearchFilters =
   | BlogPostsFilters
   | InbaArticlesFilters
   | RegulationFilters
+  | OfficialBoardListFilters
 
 export type SearchResult = {
   title: string | null | undefined
+  uniqueId?: string | null | undefined
   linkHref?: string | null | undefined
   metadata?: (string | null | undefined)[]
   coverImageSrc?: string | null | undefined
@@ -68,6 +71,7 @@ export const useQueryBySearchOption = (optionKey: SearchOption['id'], filters: S
         data?.hits.map((page: PageMeili): SearchResult => {
           return {
             title: page.title,
+            uniqueId: page.slug,
             linkHref: `/${page.slug}`,
             metadata: [page.pageCategory?.title, formatDate(page.publishedAt)],
             pageColor: page.pageColor ?? page.pageCategory?.color,
@@ -89,6 +93,7 @@ export const useQueryBySearchOption = (optionKey: SearchOption['id'], filters: S
           (blogPostData: Pick<LatestBlogPostEntityFragment, 'attributes'>): SearchResult => {
             return {
               title: blogPostData.attributes?.title,
+              uniqueId: blogPostData.attributes?.slug,
               linkHref: `/blog/${blogPostData.attributes?.slug}`,
               metadata: [
                 blogPostData.attributes?.tag?.data?.attributes?.title,
@@ -113,6 +118,7 @@ export const useQueryBySearchOption = (optionKey: SearchOption['id'], filters: S
         data?.hits?.map((inbaArticle): SearchResult => {
           return {
             title: inbaArticle.attributes.title,
+            uniqueId: inbaArticle.attributes.slug,
             linkHref: `/inba/clanky/${inbaArticle.attributes.slug}`,
             metadata: [
               inbaArticle.attributes?.inbaTag?.data?.attributes?.title,
@@ -160,6 +166,7 @@ export const useQueryBySearchOption = (optionKey: SearchOption['id'], filters: S
 
           return {
             title: `VZN ${regulation.regNumber} ${regulation.titleText ?? ''}`,
+            uniqueId: regulation.slug,
             linkHref: `/vzn/${regulation.slug}`,
             metadata: [categoryDisplayName, effectivityMessage],
             customIconName: `regulation_${regulation.category ?? 'ostatne'}`,
@@ -191,20 +198,24 @@ export const useQueryBySearchOption = (optionKey: SearchOption['id'], filters: S
   })
 
   const officialBoardQuery = useQuery({
-    queryKey: getOfficialBoardListQueryKey({ search: filters.search }),
-    queryFn: () => officialBoardListFetcher({ search: filters.search }),
+    queryKey: getOfficialBoardListQueryKey(filters),
+    queryFn: () => officialBoardListFetcher(filters),
     keepPreviousData: true,
     select: (axiosResponse) => {
       const formattedData: SearchResult[] =
-        axiosResponse.data?.map((boardItem) => {
+        axiosResponse.data.items.map((boardItem) => {
           return {
             title: boardItem.title,
-            metadata: [boardItem.createdAt],
+            uniqueId: boardItem.id,
+            metadata: [
+              formatDate(boardItem.createdAt),
+              t('SearchPage.numberOfFiles', { count: boardItem.numberOfFiles ?? 0 }),
+            ],
             customIconName: 'search_result_official_board',
           }
         }) ?? []
 
-      return { searchResultsData: formattedData, searchResultsCount: formattedData.length }
+      return { searchResultsData: formattedData, searchResultsCount: axiosResponse.data.totalItems }
     },
   })
 

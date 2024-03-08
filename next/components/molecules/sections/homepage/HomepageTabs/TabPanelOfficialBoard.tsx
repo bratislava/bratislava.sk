@@ -1,7 +1,7 @@
 import {
   getOfficialBoardListQueryKey,
+  officialBoardListDefaultFilters,
   officialBoardListFetcher,
-  OfficialBoardListFilters,
 } from '@backend/ginis/fetchers/officialBoardListFetcher'
 import Button from '@components/forms/simple-components/Button'
 import OfficialBoardCard from '@components/ui/OfficialBoardCard/OfficialBoardCard'
@@ -18,16 +18,21 @@ const TabPanelOfficialBoard = () => {
   const { homepage } = useHomepageContext()
   const { tabs } = homepage?.attributes ?? {}
 
-  const filters: OfficialBoardListFilters = { limit: 3 }
+  const filters = { ...officialBoardListDefaultFilters, pageSize: 3 }
 
   // TODO handle loading and errors
-  const { data: officialBoardData } = useQuery({
+  const {
+    data: officialBoardData,
+    isLoading,
+    isError,
+    error,
+  } = useQuery({
     queryKey: getOfficialBoardListQueryKey(filters),
     queryFn: () => officialBoardListFetcher(filters),
     select: (res) => res.data,
   })
 
-  const documents = officialBoardData || []
+  const documents = officialBoardData?.items || []
 
   return (
     <TabPanel id="OfficialBoard">

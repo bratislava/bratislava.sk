@@ -63,6 +63,7 @@ const SearchResults = ({
                     <SearchResultCard
                       data={{ ...item }}
                       key={`item-${variant}-${searchOption.id}-${[
+                        item.uniqueId,
                         item.title,
                         ...(item?.metadata ?? []),
                       ].join('')}`}
@@ -77,6 +78,7 @@ const SearchResults = ({
                     <SearchResultCard
                       data={{ ...item }}
                       key={`item-${variant}-${searchOption.id}-${[
+                        item.uniqueId,
                         item.title,
                         ...(item.metadata ?? []),
                       ].join('')}`}

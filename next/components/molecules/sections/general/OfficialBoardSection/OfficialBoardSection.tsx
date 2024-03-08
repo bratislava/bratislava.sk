@@ -15,7 +15,9 @@ import { useDebounce } from 'usehooks-ts'
 const DataWrapper = ({ search }: { search: string }) => {
   const t = useTranslations()
 
-  const filters: OfficialBoardListFilters = { search }
+  // TODO remove this hacky solution
+  // Setting pageSize to -1 to get all documents, see official-board-list.ts api endpoint
+  const filters: OfficialBoardListFilters = { search, pageSize: -1, page: 1 }
 
   const { data, isLoading, isError, error } = useQuery({
     queryKey: getOfficialBoardListQueryKey(filters),
@@ -33,12 +35,14 @@ const DataWrapper = ({ search }: { search: string }) => {
     return <div className="whitespace-pre">Error: {JSON.stringify(error, null, 2)}</div>
   }
 
-  return data.length > 0 ? (
+  const documents = data.items
+
+  return documents.length > 0 ? (
     <OfficialBoardCards
       query={search}
       title={t('recentlyAddedDocuments')}
       viewButtonText={t('viewTheDocument')}
-      documents={data}
+      documents={documents}
     />
   ) : (
     <NoResultsFound title={t('weDidntFindAnything')} message={t('tryEnteringSomethingElse')} />
