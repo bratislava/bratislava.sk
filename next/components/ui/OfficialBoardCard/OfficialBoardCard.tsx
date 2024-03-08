@@ -28,7 +28,7 @@ const OfficialBoardCard = ({
   viewButtonText,
 }: OfficialBoardCardProps) => {
   return (
-    <Panel className={className} data-cy="officialBoard-card">
+    <Panel className={className}>
       <div className="flex w-full flex-col gap-y-5 px-5 py-6 lg:px-10 lg:py-8">
         <Typography type="p" size="p-large" fontWeight="semibold" className="-mb-3">
           {title}

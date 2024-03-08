@@ -46,7 +46,6 @@ const TabPanelOfficialBoard = () => {
             <Button
               variant="category-outline"
               {...getCommonLinkProps(tabs.officialBoardPageLink)}
-              data-cy="homepage-button-officialBoard"
             />
           </div>
         ) : null}

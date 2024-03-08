@@ -12,8 +12,7 @@ describe('S02 - ', { testIsolation: false }, () => {
           cy.visit('/')
         })
         
-        it('1. Showing official board', () => {
-          //cy.dataCy('homepage-tab-OfficialBoard').scrollIntoView().click()
+        it('1. XX', () => {
         })
 			})
 		})

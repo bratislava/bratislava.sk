@@ -39,7 +39,7 @@ const OfficialBoardCards = ({
     <div className="flex flex-col gap-y-5 lg:gap-y-6">
       <Typography type="h2">{title}</Typography>
 
-      <div className="hidden flex-col lg:flex" data-cy="officialBoard-results">
+      <div className="hidden flex-col lg:flex">
         <div className="flex flex-col gap-y-5 pb-14">
           {documents
             .slice((currentPage - 1) * itemsPerPageDesktop, currentPage * itemsPerPageDesktop)
@@ -61,7 +61,7 @@ const OfficialBoardCards = ({
           onPageChange={setCurrentPage}
         />
       </div>
-      <div className="flex flex-col lg:hidden" data-cy="officialBoard-results-mobile">
+      <div className="flex flex-col lg:hidden">
         <div className="flex flex-col gap-y-6 pb-14">
           {documents
             .slice((currentPage - 1) * itemsPerPageMobile, currentPage * itemsPerPageMobile)
