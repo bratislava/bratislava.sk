@@ -57,7 +57,7 @@ const SearchResults = ({
           />
         )}
         {searchResultsData?.length ? (
-          <div className="flex flex-col gap-y-2" data-cy="section-section-results">
+          <div className="flex flex-col gap-y-2" data-cy="search-section-results">
             {variant === 'allResults'
               ? searchResultsData.slice(0, GENERAL_RESULTS_COUNT).map((item, index) => {
                   return (

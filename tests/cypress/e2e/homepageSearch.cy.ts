@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-describe('S01 - ', { testIsolation: false }, () => {
+describe('S02 - ', { testIsolation: false }, () => {
   const devices = ['desktop', 'mobile']
 
   devices
