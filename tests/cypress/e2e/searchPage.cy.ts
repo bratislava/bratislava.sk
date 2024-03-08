@@ -44,7 +44,7 @@ describe('S01 - ', { testIsolation: false }, () => {
           cy.dataCy('search-section-results').should('contain', '[data-cy=search-result-card]')
           cy.dataCy('search-section-results').contains('[data-cy=search-result-card]').click()
           cy.location('pathname', {timeout: 4000})
-            .should('not.eq', '/vyhladavanie');
+          .should('not.eq', '/vyhladavanie');
         })
 
         it('3. Checking search results - articles.', () => {
@@ -57,7 +57,7 @@ describe('S01 - ', { testIsolation: false }, () => {
           cy.dataCy('search-section-results').should('contain', '[data-cy=search-result-card]')
           cy.dataCy('search-section-results').contains('[data-cy=search-result-card]').click()
           cy.location('pathname', {timeout: 4000})
-            .should('not.eq', '/vyhladavanie');
+          .should('not.eq', '/vyhladavanie');
         })
 
         it('4. Checking search results - contacts.', () => {

@@ -68,12 +68,13 @@ const HomePageSearchResults = ({ searchValue, data, isLoading }: HomePageSearchR
         ref={(el) => {
           inputRef.current[data.hits.length] = el
         }}
+        data-cy="homepage-search-all-results"
       >
         {t('allResults')}
       </Link>
     </div>
   ) : (
-    <div className="flex flex-col">
+    <div className="flex flex-col" data-cy="homepage-search-no-results">
       <div className="px-4 py-2">{t('sorryNoResultsFound')}</div>
     </div>
   )
