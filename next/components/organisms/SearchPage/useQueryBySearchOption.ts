@@ -35,6 +35,7 @@ import {
 } from '@backend/ms-graph/fetchers/msGraphSearch.fetcher'
 import { SearchOption } from '@components/pages/GlobalSearchPageContent'
 import { useQuery } from '@tanstack/react-query'
+import { base64Encode } from '@utils/base64'
 import { isDefined } from '@utils/isDefined'
 import { formatDate } from '@utils/local-date'
 import { useLocale, useTranslations } from 'next-intl'
@@ -213,6 +214,7 @@ export const useQueryBySearchOption = ({
           return {
             title: boardItem.title,
             uniqueId: boardItem.id,
+            linkHref: `/uradna-tabula/${base64Encode(boardItem.id)}`,
             metadata: [
               formatDate(boardItem.createdAt),
               t('SearchPage.numberOfFiles', { count: boardItem.numberOfFiles ?? 0 }),

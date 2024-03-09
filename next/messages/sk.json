@@ -311,5 +311,10 @@
     "aria": {
       "linkToRegulationAriaLabel": "Prejsť na {title}"
     }
+  },
+  "OfficialBoard": {
+    "officialBoard": "Úradná tabuľa",
+    "attachments": "Prílohy",
+    "noAttachmentsMessage": "K tomuto dokumentu sa nepodarilo nájsť žiadne prílohy."
   }
 }

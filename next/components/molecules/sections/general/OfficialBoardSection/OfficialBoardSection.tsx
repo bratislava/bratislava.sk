@@ -1,78 +1,111 @@
-import {
-  getOfficialBoardListQueryKey,
-  officialBoardListFetcher,
-  OfficialBoardListFilters,
-} from '@backend/ginis/fetchers/officialBoardListFetcher'
-import NoResultsFound from '@bratislava/ui-bratislava/NoResultsFound/NoResultsFound'
-import BasicSearch from '@components/ui/BasicSearch/BasicSearch'
-import LoadingSpinner from '@components/ui/LoadingSpinner/LoadingSpinner'
-import OfficialBoardCards from '@components/ui/OfficialBoardCards/OfficialBoardCards'
-import { useQuery } from '@tanstack/react-query'
+import { RegulationsListSectionFragment } from '@backend/graphql'
+import { Typography } from '@bratislava/component-library'
+import SearchBar from '@components/organisms/SearchPage/SearchBar'
+import SearchResults from '@components/organisms/SearchPage/SearchResults'
+import { SearchFilters } from '@components/organisms/SearchPage/useQueryBySearchOption'
 import { useTranslations } from 'next-intl'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
+import { StringParam, useQueryParam, withDefault } from 'use-query-params'
 import { useDebounce } from 'usehooks-ts'
 
-const DataWrapper = ({ search }: { search: string }) => {
-  const t = useTranslations()
+// This component was created by reducing some functionality from the main search component GlobalSearchPageContent
+// Same as in RegulationsListSection.
+// TODO there's too much code duplication here, it would be better to have one component that takes selected search options as props
 
-  // TODO remove this hacky solution
-  // Setting pageSize to -1 to get all documents, see official-board-list.ts api endpoint
-  const filters: OfficialBoardListFilters = { search, pageSize: -1, page: 1 }
-
-  const { data, isLoading, isError, error } = useQuery({
-    queryKey: getOfficialBoardListQueryKey(filters),
-    queryFn: () => officialBoardListFetcher(filters),
-    keepPreviousData: true,
-    select: (res) => res.data,
-  })
-
-  if (isLoading) {
-    return <LoadingSpinner />
-  }
-
-  // TODO replace by proper error
-  if (isError) {
-    return <div className="whitespace-pre">Error: {JSON.stringify(error, null, 2)}</div>
-  }
-
-  const documents = data.items
-
-  return documents.length > 0 ? (
-    <OfficialBoardCards
-      query={search}
-      title={t('recentlyAddedDocuments')}
-      viewButtonText={t('viewTheDocument')}
-      documents={documents}
-    />
-  ) : (
-    <NoResultsFound title={t('weDidntFindAnything')} message={t('tryEnteringSomethingElse')} />
-  )
+export type SearchOption = {
+  id:
+    | 'allResults'
+    | 'pages'
+    | 'articles'
+    | 'inbaArticles'
+    | 'regulations'
+    | 'users'
+    | 'officialBoard'
+  displayName?: string
+  displayNamePlural: string
 }
 
-const OfficialBoardSection = () => {
+type OfficialBoardSectionProps = {}
+
+const OfficialBoardSection = ({}: OfficialBoardSectionProps) => {
   const t = useTranslations()
 
-  const [input, setInput] = useState<string>('')
-  const debouncedInput = useDebounce<string>(input, 300)
-  const [searchValue, setSearchValue] = useState<string>(input)
+  const [routerQueryValue] = useQueryParam('keyword', withDefault(StringParam, ''))
+  const [input, setInput] = useState('')
+  const debouncedInput = useDebounce(input, 300)
+  const [searchValue, setSearchValue] = useState(debouncedInput)
+
+  useEffect(() => {
+    setInput(routerQueryValue)
+  }, [routerQueryValue])
 
   useEffect(() => {
     setSearchValue(debouncedInput)
   }, [debouncedInput])
 
-  return (
-    <>
-      <BasicSearch
-        placeholder={t('enterKeyword')}
-        title={t('searching')}
-        buttonText={t('search')}
-        input={input}
-        setInput={setInput}
-        setSearchQuery={setSearchValue}
-      />
+  const defaultSearchOption: SearchOption = {
+    id: 'officialBoard',
+    displayName: t('SearchPage.document'),
+    displayNamePlural: t('officialBoard'),
+  }
 
-      <DataWrapper search={searchValue} />
-    </>
+  const [currentPage, setCurrentPage] = useState(1)
+
+  useEffect(() => {
+    setCurrentPage(1)
+  }, [searchValue])
+
+  const [resultsCount, setResultsCount] = useState(0)
+
+  const setResultsCountById = (optionId: SearchOption['id'], count: number) => {
+    setResultsCount(count)
+  }
+
+  const searchFilters: SearchFilters = {
+    search: searchValue,
+    page: currentPage,
+    pageSize: 12,
+    // tagIds need to be here for now, because BlogPost and InbaArticle fetchers filter by tagIds
+    tagIds: [],
+  }
+
+  const searchRef = useRef<null | HTMLInputElement>(null)
+
+  useEffect(() => {
+    searchRef.current?.scrollIntoView({ behavior: 'smooth' })
+  }, [searchFilters.page, searchFilters.pageSize])
+
+  return (
+    <div className="flex w-full flex-col gap-y-8">
+      {/* <Typography type="h1">{t('searching')}</Typography> */}
+      <div className="flex flex-col gap-3 lg:gap-4">
+        <SearchBar
+          ref={searchRef}
+          placeholder={t('enterKeyword')}
+          input={input}
+          setInput={setInput}
+          setSearchQuery={setSearchValue}
+        />
+        {/* <div className="bg-gray-100"> */}
+        {/*   <Typography type="h2">Doplnkový filter</Typography> */}
+        {/* </div> */}
+      </div>
+      {resultsCount > 0 ? (
+        <Typography type="p">
+          {t('SearchPage.showingResults', {
+            count: resultsCount,
+          })}
+        </Typography>
+      ) : null}
+      <SearchResults
+        variant="specificResults"
+        searchOption={defaultSearchOption}
+        filters={searchFilters}
+        onSetResultsCount={setResultsCountById}
+        onPageChange={setCurrentPage}
+        key={`specificResults-${defaultSearchOption.id}`}
+      />
+    </div>
   )
 }
 

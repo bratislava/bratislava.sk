@@ -2,7 +2,7 @@ import {
   getOfficialBoardDocumentQueryKey,
   officialBoardDocumentFetcher,
 } from '@backend/ginis/fetchers/officialBoardDocumentFetcher'
-import { generateUrlForOfficialBoardFile } from '@backend/ginis/utils/generateUrlForOfficialBoardFile'
+import { ParsedOfficialBoardDocumentDetail } from '@backend/ginis/types'
 import { Typography } from '@bratislava/component-library'
 import FileCard, { FileCardProps } from '@components/molecules/presentation/FileCard'
 import { useQuery } from '@tanstack/react-query'
@@ -25,14 +25,13 @@ const OfficialBoardCardModalContent = ({ id, createdAt }: Props) => {
     select: (res) => res.data,
   })
 
-  // TODO move parsing into endpoint
   const files: FileCardProps[] =
-    data?.['Soubory-dokumentu']?.map(
-      (file: any): FileCardProps => ({
-        title: `${file.Nazev}`,
-        downloadLink: generateUrlForOfficialBoardFile(file.IdSouboru, file.Nazev),
-        format: file.Pripona?.replace(/^\./, '').toUpperCase().trim(),
-        size: file.Velikost, // It comes as formatted string already, e.g. "1,2 MB" or "126 KB"
+    (data as ParsedOfficialBoardDocumentDetail)?.files.map(
+      (file): FileCardProps => ({
+        title: file.title,
+        downloadLink: file.generatedUrl,
+        format: '',
+        size: file.size, // It comes as formatted string already, e.g. "1,2 MB" or "126 KB"
         uploadDate: formatDate(createdAt),
       }),
     ) ?? []
