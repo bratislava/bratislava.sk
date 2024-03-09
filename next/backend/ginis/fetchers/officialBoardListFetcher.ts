@@ -5,6 +5,7 @@ export type OfficialBoardListFilters = {
   search: string
   pageSize: number
   page: number
+  categoryId?: string
 }
 
 export const officialBoardListDefaultFilters: OfficialBoardListFilters = {
@@ -26,6 +27,7 @@ export const officialBoardListFetcher = async (filters: OfficialBoardListFilters
       filters.search ? `search=${filters.search}` : '',
       filters.pageSize ? `pageSize=${filters.pageSize.toString()}` : '',
       filters.page ? `page=${filters.page.toString()}` : '',
+      filters.categoryId ? `categoryId=${filters.categoryId}` : '',
     ]
       .filter(Boolean)
       .join('&')}`,

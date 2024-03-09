@@ -30,7 +30,7 @@ const SearchResults = ({
 }: SearchResultsProps) => {
   const t = useTranslations()
 
-  const searchQuery = useQueryBySearchOption(searchOption.id, filters)
+  const searchQuery = useQueryBySearchOption({ optionKey: searchOption.id, filters })
 
   // FIXME types - ts doesn't know that this can be undefined or null, I added "?? {}" manually
   const { data } = searchQuery ?? {}

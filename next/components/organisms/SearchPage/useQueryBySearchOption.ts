@@ -58,7 +58,13 @@ export type SearchResult = {
   customIcon?: ReactNode
 }
 
-export const useQueryBySearchOption = (optionKey: SearchOption['id'], filters: SearchFilters) => {
+export const useQueryBySearchOption = ({
+  optionKey,
+  filters,
+}: {
+  optionKey: SearchOption['id']
+  filters: SearchFilters
+}) => {
   const t = useTranslations()
   const locale = useLocale()
 

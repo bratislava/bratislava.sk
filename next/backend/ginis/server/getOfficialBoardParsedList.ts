@@ -3,7 +3,7 @@ import { ParsedOfficialBoardDocument } from '@backend/ginis/types'
 import { SeznamDokumentuResponseItem } from '@ginis-sdk/api/json/ude/seznam-dokumentu'
 import { isDefined } from '@utils/isDefined'
 
-export const getOfficialBoardParsedList = async (searchQuery?: string) => {
+export const getOfficialBoardParsedList = async (searchQuery?: string, categoryId?: string) => {
   let documents: SeznamDokumentuResponseItem[] = []
 
   // Nazev - Max. délka: 254
@@ -20,7 +20,7 @@ export const getOfficialBoardParsedList = async (searchQuery?: string) => {
      */
     const dataXrg = await ginis.json.ude.seznamDokumentu({
       Stav: 'vyveseno',
-      // IdKategorie: 'Iné úradné oznamy', // TODO filtering by categories
+      IdKategorie: categoryId,
       Nazev: searchQueryTrimmed,
     })
 
