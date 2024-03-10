@@ -9,7 +9,7 @@ type SeznamKategoriiRequestBody = {
   'Id-uredni-desky'?: string
 }
 
-type SeznamKategoriiResponseItem = {
+export type SeznamKategoriiResponseItem = {
   IdKategorie: string
   Nazev?: string
   /**

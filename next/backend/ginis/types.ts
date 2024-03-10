@@ -25,3 +25,12 @@ export type OfficialBoardListResponse = {
   items: ParsedOfficialBoardDocument[]
   totalItems: number
 }
+
+export type ParsedOfficialBoardCategory = {
+  readonly id: string
+  readonly title: string
+  readonly numberOfPostedDocuments: number
+  readonly numberOfArchivedDocuments: number
+}
+
+export type OfficialBoardCategoryListResponse = ParsedOfficialBoardCategory[]
