@@ -1,7 +1,7 @@
 import React, { ForwardedRef, forwardRef, ForwardRefRenderFunction } from 'react'
 
 import Tag from '../../simple-components/Tag'
-import { SelectOption } from './SelectField'
+import { SelectOption } from './SelectFieldDeprecated'
 
 type SelectFieldBoxProps = {
   value?: SelectOption[]

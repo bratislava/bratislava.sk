@@ -1,5 +1,8 @@
-import { RegulationsListSectionFragment } from '@backend/graphql'
 import { Typography } from '@bratislava/component-library'
+import SelectField, {
+  SelectItem,
+} from '@components/forms/widget-components/SelectField/SelectField'
+import { officialBoardCategoriesMock } from '@components/molecules/sections/general/OfficialBoardSection/officialBoardCategories.mock'
 import SearchBar from '@components/organisms/SearchPage/SearchBar'
 import SearchResults from '@components/organisms/SearchPage/SearchResults'
 import { SearchFilters } from '@components/organisms/SearchPage/useQueryBySearchOption'
@@ -61,12 +64,15 @@ const OfficialBoardSection = ({}: OfficialBoardSectionProps) => {
     setResultsCount(count)
   }
 
+  const [categoryId, setCategoryId] = useState<string | null>(null)
+
   const searchFilters: SearchFilters = {
     search: searchValue,
     page: currentPage,
     pageSize: 12,
     // tagIds need to be here for now, because BlogPost and InbaArticle fetchers filter by tagIds
     tagIds: [],
+    categoryId: !categoryId || categoryId === 'all' ? undefined : categoryId,
   }
 
   const searchRef = useRef<null | HTMLInputElement>(null)
@@ -74,6 +80,11 @@ const OfficialBoardSection = ({}: OfficialBoardSectionProps) => {
   useEffect(() => {
     searchRef.current?.scrollIntoView({ behavior: 'smooth' })
   }, [searchFilters.page, searchFilters.pageSize])
+
+  const categorySelectOptions = [
+    { IdKategorie: 'all', Nazev: 'Všetky' } as const,
+    ...officialBoardCategoriesMock,
+  ] as const
 
   return (
     <div className="flex w-full flex-col gap-y-8">
@@ -86,9 +97,22 @@ const OfficialBoardSection = ({}: OfficialBoardSectionProps) => {
           setInput={setInput}
           setSearchQuery={setSearchValue}
         />
-        {/* <div className="bg-gray-100"> */}
-        {/*   <Typography type="h2">Doplnkový filter</Typography> */}
-        {/* </div> */}
+        <div className="flex flex-col gap-4 rounded-md bg-gray-100 p-4">
+          {/* <Typography type="h2" size="h4"> */}
+          {/*   /!* TODO translation *!/ */}
+          {/*   Doplnkový filter */}
+          {/* </Typography> */}
+          <div>
+            <SelectField
+              label="Kategória"
+              items={categorySelectOptions}
+              selectedKey={categoryId}
+              onSelectionChange={(selected) => setCategoryId(selected as string | null | 'all')}
+            >
+              {(item) => <SelectItem label={item.Nazev} id={item.IdKategorie} isDivider />}
+            </SelectField>
+          </div>
+        </div>
       </div>
       {resultsCount > 0 ? (
         <Typography type="p">
