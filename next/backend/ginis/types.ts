@@ -3,7 +3,8 @@ export type ParsedOfficialBoardDocument = {
   title: string
   createdAt: string
   content: string
-  numberOfFiles?: number
+  numberOfFiles: number
+  categoryName: string
 }
 
 export type ParsedOfficialBoardDocumentDetail = Omit<

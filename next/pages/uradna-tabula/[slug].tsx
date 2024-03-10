@@ -1,7 +1,9 @@
 import { ParsedUrlQuery } from 'node:querystring'
 
+import { mockedParsedDocumentDetail } from '@backend/ginis/mocks'
 import { getOfficialBoardParsedDocument } from '@backend/ginis/server/getOfficialBoardParsedDocument'
 import { ParsedOfficialBoardDocumentDetail } from '@backend/ginis/types'
+import { shouldMockGinis } from '@backend/ginis/utils/shouldMockGinis'
 import { GeneralQuery } from '@backend/graphql'
 import { client } from '@backend/graphql/gql'
 import PageLayout from '@components/layouts/PageLayout'
@@ -42,6 +44,16 @@ export const getServerSideProps: GetServerSideProps<
     import(`../../messages/${locale}.json`),
   ])
 
+  if (shouldMockGinis()) {
+    return {
+      props: {
+        general,
+        document: mockedParsedDocumentDetail,
+        messages: messages.default,
+      },
+    }
+  }
+
   if (!document) {
     return { notFound: true }
   }
@@ -55,7 +67,7 @@ export const getServerSideProps: GetServerSideProps<
   }
 }
 
-const RegulationPage = ({ general, document }: OfficialBoardDocumentPageProps) => {
+const OfficialBoardPage = ({ general, document }: OfficialBoardDocumentPageProps) => {
   if (!document) {
     return null
   }
@@ -73,4 +85,4 @@ const RegulationPage = ({ general, document }: OfficialBoardDocumentPageProps) =
   )
 }
 
-export default RegulationPage
+export default OfficialBoardPage

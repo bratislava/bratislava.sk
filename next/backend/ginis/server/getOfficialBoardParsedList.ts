@@ -47,6 +47,7 @@ export const getOfficialBoardParsedList = async (searchQuery?: string, categoryI
         createdAt: document.VyvesenoDne,
         content: document.Popis ?? '',
         numberOfFiles: parseInt(document.PocetSouboru ?? 0, 10), // added "?? 0" just in case
+        categoryName: document.Kategorie,
       }
     })
     .filter(isDefined)

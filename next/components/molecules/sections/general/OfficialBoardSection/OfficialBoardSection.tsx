@@ -109,7 +109,7 @@ const OfficialBoardSection = ({}: OfficialBoardSectionProps) => {
               selectedKey={categoryId}
               onSelectionChange={(selected) => setCategoryId(selected as string | null | 'all')}
             >
-              {(item) => <SelectItem label={item.Nazev} id={item.IdKategorie} isDivider />}
+              {(item) => <SelectItem label={item.Nazev} id={item.IdKategorie} />}
             </SelectField>
           </div>
         </div>

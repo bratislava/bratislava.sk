@@ -3,27 +3,35 @@
 // Because the GINIS backend is accessible only from internal Bratislava network,
 // if you need placeholder data, you can use the following mocks:
 
-export const mockedParsedDocuments = [
+import {
+  ParsedOfficialBoardDocument,
+  ParsedOfficialBoardDocumentDetail,
+} from '@backend/ginis/types'
+
+export const mockedParsedDocuments: ParsedOfficialBoardDocument[] = [
   {
-    id: '1',
+    id: 'mock-1',
     title: 'Mocked document title 1',
     createdAt: '2022-01-01',
     content: 'hello world',
     numberOfFiles: 1,
+    categoryName: 'Mocked category name 1',
   },
   {
-    id: '2',
+    id: 'mock-2',
     title: 'Mocked document title 1',
     createdAt: '2022-01-01',
     content: 'hello world',
     numberOfFiles: 2,
+    categoryName: 'Mocked category name 2',
   },
   {
-    id: '3',
+    id: 'mock-3',
     title: 'Mocked document title 1',
     createdAt: '2022-01-01',
     content: 'hello world',
     numberOfFiles: 1,
+    categoryName: 'Mocked category name 3',
   },
 ]
 
@@ -48,25 +56,24 @@ export const getALotOfMockedDocs = async () => {
   ]
 }
 
-export const mockedDetail = {
-  'Detail-dokumentu': {
-    Nazev: 'string',
-    'Vyveseno-dne': '2020-01-01',
-  },
-  'Soubory-dokumentu': [
+export const mockedParsedDocumentDetail: ParsedOfficialBoardDocumentDetail = {
+  id: '1',
+  title: 'Mocked document title 1',
+  createdAt: '2022-01-01',
+  content: 'hello world',
+  categoryName: 'Mocked category name 1',
+  files: [
     {
-      'Id-souboru': 'string',
-      Nazev: 'string.pdf',
-      Velikost: '168kb',
+      id: '1',
+      title: 'Mocked file 1',
+      generatedUrl: '#',
+      size: '1 kB',
     },
     {
-      'Id-souboru': 'string2',
-      Nazev: 'string2.pdf',
-      Velikost: '1kb',
+      id: '2',
+      title: 'Mocked file 2',
+      generatedUrl: '#',
+      size: '2 MB',
     },
   ],
-}
-
-export const getMockedDetail = async () => {
-  return mockedDetail
 }
