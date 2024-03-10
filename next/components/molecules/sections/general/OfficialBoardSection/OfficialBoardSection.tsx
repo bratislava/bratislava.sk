@@ -1,17 +1,8 @@
-import {
-  getOfficialBoardCategoriesQueryKey,
-  officialBoardCategoriesFetcher,
-} from '@backend/ginis/fetchers/officialBoardCategoriesFetcher'
-import { ParsedOfficialBoardCategory } from '@backend/ginis/types'
 import { Typography } from '@bratislava/component-library'
-import SelectField, {
-  SelectItem,
-} from '@components/forms/widget-components/SelectField/SelectField'
+import OfficialBoardAdditionalFilters from '@components/molecules/sections/general/OfficialBoardSection/OfficialBoardAdditionalFilters'
 import SearchBar from '@components/organisms/SearchPage/SearchBar'
 import SearchResults from '@components/organisms/SearchPage/SearchResults'
 import { SearchFilters } from '@components/organisms/SearchPage/useQueryBySearchOption'
-import { useQuery } from '@tanstack/react-query'
-import { isDefined } from '@utils/isDefined'
 import { useTranslations } from 'next-intl'
 import React, { useEffect, useRef, useState } from 'react'
 import { StringParam, useQueryParam, withDefault } from 'use-query-params'
@@ -87,32 +78,6 @@ const OfficialBoardSection = ({}: OfficialBoardSectionProps) => {
     searchRef.current?.scrollIntoView({ behavior: 'smooth' })
   }, [searchFilters.page, searchFilters.pageSize])
 
-  // TODO handle loading and error
-  const {
-    data: officialBoardCategories,
-    isLoading,
-    isError,
-    error,
-  } = useQuery({
-    queryKey: getOfficialBoardCategoriesQueryKey(),
-    queryFn: () => officialBoardCategoriesFetcher(),
-    select: (res) => res.data,
-  })
-
-  const categorySelectOptions: (Omit<
-    ParsedOfficialBoardCategory,
-    'numberOfPostedDocuments' | 'numberOfArchivedDocuments'
-  > &
-    Partial<
-      Pick<ParsedOfficialBoardCategory, 'numberOfPostedDocuments' | 'numberOfArchivedDocuments'>
-    >)[] = [
-    {
-      id: 'all',
-      title: 'Všetky',
-    } as const,
-    ...(officialBoardCategories ?? []),
-  ]
-
   return (
     <div className="flex w-full flex-col gap-y-8">
       {/* <Typography type="h1">{t('searching')}</Typography> */}
@@ -130,23 +95,7 @@ const OfficialBoardSection = ({}: OfficialBoardSectionProps) => {
           {/*   Doplnkový filter */}
           {/* </Typography> */}
           <div>
-            <SelectField
-              label="Kategória"
-              items={categorySelectOptions}
-              selectedKey={categoryId}
-              onSelectionChange={(selected) => setCategoryId(selected as string | null | 'all')}
-            >
-              {(item) => (
-                <SelectItem
-                  label={`${item.title} ${
-                    isDefined(item.numberOfPostedDocuments)
-                      ? ` [${item.numberOfPostedDocuments}]`
-                      : ''
-                  }`}
-                  id={item.id}
-                />
-              )}
-            </SelectField>
+            <OfficialBoardAdditionalFilters categoryId={categoryId} setCategoryId={setCategoryId} />
           </div>
         </div>
       </div>
