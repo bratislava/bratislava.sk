@@ -3,6 +3,7 @@ import { client } from '@backend/graphql/gql'
 import PageHeader from '@bratislava/ui-bratislava/PageHeader/PageHeader'
 import GlobalSearchPageContent from '@components/pages/GlobalSearchPageContent'
 import { LocalizationsProvider } from '@components/providers/LocalizationsProvider'
+import SectionContainer from '@components/ui/SectionContainer/SectionContainer'
 import { GeneralContextProvider } from '@utils/generalContext'
 import { useTitle } from '@utils/useTitle'
 import { GetStaticProps } from 'next'
@@ -48,7 +49,9 @@ const Page = ({ general }: PageProps) => {
         </Head>
         <PageLayout>
           <PageHeader breadcrumbs={[{ title: t('searching'), path: null }]} />
-          <GlobalSearchPageContent />
+          <SectionContainer className="mb-8 mt-12">
+            <GlobalSearchPageContent variant="general" />
+          </SectionContainer>
         </PageLayout>
       </LocalizationsProvider>
     </GeneralContextProvider>

@@ -30,6 +30,9 @@ type RegulationsListSectionProps = {
 }
 
 const RegulationsListSection = ({ section }: RegulationsListSectionProps) => {
+  // TODO return only GlobalSearchPageContent with specific search option when regulations are enabled
+  // return <GlobalSearchPageContent variant="specific" searchOption="regulations" />
+
   const t = useTranslations()
 
   const [routerQueryValue] = useQueryParam('keyword', withDefault(StringParam, ''))
