@@ -1,7 +1,8 @@
 import {
-  getGinisOfficialBoardHomepageQueryKey,
-  ginisOfficialBoardHomepageFetcher,
-} from '@backend/ginis/fetchers/ginisOfficialBoardHomepage.fetcher'
+  getOfficialBoardListQueryKey,
+  officialBoardListDefaultFilters,
+  officialBoardListFetcher,
+} from '@backend/ginis/fetchers/officialBoardListFetcher'
 import Button from '@components/forms/simple-components/Button'
 import OfficialBoardCard from '@components/ui/OfficialBoardCard/OfficialBoardCard'
 import { useQuery } from '@tanstack/react-query'
@@ -17,14 +18,21 @@ const TabPanelOfficialBoard = () => {
   const { homepage } = useHomepageContext()
   const { tabs } = homepage?.attributes ?? {}
 
+  const filters = { ...officialBoardListDefaultFilters, pageSize: 3 }
+
   // TODO handle loading and errors
-  const { data: officialBoardData } = useQuery({
-    queryKey: getGinisOfficialBoardHomepageQueryKey(),
-    queryFn: () => ginisOfficialBoardHomepageFetcher(),
+  const {
+    data: officialBoardData,
+    isLoading,
+    isError,
+    error,
+  } = useQuery({
+    queryKey: getOfficialBoardListQueryKey(filters),
+    queryFn: () => officialBoardListFetcher(filters),
     select: (res) => res.data,
   })
 
-  const documents = officialBoardData || []
+  const documents = officialBoardData?.items || []
 
   return (
     <TabPanel id="OfficialBoard">

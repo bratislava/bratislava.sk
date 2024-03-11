@@ -1,7 +1,8 @@
 import {
-  getGinisOfficialBoardQueryKey,
-  ginisOfficialBoardFetcher,
-} from '@backend/ginis/fetchers/ginisOfficialBoard.fetcher'
+  getOfficialBoardListQueryKey,
+  officialBoardListFetcher,
+  OfficialBoardListFilters,
+} from '@backend/ginis/fetchers/officialBoardListFetcher'
 import NoResultsFound from '@bratislava/ui-bratislava/NoResultsFound/NoResultsFound'
 import BasicSearch from '@components/ui/BasicSearch/BasicSearch'
 import LoadingSpinner from '@components/ui/LoadingSpinner/LoadingSpinner'
@@ -14,10 +15,13 @@ import { useDebounce } from 'usehooks-ts'
 const DataWrapper = ({ search }: { search: string }) => {
   const t = useTranslations()
 
-  // TODO prefetch
+  // TODO remove this hacky solution
+  // Setting pageSize to -1 to get all documents, see official-board-list.ts api endpoint
+  const filters: OfficialBoardListFilters = { search, pageSize: -1, page: 1 }
+
   const { data, isLoading, isError, error } = useQuery({
-    queryKey: getGinisOfficialBoardQueryKey(search),
-    queryFn: () => ginisOfficialBoardFetcher(search),
+    queryKey: getOfficialBoardListQueryKey(filters),
+    queryFn: () => officialBoardListFetcher(filters),
     keepPreviousData: true,
     select: (res) => res.data,
   })
@@ -31,12 +35,14 @@ const DataWrapper = ({ search }: { search: string }) => {
     return <div className="whitespace-pre">Error: {JSON.stringify(error, null, 2)}</div>
   }
 
-  return data.length > 0 ? (
+  const documents = data.items
+
+  return documents.length > 0 ? (
     <OfficialBoardCards
       query={search}
       title={t('recentlyAddedDocuments')}
       viewButtonText={t('viewTheDocument')}
-      documents={data}
+      documents={documents}
     />
   ) : (
     <NoResultsFound title={t('weDidntFindAnything')} message={t('tryEnteringSomethingElse')} />

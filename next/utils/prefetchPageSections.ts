@@ -1,7 +1,3 @@
-import {
-  getGinisOfficialBoardQueryKey,
-  ginisOfficialBoardFetcher,
-} from '@backend/ginis/fetchers/ginisOfficialBoard.fetcher'
 import { PageEntityFragment } from '@backend/graphql'
 import {
   getRelatedBlogPostsQueryKey,
@@ -37,11 +33,12 @@ export const prefetchPageSections = async (page: PageEntityFragment, locale: str
     await queryClient.prefetchQuery(['InbaTags', locale], () => client.InbaTags({ locale }))
   }
 
-  if (sectionTypes.includes('ComponentSectionsOfficialBoard')) {
-    await queryClient.prefetchQuery(getGinisOfficialBoardQueryKey(''), () =>
-      ginisOfficialBoardFetcher(''),
-    )
-  }
+  // TODO this does not work, throws ERR_CONNECTION_REFUSED
+  // if (sectionTypes.includes('ComponentSectionsOfficialBoard')) {
+  //   await queryClient.prefetchQuery(getGinisOfficialBoardQueryKeyJson(), () =>
+  //     ginisOfficialBoardFetcherJson(),
+  //   )
+  // }
 
   if (sectionTypes.includes('ComponentSectionsOrganizationalStructure')) {
     await queryClient.prefetchQuery(getMsGraphStructureQueryKey(), () => msGraphStructureFetcher())
