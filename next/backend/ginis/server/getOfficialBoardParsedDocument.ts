@@ -1,4 +1,6 @@
 import { ginis } from '@backend/ginis/ginis'
+import { ParsedOfficialBoardDocumentDetail } from '@backend/ginis/types'
+import { generateUrlForOfficialBoardFile } from '@backend/ginis/utils/generateUrlForOfficialBoardFile'
 import { DetailDokumentuResponseXrg } from '@ginis-sdk/api/json/ude/detail-dokumentu'
 
 export const getOfficialBoardParsedDocument = async (documentId: string) => {
@@ -20,6 +22,7 @@ export const getOfficialBoardParsedDocument = async (documentId: string) => {
     documentFiles = dataXrg.SouboryDokumentu
 
     // Keeping the approach from old XML endpoint to double-check if documentFiles are always an array
+    // Expecting array of one or multiple files
     if (Array.isArray(documentFiles)) {
       // do nothing, needed for TS
     } else if (typeof documentFiles === 'object') {
@@ -28,12 +31,31 @@ export const getOfficialBoardParsedDocument = async (documentId: string) => {
       documentFiles = []
     }
 
-    // TODO Detail-dokumentu is currently not used, modal gets info from parent component, but we keep it here for future, when we will want to have detail page for official board documents
-    // TODO return in more readable parsed format
-    return { 'Detail-dokumentu': documentDetail, 'Soubory-dokumentu': documentFiles }
+    // Expecting array of one object
+    if (Array.isArray(documentDetail)) {
+      // do nothing, needed for TS
+    } else if (typeof documentDetail === 'object') {
+      documentDetail = [documentDetail]
+    } else {
+      documentDetail = []
+    }
+
+    const parsedDocumentDetail: ParsedOfficialBoardDocumentDetail = {
+      id: documentDetail[0].IdZaznamu,
+      title: documentDetail[0].Nazev,
+      createdAt: documentDetail[0].VyvesenoDne,
+      content: documentDetail[0].Popis ?? '',
+      categoryName: documentDetail[0].Kategorie,
+      files: documentFiles.map((file) => ({
+        id: file.IdSouboru,
+        title: file.Nazev,
+        generatedUrl: generateUrlForOfficialBoardFile(file.IdSouboru, file.Nazev),
+        size: file.Velikost ?? '',
+      })),
+    }
+
+    return parsedDocumentDetail
   } catch (error) {
     console.log(error)
   }
-
-  // TODO Keeping for reference from old XML endpoint to double check if documents are always an array
 }

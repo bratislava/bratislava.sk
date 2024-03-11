@@ -9,6 +9,7 @@ import { StringParam, useQueryParam, withDefault } from 'use-query-params'
 import { useDebounce } from 'usehooks-ts'
 
 // This component was created by reducing some functionality from the main search component GlobalSearchPageContent
+// Same as in OfficialBoardSection.
 // TODO there's too much code duplication here, it would be better to have one component that takes selected search options as props
 
 export type SearchOption = {
@@ -29,6 +30,9 @@ type RegulationsListSectionProps = {
 }
 
 const RegulationsListSection = ({ section }: RegulationsListSectionProps) => {
+  // TODO return only GlobalSearchPageContent with specific search option when regulations are enabled
+  // return <GlobalSearchPageContent variant="specific" searchOption="regulations" />
+
   const t = useTranslations()
 
   const [routerQueryValue] = useQueryParam('keyword', withDefault(StringParam, ''))

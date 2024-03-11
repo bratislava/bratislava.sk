@@ -1,4 +1,5 @@
 import { getOfficialBoardFileBase64Encoded } from '@backend/ginis/server/getOfficialBoardFileBase64Encoded'
+import { base64Decode } from '@utils/base64'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 /**
@@ -17,7 +18,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse): Promise<void>
   const { fileId: fileIdParam } = req.query
   const encodedFileId = typeof fileIdParam === 'string' ? fileIdParam : fileIdParam?.[0] ?? ''
 
-  const fileId = Buffer.from(encodedFileId, 'base64').toString('utf8')
+  const fileId = base64Decode(encodedFileId)
 
   if (!fileId) {
     return res.status(400).json({ message: 'Missing fileId' })
