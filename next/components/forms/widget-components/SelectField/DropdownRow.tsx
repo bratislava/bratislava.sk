@@ -5,7 +5,7 @@ import React from 'react'
 
 import CheckboxIcon from '../../icon-components/CheckboxIcon'
 import RadioButtonIcon from '../../icon-components/RadioButtonIcon'
-import { SelectOption } from './SelectField'
+import { SelectOption } from './SelectFieldDeprecated'
 
 type DropdownRowProps = {
   option: SelectOption

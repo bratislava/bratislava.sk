@@ -1,250 +1,114 @@
-import ArrowDownIcon from '@assets/images/forms/chevron-down.svg'
-import ArrowUpIcon from '@assets/images/forms/chevron-up.svg'
+import { CheckInCircleIcon, ChevronDownIcon } from '@assets/ui-icons'
 import cx from 'classnames'
-import React, {
-  ForwardedRef,
-  forwardRef,
-  ForwardRefRenderFunction,
-  RefObject,
-  useEffect,
-  useId,
-  useState,
-} from 'react'
+import React, { ReactNode } from 'react'
+import {
+  Button,
+  FieldError,
+  Label,
+  ListBox,
+  ListBoxItem,
+  ListBoxItemProps,
+  Popover,
+  Select,
+  SelectProps,
+  SelectValue,
+  Text,
+  ValidationResult,
+} from 'react-aria-components'
 import { twMerge } from 'tailwind-merge'
 
-import FieldErrorMessage from '../../info-components/FieldErrorMessage'
-import FieldHeader from '../../info-components/FieldHeader'
-import { ExplicitOptionalType } from '../../types/ExplicitOptional'
-import Dropdown from './Dropdown'
-import SelectFieldBox from './SelectFieldBox'
+// This component was copied from Enforcement project and updated to use newer react-aria-components version
+// https://github.com/bratislava/enforcement-new/blob/aa888b55c97f756c19dee6cbf0ac8ce1bf6e6c78/components/inputs/select-field.tsx
 
-export type SelectOption = {
-  const: string | number
-  title?: string
+// docs: https://react-spectrum.adobe.com/react-aria/Select.html#reusable-wrappers
+export interface SelectFieldProps<T extends object> extends Omit<SelectProps<T>, 'children'> {
+  label?: string
   description?: string
+  errorMessage?: string | ((validation: ValidationResult) => string)
+  items?: Iterable<T>
+  children: React.ReactNode | ((item: T) => React.ReactNode)
 }
 
-type SelectFieldProps = {
-  label: string
-  type?: 'one' | 'multiple' | 'arrow' | 'radio'
-  value?: SelectOption[]
-  enumOptions?: SelectOption[]
-  tooltip?: string
-  dropdownDivider?: boolean
-  selectAllOption?: boolean
-  placeholder?: string
-  errorMessage?: string[]
-  helptext?: string
-  required?: boolean
-  explicitOptional?: ExplicitOptionalType
-  disabled?: boolean
-  className?: string
-  onChange: (values: SelectOption[]) => void
+type SelectItemProps = Omit<ListBoxItemProps, 'children'> & {
+  label: ReactNode
+  description?: string
+  isDivider?: boolean
 }
 
-const SelectFieldComponent: ForwardRefRenderFunction<HTMLDivElement, SelectFieldProps> = (
-  props: SelectFieldProps,
-  ref: ForwardedRef<HTMLDivElement>,
-) => {
-  // PROPS
-  const {
-    label,
-    value,
-    enumOptions,
-    type = 'one',
-    selectAllOption,
-    placeholder,
-    helptext,
-    tooltip,
-    dropdownDivider,
-    errorMessage = [],
-    required,
-    explicitOptional,
-    disabled,
-    className,
-    onChange,
-  } = props
+export const SelectItem = ({ label, description, isDivider = false, ...rest }: SelectItemProps) => {
+  return (
+    <ListBoxItem
+      {...rest}
+      className={({ isHovered, isFocusVisible }) =>
+        cx('flex cursor-pointer justify-between px-5 py-3 outline-none', {
+          'bg-gray-100': isHovered,
+          'ring ring-offset-2': isFocusVisible,
+          'after:h-0.5 after:bg-gray-200 after:[&:not(:last-child)]:block': isDivider,
+        })
+      }
+    >
+      {({ isSelected }) => (
+        <>
+          <div className="flex flex-col items-start gap-1">
+            <Text slot="label">{label}</Text>
+            {description ? <Text slot="description">{description}</Text> : null}
+          </div>
+          <div className={cx('shrink-0', { hidden: !isSelected })}>
+            <CheckInCircleIcon />
+          </div>
+        </>
+      )}
+    </ListBoxItem>
+  )
+}
 
-  // STATE
-  const [isDropdownOpened, setIsDropdownOpened] = useState<boolean>(false)
-  const [isOutsideClickProgressing, setIsOutsideClickProgressing] = useState<boolean>(false)
-  const [filter, setFilter] = useState<string>('')
-  const [filterRef] = useState<RefObject<HTMLInputElement>>(React.createRef<HTMLInputElement>())
+const SelectField = <T extends object>({
+  label,
+  description,
+  errorMessage,
+  children,
+  className,
+  items,
+  ...props
+}: SelectFieldProps<T>) => {
+  const disabled = props.isDisabled
 
-  // STYLES
-  const selectClassName = cx(
-    'border-form-input-default flex flex-row items-center rounded-lg border-2 bg-white',
+  const style = cx(
+    'flex w-full justify-between gap-3 rounded-lg border-2 bg-white px-3 py-2 outline-none ring-offset-2 focus:border-gray-800 focus-visible:ring lg:px-4 lg:py-3',
     {
-      'hover:border-form-input-hover focus:border-form-input-pressed active:border-form-input-pressed':
-        !disabled,
-      'border-negative-700 hover:border-negative-700 focus:border-negative-700':
-        errorMessage?.length > 0 && !disabled,
-      'border-form-input-disabled opacity-50': disabled,
+      'border-gray-200 hover:border-gray-400': !disabled,
+      'border-negative-700 hover:border-negative-700': errorMessage && !disabled,
+      'pointer-events-none border-gray-300 bg-gray-100': disabled,
     },
   )
 
-  useEffect(() => {
-    if (!isDropdownOpened) {
-      setIsOutsideClickProgressing(false)
-    }
-  }, [isDropdownOpened])
-
-  const handleOnChangeSelect = (selectedOptions: SelectOption[], close?: boolean) => {
-    if (!onChange) return
-    onChange(selectedOptions)
-    if (type === 'multiple' || !close) {
-      setIsDropdownOpened(true)
-    }
-  }
-
-  const handleOnRemove = (optionId: number) => {
-    const newValue = value ? [...value] : []
-    newValue.splice(optionId, 1)
-    const close = type !== 'multiple'
-    handleOnChangeSelect(newValue, close)
-  }
-
-  const handleOnChooseOne = (option: SelectOption, close?: boolean) => {
-    if (close) setIsDropdownOpened(false)
-    handleOnChangeSelect([option], close)
-    setFilter('')
-  }
-
-  const handleOnUnChooseOne = (option: SelectOption, close?: boolean) => {
-    if (close) setIsDropdownOpened(false)
-    handleOnChangeSelect([], close)
-  }
-
-  const handleOnChooseMulti = (option: SelectOption) => {
-    const newValue = value ? [...value] : []
-    newValue.push(option)
-    handleOnChangeSelect(newValue)
-  }
-
-  const handleOnUnChooseMulti = (option: SelectOption) => {
-    const newValue = value
-      ? [...value].filter((valueOption) => {
-          return valueOption.const !== option.const
-        })
-      : []
-    handleOnChangeSelect(newValue)
-  }
-
-  const handleOnSelectFieldClick = (event: React.MouseEvent) => {
-    const targetClassList = (event.target as Element).classList
-    if (!isDropdownOpened && !targetClassList.contains('tag') && !disabled) {
-      filterRef.current?.focus()
-      if (!isOutsideClickProgressing) {
-        setIsDropdownOpened(true)
-      }
-    }
-  }
-
-  const handleOnDeleteLastValue = () => {
-    const newValue = value ? [...value] : []
-    newValue.pop()
-    handleOnChangeSelect(newValue)
-  }
-
-  const handleOnSelectAll = () => {
-    const newValue = enumOptions ? [...enumOptions] : []
-    handleOnChangeSelect(newValue)
-  }
-
-  const handleOnDeselectAll = () => {
-    handleOnChangeSelect([])
-  }
-
-  const handleOnClickOutside = () => {
-    setIsOutsideClickProgressing(true)
-    setIsDropdownOpened(false)
-  }
-
-  // HELPER FUNCTIONS
-  const getDropdownValues = (): SelectOption[] => {
-    return value ? (type !== 'multiple' && value && value.length > 0 ? [value[0]] : value) : []
-  }
-
-  const getFilteredOptions = (): SelectOption[] => {
-    return enumOptions
-      ? enumOptions.filter((option: SelectOption) =>
-          String(option.title).toLowerCase().includes(filter.toLowerCase()),
-        )
-      : []
-  }
-
-  const isRowBold = enumOptions?.some(
-    (option: SelectOption) => option.description && option.description !== '',
-  )
-
-  // RENDER
   return (
-    <section
-      className={twMerge('relative flex w-full max-w-[200px] flex-col transition-all', className)}
+    <Select
+      {...props}
+      className={twMerge('flex flex-col gap-1', typeof className === 'string' ? className : '')}
     >
-      {/* FIELD HEADER WITH DESCRIPTION AND LABEL */}
-      <FieldHeader
-        label={label}
-        helptext={helptext}
-        tooltip={tooltip}
-        required={required}
-        explicitOptional={explicitOptional}
-      />
+      <Label className="font-semibold">
+        {label}
+        {props.isRequired ? <span className="text-negative-700"> *</span> : undefined}
+      </Label>
+      <Button className={style}>
+        <SelectValue />
+        <span aria-hidden>
+          <ChevronDownIcon />
+        </span>
+      </Button>
+      {/* TODO style description and error */}
+      {description && <Text slot="description">{description}</Text>}
+      <FieldError>{errorMessage}</FieldError>
 
-      {/* SELECT PART */}
-      <div className={selectClassName} ref={ref} onClick={handleOnSelectFieldClick}>
-        {/* MAIN BODY OF SELECT */}
-        <SelectFieldBox
-          ref={ref}
-          value={value}
-          multiple={type === 'multiple'}
-          filter={filter}
-          filterRef={filterRef}
-          placeholder={placeholder}
-          onRemove={handleOnRemove}
-          onRemoveAll={handleOnDeselectAll}
-          onFilterChange={setFilter}
-          onDeleteLastValue={handleOnDeleteLastValue}
-        />
-
-        {/* DROPDOWN ARROW */}
-        <div className="dropdownButton flex h-10 cursor-pointer select-none flex-col items-center rounded-lg px-3 sm:h-12 sm:px-4 [&>svg]:m-1">
-          <div className="dropdownButton relative flex h-6 h-full w-6 flex-col items-center justify-center">
-            {isDropdownOpened ? <ArrowUpIcon /> : <ArrowDownIcon />}
-            <div className="dropdownButton absolute inset-0 z-10" />
-          </div>
-        </div>
-
-        {disabled && <div className="absolute inset-0 z-20 rounded-lg" />}
-      </div>
-
-      {/* DROPDOWN */}
-      <div className="dropdown relative">
-        {isDropdownOpened && (
-          <Dropdown
-            enumOptions={getFilteredOptions()}
-            value={getDropdownValues()}
-            isRowBold={isRowBold}
-            type={type}
-            divider={dropdownDivider}
-            selectAllOption={selectAllOption}
-            absolute
-            onChooseOne={handleOnChooseOne}
-            onUnChooseOne={handleOnUnChooseOne}
-            onSelectAll={handleOnSelectAll}
-            onDeselectAll={handleOnDeselectAll}
-            onChooseMulti={handleOnChooseMulti}
-            onUnChooseMulti={handleOnUnChooseMulti}
-            onClickOutside={handleOnClickOutside}
-          />
-        )}
-      </div>
-
-      {/* ERROR MESSAGE */}
-      <FieldErrorMessage errorMessage={errorMessage} />
-    </section>
+      <Popover
+        className="w-[--trigger-width] overflow-y-scroll rounded-md border-2 border-gray-800 bg-white py-2"
+        shouldFlip={false}
+      >
+        <ListBox items={items}>{children}</ListBox>
+      </Popover>
+    </Select>
   )
 }
 
-const SelectField = forwardRef<HTMLDivElement, SelectFieldProps>(SelectFieldComponent)
 export default SelectField

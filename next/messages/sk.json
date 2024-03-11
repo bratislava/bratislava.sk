@@ -272,7 +272,8 @@
     "document": "Dokument",
     "documents": "Dokumenty",
     "regulation": "VZN",
-    "regulations": "VZN"
+    "regulations": "VZN",
+    "numberOfFiles": "{count} {count, plural, one {súbor} few {súbory} other {súborov}}"
   },
   "Regulation": {
     "regulation": "Všeobecne záväzné nariadenie",
@@ -310,5 +311,10 @@
     "aria": {
       "linkToRegulationAriaLabel": "Prejsť na {title}"
     }
+  },
+  "OfficialBoard": {
+    "officialBoard": "Úradná tabuľa",
+    "attachments": "Prílohy",
+    "noAttachmentsMessage": "K tomuto dokumentu sa nepodarilo nájsť žiadne prílohy."
   }
 }

@@ -310,5 +310,10 @@
     "aria": {
       "linkToRegulationAriaLabel": "Go to regulation {title}"
     }
+  },
+  "OfficialBoard": {
+    "officialBoard": "Official noticeboard",
+    "attachments": "Attachments",
+    "noAttachmentsMessage": "We didn't find any attachments to this notice."
   }
 }

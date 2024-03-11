@@ -1,9 +1,9 @@
 import { Typography } from '@bratislava/component-library'
 import Chip from '@components/forms/simple-components/Chip'
+import OfficialBoardAdditionalFilters from '@components/molecules/sections/general/OfficialBoardSection/OfficialBoardAdditionalFilters'
 import SearchBar from '@components/organisms/SearchPage/SearchBar'
 import SearchResults from '@components/organisms/SearchPage/SearchResults'
 import { SearchFilters } from '@components/organisms/SearchPage/useQueryBySearchOption'
-import SectionContainer from '@components/ui/SectionContainer/SectionContainer'
 import { getCategoryColorLocalStyle } from '@utils/colors'
 import { useTranslations } from 'next-intl'
 import React, { useEffect, useRef, useState } from 'react'
@@ -30,7 +30,18 @@ export type SearchOption = {
   displayNamePlural: string
 }
 
-const GlobalSearchPageContent = () => {
+type Props =
+  | {
+      variant: 'general'
+      searchOption?: never
+    }
+  | {
+      variant: 'specific'
+      // TODO unify with SearchOption
+      searchOption: 'pages' | 'articles' | 'regulations' | 'users' | 'officialBoard'
+    }
+
+const GlobalSearchPageContent = ({ variant, searchOption }: Props) => {
   const t = useTranslations()
 
   const [routerQueryValue] = useQueryParam('keyword', withDefault(StringParam, ''))
@@ -46,12 +57,12 @@ const GlobalSearchPageContent = () => {
     setSearchValue(debouncedInput)
   }, [debouncedInput])
 
-  const defaultSearchOption: SearchOption = {
+  let defaultSearchOption: SearchOption = {
     id: 'allResults',
     displayNamePlural: t('SearchPage.allResults'),
   }
 
-  const searchOptions: SearchOption[] = [
+  let searchOptions: SearchOption[] = [
     { id: 'pages', displayName: t('SearchPage.page'), displayNamePlural: t('SearchPage.pages') },
     {
       id: 'articles',
@@ -73,12 +84,17 @@ const GlobalSearchPageContent = () => {
     //   displayName: t('SearchPage.regulation'),
     //   displayNamePlural: t('SearchPage.regulations'),
     // },
-    // {
-    //   id: 'officialBoard',
-    //   displayName: t('SearchPage.document'),
-    //   displayNamePlural: t('officialBoard'),
-    // },
+    {
+      id: 'officialBoard',
+      displayName: t('SearchPage.document'),
+      displayNamePlural: t('officialBoard'),
+    },
   ]
+
+  if (variant === 'specific') {
+    searchOptions = searchOptions.filter((option) => option.id === searchOption)
+    defaultSearchOption = searchOptions[0]
+  }
 
   const getSearchOptionByKeyValue = (key: string) => {
     return searchOptions.find((option) => option.id === key) ?? defaultSearchOption
@@ -102,6 +118,8 @@ const GlobalSearchPageContent = () => {
   const [resultsCount, setResultsCount] = useState(
     Object.fromEntries(searchOptions.map((option): [string, number] => [option.id, 0])),
   )
+
+  const [categoryId, setCategoryId] = useState<string | null>(null)
 
   const setResultsCountById = (optionId: SearchOption['id'], count: number) => {
     setResultsCount((prevResultsCount) => {
@@ -147,6 +165,8 @@ const GlobalSearchPageContent = () => {
     pageSize: 12,
     // tagIds need to be here for now, because BlogPost and InbaArticle fetchers filter by tagIds
     tagIds: [],
+    // Official board category id
+    categoryId: !categoryId || categoryId === 'all' ? undefined : categoryId,
   }
 
   const searchRef = useRef<null | HTMLInputElement>(null)
@@ -156,18 +176,22 @@ const GlobalSearchPageContent = () => {
   }, [searchFilters.page, searchFilters.pageSize])
 
   return (
-    <SectionContainer className="mb-8">
-      <div className="flex w-full flex-col gap-y-8 pt-12">
-        <Typography type="h1">{t('searching')}</Typography>
-        <div className="flex flex-col gap-3 lg:gap-4">
-          <SearchBar
-            ref={searchRef}
-            placeholder={t('enterKeyword')}
-            input={input}
-            setInput={setInput}
-            setSearchQuery={setSearchValue}
-          />
+    <div className="flex w-full flex-col gap-y-8">
+      {/* H1 - when used on main search page */}
+      {variant === 'general' ? <Typography type="h1">{t('searching')}</Typography> : null}
 
+      {/* Filters */}
+      <div className="flex flex-col gap-3 lg:gap-4">
+        <SearchBar
+          ref={searchRef}
+          placeholder={t('enterKeyword')}
+          input={input}
+          setInput={setInput}
+          setSearchQuery={setSearchValue}
+        />
+
+        {/* TagGroup to select content type to search in - when used on main search page */}
+        {variant === 'general' ? (
           <TagGroup
             aria-label={t('SearchPage.searchOptions')}
             selectionMode="single"
@@ -190,42 +214,60 @@ const GlobalSearchPageContent = () => {
               })}
             </TagList>
           </TagGroup>
-        </div>
-        {getResultsCountById(selectedKey) > 0 ? (
-          <Typography type="p">
-            {t('SearchPage.showingResults', {
-              count: getResultsCountById(selectedKey),
-            })}
-          </Typography>
         ) : null}
-        {selectedKey === defaultSearchOption.id ? (
-          <div className="flex flex-col gap-8">
-            {searchOptions.map((option) => {
-              return (
-                <SearchResults
-                  variant="allResults"
-                  searchOption={option}
-                  filters={searchFilters}
-                  onSetResultsCount={setResultsCountById}
-                  onShowMore={setSelection}
-                  key={`allResults-${option.id}`}
-                />
-              )
-            })}
+
+        {/* Additional filters, currently only for officialBoard */}
+        {selectedKey === 'officialBoard' ? (
+          <div className="flex flex-col gap-4 rounded-md bg-gray-100 p-4">
+            {/* <Typography type="h2" size="h4"> */}
+            {/*   /!* {t('SearchPage.additionalFilter')} *!/ */}
+            {/*   Doplnkovy filter */}
+            {/* </Typography> */}
+            <div>
+              <OfficialBoardAdditionalFilters
+                categoryId={categoryId}
+                setCategoryId={setCategoryId}
+              />
+            </div>
           </div>
-        ) : (
-          <SearchResults
-            variant="specificResults"
-            searchOption={getSearchOptionByKeyValue(selectedKey)}
-            filters={searchFilters}
-            onSetResultsCount={setResultsCountById}
-            onShowMore={setSelection}
-            onPageChange={setCurrentPage}
-            key={`specificResults-${selectedKey}`}
-          />
-        )}
+        ) : null}
       </div>
-    </SectionContainer>
+
+      {getResultsCountById(selectedKey) > 0 ? (
+        <Typography type="p">
+          {t('SearchPage.showingResults', {
+            count: getResultsCountById(selectedKey),
+          })}
+        </Typography>
+      ) : null}
+
+      {selectedKey === 'allResults' ? (
+        <div className="flex flex-col gap-8">
+          {searchOptions.map((option) => {
+            return (
+              <SearchResults
+                variant="allResults"
+                searchOption={option}
+                filters={searchFilters}
+                onSetResultsCount={setResultsCountById}
+                onShowMore={setSelection}
+                key={`allResults-${option.id}`}
+              />
+            )
+          })}
+        </div>
+      ) : (
+        <SearchResults
+          variant="specificResults"
+          searchOption={getSearchOptionByKeyValue(selectedKey)}
+          filters={searchFilters}
+          onSetResultsCount={setResultsCountById}
+          onShowMore={setSelection}
+          onPageChange={setCurrentPage}
+          key={`specificResults-${selectedKey}`}
+        />
+      )}
+    </div>
   )
 }
 
