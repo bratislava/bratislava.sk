@@ -20,8 +20,6 @@ export const getOfficialBoardListQueryKey = (filters: OfficialBoardListFilters) 
 ]
 
 export const officialBoardListFetcher = async (filters: OfficialBoardListFilters) => {
-  console.log('filters', filters)
-
   return axios.get<OfficialBoardListResponse>(
     `/api/ginis/official-board-list?${[
       filters.search ? `search=${filters.search}` : '',
