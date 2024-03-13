@@ -1,11 +1,14 @@
+import { CATEGORIES_TO_EXCLUDE_ON_HOMEPAGE } from '@backend/ginis/consts'
 import {
   getOfficialBoardListQueryKey,
   officialBoardListDefaultFilters,
   officialBoardListFetcher,
 } from '@backend/ginis/fetchers/officialBoardListFetcher'
+import { Typography } from '@bratislava/component-library'
 import Button from '@components/forms/simple-components/Button'
 import SearchResultCard from '@components/organisms/SearchPage/SearchResultCard'
 import { SearchResult } from '@components/organisms/SearchPage/useQueryBySearchOption'
+import LoadingSpinner from '@components/ui/LoadingSpinner/LoadingSpinner'
 import { useQuery } from '@tanstack/react-query'
 import { base64Encode } from '@utils/base64'
 import { getCommonLinkProps } from '@utils/getCommonLinkProps'
@@ -23,7 +26,7 @@ const TabPanelOfficialBoard = () => {
 
   const filters = { ...officialBoardListDefaultFilters, pageSize: -1 }
 
-  // TODO handle loading and errors
+  // TODO handle loading and errors properly
   const {
     data: officialBoardData,
     isLoading,
@@ -35,7 +38,9 @@ const TabPanelOfficialBoard = () => {
     select: (axiosResponse) => {
       const formattedData: SearchResult[] =
         axiosResponse.data.items
-          .filter((boardItem) => !CATEGORIES_TO_EXCLUDE_ON_HOMEPAGE.has(boardItem.categoryName))
+          .filter(
+            (boardItem) => !CATEGORIES_TO_EXCLUDE_ON_HOMEPAGE.includes(boardItem.categoryName),
+          )
           .map((boardItem) => {
             return {
               title: boardItem.title,
@@ -56,13 +61,21 @@ const TabPanelOfficialBoard = () => {
     <TabPanel id="OfficialBoard">
       <div className="mt-8 flex flex-col gap-y-10 lg:mt-14">
         <div className="flex flex-col gap-y-5" data-cy="homepage-tab-results">
-          {documents.map((document) => (
-            <SearchResultCard
-              key={document.uniqueId}
-              data={{ ...document }}
-              showBottomDivider={false}
-            />
-          ))}
+          {/* TODO we used basic spinner and text here, but it should be done with nicer design */}
+          {isLoading ? (
+            <LoadingSpinner />
+          ) : isError ? (
+            // TODO translation
+            <Typography type="p">Nepodarilo sa načítať dáta z úradnej tabule.</Typography>
+          ) : (
+            documents.map((document) => (
+              <SearchResultCard
+                key={document.uniqueId}
+                data={{ ...document }}
+                showBottomDivider={false}
+              />
+            ))
+          )}
         </div>
 
         {tabs?.officialBoardPageLink ? (
