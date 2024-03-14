@@ -26,6 +26,7 @@ const SearchResultCard = ({ data, showBottomDivider }: SearchResultCardProps) =>
         'group relative flex flex-row items-stretch overflow-hidden rounded-none lg:rounded-lg lg:border-2',
         { 'hover:border-gray-400': data.linkHref, 'border-b-2': showBottomDivider },
       )}
+      data-cy="search-result-card"
     >
       {data.coverImageSrc ? (
         <SearchResultCard.ImageFromUrl imgUrl={data.coverImageSrc} />
