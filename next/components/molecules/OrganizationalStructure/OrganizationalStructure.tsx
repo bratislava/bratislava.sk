@@ -14,13 +14,13 @@ export type OrganizationalStructureProps = {
 
 // TODO add search
 const OrganizationalStructure = ({ title }: OrganizationalStructureProps) => {
-  const { data, isLoading, isError, error } = useQuery({
+  const { data, isPending, isError, error } = useQuery({
     queryKey: getMsGraphStructureQueryKey(),
     queryFn: () => msGraphStructureFetcher(),
     select: (res) => res.data,
   })
 
-  if (isLoading) {
+  if (isPending) {
     return <LoadingSpinner />
   }
 

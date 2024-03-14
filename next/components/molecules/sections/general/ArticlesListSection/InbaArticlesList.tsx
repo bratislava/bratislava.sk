@@ -10,7 +10,7 @@ import BlogPostCard from '@components/molecules/presentation/BlogPostCard'
 import InbaFeaturedArticlesSection from '@components/molecules/sections/general/InbaFeaturedArticlesSection'
 import InbaArticlesFilter from '@components/ui/InbaArticlesFilter/InbaArticlesFilter'
 import Pagination from '@components/ui/Pagination/Pagination'
-import { useQuery } from '@tanstack/react-query'
+import { keepPreviousData, useQuery } from '@tanstack/react-query'
 import { generateImageSizes } from '@utils/generateImageSizes'
 import { getNumericLocalDate } from '@utils/local-date'
 import { useRoutePreservedState } from '@utils/useRoutePreservedState'
@@ -41,7 +41,7 @@ const InbaArticlesList = ({ section }: Props) => {
   const { data } = useQuery({
     queryKey: getInbaArticlesQueryKey(filters, locale),
     queryFn: () => inbaArticlesFetcher(filters, locale),
-    keepPreviousData: true,
+    placeholderData: keepPreviousData,
   })
 
   const handlePageChange = (page: number) => {
