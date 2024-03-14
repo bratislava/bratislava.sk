@@ -33,7 +33,7 @@ import {
   getMsGraphSearchQueryKey,
   msGraphSearchFetcher,
 } from '@backend/ms-graph/fetchers/msGraphSearch.fetcher'
-import { SearchOption } from '@components/pages/GlobalSearchPageContent'
+import { SearchOption } from '@components/organisms/SearchSection/GlobalSearchSectionContent'
 import { keepPreviousData, useQuery } from '@tanstack/react-query'
 import { base64Encode } from '@utils/base64'
 import { isDefined } from '@utils/isDefined'

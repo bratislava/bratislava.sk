@@ -1,7 +1,7 @@
 import { BlogPostEntityFragment, GeneralQuery } from '@backend/graphql'
 import { client } from '@backend/graphql/gql'
 import PageLayout from '@components/layouts/PageLayout'
-import BlogPostPageContent from '@components/pages/blogPostPageContent'
+import BlogPostPageContentTmp from '@components/pages/BlogPostPageContentTmp'
 import { GlobalCategoryColorProvider } from '@utils/colors'
 import { GeneralContextProvider } from '@utils/generalContext'
 import { useTitle } from '@utils/useTitle'
@@ -85,7 +85,7 @@ const Page = ({ general, blogPost }: PageProps) => {
         color={blogPost?.attributes?.tag?.data?.attributes?.pageCategory?.data?.attributes?.color}
       />
       <PageLayout>
-        <BlogPostPageContent blogPost={blogPost} />
+        <BlogPostPageContentTmp blogPost={blogPost} />
       </PageLayout>
     </GeneralContextProvider>
   )

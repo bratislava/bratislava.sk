@@ -1,9 +1,9 @@
 import { Typography } from '@bratislava/component-library'
 import Chip from '@components/forms/simple-components/Chip'
 import OfficialBoardAdditionalFilters from '@components/molecules/sections/general/OfficialBoardSection/OfficialBoardAdditionalFilters'
-import SearchBar from '@components/organisms/SearchPage/SearchBar'
-import SearchResults from '@components/organisms/SearchPage/SearchResults'
-import { SearchFilters } from '@components/organisms/SearchPage/useQueryBySearchOption'
+import SearchBar from '@components/organisms/SearchSection/SearchBar'
+import SearchResults from '@components/organisms/SearchSection/SearchResults'
+import { SearchFilters } from '@components/organisms/SearchSection/useQueryBySearchOption'
 import { getCategoryColorLocalStyle } from '@utils/colors'
 import { useTranslations } from 'next-intl'
 import React, { useEffect, useRef, useState } from 'react'
@@ -41,7 +41,7 @@ type Props =
       searchOption: 'pages' | 'articles' | 'regulations' | 'users' | 'officialBoard'
     }
 
-const GlobalSearchPageContent = ({ variant, searchOption }: Props) => {
+const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
   const t = useTranslations()
 
   const [routerQueryValue] = useQueryParam('keyword', withDefault(StringParam, ''))
@@ -115,11 +115,11 @@ const GlobalSearchPageContent = ({ variant, searchOption }: Props) => {
     setCurrentPage(1)
   }, [searchValue, selection])
 
+  const [categoryId, setCategoryId] = useState<string | null>(null)
+
   const [resultsCount, setResultsCount] = useState(
     Object.fromEntries(searchOptions.map((option): [string, number] => [option.id, 0])),
   )
-
-  const [categoryId, setCategoryId] = useState<string | null>(null)
 
   const setResultsCountById = (optionId: SearchOption['id'], count: number) => {
     setResultsCount((prevResultsCount) => {
@@ -177,9 +177,6 @@ const GlobalSearchPageContent = ({ variant, searchOption }: Props) => {
 
   return (
     <div className="flex w-full flex-col gap-y-8">
-      {/* H1 - when used on main search page */}
-      {variant === 'general' ? <Typography type="h1">{t('searching')}</Typography> : null}
-
       {/* Filters */}
       <div className="flex flex-col gap-3 lg:gap-4">
         <SearchBar
@@ -270,4 +267,4 @@ const GlobalSearchPageContent = ({ variant, searchOption }: Props) => {
   )
 }
 
-export default GlobalSearchPageContent
+export default GlobalSearchSectionContent
