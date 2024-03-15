@@ -1,5 +1,5 @@
 import { FacebookIcon, InstagramIcon, LinkedinIcon, TwitterIcon } from '@assets/images'
-import { SocialMediaButton } from '@components/pages/blogPostPageContent'
+import { SocialMediaButton } from '@components/pages/BlogPostPageContentTmp'
 import SectionContainer from '@components/ui/SectionContainer/SectionContainer'
 import { useTranslations } from 'next-intl'
 import React from 'react'

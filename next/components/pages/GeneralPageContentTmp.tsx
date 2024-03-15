@@ -13,7 +13,7 @@ export type GeneralPageProps = {
   page: PageEntityFragment
 }
 
-const GeneralPageContent = ({ page }: GeneralPageProps) => {
+const GeneralPageContentTmp = ({ page }: GeneralPageProps) => {
   const breadcrumbs = useMemo(() => getPageBreadcrumbs(page), [page])
 
   return (
@@ -42,4 +42,4 @@ const GeneralPageContent = ({ page }: GeneralPageProps) => {
   )
 }
 
-export default GeneralPageContent
+export default GeneralPageContentTmp

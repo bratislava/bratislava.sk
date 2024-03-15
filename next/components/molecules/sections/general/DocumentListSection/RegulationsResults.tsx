@@ -1,7 +1,7 @@
 import Ostatne from '@assets/images/ostatne.svg'
 import { getVznSwrKey, vznFetcher, VznFilters } from '@backend/meili/fetchers/vznFetcher'
 import { VznMeili } from '@backend/meili/types'
-import LoadingOverlay from '@components/organisms/SearchPage/LoadingOverlay'
+import LoadingOverlay from '@components/organisms/SearchSection/LoadingOverlay'
 import LoadingSpinner from '@components/ui/LoadingSpinner/LoadingSpinner'
 import NoResultsFound from '@components/ui/NoResultsFound/NoResultsFound'
 import Pagination from '@components/ui/Pagination/Pagination'

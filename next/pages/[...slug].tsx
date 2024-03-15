@@ -1,7 +1,7 @@
 import { GeneralQuery, PageEntityFragment } from '@backend/graphql'
 import { client } from '@backend/graphql/gql'
 import PageLayout from '@components/layouts/PageLayout'
-import GeneralPageContent from '@components/pages/generalPageContent'
+import GeneralPageContentTmp from '@components/pages/GeneralPageContentTmp'
 import {
   LanguageCode,
   Localizations,
@@ -119,7 +119,7 @@ const Page = ({ general, page, dehydratedState }: PageProps) => {
             color={page?.attributes?.pageCategory?.data?.attributes?.color}
           />
           <PageLayout>
-            <GeneralPageContent page={page} />
+            <GeneralPageContentTmp page={page} />
           </PageLayout>
         </LocalizationsProvider>
       </GeneralContextProvider>
