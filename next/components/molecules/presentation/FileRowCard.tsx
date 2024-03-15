@@ -27,7 +27,7 @@ const FileRowCard = ({
         <div className="flex w-full flex-col gap-y-1.5">
           <MLink
             href={downloadLink ?? '#'}
-            className="text-h5 line-clamp-1 break-words font-bold lg:line-clamp-3"
+            className="text-h5 line-clamp-3 break-words font-bold lg:line-clamp-2"
             stretched
             variant="underlineOnHover"
             target="_blank"

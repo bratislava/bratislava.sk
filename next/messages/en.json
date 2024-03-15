@@ -313,7 +313,12 @@
   },
   "OfficialBoard": {
     "officialBoard": "Official noticeboard",
+    "publishedFrom": "Published from",
+    "publishedTo": "Published to",
+    "category": "Category",
+    "description": "Description",
     "attachments": "Attachments",
+    "details": "Details",
     "noAttachmentsMessage": "We didn't find any attachments to this notice."
   }
 }

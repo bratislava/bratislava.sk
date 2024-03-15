@@ -6,7 +6,7 @@ import FileRowCard from '@components/molecules/presentation/FileRowCard'
 import { formatDate } from '@utils/local-date'
 import classNames from 'classnames'
 import { useLocale, useTranslations } from 'next-intl'
-import React, { Fragment } from 'react'
+import React, { Fragment, ReactNode, useMemo } from 'react'
 
 type OfficialBoardDocumentPageContentProps = {
   document: ParsedOfficialBoardDocumentDetail
@@ -27,18 +27,42 @@ const OfficialBoardDocumentPageContent = ({ document }: OfficialBoardDocumentPag
     { title: document.title, path: null },
   ]
 
+  const dlData = useMemo(() => {
+    return [
+      {
+        key: 'description',
+        title: t('description'),
+        description: document.description,
+      },
+      {
+        key: 'category',
+        title: t('category'),
+        description: document.categoryName,
+      },
+      {
+        key: 'publishedFrom',
+        title: t('publishedFrom'),
+        description: formatDate(document.publishedFrom),
+      },
+      {
+        key: 'publishedTo',
+        title: t('publishedTo'),
+        description: formatDate(document.publishedTo),
+      },
+    ] as { key: string; title: string; description: ReactNode }[]
+  }, [document, t])
+
   return (
     <>
       <PageHeader
         title={document.title}
-        // tag={} // TODO category
-        subtext={formatDate(document.createdAt)} // TODO source department?
+        subtext={formatDate(document.publishedFrom)}
         breadcrumbs={breadcrumbs}
       />
       <SectionContainer className="my-8">
-        <div className="mb-8 flex flex-col gap-y-8">
+        <div className="mb-8 flex flex-col gap-y-12">
           <div className="flex flex-col gap-6">
-            <Typography type="h2" size="h3">
+            <Typography type="h2" size="h4">
               {t('attachments')}
             </Typography>
             <div className="flex flex-col rounded-lg border-2 px-4">
@@ -48,6 +72,7 @@ const OfficialBoardDocumentPageContent = ({ document }: OfficialBoardDocumentPag
                     key={file.id}
                     title={file.title}
                     size={file.size}
+                    format="PDF"
                     downloadLink={file.generatedUrl}
                     className={classNames(
                       '-mx-4 px-4',
@@ -58,7 +83,23 @@ const OfficialBoardDocumentPageContent = ({ document }: OfficialBoardDocumentPag
               ) : (
                 <Typography type="p">{t('noAttachmentsMessage')}</Typography>
               )}
-            </div>
+            </div>{' '}
+          </div>
+
+          <div className="flex flex-col gap-6">
+            <Typography type="h2" size="h4">
+              {t('details')}
+            </Typography>
+            <dl className="-mt-1 lg:-mt-3">
+              {dlData.map((dItem) => (
+                <Fragment key={dItem.key}>
+                  <dt className="mt-1 font-semibold after:content-[':'] lg:float-left lg:clear-left lg:mt-3 lg:w-40">
+                    {dItem.title}
+                  </dt>
+                  <dd className="mt-1 lg:ml-32 lg:mt-3">{dItem.description}</dd>
+                </Fragment>
+              ))}
+            </dl>
           </div>
         </div>
       </SectionContainer>

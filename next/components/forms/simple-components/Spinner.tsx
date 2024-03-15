@@ -6,6 +6,12 @@ type SpinnerBase = {
   className?: string
 }
 
+/*
+ * Figma: https://www.figma.com/file/17wbd0MDQcMW9NbXl6UPs8/DS-ESBS%2BBK%3A-Component-library?type=design&node-id=10-218&mode=design&t=1cbJf1GcvzdMNzSh-0
+ *
+ * Note: Figma is not followed exactly, because this implementation was much easier. Sizes should be implemented as in Figma.
+ */
+
 const Spinner = ({ size = 'md', className }: SpinnerBase) => {
   const style = cx('animate-spin rounded-[50%] border-solid border-gray-700 border-t-gray-300', {
     'w-5 h-5 border-2 border-t-2': size === 'sm',

@@ -14,13 +14,10 @@ import { base64Encode } from '@utils/base64'
 import { getCommonLinkProps } from '@utils/getCommonLinkProps'
 import { useHomepageContext } from '@utils/homepageContext'
 import { formatDate } from '@utils/local-date'
-import { useTranslations } from 'next-intl'
 import React from 'react'
 import { TabPanel } from 'react-aria-components'
 
 const TabPanelOfficialBoard = () => {
-  const t = useTranslations('HomepageTabs')
-
   const { homepage } = useHomepageContext()
   const { tabs } = homepage?.attributes ?? {}
 
@@ -46,7 +43,7 @@ const TabPanelOfficialBoard = () => {
               title: boardItem.title,
               uniqueId: boardItem.id,
               linkHref: `/uradna-tabula/${base64Encode(boardItem.id)}`,
-              metadata: [formatDate(boardItem.createdAt), boardItem.categoryName],
+              metadata: [formatDate(boardItem.publishedFrom), boardItem.categoryName],
               customIconName: 'search_result_official_board',
             }
           }) ?? []
