@@ -81,7 +81,7 @@ const OfficialBoardDocumentPageContent = ({ document }: OfficialBoardDocumentPag
               ) : (
                 <Typography type="p">{t('noAttachmentsMessage')}</Typography>
               )}
-            </div>{' '}
+            </div>
           </div>
 
           <div className="flex flex-col gap-6">

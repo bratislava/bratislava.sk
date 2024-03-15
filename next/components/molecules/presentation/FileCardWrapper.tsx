@@ -1,6 +1,7 @@
 import { FileItemBlockFragment } from '@backend/graphql'
 import FileCard, { FileCardProps } from '@components/molecules/presentation/FileCard'
 import FileRowCard from '@components/molecules/presentation/FileRowCard'
+import { formatFileExtension } from '@utils/formatFileExtension'
 import { formatFileSize } from '@utils/formatFileSize'
 import { formatDate } from '@utils/local-date'
 import { useGetDownloadAriaLabel } from '@utils/useGetDownloadAriaLabel'
@@ -29,7 +30,7 @@ const FileCardWrapper = ({ fileItem, variant = 'grid' }: FileCardWrapperProps) =
     return {
       title: fileItemInner.title ?? name ?? '',
       downloadLink: url,
-      format: ext?.replace(/^\./, '').toUpperCase(),
+      format: formatFileExtension(ext) ?? undefined,
       size: formatFileSize(size, locale),
       uploadDate: formatDate(createdAt),
       ariaLabel: getDownloadAriaLabel(fileItemInner),

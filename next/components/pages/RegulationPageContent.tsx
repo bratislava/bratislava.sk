@@ -1,12 +1,15 @@
-import { Enum_Componentsectionsfilelist_Variant, RegulationEntityFragment } from '@backend/graphql'
+import { RegulationEntityFragment } from '@backend/graphql'
 import { Typography } from '@bratislava/component-library'
-import FileList from '@bratislava/ui-bratislava/FileList/FileList'
 import PageHeader from '@bratislava/ui-bratislava/PageHeader/PageHeader'
 import SectionContainer from '@bratislava/ui-bratislava/SectionContainer/SectionContainer'
 import MLink from '@components/forms/simple-components/MLink'
+import FileRowCard from '@components/molecules/presentation/FileRowCard'
 import RegulationCard from '@components/molecules/presentation/RegulationCard/RegulationCard'
 import RegulationDetailMessage from '@components/molecules/presentation/RegulationCard/RegulationDetailMessage'
+import { formatFileExtension } from '@utils/formatFileExtension'
+import { formatFileSize } from '@utils/formatFileSize'
 import { isDefined } from '@utils/isDefined'
+import classNames from 'classnames'
 import { useLocale, useTranslations } from 'next-intl'
 import React, { Fragment } from 'react'
 
@@ -71,23 +74,19 @@ const RegulationPageContent = ({ regulation }: RegulationPageContentProps) => {
               <Typography type="h2" size="h3">
                 {t('mainDocument')}
               </Typography>
-              {mainDocument ? (
-                <FileList
-                  variantFileList={Enum_Componentsectionsfilelist_Variant.Rows}
-                  fileSections={[
-                    {
-                      category: '',
-                      files: [
-                        {
-                          title: `VZN ${regulation.attributes?.regNumber}`,
-                          media: mainDocument,
-                        },
-                      ],
-                    },
-                  ]}
-                  hideCategory
-                  className="-mt-10"
-                />
+
+              {/* TODO refactor to use standard component */}
+              {mainDocument?.data?.attributes ? (
+                <div className="flex flex-col rounded-lg border-2 px-4">
+                  <FileRowCard
+                    key={mainDocument.data.id}
+                    title={`VZN ${regulation.attributes?.regNumber}`}
+                    size={formatFileSize(mainDocument.data.attributes.size, locale)}
+                    format={formatFileExtension(mainDocument.data.attributes.ext) ?? undefined}
+                    downloadLink={mainDocument.data.attributes.url}
+                    className={classNames('-mx-4 px-4 [&>*]:border-b-0')}
+                  />
+                </div>
               ) : (
                 <Typography type="p">{t('noAttachmentsMessage')}</Typography>
               )}
@@ -96,13 +95,29 @@ const RegulationPageContent = ({ regulation }: RegulationPageContentProps) => {
               <Typography type="h2" size="h3">
                 {t('attachments')}
               </Typography>
+
+              {/* TODO refactor to use standard component */}
               {attachmentFiles?.length ? (
-                <FileList
-                  variantFileList={Enum_Componentsectionsfilelist_Variant.Rows}
-                  fileSections={[{ category: '', files: attachmentFiles }]}
-                  hideCategory
-                  className="-mt-10"
-                />
+                <div className="flex flex-col rounded-lg border-2 px-4">
+                  {attachmentFiles
+                    .map(({ media: attachementMedia, title: attachmentTitle }, index) => {
+                      if (!attachementMedia.data.attributes) return null
+
+                      return (
+                        <FileRowCard
+                          key={attachementMedia.data.id}
+                          title={attachmentTitle ?? attachementMedia.data.attributes.name}
+                          size={formatFileSize(attachementMedia.data.attributes.size, locale)}
+                          format={
+                            formatFileExtension(attachementMedia.data.attributes.ext) ?? undefined
+                          }
+                          downloadLink={attachementMedia.data.attributes.url}
+                          className={classNames('-mx-4 px-4 [&>*]:border-b-0')}
+                        />
+                      )
+                    })
+                    .filter(isDefined)}
+                </div>
               ) : (
                 <Typography type="p">{t('noAttachmentsMessage')}</Typography>
               )}
