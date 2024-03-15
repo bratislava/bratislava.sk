@@ -6,7 +6,7 @@ import FileRowCard from '@components/molecules/presentation/FileRowCard'
 import { formatDate } from '@utils/local-date'
 import classNames from 'classnames'
 import { useLocale, useTranslations } from 'next-intl'
-import React, { Fragment, ReactNode, useMemo } from 'react'
+import React, { Fragment, ReactNode } from 'react'
 
 type OfficialBoardDocumentPageContentProps = {
   document: ParsedOfficialBoardDocumentDetail
@@ -27,30 +27,28 @@ const OfficialBoardDocumentPageContent = ({ document }: OfficialBoardDocumentPag
     { title: document.title, path: null },
   ]
 
-  const dlData = useMemo(() => {
-    return [
-      {
-        key: 'description',
-        title: t('description'),
-        description: document.description,
-      },
-      {
-        key: 'category',
-        title: t('category'),
-        description: document.categoryName,
-      },
-      {
-        key: 'publishedFrom',
-        title: t('publishedFrom'),
-        description: formatDate(document.publishedFrom),
-      },
-      {
-        key: 'publishedTo',
-        title: t('publishedTo'),
-        description: formatDate(document.publishedTo),
-      },
-    ] as { key: string; title: string; description: ReactNode }[]
-  }, [document, t])
+  const dlData: { key: string; title: string; description: ReactNode }[] = [
+    {
+      key: 'description',
+      title: t('description'),
+      description: document.description,
+    },
+    {
+      key: 'category',
+      title: t('category'),
+      description: document.categoryName,
+    },
+    {
+      key: 'publishedFrom',
+      title: t('publishedFrom'),
+      description: formatDate(document.publishedFrom),
+    },
+    {
+      key: 'publishedTo',
+      title: t('publishedTo'),
+      description: formatDate(document.publishedTo),
+    },
+  ]
 
   return (
     <>
