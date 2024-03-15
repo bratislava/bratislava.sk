@@ -21,16 +21,21 @@ export const prefetchPageSections = async (page: PageEntityFragment, locale: str
   // }
 
   if (sectionTypes.includes('ComponentSectionsBlogPostsList')) {
-    await queryClient.prefetchQuery(['blogPostsTags', locale], () =>
-      client.blogPostsTags({ locale }),
-    )
-    await queryClient.prefetchQuery(['pageCategories', locale], () =>
-      client.pageCategories({ locale }),
-    )
+    await queryClient.prefetchQuery({
+      queryKey: ['blogPostsTags', locale],
+      queryFn: () => client.blogPostsTags({ locale }),
+    })
+    await queryClient.prefetchQuery({
+      queryKey: ['pageCategories', locale],
+      queryFn: () => client.pageCategories({ locale }),
+    })
   }
 
   if (sectionTypes.includes('ComponentSectionsInbaArticlesList')) {
-    await queryClient.prefetchQuery(['InbaTags', locale], () => client.InbaTags({ locale }))
+    await queryClient.prefetchQuery({
+      queryKey: ['InbaTags', locale],
+      queryFn: () => client.InbaTags({ locale }),
+    })
   }
 
   // TODO this does not work, throws ERR_CONNECTION_REFUSED
@@ -41,12 +46,16 @@ export const prefetchPageSections = async (page: PageEntityFragment, locale: str
   // }
 
   if (sectionTypes.includes('ComponentSectionsOrganizationalStructure')) {
-    await queryClient.prefetchQuery(getMsGraphStructureQueryKey(), () => msGraphStructureFetcher())
+    await queryClient.prefetchQuery({
+      queryKey: getMsGraphStructureQueryKey(),
+      queryFn: () => msGraphStructureFetcher(),
+    })
   }
 
-  await queryClient.prefetchQuery(getRelatedBlogPostsQueryKey(page, locale), () =>
-    relatedBlogPostsFetcher(page, locale),
-  )
+  await queryClient.prefetchQuery({
+    queryKey: getRelatedBlogPostsQueryKey(page, locale),
+    queryFn: () => relatedBlogPostsFetcher(page, locale),
+  })
 
   return dehydrate(queryClient)
 }

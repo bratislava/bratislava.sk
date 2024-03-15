@@ -9,7 +9,7 @@ import { Typography } from '@bratislava/component-library'
 import BlogPostCard from '@components/molecules/presentation/BlogPostCard'
 import BlogPostsFilter from '@components/ui/BlogPostsFilter/BlogPostsFilter'
 import Pagination from '@components/ui/Pagination/Pagination'
-import { useQuery } from '@tanstack/react-query'
+import { keepPreviousData, useQuery } from '@tanstack/react-query'
 import { getCategoryColorLocalStyle } from '@utils/colors'
 import { generateImageSizes } from '@utils/generateImageSizes'
 import { getNumericLocalDate } from '@utils/local-date'
@@ -36,7 +36,7 @@ const BlogPostsByTags = ({ section }: Props) => {
   const { data } = useQuery({
     queryKey: getBlogPostsQueryKey(filters, locale),
     queryFn: () => blogPostsFetcher(filters, locale),
-    keepPreviousData: true,
+    placeholderData: keepPreviousData,
   })
 
   const { data: pageCategoriesData } = useQuery({
