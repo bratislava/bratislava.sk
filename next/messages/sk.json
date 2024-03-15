@@ -314,7 +314,12 @@
   },
   "OfficialBoard": {
     "officialBoard": "Úradná tabuľa",
+    "publishedFrom": "Zverejnené od",
+    "publishedTo": "Zverejnené do",
+    "category": "Kategória",
+    "description": "Popis",
     "attachments": "Prílohy",
+    "details": "Podrobnosti",
     "noAttachmentsMessage": "K tomuto dokumentu sa nepodarilo nájsť žiadne prílohy."
   }
 }
