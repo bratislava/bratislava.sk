@@ -94,7 +94,7 @@ const OfficialBoardDocumentPageContent = ({ document }: OfficialBoardDocumentPag
                   <dt className="mt-1 font-semibold after:content-[':'] lg:float-left lg:clear-left lg:mt-3 lg:w-40">
                     {dItem.title}
                   </dt>
-                  <dd className="mt-1 lg:ml-32 lg:mt-3">{dItem.description}</dd>
+                  <dd className="mt-1 lg:ml-44 lg:mt-3">{dItem.description}</dd>
                 </Fragment>
               ))}
             </dl>

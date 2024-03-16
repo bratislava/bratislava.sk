@@ -57,7 +57,7 @@ const TabPanelOfficialBoard = () => {
   return (
     <TabPanel id="OfficialBoard">
       <div className="mt-8 flex flex-col gap-y-10 lg:mt-14">
-        <div className="flex flex-col gap-y-5">
+        <div className="flex flex-col gap-y-2">
           {/* TODO we used basic spinner and text here, but it should be done with nicer design */}
           {isLoading ? (
             <LoadingSpinner />
@@ -66,11 +66,7 @@ const TabPanelOfficialBoard = () => {
             <Typography type="p">Nepodarilo sa načítať dáta z úradnej tabule.</Typography>
           ) : (
             documents.map((document) => (
-              <SearchResultCard
-                key={document.uniqueId}
-                data={{ ...document }}
-                showBottomDivider={false}
-              />
+              <SearchResultCard key={document.uniqueId} data={{ ...document }} />
             ))
           )}
         </div>

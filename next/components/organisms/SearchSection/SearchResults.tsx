@@ -1,6 +1,5 @@
 import { Typography } from '@bratislava/component-library'
 import Pagination from '@bratislava/ui-bratislava/Pagination/Pagination'
-import Spinner from '@components/forms/simple-components/Spinner'
 import { SearchOption } from '@components/organisms/SearchSection/GlobalSearchSectionContent'
 import SearchResultCard from '@components/organisms/SearchSection/SearchResultCard'
 import SearchResultsHeader from '@components/organisms/SearchSection/SearchResultsHeader'
@@ -8,8 +7,9 @@ import {
   SearchFilters,
   useQueryBySearchOption,
 } from '@components/organisms/SearchSection/useQueryBySearchOption'
+import LoadingSpinner from '@components/ui/LoadingSpinner/LoadingSpinner'
 import { useTranslations } from 'next-intl'
-import { Dispatch, SetStateAction, useEffect } from 'react'
+import React, { Dispatch, SetStateAction, useEffect } from 'react'
 import { Selection } from 'react-aria-components'
 
 type SearchResultsProps = {
@@ -29,6 +29,7 @@ const SearchResults = ({
   onSetResultsCount,
   onShowMore,
   onPageChange,
+  // TODO use onLoadingChange to signal loading state to parent component
   onLoadingChange,
 }: SearchResultsProps) => {
   const t = useTranslations()
@@ -49,7 +50,7 @@ const SearchResults = ({
   }, [searchResultsCount])
 
   if (isPending) {
-    return <Spinner />
+    return <LoadingSpinner />
   }
 
   if (isError) {
@@ -71,10 +72,10 @@ const SearchResults = ({
         )}
 
         {searchResultsData?.length ? (
-          <div className="flex flex-col gap-y-2">
+          <div className="flex flex-col lg:gap-y-2">
             {searchResultsData
               .slice(0, variant === 'allResults' ? GENERAL_RESULTS_COUNT : undefined)
-              .map((item, index) => {
+              .map((item) => {
                 return (
                   <SearchResultCard
                     data={{ ...item }}
@@ -83,7 +84,6 @@ const SearchResults = ({
                       item.title,
                       ...(item?.metadata ?? []),
                     ].join('')}`}
-                    showBottomDivider={index < GENERAL_RESULTS_COUNT - 1}
                   />
                 )
               })}
