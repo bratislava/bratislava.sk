@@ -6,21 +6,18 @@ import {
 } from '@backend/ginis/fetchers/officialBoardListFetcher'
 import { Typography } from '@bratislava/component-library'
 import Button from '@components/forms/simple-components/Button'
-import SearchResultCard from '@components/organisms/SearchPage/SearchResultCard'
-import { SearchResult } from '@components/organisms/SearchPage/useQueryBySearchOption'
+import SearchResultCard from '@components/organisms/SearchSection/SearchResultCard'
+import { SearchResult } from '@components/organisms/SearchSection/useQueryBySearchOption'
 import LoadingSpinner from '@components/ui/LoadingSpinner/LoadingSpinner'
 import { useQuery } from '@tanstack/react-query'
 import { base64Encode } from '@utils/base64'
 import { getCommonLinkProps } from '@utils/getCommonLinkProps'
 import { useHomepageContext } from '@utils/homepageContext'
 import { formatDate } from '@utils/local-date'
-import { useTranslations } from 'next-intl'
 import React from 'react'
 import { TabPanel } from 'react-aria-components'
 
 const TabPanelOfficialBoard = () => {
-  const t = useTranslations('HomepageTabs')
-
   const { homepage } = useHomepageContext()
   const { tabs } = homepage?.attributes ?? {}
 
@@ -46,7 +43,7 @@ const TabPanelOfficialBoard = () => {
               title: boardItem.title,
               uniqueId: boardItem.id,
               linkHref: `/uradna-tabula/${base64Encode(boardItem.id)}`,
-              metadata: [formatDate(boardItem.createdAt), boardItem.categoryName],
+              metadata: [formatDate(boardItem.publishedFrom), boardItem.categoryName],
               customIconName: 'search_result_official_board',
             }
           }) ?? []
@@ -60,7 +57,7 @@ const TabPanelOfficialBoard = () => {
   return (
     <TabPanel id="OfficialBoard">
       <div className="mt-8 flex flex-col gap-y-10 lg:mt-14">
-        <div className="flex flex-col gap-y-5" data-cy="official-board-results">
+        <div className="flex flex-col gap-y-2" data-cy="official-board-results">
           {/* TODO we used basic spinner and text here, but it should be done with nicer design */}
           {isLoading ? (
             <LoadingSpinner />
@@ -69,11 +66,7 @@ const TabPanelOfficialBoard = () => {
             <Typography type="p">Nepodarilo sa načítať dáta z úradnej tabule.</Typography>
           ) : (
             documents.map((document) => (
-              <SearchResultCard
-                key={document.uniqueId}
-                data={{ ...document }}
-                showBottomDivider={false}
-              />
+              <SearchResultCard key={document.uniqueId} data={{ ...document }} />
             ))
           )}
         </div>

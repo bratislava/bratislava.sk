@@ -13,24 +13,24 @@ export const mockedParsedDocuments: ParsedOfficialBoardDocument[] = [
   {
     id: 'mock-1',
     title: 'Mocked document title 1',
-    createdAt: '2022-01-01',
-    content: 'hello world',
+    publishedFrom: '2022-01-01',
+    description: 'hello world',
     numberOfFiles: 1,
     categoryName: 'Mocked category name 1',
   },
   {
     id: 'mock-2',
     title: 'Mocked document title 1',
-    createdAt: '2022-01-01',
-    content: 'hello world',
+    publishedFrom: '2022-01-01',
+    description: 'hello world',
     numberOfFiles: 2,
     categoryName: 'Mocked category name 2',
   },
   {
     id: 'mock-3',
     title: 'Mocked document title 1',
-    createdAt: '2022-01-01',
-    content: 'hello world',
+    publishedFrom: '2022-01-01',
+    description: 'hello world',
     numberOfFiles: 1,
     categoryName: 'Mocked category name 3',
   },
@@ -60,8 +60,8 @@ export const getALotOfMockedDocs = async () => {
 export const mockedParsedDocumentDetail: ParsedOfficialBoardDocumentDetail = {
   id: 'mocked-document-1',
   title: 'Mocked document title 1',
-  createdAt: '2022-01-01',
-  content: 'hello world',
+  publishedFrom: '2022-01-01',
+  description: 'hello world',
   categoryName: 'Mocked category name 1',
   files: [
     {

@@ -1,6 +1,7 @@
 import { RemoveIcon, SearchIcon } from '@assets/ui-icons'
 import { Typography } from '@bratislava/component-library'
 import Button from '@components/forms/simple-components/Button'
+import Spinner from '@components/forms/simple-components/Spinner'
 import { useTranslations } from 'next-intl'
 import { Dispatch, forwardRef, SetStateAction } from 'react'
 import { Input, Label, SearchField } from 'react-aria-components'
@@ -10,10 +11,11 @@ type SearchBarProps = {
   input: string
   setInput: Dispatch<SetStateAction<string>>
   setSearchQuery: Dispatch<SetStateAction<string>>
+  isLoading?: boolean
 }
 
 const SearchBar = forwardRef<HTMLInputElement, SearchBarProps>(
-  ({ placeholder, input, setInput, setSearchQuery }, forwardedRef) => {
+  ({ placeholder, input, setInput, setSearchQuery, isLoading }, forwardedRef) => {
     const t = useTranslations()
 
     const handleSearch = () => {
@@ -39,11 +41,14 @@ const SearchBar = forwardRef<HTMLInputElement, SearchBarProps>(
         </Label>
         <div className="relative">
           {/* 3.75rem = 60px, 0.75rem = 12px */}
-          <Input className="relative w-full rounded-lg border-2 px-[3.75rem] py-5 outline-none hover:border-gray-400 focus:border-gray-800 focus-visible:ring focus-visible:ring-offset-2" data-cy="search-field"/>
+          <Input className="relative w-full rounded-lg border-2 px-[3.75rem] py-5 pr-[5.75rem] outline-none hover:border-gray-400 focus:border-gray-800 focus-visible:ring focus-visible:ring-offset-2" data-cy="search-field" />
           <SearchIcon
             aria-hidden
             className="pointer-events-none absolute left-6 top-[calc(50%_-_0.75rem)]"
           />
+          {isLoading ? (
+            <Spinner size="sm" className="absolute right-[3.75rem] top-[calc(50%_-_0.75rem)]" />
+          ) : null}
           {input ? (
             <Button
               // We don't want responsive sizing, to keep the button well aligned with the input

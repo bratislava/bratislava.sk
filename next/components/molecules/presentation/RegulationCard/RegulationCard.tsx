@@ -30,7 +30,7 @@ const RegulationCard = ({
   return (
     <div
       className={twMerge(
-        'relative flex flex-col justify-between gap-2 rounded-lg border-2 border-category-600 bg-white p-4 lg:h-36',
+        'relative flex flex-col justify-between gap-2 rounded-lg border-2 border-gray-200 bg-white p-4 hover:border-gray-400 lg:h-36',
         className,
       )}
     >
@@ -53,7 +53,7 @@ const RegulationCard = ({
         )}
       </div>
       <div className="flex items-center gap-2 lg:gap-3">
-        <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-category-100 text-category-700 lg:h-10 lg:w-10">
+        <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-gray-100 text-gray-700 lg:h-10 lg:w-10">
           <ArrowRightIcon className="h-4 w-4" />
         </div>
         <Typography type="span">{t('Regulation.linkToRegulationMessage')}</Typography>

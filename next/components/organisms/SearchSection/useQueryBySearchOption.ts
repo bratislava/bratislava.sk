@@ -33,8 +33,8 @@ import {
   getMsGraphSearchQueryKey,
   msGraphSearchFetcher,
 } from '@backend/ms-graph/fetchers/msGraphSearch.fetcher'
-import { SearchOption } from '@components/pages/GlobalSearchPageContent'
-import { useQuery } from '@tanstack/react-query'
+import { SearchOption } from '@components/organisms/SearchSection/GlobalSearchSectionContent'
+import { keepPreviousData, useQuery } from '@tanstack/react-query'
 import { base64Encode } from '@utils/base64'
 import { isDefined } from '@utils/isDefined'
 import { formatDate } from '@utils/local-date'
@@ -72,7 +72,7 @@ export const useQueryBySearchOption = ({
   const pagesQuery = useQuery({
     queryKey: getPagesQueryKey(filters, locale),
     queryFn: () => pagesFetcherUseQuery(filters, locale),
-    keepPreviousData: true,
+    placeholderData: keepPreviousData,
     select: (data) => {
       const formattedData: SearchResult[] =
         data?.hits.map((page: PageMeili): SearchResult => {
@@ -93,7 +93,7 @@ export const useQueryBySearchOption = ({
     // TODO filters type
     queryKey: getBlogPostsQueryKey(filters as BlogPostsFilters, locale),
     queryFn: () => blogPostsFetcher(filters as BlogPostsFilters, locale),
-    keepPreviousData: true,
+    placeholderData: keepPreviousData,
     select: (data) => {
       const formattedData: SearchResult[] =
         data?.hits?.map(
@@ -119,7 +119,7 @@ export const useQueryBySearchOption = ({
     // TODO filters type
     queryKey: getInbaArticlesQueryKey(filters as InbaArticlesFilters, locale),
     queryFn: () => inbaArticlesFetcher(filters as InbaArticlesFilters, locale),
-    keepPreviousData: true,
+    placeholderData: keepPreviousData,
     select: (data) => {
       const formattedData: SearchResult[] =
         data?.hits?.map((inbaArticle): SearchResult => {
@@ -143,7 +143,7 @@ export const useQueryBySearchOption = ({
     // TODO filters type
     queryKey: getRegulationsQueryKey(filters),
     queryFn: () => regulationsFetcher(filters),
-    keepPreviousData: true,
+    placeholderData: keepPreviousData,
     select: (data) => {
       const formattedData: SearchResult[] =
         data?.hits?.map((regulation): SearchResult => {
@@ -187,7 +187,7 @@ export const useQueryBySearchOption = ({
   const usersQuery = useQuery({
     queryKey: getMsGraphSearchQueryKey(filters.search),
     queryFn: () => msGraphSearchFetcher(filters.search),
-    keepPreviousData: true,
+    placeholderData: keepPreviousData,
     select: (axiosResponse) => {
       const formattedData: SearchResult[] =
         axiosResponse?.data.map((user) => {
@@ -207,7 +207,7 @@ export const useQueryBySearchOption = ({
   const officialBoardQuery = useQuery({
     queryKey: getOfficialBoardListQueryKey(filters),
     queryFn: () => officialBoardListFetcher(filters),
-    keepPreviousData: true,
+    placeholderData: keepPreviousData,
     select: (axiosResponse) => {
       const formattedData: SearchResult[] =
         axiosResponse.data.items.map((boardItem) => {
@@ -216,7 +216,7 @@ export const useQueryBySearchOption = ({
             uniqueId: boardItem.id,
             linkHref: `/uradna-tabula/${base64Encode(boardItem.id)}`,
             metadata: [
-              formatDate(boardItem.createdAt),
+              formatDate(boardItem.publishedFrom),
               boardItem.categoryName,
               boardItem.numberOfFiles > 1
                 ? t('SearchPage.numberOfFiles', { count: boardItem.numberOfFiles })

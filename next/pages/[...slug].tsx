@@ -1,13 +1,13 @@
 import { GeneralQuery, PageEntityFragment } from '@backend/graphql'
 import { client } from '@backend/graphql/gql'
 import PageLayout from '@components/layouts/PageLayout'
-import GeneralPageContent from '@components/pages/generalPageContent'
+import GeneralPageContentTmp from '@components/pages/GeneralPageContentTmp'
 import {
   LanguageCode,
   Localizations,
   LocalizationsProvider,
 } from '@components/providers/LocalizationsProvider'
-import { DehydratedState, Hydrate } from '@tanstack/react-query'
+import { DehydratedState, HydrationBoundary } from '@tanstack/react-query'
 import { GlobalCategoryColorProvider } from '@utils/colors'
 import { GeneralContextProvider } from '@utils/generalContext'
 import { isDefined } from '@utils/isDefined'
@@ -107,7 +107,7 @@ const Page = ({ general, page, dehydratedState }: PageProps) => {
   const title = useTitle(pageTitle)
 
   return (
-    <Hydrate state={dehydratedState}>
+    <HydrationBoundary state={dehydratedState}>
       <GeneralContextProvider general={general}>
         <LocalizationsProvider localizations={localizations}>
           <Head>
@@ -119,11 +119,11 @@ const Page = ({ general, page, dehydratedState }: PageProps) => {
             color={page?.attributes?.pageCategory?.data?.attributes?.color}
           />
           <PageLayout>
-            <GeneralPageContent page={page} />
+            <GeneralPageContentTmp page={page} />
           </PageLayout>
         </LocalizationsProvider>
       </GeneralContextProvider>
-    </Hydrate>
+    </HydrationBoundary>
   )
 }
 

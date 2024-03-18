@@ -9,6 +9,7 @@ import FileRowCard from '@components/molecules/presentation/FileRowCard'
 import ShareButtons from '@components/molecules/ShareButtons'
 import { Breadcrumb } from '@components/ui/Breadcrumbs/Breadcrumbs'
 import NarrowText from '@components/ui/NarrowText/NarrowText'
+import { formatFileExtension } from '@utils/formatFileExtension'
 import { formatFileSize } from '@utils/formatFileSize'
 import { useGeneralContext } from '@utils/generalContext'
 import { isDefined } from '@utils/isDefined'
@@ -82,7 +83,7 @@ const InbaReleasePageContent = ({ inbaRelease }: InbaReleasePageContentProps) =>
                   key={file.media.data?.id}
                   title={file.title ?? file.media.data?.attributes?.name ?? ''}
                   downloadLink={file.media.data?.attributes?.url}
-                  format={file.media.data?.attributes?.ext?.replace(/^\./, '').toUpperCase()}
+                  format={formatFileExtension(file.media.data?.attributes?.ext) ?? undefined}
                   size={
                     file.media.data?.attributes?.size
                       ? formatFileSize(file.media.data?.attributes?.size, locale)
