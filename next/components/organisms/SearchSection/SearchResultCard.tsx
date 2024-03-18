@@ -4,7 +4,7 @@ import { Typography } from '@bratislava/component-library'
 import Icon from '@components/atoms/icon/Icon'
 import ImagePlaceholder from '@components/atoms/ImagePlaceholder'
 import MLink from '@components/forms/simple-components/MLink'
-import { SearchResult } from '@components/organisms/SearchPage/useQueryBySearchOption'
+import { SearchResult } from '@components/organisms/SearchSection/useQueryBySearchOption'
 import { getCategoryColorLocalStyle } from '@utils/colors'
 import { generateImageSizes } from '@utils/generateImageSizes'
 import { isDefined } from '@utils/isDefined'
@@ -16,15 +16,15 @@ import { twMerge } from 'tailwind-merge'
 
 type SearchResultCardProps = {
   data: SearchResult
-  showBottomDivider: boolean
+  hideBottomDivider?: boolean
 }
 
-const SearchResultCard = ({ data, showBottomDivider }: SearchResultCardProps) => {
+const SearchResultCard = ({ data, hideBottomDivider }: SearchResultCardProps) => {
   return (
     <div
       className={cx(
         'group relative flex flex-row items-stretch overflow-hidden rounded-none lg:rounded-lg lg:border-2',
-        { 'hover:border-gray-400': data.linkHref, 'border-b-2': showBottomDivider },
+        { 'hover:border-gray-400': data.linkHref, 'border-b-2': !hideBottomDivider },
       )}
       data-cy="search-result-card"
     >

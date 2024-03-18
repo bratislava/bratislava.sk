@@ -44,8 +44,9 @@ export const getOfficialBoardParsedList = async (searchQuery?: string, categoryI
       return {
         id: document.IdZaznamu,
         title: document.Nazev,
-        createdAt: document.VyvesenoDne,
-        content: document.Popis ?? '',
+        publishedFrom: document.VyvesenoDne,
+        publishedTo: document.SejmutoDne,
+        description: document.Popis ?? '',
         numberOfFiles: parseInt(document.PocetSouboru ?? 0, 10), // added "?? 0" just in case
         categoryName: document.Kategorie,
       }

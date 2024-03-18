@@ -36,7 +36,7 @@ export type BlogPostPageContentProps = {
   blogPost: BlogPostEntityFragment
 }
 
-const BlogPostPageContent = ({ blogPost }: BlogPostPageContentProps) => {
+const BlogPostPageContentTmp = ({ blogPost }: BlogPostPageContentProps) => {
   const tag = blogPost.attributes?.tag?.data?.attributes
 
   const t = useTranslations()
@@ -77,4 +77,4 @@ const BlogPostPageContent = ({ blogPost }: BlogPostPageContentProps) => {
   )
 }
 
-export default BlogPostPageContent
+export default BlogPostPageContentTmp

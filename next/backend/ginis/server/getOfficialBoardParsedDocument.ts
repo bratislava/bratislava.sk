@@ -43,8 +43,9 @@ export const getOfficialBoardParsedDocument = async (documentId: string) => {
     const parsedDocumentDetail: ParsedOfficialBoardDocumentDetail = {
       id: documentDetail[0].IdZaznamu,
       title: documentDetail[0].Nazev,
-      createdAt: documentDetail[0].VyvesenoDne,
-      content: documentDetail[0].Popis ?? '',
+      publishedFrom: documentDetail[0].VyvesenoDne,
+      publishedTo: documentDetail[0].SejmutoDne,
+      description: documentDetail[0].Popis ?? '',
       categoryName: documentDetail[0].Kategorie,
       files: documentFiles.map((file) => ({
         id: file.IdSouboru,

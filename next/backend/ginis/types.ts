@@ -1,8 +1,9 @@
 export type ParsedOfficialBoardDocument = {
   id: string
   title: string
-  createdAt: string
-  content: string
+  publishedFrom: string
+  publishedTo?: string
+  description: string
   numberOfFiles: number
   categoryName: string
 }

@@ -76,7 +76,7 @@ const OfficialBoardPage = ({ general, document }: OfficialBoardDocumentPageProps
     <GeneralContextProvider general={general}>
       <Head>
         <title>{document.title}</title>
-        <meta name="description" content={document.content} />
+        <meta name="description" content={document.description} />
       </Head>
       <PageLayout>
         <OfficialBoardDocumentPageContent document={document} />
