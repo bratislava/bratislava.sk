@@ -16,15 +16,15 @@ import { twMerge } from 'tailwind-merge'
 
 type SearchResultCardProps = {
   data: SearchResult
-  showBottomDivider: boolean
+  hideBottomDivider?: boolean
 }
 
-const SearchResultCard = ({ data, showBottomDivider }: SearchResultCardProps) => {
+const SearchResultCard = ({ data, hideBottomDivider }: SearchResultCardProps) => {
   return (
     <div
       className={cx(
         'group relative flex flex-row items-stretch overflow-hidden rounded-none lg:rounded-lg lg:border-2',
-        { 'hover:border-gray-400': data.linkHref, 'border-b-2': showBottomDivider },
+        { 'hover:border-gray-400': data.linkHref, 'border-b-2': !hideBottomDivider },
       )}
     >
       {data.coverImageSrc ? (
