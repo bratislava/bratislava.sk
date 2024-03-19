@@ -14,7 +14,7 @@ describe('OB - 1', { testIsolation: false }, () => {
         before(() => {
           cy.visit('/')
         })
-        
+
         it('1. Checking official board.', () => {
           cy.dataCy('homepage-tab-OfficialBoard').click()
           cy.dataCy('homepage-tab-OfficialBoard').should('have.class', 'selected:font-semibold')
