@@ -33,6 +33,6 @@ describe('OB - 1', { testIsolation: false }, () => {
           cy.dataCy('no-search-results').should('exist')
           cy.dataCy('no-search-results').should('contain', 'Nič sme nenašli')
         })
-			})
-		})
+      })
+   })
 })
