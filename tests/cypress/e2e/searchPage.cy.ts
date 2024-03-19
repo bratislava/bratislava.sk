@@ -67,6 +67,6 @@ describe('S01 - ', { testIsolation: false }, () => {
           cy.dataCy('users-tab').should('have.attr', '[data-selected=true]')
           cy.dataCy('search-section-results').should('contain', '[data-cy=search-result-card]')
         })
-			})
-		})
+      })
+    })
 })
