@@ -46,6 +46,6 @@ describe('S02 - ', { testIsolation: false }, () => {
           cy.dataCy('search-section-Kontakty').should('be.visible')
           cy.dataCy('search-section-Kontakty').should('contain', 'Žiadne výsledky')
         })
-			})
-		})
+      })
+    })
 })
