@@ -25,7 +25,7 @@ describe('S02 - ', { testIsolation: false }, () => {
           cy.dataCy('search-field').should('contain', 'Bratislava')
           cy.dataCy('search-section-Stránky').should('be.visible')
           cy.dataCy('search-section-Stránky').then((section) => {
-            cy.dataCy('search-section-results').should('contain', '[data-cy=search-result-card]')
+            cy.dataCy('search-results').should('contain', '[data-cy=search-result-card]')
           })
         })
 
