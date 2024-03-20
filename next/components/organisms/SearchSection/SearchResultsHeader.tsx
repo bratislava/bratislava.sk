@@ -18,7 +18,9 @@ const SearchResultsHeader = ({ title, showButton, handleShowMore }: SearchResult
         {title}
       </Typography>
       {showButton ? (
-        <Button variant="black-link" endIcon={<ArrowRightIcon />} onPress={handleShowMore}>
+        <Button variant="black-link" endIcon={<ArrowRightIcon />} onPress={handleShowMore}
+          data-cy="search-section-more-button"
+        >
           {t('SearchPage.moreResults')}
         </Button>
       ) : null}
