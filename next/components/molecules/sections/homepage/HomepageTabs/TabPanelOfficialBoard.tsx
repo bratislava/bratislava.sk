@@ -57,7 +57,7 @@ const TabPanelOfficialBoard = () => {
   return (
     <TabPanel id="OfficialBoard">
       <div className="mt-8 flex flex-col gap-y-10 lg:mt-14">
-        <div className="flex flex-col gap-y-2">
+        <div className="flex flex-col gap-y-2" data-cy="official-board-results">
           {/* TODO we used basic spinner and text here, but it should be done with nicer design */}
           {isLoading ? (
             <LoadingSpinner />
@@ -75,6 +75,7 @@ const TabPanelOfficialBoard = () => {
           <div className="flex justify-center">
             <Button
               variant="category-outline"
+              data-cy="official-board-button"
               {...getCommonLinkProps(tabs.officialBoardPageLink)}
             />
           </div>
