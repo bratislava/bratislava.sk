@@ -3,9 +3,6 @@
 describe('OB - 1', { testIsolation: false }, () => {
   const devices = ['desktop', 'mobile']
 
-  // cy.location('pathname', {timeout: 4000})
-  // .should('eq', '/vyhladavanie');
-
   devices
     .filter((device) => Cypress.env('devices')[`${device}`])
     .forEach((device) => {
@@ -31,7 +28,7 @@ describe('OB - 1', { testIsolation: false }, () => {
 
           cy.dataCy('search-field').clear().type('vjftrfrcygoihikjki{enter}')
           cy.dataCy('no-search-results').should('exist')
-          cy.dataCy('no-search-results').should('contain', 'Nič sme nenašli')
+          cy.dataCy('no-search-results').should('contain', 'Žiadne výsledky')
         })
       })
    })
