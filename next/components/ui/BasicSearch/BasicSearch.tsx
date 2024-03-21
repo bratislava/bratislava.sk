@@ -49,6 +49,7 @@ const BasicSearch = ({
           value={input}
           onChange={(event) => setInput(event.target.value)}
           onKeyDown={handleKeyDown}
+          data-cy="search-field"
         />
         <Button
           endIcon={<SearchIcon />}

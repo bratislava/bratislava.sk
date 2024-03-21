@@ -58,7 +58,7 @@ const SearchResults = ({
   }
 
   return (
-    <div className="flex flex-col gap-y-8">
+    <div className="flex flex-col gap-y-8" data-cy={`search-section-${searchOption?.displayNamePlural}`}>
       <div className="flex flex-col gap-y-4">
         {variant === 'allResults' && (
           <SearchResultsHeader
@@ -70,9 +70,8 @@ const SearchResults = ({
             }}
           />
         )}
-
         {searchResultsData?.length ? (
-          <div className="flex flex-col lg:gap-y-2">
+          <div className="flex flex-col lg:gap-y-2" data-cy="search-results">
             {searchResultsData
               .slice(0, variant === 'allResults' ? GENERAL_RESULTS_COUNT : undefined)
               .map((item) => {
@@ -89,7 +88,9 @@ const SearchResults = ({
               })}
           </div>
         ) : filters.search ? (
-          <Typography type="p">{t('SearchPage.noResults')}</Typography>
+          <div data-cy="no-search-results">
+            <Typography type="p">{t('SearchPage.noResults')}</Typography>
+          </div>
         ) : (
           /* Contacts show only for non-empty search query */
           // TODO keep this also during the first loading
