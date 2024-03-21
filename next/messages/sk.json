@@ -319,9 +319,13 @@
     "publishedFrom": "Zverejnené od",
     "publishedTo": "Zverejnené do",
     "category": "Kategória",
+    "allOptions": "Všetky",
+    "publicationState": "Stav zverejnenia",
     "description": "Popis",
     "attachments": "Prílohy",
     "details": "Podrobnosti",
-    "noAttachmentsMessage": "K tomuto dokumentu sa nepodarilo nájsť žiadne prílohy."
+    "noAttachmentsMessage": "K tomuto dokumentu sa nepodarilo nájsť žiadne prílohy.",
+    "published": "Zverejnené",
+    "archived": "Archivované"
   }
 }

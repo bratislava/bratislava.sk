@@ -1,3 +1,5 @@
+import { SeznamDokumentuRequestBody } from '@ginis-sdk/api/json/ude/seznam-dokumentu'
+
 export type ParsedOfficialBoardDocument = {
   id: string
   title: string
@@ -35,3 +37,6 @@ export type ParsedOfficialBoardCategory = {
 }
 
 export type OfficialBoardCategoryListResponse = ParsedOfficialBoardCategory[]
+
+// NonNullable removes `undefined` from the type
+export type OfficialBoardPublicationState = NonNullable<SeznamDokumentuRequestBody['Stav']>

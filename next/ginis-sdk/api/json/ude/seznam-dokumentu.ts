@@ -17,7 +17,7 @@ export type SeznamDokumentuRequestBody = {
    * vyveseno - vyvěšeno
    * sejmuto - sejmuto
    */
-  Stav?: string
+  Stav?: 'vyveseno' | 'sejmuto'
   IdUredniDesky?: string
   IdKategorie?: string
   /**
