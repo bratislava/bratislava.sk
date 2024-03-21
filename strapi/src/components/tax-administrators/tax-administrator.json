@@ -1,0 +1,33 @@
+{
+  "collectionName": "components_tax_administrators_tax_administrators",
+  "info": {
+    "displayName": "Tax administrator",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "range": {
+      "type": "string",
+      "regex": "^[A-ZÁÄČĎÉÍĹĽŇÓÔŔŠŤÚÝŽ]+-[A-ZÁÄČĎÉÍĹĽŇÓÔŔŠŤÚÝŽ]+$",
+      "unique": false,
+      "required": true
+    },
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "email": {
+      "type": "email",
+      "required": true
+    },
+    "phone": {
+      "type": "string",
+      "required": true
+    },
+    "officeNumber": {
+      "type": "string",
+      "regex": "\\d+",
+      "required": true
+    }
+  }
+}
