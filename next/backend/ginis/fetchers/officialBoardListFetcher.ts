@@ -15,6 +15,7 @@ export const officialBoardListDefaultFilters: OfficialBoardListFilters = {
 }
 
 export const getOfficialBoardListQueryKey = (filters: OfficialBoardListFilters) => [
+  'Search',
   'OfficialBoardList',
   filters,
 ]
