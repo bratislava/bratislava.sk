@@ -1,7 +1,7 @@
+import { ArrowRightIcon } from '@assets/ui-icons'
 import { Typography } from '@bratislava/component-library'
 import Button from '@components/forms/simple-components/Button'
 import { isExternalLink } from '@utils/isExternalLink'
-import cx from 'classnames'
 import React from 'react'
 import { twMerge } from 'tailwind-merge'
 
@@ -11,14 +11,11 @@ export type LinksProps = {
   pageLinks: { title?: string; url?: string; anchor?: string }[]
 }
 
+// TODO revisit anchors, they are not currently used and supported by dev team
 const Links = ({ className, title, pageLinks }: LinksProps) => {
   return (
     <div className={twMerge('flex w-full flex-col md:w-10/12', className)}>
-      {title && (
-        <Typography type="h2" size="h4">
-          {title}
-        </Typography>
-      )}
+      {title && <Typography type="h2">{title}</Typography>}
       <ul className="flex flex-col space-y-4 pt-6">
         {pageLinks?.map((pageLink, index) => (
           // eslint-disable-next-line react/no-array-index-key
@@ -26,6 +23,7 @@ const Links = ({ className, title, pageLinks }: LinksProps) => {
             <Button
               href={pageLink.url ? isExternalLink(pageLink.url) : `#${pageLink.anchor}`}
               variant="black-link"
+              startIcon={<ArrowRightIcon />}
             >
               {pageLink?.title}
             </Button>
