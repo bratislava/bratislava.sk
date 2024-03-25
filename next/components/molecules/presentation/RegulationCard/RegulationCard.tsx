@@ -11,7 +11,7 @@ export type RegulationCardProps = {
   className?: string
   ariaLabel?: string
   isUplneZnenie?: boolean | null | undefined
-  metadata?: string
+  metadata?: string | null
 }
 
 /**

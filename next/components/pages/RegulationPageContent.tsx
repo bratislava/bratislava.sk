@@ -122,19 +122,19 @@ const RegulationPageContent = ({ regulation }: RegulationPageContentProps) => {
             </Typography>
             {amendments?.length ? (
               <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
-                {amendments?.map((amendment, index) => {
+                {amendments?.map((amendment) => {
                   return (
                     <RegulationCard
                       title={`VZN ${amendment.attributes?.regNumber ?? ''}`}
                       className="w-full"
                       key={amendment.id}
-                      isUplneZnenie={
-                        index % 3 === 0 ? amendment.attributes?.isFullTextRegulation : true
-                      }
+                      isUplneZnenie={amendment.attributes?.isFullTextRegulation}
                       metadata={
-                        index % 2 === 0
-                          ? t('numberOf.attachments', { count: index % 3 })
-                          : undefined
+                        amendment.attributes?.attachments?.data.length
+                          ? t('numberOf.attachments', {
+                              count: amendment.attributes?.attachments?.data.length,
+                            })
+                          : null
                       }
                       path={`/vzn/${amendment.attributes?.slug ?? ''}`}
                     />
