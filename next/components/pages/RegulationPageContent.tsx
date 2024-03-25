@@ -131,7 +131,7 @@ const RegulationPageContent = ({ regulation }: RegulationPageContentProps) => {
                       isUplneZnenie={amendment.attributes?.isFullTextRegulation}
                       metadata={
                         amendment.attributes?.attachments?.data.length
-                          ? t('numberOf.attachments', {
+                          ? t('numberOfAttachments', {
                               count: amendment.attributes?.attachments?.data.length,
                             })
                           : null

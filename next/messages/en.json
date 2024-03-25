@@ -288,8 +288,10 @@
     "noConsolidatedTextMessage": "This regulation has no consolidated text document.",
     "attachments": "Attachments",
     "noAttachmentsMessage": "This regulation has no attachments.",
+    "numberOfAttachments": "{count} {count, plural, one {attachment} other {attachments}}",
     "amendments": "Amendments",
     "noAmendmentsMessage": "There are no amendments to this regulation.",
+    "numberOfAmendments": "{count} {count, plural, one {amendment} other {amendments}}",
     "influenceOnOtherRegulations": "Influence on other regulations",
     "thisRegulationAmends": "This regulation amends",
     "thisRegulationDoesntAmend": "This regulation doesn't amend any regulations.",
@@ -297,10 +299,6 @@
     "thisRegulationDoesntCancell": "This regulation doesn't cancel any regulation.",
     "linkToRegulationMessage": "Go to regulation",
     "relatedRegulations": "Related generally binding regulations",
-    "numberOf": {
-      "attachments": "{count} {count, plural, one {attachment} other {attachments}}",
-      "amendments": "{count} {count, plural, one {amendment} other {amendments}}"
-    },
     "category": {
       "daneAPoplatky": "Tax and fees",
       "pomenovanieUlic": "Street naming",

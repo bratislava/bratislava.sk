@@ -24,7 +24,7 @@ const Regulations = ({ className, regulations }: Props) => {
                   <RegulationCard
                     title={`VZN ${regulation.attributes?.regNumber ?? ''}`}
                     key={regulation.attributes?.regNumber}
-                    metadata={t('Regulation.numberOf.amendments', {
+                    metadata={t('Regulation.numberOfAmendments', {
                       count: regulation.attributes?.amendments?.data.length ?? 0,
                     })}
                     path={`/vzn/${regulation.attributes?.slug}`}
@@ -39,7 +39,7 @@ const Regulations = ({ className, regulations }: Props) => {
                 <RegulationCard
                   title={`VZN ${regulation.attributes?.regNumber ?? ''}`}
                   key={regulation.attributes?.regNumber}
-                  metadata={t('Regulation.numberOf.amendments', {
+                  metadata={t('Regulation.numberOfAmendments', {
                     count: regulation.attributes?.amendments?.data.length ?? 0,
                   })}
                   path={`/vzn/${regulation.attributes?.slug ?? ''}`}

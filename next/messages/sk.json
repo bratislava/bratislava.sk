@@ -289,8 +289,10 @@
     "noConsolidatedTextMessage": "K tomuto VZN neexistuje konsolidované znenie.",
     "attachments": "Prílohy",
     "noAttachmentsMessage": "Toto VZN nemá prílohy.",
+    "numberOfAttachments": "{count} {count, plural, one {príloha} few {prílohy} other {príloh}}",
     "amendments": "Dodatky",
     "noAmendmentsMessage": "K tomuto VZN neexistujú dodatky.",
+    "numberOfAmendments": "{count} {count, plural, one {dodatok} few {dodatky} other {dodatkov}}",
     "influenceOnOtherRegulations": "Vplyv na iné VZN",
     "thisRegulationAmends": "Toto VZN je dodatkom k",
     "thisRegulationDoesntAmend": "Toto VZN nie je dodatkom k žiadnemu VZN.",
@@ -298,10 +300,6 @@
     "thisRegulationDoesntCancell": "Toto VZN nezrušuje žiadne VZN.",
     "linkToRegulationMessage": "Prejsť na VZN",
     "relatedRegulations": "Súvisiace všeobecne záväzné nariadenia",
-    "numberOf": {
-      "attachments": "{count} {count, plural, one {príloha} few {prílohy} other {príloh}}",
-      "amendments": "{count} {count, plural, one {dodatok} few {dodatky} other {dodatkov}}"
-    },
     "category": {
       "daneAPoplatky": "Dane a poplatky",
       "pomenovanieUlic": "Pomenovanie ulíc",
