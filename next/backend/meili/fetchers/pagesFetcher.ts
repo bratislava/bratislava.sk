@@ -1,4 +1,3 @@
-import { PageEntityFragment } from '@backend/graphql'
 import { Key } from 'swr'
 
 import { meiliClient } from '../meiliClient'
@@ -21,6 +20,7 @@ export const getPagesSwrKey = (filters: PagesFilters, locale: string) =>
   ['Pages', filters, locale] as Key
 
 export const getPagesQueryKey = (filters: PagesFilters, locale: string) => [
+  'Search',
   'Pages',
   filters,
   locale,

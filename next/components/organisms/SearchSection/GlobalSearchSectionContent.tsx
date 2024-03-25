@@ -4,6 +4,7 @@ import OfficialBoardAdditionalFilters from '@components/molecules/sections/gener
 import SearchBar from '@components/organisms/SearchSection/SearchBar'
 import SearchResults from '@components/organisms/SearchSection/SearchResults'
 import { SearchFilters } from '@components/organisms/SearchSection/useQueryBySearchOption'
+import { useIsFetching } from '@tanstack/react-query'
 import { getCategoryColorLocalStyle } from '@utils/colors'
 import { useTranslations } from 'next-intl'
 import React, { useEffect, useRef, useState } from 'react'
@@ -175,6 +176,8 @@ const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
     searchRef.current?.scrollIntoView({ behavior: 'smooth' })
   }, [searchFilters.page, searchFilters.pageSize])
 
+  const fetchingQueriesCount = useIsFetching({ queryKey: ['Search'] })
+
   return (
     <div className="flex w-full flex-col gap-y-8">
       {/* Filters */}
@@ -185,6 +188,7 @@ const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
           input={input}
           setInput={setInput}
           setSearchQuery={setSearchValue}
+          isLoading={fetchingQueriesCount > 0}
         />
 
         {/* TagGroup to select content type to search in - when used on main search page */}

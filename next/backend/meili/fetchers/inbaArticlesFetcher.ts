@@ -17,6 +17,7 @@ export const inbaArticlesDefaultFilters: InbaArticlesFilters = {
 }
 
 export const getInbaArticlesQueryKey = (filters: InbaArticlesFilters, locale: string) => [
+  'Search',
   'InbaArticles',
   filters,
   locale,
