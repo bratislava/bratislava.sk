@@ -24,7 +24,6 @@ const RegulationPageContent = ({ regulation }: RegulationPageContentProps) => {
   const locale = useLocale()
 
   const mainDocument = regulation.attributes?.mainDocument
-  const consolidatedDocument = regulation.attributes?.consolidatedText
   const amendments = regulation.attributes?.amendments?.data
     .filter((amendment) => isDefined(amendment))
     .sort((a, b) => {
@@ -40,12 +39,6 @@ const RegulationPageContent = ({ regulation }: RegulationPageContentProps) => {
         media: { data: attachment },
       }
     }) ?? []
-
-  if (consolidatedDocument?.data)
-    attachmentFiles.unshift({
-      title: `${t('consolidatedText')} - ${consolidatedDocument.data.attributes?.name}`,
-      media: { data: consolidatedDocument?.data },
-    })
 
   const breadcrumbs = [
     {
@@ -100,7 +93,7 @@ const RegulationPageContent = ({ regulation }: RegulationPageContentProps) => {
               {attachmentFiles?.length ? (
                 <div className="flex flex-col rounded-lg border-2 px-4">
                   {attachmentFiles
-                    .map(({ media: attachementMedia, title: attachmentTitle }, index) => {
+                    .map(({ media: attachementMedia, title: attachmentTitle }) => {
                       if (!attachementMedia.data.attributes) return null
 
                       return (
@@ -128,7 +121,7 @@ const RegulationPageContent = ({ regulation }: RegulationPageContentProps) => {
               {t('amendments')}
             </Typography>
             {amendments?.length ? (
-              <div className="grid grid-cols-4 gap-6">
+              <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
                 {amendments?.map((amendment) => {
                   return (
                     <RegulationCard
@@ -136,6 +129,13 @@ const RegulationPageContent = ({ regulation }: RegulationPageContentProps) => {
                       className="w-full"
                       key={amendment.id}
                       isUplneZnenie={amendment.attributes?.isFullTextRegulation}
+                      metadata={
+                        amendment.attributes?.attachments?.data.length
+                          ? t('numberOfAttachments', {
+                              count: amendment.attributes?.attachments?.data.length,
+                            })
+                          : null
+                      }
                       path={`/vzn/${amendment.attributes?.slug ?? ''}`}
                     />
                   )

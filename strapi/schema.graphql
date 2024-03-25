@@ -3227,12 +3227,11 @@ type Regulation {
   attachments(filters: UploadFileFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UploadFileRelationResponseCollection
   cancellation: RegulationEntityResponse
   cancelling(filters: RegulationFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): RegulationRelationResponseCollection
-  category: ENUM_REGULATION_CATEGORY
-  consolidatedText: UploadFileEntityResponse
+  category: ENUM_REGULATION_CATEGORY!
   createdAt: DateTime
   effectiveFrom: Date
   fullTitle: String!
-  isFullTextRegulation: Boolean
+  isFullTextRegulation: Boolean!
   mainDocument: UploadFileEntityResponse!
   publishedAt: DateTime
   regNumber: String!
@@ -3283,7 +3282,6 @@ input RegulationInput {
   cancellation: ID
   cancelling: [ID]
   category: ENUM_REGULATION_CATEGORY
-  consolidatedText: ID
   effectiveFrom: Date
   fullTitle: String
   isFullTextRegulation: Boolean
