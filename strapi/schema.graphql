@@ -1746,7 +1746,7 @@ input ComponentSectionsRegulationsInput {
 type ComponentSectionsRegulationsList {
   id: ID!
   text: String
-  title: String!
+  title: String
 }
 
 input ComponentSectionsRegulationsListFiltersInput {

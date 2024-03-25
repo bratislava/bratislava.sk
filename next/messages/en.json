@@ -297,6 +297,10 @@
     "thisRegulationDoesntCancell": "This regulation doesn't cancel any regulation.",
     "linkToRegulationMessage": "Go to regulation",
     "relatedRegulations": "Related generally binding regulations",
+    "numberOf": {
+      "attachments": "{count} {count, plural, one {attachment} other {attachments}}",
+      "amendments": "{count} {count, plural, one {amendment} other {amendments}}"
+    },
     "category": {
       "daneAPoplatky": "Tax and fees",
       "pomenovanieUlic": "Street naming",

@@ -298,6 +298,10 @@
     "thisRegulationDoesntCancell": "Toto VZN nezrušuje žiadne VZN.",
     "linkToRegulationMessage": "Prejsť na VZN",
     "relatedRegulations": "Súvisiace všeobecne záväzné nariadenia",
+    "numberOf": {
+      "attachments": "{count} {count, plural, one {príloha} few {prílohy} other {príloh}}",
+      "amendments": "{count} {count, plural, one {dodatok} few {dodatky} other {dodatkov}}"
+    },
     "category": {
       "daneAPoplatky": "Dane a poplatky",
       "pomenovanieUlic": "Pomenovanie ulíc",
