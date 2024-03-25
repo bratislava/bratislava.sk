@@ -8,6 +8,7 @@ import SelectField, {
 } from '@components/forms/widget-components/SelectField/SelectField'
 import { useQuery } from '@tanstack/react-query'
 import { isDefined } from '@utils/isDefined'
+import { isProductionDeployment } from '@utils/utils'
 import { useTranslations } from 'next-intl'
 import React from 'react'
 
@@ -98,14 +99,17 @@ const OfficialBoardAdditionalFilters = ({
         })}
       </SelectField>
 
-      <SelectField
-        label={t('publicationState')}
-        items={publicationStateSelectOptions}
-        selectedKey={publicationState}
-        onSelectionChange={(selected) => setPublicationState(selected as typeof publicationState)}
-      >
-        {(item) => <SelectItem label={item.title} id={item.id} />}
-      </SelectField>
+      {/* TODO remove this check, but for now, we want to test in on staging without being block by accidental release */}
+      {isProductionDeployment() ? null : (
+        <SelectField
+          label={t('publicationState')}
+          items={publicationStateSelectOptions}
+          selectedKey={publicationState}
+          onSelectionChange={(selected) => setPublicationState(selected as typeof publicationState)}
+        >
+          {(item) => <SelectItem label={item.title} id={item.id} />}
+        </SelectField>
+      )}
     </div>
   )
 }
