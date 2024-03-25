@@ -216,8 +216,8 @@ export const useQueryBySearchOption = ({
             uniqueId: boardItem.id,
             linkHref: `/uradna-tabula/${base64Encode(boardItem.id)}`,
             metadata: [
-              formatDate(boardItem.publishedFrom),
               boardItem.categoryName,
+              formatDate(boardItem.publishedFrom),
               boardItem.numberOfFiles > 1
                 ? t('SearchPage.numberOfFiles', { count: boardItem.numberOfFiles })
                 : undefined,

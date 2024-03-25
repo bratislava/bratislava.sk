@@ -43,7 +43,7 @@ const TabPanelOfficialBoard = () => {
               title: boardItem.title,
               uniqueId: boardItem.id,
               linkHref: `/uradna-tabula/${base64Encode(boardItem.id)}`,
-              metadata: [formatDate(boardItem.publishedFrom), boardItem.categoryName],
+              metadata: [boardItem.categoryName, formatDate(boardItem.publishedFrom)],
               customIconName: 'search_result_official_board',
             }
           }) ?? []
