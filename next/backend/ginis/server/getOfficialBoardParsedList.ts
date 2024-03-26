@@ -3,11 +3,21 @@ import { ParsedOfficialBoardDocument } from '@backend/ginis/types'
 import { SeznamDokumentuResponseItem } from '@ginis-sdk/api/json/ude/seznam-dokumentu'
 import { isDefined } from '@utils/isDefined'
 
-export const getOfficialBoardParsedList = async (searchQuery?: string, categoryId?: string) => {
+export const getOfficialBoardParsedList = async (options: {
+  searchQuery?: string
+  publicationState?: string
+  categoryId?: string
+}) => {
+  const { searchQuery, publicationState, categoryId } = options
+
   let documents: SeznamDokumentuResponseItem[] = []
 
   // Nazev - Max. délka: 254
   const searchQueryTrimmed = searchQuery?.trim().slice(0, 254) ?? ''
+
+  // Stav?: 'vyveseno' | 'sejmuto'
+  const publicationStateSanitized =
+    publicationState === 'vyveseno' || publicationState === 'sejmuto' ? publicationState : undefined
 
   try {
     /**
@@ -19,7 +29,7 @@ export const getOfficialBoardParsedList = async (searchQuery?: string, categoryI
      * Otherwise, it will throw 400 Bad Request error.
      */
     const dataXrg = await ginis.json.ude.seznamDokumentu({
-      Stav: 'vyveseno',
+      Stav: publicationStateSanitized,
       IdKategorie: categoryId,
       Nazev: searchQueryTrimmed,
     })

@@ -1,3 +1,5 @@
+import { officialBoardListDefaultFilters } from '@backend/ginis/fetchers/officialBoardListFetcher'
+import { OfficialBoardPublicationState } from '@backend/ginis/types'
 import { Typography } from '@bratislava/component-library'
 import Chip from '@components/forms/simple-components/Chip'
 import OfficialBoardAdditionalFilters from '@components/molecules/sections/general/OfficialBoardSection/OfficialBoardAdditionalFilters'
@@ -116,7 +118,11 @@ const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
     setCurrentPage(1)
   }, [searchValue, selection])
 
+  /* OfficialBoard specific filters state */
   const [categoryId, setCategoryId] = useState<string | null>(null)
+  const [publicationState, setPublicationState] = useState<OfficialBoardPublicationState>(
+    officialBoardListDefaultFilters.publicationState,
+  )
 
   const [resultsCount, setResultsCount] = useState(
     Object.fromEntries(searchOptions.map((option): [string, number] => [option.id, 0])),
@@ -168,6 +174,7 @@ const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
     tagIds: [],
     // Official board category id
     categoryId: !categoryId || categoryId === 'all' ? undefined : categoryId,
+    publicationState: publicationState ?? undefined,
   }
 
   const searchRef = useRef<null | HTMLInputElement>(null)
@@ -225,6 +232,8 @@ const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
               <OfficialBoardAdditionalFilters
                 categoryId={categoryId}
                 setCategoryId={setCategoryId}
+                publicationState={publicationState}
+                setPublicationState={setPublicationState}
               />
             </div>
           </div>

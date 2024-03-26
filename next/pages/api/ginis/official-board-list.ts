@@ -13,6 +13,7 @@ const handler = async (
     search: searchParam,
     pageSize: pageSizeParam,
     page: pageParam,
+    publicationState: publicationStateParam,
     categoryId: categoryIdParam,
   } = req.query
 
@@ -27,6 +28,8 @@ const handler = async (
       : officialBoardListDefaultFilters.pageSize
   const page =
     typeof pageParam === 'string' ? parseInt(pageParam, 10) : officialBoardListDefaultFilters.page
+  const publicationState =
+    typeof publicationStateParam === 'string' ? publicationStateParam : publicationStateParam?.[0]
   const categoryId =
     typeof categoryIdParam === 'string' ? categoryIdParam : categoryIdParam?.[0] ?? ''
 
@@ -35,7 +38,7 @@ const handler = async (
   try {
     result = shouldMockGinis()
       ? mockedParsedDocuments
-      : await getOfficialBoardParsedList(search, categoryId)
+      : await getOfficialBoardParsedList({ searchQuery: search, publicationState, categoryId })
   } catch (error) {
     // TODO handle error
     console.log(error)
