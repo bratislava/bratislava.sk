@@ -118,8 +118,8 @@ const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
     setCurrentPage(1)
   }, [searchValue, selection])
 
+  /* OfficialBoard specific filters state */
   const [categoryId, setCategoryId] = useState<string | null>(null)
-
   const [publicationState, setPublicationState] = useState<OfficialBoardPublicationState>(
     officialBoardListDefaultFilters.publicationState,
   )

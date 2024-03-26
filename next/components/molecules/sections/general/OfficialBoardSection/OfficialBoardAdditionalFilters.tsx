@@ -41,7 +41,7 @@ const OfficialBoardAdditionalFilters = ({
   })
 
   /**
-   * This approach make 'numberOfPostedDocuments' and 'numberOfArchivedDocuments' optional,
+   * This approach makes 'numberOfPostedDocuments' and 'numberOfArchivedDocuments' optional,
    * while keeping the same props as used in ParsedOfficialBoardCategory.
    * It is needed for "all" option, which doesn't have these values.
    */
