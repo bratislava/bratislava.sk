@@ -13,7 +13,12 @@ export const homepageSearchDefaultFilters: HomepageSearchFilters = {
   search: '',
 }
 
-export const allSearchTypes = ['page' as const, 'blog-post' as const, 'vzn' as const]
+export const allSearchTypes = [
+  'page' as const,
+  'blog-post' as const,
+  'vzn' as const,
+  'regulation' as const,
+]
 
 // https://stackoverflow.com/a/52331580
 export type Unpacked<T> = T extends (infer U)[] ? U : T
@@ -37,7 +42,7 @@ export const homepageSearchFetcher = (filters: HomepageSearchFilters, locale: st
     .search<MixedResults>(filters.search, {
       ...getMeilisearchPageOptions({ page: 1, pageSize: 5 }),
       filter: [
-        'type = "page" OR type = "blog-post" OR type = "vzn"',
+        'type = "page" OR type = "blog-post" OR type = "regulation"',
         `locale = ${locale} OR locale NOT EXISTS`,
       ],
     })
@@ -49,17 +54,6 @@ export const homepageSearchFetcher = (filters: HomepageSearchFilters, locale: st
         // eslint-disable-next-line @typescript-eslint/no-explicit-any,@typescript-eslint/no-unsafe-member-access
         const dataInner = (hit as any)[type]
 
-        if (type === 'vzn') {
-          const { title } = dataInner
-          return {
-            type,
-            title,
-            // TODO: Fix link - get slug by some proper function. This one works for now for both locales, EN does not have a page for VZNs
-            link: `/sk/mesto-bratislava/sprava-mesta/legislativa-mesta/vseobecne-zavazne-nariadenia?keyword=${filters.search}`,
-            data: dataInner,
-          } as HomepageSearchResult
-        }
-
         if (type === 'blog-post') {
           const { title, slug } = dataInner
           return {
@@ -67,6 +61,17 @@ export const homepageSearchFetcher = (filters: HomepageSearchFilters, locale: st
             title,
             // TODO: Fix link - get slug by some proper function. This one works for now for both locales.
             link: `/blog/${slug}`,
+            data: dataInner,
+          } as HomepageSearchResult
+        }
+
+        if (type === 'regulation') {
+          const { regNumber, titleText, fullTitle, slug } = dataInner
+          return {
+            type,
+            title: `VZN ${regNumber} ${titleText ?? fullTitle}`,
+            // TODO: Fix link - get slug by some proper function. This one works for now for both locales.
+            link: `/vzn/${slug}`,
             data: dataInner,
           } as HomepageSearchResult
         }

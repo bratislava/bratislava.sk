@@ -19,6 +19,7 @@ export const blogPostsDefaultFilters: BlogPostsFilters = {
 }
 
 export const getBlogPostsQueryKey = (filters: BlogPostsFilters, locale: string) => [
+  'Search',
   'BlogPost',
   filters,
   locale,

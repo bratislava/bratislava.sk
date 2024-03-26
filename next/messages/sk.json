@@ -289,8 +289,10 @@
     "noConsolidatedTextMessage": "K tomuto VZN neexistuje konsolidované znenie.",
     "attachments": "Prílohy",
     "noAttachmentsMessage": "Toto VZN nemá prílohy.",
+    "numberOfAttachments": "{count} {count, plural, one {príloha} few {prílohy} other {príloh}}",
     "amendments": "Dodatky",
     "noAmendmentsMessage": "K tomuto VZN neexistujú dodatky.",
+    "numberOfAmendments": "{count} {count, plural, one {dodatok} few {dodatky} other {dodatkov}}",
     "influenceOnOtherRegulations": "Vplyv na iné VZN",
     "thisRegulationAmends": "Toto VZN je dodatkom k",
     "thisRegulationDoesntAmend": "Toto VZN nie je dodatkom k žiadnemu VZN.",
@@ -317,9 +319,13 @@
     "publishedFrom": "Zverejnené od",
     "publishedTo": "Zverejnené do",
     "category": "Kategória",
+    "allOptions": "Všetky",
+    "publicationState": "Stav zverejnenia",
     "description": "Popis",
     "attachments": "Prílohy",
     "details": "Podrobnosti",
-    "noAttachmentsMessage": "K tomuto dokumentu sa nepodarilo nájsť žiadne prílohy."
+    "noAttachmentsMessage": "K tomuto dokumentu sa nepodarilo nájsť žiadne prílohy.",
+    "published": "Zverejnené",
+    "archived": "Archivované"
   }
 }

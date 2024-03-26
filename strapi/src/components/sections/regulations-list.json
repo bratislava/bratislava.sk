@@ -1,12 +1,14 @@
 {
   "collectionName": "components_sections_regulations_lists",
   "info": {
-    "displayName": "Regulations list"
+    "displayName": "Regulations list",
+    "description": ""
   },
   "options": {},
   "attributes": {
     "title": {
-      "type": "string"
+      "type": "string",
+      "required": false
     },
     "text": {
       "type": "text"

@@ -14,7 +14,11 @@ export const RegulationDefaultFilters: RegulationFilters = {
   page: 1,
 }
 
-export const getRegulationsQueryKey = (filters: RegulationFilters) => ['Regulation', filters]
+export const getRegulationsQueryKey = (filters: RegulationFilters) => [
+  'Search',
+  'Regulation',
+  filters,
+]
 
 export const regulationsFetcher = (filters: RegulationFilters) => {
   return meiliClient

@@ -23,7 +23,7 @@ const SearchResultCard = ({ data, hideBottomDivider }: SearchResultCardProps) =>
   return (
     <div
       className={cx(
-        'group relative flex flex-row items-stretch overflow-hidden rounded-none lg:rounded-lg lg:border-2',
+        'group relative flex flex-row items-stretch overflow-hidden rounded-none bg-white lg:rounded-lg lg:border-2',
         { 'hover:border-gray-400': data.linkHref, 'border-b-2': !hideBottomDivider },
       )}
       data-cy="search-result-card"

@@ -1,4 +1,4 @@
-import { OfficialBoardListResponse } from '@backend/ginis/types'
+import { OfficialBoardListResponse, OfficialBoardPublicationState } from '@backend/ginis/types'
 import axios from 'axios'
 
 export type OfficialBoardListFilters = {
@@ -6,15 +6,18 @@ export type OfficialBoardListFilters = {
   pageSize: number
   page: number
   categoryId?: string
+  publicationState?: OfficialBoardPublicationState
 }
 
-export const officialBoardListDefaultFilters: OfficialBoardListFilters = {
+export const officialBoardListDefaultFilters = {
   search: '',
   pageSize: 10,
   page: 1,
-}
+  publicationState: 'vyveseno',
+} satisfies OfficialBoardListFilters
 
 export const getOfficialBoardListQueryKey = (filters: OfficialBoardListFilters) => [
+  'Search',
   'OfficialBoardList',
   filters,
 ]
@@ -25,6 +28,7 @@ export const officialBoardListFetcher = async (filters: OfficialBoardListFilters
       filters.search ? `search=${filters.search}` : '',
       filters.pageSize ? `pageSize=${filters.pageSize.toString()}` : '',
       filters.page ? `page=${filters.page.toString()}` : '',
+      filters.publicationState ? `publicationState=${filters.publicationState}` : '',
       filters.categoryId ? `categoryId=${filters.categoryId}` : '',
     ]
       .filter(Boolean)

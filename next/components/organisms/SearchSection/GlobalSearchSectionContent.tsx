@@ -1,9 +1,12 @@
+import { officialBoardListDefaultFilters } from '@backend/ginis/fetchers/officialBoardListFetcher'
+import { OfficialBoardPublicationState } from '@backend/ginis/types'
 import { Typography } from '@bratislava/component-library'
 import Chip from '@components/forms/simple-components/Chip'
 import OfficialBoardAdditionalFilters from '@components/molecules/sections/general/OfficialBoardSection/OfficialBoardAdditionalFilters'
 import SearchBar from '@components/organisms/SearchSection/SearchBar'
 import SearchResults from '@components/organisms/SearchSection/SearchResults'
 import { SearchFilters } from '@components/organisms/SearchSection/useQueryBySearchOption'
+import { useIsFetching } from '@tanstack/react-query'
 import { getCategoryColorLocalStyle } from '@utils/colors'
 import { useTranslations } from 'next-intl'
 import React, { useEffect, useRef, useState } from 'react'
@@ -37,8 +40,7 @@ type Props =
     }
   | {
       variant: 'specific'
-      // TODO unify with SearchOption
-      searchOption: 'pages' | 'articles' | 'regulations' | 'users' | 'officialBoard'
+      searchOption: Exclude<SearchOption['id'], 'allResults'>
     }
 
 const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
@@ -79,11 +81,11 @@ const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
       displayName: t('SearchPage.contact'),
       displayNamePlural: t('SearchPage.contacts'),
     },
-    // {
-    //   id: 'regulations',
-    //   displayName: t('SearchPage.regulation'),
-    //   displayNamePlural: t('SearchPage.regulations'),
-    // },
+    {
+      id: 'regulations',
+      displayName: t('SearchPage.regulation'),
+      displayNamePlural: t('SearchPage.regulations'),
+    },
     {
       id: 'officialBoard',
       displayName: t('SearchPage.document'),
@@ -91,6 +93,7 @@ const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
     },
   ]
 
+  // TODO We mutate these values in order to use variable search sections, for example to search only in one search option. The current solution works, but it may be refactored in the future.
   if (variant === 'specific') {
     searchOptions = searchOptions.filter((option) => option.id === searchOption)
     defaultSearchOption = searchOptions[0]
@@ -115,7 +118,11 @@ const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
     setCurrentPage(1)
   }, [searchValue, selection])
 
+  /* OfficialBoard specific filters state */
   const [categoryId, setCategoryId] = useState<string | null>(null)
+  const [publicationState, setPublicationState] = useState<OfficialBoardPublicationState>(
+    officialBoardListDefaultFilters.publicationState,
+  )
 
   const [resultsCount, setResultsCount] = useState(
     Object.fromEntries(searchOptions.map((option): [string, number] => [option.id, 0])),
@@ -167,6 +174,7 @@ const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
     tagIds: [],
     // Official board category id
     categoryId: !categoryId || categoryId === 'all' ? undefined : categoryId,
+    publicationState: publicationState ?? undefined,
   }
 
   const searchRef = useRef<null | HTMLInputElement>(null)
@@ -174,6 +182,8 @@ const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
   useEffect(() => {
     searchRef.current?.scrollIntoView({ behavior: 'smooth' })
   }, [searchFilters.page, searchFilters.pageSize])
+
+  const fetchingQueriesCount = useIsFetching({ queryKey: ['Search'] })
 
   return (
     <div className="flex w-full flex-col gap-y-8">
@@ -185,6 +195,7 @@ const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
           input={input}
           setInput={setInput}
           setSearchQuery={setSearchValue}
+          isLoading={fetchingQueriesCount > 0}
         />
 
         {/* TagGroup to select content type to search in - when used on main search page */}
@@ -221,6 +232,8 @@ const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
               <OfficialBoardAdditionalFilters
                 categoryId={categoryId}
                 setCategoryId={setCategoryId}
+                publicationState={publicationState}
+                setPublicationState={setPublicationState}
               />
             </div>
           </div>

@@ -11,6 +11,7 @@ export type RegulationCardProps = {
   className?: string
   ariaLabel?: string
   isUplneZnenie?: boolean | null | undefined
+  metadata?: string | null
 }
 
 /**
@@ -23,14 +24,16 @@ const RegulationCard = ({
   path,
   className,
   isUplneZnenie,
+  metadata,
   ariaLabel,
 }: RegulationCardProps) => {
   const t = useTranslations()
 
   return (
+    // 10rem = 160px (we force this height to keep consistent height of card rows when displayed in a grid)
     <div
       className={twMerge(
-        'relative flex flex-col justify-between gap-2 rounded-lg border-2 border-gray-200 bg-white p-4 hover:border-gray-400 lg:h-36',
+        'relative flex flex-col justify-between gap-2 rounded-lg border-2 border-gray-200 bg-white p-4 hover:border-gray-400 md:h-[10rem]',
         className,
       )}
     >
@@ -49,6 +52,11 @@ const RegulationCard = ({
         {isUplneZnenie && (
           <Typography type="p" size="p-small" className="line-clamp-1">
             {t('Regulation.fullTextRegulation')}
+          </Typography>
+        )}
+        {metadata && (
+          <Typography type="p" size="p-small" className="line-clamp-1">
+            {metadata}
           </Typography>
         )}
       </div>

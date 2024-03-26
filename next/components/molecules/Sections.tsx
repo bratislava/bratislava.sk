@@ -7,6 +7,7 @@ import InbaArticlesList from '@components/molecules/sections/general/ArticlesLis
 import ContactsSection from '@components/molecules/sections/general/ContactsSection'
 import FeaturedBlogPostsSection from '@components/molecules/sections/general/FeaturedBlogPostsSection'
 import InbaReleasesSection from '@components/molecules/sections/general/InbaReleasesSection'
+import RegulationsSection from '@components/molecules/sections/general/RegulationsSection'
 import cx from 'classnames'
 import * as React from 'react'
 
@@ -32,7 +33,6 @@ import TextWithImageSection from './sections/general/TextWithImageSection'
 import TimelineSection from './sections/general/TimelineSection'
 import VideosSection from './sections/general/VideosSection'
 import WavesSection from './sections/general/WavesSection'
-import RegulationsSection from '@components/molecules/sections/general/RegulationsSection'
 
 const SectionContent = ({ section }: { section: SectionsFragment }) => {
   switch (section.__typename) {
@@ -115,7 +115,7 @@ const SectionContent = ({ section }: { section: SectionsFragment }) => {
       return <ContactsSection section={section} />
 
     case 'ComponentSectionsRegulationsList':
-      return <RegulationsListSection section={section} />
+      return <RegulationsListSection />
 
     case 'ComponentSectionsRegulations':
       return <RegulationsSection section={section} />

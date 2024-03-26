@@ -275,8 +275,8 @@
     "regulations": "Regulations"
   },
   "Regulation": {
-    "regulation": "Generally binding ordinance",
-    "regulations": "Generally binding ordinances",
+    "regulation": "Generally binding regulation",
+    "regulations": "Generally binding regulations",
     "validity": {
       "cancelled": "Cancelled",
       "valid": "Valid",
@@ -288,8 +288,10 @@
     "noConsolidatedTextMessage": "This regulation has no consolidated text document.",
     "attachments": "Attachments",
     "noAttachmentsMessage": "This regulation has no attachments.",
+    "numberOfAttachments": "{count} {count, plural, one {attachment} other {attachments}}",
     "amendments": "Amendments",
     "noAmendmentsMessage": "There are no amendments to this regulation.",
+    "numberOfAmendments": "{count} {count, plural, one {amendment} other {amendments}}",
     "influenceOnOtherRegulations": "Influence on other regulations",
     "thisRegulationAmends": "This regulation amends",
     "thisRegulationDoesntAmend": "This regulation doesn't amend any regulations.",
@@ -316,9 +318,13 @@
     "publishedFrom": "Published from",
     "publishedTo": "Published to",
     "category": "Category",
+    "allOptions": "All",
+    "publicationState": "Publication state",
     "description": "Description",
     "attachments": "Attachments",
     "details": "Details",
-    "noAttachmentsMessage": "We didn't find any attachments to this notice."
+    "noAttachmentsMessage": "We didn't find any attachments to this notice.",
+    "published": "Published",
+    "archived": "Archived"
   }
 }
