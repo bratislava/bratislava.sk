@@ -8,7 +8,7 @@ describe('S02 - ', { testIsolation: false }, () => {
     .forEach((device) => {
       context(device, Cypress.env('resolution')[`${device}`], () => {
 
-        before(() => {
+        beforeEach(() => {
           cy.visit('/')
         })
         
@@ -21,11 +21,11 @@ describe('S02 - ', { testIsolation: false }, () => {
             cy.wrap(Cypress.$('[data-cy=homepage-search-all-results]', results)).click()
           })
           cy.location('pathname', {timeout: 4000})
-          .should('eq', '/vyhladavanie?keyword=Bratislava');
-          cy.dataCy('search-field').should('contain', 'Bratislava')
+          .should('eq', '/vyhladavanie');
+          cy.dataCy('search-field').should('have.value', 'Bratislava')
           cy.dataCy('search-section-Stránky').should('be.visible')
           cy.dataCy('search-section-Stránky').then((section) => {
-            cy.dataCy('search-results').should('contain', '[data-cy=search-result-card]')
+            cy.wrap(Cypress.$('[data-cy=search-results]', section)).find('[data-cy=search-result-card]').should('exist')
           })
         })
 
@@ -33,12 +33,12 @@ describe('S02 - ', { testIsolation: false }, () => {
           cy.dataCy('homepage-search-field').should('be.visible')
           cy.dataCy('homepage-search-field').type('jbfhrebhgberhgerbhbcbeybgfyefbhbewhf')
           cy.dataCy('homepage-search-no-results').should('be.visible')
-          cy.dataCy('homepage-search-results').should('contain', 'Ľutujeme, pre dané vyhľadávanie sa nenašli žiadne výsledky.')
+          cy.dataCy('homepage-search-no-results').should('contain', 'Ľutujeme, pre dané vyhľadávanie sa nenašli žiadne výsledky.')
           cy.dataCy('homepage-search-button').click()
           cy.location('pathname', {timeout: 4000})
-          .should('eq', '/vyhladavanie?keyword=jbfhrebhgberhgerbhbcbeybgfyefbhbewhf');
+          .should('eq', '/vyhladavanie');
           
-          cy.dataCy('search-field').should('contain', 'jbfhrebhgberhgerbhbcbeybgfyefbhbewhf')
+          cy.dataCy('search-field').should('have.value', 'jbfhrebhgberhgerbhbcbeybgfyefbhbewhf')
           cy.dataCy('search-section-Stránky').should('be.visible')
           cy.dataCy('search-section-Stránky').should('contain', 'Žiadne výsledky')
           cy.dataCy('search-section-Články').should('be.visible')
