@@ -32,6 +32,7 @@ export type MixedResults =
   | SearchIndexWrapped<'page', PageMeili>
   | SearchIndexWrapped<'blog-post', InbaArticleMeili>
   | SearchIndexWrapped<'vzn', VznMeili>
+  | SearchIndexWrapped<'regulation', RegulationMeili>
 
 export type PageMeili = Omit<
   Page,
