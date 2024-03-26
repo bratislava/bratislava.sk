@@ -38,8 +38,7 @@ type Props =
     }
   | {
       variant: 'specific'
-      // TODO unify with SearchOption
-      searchOption: 'pages' | 'articles' | 'regulations' | 'users' | 'officialBoard'
+      searchOption: Exclude<SearchOption['id'], 'allResults'>
     }
 
 const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
@@ -80,11 +79,11 @@ const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
       displayName: t('SearchPage.contact'),
       displayNamePlural: t('SearchPage.contacts'),
     },
-    // {
-    //   id: 'regulations',
-    //   displayName: t('SearchPage.regulation'),
-    //   displayNamePlural: t('SearchPage.regulations'),
-    // },
+    {
+      id: 'regulations',
+      displayName: t('SearchPage.regulation'),
+      displayNamePlural: t('SearchPage.regulations'),
+    },
     {
       id: 'officialBoard',
       displayName: t('SearchPage.document'),
@@ -92,6 +91,7 @@ const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
     },
   ]
 
+  // TODO We mutate these values in order to use variable search sections, for example to search only in one search option. The current solution works, but it may be refactored in the future.
   if (variant === 'specific') {
     searchOptions = searchOptions.filter((option) => option.id === searchOption)
     defaultSearchOption = searchOptions[0]
