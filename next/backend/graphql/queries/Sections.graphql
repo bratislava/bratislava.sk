@@ -1,6 +1,7 @@
 fragment IconTitleDescriptionBlock on ComponentBlocksIconWithTitleAndDescription {
   title
   desc
+  disableBackground
   icon {
     data {
       ...UploadImageSrcEntity
