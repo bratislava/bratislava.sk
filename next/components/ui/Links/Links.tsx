@@ -23,7 +23,7 @@ const Links = ({ className, title, pageLinks }: LinksProps) => {
             <Button
               href={pageLink.url ? isExternalLink(pageLink.url) : `#${pageLink.anchor}`}
               variant="black-link"
-              startIcon={<ArrowRightIcon />}
+              startIcon={<ArrowRightIcon className="shrink-0" />}
             >
               {pageLink?.title}
             </Button>
