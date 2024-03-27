@@ -23,7 +23,7 @@
         "audios"
       ]
     },
-    "disableBackground": {
+    "disableIconBackground": {
       "type": "boolean",
       "default": false
     }
