@@ -694,6 +694,21 @@ export type ComponentBlocksSubpage = {
   title?: Maybe<Scalars['String']['output']>
 }
 
+export type ComponentBlocksTestimonialItem = {
+  __typename?: 'ComponentBlocksTestimonialItem'
+  id: Scalars['ID']['output']
+  name: Scalars['String']['output']
+  quote: Scalars['String']['output']
+}
+
+export type ComponentBlocksTestimonialItemFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentBlocksTestimonialItemFiltersInput>>>
+  name?: InputMaybe<StringFilterInput>
+  not?: InputMaybe<ComponentBlocksTestimonialItemFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<ComponentBlocksTestimonialItemFiltersInput>>>
+  quote?: InputMaybe<StringFilterInput>
+}
+
 export type ComponentBlocksTimelineItem = {
   __typename?: 'ComponentBlocksTimelineItem'
   content?: Maybe<Scalars['String']['output']>
@@ -1413,6 +1428,21 @@ export type ComponentSectionsSubpageListSubpageListArgs = {
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
 }
 
+export type ComponentSectionsTestimonials = {
+  __typename?: 'ComponentSectionsTestimonials'
+  hasBackground?: Maybe<Scalars['Boolean']['output']>
+  id: Scalars['ID']['output']
+  testimonials: Array<Maybe<ComponentBlocksTestimonialItem>>
+  text?: Maybe<Scalars['String']['output']>
+  title?: Maybe<Scalars['String']['output']>
+}
+
+export type ComponentSectionsTestimonialsTestimonialsArgs = {
+  filters?: InputMaybe<ComponentBlocksTestimonialItemFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
 export type ComponentSectionsTextWithImage = {
   __typename?: 'ComponentSectionsTextWithImage'
   content?: Maybe<Scalars['String']['output']>
@@ -1976,6 +2006,7 @@ export type GenericMorph =
   | ComponentBlocksProsAndConsCard
   | ComponentBlocksSpaceInfo
   | ComponentBlocksSubpage
+  | ComponentBlocksTestimonialItem
   | ComponentBlocksTimelineItem
   | ComponentBlocksTopServicesItem
   | ComponentBlocksVideo
@@ -2020,6 +2051,7 @@ export type GenericMorph =
   | ComponentSectionsRegulationsList
   | ComponentSectionsSpace
   | ComponentSectionsSubpageList
+  | ComponentSectionsTestimonials
   | ComponentSectionsTextWithImage
   | ComponentSectionsTimeline
   | ComponentSectionsTopServices
@@ -3190,6 +3222,7 @@ export type PageSectionsDynamicZone =
   | ComponentSectionsRegulations
   | ComponentSectionsRegulationsList
   | ComponentSectionsSpace
+  | ComponentSectionsTestimonials
   | ComponentSectionsTextWithImage
   | ComponentSectionsTimeline
   | ComponentSectionsVideos
@@ -8979,6 +9012,7 @@ export type PageBySlugQuery = {
               text?: string | null
             }
           | { __typename: 'ComponentSectionsSpace' }
+          | { __typename: 'ComponentSectionsTestimonials' }
           | {
               __typename: 'ComponentSectionsTextWithImage'
               hasBackground?: boolean | null
@@ -10117,6 +10151,7 @@ export type PageEntityFragment = {
           text?: string | null
         }
       | { __typename: 'ComponentSectionsSpace' }
+      | { __typename: 'ComponentSectionsTestimonials' }
       | {
           __typename: 'ComponentSectionsTextWithImage'
           hasBackground?: boolean | null
@@ -13190,6 +13225,10 @@ type Sections_ComponentSectionsRegulationsList_Fragment = {
 
 type Sections_ComponentSectionsSpace_Fragment = { __typename: 'ComponentSectionsSpace' }
 
+type Sections_ComponentSectionsTestimonials_Fragment = {
+  __typename: 'ComponentSectionsTestimonials'
+}
+
 type Sections_ComponentSectionsTextWithImage_Fragment = {
   __typename: 'ComponentSectionsTextWithImage'
   hasBackground?: boolean | null
@@ -13270,6 +13309,7 @@ export type SectionsFragment =
   | Sections_ComponentSectionsRegulations_Fragment
   | Sections_ComponentSectionsRegulationsList_Fragment
   | Sections_ComponentSectionsSpace_Fragment
+  | Sections_ComponentSectionsTestimonials_Fragment
   | Sections_ComponentSectionsTextWithImage_Fragment
   | Sections_ComponentSectionsTimeline_Fragment
   | Sections_ComponentSectionsVideos_Fragment
