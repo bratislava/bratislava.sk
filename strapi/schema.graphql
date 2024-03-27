@@ -580,6 +580,7 @@ input ComponentBlocksHomepageHighlightsItemInput {
 
 type ComponentBlocksIconWithTitleAndDescription {
   desc: String
+  disableBackground: Boolean
   icon: UploadFileEntityResponse
   id: ID!
   title: String
@@ -588,6 +589,7 @@ type ComponentBlocksIconWithTitleAndDescription {
 input ComponentBlocksIconWithTitleAndDescriptionFiltersInput {
   and: [ComponentBlocksIconWithTitleAndDescriptionFiltersInput]
   desc: StringFilterInput
+  disableBackground: BooleanFilterInput
   not: ComponentBlocksIconWithTitleAndDescriptionFiltersInput
   or: [ComponentBlocksIconWithTitleAndDescriptionFiltersInput]
   title: StringFilterInput
@@ -595,6 +597,7 @@ input ComponentBlocksIconWithTitleAndDescriptionFiltersInput {
 
 input ComponentBlocksIconWithTitleAndDescriptionInput {
   desc: String
+  disableBackground: Boolean
   icon: ID
   id: ID
   title: String
