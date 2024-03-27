@@ -69,6 +69,21 @@ fragment GalleryItemBlock on ComponentBlocksGalleryItem {
   }
 }
 
+fragment TestimonialItemBlock on ComponentBlocksTestimonialItem {
+  id
+  name
+  quote
+}
+
+fragment TestimonialsSection on ComponentSectionsTestimonials {
+  title
+  text
+  hasBackground
+  testimonials {
+    ...TestimonialItemBlock
+  }
+}
+
 fragment TimelineItemBlock on ComponentBlocksTimelineItem {
   id
   title
@@ -591,6 +606,10 @@ fragment Sections on PageSectionsDynamicZone {
 
   ... on ComponentSectionsRegulations {
     ...RegulationsSection
+  }
+
+  ... on ComponentSectionsTestimonials {
+    ...TestimonialsSection
   }
 }
 
