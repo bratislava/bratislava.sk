@@ -8,7 +8,7 @@
   "attributes": {
     "range": {
       "type": "string",
-      "regex": "^[A-ZÁÄČĎÉÍĹĽŇÓÔŔŠŤÚÝŽ]+-[A-ZÁÄČĎÉÍĹĽŇÓÔŔŠŤÚÝŽ]+$",
+      "regex": "^[A-ZÁÄČĎÉÍĹĽŇÓÔŔŠŤÚÝŽ]+(?:-[A-ZÁÄČĎÉÍĹĽŇÓÔŔŠŤÚÝŽ]+)+$",
       "unique": false,
       "required": true
     },
