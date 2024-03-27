@@ -9012,7 +9012,18 @@ export type PageBySlugQuery = {
               text?: string | null
             }
           | { __typename: 'ComponentSectionsSpace' }
-          | { __typename: 'ComponentSectionsTestimonials' }
+          | {
+              __typename: 'ComponentSectionsTestimonials'
+              title?: string | null
+              text?: string | null
+              hasBackground?: boolean | null
+              testimonials: Array<{
+                __typename?: 'ComponentBlocksTestimonialItem'
+                id: string
+                name: string
+                quote: string
+              } | null>
+            }
           | {
               __typename: 'ComponentSectionsTextWithImage'
               hasBackground?: boolean | null
@@ -10151,7 +10162,18 @@ export type PageEntityFragment = {
           text?: string | null
         }
       | { __typename: 'ComponentSectionsSpace' }
-      | { __typename: 'ComponentSectionsTestimonials' }
+      | {
+          __typename: 'ComponentSectionsTestimonials'
+          title?: string | null
+          text?: string | null
+          hasBackground?: boolean | null
+          testimonials: Array<{
+            __typename?: 'ComponentBlocksTestimonialItem'
+            id: string
+            name: string
+            quote: string
+          } | null>
+        }
       | {
           __typename: 'ComponentSectionsTextWithImage'
           hasBackground?: boolean | null
@@ -11361,6 +11383,26 @@ export type GalleryItemBlockFragment = {
       } | null
     } | null
   } | null
+}
+
+export type TestimonialItemBlockFragment = {
+  __typename?: 'ComponentBlocksTestimonialItem'
+  id: string
+  name: string
+  quote: string
+}
+
+export type TestimonialsSectionFragment = {
+  __typename?: 'ComponentSectionsTestimonials'
+  title?: string | null
+  text?: string | null
+  hasBackground?: boolean | null
+  testimonials: Array<{
+    __typename?: 'ComponentBlocksTestimonialItem'
+    id: string
+    name: string
+    quote: string
+  } | null>
 }
 
 export type TimelineItemBlockFragment = {
@@ -13227,6 +13269,15 @@ type Sections_ComponentSectionsSpace_Fragment = { __typename: 'ComponentSections
 
 type Sections_ComponentSectionsTestimonials_Fragment = {
   __typename: 'ComponentSectionsTestimonials'
+  title?: string | null
+  text?: string | null
+  hasBackground?: boolean | null
+  testimonials: Array<{
+    __typename?: 'ComponentBlocksTestimonialItem'
+    id: string
+    name: string
+    quote: string
+  } | null>
 }
 
 type Sections_ComponentSectionsTextWithImage_Fragment = {
@@ -14229,6 +14280,24 @@ export const RegulationsSectionFragmentDoc = gql`
   }
   ${RegulationEntityFragmentDoc}
 `
+export const TestimonialItemBlockFragmentDoc = gql`
+  fragment TestimonialItemBlock on ComponentBlocksTestimonialItem {
+    id
+    name
+    quote
+  }
+`
+export const TestimonialsSectionFragmentDoc = gql`
+  fragment TestimonialsSection on ComponentSectionsTestimonials {
+    title
+    text
+    hasBackground
+    testimonials {
+      ...TestimonialItemBlock
+    }
+  }
+  ${TestimonialItemBlockFragmentDoc}
+`
 export const SectionsFragmentDoc = gql`
   fragment Sections on PageSectionsDynamicZone {
     __typename
@@ -14319,6 +14388,9 @@ export const SectionsFragmentDoc = gql`
     ... on ComponentSectionsRegulations {
       ...RegulationsSection
     }
+    ... on ComponentSectionsTestimonials {
+      ...TestimonialsSection
+    }
   }
   ${IconTitleDescSectionFragmentDoc}
   ${DocumentListSectionFragmentDoc}
@@ -14349,6 +14421,7 @@ export const SectionsFragmentDoc = gql`
   ${ContactsSectionFragmentDoc}
   ${RegulationsListSectionFragmentDoc}
   ${RegulationsSectionFragmentDoc}
+  ${TestimonialsSectionFragmentDoc}
 `
 export const BlogPostEntityFragmentDoc = gql`
   fragment BlogPostEntity on BlogPostEntity {
