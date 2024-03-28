@@ -286,6 +286,7 @@ module.exports = {
       },
       spacing: {
         18: '4.5rem', // 72px
+        30: '7.5rem', // 120px
         66: '17.5rem', // 280px
         76: '19rem', // 304px
         88: '22rem', // 352px

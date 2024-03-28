@@ -579,6 +579,7 @@ export type ComponentBlocksHomepageHighlightsItemInput = {
 export type ComponentBlocksIconWithTitleAndDescription = {
   __typename?: 'ComponentBlocksIconWithTitleAndDescription'
   desc?: Maybe<Scalars['String']['output']>
+  disableIconBackground?: Maybe<Scalars['Boolean']['output']>
   icon?: Maybe<UploadFileEntityResponse>
   id: Scalars['ID']['output']
   title?: Maybe<Scalars['String']['output']>
@@ -587,6 +588,7 @@ export type ComponentBlocksIconWithTitleAndDescription = {
 export type ComponentBlocksIconWithTitleAndDescriptionFiltersInput = {
   and?: InputMaybe<Array<InputMaybe<ComponentBlocksIconWithTitleAndDescriptionFiltersInput>>>
   desc?: InputMaybe<StringFilterInput>
+  disableIconBackground?: InputMaybe<BooleanFilterInput>
   not?: InputMaybe<ComponentBlocksIconWithTitleAndDescriptionFiltersInput>
   or?: InputMaybe<Array<InputMaybe<ComponentBlocksIconWithTitleAndDescriptionFiltersInput>>>
   title?: InputMaybe<StringFilterInput>
@@ -8714,6 +8716,7 @@ export type PageBySlugQuery = {
                 __typename?: 'ComponentBlocksIconWithTitleAndDescription'
                 title?: string | null
                 desc?: string | null
+                disableIconBackground?: boolean | null
                 icon?: {
                   __typename?: 'UploadFileEntityResponse'
                   data?: {
@@ -9868,6 +9871,7 @@ export type PageEntityFragment = {
             __typename?: 'ComponentBlocksIconWithTitleAndDescription'
             title?: string | null
             desc?: string | null
+            disableIconBackground?: boolean | null
             icon?: {
               __typename?: 'UploadFileEntityResponse'
               data?: {
@@ -11260,6 +11264,7 @@ export type IconTitleDescriptionBlockFragment = {
   __typename?: 'ComponentBlocksIconWithTitleAndDescription'
   title?: string | null
   desc?: string | null
+  disableIconBackground?: boolean | null
   icon?: {
     __typename?: 'UploadFileEntityResponse'
     data?: {
@@ -11557,6 +11562,7 @@ export type IconTitleDescSectionFragment = {
     __typename?: 'ComponentBlocksIconWithTitleAndDescription'
     title?: string | null
     desc?: string | null
+    disableIconBackground?: boolean | null
     icon?: {
       __typename?: 'UploadFileEntityResponse'
       data?: {
@@ -12951,6 +12957,7 @@ type Sections_ComponentSectionsIconTitleDesc_Fragment = {
     __typename?: 'ComponentBlocksIconWithTitleAndDescription'
     title?: string | null
     desc?: string | null
+    disableIconBackground?: boolean | null
     icon?: {
       __typename?: 'UploadFileEntityResponse'
       data?: {
@@ -13524,6 +13531,7 @@ export const IconTitleDescriptionBlockFragmentDoc = gql`
   fragment IconTitleDescriptionBlock on ComponentBlocksIconWithTitleAndDescription {
     title
     desc
+    disableIconBackground
     icon {
       data {
         ...UploadImageSrcEntity

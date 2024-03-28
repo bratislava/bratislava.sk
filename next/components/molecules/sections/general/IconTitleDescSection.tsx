@@ -38,6 +38,7 @@ const IconTitleDescSection = ({ section }: IconTitleDescSectionProps) => {
             icon={item.icon?.data}
             title={item.title}
             text={item.desc}
+            disableIconBackground={item.disableIconBackground}
             hasBackground={hasBackground}
           />
         ))}
