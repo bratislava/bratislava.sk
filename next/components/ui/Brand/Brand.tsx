@@ -15,7 +15,7 @@ const Brand = ({ className, url = '#', withTitle }: BrandProps) => {
   const t = useTranslations()
 
   return (
-    <div className={twMerge('flex', className)} aria-label="brand">
+    <div className={twMerge('flex', className)}>
       <MLink className="flex items-center gap-x-3 text-[#F23005]" href={url}>
         <BALogo className="shrink-0" />
         {withTitle && (
