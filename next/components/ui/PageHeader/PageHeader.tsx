@@ -4,6 +4,7 @@ import Breadcrumbs, { BreadcrumbsProps } from '@bratislava/ui-bratislava/Breadcr
 import Waves from '@bratislava/ui-bratislava/Waves/Waves'
 import { generateImageSizes } from '@utils/generateImageSizes'
 import { getCommonLinkProps } from '@utils/getCommonLinkProps'
+import cx from 'classnames'
 import Image from 'next/image'
 import React, { PropsWithChildren } from 'react'
 import { twMerge } from 'tailwind-merge'
@@ -33,7 +34,7 @@ const PageHeader = ({
   children,
 }: PropsWithChildren<PageHeaderProps>) => {
   return (
-    <div className={twMerge('relative bg-category-200', className)}>
+    <div className={twMerge('relative overflow-x-clip bg-category-200', className)}>
       {imageSrc && (
         <div className="absolute right-0 top-0 hidden h-full w-[350px] md:block lg:w-[750px]">
           <Image
@@ -109,13 +110,17 @@ const PageHeader = ({
 
       {/*
         Implemented by white "top" waves to cover up the image.
-        On mobile, it must be positioned 'absolute', to cover image positioned 'relative' below the Page header content.
         On desktop, it must be positioned 'relative', to add space to the whole header and to cover the image positioned 'absolute' on the right.
+        On mobile, if there is an image, it must be positioned 'absolute', to cover image positioned 'relative' below the Page header content,
+        if there is no image, it must be positioned 'relative' (otherwise it'll cover up the header content padding).
+          - Note: w-full fixes the overflow on mobile
       */}
       <Waves
         wavePosition="top"
         waveColor="white"
-        className="relative max-md:absolute max-md:bottom-0"
+        className={cx('relative', {
+          'max-md:absolute max-md:bottom-0 max-md:w-full': !!imageSrc,
+        })}
       />
     </div>
   )
