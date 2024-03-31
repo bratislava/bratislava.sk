@@ -114,11 +114,12 @@ const PageHeader = ({
         On mobile, if there is an image, it must be positioned 'absolute', to cover image positioned 'relative' below the Page header content,
         if there is no image, it must be positioned 'relative' (otherwise it'll cover up the header content padding).
           - Note: w-full fixes the overflow on mobile
+        Overlap by 1px (-mb-px) to prevent a thin line between the waves and the main content.
       */}
       <Waves
         wavePosition="top"
         waveColor="white"
-        className={cx('relative', {
+        className={cx('relative -mb-px', {
           'max-md:absolute max-md:bottom-0 max-md:w-full': !!imageSrc,
         })}
       />
