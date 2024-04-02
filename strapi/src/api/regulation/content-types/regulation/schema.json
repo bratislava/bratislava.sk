@@ -31,7 +31,8 @@
       "required": true
     },
     "effectiveFrom": {
-      "type": "date"
+      "type": "date",
+      "required": true
     },
     "category": {
       "type": "enumeration",
