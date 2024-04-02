@@ -3278,7 +3278,7 @@ type Regulation {
   cancelling(filters: RegulationFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): RegulationRelationResponseCollection
   category: ENUM_REGULATION_CATEGORY!
   createdAt: DateTime
-  effectiveFrom: Date
+  effectiveFrom: Date!
   fullTitle: String!
   isFullTextRegulation: Boolean!
   mainDocument: UploadFileEntityResponse!

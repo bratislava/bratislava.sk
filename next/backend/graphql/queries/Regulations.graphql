@@ -79,7 +79,7 @@ mutation createBareRegulation(
   $slug: String!
   $titleText: String
   $fullTitle: String
-  $effectiveFrom: Date
+  $effectiveFrom: Date!
   $category: ENUM_REGULATION_CATEGORY
   $isFullTextRegulation: Boolean
   $mainDocumentId: ID
