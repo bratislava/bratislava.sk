@@ -20,7 +20,7 @@ jobs:
         uses: cypress-io/github-action@v5
         with:
           working-directory: tests
-          command: npm run cypress:ci
+          command: yarn cypress:run
       
       - name: Screenshots of errors during E2E tests
         uses: actions/upload-artifact@v3
@@ -29,13 +29,3 @@ jobs:
           name: cypress-screenshots
           path: tests/cypress/screenshots
           retention-days: 1
-
-      - name: Notify on Slack
-        if: ${{ failure() }}
-        uses: rtCamp/action-slack-notify@v2
-        
-        env:
-          SLACK_COLOR: '#ff0000'
-          SLACK_TITLE: 'Cypress tests failed'
-          SLACK_MESSAGE: '@here Cypress tests after deployment to production failed. Investigate and fix the issues.'
-          SLACK_WEBHOOK: 'https://hooks.slack.com/services/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'
