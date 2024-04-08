@@ -8,6 +8,7 @@ import ContactsSection from '@components/molecules/sections/general/ContactsSect
 import FeaturedBlogPostsSection from '@components/molecules/sections/general/FeaturedBlogPostsSection'
 import InbaReleasesSection from '@components/molecules/sections/general/InbaReleasesSection'
 import RegulationsSection from '@components/molecules/sections/general/RegulationsSection'
+import TestimonialsSection from '@components/molecules/sections/general/TestimonialsSection'
 import cx from 'classnames'
 import * as React from 'react'
 
@@ -119,6 +120,9 @@ const SectionContent = ({ section }: { section: SectionsFragment }) => {
 
     case 'ComponentSectionsRegulations':
       return <RegulationsSection section={section} />
+
+    case 'ComponentSectionsTestimonials':
+      return <TestimonialsSection section={section} />
 
     default:
       return null

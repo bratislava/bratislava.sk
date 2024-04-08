@@ -1,6 +1,7 @@
 fragment IconTitleDescriptionBlock on ComponentBlocksIconWithTitleAndDescription {
   title
   desc
+  disableIconBackground
   icon {
     data {
       ...UploadImageSrcEntity
@@ -66,6 +67,21 @@ fragment GalleryItemBlock on ComponentBlocksGalleryItem {
         alternativeText
       }
     }
+  }
+}
+
+fragment TestimonialItemBlock on ComponentBlocksTestimonialItem {
+  id
+  name
+  quote
+}
+
+fragment TestimonialsSection on ComponentSectionsTestimonials {
+  title
+  text
+  hasBackground
+  testimonials {
+    ...TestimonialItemBlock
   }
 }
 
@@ -591,6 +607,10 @@ fragment Sections on PageSectionsDynamicZone {
 
   ... on ComponentSectionsRegulations {
     ...RegulationsSection
+  }
+
+  ... on ComponentSectionsTestimonials {
+    ...TestimonialsSection
   }
 }
 
