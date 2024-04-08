@@ -27,19 +27,19 @@ describe('S01 - ', { testIsolation: false }, () => {
           cy.dataCy('users-tab').should('be.visible')
           cy.dataCy('officialBoard-tab').should('be.visible')
 
-          cy.dataCy('search-section-Stránky').should('be.visible')
+          cy.dataCy('search-section-Stránky').scrollIntoView().should('be.visible')
           cy.dataCy('search-section-Stránky').then((section) => {
             cy.wrap(Cypress.$('[data-cy=search-results]', section)).find('[data-cy=search-result-card]').should('exist')
           })          
-          cy.dataCy('search-section-Články').should('be.visible')
+          cy.dataCy('search-section-Články').scrollIntoView().should('be.visible')
           cy.dataCy('search-section-Články').then((section) => {
             cy.wrap(Cypress.$('[data-cy=search-results]', section)).find('[data-cy=search-result-card]').should('exist')
           })      
-          cy.dataCy('search-section-Kontakty').should('be.visible')
+          cy.dataCy('search-section-Kontakty').scrollIntoView().should('be.visible')
           cy.dataCy('search-section-Kontakty').should('contain', 'Zadajte hľadaný výraz')   
-          
-          cy.dataCy('search-section-Úradná-tabuľa').should('be.visible')
-          cy.dataCy('search-section-Úradná-tabuľa').then((section) => {
+
+          cy.get('[data-cy^=search-section-Úradná]').scrollIntoView().should('be.visible')
+          cy.get('[data-cy^=search-section-Úradná]').then((section) => {
             cy.wrap(Cypress.$('[data-cy=search-results]', section)).find('[data-cy=search-result-card]').should('exist')
           })   
         })
@@ -78,7 +78,7 @@ describe('S01 - ', { testIsolation: false }, () => {
           cy.dataCy('search-results').find('[data-cy=search-result-card]').should('exist')
         })
 
-        it('4. Checking search results - official board.', () => {
+        it('5. Checking search results - official board.', () => {
           cy.visit('/vyhladavanie')
           cy.get('[data-cy=officialBoard-tab]').click()
           cy.get('[data-cy=search-field]').type("MHD{enter}")
