@@ -7,7 +7,7 @@ import {
 import { Typography } from '@bratislava/component-library'
 import InbaReleaseHorizontalCard from '@components/molecules/presentation/InbaReleaseHorizontalCard'
 import Pagination from '@components/ui/Pagination/Pagination'
-import { useQuery } from '@tanstack/react-query'
+import { keepPreviousData, useQuery } from '@tanstack/react-query'
 import { formatDate } from '@utils/local-date'
 import React, { useState } from 'react'
 
@@ -21,7 +21,7 @@ const InbaReleasesSection = ({ section }: Props) => {
   const { data } = useQuery({
     queryKey: getInbaReleasesQueryKey(filters),
     queryFn: () => inbaReleasesFetcher(filters),
-    keepPreviousData: true,
+    placeholderData: keepPreviousData,
   })
 
   if (!data?.inbaReleases?.data?.length) {

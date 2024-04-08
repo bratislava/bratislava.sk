@@ -1,4 +1,4 @@
-export interface WavesSvgProps {
+export type WavesSvgProps = {
   waveColor?: string
   className?: string
 }

@@ -8,7 +8,7 @@ import FieldErrorMessage from '../../info-components/FieldErrorMessage'
 import FieldHeader from '../../info-components/FieldHeader'
 import { ExplicitOptionalType } from '../../types/ExplicitOptional'
 
-interface InputBase {
+type InputBase = {
   label: string
   placeholder: string
   errorMessage?: string[]

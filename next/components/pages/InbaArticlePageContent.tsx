@@ -1,6 +1,6 @@
 import { InbaArticleEntityFragment } from '@backend/graphql'
 import PageHeader from '@bratislava/ui-bratislava/PageHeader/PageHeader'
-import { SectionContainer } from '@bratislava/ui-bratislava/SectionContainer/SectionContainer'
+import SectionContainer from '@bratislava/ui-bratislava/SectionContainer/SectionContainer'
 import Markdown from '@components/atoms/Markdown'
 import MLink from '@components/forms/simple-components/MLink'
 import ShareButtons from '@components/molecules/ShareButtons'

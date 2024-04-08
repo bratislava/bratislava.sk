@@ -10,11 +10,11 @@ import { twMerge } from 'tailwind-merge'
 import { useDebounce, useOnClickOutside } from 'usehooks-ts'
 
 import useGetSwrExtras from '../../utils/useGetSwrExtras'
-import { AnimateHeight } from '../atoms/AnimateHeight'
+import AnimateHeight from '../atoms/AnimateHeight'
 import HomePageSearchField from './HomePageSearchField'
 import HomePageSearchResults from './HomePageSearchResults'
 
-interface HomePageSearchProps {
+type HomePageSearchProps = {
   isOpen: boolean
   setOpen: Dispatch<SetStateAction<boolean>>
 }
@@ -52,8 +52,8 @@ const HomePageSearch = ({ isOpen, setOpen }: HomePageSearchProps) => {
 
   const handleSearchPressed = useCallback(() => {
     // eslint-disable-next-line @typescript-eslint/no-floating-promises
-    router.push(`${t('searchLink')}?keyword=${searchValue}`)
-  }, [router, searchValue, t])
+    router.push(`${t('searchLink')}?keyword=${input}`)
+  }, [router, input, t])
 
   return (
     <div ref={ref} className="relative">

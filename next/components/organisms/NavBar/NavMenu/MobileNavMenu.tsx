@@ -1,4 +1,4 @@
-import { Icon } from '@components/atoms/icon/Icon'
+import Icon from '@components/atoms/icon/Icon'
 import Button from '@components/forms/simple-components/Button'
 import MLink from '@components/forms/simple-components/MLink'
 import NavBarHorizontalDivider from '@components/organisms/NavBar/NavMenu/NavBarHorizontalDivider'

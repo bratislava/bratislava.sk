@@ -1,8 +1,8 @@
 import { AccordionSectionFragment, Enum_Componentsectionsfilelist_Variant } from '@backend/graphql'
 import { Typography } from '@bratislava/component-library'
 import FileList from '@bratislava/ui-bratislava/FileList/FileList'
-import { Institution } from '@bratislava/ui-bratislava/Institution/Institution'
-import { NarrowText } from '@bratislava/ui-bratislava/NarrowText/NarrowText'
+import Institution from '@bratislava/ui-bratislava/Institution/Institution'
+import NarrowText from '@bratislava/ui-bratislava/NarrowText/NarrowText'
 import Markdown from '@components/atoms/Markdown'
 import Button from '@components/forms/simple-components/Button'
 import AccordionV2 from '@components/ui/AccordionV2/AccordionV2'
@@ -27,7 +27,6 @@ const AccordionSection = ({ section }: AccordionSectionProps) => {
         {groupByCategory(section.institutions?.filter(isPresent) ?? []).map(
           (institution, index) => (
             <AccordionV2
-              variant="boxed-h3"
               // eslint-disable-next-line react/no-array-index-key
               key={`institution-${index}`}
               title={institution.category}
@@ -53,7 +52,7 @@ const AccordionSection = ({ section }: AccordionSectionProps) => {
 
         {groupByCategory(section.flatText?.filter(isPresent) ?? []).map((text, index) => (
           // eslint-disable-next-line react/no-array-index-key
-          <AccordionV2 variant="boxed-h3" key={`flatText-${index}`} title={text.category}>
+          <AccordionV2 key={`flatText-${index}`} title={text.category}>
             {text.items.filter(isPresent).map((item, itemIndex) => {
               const link = parsePageLink({
                 title: item.moreLinkTitle,
@@ -87,7 +86,6 @@ const AccordionSection = ({ section }: AccordionSectionProps) => {
         {groupByCategory(section.institutionsNarrow?.filter(isPresent) ?? []).map((text, index) => (
           // eslint-disable-next-line react/no-array-index-key
           <AccordionV2
-            variant="boxed-h3"
             // eslint-disable-next-line react/no-array-index-key
             key={`institutionsNarrow-${index}`}
             title={text.category}

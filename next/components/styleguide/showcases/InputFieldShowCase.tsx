@@ -1,8 +1,8 @@
 import InputField from 'components/forms/widget-components/InputField/InputField'
 import React, { useRef } from 'react'
 
-import { Stack } from '../Stack'
-import { Wrapper } from '../Wrapper'
+import Stack from '../Stack'
+import Wrapper from '../Wrapper'
 
 const ERROR = 'Error message'
 

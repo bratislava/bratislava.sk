@@ -1,12 +1,12 @@
 import { Typography } from '@bratislava/component-library'
-import { Icon } from '@components/atoms/icon/Icon'
+import Icon from '@components/atoms/icon/Icon'
 import React from 'react'
 import { twMerge } from 'tailwind-merge'
 
 import NavMenuLink from './NavMenuLink'
 import { MenuSection } from './navMenuTypes'
 
-interface NavigationSectionProps {
+type NavigationSectionProps = {
   section: MenuSection
   classNames?: string
 }

@@ -1,5 +1,5 @@
 import { SectionsFragment } from '@backend/graphql'
-import { SectionContainer } from '@bratislava/ui-bratislava/SectionContainer/SectionContainer'
+import SectionContainer from '@bratislava/ui-bratislava/SectionContainer/SectionContainer'
 import BlogPostsByCategory from '@components/molecules/sections/general/ArticlesListSection/BlogPostsByCategory'
 import BlogPostsByTags from '@components/molecules/sections/general/ArticlesListSection/BlogPostsByTags'
 import BlogPostsList from '@components/molecules/sections/general/ArticlesListSection/BlogPostsList'
@@ -7,6 +7,8 @@ import InbaArticlesList from '@components/molecules/sections/general/ArticlesLis
 import ContactsSection from '@components/molecules/sections/general/ContactsSection'
 import FeaturedBlogPostsSection from '@components/molecules/sections/general/FeaturedBlogPostsSection'
 import InbaReleasesSection from '@components/molecules/sections/general/InbaReleasesSection'
+import RegulationsSection from '@components/molecules/sections/general/RegulationsSection'
+import TestimonialsSection from '@components/molecules/sections/general/TestimonialsSection'
 import cx from 'classnames'
 import * as React from 'react'
 
@@ -27,6 +29,7 @@ import NumericalListSection from './sections/general/NumericalListSection'
 import OfficialBoardSection from './sections/general/OfficialBoardSection/OfficialBoardSection'
 import OrganizationalStructureSection from './sections/general/OrganizationalStructureSection'
 import ProsAndConsSection from './sections/general/ProsAndConsSection'
+import RegulationsListSection from './sections/general/RegulationsListSection'
 import TextWithImageSection from './sections/general/TextWithImageSection'
 import TimelineSection from './sections/general/TimelineSection'
 import VideosSection from './sections/general/VideosSection'
@@ -111,6 +114,15 @@ const SectionContent = ({ section }: { section: SectionsFragment }) => {
 
     case 'ComponentSectionsContactsSection':
       return <ContactsSection section={section} />
+
+    case 'ComponentSectionsRegulationsList':
+      return <RegulationsListSection />
+
+    case 'ComponentSectionsRegulations':
+      return <RegulationsSection section={section} />
+
+    case 'ComponentSectionsTestimonials':
+      return <TestimonialsSection section={section} />
 
     default:
       return null

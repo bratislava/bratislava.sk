@@ -1,8 +1,5 @@
-import {
-  ColumnedTextSectionFragment,
-  Enum_Componentsectionscolumnedtext_Contentalignment,
-} from '@backend/graphql'
-import { ColumnedText } from '@bratislava/ui-bratislava/ColumnedText/ColumnedText'
+import { ColumnedTextSectionFragment } from '@backend/graphql'
+import ColumnedText from '@bratislava/ui-bratislava/ColumnedText/ColumnedText'
 import React from 'react'
 
 type ColumnedTextSectionProps = { section: ColumnedTextSectionFragment }

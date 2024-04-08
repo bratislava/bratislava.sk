@@ -1,10 +1,10 @@
-import SelectField, {
+import SelectFieldDeprecated, {
   SelectOption,
-} from '@components/forms/widget-components/SelectField/SelectField'
+} from '@components/forms/widget-components/SelectField/SelectFieldDeprecated'
 import React, { useState } from 'react'
 
-import { Stack } from '../Stack'
-import { Wrapper } from '../Wrapper'
+import Stack from '../Stack'
+import Wrapper from '../Wrapper'
 
 const SelectFieldShowCase = () => {
   const enumOptions: SelectOption[] = [
@@ -28,16 +28,16 @@ const SelectFieldShowCase = () => {
   const [selectValue6, setSelectValue6] = useState<SelectOption[]>([])
 
   return (
-    <Wrapper direction="column" title="SelectField">
+    <Wrapper direction="column" title="SelectFieldDeprecated">
       <Stack>
-        <SelectField
+        <SelectFieldDeprecated
           label="Select Field"
           enumOptions={enumOptions}
           type="one"
           value={selectValueFirst}
           onChange={(value) => setSelectValueFirst(value)}
         />
-        <SelectField
+        <SelectFieldDeprecated
           label="Select Field"
           enumOptions={enumOptions}
           dropdownDivider
@@ -46,7 +46,7 @@ const SelectFieldShowCase = () => {
           value={selectValueSecond}
           onChange={(value) => setSelectValueSecond(value)}
         />
-        <SelectField
+        <SelectFieldDeprecated
           label="Select Field"
           enumOptions={enumOptions}
           disabled
@@ -55,7 +55,7 @@ const SelectFieldShowCase = () => {
         />
       </Stack>
       <Stack>
-        <SelectField
+        <SelectFieldDeprecated
           label="Select Field"
           enumOptions={enumOptions}
           dropdownDivider
@@ -63,7 +63,7 @@ const SelectFieldShowCase = () => {
           onChange={(value) => setSelectValueThird(value)}
           type="multiple"
         />
-        <SelectField
+        <SelectFieldDeprecated
           label="Select Field"
           enumOptions={enumOptions}
           selectAllOption
@@ -74,7 +74,7 @@ const SelectFieldShowCase = () => {
         />
       </Stack>
       <Stack>
-        <SelectField
+        <SelectFieldDeprecated
           label="Select Field"
           enumOptions={enumOptions}
           dropdownDivider
@@ -82,7 +82,7 @@ const SelectFieldShowCase = () => {
           onChange={(value) => setSelectValue5(value)}
           type="radio"
         />
-        <SelectField
+        <SelectFieldDeprecated
           label="Select Field"
           enumOptions={enumOptions}
           placeholder="Radio"
@@ -92,13 +92,13 @@ const SelectFieldShowCase = () => {
         />
       </Stack>
       <Stack direction="column">
-        <SelectField
+        <SelectFieldDeprecated
           label="Select Field"
           errorMessage={['Error message']}
           type="one"
           onChange={(value) => console.log(value)}
         />
-        <SelectField
+        <SelectFieldDeprecated
           label="Select Field"
           helptext="This is simple description"
           type="one"
@@ -106,13 +106,13 @@ const SelectFieldShowCase = () => {
         />
       </Stack>
       <Stack>
-        <SelectField
+        <SelectFieldDeprecated
           label="Select Field"
           tooltip="This is example of tooltip"
           type="one"
           onChange={(value) => console.log(value)}
         />
-        <SelectField
+        <SelectFieldDeprecated
           label="Select Field"
           tooltip="This is another example of tooltip"
           type="one"

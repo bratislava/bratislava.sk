@@ -3,12 +3,12 @@ import Phone from '@assets/images/phone-small.svg'
 import TownHall from '@assets/images/town-hall.svg'
 import TownHallSmall from '@assets/images/town-hall-small.svg'
 import { Typography } from '@bratislava/component-library'
-import { Panel } from '@bratislava/ui-bratislava/Panel/Panel'
-import cx from 'classnames'
+import Panel from '@bratislava/ui-bratislava/Panel/Panel'
+import { twMerge } from 'tailwind-merge'
 
 // TODO do not refactor, but rewrite from scratch
 
-export interface OrganizationalStructureAccordionCardProps {
+export type OrganizationalStructureAccordionCardProps = {
   displayName: string
   jobTitle: string
   businessPhones?: string[]
@@ -19,7 +19,7 @@ export interface OrganizationalStructureAccordionCardProps {
   className?: string
 }
 
-export const OrganizationalStructureAccordionCard = ({
+const OrganizationalStructureAccordionCard = ({
   displayName,
   jobTitle,
   businessPhones,
@@ -37,7 +37,10 @@ export const OrganizationalStructureAccordionCard = ({
   return (
     // TODO: MSGraphFilteredGroupUser ignores '| null' in properties
     displayName && jobTitle ? (
-      <Panel className={cx(className, 'min-w-66 max-w-88 flex flex-col px-6 py-8')} overflowVisible>
+      <Panel
+        className={twMerge('min-w-66 max-w-88 flex flex-col px-6 py-8', className)}
+        overflowVisible
+      >
         <Typography type="h4" className="pb-2">
           {displayName}
         </Typography>
@@ -89,3 +92,5 @@ export const OrganizationalStructureAccordionCard = ({
     ) : null
   )
 }
+
+export default OrganizationalStructureAccordionCard

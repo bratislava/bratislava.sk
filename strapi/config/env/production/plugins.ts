@@ -7,7 +7,7 @@ export default ({ env }) => ({
         secretKey: env('MINIO_SECRET_KEY', 'wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY'),
         bucket: env('MINIO_BUCKET', 'strapi'),
         endPoint: env('MINIO_ENDPOINT', 'localhost'),
-        port: parseInt(env('MINIO_PORT', 9000), 10) || 9000,
+        port: env.int('MINIO_PORT', 9000),
         useSSL: env('MINIO_USE_SSL', false),
         folder: 'upload',
         isDocker: true,

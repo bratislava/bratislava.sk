@@ -1,11 +1,10 @@
 import { CrossIcon, HamburgerIcon, SearchIcon } from '@assets/ui-icons'
-import { Brand } from '@bratislava/ui-bratislava/Brand/Brand'
+import Brand from '@bratislava/ui-bratislava/Brand/Brand'
 import Button from '@components/forms/simple-components/Button'
 import MLink from '@components/forms/simple-components/MLink'
 import AlertBanner from '@components/organisms/NavBar/AlertBanner'
 import { useLocalizations } from '@components/providers/LocalizationsProvider'
 import { getCategoryColorLocalStyle } from '@utils/colors'
-import cx from 'classnames'
 import FocusTrap from 'focus-trap-react'
 import { usePathname } from 'next/navigation'
 import { useTranslations } from 'next-intl'
@@ -13,12 +12,13 @@ import React, { useEffect } from 'react'
 
 import MobileNavMenu from './NavMenu/MobileNavMenu'
 import { useNavMenuContext } from './NavMenu/navMenuContext'
+import { twMerge } from 'tailwind-merge'
 
 const Divider = ({ className }: { className?: string }) => {
   return <div aria-hidden className={`h-6 border-r ${className}`} />
 }
 
-interface MobileNavBarProps {
+type MobileNavBarProps = {
   className?: string
 }
 
@@ -52,7 +52,7 @@ const MobileNavBar = ({ className }: MobileNavBarProps) => {
                 </MLink>
               )}
               <Divider />
-              <MLink href={t('searchLink')} className="p-4">
+              <MLink data-cy="search-button-mobile" href={t('searchLink')} className="p-4">
                 <SearchIcon />
               </MLink>
               <Divider />
@@ -77,7 +77,7 @@ const MobileNavBar = ({ className }: MobileNavBarProps) => {
         </div>
       </FocusTrap>
       {/* Empty div under header */}
-      <div className={cx('h-14', className)} />
+      <div className={twMerge('h-14', className)} />
 
       <AlertBanner />
     </div>

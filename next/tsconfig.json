@@ -6,7 +6,7 @@
     "allowJs": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "strict": false,
+    "strict": true,
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     "module": "esnext",
@@ -17,11 +17,6 @@
     "downlevelIteration": true,
     // "noUnusedLocals": true,
     // "noUnusedParameters": true,
-    "plugins": [
-      {
-        "name": "typescript-strict-plugin"
-      }
-    ],
     "baseUrl": "./",
     "paths": {
       "@bratislava/ui-bratislava/*": ["./components/ui/*"],
@@ -30,7 +25,8 @@
       "@assets/ui-icons": ["./assets/ui-icons/index.ts"],
       "@assets/images/*": ["./assets/images/*"],
       "@backend/*": ["./backend/*"],
-      "@components/*": ["./components/*"]
+      "@components/*": ["./components/*"],
+      "@ginis-sdk/*": ["./ginis-sdk/*"]
     }
   },
   "include": ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx", "next-env.d.ts"],

@@ -1,10 +1,10 @@
-import cx from 'classnames'
 import FieldHeader from 'components/forms/info-components/FieldHeader'
 import * as React from 'react'
 import { useCheckboxGroup } from 'react-aria'
 import { CheckboxGroupState, useCheckboxGroupState } from 'react-stately'
 
 import FieldErrorMessage from '../../info-components/FieldErrorMessage'
+import { twMerge } from 'tailwind-merge'
 
 export const CheckboxGroupContext = React.createContext({} as CheckboxGroupState)
 
@@ -32,7 +32,7 @@ const CheckboxGroup = (props: CheckBoxGroupBase) => {
           htmlFor={groupProps.id}
           required={required}
         />
-        <div className={cx('flex flex-col gap-3', className)}>
+        <div className={twMerge('flex flex-col gap-3', className)}>
           <CheckboxGroupContext.Provider value={state}>{children}</CheckboxGroupContext.Provider>
         </div>
       </div>

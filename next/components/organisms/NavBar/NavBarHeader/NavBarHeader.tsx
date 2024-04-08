@@ -1,6 +1,6 @@
 import SearchIcon from '@assets/images/search-icon.svg'
-import { Brand } from '@bratislava/ui-bratislava/Brand/Brand'
-import { SectionContainer } from '@bratislava/ui-bratislava/SectionContainer/SectionContainer'
+import Brand from '@bratislava/ui-bratislava/Brand/Brand'
+import SectionContainer from '@bratislava/ui-bratislava/SectionContainer/SectionContainer'
 import Button from '@components/forms/simple-components/Button'
 import MLink from '@components/forms/simple-components/MLink'
 import { useLocalizations } from '@components/providers/LocalizationsProvider'
@@ -71,7 +71,7 @@ const NavBarHeader = ({ className }: NavBarProps) => {
             <Divider />
           )}
 
-          <MLink href={t('searchLink')} className="-mx-4 p-4">
+          <MLink data-cy="search-button" href={t('searchLink')} className="-mx-4 p-4">
             <SearchIcon />
           </MLink>
 

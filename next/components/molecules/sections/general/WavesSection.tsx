@@ -1,5 +1,5 @@
 import { WavesSectionFragment } from '@backend/graphql'
-import { Waves } from '@bratislava/ui-bratislava/Waves/Waves'
+import Waves from '@bratislava/ui-bratislava/Waves/Waves'
 import cx from 'classnames'
 import React from 'react'
 

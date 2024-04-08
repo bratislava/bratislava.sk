@@ -1,6 +1,6 @@
 import { IconTitleDescSectionFragment } from '@backend/graphql'
 import { Typography } from '@bratislava/component-library'
-import { IconTitleDescItem } from '@components/ui/IconTitleDescItem/IconTitleDescItem'
+import IconTitleDescItem from '@components/ui/IconTitleDescItem/IconTitleDescItem'
 import { isDefined } from '@utils/isDefined'
 import cx from 'classnames'
 import React from 'react'
@@ -38,6 +38,7 @@ const IconTitleDescSection = ({ section }: IconTitleDescSectionProps) => {
             icon={item.icon?.data}
             title={item.title}
             text={item.desc}
+            disableIconBackground={item.disableIconBackground}
             hasBackground={hasBackground}
           />
         ))}

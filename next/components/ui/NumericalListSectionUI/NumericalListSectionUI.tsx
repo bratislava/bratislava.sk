@@ -1,15 +1,15 @@
-import { Waves } from '@bratislava/ui-bratislava/Waves/Waves'
+import Waves from '@bratislava/ui-bratislava/Waves/Waves'
 import Button from '@components/forms/simple-components/Button'
 import cx from 'classnames'
 import React from 'react'
 
-import { NumericalList } from '../NumericalList/NumericalList'
+import NumericalList from '../NumericalList/NumericalList'
 
-export interface NumericalListItemObject {
+export type NumericalListItemObject = {
   text?: string | null
 }
 
-export interface NumericalListSectionProps {
+export type NumericalListSectionProps = {
   title: string | null | undefined
   items: NumericalListItemObject[] | null | undefined
   hasBackground: boolean | null | undefined
@@ -18,7 +18,7 @@ export interface NumericalListSectionProps {
   variant?: 'basic' | 'combined' | 'roadmap'
 }
 
-export const NumericalListSectionUI = ({
+const NumericalListSectionUI = ({
   title,
   items,
   hasBackground,
@@ -62,3 +62,5 @@ export const NumericalListSectionUI = ({
     </div>
   )
 }
+
+export default NumericalListSectionUI

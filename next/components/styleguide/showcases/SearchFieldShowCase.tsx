@@ -1,8 +1,8 @@
 import SearchField from 'components/forms/widget-components/SearchField/SearchField'
 import React from 'react'
 
-import { Stack } from '../Stack'
-import { Wrapper } from '../Wrapper'
+import Stack from '../Stack'
+import Wrapper from '../Wrapper'
 
 const SearchFieldShowCase = () => {
   return (

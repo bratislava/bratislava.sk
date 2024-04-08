@@ -1,13 +1,14 @@
 import cx from 'classnames'
+import { twMerge } from 'tailwind-merge'
 
-interface IProps {
+type LoadingSpinnerProps = {
   className?: string
   text?: string
   size?: 'small' | 'default' | 'medium'
 }
 
-export const LoadingSpinner = ({ className, size = 'default', text }: IProps) => (
-  <div className={cx('flex flex-col items-center gap-20 text-center', className)}>
+const LoadingSpinner = ({ className, size = 'default', text }: LoadingSpinnerProps) => (
+  <div className={twMerge('flex flex-col items-center gap-20 text-center', className)}>
     <div
       style={{
         borderTopColor: 'currentColor',

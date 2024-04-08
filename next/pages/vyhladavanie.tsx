@@ -1,8 +1,9 @@
 import { GeneralQuery } from '@backend/graphql'
 import { client } from '@backend/graphql/gql'
 import PageHeader from '@bratislava/ui-bratislava/PageHeader/PageHeader'
-import SearchPageContentNew from '@components/pages/searchPageContentNew'
+import GlobalSearchSectionContent from '@components/organisms/SearchSection/GlobalSearchSectionContent'
 import { LocalizationsProvider } from '@components/providers/LocalizationsProvider'
+import SectionContainer from '@components/ui/SectionContainer/SectionContainer'
 import { GeneralContextProvider } from '@utils/generalContext'
 import { useTitle } from '@utils/useTitle'
 import { GetStaticProps } from 'next'
@@ -47,8 +48,13 @@ const Page = ({ general }: PageProps) => {
           <title>{title}</title>
         </Head>
         <PageLayout>
-          <PageHeader breadcrumbs={[{ title: t('searching'), path: null }]} />
-          <SearchPageContentNew />
+          <PageHeader
+            title={t('searching')}
+            breadcrumbs={[{ title: t('searching'), path: null }]}
+          />
+          <SectionContainer className="mb-8 mt-12">
+            <GlobalSearchSectionContent variant="general" />
+          </SectionContainer>
         </PageLayout>
       </LocalizationsProvider>
     </GeneralContextProvider>

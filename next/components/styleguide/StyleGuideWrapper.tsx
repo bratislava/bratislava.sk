@@ -15,12 +15,12 @@ type BrandCategoryString =
   | 'Socialne sluzby'
   | 'Kultura'
 
-interface Brand {
+type Brand = {
   category: ColorCategory
   label: BrandCategoryString
 }
 
-interface StyleGuideWrapperProps {
+type StyleGuideWrapperProps = {
   children: ReactNode
 }
 

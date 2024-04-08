@@ -1,9 +1,9 @@
 import React, { ForwardedRef, forwardRef, ForwardRefRenderFunction } from 'react'
 
 import Tag from '../../simple-components/Tag'
-import { SelectOption } from './SelectField'
+import { SelectOption } from './SelectFieldDeprecated'
 
-interface SelectFieldBoxProps {
+type SelectFieldBoxProps = {
   value?: SelectOption[]
   multiple?: boolean
   placeholder?: string
@@ -87,7 +87,7 @@ const SelectFieldBoxComponent: ForwardRefRenderFunction<HTMLDivElement, SelectFi
       }
       <input
         ref={filterRef}
-        className="text-default max-w-[80px] border-0 outline-none xs:max-w-none"
+        className="text-default xs:max-w-none max-w-[80px] border-0 outline-none"
         type="text"
         size={getInputSize()}
         value={filter}

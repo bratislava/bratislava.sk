@@ -1,13 +1,13 @@
 import { MSGraphFilteredGroupUser } from '@backend/ms-graph/types'
-import { OrganizationalStructureAccordionCard } from '@components/molecules/OrganizationalStructure/OrganizationalStructureAccordionCard'
+import OrganizationalStructureAccordionCard from '@components/molecules/OrganizationalStructure/OrganizationalStructureAccordionCard'
 import ResponsiveCarousel from '@components/organisms/Carousel/ResponsiveCarousel'
 import { useMemo } from 'react'
 
-export interface OrganizationalStructureAccordionCardsProps {
+export type OrganizationalStructureAccordionCardsProps = {
   users: MSGraphFilteredGroupUser[]
 }
 
-export const OrganizationalStructureAccordionCards = ({
+const OrganizationalStructureAccordionCards = ({
   users,
 }: OrganizationalStructureAccordionCardsProps) => {
   const cards = useMemo(
@@ -33,3 +33,5 @@ export const OrganizationalStructureAccordionCards = ({
     </>
   )
 }
+
+export default OrganizationalStructureAccordionCards

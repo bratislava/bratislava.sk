@@ -4,9 +4,9 @@ import { useOnClickOutside } from 'usehooks-ts'
 
 import DropdownRow from './DropdownRow'
 import SelectAllDropdownRow from './SelectAllDropdownRow'
-import { SelectOption } from './SelectField'
+import { SelectOption } from './SelectFieldDeprecated'
 
-interface DropdownProps {
+type DropdownProps = {
   enumOptions: SelectOption[]
   value: SelectOption[]
   selectAllOption?: boolean

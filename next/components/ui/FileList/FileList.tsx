@@ -9,7 +9,7 @@ export type TFileSection = {
   files: FileItemBlockFragment[]
 }
 
-export interface FileListProps {
+export type FileListProps = {
   className?: string
   fileSections?: TFileSection[]
   hideCategory?: boolean
@@ -20,7 +20,7 @@ export interface FileListProps {
  * Figma: https://www.figma.com/file/17wbd0MDQcMW9NbXl6UPs8/DS-ESBS%2BBK%3A-Component-library?type=design&node-id=7940-21473&mode=dev
  */
 
-export const FileList = ({
+const FileList = ({
   className,
   fileSections,
   hideCategory,
@@ -55,7 +55,7 @@ export const FileList = ({
                     </div>
                   ))}
                 </div>
-                <div className="block lg:hidden">
+                <div className="lg:hidden">
                   <ResponsiveCarousel
                     items={fileSection?.files.map((file, fileIndex) => (
                       // eslint-disable-next-line react/no-array-index-key

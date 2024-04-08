@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 
-export interface IframeProps {
+export type IframeProps = {
   url?: string
   iframeWidth: 'container' | 'full'
   iframeHeight: string
@@ -10,7 +10,7 @@ export interface IframeProps {
   css?: string | null
 }
 
-export const Iframe = ({
+const Iframe = ({
   url,
   iframeWidth,
   iframeHeight,

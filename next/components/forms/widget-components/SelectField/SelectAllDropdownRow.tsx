@@ -1,6 +1,6 @@
 import { useTranslations } from 'next-intl'
 
-interface SelectAllDropdownRowProps {
+type SelectAllDropdownRowProps = {
   divider?: boolean
   isEverythingSelected: boolean
   onSelectAll: (isEverythingSelect: boolean) => void

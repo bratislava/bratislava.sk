@@ -3,11 +3,16 @@
   "scripts": {
     "lint": "eslint '**/*.ts'",
     "typecheck": "tsc",
+<<<<<<< HEAD
     "start:e2e": "cd ../next && yarn build:e2e && yarn start",
     "cypress": "./cypress.sh open chrome all https://bratislava.sk",
     "cypress:open": "./cypress.sh open chrome all",
     "cypress:run": "./cypress.sh run chrome all",
     "cypress:ci": "./cypress.sh run chrome all https://bratislava.sk/",
+=======
+    "cypress:open": "./cypress.sh open chrome all",
+    "cypress:run": "./cypress.sh run chrome all",
+>>>>>>> origin/master
     "prettier": "prettier --write .",
     "prettier:check": "prettier --check ."
   },

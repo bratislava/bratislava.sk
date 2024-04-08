@@ -6,6 +6,18 @@ query allRegulations {
   }
 }
 
+query RegulationsStaticPaths {
+  # Prerender only 30 most recently updated Regulations
+  regulations(sort: "updatedAt:desc", pagination: { limit: 30 }) {
+    data {
+      id
+      attributes {
+        slug
+      }
+    }
+  }
+}
+
 query RegulationById($id: ID!) {
   regulation(id: $id) {
     data {
@@ -67,11 +79,10 @@ mutation createBareRegulation(
   $slug: String!
   $titleText: String
   $fullTitle: String
-  $effectiveFrom: Date
+  $effectiveFrom: Date!
   $category: ENUM_REGULATION_CATEGORY
   $isFullTextRegulation: Boolean
   $mainDocumentId: ID
-  $consolidatedTextId: ID
   $attachmentsIds: [ID]
 ) {
   createRegulation(
@@ -84,7 +95,6 @@ mutation createBareRegulation(
       category: $category
       isFullTextRegulation: $isFullTextRegulation
       mainDocument: $mainDocumentId
-      consolidatedText: $consolidatedTextId
       attachments: $attachmentsIds
     }
   ) {
@@ -112,11 +122,6 @@ fragment RegulationEntity on RegulationEntity {
         ...UploadFileEntity
       }
     }
-    consolidatedText {
-      data {
-        ...UploadFileEntity
-      }
-    }
     attachments {
       data {
         ...UploadFileEntity
@@ -130,6 +135,11 @@ fragment RegulationEntity on RegulationEntity {
           slug
           effectiveFrom
           isFullTextRegulation
+          attachments {
+            data {
+              ...UploadFileEntity
+            }
+          }
         }
       }
     }

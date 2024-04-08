@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_sections_testimonials",
+  "info": {
+    "displayName": "Testimonials",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "text": {
+      "type": "string"
+    },
+    "hasBackground": {
+      "type": "boolean"
+    },
+    "testimonials": {
+      "type": "component",
+      "repeatable": true,
+      "component": "blocks.testimonial-item",
+      "min": 1,
+      "required": true
+    }
+  }
+}

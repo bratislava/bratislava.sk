@@ -6,11 +6,11 @@ import { useTranslations } from 'next-intl'
 import React, { useMemo } from 'react'
 import { Tab, TabList, Tabs } from 'react-aria-components'
 
-export interface HomepageTabsProps {
+export type HomepageTabsProps = {
   className?: string
 }
 
-export const HomepageTabs = ({ className }: HomepageTabsProps) => {
+const HomepageTabs = ({ className }: HomepageTabsProps) => {
   const t = useTranslations('HomepageTabs')
 
   const tabs = useMemo(() => {
@@ -34,6 +34,7 @@ export const HomepageTabs = ({ className }: HomepageTabsProps) => {
               key={id}
               id={id}
               className="text-large-respo relative cursor-pointer whitespace-nowrap py-3 text-center selected:font-semibold md:py-5"
+              data-cy={`homepage-tab-${id}`}
             >
               {({ isSelected }) => (
                 <>

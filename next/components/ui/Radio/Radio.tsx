@@ -1,12 +1,14 @@
 import cx from 'classnames'
 import * as React from 'react'
 
-export interface RadioProps
-  extends React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> {
+export type RadioProps = React.DetailedHTMLProps<
+  React.InputHTMLAttributes<HTMLInputElement>,
+  HTMLInputElement
+> & {
   key: string
   title: string
 }
-export const Radio = ({ className, id, title, ...rest }: RadioProps) => {
+const Radio = ({ className, id, title, ...rest }: RadioProps) => {
   return (
     <label
       htmlFor={id}
@@ -21,15 +23,9 @@ export const Radio = ({ className, id, title, ...rest }: RadioProps) => {
       )}
     >
       <input id={id} className="hidden" type="radio" {...rest} />
-      <div
-        className={cx(
-          'absolute left-9 h-6 w-6 -translate-x-1/2 transform rounded-full bg-category-600',
-        )}
-      />
+      <div className="absolute left-9 h-6 w-6 -translate-x-1/2 rounded-full bg-category-600" />
       {rest.checked && (
-        <div
-          className={cx('absolute left-9 h-3 w-3 -translate-x-1/2 transform rounded-full bg-white')}
-        />
+        <div className="absolute left-9 h-3 w-3 -translate-x-1/2 rounded-full bg-white" />
       )}
       {title}
     </label>

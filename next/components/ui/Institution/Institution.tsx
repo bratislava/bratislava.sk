@@ -3,7 +3,7 @@ import Markdown from '@components/atoms/Markdown'
 import Button from '@components/forms/simple-components/Button'
 import { useId } from 'react'
 
-export interface InstitutionProps {
+export type InstitutionProps = {
   title?: string
   subtitle?: string
   content?: string[]
@@ -11,7 +11,7 @@ export interface InstitutionProps {
   urlLabel?: string
 }
 
-export const Institution = ({ title, subtitle, content, url, urlLabel }: InstitutionProps) => {
+const Institution = ({ title, subtitle, content, url, urlLabel }: InstitutionProps) => {
   const titleId = useId()
 
   return (

@@ -1,13 +1,13 @@
 import cx from 'classnames'
 import { PropsWithChildren } from 'react'
 
-export interface NarrowTextProps {
+export type NarrowTextProps = {
   className?: string
   width?: 'narrow' | 'default' | 'wide' | 'full' | null
   align?: 'left' | 'center' | 'right' | null
 }
 
-export const NarrowText = ({
+const NarrowText = ({
   className,
   width = 'default',
   align = 'center',

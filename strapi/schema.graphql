@@ -113,7 +113,7 @@ type BlogPostRelationResponseCollection {
   data: [BlogPostEntity!]!
 }
 
-union BlogPostSectionsDynamicZone = ComponentSectionsColumnedText | ComponentSectionsDivider | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsNarrowText | ComponentSectionsNumericalList | ComponentSectionsTextWithImage | ComponentSectionsVideos | Error
+union BlogPostSectionsDynamicZone = ComponentSectionsColumnedText | ComponentSectionsDivider | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsNarrowText | ComponentSectionsNumericalList | ComponentSectionsRegulations | ComponentSectionsTextWithImage | ComponentSectionsVideos | Error
 
 scalar BlogPostSectionsDynamicZoneInput
 
@@ -580,6 +580,7 @@ input ComponentBlocksHomepageHighlightsItemInput {
 
 type ComponentBlocksIconWithTitleAndDescription {
   desc: String
+  disableIconBackground: Boolean
   icon: UploadFileEntityResponse
   id: ID!
   title: String
@@ -588,6 +589,7 @@ type ComponentBlocksIconWithTitleAndDescription {
 input ComponentBlocksIconWithTitleAndDescriptionFiltersInput {
   and: [ComponentBlocksIconWithTitleAndDescriptionFiltersInput]
   desc: StringFilterInput
+  disableIconBackground: BooleanFilterInput
   not: ComponentBlocksIconWithTitleAndDescriptionFiltersInput
   or: [ComponentBlocksIconWithTitleAndDescriptionFiltersInput]
   title: StringFilterInput
@@ -595,6 +597,7 @@ input ComponentBlocksIconWithTitleAndDescriptionFiltersInput {
 
 input ComponentBlocksIconWithTitleAndDescriptionInput {
   desc: String
+  disableIconBackground: Boolean
   icon: ID
   id: ID
   title: String
@@ -743,6 +746,26 @@ input ComponentBlocksSubpageInput {
   id: ID
   link: String
   title: String
+}
+
+type ComponentBlocksTestimonialItem {
+  id: ID!
+  name: String!
+  quote: String!
+}
+
+input ComponentBlocksTestimonialItemFiltersInput {
+  and: [ComponentBlocksTestimonialItemFiltersInput]
+  name: StringFilterInput
+  not: ComponentBlocksTestimonialItemFiltersInput
+  or: [ComponentBlocksTestimonialItemFiltersInput]
+  quote: StringFilterInput
+}
+
+input ComponentBlocksTestimonialItemInput {
+  id: ID
+  name: String
+  quote: String
 }
 
 type ComponentBlocksTimelineItem {
@@ -1726,6 +1749,43 @@ input ComponentSectionsProsAndConsSectionInput {
   title: String
 }
 
+type ComponentSectionsRegulations {
+  id: ID!
+  regulations(filters: RegulationFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): RegulationRelationResponseCollection
+}
+
+input ComponentSectionsRegulationsFiltersInput {
+  and: [ComponentSectionsRegulationsFiltersInput]
+  not: ComponentSectionsRegulationsFiltersInput
+  or: [ComponentSectionsRegulationsFiltersInput]
+  regulations: RegulationFiltersInput
+}
+
+input ComponentSectionsRegulationsInput {
+  id: ID
+  regulations: [ID]
+}
+
+type ComponentSectionsRegulationsList {
+  id: ID!
+  text: String
+  title: String
+}
+
+input ComponentSectionsRegulationsListFiltersInput {
+  and: [ComponentSectionsRegulationsListFiltersInput]
+  not: ComponentSectionsRegulationsListFiltersInput
+  or: [ComponentSectionsRegulationsListFiltersInput]
+  text: StringFilterInput
+  title: StringFilterInput
+}
+
+input ComponentSectionsRegulationsListInput {
+  id: ID
+  text: String
+  title: String
+}
+
 type ComponentSectionsSpace {
   id: ID!
   sectionTitle: String
@@ -1764,6 +1824,32 @@ input ComponentSectionsSubpageListInput {
   hasBackground: Boolean
   id: ID
   subpageList: [ComponentBlocksPageLinkInput]
+}
+
+type ComponentSectionsTestimonials {
+  hasBackground: Boolean
+  id: ID!
+  testimonials(filters: ComponentBlocksTestimonialItemFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksTestimonialItem]!
+  text: String
+  title: String
+}
+
+input ComponentSectionsTestimonialsFiltersInput {
+  and: [ComponentSectionsTestimonialsFiltersInput]
+  hasBackground: BooleanFilterInput
+  not: ComponentSectionsTestimonialsFiltersInput
+  or: [ComponentSectionsTestimonialsFiltersInput]
+  testimonials: ComponentBlocksTestimonialItemFiltersInput
+  text: StringFilterInput
+  title: StringFilterInput
+}
+
+input ComponentSectionsTestimonialsInput {
+  hasBackground: Boolean
+  id: ID
+  testimonials: [ComponentBlocksTestimonialItemInput]
+  text: String
+  title: String
 }
 
 type ComponentSectionsTextWithImage {
@@ -1869,6 +1955,35 @@ input ComponentSectionsWavesFiltersInput {
 input ComponentSectionsWavesInput {
   id: ID
   position: ENUM_COMPONENTSECTIONSWAVES_POSITION
+}
+
+type ComponentTaxAdministratorsTaxAdministrator {
+  email: String!
+  id: ID!
+  name: String!
+  officeNumber: String!
+  phone: String!
+  range: String!
+}
+
+input ComponentTaxAdministratorsTaxAdministratorFiltersInput {
+  and: [ComponentTaxAdministratorsTaxAdministratorFiltersInput]
+  email: StringFilterInput
+  name: StringFilterInput
+  not: ComponentTaxAdministratorsTaxAdministratorFiltersInput
+  officeNumber: StringFilterInput
+  or: [ComponentTaxAdministratorsTaxAdministratorFiltersInput]
+  phone: StringFilterInput
+  range: StringFilterInput
+}
+
+input ComponentTaxAdministratorsTaxAdministratorInput {
+  email: String
+  id: ID
+  name: String
+  officeNumber: String
+  phone: String
+  range: String
 }
 
 """
@@ -2345,7 +2460,7 @@ type GeneralRelationResponseCollection {
   data: [GeneralEntity!]!
 }
 
-union GenericMorph = Alert | BlogPost | ComponentAccordionItemsFlatText | ComponentAccordionItemsInstitution | ComponentAccordionItemsInstitutionNarrow | ComponentBlocksBlogPostLink | ComponentBlocksBookmarkLink | ComponentBlocksCommonLink | ComponentBlocksComparisonCard | ComponentBlocksComparisonItem | ComponentBlocksContactCard | ComponentBlocksDocListExtensions | ComponentBlocksFile | ComponentBlocksFileItem | ComponentBlocksFooterColumn | ComponentBlocksFooterContactItem | ComponentBlocksFooterSection | ComponentBlocksGalleryItem | ComponentBlocksHomepageBookmark | ComponentBlocksHomepageHighlightsItem | ComponentBlocksIconWithTitleAndDescription | ComponentBlocksInBa | ComponentBlocksNumericalListItem | ComponentBlocksPageLink | ComponentBlocksProsAndConsCard | ComponentBlocksSpaceInfo | ComponentBlocksSubpage | ComponentBlocksTimelineItem | ComponentBlocksTopServicesItem | ComponentBlocksVideo | ComponentGeneralHeader | ComponentGeneralHeaderLink | ComponentMenuMenuItem | ComponentMenuMenuLink | ComponentMenuMenuSection | ComponentOsItemsAdvancedAccordionDepartment | ComponentOsItemsAdvancedAccordionItem | ComponentOsItemsAdvancedAccordionSubItem | ComponentOsItemsAdvancedAccordionSubSubItem | ComponentSectionsAccordion | ComponentSectionsBanner | ComponentSectionsBlogPostsByCategory | ComponentSectionsBlogPostsByTags | ComponentSectionsBlogPostsList | ComponentSectionsCalculator | ComponentSectionsColumnedText | ComponentSectionsComparisonSection | ComponentSectionsContactsSection | ComponentSectionsDivider | ComponentSectionsDocumentList | ComponentSectionsFeaturedBlogPosts | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsHomepageEvents | ComponentSectionsHomepageHighlights | ComponentSectionsHomepageMayorAndCouncil | ComponentSectionsHomepageTabs | ComponentSectionsIconTitleDesc | ComponentSectionsIframe | ComponentSectionsInbaArticlesList | ComponentSectionsInbaReleases | ComponentSectionsLinks | ComponentSectionsNarrowText | ComponentSectionsNumericalList | ComponentSectionsOfficialBoard | ComponentSectionsOrganizationalStructure | ComponentSectionsProsAndConsSection | ComponentSectionsSpace | ComponentSectionsSubpageList | ComponentSectionsTextWithImage | ComponentSectionsTimeline | ComponentSectionsTopServices | ComponentSectionsVideos | ComponentSectionsWaves | Footer | General | Homepage | I18NLocale | InbaArticle | InbaRelease | InbaTag | Menu | Page | PageCategory | PageSubcategory | Regulation | Tag | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser | Vzn
+union GenericMorph = Alert | BlogPost | ComponentAccordionItemsFlatText | ComponentAccordionItemsInstitution | ComponentAccordionItemsInstitutionNarrow | ComponentBlocksBlogPostLink | ComponentBlocksBookmarkLink | ComponentBlocksCommonLink | ComponentBlocksComparisonCard | ComponentBlocksComparisonItem | ComponentBlocksContactCard | ComponentBlocksDocListExtensions | ComponentBlocksFile | ComponentBlocksFileItem | ComponentBlocksFooterColumn | ComponentBlocksFooterContactItem | ComponentBlocksFooterSection | ComponentBlocksGalleryItem | ComponentBlocksHomepageBookmark | ComponentBlocksHomepageHighlightsItem | ComponentBlocksIconWithTitleAndDescription | ComponentBlocksInBa | ComponentBlocksNumericalListItem | ComponentBlocksPageLink | ComponentBlocksProsAndConsCard | ComponentBlocksSpaceInfo | ComponentBlocksSubpage | ComponentBlocksTestimonialItem | ComponentBlocksTimelineItem | ComponentBlocksTopServicesItem | ComponentBlocksVideo | ComponentGeneralHeader | ComponentGeneralHeaderLink | ComponentMenuMenuItem | ComponentMenuMenuLink | ComponentMenuMenuSection | ComponentOsItemsAdvancedAccordionDepartment | ComponentOsItemsAdvancedAccordionItem | ComponentOsItemsAdvancedAccordionSubItem | ComponentOsItemsAdvancedAccordionSubSubItem | ComponentSectionsAccordion | ComponentSectionsBanner | ComponentSectionsBlogPostsByCategory | ComponentSectionsBlogPostsByTags | ComponentSectionsBlogPostsList | ComponentSectionsCalculator | ComponentSectionsColumnedText | ComponentSectionsComparisonSection | ComponentSectionsContactsSection | ComponentSectionsDivider | ComponentSectionsDocumentList | ComponentSectionsFeaturedBlogPosts | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsHomepageEvents | ComponentSectionsHomepageHighlights | ComponentSectionsHomepageMayorAndCouncil | ComponentSectionsHomepageTabs | ComponentSectionsIconTitleDesc | ComponentSectionsIframe | ComponentSectionsInbaArticlesList | ComponentSectionsInbaReleases | ComponentSectionsLinks | ComponentSectionsNarrowText | ComponentSectionsNumericalList | ComponentSectionsOfficialBoard | ComponentSectionsOrganizationalStructure | ComponentSectionsProsAndConsSection | ComponentSectionsRegulations | ComponentSectionsRegulationsList | ComponentSectionsSpace | ComponentSectionsSubpageList | ComponentSectionsTestimonials | ComponentSectionsTextWithImage | ComponentSectionsTimeline | ComponentSectionsTopServices | ComponentSectionsVideos | ComponentSectionsWaves | ComponentTaxAdministratorsTaxAdministrator | Footer | General | Homepage | I18NLocale | InbaArticle | InbaRelease | InbaTag | Menu | Page | PageCategory | PageSubcategory | Regulation | Tag | TaxAdministratorsList | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser | Vzn
 
 type Homepage {
   bookmarkTourists: ComponentBlocksHomepageBookmark
@@ -2838,6 +2953,7 @@ type Mutation {
   deletePageSubcategory(id: ID!, locale: I18NLocaleCode): PageSubcategoryEntityResponse
   deleteRegulation(id: ID!): RegulationEntityResponse
   deleteTag(id: ID!, locale: I18NLocaleCode): TagEntityResponse
+  deleteTaxAdministratorsList: TaxAdministratorsListEntityResponse
   deleteUploadFile(id: ID!): UploadFileEntityResponse
   deleteUploadFolder(id: ID!): UploadFolderEntityResponse
 
@@ -2879,6 +2995,7 @@ type Mutation {
   updatePageSubcategory(data: PageSubcategoryInput!, id: ID!, locale: I18NLocaleCode): PageSubcategoryEntityResponse
   updateRegulation(data: RegulationInput!, id: ID!): RegulationEntityResponse
   updateTag(data: TagInput!, id: ID!, locale: I18NLocaleCode): TagEntityResponse
+  updateTaxAdministratorsList(data: TaxAdministratorsListInput!): TaxAdministratorsListEntityResponse
   updateUploadFile(data: UploadFileInput!, id: ID!): UploadFileEntityResponse
   updateUploadFolder(data: UploadFolderInput!, id: ID!): UploadFolderEntityResponse
 
@@ -3036,7 +3153,7 @@ type PageRelationResponseCollection {
   data: [PageEntity!]!
 }
 
-union PageSectionsDynamicZone = ComponentSectionsAccordion | ComponentSectionsBanner | ComponentSectionsBlogPostsByCategory | ComponentSectionsBlogPostsByTags | ComponentSectionsBlogPostsList | ComponentSectionsCalculator | ComponentSectionsColumnedText | ComponentSectionsComparisonSection | ComponentSectionsContactsSection | ComponentSectionsDivider | ComponentSectionsDocumentList | ComponentSectionsFeaturedBlogPosts | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsIconTitleDesc | ComponentSectionsIframe | ComponentSectionsInbaArticlesList | ComponentSectionsInbaReleases | ComponentSectionsLinks | ComponentSectionsNarrowText | ComponentSectionsNumericalList | ComponentSectionsOfficialBoard | ComponentSectionsOrganizationalStructure | ComponentSectionsProsAndConsSection | ComponentSectionsSpace | ComponentSectionsTextWithImage | ComponentSectionsTimeline | ComponentSectionsVideos | ComponentSectionsWaves | Error
+union PageSectionsDynamicZone = ComponentSectionsAccordion | ComponentSectionsBanner | ComponentSectionsBlogPostsByCategory | ComponentSectionsBlogPostsByTags | ComponentSectionsBlogPostsList | ComponentSectionsCalculator | ComponentSectionsColumnedText | ComponentSectionsComparisonSection | ComponentSectionsContactsSection | ComponentSectionsDivider | ComponentSectionsDocumentList | ComponentSectionsFeaturedBlogPosts | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsIconTitleDesc | ComponentSectionsIframe | ComponentSectionsInbaArticlesList | ComponentSectionsInbaReleases | ComponentSectionsLinks | ComponentSectionsNarrowText | ComponentSectionsNumericalList | ComponentSectionsOfficialBoard | ComponentSectionsOrganizationalStructure | ComponentSectionsProsAndConsSection | ComponentSectionsRegulations | ComponentSectionsRegulationsList | ComponentSectionsSpace | ComponentSectionsTestimonials | ComponentSectionsTextWithImage | ComponentSectionsTimeline | ComponentSectionsVideos | ComponentSectionsWaves | Error
 
 scalar PageSectionsDynamicZoneInput
 
@@ -3140,6 +3257,7 @@ type Query {
   regulations(filters: RegulationFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): RegulationEntityResponseCollection
   tag(id: ID, locale: I18NLocaleCode): TagEntityResponse
   tags(filters: TagFiltersInput, locale: I18NLocaleCode, pagination: PaginationArg = {}, sort: [String] = []): TagEntityResponseCollection
+  taxAdministratorsList: TaxAdministratorsListEntityResponse
   uploadFile(id: ID): UploadFileEntityResponse
   uploadFiles(filters: UploadFileFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UploadFileEntityResponseCollection
   uploadFolder(id: ID): UploadFolderEntityResponse
@@ -3158,12 +3276,11 @@ type Regulation {
   attachments(filters: UploadFileFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UploadFileRelationResponseCollection
   cancellation: RegulationEntityResponse
   cancelling(filters: RegulationFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): RegulationRelationResponseCollection
-  category: ENUM_REGULATION_CATEGORY
-  consolidatedText: UploadFileEntityResponse
+  category: ENUM_REGULATION_CATEGORY!
   createdAt: DateTime
-  effectiveFrom: Date
+  effectiveFrom: Date!
   fullTitle: String!
-  isFullTextRegulation: Boolean
+  isFullTextRegulation: Boolean!
   mainDocument: UploadFileEntityResponse!
   publishedAt: DateTime
   regNumber: String!
@@ -3214,7 +3331,6 @@ input RegulationInput {
   cancellation: ID
   cancelling: [ID]
   category: ENUM_REGULATION_CATEGORY
-  consolidatedText: ID
   effectiveFrom: Date
   fullTitle: String
   isFullTextRegulation: Boolean
@@ -3300,6 +3416,43 @@ input TagInput {
 
 type TagRelationResponseCollection {
   data: [TagEntity!]!
+}
+
+type TaxAdministratorsList {
+  createdAt: DateTime
+  taxAdministrators(filters: ComponentTaxAdministratorsTaxAdministratorFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentTaxAdministratorsTaxAdministrator]!
+  updatedAt: DateTime
+}
+
+type TaxAdministratorsListEntity {
+  attributes: TaxAdministratorsList
+  id: ID
+}
+
+type TaxAdministratorsListEntityResponse {
+  data: TaxAdministratorsListEntity
+}
+
+type TaxAdministratorsListEntityResponseCollection {
+  data: [TaxAdministratorsListEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input TaxAdministratorsListFiltersInput {
+  and: [TaxAdministratorsListFiltersInput]
+  createdAt: DateTimeFilterInput
+  not: TaxAdministratorsListFiltersInput
+  or: [TaxAdministratorsListFiltersInput]
+  taxAdministrators: ComponentTaxAdministratorsTaxAdministratorFiltersInput
+  updatedAt: DateTimeFilterInput
+}
+
+input TaxAdministratorsListInput {
+  taxAdministrators: [ComponentTaxAdministratorsTaxAdministratorInput]
+}
+
+type TaxAdministratorsListRelationResponseCollection {
+  data: [TaxAdministratorsListEntity!]!
 }
 
 """A time string with format HH:mm:ss.SSS"""

@@ -31,7 +31,8 @@
       "required": true
     },
     "effectiveFrom": {
-      "type": "date"
+      "type": "date",
+      "required": true
     },
     "category": {
       "type": "enumeration",
@@ -44,27 +45,18 @@
         "socialnaPomocASkolstvo",
         "ostatne",
         "archiv"
-      ]
+      ],
+      "required": true
     },
     "isFullTextRegulation": {
       "type": "boolean",
-      "required": false
+      "required": true,
+      "default": false
     },
     "mainDocument": {
       "type": "media",
       "multiple": false,
       "required": true,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
-    },
-    "consolidatedText": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
       "allowedTypes": [
         "images",
         "files",

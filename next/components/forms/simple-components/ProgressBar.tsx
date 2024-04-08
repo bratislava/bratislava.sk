@@ -47,7 +47,7 @@ const ProgressBar = ({
             })}
           />
         </div>
-        <div className={cx('text-default')}>{value}%</div>
+        <div className="text-default">{value}%</div>
       </div>
     </div>
   )

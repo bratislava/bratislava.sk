@@ -1,8 +1,8 @@
 import { CalendarIcon, EditIcon, SearchIcon } from '@assets/ui-icons'
 import Button from '@components/forms/simple-components/Button'
 
-import { Stack } from '../Stack'
-import { Wrapper } from '../Wrapper'
+import Stack from '../Stack'
+import Wrapper from '../Wrapper'
 
 const ButtonStacks = ({ variant }: { variant: 'category' | 'black' | 'negative' }) => (
   <>

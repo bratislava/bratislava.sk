@@ -5,9 +5,9 @@ import React from 'react'
 
 import CheckboxIcon from '../../icon-components/CheckboxIcon'
 import RadioButtonIcon from '../../icon-components/RadioButtonIcon'
-import { SelectOption } from './SelectField'
+import { SelectOption } from './SelectFieldDeprecated'
 
-interface DropdownRowProps {
+type DropdownRowProps = {
   option: SelectOption
   isBold?: boolean
   selected?: boolean

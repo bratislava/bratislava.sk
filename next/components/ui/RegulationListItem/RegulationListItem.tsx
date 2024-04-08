@@ -6,19 +6,19 @@ import RegulationModalBody from '@components/molecules/sections/general/Document
 import Dialog from '@components/ui/ModalDialog/Dialog'
 import Modal from '@components/ui/ModalDialog/Modal'
 import { useTranslations } from 'next-intl'
-import React from 'react'
+import React, { FunctionComponent, SVGProps } from 'react'
 import { DialogTrigger } from 'react-aria-components'
 
 type RegulationListItemProps = {
   categoryName: string
   title: string
-  Icon: string
+  Icon: FunctionComponent<SVGProps<SVGSVGElement>>
   vznMeili: VznMeili
   mainDocumentHref?: string
   moreDocuments: string[]
 }
 
-export const RegulationListItem = ({
+const RegulationListItem = ({
   categoryName,
   title,
   Icon,
@@ -74,3 +74,5 @@ export const RegulationListItem = ({
     </div>
   )
 }
+
+export default RegulationListItem

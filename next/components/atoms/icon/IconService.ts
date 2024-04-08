@@ -1,4 +1,3 @@
-import Documents64pxIcon from '@assets/images/dokumenty.svg'
 import EServices48pxIcon from '@assets/images/EServices.svg'
 import Accommodation48pxIcon from '@assets/images/menu-icons/48px/accommodation_48px.svg'
 import Bike48pxIcon from '@assets/images/menu-icons/48px/bike_48px.svg'
@@ -92,6 +91,16 @@ import Phone48pxIcon from '@assets/images/phone-medium.svg'
 import TouristSign48pxIcon from '@assets/images/Tourist-icon.svg'
 
 import {
+  Regulation_Archiv48pxIcon,
+  Regulation_DaneAPoplatky48pxIcon,
+  Regulation_Hospodarenie48pxIcon,
+  Regulation_Ostatne48pxIcon,
+  Regulation_PomenovanieUlic48pxIcon,
+  Regulation_PoriadokACistota48pxIcon,
+  Regulation_SocialnaPomocASkolstvo48pxIcon,
+  Regulation_UzemnePlanovanie48pxIcon,
+} from '../../../assets/icons-regulation-categories'
+import {
   SearchResults_Contacts48pxIcon,
   SearchResults_Document48pxIcon,
 } from '../../../assets/icons-search-results'
@@ -113,12 +122,12 @@ export type MenuIcon = string
 // The type of any icon is fine.
 type IconComponent = typeof Accommodation48pxIcon
 
-interface IconUrlMap {
+type IconUrlMap = {
   size_48: { [key: MenuIcon]: IconComponent }
   size_64: { [key: MenuIcon]: IconComponent }
 }
 
-interface IconCollection {
+type IconCollection = {
   size_64: IconComponent
   size_48: IconComponent
 }
@@ -189,6 +198,15 @@ export const ICON_URL_MAP: IconUrlMap = {
     // Search results
     search_result_official_board: SearchResults_Document48pxIcon,
     search_result_contacts: SearchResults_Contacts48pxIcon,
+    // Regulation categories
+    regulation_archiv: Regulation_Archiv48pxIcon,
+    regulation_daneAPoplatky: Regulation_DaneAPoplatky48pxIcon,
+    regulation_hospodarenie: Regulation_Hospodarenie48pxIcon,
+    regulation_ostatne: Regulation_Ostatne48pxIcon,
+    regulation_pomenovanieUlic: Regulation_PomenovanieUlic48pxIcon,
+    regulation_poriadokACistota: Regulation_PoriadokACistota48pxIcon,
+    regulation_socialnaPomocASkolstvo: Regulation_SocialnaPomocASkolstvo48pxIcon,
+    regulation_uzemnePlanovanie: Regulation_UzemnePlanovanie48pxIcon,
   },
   size_64: {
     mesto_01: Castle64pxStrokeIcon,

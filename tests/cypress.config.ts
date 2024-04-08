@@ -7,7 +7,7 @@ export default defineConfig({
     setupNodeEvents(on, config) {
       config.chromeWebSecurity = false
       config.video = false
-      config.baseUrl = config.env.BASEURL
+      config.baseUrl = "https://bratislava.sk"
       
       config.env = {
         devices: {

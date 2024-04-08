@@ -1,6 +1,6 @@
 import { TopServicesItemFragment } from '@backend/graphql'
 import { Typography } from '@bratislava/component-library'
-import { Icon } from '@components/atoms/icon/Icon'
+import Icon from '@components/atoms/icon/Icon'
 import Button from '@components/forms/simple-components/Button'
 import { getCommonLinkProps } from '@utils/getCommonLinkProps'
 import { useTranslations } from 'next-intl'
@@ -9,7 +9,7 @@ type TopNineItemProps = {
   topServicesItem: TopServicesItemFragment
 }
 
-export const TopServicesItem = ({ topServicesItem }: TopNineItemProps) => {
+const TopServicesItem = ({ topServicesItem }: TopNineItemProps) => {
   const t = useTranslations('TopServices')
   const { icon, link } = topServicesItem
 

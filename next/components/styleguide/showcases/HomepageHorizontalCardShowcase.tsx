@@ -1,5 +1,5 @@
 import BlogPostHomepageHorizontalCard from '@components/molecules/presentation/HomepageHorizontalCard'
-import { Wrapper } from '@components/styleguide/Wrapper'
+import Wrapper from '@components/styleguide/Wrapper'
 import { CommonLinkProps } from '@utils/getCommonLinkProps'
 import React from 'react'
 

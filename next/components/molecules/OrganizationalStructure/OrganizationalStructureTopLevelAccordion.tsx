@@ -4,15 +4,15 @@ import { GetGroupMembersRecursiveResult } from '@backend/ms-graph/types'
 import cx from 'classnames'
 import { useToggle } from 'rooks'
 
-import { OrganizationalStructureAccordion } from './OrganizationalStructureAccordion'
-import { OrganizationalStructureAccordionCards } from './OrganizationalStructureAccordionCards'
+import OrganizationalStructureAccordion from './OrganizationalStructureAccordion'
+import OrganizationalStructureAccordionCards from './OrganizationalStructureAccordionCards'
 
-export interface OrganizationalStructureTopLevelAccordionProps {
+export type OrganizationalStructureTopLevelAccordionProps = {
   group: GetGroupMembersRecursiveResult
 }
 
 // TODO rewrite from scratch to use our Accordion and fix accessibility, but wait for new design first
-export const OrganizationalStructureTopLevelAccordion = ({
+const OrganizationalStructureTopLevelAccordion = ({
   group,
 }: OrganizationalStructureTopLevelAccordionProps) => {
   const [open, setOpen] = useToggle()
@@ -42,3 +42,5 @@ export const OrganizationalStructureTopLevelAccordion = ({
     </div>
   )
 }
+
+export default OrganizationalStructureTopLevelAccordion

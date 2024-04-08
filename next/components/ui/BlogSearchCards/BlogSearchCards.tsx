@@ -1,14 +1,14 @@
-import { BlogItem, BlogSearchCard } from '@bratislava/ui-bratislava/BlogSearchCard/BlogSearchCard'
+import BlogSearchCard, { BlogItem } from '@bratislava/ui-bratislava/BlogSearchCard/BlogSearchCard'
 import Button from '@components/forms/simple-components/Button'
 import ResponsiveCarousel from '@components/organisms/Carousel/ResponsiveCarousel'
 import { useTranslations } from 'next-intl'
 import { useState } from 'react'
 
-export interface BlogSearchCardsProps {
+export type BlogSearchCardsProps = {
   blogs: BlogItem[]
 }
 
-export const BlogSearchCards = ({ blogs }: BlogSearchCardsProps) => {
+const BlogSearchCards = ({ blogs }: BlogSearchCardsProps) => {
   const t = useTranslations()
   const [isOpen, setIsOpen] = useState(false)
   const SHOW_LESS_COUNT = 3
@@ -46,3 +46,5 @@ export const BlogSearchCards = ({ blogs }: BlogSearchCardsProps) => {
     </div>
   )
 }
+
+export default BlogSearchCards

@@ -1,13 +1,13 @@
-import cx from 'classnames'
+import { twMerge } from 'tailwind-merge'
 
-export interface CompleteDashedLineProps {
+export type CompleteDashedLineProps = {
   className?: string
   color: string
 }
-export const CompleteDashedLine = ({ className, color }: CompleteDashedLineProps) => {
+const CompleteDashedLine = ({ className, color }: CompleteDashedLineProps) => {
   return (
     <svg
-      className={cx('absolute', className)}
+      className={twMerge('absolute', className)}
       width="56"
       height="164"
       viewBox="0 0 56 164"
@@ -24,3 +24,5 @@ export const CompleteDashedLine = ({ className, color }: CompleteDashedLineProps
     </svg>
   )
 }
+
+export default CompleteDashedLine

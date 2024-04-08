@@ -9,7 +9,7 @@ import { GetStaticPaths, GetStaticProps } from 'next'
 import Head from 'next/head'
 import * as React from 'react'
 
-interface StaticParams extends ParsedUrlQuery {
+type StaticParams = ParsedUrlQuery & {
   slug: string
 }
 
@@ -19,7 +19,7 @@ type RegulationPageProps = {
 }
 
 export const getStaticPaths: GetStaticPaths<StaticParams> = async () => {
-  const { regulations } = await client.allRegulations()
+  const { regulations } = await client.RegulationsStaticPaths()
 
   const paths = (regulations?.data ?? [])
     .filter((regulation) => regulation?.attributes?.slug)
@@ -76,6 +76,10 @@ const RegulationPage = ({ general, regulation }: RegulationPageProps) => {
     <GeneralContextProvider general={general}>
       <Head>
         <title>{`VZN ${regulation.attributes.regNumber}`}</title>
+        <meta
+          name="description"
+          content={`Všeobecné záväzné nariadenie ${regulation.attributes.fullTitle}`}
+        />
       </Head>
       <PageLayout>
         <RegulationPageContent regulation={regulation} />

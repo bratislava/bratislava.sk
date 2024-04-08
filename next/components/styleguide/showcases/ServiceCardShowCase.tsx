@@ -5,7 +5,7 @@ import PoolServiceIcon from '@assets/images/account/municipal-services/pool-icon
 import ServiceCard from '@components/forms/simple-components/ServiceCard'
 import React from 'react'
 
-import { Wrapper } from '../Wrapper'
+import Wrapper from '../Wrapper'
 
 const ServiceCardShowCase = () => {
   return (

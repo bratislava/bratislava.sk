@@ -1,17 +1,20 @@
-import { Bookmark, BookmarkProps } from '@bratislava/ui-bratislava/Bookmark/Bookmark'
-import cx from 'classnames'
+import Bookmark, { BookmarkProps } from '@bratislava/ui-bratislava/Bookmark/Bookmark'
 import isEmpty from 'lodash/isEmpty'
+import { twMerge } from 'tailwind-merge'
 
-export interface BookmarksProps {
+export type BookmarksProps = {
   className?: string
   bookmarks?: BookmarkProps[]
 }
 
-export const Bookmarks = ({ className, bookmarks }: BookmarksProps) => {
+const Bookmarks = ({ className, bookmarks }: BookmarksProps) => {
   if (isEmpty(bookmarks)) return null
   return (
     <div
-      className={cx(className, 'pointer-events-none absolute right-0 z-20 hidden flex-col xl:flex')}
+      className={twMerge(
+        'pointer-events-none absolute right-0 z-20 hidden flex-col xl:flex',
+        className,
+      )}
     >
       {bookmarks?.map((bookmark, index) => (
         <Bookmark

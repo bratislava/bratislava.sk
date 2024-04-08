@@ -1,8 +1,8 @@
 import Dropdown from '@components/forms/widget-components/SelectField/Dropdown'
-import { SelectOption } from '@components/forms/widget-components/SelectField/SelectField'
+import { SelectOption } from '@components/forms/widget-components/SelectField/SelectFieldDeprecated'
 
-import { Stack } from '../Stack'
-import { Wrapper } from '../Wrapper'
+import Stack from '../Stack'
+import Wrapper from '../Wrapper'
 
 const DropdownShowCase = () => {
   const selectOptions: SelectOption[] = [

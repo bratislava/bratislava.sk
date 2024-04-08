@@ -6,21 +6,21 @@ import { Typography } from '@bratislava/component-library'
 import LoadingSpinner from '@bratislava/ui-bratislava/LoadingSpinner/LoadingSpinner'
 import { useQuery } from '@tanstack/react-query'
 
-import { OrganizationalStructureTopLevelAccordion } from './OrganizationalStructureTopLevelAccordion'
+import OrganizationalStructureTopLevelAccordion from './OrganizationalStructureTopLevelAccordion'
 
-export interface OrganizationalStructureProps {
+export type OrganizationalStructureProps = {
   title?: string | null
 }
 
 // TODO add search
-export const OrganizationalStructure = ({ title }: OrganizationalStructureProps) => {
-  const { data, isLoading, isError, error } = useQuery({
+const OrganizationalStructure = ({ title }: OrganizationalStructureProps) => {
+  const { data, isPending, isError, error } = useQuery({
     queryKey: getMsGraphStructureQueryKey(),
     queryFn: () => msGraphStructureFetcher(),
     select: (res) => res.data,
   })
 
-  if (isLoading) {
+  if (isPending) {
     return <LoadingSpinner />
   }
 
@@ -40,3 +40,5 @@ export const OrganizationalStructure = ({ title }: OrganizationalStructureProps)
     </div>
   )
 }
+
+export default OrganizationalStructure

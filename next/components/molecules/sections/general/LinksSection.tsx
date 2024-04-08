@@ -1,5 +1,5 @@
 import { LinksSectionFragment } from '@backend/graphql'
-import { Links } from '@bratislava/ui-bratislava/Links/Links'
+import Links from '@bratislava/ui-bratislava/Links/Links'
 import { parsePageLink } from '@utils/page'
 import { isPresent } from '@utils/utils'
 import React from 'react'
