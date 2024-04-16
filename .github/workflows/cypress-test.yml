@@ -2,7 +2,7 @@ name: Cypress test
 
 on:
   workflow_run:
-    workflows: ["CodeQL"]
+    workflows: ["Strapi/Next deploy pipeline"]
     types:
       - completed
 
