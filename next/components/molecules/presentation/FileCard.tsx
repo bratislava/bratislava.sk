@@ -3,7 +3,6 @@ import { Typography } from '@bratislava/component-library'
 import MLink from '@components/forms/simple-components/MLink'
 import { isDefined } from '@utils/isDefined'
 import { useTranslations } from 'next-intl'
-import React from 'react'
 import { twMerge } from 'tailwind-merge'
 
 export type FileCardProps = {
@@ -36,6 +35,7 @@ const FileCard = ({
         'relative flex h-[132px] flex-col justify-between rounded-lg border-2 border-category-600 bg-white p-4 lg:h-48',
         className,
       )}
+      data-cy="file-card"
     >
       <div className="flex flex-col gap-1">
         {/* FIXME Typography. Convert to use Typography. Issue: Different font weight than figma h3 */}
@@ -46,6 +46,7 @@ const FileCard = ({
           variant="underlineOnHover"
           target="_blank"
           rel="noreferrer"
+          data-cy="file-card-download"
           aria-label={
             ariaLabel ?? t('FileList.aria.downloadFileAriaLabel', { title, format, size })
           }
