@@ -25,6 +25,7 @@ describe('S01 - ', { testIsolation: false }, () => {
           cy.dataCy('pages-tab').should('be.visible')
           cy.dataCy('articles-tab').should('be.visible')
           cy.dataCy('users-tab').should('be.visible')
+          cy.dataCy('regulations-tab').should('be.visible')
           cy.dataCy('officialBoard-tab').should('be.visible')
 
           cy.dataCy('search-section-Stránky').scrollIntoView().should('be.visible')
@@ -37,6 +38,11 @@ describe('S01 - ', { testIsolation: false }, () => {
           })      
           cy.dataCy('search-section-Kontakty').scrollIntoView().should('be.visible')
           cy.dataCy('search-section-Kontakty').should('contain', 'Zadajte hľadaný výraz')   
+
+          cy.dataCy('search-section-VZN').scrollIntoView().should('be.visible')
+          cy.dataCy('search-section-VZN').then((section) => {
+            cy.wrap(Cypress.$('[data-cy=search-results]', section)).find('[data-cy=search-result-card]').should('exist')
+          })      
 
           cy.get('[data-cy^=search-section-Úradná]').scrollIntoView().should('be.visible')
           cy.get('[data-cy^=search-section-Úradná]').then((section) => {
@@ -72,9 +78,17 @@ describe('S01 - ', { testIsolation: false }, () => {
 
         it('4. Checking search results - contacts.', () => {
           cy.visit('/vyhladavanie')
-          cy.get('[data-cy=users-tab]').click()
           cy.get('[data-cy=search-field]').type("primátor{enter}")
+          cy.get('[data-cy=users-tab]').click()
           cy.dataCy('users-tab').should('have.class', 'selected:bg-category-700')
+          cy.dataCy('search-results').find('[data-cy=search-result-card]').should('exist')
+        })
+
+        it('4. Checking search results - regulations.', () => {
+          cy.visit('/vyhladavanie')
+          cy.get('[data-cy=regulations-tab]').click()
+          cy.get('[data-cy=search-field]').type("VZN{enter}")
+          cy.dataCy('regulations-tab').should('have.class', 'selected:bg-category-700')
           cy.dataCy('search-results').find('[data-cy=search-result-card]').should('exist')
         })
 
