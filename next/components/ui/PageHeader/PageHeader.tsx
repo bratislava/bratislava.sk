@@ -6,7 +6,7 @@ import { generateImageSizes } from '@utils/generateImageSizes'
 import { getCommonLinkProps } from '@utils/getCommonLinkProps'
 import cx from 'classnames'
 import Image from 'next/image'
-import { PropsWithChildren } from 'react'
+import React, { PropsWithChildren } from 'react'
 import { twMerge } from 'tailwind-merge'
 
 import Button from '../../forms/simple-components/Button'
