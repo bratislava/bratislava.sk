@@ -67,7 +67,7 @@ const PageHeader = ({
 
             {(title || subtext) && (
               <div className="flex max-w-[800px] flex-col gap-y-1 lg:gap-y-4">
-                {title && <Typography type="h1">{title}</Typography>}
+                {title && <Typography type="h1" data-cy="page-heading">{title}</Typography>}
                 {subtext && (
                   <Typography type="p" size="p-large">
                     {subtext}

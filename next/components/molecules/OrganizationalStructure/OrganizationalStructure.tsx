@@ -32,7 +32,7 @@ const OrganizationalStructure = ({ title }: OrganizationalStructureProps) => {
     <div className="flex flex-col gap-4">
       <Typography type="h2">{title}</Typography>
 
-      <div className="flex flex-col">
+      <div className="flex flex-col" data-cy="organizational-structure-container">
         {data.groups.map((group) => (
           <OrganizationalStructureTopLevelAccordion group={group} key={group.id} />
         ))}
