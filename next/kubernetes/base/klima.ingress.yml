@@ -1,0 +1,39 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: klima-${BUILD_REPOSITORY_NAME}-ingress
+  namespace: ${NAMESPACE}
+  labels:
+    service: redirect
+  annotations:
+    cert-manager.io/cluster-issuer: cloudflare-dns01
+    cert-manager.io/issue-temporary-certificate: 'true'
+    kubernetes.io/ingress.class: haproxy
+    ingress.kubernetes.io/redirect-to: https://${BRATISKA_HOSTNAME}/zivotne-prostredie-a-vystavba/klima/klimaticky-plan
+spec:
+  tls:
+    - hosts:
+        - klima.${DEPLOYMENT_ENV}bratislava.sk
+        - www.klima.${DEPLOYMENT_ENV}bratislava.sk
+      secretName: klima-${BUILD_REPOSITORY_NAME}-tls
+  rules:
+    - host: klima.${DEPLOYMENT_ENV}bratislava.sk
+      http:
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: ${BUILD_REPOSITORY_NAME}-app
+                port:
+                  number: 80
+    - host: www.klima.${DEPLOYMENT_ENV}bratislava.sk
+      http:
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: ${BUILD_REPOSITORY_NAME}-app
+                port:
+                  number: 80
