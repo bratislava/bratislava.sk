@@ -84,7 +84,7 @@ describe('S01 - ', { testIsolation: false }, () => {
           cy.dataCy('search-results').find('[data-cy=search-result-card]').should('exist')
         })
 
-        it('4. Checking search results - regulations.', () => {
+        it('5. Checking search results - regulations.', () => {
           cy.visit('/vyhladavanie')
           cy.get('[data-cy=regulations-tab]').click()
           cy.get('[data-cy=search-field]').type("VZN{enter}")
@@ -92,7 +92,7 @@ describe('S01 - ', { testIsolation: false }, () => {
           cy.dataCy('search-results').find('[data-cy=search-result-card]').should('exist')
         })
 
-        it('5. Checking search results - official board.', () => {
+        it('6. Checking search results - official board.', () => {
           cy.visit('/vyhladavanie')
           cy.get('[data-cy=officialBoard-tab]').click()
           cy.get('[data-cy=search-field]').type("MHD{enter}")
