@@ -41,22 +41,22 @@ const OrganizationalStructureAccordionCard = ({
         className={twMerge('min-w-66 max-w-88 flex flex-col px-6 py-8', className)}
         overflowVisible
       >
-        <Typography type="h4" className="pb-2">
+        <Typography type="h4" className="pb-2" data-cy="structure-accordion-card-name">
           {displayName}
         </Typography>
-        <div className="text-small lg:text-default pb-6 text-font/75">{jobTitle}</div>
+        <div className="text-small lg:text-default pb-6 text-font/75" data-cy="structure-accordion-card-job">{jobTitle}</div>
         <div className="flex justify-between">
           <div>
             <div className="flex gap-x-4 pb-3">
               {!heading && <Phone className="max-md:hidden" />}
               {businessPhones?.length
                 ? businessPhones.map((phone) => (
-                    <div key={phone} className="text-default flex items-center font-semibold">
+                    <div key={phone} className="text-default flex items-center font-semibold" data-cy="structure-accordion-card-phone">
                       {phone}
                     </div>
                   ))
                 : mobilePhone && (
-                    <div className="text-default flex items-center font-semibold">
+                    <div className="text-default flex items-center font-semibold" data-cy="structure-accordion-card-phone">
                       {mobilePhone}
                     </div>
                   )}
@@ -66,7 +66,7 @@ const OrganizationalStructureAccordionCard = ({
                 {!heading && <Mail className="max-md:hidden" />}
                 <div className="text-small lg:text-default font-semibold underline underline-offset-2">
                   <div className="flex lg:hidden">{mailUserName + mailOrganization}</div>
-                  <div className="hidden lg:flex">
+                  <div className="hidden lg:flex" data-cy="structure-accordion-card-phone">
                     {mailUserName && mailUserName.length > mailBreakpoint
                       ? mailUserName
                       : mailUserName + mailOrganization}

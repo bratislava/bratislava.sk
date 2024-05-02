@@ -18,7 +18,7 @@ const OrganizationalStructureTopLevelAccordion = ({
   const [open, setOpen] = useToggle()
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col" data-cy="organizational-structure-accordion">
       <div className="flex cursor-pointer flex-col gap-y-8 pt-8" onClick={setOpen}>
         <div className="flex items-center lg:px-5">
           <div className="mr-6 h-6 w-6 shrink-0 rounded-full bg-category-600 lg:h-8 lg:w-8" />
@@ -32,7 +32,7 @@ const OrganizationalStructureTopLevelAccordion = ({
         <div className="h-1 w-full rounded-sm border border-transparent bg-category-200" />
       </div>
       {open && (
-        <div className="px-5 pt-8">
+        <div className="px-5 pt-8" data-cy="organizational-structure-accordion-content">
           {group.users.length > 0 && <OrganizationalStructureAccordionCards users={group.users} />}
           {group.groups.map((groupInner) => (
             <OrganizationalStructureAccordion key={groupInner.id} group={groupInner} level={1} />

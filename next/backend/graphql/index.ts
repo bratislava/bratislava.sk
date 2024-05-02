@@ -1642,6 +1642,7 @@ export enum Enum_Componentmenumenusection_Icon {
   Doprava_02 = 'doprava_02',
   Dotacie_05 = 'dotacie_05',
   Kalendar_06 = 'kalendar_06',
+  Klima_03 = 'klima_03',
   Komunity_06 = 'komunity_06',
   Koncepcia_06 = 'koncepcia_06',
   Mapy_02 = 'mapy_02',

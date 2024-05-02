@@ -47,7 +47,7 @@ const FileList = ({
             )}
             {variantFileList === 'grid' && (
               <div>
-                <div className="mt-6 hidden grid-cols-3 gap-8 lg:grid">
+                <div className="mt-6 hidden grid-cols-3 gap-8 lg:grid" data-cy="file-wrapper-desktop">
                   {fileSection?.files.map((file, fileIndex) => (
                     // eslint-disable-next-line react/no-array-index-key
                     <div key={fileIndex} className="w-full">
@@ -55,7 +55,7 @@ const FileList = ({
                     </div>
                   ))}
                 </div>
-                <div className="lg:hidden">
+                <div className="lg:hidden" data-cy="file-wrapper-mobile">
                   <ResponsiveCarousel
                     items={fileSection?.files.map((file, fileIndex) => (
                       // eslint-disable-next-line react/no-array-index-key
