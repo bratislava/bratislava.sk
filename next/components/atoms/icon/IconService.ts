@@ -5,6 +5,7 @@ import Calendar48pxIcon from '@assets/images/menu-icons/48px/calendar_48px.svg'
 import Castle48pxFilledIcon from '@assets/images/menu-icons/48px/castle_48px_filled.svg'
 import Castle48pxStrokeIcon from '@assets/images/menu-icons/48px/castle_48px_stroke.svg'
 import Children48pxIcon from '@assets/images/menu-icons/48px/children_48px.svg'
+import Clima48pxIcon from '@assets/images/menu-icons/48px/clima_48px.svg'
 import Community48pxIcon from '@assets/images/menu-icons/48px/community_48px.svg'
 import Coordination48pxIcon from '@assets/images/menu-icons/48px/coordination_48px.svg'
 import CouncilBuilding48pxIcon from '@assets/images/menu-icons/48px/councilBuilding_48px.svg'
@@ -163,6 +164,7 @@ export const ICON_URL_MAP: IconUrlMap = {
     vystavba_a_nehnutelnosti_03: Accommodation48pxIcon,
     rozvoj_mesta_03: Crane48pxIcon,
     verejne_osvetlenie_03: StreetLampOn48pxIcon,
+    klima_03: Clima48pxIcon,
     byvanie_04: Accommodation48pxIcon,
     sluzby_04: SocialService48pxIcon,
     zariadenia_04: SocialFacility48pxIcon,
