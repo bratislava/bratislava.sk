@@ -43,6 +43,8 @@ describe('S02 - ', { testIsolation: false }, () => {
           cy.dataCy('search-section-Stránky').should('contain', 'Žiadne výsledky')
           cy.dataCy('search-section-Články').should('be.visible')
           cy.dataCy('search-section-Články').should('contain', 'Žiadne výsledky')
+          cy.dataCy('search-section-VZN').should('be.visible')
+          cy.dataCy('search-section-VZN').should('contain', 'Žiadne výsledky')
           cy.dataCy('search-section-Kontakty').should('be.visible')
           cy.dataCy('search-section-Kontakty').should('contain', 'Žiadne výsledky')
         })
