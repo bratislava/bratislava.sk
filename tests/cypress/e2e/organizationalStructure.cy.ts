@@ -13,7 +13,10 @@ describe('OS01 -', { testIsolation: false }, () => {
         })
 
         it('1. Check organizational structure data.', () => {
-          cy.dataCy('page-heading').should('contain', 'Organizačná štruktúra a kontakty')
+          cy.dataCy('page-heading').invoke('text').then((text) => {
+            expect(text.replace(/\u00a0/g, ' ')).equal('Organizačná štruktúra a kontakty')
+          })
+
           cy.dataCy('organizational-structure-container').then((container) => {
             cy.wrap(Cypress.$(`[data-cy=organizational-structure-accordion]`, container)).should('have.length', 3)
             cy.wrap(Cypress.$(`[data-cy=organizational-structure-accordion]`, container).eq(0)).should('contain', 'Magistrát hlavného mesta SR Bratislavy')
@@ -28,19 +31,31 @@ describe('OS01 -', { testIsolation: false }, () => {
             cy.wrap(Cypress.$(`[data-cy=structure-accordion-card-job]`, content)).should('contain', 'Primátor')
             cy.wrap(Cypress.$(`[data-cy=structure-accordion-card-name]`, content)).should('contain', 'Vallo Matúš, Ing. arch.')
             cy.wrap(Cypress.$(`[data-cy=structure-accordion-card-phone]`, content)).should('contain', '+421-904099004')
-            cy.wrap(Cypress.$(`[data-cy=structure-accordion-card-email]`, content)).should('contain', 'primator@bratislava.sk')
+
 
             if (device === 'mobile') {
+              cy.wrap(Cypress.$(`[data-cy=structure-accordion-card-email-mobile]`, content)).should('contain', 'primator@bratislava.sk')
               cy.dataCy('file-wrapper-mobile').within((wrapper) => {
                 cy.wrap(Cypress.$(`[data-cy=file-card]`, wrapper)).should('exist')
+
+                cy.wrap(Cypress.$(`[data-cy=file-card-download]`, wrapper)).should('exist')
+                cy.wrap(Cypress.$(`[data-cy=file-card-download]`, wrapper))
+                  .should('have.attr', 'href')
+                  .should('not.be.empty')
+                  .and('include', '.pdf')
               })
             } else {
+              cy.wrap(Cypress.$(`[data-cy=structure-accordion-card-email]`, content)).should('contain', 'primator@bratislava.sk')
               cy.dataCy('file-wrapper-desktop').within((wrapper) => {
                 cy.wrap(Cypress.$(`[data-cy=file-card]`, wrapper)).should('exist')
-              })
+
+                cy.wrap(Cypress.$(`[data-cy=file-card-download]`, wrapper)).should('exist')
+                cy.wrap(Cypress.$(`[data-cy=file-card-download]`, wrapper))
+                  .should('have.attr', 'href')
+                  .should('not.be.empty')
+                  .and('include', '.pdf')
+              })  
             }
-            
-            cy.wrap(Cypress.$(`[data-cy=file-card-download]`, content)).should('have.attr', 'href').and('include', '.pdf')
           })
         })        
       })
