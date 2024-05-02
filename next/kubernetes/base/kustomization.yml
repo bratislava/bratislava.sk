@@ -7,6 +7,7 @@ resources:
   - izba.ingress.yml
   - nocnapomoc.ingress.yml
   - old_aliases.ingress.yml
+  - klima.ingress.yml
 configurations:
   - configuration.yml
 

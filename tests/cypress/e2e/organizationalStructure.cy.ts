@@ -32,7 +32,6 @@ describe('OS01 -', { testIsolation: false }, () => {
             cy.wrap(Cypress.$(`[data-cy=structure-accordion-card-name]`, content)).should('contain', 'Vallo Matúš, Ing. arch.')
             cy.wrap(Cypress.$(`[data-cy=structure-accordion-card-phone]`, content)).should('contain', '+421-904099004')
 
-
             if (device === 'mobile') {
               cy.wrap(Cypress.$(`[data-cy=structure-accordion-card-email-mobile]`, content)).should('contain', 'primator@bratislava.sk')
               cy.dataCy('file-wrapper-mobile').within((wrapper) => {
