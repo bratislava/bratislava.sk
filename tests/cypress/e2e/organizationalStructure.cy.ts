@@ -9,12 +9,12 @@ describe('OS01 -', { testIsolation: false }, () => {
       context(device, Cypress.env('resolution')[`${device}`], () => {
 
         before(() => {
-          cy.visit('/mesto-bratislava/sprava-mesta/magistrat/organizacna-struktura-a-kontakty')
+          cy.visit('/mesto-bratislava/sprava-mesta/magistrat/organizacna-struktura')
         })
 
         it('1. Check organizational structure data.', () => {
           cy.dataCy('page-heading').invoke('text').then((text) => {
-            expect(text.replace(/\u00a0/g, ' ')).equal('Organizačná štruktúra a kontakty')
+            expect(text.replace(/\u00a0/g, ' ')).equal('Organizačná štruktúra')
           })
 
           cy.dataCy('organizational-structure-container').then((container) => {
