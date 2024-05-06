@@ -31,6 +31,11 @@ const nextConfig = {
   async rewrites() {
     return {
       beforeFiles: [
+        // robots.txt https://medium.com/@rahulsharmaah/how-to-generate-robots-txt-in-next-js-8e0bccc96b8c
+        {
+          source: '/robots.txt',
+          destination: '/api/robots',
+        },
         // Graphql Proxy
         {
           source: '/graphql',
@@ -57,11 +62,6 @@ const nextConfig = {
   },
   async redirects() {
     return [
-      {
-        source: '/robots.txt',
-        destination: '/api/robots',
-        permanent: true,
-      },
       {
         source: '/sprava/:path*',
         destination: '/blog/:path*',
