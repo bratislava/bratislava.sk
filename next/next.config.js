@@ -79,7 +79,17 @@ const nextConfig = {
       },
       {
         source: '/organizacna-struktura',
-        destination: '/mesto-bratislava/sprava-mesta/magistrat/organizacna-struktura-a-kontakty',
+        destination: '/mesto-bratislava/sprava-mesta/magistrat/organizacna-struktura',
+        permanent: true,
+      },
+      {
+        source: '/mesto-bratislava/sprava-mesta/magistrat/organizacna-struktura-a-kontakty',
+        destination: '/mesto-bratislava/sprava-mesta/magistrat/organizacna-struktura',
+        permanent: true,
+      },
+      {
+        source: '/uradne-a-navstevne-hodiny',
+        destination: '/kontakty',
         permanent: true,
       },
       {
