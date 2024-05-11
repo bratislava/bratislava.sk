@@ -65,8 +65,8 @@ const OrganizationalStructureAccordionCard = ({
               <div className="flex gap-x-4">
                 {!heading && <Mail className="max-md:hidden" />}
                 <div className="text-small lg:text-default font-semibold underline underline-offset-2">
-                  <div className="flex lg:hidden">{mailUserName + mailOrganization}</div>
-                  <div className="hidden lg:flex" data-cy="structure-accordion-card-phone">
+                  <div className="flex lg:hidden" data-cy="structure-accordion-card-email-mobile">{mailUserName + mailOrganization}</div>
+                  <div className="hidden lg:flex" data-cy="structure-accordion-card-email">
                     {mailUserName && mailUserName.length > mailBreakpoint
                       ? mailUserName
                       : mailUserName + mailOrganization}
