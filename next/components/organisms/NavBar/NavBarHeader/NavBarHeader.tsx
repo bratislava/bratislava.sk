@@ -65,6 +65,7 @@ const NavBarHeader = ({ className }: NavBarProps) => {
               size="small"
               variant="category-solid"
               hasLinkIcon={false}
+              data-cy="account-button"
               {...getCommonLinkProps(accountLink)}
             />
           ) : (

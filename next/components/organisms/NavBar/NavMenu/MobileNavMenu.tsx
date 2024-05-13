@@ -70,6 +70,7 @@ const MobileNavMenu = () => {
                     size="small"
                     variant="category-solid"
                     fullWidthMobile
+                    data-cy="mobile-account-button"
                     {...getCommonLinkProps(accountLink)}
                   />
                 </NavigationMenu.Link>
