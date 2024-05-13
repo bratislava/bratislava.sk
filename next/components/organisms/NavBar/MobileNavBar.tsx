@@ -47,6 +47,7 @@ const MobileNavBar = ({ className }: MobileNavBarProps) => {
                   variant="underlined"
                   href={otherLanguage.path}
                   locale={otherLanguage.locale}
+                  data-cy="mobile-change-language-button"
                 >
                   {otherLanguage.shortName}
                 </MLink>
