@@ -51,7 +51,12 @@ const Markdown = ({ content, variant = 'default' }: MarkdownProps) => {
         h5: ({ node, level, ...props }) => <h5 className="text-h4 font-medium" {...props} />,
         h6: ({ node, level, ...props }) => <h6 className="text-h5" {...props} />,
         p: ({ node, ...props }) => (
-          <Typography type="p" size="p-large" className="whitespace-pre-wrap" {...props} />
+          <Typography
+            type="p"
+            size={variant === 'small' ? 'p-small' : 'p-large'}
+            className="whitespace-pre-wrap"
+            {...props}
+          />
         ),
         strong: ({ node, ...props }) => <strong className="font-semibold" {...props} />,
         a: ({ node, href, title, children, ...props }) => {
