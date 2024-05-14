@@ -15,9 +15,9 @@ describe('Account button', { testIsolation: false }, () => {
         it('1. Checking account button.', () => {
           if (device === 'desktop') {
             cy.dataCy('account-button').should('be.visible')
-              .then(($a) => {
-                expect($a).to.have.attr('target', '_blank')
-                $a.attr('target', '_self')
+              .then(($accountButton) => {
+                expect($accountButton).to.have.attr('target', '_blank')
+                $accountButton.attr('target', '_self')
               })
             cy.dataCy('account-button').click()
             cy.url().should('include', 'https://konto.bratislava.sk/prihlasenie');
