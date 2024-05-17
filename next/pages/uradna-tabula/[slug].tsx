@@ -8,11 +8,12 @@ import { GeneralQuery } from '@backend/graphql'
 import { client } from '@backend/graphql/gql'
 import PageLayout from '@components/layouts/PageLayout'
 import OfficialBoardDocumentPageContent from '@components/pages/OfficialBoardDocumentPageContent'
-import { base64Decode } from '@utils/base64'
-import { GeneralContextProvider } from '@utils/generalContext'
 import { GetServerSideProps } from 'next'
 import Head from 'next/head'
 import * as React from 'react'
+
+import { base64Decode } from '@/utils/base64'
+import { GeneralContextProvider } from '@/utils/generalContext'
 
 type StaticParams = ParsedUrlQuery & {
   slug: string

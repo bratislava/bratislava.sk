@@ -4,10 +4,11 @@ import CategoryCardShowcase from '@components/styleguide/showcases/CategoryCardS
 import ContactsShowcase from '@components/styleguide/showcases/ContactsShowcase'
 import EventCardShowcase from '@components/styleguide/showcases/EventCardShowcase'
 import HomepageHorizontalCardShowcase from '@components/styleguide/showcases/HomepageHorizontalCardShowcase'
-import { isProductionDeployment } from '@utils/utils'
 import InputFieldShowCase from 'components/styleguide/showcases/InputFieldShowCase'
 import TooltipShowCase from 'components/styleguide/showcases/TooltipShowCase'
 import { GetServerSideProps } from 'next'
+
+import { isProductionDeployment } from '@/utils/utils'
 
 import AlertShowCase from '../components/styleguide/showcases/AlertShowCase'
 import BannerShowCase from '../components/styleguide/showcases/BannerShowCase'

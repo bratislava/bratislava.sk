@@ -1,5 +1,6 @@
 import Bookmarks from '@components/ui/Bookmarks/Bookmarks'
-import { useHomepageContext } from '@utils/homepageContext'
+
+import { useHomepageContext } from '@/utils/homepageContext'
 
 const BookmarksHomepageSection = () => {
   const { homepage } = useHomepageContext()

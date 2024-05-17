@@ -15,7 +15,8 @@ import { Enum_Page_Pagecolor, Enum_Pagecategory_Color } from '@backend/graphql'
 import MLink from '@components/forms/simple-components/MLink'
 import CardBase from '@components/molecules/presentation/CardBase'
 import CardContent from '@components/molecules/presentation/CardContent'
-import { getCategoryColorLocalStyle } from '@utils/colors'
+
+import { getCategoryColorLocalStyle } from '@/utils/colors'
 
 const findIconByColor = (pageColor: Enum_Pagecategory_Color) => {
   const icons = {

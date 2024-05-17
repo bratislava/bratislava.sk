@@ -7,12 +7,13 @@ import SearchBar from '@components/organisms/SearchSection/SearchBar'
 import SearchResults from '@components/organisms/SearchSection/SearchResults'
 import { SearchFilters } from '@components/organisms/SearchSection/useQueryBySearchOption'
 import { useIsFetching } from '@tanstack/react-query'
-import { getCategoryColorLocalStyle } from '@utils/colors'
 import { useTranslations } from 'next-intl'
 import React, { useEffect, useRef, useState } from 'react'
 import { Selection, TagGroup, TagList } from 'react-aria-components'
 import { StringParam, useQueryParam, withDefault } from 'use-query-params'
 import { useDebounce } from 'usehooks-ts'
+
+import { getCategoryColorLocalStyle } from '@/utils/colors'
 
 /*
  * RAC library recommends Selection as type for selection state, which is of type `'all' | Set`.

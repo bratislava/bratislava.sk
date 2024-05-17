@@ -1,6 +1,7 @@
 import { PageHeaderSectionsFragment } from '@backend/graphql'
-import { isPresent } from '@utils/utils'
 import React from 'react'
+
+import { isPresent } from '@/utils/utils'
 
 import SubpageListPageHeaderSection from './sections/pageHeader/SubpageListPageHeaderSection'
 

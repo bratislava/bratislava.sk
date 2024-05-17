@@ -1,10 +1,11 @@
 import { InfoIcon } from '@assets/ui-icons'
 import { ComparisonSectionFragment } from '@backend/graphql'
 import { Typography } from '@bratislava/component-library'
-import { isDefined } from '@utils/isDefined'
 import cx from 'classnames'
 import Image from 'next/image'
 import React from 'react'
+
+import { isDefined } from '@/utils/isDefined'
 
 import ComparisonCard from '../../ComparisonCard'
 

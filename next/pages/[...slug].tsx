@@ -8,14 +8,15 @@ import {
   LocalizationsProvider,
 } from '@components/providers/LocalizationsProvider'
 import { DehydratedState, HydrationBoundary } from '@tanstack/react-query'
-import { GlobalCategoryColorProvider } from '@utils/colors'
-import { GeneralContextProvider } from '@utils/generalContext'
-import { isDefined } from '@utils/isDefined'
-import { prefetchPageSections } from '@utils/prefetchPageSections'
-import { useTitle } from '@utils/useTitle'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import Head from 'next/head'
 import React from 'react'
+
+import { GlobalCategoryColorProvider } from '@/utils/colors'
+import { GeneralContextProvider } from '@/utils/generalContext'
+import { isDefined } from '@/utils/isDefined'
+import { prefetchPageSections } from '@/utils/prefetchPageSections'
+import { useTitle } from '@/utils/useTitle'
 
 type PageProps = {
   general: GeneralQuery

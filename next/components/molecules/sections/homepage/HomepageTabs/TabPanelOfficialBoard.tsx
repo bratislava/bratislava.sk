@@ -10,12 +10,13 @@ import SearchResultCard from '@components/organisms/SearchSection/SearchResultCa
 import { SearchResult } from '@components/organisms/SearchSection/useQueryBySearchOption'
 import LoadingSpinner from '@components/ui/LoadingSpinner/LoadingSpinner'
 import { useQuery } from '@tanstack/react-query'
-import { base64Encode } from '@utils/base64'
-import { getCommonLinkProps } from '@utils/getCommonLinkProps'
-import { useHomepageContext } from '@utils/homepageContext'
-import { formatDate } from '@utils/local-date'
 import React from 'react'
 import { TabPanel } from 'react-aria-components'
+
+import { base64Encode } from '@/utils/base64'
+import { getCommonLinkProps } from '@/utils/getCommonLinkProps'
+import { useHomepageContext } from '@/utils/homepageContext'
+import { formatDate } from '@/utils/local-date'
 
 const TabPanelOfficialBoard = () => {
   const { homepage } = useHomepageContext()

@@ -4,7 +4,6 @@ import '../styles/globals.css'
 
 import { NavMenuContextProvider } from '@components/organisms/NavBar/NavMenu/navMenuContext'
 import BAI18nProvider from '@components/providers/BAI18nProvider'
-import { isProductionDeployment } from '@utils/utils'
 import { AppProps } from 'next/app'
 import { Inter } from 'next/font/google'
 import Head from 'next/head'
@@ -13,6 +12,8 @@ import PlausibleProvider from 'next-plausible'
 import { NextAdapter } from 'next-query-params'
 import { OverlayProvider } from 'react-aria'
 import { QueryParamProvider } from 'use-query-params'
+
+import { isProductionDeployment } from '@/utils/utils'
 
 import BAQueryClientProvider from '../components/providers/BAQueryClientProvider'
 

@@ -8,12 +8,13 @@ import BlogPostCard from '@components/molecules/presentation/BlogPostCard'
 import ResponsiveCarousel from '@components/organisms/Carousel/ResponsiveCarousel'
 import SectionContainer from '@components/ui/SectionContainer/SectionContainer'
 import { useQuery } from '@tanstack/react-query'
-import { getCategoryColorLocalStyle } from '@utils/colors'
-import { generateImageSizes } from '@utils/generateImageSizes'
-import { isDefined } from '@utils/isDefined'
-import { getNumericLocalDate } from '@utils/local-date'
 import { useLocale, useTranslations } from 'next-intl'
 import React from 'react'
+
+import { getCategoryColorLocalStyle } from '@/utils/colors'
+import { generateImageSizes } from '@/utils/generateImageSizes'
+import { isDefined } from '@/utils/isDefined'
+import { getNumericLocalDate } from '@/utils/local-date'
 
 type Props = {
   page: PageEntityFragment

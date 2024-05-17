@@ -6,12 +6,13 @@ import LoadingSpinner from '@components/ui/LoadingSpinner/LoadingSpinner'
 import NoResultsFound from '@components/ui/NoResultsFound/NoResultsFound'
 import Pagination from '@components/ui/Pagination/Pagination'
 import RegulationListItem from '@components/ui/RegulationListItem/RegulationListItem'
-import DocumentListCategorysMap from '@utils/documentListCategory'
-import useGetSwrExtras from '@utils/useGetSwrExtras'
-import { isPresent } from '@utils/utils'
 import { SearchResponse } from 'meilisearch'
 import { useTranslations } from 'next-intl'
 import useSwr from 'swr'
+
+import DocumentListCategorysMap from '@/utils/documentListCategory'
+import useGetSwrExtras from '@/utils/useGetSwrExtras'
+import { isPresent } from '@/utils/utils'
 
 const Documents = ({ data }: { data: SearchResponse<VznMeili>; filters: VznFilters }) => {
   const t = useTranslations()

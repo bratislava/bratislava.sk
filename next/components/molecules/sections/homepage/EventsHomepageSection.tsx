@@ -3,10 +3,11 @@ import Button from '@components/forms/simple-components/Button'
 import EventCard from '@components/molecules/presentation/EventCard'
 import ResponsiveCarousel from '@components/organisms/Carousel/ResponsiveCarousel'
 import SectionContainer from '@components/ui/SectionContainer/SectionContainer'
-import { generateImageSizes } from '@utils/generateImageSizes'
-import { getCommonLinkProps } from '@utils/getCommonLinkProps'
-import { useHomepageContext } from '@utils/homepageContext'
 import React from 'react'
+
+import { generateImageSizes } from '@/utils/generateImageSizes'
+import { getCommonLinkProps } from '@/utils/getCommonLinkProps'
+import { useHomepageContext } from '@/utils/homepageContext'
 
 const imageSizes = generateImageSizes({ default: '100vw', lg: '33vw' })
 

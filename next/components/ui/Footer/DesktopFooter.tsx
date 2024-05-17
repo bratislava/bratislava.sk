@@ -11,9 +11,10 @@ import {
   FooterSocialLinks,
 } from '@components/ui/Footer/FooterShared'
 import SectionContainer from '@components/ui/SectionContainer/SectionContainer'
-import { useGeneralContext } from '@utils/generalContext'
-import { isDefined } from '@utils/isDefined'
 import * as React from 'react'
+
+import { useGeneralContext } from '@/utils/generalContext'
+import { isDefined } from '@/utils/isDefined'
 
 /**
  * Figma: https://www.figma.com/file/17wbd0MDQcMW9NbXl6UPs8/DS-ESBS%3A-Component-library?node-id=7683-20624&t=bWqVCwkV1Gv1qULG-0

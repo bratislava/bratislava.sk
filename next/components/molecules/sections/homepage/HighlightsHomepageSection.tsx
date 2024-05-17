@@ -2,11 +2,12 @@ import { Typography } from '@bratislava/component-library'
 import BlogPostCard from '@components/molecules/presentation/BlogPostCard'
 import HomepageHorizontalCard from '@components/molecules/presentation/HomepageHorizontalCard'
 import ResponsiveCarousel from '@components/organisms/Carousel/ResponsiveCarousel'
-import { getCommonLinkProps } from '@utils/getCommonLinkProps'
-import { useHomepageContext } from '@utils/homepageContext'
-import { isDefined } from '@utils/isDefined'
 import { useTranslations } from 'next-intl'
 import React, { Fragment } from 'react'
+
+import { getCommonLinkProps } from '@/utils/getCommonLinkProps'
+import { useHomepageContext } from '@/utils/homepageContext'
+import { isDefined } from '@/utils/isDefined'
 
 const HighlightsHomepageSection = () => {
   const t = useTranslations()

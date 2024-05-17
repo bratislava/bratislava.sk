@@ -6,12 +6,13 @@ import MLink from '@components/forms/simple-components/MLink'
 import FileRowCard from '@components/molecules/presentation/FileRowCard'
 import RegulationCard from '@components/molecules/presentation/RegulationCard/RegulationCard'
 import RegulationDetailMessage from '@components/molecules/presentation/RegulationCard/RegulationDetailMessage'
-import { formatFileExtension } from '@utils/formatFileExtension'
-import { formatFileSize } from '@utils/formatFileSize'
-import { isDefined } from '@utils/isDefined'
 import classNames from 'classnames'
 import { useLocale, useTranslations } from 'next-intl'
 import React, { Fragment } from 'react'
+
+import { formatFileExtension } from '@/utils/formatFileExtension'
+import { formatFileSize } from '@/utils/formatFileSize'
+import { isDefined } from '@/utils/isDefined'
 
 type RegulationPageContentProps = {
   regulation: RegulationEntityFragment

@@ -8,8 +8,9 @@ import { Typography } from '@bratislava/component-library'
 import InbaReleaseHorizontalCard from '@components/molecules/presentation/InbaReleaseHorizontalCard'
 import Pagination from '@components/ui/Pagination/Pagination'
 import { keepPreviousData, useQuery } from '@tanstack/react-query'
-import { formatDate } from '@utils/local-date'
 import React, { useState } from 'react'
+
+import { formatDate } from '@/utils/local-date'
 
 type Props = { section: InbaReleasesSectionFragment }
 

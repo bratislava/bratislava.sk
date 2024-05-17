@@ -4,7 +4,8 @@ import {
   getTootootHomepageEvents,
   TootootEvent,
 } from '@backend/tootoot/homepageTootootEvents.fetcher'
-import { isDefined } from '@utils/isDefined'
+
+import { isDefined } from '@/utils/isDefined'
 
 export type HomepageContext = {
   homepage: HomepageEntityFragment | null

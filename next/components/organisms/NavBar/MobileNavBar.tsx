@@ -4,15 +4,16 @@ import Button from '@components/forms/simple-components/Button'
 import MLink from '@components/forms/simple-components/MLink'
 import AlertBanner from '@components/organisms/NavBar/AlertBanner'
 import { useLocalizations } from '@components/providers/LocalizationsProvider'
-import { getCategoryColorLocalStyle } from '@utils/colors'
 import FocusTrap from 'focus-trap-react'
 import { usePathname } from 'next/navigation'
 import { useTranslations } from 'next-intl'
 import React, { useEffect } from 'react'
+import { twMerge } from 'tailwind-merge'
+
+import { getCategoryColorLocalStyle } from '@/utils/colors'
 
 import MobileNavMenu from './NavMenu/MobileNavMenu'
 import { useNavMenuContext } from './NavMenu/navMenuContext'
-import { twMerge } from 'tailwind-merge'
 
 const Divider = ({ className }: { className?: string }) => {
   return <div aria-hidden className={`h-6 border-r ${className}`} />

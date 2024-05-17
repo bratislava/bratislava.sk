@@ -4,14 +4,15 @@ import SectionContainer from '@bratislava/ui-bratislava/SectionContainer/Section
 import Button from '@components/forms/simple-components/Button'
 import MLink from '@components/forms/simple-components/MLink'
 import { useLocalizations } from '@components/providers/LocalizationsProvider'
-import { getCategoryColorLocalStyle } from '@utils/colors'
-import { useGeneralContext } from '@utils/generalContext'
-import { getCommonLinkProps } from '@utils/getCommonLinkProps'
-import { isDefined } from '@utils/isDefined'
-import { isExternalLink } from '@utils/isExternalLink'
 import SkipToContentButton from 'components/molecules/SkipToContentButton'
 import { useTranslations } from 'next-intl'
 import React from 'react'
+
+import { getCategoryColorLocalStyle } from '@/utils/colors'
+import { useGeneralContext } from '@/utils/generalContext'
+import { getCommonLinkProps } from '@/utils/getCommonLinkProps'
+import { isDefined } from '@/utils/isDefined'
+import { isExternalLink } from '@/utils/isExternalLink'
 
 type NavBarProps = { className?: string }
 

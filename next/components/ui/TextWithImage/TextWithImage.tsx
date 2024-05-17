@@ -1,7 +1,8 @@
 import Markdown from '@components/atoms/Markdown'
-import { generateImageSizes } from '@utils/generateImageSizes'
 import Image from 'next/image'
 import { twMerge } from 'tailwind-merge'
+
+import { generateImageSizes } from '@/utils/generateImageSizes'
 
 export type TextWithImageProps = {
   className?: string

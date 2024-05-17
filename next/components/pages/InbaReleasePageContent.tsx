@@ -9,16 +9,17 @@ import FileRowCard from '@components/molecules/presentation/FileRowCard'
 import ShareButtons from '@components/molecules/ShareButtons'
 import { Breadcrumb } from '@components/ui/Breadcrumbs/Breadcrumbs'
 import NarrowText from '@components/ui/NarrowText/NarrowText'
-import { formatFileExtension } from '@utils/formatFileExtension'
-import { formatFileSize } from '@utils/formatFileSize'
-import { useGeneralContext } from '@utils/generalContext'
-import { isDefined } from '@utils/isDefined'
-import { formatDate } from '@utils/local-date'
-import { getPageBreadcrumbs } from '@utils/page'
 import cx from 'classnames'
 import { useLocale, useTranslations } from 'next-intl'
 import * as React from 'react'
 import { useMemo } from 'react'
+
+import { formatFileExtension } from '@/utils/formatFileExtension'
+import { formatFileSize } from '@/utils/formatFileSize'
+import { useGeneralContext } from '@/utils/generalContext'
+import { isDefined } from '@/utils/isDefined'
+import { formatDate } from '@/utils/local-date'
+import { getPageBreadcrumbs } from '@/utils/page'
 
 export type InbaReleasePageContentProps = {
   inbaRelease: InbaReleaseEntityFragment

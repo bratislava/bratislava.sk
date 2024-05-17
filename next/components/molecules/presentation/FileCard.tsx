@@ -1,10 +1,11 @@
 import { DownloadIcon } from '@assets/ui-icons'
 import { Typography } from '@bratislava/component-library'
 import MLink from '@components/forms/simple-components/MLink'
-import { isDefined } from '@utils/isDefined'
 import { useTranslations } from 'next-intl'
 import React from 'react'
 import { twMerge } from 'tailwind-merge'
+
+import { isDefined } from '@/utils/isDefined'
 
 export type FileCardProps = {
   title: string

@@ -6,12 +6,13 @@ import MLink from '@components/forms/simple-components/MLink'
 import ShareButtons from '@components/molecules/ShareButtons'
 import { Breadcrumb } from '@components/ui/Breadcrumbs/Breadcrumbs'
 import NarrowText from '@components/ui/NarrowText/NarrowText'
-import { useGeneralContext } from '@utils/generalContext'
-import { formatDate, getNumericLocalDate } from '@utils/local-date'
-import { getPageBreadcrumbs } from '@utils/page'
 import { useTranslations } from 'next-intl'
 import * as React from 'react'
 import { useMemo } from 'react'
+
+import { useGeneralContext } from '@/utils/generalContext'
+import { formatDate, getNumericLocalDate } from '@/utils/local-date'
+import { getPageBreadcrumbs } from '@/utils/page'
 
 export type InbaArticlePageContentProps = {
   inbaArticle: InbaArticleEntityFragment

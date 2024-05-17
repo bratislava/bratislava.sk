@@ -1,10 +1,11 @@
 import { Typography } from '@bratislava/component-library'
 import MayorAndCouncilCard from '@components/molecules/presentation/MayorAndCouncilCard'
-import { getCommonLinkProps } from '@utils/getCommonLinkProps'
-import { useHomepageContext } from '@utils/homepageContext'
 import { useTranslations } from 'next-intl'
 import React from 'react'
 import { twMerge } from 'tailwind-merge'
+
+import { getCommonLinkProps } from '@/utils/getCommonLinkProps'
+import { useHomepageContext } from '@/utils/homepageContext'
 
 type Props = {
   className?: string

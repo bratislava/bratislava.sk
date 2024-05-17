@@ -3,9 +3,10 @@ import MLink from '@components/forms/simple-components/MLink'
 import Tag from '@components/forms/simple-components/Tag'
 import CardBase from '@components/molecules/presentation/CardBase'
 import CardContent from '@components/molecules/presentation/CardContent'
-import { getCategoryColorLocalStyle } from '@utils/colors'
-import { getNumericLocalDate } from '@utils/local-date'
 import cx from 'classnames'
+
+import { getCategoryColorLocalStyle } from '@/utils/colors'
+import { getNumericLocalDate } from '@/utils/local-date'
 
 export type BlogItem = {
   attributes?: {

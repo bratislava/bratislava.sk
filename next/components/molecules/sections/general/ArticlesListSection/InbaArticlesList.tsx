@@ -11,11 +11,12 @@ import InbaFeaturedArticlesSection from '@components/molecules/sections/general/
 import InbaArticlesFilter from '@components/ui/InbaArticlesFilter/InbaArticlesFilter'
 import Pagination from '@components/ui/Pagination/Pagination'
 import { keepPreviousData, useQuery } from '@tanstack/react-query'
-import { generateImageSizes } from '@utils/generateImageSizes'
-import { getNumericLocalDate } from '@utils/local-date'
-import { useRoutePreservedState } from '@utils/useRoutePreservedState'
 import { useLocale, useTranslations } from 'next-intl'
 import React from 'react'
+
+import { generateImageSizes } from '@/utils/generateImageSizes'
+import { getNumericLocalDate } from '@/utils/local-date'
+import { useRoutePreservedState } from '@/utils/useRoutePreservedState'
 
 const imageSizes = generateImageSizes({ default: '100vw', md: '50vw', lg: '33vw' })
 

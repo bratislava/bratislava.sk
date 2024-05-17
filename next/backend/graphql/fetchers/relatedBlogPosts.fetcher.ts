@@ -1,5 +1,5 @@
 import { PageEntityFragment } from '@backend/graphql'
-import { isDefined } from '@utils/isDefined'
+import { isDefined } from '@/utils/isDefined'
 import { client } from '@backend/graphql/gql'
 
 const extractTags = (page: PageEntityFragment) => {

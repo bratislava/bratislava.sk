@@ -3,12 +3,13 @@ import PageHeader from '@bratislava/ui-bratislava/PageHeader/PageHeader'
 import Button from '@components/forms/simple-components/Button'
 import ShareButtons from '@components/molecules/ShareButtons'
 import { Breadcrumb } from '@components/ui/Breadcrumbs/Breadcrumbs'
-import { useGeneralContext } from '@utils/generalContext'
-import { getNumericLocalDate } from '@utils/local-date'
-import { getPageBreadcrumbs } from '@utils/page'
 import { useTranslations } from 'next-intl'
 import * as React from 'react'
 import { PropsWithChildren, useMemo } from 'react'
+
+import { useGeneralContext } from '@/utils/generalContext'
+import { getNumericLocalDate } from '@/utils/local-date'
+import { getPageBreadcrumbs } from '@/utils/page'
 
 import Sections from '../molecules/Sections'
 

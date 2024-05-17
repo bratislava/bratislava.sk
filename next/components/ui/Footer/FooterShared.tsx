@@ -3,10 +3,11 @@ import { FooterColumnBlockFragment, FooterFragment } from '@backend/graphql'
 import { Typography } from '@bratislava/component-library'
 import MLink from '@components/forms/simple-components/MLink'
 import { useLocalizations } from '@components/providers/LocalizationsProvider'
-import { getCommonLinkProps } from '@utils/getCommonLinkProps'
-import { isDefined } from '@utils/isDefined'
 import { useTranslations } from 'next-intl'
 import * as React from 'react'
+
+import { getCommonLinkProps } from '@/utils/getCommonLinkProps'
+import { isDefined } from '@/utils/isDefined'
 
 export const FooterSocialLinks = ({ facebookUrl, instagramUrl }: FooterFragment) => {
   return (

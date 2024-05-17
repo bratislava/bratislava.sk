@@ -1,5 +1,6 @@
-import { base64Encode } from '@utils/base64'
 import axios from 'axios'
+
+import { base64Encode } from '@/utils/base64'
 
 export const getOfficialBoardDocumentQueryKey = (documentId: string) => [
   'OfficialBoardDocument',

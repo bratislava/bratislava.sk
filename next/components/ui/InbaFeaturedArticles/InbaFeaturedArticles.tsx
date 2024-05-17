@@ -3,10 +3,11 @@ import BlogPostCard from '@components/molecules/presentation/BlogPostCard'
 import BlogPostHorizontalCard from '@components/molecules/presentation/BlogPostHorizontalCard'
 import BlogPostImageCard from '@components/molecules/presentation/BlogPostImageCard'
 import ResponsiveCarousel from '@components/organisms/Carousel/ResponsiveCarousel'
-import { generateImageSizes } from '@utils/generateImageSizes'
-import { getNumericLocalDate } from '@utils/local-date'
 import { useTranslations } from 'next-intl'
 import React from 'react'
+
+import { generateImageSizes } from '@/utils/generateImageSizes'
+import { getNumericLocalDate } from '@/utils/local-date'
 
 export type InbaFeaturedArticlesProps = {
   articles: InbaArticleEntityFragment[]

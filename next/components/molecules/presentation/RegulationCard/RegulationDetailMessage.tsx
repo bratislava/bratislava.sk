@@ -2,9 +2,10 @@ import { RegulationEntityFragment } from '@backend/graphql'
 import { Typography } from '@bratislava/component-library'
 import Alert from '@components/forms/info-components/Alert'
 import MLink from '@components/forms/simple-components/MLink'
-import { isDefined } from '@utils/isDefined'
-import { formatDate } from '@utils/local-date'
 import React, { Fragment } from 'react'
+
+import { isDefined } from '@/utils/isDefined'
+import { formatDate } from '@/utils/local-date'
 
 type RegulationDetailMessageProps = {
   regulation: RegulationEntityFragment

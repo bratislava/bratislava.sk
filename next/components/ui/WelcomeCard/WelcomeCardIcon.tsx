@@ -5,8 +5,9 @@ import IconEducation from '@bratislava/ui-bratislava/WelcomeCard/IconComponents/
 import IconEnvironment from '@bratislava/ui-bratislava/WelcomeCard/IconComponents/IconEnvironment'
 import IconSocial from '@bratislava/ui-bratislava/WelcomeCard/IconComponents/IconSocial'
 import IconTransport from '@bratislava/ui-bratislava/WelcomeCard/IconComponents/IconTransport'
-import { getCategoryColorLocalStyle, transformIconToCategory } from '@utils/colors'
 import { useMemo } from 'react'
+
+import { getCategoryColorLocalStyle, transformIconToCategory } from '@/utils/colors'
 
 export type IconProps = {
   isColored: boolean

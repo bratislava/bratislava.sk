@@ -35,11 +35,12 @@ import {
 } from '@backend/ms-graph/fetchers/msGraphSearch.fetcher'
 import { SearchOption } from '@components/organisms/SearchSection/GlobalSearchSectionContent'
 import { keepPreviousData, useQuery } from '@tanstack/react-query'
-import { base64Encode } from '@utils/base64'
-import { isDefined } from '@utils/isDefined'
-import { formatDate } from '@utils/local-date'
 import { useLocale, useTranslations } from 'next-intl'
 import { ReactNode } from 'react'
+
+import { base64Encode } from '@/utils/base64'
+import { isDefined } from '@/utils/isDefined'
+import { formatDate } from '@/utils/local-date'
 
 export type SearchFilters =
   | PagesFilters

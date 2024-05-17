@@ -6,10 +6,11 @@ import NarrowText from '@bratislava/ui-bratislava/NarrowText/NarrowText'
 import Markdown from '@components/atoms/Markdown'
 import Button from '@components/forms/simple-components/Button'
 import AccordionV2 from '@components/ui/AccordionV2/AccordionV2'
-import { isDefined } from '@utils/isDefined'
-import { groupByCategory, parsePageLink } from '@utils/page'
-import { isPresent } from '@utils/utils'
 import React from 'react'
+
+import { isDefined } from '@/utils/isDefined'
+import { groupByCategory, parsePageLink } from '@/utils/page'
+import { isPresent } from '@/utils/utils'
 
 type AccordionSectionProps = {
   section: AccordionSectionFragment
