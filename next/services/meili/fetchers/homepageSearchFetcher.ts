@@ -1,5 +1,4 @@
 import { SearchResponse } from 'meilisearch'
-import { Key } from 'swr'
 
 import { meiliClient } from '../meiliClient'
 import { MixedResults } from '../types'
@@ -33,10 +32,13 @@ export type HomepageSearchResult = {
 
 export type HomepageSearchData = SearchResponse<HomepageSearchResult>
 
-export const getHomepageSearchSwrKey = (filters: HomepageSearchFilters, locale: string) =>
-  ['HomepageSearch', filters, locale] as Key
+export const getHomepageSearchKey = (filters: HomepageSearchFilters, locale: string) => [
+  'HomepageSearch',
+  filters,
+  locale,
+]
 
-export const homepageSearchFetcher = (filters: HomepageSearchFilters, locale: string) => () => {
+export const homepageSearchFetcher = (filters: HomepageSearchFilters, locale: string) => {
   return meiliClient
     .index('search_index')
     .search<MixedResults>(filters.search, {

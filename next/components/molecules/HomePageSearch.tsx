@@ -1,7 +1,7 @@
+import { useQuery } from '@tanstack/react-query'
 import { useRouter } from 'next/navigation'
 import { useLocale, useTranslations } from 'next-intl'
 import { Dispatch, SetStateAction, useCallback, useEffect, useRef, useState } from 'react'
-import useSWR from 'swr'
 import { twMerge } from 'tailwind-merge'
 import { useDebounce, useOnClickOutside } from 'usehooks-ts'
 
@@ -9,10 +9,9 @@ import AnimateHeight from '@/components/atoms/AnimateHeight'
 import HomePageSearchField from '@/components/molecules/HomePageSearchField'
 import HomePageSearchResults from '@/components/molecules/HomePageSearchResults'
 import {
-  getHomepageSearchSwrKey,
+  getHomepageSearchKey,
   homepageSearchFetcher,
 } from '@/services/meili/fetchers/homepageSearchFetcher'
-import useGetSwrExtras from '@/utils/useGetSwrExtras'
 
 type HomePageSearchProps = {
   isOpen: boolean
@@ -40,14 +39,9 @@ const HomePageSearch = ({ isOpen, setOpen }: HomePageSearchProps) => {
 
   const filters = { search: searchValue }
 
-  const { data, error } = useSWR(
-    getHomepageSearchSwrKey(filters, locale),
-    homepageSearchFetcher(filters, locale),
-  )
-
-  const { dataToDisplay, loadingAndNoDataToDisplay } = useGetSwrExtras({
-    data,
-    error,
+  const { data, error, isPending } = useQuery({
+    queryKey: getHomepageSearchKey(filters, locale),
+    queryFn: () => homepageSearchFetcher(filters, locale),
   })
 
   const handleSearchPressed = useCallback(() => {
@@ -73,11 +67,7 @@ const HomePageSearch = ({ isOpen, setOpen }: HomePageSearchProps) => {
       <AnimateHeight isVisible={isOpen} className="absolute top-full z-40 mt-2 w-full md:w-[634px]">
         {searchValue ? (
           <div className="rounded-lg border-2 bg-white py-2">
-            <HomePageSearchResults
-              data={dataToDisplay}
-              isLoading={loadingAndNoDataToDisplay}
-              searchValue={searchValue}
-            />
+            <HomePageSearchResults data={data} isLoading={isPending} searchValue={searchValue} />
           </div>
         ) : null}
       </AnimateHeight>
