@@ -32,7 +32,7 @@ export type HomepageSearchResult = {
 
 export type HomepageSearchData = SearchResponse<HomepageSearchResult>
 
-export const getHomepageSearchKey = (filters: HomepageSearchFilters, locale: string) => [
+export const getHomepageSearchQueryKey = (filters: HomepageSearchFilters, locale: string) => [
   'HomepageSearch',
   filters,
   locale,

@@ -9,7 +9,7 @@ import AnimateHeight from '@/components/atoms/AnimateHeight'
 import HomePageSearchField from '@/components/molecules/HomePageSearchField'
 import HomePageSearchResults from '@/components/molecules/HomePageSearchResults'
 import {
-  getHomepageSearchKey,
+  getHomepageSearchQueryKey,
   homepageSearchFetcher,
 } from '@/services/meili/fetchers/homepageSearchFetcher'
 
@@ -40,7 +40,7 @@ const HomePageSearch = ({ isOpen, setOpen }: HomePageSearchProps) => {
   const filters = { search: searchValue }
 
   const { data, error, isPending } = useQuery({
-    queryKey: getHomepageSearchKey(filters, locale),
+    queryKey: getHomepageSearchQueryKey(filters, locale),
     queryFn: () => homepageSearchFetcher(filters, locale),
   })
 

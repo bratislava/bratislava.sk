@@ -17,7 +17,7 @@ import {
   blogPostsFetcher,
   BlogPostsFilters,
   getBlogPostsQueryKey,
-} from '@/services/meili/fetchers/blogPostsFetcherReactQuery'
+} from '@/services/meili/fetchers/blogPostsFetcher'
 import {
   getInbaArticlesQueryKey,
   inbaArticlesFetcher,

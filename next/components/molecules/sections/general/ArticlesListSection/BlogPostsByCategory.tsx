@@ -11,7 +11,7 @@ import {
   blogPostsDefaultFilters,
   blogPostsFetcher,
   getBlogPostsQueryKey,
-} from '@/services/meili/fetchers/blogPostsFetcherReactQuery'
+} from '@/services/meili/fetchers/blogPostsFetcher'
 import { getCategoryColorLocalStyle } from '@/utils/colors'
 import { generateImageSizes } from '@/utils/generateImageSizes'
 import { isDefined } from '@/utils/isDefined'
