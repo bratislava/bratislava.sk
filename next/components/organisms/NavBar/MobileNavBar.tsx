@@ -1,4 +1,3 @@
-import Brand from '@bratislava/ui-bratislava/Brand/Brand'
 import FocusTrap from 'focus-trap-react'
 import { usePathname } from 'next/navigation'
 import { useTranslations } from 'next-intl'
@@ -10,6 +9,7 @@ import Button from '@/components/forms/simple-components/Button'
 import MLink from '@/components/forms/simple-components/MLink'
 import AlertBanner from '@/components/organisms/NavBar/AlertBanner'
 import { useLocalizations } from '@/components/providers/LocalizationsProvider'
+import Brand from '@/components/ui/Brand/Brand'
 import { getCategoryColorLocalStyle } from '@/utils/colors'
 
 import MobileNavMenu from './NavMenu/MobileNavMenu'

@@ -1,8 +1,8 @@
-import Waves from '@bratislava/ui-bratislava/Waves/Waves'
 import cx from 'classnames'
 import React from 'react'
 
 import Button from '@/components/forms/simple-components/Button'
+import Waves from '@/components/ui/Waves/Waves'
 
 import NumericalList from '../NumericalList/NumericalList'
 

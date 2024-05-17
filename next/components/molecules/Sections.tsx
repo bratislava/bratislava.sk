@@ -1,4 +1,3 @@
-import SectionContainer from '@bratislava/ui-bratislava/SectionContainer/SectionContainer'
 import cx from 'classnames'
 import * as React from 'react'
 
@@ -12,6 +11,7 @@ import FeaturedBlogPostsSection from '@/components/molecules/sections/general/Fe
 import InbaReleasesSection from '@/components/molecules/sections/general/InbaReleasesSection'
 import RegulationsSection from '@/components/molecules/sections/general/RegulationsSection'
 import TestimonialsSection from '@/components/molecules/sections/general/TestimonialsSection'
+import SectionContainer from '@/components/ui/SectionContainer/SectionContainer'
 
 import AccordionSection from './sections/general/AccordionSection'
 import BannerSection from './sections/general/BannerSection'

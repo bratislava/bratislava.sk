@@ -1,5 +1,4 @@
 import { Typography } from '@bratislava/component-library'
-import Pagination from '@bratislava/ui-bratislava/Pagination/Pagination'
 import { useTranslations } from 'next-intl'
 import React, { Dispatch, SetStateAction, useEffect } from 'react'
 import { Selection } from 'react-aria-components'
@@ -12,6 +11,7 @@ import {
   useQueryBySearchOption,
 } from '@/components/organisms/SearchSection/useQueryBySearchOption'
 import LoadingSpinner from '@/components/ui/LoadingSpinner/LoadingSpinner'
+import Pagination from '@/components/ui/Pagination/Pagination'
 
 type SearchResultsProps = {
   filters: SearchFilters

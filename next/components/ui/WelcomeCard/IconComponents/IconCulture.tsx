@@ -1,5 +1,6 @@
-import { IconProps } from '@bratislava/ui-bratislava/WelcomeCard/WelcomeCardIcon'
 import React from 'react'
+
+import { IconProps } from '@/components/ui/WelcomeCard/WelcomeCardIcon'
 
 const IconCulture = ({ isColored, className }: IconProps) => {
   const fillColor = isColored ? 'rgb(var(--color-category-600))' : 'white'

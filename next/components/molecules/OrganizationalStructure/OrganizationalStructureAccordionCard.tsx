@@ -1,11 +1,11 @@
 import { Typography } from '@bratislava/component-library'
-import Panel from '@bratislava/ui-bratislava/Panel/Panel'
 import { twMerge } from 'tailwind-merge'
 
 import Mail from '@/assets/images/mail.svg'
 import Phone from '@/assets/images/phone-small.svg'
 import TownHall from '@/assets/images/town-hall.svg'
-import TownHallSmall from '@/assets/images/town-hall-small.svg'
+import TownHallSmall from '@/assets/images/town-hall-small.svg' // TODO do not refactor, but rewrite from scratch
+import Panel from '@/components/ui/Panel/Panel'
 
 // TODO do not refactor, but rewrite from scratch
 

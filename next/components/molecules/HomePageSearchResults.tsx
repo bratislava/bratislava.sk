@@ -1,4 +1,3 @@
-import LoadingSpinner from '@bratislava/ui-bratislava/LoadingSpinner/LoadingSpinner'
 import Link from 'next/link'
 import { useTranslations } from 'next-intl'
 import { useRef } from 'react'
@@ -6,6 +5,7 @@ import { useEventListener } from 'usehooks-ts'
 
 import { ChevronRightIcon } from '@/assets/ui-icons'
 import { HomepageSearchData } from '@/backend/meili/fetchers/homepageSearchFetcher'
+import LoadingSpinner from '@/components/ui/LoadingSpinner/LoadingSpinner'
 
 type HomePageSearchResultsProps = {
   searchValue: string

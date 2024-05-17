@@ -1,10 +1,10 @@
-import BasicSearch from '@bratislava/ui-bratislava/BasicSearch/BasicSearch'
 import { useTranslations } from 'next-intl'
 import { useEffect, useState } from 'react'
 import { useQueryParam } from 'use-query-params'
 import { useDebounce } from 'usehooks-ts'
 
 import { vznDefaultFilters, VznFilters } from '@/backend/meili/fetchers/vznFetcher'
+import BasicSearch from '@/components/ui/BasicSearch/BasicSearch'
 
 import RegulationsResults from './RegulationsResults'
 

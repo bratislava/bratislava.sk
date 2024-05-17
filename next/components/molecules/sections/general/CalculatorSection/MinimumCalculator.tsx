@@ -1,5 +1,4 @@
 import { Typography } from '@bratislava/component-library'
-import Input from '@bratislava/ui-bratislava/Input/Input'
 import { useTranslations } from 'next-intl'
 import React, { FormEvent } from 'react'
 import { twMerge } from 'tailwind-merge'
@@ -7,6 +6,7 @@ import { twMerge } from 'tailwind-merge'
 import MinusIcon from '@/assets/images/minus.svg'
 import PlusIcon from '@/assets/images/plus.svg'
 import Button from '@/components/forms/simple-components/Button'
+import Input from '@/components/ui/Input/Input'
 
 type MinimumCalculatorProps = {
   className?: string

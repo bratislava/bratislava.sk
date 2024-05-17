@@ -1,8 +1,8 @@
-import NarrowText from '@bratislava/ui-bratislava/NarrowText/NarrowText'
 import React from 'react'
 
 import { NarrowTextSectionFragment } from '@/backend/graphql'
 import Markdown from '@/components/atoms/Markdown'
+import NarrowText from '@/components/ui/NarrowText/NarrowText'
 
 type NarrowTextSectionProps = {
   section: NarrowTextSectionFragment

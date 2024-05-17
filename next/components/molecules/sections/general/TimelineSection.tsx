@@ -1,7 +1,7 @@
-import Timeline from '@bratislava/ui-bratislava/Timeline/Timeline'
 import React from 'react'
 
 import { TimelineSectionFragment } from '@/backend/graphql'
+import Timeline from '@/components/ui/Timeline/Timeline'
 import { isDefined } from '@/utils/isDefined'
 
 type TimelineSectionProps = {
