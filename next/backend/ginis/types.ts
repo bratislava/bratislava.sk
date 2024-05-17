@@ -1,4 +1,4 @@
-import { SeznamDokumentuRequestBody } from '@ginis-sdk/api/json/ude/seznam-dokumentu'
+import { SeznamDokumentuRequestBody } from '@/ginis-sdk/api/json/ude/seznam-dokumentu'
 
 export type ParsedOfficialBoardDocument = {
   id: string
