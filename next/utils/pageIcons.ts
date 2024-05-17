@@ -10,7 +10,7 @@ import PageRedIcon from '@/assets/images/page-red-icon.svg'
 import PageRedIconSmall from '@/assets/images/page-red-icon-small.svg'
 import PageYellowIcon from '@/assets/images/page-yellow-icon.svg'
 import PageYellowIconSmall from '@/assets/images/page-yellow-icon-small.svg'
-import { Enum_Pagecategory_Color } from '@/backend/graphql'
+import { Enum_Pagecategory_Color } from '@/services/graphql'
 
 export const findIconByPageColor = (pageColor: Enum_Pagecategory_Color) => {
   const icons = {

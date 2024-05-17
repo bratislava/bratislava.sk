@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import { ComponentProps } from 'react'
 
-import { UploadFile } from '@/backend/graphql'
+import { UploadFile } from '@/services/graphql'
 
 // copied from MKB project https://github.com/bratislava/mestskakniznica.sk/blob/master/next/modules/common/MImage.tsx
 

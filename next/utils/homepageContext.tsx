@@ -1,6 +1,6 @@
 import { createContext, ReactNode, useContext } from 'react'
 
-import type { HomepageContext as HomepageContextType } from '@/backend/fetchers/homepageContextFetcher'
+import type { HomepageContext as HomepageContextType } from '@/services/fetchers/homepageContextFetcher'
 
 const HomepageContext = createContext<HomepageContextType | null>(null)
 

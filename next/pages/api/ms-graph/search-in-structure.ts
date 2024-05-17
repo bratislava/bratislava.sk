@@ -1,9 +1,9 @@
 import axios from 'axios'
 import type { NextApiRequest, NextApiResponse } from 'next' // TODO error types
 
-import { getMsalToken } from '@/backend/ms-graph/server/getMsalToken'
-import { searchInOrgStructure } from '@/backend/ms-graph/server/searchInOrgStructure'
-import { MSGraphFilteredGroupUser } from '@/backend/ms-graph/types'
+import { getMsalToken } from '@/services/ms-graph/server/getMsalToken'
+import { searchInOrgStructure } from '@/services/ms-graph/server/searchInOrgStructure'
+import { MSGraphFilteredGroupUser } from '@/services/ms-graph/types'
 // TODO error types
 
 const handler = async (req: NextApiRequest, res: NextApiResponse<MSGraphFilteredGroupUser[]>) => {

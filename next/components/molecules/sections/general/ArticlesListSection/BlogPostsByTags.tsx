@@ -3,14 +3,14 @@ import { keepPreviousData, useQuery } from '@tanstack/react-query'
 import { useLocale, useTranslations } from 'next-intl'
 import React from 'react'
 
-import { BlogPostsByTagsSectionFragment } from '@/backend/graphql'
+import BlogPostCard from '@/components/molecules/presentation/BlogPostCard'
+import Pagination from '@/components/ui/Pagination/Pagination'
+import { BlogPostsByTagsSectionFragment } from '@/services/graphql'
 import {
   blogPostsDefaultFilters,
   blogPostsFetcher,
   getBlogPostsQueryKey,
-} from '@/backend/meili/fetchers/blogPostsFetcherReactQuery'
-import BlogPostCard from '@/components/molecules/presentation/BlogPostCard'
-import Pagination from '@/components/ui/Pagination/Pagination'
+} from '@/services/meili/fetchers/blogPostsFetcherReactQuery'
 import { getCategoryColorLocalStyle } from '@/utils/colors'
 import { generateImageSizes } from '@/utils/generateImageSizes'
 import { isDefined } from '@/utils/isDefined'

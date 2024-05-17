@@ -2,8 +2,8 @@ import { Typography } from '@bratislava/component-library'
 import cx from 'classnames'
 import React from 'react'
 
-import { IconTitleDescSectionFragment } from '@/backend/graphql'
 import IconTitleDescItem from '@/components/ui/IconTitleDescItem/IconTitleDescItem'
+import { IconTitleDescSectionFragment } from '@/services/graphql'
 import { isDefined } from '@/utils/isDefined'
 
 type IconTitleDescSectionProps = {

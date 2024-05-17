@@ -5,13 +5,13 @@ import useSWR from 'swr'
 import { twMerge } from 'tailwind-merge'
 import { useDebounce, useOnClickOutside } from 'usehooks-ts'
 
-import {
-  getHomepageSearchSwrKey,
-  homepageSearchFetcher,
-} from '@/backend/meili/fetchers/homepageSearchFetcher'
 import AnimateHeight from '@/components/atoms/AnimateHeight'
 import HomePageSearchField from '@/components/molecules/HomePageSearchField'
 import HomePageSearchResults from '@/components/molecules/HomePageSearchResults'
+import {
+  getHomepageSearchSwrKey,
+  homepageSearchFetcher,
+} from '@/services/meili/fetchers/homepageSearchFetcher'
 import useGetSwrExtras from '@/utils/useGetSwrExtras'
 
 type HomePageSearchProps = {

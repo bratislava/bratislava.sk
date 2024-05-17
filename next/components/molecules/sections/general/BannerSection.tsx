@@ -1,7 +1,7 @@
 import React from 'react'
 
-import { BannerSectionFragment } from '@/backend/graphql'
 import Banner from '@/components/ui/Banner/Banner'
+import { BannerSectionFragment } from '@/services/graphql'
 
 type BannerSectionProps = { section: BannerSectionFragment }
 

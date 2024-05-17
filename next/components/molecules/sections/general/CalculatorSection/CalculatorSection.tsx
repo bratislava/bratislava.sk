@@ -1,7 +1,7 @@
 import React from 'react'
 
-import { CalculatorSectionFragment } from '@/backend/graphql'
 import MinimumCalculator from '@/components/molecules/sections/general/CalculatorSection/MinimumCalculator'
+import { CalculatorSectionFragment } from '@/services/graphql'
 
 type CalculatorSectionProps = {
   section: CalculatorSectionFragment

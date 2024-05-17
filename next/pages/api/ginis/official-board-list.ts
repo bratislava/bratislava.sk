@@ -1,10 +1,10 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 
-import { officialBoardListDefaultFilters } from '@/backend/ginis/fetchers/officialBoardListFetcher'
-import { mockedParsedDocuments } from '@/backend/ginis/mocks'
-import { getOfficialBoardParsedList } from '@/backend/ginis/server/getOfficialBoardParsedList'
-import { OfficialBoardListResponse, ParsedOfficialBoardDocument } from '@/backend/ginis/types'
-import { shouldMockGinis } from '@/backend/ginis/utils/shouldMockGinis'
+import { officialBoardListDefaultFilters } from '@/services/ginis/fetchers/officialBoardListFetcher'
+import { mockedParsedDocuments } from '@/services/ginis/mocks'
+import { getOfficialBoardParsedList } from '@/services/ginis/server/getOfficialBoardParsedList'
+import { OfficialBoardListResponse, ParsedOfficialBoardDocument } from '@/services/ginis/types'
+import { shouldMockGinis } from '@/services/ginis/utils/shouldMockGinis'
 
 const handler = async (
   req: NextApiRequest,

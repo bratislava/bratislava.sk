@@ -1,7 +1,7 @@
 import React from 'react'
 
-import { SubpageListPageHeaderSectionFragment } from '@/backend/graphql'
 import SubpageList from '@/components/ui/SubpageList/SubpageList'
+import { SubpageListPageHeaderSectionFragment } from '@/services/graphql'
 import { parsePageLink } from '@/utils/page'
 import { isPresent } from '@/utils/utils'
 

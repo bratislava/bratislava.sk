@@ -2,8 +2,8 @@ import { Typography } from '@bratislava/component-library'
 import cx from 'classnames'
 import Image from 'next/image'
 
-import { UploadImageSrcEntityFragment } from '@/backend/graphql'
 import Markdown from '@/components/atoms/Markdown'
+import { UploadImageSrcEntityFragment } from '@/services/graphql'
 
 type IconTitleDescProps = {
   icon: UploadImageSrcEntityFragment | null | undefined

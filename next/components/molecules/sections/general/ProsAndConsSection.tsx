@@ -3,8 +3,8 @@ import cx from 'classnames'
 import React from 'react'
 
 import { CheckIcon, CrossIcon } from '@/assets/ui-icons'
-import { ProsAndConsSectionFragment } from '@/backend/graphql'
 import ComparisonCard from '@/components/molecules/ComparisonCard'
+import { ProsAndConsSectionFragment } from '@/services/graphql'
 import { isDefined } from '@/utils/isDefined'
 
 type ProsAndConsSectionProps = {

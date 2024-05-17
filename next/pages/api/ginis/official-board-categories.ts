@@ -1,12 +1,12 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 
-import { mockedParsedCategories } from '@/backend/ginis/mocks'
-import { getOfficialBoardParsedCategories } from '@/backend/ginis/server/getOfficialBoardParsedCategories'
+import { mockedParsedCategories } from '@/services/ginis/mocks'
+import { getOfficialBoardParsedCategories } from '@/services/ginis/server/getOfficialBoardParsedCategories'
 import {
   OfficialBoardCategoryListResponse,
   ParsedOfficialBoardCategory,
-} from '@/backend/ginis/types'
-import { shouldMockGinis } from '@/backend/ginis/utils/shouldMockGinis'
+} from '@/services/ginis/types'
+import { shouldMockGinis } from '@/services/ginis/utils/shouldMockGinis'
 
 const handler = async (
   req: NextApiRequest,

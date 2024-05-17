@@ -1,7 +1,7 @@
 import React from 'react'
 
-import { VideosSectionFragment } from '@/backend/graphql'
 import { Videos } from '@/components/ui/Videos/Videos'
+import { VideosSectionFragment } from '@/services/graphql'
 import { isPresent } from '@/utils/utils'
 
 type VideosSectionProps = { section: VideosSectionFragment }

@@ -3,8 +3,8 @@ import cx from 'classnames'
 import React from 'react'
 import { twMerge } from 'tailwind-merge'
 
-import { TestimonialItemBlockFragment, TestimonialsSectionFragment } from '@/backend/graphql'
 import Markdown from '@/components/atoms/Markdown'
+import { TestimonialItemBlockFragment, TestimonialsSectionFragment } from '@/services/graphql'
 import { isDefined } from '@/utils/isDefined'
 
 // TODO split to separate component files

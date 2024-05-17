@@ -3,16 +3,16 @@ import { keepPreviousData, useQuery } from '@tanstack/react-query'
 import { useLocale, useTranslations } from 'next-intl'
 import React from 'react'
 
-import { BlogPostsListSectionFragment } from '@/backend/graphql'
-import { client } from '@/backend/graphql/gql'
+import BlogPostCard from '@/components/molecules/presentation/BlogPostCard'
+import BlogPostsFilter from '@/components/ui/BlogPostsFilter/BlogPostsFilter'
+import Pagination from '@/components/ui/Pagination/Pagination'
+import { BlogPostsListSectionFragment } from '@/services/graphql'
+import { client } from '@/services/graphql/gql'
 import {
   blogPostsDefaultFilters,
   blogPostsFetcher,
   getBlogPostsQueryKey,
-} from '@/backend/meili/fetchers/blogPostsFetcherReactQuery'
-import BlogPostCard from '@/components/molecules/presentation/BlogPostCard'
-import BlogPostsFilter from '@/components/ui/BlogPostsFilter/BlogPostsFilter'
-import Pagination from '@/components/ui/Pagination/Pagination'
+} from '@/services/meili/fetchers/blogPostsFetcherReactQuery'
 import { getCategoryColorLocalStyle } from '@/utils/colors'
 import { generateImageSizes } from '@/utils/generateImageSizes'
 import { getNumericLocalDate } from '@/utils/local-date'
