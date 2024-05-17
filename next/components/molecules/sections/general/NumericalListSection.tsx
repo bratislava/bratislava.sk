@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-unnecessary-type-assertion,@typescript-eslint/no-non-null-assertion */
-import { NumericalListSectionFragment } from '@backend/graphql'
 import NumericalListSectionUI from '@bratislava/ui-bratislava/NumericalListSectionUI/NumericalListSectionUI'
 import React from 'react'
 
+import { NumericalListSectionFragment } from '@/backend/graphql'
 import { isPresent } from '@/utils/utils'
 
 type NumericalListSectionProps = {

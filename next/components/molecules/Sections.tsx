@@ -1,4 +1,3 @@
-import { SectionsFragment } from '@backend/graphql'
 import SectionContainer from '@bratislava/ui-bratislava/SectionContainer/SectionContainer'
 import BlogPostsByCategory from '@components/molecules/sections/general/ArticlesListSection/BlogPostsByCategory'
 import BlogPostsByTags from '@components/molecules/sections/general/ArticlesListSection/BlogPostsByTags'
@@ -11,6 +10,8 @@ import RegulationsSection from '@components/molecules/sections/general/Regulatio
 import TestimonialsSection from '@components/molecules/sections/general/TestimonialsSection'
 import cx from 'classnames'
 import * as React from 'react'
+
+import { SectionsFragment } from '@/backend/graphql'
 
 import AccordionSection from './sections/general/AccordionSection'
 import BannerSection from './sections/general/BannerSection'

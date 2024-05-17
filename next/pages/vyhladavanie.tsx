@@ -1,5 +1,3 @@
-import { GeneralQuery } from '@backend/graphql'
-import { client } from '@backend/graphql/gql'
 import PageHeader from '@bratislava/ui-bratislava/PageHeader/PageHeader'
 import GlobalSearchSectionContent from '@components/organisms/SearchSection/GlobalSearchSectionContent'
 import { LocalizationsProvider } from '@components/providers/LocalizationsProvider'
@@ -9,6 +7,8 @@ import Head from 'next/head'
 import { useTranslations } from 'next-intl'
 import * as React from 'react'
 
+import { GeneralQuery } from '@/backend/graphql'
+import { client } from '@/backend/graphql/gql'
 import { GeneralContextProvider } from '@/utils/generalContext'
 import { useTitle } from '@/utils/useTitle'
 

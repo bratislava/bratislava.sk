@@ -1,4 +1,3 @@
-import { Enum_Componentmenumenuitem_Icon } from '@backend/graphql'
 import IconCity from '@bratislava/ui-bratislava/WelcomeCard/IconComponents/IconCity'
 import IconCulture from '@bratislava/ui-bratislava/WelcomeCard/IconComponents/IconCulture'
 import IconEducation from '@bratislava/ui-bratislava/WelcomeCard/IconComponents/IconEducation'
@@ -7,6 +6,7 @@ import IconSocial from '@bratislava/ui-bratislava/WelcomeCard/IconComponents/Ico
 import IconTransport from '@bratislava/ui-bratislava/WelcomeCard/IconComponents/IconTransport'
 import { useMemo } from 'react'
 
+import { Enum_Componentmenumenuitem_Icon } from '@/backend/graphql'
 import { getCategoryColorLocalStyle, transformIconToCategory } from '@/utils/colors'
 
 export type IconProps = {

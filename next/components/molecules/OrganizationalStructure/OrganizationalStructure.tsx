@@ -1,10 +1,11 @@
-import {
-  getMsGraphStructureQueryKey,
-  msGraphStructureFetcher,
-} from '@backend/ms-graph/fetchers/msGraphStructure.fetcher'
 import { Typography } from '@bratislava/component-library'
 import LoadingSpinner from '@bratislava/ui-bratislava/LoadingSpinner/LoadingSpinner'
 import { useQuery } from '@tanstack/react-query'
+
+import {
+  getMsGraphStructureQueryKey,
+  msGraphStructureFetcher,
+} from '@/backend/ms-graph/fetchers/msGraphStructure.fetcher'
 
 import OrganizationalStructureTopLevelAccordion from './OrganizationalStructureTopLevelAccordion'
 

@@ -1,7 +1,8 @@
-import { MS_GRAPH_GROUP_ID, PARAMS_FROM_MS_GRAPH_API } from '@backend/ms-graph/server/constants'
-import { MSGraphFilteredGroupUser } from '@backend/ms-graph/types'
 import slugify from '@sindresorhus/slugify'
 import axios from 'axios'
+
+import { MS_GRAPH_GROUP_ID, PARAMS_FROM_MS_GRAPH_API } from '@/backend/ms-graph/server/constants'
+import { MSGraphFilteredGroupUser } from '@/backend/ms-graph/types'
 
 /**
  * Return search results from Active Directory (MS Graph API) based on search query.

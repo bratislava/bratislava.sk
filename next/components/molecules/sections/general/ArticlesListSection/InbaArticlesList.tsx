@@ -1,10 +1,3 @@
-import { InbaArticlesListSectionFragment } from '@backend/graphql'
-import { client } from '@backend/graphql/gql'
-import {
-  getInbaArticlesQueryKey,
-  inbaArticlesDefaultFilters,
-  inbaArticlesFetcher,
-} from '@backend/meili/fetchers/inbaArticlesFetcher'
 import { Typography } from '@bratislava/component-library'
 import BlogPostCard from '@components/molecules/presentation/BlogPostCard'
 import InbaFeaturedArticlesSection from '@components/molecules/sections/general/InbaFeaturedArticlesSection'
@@ -14,6 +7,13 @@ import { keepPreviousData, useQuery } from '@tanstack/react-query'
 import { useLocale, useTranslations } from 'next-intl'
 import React from 'react'
 
+import { InbaArticlesListSectionFragment } from '@/backend/graphql'
+import { client } from '@/backend/graphql/gql'
+import {
+  getInbaArticlesQueryKey,
+  inbaArticlesDefaultFilters,
+  inbaArticlesFetcher,
+} from '@/backend/meili/fetchers/inbaArticlesFetcher'
 import { generateImageSizes } from '@/utils/generateImageSizes'
 import { getNumericLocalDate } from '@/utils/local-date'
 import { useRoutePreservedState } from '@/utils/useRoutePreservedState'

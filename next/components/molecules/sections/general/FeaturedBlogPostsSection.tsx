@@ -1,7 +1,7 @@
-import { FeaturedBlogPostsSectionFragment } from '@backend/graphql'
 import FeaturedBlogPosts from '@components/ui/FeaturedBlogPosts/FeaturedBlogPosts'
 import React from 'react'
 
+import { FeaturedBlogPostsSectionFragment } from '@/backend/graphql'
 import { isDefined } from '@/utils/isDefined'
 
 type FeaturedBlogPostsSectionProps = {

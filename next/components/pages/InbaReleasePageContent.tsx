@@ -1,4 +1,3 @@
-import { InbaReleaseEntityFragment } from '@backend/graphql'
 import { Typography } from '@bratislava/component-library'
 import PageHeader from '@bratislava/ui-bratislava/PageHeader/PageHeader'
 import SectionContainer from '@bratislava/ui-bratislava/SectionContainer/SectionContainer'
@@ -14,6 +13,7 @@ import { useLocale, useTranslations } from 'next-intl'
 import * as React from 'react'
 import { useMemo } from 'react'
 
+import { InbaReleaseEntityFragment } from '@/backend/graphql'
 import { formatFileExtension } from '@/utils/formatFileExtension'
 import { formatFileSize } from '@/utils/formatFileSize'
 import { useGeneralContext } from '@/utils/generalContext'

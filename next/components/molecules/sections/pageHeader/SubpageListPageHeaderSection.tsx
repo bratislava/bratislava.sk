@@ -1,7 +1,7 @@
-import { SubpageListPageHeaderSectionFragment } from '@backend/graphql'
 import SubpageList from '@bratislava/ui-bratislava/SubpageList/SubpageList'
 import React from 'react'
 
+import { SubpageListPageHeaderSectionFragment } from '@/backend/graphql'
 import { parsePageLink } from '@/utils/page'
 import { isPresent } from '@/utils/utils'
 

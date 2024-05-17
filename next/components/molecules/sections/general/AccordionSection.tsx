@@ -1,4 +1,3 @@
-import { AccordionSectionFragment, Enum_Componentsectionsfilelist_Variant } from '@backend/graphql'
 import { Typography } from '@bratislava/component-library'
 import FileList from '@bratislava/ui-bratislava/FileList/FileList'
 import Institution from '@bratislava/ui-bratislava/Institution/Institution'
@@ -8,6 +7,7 @@ import Button from '@components/forms/simple-components/Button'
 import AccordionV2 from '@components/ui/AccordionV2/AccordionV2'
 import React from 'react'
 
+import { AccordionSectionFragment, Enum_Componentsectionsfilelist_Variant } from '@/backend/graphql'
 import { isDefined } from '@/utils/isDefined'
 import { groupByCategory, parsePageLink } from '@/utils/page'
 import { isPresent } from '@/utils/utils'

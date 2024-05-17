@@ -1,4 +1,3 @@
-import { InbaArticleEntityFragment } from '@backend/graphql'
 import PageHeader from '@bratislava/ui-bratislava/PageHeader/PageHeader'
 import SectionContainer from '@bratislava/ui-bratislava/SectionContainer/SectionContainer'
 import Markdown from '@components/atoms/Markdown'
@@ -10,6 +9,7 @@ import { useTranslations } from 'next-intl'
 import * as React from 'react'
 import { useMemo } from 'react'
 
+import { InbaArticleEntityFragment } from '@/backend/graphql'
 import { useGeneralContext } from '@/utils/generalContext'
 import { formatDate, getNumericLocalDate } from '@/utils/local-date'
 import { getPageBreadcrumbs } from '@/utils/page'

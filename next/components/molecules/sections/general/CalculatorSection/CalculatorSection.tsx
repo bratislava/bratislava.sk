@@ -1,5 +1,6 @@
-import { CalculatorSectionFragment } from '@backend/graphql'
 import React from 'react'
+
+import { CalculatorSectionFragment } from '@/backend/graphql'
 
 import MinimumCalculator from './MinimumCalculator'
 

@@ -1,14 +1,15 @@
-import { PageEntityFragment } from '@backend/graphql'
+import { dehydrate, QueryClient } from '@tanstack/react-query'
+
+import { PageEntityFragment } from '@/backend/graphql'
 import {
   getRelatedBlogPostsQueryKey,
   relatedBlogPostsFetcher,
-} from '@backend/graphql/fetchers/relatedBlogPosts.fetcher'
-import { client } from '@backend/graphql/gql'
+} from '@/backend/graphql/fetchers/relatedBlogPosts.fetcher'
+import { client } from '@/backend/graphql/gql'
 import {
   getMsGraphStructureQueryKey,
   msGraphStructureFetcher,
-} from '@backend/ms-graph/fetchers/msGraphStructure.fetcher'
-import { dehydrate, QueryClient } from '@tanstack/react-query'
+} from '@/backend/ms-graph/fetchers/msGraphStructure.fetcher'
 
 export const prefetchPageSections = async (page: PageEntityFragment, locale: string) => {
   const queryClient = new QueryClient()

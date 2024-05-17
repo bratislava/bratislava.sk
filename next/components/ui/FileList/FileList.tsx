@@ -1,8 +1,9 @@
-import { Enum_Componentsectionsfilelist_Variant, FileItemBlockFragment } from '@backend/graphql'
 import { Typography } from '@bratislava/component-library'
 import FileCardWrapper from '@components/molecules/presentation/FileCardWrapper'
 import ResponsiveCarousel from '@components/organisms/Carousel/ResponsiveCarousel'
 import cx from 'classnames'
+
+import { Enum_Componentsectionsfilelist_Variant, FileItemBlockFragment } from '@/backend/graphql'
 
 export type TFileSection = {
   category?: string
@@ -20,12 +21,7 @@ export type FileListProps = {
  * Figma: https://www.figma.com/file/17wbd0MDQcMW9NbXl6UPs8/DS-ESBS%2BBK%3A-Component-library?type=design&node-id=7940-21473&mode=dev
  */
 
-const FileList = ({
-  className,
-  fileSections,
-  hideCategory,
-  variantFileList,
-}: FileListProps) => {
+const FileList = ({ className, fileSections, hideCategory, variantFileList }: FileListProps) => {
   return (
     <div className={className}>
       {fileSections?.map((fileSection, index) => {
@@ -47,7 +43,10 @@ const FileList = ({
             )}
             {variantFileList === 'grid' && (
               <div>
-                <div className="mt-6 hidden grid-cols-3 gap-8 lg:grid" data-cy="file-wrapper-desktop">
+                <div
+                  className="mt-6 hidden grid-cols-3 gap-8 lg:grid"
+                  data-cy="file-wrapper-desktop"
+                >
                   {fileSection?.files.map((file, fileIndex) => (
                     // eslint-disable-next-line react/no-array-index-key
                     <div key={fileIndex} className="w-full">

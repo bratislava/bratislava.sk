@@ -1,6 +1,6 @@
-import { getOfficialBoardFileBase64Encoded } from '@backend/ginis/server/getOfficialBoardFileBase64Encoded'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
+import { getOfficialBoardFileBase64Encoded } from '@/backend/ginis/server/getOfficialBoardFileBase64Encoded'
 import { base64Decode } from '@/utils/base64'
 
 /**

@@ -1,8 +1,3 @@
-import {
-  ContactCardBlockFragment,
-  ContactsSectionFragment,
-  Enum_Componentsectionscontactssection_Type,
-} from '@backend/graphql'
 import { Typography } from '@bratislava/component-library'
 import Markdown from '@components/atoms/Markdown'
 import ContactCtaCard, {
@@ -11,6 +6,11 @@ import ContactCtaCard, {
 import cx from 'classnames'
 import React from 'react'
 
+import {
+  ContactCardBlockFragment,
+  ContactsSectionFragment,
+  Enum_Componentsectionscontactssection_Type,
+} from '@/backend/graphql'
 import { isDefined } from '@/utils/isDefined'
 
 type ContactsProps = {

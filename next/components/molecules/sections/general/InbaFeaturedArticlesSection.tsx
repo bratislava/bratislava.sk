@@ -1,7 +1,7 @@
-import { InbaArticleEntityFragment } from '@backend/graphql'
 import InbaFeaturedArticles from '@components/ui/InbaFeaturedArticles/InbaFeaturedArticles'
 import React from 'react'
 
+import { InbaArticleEntityFragment } from '@/backend/graphql'
 import { isDefined } from '@/utils/isDefined'
 
 export type InbaFeaturedArticlesSectionProps = {

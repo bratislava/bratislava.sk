@@ -1,4 +1,3 @@
-import { CommonLinkFragment } from '@backend/graphql'
 import { Typography } from '@bratislava/component-library'
 import Breadcrumbs, { BreadcrumbsProps } from '@bratislava/ui-bratislava/Breadcrumbs/Breadcrumbs'
 import Waves from '@bratislava/ui-bratislava/Waves/Waves'
@@ -7,6 +6,7 @@ import Image from 'next/image'
 import React, { PropsWithChildren } from 'react'
 import { twMerge } from 'tailwind-merge'
 
+import { CommonLinkFragment } from '@/backend/graphql'
 import { generateImageSizes } from '@/utils/generateImageSizes'
 import { getCommonLinkProps } from '@/utils/getCommonLinkProps'
 

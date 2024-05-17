@@ -1,6 +1,7 @@
-import { TextWithImageSectionFragment } from '@backend/graphql'
 import TextWithImage from '@bratislava/ui-bratislava/TextWithImage/TextWithImage'
 import React from 'react'
+
+import { TextWithImageSectionFragment } from '@/backend/graphql'
 
 type TextWithImageSectionProps = {
   section: TextWithImageSectionFragment

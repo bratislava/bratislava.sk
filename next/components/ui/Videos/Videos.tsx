@@ -1,10 +1,10 @@
-import { VideoBlockFragment, VideosSectionFragment } from '@backend/graphql'
 import { Typography } from '@bratislava/component-library'
 import MLink from '@components/forms/simple-components/MLink'
 import ResponsiveCarousel from '@components/organisms/Carousel/ResponsiveCarousel'
 import cx from 'classnames'
 import React from 'react'
 
+import { VideoBlockFragment, VideosSectionFragment } from '@/backend/graphql'
 import { isPresent } from '@/utils/utils'
 
 const Video = ({

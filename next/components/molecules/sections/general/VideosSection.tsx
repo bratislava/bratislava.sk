@@ -1,7 +1,7 @@
-import { VideosSectionFragment } from '@backend/graphql'
 import { Videos } from '@bratislava/ui-bratislava/Videos/Videos'
 import React from 'react'
 
+import { VideosSectionFragment } from '@/backend/graphql'
 import { isPresent } from '@/utils/utils'
 
 type VideosSectionProps = { section: VideosSectionFragment }

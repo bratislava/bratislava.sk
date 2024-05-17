@@ -1,4 +1,4 @@
-import { LatestBlogPostEntityFragment } from '@backend/graphql'
+import { LatestBlogPostEntityFragment } from '@/backend/graphql'
 
 import { meiliClient } from '../meiliClient'
 import { BlogPostMeili, SearchIndexWrapped } from '../types'

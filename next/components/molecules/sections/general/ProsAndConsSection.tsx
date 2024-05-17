@@ -1,9 +1,9 @@
-import { ProsAndConsSectionFragment } from '@backend/graphql'
 import { Typography } from '@bratislava/component-library'
 import cx from 'classnames'
 import React from 'react'
 
 import { CheckIcon, CrossIcon } from '@/assets/ui-icons'
+import { ProsAndConsSectionFragment } from '@/backend/graphql'
 import { isDefined } from '@/utils/isDefined'
 
 import ComparisonCard from '../../ComparisonCard'

@@ -1,9 +1,9 @@
-import { UploadImageSrcEntityFragment } from '@backend/graphql'
 import { Typography } from '@bratislava/component-library'
 import Markdown from '@components/atoms/Markdown'
 import cx from 'classnames'
-import { has } from 'lodash'
 import Image from 'next/image'
+
+import { UploadImageSrcEntityFragment } from '@/backend/graphql'
 
 type IconTitleDescProps = {
   icon: UploadImageSrcEntityFragment | null | undefined

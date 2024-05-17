@@ -1,9 +1,9 @@
-import { PageEntityFragment } from '@backend/graphql'
 import PageHeader from '@bratislava/ui-bratislava/PageHeader/PageHeader'
 import RelatedBlogPostsSection from '@components/molecules/sections/general/RelatedBlogPostsSection'
 import * as React from 'react'
 import { useMemo } from 'react'
 
+import { PageEntityFragment } from '@/backend/graphql'
 import { isDefined } from '@/utils/isDefined'
 import { getPageBreadcrumbs } from '@/utils/page'
 

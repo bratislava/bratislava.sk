@@ -1,9 +1,9 @@
-import { RegulationEntityFragment } from '@backend/graphql'
 import { Typography } from '@bratislava/component-library'
 import Alert from '@components/forms/info-components/Alert'
 import MLink from '@components/forms/simple-components/MLink'
 import React, { Fragment } from 'react'
 
+import { RegulationEntityFragment } from '@/backend/graphql'
 import { isDefined } from '@/utils/isDefined'
 import { formatDate } from '@/utils/local-date'
 
@@ -60,7 +60,7 @@ const RegulationDetailMessage = ({ regulation }: RegulationDetailMessageProps) =
   ) : hasCancelledAmendees ? (
     <Typography type="p" className="whitespace-normal">
       Toto VZN je dodatkom{' '}
-      {cancelledAmendees!.map((cancelledAmendee, index) => {
+      {cancelledAmendees.map((cancelledAmendee, index) => {
         return (
           <Fragment key={cancelledAmendee.id}>
             {index === 0

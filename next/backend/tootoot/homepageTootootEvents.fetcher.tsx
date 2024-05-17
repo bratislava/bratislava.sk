@@ -1,7 +1,8 @@
 /* eslint-disable no-underscore-dangle */
 
-import { cityOrganizationsTootootIds, cityTootootId } from '@backend/tootoot/constants'
 import sortBy from 'lodash/sortBy'
+
+import { cityOrganizationsTootootIds, cityTootootId } from '@/backend/tootoot/constants'
 
 // This constant is bigger than shown events because of filtering, may be adjusted if needed
 const eventsCountToFetch = 24

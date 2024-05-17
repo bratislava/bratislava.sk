@@ -1,6 +1,6 @@
-import { ginis } from '@backend/ginis/ginis'
 import { SeznamKategoriiResponseItem } from '@ginis-sdk/api/json/ude/seznam-kategorii'
 
+import { ginis } from '@/backend/ginis/ginis'
 import { isDefined } from '@/utils/isDefined'
 
 export const getOfficialBoardParsedCategories = async () => {

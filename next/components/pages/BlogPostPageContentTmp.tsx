@@ -1,4 +1,3 @@
-import { BlogPostEntityFragment } from '@backend/graphql'
 import PageHeader from '@bratislava/ui-bratislava/PageHeader/PageHeader'
 import Button from '@components/forms/simple-components/Button'
 import ShareButtons from '@components/molecules/ShareButtons'
@@ -7,6 +6,7 @@ import { useTranslations } from 'next-intl'
 import * as React from 'react'
 import { PropsWithChildren, useMemo } from 'react'
 
+import { BlogPostEntityFragment } from '@/backend/graphql'
 import { useGeneralContext } from '@/utils/generalContext'
 import { getNumericLocalDate } from '@/utils/local-date'
 import { getPageBreadcrumbs } from '@/utils/page'

@@ -1,11 +1,11 @@
-import { BlogPostEntityFragment, GeneralQuery } from '@backend/graphql'
-import { client } from '@backend/graphql/gql'
 import PageLayout from '@components/layouts/PageLayout'
 import BlogPostPageContentTmp from '@components/pages/BlogPostPageContentTmp'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import Head from 'next/head'
 import * as React from 'react'
 
+import { BlogPostEntityFragment, GeneralQuery } from '@/backend/graphql'
+import { client } from '@/backend/graphql/gql'
 import { GlobalCategoryColorProvider } from '@/utils/colors'
 import { GeneralContextProvider } from '@/utils/generalContext'
 import { useTitle } from '@/utils/useTitle'

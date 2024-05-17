@@ -1,5 +1,3 @@
-import { officialBoardListDefaultFilters } from '@backend/ginis/fetchers/officialBoardListFetcher'
-import { OfficialBoardPublicationState } from '@backend/ginis/types'
 import { Typography } from '@bratislava/component-library'
 import Chip from '@components/forms/simple-components/Chip'
 import OfficialBoardAdditionalFilters from '@components/molecules/sections/general/OfficialBoardSection/OfficialBoardAdditionalFilters'
@@ -13,7 +11,14 @@ import { Selection, TagGroup, TagList } from 'react-aria-components'
 import { StringParam, useQueryParam, withDefault } from 'use-query-params'
 import { useDebounce } from 'usehooks-ts'
 
+import { officialBoardListDefaultFilters } from '@/backend/ginis/fetchers/officialBoardListFetcher'
+import { OfficialBoardPublicationState } from '@/backend/ginis/types'
 import { getCategoryColorLocalStyle } from '@/utils/colors'
+/*
+ * RAC library recommends Selection as type for selection state, which is of type `'all' | Set`.
+ * To use standard operations on Set, you have to check if selection is not 'all' to satisfy Typescript.
+ * Even though we never use 'all' for selection, because it acts differently than we want.
+ */
 
 /*
  * RAC library recommends Selection as type for selection state, which is of type `'all' | Set`.

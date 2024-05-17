@@ -1,5 +1,6 @@
-import { OfficialBoardListResponse, OfficialBoardPublicationState } from '@backend/ginis/types'
 import axios from 'axios'
+
+import { OfficialBoardListResponse, OfficialBoardPublicationState } from '@/backend/ginis/types'
 
 export type OfficialBoardListFilters = {
   search: string

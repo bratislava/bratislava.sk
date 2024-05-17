@@ -1,6 +1,7 @@
-import { Enum_Componentsectionscolumnedtext_Contentalignment } from '@backend/graphql'
 import Markdown from '@components/atoms/Markdown'
 import cx from 'classnames'
+
+import { Enum_Componentsectionscolumnedtext_Contentalignment } from '@/backend/graphql'
 
 export type ColumnedTextProps = {
   className?: string

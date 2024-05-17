@@ -1,4 +1,3 @@
-import { Enum_Page_Pagecolor, Enum_Pagecategory_Color } from '@backend/graphql'
 import MLink from '@components/forms/simple-components/MLink'
 import CardBase from '@components/molecules/presentation/CardBase'
 import CardContent from '@components/molecules/presentation/CardContent'
@@ -16,6 +15,7 @@ import PageRedIconSmall from '@/assets/images/page-red-icon-small.svg'
 import PageYellowIcon from '@/assets/images/page-yellow-icon.svg'
 import PageYellowIconSmall from '@/assets/images/page-yellow-icon-small.svg'
 import { ChevronRightIcon } from '@/assets/ui-icons'
+import { Enum_Page_Pagecolor, Enum_Pagecategory_Color } from '@/backend/graphql'
 import { getCategoryColorLocalStyle } from '@/utils/colors'
 
 const findIconByColor = (pageColor: Enum_Pagecategory_Color) => {

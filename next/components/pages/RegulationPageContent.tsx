@@ -1,4 +1,3 @@
-import { RegulationEntityFragment } from '@backend/graphql'
 import { Typography } from '@bratislava/component-library'
 import PageHeader from '@bratislava/ui-bratislava/PageHeader/PageHeader'
 import SectionContainer from '@bratislava/ui-bratislava/SectionContainer/SectionContainer'
@@ -10,6 +9,7 @@ import classNames from 'classnames'
 import { useLocale, useTranslations } from 'next-intl'
 import React, { Fragment } from 'react'
 
+import { RegulationEntityFragment } from '@/backend/graphql'
 import { formatFileExtension } from '@/utils/formatFileExtension'
 import { formatFileSize } from '@/utils/formatFileSize'
 import { isDefined } from '@/utils/isDefined'

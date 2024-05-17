@@ -1,9 +1,3 @@
-import { CATEGORIES_TO_EXCLUDE_ON_HOMEPAGE } from '@backend/ginis/consts'
-import {
-  getOfficialBoardListQueryKey,
-  officialBoardListDefaultFilters,
-  officialBoardListFetcher,
-} from '@backend/ginis/fetchers/officialBoardListFetcher'
 import { Typography } from '@bratislava/component-library'
 import Button from '@components/forms/simple-components/Button'
 import SearchResultCard from '@components/organisms/SearchSection/SearchResultCard'
@@ -13,6 +7,12 @@ import { useQuery } from '@tanstack/react-query'
 import React from 'react'
 import { TabPanel } from 'react-aria-components'
 
+import { CATEGORIES_TO_EXCLUDE_ON_HOMEPAGE } from '@/backend/ginis/consts'
+import {
+  getOfficialBoardListQueryKey,
+  officialBoardListDefaultFilters,
+  officialBoardListFetcher,
+} from '@/backend/ginis/fetchers/officialBoardListFetcher'
 import { base64Encode } from '@/utils/base64'
 import { getCommonLinkProps } from '@/utils/getCommonLinkProps'
 import { useHomepageContext } from '@/utils/homepageContext'

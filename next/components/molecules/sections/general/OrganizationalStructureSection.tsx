@@ -1,5 +1,6 @@
-import { OrganizationalStructureSectionFragment } from '@backend/graphql'
 import React from 'react'
+
+import { OrganizationalStructureSectionFragment } from '@/backend/graphql'
 
 import OrganizationalStructure from '../../OrganizationalStructure/OrganizationalStructure'
 

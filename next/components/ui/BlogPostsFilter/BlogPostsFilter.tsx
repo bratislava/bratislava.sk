@@ -1,13 +1,13 @@
-import {
-  Enum_Pagecategory_Color,
-  PageCategoryEntityFragment,
-  TagEntityFragment,
-} from '@backend/graphql'
 import Chip from '@components/forms/simple-components/Chip'
 import { useLocale, useTranslations } from 'next-intl'
 import React, { useEffect, useState } from 'react'
 import { Label, Selection, TagGroup, TagList, Text } from 'react-aria-components'
 
+import {
+  Enum_Pagecategory_Color,
+  PageCategoryEntityFragment,
+  TagEntityFragment,
+} from '@/backend/graphql'
 import { getCategoryColorLocalStyle } from '@/utils/colors'
 import { isDefined } from '@/utils/isDefined'
 

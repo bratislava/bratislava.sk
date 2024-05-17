@@ -1,7 +1,8 @@
-import { ginis } from '@backend/ginis/ginis'
-import { ParsedOfficialBoardDocumentDetail } from '@backend/ginis/types'
-import { generateUrlForOfficialBoardFile } from '@backend/ginis/utils/generateUrlForOfficialBoardFile'
 import { DetailDokumentuResponseXrg } from '@ginis-sdk/api/json/ude/detail-dokumentu'
+
+import { ginis } from '@/backend/ginis/ginis'
+import { ParsedOfficialBoardDocumentDetail } from '@/backend/ginis/types'
+import { generateUrlForOfficialBoardFile } from '@/backend/ginis/utils/generateUrlForOfficialBoardFile'
 
 export const getOfficialBoardParsedDocument = async (documentId: string) => {
   let documentDetail: DetailDokumentuResponseXrg['DetailDokumentu']

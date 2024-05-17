@@ -1,4 +1,3 @@
-import { ContactCardBlockFragment } from '@backend/graphql'
 import { Typography } from '@bratislava/component-library'
 import MLink from '@components/forms/simple-components/MLink'
 import cx from 'classnames'
@@ -8,6 +7,7 @@ import { twMerge } from 'tailwind-merge'
 
 import { AddressIcon, EmailIcon, WebIcon } from '@/assets/images'
 import { PhoneIcon } from '@/assets/ui-icons'
+import { ContactCardBlockFragment } from '@/backend/graphql'
 
 export enum ContactCtaCardType {
   Address,

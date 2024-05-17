@@ -1,5 +1,6 @@
-import { MSGraphFilteredGroupUser } from '@backend/ms-graph/types'
 import axios from 'axios'
+
+import { MSGraphFilteredGroupUser } from '@/backend/ms-graph/types'
 
 export const getMsGraphSearchQueryKey = (search: string) => ['Search', 'msGraphSearch', search]
 

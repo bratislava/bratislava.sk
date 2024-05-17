@@ -1,6 +1,7 @@
-import { BannerSectionFragment } from '@backend/graphql'
 import Banner from '@components/ui/Banner/Banner'
 import React from 'react'
+
+import { BannerSectionFragment } from '@/backend/graphql'
 
 type BannerSectionProps = { section: BannerSectionFragment }
 

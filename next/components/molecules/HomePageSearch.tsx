@@ -1,13 +1,14 @@
-import {
-  getHomepageSearchSwrKey,
-  homepageSearchFetcher,
-} from '@backend/meili/fetchers/homepageSearchFetcher'
 import { useRouter } from 'next/navigation'
 import { useLocale, useTranslations } from 'next-intl'
 import { Dispatch, SetStateAction, useCallback, useEffect, useRef, useState } from 'react'
 import useSWR from 'swr'
 import { twMerge } from 'tailwind-merge'
 import { useDebounce, useOnClickOutside } from 'usehooks-ts'
+
+import {
+  getHomepageSearchSwrKey,
+  homepageSearchFetcher,
+} from '@/backend/meili/fetchers/homepageSearchFetcher'
 
 import useGetSwrExtras from '../../utils/useGetSwrExtras'
 import AnimateHeight from '../atoms/AnimateHeight'
