@@ -1,6 +1,5 @@
-import { NumericalListItemObject } from '@components/ui/NumericalListSectionUI/NumericalListSectionUI'
-
-import NumericalListItem from '../NumericalListItem/NumericalListItem'
+import NumericalListItem from '@/components/ui/NumericalListItem/NumericalListItem'
+import { NumericalListItemObject } from '@/components/ui/NumericalListSectionUI/NumericalListSectionUI'
 
 export type NumericalListProps = {
   items: NumericalListItemObject[] | null | undefined

@@ -1,8 +1,9 @@
-import { ChevronDownIcon } from '@assets/ui-icons'
 import { Typography } from '@bratislava/component-library'
-import AnimateHeight from '@components/atoms/AnimateHeight'
 import cx from 'classnames'
 import { ReactNode } from 'react'
+
+import { ChevronDownIcon } from '@/assets/ui-icons'
+import AnimateHeight from '@/components/atoms/AnimateHeight'
 
 export type AccordionProps = {
   variant?: 'boxed' | 'footer'

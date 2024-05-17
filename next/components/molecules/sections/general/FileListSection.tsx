@@ -1,8 +1,9 @@
-import { Enum_Componentsectionsfilelist_Variant, FileListSectionFragment } from '@backend/graphql'
-import FileList from '@bratislava/ui-bratislava/FileList/FileList'
-import { groupByCategoryFileList } from '@utils/page'
-import { isPresent } from '@utils/utils'
 import React from 'react'
+
+import FileList from '@/components/ui/FileList/FileList'
+import { Enum_Componentsectionsfilelist_Variant, FileListSectionFragment } from '@/services/graphql'
+import { groupByCategoryFileList } from '@/utils/page'
+import { isPresent } from '@/utils/utils'
 
 type FileListSectionProps = {
   section: FileListSectionFragment

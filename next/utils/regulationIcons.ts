@@ -1,12 +1,13 @@
-import { DaneAPoplatky } from '@assets/images'
-import Archiv from '@assets/images/archiv.svg'
-import Hospodarenie from '@assets/images/hospodarenie.svg'
-import Ostatne from '@assets/images/ostatne.svg'
-import PomenovanieUlic from '@assets/images/pomenovanieUlic.svg'
-import PoriadokACistota from '@assets/images/poriadokACistota.svg'
-import SocialnaPomocASkolstvo from '@assets/images/socialnaPomocASkolstvo.svg'
-import UzemnePlanovanie from '@assets/images/uzemnePlanovanie.svg'
 import { FunctionComponent, SVGProps } from 'react'
+
+import { DaneAPoplatky } from '@/assets/images'
+import Archiv from '@/assets/images/archiv.svg'
+import Hospodarenie from '@/assets/images/hospodarenie.svg'
+import Ostatne from '@/assets/images/ostatne.svg'
+import PomenovanieUlic from '@/assets/images/pomenovanieUlic.svg'
+import PoriadokACistota from '@/assets/images/poriadokACistota.svg'
+import SocialnaPomocASkolstvo from '@/assets/images/socialnaPomocASkolstvo.svg'
+import UzemnePlanovanie from '@/assets/images/uzemnePlanovanie.svg'
 
 type DocumentListCategorysType = {
   key: string

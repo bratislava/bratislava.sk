@@ -1,9 +1,10 @@
-import { TimelineItemBlockFragment } from '@backend/graphql'
-import Markdown from '@components/atoms/Markdown'
-import { generateImageSizes } from '@utils/generateImageSizes'
 import cx from 'classnames'
 import Image from 'next/image'
 import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component'
+
+import Markdown from '@/components/atoms/Markdown'
+import { TimelineItemBlockFragment } from '@/services/graphql'
+import { generateImageSizes } from '@/utils/generateImageSizes'
 
 type TimelineProps = {
   timelineItems: TimelineItemBlockFragment[]

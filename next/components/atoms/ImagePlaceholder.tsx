@@ -1,4 +1,4 @@
-import { BrandSVG } from '@assets/images'
+import { BrandSVG } from '@/assets/images'
 
 const ImagePlaceholder = () => {
   return (

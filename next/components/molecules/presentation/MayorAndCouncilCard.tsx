@@ -1,8 +1,9 @@
 import { Typography } from '@bratislava/component-library'
-import Button from '@components/forms/simple-components/Button'
-import CardBase from '@components/molecules/presentation/CardBase'
-import CardContent from '@components/molecules/presentation/CardContent'
-import { CommonLinkProps } from '@utils/getCommonLinkProps'
+
+import Button from '@/components/forms/simple-components/Button'
+import CardBase from '@/components/molecules/presentation/CardBase'
+import CardContent from '@/components/molecules/presentation/CardContent'
+import { CommonLinkProps } from '@/utils/getCommonLinkProps'
 
 type Props = {
   title: string

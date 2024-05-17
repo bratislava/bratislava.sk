@@ -1,10 +1,11 @@
-import { RemoveIcon, SearchIcon } from '@assets/ui-icons'
 import { Typography } from '@bratislava/component-library'
-import Button from '@components/forms/simple-components/Button'
-import Spinner from '@components/forms/simple-components/Spinner'
 import { useTranslations } from 'next-intl'
 import { Dispatch, forwardRef, SetStateAction } from 'react'
 import { Input, Label, SearchField } from 'react-aria-components'
+
+import { RemoveIcon, SearchIcon } from '@/assets/ui-icons'
+import Button from '@/components/forms/simple-components/Button'
+import Spinner from '@/components/forms/simple-components/Spinner'
 
 type SearchBarProps = {
   placeholder?: string
@@ -41,7 +42,10 @@ const SearchBar = forwardRef<HTMLInputElement, SearchBarProps>(
         </Label>
         <div className="relative">
           {/* 3.75rem = 60px, 0.75rem = 12px */}
-          <Input className="relative w-full rounded-lg border-2 px-[3.75rem] py-5 pr-[5.75rem] outline-none hover:border-gray-400 focus:border-gray-800 focus-visible:ring focus-visible:ring-offset-2" data-cy="search-field" />
+          <Input
+            className="relative w-full rounded-lg border-2 px-[3.75rem] py-5 pr-[5.75rem] outline-none hover:border-gray-400 focus:border-gray-800 focus-visible:ring focus-visible:ring-offset-2"
+            data-cy="search-field"
+          />
           <SearchIcon
             aria-hidden
             className="pointer-events-none absolute left-6 top-[calc(50%_-_0.75rem)]"

@@ -1,10 +1,11 @@
-import { isDefined } from '@utils/isDefined'
-import { isBrowser } from '@utils/utils'
 import mapValues from 'lodash/mapValues'
 import pick from 'lodash/pick'
 import { useCallback, useEffect, useState } from 'react'
 // TODO swap for js-cookie
 import { Cookies } from 'react-cookie-consent'
+
+import { isDefined } from '@/utils/isDefined'
+import { isBrowser } from '@/utils/utils'
 
 // TODO revisit
 

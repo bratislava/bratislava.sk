@@ -3,7 +3,7 @@ import Tooltip from 'components/forms/info-components/Tooltip/Tooltip'
 import * as React from 'react'
 import { useCheckboxGroupItem, useFocusRing, VisuallyHidden } from 'react-aria'
 
-import { CheckboxGroupContext } from './CheckboxGroup'
+import { CheckboxGroupContext } from '@/components/forms/widget-components/Checkbox/CheckboxGroup'
 
 type CheckBoxBase = {
   variant?: 'basic' | 'boxed'

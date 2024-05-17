@@ -1,16 +1,16 @@
-import type { HomepageContext } from '@backend/fetchers/homepageContextFetcher'
-import { homepageContextFetcher } from '@backend/fetchers/homepageContextFetcher'
-import { GeneralQuery } from '@backend/graphql'
-import { client } from '@backend/graphql/gql'
-import HomepageContent from '@components/pages/HomepageContent'
-import { GeneralContextProvider } from '@utils/generalContext'
-import { HomepageContextProvider } from '@utils/homepageContext'
-import { useTitle } from '@utils/useTitle'
 import { GetStaticProps } from 'next'
 import Head from 'next/head'
 import React from 'react'
 
-import PageLayout from '../components/layouts/PageLayout'
+import PageLayout from '@/components/layouts/PageLayout'
+import HomepageContent from '@/components/pages/HomepageContent'
+import type { HomepageContext } from '@/services/fetchers/homepageContextFetcher'
+import { homepageContextFetcher } from '@/services/fetchers/homepageContextFetcher'
+import { GeneralQuery } from '@/services/graphql'
+import { client } from '@/services/graphql/gql'
+import { GeneralContextProvider } from '@/utils/generalContext'
+import { HomepageContextProvider } from '@/utils/homepageContext'
+import { useTitle } from '@/utils/useTitle'
 
 type PageProps = {
   homepageContext: HomepageContext

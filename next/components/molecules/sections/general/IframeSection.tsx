@@ -1,6 +1,7 @@
-import { IframeSectionFragment } from '@backend/graphql'
-import Iframe from '@bratislava/ui-bratislava/Iframe/Iframe'
 import React from 'react'
+
+import Iframe from '@/components/ui/Iframe/Iframe'
+import { IframeSectionFragment } from '@/services/graphql'
 
 type IframeSectionProps = { section: IframeSectionFragment }
 

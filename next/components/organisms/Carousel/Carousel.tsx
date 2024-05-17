@@ -1,10 +1,11 @@
-import { ArrowLeftIcon, ArrowRightIcon } from '@assets/ui-icons'
-import Button from '@components/forms/simple-components/Button'
-import CarouselControlButton from '@components/organisms/Carousel/CarouselControlButton'
 import cx from 'classnames'
 import { useTranslations } from 'next-intl'
 import React, { ReactNode, useRef, useState } from 'react'
 import { twMerge } from 'tailwind-merge'
+
+import { ArrowLeftIcon, ArrowRightIcon } from '@/assets/ui-icons'
+import Button from '@/components/forms/simple-components/Button'
+import CarouselControlButton from '@/components/organisms/Carousel/CarouselControlButton'
 
 // Inspired by MKB project and https://inclusive-components.design/a-content-slider/
 

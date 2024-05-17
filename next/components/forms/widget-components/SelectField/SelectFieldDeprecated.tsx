@@ -1,5 +1,3 @@
-import ArrowDownIcon from '@assets/images/forms/chevron-down.svg'
-import ArrowUpIcon from '@assets/images/forms/chevron-up.svg'
 import cx from 'classnames'
 import React, {
   ForwardedRef,
@@ -10,6 +8,9 @@ import React, {
   useState,
 } from 'react'
 import { twMerge } from 'tailwind-merge'
+
+import ArrowDownIcon from '@/assets/images/forms/chevron-down.svg'
+import ArrowUpIcon from '@/assets/images/forms/chevron-up.svg'
 
 import FieldErrorMessage from '../../info-components/FieldErrorMessage'
 import FieldHeader from '../../info-components/FieldHeader'

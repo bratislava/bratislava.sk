@@ -2,9 +2,9 @@ import FieldHeader from 'components/forms/info-components/FieldHeader'
 import * as React from 'react'
 import { useCheckboxGroup } from 'react-aria'
 import { CheckboxGroupState, useCheckboxGroupState } from 'react-stately'
+import { twMerge } from 'tailwind-merge'
 
 import FieldErrorMessage from '../../info-components/FieldErrorMessage'
-import { twMerge } from 'tailwind-merge'
 
 export const CheckboxGroupContext = React.createContext({} as CheckboxGroupState)
 

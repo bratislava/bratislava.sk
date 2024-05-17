@@ -1,5 +1,3 @@
-import SearchIcon from '@assets/images/search-icon.svg'
-import Button from '@components/forms/simple-components/Button'
 import React, {
   DetailedHTMLProps,
   Dispatch,
@@ -7,6 +5,9 @@ import React, {
   KeyboardEvent,
   SetStateAction,
 } from 'react'
+
+import SearchIcon from '@/assets/images/search-icon.svg'
+import Button from '@/components/forms/simple-components/Button'
 
 type HomePageSearchFieldProps = {
   value: string

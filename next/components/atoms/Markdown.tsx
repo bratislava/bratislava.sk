@@ -1,11 +1,12 @@
 /* eslint-disable @typescript-eslint/no-unused-vars,jsx-a11y/heading-has-content */
 import { Typography } from '@bratislava/component-library'
-import MLink from '@components/forms/simple-components/MLink'
 import cx from 'classnames'
 import ReactMarkdown from 'react-markdown'
 import rehypeRaw from 'rehype-raw'
 import remarkGfm from 'remark-gfm'
 import remarkUnwrapImages from 'remark-unwrap-images'
+
+import MLink from '@/components/forms/simple-components/MLink'
 
 import styles from './Markdown.module.scss'
 
@@ -42,7 +43,7 @@ const Markdown = ({ content, variant = 'default' }: MarkdownProps) => {
         // Accordion uses h3 as its own heading, we want to display all the headings in markdown smaller or equal to h4.
         h1: 'p',
         h2: ({ node, level, ...props }) => (
-          <Typography type="h2" size={variant === 'accordion' ? 'h4' : 'h2'} {...props} />
+          <Typography type="h2" size={variant === 'accordion' ? 'h4' : 'h2'} {...props} data-cy="heading-two" />
         ),
         h3: ({ node, level, ...props }) => (
           <Typography type="h3" size={variant === 'accordion' ? 'h4' : 'h3'} {...props} />
@@ -51,7 +52,12 @@ const Markdown = ({ content, variant = 'default' }: MarkdownProps) => {
         h5: ({ node, level, ...props }) => <h5 className="text-h4 font-medium" {...props} />,
         h6: ({ node, level, ...props }) => <h6 className="text-h5" {...props} />,
         p: ({ node, ...props }) => (
-          <Typography type="p" size="p-large" className="whitespace-pre-wrap" {...props} />
+          <Typography
+            type="p"
+            size={variant === 'small' ? 'p-small' : 'p-large'}
+            className="whitespace-pre-wrap"
+            {...props}
+          />
         ),
         strong: ({ node, ...props }) => <strong className="font-semibold" {...props} />,
         a: ({ node, href, title, children, ...props }) => {

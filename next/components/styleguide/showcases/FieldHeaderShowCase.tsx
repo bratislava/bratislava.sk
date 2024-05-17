@@ -1,6 +1,7 @@
-import FieldErrorMessage from '@components/forms/info-components/FieldErrorMessage'
-import FieldHeader from '@components/forms/info-components/FieldHeader'
 import React from 'react'
+
+import FieldErrorMessage from '@/components/forms/info-components/FieldErrorMessage'
+import FieldHeader from '@/components/forms/info-components/FieldHeader'
 
 import Stack from '../Stack'
 import Wrapper from '../Wrapper'

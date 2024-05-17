@@ -1,6 +1,7 @@
-import Bookmark, { BookmarkProps } from '@bratislava/ui-bratislava/Bookmark/Bookmark'
 import isEmpty from 'lodash/isEmpty'
 import { twMerge } from 'tailwind-merge'
+
+import Bookmark, { BookmarkProps } from '@/components/ui/Bookmark/Bookmark'
 
 export type BookmarksProps = {
   className?: string

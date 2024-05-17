@@ -1,6 +1,7 @@
-import { DividerSectionFragment } from '@backend/graphql'
-import Divider from '@bratislava/ui-bratislava/Divider/Divider'
 import React from 'react'
+
+import Divider from '@/components/ui/Divider/Divider'
+import { DividerSectionFragment } from '@/services/graphql'
 
 type DividerSectionProps = {
   section: DividerSectionFragment

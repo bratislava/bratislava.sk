@@ -1,6 +1,6 @@
-import type { Ginis } from '../../../ginis'
-import { makeAxiosRequest, getGRestHeader, GRestHeader } from '../../../utils/api'
-import { GinisError } from '../../../utils/errors'
+import type { Ginis } from '@/ginis-sdk'
+import { GinisError } from '@/ginis-sdk'
+import { getGRestHeader, GRestHeader, makeAxiosRequest } from '@/ginis-sdk/utils/api'
 
 // https://robot.gordic.cz/xrg/Default.html?c=OpenMethodDetail&moduleName=SSL&version=390&methodName=pridat-soubor&type=request
 export type PridatSouborRequest = {
@@ -34,7 +34,7 @@ export type PridatSouborResponse = {
 
 export async function pridatSoubor(
   this: Ginis,
-  bodyObj: PridatSouborRequest
+  bodyObj: PridatSouborRequest,
 ): Promise<PridatSouborXrg> {
   const url = this.config.urls.ssl
   if (!url) throw new GinisError('GINIS SDK Error: Missing SSL url in GINIS config')
@@ -44,11 +44,11 @@ export async function pridatSoubor(
     {
       GRestHeader: getGRestHeader(
         this.config,
-        'http://www.gordic.cz/xrg/ssl/wfl-dokument/pridat-soubor/request/v_1.0.0.0'
+        'http://www.gordic.cz/xrg/ssl/wfl-dokument/pridat-soubor/request/v_1.0.0.0',
       ),
       Xrg: { 'Pridat-soubor': bodyObj },
     },
-    this.config.debug
+    this.config.debug,
   )
   return response.data.Xrg
 }

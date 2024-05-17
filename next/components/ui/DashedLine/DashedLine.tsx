@@ -1,6 +1,6 @@
 import { twMerge } from 'tailwind-merge'
 
-import CompleteDashedLine from './dashedLines/CompleteDashedLine'
+import CompleteDashedLine from '@/components/ui/DashedLine/dashedLines/CompleteDashedLine'
 
 export type DashedLineProps = {
   position: string

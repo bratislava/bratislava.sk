@@ -1,9 +1,9 @@
-import Waves from '@bratislava/ui-bratislava/Waves/Waves'
-import Button from '@components/forms/simple-components/Button'
 import cx from 'classnames'
 import React from 'react'
 
-import NumericalList from '../NumericalList/NumericalList'
+import Button from '@/components/forms/simple-components/Button'
+import NumericalList from '@/components/ui/NumericalList/NumericalList'
+import Waves from '@/components/ui/Waves/Waves'
 
 export type NumericalListItemObject = {
   text?: string | null

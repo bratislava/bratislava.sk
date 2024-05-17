@@ -1,8 +1,8 @@
-import Footer from '@bratislava/ui-bratislava/Footer/Footer'
-import CookieConsent from '@components/organisms/CookieConsent/CookieConsent'
 import React, { PropsWithChildren } from 'react'
 
-import NavBar from '../organisms/NavBar/NavBar'
+import CookieConsent from '@/components/organisms/CookieConsent/CookieConsent'
+import NavBar from '@/components/organisms/NavBar/NavBar'
+import Footer from '@/components/ui/Footer/Footer'
 
 type PageLayoutProps = {
   className?: string

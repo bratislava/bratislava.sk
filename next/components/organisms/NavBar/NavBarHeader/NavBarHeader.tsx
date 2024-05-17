@@ -1,17 +1,18 @@
-import SearchIcon from '@assets/images/search-icon.svg'
-import Brand from '@bratislava/ui-bratislava/Brand/Brand'
-import SectionContainer from '@bratislava/ui-bratislava/SectionContainer/SectionContainer'
-import Button from '@components/forms/simple-components/Button'
-import MLink from '@components/forms/simple-components/MLink'
-import { useLocalizations } from '@components/providers/LocalizationsProvider'
-import { getCategoryColorLocalStyle } from '@utils/colors'
-import { useGeneralContext } from '@utils/generalContext'
-import { getCommonLinkProps } from '@utils/getCommonLinkProps'
-import { isDefined } from '@utils/isDefined'
-import { isExternalLink } from '@utils/isExternalLink'
 import SkipToContentButton from 'components/molecules/SkipToContentButton'
 import { useTranslations } from 'next-intl'
 import React from 'react'
+
+import SearchIcon from '@/assets/images/search-icon.svg'
+import Button from '@/components/forms/simple-components/Button'
+import MLink from '@/components/forms/simple-components/MLink'
+import { useLocalizations } from '@/components/providers/LocalizationsProvider'
+import Brand from '@/components/ui/Brand/Brand'
+import SectionContainer from '@/components/ui/SectionContainer/SectionContainer'
+import { getCategoryColorLocalStyle } from '@/utils/colors'
+import { useGeneralContext } from '@/utils/generalContext'
+import { getCommonLinkProps } from '@/utils/getCommonLinkProps'
+import { isDefined } from '@/utils/isDefined'
+import { isExternalLink } from '@/utils/isExternalLink'
 
 type NavBarProps = { className?: string }
 
@@ -79,7 +80,7 @@ const NavBarHeader = ({ className }: NavBarProps) => {
           <Divider />
 
           {otherLanguage && (
-            <MLink variant="underlined" href={otherLanguage.path} locale={otherLanguage.locale}>
+            <MLink variant="underlined" href={otherLanguage.path} locale={otherLanguage.locale} data-cy="change-language-button">
               {otherLanguage.longName}
             </MLink>
           )}

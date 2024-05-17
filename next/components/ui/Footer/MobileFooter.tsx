@@ -1,7 +1,9 @@
-import EULogo from '@assets/images/EULogo.svg'
-import AccordionV2 from '@components/ui/AccordionV2/AccordionV2'
-import Brand from '@components/ui/Brand/Brand'
-import HorizontalDivider from '@components/ui/Divider/HorizontalDivider'
+import React, { Fragment } from 'react'
+
+import EULogo from '@/assets/images/EULogo.svg'
+import AccordionV2 from '@/components/ui/AccordionV2/AccordionV2'
+import Brand from '@/components/ui/Brand/Brand'
+import HorizontalDivider from '@/components/ui/Divider/HorizontalDivider'
 import {
   FooterAccessibilityLink,
   FooterColumnLinks,
@@ -9,11 +11,10 @@ import {
   FooterCopyright,
   FooterLanguageSwitcher,
   FooterSocialLinks,
-} from '@components/ui/Footer/FooterShared'
-import SectionContainer from '@components/ui/SectionContainer/SectionContainer'
-import { useGeneralContext } from '@utils/generalContext'
-import { isDefined } from '@utils/isDefined'
-import React, { Fragment } from 'react'
+} from '@/components/ui/Footer/FooterShared'
+import SectionContainer from '@/components/ui/SectionContainer/SectionContainer'
+import { useGeneralContext } from '@/utils/generalContext'
+import { isDefined } from '@/utils/isDefined'
 
 /**
  * Figma: https://www.figma.com/file/17wbd0MDQcMW9NbXl6UPs8/DS-ESBS%3A-Component-library?node-id=7558-20338&t=bWqVCwkV1Gv1qULG-0
