@@ -5,9 +5,8 @@ import React from 'react'
 
 import { InfoIcon } from '@/assets/ui-icons'
 import { ComparisonSectionFragment } from '@/backend/graphql'
+import ComparisonCard from '@/components/molecules/ComparisonCard'
 import { isDefined } from '@/utils/isDefined'
-
-import ComparisonCard from '../../ComparisonCard'
 
 type ComparisonSectionProps = {
   section: ComparisonSectionFragment

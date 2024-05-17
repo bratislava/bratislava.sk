@@ -1,3 +1,29 @@
+import {
+  Regulation_Archiv48pxIcon,
+  Regulation_DaneAPoplatky48pxIcon,
+  Regulation_Hospodarenie48pxIcon,
+  Regulation_Ostatne48pxIcon,
+  Regulation_PomenovanieUlic48pxIcon,
+  Regulation_PoriadokACistota48pxIcon,
+  Regulation_SocialnaPomocASkolstvo48pxIcon,
+  Regulation_UzemnePlanovanie48pxIcon,
+} from '@/assets/icons-regulation-categories'
+import {
+  SearchResults_Contacts48pxIcon,
+  SearchResults_Document48pxIcon,
+} from '@/assets/icons-search-results'
+import {
+  TopServices_BratislavskeKontoIcon,
+  TopServices_DaneAPoplatkyIcon,
+  TopServices_KampaneAProjektyIcon,
+  TopServices_NahlaseniePodnetov,
+  TopServices_OrganizacnaStruktura,
+  TopServices_ParkyAZahrady,
+  TopServices_PracovnePrilezitosti,
+  TopServices_PrenajomPriestorov,
+  TopServices_TuristomVHlavnomMeste,
+  TopServices_UradneHodinyIcon,
+} from '@/assets/icons-top-services'
 import EServices48pxIcon from '@/assets/images/EServices.svg'
 import Accommodation48pxIcon from '@/assets/images/menu-icons/48px/accommodation_48px.svg'
 import Bike48pxIcon from '@/assets/images/menu-icons/48px/bike_48px.svg'
@@ -90,33 +116,6 @@ import Tree64pxIcon from '@/assets/images/menu-icons/64px/tree_64px.svg'
 import Trolleybus64pxIcon from '@/assets/images/menu-icons/64px/trolleybus_64px.svg'
 import Phone48pxIcon from '@/assets/images/phone-medium.svg'
 import TouristSign48pxIcon from '@/assets/images/Tourist-icon.svg'
-
-import {
-  Regulation_Archiv48pxIcon,
-  Regulation_DaneAPoplatky48pxIcon,
-  Regulation_Hospodarenie48pxIcon,
-  Regulation_Ostatne48pxIcon,
-  Regulation_PomenovanieUlic48pxIcon,
-  Regulation_PoriadokACistota48pxIcon,
-  Regulation_SocialnaPomocASkolstvo48pxIcon,
-  Regulation_UzemnePlanovanie48pxIcon,
-} from '../../../assets/icons-regulation-categories'
-import {
-  SearchResults_Contacts48pxIcon,
-  SearchResults_Document48pxIcon,
-} from '../../../assets/icons-search-results'
-import {
-  TopServices_BratislavskeKontoIcon,
-  TopServices_DaneAPoplatkyIcon,
-  TopServices_KampaneAProjektyIcon,
-  TopServices_NahlaseniePodnetov,
-  TopServices_OrganizacnaStruktura,
-  TopServices_ParkyAZahrady,
-  TopServices_PracovnePrilezitosti,
-  TopServices_PrenajomPriestorov,
-  TopServices_TuristomVHlavnomMeste,
-  TopServices_UradneHodinyIcon,
-} from '../../../assets/icons-top-services'
 
 export type MenuIcon = string
 

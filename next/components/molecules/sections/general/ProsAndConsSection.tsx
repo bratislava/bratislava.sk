@@ -4,9 +4,8 @@ import React from 'react'
 
 import { CheckIcon, CrossIcon } from '@/assets/ui-icons'
 import { ProsAndConsSectionFragment } from '@/backend/graphql'
+import ComparisonCard from '@/components/molecules/ComparisonCard'
 import { isDefined } from '@/utils/isDefined'
-
-import ComparisonCard from '../../ComparisonCard'
 
 type ProsAndConsSectionProps = {
   section: ProsAndConsSectionFragment

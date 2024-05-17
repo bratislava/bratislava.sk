@@ -13,9 +13,8 @@ import { QueryParamProvider } from 'use-query-params'
 
 import { NavMenuContextProvider } from '@/components/organisms/NavBar/NavMenu/navMenuContext'
 import BAI18nProvider from '@/components/providers/BAI18nProvider'
+import BAQueryClientProvider from '@/components/providers/BAQueryClientProvider'
 import { isProductionDeployment } from '@/utils/utils'
-
-import BAQueryClientProvider from '../components/providers/BAQueryClientProvider'
 
 const inter = Inter({
   variable: '--inter-font',

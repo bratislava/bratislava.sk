@@ -6,12 +6,11 @@ import type { HomepageContext } from '@/backend/fetchers/homepageContextFetcher'
 import { homepageContextFetcher } from '@/backend/fetchers/homepageContextFetcher'
 import { GeneralQuery } from '@/backend/graphql'
 import { client } from '@/backend/graphql/gql'
+import PageLayout from '@/components/layouts/PageLayout'
 import HomepageContent from '@/components/pages/HomepageContent'
 import { GeneralContextProvider } from '@/utils/generalContext'
 import { HomepageContextProvider } from '@/utils/homepageContext'
 import { useTitle } from '@/utils/useTitle'
-
-import PageLayout from '../components/layouts/PageLayout'
 
 type PageProps = {
   homepageContext: HomepageContext

@@ -1,4 +1,4 @@
-import Radio, { RadioProps } from '../Radio/Radio'
+import Radio, { RadioProps } from '@/components/ui/Radio/Radio'
 
 export type RadioGroupProps<T> = {
   className?: string

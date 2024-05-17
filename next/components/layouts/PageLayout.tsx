@@ -1,9 +1,8 @@
 import React, { PropsWithChildren } from 'react'
 
 import CookieConsent from '@/components/organisms/CookieConsent/CookieConsent'
+import NavBar from '@/components/organisms/NavBar/NavBar'
 import Footer from '@/components/ui/Footer/Footer'
-
-import NavBar from '../organisms/NavBar/NavBar'
 
 type PageLayoutProps = {
   className?: string

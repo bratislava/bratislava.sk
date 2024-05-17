@@ -5,14 +5,13 @@ import * as React from 'react'
 
 import { GeneralQuery } from '@/backend/graphql'
 import { client } from '@/backend/graphql/gql'
+import PageLayout from '@/components/layouts/PageLayout'
 import GlobalSearchSectionContent from '@/components/organisms/SearchSection/GlobalSearchSectionContent'
 import { LocalizationsProvider } from '@/components/providers/LocalizationsProvider'
 import PageHeader from '@/components/ui/PageHeader/PageHeader'
 import SectionContainer from '@/components/ui/SectionContainer/SectionContainer'
 import { GeneralContextProvider } from '@/utils/generalContext'
 import { useTitle } from '@/utils/useTitle'
-
-import PageLayout from '../components/layouts/PageLayout'
 
 type PageProps = {
   general: GeneralQuery

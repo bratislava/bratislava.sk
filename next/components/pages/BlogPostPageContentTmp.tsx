@@ -4,14 +4,13 @@ import { PropsWithChildren, useMemo } from 'react'
 
 import { BlogPostEntityFragment } from '@/backend/graphql'
 import Button from '@/components/forms/simple-components/Button'
+import Sections from '@/components/molecules/Sections'
 import ShareButtons from '@/components/molecules/ShareButtons'
 import { Breadcrumb } from '@/components/ui/Breadcrumbs/Breadcrumbs'
 import PageHeader from '@/components/ui/PageHeader/PageHeader'
 import { useGeneralContext } from '@/utils/generalContext'
 import { getNumericLocalDate } from '@/utils/local-date'
 import { getPageBreadcrumbs } from '@/utils/page'
-
-import Sections from '../molecules/Sections'
 
 export const SocialMediaButton = ({
   getLink,

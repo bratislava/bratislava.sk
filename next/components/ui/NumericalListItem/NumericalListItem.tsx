@@ -1,9 +1,8 @@
 import cx from 'classnames'
 
 import Markdown from '@/components/atoms/Markdown'
+import DashedLine from '@/components/ui/DashedLine/DashedLine'
 import { NumericalListItemObject } from '@/components/ui/NumericalListSectionUI/NumericalListSectionUI'
-
-import DashedLine from '../DashedLine/DashedLine'
 
 export type NumericalListItemProps = {
   index: number

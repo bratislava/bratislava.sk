@@ -1,4 +1,4 @@
-import PageCard, { PageCardProps } from '../PageCard/PageCard'
+import PageCard, { PageCardProps } from '@/components/ui/PageCard/PageCard'
 
 export type PageCardsProps = {
   pages: PageCardProps[]

@@ -4,14 +4,13 @@ import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 import { useMemo, useState } from 'react'
 
+import HomePageSearch from '@/components/molecules/HomePageSearch'
+import { getParsedMenus } from '@/components/organisms/NavBar/NavMenu/getParsedMenus'
 import SectionContainer from '@/components/ui/SectionContainer/SectionContainer'
 import WelcomeCard from '@/components/ui/WelcomeCard/WelcomeCard'
 import { useGeneralContext } from '@/utils/generalContext'
 import { generateImageSizes } from '@/utils/generateImageSizes'
 import { useHomepageContext } from '@/utils/homepageContext'
-
-import { getParsedMenus } from '../../../organisms/NavBar/NavMenu/getParsedMenus'
-import HomePageSearch from '../../HomePageSearch'
 
 const WelcomeHomepageSection = () => {
   const t = useTranslations()

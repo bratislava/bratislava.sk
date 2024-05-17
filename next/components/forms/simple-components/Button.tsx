@@ -8,8 +8,7 @@ import { Button as RACButton, ButtonProps as RACButtonProps } from 'react-aria-c
 import { twMerge } from 'tailwind-merge'
 
 import { ArrowRightIcon, ExportIcon } from '@/assets/ui-icons'
-
-import MLink, { LinkPlausibleProps } from './MLink'
+import MLink, { LinkPlausibleProps } from '@/components/forms/simple-components/MLink'
 
 type ButtonOrIconButton =
   | {

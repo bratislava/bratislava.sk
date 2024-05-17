@@ -2,7 +2,7 @@ import cx from 'classnames'
 import Tooltip from 'components/forms/info-components/Tooltip/Tooltip'
 import { DOMAttributes } from 'react'
 
-import { ExplicitOptionalType } from '../types/ExplicitOptional'
+import { ExplicitOptionalType } from '@/components/forms/types/ExplicitOptional'
 
 type FieldHeaderProps = {
   label: string
