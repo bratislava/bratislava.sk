@@ -15,7 +15,6 @@ import EventCardShowcase from '@/components/styleguide/showcases/EventCardShowca
 import FieldHeaderShowCase from '@/components/styleguide/showcases/FieldHeaderShowCase'
 import HomepageHorizontalCardShowcase from '@/components/styleguide/showcases/HomepageHorizontalCardShowcase'
 import ProgressBarShowCase from '@/components/styleguide/showcases/ProgressBarShowCase'
-import SearchFieldShowCase from '@/components/styleguide/showcases/SearchFieldShowCase'
 import SelectFieldShowCase from '@/components/styleguide/showcases/SelectFieldShowCase'
 import ServiceCardShowCase from '@/components/styleguide/showcases/ServiceCardShowCase'
 import SingleCheckboxShowCase from '@/components/styleguide/showcases/SingleCheckboxShowCase'
@@ -42,7 +41,6 @@ const Styleguide = () => {
       <SpinnerShowCase />
       <TextAreaFieldShowCase />
       <AlertShowCase />
-      <SearchFieldShowCase />
       <ToggleShowCase />
       <DropdownShowCase />
       <SelectFieldShowCase />
