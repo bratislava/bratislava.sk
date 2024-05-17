@@ -70,6 +70,7 @@ const MobileNavBar = ({ className }: MobileNavBarProps) => {
                   onPress={() => setMobileMenuOpen(true)}
                   className="-mr-4 p-4"
                   aria-label={t('menu.openMenu')}
+                  data-cy="mobile-menu-button"
                   icon={<HamburgerIcon />}
                 />
               )}
