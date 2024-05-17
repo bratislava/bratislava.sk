@@ -79,7 +79,7 @@ const NavBarHeader = ({ className }: NavBarProps) => {
           <Divider />
 
           {otherLanguage && (
-            <MLink variant="underlined" href={otherLanguage.path} locale={otherLanguage.locale}>
+            <MLink variant="underlined" href={otherLanguage.path} locale={otherLanguage.locale} data-cy="change-language-button">
               {otherLanguage.longName}
             </MLink>
           )}
