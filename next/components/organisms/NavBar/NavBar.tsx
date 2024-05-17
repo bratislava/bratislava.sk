@@ -1,6 +1,7 @@
-import AlertBanner from '@components/organisms/NavBar/AlertBanner'
 import * as React from 'react'
 import { useElementSize } from 'usehooks-ts'
+
+import AlertBanner from '@/components/organisms/NavBar/AlertBanner'
 
 import MobileNavBar from './MobileNavBar'
 import NavBarHeader from './NavBarHeader/NavBarHeader'

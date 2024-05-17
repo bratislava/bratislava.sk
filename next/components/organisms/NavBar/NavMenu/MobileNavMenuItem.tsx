@@ -1,6 +1,7 @@
 import * as NavigationMenu from '@radix-ui/react-navigation-menu'
-import { getCategoryColorLocalStyle, transformIconToCategory } from '@utils/colors'
 import React from 'react'
+
+import { getCategoryColorLocalStyle, transformIconToCategory } from '@/utils/colors'
 
 import MobileNavMenuContent from './MobileNavMenuContent'
 import MobileNavMenuTrigger from './MobileNavMenuTrigger'

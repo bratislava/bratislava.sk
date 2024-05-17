@@ -1,7 +1,8 @@
-import Waves from '@bratislava/ui-bratislava/Waves/Waves'
 import * as NavigationMenu from '@radix-ui/react-navigation-menu'
 import cx from 'classnames'
 import React, { CSSProperties, useMemo } from 'react'
+
+import Waves from '@/components/ui/Waves/Waves'
 
 import NavMenuContentCell from './NavMenuContentCell'
 import NavMenuSection from './NavMenuSection'

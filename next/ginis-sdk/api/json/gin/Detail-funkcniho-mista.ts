@@ -1,6 +1,6 @@
-import type { Ginis } from '../../../ginis'
-import { makeAxiosRequest, getGRestHeader, GRestHeader } from '../../../utils/api'
-import { GinisError } from '../../../utils/errors'
+import type { Ginis } from '@/ginis-sdk'
+import { GinisError } from '@/ginis-sdk'
+import { getGRestHeader, GRestHeader, makeAxiosRequest } from '@/ginis-sdk/utils/api'
 
 // https://robot.gordic.cz/xrg/Default.html?c=OpenMethodDetail&moduleName=SSL&version=390&methodName=Detail-funkcniho-mista&type=request
 export type DetailFunkcnihoMistaRequest = {
@@ -44,7 +44,7 @@ export type DetailFunkcnihoMistaResponse = {
 
 export async function detailFunkcnihoMista(
   this: Ginis,
-  bodyObj: DetailFunkcnihoMistaRequest
+  bodyObj: DetailFunkcnihoMistaRequest,
 ): Promise<DetailFunkcnihoMistaXrg> {
   const url = this.config.urls.gin
   if (!url) throw new GinisError('GINIS SDK Error: Missing GIN url in GINIS config')
@@ -54,11 +54,11 @@ export async function detailFunkcnihoMista(
     {
       GRestHeader: getGRestHeader(
         this.config,
-        'http://www.gordic.cz/xrg/gin/detail-funkcniho-mista/request/v_1.0.0.0'
+        'http://www.gordic.cz/xrg/gin/detail-funkcniho-mista/request/v_1.0.0.0',
       ),
       Xrg: { 'Detail-funkcniho-mista': bodyObj },
     },
-    this.config.debug
+    this.config.debug,
   )
   return response.data.Xrg
 }

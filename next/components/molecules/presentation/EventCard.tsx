@@ -1,12 +1,13 @@
 import { Typography } from '@bratislava/component-library'
-import FormatEventDateRange from '@components/atoms/FormatEventDateRange'
-import MLink from '@components/forms/simple-components/MLink'
-import CardBase from '@components/molecules/presentation/CardBase'
-import CardContent from '@components/molecules/presentation/CardContent'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 import React from 'react'
 import { twMerge } from 'tailwind-merge'
+
+import FormatEventDateRange from '@/components/atoms/FormatEventDateRange'
+import MLink from '@/components/forms/simple-components/MLink'
+import CardBase from '@/components/molecules/presentation/CardBase'
+import CardContent from '@/components/molecules/presentation/CardContent'
 
 type EventCardProps = {
   title: string

@@ -1,5 +1,5 @@
-import Checkbox from '@components/forms/widget-components/Checkbox/Checkbox'
-import CheckboxGroup from '@components/forms/widget-components/Checkbox/CheckboxGroup'
+import Checkbox from '@/components/forms/widget-components/Checkbox/Checkbox'
+import CheckboxGroup from '@/components/forms/widget-components/Checkbox/CheckboxGroup'
 
 import Stack from '../Stack'
 import Wrapper from '../Wrapper'

@@ -1,6 +1,7 @@
-import { ColumnedTextSectionFragment } from '@backend/graphql'
-import ColumnedText from '@bratislava/ui-bratislava/ColumnedText/ColumnedText'
 import React from 'react'
+
+import ColumnedText from '@/components/ui/ColumnedText/ColumnedText'
+import { ColumnedTextSectionFragment } from '@/services/graphql'
 
 type ColumnedTextSectionProps = { section: ColumnedTextSectionFragment }
 

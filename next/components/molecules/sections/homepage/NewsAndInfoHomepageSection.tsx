@@ -1,9 +1,10 @@
-import HighlightsHomepageSection from '@components/molecules/sections/homepage/HighlightsHomepageSection'
-import HomepageTabs from '@components/molecules/sections/homepage/HomepageTabs/HomepageTabs'
-import MayorAndCouncilHomepageSection from '@components/molecules/sections/homepage/MayorAndCouncilHomepageSection'
-import HorizontalDivider from '@components/ui/Divider/HorizontalDivider'
-import SectionContainer from '@components/ui/SectionContainer/SectionContainer'
 import React from 'react'
+
+import HighlightsHomepageSection from '@/components/molecules/sections/homepage/HighlightsHomepageSection'
+import HomepageTabs from '@/components/molecules/sections/homepage/HomepageTabs/HomepageTabs'
+import MayorAndCouncilHomepageSection from '@/components/molecules/sections/homepage/MayorAndCouncilHomepageSection'
+import HorizontalDivider from '@/components/ui/Divider/HorizontalDivider'
+import SectionContainer from '@/components/ui/SectionContainer/SectionContainer'
 
 const NewsAndInfoHomepageSection = () => {
   return (

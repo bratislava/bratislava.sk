@@ -1,21 +1,22 @@
-import { BlogPostsByCategorySectionFragment } from '@backend/graphql'
-import { client } from '@backend/graphql/gql'
+import { Typography } from '@bratislava/component-library'
+import { keepPreviousData, useQuery } from '@tanstack/react-query'
+import { useLocale, useTranslations } from 'next-intl'
+import React, { useEffect } from 'react'
+
+import BlogPostCard from '@/components/molecules/presentation/BlogPostCard'
+import Pagination from '@/components/ui/Pagination/Pagination'
+import { BlogPostsByCategorySectionFragment } from '@/services/graphql'
+import { client } from '@/services/graphql/gql'
 import {
   blogPostsDefaultFilters,
   blogPostsFetcher,
   getBlogPostsQueryKey,
-} from '@backend/meili/fetchers/blogPostsFetcherReactQuery'
-import { Typography } from '@bratislava/component-library'
-import BlogPostCard from '@components/molecules/presentation/BlogPostCard'
-import Pagination from '@components/ui/Pagination/Pagination'
-import { keepPreviousData, useQuery } from '@tanstack/react-query'
-import { getCategoryColorLocalStyle } from '@utils/colors'
-import { generateImageSizes } from '@utils/generateImageSizes'
-import { isDefined } from '@utils/isDefined'
-import { getNumericLocalDate } from '@utils/local-date'
-import { useRoutePreservedState } from '@utils/useRoutePreservedState'
-import { useLocale, useTranslations } from 'next-intl'
-import React, { useEffect } from 'react'
+} from '@/services/meili/fetchers/blogPostsFetcherReactQuery'
+import { getCategoryColorLocalStyle } from '@/utils/colors'
+import { generateImageSizes } from '@/utils/generateImageSizes'
+import { isDefined } from '@/utils/isDefined'
+import { getNumericLocalDate } from '@/utils/local-date'
+import { useRoutePreservedState } from '@/utils/useRoutePreservedState'
 
 const imageSizes = generateImageSizes({ default: '100vw', md: '50vw', lg: '33vw' })
 

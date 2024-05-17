@@ -1,15 +1,15 @@
-import { CommonLinkFragment } from '@backend/graphql'
 import { Typography } from '@bratislava/component-library'
-import Breadcrumbs, { BreadcrumbsProps } from '@bratislava/ui-bratislava/Breadcrumbs/Breadcrumbs'
-import Waves from '@bratislava/ui-bratislava/Waves/Waves'
-import { generateImageSizes } from '@utils/generateImageSizes'
-import { getCommonLinkProps } from '@utils/getCommonLinkProps'
 import cx from 'classnames'
 import Image from 'next/image'
 import React, { PropsWithChildren } from 'react'
 import { twMerge } from 'tailwind-merge'
 
-import Button from '../../forms/simple-components/Button'
+import Button from '@/components/forms/simple-components/Button'
+import Breadcrumbs, { BreadcrumbsProps } from '@/components/ui/Breadcrumbs/Breadcrumbs'
+import Waves from '@/components/ui/Waves/Waves'
+import { CommonLinkFragment } from '@/services/graphql'
+import { generateImageSizes } from '@/utils/generateImageSizes'
+import { getCommonLinkProps } from '@/utils/getCommonLinkProps'
 
 type PageHeaderProps = {
   title?: string | null
@@ -67,7 +67,11 @@ const PageHeader = ({
 
             {(title || subtext) && (
               <div className="flex max-w-[800px] flex-col gap-y-1 lg:gap-y-4">
-                {title && <Typography type="h1" data-cy="page-heading">{title}</Typography>}
+                {title && (
+                  <Typography type="h1" data-cy="page-heading">
+                    {title}
+                  </Typography>
+                )}
                 {subtext && (
                   <Typography type="p" size="p-large">
                     {subtext}

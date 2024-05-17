@@ -1,6 +1,7 @@
-import { getOfficialBoardFileBase64Encoded } from '@backend/ginis/server/getOfficialBoardFileBase64Encoded'
-import { base64Decode } from '@utils/base64'
 import type { NextApiRequest, NextApiResponse } from 'next'
+
+import { getOfficialBoardFileBase64Encoded } from '@/services/ginis/server/getOfficialBoardFileBase64Encoded'
+import { base64Decode } from '@/utils/base64'
 
 /**
  * This handler serves files from official board (Ginis UDE = Úřední deska = Úradná tabuľa) as pdf.

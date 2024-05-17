@@ -1,7 +1,3 @@
-import {
-  getHomepageSearchSwrKey,
-  homepageSearchFetcher,
-} from '@backend/meili/fetchers/homepageSearchFetcher'
 import { useRouter } from 'next/navigation'
 import { useLocale, useTranslations } from 'next-intl'
 import { Dispatch, SetStateAction, useCallback, useEffect, useRef, useState } from 'react'
@@ -9,10 +5,14 @@ import useSWR from 'swr'
 import { twMerge } from 'tailwind-merge'
 import { useDebounce, useOnClickOutside } from 'usehooks-ts'
 
-import useGetSwrExtras from '../../utils/useGetSwrExtras'
-import AnimateHeight from '../atoms/AnimateHeight'
-import HomePageSearchField from './HomePageSearchField'
-import HomePageSearchResults from './HomePageSearchResults'
+import AnimateHeight from '@/components/atoms/AnimateHeight'
+import HomePageSearchField from '@/components/molecules/HomePageSearchField'
+import HomePageSearchResults from '@/components/molecules/HomePageSearchResults'
+import {
+  getHomepageSearchSwrKey,
+  homepageSearchFetcher,
+} from '@/services/meili/fetchers/homepageSearchFetcher'
+import useGetSwrExtras from '@/utils/useGetSwrExtras'
 
 type HomePageSearchProps = {
   isOpen: boolean

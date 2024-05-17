@@ -1,9 +1,10 @@
-import { IconTitleDescSectionFragment } from '@backend/graphql'
 import { Typography } from '@bratislava/component-library'
-import IconTitleDescItem from '@components/ui/IconTitleDescItem/IconTitleDescItem'
-import { isDefined } from '@utils/isDefined'
 import cx from 'classnames'
 import React from 'react'
+
+import IconTitleDescItem from '@/components/ui/IconTitleDescItem/IconTitleDescItem'
+import { IconTitleDescSectionFragment } from '@/services/graphql'
+import { isDefined } from '@/utils/isDefined'
 
 type IconTitleDescSectionProps = {
   section: IconTitleDescSectionFragment

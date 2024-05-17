@@ -1,12 +1,13 @@
-import { Enum_Componentmenumenuitem_Icon } from '@backend/graphql'
-import IconCity from '@bratislava/ui-bratislava/WelcomeCard/IconComponents/IconCity'
-import IconCulture from '@bratislava/ui-bratislava/WelcomeCard/IconComponents/IconCulture'
-import IconEducation from '@bratislava/ui-bratislava/WelcomeCard/IconComponents/IconEducation'
-import IconEnvironment from '@bratislava/ui-bratislava/WelcomeCard/IconComponents/IconEnvironment'
-import IconSocial from '@bratislava/ui-bratislava/WelcomeCard/IconComponents/IconSocial'
-import IconTransport from '@bratislava/ui-bratislava/WelcomeCard/IconComponents/IconTransport'
-import { getCategoryColorLocalStyle, transformIconToCategory } from '@utils/colors'
 import { useMemo } from 'react'
+
+import IconCity from '@/components/ui/WelcomeCard/IconComponents/IconCity'
+import IconCulture from '@/components/ui/WelcomeCard/IconComponents/IconCulture'
+import IconEducation from '@/components/ui/WelcomeCard/IconComponents/IconEducation'
+import IconEnvironment from '@/components/ui/WelcomeCard/IconComponents/IconEnvironment'
+import IconSocial from '@/components/ui/WelcomeCard/IconComponents/IconSocial'
+import IconTransport from '@/components/ui/WelcomeCard/IconComponents/IconTransport'
+import { Enum_Componentmenumenuitem_Icon } from '@/services/graphql'
+import { getCategoryColorLocalStyle, transformIconToCategory } from '@/utils/colors'
 
 export type IconProps = {
   isColored: boolean

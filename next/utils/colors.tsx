@@ -1,5 +1,6 @@
-import { Enum_Componentmenumenuitem_Icon, Enum_Pagecategory_Color } from '@backend/graphql'
 import React, { CSSProperties } from 'react'
+
+import { Enum_Componentmenumenuitem_Icon, Enum_Pagecategory_Color } from '@/services/graphql'
 
 export type ColorCategory =
   | 'main'

@@ -1,6 +1,8 @@
+import crypto from 'node:crypto'
+
 import axios, { AxiosRequestConfig } from 'axios'
-import crypto from 'crypto'
-import type { GinisConfig } from '../ginis'
+
+import type { GinisConfig } from '@/ginis-sdk'
 
 const defaultAxiosConfig: AxiosRequestConfig = {
   headers: {
@@ -12,7 +14,7 @@ export const makeAxiosRequest = async <T>(
   axiosConfig: AxiosRequestConfig | undefined,
   url: string | undefined,
   body: string | object,
-  debug?: boolean
+  debug?: boolean,
 ) => {
   if (!url) {
     throw new Error('Missing GINIS url for the service you are trying to reach.')
@@ -22,8 +24,8 @@ export const makeAxiosRequest = async <T>(
 
   if (debug) {
     console.log('########### GINIS REQUEST ###########')
-    console.log('headers: ', requestConfig.headers)
-    console.log('body: ', body)
+    console.log('headers:', requestConfig.headers)
+    console.log('body:', body)
     console.log('########### GINIS REQUEST END ###########')
   }
   let responseAxios
@@ -31,20 +33,20 @@ export const makeAxiosRequest = async <T>(
     responseAxios = await axios.post<T>(url, body, requestConfig)
   } catch (error) {
     if (debug) {
-      let anyError = error as any
+      const anyError = error as any
       console.log('########### GINIS ERROR RESPONSE ###########')
-      console.log('status: ', anyError?.response?.status)
-      console.log('statusText: ', anyError?.response?.statusText)
-      console.log('data: ', anyError?.response?.data)
+      console.log('status:', anyError?.response?.status)
+      console.log('statusText:', anyError?.response?.statusText)
+      console.log('data:', anyError?.response?.data)
       console.log('########### GINIS RESPONSE END ###########')
     }
     throw error
   }
   if (debug) {
     console.log('########### GINIS RESPONSE ###########')
-    console.log('status: ', responseAxios.status)
-    console.log('statusText: ', responseAxios.statusText)
-    console.log('data: ', responseAxios.data)
+    console.log('status:', responseAxios.status)
+    console.log('statusText:', responseAxios.statusText)
+    console.log('data:', responseAxios.data)
     console.log('########### GINIS RESPONSE END ###########')
   }
   return {

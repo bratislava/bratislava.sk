@@ -8,6 +8,7 @@ resources:
   - nocnapomoc.ingress.yml
   - old_aliases.ingress.yml
   - klima.ingress.yml
+  - camping.ingress.yml
 configurations:
   - configuration.yml
 

@@ -1,16 +1,17 @@
+import { Typography } from '@bratislava/component-library'
+import cx from 'classnames'
+import React from 'react'
+
+import Markdown from '@/components/atoms/Markdown'
+import ContactCtaCard, {
+  ContactCtaCardType,
+} from '@/components/molecules/presentation/ContactCtaCard'
 import {
   ContactCardBlockFragment,
   ContactsSectionFragment,
   Enum_Componentsectionscontactssection_Type,
-} from '@backend/graphql'
-import { Typography } from '@bratislava/component-library'
-import Markdown from '@components/atoms/Markdown'
-import ContactCtaCard, {
-  ContactCtaCardType,
-} from '@components/molecules/presentation/ContactCtaCard'
-import { isDefined } from '@utils/isDefined'
-import cx from 'classnames'
-import React from 'react'
+} from '@/services/graphql'
+import { isDefined } from '@/utils/isDefined'
 
 type ContactsProps = {
   section: ContactsSectionFragment

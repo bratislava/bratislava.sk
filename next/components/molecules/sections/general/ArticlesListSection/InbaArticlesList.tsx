@@ -1,21 +1,22 @@
-import { InbaArticlesListSectionFragment } from '@backend/graphql'
-import { client } from '@backend/graphql/gql'
+import { Typography } from '@bratislava/component-library'
+import { keepPreviousData, useQuery } from '@tanstack/react-query'
+import { useLocale, useTranslations } from 'next-intl'
+import React from 'react'
+
+import BlogPostCard from '@/components/molecules/presentation/BlogPostCard'
+import InbaFeaturedArticlesSection from '@/components/molecules/sections/general/InbaFeaturedArticlesSection'
+import InbaArticlesFilter from '@/components/ui/InbaArticlesFilter/InbaArticlesFilter'
+import Pagination from '@/components/ui/Pagination/Pagination'
+import { InbaArticlesListSectionFragment } from '@/services/graphql'
+import { client } from '@/services/graphql/gql'
 import {
   getInbaArticlesQueryKey,
   inbaArticlesDefaultFilters,
   inbaArticlesFetcher,
-} from '@backend/meili/fetchers/inbaArticlesFetcher'
-import { Typography } from '@bratislava/component-library'
-import BlogPostCard from '@components/molecules/presentation/BlogPostCard'
-import InbaFeaturedArticlesSection from '@components/molecules/sections/general/InbaFeaturedArticlesSection'
-import InbaArticlesFilter from '@components/ui/InbaArticlesFilter/InbaArticlesFilter'
-import Pagination from '@components/ui/Pagination/Pagination'
-import { keepPreviousData, useQuery } from '@tanstack/react-query'
-import { generateImageSizes } from '@utils/generateImageSizes'
-import { getNumericLocalDate } from '@utils/local-date'
-import { useRoutePreservedState } from '@utils/useRoutePreservedState'
-import { useLocale, useTranslations } from 'next-intl'
-import React from 'react'
+} from '@/services/meili/fetchers/inbaArticlesFetcher'
+import { generateImageSizes } from '@/utils/generateImageSizes'
+import { getNumericLocalDate } from '@/utils/local-date'
+import { useRoutePreservedState } from '@/utils/useRoutePreservedState'
 
 const imageSizes = generateImageSizes({ default: '100vw', md: '50vw', lg: '33vw' })
 

@@ -1,9 +1,10 @@
-import { CrossIcon } from '@assets/ui-icons'
 import { Typography } from '@bratislava/component-library'
-import Button from '@components/forms/simple-components/Button'
 import cx from 'classnames'
 import { useTranslations } from 'next-intl'
 import React, { FocusEvent, useRef } from 'react'
+
+import { CrossIcon } from '@/assets/ui-icons'
+import Button from '@/components/forms/simple-components/Button'
 
 const PADDING = 20 // py-5
 

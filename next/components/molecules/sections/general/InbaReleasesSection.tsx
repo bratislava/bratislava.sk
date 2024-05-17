@@ -1,15 +1,16 @@
-import { InbaReleasesSectionFragment } from '@backend/graphql'
+import { Typography } from '@bratislava/component-library'
+import { keepPreviousData, useQuery } from '@tanstack/react-query'
+import React, { useState } from 'react'
+
+import InbaReleaseHorizontalCard from '@/components/molecules/presentation/InbaReleaseHorizontalCard'
+import Pagination from '@/components/ui/Pagination/Pagination'
+import { InbaReleasesSectionFragment } from '@/services/graphql'
 import {
   getInbaReleasesQueryKey,
   inbaReleasesDefaultFilters,
   inbaReleasesFetcher,
-} from '@backend/graphql/fetchers/inbaReleases.fetcher'
-import { Typography } from '@bratislava/component-library'
-import InbaReleaseHorizontalCard from '@components/molecules/presentation/InbaReleaseHorizontalCard'
-import Pagination from '@components/ui/Pagination/Pagination'
-import { keepPreviousData, useQuery } from '@tanstack/react-query'
-import { formatDate } from '@utils/local-date'
-import React, { useState } from 'react'
+} from '@/services/graphql/fetchers/inbaReleases.fetcher'
+import { formatDate } from '@/utils/local-date'
 
 type Props = { section: InbaReleasesSectionFragment }
 

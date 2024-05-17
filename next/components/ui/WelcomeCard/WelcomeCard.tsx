@@ -1,10 +1,10 @@
 import { Typography } from '@bratislava/component-library'
-import WelcomeCardIcon from '@bratislava/ui-bratislava/WelcomeCard/WelcomeCardIcon'
-import MLink from '@components/forms/simple-components/MLink'
 import React, { useRef } from 'react'
 import { useHover } from 'usehooks-ts'
 
-import { MenuItem } from '../../organisms/NavBar/NavMenu/navMenuTypes'
+import MLink from '@/components/forms/simple-components/MLink'
+import { MenuItem } from '@/components/organisms/NavBar/NavMenu/navMenuTypes'
+import WelcomeCardIcon from '@/components/ui/WelcomeCard/WelcomeCardIcon'
 
 export type WelcomeCardProps = {
   item: MenuItem

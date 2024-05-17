@@ -1,9 +1,10 @@
+import React from 'react'
+import { twMerge } from 'tailwind-merge'
+
 import Carousel, {
   AllowedVisibleCount,
   CarouselProps,
-} from '@components/organisms/Carousel/Carousel'
-import React from 'react'
-import { twMerge } from 'tailwind-merge'
+} from '@/components/organisms/Carousel/Carousel'
 
 type Props = {
   mobile?: AllowedVisibleCount

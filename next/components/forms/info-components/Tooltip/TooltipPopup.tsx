@@ -1,7 +1,8 @@
-import HorizontalArrowIcon from '@assets/images/forms/tooltip-horizontal-arrow.svg'
-import VerticalArrowIcon from '@assets/images/forms/tooltip-vertical-arrow.svg'
-import Markdown from '@components/atoms/Markdown'
 import cx from 'classnames'
+
+import HorizontalArrowIcon from '@/assets/images/forms/tooltip-horizontal-arrow.svg'
+import VerticalArrowIcon from '@/assets/images/forms/tooltip-vertical-arrow.svg'
+import Markdown from '@/components/atoms/Markdown'
 
 type TooltipBase = {
   text?: string

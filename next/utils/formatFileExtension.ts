@@ -1,4 +1,4 @@
-import { isDefined } from '@utils/isDefined'
+import { isDefined } from '@/utils/isDefined'
 
 export const formatFileExtension = (ext: string | null | undefined) => {
   if (isDefined(ext)) {

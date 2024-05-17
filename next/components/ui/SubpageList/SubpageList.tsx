@@ -1,6 +1,7 @@
-import MLink from '@components/forms/simple-components/MLink'
-import { isExternalLink } from '@utils/isExternalLink'
 import { twMerge } from 'tailwind-merge'
+
+import MLink from '@/components/forms/simple-components/MLink'
+import { isExternalLink } from '@/utils/isExternalLink'
 
 export type SubpageListProps = {
   className?: string

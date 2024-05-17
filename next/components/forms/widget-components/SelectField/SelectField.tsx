@@ -1,4 +1,3 @@
-import { CheckInCircleIcon, ChevronDownIcon } from '@assets/ui-icons'
 import cx from 'classnames'
 import React, { ReactNode } from 'react'
 import {
@@ -16,6 +15,8 @@ import {
   ValidationResult,
 } from 'react-aria-components'
 import { twMerge } from 'tailwind-merge'
+
+import { CheckInCircleIcon, ChevronDownIcon } from '@/assets/ui-icons'
 
 // This component was copied from Enforcement project and updated to use newer react-aria-components version
 // https://github.com/bratislava/enforcement-new/blob/aa888b55c97f756c19dee6cbf0ac8ce1bf6e6c78/components/inputs/select-field.tsx

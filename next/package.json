@@ -9,9 +9,9 @@
     "build": "next build",
     "start": "next start",
     "typecheck": "tsc",
-    "lint": "eslint components pages utils backend",
+    "lint": "eslint components pages utils services",
     "lint:fix": "yarn lint --fix",
-    "gen": "graphql-codegen && prettier --write backend/graphql/index.ts",
+    "gen": "graphql-codegen && prettier --write services/graphql/index.ts",
     "prettier": "prettier --write .",
     "update-react-aria": "yarn add @internationalized/date@latest @react-stately/utils@latest react-aria@latest react-aria-components@latest react-stately@latest tailwindcss-react-aria-components -E"
   },

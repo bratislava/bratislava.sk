@@ -1,10 +1,11 @@
-import TabPanelDisclosure from '@components/molecules/sections/homepage/HomepageTabs/TabPanelDisclosure'
-import TabPanelLatestNews from '@components/molecules/sections/homepage/HomepageTabs/TabPanelLatestNews'
-import TabPanelOfficialBoard from '@components/molecules/sections/homepage/HomepageTabs/TabPanelOfficialBoard'
-import TabPanelRoadClosures from '@components/molecules/sections/homepage/HomepageTabs/TabPanelRoadClosures'
 import { useTranslations } from 'next-intl'
 import React, { useMemo } from 'react'
 import { Tab, TabList, Tabs } from 'react-aria-components'
+
+import TabPanelDisclosure from '@/components/molecules/sections/homepage/HomepageTabs/TabPanelDisclosure'
+import TabPanelLatestNews from '@/components/molecules/sections/homepage/HomepageTabs/TabPanelLatestNews'
+import TabPanelOfficialBoard from '@/components/molecules/sections/homepage/HomepageTabs/TabPanelOfficialBoard'
+import TabPanelRoadClosures from '@/components/molecules/sections/homepage/HomepageTabs/TabPanelRoadClosures'
 
 export type HomepageTabsProps = {
   className?: string

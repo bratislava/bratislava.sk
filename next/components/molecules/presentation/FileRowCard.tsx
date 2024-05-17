@@ -1,10 +1,11 @@
-import { DownloadIcon } from '@assets/ui-icons'
-import MLink from '@components/forms/simple-components/MLink'
-import { FileCardProps } from '@components/molecules/presentation/FileCard'
-import { isDefined } from '@utils/isDefined'
 import { useTranslations } from 'next-intl'
 import React from 'react'
 import { twMerge } from 'tailwind-merge'
+
+import { DownloadIcon } from '@/assets/ui-icons'
+import MLink from '@/components/forms/simple-components/MLink'
+import { FileCardProps } from '@/components/molecules/presentation/FileCard'
+import { isDefined } from '@/utils/isDefined'
 
 /**
  * Figma: https://www.figma.com/file/17wbd0MDQcMW9NbXl6UPs8/DS-ESBS%2BBK%3A-Component-library?node-id=867%3A2067&mode=dev

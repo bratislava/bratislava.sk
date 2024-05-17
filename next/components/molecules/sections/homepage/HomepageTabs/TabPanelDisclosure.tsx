@@ -1,7 +1,8 @@
-import MLink from '@components/forms/simple-components/MLink'
 import { useTranslations } from 'next-intl'
 import React from 'react'
 import { TabPanel } from 'react-aria-components'
+
+import MLink from '@/components/forms/simple-components/MLink'
 
 const TabPanelDisclosure = () => {
   const t = useTranslations('HomepageTabs')
