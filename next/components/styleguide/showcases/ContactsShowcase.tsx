@@ -1,12 +1,12 @@
 import React from 'react'
 
-import {
-  ContactsSectionFragment,
-  Enum_Componentsectionscontactssection_Type,
-} from '@/backend/graphql'
 import Stack from '@/components/styleguide/Stack'
 import Wrapper from '@/components/styleguide/Wrapper'
 import Contacts from '@/components/ui/Contacts/Contacts'
+import {
+  ContactsSectionFragment,
+  Enum_Componentsectionscontactssection_Type,
+} from '@/services/graphql'
 
 const data = {
   title: 'Kontakt',

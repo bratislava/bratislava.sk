@@ -1,4 +1,4 @@
-import { GeneralQuery } from '@/backend/graphql'
+import { GeneralQuery } from '@/services/graphql'
 import { isDefined } from '@/utils/isDefined'
 
 import { MenuItem, MenuLink } from './navMenuTypes'

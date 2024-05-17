@@ -1,9 +1,9 @@
 import { Typography } from '@bratislava/component-library'
 import cx from 'classnames'
 
-import { Enum_Componentsectionsfilelist_Variant, FileItemBlockFragment } from '@/backend/graphql'
 import FileCardWrapper from '@/components/molecules/presentation/FileCardWrapper'
 import ResponsiveCarousel from '@/components/organisms/Carousel/ResponsiveCarousel'
+import { Enum_Componentsectionsfilelist_Variant, FileItemBlockFragment } from '@/services/graphql'
 
 export type TFileSection = {
   category?: string

@@ -4,8 +4,8 @@ import { useRef } from 'react'
 import { useEventListener } from 'usehooks-ts'
 
 import { ChevronRightIcon } from '@/assets/ui-icons'
-import { HomepageSearchData } from '@/backend/meili/fetchers/homepageSearchFetcher'
 import LoadingSpinner from '@/components/ui/LoadingSpinner/LoadingSpinner'
+import { HomepageSearchData } from '@/services/meili/fetchers/homepageSearchFetcher'
 
 type HomePageSearchResultsProps = {
   searchValue: string

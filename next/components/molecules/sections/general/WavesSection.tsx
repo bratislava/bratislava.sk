@@ -1,8 +1,8 @@
 import cx from 'classnames'
 import React from 'react'
 
-import { WavesSectionFragment } from '@/backend/graphql'
 import Waves from '@/components/ui/Waves/Waves'
+import { WavesSectionFragment } from '@/services/graphql'
 
 type WavesSectionProps = {
   section: WavesSectionFragment

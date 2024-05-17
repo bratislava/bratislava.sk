@@ -1,11 +1,11 @@
 import { Typography } from '@bratislava/component-library'
 import { useQuery } from '@tanstack/react-query'
 
+import LoadingSpinner from '@/components/ui/LoadingSpinner/LoadingSpinner'
 import {
   getMsGraphStructureQueryKey,
   msGraphStructureFetcher,
-} from '@/backend/ms-graph/fetchers/msGraphStructure.fetcher'
-import LoadingSpinner from '@/components/ui/LoadingSpinner/LoadingSpinner'
+} from '@/services/ms-graph/fetchers/msGraphStructure.fetcher'
 
 import OrganizationalStructureTopLevelAccordion from './OrganizationalStructureTopLevelAccordion'
 

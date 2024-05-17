@@ -2,8 +2,8 @@ import { useTranslations } from 'next-intl'
 import React, { useEffect, useState } from 'react'
 import { Label, Selection, TagGroup, TagList, Text } from 'react-aria-components'
 
-import { InbaTagEntityFragment } from '@/backend/graphql'
 import Chip from '@/components/forms/simple-components/Chip'
+import { InbaTagEntityFragment } from '@/services/graphql'
 import { getCategoryColorLocalStyle } from '@/utils/colors'
 import { isDefined } from '@/utils/isDefined'
 

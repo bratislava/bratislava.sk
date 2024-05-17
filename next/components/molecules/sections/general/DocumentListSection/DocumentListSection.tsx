@@ -3,9 +3,9 @@ import { useEffect, useState } from 'react'
 import { useQueryParam } from 'use-query-params'
 import { useDebounce } from 'usehooks-ts'
 
-import { vznDefaultFilters, VznFilters } from '@/backend/meili/fetchers/vznFetcher'
 import RegulationsResults from '@/components/molecules/sections/general/DocumentListSection/RegulationsResults'
 import BasicSearch from '@/components/ui/BasicSearch/BasicSearch'
+import { vznDefaultFilters, VznFilters } from '@/services/meili/fetchers/vznFetcher'
 
 const DocumentListSection = () => {
   const t = useTranslations()

@@ -1,9 +1,9 @@
 import { Typography } from '@bratislava/component-library'
 import React, { Fragment } from 'react'
 
-import { RegulationEntityFragment } from '@/backend/graphql'
 import Alert from '@/components/forms/info-components/Alert'
 import MLink from '@/components/forms/simple-components/MLink'
+import { RegulationEntityFragment } from '@/services/graphql'
 import { isDefined } from '@/utils/isDefined'
 import { formatDate } from '@/utils/local-date'
 

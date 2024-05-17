@@ -4,10 +4,10 @@ import Image from 'next/image'
 import React, { PropsWithChildren } from 'react'
 import { twMerge } from 'tailwind-merge'
 
-import { CommonLinkFragment } from '@/backend/graphql'
 import Button from '@/components/forms/simple-components/Button'
 import Breadcrumbs, { BreadcrumbsProps } from '@/components/ui/Breadcrumbs/Breadcrumbs'
 import Waves from '@/components/ui/Waves/Waves'
+import { CommonLinkFragment } from '@/services/graphql'
 import { generateImageSizes } from '@/utils/generateImageSizes'
 import { getCommonLinkProps } from '@/utils/getCommonLinkProps'
 

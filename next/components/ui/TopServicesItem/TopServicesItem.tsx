@@ -1,9 +1,9 @@
 import { Typography } from '@bratislava/component-library'
 import { useTranslations } from 'next-intl'
 
-import { TopServicesItemFragment } from '@/backend/graphql'
 import Icon from '@/components/atoms/icon/Icon'
 import Button from '@/components/forms/simple-components/Button'
+import { TopServicesItemFragment } from '@/services/graphql'
 import { getCommonLinkProps } from '@/utils/getCommonLinkProps'
 
 type TopNineItemProps = {

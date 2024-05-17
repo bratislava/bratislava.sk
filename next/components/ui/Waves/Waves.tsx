@@ -1,8 +1,9 @@
+import { twMerge } from 'tailwind-merge'
+
 import WaveBottomLarge from './waves/WaveBottomLarge'
 import WaveBottomSmall from './waves/WaveBottomSmall'
 import WaveTopLarge from './waves/WaveTopLarge'
 import WaveTopSmall from './waves/WaveTopSmall'
-import { twMerge } from 'tailwind-merge'
 
 type WavesProps = {
   wavePosition: 'top' | 'bottom'

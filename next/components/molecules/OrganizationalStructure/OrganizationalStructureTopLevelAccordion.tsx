@@ -3,7 +3,7 @@ import { useToggle } from 'rooks'
 
 import ChevronDown from '@/assets/images/chevron-down-thin.svg'
 import ChevronDownSmall from '@/assets/images/chevron-down-thin-small.svg'
-import { GetGroupMembersRecursiveResult } from '@/backend/ms-graph/types'
+import { GetGroupMembersRecursiveResult } from '@/services/ms-graph/types'
 
 import OrganizationalStructureAccordion from './OrganizationalStructureAccordion'
 import OrganizationalStructureAccordionCards from './OrganizationalStructureAccordionCards'

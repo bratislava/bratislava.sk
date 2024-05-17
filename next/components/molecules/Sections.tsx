@@ -1,7 +1,6 @@
 import cx from 'classnames'
 import * as React from 'react'
 
-import { SectionsFragment } from '@/backend/graphql'
 import AccordionSection from '@/components/molecules/sections/general/AccordionSection'
 import BlogPostsByCategory from '@/components/molecules/sections/general/ArticlesListSection/BlogPostsByCategory'
 import BlogPostsByTags from '@/components/molecules/sections/general/ArticlesListSection/BlogPostsByTags'
@@ -34,6 +33,7 @@ import TimelineSection from '@/components/molecules/sections/general/TimelineSec
 import VideosSection from '@/components/molecules/sections/general/VideosSection'
 import WavesSection from '@/components/molecules/sections/general/WavesSection'
 import SectionContainer from '@/components/ui/SectionContainer/SectionContainer'
+import { SectionsFragment } from '@/services/graphql'
 
 const SectionContent = ({ section }: { section: SectionsFragment }) => {
   switch (section.__typename) {

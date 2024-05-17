@@ -1,13 +1,16 @@
 import { Typography } from '@bratislava/component-library'
 import React from 'react'
 
-import { AccordionSectionFragment, Enum_Componentsectionsfilelist_Variant } from '@/backend/graphql'
 import Markdown from '@/components/atoms/Markdown'
 import Button from '@/components/forms/simple-components/Button'
 import AccordionV2 from '@/components/ui/AccordionV2/AccordionV2'
 import FileList from '@/components/ui/FileList/FileList'
 import Institution from '@/components/ui/Institution/Institution'
 import NarrowText from '@/components/ui/NarrowText/NarrowText'
+import {
+  AccordionSectionFragment,
+  Enum_Componentsectionsfilelist_Variant,
+} from '@/services/graphql'
 import { isDefined } from '@/utils/isDefined'
 import { groupByCategory, parsePageLink } from '@/utils/page'
 import { isPresent } from '@/utils/utils'

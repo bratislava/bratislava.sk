@@ -1,6 +1,6 @@
 import { useLocale, useTranslations } from 'next-intl'
 
-import { FileItemBlockFragment } from '@/backend/graphql'
+import { FileItemBlockFragment } from '@/services/graphql'
 import { formatFileExtension } from '@/utils/formatFileExtension'
 import { formatFileSize } from '@/utils/formatFileSize'
 

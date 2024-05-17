@@ -1,7 +1,7 @@
 import React from 'react'
 
-import { PageHeaderSectionsFragment } from '@/backend/graphql'
 import SubpageListPageHeaderSection from '@/components/molecules/sections/pageHeader/SubpageListPageHeaderSection'
+import { PageHeaderSectionsFragment } from '@/services/graphql'
 import { isPresent } from '@/utils/utils'
 
 type PageHeaderSectionsProps = {

@@ -4,8 +4,8 @@ import Image from 'next/image'
 import React from 'react'
 
 import { InfoIcon } from '@/assets/ui-icons'
-import { ComparisonSectionFragment } from '@/backend/graphql'
 import ComparisonCard from '@/components/molecules/ComparisonCard'
+import { ComparisonSectionFragment } from '@/services/graphql'
 import { isDefined } from '@/utils/isDefined'
 
 type ComparisonSectionProps = {

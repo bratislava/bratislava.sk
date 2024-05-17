@@ -6,13 +6,13 @@ import { Selection, TagGroup, TagList } from 'react-aria-components'
 import { StringParam, useQueryParam, withDefault } from 'use-query-params'
 import { useDebounce } from 'usehooks-ts'
 
-import { officialBoardListDefaultFilters } from '@/backend/ginis/fetchers/officialBoardListFetcher'
-import { OfficialBoardPublicationState } from '@/backend/ginis/types'
 import Chip from '@/components/forms/simple-components/Chip'
 import OfficialBoardAdditionalFilters from '@/components/molecules/sections/general/OfficialBoardSection/OfficialBoardAdditionalFilters'
 import SearchBar from '@/components/organisms/SearchSection/SearchBar'
 import SearchResults from '@/components/organisms/SearchSection/SearchResults'
 import { SearchFilters } from '@/components/organisms/SearchSection/useQueryBySearchOption'
+import { officialBoardListDefaultFilters } from '@/services/ginis/fetchers/officialBoardListFetcher'
+import { OfficialBoardPublicationState } from '@/services/ginis/types'
 import { getCategoryColorLocalStyle } from '@/utils/colors'
 /*
  * RAC library recommends Selection as type for selection state, which is of type `'all' | Set`.

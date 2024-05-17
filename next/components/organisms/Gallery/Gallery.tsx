@@ -9,8 +9,8 @@ import { useOverlayTriggerState } from 'react-stately'
 import screens from 'tailwind.config.screens'
 import { useWindowSize } from 'usehooks-ts'
 
-import { UploadImageEntityFragment } from '@/backend/graphql'
 import StrapiImage from '@/components/atoms/StrapiImage'
+import { UploadImageEntityFragment } from '@/services/graphql'
 import { onEnterOrSpaceKeyDown } from '@/utils/onEnterOrSpaceKeyDown'
 
 import ImageLightBox from './ImageLightBox'

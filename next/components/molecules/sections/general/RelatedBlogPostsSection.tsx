@@ -3,14 +3,14 @@ import { useQuery } from '@tanstack/react-query'
 import { useLocale, useTranslations } from 'next-intl'
 import React from 'react'
 
-import { PageEntityFragment } from '@/backend/graphql'
-import {
-  getRelatedBlogPostsQueryKey,
-  relatedBlogPostsFetcher,
-} from '@/backend/graphql/fetchers/relatedBlogPosts.fetcher'
 import BlogPostCard from '@/components/molecules/presentation/BlogPostCard'
 import ResponsiveCarousel from '@/components/organisms/Carousel/ResponsiveCarousel'
 import SectionContainer from '@/components/ui/SectionContainer/SectionContainer'
+import { PageEntityFragment } from '@/services/graphql'
+import {
+  getRelatedBlogPostsQueryKey,
+  relatedBlogPostsFetcher,
+} from '@/services/graphql/fetchers/relatedBlogPosts.fetcher'
 import { getCategoryColorLocalStyle } from '@/utils/colors'
 import { generateImageSizes } from '@/utils/generateImageSizes'
 import { isDefined } from '@/utils/isDefined'

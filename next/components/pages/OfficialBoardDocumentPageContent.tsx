@@ -3,10 +3,10 @@ import classNames from 'classnames'
 import { useLocale, useTranslations } from 'next-intl'
 import React, { Fragment, ReactNode } from 'react'
 
-import { ParsedOfficialBoardDocumentDetail } from '@/backend/ginis/types'
 import FileRowCard from '@/components/molecules/presentation/FileRowCard'
 import PageHeader from '@/components/ui/PageHeader/PageHeader'
 import SectionContainer from '@/components/ui/SectionContainer/SectionContainer'
+import { ParsedOfficialBoardDocumentDetail } from '@/services/ginis/types'
 import { formatDate } from '@/utils/local-date'
 
 type OfficialBoardDocumentPageContentProps = {

@@ -1,13 +1,13 @@
 import groupBy from 'lodash/groupBy'
 import sortBy from 'lodash/sortBy'
 
+import { Breadcrumb } from '@/components/ui/Breadcrumbs/Breadcrumbs'
 import {
   FileBlockFragment,
   FileItemBlockFragment,
   PageLinkBlockFragment,
   PageParentPagesFragment,
-} from '@/backend/graphql'
-import { Breadcrumb } from '@/components/ui/Breadcrumbs/Breadcrumbs'
+} from '@/services/graphql'
 
 export const localePath = (locale: string, slug: string) => {
   // Special case for slovak homepage, so it is not empty string

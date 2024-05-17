@@ -1,7 +1,7 @@
 import React from 'react'
 
-import { RegulationsSectionFragment } from '@/backend/graphql'
 import Regulations from '@/components/molecules/sections/general/Regulations'
+import { RegulationsSectionFragment } from '@/services/graphql'
 
 type Props = {
   section: RegulationsSectionFragment
