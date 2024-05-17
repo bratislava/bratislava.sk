@@ -60,7 +60,7 @@ const RegulationDetailMessage = ({ regulation }: RegulationDetailMessageProps) =
   ) : hasCancelledAmendees ? (
     <Typography type="p" className="whitespace-normal">
       Toto VZN je dodatkom{' '}
-      {cancelledAmendees.map((cancelledAmendee, index) => {
+      {cancelledAmendees?.map((cancelledAmendee, index) => {
         return (
           <Fragment key={cancelledAmendee.id}>
             {index === 0
