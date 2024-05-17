@@ -19,13 +19,7 @@
     // "noUnusedParameters": true,
     "baseUrl": "./",
     "paths": {
-      "@/utils/*": ["./utils/*"],
-      "@/assets/images": ["./assets/images/index.ts"],
-      "@/assets/ui-icons": ["./assets/ui-icons/index.ts"],
-      "@/assets/images/*": ["./assets/images/*"],
-      "@/backend/*": ["./backend/*"],
-      "@/components/*": ["./components/*"],
-      "@/ginis-sdk/*": ["./ginis-sdk/*"]
+      "@/*": ["./*"]
     }
   },
   "include": ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx", "next-env.d.ts"],
