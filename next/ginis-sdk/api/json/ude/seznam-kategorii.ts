@@ -1,6 +1,5 @@
-import { Ginis } from '../../../ginis'
-import { getGRestHeader, GRestHeader, makeAxiosRequest } from '../../../utils/api'
-import { GinisError } from '../../../utils/errors'
+import { Ginis, GinisError } from '@/ginis-sdk'
+import { getGRestHeader, GRestHeader, makeAxiosRequest } from '@/ginis-sdk/utils/api'
 
 type SeznamKategoriiRequestBody = {
   /**

@@ -1,7 +1,8 @@
 // full SSL service docs: https://robot.gordic.cz/xrg/Default.html?c=OpenModuleDetail&moduleName=SSL&language=cs-CZ&version=390
 import type { AxiosRequestConfig } from 'axios'
-import type { GinisConfig } from '../../ginis'
-import { makeAxiosRequest } from '../../utils/api'
+
+import type { GinisConfig } from '@/ginis-sdk'
+import { makeAxiosRequest } from '@/ginis-sdk/utils/api'
 
 /**
  * full docs https://robot.gordic.cz/xrg/Default.html?c=OpenMethodDetail&moduleName=UDE&version=390&methodName=pridat-soubor&type=request
@@ -27,7 +28,7 @@ export type pridatSoubor = {
 export const pridatSoubor = async (
   config: GinisConfig,
   url: string | undefined,
-  bodyObj: pridatSoubor
+  bodyObj: pridatSoubor,
 ) => {
   const axiosConfig: AxiosRequestConfig = {
     headers: {
