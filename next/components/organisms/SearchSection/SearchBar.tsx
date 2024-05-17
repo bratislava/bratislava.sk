@@ -1,11 +1,11 @@
 import { Typography } from '@bratislava/component-library'
-import Button from '@components/forms/simple-components/Button'
-import Spinner from '@components/forms/simple-components/Spinner'
 import { useTranslations } from 'next-intl'
 import { Dispatch, forwardRef, SetStateAction } from 'react'
 import { Input, Label, SearchField } from 'react-aria-components'
 
 import { RemoveIcon, SearchIcon } from '@/assets/ui-icons'
+import Button from '@/components/forms/simple-components/Button'
+import Spinner from '@/components/forms/simple-components/Spinner'
 
 type SearchBarProps = {
   placeholder?: string

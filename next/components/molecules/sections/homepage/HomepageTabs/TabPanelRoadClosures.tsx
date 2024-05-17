@@ -1,9 +1,9 @@
-import Button from '@components/forms/simple-components/Button'
-import Iframe from '@components/ui/Iframe/Iframe'
 import { useLocale } from 'next-intl'
 import React from 'react'
 import { TabPanel } from 'react-aria-components'
 
+import Button from '@/components/forms/simple-components/Button'
+import Iframe from '@/components/ui/Iframe/Iframe'
 import { getCommonLinkProps } from '@/utils/getCommonLinkProps'
 import { useHomepageContext } from '@/utils/homepageContext'
 

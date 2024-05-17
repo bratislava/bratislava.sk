@@ -1,6 +1,7 @@
-import Markdown from '@components/atoms/Markdown'
-import { NumericalListItemObject } from '@components/ui/NumericalListSectionUI/NumericalListSectionUI'
 import cx from 'classnames'
+
+import Markdown from '@/components/atoms/Markdown'
+import { NumericalListItemObject } from '@/components/ui/NumericalListSectionUI/NumericalListSectionUI'
 
 import DashedLine from '../DashedLine/DashedLine'
 

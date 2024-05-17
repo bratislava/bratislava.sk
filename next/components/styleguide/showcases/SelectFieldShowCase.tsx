@@ -1,7 +1,8 @@
+import React, { useState } from 'react'
+
 import SelectFieldDeprecated, {
   SelectOption,
-} from '@components/forms/widget-components/SelectField/SelectFieldDeprecated'
-import React, { useState } from 'react'
+} from '@/components/forms/widget-components/SelectField/SelectFieldDeprecated'
 
 import Stack from '../Stack'
 import Wrapper from '../Wrapper'

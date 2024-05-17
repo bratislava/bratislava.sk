@@ -1,7 +1,7 @@
-import Contacts from '@components/ui/Contacts/Contacts'
 import React from 'react'
 
 import { ContactsSectionFragment } from '@/backend/graphql'
+import Contacts from '@/components/ui/Contacts/Contacts'
 
 type ContactsSectionProps = {
   section: ContactsSectionFragment

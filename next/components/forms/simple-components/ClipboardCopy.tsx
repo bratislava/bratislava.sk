@@ -1,8 +1,8 @@
-import Button from '@components/forms/simple-components/Button'
 import { useTranslations } from 'next-intl'
 import { useCopyToClipboard } from 'usehooks-ts'
 
 import { CopyIcon } from '@/assets/ui-icons'
+import Button from '@/components/forms/simple-components/Button'
 
 const ClipboardCopy = ({ copyText }: { copyText: string }) => {
   const [, copy] = useCopyToClipboard()

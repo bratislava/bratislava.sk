@@ -1,9 +1,9 @@
-import Button from '@components/forms/simple-components/Button'
 import * as NavigationMenu from '@radix-ui/react-navigation-menu'
 import { useTranslations } from 'next-intl'
 import React, { CSSProperties } from 'react'
 
 import { ChevronLeftIcon } from '@/assets/ui-icons'
+import Button from '@/components/forms/simple-components/Button'
 
 import NavBarHorizontalDivider from './NavBarHorizontalDivider'
 import { useNavMenuContext } from './navMenuContext'

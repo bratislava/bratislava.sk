@@ -1,6 +1,4 @@
 import { Typography } from '@bratislava/component-library'
-import InbaReleaseHorizontalCard from '@components/molecules/presentation/InbaReleaseHorizontalCard'
-import Pagination from '@components/ui/Pagination/Pagination'
 import { keepPreviousData, useQuery } from '@tanstack/react-query'
 import React, { useState } from 'react'
 
@@ -10,6 +8,8 @@ import {
   inbaReleasesDefaultFilters,
   inbaReleasesFetcher,
 } from '@/backend/graphql/fetchers/inbaReleases.fetcher'
+import InbaReleaseHorizontalCard from '@/components/molecules/presentation/InbaReleaseHorizontalCard'
+import Pagination from '@/components/ui/Pagination/Pagination'
 import { formatDate } from '@/utils/local-date'
 
 type Props = { section: InbaReleasesSectionFragment }

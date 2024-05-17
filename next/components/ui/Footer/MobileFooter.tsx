@@ -1,6 +1,9 @@
-import AccordionV2 from '@components/ui/AccordionV2/AccordionV2'
-import Brand from '@components/ui/Brand/Brand'
-import HorizontalDivider from '@components/ui/Divider/HorizontalDivider'
+import React, { Fragment } from 'react'
+
+import EULogo from '@/assets/images/EULogo.svg'
+import AccordionV2 from '@/components/ui/AccordionV2/AccordionV2'
+import Brand from '@/components/ui/Brand/Brand'
+import HorizontalDivider from '@/components/ui/Divider/HorizontalDivider'
 import {
   FooterAccessibilityLink,
   FooterColumnLinks,
@@ -8,11 +11,8 @@ import {
   FooterCopyright,
   FooterLanguageSwitcher,
   FooterSocialLinks,
-} from '@components/ui/Footer/FooterShared'
-import SectionContainer from '@components/ui/SectionContainer/SectionContainer'
-import React, { Fragment } from 'react'
-
-import EULogo from '@/assets/images/EULogo.svg'
+} from '@/components/ui/Footer/FooterShared'
+import SectionContainer from '@/components/ui/SectionContainer/SectionContainer'
 import { useGeneralContext } from '@/utils/generalContext'
 import { isDefined } from '@/utils/isDefined'
 

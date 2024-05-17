@@ -1,12 +1,12 @@
 import { Typography } from '@bratislava/component-library'
 import PageHeader from '@bratislava/ui-bratislava/PageHeader/PageHeader'
 import SectionContainer from '@bratislava/ui-bratislava/SectionContainer/SectionContainer'
-import FileRowCard from '@components/molecules/presentation/FileRowCard'
 import classNames from 'classnames'
 import { useLocale, useTranslations } from 'next-intl'
 import React, { Fragment, ReactNode } from 'react'
 
 import { ParsedOfficialBoardDocumentDetail } from '@/backend/ginis/types'
+import FileRowCard from '@/components/molecules/presentation/FileRowCard'
 import { formatDate } from '@/utils/local-date'
 
 type OfficialBoardDocumentPageContentProps = {

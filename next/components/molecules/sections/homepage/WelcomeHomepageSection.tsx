@@ -1,11 +1,11 @@
 import { Typography } from '@bratislava/component-library'
 import SectionContainer from '@bratislava/ui-bratislava/SectionContainer/SectionContainer'
-import WelcomeCard from '@components/ui/WelcomeCard/WelcomeCard'
 import cx from 'classnames'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 import { useMemo, useState } from 'react'
 
+import WelcomeCard from '@/components/ui/WelcomeCard/WelcomeCard'
 import { useGeneralContext } from '@/utils/generalContext'
 import { generateImageSizes } from '@/utils/generateImageSizes'
 import { useHomepageContext } from '@/utils/homepageContext'

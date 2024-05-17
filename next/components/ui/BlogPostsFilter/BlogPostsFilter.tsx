@@ -1,4 +1,3 @@
-import Chip from '@components/forms/simple-components/Chip'
 import { useLocale, useTranslations } from 'next-intl'
 import React, { useEffect, useState } from 'react'
 import { Label, Selection, TagGroup, TagList, Text } from 'react-aria-components'
@@ -8,6 +7,7 @@ import {
   PageCategoryEntityFragment,
   TagEntityFragment,
 } from '@/backend/graphql'
+import Chip from '@/components/forms/simple-components/Chip'
 import { getCategoryColorLocalStyle } from '@/utils/colors'
 import { isDefined } from '@/utils/isDefined'
 

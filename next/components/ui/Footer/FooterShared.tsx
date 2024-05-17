@@ -1,11 +1,11 @@
 import { Typography } from '@bratislava/component-library'
-import MLink from '@components/forms/simple-components/MLink'
-import { useLocalizations } from '@components/providers/LocalizationsProvider'
 import { useTranslations } from 'next-intl'
 import * as React from 'react'
 
 import { FacebookIcon, InstagramIcon } from '@/assets/images'
 import { FooterColumnBlockFragment, FooterFragment } from '@/backend/graphql'
+import MLink from '@/components/forms/simple-components/MLink'
+import { useLocalizations } from '@/components/providers/LocalizationsProvider'
 import { getCommonLinkProps } from '@/utils/getCommonLinkProps'
 import { isDefined } from '@/utils/isDefined'
 

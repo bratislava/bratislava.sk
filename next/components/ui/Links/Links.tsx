@@ -1,9 +1,9 @@
 import { Typography } from '@bratislava/component-library'
-import Button from '@components/forms/simple-components/Button'
 import React from 'react'
 import { twMerge } from 'tailwind-merge'
 
 import { ArrowRightIcon } from '@/assets/ui-icons'
+import Button from '@/components/forms/simple-components/Button'
 import { isExternalLink } from '@/utils/isExternalLink'
 
 export type LinksProps = {

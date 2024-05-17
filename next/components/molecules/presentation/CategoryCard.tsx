@@ -1,8 +1,8 @@
-import Button from '@components/forms/simple-components/Button'
-import CardBase, { CardBaseProps } from '@components/molecules/presentation/CardBase'
-import CardContent from '@components/molecules/presentation/CardContent'
 import React from 'react'
 
+import Button from '@/components/forms/simple-components/Button'
+import CardBase, { CardBaseProps } from '@/components/molecules/presentation/CardBase'
+import CardContent from '@/components/molecules/presentation/CardContent'
 import { CommonLinkProps } from '@/utils/getCommonLinkProps'
 
 type Props = {

@@ -1,7 +1,7 @@
-import BlogPostCard from '@components/molecules/presentation/BlogPostCard'
-import Wrapper from '@components/styleguide/Wrapper'
 import React from 'react'
 
+import BlogPostCard from '@/components/molecules/presentation/BlogPostCard'
+import Wrapper from '@/components/styleguide/Wrapper'
 import { CommonLinkProps } from '@/utils/getCommonLinkProps'
 
 const BlogPostCardShowcase = () => {

@@ -1,6 +1,7 @@
 import Footer from '@bratislava/ui-bratislava/Footer/Footer'
-import CookieConsent from '@components/organisms/CookieConsent/CookieConsent'
 import React, { PropsWithChildren } from 'react'
+
+import CookieConsent from '@/components/organisms/CookieConsent/CookieConsent'
 
 import NavBar from '../organisms/NavBar/NavBar'
 

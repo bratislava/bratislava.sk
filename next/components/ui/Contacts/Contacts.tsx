@@ -1,8 +1,4 @@
 import { Typography } from '@bratislava/component-library'
-import Markdown from '@components/atoms/Markdown'
-import ContactCtaCard, {
-  ContactCtaCardType,
-} from '@components/molecules/presentation/ContactCtaCard'
 import cx from 'classnames'
 import React from 'react'
 
@@ -11,6 +7,10 @@ import {
   ContactsSectionFragment,
   Enum_Componentsectionscontactssection_Type,
 } from '@/backend/graphql'
+import Markdown from '@/components/atoms/Markdown'
+import ContactCtaCard, {
+  ContactCtaCardType,
+} from '@/components/molecules/presentation/ContactCtaCard'
 import { isDefined } from '@/utils/isDefined'
 
 type ContactsProps = {

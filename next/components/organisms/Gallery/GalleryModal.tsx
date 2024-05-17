@@ -1,4 +1,3 @@
-import Button from '@components/forms/simple-components/Button'
 import cx from 'classnames'
 import FocusTrap from 'focus-trap-react'
 import { AnimatePresence, motion } from 'framer-motion'
@@ -9,6 +8,7 @@ import { twMerge } from 'tailwind-merge'
 import { useIsClient, useLockedBody } from 'usehooks-ts'
 
 import { CrossIcon } from '@/assets/ui-icons'
+import Button from '@/components/forms/simple-components/Button'
 
 export type ModalProps = {
   children: ReactNode

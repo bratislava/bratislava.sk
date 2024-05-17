@@ -1,7 +1,7 @@
-import BlogPostHomepageHorizontalCard from '@components/molecules/presentation/HomepageHorizontalCard'
-import Wrapper from '@components/styleguide/Wrapper'
 import React from 'react'
 
+import BlogPostHomepageHorizontalCard from '@/components/molecules/presentation/HomepageHorizontalCard'
+import Wrapper from '@/components/styleguide/Wrapper'
 import { CommonLinkProps } from '@/utils/getCommonLinkProps'
 
 const HomepageHorizontalCardShowcase = () => {

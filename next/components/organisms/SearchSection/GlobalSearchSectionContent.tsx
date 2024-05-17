@@ -1,9 +1,4 @@
 import { Typography } from '@bratislava/component-library'
-import Chip from '@components/forms/simple-components/Chip'
-import OfficialBoardAdditionalFilters from '@components/molecules/sections/general/OfficialBoardSection/OfficialBoardAdditionalFilters'
-import SearchBar from '@components/organisms/SearchSection/SearchBar'
-import SearchResults from '@components/organisms/SearchSection/SearchResults'
-import { SearchFilters } from '@components/organisms/SearchSection/useQueryBySearchOption'
 import { useIsFetching } from '@tanstack/react-query'
 import { useTranslations } from 'next-intl'
 import React, { useEffect, useRef, useState } from 'react'
@@ -13,6 +8,11 @@ import { useDebounce } from 'usehooks-ts'
 
 import { officialBoardListDefaultFilters } from '@/backend/ginis/fetchers/officialBoardListFetcher'
 import { OfficialBoardPublicationState } from '@/backend/ginis/types'
+import Chip from '@/components/forms/simple-components/Chip'
+import OfficialBoardAdditionalFilters from '@/components/molecules/sections/general/OfficialBoardSection/OfficialBoardAdditionalFilters'
+import SearchBar from '@/components/organisms/SearchSection/SearchBar'
+import SearchResults from '@/components/organisms/SearchSection/SearchResults'
+import { SearchFilters } from '@/components/organisms/SearchSection/useQueryBySearchOption'
 import { getCategoryColorLocalStyle } from '@/utils/colors'
 /*
  * RAC library recommends Selection as type for selection state, which is of type `'all' | Set`.

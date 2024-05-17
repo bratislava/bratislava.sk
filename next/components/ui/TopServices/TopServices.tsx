@@ -1,8 +1,8 @@
 import TopServicesItem from '@bratislava/ui-bratislava/TopServicesItem/TopServicesItem'
-import Carousel from '@components/organisms/Carousel/Carousel'
 import chunk from 'lodash/chunk'
 
 import { TopServicesItemFragment } from '@/backend/graphql'
+import Carousel from '@/components/organisms/Carousel/Carousel'
 
 type TopServicesProps = {
   items: TopServicesItemFragment[] | null | undefined

@@ -1,8 +1,9 @@
 import BlogSearchCard, { BlogItem } from '@bratislava/ui-bratislava/BlogSearchCard/BlogSearchCard'
-import Button from '@components/forms/simple-components/Button'
-import ResponsiveCarousel from '@components/organisms/Carousel/ResponsiveCarousel'
 import { useTranslations } from 'next-intl'
 import { useState } from 'react'
+
+import Button from '@/components/forms/simple-components/Button'
+import ResponsiveCarousel from '@/components/organisms/Carousel/ResponsiveCarousel'
 
 export type BlogSearchCardsProps = {
   blogs: BlogItem[]

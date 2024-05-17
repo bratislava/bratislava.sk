@@ -1,10 +1,10 @@
 import { Typography } from '@bratislava/component-library'
-import Markdown from '@components/atoms/Markdown'
 import cx from 'classnames'
 import React from 'react'
 import { twMerge } from 'tailwind-merge'
 
 import { TestimonialItemBlockFragment, TestimonialsSectionFragment } from '@/backend/graphql'
+import Markdown from '@/components/atoms/Markdown'
 import { isDefined } from '@/utils/isDefined'
 
 // TODO split to separate component files

@@ -1,8 +1,8 @@
-import InBaCard from '@components/ui/InBaCard/InBaCard'
-import SectionContainer from '@components/ui/SectionContainer/SectionContainer'
 import { useTranslations } from 'next-intl'
 import React from 'react'
 
+import InBaCard from '@/components/ui/InBaCard/InBaCard'
+import SectionContainer from '@/components/ui/SectionContainer/SectionContainer'
 import { useHomepageContext } from '@/utils/homepageContext'
 
 const InbaHomepageSection = () => {

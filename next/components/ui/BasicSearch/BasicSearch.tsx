@@ -1,9 +1,9 @@
-import Button from '@components/forms/simple-components/Button'
 import { useTranslations } from 'next-intl'
 import { Dispatch, SetStateAction } from 'react'
 import { twMerge } from 'tailwind-merge'
 
 import SearchIcon from '@/assets/images/search-icon.svg'
+import Button from '@/components/forms/simple-components/Button'
 
 export type BasicSearchProps = {
   className?: string

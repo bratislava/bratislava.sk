@@ -1,4 +1,3 @@
-import { SearchOption } from '@components/organisms/SearchSection/GlobalSearchSectionContent'
 import { keepPreviousData, useQuery } from '@tanstack/react-query'
 import { useLocale, useTranslations } from 'next-intl'
 import { ReactNode } from 'react'
@@ -38,6 +37,7 @@ import {
   getMsGraphSearchQueryKey,
   msGraphSearchFetcher,
 } from '@/backend/ms-graph/fetchers/msGraphSearch.fetcher'
+import { SearchOption } from '@/components/organisms/SearchSection/GlobalSearchSectionContent'
 import { base64Encode } from '@/utils/base64'
 import { isDefined } from '@/utils/isDefined'
 import { formatDate } from '@/utils/local-date'

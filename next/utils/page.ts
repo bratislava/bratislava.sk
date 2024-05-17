@@ -1,4 +1,3 @@
-import { Breadcrumb } from '@components/ui/Breadcrumbs/Breadcrumbs'
 import groupBy from 'lodash/groupBy'
 import sortBy from 'lodash/sortBy'
 
@@ -8,6 +7,7 @@ import {
   PageLinkBlockFragment,
   PageParentPagesFragment,
 } from '@/backend/graphql'
+import { Breadcrumb } from '@/components/ui/Breadcrumbs/Breadcrumbs'
 
 export const localePath = (locale: string, slug: string) => {
   // Special case for slovak homepage, so it is not empty string

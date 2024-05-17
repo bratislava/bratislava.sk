@@ -1,10 +1,10 @@
-import Markdown from '@components/atoms/Markdown'
-import FileCard from '@components/molecules/presentation/FileCard'
 import { useLocale, useTranslations } from 'next-intl'
 import useSWR from 'swr'
 
 import { client } from '@/backend/graphql/gql'
 import { VznMeili } from '@/backend/meili/types'
+import Markdown from '@/components/atoms/Markdown'
+import FileCard from '@/components/molecules/presentation/FileCard'
 import { formatFileSize } from '@/utils/formatFileSize'
 import { formatDate } from '@/utils/local-date'
 import { isPresent } from '@/utils/utils'

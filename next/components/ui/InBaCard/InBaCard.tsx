@@ -1,9 +1,9 @@
 import { Typography } from '@bratislava/component-library'
-import Button from '@components/forms/simple-components/Button'
-import CardBase from '@components/molecules/presentation/CardBase'
 import cx from 'classnames'
 import Image from 'next/image'
 
+import Button from '@/components/forms/simple-components/Button'
+import CardBase from '@/components/molecules/presentation/CardBase'
 import { CommonLinkProps } from '@/utils/getCommonLinkProps'
 
 export type InBaCardProps = {

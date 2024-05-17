@@ -1,8 +1,8 @@
 import { Typography } from '@bratislava/component-library'
-import Button from '@components/forms/simple-components/Button'
 import { useTranslations } from 'next-intl'
 
 import { ArrowRightIcon } from '@/assets/ui-icons'
+import Button from '@/components/forms/simple-components/Button'
 
 type SearchResultsHeaderProps = {
   title: string

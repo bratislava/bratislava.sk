@@ -1,7 +1,4 @@
 import { Typography } from '@bratislava/component-library'
-import BlogPostCard from '@components/molecules/presentation/BlogPostCard'
-import BlogPostsFilter from '@components/ui/BlogPostsFilter/BlogPostsFilter'
-import Pagination from '@components/ui/Pagination/Pagination'
 import { keepPreviousData, useQuery } from '@tanstack/react-query'
 import { useLocale, useTranslations } from 'next-intl'
 import React from 'react'
@@ -13,6 +10,9 @@ import {
   blogPostsFetcher,
   getBlogPostsQueryKey,
 } from '@/backend/meili/fetchers/blogPostsFetcherReactQuery'
+import BlogPostCard from '@/components/molecules/presentation/BlogPostCard'
+import BlogPostsFilter from '@/components/ui/BlogPostsFilter/BlogPostsFilter'
+import Pagination from '@/components/ui/Pagination/Pagination'
 import { getCategoryColorLocalStyle } from '@/utils/colors'
 import { generateImageSizes } from '@/utils/generateImageSizes'
 import { getNumericLocalDate } from '@/utils/local-date'

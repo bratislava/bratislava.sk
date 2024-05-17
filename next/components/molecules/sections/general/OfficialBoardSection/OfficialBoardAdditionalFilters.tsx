@@ -1,6 +1,3 @@
-import SelectField, {
-  SelectItem,
-} from '@components/forms/widget-components/SelectField/SelectField'
 import { useQuery } from '@tanstack/react-query'
 import { useTranslations } from 'next-intl'
 import React from 'react'
@@ -10,6 +7,9 @@ import {
   officialBoardCategoriesFetcher,
 } from '@/backend/ginis/fetchers/officialBoardCategoriesFetcher'
 import { OfficialBoardPublicationState, ParsedOfficialBoardCategory } from '@/backend/ginis/types'
+import SelectField, {
+  SelectItem,
+} from '@/components/forms/widget-components/SelectField/SelectField'
 import { isDefined } from '@/utils/isDefined'
 import { isProductionDeployment } from '@/utils/utils' // TODO maybe we shouldn't use czech string for values, but parse them in handler or somewhere else?
 

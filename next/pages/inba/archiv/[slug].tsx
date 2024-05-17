@@ -1,11 +1,11 @@
-import PageLayout from '@components/layouts/PageLayout'
-import InbaReleasePageContent from '@components/pages/InbaReleasePageContent'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import Head from 'next/head'
 import * as React from 'react'
 
 import { GeneralQuery, InbaReleaseEntityFragment } from '@/backend/graphql'
 import { client } from '@/backend/graphql/gql'
+import PageLayout from '@/components/layouts/PageLayout'
+import InbaReleasePageContent from '@/components/pages/InbaReleasePageContent'
 import { GeneralContextProvider } from '@/utils/generalContext'
 import { useTitle } from '@/utils/useTitle'
 

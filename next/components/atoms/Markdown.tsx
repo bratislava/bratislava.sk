@@ -1,11 +1,12 @@
 /* eslint-disable @typescript-eslint/no-unused-vars,jsx-a11y/heading-has-content */
 import { Typography } from '@bratislava/component-library'
-import MLink from '@components/forms/simple-components/MLink'
 import cx from 'classnames'
 import ReactMarkdown from 'react-markdown'
 import rehypeRaw from 'rehype-raw'
 import remarkGfm from 'remark-gfm'
 import remarkUnwrapImages from 'remark-unwrap-images'
+
+import MLink from '@/components/forms/simple-components/MLink'
 
 import styles from './Markdown.module.scss'
 

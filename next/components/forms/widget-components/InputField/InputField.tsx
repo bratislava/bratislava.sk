@@ -1,4 +1,3 @@
-import Button from '@components/forms/simple-components/Button'
 import cx from 'classnames'
 import { useTranslations } from 'next-intl'
 import { forwardRef, ReactNode, useEffect, useImperativeHandle, useRef, useState } from 'react'
@@ -9,6 +8,7 @@ import ResetIcon from '@/assets/images/forms/circle-filled-reset.svg'
 import LockIcon from '@/assets/images/forms/lock.svg'
 import MailIcon from '@/assets/images/forms/mail.svg'
 import PersonIcon from '@/assets/images/forms/person.svg'
+import Button from '@/components/forms/simple-components/Button'
 
 import FieldErrorMessage from '../../info-components/FieldErrorMessage'
 import FieldHeader from '../../info-components/FieldHeader'

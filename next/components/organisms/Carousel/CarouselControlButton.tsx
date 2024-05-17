@@ -1,9 +1,9 @@
-import Button, { ButtonProps } from '@components/forms/simple-components/Button'
 import cx from 'classnames'
 import { useTranslations } from 'next-intl'
 import React from 'react'
 
 import { ArrowLeftIcon, ArrowRightIcon } from '@/assets/ui-icons'
+import Button, { ButtonProps } from '@/components/forms/simple-components/Button'
 
 type CarouselControlProps = {
   direction: 'left' | 'right'

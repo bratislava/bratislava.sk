@@ -1,5 +1,4 @@
 import { Typography } from '@bratislava/component-library'
-import MLink from '@components/forms/simple-components/MLink'
 import cx from 'classnames'
 import { useTranslations } from 'next-intl'
 import React, { useMemo } from 'react'
@@ -8,6 +7,7 @@ import { twMerge } from 'tailwind-merge'
 import { AddressIcon, EmailIcon, WebIcon } from '@/assets/images'
 import { PhoneIcon } from '@/assets/ui-icons'
 import { ContactCardBlockFragment } from '@/backend/graphql'
+import MLink from '@/components/forms/simple-components/MLink'
 
 export enum ContactCtaCardType {
   Address,

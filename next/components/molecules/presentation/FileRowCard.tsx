@@ -1,10 +1,10 @@
-import MLink from '@components/forms/simple-components/MLink'
-import { FileCardProps } from '@components/molecules/presentation/FileCard'
 import { useTranslations } from 'next-intl'
 import React from 'react'
 import { twMerge } from 'tailwind-merge'
 
 import { DownloadIcon } from '@/assets/ui-icons'
+import MLink from '@/components/forms/simple-components/MLink'
+import { FileCardProps } from '@/components/molecules/presentation/FileCard'
 import { isDefined } from '@/utils/isDefined'
 
 /**

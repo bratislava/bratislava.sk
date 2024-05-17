@@ -1,14 +1,14 @@
 import { Typography } from '@bratislava/component-library'
-import ImagePlaceholder from '@components/atoms/ImagePlaceholder'
-import Markdown from '@components/atoms/Markdown'
-import MLink from '@components/forms/simple-components/MLink'
-import CardBase, { CardBaseProps } from '@components/molecules/presentation/CardBase'
-import CardContent from '@components/molecules/presentation/CardContent'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 import React from 'react'
 
 import { ChevronRightIcon } from '@/assets/ui-icons'
+import ImagePlaceholder from '@/components/atoms/ImagePlaceholder'
+import Markdown from '@/components/atoms/Markdown'
+import MLink from '@/components/forms/simple-components/MLink'
+import CardBase, { CardBaseProps } from '@/components/molecules/presentation/CardBase'
+import CardContent from '@/components/molecules/presentation/CardContent'
 
 type Props = {
   title: string

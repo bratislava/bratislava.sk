@@ -1,16 +1,17 @@
 import { Typography } from '@bratislava/component-library'
 import Pagination from '@bratislava/ui-bratislava/Pagination/Pagination'
-import { SearchOption } from '@components/organisms/SearchSection/GlobalSearchSectionContent'
-import SearchResultCard from '@components/organisms/SearchSection/SearchResultCard'
-import SearchResultsHeader from '@components/organisms/SearchSection/SearchResultsHeader'
-import {
-  SearchFilters,
-  useQueryBySearchOption,
-} from '@components/organisms/SearchSection/useQueryBySearchOption'
-import LoadingSpinner from '@components/ui/LoadingSpinner/LoadingSpinner'
 import { useTranslations } from 'next-intl'
 import React, { Dispatch, SetStateAction, useEffect } from 'react'
 import { Selection } from 'react-aria-components'
+
+import { SearchOption } from '@/components/organisms/SearchSection/GlobalSearchSectionContent'
+import SearchResultCard from '@/components/organisms/SearchSection/SearchResultCard'
+import SearchResultsHeader from '@/components/organisms/SearchSection/SearchResultsHeader'
+import {
+  SearchFilters,
+  useQueryBySearchOption,
+} from '@/components/organisms/SearchSection/useQueryBySearchOption'
+import LoadingSpinner from '@/components/ui/LoadingSpinner/LoadingSpinner'
 
 type SearchResultsProps = {
   filters: SearchFilters
@@ -58,7 +59,10 @@ const SearchResults = ({
   }
 
   return (
-    <div className="flex flex-col gap-y-8" data-cy={`search-section-${searchOption?.displayNamePlural.replaceAll(" ","-")}`}>
+    <div
+      className="flex flex-col gap-y-8"
+      data-cy={`search-section-${searchOption?.displayNamePlural.replaceAll(' ', '-')}`}
+    >
       <div className="flex flex-col gap-y-4">
         {variant === 'allResults' && (
           <SearchResultsHeader

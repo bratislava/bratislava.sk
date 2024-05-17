@@ -1,9 +1,9 @@
 import { Typography } from '@bratislava/component-library'
-import Button from '@components/forms/simple-components/Button'
 import { GetStaticProps } from 'next'
 import Head from 'next/head'
 import { useTranslations } from 'next-intl'
 
+import Button from '@/components/forms/simple-components/Button'
 import { useTitle } from '@/utils/useTitle'
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {

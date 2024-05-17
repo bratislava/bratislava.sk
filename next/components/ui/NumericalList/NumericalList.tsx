@@ -1,4 +1,4 @@
-import { NumericalListItemObject } from '@components/ui/NumericalListSectionUI/NumericalListSectionUI'
+import { NumericalListItemObject } from '@/components/ui/NumericalListSectionUI/NumericalListSectionUI'
 
 import NumericalListItem from '../NumericalListItem/NumericalListItem'
 

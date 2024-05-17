@@ -1,8 +1,8 @@
-import EventCard from '@components/molecules/presentation/EventCard'
-import Stack from '@components/styleguide/Stack'
-import Wrapper from '@components/styleguide/Wrapper'
 import React from 'react'
 
+import EventCard from '@/components/molecules/presentation/EventCard'
+import Stack from '@/components/styleguide/Stack'
+import Wrapper from '@/components/styleguide/Wrapper'
 import { generateImageSizes } from '@/utils/generateImageSizes'
 
 const EventCardShowcase = () => {
