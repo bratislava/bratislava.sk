@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unnecessary-type-assertion,@typescript-eslint/no-non-null-assertion */
 import React from 'react'
 
-import NumericalListSectionUI from '@/components/ui/NumericalListSectionUI/NumericalListSectionUI'
+import NumericalList from '@/components/ui/NumericalList_Deprecated/NumericalList_Deprecated'
 import { NumericalListSectionFragment } from '@/services/graphql'
 import { isPresent } from '@/utils/utils'
 
@@ -11,7 +11,7 @@ type NumericalListSectionProps = {
 
 const NumericalListSection = ({ section }: NumericalListSectionProps) => {
   return (
-    <NumericalListSectionUI
+    <NumericalList
       title={section.title}
       items={section.items?.filter(isPresent)}
       buttonText={section.buttonText}

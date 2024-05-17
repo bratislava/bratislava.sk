@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Videos } from '@/components/ui/Videos/Videos'
+import { Videos } from '@/components/ui/Videos_Deprecated/Videos_Deprecated'
 import { VideosSectionFragment } from '@/services/graphql'
 import { isPresent } from '@/utils/utils'
 

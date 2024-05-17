@@ -1,7 +1,7 @@
 import chunk from 'lodash/chunk'
 
+import TopServicesItem from '@/components/molecules/presentation/TopServicesItem'
 import Carousel from '@/components/organisms/Carousel/Carousel'
-import TopServicesItem from '@/components/ui/TopServicesItem/TopServicesItem'
 import { TopServicesItemFragment } from '@/services/graphql'
 
 type TopServicesProps = {

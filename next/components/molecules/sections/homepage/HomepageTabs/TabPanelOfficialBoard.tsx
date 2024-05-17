@@ -4,8 +4,8 @@ import React from 'react'
 import { TabPanel } from 'react-aria-components'
 
 import Button from '@/components/forms/simple-components/Button'
-import SearchResultCard from '@/components/organisms/SearchSection/SearchResultCard'
-import { SearchResult } from '@/components/organisms/SearchSection/useQueryBySearchOption'
+import SearchResultCard from '@/components/molecules/sections/general/SearchSection/SearchResultCard'
+import { SearchResult } from '@/components/molecules/sections/general/SearchSection/useQueryBySearchOption'
 import LoadingSpinner from '@/components/ui/LoadingSpinner/LoadingSpinner'
 import { CATEGORIES_TO_EXCLUDE_ON_HOMEPAGE } from '@/services/ginis/consts'
 import {

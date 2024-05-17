@@ -1,6 +1,6 @@
 import React from 'react'
 
-import GlobalSearchSectionContent from '@/components/organisms/SearchSection/GlobalSearchSectionContent'
+import GlobalSearchSectionContent from '@/components/molecules/sections/general/SearchSection/GlobalSearchSectionContent'
 
 const RegulationsListSection = () => {
   return <GlobalSearchSectionContent variant="specific" searchOption="regulations" />

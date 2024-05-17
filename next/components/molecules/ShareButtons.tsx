@@ -2,7 +2,7 @@ import { useTranslations } from 'next-intl'
 import React from 'react'
 
 import { FacebookIcon, InstagramIcon, LinkedinIcon, TwitterIcon } from '@/assets/images'
-import { SocialMediaButton } from '@/components/pages/BlogPostPageContentTmp'
+import { SocialMediaButton } from '@/components/pages/BlogPostPageContent'
 import SectionContainer from '@/components/ui/SectionContainer/SectionContainer'
 
 type Props = {

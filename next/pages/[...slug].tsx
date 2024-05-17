@@ -4,7 +4,7 @@ import Head from 'next/head'
 import React from 'react'
 
 import PageLayout from '@/components/layouts/PageLayout'
-import GeneralPageContentTmp from '@/components/pages/GeneralPageContentTmp'
+import GeneralPageContent from '@/components/pages/GeneralPageContent'
 import {
   LanguageCode,
   Localizations,
@@ -120,7 +120,7 @@ const Page = ({ general, page, dehydratedState }: PageProps) => {
             color={page?.attributes?.pageCategory?.data?.attributes?.color}
           />
           <PageLayout>
-            <GeneralPageContentTmp page={page} />
+            <GeneralPageContent page={page} />
           </PageLayout>
         </LocalizationsProvider>
       </GeneralContextProvider>

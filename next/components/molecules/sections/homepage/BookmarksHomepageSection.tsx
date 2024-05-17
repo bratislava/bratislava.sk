@@ -1,4 +1,4 @@
-import Bookmarks from '@/components/ui/Bookmarks/Bookmarks'
+import Bookmarks from '@/components/ui/Bookmarks_Deprecated/Bookmarks_Deprecated'
 import { useHomepageContext } from '@/utils/homepageContext'
 
 const BookmarksHomepageSection = () => {

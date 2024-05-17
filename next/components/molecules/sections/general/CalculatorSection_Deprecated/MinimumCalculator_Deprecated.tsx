@@ -1,0 +1,189 @@
+import { Typography } from '@bratislava/component-library'
+import { useTranslations } from 'next-intl'
+import React, { FormEvent } from 'react'
+import { twMerge } from 'tailwind-merge'
+
+import MinusIcon from '@/assets/images/minus.svg'
+import PlusIcon from '@/assets/images/plus.svg'
+import Button from '@/components/forms/simple-components/Button'
+import Input from '@/components/molecules/sections/general/CalculatorSection_Deprecated/Input_Deprecated'
+
+type MinimumCalculatorProps = {
+  className?: string
+  singleAdultValue: number
+  anotherAdultValue: number
+  childValue: number
+}
+
+const calculateLivingSituation = (
+  singleAdultValue: number,
+  anotherAdultValue: number,
+  childValue: number,
+  adults: number,
+  children: number,
+  income: number,
+): [number, boolean] => {
+  const minimumWage = singleAdultValue + (adults - 1) * anotherAdultValue + children * childValue
+  const canAccomodate = income >= minimumWage
+  return [minimumWage, canAccomodate]
+}
+
+type InputFieldProps = {
+  id: string
+  label: string
+  value: number
+  onChange: (newValue: number) => void
+  onAddSub: (newValue: number) => void
+}
+
+const InputField = ({
+  id,
+  label,
+  value,
+  onChange,
+  onAddSub,
+  ...rest
+}: InputFieldProps &
+  Omit<
+    React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>,
+    'onChange'
+  >) => (
+  <label className="text-large flex flex-col items-center text-center" htmlFor={id}>
+    {label}
+    <div className="relative mt-3 flex items-center">
+      <Button
+        className="absolute left-2 h-10 w-10 p-0"
+        onPress={() => onAddSub(value - 1)}
+        variant="black-outline"
+      >
+        <MinusIcon />
+      </Button>
+      <Input
+        id={id}
+        value={value}
+        onChange={(e) => {
+          if (e.target.value === '' || /^[\d\b]+$/.test(e.target.value)) {
+            onChange(parseInt(e.target.value, 10))
+          }
+        }}
+        className="number-control-none text-large box-border w-64 rounded-lg px-10 py-4 text-center"
+        required
+        type="number"
+        min={0}
+        {...rest}
+      />
+      <Button
+        className="absolute right-2 h-10 w-10 p-0"
+        onPress={() => onAddSub(value + 1)}
+        variant="black-outline"
+      >
+        <PlusIcon />
+      </Button>
+    </div>
+  </label>
+)
+
+const MinimumCalculator_Deprecated = ({
+  className,
+  singleAdultValue,
+  anotherAdultValue,
+  childValue,
+}: MinimumCalculatorProps) => {
+  const t = useTranslations('MinimumCalculator')
+
+  const [adults, setAdults] = React.useState(1)
+  const [children, setChildren] = React.useState(0)
+  const [income, setIncome] = React.useState(0)
+
+  const [submitted, setSubmitted] = React.useState(false)
+
+  const [livingWage, canAcommodate] = calculateLivingSituation(
+    singleAdultValue,
+    anotherAdultValue,
+    childValue,
+    Number(adults),
+    Number(children),
+    Number(income),
+  )
+  const handleSubmit = (ev: FormEvent) => {
+    ev.preventDefault()
+    setSubmitted(true)
+  }
+
+  return (
+    <div className={twMerge('bg-category-200 text-center text-font', className)}>
+      <Typography type="h2" size="h3">
+        {t('title')}
+      </Typography>
+
+      {/* FIXME Typography. Convert to use Typography. Issue: responsive size of Figma large <p> is different */}
+      <p className="text-large m-auto mt-6 w-10/12 pt-0.5 font-medium">{t('description')}</p>
+      <form
+        className="text-large mt-10 flex flex-col items-center gap-y-8 font-medium"
+        onSubmit={handleSubmit}
+      >
+        <InputField
+          id="adults"
+          label={t('adultsText')}
+          value={adults}
+          onChange={(v) => {
+            setAdults(v)
+            setSubmitted(false)
+          }}
+          placeholder={t('placeholder')}
+          min={1}
+          onAddSub={(v) => {
+            setAdults(v > 0 ? v : adults)
+          }}
+        />
+
+        <InputField
+          id="children"
+          label={t('childrenText')}
+          value={children}
+          onChange={(v) => {
+            setChildren(v)
+            setSubmitted(false)
+          }}
+          placeholder={t('placeholder')}
+          onAddSub={(v) => {
+            setChildren(v >= 0 ? v : children)
+          }}
+        />
+
+        <InputField
+          id="income"
+          label={t('incomeText')}
+          value={income}
+          onChange={(v) => {
+            setIncome(v)
+            setSubmitted(false)
+          }}
+          placeholder={t('placeholder')}
+          step="0.01"
+          onAddSub={(v) => {
+            setIncome(v >= 0 ? v : income)
+          }}
+        />
+
+        <Button variant="category-solid" type="submit">
+          {t('buttonText')}
+        </Button>
+      </form>
+
+      {submitted && (
+        <div className="mt-14">
+          {/* FIXME Typography. Convert to use Typography. Issue: Figma <p> different font size */}
+          <p className="text-h4">{canAcommodate ? t('answerYes') : t('answerNo')}</p>
+          <Typography type="p" size="p-large" className="text-large-respo m-auto mt-5 w-9/12">
+            {canAcommodate
+              ? t('answerDescriptionYes')
+              : t('answerDescriptionNo').replace('XY', livingWage.toFixed(2).toString())}
+          </Typography>
+        </div>
+      )}
+    </div>
+  )
+}
+
+export default MinimumCalculator_Deprecated

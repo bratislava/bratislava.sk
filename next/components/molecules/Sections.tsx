@@ -7,7 +7,7 @@ import BlogPostsByTags from '@/components/molecules/sections/general/ArticlesLis
 import BlogPostsList from '@/components/molecules/sections/general/ArticlesListSection/BlogPostsList'
 import InbaArticlesList from '@/components/molecules/sections/general/ArticlesListSection/InbaArticlesList'
 import BannerSection from '@/components/molecules/sections/general/BannerSection'
-import CalculatorSection from '@/components/molecules/sections/general/CalculatorSection/CalculatorSection'
+import CalculatorSection from '@/components/molecules/sections/general/CalculatorSection_Deprecated/CalculatorSection_Deprecated'
 import ColumnedTextSection from '@/components/molecules/sections/general/ColumnedTextSection'
 import ComparisonSection from '@/components/molecules/sections/general/ComparisonSection'
 import ContactsSection from '@/components/molecules/sections/general/ContactsSection'
