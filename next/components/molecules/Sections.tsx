@@ -12,7 +12,6 @@ import ColumnedTextSection from '@/components/molecules/sections/general/Columne
 import ComparisonSection from '@/components/molecules/sections/general/ComparisonSection'
 import ContactsSection from '@/components/molecules/sections/general/ContactsSection'
 import DividerSection from '@/components/molecules/sections/general/DividerSection'
-import DocumentListSection from '@/components/molecules/sections/general/DocumentListSection/DocumentListSection'
 import FeaturedBlogPostsSection from '@/components/molecules/sections/general/FeaturedBlogPostsSection'
 import FileListSection from '@/components/molecules/sections/general/FileListSection'
 import GallerySection from '@/components/molecules/sections/general/GallerySection'
@@ -42,9 +41,6 @@ const SectionContent = ({ section }: { section: SectionsFragment }) => {
 
     case 'ComponentSectionsIconTitleDesc':
       return <IconTitleDescSection section={section} />
-
-    case 'ComponentSectionsDocumentList':
-      return <DocumentListSection />
 
     case 'ComponentSectionsColumnedText':
       return <ColumnedTextSection section={section} />
