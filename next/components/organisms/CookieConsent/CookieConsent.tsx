@@ -1,12 +1,13 @@
-import Button from '@components/forms/simple-components/Button'
-import MLink from '@components/forms/simple-components/MLink'
-import { useCookieConsent } from '@components/organisms/CookieConsent/useCookieConsent'
-import { getCategoryColorLocalStyle } from '@utils/colors'
-import { isProductionDeployment } from '@utils/utils'
 import Script from 'next/script'
 import { useTranslations } from 'next-intl'
 import React from 'react'
 import { twMerge } from 'tailwind-merge'
+
+import Button from '@/components/forms/simple-components/Button'
+import MLink from '@/components/forms/simple-components/MLink'
+import { useCookieConsent } from '@/components/organisms/CookieConsent/useCookieConsent'
+import { getCategoryColorLocalStyle } from '@/utils/colors'
+import { isProductionDeployment } from '@/utils/utils'
 
 type CookieConsentProps = {
   className?: string

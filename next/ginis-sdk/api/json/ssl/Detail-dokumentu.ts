@@ -1,6 +1,6 @@
-import type { Ginis } from '../../../ginis'
-import { makeAxiosRequest, getGRestHeader, GRestHeader } from '../../../utils/api'
-import { GinisError } from '../../../utils/errors'
+import type { Ginis } from '@/ginis-sdk'
+import { GinisError } from '@/ginis-sdk'
+import { getGRestHeader, GRestHeader, makeAxiosRequest } from '@/ginis-sdk/utils/api'
 
 // https://robot.gordic.cz/xrg/Default.html?c=OpenMethodDetail&moduleName=SSL&version=390&methodName=Detail-dokumentu&type=request
 export type DetailDokumentuRequest = {
@@ -120,7 +120,7 @@ export type DetailDokumentuResponse = {
 
 export async function detailDokumentu(
   this: Ginis,
-  bodyObj: DetailDokumentuRequest
+  bodyObj: DetailDokumentuRequest,
 ): Promise<DetailDokumentuXrg> {
   const url = this.config.urls.ssl
   if (!url) throw new GinisError('GINIS SDK Error: Missing SSL url in GINIS config')
@@ -130,11 +130,11 @@ export async function detailDokumentu(
     {
       GRestHeader: getGRestHeader(
         this.config,
-        'http://www.gordic.cz/xrg/ssl/wfl-dokument/detail-dokumentu/request/v_1.0.0.0'
+        'http://www.gordic.cz/xrg/ssl/wfl-dokument/detail-dokumentu/request/v_1.0.0.0',
       ),
       Xrg: { 'Detail-dokumentu': bodyObj },
     },
-    this.config.debug
+    this.config.debug,
   )
   return response.data.Xrg
 }

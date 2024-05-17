@@ -1,7 +1,8 @@
-import { GallerySectionFragment } from '@backend/graphql'
 import { Typography } from '@bratislava/component-library'
-import Gallery from '@components/organisms/Gallery/Gallery'
 import React from 'react'
+
+import { GallerySectionFragment } from '@/backend/graphql'
+import Gallery from '@/components/organisms/Gallery/Gallery'
 
 export type GallerySectionProps = {
   section: GallerySectionFragment

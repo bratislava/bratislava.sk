@@ -1,4 +1,4 @@
-import { client } from '@backend/graphql/gql'
+import { client } from '@/backend/graphql/gql'
 
 export type InbaReleasesFilters = {
   pageSize: number

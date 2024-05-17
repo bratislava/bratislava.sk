@@ -1,9 +1,10 @@
 import { Typography } from '@bratislava/component-library'
-import Button from '@components/forms/simple-components/Button'
-import { useTitle } from '@utils/useTitle'
 import { GetStaticProps } from 'next'
 import Head from 'next/head'
 import { useTranslations } from 'next-intl'
+
+import Button from '@/components/forms/simple-components/Button'
+import { useTitle } from '@/utils/useTitle'
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
   const [messages] = await Promise.all([import(`../messages/${locale}.json`)])

@@ -1,7 +1,8 @@
-import { CrossIcon } from '@assets/ui-icons'
-import Button from '@components/forms/simple-components/Button'
 import cx from 'classnames'
 import { useTranslations } from 'next-intl'
+
+import { CrossIcon } from '@/assets/ui-icons'
+import Button from '@/components/forms/simple-components/Button'
 
 type TagProps = {
   text: string

@@ -1,10 +1,11 @@
-import Mail from '@assets/images/mail.svg'
-import Phone from '@assets/images/phone-small.svg'
-import TownHall from '@assets/images/town-hall.svg'
-import TownHallSmall from '@assets/images/town-hall-small.svg'
 import { Typography } from '@bratislava/component-library'
-import Panel from '@bratislava/ui-bratislava/Panel/Panel'
 import { twMerge } from 'tailwind-merge'
+
+import Mail from '@/assets/images/mail.svg'
+import Phone from '@/assets/images/phone-small.svg'
+import TownHall from '@/assets/images/town-hall.svg'
+import TownHallSmall from '@/assets/images/town-hall-small.svg' // TODO do not refactor, but rewrite from scratch
+import Panel from '@/components/ui/Panel/Panel'
 
 // TODO do not refactor, but rewrite from scratch
 
@@ -44,19 +45,31 @@ const OrganizationalStructureAccordionCard = ({
         <Typography type="h4" className="pb-2" data-cy="structure-accordion-card-name">
           {displayName}
         </Typography>
-        <div className="text-small lg:text-default pb-6 text-font/75" data-cy="structure-accordion-card-job">{jobTitle}</div>
+        <div
+          className="text-small lg:text-default pb-6 text-font/75"
+          data-cy="structure-accordion-card-job"
+        >
+          {jobTitle}
+        </div>
         <div className="flex justify-between">
           <div>
             <div className="flex gap-x-4 pb-3">
               {!heading && <Phone className="max-md:hidden" />}
               {businessPhones?.length
                 ? businessPhones.map((phone) => (
-                    <div key={phone} className="text-default flex items-center font-semibold" data-cy="structure-accordion-card-phone">
+                    <div
+                      key={phone}
+                      className="text-default flex items-center font-semibold"
+                      data-cy="structure-accordion-card-phone"
+                    >
                       {phone}
                     </div>
                   ))
                 : mobilePhone && (
-                    <div className="text-default flex items-center font-semibold" data-cy="structure-accordion-card-phone">
+                    <div
+                      className="text-default flex items-center font-semibold"
+                      data-cy="structure-accordion-card-phone"
+                    >
                       {mobilePhone}
                     </div>
                   )}
@@ -65,7 +78,9 @@ const OrganizationalStructureAccordionCard = ({
               <div className="flex gap-x-4">
                 {!heading && <Mail className="max-md:hidden" />}
                 <div className="text-small lg:text-default font-semibold underline underline-offset-2">
-                  <div className="flex lg:hidden" data-cy="structure-accordion-card-email-mobile">{mailUserName + mailOrganization}</div>
+                  <div className="flex lg:hidden" data-cy="structure-accordion-card-email-mobile">
+                    {mailUserName + mailOrganization}
+                  </div>
                   <div className="hidden lg:flex" data-cy="structure-accordion-card-email">
                     {mailUserName && mailUserName.length > mailBreakpoint
                       ? mailUserName

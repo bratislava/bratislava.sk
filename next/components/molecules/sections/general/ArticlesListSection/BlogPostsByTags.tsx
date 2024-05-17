@@ -1,20 +1,21 @@
-import { BlogPostsByTagsSectionFragment } from '@backend/graphql'
+import { Typography } from '@bratislava/component-library'
+import { keepPreviousData, useQuery } from '@tanstack/react-query'
+import { useLocale, useTranslations } from 'next-intl'
+import React from 'react'
+
+import { BlogPostsByTagsSectionFragment } from '@/backend/graphql'
 import {
   blogPostsDefaultFilters,
   blogPostsFetcher,
   getBlogPostsQueryKey,
-} from '@backend/meili/fetchers/blogPostsFetcherReactQuery'
-import { Typography } from '@bratislava/component-library'
-import BlogPostCard from '@components/molecules/presentation/BlogPostCard'
-import Pagination from '@components/ui/Pagination/Pagination'
-import { keepPreviousData, useQuery } from '@tanstack/react-query'
-import { getCategoryColorLocalStyle } from '@utils/colors'
-import { generateImageSizes } from '@utils/generateImageSizes'
-import { isDefined } from '@utils/isDefined'
-import { getNumericLocalDate } from '@utils/local-date'
-import { useRoutePreservedState } from '@utils/useRoutePreservedState'
-import { useLocale, useTranslations } from 'next-intl'
-import React from 'react'
+} from '@/backend/meili/fetchers/blogPostsFetcherReactQuery'
+import BlogPostCard from '@/components/molecules/presentation/BlogPostCard'
+import Pagination from '@/components/ui/Pagination/Pagination'
+import { getCategoryColorLocalStyle } from '@/utils/colors'
+import { generateImageSizes } from '@/utils/generateImageSizes'
+import { isDefined } from '@/utils/isDefined'
+import { getNumericLocalDate } from '@/utils/local-date'
+import { useRoutePreservedState } from '@/utils/useRoutePreservedState'
 
 const imageSizes = generateImageSizes({ default: '100vw', md: '50vw', lg: '33vw' })
 

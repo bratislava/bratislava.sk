@@ -7,7 +7,7 @@ import {
   ParsedOfficialBoardCategory,
   ParsedOfficialBoardDocument,
   ParsedOfficialBoardDocumentDetail,
-} from '@backend/ginis/types'
+} from '@/backend/ginis/types'
 
 export const mockedParsedDocuments: ParsedOfficialBoardDocument[] = [
   {

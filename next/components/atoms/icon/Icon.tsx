@@ -1,6 +1,6 @@
 import { FC, useMemo } from 'react'
 
-import { getIcon, MenuIcon } from './IconService'
+import { getIcon, MenuIcon } from '@/components/atoms/icon/IconService'
 
 type Props = {
   iconName: MenuIcon | undefined

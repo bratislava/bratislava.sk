@@ -1,10 +1,11 @@
-import BreadcrumbsChevronIcon from '@assets/images/breadcrumbs-chevron.svg'
-import { ChevronDownIcon } from '@assets/ui-icons'
-import Button from '@components/forms/simple-components/Button'
-import MLink from '@components/forms/simple-components/MLink'
-import type { BreadcrumbsProps } from '@components/ui/Breadcrumbs/Breadcrumbs'
 import { useTranslations } from 'next-intl'
 import React from 'react'
+
+import BreadcrumbsChevronIcon from '@/assets/images/breadcrumbs-chevron.svg'
+import { ChevronDownIcon } from '@/assets/ui-icons'
+import Button from '@/components/forms/simple-components/Button'
+import MLink from '@/components/forms/simple-components/MLink'
+import type { BreadcrumbsProps } from '@/components/ui/Breadcrumbs/Breadcrumbs'
 
 const goBack = () => {
   window.history.back()

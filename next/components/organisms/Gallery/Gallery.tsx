@@ -2,15 +2,16 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/interactive-supports-focus */
 
-import { UploadImageEntityFragment } from '@backend/graphql'
-import StrapiImage from '@components/atoms/StrapiImage'
-import { onEnterOrSpaceKeyDown } from '@utils/onEnterOrSpaceKeyDown'
 import cx from 'classnames'
 import { useTranslations } from 'next-intl'
 import { useCallback, useState } from 'react'
 import { useOverlayTriggerState } from 'react-stately'
 import screens from 'tailwind.config.screens'
 import { useWindowSize } from 'usehooks-ts'
+
+import { UploadImageEntityFragment } from '@/backend/graphql'
+import StrapiImage from '@/components/atoms/StrapiImage'
+import { onEnterOrSpaceKeyDown } from '@/utils/onEnterOrSpaceKeyDown'
 
 import ImageLightBox from './ImageLightBox'
 

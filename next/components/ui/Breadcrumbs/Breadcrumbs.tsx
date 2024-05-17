@@ -1,6 +1,7 @@
-import DesktopBreadcrumbs from '@components/ui/Breadcrumbs/DesktopBreadcrumbs'
-import MobileBreadcrumbs from '@components/ui/Breadcrumbs/MobileBreadcrumbs'
 import React from 'react'
+
+import DesktopBreadcrumbs from '@/components/ui/Breadcrumbs/DesktopBreadcrumbs'
+import MobileBreadcrumbs from '@/components/ui/Breadcrumbs/MobileBreadcrumbs'
 
 export type Breadcrumb = {
   title: string

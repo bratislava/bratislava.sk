@@ -1,7 +1,7 @@
 import {
   Enum_Componentmenumenuitem_Icon,
   Enum_Componentmenumenusection_Icon,
-} from '@backend/graphql'
+} from '@/backend/graphql'
 
 export type MenuLink = {
   label: string

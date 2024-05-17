@@ -1,7 +1,8 @@
 // full UDE service docs: https://robot.gordic.cz/xrg/Default.html?c=OpenModuleDetail&moduleName=SSL&language=cs-CZ&version=390
 import type { AxiosRequestConfig } from 'axios'
-import type { GinisConfig } from '../../ginis'
-import { makeAxiosRequest } from '../../utils/api'
+
+import type { GinisConfig } from '@/ginis-sdk'
+import { makeAxiosRequest } from '@/ginis-sdk/utils/api'
 
 /**
  * Full docs: https://robot.gordic.cz/xrg/Default.html?c=OpenMethodDetail&moduleName=UDE&version=390&methodName=seznam-dokumentu&type=request
@@ -95,7 +96,7 @@ export type seznamDokumentu = {
 export const seznamDokumentu = async (
   config: GinisConfig,
   url: string | undefined,
-  bodyObj: seznamDokumentu
+  bodyObj: seznamDokumentu,
 ) => {
   const axiosConfig: AxiosRequestConfig = {
     headers: {

@@ -1,7 +1,7 @@
-import { ginis } from '@backend/ginis/ginis'
-import { ParsedOfficialBoardDocument } from '@backend/ginis/types'
-import { SeznamDokumentuResponseItem } from '@ginis-sdk/api/json/ude/seznam-dokumentu'
-import { isDefined } from '@utils/isDefined'
+import { ginis } from '@/backend/ginis/ginis'
+import { ParsedOfficialBoardDocument } from '@/backend/ginis/types'
+import { SeznamDokumentuResponseItem } from '@/ginis-sdk/api/json/ude/seznam-dokumentu'
+import { isDefined } from '@/utils/isDefined'
 
 export const getOfficialBoardParsedList = async (options: {
   searchQuery?: string

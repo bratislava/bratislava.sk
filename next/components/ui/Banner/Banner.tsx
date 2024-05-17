@@ -1,11 +1,12 @@
-import { CommonLinkFragment, Enum_Componentsectionsbanner_Variant } from '@backend/graphql'
 import { Typography } from '@bratislava/component-library'
-import Markdown from '@components/atoms/Markdown'
-import Button from '@components/forms/simple-components/Button'
-import { generateImageSizes } from '@utils/generateImageSizes'
-import { getCommonLinkProps } from '@utils/getCommonLinkProps'
 import cx from 'classnames'
 import Image from 'next/image'
+
+import { CommonLinkFragment, Enum_Componentsectionsbanner_Variant } from '@/backend/graphql'
+import Markdown from '@/components/atoms/Markdown'
+import Button from '@/components/forms/simple-components/Button'
+import { generateImageSizes } from '@/utils/generateImageSizes'
+import { getCommonLinkProps } from '@/utils/getCommonLinkProps'
 
 type BannerProps = {
   title: string

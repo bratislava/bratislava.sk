@@ -1,5 +1,6 @@
-import { OfficialBoardCategoryListResponse } from '@backend/ginis/types'
 import axios from 'axios'
+
+import { OfficialBoardCategoryListResponse } from '@/backend/ginis/types'
 
 export const getOfficialBoardCategoriesQueryKey = () => ['OfficialBoardCategories']
 

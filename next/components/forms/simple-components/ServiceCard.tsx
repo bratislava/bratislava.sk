@@ -1,7 +1,8 @@
-import CircleArrowRight from '@assets/images/circle-arrow-right.svg'
-import Button from '@components/forms/simple-components/Button'
 import { ReactNode } from 'react'
 import { twMerge } from 'tailwind-merge'
+
+import CircleArrowRight from '@/assets/images/circle-arrow-right.svg'
+import Button from '@/components/forms/simple-components/Button'
 
 type ServiceCardBase = {
   title: string

@@ -1,7 +1,8 @@
-import ChevronRightIcon from '@assets/images/forms/chevron-right.svg'
-import FilledSelectedIcon from '@assets/images/forms/circle-filled-selected.svg'
 import cx from 'classnames'
 import React from 'react'
+
+import ChevronRightIcon from '@/assets/images/forms/chevron-right.svg'
+import FilledSelectedIcon from '@/assets/images/forms/circle-filled-selected.svg'
 
 import CheckboxIcon from '../../icon-components/CheckboxIcon'
 import RadioButtonIcon from '../../icon-components/RadioButtonIcon'

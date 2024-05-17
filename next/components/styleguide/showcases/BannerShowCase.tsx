@@ -1,6 +1,7 @@
-import { CommonLinkFragment, Enum_Componentsectionsbanner_Variant } from '@backend/graphql'
-import Banner from '@components/ui/Banner/Banner'
 import React from 'react'
+
+import { CommonLinkFragment, Enum_Componentsectionsbanner_Variant } from '@/backend/graphql'
+import Banner from '@/components/ui/Banner/Banner'
 
 import Stack from '../Stack'
 import Wrapper from '../Wrapper'

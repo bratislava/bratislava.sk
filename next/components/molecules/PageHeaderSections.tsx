@@ -1,8 +1,8 @@
-import { PageHeaderSectionsFragment } from '@backend/graphql'
-import { isPresent } from '@utils/utils'
 import React from 'react'
 
-import SubpageListPageHeaderSection from './sections/pageHeader/SubpageListPageHeaderSection'
+import { PageHeaderSectionsFragment } from '@/backend/graphql'
+import SubpageListPageHeaderSection from '@/components/molecules/sections/pageHeader/SubpageListPageHeaderSection'
+import { isPresent } from '@/utils/utils'
 
 type PageHeaderSectionsProps = {
   sections: (PageHeaderSectionsFragment | null | undefined)[] | null | undefined

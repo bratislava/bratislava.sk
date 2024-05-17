@@ -1,6 +1,7 @@
-import { getOfficialBoardParsedDocument } from '@backend/ginis/server/getOfficialBoardParsedDocument'
-import { base64Decode } from '@utils/base64'
 import type { NextApiRequest, NextApiResponse } from 'next'
+
+import { getOfficialBoardParsedDocument } from '@/backend/ginis/server/getOfficialBoardParsedDocument'
+import { base64Decode } from '@/utils/base64'
 
 const handler = async (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
   const { documentId: documentIdParam } = req.query

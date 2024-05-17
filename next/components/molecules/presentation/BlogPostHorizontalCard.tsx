@@ -1,11 +1,12 @@
 import { Typography } from '@bratislava/component-library'
-import ImagePlaceholder from '@components/atoms/ImagePlaceholder'
-import MLink from '@components/forms/simple-components/MLink'
-import Tag from '@components/forms/simple-components/Tag'
-import CardBase, { CardBaseProps } from '@components/molecules/presentation/CardBase'
-import CardContent from '@components/molecules/presentation/CardContent'
 import Image from 'next/image'
 import React from 'react'
+
+import ImagePlaceholder from '@/components/atoms/ImagePlaceholder'
+import MLink from '@/components/forms/simple-components/MLink'
+import Tag from '@/components/forms/simple-components/Tag'
+import CardBase, { CardBaseProps } from '@/components/molecules/presentation/CardBase'
+import CardContent from '@/components/molecules/presentation/CardContent'
 
 type Props = {
   title: string

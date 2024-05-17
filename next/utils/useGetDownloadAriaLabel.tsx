@@ -1,7 +1,8 @@
-import { FileItemBlockFragment } from '@backend/graphql'
-import { formatFileExtension } from '@utils/formatFileExtension'
-import { formatFileSize } from '@utils/formatFileSize'
 import { useLocale, useTranslations } from 'next-intl'
+
+import { FileItemBlockFragment } from '@/backend/graphql'
+import { formatFileExtension } from '@/utils/formatFileExtension'
+import { formatFileSize } from '@/utils/formatFileSize'
 
 export const useGetDownloadAriaLabel = () => {
   const t = useTranslations('FileList.aria')

@@ -1,11 +1,11 @@
-import { vznDefaultFilters, VznFilters } from '@backend/meili/fetchers/vznFetcher'
-import BasicSearch from '@bratislava/ui-bratislava/BasicSearch/BasicSearch'
 import { useTranslations } from 'next-intl'
 import { useEffect, useState } from 'react'
 import { useQueryParam } from 'use-query-params'
 import { useDebounce } from 'usehooks-ts'
 
-import RegulationsResults from './RegulationsResults'
+import { vznDefaultFilters, VznFilters } from '@/backend/meili/fetchers/vznFetcher'
+import RegulationsResults from '@/components/molecules/sections/general/DocumentListSection/RegulationsResults'
+import BasicSearch from '@/components/ui/BasicSearch/BasicSearch'
 
 const DocumentListSection = () => {
   const t = useTranslations()

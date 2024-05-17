@@ -1,5 +1,3 @@
-import { useTranslations } from 'next-intl'
-
 type SelectAllDropdownRowProps = {
   divider?: boolean
   isEverythingSelected: boolean

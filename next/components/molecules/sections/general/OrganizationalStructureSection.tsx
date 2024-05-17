@@ -1,7 +1,7 @@
-import { OrganizationalStructureSectionFragment } from '@backend/graphql'
 import React from 'react'
 
-import OrganizationalStructure from '../../OrganizationalStructure/OrganizationalStructure'
+import { OrganizationalStructureSectionFragment } from '@/backend/graphql'
+import OrganizationalStructure from '@/components/molecules/OrganizationalStructure/OrganizationalStructure'
 
 type OrganizationalStructureSectionProps = {
   section: OrganizationalStructureSectionFragment

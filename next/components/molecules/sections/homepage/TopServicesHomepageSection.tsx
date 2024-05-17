@@ -1,9 +1,10 @@
 import { Typography } from '@bratislava/component-library'
-import SectionContainer from '@components/ui/SectionContainer/SectionContainer'
-import TopServices from '@components/ui/TopServices/TopServices'
-import { useHomepageContext } from '@utils/homepageContext'
-import { isDefined } from '@utils/isDefined'
 import React from 'react'
+
+import SectionContainer from '@/components/ui/SectionContainer/SectionContainer'
+import TopServices from '@/components/ui/TopServices/TopServices'
+import { useHomepageContext } from '@/utils/homepageContext'
+import { isDefined } from '@/utils/isDefined'
 
 const TopServicesHomepageSection = () => {
   const { homepage } = useHomepageContext()

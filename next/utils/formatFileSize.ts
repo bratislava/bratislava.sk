@@ -1,5 +1,6 @@
-import { isDefined } from '@utils/isDefined'
 import prettyBytes from 'pretty-bytes'
+
+import { isDefined } from '@/utils/isDefined'
 
 export const formatFileSize = (size: number | undefined, language: string) => {
   if (isDefined(size)) {

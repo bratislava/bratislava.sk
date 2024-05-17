@@ -1,11 +1,12 @@
-import { PARAMS_FROM_MS_GRAPH_API } from '@backend/ms-graph/server/constants'
+import groupBy from 'lodash/groupBy'
+
+import { PARAMS_FROM_MS_GRAPH_API } from '@/backend/ms-graph/server/constants'
 import {
   GetGroupMembersRecursiveResult,
   MSGraphFilteredGroup,
   MSGraphFilteredGroupUser,
   MSGraphGroupResponse,
-} from '@backend/ms-graph/types'
-import groupBy from 'lodash/groupBy'
+} from '@/backend/ms-graph/types'
 
 /**
  * Returns an ordering score for a role, higher score means higher priority

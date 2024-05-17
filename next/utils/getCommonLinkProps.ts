@@ -1,6 +1,7 @@
-import { CommonLinkFragment } from '@backend/graphql'
-import { LinkPlausibleProps } from '@components/forms/simple-components/MLink'
 import { ReactNode } from 'react'
+
+import { CommonLinkFragment } from '@/backend/graphql'
+import { LinkPlausibleProps } from '@/components/forms/simple-components/MLink'
 
 export type CommonLinkProps = {
   children: ReactNode

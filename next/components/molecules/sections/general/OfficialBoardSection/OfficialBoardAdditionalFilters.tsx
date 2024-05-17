@@ -1,16 +1,17 @@
+import { useQuery } from '@tanstack/react-query'
+import { useTranslations } from 'next-intl'
+import React from 'react'
+
 import {
   getOfficialBoardCategoriesQueryKey,
   officialBoardCategoriesFetcher,
-} from '@backend/ginis/fetchers/officialBoardCategoriesFetcher'
-import { OfficialBoardPublicationState, ParsedOfficialBoardCategory } from '@backend/ginis/types'
+} from '@/backend/ginis/fetchers/officialBoardCategoriesFetcher'
+import { OfficialBoardPublicationState, ParsedOfficialBoardCategory } from '@/backend/ginis/types'
 import SelectField, {
   SelectItem,
-} from '@components/forms/widget-components/SelectField/SelectField'
-import { useQuery } from '@tanstack/react-query'
-import { isDefined } from '@utils/isDefined'
-import { isProductionDeployment } from '@utils/utils'
-import { useTranslations } from 'next-intl'
-import React from 'react'
+} from '@/components/forms/widget-components/SelectField/SelectField'
+import { isDefined } from '@/utils/isDefined'
+import { isProductionDeployment } from '@/utils/utils' // TODO maybe we shouldn't use czech string for values, but parse them in handler or somewhere else?
 
 // TODO maybe we shouldn't use czech string for values, but parse them in handler or somewhere else?
 type Props = {

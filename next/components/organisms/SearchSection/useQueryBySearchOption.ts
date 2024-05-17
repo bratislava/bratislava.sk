@@ -1,45 +1,46 @@
+import { keepPreviousData, useQuery } from '@tanstack/react-query'
+import { useLocale, useTranslations } from 'next-intl'
+import { ReactNode } from 'react'
+
 import {
   getOfficialBoardListQueryKey,
   officialBoardListFetcher,
   OfficialBoardListFilters,
-} from '@backend/ginis/fetchers/officialBoardListFetcher'
+} from '@/backend/ginis/fetchers/officialBoardListFetcher'
 import {
   Enum_Page_Pagecolor,
   Enum_Pagecategory_Color,
   LatestBlogPostEntityFragment,
-} from '@backend/graphql'
+} from '@/backend/graphql'
 import {
   blogPostsFetcher,
   BlogPostsFilters,
   getBlogPostsQueryKey,
-} from '@backend/meili/fetchers/blogPostsFetcherReactQuery'
+} from '@/backend/meili/fetchers/blogPostsFetcherReactQuery'
 import {
   getInbaArticlesQueryKey,
   inbaArticlesFetcher,
   InbaArticlesFilters,
-} from '@backend/meili/fetchers/inbaArticlesFetcher'
+} from '@/backend/meili/fetchers/inbaArticlesFetcher'
 import {
   getPagesQueryKey,
   pagesFetcherUseQuery,
   PagesFilters,
-} from '@backend/meili/fetchers/pagesFetcher'
+} from '@/backend/meili/fetchers/pagesFetcher'
 import {
   getRegulationsQueryKey,
   RegulationFilters,
   regulationsFetcher,
-} from '@backend/meili/fetchers/regulationsFetcher'
-import { PageMeili } from '@backend/meili/types'
+} from '@/backend/meili/fetchers/regulationsFetcher'
+import { PageMeili } from '@/backend/meili/types'
 import {
   getMsGraphSearchQueryKey,
   msGraphSearchFetcher,
-} from '@backend/ms-graph/fetchers/msGraphSearch.fetcher'
-import { SearchOption } from '@components/organisms/SearchSection/GlobalSearchSectionContent'
-import { keepPreviousData, useQuery } from '@tanstack/react-query'
-import { base64Encode } from '@utils/base64'
-import { isDefined } from '@utils/isDefined'
-import { formatDate } from '@utils/local-date'
-import { useLocale, useTranslations } from 'next-intl'
-import { ReactNode } from 'react'
+} from '@/backend/ms-graph/fetchers/msGraphSearch.fetcher'
+import { SearchOption } from '@/components/organisms/SearchSection/GlobalSearchSectionContent'
+import { base64Encode } from '@/utils/base64'
+import { isDefined } from '@/utils/isDefined'
+import { formatDate } from '@/utils/local-date'
 
 export type SearchFilters =
   | PagesFilters

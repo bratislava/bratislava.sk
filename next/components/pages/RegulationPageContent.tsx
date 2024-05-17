@@ -1,17 +1,18 @@
-import { RegulationEntityFragment } from '@backend/graphql'
 import { Typography } from '@bratislava/component-library'
-import PageHeader from '@bratislava/ui-bratislava/PageHeader/PageHeader'
-import SectionContainer from '@bratislava/ui-bratislava/SectionContainer/SectionContainer'
-import MLink from '@components/forms/simple-components/MLink'
-import FileRowCard from '@components/molecules/presentation/FileRowCard'
-import RegulationCard from '@components/molecules/presentation/RegulationCard/RegulationCard'
-import RegulationDetailMessage from '@components/molecules/presentation/RegulationCard/RegulationDetailMessage'
-import { formatFileExtension } from '@utils/formatFileExtension'
-import { formatFileSize } from '@utils/formatFileSize'
-import { isDefined } from '@utils/isDefined'
 import classNames from 'classnames'
 import { useLocale, useTranslations } from 'next-intl'
 import React, { Fragment } from 'react'
+
+import { RegulationEntityFragment } from '@/backend/graphql'
+import MLink from '@/components/forms/simple-components/MLink'
+import FileRowCard from '@/components/molecules/presentation/FileRowCard'
+import RegulationCard from '@/components/molecules/presentation/RegulationCard/RegulationCard'
+import RegulationDetailMessage from '@/components/molecules/presentation/RegulationCard/RegulationDetailMessage'
+import PageHeader from '@/components/ui/PageHeader/PageHeader'
+import SectionContainer from '@/components/ui/SectionContainer/SectionContainer'
+import { formatFileExtension } from '@/utils/formatFileExtension'
+import { formatFileSize } from '@/utils/formatFileSize'
+import { isDefined } from '@/utils/isDefined'
 
 type RegulationPageContentProps = {
   regulation: RegulationEntityFragment

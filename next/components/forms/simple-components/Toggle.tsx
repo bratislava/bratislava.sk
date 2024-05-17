@@ -4,8 +4,8 @@ import { useId } from 'react'
 import { useFocusRing, useSwitch, VisuallyHidden } from 'react-aria'
 import { useToggleState } from 'react-stately'
 
-import CheckedIcon from '../icon-components/CheckedIcon'
-import UnCheckedIcon from '../icon-components/UnCheckedIcon'
+import CheckedIcon from '@/components/forms/icon-components/CheckedIcon'
+import UnCheckedIcon from '@/components/forms/icon-components/UnCheckedIcon'
 
 type ToggleBase = {
   className?: string
@@ -27,7 +27,7 @@ const Toggle = ({ children, isDisabled = false, ...rest }: ToggleBase) => {
   const { inputProps } = useSwitch(
     { ...rest, isDisabled, children, 'aria-label': generatedOrProvidedId },
     state,
-    ref as React.MutableRefObject<null>,
+    ref,
   )
   const { focusProps } = useFocusRing()
 

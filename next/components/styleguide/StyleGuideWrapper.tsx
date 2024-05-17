@@ -1,11 +1,12 @@
+import cx from 'classnames'
+import * as React from 'react'
+import { ReactNode, useState } from 'react'
+
 import {
   ColorCategory,
   getCategoryColorLocalStyle,
   GlobalCategoryColorProvider,
-} from '@utils/colors'
-import cx from 'classnames'
-import * as React from 'react'
-import { ReactNode, useState } from 'react'
+} from '@/utils/colors'
 
 type BrandCategoryString =
   | 'Mesto Bratislava'
