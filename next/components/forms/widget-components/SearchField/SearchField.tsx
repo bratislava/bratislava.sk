@@ -1,8 +1,9 @@
-import ResetIcon from '@assets/images/forms/circle-filled-reset.svg'
-import DarkSearchIcon from '@assets/images/forms/dark-search-icon.svg'
 import cx from 'classnames'
 import { useRef, useState } from 'react'
 import { useTextField } from 'react-aria'
+
+import ResetIcon from '@/assets/images/forms/circle-filled-reset.svg'
+import DarkSearchIcon from '@/assets/images/forms/dark-search-icon.svg'
 
 import FieldErrorMessage from '../../info-components/FieldErrorMessage'
 import FieldHeader from '../../info-components/FieldHeader'

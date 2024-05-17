@@ -1,4 +1,3 @@
-import { AlertIcon, CrossIcon } from '@assets/ui-icons'
 import { client } from '@backend/graphql/gql'
 import Markdown from '@components/atoms/Markdown'
 import Button from '@components/forms/simple-components/Button'
@@ -8,6 +7,8 @@ import cx from 'classnames'
 import { useLocale } from 'next-intl'
 import React, { forwardRef, useEffect, useState } from 'react'
 import { useLocalStorage } from 'usehooks-ts'
+
+import { AlertIcon, CrossIcon } from '@/assets/ui-icons'
 
 const AlertBanner = forwardRef<HTMLDivElement>((props, forwardedRef) => {
   const locale = useLocale()

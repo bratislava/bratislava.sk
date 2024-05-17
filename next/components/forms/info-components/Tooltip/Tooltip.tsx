@@ -1,9 +1,10 @@
-import HelpIcon from '@assets/images/forms/icon-help.svg'
 import Button from '@components/forms/simple-components/Button'
 import TooltipPopup from 'components/forms/info-components/Tooltip/TooltipPopup'
 import { useTranslations } from 'next-intl'
 import { useRef, useState } from 'react'
 import { useOnClickOutside } from 'usehooks-ts'
+
+import HelpIcon from '@/assets/images/forms/icon-help.svg'
 
 type TooltipPopupBase = {
   text?: string

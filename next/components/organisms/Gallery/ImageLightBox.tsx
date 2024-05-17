@@ -1,4 +1,3 @@
-import { ArrowLeftIcon, ArrowRightIcon } from '@assets/ui-icons'
 import { UploadImageEntityFragment } from '@backend/graphql'
 import StrapiImage from '@components/atoms/StrapiImage'
 import Button from '@components/forms/simple-components/Button'
@@ -6,6 +5,8 @@ import GalleryModal, { ModalProps } from '@components/organisms/Gallery/GalleryM
 import GallerySlider from '@components/organisms/Gallery/GallerySlider'
 import { useTranslations } from 'next-intl'
 import { useEffect, useRef } from 'react'
+
+import { ArrowLeftIcon, ArrowRightIcon } from '@/assets/ui-icons'
 
 export type ImageLightBoxProps = {
   images: UploadImageEntityFragment[]

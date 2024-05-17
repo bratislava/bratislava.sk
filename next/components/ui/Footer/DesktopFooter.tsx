@@ -1,4 +1,3 @@
-import EULogo from '@assets/images/EULogo.svg'
 import { Typography } from '@bratislava/component-library'
 import Brand from '@components/ui/Brand/Brand'
 import HorizontalDivider from '@components/ui/Divider/HorizontalDivider'
@@ -13,6 +12,7 @@ import {
 import SectionContainer from '@components/ui/SectionContainer/SectionContainer'
 import * as React from 'react'
 
+import EULogo from '@/assets/images/EULogo.svg'
 import { useGeneralContext } from '@/utils/generalContext'
 import { isDefined } from '@/utils/isDefined'
 

@@ -1,10 +1,10 @@
-import { DownloadIcon } from '@assets/ui-icons'
 import { Typography } from '@bratislava/component-library'
 import MLink from '@components/forms/simple-components/MLink'
 import { useTranslations } from 'next-intl'
 import React from 'react'
 import { twMerge } from 'tailwind-merge'
 
+import { DownloadIcon } from '@/assets/ui-icons'
 import { isDefined } from '@/utils/isDefined'
 
 export type FileCardProps = {

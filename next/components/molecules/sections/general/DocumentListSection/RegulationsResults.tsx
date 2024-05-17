@@ -1,4 +1,3 @@
-import Ostatne from '@assets/images/ostatne.svg'
 import { getVznSwrKey, vznFetcher, VznFilters } from '@backend/meili/fetchers/vznFetcher'
 import { VznMeili } from '@backend/meili/types'
 import LoadingOverlay from '@components/organisms/SearchSection/LoadingOverlay'
@@ -10,6 +9,7 @@ import { SearchResponse } from 'meilisearch'
 import { useTranslations } from 'next-intl'
 import useSwr from 'swr'
 
+import Ostatne from '@/assets/images/ostatne.svg'
 import DocumentListCategorysMap from '@/utils/documentListCategory'
 import useGetSwrExtras from '@/utils/useGetSwrExtras'
 import { isPresent } from '@/utils/utils'

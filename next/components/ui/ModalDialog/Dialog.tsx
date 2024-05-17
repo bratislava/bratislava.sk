@@ -1,9 +1,10 @@
-import { CrossIcon } from '@assets/ui-icons'
 import { Typography } from '@bratislava/component-library'
 import Button from '@components/forms/simple-components/Button'
 import { useTranslations } from 'next-intl'
 import React, { forwardRef, ReactNode } from 'react'
 import { Dialog as ReactAriaDialog, DialogProps } from 'react-aria-components'
+
+import { CrossIcon } from '@/assets/ui-icons'
 
 type TitleProps = { title: string; 'aria-label'?: string } | { title?: never; 'aria-label': string }
 

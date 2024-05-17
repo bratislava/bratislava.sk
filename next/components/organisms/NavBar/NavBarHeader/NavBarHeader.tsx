@@ -1,4 +1,3 @@
-import SearchIcon from '@assets/images/search-icon.svg'
 import Brand from '@bratislava/ui-bratislava/Brand/Brand'
 import SectionContainer from '@bratislava/ui-bratislava/SectionContainer/SectionContainer'
 import Button from '@components/forms/simple-components/Button'
@@ -8,6 +7,7 @@ import SkipToContentButton from 'components/molecules/SkipToContentButton'
 import { useTranslations } from 'next-intl'
 import React from 'react'
 
+import SearchIcon from '@/assets/images/search-icon.svg'
 import { getCategoryColorLocalStyle } from '@/utils/colors'
 import { useGeneralContext } from '@/utils/generalContext'
 import { getCommonLinkProps } from '@/utils/getCommonLinkProps'

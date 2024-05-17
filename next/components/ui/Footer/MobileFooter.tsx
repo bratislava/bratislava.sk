@@ -1,4 +1,3 @@
-import EULogo from '@assets/images/EULogo.svg'
 import AccordionV2 from '@components/ui/AccordionV2/AccordionV2'
 import Brand from '@components/ui/Brand/Brand'
 import HorizontalDivider from '@components/ui/Divider/HorizontalDivider'
@@ -13,6 +12,7 @@ import {
 import SectionContainer from '@components/ui/SectionContainer/SectionContainer'
 import React, { Fragment } from 'react'
 
+import EULogo from '@/assets/images/EULogo.svg'
 import { useGeneralContext } from '@/utils/generalContext'
 import { isDefined } from '@/utils/isDefined'
 

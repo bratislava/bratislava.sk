@@ -1,4 +1,3 @@
-import { ChevronRightIcon } from '@assets/ui-icons'
 import { Enum_Page_Pagecolor, Enum_Pagecategory_Color } from '@backend/graphql'
 import { Typography } from '@bratislava/component-library'
 import Icon from '@components/atoms/icon/Icon'
@@ -10,6 +9,7 @@ import Image from 'next/image'
 import React, { Fragment } from 'react'
 import { twMerge } from 'tailwind-merge'
 
+import { ChevronRightIcon } from '@/assets/ui-icons'
 import { getCategoryColorLocalStyle } from '@/utils/colors'
 import { generateImageSizes } from '@/utils/generateImageSizes'
 import { isDefined } from '@/utils/isDefined'

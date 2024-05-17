@@ -1,5 +1,6 @@
-import SelectedIcon from '@assets/images/forms/selected.svg'
 import cx from 'classnames'
+
+import SelectedIcon from '@/assets/images/forms/selected.svg'
 
 type SelectCheckboxProps = {
   checked?: boolean

@@ -1,9 +1,10 @@
-import Checkbox from '@assets/images/checkbox.svg'
-import SearchIcon from '@assets/images/search-icon.svg'
 import Button from '@components/forms/simple-components/Button'
 import { useTranslations } from 'next-intl'
 import { Dispatch, KeyboardEventHandler, SetStateAction } from 'react'
 import { twMerge } from 'tailwind-merge'
+
+import Checkbox from '@/assets/images/checkbox.svg'
+import SearchIcon from '@/assets/images/search-icon.svg'
 
 export type AdvancedSearchProps = {
   className?: string

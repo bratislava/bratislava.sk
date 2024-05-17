@@ -1,8 +1,9 @@
-import SearchIcon from '@assets/images/search-icon.svg'
 import * as React from 'react'
+import { twMerge } from 'tailwind-merge'
+
+import SearchIcon from '@/assets/images/search-icon.svg'
 
 import Input from '../Input/Input'
-import { twMerge } from 'tailwind-merge'
 
 type SearchBarProps = React.DetailedHTMLProps<
   React.InputHTMLAttributes<HTMLInputElement>,

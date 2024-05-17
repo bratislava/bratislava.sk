@@ -1,4 +1,3 @@
-import { ChevronRightIcon } from '@assets/ui-icons'
 import { Typography } from '@bratislava/component-library'
 import ImagePlaceholder from '@components/atoms/ImagePlaceholder'
 import Markdown from '@components/atoms/Markdown'
@@ -8,6 +7,8 @@ import CardContent from '@components/molecules/presentation/CardContent'
 import Image from 'next/image'
 import { useTranslations } from 'next-intl'
 import React from 'react'
+
+import { ChevronRightIcon } from '@/assets/ui-icons'
 
 type Props = {
   title: string

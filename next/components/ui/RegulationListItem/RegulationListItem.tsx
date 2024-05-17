@@ -1,4 +1,3 @@
-import { Download } from '@assets/images'
 import { VznMeili } from '@backend/meili/types'
 import Button from '@components/forms/simple-components/Button'
 import MLink from '@components/forms/simple-components/MLink'
@@ -8,6 +7,8 @@ import Modal from '@components/ui/ModalDialog/Modal'
 import { useTranslations } from 'next-intl'
 import React, { FunctionComponent, SVGProps } from 'react'
 import { DialogTrigger } from 'react-aria-components'
+
+import { Download } from '@/assets/images'
 
 type RegulationListItemProps = {
   categoryName: string

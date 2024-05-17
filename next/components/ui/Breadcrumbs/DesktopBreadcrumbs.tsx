@@ -1,9 +1,10 @@
-import BreadcrumbsChevronIcon from '@assets/images/breadcrumbs-chevron.svg'
-import BreadcrumbsHomeIcon from '@assets/images/breadcrumbs-home.svg'
 import MLink from '@components/forms/simple-components/MLink'
 import type { BreadcrumbsProps } from '@components/ui/Breadcrumbs/Breadcrumbs'
 import { useTranslations } from 'next-intl'
 import React from 'react'
+
+import BreadcrumbsChevronIcon from '@/assets/images/breadcrumbs-chevron.svg'
+import BreadcrumbsHomeIcon from '@/assets/images/breadcrumbs-home.svg'
 
 /**
  * Figma: https://www.figma.com/file/17wbd0MDQcMW9NbXl6UPs8/DS-ESBS%3A-Component-library?node-id=821-1994&t=pIPe0xK0FBdmOKH1-0
