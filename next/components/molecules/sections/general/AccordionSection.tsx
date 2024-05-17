@@ -12,7 +12,7 @@ import {
   Enum_Componentsectionsfilelist_Variant,
 } from '@/services/graphql'
 import { isDefined } from '@/utils/isDefined'
-import { groupByCategory, parsePageLink } from '@/utils/page'
+import { groupByCategory, parsePageLink } from '@/utils/pageUtils_Deprecated'
 import { isPresent } from '@/utils/utils'
 
 type AccordionSectionProps = {

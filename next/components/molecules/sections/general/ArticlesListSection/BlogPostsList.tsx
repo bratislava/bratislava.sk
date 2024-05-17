@@ -14,8 +14,8 @@ import {
   getBlogPostsQueryKey,
 } from '@/services/meili/fetchers/blogPostsFetcher'
 import { getCategoryColorLocalStyle } from '@/utils/colors'
+import { getNumericLocalDate } from '@/utils/formatDate'
 import { generateImageSizes } from '@/utils/generateImageSizes'
-import { getNumericLocalDate } from '@/utils/local-date'
 import { useRoutePreservedState } from '@/utils/useRoutePreservedState'
 
 const imageSizes = generateImageSizes({ default: '100vw', md: '50vw', lg: '33vw' })

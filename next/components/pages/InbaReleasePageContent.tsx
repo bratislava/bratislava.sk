@@ -14,12 +14,12 @@ import NarrowText from '@/components/ui/NarrowText/NarrowText'
 import PageHeader from '@/components/ui/PageHeader/PageHeader'
 import SectionContainer from '@/components/ui/SectionContainer/SectionContainer'
 import { InbaReleaseEntityFragment } from '@/services/graphql'
+import { formatDate } from '@/utils/formatDate'
 import { formatFileExtension } from '@/utils/formatFileExtension'
 import { formatFileSize } from '@/utils/formatFileSize'
 import { useGeneralContext } from '@/utils/generalContext'
 import { isDefined } from '@/utils/isDefined'
-import { formatDate } from '@/utils/local-date'
-import { getPageBreadcrumbs } from '@/utils/page'
+import { getPageBreadcrumbs } from '@/utils/pageUtils_Deprecated'
 
 export type InbaReleasePageContentProps = {
   inbaRelease: InbaReleaseEntityFragment

@@ -10,9 +10,9 @@ import NarrowText from '@/components/ui/NarrowText/NarrowText'
 import PageHeader from '@/components/ui/PageHeader/PageHeader'
 import SectionContainer from '@/components/ui/SectionContainer/SectionContainer'
 import { InbaArticleEntityFragment } from '@/services/graphql'
+import { formatDate, getNumericLocalDate } from '@/utils/formatDate'
 import { useGeneralContext } from '@/utils/generalContext'
-import { formatDate, getNumericLocalDate } from '@/utils/local-date'
-import { getPageBreadcrumbs } from '@/utils/page'
+import { getPageBreadcrumbs } from '@/utils/pageUtils_Deprecated'
 
 export type InbaArticlePageContentProps = {
   inbaArticle: InbaArticleEntityFragment

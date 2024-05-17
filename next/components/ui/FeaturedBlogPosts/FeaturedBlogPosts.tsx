@@ -7,8 +7,8 @@ import BlogPostImageCard from '@/components/molecules/presentation/BlogPostImage
 import ResponsiveCarousel from '@/components/organisms/Carousel/ResponsiveCarousel'
 import { LatestBlogPostEntityFragment } from '@/services/graphql'
 import { getCategoryColorLocalStyle } from '@/utils/colors'
+import { getNumericLocalDate } from '@/utils/formatDate'
 import { generateImageSizes } from '@/utils/generateImageSizes'
-import { getNumericLocalDate } from '@/utils/local-date'
 
 export type FeaturedBlogPostsProps = {
   blogPosts: LatestBlogPostEntityFragment[]

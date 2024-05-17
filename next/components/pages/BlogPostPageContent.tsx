@@ -8,9 +8,9 @@ import ShareButtons from '@/components/molecules/ShareButtons'
 import { Breadcrumb } from '@/components/ui/Breadcrumbs/Breadcrumbs'
 import PageHeader from '@/components/ui/PageHeader/PageHeader'
 import { BlogPostEntityFragment } from '@/services/graphql'
+import { getNumericLocalDate } from '@/utils/formatDate'
 import { useGeneralContext } from '@/utils/generalContext'
-import { getNumericLocalDate } from '@/utils/local-date'
-import { getPageBreadcrumbs } from '@/utils/page'
+import { getPageBreadcrumbs } from '@/utils/pageUtils_Deprecated'
 
 // TODO split this into separate file
 export const SocialMediaButton = ({

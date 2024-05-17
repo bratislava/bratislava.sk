@@ -14,9 +14,9 @@ import {
   officialBoardListFetcher,
 } from '@/services/ginis/fetchers/officialBoardListFetcher'
 import { base64Encode } from '@/utils/base64'
+import { formatDate } from '@/utils/formatDate'
 import { getCommonLinkProps } from '@/utils/getCommonLinkProps'
 import { useHomepageContext } from '@/utils/homepageContext'
-import { formatDate } from '@/utils/local-date'
 
 const TabPanelOfficialBoard = () => {
   const { homepage } = useHomepageContext()

@@ -7,7 +7,7 @@ import RelatedBlogPostsSection from '@/components/molecules/sections/general/Rel
 import PageHeader from '@/components/ui/PageHeader/PageHeader'
 import { PageEntityFragment } from '@/services/graphql'
 import { isDefined } from '@/utils/isDefined'
-import { getPageBreadcrumbs } from '@/utils/page'
+import { getPageBreadcrumbs } from '@/utils/pageUtils_Deprecated'
 
 export type GeneralPageProps = {
   page: PageEntityFragment

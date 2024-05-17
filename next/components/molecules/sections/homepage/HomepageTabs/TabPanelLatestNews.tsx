@@ -9,11 +9,11 @@ import Tag from '@/components/forms/simple-components/Tag'
 import BlogPostCard from '@/components/molecules/presentation/BlogPostCard'
 import ResponsiveCarousel from '@/components/organisms/Carousel/ResponsiveCarousel'
 import { getCategoryColorLocalStyle } from '@/utils/colors'
+import { getNumericLocalDate } from '@/utils/formatDate'
 import { generateImageSizes } from '@/utils/generateImageSizes'
 import { getCommonLinkProps } from '@/utils/getCommonLinkProps'
 import { useHomepageContext } from '@/utils/homepageContext'
 import { isDefined } from '@/utils/isDefined'
-import { getNumericLocalDate } from '@/utils/local-date'
 
 const imageSizes = generateImageSizes({ default: '50vw', lg: '33vw' })
 

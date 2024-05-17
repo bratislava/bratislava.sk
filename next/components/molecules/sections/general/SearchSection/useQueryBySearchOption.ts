@@ -39,8 +39,8 @@ import {
   msGraphSearchFetcher,
 } from '@/services/ms-graph/fetchers/msGraphSearch.fetcher'
 import { base64Encode } from '@/utils/base64'
+import { formatDate } from '@/utils/formatDate'
 import { isDefined } from '@/utils/isDefined'
-import { formatDate } from '@/utils/local-date'
 
 export type SearchFilters =
   | PagesFilters

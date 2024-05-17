@@ -12,9 +12,9 @@ import {
   relatedBlogPostsFetcher,
 } from '@/services/graphql/fetchers/relatedBlogPosts.fetcher'
 import { getCategoryColorLocalStyle } from '@/utils/colors'
+import { getNumericLocalDate } from '@/utils/formatDate'
 import { generateImageSizes } from '@/utils/generateImageSizes'
 import { isDefined } from '@/utils/isDefined'
-import { getNumericLocalDate } from '@/utils/local-date'
 
 type Props = {
   page: PageEntityFragment

@@ -9,6 +9,8 @@ import {
   PageParentPagesFragment,
 } from '@/services/graphql'
 
+// TODO this should be thrown away
+
 export const localePath = (locale: string, slug: string) => {
   // Special case for slovak homepage, so it is not empty string
   if (locale === 'sk' && slug === '') return '/'
