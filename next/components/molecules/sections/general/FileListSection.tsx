@@ -2,7 +2,7 @@ import React from 'react'
 
 import FileList from '@/components/ui/FileList/FileList'
 import { Enum_Componentsectionsfilelist_Variant, FileListSectionFragment } from '@/services/graphql'
-import { groupByCategoryFileList } from '@/utils/page'
+import { groupByCategoryFileList } from '@/utils/pageUtils_Deprecated'
 import { isPresent } from '@/utils/utils'
 
 type FileListSectionProps = {

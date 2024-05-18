@@ -4,9 +4,9 @@ import React from 'react'
 import FileCard, { FileCardProps } from '@/components/molecules/presentation/FileCard'
 import FileRowCard from '@/components/molecules/presentation/FileRowCard'
 import { FileItemBlockFragment } from '@/services/graphql'
+import { formatDate } from '@/utils/formatDate'
 import { formatFileExtension } from '@/utils/formatFileExtension'
 import { formatFileSize } from '@/utils/formatFileSize'
-import { formatDate } from '@/utils/local-date'
 import { useGetDownloadAriaLabel } from '@/utils/useGetDownloadAriaLabel'
 
 export type FileCardWrapperProps = {

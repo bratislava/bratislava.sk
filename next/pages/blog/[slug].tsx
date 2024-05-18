@@ -3,7 +3,7 @@ import Head from 'next/head'
 import * as React from 'react'
 
 import PageLayout from '@/components/layouts/PageLayout'
-import BlogPostPageContentTmp from '@/components/pages/BlogPostPageContentTmp'
+import BlogPostPageContent from '@/components/pages/BlogPostPageContent'
 import { BlogPostEntityFragment, GeneralQuery } from '@/services/graphql'
 import { client } from '@/services/graphql/gql'
 import { GlobalCategoryColorProvider } from '@/utils/colors'
@@ -86,7 +86,7 @@ const Page = ({ general, blogPost }: PageProps) => {
         color={blogPost?.attributes?.tag?.data?.attributes?.pageCategory?.data?.attributes?.color}
       />
       <PageLayout>
-        <BlogPostPageContentTmp blogPost={blogPost} />
+        <BlogPostPageContent blogPost={blogPost} />
       </PageLayout>
     </GeneralContextProvider>
   )

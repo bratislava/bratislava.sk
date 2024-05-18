@@ -10,7 +10,7 @@ import {
   inbaReleasesDefaultFilters,
   inbaReleasesFetcher,
 } from '@/services/graphql/fetchers/inbaReleases.fetcher'
-import { formatDate } from '@/utils/local-date'
+import { formatDate } from '@/utils/formatDate'
 
 type Props = { section: InbaReleasesSectionFragment }
 

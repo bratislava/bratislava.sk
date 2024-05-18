@@ -2,7 +2,7 @@ import React from 'react'
 
 import Links from '@/components/ui/Links/Links'
 import { LinksSectionFragment } from '@/services/graphql'
-import { parsePageLink } from '@/utils/page'
+import { parsePageLink } from '@/utils/pageUtils_Deprecated'
 import { isPresent } from '@/utils/utils'
 
 type LinksSectionProps = {

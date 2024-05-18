@@ -6,8 +6,8 @@ import BlogPostHorizontalCard from '@/components/molecules/presentation/BlogPost
 import BlogPostImageCard from '@/components/molecules/presentation/BlogPostImageCard'
 import ResponsiveCarousel from '@/components/organisms/Carousel/ResponsiveCarousel'
 import { InbaArticleEntityFragment } from '@/services/graphql'
+import { getNumericLocalDate } from '@/utils/formatDate'
 import { generateImageSizes } from '@/utils/generateImageSizes'
-import { getNumericLocalDate } from '@/utils/local-date'
 
 export type InbaFeaturedArticlesProps = {
   articles: InbaArticleEntityFragment[]

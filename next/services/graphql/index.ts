@@ -1130,19 +1130,6 @@ export type ComponentSectionsDivider = {
   style?: Maybe<Enum_Componentsectionsdivider_Style>
 }
 
-export type ComponentSectionsDocumentList = {
-  __typename?: 'ComponentSectionsDocumentList'
-  id: Scalars['ID']['output']
-  vzns?: Maybe<VznRelationResponseCollection>
-}
-
-export type ComponentSectionsDocumentListVznsArgs = {
-  filters?: InputMaybe<VznFiltersInput>
-  pagination?: InputMaybe<PaginationArg>
-  publicationState?: InputMaybe<PublicationState>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
-}
-
 export type ComponentSectionsFeaturedBlogPosts = {
   __typename?: 'ComponentSectionsFeaturedBlogPosts'
   first_blog?: Maybe<BlogPostEntityResponse>
@@ -2032,7 +2019,6 @@ export type GenericMorph =
   | ComponentSectionsComparisonSection
   | ComponentSectionsContactsSection
   | ComponentSectionsDivider
-  | ComponentSectionsDocumentList
   | ComponentSectionsFeaturedBlogPosts
   | ComponentSectionsFileList
   | ComponentSectionsGallery
@@ -3208,7 +3194,6 @@ export type PageSectionsDynamicZone =
   | ComponentSectionsComparisonSection
   | ComponentSectionsContactsSection
   | ComponentSectionsDivider
-  | ComponentSectionsDocumentList
   | ComponentSectionsFeaturedBlogPosts
   | ComponentSectionsFileList
   | ComponentSectionsGallery
@@ -4221,11 +4206,6 @@ export type VznInput = {
   publishedAt?: InputMaybe<Scalars['DateTime']['input']>
   title?: InputMaybe<Scalars['String']['input']>
   validFrom?: InputMaybe<Scalars['Date']['input']>
-}
-
-export type VznRelationResponseCollection = {
-  __typename?: 'VznRelationResponseCollection'
-  data: Array<VznEntity>
 }
 
 export type BlogPostBySlugQueryVariables = Exact<{
@@ -8413,99 +8393,6 @@ export type PageBySlugQuery = {
               style?: Enum_Componentsectionsdivider_Style | null
             }
           | {
-              __typename: 'ComponentSectionsDocumentList'
-              vzns?: {
-                __typename?: 'VznRelationResponseCollection'
-                data: Array<{
-                  __typename?: 'VznEntity'
-                  id?: string | null
-                  attributes?: {
-                    __typename?: 'Vzn'
-                    category?: Enum_Vzn_Category | null
-                    details?: string | null
-                    title?: string | null
-                    validFrom?: any | null
-                    amedmentDocument?: Array<{
-                      __typename?: 'ComponentBlocksDocListExtensions'
-                      id: string
-                      title?: string | null
-                      validFrom?: any | null
-                      document?: {
-                        __typename?: 'UploadFileEntityResponse'
-                        data?: {
-                          __typename?: 'UploadFileEntity'
-                          id?: string | null
-                          attributes?: {
-                            __typename?: 'UploadFile'
-                            url: string
-                            name: string
-                            ext?: string | null
-                            size: number
-                            createdAt?: any | null
-                            updatedAt?: any | null
-                          } | null
-                        } | null
-                      } | null
-                    } | null> | null
-                    cancellationDocument?: Array<{
-                      __typename?: 'ComponentBlocksDocListExtensions'
-                      id: string
-                      title?: string | null
-                      validFrom?: any | null
-                      document?: {
-                        __typename?: 'UploadFileEntityResponse'
-                        data?: {
-                          __typename?: 'UploadFileEntity'
-                          id?: string | null
-                          attributes?: {
-                            __typename?: 'UploadFile'
-                            url: string
-                            name: string
-                            ext?: string | null
-                            size: number
-                            createdAt?: any | null
-                            updatedAt?: any | null
-                          } | null
-                        } | null
-                      } | null
-                    } | null> | null
-                    mainDocument?: {
-                      __typename?: 'UploadFileEntityResponse'
-                      data?: {
-                        __typename?: 'UploadFileEntity'
-                        id?: string | null
-                        attributes?: {
-                          __typename?: 'UploadFile'
-                          url: string
-                          name: string
-                          ext?: string | null
-                          size: number
-                          createdAt?: any | null
-                          updatedAt?: any | null
-                        } | null
-                      } | null
-                    } | null
-                    consolidatedText?: {
-                      __typename?: 'UploadFileEntityResponse'
-                      data?: {
-                        __typename?: 'UploadFileEntity'
-                        id?: string | null
-                        attributes?: {
-                          __typename?: 'UploadFile'
-                          url: string
-                          name: string
-                          ext?: string | null
-                          size: number
-                          createdAt?: any | null
-                          updatedAt?: any | null
-                        } | null
-                      } | null
-                    } | null
-                  } | null
-                }>
-              } | null
-            }
-          | {
               __typename: 'ComponentSectionsFeaturedBlogPosts'
               id: string
               first_blog?: {
@@ -9566,99 +9453,6 @@ export type PageEntityFragment = {
           __typename: 'ComponentSectionsDivider'
           hasBackground?: boolean | null
           style?: Enum_Componentsectionsdivider_Style | null
-        }
-      | {
-          __typename: 'ComponentSectionsDocumentList'
-          vzns?: {
-            __typename?: 'VznRelationResponseCollection'
-            data: Array<{
-              __typename?: 'VznEntity'
-              id?: string | null
-              attributes?: {
-                __typename?: 'Vzn'
-                category?: Enum_Vzn_Category | null
-                details?: string | null
-                title?: string | null
-                validFrom?: any | null
-                amedmentDocument?: Array<{
-                  __typename?: 'ComponentBlocksDocListExtensions'
-                  id: string
-                  title?: string | null
-                  validFrom?: any | null
-                  document?: {
-                    __typename?: 'UploadFileEntityResponse'
-                    data?: {
-                      __typename?: 'UploadFileEntity'
-                      id?: string | null
-                      attributes?: {
-                        __typename?: 'UploadFile'
-                        url: string
-                        name: string
-                        ext?: string | null
-                        size: number
-                        createdAt?: any | null
-                        updatedAt?: any | null
-                      } | null
-                    } | null
-                  } | null
-                } | null> | null
-                cancellationDocument?: Array<{
-                  __typename?: 'ComponentBlocksDocListExtensions'
-                  id: string
-                  title?: string | null
-                  validFrom?: any | null
-                  document?: {
-                    __typename?: 'UploadFileEntityResponse'
-                    data?: {
-                      __typename?: 'UploadFileEntity'
-                      id?: string | null
-                      attributes?: {
-                        __typename?: 'UploadFile'
-                        url: string
-                        name: string
-                        ext?: string | null
-                        size: number
-                        createdAt?: any | null
-                        updatedAt?: any | null
-                      } | null
-                    } | null
-                  } | null
-                } | null> | null
-                mainDocument?: {
-                  __typename?: 'UploadFileEntityResponse'
-                  data?: {
-                    __typename?: 'UploadFileEntity'
-                    id?: string | null
-                    attributes?: {
-                      __typename?: 'UploadFile'
-                      url: string
-                      name: string
-                      ext?: string | null
-                      size: number
-                      createdAt?: any | null
-                      updatedAt?: any | null
-                    } | null
-                  } | null
-                } | null
-                consolidatedText?: {
-                  __typename?: 'UploadFileEntityResponse'
-                  data?: {
-                    __typename?: 'UploadFileEntity'
-                    id?: string | null
-                    attributes?: {
-                      __typename?: 'UploadFile'
-                      url: string
-                      name: string
-                      ext?: string | null
-                      size: number
-                      createdAt?: any | null
-                      updatedAt?: any | null
-                    } | null
-                  } | null
-                } | null
-              } | null
-            }>
-          } | null
         }
       | {
           __typename: 'ComponentSectionsFeaturedBlogPosts'
@@ -11276,100 +11070,6 @@ export type IconTitleDescriptionBlockFragment = {
   } | null
 }
 
-export type DocumentListSectionFragment = {
-  __typename?: 'ComponentSectionsDocumentList'
-  vzns?: {
-    __typename?: 'VznRelationResponseCollection'
-    data: Array<{
-      __typename?: 'VznEntity'
-      id?: string | null
-      attributes?: {
-        __typename?: 'Vzn'
-        category?: Enum_Vzn_Category | null
-        details?: string | null
-        title?: string | null
-        validFrom?: any | null
-        amedmentDocument?: Array<{
-          __typename?: 'ComponentBlocksDocListExtensions'
-          id: string
-          title?: string | null
-          validFrom?: any | null
-          document?: {
-            __typename?: 'UploadFileEntityResponse'
-            data?: {
-              __typename?: 'UploadFileEntity'
-              id?: string | null
-              attributes?: {
-                __typename?: 'UploadFile'
-                url: string
-                name: string
-                ext?: string | null
-                size: number
-                createdAt?: any | null
-                updatedAt?: any | null
-              } | null
-            } | null
-          } | null
-        } | null> | null
-        cancellationDocument?: Array<{
-          __typename?: 'ComponentBlocksDocListExtensions'
-          id: string
-          title?: string | null
-          validFrom?: any | null
-          document?: {
-            __typename?: 'UploadFileEntityResponse'
-            data?: {
-              __typename?: 'UploadFileEntity'
-              id?: string | null
-              attributes?: {
-                __typename?: 'UploadFile'
-                url: string
-                name: string
-                ext?: string | null
-                size: number
-                createdAt?: any | null
-                updatedAt?: any | null
-              } | null
-            } | null
-          } | null
-        } | null> | null
-        mainDocument?: {
-          __typename?: 'UploadFileEntityResponse'
-          data?: {
-            __typename?: 'UploadFileEntity'
-            id?: string | null
-            attributes?: {
-              __typename?: 'UploadFile'
-              url: string
-              name: string
-              ext?: string | null
-              size: number
-              createdAt?: any | null
-              updatedAt?: any | null
-            } | null
-          } | null
-        } | null
-        consolidatedText?: {
-          __typename?: 'UploadFileEntityResponse'
-          data?: {
-            __typename?: 'UploadFileEntity'
-            id?: string | null
-            attributes?: {
-              __typename?: 'UploadFile'
-              url: string
-              name: string
-              ext?: string | null
-              size: number
-              createdAt?: any | null
-              updatedAt?: any | null
-            } | null
-          } | null
-        } | null
-      } | null
-    }>
-  } | null
-}
-
 export type GalleryItemBlockFragment = {
   __typename?: 'ComponentBlocksGalleryItem'
   imgTitle?: string | null
@@ -12649,100 +12349,6 @@ type Sections_ComponentSectionsDivider_Fragment = {
   style?: Enum_Componentsectionsdivider_Style | null
 }
 
-type Sections_ComponentSectionsDocumentList_Fragment = {
-  __typename: 'ComponentSectionsDocumentList'
-  vzns?: {
-    __typename?: 'VznRelationResponseCollection'
-    data: Array<{
-      __typename?: 'VznEntity'
-      id?: string | null
-      attributes?: {
-        __typename?: 'Vzn'
-        category?: Enum_Vzn_Category | null
-        details?: string | null
-        title?: string | null
-        validFrom?: any | null
-        amedmentDocument?: Array<{
-          __typename?: 'ComponentBlocksDocListExtensions'
-          id: string
-          title?: string | null
-          validFrom?: any | null
-          document?: {
-            __typename?: 'UploadFileEntityResponse'
-            data?: {
-              __typename?: 'UploadFileEntity'
-              id?: string | null
-              attributes?: {
-                __typename?: 'UploadFile'
-                url: string
-                name: string
-                ext?: string | null
-                size: number
-                createdAt?: any | null
-                updatedAt?: any | null
-              } | null
-            } | null
-          } | null
-        } | null> | null
-        cancellationDocument?: Array<{
-          __typename?: 'ComponentBlocksDocListExtensions'
-          id: string
-          title?: string | null
-          validFrom?: any | null
-          document?: {
-            __typename?: 'UploadFileEntityResponse'
-            data?: {
-              __typename?: 'UploadFileEntity'
-              id?: string | null
-              attributes?: {
-                __typename?: 'UploadFile'
-                url: string
-                name: string
-                ext?: string | null
-                size: number
-                createdAt?: any | null
-                updatedAt?: any | null
-              } | null
-            } | null
-          } | null
-        } | null> | null
-        mainDocument?: {
-          __typename?: 'UploadFileEntityResponse'
-          data?: {
-            __typename?: 'UploadFileEntity'
-            id?: string | null
-            attributes?: {
-              __typename?: 'UploadFile'
-              url: string
-              name: string
-              ext?: string | null
-              size: number
-              createdAt?: any | null
-              updatedAt?: any | null
-            } | null
-          } | null
-        } | null
-        consolidatedText?: {
-          __typename?: 'UploadFileEntityResponse'
-          data?: {
-            __typename?: 'UploadFileEntity'
-            id?: string | null
-            attributes?: {
-              __typename?: 'UploadFile'
-              url: string
-              name: string
-              ext?: string | null
-              size: number
-              createdAt?: any | null
-              updatedAt?: any | null
-            } | null
-          } | null
-        } | null
-      } | null
-    }>
-  } | null
-}
-
 type Sections_ComponentSectionsFeaturedBlogPosts_Fragment = {
   __typename: 'ComponentSectionsFeaturedBlogPosts'
   id: string
@@ -13351,7 +12957,6 @@ export type SectionsFragment =
   | Sections_ComponentSectionsComparisonSection_Fragment
   | Sections_ComponentSectionsContactsSection_Fragment
   | Sections_ComponentSectionsDivider_Fragment
-  | Sections_ComponentSectionsDocumentList_Fragment
   | Sections_ComponentSectionsFeaturedBlogPosts_Fragment
   | Sections_ComponentSectionsFileList_Fragment
   | Sections_ComponentSectionsGallery_Fragment
@@ -13551,65 +13156,6 @@ export const IconTitleDescSectionFragmentDoc = gql`
   }
   ${IconTitleDescriptionBlockFragmentDoc}
 `
-export const UploadFileEntityFragmentDoc = gql`
-  fragment UploadFileEntity on UploadFileEntity {
-    id
-    attributes {
-      url
-      name
-      ext
-      size
-      createdAt
-      updatedAt
-    }
-  }
-`
-export const DocumentListSectionFragmentDoc = gql`
-  fragment DocumentListSection on ComponentSectionsDocumentList {
-    vzns {
-      data {
-        id
-        attributes {
-          category
-          details
-          amedmentDocument {
-            id
-            title
-            validFrom
-            document {
-              data {
-                ...UploadFileEntity
-              }
-            }
-          }
-          cancellationDocument {
-            id
-            title
-            validFrom
-            document {
-              data {
-                ...UploadFileEntity
-              }
-            }
-          }
-          title
-          validFrom
-          mainDocument {
-            data {
-              ...UploadFileEntity
-            }
-          }
-          consolidatedText {
-            data {
-              ...UploadFileEntity
-            }
-          }
-        }
-      }
-    }
-  }
-  ${UploadFileEntityFragmentDoc}
-`
 export const DividerSectionFragmentDoc = gql`
   fragment DividerSection on ComponentSectionsDivider {
     hasBackground
@@ -13692,6 +13238,19 @@ export const GallerySectionFragmentDoc = gql`
   }
   ${UploadImageEntityFragmentDoc}
   ${GalleryItemBlockFragmentDoc}
+`
+export const UploadFileEntityFragmentDoc = gql`
+  fragment UploadFileEntity on UploadFileEntity {
+    id
+    attributes {
+      url
+      name
+      ext
+      size
+      createdAt
+      updatedAt
+    }
+  }
 `
 export const FileBlockFragmentDoc = gql`
   fragment FileBlock on ComponentBlocksFile {
@@ -14313,9 +13872,6 @@ export const SectionsFragmentDoc = gql`
     ... on ComponentSectionsIconTitleDesc {
       ...IconTitleDescSection
     }
-    ... on ComponentSectionsDocumentList {
-      ...DocumentListSection
-    }
     ... on ComponentSectionsDivider {
       ...DividerSection
     }
@@ -14402,7 +13958,6 @@ export const SectionsFragmentDoc = gql`
     }
   }
   ${IconTitleDescSectionFragmentDoc}
-  ${DocumentListSectionFragmentDoc}
   ${DividerSectionFragmentDoc}
   ${TextWithImageSectionFragmentDoc}
   ${IframeSectionFragmentDoc}

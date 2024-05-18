@@ -9,50 +9,6 @@ fragment IconTitleDescriptionBlock on ComponentBlocksIconWithTitleAndDescription
   }
 }
 
-fragment DocumentListSection on ComponentSectionsDocumentList {
-  vzns {
-    data {
-      id
-      attributes {
-        category
-        details
-        amedmentDocument {
-          id
-          title
-          validFrom
-          document {
-            data {
-              ...UploadFileEntity
-            }
-          }
-        }
-        cancellationDocument {
-          id
-          title
-          validFrom
-          document {
-            data {
-              ...UploadFileEntity
-            }
-          }
-        }
-        title
-        validFrom
-        mainDocument {
-          data {
-            ...UploadFileEntity
-          }
-        }
-        consolidatedText {
-          data {
-            ...UploadFileEntity
-          }
-        }
-      }
-    }
-  }
-}
-
 fragment GalleryItemBlock on ComponentBlocksGalleryItem {
   imgTitle
   imgSubtitle
@@ -493,10 +449,6 @@ fragment Sections on PageSectionsDynamicZone {
 
   ... on ComponentSectionsIconTitleDesc {
     ...IconTitleDescSection
-  }
-
-  ... on ComponentSectionsDocumentList {
-    ...DocumentListSection
   }
 
   ... on ComponentSectionsDivider {

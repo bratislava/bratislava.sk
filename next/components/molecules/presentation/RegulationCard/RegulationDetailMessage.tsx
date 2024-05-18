@@ -4,8 +4,8 @@ import React, { Fragment } from 'react'
 import Alert from '@/components/forms/info-components/Alert'
 import MLink from '@/components/forms/simple-components/MLink'
 import { RegulationEntityFragment } from '@/services/graphql'
+import { formatDate } from '@/utils/formatDate'
 import { isDefined } from '@/utils/isDefined'
-import { formatDate } from '@/utils/local-date'
 
 type RegulationDetailMessageProps = {
   regulation: RegulationEntityFragment

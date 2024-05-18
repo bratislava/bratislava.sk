@@ -7,12 +7,11 @@ import BlogPostsByTags from '@/components/molecules/sections/general/ArticlesLis
 import BlogPostsList from '@/components/molecules/sections/general/ArticlesListSection/BlogPostsList'
 import InbaArticlesList from '@/components/molecules/sections/general/ArticlesListSection/InbaArticlesList'
 import BannerSection from '@/components/molecules/sections/general/BannerSection'
-import CalculatorSection from '@/components/molecules/sections/general/CalculatorSection/CalculatorSection'
+import CalculatorSection from '@/components/molecules/sections/general/CalculatorSection_Deprecated/CalculatorSection_Deprecated'
 import ColumnedTextSection from '@/components/molecules/sections/general/ColumnedTextSection'
 import ComparisonSection from '@/components/molecules/sections/general/ComparisonSection'
 import ContactsSection from '@/components/molecules/sections/general/ContactsSection'
 import DividerSection from '@/components/molecules/sections/general/DividerSection'
-import DocumentListSection from '@/components/molecules/sections/general/DocumentListSection/DocumentListSection'
 import FeaturedBlogPostsSection from '@/components/molecules/sections/general/FeaturedBlogPostsSection'
 import FileListSection from '@/components/molecules/sections/general/FileListSection'
 import GallerySection from '@/components/molecules/sections/general/GallerySection'
@@ -42,9 +41,6 @@ const SectionContent = ({ section }: { section: SectionsFragment }) => {
 
     case 'ComponentSectionsIconTitleDesc':
       return <IconTitleDescSection section={section} />
-
-    case 'ComponentSectionsDocumentList':
-      return <DocumentListSection />
 
     case 'ComponentSectionsColumnedText':
       return <ColumnedTextSection section={section} />

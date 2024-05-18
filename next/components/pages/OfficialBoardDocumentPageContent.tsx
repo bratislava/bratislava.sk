@@ -7,7 +7,7 @@ import FileRowCard from '@/components/molecules/presentation/FileRowCard'
 import PageHeader from '@/components/ui/PageHeader/PageHeader'
 import SectionContainer from '@/components/ui/SectionContainer/SectionContainer'
 import { ParsedOfficialBoardDocumentDetail } from '@/services/ginis/types'
-import { formatDate } from '@/utils/local-date'
+import { formatDate } from '@/utils/formatDate'
 
 type OfficialBoardDocumentPageContentProps = {
   document: ParsedOfficialBoardDocumentDetail

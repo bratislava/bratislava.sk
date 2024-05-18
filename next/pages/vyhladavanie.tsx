@@ -4,7 +4,7 @@ import { useTranslations } from 'next-intl'
 import * as React from 'react'
 
 import PageLayout from '@/components/layouts/PageLayout'
-import GlobalSearchSectionContent from '@/components/organisms/SearchSection/GlobalSearchSectionContent'
+import GlobalSearchSectionContent from '@/components/molecules/sections/general/SearchSection/GlobalSearchSectionContent'
 import { LocalizationsProvider } from '@/components/providers/LocalizationsProvider'
 import PageHeader from '@/components/ui/PageHeader/PageHeader'
 import SectionContainer from '@/components/ui/SectionContainer/SectionContainer'

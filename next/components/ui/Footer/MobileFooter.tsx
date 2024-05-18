@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 
 import EULogo from '@/assets/images/EULogo.svg'
-import AccordionV2 from '@/components/ui/AccordionV2/AccordionV2'
+import Accordion from '@/components/ui/Accordion/Accordion'
 import Brand from '@/components/ui/Brand/Brand'
 import HorizontalDivider from '@/components/ui/Divider/HorizontalDivider'
 import {
@@ -42,11 +42,11 @@ const MobileFooter = () => {
           {attributes.columns?.filter(isDefined).map((column, index) => (
             // eslint-disable-next-line react/no-array-index-key
             <Fragment key={index}>
-              <AccordionV2 variant="footer" title={column.title}>
+              <Accordion variant="footer" title={column.title}>
                 <div className="flex flex-col gap-3">
                   <FooterColumnLinks {...column} />
                 </div>
-              </AccordionV2>
+              </Accordion>
               <HorizontalDivider />
             </Fragment>
           ))}

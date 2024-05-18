@@ -1,6 +1,6 @@
 import React from 'react'
 
-import OrganizationalStructure from '@/components/molecules/OrganizationalStructure/OrganizationalStructure'
+import OrganizationalStructure from '@/components/ui/OrganizationalStructure_Deprecated/OrganizationalStructure_Deprecated'
 import { OrganizationalStructureSectionFragment } from '@/services/graphql'
 
 type OrganizationalStructureSectionProps = {

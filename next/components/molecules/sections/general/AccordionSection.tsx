@@ -3,16 +3,16 @@ import React from 'react'
 
 import Markdown from '@/components/atoms/Markdown'
 import Button from '@/components/forms/simple-components/Button'
-import AccordionV2 from '@/components/ui/AccordionV2/AccordionV2'
+import Accordion from '@/components/ui/Accordion/Accordion'
 import FileList from '@/components/ui/FileList/FileList'
-import Institution from '@/components/ui/Institution/Institution'
+import Institution from '@/components/ui/Institution_Deprecated/Institution_Deprecated'
 import NarrowText from '@/components/ui/NarrowText/NarrowText'
 import {
   AccordionSectionFragment,
   Enum_Componentsectionsfilelist_Variant,
 } from '@/services/graphql'
 import { isDefined } from '@/utils/isDefined'
-import { groupByCategory, parsePageLink } from '@/utils/page'
+import { groupByCategory, parsePageLink } from '@/utils/pageUtils_Deprecated'
 import { isPresent } from '@/utils/utils'
 
 type AccordionSectionProps = {
@@ -30,7 +30,7 @@ const AccordionSection = ({ section }: AccordionSectionProps) => {
       <div className="flex flex-col gap-4">
         {groupByCategory(section.institutions?.filter(isPresent) ?? []).map(
           (institution, index) => (
-            <AccordionV2
+            <Accordion
               // eslint-disable-next-line react/no-array-index-key
               key={`institution-${index}`}
               title={institution.category}
@@ -50,13 +50,13 @@ const AccordionSection = ({ section }: AccordionSectionProps) => {
                   />
                 ))}
               </div>
-            </AccordionV2>
+            </Accordion>
           ),
         )}
 
         {groupByCategory(section.flatText?.filter(isPresent) ?? []).map((text, index) => (
           // eslint-disable-next-line react/no-array-index-key
-          <AccordionV2 key={`flatText-${index}`} title={text.category}>
+          <Accordion key={`flatText-${index}`} title={text.category}>
             {text.items.filter(isPresent).map((item, itemIndex) => {
               const link = parsePageLink({
                 title: item.moreLinkTitle,
@@ -84,12 +84,12 @@ const AccordionSection = ({ section }: AccordionSectionProps) => {
                 </div>
               )
             })}
-          </AccordionV2>
+          </Accordion>
         ))}
 
         {groupByCategory(section.institutionsNarrow?.filter(isPresent) ?? []).map((text, index) => (
           // eslint-disable-next-line react/no-array-index-key
-          <AccordionV2
+          <Accordion
             // eslint-disable-next-line react/no-array-index-key
             key={`institutionsNarrow-${index}`}
             title={text.category}
@@ -106,7 +106,7 @@ const AccordionSection = ({ section }: AccordionSectionProps) => {
                 />
               ))}
             </div>
-          </AccordionV2>
+          </Accordion>
         ))}
       </div>
     </>

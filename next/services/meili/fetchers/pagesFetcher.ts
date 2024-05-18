@@ -1,5 +1,3 @@
-import { Key } from 'swr'
-
 import { meiliClient } from '../meiliClient'
 import { PageMeili, SearchIndexWrapped } from '../types'
 import { getMeilisearchPageOptions, unwrapFromSearchIndex } from '../utils'
@@ -15,9 +13,6 @@ export const pagesDefaultFilters: PagesFilters = {
   page: 1,
   pageSize: 5,
 }
-
-export const getPagesSwrKey = (filters: PagesFilters, locale: string) =>
-  ['Pages', filters, locale] as Key
 
 export const getPagesQueryKey = (filters: PagesFilters, locale: string) => [
   'Search',

@@ -1,8 +1,8 @@
 import React from 'react'
 
-import SubpageList from '@/components/ui/SubpageList/SubpageList'
+import SubpageList from '@/components/ui/SubpageList_Deprecated/SubpageList_Deprecated'
 import { SubpageListPageHeaderSectionFragment } from '@/services/graphql'
-import { parsePageLink } from '@/utils/page'
+import { parsePageLink } from '@/utils/pageUtils_Deprecated'
 import { isPresent } from '@/utils/utils'
 
 type SubpageListPageHeaderSectionProps = {

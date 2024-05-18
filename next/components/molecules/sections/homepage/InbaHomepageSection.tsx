@@ -1,7 +1,7 @@
 import { useTranslations } from 'next-intl'
 import React from 'react'
 
-import InBaCard from '@/components/ui/InBaCard/InBaCard'
+import InBaCard from '@/components/molecules/presentation/InBaCard'
 import SectionContainer from '@/components/ui/SectionContainer/SectionContainer'
 import { useHomepageContext } from '@/utils/homepageContext'
 
