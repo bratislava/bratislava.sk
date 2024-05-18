@@ -1,6 +1,6 @@
 import React from 'react'
 
-import BlogPostCard from '@/components/molecules/presentation/BlogPostCard'
+import BlogPostCard from '@/components/cards/BlogPostCard'
 import Wrapper from '@/components/styleguide/Wrapper'
 import { CommonLinkProps } from '@/utils/getCommonLinkProps'
 

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import SubpageListPageHeaderSection from '@/components/molecules/sections/pageHeader/SubpageListPageHeaderSection'
+import SubpageListPageHeaderSection from '@/components/sections/SubpageListPageHeaderSection_Deprecated'
 import { PageHeaderSectionsFragment } from '@/services/graphql'
 import { isPresent } from '@/utils/utils'
 

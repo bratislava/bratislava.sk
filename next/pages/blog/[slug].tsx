@@ -3,11 +3,11 @@ import Head from 'next/head'
 import * as React from 'react'
 
 import PageLayout from '@/components/layouts/PageLayout'
-import BlogPostPageContent from '@/components/pages/BlogPostPageContent'
+import BlogPostPageContent from '@/components/page-contents/BlogPostPageContent'
+import { GeneralContextProvider } from '@/components/providers/GeneralContextProvider'
 import { BlogPostEntityFragment, GeneralQuery } from '@/services/graphql'
 import { client } from '@/services/graphql/gql'
 import { GlobalCategoryColorProvider } from '@/utils/colors'
-import { GeneralContextProvider } from '@/utils/generalContext'
 import { useTitle } from '@/utils/useTitle'
 
 type PageProps = {

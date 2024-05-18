@@ -3,10 +3,10 @@ import Head from 'next/head'
 import * as React from 'react'
 
 import PageLayout from '@/components/layouts/PageLayout'
-import InbaArticlePageContent from '@/components/pages/InbaArticlePageContent'
+import InbaArticlePageContent from '@/components/page-contents/InbaArticlePageContent'
+import { GeneralContextProvider } from '@/components/providers/GeneralContextProvider'
 import { GeneralQuery, InbaArticleEntityFragment } from '@/services/graphql'
 import { client } from '@/services/graphql/gql'
-import { GeneralContextProvider } from '@/utils/generalContext'
 import { useTitle } from '@/utils/useTitle'
 
 type PageProps = {

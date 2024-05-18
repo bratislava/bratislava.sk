@@ -1,7 +1,7 @@
 import React from 'react'
 
+import Accordion from '@/components/common/Accordion/Accordion'
 import Wrapper from '@/components/styleguide/Wrapper'
-import Accordion from '@/components/ui/Accordion/Accordion'
 
 const AccordionShowcase = () => {
   return (

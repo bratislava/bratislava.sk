@@ -2,8 +2,8 @@ import { useTranslations } from 'next-intl'
 import React from 'react'
 
 import { FacebookIcon, InstagramIcon, LinkedinIcon, TwitterIcon } from '@/assets/images'
-import { SocialMediaButton } from '@/components/pages/BlogPostPageContent'
-import SectionContainer from '@/components/ui/SectionContainer/SectionContainer'
+import SectionContainer from '@/components/common/SectionContainer/SectionContainer'
+import { SocialMediaButton } from '@/components/page-contents/BlogPostPageContent'
 
 type Props = {
   twitterTitle?: string | null | undefined

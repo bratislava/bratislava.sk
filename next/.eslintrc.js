@@ -56,6 +56,8 @@ module.exports = {
         endOfLine: 'auto',
       },
     ],
+    // Temporarily disabled
+    'import/extensions': 'off',
   },
   ignorePatterns: ['*.config.*', 'graphql', '.eslintrc.js'],
 }

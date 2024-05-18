@@ -5,10 +5,10 @@ import Head from 'next/head'
 import * as React from 'react'
 
 import PageLayout from '@/components/layouts/PageLayout'
-import RegulationPageContent from '@/components/pages/RegulationPageContent'
+import RegulationPageContent from '@/components/page-contents/RegulationPageContent'
+import { GeneralContextProvider } from '@/components/providers/GeneralContextProvider'
 import { GeneralQuery, RegulationEntityFragment } from '@/services/graphql'
 import { client } from '@/services/graphql/gql'
-import { GeneralContextProvider } from '@/utils/generalContext'
 
 type StaticParams = ParsedUrlQuery & {
   slug: string
