@@ -4,7 +4,8 @@ import Head from 'next/head'
 import React from 'react'
 
 import PageLayout from '@/components/layouts/PageLayout'
-import GeneralPageContent from '@/components/pages/GeneralPageContent'
+import GeneralPageContent from '@/components/page-contents/GeneralPageContent'
+import { GeneralContextProvider } from '@/components/providers/GeneralContextProvider'
 import {
   LanguageCode,
   Localizations,
@@ -13,7 +14,6 @@ import {
 import { GeneralQuery, PageEntityFragment } from '@/services/graphql'
 import { client } from '@/services/graphql/gql'
 import { GlobalCategoryColorProvider } from '@/utils/colors'
-import { GeneralContextProvider } from '@/utils/generalContext'
 import { isDefined } from '@/utils/isDefined'
 import { prefetchPageSections } from '@/utils/prefetchPageSections'
 import { useTitle } from '@/utils/useTitle'

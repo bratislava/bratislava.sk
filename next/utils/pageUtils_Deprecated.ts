@@ -1,7 +1,7 @@
 import groupBy from 'lodash/groupBy'
 import sortBy from 'lodash/sortBy'
 
-import { Breadcrumb } from '@/components/ui/Breadcrumbs/Breadcrumbs'
+import { Breadcrumb } from '@/components/common/Breadcrumbs/Breadcrumbs'
 import {
   FileBlockFragment,
   FileItemBlockFragment,

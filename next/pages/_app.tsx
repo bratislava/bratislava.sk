@@ -11,7 +11,7 @@ import { NextAdapter } from 'next-query-params'
 import { OverlayProvider } from 'react-aria'
 import { QueryParamProvider } from 'use-query-params'
 
-import { NavMenuContextProvider } from '@/components/organisms/NavBar/NavMenu/navMenuContext'
+import { NavMenuContextProvider } from '@/components/common/NavBar/NavMenu/navMenuContext'
 import BAI18nProvider from '@/components/providers/BAI18nProvider'
 import BAQueryClientProvider from '@/components/providers/BAQueryClientProvider'
 import { isProductionDeployment } from '@/utils/utils'

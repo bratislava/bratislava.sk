@@ -3,14 +3,14 @@ import Head from 'next/head'
 import { useTranslations } from 'next-intl'
 import * as React from 'react'
 
+import PageHeader from '@/components/common/PageHeader/PageHeader'
+import SectionContainer from '@/components/common/SectionContainer/SectionContainer'
 import PageLayout from '@/components/layouts/PageLayout'
-import GlobalSearchSectionContent from '@/components/molecules/sections/general/SearchSection/GlobalSearchSectionContent'
+import { GeneralContextProvider } from '@/components/providers/GeneralContextProvider'
 import { LocalizationsProvider } from '@/components/providers/LocalizationsProvider'
-import PageHeader from '@/components/ui/PageHeader/PageHeader'
-import SectionContainer from '@/components/ui/SectionContainer/SectionContainer'
+import GlobalSearchSectionContent from '@/components/sections/SearchSection/GlobalSearchSectionContent'
 import { GeneralQuery } from '@/services/graphql'
 import { client } from '@/services/graphql/gql'
-import { GeneralContextProvider } from '@/utils/generalContext'
 import { useTitle } from '@/utils/useTitle'
 
 type PageProps = {

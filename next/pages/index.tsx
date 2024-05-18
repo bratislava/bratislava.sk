@@ -3,13 +3,13 @@ import Head from 'next/head'
 import React from 'react'
 
 import PageLayout from '@/components/layouts/PageLayout'
-import HomepageContent from '@/components/pages/HomepageContent'
+import HomepageContent from '@/components/page-contents/HomepageContent'
+import { GeneralContextProvider } from '@/components/providers/GeneralContextProvider'
+import { HomepageContextProvider } from '@/components/providers/HomepageContextProvider'
 import type { HomepageContext } from '@/services/fetchers/homepageContextFetcher'
 import { homepageContextFetcher } from '@/services/fetchers/homepageContextFetcher'
 import { GeneralQuery } from '@/services/graphql'
 import { client } from '@/services/graphql/gql'
-import { GeneralContextProvider } from '@/utils/generalContext'
-import { HomepageContextProvider } from '@/utils/homepageContext'
 import { useTitle } from '@/utils/useTitle'
 
 type PageProps = {

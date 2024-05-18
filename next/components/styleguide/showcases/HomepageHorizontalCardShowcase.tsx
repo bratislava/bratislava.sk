@@ -1,6 +1,6 @@
 import React from 'react'
 
-import BlogPostHomepageHorizontalCard from '@/components/molecules/presentation/HomepageHorizontalCard'
+import BlogPostHomepageHorizontalCard from '@/components/cards/HomepageHorizontalCard'
 import Wrapper from '@/components/styleguide/Wrapper'
 import { CommonLinkProps } from '@/utils/getCommonLinkProps'
 

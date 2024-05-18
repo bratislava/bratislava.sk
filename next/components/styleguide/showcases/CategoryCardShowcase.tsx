@@ -1,6 +1,6 @@
 import React from 'react'
 
-import CategoryCard from '@/components/molecules/presentation/CategoryCard'
+import CategoryCard from '@/components/cards/CategoryCard'
 import Wrapper from '@/components/styleguide/Wrapper'
 import { CommonLinkProps } from '@/utils/getCommonLinkProps'
 

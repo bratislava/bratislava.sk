@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Banner from '@/components/ui/Banner/Banner'
+import Banner from '@/components/common/Banner/Banner'
 import { CommonLinkFragment, Enum_Componentsectionsbanner_Variant } from '@/services/graphql'
 
 import Stack from '../Stack'
