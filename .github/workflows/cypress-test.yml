@@ -1,11 +1,14 @@
 name: Cypress test
 
+# on:
+#   workflow_run:
+#     workflows: ["Strapi/Next deploy pipeline"]
+#     types:
+#       - completed
 on:
-  workflow_run:
-    workflows: ["Strapi/Next deploy pipeline"]
-    types:
-      - completed
-
+  pull_request:
+    types: [opened, synchronize]
+    
 jobs:
   cypress-tests:
     runs-on: ubuntu-latest
