@@ -4,8 +4,8 @@ import React from 'react'
 import BreadcrumbsChevronIcon from '@/assets/images/breadcrumbs-chevron.svg'
 import { ChevronDownIcon } from '@/assets/ui-icons'
 import type { BreadcrumbsProps } from '@/components/common/Breadcrumbs/Breadcrumbs'
-import Button from '@/components/forms/simple-components/Button'
-import MLink from '@/components/forms/simple-components/MLink'
+import Button from '@/components/common/Button/Button'
+import MLink from '@/components/common/MLink/MLink'
 
 const goBack = () => {
   window.history.back()

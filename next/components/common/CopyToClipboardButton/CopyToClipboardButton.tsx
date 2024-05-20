@@ -2,9 +2,9 @@ import { useTranslations } from 'next-intl'
 import { useCopyToClipboard } from 'usehooks-ts'
 
 import { CopyIcon } from '@/assets/ui-icons'
-import Button from '@/components/forms/simple-components/Button'
+import Button from '@/components/common/Button/Button'
 
-const ClipboardCopy = ({ copyText }: { copyText: string }) => {
+const CopyToClipboardButton = ({ copyText }: { copyText: string }) => {
   const [, copy] = useCopyToClipboard()
   const t = useTranslations()
   return (
@@ -17,4 +17,4 @@ const ClipboardCopy = ({ copyText }: { copyText: string }) => {
   )
 }
 
-export default ClipboardCopy
+export default CopyToClipboardButton

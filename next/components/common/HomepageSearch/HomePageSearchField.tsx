@@ -7,7 +7,7 @@ import React, {
 } from 'react'
 
 import SearchIcon from '@/assets/images/search-icon.svg'
-import Button from '@/components/forms/simple-components/Button'
+import Button from '@/components/common/Button/Button'
 
 type HomePageSearchFieldProps = {
   value: string

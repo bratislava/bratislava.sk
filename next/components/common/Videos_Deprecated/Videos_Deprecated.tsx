@@ -3,7 +3,7 @@ import cx from 'classnames'
 import React from 'react'
 
 import ResponsiveCarousel from '@/components/common/Carousel/ResponsiveCarousel'
-import MLink from '@/components/forms/simple-components/MLink'
+import MLink from '@/components/common/MLink/MLink'
 import { VideoBlockFragment, VideosSectionFragment } from '@/services/graphql'
 import { isPresent } from '@/utils/utils'
 

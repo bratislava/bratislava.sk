@@ -4,8 +4,8 @@ import React, { ReactNode, useRef, useState } from 'react'
 import { twMerge } from 'tailwind-merge'
 
 import { ArrowLeftIcon, ArrowRightIcon } from '@/assets/ui-icons'
+import Button from '@/components/common/Button/Button'
 import CarouselControlButton from '@/components/common/Carousel/CarouselControlButton'
-import Button from '@/components/forms/simple-components/Button'
 
 // Inspired by MKB project and https://inclusive-components.design/a-content-slider/
 

@@ -4,8 +4,8 @@ import { Dispatch, forwardRef, SetStateAction } from 'react'
 import { Input, Label, SearchField } from 'react-aria-components'
 
 import { RemoveIcon, SearchIcon } from '@/assets/ui-icons'
-import Button from '@/components/forms/simple-components/Button'
-import Spinner from '@/components/forms/simple-components/Spinner'
+import Button from '@/components/common/Button/Button'
+import Spinner from '@/components/common/Spinner/Spinner'
 
 type SearchBarProps = {
   placeholder?: string

@@ -3,8 +3,8 @@ import React, { useRef } from 'react'
 import { useHover } from 'usehooks-ts'
 
 import WelcomeCardIcon from '@/components/cards/WelcomeCard/WelcomeCardIcon'
+import MLink from '@/components/common/MLink/MLink'
 import { MenuItem } from '@/components/common/NavBar/NavMenu/navMenuTypes'
-import MLink from '@/components/forms/simple-components/MLink'
 
 export type WelcomeCardProps = {
   item: MenuItem

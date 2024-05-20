@@ -6,7 +6,7 @@ import rehypeRaw from 'rehype-raw'
 import remarkGfm from 'remark-gfm'
 import remarkUnwrapImages from 'remark-unwrap-images'
 
-import MLink from '@/components/forms/simple-components/MLink'
+import MLink from '@/components/common/MLink/MLink'
 
 import styles from './Markdown.module.scss'
 
@@ -43,7 +43,12 @@ const Markdown = ({ content, variant = 'default' }: MarkdownProps) => {
         // Accordion uses h3 as its own heading, we want to display all the headings in markdown smaller or equal to h4.
         h1: 'p',
         h2: ({ node, level, ...props }) => (
-          <Typography type="h2" size={variant === 'accordion' ? 'h4' : 'h2'} {...props} data-cy="heading-two" />
+          <Typography
+            type="h2"
+            size={variant === 'accordion' ? 'h4' : 'h2'}
+            {...props}
+            data-cy="heading-two"
+          />
         ),
         h3: ({ node, level, ...props }) => (
           <Typography type="h3" size={variant === 'accordion' ? 'h4' : 'h3'} {...props} />

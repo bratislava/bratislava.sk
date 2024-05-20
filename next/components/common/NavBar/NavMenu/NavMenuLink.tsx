@@ -2,8 +2,8 @@ import { Typography } from '@bratislava/component-library'
 import * as NavigationMenu from '@radix-ui/react-navigation-menu'
 import React from 'react'
 
-import Button from '@/components/forms/simple-components/Button'
-import MLink from '@/components/forms/simple-components/MLink'
+import Button from '@/components/common/Button/Button'
+import MLink from '@/components/common/MLink/MLink'
 
 import { useNavMenuContext } from './navMenuContext'
 import { MenuLink } from './navMenuTypes'

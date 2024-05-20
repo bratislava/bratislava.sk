@@ -2,9 +2,7 @@ import { useQuery } from '@tanstack/react-query'
 import { useTranslations } from 'next-intl'
 import React from 'react'
 
-import SelectField, {
-  SelectItem,
-} from '@/components/forms/widget-components/SelectField/SelectField'
+import SelectField, { SelectItem } from '@/components/common/SelectField/SelectField'
 import {
   getOfficialBoardCategoriesQueryKey,
   officialBoardCategoriesFetcher,

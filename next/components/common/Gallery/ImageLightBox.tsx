@@ -2,10 +2,10 @@ import { useTranslations } from 'next-intl'
 import { useEffect, useRef } from 'react'
 
 import { ArrowLeftIcon, ArrowRightIcon } from '@/assets/ui-icons'
+import Button from '@/components/common/Button/Button'
 import GalleryModal, { ModalProps } from '@/components/common/Gallery/GalleryModal'
 import GallerySlider from '@/components/common/Gallery/GallerySlider'
 import StrapiImage from '@/components/common/Image/StrapiImage'
-import Button from '@/components/forms/simple-components/Button'
 import { UploadImageEntityFragment } from '@/services/graphql'
 
 export type ImageLightBoxProps = {

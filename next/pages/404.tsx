@@ -3,7 +3,7 @@ import { GetStaticProps } from 'next'
 import Head from 'next/head'
 import { useTranslations } from 'next-intl'
 
-import Button from '@/components/forms/simple-components/Button'
+import Button from '@/components/common/Button/Button'
 import { useTitle } from '@/utils/useTitle'
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {

@@ -4,7 +4,7 @@ import { twMerge } from 'tailwind-merge'
 
 import { DownloadIcon } from '@/assets/ui-icons'
 import { FileCardProps } from '@/components/cards/FileCard'
-import MLink from '@/components/forms/simple-components/MLink'
+import MLink from '@/components/common/MLink/MLink'
 import { isDefined } from '@/utils/isDefined'
 
 /**

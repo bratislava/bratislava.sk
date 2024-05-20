@@ -1,8 +1,8 @@
 import { Typography } from '@bratislava/component-library'
 import { useTranslations } from 'next-intl'
 
+import Button from '@/components/common/Button/Button'
 import Pictogram from '@/components/common/Pictogram/Pictogram'
-import Button from '@/components/forms/simple-components/Button'
 import { TopServicesItemFragment } from '@/services/graphql'
 import { getCommonLinkProps } from '@/utils/getCommonLinkProps'
 

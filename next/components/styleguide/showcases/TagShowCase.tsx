@@ -1,4 +1,4 @@
-import Tag from 'components/forms/simple-components/Tag'
+import Tag from '@/components/common/Tag/Tag'
 
 import Stack from '../Stack'
 import Wrapper from '../Wrapper'

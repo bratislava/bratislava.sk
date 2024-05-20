@@ -2,7 +2,7 @@ import { Typography } from '@bratislava/component-library'
 
 import CardBase from '@/components/cards/CardBase'
 import CardContent from '@/components/cards/CardContent'
-import Button from '@/components/forms/simple-components/Button'
+import Button from '@/components/common/Button/Button'
 import { CommonLinkProps } from '@/utils/getCommonLinkProps'
 
 type Props = {

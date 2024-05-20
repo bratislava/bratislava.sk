@@ -6,8 +6,8 @@ import { twMerge } from 'tailwind-merge'
 
 import CardBase from '@/components/cards/CardBase'
 import CardContent from '@/components/cards/CardContent'
+import MLink from '@/components/common/MLink/MLink'
 import FormatEventDateRange from '@/components/formatting/FormatEventDateRange'
-import MLink from '@/components/forms/simple-components/MLink'
 
 type EventCardProps = {
   title: string

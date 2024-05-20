@@ -1,8 +1,8 @@
 import { Typography } from '@bratislava/component-library'
 import React, { Fragment } from 'react'
 
-import Alert from '@/components/forms/info-components/Alert'
-import MLink from '@/components/forms/simple-components/MLink'
+import Alert from '@/components/common/Alert_Deprecated/Alert_Deprecated'
+import MLink from '@/components/common/MLink/MLink'
 import { RegulationEntityFragment } from '@/services/graphql'
 import { formatDate } from '@/utils/formatDate'
 import { isDefined } from '@/utils/isDefined'

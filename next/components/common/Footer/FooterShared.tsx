@@ -3,7 +3,7 @@ import { useTranslations } from 'next-intl'
 import * as React from 'react'
 
 import { FacebookIcon, InstagramIcon } from '@/assets/images'
-import MLink from '@/components/forms/simple-components/MLink'
+import MLink from '@/components/common/MLink/MLink'
 import { useLocalizations } from '@/components/providers/LocalizationsProvider'
 import { FooterColumnBlockFragment, FooterFragment } from '@/services/graphql'
 import { getCommonLinkProps } from '@/utils/getCommonLinkProps'

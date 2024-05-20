@@ -8,7 +8,7 @@ import { twMerge } from 'tailwind-merge'
 import { useIsClient, useLockedBody } from 'usehooks-ts'
 
 import { CrossIcon } from '@/assets/ui-icons'
-import Button from '@/components/forms/simple-components/Button'
+import Button from '@/components/common/Button/Button'
 
 export type ModalProps = {
   children: ReactNode
@@ -62,12 +62,9 @@ const GalleryModal = (props: ModalProps) => {
             <div
               {...underlayProps}
               className={twMerge(
-                'fixed inset-0 z-50 overflow-y-auto overflow-x-hidden',
+                'fixed inset-0 z-50 overflow-y-auto overflow-x-hidden bg-gray-800/60',
                 underlayClassName,
               )}
-              style={{
-                background: 'rgba(var(--color-gray-800), .4)', // bg-gray-800/40 is not working for some reason
-              }}
             >
               <div className={cx({ 'flex min-h-full items-center': centerVertically })}>
                 <FocusTrap>

@@ -3,7 +3,7 @@ import cx from 'classnames'
 import Image from 'next/image'
 
 import CardBase from '@/components/cards/CardBase'
-import Button from '@/components/forms/simple-components/Button'
+import Button from '@/components/common/Button/Button'
 import { CommonLinkProps } from '@/utils/getCommonLinkProps'
 
 export type InBaCardProps = {

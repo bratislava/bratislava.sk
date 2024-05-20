@@ -6,9 +6,9 @@ import { twMerge } from 'tailwind-merge'
 
 import { CrossIcon, HamburgerIcon, SearchIcon } from '@/assets/ui-icons'
 import Brand from '@/components/common/Brand/Brand'
+import Button from '@/components/common/Button/Button'
+import MLink from '@/components/common/MLink/MLink'
 import AlertBanner from '@/components/common/NavBar/AlertBanner'
-import Button from '@/components/forms/simple-components/Button'
-import MLink from '@/components/forms/simple-components/MLink'
 import { useLocalizations } from '@/components/providers/LocalizationsProvider'
 import { getCategoryColorLocalStyle } from '@/utils/colors'
 

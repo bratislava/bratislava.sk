@@ -5,8 +5,8 @@ import React from 'react'
 import CardBase, { CardBaseProps } from '@/components/cards/CardBase'
 import CardContent from '@/components/cards/CardContent'
 import ImagePlaceholder from '@/components/common/Image/ImagePlaceholder'
-import MLink from '@/components/forms/simple-components/MLink'
-import Tag from '@/components/forms/simple-components/Tag'
+import MLink from '@/components/common/MLink/MLink'
+import Tag from '@/components/common/Tag/Tag'
 
 type Props = {
   title: string

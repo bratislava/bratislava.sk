@@ -9,7 +9,7 @@ type Props = {
   twitterTitle?: string | null | undefined
 }
 
-const ShareButtons = ({ twitterTitle }: Props) => {
+const ShareButtonsSection = ({ twitterTitle }: Props) => {
   const t = useTranslations()
 
   const twitterTextQuery = twitterTitle ? `&text=${twitterTitle}` : ''
@@ -51,4 +51,4 @@ const ShareButtons = ({ twitterTitle }: Props) => {
   )
 }
 
-export default ShareButtons
+export default ShareButtonsSection

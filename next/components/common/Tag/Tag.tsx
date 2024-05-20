@@ -2,7 +2,7 @@ import cx from 'classnames'
 import { useTranslations } from 'next-intl'
 
 import { CrossIcon } from '@/assets/ui-icons'
-import Button from '@/components/forms/simple-components/Button'
+import Button from '@/components/common/Button/Button'
 
 type TagProps = {
   text: string
