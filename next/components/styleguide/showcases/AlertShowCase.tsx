@@ -1,4 +1,4 @@
-import Alert from 'components/forms/info-components/Alert'
+import Alert from '@/components/common/Alert_Deprecated/Alert_Deprecated'
 
 import Stack from '../Stack'
 import Wrapper from '../Wrapper'

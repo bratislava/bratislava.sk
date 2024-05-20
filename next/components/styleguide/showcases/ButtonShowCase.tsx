@@ -1,5 +1,5 @@
 import { CalendarIcon, EditIcon, SearchIcon } from '@/assets/ui-icons'
-import Button from '@/components/forms/simple-components/Button'
+import Button from '@/components/common/Button/Button'
 
 import Stack from '../Stack'
 import Wrapper from '../Wrapper'

@@ -4,7 +4,7 @@ import Image from 'next/image'
 import React from 'react'
 
 import { InfoIcon } from '@/assets/ui-icons'
-import ComparisonCard from '@/components/molecules/ComparisonCard'
+import ComparisonCard from '@/components/common/ComparisonCard/ComparisonCard'
 import { ComparisonSectionFragment } from '@/services/graphql'
 import { isDefined } from '@/utils/isDefined'
 

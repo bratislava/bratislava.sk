@@ -3,9 +3,9 @@ import { useTranslations } from 'next-intl'
 import React from 'react'
 import { twMerge } from 'tailwind-merge'
 
+import Button from '@/components/common/Button/Button'
 import { useCookieConsent } from '@/components/common/CookieConsent/useCookieConsent'
-import Button from '@/components/forms/simple-components/Button'
-import MLink from '@/components/forms/simple-components/MLink'
+import MLink from '@/components/common/MLink/MLink'
 import { getCategoryColorLocalStyle } from '@/utils/colors'
 import { isProductionDeployment } from '@/utils/utils'
 

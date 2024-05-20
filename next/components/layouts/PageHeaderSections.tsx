@@ -13,7 +13,7 @@ const PageHeaderSections = ({ sections }: PageHeaderSectionsProps) => {
     // eslint-disable-next-line react/jsx-no-useless-fragment
     <>
       {sections?.filter(isPresent).map((section, index) => {
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+        // eslint-disable-next-line sonarjs/no-small-switch
         switch (section.__typename) {
           case 'ComponentSectionsSubpageList':
             return <SubpageListPageHeaderSection key={index} section={section} />

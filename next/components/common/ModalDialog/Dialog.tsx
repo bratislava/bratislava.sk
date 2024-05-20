@@ -4,7 +4,7 @@ import React, { forwardRef, ReactNode } from 'react'
 import { Dialog as ReactAriaDialog, DialogProps } from 'react-aria-components'
 
 import { CrossIcon } from '@/assets/ui-icons'
-import Button from '@/components/forms/simple-components/Button'
+import Button from '@/components/common/Button/Button'
 
 type TitleProps = { title: string; 'aria-label'?: string } | { title?: never; 'aria-label': string }
 

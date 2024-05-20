@@ -7,8 +7,8 @@ import { ChevronRightIcon } from '@/assets/ui-icons'
 import CardBase, { CardBaseProps } from '@/components/cards/CardBase'
 import CardContent from '@/components/cards/CardContent'
 import ImagePlaceholder from '@/components/common/Image/ImagePlaceholder'
+import MLink from '@/components/common/MLink/MLink'
 import Markdown from '@/components/formatting/Markdown/Markdown'
-import MLink from '@/components/forms/simple-components/MLink'
 
 type Props = {
   title: string

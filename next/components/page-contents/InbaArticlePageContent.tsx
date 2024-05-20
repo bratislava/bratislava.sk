@@ -3,13 +3,13 @@ import * as React from 'react'
 import { useMemo } from 'react'
 
 import { Breadcrumb } from '@/components/common/Breadcrumbs/Breadcrumbs'
+import MLink from '@/components/common/MLink/MLink'
 import NarrowText from '@/components/common/NarrowText/NarrowText'
 import PageHeader from '@/components/common/PageHeader/PageHeader'
 import SectionContainer from '@/components/common/SectionContainer/SectionContainer'
 import Markdown from '@/components/formatting/Markdown/Markdown'
-import MLink from '@/components/forms/simple-components/MLink'
-import ShareButtons from '@/components/molecules/ShareButtons'
 import { useGeneralContext } from '@/components/providers/GeneralContextProvider'
+import ShareButtonsSection from '@/components/sections/ShareButtonsSection'
 import { InbaArticleEntityFragment } from '@/services/graphql'
 import { formatDate, getNumericLocalDate } from '@/utils/formatDate'
 import { getPageBreadcrumbs } from '@/utils/pageUtils_Deprecated'
@@ -75,7 +75,7 @@ const InbaArticlePageContent = ({ inbaArticle }: InbaArticlePageContentProps) =>
           ) : null}
         </NarrowText>
       </SectionContainer>
-      <ShareButtons twitterTitle={inbaArticle.attributes?.title} />
+      <ShareButtonsSection twitterTitle={inbaArticle.attributes?.title} />
     </>
   )
 }

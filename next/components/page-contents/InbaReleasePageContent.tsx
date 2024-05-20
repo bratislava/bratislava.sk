@@ -12,8 +12,8 @@ import NarrowText from '@/components/common/NarrowText/NarrowText'
 import PageHeader from '@/components/common/PageHeader/PageHeader'
 import SectionContainer from '@/components/common/SectionContainer/SectionContainer'
 import Markdown from '@/components/formatting/Markdown/Markdown'
-import ShareButtons from '@/components/molecules/ShareButtons'
 import { useGeneralContext } from '@/components/providers/GeneralContextProvider'
+import ShareButtonsSection from '@/components/sections/ShareButtonsSection'
 import { InbaReleaseEntityFragment } from '@/services/graphql'
 import { formatDate } from '@/utils/formatDate'
 import { formatFileExtension } from '@/utils/formatFileExtension'
@@ -99,7 +99,7 @@ const InbaReleasePageContent = ({ inbaRelease }: InbaReleasePageContentProps) =>
         </div>
       </SectionContainer>
 
-      <ShareButtons twitterTitle={title} />
+      <ShareButtonsSection twitterTitle={title} />
     </>
   )
 }

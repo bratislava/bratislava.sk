@@ -1,10 +1,10 @@
 import cx from 'classnames'
 
-import CloseIcon from '../icon-components/CloseIcon'
-import ErrorIcon from '../icon-components/ErrorIcon'
-import InfoIcon from '../icon-components/InfoIcon'
-import SuccessIcon from '../icon-components/SuccessIcon'
-import WarningIcon from '../icon-components/WarningIcon'
+import CloseIcon from './CloseIcon'
+import ErrorIcon from './ErrorIcon'
+import InfoIcon from './InfoIcon'
+import SuccessIcon from './SuccessIcon'
+import WarningIcon from './WarningIcon'
 
 type AlertButtons = {
   title: string

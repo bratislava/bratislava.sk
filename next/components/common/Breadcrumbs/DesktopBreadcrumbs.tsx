@@ -4,7 +4,7 @@ import React from 'react'
 import BreadcrumbsChevronIcon from '@/assets/images/breadcrumbs-chevron.svg'
 import BreadcrumbsHomeIcon from '@/assets/images/breadcrumbs-home.svg'
 import type { BreadcrumbsProps } from '@/components/common/Breadcrumbs/Breadcrumbs'
-import MLink from '@/components/forms/simple-components/MLink'
+import MLink from '@/components/common/MLink/MLink'
 
 /**
  * Figma: https://www.figma.com/file/17wbd0MDQcMW9NbXl6UPs8/DS-ESBS%3A-Component-library?node-id=821-1994&t=pIPe0xK0FBdmOKH1-0

@@ -2,7 +2,7 @@ import { Typography } from '@bratislava/component-library'
 import { useTranslations } from 'next-intl'
 
 import { ArrowRightIcon } from '@/assets/ui-icons'
-import Button from '@/components/forms/simple-components/Button'
+import Button from '@/components/common/Button/Button'
 
 type SearchResultsHeaderProps = {
   title: string

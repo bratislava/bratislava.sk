@@ -3,7 +3,7 @@ import { useTranslations } from 'next-intl'
 import React, { CSSProperties } from 'react'
 
 import { ChevronLeftIcon } from '@/assets/ui-icons'
-import Button from '@/components/forms/simple-components/Button'
+import Button from '@/components/common/Button/Button'
 
 import NavBarHorizontalDivider from './NavBarHorizontalDivider'
 import { useNavMenuContext } from './navMenuContext'

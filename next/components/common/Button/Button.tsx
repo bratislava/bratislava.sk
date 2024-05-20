@@ -1,6 +1,5 @@
 /* eslint-disable sonarjs/no-duplicate-string */
 import cx from 'classnames'
-import Spinner from 'components/forms/simple-components/Spinner'
 import NextLink from 'next/link'
 import { ComponentProps, forwardRef, PropsWithChildren, ReactNode, RefObject } from 'react'
 import { AriaButtonProps } from 'react-aria'
@@ -8,7 +7,8 @@ import { Button as RACButton, ButtonProps as RACButtonProps } from 'react-aria-c
 import { twMerge } from 'tailwind-merge'
 
 import { ArrowRightIcon, ExportIcon } from '@/assets/ui-icons'
-import MLink, { LinkPlausibleProps } from '@/components/forms/simple-components/MLink'
+import MLink, { LinkPlausibleProps } from '@/components/common/MLink/MLink'
+import Spinner from '@/components/common/Spinner/Spinner'
 
 type ButtonOrIconButton =
   | {

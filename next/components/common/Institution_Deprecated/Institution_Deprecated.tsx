@@ -1,8 +1,8 @@
 import { Typography } from '@bratislava/component-library'
 import { useId } from 'react'
 
+import Button from '@/components/common/Button/Button'
 import Markdown from '@/components/formatting/Markdown/Markdown'
-import Button from '@/components/forms/simple-components/Button'
 
 export type InstitutionProps = {
   title?: string

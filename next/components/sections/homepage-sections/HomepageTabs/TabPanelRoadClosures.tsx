@@ -2,8 +2,8 @@ import { useLocale } from 'next-intl'
 import React from 'react'
 import { TabPanel } from 'react-aria-components'
 
+import Button from '@/components/common/Button/Button'
 import Iframe from '@/components/common/Iframe/Iframe'
-import Button from '@/components/forms/simple-components/Button'
 import { useHomepageContext } from '@/components/providers/HomepageContextProvider'
 import { getCommonLinkProps } from '@/utils/getCommonLinkProps'
 

@@ -2,11 +2,11 @@ import { Typography } from '@bratislava/component-library'
 import React from 'react'
 
 import Accordion from '@/components/common/Accordion/Accordion'
+import Button from '@/components/common/Button/Button'
 import FileList from '@/components/common/FileList/FileList'
 import Institution from '@/components/common/Institution_Deprecated/Institution_Deprecated'
 import NarrowText from '@/components/common/NarrowText/NarrowText'
 import Markdown from '@/components/formatting/Markdown/Markdown'
-import Button from '@/components/forms/simple-components/Button'
 import {
   AccordionSectionFragment,
   Enum_Componentsectionsfilelist_Variant,

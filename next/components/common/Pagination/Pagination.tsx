@@ -3,8 +3,8 @@ import { useTranslations } from 'next-intl'
 import React, { ReactNode } from 'react'
 
 import { ArrowLeftIcon, ArrowRightIcon } from '@/assets/ui-icons'
+import Button from '@/components/common/Button/Button'
 import usePagination from '@/components/common/Pagination/usePagination'
-import Button from '@/components/forms/simple-components/Button'
 
 type PaginationProps = {
   currentPage: number

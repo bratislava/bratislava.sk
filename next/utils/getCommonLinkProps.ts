@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
 
-import { LinkPlausibleProps } from '@/components/forms/simple-components/MLink'
+import { LinkPlausibleProps } from '@/components/common/MLink/MLink'
 import { CommonLinkFragment } from '@/services/graphql'
 
 export type CommonLinkProps = {

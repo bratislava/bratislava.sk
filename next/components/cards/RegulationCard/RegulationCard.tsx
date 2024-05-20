@@ -4,7 +4,7 @@ import React from 'react'
 import { twMerge } from 'tailwind-merge'
 
 import { ArrowRightIcon } from '@/assets/ui-icons'
-import MLink from '@/components/forms/simple-components/MLink'
+import MLink from '@/components/common/MLink/MLink'
 
 export type RegulationCardProps = {
   title: string

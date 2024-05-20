@@ -5,7 +5,7 @@ import { twMerge } from 'tailwind-merge'
 
 import MinusIcon from '@/assets/images/minus.svg'
 import PlusIcon from '@/assets/images/plus.svg'
-import Button from '@/components/forms/simple-components/Button'
+import Button from '@/components/common/Button/Button'
 import Input from '@/components/sections/CalculatorSection_Deprecated/Input_Deprecated'
 
 type MinimumCalculatorProps = {

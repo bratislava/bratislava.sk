@@ -1,9 +1,9 @@
 import cx from 'classnames'
 import React from 'react'
 
+import Button from '@/components/common/Button/Button'
 import NumericalListItem from '@/components/common/NumericalList_Deprecated/NumericalListItem_Deprecated'
 import Waves from '@/components/common/Waves/Waves'
-import Button from '@/components/forms/simple-components/Button'
 
 export type NumericalListItemObject = {
   text?: string | null

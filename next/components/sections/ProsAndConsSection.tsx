@@ -3,7 +3,7 @@ import cx from 'classnames'
 import React from 'react'
 
 import { CheckIcon, CrossIcon } from '@/assets/ui-icons'
-import ComparisonCard from '@/components/molecules/ComparisonCard'
+import ComparisonCard from '@/components/common/ComparisonCard/ComparisonCard'
 import { ProsAndConsSectionFragment } from '@/services/graphql'
 import { isDefined } from '@/utils/isDefined'
 

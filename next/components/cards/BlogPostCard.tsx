@@ -4,9 +4,9 @@ import React from 'react'
 
 import CardBase, { CardBaseProps } from '@/components/cards/CardBase'
 import CardContent from '@/components/cards/CardContent'
+import Button from '@/components/common/Button/Button'
 import ImagePlaceholder from '@/components/common/Image/ImagePlaceholder'
-import Button from '@/components/forms/simple-components/Button'
-import Tag from '@/components/forms/simple-components/Tag'
+import Tag from '@/components/common/Tag/Tag'
 import { CommonLinkProps } from '@/utils/getCommonLinkProps'
 
 type Props = {

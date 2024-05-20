@@ -5,9 +5,9 @@ import React, { forwardRef, useEffect, useState } from 'react'
 import { useLocalStorage } from 'usehooks-ts'
 
 import { AlertIcon, CrossIcon } from '@/assets/ui-icons'
+import Button from '@/components/common/Button/Button'
 import SectionContainer from '@/components/common/SectionContainer/SectionContainer'
 import Markdown from '@/components/formatting/Markdown/Markdown'
-import Button from '@/components/forms/simple-components/Button'
 import { client } from '@/services/graphql/gql'
 
 const AlertBanner = forwardRef<HTMLDivElement>((props, forwardedRef) => {

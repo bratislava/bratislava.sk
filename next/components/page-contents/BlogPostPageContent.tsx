@@ -3,11 +3,11 @@ import * as React from 'react'
 import { PropsWithChildren, useMemo } from 'react'
 
 import { Breadcrumb } from '@/components/common/Breadcrumbs/Breadcrumbs'
+import Button from '@/components/common/Button/Button'
 import PageHeader from '@/components/common/PageHeader/PageHeader'
-import Button from '@/components/forms/simple-components/Button'
-import Sections from '@/components/molecules/Sections'
-import ShareButtons from '@/components/molecules/ShareButtons'
+import Sections from '@/components/layouts/Sections'
 import { useGeneralContext } from '@/components/providers/GeneralContextProvider'
+import ShareButtonsSection from '@/components/sections/ShareButtonsSection'
 import { BlogPostEntityFragment } from '@/services/graphql'
 import { getNumericLocalDate } from '@/utils/formatDate'
 import { getPageBreadcrumbs } from '@/utils/pageUtils_Deprecated'
@@ -73,7 +73,7 @@ const BlogPostPageContent = ({ blogPost }: BlogPostPageContentProps) => {
       {/* Page - Common Sections */}
       {blogPost.attributes?.sections && <Sections sections={blogPost.attributes?.sections} />}
 
-      <ShareButtons twitterTitle={blogPost.attributes?.title} />
+      <ShareButtonsSection twitterTitle={blogPost.attributes?.title} />
     </>
   )
 }

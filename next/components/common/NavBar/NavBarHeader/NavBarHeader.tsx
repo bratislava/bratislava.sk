@@ -1,12 +1,12 @@
-import SkipToContentButton from 'components/molecules/SkipToContentButton'
 import { useTranslations } from 'next-intl'
 import React from 'react'
 
 import SearchIcon from '@/assets/images/search-icon.svg'
 import Brand from '@/components/common/Brand/Brand'
+import Button from '@/components/common/Button/Button'
+import MLink from '@/components/common/MLink/MLink'
 import SectionContainer from '@/components/common/SectionContainer/SectionContainer'
-import Button from '@/components/forms/simple-components/Button'
-import MLink from '@/components/forms/simple-components/MLink'
+import SkipToContentButton from '@/components/common/SkipToContentButton/SkipToContentButton'
 import { useGeneralContext } from '@/components/providers/GeneralContextProvider'
 import { useLocalizations } from '@/components/providers/LocalizationsProvider'
 import { getCategoryColorLocalStyle } from '@/utils/colors'
@@ -80,7 +80,12 @@ const NavBarHeader = ({ className }: NavBarProps) => {
           <Divider />
 
           {otherLanguage && (
-            <MLink variant="underlined" href={otherLanguage.path} locale={otherLanguage.locale} data-cy="change-language-button">
+            <MLink
+              variant="underlined"
+              href={otherLanguage.path}
+              locale={otherLanguage.locale}
+              data-cy="change-language-button"
+            >
               {otherLanguage.longName}
             </MLink>
           )}

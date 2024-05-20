@@ -6,7 +6,7 @@ import { Selection, TagGroup, TagList } from 'react-aria-components'
 import { StringParam, useQueryParam, withDefault } from 'use-query-params'
 import { useDebounce } from 'usehooks-ts'
 
-import Chip from '@/components/forms/simple-components/Chip'
+import Chip from '@/components/common/Chip/Chip'
 import OfficialBoardAdditionalFilters from '@/components/sections/OfficialBoardSection/OfficialBoardAdditionalFilters'
 import SearchBar from '@/components/sections/SearchSection/SearchBar'
 import SearchResults from '@/components/sections/SearchSection/SearchResults'
