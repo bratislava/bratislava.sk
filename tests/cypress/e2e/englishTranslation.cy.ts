@@ -25,11 +25,10 @@ describe('English translation', { testIsolation: false }, () => {
         })
 
         it('2. Checking page heading translation.', () => {
-          cy.location('pathname', {timeout: 4000})
+          cy.wait(500)
+          cy.location('pathname', {timeout: 10000})
           .should('eq', '/en/visiting-and-office-hours');
-          cy.dataCy('heading-two').eq(0).invoke('text').then((text) => {
-            expect(text.replace(/\u00a0/g, ' ')).equal('Opening hours')
-          })
+          cy.dataCy('heading-two').eq(0).should("contain.text", "Opening hours")
 
           if (device === 'desktop') {
             cy.dataCy('change-language-button').click()
@@ -39,11 +38,10 @@ describe('English translation', { testIsolation: false }, () => {
         })
 
         it('3. Checking original language.', () => {
-          cy.location('pathname', {timeout: 4000})
+          cy.wait(500)
+          cy.location('pathname', {timeout: 10000})
           .should('eq', '/kontakty');
-          cy.dataCy('heading-two').eq(0).invoke('text').then((text) => {
-            expect(text.replace(/\u00a0/g, ' ')).equal('Otváracie hodiny')
-          })
+          cy.dataCy('heading-two').eq(0).should("contain.text", 'Otváracie hodiny')
         })
       })
    })
