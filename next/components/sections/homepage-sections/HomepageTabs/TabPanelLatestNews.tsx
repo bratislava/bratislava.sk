@@ -27,12 +27,12 @@ const TabPanelLatestNews = () => {
     blogPosts
       ?.filter(isDefined)
       .filter((post) => post.id !== leftNewsItem?.data?.id && post.id !== rightNewsItem?.data?.id)
-      .slice(0, 5) ?? []
+      .slice(0, 4) ?? []
 
   const allPosts =
     [leftNewsItem?.data, rightNewsItem?.data, ...latestPostsFiltered]
       .filter(isDefined)
-      .slice(0, 7) ?? []
+      .slice(0, 6) ?? []
 
   return (
     <TabPanel id="LatestNews">
