@@ -28,7 +28,7 @@ const HighlightsHomepageSection = () => {
       ) : null}
 
       <ResponsiveCarousel
-        useOldStyledControls
+        controlsVariant="side"
         mobile={1}
         tablet={2}
         desktop={2}
