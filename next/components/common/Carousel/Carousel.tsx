@@ -67,16 +67,6 @@ const Carousel = ({
 
   return (
     <div className={twMerge('relative', className)}>
-      {
-        // useOldStyledControls && (
-        //   <div
-        //     className={cx({ hidden: isLeftControlHidden, 'max-md:hidden': !showControlsOnMobile })}
-        //   >
-        //     <CarouselControlButton direction="left" onPress={handleGoToPrevious} />
-        //   </div>
-        // )
-      }
-
       <ul
         className={twMerge(
           'max-md:negative-x-spacing flex snap-x snap-mandatory gap-4 overflow-x-auto overflow-y-clip scrollbar-hide lg:-mx-2 lg:px-2',
@@ -168,42 +158,6 @@ const Carousel = ({
           )}
         </div>
       )}
-
-      {
-        // useOldStyledControls && (
-        //   <div
-        //     className={cx({ hidden: isRightControlHidden, 'max-md:hidden': !showControlsOnMobile })}
-        //   >
-        //     <CarouselControlButton direction="right" onPress={handleGoToNext} />
-        //   </div>
-        // )}
-        // {/* Inspired by https://inclusive-components.design/a-content-slider/#thebuttongroup */}
-        // {noControls || useOldStyledControls ? null : (
-        //   <ul
-        //     aria-label={t('aria.controlButtons')}
-        //     className={cx('flex gap-2', {
-        //       'max-md:hidden': !showControlsOnMobile,
-        //     })}
-        //   >
-        //     <li>
-        //       <Button
-        //         variant="category-outline"
-        //         onPress={handleGoToPrevious}
-        //         icon={<ArrowLeftIcon />}
-        //         aria-label={t('aria.previous')}
-        //       />
-        //     </li>
-        //     <li>
-        //       <Button
-        //         variant="category-outline"
-        //         onPress={handleGoToNext}
-        //         icon={<ArrowRightIcon />}
-        //         aria-label={t('aria.next')}
-        //       />
-        //     </li>
-        //   </ul>
-        // )
-      }
     </div>
   )
 }
