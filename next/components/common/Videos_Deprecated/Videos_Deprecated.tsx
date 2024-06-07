@@ -87,7 +87,7 @@ export const Videos = ({ title, subtitle, videos }: VideosSectionFragment) => {
       {/* Mobile */}
       <ResponsiveCarousel
         className="lg:hidden"
-        noYListSpacing
+        hasVerticalPadding={false}
         items={videos.filter(isPresent).map((video) => (
           <Video key={video.url} size="small" {...video} />
         ))}

@@ -5,7 +5,6 @@ import { twMerge } from 'tailwind-merge'
 
 import { ArrowLeftIcon, ArrowRightIcon } from '@/assets/ui-icons'
 import Button from '@/components/common/Button/Button'
-import CarouselControlButton from '@/components/common/Carousel/CarouselControlButton'
 
 // Inspired by MKB project and https://inclusive-components.design/a-content-slider/
 
@@ -17,11 +16,11 @@ export type CarouselProps = {
   itemClassName?: string
   items: ReactNode[]
   shiftVariant?: 'single' | 'byPage'
+  controlsVariant?: 'bottom' | 'side'
   visibleCount?: AllowedVisibleCount
   hideControls?: boolean
-  noYListSpacing?: boolean
+  hasVerticalPadding?: boolean
   showControlsOnMobile?: boolean
-  useOldStyledControls?: boolean
 }
 
 const Carousel = ({
@@ -30,11 +29,11 @@ const Carousel = ({
   itemClassName,
   items,
   shiftVariant = 'single',
+  controlsVariant = 'bottom',
   visibleCount = 1,
   hideControls = false,
-  noYListSpacing = false,
+  hasVerticalPadding = true,
   showControlsOnMobile = false,
-  useOldStyledControls = false,
 }: CarouselProps) => {
   const t = useTranslations('Carousel')
   const scrollerRef = useRef<HTMLUListElement>(null)
@@ -68,18 +67,10 @@ const Carousel = ({
 
   return (
     <div className={twMerge('relative', className)}>
-      {useOldStyledControls && (
-        <div
-          className={cx({ hidden: isLeftControlHidden, 'max-md:hidden': !showControlsOnMobile })}
-        >
-          <CarouselControlButton direction="left" onPress={handleGoToPrevious} />
-        </div>
-      )}
-
       <ul
         className={twMerge(
           'max-md:negative-x-spacing flex snap-x snap-mandatory gap-4 overflow-x-auto overflow-y-clip scrollbar-hide lg:-mx-2 lg:px-2',
-          noYListSpacing ? '' : 'py-8',
+          hasVerticalPadding ? 'py-8' : '',
           listClassName,
         )}
         ref={scrollerRef}
@@ -111,39 +102,61 @@ const Carousel = ({
         })}
       </ul>
 
-      {useOldStyledControls && (
-        <div
-          className={cx({ hidden: isRightControlHidden, 'max-md:hidden': !showControlsOnMobile })}
-        >
-          <CarouselControlButton direction="right" onPress={handleGoToNext} />
-        </div>
-      )}
+      {noControls ? null : (
+        <div className={cx({ 'max-md:hidden': !showControlsOnMobile })}>
+          {controlsVariant === 'side' && (
+            <>
+              <Button
+                variant="category-solid"
+                excludeFromTabOrder
+                onPress={handleGoToPrevious}
+                className={cx(
+                  'absolute bottom-0 top-0 z-10 my-auto h-12 w-12 rounded-full',
+                  'left-0 -translate-x-1/2 transform',
+                  { hidden: isLeftControlHidden },
+                )}
+                icon={<ArrowLeftIcon />}
+                aria-label={t('aria.previous')}
+              />
+              <Button
+                variant="category-solid"
+                excludeFromTabOrder
+                onPress={handleGoToNext}
+                className={cx(
+                  'absolute bottom-0 top-0 z-10 my-auto h-12 w-12 rounded-full',
+                  'right-0 translate-x-1/2 transform',
+                  { hidden: isRightControlHidden },
+                )}
+                icon={<ArrowRightIcon />}
+                aria-label={t('aria.next')}
+              />
+            </>
+          )}
 
-      {/* Inspired by https://inclusive-components.design/a-content-slider/#thebuttongroup */}
-      {noControls || useOldStyledControls ? null : (
-        <ul
-          aria-label={t('aria.controlButtons')}
-          className={cx('flex gap-2', {
-            'max-md:hidden': !showControlsOnMobile,
-          })}
-        >
-          <li>
-            <Button
-              variant="category-outline"
-              onPress={handleGoToPrevious}
-              icon={<ArrowLeftIcon />}
-              aria-label={t('aria.previous')}
-            />
-          </li>
-          <li>
-            <Button
-              variant="category-outline"
-              onPress={handleGoToNext}
-              icon={<ArrowRightIcon />}
-              aria-label={t('aria.next')}
-            />
-          </li>
-        </ul>
+          {controlsVariant === 'bottom' && (
+            // Inspired by https://inclusive-components.design/a-content-slider/#thebuttongroup
+            <ul aria-label={t('aria.controlButtons')} className="mt-6 flex gap-2">
+              <li>
+                <Button
+                  variant="category-outline"
+                  onPress={handleGoToPrevious}
+                  icon={<ArrowLeftIcon />}
+                  aria-label={t('aria.previous')}
+                  isDisabled={isLeftControlHidden}
+                />
+              </li>
+              <li>
+                <Button
+                  variant="category-outline"
+                  onPress={handleGoToNext}
+                  icon={<ArrowRightIcon />}
+                  aria-label={t('aria.next')}
+                  isDisabled={isRightControlHidden}
+                />
+              </li>
+            </ul>
+          )}
+        </div>
       )}
     </div>
   )
