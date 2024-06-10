@@ -13,6 +13,7 @@
     "lint:fix": "yarn lint --fix",
     "gen": "graphql-codegen && prettier --write services/graphql/index.ts",
     "prettier": "prettier --write .",
+    "parse-translations": "i18next",
     "update-i18next": "yarn add next-i18next@latest react-i18next@latest i18next@latest -E",
     "update-react-aria": "yarn add @internationalized/date@latest @react-stately/utils@latest react-aria@latest react-aria-components@latest react-stately@latest tailwindcss-react-aria-components -E"
   },
@@ -125,6 +126,7 @@
     "eslint-plugin-tailwindcss": "3.11.0",
     "eslint-plugin-unicorn": "46.0.0",
     "eslint-plugin-xss": "^0.1.12",
+    "i18next-parser": "^9.0.0",
     "postcss": "8.4.21",
     "prettier": "^2.8.7",
     "prettier-plugin-tailwindcss": "0.2.7",

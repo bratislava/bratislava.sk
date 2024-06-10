@@ -67,7 +67,6 @@ export const FooterAccessibilityLink = ({ accessibilityPageLink }: FooterFragmen
 export const FooterCopyright = ({ innovationsLink }: FooterFragment) => {
   return (
     <Trans
-      ns="common"
       i18nKey="Footer.copyright"
       components={{
         innovations: <MLink variant="underlined" {...getCommonLinkProps(innovationsLink)} />,
