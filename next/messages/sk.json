@@ -1,12 +1,8 @@
 {
-  "language_short": {
-    "sk": "SK",
-    "en": "EN"
-  },
-  "language_long": {
-    "sk": "Slovensky",
-    "en": "English"
-  },
+  "language_short.sk": "SK",
+  "language_short.en": "EN",
+  "language_long.sk": "Slovensky",
+  "language_long.en": "English",
   "e_services": "E-služby",
   "signin": "Prihlásenie",
   "signup": "Registrácia",
@@ -66,14 +62,12 @@
   "showLess": "Zobraziť menej",
   "articleCategories": "Rozdelenie obsahu článkov",
   "gallery": "Galéria",
-  "vzn": {
-    "validFrom": "Platnosť od",
-    "validUntil": "Platnosť do",
-    "mainDocument": "Hlavný dokument",
-    "consolidatedText": "Konsolidované znenie (zhrnutie)",
-    "amendments": "Dodatky",
-    "cancellationDocument": "Zrušujúce VZN"
-  },
+  "vzn.validFrom": "Platnosť od",
+  "vzn.validUntil": "Platnosť do",
+  "vzn.mainDocument": "Hlavný dokument",
+  "vzn.consolidatedText": "Konsolidované znenie (zhrnutie)",
+  "vzn.amendments": "Dodatky",
+  "vzn.cancellationDocument": "Zrušujúce VZN",
   "share": "Zdieľať",
   "showMore": "Zobraziť ďalšie",
   "writeEmail": "Napísať e-mail",
@@ -122,12 +116,10 @@
   "noBlogPostsToShow": "Žiadne články na zobrazenie.",
   "noPagesToShow": "Žiadne stránky na zobrazenie.",
   "noUsersToShow": "Žiadne kontakty na zobrazenie.",
-  "menu": {
-    "show_less": "Zobraziť menej",
-    "show_more": "Zobraziť viac",
-    "openMenu": "Otvor menu",
-    "closeMenu": "Zavrieť menu"
-  },
+  "menu.show_less": "Zobraziť menej",
+  "menu.show_more": "Zobraziť viac",
+  "menu.openMenu": "Otvor menu",
+  "menu.closeMenu": "Zavrieť menu",
   "skipNavigation": "Preskočiť navigáciu",
   "title": "Bratislava.sk",
   "titleWithChild": "{{childTitle}} – Bratislava.sk",
@@ -135,197 +127,127 @@
   "passwordReveal": "Zobraz alebo skry heslo",
   "clearInput": "Zmazať pole",
   "copyToClipboard": "Kopírovať obsah",
-  "NavMenu": {
-    "aria": {
-      "navMenuLabel": "Navigačné menu",
-      "backTo": "Späť na {{backTo}}"
-    },
-    "more": "Ďalšie"
-  },
-  "Pagination": {
-    "aria": {
-      "goToPage": "Ísť na stranu {{page}}",
-      "goToPreviousPage": "Ísť na predchádzajúcu stranu",
-      "goToNextPage": "Ísť na ďalšiu stranu"
-    }
-  },
-  "Footer": {
-    "contactForMedia": "Kontakt pre médiá:",
-    "copyright": "© {{year}} Hlavné mesto SR Bratislava, vytvorili <innovations>Inovácie mesta Bratislava</innovations>"
-  },
-  "Breadcrumbs": {
-    "homepage": "Domov",
-    "back": "Späť"
-  },
-  "TopServices": {
-    "learnMore": "Zistiť viac"
-  },
-  "MinimumCalculator": {
-    "title": "Kalkulačka na životné minimum",
-    "description": "Overte si rýchlo a jednoducho, či príjmy Vašej domácnosti stačia na pokrytie životného minima. Bez toho vám nevieme poskytnúť miesto v našej ubytovni.",
-    "placeholder": "Zadajte hodnotu",
-    "adultsText": "Počet dospelých vo Vašej domácnosti",
-    "childrenText": "Počet detí vo Vašej domácnosti",
-    "incomeText": "Výška mesačných príjmov Vašej domácnosti v €",
-    "buttonText": "Spĺňam životné minimum?",
-    "answerYes": "Áno",
-    "answerNo": "Nie",
-    "answerDescriptionYes": "Vaše mesačné príjmy dosahujú potrebnú výšku a máte nárok uchádzať sa o prechodné ubytovanie v našej ubytovni.",
-    "answerDescriptionNo": "Na splnenie životného minima potrebujete dosiahnuť výšku príjmov aspoň XY €. Preto nemáte nárok uchádzať sa o prechodné ubytovanie v našej ubytovni."
-  },
-  "HomepageTabs": {
-    "tabs": {
-      "LatestNews": "Aktuality",
-      "OfficialBoard": "Úradná tabuľa",
-      "RoadClosures": "Rozkopávky",
-      "Disclosure": "Zverejňovanie"
-    },
-    "aria": {
-      "tabListName": "Aktuálne informácie"
-    },
-    "readMore": "Čítať viac",
-    "files": "Súbory",
-    "moreInfo": "Viac informacií",
-    "allInformationOnSite": "Všetky informácie nájdete na stránke"
-  },
-  "RelatedBlogPostsSection": {
-    "relatedBlogPosts": "Súvisiace články",
-    "readMore": "Čítať viac"
-  },
-  "Bookmark": {
-    "aria": {
-      "close": "Zavrieť"
-    }
-  },
-  "Dialog": {
-    "aria": {
-      "close": "Zavrieť vyskakovacie okno"
-    }
-  },
-  "Tag": {
-    "aria": {
-      "removeTag": "Odstrániť tag {{tag}}"
-    }
-  },
-  "EventCard": {
-    "from": "od"
-  },
-  "Carousel": {
-    "aria": {
-      "controlButtons": "Ovládacie tlačidlá",
-      "previous": "Predchádzajúci",
-      "next": "Ďalší"
-    }
-  },
-  "Gallery": {
-    "aria": {
-      "openGallery": "Otvoriť galériu obrázkov",
-      "previousImage": "Predchádzajúci obrázok",
-      "nextImage": "Ďalší obrázok",
-      "imageLightBoxDescription": "Galéria obrázkov. Stlačte šípku vľavo pre zobrazenie predchádzajúceho obrázku. Stlačte šípku vpravo pre zobrazenie nasledujúceho obrázku. Zatvorte stlačením klávesu Escape.",
-      "descriptionSlider": "Posúvač",
-      "closeGallery": "Zavrieť galériu obrázkov"
-    },
-    "morePhotos": "{count, plural, one {{fotografia}} few {{fotografie}} other {fotografií}}"
-  },
-  "ContactCtaCard": {
-    "email": "Email",
-    "address": "Adresa",
-    "web": "Web",
-    "phone": "Telefón"
-  },
-  "FileList": {
-    "aria": {
-      "downloadFileAriaLabel": "Stiahnuť súbor {{title}}, formát {{format}}, {{size}}",
-      "downloadFile": "Stiahnuť súbor"
-    }
-  },
-  "InbaRelease": {
-    "releasedOn": "Publikované {{date}}",
-    "inThisRelease": "V tomto čísle nájdete",
-    "toDownload": "Na stiahnutie"
-  },
-  "InbaArticle": {
-    "publishedInThisRelease": "Publikované v čísle {{releaseTitle}}, ktoré vyšlo {{releaseDate}}."
-  },
-  "BlogPostsFilter": {
-    "articleFilter": "Filter článkov",
-    "allArticles": "Všetky články",
-    "subcategories": "Podkategórie"
-  },
-  "SearchPage": {
-    "whatAreYouLookingFor": "Čo hľadáte?",
-    "searchOptions": "Možnosti vyhľadávania",
-    "showingResults": "Zobrazujeme {{count}} {count, plural, one {výsledok} few {výsledky} other {výsledkov}}",
-    "allResults": "Všetky výsledky",
-    "moreResults": "Viac výsledkov",
-    "noResults": "Žiadne výsledky",
-    "enterSearchQuery": "Zadajte hľadaný výraz",
-    "article": "Článok",
-    "articles": "Články",
-    "inbaArticle": "in.ba článok",
-    "inbaArticles": "in.ba články",
-    "page": "Stránka",
-    "pages": "Stránky",
-    "contact": "Kontakt",
-    "contacts": "Kontakty",
-    "document": "Dokument",
-    "documents": "Dokumenty",
-    "regulation": "VZN",
-    "regulations": "VZN",
-    "numberOfFiles": "{{count}} {count, plural, one {súbor} few {súbory} other {súborov}}"
-  },
-  "Regulation": {
-    "regulation": "Všeobecne záväzné nariadenie",
-    "regulations": "Všeobecne záväzné nariadenia",
-    "validity": {
-      "cancelled": "Zrušené",
-      "valid": "Platné",
-      "since": "od"
-    },
-    "mainDocument": "Hlavný dokument",
-    "consolidatedText": "Konsolidované znenie",
-    "fullTextRegulation": "Úplné znenie",
-    "noConsolidatedTextMessage": "K tomuto VZN neexistuje konsolidované znenie.",
-    "attachments": "Prílohy",
-    "noAttachmentsMessage": "Toto VZN nemá prílohy.",
-    "numberOfAttachments": "{{count}} {count, plural, one {príloha} few {prílohy} other {príloh}}",
-    "amendments": "Dodatky",
-    "noAmendmentsMessage": "K tomuto VZN neexistujú dodatky.",
-    "numberOfAmendments": "{{count}} {count, plural, one {{dodatok}} few {{dodatky}} other {{dodatkov}}}",
-    "influenceOnOtherRegulations": "Vplyv na iné VZN",
-    "thisRegulationAmends": "Toto VZN je dodatkom k",
-    "thisRegulationDoesntAmend": "Toto VZN nie je dodatkom k žiadnemu VZN.",
-    "thisRegulationCancells": "Toto VZN zrušuje",
-    "thisRegulationDoesntCancell": "Toto VZN nezrušuje žiadne VZN.",
-    "linkToRegulationMessage": "Prejsť na VZN",
-    "relatedRegulations": "Súvisiace všeobecne záväzné nariadenia",
-    "category": {
-      "daneAPoplatky": "Dane a poplatky",
-      "pomenovanieUlic": "Pomenovanie ulíc",
-      "hospodarenie": "Hospodárenie",
-      "uzemnePlanovanie": "Územné plánovanie",
-      "poriadokACistota": "Poriadok a čistota",
-      "socialnaPomocASkolstvo": "Sociálna pomoc a školstvo",
-      "ostatne": "Ostatné",
-      "archiv": "Archív"
-    },
-    "aria": {
-      "linkToRegulationAriaLabel": "Prejsť na {{title}}"
-    }
-  },
-  "OfficialBoard": {
-    "officialBoard": "Úradná tabuľa",
-    "publishedFrom": "Zverejnené od",
-    "publishedTo": "Zverejnené do",
-    "category": "Kategória",
-    "allOptions": "Všetky",
-    "publicationState": "Stav zverejnenia",
-    "description": "Popis",
-    "attachments": "Prílohy",
-    "details": "Podrobnosti",
-    "noAttachmentsMessage": "K tomuto dokumentu sa nepodarilo nájsť žiadne prílohy.",
-    "published": "Zverejnené",
-    "archived": "Archivované"
-  }
+  "NavMenu.aria.navMenuLabel": "Navigačné menu",
+  "NavMenu.aria.backTo": "Späť na {{backTo}}",
+  "NavMenu.more": "Ďalšie",
+  "Pagination.aria.goToPage": "Ísť na stranu {{page}}",
+  "Pagination.aria.goToPreviousPage": "Ísť na predchádzajúcu stranu",
+  "Pagination.aria.goToNextPage": "Ísť na ďalšiu stranu",
+  "Footer.contactForMedia": "Kontakt pre médiá:",
+  "Footer.copyright": "© {{year}} Hlavné mesto SR Bratislava, vytvorili <innovations>Inovácie mesta Bratislava</innovations>",
+  "Breadcrumbs.homepage": "Domov",
+  "Breadcrumbs.back": "Späť",
+  "TopServices.learnMore": "Zistiť viac",
+  "MinimumCalculator.title": "Kalkulačka na životné minimum",
+  "MinimumCalculator.description": "Overte si rýchlo a jednoducho, či príjmy Vašej domácnosti stačia na pokrytie životného minima. Bez toho vám nevieme poskytnúť miesto v našej ubytovni.",
+  "MinimumCalculator.placeholder": "Zadajte hodnotu",
+  "MinimumCalculator.adultsText": "Počet dospelých vo Vašej domácnosti",
+  "MinimumCalculator.childrenText": "Počet detí vo Vašej domácnosti",
+  "MinimumCalculator.incomeText": "Výška mesačných príjmov Vašej domácnosti v €",
+  "MinimumCalculator.buttonText": "Spĺňam životné minimum?",
+  "MinimumCalculator.answerYes": "Áno",
+  "MinimumCalculator.answerNo": "Nie",
+  "MinimumCalculator.answerDescriptionYes": "Vaše mesačné príjmy dosahujú potrebnú výšku a máte nárok uchádzať sa o prechodné ubytovanie v našej ubytovni.",
+  "MinimumCalculator.answerDescriptionNo": "Na splnenie životného minima potrebujete dosiahnuť výšku príjmov aspoň XY €. Preto nemáte nárok uchádzať sa o prechodné ubytovanie v našej ubytovni.",
+  "HomepageTabs.tabs.LatestNews": "Aktuality",
+  "HomepageTabs.tabs.OfficialBoard": "Úradná tabuľa",
+  "HomepageTabs.tabs.RoadClosures": "Rozkopávky",
+  "HomepageTabs.tabs.Disclosure": "Zverejňovanie",
+  "HomepageTabs.aria.tabListName": "Aktuálne informácie",
+  "HomepageTabs.readMore": "Čítať viac",
+  "HomepageTabs.files": "Súbory",
+  "HomepageTabs.moreInfo": "Viac informacií",
+  "HomepageTabs.allInformationOnSite": "Všetky informácie nájdete na stránke",
+  "RelatedBlogPostsSection.relatedBlogPosts": "Súvisiace články",
+  "RelatedBlogPostsSection.readMore": "Čítať viac",
+  "Bookmark.aria.close": "Zavrieť",
+  "Dialog.aria.close": "Zavrieť vyskakovacie okno",
+  "Tag.aria.removeTag": "Odstrániť tag {{tag}}",
+  "EventCard.from": "od",
+  "Carousel.aria.controlButtons": "Ovládacie tlačidlá",
+  "Carousel.aria.previous": "Predchádzajúci",
+  "Carousel.aria.next": "Ďalší",
+  "Gallery.aria.openGallery": "Otvoriť galériu obrázkov",
+  "Gallery.aria.previousImage": "Predchádzajúci obrázok",
+  "Gallery.aria.nextImage": "Ďalší obrázok",
+  "Gallery.aria.imageLightBoxDescription": "Galéria obrázkov. Stlačte šípku vľavo pre zobrazenie predchádzajúceho obrázku. Stlačte šípku vpravo pre zobrazenie nasledujúceho obrázku. Zatvorte stlačením klávesu Escape.",
+  "Gallery.aria.descriptionSlider": "Posúvač",
+  "Gallery.aria.closeGallery": "Zavrieť galériu obrázkov",
+  "Gallery.morePhotos": "{count, plural, one {{fotografia}} few {{fotografie}} other {fotografií}}",
+  "ContactCtaCard.email": "Email",
+  "ContactCtaCard.address": "Adresa",
+  "ContactCtaCard.web": "Web",
+  "ContactCtaCard.phone": "Telefón",
+  "FileList.aria.downloadFileAriaLabel": "Stiahnuť súbor {{title}}, formát {{format}}, {{size}}",
+  "FileList.aria.downloadFile": "Stiahnuť súbor",
+  "InbaRelease.releasedOn": "Publikované {{date}}",
+  "InbaRelease.inThisRelease": "V tomto čísle nájdete",
+  "InbaRelease.toDownload": "Na stiahnutie",
+  "InbaArticle.publishedInThisRelease": "Publikované v čísle {{releaseTitle}}, ktoré vyšlo {{releaseDate}}.",
+  "BlogPostsFilter.articleFilter": "Filter článkov",
+  "BlogPostsFilter.allArticles": "Všetky články",
+  "BlogPostsFilter.subcategories": "Podkategórie",
+  "SearchPage.whatAreYouLookingFor": "Čo hľadáte?",
+  "SearchPage.searchOptions": "Možnosti vyhľadávania",
+  "SearchPage.showingResults": "Zobrazujeme {{count}} {count, plural, one {výsledok} few {výsledky} other {výsledkov}}",
+  "SearchPage.allResults": "Všetky výsledky",
+  "SearchPage.moreResults": "Viac výsledkov",
+  "SearchPage.noResults": "Žiadne výsledky",
+  "SearchPage.enterSearchQuery": "Zadajte hľadaný výraz",
+  "SearchPage.article": "Článok",
+  "SearchPage.articles": "Články",
+  "SearchPage.inbaArticle": "in.ba článok",
+  "SearchPage.inbaArticles": "in.ba články",
+  "SearchPage.page": "Stránka",
+  "SearchPage.pages": "Stránky",
+  "SearchPage.contact": "Kontakt",
+  "SearchPage.contacts": "Kontakty",
+  "SearchPage.document": "Dokument",
+  "SearchPage.documents": "Dokumenty",
+  "SearchPage.regulation": "VZN",
+  "SearchPage.regulations": "VZN",
+  "SearchPage.numberOfFiles": "{{count}} {count, plural, one {súbor} few {súbory} other {súborov}}",
+  "Regulation.regulation": "Všeobecne záväzné nariadenie",
+  "Regulation.regulations": "Všeobecne záväzné nariadenia",
+  "Regulation.validity.cancelled": "Zrušené",
+  "Regulation.validity.valid": "Platné",
+  "Regulation.validity.since": "od",
+  "Regulation.mainDocument": "Hlavný dokument",
+  "Regulation.consolidatedText": "Konsolidované znenie",
+  "Regulation.fullTextRegulation": "Úplné znenie",
+  "Regulation.noConsolidatedTextMessage": "K tomuto VZN neexistuje konsolidované znenie.",
+  "Regulation.attachments": "Prílohy",
+  "Regulation.noAttachmentsMessage": "Toto VZN nemá prílohy.",
+  "Regulation.numberOfAttachments": "{{count}} {count, plural, one {príloha} few {prílohy} other {príloh}}",
+  "Regulation.amendments": "Dodatky",
+  "Regulation.noAmendmentsMessage": "K tomuto VZN neexistujú dodatky.",
+  "Regulation.numberOfAmendments": "{{count}} {count, plural, one {{dodatok}} few {{dodatky}} other {{dodatkov}}}",
+  "Regulation.influenceOnOtherRegulations": "Vplyv na iné VZN",
+  "Regulation.thisRegulationAmends": "Toto VZN je dodatkom k",
+  "Regulation.thisRegulationDoesntAmend": "Toto VZN nie je dodatkom k žiadnemu VZN.",
+  "Regulation.thisRegulationCancells": "Toto VZN zrušuje",
+  "Regulation.thisRegulationDoesntCancell": "Toto VZN nezrušuje žiadne VZN.",
+  "Regulation.linkToRegulationMessage": "Prejsť na VZN",
+  "Regulation.relatedRegulations": "Súvisiace všeobecne záväzné nariadenia",
+  "Regulation.category.daneAPoplatky": "Dane a poplatky",
+  "Regulation.category.pomenovanieUlic": "Pomenovanie ulíc",
+  "Regulation.category.hospodarenie": "Hospodárenie",
+  "Regulation.category.uzemnePlanovanie": "Územné plánovanie",
+  "Regulation.category.poriadokACistota": "Poriadok a čistota",
+  "Regulation.category.socialnaPomocASkolstvo": "Sociálna pomoc a školstvo",
+  "Regulation.category.ostatne": "Ostatné",
+  "Regulation.category.archiv": "Archív",
+  "Regulation.aria.linkToRegulationAriaLabel": "Prejsť na {{title}}",
+  "OfficialBoard.officialBoard": "Úradná tabuľa",
+  "OfficialBoard.publishedFrom": "Zverejnené od",
+  "OfficialBoard.publishedTo": "Zverejnené do",
+  "OfficialBoard.category": "Kategória",
+  "OfficialBoard.allOptions": "Všetky",
+  "OfficialBoard.publicationState": "Stav zverejnenia",
+  "OfficialBoard.description": "Popis",
+  "OfficialBoard.attachments": "Prílohy",
+  "OfficialBoard.details": "Podrobnosti",
+  "OfficialBoard.noAttachmentsMessage": "K tomuto dokumentu sa nepodarilo nájsť žiadne prílohy.",
+  "OfficialBoard.published": "Zverejnené",
+  "OfficialBoard.archived": "Archivované"
 }

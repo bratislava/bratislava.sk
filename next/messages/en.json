@@ -1,12 +1,8 @@
 {
-  "language_short": {
-    "sk": "SK",
-    "en": "EN"
-  },
-  "language_long": {
-    "sk": "Slovensky",
-    "en": "English"
-  },
+  "language_short.sk": "SK",
+  "language_short.en": "EN",
+  "language_long.sk": "Slovensky",
+  "language_long.en": "English",
   "e_services": "E-services",
   "signin": "SignIn",
   "signup": "SignUp",
@@ -66,21 +62,17 @@
   "showLess": "Show less",
   "articleCategories": "Article categories",
   "gallery": "Gallery",
-  "vzn": {
-    "validFrom": "Valid from",
-    "validUntil": "Valid until",
-    "mainDocument": "Main document",
-    "consolidatedText": "Consolidated text",
-    "amendments": "Amendments",
-    "cancellationDocument": "Cancellation document"
-  },
+  "vzn.validFrom": "Valid from",
+  "vzn.validUntil": "Valid until",
+  "vzn.mainDocument": "Main document",
+  "vzn.consolidatedText": "Consolidated text",
+  "vzn.amendments": "Amendments",
+  "vzn.cancellationDocument": "Cancellation document",
   "share": "Share",
-  "menu": {
-    "show_less": "Show less",
-    "show_more": "Show more",
-    "openMenu": "Open menu",
-    "closeMenu": "Close the menu"
-  },
+  "menu.show_less": "Show less",
+  "menu.show_more": "Show more",
+  "menu.openMenu": "Open menu",
+  "menu.closeMenu": "Close the menu",
   "showMore": "Show more",
   "writeEmail": "Write an e-mail",
   "today": "Today",
@@ -135,196 +127,126 @@
   "passwordReveal": "Show or hide password",
   "clearInput": "Erase field",
   "copyToClipboard": "Copy to clipboard",
-  "NavMenu": {
-    "aria": {
-      "navMenuLabel": "Main menu",
-      "backTo": "Back to {{backTo}}"
-    },
-    "more": "More"
-  },
-  "Pagination": {
-    "aria": {
-      "goToPage": "Go to page {{page}}",
-      "goToPreviousPage": "Go to previous page",
-      "goToNextPage": "Go to next page"
-    }
-  },
-  "Footer": {
-    "contactForMedia": "Contact for media:",
-    "copyright": "© {{year}} Hlavné mesto SR Bratislava"
-  },
-  "Breadcrumbs": {
-    "homepage": "Homepage",
-    "back": "Back"
-  },
-  "TopServices": {
-    "learnMore": "Read more"
-  },
-  "MinimumCalculator": {
-    "title": "Living wage calculator",
-    "description": "Check quickly and easily whether your household's income is enough to cover the subsistence level. Without it, we cannot provide you with a place in our hostel.",
-    "placeholder": "Type a value",
-    "adultsText": "Number of adults in your household",
-    "childrenText": "Number of children in your household",
-    "incomeText": "The amount of monthly income of your household in €",
-    "buttonText": "Do I meet the subsistence level?",
-    "answerYes": "Yes",
-    "answerNo": "No",
-    "answerDescriptionYes": "Your monthly income reaches the required amount and you are entitled to apply for temporary accommodation in our hostel.",
-    "answerDescriptionNo": "To meet the subsistence level, you need to achieve an income of at least XY €. Therefore, you are not entitled to apply for temporary accommodation in our hostel."
-  },
-  "HomepageTabs": {
-    "tabs": {
-      "LatestNews": "Latest News",
-      "OfficialBoard": "Official noticeboard",
-      "RoadClosures": "Road closures",
-      "Disclosure": "Public information"
-    },
-    "aria": {
-      "tabListName": "Actual information"
-    },
-    "readMore": "Read more",
-    "files": "Files",
-    "moreInfo": "More info",
-    "allInformationOnSite": "All news can be find on site"
-  },
-  "RelatedBlogPostsSection": {
-    "relatedBlogPosts": "Related articles",
-    "readMore": "Read more"
-  },
-  "Bookmark": {
-    "aria": {
-      "close": "Close"
-    }
-  },
-  "Dialog": {
-    "aria": {
-      "close": "Close dialog"
-    }
-  },
-  "Tag": {
-    "aria": {
-      "removeTag": "Remove tag {{tag}}"
-    }
-  },
-  "EventCard": {
-    "from": "from"
-  },
-  "Carousel": {
-    "aria": {
-      "controlButtons": "Control buttons",
-      "previous": "Previous",
-      "next": "Next"
-    }
-  },
-  "Gallery": {
-    "aria": {
-      "openGallery": "Open image gallery",
-      "previousImage": "Previous image",
-      "nextImage": "Next image",
-      "imageLightBoxDescription": "Image gallery. Press left arrow key to go to previous image. Press right arrow key to go to next image. Press Escape key to close image gallery.",
-      "descriptionSlider": "Slider",
-      "closeGallery": "Close image gallery"
-    },
-    "morePhotos": "photos"
-  },
-  "ContactCtaCard": {
-    "email": "Email",
-    "address": "Address",
-    "web": "Web",
-    "phone": "Phone"
-  },
-  "FileList": {
-    "aria": {
-      "downloadFileAriaLabel": "Download file {{title}}, format {{format}}, {{size}}",
-      "downloadFile": "Download file"
-    }
-  },
-  "InbaRelease": {
-    "releasedOn": "Published on {{date}}",
-    "inThisRelease": "In this issue",
-    "toDownload": "Downloads"
-  },
-  "InbaArticle": {
-    "publishedInThisRelease": "This article was published in the issue {{releaseTitle}} on {{releaseDate}}."
-  },
-  "BlogPostsFilter": {
-    "articleFilter": "Article filter",
-    "allArticles": "All articles",
-    "subcategories": "Subcategories"
-  },
-  "SearchPage": {
-    "whatAreYouLookingFor": "What are you looking for?",
-    "searchOptions": "Search options",
-    "showingResults": "Showing {{count}} {count, plural, one {{result}} other {{results}}}",
-    "allResults": "All results",
-    "moreResults": "More results",
-    "noResults": "No results found",
-    "enterSearchQuery": "Enter a search query",
-    "article": "Article",
-    "articles": "Articles",
-    "inbaArticle": "in.ba article",
-    "inbaArticles": "in.ba articles",
-    "page": "Page",
-    "pages": "Pages",
-    "contact": "Contact",
-    "contacts": "Contacts",
-    "document": "Document",
-    "documents": "Documents",
-    "regulation": "Regulation",
-    "regulations": "Regulations"
-  },
-  "Regulation": {
-    "regulation": "Generally binding regulation",
-    "regulations": "Generally binding regulations",
-    "validity": {
-      "cancelled": "Cancelled",
-      "valid": "Valid",
-      "since": "since"
-    },
-    "mainDocument": "Main document",
-    "consolidatedText": "Consolidated text",
-    "fullTextRegulation": "Full text regulation",
-    "noConsolidatedTextMessage": "This regulation has no consolidated text document.",
-    "attachments": "Attachments",
-    "noAttachmentsMessage": "This regulation has no attachments.",
-    "numberOfAttachments": "{{count}} {count, plural, one {{attachment}} other {{attachments}}}",
-    "amendments": "Amendments",
-    "noAmendmentsMessage": "There are no amendments to this regulation.",
-    "numberOfAmendments": "{{count}} {count, plural, one {{amendment}} other {{amendments}}}",
-    "influenceOnOtherRegulations": "Influence on other regulations",
-    "thisRegulationAmends": "This regulation amends",
-    "thisRegulationDoesntAmend": "This regulation doesn't amend any regulations.",
-    "thisRegulationCancells": "This regulation cancels",
-    "thisRegulationDoesntCancell": "This regulation doesn't cancel any regulation.",
-    "linkToRegulationMessage": "Go to regulation",
-    "relatedRegulations": "Related generally binding regulations",
-    "category": {
-      "daneAPoplatky": "Tax and fees",
-      "pomenovanieUlic": "Street naming",
-      "hospodarenie": "Economy",
-      "uzemnePlanovanie": "Zoning",
-      "poriadokACistota": "Order and cleanliness",
-      "socialnaPomocASkolstvo": "Social services and Education",
-      "ostatne": "Other",
-      "archiv": "Archive"
-    },
-    "aria": {
-      "linkToRegulationAriaLabel": "Go to regulation {{title}}"
-    }
-  },
-  "OfficialBoard": {
-    "officialBoard": "Official noticeboard",
-    "publishedFrom": "Published from",
-    "publishedTo": "Published to",
-    "category": "Category",
-    "allOptions": "All",
-    "publicationState": "Publication state",
-    "description": "Description",
-    "attachments": "Attachments",
-    "details": "Details",
-    "noAttachmentsMessage": "We didn't find any attachments to this notice.",
-    "published": "Published",
-    "archived": "Archived"
-  }
+  "NavMenu.aria.navMenuLabel": "Main menu",
+  "NavMenu.aria.backTo": "Back to {{backTo}}",
+  "NavMenu.more": "More",
+  "Pagination.aria.goToPage": "Go to page {{page}}",
+  "Pagination.aria.goToPreviousPage": "Go to previous page",
+  "Pagination.aria.goToNextPage": "Go to next page",
+  "Footer.contactForMedia": "Contact for media:",
+  "Footer.copyright": "© {{year}} Hlavné mesto SR Bratislava",
+  "Breadcrumbs.homepage": "Homepage",
+  "Breadcrumbs.back": "Back",
+  "TopServices.learnMore": "Read more",
+  "MinimumCalculator.title": "Living wage calculator",
+  "MinimumCalculator.description": "Check quickly and easily whether your household's income is enough to cover the subsistence level. Without it, we cannot provide you with a place in our hostel.",
+  "MinimumCalculator.placeholder": "Type a value",
+  "MinimumCalculator.adultsText": "Number of adults in your household",
+  "MinimumCalculator.childrenText": "Number of children in your household",
+  "MinimumCalculator.incomeText": "The amount of monthly income of your household in €",
+  "MinimumCalculator.buttonText": "Do I meet the subsistence level?",
+  "MinimumCalculator.answerYes": "Yes",
+  "MinimumCalculator.answerNo": "No",
+  "MinimumCalculator.answerDescriptionYes": "Your monthly income reaches the required amount and you are entitled to apply for temporary accommodation in our hostel.",
+  "MinimumCalculator.answerDescriptionNo": "To meet the subsistence level, you need to achieve an income of at least XY €. Therefore, you are not entitled to apply for temporary accommodation in our hostel.",
+  "HomepageTabs.tabs.LatestNews": "Latest News",
+  "HomepageTabs.tabs.OfficialBoard": "Official noticeboard",
+  "HomepageTabs.tabs.RoadClosures": "Road closures",
+  "HomepageTabs.tabs.Disclosure": "Public information",
+  "HomepageTabs.aria.tabListName": "Actual information",
+  "HomepageTabs.readMore": "Read more",
+  "HomepageTabs.files": "Files",
+  "HomepageTabs.moreInfo": "More info",
+  "HomepageTabs.allInformationOnSite": "All news can be find on site",
+  "RelatedBlogPostsSection.relatedBlogPosts": "Related articles",
+  "RelatedBlogPostsSection.readMore": "Read more",
+  "Bookmark.aria.close": "Close",
+  "Dialog.aria.close": "Close dialog",
+  "Tag.aria.removeTag": "Remove tag {{tag}}",
+  "EventCard.from": "from",
+  "Carousel.aria.controlButtons": "Control buttons",
+  "Carousel.aria.previous": "Previous",
+  "Carousel.aria.next": "Next",
+  "Gallery.aria.openGallery": "Open image gallery",
+  "Gallery.aria.previousImage": "Previous image",
+  "Gallery.aria.nextImage": "Next image",
+  "Gallery.aria.imageLightBoxDescription": "Image gallery. Press left arrow key to go to previous image. Press right arrow key to go to next image. Press Escape key to close image gallery.",
+  "Gallery.aria.descriptionSlider": "Slider",
+  "Gallery.aria.closeGallery": "Close image gallery",
+  "Gallery.morePhotos": "photos",
+  "ContactCtaCard.email": "Email",
+  "ContactCtaCard.address": "Address",
+  "ContactCtaCard.web": "Web",
+  "ContactCtaCard.phone": "Phone",
+  "FileList.aria.downloadFileAriaLabel": "Download file {{title}}, format {{format}}, {{size}}",
+  "FileList.aria.downloadFile": "Download file",
+  "InbaRelease.releasedOn": "Published on {{date}}",
+  "InbaRelease.inThisRelease": "In this issue",
+  "InbaRelease.toDownload": "Downloads",
+  "InbaArticle.publishedInThisRelease": "This article was published in the issue {{releaseTitle}} on {{releaseDate}}.",
+  "BlogPostsFilter.articleFilter": "Article filter",
+  "BlogPostsFilter.allArticles": "All articles",
+  "BlogPostsFilter.subcategories": "Subcategories",
+  "SearchPage.whatAreYouLookingFor": "What are you looking for?",
+  "SearchPage.searchOptions": "Search options",
+  "SearchPage.showingResults": "Showing {{count}} {count, plural, one {{result}} other {{results}}}",
+  "SearchPage.allResults": "All results",
+  "SearchPage.moreResults": "More results",
+  "SearchPage.noResults": "No results found",
+  "SearchPage.enterSearchQuery": "Enter a search query",
+  "SearchPage.article": "Article",
+  "SearchPage.articles": "Articles",
+  "SearchPage.inbaArticle": "in.ba article",
+  "SearchPage.inbaArticles": "in.ba articles",
+  "SearchPage.page": "Page",
+  "SearchPage.pages": "Pages",
+  "SearchPage.contact": "Contact",
+  "SearchPage.contacts": "Contacts",
+  "SearchPage.document": "Document",
+  "SearchPage.documents": "Documents",
+  "SearchPage.regulation": "Regulation",
+  "SearchPage.regulations": "Regulations",
+  "Regulation.regulation": "Generally binding regulation",
+  "Regulation.regulations": "Generally binding regulations",
+  "Regulation.validity.cancelled": "Cancelled",
+  "Regulation.validity.valid": "Valid",
+  "Regulation.validity.since": "since",
+  "Regulation.mainDocument": "Main document",
+  "Regulation.consolidatedText": "Consolidated text",
+  "Regulation.fullTextRegulation": "Full text regulation",
+  "Regulation.noConsolidatedTextMessage": "This regulation has no consolidated text document.",
+  "Regulation.attachments": "Attachments",
+  "Regulation.noAttachmentsMessage": "This regulation has no attachments.",
+  "Regulation.numberOfAttachments": "{{count}} {count, plural, one {{attachment}} other {{attachments}}}",
+  "Regulation.amendments": "Amendments",
+  "Regulation.noAmendmentsMessage": "There are no amendments to this regulation.",
+  "Regulation.numberOfAmendments": "{{count}} {count, plural, one {{amendment}} other {{amendments}}}",
+  "Regulation.influenceOnOtherRegulations": "Influence on other regulations",
+  "Regulation.thisRegulationAmends": "This regulation amends",
+  "Regulation.thisRegulationDoesntAmend": "This regulation doesn't amend any regulations.",
+  "Regulation.thisRegulationCancells": "This regulation cancels",
+  "Regulation.thisRegulationDoesntCancell": "This regulation doesn't cancel any regulation.",
+  "Regulation.linkToRegulationMessage": "Go to regulation",
+  "Regulation.relatedRegulations": "Related generally binding regulations",
+  "Regulation.category.daneAPoplatky": "Tax and fees",
+  "Regulation.category.pomenovanieUlic": "Street naming",
+  "Regulation.category.hospodarenie": "Economy",
+  "Regulation.category.uzemnePlanovanie": "Zoning",
+  "Regulation.category.poriadokACistota": "Order and cleanliness",
+  "Regulation.category.socialnaPomocASkolstvo": "Social services and Education",
+  "Regulation.category.ostatne": "Other",
+  "Regulation.category.archiv": "Archive",
+  "Regulation.aria.linkToRegulationAriaLabel": "Go to regulation {{title}}",
+  "OfficialBoard.officialBoard": "Official noticeboard",
+  "OfficialBoard.publishedFrom": "Published from",
+  "OfficialBoard.publishedTo": "Published to",
+  "OfficialBoard.category": "Category",
+  "OfficialBoard.allOptions": "All",
+  "OfficialBoard.publicationState": "Publication state",
+  "OfficialBoard.description": "Description",
+  "OfficialBoard.attachments": "Attachments",
+  "OfficialBoard.details": "Details",
+  "OfficialBoard.noAttachmentsMessage": "We didn't find any attachments to this notice.",
+  "OfficialBoard.published": "Published",
+  "OfficialBoard.archived": "Archived"
 }
