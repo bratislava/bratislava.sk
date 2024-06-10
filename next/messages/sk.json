@@ -130,7 +130,7 @@
   },
   "skipNavigation": "Preskočiť navigáciu",
   "title": "Bratislava.sk",
-  "titleWithChild": "{childTitle} – Bratislava.sk",
+  "titleWithChild": "{{childTitle}} – Bratislava.sk",
   "openTooltip": "Otvor popis",
   "passwordReveal": "Zobraz alebo skry heslo",
   "clearInput": "Zmazať pole",
@@ -138,20 +138,20 @@
   "NavMenu": {
     "aria": {
       "navMenuLabel": "Navigačné menu",
-      "backTo": "Späť na {backTo}"
+      "backTo": "Späť na {{backTo}}"
     },
     "more": "Ďalšie"
   },
   "Pagination": {
     "aria": {
-      "goToPage": "Ísť na stranu {page}",
+      "goToPage": "Ísť na stranu {{page}}",
       "goToPreviousPage": "Ísť na predchádzajúcu stranu",
       "goToNextPage": "Ísť na ďalšiu stranu"
     }
   },
   "Footer": {
     "contactForMedia": "Kontakt pre médiá:",
-    "copyright": "© {year} Hlavné mesto SR Bratislava, vytvorili <innovations>Inovácie mesta Bratislava</innovations>"
+    "copyright": "© {{year}} Hlavné mesto SR Bratislava, vytvorili <innovations>Inovácie mesta Bratislava</innovations>"
   },
   "Breadcrumbs": {
     "homepage": "Domov",
@@ -204,7 +204,7 @@
   },
   "Tag": {
     "aria": {
-      "removeTag": "Odstrániť tag {tag}"
+      "removeTag": "Odstrániť tag {{tag}}"
     }
   },
   "EventCard": {
@@ -226,7 +226,7 @@
       "descriptionSlider": "Posúvač",
       "closeGallery": "Zavrieť galériu obrázkov"
     },
-    "morePhotos": "{count, plural, one {fotografia} few {fotografie} other {fotografií}}"
+    "morePhotos": "{count, plural, one {{fotografia}} few {{fotografie}} other {fotografií}}"
   },
   "ContactCtaCard": {
     "email": "Email",
@@ -236,17 +236,17 @@
   },
   "FileList": {
     "aria": {
-      "downloadFileAriaLabel": "Stiahnuť súbor {title}, formát {format}, {size}",
+      "downloadFileAriaLabel": "Stiahnuť súbor {{title}}, formát {{format}}, {{size}}",
       "downloadFile": "Stiahnuť súbor"
     }
   },
   "InbaRelease": {
-    "releasedOn": "Publikované {date}",
+    "releasedOn": "Publikované {{date}}",
     "inThisRelease": "V tomto čísle nájdete",
     "toDownload": "Na stiahnutie"
   },
   "InbaArticle": {
-    "publishedInThisRelease": "Publikované v čísle {releaseTitle}, ktoré vyšlo {releaseDate}."
+    "publishedInThisRelease": "Publikované v čísle {{releaseTitle}}, ktoré vyšlo {{releaseDate}}."
   },
   "BlogPostsFilter": {
     "articleFilter": "Filter článkov",
@@ -256,7 +256,7 @@
   "SearchPage": {
     "whatAreYouLookingFor": "Čo hľadáte?",
     "searchOptions": "Možnosti vyhľadávania",
-    "showingResults": "Zobrazujeme {count} {count, plural, one {výsledok} few {výsledky} other {výsledkov}}",
+    "showingResults": "Zobrazujeme {{count}} {count, plural, one {výsledok} few {výsledky} other {výsledkov}}",
     "allResults": "Všetky výsledky",
     "moreResults": "Viac výsledkov",
     "noResults": "Žiadne výsledky",
@@ -273,7 +273,7 @@
     "documents": "Dokumenty",
     "regulation": "VZN",
     "regulations": "VZN",
-    "numberOfFiles": "{count} {count, plural, one {súbor} few {súbory} other {súborov}}"
+    "numberOfFiles": "{{count}} {count, plural, one {súbor} few {súbory} other {súborov}}"
   },
   "Regulation": {
     "regulation": "Všeobecne záväzné nariadenie",
@@ -289,10 +289,10 @@
     "noConsolidatedTextMessage": "K tomuto VZN neexistuje konsolidované znenie.",
     "attachments": "Prílohy",
     "noAttachmentsMessage": "Toto VZN nemá prílohy.",
-    "numberOfAttachments": "{count} {count, plural, one {príloha} few {prílohy} other {príloh}}",
+    "numberOfAttachments": "{{count}} {count, plural, one {príloha} few {prílohy} other {príloh}}",
     "amendments": "Dodatky",
     "noAmendmentsMessage": "K tomuto VZN neexistujú dodatky.",
-    "numberOfAmendments": "{count} {count, plural, one {dodatok} few {dodatky} other {dodatkov}}",
+    "numberOfAmendments": "{{count}} {count, plural, one {{dodatok}} few {{dodatky}} other {{dodatkov}}}",
     "influenceOnOtherRegulations": "Vplyv na iné VZN",
     "thisRegulationAmends": "Toto VZN je dodatkom k",
     "thisRegulationDoesntAmend": "Toto VZN nie je dodatkom k žiadnemu VZN.",
@@ -311,7 +311,7 @@
       "archiv": "Archív"
     },
     "aria": {
-      "linkToRegulationAriaLabel": "Prejsť na {title}"
+      "linkToRegulationAriaLabel": "Prejsť na {{title}}"
     }
   },
   "OfficialBoard": {

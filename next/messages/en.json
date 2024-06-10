@@ -130,7 +130,7 @@
   "noUsersToShow": "No contacts to show",
   "skipNavigation": "Skip navigation",
   "title": "Bratislava.sk",
-  "titleWithChild": "{childTitle} – Bratislava.sk",
+  "titleWithChild": "{{childTitle}} – Bratislava.sk",
   "openTooltip": "Open tooltip",
   "passwordReveal": "Show or hide password",
   "clearInput": "Erase field",
@@ -138,20 +138,20 @@
   "NavMenu": {
     "aria": {
       "navMenuLabel": "Main menu",
-      "backTo": "Back to {backTo}"
+      "backTo": "Back to {{backTo}}"
     },
     "more": "More"
   },
   "Pagination": {
     "aria": {
-      "goToPage": "Go to page {page}",
+      "goToPage": "Go to page {{page}}",
       "goToPreviousPage": "Go to previous page",
       "goToNextPage": "Go to next page"
     }
   },
   "Footer": {
     "contactForMedia": "Contact for media:",
-    "copyright": "© {year} Hlavné mesto SR Bratislava"
+    "copyright": "© {{year}} Hlavné mesto SR Bratislava"
   },
   "Breadcrumbs": {
     "homepage": "Homepage",
@@ -204,7 +204,7 @@
   },
   "Tag": {
     "aria": {
-      "removeTag": "Remove tag {tag}"
+      "removeTag": "Remove tag {{tag}}"
     }
   },
   "EventCard": {
@@ -236,17 +236,17 @@
   },
   "FileList": {
     "aria": {
-      "downloadFileAriaLabel": "Download file {title}, format {format}, {size}",
+      "downloadFileAriaLabel": "Download file {{title}}, format {{format}}, {{size}}",
       "downloadFile": "Download file"
     }
   },
   "InbaRelease": {
-    "releasedOn": "Published on {date}",
+    "releasedOn": "Published on {{date}}",
     "inThisRelease": "In this issue",
     "toDownload": "Downloads"
   },
   "InbaArticle": {
-    "publishedInThisRelease": "This article was published in the issue {releaseTitle} on {releaseDate}."
+    "publishedInThisRelease": "This article was published in the issue {{releaseTitle}} on {{releaseDate}}."
   },
   "BlogPostsFilter": {
     "articleFilter": "Article filter",
@@ -256,7 +256,7 @@
   "SearchPage": {
     "whatAreYouLookingFor": "What are you looking for?",
     "searchOptions": "Search options",
-    "showingResults": "Showing {count} {count, plural, one {result} other {results}}",
+    "showingResults": "Showing {{count}} {count, plural, one {{result}} other {{results}}}",
     "allResults": "All results",
     "moreResults": "More results",
     "noResults": "No results found",
@@ -288,10 +288,10 @@
     "noConsolidatedTextMessage": "This regulation has no consolidated text document.",
     "attachments": "Attachments",
     "noAttachmentsMessage": "This regulation has no attachments.",
-    "numberOfAttachments": "{count} {count, plural, one {attachment} other {attachments}}",
+    "numberOfAttachments": "{{count}} {count, plural, one {{attachment}} other {{attachments}}}",
     "amendments": "Amendments",
     "noAmendmentsMessage": "There are no amendments to this regulation.",
-    "numberOfAmendments": "{count} {count, plural, one {amendment} other {amendments}}",
+    "numberOfAmendments": "{{count}} {count, plural, one {{amendment}} other {{amendments}}}",
     "influenceOnOtherRegulations": "Influence on other regulations",
     "thisRegulationAmends": "This regulation amends",
     "thisRegulationDoesntAmend": "This regulation doesn't amend any regulations.",
@@ -310,7 +310,7 @@
       "archiv": "Archive"
     },
     "aria": {
-      "linkToRegulationAriaLabel": "Go to regulation {title}"
+      "linkToRegulationAriaLabel": "Go to regulation {{title}}"
     }
   },
   "OfficialBoard": {
