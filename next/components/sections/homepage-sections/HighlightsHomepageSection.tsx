@@ -1,5 +1,4 @@
 import { Typography } from '@bratislava/component-library'
-import { useTranslations } from 'next-intl'
 import React, { Fragment } from 'react'
 
 import BlogPostCard from '@/components/cards/BlogPostCard'
@@ -8,9 +7,10 @@ import ResponsiveCarousel from '@/components/common/Carousel/ResponsiveCarousel'
 import { useHomepageContext } from '@/components/providers/HomepageContextProvider'
 import { getCommonLinkProps } from '@/utils/getCommonLinkProps'
 import { isDefined } from '@/utils/isDefined'
+import { useTranslation } from '@/utils/useTranslation'
 
 const HighlightsHomepageSection = () => {
-  const t = useTranslations()
+  const { t } = useTranslation()
 
   const { homepage } = useHomepageContext()
   const { highlights } = homepage?.attributes ?? {}

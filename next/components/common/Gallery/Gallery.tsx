@@ -3,7 +3,6 @@
 /* eslint-disable jsx-a11y/interactive-supports-focus */
 
 import cx from 'classnames'
-import { useTranslations } from 'next-intl'
 import { useCallback, useState } from 'react'
 import { useOverlayTriggerState } from 'react-stately'
 import screens from 'tailwind.config.screens'
@@ -12,6 +11,7 @@ import { useWindowSize } from 'usehooks-ts'
 import StrapiImage from '@/components/common/Image/StrapiImage'
 import { UploadImageEntityFragment } from '@/services/graphql'
 import { onEnterOrSpaceKeyDown } from '@/utils/onEnterOrSpaceKeyDown'
+import { useTranslation } from '@/utils/useTranslation'
 
 import ImageLightBox from './ImageLightBox'
 
@@ -22,7 +22,7 @@ export type GalleryProps = {
 }
 
 const Gallery = ({ images = [] }: GalleryProps) => {
-  const t = useTranslations('Gallery')
+  const { t } = useTranslation()
 
   const { width: windowWidth } = useWindowSize()
   // TODO refactor to use som custom hook
@@ -53,7 +53,7 @@ const Gallery = ({ images = [] }: GalleryProps) => {
         <div
           role="button"
           tabIndex={0}
-          aria-label={t('aria.openGallery')}
+          aria-label={t('Gallery.aria.openGallery')}
           onKeyUp={onEnterOrSpaceKeyDown(() => openAtImageIndex(0))}
           className={cx('outline-primary cursor-default outline-offset-2 focus:outline-4')}
         >
@@ -85,7 +85,7 @@ const Gallery = ({ images = [] }: GalleryProps) => {
                   <div className="absolute top-0 flex h-full w-full flex-col items-center justify-center gap-0.5 bg-white p-2 text-center">
                     <div className="text-h2 font-semibold">+{moreImagesCount}</div>
                     <div className="text-large-respo">
-                      {t('morePhotos', { count: moreImagesCount })}
+                      {t('Gallery.morePhotos', { count: moreImagesCount })}
                     </div>
                   </div>
                 </div>

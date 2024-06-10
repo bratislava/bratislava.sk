@@ -1,4 +1,3 @@
-import { useTranslations } from 'next-intl'
 import React from 'react'
 
 import SearchIcon from '@/assets/images/search-icon.svg'
@@ -13,6 +12,7 @@ import { getCategoryColorLocalStyle } from '@/utils/colors'
 import { getCommonLinkProps } from '@/utils/getCommonLinkProps'
 import { isDefined } from '@/utils/isDefined'
 import { isExternalLink } from '@/utils/isExternalLink'
+import { useTranslation } from '@/utils/useTranslation'
 
 type NavBarProps = { className?: string }
 
@@ -21,7 +21,7 @@ const Divider = ({ className }: { className?: string }) => {
 }
 
 const NavBarHeader = ({ className }: NavBarProps) => {
-  const t = useTranslations()
+  const { t } = useTranslation()
 
   const { general } = useGeneralContext()
   const { header } = general?.data?.attributes ?? {}
@@ -73,7 +73,7 @@ const NavBarHeader = ({ className }: NavBarProps) => {
             <Divider />
           )}
 
-          <MLink data-cy="search-button" href={t('searchLink')} className="-mx-4 p-4">
+          <MLink data-cy="search-button" href={t('links.searchLink')} className="-mx-4 p-4">
             <SearchIcon />
           </MLink>
 

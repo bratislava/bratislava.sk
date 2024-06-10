@@ -1,6 +1,5 @@
 import { Typography } from '@bratislava/component-library'
 import { useIsFetching } from '@tanstack/react-query'
-import { useTranslations } from 'next-intl'
 import React, { useEffect, useRef, useState } from 'react'
 import { Selection, TagGroup, TagList } from 'react-aria-components'
 import { StringParam, useQueryParam, withDefault } from 'use-query-params'
@@ -14,6 +13,7 @@ import { SearchFilters } from '@/components/sections/SearchSection/useQueryBySea
 import { officialBoardListDefaultFilters } from '@/services/ginis/fetchers/officialBoardListFetcher'
 import { OfficialBoardPublicationState } from '@/services/ginis/types'
 import { getCategoryColorLocalStyle } from '@/utils/colors'
+import { useTranslation } from '@/utils/useTranslation'
 /*
  * RAC library recommends Selection as type for selection state, which is of type `'all' | Set`.
  * To use standard operations on Set, you have to check if selection is not 'all' to satisfy Typescript.
@@ -55,7 +55,7 @@ type Props =
     }
 
 const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
-  const t = useTranslations()
+  const { t } = useTranslation()
 
   const [routerQueryValue] = useQueryParam('keyword', withDefault(StringParam, ''))
   const [input, setInput] = useState('')
@@ -100,7 +100,7 @@ const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
     {
       id: 'officialBoard',
       displayName: t('SearchPage.document'),
-      displayNamePlural: t('officialBoard'),
+      displayNamePlural: t('SearchPage.officialBoard'),
     },
   ]
 
@@ -148,7 +148,7 @@ const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
     })
   }
 
-  const getResultsCountById = (optionId: SearchOption['id']): number => {
+  const getResultsCountById = (optionId: SearchOption['id']) => {
     if (optionId === defaultSearchOption.id) {
       return Object.values(resultsCount).reduce((a, b) => a + b, 0)
     }
@@ -202,7 +202,7 @@ const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
       <div className="flex flex-col gap-3 lg:gap-4">
         <SearchBar
           ref={searchRef}
-          placeholder={t('enterKeyword')}
+          placeholder={t('SearchPage.enterKeyword')}
           input={input}
           setInput={setInput}
           setSearchQuery={setSearchValue}
@@ -254,7 +254,8 @@ const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
       {getResultsCountById(selectedKey) > 0 ? (
         <Typography type="p">
           {t('SearchPage.showingResults', {
-            count: getResultsCountById(selectedKey),
+            // `?? 0` is here only for i18next-parser, otherwise, it doesn't create plurals
+            count: getResultsCountById(selectedKey) ?? 0,
           })}
         </Typography>
       ) : null}

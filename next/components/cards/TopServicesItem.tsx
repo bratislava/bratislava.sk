@@ -1,17 +1,17 @@
 import { Typography } from '@bratislava/component-library'
-import { useTranslations } from 'next-intl'
 
 import Button from '@/components/common/Button/Button'
 import Pictogram from '@/components/common/Pictogram/Pictogram'
 import { TopServicesItemFragment } from '@/services/graphql'
 import { getCommonLinkProps } from '@/utils/getCommonLinkProps'
+import { useTranslation } from '@/utils/useTranslation'
 
 type TopNineItemProps = {
   topServicesItem: TopServicesItemFragment
 }
 
 const TopServicesItem = ({ topServicesItem }: TopNineItemProps) => {
-  const t = useTranslations('TopServices')
+  const { t } = useTranslation()
   const { icon, link } = topServicesItem
 
   const { children: label, ...linkProps } = getCommonLinkProps(link)
@@ -26,7 +26,7 @@ const TopServicesItem = ({ topServicesItem }: TopNineItemProps) => {
           {label}
         </Typography>
         <Button variant="black-link" stretched {...linkProps}>
-          {t('learnMore')}
+          {t('TopServices.learnMore')}
         </Button>
       </div>
     </div>

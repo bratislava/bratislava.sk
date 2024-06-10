@@ -1,16 +1,16 @@
-import { useTranslations } from 'next-intl'
 import React from 'react'
 
 import { FacebookIcon, InstagramIcon, LinkedinIcon, TwitterIcon } from '@/assets/images'
 import SectionContainer from '@/components/common/SectionContainer/SectionContainer'
 import { SocialMediaButton } from '@/components/page-contents/BlogPostPageContent'
+import { useTranslation } from '@/utils/useTranslation'
 
 type Props = {
   twitterTitle?: string | null | undefined
 }
 
 const ShareButtonsSection = ({ twitterTitle }: Props) => {
-  const t = useTranslations()
+  const { t } = useTranslation()
 
   const twitterTextQuery = twitterTitle ? `&text=${twitterTitle}` : ''
 
@@ -18,7 +18,7 @@ const ShareButtonsSection = ({ twitterTitle }: Props) => {
     <SectionContainer className="mb-8">
       <div className="mt-14 flex flex-col">
         {/* FIXME Typography. Convert to use Typography. Issue: different size than Figma span */}
-        <span className="text-h5">{t('share')}</span>
+        <span className="text-h5">{t('ShareButtonsSection.share')}</span>
         <div className="flex gap-x-10 pt-5">
           <SocialMediaButton
             getLink={(socialLink) => `https://www.facebook.com/sharer/sharer.php?u=${socialLink}`}

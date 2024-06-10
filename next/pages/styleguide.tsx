@@ -1,4 +1,5 @@
 import { GetServerSideProps } from 'next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 import AccordionShowcase from '@/components/styleguide/showcases/AccordionShowcase'
 import AlertShowCase from '@/components/styleguide/showcases/AlertShowCase'
@@ -42,11 +43,11 @@ export const getServerSideProps: GetServerSideProps = async ({ locale }) => {
     return { notFound: true }
   }
 
-  const [messages] = await Promise.all([import(`../messages/${locale}.json`)])
+  const [translations] = await Promise.all([serverSideTranslations(locale)])
 
   return {
     props: {
-      messages: messages.default,
+      ...translations,
     },
   }
 }

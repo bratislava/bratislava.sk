@@ -1,8 +1,8 @@
 import { Typography } from '@bratislava/component-library'
-import { useTranslations } from 'next-intl'
 
 import { ArrowRightIcon } from '@/assets/ui-icons'
 import Button from '@/components/common/Button/Button'
+import { useTranslation } from '@/utils/useTranslation'
 
 type SearchResultsHeaderProps = {
   title: string
@@ -11,7 +11,7 @@ type SearchResultsHeaderProps = {
 }
 
 const SearchResultsHeader = ({ title, showButton, handleShowMore }: SearchResultsHeaderProps) => {
-  const t = useTranslations()
+  const { t } = useTranslation()
 
   return (
     <div className="flex flex-col flex-wrap items-baseline justify-between gap-y-2 lg:flex-row">

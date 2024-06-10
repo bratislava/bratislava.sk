@@ -1,6 +1,5 @@
 import { Typography } from '@bratislava/component-library'
 import cx from 'classnames'
-import { useTranslations } from 'next-intl'
 import React, { useMemo } from 'react'
 import { twMerge } from 'tailwind-merge'
 
@@ -8,6 +7,7 @@ import { AddressIcon, EmailIcon, WebIcon } from '@/assets/images'
 import { PhoneIcon } from '@/assets/ui-icons'
 import MLink from '@/components/common/MLink/MLink'
 import { ContactCardBlockFragment } from '@/services/graphql'
+import { useTranslation } from '@/utils/useTranslation'
 
 export enum ContactCtaCardType {
   Address,
@@ -26,17 +26,17 @@ type ContactCtaCardProps = {
  * Figma: https://www.figma.com/file/17wbd0MDQcMW9NbXl6UPs8/DS-ESBS%3A-Component-library?type=design&node-id=8988-24516&t=ZrNmOvM307DSHwAu-0
  */
 const ContactCtaCard = ({ className, contact, hasBackground }: ContactCtaCardProps) => {
-  const t = useTranslations('ContactCtaCard')
+  const { t } = useTranslation()
 
   const label = useMemo(() => {
     if (contact.overrideLabel) {
       return contact.overrideLabel
     }
     return {
-      [ContactCtaCardType.Email]: t('email'),
-      [ContactCtaCardType.Phone]: t('phone'),
-      [ContactCtaCardType.Address]: t('address'),
-      [ContactCtaCardType.Web]: t('web'),
+      [ContactCtaCardType.Email]: t('ContactCtaCard.email'),
+      [ContactCtaCardType.Phone]: t('ContactCtaCard.phone'),
+      [ContactCtaCardType.Address]: t('ContactCtaCard.address'),
+      [ContactCtaCardType.Web]: t('ContactCtaCard.web'),
     }[contact.type]
   }, [contact, t])
 

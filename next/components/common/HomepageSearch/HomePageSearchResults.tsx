@@ -1,11 +1,11 @@
 import Link from 'next/link'
-import { useTranslations } from 'next-intl'
 import { useRef } from 'react'
 import { useEventListener } from 'usehooks-ts'
 
 import { ChevronRightIcon } from '@/assets/ui-icons'
 import LoadingSpinner from '@/components/common/LoadingSpinner/LoadingSpinner'
 import { HomepageSearchData } from '@/services/meili/fetchers/homepageSearchFetcher'
+import { useTranslation } from '@/utils/useTranslation'
 
 type HomePageSearchResultsProps = {
   searchValue: string
@@ -14,7 +14,7 @@ type HomePageSearchResultsProps = {
 }
 
 const HomePageSearchResults = ({ searchValue, data, isLoading }: HomePageSearchResultsProps) => {
-  const t = useTranslations()
+  const { t } = useTranslation()
   const inputRef = useRef<(HTMLAnchorElement | null)[]>([])
 
   useEventListener('keydown', (e) => {
@@ -63,7 +63,7 @@ const HomePageSearchResults = ({ searchValue, data, isLoading }: HomePageSearchR
         </Link>
       ))}
       <Link
-        href={`${t('searchLink')}?keyword=${searchValue}`}
+        href={`${t('links.searchLink')}?keyword=${searchValue}`}
         passHref
         className="px-4 py-2 font-semibold hover:bg-main-100 focus:bg-main-100"
         ref={(el) => {
@@ -71,12 +71,12 @@ const HomePageSearchResults = ({ searchValue, data, isLoading }: HomePageSearchR
         }}
         data-cy="homepage-search-all-results"
       >
-        {t('allResults')}
+        {t('HomepageSearchResults.allResults')}
       </Link>
     </div>
   ) : (
     <div className="flex flex-col" data-cy="homepage-search-no-results">
-      <div className="px-4 py-2">{t('sorryNoResultsFound')}</div>
+      <div className="px-4 py-2">{t('HomepageSearchResults.sorryNoResultsFound')}</div>
     </div>
   )
 }

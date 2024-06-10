@@ -1,7 +1,6 @@
 import { Typography } from '@bratislava/component-library'
 import cx from 'classnames'
 import Image from 'next/image'
-import { useTranslations } from 'next-intl'
 import { useMemo, useState } from 'react'
 
 import WelcomeCard from '@/components/cards/WelcomeCard/WelcomeCard'
@@ -11,9 +10,10 @@ import SectionContainer from '@/components/common/SectionContainer/SectionContai
 import { useGeneralContext } from '@/components/providers/GeneralContextProvider'
 import { useHomepageContext } from '@/components/providers/HomepageContextProvider'
 import { generateImageSizes } from '@/utils/generateImageSizes'
+import { useTranslation } from '@/utils/useTranslation'
 
 const WelcomeHomepageSection = () => {
-  const t = useTranslations()
+  const { t } = useTranslation()
   const { menu } = useGeneralContext()
   const { homepage } = useHomepageContext()
 

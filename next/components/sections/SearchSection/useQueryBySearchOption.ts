@@ -1,5 +1,4 @@
 import { keepPreviousData, useQuery } from '@tanstack/react-query'
-import { useLocale, useTranslations } from 'next-intl'
 import { ReactNode } from 'react'
 
 import { SearchOption } from '@/components/sections/SearchSection/GlobalSearchSectionContent'
@@ -41,6 +40,9 @@ import {
 import { base64Encode } from '@/utils/base64'
 import { formatDate } from '@/utils/formatDate'
 import { isDefined } from '@/utils/isDefined'
+import { useLocale } from '@/utils/useLocale'
+import { useRegulationCategoryTranslationMap } from '@/utils/useRegulationCategoryTranslationMap'
+import { useTranslation } from '@/utils/useTranslation'
 
 export type SearchFilters =
   | PagesFilters
@@ -67,7 +69,7 @@ export const useQueryBySearchOption = ({
   optionKey: SearchOption['id']
   filters: SearchFilters
 }) => {
-  const t = useTranslations()
+  const { t } = useTranslation()
   const locale = useLocale()
 
   const pagesQuery = useQuery({
@@ -140,6 +142,8 @@ export const useQueryBySearchOption = ({
     },
   })
 
+  const regulationCategoryTranslationMap = useRegulationCategoryTranslationMap()
+
   const regulationsQuery = useQuery({
     // TODO filters type
     queryKey: getRegulationsQueryKey(filters),
@@ -149,7 +153,7 @@ export const useQueryBySearchOption = ({
       const formattedData: SearchResult[] =
         data?.hits?.map((regulation): SearchResult => {
           const categoryDisplayName = isDefined(regulation.category)
-            ? t(`Regulation.category.${regulation.category}`)
+            ? regulationCategoryTranslationMap[regulation.category]
             : null
 
           // we want to see, whether this regulation is amending any cancelled regulations, because in that case, this regulation is also cancelled

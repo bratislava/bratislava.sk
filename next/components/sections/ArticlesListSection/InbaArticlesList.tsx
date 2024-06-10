@@ -1,6 +1,5 @@
 import { Typography } from '@bratislava/component-library'
 import { keepPreviousData, useQuery } from '@tanstack/react-query'
-import { useLocale, useTranslations } from 'next-intl'
 import React from 'react'
 
 import BlogPostCard from '@/components/cards/BlogPostCard'
@@ -16,7 +15,9 @@ import {
 } from '@/services/meili/fetchers/inbaArticlesFetcher'
 import { getNumericLocalDate } from '@/utils/formatDate'
 import { generateImageSizes } from '@/utils/generateImageSizes'
+import { useLocale } from '@/utils/useLocale'
 import { useRoutePreservedState } from '@/utils/useRoutePreservedState'
+import { useTranslation } from '@/utils/useTranslation'
 
 const imageSizes = generateImageSizes({ default: '100vw', md: '50vw', lg: '33vw' })
 
@@ -25,7 +26,7 @@ type Props = {
 }
 
 const InbaArticlesList = ({ section }: Props) => {
-  const t = useTranslations()
+  const { t } = useTranslation()
   const locale = useLocale()
 
   const { title, text, featuredArticles } = section

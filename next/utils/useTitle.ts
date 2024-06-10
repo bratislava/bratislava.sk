@@ -1,10 +1,10 @@
-import { useTranslations } from 'next-intl'
+import { useTranslation } from '@/utils/useTranslation'
 
 export const useTitle = (childTitle?: string | null) => {
-  const t = useTranslations()
+  const { t } = useTranslation()
 
   if (childTitle) {
-    return t('titleWithChild', { childTitle })
+    return t('useTitle.titleWithChild', { childTitle })
   }
-  return t('title')
+  return t('useTitle.title')
 }

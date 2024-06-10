@@ -1,6 +1,6 @@
 import { GetStaticProps } from 'next'
 import Head from 'next/head'
-import { useTranslations } from 'next-intl'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import * as React from 'react'
 
 import PageHeader from '@/components/common/PageHeader/PageHeader'
@@ -12,6 +12,7 @@ import GlobalSearchSectionContent from '@/components/sections/SearchSection/Glob
 import { GeneralQuery } from '@/services/graphql'
 import { client } from '@/services/graphql/gql'
 import { useTitle } from '@/utils/useTitle'
+import { useTranslation } from '@/utils/useTranslation'
 
 type PageProps = {
   general: GeneralQuery
@@ -23,23 +24,23 @@ export const getStaticProps: GetStaticProps<PageProps> = async ({ locale }) => {
 
   if (!locale) return { notFound: true }
 
-  const [general, messages] = await Promise.all([
+  const [general, translations] = await Promise.all([
     client.General({ locale }),
-    import(`../messages/${locale}.json`),
+    serverSideTranslations(locale),
   ])
 
   return {
     props: {
       general,
-      messages: messages.default,
+      ...translations,
     },
     revalidate: 10,
   }
 }
 
 const Page = ({ general }: PageProps) => {
-  const t = useTranslations()
-  const title = useTitle(t('searching'))
+  const { t } = useTranslation()
+  const title = useTitle(t('SearchPage.searching'))
 
   return (
     <GeneralContextProvider general={general}>
@@ -49,8 +50,8 @@ const Page = ({ general }: PageProps) => {
         </Head>
         <PageLayout>
           <PageHeader
-            title={t('searching')}
-            breadcrumbs={[{ title: t('searching'), path: null }]}
+            title={t('SearchPage.searching')}
+            breadcrumbs={[{ title: t('SearchPage.searching'), path: null }]}
           />
           <SectionContainer className="mb-8 mt-12">
             <GlobalSearchSectionContent variant="general" />

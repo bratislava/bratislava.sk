@@ -1,4 +1,3 @@
-import { useTranslations } from 'next-intl'
 import React, { useEffect, useState } from 'react'
 import { Label, Selection, TagGroup, TagList, Text } from 'react-aria-components'
 
@@ -6,6 +5,7 @@ import Chip from '@/components/common/Chip/Chip'
 import { InbaTagEntityFragment } from '@/services/graphql'
 import { getCategoryColorLocalStyle } from '@/utils/colors'
 import { isDefined } from '@/utils/isDefined'
+import { useTranslation } from '@/utils/useTranslation'
 
 export type InbaArticlesFilterProps = {
   tags: InbaTagEntityFragment[]
@@ -24,7 +24,7 @@ const InbaArticlesFilter = ({
   subtext,
   onChange,
 }: InbaArticlesFilterProps) => {
-  const t = useTranslations('BlogPostsFilter')
+  const { t } = useTranslation()
   const [selectedTags, setSelectedTags] = useState<Selection>(new Set<string>())
 
   useEffect(() => {
@@ -34,7 +34,7 @@ const InbaArticlesFilter = ({
   return (
     <div className="flex flex-col gap-6 py-18 lg:m-auto lg:w-[800px]  lg:gap-10 lg:py-18">
       <div className="flex flex-col gap-2 lg:items-center ">
-        <Label className="text-h3 font-semibold">{t('articleFilter')}</Label>
+        <Label className="text-h3 font-semibold">{t('BlogPostsFilter.articleFilter')}</Label>
         {subtext && <Text>{subtext}</Text>}
       </div>
       <div>
@@ -65,7 +65,9 @@ const InbaArticlesFilter = ({
         </TagGroup>
         {subCategories?.length ? (
           <div className="flex flex-col pt-8 lg:items-center">
-            <Label className="text-h5 pb-3 font-semibold">{t('subcategories')}</Label>
+            <Label className="text-h5 pb-3 font-semibold">
+              {t('BlogPostsFilter.subcategories')}
+            </Label>
             <TagGroup selectionMode="multiple">
               <TagList className="flex flex-wrap gap-2 lg:justify-center">
                 {subCategories.filter(isDefined).map((subcategoryName) => (

@@ -1,4 +1,3 @@
-import { useTranslations } from 'next-intl'
 import React from 'react'
 import { twMerge } from 'tailwind-merge'
 
@@ -6,6 +5,7 @@ import { DownloadIcon } from '@/assets/ui-icons'
 import { FileCardProps } from '@/components/cards/FileCard'
 import MLink from '@/components/common/MLink/MLink'
 import { isDefined } from '@/utils/isDefined'
+import { useTranslation } from '@/utils/useTranslation'
 
 /**
  * Figma: https://www.figma.com/file/17wbd0MDQcMW9NbXl6UPs8/DS-ESBS%2BBK%3A-Component-library?node-id=867%3A2067&mode=dev
@@ -20,7 +20,7 @@ const FileRowCard = ({
   className,
   ariaLabel,
 }: FileCardProps) => {
-  const t = useTranslations()
+  const { t } = useTranslation()
 
   return (
     <div className={twMerge('relative', className)}>

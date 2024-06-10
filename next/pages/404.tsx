@@ -1,24 +1,25 @@
 import { Typography } from '@bratislava/component-library'
 import { GetStaticProps } from 'next'
 import Head from 'next/head'
-import { useTranslations } from 'next-intl'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 import Button from '@/components/common/Button/Button'
 import { useTitle } from '@/utils/useTitle'
+import { useTranslation } from '@/utils/useTranslation'
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
-  const [messages] = await Promise.all([import(`../messages/${locale}.json`)])
+  const [translations] = await Promise.all([serverSideTranslations(locale ?? 'sk')])
 
   return {
     props: {
-      messages: messages.default,
+      ...translations,
     },
     revalidate: 10,
   }
 }
 
 const NotFoundPage = () => {
-  const t = useTranslations()
+  const { t } = useTranslation()
 
   const title = useTitle('404')
 
@@ -35,11 +36,11 @@ const NotFoundPage = () => {
             {/* FIXME Typography. Convert to use Typography */}
             <div className="pb-4 text-[48px] font-[800] lg:text-[64px]">404</div>
             <Typography type="p" size="p-large" className="max-w-xs pb-10 text-center lg:text-left">
-              {t('sorryNoResultsFound')}
+              {t('NotFound.sorryNoResultsFound')}
             </Typography>
 
             <Button variant="category-outline" href="/">
-              {t('toTheMainPage')}
+              {t('NotFound.toTheMainPage')}
             </Button>
           </div>
         </div>

@@ -1,11 +1,11 @@
 import { Typography } from '@bratislava/component-library'
-import { useTranslations } from 'next-intl'
 import { Dispatch, forwardRef, SetStateAction } from 'react'
 import { Input, Label, SearchField } from 'react-aria-components'
 
 import { RemoveIcon, SearchIcon } from '@/assets/ui-icons'
 import Button from '@/components/common/Button/Button'
 import Spinner from '@/components/common/Spinner/Spinner'
+import { useTranslation } from '@/utils/useTranslation'
 
 type SearchBarProps = {
   placeholder?: string
@@ -17,7 +17,7 @@ type SearchBarProps = {
 
 const SearchBar = forwardRef<HTMLInputElement, SearchBarProps>(
   ({ placeholder, input, setInput, setSearchQuery, isLoading }, forwardedRef) => {
-    const t = useTranslations()
+    const { t } = useTranslation()
 
     const handleSearch = () => {
       setSearchQuery(input)
@@ -29,7 +29,7 @@ const SearchBar = forwardRef<HTMLInputElement, SearchBarProps>(
         // TODO PageHeader size dynamically
         // 10rem scroll margin works fine for all screen sizes
         className="flex scroll-mt-[10rem] flex-col gap-y-1"
-        aria-label={t('search')}
+        aria-label={t('SearchBar.search')}
         defaultValue={placeholder}
         value={input}
         onChange={setInput}
