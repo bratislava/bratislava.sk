@@ -13,6 +13,7 @@ import { formatFileExtension } from '@/utils/formatFileExtension'
 import { formatFileSize } from '@/utils/formatFileSize'
 import { isDefined } from '@/utils/isDefined'
 import { useLocale } from '@/utils/useLocale'
+import { useRegulationCategoryTranslationMap } from '@/utils/useRegulationCategoryTranslationMap'
 import { useTranslation } from '@/utils/useTranslation'
 
 type RegulationPageContentProps = {
@@ -24,6 +25,8 @@ const RegulationPageContent = ({ regulation }: RegulationPageContentProps) => {
 
   const { t } = useTranslation()
   const locale = useLocale()
+
+  const translationMap = useRegulationCategoryTranslationMap()
 
   const mainDocument = regulation.attributes?.mainDocument
   const amendments = regulation.attributes?.amendments?.data
@@ -57,7 +60,7 @@ const RegulationPageContent = ({ regulation }: RegulationPageContentProps) => {
     <>
       <PageHeader
         title={regulationShortTitle}
-        tag={t(`Regulation.category.${regulation.attributes?.category ?? 'ostatne'}`)}
+        tag={translationMap[regulation.attributes?.category ?? 'ostatne']}
         subtext={regulation.attributes?.titleText}
         breadcrumbs={breadcrumbs}
       />

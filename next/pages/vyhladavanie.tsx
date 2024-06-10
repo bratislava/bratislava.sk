@@ -40,7 +40,7 @@ export const getStaticProps: GetStaticProps<PageProps> = async ({ locale }) => {
 
 const Page = ({ general }: PageProps) => {
   const { t } = useTranslation()
-  const title = useTitle(t('searching'))
+  const title = useTitle(t('SearchPage.searching'))
 
   return (
     <GeneralContextProvider general={general}>
@@ -50,8 +50,8 @@ const Page = ({ general }: PageProps) => {
         </Head>
         <PageLayout>
           <PageHeader
-            title={t('searching')}
-            breadcrumbs={[{ title: t('searching'), path: null }]}
+            title={t('SearchPage.searching')}
+            breadcrumbs={[{ title: t('SearchPage.searching'), path: null }]}
           />
           <SectionContainer className="mb-8 mt-12">
             <GlobalSearchSectionContent variant="general" />

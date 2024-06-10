@@ -20,7 +20,7 @@ const SkipToContentButton = () => {
       variant="black-solid"
       className="fixed left-2 top-14 z-50 -translate-x-100 transition-transform focus:translate-x-0 md:top-16"
     >
-      {t('skipNavigation')}
+      {t('SkipToContentButton.skipNavigation')}
     </Button>
   )
 }

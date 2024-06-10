@@ -49,15 +49,11 @@ const CookieConsent = ({ className }: CookieConsentProps) => {
           style={getCategoryColorLocalStyle({ category: 'main' })}
         >
           <div className="mx-auto max-w-[1110px] rounded-lg bg-white px-6 py-8 shadow md:px-10">
-            <h6 className="text-large mb-4 ">{t('cookie_consent_modal_content_title')}</h6>
+            <h6 className="text-large mb-4 ">{t('CookieConsent.modalContentTitle')}</h6>
             <div className="text-default mb-8">
-              {t('cookie_consent_body')}{' '}
-              <MLink
-                href={t('cookie_consent_privacy_policy_link')}
-                variant="underlined"
-                className="font-semibold"
-              >
-                {t('cookie_consent_privacy_policy')}
+              {t('CookieConsent.body')}{' '}
+              <MLink href={t('links.privacyPolicy')} variant="underlined" className="font-semibold">
+                {t('CookieConsent.privacyPolicy')}
               </MLink>
             </div>
             <div className="flex flex-col gap-4 md:flex-row">
@@ -66,7 +62,7 @@ const CookieConsent = ({ className }: CookieConsentProps) => {
                 onPress={() => setConsents({ statistics: true })}
                 fullWidthMobile
               >
-                {t('cookie_consent_accept')}
+                {t('CookieConsent.accept')}
               </Button>
 
               <Button
@@ -74,7 +70,7 @@ const CookieConsent = ({ className }: CookieConsentProps) => {
                 onPress={() => setConsents({ statistics: false })}
                 fullWidthMobile
               >
-                {t('cookie_consent_reject')}
+                {t('CookieConsent.reject')}
               </Button>
             </div>
           </div>

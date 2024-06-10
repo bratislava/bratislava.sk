@@ -54,7 +54,7 @@ const MobileNavBar = ({ className }: MobileNavBarProps) => {
                 </MLink>
               )}
               <Divider />
-              <MLink data-cy="search-button-mobile" href={t('searchLink')} className="p-4">
+              <MLink data-cy="search-button-mobile" href={t('links.searchLink')} className="p-4">
                 <SearchIcon />
               </MLink>
               <Divider />
@@ -62,14 +62,14 @@ const MobileNavBar = ({ className }: MobileNavBarProps) => {
                 <Button
                   onPress={() => setMobileMenuOpen(false)}
                   className="-mr-4 p-4"
-                  aria-label={t('menu.closeMenu')}
+                  aria-label={t('MobileNavBar.closeMenu')}
                   icon={<CrossIcon />}
                 />
               ) : (
                 <Button
                   onPress={() => setMobileMenuOpen(true)}
                   className="-mr-4 p-4"
-                  aria-label={t('menu.openMenu')}
+                  aria-label={t('MobileNavBar.openMenu')}
                   data-cy="mobile-menu-button"
                   icon={<HamburgerIcon />}
                 />

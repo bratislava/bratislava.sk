@@ -8,16 +8,6 @@ export type Localizations = Partial<Record<LanguageCode, string>>
 
 const LocalizationsContext = createContext<Localizations | null>(null)
 
-const shortNameMap = {
-  en: 'language_short.en',
-  sk: 'language_short.sk',
-} as const
-
-const longNameMap = {
-  en: 'language_long.en',
-  sk: 'language_long.sk',
-} as const
-
 export const LocalizationsProvider = ({
   children,
   localizations,
@@ -35,6 +25,16 @@ export const useLocalizations = () => {
   const { t } = useTranslation()
   const locale = useLocale()
 
+  const shortNameMap = {
+    en: t('useLocalizations.shortName.en'),
+    sk: t('useLocalizations.shortName.sk'),
+  } as const
+
+  const longNameMap = {
+    en: t('useLocalizations.longName.en'),
+    sk: t('useLocalizations.longName.sk'),
+  } as const
+
   const currentLanguageCode = locale as LanguageCode
   const otherLanguageCode = ['sk', 'en'].find((l) => l !== currentLanguageCode) as
     | LanguageCode
@@ -43,13 +43,13 @@ export const useLocalizations = () => {
   return {
     currentLanguage: {
       locale: currentLanguageCode,
-      shortName: t(shortNameMap[currentLanguageCode]),
-      longName: t(longNameMap[currentLanguageCode]),
+      shortName: shortNameMap[currentLanguageCode],
+      longName: longNameMap[currentLanguageCode],
     },
     otherLanguage: otherLanguageCode && {
       locale: otherLanguageCode,
-      shortName: t(shortNameMap[otherLanguageCode]),
-      longName: t(longNameMap[otherLanguageCode]),
+      shortName: shortNameMap[otherLanguageCode],
+      longName: longNameMap[otherLanguageCode],
       // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
       path: context?.[otherLanguageCode] ?? '/',
     },

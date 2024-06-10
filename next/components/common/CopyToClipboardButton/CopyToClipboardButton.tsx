@@ -11,7 +11,7 @@ const CopyToClipboardButton = ({ copyText }: { copyText: string }) => {
     <Button
       variant="icon-wrapped"
       icon={<CopyIcon />}
-      aria-label={t('copyToClipboard')}
+      aria-label={t('CopyToClipboardButton.copyToClipboard')}
       onPress={() => copy(copyText)}
     />
   )

@@ -36,11 +36,11 @@ const NotFoundPage = () => {
             {/* FIXME Typography. Convert to use Typography */}
             <div className="pb-4 text-[48px] font-[800] lg:text-[64px]">404</div>
             <Typography type="p" size="p-large" className="max-w-xs pb-10 text-center lg:text-left">
-              {t('sorryNoResultsFound')}
+              {t('NotFound.sorryNoResultsFound')}
             </Typography>
 
             <Button variant="category-outline" href="/">
-              {t('toTheMainPage')}
+              {t('NotFound.toTheMainPage')}
             </Button>
           </div>
         </div>

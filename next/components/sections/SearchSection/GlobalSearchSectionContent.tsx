@@ -100,7 +100,7 @@ const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
     {
       id: 'officialBoard',
       displayName: t('SearchPage.document'),
-      displayNamePlural: t('officialBoard'),
+      displayNamePlural: t('SearchPage.officialBoard'),
     },
   ]
 
@@ -202,7 +202,7 @@ const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
       <div className="flex flex-col gap-3 lg:gap-4">
         <SearchBar
           ref={searchRef}
-          placeholder={t('enterKeyword')}
+          placeholder={t('SearchPage.enterKeyword')}
           input={input}
           setInput={setInput}
           setSearchQuery={setSearchValue}

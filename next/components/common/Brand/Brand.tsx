@@ -19,7 +19,7 @@ const Brand = ({ className, url = '#', withTitle }: BrandProps) => {
         {withTitle && (
           <span className="text-default">
             <Trans
-              i18nKey="capitalCity"
+              i18nKey="Brand.capitalCity"
               components={{
                 semibold: <span className="font-semibold" />,
               }}

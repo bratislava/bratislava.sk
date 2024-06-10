@@ -3,7 +3,7 @@ module.exports = {
   input: '**/*.{tsx,ts}',
   output: './public/locales/$LOCALE/$NAMESPACE.json',
   // if set to true preserves old values in a separate json file
-  createOldCatalogs: true,
+  createOldCatalogs: false,
   sort: true,
   // makes the translation json file flat
   keySeparator: false,
