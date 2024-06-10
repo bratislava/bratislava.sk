@@ -1,10 +1,10 @@
 import { Typography } from '@bratislava/component-library'
-import { useTranslations } from 'next-intl'
 import React, { forwardRef, ReactNode } from 'react'
 import { Dialog as ReactAriaDialog, DialogProps } from 'react-aria-components'
 
 import { CrossIcon } from '@/assets/ui-icons'
 import Button from '@/components/common/Button/Button'
+import { useTranslation } from '@/utils/useTranslation'
 
 type TitleProps = { title: string; 'aria-label'?: string } | { title?: never; 'aria-label': string }
 
@@ -16,7 +16,7 @@ type Props = { children: ReactNode } & TitleProps & Omit<DialogProps, 'children'
  */
 
 const Dialog = forwardRef<HTMLElement, Props>(({ children, title, ...props }, ref) => {
-  const t = useTranslations('Dialog')
+  const { t } = useTranslation('Dialog')
 
   return (
     <ReactAriaDialog

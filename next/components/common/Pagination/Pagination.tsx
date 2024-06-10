@@ -1,10 +1,10 @@
 import cx from 'classnames'
-import { useTranslations } from 'next-intl'
 import React, { ReactNode } from 'react'
 
 import { ArrowLeftIcon, ArrowRightIcon } from '@/assets/ui-icons'
 import Button from '@/components/common/Button/Button'
 import usePagination from '@/components/common/Pagination/usePagination'
+import { useTranslation } from '@/utils/useTranslation'
 
 type PaginationProps = {
   currentPage: number
@@ -22,7 +22,7 @@ type PaginationProps = {
  * @constructor
  */
 const Pagination = ({ currentPage, totalCount, onPageChange = () => {} }: PaginationProps) => {
-  const t = useTranslations('Pagination')
+  const { t } = useTranslation('Pagination')
 
   const { items } = usePagination({
     count: totalCount,

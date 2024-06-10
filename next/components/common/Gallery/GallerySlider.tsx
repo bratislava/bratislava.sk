@@ -1,6 +1,7 @@
 import { AnimatePresence, motion, PanInfo, Variant } from 'framer-motion'
-import { useTranslations } from 'next-intl'
 import { FC, forwardRef, KeyboardEvent, ReactNode, useCallback, useEffect, useState } from 'react'
+
+import { useTranslation } from '@/utils/useTranslation'
 
 // copied from https://github.com/bratislava/mestskakniznica.sk/blob/master/next/modules/common/ImageGallery/Slider.tsx
 
@@ -59,7 +60,7 @@ const GallerySlider = forwardRef<HTMLDivElement, SliderProps>(
     forwardedRef,
     // eslint-disable-next-line sonarjs/cognitive-complexity
   ) => {
-    const t = useTranslations('Gallery')
+    const { t } = useTranslation('Gallery')
     const [isFocused, setFocused] = useState(false)
 
     const [[page, direction], setPage] = useState([initialPage ?? 0, 0])

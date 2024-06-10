@@ -1,8 +1,8 @@
 import cx from 'classnames'
-import { useTranslations } from 'next-intl'
 
 import { CrossIcon } from '@/assets/ui-icons'
 import Button from '@/components/common/Button/Button'
+import { useTranslation } from '@/utils/useTranslation'
 
 type TagProps = {
   text: string
@@ -13,7 +13,7 @@ type TagProps = {
 }
 
 const Tag = ({ text, size = 'small', isColored = false, shorthand, onRemove }: TagProps) => {
-  const t = useTranslations('Tag')
+  const { t } = useTranslation('Tag')
 
   const isRemovable = !!onRemove
 

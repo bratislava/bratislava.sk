@@ -1,6 +1,7 @@
 import { DehydratedState, HydrationBoundary } from '@tanstack/react-query'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import Head from 'next/head'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import React from 'react'
 
 import PageLayout from '@/components/layouts/PageLayout'
@@ -57,13 +58,13 @@ export const getStaticProps: GetStaticProps<PageProps, StaticParams> = async ({
 
   if (!slug || !locale) return { notFound: true }
 
-  const [{ pages }, general, messages] = await Promise.all([
+  const [{ pages }, general, translations] = await Promise.all([
     client.PageBySlug({
       slug: slug.join('/'),
       locale,
     }),
     client.General({ locale }),
-    import(`../messages/${locale}.json`),
+    serverSideTranslations(locale),
   ])
 
   const page = pages?.data?.[0]
@@ -75,7 +76,7 @@ export const getStaticProps: GetStaticProps<PageProps, StaticParams> = async ({
     props: {
       general,
       page,
-      messages: messages.default,
+      ...translations,
       dehydratedState,
     },
     revalidate: 10,

@@ -1,9 +1,9 @@
 import * as NavigationMenu from '@radix-ui/react-navigation-menu'
-import { useTranslations } from 'next-intl'
 import React, { CSSProperties } from 'react'
 
 import { ChevronLeftIcon } from '@/assets/ui-icons'
 import Button from '@/components/common/Button/Button'
+import { useTranslation } from '@/utils/useTranslation'
 
 import NavBarHorizontalDivider from './NavBarHorizontalDivider'
 import { useNavMenuContext } from './navMenuContext'
@@ -16,7 +16,7 @@ type NavMenuContentProps = {
 }
 
 const MobileNavMenuContent = ({ menuItem, colorStyle }: NavMenuContentProps) => {
-  const t = useTranslations('NavMenu')
+  const { t } = useTranslation('NavMenu')
   const { setMenuValue } = useNavMenuContext()
   const { items: sections, label: parentLabel } = menuItem
 

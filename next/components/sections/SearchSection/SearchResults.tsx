@@ -1,5 +1,4 @@
 import { Typography } from '@bratislava/component-library'
-import { useTranslations } from 'next-intl'
 import React, { Dispatch, SetStateAction, useEffect } from 'react'
 import { Selection } from 'react-aria-components'
 
@@ -12,6 +11,7 @@ import {
   SearchFilters,
   useQueryBySearchOption,
 } from '@/components/sections/SearchSection/useQueryBySearchOption'
+import { useTranslation } from '@/utils/useTranslation'
 
 type SearchResultsProps = {
   filters: SearchFilters
@@ -33,7 +33,7 @@ const SearchResults = ({
   // TODO use onLoadingChange to signal loading state to parent component
   onLoadingChange,
 }: SearchResultsProps) => {
-  const t = useTranslations()
+  const { t } = useTranslation()
 
   const searchQuery = useQueryBySearchOption({ optionKey: searchOption.id, filters })
 

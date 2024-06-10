@@ -1,5 +1,6 @@
 import { GetStaticPaths, GetStaticProps } from 'next'
 import Head from 'next/head'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import * as React from 'react'
 
 import PageLayout from '@/components/layouts/PageLayout'
@@ -49,10 +50,10 @@ export const getStaticProps: GetStaticProps<PageProps, StaticParams> = async ({
 
   if (!slug || !locale) return { notFound: true }
 
-  const [{ blogPosts }, general, messages] = await Promise.all([
+  const [{ blogPosts }, general, translations] = await Promise.all([
     client.BlogPostBySlug({ slug, locale }),
     client.General({ locale }),
-    import(`../../messages/${locale}.json`),
+    serverSideTranslations(locale),
   ])
 
   const blogPost = blogPosts?.data[0]
@@ -65,7 +66,7 @@ export const getStaticProps: GetStaticProps<PageProps, StaticParams> = async ({
       general,
       slug,
       blogPost,
-      messages: messages.default,
+      ...translations,
     },
     revalidate: 10,
   }

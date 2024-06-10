@@ -1,6 +1,5 @@
 import { Typography } from '@bratislava/component-library'
 import classNames from 'classnames'
-import { useLocale, useTranslations } from 'next-intl'
 import React, { Fragment, ReactNode } from 'react'
 
 import FileRowCard from '@/components/cards/FileRowCard'
@@ -8,13 +7,15 @@ import PageHeader from '@/components/common/PageHeader/PageHeader'
 import SectionContainer from '@/components/common/SectionContainer/SectionContainer'
 import { ParsedOfficialBoardDocumentDetail } from '@/services/ginis/types'
 import { formatDate } from '@/utils/formatDate'
+import { useLocale } from '@/utils/useLocale'
+import { useTranslation } from '@/utils/useTranslation'
 
 type OfficialBoardDocumentPageContentProps = {
   document: ParsedOfficialBoardDocumentDetail
 }
 
 const OfficialBoardDocumentPageContent = ({ document }: OfficialBoardDocumentPageContentProps) => {
-  const t = useTranslations('OfficialBoard')
+  const { t } = useTranslation('OfficialBoard')
   const locale = useLocale()
 
   const breadcrumbs = [

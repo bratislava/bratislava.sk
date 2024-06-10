@@ -1,16 +1,16 @@
-import { useTranslations } from 'next-intl'
 import React from 'react'
 
 import { FacebookIcon, InstagramIcon, LinkedinIcon, TwitterIcon } from '@/assets/images'
 import SectionContainer from '@/components/common/SectionContainer/SectionContainer'
 import { SocialMediaButton } from '@/components/page-contents/BlogPostPageContent'
+import { useTranslation } from '@/utils/useTranslation'
 
 type Props = {
   twitterTitle?: string | null | undefined
 }
 
 const ShareButtonsSection = ({ twitterTitle }: Props) => {
-  const t = useTranslations()
+  const { t } = useTranslation()
 
   const twitterTextQuery = twitterTitle ? `&text=${twitterTitle}` : ''
 

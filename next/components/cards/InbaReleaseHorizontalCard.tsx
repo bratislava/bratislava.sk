@@ -1,6 +1,5 @@
 import { Typography } from '@bratislava/component-library'
 import Image from 'next/image'
-import { useTranslations } from 'next-intl'
 import React from 'react'
 
 import { ChevronRightIcon } from '@/assets/ui-icons'
@@ -9,6 +8,7 @@ import CardContent from '@/components/cards/CardContent'
 import ImagePlaceholder from '@/components/common/Image/ImagePlaceholder'
 import MLink from '@/components/common/MLink/MLink'
 import Markdown from '@/components/formatting/Markdown/Markdown'
+import { useTranslation } from '@/utils/useTranslation'
 
 type Props = {
   title: string
@@ -30,7 +30,7 @@ const InbaReleaseHorizontalCard = ({
   linkHref,
   ...rest
 }: Props) => {
-  const t = useTranslations('InbaRelease')
+  const { t } = useTranslation('InbaRelease')
 
   return (
     <CardBase className="flex flex-row rounded-lg" {...rest}>

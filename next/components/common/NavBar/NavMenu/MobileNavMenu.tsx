@@ -1,6 +1,5 @@
 import * as NavigationMenu from '@radix-ui/react-navigation-menu'
 import cx from 'classnames'
-import { useTranslations } from 'next-intl'
 import React, { useMemo } from 'react'
 import { useEventListener, useLockedBody, useWindowSize } from 'usehooks-ts'
 
@@ -11,13 +10,14 @@ import Pictogram from '@/components/common/Pictogram/Pictogram'
 import { useGeneralContext } from '@/components/providers/GeneralContextProvider'
 import { getCommonLinkProps } from '@/utils/getCommonLinkProps'
 import { isDefined } from '@/utils/isDefined'
+import { useTranslation } from '@/utils/useTranslation'
 
 import { getParsedMenus } from './getParsedMenus'
 import MobileNavMenuItem from './MobileNavMenuItem'
 import { useNavMenuContext } from './navMenuContext'
 
 const MobileNavMenu = () => {
-  const t = useTranslations('NavMenu')
+  const { t } = useTranslation('NavMenu')
   const { height } = useWindowSize()
   const heightWithoutHeader = `calc(${height}px - 14*4px)`
 

@@ -1,6 +1,5 @@
 import { Typography } from '@bratislava/component-library'
 import classNames from 'classnames'
-import { useLocale, useTranslations } from 'next-intl'
 import React, { Fragment } from 'react'
 
 import FileRowCard from '@/components/cards/FileRowCard'
@@ -13,6 +12,8 @@ import { RegulationEntityFragment } from '@/services/graphql'
 import { formatFileExtension } from '@/utils/formatFileExtension'
 import { formatFileSize } from '@/utils/formatFileSize'
 import { isDefined } from '@/utils/isDefined'
+import { useLocale } from '@/utils/useLocale'
+import { useTranslation } from '@/utils/useTranslation'
 
 type RegulationPageContentProps = {
   regulation: RegulationEntityFragment
@@ -21,7 +22,7 @@ type RegulationPageContentProps = {
 const RegulationPageContent = ({ regulation }: RegulationPageContentProps) => {
   const regulationShortTitle = `VZN ${regulation.attributes?.regNumber}`
 
-  const t = useTranslations('Regulation')
+  const { t } = useTranslation('Regulation')
   const locale = useLocale()
 
   const mainDocument = regulation.attributes?.mainDocument

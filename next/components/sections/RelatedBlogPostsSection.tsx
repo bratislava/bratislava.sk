@@ -1,6 +1,5 @@
 import { Typography } from '@bratislava/component-library'
 import { useQuery } from '@tanstack/react-query'
-import { useLocale, useTranslations } from 'next-intl'
 import React from 'react'
 
 import BlogPostCard from '@/components/cards/BlogPostCard'
@@ -15,6 +14,8 @@ import { getCategoryColorLocalStyle } from '@/utils/colors'
 import { getNumericLocalDate } from '@/utils/formatDate'
 import { generateImageSizes } from '@/utils/generateImageSizes'
 import { isDefined } from '@/utils/isDefined'
+import { useLocale } from '@/utils/useLocale'
+import { useTranslation } from '@/utils/useTranslation'
 
 type Props = {
   page: PageEntityFragment
@@ -24,7 +25,7 @@ type Props = {
 const imageSizes = generateImageSizes({ default: '100vw', md: '50vw', lg: '33vw' })
 
 const RelatedBlogPostsSection = ({ page, className }: Props) => {
-  const t = useTranslations('RelatedBlogPostsSection')
+  const { t } = useTranslation('RelatedBlogPostsSection')
   const locale = useLocale()
 
   const { data } = useQuery({

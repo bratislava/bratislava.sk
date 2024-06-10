@@ -1,11 +1,11 @@
-import { useLocale, useTranslations } from 'next-intl'
-
 import { FileItemBlockFragment } from '@/services/graphql'
 import { formatFileExtension } from '@/utils/formatFileExtension'
 import { formatFileSize } from '@/utils/formatFileSize'
+import { useLocale } from '@/utils/useLocale'
+import { useTranslation } from '@/utils/useTranslation'
 
 export const useGetDownloadAriaLabel = () => {
-  const t = useTranslations('FileList.aria')
+  const { t } = useTranslation('FileList.aria')
   const locale = useLocale()
 
   const getDownloadAriaLabel = (file: FileItemBlockFragment): string => {

@@ -1,5 +1,4 @@
 import { useQuery } from '@tanstack/react-query'
-import { useTranslations } from 'next-intl'
 import React from 'react'
 
 import SelectField, { SelectItem } from '@/components/common/SelectField/SelectField'
@@ -9,6 +8,7 @@ import {
 } from '@/services/ginis/fetchers/officialBoardCategoriesFetcher'
 import { OfficialBoardPublicationState, ParsedOfficialBoardCategory } from '@/services/ginis/types'
 import { isDefined } from '@/utils/isDefined'
+import { useTranslation } from '@/utils/useTranslation'
 import { isProductionDeployment } from '@/utils/utils' // TODO maybe we shouldn't use czech string for values, but parse them in handler or somewhere else?
 
 // TODO maybe we shouldn't use czech string for values, but parse them in handler or somewhere else?
@@ -25,7 +25,7 @@ const OfficialBoardAdditionalFilters = ({
   publicationState,
   setPublicationState,
 }: Props) => {
-  const t = useTranslations('OfficialBoard')
+  const { t } = useTranslation('OfficialBoard')
 
   // TODO handle loading and error
   const {

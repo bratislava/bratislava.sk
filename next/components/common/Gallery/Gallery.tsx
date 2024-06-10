@@ -3,7 +3,6 @@
 /* eslint-disable jsx-a11y/interactive-supports-focus */
 
 import cx from 'classnames'
-import { useTranslations } from 'next-intl'
 import { useCallback, useState } from 'react'
 import { useOverlayTriggerState } from 'react-stately'
 import screens from 'tailwind.config.screens'
@@ -12,6 +11,7 @@ import { useWindowSize } from 'usehooks-ts'
 import StrapiImage from '@/components/common/Image/StrapiImage'
 import { UploadImageEntityFragment } from '@/services/graphql'
 import { onEnterOrSpaceKeyDown } from '@/utils/onEnterOrSpaceKeyDown'
+import { useTranslation } from '@/utils/useTranslation'
 
 import ImageLightBox from './ImageLightBox'
 
@@ -22,7 +22,7 @@ export type GalleryProps = {
 }
 
 const Gallery = ({ images = [] }: GalleryProps) => {
-  const t = useTranslations('Gallery')
+  const { t } = useTranslation('Gallery')
 
   const { width: windowWidth } = useWindowSize()
   // TODO refactor to use som custom hook

@@ -1,6 +1,5 @@
 import { Typography } from '@bratislava/component-library'
 import Image from 'next/image'
-import { useTranslations } from 'next-intl'
 import React from 'react'
 import { twMerge } from 'tailwind-merge'
 
@@ -8,6 +7,7 @@ import CardBase from '@/components/cards/CardBase'
 import CardContent from '@/components/cards/CardContent'
 import MLink from '@/components/common/MLink/MLink'
 import FormatEventDateRange from '@/components/formatting/FormatEventDateRange'
+import { useTranslation } from '@/utils/useTranslation'
 
 type EventCardProps = {
   title: string
@@ -35,7 +35,7 @@ const EventCard = ({
   imageSizes,
   className,
 }: EventCardProps) => {
-  const t = useTranslations('EventCard')
+  const { t } = useTranslation('EventCard')
 
   return (
     <CardBase variant="shadow" className={twMerge('rounded-lg text-white', className)}>

@@ -1,16 +1,16 @@
 import * as NavigationMenu from '@radix-ui/react-navigation-menu'
 import { usePathname } from 'next/navigation'
-import { useTranslations } from 'next-intl'
 import React, { useEffect, useMemo } from 'react'
 
 import { useGeneralContext } from '@/components/providers/GeneralContextProvider'
+import { useTranslation } from '@/utils/useTranslation'
 
 import { getParsedMenus } from './getParsedMenus'
 import { useNavMenuContext } from './navMenuContext'
 import NavMenuItem from './NavMenuItem'
 
 const NavMenu = () => {
-  const t = useTranslations('NavMenu')
+  const { t } = useTranslation('NavMenu')
   const pathname = usePathname()
 
   const { menu } = useGeneralContext()

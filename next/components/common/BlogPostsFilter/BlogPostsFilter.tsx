@@ -1,4 +1,3 @@
-import { useLocale, useTranslations } from 'next-intl'
 import React, { useEffect, useState } from 'react'
 import { Label, Selection, TagGroup, TagList, Text } from 'react-aria-components'
 
@@ -10,6 +9,8 @@ import {
 } from '@/services/graphql'
 import { getCategoryColorLocalStyle } from '@/utils/colors'
 import { isDefined } from '@/utils/isDefined'
+import { useLocale } from '@/utils/useLocale'
+import { useTranslation } from '@/utils/useTranslation'
 
 type BlogPostsFilterProps = {
   pageCategories: PageCategoryEntityFragment[]
@@ -41,7 +42,7 @@ const BlogPostsFilter = ({
   subtext,
   onTagChange,
 }: BlogPostsFilterProps) => {
-  const t = useTranslations('BlogPostsFilter')
+  const { t } = useTranslation('BlogPostsFilter')
   const locale = useLocale()
 
   const defaultChip = {

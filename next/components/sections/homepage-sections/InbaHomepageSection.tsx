@@ -1,12 +1,12 @@
-import { useTranslations } from 'next-intl'
 import React from 'react'
 
 import InBaCard from '@/components/cards/InBaCard'
 import SectionContainer from '@/components/common/SectionContainer/SectionContainer'
 import { useHomepageContext } from '@/components/providers/HomepageContextProvider'
+import { useTranslation } from '@/utils/useTranslation'
 
 const InbaHomepageSection = () => {
-  const t = useTranslations()
+  const { t } = useTranslation()
 
   const { homepage } = useHomepageContext()
 

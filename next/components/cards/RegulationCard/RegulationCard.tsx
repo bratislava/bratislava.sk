@@ -1,10 +1,10 @@
 import { Typography } from '@bratislava/component-library'
-import { useTranslations } from 'next-intl'
 import React from 'react'
 import { twMerge } from 'tailwind-merge'
 
 import { ArrowRightIcon } from '@/assets/ui-icons'
 import MLink from '@/components/common/MLink/MLink'
+import { useTranslation } from '@/utils/useTranslation'
 
 export type RegulationCardProps = {
   title: string
@@ -28,7 +28,7 @@ const RegulationCard = ({
   metadata,
   ariaLabel,
 }: RegulationCardProps) => {
-  const t = useTranslations()
+  const { t } = useTranslation()
 
   return (
     // 10rem = 160px (we force this height to keep consistent height of card rows when displayed in a grid)

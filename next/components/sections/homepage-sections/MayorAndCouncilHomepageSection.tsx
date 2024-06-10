@@ -1,18 +1,18 @@
 import { Typography } from '@bratislava/component-library'
-import { useTranslations } from 'next-intl'
 import React from 'react'
 import { twMerge } from 'tailwind-merge'
 
 import MayorAndCouncilCard from '@/components/cards/MayorAndCouncilCard'
 import { useHomepageContext } from '@/components/providers/HomepageContextProvider'
 import { getCommonLinkProps } from '@/utils/getCommonLinkProps'
+import { useTranslation } from '@/utils/useTranslation'
 
 type Props = {
   className?: string
 }
 
 const MayorAndCouncilHomepageSection = ({ className }: Props) => {
-  const t = useTranslations()
+  const { t } = useTranslation()
 
   const { homepage } = useHomepageContext()
   const { mayorAndCouncil } = homepage?.attributes ?? {}

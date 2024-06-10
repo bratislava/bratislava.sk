@@ -1,11 +1,11 @@
 import { Typography } from '@bratislava/component-library'
-import { useTranslations } from 'next-intl'
 import React from 'react'
 import { twMerge } from 'tailwind-merge'
 
 import { DownloadIcon } from '@/assets/ui-icons'
 import MLink from '@/components/common/MLink/MLink'
 import { isDefined } from '@/utils/isDefined'
+import { useTranslation } from '@/utils/useTranslation'
 
 export type FileCardProps = {
   title: string
@@ -29,7 +29,7 @@ const FileCard = ({
   className,
   ariaLabel,
 }: FileCardProps) => {
-  const t = useTranslations()
+  const { t } = useTranslation()
 
   return (
     <div

@@ -1,11 +1,11 @@
-import { useTranslations } from 'next-intl'
 import React from 'react'
 import { TabPanel } from 'react-aria-components'
 
 import MLink from '@/components/common/MLink/MLink'
+import { useTranslation } from '@/utils/useTranslation'
 
 const TabPanelDisclosure = () => {
-  const t = useTranslations('HomepageTabs')
+  const { t } = useTranslation('HomepageTabs')
 
   return (
     <TabPanel id="Disclosure">

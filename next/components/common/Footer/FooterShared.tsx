@@ -1,5 +1,5 @@
 import { Typography } from '@bratislava/component-library'
-import { useTranslations } from 'next-intl'
+import { Trans } from 'next-i18next'
 import * as React from 'react'
 
 import { FacebookIcon, InstagramIcon } from '@/assets/images'
@@ -65,15 +65,15 @@ export const FooterAccessibilityLink = ({ accessibilityPageLink }: FooterFragmen
 }
 
 export const FooterCopyright = ({ innovationsLink }: FooterFragment) => {
-  const t = useTranslations()
-
   return (
-    <>
-      {t.rich('Footer.copyright', {
-        innovations: () => <MLink variant="underlined" {...getCommonLinkProps(innovationsLink)} />,
-        year: new Date().getFullYear(),
-      })}
-    </>
+    <Trans
+      ns="common"
+      i18nKey="Footer.copyright"
+      components={{
+        innovations: <MLink variant="underlined" {...getCommonLinkProps(innovationsLink)} />,
+      }}
+      values={{ year: new Date().getFullYear() }}
+    />
   )
 }
 

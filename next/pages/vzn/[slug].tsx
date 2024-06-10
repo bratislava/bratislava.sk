@@ -2,6 +2,7 @@ import { ParsedUrlQuery } from 'node:querystring'
 
 import { GetStaticPaths, GetStaticProps } from 'next'
 import Head from 'next/head'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import * as React from 'react'
 
 import PageLayout from '@/components/layouts/PageLayout'
@@ -47,10 +48,10 @@ export const getStaticProps: GetStaticProps<RegulationPageProps, StaticParams> =
 
   if (!slug || !locale) return { notFound: true }
 
-  const [{ regulations }, general, messages] = await Promise.all([
+  const [{ regulations }, general, translations] = await Promise.all([
     client.RegulationBySlug({ slug }),
     client.General({ locale }),
-    import(`../../messages/${locale}.json`),
+    serverSideTranslations(locale),
   ])
 
   const regulation = regulations?.data?.[0]
@@ -62,7 +63,7 @@ export const getStaticProps: GetStaticProps<RegulationPageProps, StaticParams> =
     props: {
       general,
       regulation,
-      messages: messages.default,
+      ...translations,
     },
     revalidate: 10,
   }

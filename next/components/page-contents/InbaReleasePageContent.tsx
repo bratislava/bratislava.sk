@@ -1,6 +1,5 @@
 import { Typography } from '@bratislava/component-library'
 import cx from 'classnames'
-import { useLocale, useTranslations } from 'next-intl'
 import * as React from 'react'
 import { useMemo } from 'react'
 
@@ -20,6 +19,8 @@ import { formatFileExtension } from '@/utils/formatFileExtension'
 import { formatFileSize } from '@/utils/formatFileSize'
 import { isDefined } from '@/utils/isDefined'
 import { getPageBreadcrumbs } from '@/utils/pageUtils_Deprecated'
+import { useLocale } from '@/utils/useLocale'
+import { useTranslation } from '@/utils/useTranslation'
 
 export type InbaReleasePageContentProps = {
   inbaRelease: InbaReleaseEntityFragment
@@ -28,7 +29,7 @@ export type InbaReleasePageContentProps = {
 // TODO may need refactor, it was just copied from BlogPostPageContent that didn't undergo any refactoring
 
 const InbaReleasePageContent = ({ inbaRelease }: InbaReleasePageContentProps) => {
-  const t = useTranslations('InbaRelease')
+  const { t } = useTranslation('InbaRelease')
   const locale = useLocale()
 
   const { title, coverImage, perex, releaseDate, files } = inbaRelease.attributes ?? {}

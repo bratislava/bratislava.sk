@@ -1,6 +1,5 @@
 import { Typography } from '@bratislava/component-library'
 import { useIsFetching } from '@tanstack/react-query'
-import { useTranslations } from 'next-intl'
 import React, { useEffect, useRef, useState } from 'react'
 import { Selection, TagGroup, TagList } from 'react-aria-components'
 import { StringParam, useQueryParam, withDefault } from 'use-query-params'
@@ -14,6 +13,7 @@ import { SearchFilters } from '@/components/sections/SearchSection/useQueryBySea
 import { officialBoardListDefaultFilters } from '@/services/ginis/fetchers/officialBoardListFetcher'
 import { OfficialBoardPublicationState } from '@/services/ginis/types'
 import { getCategoryColorLocalStyle } from '@/utils/colors'
+import { useTranslation } from '@/utils/useTranslation'
 /*
  * RAC library recommends Selection as type for selection state, which is of type `'all' | Set`.
  * To use standard operations on Set, you have to check if selection is not 'all' to satisfy Typescript.
@@ -55,7 +55,7 @@ type Props =
     }
 
 const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
-  const t = useTranslations()
+  const { t } = useTranslation()
 
   const [routerQueryValue] = useQueryParam('keyword', withDefault(StringParam, ''))
   const [input, setInput] = useState('')

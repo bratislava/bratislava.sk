@@ -1,6 +1,5 @@
 import { Typography } from '@bratislava/component-library'
 import { keepPreviousData, useQuery } from '@tanstack/react-query'
-import { useLocale, useTranslations } from 'next-intl'
 import React from 'react'
 
 import BlogPostCard from '@/components/cards/BlogPostCard'
@@ -15,7 +14,9 @@ import { getCategoryColorLocalStyle } from '@/utils/colors'
 import { getNumericLocalDate } from '@/utils/formatDate'
 import { generateImageSizes } from '@/utils/generateImageSizes'
 import { isDefined } from '@/utils/isDefined'
+import { useLocale } from '@/utils/useLocale'
 import { useRoutePreservedState } from '@/utils/useRoutePreservedState'
+import { useTranslation } from '@/utils/useTranslation'
 
 const imageSizes = generateImageSizes({ default: '100vw', md: '50vw', lg: '33vw' })
 
@@ -24,7 +25,7 @@ type Props = {
 }
 
 const BlogPostsByTags = ({ section }: Props) => {
-  const t = useTranslations()
+  const { t } = useTranslation()
   const locale = useLocale()
 
   const { title, text, tags } = section

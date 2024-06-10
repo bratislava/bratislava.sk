@@ -1,4 +1,3 @@
-import { useTranslations } from 'next-intl'
 import { useEffect, useRef } from 'react'
 
 import { ArrowLeftIcon, ArrowRightIcon } from '@/assets/ui-icons'
@@ -7,6 +6,7 @@ import GalleryModal, { ModalProps } from '@/components/common/Gallery/GalleryMod
 import GallerySlider from '@/components/common/Gallery/GallerySlider'
 import StrapiImage from '@/components/common/Image/StrapiImage'
 import { UploadImageEntityFragment } from '@/services/graphql'
+import { useTranslation } from '@/utils/useTranslation'
 
 export type ImageLightBoxProps = {
   images: UploadImageEntityFragment[]
@@ -20,7 +20,7 @@ const ImageLightBox = (props: ImageLightBoxProps) => {
 
   const { isOpen } = rest
 
-  const t = useTranslations('Gallery')
+  const { t } = useTranslation('Gallery')
 
   const sliderRef = useRef<HTMLDivElement | null>(null)
 

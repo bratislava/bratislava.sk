@@ -1,7 +1,6 @@
 import cx from 'classnames'
 import FocusTrap from 'focus-trap-react'
 import { AnimatePresence, motion } from 'framer-motion'
-import { useTranslations } from 'next-intl'
 import { ReactNode, useEffect, useRef } from 'react'
 import { AriaOverlayProps, OverlayContainer, useModal, useOverlay } from 'react-aria'
 import { twMerge } from 'tailwind-merge'
@@ -9,6 +8,7 @@ import { useIsClient, useLockedBody } from 'usehooks-ts'
 
 import { CrossIcon } from '@/assets/ui-icons'
 import Button from '@/components/common/Button/Button'
+import { useTranslation } from '@/utils/useTranslation'
 
 export type ModalProps = {
   children: ReactNode
@@ -33,7 +33,7 @@ const GalleryModal = (props: ModalProps) => {
     centerVertically = true,
     noAnimation = false,
   } = props
-  const t = useTranslations('Gallery')
+  const { t } = useTranslation('Gallery')
   const ref = useRef<HTMLDivElement | null>(null)
   const { overlayProps, underlayProps } = useOverlay(
     { ...props, isDismissable: isDismissable === undefined ? true : isDismissable },

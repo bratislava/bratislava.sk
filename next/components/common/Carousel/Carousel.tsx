@@ -1,10 +1,10 @@
 import cx from 'classnames'
-import { useTranslations } from 'next-intl'
 import React, { ReactNode, useRef, useState } from 'react'
 import { twMerge } from 'tailwind-merge'
 
 import { ArrowLeftIcon, ArrowRightIcon } from '@/assets/ui-icons'
 import Button from '@/components/common/Button/Button'
+import { useTranslation } from '@/utils/useTranslation'
 
 // Inspired by MKB project and https://inclusive-components.design/a-content-slider/
 
@@ -35,7 +35,7 @@ const Carousel = ({
   hasVerticalPadding = true,
   showControlsOnMobile = false,
 }: CarouselProps) => {
-  const t = useTranslations('Carousel')
+  const { t } = useTranslation('Carousel')
   const scrollerRef = useRef<HTMLUListElement>(null)
 
   const [currentIndex, setCurrentIndex] = useState(0)

@@ -1,5 +1,7 @@
-import { useLocale, useTranslations } from 'next-intl'
 import { createContext, ReactNode, useContext } from 'react'
+
+import { useLocale } from '@/utils/useLocale'
+import { useTranslation } from '@/utils/useTranslation'
 
 export type LanguageCode = 'en' | 'sk'
 export type Localizations = Partial<Record<LanguageCode, string>>
@@ -30,7 +32,7 @@ export const LocalizationsProvider = ({
 
 export const useLocalizations = () => {
   const context = useContext(LocalizationsContext)
-  const t = useTranslations()
+  const { t } = useTranslation()
   const locale = useLocale()
 
   const currentLanguageCode = locale as LanguageCode

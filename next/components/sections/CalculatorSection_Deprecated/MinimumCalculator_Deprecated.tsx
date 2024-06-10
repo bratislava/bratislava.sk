@@ -1,5 +1,4 @@
 import { Typography } from '@bratislava/component-library'
-import { useTranslations } from 'next-intl'
 import React, { FormEvent } from 'react'
 import { twMerge } from 'tailwind-merge'
 
@@ -7,6 +6,7 @@ import MinusIcon from '@/assets/images/minus.svg'
 import PlusIcon from '@/assets/images/plus.svg'
 import Button from '@/components/common/Button/Button'
 import Input from '@/components/sections/CalculatorSection_Deprecated/Input_Deprecated'
+import { useTranslation } from '@/utils/useTranslation'
 
 type MinimumCalculatorProps = {
   className?: string
@@ -89,7 +89,7 @@ const MinimumCalculator_Deprecated = ({
   anotherAdultValue,
   childValue,
 }: MinimumCalculatorProps) => {
-  const t = useTranslations('MinimumCalculator')
+  const { t } = useTranslation('MinimumCalculator')
 
   const [adults, setAdults] = React.useState(1)
   const [children, setChildren] = React.useState(0)

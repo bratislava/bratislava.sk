@@ -1,5 +1,4 @@
 import { keepPreviousData, useQuery } from '@tanstack/react-query'
-import { useLocale, useTranslations } from 'next-intl'
 import { ReactNode } from 'react'
 
 import { SearchOption } from '@/components/sections/SearchSection/GlobalSearchSectionContent'
@@ -41,6 +40,8 @@ import {
 import { base64Encode } from '@/utils/base64'
 import { formatDate } from '@/utils/formatDate'
 import { isDefined } from '@/utils/isDefined'
+import { useLocale } from '@/utils/useLocale'
+import { useTranslation } from '@/utils/useTranslation'
 
 export type SearchFilters =
   | PagesFilters
@@ -67,7 +68,7 @@ export const useQueryBySearchOption = ({
   optionKey: SearchOption['id']
   filters: SearchFilters
 }) => {
-  const t = useTranslations()
+  const { t } = useTranslation()
   const locale = useLocale()
 
   const pagesQuery = useQuery({

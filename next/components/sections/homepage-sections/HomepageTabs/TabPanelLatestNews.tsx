@@ -1,5 +1,4 @@
 import { Typography } from '@bratislava/component-library'
-import { useTranslations } from 'next-intl'
 import React from 'react'
 import { TabPanel } from 'react-aria-components'
 
@@ -14,11 +13,12 @@ import { getNumericLocalDate } from '@/utils/formatDate'
 import { generateImageSizes } from '@/utils/generateImageSizes'
 import { getCommonLinkProps } from '@/utils/getCommonLinkProps'
 import { isDefined } from '@/utils/isDefined'
+import { useTranslation } from '@/utils/useTranslation'
 
 const imageSizes = generateImageSizes({ default: '50vw', lg: '33vw' })
 
 const TabPanelLatestNews = () => {
-  const t = useTranslations('HomepageTabs')
+  const { t } = useTranslation('HomepageTabs')
 
   const { homepage, blogPosts } = useHomepageContext()
   const { tabs } = homepage?.attributes ?? {}

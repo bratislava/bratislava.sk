@@ -1,11 +1,11 @@
 import Link from 'next/link'
-import { useTranslations } from 'next-intl'
 import { useRef } from 'react'
 import { useEventListener } from 'usehooks-ts'
 
 import { ChevronRightIcon } from '@/assets/ui-icons'
 import LoadingSpinner from '@/components/common/LoadingSpinner/LoadingSpinner'
 import { HomepageSearchData } from '@/services/meili/fetchers/homepageSearchFetcher'
+import { useTranslation } from '@/utils/useTranslation'
 
 type HomePageSearchResultsProps = {
   searchValue: string
@@ -14,7 +14,7 @@ type HomePageSearchResultsProps = {
 }
 
 const HomePageSearchResults = ({ searchValue, data, isLoading }: HomePageSearchResultsProps) => {
-  const t = useTranslations()
+  const { t } = useTranslation()
   const inputRef = useRef<(HTMLAnchorElement | null)[]>([])
 
   useEventListener('keydown', (e) => {

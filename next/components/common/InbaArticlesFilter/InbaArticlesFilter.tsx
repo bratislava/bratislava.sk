@@ -1,4 +1,3 @@
-import { useTranslations } from 'next-intl'
 import React, { useEffect, useState } from 'react'
 import { Label, Selection, TagGroup, TagList, Text } from 'react-aria-components'
 
@@ -6,6 +5,7 @@ import Chip from '@/components/common/Chip/Chip'
 import { InbaTagEntityFragment } from '@/services/graphql'
 import { getCategoryColorLocalStyle } from '@/utils/colors'
 import { isDefined } from '@/utils/isDefined'
+import { useTranslation } from '@/utils/useTranslation'
 
 export type InbaArticlesFilterProps = {
   tags: InbaTagEntityFragment[]
@@ -24,7 +24,7 @@ const InbaArticlesFilter = ({
   subtext,
   onChange,
 }: InbaArticlesFilterProps) => {
-  const t = useTranslations('BlogPostsFilter')
+  const { t } = useTranslation('BlogPostsFilter')
   const [selectedTags, setSelectedTags] = useState<Selection>(new Set<string>())
 
   useEffect(() => {

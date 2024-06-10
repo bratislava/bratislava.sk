@@ -1,4 +1,3 @@
-import { useLocale } from 'next-intl'
 import React from 'react'
 
 import FileCard, { FileCardProps } from '@/components/cards/FileCard'
@@ -8,6 +7,7 @@ import { formatDate } from '@/utils/formatDate'
 import { formatFileExtension } from '@/utils/formatFileExtension'
 import { formatFileSize } from '@/utils/formatFileSize'
 import { useGetDownloadAriaLabel } from '@/utils/useGetDownloadAriaLabel'
+import { useLocale } from '@/utils/useLocale'
 
 export type FileCardWrapperProps = {
   fileItem: FileItemBlockFragment
