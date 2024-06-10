@@ -1,14 +1,11 @@
 const { withPlausibleProxy } = require('next-plausible')
+const i18nextConfig = require('./next-i18next.config.js')
 
 /**
  * @type {import('next').NextConfig}
  */
 const nextConfig = {
-  i18n: {
-    defaultLocale: 'sk',
-    locales: ['en', 'sk'],
-    localeDetection: false,
-  },
+  i18n: i18nextConfig.i18n,
   reactStrictMode: true,
   images: {
     remotePatterns: [

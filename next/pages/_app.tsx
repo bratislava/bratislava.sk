@@ -5,7 +5,7 @@ import '../styles/globals.css'
 import { AppProps } from 'next/app'
 import { Inter } from 'next/font/google'
 import Head from 'next/head'
-import { NextIntlClientProvider } from 'next-intl'
+import { appWithTranslation } from 'next-i18next'
 import PlausibleProvider from 'next-plausible'
 import { NextAdapter } from 'next-query-params'
 import { OverlayProvider } from 'react-aria'
@@ -44,31 +44,29 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
         {/* look for CookieConsent component for 3rd party scripts you'd expect to find here */}
       </Head>
 
-      <NextIntlClientProvider messages={pageProps.messages}>
-        <PlausibleProvider
-          domain={isProd ? 'bratislava.sk' : 'testing.bratislava.sk'}
-          taggedEvents
-          // uncomment for local testing, needs to be run with `yarn build && yarn start`
-          // trackLocalhost
-        >
-          <BAQueryClientProvider>
-            <QueryParamProvider adapter={NextAdapter}>
-              <BAI18nProvider>
-                <OverlayProvider>
-                  <NavMenuContextProvider>
-                    {/* This root div is used for locked body when mobile menu ist open, see MobileNavMenu component */}
-                    <div id="root">
-                      <Component {...pageProps} />
-                    </div>
-                  </NavMenuContextProvider>
-                </OverlayProvider>
-              </BAI18nProvider>
-            </QueryParamProvider>
-          </BAQueryClientProvider>
-        </PlausibleProvider>
-      </NextIntlClientProvider>
+      <PlausibleProvider
+        domain={isProd ? 'bratislava.sk' : 'testing.bratislava.sk'}
+        taggedEvents
+        // uncomment for local testing, needs to be run with `yarn build && yarn start`
+        // trackLocalhost
+      >
+        <BAQueryClientProvider>
+          <QueryParamProvider adapter={NextAdapter}>
+            <BAI18nProvider>
+              <OverlayProvider>
+                <NavMenuContextProvider>
+                  {/* This root div is used for locked body when mobile menu ist open, see MobileNavMenu component */}
+                  <div id="root">
+                    <Component {...pageProps} />
+                  </div>
+                </NavMenuContextProvider>
+              </OverlayProvider>
+            </BAI18nProvider>
+          </QueryParamProvider>
+        </BAQueryClientProvider>
+      </PlausibleProvider>
     </>
   )
 }
 
-export default MyApp
+export default appWithTranslation(MyApp)
