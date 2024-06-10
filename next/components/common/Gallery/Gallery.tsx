@@ -85,7 +85,7 @@ const Gallery = ({ images = [] }: GalleryProps) => {
                   <div className="absolute top-0 flex h-full w-full flex-col items-center justify-center gap-0.5 bg-white p-2 text-center">
                     <div className="text-h2 font-semibold">+{moreImagesCount}</div>
                     <div className="text-large-respo">
-                      {t('morePhotos', { count: moreImagesCount })}
+                      {t('Gallery.morePhotos', { count: moreImagesCount })}
                     </div>
                   </div>
                 </div>

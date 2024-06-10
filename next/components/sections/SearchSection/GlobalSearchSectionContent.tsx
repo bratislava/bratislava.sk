@@ -148,7 +148,7 @@ const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
     })
   }
 
-  const getResultsCountById = (optionId: SearchOption['id']): number => {
+  const getResultsCountById = (optionId: SearchOption['id']) => {
     if (optionId === defaultSearchOption.id) {
       return Object.values(resultsCount).reduce((a, b) => a + b, 0)
     }
@@ -254,7 +254,8 @@ const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
       {getResultsCountById(selectedKey) > 0 ? (
         <Typography type="p">
           {t('SearchPage.showingResults', {
-            count: getResultsCountById(selectedKey),
+            // `?? 0` is here only for i18next-parser, otherwise, it doesn't create plurals
+            count: getResultsCountById(selectedKey) ?? 0,
           })}
         </Typography>
       ) : null}
