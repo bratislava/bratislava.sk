@@ -117,7 +117,9 @@ const MinimumCalculator_Deprecated = ({
       </Typography>
 
       {/* FIXME Typography. Convert to use Typography. Issue: responsive size of Figma large <p> is different */}
-      <p className="text-large m-auto mt-6 w-10/12 pt-0.5 font-medium">{t('MinimumCalculator.description')}</p>
+      <p className="text-large m-auto mt-6 w-10/12 pt-0.5 font-medium">
+        {t('MinimumCalculator.description')}
+      </p>
       <form
         className="text-large mt-10 flex flex-col items-center gap-y-8 font-medium"
         onSubmit={handleSubmit}
@@ -174,11 +176,16 @@ const MinimumCalculator_Deprecated = ({
       {submitted && (
         <div className="mt-14">
           {/* FIXME Typography. Convert to use Typography. Issue: Figma <p> different font size */}
-          <p className="text-h4">{canAcommodate ? t('MinimumCalculator.answerYes') : t('MinimumCalculator.answerNo')}</p>
+          <p className="text-h4">
+            {canAcommodate ? t('MinimumCalculator.answerYes') : t('MinimumCalculator.answerNo')}
+          </p>
           <Typography type="p" size="p-large" className="text-large-respo m-auto mt-5 w-9/12">
             {canAcommodate
               ? t('MinimumCalculator.answerDescriptionYes')
-              : t('MinimumCalculator.answerDescriptionNo').replace('XY', livingWage.toFixed(2).toString())}
+              : t('MinimumCalculator.answerDescriptionNo').replace(
+                  'XY',
+                  livingWage.toFixed(2).toString(),
+                )}
           </Typography>
         </div>
       )}

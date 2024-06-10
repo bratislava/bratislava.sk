@@ -1,8 +1,5 @@
-import { useTranslation as useTranslationI18n } from 'next-i18next'
+import { useTranslation as useTranslationNextI18Next } from 'next-i18next'
 
-// TODO to be replaced by direct import
-export const useTranslation = (key?: string) => {
-  const { t } = useTranslationI18n('translation', { keyPrefix: key })
-
-  return { t }
+export const useTranslation = () => {
+  return useTranslationNextI18Next()
 }

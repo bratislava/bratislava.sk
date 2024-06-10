@@ -66,7 +66,10 @@ const RelatedBlogPostsSection = ({ page, className }: Props) => {
                 date={getNumericLocalDate(date_added ?? publishedAt)}
                 title={title ?? ''}
                 tag={tagTitle ?? undefined}
-                linkProps={{ children: t('RelatedBlogPostsSection.readMore'), href: `/blog/${slug}` }}
+                linkProps={{
+                  children: t('RelatedBlogPostsSection.readMore'),
+                  href: `/blog/${slug}`,
+                }}
               />
             )
           })}

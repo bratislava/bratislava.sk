@@ -65,7 +65,9 @@ const InbaArticlesFilter = ({
         </TagGroup>
         {subCategories?.length ? (
           <div className="flex flex-col pt-8 lg:items-center">
-            <Label className="text-h5 pb-3 font-semibold">{t('BlogPostsFilter.subcategories')}</Label>
+            <Label className="text-h5 pb-3 font-semibold">
+              {t('BlogPostsFilter.subcategories')}
+            </Label>
             <TagGroup selectionMode="multiple">
               <TagList className="flex flex-wrap gap-2 lg:justify-center">
                 {subCategories.filter(isDefined).map((subcategoryName) => (

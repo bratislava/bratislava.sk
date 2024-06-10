@@ -122,7 +122,9 @@ const BlogPostsFilter = ({
         blogPostsTags?.length ? (
           <div className="flex flex-col pt-8 lg:items-center">
             {Array.from(selectedPageCategory).length > 0 ? (
-              <Label className="text-h5 pb-3 font-semibold">{t('BlogPostsFilter.subcategories')}</Label>
+              <Label className="text-h5 pb-3 font-semibold">
+                {t('BlogPostsFilter.subcategories')}
+              </Label>
             ) : null}
             <TagGroup
               selectionMode="multiple"
