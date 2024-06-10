@@ -12,14 +12,14 @@ export type HomepageTabsProps = {
 }
 
 const HomepageTabs = ({ className }: HomepageTabsProps) => {
-  const { t } = useTranslation('HomepageTabs')
+  const { t } = useTranslation()
 
   const tabs = useMemo(() => {
     return [
-      { id: 'LatestNews', label: t('tabs.LatestNews') },
-      { id: 'OfficialBoard', label: t('tabs.OfficialBoard') },
-      { id: 'RoadClosures', label: t('tabs.RoadClosures') },
-      { id: 'Disclosure', label: t('tabs.Disclosure') },
+      { id: 'LatestNews', label: t('HomepageTabs.tabs.LatestNews') },
+      { id: 'OfficialBoard', label: t('HomepageTabs.tabs.OfficialBoard') },
+      { id: 'RoadClosures', label: t('HomepageTabs.tabs.RoadClosures') },
+      { id: 'Disclosure', label: t('HomepageTabs.tabs.Disclosure') },
     ]
   }, [t])
 
@@ -27,7 +27,7 @@ const HomepageTabs = ({ className }: HomepageTabsProps) => {
     <div className={className}>
       <Tabs>
         <TabList
-          aria-label={t('aria.tabListName')}
+          aria-label={t('HomepageTabs.aria.tabListName')}
           className="negative-x-spacing flex grid-cols-4 gap-x-4 overflow-auto overflow-y-hidden scrollbar-hide md:grid"
         >
           {tabs.map(({ id, label }) => (

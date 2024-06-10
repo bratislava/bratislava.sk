@@ -11,7 +11,7 @@ type TopNineItemProps = {
 }
 
 const TopServicesItem = ({ topServicesItem }: TopNineItemProps) => {
-  const { t } = useTranslation('TopServices')
+  const { t } = useTranslation()
   const { icon, link } = topServicesItem
 
   const { children: label, ...linkProps } = getCommonLinkProps(link)
@@ -26,7 +26,7 @@ const TopServicesItem = ({ topServicesItem }: TopNineItemProps) => {
           {label}
         </Typography>
         <Button variant="black-link" stretched {...linkProps}>
-          {t('learnMore')}
+          {t('TopServices.learnMore')}
         </Button>
       </div>
     </div>

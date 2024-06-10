@@ -30,7 +30,7 @@ const InbaReleaseHorizontalCard = ({
   linkHref,
   ...rest
 }: Props) => {
-  const { t } = useTranslation('InbaRelease')
+  const { t } = useTranslation()
 
   return (
     <CardBase className="flex flex-row rounded-lg" {...rest}>
@@ -57,7 +57,7 @@ const InbaReleaseHorizontalCard = ({
           )}
           {date && (
             <Typography type="p" className="mt-1">
-              {t('releasedOn', { date })}
+              {t('InbaRelease.releasedOn', { date })}
             </Typography>
           )}
         </div>

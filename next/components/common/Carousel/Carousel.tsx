@@ -35,7 +35,7 @@ const Carousel = ({
   hasVerticalPadding = true,
   showControlsOnMobile = false,
 }: CarouselProps) => {
-  const { t } = useTranslation('Carousel')
+  const { t } = useTranslation()
   const scrollerRef = useRef<HTMLUListElement>(null)
 
   const [currentIndex, setCurrentIndex] = useState(0)
@@ -116,7 +116,7 @@ const Carousel = ({
                   { hidden: isLeftControlHidden },
                 )}
                 icon={<ArrowLeftIcon />}
-                aria-label={t('aria.previous')}
+                aria-label={t('Carousel.aria.previous')}
               />
               <Button
                 variant="category-solid"
@@ -128,20 +128,20 @@ const Carousel = ({
                   { hidden: isRightControlHidden },
                 )}
                 icon={<ArrowRightIcon />}
-                aria-label={t('aria.next')}
+                aria-label={t('Carousel.aria.next')}
               />
             </>
           )}
 
           {controlsVariant === 'bottom' && (
             // Inspired by https://inclusive-components.design/a-content-slider/#thebuttongroup
-            <ul aria-label={t('aria.controlButtons')} className="mt-6 flex gap-2">
+            <ul aria-label={t('Carousel.aria.controlButtons')} className="mt-6 flex gap-2">
               <li>
                 <Button
                   variant="category-outline"
                   onPress={handleGoToPrevious}
                   icon={<ArrowLeftIcon />}
-                  aria-label={t('aria.previous')}
+                  aria-label={t('Carousel.aria.previous')}
                   isDisabled={isLeftControlHidden}
                 />
               </li>
@@ -150,7 +150,7 @@ const Carousel = ({
                   variant="category-outline"
                   onPress={handleGoToNext}
                   icon={<ArrowRightIcon />}
-                  aria-label={t('aria.next')}
+                  aria-label={t('Carousel.aria.next')}
                   isDisabled={isRightControlHidden}
                 />
               </li>

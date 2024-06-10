@@ -89,7 +89,7 @@ const MinimumCalculator_Deprecated = ({
   anotherAdultValue,
   childValue,
 }: MinimumCalculatorProps) => {
-  const { t } = useTranslation('MinimumCalculator')
+  const { t } = useTranslation()
 
   const [adults, setAdults] = React.useState(1)
   const [children, setChildren] = React.useState(0)
@@ -113,24 +113,24 @@ const MinimumCalculator_Deprecated = ({
   return (
     <div className={twMerge('bg-category-200 text-center text-font', className)}>
       <Typography type="h2" size="h3">
-        {t('title')}
+        {t('MinimumCalculator.title')}
       </Typography>
 
       {/* FIXME Typography. Convert to use Typography. Issue: responsive size of Figma large <p> is different */}
-      <p className="text-large m-auto mt-6 w-10/12 pt-0.5 font-medium">{t('description')}</p>
+      <p className="text-large m-auto mt-6 w-10/12 pt-0.5 font-medium">{t('MinimumCalculator.description')}</p>
       <form
         className="text-large mt-10 flex flex-col items-center gap-y-8 font-medium"
         onSubmit={handleSubmit}
       >
         <InputField
           id="adults"
-          label={t('adultsText')}
+          label={t('MinimumCalculator.adultsText')}
           value={adults}
           onChange={(v) => {
             setAdults(v)
             setSubmitted(false)
           }}
-          placeholder={t('placeholder')}
+          placeholder={t('MinimumCalculator.placeholder')}
           min={1}
           onAddSub={(v) => {
             setAdults(v > 0 ? v : adults)
@@ -139,13 +139,13 @@ const MinimumCalculator_Deprecated = ({
 
         <InputField
           id="children"
-          label={t('childrenText')}
+          label={t('MinimumCalculator.childrenText')}
           value={children}
           onChange={(v) => {
             setChildren(v)
             setSubmitted(false)
           }}
-          placeholder={t('placeholder')}
+          placeholder={t('MinimumCalculator.placeholder')}
           onAddSub={(v) => {
             setChildren(v >= 0 ? v : children)
           }}
@@ -153,13 +153,13 @@ const MinimumCalculator_Deprecated = ({
 
         <InputField
           id="income"
-          label={t('incomeText')}
+          label={t('MinimumCalculator.incomeText')}
           value={income}
           onChange={(v) => {
             setIncome(v)
             setSubmitted(false)
           }}
-          placeholder={t('placeholder')}
+          placeholder={t('MinimumCalculator.placeholder')}
           step="0.01"
           onAddSub={(v) => {
             setIncome(v >= 0 ? v : income)
@@ -167,18 +167,18 @@ const MinimumCalculator_Deprecated = ({
         />
 
         <Button variant="category-solid" type="submit">
-          {t('buttonText')}
+          {t('MinimumCalculator.buttonText')}
         </Button>
       </form>
 
       {submitted && (
         <div className="mt-14">
           {/* FIXME Typography. Convert to use Typography. Issue: Figma <p> different font size */}
-          <p className="text-h4">{canAcommodate ? t('answerYes') : t('answerNo')}</p>
+          <p className="text-h4">{canAcommodate ? t('MinimumCalculator.answerYes') : t('MinimumCalculator.answerNo')}</p>
           <Typography type="p" size="p-large" className="text-large-respo m-auto mt-5 w-9/12">
             {canAcommodate
-              ? t('answerDescriptionYes')
-              : t('answerDescriptionNo').replace('XY', livingWage.toFixed(2).toString())}
+              ? t('MinimumCalculator.answerDescriptionYes')
+              : t('MinimumCalculator.answerDescriptionNo').replace('XY', livingWage.toFixed(2).toString())}
           </Typography>
         </div>
       )}

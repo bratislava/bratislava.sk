@@ -10,13 +10,13 @@ import { useNavMenuContext } from './navMenuContext'
 import NavMenuItem from './NavMenuItem'
 
 const NavMenu = () => {
-  const { t } = useTranslation('NavMenu')
+  const { t } = useTranslation()
   const pathname = usePathname()
 
   const { menu } = useGeneralContext()
 
   const menus = useMemo(() => {
-    return getParsedMenus(menu, t('more'))
+    return getParsedMenus(menu, t('NavMenu.more'))
   }, [menu, t])
 
   const { menuValue, setMenuValue } = useNavMenuContext()
@@ -29,7 +29,7 @@ const NavMenu = () => {
     <NavigationMenu.Root
       value={menuValue}
       onValueChange={setMenuValue}
-      aria-label={t('aria.navMenuLabel')}
+      aria-label={t('NavMenu.aria.navMenuLabel')}
     >
       <div className="relative z-30 shadow">
         <NavigationMenu.List className="m-auto grid w-full max-w-screen-xl grid-flow-col grid-cols-6">

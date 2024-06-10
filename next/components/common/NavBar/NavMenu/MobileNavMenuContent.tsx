@@ -16,7 +16,7 @@ type NavMenuContentProps = {
 }
 
 const MobileNavMenuContent = ({ menuItem, colorStyle }: NavMenuContentProps) => {
-  const { t } = useTranslation('NavMenu')
+  const { t } = useTranslation()
   const { setMenuValue } = useNavMenuContext()
   const { items: sections, label: parentLabel } = menuItem
 
@@ -35,7 +35,7 @@ const MobileNavMenuContent = ({ menuItem, colorStyle }: NavMenuContentProps) => 
           <Button
             onPress={() => setMenuValue('')}
             className="-my-2 flex w-full items-center gap-2 py-2"
-            aria-label={t('aria.backTo', { backTo: parentLabel })}
+            aria-label={t('NavMenu.aria.backTo', { backTo: parentLabel })}
             startIcon={<ChevronLeftIcon />}
           >
             {parentLabel}

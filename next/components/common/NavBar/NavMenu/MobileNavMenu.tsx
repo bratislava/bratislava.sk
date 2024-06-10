@@ -17,7 +17,7 @@ import MobileNavMenuItem from './MobileNavMenuItem'
 import { useNavMenuContext } from './navMenuContext'
 
 const MobileNavMenu = () => {
-  const { t } = useTranslation('NavMenu')
+  const { t } = useTranslation()
   const { height } = useWindowSize()
   const heightWithoutHeader = `calc(${height}px - 14*4px)`
 
@@ -27,7 +27,7 @@ const MobileNavMenu = () => {
   const linksOnMobile = links?.filter(isDefined).filter((link) => link.showOnMobile)
 
   const menus = useMemo(() => {
-    return getParsedMenus(generalMenu, t('more'))
+    return getParsedMenus(generalMenu, t('NavMenu.more'))
   }, [generalMenu, t])
 
   const { menuValue, setMenuValue, isMobileMenuOpen, setMobileMenuOpen } = useNavMenuContext()
@@ -54,7 +54,7 @@ const MobileNavMenu = () => {
       <NavigationMenu.Root
         value={menuValue}
         onValueChange={setMenuValue}
-        aria-label={t('aria.navMenuLabel')}
+        aria-label={t('NavMenu.aria.navMenuLabel')}
       >
         <NavigationMenu.List className="flex flex-col gap-2">
           {menus.map((menu, index) => (

@@ -33,7 +33,7 @@ const GalleryModal = (props: ModalProps) => {
     centerVertically = true,
     noAnimation = false,
   } = props
-  const { t } = useTranslation('Gallery')
+  const { t } = useTranslation()
   const ref = useRef<HTMLDivElement | null>(null)
   const { overlayProps, underlayProps } = useOverlay(
     { ...props, isDismissable: isDismissable === undefined ? true : isDismissable },
@@ -78,7 +78,7 @@ const GalleryModal = (props: ModalProps) => {
                       <Button
                         variant="category-solid"
                         className="pointer-events-auto fixed right-6 top-6 z-30 rounded-full"
-                        aria-label={t('aria.closeGallery')}
+                        aria-label={t('Gallery.aria.closeGallery')}
                         onPress={onClose}
                         icon={<CrossIcon />}
                       />

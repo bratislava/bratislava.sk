@@ -15,12 +15,12 @@ type OfficialBoardDocumentPageContentProps = {
 }
 
 const OfficialBoardDocumentPageContent = ({ document }: OfficialBoardDocumentPageContentProps) => {
-  const { t } = useTranslation('OfficialBoard')
+  const { t } = useTranslation()
   const locale = useLocale()
 
   const breadcrumbs = [
     {
-      title: t('officialBoard'),
+      title: t('OfficialBoard.officialBoard'),
       path:
         locale === 'en'
           ? '/city-of-bratislava/transparent-city/official-noticeboard'
@@ -32,22 +32,22 @@ const OfficialBoardDocumentPageContent = ({ document }: OfficialBoardDocumentPag
   const dlData: { key: string; title: string; description: ReactNode }[] = [
     {
       key: 'description',
-      title: t('description'),
+      title: t('OfficialBoard.description'),
       description: document.description,
     },
     {
       key: 'category',
-      title: t('category'),
+      title: t('OfficialBoard.category'),
       description: document.categoryName,
     },
     {
       key: 'publishedFrom',
-      title: t('publishedFrom'),
+      title: t('OfficialBoard.publishedFrom'),
       description: formatDate(document.publishedFrom),
     },
     {
       key: 'publishedTo',
-      title: t('publishedTo'),
+      title: t('OfficialBoard.publishedTo'),
       description: formatDate(document.publishedTo),
     },
   ]
@@ -63,7 +63,7 @@ const OfficialBoardDocumentPageContent = ({ document }: OfficialBoardDocumentPag
         <div className="mb-8 flex flex-col gap-y-12">
           <div className="flex flex-col gap-6">
             <Typography type="h2" size="h4">
-              {t('attachments')}
+              {t('OfficialBoard.attachments')}
             </Typography>
             <div className="flex flex-col rounded-lg border-2 px-4">
               {document.files.length > 0 ? (
@@ -81,14 +81,14 @@ const OfficialBoardDocumentPageContent = ({ document }: OfficialBoardDocumentPag
                   />
                 ))
               ) : (
-                <Typography type="p">{t('noAttachmentsMessage')}</Typography>
+                <Typography type="p">{t('OfficialBoard.noAttachmentsMessage')}</Typography>
               )}
             </div>
           </div>
 
           <div className="flex flex-col gap-6">
             <Typography type="h2" size="h4">
-              {t('details')}
+              {t('OfficialBoard.details')}
             </Typography>
             <dl className="-mt-1 lg:-mt-3">
               {dlData.map((dItem) => (

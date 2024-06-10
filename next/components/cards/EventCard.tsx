@@ -35,7 +35,7 @@ const EventCard = ({
   imageSizes,
   className,
 }: EventCardProps) => {
-  const { t } = useTranslation('EventCard')
+  const { t } = useTranslation()
 
   return (
     <CardBase variant="shadow" className={twMerge('rounded-lg text-white', className)}>
@@ -52,7 +52,7 @@ const EventCard = ({
             {/* FIXME Typography: Convert to use Typography. Issue: Different size and weight than typography have */}
             {address && <span className="line-clamp-1">{address}</span>}
             <span className="line-clamp-1">
-              {isLongTerm && `${t('from')} `}
+              {isLongTerm && `${t('EventCard.from')} `}
               <FormatEventDateRange dateFrom={dateFrom} dateTo={dateTo ?? undefined} />
             </span>
           </div>

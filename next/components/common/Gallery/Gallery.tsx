@@ -22,7 +22,7 @@ export type GalleryProps = {
 }
 
 const Gallery = ({ images = [] }: GalleryProps) => {
-  const { t } = useTranslation('Gallery')
+  const { t } = useTranslation()
 
   const { width: windowWidth } = useWindowSize()
   // TODO refactor to use som custom hook
@@ -53,7 +53,7 @@ const Gallery = ({ images = [] }: GalleryProps) => {
         <div
           role="button"
           tabIndex={0}
-          aria-label={t('aria.openGallery')}
+          aria-label={t('Gallery.aria.openGallery')}
           onKeyUp={onEnterOrSpaceKeyDown(() => openAtImageIndex(0))}
           className={cx('outline-primary cursor-default outline-offset-2 focus:outline-4')}
         >

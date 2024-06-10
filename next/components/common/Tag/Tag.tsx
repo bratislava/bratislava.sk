@@ -13,7 +13,7 @@ type TagProps = {
 }
 
 const Tag = ({ text, size = 'small', isColored = false, shorthand, onRemove }: TagProps) => {
-  const { t } = useTranslation('Tag')
+  const { t } = useTranslation()
 
   const isRemovable = !!onRemove
 
@@ -46,7 +46,7 @@ const Tag = ({ text, size = 'small', isColored = false, shorthand, onRemove }: T
         <Button
           onPress={onRemove}
           icon={<CrossIcon className={iconClassStyles} />}
-          aria-label={t('aria.removeTag', { tag: text })}
+          aria-label={t('Tag.aria.removeTag', { tag: text })}
           className="p-0"
         />
       )}

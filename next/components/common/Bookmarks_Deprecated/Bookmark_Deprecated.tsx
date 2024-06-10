@@ -33,7 +33,7 @@ const Bookmark = ({
   variant = 'red',
   icon,
 }: BookmarkProps) => {
-  const { t } = useTranslation('Bookmark')
+  const { t } = useTranslation()
   const [isOpen, setIsOpen] = React.useState(false)
 
   const ref = React.useRef<HTMLSpanElement>(null)
@@ -141,7 +141,7 @@ const Bookmark = ({
           <Button
             onPress={() => setIsOpen(false)}
             icon={<CrossIcon />}
-            aria-label={t('aria.close')}
+            aria-label={t('Bookmark.aria.close')}
           />
         </div>
       </div>

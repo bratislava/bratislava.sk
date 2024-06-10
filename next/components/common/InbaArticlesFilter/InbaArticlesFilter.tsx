@@ -24,7 +24,7 @@ const InbaArticlesFilter = ({
   subtext,
   onChange,
 }: InbaArticlesFilterProps) => {
-  const { t } = useTranslation('BlogPostsFilter')
+  const { t } = useTranslation()
   const [selectedTags, setSelectedTags] = useState<Selection>(new Set<string>())
 
   useEffect(() => {
@@ -34,7 +34,7 @@ const InbaArticlesFilter = ({
   return (
     <div className="flex flex-col gap-6 py-18 lg:m-auto lg:w-[800px]  lg:gap-10 lg:py-18">
       <div className="flex flex-col gap-2 lg:items-center ">
-        <Label className="text-h3 font-semibold">{t('articleFilter')}</Label>
+        <Label className="text-h3 font-semibold">{t('BlogPostsFilter.articleFilter')}</Label>
         {subtext && <Text>{subtext}</Text>}
       </div>
       <div>
@@ -65,7 +65,7 @@ const InbaArticlesFilter = ({
         </TagGroup>
         {subCategories?.length ? (
           <div className="flex flex-col pt-8 lg:items-center">
-            <Label className="text-h5 pb-3 font-semibold">{t('subcategories')}</Label>
+            <Label className="text-h5 pb-3 font-semibold">{t('BlogPostsFilter.subcategories')}</Label>
             <TagGroup selectionMode="multiple">
               <TagList className="flex flex-wrap gap-2 lg:justify-center">
                 {subCategories.filter(isDefined).map((subcategoryName) => (

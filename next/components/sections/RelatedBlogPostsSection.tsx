@@ -25,7 +25,7 @@ type Props = {
 const imageSizes = generateImageSizes({ default: '100vw', md: '50vw', lg: '33vw' })
 
 const RelatedBlogPostsSection = ({ page, className }: Props) => {
-  const { t } = useTranslation('RelatedBlogPostsSection')
+  const { t } = useTranslation()
   const locale = useLocale()
 
   const { data } = useQuery({
@@ -43,7 +43,7 @@ const RelatedBlogPostsSection = ({ page, className }: Props) => {
       <div className="flex flex-col">
         <div className="flex">
           <div className="grow">
-            <Typography type="h2">{t('relatedBlogPosts')}</Typography>
+            <Typography type="h2">{t('RelatedBlogPostsSection.relatedBlogPosts')}</Typography>
           </div>
         </div>
 
@@ -66,7 +66,7 @@ const RelatedBlogPostsSection = ({ page, className }: Props) => {
                 date={getNumericLocalDate(date_added ?? publishedAt)}
                 title={title ?? ''}
                 tag={tagTitle ?? undefined}
-                linkProps={{ children: t('readMore'), href: `/blog/${slug}` }}
+                linkProps={{ children: t('RelatedBlogPostsSection.readMore'), href: `/blog/${slug}` }}
               />
             )
           })}

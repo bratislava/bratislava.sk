@@ -16,7 +16,7 @@ type Props = { children: ReactNode } & TitleProps & Omit<DialogProps, 'children'
  */
 
 const Dialog = forwardRef<HTMLElement, Props>(({ children, title, ...props }, ref) => {
-  const { t } = useTranslation('Dialog')
+  const { t } = useTranslation()
 
   return (
     <ReactAriaDialog
@@ -36,7 +36,7 @@ const Dialog = forwardRef<HTMLElement, Props>(({ children, title, ...props }, re
               {/* </Heading> */}
               <Button
                 icon={<CrossIcon />}
-                aria-label={t('aria.close')}
+                aria-label={t('Dialog.aria.close')}
                 variant="black-plain"
                 className="-m-2"
                 onPress={close}
@@ -52,7 +52,7 @@ const Dialog = forwardRef<HTMLElement, Props>(({ children, title, ...props }, re
           {title ? null : (
             <Button
               icon={<CrossIcon />}
-              aria-label={t('aria.close')}
+              aria-label={t('Dialog.aria.close')}
               className="absolute right-6 top-6 -m-2 bg-white hover:bg-gray-100"
               variant="black-outline"
               size="small"

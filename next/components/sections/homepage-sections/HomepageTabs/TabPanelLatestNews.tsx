@@ -18,7 +18,7 @@ import { useTranslation } from '@/utils/useTranslation'
 const imageSizes = generateImageSizes({ default: '50vw', lg: '33vw' })
 
 const TabPanelLatestNews = () => {
-  const { t } = useTranslation('HomepageTabs')
+  const { t } = useTranslation()
 
   const { homepage, blogPosts } = useHomepageContext()
   const { tabs } = homepage?.attributes ?? {}
@@ -52,7 +52,7 @@ const TabPanelLatestNews = () => {
               date={getNumericLocalDate(date_added ?? publishedAt)}
               tag={tagTitle ?? undefined}
               title={title ?? ''}
-              linkProps={{ children: t('readMore'), href: `/blog/${slug}` }}
+              linkProps={{ children: t('HomepageTabs.readMore'), href: `/blog/${slug}` }}
               imgSrc={coverImage?.data?.attributes?.url}
               imgSizes={imageSizes}
             />
@@ -75,7 +75,7 @@ const TabPanelLatestNews = () => {
                 date={getNumericLocalDate(date_added ?? publishedAt)}
                 tag={tagTitle ?? undefined}
                 title={title ?? ''}
-                linkProps={{ children: t('readMore'), href: `/blog/${slug}` }}
+                linkProps={{ children: t('HomepageTabs.readMore'), href: `/blog/${slug}` }}
                 imgSrc={coverImage?.data?.attributes?.url}
                 imgSizes={imageSizes}
                 text={excerpt ?? undefined}
