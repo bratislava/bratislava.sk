@@ -91,6 +91,12 @@ module.exports = {
 
     colors: colors,
     extend: {
+      // Default theme has the border default color set as "colors.gray.200", but we use "grey" with "e" in our colors
+      // This should be the only place where default tailwind config chooses some specific color from tailwind config.
+      // https://github.com/tailwindlabs/tailwindcss/blob/master/stubs/config.full.js#L84
+      borderColor: (theme) => ({
+        DEFAULT: theme('colors.grey.200'),
+      }),
       rotate: {
         270: '270deg',
       },
