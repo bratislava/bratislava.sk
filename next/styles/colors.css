@@ -121,14 +121,14 @@
    */
 
   --token-background-primary: var(--color-gray-0);
-  --token-background-secondary: var(--color-main-200);
+  --token-background-secondary: var(--color-gray-50);
   --token-background-tertiary: var(--color-gray-100);
   --token-background-primary-inverted: var(--color-gray-800);
   --token-background-disabled: var(--color-gray-100);
 
   --token-border-default: var(--color-gray-200);
   --token-border-hover: var(--color-gray-300);
-  --token-border-dark: var(--color-gray-600);
+  --token-border-dark: var(--color-gray-600); /* TODO what is this? */
 
   --token-content-primary: var(--color-gray-800);
   --token-content-secondary: var(--color-gray-700);
@@ -145,12 +145,12 @@
   --token-action-content-default: var(--color-gray-700);
   --token-action-content-hover: var(--color-gray-600);
   --token-action-content-pressed: var(--color-gray-800);
-  --token-action-background-default: var(--color-main-700);
-  --token-action-background-hover: var(--color-main-600);
-  --token-action-background-pressed: var(--color-main-800);
-  --token-action-soft-background-hover: var(--color-main-200);
-  --token-action-soft-background-pressed: var(--color-main-300);
-  --token-action-border-default: var(--color-main-700);
-  --token-action-border-hover: var(--color-main-600);
-  --token-action-border-pressed: var(--color-main-800);
+  --token-action-background-default: var(--color-gray-700);
+  --token-action-background-hover: var(--color-gray-600);
+  --token-action-background-pressed: var(--color-gray-800);
+  --token-action-soft-background-hover: var(--color-gray-100);
+  --token-action-soft-background-pressed: var(--color-gray-200);
+  --token-action-border-default: var(--color-gray-700);
+  --token-action-border-hover: var(--color-gray-600);
+  --token-action-border-pressed: var(--color-gray-800);
 }
