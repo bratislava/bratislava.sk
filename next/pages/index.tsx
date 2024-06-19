@@ -57,6 +57,9 @@ const Homepage = ({ homepageContext, general }: PageProps) => {
         </Head>
 
         <PageLayout>
+          <div className="flex items-center justify-center bg-environment-300 font-bold text-category-500">
+            <p>Test</p>
+          </div>
           <HomepageContent />
         </PageLayout>
       </HomepageContextProvider>
