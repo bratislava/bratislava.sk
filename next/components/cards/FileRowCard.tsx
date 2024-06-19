@@ -24,7 +24,7 @@ const FileRowCard = ({
 
   return (
     <div className={twMerge('relative', className)}>
-      <div className="flex flex-row items-center justify-between gap-x-6 border-b-2 border-gray-200 py-4">
+      <div className="flex flex-row items-center justify-between gap-x-6 border-b-2 border-grey-200 py-4">
         <div className="flex w-full flex-col gap-y-1.5">
           <MLink
             href={downloadLink ?? '#'}
@@ -40,13 +40,13 @@ const FileRowCard = ({
             {title}
           </MLink>
           {(uploadDate || format || size) && (
-            <span className="text-small line-clamp-1 text-gray-700">
+            <span className="text-small line-clamp-1 text-grey-700">
               {/* TODO words should be separated by a dot with 12px gap, this is a simplified solution. Same in FileCard component. */}
               {[uploadDate, format, size].filter(isDefined).join(' • ')}
             </span>
           )}
         </div>
-        <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border-2 border-gray-200 text-gray-700 lg:h-10 lg:w-10">
+        <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border-2 border-grey-200 text-grey-700 lg:h-10 lg:w-10">
           <DownloadIcon className="h-4 w-4" />
         </div>
       </div>

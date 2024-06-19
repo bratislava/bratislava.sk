@@ -25,7 +25,7 @@ const SearchResultCard = ({ data, hideBottomDivider }: SearchResultCardProps) =>
     <div
       className={cx(
         'group relative flex flex-row items-stretch overflow-hidden rounded-none bg-white lg:rounded-lg lg:border-2',
-        { 'hover:border-gray-400': data.linkHref, 'border-b-2': !hideBottomDivider },
+        { 'hover:border-grey-400': data.linkHref, 'border-b-2': !hideBottomDivider },
       )}
       data-cy="search-result-card"
     >
@@ -57,7 +57,7 @@ SearchResultCard.IconContainer = function ({
   return (
     <div
       className={twMerge(
-        'hidden w-[6.5rem] shrink-0 items-center justify-center bg-gray-100 lg:flex',
+        'hidden w-[6.5rem] shrink-0 items-center justify-center bg-grey-100 lg:flex',
         className,
       )}
     >
@@ -193,7 +193,7 @@ SearchResultCard.Metadata = function ({
   return (
     <div
       className={twMerge(
-        'flex flex-col flex-wrap items-stretch gap-x-3 gap-y-1 text-gray-700 lg:flex-row',
+        'flex flex-col flex-wrap items-stretch gap-x-3 gap-y-1 text-grey-700 lg:flex-row',
         className,
       )}
     >

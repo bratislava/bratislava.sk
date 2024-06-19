@@ -33,9 +33,9 @@ const Banner = ({
     <div
       // overflow-hidden ensures image not to overlap with rounded corners
       className={cx('flex h-full w-full overflow-hidden', {
-        'rounded-xl bg-category-200 text-gray-700': variant === 'color',
-        'rounded-xl bg-gray-800 text-white': variant === 'dark',
-        'rounded-lg border-2 bg-white text-gray-700': variant === 'white_condensed',
+        'rounded-xl bg-category-200 text-grey-700': variant === 'color',
+        'rounded-xl bg-grey-800 text-white': variant === 'dark',
+        'rounded-lg border-2 bg-white text-grey-700': variant === 'white_condensed',
         'flex-col lg:flex-row': contentPosition === 'left',
         'flex-col-reverse lg:flex-row-reverse': contentPosition === 'right',
       })}

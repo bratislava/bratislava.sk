@@ -9,7 +9,7 @@ export type ColorCategory =
   | 'social'
   | 'education'
   | 'culture'
-  | 'gray'
+  | 'grey'
 
 const colorCategoryMap = {
   red: 'main',
@@ -42,8 +42,8 @@ export const transformIconToCategory = (icon: Enum_Componentmenumenuitem_Icon): 
 const generateCssVariables = (category: ColorCategory) => {
   const fontContrastColor =
     category === 'social' || category === 'culture'
-      ? 'var(--color-gray-700)'
-      : 'var(--color-gray-0)'
+      ? 'var(--color-grey-700)'
+      : 'var(--color-grey-0)'
 
   return [
     ...[100, 200, 300, 400, 500, 600, 700, 800].map(

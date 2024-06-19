@@ -42,7 +42,7 @@ const HomePageSearchField = ({
       <input
         id="homepage-search-field"
         type="text"
-        className="h-12 w-full rounded-l-lg border-2 border-r-0 px-4 text-font outline-none focus:border-gray-700 lg:h-14"
+        className="h-12 w-full rounded-l-lg border-2 border-r-0 px-4 text-font outline-none focus:border-grey-700 lg:h-14"
         onChange={(e) => setValue(e.target.value)}
         onKeyDown={handleOnKeyDown}
         value={value}

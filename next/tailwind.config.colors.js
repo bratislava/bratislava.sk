@@ -1,7 +1,7 @@
 module.exports = {
   transparent: 'transparent',
   current: 'currentColor',
-  white: 'rgb(var(--color-gray-0))',
+  white: 'rgb(var(--color-grey-0))',
   error: 'rgb(var(--error-color))',
   font: {
     DEFAULT: 'rgb(var(--font-color))',
@@ -67,17 +67,17 @@ module.exports = {
     700: 'rgb(var(--color-culture-700))',
     800: 'rgb(var(--color-culture-800))',
   },
-  gray: {
-    0: 'rgb(var(--color-gray-0))',
-    50: 'rgb(var(--color-gray-50))',
-    100: 'rgb(var(--color-gray-100))',
-    200: 'rgb(var(--color-gray-200))',
-    300: 'rgb(var(--color-gray-300))',
-    400: 'rgb(var(--color-gray-400))',
-    500: 'rgb(var(--color-gray-500))',
-    600: 'rgb(var(--color-gray-600))',
-    700: 'rgb(var(--color-gray-700))',
-    800: 'rgb(var(--color-gray-800))',
+  grey: {
+    0: 'rgb(var(--color-grey-0))',
+    50: 'rgb(var(--color-grey-50))',
+    100: 'rgb(var(--color-grey-100))',
+    200: 'rgb(var(--color-grey-200))',
+    300: 'rgb(var(--color-grey-300))',
+    400: 'rgb(var(--color-grey-400))',
+    500: 'rgb(var(--color-grey-500))',
+    600: 'rgb(var(--color-grey-600))',
+    700: 'rgb(var(--color-grey-700))',
+    800: 'rgb(var(--color-grey-800))',
   },
   success: {
     50: 'rgb(var(--color-success-50))',

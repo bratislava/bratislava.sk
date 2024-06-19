@@ -62,7 +62,7 @@ const GalleryModal = (props: ModalProps) => {
             <div
               {...underlayProps}
               className={twMerge(
-                'fixed inset-0 z-50 overflow-y-auto overflow-x-hidden bg-gray-800/60',
+                'fixed inset-0 z-50 overflow-y-auto overflow-x-hidden bg-grey-800/60',
                 underlayClassName,
               )}
             >

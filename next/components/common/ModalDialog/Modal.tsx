@@ -30,7 +30,7 @@ const Modal = forwardRef<HTMLDivElement, Props>(
       <ModalOverlay
         ref={ref}
         className={twMerge(
-          'fixed left-0 top-0 z-50 flex h-[--visual-viewport-height] w-screen items-center justify-center bg-gray-800/[.48]',
+          'fixed left-0 top-0 z-50 flex h-[--visual-viewport-height] w-screen items-center justify-center bg-grey-800/[.48]',
           overlayClassname,
         )}
         isDismissable={isDismissable}

@@ -224,7 +224,7 @@ const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
                     variant="large"
                     key={option.id}
                     id={option.id}
-                    style={getCategoryColorLocalStyle({ category: 'gray' })}
+                    style={getCategoryColorLocalStyle({ category: 'grey' })}
                     data-cy={`${option.id}-tab`}
                   >
                     {option.displayNamePlural}
@@ -237,7 +237,7 @@ const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
 
         {/* Additional filters, currently only for officialBoard */}
         {selectedKey === 'officialBoard' ? (
-          <div className="flex flex-col gap-4 rounded-md bg-gray-100 p-4">
+          <div className="flex flex-col gap-4 rounded-md bg-grey-100 p-4">
             {/* TODO heading "Doplnkovy filter" as it is in figma */}
             <div>
               <OfficialBoardAdditionalFilters
