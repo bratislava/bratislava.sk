@@ -26,7 +26,7 @@ const SnackbarShowCase = () => {
 
   const optionsInfo = {
     style: {
-      backgroundColor: 'rgb(var(--color-gray-700))',
+      backgroundColor: 'rgb(var(--color-grey-700))',
     },
   }
 

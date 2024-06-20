@@ -21,8 +21,8 @@ const Tag = ({ text, size = 'small', isColored = false, shorthand, onRemove }: T
   const classStyles = cx('flex w-fit items-center justify-center gap-1 rounded text-center', {
     'text-small px-2 py-0': size === 'small',
     'text-default py-0.5 px-3': size === 'large',
-    'bg-gray-100': isRemovable || !isColored,
-    'text-gray-700': isRemovable || !isColored,
+    'bg-grey-100': isRemovable || !isColored,
+    'text-grey-700': isRemovable || !isColored,
     'bg-category-100': !isRemovable && isColored,
     'text-category-700': !isRemovable && isColored,
   })

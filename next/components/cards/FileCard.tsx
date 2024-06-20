@@ -58,7 +58,7 @@ const FileCard = ({
 
         {/* FIXME Typography. Convert to use Typography. Issue: Different font size and weight than figma span or p */}
         {(uploadDate || format || size) && (
-          <span className="text-small line-clamp-1 text-gray-700">
+          <span className="text-small line-clamp-1 text-grey-700">
             {[uploadDate, format, size].filter(isDefined).join(' • ')}
           </span>
         )}

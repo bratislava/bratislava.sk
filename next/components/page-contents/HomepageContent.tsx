@@ -18,11 +18,11 @@ const HomepageContent = () => {
 
       <WelcomeHomepageSection />
 
-      <Waves waveColor="rgb(var(--color-gray-50))" wavePosition="top" />
+      <Waves waveColor="rgb(var(--color-grey-50))" wavePosition="top" />
 
       <NewsAndInfoHomepageSection />
 
-      <Waves wavePosition="bottom" waveColor="rgb(var(--color-gray-50))" />
+      <Waves wavePosition="bottom" waveColor="rgb(var(--color-grey-50))" />
 
       <EventsHomepageSection />
 
