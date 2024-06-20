@@ -43,7 +43,7 @@ const SearchBar = forwardRef<HTMLInputElement, SearchBarProps>(
         <div className="relative">
           {/* 3.75rem = 60px, 0.75rem = 12px */}
           <Input
-            className="relative w-full rounded-lg border-2 px-[3.75rem] py-5 pr-[5.75rem] outline-none hover:border-gray-400 focus:border-gray-800 focus-visible:ring focus-visible:ring-offset-2"
+            className="relative w-full rounded-lg border-2 px-[3.75rem] py-5 pr-[5.75rem] outline-none hover:border-grey-400 focus:border-grey-800 focus-visible:ring focus-visible:ring-offset-2"
             data-cy="search-field"
           />
           <SearchIcon

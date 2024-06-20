@@ -53,7 +53,7 @@ const Dialog = forwardRef<HTMLElement, Props>(({ children, title, ...props }, re
             <Button
               icon={<CrossIcon />}
               aria-label={t('Dialog.aria.close')}
-              className="absolute right-6 top-6 -m-2 bg-white hover:bg-gray-100"
+              className="absolute right-6 top-6 -m-2 bg-white hover:bg-grey-100"
               variant="black-outline"
               size="small"
               onPress={close}

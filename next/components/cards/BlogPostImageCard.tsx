@@ -36,7 +36,7 @@ const BlogPostImageCard = ({
       ) : (
         <ImagePlaceholder />
       )}
-      <CardContent className="absolute flex h-full w-full flex-col justify-end gap-2 bg-gradient-to-t from-gray-800 to-transparent text-white">
+      <CardContent className="absolute flex h-full w-full flex-col justify-end gap-2 bg-gradient-to-t from-grey-800 to-transparent text-white">
         {tag && <Tag text={tag} isColored />}
         <MLink href={linkHref} stretched variant="underlineOnHover">
           <Typography type="h2" size="h4">

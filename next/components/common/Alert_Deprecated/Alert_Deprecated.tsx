@@ -54,22 +54,22 @@ const Alert = ({
       'flex w-full max-w-[480px] justify-between rounded-lg px-3 lg:px-5',
       className,
       {
-        'text-gray-800 flex-col lg:py-4 py-3': variant === 'message',
+        'text-grey-800 flex-col lg:py-4 py-3': variant === 'message',
         'bg-negative-100': type === 'error' && !solid,
         'bg-success-50': type === 'success' && !solid,
-        'bg-gray-100': type === 'info' && !solid,
+        'bg-grey-100': type === 'info' && !solid,
         'bg-warning-50': type === 'warning' && !solid,
 
         'text-negative-700': type === 'error' && !solid && variant !== 'message',
         'text-success-700': type === 'success' && !solid && variant !== 'message',
-        'text-gray-700': type === 'info' && !solid && variant !== 'message',
+        'text-grey-700': type === 'info' && !solid && variant !== 'message',
         'text-warning-700': type === 'warning' && !solid && variant !== 'message',
 
         'lg:py-4 p-3 items-center': variant === 'basic',
-        'text-gray-0': solid,
+        'text-grey-0': solid,
         'bg-negative-700': type === 'error' && solid,
         'bg-success-700': type === 'success' && solid,
-        'bg-gray-700': type === 'info' && solid,
+        'bg-grey-700': type === 'info' && solid,
         'bg-warning-700': type === 'warning' && solid,
       },
     )
@@ -77,16 +77,16 @@ const Alert = ({
     const contentStyle = cx('w-full', {
       'text-default': variant === 'basic',
       'text-default font-semibold': variant === 'message',
-      'text-gray-0': solid,
-      'text-gray-700': !solid,
+      'text-grey-0': solid,
+      'text-grey-700': !solid,
     })
 
     const extraButtonStyle = cx('text-default font-medium underline underline-offset-4', {
       'text-negative-700': type === 'error' && !solid,
       'text-success-700': type === 'success' && !solid,
-      'text-gray-700': type === 'info' && !solid,
+      'text-grey-700': type === 'info' && !solid,
       'text-warning-700': type === 'warning' && !solid,
-      'text-gray-0': solid,
+      'text-grey-0': solid,
     })
 
     return variant === 'basic' ? (
@@ -109,8 +109,8 @@ const Alert = ({
         </div>
         <div
           className={cx('text-default mt-2 w-full pl-9 font-normal', {
-            'text-gray-0': solid,
-            'text-gray-700': !solid,
+            'text-grey-0': solid,
+            'text-grey-700': !solid,
           })}
         >
           {content}

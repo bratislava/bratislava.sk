@@ -13,7 +13,7 @@ const CloseIcon = ({ className, solid = false, onClick, type = 'error' }: CloseI
     'text-white': solid,
     'text-negative-700': type === 'error' && !solid,
     'text-success-700': type === 'success' && !solid,
-    'text-gray-700': type === 'info' && !solid,
+    'text-grey-700': type === 'info' && !solid,
     'text-warning-700': type === 'warning' && !solid,
   })
 

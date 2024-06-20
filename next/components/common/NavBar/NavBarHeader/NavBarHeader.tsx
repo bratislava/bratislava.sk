@@ -34,7 +34,7 @@ const NavBarHeader = ({ className }: NavBarProps) => {
       className="relative z-[31] bg-white"
       style={getCategoryColorLocalStyle({ category: 'main' })}
     >
-      <nav className="flex w-full items-center justify-between border-b border-gray-200">
+      <nav className="flex w-full items-center justify-between border-b border-grey-200">
         <SkipToContentButton />
         <Brand className="group" url="/" withTitle />
 
