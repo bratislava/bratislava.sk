@@ -7,8 +7,7 @@ import { Button as RACButton, ButtonProps as RACButtonProps } from 'react-aria-c
 import { ArrowRightIcon, ExportIcon } from '@/assets/ui-icons'
 import MLink, { LinkPlausibleProps } from '@/components/common/MLink/MLink'
 import Spinner from '@/components/common/Spinner/Spinner'
-
-import cn from '../../../utils/cn'
+import cn from '@/utils/cn'
 
 type ButtonOrIconButton =
   | {
@@ -84,6 +83,7 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
       ...rest
     },
     ref,
+    // eslint-disable-next-line sonarjs/cognitive-complexity
   ) => {
     const isLoadingOrDisabled = isLoading || isDisabled
 
