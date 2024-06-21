@@ -1,5 +1,5 @@
 import { Typography } from '@bratislava/component-library'
-import cx from 'classnames'
+import cn from 'utils/cn'
 
 import FileCardWrapper from '@/components/cards/FileCardWrapper'
 import ResponsiveCarousel from '@/components/common/Carousel/ResponsiveCarousel'
@@ -27,7 +27,7 @@ const FileList = ({ className, fileSections, hideCategory, variantFileList }: Fi
       {fileSections?.map((fileSection, index) => {
         return (
           // eslint-disable-next-line react/no-array-index-key
-          <div key={index} className={cx({ 'mt-8 lg:mt-14': index > 0 })}>
+          <div key={index} className={cn({ 'mt-8 lg:mt-14': index > 0 })}>
             {fileSection.category && !hideCategory && (
               <Typography type="h2">{fileSection.category}</Typography>
             )}

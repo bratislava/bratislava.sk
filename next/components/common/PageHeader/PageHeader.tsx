@@ -1,8 +1,8 @@
 import { Typography } from '@bratislava/component-library'
-import cx from 'classnames'
 import Image from 'next/image'
 import React, { PropsWithChildren } from 'react'
 import { twMerge } from 'tailwind-merge'
+import cn from 'utils/cn'
 
 import Breadcrumbs, { BreadcrumbsProps } from '@/components/common/Breadcrumbs/Breadcrumbs'
 import Button from '@/components/common/Button/Button'
@@ -123,7 +123,7 @@ const PageHeader = ({
       <Waves
         wavePosition="top"
         waveColor="white"
-        className={cx('relative -mb-px', {
+        className={cn('relative -mb-px', {
           'max-md:absolute max-md:bottom-0 max-md:w-full': !!imageSrc,
         })}
       />

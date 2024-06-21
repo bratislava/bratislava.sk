@@ -1,7 +1,7 @@
 import { Typography } from '@bratislava/component-library'
-import cx from 'classnames'
 import * as React from 'react'
 import { useMemo } from 'react'
+import cn from 'utils/cn'
 
 import FileRowCard from '@/components/cards/FileRowCard'
 import { Breadcrumb } from '@/components/common/Breadcrumbs/Breadcrumbs'
@@ -57,7 +57,7 @@ const InbaReleasePageContent = ({ inbaRelease }: InbaReleasePageContentProps) =>
       <SectionContainer className="pt-10 md:pt-18">
         <div className="grid grid-cols-1 gap-16 lg:grid-cols-[1fr_2fr]">
           <div
-            className={cx('overflow-hidden rounded-xl shadow-lg', {
+            className={cn('overflow-hidden rounded-xl shadow-lg', {
               'aspect-inba': !coverImageAttr,
             })}
           >

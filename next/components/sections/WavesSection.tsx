@@ -1,5 +1,5 @@
-import cx from 'classnames'
 import React from 'react'
+import cn from 'utils/cn'
 
 import Waves from '@/components/common/Waves/Waves'
 import { WavesSectionFragment } from '@/services/graphql'
@@ -11,7 +11,7 @@ type WavesSectionProps = {
 const WavesSection = ({ section }: WavesSectionProps) => {
   return (
     <Waves
-      className={cx({
+      className={cn({
         'mt-10 md:mt-18': section.position === 'top',
       })}
       key={section.position}

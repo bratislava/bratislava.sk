@@ -1,5 +1,5 @@
-import cx from 'classnames'
 import { PropsWithChildren } from 'react'
+import cn from 'utils/cn'
 
 export type NarrowTextProps = {
   className?: string
@@ -15,7 +15,7 @@ const NarrowText = ({
 }: PropsWithChildren<NarrowTextProps>) => {
   return (
     <div
-      className={cx(
+      className={cn(
         'flex',
         {
           'justify-start': align === 'left',
@@ -26,7 +26,7 @@ const NarrowText = ({
       )}
     >
       <div
-        className={cx('w-full', {
+        className={cn('w-full', {
           'md:w-1/2': width === 'narrow',
           'md:w-8/12': width === 'default',
           'md:w-10/12': width === 'wide',

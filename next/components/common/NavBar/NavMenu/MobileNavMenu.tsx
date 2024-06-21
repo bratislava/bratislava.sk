@@ -1,7 +1,7 @@
 import * as NavigationMenu from '@radix-ui/react-navigation-menu'
-import cx from 'classnames'
 import React, { useMemo } from 'react'
 import { useEventListener, useLockedBody, useWindowSize } from 'usehooks-ts'
+import cn from 'utils/cn'
 
 import Button from '@/components/common/Button/Button'
 import MLink from '@/components/common/MLink/MLink'
@@ -42,7 +42,7 @@ const MobileNavMenu = () => {
 
   return (
     <div
-      className={cx(
+      className={cn(
         'fixed left-0 top-14 z-[28] flex w-screen flex-col gap-4 overflow-y-scroll bg-white px-4 py-6 lg:hidden',
         {
           'animate-fadeIn': isMobileMenuOpen,

@@ -1,4 +1,4 @@
-import cx from 'classnames'
+import cn from 'utils/cn'
 
 import { CrossIcon } from '@/assets/ui-icons'
 import Button from '@/components/common/Button/Button'
@@ -18,7 +18,7 @@ const Tag = ({ text, size = 'small', isColored = false, shorthand, onRemove }: T
   const isRemovable = !!onRemove
 
   // STYLES
-  const classStyles = cx('flex w-fit items-center justify-center gap-1 rounded text-center', {
+  const classStyles = cn('flex w-fit items-center justify-center gap-1 rounded text-center', {
     'text-small px-2 py-0': size === 'small',
     'text-default py-0.5 px-3': size === 'large',
     'bg-grey-100': isRemovable || !isColored,
@@ -27,7 +27,7 @@ const Tag = ({ text, size = 'small', isColored = false, shorthand, onRemove }: T
     'text-category-700': !isRemovable && isColored,
   })
 
-  const iconClassStyles = cx({
+  const iconClassStyles = cn({
     'w-2.5 h-2.5': size === 'small',
     'w-3 h-3': size === 'large',
   })

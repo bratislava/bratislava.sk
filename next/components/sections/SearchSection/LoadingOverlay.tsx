@@ -1,5 +1,5 @@
-import cx from 'classnames'
 import React, { PropsWithChildren } from 'react'
+import cn from 'utils/cn'
 
 import LoadingSpinner from '@/components/common/LoadingSpinner/LoadingSpinner'
 
@@ -17,7 +17,7 @@ const ShrinkablePadding = () => <div className="h-20 min-h-[50%-80] shrink" />
 const LoadingOverlay = ({ loading, children }: PropsWithChildren<LoadingOverlayProps>) => {
   return (
     // 160px - height of spinner
-    <div className={cx('relative', { 'min-h-[160]': loading })}>
+    <div className={cn('relative', { 'min-h-[160]': loading })}>
       {loading ? (
         <div className="absolute left-0 top-0 flex h-full w-full flex-col items-center text-white/80">
           <ShrinkablePadding />

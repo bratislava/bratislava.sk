@@ -1,5 +1,5 @@
-import cx from 'classnames'
 import * as React from 'react'
+import cn from 'utils/cn'
 
 import SectionContainer from '@/components/common/SectionContainer/SectionContainer'
 import AccordionSection from '@/components/sections/AccordionSection'
@@ -138,7 +138,7 @@ const Section = ({ section }: { section: SectionsFragment | null }) => {
 
   return (
     <SectionContainer
-      className={cx('pt-10 md:pt-18', {
+      className={cn('pt-10 md:pt-18', {
         'bg-category-200 pb-14 md:pb-18': hasBackground,
       })}
       hasBackground={hasBackground}

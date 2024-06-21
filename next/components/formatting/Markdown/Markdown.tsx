@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-unused-vars,jsx-a11y/heading-has-content */
 import { Typography } from '@bratislava/component-library'
-import cx from 'classnames'
 import ReactMarkdown from 'react-markdown'
 import rehypeRaw from 'rehype-raw'
 import remarkGfm from 'remark-gfm'
 import remarkUnwrapImages from 'remark-unwrap-images'
+import cn from 'utils/cn'
 
 import MLink from '@/components/common/MLink/MLink'
 
@@ -31,7 +31,7 @@ export type MarkdownProps = {
 const Markdown = ({ content, variant = 'default' }: MarkdownProps) => {
   return (
     <ReactMarkdown
-      className={cx(styles.markdown, {
+      className={cn(styles.markdown, {
         'text-large-respo': variant === 'default' || variant === 'accordion',
         'text-default-respo': variant === 'small',
         'text-default': variant === 'small-no-respo',

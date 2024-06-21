@@ -1,10 +1,10 @@
-import cx from 'classnames'
 import FocusTrap from 'focus-trap-react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { ReactNode, useEffect, useRef } from 'react'
 import { AriaOverlayProps, OverlayContainer, useModal, useOverlay } from 'react-aria'
 import { twMerge } from 'tailwind-merge'
 import { useIsClient, useLockedBody } from 'usehooks-ts'
+import cn from 'utils/cn'
 
 import { CrossIcon } from '@/assets/ui-icons'
 import Button from '@/components/common/Button/Button'
@@ -66,7 +66,7 @@ const GalleryModal = (props: ModalProps) => {
                 underlayClassName,
               )}
             >
-              <div className={cx({ 'flex min-h-full items-center': centerVertically })}>
+              <div className={cn({ 'flex min-h-full items-center': centerVertically })}>
                 <FocusTrap>
                   <div
                     className={twMerge('mx-auto flex w-fit items-center', overlayClassName)}

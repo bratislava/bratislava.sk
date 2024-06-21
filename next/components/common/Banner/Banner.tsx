@@ -1,6 +1,6 @@
 import { Typography } from '@bratislava/component-library'
-import cx from 'classnames'
 import Image from 'next/image'
+import cn from 'utils/cn'
 
 import Button from '@/components/common/Button/Button'
 import Markdown from '@/components/formatting/Markdown/Markdown'
@@ -32,7 +32,7 @@ const Banner = ({
   return (
     <div
       // overflow-hidden ensures image not to overlap with rounded corners
-      className={cx('flex h-full w-full overflow-hidden', {
+      className={cn('flex h-full w-full overflow-hidden', {
         'rounded-xl bg-category-200 text-grey-700': variant === 'color',
         'rounded-xl bg-grey-800 text-white': variant === 'dark',
         'rounded-lg border-2 bg-white text-grey-700': variant === 'white_condensed',
@@ -41,7 +41,7 @@ const Banner = ({
       })}
     >
       <div
-        className={cx('flex h-full w-full flex-col gap-4 px-4 py-6 lg:w-1/2 lg:gap-6', {
+        className={cn('flex h-full w-full flex-col gap-4 px-4 py-6 lg:w-1/2 lg:gap-6', {
           'lg:p-12': variant === 'white_condensed',
           'lg:p-18': variant !== 'white_condensed',
         })}
@@ -61,7 +61,7 @@ const Banner = ({
           )}
           {secondaryLink && (
             <Button
-              className={cx('hidden lg:flex', {
+              className={cn('hidden lg:flex', {
                 'text-white hover:text-white/80 focus:text-white/80': variant === 'dark',
               })}
               variant="category-outline"
@@ -71,7 +71,7 @@ const Banner = ({
           )}
           {tertiaryLink && (
             <Button
-              className={cx('hidden font-semibold no-underline not-first:ml-2 lg:flex', {
+              className={cn('hidden font-semibold no-underline not-first:ml-2 lg:flex', {
                 'text-white hover:text-white/80 focus:text-white/80': variant === 'dark',
               })}
               variant="category-link"

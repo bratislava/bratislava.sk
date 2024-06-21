@@ -1,8 +1,8 @@
 import { Typography } from '@bratislava/component-library'
-import cx from 'classnames'
 import Image from 'next/image'
 import React, { Fragment } from 'react'
 import { twMerge } from 'tailwind-merge'
+import cn from 'utils/cn'
 
 import { ChevronRightIcon } from '@/assets/ui-icons'
 import ImagePlaceholder from '@/components/common/Image/ImagePlaceholder'
@@ -23,7 +23,7 @@ type SearchResultCardProps = {
 const SearchResultCard = ({ data, hideBottomDivider }: SearchResultCardProps) => {
   return (
     <div
-      className={cx(
+      className={cn(
         'group relative flex flex-row items-stretch overflow-hidden rounded-none bg-white lg:rounded-lg lg:border-2',
         { 'hover:border-grey-400': data.linkHref, 'border-b-2': !hideBottomDivider },
       )}

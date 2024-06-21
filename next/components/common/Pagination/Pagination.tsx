@@ -1,5 +1,5 @@
-import cx from 'classnames'
 import React, { ReactNode } from 'react'
+import cn from 'utils/cn'
 
 import { ArrowLeftIcon, ArrowRightIcon } from '@/assets/ui-icons'
 import Button from '@/components/common/Button/Button'
@@ -88,7 +88,7 @@ const Pagination = ({ currentPage, totalCount, onPageChange = () => {} }: Pagina
               <li
                 // eslint-disable-next-line react/no-array-index-key
                 key={index}
-                className={cx({
+                className={cn({
                   'text-sm flex w-10 items-center justify-center font-semibold lg:w-12':
                     type === 'start-ellipsis' || type === 'end-ellipsis',
                   'lg:mr-2': type === 'previous',

@@ -1,6 +1,6 @@
 import * as NavigationMenu from '@radix-ui/react-navigation-menu'
-import cx from 'classnames'
 import React, { CSSProperties, useMemo } from 'react'
+import cn from 'utils/cn'
 
 import Waves from '@/components/common/Waves/Waves'
 
@@ -52,7 +52,7 @@ const NavMenuContent = ({ colCount, sections, colorStyle }: NavMenuContentProps)
       <div className="relative z-[29] bg-category-200">
         {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions,jsx-a11y/no-noninteractive-element-interactions */}
         <ul
-          className={cx('mx-auto grid w-full max-w-screen-xl gap-x-8 gap-y-6 px-4 py-8', {
+          className={cn('mx-auto grid w-full max-w-screen-xl gap-x-8 gap-y-6 px-4 py-8', {
             // Keeping for consistency with mestskakniznica.sk
             'grid-cols-3': colCount === 3,
             'grid-cols-4': colCount === 4,

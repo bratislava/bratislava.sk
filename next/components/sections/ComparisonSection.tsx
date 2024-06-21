@@ -1,7 +1,7 @@
 import { Typography } from '@bratislava/component-library'
-import cx from 'classnames'
 import Image from 'next/image'
 import React from 'react'
+import cn from 'utils/cn'
 
 import { InfoIcon } from '@/assets/ui-icons'
 import ComparisonCard from '@/components/common/ComparisonCard/ComparisonCard'
@@ -18,7 +18,7 @@ const ComparisonSection = ({ section }: ComparisonSectionProps) => {
     <div className="flex flex-col gap-6 lg:gap-12">
       {title || text ? (
         <div className="flex">
-          <div className={cx('grow', { 'text-center': textAlign === 'center' })}>
+          <div className={cn('grow', { 'text-center': textAlign === 'center' })}>
             {title && <Typography type="h2">{title}</Typography>}
             {text && (
               <Typography type="p" className="not-first:mt-2">
@@ -31,7 +31,7 @@ const ComparisonSection = ({ section }: ComparisonSectionProps) => {
         </div>
       ) : null}
       <ul
-        className={cx('grid gap-3 lg:gap-8', {
+        className={cn('grid gap-3 lg:gap-8', {
           'md:grid-cols-2': cards?.length === 2,
           'lg:grid-cols-3': cards?.length === 3,
         })}
