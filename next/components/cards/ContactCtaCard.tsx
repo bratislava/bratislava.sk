@@ -80,7 +80,6 @@ const ContactCtaCard = ({ className, contact, hasBackground }: ContactCtaCardPro
   }
 
   const Icon = data.icon
-  // const classNames = { 'bg-category-100' : hasBackground, 'bg-white', !hasBackground }
 
   return (
     <div
