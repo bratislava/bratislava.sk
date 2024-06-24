@@ -1,4 +1,3 @@
-import { twMerge } from 'tailwind-merge'
 import cn from 'utils/cn'
 
 type LoadingSpinnerProps = {
@@ -8,7 +7,7 @@ type LoadingSpinnerProps = {
 }
 
 const LoadingSpinner = ({ className, size = 'default', text }: LoadingSpinnerProps) => (
-  <div className={twMerge('flex flex-col items-center gap-20 text-center', className)}>
+  <div className={cn('flex flex-col items-center gap-20 text-center', className)}>
     <div
       style={{
         borderTopColor: 'currentColor',

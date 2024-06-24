@@ -1,6 +1,6 @@
 import { Typography } from '@bratislava/component-library'
 import React from 'react'
-import { twMerge } from 'tailwind-merge'
+import cn from 'utils/cn'
 
 import { ArrowRightIcon } from '@/assets/ui-icons'
 import Button from '@/components/common/Button/Button'
@@ -15,7 +15,7 @@ export type LinksProps = {
 // TODO revisit anchors, they are not currently used and supported by dev team
 const Links = ({ className, title, pageLinks }: LinksProps) => {
   return (
-    <div className={twMerge('flex w-full flex-col md:w-10/12', className)}>
+    <div className={cn('flex w-full flex-col md:w-10/12', className)}>
       {title && <Typography type="h2">{title}</Typography>}
       <ul className="flex flex-col space-y-4 pt-6">
         {pageLinks?.map((pageLink, index) => (

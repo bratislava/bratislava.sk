@@ -1,7 +1,6 @@
 import { Typography } from '@bratislava/component-library'
 import Image from 'next/image'
 import React, { PropsWithChildren } from 'react'
-import { twMerge } from 'tailwind-merge'
 import cn from 'utils/cn'
 
 import Breadcrumbs, { BreadcrumbsProps } from '@/components/common/Breadcrumbs/Breadcrumbs'
@@ -34,7 +33,7 @@ const PageHeader = ({
   children,
 }: PropsWithChildren<PageHeaderProps>) => {
   return (
-    <div className={twMerge('relative overflow-x-clip bg-category-200', className)}>
+    <div className={cn('relative overflow-x-clip bg-category-200', className)}>
       {imageSrc && (
         <div className="absolute right-0 top-0 hidden h-full w-[350px] md:block lg:w-[750px]">
           <Image

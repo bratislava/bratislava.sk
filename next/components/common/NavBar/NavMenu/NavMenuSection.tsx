@@ -1,6 +1,6 @@
 import { Typography } from '@bratislava/component-library'
 import React from 'react'
-import { twMerge } from 'tailwind-merge'
+import cn from 'utils/cn'
 
 import Pictogram from '@/components/common/Pictogram/Pictogram'
 
@@ -14,7 +14,7 @@ type NavigationSectionProps = {
 
 const NavMenuSection = ({ section, classNames }: NavigationSectionProps) => {
   return (
-    <li className={twMerge('flex gap-2', classNames)}>
+    <li className={cn('flex gap-2', classNames)}>
       {section.icon && (
         <div aria-hidden>
           <Pictogram iconName={section.icon} className="h-10 w-10" />

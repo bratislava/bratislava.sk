@@ -1,5 +1,4 @@
 import React, { ReactNode, useRef, useState } from 'react'
-import { twMerge } from 'tailwind-merge'
 import cn from 'utils/cn'
 
 import { ArrowLeftIcon, ArrowRightIcon } from '@/assets/ui-icons'
@@ -66,9 +65,9 @@ const Carousel = ({
   const isRightControlHidden = noControls || currentIndex >= totalCount - visibleCount
 
   return (
-    <div className={twMerge('relative', className)}>
+    <div className={cn('relative', className)}>
       <ul
-        className={twMerge(
+        className={cn(
           'max-md:negative-x-spacing flex snap-x snap-mandatory gap-4 overflow-x-auto overflow-y-clip scrollbar-hide lg:-mx-2 lg:px-2',
           hasVerticalPadding ? 'py-8' : '',
           listClassName,

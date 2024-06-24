@@ -1,6 +1,5 @@
 import React, { forwardRef, ReactNode } from 'react'
 import { Modal as RACModal, ModalOverlay, ModalOverlayProps } from 'react-aria-components'
-import { twMerge } from 'tailwind-merge'
 import cn from 'utils/cn'
 
 type PropsBase = {
@@ -29,7 +28,7 @@ const Modal = forwardRef<HTMLDivElement, Props>(
        */
       <ModalOverlay
         ref={ref}
-        className={twMerge(
+        className={cn(
           'fixed left-0 top-0 z-50 flex h-[--visual-viewport-height] w-screen items-center justify-center bg-grey-800/[.48]',
           overlayClassname,
         )}

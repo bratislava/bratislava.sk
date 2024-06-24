@@ -112,7 +112,7 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
             isLinkVariant ? 'rounded-sm max-lg:gap-1' : 'rounded-lg',
 
             {
-              // NOTE: there are some style overrides for link variants below in "twMerge"
+              // NOTE: there are some style overrides for link variants below in "cn" (twMerge)
 
               'font-medium underline underline-offset-2': isLinkVariant,
 

@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { twMerge } from 'tailwind-merge'
+import cn from 'utils/cn'
 
 import Markdown from '@/components/formatting/Markdown/Markdown'
 import { generateImageSizes } from '@/utils/generateImageSizes'
@@ -26,7 +26,7 @@ const TextWithImage = ({
   if (!content && !imageSrc) return null
 
   return (
-    <div className={twMerge('grid grid-cols-1 items-center gap-8 md:grid-cols-2', className)}>
+    <div className={cn('grid grid-cols-1 items-center gap-8 md:grid-cols-2', className)}>
       {imagePosition === 'left' && imageSrc && (
         <div>
           <Image

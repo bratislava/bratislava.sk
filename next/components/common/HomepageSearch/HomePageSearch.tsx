@@ -1,8 +1,8 @@
 import { useQuery } from '@tanstack/react-query'
 import { useRouter } from 'next/navigation'
 import { Dispatch, SetStateAction, useCallback, useEffect, useRef, useState } from 'react'
-import { twMerge } from 'tailwind-merge'
 import { useDebounce, useOnClickOutside } from 'usehooks-ts'
+import cn from 'utils/cn'
 
 import HomePageSearchField from '@/components/common/HomepageSearch/HomePageSearchField'
 import HomePageSearchResults from '@/components/common/HomepageSearch/HomePageSearchResults'
@@ -40,7 +40,7 @@ const HomePageSearch = ({ isOpen, setOpen }: HomePageSearchProps) => {
 
   const filters = { search: searchValue }
 
-  const { data, error, isPending } = useQuery({
+  const { data, isPending } = useQuery({
     queryKey: getHomepageSearchQueryKey(filters, locale),
     queryFn: () => homepageSearchFetcher(filters, locale),
   })
@@ -53,7 +53,7 @@ const HomePageSearch = ({ isOpen, setOpen }: HomePageSearchProps) => {
   return (
     <div ref={ref} className="relative">
       <div
-        className={twMerge(
+        className={cn(
           `${isOpen ? 'md:w-[634px]' : 'md:w-[444px]'}`,
           'w-full transition-all duration-300',
         )}

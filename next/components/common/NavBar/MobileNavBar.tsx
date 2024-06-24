@@ -1,7 +1,7 @@
 import FocusTrap from 'focus-trap-react'
 import { usePathname } from 'next/navigation'
 import React, { useEffect } from 'react'
-import { twMerge } from 'tailwind-merge'
+import cn from 'utils/cn'
 
 import { CrossIcon, HamburgerIcon, SearchIcon } from '@/assets/ui-icons'
 import Brand from '@/components/common/Brand/Brand'
@@ -80,7 +80,7 @@ const MobileNavBar = ({ className }: MobileNavBarProps) => {
         </div>
       </FocusTrap>
       {/* Empty div under header */}
-      <div className={twMerge('h-14', className)} />
+      <div className={cn('h-14', className)} />
 
       <AlertBanner />
     </div>

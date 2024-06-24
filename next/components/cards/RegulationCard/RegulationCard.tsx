@@ -1,6 +1,6 @@
 import { Typography } from '@bratislava/component-library'
 import React from 'react'
-import { twMerge } from 'tailwind-merge'
+import cn from 'utils/cn'
 
 import { ArrowRightIcon } from '@/assets/ui-icons'
 import MLink from '@/components/common/MLink/MLink'
@@ -33,7 +33,7 @@ const RegulationCard = ({
   return (
     // 10rem = 160px (we force this height to keep consistent height of card rows when displayed in a grid)
     <div
-      className={twMerge(
+      className={cn(
         'relative flex flex-col justify-between gap-2 rounded-lg border-2 border-grey-200 bg-white p-4 hover:border-grey-400 md:h-[10rem]',
         className,
       )}

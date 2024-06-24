@@ -1,6 +1,6 @@
 import Script from 'next/script'
 import React from 'react'
-import { twMerge } from 'tailwind-merge'
+import cn from 'utils/cn'
 
 import Button from '@/components/common/Button/Button'
 import { useCookieConsent } from '@/components/common/CookieConsent/useCookieConsent'
@@ -45,7 +45,7 @@ const CookieConsent = ({ className }: CookieConsentProps) => {
 
       {shouldShowBanner ? (
         <div
-          className={twMerge('fixed inset-x-0 bottom-6 px-6', className)}
+          className={cn('fixed inset-x-0 bottom-6 px-6', className)}
           style={getCategoryColorLocalStyle({ category: 'main' })}
         >
           <div className="mx-auto max-w-[1110px] rounded-lg bg-white px-6 py-8 shadow md:px-10">
