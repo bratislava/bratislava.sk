@@ -1,11 +1,13 @@
 import React from 'react'
 import cn from 'utils/cn'
 
-import { DownloadIcon } from '@/assets/ui-icons'
+import { AttachmentIcon, DownloadIcon } from '@/assets/ui-icons'
 import { FileCardProps } from '@/components/cards/FileCard'
 import MLink from '@/components/common/MLink/MLink'
 import { isDefined } from '@/utils/isDefined'
 import { useTranslation } from '@/utils/useTranslation'
+
+import HorizontalDivider from '../common/Divider/HorizontalDivider'
 
 /**
  * Figma: https://www.figma.com/file/17wbd0MDQcMW9NbXl6UPs8/DS-ESBS%2BBK%3A-Component-library?node-id=867%3A2067&mode=dev
@@ -24,8 +26,11 @@ const FileRowCard = ({
 
   return (
     <div className={cn('relative', className)}>
-      <div className="flex flex-row items-center justify-between gap-x-6 border-b-2 border-grey-200 py-4">
-        <div className="flex w-full flex-col gap-y-1.5">
+      <div className="flex flex-row items-center justify-between gap-x-4 py-4">
+        <div className="rounded-lg bg-background-tertiary p-3">
+          <AttachmentIcon />
+        </div>
+        <div className="flex w-full flex-col gap-y-1">
           <MLink
             href={downloadLink ?? '#'}
             className="text-h5 line-clamp-3 break-words font-bold lg:line-clamp-2"
@@ -46,10 +51,11 @@ const FileRowCard = ({
             </span>
           )}
         </div>
-        <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border-2 border-grey-200 text-grey-700 lg:h-10 lg:w-10">
+        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border-2 border-grey-200 text-grey-700">
           <DownloadIcon className="h-4 w-4" />
         </div>
       </div>
+      <HorizontalDivider />
     </div>
   )
 }

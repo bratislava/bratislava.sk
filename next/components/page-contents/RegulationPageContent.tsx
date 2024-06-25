@@ -1,4 +1,5 @@
 import { Typography } from '@bratislava/component-library'
+import classNames from 'classnames'
 import React, { Fragment } from 'react'
 
 import FileRowCard from '@/components/cards/FileRowCard'
@@ -67,23 +68,21 @@ const RegulationPageContent = ({ regulation }: RegulationPageContentProps) => {
         <div className="mb-8 flex flex-col gap-y-8">
           <RegulationDetailMessage regulation={regulation} />
           <div className="flex flex-row flex-wrap gap-6">
-            <div className="flex grow basis-full flex-col gap-4">
+            <div className="flex grow basis-full flex-col">
               <Typography type="h2" size="h3">
                 {t('Regulation.mainDocument')}
               </Typography>
 
               {/* TODO refactor to use standard component */}
               {mainDocument?.data?.attributes ? (
-                <div className="flex flex-col rounded-lg border-2 px-4">
-                  <FileRowCard
-                    key={mainDocument.data.id}
-                    title={`VZN ${regulation.attributes?.regNumber}`}
-                    size={formatFileSize(mainDocument.data.attributes.size, locale)}
-                    format={formatFileExtension(mainDocument.data.attributes.ext) ?? undefined}
-                    downloadLink={mainDocument.data.attributes.url}
-                    className="-mx-4 px-4 [&>*]:border-b-0"
-                  />
-                </div>
+                <FileRowCard
+                  key={mainDocument.data.id}
+                  title={`VZN ${regulation.attributes?.regNumber}`}
+                  size={formatFileSize(mainDocument.data.attributes.size, locale)}
+                  format={formatFileExtension(mainDocument.data.attributes.ext) ?? undefined}
+                  downloadLink={mainDocument.data.attributes.url}
+                  className={classNames('-mx-4 px-6')}
+                />
               ) : (
                 <Typography type="p">{t('Regulation.noAttachmentsMessage')}</Typography>
               )}
@@ -95,11 +94,10 @@ const RegulationPageContent = ({ regulation }: RegulationPageContentProps) => {
 
               {/* TODO refactor to use standard component */}
               {attachmentFiles?.length ? (
-                <div className="flex flex-col rounded-lg border-2 px-4">
+                <div>
                   {attachmentFiles
                     .map(({ media: attachementMedia, title: attachmentTitle }) => {
                       if (!attachementMedia.data.attributes) return null
-
                       return (
                         <FileRowCard
                           key={attachementMedia.data.id}
@@ -109,7 +107,6 @@ const RegulationPageContent = ({ regulation }: RegulationPageContentProps) => {
                             formatFileExtension(attachementMedia.data.attributes.ext) ?? undefined
                           }
                           downloadLink={attachementMedia.data.attributes.url}
-                          className="-mx-4 px-4 [&>*]:border-b-0"
                         />
                       )
                     })
