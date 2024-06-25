@@ -1,6 +1,6 @@
 import { Typography } from '@bratislava/component-library'
-import classNames from 'classnames'
 import React, { Fragment, ReactNode } from 'react'
+import cn from 'utils/cn'
 
 import FileRowCard from '@/components/cards/FileRowCard'
 import PageHeader from '@/components/common/PageHeader/PageHeader'
@@ -74,10 +74,9 @@ const OfficialBoardDocumentPageContent = ({ document }: OfficialBoardDocumentPag
                     size={file.size}
                     format="PDF"
                     downloadLink={file.generatedUrl}
-                    className={classNames(
-                      '-mx-4 px-4',
-                      index === document.files.length - 1 ? '[&>*]:border-b-0' : '',
-                    )}
+                    className={cn('-mx-4 px-4', {
+                      '[&>*]:border-b-0': index === document.files.length - 1,
+                    })}
                   />
                 ))
               ) : (

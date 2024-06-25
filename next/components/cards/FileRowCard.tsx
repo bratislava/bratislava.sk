@@ -1,5 +1,5 @@
 import React from 'react'
-import { twMerge } from 'tailwind-merge'
+import cn from 'utils/cn'
 
 import { DownloadIcon } from '@/assets/ui-icons'
 import { FileCardProps } from '@/components/cards/FileCard'
@@ -23,7 +23,7 @@ const FileRowCard = ({
   const { t } = useTranslation()
 
   return (
-    <div className={twMerge('relative', className)}>
+    <div className={cn('relative', className)}>
       <div className="flex flex-row items-center justify-between gap-x-6 border-b-2 border-grey-200 py-4">
         <div className="flex w-full flex-col gap-y-1.5">
           <MLink

@@ -1,6 +1,6 @@
 import { Typography } from '@bratislava/component-library'
-import cx from 'classnames'
 import { ReactNode } from 'react'
+import cn from 'utils/cn'
 
 import { ChevronDownIcon } from '@/assets/ui-icons'
 import AnimateHeight from '@/components/formatting/AnimateHeight'
@@ -18,12 +18,12 @@ export type AccordionProps = {
  * Note: Only size h4 is implemented and used - this is desired behaviour until we get better accordion design in figma.
  */
 const Accordion = ({ variant = 'boxed', title, children }: AccordionProps) => {
-  const borderStyles = cx('group flex w-full flex-col', {
+  const borderStyles = cn('group flex w-full flex-col', {
     'border-2 rounded-xl bg-white border-grey-200 hover:border-grey-500 open:border-grey-700 hover:open:border-grey-700':
       variant === 'boxed',
   })
 
-  const buttonStyles = cx(
+  const buttonStyles = cn(
     'flex cursor-pointer items-center gap-4 text-left',
     'px-4 py-4 lg:px-8 lg:py-6',
     {
@@ -32,12 +32,12 @@ const Accordion = ({ variant = 'boxed', title, children }: AccordionProps) => {
     },
   )
 
-  const chevronStyles = cx('transform transition-transform group-open:rotate-180', {
+  const chevronStyles = cn('transform transition-transform group-open:rotate-180', {
     'w-6 h-6 lg:w-8 lg:h-8 text-category-700': variant === 'boxed',
     'w-5 h-5': variant === 'footer',
   })
 
-  const contentStyles = cx({
+  const contentStyles = cn({
     'mx-4 lg:mx-8 mb-4 lg:mb-6 text-small': variant === 'boxed',
     'pb-6': variant === 'footer',
   })

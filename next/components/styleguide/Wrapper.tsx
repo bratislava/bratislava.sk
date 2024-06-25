@@ -1,5 +1,5 @@
-import cx from 'classnames'
 import { ReactNode } from 'react'
+import cn from 'utils/cn'
 
 type WrapperProps = {
   title?: string
@@ -9,14 +9,14 @@ type WrapperProps = {
 }
 
 const Wrapper = ({ title, children, direction = 'row', noBorder }: WrapperProps) => {
-  const wrapperClassNames = cx(
+  const wrapperClassNames = cn(
     'border-t-1 mb-10 flex flex-col border border-b-0 border-l-0 border-r-0 border-solid border-grey-800 pt-10',
     {
       'border-t-0': noBorder,
     },
   )
 
-  const childrenClassNames = cx('flex', {
+  const childrenClassNames = cn('flex', {
     'flex-col space-y-2': direction === 'column',
     'space-x-2 justify-between': direction === 'row',
   })

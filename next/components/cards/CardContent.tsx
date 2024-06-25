@@ -1,12 +1,12 @@
 import { PropsWithChildren } from 'react'
-import { twMerge } from 'tailwind-merge'
+import cn from 'utils/cn'
 
 type CardContentProps = {
   className?: string
 }
 
 const CardContent = ({ className, children }: PropsWithChildren<CardContentProps>) => {
-  return <div className={twMerge('flex flex-col p-4 lg:p-5', className)}>{children}</div>
+  return <div className={cn('flex flex-col p-4 lg:p-5', className)}>{children}</div>
 }
 
 export default CardContent

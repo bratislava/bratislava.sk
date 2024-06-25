@@ -1,5 +1,5 @@
-import cx from 'classnames'
 import { MouseEventHandler } from 'react'
+import cn from 'utils/cn'
 
 type CloseIconProps = {
   type: 'error' | 'success' | 'info' | 'warning'
@@ -9,7 +9,7 @@ type CloseIconProps = {
 }
 
 const CloseIcon = ({ className, solid = false, onClick, type = 'error' }: CloseIconProps) => {
-  const closeIconStyle = cx('cursor-pointer fill-current', className, {
+  const closeIconStyle = cn('cursor-pointer fill-current', className, {
     'text-white': solid,
     'text-negative-700': type === 'error' && !solid,
     'text-success-700': type === 'success' && !solid,

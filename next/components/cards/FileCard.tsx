@@ -1,6 +1,6 @@
 import { Typography } from '@bratislava/component-library'
 import React from 'react'
-import { twMerge } from 'tailwind-merge'
+import cn from 'utils/cn'
 
 import { DownloadIcon } from '@/assets/ui-icons'
 import MLink from '@/components/common/MLink/MLink'
@@ -33,7 +33,7 @@ const FileCard = ({
 
   return (
     <div
-      className={twMerge(
+      className={cn(
         'relative flex h-[132px] flex-col justify-between rounded-lg border-2 border-category-600 bg-white p-4 lg:h-48',
         className,
       )}

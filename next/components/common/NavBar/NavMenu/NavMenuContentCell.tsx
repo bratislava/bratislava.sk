@@ -1,5 +1,5 @@
-import cx from 'classnames'
 import React, { PropsWithChildren } from 'react'
+import cn from 'utils/cn'
 
 type NavMenuCellProps = {
   colSpan: number
@@ -8,7 +8,7 @@ type NavMenuCellProps = {
 const NavMenuContentCell = ({ colSpan, children }: PropsWithChildren<NavMenuCellProps>) => {
   return (
     <div
-      className={cx('w-full', {
+      className={cn('w-full', {
         'col-span-1': colSpan === 1,
         'col-span-2': colSpan === 2,
       })}

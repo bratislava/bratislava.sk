@@ -1,6 +1,5 @@
-import cx from 'classnames'
 import React, { ReactNode, useRef, useState } from 'react'
-import { twMerge } from 'tailwind-merge'
+import cn from 'utils/cn'
 
 import { ArrowLeftIcon, ArrowRightIcon } from '@/assets/ui-icons'
 import Button from '@/components/common/Button/Button'
@@ -66,11 +65,11 @@ const Carousel = ({
   const isRightControlHidden = noControls || currentIndex >= totalCount - visibleCount
 
   return (
-    <div className={twMerge('relative', className)}>
+    <div className={cn('relative', className)}>
       <ul
-        className={twMerge(
+        className={cn(
           'max-md:negative-x-spacing flex snap-x snap-mandatory gap-4 overflow-x-auto overflow-y-clip scrollbar-hide lg:-mx-2 lg:px-2',
-          hasVerticalPadding ? 'py-8' : '',
+          { 'py-8': hasVerticalPadding, '': !hasVerticalPadding },
           listClassName,
         )}
         ref={scrollerRef}
@@ -81,16 +80,16 @@ const Carousel = ({
               // <li> applies h-full to its (first) child. Custom items height can be achieved by using itemClassName
               <li
                 key={item.key}
-                className={twMerge(
+                className={cn(
                   'shrink-0 transform transition-all duration-200 lg:scroll-mx-2 [&>*:first-child]:h-full',
-                  cx({
+                  {
                     // 1rem represents 1 gap-4, if gap is changed, also change card width
                     'w-[calc(100%-1rem)] snap-center': visibleCount === 1,
                     'snap-start': visibleCount > 1,
                     'w-[calc((100%-1rem)/2)]': visibleCount === 2,
                     'w-[calc((100%-2rem)/3)]': visibleCount === 3,
                     'w-[calc((100%-3rem)/4)]': visibleCount === 4,
-                  }),
+                  },
                   itemClassName,
                 )}
               >
@@ -103,14 +102,14 @@ const Carousel = ({
       </ul>
 
       {noControls ? null : (
-        <div className={cx({ 'max-md:hidden': !showControlsOnMobile })}>
+        <div className={cn({ 'max-md:hidden': !showControlsOnMobile })}>
           {controlsVariant === 'side' && (
             <>
               <Button
                 variant="category-solid"
                 excludeFromTabOrder
                 onPress={handleGoToPrevious}
-                className={cx(
+                className={cn(
                   'absolute bottom-0 top-0 z-10 my-auto h-12 w-12 rounded-full',
                   'left-0 -translate-x-1/2 transform',
                   { hidden: isLeftControlHidden },
@@ -122,7 +121,7 @@ const Carousel = ({
                 variant="category-solid"
                 excludeFromTabOrder
                 onPress={handleGoToNext}
-                className={cx(
+                className={cn(
                   'absolute bottom-0 top-0 z-10 my-auto h-12 w-12 rounded-full',
                   'right-0 translate-x-1/2 transform',
                   { hidden: isRightControlHidden },

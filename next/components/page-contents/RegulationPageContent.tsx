@@ -1,5 +1,4 @@
 import { Typography } from '@bratislava/component-library'
-import classNames from 'classnames'
 import React, { Fragment } from 'react'
 
 import FileRowCard from '@/components/cards/FileRowCard'
@@ -82,7 +81,7 @@ const RegulationPageContent = ({ regulation }: RegulationPageContentProps) => {
                     size={formatFileSize(mainDocument.data.attributes.size, locale)}
                     format={formatFileExtension(mainDocument.data.attributes.ext) ?? undefined}
                     downloadLink={mainDocument.data.attributes.url}
-                    className={classNames('-mx-4 px-4 [&>*]:border-b-0')}
+                    className="-mx-4 px-4 [&>*]:border-b-0"
                   />
                 </div>
               ) : (
@@ -110,7 +109,7 @@ const RegulationPageContent = ({ regulation }: RegulationPageContentProps) => {
                             formatFileExtension(attachementMedia.data.attributes.ext) ?? undefined
                           }
                           downloadLink={attachementMedia.data.attributes.url}
-                          className={classNames('-mx-4 px-4 [&>*]:border-b-0')}
+                          className="-mx-4 px-4 [&>*]:border-b-0"
                         />
                       )
                     })

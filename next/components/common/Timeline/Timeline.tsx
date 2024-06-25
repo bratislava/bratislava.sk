@@ -1,6 +1,6 @@
-import cx from 'classnames'
 import Image from 'next/image'
 import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component'
+import cn from 'utils/cn'
 
 import Markdown from '@/components/formatting/Markdown/Markdown'
 import { TimelineItemBlockFragment } from '@/services/graphql'
@@ -16,7 +16,7 @@ const Timeline = ({ timelineItems }: TimelineProps) => {
       {timelineItems.map((timelineItem, index) => (
         <VerticalTimelineElement
           key={timelineItem.id}
-          className={cx({
+          className={cn({
             'vertical-timeline-element--with-image': index === 1 || index === 2,
           })}
           textClassName="shadow-md"

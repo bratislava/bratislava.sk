@@ -1,5 +1,5 @@
 import React from 'react'
-import { twMerge } from 'tailwind-merge'
+import cn from 'utils/cn'
 
 import Carousel, { AllowedVisibleCount, CarouselProps } from '@/components/common/Carousel/Carousel'
 
@@ -16,13 +16,13 @@ type Props = {
 const ResponsiveCarousel = ({ mobile = 1, tablet = 2, desktop = 3, className, ...rest }: Props) => {
   return (
     <>
-      <Carousel className={twMerge('md:hidden', className)} visibleCount={mobile} {...rest} />
+      <Carousel className={cn('md:hidden', className)} visibleCount={mobile} {...rest} />
       <Carousel
-        className={twMerge('hidden md:block lg:hidden', className)}
+        className={cn('hidden md:block lg:hidden', className)}
         visibleCount={tablet}
         {...rest}
       />
-      <Carousel className={twMerge('max-lg:hidden', className)} visibleCount={desktop} {...rest} />
+      <Carousel className={cn('max-lg:hidden', className)} visibleCount={desktop} {...rest} />
     </>
   )
 }

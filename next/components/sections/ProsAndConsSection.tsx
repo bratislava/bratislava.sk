@@ -1,6 +1,6 @@
 import { Typography } from '@bratislava/component-library'
-import cx from 'classnames'
 import React from 'react'
+import cn from 'utils/cn'
 
 import { CheckIcon, CrossIcon } from '@/assets/ui-icons'
 import ComparisonCard from '@/components/common/ComparisonCard/ComparisonCard'
@@ -17,7 +17,7 @@ const ProsAndConsSection = ({ section }: ProsAndConsSectionProps) => {
     <div className="flex flex-col gap-6 lg:gap-12">
       {title || text ? (
         <div className="flex">
-          <div className={cx('grow', { 'text-center': textAlign === 'center' })}>
+          <div className={cn('grow', { 'text-center': textAlign === 'center' })}>
             {title && <Typography type="h2">{title}</Typography>}
             {text && (
               <Typography type="p" className="not-first:mt-2">

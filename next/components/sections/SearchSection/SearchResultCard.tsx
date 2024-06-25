@@ -1,8 +1,7 @@
 import { Typography } from '@bratislava/component-library'
-import cx from 'classnames'
 import Image from 'next/image'
-import React, { Fragment } from 'react'
-import { twMerge } from 'tailwind-merge'
+import React, { Fragment, ReactNode } from 'react'
+import cn from 'utils/cn'
 
 import { ChevronRightIcon } from '@/assets/ui-icons'
 import ImagePlaceholder from '@/components/common/Image/ImagePlaceholder'
@@ -23,7 +22,7 @@ type SearchResultCardProps = {
 const SearchResultCard = ({ data, hideBottomDivider }: SearchResultCardProps) => {
   return (
     <div
-      className={cx(
+      className={cn(
         'group relative flex flex-row items-stretch overflow-hidden rounded-none bg-white lg:rounded-lg lg:border-2',
         { 'hover:border-grey-400': data.linkHref, 'border-b-2': !hideBottomDivider },
       )}
@@ -51,12 +50,12 @@ SearchResultCard.IconContainer = function ({
   children,
   className,
 }: {
-  children: any
+  children: ReactNode
   className?: string
 }) {
   return (
     <div
-      className={twMerge(
+      className={cn(
         'hidden w-[6.5rem] shrink-0 items-center justify-center bg-grey-100 lg:flex',
         className,
       )}
@@ -94,7 +93,7 @@ SearchResultCard.ImageFromPageColor = function ({
   return (
     <div
       style={colorStyle}
-      className={twMerge(
+      className={cn(
         'relative hidden w-[6.5rem] shrink-0 items-center justify-center overflow-hidden bg-category-100 lg:flex',
         className,
       )}
@@ -113,7 +112,7 @@ SearchResultCard.ImageFromUrl = function ({
 }) {
   return (
     <div
-      className={twMerge(
+      className={cn(
         'relative hidden w-[6.5rem] shrink-0 items-center justify-center overflow-hidden bg-category-200 lg:flex',
         className,
       )}
@@ -146,7 +145,7 @@ SearchResultCard.TitleWithLink = function ({
           <Typography
             type="h3"
             size="h6"
-            className={twMerge(
+            className={cn(
               'line-clamp-3 group-hover:underline md:line-clamp-2 lg:line-clamp-1',
               className,
             )}
@@ -158,7 +157,7 @@ SearchResultCard.TitleWithLink = function ({
         <Typography
           type="h3"
           size="h6"
-          className={twMerge('line-clamp-3 md:line-clamp-2 lg:line-clamp-1', className)}
+          className={cn('line-clamp-3 md:line-clamp-2 lg:line-clamp-1', className)}
         >
           {title}
         </Typography>
@@ -192,7 +191,7 @@ SearchResultCard.Metadata = function ({
     }) ?? null
   return (
     <div
-      className={twMerge(
+      className={cn(
         'flex flex-col flex-wrap items-stretch gap-x-3 gap-y-1 text-grey-700 lg:flex-row',
         className,
       )}
@@ -204,7 +203,7 @@ SearchResultCard.Metadata = function ({
 
 SearchResultCard.Button = function ({ className }: { className?: string }) {
   return (
-    <div className={twMerge('my-auto self-end text-main-700', className)}>
+    <div className={cn('my-auto self-end text-main-700', className)}>
       <ChevronRightIcon />
     </div>
   )

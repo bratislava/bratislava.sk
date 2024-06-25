@@ -1,6 +1,6 @@
 import { Trans } from 'next-i18next'
 import React from 'react'
-import { twMerge } from 'tailwind-merge'
+import cn from 'utils/cn'
 
 import BALogo from '@/assets/images/BALogo.svg'
 import MLink from '@/components/common/MLink/MLink'
@@ -13,7 +13,7 @@ export type BrandProps = {
 
 const Brand = ({ className, url = '#', withTitle }: BrandProps) => {
   return (
-    <div className={twMerge('flex', className)}>
+    <div className={cn('flex', className)}>
       <MLink className="flex items-center gap-x-3 text-[#F23005]" href={url}>
         <BALogo className="shrink-0" />
         {withTitle && (
