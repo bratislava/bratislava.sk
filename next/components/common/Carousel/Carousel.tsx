@@ -69,7 +69,7 @@ const Carousel = ({
       <ul
         className={cn(
           'max-md:negative-x-spacing flex snap-x snap-mandatory gap-4 overflow-x-auto overflow-y-clip scrollbar-hide lg:-mx-2 lg:px-2',
-          hasVerticalPadding ? 'py-8' : '',
+          { 'py-8': hasVerticalPadding, '': !hasVerticalPadding },
           listClassName,
         )}
         ref={scrollerRef}
