@@ -67,22 +67,18 @@ const OfficialBoardDocumentPageContent = ({ document }: OfficialBoardDocumentPag
             </Typography>
             <div className="flex flex-col rounded-lg border-2 px-4">
               {document.files.length > 0 ? (
-                document.files.map((file, index) => {
-                  const isLastDocument = index === document.files.length - 1
-                  return (
-                    <FileRowCard
-                      key={file.id}
-                      title={file.title}
-                      size={file.size}
-                      format="PDF"
-                      downloadLink={file.generatedUrl}
-                      className={cn('-mx-4 px-4', {
-                        isLastDocument: '[&>*]:border-b-0',
-                        '': !isLastDocument,
-                      })}
-                    />
-                  )
-                })
+                document.files.map((file, index) => (
+                  <FileRowCard
+                    key={file.id}
+                    title={file.title}
+                    size={file.size}
+                    format="PDF"
+                    downloadLink={file.generatedUrl}
+                    className={cn('-mx-4 px-4', {
+                      '[&>*]:border-b-0': index === document.files.length - 1,
+                    })}
+                  />
+                ))
               ) : (
                 <Typography type="p">{t('OfficialBoard.noAttachmentsMessage')}</Typography>
               )}

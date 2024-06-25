@@ -110,7 +110,7 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
             'outline-none ring-offset-2 focus-visible:ring',
 
             // we change rounded corners for link focus ring
-            { isLinkVariant: 'rounded-sm max-lg:gap-1', 'rounded-lg': !isLinkVariant },
+            { 'rounded-sm max-lg:gap-1': isLinkVariant, 'rounded-lg': !isLinkVariant },
 
             {
               // NOTE: there are some style overrides for link variants below in "cn"

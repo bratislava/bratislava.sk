@@ -25,7 +25,7 @@ const TestimonialCard = ({
     <div
       className={cn(
         'relative rounded-lg bg-white p-4',
-        { hasBackground: 'bg-white', 'bg-category-100': !hasBackground },
+        { 'bg-white': hasBackground, 'bg-category-100': !hasBackground },
         className,
       )}
     >
