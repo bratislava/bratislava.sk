@@ -9,7 +9,7 @@ const HorizontalDivider = ({ categoryColor, className }: HorizontalDividerProps)
       role="separator"
       className={cn(
         'border-b-2',
-        categoryColor ? 'border-category-600' : 'border-grey-200',
+        { categoryColor: 'border-category-600', 'border-grey-200': !categoryColor },
         className,
       )}
     />
