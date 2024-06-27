@@ -68,7 +68,7 @@ const RegulationPageContent = ({ regulation }: RegulationPageContentProps) => {
         <div className="mb-8 flex flex-col gap-y-8">
           <RegulationDetailMessage regulation={regulation} />
           <div className="flex flex-row flex-wrap gap-6">
-            <div className="flex grow basis-full flex-col">
+            <div className="flex grow basis-full flex-col gap-4">
               <Typography type="h2" size="h3">
                 {t('Regulation.mainDocument')}
               </Typography>
@@ -86,6 +86,7 @@ const RegulationPageContent = ({ regulation }: RegulationPageContentProps) => {
               ) : (
                 <Typography type="p">{t('Regulation.noAttachmentsMessage')}</Typography>
               )}
+
             </div>
             <div className="flex grow basis-full flex-col gap-4">
               <Typography type="h2" size="h3">

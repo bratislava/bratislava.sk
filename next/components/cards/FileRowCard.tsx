@@ -7,7 +7,7 @@ import MLink from '@/components/common/MLink/MLink'
 import { isDefined } from '@/utils/isDefined'
 import { useTranslation } from '@/utils/useTranslation'
 
-import HorizontalDivider from '../common/Divider/HorizontalDivider'
+// import HorizontalDivider from '../common/Divider/HorizontalDivider'
 
 /**
  * Figma: https://www.figma.com/file/17wbd0MDQcMW9NbXl6UPs8/DS-ESBS%2BBK%3A-Component-library?node-id=867%3A2067&mode=dev
@@ -55,9 +55,10 @@ const FileRowCard = ({
           <DownloadIcon className="h-4 w-4" />
         </div>
       </div>
-      <HorizontalDivider />
     </div>
   )
 }
+
+// <HorizontalDivider />
 
 export default FileRowCard
