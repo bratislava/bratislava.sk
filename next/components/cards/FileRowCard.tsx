@@ -7,8 +7,7 @@ import MLink from '@/components/common/MLink/MLink'
 import { isDefined } from '@/utils/isDefined'
 import { useTranslation } from '@/utils/useTranslation'
 
-// note: another variant
-// import HorizontalDivider from '../common/Divider/HorizontalDivider'
+import HorizontalDivider from '../common/Divider/HorizontalDivider'
 
 /**
  * Figma: https://www.figma.com/file/17wbd0MDQcMW9NbXl6UPs8/DS-ESBS%2BBK%3A-Component-library?node-id=867%3A2067&mode=dev
@@ -22,6 +21,7 @@ const FileRowCard = ({
   size,
   className,
   ariaLabel,
+  variant,
 }: FileCardProps) => {
   const { t } = useTranslation()
 
@@ -32,7 +32,6 @@ const FileRowCard = ({
           <div className="md:rounded-lg md:bg-background-tertiary md:p-3">
             <AttachmentIcon />
           </div>
-
           <div className="flex flex-col gap-x-4 gap-y-1 md:w-full">
             <MLink
               href={downloadLink ?? '#'}
@@ -60,6 +59,12 @@ const FileRowCard = ({
           <DownloadIcon className="h-4 w-4" />
         </div>
       </div>
+
+      {variant === 'divider' ? (
+        <div className="px-4 md:px-6">
+          <HorizontalDivider />
+        </div>
+      ) : null}
     </div>
   )
 }

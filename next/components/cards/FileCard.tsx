@@ -15,6 +15,7 @@ export type FileCardProps = {
   size?: string
   className?: string
   ariaLabel?: string
+  variant?: string
 }
 
 /**
@@ -28,6 +29,7 @@ const FileCard = ({
   size,
   className,
   ariaLabel,
+  variant,
 }: FileCardProps) => {
   const { t } = useTranslation()
 

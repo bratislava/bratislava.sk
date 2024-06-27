@@ -55,9 +55,6 @@ const RegulationPageContent = ({ regulation }: RegulationPageContentProps) => {
     { title: `VZN ${regulation.attributes?.regNumber}`, path: null },
   ]
 
-  // note: no classes passed => className={classNames('')}
-  // md:-mx-4 md:px-6
-
   return (
     <>
       <PageHeader
@@ -84,6 +81,7 @@ const RegulationPageContent = ({ regulation }: RegulationPageContentProps) => {
                     size={formatFileSize(mainDocument.data.attributes.size, locale)}
                     format={formatFileExtension(mainDocument.data.attributes.ext) ?? undefined}
                     downloadLink={mainDocument.data.attributes.url}
+                    variant="divider"
                   />
                 ) : (
                   <Typography type="p">{t('Regulation.noAttachmentsMessage')}</Typography>
