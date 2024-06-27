@@ -7,6 +7,7 @@ import MLink from '@/components/common/MLink/MLink'
 import { isDefined } from '@/utils/isDefined'
 import { useTranslation } from '@/utils/useTranslation'
 
+// note: another variant
 // import HorizontalDivider from '../common/Divider/HorizontalDivider'
 
 /**
@@ -26,39 +27,41 @@ const FileRowCard = ({
 
   return (
     <div className={cn('relative', className)}>
-      <div className="flex flex-row items-center justify-between gap-x-4 py-4">
-        <div className="rounded-lg bg-background-tertiary p-3">
-          <AttachmentIcon />
+      <div className="flex flex-row justify-between gap-x-4 p-4 md:items-center md:px-6">
+        <div className="flex flex-row justify-between gap-x-2 md:items-center md:gap-x-4">
+          <div className="md:rounded-lg md:bg-background-tertiary md:p-3">
+            <AttachmentIcon />
+          </div>
+
+          <div className="flex flex-col gap-x-4 gap-y-1 md:w-full">
+            <MLink
+              href={downloadLink ?? '#'}
+              className="text-h5 line-clamp-3 break-words font-bold lg:line-clamp-2"
+              stretched
+              variant="underlineOnHover"
+              target="_blank"
+              rel="noreferrer"
+              aria-label={
+                ariaLabel ?? t('FileList.aria.downloadFileAriaLabel', { title, format, size })
+              }
+            >
+              {title}
+            </MLink>
+            {(uploadDate || format || size) && (
+              <span className="text-small text-grey-700 md:line-clamp-1">
+                {/* TODO words should be separated by a dot with 12px gap, this is a simplified solution. Same in FileCard component. */}
+                {[uploadDate, format, size].filter(isDefined).join(' • ')}
+              </span>
+            )}
+          </div>
         </div>
-        <div className="flex w-full flex-col gap-y-1">
-          <MLink
-            href={downloadLink ?? '#'}
-            className="text-h5 line-clamp-3 break-words font-bold lg:line-clamp-2"
-            stretched
-            variant="underlineOnHover"
-            target="_blank"
-            rel="noreferrer"
-            aria-label={
-              ariaLabel ?? t('FileList.aria.downloadFileAriaLabel', { title, format, size })
-            }
-          >
-            {title}
-          </MLink>
-          {(uploadDate || format || size) && (
-            <span className="text-small line-clamp-1 text-grey-700">
-              {/* TODO words should be separated by a dot with 12px gap, this is a simplified solution. Same in FileCard component. */}
-              {[uploadDate, format, size].filter(isDefined).join(' • ')}
-            </span>
-          )}
-        </div>
-        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border-2 border-grey-200 text-grey-700">
+
+        <div className="flex shrink-0 items-center justify-center text-grey-700 md:h-10 md:w-10 md:rounded-lg md:border-2 md:border-grey-200">
           <DownloadIcon className="h-4 w-4" />
         </div>
       </div>
     </div>
   )
 }
-
-// <HorizontalDivider />
 
 export default FileRowCard

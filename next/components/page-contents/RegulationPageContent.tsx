@@ -1,5 +1,4 @@
 import { Typography } from '@bratislava/component-library'
-import classNames from 'classnames'
 import React, { Fragment } from 'react'
 
 import FileRowCard from '@/components/cards/FileRowCard'
@@ -56,6 +55,9 @@ const RegulationPageContent = ({ regulation }: RegulationPageContentProps) => {
     { title: `VZN ${regulation.attributes?.regNumber}`, path: null },
   ]
 
+  // note: no classes passed => className={classNames('')}
+  // md:-mx-4 md:px-6
+
   return (
     <>
       <PageHeader
@@ -74,20 +76,21 @@ const RegulationPageContent = ({ regulation }: RegulationPageContentProps) => {
               </Typography>
 
               {/* TODO refactor to use standard component */}
-              {mainDocument?.data?.attributes ? (
-                <FileRowCard
-                  key={mainDocument.data.id}
-                  title={`VZN ${regulation.attributes?.regNumber}`}
-                  size={formatFileSize(mainDocument.data.attributes.size, locale)}
-                  format={formatFileExtension(mainDocument.data.attributes.ext) ?? undefined}
-                  downloadLink={mainDocument.data.attributes.url}
-                  className={classNames('-mx-4 px-6')}
-                />
-              ) : (
-                <Typography type="p">{t('Regulation.noAttachmentsMessage')}</Typography>
-              )}
-
+              <div className="rounded-lg border-2 py-2">
+                {mainDocument?.data?.attributes ? (
+                  <FileRowCard
+                    key={mainDocument.data.id}
+                    title={`VZN ${regulation.attributes?.regNumber}`}
+                    size={formatFileSize(mainDocument.data.attributes.size, locale)}
+                    format={formatFileExtension(mainDocument.data.attributes.ext) ?? undefined}
+                    downloadLink={mainDocument.data.attributes.url}
+                  />
+                ) : (
+                  <Typography type="p">{t('Regulation.noAttachmentsMessage')}</Typography>
+                )}
+              </div>
             </div>
+
             <div className="flex grow basis-full flex-col gap-4">
               <Typography type="h2" size="h3">
                 {t('Regulation.attachments')}
