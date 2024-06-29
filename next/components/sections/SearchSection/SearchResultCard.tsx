@@ -23,7 +23,7 @@ const SearchResultCard = ({ data, hideBottomDivider }: SearchResultCardProps) =>
   return (
     <div
       className={cn(
-        'group relative flex flex-row items-stretch overflow-hidden rounded-none bg-white lg:rounded-lg lg:border-2',
+        'group relative flex flex-row items-stretch overflow-hidden bg-white px-6 py-4',
         { 'hover:border-grey-400': data.linkHref, 'border-b-2': !hideBottomDivider },
       )}
       data-cy="search-result-card"
@@ -35,7 +35,8 @@ const SearchResultCard = ({ data, hideBottomDivider }: SearchResultCardProps) =>
       ) : data.pageColor ? (
         <SearchResultCard.ImageFromPageColor pageColor={data.pageColor} />
       ) : null}
-      <div className="flex w-full flex-row gap-6 py-4 lg:p-6">
+
+      <div className="flex w-full flex-row gap-4 p-4">
         <div className="flex w-full flex-col justify-center gap-3 lg:gap-2">
           <SearchResultCard.TitleWithLink title={data.title ?? ''} href={data.linkHref ?? ''} />
           <SearchResultCard.Metadata metadata={data.metadata?.filter(isDefined) ?? []} />
@@ -56,7 +57,7 @@ SearchResultCard.IconContainer = function ({
   return (
     <div
       className={cn(
-        'hidden w-[6.5rem] shrink-0 items-center justify-center bg-grey-100 lg:flex',
+        'hidden h-[5rem] w-[5rem] shrink-0 items-center justify-center rounded-lg bg-grey-100 lg:flex',
         className,
       )}
     >
@@ -94,7 +95,7 @@ SearchResultCard.ImageFromPageColor = function ({
     <div
       style={colorStyle}
       className={cn(
-        'relative hidden w-[6.5rem] shrink-0 items-center justify-center overflow-hidden bg-category-100 lg:flex',
+        'relative hidden h-[5rem] w-[5rem] shrink-0 items-center justify-center overflow-hidden rounded-lg bg-category-100 lg:flex',
         className,
       )}
     >
@@ -113,7 +114,7 @@ SearchResultCard.ImageFromUrl = function ({
   return (
     <div
       className={cn(
-        'relative hidden w-[6.5rem] shrink-0 items-center justify-center overflow-hidden bg-category-200 lg:flex',
+        'relative hidden h-[5rem] w-[5rem] shrink-0 items-center justify-center overflow-hidden rounded-lg bg-category-200 lg:flex',
         className,
       )}
     >
