@@ -23,7 +23,7 @@ const SearchResultCard = ({ data, hideBottomDivider }: SearchResultCardProps) =>
   return (
     <div
       className={cn(
-        'group relative mx-6 flex flex-row items-stretch gap-4 overflow-hidden bg-white py-4',
+        'group relative flex flex-row items-stretch gap-4 overflow-hidden bg-white py-4 lg:mx-6',
         { 'hover:border-grey-400': data.linkHref, 'border-b-2': !hideBottomDivider },
       )}
       data-cy="search-result-card"
@@ -36,7 +36,7 @@ const SearchResultCard = ({ data, hideBottomDivider }: SearchResultCardProps) =>
         <SearchResultCard.ImageFromPageColor pageColor={data.pageColor} />
       ) : null}
 
-      <div className="flex w-full flex-row gap-4 py-4">
+      <div className="flex w-full flex-row gap-4">
         <div className="flex w-full flex-col justify-center gap-3 lg:gap-2">
           <SearchResultCard.TitleWithLink title={data.title ?? ''} href={data.linkHref ?? ''} />
           <SearchResultCard.Metadata metadata={data.metadata?.filter(isDefined) ?? []} />
