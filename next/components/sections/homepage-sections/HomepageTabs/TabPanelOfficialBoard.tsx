@@ -73,7 +73,10 @@ const TabPanelOfficialBoard = () => {
           ) : (
             documents.map((document, index) => (
               <li key={document.uniqueId}>
-                <SearchResultCard data={{ ...document }} hideBottomDivider />
+                <SearchResultCard
+                  data={{ ...document }}
+                  hideBottomDivider={index === RESULTS_UPPER_BOUNDARY - 1}
+                />
               </li>
             ))
           )}
