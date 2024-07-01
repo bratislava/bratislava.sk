@@ -81,15 +81,16 @@ const SearchResults = ({
               .slice(0, variant === 'allResults' ? GENERAL_RESULTS_COUNT : undefined)
               .map((item, index) => {
                 return (
-                  <li>
+                  <li
+                    key={`item-${variant}-${searchOption.id}-${[
+                      item.uniqueId,
+                      item.title,
+                      ...(item?.metadata ?? []),
+                    ].join('')}`}
+                  >
                     <SearchResultCard
                       data={{ ...item }}
                       hideBottomDivider={index === GENERAL_RESULTS_COUNT - 1}
-                      key={`item-${variant}-${searchOption.id}-${[
-                        item.uniqueId,
-                        item.title,
-                        ...(item?.metadata ?? []),
-                      ].join('')}`}
                     />
                   </li>
                 )

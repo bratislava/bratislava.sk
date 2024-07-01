@@ -24,7 +24,7 @@ const SearchResultCard = ({ data, hideBottomDivider }: SearchResultCardProps) =>
     <div
       className={cn(
         'group relative mx-5 flex flex-row items-stretch gap-4 overflow-hidden bg-white py-4 lg:mx-6',
-        { 'hover:border-grey-400': data.linkHref, 'border-b-2': !hideBottomDivider },
+        { 'border-b-2': !hideBottomDivider },
       )}
       data-cy="search-result-card"
     >
@@ -184,11 +184,7 @@ SearchResultCard.Metadata = function ({
               •
             </Typography>
           )}
-          <Typography
-            type="p"
-            size="p-small"
-            className={cn('max-lg:first-of-type:font-medium', { underline: index === 0 })}
-          >
+          <Typography type="p" size="p-small" className="max-lg:first-of-type:font-medium">
             {item}
           </Typography>
         </Fragment>
@@ -208,7 +204,7 @@ SearchResultCard.Metadata = function ({
 
 SearchResultCard.Button = function ({ className }: { className?: string }) {
   return (
-    <div className={cn('my-auto self-end text-content-primary', className)}>
+    <div className={cn('my-auto self-end text-action-content-default', className)}>
       <ChevronRightIcon />
     </div>
   )

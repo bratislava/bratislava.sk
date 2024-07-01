@@ -29,8 +29,7 @@ const TabPanelOfficialBoard = () => {
     data: officialBoardData,
     isLoading,
     isError,
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    error,
+    // error,
   } = useQuery({
     queryKey: getOfficialBoardListQueryKey(filters),
     queryFn: () => officialBoardListFetcher(filters),
@@ -73,12 +72,8 @@ const TabPanelOfficialBoard = () => {
             </li>
           ) : (
             documents.map((document, index) => (
-              <li>
-                <SearchResultCard
-                  key={document.uniqueId}
-                  data={{ ...document }}
-                  hideBottomDivider={index === RESULTS_UPPER_BOUNDARY - 1}
-                />
+              <li key={document.uniqueId}>
+                <SearchResultCard data={{ ...document }} hideBottomDivider />
               </li>
             ))
           )}
