@@ -81,7 +81,7 @@ const RegulationPageContent = ({ regulation }: RegulationPageContentProps) => {
                     size={formatFileSize(mainDocument.data.attributes.size, locale)}
                     format={formatFileExtension(mainDocument.data.attributes.ext) ?? undefined}
                     downloadLink={mainDocument.data.attributes.url}
-                    hasBottomDivider={false}
+                    hideBottomDivider
                   />
                 ) : (
                   <Typography type="p">{t('Regulation.noAttachmentsMessage')}</Typography>
