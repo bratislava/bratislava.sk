@@ -73,21 +73,22 @@ const RegulationPageContent = ({ regulation }: RegulationPageContentProps) => {
               </Typography>
 
               {/* TODO refactor to use standard component */}
-              {mainDocument?.data?.attributes ? (
-                <div className="flex flex-col rounded-lg border-2 px-4">
+              <div className="rounded-lg border-2 py-2">
+                {mainDocument?.data?.attributes ? (
                   <FileRowCard
                     key={mainDocument.data.id}
                     title={`VZN ${regulation.attributes?.regNumber}`}
                     size={formatFileSize(mainDocument.data.attributes.size, locale)}
                     format={formatFileExtension(mainDocument.data.attributes.ext) ?? undefined}
                     downloadLink={mainDocument.data.attributes.url}
-                    className="-mx-4 px-4 [&>*]:border-b-0"
+                    hideBottomDivider
                   />
-                </div>
-              ) : (
-                <Typography type="p">{t('Regulation.noAttachmentsMessage')}</Typography>
-              )}
+                ) : (
+                  <Typography type="p">{t('Regulation.noAttachmentsMessage')}</Typography>
+                )}
+              </div>
             </div>
+
             <div className="flex grow basis-full flex-col gap-4">
               <Typography type="h2" size="h3">
                 {t('Regulation.attachments')}
@@ -95,11 +96,10 @@ const RegulationPageContent = ({ regulation }: RegulationPageContentProps) => {
 
               {/* TODO refactor to use standard component */}
               {attachmentFiles?.length ? (
-                <div className="flex flex-col rounded-lg border-2 px-4">
+                <div>
                   {attachmentFiles
                     .map(({ media: attachementMedia, title: attachmentTitle }) => {
                       if (!attachementMedia.data.attributes) return null
-
                       return (
                         <FileRowCard
                           key={attachementMedia.data.id}
@@ -109,7 +109,6 @@ const RegulationPageContent = ({ regulation }: RegulationPageContentProps) => {
                             formatFileExtension(attachementMedia.data.attributes.ext) ?? undefined
                           }
                           downloadLink={attachementMedia.data.attributes.url}
-                          className="-mx-4 px-4 [&>*]:border-b-0"
                         />
                       )
                     })
