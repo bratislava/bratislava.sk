@@ -15,7 +15,7 @@ export type FileCardProps = {
   size?: string
   className?: string
   ariaLabel?: string
-  variant?: string
+  hasBottomDivider?: boolean
 }
 
 /**
@@ -29,7 +29,7 @@ const FileCard = ({
   size,
   className,
   ariaLabel,
-  variant,
+                    hasBottomDivider,
 }: FileCardProps) => {
   const { t } = useTranslation()
 
