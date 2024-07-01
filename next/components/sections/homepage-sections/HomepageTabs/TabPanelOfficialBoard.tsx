@@ -29,6 +29,7 @@ const TabPanelOfficialBoard = () => {
     data: officialBoardData,
     isLoading,
     isError,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     error,
   } = useQuery({
     queryKey: getOfficialBoardListQueryKey(filters),
@@ -53,25 +54,35 @@ const TabPanelOfficialBoard = () => {
     },
   })
 
-  const documents = officialBoardData?.slice(0, 4) || []
+  const RESULTS_UPPER_BOUNDARY = 4
+  const documents = officialBoardData?.slice(0, RESULTS_UPPER_BOUNDARY) || []
 
   return (
     <TabPanel id="OfficialBoard">
       <div className="mt-8 flex flex-col gap-y-10 lg:mt-14">
-        <div className="flex flex-col gap-y-2" data-cy="official-board-results">
+        <ul className="flex flex-col rounded-lg border-2 py-2" data-cy="official-board-results">
           {/* TODO we used basic spinner and text here, but it should be done with nicer design */}
           {isLoading ? (
-            <LoadingSpinner />
+            <li>
+              <LoadingSpinner />
+            </li>
           ) : isError ? (
             // TODO translation
-            <Typography type="p">Nepodarilo sa načítať dáta z úradnej tabule.</Typography>
+            <li>
+              <Typography type="p">Nepodarilo sa načítať dáta z úradnej tabule.</Typography>
+            </li>
           ) : (
-            documents.map((document) => (
-              <SearchResultCard key={document.uniqueId} data={{ ...document }} />
+            documents.map((document, index) => (
+              <li>
+                <SearchResultCard
+                  key={document.uniqueId}
+                  data={{ ...document }}
+                  hideBottomDivider={index === RESULTS_UPPER_BOUNDARY - 1}
+                />
+              </li>
             ))
           )}
-        </div>
-
+        </ul>
         {tabs?.officialBoardPageLink ? (
           <div className="flex justify-center">
             <Button

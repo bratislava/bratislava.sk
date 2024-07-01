@@ -31,6 +31,7 @@ const SearchResults = ({
   onShowMore,
   onPageChange,
   // TODO use onLoadingChange to signal loading state to parent component
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   onLoadingChange,
 }: SearchResultsProps) => {
   const { t } = useTranslation()
@@ -75,22 +76,25 @@ const SearchResults = ({
           />
         )}
         {searchResultsData?.length ? (
-          <div className="flex flex-col lg:gap-y-2" data-cy="search-results">
+          <ul className="flex flex-col rounded-lg border-2 py-2" data-cy="search-results">
             {searchResultsData
               .slice(0, variant === 'allResults' ? GENERAL_RESULTS_COUNT : undefined)
-              .map((item) => {
+              .map((item, index) => {
                 return (
-                  <SearchResultCard
-                    data={{ ...item }}
-                    key={`item-${variant}-${searchOption.id}-${[
-                      item.uniqueId,
-                      item.title,
-                      ...(item?.metadata ?? []),
-                    ].join('')}`}
-                  />
+                  <li>
+                    <SearchResultCard
+                      data={{ ...item }}
+                      hideBottomDivider={index === GENERAL_RESULTS_COUNT - 1}
+                      key={`item-${variant}-${searchOption.id}-${[
+                        item.uniqueId,
+                        item.title,
+                        ...(item?.metadata ?? []),
+                      ].join('')}`}
+                    />
+                  </li>
                 )
               })}
-          </div>
+          </ul>
         ) : filters.search ? (
           <div data-cy="no-search-results">
             <Typography type="p">{t('SearchPage.noResults')}</Typography>
