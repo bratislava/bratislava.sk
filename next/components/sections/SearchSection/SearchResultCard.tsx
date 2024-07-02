@@ -21,27 +21,29 @@ type SearchResultCardProps = {
 
 const SearchResultCard = ({ data, hideBottomDivider }: SearchResultCardProps) => {
   return (
-    <div
-      className={cn(
-        'group relative mx-5 flex flex-row items-stretch gap-4 overflow-hidden bg-white py-4 lg:mx-6',
-        { 'border-b-2': !hideBottomDivider },
-      )}
-      data-cy="search-result-card"
-    >
-      {data.coverImageSrc ? (
-        <SearchResultCard.ImageFromUrl imgUrl={data.coverImageSrc} />
-      ) : data.customIconName ? (
-        <SearchResultCard.ImageFromIconName iconName={data.customIconName} />
-      ) : data.pageColor ? (
-        <SearchResultCard.ImageFromPageColor pageColor={data.pageColor} />
-      ) : null}
+    <div className=" px-5 lg:px-6">
+      <div
+        className={cn(
+          'group relative flex flex-row items-stretch gap-4 overflow-hidden bg-white py-4',
+          { 'border-b-2': !hideBottomDivider },
+        )}
+        data-cy="search-result-card"
+      >
+        {data.coverImageSrc ? (
+          <SearchResultCard.ImageFromUrl imgUrl={data.coverImageSrc} />
+        ) : data.customIconName ? (
+          <SearchResultCard.ImageFromIconName iconName={data.customIconName} />
+        ) : data.pageColor ? (
+          <SearchResultCard.ImageFromPageColor pageColor={data.pageColor} />
+        ) : null}
 
-      <div className="flex w-full flex-row gap-4">
-        <div className="flex w-full flex-col justify-center gap-3 lg:gap-2">
-          <SearchResultCard.TitleWithLink title={data.title ?? ''} href={data.linkHref ?? ''} />
-          <SearchResultCard.Metadata metadata={data.metadata?.filter(isDefined) ?? []} />
+        <div className="flex w-full flex-row gap-4">
+          <div className="flex w-full flex-col justify-center gap-3 lg:gap-2">
+            <SearchResultCard.TitleWithLink title={data.title ?? ''} href={data.linkHref ?? ''} />
+            <SearchResultCard.Metadata metadata={data.metadata?.filter(isDefined) ?? []} />
+          </div>
+          {data.linkHref && <SearchResultCard.Button className="hidden lg:block" />}
         </div>
-        {data.linkHref && <SearchResultCard.Button className="hidden lg:block" />}
       </div>
     </div>
   )
