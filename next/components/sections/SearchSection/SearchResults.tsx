@@ -106,7 +106,6 @@ const SearchResults = ({
           // TODO IS PENDING, but handle contacts separately
           <Typography type="p">{t('SearchPage.enterSearchQuery')}</Typography>
         )}
-
         {variant === 'specificResults' && onPageChange ? (
           <div>
             <Pagination
