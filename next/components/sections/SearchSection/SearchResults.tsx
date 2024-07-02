@@ -46,6 +46,8 @@ const SearchResults = ({
   const { searchResultsData, searchResultsCount } = data ?? { searchResultsCount: 0 }
 
   const GENERAL_RESULTS_COUNT = 5
+  const RESULTS_COUNT =
+    (searchResultsData?.length as number) < 5 ? searchResultsData?.length : GENERAL_RESULTS_COUNT // Logic based on TabPanelOfficialBoard.tsx
 
   useEffect(() => {
     onSetResultsCount(searchOption.id, searchResultsCount ?? 0)
@@ -75,6 +77,7 @@ const SearchResults = ({
             }}
           />
         )}
+
         {searchResultsData?.length ? (
           <ul className="flex flex-col rounded-lg border-2 py-2" data-cy="search-results">
             {searchResultsData
@@ -90,7 +93,7 @@ const SearchResults = ({
                   >
                     <SearchResultCard
                       data={{ ...item }}
-                      hideBottomDivider={index === GENERAL_RESULTS_COUNT - 1}
+                      hideBottomDivider={index === (RESULTS_COUNT as number) - 1}
                     />
                   </li>
                 )
@@ -106,6 +109,7 @@ const SearchResults = ({
           // TODO IS PENDING, but handle contacts separately
           <Typography type="p">{t('SearchPage.enterSearchQuery')}</Typography>
         )}
+
         {variant === 'specificResults' && onPageChange ? (
           <div>
             <Pagination
