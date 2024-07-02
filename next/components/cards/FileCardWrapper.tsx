@@ -12,12 +12,17 @@ import { useLocale } from '@/utils/useLocale'
 export type FileCardWrapperProps = {
   fileItem: FileItemBlockFragment
   variant?: 'grid' | 'rows'
+  hideBottomDivider?: boolean
 }
 
 /**
  * Figma: https://www.figma.com/file/17wbd0MDQcMW9NbXl6UPs8/DS-ESBS%2BBK%3A-Component-library?type=design&node-id=7367-17767&t=Km8W7qXXiWIDWSYw-0
  */
-const FileCardWrapper = ({ fileItem, variant = 'grid' }: FileCardWrapperProps) => {
+const FileCardWrapper = ({
+  fileItem,
+  variant = 'grid',
+  hideBottomDivider,
+}: FileCardWrapperProps) => {
   const locale = useLocale()
   const { getDownloadAriaLabel } = useGetDownloadAriaLabel()
 
@@ -41,7 +46,7 @@ const FileCardWrapper = ({ fileItem, variant = 'grid' }: FileCardWrapperProps) =
   const transformedProps = transformFileProps(fileItem)
 
   return variant === 'rows' ? (
-    <FileRowCard {...transformedProps} />
+    <FileRowCard {...transformedProps} hideBottomDivider={hideBottomDivider} />
   ) : (
     <FileCard {...transformedProps} />
   )
