@@ -36,7 +36,11 @@ const FileList = ({ className, fileSections, hideCategory, variantFileList }: Fi
                 {fileSection?.files.map((file, fileIndex) => (
                   // eslint-disable-next-line react/no-array-index-key
                   <li key={fileIndex} className="w-full">
-                    <FileCardWrapper fileItem={file} variant={variantFileList} />
+                    <FileCardWrapper
+                      fileItem={file}
+                      variant={variantFileList}
+                      hideBottomDivider={fileIndex === (fileSection?.files?.length ?? false) - 1}
+                    />
                   </li>
                 ))}
               </ul>
