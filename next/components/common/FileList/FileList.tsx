@@ -39,7 +39,7 @@ const FileList = ({ className, fileSections, hideCategory, variantFileList }: Fi
                     <FileCardWrapper
                       fileItem={file}
                       variant={variantFileList}
-                      hideBottomDivider={fileIndex === (fileSection?.files?.length ?? false) - 1}
+                      hideBottomDivider={fileIndex === fileSection.files.length - 1}
                     />
                   </li>
                 ))}
