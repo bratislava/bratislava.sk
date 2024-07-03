@@ -21,7 +21,7 @@ type SearchResultCardProps = {
 
 const SearchResultCard = ({ data, hideBottomDivider }: SearchResultCardProps) => {
   return (
-    <div className=" px-5 lg:px-6">
+    <div className="px-5 lg:px-6">
       <div
         className={cn(
           'group relative flex flex-row items-stretch gap-4 overflow-hidden bg-white py-4',
@@ -186,7 +186,7 @@ SearchResultCard.Metadata = function ({
               •
             </Typography>
           )}
-          <Typography type="p" size="p-small" className="max-lg:first-of-type:font-medium">
+          <Typography type="p" size="p-small">
             {item}
           </Typography>
         </Fragment>
