@@ -29,7 +29,7 @@ const TabPanelOfficialBoard = () => {
     data: officialBoardData,
     isLoading,
     isError,
-    error,
+    // error,
   } = useQuery({
     queryKey: getOfficialBoardListQueryKey(filters),
     queryFn: () => officialBoardListFetcher(filters),
@@ -58,20 +58,31 @@ const TabPanelOfficialBoard = () => {
   return (
     <TabPanel id="OfficialBoard">
       <div className="mt-8 flex flex-col gap-y-10 lg:mt-14">
-        <div className="flex flex-col gap-y-2" data-cy="official-board-results">
+        <ul
+          className="flex flex-col rounded-lg border-2 bg-background-primary py-2"
+          data-cy="official-board-results"
+        >
           {/* TODO we used basic spinner and text here, but it should be done with nicer design */}
           {isLoading ? (
-            <LoadingSpinner />
+            <li>
+              <LoadingSpinner />
+            </li>
           ) : isError ? (
             // TODO translation
-            <Typography type="p">Nepodarilo sa načítať dáta z úradnej tabule.</Typography>
+            <li>
+              <Typography type="p">Nepodarilo sa načítať dáta z úradnej tabule.</Typography>
+            </li>
           ) : (
-            documents.map((document) => (
-              <SearchResultCard key={document.uniqueId} data={{ ...document }} />
+            documents.map((document, index) => (
+              <li key={document.uniqueId}>
+                <SearchResultCard
+                  data={{ ...document }}
+                  hideBottomDivider={index === documents.length - 1}
+                />
+              </li>
             ))
           )}
-        </div>
-
+        </ul>
         {tabs?.officialBoardPageLink ? (
           <div className="flex justify-center">
             <Button
