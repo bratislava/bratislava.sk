@@ -3,6 +3,7 @@ resources:
   - ./odhrnieme.ingress.yml
   - ./10000stromov.ingress.yml
   - ./behdevin.ingress.yml
+  - ./social.ingress.yml
 
 configMapGenerator:
   - name: ${BUILD_REPOSITORY_NAME}-env
@@ -20,3 +21,4 @@ patches:
         value:
           secretRef:
             name: ${BUILD_REPOSITORY_NAME}-revalidate-secret
+
