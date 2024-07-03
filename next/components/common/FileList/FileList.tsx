@@ -32,14 +32,18 @@ const FileList = ({ className, fileSections, hideCategory, variantFileList }: Fi
               <Typography type="h2">{fileSection.category}</Typography>
             )}
             {variantFileList === 'rows' && (
-              <div className="mt-4 flex flex-col lg:mt-6">
+              <ul className="mt-4 flex flex-col rounded-lg border-2 py-2 lg:mt-6">
                 {fileSection?.files.map((file, fileIndex) => (
                   // eslint-disable-next-line react/no-array-index-key
-                  <div key={fileIndex} className="w-full">
-                    <FileCardWrapper fileItem={file} variant={variantFileList} />
-                  </div>
+                  <li key={fileIndex} className="w-full">
+                    <FileCardWrapper
+                      fileItem={file}
+                      variant={variantFileList}
+                      hideBottomDivider={fileIndex === fileSection.files.length - 1}
+                    />
+                  </li>
                 ))}
-              </div>
+              </ul>
             )}
             {variantFileList === 'grid' && (
               <div>
