@@ -26,10 +26,8 @@ const searchIndexSettings = {
     'page.subtext',
     'page.metaDiscription', // yes, it's a typo in the field name
     'blog-post.title',
+    'blog-post.excerpt',
     'inba-article.title',
-    'vzn.title',
-    'vzn.amedmentDocument.title', // yes, it's a typo in the field name
-    'vzn.cancellationDocument.title',
     'regulation.regNumber',
     'regulation.titleText',
     'regulation.fullTitle',
