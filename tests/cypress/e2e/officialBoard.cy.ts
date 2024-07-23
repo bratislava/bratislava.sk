@@ -7,7 +7,6 @@ describe('OB - 1', { testIsolation: false }, () => {
     .filter((device) => Cypress.env('devices')[`${device}`])
     .forEach((device) => {
       context(device, Cypress.env('resolution')[`${device}`], () => {
-
         before(() => {
           cy.visit('/')
         })
@@ -17,8 +16,10 @@ describe('OB - 1', { testIsolation: false }, () => {
           cy.dataCy('homepage-tab-OfficialBoard').should('have.class', 'selected:font-semibold')
           cy.dataCy('official-board-results').find('[data-cy=search-result-card]')
           cy.dataCy('official-board-button').click()
-          cy.location('pathname', { timeout: 4000 })
-            .should('eq', '/mesto-bratislava/transparentne-mesto/uradna-tabula');
+          cy.location('pathname', { timeout: 4000 }).should(
+            'eq',
+            '/mesto-bratislava/transparentne-mesto/uradna-tabula',
+          )
           cy.dataCy('search-results').should('exist')
           cy.dataCy('search-results').find('[data-cy=search-result-card]').should('exist')
           cy.dataCy('pagination').should('exist')
@@ -31,5 +32,5 @@ describe('OB - 1', { testIsolation: false }, () => {
           cy.dataCy('no-search-results').should('contain', 'Žiadne výsledky')
         })
       })
-   })
+    })
 })
