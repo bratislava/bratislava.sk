@@ -4,6 +4,7 @@ resources:
   - ./10000stromov.ingress.yml
   - ./behdevin.ingress.yml
   - ./social.ingress.yml
+  - ./secrets/msal.secret.yml
 
 configMapGenerator:
   - name: ${BUILD_REPOSITORY_NAME}-env

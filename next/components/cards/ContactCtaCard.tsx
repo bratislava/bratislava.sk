@@ -80,20 +80,19 @@ const ContactCtaCard = ({ className, contact, hasBackground }: ContactCtaCardPro
   }
 
   const Icon = data.icon
-  const backgroundVariant = { 'bg-category-100': hasBackground, 'bg-white': !hasBackground }
 
   return (
     <div
       className={cn(
         'relative flex flex-col gap-4 rounded-lg p-4 md:flex-row md:items-center lg:p-6',
-        backgroundVariant,
+        hasBackground ? 'bg-white' : 'bg-category-100',
         className,
       )}
     >
       <div
         className={cn(
           'flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-category-100 text-category-700 lg:h-[56px] lg:w-[56px]',
-          backgroundVariant,
+          hasBackground ? 'bg-category-100' : 'bg-white',
         )}
       >
         <Icon className="h-6 w-6 lg:h-8 lg:w-8" />
