@@ -48,13 +48,15 @@ type Props =
   | {
       variant: 'general'
       searchOption?: never
+      pageSize?: never
     }
   | {
       variant: 'specific'
       searchOption: Exclude<SearchOption['id'], 'allResults'>
+      pageSize?: number
     }
 
-const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
+const GlobalSearchSectionContent = ({ variant, searchOption, pageSize = 12 }: Props) => {
   const { t } = useTranslation()
 
   const [routerQueryValue] = useQueryParam('keyword', withDefault(StringParam, ''))
@@ -180,7 +182,7 @@ const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
   const searchFilters: SearchFilters = {
     search: searchValue,
     page: currentPage,
-    pageSize: 12,
+    pageSize,
     // tagIds need to be here for now, because BlogPost and InbaArticle fetchers filter by tagIds
     tagIds: [],
     // Official board category id
