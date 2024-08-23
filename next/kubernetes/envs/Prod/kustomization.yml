@@ -5,6 +5,7 @@ resources:
   - ./behdevin.ingress.yml
   - ./social.ingress.yml
   - ./secrets/msal.secret.yml
+  - pdb.yml
 
 configMapGenerator:
   - name: ${BUILD_REPOSITORY_NAME}-env
