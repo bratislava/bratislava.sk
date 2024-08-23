@@ -2,6 +2,8 @@
   "host": "bratislava.sk",
   "envs": {
     "NEXT_CPU_REQUESTS": "50m",
-    "NEXT_MEMORY_REQUESTS": "128Mi"
+    "NEXT_MEMORY_REQUESTS": "128Mi",
+    "NEXT_CPU_LIMITS": "1",
+    "NEXT_MEMORY_LIMITS": "2Gi"
   }
 }
