@@ -190,8 +190,8 @@ export const useQueryBySearchOption = ({
   })
 
   const usersQuery = useQuery({
-    queryKey: getMsGraphSearchQueryKey(filters.search),
-    queryFn: () => msGraphSearchFetcher(filters.search),
+    queryKey: getMsGraphSearchQueryKey(filters.search, filters.pageSize),
+    queryFn: () => msGraphSearchFetcher(filters.search, filters.pageSize),
     placeholderData: keepPreviousData,
     select: (axiosResponse) => {
       const formattedData: SearchResult[] =
