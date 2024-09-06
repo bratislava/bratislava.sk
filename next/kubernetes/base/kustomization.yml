@@ -9,6 +9,7 @@ resources:
   - old_aliases.ingress.yml
   - klima.ingress.yml
   - camping.ingress.yml
+  - horskypark.ingress.yml
 configurations:
   - configuration.yml
 
