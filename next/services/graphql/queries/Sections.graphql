@@ -161,10 +161,12 @@ fragment FileBlock on ComponentBlocksFile {
 }
 
 fragment FileListSection on ComponentSectionsFileList {
+  title # TODO not used yet
+  text # TODO not used yet
+  # files # TODO not used yet
   hasBackground
   variantFileList: variant
-  # TODO consider limit -1
-  fileList(pagination: { limit: 500 }) {
+  fileList(pagination: { limit: -1 }) {
     ...FileBlock
   }
 }
