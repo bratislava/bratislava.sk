@@ -1725,6 +1725,17 @@ const nextConfig = {
         destination: '/mesto-bratislava/projekty/sadni-si',
         permanent: true,
       },
+      {
+        source: '/vzdelavanie-a-volny-cas/camping/:slug*',
+        destination: '/vzdelavanie-a-volny-cas/sport/kemping/:slug*',
+        permanent: true,
+      },
+      {
+        source: '/en/education-and-leisure/camping/:slug*',
+        destination: '/en/education-and-leisure/sport/camping/:slug*',
+        locale: false,
+        permanent: true,
+      },
     ]
   },
   webpack(config) {
