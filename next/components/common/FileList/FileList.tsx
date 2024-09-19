@@ -2,8 +2,7 @@ import { Typography } from '@bratislava/component-library'
 import cn from 'utils/cn'
 
 import FileCardWrapper from '@/components/cards/FileCardWrapper'
-import ResponsiveCarousel from '@/components/common/Carousel/ResponsiveCarousel'
-import { Enum_Componentsectionsfilelist_Variant, FileItemBlockFragment } from '@/services/graphql'
+import { FileItemBlockFragment } from '@/services/graphql'
 
 export type TFileSection = {
   category?: string
@@ -16,7 +15,6 @@ export type FileListProps = {
   className?: string
   fileSections?: TFileSection[]
   hideCategory?: boolean
-  variantFileList?: Enum_Componentsectionsfilelist_Variant
 }
 
 /**
@@ -24,14 +22,7 @@ export type FileListProps = {
  */
 
 // TODO remove grouping by category
-const FileList = ({
-  className,
-  title,
-  text,
-  fileSections,
-  hideCategory,
-  variantFileList,
-}: FileListProps) => {
+const FileList = ({ className, title, text, fileSections, hideCategory }: FileListProps) => {
   return (
     <div className={cn('', className)}>
       {title || text ? (
@@ -48,43 +39,18 @@ const FileList = ({
             {fileSection.category && !hideCategory && (
               <Typography type="h2">{fileSection.category}</Typography>
             )}
-            {variantFileList === 'rows' && (
-              <ul className="mt-4 flex flex-col rounded-lg border-2 py-2 lg:mt-6">
-                {fileSection?.files.map((file, fileIndex) => (
-                  // eslint-disable-next-line react/no-array-index-key
-                  <li key={fileIndex} className="w-full">
-                    <FileCardWrapper
-                      fileItem={file}
-                      variant={variantFileList}
-                      hideBottomDivider={fileIndex === fileSection.files.length - 1}
-                    />
-                  </li>
-                ))}
-              </ul>
-            )}
-            {variantFileList === 'grid' && (
-              <div>
-                <div
-                  className="mt-6 hidden grid-cols-3 gap-8 lg:grid"
-                  data-cy="file-wrapper-desktop"
-                >
-                  {fileSection?.files.map((file, fileIndex) => (
-                    // eslint-disable-next-line react/no-array-index-key
-                    <div key={fileIndex} className="w-full">
-                      <FileCardWrapper fileItem={file} />
-                    </div>
-                  ))}
-                </div>
-                <div className="lg:hidden" data-cy="file-wrapper-mobile">
-                  <ResponsiveCarousel
-                    items={fileSection?.files.map((file, fileIndex) => (
-                      // eslint-disable-next-line react/no-array-index-key
-                      <FileCardWrapper key={fileIndex} fileItem={file} />
-                    ))}
+            <ul className="mt-4 flex flex-col rounded-lg border-2 py-2 lg:mt-6">
+              {fileSection?.files.map((file, fileIndex) => (
+                // eslint-disable-next-line react/no-array-index-key
+                <li key={fileIndex} className="w-full">
+                  <FileCardWrapper
+                    fileItem={file}
+                    variant="rows"
+                    hideBottomDivider={fileIndex === fileSection.files.length - 1}
                   />
-                </div>
-              </div>
-            )}
+                </li>
+              ))}
+            </ul>
           </div>
         )
       })}
