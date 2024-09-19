@@ -7,10 +7,7 @@ import FileList from '@/components/common/FileList/FileList'
 import Institution from '@/components/common/Institution_Deprecated/Institution_Deprecated'
 import NarrowText from '@/components/common/NarrowText/NarrowText'
 import Markdown from '@/components/formatting/Markdown/Markdown'
-import {
-  AccordionSectionFragment,
-  Enum_Componentsectionsfilelist_Variant,
-} from '@/services/graphql'
+import { AccordionSectionFragment } from '@/services/graphql'
 import { isDefined } from '@/utils/isDefined'
 import { groupByCategory, parsePageLink } from '@/utils/pageUtils_Deprecated'
 import { isPresent } from '@/utils/utils'
@@ -71,10 +68,7 @@ const AccordionSection = ({ section }: AccordionSectionProps) => {
                     <Markdown content={item.content} variant="accordion" />
                   </NarrowText>
                   {item.fileList?.length ? (
-                    <FileList
-                      fileSections={[{ files: item.fileList.filter(isDefined) }]}
-                      variantFileList={Enum_Componentsectionsfilelist_Variant.Rows}
-                    />
+                    <FileList fileSections={[{ files: item.fileList.filter(isDefined) }]} />
                   ) : null}
                   {link?.url && link.title && (
                     <Button href={link.url || '#'} variant="category-link">
