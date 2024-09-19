@@ -9,9 +9,13 @@ type FileListSectionProps = {
   section: FileListSectionFragment
 }
 
+// TODO remove grouping by category
 const FileListSection = ({ section }: FileListSectionProps) => {
   return (
     <FileList
+      title={section.title}
+      text={section.text}
+      hideCategory={!!section.title || !!section.text}
       variantFileList={section.variantFileList ?? Enum_Componentsectionsfilelist_Variant.Grid}
       fileSections={groupByCategoryFileList(section.fileList?.filter(isPresent) ?? [])}
     />
