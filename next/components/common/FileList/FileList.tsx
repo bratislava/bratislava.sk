@@ -11,6 +11,8 @@ export type TFileSection = {
 }
 
 export type FileListProps = {
+  title?: string | null | undefined
+  text?: string | null | undefined
   className?: string
   fileSections?: TFileSection[]
   hideCategory?: boolean
@@ -21,9 +23,24 @@ export type FileListProps = {
  * Figma: https://www.figma.com/file/17wbd0MDQcMW9NbXl6UPs8/DS-ESBS%2BBK%3A-Component-library?type=design&node-id=7940-21473&mode=dev
  */
 
-const FileList = ({ className, fileSections, hideCategory, variantFileList }: FileListProps) => {
+// TODO remove grouping by category
+const FileList = ({
+  className,
+  title,
+  text,
+  fileSections,
+  hideCategory,
+  variantFileList,
+}: FileListProps) => {
   return (
-    <div className={className}>
+    <div className={cn('', className)}>
+      {title || text ? (
+        <div className="flex flex-col gap-2">
+          {title ? <Typography type="h2">{title}</Typography> : null}
+          {text ? <Typography type="p">{text}</Typography> : null}
+        </div>
+      ) : null}
+
       {fileSections?.map((fileSection, index) => {
         return (
           // eslint-disable-next-line react/no-array-index-key
