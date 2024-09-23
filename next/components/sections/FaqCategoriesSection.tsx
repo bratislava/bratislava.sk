@@ -9,7 +9,7 @@ type Props = {
   section: FaqCategoriesSectionFragment
 }
 
-const FaqsSection = ({ section }: Props) => {
+const FaqCategoriesSection = ({ section }: Props) => {
   const { title, text, faqCategories } = section ?? {}
 
   const filteredFaqCategories = faqCategories?.data.filter(isDefined) ?? []
@@ -41,8 +41,4 @@ const FaqsSection = ({ section }: Props) => {
   )
 }
 
-const TestimonialsSection = ({ section }: Props) => {
-  return <FaqsSection section={section} />
-}
-
-export default TestimonialsSection
+export default FaqCategoriesSection

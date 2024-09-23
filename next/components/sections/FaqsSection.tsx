@@ -28,8 +28,4 @@ const FaqsSection = ({ section }: Props) => {
   )
 }
 
-const TestimonialsSection = ({ section }: Props) => {
-  return <FaqsSection section={section} />
-}
-
-export default TestimonialsSection
+export default FaqsSection
