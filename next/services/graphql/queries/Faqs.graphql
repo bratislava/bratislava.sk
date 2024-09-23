@@ -1,0 +1,20 @@
+fragment FaqCategoryEntity on FaqCategoryEntity {
+  id
+  attributes {
+    title
+    slug
+    faqs {
+      data {
+        ...FaqEntity
+      }
+    }
+  }
+}
+
+fragment FaqEntity on FaqEntity {
+  id
+  attributes {
+    title
+    body
+  }
+}

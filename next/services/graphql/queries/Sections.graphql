@@ -446,6 +446,26 @@ fragment RegulationsSection on ComponentSectionsRegulations {
   }
 }
 
+fragment FaqsSection on ComponentSectionsFaqs {
+  title
+  text
+  faqs {
+    data {
+      ...FaqEntity
+    }
+  }
+}
+
+fragment FaqCategoriesSection on ComponentSectionsFaqCategories {
+  title
+  text
+  faqCategories {
+    data {
+      ...FaqCategoryEntity
+    }
+  }
+}
+
 fragment Sections on PageSectionsDynamicZone {
   __typename
 
@@ -565,6 +585,14 @@ fragment Sections on PageSectionsDynamicZone {
 
   ... on ComponentSectionsTestimonials {
     ...TestimonialsSection
+  }
+
+  ... on ComponentSectionsFaqs {
+    ...FaqsSection
+  }
+
+  ... on ComponentSectionsFaqCategories {
+    ...FaqCategoriesSection
   }
 }
 
