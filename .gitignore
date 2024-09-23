@@ -72,7 +72,7 @@ typings/
 meilisearch
 
 # Postgres
-postgres-data
+postgresql
 
 # parcel-bundler cache (https://parceljs.org/)
 .cache
