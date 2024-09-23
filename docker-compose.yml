@@ -11,6 +11,8 @@ services:
       - '5432'
     ports:
       - '127.0.0.1:5432:5432'
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data
   meilisearch:
     image: getmeili/meilisearch:v0.30.5
     environment:
@@ -28,6 +30,3 @@ services:
     volumes:
       - ./meilisearch/data.ms:/data.ms
     restart: unless-stopped
-
-volumes:
-  postgres:
