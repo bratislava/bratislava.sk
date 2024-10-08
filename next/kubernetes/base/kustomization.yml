@@ -10,6 +10,7 @@ resources:
   - klima.ingress.yml
   - camping.ingress.yml
   - horskypark.ingress.yml
+  - kariera.ingress.yml
 configurations:
   - configuration.yml
 
