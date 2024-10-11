@@ -2,7 +2,6 @@ import * as NavigationMenu from '@radix-ui/react-navigation-menu'
 import React, { CSSProperties } from 'react'
 
 import { ChevronLeftIcon } from '@/assets/ui-icons'
-import Button from '@/components/common/Button/Button'
 import { useTranslation } from '@/utils/useTranslation'
 
 import NavBarHorizontalDivider from './NavBarHorizontalDivider'
@@ -32,14 +31,16 @@ const MobileNavMenuContent = ({ menuItem, colorStyle }: NavMenuContentProps) => 
       {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */}
       <ul className="flex w-full flex-col gap-2 px-4 py-8">
         <li className="w-full">
-          <Button
-            onPress={() => setMenuValue('')}
-            className="-my-2 flex w-full items-center gap-2 py-2"
+          {/* Our Button (implemented by react-aria-components) is not compatible with radix and causes press events problem on mobile */}
+          <button
+            type="button"
+            onClick={() => setMenuValue('')}
+            className="-my-2 -ml-4 flex w-full gap-2 px-4 py-2"
             aria-label={t('NavMenu.aria.backTo', { backTo: parentLabel })}
-            startIcon={<ChevronLeftIcon />}
           >
+            <ChevronLeftIcon aria-hidden />
             {parentLabel}
-          </Button>
+          </button>
         </li>
 
         <NavBarHorizontalDivider categoryColor />
