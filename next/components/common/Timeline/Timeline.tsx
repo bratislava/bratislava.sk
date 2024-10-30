@@ -1,10 +1,8 @@
-import Image from 'next/image'
+import { Typography } from '@bratislava/component-library'
 import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component'
-import cn from 'utils/cn'
 
 import Markdown from '@/components/formatting/Markdown/Markdown'
 import { TimelineItemBlockFragment } from '@/services/graphql'
-import { generateImageSizes } from '@/utils/generateImageSizes'
 
 type TimelineProps = {
   timelineItems: TimelineItemBlockFragment[]
@@ -16,25 +14,13 @@ const Timeline = ({ timelineItems }: TimelineProps) => {
       {timelineItems.map((timelineItem, index) => (
         <VerticalTimelineElement
           key={timelineItem.id}
-          className={cn({
-            'vertical-timeline-element--with-image': index === 1 || index === 2,
-          })}
           textClassName="shadow-md"
           iconClassName="bg-category-600 flex flex-col justify-center items-center text-white text-h4 font-bold shadow-none"
           icon={<>{index + 1}</>}
         >
-          {(index === 1 || index === 2) && (
-            <Image
-              className="mx-auto -mt-72 w-52"
-              src={index === 1 ? '/email-mock-phone.png' : '/payment-detail.png'}
-              alt=""
-              sizes={generateImageSizes({ default: '100vw', lg: '50vw' })}
-              width={0}
-              height={0}
-            />
-          )}
-          {/* FIXME Typography. Convert to use Typography. Issue: Probably safe to convert but cant find page where is this used for testing */}
-          <h3 className="text-h4">{timelineItem.title}</h3>
+          <Typography type="h3" size="h4">
+            {timelineItem.title}
+          </Typography>
           <Markdown content={timelineItem.content} />
         </VerticalTimelineElement>
       ))}
