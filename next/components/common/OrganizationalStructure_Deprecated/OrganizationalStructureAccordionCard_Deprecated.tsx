@@ -38,24 +38,22 @@ const OrganizationalStructureAccordionCard = ({
         </Typography>
         <div className="flex justify-between">
           <div className="flex flex-col">
-            {mailUserName && mailOrganization ? (
+            {mail && mailUserName && mailOrganization ? (
               <>
                 <div className="flex gap-x-4">
                   <Mail className="max-md:hidden" />
                   <div className="text-small lg:text-default font-semibold">
                     <div className="flex lg:hidden" data-cy="structure-accordion-card-email-mobile">
-                      {mailUserName + mailOrganization}
+                      {mail}
                     </div>
                     <div className="hidden lg:flex" data-cy="structure-accordion-card-email">
-                      {mailUserName && mailUserName.length > mailBreakpoint
-                        ? mailUserName
-                        : mailUserName + mailOrganization}
+                      {mailUserName && mailUserName.length > mailBreakpoint ? mailUserName : mail}
                     </div>
                   </div>
                 </div>
                 {mailUserName?.length > mailBreakpoint && (
                   <div className="text-small lg:text-default hidden font-semibold lg:flex lg:pl-12">
-                    {mailOrganization}
+                    @{mailOrganization}
                   </div>
                 )}
               </>
