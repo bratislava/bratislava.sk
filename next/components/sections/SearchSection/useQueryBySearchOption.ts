@@ -200,7 +200,7 @@ export const useQueryBySearchOption = ({
 
           return {
             title: user.displayName,
-            metadata: [user.jobTitle, mail, user.businessPhones?.join(', ')],
+            metadata: [user.jobTitle, mail],
             customIconName: 'search_result_contacts',
           }
         }) ?? []

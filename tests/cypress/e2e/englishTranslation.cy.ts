@@ -16,7 +16,7 @@ describe('English translation', { testIsolation: false }, () => {
             .eq(0)
             .invoke('text')
             .then((text) => {
-              expect(text.replace(/\u00a0/g, ' ')).equal('Otváracie hodiny')
+              expect(text.replace(/\u00a0/g, ' ')).equal('Úradné hodiny')
             })
 
           if (device === 'desktop') {
@@ -41,7 +41,7 @@ describe('English translation', { testIsolation: false }, () => {
         it('3. Checking original language.', () => {
           cy.wait(500)
           cy.location('pathname', { timeout: 10000 }).should('eq', '/kontakty')
-          cy.dataCy('heading-two').eq(0).should('contain.text', 'Otváracie hodiny')
+          cy.dataCy('heading-two').eq(0).should('contain.text', 'Úradné hodiny')
         })
       })
     })

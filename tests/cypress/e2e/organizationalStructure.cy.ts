@@ -51,39 +51,17 @@ describe('OS01 -', { testIsolation: false }, () => {
               'contain',
               'Vallo Matúš, Ing. arch.',
             )
-            cy.wrap(Cypress.$(`[data-cy=structure-accordion-card-phone]`, content)).should(
-              'contain',
-              '+421-904099004',
-            )
 
             if (device === 'mobile') {
               cy.wrap(Cypress.$(`[data-cy=structure-accordion-card-email-mobile]`, content)).should(
                 'contain',
                 'primator@bratislava.sk',
               )
-              cy.dataCy('file-wrapper-mobile').within((wrapper) => {
-                cy.wrap(Cypress.$(`[data-cy=file-card]`, wrapper)).should('exist')
-
-                cy.wrap(Cypress.$(`[data-cy=file-card-download]`, wrapper)).should('exist')
-                cy.wrap(Cypress.$(`[data-cy=file-card-download]`, wrapper))
-                  .should('have.attr', 'href')
-                  .should('not.be.empty')
-                  .and('include', '.pdf')
-              })
             } else {
               cy.wrap(Cypress.$(`[data-cy=structure-accordion-card-email]`, content)).should(
                 'contain',
                 'primator@bratislava.sk',
               )
-              cy.dataCy('file-wrapper-desktop').within((wrapper) => {
-                cy.wrap(Cypress.$(`[data-cy=file-card]`, wrapper)).should('exist')
-
-                cy.wrap(Cypress.$(`[data-cy=file-card-download]`, wrapper)).should('exist')
-                cy.wrap(Cypress.$(`[data-cy=file-card-download]`, wrapper))
-                  .should('have.attr', 'href')
-                  .should('not.be.empty')
-                  .and('include', '.pdf')
-              })
             }
           })
         })

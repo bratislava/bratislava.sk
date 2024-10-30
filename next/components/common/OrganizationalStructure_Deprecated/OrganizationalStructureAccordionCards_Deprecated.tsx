@@ -13,18 +13,19 @@ const OrganizationalStructureAccordionCards = ({
 }: OrganizationalStructureAccordionCardsProps) => {
   const cards = useMemo(
     () =>
-      users.map((user) => (
-        <OrganizationalStructureAccordionCard
-          className="h-full"
-          key={user.id}
-          displayName={user.displayName ?? ''}
-          jobTitle={user.jobTitle ?? ''}
-          businessPhones={user.businessPhones}
-          // mobilePhone omitted on request - add to api response as well if needed
-          mail={user.mail ?? ''}
-          otherMails={user.otherMails}
-        />
-      )),
+      users.map((user) => {
+        const mail = user.otherMails?.length ? user.otherMails[0] : user.mail
+
+        return (
+          <OrganizationalStructureAccordionCard
+            className="h-full"
+            key={user.id}
+            displayName={user.displayName ?? ''}
+            jobTitle={user.jobTitle}
+            mail={mail}
+          />
+        )
+      }),
     [users],
   )
   return (
