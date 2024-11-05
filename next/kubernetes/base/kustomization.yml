@@ -11,6 +11,7 @@ resources:
   - camping.ingress.yml
   - horskypark.ingress.yml
   - kariera.ingress.yml
+  - klimatickavyzva.ingress.yml
 configurations:
   - configuration.yml
 
