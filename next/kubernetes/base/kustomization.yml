@@ -12,7 +12,6 @@ resources:
   - redirects/horskypark.ingress.yml
   - redirects/kariera.ingress.yml
   - redirects/klimatickavyzva.ingress.yml
-  - redirects/primacialnypalac.ingress.yml
 configurations:
   - configuration.yml
 

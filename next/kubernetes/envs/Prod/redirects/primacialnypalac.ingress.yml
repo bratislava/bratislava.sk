@@ -15,6 +15,8 @@ spec:
     - hosts:
         - primacialnypalac.${DEPLOYMENT_ENV}bratislava.sk
         - www.primacialnypalac.${DEPLOYMENT_ENV}bratislava.sk
+        - primacialnypalac.sk
+        - www.primacialnypalac.sk
       secretName: primacialnypalac-${BUILD_REPOSITORY_NAME}-tls
   rules:
     - host: primacialnypalac.${DEPLOYMENT_ENV}bratislava.sk
@@ -28,6 +30,26 @@ spec:
                 port:
                   number: 80
     - host: www.primacialnypalac.${DEPLOYMENT_ENV}bratislava.sk
+      http:
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: ${BUILD_REPOSITORY_NAME}-app
+                port:
+                  number: 80
+    - host: primacialnypalac.sk
+      http:
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: ${BUILD_REPOSITORY_NAME}-app
+                port:
+                  number: 80
+    - host: www.primacialnypalac.sk
       http:
         paths:
           - path: /
