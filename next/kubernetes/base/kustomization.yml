@@ -2,16 +2,17 @@ resources:
   - deployment.yml
   - service-app.yml
   - ingress.yml
-  - ukrajina.ingress.yml
-  - platbadane.ingress.yml
-  - izba.ingress.yml
-  - nocnapomoc.ingress.yml
-  - old_aliases.ingress.yml
-  - klima.ingress.yml
-  - camping.ingress.yml
-  - horskypark.ingress.yml
-  - kariera.ingress.yml
-  - klimatickavyzva.ingress.yml
+  - redirects/ukrajina.ingress.yml
+  - redirects/platbadane.ingress.yml
+  - redirects/izba.ingress.yml
+  - redirects/nocnapomoc.ingress.yml
+  - redirects/old_aliases.ingress.yml
+  - redirects/klima.ingress.yml
+  - redirects/camping.ingress.yml
+  - redirects/horskypark.ingress.yml
+  - redirects/kariera.ingress.yml
+  - redirects/klimatickavyzva.ingress.yml
+  - redirects/primacialnypalac.ingress.yml
 configurations:
   - configuration.yml
 
