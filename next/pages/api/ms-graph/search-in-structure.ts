@@ -7,9 +7,10 @@ import { MSGraphFilteredGroupUser } from '@/services/ms-graph/types'
 // TODO error types
 
 const handler = async (req: NextApiRequest, res: NextApiResponse<MSGraphFilteredGroupUser[]>) => {
-  const { query: queryParam } = req.query
+  const { query: queryParam, pageSize: pageSizeParam } = req.query
 
   const query = typeof queryParam === 'string' ? queryParam : queryParam?.[0]
+  const pageSize = typeof pageSizeParam === 'string' ? parseInt(pageSizeParam, 10) : undefined
 
   if (!query) {
     res.status(200).json([])
@@ -19,7 +20,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<MSGraphFiltered
   try {
     const { accessToken } = (await getMsalToken()) ?? {}
 
-    const users = await searchInOrgStructure(query, accessToken ?? '')
+    const users = await searchInOrgStructure(accessToken ?? '', query, pageSize)
 
     res.status(200).json(users)
   } catch (error) {
