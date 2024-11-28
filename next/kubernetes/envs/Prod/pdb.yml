@@ -2,6 +2,7 @@ apiVersion: policy/v1
 kind: PodDisruptionBudget
 metadata:
   name: ${BUILD_REPOSITORY_NAME}-pdb
+  namespace: ${NAMESPACE}
 spec:
   minAvailable: 1
   selector:
