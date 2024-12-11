@@ -17,7 +17,7 @@ const TabPanelRoadClosures = () => {
     <TabPanel id="RoadClosures">
       <div className="mt-8 pb-8 lg:mt-14">
         <Iframe
-          url={`https://cdn-api.bratislava.sk/static-pages/closures-and-restrictions-map/index.html?lang=${locale}`}
+          url={`https://static-pages.s3.bratislava.sk/closures-and-restrictions-map/index.html?lang=${locale}`}
           iframeWidth="container"
           iframeHeight="620"
           fullHeight={false}
