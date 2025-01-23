@@ -403,6 +403,13 @@ const nextConfig = {
         permanent: true,
       },
       {
+        source:
+          '/socialne-sluzby-a-byvanie/aktivity-mesta-v-socialnej-oblasti/mapa-pomoci-ludom-bez-domova',
+        destination:
+          '/socialne-sluzby-a-byvanie/aktivity-mesta-v-socialnej-oblasti/mapa-sluzieb-pre-ludi-v-nudzi',
+        permanent: true,
+      },
+      {
         source: '/zavedenie-zberu-kuchynskeho-biologicky-rozlozitelneho-odpadu',
         destination:
           '/zivotne-prostredie-a-vystavba/zivotne-prostredie/odpady/triedeny-zber/zber-kuchynskeho-bioodpadu',
