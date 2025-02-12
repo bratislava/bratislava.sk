@@ -12,7 +12,7 @@ services:
     ports:
       - '127.0.0.1:5432:5432'
     volumes:
-      - ./postgresql:/var/lib/postgresql
+      - ./postgres:/var/lib/postgresql/data
   meilisearch:
     image: getmeili/meilisearch:v0.30.5
     environment:
