@@ -1,0 +1,13 @@
+diff --git a/node_modules/@strapi/admin/admin/src/content-manager/components/DynamicZone/components/DynamicComponent.js b/node_modules/@strapi/admin/admin/src/content-manager/components/DynamicZone/components/DynamicComponent.js
+index 21e81e9..0aa503b 100644
+--- a/node_modules/@strapi/admin/admin/src/content-manager/components/DynamicZone/components/DynamicComponent.js
++++ b/node_modules/@strapi/admin/admin/src/content-manager/components/DynamicZone/components/DynamicComponent.js
+@@ -84,7 +84,7 @@ const DynamicZoneComponent = ({
+   onDropItem,
+   onCancel,
+ }) => {
+-  const [isOpen, setIsOpen] = useState(true);
++  const [isOpen, setIsOpen] = useState(false);
+   const { formatMessage } = useIntl();
+   const { getComponentLayout } = useContentTypeLayout();
+   const { modifiedData } = useCMEditViewDataManager();
