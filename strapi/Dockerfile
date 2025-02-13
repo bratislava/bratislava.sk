@@ -1,4 +1,4 @@
-FROM node:18.17-alpine AS base
+FROM node:18.18.0-alpine AS base
 
 FROM base AS build-base
 RUN apk update \
@@ -8,7 +8,12 @@ RUN apk update \
                        automake \
                        zlib-dev \
                        libpng-dev \
-                       vips-dev
+                       vips-dev \
+                       python3 \
+                       make \
+                       g++ \
+ && npm install -g node-gyp
+
 WORKDIR /build
 COPY ./package.json ./yarn.lock ./
 # Uncomment if you need any to apply any patches
