@@ -4,6 +4,7 @@ import React, { Fragment } from 'react'
 import FileRowCard from '@/components/cards/FileRowCard'
 import RegulationCard from '@/components/cards/RegulationCard/RegulationCard'
 import RegulationDetailMessage from '@/components/cards/RegulationCard/RegulationDetailMessage'
+import HorizontalDivider from '@/components/common/Divider/HorizontalDivider'
 import MLink from '@/components/common/MLink/MLink'
 import PageHeader from '@/components/common/PageHeader/PageHeader'
 import SectionContainer from '@/components/common/SectionContainer/SectionContainer'
@@ -81,7 +82,6 @@ const RegulationPageContent = ({ regulation }: RegulationPageContentProps) => {
                     size={formatFileSize(mainDocument.data.attributes.size, locale)}
                     format={formatFileExtension(mainDocument.data.attributes.ext) ?? undefined}
                     downloadLink={mainDocument.data.attributes.url}
-                    hideBottomDivider
                   />
                 ) : (
                   <Typography type="p">{t('Regulation.noAttachmentsMessage')}</Typography>
@@ -96,20 +96,23 @@ const RegulationPageContent = ({ regulation }: RegulationPageContentProps) => {
 
               {/* TODO refactor to use standard component */}
               {attachmentFiles?.length ? (
-                <div>
+                <div className="rounded-lg border-2 py-2">
                   {attachmentFiles
-                    .map(({ media: attachementMedia, title: attachmentTitle }) => {
+                    .map(({ media: attachementMedia, title: attachmentTitle }, index) => {
                       if (!attachementMedia.data.attributes) return null
                       return (
-                        <FileRowCard
-                          key={attachementMedia.data.id}
-                          title={attachmentTitle ?? attachementMedia.data.attributes.name}
-                          size={formatFileSize(attachementMedia.data.attributes.size, locale)}
-                          format={
-                            formatFileExtension(attachementMedia.data.attributes.ext) ?? undefined
-                          }
-                          downloadLink={attachementMedia.data.attributes.url}
-                        />
+                        <>
+                          {index > 0 ? <HorizontalDivider className="mx-4 lg:mx-6" /> : null}
+                          <FileRowCard
+                            key={attachementMedia.data.id}
+                            title={attachmentTitle ?? attachementMedia.data.attributes.name}
+                            size={formatFileSize(attachementMedia.data.attributes.size, locale)}
+                            format={
+                              formatFileExtension(attachementMedia.data.attributes.ext) ?? undefined
+                            }
+                            downloadLink={attachementMedia.data.attributes.url}
+                          />
+                        </>
                       )
                     })
                     .filter(isDefined)}

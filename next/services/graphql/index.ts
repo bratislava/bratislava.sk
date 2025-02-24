@@ -4543,12 +4543,9 @@ export type BlogPostBySlugQuery = {
               __typename: 'ComponentSectionsFileList'
               title?: string | null
               text?: string | null
-              hasBackground?: boolean | null
-              variantFileList?: Enum_Componentsectionsfilelist_Variant | null
               fileList?: Array<{
                 __typename?: 'ComponentBlocksFile'
                 title?: string | null
-                category?: string | null
                 media?: {
                   __typename?: 'UploadFileEntityResponse'
                   data?: {
@@ -4915,12 +4912,9 @@ export type LatestPostsByTagsQuery = {
               __typename: 'ComponentSectionsFileList'
               title?: string | null
               text?: string | null
-              hasBackground?: boolean | null
-              variantFileList?: Enum_Componentsectionsfilelist_Variant | null
               fileList?: Array<{
                 __typename?: 'ComponentBlocksFile'
                 title?: string | null
-                category?: string | null
                 media?: {
                   __typename?: 'UploadFileEntityResponse'
                   data?: {
@@ -5488,12 +5482,9 @@ export type BlogPostEntityFragment = {
           __typename: 'ComponentSectionsFileList'
           title?: string | null
           text?: string | null
-          hasBackground?: boolean | null
-          variantFileList?: Enum_Componentsectionsfilelist_Variant | null
           fileList?: Array<{
             __typename?: 'ComponentBlocksFile'
             title?: string | null
-            category?: string | null
             media?: {
               __typename?: 'UploadFileEntityResponse'
               data?: {
@@ -8855,12 +8846,9 @@ export type PageBySlugQuery = {
               __typename: 'ComponentSectionsFileList'
               title?: string | null
               text?: string | null
-              hasBackground?: boolean | null
-              variantFileList?: Enum_Componentsectionsfilelist_Variant | null
               fileList?: Array<{
                 __typename?: 'ComponentBlocksFile'
                 title?: string | null
-                category?: string | null
                 media?: {
                   __typename?: 'UploadFileEntityResponse'
                   data?: {
@@ -9957,12 +9945,9 @@ export type PageEntityFragment = {
           __typename: 'ComponentSectionsFileList'
           title?: string | null
           text?: string | null
-          hasBackground?: boolean | null
-          variantFileList?: Enum_Componentsectionsfilelist_Variant | null
           fileList?: Array<{
             __typename?: 'ComponentBlocksFile'
             title?: string | null
-            category?: string | null
             media?: {
               __typename?: 'UploadFileEntityResponse'
               data?: {
@@ -11681,7 +11666,6 @@ export type IframeSectionFragment = {
 export type FileBlockFragment = {
   __typename?: 'ComponentBlocksFile'
   title?: string | null
-  category?: string | null
   media?: {
     __typename?: 'UploadFileEntityResponse'
     data?: {
@@ -11704,12 +11688,9 @@ export type FileListSectionFragment = {
   __typename?: 'ComponentSectionsFileList'
   title?: string | null
   text?: string | null
-  hasBackground?: boolean | null
-  variantFileList?: Enum_Componentsectionsfilelist_Variant | null
   fileList?: Array<{
     __typename?: 'ComponentBlocksFile'
     title?: string | null
-    category?: string | null
     media?: {
       __typename?: 'UploadFileEntityResponse'
       data?: {
@@ -12937,12 +12918,9 @@ type Sections_ComponentSectionsFileList_Fragment = {
   __typename: 'ComponentSectionsFileList'
   title?: string | null
   text?: string | null
-  hasBackground?: boolean | null
-  variantFileList?: Enum_Componentsectionsfilelist_Variant | null
   fileList?: Array<{
     __typename?: 'ComponentBlocksFile'
     title?: string | null
-    category?: string | null
     media?: {
       __typename?: 'UploadFileEntityResponse'
       data?: {
@@ -13706,7 +13684,6 @@ export const UploadFileEntityFragmentDoc = gql`
 export const FileBlockFragmentDoc = gql`
   fragment FileBlock on ComponentBlocksFile {
     title
-    category
     media {
       data {
         ...UploadFileEntity
@@ -13719,8 +13696,6 @@ export const FileListSectionFragmentDoc = gql`
   fragment FileListSection on ComponentSectionsFileList {
     title
     text
-    hasBackground
-    variantFileList: variant
     fileList(pagination: { limit: -1 }) {
       ...FileBlock
     }

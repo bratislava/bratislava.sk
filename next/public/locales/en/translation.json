@@ -21,7 +21,6 @@
   "CopyToClipboardButton.copyToClipboard": "Copy to clipboard",
   "Dialog.aria.close": "Close dialog",
   "EventCard.from": "from",
-  "FileCard.download": "Download",
   "FileList.aria.downloadFile": "Download file",
   "FileList.aria.downloadFileAriaLabel": "Download file {{title}}, format {{format}}, {{size}}",
   "Footer.copyright": "© {{year}} Hlavné mesto SR Bratislava",

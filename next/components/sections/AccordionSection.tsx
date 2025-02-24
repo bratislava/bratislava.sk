@@ -68,7 +68,7 @@ const AccordionSection = ({ section }: AccordionSectionProps) => {
                     <Markdown content={item.content} variant="accordion" />
                   </NarrowText>
                   {item.fileList?.length ? (
-                    <FileList fileSections={[{ files: item.fileList.filter(isDefined) }]} />
+                    <FileList files={item.fileList.filter(isDefined) ?? []} />
                   ) : null}
                   {link?.url && link.title && (
                     <Button href={link.url || '#'} variant="category-link">

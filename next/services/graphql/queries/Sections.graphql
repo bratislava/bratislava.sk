@@ -152,7 +152,6 @@ fragment IframeSection on ComponentSectionsIframe {
 
 fragment FileBlock on ComponentBlocksFile {
   title
-  category
   media {
     data {
       ...UploadFileEntity
@@ -161,11 +160,8 @@ fragment FileBlock on ComponentBlocksFile {
 }
 
 fragment FileListSection on ComponentSectionsFileList {
-  title # TODO not used yet
-  text # TODO not used yet
-  # files # TODO not used yet
-  hasBackground
-  variantFileList: variant
+  title
+  text
   fileList(pagination: { limit: -1 }) {
     ...FileBlock
   }
