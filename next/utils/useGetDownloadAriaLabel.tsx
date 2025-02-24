@@ -1,4 +1,4 @@
-import { FileItemBlockFragment } from '@/services/graphql'
+import { FileBlockFragment, FileItemBlockFragment } from '@/services/graphql'
 import { formatFileExtension } from '@/utils/formatFileExtension'
 import { formatFileSize } from '@/utils/formatFileSize'
 import { useLocale } from '@/utils/useLocale'
@@ -8,14 +8,14 @@ export const useGetDownloadAriaLabel = () => {
   const { t } = useTranslation()
   const locale = useLocale()
 
-  const getDownloadAriaLabel = (file: FileItemBlockFragment): string => {
+  const getDownloadAriaLabel = (file: FileItemBlockFragment | FileBlockFragment): string => {
     if (!file) return `${t('FileList.aria.downloadFile')}`
 
-    const formattedFileFormat = formatFileExtension(file.media.data?.attributes?.ext)
-    const formattedFileSize = formatFileSize(file.media.data?.attributes?.size, locale)
+    const formattedFileFormat = formatFileExtension(file.media?.data?.attributes?.ext)
+    const formattedFileSize = formatFileSize(file.media?.data?.attributes?.size, locale)
 
     return `${t('FileList.aria.downloadFileAriaLabel', {
-      title: file.title ?? file.media.data?.attributes?.name,
+      title: file.title ?? file.media?.data?.attributes?.name,
       format: formattedFileFormat,
       size: formattedFileSize,
     })}`

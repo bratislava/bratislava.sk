@@ -7,8 +7,6 @@ import MLink from '@/components/common/MLink/MLink'
 import { isDefined } from '@/utils/isDefined'
 import { useTranslation } from '@/utils/useTranslation'
 
-import HorizontalDivider from '../common/Divider/HorizontalDivider'
-
 /**
  * Figma: https://www.figma.com/file/17wbd0MDQcMW9NbXl6UPs8/DS-ESBS%2BBK%3A-Component-library?node-id=867%3A2067&mode=dev
  */
@@ -21,7 +19,6 @@ const FileRowCard = ({
   size,
   className,
   ariaLabel,
-  hideBottomDivider,
 }: FileCardProps) => {
   const { t } = useTranslation()
 
@@ -65,12 +62,6 @@ const FileRowCard = ({
           </div>
         </div>
       </div>
-      {/* TODO consider using conditional styling instead of the HorizontalDivider component */}
-      {hideBottomDivider ? null : (
-        <div className="px-4 md:px-6">
-          <HorizontalDivider />
-        </div>
-      )}
     </div>
   )
 }

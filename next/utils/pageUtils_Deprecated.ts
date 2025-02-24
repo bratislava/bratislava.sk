@@ -2,12 +2,7 @@ import groupBy from 'lodash/groupBy'
 import sortBy from 'lodash/sortBy'
 
 import { Breadcrumb } from '@/components/common/Breadcrumbs/Breadcrumbs'
-import {
-  FileBlockFragment,
-  FileItemBlockFragment,
-  PageLinkBlockFragment,
-  PageParentPagesFragment,
-} from '@/services/graphql'
+import { PageLinkBlockFragment, PageParentPagesFragment } from '@/services/graphql'
 
 // TODO this should be thrown away
 
@@ -47,29 +42,6 @@ export const parsePageLink = (
     url: pageLink.url ?? pagePath(param) ?? pageLink.page?.data?.attributes?.slug ?? '#',
     anchor: pageLink.anchor ?? '',
   }
-}
-
-// Page FileList
-export const formatOldFiles = (files: FileBlockFragment[]): FileItemBlockFragment[] =>
-  files.map((file) => ({
-    __typename: 'ComponentBlocksFileItem',
-    title: file.title,
-    media: {
-      ...file.media,
-    },
-  }))
-
-export const groupByCategoryFileList = (fileList: FileBlockFragment[]) => {
-  const files = fileList.map((file) => ({
-    category: file.category ?? '',
-    media: file.media,
-    title: file.title,
-  }))
-  const grouped = groupBy(files, 'category')
-  return Object.keys(grouped).map((key) => ({
-    category: key === 'null' ? '' : key,
-    files: formatOldFiles(grouped[key]),
-  }))
 }
 
 // Page Accordion Items
