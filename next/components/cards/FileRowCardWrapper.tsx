@@ -1,7 +1,6 @@
 import React from 'react'
 
-import { FileCardProps } from '@/components/cards/FileCard'
-import FileRowCard from '@/components/cards/FileRowCard'
+import FileRowCard, { FileRowCardProps } from '@/components/cards/FileRowCard'
 import { FileBlockFragment, FileItemBlockFragment } from '@/services/graphql'
 import { formatDate } from '@/utils/formatDate'
 import { formatFileExtension } from '@/utils/formatFileExtension'
@@ -14,9 +13,12 @@ export type FileCardWrapperProps = {
 }
 
 /**
- * Figma: https://www.figma.com/file/17wbd0MDQcMW9NbXl6UPs8/DS-ESBS%2BBK%3A-Component-library?type=design&node-id=7367-17767&t=Km8W7qXXiWIDWSYw-0
+ * Wrapper component that transforms the fragment into the props for the FileRowCard component.
+ * TODO revisit if it's needed
+ *
+ * Figma: https://www.figma.com/file/17wbd0MDQcMW9NbXl6UPs8/DS-ESBS%2BBK%3A-Component-library?node-id=867%3A2067&mode=dev
  */
-const FileCardWrapper = ({ fileItem }: FileCardWrapperProps) => {
+const FileRowCardWrapper = ({ fileItem }: FileCardWrapperProps) => {
   const locale = useLocale()
   const { getDownloadAriaLabel } = useGetDownloadAriaLabel()
 
@@ -26,7 +28,7 @@ const FileCardWrapper = ({ fileItem }: FileCardWrapperProps) => {
 
   const transformFileProps = (
     fileItemInner: FileItemBlockFragment | FileBlockFragment,
-  ): FileCardProps => {
+  ): FileRowCardProps => {
     const { url, ext, size, createdAt, name } = fileItemInner.media?.data?.attributes ?? {}
 
     return {
@@ -44,4 +46,4 @@ const FileCardWrapper = ({ fileItem }: FileCardWrapperProps) => {
   return <FileRowCard {...transformedProps} />
 }
 
-export default FileCardWrapper
+export default FileRowCardWrapper

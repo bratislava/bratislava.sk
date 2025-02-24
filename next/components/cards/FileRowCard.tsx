@@ -2,10 +2,19 @@ import React from 'react'
 import cn from 'utils/cn'
 
 import { AttachmentIcon, DownloadIcon } from '@/assets/ui-icons'
-import { FileCardProps } from '@/components/cards/FileCard'
 import MLink from '@/components/common/MLink/MLink'
 import { isDefined } from '@/utils/isDefined'
 import { useTranslation } from '@/utils/useTranslation'
+
+export type FileRowCardProps = {
+  title: string
+  uploadDate?: string
+  downloadLink?: string
+  format?: string
+  size?: string
+  className?: string
+  ariaLabel?: string
+}
 
 /**
  * Figma: https://www.figma.com/file/17wbd0MDQcMW9NbXl6UPs8/DS-ESBS%2BBK%3A-Component-library?node-id=867%3A2067&mode=dev
@@ -19,7 +28,7 @@ const FileRowCard = ({
   size,
   className,
   ariaLabel,
-}: FileCardProps) => {
+}: FileRowCardProps) => {
   const { t } = useTranslation()
 
   return (
@@ -49,7 +58,7 @@ const FileRowCard = ({
             </MLink>
             {(uploadDate || format || size) && (
               <span className="text-small text-grey-700 md:line-clamp-1">
-                {/* TODO words should be separated by a dot with 12px gap, this is a simplified solution. Same in FileCard component. */}
+                {/* TODO words should be separated by a dot with 12px gap, this is a simplified solution. */}
                 {[uploadDate, format, size].filter(isDefined).join(' • ')}
               </span>
             )}
