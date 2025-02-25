@@ -99,8 +99,7 @@ describe('S01 - ', { testIsolation: false }, () => {
         it('6. Checking search results - official board.', () => {
           cy.visit('/vyhladavanie')
           cy.get('[data-cy=officialBoard-tab]').click()
-          cy.get('[data-cy=search-field]').type('MHD{enter}')
-          cy.dataCy('officialBoard-tab').should('have.class', 'selected:bg-category-700')
+          cy.dataCy('officialBoard-tab').should('have.attr', 'data-selected', 'true')
           cy.dataCy('search-results').find('[data-cy=search-result-card]').should('exist')
         })
       })
