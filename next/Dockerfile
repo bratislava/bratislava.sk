@@ -1,4 +1,4 @@
-FROM node:18.17-alpine AS base
+FROM node:20.9-alpine AS base
 
 FROM base AS build-base
 WORKDIR /build
@@ -8,19 +8,19 @@ FROM build-base AS install-prod
 ENV YARN_CACHE_FOLDER=/build/.cache/yarn
 RUN --mount=type=cache,target=/build/.cache/yarn \
     yarn config set network-timeout 600000 -g \
- && yarn install --production --frozen-lockfile
+    && yarn install --production --frozen-lockfile
 
 FROM install-prod AS build
 COPY . ./
 ENV NEXT_TELEMETRY_DISABLED=1
 RUN --mount=type=cache,target=/build/.cache/yarn \
     yarn install --development --frozen-lockfile \
- && yarn build
+    && yarn build
 
 FROM base AS app-base
 RUN apk add --no-cache tini
 RUN mkdir -p /home/node/app \
- && chown node:node /home/node/app
+    && chown node:node /home/node/app
 USER node
 WORKDIR /home/node/app
 ENV NEXT_TELEMETRY_DISABLED=1
@@ -29,8 +29,8 @@ EXPOSE 3000
 ARG GIT_COMMIT="undefined"
 ENV GIT_COMMIT=$GIT_COMMIT
 LABEL org.opencontainers.image.revision="${GIT_COMMIT}" \
-      org.opencontainers.image.source="https://github.com/bratislava/bratislava.sk" \
-      org.opencontainers.image.licenses="EUPL-1.2"
+    org.opencontainers.image.source="https://github.com/bratislava/bratislava.sk" \
+    org.opencontainers.image.licenses="EUPL-1.2"
 ENTRYPOINT [ "/sbin/tini", "--" ]
 
 FROM app-base AS dev
