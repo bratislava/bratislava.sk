@@ -2,7 +2,7 @@ name: Cypress test
 
 on:
   workflow_run:
-    workflows: ["Strapi/Next deploy pipeline"]
+    workflows: ['Strapi/Next deploy pipeline']
     types:
       - completed
 
@@ -14,21 +14,21 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      
+
       - name: Use Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18.x'
+          node-version: '20.x'
 
       - name: Run Cypress tests
         uses: cypress-io/github-action@v5
         with:
           working-directory: tests
           command: yarn cypress:run
-      
+
       - name: Screenshots of errors during E2E tests
         uses: actions/upload-artifact@v3
-        if: always() 
+        if: always()
         with:
           name: cypress-screenshots
           path: tests/cypress/screenshots
