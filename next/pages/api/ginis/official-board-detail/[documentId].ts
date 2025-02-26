@@ -15,8 +15,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse): Promise<void>
   }
 
   try {
-    const result = await getOfficialBoardParsedDocument(documentId)
-    return res.json(result ?? null)
+    return res.json(await getOfficialBoardParsedDocument(documentId))
   } catch (error) {
     // TODO handle error
     console.log(error)
