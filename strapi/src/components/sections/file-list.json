@@ -12,26 +12,10 @@
     "text": {
       "type": "text"
     },
-    "variant": {
-      "type": "enumeration",
-      "enum": [
-        "grid",
-        "rows"
-      ],
-      "default": "grid"
-    },
     "fileList": {
       "type": "component",
       "repeatable": true,
       "component": "blocks.file"
-    },
-    "hasBackground": {
-      "type": "boolean"
-    },
-    "files": {
-      "type": "component",
-      "repeatable": true,
-      "component": "blocks.file-item"
     }
   }
 }

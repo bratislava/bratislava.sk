@@ -408,7 +408,6 @@ export type ComponentBlocksDocListExtensionsInput = {
 
 export type ComponentBlocksFile = {
   __typename?: 'ComponentBlocksFile'
-  category?: Maybe<Scalars['String']['output']>
   id: Scalars['ID']['output']
   media?: Maybe<UploadFileEntityResponse>
   title?: Maybe<Scalars['String']['output']>
@@ -416,7 +415,6 @@ export type ComponentBlocksFile = {
 
 export type ComponentBlocksFileFiltersInput = {
   and?: InputMaybe<Array<InputMaybe<ComponentBlocksFileFiltersInput>>>
-  category?: InputMaybe<StringFilterInput>
   not?: InputMaybe<ComponentBlocksFileFiltersInput>
   or?: InputMaybe<Array<InputMaybe<ComponentBlocksFileFiltersInput>>>
   title?: InputMaybe<StringFilterInput>
@@ -1171,22 +1169,13 @@ export type ComponentSectionsFeaturedBlogPosts = {
 export type ComponentSectionsFileList = {
   __typename?: 'ComponentSectionsFileList'
   fileList?: Maybe<Array<Maybe<ComponentBlocksFile>>>
-  files?: Maybe<Array<Maybe<ComponentBlocksFileItem>>>
-  hasBackground?: Maybe<Scalars['Boolean']['output']>
   id: Scalars['ID']['output']
   text?: Maybe<Scalars['String']['output']>
   title?: Maybe<Scalars['String']['output']>
-  variant?: Maybe<Enum_Componentsectionsfilelist_Variant>
 }
 
 export type ComponentSectionsFileListFileListArgs = {
   filters?: InputMaybe<ComponentBlocksFileFiltersInput>
-  pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
-}
-
-export type ComponentSectionsFileListFilesArgs = {
-  filters?: InputMaybe<ComponentBlocksFileItemFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
 }
@@ -1729,11 +1718,6 @@ export enum Enum_Componentsectionsdivider_Style {
   Stromy_03FullWidth = 'stromy_03_full_width',
   Vystavba_03FullWidth = 'vystavba_03_full_width',
   Vzdelavanie = 'vzdelavanie',
-}
-
-export enum Enum_Componentsectionsfilelist_Variant {
-  Grid = 'grid',
-  Rows = 'rows',
 }
 
 export enum Enum_Componentsectionsiframe_Iframewidth {
