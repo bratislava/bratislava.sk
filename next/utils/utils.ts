@@ -8,4 +8,4 @@ const isServer = () => typeof window === 'undefined'
 // TODO replace by `useIsClient` hook from `usehooks-ts`
 export const isBrowser = () => !isServer()
 
-export const isProductionDeployment = () => process.env.NEXT_PUBLIC_IS_STAGING !== 'true'
+export const isProductionDeployment = () => process.env.NEXT_PUBLIC_DEPLOYMENT === 'prod'
