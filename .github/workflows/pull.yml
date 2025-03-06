@@ -1,5 +1,5 @@
 name: Validate code
-on: [ pull_request ]
+on: [pull_request]
 jobs:
   build:
     name: Typescript check
@@ -11,7 +11,7 @@ jobs:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
-          node-version: '18'
+          node-version: '20'
       - run: yarn --frozen-lockfile
       - name: Typescript check
         uses: EPMatt/reviewdog-action-tsc@v1
@@ -29,7 +29,6 @@ jobs:
           workdir: ./next
       - name: Typescript strict plugin check
         run: yarn typecheck
-
 
       # Commented out because a) eslint currently can't error (all errors are warnings) and b) it's incorrectly setup and never passes
       # Fix the latter whenever the former gets solved
