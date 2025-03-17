@@ -11,7 +11,7 @@ on:
 jobs:
   conditions:
     name: Check for cluster conditions
-    uses: bratislava/github-actions/.github/workflows/cluster-deploy-conditions-inhouse.yml@stable
+    uses: bratislava/github-actions/.github/workflows/cluster-deploy-conditions.yml@stable
 
   deploy-dev:
     name: after dev Strapi deploy Next
