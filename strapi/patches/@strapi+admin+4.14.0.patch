@@ -1,5 +1,5 @@
 diff --git a/node_modules/@strapi/admin/admin/src/content-manager/components/DynamicZone/components/DynamicComponent.js b/node_modules/@strapi/admin/admin/src/content-manager/components/DynamicZone/components/DynamicComponent.js
-index f714b3e..0512edf 100644
+index 53b1371..77b1a79 100644
 --- a/node_modules/@strapi/admin/admin/src/content-manager/components/DynamicZone/components/DynamicComponent.js
 +++ b/node_modules/@strapi/admin/admin/src/content-manager/components/DynamicZone/components/DynamicComponent.js
 @@ -37,7 +37,7 @@ export const DynamicComponent = ({
