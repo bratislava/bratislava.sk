@@ -1,0 +1,13 @@
+diff --git a/node_modules/@strapi/admin/dist/_chunks/index-Go7rNONx.mjs b/node_modules/@strapi/admin/dist/_chunks/index-Go7rNONx.mjs
+index a9fd050..4005a21 100644
+--- a/node_modules/@strapi/admin/dist/_chunks/index-Go7rNONx.mjs
++++ b/node_modules/@strapi/admin/dist/_chunks/index-Go7rNONx.mjs
+@@ -13537,7 +13537,7 @@ const DynamicComponent = ({
+   dynamicComponentsByCategory = {},
+   onAddComponent
+ }) => {
+-  const [isOpen, setIsOpen] = React.useState(true);
++  const [isOpen, setIsOpen] = React.useState(false);
+   const { formatMessage } = useIntl();
+   const { getComponentLayout } = useContentTypeLayout();
+   const { modifiedData } = useCMEditViewDataManager();
