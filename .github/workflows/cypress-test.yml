@@ -27,7 +27,7 @@ jobs:
           command: yarn cypress:run
 
       - name: Screenshots of errors during E2E tests
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         if: always()
         with:
           name: cypress-screenshots
