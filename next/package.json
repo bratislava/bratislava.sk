@@ -27,7 +27,7 @@
     "@react-stately/utils": "3.9.0",
     "@sindresorhus/slugify": "^2.2.1",
     "@tanstack/react-query": "^5.28.0",
-    "@types/react-vertical-timeline-component": "^3.3.3",
+    "@types/react-vertical-timeline-component": "^3.3.6",
     "@types/uuid": "^9.0.0",
     "apexcharts": "3.35.3",
     "axios": "0.27.2",
@@ -60,7 +60,7 @@
     "react-resize-detector": "^8.0.3",
     "react-stately": "3.28.0",
     "react-sweet-progress": "1.1.2",
-    "react-vertical-timeline-component": "^3.6.0",
+    "react-vertical-timeline-component": "^3.5.3",
     "rehype-raw": "6.1.1",
     "remark-directive": "^2.0.1",
     "remark-directive-rehype": "^0.4.2",
@@ -142,6 +142,7 @@
   },
   "volta": {
     "node": "20.9.0",
-    "yarn": "1.22.18"
+    "yarn": "1.22.18",
+    "npm": "10.8.3"
   }
 }
