@@ -4,7 +4,7 @@
   "version": "1.4.0",
   "description": "A Strapi application",
   "scripts": {
-    "dev": "yarn develop",
+    "dev": "npm run develop",
     "develop": "cross-env ENV_PATH='./.env.local' strapi develop",
     "start": "strapi start",
     "build": "strapi build",
