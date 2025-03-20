@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import Tag from '@/components/common/Tag/Tag'
 
 import Stack from '../Stack'

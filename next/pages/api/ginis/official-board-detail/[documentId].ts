@@ -18,6 +18,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse): Promise<void>
     return res.json(await getOfficialBoardParsedDocument(documentId))
   } catch (error) {
     // TODO handle error
+    // eslint-disable-next-line no-console
     console.log(error)
   }
 }

@@ -18,6 +18,7 @@ const handler = async (
     result = shouldMockGinis() ? mockedParsedCategories : await getOfficialBoardParsedCategories()
   } catch (error) {
     // TODO handle error
+    // eslint-disable-next-line no-console
     console.log(error)
   }
 

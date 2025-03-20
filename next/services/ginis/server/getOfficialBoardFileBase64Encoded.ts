@@ -13,6 +13,7 @@ export const getOfficialBoardFileBase64Encoded = async (fileId: string) => {
     return response['Nacist-soubor']
   } catch (error) {
     // TODO handle error
+    // eslint-disable-next-line no-console
     console.log(error)
     return null
   }

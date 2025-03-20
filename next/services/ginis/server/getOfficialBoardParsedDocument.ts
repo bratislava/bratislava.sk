@@ -36,6 +36,8 @@ export const getOfficialBoardParsedDocument = async (documentId: string) => {
 
     return parsedDocumentDetail
   } catch (error) {
+    // TODO handle error
+    // eslint-disable-next-line no-console
     console.log(error)
     return null
   }

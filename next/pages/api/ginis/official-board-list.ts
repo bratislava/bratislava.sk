@@ -42,6 +42,7 @@ const handler = async (
       : await getOfficialBoardParsedList({ searchQuery: search, publicationState, categoryId })
   } catch (error) {
     // TODO handle error
+    // eslint-disable-next-line no-console
     console.log(error)
   }
 

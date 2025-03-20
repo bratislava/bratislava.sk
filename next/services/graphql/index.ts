@@ -1,5 +1,4 @@
-import { GraphQLClient } from 'graphql-request'
-import { GraphQLClientRequestHeaders } from 'graphql-request/build/cjs/types'
+import { GraphQLClient, RequestOptions } from 'graphql-request'
 import gql from 'graphql-tag'
 export type Maybe<T> = T | null
 export type InputMaybe<T> = Maybe<T>
@@ -12,6 +11,7 @@ export type MakeEmpty<T extends { [key: string]: unknown }, K extends keyof T> =
 export type Incremental<T> =
   | T
   | { [P in keyof T]?: P extends ' $fragmentName' | '__typename' ? T[P] : never }
+type GraphQLClientRequestHeaders = RequestOptions['requestHeaders']
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
   ID: { input: string; output: string }
@@ -167,6 +167,7 @@ export type BooleanFilterInput = {
   lt?: InputMaybe<Scalars['Boolean']['input']>
   lte?: InputMaybe<Scalars['Boolean']['input']>
   ne?: InputMaybe<Scalars['Boolean']['input']>
+  nei?: InputMaybe<Scalars['Boolean']['input']>
   not?: InputMaybe<BooleanFilterInput>
   notContains?: InputMaybe<Scalars['Boolean']['input']>
   notContainsi?: InputMaybe<Scalars['Boolean']['input']>
@@ -389,21 +390,6 @@ export type ComponentBlocksDocListExtensions = {
   id: Scalars['ID']['output']
   title?: Maybe<Scalars['String']['output']>
   validFrom?: Maybe<Scalars['Date']['output']>
-}
-
-export type ComponentBlocksDocListExtensionsFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<ComponentBlocksDocListExtensionsFiltersInput>>>
-  not?: InputMaybe<ComponentBlocksDocListExtensionsFiltersInput>
-  or?: InputMaybe<Array<InputMaybe<ComponentBlocksDocListExtensionsFiltersInput>>>
-  title?: InputMaybe<StringFilterInput>
-  validFrom?: InputMaybe<DateFilterInput>
-}
-
-export type ComponentBlocksDocListExtensionsInput = {
-  document?: InputMaybe<Scalars['ID']['input']>
-  id?: InputMaybe<Scalars['ID']['input']>
-  title?: InputMaybe<Scalars['String']['input']>
-  validFrom?: InputMaybe<Scalars['Date']['input']>
 }
 
 export type ComponentBlocksFile = {
@@ -1556,6 +1542,7 @@ export type DateFilterInput = {
   lt?: InputMaybe<Scalars['Date']['input']>
   lte?: InputMaybe<Scalars['Date']['input']>
   ne?: InputMaybe<Scalars['Date']['input']>
+  nei?: InputMaybe<Scalars['Date']['input']>
   not?: InputMaybe<DateFilterInput>
   notContains?: InputMaybe<Scalars['Date']['input']>
   notContainsi?: InputMaybe<Scalars['Date']['input']>
@@ -1580,6 +1567,7 @@ export type DateTimeFilterInput = {
   lt?: InputMaybe<Scalars['DateTime']['input']>
   lte?: InputMaybe<Scalars['DateTime']['input']>
   ne?: InputMaybe<Scalars['DateTime']['input']>
+  nei?: InputMaybe<Scalars['DateTime']['input']>
   not?: InputMaybe<DateTimeFilterInput>
   notContains?: InputMaybe<Scalars['DateTime']['input']>
   notContainsi?: InputMaybe<Scalars['DateTime']['input']>
@@ -1835,17 +1823,6 @@ export enum Enum_Regulation_Category {
   UzemnePlanovanie = 'uzemnePlanovanie',
 }
 
-export enum Enum_Vzn_Category {
-  Archiv = 'archiv',
-  DaneAPoplatky = 'daneAPoplatky',
-  Hospodarenie = 'hospodarenie',
-  Ostatne = 'ostatne',
-  PomenovanieUlic = 'pomenovanieUlic',
-  PoriadokACistota = 'poriadokACistota',
-  SocialnaPomocASkolstvo = 'socialnaPomocASkolstvo',
-  UzemnePlanovanie = 'uzemnePlanovanie',
-}
-
 export type Error = {
   __typename?: 'Error'
   code: Scalars['String']['output']
@@ -2005,6 +1982,7 @@ export type FloatFilterInput = {
   lt?: InputMaybe<Scalars['Float']['input']>
   lte?: InputMaybe<Scalars['Float']['input']>
   ne?: InputMaybe<Scalars['Float']['input']>
+  nei?: InputMaybe<Scalars['Float']['input']>
   not?: InputMaybe<FloatFilterInput>
   notContains?: InputMaybe<Scalars['Float']['input']>
   notContainsi?: InputMaybe<Scalars['Float']['input']>
@@ -2217,7 +2195,6 @@ export type GenericMorph =
   | UsersPermissionsPermission
   | UsersPermissionsRole
   | UsersPermissionsUser
-  | Vzn
 
 export type Homepage = {
   __typename?: 'Homepage'
@@ -2340,6 +2317,7 @@ export type IdFilterInput = {
   lt?: InputMaybe<Scalars['ID']['input']>
   lte?: InputMaybe<Scalars['ID']['input']>
   ne?: InputMaybe<Scalars['ID']['input']>
+  nei?: InputMaybe<Scalars['ID']['input']>
   not?: InputMaybe<IdFilterInput>
   notContains?: InputMaybe<Scalars['ID']['input']>
   notContainsi?: InputMaybe<Scalars['ID']['input']>
@@ -2574,6 +2552,7 @@ export type IntFilterInput = {
   lt?: InputMaybe<Scalars['Int']['input']>
   lte?: InputMaybe<Scalars['Int']['input']>
   ne?: InputMaybe<Scalars['Int']['input']>
+  nei?: InputMaybe<Scalars['Int']['input']>
   not?: InputMaybe<IntFilterInput>
   notContains?: InputMaybe<Scalars['Int']['input']>
   notContainsi?: InputMaybe<Scalars['Int']['input']>
@@ -2598,6 +2577,7 @@ export type JsonFilterInput = {
   lt?: InputMaybe<Scalars['JSON']['input']>
   lte?: InputMaybe<Scalars['JSON']['input']>
   ne?: InputMaybe<Scalars['JSON']['input']>
+  nei?: InputMaybe<Scalars['JSON']['input']>
   not?: InputMaybe<JsonFilterInput>
   notContains?: InputMaybe<Scalars['JSON']['input']>
   notContainsi?: InputMaybe<Scalars['JSON']['input']>
@@ -2622,6 +2602,7 @@ export type LongFilterInput = {
   lt?: InputMaybe<Scalars['Long']['input']>
   lte?: InputMaybe<Scalars['Long']['input']>
   ne?: InputMaybe<Scalars['Long']['input']>
+  nei?: InputMaybe<Scalars['Long']['input']>
   not?: InputMaybe<LongFilterInput>
   notContains?: InputMaybe<Scalars['Long']['input']>
   notContainsi?: InputMaybe<Scalars['Long']['input']>
@@ -2702,7 +2683,6 @@ export type Mutation = {
   createUsersPermissionsRole?: Maybe<UsersPermissionsCreateRolePayload>
   /** Create a new user */
   createUsersPermissionsUser: UsersPermissionsUserEntityResponse
-  createVzn?: Maybe<VznEntityResponse>
   deleteAlert?: Maybe<AlertEntityResponse>
   deleteBlogPost?: Maybe<BlogPostEntityResponse>
   deleteFaq?: Maybe<FaqEntityResponse>
@@ -2726,7 +2706,6 @@ export type Mutation = {
   deleteUsersPermissionsRole?: Maybe<UsersPermissionsDeleteRolePayload>
   /** Delete an existing user */
   deleteUsersPermissionsUser: UsersPermissionsUserEntityResponse
-  deleteVzn?: Maybe<VznEntityResponse>
   /** Confirm an email users email address */
   emailConfirmation?: Maybe<UsersPermissionsLoginPayload>
   /** Request a reset password token */
@@ -2762,7 +2741,6 @@ export type Mutation = {
   updateUsersPermissionsRole?: Maybe<UsersPermissionsUpdateRolePayload>
   /** Update an existing user */
   updateUsersPermissionsUser: UsersPermissionsUserEntityResponse
-  updateVzn?: Maybe<VznEntityResponse>
   upload: UploadFileEntityResponse
 }
 
@@ -2925,10 +2903,6 @@ export type MutationCreateUsersPermissionsUserArgs = {
   data: UsersPermissionsUserInput
 }
 
-export type MutationCreateVznArgs = {
-  data: VznInput
-}
-
 export type MutationDeleteAlertArgs = {
   locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
 }
@@ -3015,10 +2989,6 @@ export type MutationDeleteUsersPermissionsRoleArgs = {
 }
 
 export type MutationDeleteUsersPermissionsUserArgs = {
-  id: Scalars['ID']['input']
-}
-
-export type MutationDeleteVznArgs = {
   id: Scalars['ID']['input']
 }
 
@@ -3170,11 +3140,6 @@ export type MutationUpdateUsersPermissionsRoleArgs = {
 
 export type MutationUpdateUsersPermissionsUserArgs = {
   data: UsersPermissionsUserInput
-  id: Scalars['ID']['input']
-}
-
-export type MutationUpdateVznArgs = {
-  data: VznInput
   id: Scalars['ID']['input']
 }
 
@@ -3555,8 +3520,6 @@ export type Query = {
   usersPermissionsRoles?: Maybe<UsersPermissionsRoleEntityResponseCollection>
   usersPermissionsUser?: Maybe<UsersPermissionsUserEntityResponse>
   usersPermissionsUsers?: Maybe<UsersPermissionsUserEntityResponseCollection>
-  vzn?: Maybe<VznEntityResponse>
-  vzns?: Maybe<VznEntityResponseCollection>
 }
 
 export type QueryAlertArgs = {
@@ -3768,17 +3731,6 @@ export type QueryUsersPermissionsUsersArgs = {
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
 }
 
-export type QueryVznArgs = {
-  id?: InputMaybe<Scalars['ID']['input']>
-}
-
-export type QueryVznsArgs = {
-  filters?: InputMaybe<VznFiltersInput>
-  pagination?: InputMaybe<PaginationArg>
-  publicationState?: InputMaybe<PublicationState>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
-}
-
 export type Regulation = {
   __typename?: 'Regulation'
   amending?: Maybe<RegulationRelationResponseCollection>
@@ -3905,6 +3857,7 @@ export type StringFilterInput = {
   lt?: InputMaybe<Scalars['String']['input']>
   lte?: InputMaybe<Scalars['String']['input']>
   ne?: InputMaybe<Scalars['String']['input']>
+  nei?: InputMaybe<Scalars['String']['input']>
   not?: InputMaybe<StringFilterInput>
   notContains?: InputMaybe<Scalars['String']['input']>
   notContainsi?: InputMaybe<Scalars['String']['input']>
@@ -4369,78 +4322,6 @@ export type UsersPermissionsUserInput = {
 export type UsersPermissionsUserRelationResponseCollection = {
   __typename?: 'UsersPermissionsUserRelationResponseCollection'
   data: Array<UsersPermissionsUserEntity>
-}
-
-export type Vzn = {
-  __typename?: 'Vzn'
-  amedmentDocument?: Maybe<Array<Maybe<ComponentBlocksDocListExtensions>>>
-  cancellationDocument?: Maybe<Array<Maybe<ComponentBlocksDocListExtensions>>>
-  category?: Maybe<Enum_Vzn_Category>
-  consolidatedText?: Maybe<UploadFileEntityResponse>
-  createdAt?: Maybe<Scalars['DateTime']['output']>
-  details?: Maybe<Scalars['String']['output']>
-  mainDocument?: Maybe<UploadFileEntityResponse>
-  publishedAt?: Maybe<Scalars['DateTime']['output']>
-  title?: Maybe<Scalars['String']['output']>
-  updatedAt?: Maybe<Scalars['DateTime']['output']>
-  validFrom?: Maybe<Scalars['Date']['output']>
-}
-
-export type VznAmedmentDocumentArgs = {
-  filters?: InputMaybe<ComponentBlocksDocListExtensionsFiltersInput>
-  pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
-}
-
-export type VznCancellationDocumentArgs = {
-  filters?: InputMaybe<ComponentBlocksDocListExtensionsFiltersInput>
-  pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
-}
-
-export type VznEntity = {
-  __typename?: 'VznEntity'
-  attributes?: Maybe<Vzn>
-  id?: Maybe<Scalars['ID']['output']>
-}
-
-export type VznEntityResponse = {
-  __typename?: 'VznEntityResponse'
-  data?: Maybe<VznEntity>
-}
-
-export type VznEntityResponseCollection = {
-  __typename?: 'VznEntityResponseCollection'
-  data: Array<VznEntity>
-  meta: ResponseCollectionMeta
-}
-
-export type VznFiltersInput = {
-  amedmentDocument?: InputMaybe<ComponentBlocksDocListExtensionsFiltersInput>
-  and?: InputMaybe<Array<InputMaybe<VznFiltersInput>>>
-  cancellationDocument?: InputMaybe<ComponentBlocksDocListExtensionsFiltersInput>
-  category?: InputMaybe<StringFilterInput>
-  createdAt?: InputMaybe<DateTimeFilterInput>
-  details?: InputMaybe<StringFilterInput>
-  id?: InputMaybe<IdFilterInput>
-  not?: InputMaybe<VznFiltersInput>
-  or?: InputMaybe<Array<InputMaybe<VznFiltersInput>>>
-  publishedAt?: InputMaybe<DateTimeFilterInput>
-  title?: InputMaybe<StringFilterInput>
-  updatedAt?: InputMaybe<DateTimeFilterInput>
-  validFrom?: InputMaybe<DateFilterInput>
-}
-
-export type VznInput = {
-  amedmentDocument?: InputMaybe<Array<InputMaybe<ComponentBlocksDocListExtensionsInput>>>
-  cancellationDocument?: InputMaybe<Array<InputMaybe<ComponentBlocksDocListExtensionsInput>>>
-  category?: InputMaybe<Enum_Vzn_Category>
-  consolidatedText?: InputMaybe<Scalars['ID']['input']>
-  details?: InputMaybe<Scalars['String']['input']>
-  mainDocument?: InputMaybe<Scalars['ID']['input']>
-  publishedAt?: InputMaybe<Scalars['DateTime']['input']>
-  title?: InputMaybe<Scalars['String']['input']>
-  validFrom?: InputMaybe<Scalars['Date']['input']>
 }
 
 export type BlogPostBySlugQueryVariables = Exact<{
@@ -13445,84 +13326,6 @@ export type PageHeaderSectionsFragment =
   | PageHeaderSections_ComponentSectionsSubpageList_Fragment
   | PageHeaderSections_Error_Fragment
 
-export type VznDetailQueryVariables = Exact<{
-  id: Scalars['ID']['input']
-}>
-
-export type VznDetailQuery = {
-  __typename?: 'Query'
-  vzn?: {
-    __typename?: 'VznEntityResponse'
-    data?: {
-      __typename?: 'VznEntity'
-      id?: string | null
-      attributes?: {
-        __typename?: 'Vzn'
-        title?: string | null
-        validFrom?: any | null
-        mainDocument?: {
-          __typename?: 'UploadFileEntityResponse'
-          data?: {
-            __typename?: 'UploadFileEntity'
-            id?: string | null
-            attributes?: {
-              __typename?: 'UploadFile'
-              url: string
-              name: string
-              ext?: string | null
-              size: number
-              createdAt?: any | null
-              updatedAt?: any | null
-            } | null
-          } | null
-        } | null
-        cancellationDocument?: Array<{
-          __typename?: 'ComponentBlocksDocListExtensions'
-          id: string
-          title?: string | null
-          document?: {
-            __typename?: 'UploadFileEntityResponse'
-            data?: {
-              __typename?: 'UploadFileEntity'
-              id?: string | null
-              attributes?: {
-                __typename?: 'UploadFile'
-                url: string
-                name: string
-                ext?: string | null
-                size: number
-                createdAt?: any | null
-                updatedAt?: any | null
-              } | null
-            } | null
-          } | null
-        } | null> | null
-        amedmentDocument?: Array<{
-          __typename?: 'ComponentBlocksDocListExtensions'
-          id: string
-          title?: string | null
-          document?: {
-            __typename?: 'UploadFileEntityResponse'
-            data?: {
-              __typename?: 'UploadFileEntity'
-              id?: string | null
-              attributes?: {
-                __typename?: 'UploadFile'
-                url: string
-                name: string
-                ext?: string | null
-                size: number
-                createdAt?: any | null
-                updatedAt?: any | null
-              } | null
-            } | null
-          } | null
-        } | null> | null
-      } | null
-    } | null
-  } | null
-}
-
 export const BlogPostLinkFragmentDoc = gql`
   fragment BlogPostLink on ComponentBlocksBlogPostLink {
     blogPost {
@@ -15490,43 +15293,6 @@ export const CreateBareRegulationDocument = gql`
     }
   }
 `
-export const VznDetailDocument = gql`
-  query VznDetail($id: ID!) {
-    vzn(id: $id) {
-      data {
-        id
-        attributes {
-          title
-          validFrom
-          mainDocument {
-            data {
-              ...UploadFileEntity
-            }
-          }
-          cancellationDocument {
-            id
-            title
-            document {
-              data {
-                ...UploadFileEntity
-              }
-            }
-          }
-          amedmentDocument {
-            id
-            title
-            document {
-              data {
-                ...UploadFileEntity
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-  ${UploadFileEntityFragmentDoc}
-`
 
 export type SdkFunctionWrapper = <T>(
   action: (requestHeaders?: Record<string, string>) => Promise<T>,
@@ -15535,7 +15301,7 @@ export type SdkFunctionWrapper = <T>(
   variables?: any,
 ) => Promise<T>
 
-const defaultWrapper: SdkFunctionWrapper = (action, _operationName, _operationType, variables) =>
+const defaultWrapper: SdkFunctionWrapper = (action, _operationName, _operationType, _variables) =>
   action()
 
 export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = defaultWrapper) {
@@ -16020,21 +15786,6 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
           }),
         'createBareRegulation',
         'mutation',
-        variables,
-      )
-    },
-    VznDetail(
-      variables: VznDetailQueryVariables,
-      requestHeaders?: GraphQLClientRequestHeaders,
-    ): Promise<VznDetailQuery> {
-      return withWrapper(
-        (wrappedRequestHeaders) =>
-          client.request<VznDetailQuery>(VznDetailDocument, variables, {
-            ...requestHeaders,
-            ...wrappedRequestHeaders,
-          }),
-        'VznDetail',
-        'query',
         variables,
       )
     },

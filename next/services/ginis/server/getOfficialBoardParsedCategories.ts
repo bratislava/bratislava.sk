@@ -16,6 +16,7 @@ export const getOfficialBoardParsedCategories = async () => {
     categories = response['Seznam-kategorii']
   } catch (error) {
     // TODO handle error
+    // eslint-disable-next-line no-console
     console.log(error)
   }
 
