@@ -1,6 +1,13 @@
 resources:
   - ../../base
   - scaler.yml
+  - ./secrets/msal.secret.yml
+  - pdb.yml
+  - redirects/odhrnieme.ingress.yml
+  - redirects/10000stromov.ingress.yml
+  - redirects/behdevin.ingress.yml
+  - redirects/social.ingress.yml
+  - redirects/primacialnypalac.ingress.yml
 
 configMapGenerator:
   - name: ${BUILD_REPOSITORY_NAME}-env
@@ -18,3 +25,4 @@ patches:
         value:
           secretRef:
             name: ${BUILD_REPOSITORY_NAME}-revalidate-secret
+

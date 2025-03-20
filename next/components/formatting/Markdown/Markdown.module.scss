@@ -1,0 +1,55 @@
+.markdown {
+  & > *:first-child {
+    @apply mt-0;
+  }
+
+  & > *:last-child {
+    @apply mb-0;
+  }
+
+  & > h1,
+  & > h2,
+  & > h3,
+  & > h4,
+  & > h5,
+  & > h6 {
+    @apply mb-4 mt-10;
+  }
+
+  & > ul,
+  & > ol {
+    @apply mb-8 mt-4;
+  }
+
+  & > *:not(h1):not(h2):not(h3):not(h4):not(h5):not(h6):not(ul):not(ol) {
+    @apply my-4;
+  }
+
+  ol {
+    & > li {
+      @apply my-4;
+
+      &:first-child {
+        @apply mt-0;
+      }
+
+      &:last-child {
+        @apply mt-0;
+      }
+    }
+  }
+
+  ul {
+    & > li {
+      @apply my-1;
+
+      &:first-child {
+        @apply mt-0;
+      }
+
+      &:last-child {
+        @apply mt-0;
+      }
+    }
+  }
+}

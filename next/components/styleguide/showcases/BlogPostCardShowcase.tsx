@@ -1,7 +1,8 @@
-import BlogPostCard from '@components/molecules/presentation/BlogPostCard'
-import { Wrapper } from '@components/styleguide/Wrapper'
-import { CommonLinkProps } from '@utils/getCommonLinkProps'
 import React from 'react'
+
+import BlogPostCard from '@/components/cards/BlogPostCard'
+import Wrapper from '@/components/styleguide/Wrapper'
+import { CommonLinkProps } from '@/utils/getCommonLinkProps'
 
 const BlogPostCardShowcase = () => {
   const cards = [
@@ -32,8 +33,9 @@ const BlogPostCardShowcase = () => {
   return (
     <Wrapper title="BlogPost Card">
       <div className="grid w-full grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
-        {cards.map((blog) => (
-          <BlogPostCard {...blog} />
+        {cards.map((blog, index) => (
+          // eslint-disable-next-line react/no-array-index-key
+          <BlogPostCard key={index} {...blog} />
         ))}
       </div>
     </Wrapper>

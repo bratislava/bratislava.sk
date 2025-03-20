@@ -1,0 +1,35 @@
+{
+  "kind": "collectionType",
+  "collectionName": "inba_tags",
+  "info": {
+    "singularName": "inba-tag",
+    "pluralName": "inba-tags",
+    "displayName": "in.ba tagy",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "title": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string",
+      "required": true
+    },
+    "inbaArticles": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::inba-article.inba-article",
+      "mappedBy": "inbaTag"
+    }
+  }
+}

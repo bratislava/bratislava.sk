@@ -1,5 +1,6 @@
-import { Enum_Componentmenumenuitem_Icon, Enum_Pagecategory_Color } from '@backend/graphql'
 import React, { CSSProperties } from 'react'
+
+import { Enum_Componentmenumenuitem_Icon, Enum_Pagecategory_Color } from '@/services/graphql'
 
 export type ColorCategory =
   | 'main'
@@ -8,6 +9,7 @@ export type ColorCategory =
   | 'social'
   | 'education'
   | 'culture'
+  | 'grey'
 
 const colorCategoryMap = {
   red: 'main',
@@ -40,8 +42,8 @@ export const transformIconToCategory = (icon: Enum_Componentmenumenuitem_Icon): 
 const generateCssVariables = (category: ColorCategory) => {
   const fontContrastColor =
     category === 'social' || category === 'culture'
-      ? 'var(--color-gray-700)'
-      : 'var(--color-gray-0)'
+      ? 'var(--color-grey-700)'
+      : 'var(--color-grey-0)'
 
   return [
     ...[100, 200, 300, 400, 500, 600, 700, 800].map(
@@ -70,6 +72,7 @@ export const GlobalCategoryColorProvider = ({ color, category: categoryProp }: P
   const style = cssVariables.map(([key, value]) => `${key}: ${value};`).join('\n')
 
   return (
+    // eslint-disable-next-line react/no-unknown-property
     <style jsx global>
       {`
         :root {

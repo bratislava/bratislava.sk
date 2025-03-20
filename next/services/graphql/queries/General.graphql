@@ -1,0 +1,247 @@
+fragment UploadImageSrcEntity on UploadFileEntity {
+  id
+  attributes {
+    url
+  }
+}
+
+fragment UploadImageEntity on UploadFileEntity {
+  id
+  attributes {
+    url
+    width
+    height
+    caption
+    alternativeText
+    name
+  }
+}
+
+fragment UploadFileEntity on UploadFileEntity {
+  id
+  attributes {
+    url
+    name
+    ext
+    size
+    createdAt
+    updatedAt
+  }
+}
+
+fragment CommonLink on ComponentBlocksCommonLink {
+  label
+  url
+  plausibleId
+  page {
+    data {
+      id
+      attributes {
+        title
+        slug
+      }
+    }
+  }
+  blogPost {
+    data {
+      id
+      attributes {
+        title
+        slug
+      }
+    }
+  }
+}
+
+fragment FooterContactItem on ComponentBlocksFooterContactItem {
+  label
+  phone
+  mail
+}
+
+fragment FooterColumnBlock on ComponentBlocksFooterColumn {
+  title
+  links {
+    ...CommonLink
+  }
+}
+
+fragment Footer on Footer {
+  address
+  facebookUrl
+  instagramUrl
+  contacts {
+    ...FooterContactItem
+  }
+  columns {
+    ...FooterColumnBlock
+  }
+  accessibilityPageLink {
+    ...CommonLink
+  }
+  innovationsLink {
+    ...CommonLink
+  }
+}
+
+fragment PageForMenuEntity on PageEntity {
+  id
+  attributes {
+    title
+    slug
+  }
+}
+
+fragment MenuLink on ComponentMenuMenuLink {
+  id
+  label
+  page {
+    data {
+      ...PageForMenuEntity
+    }
+  }
+  url
+}
+
+fragment MenuSection on ComponentMenuMenuSection {
+  id
+  label
+  icon
+  page {
+    data {
+      ...PageForMenuEntity
+    }
+  }
+  links {
+    ...MenuLink
+  }
+}
+
+fragment MenuItem on ComponentMenuMenuItem {
+  id
+  label
+  icon
+  page {
+    data {
+      ...PageForMenuEntity
+    }
+  }
+  sections {
+    ...MenuSection
+  }
+}
+
+fragment HeaderLink on ComponentGeneralHeaderLink {
+  label
+  page {
+    data {
+      id
+      attributes {
+        title
+        slug
+      }
+    }
+  }
+  url
+  showOnDesktop
+  showOnMobile
+  icon
+}
+
+fragment GeneralPageRelation on PageEntity {
+  id
+  attributes {
+    title
+    slug
+  }
+}
+
+fragment General on General {
+  header {
+    links {
+      ...HeaderLink
+    }
+    accountLink {
+      ...CommonLink
+    }
+  }
+  newsPage {
+    data {
+      ...GeneralPageRelation
+      ...PageParentPages
+    }
+  }
+  officialBoardPage {
+    data {
+      ...GeneralPageRelation
+    }
+  }
+  privacyPolicyPage {
+    data {
+      ...GeneralPageRelation
+    }
+  }
+  vznPage {
+    data {
+      ...GeneralPageRelation
+    }
+  }
+  inbaPage {
+    data {
+      ...GeneralPageRelation
+    }
+  }
+  inbaReleasesPage {
+    data {
+      ...GeneralPageRelation
+    }
+  }
+}
+
+fragment Alert on Alert {
+  updatedAt
+  text
+}
+
+query General($locale: I18NLocaleCode!) {
+  general(locale: $locale) {
+    data {
+      attributes {
+        ...General
+      }
+    }
+  }
+  menu(locale: $locale) {
+    data {
+      attributes {
+        menus {
+          ...MenuItem
+        }
+      }
+    }
+  }
+  footer(locale: $locale) {
+    data {
+      attributes {
+        ...Footer
+      }
+    }
+  }
+  alert(locale: $locale) {
+    data {
+      attributes {
+        ...Alert
+      }
+    }
+  }
+}
+
+query Alert($locale: I18NLocaleCode!) {
+  alert(locale: $locale) {
+    data {
+      attributes {
+        ...Alert
+      }
+    }
+  }
+}

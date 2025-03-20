@@ -1,6 +1,6 @@
 # Add files here to ignore them from prettier formatting
 
-yarn.lock
+package-lock.json
 build
 .cache
 .tmp

@@ -26,26 +26,36 @@ const searchIndexSettings = {
     'page.subtext',
     'page.metaDiscription', // yes, it's a typo in the field name
     'blog-post.title',
-    'vzn.title',
-    'vzn.amedmentDocument.title', // yes, it's a typo in the field name
-    'vzn.cancellationDocument.title',
+    'blog-post.excerpt',
+    'inba-article.title',
+    'regulation.regNumber',
+    'regulation.titleText',
+    'regulation.fullTitle',
   ],
   filterableAttributes: [
     // All
     'type',
-    // Page + Blog post
+    // Page + Blog post + Inba article
     'locale',
     'blog-post.tag.id',
+    'inba-article.inbaTag.id',
+    // Regulation
+    'regulation.category',
   ],
   sortableAttributes: [
-    // Article
+    // Blog post
     'blog-post.title',
-    'blog-post.publishedAt',
+    'blog-post.publishedAt', // TODO is it needed?
     'blog-post.publishedAtTimestamp',
+    // Inba article
+    'inba-article.title',
+    'inba-article.publishedAtTimestamp',
     // Vzn
     'vzn.validFrom',
-    'vzn.publishedAt',
+    'vzn.publishedAt', // TODO is it needed?
     'vzn.publishedAtTimestamp',
+    // Regulation
+    'regulation.effectiveFromTimestamp',
   ],
   pagination: {
     // https://docs.meilisearch.com/learn/advanced/known_limitations.html#maximum-number-of-results-per-search
@@ -79,6 +89,21 @@ const config = {
         publishedAtTimestamp: entry.publishedAt ? new Date(entry.publishedAt).getTime() : undefined,
       }),
   },
+  'inba-article': {
+    indexName: 'search_index',
+    entriesQuery: {
+      locale: 'all',
+      populate: ['inbaTag', 'coverImage'],
+    },
+    settings: searchIndexSettings,
+    transformEntry: ({ entry }) =>
+      wrapSearchIndexEntry('inba-article', {
+        ...entry,
+        // Meilisearch doesn't support filtering dates as ISO strings, therefore we convert it to UNIX timestamp to
+        // use (number) filters.
+        publishedAtTimestamp: entry.publishedAt ? new Date(entry.publishedAt).getTime() : undefined,
+      }),
+  },
   vzn: {
     indexName: 'search_index',
     entriesQuery: {
@@ -92,6 +117,23 @@ const config = {
         // use (number) filters.
         publishedAtTimestamp: entry.publishedAt ? new Date(entry.publishedAt).getTime() : undefined,
       }),
+  },
+  regulation: {
+    indexName: 'search_index',
+    entriesQuery: {
+      populate: ['amending', 'amending.cancellation', 'cancellation'],
+    },
+    settings: searchIndexSettings,
+    transformEntry: ({ entry }) => {
+      return wrapSearchIndexEntry('regulation', {
+        ...entry,
+        // Meilisearch doesn't support filtering dates as ISO strings, therefore we convert it to UNIX timestamp to
+        // use (number) filters.
+        effectiveFromTimestamp: entry.effectiveFrom
+          ? new Date(entry.effectiveFrom).getTime()
+          : undefined,
+      })
+    },
   },
 }
 

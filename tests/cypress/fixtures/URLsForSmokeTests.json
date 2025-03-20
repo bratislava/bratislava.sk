@@ -1,0 +1,34 @@
+[
+  {
+    "path": "/",
+    "status": 200
+  },
+  {
+    "path": "/vyhladavanie",
+    "status": 200
+  },
+  {
+    "path": "/uradne-a-navstevne-hodiny",
+    "status": 200
+  },
+  {
+    "path": "/vyhlasenie-o-pristupnosti",
+    "status": 200
+  },
+  {
+    "path": "/mesto-bratislava",
+    "status": 200
+  },
+  {
+    "path": "/doprava-a-mapy",
+    "status": 200
+  },
+  {
+    "path": "/zivotne-prostredie-a-vystavba",
+    "status": 200
+  },
+  {
+    "path": "/vzdelavanie-a-volny-cas",
+    "status": 200
+  }
+]

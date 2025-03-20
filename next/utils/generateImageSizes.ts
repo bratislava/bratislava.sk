@@ -1,4 +1,4 @@
-import screens from '../tailwind.config.screens'
+import screens from '@/tailwind.config.screens'
 
 type SizesInput = {
   [K in keyof typeof screens]?: string

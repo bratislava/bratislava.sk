@@ -6,102 +6,102 @@
       as `rgba(var(--color-main-600), 0.25)`.
     */
 
-  --color-main-800: 147, 37, 27; /*#93251B*/
-  --color-main-700: 216, 55, 40; /*#D83728*/
-  --color-main-600: 224, 95, 83; /*#E05F53*/
-  --color-main-500: 238, 147, 139; /*#EE938B*/
-  --color-main-400: 239, 175, 169; /*#EFAFA9*/
-  --color-main-300: 243, 195, 191; /*#F3C3BF*/
-  --color-main-200: 247, 215, 212; /*#F7D7D4*/
-  --color-main-100: 251, 235, 234; /*#FBEBEA*/
+  --color-main-800: 147 37 27; /*#93251B*/
+  --color-main-700: 216 55 40; /*#D83728*/
+  --color-main-600: 224 95 83; /*#E05F53*/
+  --color-main-500: 238 147 139; /*#EE938B*/
+  --color-main-400: 239 175 169; /*#EFAFA9*/
+  --color-main-300: 243 195 191; /*#F3C3BF*/
+  --color-main-200: 247 215 212; /*#F7D7D4*/
+  --color-main-100: 251 235 234; /*#FBEBEA*/
 
-  --color-transport-800: 0, 76, 109; /*#004c6d*/
-  --color-transport-700: 0, 95, 136; /*#005f88*/
-  --color-transport-600: 51, 127, 160; /*#337fa0*/
-  --color-transport-500: 102, 159, 184; /*#669fb8*/
-  --color-transport-400: 153, 191, 207; /*#99bfcf*/
-  --color-transport-300: 178, 207, 219; /*#b2cfdb*/
-  --color-transport-200: 204, 223, 231; /*#ccdfe7*/
-  --color-transport-100: 229, 239, 243; /*#e5eff3*/
+  --color-transport-800: 0 76 109; /*#004c6d*/
+  --color-transport-700: 0 95 136; /*#005f88*/
+  --color-transport-600: 51 127 160; /*#337fa0*/
+  --color-transport-500: 102 159 184; /*#669fb8*/
+  --color-transport-400: 153 191 207; /*#99bfcf*/
+  --color-transport-300: 178 207 219; /*#b2cfdb*/
+  --color-transport-200: 204 223 231; /*#ccdfe7*/
+  --color-transport-100: 229 239 243; /*#e5eff3*/
 
-  --color-environment-800: 0, 83, 18; /*#005312*/
-  --color-environment-700: 0, 104, 23; /*#006817*/
-  --color-environment-600: 51, 134, 69; /*#338645*/
-  --color-environment-500: 102, 164, 116; /*#66a474*/
-  --color-environment-400: 153, 195, 162; /*#99c3a2*/
-  --color-environment-300: 178, 210, 185; /*#b2d2b9*/
-  --color-environment-200: 204, 225, 209; /*#cce1d1*/
-  --color-environment-100: 229, 240, 232; /*#e5f0e8*/
+  --color-environment-800: 0 83 18; /*#005312*/
+  --color-environment-700: 0 104 23; /*#006817*/
+  --color-environment-600: 51 134 69; /*#338645*/
+  --color-environment-500: 102 164 116; /*#66a474*/
+  --color-environment-400: 153 195 162; /*#99c3a2*/
+  --color-environment-300: 178 210 185; /*#b2d2b9*/
+  --color-environment-200: 204 225 209; /*#cce1d1*/
+  --color-environment-100: 229 240 232; /*#e5f0e8*/
 
-  --color-social-800: 193, 147, 38; /*#c19326*/
-  --color-social-700: 241, 184, 48; /*#f1b830*/
-  --color-social-600: 244, 198, 89; /*#f4c659*/
-  --color-social-500: 247, 212, 131; /*#f7d483*/
-  --color-social-400: 249, 227, 172; /*#f9e3ac*/
-  --color-social-300: 251, 234, 193; /*#fbeac1*/
-  --color-social-200: 252, 241, 214; /*#fcf1d6*/
-  --color-social-100: 254, 248, 234; /*#fef8ea*/
+  --color-social-800: 193 147 38; /*#c19326*/
+  --color-social-700: 241 184 48; /*#f1b830*/
+  --color-social-600: 244 198 89; /*#f4c659*/
+  --color-social-500: 247 212 131; /*#f7d483*/
+  --color-social-400: 249 227 172; /*#f9e3ac*/
+  --color-social-300: 251 234 193; /*#fbeac1*/
+  --color-social-200: 252 241 214; /*#fcf1d6*/
+  --color-social-100: 254 248 234; /*#fef8ea*/
 
-  --color-education-800: 54, 58, 136; /*#363a88*/
-  --color-education-700: 67, 73, 170; /*#4349aa*/
-  --color-education-600: 105, 109, 187; /*#696dbb*/
-  --color-education-500: 142, 146, 204; /*#8e92cc*/
-  --color-education-400: 180, 182, 221; /*#b4b6dd*/
-  --color-education-300: 199, 200, 229; /*#c7c8e5*/
-  --color-education-200: 217, 219, 238; /*#d9dbee*/
-  --color-education-100: 236, 237, 246; /*#ecedf6*/
+  --color-education-800: 54 58 136; /*#363a88*/
+  --color-education-700: 67 73 170; /*#4349aa*/
+  --color-education-600: 105 109 187; /*#696dbb*/
+  --color-education-500: 142 146 204; /*#8e92cc*/
+  --color-education-400: 180 182 221; /*#b4b6dd*/
+  --color-education-300: 199 200 229; /*#c7c8e5*/
+  --color-education-200: 217 219 238; /*#d9dbee*/
+  --color-education-100: 236 237 246; /*#ecedf6*/
 
-  --color-culture-800: 189, 114, 46; /*#bd722e*/
-  --color-culture-700: 236, 143, 57; /*#ec8f39*/
-  --color-culture-600: 240, 165, 97; /*#f0a561*/
-  --color-culture-500: 244, 188, 136; /*#f4bc88*/
-  --color-culture-400: 247, 210, 176; /*#f7d2b0*/
-  --color-culture-300: 249, 221, 196; /*#f9ddc4*/
-  --color-culture-200: 251, 233, 215; /*#fbe9d7*/
-  --color-culture-100: 253, 244, 235; /*#fdf4eb*/
+  --color-culture-800: 189 114 46; /*#bd722e*/
+  --color-culture-700: 236 143 57; /*#ec8f39*/
+  --color-culture-600: 240 165 97; /*#f0a561*/
+  --color-culture-500: 244 188 136; /*#f4bc88*/
+  --color-culture-400: 247 210 176; /*#f7d2b0*/
+  --color-culture-300: 249 221 196; /*#f9ddc4*/
+  --color-culture-200: 251 233 215; /*#fbe9d7*/
+  --color-culture-100: 253 244 235; /*#fdf4eb*/
 
-  --color-gray-800: 31, 31, 31; /*#1F1F1F*/
-  --color-gray-700: 51, 51, 51; /*#333333*/
-  --color-gray-600: 92, 92, 92; /*#5C5C5C*/
-  --color-gray-500: 133, 133, 133; /*#858585*/
-  --color-gray-400: 173, 173, 173; /*#ADADAD*/
-  --color-gray-300: 194, 194, 194; /*#C2C2C2*/
-  --color-gray-200: 214, 214, 214; /*#D6D6D6*/
-  --color-gray-100: 235, 235, 235; /*#EBEBEB*/
-  --color-gray-50: 245, 245, 245; /*#F5F5F5*/
-  --color-gray-0: 255, 255, 255; /*#fff*/
+  --color-grey-800: 31 31 31; /*#1F1F1F*/
+  --color-grey-700: 51 51 51; /*#333333*/
+  --color-grey-600: 92 92 92; /*#5C5C5C*/
+  --color-grey-500: 133 133 133; /*#858585*/
+  --color-grey-400: 173 173 173; /*#ADADAD*/
+  --color-grey-300: 194 194 194; /*#C2C2C2*/
+  --color-grey-200: 214 214 214; /*#D6D6D6*/
+  --color-grey-100: 235 235 235; /*#EBEBEB*/
+  --color-grey-50: 245 245 245; /*#F5F5F5*/
+  --color-grey-0: 255 255 255; /*#fff*/
 
-  --color-success-800: 1, 90, 41; /*#015A29*/
-  --color-success-700: 1, 132, 61; /*#01843D*/
-  --color-success-600: 52, 157, 100; /*#349D64*/
-  --color-success-500: 103, 181, 139; /*#67B58B*/
-  --color-success-400: 153, 206, 177; /*#99CEB1*/
-  --color-success-300: 179, 218, 197; /*#B3DAC5*/
-  --color-success-200: 204, 230, 216; /*#CCE6D8*/
-  --color-success-100: 230, 243, 236; /*#E6F3EC*/
-  --color-success-50: 242, 249, 245; /*#F2F9F5*/
+  --color-success-800: 1 90 41; /*#015A29*/
+  --color-success-700: 1 132 61; /*#01843D*/
+  --color-success-600: 52 157 100; /*#349D64*/
+  --color-success-500: 103 181 139; /*#67B58B*/
+  --color-success-400: 153 206 177; /*#99CEB1*/
+  --color-success-300: 179 218 197; /*#B3DAC5*/
+  --color-success-200: 204 230 216; /*#CCE6D8*/
+  --color-success-100: 230 243 236; /*#E6F3EC*/
+  --color-success-50: 242 249 245; /*#F2F9F5*/
 
-  --color-negative-800: 141, 0, 0; /*#8D0000*/
-  --color-negative-700: 208, 0, 0; /*#D00000*/
-  --color-negative-600: 218, 51, 51; /*#DA3333*/
-  --color-negative-500: 227, 102, 102; /*#E36666*/
-  --color-negative-400: 236, 153, 153; /*#EC9999*/
-  --color-negative-300: 241, 178, 178; /*#F1B2B2*/
-  --color-negative-200: 246, 204, 204; /*#F6CCCC*/
-  --color-negative-100: 250, 229, 229; /*#FAE5E5*/
-  --color-negative-50: 253, 242, 242; /*#FDF2F2*/
+  --color-negative-800: 141 0 0; /*#8D0000*/
+  --color-negative-700: 208 0 0; /*#D00000*/
+  --color-negative-600: 218 51 51; /*#DA3333*/
+  --color-negative-500: 227 102 102; /*#E36666*/
+  --color-negative-400: 236 153 153; /*#EC9999*/
+  --color-negative-300: 241 178 178; /*#F1B2B2*/
+  --color-negative-200: 246 204 204; /*#F6CCCC*/
+  --color-negative-100: 250 229 229; /*#FAE5E5*/
+  --color-negative-50: 253 242 242; /*#FDF2F2*/
 
-  --color-warning-800: 152, 84, 3; /*#985403*/
-  --color-warning-700: 224, 123, 4; /*#E07B04*/
-  --color-warning-600: 230, 149, 54; /*#E69536*/
-  --color-warning-500: 236, 176, 104; /*#ECB068*/
-  --color-warning-400: 243, 202, 155; /*#F3CA9B*/
-  --color-warning-300: 246, 215, 180; /*#F6D7B4*/
-  --color-warning-200: 249, 229, 205; /*#F9E5CD*/
-  --color-warning-100: 252, 242, 230; /*#FCF2E6*/
-  --color-warning-50: 253, 248, 242; /*#FDF8F2*/
+  --color-warning-800: 152 84 3; /*#985403*/
+  --color-warning-700: 224 123 4; /*#E07B04*/
+  --color-warning-600: 230 149 54; /*#E69536*/
+  --color-warning-500: 236 176 104; /*#ECB068*/
+  --color-warning-400: 243 202 155; /*#F3CA9B*/
+  --color-warning-300: 246 215 180; /*#F6D7B4*/
+  --color-warning-200: 249 229 205; /*#F9E5CD*/
+  --color-warning-100: 252 242 230; /*#FCF2E6*/
+  --color-warning-50: 253 248 242; /*#FDF8F2*/
 
-  --font-color: var(--color-gray-700);
+  --font-color: var(--color-grey-700);
   --error-color: var(--color-negative-700);
 
   /* These variables are overridden in pages to get custom colors for each category */
@@ -113,5 +113,40 @@
   --color-category-300: var(--color-main-300);
   --color-category-200: var(--color-main-200);
   --color-category-100: var(--color-main-100);
-  --font-contrast-color: var(--color-gray-0);
+  --font-contrast-color: var(--color-grey-0);
+
+  /* This tokens are copied from OLO project and adjusted according to DS. Some tokens from DS are missing.  */
+  --token-background-primary: var(--color-grey-0);
+  --token-background-secondary: var(--color-grey-50);
+  --token-background-tertiary: var(--color-grey-100);
+  --token-background-primary-inverted: var(--color-grey-800);
+  --token-background-disabled: var(--color-grey-100);
+
+  --token-border-default: var(--color-grey-200);
+  --token-border-hover: var(--color-grey-300);
+  --token-border-dark: var(--color-grey-600); /* TODO what is this? */
+
+  --token-content-primary: var(--color-grey-800);
+  --token-content-secondary: var(--color-grey-700);
+  --token-content-tertiary: var(--color-grey-600);
+  --token-content-primary-inverted: var(--color-grey-0);
+  --token-content-secondary-inverted: var(--color-grey-200);
+  --token-content-tertiary-inverted: var(--color-grey-400);
+  --token-content-disabled: var(--color-grey-500);
+
+  --token-content-link-default: var(--color-grey-700);
+  --token-content-link-hover: var(--color-grey-600);
+  --token-content-link-pressed: var(--color-grey-800);
+
+  --token-action-content-default: var(--color-grey-700);
+  --token-action-content-hover: var(--color-grey-600);
+  --token-action-content-pressed: var(--color-grey-800);
+  --token-action-background-default: var(--color-grey-700);
+  --token-action-background-hover: var(--color-grey-600);
+  --token-action-background-pressed: var(--color-grey-800);
+  --token-action-soft-background-hover: var(--color-grey-100);
+  --token-action-soft-background-pressed: var(--color-grey-200);
+  --token-action-border-default: var(--color-grey-700);
+  --token-action-border-hover: var(--color-grey-600);
+  --token-action-border-pressed: var(--color-grey-800);
 }

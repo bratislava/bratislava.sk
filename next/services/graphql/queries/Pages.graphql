@@ -1,0 +1,112 @@
+query PagesStaticPaths {
+  pages(pagination: { limit: -1 }) {
+    data {
+      id
+      attributes {
+        slug
+      }
+    }
+  }
+}
+
+query PageBySlug($slug: String!, $locale: I18NLocaleCode!) {
+  pages(filters: { slug: { eq: $slug } }, locale: $locale) {
+    data {
+      ...PageEntity
+    }
+  }
+}
+
+fragment PageParentPages on PageEntity {
+  attributes {
+    ...ParentPage
+    parentPage {
+      data {
+        attributes {
+          ...ParentPage
+          parentPage {
+            data {
+              attributes {
+                ...ParentPage
+                parentPage {
+                  data {
+                    attributes {
+                      ...ParentPage
+                      parentPage {
+                        data {
+                          attributes {
+                            ...ParentPage
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+fragment PageEntity on PageEntity {
+  id
+  attributes {
+    slug
+    title
+    subtext
+    pageColor
+    metaDiscription
+    keywords
+    pageBackgroundImage {
+      data {
+        ...UploadImageSrcEntity
+      }
+    }
+    headerLinks {
+      ...CommonLink
+    }
+    sections {
+      ...Sections
+    }
+    locale
+    localizations {
+      ...Localization
+    }
+    pageHeaderSections {
+      ...PageHeaderSections
+    }
+    pageCategory {
+      data {
+        id
+        attributes {
+          title
+          color
+        }
+      }
+    }
+    relatedContents {
+      data {
+        ...TagEntity
+      }
+    }
+  }
+  ...PageParentPages
+}
+
+fragment ParentPage on Page {
+  slug
+  locale
+  title
+}
+
+fragment Localization on PageRelationResponseCollection {
+  data {
+    attributes {
+      slug
+      locale
+    }
+  }
+}

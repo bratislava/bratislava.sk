@@ -1,0 +1,22 @@
+{
+  "kind": "singleType",
+  "collectionName": "tax_administrators_lists",
+  "info": {
+    "singularName": "tax-administrators-list",
+    "pluralName": "tax-administrators-lists",
+    "displayName": "Tax administrators list",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "taxAdministrators": {
+      "type": "component",
+      "repeatable": true,
+      "component": "tax-administrators.tax-administrator",
+      "required": true
+    }
+  }
+}

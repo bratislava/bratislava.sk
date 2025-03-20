@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_sections_inba_releases",
+  "info": {
+    "displayName": "inba releases"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "text": {
+      "type": "text"
+    }
+  }
+}

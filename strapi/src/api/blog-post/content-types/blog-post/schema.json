@@ -92,6 +92,7 @@
         "sections.columned-text",
         "sections.text-with-image",
         "sections.file-list",
+        "sections.regulations",
         "sections.narrow-text",
         "sections.divider",
         "sections.videos",

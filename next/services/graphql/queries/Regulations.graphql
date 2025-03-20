@@ -1,0 +1,206 @@
+query allRegulations {
+  regulations(pagination: { limit: -1 }) {
+    data {
+      ...RegulationEntity
+    }
+  }
+}
+
+query RegulationsStaticPaths {
+  # Prerender only 30 most recently updated Regulations
+  regulations(sort: "updatedAt:desc", pagination: { limit: 30 }) {
+    data {
+      id
+      attributes {
+        slug
+      }
+    }
+  }
+}
+
+query RegulationById($id: ID!) {
+  regulation(id: $id) {
+    data {
+      ...RegulationEntity
+    }
+  }
+}
+
+query RegulationBySlug($slug: String) {
+  regulations(filters: { slug: { eq: $slug } }) {
+    data {
+      ...RegulationEntity
+    }
+  }
+}
+
+query RegulationByYear($year: String) {
+  regulations(filters: { slug: { endsWith: $year } }) {
+    data {
+      ...RegulationEntity
+    }
+  }
+}
+
+mutation setFullTitleToRegulation($regulationId: ID!, $fullTitle: String) {
+  updateRegulation(id: $regulationId, data: { fullTitle: $fullTitle }) {
+    data {
+      id
+    }
+  }
+}
+
+mutation setCancellationToRegulation($regulationId: ID!, $cancellationId: ID!) {
+  updateRegulation(id: $regulationId, data: { cancellation: $cancellationId }) {
+    data {
+      id
+    }
+  }
+}
+
+mutation setAmendmentsToRegulation($regulationId: ID!, $amendmentsIds: [ID!]) {
+  updateRegulation(id: $regulationId, data: { amendments: $amendmentsIds }) {
+    data {
+      id
+    }
+  }
+}
+
+mutation deleteRegulationById($id: ID!) {
+  deleteRegulation(id: $id) {
+    data {
+      id
+    }
+  }
+}
+
+mutation createBareRegulation(
+  $regNumber: String!
+  $slug: String!
+  $titleText: String
+  $fullTitle: String
+  $effectiveFrom: Date!
+  $category: ENUM_REGULATION_CATEGORY
+  $isFullTextRegulation: Boolean
+  $mainDocumentId: ID
+  $attachmentsIds: [ID]
+) {
+  createRegulation(
+    data: {
+      regNumber: $regNumber
+      slug: $slug
+      titleText: $titleText
+      fullTitle: $fullTitle
+      effectiveFrom: $effectiveFrom
+      category: $category
+      isFullTextRegulation: $isFullTextRegulation
+      mainDocument: $mainDocumentId
+      attachments: $attachmentsIds
+    }
+  ) {
+    data {
+      id
+      attributes {
+        regNumber
+      }
+    }
+  }
+}
+
+fragment RegulationEntity on RegulationEntity {
+  id
+  attributes {
+    regNumber
+    slug
+    titleText
+    fullTitle
+    effectiveFrom
+    category
+    isFullTextRegulation
+    mainDocument {
+      data {
+        ...UploadFileEntity
+      }
+    }
+    attachments {
+      data {
+        ...UploadFileEntity
+      }
+    }
+    amendments {
+      data {
+        id
+        attributes {
+          regNumber
+          slug
+          effectiveFrom
+          isFullTextRegulation
+          attachments {
+            data {
+              ...UploadFileEntity
+            }
+          }
+        }
+      }
+    }
+    amending {
+      data {
+        id
+        attributes {
+          regNumber
+          slug
+          effectiveFrom
+          cancellation {
+            data {
+              id
+              attributes {
+                regNumber
+                slug
+                effectiveFrom
+              }
+            }
+          }
+          amending {
+            data {
+              id
+              attributes {
+                regNumber
+                slug
+                cancellation {
+                  data {
+                    id
+                    attributes {
+                      regNumber
+                      slug
+                      effectiveFrom
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    cancellation {
+      data {
+        id
+        attributes {
+          regNumber
+          slug
+          effectiveFrom
+        }
+      }
+    }
+    cancelling {
+      data {
+        id
+        attributes {
+          regNumber
+          slug
+          effectiveFrom
+        }
+      }
+    }
+  }
+}

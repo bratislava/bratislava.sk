@@ -1,0 +1,48 @@
+{
+  "collectionName": "components_sections_contacts_sections",
+  "info": {
+    "displayName": "Contacts section",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "hasBackground": {
+      "type": "boolean"
+    },
+    "addressContacts": {
+      "type": "component",
+      "repeatable": true,
+      "component": "blocks.contact-card"
+    },
+    "emailContacts": {
+      "type": "component",
+      "repeatable": true,
+      "component": "blocks.contact-card"
+    },
+    "phoneContacts": {
+      "type": "component",
+      "repeatable": true,
+      "component": "blocks.contact-card"
+    },
+    "webContacts": {
+      "type": "component",
+      "repeatable": true,
+      "component": "blocks.contact-card"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "horizontal",
+        "vertical"
+      ],
+      "default": "horizontal",
+      "required": true
+    }
+  }
+}

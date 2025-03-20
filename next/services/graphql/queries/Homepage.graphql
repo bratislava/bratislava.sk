@@ -1,0 +1,147 @@
+fragment HomepageEntity on HomepageEntity {
+  id
+  attributes {
+    updatedAt
+    createdAt
+    metaTitle
+    metaDescription
+    welcomeHeadline
+    welcomeMedia {
+      data {
+        ...UploadImageSrcEntity
+      }
+    }
+    highlights {
+      title
+      text
+      cards {
+        ...HomepageHighlightsItem
+      }
+    }
+    tabs {
+      ...HomepageTabs
+    }
+    mayorAndCouncil {
+      ...HomepageMayorAndCouncil
+    }
+    eventsSection {
+      title
+      text
+      eventsPageLink {
+        ...CommonLink
+      }
+    }
+    topServices {
+      title
+      services {
+        ...TopServicesItem
+      }
+    }
+    inba {
+      ...HomepageInba
+    }
+    inbaFrontImage {
+      data {
+        ...UploadImageSrcEntity
+      }
+    }
+    inbaRearImage {
+      data {
+        ...UploadImageSrcEntity
+      }
+    }
+    inbaUrl
+    cards {
+      ...HomepageBookmark
+    }
+    bookmarkTourists {
+      ...HomepageBookmark
+    }
+    bookmarkUkraine {
+      ...HomepageBookmark
+    }
+  }
+}
+
+query Homepage($locale: I18NLocaleCode!) {
+  homepage(locale: $locale) {
+    data {
+      ...HomepageEntity
+    }
+  }
+}
+
+fragment HomepageBookmark on ComponentBlocksHomepageBookmark {
+  title
+  headline
+  text
+  link {
+    title
+    href
+  }
+  picture {
+    data {
+      attributes {
+        url
+      }
+    }
+  }
+  variant
+}
+
+fragment HomepageHighlightsItem on ComponentBlocksHomepageHighlightsItem {
+  id # keep for .map() key
+  link {
+    ...CommonLink
+  }
+  image {
+    data {
+      ...UploadImageSrcEntity
+    }
+  }
+}
+
+fragment HomepageTabs on ComponentSectionsHomepageTabs {
+  leftNewsItem {
+    data {
+      ...LatestBlogPostEntity
+    }
+  }
+  rightNewsItem {
+    data {
+      ...LatestBlogPostEntity
+    }
+  }
+  newsPageLink {
+    ...CommonLink
+  }
+  officialBoardPageLink {
+    ...CommonLink
+  }
+  roadClosuresPageLink {
+    ...CommonLink
+  }
+}
+
+fragment HomepageMayorAndCouncil on ComponentSectionsHomepageMayorAndCouncil {
+  title
+  text
+  mayorCard {
+    ...CommonLink
+  }
+  councilCard {
+    ...CommonLink
+  }
+}
+
+fragment TopServicesItem on ComponentBlocksTopServicesItem {
+  icon
+  link {
+    ...CommonLink
+  }
+}
+
+fragment HomepageInba on ComponentBlocksInBa {
+  title
+  content
+}

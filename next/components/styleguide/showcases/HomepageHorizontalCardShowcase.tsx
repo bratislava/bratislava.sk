@@ -1,9 +1,10 @@
-import BlogPostHomepageHorizontalCard from '@components/molecules/presentation/HomepageHorizontalCard'
-import { Wrapper } from '@components/styleguide/Wrapper'
-import { CommonLinkProps } from '@utils/getCommonLinkProps'
 import React from 'react'
 
-const BlogPostCardShowcase = () => {
+import BlogPostHomepageHorizontalCard from '@/components/cards/HomepageHorizontalCard'
+import Wrapper from '@/components/styleguide/Wrapper'
+import { CommonLinkProps } from '@/utils/getCommonLinkProps'
+
+const HomepageHorizontalCardShowcase = () => {
   const cards = [
     {
       title: 'Promoted card 1',
@@ -30,12 +31,13 @@ const BlogPostCardShowcase = () => {
   return (
     <Wrapper title="Homepage horizontal Card">
       <div className="grid w-full grid-cols-1 gap-4 md:grid-cols-2">
-        {cards.map((blog) => (
-          <BlogPostHomepageHorizontalCard {...blog} />
+        {cards.map((blog, index) => (
+          // eslint-disable-next-line react/no-array-index-key
+          <BlogPostHomepageHorizontalCard key={index} {...blog} />
         ))}
       </div>
     </Wrapper>
   )
 }
 
-export default BlogPostCardShowcase
+export default HomepageHorizontalCardShowcase

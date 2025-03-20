@@ -1,0 +1,34 @@
+query VznDetail($id: ID!) {
+  vzn(id: $id) {
+    data {
+      id
+      attributes {
+        title
+        validFrom
+        mainDocument {
+          data {
+            ...UploadFileEntity
+          }
+        }
+        cancellationDocument {
+          id
+          title
+          document {
+            data {
+              ...UploadFileEntity
+            }
+          }
+        }
+        amedmentDocument {
+          id
+          title
+          document {
+            data {
+              ...UploadFileEntity
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -2,7 +2,8 @@
   "collectionName": "components_accordion_items_flat_texts",
   "info": {
     "displayName": "Flat Text",
-    "icon": "adjust"
+    "icon": "adjust",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -30,6 +31,11 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::page.page"
+    },
+    "fileList": {
+      "type": "component",
+      "repeatable": true,
+      "component": "blocks.file-item"
     }
   }
 }

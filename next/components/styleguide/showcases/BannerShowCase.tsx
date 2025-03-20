@@ -1,9 +1,10 @@
-import { CommonLinkFragment, Enum_Componentsectionsbanner_Variant } from '@backend/graphql'
-import Banner from '@components/ui/Banner/Banner'
 import React from 'react'
 
-import { Stack } from '../Stack'
-import { Wrapper } from '../Wrapper'
+import Banner from '@/components/common/Banner/Banner'
+import { CommonLinkFragment, Enum_Componentsectionsbanner_Variant } from '@/services/graphql'
+
+import Stack from '../Stack'
+import Wrapper from '../Wrapper'
 
 const BannerShowCase = () => {
   return (

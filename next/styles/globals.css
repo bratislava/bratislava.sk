@@ -3,9 +3,9 @@
 @tailwind utilities;
 
 @import 'colors.css';
+@import '@bratislava/component-library/dist/assets/style.css';
 
 /* Docs: https://tailwindcss.com/docs/functions-and-directives */
-
 @layer base {
   body {
     @apply text-font antialiased;
@@ -23,7 +23,7 @@
 
 @layer components {
   .negative-x-spacing {
-    @apply -mx-4 px-4
+    @apply -mx-4 px-4;
   }
 
   .text-h1-lg {
@@ -194,7 +194,7 @@
   }
 
   .base-input--disabled {
-    @apply bg-gray-100;
+    @apply bg-grey-100;
   }
 
   input:-webkit-autofill,
@@ -226,8 +226,15 @@
   .form-group label.control-label {
     display: none;
   }
-}
 
+  /* Remove native Safari arrows in accordions  */
+  details > summary {
+    list-style: none;
+  }
+  details > summary::-webkit-details-marker {
+    display: none;
+  }
+}
 
 /* styles for vertical timeline START */
 @media (max-width: 1170px) {

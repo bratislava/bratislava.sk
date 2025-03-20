@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_sections_inba_articles_lists",
+  "info": {
+    "displayName": "in.ba articles",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "text": {
+      "type": "text"
+    },
+    "featuredArts": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::inba-article.inba-article"
+    }
+  }
+}

@@ -1,7 +1,8 @@
-import { client } from '@backend/graphql/gql'
-import { isDefined } from '@utils/isDefined'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import Rss from 'rss'
+
+import { client } from '@/services/graphql/gql'
+import { isDefined } from '@/utils/isDefined'
 
 const urlPrefix = { sk: 'https://www.bratislava.sk/blog', en: 'https://www.bratislava.sk/en/blog' }
 const feedUrl = {

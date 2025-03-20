@@ -1,40 +1,46 @@
-import { GeneralQuery } from '@backend/graphql'
-import { client } from '@backend/graphql/gql'
-import SearchPageContent from '@components/pages/searchPageContent'
-import { LocalizationsProvider } from '@components/providers/LocalizationsProvider'
-import { GeneralContextProvider } from '@utils/generalContext'
-import { useTitle } from '@utils/useTitle'
 import { GetStaticProps } from 'next'
 import Head from 'next/head'
-import { useTranslations } from 'next-intl'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import * as React from 'react'
 
-import PageLayout from '../components/layouts/PageLayout'
+import PageHeader from '@/components/common/PageHeader/PageHeader'
+import SectionContainer from '@/components/common/SectionContainer/SectionContainer'
+import PageLayout from '@/components/layouts/PageLayout'
+import { GeneralContextProvider } from '@/components/providers/GeneralContextProvider'
+import { LocalizationsProvider } from '@/components/providers/LocalizationsProvider'
+import GlobalSearchSectionContent from '@/components/sections/SearchSection/GlobalSearchSectionContent'
+import { GeneralQuery } from '@/services/graphql'
+import { client } from '@/services/graphql/gql'
+import { useTitle } from '@/utils/useTitle'
+import { useTranslation } from '@/utils/useTranslation'
 
 type PageProps = {
   general: GeneralQuery
 }
 
-export const getStaticProps: GetStaticProps<PageProps> = async (ctx) => {
-  const locale = ctx.locale ?? 'sk'
+export const getStaticProps: GetStaticProps<PageProps> = async ({ locale }) => {
+  // eslint-disable-next-line no-console
+  console.log(`Revalidating search ${locale}.`)
 
-  const [general, messages] = await Promise.all([
+  if (!locale) return { notFound: true }
+
+  const [general, translations] = await Promise.all([
     client.General({ locale }),
-    import(`../messages/${locale}.json`),
+    serverSideTranslations(locale),
   ])
 
   return {
     props: {
       general,
-      messages: messages.default,
+      ...translations,
     },
     revalidate: 10,
   }
 }
 
 const Page = ({ general }: PageProps) => {
-  const t = useTranslations()
-  const title = useTitle(t('searching'))
+  const { t } = useTranslation()
+  const title = useTitle(t('SearchPage.searching'))
 
   return (
     <GeneralContextProvider general={general}>
@@ -43,7 +49,13 @@ const Page = ({ general }: PageProps) => {
           <title>{title}</title>
         </Head>
         <PageLayout>
-          <SearchPageContent />
+          <PageHeader
+            title={t('SearchPage.searching')}
+            breadcrumbs={[{ title: t('SearchPage.searching'), path: null }]}
+          />
+          <SectionContainer className="mb-8 mt-12">
+            <GlobalSearchSectionContent variant="general" />
+          </SectionContainer>
         </PageLayout>
       </LocalizationsProvider>
     </GeneralContextProvider>

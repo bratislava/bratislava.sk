@@ -1,7 +1,8 @@
-import CategoryCard from '@components/molecules/presentation/CategoryCard'
-import { Wrapper } from '@components/styleguide/Wrapper'
-import { CommonLinkProps } from '@utils/getCommonLinkProps'
 import React from 'react'
+
+import CategoryCard from '@/components/cards/CategoryCard'
+import Wrapper from '@/components/styleguide/Wrapper'
+import { CommonLinkProps } from '@/utils/getCommonLinkProps'
 
 const CategoryCardShowcase = () => {
   const cards = [
@@ -25,8 +26,9 @@ const CategoryCardShowcase = () => {
   return (
     <Wrapper title="Category Card">
       <div className="grid w-full grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
-        {cards.map(({ title, linkProps, variant }) => (
-          <CategoryCard title={title} linkProps={linkProps} variant={variant} />
+        {cards.map(({ title, linkProps, variant }, index) => (
+          // eslint-disable-next-line react/no-array-index-key
+          <CategoryCard key={index} title={title} linkProps={linkProps} variant={variant} />
         ))}
       </div>
     </Wrapper>

@@ -24,30 +24,6 @@
       },
       "type": "text"
     },
-    "phone": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "type": "string"
-    },
-    "email": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "type": "email"
-    },
-    "mediaEmail": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "type": "email"
-    },
     "facebookUrl": {
       "pluginOptions": {
         "i18n": {
@@ -93,6 +69,16 @@
         }
       },
       "component": "blocks.common-link"
+    },
+    "contacts": {
+      "type": "component",
+      "repeatable": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "blocks.footer-contact-item"
     }
   }
 }

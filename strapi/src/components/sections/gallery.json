@@ -10,6 +10,9 @@
     "title": {
       "type": "string"
     },
+    "text": {
+      "type": "text"
+    },
     "subtitle": {
       "type": "string"
     },
@@ -17,6 +20,12 @@
       "type": "component",
       "repeatable": true,
       "component": "blocks.gallery-item"
+    },
+    "medias": {
+      "allowedTypes": ["images"],
+      "type": "media",
+      "multiple": true,
+      "required": true
     }
   }
 }

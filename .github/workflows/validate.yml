@@ -1,0 +1,8 @@
+name: Validate
+on: [ pull_request ]
+jobs:
+  validate:
+    name: Validate typescript
+    uses: bratislava/github-actions/.github/workflows/validate-typescript.yml@stable
+    with:
+      workdir: './next'

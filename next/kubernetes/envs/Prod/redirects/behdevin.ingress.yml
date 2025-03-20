@@ -1,0 +1,61 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: behdevin-${BUILD_REPOSITORY_NAME}-ingress
+  namespace: ${NAMESPACE}
+  labels:
+    service: redirect
+  annotations:
+    cert-manager.io/cluster-issuer: cloudflare-dns01
+    cert-manager.io/issue-temporary-certificate: 'true'
+    kubernetes.io/ingress.class: haproxy
+    ingress.kubernetes.io/redirect-to: https://${BRATISKA_HOSTNAME}/vzdelavanie-a-volny-cas/sport/podujatia/devin-bratislava
+spec:
+  tls:
+    - hosts:
+        - behdevin.${DEPLOYMENT_ENV}bratislava.sk
+        - www.behdevin.${DEPLOYMENT_ENV}bratislava.sk
+        - devin-bratislava.sk
+        - www.devin-bratislava.sk
+      secretName: behdevin-${BUILD_REPOSITORY_NAME}-tls
+  rules:
+    - host: behdevin.${DEPLOYMENT_ENV}bratislava.sk
+      http:
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: ${BUILD_REPOSITORY_NAME}-app
+                port:
+                  number: 80
+    - host: www.behdevin.${DEPLOYMENT_ENV}bratislava.sk
+      http:
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: ${BUILD_REPOSITORY_NAME}-app
+                port:
+                  number: 80
+    - host: devin-bratislava.sk
+      http:
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: ${BUILD_REPOSITORY_NAME}-app
+                port:
+                  number: 80
+    - host: www.devin-bratislava.sk
+      http:
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: ${BUILD_REPOSITORY_NAME}-app
+                port:
+                  number: 80

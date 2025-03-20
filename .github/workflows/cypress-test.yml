@@ -1,0 +1,35 @@
+name: Cypress test
+
+on:
+  workflow_run:
+    workflows: ['Strapi/Next deploy pipeline']
+    types:
+      - completed
+
+jobs:
+  cypress-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20.x'
+
+      - name: Run Cypress tests
+        uses: cypress-io/github-action@v5
+        with:
+          working-directory: tests
+          command: npm run cypress:run
+
+      - name: Screenshots of errors during E2E tests
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cypress-screenshots
+          path: tests/cypress/screenshots
+          retention-days: 1
