@@ -5,11 +5,11 @@ Currently tests are running against https://bratislava.sk (If you need to change
 ## How to run Cypress
 
 ```
-yarn cypress:open //for open mode (Running tests in chrome browser)
+npm run cypress:open //for open mode (Running tests in chrome browser)
 ```
 
 ```
-yarn cypress:run // for terminal mode
+npm run cypress:run // for terminal mode
 ```
 
 or
