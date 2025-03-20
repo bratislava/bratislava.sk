@@ -10,7 +10,6 @@ import ShareButtonsSection from '@/components/sections/ShareButtonsSection'
 import { BlogPostEntityFragment } from '@/services/graphql'
 import { getNumericLocalDate } from '@/utils/formatDate'
 import { getPageBreadcrumbs } from '@/utils/pageUtils_Deprecated'
-import { useTranslation } from '@/utils/useTranslation'
 
 // TODO split this into separate file
 export const SocialMediaButton = ({
@@ -39,8 +38,6 @@ export type BlogPostPageContentProps = {
 
 const BlogPostPageContent = ({ blogPost }: BlogPostPageContentProps) => {
   const tag = blogPost.attributes?.tag?.data?.attributes
-
-  const { t } = useTranslation()
 
   const { general } = useGeneralContext()
   const newsPage = general?.data?.attributes?.newsPage?.data

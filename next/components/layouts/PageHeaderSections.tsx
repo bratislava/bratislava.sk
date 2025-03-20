@@ -16,6 +16,7 @@ const PageHeaderSections = ({ sections }: PageHeaderSectionsProps) => {
         // eslint-disable-next-line sonarjs/no-small-switch
         switch (section.__typename) {
           case 'ComponentSectionsSubpageList':
+            // eslint-disable-next-line react/no-array-index-key
             return <SubpageListPageHeaderSection key={index} section={section} />
 
           default:

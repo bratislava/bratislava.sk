@@ -34,6 +34,7 @@ export const getOfficialBoardParsedList = async (options: {
     documents = response['Seznam-dokumentu']
   } catch (error) {
     // TODO handle error
+    // eslint-disable-next-line no-console
     console.log(error)
   }
 
