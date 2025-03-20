@@ -1,6 +1,5 @@
 import {
   BlogPost,
-  ComponentBlocksDocListExtensions,
   InbaArticle,
   InbaTag,
   Page,
@@ -8,7 +7,6 @@ import {
   Regulation,
   Tag,
   UploadFile,
-  Vzn,
 } from '../graphql'
 
 /**
@@ -31,7 +29,6 @@ export type SearchIndexWrapped<T extends string, K extends object> = {
 export type MixedResults =
   | SearchIndexWrapped<'page', PageMeili>
   | SearchIndexWrapped<'blog-post', InbaArticleMeili>
-  | SearchIndexWrapped<'vzn', VznMeili>
   | SearchIndexWrapped<'regulation', RegulationMeili>
 
 export type PageMeili = Omit<
@@ -52,24 +49,6 @@ export type BlogPostMeili = Omit<BlogPost, '__typename' | 'author' | 'tag' | 'co
 export type InbaArticleMeili = Omit<InbaArticle, '__typename' | 'tags' | 'coverImage'> & {
   coverImage?: UploadFile
   inbaTag?: Pick<InbaTag, 'title'>
-}
-
-// Beware of typo in amedmentDocument
-export type VznMeili = Omit<
-  Vzn,
-  '__typename' | 'mainDocument' | 'consolidatedText' | 'cancellationDocument' | 'amedmentDocument'
-> & {
-  id: string
-  mainDocument?: UploadFile
-  consolidatedText?: UploadFile
-  amedmentDocument?: Pick<
-    ComponentBlocksDocListExtensions,
-    'id' | 'title' | 'document' | 'validFrom'
-  >[]
-  cancellationDocument?: Pick<
-    ComponentBlocksDocListExtensions,
-    'id' | 'title' | 'document' | 'validFrom'
-  >[]
 }
 
 export type RegulationMeili = Omit<

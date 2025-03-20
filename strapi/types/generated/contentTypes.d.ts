@@ -1391,45 +1391,6 @@ export interface ApiTaxAdministratorsListTaxAdministratorsList extends Schema.Si
   }
 }
 
-export interface ApiVznVzn extends Schema.CollectionType {
-  collectionName: 'vzns'
-  info: {
-    description: ''
-    displayName: 'VZN'
-    pluralName: 'vzns'
-    singularName: 'vzn'
-  }
-  options: {
-    draftAndPublish: true
-  }
-  attributes: {
-    amedmentDocument: Attribute.Component<'blocks.doc-list-extensions', true>
-    cancellationDocument: Attribute.Component<'blocks.doc-list-extensions', true>
-    category: Attribute.Enumeration<
-      [
-        'daneAPoplatky',
-        'pomenovanieUlic',
-        'hospodarenie',
-        'uzemnePlanovanie',
-        'poriadokACistota',
-        'socialnaPomocASkolstvo',
-        'ostatne',
-        'archiv'
-      ]
-    >
-    consolidatedText: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>
-    createdAt: Attribute.DateTime
-    createdBy: Attribute.Relation<'api::vzn.vzn', 'oneToOne', 'admin::user'> & Attribute.Private
-    details: Attribute.RichText
-    mainDocument: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>
-    publishedAt: Attribute.DateTime
-    title: Attribute.String
-    updatedAt: Attribute.DateTime
-    updatedBy: Attribute.Relation<'api::vzn.vzn', 'oneToOne', 'admin::user'> & Attribute.Private
-    validFrom: Attribute.Date
-  }
-}
-
 export interface PluginContentReleasesRelease extends Schema.CollectionType {
   collectionName: 'strapi_releases'
   info: {
@@ -1822,7 +1783,6 @@ declare module '@strapi/types' {
       'api::regulation.regulation': ApiRegulationRegulation
       'api::tag.tag': ApiTagTag
       'api::tax-administrators-list.tax-administrators-list': ApiTaxAdministratorsListTaxAdministratorsList
-      'api::vzn.vzn': ApiVznVzn
       'plugin::content-releases.release': PluginContentReleasesRelease
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction
       'plugin::i18n.locale': PluginI18NLocale
