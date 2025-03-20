@@ -1,14 +1,11 @@
 const { withPlausibleProxy } = require('next-plausible')
+const i18nextConfig = require('./next-i18next.config.js')
 
 /**
  * @type {import('next').NextConfig}
  */
 const nextConfig = {
-  i18n: {
-    defaultLocale: 'sk',
-    locales: ['en', 'sk'],
-    localeDetection: false,
-  },
+  i18n: i18nextConfig.i18n,
   reactStrictMode: true,
   images: {
     remotePatterns: [
@@ -403,6 +400,13 @@ const nextConfig = {
         source: '/socialne-sluzby-a-pomoc',
         destination:
           '/socialne-sluzby-a-byvanie/aktivity-v-socialnej-oblasti/sekcia-socialnych-veci',
+        permanent: true,
+      },
+      {
+        source:
+          '/socialne-sluzby-a-byvanie/aktivity-mesta-v-socialnej-oblasti/mapa-pomoci-ludom-bez-domova',
+        destination:
+          '/socialne-sluzby-a-byvanie/aktivity-mesta-v-socialnej-oblasti/mapa-sluzieb-pre-ludi-v-nudzi',
         permanent: true,
       },
       {
@@ -1726,6 +1730,17 @@ const nextConfig = {
       {
         source: '/mesto-bratislava/projekty/kampane/sadni-si',
         destination: '/mesto-bratislava/projekty/sadni-si',
+        permanent: true,
+      },
+      {
+        source: '/vzdelavanie-a-volny-cas/camping/:slug*',
+        destination: '/vzdelavanie-a-volny-cas/sport/kemping/:slug*',
+        permanent: true,
+      },
+      {
+        source: '/en/education-and-leisure/camping/:slug*',
+        destination: '/en/education-and-leisure/sport/camping/:slug*',
+        locale: false,
         permanent: true,
       },
     ]

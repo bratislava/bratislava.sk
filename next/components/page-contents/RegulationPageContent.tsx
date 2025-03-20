@@ -1,11 +1,10 @@
 import { Typography } from '@bratislava/component-library'
-import classNames from 'classnames'
-import { useLocale, useTranslations } from 'next-intl'
 import React, { Fragment } from 'react'
 
 import FileRowCard from '@/components/cards/FileRowCard'
 import RegulationCard from '@/components/cards/RegulationCard/RegulationCard'
 import RegulationDetailMessage from '@/components/cards/RegulationCard/RegulationDetailMessage'
+import HorizontalDivider from '@/components/common/Divider/HorizontalDivider'
 import MLink from '@/components/common/MLink/MLink'
 import PageHeader from '@/components/common/PageHeader/PageHeader'
 import SectionContainer from '@/components/common/SectionContainer/SectionContainer'
@@ -13,6 +12,9 @@ import { RegulationEntityFragment } from '@/services/graphql'
 import { formatFileExtension } from '@/utils/formatFileExtension'
 import { formatFileSize } from '@/utils/formatFileSize'
 import { isDefined } from '@/utils/isDefined'
+import { useLocale } from '@/utils/useLocale'
+import { useRegulationCategoryTranslationMap } from '@/utils/useRegulationCategoryTranslationMap'
+import { useTranslation } from '@/utils/useTranslation'
 
 type RegulationPageContentProps = {
   regulation: RegulationEntityFragment
@@ -21,8 +23,10 @@ type RegulationPageContentProps = {
 const RegulationPageContent = ({ regulation }: RegulationPageContentProps) => {
   const regulationShortTitle = `VZN ${regulation.attributes?.regNumber}`
 
-  const t = useTranslations('Regulation')
+  const { t } = useTranslation()
   const locale = useLocale()
+
+  const translationMap = useRegulationCategoryTranslationMap()
 
   const mainDocument = regulation.attributes?.mainDocument
   const amendments = regulation.attributes?.amendments?.data
@@ -43,7 +47,7 @@ const RegulationPageContent = ({ regulation }: RegulationPageContentProps) => {
 
   const breadcrumbs = [
     {
-      title: t('regulations'),
+      title: t('Regulation.regulations'),
       path:
         locale === 'en'
           ? '/city-of-bratislava/city-administration/legislation/generally-binding-ordinances'
@@ -56,7 +60,7 @@ const RegulationPageContent = ({ regulation }: RegulationPageContentProps) => {
     <>
       <PageHeader
         title={regulationShortTitle}
-        tag={t(`category.${regulation.attributes?.category ?? 'ostatne'}`)}
+        tag={translationMap[regulation.attributes?.category ?? 'ostatne']}
         subtext={regulation.attributes?.titleText}
         breadcrumbs={breadcrumbs}
       />
@@ -66,60 +70,61 @@ const RegulationPageContent = ({ regulation }: RegulationPageContentProps) => {
           <div className="flex flex-row flex-wrap gap-6">
             <div className="flex grow basis-full flex-col gap-4">
               <Typography type="h2" size="h3">
-                {t('mainDocument')}
+                {t('Regulation.mainDocument')}
               </Typography>
 
               {/* TODO refactor to use standard component */}
-              {mainDocument?.data?.attributes ? (
-                <div className="flex flex-col rounded-lg border-2 px-4">
+              <div className="rounded-lg border-2 py-2">
+                {mainDocument?.data?.attributes ? (
                   <FileRowCard
                     key={mainDocument.data.id}
                     title={`VZN ${regulation.attributes?.regNumber}`}
                     size={formatFileSize(mainDocument.data.attributes.size, locale)}
                     format={formatFileExtension(mainDocument.data.attributes.ext) ?? undefined}
                     downloadLink={mainDocument.data.attributes.url}
-                    className={classNames('-mx-4 px-4 [&>*]:border-b-0')}
                   />
-                </div>
-              ) : (
-                <Typography type="p">{t('noAttachmentsMessage')}</Typography>
-              )}
+                ) : (
+                  <Typography type="p">{t('Regulation.noAttachmentsMessage')}</Typography>
+                )}
+              </div>
             </div>
+
             <div className="flex grow basis-full flex-col gap-4">
               <Typography type="h2" size="h3">
-                {t('attachments')}
+                {t('Regulation.attachments')}
               </Typography>
 
               {/* TODO refactor to use standard component */}
               {attachmentFiles?.length ? (
-                <div className="flex flex-col rounded-lg border-2 px-4">
+                <div className="rounded-lg border-2 py-2">
                   {attachmentFiles
-                    .map(({ media: attachementMedia, title: attachmentTitle }) => {
+                    .map(({ media: attachementMedia, title: attachmentTitle }, index) => {
                       if (!attachementMedia.data.attributes) return null
-
                       return (
-                        <FileRowCard
-                          key={attachementMedia.data.id}
-                          title={attachmentTitle ?? attachementMedia.data.attributes.name}
-                          size={formatFileSize(attachementMedia.data.attributes.size, locale)}
-                          format={
-                            formatFileExtension(attachementMedia.data.attributes.ext) ?? undefined
-                          }
-                          downloadLink={attachementMedia.data.attributes.url}
-                          className={classNames('-mx-4 px-4 [&>*]:border-b-0')}
-                        />
+                        <>
+                          {index > 0 ? <HorizontalDivider className="mx-4 lg:mx-6" /> : null}
+                          <FileRowCard
+                            key={attachementMedia.data.id}
+                            title={attachmentTitle ?? attachementMedia.data.attributes.name}
+                            size={formatFileSize(attachementMedia.data.attributes.size, locale)}
+                            format={
+                              formatFileExtension(attachementMedia.data.attributes.ext) ?? undefined
+                            }
+                            downloadLink={attachementMedia.data.attributes.url}
+                          />
+                        </>
                       )
                     })
                     .filter(isDefined)}
                 </div>
               ) : (
-                <Typography type="p">{t('noAttachmentsMessage')}</Typography>
+                <Typography type="p">{t('Regulation.noAttachmentsMessage')}</Typography>
               )}
             </div>
           </div>
           <div className="flex w-full flex-col gap-y-4">
             <Typography type="h2" size="h3">
-              {t('amendments')}
+              {t('Regulation.amendments')}
             </Typography>
             {amendments?.length ? (
               <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
@@ -132,7 +137,7 @@ const RegulationPageContent = ({ regulation }: RegulationPageContentProps) => {
                       isUplneZnenie={amendment.attributes?.isFullTextRegulation}
                       metadata={
                         amendment.attributes?.attachments?.data.length
-                          ? t('numberOfAttachments', {
+                          ? t('Regulation.numberOfAttachments', {
                               count: amendment.attributes?.attachments?.data.length,
                             })
                           : null
@@ -143,18 +148,18 @@ const RegulationPageContent = ({ regulation }: RegulationPageContentProps) => {
                 })}
               </div>
             ) : (
-              <Typography type="p">{t('noAmendmentsMessage')}</Typography>
+              <Typography type="p">{t('Regulation.noAmendmentsMessage')}</Typography>
             )}
           </div>
           <div className="flex flex-col gap-y-4">
             <Typography type="h2" size="h4">
-              {t('influenceOnOtherRegulations')}
+              {t('Regulation.influenceOnOtherRegulations')}
             </Typography>
             <div className="flex flex-col gap-2">
               <Typography type="p">
                 {amending?.length ? (
                   <>
-                    {t('thisRegulationAmends')}{' '}
+                    {t('Regulation.thisRegulationAmends')}{' '}
                     {amending.map((amendedRegulation, index) => (
                       <Fragment key={amendedRegulation.id}>
                         <MLink
@@ -168,13 +173,13 @@ const RegulationPageContent = ({ regulation }: RegulationPageContentProps) => {
                     ))}
                   </>
                 ) : (
-                  <>{t('thisRegulationDoesntAmend')}</>
+                  <>{t('Regulation.thisRegulationDoesntAmend')}</>
                 )}
               </Typography>
               <Typography type="p">
                 {cancelling?.length ? (
                   <>
-                    {t('thisRegulationCancells')}{' '}
+                    {t('Regulation.thisRegulationCancells')}{' '}
                     {cancelling.map((cancelledRegulation, index) => (
                       <Fragment key={cancelledRegulation.id}>
                         <MLink
@@ -188,7 +193,7 @@ const RegulationPageContent = ({ regulation }: RegulationPageContentProps) => {
                     ))}
                   </>
                 ) : (
-                  <>{t('thisRegulationDoesntCancell')}</>
+                  <>{t('Regulation.thisRegulationDoesntCancell')}</>
                 )}
               </Typography>
             </div>

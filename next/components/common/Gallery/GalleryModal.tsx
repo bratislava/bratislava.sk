@@ -1,14 +1,13 @@
-import cx from 'classnames'
 import FocusTrap from 'focus-trap-react'
 import { AnimatePresence, motion } from 'framer-motion'
-import { useTranslations } from 'next-intl'
 import { ReactNode, useEffect, useRef } from 'react'
 import { AriaOverlayProps, OverlayContainer, useModal, useOverlay } from 'react-aria'
-import { twMerge } from 'tailwind-merge'
 import { useIsClient, useLockedBody } from 'usehooks-ts'
+import cn from 'utils/cn'
 
 import { CrossIcon } from '@/assets/ui-icons'
 import Button from '@/components/common/Button/Button'
+import { useTranslation } from '@/utils/useTranslation'
 
 export type ModalProps = {
   children: ReactNode
@@ -33,7 +32,7 @@ const GalleryModal = (props: ModalProps) => {
     centerVertically = true,
     noAnimation = false,
   } = props
-  const t = useTranslations('Gallery')
+  const { t } = useTranslation()
   const ref = useRef<HTMLDivElement | null>(null)
   const { overlayProps, underlayProps } = useOverlay(
     { ...props, isDismissable: isDismissable === undefined ? true : isDismissable },
@@ -61,15 +60,15 @@ const GalleryModal = (props: ModalProps) => {
           >
             <div
               {...underlayProps}
-              className={twMerge(
-                'fixed inset-0 z-50 overflow-y-auto overflow-x-hidden bg-gray-800/60',
+              className={cn(
+                'fixed inset-0 z-50 overflow-y-auto overflow-x-hidden bg-grey-800/60',
                 underlayClassName,
               )}
             >
-              <div className={cx({ 'flex min-h-full items-center': centerVertically })}>
+              <div className={cn({ 'flex min-h-full items-center': centerVertically })}>
                 <FocusTrap>
                   <div
-                    className={twMerge('mx-auto flex w-fit items-center', overlayClassName)}
+                    className={cn('mx-auto flex w-fit items-center', overlayClassName)}
                     {...overlayProps}
                     {...modalProps}
                     ref={ref}
@@ -78,7 +77,7 @@ const GalleryModal = (props: ModalProps) => {
                       <Button
                         variant="category-solid"
                         className="pointer-events-auto fixed right-6 top-6 z-30 rounded-full"
-                        aria-label={t('aria.closeGallery')}
+                        aria-label={t('Gallery.aria.closeGallery')}
                         onPress={onClose}
                         icon={<CrossIcon />}
                       />

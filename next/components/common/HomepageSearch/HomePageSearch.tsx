@@ -1,9 +1,8 @@
 import { useQuery } from '@tanstack/react-query'
 import { useRouter } from 'next/navigation'
-import { useLocale, useTranslations } from 'next-intl'
 import { Dispatch, SetStateAction, useCallback, useEffect, useRef, useState } from 'react'
-import { twMerge } from 'tailwind-merge'
 import { useDebounce, useOnClickOutside } from 'usehooks-ts'
+import cn from 'utils/cn'
 
 import HomePageSearchField from '@/components/common/HomepageSearch/HomePageSearchField'
 import HomePageSearchResults from '@/components/common/HomepageSearch/HomePageSearchResults'
@@ -12,6 +11,8 @@ import {
   getHomepageSearchQueryKey,
   homepageSearchFetcher,
 } from '@/services/meili/fetchers/homepageSearchFetcher'
+import { useLocale } from '@/utils/useLocale'
+import { useTranslation } from '@/utils/useTranslation'
 
 type HomePageSearchProps = {
   isOpen: boolean
@@ -20,7 +21,7 @@ type HomePageSearchProps = {
 
 const HomePageSearch = ({ isOpen, setOpen }: HomePageSearchProps) => {
   const router = useRouter()
-  const t = useTranslations()
+  const { t } = useTranslation()
   const locale = useLocale()
 
   const ref = useRef(null)
@@ -39,20 +40,20 @@ const HomePageSearch = ({ isOpen, setOpen }: HomePageSearchProps) => {
 
   const filters = { search: searchValue }
 
-  const { data, error, isPending } = useQuery({
+  const { data, isPending } = useQuery({
     queryKey: getHomepageSearchQueryKey(filters, locale),
     queryFn: () => homepageSearchFetcher(filters, locale),
   })
 
   const handleSearchPressed = useCallback(() => {
     // eslint-disable-next-line @typescript-eslint/no-floating-promises
-    router.push(`${t('searchLink')}?keyword=${input}`)
+    router.push(`${t('links.searchLink')}?keyword=${input}`)
   }, [router, input, t])
 
   return (
     <div ref={ref} className="relative">
       <div
-        className={twMerge(
+        className={cn(
           `${isOpen ? 'md:w-[634px]' : 'md:w-[444px]'}`,
           'w-full transition-all duration-300',
         )}

@@ -1,4 +1,3 @@
-import { useLocale } from 'next-intl'
 import React from 'react'
 import { TabPanel } from 'react-aria-components'
 
@@ -6,6 +5,7 @@ import Button from '@/components/common/Button/Button'
 import Iframe from '@/components/common/Iframe/Iframe'
 import { useHomepageContext } from '@/components/providers/HomepageContextProvider'
 import { getCommonLinkProps } from '@/utils/getCommonLinkProps'
+import { useLocale } from '@/utils/useLocale'
 
 const TabPanelRoadClosures = () => {
   const locale = useLocale()
@@ -17,7 +17,7 @@ const TabPanelRoadClosures = () => {
     <TabPanel id="RoadClosures">
       <div className="mt-8 pb-8 lg:mt-14">
         <Iframe
-          url={`https://cdn-api.bratislava.sk/static-pages/closures-and-restrictions-map/index.html?lang=${locale}`}
+          url={`https://static-pages.s3.bratislava.sk/closures-and-restrictions-map/index.html?lang=${locale}`}
           iframeWidth="container"
           iframeHeight="620"
           fullHeight={false}

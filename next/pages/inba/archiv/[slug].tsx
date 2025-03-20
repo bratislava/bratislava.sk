@@ -1,5 +1,6 @@
 import { GetStaticPaths, GetStaticProps } from 'next'
 import Head from 'next/head'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import * as React from 'react'
 
 import PageLayout from '@/components/layouts/PageLayout'
@@ -46,10 +47,10 @@ export const getStaticProps: GetStaticProps<PageProps, StaticParams> = async ({
 
   if (!slug || !locale) return { notFound: true }
 
-  const [{ inbaReleases }, general, messages] = await Promise.all([
+  const [{ inbaReleases }, general, translations] = await Promise.all([
     client.InbaReleaseBySlug({ slug }),
     client.General({ locale }),
-    import(`../../../messages/${locale}.json`),
+    serverSideTranslations(locale),
   ])
 
   const inbaRelease = inbaReleases?.data[0]
@@ -60,7 +61,7 @@ export const getStaticProps: GetStaticProps<PageProps, StaticParams> = async ({
       general,
       slug,
       inbaRelease,
-      messages: messages.default,
+      ...translations,
     },
     revalidate: 10,
   }

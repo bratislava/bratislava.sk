@@ -1,6 +1,6 @@
 import { Typography } from '@bratislava/component-library'
-import cx from 'classnames'
 import Image from 'next/image'
+import cn from 'utils/cn'
 
 import Markdown from '@/components/formatting/Markdown/Markdown'
 import { UploadImageSrcEntityFragment } from '@/services/graphql'
@@ -25,7 +25,7 @@ const IconTitleDescItem = ({
   return (
     <li className="relative flex flex-col items-center gap-6">
       <div
-        className={cx('flex shrink-0 items-center justify-center', {
+        className={cn('flex shrink-0 items-center justify-center', {
           'rounded-full p-6': hasIconBackground,
           'w-full': !hasIconBackground,
           'bg-white': hasBackground && hasIconBackground,
@@ -34,7 +34,7 @@ const IconTitleDescItem = ({
       >
         {icon?.attributes?.url && (
           <div
-            className={cx('relative', {
+            className={cn('relative', {
               'h-18 w-18': hasIconBackground,
               'h-30 w-full': !hasIconBackground,
             })}

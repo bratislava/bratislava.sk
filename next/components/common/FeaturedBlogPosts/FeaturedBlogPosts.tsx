@@ -1,4 +1,3 @@
-import { useTranslations } from 'next-intl'
 import React from 'react'
 
 import BlogPostCard from '@/components/cards/BlogPostCard'
@@ -9,6 +8,7 @@ import { LatestBlogPostEntityFragment } from '@/services/graphql'
 import { getCategoryColorLocalStyle } from '@/utils/colors'
 import { getNumericLocalDate } from '@/utils/formatDate'
 import { generateImageSizes } from '@/utils/generateImageSizes'
+import { useTranslation } from '@/utils/useTranslation'
 
 export type FeaturedBlogPostsProps = {
   blogPosts: LatestBlogPostEntityFragment[]
@@ -16,7 +16,7 @@ export type FeaturedBlogPostsProps = {
 
 // Component InbaFeaturedArticles is copied from this component
 const FeaturedBlogPosts = ({ blogPosts }: FeaturedBlogPostsProps) => {
-  const t = useTranslations()
+  const { t } = useTranslation()
 
   const majorBlog = blogPosts?.[0]
 

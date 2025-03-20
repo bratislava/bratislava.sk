@@ -1,13 +1,13 @@
 import { Typography } from '@bratislava/component-library'
 import Image from 'next/image'
-import { useTranslations } from 'next-intl'
 import React from 'react'
-import { twMerge } from 'tailwind-merge'
+import cn from 'utils/cn'
 
 import CardBase from '@/components/cards/CardBase'
 import CardContent from '@/components/cards/CardContent'
 import MLink from '@/components/common/MLink/MLink'
 import FormatEventDateRange from '@/components/formatting/FormatEventDateRange'
+import { useTranslation } from '@/utils/useTranslation'
 
 type EventCardProps = {
   title: string
@@ -35,10 +35,10 @@ const EventCard = ({
   imageSizes,
   className,
 }: EventCardProps) => {
-  const t = useTranslations('EventCard')
+  const { t } = useTranslation()
 
   return (
-    <CardBase variant="shadow" className={twMerge('rounded-lg text-white', className)}>
+    <CardBase variant="shadow" className={cn('rounded-lg text-white', className)}>
       <Image src={imageSrc} alt="" fill className="absolute object-cover" sizes={imageSizes} />
       <CardContent className="relative inline-flex h-full w-full flex-col items-start justify-end text-clip bg-gradient-to-b from-transparent to-[black] p-4 lg:p-5">
         <div className="flex w-full flex-col items-start gap-4 self-stretch">
@@ -52,7 +52,7 @@ const EventCard = ({
             {/* FIXME Typography: Convert to use Typography. Issue: Different size and weight than typography have */}
             {address && <span className="line-clamp-1">{address}</span>}
             <span className="line-clamp-1">
-              {isLongTerm && `${t('from')} `}
+              {isLongTerm && `${t('EventCard.from')} `}
               <FormatEventDateRange dateFrom={dateFrom} dateTo={dateTo ?? undefined} />
             </span>
           </div>

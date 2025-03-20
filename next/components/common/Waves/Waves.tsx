@@ -1,4 +1,4 @@
-import { twMerge } from 'tailwind-merge'
+import cn from 'utils/cn'
 
 import WaveBottomLarge from './waves/WaveBottomLarge'
 import WaveBottomSmall from './waves/WaveBottomSmall'
@@ -22,7 +22,7 @@ const Waves = ({
     <div
       aria-hidden
       style={{ backgroundColor, color: waveColor }}
-      className={twMerge('overflow-hidden', className)}
+      className={cn('overflow-hidden', className)}
     >
       {wavePosition === 'top' && (
         <>

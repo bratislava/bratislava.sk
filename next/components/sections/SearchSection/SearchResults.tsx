@@ -1,5 +1,4 @@
 import { Typography } from '@bratislava/component-library'
-import { useTranslations } from 'next-intl'
 import React, { Dispatch, SetStateAction, useEffect } from 'react'
 import { Selection } from 'react-aria-components'
 
@@ -12,6 +11,7 @@ import {
   SearchFilters,
   useQueryBySearchOption,
 } from '@/components/sections/SearchSection/useQueryBySearchOption'
+import { useTranslation } from '@/utils/useTranslation'
 
 type SearchResultsProps = {
   filters: SearchFilters
@@ -31,9 +31,10 @@ const SearchResults = ({
   onShowMore,
   onPageChange,
   // TODO use onLoadingChange to signal loading state to parent component
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   onLoadingChange,
 }: SearchResultsProps) => {
-  const t = useTranslations()
+  const { t } = useTranslation()
 
   const searchQuery = useQueryBySearchOption({ optionKey: searchOption.id, filters })
 
@@ -45,6 +46,8 @@ const SearchResults = ({
   const { searchResultsData, searchResultsCount } = data ?? { searchResultsCount: 0 }
 
   const GENERAL_RESULTS_COUNT = 5
+  const RESULTS_COUNT =
+    (searchResultsData?.length as number) < 5 ? searchResultsData?.length : GENERAL_RESULTS_COUNT // Logic based on TabPanelOfficialBoard.tsx
 
   useEffect(() => {
     onSetResultsCount(searchOption.id, searchResultsCount ?? 0)
@@ -74,23 +77,28 @@ const SearchResults = ({
             }}
           />
         )}
+
         {searchResultsData?.length ? (
-          <div className="flex flex-col lg:gap-y-2" data-cy="search-results">
+          <ul className="flex flex-col rounded-lg border-2 py-2" data-cy="search-results">
             {searchResultsData
               .slice(0, variant === 'allResults' ? GENERAL_RESULTS_COUNT : undefined)
-              .map((item) => {
+              .map((item, index) => {
                 return (
-                  <SearchResultCard
-                    data={{ ...item }}
+                  <li
                     key={`item-${variant}-${searchOption.id}-${[
                       item.uniqueId,
                       item.title,
                       ...(item?.metadata ?? []),
                     ].join('')}`}
-                  />
+                  >
+                    <SearchResultCard
+                      data={{ ...item }}
+                      hideBottomDivider={index === (RESULTS_COUNT as number) - 1}
+                    />
+                  </li>
                 )
               })}
-          </div>
+          </ul>
         ) : filters.search ? (
           <div data-cy="no-search-results">
             <Typography type="p">{t('SearchPage.noResults')}</Typography>

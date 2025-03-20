@@ -1,8 +1,7 @@
 import * as NavigationMenu from '@radix-ui/react-navigation-menu'
-import cx from 'classnames'
-import { useTranslations } from 'next-intl'
 import React, { useMemo } from 'react'
 import { useEventListener, useLockedBody, useWindowSize } from 'usehooks-ts'
+import cn from 'utils/cn'
 
 import Button from '@/components/common/Button/Button'
 import MLink from '@/components/common/MLink/MLink'
@@ -11,13 +10,14 @@ import Pictogram from '@/components/common/Pictogram/Pictogram'
 import { useGeneralContext } from '@/components/providers/GeneralContextProvider'
 import { getCommonLinkProps } from '@/utils/getCommonLinkProps'
 import { isDefined } from '@/utils/isDefined'
+import { useTranslation } from '@/utils/useTranslation'
 
 import { getParsedMenus } from './getParsedMenus'
 import MobileNavMenuItem from './MobileNavMenuItem'
 import { useNavMenuContext } from './navMenuContext'
 
 const MobileNavMenu = () => {
-  const t = useTranslations('NavMenu')
+  const { t } = useTranslation()
   const { height } = useWindowSize()
   const heightWithoutHeader = `calc(${height}px - 14*4px)`
 
@@ -27,7 +27,7 @@ const MobileNavMenu = () => {
   const linksOnMobile = links?.filter(isDefined).filter((link) => link.showOnMobile)
 
   const menus = useMemo(() => {
-    return getParsedMenus(generalMenu, t('more'))
+    return getParsedMenus(generalMenu, t('NavMenu.more'))
   }, [generalMenu, t])
 
   const { menuValue, setMenuValue, isMobileMenuOpen, setMobileMenuOpen } = useNavMenuContext()
@@ -42,7 +42,7 @@ const MobileNavMenu = () => {
 
   return (
     <div
-      className={cx(
+      className={cn(
         'fixed left-0 top-14 z-[28] flex w-screen flex-col gap-4 overflow-y-scroll bg-white px-4 py-6 lg:hidden',
         {
           'animate-fadeIn': isMobileMenuOpen,
@@ -54,7 +54,7 @@ const MobileNavMenu = () => {
       <NavigationMenu.Root
         value={menuValue}
         onValueChange={setMenuValue}
-        aria-label={t('aria.navMenuLabel')}
+        aria-label={t('NavMenu.aria.navMenuLabel')}
       >
         <NavigationMenu.List className="flex flex-col gap-2">
           {menus.map((menu, index) => (

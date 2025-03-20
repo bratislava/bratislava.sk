@@ -65,7 +65,7 @@ const Iframe = ({
           // It may not work if the iframe needs some necessary cookies, or it may block some iframe to render at all.
           // But it seems to work for all of our iframes so far.
           // https://stackoverflow.com/questions/44837450/recommended-method-to-prevent-any-content-inside-iframe-from-setting-cookies
-          sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox allow-same-origin"
+          sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-forms"
         />
       </div>
     </div>

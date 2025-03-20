@@ -1,5 +1,5 @@
-import cx from 'classnames'
 import * as React from 'react'
+import cn from 'utils/cn'
 
 export type RadioProps = React.DetailedHTMLProps<
   React.InputHTMLAttributes<HTMLInputElement>,
@@ -12,10 +12,10 @@ const Radio = ({ className, id, title, ...rest }: RadioProps) => {
   return (
     <label
       htmlFor={id}
-      className={cx(
+      className={cn(
         'base-radio',
         className,
-        cx({
+        cn({
           'hover:border-category-600 hover:border-opacity-100 focus:border-category-600 focus:border-opacity-100 focus:outline-none':
             !rest.checked,
           'border-category-600 border-opacity-100 outline-none': rest.checked,

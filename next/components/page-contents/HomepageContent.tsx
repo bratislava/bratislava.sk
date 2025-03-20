@@ -1,4 +1,3 @@
-import { useTranslations } from 'next-intl'
 import React from 'react'
 
 import Waves from '@/components/common/Waves/Waves'
@@ -8,9 +7,10 @@ import InbaHomepageSection from '@/components/sections/homepage-sections/InbaHom
 import NewsAndInfoHomepageSection from '@/components/sections/homepage-sections/NewsAndInfoHomepageSection'
 import TopServicesHomepageSection from '@/components/sections/homepage-sections/TopServicesHomepageSection'
 import WelcomeHomepageSection from '@/components/sections/homepage-sections/WelcomeHomepageSection'
+import { useTranslation } from '@/utils/useTranslation'
 
 const HomepageContent = () => {
-  const t = useTranslations()
+  const { t } = useTranslation()
 
   return (
     <>
@@ -18,11 +18,11 @@ const HomepageContent = () => {
 
       <WelcomeHomepageSection />
 
-      <Waves waveColor="rgb(var(--color-gray-50))" wavePosition="top" />
+      <Waves waveColor="rgb(var(--color-grey-50))" wavePosition="top" />
 
       <NewsAndInfoHomepageSection />
 
-      <Waves wavePosition="bottom" waveColor="rgb(var(--color-gray-50))" />
+      <Waves wavePosition="bottom" waveColor="rgb(var(--color-grey-50))" />
 
       <EventsHomepageSection />
 

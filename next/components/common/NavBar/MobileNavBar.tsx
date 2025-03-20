@@ -1,8 +1,7 @@
 import FocusTrap from 'focus-trap-react'
 import { usePathname } from 'next/navigation'
-import { useTranslations } from 'next-intl'
 import React, { useEffect } from 'react'
-import { twMerge } from 'tailwind-merge'
+import cn from 'utils/cn'
 
 import { CrossIcon, HamburgerIcon, SearchIcon } from '@/assets/ui-icons'
 import Brand from '@/components/common/Brand/Brand'
@@ -11,6 +10,7 @@ import MLink from '@/components/common/MLink/MLink'
 import AlertBanner from '@/components/common/NavBar/AlertBanner'
 import { useLocalizations } from '@/components/providers/LocalizationsProvider'
 import { getCategoryColorLocalStyle } from '@/utils/colors'
+import { useTranslation } from '@/utils/useTranslation'
 
 import MobileNavMenu from './NavMenu/MobileNavMenu'
 import { useNavMenuContext } from './NavMenu/navMenuContext'
@@ -24,7 +24,7 @@ type MobileNavBarProps = {
 }
 
 const MobileNavBar = ({ className }: MobileNavBarProps) => {
-  const t = useTranslations()
+  const { t } = useTranslation()
   const pathname = usePathname()
   const { isMobileMenuOpen, setMobileMenuOpen } = useNavMenuContext()
   const { otherLanguage } = useLocalizations()
@@ -37,7 +37,7 @@ const MobileNavBar = ({ className }: MobileNavBarProps) => {
     <div className={className}>
       <FocusTrap active={isMobileMenuOpen}>
         <div style={getCategoryColorLocalStyle({ category: 'main' })}>
-          <div className="fixed top-0 z-30 flex h-14 w-full items-center justify-between bg-white px-4 text-gray-700 shadow">
+          <div className="fixed top-0 z-30 flex h-14 w-full items-center justify-between bg-white px-4 text-grey-700 shadow">
             <div className="flex items-center">
               <Brand url="/" className="-ml-4 px-4 py-3" />
             </div>
@@ -54,7 +54,7 @@ const MobileNavBar = ({ className }: MobileNavBarProps) => {
                 </MLink>
               )}
               <Divider />
-              <MLink data-cy="search-button-mobile" href={t('searchLink')} className="p-4">
+              <MLink data-cy="search-button-mobile" href={t('links.searchLink')} className="p-4">
                 <SearchIcon />
               </MLink>
               <Divider />
@@ -62,14 +62,14 @@ const MobileNavBar = ({ className }: MobileNavBarProps) => {
                 <Button
                   onPress={() => setMobileMenuOpen(false)}
                   className="-mr-4 p-4"
-                  aria-label={t('menu.closeMenu')}
+                  aria-label={t('MobileNavBar.closeMenu')}
                   icon={<CrossIcon />}
                 />
               ) : (
                 <Button
                   onPress={() => setMobileMenuOpen(true)}
                   className="-mr-4 p-4"
-                  aria-label={t('menu.openMenu')}
+                  aria-label={t('MobileNavBar.openMenu')}
                   data-cy="mobile-menu-button"
                   icon={<HamburgerIcon />}
                 />
@@ -80,7 +80,7 @@ const MobileNavBar = ({ className }: MobileNavBarProps) => {
         </div>
       </FocusTrap>
       {/* Empty div under header */}
-      <div className={twMerge('h-14', className)} />
+      <div className={cn('h-14', className)} />
 
       <AlertBanner />
     </div>

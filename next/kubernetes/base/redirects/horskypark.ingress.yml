@@ -1,0 +1,39 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: horskypark-${BUILD_REPOSITORY_NAME}-ingress
+  namespace: ${NAMESPACE}
+  labels:
+    service: redirect
+  annotations:
+    cert-manager.io/cluster-issuer: cloudflare-dns01
+    cert-manager.io/issue-temporary-certificate: 'true'
+    kubernetes.io/ingress.class: haproxy
+    ingress.kubernetes.io/redirect-to: https://${BRATISKA_HOSTNAME}/zivotne-prostredie-a-vystavba/zelen/udrzba-a-tvorba-zelene/parky-a-zahrady/horsky-park
+spec:
+  tls:
+    - hosts:
+        - horskypark.${DEPLOYMENT_ENV}bratislava.sk
+        - www.horskypark.${DEPLOYMENT_ENV}bratislava.sk
+      secretName: horskypark-${BUILD_REPOSITORY_NAME}-tls
+  rules:
+    - host: horskypark.${DEPLOYMENT_ENV}bratislava.sk
+      http:
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: ${BUILD_REPOSITORY_NAME}-app
+                port:
+                  number: 80
+    - host: www.horskypark.${DEPLOYMENT_ENV}bratislava.sk
+      http:
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: ${BUILD_REPOSITORY_NAME}-app
+                port:
+                  number: 80

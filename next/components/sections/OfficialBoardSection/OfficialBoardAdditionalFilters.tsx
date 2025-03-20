@@ -1,5 +1,4 @@
 import { useQuery } from '@tanstack/react-query'
-import { useTranslations } from 'next-intl'
 import React from 'react'
 
 import SelectField, { SelectItem } from '@/components/common/SelectField/SelectField'
@@ -9,6 +8,7 @@ import {
 } from '@/services/ginis/fetchers/officialBoardCategoriesFetcher'
 import { OfficialBoardPublicationState, ParsedOfficialBoardCategory } from '@/services/ginis/types'
 import { isDefined } from '@/utils/isDefined'
+import { useTranslation } from '@/utils/useTranslation'
 import { isProductionDeployment } from '@/utils/utils' // TODO maybe we shouldn't use czech string for values, but parse them in handler or somewhere else?
 
 // TODO maybe we shouldn't use czech string for values, but parse them in handler or somewhere else?
@@ -25,7 +25,7 @@ const OfficialBoardAdditionalFilters = ({
   publicationState,
   setPublicationState,
 }: Props) => {
-  const t = useTranslations('OfficialBoard')
+  const { t } = useTranslation()
 
   // TODO handle loading and error
   const {
@@ -53,7 +53,7 @@ const OfficialBoardAdditionalFilters = ({
     >)[] = [
     {
       id: 'all',
-      title: t('allOptions'),
+      title: t('OfficialBoard.allOptions'),
     } as const,
     ...(officialBoardCategories ?? []),
   ]
@@ -64,18 +64,18 @@ const OfficialBoardAdditionalFilters = ({
   }[] = [
     {
       id: 'vyveseno',
-      title: t('published'),
+      title: t('OfficialBoard.published'),
     },
     {
       id: 'sejmuto',
-      title: t('archived'),
+      title: t('OfficialBoard.archived'),
     },
   ]
 
   return (
     <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
       <SelectField
-        label={t('category')}
+        label={t('OfficialBoard.category')}
         selectedKey={categoryId}
         onSelectionChange={(selected) => setCategoryId(selected as string | null | 'all')}
       >
@@ -101,7 +101,7 @@ const OfficialBoardAdditionalFilters = ({
       {/* TODO remove this check, but for now, we want to test in on staging without being block by accidental release */}
       {isProductionDeployment() ? null : (
         <SelectField
-          label={t('publicationState')}
+          label={t('OfficialBoard.publicationState')}
           items={publicationStateSelectOptions}
           selectedKey={publicationState}
           onSelectionChange={(selected) => setPublicationState(selected as typeof publicationState)}

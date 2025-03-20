@@ -1,8 +1,8 @@
-import cx from 'classnames'
-import { useTranslations } from 'next-intl'
+import cn from 'utils/cn'
 
 import { CrossIcon } from '@/assets/ui-icons'
 import Button from '@/components/common/Button/Button'
+import { useTranslation } from '@/utils/useTranslation'
 
 type TagProps = {
   text: string
@@ -13,21 +13,21 @@ type TagProps = {
 }
 
 const Tag = ({ text, size = 'small', isColored = false, shorthand, onRemove }: TagProps) => {
-  const t = useTranslations('Tag')
+  const { t } = useTranslation()
 
   const isRemovable = !!onRemove
 
   // STYLES
-  const classStyles = cx('flex w-fit items-center justify-center gap-1 rounded text-center', {
+  const classStyles = cn('flex w-fit items-center justify-center gap-1 rounded text-center', {
     'text-small px-2 py-0': size === 'small',
     'text-default py-0.5 px-3': size === 'large',
-    'bg-gray-100': isRemovable || !isColored,
-    'text-gray-700': isRemovable || !isColored,
+    'bg-grey-100': isRemovable || !isColored,
+    'text-grey-700': isRemovable || !isColored,
     'bg-category-100': !isRemovable && isColored,
     'text-category-700': !isRemovable && isColored,
   })
 
-  const iconClassStyles = cx({
+  const iconClassStyles = cn({
     'w-2.5 h-2.5': size === 'small',
     'w-3 h-3': size === 'large',
   })
@@ -46,7 +46,7 @@ const Tag = ({ text, size = 'small', isColored = false, shorthand, onRemove }: T
         <Button
           onPress={onRemove}
           icon={<CrossIcon className={iconClassStyles} />}
-          aria-label={t('aria.removeTag', { tag: text })}
+          aria-label={t('Tag.aria.removeTag', { tag: text })}
           className="p-0"
         />
       )}

@@ -1,5 +1,4 @@
 import { Typography } from '@bratislava/component-library'
-import { useTranslations } from 'next-intl'
 import React from 'react'
 import { TabPanel } from 'react-aria-components'
 
@@ -14,11 +13,12 @@ import { getNumericLocalDate } from '@/utils/formatDate'
 import { generateImageSizes } from '@/utils/generateImageSizes'
 import { getCommonLinkProps } from '@/utils/getCommonLinkProps'
 import { isDefined } from '@/utils/isDefined'
+import { useTranslation } from '@/utils/useTranslation'
 
 const imageSizes = generateImageSizes({ default: '50vw', lg: '33vw' })
 
 const TabPanelLatestNews = () => {
-  const t = useTranslations('HomepageTabs')
+  const { t } = useTranslation()
 
   const { homepage, blogPosts } = useHomepageContext()
   const { tabs } = homepage?.attributes ?? {}
@@ -27,12 +27,12 @@ const TabPanelLatestNews = () => {
     blogPosts
       ?.filter(isDefined)
       .filter((post) => post.id !== leftNewsItem?.data?.id && post.id !== rightNewsItem?.data?.id)
-      .slice(0, 5) ?? []
+      .slice(0, 4) ?? []
 
   const allPosts =
     [leftNewsItem?.data, rightNewsItem?.data, ...latestPostsFiltered]
       .filter(isDefined)
-      .slice(0, 7) ?? []
+      .slice(0, 6) ?? []
 
   return (
     <TabPanel id="LatestNews">
@@ -52,7 +52,7 @@ const TabPanelLatestNews = () => {
               date={getNumericLocalDate(date_added ?? publishedAt)}
               tag={tagTitle ?? undefined}
               title={title ?? ''}
-              linkProps={{ children: t('readMore'), href: `/blog/${slug}` }}
+              linkProps={{ children: t('HomepageTabs.readMore'), href: `/blog/${slug}` }}
               imgSrc={coverImage?.data?.attributes?.url}
               imgSizes={imageSizes}
             />
@@ -75,7 +75,7 @@ const TabPanelLatestNews = () => {
                 date={getNumericLocalDate(date_added ?? publishedAt)}
                 tag={tagTitle ?? undefined}
                 title={title ?? ''}
-                linkProps={{ children: t('readMore'), href: `/blog/${slug}` }}
+                linkProps={{ children: t('HomepageTabs.readMore'), href: `/blog/${slug}` }}
                 imgSrc={coverImage?.data?.attributes?.url}
                 imgSizes={imageSizes}
                 text={excerpt ?? undefined}

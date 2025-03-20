@@ -1,4 +1,3 @@
-import cx from 'classnames'
 import React, { ReactNode } from 'react'
 import {
   Button,
@@ -14,7 +13,7 @@ import {
   Text,
   ValidationResult,
 } from 'react-aria-components'
-import { twMerge } from 'tailwind-merge'
+import cn from 'utils/cn'
 
 import { CheckInCircleIcon, ChevronDownIcon } from '@/assets/ui-icons'
 
@@ -41,10 +40,10 @@ export const SelectItem = ({ label, description, isDivider = false, ...rest }: S
     <ListBoxItem
       {...rest}
       className={({ isHovered, isFocusVisible }) =>
-        cx('flex cursor-pointer justify-between px-5 py-3 outline-none', {
-          'bg-gray-100': isHovered,
+        cn('flex cursor-pointer justify-between px-5 py-3 outline-none', {
+          'bg-grey-100': isHovered,
           'ring ring-offset-2': isFocusVisible,
-          'after:h-0.5 after:bg-gray-200 after:[&:not(:last-child)]:block': isDivider,
+          'after:h-0.5 after:bg-grey-200 after:[&:not(:last-child)]:block': isDivider,
         })
       }
     >
@@ -54,7 +53,7 @@ export const SelectItem = ({ label, description, isDivider = false, ...rest }: S
             <Text slot="label">{label}</Text>
             {description ? <Text slot="description">{description}</Text> : null}
           </div>
-          <div className={cx('shrink-0', { hidden: !isSelected })}>
+          <div className={cn('shrink-0', { hidden: !isSelected })}>
             <CheckInCircleIcon />
           </div>
         </>
@@ -74,19 +73,19 @@ const SelectField = <T extends object>({
 }: SelectFieldProps<T>) => {
   const disabled = props.isDisabled
 
-  const style = cx(
-    'flex w-full justify-between gap-3 rounded-lg border-2 bg-white px-3 py-2 outline-none ring-offset-2 focus:border-gray-800 focus-visible:ring lg:px-4 lg:py-3',
+  const style = cn(
+    'flex w-full justify-between gap-3 rounded-lg border-2 bg-white px-3 py-2 outline-none ring-offset-2 focus:border-grey-800 focus-visible:ring lg:px-4 lg:py-3',
     {
-      'border-gray-200 hover:border-gray-400': !disabled,
+      'border-grey-200 hover:border-grey-400': !disabled,
       'border-negative-700 hover:border-negative-700': errorMessage && !disabled,
-      'pointer-events-none border-gray-300 bg-gray-100': disabled,
+      'pointer-events-none border-grey-300 bg-grey-100': disabled,
     },
   )
 
   return (
     <Select
       {...props}
-      className={twMerge('flex flex-col gap-1', typeof className === 'string' ? className : '')}
+      className={cn('flex flex-col gap-1', { className: typeof className === 'string' })}
     >
       <Label className="font-semibold">
         {label}
@@ -103,7 +102,7 @@ const SelectField = <T extends object>({
       <FieldError>{errorMessage}</FieldError>
 
       <Popover
-        className="w-[--trigger-width] overflow-y-scroll rounded-md border-2 border-gray-800 bg-white py-2"
+        className="w-[--trigger-width] overflow-y-scroll rounded-md border-2 border-grey-800 bg-white py-2"
         shouldFlip={false}
       >
         <ListBox items={items}>{children}</ListBox>

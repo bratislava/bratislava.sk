@@ -1,9 +1,9 @@
 import { Typography } from '@bratislava/component-library'
-import { useTranslations } from 'next-intl'
 
 import RegulationCard from '@/components/cards/RegulationCard/RegulationCard'
 import ResponsiveCarousel from '@/components/common/Carousel/ResponsiveCarousel'
 import { RegulationEntityFragment } from '@/services/graphql'
+import { useTranslation } from '@/utils/useTranslation'
 
 type Props = {
   className?: string
@@ -11,7 +11,7 @@ type Props = {
 }
 
 const Regulations = ({ className, regulations }: Props) => {
-  const t = useTranslations()
+  const { t } = useTranslation()
 
   return (
     <div className={className}>

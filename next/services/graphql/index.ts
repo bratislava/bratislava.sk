@@ -408,7 +408,6 @@ export type ComponentBlocksDocListExtensionsInput = {
 
 export type ComponentBlocksFile = {
   __typename?: 'ComponentBlocksFile'
-  category?: Maybe<Scalars['String']['output']>
   id: Scalars['ID']['output']
   media?: Maybe<UploadFileEntityResponse>
   title?: Maybe<Scalars['String']['output']>
@@ -416,7 +415,6 @@ export type ComponentBlocksFile = {
 
 export type ComponentBlocksFileFiltersInput = {
   and?: InputMaybe<Array<InputMaybe<ComponentBlocksFileFiltersInput>>>
-  category?: InputMaybe<StringFilterInput>
   not?: InputMaybe<ComponentBlocksFileFiltersInput>
   or?: InputMaybe<Array<InputMaybe<ComponentBlocksFileFiltersInput>>>
   title?: InputMaybe<StringFilterInput>
@@ -1130,6 +1128,36 @@ export type ComponentSectionsDivider = {
   style?: Maybe<Enum_Componentsectionsdivider_Style>
 }
 
+export type ComponentSectionsFaqCategories = {
+  __typename?: 'ComponentSectionsFaqCategories'
+  faqCategories?: Maybe<FaqCategoryRelationResponseCollection>
+  id: Scalars['ID']['output']
+  text?: Maybe<Scalars['String']['output']>
+  title?: Maybe<Scalars['String']['output']>
+}
+
+export type ComponentSectionsFaqCategoriesFaqCategoriesArgs = {
+  filters?: InputMaybe<FaqCategoryFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  publicationState?: InputMaybe<PublicationState>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type ComponentSectionsFaqs = {
+  __typename?: 'ComponentSectionsFaqs'
+  faqs?: Maybe<FaqRelationResponseCollection>
+  id: Scalars['ID']['output']
+  text?: Maybe<Scalars['String']['output']>
+  title?: Maybe<Scalars['String']['output']>
+}
+
+export type ComponentSectionsFaqsFaqsArgs = {
+  filters?: InputMaybe<FaqFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  publicationState?: InputMaybe<PublicationState>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
 export type ComponentSectionsFeaturedBlogPosts = {
   __typename?: 'ComponentSectionsFeaturedBlogPosts'
   first_blog?: Maybe<BlogPostEntityResponse>
@@ -1141,22 +1169,13 @@ export type ComponentSectionsFeaturedBlogPosts = {
 export type ComponentSectionsFileList = {
   __typename?: 'ComponentSectionsFileList'
   fileList?: Maybe<Array<Maybe<ComponentBlocksFile>>>
-  files?: Maybe<Array<Maybe<ComponentBlocksFileItem>>>
-  hasBackground?: Maybe<Scalars['Boolean']['output']>
   id: Scalars['ID']['output']
   text?: Maybe<Scalars['String']['output']>
   title?: Maybe<Scalars['String']['output']>
-  variant?: Maybe<Enum_Componentsectionsfilelist_Variant>
 }
 
 export type ComponentSectionsFileListFileListArgs = {
   filters?: InputMaybe<ComponentBlocksFileFiltersInput>
-  pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
-}
-
-export type ComponentSectionsFileListFilesArgs = {
-  filters?: InputMaybe<ComponentBlocksFileItemFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
 }
@@ -1701,11 +1720,6 @@ export enum Enum_Componentsectionsdivider_Style {
   Vzdelavanie = 'vzdelavanie',
 }
 
-export enum Enum_Componentsectionsfilelist_Variant {
-  Grid = 'grid',
-  Rows = 'rows',
-}
-
 export enum Enum_Componentsectionsiframe_Iframewidth {
   Container = 'container',
   Full = 'full',
@@ -1836,6 +1850,139 @@ export type Error = {
   __typename?: 'Error'
   code: Scalars['String']['output']
   message?: Maybe<Scalars['String']['output']>
+}
+
+export type Faq = {
+  __typename?: 'Faq'
+  body?: Maybe<Scalars['String']['output']>
+  createdAt?: Maybe<Scalars['DateTime']['output']>
+  faqCategory?: Maybe<FaqCategoryEntityResponse>
+  locale?: Maybe<Scalars['String']['output']>
+  localizations?: Maybe<FaqRelationResponseCollection>
+  publishedAt?: Maybe<Scalars['DateTime']['output']>
+  title: Scalars['String']['output']
+  updatedAt?: Maybe<Scalars['DateTime']['output']>
+}
+
+export type FaqLocalizationsArgs = {
+  filters?: InputMaybe<FaqFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  publicationState?: InputMaybe<PublicationState>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type FaqCategory = {
+  __typename?: 'FaqCategory'
+  createdAt?: Maybe<Scalars['DateTime']['output']>
+  faqs?: Maybe<FaqRelationResponseCollection>
+  locale?: Maybe<Scalars['String']['output']>
+  localizations?: Maybe<FaqCategoryRelationResponseCollection>
+  publishedAt?: Maybe<Scalars['DateTime']['output']>
+  slug: Scalars['String']['output']
+  title: Scalars['String']['output']
+  updatedAt?: Maybe<Scalars['DateTime']['output']>
+}
+
+export type FaqCategoryFaqsArgs = {
+  filters?: InputMaybe<FaqFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  publicationState?: InputMaybe<PublicationState>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type FaqCategoryLocalizationsArgs = {
+  filters?: InputMaybe<FaqCategoryFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  publicationState?: InputMaybe<PublicationState>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type FaqCategoryEntity = {
+  __typename?: 'FaqCategoryEntity'
+  attributes?: Maybe<FaqCategory>
+  id?: Maybe<Scalars['ID']['output']>
+}
+
+export type FaqCategoryEntityResponse = {
+  __typename?: 'FaqCategoryEntityResponse'
+  data?: Maybe<FaqCategoryEntity>
+}
+
+export type FaqCategoryEntityResponseCollection = {
+  __typename?: 'FaqCategoryEntityResponseCollection'
+  data: Array<FaqCategoryEntity>
+  meta: ResponseCollectionMeta
+}
+
+export type FaqCategoryFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<FaqCategoryFiltersInput>>>
+  createdAt?: InputMaybe<DateTimeFilterInput>
+  faqs?: InputMaybe<FaqFiltersInput>
+  id?: InputMaybe<IdFilterInput>
+  locale?: InputMaybe<StringFilterInput>
+  localizations?: InputMaybe<FaqCategoryFiltersInput>
+  not?: InputMaybe<FaqCategoryFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<FaqCategoryFiltersInput>>>
+  publishedAt?: InputMaybe<DateTimeFilterInput>
+  slug?: InputMaybe<StringFilterInput>
+  title?: InputMaybe<StringFilterInput>
+  updatedAt?: InputMaybe<DateTimeFilterInput>
+}
+
+export type FaqCategoryInput = {
+  faqs?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
+  publishedAt?: InputMaybe<Scalars['DateTime']['input']>
+  slug?: InputMaybe<Scalars['String']['input']>
+  title?: InputMaybe<Scalars['String']['input']>
+}
+
+export type FaqCategoryRelationResponseCollection = {
+  __typename?: 'FaqCategoryRelationResponseCollection'
+  data: Array<FaqCategoryEntity>
+}
+
+export type FaqEntity = {
+  __typename?: 'FaqEntity'
+  attributes?: Maybe<Faq>
+  id?: Maybe<Scalars['ID']['output']>
+}
+
+export type FaqEntityResponse = {
+  __typename?: 'FaqEntityResponse'
+  data?: Maybe<FaqEntity>
+}
+
+export type FaqEntityResponseCollection = {
+  __typename?: 'FaqEntityResponseCollection'
+  data: Array<FaqEntity>
+  meta: ResponseCollectionMeta
+}
+
+export type FaqFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<FaqFiltersInput>>>
+  body?: InputMaybe<StringFilterInput>
+  createdAt?: InputMaybe<DateTimeFilterInput>
+  faqCategory?: InputMaybe<FaqCategoryFiltersInput>
+  id?: InputMaybe<IdFilterInput>
+  locale?: InputMaybe<StringFilterInput>
+  localizations?: InputMaybe<FaqFiltersInput>
+  not?: InputMaybe<FaqFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<FaqFiltersInput>>>
+  publishedAt?: InputMaybe<DateTimeFilterInput>
+  title?: InputMaybe<StringFilterInput>
+  updatedAt?: InputMaybe<DateTimeFilterInput>
+}
+
+export type FaqInput = {
+  body?: InputMaybe<Scalars['String']['input']>
+  faqCategory?: InputMaybe<Scalars['ID']['input']>
+  publishedAt?: InputMaybe<Scalars['DateTime']['input']>
+  title?: InputMaybe<Scalars['String']['input']>
+}
+
+export type FaqRelationResponseCollection = {
+  __typename?: 'FaqRelationResponseCollection'
+  data: Array<FaqEntity>
 }
 
 export type FileInfoInput = {
@@ -2019,6 +2166,8 @@ export type GenericMorph =
   | ComponentSectionsComparisonSection
   | ComponentSectionsContactsSection
   | ComponentSectionsDivider
+  | ComponentSectionsFaqCategories
+  | ComponentSectionsFaqs
   | ComponentSectionsFeaturedBlogPosts
   | ComponentSectionsFileList
   | ComponentSectionsGallery
@@ -2047,6 +2196,8 @@ export type GenericMorph =
   | ComponentSectionsVideos
   | ComponentSectionsWaves
   | ComponentTaxAdministratorsTaxAdministrator
+  | Faq
+  | FaqCategory
   | Footer
   | General
   | Homepage
@@ -2523,6 +2674,10 @@ export type Mutation = {
   createAlertLocalization?: Maybe<AlertEntityResponse>
   createBlogPost?: Maybe<BlogPostEntityResponse>
   createBlogPostLocalization?: Maybe<BlogPostEntityResponse>
+  createFaq?: Maybe<FaqEntityResponse>
+  createFaqCategory?: Maybe<FaqCategoryEntityResponse>
+  createFaqCategoryLocalization?: Maybe<FaqCategoryEntityResponse>
+  createFaqLocalization?: Maybe<FaqEntityResponse>
   createFooterLocalization?: Maybe<FooterEntityResponse>
   createGeneralLocalization?: Maybe<GeneralEntityResponse>
   createHomepageLocalization?: Maybe<HomepageEntityResponse>
@@ -2550,6 +2705,8 @@ export type Mutation = {
   createVzn?: Maybe<VznEntityResponse>
   deleteAlert?: Maybe<AlertEntityResponse>
   deleteBlogPost?: Maybe<BlogPostEntityResponse>
+  deleteFaq?: Maybe<FaqEntityResponse>
+  deleteFaqCategory?: Maybe<FaqCategoryEntityResponse>
   deleteFooter?: Maybe<FooterEntityResponse>
   deleteGeneral?: Maybe<GeneralEntityResponse>
   deleteHomepage?: Maybe<HomepageEntityResponse>
@@ -2583,6 +2740,8 @@ export type Mutation = {
   resetPassword?: Maybe<UsersPermissionsLoginPayload>
   updateAlert?: Maybe<AlertEntityResponse>
   updateBlogPost?: Maybe<BlogPostEntityResponse>
+  updateFaq?: Maybe<FaqEntityResponse>
+  updateFaqCategory?: Maybe<FaqCategoryEntityResponse>
   updateFileInfo: UploadFileEntityResponse
   updateFooter?: Maybe<FooterEntityResponse>
   updateGeneral?: Maybe<GeneralEntityResponse>
@@ -2626,6 +2785,28 @@ export type MutationCreateBlogPostArgs = {
 
 export type MutationCreateBlogPostLocalizationArgs = {
   data?: InputMaybe<BlogPostInput>
+  id?: InputMaybe<Scalars['ID']['input']>
+  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
+}
+
+export type MutationCreateFaqArgs = {
+  data: FaqInput
+  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
+}
+
+export type MutationCreateFaqCategoryArgs = {
+  data: FaqCategoryInput
+  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
+}
+
+export type MutationCreateFaqCategoryLocalizationArgs = {
+  data?: InputMaybe<FaqCategoryInput>
+  id?: InputMaybe<Scalars['ID']['input']>
+  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
+}
+
+export type MutationCreateFaqLocalizationArgs = {
+  data?: InputMaybe<FaqInput>
   id?: InputMaybe<Scalars['ID']['input']>
   locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
 }
@@ -2757,6 +2938,16 @@ export type MutationDeleteBlogPostArgs = {
   locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
 }
 
+export type MutationDeleteFaqArgs = {
+  id: Scalars['ID']['input']
+  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
+}
+
+export type MutationDeleteFaqCategoryArgs = {
+  id: Scalars['ID']['input']
+  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
+}
+
 export type MutationDeleteFooterArgs = {
   locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
 }
@@ -2871,6 +3062,18 @@ export type MutationUpdateAlertArgs = {
 
 export type MutationUpdateBlogPostArgs = {
   data: BlogPostInput
+  id: Scalars['ID']['input']
+  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
+}
+
+export type MutationUpdateFaqArgs = {
+  data: FaqInput
+  id: Scalars['ID']['input']
+  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
+}
+
+export type MutationUpdateFaqCategoryArgs = {
+  data: FaqCategoryInput
   id: Scalars['ID']['input']
   locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
 }
@@ -3194,6 +3397,8 @@ export type PageSectionsDynamicZone =
   | ComponentSectionsComparisonSection
   | ComponentSectionsContactsSection
   | ComponentSectionsDivider
+  | ComponentSectionsFaqCategories
+  | ComponentSectionsFaqs
   | ComponentSectionsFeaturedBlogPosts
   | ComponentSectionsFileList
   | ComponentSectionsGallery
@@ -3314,6 +3519,10 @@ export type Query = {
   alert?: Maybe<AlertEntityResponse>
   blogPost?: Maybe<BlogPostEntityResponse>
   blogPosts?: Maybe<BlogPostEntityResponseCollection>
+  faq?: Maybe<FaqEntityResponse>
+  faqCategories?: Maybe<FaqCategoryEntityResponseCollection>
+  faqCategory?: Maybe<FaqCategoryEntityResponse>
+  faqs?: Maybe<FaqEntityResponseCollection>
   footer?: Maybe<FooterEntityResponse>
   general?: Maybe<GeneralEntityResponse>
   homepage?: Maybe<HomepageEntityResponse>
@@ -3361,6 +3570,32 @@ export type QueryBlogPostArgs = {
 
 export type QueryBlogPostsArgs = {
   filters?: InputMaybe<BlogPostFiltersInput>
+  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
+  pagination?: InputMaybe<PaginationArg>
+  publicationState?: InputMaybe<PublicationState>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type QueryFaqArgs = {
+  id?: InputMaybe<Scalars['ID']['input']>
+  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
+}
+
+export type QueryFaqCategoriesArgs = {
+  filters?: InputMaybe<FaqCategoryFiltersInput>
+  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
+  pagination?: InputMaybe<PaginationArg>
+  publicationState?: InputMaybe<PublicationState>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type QueryFaqCategoryArgs = {
+  id?: InputMaybe<Scalars['ID']['input']>
+  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
+}
+
+export type QueryFaqsArgs = {
+  filters?: InputMaybe<FaqFiltersInput>
   locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
   pagination?: InputMaybe<PaginationArg>
   publicationState?: InputMaybe<PublicationState>
@@ -4290,12 +4525,11 @@ export type BlogPostBySlugQuery = {
             }
           | {
               __typename: 'ComponentSectionsFileList'
-              hasBackground?: boolean | null
-              variantFileList?: Enum_Componentsectionsfilelist_Variant | null
+              title?: string | null
+              text?: string | null
               fileList?: Array<{
                 __typename?: 'ComponentBlocksFile'
                 title?: string | null
-                category?: string | null
                 media?: {
                   __typename?: 'UploadFileEntityResponse'
                   data?: {
@@ -4660,12 +4894,11 @@ export type LatestPostsByTagsQuery = {
             }
           | {
               __typename: 'ComponentSectionsFileList'
-              hasBackground?: boolean | null
-              variantFileList?: Enum_Componentsectionsfilelist_Variant | null
+              title?: string | null
+              text?: string | null
               fileList?: Array<{
                 __typename?: 'ComponentBlocksFile'
                 title?: string | null
-                category?: string | null
                 media?: {
                   __typename?: 'UploadFileEntityResponse'
                   data?: {
@@ -5231,12 +5464,11 @@ export type BlogPostEntityFragment = {
         }
       | {
           __typename: 'ComponentSectionsFileList'
-          hasBackground?: boolean | null
-          variantFileList?: Enum_Componentsectionsfilelist_Variant | null
+          title?: string | null
+          text?: string | null
           fileList?: Array<{
             __typename?: 'ComponentBlocksFile'
             title?: string | null
-            category?: string | null
             media?: {
               __typename?: 'UploadFileEntityResponse'
               data?: {
@@ -5609,6 +5841,30 @@ export type PageCategoryEntityFragment = {
     title?: string | null
     color?: Enum_Pagecategory_Color | null
   } | null
+}
+
+export type FaqCategoryEntityFragment = {
+  __typename?: 'FaqCategoryEntity'
+  id?: string | null
+  attributes?: {
+    __typename?: 'FaqCategory'
+    title: string
+    slug: string
+    faqs?: {
+      __typename?: 'FaqRelationResponseCollection'
+      data: Array<{
+        __typename?: 'FaqEntity'
+        id?: string | null
+        attributes?: { __typename?: 'Faq'; title: string; body?: string | null } | null
+      }>
+    } | null
+  } | null
+}
+
+export type FaqEntityFragment = {
+  __typename?: 'FaqEntity'
+  id?: string | null
+  attributes?: { __typename?: 'Faq'; title: string; body?: string | null } | null
 }
 
 export type UploadImageSrcEntityFragment = {
@@ -8393,6 +8649,48 @@ export type PageBySlugQuery = {
               style?: Enum_Componentsectionsdivider_Style | null
             }
           | {
+              __typename: 'ComponentSectionsFaqCategories'
+              title?: string | null
+              text?: string | null
+              faqCategories?: {
+                __typename?: 'FaqCategoryRelationResponseCollection'
+                data: Array<{
+                  __typename?: 'FaqCategoryEntity'
+                  id?: string | null
+                  attributes?: {
+                    __typename?: 'FaqCategory'
+                    title: string
+                    slug: string
+                    faqs?: {
+                      __typename?: 'FaqRelationResponseCollection'
+                      data: Array<{
+                        __typename?: 'FaqEntity'
+                        id?: string | null
+                        attributes?: {
+                          __typename?: 'Faq'
+                          title: string
+                          body?: string | null
+                        } | null
+                      }>
+                    } | null
+                  } | null
+                }>
+              } | null
+            }
+          | {
+              __typename: 'ComponentSectionsFaqs'
+              title?: string | null
+              text?: string | null
+              faqs?: {
+                __typename?: 'FaqRelationResponseCollection'
+                data: Array<{
+                  __typename?: 'FaqEntity'
+                  id?: string | null
+                  attributes?: { __typename?: 'Faq'; title: string; body?: string | null } | null
+                }>
+              } | null
+            }
+          | {
               __typename: 'ComponentSectionsFeaturedBlogPosts'
               id: string
               first_blog?: {
@@ -8530,12 +8828,11 @@ export type PageBySlugQuery = {
             }
           | {
               __typename: 'ComponentSectionsFileList'
-              hasBackground?: boolean | null
-              variantFileList?: Enum_Componentsectionsfilelist_Variant | null
+              title?: string | null
+              text?: string | null
               fileList?: Array<{
                 __typename?: 'ComponentBlocksFile'
                 title?: string | null
-                category?: string | null
                 media?: {
                   __typename?: 'UploadFileEntityResponse'
                   data?: {
@@ -9455,6 +9752,44 @@ export type PageEntityFragment = {
           style?: Enum_Componentsectionsdivider_Style | null
         }
       | {
+          __typename: 'ComponentSectionsFaqCategories'
+          title?: string | null
+          text?: string | null
+          faqCategories?: {
+            __typename?: 'FaqCategoryRelationResponseCollection'
+            data: Array<{
+              __typename?: 'FaqCategoryEntity'
+              id?: string | null
+              attributes?: {
+                __typename?: 'FaqCategory'
+                title: string
+                slug: string
+                faqs?: {
+                  __typename?: 'FaqRelationResponseCollection'
+                  data: Array<{
+                    __typename?: 'FaqEntity'
+                    id?: string | null
+                    attributes?: { __typename?: 'Faq'; title: string; body?: string | null } | null
+                  }>
+                } | null
+              } | null
+            }>
+          } | null
+        }
+      | {
+          __typename: 'ComponentSectionsFaqs'
+          title?: string | null
+          text?: string | null
+          faqs?: {
+            __typename?: 'FaqRelationResponseCollection'
+            data: Array<{
+              __typename?: 'FaqEntity'
+              id?: string | null
+              attributes?: { __typename?: 'Faq'; title: string; body?: string | null } | null
+            }>
+          } | null
+        }
+      | {
           __typename: 'ComponentSectionsFeaturedBlogPosts'
           id: string
           first_blog?: {
@@ -9592,12 +9927,11 @@ export type PageEntityFragment = {
         }
       | {
           __typename: 'ComponentSectionsFileList'
-          hasBackground?: boolean | null
-          variantFileList?: Enum_Componentsectionsfilelist_Variant | null
+          title?: string | null
+          text?: string | null
           fileList?: Array<{
             __typename?: 'ComponentBlocksFile'
             title?: string | null
-            category?: string | null
             media?: {
               __typename?: 'UploadFileEntityResponse'
               data?: {
@@ -11316,7 +11650,6 @@ export type IframeSectionFragment = {
 export type FileBlockFragment = {
   __typename?: 'ComponentBlocksFile'
   title?: string | null
-  category?: string | null
   media?: {
     __typename?: 'UploadFileEntityResponse'
     data?: {
@@ -11337,12 +11670,11 @@ export type FileBlockFragment = {
 
 export type FileListSectionFragment = {
   __typename?: 'ComponentSectionsFileList'
-  hasBackground?: boolean | null
-  variantFileList?: Enum_Componentsectionsfilelist_Variant | null
+  title?: string | null
+  text?: string | null
   fileList?: Array<{
     __typename?: 'ComponentBlocksFile'
     title?: string | null
-    category?: string | null
     media?: {
       __typename?: 'UploadFileEntityResponse'
       data?: {
@@ -12103,6 +12435,46 @@ export type RegulationsSectionFragment = {
   } | null
 }
 
+export type FaqsSectionFragment = {
+  __typename?: 'ComponentSectionsFaqs'
+  title?: string | null
+  text?: string | null
+  faqs?: {
+    __typename?: 'FaqRelationResponseCollection'
+    data: Array<{
+      __typename?: 'FaqEntity'
+      id?: string | null
+      attributes?: { __typename?: 'Faq'; title: string; body?: string | null } | null
+    }>
+  } | null
+}
+
+export type FaqCategoriesSectionFragment = {
+  __typename?: 'ComponentSectionsFaqCategories'
+  title?: string | null
+  text?: string | null
+  faqCategories?: {
+    __typename?: 'FaqCategoryRelationResponseCollection'
+    data: Array<{
+      __typename?: 'FaqCategoryEntity'
+      id?: string | null
+      attributes?: {
+        __typename?: 'FaqCategory'
+        title: string
+        slug: string
+        faqs?: {
+          __typename?: 'FaqRelationResponseCollection'
+          data: Array<{
+            __typename?: 'FaqEntity'
+            id?: string | null
+            attributes?: { __typename?: 'Faq'; title: string; body?: string | null } | null
+          }>
+        } | null
+      } | null
+    }>
+  } | null
+}
+
 type Sections_ComponentSectionsAccordion_Fragment = {
   __typename: 'ComponentSectionsAccordion'
   title?: string | null
@@ -12349,6 +12721,46 @@ type Sections_ComponentSectionsDivider_Fragment = {
   style?: Enum_Componentsectionsdivider_Style | null
 }
 
+type Sections_ComponentSectionsFaqCategories_Fragment = {
+  __typename: 'ComponentSectionsFaqCategories'
+  title?: string | null
+  text?: string | null
+  faqCategories?: {
+    __typename?: 'FaqCategoryRelationResponseCollection'
+    data: Array<{
+      __typename?: 'FaqCategoryEntity'
+      id?: string | null
+      attributes?: {
+        __typename?: 'FaqCategory'
+        title: string
+        slug: string
+        faqs?: {
+          __typename?: 'FaqRelationResponseCollection'
+          data: Array<{
+            __typename?: 'FaqEntity'
+            id?: string | null
+            attributes?: { __typename?: 'Faq'; title: string; body?: string | null } | null
+          }>
+        } | null
+      } | null
+    }>
+  } | null
+}
+
+type Sections_ComponentSectionsFaqs_Fragment = {
+  __typename: 'ComponentSectionsFaqs'
+  title?: string | null
+  text?: string | null
+  faqs?: {
+    __typename?: 'FaqRelationResponseCollection'
+    data: Array<{
+      __typename?: 'FaqEntity'
+      id?: string | null
+      attributes?: { __typename?: 'Faq'; title: string; body?: string | null } | null
+    }>
+  } | null
+}
+
 type Sections_ComponentSectionsFeaturedBlogPosts_Fragment = {
   __typename: 'ComponentSectionsFeaturedBlogPosts'
   id: string
@@ -12488,12 +12900,11 @@ type Sections_ComponentSectionsFeaturedBlogPosts_Fragment = {
 
 type Sections_ComponentSectionsFileList_Fragment = {
   __typename: 'ComponentSectionsFileList'
-  hasBackground?: boolean | null
-  variantFileList?: Enum_Componentsectionsfilelist_Variant | null
+  title?: string | null
+  text?: string | null
   fileList?: Array<{
     __typename?: 'ComponentBlocksFile'
     title?: string | null
-    category?: string | null
     media?: {
       __typename?: 'UploadFileEntityResponse'
       data?: {
@@ -12957,6 +13368,8 @@ export type SectionsFragment =
   | Sections_ComponentSectionsComparisonSection_Fragment
   | Sections_ComponentSectionsContactsSection_Fragment
   | Sections_ComponentSectionsDivider_Fragment
+  | Sections_ComponentSectionsFaqCategories_Fragment
+  | Sections_ComponentSectionsFaqs_Fragment
   | Sections_ComponentSectionsFeaturedBlogPosts_Fragment
   | Sections_ComponentSectionsFileList_Fragment
   | Sections_ComponentSectionsGallery_Fragment
@@ -13255,7 +13668,6 @@ export const UploadFileEntityFragmentDoc = gql`
 export const FileBlockFragmentDoc = gql`
   fragment FileBlock on ComponentBlocksFile {
     title
-    category
     media {
       data {
         ...UploadFileEntity
@@ -13266,9 +13678,9 @@ export const FileBlockFragmentDoc = gql`
 `
 export const FileListSectionFragmentDoc = gql`
   fragment FileListSection on ComponentSectionsFileList {
-    hasBackground
-    variantFileList: variant
-    fileList(pagination: { limit: 500 }) {
+    title
+    text
+    fileList(pagination: { limit: -1 }) {
       ...FileBlock
     }
   }
@@ -13866,6 +14278,54 @@ export const TestimonialsSectionFragmentDoc = gql`
   }
   ${TestimonialItemBlockFragmentDoc}
 `
+export const FaqEntityFragmentDoc = gql`
+  fragment FaqEntity on FaqEntity {
+    id
+    attributes {
+      title
+      body
+    }
+  }
+`
+export const FaqsSectionFragmentDoc = gql`
+  fragment FaqsSection on ComponentSectionsFaqs {
+    title
+    text
+    faqs {
+      data {
+        ...FaqEntity
+      }
+    }
+  }
+  ${FaqEntityFragmentDoc}
+`
+export const FaqCategoryEntityFragmentDoc = gql`
+  fragment FaqCategoryEntity on FaqCategoryEntity {
+    id
+    attributes {
+      title
+      slug
+      faqs {
+        data {
+          ...FaqEntity
+        }
+      }
+    }
+  }
+  ${FaqEntityFragmentDoc}
+`
+export const FaqCategoriesSectionFragmentDoc = gql`
+  fragment FaqCategoriesSection on ComponentSectionsFaqCategories {
+    title
+    text
+    faqCategories {
+      data {
+        ...FaqCategoryEntity
+      }
+    }
+  }
+  ${FaqCategoryEntityFragmentDoc}
+`
 export const SectionsFragmentDoc = gql`
   fragment Sections on PageSectionsDynamicZone {
     __typename
@@ -13956,6 +14416,12 @@ export const SectionsFragmentDoc = gql`
     ... on ComponentSectionsTestimonials {
       ...TestimonialsSection
     }
+    ... on ComponentSectionsFaqs {
+      ...FaqsSection
+    }
+    ... on ComponentSectionsFaqCategories {
+      ...FaqCategoriesSection
+    }
   }
   ${IconTitleDescSectionFragmentDoc}
   ${DividerSectionFragmentDoc}
@@ -13986,6 +14452,8 @@ export const SectionsFragmentDoc = gql`
   ${RegulationsListSectionFragmentDoc}
   ${RegulationsSectionFragmentDoc}
   ${TestimonialsSectionFragmentDoc}
+  ${FaqsSectionFragmentDoc}
+  ${FaqCategoriesSectionFragmentDoc}
 `
 export const BlogPostEntityFragmentDoc = gql`
   fragment BlogPostEntity on BlogPostEntity {

@@ -1,7 +1,7 @@
 import { motion, useReducedMotion, Variant } from 'framer-motion'
 import { ReactNode, useMemo, useRef } from 'react'
 import { useResizeDetector } from 'react-resize-detector'
-import { twMerge } from 'tailwind-merge'
+import cn from 'utils/cn'
 
 type AnimateHeightProps = {
   isVisible: boolean
@@ -35,7 +35,7 @@ const AnimateHeight = ({
 
   return (
     <motion.div
-      className={twMerge('overflow-hidden', className)}
+      className={cn('overflow-hidden', className)}
       aria-hidden={!isVisible}
       initial={initialIsVisible.current ? 'opened' : 'closed'}
       animate={isVisible ? 'opened' : 'closed'}

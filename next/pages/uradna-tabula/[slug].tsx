@@ -2,6 +2,7 @@ import { ParsedUrlQuery } from 'node:querystring'
 
 import { GetServerSideProps } from 'next'
 import Head from 'next/head'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import * as React from 'react'
 
 import PageLayout from '@/components/layouts/PageLayout'
@@ -39,10 +40,10 @@ export const getServerSideProps: GetServerSideProps<
 
   const documentId = base64Decode(encodedDocumentId)
 
-  const [document, general, messages] = await Promise.all([
+  const [document, general, translations] = await Promise.all([
     getOfficialBoardParsedDocument(documentId),
     client.General({ locale }),
-    import(`../../messages/${locale}.json`),
+    serverSideTranslations(locale),
   ])
 
   if (shouldMockGinis()) {
@@ -50,7 +51,7 @@ export const getServerSideProps: GetServerSideProps<
       props: {
         general,
         document: mockedParsedDocumentDetail,
-        messages: messages.default,
+        ...translations,
       },
     }
   }
@@ -63,7 +64,7 @@ export const getServerSideProps: GetServerSideProps<
     props: {
       general,
       document,
-      messages: messages.default,
+      ...translations,
     },
   }
 }

@@ -194,7 +194,7 @@
   }
 
   .base-input--disabled {
-    @apply bg-gray-100;
+    @apply bg-grey-100;
   }
 
   input:-webkit-autofill,

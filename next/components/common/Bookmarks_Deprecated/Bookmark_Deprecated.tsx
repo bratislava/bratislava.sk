@@ -1,10 +1,10 @@
 import { Typography } from '@bratislava/component-library'
 import cx from 'classnames'
-import { useTranslations } from 'next-intl'
 import React, { FocusEvent, useRef } from 'react'
 
 import { CrossIcon } from '@/assets/ui-icons'
 import Button from '@/components/common/Button/Button'
+import { useTranslation } from '@/utils/useTranslation'
 
 const PADDING = 20 // py-5
 
@@ -33,7 +33,7 @@ const Bookmark = ({
   variant = 'red',
   icon,
 }: BookmarkProps) => {
-  const t = useTranslations('Bookmark')
+  const { t } = useTranslation()
   const [isOpen, setIsOpen] = React.useState(false)
 
   const ref = React.useRef<HTMLSpanElement>(null)
@@ -141,7 +141,7 @@ const Bookmark = ({
           <Button
             onPress={() => setIsOpen(false)}
             icon={<CrossIcon />}
-            aria-label={t('aria.close')}
+            aria-label={t('Bookmark.aria.close')}
           />
         </div>
       </div>

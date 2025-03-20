@@ -60,16 +60,16 @@
   --color-culture-200: 251 233 215; /*#fbe9d7*/
   --color-culture-100: 253 244 235; /*#fdf4eb*/
 
-  --color-gray-800: 31 31 31; /*#1F1F1F*/
-  --color-gray-700: 51 51 51; /*#333333*/
-  --color-gray-600: 92 92 92; /*#5C5C5C*/
-  --color-gray-500: 133 133 133; /*#858585*/
-  --color-gray-400: 173 173 173; /*#ADADAD*/
-  --color-gray-300: 194 194 194; /*#C2C2C2*/
-  --color-gray-200: 214 214 214; /*#D6D6D6*/
-  --color-gray-100: 235 235 235; /*#EBEBEB*/
-  --color-gray-50: 245 245 245; /*#F5F5F5*/
-  --color-gray-0: 255 255 255; /*#fff*/
+  --color-grey-800: 31 31 31; /*#1F1F1F*/
+  --color-grey-700: 51 51 51; /*#333333*/
+  --color-grey-600: 92 92 92; /*#5C5C5C*/
+  --color-grey-500: 133 133 133; /*#858585*/
+  --color-grey-400: 173 173 173; /*#ADADAD*/
+  --color-grey-300: 194 194 194; /*#C2C2C2*/
+  --color-grey-200: 214 214 214; /*#D6D6D6*/
+  --color-grey-100: 235 235 235; /*#EBEBEB*/
+  --color-grey-50: 245 245 245; /*#F5F5F5*/
+  --color-grey-0: 255 255 255; /*#fff*/
 
   --color-success-800: 1 90 41; /*#015A29*/
   --color-success-700: 1 132 61; /*#01843D*/
@@ -101,7 +101,7 @@
   --color-warning-100: 252 242 230; /*#FCF2E6*/
   --color-warning-50: 253 248 242; /*#FDF8F2*/
 
-  --font-color: var(--color-gray-700);
+  --font-color: var(--color-grey-700);
   --error-color: var(--color-negative-700);
 
   /* These variables are overridden in pages to get custom colors for each category */
@@ -113,5 +113,40 @@
   --color-category-300: var(--color-main-300);
   --color-category-200: var(--color-main-200);
   --color-category-100: var(--color-main-100);
-  --font-contrast-color: var(--color-gray-0);
+  --font-contrast-color: var(--color-grey-0);
+
+  /* This tokens are copied from OLO project and adjusted according to DS. Some tokens from DS are missing.  */
+  --token-background-primary: var(--color-grey-0);
+  --token-background-secondary: var(--color-grey-50);
+  --token-background-tertiary: var(--color-grey-100);
+  --token-background-primary-inverted: var(--color-grey-800);
+  --token-background-disabled: var(--color-grey-100);
+
+  --token-border-default: var(--color-grey-200);
+  --token-border-hover: var(--color-grey-300);
+  --token-border-dark: var(--color-grey-600); /* TODO what is this? */
+
+  --token-content-primary: var(--color-grey-800);
+  --token-content-secondary: var(--color-grey-700);
+  --token-content-tertiary: var(--color-grey-600);
+  --token-content-primary-inverted: var(--color-grey-0);
+  --token-content-secondary-inverted: var(--color-grey-200);
+  --token-content-tertiary-inverted: var(--color-grey-400);
+  --token-content-disabled: var(--color-grey-500);
+
+  --token-content-link-default: var(--color-grey-700);
+  --token-content-link-hover: var(--color-grey-600);
+  --token-content-link-pressed: var(--color-grey-800);
+
+  --token-action-content-default: var(--color-grey-700);
+  --token-action-content-hover: var(--color-grey-600);
+  --token-action-content-pressed: var(--color-grey-800);
+  --token-action-background-default: var(--color-grey-700);
+  --token-action-background-hover: var(--color-grey-600);
+  --token-action-background-pressed: var(--color-grey-800);
+  --token-action-soft-background-hover: var(--color-grey-100);
+  --token-action-soft-background-pressed: var(--color-grey-200);
+  --token-action-border-default: var(--color-grey-700);
+  --token-action-border-hover: var(--color-grey-600);
+  --token-action-border-pressed: var(--color-grey-800);
 }

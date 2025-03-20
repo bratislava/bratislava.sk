@@ -1,5 +1,5 @@
-import cx from 'classnames'
 import * as React from 'react'
+import cn from 'utils/cn'
 
 import SectionContainer from '@/components/common/SectionContainer/SectionContainer'
 import AccordionSection from '@/components/sections/AccordionSection'
@@ -13,6 +13,8 @@ import ColumnedTextSection from '@/components/sections/ColumnedTextSection'
 import ComparisonSection from '@/components/sections/ComparisonSection'
 import ContactsSection from '@/components/sections/ContactsSection'
 import DividerSection from '@/components/sections/DividerSection'
+import FaqCategoriesSection from '@/components/sections/FaqCategoriesSection'
+import FaqsSection from '@/components/sections/FaqsSection'
 import FeaturedBlogPostsSection from '@/components/sections/FeaturedBlogPostsSection'
 import FileListSection from '@/components/sections/FileListSection'
 import GallerySection from '@/components/sections/GallerySection'
@@ -120,6 +122,12 @@ const SectionContent = ({ section }: { section: SectionsFragment }) => {
     case 'ComponentSectionsTestimonials':
       return <TestimonialsSection section={section} />
 
+    case 'ComponentSectionsFaqs':
+      return <FaqsSection section={section} />
+
+    case 'ComponentSectionsFaqCategories':
+      return <FaqCategoriesSection section={section} />
+
     default:
       return null
   }
@@ -138,7 +146,7 @@ const Section = ({ section }: { section: SectionsFragment | null }) => {
 
   return (
     <SectionContainer
-      className={cx('pt-10 md:pt-18', {
+      className={cn('pt-10 md:pt-18', {
         'bg-category-200 pb-14 md:pb-18': hasBackground,
       })}
       hasBackground={hasBackground}

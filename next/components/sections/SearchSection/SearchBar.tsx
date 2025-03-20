@@ -1,11 +1,11 @@
 import { Typography } from '@bratislava/component-library'
-import { useTranslations } from 'next-intl'
 import { Dispatch, forwardRef, SetStateAction } from 'react'
 import { Input, Label, SearchField } from 'react-aria-components'
 
 import { RemoveIcon, SearchIcon } from '@/assets/ui-icons'
 import Button from '@/components/common/Button/Button'
 import Spinner from '@/components/common/Spinner/Spinner'
+import { useTranslation } from '@/utils/useTranslation'
 
 type SearchBarProps = {
   placeholder?: string
@@ -17,7 +17,7 @@ type SearchBarProps = {
 
 const SearchBar = forwardRef<HTMLInputElement, SearchBarProps>(
   ({ placeholder, input, setInput, setSearchQuery, isLoading }, forwardedRef) => {
-    const t = useTranslations()
+    const { t } = useTranslation()
 
     const handleSearch = () => {
       setSearchQuery(input)
@@ -29,7 +29,7 @@ const SearchBar = forwardRef<HTMLInputElement, SearchBarProps>(
         // TODO PageHeader size dynamically
         // 10rem scroll margin works fine for all screen sizes
         className="flex scroll-mt-[10rem] flex-col gap-y-1"
-        aria-label={t('search')}
+        aria-label={t('SearchBar.search')}
         defaultValue={placeholder}
         value={input}
         onChange={setInput}
@@ -43,7 +43,7 @@ const SearchBar = forwardRef<HTMLInputElement, SearchBarProps>(
         <div className="relative">
           {/* 3.75rem = 60px, 0.75rem = 12px */}
           <Input
-            className="relative w-full rounded-lg border-2 px-[3.75rem] py-5 pr-[5.75rem] outline-none hover:border-gray-400 focus:border-gray-800 focus-visible:ring focus-visible:ring-offset-2"
+            className="relative w-full rounded-lg border-2 px-[3.75rem] py-5 pr-[5.75rem] outline-none hover:border-grey-400 focus:border-grey-800 focus-visible:ring focus-visible:ring-offset-2"
             data-cy="search-field"
           />
           <SearchIcon

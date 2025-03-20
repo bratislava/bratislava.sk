@@ -1,4 +1,3 @@
-import { useTranslations } from 'next-intl'
 import * as React from 'react'
 import { useMemo } from 'react'
 
@@ -13,6 +12,7 @@ import ShareButtonsSection from '@/components/sections/ShareButtonsSection'
 import { InbaArticleEntityFragment } from '@/services/graphql'
 import { formatDate, getNumericLocalDate } from '@/utils/formatDate'
 import { getPageBreadcrumbs } from '@/utils/pageUtils_Deprecated'
+import { useTranslation } from '@/utils/useTranslation'
 
 export type InbaArticlePageContentProps = {
   inbaArticle: InbaArticleEntityFragment
@@ -21,7 +21,7 @@ export type InbaArticlePageContentProps = {
 // TODO may need refactor, it was just copied from BlogPostPageContent that didn't undergo any refactoring
 
 const InbaArticlePageContent = ({ inbaArticle }: InbaArticlePageContentProps) => {
-  const t = useTranslations()
+  const { t } = useTranslation()
 
   const { general } = useGeneralContext()
   const inbaPage = general?.data?.attributes?.inbaPage?.data

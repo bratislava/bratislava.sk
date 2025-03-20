@@ -1,4 +1,3 @@
-import { useLocale, useTranslations } from 'next-intl'
 import React, { useEffect, useState } from 'react'
 import { Label, Selection, TagGroup, TagList, Text } from 'react-aria-components'
 
@@ -10,6 +9,8 @@ import {
 } from '@/services/graphql'
 import { getCategoryColorLocalStyle } from '@/utils/colors'
 import { isDefined } from '@/utils/isDefined'
+import { useLocale } from '@/utils/useLocale'
+import { useTranslation } from '@/utils/useTranslation'
 
 type BlogPostsFilterProps = {
   pageCategories: PageCategoryEntityFragment[]
@@ -41,12 +42,12 @@ const BlogPostsFilter = ({
   subtext,
   onTagChange,
 }: BlogPostsFilterProps) => {
-  const t = useTranslations('BlogPostsFilter')
+  const { t } = useTranslation()
   const locale = useLocale()
 
   const defaultChip = {
     id: '0',
-    title: t('allArticles'),
+    title: t('BlogPostsFilter.allArticles'),
     color: Enum_Pagecategory_Color.Red,
   }
 
@@ -78,7 +79,7 @@ const BlogPostsFilter = ({
   return (
     <div className="flex flex-col gap-6 py-18 lg:m-auto lg:w-[800px] lg:gap-10 lg:py-18">
       <div className="flex flex-col gap-2 lg:items-center ">
-        <Label className="text-h3 font-semibold">{t('articleFilter')}</Label>
+        <Label className="text-h3 font-semibold">{t('BlogPostsFilter.articleFilter')}</Label>
         {subtext && <Text>{subtext}</Text>}
       </div>
       <div>
@@ -121,7 +122,9 @@ const BlogPostsFilter = ({
         blogPostsTags?.length ? (
           <div className="flex flex-col pt-8 lg:items-center">
             {Array.from(selectedPageCategory).length > 0 ? (
-              <Label className="text-h5 pb-3 font-semibold">{t('subcategories')}</Label>
+              <Label className="text-h5 pb-3 font-semibold">
+                {t('BlogPostsFilter.subcategories')}
+              </Label>
             ) : null}
             <TagGroup
               selectionMode="multiple"

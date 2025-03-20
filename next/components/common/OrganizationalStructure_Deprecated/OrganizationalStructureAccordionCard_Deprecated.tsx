@@ -2,36 +2,23 @@ import { Typography } from '@bratislava/component-library'
 import { twMerge } from 'tailwind-merge'
 
 import Mail from '@/assets/images/mail.svg'
-import Phone from '@/assets/images/phone-small.svg'
-import TownHall from '@/assets/images/town-hall.svg'
-import TownHallSmall from '@/assets/images/town-hall-small.svg' // TODO do not refactor, but rewrite from scratch
 
 // TODO do not refactor, but rewrite from scratch
 
 export type OrganizationalStructureAccordionCardProps = {
   displayName: string
-  jobTitle: string
-  businessPhones?: string[]
-  mobilePhone?: string
-  mail: string
-  otherMails?: string[]
-  heading?: boolean
+  jobTitle: string | null
+  mail?: string | null
   className?: string
 }
 
 const OrganizationalStructureAccordionCard = ({
   displayName,
   jobTitle,
-  businessPhones,
-  mobilePhone,
   mail,
-  otherMails,
-  heading,
   className,
 }: OrganizationalStructureAccordionCardProps) => {
-  const mailToParse = otherMails?.length ? otherMails[0] : mail
-  const mailUserName = mailToParse?.split('@').at(0)
-  const mailOrganization = mail && `@${mail?.split('@').at(1)}`
+  const [mailUserName, mailOrganization] = mail?.split('@') ?? ''
   const mailBreakpoint = 16
 
   return (
@@ -43,66 +30,35 @@ const OrganizationalStructureAccordionCard = ({
           className,
         )}
       >
-        <Typography type="h4" className="pb-2" data-cy="structure-accordion-card-name">
+        <Typography type="h5" className="pb-2" data-cy="structure-accordion-card-name">
           {displayName}
         </Typography>
-        <div
-          className="text-small lg:text-default pb-6 text-font/75"
-          data-cy="structure-accordion-card-job"
-        >
+        <Typography type="p" className="pb-6" data-cy="structure-accordion-card-job">
           {jobTitle}
-        </div>
+        </Typography>
         <div className="flex justify-between">
-          <div>
-            <div className="flex gap-x-4 pb-3">
-              {!heading && <Phone className="max-md:hidden" />}
-              {businessPhones?.length
-                ? businessPhones.map((phone) => (
-                    <div
-                      key={phone}
-                      className="text-default flex items-center font-semibold"
-                      data-cy="structure-accordion-card-phone"
-                    >
-                      {phone}
+          <div className="flex flex-col">
+            {mail && mailUserName && mailOrganization ? (
+              <>
+                <div className="flex gap-x-4">
+                  <Mail className="max-md:hidden" />
+                  <div className="text-small lg:text-default font-semibold">
+                    <div className="flex lg:hidden" data-cy="structure-accordion-card-email-mobile">
+                      {mail}
                     </div>
-                  ))
-                : mobilePhone && (
-                    <div
-                      className="text-default flex items-center font-semibold"
-                      data-cy="structure-accordion-card-phone"
-                    >
-                      {mobilePhone}
+                    <div className="hidden lg:flex" data-cy="structure-accordion-card-email">
+                      {mailUserName && mailUserName.length > mailBreakpoint ? mailUserName : mail}
                     </div>
-                  )}
-            </div>
-            <div className="flex flex-col">
-              <div className="flex gap-x-4">
-                {!heading && <Mail className="max-md:hidden" />}
-                <div className="text-small lg:text-default font-semibold underline underline-offset-2">
-                  <div className="flex lg:hidden" data-cy="structure-accordion-card-email-mobile">
-                    {mailUserName + mailOrganization}
-                  </div>
-                  <div className="hidden lg:flex" data-cy="structure-accordion-card-email">
-                    {mailUserName && mailUserName.length > mailBreakpoint
-                      ? mailUserName
-                      : mailUserName + mailOrganization}
                   </div>
                 </div>
-              </div>
-              {mailUserName && mailUserName?.length > mailBreakpoint && (
-                <div className="text-small lg:text-default hidden font-semibold underline underline-offset-2 lg:flex xl:pl-12">
-                  {mailOrganization}
-                </div>
-              )}
-            </div>
+                {mailUserName?.length > mailBreakpoint && (
+                  <div className="text-small lg:text-default hidden font-semibold lg:flex lg:pl-12">
+                    @{mailOrganization}
+                  </div>
+                )}
+              </>
+            ) : null}
           </div>
-
-          {heading && (
-            <>
-              <TownHall className="hidden lg:flex" />
-              <TownHallSmall className="-mr-2 flex lg:hidden" />
-            </>
-          )}
         </div>
       </div>
     ) : null

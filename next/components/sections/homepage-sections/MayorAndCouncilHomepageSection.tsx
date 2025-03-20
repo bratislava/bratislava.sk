@@ -1,18 +1,18 @@
 import { Typography } from '@bratislava/component-library'
-import { useTranslations } from 'next-intl'
 import React from 'react'
-import { twMerge } from 'tailwind-merge'
+import cn from 'utils/cn'
 
 import MayorAndCouncilCard from '@/components/cards/MayorAndCouncilCard'
 import { useHomepageContext } from '@/components/providers/HomepageContextProvider'
 import { getCommonLinkProps } from '@/utils/getCommonLinkProps'
+import { useTranslation } from '@/utils/useTranslation'
 
 type Props = {
   className?: string
 }
 
 const MayorAndCouncilHomepageSection = ({ className }: Props) => {
-  const t = useTranslations()
+  const { t } = useTranslation()
 
   const { homepage } = useHomepageContext()
   const { mayorAndCouncil } = homepage?.attributes ?? {}
@@ -22,7 +22,7 @@ const MayorAndCouncilHomepageSection = ({ className }: Props) => {
   const { children: councilLinkLabel, ...councilLinkProps } = getCommonLinkProps(councilCard)
 
   return (
-    <div className={twMerge('flex flex-col gap-6', className)}>
+    <div className={cn('flex flex-col gap-6', className)}>
       {title || text ? (
         <div className="flex flex-col gap-2 text-center">
           {title && <Typography type="h2">{title}</Typography>}

@@ -1,9 +1,9 @@
 import { Typography } from '@bratislava/component-library'
-import cx from 'classnames'
 import Image from 'next/image'
 
 import CardBase from '@/components/cards/CardBase'
 import Button from '@/components/common/Button/Button'
+import cn from '@/utils/cn'
 import { CommonLinkProps } from '@/utils/getCommonLinkProps'
 
 export type InBaCardProps = {
@@ -26,7 +26,7 @@ const InBaCard = ({
   return (
     <CardBase
       variant="shadow"
-      className={cx(
+      className={cn(
         'flex-col items-center overflow-visible md:flex-row',
         {
           'pt-24 md:pt-0': !!frontImageUrl,
@@ -47,7 +47,7 @@ const InBaCard = ({
       )}
 
       <div
-        className={cx(
+        className={cn(
           'flex flex-col items-center gap-4 px-6 pb-8 pt-3 text-center',
           'md:items-start md:py-8 md:pl-12 md:pr-96 md:text-left',
         )}

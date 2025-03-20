@@ -1,4 +1,3 @@
-import { useTranslations } from 'next-intl'
 import React from 'react'
 
 import BlogPostCard from '@/components/cards/BlogPostCard'
@@ -8,6 +7,7 @@ import ResponsiveCarousel from '@/components/common/Carousel/ResponsiveCarousel'
 import { InbaArticleEntityFragment } from '@/services/graphql'
 import { getNumericLocalDate } from '@/utils/formatDate'
 import { generateImageSizes } from '@/utils/generateImageSizes'
+import { useTranslation } from '@/utils/useTranslation'
 
 export type InbaFeaturedArticlesProps = {
   articles: InbaArticleEntityFragment[]
@@ -15,7 +15,7 @@ export type InbaFeaturedArticlesProps = {
 
 // This component is copied from FeaturedBlogPosts component and adjusted for inba articles
 const InbaFeaturedArticles = ({ articles }: InbaFeaturedArticlesProps) => {
-  const t = useTranslations()
+  const { t } = useTranslation()
 
   const majorArticle = articles[0]?.attributes
 

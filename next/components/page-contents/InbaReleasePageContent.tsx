@@ -1,8 +1,7 @@
 import { Typography } from '@bratislava/component-library'
-import cx from 'classnames'
-import { useLocale, useTranslations } from 'next-intl'
 import * as React from 'react'
 import { useMemo } from 'react'
+import cn from 'utils/cn'
 
 import FileRowCard from '@/components/cards/FileRowCard'
 import { Breadcrumb } from '@/components/common/Breadcrumbs/Breadcrumbs'
@@ -20,6 +19,8 @@ import { formatFileExtension } from '@/utils/formatFileExtension'
 import { formatFileSize } from '@/utils/formatFileSize'
 import { isDefined } from '@/utils/isDefined'
 import { getPageBreadcrumbs } from '@/utils/pageUtils_Deprecated'
+import { useLocale } from '@/utils/useLocale'
+import { useTranslation } from '@/utils/useTranslation'
 
 export type InbaReleasePageContentProps = {
   inbaRelease: InbaReleaseEntityFragment
@@ -28,7 +29,7 @@ export type InbaReleasePageContentProps = {
 // TODO may need refactor, it was just copied from BlogPostPageContent that didn't undergo any refactoring
 
 const InbaReleasePageContent = ({ inbaRelease }: InbaReleasePageContentProps) => {
-  const t = useTranslations('InbaRelease')
+  const { t } = useTranslation()
   const locale = useLocale()
 
   const { title, coverImage, perex, releaseDate, files } = inbaRelease.attributes ?? {}
@@ -50,13 +51,13 @@ const InbaReleasePageContent = ({ inbaRelease }: InbaReleasePageContentProps) =>
       <PageHeader
         title={title}
         breadcrumbs={breadcrumbs}
-        subtext={releaseDate && t('releasedOn', { date: formatDate(releaseDate) })}
+        subtext={releaseDate && t('InbaRelease.releasedOn', { date: formatDate(releaseDate) })}
       />
 
       <SectionContainer className="pt-10 md:pt-18">
         <div className="grid grid-cols-1 gap-16 lg:grid-cols-[1fr_2fr]">
           <div
-            className={cx('overflow-hidden rounded-xl shadow-lg', {
+            className={cn('overflow-hidden rounded-xl shadow-lg', {
               'aspect-inba': !coverImageAttr,
             })}
           >
@@ -66,7 +67,7 @@ const InbaReleasePageContent = ({ inbaRelease }: InbaReleasePageContentProps) =>
             {perex ? (
               <NarrowText align="left" width="full">
                 <Typography type="h2" size="h3" className="pb-4">
-                  {t('inThisRelease')}
+                  {t('InbaRelease.inThisRelease')}
                 </Typography>
                 {/* Perex comes as plain text from Strapi, but we format it using Markdown component */}
                 <Markdown content={perex} />
@@ -75,7 +76,7 @@ const InbaReleasePageContent = ({ inbaRelease }: InbaReleasePageContentProps) =>
 
             <div className="flex flex-col">
               <Typography type="h2" size="h3" className="pb-4">
-                {t('toDownload')}
+                {t('InbaRelease.toDownload')}
               </Typography>
 
               {/* TODO refactor, use FileList */}

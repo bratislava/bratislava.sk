@@ -1,7 +1,7 @@
 import { Typography } from '@bratislava/component-library'
 import Image from 'next/image'
 import React from 'react'
-import { twMerge } from 'tailwind-merge'
+import cn from 'utils/cn'
 
 import CardBase, { CardBaseProps } from '@/components/cards/CardBase'
 import CardContent from '@/components/cards/CardContent'
@@ -25,7 +25,7 @@ const HomepageHorizontalCard = ({
   ...rest
 }: Props) => {
   return (
-    <CardBase className={twMerge('flex h-[196px] flex-row rounded-lg', className)} {...rest}>
+    <CardBase className={cn('flex h-[196px] flex-row rounded-lg', className)} {...rest}>
       <div className="relative aspect-16/10 w-[240px] shrink-0">
         {imgSrc ? (
           <Image src={imgSrc} alt="" sizes={imgSizes} fill className="object-cover" />

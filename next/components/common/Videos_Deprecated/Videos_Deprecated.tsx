@@ -43,7 +43,7 @@ const Video = ({
     <div className="mb-8 w-full lg:mb-0 xl:w-88">
       <iframe
         className={cx('w-full rounded-5 shadow-sm', {
-          'animate-pulse bg-gray-300': !isLoaded,
+          'animate-pulse bg-grey-300': !isLoaded,
         })}
         title={title ?? undefined}
         // width={size === 'default' ? '350' : '280'}
@@ -87,7 +87,7 @@ export const Videos = ({ title, subtitle, videos }: VideosSectionFragment) => {
       {/* Mobile */}
       <ResponsiveCarousel
         className="lg:hidden"
-        noYListSpacing
+        hasVerticalPadding={false}
         items={videos.filter(isPresent).map((video) => (
           <Video key={video.url} size="small" {...video} />
         ))}

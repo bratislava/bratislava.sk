@@ -1,4 +1,4 @@
-import cx from 'classnames'
+import cn from 'utils/cn'
 
 import Markdown from '@/components/formatting/Markdown/Markdown'
 import { Enum_Componentsectionscolumnedtext_Contentalignment } from '@/services/graphql'
@@ -20,7 +20,7 @@ const ColumnedText = ({
   if (!content) return null
   return (
     <div
-      className={cx('grid gap-6', {
+      className={cn('grid gap-6', {
         'grid-cols-1': columns.length === 1,
         'grid-cols-1 md:grid-cols-2': columns.length === 2,
         'grid-cols-1 md:grid-cols-3': columns.length === 3,
@@ -33,7 +33,7 @@ const ColumnedText = ({
       {columns.map((column, i) => (
         <div
           key={i}
-          className={cx({
+          className={cn({
             'text-left':
               contentAlignment === Enum_Componentsectionscolumnedtext_Contentalignment.Left,
             'text-center':

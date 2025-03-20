@@ -1,6 +1,6 @@
 import { Typography } from '@bratislava/component-library'
-import cx from 'classnames'
 import React from 'react'
+import cn from 'utils/cn'
 
 import IconTitleDescItem from '@/components/common/IconTitleDescItem/IconTitleDescItem'
 import { IconTitleDescSectionFragment } from '@/services/graphql'
@@ -27,7 +27,7 @@ const IconTitleDescSection = ({ section }: IconTitleDescSectionProps) => {
         </div>
       ) : null}
       <ul
-        className={cx('grid grid-cols-1 gap-x-8 gap-y-12', {
+        className={cn('grid grid-cols-1 gap-x-8 gap-y-12', {
           'md:grid-cols-2 lg:grid-cols-4': isLongList,
           'md:auto-cols-fr md:grid-flow-col': !isLongList,
         })}

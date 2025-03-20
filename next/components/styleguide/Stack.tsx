@@ -1,4 +1,4 @@
-import cx from 'classnames'
+import cn from 'utils/cn'
 
 type StackProps = {
   bg?: 'white' | 'dark'
@@ -8,8 +8,8 @@ type StackProps = {
 }
 
 const Stack = ({ direction = 'row', children }: StackProps) => {
-  const classNameStyles = cx(
-    'flex flex-wrap gap-2 rounded-lg border border-dashed border-gray-800 p-4',
+  const classNameStyles = cn(
+    'flex flex-wrap gap-2 rounded-lg border border-dashed border-grey-800 p-4',
     {
       'flex-col items-center': direction === 'column',
       'items-end': direction === 'row',

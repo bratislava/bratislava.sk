@@ -1,7 +1,6 @@
 import { Typography } from '@bratislava/component-library'
-import cx from 'classnames'
 import React from 'react'
-import { twMerge } from 'tailwind-merge'
+import cn from 'utils/cn'
 
 import Markdown from '@/components/formatting/Markdown/Markdown'
 import { TestimonialItemBlockFragment, TestimonialsSectionFragment } from '@/services/graphql'
@@ -24,9 +23,9 @@ const TestimonialCard = ({
 }) => {
   return (
     <div
-      className={twMerge(
+      className={cn(
         'relative rounded-lg bg-white p-4',
-        hasBackground ? 'bg-white' : 'bg-category-100',
+        { 'bg-white': hasBackground, 'bg-category-100': !hasBackground },
         className,
       )}
     >
@@ -49,19 +48,19 @@ const TestimonialCard = ({
 const Testimonials = ({ section }: TestimonialsSectionProps) => {
   return (
     <div className="grid grid-cols-1 gap-6 md:grid-cols-12 md:gap-8">
-      <div className={cx('col-span-1 flex flex-col gap-3', 'md:col-span-5')}>
+      <div className="col-span-1 flex flex-col gap-3 md:col-span-5">
         {section.title ? <Typography type="h2">{section.title}</Typography> : null}
         {section.text ? <Markdown content={section.text} variant="small-no-respo" /> : null}
       </div>
-      <div className={cx('hidden md:block', 'col-span-1')} />
-      <div className={cx('col-span-1', 'md:col-span-6')}>
+      <div className="col-span-1 hidden md:block" />
+      <div className="col-span-1 md:col-span-6">
         {/* TODO render as <ul> */}
         <div className="grid grid-cols-1 gap-2 md:grid-cols-2 md:gap-3">
           {section.testimonials.filter(isDefined).map((testimonial, index) => (
             <TestimonialCard
               // eslint-disable-next-line react/no-array-index-key
               key={index}
-              className={cx('col-span-1', 'md:col-span-2')}
+              className="col-span-1 md:col-span-2"
               testimonial={testimonial}
               hasBackground={section.hasBackground ?? false}
             />

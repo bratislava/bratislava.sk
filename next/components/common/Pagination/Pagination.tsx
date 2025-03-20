@@ -1,10 +1,10 @@
-import cx from 'classnames'
-import { useTranslations } from 'next-intl'
 import React, { ReactNode } from 'react'
+import cn from 'utils/cn'
 
 import { ArrowLeftIcon, ArrowRightIcon } from '@/assets/ui-icons'
 import Button from '@/components/common/Button/Button'
 import usePagination from '@/components/common/Pagination/usePagination'
+import { useTranslation } from '@/utils/useTranslation'
 
 type PaginationProps = {
   currentPage: number
@@ -22,7 +22,7 @@ type PaginationProps = {
  * @constructor
  */
 const Pagination = ({ currentPage, totalCount, onPageChange = () => {} }: PaginationProps) => {
-  const t = useTranslations('Pagination')
+  const { t } = useTranslation()
 
   const { items } = usePagination({
     count: totalCount,
@@ -54,7 +54,7 @@ const Pagination = ({ currentPage, totalCount, onPageChange = () => {} }: Pagina
                   isDisabled={disabled}
                   onPress={onPress}
                   aria-current={ariaCurrent}
-                  aria-label={t('aria.goToPage', { page })}
+                  aria-label={t('Pagination.aria.goToPage', { page })}
                   className="flex h-10 w-10 shrink-0 grow-0 items-center justify-center rounded-full lg:h-12 lg:w-12"
                 >
                   {page}
@@ -65,11 +65,11 @@ const Pagination = ({ currentPage, totalCount, onPageChange = () => {} }: Pagina
               let ariaLabel = ''
               if (type === 'previous') {
                 icon = <ArrowLeftIcon />
-                ariaLabel = t('aria.goToPreviousPage', { page })
+                ariaLabel = t('Pagination.aria.goToPreviousPage')
               }
               if (type === 'next') {
                 icon = <ArrowRightIcon />
-                ariaLabel = t('aria.goToNextPage', { page })
+                ariaLabel = t('Pagination.aria.goToNextPage')
               }
 
               children = (
@@ -88,7 +88,7 @@ const Pagination = ({ currentPage, totalCount, onPageChange = () => {} }: Pagina
               <li
                 // eslint-disable-next-line react/no-array-index-key
                 key={index}
-                className={cx({
+                className={cn({
                   'text-sm flex w-10 items-center justify-center font-semibold lg:w-12':
                     type === 'start-ellipsis' || type === 'end-ellipsis',
                   'lg:mr-2': type === 'previous',

@@ -119,6 +119,8 @@
         "sections.comparison-section",
         "sections.contacts-section",
         "sections.divider",
+        "sections.faqs",
+        "sections.faq-categories",
         "sections.featured-blog-posts",
         "sections.file-list",
         "sections.gallery",

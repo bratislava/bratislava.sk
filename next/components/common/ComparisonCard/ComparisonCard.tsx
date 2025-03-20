@@ -1,5 +1,5 @@
-import cx from 'classnames'
 import React, { ReactNode } from 'react'
+import cn from 'utils/cn'
 
 type ComparisonProps = {
   color: 'green' | 'red' | 'white'
@@ -11,18 +11,18 @@ type ComparisonProps = {
 const ComparisonCard = ({ title, items, color, icon }: ComparisonProps) => {
   return (
     <li
-      className={cx('relative rounded-lg border-2', {
+      className={cn('relative rounded-lg border-2', {
         'border-success-700 bg-success-100': color === 'green',
         'border-negative-700 bg-negative-100': color === 'red',
-        'border-gray-200 bg-white': color === 'white',
+        'border-grey-200 bg-white': color === 'white',
       })}
     >
       <div className="flex flex-col p-5 lg:p-8">
         <div
-          className={cx('flex h-14 w-14 shrink-0 items-center justify-center rounded-full', {
+          className={cn('flex h-14 w-14 shrink-0 items-center justify-center rounded-full', {
             'bg-white text-success-700': color === 'green',
             'bg-white text-negative-700': color === 'red',
-            'bg-gray-100 text-gray-700': color === 'white',
+            'bg-grey-100 text-grey-700': color === 'white',
           })}
         >
           {/* This dev sets "boundaries" for custom icon image from Strapi */}

@@ -28,12 +28,11 @@ const handler = async (req: NextApiRequest, res: NextApiResponse): Promise<void>
   try {
     const result = await getOfficialBoardFileBase64Encoded(fileId)
 
-    if (!result?.length) {
+    if (!result) {
       return res.status(404).json({ message: 'File not found' })
     }
 
-    // Result should contain only one item
-    const buffer = Buffer.from(result[0].Data, 'base64')
+    const buffer = Buffer.from(result.Data, 'base64')
 
     // Set content type to pdf. It's not guaranteed, but we have been told it's always pdf by the admin.
     res.setHeader('Content-Type', 'application/pdf')
