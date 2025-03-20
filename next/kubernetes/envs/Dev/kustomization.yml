@@ -1,5 +1,6 @@
 resources:
   - ../../base
+  - scaler.yml
   - ./secrets/msal.secret.yml
 
 configMapGenerator:
