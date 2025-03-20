@@ -47,7 +47,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
       <PlausibleProvider
         domain={isProd ? 'bratislava.sk' : 'testing.bratislava.sk'}
         taggedEvents
-        // uncomment for local testing, needs to be run with `yarn build && yarn start`
+        // uncomment for local testing, needs to be run with `build` and `start`
         // trackLocalhost
       >
         <BAQueryClientProvider>

@@ -4,20 +4,20 @@ This readme should get you up & running. For more detailed documentation, check 
 
 ## First-time setup
 
-You need `node` and `yarn` installed locally.
+You need `node` and `npm` installed locally.
 
 To install dependencies run:
 
 ```
-yarn
+npm install
 ```
 
-For CMS setup see `strapi` directory. You can also run the project against production strapi - this is the default setup. If you want to run against local strapi, you need to set `NEXT_PUBLIC_STRAPI_URL` in `.env.development.local` file.
+For CMS setup see `strapi` directory. You can also run the project against production strapi - this is the default setup. If you want to run against local strapi, you need to set `NEXT_PUBLIC_STRAPI_URL` in `.env.local` file.
 
 ## Run project locally
 
 ```
-yarn dev
+npm run dev
 ```
 
 By default this connects you to the production Strapi instance - this is all you need for much of the FE development or bugfixes. If you need to edit anything on the side of Strapi, it's still recommended that you start from seeded data instead of an empty database - read more in the `../strapi/README.md` or the [relevant docs](https://bratislava.github.io/docs/recipes/load-strapi-db-in-local-dev).
@@ -35,7 +35,7 @@ Strapi V4 does not export schema.graphql by default - instead, you'll need a run
 ```bash
 # to update queries or mutations, modify *.graphql files in /graphql/queries directory
 # have the strapi server running locally on port 1337 and run the following
-yarn gen
+npm run gen
 ```
 
 ## On-demand Strapi revalidation

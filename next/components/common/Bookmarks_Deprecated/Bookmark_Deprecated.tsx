@@ -97,8 +97,7 @@ const Bookmark = ({
         </span>
       </Button>
 
-      {/* https://github.com/facebook/react/issues/17157#issuecomment-1572230721 */}
-      <div className="flex py-5" aria-hidden={!isOpen} {...(isOpen ? {} : { inert: '' })}>
+      <div className="flex py-5" aria-hidden={!isOpen} inert={!isOpen}>
         <div className="flex w-44 items-center justify-center">
           {icon ? (
             <div
