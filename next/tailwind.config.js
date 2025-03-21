@@ -29,10 +29,7 @@ const toRem = (px) => `${px / 16}rem`
 const getFontSize = (size) => [toRem(size[0]), toRem(size[1])]
 
 module.exports = {
-  content: [
-    join(__dirname, 'pages/**/*.{js,jsx,ts,tsx}'),
-    join(__dirname, 'components/**/*.{js,jsx,ts,tsx}'),
-  ],
+  content: ['./src/**/*.{js,ts,jsx,tsx,mdx}'],
   plugins: [
     customVariants,
     removeNativeSearchInputStyling,
