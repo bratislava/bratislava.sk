@@ -24,7 +24,6 @@ export type Scalars = {
   DateTime: { input: any; output: any }
   I18NLocaleCode: { input: any; output: any }
   JSON: { input: any; output: any }
-  Long: { input: any; output: any }
   PagePageHeaderSectionsDynamicZoneInput: { input: any; output: any }
   PageSectionsDynamicZoneInput: { input: any; output: any }
   Upload: { input: any; output: any }
@@ -643,34 +642,6 @@ export type ComponentBlocksProsAndConsCardItemsArgs = {
   filters?: InputMaybe<ComponentBlocksComparisonItemFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
-}
-
-export type ComponentBlocksSpaceInfo = {
-  __typename?: 'ComponentBlocksSpaceInfo'
-  bigGapCapacity?: Maybe<Scalars['Long']['output']>
-  buttonTitle?: Maybe<Scalars['String']['output']>
-  footerText?: Maybe<Scalars['String']['output']>
-  id: Scalars['ID']['output']
-  image?: Maybe<UploadFileEntityResponse>
-  imagePosition?: Maybe<Enum_Componentblocksspaceinfo_Imageposition>
-  linkTitle?: Maybe<Scalars['String']['output']>
-  smallGapCapacity?: Maybe<Scalars['Long']['output']>
-  spaceTitle?: Maybe<Scalars['String']['output']>
-  subText?: Maybe<Scalars['String']['output']>
-}
-
-export type ComponentBlocksSpaceInfoFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<ComponentBlocksSpaceInfoFiltersInput>>>
-  bigGapCapacity?: InputMaybe<LongFilterInput>
-  buttonTitle?: InputMaybe<StringFilterInput>
-  footerText?: InputMaybe<StringFilterInput>
-  imagePosition?: InputMaybe<StringFilterInput>
-  linkTitle?: InputMaybe<StringFilterInput>
-  not?: InputMaybe<ComponentBlocksSpaceInfoFiltersInput>
-  or?: InputMaybe<Array<InputMaybe<ComponentBlocksSpaceInfoFiltersInput>>>
-  smallGapCapacity?: InputMaybe<LongFilterInput>
-  spaceTitle?: InputMaybe<StringFilterInput>
-  subText?: InputMaybe<StringFilterInput>
 }
 
 export type ComponentBlocksSubpage = {
@@ -1388,19 +1359,6 @@ export type ComponentSectionsRegulationsList = {
   title?: Maybe<Scalars['String']['output']>
 }
 
-export type ComponentSectionsSpace = {
-  __typename?: 'ComponentSectionsSpace'
-  id: Scalars['ID']['output']
-  sectionTitle?: Maybe<Scalars['String']['output']>
-  spaceInfo?: Maybe<Array<Maybe<ComponentBlocksSpaceInfo>>>
-}
-
-export type ComponentSectionsSpaceSpaceInfoArgs = {
-  filters?: InputMaybe<ComponentBlocksSpaceInfoFiltersInput>
-  pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
-}
-
 export type ComponentSectionsSubpageList = {
   __typename?: 'ComponentSectionsSubpageList'
   hasBackground?: Maybe<Scalars['Boolean']['output']>
@@ -1581,11 +1539,6 @@ export enum Enum_Componentaccordionitemsflattext_Width {
   Full = 'full',
   Narrow = 'narrow',
   Wide = 'wide',
-}
-
-export enum Enum_Componentblocksspaceinfo_Imageposition {
-  Left = 'left',
-  Right = 'right',
 }
 
 export enum Enum_Componentblockstopservicesitem_Icon {
@@ -2111,7 +2064,6 @@ export type GenericMorph =
   | ComponentBlocksNumericalListItem
   | ComponentBlocksPageLink
   | ComponentBlocksProsAndConsCard
-  | ComponentBlocksSpaceInfo
   | ComponentBlocksSubpage
   | ComponentBlocksTestimonialItem
   | ComponentBlocksTimelineItem
@@ -2156,7 +2108,6 @@ export type GenericMorph =
   | ComponentSectionsProsAndConsSection
   | ComponentSectionsRegulations
   | ComponentSectionsRegulationsList
-  | ComponentSectionsSpace
   | ComponentSectionsSubpageList
   | ComponentSectionsTestimonials
   | ComponentSectionsTextWithImage
@@ -2577,31 +2528,6 @@ export type JsonFilterInput = {
   null?: InputMaybe<Scalars['Boolean']['input']>
   or?: InputMaybe<Array<InputMaybe<Scalars['JSON']['input']>>>
   startsWith?: InputMaybe<Scalars['JSON']['input']>
-}
-
-export type LongFilterInput = {
-  and?: InputMaybe<Array<InputMaybe<Scalars['Long']['input']>>>
-  between?: InputMaybe<Array<InputMaybe<Scalars['Long']['input']>>>
-  contains?: InputMaybe<Scalars['Long']['input']>
-  containsi?: InputMaybe<Scalars['Long']['input']>
-  endsWith?: InputMaybe<Scalars['Long']['input']>
-  eq?: InputMaybe<Scalars['Long']['input']>
-  eqi?: InputMaybe<Scalars['Long']['input']>
-  gt?: InputMaybe<Scalars['Long']['input']>
-  gte?: InputMaybe<Scalars['Long']['input']>
-  in?: InputMaybe<Array<InputMaybe<Scalars['Long']['input']>>>
-  lt?: InputMaybe<Scalars['Long']['input']>
-  lte?: InputMaybe<Scalars['Long']['input']>
-  ne?: InputMaybe<Scalars['Long']['input']>
-  nei?: InputMaybe<Scalars['Long']['input']>
-  not?: InputMaybe<LongFilterInput>
-  notContains?: InputMaybe<Scalars['Long']['input']>
-  notContainsi?: InputMaybe<Scalars['Long']['input']>
-  notIn?: InputMaybe<Array<InputMaybe<Scalars['Long']['input']>>>
-  notNull?: InputMaybe<Scalars['Boolean']['input']>
-  null?: InputMaybe<Scalars['Boolean']['input']>
-  or?: InputMaybe<Array<InputMaybe<Scalars['Long']['input']>>>
-  startsWith?: InputMaybe<Scalars['Long']['input']>
 }
 
 export type Menu = {
@@ -3369,7 +3295,6 @@ export type PageSectionsDynamicZone =
   | ComponentSectionsProsAndConsSection
   | ComponentSectionsRegulations
   | ComponentSectionsRegulationsList
-  | ComponentSectionsSpace
   | ComponentSectionsTestimonials
   | ComponentSectionsTextWithImage
   | ComponentSectionsTimeline
@@ -8934,7 +8859,6 @@ export type PageBySlugQuery = {
               title?: string | null
               text?: string | null
             }
-          | { __typename: 'ComponentSectionsSpace' }
           | {
               __typename: 'ComponentSectionsTestimonials'
               title?: string | null
@@ -9893,7 +9817,6 @@ export type PageEntityFragment = {
           title?: string | null
           text?: string | null
         }
-      | { __typename: 'ComponentSectionsSpace' }
       | {
           __typename: 'ComponentSectionsTestimonials'
           title?: string | null
@@ -12615,8 +12538,6 @@ type Sections_ComponentSectionsRegulationsList_Fragment = {
   text?: string | null
 }
 
-type Sections_ComponentSectionsSpace_Fragment = { __typename: 'ComponentSectionsSpace' }
-
 type Sections_ComponentSectionsTestimonials_Fragment = {
   __typename: 'ComponentSectionsTestimonials'
   title?: string | null
@@ -12709,7 +12630,6 @@ export type SectionsFragment =
   | Sections_ComponentSectionsProsAndConsSection_Fragment
   | Sections_ComponentSectionsRegulations_Fragment
   | Sections_ComponentSectionsRegulationsList_Fragment
-  | Sections_ComponentSectionsSpace_Fragment
   | Sections_ComponentSectionsTestimonials_Fragment
   | Sections_ComponentSectionsTextWithImage_Fragment
   | Sections_ComponentSectionsTimeline_Fragment

@@ -306,24 +306,6 @@ export interface BlocksProsAndConsCard extends Schema.Component {
   }
 }
 
-export interface BlocksSpaceInfo extends Schema.Component {
-  collectionName: 'components_blocks_space_infos'
-  info: {
-    displayName: 'spaceInfo'
-  }
-  attributes: {
-    bigGapCapacity: Attribute.BigInteger
-    buttonTitle: Attribute.String
-    footerText: Attribute.String
-    image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>
-    imagePosition: Attribute.Enumeration<['left', 'right']>
-    linkTitle: Attribute.String
-    smallGapCapacity: Attribute.BigInteger
-    spaceTitle: Attribute.String
-    subText: Attribute.String
-  }
-}
-
 export interface BlocksSubpage extends Schema.Component {
   collectionName: 'components_blocks_subpages'
   info: {
@@ -1030,17 +1012,6 @@ export interface SectionsRegulationsList extends Schema.Component {
   }
 }
 
-export interface SectionsSpace extends Schema.Component {
-  collectionName: 'components_sections_spaces'
-  info: {
-    displayName: 'Space'
-  }
-  attributes: {
-    sectionTitle: Attribute.String
-    spaceInfo: Attribute.Component<'blocks.space-info', true>
-  }
-}
-
 export interface SectionsSubpageList extends Schema.Component {
   collectionName: 'components_sections_subpage_lists'
   info: {
@@ -1174,7 +1145,6 @@ declare module '@strapi/types' {
       'blocks.numerical-list-item': BlocksNumericalListItem
       'blocks.page-link': BlocksPageLink
       'blocks.pros-and-cons-card': BlocksProsAndConsCard
-      'blocks.space-info': BlocksSpaceInfo
       'blocks.subpage': BlocksSubpage
       'blocks.testimonial-item': BlocksTestimonialItem
       'blocks.timeline-item': BlocksTimelineItem
@@ -1219,7 +1189,6 @@ declare module '@strapi/types' {
       'sections.pros-and-cons-section': SectionsProsAndConsSection
       'sections.regulations': SectionsRegulations
       'sections.regulations-list': SectionsRegulationsList
-      'sections.space': SectionsSpace
       'sections.subpage-list': SectionsSubpageList
       'sections.testimonials': SectionsTestimonials
       'sections.text-with-image': SectionsTextWithImage

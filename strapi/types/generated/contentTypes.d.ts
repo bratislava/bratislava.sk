@@ -1227,7 +1227,6 @@ export interface ApiPagePage extends Schema.CollectionType {
         'sections.pros-and-cons-section',
         'sections.regulations',
         'sections.regulations-list',
-        'sections.space',
         'sections.testimonials',
         'sections.text-with-image',
         'sections.timeline',
