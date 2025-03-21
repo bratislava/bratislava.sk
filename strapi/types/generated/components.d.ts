@@ -767,36 +767,12 @@ export interface SectionsFaqs extends Schema.Component {
   collectionName: 'components_sections_faqs'
   info: {
     description: ''
-    displayName: 'faqs'
+    displayName: 'FAQs'
   }
   attributes: {
     faqs: Attribute.Relation<'sections.faqs', 'oneToMany', 'api::faq.faq'>
     text: Attribute.Text
     title: Attribute.String
-  }
-}
-
-export interface SectionsFeaturedBlogPosts extends Schema.Component {
-  collectionName: 'components_sections_featured_blog_posts'
-  info: {
-    displayName: 'Featured Blog Posts'
-  }
-  attributes: {
-    first_blog: Attribute.Relation<
-      'sections.featured-blog-posts',
-      'oneToOne',
-      'api::blog-post.blog-post'
-    >
-    second_blog: Attribute.Relation<
-      'sections.featured-blog-posts',
-      'oneToOne',
-      'api::blog-post.blog-post'
-    >
-    third_blog: Attribute.Relation<
-      'sections.featured-blog-posts',
-      'oneToOne',
-      'api::blog-post.blog-post'
-    >
   }
 }
 
@@ -1225,7 +1201,6 @@ declare module '@strapi/types' {
       'sections.divider': SectionsDivider
       'sections.faq-categories': SectionsFaqCategories
       'sections.faqs': SectionsFaqs
-      'sections.featured-blog-posts': SectionsFeaturedBlogPosts
       'sections.file-list': SectionsFileList
       'sections.gallery': SectionsGallery
       'sections.homepage-events': SectionsHomepageEvents
