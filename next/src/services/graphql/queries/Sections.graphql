@@ -385,25 +385,6 @@ fragment BannerSection on ComponentSectionsBanner {
   }
 }
 
-fragment FeaturedBlogPostsSection on ComponentSectionsFeaturedBlogPosts {
-  id
-  first_blog {
-    data {
-      ...LatestBlogPostEntity
-    }
-  }
-  second_blog {
-    data {
-      ...LatestBlogPostEntity
-    }
-  }
-  third_blog {
-    data {
-      ...LatestBlogPostEntity
-    }
-  }
-}
-
 fragment ContactCardBlock on ComponentBlocksContactCard {
   overrideLabel
   value
@@ -561,10 +542,6 @@ fragment Sections on PageSectionsDynamicZone {
 
   ... on ComponentSectionsTimeline {
     ...TimelineSection
-  }
-
-  ... on ComponentSectionsFeaturedBlogPosts {
-    ...FeaturedBlogPostsSection
   }
 
   ... on ComponentSectionsContactsSection {

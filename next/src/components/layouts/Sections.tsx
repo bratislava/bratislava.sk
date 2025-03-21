@@ -14,7 +14,6 @@ import ContactsSection from '@/src/components/sections/ContactsSection'
 import DividerSection from '@/src/components/sections/DividerSection'
 import FaqCategoriesSection from '@/src/components/sections/FaqCategoriesSection'
 import FaqsSection from '@/src/components/sections/FaqsSection'
-import FeaturedBlogPostsSection from '@/src/components/sections/FeaturedBlogPostsSection'
 import FileListSection from '@/src/components/sections/FileListSection'
 import GallerySection from '@/src/components/sections/GallerySection'
 import IconTitleDescSection from '@/src/components/sections/IconTitleDescSection'
@@ -106,9 +105,6 @@ const SectionContent = ({ section }: { section: SectionsFragment }) => {
 
     case 'ComponentSectionsTimeline':
       return <TimelineSection section={section} />
-
-    case 'ComponentSectionsFeaturedBlogPosts':
-      return <FeaturedBlogPostsSection section={section} />
 
     case 'ComponentSectionsContactsSection':
       return <ContactsSection section={section} />

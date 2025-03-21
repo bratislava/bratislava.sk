@@ -1213,7 +1213,6 @@ export interface ApiPagePage extends Schema.CollectionType {
         'sections.divider',
         'sections.faqs',
         'sections.faq-categories',
-        'sections.featured-blog-posts',
         'sections.file-list',
         'sections.gallery',
         'sections.icon-title-desc',
