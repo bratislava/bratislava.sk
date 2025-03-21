@@ -1,0 +1,42 @@
+{
+  "name": "Project manager",
+  "code": "project-manager-lhfysra7",
+  "description": "Môže pridávať nových používateľov a má plnú kontrolu nad nastaveniami Meilisearch pluginu.\nUrčené pre: Projektových manažérov (použiť spolu s rolou Admin)\n\nVytvorené May 9th, 2023",
+  "permissions": [
+    {
+      "action": "admin::roles.read",
+      "subject": null,
+      "properties": {},
+      "conditions": [],
+      "actionParameters": null
+    },
+    {
+      "action": "admin::users.create",
+      "subject": null,
+      "properties": {},
+      "conditions": [],
+      "actionParameters": null
+    },
+    {
+      "action": "admin::users.read",
+      "subject": null,
+      "properties": {},
+      "conditions": [],
+      "actionParameters": null
+    },
+    {
+      "action": "admin::users.update",
+      "subject": null,
+      "properties": {},
+      "conditions": [],
+      "actionParameters": null
+    },
+    {
+      "action": "plugin::upload.settings.read",
+      "subject": null,
+      "properties": {},
+      "conditions": [],
+      "actionParameters": null
+    }
+  ]
+}

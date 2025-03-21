@@ -1,0 +1,195 @@
+{
+  "key": "plugin_content_manager_configuration_components::accordion-items.institution",
+  "value": {
+    "uid": "accordion-items.institution",
+    "settings": {
+      "bulkable": true,
+      "filterable": true,
+      "searchable": true,
+      "pageSize": 10,
+      "mainField": "title",
+      "defaultSortBy": "title",
+      "defaultSortOrder": "ASC"
+    },
+    "metadatas": {
+      "id": {
+        "edit": {},
+        "list": {
+          "label": "id",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "title": {
+        "edit": {
+          "label": "title",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "title",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "url": {
+        "edit": {
+          "label": "url",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "url",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "urlLabel": {
+        "edit": {
+          "label": "urlLabel",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "urlLabel",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "category": {
+        "edit": {
+          "label": "category",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "category",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "firstColumn": {
+        "edit": {
+          "label": "firstColumn",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "firstColumn",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "secondColumn": {
+        "edit": {
+          "label": "secondColumn",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "secondColumn",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "thirdColumn": {
+        "edit": {
+          "label": "thirdColumn",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "thirdColumn",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "subtitle": {
+        "edit": {
+          "label": "subtitle",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "subtitle",
+          "searchable": false,
+          "sortable": false
+        }
+      }
+    },
+    "layouts": {
+      "list": [
+        "id",
+        "title",
+        "url",
+        "urlLabel"
+      ],
+      "edit": [
+        [
+          {
+            "name": "title",
+            "size": 6
+          },
+          {
+            "name": "url",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "urlLabel",
+            "size": 6
+          },
+          {
+            "name": "category",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "firstColumn",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "secondColumn",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "thirdColumn",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "subtitle",
+            "size": 12
+          }
+        ]
+      ]
+    },
+    "isComponent": true
+  },
+  "type": "object",
+  "environment": null,
+  "tag": null
+}

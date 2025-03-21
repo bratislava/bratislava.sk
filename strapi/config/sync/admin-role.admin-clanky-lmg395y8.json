@@ -1,0 +1,507 @@
+{
+  "name": "Admin iba Články + Media Library",
+  "code": "admin-clanky-lmg395y8",
+  "description": "Plná správa Článkov\n\n\nCreated September 12th, 2023",
+  "permissions": [
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "api::blog-post.blog-post",
+      "properties": {
+        "fields": [
+          "title",
+          "excerpt",
+          "coverImage",
+          "slug",
+          "date_added",
+          "author",
+          "tag",
+          "moreLink.title",
+          "moreLink.url",
+          "moreLink.blogPost",
+          "sections",
+          "addedAt"
+        ],
+        "locales": [
+          "en",
+          "sk"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "subject": "api::blog-post.blog-post",
+      "properties": {
+        "locales": [
+          "en",
+          "sk"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.publish",
+      "subject": "api::blog-post.blog-post",
+      "properties": {
+        "locales": [
+          "en",
+          "sk"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::blog-post.blog-post",
+      "properties": {
+        "fields": [
+          "title",
+          "excerpt",
+          "coverImage",
+          "slug",
+          "date_added",
+          "author",
+          "tag",
+          "moreLink.title",
+          "moreLink.url",
+          "moreLink.blogPost",
+          "sections",
+          "addedAt"
+        ],
+        "locales": [
+          "en",
+          "sk"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::blog-post.blog-post",
+      "properties": {
+        "fields": [
+          "title",
+          "excerpt",
+          "coverImage",
+          "slug",
+          "date_added",
+          "author",
+          "tag",
+          "moreLink.title",
+          "moreLink.url",
+          "moreLink.blogPost",
+          "sections",
+          "addedAt"
+        ],
+        "locales": [
+          "en",
+          "sk"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "api::homepage.homepage",
+      "properties": {
+        "fields": [
+          "metaTitle",
+          "metaDescription",
+          "welcomeHeadline",
+          "welcomeMedia",
+          "highlights.title",
+          "highlights.text",
+          "highlights.cards.link.label",
+          "highlights.cards.link.page",
+          "highlights.cards.link.blogPost",
+          "highlights.cards.link.url",
+          "highlights.cards.link.plausibleId",
+          "highlights.cards.image",
+          "tabs.leftNewsItem",
+          "tabs.rightNewsItem",
+          "tabs.newsPageLink.label",
+          "tabs.newsPageLink.page",
+          "tabs.newsPageLink.blogPost",
+          "tabs.newsPageLink.url",
+          "tabs.newsPageLink.plausibleId",
+          "tabs.officialBoardPageLink.label",
+          "tabs.officialBoardPageLink.page",
+          "tabs.officialBoardPageLink.blogPost",
+          "tabs.officialBoardPageLink.url",
+          "tabs.officialBoardPageLink.plausibleId",
+          "tabs.roadClosuresPageLink.label",
+          "tabs.roadClosuresPageLink.page",
+          "tabs.roadClosuresPageLink.blogPost",
+          "tabs.roadClosuresPageLink.url",
+          "tabs.roadClosuresPageLink.plausibleId",
+          "mayorAndCouncil.title",
+          "mayorAndCouncil.text",
+          "mayorAndCouncil.mayorCard.label",
+          "mayorAndCouncil.mayorCard.page",
+          "mayorAndCouncil.mayorCard.blogPost",
+          "mayorAndCouncil.mayorCard.url",
+          "mayorAndCouncil.mayorCard.plausibleId",
+          "mayorAndCouncil.councilCard.label",
+          "mayorAndCouncil.councilCard.page",
+          "mayorAndCouncil.councilCard.blogPost",
+          "mayorAndCouncil.councilCard.url",
+          "mayorAndCouncil.councilCard.plausibleId",
+          "topServices.title",
+          "topServices.services.icon",
+          "topServices.services.link.label",
+          "topServices.services.link.page",
+          "topServices.services.link.blogPost",
+          "topServices.services.link.url",
+          "topServices.services.link.plausibleId",
+          "inbaFrontImage",
+          "inbaRearImage",
+          "inbaUrl",
+          "bookmarkTourists.title",
+          "bookmarkTourists.headline",
+          "bookmarkTourists.text",
+          "bookmarkTourists.link.title",
+          "bookmarkTourists.link.href",
+          "bookmarkTourists.picture",
+          "bookmarkTourists.variant",
+          "bookmarkUkraine.title",
+          "bookmarkUkraine.headline",
+          "bookmarkUkraine.text",
+          "bookmarkUkraine.link.title",
+          "bookmarkUkraine.link.href",
+          "bookmarkUkraine.picture",
+          "bookmarkUkraine.variant",
+          "cards.title",
+          "cards.headline",
+          "cards.text",
+          "cards.link.title",
+          "cards.link.href",
+          "cards.picture",
+          "cards.variant",
+          "eventsSection.title",
+          "eventsSection.text",
+          "eventsSection.eventsPageLink.label",
+          "eventsSection.eventsPageLink.page",
+          "eventsSection.eventsPageLink.blogPost",
+          "eventsSection.eventsPageLink.url",
+          "eventsSection.eventsPageLink.plausibleId"
+        ],
+        "locales": [
+          "en",
+          "sk"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "subject": "api::homepage.homepage",
+      "properties": {
+        "locales": [
+          "en",
+          "sk"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.publish",
+      "subject": "api::homepage.homepage",
+      "properties": {
+        "locales": [
+          "en",
+          "sk"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::homepage.homepage",
+      "properties": {
+        "fields": [
+          "metaTitle",
+          "metaDescription",
+          "welcomeHeadline",
+          "welcomeMedia",
+          "highlights.title",
+          "highlights.text",
+          "highlights.cards.link.label",
+          "highlights.cards.link.page",
+          "highlights.cards.link.blogPost",
+          "highlights.cards.link.url",
+          "highlights.cards.link.plausibleId",
+          "highlights.cards.image",
+          "tabs.leftNewsItem",
+          "tabs.rightNewsItem",
+          "tabs.newsPageLink.label",
+          "tabs.newsPageLink.page",
+          "tabs.newsPageLink.blogPost",
+          "tabs.newsPageLink.url",
+          "tabs.newsPageLink.plausibleId",
+          "tabs.officialBoardPageLink.label",
+          "tabs.officialBoardPageLink.page",
+          "tabs.officialBoardPageLink.blogPost",
+          "tabs.officialBoardPageLink.url",
+          "tabs.officialBoardPageLink.plausibleId",
+          "tabs.roadClosuresPageLink.label",
+          "tabs.roadClosuresPageLink.page",
+          "tabs.roadClosuresPageLink.blogPost",
+          "tabs.roadClosuresPageLink.url",
+          "tabs.roadClosuresPageLink.plausibleId",
+          "mayorAndCouncil.title",
+          "mayorAndCouncil.text",
+          "mayorAndCouncil.mayorCard.label",
+          "mayorAndCouncil.mayorCard.page",
+          "mayorAndCouncil.mayorCard.blogPost",
+          "mayorAndCouncil.mayorCard.url",
+          "mayorAndCouncil.mayorCard.plausibleId",
+          "mayorAndCouncil.councilCard.label",
+          "mayorAndCouncil.councilCard.page",
+          "mayorAndCouncil.councilCard.blogPost",
+          "mayorAndCouncil.councilCard.url",
+          "mayorAndCouncil.councilCard.plausibleId",
+          "topServices.title",
+          "topServices.services.icon",
+          "topServices.services.link.label",
+          "topServices.services.link.page",
+          "topServices.services.link.blogPost",
+          "topServices.services.link.url",
+          "topServices.services.link.plausibleId",
+          "inbaFrontImage",
+          "inbaRearImage",
+          "inbaUrl",
+          "bookmarkTourists.title",
+          "bookmarkTourists.headline",
+          "bookmarkTourists.text",
+          "bookmarkTourists.link.title",
+          "bookmarkTourists.link.href",
+          "bookmarkTourists.picture",
+          "bookmarkTourists.variant",
+          "bookmarkUkraine.title",
+          "bookmarkUkraine.headline",
+          "bookmarkUkraine.text",
+          "bookmarkUkraine.link.title",
+          "bookmarkUkraine.link.href",
+          "bookmarkUkraine.picture",
+          "bookmarkUkraine.variant",
+          "cards.title",
+          "cards.headline",
+          "cards.text",
+          "cards.link.title",
+          "cards.link.href",
+          "cards.picture",
+          "cards.variant",
+          "eventsSection.title",
+          "eventsSection.text",
+          "eventsSection.eventsPageLink.label",
+          "eventsSection.eventsPageLink.page",
+          "eventsSection.eventsPageLink.blogPost",
+          "eventsSection.eventsPageLink.url",
+          "eventsSection.eventsPageLink.plausibleId"
+        ],
+        "locales": [
+          "en",
+          "sk"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::homepage.homepage",
+      "properties": {
+        "fields": [
+          "metaTitle",
+          "metaDescription",
+          "welcomeHeadline",
+          "welcomeMedia",
+          "highlights.title",
+          "highlights.text",
+          "highlights.cards.link.label",
+          "highlights.cards.link.page",
+          "highlights.cards.link.blogPost",
+          "highlights.cards.link.url",
+          "highlights.cards.link.plausibleId",
+          "highlights.cards.image",
+          "tabs.leftNewsItem",
+          "tabs.rightNewsItem",
+          "tabs.newsPageLink.label",
+          "tabs.newsPageLink.page",
+          "tabs.newsPageLink.blogPost",
+          "tabs.newsPageLink.url",
+          "tabs.newsPageLink.plausibleId",
+          "tabs.officialBoardPageLink.label",
+          "tabs.officialBoardPageLink.page",
+          "tabs.officialBoardPageLink.blogPost",
+          "tabs.officialBoardPageLink.url",
+          "tabs.officialBoardPageLink.plausibleId",
+          "tabs.roadClosuresPageLink.label",
+          "tabs.roadClosuresPageLink.page",
+          "tabs.roadClosuresPageLink.blogPost",
+          "tabs.roadClosuresPageLink.url",
+          "tabs.roadClosuresPageLink.plausibleId",
+          "mayorAndCouncil.title",
+          "mayorAndCouncil.text",
+          "mayorAndCouncil.mayorCard.label",
+          "mayorAndCouncil.mayorCard.page",
+          "mayorAndCouncil.mayorCard.blogPost",
+          "mayorAndCouncil.mayorCard.url",
+          "mayorAndCouncil.mayorCard.plausibleId",
+          "mayorAndCouncil.councilCard.label",
+          "mayorAndCouncil.councilCard.page",
+          "mayorAndCouncil.councilCard.blogPost",
+          "mayorAndCouncil.councilCard.url",
+          "mayorAndCouncil.councilCard.plausibleId",
+          "topServices.title",
+          "topServices.services.icon",
+          "topServices.services.link.label",
+          "topServices.services.link.page",
+          "topServices.services.link.blogPost",
+          "topServices.services.link.url",
+          "topServices.services.link.plausibleId",
+          "inbaFrontImage",
+          "inbaRearImage",
+          "inbaUrl",
+          "bookmarkTourists.title",
+          "bookmarkTourists.headline",
+          "bookmarkTourists.text",
+          "bookmarkTourists.link.title",
+          "bookmarkTourists.link.href",
+          "bookmarkTourists.picture",
+          "bookmarkTourists.variant",
+          "bookmarkUkraine.title",
+          "bookmarkUkraine.headline",
+          "bookmarkUkraine.text",
+          "bookmarkUkraine.link.title",
+          "bookmarkUkraine.link.href",
+          "bookmarkUkraine.picture",
+          "bookmarkUkraine.variant",
+          "cards.title",
+          "cards.headline",
+          "cards.text",
+          "cards.link.title",
+          "cards.link.href",
+          "cards.picture",
+          "cards.variant",
+          "eventsSection.title",
+          "eventsSection.text",
+          "eventsSection.eventsPageLink.label",
+          "eventsSection.eventsPageLink.page",
+          "eventsSection.eventsPageLink.blogPost",
+          "eventsSection.eventsPageLink.url",
+          "eventsSection.eventsPageLink.plausibleId"
+        ],
+        "locales": [
+          "en",
+          "sk"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "api::tag.tag",
+      "properties": {
+        "fields": [
+          "title",
+          "pageCategory"
+        ],
+        "locales": [
+          "en",
+          "sk"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "subject": "api::tag.tag",
+      "properties": {
+        "locales": [
+          "en",
+          "sk"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::tag.tag",
+      "properties": {
+        "fields": [
+          "title",
+          "pageCategory"
+        ],
+        "locales": [
+          "en",
+          "sk"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::tag.tag",
+      "properties": {
+        "fields": [
+          "title",
+          "pageCategory"
+        ],
+        "locales": [
+          "en",
+          "sk"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": null
+    },
+    {
+      "action": "plugin::upload.assets.copy-link",
+      "subject": null,
+      "properties": {},
+      "conditions": [],
+      "actionParameters": null
+    },
+    {
+      "action": "plugin::upload.assets.create",
+      "subject": null,
+      "properties": {},
+      "conditions": [],
+      "actionParameters": null
+    },
+    {
+      "action": "plugin::upload.assets.download",
+      "subject": null,
+      "properties": {},
+      "conditions": [],
+      "actionParameters": null
+    },
+    {
+      "action": "plugin::upload.assets.update",
+      "subject": null,
+      "properties": {},
+      "conditions": [],
+      "actionParameters": null
+    },
+    {
+      "action": "plugin::upload.read",
+      "subject": null,
+      "properties": {},
+      "conditions": [],
+      "actionParameters": null
+    }
+  ]
+}

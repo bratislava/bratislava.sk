@@ -1,0 +1,78 @@
+{
+  "key": "plugin_content_manager_configuration_components::general.header",
+  "value": {
+    "uid": "general.header",
+    "settings": {
+      "bulkable": true,
+      "filterable": true,
+      "searchable": true,
+      "pageSize": 10,
+      "mainField": "id",
+      "defaultSortBy": "id",
+      "defaultSortOrder": "ASC"
+    },
+    "metadatas": {
+      "id": {
+        "edit": {},
+        "list": {
+          "label": "id",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "links": {
+        "edit": {
+          "label": "Odkazy",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "links",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "accountLink": {
+        "edit": {
+          "label": "Odkaz na konto (url)",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "accountLink",
+          "searchable": false,
+          "sortable": false
+        }
+      }
+    },
+    "layouts": {
+      "list": [
+        "id",
+        "links",
+        "accountLink"
+      ],
+      "edit": [
+        [
+          {
+            "name": "links",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "accountLink",
+            "size": 12
+          }
+        ]
+      ]
+    },
+    "isComponent": true
+  },
+  "type": "object",
+  "environment": null,
+  "tag": null
+}

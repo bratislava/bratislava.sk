@@ -9,6 +9,8 @@
     "start": "strapi start",
     "build": "strapi build",
     "strapi": "strapi",
+    "ts:generate-types": "strapi ts:generate-types",
+    "cs": "config-sync",
     "postinstall": "patch-package"
   },
   "devDependencies": {
@@ -29,6 +31,7 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^5.3.4",
+    "strapi-plugin-config-sync": "^1.2.6",
     "strapi-plugin-meilisearch": "0.9.2",
     "strapi-provider-upload-ts-minio": "^3.1.0",
     "styled-components": "^5.3.11"

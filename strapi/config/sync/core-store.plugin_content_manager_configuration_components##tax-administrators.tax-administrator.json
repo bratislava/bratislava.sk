@@ -1,0 +1,137 @@
+{
+  "key": "plugin_content_manager_configuration_components::tax-administrators.tax-administrator",
+  "value": {
+    "uid": "tax-administrators.tax-administrator",
+    "settings": {
+      "bulkable": true,
+      "filterable": true,
+      "searchable": true,
+      "pageSize": 10,
+      "mainField": "range",
+      "defaultSortBy": "range",
+      "defaultSortOrder": "ASC"
+    },
+    "metadatas": {
+      "id": {
+        "edit": {},
+        "list": {
+          "label": "id",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "range": {
+        "edit": {
+          "label": "Rozsah",
+          "description": "Poznámka (pre developerov): Priezviská sa porovnávajú vždy podľa prvej skupiny písmen (po prvú pomlčku). Zvyšok je len informatívny pre používateľov.",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "range",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "name": {
+        "edit": {
+          "label": "Meno a priezvisko",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "name",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "email": {
+        "edit": {
+          "label": "Email",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "email",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "phone": {
+        "edit": {
+          "label": "Tel. číslo",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "phone",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "officeNumber": {
+        "edit": {
+          "label": "Číslo pracoviska",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "officeNumber",
+          "searchable": true,
+          "sortable": true
+        }
+      }
+    },
+    "layouts": {
+      "list": [
+        "id",
+        "range",
+        "name",
+        "email"
+      ],
+      "edit": [
+        [
+          {
+            "name": "range",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "name",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "email",
+            "size": 6
+          },
+          {
+            "name": "phone",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "officeNumber",
+            "size": 6
+          }
+        ]
+      ]
+    },
+    "isComponent": true
+  },
+  "type": "object",
+  "environment": null,
+  "tag": null
+}

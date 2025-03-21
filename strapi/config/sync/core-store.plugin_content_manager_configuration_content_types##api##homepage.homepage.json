@@ -1,0 +1,398 @@
+{
+  "key": "plugin_content_manager_configuration_content_types::api::homepage.homepage",
+  "value": {
+    "uid": "api::homepage.homepage",
+    "settings": {
+      "bulkable": true,
+      "filterable": true,
+      "searchable": true,
+      "pageSize": 10,
+      "mainField": "id",
+      "defaultSortBy": "id",
+      "defaultSortOrder": "ASC"
+    },
+    "metadatas": {
+      "id": {
+        "edit": {},
+        "list": {
+          "label": "id",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "metaTitle": {
+        "edit": {
+          "label": "Meta nadpis",
+          "description": "Zobrazuje sa vo vyhľadávačoch, používa sa ako h1 pre čítače obrazovky",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "metaTitle",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "metaDescription": {
+        "edit": {
+          "label": "Meta popis",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "metaDescription",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "welcomeHeadline": {
+        "edit": {
+          "label": "Headline",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "welcomeHeadline",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "welcomeMedia": {
+        "edit": {
+          "label": "Ilustračný obrázok",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "welcomeMedia",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "highlights": {
+        "edit": {
+          "label": "Highlighty",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "highlights",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "tabs": {
+        "edit": {
+          "label": "Taby",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "tabs",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "mayorAndCouncil": {
+        "edit": {
+          "label": "Primátor a Zastupiteľstvo",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "mayorAndCouncil",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "topServices": {
+        "edit": {
+          "label": "Najvyhľadávanejšie služby",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "topServices",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "inba": {
+        "edit": {
+          "label": "inba",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "inba",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "inbaFrontImage": {
+        "edit": {
+          "label": "inba predný obrázok",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "inbaFrontImage",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "inbaRearImage": {
+        "edit": {
+          "label": "inba zadný obrázok",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "inbaRearImage",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "inbaUrl": {
+        "edit": {
+          "label": "inba URL",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "inbaUrl",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "bookmarkTourists": {
+        "edit": {
+          "label": "bookmarkTourists",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "bookmarkTourists",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "bookmarkUkraine": {
+        "edit": {
+          "label": "bookmarkUkraine",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "bookmarkUkraine",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "cards": {
+        "edit": {
+          "label": "Záložky",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "cards",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "eventsSection": {
+        "edit": {
+          "label": "eventsSection",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "eventsSection",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "createdAt": {
+        "edit": {
+          "label": "createdAt",
+          "description": "",
+          "placeholder": "",
+          "visible": false,
+          "editable": true
+        },
+        "list": {
+          "label": "createdAt",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "updatedAt": {
+        "edit": {
+          "label": "updatedAt",
+          "description": "",
+          "placeholder": "",
+          "visible": false,
+          "editable": true
+        },
+        "list": {
+          "label": "updatedAt",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "createdBy": {
+        "edit": {
+          "label": "createdBy",
+          "description": "",
+          "placeholder": "",
+          "visible": false,
+          "editable": true,
+          "mainField": "firstname"
+        },
+        "list": {
+          "label": "createdBy",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "updatedBy": {
+        "edit": {
+          "label": "updatedBy",
+          "description": "",
+          "placeholder": "",
+          "visible": false,
+          "editable": true,
+          "mainField": "firstname"
+        },
+        "list": {
+          "label": "updatedBy",
+          "searchable": true,
+          "sortable": true
+        }
+      }
+    },
+    "layouts": {
+      "list": [
+        "id",
+        "createdAt",
+        "updatedAt",
+        "bookmarkTourists"
+      ],
+      "edit": [
+        [
+          {
+            "name": "metaTitle",
+            "size": 6
+          },
+          {
+            "name": "metaDescription",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "welcomeHeadline",
+            "size": 6
+          },
+          {
+            "name": "welcomeMedia",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "highlights",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "tabs",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "mayorAndCouncil",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "topServices",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "inbaUrl",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "inbaFrontImage",
+            "size": 6
+          },
+          {
+            "name": "inbaRearImage",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "cards",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "eventsSection",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "inba",
+            "size": 12
+          }
+        ]
+      ]
+    }
+  },
+  "type": "object",
+  "environment": null,
+  "tag": null
+}

@@ -1,0 +1,103 @@
+{
+  "name": "Public",
+  "description": "Default role given to unauthenticated user.",
+  "type": "public",
+  "permissions": [
+    {
+      "action": "api::alert.alert.find"
+    },
+    {
+      "action": "api::blog-post.blog-post.find"
+    },
+    {
+      "action": "api::blog-post.blog-post.findOne"
+    },
+    {
+      "action": "api::footer.footer.find"
+    },
+    {
+      "action": "api::general.general.find"
+    },
+    {
+      "action": "api::homepage.homepage.find"
+    },
+    {
+      "action": "api::inba-article.inba-article.find"
+    },
+    {
+      "action": "api::inba-article.inba-article.findOne"
+    },
+    {
+      "action": "api::inba-release.inba-release.find"
+    },
+    {
+      "action": "api::inba-release.inba-release.findOne"
+    },
+    {
+      "action": "api::inba-tag.inba-tag.find"
+    },
+    {
+      "action": "api::inba-tag.inba-tag.findOne"
+    },
+    {
+      "action": "api::menu.menu.find"
+    },
+    {
+      "action": "api::page-category.page-category.find"
+    },
+    {
+      "action": "api::page-category.page-category.findOne"
+    },
+    {
+      "action": "api::page.page.find"
+    },
+    {
+      "action": "api::page.page.findOne"
+    },
+    {
+      "action": "api::regulation.regulation.find"
+    },
+    {
+      "action": "api::regulation.regulation.findOne"
+    },
+    {
+      "action": "api::tag.tag.find"
+    },
+    {
+      "action": "api::tag.tag.findOne"
+    },
+    {
+      "action": "api::tax-administrators-list.tax-administrators-list.find"
+    },
+    {
+      "action": "plugin::i18n.locales.listLocales"
+    },
+    {
+      "action": "plugin::upload.content-api.find"
+    },
+    {
+      "action": "plugin::upload.content-api.findOne"
+    },
+    {
+      "action": "plugin::users-permissions.auth.callback"
+    },
+    {
+      "action": "plugin::users-permissions.auth.connect"
+    },
+    {
+      "action": "plugin::users-permissions.auth.emailConfirmation"
+    },
+    {
+      "action": "plugin::users-permissions.auth.forgotPassword"
+    },
+    {
+      "action": "plugin::users-permissions.auth.register"
+    },
+    {
+      "action": "plugin::users-permissions.auth.resetPassword"
+    },
+    {
+      "action": "plugin::users-permissions.user.me"
+    }
+  ]
+}
