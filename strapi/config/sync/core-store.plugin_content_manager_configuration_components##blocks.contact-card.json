@@ -1,0 +1,76 @@
+{
+  "key": "plugin_content_manager_configuration_components::blocks.contact-card",
+  "value": {
+    "uid": "blocks.contact-card",
+    "settings": {
+      "bulkable": true,
+      "filterable": true,
+      "searchable": true,
+      "pageSize": 10,
+      "mainField": "overrideLabel",
+      "defaultSortBy": "overrideLabel",
+      "defaultSortOrder": "ASC"
+    },
+    "metadatas": {
+      "id": {
+        "edit": {},
+        "list": {
+          "label": "id",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "overrideLabel": {
+        "edit": {
+          "label": "overrideLabel",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "overrideLabel",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "value": {
+        "edit": {
+          "label": "value",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "value",
+          "searchable": true,
+          "sortable": true
+        }
+      }
+    },
+    "layouts": {
+      "list": [
+        "id",
+        "overrideLabel",
+        "value"
+      ],
+      "edit": [
+        [
+          {
+            "name": "overrideLabel",
+            "size": 6
+          },
+          {
+            "name": "value",
+            "size": 6
+          }
+        ]
+      ]
+    },
+    "isComponent": true
+  },
+  "type": "object",
+  "environment": null,
+  "tag": null
+}

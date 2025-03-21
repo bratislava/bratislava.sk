@@ -1,0 +1,348 @@
+{
+  "key": "plugin_content_manager_configuration_content_types::api::regulation.regulation",
+  "value": {
+    "uid": "api::regulation.regulation",
+    "settings": {
+      "bulkable": true,
+      "filterable": true,
+      "searchable": true,
+      "pageSize": 10,
+      "mainField": "regNumber",
+      "defaultSortBy": "effectiveFrom",
+      "defaultSortOrder": "DESC"
+    },
+    "metadatas": {
+      "id": {
+        "edit": {},
+        "list": {
+          "label": "id",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "regNumber": {
+        "edit": {
+          "label": "Číslo VZN",
+          "description": "V tvare \"číslo/rok\", napr. 2/2012",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "regNumber",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "slug": {
+        "edit": {
+          "label": "Slug",
+          "description": "Rovnaké ako Číslo VZN ale so spojovníkom (napr. 2-2012) na základe čoho sa vygeneruje adresa pre stránku VZN (napr. bratislava.sk/vzn/2-2012)",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "slug",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "titleText": {
+        "edit": {
+          "label": "Názov",
+          "description": "Tento názov bude zobrazený vedľa čísla VZN",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "titleText",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "fullTitle": {
+        "edit": {
+          "label": "Plný názov",
+          "description": "Kompletný oficiálny názov VZN. Zatiaľ ho nikde nezobrazujeme.",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "fullTitle",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "effectiveFrom": {
+        "edit": {
+          "label": "Dátum účinnosti",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "effectiveFrom",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "category": {
+        "edit": {
+          "label": "Kategória",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "category",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "isFullTextRegulation": {
+        "edit": {
+          "label": "Je typu Úplné znenie",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "isFullTextRegulation",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "mainDocument": {
+        "edit": {
+          "label": "Hlavný dokument",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "mainDocument",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "attachments": {
+        "edit": {
+          "label": "Prílohy",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "attachments",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "amendments": {
+        "edit": {
+          "label": "Doplňujúce VZN",
+          "description": "Všetky VZN, ktoré doplňujú toto VZN",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "regNumber"
+        },
+        "list": {
+          "label": "amendments",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "amending": {
+        "edit": {
+          "label": "Toto VZN dopĺňa",
+          "description": "Všetky VZN, ktoré sú doplnené týmto VZN",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "regNumber"
+        },
+        "list": {
+          "label": "amending",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "cancellation": {
+        "edit": {
+          "label": "Zrušujúce VZN",
+          "description": "VZN, ktorým bolo zrušené toto VZN",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "regNumber"
+        },
+        "list": {
+          "label": "cancellation",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "cancelling": {
+        "edit": {
+          "label": "Toto VZN zrušuje",
+          "description": "Všetky VZN, ktoré sú zrušené týmto VZN",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "regNumber"
+        },
+        "list": {
+          "label": "cancelling",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "createdAt": {
+        "edit": {
+          "label": "createdAt",
+          "description": "",
+          "placeholder": "",
+          "visible": false,
+          "editable": true
+        },
+        "list": {
+          "label": "createdAt",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "updatedAt": {
+        "edit": {
+          "label": "updatedAt",
+          "description": "",
+          "placeholder": "",
+          "visible": false,
+          "editable": true
+        },
+        "list": {
+          "label": "updatedAt",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "createdBy": {
+        "edit": {
+          "label": "createdBy",
+          "description": "",
+          "placeholder": "",
+          "visible": false,
+          "editable": true,
+          "mainField": "firstname"
+        },
+        "list": {
+          "label": "createdBy",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "updatedBy": {
+        "edit": {
+          "label": "updatedBy",
+          "description": "",
+          "placeholder": "",
+          "visible": false,
+          "editable": true,
+          "mainField": "firstname"
+        },
+        "list": {
+          "label": "updatedBy",
+          "searchable": true,
+          "sortable": true
+        }
+      }
+    },
+    "layouts": {
+      "list": [
+        "id",
+        "effectiveFrom",
+        "regNumber",
+        "titleText"
+      ],
+      "edit": [
+        [
+          {
+            "name": "regNumber",
+            "size": 6
+          },
+          {
+            "name": "slug",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "titleText",
+            "size": 6
+          },
+          {
+            "name": "fullTitle",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "effectiveFrom",
+            "size": 4
+          },
+          {
+            "name": "isFullTextRegulation",
+            "size": 4
+          },
+          {
+            "name": "category",
+            "size": 4
+          }
+        ],
+        [
+          {
+            "name": "mainDocument",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "attachments",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "amendments",
+            "size": 6
+          },
+          {
+            "name": "amending",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "cancellation",
+            "size": 6
+          },
+          {
+            "name": "cancelling",
+            "size": 6
+          }
+        ]
+      ]
+    }
+  },
+  "type": "object",
+  "environment": null,
+  "tag": null
+}

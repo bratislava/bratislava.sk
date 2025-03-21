@@ -1,0 +1,117 @@
+{
+  "key": "plugin_content_manager_configuration_components::sections.accordion",
+  "value": {
+    "uid": "sections.accordion",
+    "settings": {
+      "bulkable": true,
+      "filterable": true,
+      "searchable": true,
+      "pageSize": 10,
+      "mainField": "title",
+      "defaultSortBy": "title",
+      "defaultSortOrder": "ASC"
+    },
+    "metadatas": {
+      "id": {
+        "edit": {},
+        "list": {
+          "label": "id",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "institutions": {
+        "edit": {
+          "label": "institutions",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "institutions",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "flatText": {
+        "edit": {
+          "label": "flatText",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "flatText",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "institutionsNarrow": {
+        "edit": {
+          "label": "institutionsNarrow",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "institutionsNarrow",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "title": {
+        "edit": {
+          "label": "title",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "title",
+          "searchable": true,
+          "sortable": true
+        }
+      }
+    },
+    "layouts": {
+      "list": [
+        "id",
+        "title"
+      ],
+      "edit": [
+        [
+          {
+            "name": "title",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "institutions",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "flatText",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "institutionsNarrow",
+            "size": 12
+          }
+        ]
+      ]
+    },
+    "isComponent": true
+  },
+  "type": "object",
+  "environment": null,
+  "tag": null
+}

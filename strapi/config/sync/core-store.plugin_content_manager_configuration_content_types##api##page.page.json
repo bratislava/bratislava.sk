@@ -1,0 +1,376 @@
+{
+  "key": "plugin_content_manager_configuration_content_types::api::page.page",
+  "value": {
+    "uid": "api::page.page",
+    "settings": {
+      "bulkable": true,
+      "filterable": true,
+      "searchable": true,
+      "pageSize": 100,
+      "mainField": "slug",
+      "defaultSortBy": "updatedAt",
+      "defaultSortOrder": "DESC"
+    },
+    "metadatas": {
+      "id": {
+        "edit": {},
+        "list": {
+          "label": "id",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "title": {
+        "edit": {
+          "label": "Nadpis",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "title",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "slug": {
+        "edit": {
+          "label": "Cesta (bez lomky na začiatku)",
+          "description": "Dôležité: Ak je pri zmene cesty potrebné zachovať aj funkčnosť starého odkazu a vytvoriť presmerovanie, kontaktujte prosím Oddelenie vývoja inovácií VOPRED.",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "slug",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "subtext": {
+        "edit": {
+          "label": "Text v hlavičke",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "subtext",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "metaDiscription": {
+        "edit": {
+          "label": "Meta popis",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "metaDiscription",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "keywords": {
+        "edit": {
+          "label": "Kľúčové slová",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "keywords",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "pageCategory": {
+        "edit": {
+          "label": "Kategória",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "shortTitle"
+        },
+        "list": {
+          "label": "pageCategory",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "pageColor": {
+        "edit": {
+          "label": "Farba",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "pageColor",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "pageBackgroundImage": {
+        "edit": {
+          "label": "Ilustračný obrázok",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "pageBackgroundImage",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "headerLinks": {
+        "edit": {
+          "label": "CTA buttony v hlavičke",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "headerLinks",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "pageHeaderSections": {
+        "edit": {
+          "label": "Sekcie v hlavičke",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "pageHeaderSections",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "sections": {
+        "edit": {
+          "label": "Sekcie",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "sections",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "parentPage": {
+        "edit": {
+          "label": "Rodičovská stránka",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "slug"
+        },
+        "list": {
+          "label": "parentPage",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "childPages": {
+        "edit": {
+          "label": "Dcérske stránky",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "slug"
+        },
+        "list": {
+          "label": "childPages",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "relatedContents": {
+        "edit": {
+          "label": "Súvisiaci obsah",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "title"
+        },
+        "list": {
+          "label": "relatedContents",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "createdAt": {
+        "edit": {
+          "label": "createdAt",
+          "description": "",
+          "placeholder": "",
+          "visible": false,
+          "editable": true
+        },
+        "list": {
+          "label": "createdAt",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "updatedAt": {
+        "edit": {
+          "label": "updatedAt",
+          "description": "",
+          "placeholder": "",
+          "visible": false,
+          "editable": true
+        },
+        "list": {
+          "label": "updatedAt",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "createdBy": {
+        "edit": {
+          "label": "createdBy",
+          "description": "",
+          "placeholder": "",
+          "visible": false,
+          "editable": true,
+          "mainField": "firstname"
+        },
+        "list": {
+          "label": "createdBy",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "updatedBy": {
+        "edit": {
+          "label": "updatedBy",
+          "description": "",
+          "placeholder": "",
+          "visible": false,
+          "editable": true,
+          "mainField": "firstname"
+        },
+        "list": {
+          "label": "updatedBy",
+          "searchable": true,
+          "sortable": true
+        }
+      }
+    },
+    "layouts": {
+      "list": [
+        "slug",
+        "title",
+        "updatedAt",
+        "parentPage"
+      ],
+      "edit": [
+        [
+          {
+            "name": "title",
+            "size": 6
+          },
+          {
+            "name": "pageBackgroundImage",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "slug",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "pageColor",
+            "size": 6
+          },
+          {
+            "name": "pageCategory",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "subtext",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "headerLinks",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "metaDiscription",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "keywords",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "pageHeaderSections",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "sections",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "parentPage",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "childPages",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "relatedContents",
+            "size": 12
+          }
+        ]
+      ]
+    }
+  },
+  "type": "object",
+  "environment": null,
+  "tag": null
+}

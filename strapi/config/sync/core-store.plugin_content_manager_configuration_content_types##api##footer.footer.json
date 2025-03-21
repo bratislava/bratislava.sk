@@ -1,0 +1,234 @@
+{
+  "key": "plugin_content_manager_configuration_content_types::api::footer.footer",
+  "value": {
+    "uid": "api::footer.footer",
+    "settings": {
+      "bulkable": true,
+      "filterable": true,
+      "searchable": true,
+      "pageSize": 10,
+      "mainField": "facebookUrl",
+      "defaultSortBy": "facebookUrl",
+      "defaultSortOrder": "ASC"
+    },
+    "metadatas": {
+      "id": {
+        "edit": {},
+        "list": {
+          "label": "id",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "address": {
+        "edit": {
+          "label": "address",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "address",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "facebookUrl": {
+        "edit": {
+          "label": "facebookUrl",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "facebookUrl",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "instagramUrl": {
+        "edit": {
+          "label": "instagramUrl",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "instagramUrl",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "columns": {
+        "edit": {
+          "label": "columns",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "columns",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "accessibilityPageLink": {
+        "edit": {
+          "label": "accessibilityPageLink",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "accessibilityPageLink",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "innovationsLink": {
+        "edit": {
+          "label": "innovationsLink",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "innovationsLink",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "contacts": {
+        "edit": {
+          "label": "contacts",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "contacts",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "createdAt": {
+        "edit": {
+          "label": "createdAt",
+          "description": "",
+          "placeholder": "",
+          "visible": false,
+          "editable": true
+        },
+        "list": {
+          "label": "createdAt",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "updatedAt": {
+        "edit": {
+          "label": "updatedAt",
+          "description": "",
+          "placeholder": "",
+          "visible": false,
+          "editable": true
+        },
+        "list": {
+          "label": "updatedAt",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "createdBy": {
+        "edit": {
+          "label": "createdBy",
+          "description": "",
+          "placeholder": "",
+          "visible": false,
+          "editable": true,
+          "mainField": "firstname"
+        },
+        "list": {
+          "label": "createdBy",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "updatedBy": {
+        "edit": {
+          "label": "updatedBy",
+          "description": "",
+          "placeholder": "",
+          "visible": false,
+          "editable": true,
+          "mainField": "firstname"
+        },
+        "list": {
+          "label": "updatedBy",
+          "searchable": true,
+          "sortable": true
+        }
+      }
+    },
+    "layouts": {
+      "list": [
+        "id",
+        "address",
+        "createdBy",
+        "updatedBy"
+      ],
+      "edit": [
+        [
+          {
+            "name": "address",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "facebookUrl",
+            "size": 6
+          },
+          {
+            "name": "instagramUrl",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "columns",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "accessibilityPageLink",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "innovationsLink",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "contacts",
+            "size": 12
+          }
+        ]
+      ]
+    }
+  },
+  "type": "object",
+  "environment": null,
+  "tag": null
+}
