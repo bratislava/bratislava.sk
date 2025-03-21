@@ -1,9 +1,9 @@
 import { Typography } from '@bratislava/component-library'
 import React from 'react'
-import cn from '@/src/utils/cn'
 
 import Markdown from '@/src/components/formatting/Markdown/Markdown'
 import { TestimonialItemBlockFragment, TestimonialsSectionFragment } from '@/src/services/graphql'
+import cn from '@/src/utils/cn'
 import { isDefined } from '@/src/utils/isDefined'
 
 // TODO split to separate component files

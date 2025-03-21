@@ -1,6 +1,7 @@
 import { motion, useReducedMotion, Variant } from 'framer-motion'
 import { ReactNode, useMemo, useRef } from 'react'
 import { useResizeDetector } from 'react-resize-detector'
+
 import cn from '@/src/utils/cn'
 
 type AnimateHeightProps = {

@@ -1,8 +1,8 @@
 import * as NavigationMenu from '@radix-ui/react-navigation-menu'
 import React, { forwardRef } from 'react'
 
-import Pictogram from '@/src/components/common/Pictogram/Pictogram'
 import { ChevronRightIcon } from '@/src/assets/ui-icons'
+import Pictogram from '@/src/components/common/Pictogram/Pictogram'
 
 import { MenuItem } from './navMenuTypes'
 

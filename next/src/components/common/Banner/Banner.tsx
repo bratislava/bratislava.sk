@@ -1,10 +1,10 @@
 import { Typography } from '@bratislava/component-library'
 import Image from 'next/image'
-import cn from '@/src/utils/cn'
 
 import Button from '@/src/components/common/Button/Button'
 import Markdown from '@/src/components/formatting/Markdown/Markdown'
 import { CommonLinkFragment, Enum_Componentsectionsbanner_Variant } from '@/src/services/graphql'
+import cn from '@/src/utils/cn'
 import { generateImageSizes } from '@/src/utils/generateImageSizes'
 import { getCommonLinkProps } from '@/src/utils/getCommonLinkProps'
 

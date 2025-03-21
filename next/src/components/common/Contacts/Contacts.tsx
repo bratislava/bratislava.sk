@@ -1,6 +1,5 @@
 import { Typography } from '@bratislava/component-library'
 import React from 'react'
-import cn from '@/src/utils/cn'
 
 import ContactCtaCard, { ContactCtaCardType } from '@/src/components/cards/ContactCtaCard'
 import Markdown from '@/src/components/formatting/Markdown/Markdown'
@@ -9,6 +8,7 @@ import {
   ContactsSectionFragment,
   Enum_Componentsectionscontactssection_Type,
 } from '@/src/services/graphql'
+import cn from '@/src/utils/cn'
 import { isDefined } from '@/src/utils/isDefined'
 
 type ContactsProps = {

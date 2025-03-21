@@ -1,12 +1,12 @@
 import { Typography } from '@bratislava/component-library'
 import Image from 'next/image'
 import React, { PropsWithChildren } from 'react'
-import cn from '@/src/utils/cn'
 
 import Breadcrumbs, { BreadcrumbsProps } from '@/src/components/common/Breadcrumbs/Breadcrumbs'
 import Button from '@/src/components/common/Button/Button'
 import Waves from '@/src/components/common/Waves/Waves'
 import { CommonLinkFragment } from '@/src/services/graphql'
+import cn from '@/src/utils/cn'
 import { generateImageSizes } from '@/src/utils/generateImageSizes'
 import { getCommonLinkProps } from '@/src/utils/getCommonLinkProps'
 

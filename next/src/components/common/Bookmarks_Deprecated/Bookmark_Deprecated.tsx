@@ -2,8 +2,8 @@ import { Typography } from '@bratislava/component-library'
 import cx from 'classnames'
 import React, { FocusEvent, useRef } from 'react'
 
-import Button from '@/src/components/common/Button/Button'
 import { CrossIcon } from '@/src/assets/ui-icons'
+import Button from '@/src/components/common/Button/Button'
 import { useTranslation } from '@/src/utils/useTranslation'
 
 const PADDING = 20 // py-5

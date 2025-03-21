@@ -1,9 +1,9 @@
 import cx from 'classnames'
 import { useToggle } from 'rooks'
 
-import { GetGroupMembersRecursiveResult } from '@/src/services/ms-graph/types'
 import ChevronDown from '@/src/assets/images/chevron-down-thin.svg'
 import ChevronDownSmall from '@/src/assets/images/chevron-down-thin-small.svg'
+import { GetGroupMembersRecursiveResult } from '@/src/services/ms-graph/types'
 
 import OrganizationalStructureAccordion from './OrganizationalStructureAccordion_Deprecated'
 import OrganizationalStructureAccordionCards from './OrganizationalStructureAccordionCards_Deprecated'

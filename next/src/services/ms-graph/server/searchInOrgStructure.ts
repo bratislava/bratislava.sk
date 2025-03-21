@@ -1,7 +1,10 @@
 import slugify from '@sindresorhus/slugify'
 import axios from 'axios'
 
-import { MS_GRAPH_GROUP_ID, PARAMS_FROM_MS_GRAPH_API } from '@/src/services/ms-graph/server/constants'
+import {
+  MS_GRAPH_GROUP_ID,
+  PARAMS_FROM_MS_GRAPH_API,
+} from '@/src/services/ms-graph/server/constants'
 import { MSGraphFilteredGroupUser } from '@/src/services/ms-graph/types'
 
 /**

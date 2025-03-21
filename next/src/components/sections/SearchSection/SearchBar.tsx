@@ -2,9 +2,9 @@ import { Typography } from '@bratislava/component-library'
 import { Dispatch, forwardRef, SetStateAction } from 'react'
 import { Input, Label, SearchField } from 'react-aria-components'
 
+import { RemoveIcon, SearchIcon } from '@/src/assets/ui-icons'
 import Button from '@/src/components/common/Button/Button'
 import Spinner from '@/src/components/common/Spinner/Spinner'
-import { RemoveIcon, SearchIcon } from '@/src/assets/ui-icons'
 import { useTranslation } from '@/src/utils/useTranslation'
 
 type SearchBarProps = {

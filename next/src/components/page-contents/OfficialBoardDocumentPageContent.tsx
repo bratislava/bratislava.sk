@@ -1,11 +1,11 @@
 import { Typography } from '@bratislava/component-library'
 import React, { Fragment, ReactNode } from 'react'
-import cn from '@/src/utils/cn'
 
 import FileRowCard from '@/src/components/cards/FileRowCard'
 import PageHeader from '@/src/components/common/PageHeader/PageHeader'
 import SectionContainer from '@/src/components/common/SectionContainer/SectionContainer'
 import { ParsedOfficialBoardDocumentDetail } from '@/src/services/ginis/types'
+import cn from '@/src/utils/cn'
 import { formatDate } from '@/src/utils/formatDate'
 import { useLocale } from '@/src/utils/useLocale'
 import { useTranslation } from '@/src/utils/useTranslation'

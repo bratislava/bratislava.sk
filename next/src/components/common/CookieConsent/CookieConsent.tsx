@@ -1,10 +1,10 @@
 import Script from 'next/script'
 import React from 'react'
-import cn from '@/src/utils/cn'
 
 import Button from '@/src/components/common/Button/Button'
 import { useCookieConsent } from '@/src/components/common/CookieConsent/useCookieConsent'
 import MLink from '@/src/components/common/MLink/MLink'
+import cn from '@/src/utils/cn'
 import { getCategoryColorLocalStyle } from '@/src/utils/colors'
 import { useTranslation } from '@/src/utils/useTranslation'
 import { isProductionDeployment } from '@/src/utils/utils'

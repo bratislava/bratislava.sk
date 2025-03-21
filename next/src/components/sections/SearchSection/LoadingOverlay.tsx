@@ -1,7 +1,7 @@
 import React, { PropsWithChildren } from 'react'
-import cn from '@/src/utils/cn'
 
 import LoadingSpinner from '@/src/components/common/LoadingSpinner/LoadingSpinner'
+import cn from '@/src/utils/cn'
 
 type LoadingOverlayProps = {
   loading: boolean

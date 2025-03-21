@@ -2,9 +2,9 @@ import Link from 'next/link'
 import { useRef } from 'react'
 import { useEventListener } from 'usehooks-ts'
 
+import { ChevronRightIcon } from '@/src/assets/ui-icons'
 import LoadingSpinner from '@/src/components/common/LoadingSpinner/LoadingSpinner'
 import { HomepageSearchData } from '@/src/services/meili/fetchers/homepageSearchFetcher'
-import { ChevronRightIcon } from '@/src/assets/ui-icons'
 import { useTranslation } from '@/src/utils/useTranslation'
 
 type HomePageSearchResultsProps = {

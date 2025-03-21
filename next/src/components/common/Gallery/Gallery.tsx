@@ -4,14 +4,14 @@
 
 import { useCallback, useState } from 'react'
 import { useOverlayTriggerState } from 'react-stately'
-import screens from '@/tailwind.config.screens'
 import { useWindowSize } from 'usehooks-ts'
-import cn from '@/src/utils/cn'
 
 import StrapiImage from '@/src/components/common/Image/StrapiImage'
 import { UploadImageEntityFragment } from '@/src/services/graphql'
+import cn from '@/src/utils/cn'
 import { onEnterOrSpaceKeyDown } from '@/src/utils/onEnterOrSpaceKeyDown'
 import { useTranslation } from '@/src/utils/useTranslation'
+import screens from '@/tailwind.config.screens'
 
 import ImageLightBox from './ImageLightBox'
 

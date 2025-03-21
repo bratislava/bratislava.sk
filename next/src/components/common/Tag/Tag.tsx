@@ -1,5 +1,5 @@
-import Button from '@/src/components/common/Button/Button'
 import { CrossIcon } from '@/src/assets/ui-icons'
+import Button from '@/src/components/common/Button/Button'
 import cn from '@/src/utils/cn'
 import { useTranslation } from '@/src/utils/useTranslation'
 

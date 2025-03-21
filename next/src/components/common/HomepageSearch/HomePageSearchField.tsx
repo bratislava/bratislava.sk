@@ -6,8 +6,8 @@ import React, {
   SetStateAction,
 } from 'react'
 
-import Button from '@/src/components/common/Button/Button'
 import SearchIcon from '@/src/assets/images/search-icon.svg'
+import Button from '@/src/components/common/Button/Button'
 
 type HomePageSearchFieldProps = {
   value: string

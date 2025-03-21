@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react'
 
+import EULogo from '@/src/assets/images/EULogo.svg'
 import Accordion from '@/src/components/common/Accordion/Accordion'
 import Brand from '@/src/components/common/Brand/Brand'
 import HorizontalDivider from '@/src/components/common/Divider/HorizontalDivider'
@@ -13,7 +14,6 @@ import {
 } from '@/src/components/common/Footer/FooterShared'
 import SectionContainer from '@/src/components/common/SectionContainer/SectionContainer'
 import { useGeneralContext } from '@/src/components/providers/GeneralContextProvider'
-import EULogo from '@/src/assets/images/EULogo.svg'
 import { isDefined } from '@/src/utils/isDefined'
 
 /**

@@ -1,6 +1,9 @@
 import axios from 'axios'
 
-import { OfficialBoardListResponse, OfficialBoardPublicationState } from '@/src/services/ginis/types'
+import {
+  OfficialBoardListResponse,
+  OfficialBoardPublicationState,
+} from '@/src/services/ginis/types'
 
 export type OfficialBoardListFilters = {
   search: string

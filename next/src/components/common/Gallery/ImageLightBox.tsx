@@ -1,11 +1,11 @@
 import { useEffect, useRef } from 'react'
 
+import { ArrowLeftIcon, ArrowRightIcon } from '@/src/assets/ui-icons'
 import Button from '@/src/components/common/Button/Button'
 import GalleryModal, { ModalProps } from '@/src/components/common/Gallery/GalleryModal'
 import GallerySlider from '@/src/components/common/Gallery/GallerySlider'
 import StrapiImage from '@/src/components/common/Image/StrapiImage'
 import { UploadImageEntityFragment } from '@/src/services/graphql'
-import { ArrowLeftIcon, ArrowRightIcon } from '@/src/assets/ui-icons'
 import { useTranslation } from '@/src/utils/useTranslation'
 
 export type ImageLightBoxProps = {

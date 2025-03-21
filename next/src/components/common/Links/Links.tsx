@@ -1,8 +1,8 @@
 import { Typography } from '@bratislava/component-library'
 import React from 'react'
 
-import Button from '@/src/components/common/Button/Button'
 import { ArrowRightIcon } from '@/src/assets/ui-icons'
+import Button from '@/src/components/common/Button/Button'
 import cn from '@/src/utils/cn'
 import { isExternalLink } from '@/src/utils/isExternalLink'
 

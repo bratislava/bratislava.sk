@@ -2,10 +2,10 @@ import { Typography } from '@bratislava/component-library'
 import { Trans } from 'next-i18next'
 import * as React from 'react'
 
+import { FacebookIcon, InstagramIcon } from '@/src/assets/images'
 import MLink from '@/src/components/common/MLink/MLink'
 import { useLocalizations } from '@/src/components/providers/LocalizationsProvider'
 import { FooterColumnBlockFragment, FooterFragment } from '@/src/services/graphql'
-import { FacebookIcon, InstagramIcon } from '@/src/assets/images'
 import { getCommonLinkProps } from '@/src/utils/getCommonLinkProps'
 import { isDefined } from '@/src/utils/isDefined'
 

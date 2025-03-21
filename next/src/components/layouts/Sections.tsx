@@ -1,5 +1,4 @@
 import * as React from 'react'
-import cn from '@/src/utils/cn'
 
 import SectionContainer from '@/src/components/common/SectionContainer/SectionContainer'
 import AccordionSection from '@/src/components/sections/AccordionSection'
@@ -35,6 +34,7 @@ import TimelineSection from '@/src/components/sections/TimelineSection'
 import VideosSection from '@/src/components/sections/VideosSection'
 import WavesSection from '@/src/components/sections/WavesSection'
 import { SectionsFragment } from '@/src/services/graphql'
+import cn from '@/src/utils/cn'
 
 const SectionContent = ({ section }: { section: SectionsFragment }) => {
   switch (section.__typename) {

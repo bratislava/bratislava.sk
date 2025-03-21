@@ -1,9 +1,9 @@
 import { Typography } from '@bratislava/component-library'
 import React from 'react'
-import cn from '@/src/utils/cn'
 
 import MayorAndCouncilCard from '@/src/components/cards/MayorAndCouncilCard'
 import { useHomepageContext } from '@/src/components/providers/HomepageContextProvider'
+import cn from '@/src/utils/cn'
 import { getCommonLinkProps } from '@/src/utils/getCommonLinkProps'
 import { useTranslation } from '@/src/utils/useTranslation'
 

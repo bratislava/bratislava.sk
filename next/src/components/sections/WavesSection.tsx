@@ -1,8 +1,8 @@
 import React from 'react'
-import cn from '@/src/utils/cn'
 
 import Waves from '@/src/components/common/Waves/Waves'
 import { WavesSectionFragment } from '@/src/services/graphql'
+import cn from '@/src/utils/cn'
 
 type WavesSectionProps = {
   section: WavesSectionFragment

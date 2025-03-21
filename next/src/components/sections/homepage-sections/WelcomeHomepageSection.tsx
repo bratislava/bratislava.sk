@@ -1,7 +1,6 @@
 import { Typography } from '@bratislava/component-library'
 import Image from 'next/image'
 import { useMemo, useState } from 'react'
-import cn from '@/src/utils/cn'
 
 import WelcomeCard from '@/src/components/cards/WelcomeCard/WelcomeCard'
 import HomePageSearch from '@/src/components/common/HomepageSearch/HomePageSearch'
@@ -9,6 +8,7 @@ import { getParsedMenus } from '@/src/components/common/NavBar/NavMenu/getParsed
 import SectionContainer from '@/src/components/common/SectionContainer/SectionContainer'
 import { useGeneralContext } from '@/src/components/providers/GeneralContextProvider'
 import { useHomepageContext } from '@/src/components/providers/HomepageContextProvider'
+import cn from '@/src/utils/cn'
 import { generateImageSizes } from '@/src/utils/generateImageSizes'
 import { useTranslation } from '@/src/utils/useTranslation'
 

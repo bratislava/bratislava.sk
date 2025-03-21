@@ -1,9 +1,9 @@
 import React from 'react'
 
-import type { BreadcrumbsProps } from '@/src/components/common/Breadcrumbs/Breadcrumbs'
-import MLink from '@/src/components/common/MLink/MLink'
 import BreadcrumbsChevronIcon from '@/src/assets/images/breadcrumbs-chevron.svg'
 import BreadcrumbsHomeIcon from '@/src/assets/images/breadcrumbs-home.svg'
+import type { BreadcrumbsProps } from '@/src/components/common/Breadcrumbs/Breadcrumbs'
+import MLink from '@/src/components/common/MLink/MLink'
 import { useTranslation } from '@/src/utils/useTranslation'
 
 /**

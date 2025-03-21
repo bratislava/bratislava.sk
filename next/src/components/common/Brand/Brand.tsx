@@ -1,8 +1,8 @@
 import { Trans } from 'next-i18next'
 import React from 'react'
 
-import MLink from '@/src/components/common/MLink/MLink'
 import BALogo from '@/src/assets/images/BALogo.svg'
+import MLink from '@/src/components/common/MLink/MLink'
 import cn from '@/src/utils/cn'
 
 export type BrandProps = {

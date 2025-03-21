@@ -1,12 +1,12 @@
 import { Typography } from '@bratislava/component-library'
 import Image from 'next/image'
 import React from 'react'
-import cn from '@/src/utils/cn'
 
 import CardBase, { CardBaseProps } from '@/src/components/cards/CardBase'
 import CardContent from '@/src/components/cards/CardContent'
 import Button from '@/src/components/common/Button/Button'
 import ImagePlaceholder from '@/src/components/common/Image/ImagePlaceholder'
+import cn from '@/src/utils/cn'
 import { CommonLinkProps } from '@/src/utils/getCommonLinkProps'
 
 type Props = {

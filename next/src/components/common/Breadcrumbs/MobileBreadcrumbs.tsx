@@ -1,10 +1,10 @@
 import React from 'react'
 
+import BreadcrumbsChevronIcon from '@/src/assets/images/breadcrumbs-chevron.svg'
+import { ChevronDownIcon } from '@/src/assets/ui-icons'
 import type { BreadcrumbsProps } from '@/src/components/common/Breadcrumbs/Breadcrumbs'
 import Button from '@/src/components/common/Button/Button'
 import MLink from '@/src/components/common/MLink/MLink'
-import BreadcrumbsChevronIcon from '@/src/assets/images/breadcrumbs-chevron.svg'
-import { ChevronDownIcon } from '@/src/assets/ui-icons'
 import { useTranslation } from '@/src/utils/useTranslation'
 
 const goBack = () => {

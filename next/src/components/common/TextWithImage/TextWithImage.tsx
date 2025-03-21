@@ -1,7 +1,7 @@
 import Image from 'next/image'
-import cn from '@/src/utils/cn'
 
 import Markdown from '@/src/components/formatting/Markdown/Markdown'
+import cn from '@/src/utils/cn'
 import { generateImageSizes } from '@/src/utils/generateImageSizes'
 
 export type TextWithImageProps = {

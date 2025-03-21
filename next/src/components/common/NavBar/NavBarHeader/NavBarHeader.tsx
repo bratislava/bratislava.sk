@@ -1,5 +1,6 @@
 import React from 'react'
 
+import SearchIcon from '@/src/assets/images/search-icon.svg'
 import Brand from '@/src/components/common/Brand/Brand'
 import Button from '@/src/components/common/Button/Button'
 import MLink from '@/src/components/common/MLink/MLink'
@@ -7,7 +8,6 @@ import SectionContainer from '@/src/components/common/SectionContainer/SectionCo
 import SkipToContentButton from '@/src/components/common/SkipToContentButton/SkipToContentButton'
 import { useGeneralContext } from '@/src/components/providers/GeneralContextProvider'
 import { useLocalizations } from '@/src/components/providers/LocalizationsProvider'
-import SearchIcon from '@/src/assets/images/search-icon.svg'
 import { getCategoryColorLocalStyle } from '@/src/utils/colors'
 import { getCommonLinkProps } from '@/src/utils/getCommonLinkProps'
 import { isDefined } from '@/src/utils/isDefined'

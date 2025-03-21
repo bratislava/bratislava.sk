@@ -1,7 +1,7 @@
 import { useCopyToClipboard } from 'usehooks-ts'
 
-import Button from '@/src/components/common/Button/Button'
 import { CopyIcon } from '@/src/assets/ui-icons'
+import Button from '@/src/components/common/Button/Button'
 import { useTranslation } from '@/src/utils/useTranslation'
 
 const CopyToClipboardButton = ({ copyText }: { copyText: string }) => {

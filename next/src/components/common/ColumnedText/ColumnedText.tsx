@@ -1,7 +1,6 @@
-import cn from '@/src/utils/cn'
-
 import Markdown from '@/src/components/formatting/Markdown/Markdown'
 import { Enum_Componentsectionscolumnedtext_Contentalignment } from '@/src/services/graphql'
+import cn from '@/src/utils/cn'
 
 export type ColumnedTextProps = {
   className?: string

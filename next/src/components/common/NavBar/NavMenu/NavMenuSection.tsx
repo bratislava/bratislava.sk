@@ -1,8 +1,8 @@
 import { Typography } from '@bratislava/component-library'
 import React from 'react'
-import cn from '@/src/utils/cn'
 
 import Pictogram from '@/src/components/common/Pictogram/Pictogram'
+import cn from '@/src/utils/cn'
 
 import NavMenuLink from './NavMenuLink'
 import { MenuSection } from './navMenuTypes'

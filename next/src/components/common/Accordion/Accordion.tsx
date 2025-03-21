@@ -1,8 +1,8 @@
 import { Typography } from '@bratislava/component-library'
 import { ReactNode } from 'react'
 
-import AnimateHeight from '@/src/components/formatting/AnimateHeight'
 import { ChevronDownIcon } from '@/src/assets/ui-icons'
+import AnimateHeight from '@/src/components/formatting/AnimateHeight'
 import cn from '@/src/utils/cn'
 
 export type AccordionProps = {

@@ -4,9 +4,9 @@ import ReactMarkdown from 'react-markdown'
 import rehypeRaw from 'rehype-raw'
 import remarkGfm from 'remark-gfm'
 import remarkUnwrapImages from 'remark-unwrap-images'
-import cn from '@/src/utils/cn'
 
 import MLink from '@/src/components/common/MLink/MLink'
+import cn from '@/src/utils/cn'
 
 import styles from './Markdown.module.scss'
 

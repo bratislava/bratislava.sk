@@ -2,7 +2,6 @@ import { useQuery } from '@tanstack/react-query'
 import { useRouter } from 'next/navigation'
 import { Dispatch, SetStateAction, useCallback, useEffect, useRef, useState } from 'react'
 import { useDebounce, useOnClickOutside } from 'usehooks-ts'
-import cn from '@/src/utils/cn'
 
 import HomePageSearchField from '@/src/components/common/HomepageSearch/HomePageSearchField'
 import HomePageSearchResults from '@/src/components/common/HomepageSearch/HomePageSearchResults'
@@ -11,6 +10,7 @@ import {
   getHomepageSearchQueryKey,
   homepageSearchFetcher,
 } from '@/src/services/meili/fetchers/homepageSearchFetcher'
+import cn from '@/src/utils/cn'
 import { useLocale } from '@/src/utils/useLocale'
 import { useTranslation } from '@/src/utils/useTranslation'
 

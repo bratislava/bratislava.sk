@@ -1,8 +1,8 @@
 import { Typography } from '@bratislava/component-library'
 import React from 'react'
 
-import MLink from '@/src/components/common/MLink/MLink'
 import { ArrowRightIcon } from '@/src/assets/ui-icons'
+import MLink from '@/src/components/common/MLink/MLink'
 import cn from '@/src/utils/cn'
 import { useTranslation } from '@/src/utils/useTranslation'
 

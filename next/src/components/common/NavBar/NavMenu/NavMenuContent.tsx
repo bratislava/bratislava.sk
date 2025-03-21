@@ -1,8 +1,8 @@
 import * as NavigationMenu from '@radix-ui/react-navigation-menu'
 import React, { CSSProperties, useMemo } from 'react'
-import cn from '@/src/utils/cn'
 
 import Waves from '@/src/components/common/Waves/Waves'
+import cn from '@/src/utils/cn'
 
 import NavMenuContentCell from './NavMenuContentCell'
 import NavMenuSection from './NavMenuSection'

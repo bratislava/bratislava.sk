@@ -1,7 +1,7 @@
 import { Typography } from '@bratislava/component-library'
 
-import Button from '@/src/components/common/Button/Button'
 import { ArrowRightIcon } from '@/src/assets/ui-icons'
+import Button from '@/src/components/common/Button/Button'
 import { useTranslation } from '@/src/utils/useTranslation'
 
 type SearchResultsHeaderProps = {

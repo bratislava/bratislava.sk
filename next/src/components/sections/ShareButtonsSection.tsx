@@ -1,8 +1,8 @@
 import React from 'react'
 
+import { FacebookIcon, InstagramIcon, LinkedinIcon, TwitterIcon } from '@/src/assets/images'
 import SectionContainer from '@/src/components/common/SectionContainer/SectionContainer'
 import { SocialMediaButton } from '@/src/components/page-contents/BlogPostPageContent'
-import { FacebookIcon, InstagramIcon, LinkedinIcon, TwitterIcon } from '@/src/assets/images'
 import { useTranslation } from '@/src/utils/useTranslation'
 
 type Props = {

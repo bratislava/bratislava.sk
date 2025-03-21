@@ -1,12 +1,12 @@
 import { Typography } from '@bratislava/component-library'
 import Image from 'next/image'
 import React from 'react'
-import cn from '@/src/utils/cn'
 
 import CardBase from '@/src/components/cards/CardBase'
 import CardContent from '@/src/components/cards/CardContent'
 import MLink from '@/src/components/common/MLink/MLink'
 import FormatEventDateRange from '@/src/components/formatting/FormatEventDateRange'
+import cn from '@/src/utils/cn'
 import { useTranslation } from '@/src/utils/useTranslation'
 
 type EventCardProps = {

@@ -39,7 +39,7 @@ query InbaReleasesRssFeed {
 }
 
 query InbaReleasesPaginated($page: Int, $pageSize: Int) {
-  inbaReleases(sort: "releaseDate:desc", pagination: {page: $page, pageSize: $pageSize}) {
+  inbaReleases(sort: "releaseDate:desc", pagination: { page: $page, pageSize: $pageSize }) {
     data {
       ...InbaReleaseEntity
     }

@@ -1,8 +1,8 @@
 import React, { ReactNode } from 'react'
 
+import { ArrowLeftIcon, ArrowRightIcon } from '@/src/assets/ui-icons'
 import Button from '@/src/components/common/Button/Button'
 import usePagination from '@/src/components/common/Pagination/usePagination'
-import { ArrowLeftIcon, ArrowRightIcon } from '@/src/assets/ui-icons'
 import cn from '@/src/utils/cn'
 import { useTranslation } from '@/src/utils/useTranslation'
 

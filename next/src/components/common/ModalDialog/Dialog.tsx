@@ -2,8 +2,8 @@ import { Typography } from '@bratislava/component-library'
 import React, { forwardRef, ReactNode } from 'react'
 import { Dialog as ReactAriaDialog, DialogProps } from 'react-aria-components'
 
-import Button from '@/src/components/common/Button/Button'
 import { CrossIcon } from '@/src/assets/ui-icons'
+import Button from '@/src/components/common/Button/Button'
 import { useTranslation } from '@/src/utils/useTranslation'
 
 type TitleProps = { title: string; 'aria-label'?: string } | { title?: never; 'aria-label': string }

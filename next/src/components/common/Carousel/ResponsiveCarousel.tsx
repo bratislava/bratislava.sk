@@ -1,7 +1,10 @@
 import React from 'react'
-import cn from '@/src/utils/cn'
 
-import Carousel, { AllowedVisibleCount, CarouselProps } from '@/src/components/common/Carousel/Carousel'
+import Carousel, {
+  AllowedVisibleCount,
+  CarouselProps,
+} from '@/src/components/common/Carousel/Carousel'
+import cn from '@/src/utils/cn'
 
 type Props = {
   mobile?: AllowedVisibleCount

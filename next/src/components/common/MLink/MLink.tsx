@@ -1,6 +1,7 @@
 import NextLink from 'next/link'
 import { usePlausible } from 'next-plausible'
 import { ComponentProps, forwardRef } from 'react'
+
 import cn from '@/src/utils/cn'
 
 export type LinkPlausibleProps = { id: string }

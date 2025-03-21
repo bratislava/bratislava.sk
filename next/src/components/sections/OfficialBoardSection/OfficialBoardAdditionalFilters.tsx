@@ -6,7 +6,10 @@ import {
   getOfficialBoardCategoriesQueryKey,
   officialBoardCategoriesFetcher,
 } from '@/src/services/ginis/fetchers/officialBoardCategoriesFetcher'
-import { OfficialBoardPublicationState, ParsedOfficialBoardCategory } from '@/src/services/ginis/types'
+import {
+  OfficialBoardPublicationState,
+  ParsedOfficialBoardCategory,
+} from '@/src/services/ginis/types'
 import { isDefined } from '@/src/utils/isDefined'
 import { useTranslation } from '@/src/utils/useTranslation'
 import { isProductionDeployment } from '@/src/utils/utils' // TODO maybe we shouldn't use czech string for values, but parse them in handler or somewhere else?

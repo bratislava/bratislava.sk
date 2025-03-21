@@ -1,4 +1,5 @@
 import React from 'react'
+
 import cn from '@/src/utils/cn'
 
 type HorizontalDividerProps = { categoryColor?: boolean; className?: string }
