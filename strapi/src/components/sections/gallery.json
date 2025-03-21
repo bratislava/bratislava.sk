@@ -13,19 +13,13 @@
     "text": {
       "type": "text"
     },
-    "subtitle": {
-      "type": "string"
-    },
-    "galleryItems": {
-      "type": "component",
-      "repeatable": true,
-      "component": "blocks.gallery-item"
-    },
     "medias": {
-      "allowedTypes": ["images"],
       "type": "media",
       "multiple": true,
-      "required": true
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
     }
   }
 }

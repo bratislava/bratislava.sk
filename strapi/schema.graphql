@@ -378,28 +378,6 @@ input ComponentBlocksContactCardInput {
   value: String
 }
 
-type ComponentBlocksDocListExtensions {
-  document: UploadFileEntityResponse
-  id: ID!
-  title: String
-  validFrom: Date
-}
-
-input ComponentBlocksDocListExtensionsFiltersInput {
-  and: [ComponentBlocksDocListExtensionsFiltersInput]
-  not: ComponentBlocksDocListExtensionsFiltersInput
-  or: [ComponentBlocksDocListExtensionsFiltersInput]
-  title: StringFilterInput
-  validFrom: DateFilterInput
-}
-
-input ComponentBlocksDocListExtensionsInput {
-  document: ID
-  id: ID
-  title: String
-  validFrom: Date
-}
-
 type ComponentBlocksFile {
   id: ID!
   media: UploadFileEntityResponse
@@ -479,51 +457,6 @@ input ComponentBlocksFooterContactItemInput {
   label: String
   mail: String
   phone: String
-}
-
-type ComponentBlocksFooterSection {
-  id: ID!
-  pageLinks(filters: ComponentBlocksPageLinkFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksPageLink]
-  title: String
-}
-
-input ComponentBlocksFooterSectionFiltersInput {
-  and: [ComponentBlocksFooterSectionFiltersInput]
-  not: ComponentBlocksFooterSectionFiltersInput
-  or: [ComponentBlocksFooterSectionFiltersInput]
-  pageLinks: ComponentBlocksPageLinkFiltersInput
-  title: StringFilterInput
-}
-
-input ComponentBlocksFooterSectionInput {
-  id: ID
-  pageLinks: [ComponentBlocksPageLinkInput]
-  title: String
-}
-
-type ComponentBlocksGalleryItem {
-  id: ID!
-  imgSubtext: String
-  imgSubtitle: String
-  imgTitle: String
-  media: UploadFileEntityResponse
-}
-
-input ComponentBlocksGalleryItemFiltersInput {
-  and: [ComponentBlocksGalleryItemFiltersInput]
-  imgSubtext: StringFilterInput
-  imgSubtitle: StringFilterInput
-  imgTitle: StringFilterInput
-  not: ComponentBlocksGalleryItemFiltersInput
-  or: [ComponentBlocksGalleryItemFiltersInput]
-}
-
-input ComponentBlocksGalleryItemInput {
-  id: ID
-  imgSubtext: String
-  imgSubtitle: String
-  imgTitle: String
-  media: ID
 }
 
 type ComponentBlocksHomepageBookmark {
@@ -641,7 +574,6 @@ input ComponentBlocksNumericalListItemInput {
 }
 
 type ComponentBlocksPageLink {
-  anchor: String
   id: ID!
   page: PageEntityResponse
   title: String
@@ -649,7 +581,6 @@ type ComponentBlocksPageLink {
 }
 
 input ComponentBlocksPageLinkFiltersInput {
-  anchor: StringFilterInput
   and: [ComponentBlocksPageLinkFiltersInput]
   not: ComponentBlocksPageLinkFiltersInput
   or: [ComponentBlocksPageLinkFiltersInput]
@@ -659,7 +590,6 @@ input ComponentBlocksPageLinkFiltersInput {
 }
 
 input ComponentBlocksPageLinkInput {
-  anchor: String
   id: ID
   page: ID
   title: String
@@ -683,66 +613,6 @@ input ComponentBlocksProsAndConsCardFiltersInput {
 input ComponentBlocksProsAndConsCardInput {
   id: ID
   items: [ComponentBlocksComparisonItemInput]
-  title: String
-}
-
-type ComponentBlocksSpaceInfo {
-  bigGapCapacity: Long
-  buttonTitle: String
-  footerText: String
-  id: ID!
-  image: UploadFileEntityResponse
-  imagePosition: ENUM_COMPONENTBLOCKSSPACEINFO_IMAGEPOSITION
-  linkTitle: String
-  smallGapCapacity: Long
-  spaceTitle: String
-  subText: String
-}
-
-input ComponentBlocksSpaceInfoFiltersInput {
-  and: [ComponentBlocksSpaceInfoFiltersInput]
-  bigGapCapacity: LongFilterInput
-  buttonTitle: StringFilterInput
-  footerText: StringFilterInput
-  imagePosition: StringFilterInput
-  linkTitle: StringFilterInput
-  not: ComponentBlocksSpaceInfoFiltersInput
-  or: [ComponentBlocksSpaceInfoFiltersInput]
-  smallGapCapacity: LongFilterInput
-  spaceTitle: StringFilterInput
-  subText: StringFilterInput
-}
-
-input ComponentBlocksSpaceInfoInput {
-  bigGapCapacity: Long
-  buttonTitle: String
-  footerText: String
-  id: ID
-  image: ID
-  imagePosition: ENUM_COMPONENTBLOCKSSPACEINFO_IMAGEPOSITION
-  linkTitle: String
-  smallGapCapacity: Long
-  spaceTitle: String
-  subText: String
-}
-
-type ComponentBlocksSubpage {
-  id: ID!
-  link: String
-  title: String
-}
-
-input ComponentBlocksSubpageFiltersInput {
-  and: [ComponentBlocksSubpageFiltersInput]
-  link: StringFilterInput
-  not: ComponentBlocksSubpageFiltersInput
-  or: [ComponentBlocksSubpageFiltersInput]
-  title: StringFilterInput
-}
-
-input ComponentBlocksSubpageInput {
-  id: ID
-  link: String
   title: String
 }
 
@@ -956,89 +826,8 @@ input ComponentMenuMenuSectionInput {
   page: ID
 }
 
-type ComponentOsItemsAdvancedAccordionDepartment {
-  id: ID!
-  items(filters: ComponentOsItemsAdvancedAccordionSubItemFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentOsItemsAdvancedAccordionSubItem]
-  title: String
-}
-
-input ComponentOsItemsAdvancedAccordionDepartmentFiltersInput {
-  and: [ComponentOsItemsAdvancedAccordionDepartmentFiltersInput]
-  items: ComponentOsItemsAdvancedAccordionSubItemFiltersInput
-  not: ComponentOsItemsAdvancedAccordionDepartmentFiltersInput
-  or: [ComponentOsItemsAdvancedAccordionDepartmentFiltersInput]
-  title: StringFilterInput
-}
-
-input ComponentOsItemsAdvancedAccordionDepartmentInput {
-  id: ID
-  items: [ComponentOsItemsAdvancedAccordionSubItemInput]
-  title: String
-}
-
-type ComponentOsItemsAdvancedAccordionItem {
-  departments(filters: ComponentOsItemsAdvancedAccordionDepartmentFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentOsItemsAdvancedAccordionDepartment]
-  id: ID!
-  title: String
-}
-
-input ComponentOsItemsAdvancedAccordionItemFiltersInput {
-  and: [ComponentOsItemsAdvancedAccordionItemFiltersInput]
-  departments: ComponentOsItemsAdvancedAccordionDepartmentFiltersInput
-  not: ComponentOsItemsAdvancedAccordionItemFiltersInput
-  or: [ComponentOsItemsAdvancedAccordionItemFiltersInput]
-  title: StringFilterInput
-}
-
-input ComponentOsItemsAdvancedAccordionItemInput {
-  departments: [ComponentOsItemsAdvancedAccordionDepartmentInput]
-  id: ID
-  title: String
-}
-
-type ComponentOsItemsAdvancedAccordionSubItem {
-  id: ID!
-  isGroupTitle: Boolean
-  items(filters: ComponentOsItemsAdvancedAccordionSubSubItemFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentOsItemsAdvancedAccordionSubSubItem]
-  title: String
-}
-
-input ComponentOsItemsAdvancedAccordionSubItemFiltersInput {
-  and: [ComponentOsItemsAdvancedAccordionSubItemFiltersInput]
-  isGroupTitle: BooleanFilterInput
-  items: ComponentOsItemsAdvancedAccordionSubSubItemFiltersInput
-  not: ComponentOsItemsAdvancedAccordionSubItemFiltersInput
-  or: [ComponentOsItemsAdvancedAccordionSubItemFiltersInput]
-  title: StringFilterInput
-}
-
-input ComponentOsItemsAdvancedAccordionSubItemInput {
-  id: ID
-  isGroupTitle: Boolean
-  items: [ComponentOsItemsAdvancedAccordionSubSubItemInput]
-  title: String
-}
-
-type ComponentOsItemsAdvancedAccordionSubSubItem {
-  id: ID!
-  title: String
-}
-
-input ComponentOsItemsAdvancedAccordionSubSubItemFiltersInput {
-  and: [ComponentOsItemsAdvancedAccordionSubSubItemFiltersInput]
-  not: ComponentOsItemsAdvancedAccordionSubSubItemFiltersInput
-  or: [ComponentOsItemsAdvancedAccordionSubSubItemFiltersInput]
-  title: StringFilterInput
-}
-
-input ComponentOsItemsAdvancedAccordionSubSubItemInput {
-  id: ID
-  title: String
-}
-
 type ComponentSectionsAccordion {
   flatText(filters: ComponentAccordionItemsFlatTextFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentAccordionItemsFlatText]
-  hasBackground: Boolean
   id: ID!
   institutions(filters: ComponentAccordionItemsInstitutionFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentAccordionItemsInstitution]
   institutionsNarrow(filters: ComponentAccordionItemsInstitutionNarrowFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentAccordionItemsInstitutionNarrow]
@@ -1048,7 +837,6 @@ type ComponentSectionsAccordion {
 input ComponentSectionsAccordionFiltersInput {
   and: [ComponentSectionsAccordionFiltersInput]
   flatText: ComponentAccordionItemsFlatTextFiltersInput
-  hasBackground: BooleanFilterInput
   institutions: ComponentAccordionItemsInstitutionFiltersInput
   institutionsNarrow: ComponentAccordionItemsInstitutionNarrowFiltersInput
   not: ComponentSectionsAccordionFiltersInput
@@ -1058,7 +846,6 @@ input ComponentSectionsAccordionFiltersInput {
 
 input ComponentSectionsAccordionInput {
   flatText: [ComponentAccordionItemsFlatTextInput]
-  hasBackground: Boolean
   id: ID
   institutions: [ComponentAccordionItemsInstitutionInput]
   institutionsNarrow: [ComponentAccordionItemsInstitutionNarrowInput]
@@ -1125,29 +912,6 @@ input ComponentSectionsBlogPostsByCategoryInput {
   title: String
 }
 
-type ComponentSectionsBlogPostsByTags {
-  id: ID!
-  tags(filters: TagFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): TagRelationResponseCollection
-  text: String
-  title: String
-}
-
-input ComponentSectionsBlogPostsByTagsFiltersInput {
-  and: [ComponentSectionsBlogPostsByTagsFiltersInput]
-  not: ComponentSectionsBlogPostsByTagsFiltersInput
-  or: [ComponentSectionsBlogPostsByTagsFiltersInput]
-  tags: TagFiltersInput
-  text: StringFilterInput
-  title: StringFilterInput
-}
-
-input ComponentSectionsBlogPostsByTagsInput {
-  id: ID
-  tags: [ID]
-  text: String
-  title: String
-}
-
 type ComponentSectionsBlogPostsList {
   id: ID!
   text: String
@@ -1197,7 +961,6 @@ input ComponentSectionsCalculatorInput {
 type ComponentSectionsColumnedText {
   content: String
   contentAlignment: ENUM_COMPONENTSECTIONSCOLUMNEDTEXT_CONTENTALIGNMENT
-  hasBackground: Boolean
   id: ID!
 }
 
@@ -1205,7 +968,6 @@ input ComponentSectionsColumnedTextFiltersInput {
   and: [ComponentSectionsColumnedTextFiltersInput]
   content: StringFilterInput
   contentAlignment: StringFilterInput
-  hasBackground: BooleanFilterInput
   not: ComponentSectionsColumnedTextFiltersInput
   or: [ComponentSectionsColumnedTextFiltersInput]
 }
@@ -1213,7 +975,6 @@ input ComponentSectionsColumnedTextFiltersInput {
 input ComponentSectionsColumnedTextInput {
   content: String
   contentAlignment: ENUM_COMPONENTSECTIONSCOLUMNEDTEXT_CONTENTALIGNMENT
-  hasBackground: Boolean
   id: ID
 }
 
@@ -1282,21 +1043,18 @@ input ComponentSectionsContactsSectionInput {
 }
 
 type ComponentSectionsDivider {
-  hasBackground: Boolean
   id: ID!
   style: ENUM_COMPONENTSECTIONSDIVIDER_STYLE
 }
 
 input ComponentSectionsDividerFiltersInput {
   and: [ComponentSectionsDividerFiltersInput]
-  hasBackground: BooleanFilterInput
   not: ComponentSectionsDividerFiltersInput
   or: [ComponentSectionsDividerFiltersInput]
   style: StringFilterInput
 }
 
 input ComponentSectionsDividerInput {
-  hasBackground: Boolean
   id: ID
   style: ENUM_COMPONENTSECTIONSDIVIDER_STYLE
 }
@@ -1347,29 +1105,6 @@ input ComponentSectionsFaqsInput {
   title: String
 }
 
-type ComponentSectionsFeaturedBlogPosts {
-  first_blog: BlogPostEntityResponse
-  id: ID!
-  second_blog: BlogPostEntityResponse
-  third_blog: BlogPostEntityResponse
-}
-
-input ComponentSectionsFeaturedBlogPostsFiltersInput {
-  and: [ComponentSectionsFeaturedBlogPostsFiltersInput]
-  first_blog: BlogPostFiltersInput
-  not: ComponentSectionsFeaturedBlogPostsFiltersInput
-  or: [ComponentSectionsFeaturedBlogPostsFiltersInput]
-  second_blog: BlogPostFiltersInput
-  third_blog: BlogPostFiltersInput
-}
-
-input ComponentSectionsFeaturedBlogPostsInput {
-  first_blog: ID
-  id: ID
-  second_blog: ID
-  third_blog: ID
-}
-
 type ComponentSectionsFileList {
   fileList(filters: ComponentBlocksFileFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksFile]
   id: ID!
@@ -1394,29 +1129,23 @@ input ComponentSectionsFileListInput {
 }
 
 type ComponentSectionsGallery {
-  galleryItems(filters: ComponentBlocksGalleryItemFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksGalleryItem]
   id: ID!
   medias(filters: UploadFileFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UploadFileRelationResponseCollection!
-  subtitle: String
   text: String
   title: String
 }
 
 input ComponentSectionsGalleryFiltersInput {
   and: [ComponentSectionsGalleryFiltersInput]
-  galleryItems: ComponentBlocksGalleryItemFiltersInput
   not: ComponentSectionsGalleryFiltersInput
   or: [ComponentSectionsGalleryFiltersInput]
-  subtitle: StringFilterInput
   text: StringFilterInput
   title: StringFilterInput
 }
 
 input ComponentSectionsGalleryInput {
-  galleryItems: [ComponentBlocksGalleryItemInput]
   id: ID
   medias: [ID]
-  subtitle: String
   text: String
   title: String
 }
@@ -1523,7 +1252,6 @@ input ComponentSectionsHomepageTabsInput {
 }
 
 type ComponentSectionsIconTitleDesc {
-  hasBackground: Boolean
   id: ID!
   list(filters: ComponentBlocksIconWithTitleAndDescriptionFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksIconWithTitleAndDescription]
   title: String
@@ -1531,7 +1259,6 @@ type ComponentSectionsIconTitleDesc {
 
 input ComponentSectionsIconTitleDescFiltersInput {
   and: [ComponentSectionsIconTitleDescFiltersInput]
-  hasBackground: BooleanFilterInput
   list: ComponentBlocksIconWithTitleAndDescriptionFiltersInput
   not: ComponentSectionsIconTitleDescFiltersInput
   or: [ComponentSectionsIconTitleDescFiltersInput]
@@ -1539,7 +1266,6 @@ input ComponentSectionsIconTitleDescFiltersInput {
 }
 
 input ComponentSectionsIconTitleDescInput {
-  hasBackground: Boolean
   id: ID
   list: [ComponentBlocksIconWithTitleAndDescriptionInput]
   title: String
@@ -1624,7 +1350,6 @@ input ComponentSectionsInbaReleasesInput {
 }
 
 type ComponentSectionsLinks {
-  hasBackground: Boolean
   id: ID!
   pageLinks(filters: ComponentBlocksPageLinkFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksPageLink]
   title: String
@@ -1632,7 +1357,6 @@ type ComponentSectionsLinks {
 
 input ComponentSectionsLinksFiltersInput {
   and: [ComponentSectionsLinksFiltersInput]
-  hasBackground: BooleanFilterInput
   not: ComponentSectionsLinksFiltersInput
   or: [ComponentSectionsLinksFiltersInput]
   pageLinks: ComponentBlocksPageLinkFiltersInput
@@ -1640,7 +1364,6 @@ input ComponentSectionsLinksFiltersInput {
 }
 
 input ComponentSectionsLinksInput {
-  hasBackground: Boolean
   id: ID
   pageLinks: [ComponentBlocksPageLinkInput]
   title: String
@@ -1649,7 +1372,6 @@ input ComponentSectionsLinksInput {
 type ComponentSectionsNarrowText {
   align: ENUM_COMPONENTSECTIONSNARROWTEXT_ALIGN
   content: String
-  hasBackground: Boolean
   id: ID!
   width: ENUM_COMPONENTSECTIONSNARROWTEXT_WIDTH
 }
@@ -1658,7 +1380,6 @@ input ComponentSectionsNarrowTextFiltersInput {
   align: StringFilterInput
   and: [ComponentSectionsNarrowTextFiltersInput]
   content: StringFilterInput
-  hasBackground: BooleanFilterInput
   not: ComponentSectionsNarrowTextFiltersInput
   or: [ComponentSectionsNarrowTextFiltersInput]
   width: StringFilterInput
@@ -1667,7 +1388,6 @@ input ComponentSectionsNarrowTextFiltersInput {
 input ComponentSectionsNarrowTextInput {
   align: ENUM_COMPONENTSECTIONSNARROWTEXT_ALIGN
   content: String
-  hasBackground: Boolean
   id: ID
   width: ENUM_COMPONENTSECTIONSNARROWTEXT_WIDTH
 }
@@ -1675,7 +1395,6 @@ input ComponentSectionsNarrowTextInput {
 type ComponentSectionsNumericalList {
   buttonLink: String
   buttonText: String
-  hasBackground: Boolean
   id: ID!
   items(filters: ComponentBlocksNumericalListItemFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksNumericalListItem]
   title: String
@@ -1686,7 +1405,6 @@ input ComponentSectionsNumericalListFiltersInput {
   and: [ComponentSectionsNumericalListFiltersInput]
   buttonLink: StringFilterInput
   buttonText: StringFilterInput
-  hasBackground: BooleanFilterInput
   items: ComponentBlocksNumericalListItemFiltersInput
   not: ComponentSectionsNumericalListFiltersInput
   or: [ComponentSectionsNumericalListFiltersInput]
@@ -1697,7 +1415,6 @@ input ComponentSectionsNumericalListFiltersInput {
 input ComponentSectionsNumericalListInput {
   buttonLink: String
   buttonText: String
-  hasBackground: Boolean
   id: ID
   items: [ComponentBlocksNumericalListItemInput]
   title: String
@@ -1720,13 +1437,11 @@ input ComponentSectionsOfficialBoardInput {
 
 type ComponentSectionsOrganizationalStructure {
   id: ID!
-  items(filters: ComponentOsItemsAdvancedAccordionItemFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentOsItemsAdvancedAccordionItem]
   title: String
 }
 
 input ComponentSectionsOrganizationalStructureFiltersInput {
   and: [ComponentSectionsOrganizationalStructureFiltersInput]
-  items: ComponentOsItemsAdvancedAccordionItemFiltersInput
   not: ComponentSectionsOrganizationalStructureFiltersInput
   or: [ComponentSectionsOrganizationalStructureFiltersInput]
   title: StringFilterInput
@@ -1734,7 +1449,6 @@ input ComponentSectionsOrganizationalStructureFiltersInput {
 
 input ComponentSectionsOrganizationalStructureInput {
   id: ID
-  items: [ComponentOsItemsAdvancedAccordionItemInput]
   title: String
 }
 
@@ -1804,42 +1518,19 @@ input ComponentSectionsRegulationsListInput {
   title: String
 }
 
-type ComponentSectionsSpace {
-  id: ID!
-  sectionTitle: String
-  spaceInfo(filters: ComponentBlocksSpaceInfoFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksSpaceInfo]
-}
-
-input ComponentSectionsSpaceFiltersInput {
-  and: [ComponentSectionsSpaceFiltersInput]
-  not: ComponentSectionsSpaceFiltersInput
-  or: [ComponentSectionsSpaceFiltersInput]
-  sectionTitle: StringFilterInput
-  spaceInfo: ComponentBlocksSpaceInfoFiltersInput
-}
-
-input ComponentSectionsSpaceInput {
-  id: ID
-  sectionTitle: String
-  spaceInfo: [ComponentBlocksSpaceInfoInput]
-}
-
 type ComponentSectionsSubpageList {
-  hasBackground: Boolean
   id: ID!
   subpageList(filters: ComponentBlocksPageLinkFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksPageLink]
 }
 
 input ComponentSectionsSubpageListFiltersInput {
   and: [ComponentSectionsSubpageListFiltersInput]
-  hasBackground: BooleanFilterInput
   not: ComponentSectionsSubpageListFiltersInput
   or: [ComponentSectionsSubpageListFiltersInput]
   subpageList: ComponentBlocksPageLinkFiltersInput
 }
 
 input ComponentSectionsSubpageListInput {
-  hasBackground: Boolean
   id: ID
   subpageList: [ComponentBlocksPageLinkInput]
 }
@@ -1872,29 +1563,23 @@ input ComponentSectionsTestimonialsInput {
 
 type ComponentSectionsTextWithImage {
   content: String
-  hasBackground: Boolean
   id: ID!
   imagePosition: ENUM_COMPONENTSECTIONSTEXTWITHIMAGE_IMAGEPOSITION
-  imageShadow: Boolean
   imageSrc: UploadFileEntityResponse
 }
 
 input ComponentSectionsTextWithImageFiltersInput {
   and: [ComponentSectionsTextWithImageFiltersInput]
   content: StringFilterInput
-  hasBackground: BooleanFilterInput
   imagePosition: StringFilterInput
-  imageShadow: BooleanFilterInput
   not: ComponentSectionsTextWithImageFiltersInput
   or: [ComponentSectionsTextWithImageFiltersInput]
 }
 
 input ComponentSectionsTextWithImageInput {
   content: String
-  hasBackground: Boolean
   id: ID
   imagePosition: ENUM_COMPONENTSECTIONSTEXTWITHIMAGE_IMAGEPOSITION
-  imageShadow: Boolean
   imageSrc: ID
 }
 
@@ -2077,11 +1762,6 @@ enum ENUM_COMPONENTACCORDIONITEMSFLATTEXT_WIDTH {
   wide
 }
 
-enum ENUM_COMPONENTBLOCKSSPACEINFO_IMAGEPOSITION {
-  left
-  right
-}
-
 enum ENUM_COMPONENTBLOCKSTOPSERVICESITEM_ICON {
   bratislavske_konto
   dane_a_poplatky
@@ -2249,44 +1929,6 @@ enum ENUM_PAGECATEGORY_ICON {
   socialna_pomoc_04
   vzdelavanie_05
   zp_vystavba_03
-}
-
-enum ENUM_PAGESUBCATEGORY_ICON {
-  aktivity_04
-  byvanie_04
-  covid_06
-  cyklo_02
-  dane_01
-  dedicstvo_06
-  deti_a_mladez_05
-  doprava_02
-  dotacie_05
-  kalendar_06
-  komunity_06
-  koncepcia_06
-  mapy_02
-  mhd_02
-  ocenovanie_05
-  organizacie_06
-  parkovanie_02
-  partnerstva_01
-  pomoc_04
-  projekty_01
-  rozvoj_mesta_03
-  skolstvo_05
-  sluzby_04
-  sluzby_06
-  sport_05
-  sprava_a_udrzba_02
-  sprava_mesta_01
-  transparentne_mesto_01
-  uzemny_plan_03
-  verejne_osvetlenie_03
-  vystavba_a_nehnutelnosti_03
-  zariadenia_04
-  zdielana_mobilita_02
-  zelen_03
-  zivotne_prostredie_03
 }
 
 enum ENUM_PAGE_PAGECOLOR {
@@ -2568,7 +2210,7 @@ type GeneralRelationResponseCollection {
   data: [GeneralEntity!]!
 }
 
-union GenericMorph = Alert | BlogPost | ComponentAccordionItemsFlatText | ComponentAccordionItemsInstitution | ComponentAccordionItemsInstitutionNarrow | ComponentBlocksBlogPostLink | ComponentBlocksBookmarkLink | ComponentBlocksCommonLink | ComponentBlocksComparisonCard | ComponentBlocksComparisonItem | ComponentBlocksContactCard | ComponentBlocksDocListExtensions | ComponentBlocksFile | ComponentBlocksFileItem | ComponentBlocksFooterColumn | ComponentBlocksFooterContactItem | ComponentBlocksFooterSection | ComponentBlocksGalleryItem | ComponentBlocksHomepageBookmark | ComponentBlocksHomepageHighlightsItem | ComponentBlocksIconWithTitleAndDescription | ComponentBlocksInBa | ComponentBlocksNumericalListItem | ComponentBlocksPageLink | ComponentBlocksProsAndConsCard | ComponentBlocksSpaceInfo | ComponentBlocksSubpage | ComponentBlocksTestimonialItem | ComponentBlocksTimelineItem | ComponentBlocksTopServicesItem | ComponentBlocksVideo | ComponentGeneralHeader | ComponentGeneralHeaderLink | ComponentMenuMenuItem | ComponentMenuMenuLink | ComponentMenuMenuSection | ComponentOsItemsAdvancedAccordionDepartment | ComponentOsItemsAdvancedAccordionItem | ComponentOsItemsAdvancedAccordionSubItem | ComponentOsItemsAdvancedAccordionSubSubItem | ComponentSectionsAccordion | ComponentSectionsBanner | ComponentSectionsBlogPostsByCategory | ComponentSectionsBlogPostsByTags | ComponentSectionsBlogPostsList | ComponentSectionsCalculator | ComponentSectionsColumnedText | ComponentSectionsComparisonSection | ComponentSectionsContactsSection | ComponentSectionsDivider | ComponentSectionsFaqCategories | ComponentSectionsFaqs | ComponentSectionsFeaturedBlogPosts | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsHomepageEvents | ComponentSectionsHomepageHighlights | ComponentSectionsHomepageMayorAndCouncil | ComponentSectionsHomepageTabs | ComponentSectionsIconTitleDesc | ComponentSectionsIframe | ComponentSectionsInbaArticlesList | ComponentSectionsInbaReleases | ComponentSectionsLinks | ComponentSectionsNarrowText | ComponentSectionsNumericalList | ComponentSectionsOfficialBoard | ComponentSectionsOrganizationalStructure | ComponentSectionsProsAndConsSection | ComponentSectionsRegulations | ComponentSectionsRegulationsList | ComponentSectionsSpace | ComponentSectionsSubpageList | ComponentSectionsTestimonials | ComponentSectionsTextWithImage | ComponentSectionsTimeline | ComponentSectionsTopServices | ComponentSectionsVideos | ComponentSectionsWaves | ComponentTaxAdministratorsTaxAdministrator | Faq | FaqCategory | Footer | General | Homepage | I18NLocale | InbaArticle | InbaRelease | InbaTag | Menu | Page | PageCategory | PageSubcategory | Regulation | Tag | TaxAdministratorsList | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
+union GenericMorph = Alert | BlogPost | ComponentAccordionItemsFlatText | ComponentAccordionItemsInstitution | ComponentAccordionItemsInstitutionNarrow | ComponentBlocksBlogPostLink | ComponentBlocksBookmarkLink | ComponentBlocksCommonLink | ComponentBlocksComparisonCard | ComponentBlocksComparisonItem | ComponentBlocksContactCard | ComponentBlocksFile | ComponentBlocksFileItem | ComponentBlocksFooterColumn | ComponentBlocksFooterContactItem | ComponentBlocksHomepageBookmark | ComponentBlocksHomepageHighlightsItem | ComponentBlocksIconWithTitleAndDescription | ComponentBlocksInBa | ComponentBlocksNumericalListItem | ComponentBlocksPageLink | ComponentBlocksProsAndConsCard | ComponentBlocksTestimonialItem | ComponentBlocksTimelineItem | ComponentBlocksTopServicesItem | ComponentBlocksVideo | ComponentGeneralHeader | ComponentGeneralHeaderLink | ComponentMenuMenuItem | ComponentMenuMenuLink | ComponentMenuMenuSection | ComponentSectionsAccordion | ComponentSectionsBanner | ComponentSectionsBlogPostsByCategory | ComponentSectionsBlogPostsList | ComponentSectionsCalculator | ComponentSectionsColumnedText | ComponentSectionsComparisonSection | ComponentSectionsContactsSection | ComponentSectionsDivider | ComponentSectionsFaqCategories | ComponentSectionsFaqs | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsHomepageEvents | ComponentSectionsHomepageHighlights | ComponentSectionsHomepageMayorAndCouncil | ComponentSectionsHomepageTabs | ComponentSectionsIconTitleDesc | ComponentSectionsIframe | ComponentSectionsInbaArticlesList | ComponentSectionsInbaReleases | ComponentSectionsLinks | ComponentSectionsNarrowText | ComponentSectionsNumericalList | ComponentSectionsOfficialBoard | ComponentSectionsOrganizationalStructure | ComponentSectionsProsAndConsSection | ComponentSectionsRegulations | ComponentSectionsRegulationsList | ComponentSectionsSubpageList | ComponentSectionsTestimonials | ComponentSectionsTextWithImage | ComponentSectionsTimeline | ComponentSectionsTopServices | ComponentSectionsVideos | ComponentSectionsWaves | ComponentTaxAdministratorsTaxAdministrator | Faq | FaqCategory | Footer | General | Homepage | I18NLocale | InbaArticle | InbaRelease | InbaTag | Menu | Page | PageCategory | Regulation | Tag | TaxAdministratorsList | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
 
 type Homepage {
   bookmarkTourists: ComponentBlocksHomepageBookmark
@@ -3041,8 +2683,6 @@ type Mutation {
   createPageCategory(data: PageCategoryInput!, locale: I18NLocaleCode): PageCategoryEntityResponse
   createPageCategoryLocalization(data: PageCategoryInput, id: ID, locale: I18NLocaleCode): PageCategoryEntityResponse
   createPageLocalization(data: PageInput, id: ID, locale: I18NLocaleCode): PageEntityResponse
-  createPageSubcategory(data: PageSubcategoryInput!, locale: I18NLocaleCode): PageSubcategoryEntityResponse
-  createPageSubcategoryLocalization(data: PageSubcategoryInput, id: ID, locale: I18NLocaleCode): PageSubcategoryEntityResponse
   createRegulation(data: RegulationInput!): RegulationEntityResponse
   createTag(data: TagInput!, locale: I18NLocaleCode): TagEntityResponse
   createTagLocalization(data: TagInput, id: ID, locale: I18NLocaleCode): TagEntityResponse
@@ -3067,7 +2707,6 @@ type Mutation {
   deleteMenu(locale: I18NLocaleCode): MenuEntityResponse
   deletePage(id: ID!, locale: I18NLocaleCode): PageEntityResponse
   deletePageCategory(id: ID!, locale: I18NLocaleCode): PageCategoryEntityResponse
-  deletePageSubcategory(id: ID!, locale: I18NLocaleCode): PageSubcategoryEntityResponse
   deleteRegulation(id: ID!): RegulationEntityResponse
   deleteTag(id: ID!, locale: I18NLocaleCode): TagEntityResponse
   deleteTaxAdministratorsList: TaxAdministratorsListEntityResponse
@@ -3110,7 +2749,6 @@ type Mutation {
   updateMenu(data: MenuInput!, locale: I18NLocaleCode): MenuEntityResponse
   updatePage(data: PageInput!, id: ID!, locale: I18NLocaleCode): PageEntityResponse
   updatePageCategory(data: PageCategoryInput!, id: ID!, locale: I18NLocaleCode): PageCategoryEntityResponse
-  updatePageSubcategory(data: PageSubcategoryInput!, id: ID!, locale: I18NLocaleCode): PageSubcategoryEntityResponse
   updateRegulation(data: RegulationInput!, id: ID!): RegulationEntityResponse
   updateTag(data: TagInput!, id: ID!, locale: I18NLocaleCode): TagEntityResponse
   updateTaxAdministratorsList(data: TaxAdministratorsListInput!): TaxAdministratorsListEntityResponse
@@ -3156,7 +2794,6 @@ type PageCategory {
   pages(filters: PageFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): PageRelationResponseCollection
   publishedAt: DateTime
   shortTitle: String
-  subcategories(filters: PageSubcategoryFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): PageSubcategoryRelationResponseCollection
   title: String
   updatedAt: DateTime
 }
@@ -3188,7 +2825,6 @@ input PageCategoryFiltersInput {
   pages: PageFiltersInput
   publishedAt: DateTimeFilterInput
   shortTitle: StringFilterInput
-  subcategories: PageSubcategoryFiltersInput
   title: StringFilterInput
   updatedAt: DateTimeFilterInput
 }
@@ -3199,7 +2835,6 @@ input PageCategoryInput {
   pages: [ID]
   publishedAt: DateTime
   shortTitle: String
-  subcategories: [ID]
   title: String
 }
 
@@ -3270,63 +2905,9 @@ type PageRelationResponseCollection {
   data: [PageEntity!]!
 }
 
-union PageSectionsDynamicZone = ComponentSectionsAccordion | ComponentSectionsBanner | ComponentSectionsBlogPostsByCategory | ComponentSectionsBlogPostsByTags | ComponentSectionsBlogPostsList | ComponentSectionsCalculator | ComponentSectionsColumnedText | ComponentSectionsComparisonSection | ComponentSectionsContactsSection | ComponentSectionsDivider | ComponentSectionsFaqCategories | ComponentSectionsFaqs | ComponentSectionsFeaturedBlogPosts | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsIconTitleDesc | ComponentSectionsIframe | ComponentSectionsInbaArticlesList | ComponentSectionsInbaReleases | ComponentSectionsLinks | ComponentSectionsNarrowText | ComponentSectionsNumericalList | ComponentSectionsOfficialBoard | ComponentSectionsOrganizationalStructure | ComponentSectionsProsAndConsSection | ComponentSectionsRegulations | ComponentSectionsRegulationsList | ComponentSectionsSpace | ComponentSectionsTestimonials | ComponentSectionsTextWithImage | ComponentSectionsTimeline | ComponentSectionsVideos | ComponentSectionsWaves | Error
+union PageSectionsDynamicZone = ComponentSectionsAccordion | ComponentSectionsBanner | ComponentSectionsBlogPostsByCategory | ComponentSectionsBlogPostsList | ComponentSectionsCalculator | ComponentSectionsColumnedText | ComponentSectionsComparisonSection | ComponentSectionsContactsSection | ComponentSectionsDivider | ComponentSectionsFaqCategories | ComponentSectionsFaqs | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsIconTitleDesc | ComponentSectionsIframe | ComponentSectionsInbaArticlesList | ComponentSectionsInbaReleases | ComponentSectionsLinks | ComponentSectionsNarrowText | ComponentSectionsNumericalList | ComponentSectionsOfficialBoard | ComponentSectionsOrganizationalStructure | ComponentSectionsProsAndConsSection | ComponentSectionsRegulations | ComponentSectionsRegulationsList | ComponentSectionsTestimonials | ComponentSectionsTextWithImage | ComponentSectionsTimeline | ComponentSectionsVideos | ComponentSectionsWaves | Error
 
 scalar PageSectionsDynamicZoneInput
-
-type PageSubcategory {
-  createdAt: DateTime
-  icon: ENUM_PAGESUBCATEGORY_ICON
-  locale: String
-  localizations(filters: PageSubcategoryFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): PageSubcategoryRelationResponseCollection
-  moreLink: ComponentBlocksPageLink
-  pages(filters: ComponentBlocksPageLinkFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksPageLink]
-  publishedAt: DateTime
-  title: String
-  updatedAt: DateTime
-}
-
-type PageSubcategoryEntity {
-  attributes: PageSubcategory
-  id: ID
-}
-
-type PageSubcategoryEntityResponse {
-  data: PageSubcategoryEntity
-}
-
-type PageSubcategoryEntityResponseCollection {
-  data: [PageSubcategoryEntity!]!
-  meta: ResponseCollectionMeta!
-}
-
-input PageSubcategoryFiltersInput {
-  and: [PageSubcategoryFiltersInput]
-  createdAt: DateTimeFilterInput
-  icon: StringFilterInput
-  id: IDFilterInput
-  locale: StringFilterInput
-  localizations: PageSubcategoryFiltersInput
-  moreLink: ComponentBlocksPageLinkFiltersInput
-  not: PageSubcategoryFiltersInput
-  or: [PageSubcategoryFiltersInput]
-  pages: ComponentBlocksPageLinkFiltersInput
-  publishedAt: DateTimeFilterInput
-  title: StringFilterInput
-  updatedAt: DateTimeFilterInput
-}
-
-input PageSubcategoryInput {
-  icon: ENUM_PAGESUBCATEGORY_ICON
-  moreLink: ComponentBlocksPageLinkInput
-  pages: [ComponentBlocksPageLinkInput]
-  publishedAt: DateTime
-  title: String
-}
-
-type PageSubcategoryRelationResponseCollection {
-  data: [PageSubcategoryEntity!]!
-}
 
 type Pagination {
   page: Int!
@@ -3371,8 +2952,6 @@ type Query {
   page(id: ID, locale: I18NLocaleCode): PageEntityResponse
   pageCategories(filters: PageCategoryFiltersInput, locale: I18NLocaleCode, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): PageCategoryEntityResponseCollection
   pageCategory(id: ID, locale: I18NLocaleCode): PageCategoryEntityResponse
-  pageSubcategories(filters: PageSubcategoryFiltersInput, locale: I18NLocaleCode, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): PageSubcategoryEntityResponseCollection
-  pageSubcategory(id: ID, locale: I18NLocaleCode): PageSubcategoryEntityResponse
   pages(filters: PageFiltersInput, locale: I18NLocaleCode, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): PageEntityResponseCollection
   regulation(id: ID): RegulationEntityResponse
   regulations(filters: RegulationFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): RegulationEntityResponseCollection

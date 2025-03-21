@@ -3,7 +3,6 @@ import * as React from 'react'
 import SectionContainer from '@/src/components/common/SectionContainer/SectionContainer'
 import AccordionSection from '@/src/components/sections/AccordionSection'
 import BlogPostsByCategory from '@/src/components/sections/ArticlesListSection/BlogPostsByCategory'
-import BlogPostsByTags from '@/src/components/sections/ArticlesListSection/BlogPostsByTags'
 import BlogPostsList from '@/src/components/sections/ArticlesListSection/BlogPostsList'
 import InbaArticlesList from '@/src/components/sections/ArticlesListSection/InbaArticlesList'
 import BannerSection from '@/src/components/sections/BannerSection'
@@ -14,7 +13,6 @@ import ContactsSection from '@/src/components/sections/ContactsSection'
 import DividerSection from '@/src/components/sections/DividerSection'
 import FaqCategoriesSection from '@/src/components/sections/FaqCategoriesSection'
 import FaqsSection from '@/src/components/sections/FaqsSection'
-import FeaturedBlogPostsSection from '@/src/components/sections/FeaturedBlogPostsSection'
 import FileListSection from '@/src/components/sections/FileListSection'
 import GallerySection from '@/src/components/sections/GallerySection'
 import IconTitleDescSection from '@/src/components/sections/IconTitleDescSection'
@@ -71,9 +69,6 @@ const SectionContent = ({ section }: { section: SectionsFragment }) => {
     case 'ComponentSectionsBlogPostsList':
       return <BlogPostsList section={section} />
 
-    case 'ComponentSectionsBlogPostsByTags':
-      return <BlogPostsByTags section={section} />
-
     case 'ComponentSectionsBlogPostsByCategory':
       return <BlogPostsByCategory section={section} />
 
@@ -106,9 +101,6 @@ const SectionContent = ({ section }: { section: SectionsFragment }) => {
 
     case 'ComponentSectionsTimeline':
       return <TimelineSection section={section} />
-
-    case 'ComponentSectionsFeaturedBlogPosts':
-      return <FeaturedBlogPostsSection section={section} />
 
     case 'ComponentSectionsContactsSection':
       return <ContactsSection section={section} />

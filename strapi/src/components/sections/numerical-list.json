@@ -18,9 +18,6 @@
     "buttonLink": {
       "type": "string"
     },
-    "hasBackground": {
-      "type": "boolean"
-    },
     "items": {
       "type": "component",
       "repeatable": true,

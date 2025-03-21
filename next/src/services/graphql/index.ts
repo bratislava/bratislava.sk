@@ -24,7 +24,6 @@ export type Scalars = {
   DateTime: { input: any; output: any }
   I18NLocaleCode: { input: any; output: any }
   JSON: { input: any; output: any }
-  Long: { input: any; output: any }
   PagePageHeaderSectionsDynamicZoneInput: { input: any; output: any }
   PageSectionsDynamicZoneInput: { input: any; output: any }
   Upload: { input: any; output: any }
@@ -384,14 +383,6 @@ export type ComponentBlocksContactCardFiltersInput = {
   value?: InputMaybe<StringFilterInput>
 }
 
-export type ComponentBlocksDocListExtensions = {
-  __typename?: 'ComponentBlocksDocListExtensions'
-  document?: Maybe<UploadFileEntityResponse>
-  id: Scalars['ID']['output']
-  title?: Maybe<Scalars['String']['output']>
-  validFrom?: Maybe<Scalars['Date']['output']>
-}
-
 export type ComponentBlocksFile = {
   __typename?: 'ComponentBlocksFile'
   id: Scalars['ID']['output']
@@ -475,37 +466,6 @@ export type ComponentBlocksFooterContactItemInput = {
   label?: InputMaybe<Scalars['String']['input']>
   mail?: InputMaybe<Scalars['String']['input']>
   phone?: InputMaybe<Scalars['String']['input']>
-}
-
-export type ComponentBlocksFooterSection = {
-  __typename?: 'ComponentBlocksFooterSection'
-  id: Scalars['ID']['output']
-  pageLinks?: Maybe<Array<Maybe<ComponentBlocksPageLink>>>
-  title?: Maybe<Scalars['String']['output']>
-}
-
-export type ComponentBlocksFooterSectionPageLinksArgs = {
-  filters?: InputMaybe<ComponentBlocksPageLinkFiltersInput>
-  pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
-}
-
-export type ComponentBlocksGalleryItem = {
-  __typename?: 'ComponentBlocksGalleryItem'
-  id: Scalars['ID']['output']
-  imgSubtext?: Maybe<Scalars['String']['output']>
-  imgSubtitle?: Maybe<Scalars['String']['output']>
-  imgTitle?: Maybe<Scalars['String']['output']>
-  media?: Maybe<UploadFileEntityResponse>
-}
-
-export type ComponentBlocksGalleryItemFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<ComponentBlocksGalleryItemFiltersInput>>>
-  imgSubtext?: InputMaybe<StringFilterInput>
-  imgSubtitle?: InputMaybe<StringFilterInput>
-  imgTitle?: InputMaybe<StringFilterInput>
-  not?: InputMaybe<ComponentBlocksGalleryItemFiltersInput>
-  or?: InputMaybe<Array<InputMaybe<ComponentBlocksGalleryItemFiltersInput>>>
 }
 
 export type ComponentBlocksHomepageBookmark = {
@@ -607,7 +567,6 @@ export type ComponentBlocksNumericalListItemFiltersInput = {
 
 export type ComponentBlocksPageLink = {
   __typename?: 'ComponentBlocksPageLink'
-  anchor?: Maybe<Scalars['String']['output']>
   id: Scalars['ID']['output']
   page?: Maybe<PageEntityResponse>
   title?: Maybe<Scalars['String']['output']>
@@ -615,21 +574,12 @@ export type ComponentBlocksPageLink = {
 }
 
 export type ComponentBlocksPageLinkFiltersInput = {
-  anchor?: InputMaybe<StringFilterInput>
   and?: InputMaybe<Array<InputMaybe<ComponentBlocksPageLinkFiltersInput>>>
   not?: InputMaybe<ComponentBlocksPageLinkFiltersInput>
   or?: InputMaybe<Array<InputMaybe<ComponentBlocksPageLinkFiltersInput>>>
   page?: InputMaybe<PageFiltersInput>
   title?: InputMaybe<StringFilterInput>
   url?: InputMaybe<StringFilterInput>
-}
-
-export type ComponentBlocksPageLinkInput = {
-  anchor?: InputMaybe<Scalars['String']['input']>
-  id?: InputMaybe<Scalars['ID']['input']>
-  page?: InputMaybe<Scalars['ID']['input']>
-  title?: InputMaybe<Scalars['String']['input']>
-  url?: InputMaybe<Scalars['String']['input']>
 }
 
 export type ComponentBlocksProsAndConsCard = {
@@ -643,41 +593,6 @@ export type ComponentBlocksProsAndConsCardItemsArgs = {
   filters?: InputMaybe<ComponentBlocksComparisonItemFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
-}
-
-export type ComponentBlocksSpaceInfo = {
-  __typename?: 'ComponentBlocksSpaceInfo'
-  bigGapCapacity?: Maybe<Scalars['Long']['output']>
-  buttonTitle?: Maybe<Scalars['String']['output']>
-  footerText?: Maybe<Scalars['String']['output']>
-  id: Scalars['ID']['output']
-  image?: Maybe<UploadFileEntityResponse>
-  imagePosition?: Maybe<Enum_Componentblocksspaceinfo_Imageposition>
-  linkTitle?: Maybe<Scalars['String']['output']>
-  smallGapCapacity?: Maybe<Scalars['Long']['output']>
-  spaceTitle?: Maybe<Scalars['String']['output']>
-  subText?: Maybe<Scalars['String']['output']>
-}
-
-export type ComponentBlocksSpaceInfoFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<ComponentBlocksSpaceInfoFiltersInput>>>
-  bigGapCapacity?: InputMaybe<LongFilterInput>
-  buttonTitle?: InputMaybe<StringFilterInput>
-  footerText?: InputMaybe<StringFilterInput>
-  imagePosition?: InputMaybe<StringFilterInput>
-  linkTitle?: InputMaybe<StringFilterInput>
-  not?: InputMaybe<ComponentBlocksSpaceInfoFiltersInput>
-  or?: InputMaybe<Array<InputMaybe<ComponentBlocksSpaceInfoFiltersInput>>>
-  smallGapCapacity?: InputMaybe<LongFilterInput>
-  spaceTitle?: InputMaybe<StringFilterInput>
-  subText?: InputMaybe<StringFilterInput>
-}
-
-export type ComponentBlocksSubpage = {
-  __typename?: 'ComponentBlocksSubpage'
-  id: Scalars['ID']['output']
-  link?: Maybe<Scalars['String']['output']>
-  title?: Maybe<Scalars['String']['output']>
 }
 
 export type ComponentBlocksTestimonialItem = {
@@ -890,88 +805,9 @@ export type ComponentMenuMenuSectionInput = {
   page?: InputMaybe<Scalars['ID']['input']>
 }
 
-export type ComponentOsItemsAdvancedAccordionDepartment = {
-  __typename?: 'ComponentOsItemsAdvancedAccordionDepartment'
-  id: Scalars['ID']['output']
-  items?: Maybe<Array<Maybe<ComponentOsItemsAdvancedAccordionSubItem>>>
-  title?: Maybe<Scalars['String']['output']>
-}
-
-export type ComponentOsItemsAdvancedAccordionDepartmentItemsArgs = {
-  filters?: InputMaybe<ComponentOsItemsAdvancedAccordionSubItemFiltersInput>
-  pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
-}
-
-export type ComponentOsItemsAdvancedAccordionDepartmentFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<ComponentOsItemsAdvancedAccordionDepartmentFiltersInput>>>
-  items?: InputMaybe<ComponentOsItemsAdvancedAccordionSubItemFiltersInput>
-  not?: InputMaybe<ComponentOsItemsAdvancedAccordionDepartmentFiltersInput>
-  or?: InputMaybe<Array<InputMaybe<ComponentOsItemsAdvancedAccordionDepartmentFiltersInput>>>
-  title?: InputMaybe<StringFilterInput>
-}
-
-export type ComponentOsItemsAdvancedAccordionItem = {
-  __typename?: 'ComponentOsItemsAdvancedAccordionItem'
-  departments?: Maybe<Array<Maybe<ComponentOsItemsAdvancedAccordionDepartment>>>
-  id: Scalars['ID']['output']
-  title?: Maybe<Scalars['String']['output']>
-}
-
-export type ComponentOsItemsAdvancedAccordionItemDepartmentsArgs = {
-  filters?: InputMaybe<ComponentOsItemsAdvancedAccordionDepartmentFiltersInput>
-  pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
-}
-
-export type ComponentOsItemsAdvancedAccordionItemFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<ComponentOsItemsAdvancedAccordionItemFiltersInput>>>
-  departments?: InputMaybe<ComponentOsItemsAdvancedAccordionDepartmentFiltersInput>
-  not?: InputMaybe<ComponentOsItemsAdvancedAccordionItemFiltersInput>
-  or?: InputMaybe<Array<InputMaybe<ComponentOsItemsAdvancedAccordionItemFiltersInput>>>
-  title?: InputMaybe<StringFilterInput>
-}
-
-export type ComponentOsItemsAdvancedAccordionSubItem = {
-  __typename?: 'ComponentOsItemsAdvancedAccordionSubItem'
-  id: Scalars['ID']['output']
-  isGroupTitle?: Maybe<Scalars['Boolean']['output']>
-  items?: Maybe<Array<Maybe<ComponentOsItemsAdvancedAccordionSubSubItem>>>
-  title?: Maybe<Scalars['String']['output']>
-}
-
-export type ComponentOsItemsAdvancedAccordionSubItemItemsArgs = {
-  filters?: InputMaybe<ComponentOsItemsAdvancedAccordionSubSubItemFiltersInput>
-  pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
-}
-
-export type ComponentOsItemsAdvancedAccordionSubItemFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<ComponentOsItemsAdvancedAccordionSubItemFiltersInput>>>
-  isGroupTitle?: InputMaybe<BooleanFilterInput>
-  items?: InputMaybe<ComponentOsItemsAdvancedAccordionSubSubItemFiltersInput>
-  not?: InputMaybe<ComponentOsItemsAdvancedAccordionSubItemFiltersInput>
-  or?: InputMaybe<Array<InputMaybe<ComponentOsItemsAdvancedAccordionSubItemFiltersInput>>>
-  title?: InputMaybe<StringFilterInput>
-}
-
-export type ComponentOsItemsAdvancedAccordionSubSubItem = {
-  __typename?: 'ComponentOsItemsAdvancedAccordionSubSubItem'
-  id: Scalars['ID']['output']
-  title?: Maybe<Scalars['String']['output']>
-}
-
-export type ComponentOsItemsAdvancedAccordionSubSubItemFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<ComponentOsItemsAdvancedAccordionSubSubItemFiltersInput>>>
-  not?: InputMaybe<ComponentOsItemsAdvancedAccordionSubSubItemFiltersInput>
-  or?: InputMaybe<Array<InputMaybe<ComponentOsItemsAdvancedAccordionSubSubItemFiltersInput>>>
-  title?: InputMaybe<StringFilterInput>
-}
-
 export type ComponentSectionsAccordion = {
   __typename?: 'ComponentSectionsAccordion'
   flatText?: Maybe<Array<Maybe<ComponentAccordionItemsFlatText>>>
-  hasBackground?: Maybe<Scalars['Boolean']['output']>
   id: Scalars['ID']['output']
   institutions?: Maybe<Array<Maybe<ComponentAccordionItemsInstitution>>>
   institutionsNarrow?: Maybe<Array<Maybe<ComponentAccordionItemsInstitutionNarrow>>>
@@ -1017,20 +853,6 @@ export type ComponentSectionsBlogPostsByCategory = {
   title?: Maybe<Scalars['String']['output']>
 }
 
-export type ComponentSectionsBlogPostsByTags = {
-  __typename?: 'ComponentSectionsBlogPostsByTags'
-  id: Scalars['ID']['output']
-  tags?: Maybe<TagRelationResponseCollection>
-  text?: Maybe<Scalars['String']['output']>
-  title?: Maybe<Scalars['String']['output']>
-}
-
-export type ComponentSectionsBlogPostsByTagsTagsArgs = {
-  filters?: InputMaybe<TagFiltersInput>
-  pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
-}
-
 export type ComponentSectionsBlogPostsList = {
   __typename?: 'ComponentSectionsBlogPostsList'
   id: Scalars['ID']['output']
@@ -1051,7 +873,6 @@ export type ComponentSectionsColumnedText = {
   __typename?: 'ComponentSectionsColumnedText'
   content?: Maybe<Scalars['String']['output']>
   contentAlignment?: Maybe<Enum_Componentsectionscolumnedtext_Contentalignment>
-  hasBackground?: Maybe<Scalars['Boolean']['output']>
   id: Scalars['ID']['output']
 }
 
@@ -1109,7 +930,6 @@ export type ComponentSectionsContactsSectionWebContactsArgs = {
 
 export type ComponentSectionsDivider = {
   __typename?: 'ComponentSectionsDivider'
-  hasBackground?: Maybe<Scalars['Boolean']['output']>
   id: Scalars['ID']['output']
   style?: Maybe<Enum_Componentsectionsdivider_Style>
 }
@@ -1144,14 +964,6 @@ export type ComponentSectionsFaqsFaqsArgs = {
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
 }
 
-export type ComponentSectionsFeaturedBlogPosts = {
-  __typename?: 'ComponentSectionsFeaturedBlogPosts'
-  first_blog?: Maybe<BlogPostEntityResponse>
-  id: Scalars['ID']['output']
-  second_blog?: Maybe<BlogPostEntityResponse>
-  third_blog?: Maybe<BlogPostEntityResponse>
-}
-
 export type ComponentSectionsFileList = {
   __typename?: 'ComponentSectionsFileList'
   fileList?: Maybe<Array<Maybe<ComponentBlocksFile>>>
@@ -1168,18 +980,10 @@ export type ComponentSectionsFileListFileListArgs = {
 
 export type ComponentSectionsGallery = {
   __typename?: 'ComponentSectionsGallery'
-  galleryItems?: Maybe<Array<Maybe<ComponentBlocksGalleryItem>>>
   id: Scalars['ID']['output']
   medias: UploadFileRelationResponseCollection
-  subtitle?: Maybe<Scalars['String']['output']>
   text?: Maybe<Scalars['String']['output']>
   title?: Maybe<Scalars['String']['output']>
-}
-
-export type ComponentSectionsGalleryGalleryItemsArgs = {
-  filters?: InputMaybe<ComponentBlocksGalleryItemFiltersInput>
-  pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
 }
 
 export type ComponentSectionsGalleryMediasArgs = {
@@ -1262,7 +1066,6 @@ export type ComponentSectionsHomepageTabsInput = {
 
 export type ComponentSectionsIconTitleDesc = {
   __typename?: 'ComponentSectionsIconTitleDesc'
-  hasBackground?: Maybe<Scalars['Boolean']['output']>
   id: Scalars['ID']['output']
   list?: Maybe<Array<Maybe<ComponentBlocksIconWithTitleAndDescription>>>
   title?: Maybe<Scalars['String']['output']>
@@ -1310,7 +1113,6 @@ export type ComponentSectionsInbaReleases = {
 
 export type ComponentSectionsLinks = {
   __typename?: 'ComponentSectionsLinks'
-  hasBackground?: Maybe<Scalars['Boolean']['output']>
   id: Scalars['ID']['output']
   pageLinks?: Maybe<Array<Maybe<ComponentBlocksPageLink>>>
   title?: Maybe<Scalars['String']['output']>
@@ -1326,7 +1128,6 @@ export type ComponentSectionsNarrowText = {
   __typename?: 'ComponentSectionsNarrowText'
   align?: Maybe<Enum_Componentsectionsnarrowtext_Align>
   content?: Maybe<Scalars['String']['output']>
-  hasBackground?: Maybe<Scalars['Boolean']['output']>
   id: Scalars['ID']['output']
   width?: Maybe<Enum_Componentsectionsnarrowtext_Width>
 }
@@ -1335,7 +1136,6 @@ export type ComponentSectionsNumericalList = {
   __typename?: 'ComponentSectionsNumericalList'
   buttonLink?: Maybe<Scalars['String']['output']>
   buttonText?: Maybe<Scalars['String']['output']>
-  hasBackground?: Maybe<Scalars['Boolean']['output']>
   id: Scalars['ID']['output']
   items?: Maybe<Array<Maybe<ComponentBlocksNumericalListItem>>>
   title?: Maybe<Scalars['String']['output']>
@@ -1356,14 +1156,7 @@ export type ComponentSectionsOfficialBoard = {
 export type ComponentSectionsOrganizationalStructure = {
   __typename?: 'ComponentSectionsOrganizationalStructure'
   id: Scalars['ID']['output']
-  items?: Maybe<Array<Maybe<ComponentOsItemsAdvancedAccordionItem>>>
   title?: Maybe<Scalars['String']['output']>
-}
-
-export type ComponentSectionsOrganizationalStructureItemsArgs = {
-  filters?: InputMaybe<ComponentOsItemsAdvancedAccordionItemFiltersInput>
-  pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
 }
 
 export type ComponentSectionsProsAndConsSection = {
@@ -1396,22 +1189,8 @@ export type ComponentSectionsRegulationsList = {
   title?: Maybe<Scalars['String']['output']>
 }
 
-export type ComponentSectionsSpace = {
-  __typename?: 'ComponentSectionsSpace'
-  id: Scalars['ID']['output']
-  sectionTitle?: Maybe<Scalars['String']['output']>
-  spaceInfo?: Maybe<Array<Maybe<ComponentBlocksSpaceInfo>>>
-}
-
-export type ComponentSectionsSpaceSpaceInfoArgs = {
-  filters?: InputMaybe<ComponentBlocksSpaceInfoFiltersInput>
-  pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
-}
-
 export type ComponentSectionsSubpageList = {
   __typename?: 'ComponentSectionsSubpageList'
-  hasBackground?: Maybe<Scalars['Boolean']['output']>
   id: Scalars['ID']['output']
   subpageList?: Maybe<Array<Maybe<ComponentBlocksPageLink>>>
 }
@@ -1440,10 +1219,8 @@ export type ComponentSectionsTestimonialsTestimonialsArgs = {
 export type ComponentSectionsTextWithImage = {
   __typename?: 'ComponentSectionsTextWithImage'
   content?: Maybe<Scalars['String']['output']>
-  hasBackground?: Maybe<Scalars['Boolean']['output']>
   id: Scalars['ID']['output']
   imagePosition?: Maybe<Enum_Componentsectionstextwithimage_Imageposition>
-  imageShadow?: Maybe<Scalars['Boolean']['output']>
   imageSrc?: Maybe<UploadFileEntityResponse>
 }
 
@@ -1589,11 +1366,6 @@ export enum Enum_Componentaccordionitemsflattext_Width {
   Full = 'full',
   Narrow = 'narrow',
   Wide = 'wide',
-}
-
-export enum Enum_Componentblocksspaceinfo_Imageposition {
-  Left = 'left',
-  Right = 'right',
 }
 
 export enum Enum_Componentblockstopservicesitem_Icon {
@@ -1763,44 +1535,6 @@ export enum Enum_Pagecategory_Icon {
   SocialnaPomoc_04 = 'socialna_pomoc_04',
   Vzdelavanie_05 = 'vzdelavanie_05',
   ZpVystavba_03 = 'zp_vystavba_03',
-}
-
-export enum Enum_Pagesubcategory_Icon {
-  Aktivity_04 = 'aktivity_04',
-  Byvanie_04 = 'byvanie_04',
-  Covid_06 = 'covid_06',
-  Cyklo_02 = 'cyklo_02',
-  Dane_01 = 'dane_01',
-  Dedicstvo_06 = 'dedicstvo_06',
-  DetiAMladez_05 = 'deti_a_mladez_05',
-  Doprava_02 = 'doprava_02',
-  Dotacie_05 = 'dotacie_05',
-  Kalendar_06 = 'kalendar_06',
-  Komunity_06 = 'komunity_06',
-  Koncepcia_06 = 'koncepcia_06',
-  Mapy_02 = 'mapy_02',
-  Mhd_02 = 'mhd_02',
-  Ocenovanie_05 = 'ocenovanie_05',
-  Organizacie_06 = 'organizacie_06',
-  Parkovanie_02 = 'parkovanie_02',
-  Partnerstva_01 = 'partnerstva_01',
-  Pomoc_04 = 'pomoc_04',
-  Projekty_01 = 'projekty_01',
-  RozvojMesta_03 = 'rozvoj_mesta_03',
-  Skolstvo_05 = 'skolstvo_05',
-  Sluzby_04 = 'sluzby_04',
-  Sluzby_06 = 'sluzby_06',
-  Sport_05 = 'sport_05',
-  SpravaAUdrzba_02 = 'sprava_a_udrzba_02',
-  SpravaMesta_01 = 'sprava_mesta_01',
-  TransparentneMesto_01 = 'transparentne_mesto_01',
-  UzemnyPlan_03 = 'uzemny_plan_03',
-  VerejneOsvetlenie_03 = 'verejne_osvetlenie_03',
-  VystavbaANehnutelnosti_03 = 'vystavba_a_nehnutelnosti_03',
-  Zariadenia_04 = 'zariadenia_04',
-  ZdielanaMobilita_02 = 'zdielana_mobilita_02',
-  Zelen_03 = 'zelen_03',
-  ZivotneProstredie_03 = 'zivotne_prostredie_03',
 }
 
 export enum Enum_Page_Pagecolor {
@@ -2105,13 +1839,10 @@ export type GenericMorph =
   | ComponentBlocksComparisonCard
   | ComponentBlocksComparisonItem
   | ComponentBlocksContactCard
-  | ComponentBlocksDocListExtensions
   | ComponentBlocksFile
   | ComponentBlocksFileItem
   | ComponentBlocksFooterColumn
   | ComponentBlocksFooterContactItem
-  | ComponentBlocksFooterSection
-  | ComponentBlocksGalleryItem
   | ComponentBlocksHomepageBookmark
   | ComponentBlocksHomepageHighlightsItem
   | ComponentBlocksIconWithTitleAndDescription
@@ -2119,8 +1850,6 @@ export type GenericMorph =
   | ComponentBlocksNumericalListItem
   | ComponentBlocksPageLink
   | ComponentBlocksProsAndConsCard
-  | ComponentBlocksSpaceInfo
-  | ComponentBlocksSubpage
   | ComponentBlocksTestimonialItem
   | ComponentBlocksTimelineItem
   | ComponentBlocksTopServicesItem
@@ -2130,14 +1859,9 @@ export type GenericMorph =
   | ComponentMenuMenuItem
   | ComponentMenuMenuLink
   | ComponentMenuMenuSection
-  | ComponentOsItemsAdvancedAccordionDepartment
-  | ComponentOsItemsAdvancedAccordionItem
-  | ComponentOsItemsAdvancedAccordionSubItem
-  | ComponentOsItemsAdvancedAccordionSubSubItem
   | ComponentSectionsAccordion
   | ComponentSectionsBanner
   | ComponentSectionsBlogPostsByCategory
-  | ComponentSectionsBlogPostsByTags
   | ComponentSectionsBlogPostsList
   | ComponentSectionsCalculator
   | ComponentSectionsColumnedText
@@ -2146,7 +1870,6 @@ export type GenericMorph =
   | ComponentSectionsDivider
   | ComponentSectionsFaqCategories
   | ComponentSectionsFaqs
-  | ComponentSectionsFeaturedBlogPosts
   | ComponentSectionsFileList
   | ComponentSectionsGallery
   | ComponentSectionsHomepageEvents
@@ -2165,7 +1888,6 @@ export type GenericMorph =
   | ComponentSectionsProsAndConsSection
   | ComponentSectionsRegulations
   | ComponentSectionsRegulationsList
-  | ComponentSectionsSpace
   | ComponentSectionsSubpageList
   | ComponentSectionsTestimonials
   | ComponentSectionsTextWithImage
@@ -2186,7 +1908,6 @@ export type GenericMorph =
   | Menu
   | Page
   | PageCategory
-  | PageSubcategory
   | Regulation
   | Tag
   | TaxAdministratorsList
@@ -2588,31 +2309,6 @@ export type JsonFilterInput = {
   startsWith?: InputMaybe<Scalars['JSON']['input']>
 }
 
-export type LongFilterInput = {
-  and?: InputMaybe<Array<InputMaybe<Scalars['Long']['input']>>>
-  between?: InputMaybe<Array<InputMaybe<Scalars['Long']['input']>>>
-  contains?: InputMaybe<Scalars['Long']['input']>
-  containsi?: InputMaybe<Scalars['Long']['input']>
-  endsWith?: InputMaybe<Scalars['Long']['input']>
-  eq?: InputMaybe<Scalars['Long']['input']>
-  eqi?: InputMaybe<Scalars['Long']['input']>
-  gt?: InputMaybe<Scalars['Long']['input']>
-  gte?: InputMaybe<Scalars['Long']['input']>
-  in?: InputMaybe<Array<InputMaybe<Scalars['Long']['input']>>>
-  lt?: InputMaybe<Scalars['Long']['input']>
-  lte?: InputMaybe<Scalars['Long']['input']>
-  ne?: InputMaybe<Scalars['Long']['input']>
-  nei?: InputMaybe<Scalars['Long']['input']>
-  not?: InputMaybe<LongFilterInput>
-  notContains?: InputMaybe<Scalars['Long']['input']>
-  notContainsi?: InputMaybe<Scalars['Long']['input']>
-  notIn?: InputMaybe<Array<InputMaybe<Scalars['Long']['input']>>>
-  notNull?: InputMaybe<Scalars['Boolean']['input']>
-  null?: InputMaybe<Scalars['Boolean']['input']>
-  or?: InputMaybe<Array<InputMaybe<Scalars['Long']['input']>>>
-  startsWith?: InputMaybe<Scalars['Long']['input']>
-}
-
 export type Menu = {
   __typename?: 'Menu'
   createdAt?: Maybe<Scalars['DateTime']['output']>
@@ -2672,8 +2368,6 @@ export type Mutation = {
   createPageCategory?: Maybe<PageCategoryEntityResponse>
   createPageCategoryLocalization?: Maybe<PageCategoryEntityResponse>
   createPageLocalization?: Maybe<PageEntityResponse>
-  createPageSubcategory?: Maybe<PageSubcategoryEntityResponse>
-  createPageSubcategoryLocalization?: Maybe<PageSubcategoryEntityResponse>
   createRegulation?: Maybe<RegulationEntityResponse>
   createTag?: Maybe<TagEntityResponse>
   createTagLocalization?: Maybe<TagEntityResponse>
@@ -2696,7 +2390,6 @@ export type Mutation = {
   deleteMenu?: Maybe<MenuEntityResponse>
   deletePage?: Maybe<PageEntityResponse>
   deletePageCategory?: Maybe<PageCategoryEntityResponse>
-  deletePageSubcategory?: Maybe<PageSubcategoryEntityResponse>
   deleteRegulation?: Maybe<RegulationEntityResponse>
   deleteTag?: Maybe<TagEntityResponse>
   deleteTaxAdministratorsList?: Maybe<TaxAdministratorsListEntityResponse>
@@ -2731,7 +2424,6 @@ export type Mutation = {
   updateMenu?: Maybe<MenuEntityResponse>
   updatePage?: Maybe<PageEntityResponse>
   updatePageCategory?: Maybe<PageCategoryEntityResponse>
-  updatePageSubcategory?: Maybe<PageSubcategoryEntityResponse>
   updateRegulation?: Maybe<RegulationEntityResponse>
   updateTag?: Maybe<TagEntityResponse>
   updateTaxAdministratorsList?: Maybe<TaxAdministratorsListEntityResponse>
@@ -2861,17 +2553,6 @@ export type MutationCreatePageLocalizationArgs = {
   locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
 }
 
-export type MutationCreatePageSubcategoryArgs = {
-  data: PageSubcategoryInput
-  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
-}
-
-export type MutationCreatePageSubcategoryLocalizationArgs = {
-  data?: InputMaybe<PageSubcategoryInput>
-  id?: InputMaybe<Scalars['ID']['input']>
-  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
-}
-
 export type MutationCreateRegulationArgs = {
   data: RegulationInput
 }
@@ -2958,11 +2639,6 @@ export type MutationDeletePageArgs = {
 }
 
 export type MutationDeletePageCategoryArgs = {
-  id: Scalars['ID']['input']
-  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
-}
-
-export type MutationDeletePageSubcategoryArgs = {
   id: Scalars['ID']['input']
   locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
 }
@@ -3102,12 +2778,6 @@ export type MutationUpdatePageCategoryArgs = {
   locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
 }
 
-export type MutationUpdatePageSubcategoryArgs = {
-  data: PageSubcategoryInput
-  id: Scalars['ID']['input']
-  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
-}
-
 export type MutationUpdateRegulationArgs = {
   data: RegulationInput
   id: Scalars['ID']['input']
@@ -3210,7 +2880,6 @@ export type PageCategory = {
   pages?: Maybe<PageRelationResponseCollection>
   publishedAt?: Maybe<Scalars['DateTime']['output']>
   shortTitle?: Maybe<Scalars['String']['output']>
-  subcategories?: Maybe<PageSubcategoryRelationResponseCollection>
   title?: Maybe<Scalars['String']['output']>
   updatedAt?: Maybe<Scalars['DateTime']['output']>
 }
@@ -3224,13 +2893,6 @@ export type PageCategoryLocalizationsArgs = {
 
 export type PageCategoryPagesArgs = {
   filters?: InputMaybe<PageFiltersInput>
-  pagination?: InputMaybe<PaginationArg>
-  publicationState?: InputMaybe<PublicationState>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
-}
-
-export type PageCategorySubcategoriesArgs = {
-  filters?: InputMaybe<PageSubcategoryFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   publicationState?: InputMaybe<PublicationState>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
@@ -3266,7 +2928,6 @@ export type PageCategoryFiltersInput = {
   pages?: InputMaybe<PageFiltersInput>
   publishedAt?: InputMaybe<DateTimeFilterInput>
   shortTitle?: InputMaybe<StringFilterInput>
-  subcategories?: InputMaybe<PageSubcategoryFiltersInput>
   title?: InputMaybe<StringFilterInput>
   updatedAt?: InputMaybe<DateTimeFilterInput>
 }
@@ -3277,7 +2938,6 @@ export type PageCategoryInput = {
   pages?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
   publishedAt?: InputMaybe<Scalars['DateTime']['input']>
   shortTitle?: InputMaybe<Scalars['String']['input']>
-  subcategories?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
   title?: InputMaybe<Scalars['String']['input']>
 }
 
@@ -3355,7 +3015,6 @@ export type PageSectionsDynamicZone =
   | ComponentSectionsAccordion
   | ComponentSectionsBanner
   | ComponentSectionsBlogPostsByCategory
-  | ComponentSectionsBlogPostsByTags
   | ComponentSectionsBlogPostsList
   | ComponentSectionsCalculator
   | ComponentSectionsColumnedText
@@ -3364,7 +3023,6 @@ export type PageSectionsDynamicZone =
   | ComponentSectionsDivider
   | ComponentSectionsFaqCategories
   | ComponentSectionsFaqs
-  | ComponentSectionsFeaturedBlogPosts
   | ComponentSectionsFileList
   | ComponentSectionsGallery
   | ComponentSectionsIconTitleDesc
@@ -3379,85 +3037,12 @@ export type PageSectionsDynamicZone =
   | ComponentSectionsProsAndConsSection
   | ComponentSectionsRegulations
   | ComponentSectionsRegulationsList
-  | ComponentSectionsSpace
   | ComponentSectionsTestimonials
   | ComponentSectionsTextWithImage
   | ComponentSectionsTimeline
   | ComponentSectionsVideos
   | ComponentSectionsWaves
   | Error
-
-export type PageSubcategory = {
-  __typename?: 'PageSubcategory'
-  createdAt?: Maybe<Scalars['DateTime']['output']>
-  icon?: Maybe<Enum_Pagesubcategory_Icon>
-  locale?: Maybe<Scalars['String']['output']>
-  localizations?: Maybe<PageSubcategoryRelationResponseCollection>
-  moreLink?: Maybe<ComponentBlocksPageLink>
-  pages?: Maybe<Array<Maybe<ComponentBlocksPageLink>>>
-  publishedAt?: Maybe<Scalars['DateTime']['output']>
-  title?: Maybe<Scalars['String']['output']>
-  updatedAt?: Maybe<Scalars['DateTime']['output']>
-}
-
-export type PageSubcategoryLocalizationsArgs = {
-  filters?: InputMaybe<PageSubcategoryFiltersInput>
-  pagination?: InputMaybe<PaginationArg>
-  publicationState?: InputMaybe<PublicationState>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
-}
-
-export type PageSubcategoryPagesArgs = {
-  filters?: InputMaybe<ComponentBlocksPageLinkFiltersInput>
-  pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
-}
-
-export type PageSubcategoryEntity = {
-  __typename?: 'PageSubcategoryEntity'
-  attributes?: Maybe<PageSubcategory>
-  id?: Maybe<Scalars['ID']['output']>
-}
-
-export type PageSubcategoryEntityResponse = {
-  __typename?: 'PageSubcategoryEntityResponse'
-  data?: Maybe<PageSubcategoryEntity>
-}
-
-export type PageSubcategoryEntityResponseCollection = {
-  __typename?: 'PageSubcategoryEntityResponseCollection'
-  data: Array<PageSubcategoryEntity>
-  meta: ResponseCollectionMeta
-}
-
-export type PageSubcategoryFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<PageSubcategoryFiltersInput>>>
-  createdAt?: InputMaybe<DateTimeFilterInput>
-  icon?: InputMaybe<StringFilterInput>
-  id?: InputMaybe<IdFilterInput>
-  locale?: InputMaybe<StringFilterInput>
-  localizations?: InputMaybe<PageSubcategoryFiltersInput>
-  moreLink?: InputMaybe<ComponentBlocksPageLinkFiltersInput>
-  not?: InputMaybe<PageSubcategoryFiltersInput>
-  or?: InputMaybe<Array<InputMaybe<PageSubcategoryFiltersInput>>>
-  pages?: InputMaybe<ComponentBlocksPageLinkFiltersInput>
-  publishedAt?: InputMaybe<DateTimeFilterInput>
-  title?: InputMaybe<StringFilterInput>
-  updatedAt?: InputMaybe<DateTimeFilterInput>
-}
-
-export type PageSubcategoryInput = {
-  icon?: InputMaybe<Enum_Pagesubcategory_Icon>
-  moreLink?: InputMaybe<ComponentBlocksPageLinkInput>
-  pages?: InputMaybe<Array<InputMaybe<ComponentBlocksPageLinkInput>>>
-  publishedAt?: InputMaybe<Scalars['DateTime']['input']>
-  title?: InputMaybe<Scalars['String']['input']>
-}
-
-export type PageSubcategoryRelationResponseCollection = {
-  __typename?: 'PageSubcategoryRelationResponseCollection'
-  data: Array<PageSubcategoryEntity>
-}
 
 export type Pagination = {
   __typename?: 'Pagination'
@@ -3504,8 +3089,6 @@ export type Query = {
   page?: Maybe<PageEntityResponse>
   pageCategories?: Maybe<PageCategoryEntityResponseCollection>
   pageCategory?: Maybe<PageCategoryEntityResponse>
-  pageSubcategories?: Maybe<PageSubcategoryEntityResponseCollection>
-  pageSubcategory?: Maybe<PageSubcategoryEntityResponse>
   pages?: Maybe<PageEntityResponseCollection>
   regulation?: Maybe<RegulationEntityResponse>
   regulations?: Maybe<RegulationEntityResponseCollection>
@@ -3643,19 +3226,6 @@ export type QueryPageCategoriesArgs = {
 }
 
 export type QueryPageCategoryArgs = {
-  id?: InputMaybe<Scalars['ID']['input']>
-  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
-}
-
-export type QueryPageSubcategoriesArgs = {
-  filters?: InputMaybe<PageSubcategoryFiltersInput>
-  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
-  pagination?: InputMaybe<PaginationArg>
-  publicationState?: InputMaybe<PublicationState>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
-}
-
-export type QueryPageSubcategoryArgs = {
   id?: InputMaybe<Scalars['ID']['input']>
   locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
 }
@@ -4395,13 +3965,11 @@ export type BlogPostBySlugQuery = {
         sections?: Array<
           | {
               __typename: 'ComponentSectionsColumnedText'
-              hasBackground?: boolean | null
               content?: string | null
               contentAlignment?: Enum_Componentsectionscolumnedtext_Contentalignment | null
             }
           | {
               __typename: 'ComponentSectionsDivider'
-              hasBackground?: boolean | null
               style?: Enum_Componentsectionsdivider_Style | null
             }
           | {
@@ -4433,7 +4001,6 @@ export type BlogPostBySlugQuery = {
               __typename: 'ComponentSectionsGallery'
               title?: string | null
               text?: string | null
-              subtitle?: string | null
               medias: {
                 __typename?: 'UploadFileRelationResponseCollection'
                 data: Array<{
@@ -4450,30 +4017,9 @@ export type BlogPostBySlugQuery = {
                   } | null
                 }>
               }
-              galleryItems?: Array<{
-                __typename?: 'ComponentBlocksGalleryItem'
-                imgTitle?: string | null
-                imgSubtitle?: string | null
-                imgSubtext?: string | null
-                media?: {
-                  __typename?: 'UploadFileEntityResponse'
-                  data?: {
-                    __typename?: 'UploadFileEntity'
-                    attributes?: {
-                      __typename?: 'UploadFile'
-                      url: string
-                      width?: number | null
-                      height?: number | null
-                      caption?: string | null
-                      alternativeText?: string | null
-                    } | null
-                  } | null
-                } | null
-              } | null> | null
             }
           | {
               __typename: 'ComponentSectionsNarrowText'
-              hasBackground?: boolean | null
               content?: string | null
               width?: Enum_Componentsectionsnarrowtext_Width | null
               align?: Enum_Componentsectionsnarrowtext_Align | null
@@ -4485,7 +4031,6 @@ export type BlogPostBySlugQuery = {
               variant?: Enum_Componentsectionsnumericallist_Variant | null
               buttonText?: string | null
               buttonLink?: string | null
-              hasBackground?: boolean | null
               items?: Array<{
                 __typename?: 'ComponentBlocksNumericalListItem'
                 text?: string | null
@@ -4652,10 +4197,8 @@ export type BlogPostBySlugQuery = {
             }
           | {
               __typename: 'ComponentSectionsTextWithImage'
-              hasBackground?: boolean | null
               content?: string | null
               imagePosition?: Enum_Componentsectionstextwithimage_Imageposition | null
-              imageShadow?: boolean | null
               imageSrc?: {
                 __typename?: 'UploadFileEntityResponse'
                 data?: {
@@ -4764,13 +4307,11 @@ export type LatestPostsByTagsQuery = {
         sections?: Array<
           | {
               __typename: 'ComponentSectionsColumnedText'
-              hasBackground?: boolean | null
               content?: string | null
               contentAlignment?: Enum_Componentsectionscolumnedtext_Contentalignment | null
             }
           | {
               __typename: 'ComponentSectionsDivider'
-              hasBackground?: boolean | null
               style?: Enum_Componentsectionsdivider_Style | null
             }
           | {
@@ -4802,7 +4343,6 @@ export type LatestPostsByTagsQuery = {
               __typename: 'ComponentSectionsGallery'
               title?: string | null
               text?: string | null
-              subtitle?: string | null
               medias: {
                 __typename?: 'UploadFileRelationResponseCollection'
                 data: Array<{
@@ -4819,30 +4359,9 @@ export type LatestPostsByTagsQuery = {
                   } | null
                 }>
               }
-              galleryItems?: Array<{
-                __typename?: 'ComponentBlocksGalleryItem'
-                imgTitle?: string | null
-                imgSubtitle?: string | null
-                imgSubtext?: string | null
-                media?: {
-                  __typename?: 'UploadFileEntityResponse'
-                  data?: {
-                    __typename?: 'UploadFileEntity'
-                    attributes?: {
-                      __typename?: 'UploadFile'
-                      url: string
-                      width?: number | null
-                      height?: number | null
-                      caption?: string | null
-                      alternativeText?: string | null
-                    } | null
-                  } | null
-                } | null
-              } | null> | null
             }
           | {
               __typename: 'ComponentSectionsNarrowText'
-              hasBackground?: boolean | null
               content?: string | null
               width?: Enum_Componentsectionsnarrowtext_Width | null
               align?: Enum_Componentsectionsnarrowtext_Align | null
@@ -4854,7 +4373,6 @@ export type LatestPostsByTagsQuery = {
               variant?: Enum_Componentsectionsnumericallist_Variant | null
               buttonText?: string | null
               buttonLink?: string | null
-              hasBackground?: boolean | null
               items?: Array<{
                 __typename?: 'ComponentBlocksNumericalListItem'
                 text?: string | null
@@ -5021,10 +4539,8 @@ export type LatestPostsByTagsQuery = {
             }
           | {
               __typename: 'ComponentSectionsTextWithImage'
-              hasBackground?: boolean | null
               content?: string | null
               imagePosition?: Enum_Componentsectionstextwithimage_Imageposition | null
-              imageShadow?: boolean | null
               imageSrc?: {
                 __typename?: 'UploadFileEntityResponse'
                 data?: {
@@ -5334,13 +4850,11 @@ export type BlogPostEntityFragment = {
     sections?: Array<
       | {
           __typename: 'ComponentSectionsColumnedText'
-          hasBackground?: boolean | null
           content?: string | null
           contentAlignment?: Enum_Componentsectionscolumnedtext_Contentalignment | null
         }
       | {
           __typename: 'ComponentSectionsDivider'
-          hasBackground?: boolean | null
           style?: Enum_Componentsectionsdivider_Style | null
         }
       | {
@@ -5372,7 +4886,6 @@ export type BlogPostEntityFragment = {
           __typename: 'ComponentSectionsGallery'
           title?: string | null
           text?: string | null
-          subtitle?: string | null
           medias: {
             __typename?: 'UploadFileRelationResponseCollection'
             data: Array<{
@@ -5389,30 +4902,9 @@ export type BlogPostEntityFragment = {
               } | null
             }>
           }
-          galleryItems?: Array<{
-            __typename?: 'ComponentBlocksGalleryItem'
-            imgTitle?: string | null
-            imgSubtitle?: string | null
-            imgSubtext?: string | null
-            media?: {
-              __typename?: 'UploadFileEntityResponse'
-              data?: {
-                __typename?: 'UploadFileEntity'
-                attributes?: {
-                  __typename?: 'UploadFile'
-                  url: string
-                  width?: number | null
-                  height?: number | null
-                  caption?: string | null
-                  alternativeText?: string | null
-                } | null
-              } | null
-            } | null
-          } | null> | null
         }
       | {
           __typename: 'ComponentSectionsNarrowText'
-          hasBackground?: boolean | null
           content?: string | null
           width?: Enum_Componentsectionsnarrowtext_Width | null
           align?: Enum_Componentsectionsnarrowtext_Align | null
@@ -5424,7 +4916,6 @@ export type BlogPostEntityFragment = {
           variant?: Enum_Componentsectionsnumericallist_Variant | null
           buttonText?: string | null
           buttonLink?: string | null
-          hasBackground?: boolean | null
           items?: Array<{
             __typename?: 'ComponentBlocksNumericalListItem'
             text?: string | null
@@ -5591,10 +5082,8 @@ export type BlogPostEntityFragment = {
         }
       | {
           __typename: 'ComponentSectionsTextWithImage'
-          hasBackground?: boolean | null
           content?: string | null
           imagePosition?: Enum_Componentsectionstextwithimage_Imageposition | null
-          imageShadow?: boolean | null
           imageSrc?: {
             __typename?: 'UploadFileEntityResponse'
             data?: {
@@ -8272,7 +7761,6 @@ export type PageBySlugQuery = {
           | {
               __typename: 'ComponentSectionsAccordion'
               title?: string | null
-              hasBackground?: boolean | null
               institutions?: Array<{
                 __typename?: 'ComponentAccordionItemsInstitution'
                 title?: string | null
@@ -8452,15 +7940,6 @@ export type PageBySlugQuery = {
               } | null
             }
           | {
-              __typename: 'ComponentSectionsBlogPostsByTags'
-              title?: string | null
-              text?: string | null
-              tags?: {
-                __typename?: 'TagRelationResponseCollection'
-                data: Array<{ __typename?: 'TagEntity'; id?: string | null }>
-              } | null
-            }
-          | {
               __typename: 'ComponentSectionsBlogPostsList'
               title?: string | null
               text?: string | null
@@ -8474,7 +7953,6 @@ export type PageBySlugQuery = {
             }
           | {
               __typename: 'ComponentSectionsColumnedText'
-              hasBackground?: boolean | null
               content?: string | null
               contentAlignment?: Enum_Componentsectionscolumnedtext_Contentalignment | null
             }
@@ -8526,7 +8004,6 @@ export type PageBySlugQuery = {
             }
           | {
               __typename: 'ComponentSectionsDivider'
-              hasBackground?: boolean | null
               style?: Enum_Componentsectionsdivider_Style | null
             }
           | {
@@ -8572,142 +8049,6 @@ export type PageBySlugQuery = {
               } | null
             }
           | {
-              __typename: 'ComponentSectionsFeaturedBlogPosts'
-              id: string
-              first_blog?: {
-                __typename?: 'BlogPostEntityResponse'
-                data?: {
-                  __typename?: 'BlogPostEntity'
-                  id?: string | null
-                  attributes?: {
-                    __typename?: 'BlogPost'
-                    slug?: string | null
-                    title?: string | null
-                    excerpt?: string | null
-                    date_added?: any | null
-                    publishedAt?: any | null
-                    updatedAt?: any | null
-                    coverImage?: {
-                      __typename?: 'UploadFileEntityResponse'
-                      data?: {
-                        __typename?: 'UploadFileEntity'
-                        attributes?: { __typename?: 'UploadFile'; url: string } | null
-                      } | null
-                    } | null
-                    tag?: {
-                      __typename?: 'TagEntityResponse'
-                      data?: {
-                        __typename?: 'TagEntity'
-                        attributes?: {
-                          __typename?: 'Tag'
-                          title?: string | null
-                          pageCategory?: {
-                            __typename?: 'PageCategoryEntityResponse'
-                            data?: {
-                              __typename?: 'PageCategoryEntity'
-                              attributes?: {
-                                __typename?: 'PageCategory'
-                                title?: string | null
-                                color?: Enum_Pagecategory_Color | null
-                              } | null
-                            } | null
-                          } | null
-                        } | null
-                      } | null
-                    } | null
-                  } | null
-                } | null
-              } | null
-              second_blog?: {
-                __typename?: 'BlogPostEntityResponse'
-                data?: {
-                  __typename?: 'BlogPostEntity'
-                  id?: string | null
-                  attributes?: {
-                    __typename?: 'BlogPost'
-                    slug?: string | null
-                    title?: string | null
-                    excerpt?: string | null
-                    date_added?: any | null
-                    publishedAt?: any | null
-                    updatedAt?: any | null
-                    coverImage?: {
-                      __typename?: 'UploadFileEntityResponse'
-                      data?: {
-                        __typename?: 'UploadFileEntity'
-                        attributes?: { __typename?: 'UploadFile'; url: string } | null
-                      } | null
-                    } | null
-                    tag?: {
-                      __typename?: 'TagEntityResponse'
-                      data?: {
-                        __typename?: 'TagEntity'
-                        attributes?: {
-                          __typename?: 'Tag'
-                          title?: string | null
-                          pageCategory?: {
-                            __typename?: 'PageCategoryEntityResponse'
-                            data?: {
-                              __typename?: 'PageCategoryEntity'
-                              attributes?: {
-                                __typename?: 'PageCategory'
-                                title?: string | null
-                                color?: Enum_Pagecategory_Color | null
-                              } | null
-                            } | null
-                          } | null
-                        } | null
-                      } | null
-                    } | null
-                  } | null
-                } | null
-              } | null
-              third_blog?: {
-                __typename?: 'BlogPostEntityResponse'
-                data?: {
-                  __typename?: 'BlogPostEntity'
-                  id?: string | null
-                  attributes?: {
-                    __typename?: 'BlogPost'
-                    slug?: string | null
-                    title?: string | null
-                    excerpt?: string | null
-                    date_added?: any | null
-                    publishedAt?: any | null
-                    updatedAt?: any | null
-                    coverImage?: {
-                      __typename?: 'UploadFileEntityResponse'
-                      data?: {
-                        __typename?: 'UploadFileEntity'
-                        attributes?: { __typename?: 'UploadFile'; url: string } | null
-                      } | null
-                    } | null
-                    tag?: {
-                      __typename?: 'TagEntityResponse'
-                      data?: {
-                        __typename?: 'TagEntity'
-                        attributes?: {
-                          __typename?: 'Tag'
-                          title?: string | null
-                          pageCategory?: {
-                            __typename?: 'PageCategoryEntityResponse'
-                            data?: {
-                              __typename?: 'PageCategoryEntity'
-                              attributes?: {
-                                __typename?: 'PageCategory'
-                                title?: string | null
-                                color?: Enum_Pagecategory_Color | null
-                              } | null
-                            } | null
-                          } | null
-                        } | null
-                      } | null
-                    } | null
-                  } | null
-                } | null
-              } | null
-            }
-          | {
               __typename: 'ComponentSectionsFileList'
               title?: string | null
               text?: string | null
@@ -8736,7 +8077,6 @@ export type PageBySlugQuery = {
               __typename: 'ComponentSectionsGallery'
               title?: string | null
               text?: string | null
-              subtitle?: string | null
               medias: {
                 __typename?: 'UploadFileRelationResponseCollection'
                 data: Array<{
@@ -8753,31 +8093,10 @@ export type PageBySlugQuery = {
                   } | null
                 }>
               }
-              galleryItems?: Array<{
-                __typename?: 'ComponentBlocksGalleryItem'
-                imgTitle?: string | null
-                imgSubtitle?: string | null
-                imgSubtext?: string | null
-                media?: {
-                  __typename?: 'UploadFileEntityResponse'
-                  data?: {
-                    __typename?: 'UploadFileEntity'
-                    attributes?: {
-                      __typename?: 'UploadFile'
-                      url: string
-                      width?: number | null
-                      height?: number | null
-                      caption?: string | null
-                      alternativeText?: string | null
-                    } | null
-                  } | null
-                } | null
-              } | null> | null
             }
           | {
               __typename: 'ComponentSectionsIconTitleDesc'
               title?: string | null
-              hasBackground?: boolean | null
               list?: Array<{
                 __typename?: 'ComponentBlocksIconWithTitleAndDescription'
                 title?: string | null
@@ -8858,12 +8177,10 @@ export type PageBySlugQuery = {
           | {
               __typename: 'ComponentSectionsLinks'
               title?: string | null
-              hasBackground?: boolean | null
               pageLinks?: Array<{
                 __typename?: 'ComponentBlocksPageLink'
                 title?: string | null
                 url?: string | null
-                anchor?: string | null
                 page?: {
                   __typename?: 'PageEntityResponse'
                   data?: {
@@ -8880,7 +8197,6 @@ export type PageBySlugQuery = {
             }
           | {
               __typename: 'ComponentSectionsNarrowText'
-              hasBackground?: boolean | null
               content?: string | null
               width?: Enum_Componentsectionsnarrowtext_Width | null
               align?: Enum_Componentsectionsnarrowtext_Align | null
@@ -8892,7 +8208,6 @@ export type PageBySlugQuery = {
               variant?: Enum_Componentsectionsnumericallist_Variant | null
               buttonText?: string | null
               buttonLink?: string | null
-              hasBackground?: boolean | null
               items?: Array<{
                 __typename?: 'ComponentBlocksNumericalListItem'
                 text?: string | null
@@ -9080,7 +8395,6 @@ export type PageBySlugQuery = {
               title?: string | null
               text?: string | null
             }
-          | { __typename: 'ComponentSectionsSpace' }
           | {
               __typename: 'ComponentSectionsTestimonials'
               title?: string | null
@@ -9095,10 +8409,8 @@ export type PageBySlugQuery = {
             }
           | {
               __typename: 'ComponentSectionsTextWithImage'
-              hasBackground?: boolean | null
               content?: string | null
               imagePosition?: Enum_Componentsectionstextwithimage_Imageposition | null
-              imageShadow?: boolean | null
               imageSrc?: {
                 __typename?: 'UploadFileEntityResponse'
                 data?: {
@@ -9161,7 +8473,6 @@ export type PageBySlugQuery = {
                 __typename?: 'ComponentBlocksPageLink'
                 title?: string | null
                 url?: string | null
-                anchor?: string | null
                 page?: {
                   __typename?: 'PageEntityResponse'
                   data?: {
@@ -9375,7 +8686,6 @@ export type PageEntityFragment = {
       | {
           __typename: 'ComponentSectionsAccordion'
           title?: string | null
-          hasBackground?: boolean | null
           institutions?: Array<{
             __typename?: 'ComponentAccordionItemsInstitution'
             title?: string | null
@@ -9555,15 +8865,6 @@ export type PageEntityFragment = {
           } | null
         }
       | {
-          __typename: 'ComponentSectionsBlogPostsByTags'
-          title?: string | null
-          text?: string | null
-          tags?: {
-            __typename?: 'TagRelationResponseCollection'
-            data: Array<{ __typename?: 'TagEntity'; id?: string | null }>
-          } | null
-        }
-      | {
           __typename: 'ComponentSectionsBlogPostsList'
           title?: string | null
           text?: string | null
@@ -9577,7 +8878,6 @@ export type PageEntityFragment = {
         }
       | {
           __typename: 'ComponentSectionsColumnedText'
-          hasBackground?: boolean | null
           content?: string | null
           contentAlignment?: Enum_Componentsectionscolumnedtext_Contentalignment | null
         }
@@ -9629,7 +8929,6 @@ export type PageEntityFragment = {
         }
       | {
           __typename: 'ComponentSectionsDivider'
-          hasBackground?: boolean | null
           style?: Enum_Componentsectionsdivider_Style | null
         }
       | {
@@ -9671,142 +8970,6 @@ export type PageEntityFragment = {
           } | null
         }
       | {
-          __typename: 'ComponentSectionsFeaturedBlogPosts'
-          id: string
-          first_blog?: {
-            __typename?: 'BlogPostEntityResponse'
-            data?: {
-              __typename?: 'BlogPostEntity'
-              id?: string | null
-              attributes?: {
-                __typename?: 'BlogPost'
-                slug?: string | null
-                title?: string | null
-                excerpt?: string | null
-                date_added?: any | null
-                publishedAt?: any | null
-                updatedAt?: any | null
-                coverImage?: {
-                  __typename?: 'UploadFileEntityResponse'
-                  data?: {
-                    __typename?: 'UploadFileEntity'
-                    attributes?: { __typename?: 'UploadFile'; url: string } | null
-                  } | null
-                } | null
-                tag?: {
-                  __typename?: 'TagEntityResponse'
-                  data?: {
-                    __typename?: 'TagEntity'
-                    attributes?: {
-                      __typename?: 'Tag'
-                      title?: string | null
-                      pageCategory?: {
-                        __typename?: 'PageCategoryEntityResponse'
-                        data?: {
-                          __typename?: 'PageCategoryEntity'
-                          attributes?: {
-                            __typename?: 'PageCategory'
-                            title?: string | null
-                            color?: Enum_Pagecategory_Color | null
-                          } | null
-                        } | null
-                      } | null
-                    } | null
-                  } | null
-                } | null
-              } | null
-            } | null
-          } | null
-          second_blog?: {
-            __typename?: 'BlogPostEntityResponse'
-            data?: {
-              __typename?: 'BlogPostEntity'
-              id?: string | null
-              attributes?: {
-                __typename?: 'BlogPost'
-                slug?: string | null
-                title?: string | null
-                excerpt?: string | null
-                date_added?: any | null
-                publishedAt?: any | null
-                updatedAt?: any | null
-                coverImage?: {
-                  __typename?: 'UploadFileEntityResponse'
-                  data?: {
-                    __typename?: 'UploadFileEntity'
-                    attributes?: { __typename?: 'UploadFile'; url: string } | null
-                  } | null
-                } | null
-                tag?: {
-                  __typename?: 'TagEntityResponse'
-                  data?: {
-                    __typename?: 'TagEntity'
-                    attributes?: {
-                      __typename?: 'Tag'
-                      title?: string | null
-                      pageCategory?: {
-                        __typename?: 'PageCategoryEntityResponse'
-                        data?: {
-                          __typename?: 'PageCategoryEntity'
-                          attributes?: {
-                            __typename?: 'PageCategory'
-                            title?: string | null
-                            color?: Enum_Pagecategory_Color | null
-                          } | null
-                        } | null
-                      } | null
-                    } | null
-                  } | null
-                } | null
-              } | null
-            } | null
-          } | null
-          third_blog?: {
-            __typename?: 'BlogPostEntityResponse'
-            data?: {
-              __typename?: 'BlogPostEntity'
-              id?: string | null
-              attributes?: {
-                __typename?: 'BlogPost'
-                slug?: string | null
-                title?: string | null
-                excerpt?: string | null
-                date_added?: any | null
-                publishedAt?: any | null
-                updatedAt?: any | null
-                coverImage?: {
-                  __typename?: 'UploadFileEntityResponse'
-                  data?: {
-                    __typename?: 'UploadFileEntity'
-                    attributes?: { __typename?: 'UploadFile'; url: string } | null
-                  } | null
-                } | null
-                tag?: {
-                  __typename?: 'TagEntityResponse'
-                  data?: {
-                    __typename?: 'TagEntity'
-                    attributes?: {
-                      __typename?: 'Tag'
-                      title?: string | null
-                      pageCategory?: {
-                        __typename?: 'PageCategoryEntityResponse'
-                        data?: {
-                          __typename?: 'PageCategoryEntity'
-                          attributes?: {
-                            __typename?: 'PageCategory'
-                            title?: string | null
-                            color?: Enum_Pagecategory_Color | null
-                          } | null
-                        } | null
-                      } | null
-                    } | null
-                  } | null
-                } | null
-              } | null
-            } | null
-          } | null
-        }
-      | {
           __typename: 'ComponentSectionsFileList'
           title?: string | null
           text?: string | null
@@ -9835,7 +8998,6 @@ export type PageEntityFragment = {
           __typename: 'ComponentSectionsGallery'
           title?: string | null
           text?: string | null
-          subtitle?: string | null
           medias: {
             __typename?: 'UploadFileRelationResponseCollection'
             data: Array<{
@@ -9852,31 +9014,10 @@ export type PageEntityFragment = {
               } | null
             }>
           }
-          galleryItems?: Array<{
-            __typename?: 'ComponentBlocksGalleryItem'
-            imgTitle?: string | null
-            imgSubtitle?: string | null
-            imgSubtext?: string | null
-            media?: {
-              __typename?: 'UploadFileEntityResponse'
-              data?: {
-                __typename?: 'UploadFileEntity'
-                attributes?: {
-                  __typename?: 'UploadFile'
-                  url: string
-                  width?: number | null
-                  height?: number | null
-                  caption?: string | null
-                  alternativeText?: string | null
-                } | null
-              } | null
-            } | null
-          } | null> | null
         }
       | {
           __typename: 'ComponentSectionsIconTitleDesc'
           title?: string | null
-          hasBackground?: boolean | null
           list?: Array<{
             __typename?: 'ComponentBlocksIconWithTitleAndDescription'
             title?: string | null
@@ -9953,12 +9094,10 @@ export type PageEntityFragment = {
       | {
           __typename: 'ComponentSectionsLinks'
           title?: string | null
-          hasBackground?: boolean | null
           pageLinks?: Array<{
             __typename?: 'ComponentBlocksPageLink'
             title?: string | null
             url?: string | null
-            anchor?: string | null
             page?: {
               __typename?: 'PageEntityResponse'
               data?: {
@@ -9975,7 +9114,6 @@ export type PageEntityFragment = {
         }
       | {
           __typename: 'ComponentSectionsNarrowText'
-          hasBackground?: boolean | null
           content?: string | null
           width?: Enum_Componentsectionsnarrowtext_Width | null
           align?: Enum_Componentsectionsnarrowtext_Align | null
@@ -9987,7 +9125,6 @@ export type PageEntityFragment = {
           variant?: Enum_Componentsectionsnumericallist_Variant | null
           buttonText?: string | null
           buttonLink?: string | null
-          hasBackground?: boolean | null
           items?: Array<{
             __typename?: 'ComponentBlocksNumericalListItem'
             text?: string | null
@@ -10175,7 +9312,6 @@ export type PageEntityFragment = {
           title?: string | null
           text?: string | null
         }
-      | { __typename: 'ComponentSectionsSpace' }
       | {
           __typename: 'ComponentSectionsTestimonials'
           title?: string | null
@@ -10190,10 +9326,8 @@ export type PageEntityFragment = {
         }
       | {
           __typename: 'ComponentSectionsTextWithImage'
-          hasBackground?: boolean | null
           content?: string | null
           imagePosition?: Enum_Componentsectionstextwithimage_Imageposition | null
-          imageShadow?: boolean | null
           imageSrc?: {
             __typename?: 'UploadFileEntityResponse'
             data?: {
@@ -10252,7 +9386,6 @@ export type PageEntityFragment = {
             __typename?: 'ComponentBlocksPageLink'
             title?: string | null
             url?: string | null
-            anchor?: string | null
             page?: {
               __typename?: 'PageEntityResponse'
               data?: {
@@ -11285,27 +10418,6 @@ export type IconTitleDescriptionBlockFragment = {
   } | null
 }
 
-export type GalleryItemBlockFragment = {
-  __typename?: 'ComponentBlocksGalleryItem'
-  imgTitle?: string | null
-  imgSubtitle?: string | null
-  imgSubtext?: string | null
-  media?: {
-    __typename?: 'UploadFileEntityResponse'
-    data?: {
-      __typename?: 'UploadFileEntity'
-      attributes?: {
-        __typename?: 'UploadFile'
-        url: string
-        width?: number | null
-        height?: number | null
-        caption?: string | null
-        alternativeText?: string | null
-      } | null
-    } | null
-  } | null
-}
-
 export type TestimonialItemBlockFragment = {
   __typename?: 'ComponentBlocksTestimonialItem'
   id: string
@@ -11337,7 +10449,6 @@ export type GallerySectionFragment = {
   __typename?: 'ComponentSectionsGallery'
   title?: string | null
   text?: string | null
-  subtitle?: string | null
   medias: {
     __typename?: 'UploadFileRelationResponseCollection'
     data: Array<{
@@ -11354,26 +10465,6 @@ export type GallerySectionFragment = {
       } | null
     }>
   }
-  galleryItems?: Array<{
-    __typename?: 'ComponentBlocksGalleryItem'
-    imgTitle?: string | null
-    imgSubtitle?: string | null
-    imgSubtext?: string | null
-    media?: {
-      __typename?: 'UploadFileEntityResponse'
-      data?: {
-        __typename?: 'UploadFileEntity'
-        attributes?: {
-          __typename?: 'UploadFile'
-          url: string
-          width?: number | null
-          height?: number | null
-          caption?: string | null
-          alternativeText?: string | null
-        } | null
-      } | null
-    } | null
-  } | null> | null
 }
 
 export type TimelineSectionFragment = {
@@ -11390,16 +10481,6 @@ export type BlogPostsListSectionFragment = {
   __typename?: 'ComponentSectionsBlogPostsList'
   title?: string | null
   text?: string | null
-}
-
-export type BlogPostsByTagsSectionFragment = {
-  __typename?: 'ComponentSectionsBlogPostsByTags'
-  title?: string | null
-  text?: string | null
-  tags?: {
-    __typename?: 'TagRelationResponseCollection'
-    data: Array<{ __typename?: 'TagEntity'; id?: string | null }>
-  } | null
 }
 
 export type BlogPostsByCategorySectionFragment = {
@@ -11473,7 +10554,6 @@ export type InbaReleasesSectionFragment = {
 export type IconTitleDescSectionFragment = {
   __typename?: 'ComponentSectionsIconTitleDesc'
   title?: string | null
-  hasBackground?: boolean | null
   list?: Array<{
     __typename?: 'ComponentBlocksIconWithTitleAndDescription'
     title?: string | null
@@ -11492,16 +10572,13 @@ export type IconTitleDescSectionFragment = {
 
 export type DividerSectionFragment = {
   __typename?: 'ComponentSectionsDivider'
-  hasBackground?: boolean | null
   style?: Enum_Componentsectionsdivider_Style | null
 }
 
 export type TextWithImageSectionFragment = {
   __typename?: 'ComponentSectionsTextWithImage'
-  hasBackground?: boolean | null
   content?: string | null
   imagePosition?: Enum_Componentsectionstextwithimage_Imageposition | null
-  imageShadow?: boolean | null
   imageSrc?: {
     __typename?: 'UploadFileEntityResponse'
     data?: {
@@ -11598,14 +10675,12 @@ export type FileItemBlockFragment = {
 
 export type ColumnedTextSectionFragment = {
   __typename?: 'ComponentSectionsColumnedText'
-  hasBackground?: boolean | null
   content?: string | null
   contentAlignment?: Enum_Componentsectionscolumnedtext_Contentalignment | null
 }
 
 export type NarrowTextSectionFragment = {
   __typename?: 'ComponentSectionsNarrowText'
-  hasBackground?: boolean | null
   content?: string | null
   width?: Enum_Componentsectionsnarrowtext_Width | null
   align?: Enum_Componentsectionsnarrowtext_Align | null
@@ -11620,7 +10695,6 @@ export type PageLinkBlockFragment = {
   __typename?: 'ComponentBlocksPageLink'
   title?: string | null
   url?: string | null
-  anchor?: string | null
   page?: {
     __typename?: 'PageEntityResponse'
     data?: {
@@ -11638,12 +10712,10 @@ export type PageLinkBlockFragment = {
 export type LinksSectionFragment = {
   __typename?: 'ComponentSectionsLinks'
   title?: string | null
-  hasBackground?: boolean | null
   pageLinks?: Array<{
     __typename?: 'ComponentBlocksPageLink'
     title?: string | null
     url?: string | null
-    anchor?: string | null
     page?: {
       __typename?: 'PageEntityResponse'
       data?: {
@@ -11725,7 +10797,6 @@ export type ComponentAccordionItemsInstitutionFragment = {
 export type AccordionSectionFragment = {
   __typename?: 'ComponentSectionsAccordion'
   title?: string | null
-  hasBackground?: boolean | null
   institutions?: Array<{
     __typename?: 'ComponentAccordionItemsInstitution'
     title?: string | null
@@ -11830,7 +10901,6 @@ export type NumericalListSectionFragment = {
   variant?: Enum_Componentsectionsnumericallist_Variant | null
   buttonText?: string | null
   buttonLink?: string | null
-  hasBackground?: boolean | null
   items?: Array<{
     __typename?: 'ComponentBlocksNumericalListItem'
     text?: string | null
@@ -11973,143 +11043,6 @@ export type BannerSectionFragment = {
         __typename?: 'BlogPostEntity'
         id?: string | null
         attributes?: { __typename?: 'BlogPost'; title?: string | null; slug?: string | null } | null
-      } | null
-    } | null
-  } | null
-}
-
-export type FeaturedBlogPostsSectionFragment = {
-  __typename?: 'ComponentSectionsFeaturedBlogPosts'
-  id: string
-  first_blog?: {
-    __typename?: 'BlogPostEntityResponse'
-    data?: {
-      __typename?: 'BlogPostEntity'
-      id?: string | null
-      attributes?: {
-        __typename?: 'BlogPost'
-        slug?: string | null
-        title?: string | null
-        excerpt?: string | null
-        date_added?: any | null
-        publishedAt?: any | null
-        updatedAt?: any | null
-        coverImage?: {
-          __typename?: 'UploadFileEntityResponse'
-          data?: {
-            __typename?: 'UploadFileEntity'
-            attributes?: { __typename?: 'UploadFile'; url: string } | null
-          } | null
-        } | null
-        tag?: {
-          __typename?: 'TagEntityResponse'
-          data?: {
-            __typename?: 'TagEntity'
-            attributes?: {
-              __typename?: 'Tag'
-              title?: string | null
-              pageCategory?: {
-                __typename?: 'PageCategoryEntityResponse'
-                data?: {
-                  __typename?: 'PageCategoryEntity'
-                  attributes?: {
-                    __typename?: 'PageCategory'
-                    title?: string | null
-                    color?: Enum_Pagecategory_Color | null
-                  } | null
-                } | null
-              } | null
-            } | null
-          } | null
-        } | null
-      } | null
-    } | null
-  } | null
-  second_blog?: {
-    __typename?: 'BlogPostEntityResponse'
-    data?: {
-      __typename?: 'BlogPostEntity'
-      id?: string | null
-      attributes?: {
-        __typename?: 'BlogPost'
-        slug?: string | null
-        title?: string | null
-        excerpt?: string | null
-        date_added?: any | null
-        publishedAt?: any | null
-        updatedAt?: any | null
-        coverImage?: {
-          __typename?: 'UploadFileEntityResponse'
-          data?: {
-            __typename?: 'UploadFileEntity'
-            attributes?: { __typename?: 'UploadFile'; url: string } | null
-          } | null
-        } | null
-        tag?: {
-          __typename?: 'TagEntityResponse'
-          data?: {
-            __typename?: 'TagEntity'
-            attributes?: {
-              __typename?: 'Tag'
-              title?: string | null
-              pageCategory?: {
-                __typename?: 'PageCategoryEntityResponse'
-                data?: {
-                  __typename?: 'PageCategoryEntity'
-                  attributes?: {
-                    __typename?: 'PageCategory'
-                    title?: string | null
-                    color?: Enum_Pagecategory_Color | null
-                  } | null
-                } | null
-              } | null
-            } | null
-          } | null
-        } | null
-      } | null
-    } | null
-  } | null
-  third_blog?: {
-    __typename?: 'BlogPostEntityResponse'
-    data?: {
-      __typename?: 'BlogPostEntity'
-      id?: string | null
-      attributes?: {
-        __typename?: 'BlogPost'
-        slug?: string | null
-        title?: string | null
-        excerpt?: string | null
-        date_added?: any | null
-        publishedAt?: any | null
-        updatedAt?: any | null
-        coverImage?: {
-          __typename?: 'UploadFileEntityResponse'
-          data?: {
-            __typename?: 'UploadFileEntity'
-            attributes?: { __typename?: 'UploadFile'; url: string } | null
-          } | null
-        } | null
-        tag?: {
-          __typename?: 'TagEntityResponse'
-          data?: {
-            __typename?: 'TagEntity'
-            attributes?: {
-              __typename?: 'Tag'
-              title?: string | null
-              pageCategory?: {
-                __typename?: 'PageCategoryEntityResponse'
-                data?: {
-                  __typename?: 'PageCategoryEntity'
-                  attributes?: {
-                    __typename?: 'PageCategory'
-                    title?: string | null
-                    color?: Enum_Pagecategory_Color | null
-                  } | null
-                } | null
-              } | null
-            } | null
-          } | null
-        } | null
       } | null
     } | null
   } | null
@@ -12359,7 +11292,6 @@ export type FaqCategoriesSectionFragment = {
 type Sections_ComponentSectionsAccordion_Fragment = {
   __typename: 'ComponentSectionsAccordion'
   title?: string | null
-  hasBackground?: boolean | null
   institutions?: Array<{
     __typename?: 'ComponentAccordionItemsInstitution'
     title?: string | null
@@ -12517,16 +11449,6 @@ type Sections_ComponentSectionsBlogPostsByCategory_Fragment = {
   } | null
 }
 
-type Sections_ComponentSectionsBlogPostsByTags_Fragment = {
-  __typename: 'ComponentSectionsBlogPostsByTags'
-  title?: string | null
-  text?: string | null
-  tags?: {
-    __typename?: 'TagRelationResponseCollection'
-    data: Array<{ __typename?: 'TagEntity'; id?: string | null }>
-  } | null
-}
-
 type Sections_ComponentSectionsBlogPostsList_Fragment = {
   __typename: 'ComponentSectionsBlogPostsList'
   title?: string | null
@@ -12543,7 +11465,6 @@ type Sections_ComponentSectionsCalculator_Fragment = {
 
 type Sections_ComponentSectionsColumnedText_Fragment = {
   __typename: 'ComponentSectionsColumnedText'
-  hasBackground?: boolean | null
   content?: string | null
   contentAlignment?: Enum_Componentsectionscolumnedtext_Contentalignment | null
 }
@@ -12598,7 +11519,6 @@ type Sections_ComponentSectionsContactsSection_Fragment = {
 
 type Sections_ComponentSectionsDivider_Fragment = {
   __typename: 'ComponentSectionsDivider'
-  hasBackground?: boolean | null
   style?: Enum_Componentsectionsdivider_Style | null
 }
 
@@ -12642,143 +11562,6 @@ type Sections_ComponentSectionsFaqs_Fragment = {
   } | null
 }
 
-type Sections_ComponentSectionsFeaturedBlogPosts_Fragment = {
-  __typename: 'ComponentSectionsFeaturedBlogPosts'
-  id: string
-  first_blog?: {
-    __typename?: 'BlogPostEntityResponse'
-    data?: {
-      __typename?: 'BlogPostEntity'
-      id?: string | null
-      attributes?: {
-        __typename?: 'BlogPost'
-        slug?: string | null
-        title?: string | null
-        excerpt?: string | null
-        date_added?: any | null
-        publishedAt?: any | null
-        updatedAt?: any | null
-        coverImage?: {
-          __typename?: 'UploadFileEntityResponse'
-          data?: {
-            __typename?: 'UploadFileEntity'
-            attributes?: { __typename?: 'UploadFile'; url: string } | null
-          } | null
-        } | null
-        tag?: {
-          __typename?: 'TagEntityResponse'
-          data?: {
-            __typename?: 'TagEntity'
-            attributes?: {
-              __typename?: 'Tag'
-              title?: string | null
-              pageCategory?: {
-                __typename?: 'PageCategoryEntityResponse'
-                data?: {
-                  __typename?: 'PageCategoryEntity'
-                  attributes?: {
-                    __typename?: 'PageCategory'
-                    title?: string | null
-                    color?: Enum_Pagecategory_Color | null
-                  } | null
-                } | null
-              } | null
-            } | null
-          } | null
-        } | null
-      } | null
-    } | null
-  } | null
-  second_blog?: {
-    __typename?: 'BlogPostEntityResponse'
-    data?: {
-      __typename?: 'BlogPostEntity'
-      id?: string | null
-      attributes?: {
-        __typename?: 'BlogPost'
-        slug?: string | null
-        title?: string | null
-        excerpt?: string | null
-        date_added?: any | null
-        publishedAt?: any | null
-        updatedAt?: any | null
-        coverImage?: {
-          __typename?: 'UploadFileEntityResponse'
-          data?: {
-            __typename?: 'UploadFileEntity'
-            attributes?: { __typename?: 'UploadFile'; url: string } | null
-          } | null
-        } | null
-        tag?: {
-          __typename?: 'TagEntityResponse'
-          data?: {
-            __typename?: 'TagEntity'
-            attributes?: {
-              __typename?: 'Tag'
-              title?: string | null
-              pageCategory?: {
-                __typename?: 'PageCategoryEntityResponse'
-                data?: {
-                  __typename?: 'PageCategoryEntity'
-                  attributes?: {
-                    __typename?: 'PageCategory'
-                    title?: string | null
-                    color?: Enum_Pagecategory_Color | null
-                  } | null
-                } | null
-              } | null
-            } | null
-          } | null
-        } | null
-      } | null
-    } | null
-  } | null
-  third_blog?: {
-    __typename?: 'BlogPostEntityResponse'
-    data?: {
-      __typename?: 'BlogPostEntity'
-      id?: string | null
-      attributes?: {
-        __typename?: 'BlogPost'
-        slug?: string | null
-        title?: string | null
-        excerpt?: string | null
-        date_added?: any | null
-        publishedAt?: any | null
-        updatedAt?: any | null
-        coverImage?: {
-          __typename?: 'UploadFileEntityResponse'
-          data?: {
-            __typename?: 'UploadFileEntity'
-            attributes?: { __typename?: 'UploadFile'; url: string } | null
-          } | null
-        } | null
-        tag?: {
-          __typename?: 'TagEntityResponse'
-          data?: {
-            __typename?: 'TagEntity'
-            attributes?: {
-              __typename?: 'Tag'
-              title?: string | null
-              pageCategory?: {
-                __typename?: 'PageCategoryEntityResponse'
-                data?: {
-                  __typename?: 'PageCategoryEntity'
-                  attributes?: {
-                    __typename?: 'PageCategory'
-                    title?: string | null
-                    color?: Enum_Pagecategory_Color | null
-                  } | null
-                } | null
-              } | null
-            } | null
-          } | null
-        } | null
-      } | null
-    } | null
-  } | null
-}
-
 type Sections_ComponentSectionsFileList_Fragment = {
   __typename: 'ComponentSectionsFileList'
   title?: string | null
@@ -12809,7 +11592,6 @@ type Sections_ComponentSectionsGallery_Fragment = {
   __typename: 'ComponentSectionsGallery'
   title?: string | null
   text?: string | null
-  subtitle?: string | null
   medias: {
     __typename?: 'UploadFileRelationResponseCollection'
     data: Array<{
@@ -12826,32 +11608,11 @@ type Sections_ComponentSectionsGallery_Fragment = {
       } | null
     }>
   }
-  galleryItems?: Array<{
-    __typename?: 'ComponentBlocksGalleryItem'
-    imgTitle?: string | null
-    imgSubtitle?: string | null
-    imgSubtext?: string | null
-    media?: {
-      __typename?: 'UploadFileEntityResponse'
-      data?: {
-        __typename?: 'UploadFileEntity'
-        attributes?: {
-          __typename?: 'UploadFile'
-          url: string
-          width?: number | null
-          height?: number | null
-          caption?: string | null
-          alternativeText?: string | null
-        } | null
-      } | null
-    } | null
-  } | null> | null
 }
 
 type Sections_ComponentSectionsIconTitleDesc_Fragment = {
   __typename: 'ComponentSectionsIconTitleDesc'
   title?: string | null
-  hasBackground?: boolean | null
   list?: Array<{
     __typename?: 'ComponentBlocksIconWithTitleAndDescription'
     title?: string | null
@@ -12936,12 +11697,10 @@ type Sections_ComponentSectionsInbaReleases_Fragment = {
 type Sections_ComponentSectionsLinks_Fragment = {
   __typename: 'ComponentSectionsLinks'
   title?: string | null
-  hasBackground?: boolean | null
   pageLinks?: Array<{
     __typename?: 'ComponentBlocksPageLink'
     title?: string | null
     url?: string | null
-    anchor?: string | null
     page?: {
       __typename?: 'PageEntityResponse'
       data?: {
@@ -12959,7 +11718,6 @@ type Sections_ComponentSectionsLinks_Fragment = {
 
 type Sections_ComponentSectionsNarrowText_Fragment = {
   __typename: 'ComponentSectionsNarrowText'
-  hasBackground?: boolean | null
   content?: string | null
   width?: Enum_Componentsectionsnarrowtext_Width | null
   align?: Enum_Componentsectionsnarrowtext_Align | null
@@ -12972,7 +11730,6 @@ type Sections_ComponentSectionsNumericalList_Fragment = {
   variant?: Enum_Componentsectionsnumericallist_Variant | null
   buttonText?: string | null
   buttonLink?: string | null
-  hasBackground?: boolean | null
   items?: Array<{
     __typename?: 'ComponentBlocksNumericalListItem'
     text?: string | null
@@ -13171,8 +11928,6 @@ type Sections_ComponentSectionsRegulationsList_Fragment = {
   text?: string | null
 }
 
-type Sections_ComponentSectionsSpace_Fragment = { __typename: 'ComponentSectionsSpace' }
-
 type Sections_ComponentSectionsTestimonials_Fragment = {
   __typename: 'ComponentSectionsTestimonials'
   title?: string | null
@@ -13188,10 +11943,8 @@ type Sections_ComponentSectionsTestimonials_Fragment = {
 
 type Sections_ComponentSectionsTextWithImage_Fragment = {
   __typename: 'ComponentSectionsTextWithImage'
-  hasBackground?: boolean | null
   content?: string | null
   imagePosition?: Enum_Componentsectionstextwithimage_Imageposition | null
-  imageShadow?: boolean | null
   imageSrc?: {
     __typename?: 'UploadFileEntityResponse'
     data?: {
@@ -13242,7 +11995,6 @@ export type SectionsFragment =
   | Sections_ComponentSectionsAccordion_Fragment
   | Sections_ComponentSectionsBanner_Fragment
   | Sections_ComponentSectionsBlogPostsByCategory_Fragment
-  | Sections_ComponentSectionsBlogPostsByTags_Fragment
   | Sections_ComponentSectionsBlogPostsList_Fragment
   | Sections_ComponentSectionsCalculator_Fragment
   | Sections_ComponentSectionsColumnedText_Fragment
@@ -13251,7 +12003,6 @@ export type SectionsFragment =
   | Sections_ComponentSectionsDivider_Fragment
   | Sections_ComponentSectionsFaqCategories_Fragment
   | Sections_ComponentSectionsFaqs_Fragment
-  | Sections_ComponentSectionsFeaturedBlogPosts_Fragment
   | Sections_ComponentSectionsFileList_Fragment
   | Sections_ComponentSectionsGallery_Fragment
   | Sections_ComponentSectionsIconTitleDesc_Fragment
@@ -13266,7 +12017,6 @@ export type SectionsFragment =
   | Sections_ComponentSectionsProsAndConsSection_Fragment
   | Sections_ComponentSectionsRegulations_Fragment
   | Sections_ComponentSectionsRegulationsList_Fragment
-  | Sections_ComponentSectionsSpace_Fragment
   | Sections_ComponentSectionsTestimonials_Fragment
   | Sections_ComponentSectionsTextWithImage_Fragment
   | Sections_ComponentSectionsTimeline_Fragment
@@ -13281,7 +12031,6 @@ export type SubpageListPageHeaderSectionFragment = {
     __typename?: 'ComponentBlocksPageLink'
     title?: string | null
     url?: string | null
-    anchor?: string | null
     page?: {
       __typename?: 'PageEntityResponse'
       data?: {
@@ -13304,7 +12053,6 @@ type PageHeaderSections_ComponentSectionsSubpageList_Fragment = {
     __typename?: 'ComponentBlocksPageLink'
     title?: string | null
     url?: string | null
-    anchor?: string | null
     page?: {
       __typename?: 'PageEntityResponse'
       data?: {
@@ -13365,7 +12113,6 @@ export const IconTitleDescriptionBlockFragmentDoc = gql`
 export const IconTitleDescSectionFragmentDoc = gql`
   fragment IconTitleDescSection on ComponentSectionsIconTitleDesc {
     title
-    hasBackground
     list {
       ...IconTitleDescriptionBlock
     }
@@ -13374,16 +12121,13 @@ export const IconTitleDescSectionFragmentDoc = gql`
 `
 export const DividerSectionFragmentDoc = gql`
   fragment DividerSection on ComponentSectionsDivider {
-    hasBackground
     style
   }
 `
 export const TextWithImageSectionFragmentDoc = gql`
   fragment TextWithImageSection on ComponentSectionsTextWithImage {
-    hasBackground
     content
     imagePosition
-    imageShadow
     imageSrc {
       data {
         attributes {
@@ -13420,24 +12164,6 @@ export const UploadImageEntityFragmentDoc = gql`
     }
   }
 `
-export const GalleryItemBlockFragmentDoc = gql`
-  fragment GalleryItemBlock on ComponentBlocksGalleryItem {
-    imgTitle
-    imgSubtitle
-    imgSubtext
-    media {
-      data {
-        attributes {
-          url
-          width
-          height
-          caption
-          alternativeText
-        }
-      }
-    }
-  }
-`
 export const GallerySectionFragmentDoc = gql`
   fragment GallerySection on ComponentSectionsGallery {
     title
@@ -13447,13 +12173,8 @@ export const GallerySectionFragmentDoc = gql`
         ...UploadImageEntity
       }
     }
-    subtitle
-    galleryItems {
-      ...GalleryItemBlock
-    }
   }
   ${UploadImageEntityFragmentDoc}
-  ${GalleryItemBlockFragmentDoc}
 `
 export const UploadFileEntityFragmentDoc = gql`
   fragment UploadFileEntity on UploadFileEntity {
@@ -13491,14 +12212,12 @@ export const FileListSectionFragmentDoc = gql`
 `
 export const ColumnedTextSectionFragmentDoc = gql`
   fragment ColumnedTextSection on ComponentSectionsColumnedText {
-    hasBackground
     content
     contentAlignment
   }
 `
 export const NarrowTextSectionFragmentDoc = gql`
   fragment NarrowTextSection on ComponentSectionsNarrowText {
-    hasBackground
     content
     width
     align
@@ -13513,7 +12232,6 @@ export const PageLinkBlockFragmentDoc = gql`
   fragment PageLinkBlock on ComponentBlocksPageLink {
     title
     url
-    anchor
     page {
       data {
         attributes {
@@ -13528,8 +12246,7 @@ export const PageLinkBlockFragmentDoc = gql`
 export const LinksSectionFragmentDoc = gql`
   fragment LinksSection on ComponentSectionsLinks {
     title
-    hasBackground
-    pageLinks(pagination: { limit: 100 }) {
+    pageLinks(pagination: { limit: -1 }) {
       ...PageLinkBlock
     }
   }
@@ -13593,7 +12310,6 @@ export const ComponentAccordionItemsInstitutionNarrowFragmentDoc = gql`
 export const AccordionSectionFragmentDoc = gql`
   fragment AccordionSection on ComponentSectionsAccordion {
     title
-    hasBackground
     institutions(pagination: { limit: -1 }) {
       ...ComponentAccordionItemsInstitution
     }
@@ -13650,7 +12366,6 @@ export const NumericalListSectionFragmentDoc = gql`
     variant
     buttonText
     buttonLink
-    hasBackground
   }
   ${NumericalListItemBlockFragmentDoc}
 `
@@ -13658,17 +12373,6 @@ export const BlogPostsListSectionFragmentDoc = gql`
   fragment BlogPostsListSection on ComponentSectionsBlogPostsList {
     title
     text
-  }
-`
-export const BlogPostsByTagsSectionFragmentDoc = gql`
-  fragment BlogPostsByTagsSection on ComponentSectionsBlogPostsByTags {
-    title
-    text
-    tags {
-      data {
-        id
-      }
-    }
   }
 `
 export const BlogPostsByCategorySectionFragmentDoc = gql`
@@ -13862,62 +12566,6 @@ export const TimelineSectionFragmentDoc = gql`
     }
   }
   ${TimelineItemBlockFragmentDoc}
-`
-export const LatestBlogPostEntityFragmentDoc = gql`
-  fragment LatestBlogPostEntity on BlogPostEntity {
-    id
-    attributes {
-      slug
-      title
-      excerpt
-      coverImage {
-        data {
-          attributes {
-            url
-          }
-        }
-      }
-      date_added
-      publishedAt
-      updatedAt
-      tag {
-        data {
-          attributes {
-            title
-            pageCategory {
-              data {
-                attributes {
-                  title
-                  color
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-`
-export const FeaturedBlogPostsSectionFragmentDoc = gql`
-  fragment FeaturedBlogPostsSection on ComponentSectionsFeaturedBlogPosts {
-    id
-    first_blog {
-      data {
-        ...LatestBlogPostEntity
-      }
-    }
-    second_blog {
-      data {
-        ...LatestBlogPostEntity
-      }
-    }
-    third_blog {
-      data {
-        ...LatestBlogPostEntity
-      }
-    }
-  }
-  ${LatestBlogPostEntityFragmentDoc}
 `
 export const ContactCardBlockFragmentDoc = gql`
   fragment ContactCardBlock on ComponentBlocksContactCard {
@@ -14177,9 +12825,6 @@ export const SectionsFragmentDoc = gql`
     ... on ComponentSectionsBlogPostsList {
       ...BlogPostsListSection
     }
-    ... on ComponentSectionsBlogPostsByTags {
-      ...BlogPostsByTagsSection
-    }
     ... on ComponentSectionsBlogPostsByCategory {
       ...BlogPostsByCategorySection
     }
@@ -14203,9 +12848,6 @@ export const SectionsFragmentDoc = gql`
     }
     ... on ComponentSectionsTimeline {
       ...TimelineSection
-    }
-    ... on ComponentSectionsFeaturedBlogPosts {
-      ...FeaturedBlogPostsSection
     }
     ... on ComponentSectionsContactsSection {
       ...ContactsSection
@@ -14241,7 +12883,6 @@ export const SectionsFragmentDoc = gql`
   ${VideosSectionFragmentDoc}
   ${NumericalListSectionFragmentDoc}
   ${BlogPostsListSectionFragmentDoc}
-  ${BlogPostsByTagsSectionFragmentDoc}
   ${BlogPostsByCategorySectionFragmentDoc}
   ${InbaArticlesListSectionFragmentDoc}
   ${InbaReleasesSectionFragmentDoc}
@@ -14250,7 +12891,6 @@ export const SectionsFragmentDoc = gql`
   ${ComparisonSectionFragmentDoc}
   ${BannerSectionFragmentDoc}
   ${TimelineSectionFragmentDoc}
-  ${FeaturedBlogPostsSectionFragmentDoc}
   ${ContactsSectionFragmentDoc}
   ${RegulationsListSectionFragmentDoc}
   ${RegulationsSectionFragmentDoc}
@@ -14535,6 +13175,41 @@ export const HomepageHighlightsItemFragmentDoc = gql`
   }
   ${CommonLinkFragmentDoc}
   ${UploadImageSrcEntityFragmentDoc}
+`
+export const LatestBlogPostEntityFragmentDoc = gql`
+  fragment LatestBlogPostEntity on BlogPostEntity {
+    id
+    attributes {
+      slug
+      title
+      excerpt
+      coverImage {
+        data {
+          attributes {
+            url
+          }
+        }
+      }
+      date_added
+      publishedAt
+      updatedAt
+      tag {
+        data {
+          attributes {
+            title
+            pageCategory {
+              data {
+                attributes {
+                  title
+                  color
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 `
 export const HomepageTabsFragmentDoc = gql`
   fragment HomepageTabs on ComponentSectionsHomepageTabs {

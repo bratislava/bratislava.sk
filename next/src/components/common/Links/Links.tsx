@@ -4,15 +4,13 @@ import React from 'react'
 import { ArrowRightIcon } from '@/src/assets/ui-icons'
 import Button from '@/src/components/common/Button/Button'
 import cn from '@/src/utils/cn'
-import { isExternalLink } from '@/src/utils/isExternalLink'
 
 export type LinksProps = {
   className?: string
   title?: string
-  pageLinks: { title?: string; url?: string; anchor?: string }[]
+  pageLinks: { title?: string; url?: string }[]
 }
 
-// TODO revisit anchors, they are not currently used and supported by dev team
 const Links = ({ className, title, pageLinks }: LinksProps) => {
   return (
     <div className={cn('flex w-full flex-col md:w-10/12', className)}>
@@ -22,7 +20,9 @@ const Links = ({ className, title, pageLinks }: LinksProps) => {
           // eslint-disable-next-line react/no-array-index-key
           <li key={index}>
             <Button
-              href={pageLink.url ? isExternalLink(pageLink.url) : `#${pageLink.anchor}`}
+              href={pageLink.url ?? '#'}
+              target={pageLink.url?.startsWith('http') ? '_blank' : undefined}
+              hasLinkIcon={pageLink.url?.startsWith('http')} // show link icon only for external urls since we already use arrow icon in startIcon
               variant="black-link"
               startIcon={<ArrowRightIcon className="shrink-0" />}
             >

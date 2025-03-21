@@ -4,7 +4,7 @@
   "info": {
     "singularName": "tax-administrators-list",
     "pluralName": "tax-administrators-lists",
-    "displayName": "Tax administrators list",
+    "displayName": "Zoznam správcov daní",
     "description": ""
   },
   "options": {

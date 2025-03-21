@@ -10,7 +10,6 @@ type IconTitleDescProps = {
   title: string | null | undefined
   text: string | null | undefined
   disableIconBackground?: boolean | null | undefined
-  hasBackground?: boolean | null | undefined
 }
 
 const IconTitleDescItem = ({
@@ -18,7 +17,6 @@ const IconTitleDescItem = ({
   title,
   text,
   disableIconBackground = false,
-  hasBackground = false,
 }: IconTitleDescProps) => {
   const hasIconBackground = !disableIconBackground
 
@@ -26,10 +24,8 @@ const IconTitleDescItem = ({
     <li className="relative flex flex-col items-center gap-6">
       <div
         className={cn('flex shrink-0 items-center justify-center', {
-          'rounded-full p-6': hasIconBackground,
+          'rounded-full bg-category-200 p-6': hasIconBackground,
           'w-full': !hasIconBackground,
-          'bg-white': hasBackground && hasIconBackground,
-          'bg-category-200': !hasBackground && hasIconBackground,
         })}
       >
         {icon?.attributes?.url && (

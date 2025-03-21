@@ -4,7 +4,7 @@
   "info": {
     "singularName": "page-category",
     "pluralName": "page-categories",
-    "displayName": "Kategórie",
+    "displayName": "Hlavné kategórie",
     "description": ""
   },
   "options": {
@@ -39,14 +39,7 @@
         }
       },
       "type": "enumeration",
-      "enum": [
-        "red",
-        "blue",
-        "green",
-        "yellow",
-        "purple",
-        "brown"
-      ]
+      "enum": ["red", "blue", "green", "yellow", "purple", "brown"]
     },
     "icon": {
       "pluginOptions": {
@@ -69,11 +62,6 @@
       "relation": "oneToMany",
       "target": "api::page.page",
       "mappedBy": "pageCategory"
-    },
-    "subcategories": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::page-subcategory.page-subcategory"
     }
   }
 }

@@ -9,16 +9,9 @@
     "content": {
       "type": "richtext"
     },
-    "hasBackground": {
-      "type": "boolean"
-    },
     "contentAlignment": {
       "type": "enumeration",
-      "enum": [
-        "left",
-        "center",
-        "right"
-      ],
+      "enum": ["left", "center", "right"],
       "default": "left",
       "required": false
     }

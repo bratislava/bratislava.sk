@@ -17,7 +17,6 @@ const NumericalListSection = ({ section }: NumericalListSectionProps) => {
       buttonText={section.buttonText}
       buttonLink={section.buttonLink}
       variant={section.variant ?? undefined}
-      hasBackground={section.hasBackground}
     />
   )
 }

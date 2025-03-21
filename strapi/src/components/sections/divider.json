@@ -24,9 +24,6 @@
         "skola",
         "divadlo"
       ]
-    },
-    "hasBackground": {
-      "type": "boolean"
     }
   }
 }

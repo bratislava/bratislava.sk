@@ -27,7 +27,7 @@ export const pagePath = (
 
 export const parsePageLink = (
   pageLink?: PageLinkBlockFragment | null,
-): { title: string; url: string; anchor?: string } | null => {
+): { title: string; url: string } | null => {
   if (!pageLink) return null
   const param = {
     locale: pageLink?.page?.data?.attributes?.locale,
@@ -40,7 +40,6 @@ export const parsePageLink = (
   return {
     title: pageLink.title || pageLink.page?.data?.attributes?.title || '',
     url: pageLink.url ?? pagePath(param) ?? pageLink.page?.data?.attributes?.slug ?? '#',
-    anchor: pageLink.anchor ?? '',
   }
 }
 

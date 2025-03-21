@@ -15,9 +15,6 @@
     "width": {
       "type": "enumeration",
       "enum": ["narrow", "default", "wide", "full"]
-    },
-    "hasBackground": {
-      "type": "boolean"
     }
   }
 }

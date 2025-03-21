@@ -13,9 +13,6 @@
       "type": "component",
       "repeatable": true,
       "component": "blocks.icon-with-title-and-description"
-    },
-    "hasBackground": {
-      "type": "boolean"
     }
   }
 }

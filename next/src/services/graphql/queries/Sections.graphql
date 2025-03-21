@@ -9,23 +9,6 @@ fragment IconTitleDescriptionBlock on ComponentBlocksIconWithTitleAndDescription
   }
 }
 
-fragment GalleryItemBlock on ComponentBlocksGalleryItem {
-  imgTitle
-  imgSubtitle
-  imgSubtext
-  media {
-    data {
-      attributes {
-        url
-        width
-        height
-        caption
-        alternativeText
-      }
-    }
-  }
-}
-
 fragment TestimonialItemBlock on ComponentBlocksTestimonialItem {
   id
   name
@@ -55,10 +38,6 @@ fragment GallerySection on ComponentSectionsGallery {
       ...UploadImageEntity
     }
   }
-  subtitle
-  galleryItems {
-    ...GalleryItemBlock
-  }
 }
 
 fragment TimelineSection on ComponentSectionsTimeline {
@@ -70,16 +49,6 @@ fragment TimelineSection on ComponentSectionsTimeline {
 fragment BlogPostsListSection on ComponentSectionsBlogPostsList {
   title
   text
-}
-
-fragment BlogPostsByTagsSection on ComponentSectionsBlogPostsByTags {
-  title
-  text
-  tags {
-    data {
-      id
-    }
-  }
 }
 
 fragment BlogPostsByCategorySection on ComponentSectionsBlogPostsByCategory {
@@ -112,22 +81,18 @@ fragment InbaReleasesSection on ComponentSectionsInbaReleases {
 
 fragment IconTitleDescSection on ComponentSectionsIconTitleDesc {
   title
-  hasBackground
   list {
     ...IconTitleDescriptionBlock
   }
 }
 
 fragment DividerSection on ComponentSectionsDivider {
-  hasBackground
   style
 }
 
 fragment TextWithImageSection on ComponentSectionsTextWithImage {
-  hasBackground
   content
   imagePosition
-  imageShadow
   imageSrc {
     data {
       attributes {
@@ -177,13 +142,11 @@ fragment FileItemBlock on ComponentBlocksFileItem {
 }
 
 fragment ColumnedTextSection on ComponentSectionsColumnedText {
-  hasBackground
   content
   contentAlignment
 }
 
 fragment NarrowTextSection on ComponentSectionsNarrowText {
-  hasBackground
   content
   width
   align
@@ -196,7 +159,6 @@ fragment WavesSection on ComponentSectionsWaves {
 fragment PageLinkBlock on ComponentBlocksPageLink {
   title
   url
-  anchor
   page {
     data {
       attributes {
@@ -210,9 +172,7 @@ fragment PageLinkBlock on ComponentBlocksPageLink {
 
 fragment LinksSection on ComponentSectionsLinks {
   title
-  hasBackground
-  # TODO consider limit -1
-  pageLinks(pagination: { limit: 100 }) {
+  pageLinks(pagination: { limit: -1 }) {
     ...PageLinkBlock
   }
 }
@@ -259,7 +219,6 @@ fragment ComponentAccordionItemsInstitution on ComponentAccordionItemsInstitutio
 
 fragment AccordionSection on ComponentSectionsAccordion {
   title
-  hasBackground
   institutions(pagination: { limit: -1 }) {
     ...ComponentAccordionItemsInstitution
   }
@@ -307,7 +266,6 @@ fragment NumericalListSection on ComponentSectionsNumericalList {
   variant
   buttonText
   buttonLink
-  hasBackground
 }
 
 fragment OrganizationalStructureSection on ComponentSectionsOrganizationalStructure {
@@ -382,25 +340,6 @@ fragment BannerSection on ComponentSectionsBanner {
   }
   tertiaryLink {
     ...CommonLink
-  }
-}
-
-fragment FeaturedBlogPostsSection on ComponentSectionsFeaturedBlogPosts {
-  id
-  first_blog {
-    data {
-      ...LatestBlogPostEntity
-    }
-  }
-  second_blog {
-    data {
-      ...LatestBlogPostEntity
-    }
-  }
-  third_blog {
-    data {
-      ...LatestBlogPostEntity
-    }
   }
 }
 
@@ -525,10 +464,6 @@ fragment Sections on PageSectionsDynamicZone {
     ...BlogPostsListSection
   }
 
-  ... on ComponentSectionsBlogPostsByTags {
-    ...BlogPostsByTagsSection
-  }
-
   ... on ComponentSectionsBlogPostsByCategory {
     ...BlogPostsByCategorySection
   }
@@ -561,10 +496,6 @@ fragment Sections on PageSectionsDynamicZone {
 
   ... on ComponentSectionsTimeline {
     ...TimelineSection
-  }
-
-  ... on ComponentSectionsFeaturedBlogPosts {
-    ...FeaturedBlogPostsSection
   }
 
   ... on ComponentSectionsContactsSection {

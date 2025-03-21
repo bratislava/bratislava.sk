@@ -69,13 +69,25 @@
         }
       },
       "type": "enumeration",
-      "enum": ["red", "blue", "green", "yellow", "purple", "brown"]
+      "enum": [
+        "red",
+        "blue",
+        "green",
+        "yellow",
+        "purple",
+        "brown"
+      ]
     },
     "pageBackgroundImage": {
       "type": "media",
       "multiple": false,
       "required": false,
-      "allowedTypes": ["images", "files", "videos", "audios"],
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
       "pluginOptions": {
         "i18n": {
           "localized": true
@@ -99,7 +111,9 @@
         }
       },
       "type": "dynamiczone",
-      "components": ["sections.subpage-list"]
+      "components": [
+        "sections.subpage-list"
+      ]
     },
     "sections": {
       "pluginOptions": {
@@ -113,7 +127,6 @@
         "sections.banner",
         "sections.blog-posts-list",
         "sections.blog-posts-by-category",
-        "sections.blog-posts-by-tags",
         "sections.calculator",
         "sections.columned-text",
         "sections.comparison-section",
@@ -121,7 +134,6 @@
         "sections.divider",
         "sections.faqs",
         "sections.faq-categories",
-        "sections.featured-blog-posts",
         "sections.file-list",
         "sections.gallery",
         "sections.icon-title-desc",
@@ -136,7 +148,6 @@
         "sections.pros-and-cons-section",
         "sections.regulations",
         "sections.regulations-list",
-        "sections.space",
         "sections.testimonials",
         "sections.text-with-image",
         "sections.timeline",

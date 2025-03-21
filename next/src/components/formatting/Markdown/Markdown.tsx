@@ -15,7 +15,6 @@ export type MarkdownProps = {
   variant?: 'default' | 'small' | 'small-no-respo' | 'accordion'
 }
 
-// TODO hasBackground behaviour
 /**
  * See documentation: https://github.com/remarkjs/react-markdown#appendix-b-components
  *

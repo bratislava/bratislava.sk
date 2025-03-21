@@ -12,9 +12,6 @@
       "type": "component",
       "repeatable": true,
       "component": "blocks.page-link"
-    },
-    "hasBackground": {
-      "type": "boolean"
     }
   }
 }

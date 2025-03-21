@@ -126,19 +126,6 @@ export interface BlocksContactCard extends Schema.Component {
   }
 }
 
-export interface BlocksDocListExtensions extends Schema.Component {
-  collectionName: 'components_blocks_doc_list_extensions'
-  info: {
-    displayName: 'DocListExtensions'
-    icon: 'angle-right'
-  }
-  attributes: {
-    document: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>
-    title: Attribute.String
-    validFrom: Attribute.Date
-  }
-}
-
 export interface BlocksFile extends Schema.Component {
   collectionName: 'components_blocks_files'
   info: {
@@ -185,32 +172,6 @@ export interface BlocksFooterContactItem extends Schema.Component {
     label: Attribute.String & Attribute.Required
     mail: Attribute.Email
     phone: Attribute.String
-  }
-}
-
-export interface BlocksFooterSection extends Schema.Component {
-  collectionName: 'components_blocks_footer_sections'
-  info: {
-    displayName: 'footer Section'
-    icon: 'align-center'
-  }
-  attributes: {
-    pageLinks: Attribute.Component<'blocks.page-link', true>
-    title: Attribute.String
-  }
-}
-
-export interface BlocksGalleryItem extends Schema.Component {
-  collectionName: 'components_blocks_gallery_items'
-  info: {
-    description: ''
-    displayName: 'Gallery item'
-  }
-  attributes: {
-    imgSubtext: Attribute.String
-    imgSubtitle: Attribute.Text
-    imgTitle: Attribute.Text
-    media: Attribute.Media<'images'>
   }
 }
 
@@ -284,10 +245,10 @@ export interface BlocksNumericalListItem extends Schema.Component {
 export interface BlocksPageLink extends Schema.Component {
   collectionName: 'components_blocks_page_links'
   info: {
+    description: ''
     displayName: 'page Link'
   }
   attributes: {
-    anchor: Attribute.String
     page: Attribute.Relation<'blocks.page-link', 'oneToOne', 'api::page.page'>
     title: Attribute.String
     url: Attribute.String
@@ -303,36 +264,6 @@ export interface BlocksProsAndConsCard extends Schema.Component {
   attributes: {
     items: Attribute.Component<'blocks.comparison-item', true> & Attribute.Required
     title: Attribute.String & Attribute.Required
-  }
-}
-
-export interface BlocksSpaceInfo extends Schema.Component {
-  collectionName: 'components_blocks_space_infos'
-  info: {
-    displayName: 'spaceInfo'
-  }
-  attributes: {
-    bigGapCapacity: Attribute.BigInteger
-    buttonTitle: Attribute.String
-    footerText: Attribute.String
-    image: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>
-    imagePosition: Attribute.Enumeration<['left', 'right']>
-    linkTitle: Attribute.String
-    smallGapCapacity: Attribute.BigInteger
-    spaceTitle: Attribute.String
-    subText: Attribute.String
-  }
-}
-
-export interface BlocksSubpage extends Schema.Component {
-  collectionName: 'components_blocks_subpages'
-  info: {
-    displayName: 'Subpage'
-    icon: 'atlas'
-  }
-  attributes: {
-    link: Attribute.String
-    title: Attribute.String
   }
 }
 
@@ -520,56 +451,6 @@ export interface MenuMenuSection extends Schema.Component {
   }
 }
 
-export interface OsItemsAdvancedAccordionDepartment extends Schema.Component {
-  collectionName: 'components_os_items_advanced_accordion_departments'
-  info: {
-    displayName: 'Advanced Accordion Department'
-    icon: 'list-alt'
-  }
-  attributes: {
-    items: Attribute.Component<'os-items.advanced-accordion-sub-item', true>
-    title: Attribute.String
-  }
-}
-
-export interface OsItemsAdvancedAccordionItem extends Schema.Component {
-  collectionName: 'components_os_items_advanced_accordion_items'
-  info: {
-    description: ''
-    displayName: 'Advanced Accordion Item'
-    icon: 'align-justify'
-  }
-  attributes: {
-    departments: Attribute.Component<'os-items.advanced-accordion-department', true>
-    title: Attribute.String
-  }
-}
-
-export interface OsItemsAdvancedAccordionSubItem extends Schema.Component {
-  collectionName: 'components_os_items_advanced_accordion_sub_items'
-  info: {
-    description: ''
-    displayName: 'Advanced Accordion SubItem'
-    icon: 'angle-down'
-  }
-  attributes: {
-    isGroupTitle: Attribute.Boolean
-    items: Attribute.Component<'os-items.advanced-accordion-sub-sub-item', true>
-    title: Attribute.String
-  }
-}
-
-export interface OsItemsAdvancedAccordionSubSubItem extends Schema.Component {
-  collectionName: 'components_os_items_advanced_accordion_sub_sub_items'
-  info: {
-    displayName: 'Advanced Accordion SubSubItem'
-    icon: 'angle-double-down'
-  }
-  attributes: {
-    title: Attribute.String
-  }
-}
-
 export interface SectionsAccordion extends Schema.Component {
   collectionName: 'components_sections_accordions'
   info: {
@@ -578,7 +459,6 @@ export interface SectionsAccordion extends Schema.Component {
   }
   attributes: {
     flatText: Attribute.Component<'accordion-items.flat-text', true>
-    hasBackground: Attribute.Boolean
     institutions: Attribute.Component<'accordion-items.institution', true>
     institutionsNarrow: Attribute.Component<'accordion-items.institution-narrow', true>
     title: Attribute.String
@@ -624,18 +504,6 @@ export interface SectionsBlogPostsByCategory extends Schema.Component {
   }
 }
 
-export interface SectionsBlogPostsByTags extends Schema.Component {
-  collectionName: 'components_sections_blog_posts_by_tags'
-  info: {
-    displayName: 'Blog posts by tags'
-  }
-  attributes: {
-    tags: Attribute.Relation<'sections.blog-posts-by-tags', 'oneToMany', 'api::tag.tag'>
-    text: Attribute.Text
-    title: Attribute.String
-  }
-}
-
 export interface SectionsBlogPostsList extends Schema.Component {
   collectionName: 'components_sections_blog_posts_lists'
   info: {
@@ -671,7 +539,6 @@ export interface SectionsColumnedText extends Schema.Component {
     content: Attribute.RichText
     contentAlignment: Attribute.Enumeration<['left', 'center', 'right']> &
       Attribute.DefaultTo<'left'>
-    hasBackground: Attribute.Boolean
   }
 }
 
@@ -725,7 +592,6 @@ export interface SectionsDivider extends Schema.Component {
     displayName: 'Divider'
   }
   attributes: {
-    hasBackground: Attribute.Boolean
     style: Attribute.Enumeration<
       [
         'mesto_01_full_width',
@@ -750,7 +616,7 @@ export interface SectionsDivider extends Schema.Component {
 export interface SectionsFaqCategories extends Schema.Component {
   collectionName: 'components_sections_faq_categories'
   info: {
-    displayName: 'faq categories'
+    displayName: 'FAQ categories'
   }
   attributes: {
     faqCategories: Attribute.Relation<
@@ -767,36 +633,12 @@ export interface SectionsFaqs extends Schema.Component {
   collectionName: 'components_sections_faqs'
   info: {
     description: ''
-    displayName: 'faqs'
+    displayName: 'FAQs'
   }
   attributes: {
     faqs: Attribute.Relation<'sections.faqs', 'oneToMany', 'api::faq.faq'>
     text: Attribute.Text
     title: Attribute.String
-  }
-}
-
-export interface SectionsFeaturedBlogPosts extends Schema.Component {
-  collectionName: 'components_sections_featured_blog_posts'
-  info: {
-    displayName: 'Featured Blog Posts'
-  }
-  attributes: {
-    first_blog: Attribute.Relation<
-      'sections.featured-blog-posts',
-      'oneToOne',
-      'api::blog-post.blog-post'
-    >
-    second_blog: Attribute.Relation<
-      'sections.featured-blog-posts',
-      'oneToOne',
-      'api::blog-post.blog-post'
-    >
-    third_blog: Attribute.Relation<
-      'sections.featured-blog-posts',
-      'oneToOne',
-      'api::blog-post.blog-post'
-    >
   }
 }
 
@@ -821,9 +663,7 @@ export interface SectionsGallery extends Schema.Component {
     icon: 'camera'
   }
   attributes: {
-    galleryItems: Attribute.Component<'blocks.gallery-item', true>
     medias: Attribute.Media<'images', true> & Attribute.Required
-    subtitle: Attribute.String
     text: Attribute.Text
     title: Attribute.String
   }
@@ -897,7 +737,6 @@ export interface SectionsIconTitleDesc extends Schema.Component {
     displayName: 'Icon Title Desc'
   }
   attributes: {
-    hasBackground: Attribute.Boolean
     list: Attribute.Component<'blocks.icon-with-title-and-description', true>
     title: Attribute.String
   }
@@ -942,7 +781,7 @@ export interface SectionsInbaArticlesList extends Schema.Component {
 export interface SectionsInbaReleases extends Schema.Component {
   collectionName: 'components_sections_inba_releases'
   info: {
-    displayName: 'inba releases'
+    displayName: 'in.ba releases'
   }
   attributes: {
     text: Attribute.Text
@@ -956,7 +795,6 @@ export interface SectionsLinks extends Schema.Component {
     displayName: 'Links'
   }
   attributes: {
-    hasBackground: Attribute.Boolean
     pageLinks: Attribute.Component<'blocks.page-link', true>
     title: Attribute.String
   }
@@ -970,7 +808,6 @@ export interface SectionsNarrowText extends Schema.Component {
   attributes: {
     align: Attribute.Enumeration<['left', 'center', 'right']>
     content: Attribute.RichText
-    hasBackground: Attribute.Boolean
     width: Attribute.Enumeration<['narrow', 'default', 'wide', 'full']>
   }
 }
@@ -983,7 +820,6 @@ export interface SectionsNumericalList extends Schema.Component {
   attributes: {
     buttonLink: Attribute.String
     buttonText: Attribute.String
-    hasBackground: Attribute.Boolean
     items: Attribute.Component<'blocks.numerical-list-item', true>
     title: Attribute.String
     variant: Attribute.Enumeration<['basic', 'combined', 'roadmap']>
@@ -1001,11 +837,11 @@ export interface SectionsOfficialBoard extends Schema.Component {
 export interface SectionsOrganizationalStructure extends Schema.Component {
   collectionName: 'components_sections_organizational_structures'
   info: {
+    description: ''
     displayName: 'Organizational structure'
     icon: 'address-book'
   }
   attributes: {
-    items: Attribute.Component<'os-items.advanced-accordion-item', true>
     title: Attribute.String
   }
 }
@@ -1054,24 +890,12 @@ export interface SectionsRegulationsList extends Schema.Component {
   }
 }
 
-export interface SectionsSpace extends Schema.Component {
-  collectionName: 'components_sections_spaces'
-  info: {
-    displayName: 'Space'
-  }
-  attributes: {
-    sectionTitle: Attribute.String
-    spaceInfo: Attribute.Component<'blocks.space-info', true>
-  }
-}
-
 export interface SectionsSubpageList extends Schema.Component {
   collectionName: 'components_sections_subpage_lists'
   info: {
     displayName: 'Subpage List'
   }
   attributes: {
-    hasBackground: Attribute.Boolean
     subpageList: Attribute.Component<'blocks.page-link', true>
   }
 }
@@ -1100,13 +924,12 @@ export interface SectionsTestimonials extends Schema.Component {
 export interface SectionsTextWithImage extends Schema.Component {
   collectionName: 'components_sections_text_with_images'
   info: {
+    description: ''
     displayName: 'Text with Image'
   }
   attributes: {
     content: Attribute.RichText
-    hasBackground: Attribute.Boolean
     imagePosition: Attribute.Enumeration<['left', 'right']>
-    imageShadow: Attribute.Boolean
     imageSrc: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>
   }
 }
@@ -1184,13 +1007,10 @@ declare module '@strapi/types' {
       'blocks.comparison-card': BlocksComparisonCard
       'blocks.comparison-item': BlocksComparisonItem
       'blocks.contact-card': BlocksContactCard
-      'blocks.doc-list-extensions': BlocksDocListExtensions
       'blocks.file': BlocksFile
       'blocks.file-item': BlocksFileItem
       'blocks.footer-column': BlocksFooterColumn
       'blocks.footer-contact-item': BlocksFooterContactItem
-      'blocks.footer-section': BlocksFooterSection
-      'blocks.gallery-item': BlocksGalleryItem
       'blocks.homepage-bookmark': BlocksHomepageBookmark
       'blocks.homepage-highlights-item': BlocksHomepageHighlightsItem
       'blocks.icon-with-title-and-description': BlocksIconWithTitleAndDescription
@@ -1198,8 +1018,6 @@ declare module '@strapi/types' {
       'blocks.numerical-list-item': BlocksNumericalListItem
       'blocks.page-link': BlocksPageLink
       'blocks.pros-and-cons-card': BlocksProsAndConsCard
-      'blocks.space-info': BlocksSpaceInfo
-      'blocks.subpage': BlocksSubpage
       'blocks.testimonial-item': BlocksTestimonialItem
       'blocks.timeline-item': BlocksTimelineItem
       'blocks.top-services-item': BlocksTopServicesItem
@@ -1209,14 +1027,9 @@ declare module '@strapi/types' {
       'menu.menu-item': MenuMenuItem
       'menu.menu-link': MenuMenuLink
       'menu.menu-section': MenuMenuSection
-      'os-items.advanced-accordion-department': OsItemsAdvancedAccordionDepartment
-      'os-items.advanced-accordion-item': OsItemsAdvancedAccordionItem
-      'os-items.advanced-accordion-sub-item': OsItemsAdvancedAccordionSubItem
-      'os-items.advanced-accordion-sub-sub-item': OsItemsAdvancedAccordionSubSubItem
       'sections.accordion': SectionsAccordion
       'sections.banner': SectionsBanner
       'sections.blog-posts-by-category': SectionsBlogPostsByCategory
-      'sections.blog-posts-by-tags': SectionsBlogPostsByTags
       'sections.blog-posts-list': SectionsBlogPostsList
       'sections.calculator': SectionsCalculator
       'sections.columned-text': SectionsColumnedText
@@ -1225,7 +1038,6 @@ declare module '@strapi/types' {
       'sections.divider': SectionsDivider
       'sections.faq-categories': SectionsFaqCategories
       'sections.faqs': SectionsFaqs
-      'sections.featured-blog-posts': SectionsFeaturedBlogPosts
       'sections.file-list': SectionsFileList
       'sections.gallery': SectionsGallery
       'sections.homepage-events': SectionsHomepageEvents
@@ -1244,7 +1056,6 @@ declare module '@strapi/types' {
       'sections.pros-and-cons-section': SectionsProsAndConsSection
       'sections.regulations': SectionsRegulations
       'sections.regulations-list': SectionsRegulationsList
-      'sections.space': SectionsSpace
       'sections.subpage-list': SectionsSubpageList
       'sections.testimonials': SectionsTestimonials
       'sections.text-with-image': SectionsTextWithImage

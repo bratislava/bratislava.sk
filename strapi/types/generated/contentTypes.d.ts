@@ -430,7 +430,7 @@ export interface ApiBlogPostBlogPost extends Schema.CollectionType {
 export interface ApiFaqCategoryFaqCategory extends Schema.CollectionType {
   collectionName: 'faq_categories'
   info: {
-    displayName: 'faq category'
+    displayName: 'FAQs kateg\u00F3rie'
     pluralName: 'faq-categories'
     singularName: 'faq-category'
   }
@@ -477,7 +477,7 @@ export interface ApiFaqCategoryFaqCategory extends Schema.CollectionType {
 export interface ApiFaqFaq extends Schema.CollectionType {
   collectionName: 'faqs'
   info: {
-    displayName: 'faq'
+    displayName: 'FAQs'
     pluralName: 'faqs'
     singularName: 'faq'
   }
@@ -518,7 +518,7 @@ export interface ApiFooterFooter extends Schema.SingleType {
   collectionName: 'footers'
   info: {
     description: ''
-    displayName: 'Footer'
+    displayName: 'P\u00E4ti\u010Dka'
     pluralName: 'footers'
     singularName: 'footer'
   }
@@ -589,7 +589,7 @@ export interface ApiGeneralGeneral extends Schema.SingleType {
   collectionName: 'generals'
   info: {
     description: ''
-    displayName: 'General'
+    displayName: 'V\u0161eobecn\u00E9 + hlavi\u010Dka'
     pluralName: 'generals'
     singularName: 'general'
   }
@@ -962,7 +962,7 @@ export interface ApiPageCategoryPageCategory extends Schema.CollectionType {
   collectionName: 'page_categories'
   info: {
     description: ''
-    displayName: 'Kateg\u00F3rie'
+    displayName: 'Hlavn\u00E9 kateg\u00F3rie'
     pluralName: 'page-categories'
     singularName: 'page-category'
   }
@@ -1013,11 +1013,6 @@ export interface ApiPageCategoryPageCategory extends Schema.CollectionType {
           localized: true
         }
       }>
-    subcategories: Attribute.Relation<
-      'api::page-category.page-category',
-      'oneToMany',
-      'api::page-subcategory.page-subcategory'
-    >
     title: Attribute.Text &
       Attribute.SetPluginOptions<{
         i18n: {
@@ -1026,109 +1021,6 @@ export interface ApiPageCategoryPageCategory extends Schema.CollectionType {
       }>
     updatedAt: Attribute.DateTime
     updatedBy: Attribute.Relation<'api::page-category.page-category', 'oneToOne', 'admin::user'> &
-      Attribute.Private
-  }
-}
-
-export interface ApiPageSubcategoryPageSubcategory extends Schema.CollectionType {
-  collectionName: 'page_subcategories'
-  info: {
-    description: ''
-    displayName: 'Podkateg\u00F3rie'
-    pluralName: 'page-subcategories'
-    singularName: 'page-subcategory'
-  }
-  options: {
-    draftAndPublish: true
-  }
-  pluginOptions: {
-    i18n: {
-      localized: true
-    }
-  }
-  attributes: {
-    createdAt: Attribute.DateTime
-    createdBy: Attribute.Relation<
-      'api::page-subcategory.page-subcategory',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private
-    icon: Attribute.Enumeration<
-      [
-        'sprava_mesta_01',
-        'transparentne_mesto_01',
-        'dane_01',
-        'projekty_01',
-        'partnerstva_01',
-        'mhd_02',
-        'cyklo_02',
-        'mapy_02',
-        'sprava_a_udrzba_02',
-        'doprava_02',
-        'parkovanie_02',
-        'zdielana_mobilita_02',
-        'zivotne_prostredie_03',
-        'zelen_03',
-        'vystavba_a_nehnutelnosti_03',
-        'uzemny_plan_03',
-        'rozvoj_mesta_03',
-        'verejne_osvetlenie_03',
-        'byvanie_04',
-        'sluzby_04',
-        'zariadenia_04',
-        'pomoc_04',
-        'aktivity_04',
-        'skolstvo_05',
-        'sport_05',
-        'deti_a_mladez_05',
-        'ocenovanie_05',
-        'dotacie_05',
-        'kalendar_06',
-        'organizacie_06',
-        'dedicstvo_06',
-        'sluzby_06',
-        'koncepcia_06',
-        'komunity_06',
-        'covid_06'
-      ]
-    > &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true
-        }
-      }>
-    locale: Attribute.String
-    localizations: Attribute.Relation<
-      'api::page-subcategory.page-subcategory',
-      'oneToMany',
-      'api::page-subcategory.page-subcategory'
-    >
-    moreLink: Attribute.Component<'blocks.page-link'> &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true
-        }
-      }>
-    pages: Attribute.Component<'blocks.page-link', true> &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true
-        }
-      }>
-    publishedAt: Attribute.DateTime
-    title: Attribute.String &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true
-        }
-      }>
-    updatedAt: Attribute.DateTime
-    updatedBy: Attribute.Relation<
-      'api::page-subcategory.page-subcategory',
-      'oneToOne',
-      'admin::user'
-    > &
       Attribute.Private
   }
 }
@@ -1205,7 +1097,6 @@ export interface ApiPagePage extends Schema.CollectionType {
         'sections.banner',
         'sections.blog-posts-list',
         'sections.blog-posts-by-category',
-        'sections.blog-posts-by-tags',
         'sections.calculator',
         'sections.columned-text',
         'sections.comparison-section',
@@ -1213,7 +1104,6 @@ export interface ApiPagePage extends Schema.CollectionType {
         'sections.divider',
         'sections.faqs',
         'sections.faq-categories',
-        'sections.featured-blog-posts',
         'sections.file-list',
         'sections.gallery',
         'sections.icon-title-desc',
@@ -1228,7 +1118,6 @@ export interface ApiPagePage extends Schema.CollectionType {
         'sections.pros-and-cons-section',
         'sections.regulations',
         'sections.regulations-list',
-        'sections.space',
         'sections.testimonials',
         'sections.text-with-image',
         'sections.timeline',
@@ -1268,7 +1157,7 @@ export interface ApiRegulationRegulation extends Schema.CollectionType {
   collectionName: 'regulations'
   info: {
     description: ''
-    displayName: 'Regulation'
+    displayName: 'V\u0161eobecne z\u00E1v\u00E4zn\u00E9 nariadenia'
     pluralName: 'regulations'
     singularName: 'regulation'
   }
@@ -1364,7 +1253,7 @@ export interface ApiTaxAdministratorsListTaxAdministratorsList extends Schema.Si
   collectionName: 'tax_administrators_lists'
   info: {
     description: ''
-    displayName: 'Tax administrators list'
+    displayName: 'Zoznam spr\u00E1vcov dan\u00ED'
     pluralName: 'tax-administrators-lists'
     singularName: 'tax-administrators-list'
   }
@@ -1778,7 +1667,6 @@ declare module '@strapi/types' {
       'api::inba-tag.inba-tag': ApiInbaTagInbaTag
       'api::menu.menu': ApiMenuMenu
       'api::page-category.page-category': ApiPageCategoryPageCategory
-      'api::page-subcategory.page-subcategory': ApiPageSubcategoryPageSubcategory
       'api::page.page': ApiPagePage
       'api::regulation.regulation': ApiRegulationRegulation
       'api::tag.tag': ApiTagTag
