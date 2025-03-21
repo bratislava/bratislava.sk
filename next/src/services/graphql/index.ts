@@ -807,84 +807,6 @@ export type ComponentMenuMenuSectionInput = {
   page?: InputMaybe<Scalars['ID']['input']>
 }
 
-export type ComponentOsItemsAdvancedAccordionDepartment = {
-  __typename?: 'ComponentOsItemsAdvancedAccordionDepartment'
-  id: Scalars['ID']['output']
-  items?: Maybe<Array<Maybe<ComponentOsItemsAdvancedAccordionSubItem>>>
-  title?: Maybe<Scalars['String']['output']>
-}
-
-export type ComponentOsItemsAdvancedAccordionDepartmentItemsArgs = {
-  filters?: InputMaybe<ComponentOsItemsAdvancedAccordionSubItemFiltersInput>
-  pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
-}
-
-export type ComponentOsItemsAdvancedAccordionDepartmentFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<ComponentOsItemsAdvancedAccordionDepartmentFiltersInput>>>
-  items?: InputMaybe<ComponentOsItemsAdvancedAccordionSubItemFiltersInput>
-  not?: InputMaybe<ComponentOsItemsAdvancedAccordionDepartmentFiltersInput>
-  or?: InputMaybe<Array<InputMaybe<ComponentOsItemsAdvancedAccordionDepartmentFiltersInput>>>
-  title?: InputMaybe<StringFilterInput>
-}
-
-export type ComponentOsItemsAdvancedAccordionItem = {
-  __typename?: 'ComponentOsItemsAdvancedAccordionItem'
-  departments?: Maybe<Array<Maybe<ComponentOsItemsAdvancedAccordionDepartment>>>
-  id: Scalars['ID']['output']
-  title?: Maybe<Scalars['String']['output']>
-}
-
-export type ComponentOsItemsAdvancedAccordionItemDepartmentsArgs = {
-  filters?: InputMaybe<ComponentOsItemsAdvancedAccordionDepartmentFiltersInput>
-  pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
-}
-
-export type ComponentOsItemsAdvancedAccordionItemFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<ComponentOsItemsAdvancedAccordionItemFiltersInput>>>
-  departments?: InputMaybe<ComponentOsItemsAdvancedAccordionDepartmentFiltersInput>
-  not?: InputMaybe<ComponentOsItemsAdvancedAccordionItemFiltersInput>
-  or?: InputMaybe<Array<InputMaybe<ComponentOsItemsAdvancedAccordionItemFiltersInput>>>
-  title?: InputMaybe<StringFilterInput>
-}
-
-export type ComponentOsItemsAdvancedAccordionSubItem = {
-  __typename?: 'ComponentOsItemsAdvancedAccordionSubItem'
-  id: Scalars['ID']['output']
-  isGroupTitle?: Maybe<Scalars['Boolean']['output']>
-  items?: Maybe<Array<Maybe<ComponentOsItemsAdvancedAccordionSubSubItem>>>
-  title?: Maybe<Scalars['String']['output']>
-}
-
-export type ComponentOsItemsAdvancedAccordionSubItemItemsArgs = {
-  filters?: InputMaybe<ComponentOsItemsAdvancedAccordionSubSubItemFiltersInput>
-  pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
-}
-
-export type ComponentOsItemsAdvancedAccordionSubItemFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<ComponentOsItemsAdvancedAccordionSubItemFiltersInput>>>
-  isGroupTitle?: InputMaybe<BooleanFilterInput>
-  items?: InputMaybe<ComponentOsItemsAdvancedAccordionSubSubItemFiltersInput>
-  not?: InputMaybe<ComponentOsItemsAdvancedAccordionSubItemFiltersInput>
-  or?: InputMaybe<Array<InputMaybe<ComponentOsItemsAdvancedAccordionSubItemFiltersInput>>>
-  title?: InputMaybe<StringFilterInput>
-}
-
-export type ComponentOsItemsAdvancedAccordionSubSubItem = {
-  __typename?: 'ComponentOsItemsAdvancedAccordionSubSubItem'
-  id: Scalars['ID']['output']
-  title?: Maybe<Scalars['String']['output']>
-}
-
-export type ComponentOsItemsAdvancedAccordionSubSubItemFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<ComponentOsItemsAdvancedAccordionSubSubItemFiltersInput>>>
-  not?: InputMaybe<ComponentOsItemsAdvancedAccordionSubSubItemFiltersInput>
-  or?: InputMaybe<Array<InputMaybe<ComponentOsItemsAdvancedAccordionSubSubItemFiltersInput>>>
-  title?: InputMaybe<StringFilterInput>
-}
-
 export type ComponentSectionsAccordion = {
   __typename?: 'ComponentSectionsAccordion'
   flatText?: Maybe<Array<Maybe<ComponentAccordionItemsFlatText>>>
@@ -1250,14 +1172,7 @@ export type ComponentSectionsOfficialBoard = {
 export type ComponentSectionsOrganizationalStructure = {
   __typename?: 'ComponentSectionsOrganizationalStructure'
   id: Scalars['ID']['output']
-  items?: Maybe<Array<Maybe<ComponentOsItemsAdvancedAccordionItem>>>
   title?: Maybe<Scalars['String']['output']>
-}
-
-export type ComponentSectionsOrganizationalStructureItemsArgs = {
-  filters?: InputMaybe<ComponentOsItemsAdvancedAccordionItemFiltersInput>
-  pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
 }
 
 export type ComponentSectionsProsAndConsSection = {
@@ -1961,10 +1876,6 @@ export type GenericMorph =
   | ComponentMenuMenuItem
   | ComponentMenuMenuLink
   | ComponentMenuMenuSection
-  | ComponentOsItemsAdvancedAccordionDepartment
-  | ComponentOsItemsAdvancedAccordionItem
-  | ComponentOsItemsAdvancedAccordionSubItem
-  | ComponentOsItemsAdvancedAccordionSubSubItem
   | ComponentSectionsAccordion
   | ComponentSectionsBanner
   | ComponentSectionsBlogPostsByCategory

@@ -451,56 +451,6 @@ export interface MenuMenuSection extends Schema.Component {
   }
 }
 
-export interface OsItemsAdvancedAccordionDepartment extends Schema.Component {
-  collectionName: 'components_os_items_advanced_accordion_departments'
-  info: {
-    displayName: 'Advanced Accordion Department'
-    icon: 'list-alt'
-  }
-  attributes: {
-    items: Attribute.Component<'os-items.advanced-accordion-sub-item', true>
-    title: Attribute.String
-  }
-}
-
-export interface OsItemsAdvancedAccordionItem extends Schema.Component {
-  collectionName: 'components_os_items_advanced_accordion_items'
-  info: {
-    description: ''
-    displayName: 'Advanced Accordion Item'
-    icon: 'align-justify'
-  }
-  attributes: {
-    departments: Attribute.Component<'os-items.advanced-accordion-department', true>
-    title: Attribute.String
-  }
-}
-
-export interface OsItemsAdvancedAccordionSubItem extends Schema.Component {
-  collectionName: 'components_os_items_advanced_accordion_sub_items'
-  info: {
-    description: ''
-    displayName: 'Advanced Accordion SubItem'
-    icon: 'angle-down'
-  }
-  attributes: {
-    isGroupTitle: Attribute.Boolean
-    items: Attribute.Component<'os-items.advanced-accordion-sub-sub-item', true>
-    title: Attribute.String
-  }
-}
-
-export interface OsItemsAdvancedAccordionSubSubItem extends Schema.Component {
-  collectionName: 'components_os_items_advanced_accordion_sub_sub_items'
-  info: {
-    displayName: 'Advanced Accordion SubSubItem'
-    icon: 'angle-double-down'
-  }
-  attributes: {
-    title: Attribute.String
-  }
-}
-
 export interface SectionsAccordion extends Schema.Component {
   collectionName: 'components_sections_accordions'
   info: {
@@ -899,11 +849,11 @@ export interface SectionsOfficialBoard extends Schema.Component {
 export interface SectionsOrganizationalStructure extends Schema.Component {
   collectionName: 'components_sections_organizational_structures'
   info: {
+    description: ''
     displayName: 'Organizational structure'
     icon: 'address-book'
   }
   attributes: {
-    items: Attribute.Component<'os-items.advanced-accordion-item', true>
     title: Attribute.String
   }
 }
@@ -1089,10 +1039,6 @@ declare module '@strapi/types' {
       'menu.menu-item': MenuMenuItem
       'menu.menu-link': MenuMenuLink
       'menu.menu-section': MenuMenuSection
-      'os-items.advanced-accordion-department': OsItemsAdvancedAccordionDepartment
-      'os-items.advanced-accordion-item': OsItemsAdvancedAccordionItem
-      'os-items.advanced-accordion-sub-item': OsItemsAdvancedAccordionSubItem
-      'os-items.advanced-accordion-sub-sub-item': OsItemsAdvancedAccordionSubSubItem
       'sections.accordion': SectionsAccordion
       'sections.banner': SectionsBanner
       'sections.blog-posts-by-category': SectionsBlogPostsByCategory
