@@ -11,7 +11,6 @@ import { useLocalizations } from '@/src/components/providers/LocalizationsProvid
 import { getCategoryColorLocalStyle } from '@/src/utils/colors'
 import { getCommonLinkProps } from '@/src/utils/getCommonLinkProps'
 import { isDefined } from '@/src/utils/isDefined'
-import { isExternalLink } from '@/src/utils/isExternalLink'
 import { useTranslation } from '@/src/utils/useTranslation'
 
 type NavBarProps = { className?: string }
@@ -52,7 +51,7 @@ const NavBarHeader = ({ className }: NavBarProps) => {
                     key={linkIndex}
                     variant="underlined-medium"
                     href={pageSlug ? `/${pageSlug}` : link.url ?? '#'}
-                    target={link.url && isExternalLink(link.url) ? '_blank' : undefined}
+                    target={link.url?.startsWith('http') ? '_blank' : undefined}
                   >
                     {link.label}
                   </MLink>

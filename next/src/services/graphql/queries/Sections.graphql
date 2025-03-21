@@ -159,7 +159,6 @@ fragment WavesSection on ComponentSectionsWaves {
 fragment PageLinkBlock on ComponentBlocksPageLink {
   title
   url
-  anchor
   page {
     data {
       attributes {

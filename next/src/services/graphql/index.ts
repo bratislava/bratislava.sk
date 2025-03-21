@@ -567,7 +567,6 @@ export type ComponentBlocksNumericalListItemFiltersInput = {
 
 export type ComponentBlocksPageLink = {
   __typename?: 'ComponentBlocksPageLink'
-  anchor?: Maybe<Scalars['String']['output']>
   id: Scalars['ID']['output']
   page?: Maybe<PageEntityResponse>
   title?: Maybe<Scalars['String']['output']>
@@ -575,7 +574,6 @@ export type ComponentBlocksPageLink = {
 }
 
 export type ComponentBlocksPageLinkFiltersInput = {
-  anchor?: InputMaybe<StringFilterInput>
   and?: InputMaybe<Array<InputMaybe<ComponentBlocksPageLinkFiltersInput>>>
   not?: InputMaybe<ComponentBlocksPageLinkFiltersInput>
   or?: InputMaybe<Array<InputMaybe<ComponentBlocksPageLinkFiltersInput>>>
@@ -8183,7 +8181,6 @@ export type PageBySlugQuery = {
                 __typename?: 'ComponentBlocksPageLink'
                 title?: string | null
                 url?: string | null
-                anchor?: string | null
                 page?: {
                   __typename?: 'PageEntityResponse'
                   data?: {
@@ -8476,7 +8473,6 @@ export type PageBySlugQuery = {
                 __typename?: 'ComponentBlocksPageLink'
                 title?: string | null
                 url?: string | null
-                anchor?: string | null
                 page?: {
                   __typename?: 'PageEntityResponse'
                   data?: {
@@ -9102,7 +9098,6 @@ export type PageEntityFragment = {
             __typename?: 'ComponentBlocksPageLink'
             title?: string | null
             url?: string | null
-            anchor?: string | null
             page?: {
               __typename?: 'PageEntityResponse'
               data?: {
@@ -9391,7 +9386,6 @@ export type PageEntityFragment = {
             __typename?: 'ComponentBlocksPageLink'
             title?: string | null
             url?: string | null
-            anchor?: string | null
             page?: {
               __typename?: 'PageEntityResponse'
               data?: {
@@ -10701,7 +10695,6 @@ export type PageLinkBlockFragment = {
   __typename?: 'ComponentBlocksPageLink'
   title?: string | null
   url?: string | null
-  anchor?: string | null
   page?: {
     __typename?: 'PageEntityResponse'
     data?: {
@@ -10723,7 +10716,6 @@ export type LinksSectionFragment = {
     __typename?: 'ComponentBlocksPageLink'
     title?: string | null
     url?: string | null
-    anchor?: string | null
     page?: {
       __typename?: 'PageEntityResponse'
       data?: {
@@ -11709,7 +11701,6 @@ type Sections_ComponentSectionsLinks_Fragment = {
     __typename?: 'ComponentBlocksPageLink'
     title?: string | null
     url?: string | null
-    anchor?: string | null
     page?: {
       __typename?: 'PageEntityResponse'
       data?: {
@@ -12040,7 +12031,6 @@ export type SubpageListPageHeaderSectionFragment = {
     __typename?: 'ComponentBlocksPageLink'
     title?: string | null
     url?: string | null
-    anchor?: string | null
     page?: {
       __typename?: 'PageEntityResponse'
       data?: {
@@ -12063,7 +12053,6 @@ type PageHeaderSections_ComponentSectionsSubpageList_Fragment = {
     __typename?: 'ComponentBlocksPageLink'
     title?: string | null
     url?: string | null
-    anchor?: string | null
     page?: {
       __typename?: 'PageEntityResponse'
       data?: {
@@ -12243,7 +12232,6 @@ export const PageLinkBlockFragmentDoc = gql`
   fragment PageLinkBlock on ComponentBlocksPageLink {
     title
     url
-    anchor
     page {
       data {
         attributes {

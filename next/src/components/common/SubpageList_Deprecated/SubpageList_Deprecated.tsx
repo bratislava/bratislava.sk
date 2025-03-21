@@ -1,11 +1,10 @@
 import { twMerge } from 'tailwind-merge'
 
 import MLink from '@/src/components/common/MLink/MLink'
-import { isExternalLink } from '@/src/utils/isExternalLink'
 
 export type SubpageListProps = {
   className?: string
-  subpageList?: { title?: string; url?: string; anchor?: string }[]
+  subpageList?: { title?: string; url?: string }[]
 }
 
 const SubpageList = ({ className, subpageList }: SubpageListProps) => {
@@ -32,7 +31,7 @@ const SubpageList = ({ className, subpageList }: SubpageListProps) => {
           <div className="text-large font-medium leading-6 tracking-wide">
             {/* FIXME Typography. Convert to use Typograhy. Issue: Different font weight than Figma <p> */}
             <MLink
-              href={subpage.url ? isExternalLink(subpage.url) : `#${subpage.anchor}`}
+              href={subpage.url ?? '#'}
               target={subpage.url?.startsWith('http') ? '_blank' : undefined}
               variant="underlineOnHover"
               stretched

@@ -574,7 +574,6 @@ input ComponentBlocksNumericalListItemInput {
 }
 
 type ComponentBlocksPageLink {
-  anchor: String
   id: ID!
   page: PageEntityResponse
   title: String
@@ -582,7 +581,6 @@ type ComponentBlocksPageLink {
 }
 
 input ComponentBlocksPageLinkFiltersInput {
-  anchor: StringFilterInput
   and: [ComponentBlocksPageLinkFiltersInput]
   not: ComponentBlocksPageLinkFiltersInput
   or: [ComponentBlocksPageLinkFiltersInput]
@@ -592,7 +590,6 @@ input ComponentBlocksPageLinkFiltersInput {
 }
 
 input ComponentBlocksPageLinkInput {
-  anchor: String
   id: ID
   page: ID
   title: String

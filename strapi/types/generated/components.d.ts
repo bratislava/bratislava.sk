@@ -245,10 +245,10 @@ export interface BlocksNumericalListItem extends Schema.Component {
 export interface BlocksPageLink extends Schema.Component {
   collectionName: 'components_blocks_page_links'
   info: {
+    description: ''
     displayName: 'page Link'
   }
   attributes: {
-    anchor: Attribute.String
     page: Attribute.Relation<'blocks.page-link', 'oneToOne', 'api::page.page'>
     title: Attribute.String
     url: Attribute.String
