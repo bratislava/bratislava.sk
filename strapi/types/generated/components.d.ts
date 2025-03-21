@@ -175,20 +175,6 @@ export interface BlocksFooterContactItem extends Schema.Component {
   }
 }
 
-export interface BlocksGalleryItem extends Schema.Component {
-  collectionName: 'components_blocks_gallery_items'
-  info: {
-    description: ''
-    displayName: 'Gallery item'
-  }
-  attributes: {
-    imgSubtext: Attribute.String
-    imgSubtitle: Attribute.Text
-    imgTitle: Attribute.Text
-    media: Attribute.Media<'images'>
-  }
-}
-
 export interface BlocksHomepageBookmark extends Schema.Component {
   collectionName: 'components_blocks_homepage_bookmarks'
   info: {
@@ -751,9 +737,7 @@ export interface SectionsGallery extends Schema.Component {
     icon: 'camera'
   }
   attributes: {
-    galleryItems: Attribute.Component<'blocks.gallery-item', true>
     medias: Attribute.Media<'images', true> & Attribute.Required
-    subtitle: Attribute.String
     text: Attribute.Text
     title: Attribute.String
   }
@@ -1101,7 +1085,6 @@ declare module '@strapi/types' {
       'blocks.file-item': BlocksFileItem
       'blocks.footer-column': BlocksFooterColumn
       'blocks.footer-contact-item': BlocksFooterContactItem
-      'blocks.gallery-item': BlocksGalleryItem
       'blocks.homepage-bookmark': BlocksHomepageBookmark
       'blocks.homepage-highlights-item': BlocksHomepageHighlightsItem
       'blocks.icon-with-title-and-description': BlocksIconWithTitleAndDescription

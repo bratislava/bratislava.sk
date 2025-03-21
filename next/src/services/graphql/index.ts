@@ -468,24 +468,6 @@ export type ComponentBlocksFooterContactItemInput = {
   phone?: InputMaybe<Scalars['String']['input']>
 }
 
-export type ComponentBlocksGalleryItem = {
-  __typename?: 'ComponentBlocksGalleryItem'
-  id: Scalars['ID']['output']
-  imgSubtext?: Maybe<Scalars['String']['output']>
-  imgSubtitle?: Maybe<Scalars['String']['output']>
-  imgTitle?: Maybe<Scalars['String']['output']>
-  media?: Maybe<UploadFileEntityResponse>
-}
-
-export type ComponentBlocksGalleryItemFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<ComponentBlocksGalleryItemFiltersInput>>>
-  imgSubtext?: InputMaybe<StringFilterInput>
-  imgSubtitle?: InputMaybe<StringFilterInput>
-  imgTitle?: InputMaybe<StringFilterInput>
-  not?: InputMaybe<ComponentBlocksGalleryItemFiltersInput>
-  or?: InputMaybe<Array<InputMaybe<ComponentBlocksGalleryItemFiltersInput>>>
-}
-
 export type ComponentBlocksHomepageBookmark = {
   __typename?: 'ComponentBlocksHomepageBookmark'
   headline?: Maybe<Scalars['String']['output']>
@@ -1099,18 +1081,10 @@ export type ComponentSectionsFileListFileListArgs = {
 
 export type ComponentSectionsGallery = {
   __typename?: 'ComponentSectionsGallery'
-  galleryItems?: Maybe<Array<Maybe<ComponentBlocksGalleryItem>>>
   id: Scalars['ID']['output']
   medias: UploadFileRelationResponseCollection
-  subtitle?: Maybe<Scalars['String']['output']>
   text?: Maybe<Scalars['String']['output']>
   title?: Maybe<Scalars['String']['output']>
-}
-
-export type ComponentSectionsGalleryGalleryItemsArgs = {
-  filters?: InputMaybe<ComponentBlocksGalleryItemFiltersInput>
-  pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
 }
 
 export type ComponentSectionsGalleryMediasArgs = {
@@ -1978,7 +1952,6 @@ export type GenericMorph =
   | ComponentBlocksFileItem
   | ComponentBlocksFooterColumn
   | ComponentBlocksFooterContactItem
-  | ComponentBlocksGalleryItem
   | ComponentBlocksHomepageBookmark
   | ComponentBlocksHomepageHighlightsItem
   | ComponentBlocksIconWithTitleAndDescription
@@ -4144,7 +4117,6 @@ export type BlogPostBySlugQuery = {
               __typename: 'ComponentSectionsGallery'
               title?: string | null
               text?: string | null
-              subtitle?: string | null
               medias: {
                 __typename?: 'UploadFileRelationResponseCollection'
                 data: Array<{
@@ -4161,26 +4133,6 @@ export type BlogPostBySlugQuery = {
                   } | null
                 }>
               }
-              galleryItems?: Array<{
-                __typename?: 'ComponentBlocksGalleryItem'
-                imgTitle?: string | null
-                imgSubtitle?: string | null
-                imgSubtext?: string | null
-                media?: {
-                  __typename?: 'UploadFileEntityResponse'
-                  data?: {
-                    __typename?: 'UploadFileEntity'
-                    attributes?: {
-                      __typename?: 'UploadFile'
-                      url: string
-                      width?: number | null
-                      height?: number | null
-                      caption?: string | null
-                      alternativeText?: string | null
-                    } | null
-                  } | null
-                } | null
-              } | null> | null
             }
           | {
               __typename: 'ComponentSectionsNarrowText'
@@ -4508,7 +4460,6 @@ export type LatestPostsByTagsQuery = {
               __typename: 'ComponentSectionsGallery'
               title?: string | null
               text?: string | null
-              subtitle?: string | null
               medias: {
                 __typename?: 'UploadFileRelationResponseCollection'
                 data: Array<{
@@ -4525,26 +4476,6 @@ export type LatestPostsByTagsQuery = {
                   } | null
                 }>
               }
-              galleryItems?: Array<{
-                __typename?: 'ComponentBlocksGalleryItem'
-                imgTitle?: string | null
-                imgSubtitle?: string | null
-                imgSubtext?: string | null
-                media?: {
-                  __typename?: 'UploadFileEntityResponse'
-                  data?: {
-                    __typename?: 'UploadFileEntity'
-                    attributes?: {
-                      __typename?: 'UploadFile'
-                      url: string
-                      width?: number | null
-                      height?: number | null
-                      caption?: string | null
-                      alternativeText?: string | null
-                    } | null
-                  } | null
-                } | null
-              } | null> | null
             }
           | {
               __typename: 'ComponentSectionsNarrowText'
@@ -5073,7 +5004,6 @@ export type BlogPostEntityFragment = {
           __typename: 'ComponentSectionsGallery'
           title?: string | null
           text?: string | null
-          subtitle?: string | null
           medias: {
             __typename?: 'UploadFileRelationResponseCollection'
             data: Array<{
@@ -5090,26 +5020,6 @@ export type BlogPostEntityFragment = {
               } | null
             }>
           }
-          galleryItems?: Array<{
-            __typename?: 'ComponentBlocksGalleryItem'
-            imgTitle?: string | null
-            imgSubtitle?: string | null
-            imgSubtext?: string | null
-            media?: {
-              __typename?: 'UploadFileEntityResponse'
-              data?: {
-                __typename?: 'UploadFileEntity'
-                attributes?: {
-                  __typename?: 'UploadFile'
-                  url: string
-                  width?: number | null
-                  height?: number | null
-                  caption?: string | null
-                  alternativeText?: string | null
-                } | null
-              } | null
-            } | null
-          } | null> | null
         }
       | {
           __typename: 'ComponentSectionsNarrowText'
@@ -8295,7 +8205,6 @@ export type PageBySlugQuery = {
               __typename: 'ComponentSectionsGallery'
               title?: string | null
               text?: string | null
-              subtitle?: string | null
               medias: {
                 __typename?: 'UploadFileRelationResponseCollection'
                 data: Array<{
@@ -8312,26 +8221,6 @@ export type PageBySlugQuery = {
                   } | null
                 }>
               }
-              galleryItems?: Array<{
-                __typename?: 'ComponentBlocksGalleryItem'
-                imgTitle?: string | null
-                imgSubtitle?: string | null
-                imgSubtext?: string | null
-                media?: {
-                  __typename?: 'UploadFileEntityResponse'
-                  data?: {
-                    __typename?: 'UploadFileEntity'
-                    attributes?: {
-                      __typename?: 'UploadFile'
-                      url: string
-                      width?: number | null
-                      height?: number | null
-                      caption?: string | null
-                      alternativeText?: string | null
-                    } | null
-                  } | null
-                } | null
-              } | null> | null
             }
           | {
               __typename: 'ComponentSectionsIconTitleDesc'
@@ -9249,7 +9138,6 @@ export type PageEntityFragment = {
           __typename: 'ComponentSectionsGallery'
           title?: string | null
           text?: string | null
-          subtitle?: string | null
           medias: {
             __typename?: 'UploadFileRelationResponseCollection'
             data: Array<{
@@ -9266,26 +9154,6 @@ export type PageEntityFragment = {
               } | null
             }>
           }
-          galleryItems?: Array<{
-            __typename?: 'ComponentBlocksGalleryItem'
-            imgTitle?: string | null
-            imgSubtitle?: string | null
-            imgSubtext?: string | null
-            media?: {
-              __typename?: 'UploadFileEntityResponse'
-              data?: {
-                __typename?: 'UploadFileEntity'
-                attributes?: {
-                  __typename?: 'UploadFile'
-                  url: string
-                  width?: number | null
-                  height?: number | null
-                  caption?: string | null
-                  alternativeText?: string | null
-                } | null
-              } | null
-            } | null
-          } | null> | null
         }
       | {
           __typename: 'ComponentSectionsIconTitleDesc'
@@ -10693,27 +10561,6 @@ export type IconTitleDescriptionBlockFragment = {
   } | null
 }
 
-export type GalleryItemBlockFragment = {
-  __typename?: 'ComponentBlocksGalleryItem'
-  imgTitle?: string | null
-  imgSubtitle?: string | null
-  imgSubtext?: string | null
-  media?: {
-    __typename?: 'UploadFileEntityResponse'
-    data?: {
-      __typename?: 'UploadFileEntity'
-      attributes?: {
-        __typename?: 'UploadFile'
-        url: string
-        width?: number | null
-        height?: number | null
-        caption?: string | null
-        alternativeText?: string | null
-      } | null
-    } | null
-  } | null
-}
-
 export type TestimonialItemBlockFragment = {
   __typename?: 'ComponentBlocksTestimonialItem'
   id: string
@@ -10745,7 +10592,6 @@ export type GallerySectionFragment = {
   __typename?: 'ComponentSectionsGallery'
   title?: string | null
   text?: string | null
-  subtitle?: string | null
   medias: {
     __typename?: 'UploadFileRelationResponseCollection'
     data: Array<{
@@ -10762,26 +10608,6 @@ export type GallerySectionFragment = {
       } | null
     }>
   }
-  galleryItems?: Array<{
-    __typename?: 'ComponentBlocksGalleryItem'
-    imgTitle?: string | null
-    imgSubtitle?: string | null
-    imgSubtext?: string | null
-    media?: {
-      __typename?: 'UploadFileEntityResponse'
-      data?: {
-        __typename?: 'UploadFileEntity'
-        attributes?: {
-          __typename?: 'UploadFile'
-          url: string
-          width?: number | null
-          height?: number | null
-          caption?: string | null
-          alternativeText?: string | null
-        } | null
-      } | null
-    } | null
-  } | null> | null
 }
 
 export type TimelineSectionFragment = {
@@ -11932,7 +11758,6 @@ type Sections_ComponentSectionsGallery_Fragment = {
   __typename: 'ComponentSectionsGallery'
   title?: string | null
   text?: string | null
-  subtitle?: string | null
   medias: {
     __typename?: 'UploadFileRelationResponseCollection'
     data: Array<{
@@ -11949,26 +11774,6 @@ type Sections_ComponentSectionsGallery_Fragment = {
       } | null
     }>
   }
-  galleryItems?: Array<{
-    __typename?: 'ComponentBlocksGalleryItem'
-    imgTitle?: string | null
-    imgSubtitle?: string | null
-    imgSubtext?: string | null
-    media?: {
-      __typename?: 'UploadFileEntityResponse'
-      data?: {
-        __typename?: 'UploadFileEntity'
-        attributes?: {
-          __typename?: 'UploadFile'
-          url: string
-          width?: number | null
-          height?: number | null
-          caption?: string | null
-          alternativeText?: string | null
-        } | null
-      } | null
-    } | null
-  } | null> | null
 }
 
 type Sections_ComponentSectionsIconTitleDesc_Fragment = {
@@ -12531,24 +12336,6 @@ export const UploadImageEntityFragmentDoc = gql`
     }
   }
 `
-export const GalleryItemBlockFragmentDoc = gql`
-  fragment GalleryItemBlock on ComponentBlocksGalleryItem {
-    imgTitle
-    imgSubtitle
-    imgSubtext
-    media {
-      data {
-        attributes {
-          url
-          width
-          height
-          caption
-          alternativeText
-        }
-      }
-    }
-  }
-`
 export const GallerySectionFragmentDoc = gql`
   fragment GallerySection on ComponentSectionsGallery {
     title
@@ -12558,13 +12345,8 @@ export const GallerySectionFragmentDoc = gql`
         ...UploadImageEntity
       }
     }
-    subtitle
-    galleryItems {
-      ...GalleryItemBlock
-    }
   }
   ${UploadImageEntityFragmentDoc}
-  ${GalleryItemBlockFragmentDoc}
 `
 export const UploadFileEntityFragmentDoc = gql`
   fragment UploadFileEntity on UploadFileEntity {
