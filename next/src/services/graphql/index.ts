@@ -383,14 +383,6 @@ export type ComponentBlocksContactCardFiltersInput = {
   value?: InputMaybe<StringFilterInput>
 }
 
-export type ComponentBlocksDocListExtensions = {
-  __typename?: 'ComponentBlocksDocListExtensions'
-  document?: Maybe<UploadFileEntityResponse>
-  id: Scalars['ID']['output']
-  title?: Maybe<Scalars['String']['output']>
-  validFrom?: Maybe<Scalars['Date']['output']>
-}
-
 export type ComponentBlocksFile = {
   __typename?: 'ComponentBlocksFile'
   id: Scalars['ID']['output']
@@ -1995,7 +1987,6 @@ export type GenericMorph =
   | ComponentBlocksComparisonCard
   | ComponentBlocksComparisonItem
   | ComponentBlocksContactCard
-  | ComponentBlocksDocListExtensions
   | ComponentBlocksFile
   | ComponentBlocksFileItem
   | ComponentBlocksFooterColumn

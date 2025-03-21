@@ -126,19 +126,6 @@ export interface BlocksContactCard extends Schema.Component {
   }
 }
 
-export interface BlocksDocListExtensions extends Schema.Component {
-  collectionName: 'components_blocks_doc_list_extensions'
-  info: {
-    displayName: 'DocListExtensions'
-    icon: 'angle-right'
-  }
-  attributes: {
-    document: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>
-    title: Attribute.String
-    validFrom: Attribute.Date
-  }
-}
-
 export interface BlocksFile extends Schema.Component {
   collectionName: 'components_blocks_files'
   info: {
@@ -1122,7 +1109,6 @@ declare module '@strapi/types' {
       'blocks.comparison-card': BlocksComparisonCard
       'blocks.comparison-item': BlocksComparisonItem
       'blocks.contact-card': BlocksContactCard
-      'blocks.doc-list-extensions': BlocksDocListExtensions
       'blocks.file': BlocksFile
       'blocks.file-item': BlocksFileItem
       'blocks.footer-column': BlocksFooterColumn
