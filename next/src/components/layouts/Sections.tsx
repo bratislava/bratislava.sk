@@ -3,7 +3,6 @@ import * as React from 'react'
 import SectionContainer from '@/src/components/common/SectionContainer/SectionContainer'
 import AccordionSection from '@/src/components/sections/AccordionSection'
 import BlogPostsByCategory from '@/src/components/sections/ArticlesListSection/BlogPostsByCategory'
-import BlogPostsByTags from '@/src/components/sections/ArticlesListSection/BlogPostsByTags'
 import BlogPostsList from '@/src/components/sections/ArticlesListSection/BlogPostsList'
 import InbaArticlesList from '@/src/components/sections/ArticlesListSection/InbaArticlesList'
 import BannerSection from '@/src/components/sections/BannerSection'
@@ -69,9 +68,6 @@ const SectionContent = ({ section }: { section: SectionsFragment }) => {
 
     case 'ComponentSectionsBlogPostsList':
       return <BlogPostsList section={section} />
-
-    case 'ComponentSectionsBlogPostsByTags':
-      return <BlogPostsByTags section={section} />
 
     case 'ComponentSectionsBlogPostsByCategory':
       return <BlogPostsByCategory section={section} />

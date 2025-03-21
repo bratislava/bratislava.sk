@@ -504,18 +504,6 @@ export interface SectionsBlogPostsByCategory extends Schema.Component {
   }
 }
 
-export interface SectionsBlogPostsByTags extends Schema.Component {
-  collectionName: 'components_sections_blog_posts_by_tags'
-  info: {
-    displayName: 'Blog posts by tags'
-  }
-  attributes: {
-    tags: Attribute.Relation<'sections.blog-posts-by-tags', 'oneToMany', 'api::tag.tag'>
-    text: Attribute.Text
-    title: Attribute.String
-  }
-}
-
 export interface SectionsBlogPostsList extends Schema.Component {
   collectionName: 'components_sections_blog_posts_lists'
   info: {
@@ -1042,7 +1030,6 @@ declare module '@strapi/types' {
       'sections.accordion': SectionsAccordion
       'sections.banner': SectionsBanner
       'sections.blog-posts-by-category': SectionsBlogPostsByCategory
-      'sections.blog-posts-by-tags': SectionsBlogPostsByTags
       'sections.blog-posts-list': SectionsBlogPostsList
       'sections.calculator': SectionsCalculator
       'sections.columned-text': SectionsColumnedText

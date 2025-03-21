@@ -855,20 +855,6 @@ export type ComponentSectionsBlogPostsByCategory = {
   title?: Maybe<Scalars['String']['output']>
 }
 
-export type ComponentSectionsBlogPostsByTags = {
-  __typename?: 'ComponentSectionsBlogPostsByTags'
-  id: Scalars['ID']['output']
-  tags?: Maybe<TagRelationResponseCollection>
-  text?: Maybe<Scalars['String']['output']>
-  title?: Maybe<Scalars['String']['output']>
-}
-
-export type ComponentSectionsBlogPostsByTagsTagsArgs = {
-  filters?: InputMaybe<TagFiltersInput>
-  pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
-}
-
 export type ComponentSectionsBlogPostsList = {
   __typename?: 'ComponentSectionsBlogPostsList'
   id: Scalars['ID']['output']
@@ -1879,7 +1865,6 @@ export type GenericMorph =
   | ComponentSectionsAccordion
   | ComponentSectionsBanner
   | ComponentSectionsBlogPostsByCategory
-  | ComponentSectionsBlogPostsByTags
   | ComponentSectionsBlogPostsList
   | ComponentSectionsCalculator
   | ComponentSectionsColumnedText
@@ -3033,7 +3018,6 @@ export type PageSectionsDynamicZone =
   | ComponentSectionsAccordion
   | ComponentSectionsBanner
   | ComponentSectionsBlogPostsByCategory
-  | ComponentSectionsBlogPostsByTags
   | ComponentSectionsBlogPostsList
   | ComponentSectionsCalculator
   | ComponentSectionsColumnedText
@@ -7962,15 +7946,6 @@ export type PageBySlugQuery = {
               } | null
             }
           | {
-              __typename: 'ComponentSectionsBlogPostsByTags'
-              title?: string | null
-              text?: string | null
-              tags?: {
-                __typename?: 'TagRelationResponseCollection'
-                data: Array<{ __typename?: 'TagEntity'; id?: string | null }>
-              } | null
-            }
-          | {
               __typename: 'ComponentSectionsBlogPostsList'
               title?: string | null
               text?: string | null
@@ -8896,15 +8871,6 @@ export type PageEntityFragment = {
               id?: string | null
               attributes?: { __typename?: 'PageCategory'; title?: string | null } | null
             } | null
-          } | null
-        }
-      | {
-          __typename: 'ComponentSectionsBlogPostsByTags'
-          title?: string | null
-          text?: string | null
-          tags?: {
-            __typename?: 'TagRelationResponseCollection'
-            data: Array<{ __typename?: 'TagEntity'; id?: string | null }>
           } | null
         }
       | {
@@ -10529,16 +10495,6 @@ export type BlogPostsListSectionFragment = {
   text?: string | null
 }
 
-export type BlogPostsByTagsSectionFragment = {
-  __typename?: 'ComponentSectionsBlogPostsByTags'
-  title?: string | null
-  text?: string | null
-  tags?: {
-    __typename?: 'TagRelationResponseCollection'
-    data: Array<{ __typename?: 'TagEntity'; id?: string | null }>
-  } | null
-}
-
 export type BlogPostsByCategorySectionFragment = {
   __typename?: 'ComponentSectionsBlogPostsByCategory'
   title?: string | null
@@ -11508,16 +11464,6 @@ type Sections_ComponentSectionsBlogPostsByCategory_Fragment = {
   } | null
 }
 
-type Sections_ComponentSectionsBlogPostsByTags_Fragment = {
-  __typename: 'ComponentSectionsBlogPostsByTags'
-  title?: string | null
-  text?: string | null
-  tags?: {
-    __typename?: 'TagRelationResponseCollection'
-    data: Array<{ __typename?: 'TagEntity'; id?: string | null }>
-  } | null
-}
-
 type Sections_ComponentSectionsBlogPostsList_Fragment = {
   __typename: 'ComponentSectionsBlogPostsList'
   title?: string | null
@@ -12066,7 +12012,6 @@ export type SectionsFragment =
   | Sections_ComponentSectionsAccordion_Fragment
   | Sections_ComponentSectionsBanner_Fragment
   | Sections_ComponentSectionsBlogPostsByCategory_Fragment
-  | Sections_ComponentSectionsBlogPostsByTags_Fragment
   | Sections_ComponentSectionsBlogPostsList_Fragment
   | Sections_ComponentSectionsCalculator_Fragment
   | Sections_ComponentSectionsColumnedText_Fragment
@@ -12449,17 +12394,6 @@ export const BlogPostsListSectionFragmentDoc = gql`
   fragment BlogPostsListSection on ComponentSectionsBlogPostsList {
     title
     text
-  }
-`
-export const BlogPostsByTagsSectionFragmentDoc = gql`
-  fragment BlogPostsByTagsSection on ComponentSectionsBlogPostsByTags {
-    title
-    text
-    tags {
-      data {
-        id
-      }
-    }
   }
 `
 export const BlogPostsByCategorySectionFragmentDoc = gql`
@@ -12912,9 +12846,6 @@ export const SectionsFragmentDoc = gql`
     ... on ComponentSectionsBlogPostsList {
       ...BlogPostsListSection
     }
-    ... on ComponentSectionsBlogPostsByTags {
-      ...BlogPostsByTagsSection
-    }
     ... on ComponentSectionsBlogPostsByCategory {
       ...BlogPostsByCategorySection
     }
@@ -12973,7 +12904,6 @@ export const SectionsFragmentDoc = gql`
   ${VideosSectionFragmentDoc}
   ${NumericalListSectionFragmentDoc}
   ${BlogPostsListSectionFragmentDoc}
-  ${BlogPostsByTagsSectionFragmentDoc}
   ${BlogPostsByCategorySectionFragmentDoc}
   ${InbaArticlesListSectionFragmentDoc}
   ${InbaReleasesSectionFragmentDoc}

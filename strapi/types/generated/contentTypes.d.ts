@@ -1097,7 +1097,6 @@ export interface ApiPagePage extends Schema.CollectionType {
         'sections.banner',
         'sections.blog-posts-list',
         'sections.blog-posts-by-category',
-        'sections.blog-posts-by-tags',
         'sections.calculator',
         'sections.columned-text',
         'sections.comparison-section',
