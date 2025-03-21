@@ -1013,11 +1013,6 @@ export interface ApiPageCategoryPageCategory extends Schema.CollectionType {
           localized: true
         }
       }>
-    subcategories: Attribute.Relation<
-      'api::page-category.page-category',
-      'oneToMany',
-      'api::page-subcategory.page-subcategory'
-    >
     title: Attribute.Text &
       Attribute.SetPluginOptions<{
         i18n: {
@@ -1026,109 +1021,6 @@ export interface ApiPageCategoryPageCategory extends Schema.CollectionType {
       }>
     updatedAt: Attribute.DateTime
     updatedBy: Attribute.Relation<'api::page-category.page-category', 'oneToOne', 'admin::user'> &
-      Attribute.Private
-  }
-}
-
-export interface ApiPageSubcategoryPageSubcategory extends Schema.CollectionType {
-  collectionName: 'page_subcategories'
-  info: {
-    description: ''
-    displayName: 'Podkateg\u00F3rie'
-    pluralName: 'page-subcategories'
-    singularName: 'page-subcategory'
-  }
-  options: {
-    draftAndPublish: true
-  }
-  pluginOptions: {
-    i18n: {
-      localized: true
-    }
-  }
-  attributes: {
-    createdAt: Attribute.DateTime
-    createdBy: Attribute.Relation<
-      'api::page-subcategory.page-subcategory',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private
-    icon: Attribute.Enumeration<
-      [
-        'sprava_mesta_01',
-        'transparentne_mesto_01',
-        'dane_01',
-        'projekty_01',
-        'partnerstva_01',
-        'mhd_02',
-        'cyklo_02',
-        'mapy_02',
-        'sprava_a_udrzba_02',
-        'doprava_02',
-        'parkovanie_02',
-        'zdielana_mobilita_02',
-        'zivotne_prostredie_03',
-        'zelen_03',
-        'vystavba_a_nehnutelnosti_03',
-        'uzemny_plan_03',
-        'rozvoj_mesta_03',
-        'verejne_osvetlenie_03',
-        'byvanie_04',
-        'sluzby_04',
-        'zariadenia_04',
-        'pomoc_04',
-        'aktivity_04',
-        'skolstvo_05',
-        'sport_05',
-        'deti_a_mladez_05',
-        'ocenovanie_05',
-        'dotacie_05',
-        'kalendar_06',
-        'organizacie_06',
-        'dedicstvo_06',
-        'sluzby_06',
-        'koncepcia_06',
-        'komunity_06',
-        'covid_06'
-      ]
-    > &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true
-        }
-      }>
-    locale: Attribute.String
-    localizations: Attribute.Relation<
-      'api::page-subcategory.page-subcategory',
-      'oneToMany',
-      'api::page-subcategory.page-subcategory'
-    >
-    moreLink: Attribute.Component<'blocks.page-link'> &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true
-        }
-      }>
-    pages: Attribute.Component<'blocks.page-link', true> &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true
-        }
-      }>
-    publishedAt: Attribute.DateTime
-    title: Attribute.String &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true
-        }
-      }>
-    updatedAt: Attribute.DateTime
-    updatedBy: Attribute.Relation<
-      'api::page-subcategory.page-subcategory',
-      'oneToOne',
-      'admin::user'
-    > &
       Attribute.Private
   }
 }
@@ -1776,7 +1668,6 @@ declare module '@strapi/types' {
       'api::inba-tag.inba-tag': ApiInbaTagInbaTag
       'api::menu.menu': ApiMenuMenu
       'api::page-category.page-category': ApiPageCategoryPageCategory
-      'api::page-subcategory.page-subcategory': ApiPageSubcategoryPageSubcategory
       'api::page.page': ApiPagePage
       'api::regulation.regulation': ApiRegulationRegulation
       'api::tag.tag': ApiTagTag

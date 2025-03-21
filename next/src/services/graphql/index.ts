@@ -623,14 +623,6 @@ export type ComponentBlocksPageLinkFiltersInput = {
   url?: InputMaybe<StringFilterInput>
 }
 
-export type ComponentBlocksPageLinkInput = {
-  anchor?: InputMaybe<Scalars['String']['input']>
-  id?: InputMaybe<Scalars['ID']['input']>
-  page?: InputMaybe<Scalars['ID']['input']>
-  title?: InputMaybe<Scalars['String']['input']>
-  url?: InputMaybe<Scalars['String']['input']>
-}
-
 export type ComponentBlocksProsAndConsCard = {
   __typename?: 'ComponentBlocksProsAndConsCard'
   id: Scalars['ID']['output']
@@ -1701,44 +1693,6 @@ export enum Enum_Pagecategory_Icon {
   ZpVystavba_03 = 'zp_vystavba_03',
 }
 
-export enum Enum_Pagesubcategory_Icon {
-  Aktivity_04 = 'aktivity_04',
-  Byvanie_04 = 'byvanie_04',
-  Covid_06 = 'covid_06',
-  Cyklo_02 = 'cyklo_02',
-  Dane_01 = 'dane_01',
-  Dedicstvo_06 = 'dedicstvo_06',
-  DetiAMladez_05 = 'deti_a_mladez_05',
-  Doprava_02 = 'doprava_02',
-  Dotacie_05 = 'dotacie_05',
-  Kalendar_06 = 'kalendar_06',
-  Komunity_06 = 'komunity_06',
-  Koncepcia_06 = 'koncepcia_06',
-  Mapy_02 = 'mapy_02',
-  Mhd_02 = 'mhd_02',
-  Ocenovanie_05 = 'ocenovanie_05',
-  Organizacie_06 = 'organizacie_06',
-  Parkovanie_02 = 'parkovanie_02',
-  Partnerstva_01 = 'partnerstva_01',
-  Pomoc_04 = 'pomoc_04',
-  Projekty_01 = 'projekty_01',
-  RozvojMesta_03 = 'rozvoj_mesta_03',
-  Skolstvo_05 = 'skolstvo_05',
-  Sluzby_04 = 'sluzby_04',
-  Sluzby_06 = 'sluzby_06',
-  Sport_05 = 'sport_05',
-  SpravaAUdrzba_02 = 'sprava_a_udrzba_02',
-  SpravaMesta_01 = 'sprava_mesta_01',
-  TransparentneMesto_01 = 'transparentne_mesto_01',
-  UzemnyPlan_03 = 'uzemny_plan_03',
-  VerejneOsvetlenie_03 = 'verejne_osvetlenie_03',
-  VystavbaANehnutelnosti_03 = 'vystavba_a_nehnutelnosti_03',
-  Zariadenia_04 = 'zariadenia_04',
-  ZdielanaMobilita_02 = 'zdielana_mobilita_02',
-  Zelen_03 = 'zelen_03',
-  ZivotneProstredie_03 = 'zivotne_prostredie_03',
-}
-
 export enum Enum_Page_Pagecolor {
   Blue = 'blue',
   Brown = 'brown',
@@ -2119,7 +2073,6 @@ export type GenericMorph =
   | Menu
   | Page
   | PageCategory
-  | PageSubcategory
   | Regulation
   | Tag
   | TaxAdministratorsList
@@ -2580,8 +2533,6 @@ export type Mutation = {
   createPageCategory?: Maybe<PageCategoryEntityResponse>
   createPageCategoryLocalization?: Maybe<PageCategoryEntityResponse>
   createPageLocalization?: Maybe<PageEntityResponse>
-  createPageSubcategory?: Maybe<PageSubcategoryEntityResponse>
-  createPageSubcategoryLocalization?: Maybe<PageSubcategoryEntityResponse>
   createRegulation?: Maybe<RegulationEntityResponse>
   createTag?: Maybe<TagEntityResponse>
   createTagLocalization?: Maybe<TagEntityResponse>
@@ -2604,7 +2555,6 @@ export type Mutation = {
   deleteMenu?: Maybe<MenuEntityResponse>
   deletePage?: Maybe<PageEntityResponse>
   deletePageCategory?: Maybe<PageCategoryEntityResponse>
-  deletePageSubcategory?: Maybe<PageSubcategoryEntityResponse>
   deleteRegulation?: Maybe<RegulationEntityResponse>
   deleteTag?: Maybe<TagEntityResponse>
   deleteTaxAdministratorsList?: Maybe<TaxAdministratorsListEntityResponse>
@@ -2639,7 +2589,6 @@ export type Mutation = {
   updateMenu?: Maybe<MenuEntityResponse>
   updatePage?: Maybe<PageEntityResponse>
   updatePageCategory?: Maybe<PageCategoryEntityResponse>
-  updatePageSubcategory?: Maybe<PageSubcategoryEntityResponse>
   updateRegulation?: Maybe<RegulationEntityResponse>
   updateTag?: Maybe<TagEntityResponse>
   updateTaxAdministratorsList?: Maybe<TaxAdministratorsListEntityResponse>
@@ -2769,17 +2718,6 @@ export type MutationCreatePageLocalizationArgs = {
   locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
 }
 
-export type MutationCreatePageSubcategoryArgs = {
-  data: PageSubcategoryInput
-  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
-}
-
-export type MutationCreatePageSubcategoryLocalizationArgs = {
-  data?: InputMaybe<PageSubcategoryInput>
-  id?: InputMaybe<Scalars['ID']['input']>
-  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
-}
-
 export type MutationCreateRegulationArgs = {
   data: RegulationInput
 }
@@ -2866,11 +2804,6 @@ export type MutationDeletePageArgs = {
 }
 
 export type MutationDeletePageCategoryArgs = {
-  id: Scalars['ID']['input']
-  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
-}
-
-export type MutationDeletePageSubcategoryArgs = {
   id: Scalars['ID']['input']
   locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
 }
@@ -3010,12 +2943,6 @@ export type MutationUpdatePageCategoryArgs = {
   locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
 }
 
-export type MutationUpdatePageSubcategoryArgs = {
-  data: PageSubcategoryInput
-  id: Scalars['ID']['input']
-  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
-}
-
 export type MutationUpdateRegulationArgs = {
   data: RegulationInput
   id: Scalars['ID']['input']
@@ -3118,7 +3045,6 @@ export type PageCategory = {
   pages?: Maybe<PageRelationResponseCollection>
   publishedAt?: Maybe<Scalars['DateTime']['output']>
   shortTitle?: Maybe<Scalars['String']['output']>
-  subcategories?: Maybe<PageSubcategoryRelationResponseCollection>
   title?: Maybe<Scalars['String']['output']>
   updatedAt?: Maybe<Scalars['DateTime']['output']>
 }
@@ -3132,13 +3058,6 @@ export type PageCategoryLocalizationsArgs = {
 
 export type PageCategoryPagesArgs = {
   filters?: InputMaybe<PageFiltersInput>
-  pagination?: InputMaybe<PaginationArg>
-  publicationState?: InputMaybe<PublicationState>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
-}
-
-export type PageCategorySubcategoriesArgs = {
-  filters?: InputMaybe<PageSubcategoryFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   publicationState?: InputMaybe<PublicationState>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
@@ -3174,7 +3093,6 @@ export type PageCategoryFiltersInput = {
   pages?: InputMaybe<PageFiltersInput>
   publishedAt?: InputMaybe<DateTimeFilterInput>
   shortTitle?: InputMaybe<StringFilterInput>
-  subcategories?: InputMaybe<PageSubcategoryFiltersInput>
   title?: InputMaybe<StringFilterInput>
   updatedAt?: InputMaybe<DateTimeFilterInput>
 }
@@ -3185,7 +3103,6 @@ export type PageCategoryInput = {
   pages?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
   publishedAt?: InputMaybe<Scalars['DateTime']['input']>
   shortTitle?: InputMaybe<Scalars['String']['input']>
-  subcategories?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
   title?: InputMaybe<Scalars['String']['input']>
 }
 
@@ -3293,78 +3210,6 @@ export type PageSectionsDynamicZone =
   | ComponentSectionsWaves
   | Error
 
-export type PageSubcategory = {
-  __typename?: 'PageSubcategory'
-  createdAt?: Maybe<Scalars['DateTime']['output']>
-  icon?: Maybe<Enum_Pagesubcategory_Icon>
-  locale?: Maybe<Scalars['String']['output']>
-  localizations?: Maybe<PageSubcategoryRelationResponseCollection>
-  moreLink?: Maybe<ComponentBlocksPageLink>
-  pages?: Maybe<Array<Maybe<ComponentBlocksPageLink>>>
-  publishedAt?: Maybe<Scalars['DateTime']['output']>
-  title?: Maybe<Scalars['String']['output']>
-  updatedAt?: Maybe<Scalars['DateTime']['output']>
-}
-
-export type PageSubcategoryLocalizationsArgs = {
-  filters?: InputMaybe<PageSubcategoryFiltersInput>
-  pagination?: InputMaybe<PaginationArg>
-  publicationState?: InputMaybe<PublicationState>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
-}
-
-export type PageSubcategoryPagesArgs = {
-  filters?: InputMaybe<ComponentBlocksPageLinkFiltersInput>
-  pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
-}
-
-export type PageSubcategoryEntity = {
-  __typename?: 'PageSubcategoryEntity'
-  attributes?: Maybe<PageSubcategory>
-  id?: Maybe<Scalars['ID']['output']>
-}
-
-export type PageSubcategoryEntityResponse = {
-  __typename?: 'PageSubcategoryEntityResponse'
-  data?: Maybe<PageSubcategoryEntity>
-}
-
-export type PageSubcategoryEntityResponseCollection = {
-  __typename?: 'PageSubcategoryEntityResponseCollection'
-  data: Array<PageSubcategoryEntity>
-  meta: ResponseCollectionMeta
-}
-
-export type PageSubcategoryFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<PageSubcategoryFiltersInput>>>
-  createdAt?: InputMaybe<DateTimeFilterInput>
-  icon?: InputMaybe<StringFilterInput>
-  id?: InputMaybe<IdFilterInput>
-  locale?: InputMaybe<StringFilterInput>
-  localizations?: InputMaybe<PageSubcategoryFiltersInput>
-  moreLink?: InputMaybe<ComponentBlocksPageLinkFiltersInput>
-  not?: InputMaybe<PageSubcategoryFiltersInput>
-  or?: InputMaybe<Array<InputMaybe<PageSubcategoryFiltersInput>>>
-  pages?: InputMaybe<ComponentBlocksPageLinkFiltersInput>
-  publishedAt?: InputMaybe<DateTimeFilterInput>
-  title?: InputMaybe<StringFilterInput>
-  updatedAt?: InputMaybe<DateTimeFilterInput>
-}
-
-export type PageSubcategoryInput = {
-  icon?: InputMaybe<Enum_Pagesubcategory_Icon>
-  moreLink?: InputMaybe<ComponentBlocksPageLinkInput>
-  pages?: InputMaybe<Array<InputMaybe<ComponentBlocksPageLinkInput>>>
-  publishedAt?: InputMaybe<Scalars['DateTime']['input']>
-  title?: InputMaybe<Scalars['String']['input']>
-}
-
-export type PageSubcategoryRelationResponseCollection = {
-  __typename?: 'PageSubcategoryRelationResponseCollection'
-  data: Array<PageSubcategoryEntity>
-}
-
 export type Pagination = {
   __typename?: 'Pagination'
   page: Scalars['Int']['output']
@@ -3410,8 +3255,6 @@ export type Query = {
   page?: Maybe<PageEntityResponse>
   pageCategories?: Maybe<PageCategoryEntityResponseCollection>
   pageCategory?: Maybe<PageCategoryEntityResponse>
-  pageSubcategories?: Maybe<PageSubcategoryEntityResponseCollection>
-  pageSubcategory?: Maybe<PageSubcategoryEntityResponse>
   pages?: Maybe<PageEntityResponseCollection>
   regulation?: Maybe<RegulationEntityResponse>
   regulations?: Maybe<RegulationEntityResponseCollection>
@@ -3549,19 +3392,6 @@ export type QueryPageCategoriesArgs = {
 }
 
 export type QueryPageCategoryArgs = {
-  id?: InputMaybe<Scalars['ID']['input']>
-  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
-}
-
-export type QueryPageSubcategoriesArgs = {
-  filters?: InputMaybe<PageSubcategoryFiltersInput>
-  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
-  pagination?: InputMaybe<PaginationArg>
-  publicationState?: InputMaybe<PublicationState>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
-}
-
-export type QueryPageSubcategoryArgs = {
   id?: InputMaybe<Scalars['ID']['input']>
   locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
 }

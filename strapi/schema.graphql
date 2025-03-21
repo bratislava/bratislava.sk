@@ -2136,44 +2136,6 @@ enum ENUM_PAGECATEGORY_ICON {
   zp_vystavba_03
 }
 
-enum ENUM_PAGESUBCATEGORY_ICON {
-  aktivity_04
-  byvanie_04
-  covid_06
-  cyklo_02
-  dane_01
-  dedicstvo_06
-  deti_a_mladez_05
-  doprava_02
-  dotacie_05
-  kalendar_06
-  komunity_06
-  koncepcia_06
-  mapy_02
-  mhd_02
-  ocenovanie_05
-  organizacie_06
-  parkovanie_02
-  partnerstva_01
-  pomoc_04
-  projekty_01
-  rozvoj_mesta_03
-  skolstvo_05
-  sluzby_04
-  sluzby_06
-  sport_05
-  sprava_a_udrzba_02
-  sprava_mesta_01
-  transparentne_mesto_01
-  uzemny_plan_03
-  verejne_osvetlenie_03
-  vystavba_a_nehnutelnosti_03
-  zariadenia_04
-  zdielana_mobilita_02
-  zelen_03
-  zivotne_prostredie_03
-}
-
 enum ENUM_PAGE_PAGECOLOR {
   blue
   brown
@@ -2453,7 +2415,7 @@ type GeneralRelationResponseCollection {
   data: [GeneralEntity!]!
 }
 
-union GenericMorph = Alert | BlogPost | ComponentAccordionItemsFlatText | ComponentAccordionItemsInstitution | ComponentAccordionItemsInstitutionNarrow | ComponentBlocksBlogPostLink | ComponentBlocksBookmarkLink | ComponentBlocksCommonLink | ComponentBlocksComparisonCard | ComponentBlocksComparisonItem | ComponentBlocksContactCard | ComponentBlocksDocListExtensions | ComponentBlocksFile | ComponentBlocksFileItem | ComponentBlocksFooterColumn | ComponentBlocksFooterContactItem | ComponentBlocksFooterSection | ComponentBlocksGalleryItem | ComponentBlocksHomepageBookmark | ComponentBlocksHomepageHighlightsItem | ComponentBlocksIconWithTitleAndDescription | ComponentBlocksInBa | ComponentBlocksNumericalListItem | ComponentBlocksPageLink | ComponentBlocksProsAndConsCard | ComponentBlocksSubpage | ComponentBlocksTestimonialItem | ComponentBlocksTimelineItem | ComponentBlocksTopServicesItem | ComponentBlocksVideo | ComponentGeneralHeader | ComponentGeneralHeaderLink | ComponentMenuMenuItem | ComponentMenuMenuLink | ComponentMenuMenuSection | ComponentOsItemsAdvancedAccordionDepartment | ComponentOsItemsAdvancedAccordionItem | ComponentOsItemsAdvancedAccordionSubItem | ComponentOsItemsAdvancedAccordionSubSubItem | ComponentSectionsAccordion | ComponentSectionsBanner | ComponentSectionsBlogPostsByCategory | ComponentSectionsBlogPostsByTags | ComponentSectionsBlogPostsList | ComponentSectionsCalculator | ComponentSectionsColumnedText | ComponentSectionsComparisonSection | ComponentSectionsContactsSection | ComponentSectionsDivider | ComponentSectionsFaqCategories | ComponentSectionsFaqs | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsHomepageEvents | ComponentSectionsHomepageHighlights | ComponentSectionsHomepageMayorAndCouncil | ComponentSectionsHomepageTabs | ComponentSectionsIconTitleDesc | ComponentSectionsIframe | ComponentSectionsInbaArticlesList | ComponentSectionsInbaReleases | ComponentSectionsLinks | ComponentSectionsNarrowText | ComponentSectionsNumericalList | ComponentSectionsOfficialBoard | ComponentSectionsOrganizationalStructure | ComponentSectionsProsAndConsSection | ComponentSectionsRegulations | ComponentSectionsRegulationsList | ComponentSectionsSubpageList | ComponentSectionsTestimonials | ComponentSectionsTextWithImage | ComponentSectionsTimeline | ComponentSectionsTopServices | ComponentSectionsVideos | ComponentSectionsWaves | ComponentTaxAdministratorsTaxAdministrator | Faq | FaqCategory | Footer | General | Homepage | I18NLocale | InbaArticle | InbaRelease | InbaTag | Menu | Page | PageCategory | PageSubcategory | Regulation | Tag | TaxAdministratorsList | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
+union GenericMorph = Alert | BlogPost | ComponentAccordionItemsFlatText | ComponentAccordionItemsInstitution | ComponentAccordionItemsInstitutionNarrow | ComponentBlocksBlogPostLink | ComponentBlocksBookmarkLink | ComponentBlocksCommonLink | ComponentBlocksComparisonCard | ComponentBlocksComparisonItem | ComponentBlocksContactCard | ComponentBlocksDocListExtensions | ComponentBlocksFile | ComponentBlocksFileItem | ComponentBlocksFooterColumn | ComponentBlocksFooterContactItem | ComponentBlocksFooterSection | ComponentBlocksGalleryItem | ComponentBlocksHomepageBookmark | ComponentBlocksHomepageHighlightsItem | ComponentBlocksIconWithTitleAndDescription | ComponentBlocksInBa | ComponentBlocksNumericalListItem | ComponentBlocksPageLink | ComponentBlocksProsAndConsCard | ComponentBlocksSubpage | ComponentBlocksTestimonialItem | ComponentBlocksTimelineItem | ComponentBlocksTopServicesItem | ComponentBlocksVideo | ComponentGeneralHeader | ComponentGeneralHeaderLink | ComponentMenuMenuItem | ComponentMenuMenuLink | ComponentMenuMenuSection | ComponentOsItemsAdvancedAccordionDepartment | ComponentOsItemsAdvancedAccordionItem | ComponentOsItemsAdvancedAccordionSubItem | ComponentOsItemsAdvancedAccordionSubSubItem | ComponentSectionsAccordion | ComponentSectionsBanner | ComponentSectionsBlogPostsByCategory | ComponentSectionsBlogPostsByTags | ComponentSectionsBlogPostsList | ComponentSectionsCalculator | ComponentSectionsColumnedText | ComponentSectionsComparisonSection | ComponentSectionsContactsSection | ComponentSectionsDivider | ComponentSectionsFaqCategories | ComponentSectionsFaqs | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsHomepageEvents | ComponentSectionsHomepageHighlights | ComponentSectionsHomepageMayorAndCouncil | ComponentSectionsHomepageTabs | ComponentSectionsIconTitleDesc | ComponentSectionsIframe | ComponentSectionsInbaArticlesList | ComponentSectionsInbaReleases | ComponentSectionsLinks | ComponentSectionsNarrowText | ComponentSectionsNumericalList | ComponentSectionsOfficialBoard | ComponentSectionsOrganizationalStructure | ComponentSectionsProsAndConsSection | ComponentSectionsRegulations | ComponentSectionsRegulationsList | ComponentSectionsSubpageList | ComponentSectionsTestimonials | ComponentSectionsTextWithImage | ComponentSectionsTimeline | ComponentSectionsTopServices | ComponentSectionsVideos | ComponentSectionsWaves | ComponentTaxAdministratorsTaxAdministrator | Faq | FaqCategory | Footer | General | Homepage | I18NLocale | InbaArticle | InbaRelease | InbaTag | Menu | Page | PageCategory | Regulation | Tag | TaxAdministratorsList | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
 
 type Homepage {
   bookmarkTourists: ComponentBlocksHomepageBookmark
@@ -2926,8 +2888,6 @@ type Mutation {
   createPageCategory(data: PageCategoryInput!, locale: I18NLocaleCode): PageCategoryEntityResponse
   createPageCategoryLocalization(data: PageCategoryInput, id: ID, locale: I18NLocaleCode): PageCategoryEntityResponse
   createPageLocalization(data: PageInput, id: ID, locale: I18NLocaleCode): PageEntityResponse
-  createPageSubcategory(data: PageSubcategoryInput!, locale: I18NLocaleCode): PageSubcategoryEntityResponse
-  createPageSubcategoryLocalization(data: PageSubcategoryInput, id: ID, locale: I18NLocaleCode): PageSubcategoryEntityResponse
   createRegulation(data: RegulationInput!): RegulationEntityResponse
   createTag(data: TagInput!, locale: I18NLocaleCode): TagEntityResponse
   createTagLocalization(data: TagInput, id: ID, locale: I18NLocaleCode): TagEntityResponse
@@ -2952,7 +2912,6 @@ type Mutation {
   deleteMenu(locale: I18NLocaleCode): MenuEntityResponse
   deletePage(id: ID!, locale: I18NLocaleCode): PageEntityResponse
   deletePageCategory(id: ID!, locale: I18NLocaleCode): PageCategoryEntityResponse
-  deletePageSubcategory(id: ID!, locale: I18NLocaleCode): PageSubcategoryEntityResponse
   deleteRegulation(id: ID!): RegulationEntityResponse
   deleteTag(id: ID!, locale: I18NLocaleCode): TagEntityResponse
   deleteTaxAdministratorsList: TaxAdministratorsListEntityResponse
@@ -2995,7 +2954,6 @@ type Mutation {
   updateMenu(data: MenuInput!, locale: I18NLocaleCode): MenuEntityResponse
   updatePage(data: PageInput!, id: ID!, locale: I18NLocaleCode): PageEntityResponse
   updatePageCategory(data: PageCategoryInput!, id: ID!, locale: I18NLocaleCode): PageCategoryEntityResponse
-  updatePageSubcategory(data: PageSubcategoryInput!, id: ID!, locale: I18NLocaleCode): PageSubcategoryEntityResponse
   updateRegulation(data: RegulationInput!, id: ID!): RegulationEntityResponse
   updateTag(data: TagInput!, id: ID!, locale: I18NLocaleCode): TagEntityResponse
   updateTaxAdministratorsList(data: TaxAdministratorsListInput!): TaxAdministratorsListEntityResponse
@@ -3041,7 +2999,6 @@ type PageCategory {
   pages(filters: PageFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): PageRelationResponseCollection
   publishedAt: DateTime
   shortTitle: String
-  subcategories(filters: PageSubcategoryFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): PageSubcategoryRelationResponseCollection
   title: String
   updatedAt: DateTime
 }
@@ -3073,7 +3030,6 @@ input PageCategoryFiltersInput {
   pages: PageFiltersInput
   publishedAt: DateTimeFilterInput
   shortTitle: StringFilterInput
-  subcategories: PageSubcategoryFiltersInput
   title: StringFilterInput
   updatedAt: DateTimeFilterInput
 }
@@ -3084,7 +3040,6 @@ input PageCategoryInput {
   pages: [ID]
   publishedAt: DateTime
   shortTitle: String
-  subcategories: [ID]
   title: String
 }
 
@@ -3159,60 +3114,6 @@ union PageSectionsDynamicZone = ComponentSectionsAccordion | ComponentSectionsBa
 
 scalar PageSectionsDynamicZoneInput
 
-type PageSubcategory {
-  createdAt: DateTime
-  icon: ENUM_PAGESUBCATEGORY_ICON
-  locale: String
-  localizations(filters: PageSubcategoryFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): PageSubcategoryRelationResponseCollection
-  moreLink: ComponentBlocksPageLink
-  pages(filters: ComponentBlocksPageLinkFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksPageLink]
-  publishedAt: DateTime
-  title: String
-  updatedAt: DateTime
-}
-
-type PageSubcategoryEntity {
-  attributes: PageSubcategory
-  id: ID
-}
-
-type PageSubcategoryEntityResponse {
-  data: PageSubcategoryEntity
-}
-
-type PageSubcategoryEntityResponseCollection {
-  data: [PageSubcategoryEntity!]!
-  meta: ResponseCollectionMeta!
-}
-
-input PageSubcategoryFiltersInput {
-  and: [PageSubcategoryFiltersInput]
-  createdAt: DateTimeFilterInput
-  icon: StringFilterInput
-  id: IDFilterInput
-  locale: StringFilterInput
-  localizations: PageSubcategoryFiltersInput
-  moreLink: ComponentBlocksPageLinkFiltersInput
-  not: PageSubcategoryFiltersInput
-  or: [PageSubcategoryFiltersInput]
-  pages: ComponentBlocksPageLinkFiltersInput
-  publishedAt: DateTimeFilterInput
-  title: StringFilterInput
-  updatedAt: DateTimeFilterInput
-}
-
-input PageSubcategoryInput {
-  icon: ENUM_PAGESUBCATEGORY_ICON
-  moreLink: ComponentBlocksPageLinkInput
-  pages: [ComponentBlocksPageLinkInput]
-  publishedAt: DateTime
-  title: String
-}
-
-type PageSubcategoryRelationResponseCollection {
-  data: [PageSubcategoryEntity!]!
-}
-
 type Pagination {
   page: Int!
   pageCount: Int!
@@ -3256,8 +3157,6 @@ type Query {
   page(id: ID, locale: I18NLocaleCode): PageEntityResponse
   pageCategories(filters: PageCategoryFiltersInput, locale: I18NLocaleCode, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): PageCategoryEntityResponseCollection
   pageCategory(id: ID, locale: I18NLocaleCode): PageCategoryEntityResponse
-  pageSubcategories(filters: PageSubcategoryFiltersInput, locale: I18NLocaleCode, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): PageSubcategoryEntityResponseCollection
-  pageSubcategory(id: ID, locale: I18NLocaleCode): PageSubcategoryEntityResponse
   pages(filters: PageFiltersInput, locale: I18NLocaleCode, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): PageEntityResponseCollection
   regulation(id: ID): RegulationEntityResponse
   regulations(filters: RegulationFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): RegulationEntityResponseCollection

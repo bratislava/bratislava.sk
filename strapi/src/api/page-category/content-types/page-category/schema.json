@@ -69,11 +69,6 @@
       "relation": "oneToMany",
       "target": "api::page.page",
       "mappedBy": "pageCategory"
-    },
-    "subcategories": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::page-subcategory.page-subcategory"
     }
   }
 }
