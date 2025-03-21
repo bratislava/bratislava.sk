@@ -175,18 +175,6 @@ export interface BlocksFooterContactItem extends Schema.Component {
   }
 }
 
-export interface BlocksFooterSection extends Schema.Component {
-  collectionName: 'components_blocks_footer_sections'
-  info: {
-    displayName: 'footer Section'
-    icon: 'align-center'
-  }
-  attributes: {
-    pageLinks: Attribute.Component<'blocks.page-link', true>
-    title: Attribute.String
-  }
-}
-
 export interface BlocksGalleryItem extends Schema.Component {
   collectionName: 'components_blocks_gallery_items'
   info: {
@@ -1113,7 +1101,6 @@ declare module '@strapi/types' {
       'blocks.file-item': BlocksFileItem
       'blocks.footer-column': BlocksFooterColumn
       'blocks.footer-contact-item': BlocksFooterContactItem
-      'blocks.footer-section': BlocksFooterSection
       'blocks.gallery-item': BlocksGalleryItem
       'blocks.homepage-bookmark': BlocksHomepageBookmark
       'blocks.homepage-highlights-item': BlocksHomepageHighlightsItem

@@ -468,19 +468,6 @@ export type ComponentBlocksFooterContactItemInput = {
   phone?: InputMaybe<Scalars['String']['input']>
 }
 
-export type ComponentBlocksFooterSection = {
-  __typename?: 'ComponentBlocksFooterSection'
-  id: Scalars['ID']['output']
-  pageLinks?: Maybe<Array<Maybe<ComponentBlocksPageLink>>>
-  title?: Maybe<Scalars['String']['output']>
-}
-
-export type ComponentBlocksFooterSectionPageLinksArgs = {
-  filters?: InputMaybe<ComponentBlocksPageLinkFiltersInput>
-  pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
-}
-
 export type ComponentBlocksGalleryItem = {
   __typename?: 'ComponentBlocksGalleryItem'
   id: Scalars['ID']['output']
@@ -1991,7 +1978,6 @@ export type GenericMorph =
   | ComponentBlocksFileItem
   | ComponentBlocksFooterColumn
   | ComponentBlocksFooterContactItem
-  | ComponentBlocksFooterSection
   | ComponentBlocksGalleryItem
   | ComponentBlocksHomepageBookmark
   | ComponentBlocksHomepageHighlightsItem
