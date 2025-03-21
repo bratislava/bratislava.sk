@@ -6,9 +6,6 @@
   },
   "options": {},
   "attributes": {
-    "hasBackground": {
-      "type": "boolean"
-    },
     "institutions": {
       "type": "component",
       "repeatable": true,

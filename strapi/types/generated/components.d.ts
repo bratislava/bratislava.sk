@@ -560,7 +560,6 @@ export interface SectionsAccordion extends Schema.Component {
   }
   attributes: {
     flatText: Attribute.Component<'accordion-items.flat-text', true>
-    hasBackground: Attribute.Boolean
     institutions: Attribute.Component<'accordion-items.institution', true>
     institutionsNarrow: Attribute.Component<'accordion-items.institution-narrow', true>
     title: Attribute.String
@@ -653,7 +652,6 @@ export interface SectionsColumnedText extends Schema.Component {
     content: Attribute.RichText
     contentAlignment: Attribute.Enumeration<['left', 'center', 'right']> &
       Attribute.DefaultTo<'left'>
-    hasBackground: Attribute.Boolean
   }
 }
 
@@ -707,7 +705,6 @@ export interface SectionsDivider extends Schema.Component {
     displayName: 'Divider'
   }
   attributes: {
-    hasBackground: Attribute.Boolean
     style: Attribute.Enumeration<
       [
         'mesto_01_full_width',
@@ -855,7 +852,6 @@ export interface SectionsIconTitleDesc extends Schema.Component {
     displayName: 'Icon Title Desc'
   }
   attributes: {
-    hasBackground: Attribute.Boolean
     list: Attribute.Component<'blocks.icon-with-title-and-description', true>
     title: Attribute.String
   }
@@ -914,7 +910,6 @@ export interface SectionsLinks extends Schema.Component {
     displayName: 'Links'
   }
   attributes: {
-    hasBackground: Attribute.Boolean
     pageLinks: Attribute.Component<'blocks.page-link', true>
     title: Attribute.String
   }
@@ -928,7 +923,6 @@ export interface SectionsNarrowText extends Schema.Component {
   attributes: {
     align: Attribute.Enumeration<['left', 'center', 'right']>
     content: Attribute.RichText
-    hasBackground: Attribute.Boolean
     width: Attribute.Enumeration<['narrow', 'default', 'wide', 'full']>
   }
 }
@@ -941,7 +935,6 @@ export interface SectionsNumericalList extends Schema.Component {
   attributes: {
     buttonLink: Attribute.String
     buttonText: Attribute.String
-    hasBackground: Attribute.Boolean
     items: Attribute.Component<'blocks.numerical-list-item', true>
     title: Attribute.String
     variant: Attribute.Enumeration<['basic', 'combined', 'roadmap']>
@@ -1018,7 +1011,6 @@ export interface SectionsSubpageList extends Schema.Component {
     displayName: 'Subpage List'
   }
   attributes: {
-    hasBackground: Attribute.Boolean
     subpageList: Attribute.Component<'blocks.page-link', true>
   }
 }
@@ -1051,7 +1043,6 @@ export interface SectionsTextWithImage extends Schema.Component {
   }
   attributes: {
     content: Attribute.RichText
-    hasBackground: Attribute.Boolean
     imagePosition: Attribute.Enumeration<['left', 'right']>
     imageShadow: Attribute.Boolean
     imageSrc: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>

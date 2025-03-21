@@ -1,4 +1,5 @@
 import cx from 'classnames'
+import { ReactNode } from 'react'
 
 import DashedLine from '@/src/components/common/NumericalList_Deprecated/DashedLine_Deprecated'
 import { NumericalListItemObject } from '@/src/components/common/NumericalList_Deprecated/NumericalList_Deprecated'
@@ -8,8 +9,7 @@ export type NumericalListItemProps = {
   index: number
   item?: NumericalListItemObject
   variant: 'basic' | 'combined' | 'roadmap'
-  hasBackground?: boolean
-  children?: React.ReactNode
+  children?: ReactNode
   className?: string
 }
 
@@ -17,7 +17,6 @@ const NumericalListItem = ({
   index,
   item,
   variant,
-  hasBackground,
   children,
   className,
 }: NumericalListItemProps) => {
@@ -50,8 +49,7 @@ const NumericalListItem = ({
         <div
           className={cx(
             'min-w-16 text-h4 z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full font-semibold',
-            { 'bg-white text-font': variant !== 'roadmap' && hasBackground },
-            { 'bg-category-600 text-white': variant === 'roadmap' || !hasBackground },
+            { 'bg-category-600 text-white': variant === 'roadmap' },
           )}
         >
           {index + 1}

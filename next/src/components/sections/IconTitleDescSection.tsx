@@ -11,7 +11,7 @@ type IconTitleDescSectionProps = {
 }
 
 const IconTitleDescSection = ({ section }: IconTitleDescSectionProps) => {
-  const { title, list, hasBackground } = section
+  const { title, list } = section
 
   const isLongList = list?.length && list.length > 3
 
@@ -40,7 +40,6 @@ const IconTitleDescSection = ({ section }: IconTitleDescSectionProps) => {
             title={item.title}
             text={item.desc}
             disableIconBackground={item.disableIconBackground}
-            hasBackground={hasBackground}
           />
         ))}
       </ul>

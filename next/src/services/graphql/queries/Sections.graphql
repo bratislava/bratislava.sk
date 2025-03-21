@@ -112,19 +112,16 @@ fragment InbaReleasesSection on ComponentSectionsInbaReleases {
 
 fragment IconTitleDescSection on ComponentSectionsIconTitleDesc {
   title
-  hasBackground
   list {
     ...IconTitleDescriptionBlock
   }
 }
 
 fragment DividerSection on ComponentSectionsDivider {
-  hasBackground
   style
 }
 
 fragment TextWithImageSection on ComponentSectionsTextWithImage {
-  hasBackground
   content
   imagePosition
   imageShadow
@@ -177,13 +174,11 @@ fragment FileItemBlock on ComponentBlocksFileItem {
 }
 
 fragment ColumnedTextSection on ComponentSectionsColumnedText {
-  hasBackground
   content
   contentAlignment
 }
 
 fragment NarrowTextSection on ComponentSectionsNarrowText {
-  hasBackground
   content
   width
   align
@@ -210,9 +205,7 @@ fragment PageLinkBlock on ComponentBlocksPageLink {
 
 fragment LinksSection on ComponentSectionsLinks {
   title
-  hasBackground
-  # TODO consider limit -1
-  pageLinks(pagination: { limit: 100 }) {
+  pageLinks(pagination: { limit: -1 }) {
     ...PageLinkBlock
   }
 }
@@ -259,7 +252,6 @@ fragment ComponentAccordionItemsInstitution on ComponentAccordionItemsInstitutio
 
 fragment AccordionSection on ComponentSectionsAccordion {
   title
-  hasBackground
   institutions(pagination: { limit: -1 }) {
     ...ComponentAccordionItemsInstitution
   }
@@ -307,7 +299,6 @@ fragment NumericalListSection on ComponentSectionsNumericalList {
   variant
   buttonText
   buttonLink
-  hasBackground
 }
 
 fragment OrganizationalStructureSection on ComponentSectionsOrganizationalStructure {

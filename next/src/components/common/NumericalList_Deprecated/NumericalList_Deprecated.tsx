@@ -3,7 +3,6 @@ import React from 'react'
 
 import Button from '@/src/components/common/Button/Button'
 import NumericalListItem from '@/src/components/common/NumericalList_Deprecated/NumericalListItem_Deprecated'
-import Waves from '@/src/components/common/Waves/Waves'
 
 export type NumericalListItemObject = {
   text?: string | null
@@ -12,7 +11,6 @@ export type NumericalListItemObject = {
 export type NumericalListProps = {
   title: string | null | undefined
   items: NumericalListItemObject[] | null | undefined
-  hasBackground: boolean | null | undefined
   buttonText?: string | null | undefined
   buttonLink?: string | null | undefined
   variant?: 'basic' | 'combined' | 'roadmap'
@@ -21,21 +19,14 @@ export type NumericalListProps = {
 const NumericalList = ({
   title,
   items,
-  hasBackground,
   buttonText,
   buttonLink,
   variant = 'basic',
 }: NumericalListProps) => {
   const href = buttonLink?.length ? buttonLink : '#'
   return (
-    <div className={cx({ 'pt-14': hasBackground }, { 'pt-0': !hasBackground })}>
-      {hasBackground && <Waves waveColor="rgb(var(--color-category-200))" wavePosition="top" />}
-
-      <div
-        className={cx('flex flex-col items-center justify-center py-12', {
-          'bg-category-200': hasBackground,
-        })}
-      >
+    <div>
+      <div className="flex flex-col items-center justify-center py-12">
         <div className="flex max-w-screen-md flex-col">
           {title ? (
             <div
@@ -56,11 +47,8 @@ const NumericalList = ({
               index={index}
               item={item}
               variant={variant}
-              hasBackground={hasBackground ?? undefined}
             />
           ))}
-
-          {/* <NumericalList items={items} hasBackground={hasBackground} variant={variant} /> */}
         </div>
         {variant !== 'roadmap' && buttonText && (
           <Button href={href} className="pt-10" variant="category-outline">
@@ -68,8 +56,6 @@ const NumericalList = ({
           </Button>
         )}
       </div>
-
-      {hasBackground && <Waves waveColor="rgb(var(--color-category-200))" wavePosition="bottom" />}
     </div>
   )
 }

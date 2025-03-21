@@ -998,7 +998,6 @@ input ComponentOsItemsAdvancedAccordionSubSubItemInput {
 
 type ComponentSectionsAccordion {
   flatText(filters: ComponentAccordionItemsFlatTextFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentAccordionItemsFlatText]
-  hasBackground: Boolean
   id: ID!
   institutions(filters: ComponentAccordionItemsInstitutionFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentAccordionItemsInstitution]
   institutionsNarrow(filters: ComponentAccordionItemsInstitutionNarrowFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentAccordionItemsInstitutionNarrow]
@@ -1008,7 +1007,6 @@ type ComponentSectionsAccordion {
 input ComponentSectionsAccordionFiltersInput {
   and: [ComponentSectionsAccordionFiltersInput]
   flatText: ComponentAccordionItemsFlatTextFiltersInput
-  hasBackground: BooleanFilterInput
   institutions: ComponentAccordionItemsInstitutionFiltersInput
   institutionsNarrow: ComponentAccordionItemsInstitutionNarrowFiltersInput
   not: ComponentSectionsAccordionFiltersInput
@@ -1018,7 +1016,6 @@ input ComponentSectionsAccordionFiltersInput {
 
 input ComponentSectionsAccordionInput {
   flatText: [ComponentAccordionItemsFlatTextInput]
-  hasBackground: Boolean
   id: ID
   institutions: [ComponentAccordionItemsInstitutionInput]
   institutionsNarrow: [ComponentAccordionItemsInstitutionNarrowInput]
@@ -1157,7 +1154,6 @@ input ComponentSectionsCalculatorInput {
 type ComponentSectionsColumnedText {
   content: String
   contentAlignment: ENUM_COMPONENTSECTIONSCOLUMNEDTEXT_CONTENTALIGNMENT
-  hasBackground: Boolean
   id: ID!
 }
 
@@ -1165,7 +1161,6 @@ input ComponentSectionsColumnedTextFiltersInput {
   and: [ComponentSectionsColumnedTextFiltersInput]
   content: StringFilterInput
   contentAlignment: StringFilterInput
-  hasBackground: BooleanFilterInput
   not: ComponentSectionsColumnedTextFiltersInput
   or: [ComponentSectionsColumnedTextFiltersInput]
 }
@@ -1173,7 +1168,6 @@ input ComponentSectionsColumnedTextFiltersInput {
 input ComponentSectionsColumnedTextInput {
   content: String
   contentAlignment: ENUM_COMPONENTSECTIONSCOLUMNEDTEXT_CONTENTALIGNMENT
-  hasBackground: Boolean
   id: ID
 }
 
@@ -1242,21 +1236,18 @@ input ComponentSectionsContactsSectionInput {
 }
 
 type ComponentSectionsDivider {
-  hasBackground: Boolean
   id: ID!
   style: ENUM_COMPONENTSECTIONSDIVIDER_STYLE
 }
 
 input ComponentSectionsDividerFiltersInput {
   and: [ComponentSectionsDividerFiltersInput]
-  hasBackground: BooleanFilterInput
   not: ComponentSectionsDividerFiltersInput
   or: [ComponentSectionsDividerFiltersInput]
   style: StringFilterInput
 }
 
 input ComponentSectionsDividerInput {
-  hasBackground: Boolean
   id: ID
   style: ENUM_COMPONENTSECTIONSDIVIDER_STYLE
 }
@@ -1460,7 +1451,6 @@ input ComponentSectionsHomepageTabsInput {
 }
 
 type ComponentSectionsIconTitleDesc {
-  hasBackground: Boolean
   id: ID!
   list(filters: ComponentBlocksIconWithTitleAndDescriptionFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksIconWithTitleAndDescription]
   title: String
@@ -1468,7 +1458,6 @@ type ComponentSectionsIconTitleDesc {
 
 input ComponentSectionsIconTitleDescFiltersInput {
   and: [ComponentSectionsIconTitleDescFiltersInput]
-  hasBackground: BooleanFilterInput
   list: ComponentBlocksIconWithTitleAndDescriptionFiltersInput
   not: ComponentSectionsIconTitleDescFiltersInput
   or: [ComponentSectionsIconTitleDescFiltersInput]
@@ -1476,7 +1465,6 @@ input ComponentSectionsIconTitleDescFiltersInput {
 }
 
 input ComponentSectionsIconTitleDescInput {
-  hasBackground: Boolean
   id: ID
   list: [ComponentBlocksIconWithTitleAndDescriptionInput]
   title: String
@@ -1561,7 +1549,6 @@ input ComponentSectionsInbaReleasesInput {
 }
 
 type ComponentSectionsLinks {
-  hasBackground: Boolean
   id: ID!
   pageLinks(filters: ComponentBlocksPageLinkFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksPageLink]
   title: String
@@ -1569,7 +1556,6 @@ type ComponentSectionsLinks {
 
 input ComponentSectionsLinksFiltersInput {
   and: [ComponentSectionsLinksFiltersInput]
-  hasBackground: BooleanFilterInput
   not: ComponentSectionsLinksFiltersInput
   or: [ComponentSectionsLinksFiltersInput]
   pageLinks: ComponentBlocksPageLinkFiltersInput
@@ -1577,7 +1563,6 @@ input ComponentSectionsLinksFiltersInput {
 }
 
 input ComponentSectionsLinksInput {
-  hasBackground: Boolean
   id: ID
   pageLinks: [ComponentBlocksPageLinkInput]
   title: String
@@ -1586,7 +1571,6 @@ input ComponentSectionsLinksInput {
 type ComponentSectionsNarrowText {
   align: ENUM_COMPONENTSECTIONSNARROWTEXT_ALIGN
   content: String
-  hasBackground: Boolean
   id: ID!
   width: ENUM_COMPONENTSECTIONSNARROWTEXT_WIDTH
 }
@@ -1595,7 +1579,6 @@ input ComponentSectionsNarrowTextFiltersInput {
   align: StringFilterInput
   and: [ComponentSectionsNarrowTextFiltersInput]
   content: StringFilterInput
-  hasBackground: BooleanFilterInput
   not: ComponentSectionsNarrowTextFiltersInput
   or: [ComponentSectionsNarrowTextFiltersInput]
   width: StringFilterInput
@@ -1604,7 +1587,6 @@ input ComponentSectionsNarrowTextFiltersInput {
 input ComponentSectionsNarrowTextInput {
   align: ENUM_COMPONENTSECTIONSNARROWTEXT_ALIGN
   content: String
-  hasBackground: Boolean
   id: ID
   width: ENUM_COMPONENTSECTIONSNARROWTEXT_WIDTH
 }
@@ -1612,7 +1594,6 @@ input ComponentSectionsNarrowTextInput {
 type ComponentSectionsNumericalList {
   buttonLink: String
   buttonText: String
-  hasBackground: Boolean
   id: ID!
   items(filters: ComponentBlocksNumericalListItemFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksNumericalListItem]
   title: String
@@ -1623,7 +1604,6 @@ input ComponentSectionsNumericalListFiltersInput {
   and: [ComponentSectionsNumericalListFiltersInput]
   buttonLink: StringFilterInput
   buttonText: StringFilterInput
-  hasBackground: BooleanFilterInput
   items: ComponentBlocksNumericalListItemFiltersInput
   not: ComponentSectionsNumericalListFiltersInput
   or: [ComponentSectionsNumericalListFiltersInput]
@@ -1634,7 +1614,6 @@ input ComponentSectionsNumericalListFiltersInput {
 input ComponentSectionsNumericalListInput {
   buttonLink: String
   buttonText: String
-  hasBackground: Boolean
   id: ID
   items: [ComponentBlocksNumericalListItemInput]
   title: String
@@ -1742,21 +1721,18 @@ input ComponentSectionsRegulationsListInput {
 }
 
 type ComponentSectionsSubpageList {
-  hasBackground: Boolean
   id: ID!
   subpageList(filters: ComponentBlocksPageLinkFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksPageLink]
 }
 
 input ComponentSectionsSubpageListFiltersInput {
   and: [ComponentSectionsSubpageListFiltersInput]
-  hasBackground: BooleanFilterInput
   not: ComponentSectionsSubpageListFiltersInput
   or: [ComponentSectionsSubpageListFiltersInput]
   subpageList: ComponentBlocksPageLinkFiltersInput
 }
 
 input ComponentSectionsSubpageListInput {
-  hasBackground: Boolean
   id: ID
   subpageList: [ComponentBlocksPageLinkInput]
 }
@@ -1789,7 +1765,6 @@ input ComponentSectionsTestimonialsInput {
 
 type ComponentSectionsTextWithImage {
   content: String
-  hasBackground: Boolean
   id: ID!
   imagePosition: ENUM_COMPONENTSECTIONSTEXTWITHIMAGE_IMAGEPOSITION
   imageShadow: Boolean
@@ -1799,7 +1774,6 @@ type ComponentSectionsTextWithImage {
 input ComponentSectionsTextWithImageFiltersInput {
   and: [ComponentSectionsTextWithImageFiltersInput]
   content: StringFilterInput
-  hasBackground: BooleanFilterInput
   imagePosition: StringFilterInput
   imageShadow: BooleanFilterInput
   not: ComponentSectionsTextWithImageFiltersInput
@@ -1808,7 +1782,6 @@ input ComponentSectionsTextWithImageFiltersInput {
 
 input ComponentSectionsTextWithImageInput {
   content: String
-  hasBackground: Boolean
   id: ID
   imagePosition: ENUM_COMPONENTSECTIONSTEXTWITHIMAGE_IMAGEPOSITION
   imageShadow: Boolean

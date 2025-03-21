@@ -3,15 +3,12 @@ import { Enum_Componentsectionscolumnedtext_Contentalignment } from '@/src/servi
 import cn from '@/src/utils/cn'
 
 export type ColumnedTextProps = {
-  className?: string
   content: string
-  hasBackground?: boolean
   contentAlignment?: Enum_Componentsectionscolumnedtext_Contentalignment | null
 }
 
 const ColumnedText = ({
   content,
-  hasBackground,
   contentAlignment = Enum_Componentsectionscolumnedtext_Contentalignment.Left,
 }: ColumnedTextProps) => {
   const breakWord = '<break>'

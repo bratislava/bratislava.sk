@@ -942,7 +942,6 @@ export type ComponentOsItemsAdvancedAccordionSubSubItemFiltersInput = {
 export type ComponentSectionsAccordion = {
   __typename?: 'ComponentSectionsAccordion'
   flatText?: Maybe<Array<Maybe<ComponentAccordionItemsFlatText>>>
-  hasBackground?: Maybe<Scalars['Boolean']['output']>
   id: Scalars['ID']['output']
   institutions?: Maybe<Array<Maybe<ComponentAccordionItemsInstitution>>>
   institutionsNarrow?: Maybe<Array<Maybe<ComponentAccordionItemsInstitutionNarrow>>>
@@ -1022,7 +1021,6 @@ export type ComponentSectionsColumnedText = {
   __typename?: 'ComponentSectionsColumnedText'
   content?: Maybe<Scalars['String']['output']>
   contentAlignment?: Maybe<Enum_Componentsectionscolumnedtext_Contentalignment>
-  hasBackground?: Maybe<Scalars['Boolean']['output']>
   id: Scalars['ID']['output']
 }
 
@@ -1080,7 +1078,6 @@ export type ComponentSectionsContactsSectionWebContactsArgs = {
 
 export type ComponentSectionsDivider = {
   __typename?: 'ComponentSectionsDivider'
-  hasBackground?: Maybe<Scalars['Boolean']['output']>
   id: Scalars['ID']['output']
   style?: Maybe<Enum_Componentsectionsdivider_Style>
 }
@@ -1225,7 +1222,6 @@ export type ComponentSectionsHomepageTabsInput = {
 
 export type ComponentSectionsIconTitleDesc = {
   __typename?: 'ComponentSectionsIconTitleDesc'
-  hasBackground?: Maybe<Scalars['Boolean']['output']>
   id: Scalars['ID']['output']
   list?: Maybe<Array<Maybe<ComponentBlocksIconWithTitleAndDescription>>>
   title?: Maybe<Scalars['String']['output']>
@@ -1273,7 +1269,6 @@ export type ComponentSectionsInbaReleases = {
 
 export type ComponentSectionsLinks = {
   __typename?: 'ComponentSectionsLinks'
-  hasBackground?: Maybe<Scalars['Boolean']['output']>
   id: Scalars['ID']['output']
   pageLinks?: Maybe<Array<Maybe<ComponentBlocksPageLink>>>
   title?: Maybe<Scalars['String']['output']>
@@ -1289,7 +1284,6 @@ export type ComponentSectionsNarrowText = {
   __typename?: 'ComponentSectionsNarrowText'
   align?: Maybe<Enum_Componentsectionsnarrowtext_Align>
   content?: Maybe<Scalars['String']['output']>
-  hasBackground?: Maybe<Scalars['Boolean']['output']>
   id: Scalars['ID']['output']
   width?: Maybe<Enum_Componentsectionsnarrowtext_Width>
 }
@@ -1298,7 +1292,6 @@ export type ComponentSectionsNumericalList = {
   __typename?: 'ComponentSectionsNumericalList'
   buttonLink?: Maybe<Scalars['String']['output']>
   buttonText?: Maybe<Scalars['String']['output']>
-  hasBackground?: Maybe<Scalars['Boolean']['output']>
   id: Scalars['ID']['output']
   items?: Maybe<Array<Maybe<ComponentBlocksNumericalListItem>>>
   title?: Maybe<Scalars['String']['output']>
@@ -1361,7 +1354,6 @@ export type ComponentSectionsRegulationsList = {
 
 export type ComponentSectionsSubpageList = {
   __typename?: 'ComponentSectionsSubpageList'
-  hasBackground?: Maybe<Scalars['Boolean']['output']>
   id: Scalars['ID']['output']
   subpageList?: Maybe<Array<Maybe<ComponentBlocksPageLink>>>
 }
@@ -1390,7 +1382,6 @@ export type ComponentSectionsTestimonialsTestimonialsArgs = {
 export type ComponentSectionsTextWithImage = {
   __typename?: 'ComponentSectionsTextWithImage'
   content?: Maybe<Scalars['String']['output']>
-  hasBackground?: Maybe<Scalars['Boolean']['output']>
   id: Scalars['ID']['output']
   imagePosition?: Maybe<Enum_Componentsectionstextwithimage_Imageposition>
   imageShadow?: Maybe<Scalars['Boolean']['output']>
@@ -4310,13 +4301,11 @@ export type BlogPostBySlugQuery = {
         sections?: Array<
           | {
               __typename: 'ComponentSectionsColumnedText'
-              hasBackground?: boolean | null
               content?: string | null
               contentAlignment?: Enum_Componentsectionscolumnedtext_Contentalignment | null
             }
           | {
               __typename: 'ComponentSectionsDivider'
-              hasBackground?: boolean | null
               style?: Enum_Componentsectionsdivider_Style | null
             }
           | {
@@ -4388,7 +4377,6 @@ export type BlogPostBySlugQuery = {
             }
           | {
               __typename: 'ComponentSectionsNarrowText'
-              hasBackground?: boolean | null
               content?: string | null
               width?: Enum_Componentsectionsnarrowtext_Width | null
               align?: Enum_Componentsectionsnarrowtext_Align | null
@@ -4400,7 +4388,6 @@ export type BlogPostBySlugQuery = {
               variant?: Enum_Componentsectionsnumericallist_Variant | null
               buttonText?: string | null
               buttonLink?: string | null
-              hasBackground?: boolean | null
               items?: Array<{
                 __typename?: 'ComponentBlocksNumericalListItem'
                 text?: string | null
@@ -4567,7 +4554,6 @@ export type BlogPostBySlugQuery = {
             }
           | {
               __typename: 'ComponentSectionsTextWithImage'
-              hasBackground?: boolean | null
               content?: string | null
               imagePosition?: Enum_Componentsectionstextwithimage_Imageposition | null
               imageShadow?: boolean | null
@@ -4679,13 +4665,11 @@ export type LatestPostsByTagsQuery = {
         sections?: Array<
           | {
               __typename: 'ComponentSectionsColumnedText'
-              hasBackground?: boolean | null
               content?: string | null
               contentAlignment?: Enum_Componentsectionscolumnedtext_Contentalignment | null
             }
           | {
               __typename: 'ComponentSectionsDivider'
-              hasBackground?: boolean | null
               style?: Enum_Componentsectionsdivider_Style | null
             }
           | {
@@ -4757,7 +4741,6 @@ export type LatestPostsByTagsQuery = {
             }
           | {
               __typename: 'ComponentSectionsNarrowText'
-              hasBackground?: boolean | null
               content?: string | null
               width?: Enum_Componentsectionsnarrowtext_Width | null
               align?: Enum_Componentsectionsnarrowtext_Align | null
@@ -4769,7 +4752,6 @@ export type LatestPostsByTagsQuery = {
               variant?: Enum_Componentsectionsnumericallist_Variant | null
               buttonText?: string | null
               buttonLink?: string | null
-              hasBackground?: boolean | null
               items?: Array<{
                 __typename?: 'ComponentBlocksNumericalListItem'
                 text?: string | null
@@ -4936,7 +4918,6 @@ export type LatestPostsByTagsQuery = {
             }
           | {
               __typename: 'ComponentSectionsTextWithImage'
-              hasBackground?: boolean | null
               content?: string | null
               imagePosition?: Enum_Componentsectionstextwithimage_Imageposition | null
               imageShadow?: boolean | null
@@ -5249,13 +5230,11 @@ export type BlogPostEntityFragment = {
     sections?: Array<
       | {
           __typename: 'ComponentSectionsColumnedText'
-          hasBackground?: boolean | null
           content?: string | null
           contentAlignment?: Enum_Componentsectionscolumnedtext_Contentalignment | null
         }
       | {
           __typename: 'ComponentSectionsDivider'
-          hasBackground?: boolean | null
           style?: Enum_Componentsectionsdivider_Style | null
         }
       | {
@@ -5327,7 +5306,6 @@ export type BlogPostEntityFragment = {
         }
       | {
           __typename: 'ComponentSectionsNarrowText'
-          hasBackground?: boolean | null
           content?: string | null
           width?: Enum_Componentsectionsnarrowtext_Width | null
           align?: Enum_Componentsectionsnarrowtext_Align | null
@@ -5339,7 +5317,6 @@ export type BlogPostEntityFragment = {
           variant?: Enum_Componentsectionsnumericallist_Variant | null
           buttonText?: string | null
           buttonLink?: string | null
-          hasBackground?: boolean | null
           items?: Array<{
             __typename?: 'ComponentBlocksNumericalListItem'
             text?: string | null
@@ -5506,7 +5483,6 @@ export type BlogPostEntityFragment = {
         }
       | {
           __typename: 'ComponentSectionsTextWithImage'
-          hasBackground?: boolean | null
           content?: string | null
           imagePosition?: Enum_Componentsectionstextwithimage_Imageposition | null
           imageShadow?: boolean | null
@@ -8187,7 +8163,6 @@ export type PageBySlugQuery = {
           | {
               __typename: 'ComponentSectionsAccordion'
               title?: string | null
-              hasBackground?: boolean | null
               institutions?: Array<{
                 __typename?: 'ComponentAccordionItemsInstitution'
                 title?: string | null
@@ -8389,7 +8364,6 @@ export type PageBySlugQuery = {
             }
           | {
               __typename: 'ComponentSectionsColumnedText'
-              hasBackground?: boolean | null
               content?: string | null
               contentAlignment?: Enum_Componentsectionscolumnedtext_Contentalignment | null
             }
@@ -8441,7 +8415,6 @@ export type PageBySlugQuery = {
             }
           | {
               __typename: 'ComponentSectionsDivider'
-              hasBackground?: boolean | null
               style?: Enum_Componentsectionsdivider_Style | null
             }
           | {
@@ -8556,7 +8529,6 @@ export type PageBySlugQuery = {
           | {
               __typename: 'ComponentSectionsIconTitleDesc'
               title?: string | null
-              hasBackground?: boolean | null
               list?: Array<{
                 __typename?: 'ComponentBlocksIconWithTitleAndDescription'
                 title?: string | null
@@ -8637,7 +8609,6 @@ export type PageBySlugQuery = {
           | {
               __typename: 'ComponentSectionsLinks'
               title?: string | null
-              hasBackground?: boolean | null
               pageLinks?: Array<{
                 __typename?: 'ComponentBlocksPageLink'
                 title?: string | null
@@ -8659,7 +8630,6 @@ export type PageBySlugQuery = {
             }
           | {
               __typename: 'ComponentSectionsNarrowText'
-              hasBackground?: boolean | null
               content?: string | null
               width?: Enum_Componentsectionsnarrowtext_Width | null
               align?: Enum_Componentsectionsnarrowtext_Align | null
@@ -8671,7 +8641,6 @@ export type PageBySlugQuery = {
               variant?: Enum_Componentsectionsnumericallist_Variant | null
               buttonText?: string | null
               buttonLink?: string | null
-              hasBackground?: boolean | null
               items?: Array<{
                 __typename?: 'ComponentBlocksNumericalListItem'
                 text?: string | null
@@ -8873,7 +8842,6 @@ export type PageBySlugQuery = {
             }
           | {
               __typename: 'ComponentSectionsTextWithImage'
-              hasBackground?: boolean | null
               content?: string | null
               imagePosition?: Enum_Componentsectionstextwithimage_Imageposition | null
               imageShadow?: boolean | null
@@ -9153,7 +9121,6 @@ export type PageEntityFragment = {
       | {
           __typename: 'ComponentSectionsAccordion'
           title?: string | null
-          hasBackground?: boolean | null
           institutions?: Array<{
             __typename?: 'ComponentAccordionItemsInstitution'
             title?: string | null
@@ -9355,7 +9322,6 @@ export type PageEntityFragment = {
         }
       | {
           __typename: 'ComponentSectionsColumnedText'
-          hasBackground?: boolean | null
           content?: string | null
           contentAlignment?: Enum_Componentsectionscolumnedtext_Contentalignment | null
         }
@@ -9407,7 +9373,6 @@ export type PageEntityFragment = {
         }
       | {
           __typename: 'ComponentSectionsDivider'
-          hasBackground?: boolean | null
           style?: Enum_Componentsectionsdivider_Style | null
         }
       | {
@@ -9518,7 +9483,6 @@ export type PageEntityFragment = {
       | {
           __typename: 'ComponentSectionsIconTitleDesc'
           title?: string | null
-          hasBackground?: boolean | null
           list?: Array<{
             __typename?: 'ComponentBlocksIconWithTitleAndDescription'
             title?: string | null
@@ -9595,7 +9559,6 @@ export type PageEntityFragment = {
       | {
           __typename: 'ComponentSectionsLinks'
           title?: string | null
-          hasBackground?: boolean | null
           pageLinks?: Array<{
             __typename?: 'ComponentBlocksPageLink'
             title?: string | null
@@ -9617,7 +9580,6 @@ export type PageEntityFragment = {
         }
       | {
           __typename: 'ComponentSectionsNarrowText'
-          hasBackground?: boolean | null
           content?: string | null
           width?: Enum_Componentsectionsnarrowtext_Width | null
           align?: Enum_Componentsectionsnarrowtext_Align | null
@@ -9629,7 +9591,6 @@ export type PageEntityFragment = {
           variant?: Enum_Componentsectionsnumericallist_Variant | null
           buttonText?: string | null
           buttonLink?: string | null
-          hasBackground?: boolean | null
           items?: Array<{
             __typename?: 'ComponentBlocksNumericalListItem'
             text?: string | null
@@ -9831,7 +9792,6 @@ export type PageEntityFragment = {
         }
       | {
           __typename: 'ComponentSectionsTextWithImage'
-          hasBackground?: boolean | null
           content?: string | null
           imagePosition?: Enum_Componentsectionstextwithimage_Imageposition | null
           imageShadow?: boolean | null
@@ -11114,7 +11074,6 @@ export type InbaReleasesSectionFragment = {
 export type IconTitleDescSectionFragment = {
   __typename?: 'ComponentSectionsIconTitleDesc'
   title?: string | null
-  hasBackground?: boolean | null
   list?: Array<{
     __typename?: 'ComponentBlocksIconWithTitleAndDescription'
     title?: string | null
@@ -11133,13 +11092,11 @@ export type IconTitleDescSectionFragment = {
 
 export type DividerSectionFragment = {
   __typename?: 'ComponentSectionsDivider'
-  hasBackground?: boolean | null
   style?: Enum_Componentsectionsdivider_Style | null
 }
 
 export type TextWithImageSectionFragment = {
   __typename?: 'ComponentSectionsTextWithImage'
-  hasBackground?: boolean | null
   content?: string | null
   imagePosition?: Enum_Componentsectionstextwithimage_Imageposition | null
   imageShadow?: boolean | null
@@ -11239,14 +11196,12 @@ export type FileItemBlockFragment = {
 
 export type ColumnedTextSectionFragment = {
   __typename?: 'ComponentSectionsColumnedText'
-  hasBackground?: boolean | null
   content?: string | null
   contentAlignment?: Enum_Componentsectionscolumnedtext_Contentalignment | null
 }
 
 export type NarrowTextSectionFragment = {
   __typename?: 'ComponentSectionsNarrowText'
-  hasBackground?: boolean | null
   content?: string | null
   width?: Enum_Componentsectionsnarrowtext_Width | null
   align?: Enum_Componentsectionsnarrowtext_Align | null
@@ -11279,7 +11234,6 @@ export type PageLinkBlockFragment = {
 export type LinksSectionFragment = {
   __typename?: 'ComponentSectionsLinks'
   title?: string | null
-  hasBackground?: boolean | null
   pageLinks?: Array<{
     __typename?: 'ComponentBlocksPageLink'
     title?: string | null
@@ -11366,7 +11320,6 @@ export type ComponentAccordionItemsInstitutionFragment = {
 export type AccordionSectionFragment = {
   __typename?: 'ComponentSectionsAccordion'
   title?: string | null
-  hasBackground?: boolean | null
   institutions?: Array<{
     __typename?: 'ComponentAccordionItemsInstitution'
     title?: string | null
@@ -11471,7 +11424,6 @@ export type NumericalListSectionFragment = {
   variant?: Enum_Componentsectionsnumericallist_Variant | null
   buttonText?: string | null
   buttonLink?: string | null
-  hasBackground?: boolean | null
   items?: Array<{
     __typename?: 'ComponentBlocksNumericalListItem'
     text?: string | null
@@ -11863,7 +11815,6 @@ export type FaqCategoriesSectionFragment = {
 type Sections_ComponentSectionsAccordion_Fragment = {
   __typename: 'ComponentSectionsAccordion'
   title?: string | null
-  hasBackground?: boolean | null
   institutions?: Array<{
     __typename?: 'ComponentAccordionItemsInstitution'
     title?: string | null
@@ -12047,7 +11998,6 @@ type Sections_ComponentSectionsCalculator_Fragment = {
 
 type Sections_ComponentSectionsColumnedText_Fragment = {
   __typename: 'ComponentSectionsColumnedText'
-  hasBackground?: boolean | null
   content?: string | null
   contentAlignment?: Enum_Componentsectionscolumnedtext_Contentalignment | null
 }
@@ -12102,7 +12052,6 @@ type Sections_ComponentSectionsContactsSection_Fragment = {
 
 type Sections_ComponentSectionsDivider_Fragment = {
   __typename: 'ComponentSectionsDivider'
-  hasBackground?: boolean | null
   style?: Enum_Componentsectionsdivider_Style | null
 }
 
@@ -12218,7 +12167,6 @@ type Sections_ComponentSectionsGallery_Fragment = {
 type Sections_ComponentSectionsIconTitleDesc_Fragment = {
   __typename: 'ComponentSectionsIconTitleDesc'
   title?: string | null
-  hasBackground?: boolean | null
   list?: Array<{
     __typename?: 'ComponentBlocksIconWithTitleAndDescription'
     title?: string | null
@@ -12303,7 +12251,6 @@ type Sections_ComponentSectionsInbaReleases_Fragment = {
 type Sections_ComponentSectionsLinks_Fragment = {
   __typename: 'ComponentSectionsLinks'
   title?: string | null
-  hasBackground?: boolean | null
   pageLinks?: Array<{
     __typename?: 'ComponentBlocksPageLink'
     title?: string | null
@@ -12326,7 +12273,6 @@ type Sections_ComponentSectionsLinks_Fragment = {
 
 type Sections_ComponentSectionsNarrowText_Fragment = {
   __typename: 'ComponentSectionsNarrowText'
-  hasBackground?: boolean | null
   content?: string | null
   width?: Enum_Componentsectionsnarrowtext_Width | null
   align?: Enum_Componentsectionsnarrowtext_Align | null
@@ -12339,7 +12285,6 @@ type Sections_ComponentSectionsNumericalList_Fragment = {
   variant?: Enum_Componentsectionsnumericallist_Variant | null
   buttonText?: string | null
   buttonLink?: string | null
-  hasBackground?: boolean | null
   items?: Array<{
     __typename?: 'ComponentBlocksNumericalListItem'
     text?: string | null
@@ -12553,7 +12498,6 @@ type Sections_ComponentSectionsTestimonials_Fragment = {
 
 type Sections_ComponentSectionsTextWithImage_Fragment = {
   __typename: 'ComponentSectionsTextWithImage'
-  hasBackground?: boolean | null
   content?: string | null
   imagePosition?: Enum_Componentsectionstextwithimage_Imageposition | null
   imageShadow?: boolean | null
@@ -12728,7 +12672,6 @@ export const IconTitleDescriptionBlockFragmentDoc = gql`
 export const IconTitleDescSectionFragmentDoc = gql`
   fragment IconTitleDescSection on ComponentSectionsIconTitleDesc {
     title
-    hasBackground
     list {
       ...IconTitleDescriptionBlock
     }
@@ -12737,13 +12680,11 @@ export const IconTitleDescSectionFragmentDoc = gql`
 `
 export const DividerSectionFragmentDoc = gql`
   fragment DividerSection on ComponentSectionsDivider {
-    hasBackground
     style
   }
 `
 export const TextWithImageSectionFragmentDoc = gql`
   fragment TextWithImageSection on ComponentSectionsTextWithImage {
-    hasBackground
     content
     imagePosition
     imageShadow
@@ -12854,14 +12795,12 @@ export const FileListSectionFragmentDoc = gql`
 `
 export const ColumnedTextSectionFragmentDoc = gql`
   fragment ColumnedTextSection on ComponentSectionsColumnedText {
-    hasBackground
     content
     contentAlignment
   }
 `
 export const NarrowTextSectionFragmentDoc = gql`
   fragment NarrowTextSection on ComponentSectionsNarrowText {
-    hasBackground
     content
     width
     align
@@ -12891,8 +12830,7 @@ export const PageLinkBlockFragmentDoc = gql`
 export const LinksSectionFragmentDoc = gql`
   fragment LinksSection on ComponentSectionsLinks {
     title
-    hasBackground
-    pageLinks(pagination: { limit: 100 }) {
+    pageLinks(pagination: { limit: -1 }) {
       ...PageLinkBlock
     }
   }
@@ -12956,7 +12894,6 @@ export const ComponentAccordionItemsInstitutionNarrowFragmentDoc = gql`
 export const AccordionSectionFragmentDoc = gql`
   fragment AccordionSection on ComponentSectionsAccordion {
     title
-    hasBackground
     institutions(pagination: { limit: -1 }) {
       ...ComponentAccordionItemsInstitution
     }
@@ -13013,7 +12950,6 @@ export const NumericalListSectionFragmentDoc = gql`
     variant
     buttonText
     buttonLink
-    hasBackground
   }
   ${NumericalListItemBlockFragmentDoc}
 `
