@@ -267,18 +267,6 @@ export interface BlocksProsAndConsCard extends Schema.Component {
   }
 }
 
-export interface BlocksSubpage extends Schema.Component {
-  collectionName: 'components_blocks_subpages'
-  info: {
-    displayName: 'Subpage'
-    icon: 'atlas'
-  }
-  attributes: {
-    link: Attribute.String
-    title: Attribute.String
-  }
-}
-
 export interface BlocksTestimonialItem extends Schema.Component {
   collectionName: 'components_blocks_testimonial_items'
   info: {
@@ -1092,7 +1080,6 @@ declare module '@strapi/types' {
       'blocks.numerical-list-item': BlocksNumericalListItem
       'blocks.page-link': BlocksPageLink
       'blocks.pros-and-cons-card': BlocksProsAndConsCard
-      'blocks.subpage': BlocksSubpage
       'blocks.testimonial-item': BlocksTestimonialItem
       'blocks.timeline-item': BlocksTimelineItem
       'blocks.top-services-item': BlocksTopServicesItem

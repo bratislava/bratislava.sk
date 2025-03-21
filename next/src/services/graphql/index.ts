@@ -597,13 +597,6 @@ export type ComponentBlocksProsAndConsCardItemsArgs = {
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
 }
 
-export type ComponentBlocksSubpage = {
-  __typename?: 'ComponentBlocksSubpage'
-  id: Scalars['ID']['output']
-  link?: Maybe<Scalars['String']['output']>
-  title?: Maybe<Scalars['String']['output']>
-}
-
 export type ComponentBlocksTestimonialItem = {
   __typename?: 'ComponentBlocksTestimonialItem'
   id: Scalars['ID']['output']
@@ -1959,7 +1952,6 @@ export type GenericMorph =
   | ComponentBlocksNumericalListItem
   | ComponentBlocksPageLink
   | ComponentBlocksProsAndConsCard
-  | ComponentBlocksSubpage
   | ComponentBlocksTestimonialItem
   | ComponentBlocksTimelineItem
   | ComponentBlocksTopServicesItem
