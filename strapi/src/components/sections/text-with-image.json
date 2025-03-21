@@ -1,7 +1,8 @@
 {
   "collectionName": "components_sections_text_with_images",
   "info": {
-    "displayName": "Text with Image"
+    "displayName": "Text with Image",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -9,16 +10,22 @@
       "type": "richtext"
     },
     "imageSrc": {
-      "allowedTypes": ["images", "files", "videos", "audios"],
       "type": "media",
-      "multiple": false
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
     },
     "imagePosition": {
       "type": "enumeration",
-      "enum": ["left", "right"]
-    },
-    "imageShadow": {
-      "type": "boolean"
+      "enum": [
+        "left",
+        "right"
+      ]
     }
   }
 }

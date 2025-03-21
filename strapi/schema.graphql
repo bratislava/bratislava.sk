@@ -1568,7 +1568,6 @@ type ComponentSectionsTextWithImage {
   content: String
   id: ID!
   imagePosition: ENUM_COMPONENTSECTIONSTEXTWITHIMAGE_IMAGEPOSITION
-  imageShadow: Boolean
   imageSrc: UploadFileEntityResponse
 }
 
@@ -1576,7 +1575,6 @@ input ComponentSectionsTextWithImageFiltersInput {
   and: [ComponentSectionsTextWithImageFiltersInput]
   content: StringFilterInput
   imagePosition: StringFilterInput
-  imageShadow: BooleanFilterInput
   not: ComponentSectionsTextWithImageFiltersInput
   or: [ComponentSectionsTextWithImageFiltersInput]
 }
@@ -1585,7 +1583,6 @@ input ComponentSectionsTextWithImageInput {
   content: String
   id: ID
   imagePosition: ENUM_COMPONENTSECTIONSTEXTWITHIMAGE_IMAGEPOSITION
-  imageShadow: Boolean
   imageSrc: ID
 }
 

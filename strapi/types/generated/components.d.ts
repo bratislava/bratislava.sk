@@ -924,12 +924,12 @@ export interface SectionsTestimonials extends Schema.Component {
 export interface SectionsTextWithImage extends Schema.Component {
   collectionName: 'components_sections_text_with_images'
   info: {
+    description: ''
     displayName: 'Text with Image'
   }
   attributes: {
     content: Attribute.RichText
     imagePosition: Attribute.Enumeration<['left', 'right']>
-    imageShadow: Attribute.Boolean
     imageSrc: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>
   }
 }

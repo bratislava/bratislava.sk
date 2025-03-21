@@ -93,7 +93,6 @@ fragment DividerSection on ComponentSectionsDivider {
 fragment TextWithImageSection on ComponentSectionsTextWithImage {
   content
   imagePosition
-  imageShadow
   imageSrc {
     data {
       attributes {

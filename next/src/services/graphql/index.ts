@@ -1223,7 +1223,6 @@ export type ComponentSectionsTextWithImage = {
   content?: Maybe<Scalars['String']['output']>
   id: Scalars['ID']['output']
   imagePosition?: Maybe<Enum_Componentsectionstextwithimage_Imageposition>
-  imageShadow?: Maybe<Scalars['Boolean']['output']>
   imageSrc?: Maybe<UploadFileEntityResponse>
 }
 
@@ -4202,7 +4201,6 @@ export type BlogPostBySlugQuery = {
               __typename: 'ComponentSectionsTextWithImage'
               content?: string | null
               imagePosition?: Enum_Componentsectionstextwithimage_Imageposition | null
-              imageShadow?: boolean | null
               imageSrc?: {
                 __typename?: 'UploadFileEntityResponse'
                 data?: {
@@ -4545,7 +4543,6 @@ export type LatestPostsByTagsQuery = {
               __typename: 'ComponentSectionsTextWithImage'
               content?: string | null
               imagePosition?: Enum_Componentsectionstextwithimage_Imageposition | null
-              imageShadow?: boolean | null
               imageSrc?: {
                 __typename?: 'UploadFileEntityResponse'
                 data?: {
@@ -5089,7 +5086,6 @@ export type BlogPostEntityFragment = {
           __typename: 'ComponentSectionsTextWithImage'
           content?: string | null
           imagePosition?: Enum_Componentsectionstextwithimage_Imageposition | null
-          imageShadow?: boolean | null
           imageSrc?: {
             __typename?: 'UploadFileEntityResponse'
             data?: {
@@ -8418,7 +8414,6 @@ export type PageBySlugQuery = {
               __typename: 'ComponentSectionsTextWithImage'
               content?: string | null
               imagePosition?: Enum_Componentsectionstextwithimage_Imageposition | null
-              imageShadow?: boolean | null
               imageSrc?: {
                 __typename?: 'UploadFileEntityResponse'
                 data?: {
@@ -9338,7 +9333,6 @@ export type PageEntityFragment = {
           __typename: 'ComponentSectionsTextWithImage'
           content?: string | null
           imagePosition?: Enum_Componentsectionstextwithimage_Imageposition | null
-          imageShadow?: boolean | null
           imageSrc?: {
             __typename?: 'UploadFileEntityResponse'
             data?: {
@@ -10591,7 +10585,6 @@ export type TextWithImageSectionFragment = {
   __typename?: 'ComponentSectionsTextWithImage'
   content?: string | null
   imagePosition?: Enum_Componentsectionstextwithimage_Imageposition | null
-  imageShadow?: boolean | null
   imageSrc?: {
     __typename?: 'UploadFileEntityResponse'
     data?: {
@@ -11961,7 +11954,6 @@ type Sections_ComponentSectionsTextWithImage_Fragment = {
   __typename: 'ComponentSectionsTextWithImage'
   content?: string | null
   imagePosition?: Enum_Componentsectionstextwithimage_Imageposition | null
-  imageShadow?: boolean | null
   imageSrc?: {
     __typename?: 'UploadFileEntityResponse'
     data?: {
@@ -12147,7 +12139,6 @@ export const TextWithImageSectionFragmentDoc = gql`
   fragment TextWithImageSection on ComponentSectionsTextWithImage {
     content
     imagePosition
-    imageShadow
     imageSrc {
       data {
         attributes {
