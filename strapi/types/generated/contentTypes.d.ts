@@ -518,7 +518,7 @@ export interface ApiFooterFooter extends Schema.SingleType {
   collectionName: 'footers'
   info: {
     description: ''
-    displayName: 'Footer'
+    displayName: 'P\u00E4ti\u010Dka'
     pluralName: 'footers'
     singularName: 'footer'
   }
@@ -589,7 +589,7 @@ export interface ApiGeneralGeneral extends Schema.SingleType {
   collectionName: 'generals'
   info: {
     description: ''
-    displayName: 'General'
+    displayName: 'V\u0161eobecn\u00E9 + hlavi\u010Dka'
     pluralName: 'generals'
     singularName: 'general'
   }
@@ -962,7 +962,7 @@ export interface ApiPageCategoryPageCategory extends Schema.CollectionType {
   collectionName: 'page_categories'
   info: {
     description: ''
-    displayName: 'Kateg\u00F3rie'
+    displayName: 'Hlavn\u00E9 kateg\u00F3rie'
     pluralName: 'page-categories'
     singularName: 'page-category'
   }
@@ -1254,7 +1254,7 @@ export interface ApiTaxAdministratorsListTaxAdministratorsList extends Schema.Si
   collectionName: 'tax_administrators_lists'
   info: {
     description: ''
-    displayName: 'Tax administrators list'
+    displayName: 'Zoznam spr\u00E1vcov dan\u00ED'
     pluralName: 'tax-administrators-lists'
     singularName: 'tax-administrators-list'
   }

@@ -4,7 +4,7 @@
   "info": {
     "singularName": "page-category",
     "pluralName": "page-categories",
-    "displayName": "Kategórie",
+    "displayName": "Hlavné kategórie",
     "description": ""
   },
   "options": {
@@ -39,14 +39,7 @@
         }
       },
       "type": "enumeration",
-      "enum": [
-        "red",
-        "blue",
-        "green",
-        "yellow",
-        "purple",
-        "brown"
-      ]
+      "enum": ["red", "blue", "green", "yellow", "purple", "brown"]
     },
     "icon": {
       "pluginOptions": {
