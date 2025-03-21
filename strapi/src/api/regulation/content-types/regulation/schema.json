@@ -4,7 +4,7 @@
   "info": {
     "singularName": "regulation",
     "pluralName": "regulations",
-    "displayName": "Regulation",
+    "displayName": "Všeobecne záväzné nariadenia",
     "description": ""
   },
   "options": {
@@ -57,29 +57,19 @@
       "type": "media",
       "multiple": false,
       "required": true,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
+      "allowedTypes": ["images", "files", "videos", "audios"]
     },
     "attachments": {
       "type": "media",
       "multiple": true,
       "required": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
+      "allowedTypes": ["images", "files", "videos", "audios"]
     },
     "amendments": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::regulation.regulation",
-      "inversedBy": "amending"
+      "mappedBy": "amending"
     },
     "amending": {
       "type": "relation",
