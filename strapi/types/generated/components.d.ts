@@ -750,7 +750,7 @@ export interface SectionsDivider extends Schema.Component {
 export interface SectionsFaqCategories extends Schema.Component {
   collectionName: 'components_sections_faq_categories'
   info: {
-    displayName: 'faq categories'
+    displayName: 'FAQ categories'
   }
   attributes: {
     faqCategories: Attribute.Relation<
@@ -942,7 +942,7 @@ export interface SectionsInbaArticlesList extends Schema.Component {
 export interface SectionsInbaReleases extends Schema.Component {
   collectionName: 'components_sections_inba_releases'
   info: {
-    displayName: 'inba releases'
+    displayName: 'in.ba releases'
   }
   attributes: {
     text: Attribute.Text

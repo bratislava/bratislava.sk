@@ -430,7 +430,7 @@ export interface ApiBlogPostBlogPost extends Schema.CollectionType {
 export interface ApiFaqCategoryFaqCategory extends Schema.CollectionType {
   collectionName: 'faq_categories'
   info: {
-    displayName: 'faq category'
+    displayName: 'FAQs kateg\u00F3rie'
     pluralName: 'faq-categories'
     singularName: 'faq-category'
   }
@@ -477,7 +477,7 @@ export interface ApiFaqCategoryFaqCategory extends Schema.CollectionType {
 export interface ApiFaqFaq extends Schema.CollectionType {
   collectionName: 'faqs'
   info: {
-    displayName: 'faq'
+    displayName: 'FAQs'
     pluralName: 'faqs'
     singularName: 'faq'
   }
@@ -1268,7 +1268,7 @@ export interface ApiRegulationRegulation extends Schema.CollectionType {
   collectionName: 'regulations'
   info: {
     description: ''
-    displayName: 'Regulation'
+    displayName: 'V\u0161eobecne z\u00E1v\u00E4zn\u00E9 nariadenia'
     pluralName: 'regulations'
     singularName: 'regulation'
   }
