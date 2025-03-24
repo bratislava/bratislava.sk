@@ -17,7 +17,7 @@ import { base64Decode } from '@/src/utils/base64'
  */
 const handler = async (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
   const { fileId: fileIdParam } = req.query
-  const encodedFileId = typeof fileIdParam === 'string' ? fileIdParam : fileIdParam?.[0] ?? ''
+  const encodedFileId = typeof fileIdParam === 'string' ? fileIdParam : (fileIdParam?.[0] ?? '')
 
   const fileId = base64Decode(encodedFileId)
 

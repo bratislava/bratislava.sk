@@ -50,7 +50,7 @@ const NavBarHeader = ({ className }: NavBarProps) => {
                     // eslint-disable-next-line react/no-array-index-key
                     key={linkIndex}
                     variant="underlined-medium"
-                    href={pageSlug ? `/${pageSlug}` : link.url ?? '#'}
+                    href={pageSlug ? `/${pageSlug}` : (link.url ?? '#')}
                     target={link.url?.startsWith('http') ? '_blank' : undefined}
                   >
                     {link.label}

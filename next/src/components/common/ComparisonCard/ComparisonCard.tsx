@@ -33,9 +33,7 @@ const ComparisonCard = ({ title, items, color, icon }: ComparisonProps) => {
           {/* FIXME Typography. Convert to use Typography. Issue: Probably safe to convert but cant find page where is this used for testing */}
           <h3 className="text-h3">{title}</h3>
           <ul className="mt-1 list-disc pl-5">
-            {items?.map((item) => (
-              <li className="mt-3">{item}</li>
-            ))}
+            {items?.map((item) => <li className="mt-3">{item}</li>)}
           </ul>
         </div>
       </div>

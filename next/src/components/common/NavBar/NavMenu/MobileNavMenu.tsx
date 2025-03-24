@@ -92,7 +92,7 @@ const MobileNavMenu = () => {
                 </div>
                 <NavigationMenu.Link asChild onClick={() => setMobileMenuOpen(false)}>
                   <MLink
-                    href={pageSlug ? `/${pageSlug}` : link.url ?? '#'}
+                    href={pageSlug ? `/${pageSlug}` : (link.url ?? '#')}
                     target={link.url ? '_blank' : undefined}
                     variant="underlined"
                     stretched

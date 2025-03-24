@@ -47,7 +47,7 @@ const AnimateHeight = ({
       inherit={false}
       transition={{
         ease,
-        duration: shouldReduceMotion ? 0 : duration ?? calculatedDuration / 1000,
+        duration: shouldReduceMotion ? 0 : (duration ?? calculatedDuration / 1000),
       }}
     >
       <div ref={ref}>{children}</div>

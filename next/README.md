@@ -50,7 +50,7 @@ This token should be the same as we pass in webhook url as query param.
 
 ## Next API endpoints and server-side functions
 
-Some external services, such as Active Directory or GINIS, must be called only from server for security reasons 
+Some external services, such as Active Directory or GINIS, must be called only from server for security reasons
 or because they are available only from the internal network. For this purpose, we use Next API endpoints.
 The endpoints should call a function, that wraps the data-fetching from the external service.
 
