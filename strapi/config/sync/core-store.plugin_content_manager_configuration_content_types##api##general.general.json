@@ -1,0 +1,238 @@
+{
+  "key": "plugin_content_manager_configuration_content_types::api::general.general",
+  "value": {
+    "uid": "api::general.general",
+    "settings": {
+      "bulkable": true,
+      "filterable": true,
+      "searchable": true,
+      "pageSize": 10,
+      "mainField": "id",
+      "defaultSortBy": "id",
+      "defaultSortOrder": "ASC"
+    },
+    "metadatas": {
+      "id": {
+        "edit": {},
+        "list": {
+          "label": "id",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "header": {
+        "edit": {
+          "label": "Odkazy v hlavičke a mobilnom menu",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "header",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "privacyPolicyPage": {
+        "edit": {
+          "label": "privacyPolicyPage",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "slug"
+        },
+        "list": {
+          "label": "privacyPolicyPage",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "officialBoardPage": {
+        "edit": {
+          "label": "officialBoardPage",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "slug"
+        },
+        "list": {
+          "label": "officialBoardPage",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "newsPage": {
+        "edit": {
+          "label": "newsPage",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "slug"
+        },
+        "list": {
+          "label": "newsPage",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "vznPage": {
+        "edit": {
+          "label": "vznPage",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "slug"
+        },
+        "list": {
+          "label": "vznPage",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "inbaPage": {
+        "edit": {
+          "label": "inbaPage",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "slug"
+        },
+        "list": {
+          "label": "inbaPage",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "inbaReleasesPage": {
+        "edit": {
+          "label": "inbaReleasesPage",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "slug"
+        },
+        "list": {
+          "label": "inbaReleasesPage",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "createdAt": {
+        "edit": {
+          "label": "createdAt",
+          "description": "",
+          "placeholder": "",
+          "visible": false,
+          "editable": true
+        },
+        "list": {
+          "label": "createdAt",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "updatedAt": {
+        "edit": {
+          "label": "updatedAt",
+          "description": "",
+          "placeholder": "",
+          "visible": false,
+          "editable": true
+        },
+        "list": {
+          "label": "updatedAt",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "createdBy": {
+        "edit": {
+          "label": "createdBy",
+          "description": "",
+          "placeholder": "",
+          "visible": false,
+          "editable": true,
+          "mainField": "firstname"
+        },
+        "list": {
+          "label": "createdBy",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "updatedBy": {
+        "edit": {
+          "label": "updatedBy",
+          "description": "",
+          "placeholder": "",
+          "visible": false,
+          "editable": true,
+          "mainField": "firstname"
+        },
+        "list": {
+          "label": "updatedBy",
+          "searchable": true,
+          "sortable": true
+        }
+      }
+    },
+    "layouts": {
+      "list": [
+        "id",
+        "header",
+        "createdAt",
+        "updatedAt"
+      ],
+      "edit": [
+        [
+          {
+            "name": "header",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "newsPage",
+            "size": 6
+          },
+          {
+            "name": "vznPage",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "officialBoardPage",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "privacyPolicyPage",
+            "size": 6
+          },
+          {
+            "name": "inbaPage",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "inbaReleasesPage",
+            "size": 6
+          }
+        ]
+      ]
+    }
+  },
+  "type": "object",
+  "environment": null,
+  "tag": null
+}

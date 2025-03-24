@@ -1,0 +1,58 @@
+{
+  "key": "plugin_content_manager_configuration_components::sections.regulations",
+  "value": {
+    "uid": "sections.regulations",
+    "settings": {
+      "bulkable": true,
+      "filterable": true,
+      "searchable": true,
+      "pageSize": 10,
+      "mainField": "id",
+      "defaultSortBy": "id",
+      "defaultSortOrder": "ASC"
+    },
+    "metadatas": {
+      "id": {
+        "edit": {},
+        "list": {
+          "label": "id",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "regulations": {
+        "edit": {
+          "label": "Všeobecne záväzné nariadenia",
+          "description": "Vyberte len \"hlavné\" nariadenia. Dodatky sem nevyberáme. Informácia o počte zoztkov sa zobrazí automaticky.Sekcia automaticky dostáva názov \"Súvisiace VZN\".",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "regNumber"
+        },
+        "list": {
+          "label": "regulations",
+          "searchable": false,
+          "sortable": false
+        }
+      }
+    },
+    "layouts": {
+      "list": [
+        "id",
+        "regulations"
+      ],
+      "edit": [
+        [
+          {
+            "name": "regulations",
+            "size": 12
+          }
+        ]
+      ]
+    },
+    "isComponent": true
+  },
+  "type": "object",
+  "environment": null,
+  "tag": null
+}

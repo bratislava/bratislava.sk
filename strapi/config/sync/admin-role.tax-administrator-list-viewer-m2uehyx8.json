@@ -1,0 +1,111 @@
+{
+  "name": "Tax Administrator list - viewer",
+  "code": "tax-administrator-list-viewer-m2uehyx8",
+  "description": "Created October 29th, 2024",
+  "permissions": [
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::faq-category.faq-category",
+      "properties": {
+        "fields": [
+          "title",
+          "slug",
+          "faqs"
+        ],
+        "locales": [
+          "en",
+          "sk"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::faq.faq",
+      "properties": {
+        "fields": [
+          "title",
+          "body",
+          "faqCategory"
+        ],
+        "locales": [
+          "en",
+          "sk"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::page.page",
+      "properties": {
+        "fields": [
+          "title",
+          "slug",
+          "subtext",
+          "metaDiscription",
+          "keywords",
+          "pageCategory",
+          "pageColor",
+          "pageBackgroundImage",
+          "headerLinks.label",
+          "headerLinks.page",
+          "headerLinks.blogPost",
+          "headerLinks.url",
+          "headerLinks.plausibleId",
+          "pageHeaderSections",
+          "sections",
+          "parentPage",
+          "childPages",
+          "relatedContents"
+        ],
+        "locales": [
+          "en",
+          "sk"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::regulation.regulation",
+      "properties": {
+        "fields": [
+          "regNumber",
+          "slug",
+          "titleText",
+          "fullTitle",
+          "effectiveFrom",
+          "category",
+          "isFullTextRegulation",
+          "mainDocument",
+          "attachments",
+          "amendments",
+          "amending",
+          "cancellation",
+          "cancelling"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::tax-administrators-list.tax-administrators-list",
+      "properties": {
+        "fields": [
+          "taxAdministrators.range",
+          "taxAdministrators.name",
+          "taxAdministrators.email",
+          "taxAdministrators.phone",
+          "taxAdministrators.officeNumber"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": null
+    }
+  ]
+}

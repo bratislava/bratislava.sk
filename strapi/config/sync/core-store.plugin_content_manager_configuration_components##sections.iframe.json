@@ -1,0 +1,173 @@
+{
+  "key": "plugin_content_manager_configuration_components::sections.iframe",
+  "value": {
+    "uid": "sections.iframe",
+    "settings": {
+      "bulkable": true,
+      "filterable": true,
+      "searchable": true,
+      "pageSize": 10,
+      "mainField": "url",
+      "defaultSortBy": "url",
+      "defaultSortOrder": "ASC"
+    },
+    "metadatas": {
+      "id": {
+        "edit": {},
+        "list": {
+          "label": "id",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "url": {
+        "edit": {
+          "label": "url",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "url",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "allowFullscreen": {
+        "edit": {
+          "label": "allowFullscreen",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "allowFullscreen",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "css": {
+        "edit": {
+          "label": "css",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "css",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "iframeWidth": {
+        "edit": {
+          "label": "iframeWidth",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "iframeWidth",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "iframeHeight": {
+        "edit": {
+          "label": "iframeHeight",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "iframeHeight",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "fullHeight": {
+        "edit": {
+          "label": "fullHeight",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "fullHeight",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "allowGeolocation": {
+        "edit": {
+          "label": "allowGeolocation",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "allowGeolocation",
+          "searchable": true,
+          "sortable": true
+        }
+      }
+    },
+    "layouts": {
+      "list": [
+        "id",
+        "url",
+        "allowFullscreen",
+        "css"
+      ],
+      "edit": [
+        [
+          {
+            "name": "url",
+            "size": 6
+          },
+          {
+            "name": "allowFullscreen",
+            "size": 4
+          }
+        ],
+        [
+          {
+            "name": "css",
+            "size": 6
+          },
+          {
+            "name": "iframeWidth",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "iframeHeight",
+            "size": 6
+          },
+          {
+            "name": "fullHeight",
+            "size": 4
+          }
+        ],
+        [
+          {
+            "name": "allowGeolocation",
+            "size": 4
+          }
+        ]
+      ]
+    },
+    "isComponent": true
+  },
+  "type": "object",
+  "environment": null,
+  "tag": null
+}
