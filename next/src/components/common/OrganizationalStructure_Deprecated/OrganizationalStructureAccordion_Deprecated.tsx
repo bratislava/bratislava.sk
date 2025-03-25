@@ -1,4 +1,4 @@
-import { useToggle } from 'rooks'
+import { useToggle } from 'usehooks-ts'
 
 import ChevronDown from '@/src/assets/images/chevron-down-thin.svg'
 import ChevronDownSmall from '@/src/assets/images/chevron-down-thin-small.svg'
@@ -20,16 +20,16 @@ const OrganizationalStructureAccordion = ({
   group,
   level,
 }: OrganizationalStructureAccordionProps) => {
-  const [open, setOpen] = useToggle()
+  const [isOpen, toggleIsOpen] = useToggle()
 
   return (
     <div className="flex flex-col">
       <div
         role="button"
-        onClick={setOpen}
-        onKeyDown={setOpen}
+        onClick={toggleIsOpen}
+        onKeyDown={toggleIsOpen}
         className={cn('lg-gap-x-6 flex cursor-pointer items-start gap-x-3 lg:items-center', {
-          'pb-8': !open,
+          'pb-8': !isOpen,
         })}
       >
         <div
@@ -42,13 +42,13 @@ const OrganizationalStructureAccordion = ({
         <div className="text-h4">{group.displayName}</div>
         {/* TODO fix chevron toggles - rotating 180 isn't quite right as the chevron 'jumps' higher - we should use
         different up-down asset */}
-        <div className={cn('ml-auto pt-2.5', { 'rotate-180 pt-5': open })}>
+        <div className={cn('ml-auto pt-2.5', { 'rotate-180 pt-5': isOpen })}>
           <ChevronDown className="hidden lg:flex" />
           <ChevronDownSmall className="flex lg:hidden" />
         </div>
       </div>
 
-      {open && (
+      {isOpen && (
         <div className={cn({ 'pt-8': !group.users?.length })}>
           {group.users?.length ? (
             <OrganizationalStructureAccordionCards users={group.users} />
