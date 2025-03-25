@@ -38,7 +38,7 @@
     "@types/uuid": "^10.0.0",
     "axios": "1.8.4",
     "clsx": "2.1.1",
-    "focus-trap-react": "^10.1.1",
+    "focus-trap-react": "^11.0.3",
     "framer-motion": "^7.6.4",
     "graphql": "16.10.0",
     "graphql-request": "6.1.0",
