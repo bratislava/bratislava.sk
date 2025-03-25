@@ -21,7 +21,8 @@
     "update-tailwind": "npm install tailwind-merge@latest clsx@latest --save-exact && npm install tailwindcss@latest autoprefixer@latest postcss@latest prettier-plugin-tailwindcss@latest eslint-plugin-tailwindcss@latest --save-dev --save-exact",
     "update-prettier": "npm install prettier@latest eslint-config-prettier@latest eslint-plugin-prettier@latest --save-dev --save-exact",
     "update-graphql": "npm install graphql@latest graphql-request@latest graphql-tag@latest --save-exact && npm install @graphql-codegen/cli@latest @graphql-codegen/typescript-graphql-request@latest --save-dev --save-exact",
-    "update-radix": "npm install @radix-ui/react-navigation-menu@latest --save-exact"
+    "update-radix": "npm install @radix-ui/react-navigation-menu@latest --save-exact",
+    "update-typescript": "npm install typescript@latest --save-dev --save-exact"
   },
   "dependencies": {
     "@azure/msal-node": "^2.6.0",
@@ -34,9 +35,8 @@
     "@sindresorhus/slugify": "^2.2.1",
     "@tanstack/react-query": "^5.69.0",
     "@types/react-vertical-timeline-component": "^3.3.6",
-    "@types/uuid": "^9.0.0",
+    "@types/uuid": "^10.0.0",
     "axios": "1.8.4",
-    "classnames": "2.3.1",
     "clsx": "2.1.1",
     "focus-trap-react": "^10.1.1",
     "framer-motion": "^7.6.4",

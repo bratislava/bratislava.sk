@@ -1,9 +1,9 @@
-import cx from 'classnames'
 import { useToggle } from 'rooks'
 
 import ChevronDown from '@/src/assets/images/chevron-down-thin.svg'
 import ChevronDownSmall from '@/src/assets/images/chevron-down-thin-small.svg'
 import { GetGroupMembersRecursiveResult } from '@/src/services/ms-graph/types'
+import cn from '@/src/utils/cn'
 
 import OrganizationalStructureAccordionCards from './OrganizationalStructureAccordionCards_Deprecated'
 
@@ -28,12 +28,12 @@ const OrganizationalStructureAccordion = ({
         role="button"
         onClick={setOpen}
         onKeyDown={setOpen}
-        className={cx('lg-gap-x-6 flex cursor-pointer items-start gap-x-3 lg:items-center', {
+        className={cn('lg-gap-x-6 flex cursor-pointer items-start gap-x-3 lg:items-center', {
           'pb-8': !open,
         })}
       >
         <div
-          className={cx('h-6 w-6 min-w-[24px] rounded-full', {
+          className={cn('h-6 w-6 min-w-[24px] rounded-full', {
             'border-4 border-category-600': level === 1,
             'bg-category-200': level === 2,
             hidden: level > 2,
@@ -42,14 +42,14 @@ const OrganizationalStructureAccordion = ({
         <div className="text-h4">{group.displayName}</div>
         {/* TODO fix chevron toggles - rotating 180 isn't quite right as the chevron 'jumps' higher - we should use
         different up-down asset */}
-        <div className={cx('ml-auto pt-2.5', { 'rotate-180 pt-5': open })}>
+        <div className={cn('ml-auto pt-2.5', { 'rotate-180 pt-5': open })}>
           <ChevronDown className="hidden lg:flex" />
           <ChevronDownSmall className="flex lg:hidden" />
         </div>
       </div>
 
       {open && (
-        <div className={cx({ 'pt-8': !group.users?.length })}>
+        <div className={cn({ 'pt-8': !group.users?.length })}>
           {group.users?.length ? (
             <OrganizationalStructureAccordionCards users={group.users} />
           ) : null}

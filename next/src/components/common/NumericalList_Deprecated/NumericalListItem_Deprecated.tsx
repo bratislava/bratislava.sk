@@ -1,9 +1,9 @@
-import cx from 'classnames'
 import { ReactNode } from 'react'
 
 import DashedLine from '@/src/components/common/NumericalList_Deprecated/DashedLine_Deprecated'
 import { NumericalListItemObject } from '@/src/components/common/NumericalList_Deprecated/NumericalList_Deprecated'
 import Markdown from '@/src/components/formatting/Markdown/Markdown'
+import cn from '@/src/utils/cn'
 
 export type NumericalListItemProps = {
   index: number
@@ -24,7 +24,7 @@ const NumericalListItem = ({
   return (
     <div
       key={index}
-      className={cx(
+      className={cn(
         className,
         'flex flex-col',
         { 'mb-5 lg:mb-8': variant !== 'roadmap' },
@@ -39,7 +39,7 @@ const NumericalListItem = ({
         />
       )}
       <div
-        className={cx(
+        className={cn(
           'group flex items-center pr-8',
           { 'h-16': variant === 'roadmap' },
           { 'h-auto': variant !== 'roadmap' },
@@ -47,7 +47,7 @@ const NumericalListItem = ({
         )}
       >
         <div
-          className={cx(
+          className={cn(
             'min-w-16 text-h4 z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full font-semibold',
             { 'bg-category-600 text-white': variant === 'roadmap' },
           )}
@@ -55,7 +55,7 @@ const NumericalListItem = ({
           {index + 1}
         </div>
         <div
-          className={cx(
+          className={cn(
             'text-large-respo pl-5 lg:pl-11',
             {
               'pt-0': variant === 'combined',
