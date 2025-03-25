@@ -3,7 +3,7 @@ import { useIsFetching } from '@tanstack/react-query'
 import React, { useEffect, useRef, useState } from 'react'
 import { Selection, TagGroup, TagList } from 'react-aria-components'
 import { StringParam, useQueryParam, withDefault } from 'use-query-params'
-import { useDebounce } from 'usehooks-ts'
+import { useDebounceValue } from 'usehooks-ts'
 
 import Chip from '@/src/components/common/Chip/Chip'
 import OfficialBoardAdditionalFilters from '@/src/components/sections/OfficialBoardSection/OfficialBoardAdditionalFilters'
@@ -59,7 +59,7 @@ const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
 
   const [routerQueryValue] = useQueryParam('keyword', withDefault(StringParam, ''))
   const [input, setInput] = useState('')
-  const debouncedInput = useDebounce(input, 300)
+  const [debouncedInput] = useDebounceValue(input, 300)
   const [searchValue, setSearchValue] = useState(debouncedInput)
 
   useEffect(() => {

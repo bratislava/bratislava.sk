@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query'
 import { useRouter } from 'next/navigation'
 import { Dispatch, SetStateAction, useCallback, useEffect, useRef, useState } from 'react'
-import { useDebounce, useOnClickOutside } from 'usehooks-ts'
+import { useDebounceValue, useOnClickOutside } from 'usehooks-ts'
 
 import HomePageSearchField from '@/src/components/common/HomepageSearch/HomePageSearchField'
 import HomePageSearchResults from '@/src/components/common/HomepageSearch/HomePageSearchResults'
@@ -28,7 +28,7 @@ const HomePageSearch = ({ isOpen, setOpen }: HomePageSearchProps) => {
   useOnClickOutside(ref, () => setOpen(false))
 
   const [input, setInput] = useState<string>('')
-  const debouncedInput = useDebounce(input, 300)
+  const [debouncedInput] = useDebounceValue(input, 1300)
   const [searchValue, setSearchValue] = useState<string>('')
 
   /* Use of separate searchValue instead of debouncedInput is to make it clear, what the actual search value is,
