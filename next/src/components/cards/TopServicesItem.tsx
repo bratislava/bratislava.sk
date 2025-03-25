@@ -19,7 +19,7 @@ const TopServicesItem = ({ topServicesItem }: TopNineItemProps) => {
   return (
     <div className="relative flex gap-3 rounded-lg bg-white px-4 py-3 md:bg-transparent md:p-0 lg:gap-4">
       <div aria-hidden>
-        <Pictogram iconName={icon} className="h-12 w-12 md:h-16 md:w-16" />
+        <Pictogram iconName={icon} className="size-12 md:size-16" />
       </div>
       <div className="flex flex-col gap-1 lg:gap-2">
         <Typography type="h3" size="h5">

@@ -17,7 +17,7 @@ const WelcomeCard = ({ item }: WelcomeCardProps) => {
   return (
     <div
       ref={hoverRef}
-      className="text-large group relative flex h-full w-full items-center gap-x-6 text-left md:px-2 md:py-1 lg:flex-col lg:gap-y-4 lg:pb-2 lg:text-center"
+      className="text-large group relative flex size-full items-center gap-x-6 text-left md:px-2 md:py-1 lg:flex-col lg:gap-y-4 lg:pb-2 lg:text-center"
     >
       <WelcomeCardIcon isColored={isHover} icon={item.icon} />
       <div className="text-default overflow-hidden font-medium text-font/75 md:whitespace-pre-wrap">

@@ -55,7 +55,7 @@ const Pagination = ({ currentPage, totalCount, onPageChange = () => {} }: Pagina
                   onPress={onPress}
                   aria-current={ariaCurrent}
                   aria-label={t('Pagination.aria.goToPage', { page })}
-                  className="flex h-10 w-10 shrink-0 grow-0 items-center justify-center rounded-full lg:h-12 lg:w-12"
+                  className="flex size-10 shrink-0 grow-0 items-center justify-center rounded-full lg:size-12"
                 >
                   {page}
                 </Button>

@@ -145,11 +145,11 @@ const GallerySlider = forwardRef<HTMLDivElement, SliderProps>(
         onKeyUp={keyUpHandler}
         role="application"
         aria-label={description ?? t('Gallery.aria.descriptionSlider')}
-        className="relative z-0 flex h-full w-full items-center justify-center overflow-hidden"
+        className="relative z-0 flex size-full items-center justify-center overflow-hidden"
       >
         <AnimatePresence initial={false} custom={direction}>
           <motion.div
-            className="absolute h-full w-full outline-none"
+            className="absolute size-full outline-none"
             key={page}
             custom={direction}
             variants={variants}

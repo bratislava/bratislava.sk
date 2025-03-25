@@ -27,7 +27,7 @@ const ComparisonCard = ({ title, items, color, icon }: ComparisonProps) => {
           })}
         >
           {/* This dev sets "boundaries" for custom icon image from Strapi */}
-          <div className="relative h-6 w-6">{icon}</div>
+          <div className="relative size-6">{icon}</div>
         </div>
         <div className="mt-6 flex flex-col">
           {/* FIXME Typography. Convert to use Typography. Issue: Probably safe to convert but cant find page where is this used for testing */}

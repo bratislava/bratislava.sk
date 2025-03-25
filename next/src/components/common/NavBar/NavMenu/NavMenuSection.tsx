@@ -17,7 +17,7 @@ const NavMenuSection = ({ section, classNames }: NavigationSectionProps) => {
     <li className={cn('flex gap-2', classNames)}>
       {section.icon && (
         <div aria-hidden>
-          <Pictogram iconName={section.icon} className="h-10 w-10" />
+          <Pictogram iconName={section.icon} className="size-10" />
         </div>
       )}
       <div className="w-full">

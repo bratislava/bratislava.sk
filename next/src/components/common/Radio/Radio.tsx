@@ -24,9 +24,9 @@ const Radio = ({ className, id, title, ...rest }: RadioProps) => {
       )}
     >
       <input id={id} className="hidden" type="radio" {...rest} />
-      <div className="absolute left-9 h-6 w-6 -translate-x-1/2 rounded-full bg-category-600" />
+      <div className="absolute left-9 size-6 -translate-x-1/2 rounded-full bg-category-600" />
       {rest.checked && (
-        <div className="absolute left-9 h-3 w-3 -translate-x-1/2 rounded-full bg-white" />
+        <div className="absolute left-9 size-3 -translate-x-1/2 rounded-full bg-white" />
       )}
       {title}
     </label>

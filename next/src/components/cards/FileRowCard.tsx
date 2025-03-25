@@ -38,7 +38,7 @@ const FileRowCard = ({
           <div className="md:rounded-lg md:bg-background-tertiary">
             {/* TODO create a proper wrapper for the icon component to handle paddings */}
             <div className="md:p-3">
-              <AttachmentIcon className="h-5 w-5 md:h-6 md:w-6" />
+              <AttachmentIcon className="size-5 md:size-6" />
             </div>
           </div>
           <div className="flex flex-col gap-x-4 gap-y-1 md:w-full">
@@ -67,7 +67,7 @@ const FileRowCard = ({
         <div className="flex shrink-0 items-center justify-center text-grey-700 md:rounded-lg md:border-2 md:border-grey-200">
           {/* TODO create a proper wrapper for the icon component to handle paddings */}
           <div className="p-1.5 md:p-2.5">
-            <DownloadIcon className="h-5 w-5" />
+            <DownloadIcon className="size-5" />
           </div>
         </div>
       </div>

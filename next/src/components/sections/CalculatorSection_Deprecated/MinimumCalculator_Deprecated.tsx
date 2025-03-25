@@ -52,7 +52,7 @@ const InputField = ({
     {label}
     <div className="relative mt-3 flex items-center">
       <Button
-        className="absolute left-2 h-10 w-10 p-0"
+        className="absolute left-2 size-10 p-0"
         onPress={() => onAddSub(value - 1)}
         variant="black-outline"
       >
@@ -73,7 +73,7 @@ const InputField = ({
         {...rest}
       />
       <Button
-        className="absolute right-2 h-10 w-10 p-0"
+        className="absolute right-2 size-10 p-0"
         onPress={() => onAddSub(value + 1)}
         variant="black-outline"
       >
