@@ -39,7 +39,7 @@
     "axios": "1.8.4",
     "clsx": "2.1.1",
     "focus-trap-react": "^11.0.3",
-    "framer-motion": "^12.5.0",
+    "framer-motion": "^12.6.0",
     "graphql": "16.10.0",
     "graphql-request": "6.1.0",
     "graphql-tag": "2.12.6",
