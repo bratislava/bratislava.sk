@@ -50,7 +50,7 @@
     "next": "14.2.26",
     "next-i18next": "15.3.0",
     "next-plausible": "^3.7.2",
-    "next-query-params": "^4.1.0",
+    "next-query-params": "^5.1.0",
     "pretty-bytes": "^6.1.0",
     "react": "18.3.1",
     "react-aria": "3.38.1",
@@ -76,7 +76,7 @@
     "tailwind-scrollbar-hide": "^1.1.7",
     "tailwindcss-animate": "^1.0.7",
     "tailwindcss-react-aria-components": "1.0.0-rc.0",
-    "use-query-params": "^2.2.0",
+    "use-query-params": "^2.2.1",
     "usehooks-ts": "3.1.1",
     "xml2js": "^0.6.2"
   },
