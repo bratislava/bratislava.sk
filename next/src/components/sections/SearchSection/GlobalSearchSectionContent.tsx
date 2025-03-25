@@ -118,9 +118,10 @@ const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
 
   const [selection, setSelection] = useState<Selection>(defaultSelection)
   // This is how you get first element from Set (we can do it because we use selectionMode="single" on TagGroup)
-  const selectedKey: SearchOption['id'] =
+  const [first] = selection
+  const selectedKey =
     selection !== 'all' && selection.size === 1
-      ? selection.values().next().value
+      ? (first as SearchOption['id'])
       : defaultSearchOption.id
 
   const [currentPage, setCurrentPage] = useState(1)
