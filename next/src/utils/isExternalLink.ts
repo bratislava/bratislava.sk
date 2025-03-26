@@ -3,5 +3,6 @@ export const isExternalLink = (link: string) => {
     return link
   }
   if (link.startsWith('http')) return link
+
   return `/${link}`
 }

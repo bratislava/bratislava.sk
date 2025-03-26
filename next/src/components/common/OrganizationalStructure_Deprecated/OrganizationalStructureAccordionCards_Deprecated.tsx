@@ -28,6 +28,7 @@ const OrganizationalStructureAccordionCards = ({
       }),
     [users],
   )
+
   return (
     <>
       <ResponsiveCarousel className="md:hidden" items={cards} />

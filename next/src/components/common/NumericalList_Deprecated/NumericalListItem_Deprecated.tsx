@@ -21,6 +21,7 @@ const NumericalListItem = ({
   className,
 }: NumericalListItemProps) => {
   const position = index % 2 === 0 ? 'left' : 'right'
+
   return (
     <div
       key={index}

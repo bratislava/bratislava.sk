@@ -6,5 +6,6 @@ export const useTitle = (childTitle?: string | null) => {
   if (childTitle) {
     return t('useTitle.titleWithChild', { childTitle })
   }
+
   return t('useTitle.title')
 }

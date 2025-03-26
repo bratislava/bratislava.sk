@@ -42,7 +42,7 @@ export const FooterContacts = ({ address, contacts }: FooterFragment) => {
           <div key={index}>
             <span>{contactItem.label}: </span>
             {contactItem.phone && (
-              <MLink href={`tel:${contactItem.phone.replace(/ /g, '')}`} variant="underlined">
+              <MLink href={`tel:${contactItem.phone.replaceAll(' ', '')}`} variant="underlined">
                 {contactItem.phone}
               </MLink>
             )}

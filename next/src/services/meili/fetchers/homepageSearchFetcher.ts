@@ -58,6 +58,7 @@ export const homepageSearchFetcher = (filters: HomepageSearchFilters, locale: st
 
         if (type === 'blog-post') {
           const { title, slug } = dataInner
+
           return {
             type,
             title,
@@ -69,6 +70,7 @@ export const homepageSearchFetcher = (filters: HomepageSearchFilters, locale: st
 
         if (type === 'regulation') {
           const { regNumber, titleText, fullTitle, slug } = dataInner
+
           return {
             type,
             title: `VZN ${regNumber} ${titleText ?? fullTitle}`,
@@ -79,6 +81,7 @@ export const homepageSearchFetcher = (filters: HomepageSearchFilters, locale: st
         }
 
         const { title, slug: link } = dataInner
+
         return { type, title, link, data: dataInner } as HomepageSearchResult
       })
 

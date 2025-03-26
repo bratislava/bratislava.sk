@@ -24,6 +24,7 @@ const NumericalList = ({
   variant = 'basic',
 }: NumericalListProps) => {
   const href = buttonLink?.length ? buttonLink : '#'
+
   return (
     <div>
       <div className="flex flex-col items-center justify-center py-12">

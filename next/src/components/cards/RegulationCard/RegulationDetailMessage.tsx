@@ -18,6 +18,7 @@ type RegulationMLinkProps = {
 const RegulationMLink = ({ regNumber }: RegulationMLinkProps) => {
   if (!regNumber) return null
   const slug = regNumber.replace('/', '-')
+
   return (
     <MLink variant="underlined-medium" className="whitespace-nowrap" href={`/vzn/${slug}`}>
       VZN {regNumber}

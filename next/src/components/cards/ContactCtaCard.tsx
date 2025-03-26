@@ -31,6 +31,7 @@ const ContactCtaCard = ({ className, contact, hasBackground }: ContactCtaCardPro
     if (contact.overrideLabel) {
       return contact.overrideLabel
     }
+
     return {
       [ContactCtaCardType.Email]: t('ContactCtaCard.email'),
       [ContactCtaCardType.Phone]: t('ContactCtaCard.phone'),
@@ -45,7 +46,7 @@ const ContactCtaCard = ({ className, contact, hasBackground }: ContactCtaCardPro
         icon: PhoneIcon,
         displayValue: contact.value,
         // Removes whitespaces
-        link: `tel:${contact.value.replace(/\s+/g, '')}`,
+        link: `tel:${contact.value.replaceAll(/\s+/g, '')}`,
       }
     }
 

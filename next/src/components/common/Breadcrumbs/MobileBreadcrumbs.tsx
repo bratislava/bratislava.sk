@@ -18,7 +18,7 @@ const MobileBreadcrumbs = ({ breadcrumbs }: BreadcrumbsProps) => {
   const { t } = useTranslation()
   const witHome = [{ title: t('Breadcrumbs.homepage'), path: '/' }, ...breadcrumbs]
   const withHomeWithoutCurrent = witHome.slice(0, -1)
-  const last = withHomeWithoutCurrent[withHomeWithoutCurrent.length - 1]
+  const last = withHomeWithoutCurrent.at(-1)
   const showDetails = withHomeWithoutCurrent.length > 0
 
   return (
@@ -34,12 +34,12 @@ const MobileBreadcrumbs = ({ breadcrumbs }: BreadcrumbsProps) => {
             {t('Breadcrumbs.back')}
           </Button>
           <div className="h-4 w-px bg-grey-300" />
-          {last.path ? (
+          {last?.path ? (
             <MLink href={last.path} variant="underlined" aria-hidden className="truncate py-3 pr-4">
               {last.title}
             </MLink>
           ) : (
-            <div className="truncate py-3 pr-4">{last.title}</div>
+            <div className="truncate py-3 pr-4">{last?.title}</div>
           )}
         </div>
       </div>

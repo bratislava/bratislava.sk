@@ -13,6 +13,7 @@ type ProsAndConsSectionProps = {
 
 const ProsAndConsSection = ({ section }: ProsAndConsSectionProps) => {
   const { title, text, pros, cons, textAlignProsAndCons: textAlign } = section
+
   return (
     <div className="flex flex-col gap-6 lg:gap-12">
       {title || text ? (

@@ -156,6 +156,7 @@ const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
     if (optionId in resultsCount) {
       return resultsCount[optionId]
     }
+
     return 0
   }
 

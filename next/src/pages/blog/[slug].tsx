@@ -36,6 +36,7 @@ export const getStaticPaths: GetStaticPaths<StaticParams> = async () => {
 
   // eslint-disable-next-line no-console
   console.log(`GENERATED STATIC PATHS FOR ${paths.length} SLUGS - BLOGS`)
+
   return { paths, fallback: 'blocking' }
 }
 

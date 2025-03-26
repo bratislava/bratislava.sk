@@ -49,6 +49,7 @@ const InbaArticlesFilter = ({
                 if (!tag.id || !tag.attributes) {
                   return null
                 }
+
                 return (
                   <Chip
                     variant="large"

@@ -103,6 +103,7 @@ const BlogPostsFilter = ({
                 if (!pagecategory.id || !pagecategory.attributes?.title) {
                   return null
                 }
+
                 return (
                   <Chip
                     variant="large"
@@ -141,6 +142,7 @@ const BlogPostsFilter = ({
                   })
                   .map((tag) => {
                     if (!tag.id || !tag.attributes?.title) return null
+
                     return (
                       <Chip
                         variant="small"

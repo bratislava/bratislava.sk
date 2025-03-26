@@ -21,18 +21,12 @@ module.exports = {
     'no-secrets/no-secrets': 'off',
     /** Doesn't work without changing our ts config */
     'unicorn/prefer-spread': 'off',
-    /** Use official sorting */
-    'tailwindcss/classnames-order': ['warn', { callees: ['classnames', 'cx', 'twMerge'] }],
     /** We specify default props in props decomposition */
     'react/require-default-props': 'off',
     /** Next Link does not need href in <a> tag */
     'jsx-a11y/anchor-is-valid': 'off',
     /** Do not work in our case */
     '@typescript-eslint/no-unsafe-assignment': 'off',
-    // '@typescript-eslint/no-unsafe-call': 'off',
-    // '@typescript-eslint/no-unsafe-return': 'off',
-    // '@typescript-eslint/no-unsafe-member-access': 'off',
-    // '@typescript-eslint/no-unsafe-argument': 'off',
     'lodash/prefer-noop': 'off',
     'jsx-a11y/img-redundant-alt': 'warn',
     '@next/next/no-img-element': 'off',
@@ -41,24 +35,15 @@ module.exports = {
     'react/jsx-no-useless-fragment': [2, { allowExpressions: true }],
     'pii/no-phone-number': 'off',
     'const-case/uppercase': 'off',
-    // Solve warning "Promise-returning function provided to attribute where a void return was expected."
-    // '@typescript-eslint/no-misused-promises': [
-    //   2,
-    //   {
-    //     checksVoidReturn: {
-    //       attributes: false,
-    //     },
-    //   },
-    // ],
-    'prettier/prettier': [
-      'error',
-      {
-        endOfLine: 'auto',
-      },
-    ],
-    // Temporarily disabled
+
+    // TODO revisit
     'import/extensions': 'off',
+    'react/display-name': 'off',
     'unicorn/expiring-todo-comments': 'off',
+
+    /* Formatting rules */
+    'prettier/prettier': ['error', { endOfLine: 'auto' }], // TODO revisit, prettier should not be run by eslint
+    'padding-line-between-statements': ['warn', { blankLine: 'always', prev: '*', next: 'return' }],
   },
   ignorePatterns: ['*.config.*', 'graphql', '.eslintrc.js'],
 }

@@ -76,6 +76,7 @@ SearchResultCard.ImageFromIconName = function ({
   className?: string
 }) {
   if (!iconName) return null
+
   return (
     <SearchResultCard.IconContainer className={className}>
       <Pictogram iconName={iconName} />
@@ -192,6 +193,7 @@ SearchResultCard.Metadata = function ({
         </Fragment>
       )
     }) ?? null
+
   return (
     <div
       className={cn(
