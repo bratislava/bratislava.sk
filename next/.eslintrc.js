@@ -58,6 +58,7 @@ module.exports = {
     ],
     // Temporarily disabled
     'import/extensions': 'off',
+    'unicorn/expiring-todo-comments': 'off',
   },
   ignorePatterns: ['*.config.*', 'graphql', '.eslintrc.js'],
 }
