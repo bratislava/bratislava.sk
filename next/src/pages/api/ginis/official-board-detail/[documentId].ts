@@ -6,7 +6,7 @@ import { base64Decode } from '@/src/utils/base64'
 const handler = async (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
   const { documentId: documentIdParam } = req.query
   const encodedDocumentId =
-    typeof documentIdParam === 'string' ? documentIdParam : documentIdParam?.[0] ?? ''
+    typeof documentIdParam === 'string' ? documentIdParam : (documentIdParam?.[0] ?? '')
 
   const documentId = base64Decode(encodedDocumentId)
 

@@ -1,9 +1,9 @@
 import { Typography } from '@bratislava/component-library'
-import cx from 'classnames'
 import React, { FocusEvent, useRef } from 'react'
 
 import { CrossIcon } from '@/src/assets/ui-icons'
 import Button from '@/src/components/common/Button/Button'
+import cn from '@/src/utils/cn'
 import { useTranslation } from '@/src/utils/useTranslation'
 
 const PADDING = 20 // py-5
@@ -64,7 +64,7 @@ const Bookmark = ({
 
   return (
     <div
-      className={cx(
+      className={cn(
         className,
         'flex overflow-hidden rounded-l-lg transition-all duration-500 ease-in-out',
         {
@@ -81,7 +81,7 @@ const Bookmark = ({
       onBlur={handleBlur}
     >
       <Button
-        className={cx('text-large w-[70px] font-semibold', {
+        className={cn('text-large w-[70px] font-semibold', {
           'bg-[#66BDE3]': variant === 'blue',
           'bg-main-700': variant === 'red',
         })}
@@ -104,11 +104,11 @@ const Bookmark = ({
               style={{
                 backgroundImage: `url("${icon}")`,
               }}
-              className="h-24 w-24 rounded-full"
+              className="size-24 rounded-full"
             />
           ) : (
             <div
-              className={cx('h-24 w-24 rounded-full', {
+              className={cn('h-24 w-24 rounded-full', {
                 'bg-font': variant === 'blue',
                 'bg-white': variant === 'red',
               })}

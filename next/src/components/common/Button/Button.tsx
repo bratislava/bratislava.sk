@@ -103,7 +103,7 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
      */
     const styles =
       variant === 'unstyled'
-        ? className ?? ''
+        ? (className ?? '')
         : cn(
             // TODO text-button interferes with text-[color], as quickfix we set size and color here by arbitrary values
             'inline-flex h-auto items-center justify-center gap-2 text-[1rem] font-semibold leading-[1.5rem] transition',
@@ -243,7 +243,7 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
             <Spinner size="sm" />
           </>
         ) : (
-          icon ?? children
+          (icon ?? children)
         )}
         {!isLoading && endIcon}
       </RACButton>

@@ -48,7 +48,7 @@ const MobileBreadcrumbs = ({ breadcrumbs }: BreadcrumbsProps) => {
       {showDetails && (
         <details className="group">
           <summary className="absolute right-0 top-0 -mr-4 block cursor-pointer p-4">
-            <ChevronDownIcon className="h-5 w-5 transition-transform group-open:rotate-180" />
+            <ChevronDownIcon className="size-5 transition-transform group-open:rotate-180" />
           </summary>
           <ol className="flex flex-col flex-wrap gap-1 py-2">
             {withHomeWithoutCurrent.map((breadcrumb, index) => (

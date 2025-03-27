@@ -47,7 +47,7 @@ const PageHeader = ({
             }}
             sizes={generateImageSizes({ default: '350px', lg: '750px' })}
             fill
-            className="pointer-events-none h-full w-full object-cover"
+            className="pointer-events-none size-full object-cover"
           />
         </div>
       )}
@@ -106,7 +106,7 @@ const PageHeader = ({
             alt=""
             sizes={generateImageSizes({ default: '100%' })}
             fill
-            className="pointer-events-none h-full w-full object-cover"
+            className="pointer-events-none size-full object-cover"
           />
         </div>
       ) : null}

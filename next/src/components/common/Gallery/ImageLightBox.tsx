@@ -43,7 +43,7 @@ const ImageLightBox = (props: ImageLightBoxProps) => {
           .map(({ id, attributes }) => (
             <div
               key={id}
-              className="container pointer-events-none m-auto flex h-full w-full max-w-6xl flex-col items-center justify-center md:px-[88px]"
+              className="container pointer-events-none m-auto flex size-full max-w-6xl flex-col items-center justify-center md:px-[88px]"
             >
               <StrapiImage
                 draggable="false"

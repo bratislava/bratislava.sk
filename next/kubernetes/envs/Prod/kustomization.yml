@@ -25,4 +25,3 @@ patches:
         value:
           secretRef:
             name: ${BUILD_REPOSITORY_NAME}-revalidate-secret
-

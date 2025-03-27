@@ -62,8 +62,8 @@ const RegulationCard = ({
         )}
       </div>
       <div className="flex items-center gap-2 lg:gap-3">
-        <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-grey-100 text-grey-700 lg:h-10 lg:w-10">
-          <ArrowRightIcon className="h-4 w-4" />
+        <div className="flex size-8 shrink-0 items-center justify-center rounded-full bg-grey-100 text-grey-700 lg:size-10">
+          <ArrowRightIcon className="size-4" />
         </div>
         <Typography type="span">{t('Regulation.linkToRegulationMessage')}</Typography>
       </div>

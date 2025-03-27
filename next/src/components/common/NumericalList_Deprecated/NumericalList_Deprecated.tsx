@@ -1,8 +1,8 @@
-import cx from 'classnames'
 import React from 'react'
 
 import Button from '@/src/components/common/Button/Button'
 import NumericalListItem from '@/src/components/common/NumericalList_Deprecated/NumericalListItem_Deprecated'
+import cn from '@/src/utils/cn'
 
 export type NumericalListItemObject = {
   text?: string | null
@@ -30,7 +30,7 @@ const NumericalList = ({
         <div className="flex max-w-screen-md flex-col">
           {title ? (
             <div
-              className={cx(
+              className={cn(
                 'pb-14 text-center',
                 { 'text-h3': variant !== 'roadmap' },
                 { 'text-h4': variant === 'roadmap' },

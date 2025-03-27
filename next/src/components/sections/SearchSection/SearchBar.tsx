@@ -28,7 +28,7 @@ const SearchBar = forwardRef<HTMLInputElement, SearchBarProps>(
         ref={forwardedRef}
         // TODO PageHeader size dynamically
         // 10rem scroll margin works fine for all screen sizes
-        className="flex scroll-mt-[10rem] flex-col gap-y-1"
+        className="flex scroll-mt-40 flex-col gap-y-1"
         aria-label={t('SearchBar.search')}
         defaultValue={placeholder}
         value={input}

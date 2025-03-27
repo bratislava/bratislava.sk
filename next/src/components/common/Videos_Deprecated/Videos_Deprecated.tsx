@@ -1,10 +1,10 @@
 import { Typography } from '@bratislava/component-library'
-import cx from 'classnames'
 import React from 'react'
 
 import ResponsiveCarousel from '@/src/components/common/Carousel/ResponsiveCarousel'
 import MLink from '@/src/components/common/MLink/MLink'
 import { VideoBlockFragment, VideosSectionFragment } from '@/src/services/graphql'
+import cn from '@/src/utils/cn'
 import { isPresent } from '@/src/utils/utils'
 
 // TODO split into separate components
@@ -42,7 +42,7 @@ const Video = ({
   return (
     <div className="mb-8 w-full lg:mb-0 xl:w-88">
       <iframe
-        className={cx('w-full rounded-5 shadow-sm', {
+        className={cn('w-full rounded-5 shadow-sm', {
           'animate-pulse bg-grey-300': !isLoaded,
         })}
         title={title ?? undefined}

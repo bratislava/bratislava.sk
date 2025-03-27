@@ -59,4 +59,3 @@ spec:
                 name: ${BUILD_REPOSITORY_NAME}-app
                 port:
                   number: 80
-

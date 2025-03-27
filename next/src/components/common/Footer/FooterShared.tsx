@@ -14,12 +14,12 @@ export const FooterSocialLinks = ({ facebookUrl, instagramUrl }: FooterFragment)
     <>
       {facebookUrl && (
         <MLink href={facebookUrl} target="_blank" rel="noreferrer" className="p-2">
-          <FacebookIcon className="h-5 w-5 md:h-6 md:w-6" />
+          <FacebookIcon className="size-5 md:size-6" />
         </MLink>
       )}
       {instagramUrl && (
         <MLink href={instagramUrl} target="_blank" rel="noreferrer" className="p-2">
-          <InstagramIcon className="h-5 w-5 md:h-6 md:w-6" />
+          <InstagramIcon className="size-5 md:size-6" />
         </MLink>
       )}
     </>

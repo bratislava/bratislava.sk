@@ -47,8 +47,8 @@ const RegulationDetailMessage = ({ regulation }: RegulationDetailMessageProps) =
   const alertMessage = isCancelled
     ? 'Zrušené'
     : hasCancelledAmendees
-    ? 'Dopĺňa neplatné VZN'
-    : 'Platné'
+      ? 'Dopĺňa neplatné VZN'
+      : 'Platné'
 
   // TODO Add sk localization after this component is refactored
   const alertContent = isCancelled ? (
@@ -66,8 +66,8 @@ const RegulationDetailMessage = ({ regulation }: RegulationDetailMessageProps) =
             {index === 0
               ? ' k '
               : index === (cancelledAmendees?.length ?? 0) - 1
-              ? ' a k '
-              : ', k '}{' '}
+                ? ' a k '
+                : ', k '}{' '}
             <RegulationMLink regNumber={cancelledAmendee.attributes?.regNumber} />, ktoré bolo
             zrušené nariadením{' '}
             <RegulationMLink

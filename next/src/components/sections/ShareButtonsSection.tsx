@@ -23,7 +23,7 @@ const ShareButtonsSection = ({ twitterTitle }: Props) => {
           <SocialMediaButton
             getLink={(socialLink) => `https://www.facebook.com/sharer/sharer.php?u=${socialLink}`}
           >
-            <FacebookIcon className="h-8 w-8" />
+            <FacebookIcon className="size-8" />
           </SocialMediaButton>
 
           <SocialMediaButton
@@ -31,11 +31,11 @@ const ShareButtonsSection = ({ twitterTitle }: Props) => {
               `https://www.linkedin.com/sharing/share-offsite/?url=${socialLink}`
             }
           >
-            <LinkedinIcon className="h-8 w-8" />
+            <LinkedinIcon className="size-8" />
           </SocialMediaButton>
 
           <SocialMediaButton getLink={() => 'https://www.instagram.com/bratislava.sk/'}>
-            <InstagramIcon className="h-8 w-8" />
+            <InstagramIcon className="size-8" />
           </SocialMediaButton>
 
           <SocialMediaButton
@@ -43,7 +43,7 @@ const ShareButtonsSection = ({ twitterTitle }: Props) => {
               `https://twitter.com/intent/tweet?url=${socialLink}${twitterTextQuery}`
             }
           >
-            <TwitterIcon className="h-8 w-8" />
+            <TwitterIcon className="size-8" />
           </SocialMediaButton>
         </div>
       </div>

@@ -1,4 +1,4 @@
-import cx from 'classnames'
+import cn from '@/src/utils/cn'
 
 import CloseIcon from './CloseIcon'
 import ErrorIcon from './ErrorIcon'
@@ -50,7 +50,7 @@ const Alert = ({
       warning: <WarningIcon solid={solid} />,
     }
 
-    const alertContainer = cx(
+    const alertContainer = cn(
       'flex w-full max-w-[480px] justify-between rounded-lg px-3 lg:px-5',
       className,
       {
@@ -74,14 +74,14 @@ const Alert = ({
       },
     )
 
-    const contentStyle = cx('w-full', {
+    const contentStyle = cn('w-full', {
       'text-default': variant === 'basic',
       'text-default font-semibold': variant === 'message',
       'text-grey-0': solid,
       'text-grey-700': !solid,
     })
 
-    const extraButtonStyle = cx('text-default font-medium underline underline-offset-4', {
+    const extraButtonStyle = cn('text-default font-medium underline underline-offset-4', {
       'text-negative-700': type === 'error' && !solid,
       'text-success-700': type === 'success' && !solid,
       'text-grey-700': type === 'info' && !solid,
@@ -96,7 +96,7 @@ const Alert = ({
           <div className={contentStyle}>{message}</div>
         </div>
         {close && (
-          <span className="flex h-6 w-6 items-center justify-center">
+          <span className="flex size-6 items-center justify-center">
             <CloseIcon onClick={close} solid={solid} type={type} />
           </span>
         )}
@@ -108,7 +108,7 @@ const Alert = ({
           <div className={contentStyle}>{message}</div>
         </div>
         <div
-          className={cx('text-default mt-2 w-full pl-9 font-normal', {
+          className={cn('text-default mt-2 w-full pl-9 font-normal', {
             'text-grey-0': solid,
             'text-grey-700': !solid,
           })}

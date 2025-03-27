@@ -65,7 +65,7 @@ const Gallery = ({ images = [] }: GalleryProps) => {
                   <div
                     onClick={() => openAtImageIndex(index)}
                     key={image.id}
-                    className="relative h-[100%] w-full cursor-pointer overflow-hidden rounded-lg pt-[100%] shadow-lg"
+                    className="relative size-full cursor-pointer overflow-hidden rounded-lg pt-[100%] shadow-lg"
                   >
                     <StrapiImage
                       // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
@@ -82,7 +82,7 @@ const Gallery = ({ images = [] }: GalleryProps) => {
                   onClick={() => openAtImageIndex(0)}
                   className="relative w-full cursor-pointer overflow-hidden rounded-lg border-2 border-category-700 pt-[100%]"
                 >
-                  <div className="absolute top-0 flex h-full w-full flex-col items-center justify-center gap-0.5 bg-white p-2 text-center">
+                  <div className="absolute top-0 flex size-full flex-col items-center justify-center gap-0.5 bg-white p-2 text-center">
                     <div className="text-h2 font-semibold">+{moreImagesCount}</div>
                     <div className="text-large-respo">
                       {t('Gallery.morePhotos', { count: moreImagesCount })}

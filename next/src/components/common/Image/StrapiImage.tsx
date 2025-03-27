@@ -22,8 +22,8 @@ const StrapiImage = ({ image, alt, ...rest }: MImageProps) => (
     src={image.url}
     alt={alt ?? image.alternativeText ?? ''}
     // Next shows Image with src "..." and "layout='fill'" has unused properties assigned. Please remove "width" and "height".
-    width={rest.fill ? undefined : image.width ?? undefined}
-    height={rest.fill ? undefined : image.height ?? undefined}
+    width={rest.fill ? undefined : (image.width ?? undefined)}
+    height={rest.fill ? undefined : (image.height ?? undefined)}
     {...rest}
   />
 )

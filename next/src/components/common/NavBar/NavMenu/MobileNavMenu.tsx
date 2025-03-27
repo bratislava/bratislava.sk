@@ -1,6 +1,6 @@
 import * as NavigationMenu from '@radix-ui/react-navigation-menu'
 import React, { useMemo } from 'react'
-import { useEventListener, useLockedBody, useWindowSize } from 'usehooks-ts'
+import { useEventListener, useScrollLock, useWindowSize } from 'usehooks-ts'
 
 import Button from '@/src/components/common/Button/Button'
 import MLink from '@/src/components/common/MLink/MLink'
@@ -32,7 +32,7 @@ const MobileNavMenu = () => {
 
   const { menuValue, setMenuValue, isMobileMenuOpen, setMobileMenuOpen } = useNavMenuContext()
 
-  useLockedBody(isMobileMenuOpen, 'root')
+  useScrollLock()
 
   useEventListener('keydown', (event) => {
     if (event.key === 'Escape') {
@@ -92,7 +92,7 @@ const MobileNavMenu = () => {
                 </div>
                 <NavigationMenu.Link asChild onClick={() => setMobileMenuOpen(false)}>
                   <MLink
-                    href={pageSlug ? `/${pageSlug}` : link.url ?? '#'}
+                    href={pageSlug ? `/${pageSlug}` : (link.url ?? '#')}
                     target={link.url ? '_blank' : undefined}
                     variant="underlined"
                     stretched

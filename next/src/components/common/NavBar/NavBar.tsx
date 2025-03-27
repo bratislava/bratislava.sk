@@ -1,5 +1,6 @@
 import * as React from 'react'
-import { useElementSize } from 'usehooks-ts'
+import { useRef } from 'react'
+import { useResizeObserver } from 'usehooks-ts'
 
 import AlertBanner from '@/src/components/common/NavBar/AlertBanner'
 
@@ -8,7 +9,8 @@ import NavBarHeader from './NavBarHeader/NavBarHeader'
 import NavMenu from './NavMenu/NavMenu'
 
 const NavBar = () => {
-  const [alertRef, { height }] = useElementSize<HTMLDivElement>()
+  const alertRef = useRef<HTMLDivElement>(null)
+  const { height } = useResizeObserver({ ref: alertRef })
 
   return (
     <>

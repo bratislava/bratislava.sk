@@ -36,8 +36,8 @@ const WelcomeCardIcon = ({ icon, isColored }: WelcomeCardIconProps) => {
   }, [icon])
 
   return (
-    <div style={colorStyle} className="flex h-[65px] w-[65px] shrink-0 items-center justify-center">
-      <IconComponent isColored={isColored} className="h-[48px] w-[48px] lg:h-[65px] lg:w-[65px]" />
+    <div style={colorStyle} className="flex size-[65px] shrink-0 items-center justify-center">
+      <IconComponent isColored={isColored} className="size-[48px] lg:size-[65px]" />
     </div>
   )
 }

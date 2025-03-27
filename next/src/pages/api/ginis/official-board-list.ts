@@ -22,7 +22,7 @@ const handler = async (
   const search =
     typeof searchParam === 'string'
       ? searchParam
-      : searchParam?.[0] ?? officialBoardListDefaultFilters.search
+      : (searchParam?.[0] ?? officialBoardListDefaultFilters.search)
   const pageSize =
     typeof pageSizeParam === 'string'
       ? parseInt(pageSizeParam, 10)
@@ -32,7 +32,7 @@ const handler = async (
   const publicationState =
     typeof publicationStateParam === 'string' ? publicationStateParam : publicationStateParam?.[0]
   const categoryId =
-    typeof categoryIdParam === 'string' ? categoryIdParam : categoryIdParam?.[0] ?? ''
+    typeof categoryIdParam === 'string' ? categoryIdParam : (categoryIdParam?.[0] ?? '')
 
   let result: ParsedOfficialBoardDocument[] = []
 

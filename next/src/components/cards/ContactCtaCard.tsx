@@ -95,7 +95,7 @@ const ContactCtaCard = ({ className, contact, hasBackground }: ContactCtaCardPro
           hasBackground ? 'bg-category-100' : 'bg-white',
         )}
       >
-        <Icon className="h-6 w-6 lg:h-8 lg:w-8" />
+        <Icon className="size-6 lg:size-8" />
       </div>
       <div className="flex flex-col gap-y-1 overflow-hidden break-words">
         {/* FIXME Typography. Convert to use Typograhpy component. Different font weight than Figma <p> */}

@@ -3,7 +3,7 @@ kind: Ingress
 metadata:
   annotations:
     cert-manager.io/cluster-issuer: cloudflare-dns01
-    cert-manager.io/issue-temporary-certificate: "true"
+    cert-manager.io/issue-temporary-certificate: 'true'
     ingress.kubernetes.io/redirect-to: https://bratislava.sk/socialne-sluzby-a-byvanie/aktivity-v-socialnej-oblasti/ludia-bez-domova-sa-rataju
     kubernetes.io/ingress.class: haproxy
   labels:
@@ -12,28 +12,28 @@ metadata:
   namespace: standalone
 spec:
   rules:
-  - host: ludiabezdomovasarataju.sk
-    http:
-      paths:
-      - backend:
-          service:
-            name: ${BUILD_REPOSITORY_NAME}-app
-            port:
-              number: 80
-        path: /
-        pathType: ImplementationSpecific
-  - host: www.ludiabezdomovasarataju.sk
-    http:
-      paths:
-      - backend:
-          service:
-            name: ${BUILD_REPOSITORY_NAME}-app
-            port:
-              number: 80
-        path: /
-        pathType: ImplementationSpecific
+    - host: ludiabezdomovasarataju.sk
+      http:
+        paths:
+          - backend:
+              service:
+                name: ${BUILD_REPOSITORY_NAME}-app
+                port:
+                  number: 80
+            path: /
+            pathType: ImplementationSpecific
+    - host: www.ludiabezdomovasarataju.sk
+      http:
+        paths:
+          - backend:
+              service:
+                name: ${BUILD_REPOSITORY_NAME}-app
+                port:
+                  number: 80
+            path: /
+            pathType: ImplementationSpecific
   tls:
-  - hosts:
-    - ludiabezdomovasarataju.sk
-    - www.ludiabezdomovasarataju.sk
-    secretName: ludiabezdomovasarataju-${BUILD_REPOSITORY_NAME}-tls
+    - hosts:
+        - ludiabezdomovasarataju.sk
+        - www.ludiabezdomovasarataju.sk
+      secretName: ludiabezdomovasarataju-${BUILD_REPOSITORY_NAME}-tls
