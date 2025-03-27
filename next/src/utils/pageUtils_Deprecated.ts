@@ -10,6 +10,7 @@ export const localePath = (locale: string, slug: string) => {
   // Special case for slovak homepage, so it is not empty string
   if (locale === 'sk' && slug === '') return '/'
   const localePrefix = locale === 'sk' ? '' : `${locale}/`
+
   return `${localePrefix}${slug || ''}`
 }
 
@@ -22,6 +23,7 @@ export const pagePath = (
   if (!page) return null
   const { locale, slug } = page
   if (!locale || !slug) return slug ?? null
+
   return localePath(locale, slug)
 }
 
@@ -37,6 +39,7 @@ export const parsePageLink = (
     // eslint-disable-next-line no-param-reassign
     pageLink.url = null
   }
+
   return {
     title: pageLink.title || pageLink.page?.data?.attributes?.title || '',
     url: pageLink.url ?? pagePath(param) ?? pageLink.page?.data?.attributes?.slug ?? '#',

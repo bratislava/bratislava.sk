@@ -25,6 +25,7 @@ const calculateLivingSituation = (
 ): [number, boolean] => {
   const minimumWage = singleAdultValue + (adults - 1) * anotherAdultValue + children * childValue
   const canAccomodate = income >= minimumWage
+
   return [minimumWage, canAccomodate]
 }
 

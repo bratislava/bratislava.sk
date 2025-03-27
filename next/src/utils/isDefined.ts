@@ -25,7 +25,9 @@ export function withAttributes<T extends ObjWithAttributes>(
     if (hasAttributes(value)) {
       return value
     }
+
     return null
   }
+
   return value
 }

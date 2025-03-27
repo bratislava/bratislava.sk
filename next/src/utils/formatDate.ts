@@ -8,7 +8,7 @@ export const getNumericLocalDate = (dateString: string) =>
         .toLocaleDateString('sk', {
           dateStyle: 'short',
         })
-        .replace(/ /g, '')
+        .replaceAll(' ', '')
     : 'Invalid date'
 
 // TODO unify with getNumericLocalDate
@@ -16,5 +16,6 @@ export const getNumericLocalDate = (dateString: string) =>
 export const formatDate = (dateISOString: string | undefined | null) => {
   if (!dateISOString) return ''
   const date = new Date(dateISOString)
+
   return date.toLocaleDateString('sk-SK', { month: '2-digit', day: '2-digit', year: 'numeric' })
 }

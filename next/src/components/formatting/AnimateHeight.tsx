@@ -29,6 +29,7 @@ const AnimateHeight = ({
 
   const calculatedDuration = useMemo(() => {
     const constant = (height ?? 0) / 36
+
     return Math.round((4 + 15 * constant ** 0.25 + constant / 5) * 10)
   }, [height])
 

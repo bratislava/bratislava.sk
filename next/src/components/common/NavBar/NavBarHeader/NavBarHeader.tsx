@@ -57,6 +57,7 @@ const NavBarHeader = ({ className }: NavBarProps) => {
                   </MLink>
                 )
               }
+
               return null
             })}
 

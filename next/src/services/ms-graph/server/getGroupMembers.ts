@@ -39,6 +39,7 @@ export const roleOrderingScore = (role: string | null | undefined) => {
   } else if (role.startsWith('Hovor')) {
     score = 1
   }
+
   return score
 }
 

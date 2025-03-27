@@ -12,6 +12,7 @@ export type BookmarksProps = {
 
 const Bookmarks = ({ className, bookmarks }: BookmarksProps) => {
   if (isEmpty(bookmarks)) return null
+
   return (
     <div
       className={twMerge(

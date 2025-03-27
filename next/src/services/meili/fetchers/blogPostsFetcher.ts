@@ -93,6 +93,7 @@ export const blogPostsFetcher = (filters: BlogPostsFilters, locale: string) => {
           if (!a.attributes?.date_added || !b.attributes?.date_added) {
             return 0
           }
+
           return (
             new Date(b.attributes.date_added).getTime() -
             new Date(a.attributes.date_added).getTime()

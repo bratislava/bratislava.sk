@@ -122,6 +122,7 @@ const GallerySlider = forwardRef<HTMLDivElement, SliderProps>(
           e.preventDefault()
           e.stopPropagation()
           goToPrevious()
+
           return
         }
 

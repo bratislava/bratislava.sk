@@ -97,6 +97,7 @@ const Carousel = ({
               </li>
             )
           }
+
           return null
         })}
       </ul>

@@ -14,6 +14,7 @@ type ComparisonSectionProps = {
 
 const ComparisonSection = ({ section }: ComparisonSectionProps) => {
   const { title, text, cards, textAlignComparison: textAlign } = section
+
   return (
     <div className="flex flex-col gap-6 lg:gap-12">
       {title || text ? (

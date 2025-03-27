@@ -35,6 +35,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<Response>) => {
     return res.json({ revalidated: true })
   } catch (error) {
     console.log('api/revalidate: Error while revalidating ==>', error)
+
     return res.status(500).send('Error revalidating')
   }
 }

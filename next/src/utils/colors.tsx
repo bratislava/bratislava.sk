@@ -89,5 +89,6 @@ export const GlobalCategoryColorProvider = ({ color, category: categoryProp }: P
  */
 export const getCategoryColorLocalStyle = ({ color, category: categoryProp }: Props) => {
   const category = categoryProp ?? transformColorToCategory(color)
+
   return Object.fromEntries(generateCssVariables(category)) as CSSProperties
 }

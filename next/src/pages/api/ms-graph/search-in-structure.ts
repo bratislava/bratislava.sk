@@ -13,6 +13,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<MSGraphFiltered
 
   if (!query) {
     res.status(200).json([])
+
     return
   }
 

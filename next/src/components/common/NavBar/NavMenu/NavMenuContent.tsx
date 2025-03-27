@@ -77,6 +77,7 @@ const NavMenuContent = ({ colCount, sections, colorStyle }: NavMenuContentProps)
                 </NavMenuContentCell>
               )
             }
+
             return (
               <NavMenuContentCell key={index} colSpan={cell.colSpan}>
                 <NavMenuSection key={index} section={cell} />
