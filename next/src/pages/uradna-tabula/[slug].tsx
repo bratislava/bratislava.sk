@@ -3,7 +3,6 @@ import { ParsedUrlQuery } from 'node:querystring'
 import { GetServerSideProps } from 'next'
 import Head from 'next/head'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import * as React from 'react'
 
 import PageLayout from '@/src/components/layouts/PageLayout'
 import OfficialBoardDocumentPageContent from '@/src/components/page-contents/OfficialBoardDocumentPageContent'
@@ -39,6 +38,14 @@ export const getServerSideProps: GetServerSideProps<
   if (!encodedDocumentId || !locale) return { notFound: true }
 
   const documentId = base64Decode(encodedDocumentId)
+  
+  const documentIdRegex = /.*#[0-9]+/ //requires # with at least one digit following
+  if (!documentIdRegex.test(documentId)) {
+        console.log(
+      `Invalid document ID for GINIS detailDokumentu. Encoded: ${encodedDocumentId} Decoded: ${documentId}`,
+    )
+    return { notFound: true }
+  }
 
   const [document, general, translations] = await Promise.all([
     getOfficialBoardParsedDocument(documentId),
