@@ -2101,6 +2101,7 @@ type Footer {
   locale: String
   localizations(publicationState: PublicationState = LIVE): FooterRelationResponseCollection
   publishedAt: DateTime
+  text: String
   updatedAt: DateTime
 }
 
@@ -2133,6 +2134,7 @@ input FooterFiltersInput {
   not: FooterFiltersInput
   or: [FooterFiltersInput]
   publishedAt: DateTimeFilterInput
+  text: StringFilterInput
   updatedAt: DateTimeFilterInput
 }
 
@@ -2145,6 +2147,7 @@ input FooterInput {
   innovationsLink: ComponentBlocksCommonLinkInput
   instagramUrl: String
   publishedAt: DateTime
+  text: String
 }
 
 type FooterRelationResponseCollection {

@@ -2435,6 +2435,7 @@ export type Footer = {
   locale?: Maybe<Scalars['String']['output']>
   localizations?: Maybe<FooterRelationResponseCollection>
   publishedAt?: Maybe<Scalars['DateTime']['output']>
+  text?: Maybe<Scalars['String']['output']>
   updatedAt?: Maybe<Scalars['DateTime']['output']>
 }
 
@@ -2486,6 +2487,7 @@ export type FooterFiltersInput = {
   not?: InputMaybe<FooterFiltersInput>
   or?: InputMaybe<Array<InputMaybe<FooterFiltersInput>>>
   publishedAt?: InputMaybe<DateTimeFilterInput>
+  text?: InputMaybe<StringFilterInput>
   updatedAt?: InputMaybe<DateTimeFilterInput>
 }
 
@@ -2498,6 +2500,7 @@ export type FooterInput = {
   innovationsLink?: InputMaybe<ComponentBlocksCommonLinkInput>
   instagramUrl?: InputMaybe<Scalars['String']['input']>
   publishedAt?: InputMaybe<Scalars['DateTime']['input']>
+  text?: InputMaybe<Scalars['String']['input']>
 }
 
 export type FooterRelationResponseCollection = {
@@ -6228,6 +6231,7 @@ export type FooterFragment = {
   address?: string | null
   facebookUrl?: string | null
   instagramUrl?: string | null
+  text?: string | null
   contacts?: Array<{
     __typename?: 'ComponentBlocksFooterContactItem'
     label: string
@@ -6819,6 +6823,7 @@ export type GeneralQuery = {
         address?: string | null
         facebookUrl?: string | null
         instagramUrl?: string | null
+        text?: string | null
         contacts?: Array<{
           __typename?: 'ComponentBlocksFooterContactItem'
           label: string
@@ -13872,6 +13877,7 @@ export const FooterFragmentDoc = gql`
     innovationsLink {
       ...CommonLink
     }
+    text
   }
   ${FooterContactItemFragmentDoc}
   ${FooterColumnBlockFragmentDoc}

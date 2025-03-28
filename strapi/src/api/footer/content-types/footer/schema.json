@@ -79,6 +79,14 @@
         }
       },
       "component": "blocks.footer-contact-item"
+    },
+    "text": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "richtext"
     }
   }
 }

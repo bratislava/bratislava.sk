@@ -82,6 +82,7 @@ fragment Footer on Footer {
   innovationsLink {
     ...CommonLink
   }
+  text
 }
 
 fragment PageForMenuEntity on PageEntity {
