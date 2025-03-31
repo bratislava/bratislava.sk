@@ -28,10 +28,8 @@ export const FooterSocialLinks = ({ facebookUrl, instagramUrl }: FooterFragment)
 
 export const FooterContacts = ({ contactText }: FooterFragment) => {
   return (
-    <div className="grid grid-cols-1 gap-6 lg:grid-cols-1">
-      <div className="flex flex-col gap-y-3">
-        <Markdown variant="small" content={contactText} />
-      </div>
+    <div className="flex flex-col gap-x-6 gap-y-3">
+      <Markdown variant="small" content={contactText} />
     </div>
   )
 }
