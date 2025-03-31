@@ -527,30 +527,6 @@ export type ComponentBlocksFooterColumnInput = {
   title?: InputMaybe<Scalars['String']['input']>
 }
 
-export type ComponentBlocksFooterContactItem = {
-  __typename?: 'ComponentBlocksFooterContactItem'
-  id: Scalars['ID']['output']
-  label: Scalars['String']['output']
-  mail?: Maybe<Scalars['String']['output']>
-  phone?: Maybe<Scalars['String']['output']>
-}
-
-export type ComponentBlocksFooterContactItemFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<ComponentBlocksFooterContactItemFiltersInput>>>
-  label?: InputMaybe<StringFilterInput>
-  mail?: InputMaybe<StringFilterInput>
-  not?: InputMaybe<ComponentBlocksFooterContactItemFiltersInput>
-  or?: InputMaybe<Array<InputMaybe<ComponentBlocksFooterContactItemFiltersInput>>>
-  phone?: InputMaybe<StringFilterInput>
-}
-
-export type ComponentBlocksFooterContactItemInput = {
-  id?: InputMaybe<Scalars['ID']['input']>
-  label?: InputMaybe<Scalars['String']['input']>
-  mail?: InputMaybe<Scalars['String']['input']>
-  phone?: InputMaybe<Scalars['String']['input']>
-}
-
 export type ComponentBlocksHomepageBookmark = {
   __typename?: 'ComponentBlocksHomepageBookmark'
   headline?: Maybe<Scalars['String']['output']>
@@ -2425,10 +2401,8 @@ export type FloatFilterInput = {
 export type Footer = {
   __typename?: 'Footer'
   accessibilityPageLink?: Maybe<ComponentBlocksCommonLink>
-  address?: Maybe<Scalars['String']['output']>
   columns?: Maybe<Array<Maybe<ComponentBlocksFooterColumn>>>
   contactText?: Maybe<Scalars['String']['output']>
-  contacts?: Maybe<Array<Maybe<ComponentBlocksFooterContactItem>>>
   createdAt?: Maybe<Scalars['DateTime']['output']>
   facebookUrl?: Maybe<Scalars['String']['output']>
   innovationsLink?: Maybe<ComponentBlocksCommonLink>
@@ -2441,12 +2415,6 @@ export type Footer = {
 
 export type FooterColumnsArgs = {
   filters?: InputMaybe<ComponentBlocksFooterColumnFiltersInput>
-  pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
-}
-
-export type FooterContactsArgs = {
-  filters?: InputMaybe<ComponentBlocksFooterContactItemFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
 }
@@ -2474,11 +2442,9 @@ export type FooterEntityResponseCollection = {
 
 export type FooterFiltersInput = {
   accessibilityPageLink?: InputMaybe<ComponentBlocksCommonLinkFiltersInput>
-  address?: InputMaybe<StringFilterInput>
   and?: InputMaybe<Array<InputMaybe<FooterFiltersInput>>>
   columns?: InputMaybe<ComponentBlocksFooterColumnFiltersInput>
   contactText?: InputMaybe<StringFilterInput>
-  contacts?: InputMaybe<ComponentBlocksFooterContactItemFiltersInput>
   createdAt?: InputMaybe<DateTimeFilterInput>
   facebookUrl?: InputMaybe<StringFilterInput>
   innovationsLink?: InputMaybe<ComponentBlocksCommonLinkFiltersInput>
@@ -2493,10 +2459,8 @@ export type FooterFiltersInput = {
 
 export type FooterInput = {
   accessibilityPageLink?: InputMaybe<ComponentBlocksCommonLinkInput>
-  address?: InputMaybe<Scalars['String']['input']>
   columns?: InputMaybe<Array<InputMaybe<ComponentBlocksFooterColumnInput>>>
   contactText?: InputMaybe<Scalars['String']['input']>
-  contacts?: InputMaybe<Array<InputMaybe<ComponentBlocksFooterContactItemInput>>>
   facebookUrl?: InputMaybe<Scalars['String']['input']>
   innovationsLink?: InputMaybe<ComponentBlocksCommonLinkInput>
   instagramUrl?: InputMaybe<Scalars['String']['input']>
@@ -2587,7 +2551,6 @@ export type GenericMorph =
   | ComponentBlocksFile
   | ComponentBlocksFileItem
   | ComponentBlocksFooterColumn
-  | ComponentBlocksFooterContactItem
   | ComponentBlocksHomepageBookmark
   | ComponentBlocksHomepageHighlightsItem
   | ComponentBlocksIconWithTitleAndDescription
@@ -6192,13 +6155,6 @@ export type CommonLinkFragment = {
   } | null
 }
 
-export type FooterContactItemFragment = {
-  __typename?: 'ComponentBlocksFooterContactItem'
-  label: string
-  phone?: string | null
-  mail?: string | null
-}
-
 export type FooterColumnBlockFragment = {
   __typename?: 'ComponentBlocksFooterColumn'
   title: string
@@ -6228,16 +6184,9 @@ export type FooterColumnBlockFragment = {
 
 export type FooterFragment = {
   __typename?: 'Footer'
-  address?: string | null
   facebookUrl?: string | null
   instagramUrl?: string | null
   contactText?: string | null
-  contacts?: Array<{
-    __typename?: 'ComponentBlocksFooterContactItem'
-    label: string
-    phone?: string | null
-    mail?: string | null
-  } | null> | null
   columns?: Array<{
     __typename?: 'ComponentBlocksFooterColumn'
     title: string
@@ -6820,16 +6769,9 @@ export type GeneralQuery = {
       __typename?: 'FooterEntity'
       attributes?: {
         __typename?: 'Footer'
-        address?: string | null
         facebookUrl?: string | null
         instagramUrl?: string | null
         contactText?: string | null
-        contacts?: Array<{
-          __typename?: 'ComponentBlocksFooterContactItem'
-          label: string
-          phone?: string | null
-          mail?: string | null
-        } | null> | null
         columns?: Array<{
           __typename?: 'ComponentBlocksFooterColumn'
           title: string
@@ -13844,13 +13786,6 @@ export const BlogPostEntityFragmentDoc = gql`
   ${BlogPostLinkFragmentDoc}
   ${SectionsFragmentDoc}
 `
-export const FooterContactItemFragmentDoc = gql`
-  fragment FooterContactItem on ComponentBlocksFooterContactItem {
-    label
-    phone
-    mail
-  }
-`
 export const FooterColumnBlockFragmentDoc = gql`
   fragment FooterColumnBlock on ComponentBlocksFooterColumn {
     title
@@ -13862,12 +13797,8 @@ export const FooterColumnBlockFragmentDoc = gql`
 `
 export const FooterFragmentDoc = gql`
   fragment Footer on Footer {
-    address
     facebookUrl
     instagramUrl
-    contacts {
-      ...FooterContactItem
-    }
     columns {
       ...FooterColumnBlock
     }
@@ -13879,7 +13810,6 @@ export const FooterFragmentDoc = gql`
     }
     contactText
   }
-  ${FooterContactItemFragmentDoc}
   ${FooterColumnBlockFragmentDoc}
   ${CommonLinkFragmentDoc}
 `

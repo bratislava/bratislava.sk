@@ -537,19 +537,7 @@ export interface ApiFooterFooter extends Schema.SingleType {
           localized: true
         }
       }>
-    address: Attribute.Text &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true
-        }
-      }>
     columns: Attribute.Component<'blocks.footer-column', true> &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true
-        }
-      }>
-    contacts: Attribute.Component<'blocks.footer-contact-item', true> &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true

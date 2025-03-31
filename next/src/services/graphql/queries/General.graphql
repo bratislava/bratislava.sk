@@ -53,12 +53,6 @@ fragment CommonLink on ComponentBlocksCommonLink {
   }
 }
 
-fragment FooterContactItem on ComponentBlocksFooterContactItem {
-  label
-  phone
-  mail
-}
-
 fragment FooterColumnBlock on ComponentBlocksFooterColumn {
   title
   links {
@@ -67,12 +61,8 @@ fragment FooterColumnBlock on ComponentBlocksFooterColumn {
 }
 
 fragment Footer on Footer {
-  address
   facebookUrl
   instagramUrl
-  contacts {
-    ...FooterContactItem
-  }
   columns {
     ...FooterColumnBlock
   }
