@@ -32,8 +32,8 @@ const InbaArticlesFilter = ({
   }, [onChange, selectedTags])
 
   return (
-    <div className="flex flex-col gap-6 py-18 lg:m-auto lg:w-[800px]  lg:gap-10 lg:py-18">
-      <div className="flex flex-col gap-2 lg:items-center ">
+    <div className="flex flex-col gap-6 py-18 lg:m-auto lg:w-[800px] lg:gap-10 lg:py-18">
+      <div className="flex flex-col gap-2 lg:items-center">
         <Label className="text-h3 font-semibold">{t('BlogPostsFilter.articleFilter')}</Label>
         {subtext && <Text>{subtext}</Text>}
       </div>

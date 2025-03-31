@@ -103,7 +103,7 @@ const RegulationDetailMessage = ({ regulation }: RegulationDetailMessageProps) =
       message={alertMessage}
       variant="message"
       content={alertContent as any} // workaround so we can include links in Alert content, until new component is designed
-      className="lg:max-w-[584px] " // workaround for width, so it fits to implied grid
+      className="lg:max-w-[584px]" // workaround for width, so it fits to implied grid
     />
   )
 }

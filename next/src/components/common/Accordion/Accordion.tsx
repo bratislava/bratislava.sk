@@ -19,7 +19,7 @@ export type AccordionProps = {
  */
 const Accordion = ({ variant = 'boxed', title, children }: AccordionProps) => {
   const borderStyles = cn('group flex w-full flex-col', {
-    'border-2 rounded-xl bg-white border-grey-200 hover:border-grey-500 open:border-grey-700 hover:open:border-grey-700':
+    'rounded-xl border-2 border-grey-200 bg-white hover:border-grey-500 open:border-grey-700 hover:open:border-grey-700':
       variant === 'boxed',
   })
 
@@ -33,12 +33,12 @@ const Accordion = ({ variant = 'boxed', title, children }: AccordionProps) => {
   )
 
   const chevronStyles = cn('transform transition-transform group-open:rotate-180', {
-    'w-6 h-6 lg:w-8 lg:h-8 text-category-700': variant === 'boxed',
-    'w-5 h-5': variant === 'footer',
+    'h-6 w-6 text-category-700 lg:h-8 lg:w-8': variant === 'boxed',
+    'h-5 w-5': variant === 'footer',
   })
 
   const contentStyles = cn({
-    'mx-4 lg:mx-8 mb-4 lg:mb-6 text-small': variant === 'boxed',
+    'text-small mx-4 mb-4 lg:mx-8 lg:mb-6': variant === 'boxed',
     'pb-6': variant === 'footer',
   })
 

@@ -21,8 +21,10 @@
     "update-react-aria": "npm install @internationalized/date@latest @react-stately/utils@latest react-aria@latest react-aria-components@latest react-stately@latest tailwindcss-react-aria-components --save-exact",
     "update-tailwind": "npm install tailwind-merge@latest clsx@latest --save-exact && npm install tailwindcss@latest autoprefixer@latest postcss@latest prettier-plugin-tailwindcss@latest eslint-plugin-tailwindcss@latest --save-dev --save-exact",
     "update-prettier": "npm install prettier@latest eslint-config-prettier@latest eslint-plugin-prettier@latest --save-dev --save-exact",
-    "update-graphql": "npm install graphql@latest graphql-request@latest graphql-tag@latest --save-exact && npm install @graphql-codegen/cli@latest @graphql-codegen/typescript-graphql-request@latest --save-dev --save-exact",
+    "update-graphql": "npm install graphql@latest graphql-request@latest graphql-tag@latest --save-exact && npm install @graphql-codegen/cli@latest @graphql-codegen/typescript@latest @graphql-codegen/typescript-operations@latest @graphql-codegen/typescript-graphql-request@latest --save-dev --save-exact",
     "update-radix": "npm install @radix-ui/react-navigation-menu@latest --save-exact",
+    "update-react-query": "npm install @tanstack/react-query@latest --save-exact && npm install @tanstack/eslint-plugin-query@latest --save-dev --save-exact",
+    "update-mapbox": "npm install react-map-gl@latest mapbox-gl@latest --save-exact",
     "update-typescript": "npm install typescript@latest --save-dev --save-exact"
   },
   "dependencies": {

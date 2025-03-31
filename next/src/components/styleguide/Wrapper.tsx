@@ -19,7 +19,7 @@ const Wrapper = ({ title, children, direction = 'row', noBorder }: WrapperProps)
 
   const childrenClassNames = cn('flex', {
     'flex-col space-y-2': direction === 'column',
-    'space-x-2 justify-between': direction === 'row',
+    'justify-between space-x-2': direction === 'row',
   })
 
   return (
