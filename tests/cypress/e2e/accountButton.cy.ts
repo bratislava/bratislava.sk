@@ -20,7 +20,7 @@ describe('Account button', { testIsolation: false }, () => {
                 $accountButton.attr('target', '_self')
               })
             cy.dataCy('account-button').click()
-            cy.url().should('include', 'https://konto.bratislava.sk/prihlasenie')
+            cy.url().should('include', 'https://konto.bratislava.sk')
           } else {
             cy.dataCy('mobile-menu-button').click()
             cy.dataCy('mobile-account-button')
@@ -30,7 +30,7 @@ describe('Account button', { testIsolation: false }, () => {
                 $a.attr('target', '_self')
               })
             cy.dataCy('mobile-account-button').click()
-            cy.url().should('include', 'https://konto.bratislava.sk/prihlasenie')
+            cy.url().should('include', 'https://konto.bratislava.sk')
           }
         })
       })
