@@ -1,0 +1,18 @@
+name: Release Comments
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  comment:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Release Commenter
+        uses: apexskier/github-release-commenter@v1.3.6
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          comment-template: |
+            This issue has been resolved in release {release_link} 🎉
