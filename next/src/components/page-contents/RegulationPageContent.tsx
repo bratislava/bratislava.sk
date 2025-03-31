@@ -100,6 +100,7 @@ const RegulationPageContent = ({ regulation }: RegulationPageContentProps) => {
                   {attachmentFiles
                     .map(({ media: attachementMedia, title: attachmentTitle }, index) => {
                       if (!attachementMedia.data.attributes) return null
+
                       return (
                         <>
                           {index > 0 ? <HorizontalDivider className="mx-4 lg:mx-6" /> : null}

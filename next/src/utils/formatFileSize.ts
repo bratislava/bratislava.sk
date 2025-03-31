@@ -8,5 +8,6 @@ export const formatFileSize = (size: number | undefined, language: string) => {
       locale: language,
     })
   }
+
   return size
 }

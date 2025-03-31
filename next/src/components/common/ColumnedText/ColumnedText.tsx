@@ -14,6 +14,7 @@ const ColumnedText = ({
   const breakWord = '<break>'
   const columns = content.split(breakWord)
   if (!content) return null
+
   return (
     <div
       className={cn('grid gap-6', {

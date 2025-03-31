@@ -7,6 +7,7 @@ import { useTranslation } from '@/src/utils/useTranslation'
 const CopyToClipboardButton = ({ copyText }: { copyText: string }) => {
   const [, copy] = useCopyToClipboard()
   const { t } = useTranslation()
+
   return (
     <Button
       variant="icon-wrapped"

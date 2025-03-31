@@ -32,6 +32,7 @@ const WelcomeCardIcon = ({ icon, isColored }: WelcomeCardIconProps) => {
       vzdelavanie_05: IconEducation,
       kultura_06: IconCulture,
     }
+
     return icons[icon] ?? null
   }, [icon])
 

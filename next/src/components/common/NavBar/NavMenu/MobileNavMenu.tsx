@@ -84,6 +84,7 @@ const MobileNavMenu = () => {
           {linksOnMobile?.map((link, linkIndex) => {
             // TODO better approach to links
             const pageSlug = link.page?.data?.attributes?.slug
+
             return (
               // eslint-disable-next-line react/no-array-index-key
               <li key={linkIndex} className="relative flex items-center gap-2">

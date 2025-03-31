@@ -33,6 +33,7 @@ export const getStaticPaths: GetStaticPaths<StaticParams> = async () => {
 
   // eslint-disable-next-line no-console
   console.log(`GENERATED STATIC PATHS FOR ${paths.length} SLUGS - INBA RELEASES`)
+
   return { paths, fallback: 'blocking' }
 }
 
