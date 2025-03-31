@@ -38,12 +38,13 @@ export const getServerSideProps: GetServerSideProps<
   if (!encodedDocumentId || !locale) return { notFound: true }
 
   const documentId = base64Decode(encodedDocumentId)
-  
-  const documentIdRegex = /.*#[0-9]+/ //requires # with at least one digit following
+
+  const documentIdRegex = /.*#\d+/ // requires # with at least one digit following
   if (!documentIdRegex.test(documentId)) {
-        console.log(
+    console.log(
       `Invalid document ID for GINIS detailDokumentu. Encoded: ${encodedDocumentId} Decoded: ${documentId}`,
     )
+
     return { notFound: true }
   }
 

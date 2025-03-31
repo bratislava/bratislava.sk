@@ -1,5 +1,12 @@
 module.exports = {
-  extends: ['auto', 'plugin:tailwindcss/recommended', 'plugin:@next/next/recommended'],
+  extends: [
+    'auto',
+    'plugin:react/recommended',
+    'plugin:@next/next/recommended',
+    'plugin:i18next/recommended',
+    'plugin:tailwindcss/recommended',
+    'plugin:@tanstack/eslint-plugin-query/recommended',
+  ],
   plugins: ['only-warn'],
   rules: {
     'react/react-in-jsx-scope': 'off',
