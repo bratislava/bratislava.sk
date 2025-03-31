@@ -1,4 +1,4 @@
-FROM node:20.9-alpine AS base
+FROM node:20.19-alpine AS base
 
 FROM base AS install
 RUN apk update \
