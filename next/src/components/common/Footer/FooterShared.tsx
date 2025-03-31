@@ -1,9 +1,9 @@
 import { Typography } from '@bratislava/component-library'
 import { Trans } from 'next-i18next'
-import * as React from 'react'
 
 import { FacebookIcon, InstagramIcon } from '@/src/assets/images'
 import MLink from '@/src/components/common/MLink/MLink'
+import Markdown from '@/src/components/formatting/Markdown/Markdown'
 import { useLocalizations } from '@/src/components/providers/LocalizationsProvider'
 import { FooterColumnBlockFragment, FooterFragment } from '@/src/services/graphql'
 import { getCommonLinkProps } from '@/src/utils/getCommonLinkProps'
@@ -26,33 +26,11 @@ export const FooterSocialLinks = ({ facebookUrl, instagramUrl }: FooterFragment)
   )
 }
 
-export const FooterContacts = ({ address, contacts }: FooterFragment) => {
+export const FooterContacts = ({ contactText }: FooterFragment) => {
   return (
-    <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-1">
-      {address && (
-        <Typography type="p" className="whitespace-pre-wrap">
-          {address}
-        </Typography>
-      )}
-
+    <div className="grid grid-cols-1 gap-6 lg:grid-cols-1">
       <div className="flex flex-col gap-y-3">
-        {/* FIXME Typography. Convert to use Typography. */}
-        {contacts?.filter(isDefined).map((contactItem, index) => (
-          // eslint-disable-next-line react/no-array-index-key
-          <div key={index}>
-            <span>{contactItem.label}: </span>
-            {contactItem.phone && (
-              <MLink href={`tel:${contactItem.phone.replace(/ /g, '')}`} variant="underlined">
-                {contactItem.phone}
-              </MLink>
-            )}
-            {contactItem.mail && (
-              <MLink href={`mailto:${contactItem.mail}`} variant="underlined">
-                {contactItem.mail}
-              </MLink>
-            )}
-          </div>
-        ))}
+        <Markdown variant="small" content={contactText} />
       </div>
     </div>
   )

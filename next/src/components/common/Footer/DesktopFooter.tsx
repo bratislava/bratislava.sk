@@ -1,5 +1,4 @@
 import { Typography } from '@bratislava/component-library'
-import * as React from 'react'
 
 import EULogo from '@/src/assets/images/EULogo.svg'
 import Brand from '@/src/components/common/Brand/Brand'
@@ -41,11 +40,8 @@ const DesktopFooter = () => {
           </div>
         </div>
         <HorizontalDivider />
-        {/* there is no design in figma for middle screens, so this is chosen by devs */}
-        <div className="grid grid-cols-2 gap-6 lg:grid-cols-[1.3fr_1fr_1fr] lg:gap-8 xl:grid-cols-[488px_332px_332px]">
-          <div className="col-span-2 flex flex-col gap-6 lg:col-span-1">
-            <FooterContacts {...attributes} />
-          </div>
+        <div className="flex justify-between gap-6">
+          <FooterContacts {...attributes} />
           <HorizontalDivider className="col-span-2 lg:hidden" />
           {attributes.columns?.filter(isDefined).map((column, index) => (
             // eslint-disable-next-line react/no-array-index-key
