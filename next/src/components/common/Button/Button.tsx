@@ -183,7 +183,7 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
 
               // colors:hover - bg, border, text
               'hover:border-category-600 hover:bg-category-600': variant === 'category-solid',
-              'hover:text-grey-600 hover:border-category-600': variant === 'category-outline',
+              'hover:border-category-600 hover:text-grey-600': variant === 'category-outline',
               'hover:bg-category-100 hover:text-category-600': variant === 'category-plain',
 
               'hover:border-grey-600 hover:bg-grey-600': variant === 'black-solid',

@@ -54,7 +54,7 @@ const Alert = ({
       'flex w-full max-w-[480px] justify-between rounded-lg px-3 lg:px-5',
       className,
       {
-        'text-grey-800 flex-col lg:py-4 py-3': variant === 'message',
+        'flex-col py-3 text-grey-800 lg:py-4': variant === 'message',
         'bg-negative-100': type === 'error' && !solid,
         'bg-success-50': type === 'success' && !solid,
         'bg-grey-100': type === 'info' && !solid,
@@ -65,7 +65,7 @@ const Alert = ({
         'text-grey-700': type === 'info' && !solid && variant !== 'message',
         'text-warning-700': type === 'warning' && !solid && variant !== 'message',
 
-        'lg:py-4 p-3 items-center': variant === 'basic',
+        'items-center p-3 lg:py-4': variant === 'basic',
         'text-grey-0': solid,
         'bg-negative-700': type === 'error' && solid,
         'bg-success-700': type === 'success' && solid,

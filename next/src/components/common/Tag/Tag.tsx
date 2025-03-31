@@ -19,7 +19,7 @@ const Tag = ({ text, size = 'small', isColored = false, shorthand, onRemove }: T
   // STYLES
   const classStyles = cn('flex w-fit items-center justify-center gap-1 rounded text-center', {
     'text-small px-2 py-0': size === 'small',
-    'text-default py-0.5 px-3': size === 'large',
+    'text-default px-3 py-0.5': size === 'large',
     'bg-grey-100': isRemovable || !isColored,
     'text-grey-700': isRemovable || !isColored,
     'bg-category-100': !isRemovable && isColored,
@@ -27,8 +27,8 @@ const Tag = ({ text, size = 'small', isColored = false, shorthand, onRemove }: T
   })
 
   const iconClassStyles = cn({
-    'w-2.5 h-2.5': size === 'small',
-    'w-3 h-3': size === 'large',
+    'h-2.5 w-2.5': size === 'small',
+    'h-3 w-3': size === 'large',
   })
 
   const MAX_TEXT_SIZE = 10

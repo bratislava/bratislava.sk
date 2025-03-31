@@ -21,6 +21,7 @@ const NumericalListItem = ({
   className,
 }: NumericalListItemProps) => {
   const position = index % 2 === 0 ? 'left' : 'right'
+
   return (
     <div
       key={index}
@@ -48,7 +49,7 @@ const NumericalListItem = ({
       >
         <div
           className={cn(
-            'min-w-16 text-h4 z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full font-semibold',
+            'text-h4 z-10 flex h-10 w-10 min-w-16 shrink-0 items-center justify-center rounded-full font-semibold',
             { 'bg-category-600 text-white': variant === 'roadmap' },
           )}
         >

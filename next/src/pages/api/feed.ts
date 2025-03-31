@@ -13,6 +13,7 @@ const feedUrl = {
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   if (process.env.NEXT_PUBLIC_FEATURE_FLAG_RSS_FEED !== 'true') {
     res.status(404)
+
     return
   }
 
