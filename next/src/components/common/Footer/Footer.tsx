@@ -1,15 +1,13 @@
-import * as React from 'react'
-
 import DesktopFooter from '@/src/components/common/Footer/DesktopFooter'
 import MobileFooter from '@/src/components/common/Footer/MobileFooter'
 
 const Footer = () => {
   return (
     <>
-      <div className="hidden md:block">
+      <div className="hidden lg:block">
         <DesktopFooter />
       </div>
-      <div className="md:hidden">
+      <div className="lg:hidden">
         <MobileFooter />
       </div>
     </>

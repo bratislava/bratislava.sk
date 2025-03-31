@@ -20,20 +20,6 @@
           "sortable": true
         }
       },
-      "address": {
-        "edit": {
-          "label": "address",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "address",
-          "searchable": true,
-          "sortable": true
-        }
-      },
       "facebookUrl": {
         "edit": {
           "label": "facebookUrl",
@@ -104,16 +90,16 @@
           "sortable": false
         }
       },
-      "contacts": {
+      "contactText": {
         "edit": {
-          "label": "contacts",
+          "label": "contactText",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "contacts",
+          "label": "contactText",
           "searchable": false,
           "sortable": false
         }
@@ -180,17 +166,10 @@
     "layouts": {
       "list": [
         "id",
-        "address",
         "createdBy",
         "updatedBy"
       ],
       "edit": [
-        [
-          {
-            "name": "address",
-            "size": 12
-          }
-        ],
         [
           {
             "name": "facebookUrl",
@@ -221,7 +200,7 @@
         ],
         [
           {
-            "name": "contacts",
+            "name": "contactText",
             "size": 12
           }
         ]

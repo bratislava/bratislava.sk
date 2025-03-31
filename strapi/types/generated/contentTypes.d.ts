@@ -537,19 +537,13 @@ export interface ApiFooterFooter extends Schema.SingleType {
           localized: true
         }
       }>
-    address: Attribute.Text &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true
-        }
-      }>
     columns: Attribute.Component<'blocks.footer-column', true> &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true
         }
       }>
-    contacts: Attribute.Component<'blocks.footer-contact-item', true> &
+    contactText: Attribute.RichText &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true
@@ -1042,7 +1036,6 @@ export interface ApiPagePage extends Schema.CollectionType {
     }
   }
   attributes: {
-    childPages: Attribute.Relation<'api::page.page', 'oneToMany', 'api::page.page'>
     createdAt: Attribute.DateTime
     createdBy: Attribute.Relation<'api::page.page', 'oneToOne', 'admin::user'> & Attribute.Private
     headerLinks: Attribute.Component<'blocks.common-link', true> &
@@ -1051,6 +1044,7 @@ export interface ApiPagePage extends Schema.CollectionType {
           localized: true
         }
       }>
+    childPages: Attribute.Relation<'api::page.page', 'oneToMany', 'api::page.page'>
     keywords: Attribute.String &
       Attribute.SetPluginOptions<{
         i18n: {
@@ -1472,11 +1466,11 @@ export interface PluginUploadFolder extends Schema.CollectionType {
     }
   }
   attributes: {
-    children: Attribute.Relation<'plugin::upload.folder', 'oneToMany', 'plugin::upload.folder'>
     createdAt: Attribute.DateTime
     createdBy: Attribute.Relation<'plugin::upload.folder', 'oneToOne', 'admin::user'> &
       Attribute.Private
     files: Attribute.Relation<'plugin::upload.folder', 'oneToMany', 'plugin::upload.file'>
+    children: Attribute.Relation<'plugin::upload.folder', 'oneToMany', 'plugin::upload.folder'>
     name: Attribute.String &
       Attribute.Required &
       Attribute.SetMinMax<

@@ -16,14 +16,6 @@
     }
   },
   "attributes": {
-    "address": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "type": "text"
-    },
     "facebookUrl": {
       "pluginOptions": {
         "i18n": {
@@ -70,15 +62,13 @@
       },
       "component": "blocks.common-link"
     },
-    "contacts": {
-      "type": "component",
-      "repeatable": true,
+    "contactText": {
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "component": "blocks.footer-contact-item"
+      "type": "richtext"
     }
   }
 }

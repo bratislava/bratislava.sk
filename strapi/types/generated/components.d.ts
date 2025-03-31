@@ -162,19 +162,6 @@ export interface BlocksFooterColumn extends Schema.Component {
   }
 }
 
-export interface BlocksFooterContactItem extends Schema.Component {
-  collectionName: 'components_blocks_footer_contact_items'
-  info: {
-    description: ''
-    displayName: 'footer contact item'
-  }
-  attributes: {
-    label: Attribute.String & Attribute.Required
-    mail: Attribute.Email
-    phone: Attribute.String
-  }
-}
-
 export interface BlocksHomepageBookmark extends Schema.Component {
   collectionName: 'components_blocks_homepage_bookmarks'
   info: {
@@ -523,8 +510,8 @@ export interface SectionsCalculator extends Schema.Component {
   }
   attributes: {
     another_adult_value: Attribute.Decimal
-    child_value: Attribute.Decimal
     hasBackground: Attribute.Boolean
+    child_value: Attribute.Decimal
     single_adult_value: Attribute.Decimal
   }
 }
@@ -1010,7 +997,6 @@ declare module '@strapi/types' {
       'blocks.file': BlocksFile
       'blocks.file-item': BlocksFileItem
       'blocks.footer-column': BlocksFooterColumn
-      'blocks.footer-contact-item': BlocksFooterContactItem
       'blocks.homepage-bookmark': BlocksHomepageBookmark
       'blocks.homepage-highlights-item': BlocksHomepageHighlightsItem
       'blocks.icon-with-title-and-description': BlocksIconWithTitleAndDescription
