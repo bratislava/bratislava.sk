@@ -555,6 +555,12 @@ export interface ApiFooterFooter extends Schema.SingleType {
           localized: true
         }
       }>
+    contactText: Attribute.RichText &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true
+        }
+      }>
     createdAt: Attribute.DateTime
     createdBy: Attribute.Relation<'api::footer.footer', 'oneToOne', 'admin::user'> &
       Attribute.Private
@@ -579,12 +585,6 @@ export interface ApiFooterFooter extends Schema.SingleType {
     locale: Attribute.String
     localizations: Attribute.Relation<'api::footer.footer', 'oneToMany', 'api::footer.footer'>
     publishedAt: Attribute.DateTime
-    text: Attribute.RichText &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true
-        }
-      }>
     updatedAt: Attribute.DateTime
     updatedBy: Attribute.Relation<'api::footer.footer', 'oneToOne', 'admin::user'> &
       Attribute.Private

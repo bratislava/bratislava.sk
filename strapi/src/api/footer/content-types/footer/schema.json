@@ -80,7 +80,7 @@
       },
       "component": "blocks.footer-contact-item"
     },
-    "text": {
+    "contactText": {
       "pluginOptions": {
         "i18n": {
           "localized": true

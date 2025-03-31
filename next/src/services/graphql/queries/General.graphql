@@ -82,7 +82,7 @@ fragment Footer on Footer {
   innovationsLink {
     ...CommonLink
   }
-  text
+  contactText
 }
 
 fragment PageForMenuEntity on PageEntity {

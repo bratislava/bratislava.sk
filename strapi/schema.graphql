@@ -2093,6 +2093,7 @@ type Footer {
   accessibilityPageLink: ComponentBlocksCommonLink
   address: String
   columns(filters: ComponentBlocksFooterColumnFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksFooterColumn]
+  contactText: String
   contacts(filters: ComponentBlocksFooterContactItemFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksFooterContactItem]
   createdAt: DateTime
   facebookUrl: String
@@ -2101,7 +2102,6 @@ type Footer {
   locale: String
   localizations(publicationState: PublicationState = LIVE): FooterRelationResponseCollection
   publishedAt: DateTime
-  text: String
   updatedAt: DateTime
 }
 
@@ -2124,6 +2124,7 @@ input FooterFiltersInput {
   address: StringFilterInput
   and: [FooterFiltersInput]
   columns: ComponentBlocksFooterColumnFiltersInput
+  contactText: StringFilterInput
   contacts: ComponentBlocksFooterContactItemFiltersInput
   createdAt: DateTimeFilterInput
   facebookUrl: StringFilterInput
@@ -2134,7 +2135,6 @@ input FooterFiltersInput {
   not: FooterFiltersInput
   or: [FooterFiltersInput]
   publishedAt: DateTimeFilterInput
-  text: StringFilterInput
   updatedAt: DateTimeFilterInput
 }
 
@@ -2142,12 +2142,12 @@ input FooterInput {
   accessibilityPageLink: ComponentBlocksCommonLinkInput
   address: String
   columns: [ComponentBlocksFooterColumnInput]
+  contactText: String
   contacts: [ComponentBlocksFooterContactItemInput]
   facebookUrl: String
   innovationsLink: ComponentBlocksCommonLinkInput
   instagramUrl: String
   publishedAt: DateTime
-  text: String
 }
 
 type FooterRelationResponseCollection {
