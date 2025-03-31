@@ -24,11 +24,12 @@ const handler = async (req: NextApiRequest, res: NextApiResponse): Promise<void>
   if (!fileId) {
     return res.status(400).json({ message: 'Missing fileId' })
   }
-  const fileIdRegex = /.*#[0-9]+#.*/ // requires # followed by at least one digit followed by another #
+  const fileIdRegex = /.*#\d+#.*/ // requires # followed by at least one digit followed by another #
   if (!fileIdRegex.test(fileId)) {
     console.log(
       `Invalid file ID for GINIS nacistSoubor. Encoded: ${encodedFileId} Decoded: ${fileId}`,
     )
+
     return res.status(400).json({ message: 'Invalid fileId' })
   }
 
