@@ -1,7 +1,7 @@
-diff --git a/node_modules/@strapi/admin/dist/_chunks/index-Go7rNONx.mjs b/node_modules/@strapi/admin/dist/_chunks/index-Go7rNONx.mjs
-index a9fd050..4005a21 100644
---- a/node_modules/@strapi/admin/dist/_chunks/index-Go7rNONx.mjs
-+++ b/node_modules/@strapi/admin/dist/_chunks/index-Go7rNONx.mjs
+diff --git a/node_modules/@strapi/admin/dist/_chunks/index-uCIlbOdV.mjs b/node_modules/@strapi/admin/dist/_chunks/index-uCIlbOdV.mjs
+index 95a5860..9f3bdd7 100644
+--- a/node_modules/@strapi/admin/dist/_chunks/index-uCIlbOdV.mjs
++++ b/node_modules/@strapi/admin/dist/_chunks/index-uCIlbOdV.mjs
 @@ -13537,7 +13537,7 @@ const DynamicComponent = ({
    dynamicComponentsByCategory = {},
    onAddComponent
