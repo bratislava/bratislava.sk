@@ -1746,12 +1746,14 @@ const nextConfig = {
       },
       {
         source: '/bratislava-pre-ukrajinu/asistencne-centrum-bottova',
-        destination: '/bratislava-pre-ukrajinu/asistencne-centrum-pre-ludi-s-cudzineckym-povodom',
+        destination:
+          '/kultura-a-komunity/komunity/asistencne-centrum-pre-ludi-s-cudzineckym-povodom',
         permanent: true,
       },
       {
         source: '/en/bratislava-for-ukraine/assistance-centre-of-help-on-bottova-street',
-        destination: '/en/bratislava-for-ukraine/assistance-centre-for-people-of-foreign-origin',
+        destination:
+          '/en/culture-and-communities/communities/assistance-centre-for-people-of-foreign-origin',
         locale: false,
         permanent: true,
       },
