@@ -28,10 +28,9 @@ type ButtonBase = {
     | 'unstyled'
     | 'icon-wrapped'
     | 'icon-wrapped-negative-margin'
-    | 'category-plain'
     | 'solid'
     | 'outline'
-    | 'black-plain'
+    | 'plain'
     | 'negative-solid'
     | 'negative-plain'
     | 'link'
@@ -85,9 +84,9 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
     const isLoadingOrDisabled = isLoading || isDisabled
 
     const isSolidVariant = variant === 'solid' || variant === 'negative-solid'
-    const isOutlineVariant = variant.endsWith('-outline')
+    const isOutlineVariant = variant === 'outline'
     const isSolidOrOutlineVariant = isSolidVariant || isOutlineVariant
-    const isPlainVariant = variant.endsWith('-plain')
+    const isPlainVariant = variant === 'plain' || variant === 'negative-plain'
     const isIconWrappedVariant =
       variant === 'icon-wrapped' || variant === 'icon-wrapped-negative-margin'
     const isIconButton = Boolean(icon)
@@ -132,13 +131,13 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
               'p-2 outline-offset-0': isIconButton && isIconWrappedVariant,
               '-m-2': isIconButton && variant === 'icon-wrapped-negative-margin',
 
-              // padding - filled and outlined variants
+              // padding - solid and outlined variants
               'px-4 py-2 lg:py-3':
                 size === 'responsive' && !isIconButton && isSolidOrOutlineVariant,
               'px-4 py-2': size === 'small' && !isIconButton && isSolidOrOutlineVariant,
               'px-4 py-3': size === 'large' && !isIconButton && isSolidOrOutlineVariant,
 
-              // padding - filled and outlined variants with "icon"
+              // padding - solid and outlined variants with "icon"
               'p-2.5 lg:p-3': size === 'responsive' && isIconButton && isSolidOrOutlineVariant,
               'p-2.5': size === 'small' && isIconButton && isSolidOrOutlineVariant,
               'p-3': size === 'large' && isIconButton && isSolidOrOutlineVariant,
@@ -153,7 +152,7 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
               'p-1.5': size === 'small' && isIconButton && isPlainVariant,
               'p-2': size === 'large' && isIconButton && isPlainVariant,
 
-              // colors - variant solid (figma: boxed primary)
+              // colors - bg, border, content - variant solid (figma: boxed primary)
               'border-action-border-default bg-action-background-default text-white':
                 variant === 'solid',
               'active:border-action-border-pressed active:bg-action-background-pressed':
@@ -161,7 +160,7 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
               'hover:border-action-border-hover hover:bg-action-background-hover':
                 variant === 'solid',
 
-              // colors - variant outline (figma: boxed secondary)
+              // colors - bg, border, content - variant outline (figma: boxed secondary)
               'border-action-border-default bg-transparent text-action-content-default':
                 variant === 'outline',
               'active:border-action-border-pressed active:text-action-content-pressed':
@@ -169,24 +168,24 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
               'hover:border-action-border-hover hover:text-action-content-hover':
                 variant === 'outline',
 
-              // colors - variant plain (figma: plain default)
-              'text-category-700 active:bg-category-200 active:text-category-800':
-                variant === 'category-plain',
-              'text-grey-700 active:bg-grey-200 active:text-grey-800': variant === 'black-plain',
-              'hover:bg-category-100 hover:text-category-600': variant === 'category-plain',
-              'hover:bg-grey-100 hover:text-grey-600': variant === 'black-plain',
+              // colors - bg, border, content - variant plain (figma: plain default)
+              'text-action-content-default': variant === 'plain',
+              'active:bg-action-soft-background-pressed active:text-action-content-pressed':
+                variant === 'plain',
+              'hover:bg-action-soft-background-hover hover:text-action-content-hover':
+                variant === 'plain',
 
-              // colors - variant negative-solid
+              // colors - bg, border, content - variant negative-solid
               'hover:border-negative-600 hover:bg-negative-600': variant === 'negative-solid',
               'border-negative-700 bg-negative-700 text-white active:border-negative-800 active:bg-negative-800':
                 variant === 'negative-solid',
 
-              // colors - variant negative-plain
+              // colors - bg, border, content - variant negative-plain
               'hover:bg-negative-100 hover:text-negative-600': variant === 'negative-plain',
               'text-negative-700 active:bg-negative-200 active:text-negative-800':
                 variant === 'negative-plain',
 
-              // colors - variant link
+              // colors - bg, border, content - variant link
               'hover:text-action-content-hover': variant === 'link',
               'text-action-content-default active:text-action-content-pressed': variant === 'link',
 

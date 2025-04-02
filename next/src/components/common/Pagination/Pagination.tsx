@@ -74,7 +74,7 @@ const Pagination = ({ currentPage, totalCount, onPageChange = () => {} }: Pagina
 
               children = (
                 <Button
-                  variant="category-plain"
+                  variant="plain"
                   isDisabled={disabled}
                   onPress={onPress}
                   aria-label={ariaLabel}

@@ -1,5 +1,5 @@
 import { Typography } from '@bratislava/component-library'
-import React, { forwardRef, ReactNode } from 'react'
+import { forwardRef, ReactNode } from 'react'
 import { Dialog as ReactAriaDialog, DialogProps } from 'react-aria-components'
 
 import { CrossIcon } from '@/src/assets/ui-icons'
@@ -37,7 +37,7 @@ const Dialog = forwardRef<HTMLElement, Props>(({ children, title, ...props }, re
               <Button
                 icon={<CrossIcon />}
                 aria-label={t('Dialog.aria.close')}
-                variant="black-plain"
+                variant="plain"
                 className="-m-2"
                 onPress={close}
               />
