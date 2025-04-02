@@ -55,7 +55,7 @@ const InputField = ({
       <Button
         className="absolute left-2 size-10 p-0"
         onPress={() => onAddSub(value - 1)}
-        variant="black-outline"
+        variant="outline"
       >
         <MinusIcon />
       </Button>
@@ -76,7 +76,7 @@ const InputField = ({
       <Button
         className="absolute right-2 size-10 p-0"
         onPress={() => onAddSub(value + 1)}
-        variant="black-outline"
+        variant="outline"
       >
         <PlusIcon />
       </Button>
@@ -169,7 +169,7 @@ const MinimumCalculator_Deprecated = ({
           }}
         />
 
-        <Button variant="category-solid" type="submit">
+        <Button variant="solid" type="submit">
           {t('MinimumCalculator.buttonText')}
         </Button>
       </form>

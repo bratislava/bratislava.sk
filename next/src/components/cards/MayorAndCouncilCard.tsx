@@ -29,7 +29,7 @@ const MayorAndCouncilCard = ({ title, imageSrc, linkProps }: Props) => {
         <Typography type="h3" size="h4" className="mb-1.5 lg:mb-3">
           {title}
         </Typography>
-        <Button stretched variant="category-link" {...linkProps} />
+        <Button stretched variant="link" {...linkProps} />
       </CardContent>
     </CardBase>
   )

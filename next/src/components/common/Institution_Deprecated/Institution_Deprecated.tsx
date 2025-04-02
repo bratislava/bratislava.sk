@@ -32,7 +32,7 @@ const Institution = ({ title, subtitle, content, url, urlLabel }: InstitutionPro
           </div>
         )}
         {urlLabel && url && (
-          <Button href={url} variant="black-link" className="mt-6" aria-labelledby={titleId}>
+          <Button href={url} variant="link" className="mt-6" aria-labelledby={titleId}>
             {urlLabel}
           </Button>
         )}

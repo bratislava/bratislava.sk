@@ -126,7 +126,7 @@ const Bookmark = ({
           {link.href && link.title ? (
             <Button
               href={link.href}
-              variant="black-link"
+              variant="link"
               className={
                 variant === 'red' ? 'text-white hover:text-white hover:opacity-70' : undefined
               }

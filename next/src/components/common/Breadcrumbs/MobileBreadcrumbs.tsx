@@ -27,7 +27,7 @@ const MobileBreadcrumbs = ({ breadcrumbs }: BreadcrumbsProps) => {
         <div className="text-small -mx-4 flex items-center gap-2 font-medium">
           <Button
             onPress={goBack}
-            variant="black-link"
+            variant="link"
             className="shrink-0 py-3 pl-4 text-[14px]"
             startIcon={<BreadcrumbsChevronIcon className="shrink-0 rotate-180" />}
           >

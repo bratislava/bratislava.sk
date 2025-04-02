@@ -33,7 +33,7 @@ const NavMenuLink = ({ label, url, variant = 'simple' }: NavMenuLinkProps) => {
       return (
         <li className="flex">
           <NavigationMenu.Link asChild onClick={() => setMobileMenuOpen(false)}>
-            <Button variant="black-link" href={url} className="mt-2">
+            <Button variant="link" href={url} className="mt-2">
               {label}
             </Button>
           </NavigationMenu.Link>

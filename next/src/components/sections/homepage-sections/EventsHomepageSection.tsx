@@ -1,5 +1,4 @@
 import { Typography } from '@bratislava/component-library'
-import React from 'react'
 
 import EventCard from '@/src/components/cards/EventCard'
 import Button from '@/src/components/common/Button/Button'
@@ -59,7 +58,7 @@ const EventsHomepageSection = () => {
         />
         {eventsPageLink && (
           <div className="flex justify-center">
-            <Button variant="category-outline" {...getCommonLinkProps(eventsPageLink)} />
+            <Button variant="outline" {...getCommonLinkProps(eventsPageLink)} />
           </div>
         )}
       </div>

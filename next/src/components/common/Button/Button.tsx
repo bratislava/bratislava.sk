@@ -28,16 +28,12 @@ type ButtonBase = {
     | 'unstyled'
     | 'icon-wrapped'
     | 'icon-wrapped-negative-margin'
-    | 'category-solid'
-    | 'category-outline'
-    | 'category-plain'
-    | 'black-solid'
-    | 'black-outline'
-    | 'black-plain'
+    | 'solid'
+    | 'outline'
+    | 'plain'
     | 'negative-solid'
     | 'negative-plain'
-    | 'black-link'
-    | 'category-link'
+    | 'link'
   size?: 'responsive' | 'large' | 'small'
   className?: string
   fullWidth?: boolean
@@ -87,11 +83,10 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
   ) => {
     const isLoadingOrDisabled = isLoading || isDisabled
 
-    const isSolidVariant = variant.endsWith('-solid')
-    const isOutlineVariant = variant.endsWith('-outline')
+    const isSolidVariant = variant === 'solid' || variant === 'negative-solid'
+    const isOutlineVariant = variant === 'outline'
     const isSolidOrOutlineVariant = isSolidVariant || isOutlineVariant
-    const isPlainVariant = variant.endsWith('-plain')
-    const isLinkVariant = variant.endsWith('-link')
+    const isPlainVariant = variant === 'plain' || variant === 'negative-plain'
     const isIconWrappedVariant =
       variant === 'icon-wrapped' || variant === 'icon-wrapped-negative-margin'
     const isIconButton = Boolean(icon)
@@ -110,12 +105,10 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
             'outline-none ring-offset-2 focus-visible:ring',
 
             // we change rounded corners for link focus ring
-            { 'rounded-sm max-lg:gap-1': isLinkVariant, 'rounded-lg': !isLinkVariant },
+            { 'rounded-sm max-lg:gap-1': variant === 'link', 'rounded-lg': variant !== 'link' },
 
             {
-              // NOTE: there are some style overrides for link variants below in "cn"
-
-              'font-medium underline underline-offset-2': isLinkVariant,
+              'font-medium underline underline-offset-2': variant === 'link',
 
               // disabled or loading
               'opacity-50': isLoadingOrDisabled,
@@ -132,19 +125,19 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
               'border-2': isSolidOrOutlineVariant,
 
               // padding - link variants
-              'p-0': isLinkVariant,
+              'p-0': variant === 'link',
 
               // padding - icon-wrapped variant
               'p-2 outline-offset-0': isIconButton && isIconWrappedVariant,
               '-m-2': isIconButton && variant === 'icon-wrapped-negative-margin',
 
-              // padding - filled and outlined variants
+              // padding - solid and outlined variants
               'px-4 py-2 lg:py-3':
                 size === 'responsive' && !isIconButton && isSolidOrOutlineVariant,
               'px-4 py-2': size === 'small' && !isIconButton && isSolidOrOutlineVariant,
               'px-4 py-3': size === 'large' && !isIconButton && isSolidOrOutlineVariant,
 
-              // padding - filled and outlined variants with "icon"
+              // padding - solid and outlined variants with "icon"
               'p-2.5 lg:p-3': size === 'responsive' && isIconButton && isSolidOrOutlineVariant,
               'p-2.5': size === 'small' && isIconButton && isSolidOrOutlineVariant,
               'p-3': size === 'large' && isIconButton && isSolidOrOutlineVariant,
@@ -159,42 +152,42 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
               'p-1.5': size === 'small' && isIconButton && isPlainVariant,
               'p-2': size === 'large' && isIconButton && isPlainVariant,
 
-              // colors - bg, border, text - idle & focus
-              'border-category-700 bg-category-700 text-font-contrast pressed:border-category-800 pressed:bg-category-800':
-                variant === 'category-solid',
+              // colors - bg, border, content - variant solid (figma: boxed primary)
+              'border-action-border-default bg-action-background-default text-white':
+                variant === 'solid',
+              'active:border-action-border-pressed active:bg-action-background-pressed':
+                variant === 'solid',
+              'hover:border-action-border-hover hover:bg-action-background-hover':
+                variant === 'solid',
 
-              'border-category-700 bg-transparent text-grey-700 pressed:border-category-800 pressed:text-grey-800':
-                variant === 'category-outline',
-              'border-grey-700 bg-grey-700 text-white pressed:border-grey-800 pressed:bg-grey-800':
-                variant === 'black-solid',
-              'border-grey-200 bg-transparent text-grey-700 pressed:border-grey-300 pressed:text-grey-800':
-                variant === 'black-outline',
-              'border-negative-700 bg-negative-700 text-white pressed:border-negative-800 pressed:bg-negative-800':
+              // colors - bg, border, content - variant outline (figma: boxed secondary)
+              'border-action-border-default bg-transparent text-action-content-default':
+                variant === 'outline',
+              'active:border-action-border-pressed active:text-action-content-pressed':
+                variant === 'outline',
+              'hover:border-action-border-hover hover:text-action-content-hover':
+                variant === 'outline',
+
+              // colors - bg, border, content - variant plain (figma: plain default)
+              'text-action-content-default': variant === 'plain',
+              'active:bg-action-soft-background-pressed active:text-action-content-pressed':
+                variant === 'plain',
+              'hover:bg-action-soft-background-hover hover:text-action-content-hover':
+                variant === 'plain',
+
+              // colors - bg, border, content - variant negative-solid
+              'hover:border-negative-600 hover:bg-negative-600': variant === 'negative-solid',
+              'border-negative-700 bg-negative-700 text-white active:border-negative-800 active:bg-negative-800':
                 variant === 'negative-solid',
 
-              'text-category-700 pressed:bg-category-200 pressed:text-category-800':
-                variant === 'category-plain',
-              'text-grey-700 pressed:bg-grey-200 pressed:text-grey-800': variant === 'black-plain',
-              'text-negative-700 pressed:bg-negative-200 pressed:text-negative-800':
+              // colors - bg, border, content - variant negative-plain
+              'hover:bg-negative-100 hover:text-negative-600': variant === 'negative-plain',
+              'text-negative-700 active:bg-negative-200 active:text-negative-800':
                 variant === 'negative-plain',
 
-              'text-category-700 pressed:text-category-800': variant === 'category-link',
-              'text-grey-700 pressed:text-grey-800': variant === 'black-link',
-
-              // colors:hover - bg, border, text
-              'hover:border-category-600 hover:bg-category-600': variant === 'category-solid',
-              'hover:border-category-600 hover:text-grey-600': variant === 'category-outline',
-              'hover:bg-category-100 hover:text-category-600': variant === 'category-plain',
-
-              'hover:border-grey-600 hover:bg-grey-600': variant === 'black-solid',
-              'hover:border-grey-200 hover:text-grey-600': variant === 'black-outline',
-              'hover:bg-grey-100 hover:text-grey-600': variant === 'black-plain',
-
-              'hover:border-negative-600 hover:bg-negative-600': variant === 'negative-solid',
-              'hover:bg-negative-100 hover:text-negative-600': variant === 'negative-plain',
-
-              'hover:text-category-600': variant === 'category-link',
-              'hover:text-grey-600': variant === 'black-link',
+              // colors - bg, border, content - variant link
+              'hover:text-action-content-hover': variant === 'link',
+              'text-action-content-default active:text-action-content-pressed': variant === 'link',
 
               // svg icons
               '[&>svg]:h-5 [&>svg]:w-5 [&>svg]:lg:h-6 [&>svg]:lg:w-6': size === 'responsive',

@@ -23,7 +23,7 @@ const Links = ({ className, title, pageLinks }: LinksProps) => {
               href={pageLink.url ?? '#'}
               target={pageLink.url?.startsWith('http') ? '_blank' : undefined}
               hasLinkIcon={pageLink.url?.startsWith('http')} // show link icon only for external urls since we already use arrow icon in startIcon
-              variant="black-link"
+              variant="link"
               startIcon={<ArrowRightIcon className="shrink-0" />}
             >
               {pageLink?.title}

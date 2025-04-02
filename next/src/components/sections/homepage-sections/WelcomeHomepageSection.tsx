@@ -29,7 +29,7 @@ const WelcomeHomepageSection = () => {
     <SectionContainer className="bg-white">
       <div className="relative flex flex-col gap-y-4 py-8 lg:flex-row lg:items-center lg:py-0">
         <div className="z-[1] flex grow flex-col gap-8 lg:absolute">
-          <Typography type="h1" className="whitespace-pre-wrap text-category-600">
+          <Typography type="h1" className="whitespace-pre-wrap">
             {welcomeHeadline}
           </Typography>
 

@@ -1,6 +1,6 @@
 import { Typography } from '@bratislava/component-library'
 import Image from 'next/image'
-import React, { PropsWithChildren } from 'react'
+import { PropsWithChildren } from 'react'
 
 import Breadcrumbs, { BreadcrumbsProps } from '@/src/components/common/Breadcrumbs/Breadcrumbs'
 import Button from '@/src/components/common/Button/Button'
@@ -86,7 +86,7 @@ const PageHeader = ({
                   <Button
                     // eslint-disable-next-line react/no-array-index-key
                     key={index}
-                    variant={index === 0 ? 'category-solid' : 'category-outline'}
+                    variant={index === 0 ? 'solid' : 'outline'}
                     fullWidthMobile
                     {...getCommonLinkProps(button)}
                   />

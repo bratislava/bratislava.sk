@@ -1,5 +1,5 @@
 import * as NavigationMenu from '@radix-ui/react-navigation-menu'
-import React, { useMemo } from 'react'
+import { useMemo } from 'react'
 import { useEventListener, useScrollLock, useWindowSize } from 'usehooks-ts'
 
 import Button from '@/src/components/common/Button/Button'
@@ -69,7 +69,7 @@ const MobileNavMenu = () => {
                 <NavigationMenu.Link asChild onClick={() => setMobileMenuOpen(false)}>
                   <Button
                     size="small"
-                    variant="category-solid"
+                    variant="solid"
                     fullWidthMobile
                     data-cy="mobile-account-button"
                     {...getCommonLinkProps(accountLink)}

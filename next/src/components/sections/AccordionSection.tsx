@@ -1,5 +1,4 @@
 import { Typography } from '@bratislava/component-library'
-import React from 'react'
 
 import Accordion from '@/src/components/common/Accordion/Accordion'
 import Button from '@/src/components/common/Button/Button'
@@ -71,7 +70,7 @@ const AccordionSection = ({ section }: AccordionSectionProps) => {
                     <FileList files={item.fileList.filter(isDefined) ?? []} />
                   ) : null}
                   {link?.url && link.title && (
-                    <Button href={link.url || '#'} variant="category-link">
+                    <Button href={link.url || '#'} variant="link">
                       {link.title}
                     </Button>
                   )}

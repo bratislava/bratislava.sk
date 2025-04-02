@@ -25,7 +25,7 @@ const TopServicesItem = ({ topServicesItem }: TopNineItemProps) => {
         <Typography type="h3" size="h5">
           {label}
         </Typography>
-        <Button variant="black-link" stretched {...linkProps}>
+        <Button variant="link" stretched {...linkProps}>
           {t('TopServices.learnMore')}
         </Button>
       </div>

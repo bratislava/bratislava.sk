@@ -1,6 +1,5 @@
 import { Typography } from '@bratislava/component-library'
 import { useQuery } from '@tanstack/react-query'
-import React from 'react'
 import { TabPanel } from 'react-aria-components'
 
 import Button from '@/src/components/common/Button/Button'
@@ -86,7 +85,7 @@ const TabPanelOfficialBoard = () => {
         {tabs?.officialBoardPageLink ? (
           <div className="flex justify-center">
             <Button
-              variant="category-outline"
+              variant="outline"
               data-cy="official-board-button"
               {...getCommonLinkProps(tabs.officialBoardPageLink)}
             />
