@@ -1,4 +1,3 @@
-import React from 'react'
 
 import SearchIcon from '@/src/assets/images/search-icon.svg'
 import Brand from '@/src/components/common/Brand/Brand'
@@ -64,7 +63,7 @@ const NavBarHeader = ({ className }: NavBarProps) => {
           {accountLink ? (
             <Button
               size="small"
-              variant="category-solid"
+              variant="solid"
               hasLinkIcon={false}
               data-cy="account-button"
               {...getCommonLinkProps(accountLink)}

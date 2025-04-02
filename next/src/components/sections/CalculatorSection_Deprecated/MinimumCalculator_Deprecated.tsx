@@ -169,7 +169,7 @@ const MinimumCalculator_Deprecated = ({
           }}
         />
 
-        <Button variant="category-solid" type="submit">
+        <Button variant="solid" type="submit">
           {t('MinimumCalculator.buttonText')}
         </Button>
       </form>

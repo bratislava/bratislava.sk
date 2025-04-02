@@ -107,7 +107,7 @@ const Carousel = ({
           {controlsVariant === 'side' && (
             <>
               <Button
-                variant="category-solid"
+                variant="solid"
                 excludeFromTabOrder
                 onPress={handleGoToPrevious}
                 className={cn(
@@ -119,7 +119,7 @@ const Carousel = ({
                 aria-label={t('Carousel.aria.previous')}
               />
               <Button
-                variant="category-solid"
+                variant="solid"
                 excludeFromTabOrder
                 onPress={handleGoToNext}
                 className={cn(

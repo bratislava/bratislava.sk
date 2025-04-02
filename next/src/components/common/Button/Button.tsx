@@ -28,10 +28,9 @@ type ButtonBase = {
     | 'unstyled'
     | 'icon-wrapped'
     | 'icon-wrapped-negative-margin'
-    | 'category-solid'
     | 'category-outline'
     | 'category-plain'
-    | 'black-solid'
+    | 'solid'
     | 'black-outline'
     | 'black-plain'
     | 'negative-solid'
@@ -86,9 +85,8 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
   ) => {
     const isLoadingOrDisabled = isLoading || isDisabled
 
-    const isSolidVariant = variant.endsWith('-solid')
     const isOutlineVariant = variant.endsWith('-outline')
-    const isSolidOrOutlineVariant = isSolidVariant || isOutlineVariant
+    const isSolidOrOutlineVariant = variant === "solid" || isOutlineVariant
     const isPlainVariant = variant.endsWith('-plain')
     const isIconWrappedVariant =
       variant === 'icon-wrapped' || variant === 'icon-wrapped-negative-margin'
@@ -157,13 +155,11 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
               'p-2': size === 'large' && isIconButton && isPlainVariant,
 
               // colors - bg, border, text - idle & focus
-              'border-category-700 bg-category-700 text-font-contrast pressed:border-category-800 pressed:bg-category-800':
-                variant === 'category-solid',
-
+              'border-grey-700 bg-grey-700 text-white pressed:border-grey-800 pressed:bg-grey-800':
+                variant === 'solid',
+                
               'border-category-700 bg-transparent text-grey-700 pressed:border-category-800 pressed:text-grey-800':
                 variant === 'category-outline',
-              'border-grey-700 bg-grey-700 text-white pressed:border-grey-800 pressed:bg-grey-800':
-                variant === 'black-solid',
               'border-grey-200 bg-transparent text-grey-700 pressed:border-grey-300 pressed:text-grey-800':
                 variant === 'black-outline',
               'border-negative-700 bg-negative-700 text-white pressed:border-negative-800 pressed:bg-negative-800':
@@ -178,11 +174,10 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
               'text-action-content-default pressed:text-action-content-pressed': variant === 'link',
 
               // colors:hover - bg, border, text
-              'hover:border-category-600 hover:bg-category-600': variant === 'category-solid',
               'hover:border-category-600 hover:text-grey-600': variant === 'category-outline',
               'hover:bg-category-100 hover:text-category-600': variant === 'category-plain',
 
-              'hover:border-grey-600 hover:bg-grey-600': variant === 'black-solid',
+              'hover:border-grey-600 hover:bg-grey-600': variant === 'solid',
               'hover:border-grey-200 hover:text-grey-600': variant === 'black-outline',
               'hover:bg-grey-100 hover:text-grey-600': variant === 'black-plain',
 

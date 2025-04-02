@@ -1,5 +1,4 @@
 import Script from 'next/script'
-import React from 'react'
 
 import Button from '@/src/components/common/Button/Button'
 import { useCookieConsent } from '@/src/components/common/CookieConsent/useCookieConsent'
@@ -58,7 +57,7 @@ const CookieConsent = ({ className }: CookieConsentProps) => {
             </div>
             <div className="flex flex-col gap-4 md:flex-row">
               <Button
-                variant="category-solid"
+                variant="solid"
                 onPress={() => setConsents({ statistics: true })}
                 fullWidthMobile
               >
