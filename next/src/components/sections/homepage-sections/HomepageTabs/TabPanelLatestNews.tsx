@@ -117,11 +117,7 @@ const TabPanelLatestNews = () => {
       </div>
       {tabs?.newsPageLink ? (
         <div className="flex justify-center">
-          <Button
-            variant="outline"
-            hasLinkIcon
-            {...getCommonLinkProps(tabs?.newsPageLink)}
-          />
+          <Button variant="outline" hasLinkIcon {...getCommonLinkProps(tabs?.newsPageLink)} />
         </div>
       ) : null}
     </TabPanel>
