@@ -6,12 +6,12 @@
   ],
   "settings": {
     "workbench.colorCustomizations": {
-      "sideBar.border": "#E05F53",
-      "statusBar.background": "#E05F53",
+      "statusBar.background": "#e05f53",
       "statusBar.foreground": "#15202b",
-      "statusBarItem.hoverBackground": "#D83728",
-      "statusBarItem.remoteBackground": "#E05F53",
-      "statusBarItem.remoteForeground": "#15202b"
+      "statusBarItem.hoverBackground": "#d83728",
+      "statusBarItem.remoteBackground": "#e05f53",
+      "statusBarItem.remoteForeground": "#15202b",
+      "sideBar.border": "#e8877e"
     },
     "peacock.color": "#E05F53",
     "typescript.tsdk": "./next/node_modules/typescript/lib"
