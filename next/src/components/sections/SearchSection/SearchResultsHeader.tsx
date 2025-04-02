@@ -20,7 +20,7 @@ const SearchResultsHeader = ({ title, showButton, handleShowMore }: SearchResult
       </Typography>
       {showButton ? (
         <Button
-          variant="black-link"
+          variant="link"
           endIcon={<ArrowRightIcon />}
           onPress={handleShowMore}
           data-cy="search-section-more-button"

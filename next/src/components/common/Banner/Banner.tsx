@@ -74,7 +74,7 @@ const Banner = ({
               className={cn('hidden font-semibold no-underline not-first:ml-2 lg:flex', {
                 'text-white hover:text-white/80 focus:text-white/80': variant === 'dark',
               })}
-              variant="category-link"
+              variant="link"
               {...getCommonLinkProps(tertiaryLink)}
             />
           )}

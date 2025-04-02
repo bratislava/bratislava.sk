@@ -36,8 +36,7 @@ type ButtonBase = {
     | 'black-plain'
     | 'negative-solid'
     | 'negative-plain'
-    | 'black-link'
-    | 'category-link'
+    | 'link'
   size?: 'responsive' | 'large' | 'small'
   className?: string
   fullWidth?: boolean
@@ -91,7 +90,6 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
     const isOutlineVariant = variant.endsWith('-outline')
     const isSolidOrOutlineVariant = isSolidVariant || isOutlineVariant
     const isPlainVariant = variant.endsWith('-plain')
-    const isLinkVariant = variant.endsWith('-link')
     const isIconWrappedVariant =
       variant === 'icon-wrapped' || variant === 'icon-wrapped-negative-margin'
     const isIconButton = Boolean(icon)
@@ -110,12 +108,11 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
             'outline-none ring-offset-2 focus-visible:ring',
 
             // we change rounded corners for link focus ring
-            { 'rounded-sm max-lg:gap-1': isLinkVariant, 'rounded-lg': !isLinkVariant },
+            { 'rounded-sm max-lg:gap-1': variant === "link", 'rounded-lg': variant !== "link" },
 
             {
-              // NOTE: there are some style overrides for link variants below in "cn"
 
-              'font-medium underline underline-offset-2': isLinkVariant,
+              'font-medium underline underline-offset-2': variant === "link",
 
               // disabled or loading
               'opacity-50': isLoadingOrDisabled,
@@ -132,7 +129,7 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
               'border-2': isSolidOrOutlineVariant,
 
               // padding - link variants
-              'p-0': isLinkVariant,
+              'p-0': variant === 'link',
 
               // padding - icon-wrapped variant
               'p-2 outline-offset-0': isIconButton && isIconWrappedVariant,
@@ -178,8 +175,7 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
               'text-negative-700 pressed:bg-negative-200 pressed:text-negative-800':
                 variant === 'negative-plain',
 
-              'text-category-700 pressed:text-category-800': variant === 'category-link',
-              'text-grey-700 pressed:text-grey-800': variant === 'black-link',
+              'text-action-content-default pressed:text-action-content-pressed': variant === 'link',
 
               // colors:hover - bg, border, text
               'hover:border-category-600 hover:bg-category-600': variant === 'category-solid',
@@ -193,8 +189,7 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
               'hover:border-negative-600 hover:bg-negative-600': variant === 'negative-solid',
               'hover:bg-negative-100 hover:text-negative-600': variant === 'negative-plain',
 
-              'hover:text-category-600': variant === 'category-link',
-              'hover:text-grey-600': variant === 'black-link',
+              'hover:text-action-content-hover': variant === 'link',
 
               // svg icons
               '[&>svg]:h-5 [&>svg]:w-5 [&>svg]:lg:h-6 [&>svg]:lg:w-6': size === 'responsive',

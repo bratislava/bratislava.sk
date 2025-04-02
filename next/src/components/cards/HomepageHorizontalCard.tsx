@@ -39,7 +39,7 @@ const HomepageHorizontalCard = ({
             {title}
           </Typography>
         </div>
-        <Button variant="black-link" stretched {...linkProps} className="mt-6" />
+        <Button variant="link" stretched {...linkProps} className="mt-6" />
       </CardContent>
     </CardBase>
   )

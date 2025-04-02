@@ -232,30 +232,16 @@ const ButtonShowCase = () => {
       <ButtonStacks variant="black" />
       <ButtonStacks variant="negative" />
       <Stack>
-        <Button variant="category-link" href="#">
+        <Button variant="link" href="#">
           Link
         </Button>
-        <Button variant="category-link" href="#" size="small">
+        <Button variant="link" href="#" size="small">
           Link
         </Button>
-        <Button variant="category-link" href="https://bratislava.sk">
+        <Button variant="link" href="https://bratislava.sk">
           External link
         </Button>
-        <Button variant="category-link" href="https://bratislava.sk" size="small">
-          External link
-        </Button>
-      </Stack>
-      <Stack>
-        <Button variant="black-link" href="#">
-          Link
-        </Button>
-        <Button variant="black-link" href="#" size="small">
-          Link
-        </Button>
-        <Button variant="black-link" href="https://bratislava.sk">
-          External link
-        </Button>
-        <Button variant="black-link" href="https://bratislava.sk" size="small">
+        <Button variant="link" href="https://bratislava.sk" size="small">
           External link
         </Button>
       </Stack>
