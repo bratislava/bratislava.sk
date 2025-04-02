@@ -28,10 +28,9 @@ type ButtonBase = {
     | 'unstyled'
     | 'icon-wrapped'
     | 'icon-wrapped-negative-margin'
-    | 'category-outline'
     | 'category-plain'
     | 'solid'
-    | 'black-outline'
+    | 'outline'
     | 'black-plain'
     | 'negative-solid'
     | 'negative-plain'
@@ -85,8 +84,9 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
   ) => {
     const isLoadingOrDisabled = isLoading || isDisabled
 
+    const isSolidVariant = variant === 'solid' || variant === 'negative-solid'
     const isOutlineVariant = variant.endsWith('-outline')
-    const isSolidOrOutlineVariant = variant === "solid" || isOutlineVariant
+    const isSolidOrOutlineVariant = isSolidVariant || isOutlineVariant
     const isPlainVariant = variant.endsWith('-plain')
     const isIconWrappedVariant =
       variant === 'icon-wrapped' || variant === 'icon-wrapped-negative-margin'
@@ -106,11 +106,10 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
             'outline-none ring-offset-2 focus-visible:ring',
 
             // we change rounded corners for link focus ring
-            { 'rounded-sm max-lg:gap-1': variant === "link", 'rounded-lg': variant !== "link" },
+            { 'rounded-sm max-lg:gap-1': variant === 'link', 'rounded-lg': variant !== 'link' },
 
             {
-
-              'font-medium underline underline-offset-2': variant === "link",
+              'font-medium underline underline-offset-2': variant === 'link',
 
               // disabled or loading
               'opacity-50': isLoadingOrDisabled,
@@ -154,37 +153,42 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
               'p-1.5': size === 'small' && isIconButton && isPlainVariant,
               'p-2': size === 'large' && isIconButton && isPlainVariant,
 
-              // colors - bg, border, text - idle & focus
-              'border-grey-700 bg-grey-700 text-white pressed:border-grey-800 pressed:bg-grey-800':
+              // colors - variant solid (figma: boxed primary)
+              'border-action-border-default bg-action-background-default text-white':
                 variant === 'solid',
-                
-              'border-category-700 bg-transparent text-grey-700 pressed:border-category-800 pressed:text-grey-800':
-                variant === 'category-outline',
-              'border-grey-200 bg-transparent text-grey-700 pressed:border-grey-300 pressed:text-grey-800':
-                variant === 'black-outline',
-              'border-negative-700 bg-negative-700 text-white pressed:border-negative-800 pressed:bg-negative-800':
-                variant === 'negative-solid',
+              'active:border-action-border-pressed active:bg-action-background-pressed':
+                variant === 'solid',
+              'hover:border-action-border-hover hover:bg-action-background-hover':
+                variant === 'solid',
 
-              'text-category-700 pressed:bg-category-200 pressed:text-category-800':
+              // colors - variant outline (figma: boxed secondary)
+              'border-action-border-default bg-transparent text-action-content-default':
+                variant === 'outline',
+              'active:border-action-border-pressed active:text-action-content-pressed':
+                variant === 'outline',
+              'hover:border-action-border-hover hover:text-action-content-hover':
+                variant === 'outline',
+
+              // colors - variant plain (figma: plain default)
+              'text-category-700 active:bg-category-200 active:text-category-800':
                 variant === 'category-plain',
-              'text-grey-700 pressed:bg-grey-200 pressed:text-grey-800': variant === 'black-plain',
-              'text-negative-700 pressed:bg-negative-200 pressed:text-negative-800':
-                variant === 'negative-plain',
-
-              'text-action-content-default pressed:text-action-content-pressed': variant === 'link',
-
-              // colors:hover - bg, border, text
-              'hover:border-category-600 hover:text-grey-600': variant === 'category-outline',
+              'text-grey-700 active:bg-grey-200 active:text-grey-800': variant === 'black-plain',
               'hover:bg-category-100 hover:text-category-600': variant === 'category-plain',
-
-              'hover:border-grey-600 hover:bg-grey-600': variant === 'solid',
-              'hover:border-grey-200 hover:text-grey-600': variant === 'black-outline',
               'hover:bg-grey-100 hover:text-grey-600': variant === 'black-plain',
 
+              // colors - variant negative-solid
               'hover:border-negative-600 hover:bg-negative-600': variant === 'negative-solid',
-              'hover:bg-negative-100 hover:text-negative-600': variant === 'negative-plain',
+              'border-negative-700 bg-negative-700 text-white active:border-negative-800 active:bg-negative-800':
+                variant === 'negative-solid',
 
+              // colors - variant negative-plain
+              'hover:bg-negative-100 hover:text-negative-600': variant === 'negative-plain',
+              'text-negative-700 active:bg-negative-200 active:text-negative-800':
+                variant === 'negative-plain',
+
+              // colors - variant link
               'hover:text-action-content-hover': variant === 'link',
+              'text-action-content-default active:text-action-content-pressed': variant === 'link',
 
               // svg icons
               '[&>svg]:h-5 [&>svg]:w-5 [&>svg]:lg:h-6 [&>svg]:lg:w-6': size === 'responsive',

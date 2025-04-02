@@ -1,4 +1,3 @@
-import React from 'react'
 
 import Button from '@/src/components/common/Button/Button'
 import NumericalListItem from '@/src/components/common/NumericalList_Deprecated/NumericalListItem_Deprecated'
@@ -52,7 +51,7 @@ const NumericalList = ({
           ))}
         </div>
         {variant !== 'roadmap' && buttonText && (
-          <Button href={href} className="pt-10" variant="category-outline">
+          <Button href={href} className="pt-10" variant="outline">
             {buttonText}
           </Button>
         )}

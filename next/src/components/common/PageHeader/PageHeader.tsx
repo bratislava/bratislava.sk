@@ -86,7 +86,7 @@ const PageHeader = ({
                   <Button
                     // eslint-disable-next-line react/no-array-index-key
                     key={index}
-                    variant={index === 0 ? 'solid' : 'category-outline'}
+                    variant={index === 0 ? 'solid' : 'outline'}
                     fullWidthMobile
                     {...getCommonLinkProps(button)}
                   />

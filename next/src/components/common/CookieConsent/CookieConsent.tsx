@@ -65,7 +65,7 @@ const CookieConsent = ({ className }: CookieConsentProps) => {
               </Button>
 
               <Button
-                variant="category-outline"
+                variant="outline"
                 onPress={() => setConsents({ statistics: false })}
                 fullWidthMobile
               >

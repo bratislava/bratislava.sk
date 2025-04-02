@@ -64,7 +64,7 @@ const Banner = ({
               className={cn('hidden lg:flex', {
                 'text-white hover:text-white/80 focus:text-white/80': variant === 'dark',
               })}
-              variant="category-outline"
+              variant="outline"
               fullWidthMobile
               {...getCommonLinkProps(secondaryLink)}
             />

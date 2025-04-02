@@ -62,7 +62,7 @@ const NavBarHeader = ({ className }: NavBarProps) => {
           {accountLink ? (
             <Button
               size="small"
-              variant="black-outline"
+              variant="outline"
               hasLinkIcon={false}
               data-cy="account-button"
               {...getCommonLinkProps(accountLink)}

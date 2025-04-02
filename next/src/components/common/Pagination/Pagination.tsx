@@ -50,7 +50,7 @@ const Pagination = ({ currentPage, totalCount, onPageChange = () => {} }: Pagina
             } else if (type === 'page') {
               children = (
                 <Button
-                  variant={selected ? 'solid' : 'category-outline'}
+                  variant={selected ? 'solid' : 'outline'}
                   isDisabled={disabled}
                   onPress={onPress}
                   aria-current={ariaCurrent}
