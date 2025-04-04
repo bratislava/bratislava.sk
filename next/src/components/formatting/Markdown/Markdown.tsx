@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars,jsx-a11y/heading-has-content */
 import { Typography } from '@bratislava/component-library'
-import ReactMarkdown from 'react-markdown'
+import ReactMarkdown, { defaultUrlTransform } from 'react-markdown'
 import rehypeRaw from 'rehype-raw'
 import remarkGfm from 'remark-gfm'
 import remarkUnwrapImages from 'remark-unwrap-images'
@@ -37,6 +37,8 @@ const Markdown = ({ content, variant = 'default' }: MarkdownProps) => {
       })}
     >
       <ReactMarkdown
+        // fix nonfunctioning phone links - more at https://github.com/orgs/remarkjs/discussions/1329
+        urlTransform={(url) => (url.startsWith('tel:') ? url : defaultUrlTransform(url))}
         components={{
           // Standard components: a, blockquote, br, code, em, h1, h2, h3, h4, h5, h6, hr, img, li, ol, p, pre, strong, and ul
 
