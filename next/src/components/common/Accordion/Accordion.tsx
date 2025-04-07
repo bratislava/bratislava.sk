@@ -23,14 +23,10 @@ const Accordion = ({ variant = 'boxed', title, children }: AccordionProps) => {
       variant === 'boxed',
   })
 
-  const buttonStyles = cn(
-    'flex cursor-pointer items-center gap-4 text-left',
-    'px-4 py-4 lg:px-8 lg:py-6',
-    {
-      'py-6 group-open:pb-4': variant === 'footer',
-      'group-open:pb-2 group-open:lg:pb-4': variant === 'boxed',
-    },
-  )
+  const buttonStyles = cn('flex cursor-pointer items-center gap-4 text-left', 'py-4 lg:py-6', {
+    'py-6 group-open:pb-4': variant === 'footer',
+    'px-4 group-open:pb-2 lg:px-8 group-open:lg:pb-4': variant === 'boxed',
+  })
 
   const chevronStyles = cn('transform transition-transform group-open:rotate-180', {
     'h-6 w-6 text-category-700 lg:h-8 lg:w-8': variant === 'boxed',

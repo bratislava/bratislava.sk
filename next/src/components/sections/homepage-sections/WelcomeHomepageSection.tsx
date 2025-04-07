@@ -2,7 +2,6 @@ import { Typography } from '@bratislava/component-library'
 import Image from 'next/image'
 import { useMemo, useState } from 'react'
 
-import WelcomeCard from '@/src/components/cards/WelcomeCard/WelcomeCard'
 import HomePageSearch from '@/src/components/common/HomepageSearch/HomePageSearch'
 import { getParsedMenus } from '@/src/components/common/NavBar/NavMenu/getParsedMenus'
 import SectionContainer from '@/src/components/common/SectionContainer/SectionContainer'
@@ -27,7 +26,7 @@ const WelcomeHomepageSection = () => {
 
   return (
     <SectionContainer className="bg-white">
-      <div className="relative flex flex-col gap-y-4 py-8 lg:flex-row lg:items-center lg:py-0">
+      <div className="relative flex flex-col gap-y-4 py-8 lg:flex-row lg:items-center lg:py-14">
         <div className="z-[1] flex grow flex-col gap-8 lg:absolute">
           <Typography type="h1" className="whitespace-pre-wrap">
             {welcomeHeadline}
@@ -37,7 +36,7 @@ const WelcomeHomepageSection = () => {
         </div>
         <div
           className={cn(
-            'relative mx-auto h-[180px] w-full transition-all duration-300 sm:h-[200px] md:h-[378px] lg:ml-auto lg:mr-0 lg:w-[50%]',
+            'relative mx-auto h-[240px] w-full transition-all duration-300 sm:h-[300px] md:h-[378px] lg:ml-auto lg:mr-0 lg:w-[50%]',
             {
               'lg:opacity-25': isSearchOpen,
             },
@@ -52,14 +51,6 @@ const WelcomeHomepageSection = () => {
             fill
             className="object-contain"
           />
-        </div>
-      </div>
-      <div className="relative mb-5 w-full lg:mb-14">
-        <div className="relative md:grid md:grid-cols-3 md:gap-x-4 lg:grid-cols-6 lg:gap-x-6">
-          {menus?.map((item, index) => (
-            // eslint-disable-next-line react/no-array-index-key
-            <WelcomeCard key={index} item={item} />
-          ))}
         </div>
       </div>
     </SectionContainer>

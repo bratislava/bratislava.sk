@@ -46,7 +46,7 @@ const DesktopFooter = () => {
           {attributes.columns?.filter(isDefined).map((column, index) => (
             // eslint-disable-next-line react/no-array-index-key
             <div className="flex flex-col gap-3 lg:gap-4" key={index}>
-              <Typography type="p" size="p-large" className="text-grey-800">
+              <Typography type="h2" size="h5">
                 {column.title}
               </Typography>
               <div className="flex flex-col gap-3">
