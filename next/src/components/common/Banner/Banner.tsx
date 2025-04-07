@@ -57,14 +57,14 @@ const Banner = ({
           {/* TODO styling of white buttons */}
           {/* TODO use only one responsive Button  */}
           {primaryLink && (
-            <Button variant="category-solid" fullWidthMobile {...getCommonLinkProps(primaryLink)} />
+            <Button variant="solid" fullWidthMobile {...getCommonLinkProps(primaryLink)} />
           )}
           {secondaryLink && (
             <Button
               className={cn('hidden lg:flex', {
                 'text-white hover:text-white/80 focus:text-white/80': variant === 'dark',
               })}
-              variant="category-outline"
+              variant="outline"
               fullWidthMobile
               {...getCommonLinkProps(secondaryLink)}
             />
@@ -74,7 +74,7 @@ const Banner = ({
               className={cn('hidden font-semibold no-underline not-first:ml-2 lg:flex', {
                 'text-white hover:text-white/80 focus:text-white/80': variant === 'dark',
               })}
-              variant="category-link"
+              variant="link"
               {...getCommonLinkProps(tertiaryLink)}
             />
           )}

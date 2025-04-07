@@ -56,7 +56,7 @@ const InBaCard = ({
           {title}
         </Typography>
         <Typography type="p">{content}</Typography>
-        <Button variant="black-link" {...linkProps} stretched />
+        <Button variant="link" {...linkProps} stretched />
       </div>
     </CardBase>
   )

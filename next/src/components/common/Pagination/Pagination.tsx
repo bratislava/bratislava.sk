@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react'
+import { ReactNode } from 'react'
 
 import { ArrowLeftIcon, ArrowRightIcon } from '@/src/assets/ui-icons'
 import Button from '@/src/components/common/Button/Button'
@@ -50,7 +50,7 @@ const Pagination = ({ currentPage, totalCount, onPageChange = () => {} }: Pagina
             } else if (type === 'page') {
               children = (
                 <Button
-                  variant={selected ? 'category-solid' : 'category-outline'}
+                  variant={selected ? 'solid' : 'outline'}
                   isDisabled={disabled}
                   onPress={onPress}
                   aria-current={ariaCurrent}
@@ -74,7 +74,7 @@ const Pagination = ({ currentPage, totalCount, onPageChange = () => {} }: Pagina
 
               children = (
                 <Button
-                  variant="category-plain"
+                  variant="plain"
                   isDisabled={disabled}
                   onPress={onPress}
                   aria-label={ariaLabel}

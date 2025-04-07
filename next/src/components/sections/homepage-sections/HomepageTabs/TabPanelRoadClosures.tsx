@@ -1,4 +1,3 @@
-import React from 'react'
 import { TabPanel } from 'react-aria-components'
 
 import Button from '@/src/components/common/Button/Button'
@@ -28,7 +27,7 @@ const TabPanelRoadClosures = () => {
 
       {tabs?.roadClosuresPageLink ? (
         <div className="flex justify-center">
-          <Button variant="category-outline" {...getCommonLinkProps(tabs.roadClosuresPageLink)} />
+          <Button variant="outline" {...getCommonLinkProps(tabs.roadClosuresPageLink)} />
         </div>
       ) : null}
     </TabPanel>

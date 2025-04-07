@@ -1,5 +1,4 @@
 import { Typography } from '@bratislava/component-library'
-import React from 'react'
 import { TabPanel } from 'react-aria-components'
 
 import BlogPostCard from '@/src/components/cards/BlogPostCard'
@@ -118,11 +117,7 @@ const TabPanelLatestNews = () => {
       </div>
       {tabs?.newsPageLink ? (
         <div className="flex justify-center">
-          <Button
-            variant="category-outline"
-            hasLinkIcon
-            {...getCommonLinkProps(tabs?.newsPageLink)}
-          />
+          <Button variant="outline" hasLinkIcon {...getCommonLinkProps(tabs?.newsPageLink)} />
         </div>
       ) : null}
     </TabPanel>
