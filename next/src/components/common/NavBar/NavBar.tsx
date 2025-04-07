@@ -21,7 +21,6 @@ const NavBar = () => {
         </div>
       </div>
       <div style={{ height }} aria-hidden className="hidden lg:block" />
-      <div className="hidden h-[137px] lg:block" aria-hidden />
 
       <MobileNavBar className="lg:hidden" />
     </>
