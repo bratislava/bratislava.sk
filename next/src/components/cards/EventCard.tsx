@@ -38,7 +38,7 @@ const EventCard = ({
   const { t } = useTranslation()
 
   return (
-    <CardBase variant="shadow" className={cn('rounded-lg text-white', className)}>
+    <CardBase variant="no-border" className={cn('rounded-lg text-white', className)}>
       <Image src={imageSrc} alt="" fill className="absolute object-cover" sizes={imageSizes} />
       <CardContent className="relative inline-flex size-full flex-col items-start justify-end text-clip bg-gradient-to-b from-transparent to-[black] p-4 lg:p-5">
         <div className="flex w-full flex-col items-start gap-4 self-stretch">

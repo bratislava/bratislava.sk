@@ -39,7 +39,7 @@ const HighlightsHomepageSection = () => {
             <Fragment key={highlight.id}>
               <BlogPostCard
                 className="lg:hidden"
-                variant="shadow"
+                variant="no-border"
                 title={postTitle ?? ''}
                 linkProps={{
                   children: t('readMore'),
@@ -49,7 +49,7 @@ const HighlightsHomepageSection = () => {
               />
               <HomepageHorizontalCard
                 className="max-lg:hidden"
-                variant="shadow"
+                variant="no-border"
                 title={postTitle ?? ''}
                 linkProps={{
                   children: t('readMore'),

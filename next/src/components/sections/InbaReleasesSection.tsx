@@ -58,7 +58,6 @@ const InbaReleasesSection = ({ section }: Props) => {
           return (
             <InbaReleaseHorizontalCard
               key={slug}
-              variant="shadow"
               date={formatDate(releaseDate)}
               title={inbaReleaseTitle}
               text={perex}

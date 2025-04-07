@@ -65,7 +65,7 @@ const Gallery = ({ images = [] }: GalleryProps) => {
                   <div
                     onClick={() => openAtImageIndex(index)}
                     key={image.id}
-                    className="relative size-full cursor-pointer overflow-hidden rounded-lg pt-[100%] shadow-lg"
+                    className="relative size-full cursor-pointer overflow-hidden rounded-lg pt-[100%]"
                   >
                     <StrapiImage
                       // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion

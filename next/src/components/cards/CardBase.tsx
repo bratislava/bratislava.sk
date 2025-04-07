@@ -3,7 +3,7 @@ import React, { HTMLAttributes } from 'react'
 import cn from '@/src/utils/cn'
 
 export type CardBaseProps = {
-  variant?: 'border' | 'shadow'
+  variant?: 'border' | 'no-border'
 } & HTMLAttributes<HTMLDivElement>
 
 const CardBase = ({ variant = 'border', children, className, ...rest }: CardBaseProps) => {
@@ -14,7 +14,6 @@ const CardBase = ({ variant = 'border', children, className, ...rest }: CardBase
         'group relative flex flex-col overflow-hidden rounded-2xl bg-white',
         {
           'border-2 border-grey-200 hover:border-grey-400': variant === 'border',
-          'shadow hover:shadow-md': variant === 'shadow',
         },
         className,
       )}

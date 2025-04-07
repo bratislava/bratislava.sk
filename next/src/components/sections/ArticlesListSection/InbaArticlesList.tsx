@@ -84,7 +84,6 @@ const InbaArticlesList = ({ section }: Props) => {
           return (
             <BlogPostCard
               key={slug}
-              variant="shadow"
               date={getNumericLocalDate(publishedAt)}
               tag={tagTitle}
               title={inbaArticleTitle}

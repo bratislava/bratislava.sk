@@ -94,7 +94,6 @@ const BlogPostsByTags = ({ section }: Props) => {
             <BlogPostCard
               key={slug}
               style={getCategoryColorLocalStyle({ color: tagColor })}
-              variant="shadow"
               date={getNumericLocalDate(date_added ?? publishedAt)}
               tag={tagTitle ?? undefined}
               title={blogPostTitle ?? ''}

@@ -37,7 +37,7 @@ const MobileNavBar = ({ className }: MobileNavBarProps) => {
     <div className={className}>
       <FocusTrap active={isMobileMenuOpen}>
         <div style={getCategoryColorLocalStyle({ category: 'main' })}>
-          <div className="fixed top-0 z-30 flex h-14 w-full items-center justify-between bg-white px-4 text-grey-700 shadow">
+          <div className="fixed top-0 z-30 flex h-14 w-full items-center justify-between border-b-2 bg-white px-4 text-grey-700">
             <div className="flex items-center">
               <Brand url="/" className="-ml-4 px-4 py-3" />
             </div>

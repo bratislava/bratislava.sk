@@ -25,7 +25,7 @@ const InBaCard = ({
 }: InBaCardProps) => {
   return (
     <CardBase
-      variant="shadow"
+      variant="border"
       className={cn(
         'flex-col items-center overflow-visible md:flex-row',
         {

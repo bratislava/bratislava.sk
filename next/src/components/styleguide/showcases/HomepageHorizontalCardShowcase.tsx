@@ -19,13 +19,6 @@ const HomepageHorizontalCardShowcase = () => {
       linkProps: { children: 'More', href: '#', target: '_blank' } as CommonLinkProps,
       imgSrc: '/bratislava-placeholder.jpg',
     },
-
-    {
-      title: 'Promoted card 5 with shadow',
-      linkProps: { children: 'More', href: '#' } as CommonLinkProps,
-      variant: 'shadow' as const,
-      imgSrc: '/bratislava-placeholder.jpg',
-    },
   ]
 
   return (

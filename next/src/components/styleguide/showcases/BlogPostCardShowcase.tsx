@@ -23,9 +23,9 @@ const BlogPostCardShowcase = () => {
     },
 
     {
-      title: 'Blog post 5 with shadow',
+      title: 'Blog post 5 with no border',
       linkProps: { children: 'More', href: '#' } as CommonLinkProps,
-      variant: 'shadow' as const,
+      variant: 'no-border' as const,
       imgSrc: '/bratislava-placeholder.jpg',
     },
   ]
