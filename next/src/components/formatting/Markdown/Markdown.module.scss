@@ -1,4 +1,55 @@
 .markdown {
+  // Nested list styles
+  & > ul {
+    list-style-type: disc;
+
+    & li > ul {
+      list-style-type: circle;
+
+      & li > ul {
+        list-style-type: square;
+
+        & li > ul {
+          list-style-type: disc;
+
+          & li > ul {
+            list-style-type: circle;
+
+            & li > ul {
+              list-style-type: square;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  & > ol {
+    list-style-type: decimal;
+
+    & li > ol {
+      list-style-type: lower-latin;
+
+      & li > ol {
+        list-style-type: lower-roman;
+
+        & li > ol {
+          list-style-type: decimal;
+
+          & li > ol {
+            list-style-type: lower-latin;
+
+            & li > ol {
+              list-style-type: lower-roman;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // margins
+
   & > *:first-child {
     @apply mt-0;
   }
@@ -16,40 +67,34 @@
     @apply mb-4 mt-10;
   }
 
-  & > ul,
-  & > ol {
-    @apply mb-8 mt-4;
+  & > blockquote {
+    @apply my-10;
   }
 
-  & > *:not(h1):not(h2):not(h3):not(h4):not(h5):not(h6):not(ul):not(ol) {
-    @apply my-4;
+  & > figure {
+    @apply my-10;
   }
 
-  ol {
+  // Select paragraphs that have an adjacent ol or ul
+  & > p:has(+ ol),
+  & > p:has(+ ul) {
+    @apply mb-3;
+  }
+
+  // Adjust the margin of list items
+
+  & > ol,
+  & > ul {
     & > li {
-      @apply my-4;
-
-      &:first-child {
-        @apply mt-0;
-      }
-
-      &:last-child {
-        @apply mt-0;
-      }
+      @apply my-3;
     }
   }
-
-  ul {
-    & > li {
-      @apply my-1;
-
-      &:first-child {
-        @apply mt-0;
-      }
-
-      &:last-child {
-        @apply mt-0;
-      }
-    }
+  // TODO write the css the way we don't have to list all the elements again with :not (?)
+  // Set margin for all other elements
+  &
+    > *:not(h1):not(h2):not(h3):not(h4):not(h5):not(h6):not(ul):not(ol):not(blockquote):not(
+      figure
+    ):not(p:has(+ ol)):not(p:has(+ ul)) {
+    @apply my-6;
   }
 }
