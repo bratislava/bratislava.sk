@@ -1,6 +1,6 @@
 import * as NavigationMenu from '@radix-ui/react-navigation-menu'
 import { usePathname } from 'next/navigation'
-import React, { useEffect, useMemo } from 'react'
+import { useEffect, useMemo } from 'react'
 
 import { useGeneralContext } from '@/src/components/providers/GeneralContextProvider'
 import { useTranslation } from '@/src/utils/useTranslation'
@@ -31,7 +31,7 @@ const NavMenu = () => {
       onValueChange={setMenuValue}
       aria-label={t('NavMenu.aria.navMenuLabel')}
     >
-      <div className="relative z-30 shadow">
+      <div className="relative z-30 border-b border-border-default">
         <NavigationMenu.List className="m-auto grid w-full max-w-screen-xl grid-flow-col grid-cols-6">
           {menus.map((menuItem, index) => (
             // eslint-disable-next-line react/no-array-index-key

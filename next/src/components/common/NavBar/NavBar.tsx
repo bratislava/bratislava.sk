@@ -1,4 +1,3 @@
-import * as React from 'react'
 import { useRef } from 'react'
 import { useResizeObserver } from 'usehooks-ts'
 
@@ -14,7 +13,7 @@ const NavBar = () => {
 
   return (
     <>
-      <div className="fixed top-0 z-30 hidden w-full bg-white lg:block">
+      <div className="hidden w-full bg-white lg:block">
         <AlertBanner ref={alertRef} />
         <div className="relative w-full">
           <NavBarHeader />
