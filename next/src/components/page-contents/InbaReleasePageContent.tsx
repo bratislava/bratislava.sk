@@ -57,7 +57,7 @@ const InbaReleasePageContent = ({ inbaRelease }: InbaReleasePageContentProps) =>
       <SectionContainer className="pt-10 md:pt-18">
         <div className="grid grid-cols-1 gap-16 lg:grid-cols-[1fr_2fr]">
           <div
-            className={cn('overflow-hidden rounded-xl shadow-lg', {
+            className={cn('overflow-hidden rounded-xl border-2', {
               'aspect-inba': !coverImageAttr,
             })}
           >

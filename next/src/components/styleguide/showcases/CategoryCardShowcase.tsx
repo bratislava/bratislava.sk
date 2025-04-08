@@ -17,9 +17,9 @@ const CategoryCardShowcase = () => {
     },
 
     {
-      title: 'Category 5 with shadow',
+      title: 'Category 5 with no border',
       linkProps: { children: 'More', href: '#' } as CommonLinkProps,
-      variant: 'shadow' as const,
+      variant: 'no-border' as const,
     },
   ]
 

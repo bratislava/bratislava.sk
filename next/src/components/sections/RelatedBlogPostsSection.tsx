@@ -60,7 +60,6 @@ const RelatedBlogPostsSection = ({ page, className }: Props) => {
               <BlogPostCard
                 key={card.id}
                 style={getCategoryColorLocalStyle({ color: tagColor })}
-                variant="shadow"
                 imgSrc={coverImage?.data?.attributes?.url}
                 imgSizes={imageSizes}
                 date={getNumericLocalDate(date_added ?? publishedAt)}

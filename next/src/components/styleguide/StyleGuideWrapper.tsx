@@ -44,13 +44,10 @@ const StyleGuideWrapper = ({ children }: StyleGuideWrapperProps) => {
       <button
         key={key}
         type="button"
-        className={cn(
-          'm-2 h-14 w-40 rounded-lg border border-category-700 p-2 shadow-lg transition',
-          {
-            'bg-category-700 text-white': active,
-            'text-black bg-category-200': !active,
-          },
-        )}
+        className={cn('m-2 h-14 w-40 rounded-lg border border-category-700 p-2 transition', {
+          'bg-category-700 text-white': active,
+          'text-black bg-category-200': !active,
+        })}
         style={colorStyle}
         onClick={() => setActiveBrandCategory(brand.category)}
       >

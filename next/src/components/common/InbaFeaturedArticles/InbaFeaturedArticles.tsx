@@ -24,7 +24,6 @@ const InbaFeaturedArticles = ({ articles }: InbaFeaturedArticlesProps) => {
       <div className="hidden gap-x-6 py-4 lg:flex">
         <div className="w-1/2">
           <BlogPostImageCard
-            variant="shadow"
             title={majorArticle?.title ?? ''}
             linkHref={`/inba/clanky/${majorArticle?.slug}`}
             imgSrc={majorArticle?.coverImage?.data?.attributes?.url}
@@ -44,7 +43,6 @@ const InbaFeaturedArticles = ({ articles }: InbaFeaturedArticlesProps) => {
               <BlogPostHorizontalCard
                 // eslint-disable-next-line react/no-array-index-key
                 key={index}
-                variant="shadow"
                 title={title ?? ''}
                 linkHref={`/inba/clanky/${slug}`}
                 imgSrc={coverImage?.data?.attributes?.url}
@@ -65,7 +63,6 @@ const InbaFeaturedArticles = ({ articles }: InbaFeaturedArticlesProps) => {
 
           return (
             <BlogPostCard
-              variant="shadow"
               date={getNumericLocalDate(publishedAt)}
               tag={tagTitle ?? undefined}
               title={title ?? ''}

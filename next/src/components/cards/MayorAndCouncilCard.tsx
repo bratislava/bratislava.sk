@@ -14,7 +14,7 @@ type Props = {
 const MayorAndCouncilCard = ({ title, imageSrc, linkProps }: Props) => {
   return (
     <CardBase
-      variant="shadow"
+      variant="no-border"
       className="mt-16 flex w-full items-center overflow-visible rounded-lg lg:mt-28"
     >
       <div>

@@ -47,7 +47,7 @@ const TabPanelLatestNews = () => {
             <BlogPostCard
               key={blogPost.id}
               style={getCategoryColorLocalStyle({ color: tagColor })}
-              variant="shadow"
+              variant="no-border"
               date={getNumericLocalDate(date_added ?? publishedAt)}
               tag={tagTitle ?? undefined}
               title={title ?? ''}
@@ -70,7 +70,7 @@ const TabPanelLatestNews = () => {
               <BlogPostCard
                 key={blogPost.id}
                 style={getCategoryColorLocalStyle({ color: tagColor })}
-                variant="shadow"
+                variant="no-border"
                 date={getNumericLocalDate(date_added ?? publishedAt)}
                 tag={tagTitle ?? undefined}
                 title={title ?? ''}
