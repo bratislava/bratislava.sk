@@ -1,8 +1,9 @@
-import React, { PropsWithChildren } from 'react'
+import { PropsWithChildren } from 'react'
 
 import CookieConsent from '@/src/components/common/CookieConsent/CookieConsent'
 import Footer from '@/src/components/common/Footer/Footer'
 import NavBar from '@/src/components/common/NavBar/NavBar'
+import ScrollToTopButton from '@/src/components/common/ScrollToTopButton/ScrollToTopButton'
 
 type PageLayoutProps = {
   className?: string
@@ -14,11 +15,14 @@ const PageLayout = ({ className, children }: PropsWithChildren<PageLayoutProps>)
     <div className={className}>
       <CookieConsent className="z-30" /* position: fixed */ />
 
-      <header className="relative z-30">
+      <header className="relative">
         <NavBar />
       </header>
 
-      <main className="relative z-0">{children}</main>
+      <main className="relative">
+        {children}
+        <ScrollToTopButton />
+      </main>
 
       <Footer />
     </div>

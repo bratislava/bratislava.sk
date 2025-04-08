@@ -31,7 +31,7 @@ const NavMenu = () => {
       onValueChange={setMenuValue}
       aria-label={t('NavMenu.aria.navMenuLabel')}
     >
-      <div className="relative z-30 border-b border-border-default">
+      <div className="relative z-30 border-b">
         <NavigationMenu.List className="m-auto grid w-full max-w-screen-xl grid-flow-col grid-cols-6">
           {menus.map((menuItem, index) => (
             // eslint-disable-next-line react/no-array-index-key
