@@ -32,7 +32,7 @@ fragment UploadFileEntity on UploadFileEntity {
 fragment CommonLink on ComponentBlocksCommonLink {
   label
   url
-  plausibleId
+  analyticsId
   page {
     data {
       id

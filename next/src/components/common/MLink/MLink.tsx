@@ -5,11 +5,11 @@ import { ComponentProps, forwardRef } from 'react'
 
 import cn from '@/src/utils/cn'
 
-export type LinkPlausibleProps = { id: string }
+export type LinkAnalyticsProps = { id: string }
 
 export type LinkProps = Omit<ComponentProps<typeof NextLink>, 'as' | 'passHref'> & {
   variant?: 'unstyled' | 'underlineOnHover' | 'underlined' | 'underlined-medium'
-  plausibleProps?: LinkPlausibleProps
+  analyticsProps?: LinkAnalyticsProps
   /**
    * Similar to this:
    * https://getbootstrap.com/docs/4.3/utilities/stretched-link/
@@ -19,7 +19,7 @@ export type LinkProps = Omit<ComponentProps<typeof NextLink>, 'as' | 'passHref'>
 
 const MLink = forwardRef<HTMLAnchorElement, LinkProps>(
   (
-    { href, children, className, variant = 'unstyled', stretched, plausibleProps, ...rest },
+    { href, children, className, variant = 'unstyled', stretched, analyticsProps, ...rest },
     ref,
   ) => {
     const plausible = usePlausible()
@@ -46,9 +46,9 @@ const MLink = forwardRef<HTMLAnchorElement, LinkProps>(
         {...rest}
         className={styles}
         onClick={() => {
-          if (plausibleProps) {
-            plausible('Link click', { props: plausibleProps })
-            sendGTMEvent({ event: 'Link_click', value: plausibleProps.id })
+          if (analyticsProps) {
+            plausible('Link click', { props: analyticsProps })
+            sendGTMEvent({ event: 'Link_click', value: analyticsProps.id })
           }
         }}
       >
