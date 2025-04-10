@@ -1,3 +1,4 @@
+import { sendGTMEvent } from '@next/third-parties/google'
 import NextLink from 'next/link'
 import { usePlausible } from 'next-plausible'
 import { ComponentProps, forwardRef } from 'react'
@@ -44,7 +45,12 @@ const MLink = forwardRef<HTMLAnchorElement, LinkProps>(
         ref={ref}
         {...rest}
         className={styles}
-        onClick={() => plausibleProps && plausible('Link click', { props: plausibleProps })}
+        onClick={() => {
+          if (plausibleProps) {
+            plausible('Link click', { props: plausibleProps })
+            sendGTMEvent({ event: 'Link_click', value: plausibleProps.id })
+          }
+        }}
       >
         {children}
       </NextLink>
