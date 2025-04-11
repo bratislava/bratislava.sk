@@ -364,31 +364,31 @@ export type ComponentBlocksBookmarkLinkInput = {
 
 export type ComponentBlocksCommonLink = {
   __typename?: 'ComponentBlocksCommonLink'
+  analyticsId?: Maybe<Scalars['String']['output']>
   blogPost?: Maybe<BlogPostEntityResponse>
   id: Scalars['ID']['output']
   label: Scalars['String']['output']
   page?: Maybe<PageEntityResponse>
-  plausibleId?: Maybe<Scalars['String']['output']>
   url?: Maybe<Scalars['String']['output']>
 }
 
 export type ComponentBlocksCommonLinkFiltersInput = {
+  analyticsId?: InputMaybe<StringFilterInput>
   and?: InputMaybe<Array<InputMaybe<ComponentBlocksCommonLinkFiltersInput>>>
   blogPost?: InputMaybe<BlogPostFiltersInput>
   label?: InputMaybe<StringFilterInput>
   not?: InputMaybe<ComponentBlocksCommonLinkFiltersInput>
   or?: InputMaybe<Array<InputMaybe<ComponentBlocksCommonLinkFiltersInput>>>
   page?: InputMaybe<PageFiltersInput>
-  plausibleId?: InputMaybe<StringFilterInput>
   url?: InputMaybe<StringFilterInput>
 }
 
 export type ComponentBlocksCommonLinkInput = {
+  analyticsId?: InputMaybe<Scalars['String']['input']>
   blogPost?: InputMaybe<Scalars['ID']['input']>
   id?: InputMaybe<Scalars['ID']['input']>
   label?: InputMaybe<Scalars['String']['input']>
   page?: InputMaybe<Scalars['ID']['input']>
-  plausibleId?: InputMaybe<Scalars['String']['input']>
   url?: InputMaybe<Scalars['String']['input']>
 }
 
@@ -6136,7 +6136,7 @@ export type CommonLinkFragment = {
   __typename?: 'ComponentBlocksCommonLink'
   label: string
   url?: string | null
-  plausibleId?: string | null
+  analyticsId?: string | null
   page?: {
     __typename?: 'PageEntityResponse'
     data?: {
@@ -6162,7 +6162,7 @@ export type FooterColumnBlockFragment = {
     __typename?: 'ComponentBlocksCommonLink'
     label: string
     url?: string | null
-    plausibleId?: string | null
+    analyticsId?: string | null
     page?: {
       __typename?: 'PageEntityResponse'
       data?: {
@@ -6194,7 +6194,7 @@ export type FooterFragment = {
       __typename?: 'ComponentBlocksCommonLink'
       label: string
       url?: string | null
-      plausibleId?: string | null
+      analyticsId?: string | null
       page?: {
         __typename?: 'PageEntityResponse'
         data?: {
@@ -6221,7 +6221,7 @@ export type FooterFragment = {
     __typename?: 'ComponentBlocksCommonLink'
     label: string
     url?: string | null
-    plausibleId?: string | null
+    analyticsId?: string | null
     page?: {
       __typename?: 'PageEntityResponse'
       data?: {
@@ -6243,7 +6243,7 @@ export type FooterFragment = {
     __typename?: 'ComponentBlocksCommonLink'
     label: string
     url?: string | null
-    plausibleId?: string | null
+    analyticsId?: string | null
     page?: {
       __typename?: 'PageEntityResponse'
       data?: {
@@ -6403,7 +6403,7 @@ export type GeneralFragment = {
       __typename?: 'ComponentBlocksCommonLink'
       label: string
       url?: string | null
-      plausibleId?: string | null
+      analyticsId?: string | null
       page?: {
         __typename?: 'PageEntityResponse'
         data?: {
@@ -6569,7 +6569,7 @@ export type GeneralQuery = {
             __typename?: 'ComponentBlocksCommonLink'
             label: string
             url?: string | null
-            plausibleId?: string | null
+            analyticsId?: string | null
             page?: {
               __typename?: 'PageEntityResponse'
               data?: {
@@ -6779,7 +6779,7 @@ export type GeneralQuery = {
             __typename?: 'ComponentBlocksCommonLink'
             label: string
             url?: string | null
-            plausibleId?: string | null
+            analyticsId?: string | null
             page?: {
               __typename?: 'PageEntityResponse'
               data?: {
@@ -6810,7 +6810,7 @@ export type GeneralQuery = {
           __typename?: 'ComponentBlocksCommonLink'
           label: string
           url?: string | null
-          plausibleId?: string | null
+          analyticsId?: string | null
           page?: {
             __typename?: 'PageEntityResponse'
             data?: {
@@ -6840,7 +6840,7 @@ export type GeneralQuery = {
           __typename?: 'ComponentBlocksCommonLink'
           label: string
           url?: string | null
-          plausibleId?: string | null
+          analyticsId?: string | null
           page?: {
             __typename?: 'PageEntityResponse'
             data?: {
@@ -6923,7 +6923,7 @@ export type HomepageEntityFragment = {
           __typename?: 'ComponentBlocksCommonLink'
           label: string
           url?: string | null
-          plausibleId?: string | null
+          analyticsId?: string | null
           page?: {
             __typename?: 'PageEntityResponse'
             data?: {
@@ -7053,7 +7053,7 @@ export type HomepageEntityFragment = {
         __typename?: 'ComponentBlocksCommonLink'
         label: string
         url?: string | null
-        plausibleId?: string | null
+        analyticsId?: string | null
         page?: {
           __typename?: 'PageEntityResponse'
           data?: {
@@ -7079,7 +7079,7 @@ export type HomepageEntityFragment = {
         __typename?: 'ComponentBlocksCommonLink'
         label: string
         url?: string | null
-        plausibleId?: string | null
+        analyticsId?: string | null
         page?: {
           __typename?: 'PageEntityResponse'
           data?: {
@@ -7105,7 +7105,7 @@ export type HomepageEntityFragment = {
         __typename?: 'ComponentBlocksCommonLink'
         label: string
         url?: string | null
-        plausibleId?: string | null
+        analyticsId?: string | null
         page?: {
           __typename?: 'PageEntityResponse'
           data?: {
@@ -7136,7 +7136,7 @@ export type HomepageEntityFragment = {
         __typename?: 'ComponentBlocksCommonLink'
         label: string
         url?: string | null
-        plausibleId?: string | null
+        analyticsId?: string | null
         page?: {
           __typename?: 'PageEntityResponse'
           data?: {
@@ -7162,7 +7162,7 @@ export type HomepageEntityFragment = {
         __typename?: 'ComponentBlocksCommonLink'
         label: string
         url?: string | null
-        plausibleId?: string | null
+        analyticsId?: string | null
         page?: {
           __typename?: 'PageEntityResponse'
           data?: {
@@ -7193,7 +7193,7 @@ export type HomepageEntityFragment = {
         __typename?: 'ComponentBlocksCommonLink'
         label: string
         url?: string | null
-        plausibleId?: string | null
+        analyticsId?: string | null
         page?: {
           __typename?: 'PageEntityResponse'
           data?: {
@@ -7226,7 +7226,7 @@ export type HomepageEntityFragment = {
           __typename?: 'ComponentBlocksCommonLink'
           label: string
           url?: string | null
-          plausibleId?: string | null
+          analyticsId?: string | null
           page?: {
             __typename?: 'PageEntityResponse'
             data?: {
@@ -7373,7 +7373,7 @@ export type HomepageQuery = {
               __typename?: 'ComponentBlocksCommonLink'
               label: string
               url?: string | null
-              plausibleId?: string | null
+              analyticsId?: string | null
               page?: {
                 __typename?: 'PageEntityResponse'
                 data?: {
@@ -7503,7 +7503,7 @@ export type HomepageQuery = {
             __typename?: 'ComponentBlocksCommonLink'
             label: string
             url?: string | null
-            plausibleId?: string | null
+            analyticsId?: string | null
             page?: {
               __typename?: 'PageEntityResponse'
               data?: {
@@ -7533,7 +7533,7 @@ export type HomepageQuery = {
             __typename?: 'ComponentBlocksCommonLink'
             label: string
             url?: string | null
-            plausibleId?: string | null
+            analyticsId?: string | null
             page?: {
               __typename?: 'PageEntityResponse'
               data?: {
@@ -7563,7 +7563,7 @@ export type HomepageQuery = {
             __typename?: 'ComponentBlocksCommonLink'
             label: string
             url?: string | null
-            plausibleId?: string | null
+            analyticsId?: string | null
             page?: {
               __typename?: 'PageEntityResponse'
               data?: {
@@ -7598,7 +7598,7 @@ export type HomepageQuery = {
             __typename?: 'ComponentBlocksCommonLink'
             label: string
             url?: string | null
-            plausibleId?: string | null
+            analyticsId?: string | null
             page?: {
               __typename?: 'PageEntityResponse'
               data?: {
@@ -7628,7 +7628,7 @@ export type HomepageQuery = {
             __typename?: 'ComponentBlocksCommonLink'
             label: string
             url?: string | null
-            plausibleId?: string | null
+            analyticsId?: string | null
             page?: {
               __typename?: 'PageEntityResponse'
               data?: {
@@ -7663,7 +7663,7 @@ export type HomepageQuery = {
             __typename?: 'ComponentBlocksCommonLink'
             label: string
             url?: string | null
-            plausibleId?: string | null
+            analyticsId?: string | null
             page?: {
               __typename?: 'PageEntityResponse'
               data?: {
@@ -7700,7 +7700,7 @@ export type HomepageQuery = {
               __typename?: 'ComponentBlocksCommonLink'
               label: string
               url?: string | null
-              plausibleId?: string | null
+              analyticsId?: string | null
               page?: {
                 __typename?: 'PageEntityResponse'
                 data?: {
@@ -7838,7 +7838,7 @@ export type HomepageHighlightsItemFragment = {
     __typename?: 'ComponentBlocksCommonLink'
     label: string
     url?: string | null
-    plausibleId?: string | null
+    analyticsId?: string | null
     page?: {
       __typename?: 'PageEntityResponse'
       data?: {
@@ -7960,7 +7960,7 @@ export type HomepageTabsFragment = {
     __typename?: 'ComponentBlocksCommonLink'
     label: string
     url?: string | null
-    plausibleId?: string | null
+    analyticsId?: string | null
     page?: {
       __typename?: 'PageEntityResponse'
       data?: {
@@ -7982,7 +7982,7 @@ export type HomepageTabsFragment = {
     __typename?: 'ComponentBlocksCommonLink'
     label: string
     url?: string | null
-    plausibleId?: string | null
+    analyticsId?: string | null
     page?: {
       __typename?: 'PageEntityResponse'
       data?: {
@@ -8004,7 +8004,7 @@ export type HomepageTabsFragment = {
     __typename?: 'ComponentBlocksCommonLink'
     label: string
     url?: string | null
-    plausibleId?: string | null
+    analyticsId?: string | null
     page?: {
       __typename?: 'PageEntityResponse'
       data?: {
@@ -8032,7 +8032,7 @@ export type HomepageMayorAndCouncilFragment = {
     __typename?: 'ComponentBlocksCommonLink'
     label: string
     url?: string | null
-    plausibleId?: string | null
+    analyticsId?: string | null
     page?: {
       __typename?: 'PageEntityResponse'
       data?: {
@@ -8054,7 +8054,7 @@ export type HomepageMayorAndCouncilFragment = {
     __typename?: 'ComponentBlocksCommonLink'
     label: string
     url?: string | null
-    plausibleId?: string | null
+    analyticsId?: string | null
     page?: {
       __typename?: 'PageEntityResponse'
       data?: {
@@ -8081,7 +8081,7 @@ export type TopServicesItemFragment = {
     __typename?: 'ComponentBlocksCommonLink'
     label: string
     url?: string | null
-    plausibleId?: string | null
+    analyticsId?: string | null
     page?: {
       __typename?: 'PageEntityResponse'
       data?: {
@@ -8573,7 +8573,7 @@ export type PageBySlugQuery = {
           __typename?: 'ComponentBlocksCommonLink'
           label: string
           url?: string | null
-          plausibleId?: string | null
+          analyticsId?: string | null
           page?: {
             __typename?: 'PageEntityResponse'
             data?: {
@@ -8681,7 +8681,7 @@ export type PageBySlugQuery = {
                 __typename?: 'ComponentBlocksCommonLink'
                 label: string
                 url?: string | null
-                plausibleId?: string | null
+                analyticsId?: string | null
                 page?: {
                   __typename?: 'PageEntityResponse'
                   data?: {
@@ -8711,7 +8711,7 @@ export type PageBySlugQuery = {
                 __typename?: 'ComponentBlocksCommonLink'
                 label: string
                 url?: string | null
-                plausibleId?: string | null
+                analyticsId?: string | null
                 page?: {
                   __typename?: 'PageEntityResponse'
                   data?: {
@@ -8741,7 +8741,7 @@ export type PageBySlugQuery = {
                 __typename?: 'ComponentBlocksCommonLink'
                 label: string
                 url?: string | null
-                plausibleId?: string | null
+                analyticsId?: string | null
                 page?: {
                   __typename?: 'PageEntityResponse'
                   data?: {
@@ -9502,7 +9502,7 @@ export type PageEntityFragment = {
       __typename?: 'ComponentBlocksCommonLink'
       label: string
       url?: string | null
-      plausibleId?: string | null
+      analyticsId?: string | null
       page?: {
         __typename?: 'PageEntityResponse'
         data?: {
@@ -9606,7 +9606,7 @@ export type PageEntityFragment = {
             __typename?: 'ComponentBlocksCommonLink'
             label: string
             url?: string | null
-            plausibleId?: string | null
+            analyticsId?: string | null
             page?: {
               __typename?: 'PageEntityResponse'
               data?: {
@@ -9636,7 +9636,7 @@ export type PageEntityFragment = {
             __typename?: 'ComponentBlocksCommonLink'
             label: string
             url?: string | null
-            plausibleId?: string | null
+            analyticsId?: string | null
             page?: {
               __typename?: 'PageEntityResponse'
               data?: {
@@ -9666,7 +9666,7 @@ export type PageEntityFragment = {
             __typename?: 'ComponentBlocksCommonLink'
             label: string
             url?: string | null
-            plausibleId?: string | null
+            analyticsId?: string | null
             page?: {
               __typename?: 'PageEntityResponse'
               data?: {
@@ -11826,7 +11826,7 @@ export type BannerSectionFragment = {
     __typename?: 'ComponentBlocksCommonLink'
     label: string
     url?: string | null
-    plausibleId?: string | null
+    analyticsId?: string | null
     page?: {
       __typename?: 'PageEntityResponse'
       data?: {
@@ -11848,7 +11848,7 @@ export type BannerSectionFragment = {
     __typename?: 'ComponentBlocksCommonLink'
     label: string
     url?: string | null
-    plausibleId?: string | null
+    analyticsId?: string | null
     page?: {
       __typename?: 'PageEntityResponse'
       data?: {
@@ -11870,7 +11870,7 @@ export type BannerSectionFragment = {
     __typename?: 'ComponentBlocksCommonLink'
     label: string
     url?: string | null
-    plausibleId?: string | null
+    analyticsId?: string | null
     page?: {
       __typename?: 'PageEntityResponse'
       data?: {
@@ -12213,7 +12213,7 @@ type Sections_ComponentSectionsBanner_Fragment = {
     __typename?: 'ComponentBlocksCommonLink'
     label: string
     url?: string | null
-    plausibleId?: string | null
+    analyticsId?: string | null
     page?: {
       __typename?: 'PageEntityResponse'
       data?: {
@@ -12235,7 +12235,7 @@ type Sections_ComponentSectionsBanner_Fragment = {
     __typename?: 'ComponentBlocksCommonLink'
     label: string
     url?: string | null
-    plausibleId?: string | null
+    analyticsId?: string | null
     page?: {
       __typename?: 'PageEntityResponse'
       data?: {
@@ -12257,7 +12257,7 @@ type Sections_ComponentSectionsBanner_Fragment = {
     __typename?: 'ComponentBlocksCommonLink'
     label: string
     url?: string | null
-    plausibleId?: string | null
+    analyticsId?: string | null
     page?: {
       __typename?: 'PageEntityResponse'
       data?: {
@@ -13348,7 +13348,7 @@ export const CommonLinkFragmentDoc = gql`
   fragment CommonLink on ComponentBlocksCommonLink {
     label
     url
-    plausibleId
+    analyticsId
     page {
       data {
         id

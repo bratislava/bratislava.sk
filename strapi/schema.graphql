@@ -291,31 +291,31 @@ input ComponentBlocksBookmarkLinkInput {
 }
 
 type ComponentBlocksCommonLink {
+  analyticsId: String
   blogPost: BlogPostEntityResponse
   id: ID!
   label: String!
   page: PageEntityResponse
-  plausibleId: String
   url: String
 }
 
 input ComponentBlocksCommonLinkFiltersInput {
+  analyticsId: StringFilterInput
   and: [ComponentBlocksCommonLinkFiltersInput]
   blogPost: BlogPostFiltersInput
   label: StringFilterInput
   not: ComponentBlocksCommonLinkFiltersInput
   or: [ComponentBlocksCommonLinkFiltersInput]
   page: PageFiltersInput
-  plausibleId: StringFilterInput
   url: StringFilterInput
 }
 
 input ComponentBlocksCommonLinkInput {
+  analyticsId: String
   blogPost: ID
   id: ID
   label: String
   page: ID
-  plausibleId: String
   url: String
 }
 

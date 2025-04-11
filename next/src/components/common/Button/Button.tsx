@@ -5,7 +5,7 @@ import { AriaButtonProps } from 'react-aria'
 import { Button as RACButton, ButtonProps as RACButtonProps } from 'react-aria-components'
 
 import { ArrowRightIcon, ExportIcon } from '@/src/assets/ui-icons'
-import MLink, { LinkPlausibleProps } from '@/src/components/common/MLink/MLink'
+import MLink, { LinkAnalyticsProps } from '@/src/components/common/MLink/MLink'
 import Spinner from '@/src/components/common/Spinner/Spinner'
 import cn from '@/src/utils/cn'
 
@@ -47,7 +47,7 @@ export type ButtonProps = Omit<RACButtonProps, 'className' | 'style'> &
     href?: never
     target?: never
     hasLinkIcon?: never
-    plausibleProps?: never
+    analyticsProps?: never
   }
 
 export type AnchorProps = Omit<AriaButtonProps<'a'>, 'children'> &
@@ -55,7 +55,7 @@ export type AnchorProps = Omit<AriaButtonProps<'a'>, 'children'> &
   Pick<ComponentProps<typeof NextLink>, 'target' | 'replace' | 'prefetch'> & {
     stretched?: boolean
     hasLinkIcon?: boolean
-    plausibleProps?: LinkPlausibleProps
+    analyticsProps?: LinkAnalyticsProps
   }
 
 export type PolymorphicProps = ButtonProps | AnchorProps
@@ -212,7 +212,7 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
           href={rest.href}
           ref={ref as RefObject<HTMLAnchorElement>}
           className={styles}
-          plausibleProps={rest.plausibleProps}
+          analyticsProps={rest.analyticsProps}
           {...rest}
         >
           {startIcon}

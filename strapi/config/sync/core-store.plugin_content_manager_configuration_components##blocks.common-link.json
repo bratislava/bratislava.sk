@@ -78,16 +78,16 @@
           "sortable": true
         }
       },
-      "plausibleId": {
+      "analyticsId": {
         "edit": {
-          "label": "plausibleId",
+          "label": "analyticsId",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "plausibleId",
+          "label": "analyticsId",
           "searchable": true,
           "sortable": true
         }
@@ -123,7 +123,7 @@
         ],
         [
           {
-            "name": "plausibleId",
+            "name": "analyticsId",
             "size": 6
           }
         ]
