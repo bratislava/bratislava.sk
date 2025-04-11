@@ -48,7 +48,7 @@ const MLink = forwardRef<HTMLAnchorElement, LinkProps>(
         onClick={() => {
           if (analyticsProps) {
             plausible('Link click', { props: analyticsProps })
-            sendGTMEvent({ event: 'Link_click', value: analyticsProps.id })
+            sendGTMEvent({ event: 'Link click', value: analyticsProps.id })
           }
         }}
       >
