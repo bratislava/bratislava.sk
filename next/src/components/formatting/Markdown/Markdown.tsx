@@ -3,6 +3,7 @@ import { Typography } from '@bratislava/component-library'
 import ReactMarkdown, { defaultUrlTransform } from 'react-markdown'
 import rehypeRaw from 'rehype-raw'
 import remarkGfm from 'remark-gfm'
+import supersub from 'remark-supersub'
 import remarkUnwrapImages from 'remark-unwrap-images'
 
 import MLink from '@/src/components/common/MLink/MLink'
@@ -13,6 +14,7 @@ import styles from './Markdown.module.scss'
 export type MarkdownProps = {
   content: string | null | undefined
   variant?: 'default' | 'small' | 'small-no-respo' | 'accordion'
+  className?: string
 }
 
 /**
@@ -20,6 +22,7 @@ export type MarkdownProps = {
  *
  * @param className
  * @param content
+ * @param variant
  * @constructor
  *
  * This is the closest design we have:
@@ -27,18 +30,33 @@ export type MarkdownProps = {
  */
 
 // FIXME Typography. Convert to Typography. Headers and p.
-const Markdown = ({ content, variant = 'default' }: MarkdownProps) => {
+const Markdown = ({ content, variant = 'default', className }: MarkdownProps) => {
   return (
     <div
-      className={cn(styles.markdown, {
-        'text-large-respo': variant === 'default' || variant === 'accordion',
-        'text-default-respo': variant === 'small',
-        'text-default': variant === 'small-no-respo',
-      })}
+      className={cn(
+        styles.markdown,
+        {
+          'text-large-respo': variant === 'default' || variant === 'accordion',
+          'text-default-respo': variant === 'small',
+          'text-default': variant === 'small-no-respo',
+        },
+        className,
+      )}
     >
       <ReactMarkdown
-        // fix nonfunctioning phone links - more at https://github.com/orgs/remarkjs/discussions/1329
+        // Fixes non-functioning phone links - more at https://github.com/orgs/remarkjs/discussions/1329
         urlTransform={(url) => (url.startsWith('tel:') ? url : defaultUrlTransform(url))}
+        remarkPlugins={[
+          remarkUnwrapImages,
+          [
+            remarkGfm,
+            // singleTilde is disabled to enable subscript: https://stackoverflow.com/a/78076200
+            { singleTilde: false },
+          ],
+          supersub,
+        ]}
+        // TODO remove rehypeRaw
+        rehypePlugins={[rehypeRaw]}
         components={{
           // Standard components: a, blockquote, br, code, em, h1, h2, h3, h4, h5, h6, hr, img, li, ol, p, pre, strong, and ul
 
@@ -108,27 +126,36 @@ const Markdown = ({ content, variant = 'default' }: MarkdownProps) => {
 
           // Remark-gfm components: del, input, table, tbody, td, th, thead, and tr
           // FIXME tables need revisit - align, spacing, etc.
-          table: ({ node, children }) => (
-            <div className="overflow-x-auto">
+          table: ({ children, node, ...props }) => (
+            <div className="overflow-x-auto rounded-lg border" {...props}>
               <table className="w-full table-auto">{children}</table>
             </div>
           ),
-          tr: ({ node, children }) => (
-            <tr className="mb-4 table w-full md:mb-0 md:table-row">{children}</tr>
+          thead: ({ children, node, ...props }) => <thead {...props}>{children}</thead>,
+          tbody: ({ children, node, ...props }) => (
+            <tbody {...props} className="border-t">
+              {children}
+            </tbody>
           ),
-          tbody: ({ node, children }) => <tbody>{children}</tbody>,
-          thead: () => <thead />,
-          td: ({ node, children }) => (
-            <td className="text-large-respo table-row md:table-cell">
-              <div className="mb-1 flex items-center pr-4 text-left md:mb-0 md:py-1">
-                {children}
-              </div>
+          tr: ({ children, node, ...props }) => (
+            <tr className={cn('h-14 not-first:border-t')} {...props}>
+              {children}
+            </tr>
+          ),
+          td: ({ children, node, ...props }) => (
+            <td className="px-5 py-1 not-first:border-l" {...props}>
+              {children}
             </td>
           ),
-          // th: ...
+          th: ({ children, node, ...props }) => (
+            <th
+              className="bg-background-secondary px-5 py-1 font-bold not-first:border-l"
+              {...props}
+            >
+              {children}
+            </th>
+          ),
         }}
-        remarkPlugins={[remarkGfm, remarkUnwrapImages]}
-        rehypePlugins={[rehypeRaw]}
       >
         {content ?? ''}
       </ReactMarkdown>
