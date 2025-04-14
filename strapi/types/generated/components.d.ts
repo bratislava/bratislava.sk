@@ -83,10 +83,10 @@ export interface BlocksCommonLink extends Schema.Component {
     displayName: 'common link'
   }
   attributes: {
+    analyticsId: Attribute.String
     blogPost: Attribute.Relation<'blocks.common-link', 'oneToOne', 'api::blog-post.blog-post'>
     label: Attribute.String & Attribute.Required
     page: Attribute.Relation<'blocks.common-link', 'oneToOne', 'api::page.page'>
-    plausibleId: Attribute.String
     url: Attribute.String
   }
 }

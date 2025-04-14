@@ -1,13 +1,13 @@
 import { ReactNode } from 'react'
 
-import { LinkPlausibleProps } from '@/src/components/common/MLink/MLink'
+import { LinkAnalyticsProps } from '@/src/components/common/MLink/MLink'
 import { CommonLinkFragment } from '@/src/services/graphql'
 
 export type CommonLinkProps = {
   children: ReactNode
   href: string
   target?: '_blank'
-  plausibleProps?: LinkPlausibleProps
+  analyticsProps?: LinkAnalyticsProps
 }
 
 export const getCommonLinkProps = (link: CommonLinkFragment | null | undefined) => {
@@ -23,9 +23,9 @@ export const getCommonLinkProps = (link: CommonLinkFragment | null | undefined) 
     target = '_blank'
   }
 
-  const plausibleProps: LinkPlausibleProps | undefined = link?.plausibleId
-    ? { id: link.plausibleId }
+  const analyticsProps: LinkAnalyticsProps | undefined = link?.analyticsId
+    ? { id: link.analyticsId }
     : undefined
 
-  return { children: link?.label ?? null, href, target, plausibleProps }
+  return { children: link?.label ?? null, href, target, analyticsProps }
 }

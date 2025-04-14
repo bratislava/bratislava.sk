@@ -2,6 +2,7 @@
 import 'react-vertical-timeline-component/style.min.css'
 import '@/src/styles/globals.css'
 
+import { GoogleTagManager } from '@next/third-parties/google'
 import { AppProps } from 'next/app'
 import { Inter } from 'next/font/google'
 import Head from 'next/head'
@@ -59,6 +60,11 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
                   <div id="root">
                     <Component {...pageProps} />
                   </div>
+                  <GoogleTagManager
+                    gtmId={process.env.NEXT_PUBLIC_GTM_ID ?? ''}
+                    auth={process.env.NEXT_PUBLIC_GTM_AUTH ?? ''}
+                    preview={process.env.NEXT_PUBLIC_GTM_PREVIEW ?? ''}
+                  />
                 </NavMenuContextProvider>
               </OverlayProvider>
             </BAI18nProvider>
