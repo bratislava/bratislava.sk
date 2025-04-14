@@ -127,24 +127,31 @@ const Markdown = ({ content, variant = 'default', className }: MarkdownProps) =>
           // Remark-gfm components: del, input, table, tbody, td, th, thead, and tr
           // FIXME tables need revisit - align, spacing, etc.
           table: ({ children, node, ...props }) => (
-            <div className="overflow-x-auto" {...props}>
+            <div className="overflow-x-auto rounded-lg border" {...props}>
               <table className="w-full table-auto">{children}</table>
             </div>
           ),
           thead: ({ children, node, ...props }) => <thead {...props}>{children}</thead>,
-          tbody: ({ children, node, ...props }) => <tbody {...props}>{children}</tbody>,
+          tbody: ({ children, node, ...props }) => (
+            <tbody {...props} className="border-t">
+              {children}
+            </tbody>
+          ),
           tr: ({ children, node, ...props }) => (
-            <tr className={cn('h-14')} {...props}>
+            <tr className={cn('h-14 not-first:border-t')} {...props}>
               {children}
             </tr>
           ),
           td: ({ children, node, ...props }) => (
-            <td className="border px-5 py-1" {...props}>
+            <td className="px-5 py-1 not-first:border-l" {...props}>
               {children}
             </td>
           ),
           th: ({ children, node, ...props }) => (
-            <th className="border bg-background-secondary px-5 py-1 font-bold" {...props}>
+            <th
+              className="bg-background-secondary px-5 py-1 font-bold not-first:border-l"
+              {...props}
+            >
               {children}
             </th>
           ),
