@@ -24,7 +24,7 @@ export const searchInOrgStructure = async (query: string, accessToken: string) =
   /* Letters with diacritics causes request to fail (it needs investigation why, but slugify helps) */
   const sanitizedQuery = slugify(query, { separator: ' ', customReplacements: [['ä', 'a']] }).trim()
 
-  const url = `https://graph.microsoft.com/v1.0/groups/${MS_GRAPH_GROUP_ID}/transitiveMembers?${[
+  const url = `https://graph.microsoft.com/v1.0/groups/${MS_GRAPH_GROUP_ID}/transitiveMembers/microsoft.graph.user?${[
     `$select=${PARAMS_FROM_MS_GRAPH_API.join(',')}`,
     `$search="displayName:${sanitizedQuery}" OR "jobTitle:${sanitizedQuery}" OR "mail:${sanitizedQuery}"`,
     // TODO add support for searching in businessPhones and mobilePhone
