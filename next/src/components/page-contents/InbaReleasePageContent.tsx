@@ -1,9 +1,10 @@
 import { Typography } from '@bratislava/component-library'
 import * as React from 'react'
-import { useMemo } from 'react'
+import { Fragment, useMemo } from 'react'
 
 import FileRowCard from '@/src/components/cards/FileRowCard'
 import { Breadcrumb } from '@/src/components/common/Breadcrumbs/Breadcrumbs'
+import HorizontalDivider from '@/src/components/common/Divider/HorizontalDivider'
 import ImagePlaceholder from '@/src/components/common/Image/ImagePlaceholder'
 import StrapiImage from '@/src/components/common/Image/StrapiImage'
 import NarrowText from '@/src/components/common/NarrowText/NarrowText'
@@ -79,22 +80,25 @@ const InbaReleasePageContent = ({ inbaRelease }: InbaReleasePageContentProps) =>
                 {t('InbaRelease.toDownload')}
               </Typography>
 
-              {/* TODO refactor, use FileList */}
-              {files?.filter(isDefined).map((file) => (
-                <FileRowCard
-                  key={file.media.data?.id}
-                  title={file.title ?? file.media.data?.attributes?.name ?? ''}
-                  downloadLink={file.media.data?.attributes?.url}
-                  format={formatFileExtension(file.media.data?.attributes?.ext) ?? undefined}
-                  size={
-                    file.media.data?.attributes?.size
-                      ? formatFileSize(file.media.data?.attributes?.size, locale)
-                      : undefined
-                  }
-                  // TODO download aria label
-                  // ariaLabel={getDownloadAriaLabel(file.media.data?.attributes)}
-                />
-              ))}
+              <ul className="flex flex-col rounded-lg border-2 py-2">
+                {files?.filter(isDefined).map((file, index) => (
+                  <Fragment key={file.media.data?.id}>
+                    {index > 0 ? <HorizontalDivider asListItem className="mx-4 lg:mx-6" /> : null}
+                    <li>
+                      <FileRowCard
+                        title={file.title ?? file.media.data?.attributes?.name ?? ''}
+                        downloadLink={file.media.data?.attributes?.url}
+                        format={formatFileExtension(file.media.data?.attributes?.ext) ?? undefined}
+                        size={
+                          file.media.data?.attributes?.size
+                            ? formatFileSize(file.media.data?.attributes?.size, locale)
+                            : undefined
+                        }
+                      />
+                    </li>
+                  </Fragment>
+                ))}
+              </ul>
             </div>
           </div>
         </div>

@@ -16,17 +16,13 @@ import { isDefined } from '@/src/utils/isDefined'
 
 type SearchResultCardProps = {
   data: SearchResult
-  hideBottomDivider?: boolean
 }
 
-const SearchResultCard = ({ data, hideBottomDivider }: SearchResultCardProps) => {
+const SearchResultCard = ({ data }: SearchResultCardProps) => {
   return (
     <div className="px-5 lg:px-6">
       <div
-        className={cn(
-          'group relative flex flex-row items-stretch gap-4 overflow-hidden bg-white py-4',
-          { 'border-b-2': !hideBottomDivider },
-        )}
+        className="group relative flex flex-row items-stretch gap-4 overflow-hidden bg-white py-4"
         data-cy="search-result-card"
       >
         {data.coverImageSrc ? (

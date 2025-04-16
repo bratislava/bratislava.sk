@@ -1,7 +1,8 @@
 import { Typography } from '@bratislava/component-library'
-import React, { Dispatch, SetStateAction, useEffect } from 'react'
+import React, { Dispatch, Fragment, SetStateAction, useEffect } from 'react'
 import { Selection } from 'react-aria-components'
 
+import HorizontalDivider from '@/src/components/common/Divider/HorizontalDivider'
 import LoadingSpinner from '@/src/components/common/LoadingSpinner/LoadingSpinner'
 import Pagination from '@/src/components/common/Pagination/Pagination'
 import { SearchOption } from '@/src/components/sections/SearchSection/GlobalSearchSectionContent'
@@ -46,8 +47,6 @@ const SearchResults = ({
   const { searchResultsData, searchResultsCount } = data ?? { searchResultsCount: 0 }
 
   const GENERAL_RESULTS_COUNT = 5
-  const RESULTS_COUNT =
-    (searchResultsData?.length as number) < 5 ? searchResultsData?.length : GENERAL_RESULTS_COUNT // Logic based on TabPanelOfficialBoard.tsx
 
   useEffect(() => {
     onSetResultsCount(searchOption.id, searchResultsCount ?? 0)
@@ -82,20 +81,20 @@ const SearchResults = ({
           <ul className="flex flex-col rounded-lg border-2 py-2" data-cy="search-results">
             {searchResultsData
               .slice(0, variant === 'allResults' ? GENERAL_RESULTS_COUNT : undefined)
-              .map((item, index) => {
+              .map((searchResultsItem, index) => {
                 return (
-                  <li
+                  <Fragment
                     key={`item-${variant}-${searchOption.id}-${[
-                      item.uniqueId,
-                      item.title,
-                      ...(item?.metadata ?? []),
+                      searchResultsItem.uniqueId,
+                      searchResultsItem.title,
+                      ...(searchResultsItem?.metadata ?? []),
                     ].join('')}`}
                   >
-                    <SearchResultCard
-                      data={{ ...item }}
-                      hideBottomDivider={index === (RESULTS_COUNT as number) - 1}
-                    />
-                  </li>
+                    {index > 0 ? <HorizontalDivider className="mx-4 lg:mx-6" /> : null}
+                    <li>
+                      <SearchResultCard data={searchResultsItem} />
+                    </li>
+                  </Fragment>
                 )
               })}
           </ul>
