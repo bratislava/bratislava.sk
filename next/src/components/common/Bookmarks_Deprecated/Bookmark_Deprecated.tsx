@@ -97,7 +97,8 @@ const Bookmark = ({
         </span>
       </Button>
 
-      <div className="flex py-5" aria-hidden={!isOpen} inert={!isOpen}>
+      {/* @ts-ignore */}
+      <div className="flex py-5" aria-hidden={!isOpen} inert={(!isOpen).toString()}>
         <div className="flex w-44 items-center justify-center">
           {icon ? (
             <div
