@@ -1,8 +1,10 @@
 import { Typography } from '@bratislava/component-library'
 import { useQuery } from '@tanstack/react-query'
+import { Fragment } from 'react'
 import { TabPanel } from 'react-aria-components'
 
 import Button from '@/src/components/common/Button/Button'
+import HorizontalDivider from '@/src/components/common/Divider/HorizontalDivider'
 import LoadingSpinner from '@/src/components/common/LoadingSpinner/LoadingSpinner'
 import { useHomepageContext } from '@/src/components/providers/HomepageContextProvider'
 import SearchResultCard from '@/src/components/sections/SearchSection/SearchResultCard'
@@ -73,12 +75,12 @@ const TabPanelOfficialBoard = () => {
             </li>
           ) : (
             documents.map((document, index) => (
-              <li key={document.uniqueId}>
-                <SearchResultCard
-                  data={{ ...document }}
-                  hideBottomDivider={index === documents.length - 1}
-                />
-              </li>
+              <Fragment key={document.uniqueId}>
+                {index > 0 ? <HorizontalDivider asListItem className="mx-4 lg:mx-6" /> : null}
+                <li>
+                  <SearchResultCard data={document} />
+                </li>
+              </Fragment>
             ))
           )}
         </ul>

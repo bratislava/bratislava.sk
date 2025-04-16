@@ -116,6 +116,7 @@ fragment IframeSection on ComponentSectionsIframe {
 }
 
 fragment FileBlock on ComponentBlocksFile {
+  id
   title
   media {
     data {
@@ -133,6 +134,7 @@ fragment FileListSection on ComponentSectionsFileList {
 }
 
 fragment FileItemBlock on ComponentBlocksFileItem {
+  id
   title
   media {
     data {

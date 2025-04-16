@@ -4839,6 +4839,7 @@ export type BlogPostBySlugQuery = {
               text?: string | null
               fileList?: Array<{
                 __typename?: 'ComponentBlocksFile'
+                id: string
                 title?: string | null
                 media?: {
                   __typename?: 'UploadFileEntityResponse'
@@ -5181,6 +5182,7 @@ export type LatestPostsByTagsQuery = {
               text?: string | null
               fileList?: Array<{
                 __typename?: 'ComponentBlocksFile'
+                id: string
                 title?: string | null
                 media?: {
                   __typename?: 'UploadFileEntityResponse'
@@ -5724,6 +5726,7 @@ export type BlogPostEntityFragment = {
           text?: string | null
           fileList?: Array<{
             __typename?: 'ComponentBlocksFile'
+            id: string
             title?: string | null
             media?: {
               __typename?: 'UploadFileEntityResponse'
@@ -8636,6 +8639,7 @@ export type PageBySlugQuery = {
                 } | null
                 fileList?: Array<{
                   __typename?: 'ComponentBlocksFileItem'
+                  id: string
                   title?: string | null
                   media: {
                     __typename?: 'UploadFileEntityResponse'
@@ -8896,6 +8900,7 @@ export type PageBySlugQuery = {
               text?: string | null
               fileList?: Array<{
                 __typename?: 'ComponentBlocksFile'
+                id: string
                 title?: string | null
                 media?: {
                   __typename?: 'UploadFileEntityResponse'
@@ -9561,6 +9566,7 @@ export type PageEntityFragment = {
             } | null
             fileList?: Array<{
               __typename?: 'ComponentBlocksFileItem'
+              id: string
               title?: string | null
               media: {
                 __typename?: 'UploadFileEntityResponse'
@@ -9817,6 +9823,7 @@ export type PageEntityFragment = {
           text?: string | null
           fileList?: Array<{
             __typename?: 'ComponentBlocksFile'
+            id: string
             title?: string | null
             media?: {
               __typename?: 'UploadFileEntityResponse'
@@ -11449,6 +11456,7 @@ export type IframeSectionFragment = {
 
 export type FileBlockFragment = {
   __typename?: 'ComponentBlocksFile'
+  id: string
   title?: string | null
   media?: {
     __typename?: 'UploadFileEntityResponse'
@@ -11474,6 +11482,7 @@ export type FileListSectionFragment = {
   text?: string | null
   fileList?: Array<{
     __typename?: 'ComponentBlocksFile'
+    id: string
     title?: string | null
     media?: {
       __typename?: 'UploadFileEntityResponse'
@@ -11496,6 +11505,7 @@ export type FileListSectionFragment = {
 
 export type FileItemBlockFragment = {
   __typename?: 'ComponentBlocksFileItem'
+  id: string
   title?: string | null
   media: {
     __typename?: 'UploadFileEntityResponse'
@@ -11604,6 +11614,7 @@ export type ComponentAccordionItemsFlatTextFragment = {
   } | null
   fileList?: Array<{
     __typename?: 'ComponentBlocksFileItem'
+    id: string
     title?: string | null
     media: {
       __typename?: 'UploadFileEntityResponse'
@@ -11672,6 +11683,7 @@ export type AccordionSectionFragment = {
     } | null
     fileList?: Array<{
       __typename?: 'ComponentBlocksFileItem'
+      id: string
       title?: string | null
       media: {
         __typename?: 'UploadFileEntityResponse'
@@ -12167,6 +12179,7 @@ type Sections_ComponentSectionsAccordion_Fragment = {
     } | null
     fileList?: Array<{
       __typename?: 'ComponentBlocksFileItem'
+      id: string
       title?: string | null
       media: {
         __typename?: 'UploadFileEntityResponse'
@@ -12410,6 +12423,7 @@ type Sections_ComponentSectionsFileList_Fragment = {
   text?: string | null
   fileList?: Array<{
     __typename?: 'ComponentBlocksFile'
+    id: string
     title?: string | null
     media?: {
       __typename?: 'UploadFileEntityResponse'
@@ -13033,6 +13047,7 @@ export const UploadFileEntityFragmentDoc = gql`
 `
 export const FileBlockFragmentDoc = gql`
   fragment FileBlock on ComponentBlocksFile {
+    id
     title
     media {
       data {
@@ -13108,6 +13123,7 @@ export const ComponentAccordionItemsInstitutionFragmentDoc = gql`
 `
 export const FileItemBlockFragmentDoc = gql`
   fragment FileItemBlock on ComponentBlocksFileItem {
+    id
     title
     media {
       data {

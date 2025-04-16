@@ -96,28 +96,32 @@ const RegulationPageContent = ({ regulation }: RegulationPageContentProps) => {
 
               {/* TODO refactor to use standard component */}
               {attachmentFiles?.length ? (
-                <div className="rounded-lg border-2 py-2">
+                <ul className="rounded-lg border-2 py-2">
                   {attachmentFiles
-                    .map(({ media: attachementMedia, title: attachmentTitle }, index) => {
-                      if (!attachementMedia.data.attributes) return null
+                    .map(({ media: attachmentMedia, title: attachmentTitle }, index) => {
+                      if (!attachmentMedia.data.attributes) return null
 
                       return (
-                        <>
-                          {index > 0 ? <HorizontalDivider className="mx-4 lg:mx-6" /> : null}
-                          <FileRowCard
-                            key={attachementMedia.data.id}
-                            title={attachmentTitle ?? attachementMedia.data.attributes.name}
-                            size={formatFileSize(attachementMedia.data.attributes.size, locale)}
-                            format={
-                              formatFileExtension(attachementMedia.data.attributes.ext) ?? undefined
-                            }
-                            downloadLink={attachementMedia.data.attributes.url}
-                          />
-                        </>
+                        <Fragment key={attachmentMedia.data.id}>
+                          {index > 0 ? (
+                            <HorizontalDivider asListItem className="mx-4 lg:mx-6" />
+                          ) : null}
+                          <li>
+                            <FileRowCard
+                              title={attachmentTitle ?? attachmentMedia.data.attributes.name}
+                              size={formatFileSize(attachmentMedia.data.attributes.size, locale)}
+                              format={
+                                formatFileExtension(attachmentMedia.data.attributes.ext) ??
+                                undefined
+                              }
+                              downloadLink={attachmentMedia.data.attributes.url}
+                            />
+                          </li>
+                        </Fragment>
                       )
                     })
                     .filter(isDefined)}
-                </div>
+                </ul>
               ) : (
                 <Typography type="p">{t('Regulation.noAttachmentsMessage')}</Typography>
               )}

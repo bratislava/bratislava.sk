@@ -1,4 +1,5 @@
 import { Typography } from '@bratislava/component-library'
+import { Fragment } from 'react'
 
 import FileRowCardWrapper from '@/src/components/cards/FileRowCardWrapper'
 import HorizontalDivider from '@/src/components/common/Divider/HorizontalDivider'
@@ -28,13 +29,12 @@ const FileList = ({ className, title, text, files }: FileListProps) => {
 
       <ul className="flex flex-col rounded-lg border-2 py-2">
         {files.map((file, index) => (
-          <>
-            {index > 0 ? <HorizontalDivider className="mx-4 lg:mx-6" /> : null}
-            {/* eslint-disable-next-line react/no-array-index-key */}
-            <li key={index} className="w-full">
+          <Fragment key={file.id}>
+            {index > 0 ? <HorizontalDivider asListItem className="mx-4 lg:mx-6" /> : null}
+            <li className="w-full">
               <FileRowCardWrapper fileItem={file} />
             </li>
-          </>
+          </Fragment>
         ))}
       </ul>
     </div>
