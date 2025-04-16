@@ -17,12 +17,13 @@
   },
   "attributes": {
     "title": {
-      "type": "text",
+      "type": "string",
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
-      }
+      },
+      "required": true
     },
     "excerpt": {
       "type": "text",
