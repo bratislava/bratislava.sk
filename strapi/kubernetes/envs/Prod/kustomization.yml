@@ -1,6 +1,11 @@
 resources:
   - ../../base
   - scaler.yml
+  - secrets/database.secret.yml
+  - secrets/meilisearch.secret.yml
+  - secrets/strapi.secret.yml
+  - secrets/revalidate.secret.yml
+  - secrets/mailgun.secret.yml
 
 generatorOptions:
   disableNameSuffixHash: true

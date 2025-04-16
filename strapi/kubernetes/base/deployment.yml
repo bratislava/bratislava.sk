@@ -39,6 +39,10 @@ spec:
                 name: ${BUILD_REPOSITORY_NAME}-meilisearch-secret
             - secretRef:
                 name: minio-secret-standalone
+            - secretRef:
+                name: ${BUILD_REPOSITORY_NAME}-revalidate-secret
+            - secretRef:
+                name: ${BUILD_REPOSITORY_NAME}-mailgun-secret
             - configMapRef:
                 name: ${BUILD_REPOSITORY_NAME}-env
             - configMapRef:
