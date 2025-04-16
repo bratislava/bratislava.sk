@@ -1,7 +1,7 @@
 {
   "name": "Admin",
   "code": "admin-lg0mm2j6",
-  "description": "Admins can manage strapi users.\n\nCreated April 3rd, 2023",
+  "description": "Admins can manage all content and strapi users.\n\nCreated April 3rd, 2023",
   "permissions": [
     {
       "action": "plugin::content-manager.explorer.create",
@@ -164,6 +164,156 @@
     },
     {
       "action": "plugin::content-manager.explorer.create",
+      "subject": "api::faq-category.faq-category",
+      "properties": {
+        "fields": [
+          "title",
+          "slug",
+          "faqs"
+        ],
+        "locales": [
+          "en",
+          "sk"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": {}
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "subject": "api::faq-category.faq-category",
+      "properties": {
+        "locales": [
+          "en",
+          "sk"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": {}
+    },
+    {
+      "action": "plugin::content-manager.explorer.publish",
+      "subject": "api::faq-category.faq-category",
+      "properties": {
+        "locales": [
+          "en",
+          "sk"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": {}
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::faq-category.faq-category",
+      "properties": {
+        "fields": [
+          "title",
+          "slug",
+          "faqs"
+        ],
+        "locales": [
+          "en",
+          "sk"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": {}
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::faq-category.faq-category",
+      "properties": {
+        "fields": [
+          "title",
+          "slug",
+          "faqs"
+        ],
+        "locales": [
+          "en",
+          "sk"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": {}
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "api::faq.faq",
+      "properties": {
+        "fields": [
+          "title",
+          "body",
+          "faqCategory"
+        ],
+        "locales": [
+          "en",
+          "sk"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": {}
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "subject": "api::faq.faq",
+      "properties": {
+        "locales": [
+          "en",
+          "sk"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": {}
+    },
+    {
+      "action": "plugin::content-manager.explorer.publish",
+      "subject": "api::faq.faq",
+      "properties": {
+        "locales": [
+          "en",
+          "sk"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": {}
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::faq.faq",
+      "properties": {
+        "fields": [
+          "title",
+          "body",
+          "faqCategory"
+        ],
+        "locales": [
+          "en",
+          "sk"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": {}
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::faq.faq",
+      "properties": {
+        "fields": [
+          "title",
+          "body",
+          "faqCategory"
+        ],
+        "locales": [
+          "en",
+          "sk"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": {}
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
       "subject": "api::footer.footer",
       "properties": {
         "fields": [
@@ -174,17 +324,17 @@
           "columns.links.page",
           "columns.links.blogPost",
           "columns.links.url",
-          "columns.links.plausibleId",
+          "columns.links.analyticsId",
           "accessibilityPageLink.label",
           "accessibilityPageLink.page",
           "accessibilityPageLink.blogPost",
           "accessibilityPageLink.url",
-          "accessibilityPageLink.plausibleId",
+          "accessibilityPageLink.analyticsId",
           "innovationsLink.label",
           "innovationsLink.page",
           "innovationsLink.blogPost",
           "innovationsLink.url",
-          "innovationsLink.plausibleId",
+          "innovationsLink.analyticsId",
           "contactText"
         ],
         "locales": [
@@ -231,17 +381,17 @@
           "columns.links.page",
           "columns.links.blogPost",
           "columns.links.url",
-          "columns.links.plausibleId",
+          "columns.links.analyticsId",
           "accessibilityPageLink.label",
           "accessibilityPageLink.page",
           "accessibilityPageLink.blogPost",
           "accessibilityPageLink.url",
-          "accessibilityPageLink.plausibleId",
+          "accessibilityPageLink.analyticsId",
           "innovationsLink.label",
           "innovationsLink.page",
           "innovationsLink.blogPost",
           "innovationsLink.url",
-          "innovationsLink.plausibleId",
+          "innovationsLink.analyticsId",
           "contactText"
         ],
         "locales": [
@@ -264,17 +414,17 @@
           "columns.links.page",
           "columns.links.blogPost",
           "columns.links.url",
-          "columns.links.plausibleId",
+          "columns.links.analyticsId",
           "accessibilityPageLink.label",
           "accessibilityPageLink.page",
           "accessibilityPageLink.blogPost",
           "accessibilityPageLink.url",
-          "accessibilityPageLink.plausibleId",
+          "accessibilityPageLink.analyticsId",
           "innovationsLink.label",
           "innovationsLink.page",
           "innovationsLink.blogPost",
           "innovationsLink.url",
-          "innovationsLink.plausibleId",
+          "innovationsLink.analyticsId",
           "contactText"
         ],
         "locales": [
@@ -300,7 +450,7 @@
           "header.accountLink.page",
           "header.accountLink.blogPost",
           "header.accountLink.url",
-          "header.accountLink.plausibleId",
+          "header.accountLink.analyticsId",
           "privacyPolicyPage",
           "officialBoardPage",
           "newsPage",
@@ -343,7 +493,7 @@
           "header.accountLink.page",
           "header.accountLink.blogPost",
           "header.accountLink.url",
-          "header.accountLink.plausibleId",
+          "header.accountLink.analyticsId",
           "privacyPolicyPage",
           "officialBoardPage",
           "newsPage",
@@ -374,7 +524,7 @@
           "header.accountLink.page",
           "header.accountLink.blogPost",
           "header.accountLink.url",
-          "header.accountLink.plausibleId",
+          "header.accountLink.analyticsId",
           "privacyPolicyPage",
           "officialBoardPage",
           "newsPage",
@@ -405,7 +555,7 @@
           "highlights.cards.link.page",
           "highlights.cards.link.blogPost",
           "highlights.cards.link.url",
-          "highlights.cards.link.plausibleId",
+          "highlights.cards.link.analyticsId",
           "highlights.cards.image",
           "tabs.leftNewsItem",
           "tabs.rightNewsItem",
@@ -413,36 +563,36 @@
           "tabs.newsPageLink.page",
           "tabs.newsPageLink.blogPost",
           "tabs.newsPageLink.url",
-          "tabs.newsPageLink.plausibleId",
+          "tabs.newsPageLink.analyticsId",
           "tabs.officialBoardPageLink.label",
           "tabs.officialBoardPageLink.page",
           "tabs.officialBoardPageLink.blogPost",
           "tabs.officialBoardPageLink.url",
-          "tabs.officialBoardPageLink.plausibleId",
+          "tabs.officialBoardPageLink.analyticsId",
           "tabs.roadClosuresPageLink.label",
           "tabs.roadClosuresPageLink.page",
           "tabs.roadClosuresPageLink.blogPost",
           "tabs.roadClosuresPageLink.url",
-          "tabs.roadClosuresPageLink.plausibleId",
+          "tabs.roadClosuresPageLink.analyticsId",
           "mayorAndCouncil.title",
           "mayorAndCouncil.text",
           "mayorAndCouncil.mayorCard.label",
           "mayorAndCouncil.mayorCard.page",
           "mayorAndCouncil.mayorCard.blogPost",
           "mayorAndCouncil.mayorCard.url",
-          "mayorAndCouncil.mayorCard.plausibleId",
+          "mayorAndCouncil.mayorCard.analyticsId",
           "mayorAndCouncil.councilCard.label",
           "mayorAndCouncil.councilCard.page",
           "mayorAndCouncil.councilCard.blogPost",
           "mayorAndCouncil.councilCard.url",
-          "mayorAndCouncil.councilCard.plausibleId",
+          "mayorAndCouncil.councilCard.analyticsId",
           "topServices.title",
           "topServices.services.icon",
           "topServices.services.link.label",
           "topServices.services.link.page",
           "topServices.services.link.blogPost",
           "topServices.services.link.url",
-          "topServices.services.link.plausibleId",
+          "topServices.services.link.analyticsId",
           "inba.title",
           "inba.content",
           "inbaFrontImage",
@@ -475,7 +625,7 @@
           "eventsSection.eventsPageLink.page",
           "eventsSection.eventsPageLink.blogPost",
           "eventsSection.eventsPageLink.url",
-          "eventsSection.eventsPageLink.plausibleId"
+          "eventsSection.eventsPageLink.analyticsId"
         ],
         "locales": [
           "en",
@@ -524,7 +674,7 @@
           "highlights.cards.link.page",
           "highlights.cards.link.blogPost",
           "highlights.cards.link.url",
-          "highlights.cards.link.plausibleId",
+          "highlights.cards.link.analyticsId",
           "highlights.cards.image",
           "tabs.leftNewsItem",
           "tabs.rightNewsItem",
@@ -532,36 +682,36 @@
           "tabs.newsPageLink.page",
           "tabs.newsPageLink.blogPost",
           "tabs.newsPageLink.url",
-          "tabs.newsPageLink.plausibleId",
+          "tabs.newsPageLink.analyticsId",
           "tabs.officialBoardPageLink.label",
           "tabs.officialBoardPageLink.page",
           "tabs.officialBoardPageLink.blogPost",
           "tabs.officialBoardPageLink.url",
-          "tabs.officialBoardPageLink.plausibleId",
+          "tabs.officialBoardPageLink.analyticsId",
           "tabs.roadClosuresPageLink.label",
           "tabs.roadClosuresPageLink.page",
           "tabs.roadClosuresPageLink.blogPost",
           "tabs.roadClosuresPageLink.url",
-          "tabs.roadClosuresPageLink.plausibleId",
+          "tabs.roadClosuresPageLink.analyticsId",
           "mayorAndCouncil.title",
           "mayorAndCouncil.text",
           "mayorAndCouncil.mayorCard.label",
           "mayorAndCouncil.mayorCard.page",
           "mayorAndCouncil.mayorCard.blogPost",
           "mayorAndCouncil.mayorCard.url",
-          "mayorAndCouncil.mayorCard.plausibleId",
+          "mayorAndCouncil.mayorCard.analyticsId",
           "mayorAndCouncil.councilCard.label",
           "mayorAndCouncil.councilCard.page",
           "mayorAndCouncil.councilCard.blogPost",
           "mayorAndCouncil.councilCard.url",
-          "mayorAndCouncil.councilCard.plausibleId",
+          "mayorAndCouncil.councilCard.analyticsId",
           "topServices.title",
           "topServices.services.icon",
           "topServices.services.link.label",
           "topServices.services.link.page",
           "topServices.services.link.blogPost",
           "topServices.services.link.url",
-          "topServices.services.link.plausibleId",
+          "topServices.services.link.analyticsId",
           "inba.title",
           "inba.content",
           "inbaFrontImage",
@@ -594,7 +744,7 @@
           "eventsSection.eventsPageLink.page",
           "eventsSection.eventsPageLink.blogPost",
           "eventsSection.eventsPageLink.url",
-          "eventsSection.eventsPageLink.plausibleId"
+          "eventsSection.eventsPageLink.analyticsId"
         ],
         "locales": [
           "en",
@@ -619,7 +769,7 @@
           "highlights.cards.link.page",
           "highlights.cards.link.blogPost",
           "highlights.cards.link.url",
-          "highlights.cards.link.plausibleId",
+          "highlights.cards.link.analyticsId",
           "highlights.cards.image",
           "tabs.leftNewsItem",
           "tabs.rightNewsItem",
@@ -627,36 +777,36 @@
           "tabs.newsPageLink.page",
           "tabs.newsPageLink.blogPost",
           "tabs.newsPageLink.url",
-          "tabs.newsPageLink.plausibleId",
+          "tabs.newsPageLink.analyticsId",
           "tabs.officialBoardPageLink.label",
           "tabs.officialBoardPageLink.page",
           "tabs.officialBoardPageLink.blogPost",
           "tabs.officialBoardPageLink.url",
-          "tabs.officialBoardPageLink.plausibleId",
+          "tabs.officialBoardPageLink.analyticsId",
           "tabs.roadClosuresPageLink.label",
           "tabs.roadClosuresPageLink.page",
           "tabs.roadClosuresPageLink.blogPost",
           "tabs.roadClosuresPageLink.url",
-          "tabs.roadClosuresPageLink.plausibleId",
+          "tabs.roadClosuresPageLink.analyticsId",
           "mayorAndCouncil.title",
           "mayorAndCouncil.text",
           "mayorAndCouncil.mayorCard.label",
           "mayorAndCouncil.mayorCard.page",
           "mayorAndCouncil.mayorCard.blogPost",
           "mayorAndCouncil.mayorCard.url",
-          "mayorAndCouncil.mayorCard.plausibleId",
+          "mayorAndCouncil.mayorCard.analyticsId",
           "mayorAndCouncil.councilCard.label",
           "mayorAndCouncil.councilCard.page",
           "mayorAndCouncil.councilCard.blogPost",
           "mayorAndCouncil.councilCard.url",
-          "mayorAndCouncil.councilCard.plausibleId",
+          "mayorAndCouncil.councilCard.analyticsId",
           "topServices.title",
           "topServices.services.icon",
           "topServices.services.link.label",
           "topServices.services.link.page",
           "topServices.services.link.blogPost",
           "topServices.services.link.url",
-          "topServices.services.link.plausibleId",
+          "topServices.services.link.analyticsId",
           "inba.title",
           "inba.content",
           "inbaFrontImage",
@@ -689,7 +839,7 @@
           "eventsSection.eventsPageLink.page",
           "eventsSection.eventsPageLink.blogPost",
           "eventsSection.eventsPageLink.url",
-          "eventsSection.eventsPageLink.plausibleId"
+          "eventsSection.eventsPageLink.analyticsId"
         ],
         "locales": [
           "en",
@@ -1096,7 +1246,7 @@
           "headerLinks.page",
           "headerLinks.blogPost",
           "headerLinks.url",
-          "headerLinks.plausibleId",
+          "headerLinks.analyticsId",
           "pageHeaderSections",
           "sections",
           "parentPage",
@@ -1152,7 +1302,7 @@
           "headerLinks.page",
           "headerLinks.blogPost",
           "headerLinks.url",
-          "headerLinks.plausibleId",
+          "headerLinks.analyticsId",
           "pageHeaderSections",
           "sections",
           "parentPage",
@@ -1184,7 +1334,7 @@
           "headerLinks.page",
           "headerLinks.blogPost",
           "headerLinks.url",
-          "headerLinks.plausibleId",
+          "headerLinks.analyticsId",
           "pageHeaderSections",
           "sections",
           "parentPage",

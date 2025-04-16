@@ -1,5 +1,5 @@
 {
-  "name": "Admin iba Články + Media Library",
+  "name": "Admin: Články + Media Library",
   "code": "admin-clanky-lmg395y8",
   "description": "Plná správa Článkov\n\n\nCreated September 12th, 2023",
   "permissions": [
@@ -27,7 +27,7 @@
         ]
       },
       "conditions": [],
-      "actionParameters": null
+      "actionParameters": {}
     },
     {
       "action": "plugin::content-manager.explorer.delete",
@@ -39,7 +39,7 @@
         ]
       },
       "conditions": [],
-      "actionParameters": null
+      "actionParameters": {}
     },
     {
       "action": "plugin::content-manager.explorer.publish",
@@ -51,7 +51,7 @@
         ]
       },
       "conditions": [],
-      "actionParameters": null
+      "actionParameters": {}
     },
     {
       "action": "plugin::content-manager.explorer.read",
@@ -77,7 +77,7 @@
         ]
       },
       "conditions": [],
-      "actionParameters": null
+      "actionParameters": {}
     },
     {
       "action": "plugin::content-manager.explorer.update",
@@ -103,7 +103,7 @@
         ]
       },
       "conditions": [],
-      "actionParameters": null
+      "actionParameters": {}
     },
     {
       "action": "plugin::content-manager.explorer.create",
@@ -120,7 +120,7 @@
           "highlights.cards.link.page",
           "highlights.cards.link.blogPost",
           "highlights.cards.link.url",
-          "highlights.cards.link.plausibleId",
+          "highlights.cards.link.analyticsId",
           "highlights.cards.image",
           "tabs.leftNewsItem",
           "tabs.rightNewsItem",
@@ -128,36 +128,38 @@
           "tabs.newsPageLink.page",
           "tabs.newsPageLink.blogPost",
           "tabs.newsPageLink.url",
-          "tabs.newsPageLink.plausibleId",
+          "tabs.newsPageLink.analyticsId",
           "tabs.officialBoardPageLink.label",
           "tabs.officialBoardPageLink.page",
           "tabs.officialBoardPageLink.blogPost",
           "tabs.officialBoardPageLink.url",
-          "tabs.officialBoardPageLink.plausibleId",
+          "tabs.officialBoardPageLink.analyticsId",
           "tabs.roadClosuresPageLink.label",
           "tabs.roadClosuresPageLink.page",
           "tabs.roadClosuresPageLink.blogPost",
           "tabs.roadClosuresPageLink.url",
-          "tabs.roadClosuresPageLink.plausibleId",
+          "tabs.roadClosuresPageLink.analyticsId",
           "mayorAndCouncil.title",
           "mayorAndCouncil.text",
           "mayorAndCouncil.mayorCard.label",
           "mayorAndCouncil.mayorCard.page",
           "mayorAndCouncil.mayorCard.blogPost",
           "mayorAndCouncil.mayorCard.url",
-          "mayorAndCouncil.mayorCard.plausibleId",
+          "mayorAndCouncil.mayorCard.analyticsId",
           "mayorAndCouncil.councilCard.label",
           "mayorAndCouncil.councilCard.page",
           "mayorAndCouncil.councilCard.blogPost",
           "mayorAndCouncil.councilCard.url",
-          "mayorAndCouncil.councilCard.plausibleId",
+          "mayorAndCouncil.councilCard.analyticsId",
           "topServices.title",
           "topServices.services.icon",
           "topServices.services.link.label",
           "topServices.services.link.page",
           "topServices.services.link.blogPost",
           "topServices.services.link.url",
-          "topServices.services.link.plausibleId",
+          "topServices.services.link.analyticsId",
+          "inba.title",
+          "inba.content",
           "inbaFrontImage",
           "inbaRearImage",
           "inbaUrl",
@@ -188,7 +190,7 @@
           "eventsSection.eventsPageLink.page",
           "eventsSection.eventsPageLink.blogPost",
           "eventsSection.eventsPageLink.url",
-          "eventsSection.eventsPageLink.plausibleId"
+          "eventsSection.eventsPageLink.analyticsId"
         ],
         "locales": [
           "en",
@@ -196,7 +198,7 @@
         ]
       },
       "conditions": [],
-      "actionParameters": null
+      "actionParameters": {}
     },
     {
       "action": "plugin::content-manager.explorer.delete",
@@ -208,7 +210,7 @@
         ]
       },
       "conditions": [],
-      "actionParameters": null
+      "actionParameters": {}
     },
     {
       "action": "plugin::content-manager.explorer.publish",
@@ -220,7 +222,7 @@
         ]
       },
       "conditions": [],
-      "actionParameters": null
+      "actionParameters": {}
     },
     {
       "action": "plugin::content-manager.explorer.read",
@@ -237,7 +239,7 @@
           "highlights.cards.link.page",
           "highlights.cards.link.blogPost",
           "highlights.cards.link.url",
-          "highlights.cards.link.plausibleId",
+          "highlights.cards.link.analyticsId",
           "highlights.cards.image",
           "tabs.leftNewsItem",
           "tabs.rightNewsItem",
@@ -245,36 +247,38 @@
           "tabs.newsPageLink.page",
           "tabs.newsPageLink.blogPost",
           "tabs.newsPageLink.url",
-          "tabs.newsPageLink.plausibleId",
+          "tabs.newsPageLink.analyticsId",
           "tabs.officialBoardPageLink.label",
           "tabs.officialBoardPageLink.page",
           "tabs.officialBoardPageLink.blogPost",
           "tabs.officialBoardPageLink.url",
-          "tabs.officialBoardPageLink.plausibleId",
+          "tabs.officialBoardPageLink.analyticsId",
           "tabs.roadClosuresPageLink.label",
           "tabs.roadClosuresPageLink.page",
           "tabs.roadClosuresPageLink.blogPost",
           "tabs.roadClosuresPageLink.url",
-          "tabs.roadClosuresPageLink.plausibleId",
+          "tabs.roadClosuresPageLink.analyticsId",
           "mayorAndCouncil.title",
           "mayorAndCouncil.text",
           "mayorAndCouncil.mayorCard.label",
           "mayorAndCouncil.mayorCard.page",
           "mayorAndCouncil.mayorCard.blogPost",
           "mayorAndCouncil.mayorCard.url",
-          "mayorAndCouncil.mayorCard.plausibleId",
+          "mayorAndCouncil.mayorCard.analyticsId",
           "mayorAndCouncil.councilCard.label",
           "mayorAndCouncil.councilCard.page",
           "mayorAndCouncil.councilCard.blogPost",
           "mayorAndCouncil.councilCard.url",
-          "mayorAndCouncil.councilCard.plausibleId",
+          "mayorAndCouncil.councilCard.analyticsId",
           "topServices.title",
           "topServices.services.icon",
           "topServices.services.link.label",
           "topServices.services.link.page",
           "topServices.services.link.blogPost",
           "topServices.services.link.url",
-          "topServices.services.link.plausibleId",
+          "topServices.services.link.analyticsId",
+          "inba.title",
+          "inba.content",
           "inbaFrontImage",
           "inbaRearImage",
           "inbaUrl",
@@ -305,7 +309,7 @@
           "eventsSection.eventsPageLink.page",
           "eventsSection.eventsPageLink.blogPost",
           "eventsSection.eventsPageLink.url",
-          "eventsSection.eventsPageLink.plausibleId"
+          "eventsSection.eventsPageLink.analyticsId"
         ],
         "locales": [
           "en",
@@ -313,7 +317,7 @@
         ]
       },
       "conditions": [],
-      "actionParameters": null
+      "actionParameters": {}
     },
     {
       "action": "plugin::content-manager.explorer.update",
@@ -330,7 +334,7 @@
           "highlights.cards.link.page",
           "highlights.cards.link.blogPost",
           "highlights.cards.link.url",
-          "highlights.cards.link.plausibleId",
+          "highlights.cards.link.analyticsId",
           "highlights.cards.image",
           "tabs.leftNewsItem",
           "tabs.rightNewsItem",
@@ -338,36 +342,38 @@
           "tabs.newsPageLink.page",
           "tabs.newsPageLink.blogPost",
           "tabs.newsPageLink.url",
-          "tabs.newsPageLink.plausibleId",
+          "tabs.newsPageLink.analyticsId",
           "tabs.officialBoardPageLink.label",
           "tabs.officialBoardPageLink.page",
           "tabs.officialBoardPageLink.blogPost",
           "tabs.officialBoardPageLink.url",
-          "tabs.officialBoardPageLink.plausibleId",
+          "tabs.officialBoardPageLink.analyticsId",
           "tabs.roadClosuresPageLink.label",
           "tabs.roadClosuresPageLink.page",
           "tabs.roadClosuresPageLink.blogPost",
           "tabs.roadClosuresPageLink.url",
-          "tabs.roadClosuresPageLink.plausibleId",
+          "tabs.roadClosuresPageLink.analyticsId",
           "mayorAndCouncil.title",
           "mayorAndCouncil.text",
           "mayorAndCouncil.mayorCard.label",
           "mayorAndCouncil.mayorCard.page",
           "mayorAndCouncil.mayorCard.blogPost",
           "mayorAndCouncil.mayorCard.url",
-          "mayorAndCouncil.mayorCard.plausibleId",
+          "mayorAndCouncil.mayorCard.analyticsId",
           "mayorAndCouncil.councilCard.label",
           "mayorAndCouncil.councilCard.page",
           "mayorAndCouncil.councilCard.blogPost",
           "mayorAndCouncil.councilCard.url",
-          "mayorAndCouncil.councilCard.plausibleId",
+          "mayorAndCouncil.councilCard.analyticsId",
           "topServices.title",
           "topServices.services.icon",
           "topServices.services.link.label",
           "topServices.services.link.page",
           "topServices.services.link.blogPost",
           "topServices.services.link.url",
-          "topServices.services.link.plausibleId",
+          "topServices.services.link.analyticsId",
+          "inba.title",
+          "inba.content",
           "inbaFrontImage",
           "inbaRearImage",
           "inbaUrl",
@@ -398,7 +404,7 @@
           "eventsSection.eventsPageLink.page",
           "eventsSection.eventsPageLink.blogPost",
           "eventsSection.eventsPageLink.url",
-          "eventsSection.eventsPageLink.plausibleId"
+          "eventsSection.eventsPageLink.analyticsId"
         ],
         "locales": [
           "en",
@@ -406,7 +412,7 @@
         ]
       },
       "conditions": [],
-      "actionParameters": null
+      "actionParameters": {}
     },
     {
       "action": "plugin::content-manager.explorer.create",
@@ -422,7 +428,7 @@
         ]
       },
       "conditions": [],
-      "actionParameters": null
+      "actionParameters": {}
     },
     {
       "action": "plugin::content-manager.explorer.delete",
@@ -434,7 +440,7 @@
         ]
       },
       "conditions": [],
-      "actionParameters": null
+      "actionParameters": {}
     },
     {
       "action": "plugin::content-manager.explorer.read",
@@ -450,7 +456,7 @@
         ]
       },
       "conditions": [],
-      "actionParameters": null
+      "actionParameters": {}
     },
     {
       "action": "plugin::content-manager.explorer.update",
@@ -466,42 +472,42 @@
         ]
       },
       "conditions": [],
-      "actionParameters": null
+      "actionParameters": {}
     },
     {
       "action": "plugin::upload.assets.copy-link",
       "subject": null,
       "properties": {},
       "conditions": [],
-      "actionParameters": null
+      "actionParameters": {}
     },
     {
       "action": "plugin::upload.assets.create",
       "subject": null,
       "properties": {},
       "conditions": [],
-      "actionParameters": null
+      "actionParameters": {}
     },
     {
       "action": "plugin::upload.assets.download",
       "subject": null,
       "properties": {},
       "conditions": [],
-      "actionParameters": null
+      "actionParameters": {}
     },
     {
       "action": "plugin::upload.assets.update",
       "subject": null,
       "properties": {},
       "conditions": [],
-      "actionParameters": null
+      "actionParameters": {}
     },
     {
       "action": "plugin::upload.read",
       "subject": null,
       "properties": {},
       "conditions": [],
-      "actionParameters": null
+      "actionParameters": {}
     }
   ]
 }

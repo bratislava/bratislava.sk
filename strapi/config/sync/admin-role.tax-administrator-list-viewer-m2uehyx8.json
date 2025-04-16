@@ -1,7 +1,7 @@
 {
-  "name": "Tax Administrator list - viewer",
+  "name": "Viewer: Tax Administrator list",
   "code": "tax-administrator-list-viewer-m2uehyx8",
-  "description": "Created October 29th, 2024",
+  "description": "Can view Tax Administrators list and other content that is useful for product manager that handles taxes (mostly Pages, Faqs, Regulations, Menu...)",
   "permissions": [
     {
       "action": "plugin::content-manager.explorer.read",
@@ -18,7 +18,7 @@
         ]
       },
       "conditions": [],
-      "actionParameters": null
+      "actionParameters": {}
     },
     {
       "action": "plugin::content-manager.explorer.read",
@@ -35,7 +35,30 @@
         ]
       },
       "conditions": [],
-      "actionParameters": null
+      "actionParameters": {}
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::menu.menu",
+      "properties": {
+        "fields": [
+          "menus.label",
+          "menus.page",
+          "menus.icon",
+          "menus.sections.label",
+          "menus.sections.page",
+          "menus.sections.icon",
+          "menus.sections.links.label",
+          "menus.sections.links.page",
+          "menus.sections.links.url"
+        ],
+        "locales": [
+          "en",
+          "sk"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": {}
     },
     {
       "action": "plugin::content-manager.explorer.read",
@@ -54,7 +77,7 @@
           "headerLinks.page",
           "headerLinks.blogPost",
           "headerLinks.url",
-          "headerLinks.plausibleId",
+          "headerLinks.analyticsId",
           "pageHeaderSections",
           "sections",
           "parentPage",
@@ -67,7 +90,7 @@
         ]
       },
       "conditions": [],
-      "actionParameters": null
+      "actionParameters": {}
     },
     {
       "action": "plugin::content-manager.explorer.read",
@@ -90,7 +113,7 @@
         ]
       },
       "conditions": [],
-      "actionParameters": null
+      "actionParameters": {}
     },
     {
       "action": "plugin::content-manager.explorer.read",
@@ -105,7 +128,7 @@
         ]
       },
       "conditions": [],
-      "actionParameters": null
+      "actionParameters": {}
     }
   ]
 }
