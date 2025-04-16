@@ -2,10 +2,10 @@ import { Typography } from '@bratislava/component-library'
 import React, { Fragment, ReactNode } from 'react'
 
 import FileRowCard from '@/src/components/cards/FileRowCard'
+import HorizontalDivider from '@/src/components/common/Divider/HorizontalDivider'
 import PageHeader from '@/src/components/common/PageHeader/PageHeader'
 import SectionContainer from '@/src/components/common/SectionContainer/SectionContainer'
 import { ParsedOfficialBoardDocumentDetail } from '@/src/services/ginis/types'
-import cn from '@/src/utils/cn'
 import { formatDate } from '@/src/utils/formatDate'
 import { useLocale } from '@/src/utils/useLocale'
 import { useTranslation } from '@/src/utils/useTranslation'
@@ -65,24 +65,25 @@ const OfficialBoardDocumentPageContent = ({ document }: OfficialBoardDocumentPag
             <Typography type="h2" size="h4">
               {t('OfficialBoard.attachments')}
             </Typography>
-            <div className="flex flex-col rounded-lg border-2 px-4">
+            <ul className="flex flex-col rounded-lg border-2">
               {document.files.length > 0 ? (
                 document.files.map((file, index) => (
-                  <FileRowCard
-                    key={file.id}
-                    title={file.title}
-                    size={file.size}
-                    format="PDF"
-                    downloadLink={file.generatedUrl}
-                    className={cn('-mx-4 px-4', {
-                      '[&>*]:border-b-0': index === document.files.length - 1,
-                    })}
-                  />
+                  <Fragment key={file.id}>
+                    {index > 0 ? <HorizontalDivider asListItem className="mx-4 lg:mx-6" /> : null}
+                    <li>
+                      <FileRowCard
+                        title={file.title}
+                        size={file.size}
+                        format="PDF"
+                        downloadLink={file.generatedUrl}
+                      />
+                    </li>
+                  </Fragment>
                 ))
               ) : (
                 <Typography type="p">{t('OfficialBoard.noAttachmentsMessage')}</Typography>
               )}
-            </div>
+            </ul>
           </div>
 
           <div className="flex flex-col gap-6">
