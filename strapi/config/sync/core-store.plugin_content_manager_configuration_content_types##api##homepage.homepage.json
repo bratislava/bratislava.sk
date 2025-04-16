@@ -357,6 +357,12 @@
         ],
         [
           {
+            "name": "inba",
+            "size": 12
+          }
+        ],
+        [
+          {
             "name": "inbaUrl",
             "size": 6
           }
@@ -380,12 +386,6 @@
         [
           {
             "name": "eventsSection",
-            "size": 12
-          }
-        ],
-        [
-          {
-            "name": "inba",
             "size": 12
           }
         ]

@@ -164,12 +164,13 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "createdBy",
-        "updatedBy"
-      ],
       "edit": [
+        [
+          {
+            "name": "contactText",
+            "size": 12
+          }
+        ],
         [
           {
             "name": "facebookUrl",
@@ -197,13 +198,12 @@
             "name": "innovationsLink",
             "size": 12
           }
-        ],
-        [
-          {
-            "name": "contactText",
-            "size": 12
-          }
         ]
+      ],
+      "list": [
+        "id",
+        "createdBy",
+        "updatedBy"
       ]
     }
   },

@@ -42,6 +42,7 @@
   "HomepageTabs.tabs.OfficialBoard": "Official noticeboard",
   "HomepageTabs.tabs.RoadClosures": "Road closures",
   "InbaArticle.publishedInThisRelease": "This article was published in the issue {{releaseTitle}} on {{releaseDate}}.",
+  "InbaArticlesFilter.articleFilter": "Articles filter",
   "InbaRelease.inThisRelease": "In this issue",
   "InbaRelease.releasedOn": "Published on {{date}}",
   "InbaRelease.toDownload": "Downloads",

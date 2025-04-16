@@ -1,6 +1,7 @@
 {
   "key": "plugin_content_manager_configuration_components::blocks.in-ba",
   "value": {
+    "uid": "blocks.in-ba",
     "settings": {
       "bulkable": true,
       "filterable": true,
@@ -21,7 +22,7 @@
       },
       "title": {
         "edit": {
-          "label": "title",
+          "label": "Nadpis",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -35,7 +36,7 @@
       },
       "content": {
         "edit": {
-          "label": "content",
+          "label": "Text",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -58,16 +59,17 @@
         [
           {
             "name": "title",
-            "size": 6
-          },
+            "size": 12
+          }
+        ],
+        [
           {
             "name": "content",
-            "size": 6
+            "size": 12
           }
         ]
       ]
     },
-    "uid": "blocks.in-ba",
     "isComponent": true
   },
   "type": "object",
