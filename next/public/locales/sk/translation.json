@@ -44,6 +44,7 @@
   "HomepageTabs.tabs.OfficialBoard": "Úradná tabuľa",
   "HomepageTabs.tabs.RoadClosures": "Rozkopávky",
   "InbaArticle.publishedInThisRelease": "Publikované v čísle {{releaseTitle}}, ktoré vyšlo {{releaseDate}}.",
+  "InbaArticlesFilter.articleFilter": "Filter článkov",
   "InbaRelease.inThisRelease": "V tomto čísle nájdete",
   "InbaRelease.releasedOn": "Publikované {{date}}",
   "InbaRelease.toDownload": "Na stiahnutie",
