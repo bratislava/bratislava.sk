@@ -8,11 +8,14 @@
       "subject": "api::homepage.homepage",
       "properties": {
         "fields": [
+          "metaTitle",
+          "metaDescription",
+          "welcomeHeadline",
+          "welcomeMedia",
           "inba.title",
           "inba.content",
           "inbaFrontImage",
-          "inbaRearImage",
-          "inbaUrl"
+          "inbaRearImage"
         ],
         "locales": []
       },
@@ -24,16 +27,16 @@
       "subject": "api::homepage.homepage",
       "properties": {
         "fields": [
+          "metaTitle",
+          "metaDescription",
+          "welcomeHeadline",
+          "welcomeMedia",
           "inba.title",
           "inba.content",
           "inbaFrontImage",
-          "inbaRearImage",
-          "inbaUrl"
+          "inbaRearImage"
         ],
-        "locales": [
-          "en",
-          "sk"
-        ]
+        "locales": []
       },
       "conditions": [],
       "actionParameters": {}
@@ -47,7 +50,10 @@
           "inba.content",
           "inbaFrontImage",
           "inbaRearImage",
-          "inbaUrl"
+          "metaTitle",
+          "metaDescription",
+          "welcomeHeadline",
+          "welcomeMedia"
         ],
         "locales": []
       },
