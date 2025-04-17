@@ -356,11 +356,6 @@ export interface ApiBlogPostBlogPost extends Schema.CollectionType {
           localized: false
         }
       }>
-    author: Attribute.Relation<
-      'api::blog-post.blog-post',
-      'oneToOne',
-      'plugin::users-permissions.user'
-    >
     coverImage: Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
       Attribute.SetPluginOptions<{
         i18n: {
@@ -1616,11 +1611,6 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       Attribute.SetMinMaxLength<{
         minLength: 6
       }>
-    posts: Attribute.Relation<
-      'plugin::users-permissions.user',
-      'oneToOne',
-      'api::blog-post.blog-post'
-    >
     provider: Attribute.String
     resetPasswordToken: Attribute.String & Attribute.Private
     role: Attribute.Relation<

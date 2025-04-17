@@ -32,7 +32,8 @@ export async function listBlogPosts() {
     // .filter((post) => (post.slug ?? '').length === 0)
     // .filter((post) => (post.slug ?? '').trim().length !== (post.slug ?? '').length)
     // .filter((post) => (post.slug ?? '').match(/[^\da-z-]/g)) // checks other characters in slug thant low letters, numbers and dashes
-    .filter((post) => (post.slug ?? '').match(/[^\da-z-]/g))
+    // .filter((post) => post.author?.data?.attributes?.username.length)
+    .filter((post) => post.date_added != null)
 
   console.log('Number of all posts:', posts.length)
   console.log('Number of filteredPosts:', filteredPosts.length)

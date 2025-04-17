@@ -45,7 +45,6 @@ type AlertRelationResponseCollection {
 
 type BlogPost {
   addedAt: DateTime
-  author: UsersPermissionsUserEntityResponse
   coverImage: UploadFileEntityResponse
   createdAt: DateTime
   date_added: DateTime
@@ -78,7 +77,6 @@ type BlogPostEntityResponseCollection {
 input BlogPostFiltersInput {
   addedAt: DateTimeFilterInput
   and: [BlogPostFiltersInput]
-  author: UsersPermissionsUserFiltersInput
   createdAt: DateTimeFilterInput
   date_added: DateTimeFilterInput
   excerpt: StringFilterInput
@@ -97,7 +95,6 @@ input BlogPostFiltersInput {
 
 input BlogPostInput {
   addedAt: DateTime
-  author: ID
   coverImage: ID
   date_added: DateTime
   excerpt: String
@@ -3439,7 +3436,6 @@ type UsersPermissionsUser {
   confirmed: Boolean
   createdAt: DateTime
   email: String!
-  posts: BlogPostEntityResponse
   provider: String
   role: UsersPermissionsRoleEntityResponse
   updatedAt: DateTime
@@ -3471,7 +3467,6 @@ input UsersPermissionsUserFiltersInput {
   not: UsersPermissionsUserFiltersInput
   or: [UsersPermissionsUserFiltersInput]
   password: StringFilterInput
-  posts: BlogPostFiltersInput
   provider: StringFilterInput
   resetPasswordToken: StringFilterInput
   role: UsersPermissionsRoleFiltersInput
@@ -3485,7 +3480,6 @@ input UsersPermissionsUserInput {
   confirmed: Boolean
   email: String
   password: String
-  posts: ID
   provider: String
   resetPasswordToken: String
   role: ID
