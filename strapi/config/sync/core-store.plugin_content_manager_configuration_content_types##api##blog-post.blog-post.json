@@ -22,7 +22,7 @@
       },
       "title": {
         "edit": {
-          "label": "title",
+          "label": "Nadpis",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -36,7 +36,7 @@
       },
       "excerpt": {
         "edit": {
-          "label": "excerpt",
+          "label": "Perex (excerpt)",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -50,7 +50,7 @@
       },
       "coverImage": {
         "edit": {
-          "label": "coverImage",
+          "label": "Ilustračný obrázok",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -64,7 +64,7 @@
       },
       "slug": {
         "edit": {
-          "label": "slug",
+          "label": "Slug",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -92,7 +92,7 @@
       },
       "tag": {
         "edit": {
-          "label": "tag",
+          "label": "Tag",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -105,23 +105,9 @@
           "sortable": true
         }
       },
-      "moreLink": {
-        "edit": {
-          "label": "moreLink",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "moreLink",
-          "searchable": false,
-          "sortable": false
-        }
-      },
       "sections": {
         "edit": {
-          "label": "sections",
+          "label": "Sekcie",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -135,7 +121,7 @@
       },
       "addedAt": {
         "edit": {
-          "label": "addedAt",
+          "label": "Dátum zverejnenia",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -211,16 +197,18 @@
         [
           {
             "name": "title",
-            "size": 6
-          },
-          {
-            "name": "excerpt",
-            "size": 6
+            "size": 12
           }
         ],
         [
           {
             "name": "slug",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "excerpt",
             "size": 12
           }
         ],
@@ -236,10 +224,6 @@
         ],
         [
           {
-            "name": "date_added",
-            "size": 6
-          },
-          {
             "name": "addedAt",
             "size": 6
           }
@@ -247,12 +231,6 @@
         [
           {
             "name": "sections",
-            "size": 12
-          }
-        ],
-        [
-          {
-            "name": "moreLink",
             "size": 12
           }
         ]
