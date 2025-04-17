@@ -25,7 +25,14 @@ export async function listBlogPosts() {
   const filteredPosts = posts
     .map((post) => post.attributes)
     .filter(isDefined)
-    .filter((post) => post.title?.trim().includes('\n'))
+    // .filter((post) => post.title?.trim().includes('\n'))
+    // .filter((post) => (post.title ?? '').length === 0)
+    // .filter((post) => (post.title ?? '').trim().length === 0)
+    // .filter((post) => (post.title ?? '').length > 255) // The most important
+    // .filter((post) => (post.slug ?? '').length === 0)
+    // .filter((post) => (post.slug ?? '').trim().length !== (post.slug ?? '').length)
+    // .filter((post) => (post.slug ?? '').match(/[^\da-z-]/g)) // checks other characters in slug thant low letters, numbers and dashes
+    .filter((post) => (post.slug ?? '').match(/[^\da-z-]/g))
 
   console.log('Number of all posts:', posts.length)
   console.log('Number of filteredPosts:', filteredPosts.length)

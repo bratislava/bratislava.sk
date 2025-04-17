@@ -51,7 +51,8 @@
     },
     "slug": {
       "type": "uid",
-      "targetField": "title"
+      "targetField": "title",
+      "required": true
     },
     "date_added": {
       "type": "datetime",

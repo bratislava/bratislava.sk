@@ -55,7 +55,7 @@ type BlogPost {
   moreLink: ComponentBlocksBlogPostLink
   publishedAt: DateTime
   sections: [BlogPostSectionsDynamicZone]
-  slug: String
+  slug: String!
   tag: TagEntityResponse
   title: String!
   updatedAt: DateTime
