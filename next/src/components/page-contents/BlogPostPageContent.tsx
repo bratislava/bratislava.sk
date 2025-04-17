@@ -55,14 +55,7 @@ const BlogPostPageContent = ({ blogPost }: BlogPostPageContentProps) => {
       <PageHeader
         title={blogPost.attributes?.title}
         breadcrumbs={breadcrumbs}
-        subtext={
-          blogPost &&
-          getNumericLocalDate(
-            blogPost.attributes?.date_added ||
-              blogPost.attributes?.publishedAt ||
-              blogPost.attributes?.createdAt,
-          )
-        }
+        subtext={getNumericLocalDate(blogPost.attributes?.addedAt)}
         tag={tag?.title}
         imageSrc={blogPost.attributes?.coverImage?.data?.attributes?.url}
       />

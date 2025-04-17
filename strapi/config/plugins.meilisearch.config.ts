@@ -45,8 +45,7 @@ const searchIndexSettings = {
   sortableAttributes: [
     // Blog post
     'blog-post.title',
-    'blog-post.publishedAt', // TODO is it needed?
-    'blog-post.publishedAtTimestamp',
+    'blog-post.addedAtTimestamp',
     // Inba article
     'inba-article.title',
     'inba-article.publishedAtTimestamp',
@@ -86,7 +85,7 @@ const config = {
         ...entry,
         // Meilisearch doesn't support filtering dates as ISO strings, therefore we convert it to UNIX timestamp to
         // use (number) filters.
-        publishedAtTimestamp: entry.publishedAt ? new Date(entry.publishedAt).getTime() : undefined,
+        addedAtTimestamp: entry.addedAt ? new Date(entry.addedAt).getTime() : undefined,
       }),
   },
   'inba-article': {
@@ -98,20 +97,6 @@ const config = {
     settings: searchIndexSettings,
     transformEntry: ({ entry }) =>
       wrapSearchIndexEntry('inba-article', {
-        ...entry,
-        // Meilisearch doesn't support filtering dates as ISO strings, therefore we convert it to UNIX timestamp to
-        // use (number) filters.
-        publishedAtTimestamp: entry.publishedAt ? new Date(entry.publishedAt).getTime() : undefined,
-      }),
-  },
-  vzn: {
-    indexName: 'search_index',
-    entriesQuery: {
-      locale: 'all',
-    },
-    settings: searchIndexSettings,
-    transformEntry: ({ entry }) =>
-      wrapSearchIndexEntry('vzn', {
         ...entry,
         // Meilisearch doesn't support filtering dates as ISO strings, therefore we convert it to UNIX timestamp to
         // use (number) filters.

@@ -351,6 +351,7 @@ export interface ApiBlogPostBlogPost extends Schema.CollectionType {
   }
   attributes: {
     addedAt: Attribute.DateTime &
+      Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: false
