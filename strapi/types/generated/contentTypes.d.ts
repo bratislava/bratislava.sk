@@ -413,7 +413,7 @@ export interface ApiBlogPostBlogPost extends Schema.CollectionType {
           localized: true
         }
       }>
-    slug: Attribute.UID<'api::blog-post.blog-post', 'title'>
+    slug: Attribute.UID<'api::blog-post.blog-post', 'title'> & Attribute.Required
     tag: Attribute.Relation<'api::blog-post.blog-post', 'oneToOne', 'api::tag.tag'>
     title: Attribute.String &
       Attribute.Required &
