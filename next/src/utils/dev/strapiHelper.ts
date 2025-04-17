@@ -22,25 +22,42 @@ export async function listBlogPosts() {
 
   const posts = blogPosts?.data ?? []
 
-  const filteredPosts = posts
-    .map((post) => post.attributes)
-    .filter(isDefined)
-    // .filter((post) => post.title?.trim().includes('\n'))
-    // .filter((post) => (post.title ?? '').length === 0)
-    // .filter((post) => (post.title ?? '').trim().length === 0)
-    // .filter((post) => (post.title ?? '').length > 255) // The most important
-    // .filter((post) => (post.slug ?? '').length === 0)
-    // .filter((post) => (post.slug ?? '').trim().length !== (post.slug ?? '').length)
-    // .filter((post) => (post.slug ?? '').match(/[^\da-z-]/g)) // checks other characters in slug thant low letters, numbers and dashes
-    // .filter((post) => post.author?.data?.attributes?.username.length)
-    .filter((post) => post.date_added != null)
+  const filteredPosts = posts.map((post) => post.attributes).filter(isDefined)
+  // .filter((post) => post.title?.trim().includes('\n'))
+  // .filter((post) => (post.title ?? '').length === 0)
+  // .filter((post) => (post.title ?? '').trim().length === 0)
+  // .filter((post) => (post.title ?? '').length > 255) // The most important
+  // .filter((post) => (post.slug ?? '').length === 0)
+  // .filter((post) => (post.slug ?? '').trim().length !== (post.slug ?? '').length)
+  // .filter((post) => (post.slug ?? '').match(/[^\da-z-]/g)) // checks other characters in slug thant low letters, numbers and dashes
+  // .filter((post) => post.author?.data?.attributes?.username.length)
+  // .filter((post) => post.date_added == null)
+  // .filter((post) => post.date_added != null && new Date(post.date_added).getHours() === 0)
+  // .filter(
+  //   (post) =>
+  //     new Date(post.publishedAt).setUTCHours(0, 0, 0, 0) !==
+  //     new Date(post.addedAt).setUTCHours(0, 0, 0, 0),
+  // )
 
   console.log('Number of all posts:', posts.length)
   console.log('Number of filteredPosts:', filteredPosts.length)
-  console.log(
-    'Filtered posts:',
-    filteredPosts.map((post) => post.slug),
-  )
+  // console.log(
+  //   'Filtered posts:',
+  //   filteredPosts.map((post) => {
+  //     const publishedAtDate = new Date(post.publishedAt)
+  //     const addedAtDate = new Date(post.addedAt)
+  //
+  //     const newPublishedAt = new Date(
+  //       publishedAtDate.setUTCFullYear(
+  //         addedAtDate.getUTCFullYear(),
+  //         addedAtDate.getUTCMonth(),
+  //         addedAtDate.getUTCDate(),
+  //       ),
+  //     ).toISOString()
+  //
+  //     return `${newPublishedAt} ${post.publishedAt} ${post.addedAt} ${post.createdAt} ${post.slug}`
+  //   }),
+  // )
 }
 
 // TODO simplify

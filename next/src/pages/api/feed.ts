@@ -44,7 +44,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         description: post.attributes.excerpt ?? '',
         // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
         url: post.attributes.slug ? `${urlPrefix[language]}/${post.attributes.slug}` : '',
-        date: post.attributes.date_added ?? post.attributes.publishedAt,
+        date: post.attributes.addedAt,
         categories: [
           post.attributes.tag?.data?.attributes?.pageCategory?.data?.attributes?.title,
           post.attributes.tag?.data?.attributes?.title,

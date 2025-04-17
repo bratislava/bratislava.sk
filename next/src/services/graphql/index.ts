@@ -86,7 +86,7 @@ export type AlertRelationResponseCollection = {
 
 export type BlogPost = {
   __typename?: 'BlogPost'
-  addedAt?: Maybe<Scalars['DateTime']['output']>
+  addedAt: Scalars['DateTime']['output']
   coverImage?: Maybe<UploadFileEntityResponse>
   createdAt?: Maybe<Scalars['DateTime']['output']>
   date_added?: Maybe<Scalars['DateTime']['output']>
@@ -4766,10 +4766,8 @@ export type BlogPostBySlugQuery = {
         slug: string
         excerpt?: string | null
         title: string
+        addedAt: any
         updatedAt?: any | null
-        publishedAt?: any | null
-        date_added?: any | null
-        createdAt?: any | null
         tag?: {
           __typename?: 'TagEntityResponse'
           data?: {
@@ -5105,10 +5103,8 @@ export type LatestPostsByTagsQuery = {
         slug: string
         excerpt?: string | null
         title: string
+        addedAt: any
         updatedAt?: any | null
-        publishedAt?: any | null
-        date_added?: any | null
-        createdAt?: any | null
         tag?: {
           __typename?: 'TagEntityResponse'
           data?: {
@@ -5454,8 +5450,7 @@ export type BlogPostsRssFeedQuery = {
         __typename?: 'BlogPost'
         slug: string
         title: string
-        publishedAt?: any | null
-        date_added?: any | null
+        addedAt: any
         excerpt?: string | null
         tag?: {
           __typename?: 'TagEntityResponse'
@@ -5513,8 +5508,7 @@ export type LatestBlogsWithTagsQuery = {
         slug: string
         title: string
         excerpt?: string | null
-        date_added?: any | null
-        publishedAt?: any | null
+        addedAt: any
         updatedAt?: any | null
         coverImage?: {
           __typename?: 'UploadFileEntityResponse'
@@ -5557,8 +5551,7 @@ export type LatestBlogPostEntityFragment = {
     slug: string
     title: string
     excerpt?: string | null
-    date_added?: any | null
-    publishedAt?: any | null
+    addedAt: any
     updatedAt?: any | null
     coverImage?: {
       __typename?: 'UploadFileEntityResponse'
@@ -5599,10 +5592,8 @@ export type BlogPostEntityFragment = {
     slug: string
     excerpt?: string | null
     title: string
+    addedAt: any
     updatedAt?: any | null
-    publishedAt?: any | null
-    date_added?: any | null
-    createdAt?: any | null
     tag?: {
       __typename?: 'TagEntityResponse'
       data?: {
@@ -6035,10 +6026,8 @@ export type Dev_AllBlogPostsQuery = {
         slug: string
         excerpt?: string | null
         title: string
+        addedAt: any
         updatedAt?: any | null
-        publishedAt?: any | null
-        date_added?: any | null
-        createdAt?: any | null
         tag?: {
           __typename?: 'TagEntityResponse'
           data?: {
@@ -7224,8 +7213,7 @@ export type HomepageEntityFragment = {
             slug: string
             title: string
             excerpt?: string | null
-            date_added?: any | null
-            publishedAt?: any | null
+            addedAt: any
             updatedAt?: any | null
             coverImage?: {
               __typename?: 'UploadFileEntityResponse'
@@ -7268,8 +7256,7 @@ export type HomepageEntityFragment = {
             slug: string
             title: string
             excerpt?: string | null
-            date_added?: any | null
-            publishedAt?: any | null
+            addedAt: any
             updatedAt?: any | null
             coverImage?: {
               __typename?: 'UploadFileEntityResponse'
@@ -7642,8 +7629,7 @@ export type HomepageQuery = {
                 slug: string
                 title: string
                 excerpt?: string | null
-                date_added?: any | null
-                publishedAt?: any | null
+                addedAt: any
                 updatedAt?: any | null
                 coverImage?: {
                   __typename?: 'UploadFileEntityResponse'
@@ -7686,8 +7672,7 @@ export type HomepageQuery = {
                 slug: string
                 title: string
                 excerpt?: string | null
-                date_added?: any | null
-                publishedAt?: any | null
+                addedAt: any
                 updatedAt?: any | null
                 coverImage?: {
                   __typename?: 'UploadFileEntityResponse'
@@ -8071,8 +8056,7 @@ export type HomepageTabsFragment = {
         slug: string
         title: string
         excerpt?: string | null
-        date_added?: any | null
-        publishedAt?: any | null
+        addedAt: any
         updatedAt?: any | null
         coverImage?: {
           __typename?: 'UploadFileEntityResponse'
@@ -8115,8 +8099,7 @@ export type HomepageTabsFragment = {
         slug: string
         title: string
         excerpt?: string | null
-        date_added?: any | null
-        publishedAt?: any | null
+        addedAt: any
         updatedAt?: any | null
         coverImage?: {
           __typename?: 'UploadFileEntityResponse'
@@ -13921,9 +13904,8 @@ export const BlogPostEntityFragmentDoc = gql`
       slug
       excerpt
       title
+      addedAt
       updatedAt
-      publishedAt
-      date_added
       tag {
         data {
           attributes {
@@ -13951,7 +13933,6 @@ export const BlogPostEntityFragmentDoc = gql`
       moreLink {
         ...BlogPostLink
       }
-      createdAt
       sections {
         ...Sections
       }
@@ -14195,8 +14176,7 @@ export const LatestBlogPostEntityFragmentDoc = gql`
           }
         }
       }
-      date_added
-      publishedAt
+      addedAt
       updatedAt
       tag {
         data {
@@ -14518,7 +14498,7 @@ export const LatestPostsByTagsDocument = gql`
       locale: $locale
       filters: { tag: { title: { in: $tags } } }
       pagination: { limit: $limit, start: $start }
-      sort: "publishedAt:desc"
+      sort: "addedAt:desc"
     ) {
       data {
         ...BlogPostEntity
@@ -14529,7 +14509,7 @@ export const LatestPostsByTagsDocument = gql`
 `
 export const BlogPostsStaticPathsDocument = gql`
   query BlogPostsStaticPaths {
-    blogPosts(locale: "all", sort: "publishedAt:desc") {
+    blogPosts(locale: "all", sort: "addedAt:desc") {
       data {
         id
         attributes {
@@ -14542,14 +14522,13 @@ export const BlogPostsStaticPathsDocument = gql`
 `
 export const BlogPostsRssFeedDocument = gql`
   query BlogPostsRssFeed($locale: I18NLocaleCode!) {
-    blogPosts(locale: $locale, sort: "publishedAt:desc") {
+    blogPosts(locale: $locale, sort: "addedAt:desc") {
       data {
         id
         attributes {
           slug
           title
-          publishedAt
-          date_added
+          addedAt
           excerpt
           tag {
             data {

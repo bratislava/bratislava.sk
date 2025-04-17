@@ -38,8 +38,7 @@ const TabPanelLatestNews = () => {
       <ResponsiveCarousel
         className="lg:hidden"
         items={allPosts.map((blogPost) => {
-          const { title, slug, coverImage, date_added, publishedAt, tag } =
-            blogPost.attributes ?? {}
+          const { title, slug, coverImage, addedAt, tag } = blogPost.attributes ?? {}
           const tagColor = tag?.data?.attributes?.pageCategory?.data?.attributes?.color
           const tagTitle = tag?.data?.attributes?.title
 
@@ -48,7 +47,7 @@ const TabPanelLatestNews = () => {
               key={blogPost.id}
               style={getCategoryColorLocalStyle({ color: tagColor })}
               variant="no-border"
-              date={getNumericLocalDate(date_added ?? publishedAt)}
+              date={getNumericLocalDate(addedAt)}
               tag={tagTitle ?? undefined}
               title={title ?? ''}
               linkProps={{ children: t('HomepageTabs.readMore'), href: `/blog/${slug}` }}
@@ -61,8 +60,7 @@ const TabPanelLatestNews = () => {
       <div className="mt-14 hidden pb-8 lg:block">
         <div className="grid grid-cols-3 gap-x-8">
           {[leftNewsItem?.data, rightNewsItem?.data].filter(isDefined).map((blogPost) => {
-            const { title, slug, coverImage, date_added, publishedAt, tag, excerpt } =
-              blogPost.attributes ?? {}
+            const { title, slug, coverImage, addedAt, tag, excerpt } = blogPost.attributes ?? {}
             const tagColor = tag?.data?.attributes?.pageCategory?.data?.attributes?.color
             const tagTitle = tag?.data?.attributes?.title
 
@@ -71,7 +69,7 @@ const TabPanelLatestNews = () => {
                 key={blogPost.id}
                 style={getCategoryColorLocalStyle({ color: tagColor })}
                 variant="no-border"
-                date={getNumericLocalDate(date_added ?? publishedAt)}
+                date={getNumericLocalDate(addedAt)}
                 tag={tagTitle ?? undefined}
                 title={title ?? ''}
                 linkProps={{ children: t('HomepageTabs.readMore'), href: `/blog/${slug}` }}

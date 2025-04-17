@@ -79,15 +79,7 @@ const BlogPostsByTags = ({ section }: Props) => {
           if (!card.attributes) return null
 
           // TODO refactor sections that use BlogPostCard - it needs too much duplicate code while passing props
-          const {
-            title: blogPostTitle,
-            slug,
-            coverImage,
-            tag,
-            date_added,
-            publishedAt,
-            excerpt,
-          } = card.attributes
+          const { title: blogPostTitle, slug, coverImage, tag, addedAt, excerpt } = card.attributes
           const tagColor = tag?.data?.attributes?.pageCategory?.data?.attributes?.color
           const tagTitle = tag?.data?.attributes?.title
 
@@ -95,7 +87,7 @@ const BlogPostsByTags = ({ section }: Props) => {
             <BlogPostCard
               key={slug}
               style={getCategoryColorLocalStyle({ color: tagColor })}
-              date={getNumericLocalDate(date_added ?? publishedAt)}
+              date={getNumericLocalDate(addedAt)}
               tag={tagTitle ?? undefined}
               title={blogPostTitle ?? ''}
               text={excerpt ?? undefined}
