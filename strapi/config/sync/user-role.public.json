@@ -13,6 +13,18 @@
       "action": "api::blog-post.blog-post.findOne"
     },
     {
+      "action": "api::faq-category.faq-category.find"
+    },
+    {
+      "action": "api::faq-category.faq-category.findOne"
+    },
+    {
+      "action": "api::faq.faq.find"
+    },
+    {
+      "action": "api::faq.faq.findOne"
+    },
+    {
       "action": "api::footer.footer.find"
     },
     {
@@ -95,6 +107,21 @@
     },
     {
       "action": "plugin::users-permissions.auth.resetPassword"
+    },
+    {
+      "action": "plugin::users-permissions.permissions.getPermissions"
+    },
+    {
+      "action": "plugin::users-permissions.role.find"
+    },
+    {
+      "action": "plugin::users-permissions.role.findOne"
+    },
+    {
+      "action": "plugin::users-permissions.user.find"
+    },
+    {
+      "action": "plugin::users-permissions.user.findOne"
     },
     {
       "action": "plugin::users-permissions.user.me"

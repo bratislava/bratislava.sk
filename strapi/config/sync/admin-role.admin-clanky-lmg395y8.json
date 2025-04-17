@@ -13,7 +13,6 @@
           "coverImage",
           "slug",
           "date_added",
-          "author",
           "tag",
           "moreLink.title",
           "moreLink.url",
@@ -21,10 +20,7 @@
           "sections",
           "addedAt"
         ],
-        "locales": [
-          "en",
-          "sk"
-        ]
+        "locales": ["en", "sk"]
       },
       "conditions": [],
       "actionParameters": {}
@@ -33,10 +29,7 @@
       "action": "plugin::content-manager.explorer.delete",
       "subject": "api::blog-post.blog-post",
       "properties": {
-        "locales": [
-          "en",
-          "sk"
-        ]
+        "locales": ["en", "sk"]
       },
       "conditions": [],
       "actionParameters": {}
@@ -45,10 +38,7 @@
       "action": "plugin::content-manager.explorer.publish",
       "subject": "api::blog-post.blog-post",
       "properties": {
-        "locales": [
-          "en",
-          "sk"
-        ]
+        "locales": ["en", "sk"]
       },
       "conditions": [],
       "actionParameters": {}
@@ -63,7 +53,6 @@
           "coverImage",
           "slug",
           "date_added",
-          "author",
           "tag",
           "moreLink.title",
           "moreLink.url",
@@ -71,10 +60,7 @@
           "sections",
           "addedAt"
         ],
-        "locales": [
-          "en",
-          "sk"
-        ]
+        "locales": ["en", "sk"]
       },
       "conditions": [],
       "actionParameters": {}
@@ -89,7 +75,6 @@
           "coverImage",
           "slug",
           "date_added",
-          "author",
           "tag",
           "moreLink.title",
           "moreLink.url",
@@ -97,10 +82,7 @@
           "sections",
           "addedAt"
         ],
-        "locales": [
-          "en",
-          "sk"
-        ]
+        "locales": ["en", "sk"]
       },
       "conditions": [],
       "actionParameters": {}
@@ -192,10 +174,7 @@
           "eventsSection.eventsPageLink.url",
           "eventsSection.eventsPageLink.analyticsId"
         ],
-        "locales": [
-          "en",
-          "sk"
-        ]
+        "locales": ["en", "sk"]
       },
       "conditions": [],
       "actionParameters": {}
@@ -204,10 +183,7 @@
       "action": "plugin::content-manager.explorer.delete",
       "subject": "api::homepage.homepage",
       "properties": {
-        "locales": [
-          "en",
-          "sk"
-        ]
+        "locales": ["en", "sk"]
       },
       "conditions": [],
       "actionParameters": {}
@@ -216,10 +192,7 @@
       "action": "plugin::content-manager.explorer.publish",
       "subject": "api::homepage.homepage",
       "properties": {
-        "locales": [
-          "en",
-          "sk"
-        ]
+        "locales": ["en", "sk"]
       },
       "conditions": [],
       "actionParameters": {}
@@ -311,10 +284,7 @@
           "eventsSection.eventsPageLink.url",
           "eventsSection.eventsPageLink.analyticsId"
         ],
-        "locales": [
-          "en",
-          "sk"
-        ]
+        "locales": ["en", "sk"]
       },
       "conditions": [],
       "actionParameters": {}
@@ -406,10 +376,7 @@
           "eventsSection.eventsPageLink.url",
           "eventsSection.eventsPageLink.analyticsId"
         ],
-        "locales": [
-          "en",
-          "sk"
-        ]
+        "locales": ["en", "sk"]
       },
       "conditions": [],
       "actionParameters": {}
@@ -418,14 +385,8 @@
       "action": "plugin::content-manager.explorer.create",
       "subject": "api::tag.tag",
       "properties": {
-        "fields": [
-          "title",
-          "pageCategory"
-        ],
-        "locales": [
-          "en",
-          "sk"
-        ]
+        "fields": ["title", "pageCategory"],
+        "locales": ["en", "sk"]
       },
       "conditions": [],
       "actionParameters": {}
@@ -434,10 +395,7 @@
       "action": "plugin::content-manager.explorer.delete",
       "subject": "api::tag.tag",
       "properties": {
-        "locales": [
-          "en",
-          "sk"
-        ]
+        "locales": ["en", "sk"]
       },
       "conditions": [],
       "actionParameters": {}
@@ -446,14 +404,8 @@
       "action": "plugin::content-manager.explorer.read",
       "subject": "api::tag.tag",
       "properties": {
-        "fields": [
-          "title",
-          "pageCategory"
-        ],
-        "locales": [
-          "en",
-          "sk"
-        ]
+        "fields": ["title", "pageCategory"],
+        "locales": ["en", "sk"]
       },
       "conditions": [],
       "actionParameters": {}
@@ -462,14 +414,8 @@
       "action": "plugin::content-manager.explorer.update",
       "subject": "api::tag.tag",
       "properties": {
-        "fields": [
-          "title",
-          "pageCategory"
-        ],
-        "locales": [
-          "en",
-          "sk"
-        ]
+        "fields": ["title", "pageCategory"],
+        "locales": ["en", "sk"]
       },
       "conditions": [],
       "actionParameters": {}

@@ -147,21 +147,6 @@
           "sortable": true
         }
       },
-      "posts": {
-        "edit": {
-          "label": "posts",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true,
-          "mainField": "id"
-        },
-        "list": {
-          "label": "posts",
-          "searchable": true,
-          "sortable": true
-        }
-      },
       "createdAt": {
         "edit": {
           "label": "createdAt",
@@ -256,12 +241,6 @@
           },
           {
             "name": "role",
-            "size": 6
-          }
-        ],
-        [
-          {
-            "name": "posts",
             "size": 6
           }
         ]

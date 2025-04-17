@@ -15,7 +15,8 @@
           "inba.title",
           "inba.content",
           "inbaFrontImage",
-          "inbaRearImage"
+          "inbaRearImage",
+          "inbaUrl"
         ],
         "locales": []
       },
@@ -34,28 +35,13 @@
           "inba.title",
           "inba.content",
           "inbaFrontImage",
-          "inbaRearImage"
-        ],
-        "locales": []
-      },
-      "conditions": [],
-      "actionParameters": {}
-    },
-    {
-      "action": "plugin::content-manager.explorer.update",
-      "subject": "api::homepage.homepage",
-      "properties": {
-        "fields": [
-          "inba.title",
-          "inba.content",
-          "inbaFrontImage",
           "inbaRearImage",
-          "metaTitle",
-          "metaDescription",
-          "welcomeHeadline",
-          "welcomeMedia"
+          "inbaUrl"
         ],
-        "locales": []
+        "locales": [
+          "en",
+          "sk"
+        ]
       },
       "conditions": [],
       "actionParameters": {}
