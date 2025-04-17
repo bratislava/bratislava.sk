@@ -157,27 +157,10 @@ fragment BlogPostEntity on BlogPostEntity {
         }
       }
     }
-    moreLink {
-      ...BlogPostLink
-    }
     sections {
       ...Sections
     }
   }
-}
-
-fragment BlogPostLink on ComponentBlocksBlogPostLink {
-  blogPost {
-    data {
-      id
-      attributes {
-        title
-        slug
-      }
-    }
-  }
-  title
-  url
 }
 
 query pageCategories($locale: I18NLocaleCode) {

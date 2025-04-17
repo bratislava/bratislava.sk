@@ -384,12 +384,6 @@ export interface ApiBlogPostBlogPost extends Schema.CollectionType {
       'oneToMany',
       'api::blog-post.blog-post'
     >
-    moreLink: Attribute.Component<'blocks.blog-post-link'> &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true
-        }
-      }>
     publishedAt: Attribute.DateTime
     sections: Attribute.DynamicZone<
       [

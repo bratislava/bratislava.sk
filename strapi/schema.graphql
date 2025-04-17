@@ -51,7 +51,6 @@ type BlogPost {
   excerpt: String
   locale: String
   localizations(filters: BlogPostFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): BlogPostRelationResponseCollection
-  moreLink: ComponentBlocksBlogPostLink
   publishedAt: DateTime
   sections: [BlogPostSectionsDynamicZone]
   slug: String!
@@ -83,7 +82,6 @@ input BlogPostFiltersInput {
   id: IDFilterInput
   locale: StringFilterInput
   localizations: BlogPostFiltersInput
-  moreLink: ComponentBlocksBlogPostLinkFiltersInput
   not: BlogPostFiltersInput
   or: [BlogPostFiltersInput]
   publishedAt: DateTimeFilterInput
@@ -98,7 +96,6 @@ input BlogPostInput {
   coverImage: ID
   date_added: DateTime
   excerpt: String
-  moreLink: ComponentBlocksBlogPostLinkInput
   publishedAt: DateTime
   sections: [BlogPostSectionsDynamicZoneInput!]
   slug: String

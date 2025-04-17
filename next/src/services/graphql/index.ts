@@ -93,7 +93,6 @@ export type BlogPost = {
   excerpt?: Maybe<Scalars['String']['output']>
   locale?: Maybe<Scalars['String']['output']>
   localizations?: Maybe<BlogPostRelationResponseCollection>
-  moreLink?: Maybe<ComponentBlocksBlogPostLink>
   publishedAt?: Maybe<Scalars['DateTime']['output']>
   sections?: Maybe<Array<Maybe<BlogPostSectionsDynamicZone>>>
   slug: Scalars['String']['output']
@@ -135,7 +134,6 @@ export type BlogPostFiltersInput = {
   id?: InputMaybe<IdFilterInput>
   locale?: InputMaybe<StringFilterInput>
   localizations?: InputMaybe<BlogPostFiltersInput>
-  moreLink?: InputMaybe<ComponentBlocksBlogPostLinkFiltersInput>
   not?: InputMaybe<BlogPostFiltersInput>
   or?: InputMaybe<Array<InputMaybe<BlogPostFiltersInput>>>
   publishedAt?: InputMaybe<DateTimeFilterInput>
@@ -150,7 +148,6 @@ export type BlogPostInput = {
   coverImage?: InputMaybe<Scalars['ID']['input']>
   date_added?: InputMaybe<Scalars['DateTime']['input']>
   excerpt?: InputMaybe<Scalars['String']['input']>
-  moreLink?: InputMaybe<ComponentBlocksBlogPostLinkInput>
   publishedAt?: InputMaybe<Scalars['DateTime']['input']>
   sections?: InputMaybe<Array<Scalars['BlogPostSectionsDynamicZoneInput']['input']>>
   slug?: InputMaybe<Scalars['String']['input']>
@@ -4798,19 +4795,6 @@ export type BlogPostBySlugQuery = {
             attributes?: { __typename?: 'UploadFile'; url: string } | null
           } | null
         } | null
-        moreLink?: {
-          __typename?: 'ComponentBlocksBlogPostLink'
-          title?: string | null
-          url?: string | null
-          blogPost?: {
-            __typename?: 'BlogPostEntityResponse'
-            data?: {
-              __typename?: 'BlogPostEntity'
-              id?: string | null
-              attributes?: { __typename?: 'BlogPost'; title: string; slug: string } | null
-            } | null
-          } | null
-        } | null
         sections?: Array<
           | {
               __typename: 'ComponentSectionsColumnedText'
@@ -5133,19 +5117,6 @@ export type LatestPostsByTagsQuery = {
           data?: {
             __typename?: 'UploadFileEntity'
             attributes?: { __typename?: 'UploadFile'; url: string } | null
-          } | null
-        } | null
-        moreLink?: {
-          __typename?: 'ComponentBlocksBlogPostLink'
-          title?: string | null
-          url?: string | null
-          blogPost?: {
-            __typename?: 'BlogPostEntityResponse'
-            data?: {
-              __typename?: 'BlogPostEntity'
-              id?: string | null
-              attributes?: { __typename?: 'BlogPost'; title: string; slug: string } | null
-            } | null
           } | null
         } | null
         sections?: Array<
@@ -5624,19 +5595,6 @@ export type BlogPostEntityFragment = {
         attributes?: { __typename?: 'UploadFile'; url: string } | null
       } | null
     } | null
-    moreLink?: {
-      __typename?: 'ComponentBlocksBlogPostLink'
-      title?: string | null
-      url?: string | null
-      blogPost?: {
-        __typename?: 'BlogPostEntityResponse'
-        data?: {
-          __typename?: 'BlogPostEntity'
-          id?: string | null
-          attributes?: { __typename?: 'BlogPost'; title: string; slug: string } | null
-        } | null
-      } | null
-    } | null
     sections?: Array<
       | {
           __typename: 'ComponentSectionsColumnedText'
@@ -5908,20 +5866,6 @@ export type BlogPostEntityFragment = {
   } | null
 }
 
-export type BlogPostLinkFragment = {
-  __typename?: 'ComponentBlocksBlogPostLink'
-  title?: string | null
-  url?: string | null
-  blogPost?: {
-    __typename?: 'BlogPostEntityResponse'
-    data?: {
-      __typename?: 'BlogPostEntity'
-      id?: string | null
-      attributes?: { __typename?: 'BlogPost'; title: string; slug: string } | null
-    } | null
-  } | null
-}
-
 export type PageCategoriesQueryVariables = Exact<{
   locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
 }>
@@ -6056,19 +6000,6 @@ export type Dev_AllBlogPostsQuery = {
           data?: {
             __typename?: 'UploadFileEntity'
             attributes?: { __typename?: 'UploadFile'; url: string } | null
-          } | null
-        } | null
-        moreLink?: {
-          __typename?: 'ComponentBlocksBlogPostLink'
-          title?: string | null
-          url?: string | null
-          blogPost?: {
-            __typename?: 'BlogPostEntityResponse'
-            data?: {
-              __typename?: 'BlogPostEntity'
-              id?: string | null
-              attributes?: { __typename?: 'BlogPost'; title: string; slug: string } | null
-            } | null
           } | null
         } | null
         sections?: Array<
@@ -13071,21 +13002,6 @@ export type PageHeaderSectionsFragment =
   | PageHeaderSections_ComponentSectionsSubpageList_Fragment
   | PageHeaderSections_Error_Fragment
 
-export const BlogPostLinkFragmentDoc = gql`
-  fragment BlogPostLink on ComponentBlocksBlogPostLink {
-    blogPost {
-      data {
-        id
-        attributes {
-          title
-          slug
-        }
-      }
-    }
-    title
-    url
-  }
-`
 export const UploadImageSrcEntityFragmentDoc = gql`
   fragment UploadImageSrcEntity on UploadFileEntity {
     id
@@ -13930,15 +13846,11 @@ export const BlogPostEntityFragmentDoc = gql`
           }
         }
       }
-      moreLink {
-        ...BlogPostLink
-      }
       sections {
         ...Sections
       }
     }
   }
-  ${BlogPostLinkFragmentDoc}
   ${SectionsFragmentDoc}
 `
 export const FooterColumnBlockFragmentDoc = gql`
