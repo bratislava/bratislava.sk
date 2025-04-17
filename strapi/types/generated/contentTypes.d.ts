@@ -415,7 +415,8 @@ export interface ApiBlogPostBlogPost extends Schema.CollectionType {
       }>
     slug: Attribute.UID<'api::blog-post.blog-post', 'title'>
     tag: Attribute.Relation<'api::blog-post.blog-post', 'oneToOne', 'api::tag.tag'>
-    title: Attribute.Text &
+    title: Attribute.String &
+      Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true

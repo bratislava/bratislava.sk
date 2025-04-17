@@ -57,7 +57,7 @@ type BlogPost {
   sections: [BlogPostSectionsDynamicZone]
   slug: String
   tag: TagEntityResponse
-  title: String
+  title: String!
   updatedAt: DateTime
 }
 

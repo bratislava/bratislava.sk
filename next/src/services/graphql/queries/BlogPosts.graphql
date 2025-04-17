@@ -127,35 +127,6 @@ fragment LatestBlogPostEntity on BlogPostEntity {
   }
 }
 
-query TotalPostsCount($where: BlogPostFiltersInput, $limit: Int, $locale: I18NLocaleCode) {
-  blogPosts(filters: $where, pagination: { limit: $limit }, locale: $locale) {
-    meta {
-      pagination {
-        total
-        pageCount
-      }
-    }
-  }
-}
-
-query RelatedTags($where: TagFiltersInput) {
-  tags(pagination: { limit: -1 }, filters: $where) {
-    data {
-      attributes {
-        title
-        pageCategory {
-          data {
-            attributes {
-              title
-              color
-            }
-          }
-        }
-      }
-    }
-  }
-}
-
 fragment BlogPostEntity on BlogPostEntity {
   id
   attributes {
@@ -246,5 +217,24 @@ fragment PageCategoryEntity on PageCategoryEntity {
   attributes {
     title
     color
+  }
+}
+
+query Dev_AllBlogPosts(
+  $sort: [String]
+  $limit: Int
+  $start: Int
+  $filters: BlogPostFiltersInput
+  $locale: I18NLocaleCode
+) {
+  blogPosts(
+    sort: $sort
+    pagination: { limit: $limit, start: $start }
+    filters: $filters
+    locale: $locale
+  ) {
+    data {
+      ...BlogPostEntity
+    }
   }
 }
