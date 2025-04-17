@@ -87,7 +87,6 @@ export type AlertRelationResponseCollection = {
 export type BlogPost = {
   __typename?: 'BlogPost'
   addedAt?: Maybe<Scalars['DateTime']['output']>
-  author?: Maybe<UsersPermissionsUserEntityResponse>
   coverImage?: Maybe<UploadFileEntityResponse>
   createdAt?: Maybe<Scalars['DateTime']['output']>
   date_added?: Maybe<Scalars['DateTime']['output']>
@@ -130,7 +129,6 @@ export type BlogPostEntityResponseCollection = {
 export type BlogPostFiltersInput = {
   addedAt?: InputMaybe<DateTimeFilterInput>
   and?: InputMaybe<Array<InputMaybe<BlogPostFiltersInput>>>
-  author?: InputMaybe<UsersPermissionsUserFiltersInput>
   createdAt?: InputMaybe<DateTimeFilterInput>
   date_added?: InputMaybe<DateTimeFilterInput>
   excerpt?: InputMaybe<StringFilterInput>
@@ -149,7 +147,6 @@ export type BlogPostFiltersInput = {
 
 export type BlogPostInput = {
   addedAt?: InputMaybe<Scalars['DateTime']['input']>
-  author?: InputMaybe<Scalars['ID']['input']>
   coverImage?: InputMaybe<Scalars['ID']['input']>
   date_added?: InputMaybe<Scalars['DateTime']['input']>
   excerpt?: InputMaybe<Scalars['String']['input']>
@@ -4694,7 +4691,6 @@ export type UsersPermissionsUser = {
   confirmed?: Maybe<Scalars['Boolean']['output']>
   createdAt?: Maybe<Scalars['DateTime']['output']>
   email: Scalars['String']['output']
-  posts?: Maybe<BlogPostEntityResponse>
   provider?: Maybe<Scalars['String']['output']>
   role?: Maybe<UsersPermissionsRoleEntityResponse>
   updatedAt?: Maybe<Scalars['DateTime']['output']>
@@ -4729,7 +4725,6 @@ export type UsersPermissionsUserFiltersInput = {
   not?: InputMaybe<UsersPermissionsUserFiltersInput>
   or?: InputMaybe<Array<InputMaybe<UsersPermissionsUserFiltersInput>>>
   password?: InputMaybe<StringFilterInput>
-  posts?: InputMaybe<BlogPostFiltersInput>
   provider?: InputMaybe<StringFilterInput>
   resetPasswordToken?: InputMaybe<StringFilterInput>
   role?: InputMaybe<UsersPermissionsRoleFiltersInput>
@@ -4743,7 +4738,6 @@ export type UsersPermissionsUserInput = {
   confirmed?: InputMaybe<Scalars['Boolean']['input']>
   email?: InputMaybe<Scalars['String']['input']>
   password?: InputMaybe<Scalars['String']['input']>
-  posts?: InputMaybe<Scalars['ID']['input']>
   provider?: InputMaybe<Scalars['String']['input']>
   resetPasswordToken?: InputMaybe<Scalars['String']['input']>
   role?: InputMaybe<Scalars['ID']['input']>

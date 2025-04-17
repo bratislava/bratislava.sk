@@ -67,12 +67,6 @@
       "target": "plugin::users-permissions.role",
       "inversedBy": "users",
       "configurable": false
-    },
-    "posts": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::blog-post.blog-post",
-      "mappedBy": "author"
     }
   }
 }

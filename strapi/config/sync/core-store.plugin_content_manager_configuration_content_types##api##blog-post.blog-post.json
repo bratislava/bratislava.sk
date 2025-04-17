@@ -90,21 +90,6 @@
           "sortable": true
         }
       },
-      "author": {
-        "edit": {
-          "label": "author",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true,
-          "mainField": "username"
-        },
-        "list": {
-          "label": "author",
-          "searchable": true,
-          "sortable": true
-        }
-      },
       "tag": {
         "edit": {
           "label": "tag",
@@ -222,13 +207,6 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "coverImage",
-        "title",
-        "tag",
-        "updatedAt"
-      ],
       "edit": [
         [
           {
@@ -262,7 +240,7 @@
             "size": 6
           },
           {
-            "name": "author",
+            "name": "addedAt",
             "size": 6
           }
         ],
@@ -277,13 +255,14 @@
             "name": "moreLink",
             "size": 12
           }
-        ],
-        [
-          {
-            "name": "addedAt",
-            "size": 6
-          }
         ]
+      ],
+      "list": [
+        "id",
+        "coverImage",
+        "title",
+        "tag",
+        "updatedAt"
       ]
     }
   },
