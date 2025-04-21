@@ -161,15 +161,9 @@ export type BlogPostRelationResponseCollection = {
 }
 
 export type BlogPostSectionsDynamicZone =
-  | ComponentSectionsColumnedText
-  | ComponentSectionsDivider
   | ComponentSectionsFileList
   | ComponentSectionsGallery
   | ComponentSectionsNarrowText
-  | ComponentSectionsNumericalList
-  | ComponentSectionsRegulations
-  | ComponentSectionsTextWithImage
-  | ComponentSectionsVideos
   | Error
 
 export type BooleanFilterInput = {
@@ -4797,15 +4791,6 @@ export type BlogPostBySlugQuery = {
         } | null
         sections?: Array<
           | {
-              __typename: 'ComponentSectionsColumnedText'
-              content?: string | null
-              contentAlignment?: Enum_Componentsectionscolumnedtext_Contentalignment | null
-            }
-          | {
-              __typename: 'ComponentSectionsDivider'
-              style?: Enum_Componentsectionsdivider_Style | null
-            }
-          | {
               __typename: 'ComponentSectionsFileList'
               title?: string | null
               text?: string | null
@@ -4858,211 +4843,22 @@ export type BlogPostBySlugQuery = {
               width?: Enum_Componentsectionsnarrowtext_Width | null
               align?: Enum_Componentsectionsnarrowtext_Align | null
             }
-          | {
-              __typename: 'ComponentSectionsNumericalList'
-              id: string
-              title?: string | null
-              variant?: Enum_Componentsectionsnumericallist_Variant | null
-              buttonText?: string | null
-              buttonLink?: string | null
-              items?: Array<{
-                __typename?: 'ComponentBlocksNumericalListItem'
-                text?: string | null
-              } | null> | null
-            }
-          | {
-              __typename: 'ComponentSectionsRegulations'
-              regulations?: {
-                __typename?: 'RegulationRelationResponseCollection'
-                data: Array<{
-                  __typename?: 'RegulationEntity'
-                  id?: string | null
-                  attributes?: {
-                    __typename?: 'Regulation'
-                    regNumber: string
-                    slug: string
-                    titleText?: string | null
-                    fullTitle: string
-                    effectiveFrom: any
-                    category: Enum_Regulation_Category
-                    isFullTextRegulation: boolean
-                    mainDocument: {
-                      __typename?: 'UploadFileEntityResponse'
-                      data?: {
-                        __typename?: 'UploadFileEntity'
-                        id?: string | null
-                        attributes?: {
-                          __typename?: 'UploadFile'
-                          url: string
-                          name: string
-                          ext?: string | null
-                          size: number
-                          createdAt?: any | null
-                          updatedAt?: any | null
-                        } | null
-                      } | null
-                    }
-                    attachments?: {
-                      __typename?: 'UploadFileRelationResponseCollection'
-                      data: Array<{
-                        __typename?: 'UploadFileEntity'
-                        id?: string | null
-                        attributes?: {
-                          __typename?: 'UploadFile'
-                          url: string
-                          name: string
-                          ext?: string | null
-                          size: number
-                          createdAt?: any | null
-                          updatedAt?: any | null
-                        } | null
-                      }>
-                    } | null
-                    amendments?: {
-                      __typename?: 'RegulationRelationResponseCollection'
-                      data: Array<{
-                        __typename?: 'RegulationEntity'
-                        id?: string | null
-                        attributes?: {
-                          __typename?: 'Regulation'
-                          regNumber: string
-                          slug: string
-                          effectiveFrom: any
-                          isFullTextRegulation: boolean
-                          attachments?: {
-                            __typename?: 'UploadFileRelationResponseCollection'
-                            data: Array<{
-                              __typename?: 'UploadFileEntity'
-                              id?: string | null
-                              attributes?: {
-                                __typename?: 'UploadFile'
-                                url: string
-                                name: string
-                                ext?: string | null
-                                size: number
-                                createdAt?: any | null
-                                updatedAt?: any | null
-                              } | null
-                            }>
-                          } | null
-                        } | null
-                      }>
-                    } | null
-                    amending?: {
-                      __typename?: 'RegulationRelationResponseCollection'
-                      data: Array<{
-                        __typename?: 'RegulationEntity'
-                        id?: string | null
-                        attributes?: {
-                          __typename?: 'Regulation'
-                          regNumber: string
-                          slug: string
-                          effectiveFrom: any
-                          cancellation?: {
-                            __typename?: 'RegulationEntityResponse'
-                            data?: {
-                              __typename?: 'RegulationEntity'
-                              id?: string | null
-                              attributes?: {
-                                __typename?: 'Regulation'
-                                regNumber: string
-                                slug: string
-                                effectiveFrom: any
-                              } | null
-                            } | null
-                          } | null
-                          amending?: {
-                            __typename?: 'RegulationRelationResponseCollection'
-                            data: Array<{
-                              __typename?: 'RegulationEntity'
-                              id?: string | null
-                              attributes?: {
-                                __typename?: 'Regulation'
-                                regNumber: string
-                                slug: string
-                                cancellation?: {
-                                  __typename?: 'RegulationEntityResponse'
-                                  data?: {
-                                    __typename?: 'RegulationEntity'
-                                    id?: string | null
-                                    attributes?: {
-                                      __typename?: 'Regulation'
-                                      regNumber: string
-                                      slug: string
-                                      effectiveFrom: any
-                                    } | null
-                                  } | null
-                                } | null
-                              } | null
-                            }>
-                          } | null
-                        } | null
-                      }>
-                    } | null
-                    cancellation?: {
-                      __typename?: 'RegulationEntityResponse'
-                      data?: {
-                        __typename?: 'RegulationEntity'
-                        id?: string | null
-                        attributes?: {
-                          __typename?: 'Regulation'
-                          regNumber: string
-                          slug: string
-                          effectiveFrom: any
-                        } | null
-                      } | null
-                    } | null
-                    cancelling?: {
-                      __typename?: 'RegulationRelationResponseCollection'
-                      data: Array<{
-                        __typename?: 'RegulationEntity'
-                        id?: string | null
-                        attributes?: {
-                          __typename?: 'Regulation'
-                          regNumber: string
-                          slug: string
-                          effectiveFrom: any
-                        } | null
-                      }>
-                    } | null
-                  } | null
-                }>
-              } | null
-            }
-          | {
-              __typename: 'ComponentSectionsTextWithImage'
-              content?: string | null
-              imagePosition?: Enum_Componentsectionstextwithimage_Imageposition | null
-              imageSrc?: {
-                __typename?: 'UploadFileEntityResponse'
-                data?: {
-                  __typename?: 'UploadFileEntity'
-                  attributes?: {
-                    __typename?: 'UploadFile'
-                    url: string
-                    alternativeText?: string | null
-                    width?: number | null
-                    height?: number | null
-                  } | null
-                } | null
-              } | null
-            }
-          | {
-              __typename: 'ComponentSectionsVideos'
-              id: string
-              title?: string | null
-              subtitle?: string | null
-              videos?: Array<{
-                __typename?: 'ComponentBlocksVideo'
-                id: string
-                title?: string | null
-                speaker?: string | null
-                url?: string | null
-              } | null> | null
-            }
           | { __typename: 'Error' }
           | null
         > | null
+        localizations?: {
+          __typename?: 'BlogPostRelationResponseCollection'
+          data: Array<{
+            __typename?: 'BlogPostEntity'
+            id?: string | null
+            attributes?: {
+              __typename?: 'BlogPost'
+              slug: string
+              title: string
+              locale?: string | null
+            } | null
+          }>
+        } | null
       } | null
     }>
   } | null
@@ -5121,15 +4917,6 @@ export type LatestPostsByTagsQuery = {
         } | null
         sections?: Array<
           | {
-              __typename: 'ComponentSectionsColumnedText'
-              content?: string | null
-              contentAlignment?: Enum_Componentsectionscolumnedtext_Contentalignment | null
-            }
-          | {
-              __typename: 'ComponentSectionsDivider'
-              style?: Enum_Componentsectionsdivider_Style | null
-            }
-          | {
               __typename: 'ComponentSectionsFileList'
               title?: string | null
               text?: string | null
@@ -5182,211 +4969,22 @@ export type LatestPostsByTagsQuery = {
               width?: Enum_Componentsectionsnarrowtext_Width | null
               align?: Enum_Componentsectionsnarrowtext_Align | null
             }
-          | {
-              __typename: 'ComponentSectionsNumericalList'
-              id: string
-              title?: string | null
-              variant?: Enum_Componentsectionsnumericallist_Variant | null
-              buttonText?: string | null
-              buttonLink?: string | null
-              items?: Array<{
-                __typename?: 'ComponentBlocksNumericalListItem'
-                text?: string | null
-              } | null> | null
-            }
-          | {
-              __typename: 'ComponentSectionsRegulations'
-              regulations?: {
-                __typename?: 'RegulationRelationResponseCollection'
-                data: Array<{
-                  __typename?: 'RegulationEntity'
-                  id?: string | null
-                  attributes?: {
-                    __typename?: 'Regulation'
-                    regNumber: string
-                    slug: string
-                    titleText?: string | null
-                    fullTitle: string
-                    effectiveFrom: any
-                    category: Enum_Regulation_Category
-                    isFullTextRegulation: boolean
-                    mainDocument: {
-                      __typename?: 'UploadFileEntityResponse'
-                      data?: {
-                        __typename?: 'UploadFileEntity'
-                        id?: string | null
-                        attributes?: {
-                          __typename?: 'UploadFile'
-                          url: string
-                          name: string
-                          ext?: string | null
-                          size: number
-                          createdAt?: any | null
-                          updatedAt?: any | null
-                        } | null
-                      } | null
-                    }
-                    attachments?: {
-                      __typename?: 'UploadFileRelationResponseCollection'
-                      data: Array<{
-                        __typename?: 'UploadFileEntity'
-                        id?: string | null
-                        attributes?: {
-                          __typename?: 'UploadFile'
-                          url: string
-                          name: string
-                          ext?: string | null
-                          size: number
-                          createdAt?: any | null
-                          updatedAt?: any | null
-                        } | null
-                      }>
-                    } | null
-                    amendments?: {
-                      __typename?: 'RegulationRelationResponseCollection'
-                      data: Array<{
-                        __typename?: 'RegulationEntity'
-                        id?: string | null
-                        attributes?: {
-                          __typename?: 'Regulation'
-                          regNumber: string
-                          slug: string
-                          effectiveFrom: any
-                          isFullTextRegulation: boolean
-                          attachments?: {
-                            __typename?: 'UploadFileRelationResponseCollection'
-                            data: Array<{
-                              __typename?: 'UploadFileEntity'
-                              id?: string | null
-                              attributes?: {
-                                __typename?: 'UploadFile'
-                                url: string
-                                name: string
-                                ext?: string | null
-                                size: number
-                                createdAt?: any | null
-                                updatedAt?: any | null
-                              } | null
-                            }>
-                          } | null
-                        } | null
-                      }>
-                    } | null
-                    amending?: {
-                      __typename?: 'RegulationRelationResponseCollection'
-                      data: Array<{
-                        __typename?: 'RegulationEntity'
-                        id?: string | null
-                        attributes?: {
-                          __typename?: 'Regulation'
-                          regNumber: string
-                          slug: string
-                          effectiveFrom: any
-                          cancellation?: {
-                            __typename?: 'RegulationEntityResponse'
-                            data?: {
-                              __typename?: 'RegulationEntity'
-                              id?: string | null
-                              attributes?: {
-                                __typename?: 'Regulation'
-                                regNumber: string
-                                slug: string
-                                effectiveFrom: any
-                              } | null
-                            } | null
-                          } | null
-                          amending?: {
-                            __typename?: 'RegulationRelationResponseCollection'
-                            data: Array<{
-                              __typename?: 'RegulationEntity'
-                              id?: string | null
-                              attributes?: {
-                                __typename?: 'Regulation'
-                                regNumber: string
-                                slug: string
-                                cancellation?: {
-                                  __typename?: 'RegulationEntityResponse'
-                                  data?: {
-                                    __typename?: 'RegulationEntity'
-                                    id?: string | null
-                                    attributes?: {
-                                      __typename?: 'Regulation'
-                                      regNumber: string
-                                      slug: string
-                                      effectiveFrom: any
-                                    } | null
-                                  } | null
-                                } | null
-                              } | null
-                            }>
-                          } | null
-                        } | null
-                      }>
-                    } | null
-                    cancellation?: {
-                      __typename?: 'RegulationEntityResponse'
-                      data?: {
-                        __typename?: 'RegulationEntity'
-                        id?: string | null
-                        attributes?: {
-                          __typename?: 'Regulation'
-                          regNumber: string
-                          slug: string
-                          effectiveFrom: any
-                        } | null
-                      } | null
-                    } | null
-                    cancelling?: {
-                      __typename?: 'RegulationRelationResponseCollection'
-                      data: Array<{
-                        __typename?: 'RegulationEntity'
-                        id?: string | null
-                        attributes?: {
-                          __typename?: 'Regulation'
-                          regNumber: string
-                          slug: string
-                          effectiveFrom: any
-                        } | null
-                      }>
-                    } | null
-                  } | null
-                }>
-              } | null
-            }
-          | {
-              __typename: 'ComponentSectionsTextWithImage'
-              content?: string | null
-              imagePosition?: Enum_Componentsectionstextwithimage_Imageposition | null
-              imageSrc?: {
-                __typename?: 'UploadFileEntityResponse'
-                data?: {
-                  __typename?: 'UploadFileEntity'
-                  attributes?: {
-                    __typename?: 'UploadFile'
-                    url: string
-                    alternativeText?: string | null
-                    width?: number | null
-                    height?: number | null
-                  } | null
-                } | null
-              } | null
-            }
-          | {
-              __typename: 'ComponentSectionsVideos'
-              id: string
-              title?: string | null
-              subtitle?: string | null
-              videos?: Array<{
-                __typename?: 'ComponentBlocksVideo'
-                id: string
-                title?: string | null
-                speaker?: string | null
-                url?: string | null
-              } | null> | null
-            }
           | { __typename: 'Error' }
           | null
         > | null
+        localizations?: {
+          __typename?: 'BlogPostRelationResponseCollection'
+          data: Array<{
+            __typename?: 'BlogPostEntity'
+            id?: string | null
+            attributes?: {
+              __typename?: 'BlogPost'
+              slug: string
+              title: string
+              locale?: string | null
+            } | null
+          }>
+        } | null
       } | null
     }>
   } | null
@@ -5597,15 +5195,6 @@ export type BlogPostEntityFragment = {
     } | null
     sections?: Array<
       | {
-          __typename: 'ComponentSectionsColumnedText'
-          content?: string | null
-          contentAlignment?: Enum_Componentsectionscolumnedtext_Contentalignment | null
-        }
-      | {
-          __typename: 'ComponentSectionsDivider'
-          style?: Enum_Componentsectionsdivider_Style | null
-        }
-      | {
           __typename: 'ComponentSectionsFileList'
           title?: string | null
           text?: string | null
@@ -5658,211 +5247,22 @@ export type BlogPostEntityFragment = {
           width?: Enum_Componentsectionsnarrowtext_Width | null
           align?: Enum_Componentsectionsnarrowtext_Align | null
         }
-      | {
-          __typename: 'ComponentSectionsNumericalList'
-          id: string
-          title?: string | null
-          variant?: Enum_Componentsectionsnumericallist_Variant | null
-          buttonText?: string | null
-          buttonLink?: string | null
-          items?: Array<{
-            __typename?: 'ComponentBlocksNumericalListItem'
-            text?: string | null
-          } | null> | null
-        }
-      | {
-          __typename: 'ComponentSectionsRegulations'
-          regulations?: {
-            __typename?: 'RegulationRelationResponseCollection'
-            data: Array<{
-              __typename?: 'RegulationEntity'
-              id?: string | null
-              attributes?: {
-                __typename?: 'Regulation'
-                regNumber: string
-                slug: string
-                titleText?: string | null
-                fullTitle: string
-                effectiveFrom: any
-                category: Enum_Regulation_Category
-                isFullTextRegulation: boolean
-                mainDocument: {
-                  __typename?: 'UploadFileEntityResponse'
-                  data?: {
-                    __typename?: 'UploadFileEntity'
-                    id?: string | null
-                    attributes?: {
-                      __typename?: 'UploadFile'
-                      url: string
-                      name: string
-                      ext?: string | null
-                      size: number
-                      createdAt?: any | null
-                      updatedAt?: any | null
-                    } | null
-                  } | null
-                }
-                attachments?: {
-                  __typename?: 'UploadFileRelationResponseCollection'
-                  data: Array<{
-                    __typename?: 'UploadFileEntity'
-                    id?: string | null
-                    attributes?: {
-                      __typename?: 'UploadFile'
-                      url: string
-                      name: string
-                      ext?: string | null
-                      size: number
-                      createdAt?: any | null
-                      updatedAt?: any | null
-                    } | null
-                  }>
-                } | null
-                amendments?: {
-                  __typename?: 'RegulationRelationResponseCollection'
-                  data: Array<{
-                    __typename?: 'RegulationEntity'
-                    id?: string | null
-                    attributes?: {
-                      __typename?: 'Regulation'
-                      regNumber: string
-                      slug: string
-                      effectiveFrom: any
-                      isFullTextRegulation: boolean
-                      attachments?: {
-                        __typename?: 'UploadFileRelationResponseCollection'
-                        data: Array<{
-                          __typename?: 'UploadFileEntity'
-                          id?: string | null
-                          attributes?: {
-                            __typename?: 'UploadFile'
-                            url: string
-                            name: string
-                            ext?: string | null
-                            size: number
-                            createdAt?: any | null
-                            updatedAt?: any | null
-                          } | null
-                        }>
-                      } | null
-                    } | null
-                  }>
-                } | null
-                amending?: {
-                  __typename?: 'RegulationRelationResponseCollection'
-                  data: Array<{
-                    __typename?: 'RegulationEntity'
-                    id?: string | null
-                    attributes?: {
-                      __typename?: 'Regulation'
-                      regNumber: string
-                      slug: string
-                      effectiveFrom: any
-                      cancellation?: {
-                        __typename?: 'RegulationEntityResponse'
-                        data?: {
-                          __typename?: 'RegulationEntity'
-                          id?: string | null
-                          attributes?: {
-                            __typename?: 'Regulation'
-                            regNumber: string
-                            slug: string
-                            effectiveFrom: any
-                          } | null
-                        } | null
-                      } | null
-                      amending?: {
-                        __typename?: 'RegulationRelationResponseCollection'
-                        data: Array<{
-                          __typename?: 'RegulationEntity'
-                          id?: string | null
-                          attributes?: {
-                            __typename?: 'Regulation'
-                            regNumber: string
-                            slug: string
-                            cancellation?: {
-                              __typename?: 'RegulationEntityResponse'
-                              data?: {
-                                __typename?: 'RegulationEntity'
-                                id?: string | null
-                                attributes?: {
-                                  __typename?: 'Regulation'
-                                  regNumber: string
-                                  slug: string
-                                  effectiveFrom: any
-                                } | null
-                              } | null
-                            } | null
-                          } | null
-                        }>
-                      } | null
-                    } | null
-                  }>
-                } | null
-                cancellation?: {
-                  __typename?: 'RegulationEntityResponse'
-                  data?: {
-                    __typename?: 'RegulationEntity'
-                    id?: string | null
-                    attributes?: {
-                      __typename?: 'Regulation'
-                      regNumber: string
-                      slug: string
-                      effectiveFrom: any
-                    } | null
-                  } | null
-                } | null
-                cancelling?: {
-                  __typename?: 'RegulationRelationResponseCollection'
-                  data: Array<{
-                    __typename?: 'RegulationEntity'
-                    id?: string | null
-                    attributes?: {
-                      __typename?: 'Regulation'
-                      regNumber: string
-                      slug: string
-                      effectiveFrom: any
-                    } | null
-                  }>
-                } | null
-              } | null
-            }>
-          } | null
-        }
-      | {
-          __typename: 'ComponentSectionsTextWithImage'
-          content?: string | null
-          imagePosition?: Enum_Componentsectionstextwithimage_Imageposition | null
-          imageSrc?: {
-            __typename?: 'UploadFileEntityResponse'
-            data?: {
-              __typename?: 'UploadFileEntity'
-              attributes?: {
-                __typename?: 'UploadFile'
-                url: string
-                alternativeText?: string | null
-                width?: number | null
-                height?: number | null
-              } | null
-            } | null
-          } | null
-        }
-      | {
-          __typename: 'ComponentSectionsVideos'
-          id: string
-          title?: string | null
-          subtitle?: string | null
-          videos?: Array<{
-            __typename?: 'ComponentBlocksVideo'
-            id: string
-            title?: string | null
-            speaker?: string | null
-            url?: string | null
-          } | null> | null
-        }
       | { __typename: 'Error' }
       | null
     > | null
+    localizations?: {
+      __typename?: 'BlogPostRelationResponseCollection'
+      data: Array<{
+        __typename?: 'BlogPostEntity'
+        id?: string | null
+        attributes?: {
+          __typename?: 'BlogPost'
+          slug: string
+          title: string
+          locale?: string | null
+        } | null
+      }>
+    } | null
   } | null
 }
 
@@ -6004,15 +5404,6 @@ export type Dev_AllBlogPostsQuery = {
         } | null
         sections?: Array<
           | {
-              __typename: 'ComponentSectionsColumnedText'
-              content?: string | null
-              contentAlignment?: Enum_Componentsectionscolumnedtext_Contentalignment | null
-            }
-          | {
-              __typename: 'ComponentSectionsDivider'
-              style?: Enum_Componentsectionsdivider_Style | null
-            }
-          | {
               __typename: 'ComponentSectionsFileList'
               title?: string | null
               text?: string | null
@@ -6065,211 +5456,22 @@ export type Dev_AllBlogPostsQuery = {
               width?: Enum_Componentsectionsnarrowtext_Width | null
               align?: Enum_Componentsectionsnarrowtext_Align | null
             }
-          | {
-              __typename: 'ComponentSectionsNumericalList'
-              id: string
-              title?: string | null
-              variant?: Enum_Componentsectionsnumericallist_Variant | null
-              buttonText?: string | null
-              buttonLink?: string | null
-              items?: Array<{
-                __typename?: 'ComponentBlocksNumericalListItem'
-                text?: string | null
-              } | null> | null
-            }
-          | {
-              __typename: 'ComponentSectionsRegulations'
-              regulations?: {
-                __typename?: 'RegulationRelationResponseCollection'
-                data: Array<{
-                  __typename?: 'RegulationEntity'
-                  id?: string | null
-                  attributes?: {
-                    __typename?: 'Regulation'
-                    regNumber: string
-                    slug: string
-                    titleText?: string | null
-                    fullTitle: string
-                    effectiveFrom: any
-                    category: Enum_Regulation_Category
-                    isFullTextRegulation: boolean
-                    mainDocument: {
-                      __typename?: 'UploadFileEntityResponse'
-                      data?: {
-                        __typename?: 'UploadFileEntity'
-                        id?: string | null
-                        attributes?: {
-                          __typename?: 'UploadFile'
-                          url: string
-                          name: string
-                          ext?: string | null
-                          size: number
-                          createdAt?: any | null
-                          updatedAt?: any | null
-                        } | null
-                      } | null
-                    }
-                    attachments?: {
-                      __typename?: 'UploadFileRelationResponseCollection'
-                      data: Array<{
-                        __typename?: 'UploadFileEntity'
-                        id?: string | null
-                        attributes?: {
-                          __typename?: 'UploadFile'
-                          url: string
-                          name: string
-                          ext?: string | null
-                          size: number
-                          createdAt?: any | null
-                          updatedAt?: any | null
-                        } | null
-                      }>
-                    } | null
-                    amendments?: {
-                      __typename?: 'RegulationRelationResponseCollection'
-                      data: Array<{
-                        __typename?: 'RegulationEntity'
-                        id?: string | null
-                        attributes?: {
-                          __typename?: 'Regulation'
-                          regNumber: string
-                          slug: string
-                          effectiveFrom: any
-                          isFullTextRegulation: boolean
-                          attachments?: {
-                            __typename?: 'UploadFileRelationResponseCollection'
-                            data: Array<{
-                              __typename?: 'UploadFileEntity'
-                              id?: string | null
-                              attributes?: {
-                                __typename?: 'UploadFile'
-                                url: string
-                                name: string
-                                ext?: string | null
-                                size: number
-                                createdAt?: any | null
-                                updatedAt?: any | null
-                              } | null
-                            }>
-                          } | null
-                        } | null
-                      }>
-                    } | null
-                    amending?: {
-                      __typename?: 'RegulationRelationResponseCollection'
-                      data: Array<{
-                        __typename?: 'RegulationEntity'
-                        id?: string | null
-                        attributes?: {
-                          __typename?: 'Regulation'
-                          regNumber: string
-                          slug: string
-                          effectiveFrom: any
-                          cancellation?: {
-                            __typename?: 'RegulationEntityResponse'
-                            data?: {
-                              __typename?: 'RegulationEntity'
-                              id?: string | null
-                              attributes?: {
-                                __typename?: 'Regulation'
-                                regNumber: string
-                                slug: string
-                                effectiveFrom: any
-                              } | null
-                            } | null
-                          } | null
-                          amending?: {
-                            __typename?: 'RegulationRelationResponseCollection'
-                            data: Array<{
-                              __typename?: 'RegulationEntity'
-                              id?: string | null
-                              attributes?: {
-                                __typename?: 'Regulation'
-                                regNumber: string
-                                slug: string
-                                cancellation?: {
-                                  __typename?: 'RegulationEntityResponse'
-                                  data?: {
-                                    __typename?: 'RegulationEntity'
-                                    id?: string | null
-                                    attributes?: {
-                                      __typename?: 'Regulation'
-                                      regNumber: string
-                                      slug: string
-                                      effectiveFrom: any
-                                    } | null
-                                  } | null
-                                } | null
-                              } | null
-                            }>
-                          } | null
-                        } | null
-                      }>
-                    } | null
-                    cancellation?: {
-                      __typename?: 'RegulationEntityResponse'
-                      data?: {
-                        __typename?: 'RegulationEntity'
-                        id?: string | null
-                        attributes?: {
-                          __typename?: 'Regulation'
-                          regNumber: string
-                          slug: string
-                          effectiveFrom: any
-                        } | null
-                      } | null
-                    } | null
-                    cancelling?: {
-                      __typename?: 'RegulationRelationResponseCollection'
-                      data: Array<{
-                        __typename?: 'RegulationEntity'
-                        id?: string | null
-                        attributes?: {
-                          __typename?: 'Regulation'
-                          regNumber: string
-                          slug: string
-                          effectiveFrom: any
-                        } | null
-                      }>
-                    } | null
-                  } | null
-                }>
-              } | null
-            }
-          | {
-              __typename: 'ComponentSectionsTextWithImage'
-              content?: string | null
-              imagePosition?: Enum_Componentsectionstextwithimage_Imageposition | null
-              imageSrc?: {
-                __typename?: 'UploadFileEntityResponse'
-                data?: {
-                  __typename?: 'UploadFileEntity'
-                  attributes?: {
-                    __typename?: 'UploadFile'
-                    url: string
-                    alternativeText?: string | null
-                    width?: number | null
-                    height?: number | null
-                  } | null
-                } | null
-              } | null
-            }
-          | {
-              __typename: 'ComponentSectionsVideos'
-              id: string
-              title?: string | null
-              subtitle?: string | null
-              videos?: Array<{
-                __typename?: 'ComponentBlocksVideo'
-                id: string
-                title?: string | null
-                speaker?: string | null
-                url?: string | null
-              } | null> | null
-            }
           | { __typename: 'Error' }
           | null
         > | null
+        localizations?: {
+          __typename?: 'BlogPostRelationResponseCollection'
+          data: Array<{
+            __typename?: 'BlogPostEntity'
+            id?: string | null
+            attributes?: {
+              __typename?: 'BlogPost'
+              slug: string
+              title: string
+              locale?: string | null
+            } | null
+          }>
+        } | null
       } | null
     }>
   } | null
@@ -13848,6 +13050,16 @@ export const BlogPostEntityFragmentDoc = gql`
       }
       sections {
         ...Sections
+      }
+      localizations {
+        data {
+          id
+          attributes {
+            slug
+            title
+            locale
+          }
+        }
       }
     }
   }

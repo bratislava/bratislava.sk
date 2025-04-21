@@ -386,24 +386,20 @@ export interface ApiBlogPostBlogPost extends Schema.CollectionType {
     >
     publishedAt: Attribute.DateTime
     sections: Attribute.DynamicZone<
-      [
-        'sections.columned-text',
-        'sections.text-with-image',
-        'sections.file-list',
-        'sections.regulations',
-        'sections.narrow-text',
-        'sections.divider',
-        'sections.videos',
-        'sections.numerical-list',
-        'sections.gallery'
-      ]
+      ['sections.narrow-text', 'sections.file-list', 'sections.gallery']
     > &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true
         }
       }>
-    slug: Attribute.UID<'api::blog-post.blog-post', 'title'> & Attribute.Required
+    slug: Attribute.UID<'api::blog-post.blog-post', 'title'> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true
+        }
+      }>
     tag: Attribute.Relation<'api::blog-post.blog-post', 'oneToOne', 'api::tag.tag'>
     title: Attribute.String &
       Attribute.Required &

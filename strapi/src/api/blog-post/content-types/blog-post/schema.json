@@ -37,7 +37,12 @@
       "type": "media",
       "multiple": false,
       "required": false,
-      "allowedTypes": ["images", "files", "videos", "audios"],
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
       "pluginOptions": {
         "i18n": {
           "localized": true
@@ -47,7 +52,12 @@
     "slug": {
       "type": "uid",
       "targetField": "title",
-      "required": true
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "addedAt": {
       "pluginOptions": {
@@ -79,14 +89,8 @@
       },
       "type": "dynamiczone",
       "components": [
-        "sections.columned-text",
-        "sections.text-with-image",
-        "sections.file-list",
-        "sections.regulations",
         "sections.narrow-text",
-        "sections.divider",
-        "sections.videos",
-        "sections.numerical-list",
+        "sections.file-list",
         "sections.gallery"
       ]
     }

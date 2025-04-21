@@ -107,7 +107,7 @@ type BlogPostRelationResponseCollection {
   data: [BlogPostEntity!]!
 }
 
-union BlogPostSectionsDynamicZone = ComponentSectionsColumnedText | ComponentSectionsDivider | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsNarrowText | ComponentSectionsNumericalList | ComponentSectionsRegulations | ComponentSectionsTextWithImage | ComponentSectionsVideos | Error
+union BlogPostSectionsDynamicZone = ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsNarrowText | Error
 
 scalar BlogPostSectionsDynamicZoneInput
 
