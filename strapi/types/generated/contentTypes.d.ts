@@ -333,6 +333,94 @@ export interface ApiAlertAlert extends Schema.SingleType {
   }
 }
 
+export interface ApiArticleArticle extends Schema.CollectionType {
+  collectionName: 'articles'
+  info: {
+    description: ''
+    displayName: 'Articles (new)'
+    pluralName: 'articles'
+    singularName: 'article'
+  }
+  options: {
+    draftAndPublish: true
+  }
+  pluginOptions: {
+    i18n: {
+      localized: true
+    }
+  }
+  attributes: {
+    addedAt: Attribute.DateTime &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false
+        }
+      }>
+    alias: Attribute.UID &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true
+        }
+      }>
+    content: Attribute.RichText &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true
+        }
+      }>
+    coverMedia: Attribute.Media<'images'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false
+        }
+      }>
+    createdAt: Attribute.DateTime
+    createdBy: Attribute.Relation<'api::article.article', 'oneToOne', 'admin::user'> &
+      Attribute.Private
+    files: Attribute.Component<'blocks.file', true> &
+      Attribute.SetMinMax<
+        {
+          min: 1
+        },
+        number
+      >
+    gallery: Attribute.Media<'images', true> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false
+        }
+      }>
+    locale: Attribute.String
+    localizations: Attribute.Relation<'api::article.article', 'oneToMany', 'api::article.article'>
+    perex: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true
+        }
+      }>
+    publishedAt: Attribute.DateTime
+    slug: Attribute.UID<'api::article.article', 'title'> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true
+        }
+      }>
+    tags: Attribute.Relation<'api::article.article', 'manyToMany', 'api::tag.tag'>
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true
+        }
+      }>
+    updatedAt: Attribute.DateTime
+    updatedBy: Attribute.Relation<'api::article.article', 'oneToOne', 'admin::user'> &
+      Attribute.Private
+  }
+}
+
 export interface ApiBlogPostBlogPost extends Schema.CollectionType {
   collectionName: 'blog_posts'
   info: {
@@ -1214,6 +1302,7 @@ export interface ApiTagTag extends Schema.CollectionType {
     }
   }
   attributes: {
+    articles: Attribute.Relation<'api::tag.tag', 'manyToMany', 'api::article.article'>
     createdAt: Attribute.DateTime
     createdBy: Attribute.Relation<'api::tag.tag', 'oneToOne', 'admin::user'> & Attribute.Private
     locale: Attribute.String
@@ -1632,6 +1721,7 @@ declare module '@strapi/types' {
       'admin::transfer-token-permission': AdminTransferTokenPermission
       'admin::user': AdminUser
       'api::alert.alert': ApiAlertAlert
+      'api::article.article': ApiArticleArticle
       'api::blog-post.blog-post': ApiBlogPostBlogPost
       'api::faq-category.faq-category': ApiFaqCategoryFaqCategory
       'api::faq.faq': ApiFaqFaq

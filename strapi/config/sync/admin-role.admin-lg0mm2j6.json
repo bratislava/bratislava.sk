@@ -69,10 +69,10 @@
           "excerpt",
           "coverImage",
           "slug",
+          "addedAt",
           "date_added",
           "tag",
-          "sections",
-          "addedAt"
+          "sections"
         ],
         "locales": [
           "en",
@@ -115,10 +115,10 @@
           "excerpt",
           "coverImage",
           "slug",
+          "addedAt",
           "date_added",
           "tag",
-          "sections",
-          "addedAt"
+          "sections"
         ],
         "locales": [
           "en",
@@ -137,10 +137,10 @@
           "excerpt",
           "coverImage",
           "slug",
+          "addedAt",
           "date_added",
           "tag",
-          "sections",
-          "addedAt"
+          "sections"
         ],
         "locales": [
           "en",
@@ -1426,7 +1426,8 @@
       "properties": {
         "fields": [
           "title",
-          "pageCategory"
+          "pageCategory",
+          "articles"
         ],
         "locales": [
           "en",
@@ -1454,7 +1455,8 @@
       "properties": {
         "fields": [
           "title",
-          "pageCategory"
+          "pageCategory",
+          "articles"
         ],
         "locales": [
           "en",
@@ -1470,7 +1472,8 @@
       "properties": {
         "fields": [
           "title",
-          "pageCategory"
+          "pageCategory",
+          "articles"
         ],
         "locales": [
           "en",

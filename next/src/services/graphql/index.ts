@@ -84,6 +84,106 @@ export type AlertRelationResponseCollection = {
   data: Array<AlertEntity>
 }
 
+export type Article = {
+  __typename?: 'Article'
+  addedAt: Scalars['DateTime']['output']
+  alias?: Maybe<Scalars['String']['output']>
+  content?: Maybe<Scalars['String']['output']>
+  coverMedia?: Maybe<UploadFileEntityResponse>
+  createdAt?: Maybe<Scalars['DateTime']['output']>
+  files?: Maybe<Array<Maybe<ComponentBlocksFile>>>
+  gallery?: Maybe<UploadFileRelationResponseCollection>
+  locale?: Maybe<Scalars['String']['output']>
+  localizations?: Maybe<ArticleRelationResponseCollection>
+  perex?: Maybe<Scalars['String']['output']>
+  publishedAt?: Maybe<Scalars['DateTime']['output']>
+  slug: Scalars['String']['output']
+  tags?: Maybe<TagRelationResponseCollection>
+  title: Scalars['String']['output']
+  updatedAt?: Maybe<Scalars['DateTime']['output']>
+}
+
+export type ArticleFilesArgs = {
+  filters?: InputMaybe<ComponentBlocksFileFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type ArticleGalleryArgs = {
+  filters?: InputMaybe<UploadFileFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type ArticleLocalizationsArgs = {
+  filters?: InputMaybe<ArticleFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  publicationState?: InputMaybe<PublicationState>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type ArticleTagsArgs = {
+  filters?: InputMaybe<TagFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type ArticleEntity = {
+  __typename?: 'ArticleEntity'
+  attributes?: Maybe<Article>
+  id?: Maybe<Scalars['ID']['output']>
+}
+
+export type ArticleEntityResponse = {
+  __typename?: 'ArticleEntityResponse'
+  data?: Maybe<ArticleEntity>
+}
+
+export type ArticleEntityResponseCollection = {
+  __typename?: 'ArticleEntityResponseCollection'
+  data: Array<ArticleEntity>
+  meta: ResponseCollectionMeta
+}
+
+export type ArticleFiltersInput = {
+  addedAt?: InputMaybe<DateTimeFilterInput>
+  alias?: InputMaybe<StringFilterInput>
+  and?: InputMaybe<Array<InputMaybe<ArticleFiltersInput>>>
+  content?: InputMaybe<StringFilterInput>
+  createdAt?: InputMaybe<DateTimeFilterInput>
+  files?: InputMaybe<ComponentBlocksFileFiltersInput>
+  id?: InputMaybe<IdFilterInput>
+  locale?: InputMaybe<StringFilterInput>
+  localizations?: InputMaybe<ArticleFiltersInput>
+  not?: InputMaybe<ArticleFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<ArticleFiltersInput>>>
+  perex?: InputMaybe<StringFilterInput>
+  publishedAt?: InputMaybe<DateTimeFilterInput>
+  slug?: InputMaybe<StringFilterInput>
+  tags?: InputMaybe<TagFiltersInput>
+  title?: InputMaybe<StringFilterInput>
+  updatedAt?: InputMaybe<DateTimeFilterInput>
+}
+
+export type ArticleInput = {
+  addedAt?: InputMaybe<Scalars['DateTime']['input']>
+  alias?: InputMaybe<Scalars['String']['input']>
+  content?: InputMaybe<Scalars['String']['input']>
+  coverMedia?: InputMaybe<Scalars['ID']['input']>
+  files?: InputMaybe<Array<InputMaybe<ComponentBlocksFileInput>>>
+  gallery?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
+  perex?: InputMaybe<Scalars['String']['input']>
+  publishedAt?: InputMaybe<Scalars['DateTime']['input']>
+  slug?: InputMaybe<Scalars['String']['input']>
+  tags?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
+  title?: InputMaybe<Scalars['String']['input']>
+}
+
+export type ArticleRelationResponseCollection = {
+  __typename?: 'ArticleRelationResponseCollection'
+  data: Array<ArticleEntity>
+}
+
 export type BlogPost = {
   __typename?: 'BlogPost'
   addedAt: Scalars['DateTime']['output']
@@ -2526,6 +2626,7 @@ export type GeneralRelationResponseCollection = {
 
 export type GenericMorph =
   | Alert
+  | Article
   | BlogPost
   | ComponentAccordionItemsFlatText
   | ComponentAccordionItemsInstitution
@@ -3132,6 +3233,8 @@ export type Mutation = {
   /** Change user password. Confirm with the current password. */
   changePassword?: Maybe<UsersPermissionsLoginPayload>
   createAlertLocalization?: Maybe<AlertEntityResponse>
+  createArticle?: Maybe<ArticleEntityResponse>
+  createArticleLocalization?: Maybe<ArticleEntityResponse>
   createBlogPost?: Maybe<BlogPostEntityResponse>
   createBlogPostLocalization?: Maybe<BlogPostEntityResponse>
   createFaq?: Maybe<FaqEntityResponse>
@@ -3161,6 +3264,7 @@ export type Mutation = {
   /** Create a new user */
   createUsersPermissionsUser: UsersPermissionsUserEntityResponse
   deleteAlert?: Maybe<AlertEntityResponse>
+  deleteArticle?: Maybe<ArticleEntityResponse>
   deleteBlogPost?: Maybe<BlogPostEntityResponse>
   deleteFaq?: Maybe<FaqEntityResponse>
   deleteFaqCategory?: Maybe<FaqCategoryEntityResponse>
@@ -3194,6 +3298,7 @@ export type Mutation = {
   /** Reset user password. Confirm with a code (resetToken from forgotPassword) */
   resetPassword?: Maybe<UsersPermissionsLoginPayload>
   updateAlert?: Maybe<AlertEntityResponse>
+  updateArticle?: Maybe<ArticleEntityResponse>
   updateBlogPost?: Maybe<BlogPostEntityResponse>
   updateFaq?: Maybe<FaqEntityResponse>
   updateFaqCategory?: Maybe<FaqCategoryEntityResponse>
@@ -3227,6 +3332,17 @@ export type MutationChangePasswordArgs = {
 
 export type MutationCreateAlertLocalizationArgs = {
   data?: InputMaybe<AlertInput>
+  id?: InputMaybe<Scalars['ID']['input']>
+  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
+}
+
+export type MutationCreateArticleArgs = {
+  data: ArticleInput
+  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
+}
+
+export type MutationCreateArticleLocalizationArgs = {
+  data?: InputMaybe<ArticleInput>
   id?: InputMaybe<Scalars['ID']['input']>
   locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
 }
@@ -3371,6 +3487,11 @@ export type MutationDeleteAlertArgs = {
   locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
 }
 
+export type MutationDeleteArticleArgs = {
+  id: Scalars['ID']['input']
+  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
+}
+
 export type MutationDeleteBlogPostArgs = {
   id: Scalars['ID']['input']
   locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
@@ -3486,6 +3607,12 @@ export type MutationResetPasswordArgs = {
 
 export type MutationUpdateAlertArgs = {
   data: AlertInput
+  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
+}
+
+export type MutationUpdateArticleArgs = {
+  data: ArticleInput
+  id: Scalars['ID']['input']
   locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
 }
 
@@ -3850,6 +3977,8 @@ export enum PublicationState {
 export type Query = {
   __typename?: 'Query'
   alert?: Maybe<AlertEntityResponse>
+  article?: Maybe<ArticleEntityResponse>
+  articles?: Maybe<ArticleEntityResponseCollection>
   blogPost?: Maybe<BlogPostEntityResponse>
   blogPosts?: Maybe<BlogPostEntityResponseCollection>
   faq?: Maybe<FaqEntityResponse>
@@ -3890,6 +4019,19 @@ export type Query = {
 
 export type QueryAlertArgs = {
   locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
+}
+
+export type QueryArticleArgs = {
+  id?: InputMaybe<Scalars['ID']['input']>
+  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
+}
+
+export type QueryArticlesArgs = {
+  filters?: InputMaybe<ArticleFiltersInput>
+  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
+  pagination?: InputMaybe<PaginationArg>
+  publicationState?: InputMaybe<PublicationState>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
 }
 
 export type QueryBlogPostArgs = {
@@ -4223,12 +4365,20 @@ export type StringFilterInput = {
 
 export type Tag = {
   __typename?: 'Tag'
+  articles?: Maybe<ArticleRelationResponseCollection>
   createdAt?: Maybe<Scalars['DateTime']['output']>
   locale?: Maybe<Scalars['String']['output']>
   localizations?: Maybe<TagRelationResponseCollection>
   pageCategory?: Maybe<PageCategoryEntityResponse>
   title?: Maybe<Scalars['String']['output']>
   updatedAt?: Maybe<Scalars['DateTime']['output']>
+}
+
+export type TagArticlesArgs = {
+  filters?: InputMaybe<ArticleFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  publicationState?: InputMaybe<PublicationState>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
 }
 
 export type TagLocalizationsArgs = {
@@ -4256,6 +4406,7 @@ export type TagEntityResponseCollection = {
 
 export type TagFiltersInput = {
   and?: InputMaybe<Array<InputMaybe<TagFiltersInput>>>
+  articles?: InputMaybe<ArticleFiltersInput>
   createdAt?: InputMaybe<DateTimeFilterInput>
   id?: InputMaybe<IdFilterInput>
   locale?: InputMaybe<StringFilterInput>
@@ -4268,6 +4419,7 @@ export type TagFiltersInput = {
 }
 
 export type TagInput = {
+  articles?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
   pageCategory?: InputMaybe<Scalars['ID']['input']>
   title?: InputMaybe<Scalars['String']['input']>
 }

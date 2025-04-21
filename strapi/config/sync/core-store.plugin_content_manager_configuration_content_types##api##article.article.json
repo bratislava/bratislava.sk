@@ -1,0 +1,293 @@
+{
+  "key": "plugin_content_manager_configuration_content_types::api::article.article",
+  "value": {
+    "settings": {
+      "bulkable": true,
+      "filterable": true,
+      "searchable": true,
+      "pageSize": 10,
+      "mainField": "title",
+      "defaultSortBy": "title",
+      "defaultSortOrder": "ASC"
+    },
+    "metadatas": {
+      "id": {
+        "edit": {},
+        "list": {
+          "label": "id",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "title": {
+        "edit": {
+          "label": "Nadpis",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "title",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "slug": {
+        "edit": {
+          "label": "Slug",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "slug",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "perex": {
+        "edit": {
+          "label": "Perex",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "perex",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "alias": {
+        "edit": {
+          "label": "Alias",
+          "description": "Alias slúži pre skrátenie URL adresy za účelom zdieľania a propagácie (podobne ako napr. bit.ly). Používajte v ňom iba malé písmená, čísla a pomlčky.",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "alias",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "coverMedia": {
+        "edit": {
+          "label": "Ilustračný obrázok",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "coverMedia",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "tags": {
+        "edit": {
+          "label": "Tagy",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "title"
+        },
+        "list": {
+          "label": "tags",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "addedAt": {
+        "edit": {
+          "label": "Dátum pridania",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "addedAt",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "content": {
+        "edit": {
+          "label": "Text",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "content",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "files": {
+        "edit": {
+          "label": "Súbory",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "files",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "gallery": {
+        "edit": {
+          "label": "Galéria",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "gallery",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "createdAt": {
+        "edit": {
+          "label": "createdAt",
+          "description": "",
+          "placeholder": "",
+          "visible": false,
+          "editable": true
+        },
+        "list": {
+          "label": "createdAt",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "updatedAt": {
+        "edit": {
+          "label": "updatedAt",
+          "description": "",
+          "placeholder": "",
+          "visible": false,
+          "editable": true
+        },
+        "list": {
+          "label": "updatedAt",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "createdBy": {
+        "edit": {
+          "label": "createdBy",
+          "description": "",
+          "placeholder": "",
+          "visible": false,
+          "editable": true,
+          "mainField": "firstname"
+        },
+        "list": {
+          "label": "createdBy",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "updatedBy": {
+        "edit": {
+          "label": "updatedBy",
+          "description": "",
+          "placeholder": "",
+          "visible": false,
+          "editable": true,
+          "mainField": "firstname"
+        },
+        "list": {
+          "label": "updatedBy",
+          "searchable": true,
+          "sortable": true
+        }
+      }
+    },
+    "layouts": {
+      "edit": [
+        [
+          {
+            "name": "title",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "slug",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "addedAt",
+            "size": 6
+          },
+          {
+            "name": "alias",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "perex",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "content",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "coverMedia",
+            "size": 6
+          },
+          {
+            "name": "tags",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "files",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "gallery",
+            "size": 12
+          }
+        ]
+      ],
+      "list": [
+        "id",
+        "title",
+        "slug",
+        "createdAt"
+      ]
+    },
+    "uid": "api::article.article"
+  },
+  "type": "object",
+  "environment": null,
+  "tag": null
+}
