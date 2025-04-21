@@ -160,6 +160,7 @@ fragment BlogPostEntity on BlogPostEntity {
     sections {
       ...Sections
     }
+    locale
     localizations {
       data {
         id

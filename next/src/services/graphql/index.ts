@@ -4759,6 +4759,7 @@ export type BlogPostBySlugQuery = {
         title: string
         addedAt: any
         updatedAt?: any | null
+        locale?: string | null
         tag?: {
           __typename?: 'TagEntityResponse'
           data?: {
@@ -4885,6 +4886,7 @@ export type LatestPostsByTagsQuery = {
         title: string
         addedAt: any
         updatedAt?: any | null
+        locale?: string | null
         tag?: {
           __typename?: 'TagEntityResponse'
           data?: {
@@ -5163,6 +5165,7 @@ export type BlogPostEntityFragment = {
     title: string
     addedAt: any
     updatedAt?: any | null
+    locale?: string | null
     tag?: {
       __typename?: 'TagEntityResponse'
       data?: {
@@ -5372,6 +5375,7 @@ export type Dev_AllBlogPostsQuery = {
         title: string
         addedAt: any
         updatedAt?: any | null
+        locale?: string | null
         tag?: {
           __typename?: 'TagEntityResponse'
           data?: {
@@ -13051,6 +13055,7 @@ export const BlogPostEntityFragmentDoc = gql`
       sections {
         ...Sections
       }
+      locale
       localizations {
         data {
           id

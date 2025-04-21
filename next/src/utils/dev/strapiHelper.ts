@@ -20,6 +20,18 @@ const CONSOLE_GREY = '\u001B[90m'
 
 type SectionName = SectionsFragment['__typename']
 
+const filterMarkdown = (text: string) => {
+  const h1Headings = text.match(/^#\s+(.*)$/gm)
+  const h2Headings = text.match(/^##\s+(.*)$/gm)
+  const h3Headings = text.match(/^###\s+(.*)$/gm)
+  const h4Headings = text.match(/^#{4}\s+(.*)$/gm)
+  const boldHeadings = text.match(/^\*\*+\s*(.*)\s*\*\*+$/gm)
+  const bullets = text.match(/^•+\s*(.*)$/gm) // • //	//
+  const tabs = text.match(/	+(.*)$/gm) // • //	//
+
+  return { h1Headings, h2Headings, h3Headings, h4Headings, boldHeadings, bullets, tabs }
+}
+
 export async function listBlogPosts() {
   const { blogPosts } = await client.Dev_AllBlogPosts({ locale: 'all', limit: -1 })
 
@@ -31,54 +43,77 @@ export async function listBlogPosts() {
     })
     .filter(isDefined)
     // .filter((post) => post.title?.trim().includes('\n'))
-    .filter((post) => !post.addedAt)
-  // .filter((post) => (post.title ?? '').trim().length === 0)
-  // .filter((post) => (post.title ?? '').length > 255) // The most important
-  // .filter((post) => (post.slug ?? '').length === 0)
-  // .filter((post) => (post.slug ?? '').trim().length !== (post.slug ?? '').length)
-  // .filter((post) => (post.slug ?? '').match(/[^\da-z-]/g)) // checks other characters in slug thant low letters, numbers and dashes
-  // .filter((post) => post.author?.data?.attributes?.username.length)
-  // .filter((post) => post.date_added == null)
-  // .filter((post) => post.date_added != null && new Date(post.date_added).getHours() === 0)
-  // .filter(
-  //   (post) =>
-  //     new Date(post.publishedAt).setUTCHours(0, 0, 0, 0) !==
-  //     new Date(post.addedAt).setUTCHours(0, 0, 0, 0),
-  // )
-  // .filter((post) => post.moreLink)
-  // .filter((post) => post.sections && post.sections.length === 0)
-  // .filter((post) => post.sections && post.sections.length > 1 && post.tag?.data?.id !== '37')
-  // .filter((post) => post.sections && post.sections.length > 2)
-  // .filter(
-  //   (post) =>
-  //     post.sections &&
-  //     post.sections.length === 2 &&
-  //     post.sections[0]?.__typename !== 'ComponentSectionsNarrowText',
-  // )
-  // .filter(
-  //   (post) =>
-  //     post.sections &&
-  //     post.sections.length === 2 &&
-  //     post.sections[1]?.__typename !== 'ComponentSectionsFileList',
-  // )
-  // .filter(
-  //   (post) =>
-  //     post.slug ===
-  //     post.localizations?.data.find((post) => post.attributes?.locale === 'en')?.attributes?.slug,
-  // )
+    // .filter((post) => !post.addedAt)
+    // .filter((post) => (post.title ?? '').trim().length === 0)
+    // .filter((post) => (post.title ?? '').length > 255) // The most important
+    // .filter((post) => (post.slug ?? '').length === 0)
+    // .filter((post) => (post.slug ?? '').trim().length !== (post.slug ?? '').length)
+    // .filter((post) => (post.slug ?? '').match(/[^\da-z-]/g)) // checks other characters in slug thant low letters, numbers and dashes
+    // .filter((post) => post.author?.data?.attributes?.username.length)
+    // .filter((post) => post.date_added == null)
+    // .filter((post) => post.date_added != null && new Date(post.date_added).getHours() === 0)
+    // .filter(
+    //   (post) =>
+    //     new Date(post.publishedAt).setUTCHours(0, 0, 0, 0) !==
+    //     new Date(post.addedAt).setUTCHours(0, 0, 0, 0),
+    // )
+    // .filter((post) => post.moreLink)
+    // .filter((post) => post.sections && post.sections.length === 0)
+    // .filter((post) => post.sections && post.sections.length > 1 && post.tag?.data?.id !== '37')
+    // .filter((post) => post.sections && post.sections.length > 2)
+    // .filter(
+    //   (post) =>
+    //     post.sections &&
+    //     post.sections.length === 2 &&
+    //     post.sections[0]?.__typename !== 'ComponentSectionsNarrowText',
+    // )
+    // .filter(
+    //   (post) =>
+    //     post.sections &&
+    //     post.sections.length === 2 &&
+    //     post.sections[1]?.__typename !== 'ComponentSectionsFileList',
+    // )
+    // .filter(
+    //   (post) =>
+    //     post.slug ===
+    //     post.localizations?.data.find((post) => post.attributes?.locale === 'en')?.attributes?.slug,
+    // )
+    .filter((post) => {
+      const { h1Headings, h2Headings, h3Headings, h4Headings, boldHeadings, bullets } =
+        filterMarkdown(
+          post.sections?.length && post.sections[0]?.__typename === 'ComponentSectionsNarrowText'
+            ? (post.sections[0].content ?? '')
+            : '',
+        )
+
+      const h1HeadingsLength = h1Headings?.length ?? 0
+      const h2HeadingsLength = h2Headings?.length ?? 0
+      const h3HeadingsLength = h3Headings?.length ?? 0
+      const h4HeadingsLength = h4Headings?.length ?? 0
+      const boldHeadingsLength = boldHeadings?.length ?? 0
+      const bulletsLength = bullets?.length ?? 0
+
+      return bulletsLength > 0
+    })
 
   console.log('-----------------------------------------------------------------------------------')
   console.log('Number of all posts:', posts.length)
   console.log('Number of filteredPosts:', filteredPosts.length)
-  console.log(
-    'Filtered posts:',
-    filteredPosts.map((post) => {
-      const strapiEntityLink = `${process.env.STRAPI_URL}/admin/content-manager/collection-types/api::blog-post.blog-post/${post.id}`
-      const strapiEntityLinkProd = `https://bratislava-strapi.bratislava.sk/admin/content-manager/collection-types/api::blog-post.blog-post/${post.id}`
+  const contentToWrite = filteredPosts.map((post) => {
+    const strapiEntityLink = `${process.env.STRAPI_URL}/admin/content-manager/collection-types/api::blog-post.blog-post/${post.id}`
+    const strapiEntityLinkProd = `https://bratislava-strapi.bratislava.sk/admin/content-manager/collection-types/api::blog-post.blog-post/${post.id}`
+    const prodLink = `https://bratislava.sk/${post.locale === 'en' ? 'en/' : ''}blog/${post.slug}`
 
-      return `${post.slug} ${strapiEntityLink} ${strapiEntityLinkProd}`
-    }),
-  )
+    return [post.id, post.slug, prodLink, strapiEntityLink, strapiEntityLinkProd].join(',')
+  })
+
+  // fs.writeFile('./test.txt', contentToWrite.join('\n'), (err) => {
+  //   if (err) {
+  //     console.error(err)
+  //   } else {
+  //     console.log('Successfully written to file.')
+  //   }
+  // })
 }
 
 // eslint-disable-next-line sonarjs/cognitive-complexity
