@@ -91,7 +91,7 @@ const ArticlesSection = ({ section }: Props) => {
               // tag={tagTitle ?? undefined}
               title={blogPostTitle ?? ''}
               text={perex ?? undefined}
-              linkProps={{ children: t('readMore'), href: `/blog/${slug}` }}
+              linkProps={{ children: t('readMore'), href: `/spravy/${slug}` }}
               imgSrc={coverMedia?.data?.attributes?.url}
               imgSizes={imageSizes}
             />

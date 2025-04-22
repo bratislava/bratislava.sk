@@ -1,3 +1,4 @@
+import { Typography } from '@bratislava/component-library'
 import React from 'react'
 
 import { FacebookIcon, InstagramIcon, LinkedinIcon, TwitterIcon } from '@/src/assets/images'
@@ -17,8 +18,9 @@ const ShareButtonsSection = ({ twitterTitle }: Props) => {
   return (
     <SectionContainer className="mb-8">
       <div className="mt-14 flex flex-col">
-        {/* FIXME Typography. Convert to use Typography. Issue: different size than Figma span */}
-        <span className="text-h5">{t('ShareButtonsSection.share')}</span>
+        <Typography type="h2" size="h5">
+          {t('ShareButtonsSection.share')}
+        </Typography>
         <div className="flex gap-x-10 pt-5">
           <SocialMediaButton
             getLink={(socialLink) => `https://www.facebook.com/sharer/sharer.php?u=${socialLink}`}

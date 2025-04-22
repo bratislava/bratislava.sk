@@ -1,0 +1,102 @@
+import { Typography } from '@bratislava/component-library'
+import * as React from 'react'
+import { PropsWithChildren, useMemo } from 'react'
+
+import AliasInfoMessage from '@/src/components/common/AliasInfoMessage/AliasInfoMessage'
+import { Breadcrumb } from '@/src/components/common/Breadcrumbs/Breadcrumbs'
+import Button from '@/src/components/common/Button/Button'
+import FileList from '@/src/components/common/FileList/FileList'
+import Gallery from '@/src/components/common/Gallery/Gallery'
+import PageHeader from '@/src/components/common/PageHeader/PageHeader'
+import SectionContainer from '@/src/components/common/SectionContainer/SectionContainer'
+import Markdown from '@/src/components/formatting/Markdown/Markdown'
+import { useGeneralContext } from '@/src/components/providers/GeneralContextProvider'
+import ShareButtonsSection from '@/src/components/sections/ShareButtonsSection'
+import { ArticleEntityFragment } from '@/src/services/graphql'
+import { formatDate } from '@/src/utils/formatDate'
+import { isDefined } from '@/src/utils/isDefined'
+import { getPageBreadcrumbs } from '@/src/utils/pageUtils_Deprecated'
+
+// TODO split this into separate file
+export const SocialMediaButton = ({
+  getLink,
+  children,
+}: PropsWithChildren<{ getLink: (link: string) => string }>) => {
+  const openSharePage = () => {
+    const w = 600
+    const h = 400
+    const l = screen.width / 2 - w / 2
+    const t = screen.height / 2 - h / 2
+
+    window.open(
+      getLink(window.location.href),
+      'pop',
+      `width=${w},height=${h},top=${t},left=${l},scrollbars=0`,
+    )
+  }
+
+  return <Button onPress={openSharePage}>{children}</Button>
+}
+
+type Props = {
+  article: ArticleEntityFragment
+}
+
+const BlogPostPageContent = ({ article }: Props) => {
+  // const tag = article.attributes?.tag?.data?.attributes
+
+  const { general } = useGeneralContext()
+  const newsPage = general?.data?.attributes?.newsPage?.data
+
+  const breadcrumbs = useMemo(() => {
+    return [
+      ...(newsPage ? getPageBreadcrumbs(newsPage) : []),
+      { title: article.attributes?.title ?? '', path: null } as Breadcrumb,
+    ]
+  }, [article.attributes?.title, newsPage])
+
+  if (!article.attributes) {
+    return null
+  }
+
+  const { title, perex, content, files, gallery, alias, addedAt, coverMedia } = article.attributes
+
+  const filteredFiles = files?.filter(isDefined) ?? []
+  const filteredGalleryImages = gallery?.data.filter(isDefined) ?? []
+
+  return (
+    <>
+      {/* Header */}
+      <PageHeader
+        title={title}
+        breadcrumbs={breadcrumbs}
+        subtext={formatDate(addedAt)}
+        // tag={tag?.title}
+        imageSrc={coverMedia?.data?.attributes?.url}
+      />
+
+      <SectionContainer className="pt-10 md:pt-18">
+        <div className="flex flex-col gap-6 lg:gap-8">
+          {perex ? (
+            <Typography type="p" size="p-large">
+              {perex}
+            </Typography>
+          ) : null}
+          <Markdown content={content} />
+          {filteredFiles.length > 0 ? <FileList files={filteredFiles} /> : null}
+          {filteredGalleryImages.length > 0 ? <Gallery images={filteredGalleryImages} /> : null}
+        </div>
+      </SectionContainer>
+
+      <ShareButtonsSection twitterTitle={title} />
+
+      {alias ? (
+        <SectionContainer>
+          <AliasInfoMessage alias={alias} variant="article" />{' '}
+        </SectionContainer>
+      ) : null}
+    </>
+  )
+}
+
+export default BlogPostPageContent

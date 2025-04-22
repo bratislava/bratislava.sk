@@ -4918,7 +4918,12 @@ export type UsersPermissionsUserRelationResponseCollection = {
 export type ArticleSlugEntityFragment = {
   __typename: 'ArticleEntity'
   id?: string | null
-  attributes?: { __typename?: 'Article'; slug: string; title: string } | null
+  attributes?: {
+    __typename?: 'Article'
+    slug: string
+    title: string
+    locale?: string | null
+  } | null
 }
 
 export type ArticleCardEntityFragment = {
@@ -4930,6 +4935,7 @@ export type ArticleCardEntityFragment = {
     addedAt: any
     slug: string
     title: string
+    locale?: string | null
     coverMedia?: {
       __typename?: 'UploadFileEntityResponse'
       data?: {
@@ -4983,6 +4989,7 @@ export type ArticleEntityFragment = {
     addedAt: any
     slug: string
     title: string
+    locale?: string | null
     files?: Array<{
       __typename?: 'ComponentBlocksFile'
       id: string
@@ -5082,6 +5089,7 @@ export type ArticleBySlugQuery = {
         addedAt: any
         slug: string
         title: string
+        locale?: string | null
         files?: Array<{
           __typename?: 'ComponentBlocksFile'
           id: string
@@ -5174,7 +5182,12 @@ export type ArticlesStaticPathsQuery = {
     data: Array<{
       __typename: 'ArticleEntity'
       id?: string | null
-      attributes?: { __typename?: 'Article'; slug: string; title: string } | null
+      attributes?: {
+        __typename?: 'Article'
+        slug: string
+        title: string
+        locale?: string | null
+      } | null
     }>
   } | null
 }
@@ -5204,6 +5217,7 @@ export type Dev_AllArticlesQuery = {
         addedAt: any
         slug: string
         title: string
+        locale?: string | null
         files?: Array<{
           __typename?: 'ComponentBlocksFile'
           id: string
@@ -12806,6 +12820,7 @@ export const ArticleSlugEntityFragmentDoc = gql`
     attributes {
       slug
       title
+      locale
     }
   }
 `

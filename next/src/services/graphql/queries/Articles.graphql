@@ -4,6 +4,7 @@ fragment ArticleSlugEntity on ArticleEntity {
   attributes {
     slug
     title
+    locale
   }
 }
 

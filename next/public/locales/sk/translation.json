@@ -1,4 +1,6 @@
 {
+  "AliasInfoMessage.message.article": "Tento článok nájdete aj na",
+  "AliasInfoMessage.message.page": "Túto stránku nájdete aj na",
   "BlogPostsFilter.allArticles": "Všetky správy",
   "BlogPostsFilter.articleFilter": "Filter správ",
   "BlogPostsFilter.subcategories": "Podkategórie",
