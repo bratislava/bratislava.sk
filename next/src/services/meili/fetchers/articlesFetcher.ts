@@ -59,31 +59,35 @@ export const articlesFetcher = (filters: ArticlesFilters, locale: string) => {
             slug: article.slug,
             perex: article.perex,
             addedAt: article.addedAt,
-            coverMedia: {
-              data: {
-                attributes: {
-                  url: article.coverMedia?.url ?? '',
-                  name: article.coverMedia?.name ?? '',
-                  alternativeText: article.coverMedia?.alternativeText ?? '',
-                },
-              },
-            },
-            tag: {
-              data: {
-                __typename: 'TagEntity',
-                attributes: {
-                  __typename: 'Tag',
-                  title: article.tag?.title,
-                  pageCategory: {
-                    data: {
-                      attributes: {
-                        color: article.tag?.pageCategory?.color,
-                      },
-                    },
+            ...(article.coverMedia && {
+              coverMedia: {
+                data: {
+                  attributes: {
+                    url: article.coverMedia.url ?? '',
+                    name: article.coverMedia.name ?? '',
+                    alternativeText: article.coverMedia.alternativeText ?? '',
                   },
                 },
               },
-            },
+            }),
+            ...(article.tag && {
+              tag: {
+                data: {
+                  attributes: {
+                    title: article.tag.title,
+                    ...(article.tag.pageCategory && {
+                      pageCategory: {
+                        data: {
+                          attributes: {
+                            color: article.tag.pageCategory.color,
+                          },
+                        },
+                      },
+                    }),
+                  },
+                },
+              },
+            }),
           },
         } satisfies Pick<ArticleCardEntityFragment, 'attributes'>
       })

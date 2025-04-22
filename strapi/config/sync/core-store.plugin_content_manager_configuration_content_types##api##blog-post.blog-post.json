@@ -76,6 +76,20 @@
           "sortable": true
         }
       },
+      "addedAt": {
+        "edit": {
+          "label": "Dátum pridania",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "addedAt",
+          "searchable": true,
+          "sortable": true
+        }
+      },
       "date_added": {
         "edit": {
           "label": "date_added",
@@ -117,20 +131,6 @@
           "label": "sections",
           "searchable": false,
           "sortable": false
-        }
-      },
-      "addedAt": {
-        "edit": {
-          "label": "Dátum zverejnenia",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "addedAt",
-          "searchable": true,
-          "sortable": true
         }
       },
       "createdAt": {

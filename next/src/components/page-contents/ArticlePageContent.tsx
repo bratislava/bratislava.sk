@@ -20,7 +20,7 @@ type Props = {
   article: ArticleEntityFragment
 }
 
-const BlogPostPageContent = ({ article }: Props) => {
+const ArticlePageContent = ({ article }: Props) => {
   const { general } = useGeneralContext()
   const newsPage = general?.data?.attributes?.newsPage?.data
 
@@ -43,7 +43,6 @@ const BlogPostPageContent = ({ article }: Props) => {
 
   return (
     <>
-      {/* Header */}
       <PageHeader
         title={title}
         breadcrumbs={breadcrumbs}
@@ -76,4 +75,4 @@ const BlogPostPageContent = ({ article }: Props) => {
   )
 }
 
-export default BlogPostPageContent
+export default ArticlePageContent

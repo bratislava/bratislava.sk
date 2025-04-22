@@ -89,9 +89,9 @@
           "sortable": false
         }
       },
-      "tags": {
+      "tag": {
         "edit": {
-          "label": "Tagy",
+          "label": "Tag",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -99,7 +99,7 @@
           "mainField": "title"
         },
         "list": {
-          "label": "tags",
+          "label": "tag",
           "searchable": false,
           "sortable": false
         }
@@ -261,7 +261,7 @@
             "size": 6
           },
           {
-            "name": "tags",
+            "name": "tag",
             "size": 6
           }
         ],
@@ -278,12 +278,7 @@
           }
         ]
       ],
-      "list": [
-        "id",
-        "title",
-        "slug",
-        "createdAt"
-      ]
+      "list": ["id", "title", "slug", "createdAt"]
     },
     "uid": "api::article.article"
   },
