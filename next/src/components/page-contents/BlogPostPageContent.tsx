@@ -29,7 +29,6 @@ const BlogPostPageContent = ({ blogPost }: BlogPostPageContentProps) => {
 
   return (
     <>
-      {/* Header */}
       <PageHeader
         title={blogPost.attributes?.title}
         breadcrumbs={breadcrumbs}

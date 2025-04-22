@@ -91,7 +91,12 @@
       "type": "component",
       "repeatable": true,
       "component": "blocks.file",
-      "min": 1
+      "min": 1,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "gallery": {
       "type": "media",

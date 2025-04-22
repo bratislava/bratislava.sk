@@ -379,6 +379,11 @@ export interface ApiArticleArticle extends Schema.CollectionType {
     createdBy: Attribute.Relation<'api::article.article', 'oneToOne', 'admin::user'> &
       Attribute.Private
     files: Attribute.Component<'blocks.file', true> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true
+        }
+      }> &
       Attribute.SetMinMax<
         {
           min: 1
