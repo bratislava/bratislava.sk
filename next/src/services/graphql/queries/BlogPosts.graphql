@@ -174,14 +174,6 @@ fragment BlogPostEntity on BlogPostEntity {
   }
 }
 
-query pageCategories($locale: I18NLocaleCode) {
-  pageCategories(pagination: { limit: -1 }, locale: $locale) {
-    data {
-      ...PageCategoryEntity
-    }
-  }
-}
-
 query blogPostsTags($locale: I18NLocaleCode) {
   tags(pagination: { limit: -1 }, locale: $locale) {
     data {

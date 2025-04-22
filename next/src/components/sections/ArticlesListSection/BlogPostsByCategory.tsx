@@ -25,7 +25,7 @@ type Props = {
   section: BlogPostsByCategorySectionFragment
 }
 
-const BlogPostsByTags = ({ section }: Props) => {
+const BlogPostsByCategory = ({ section }: Props) => {
   const { t } = useTranslation()
   const locale = useLocale()
 
@@ -35,14 +35,14 @@ const BlogPostsByTags = ({ section }: Props) => {
     ...blogPostsDefaultFilters,
   })
 
-  const { data: blogPostsTagsData } = useQuery({
-    queryKey: ['blogPostsTags', locale],
-    queryFn: () => client.blogPostsTags({ locale }),
+  const { data: tagsData } = useQuery({
+    queryKey: ['Tags', locale],
+    queryFn: () => client.Tags({ locale }),
     staleTime: Infinity,
   })
 
   const tagIds =
-    blogPostsTagsData?.tags?.data
+    tagsData?.tags?.data
       .filter((tag) => {
         return tag.attributes?.pageCategory?.data?.id === category?.data?.id
       })
@@ -52,7 +52,7 @@ const BlogPostsByTags = ({ section }: Props) => {
   useEffect(() => {
     setFilters({ ...filters, tagIds })
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [blogPostsTagsData])
+  }, [tagsData])
 
   // TODO prefetch section
   const { data } = useQuery({
@@ -109,4 +109,4 @@ const BlogPostsByTags = ({ section }: Props) => {
   )
 }
 
-export default BlogPostsByTags
+export default BlogPostsByCategory

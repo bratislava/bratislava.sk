@@ -25,7 +25,7 @@ type Props = {
   section: BlogPostsListSectionFragment
 }
 
-const BlogPostsByTags = ({ section }: Props) => {
+const BlogPostsList = ({ section }: Props) => {
   const { t } = useTranslation()
   const locale = useLocale()
 
@@ -42,14 +42,14 @@ const BlogPostsByTags = ({ section }: Props) => {
   })
 
   const { data: pageCategoriesData } = useQuery({
-    queryKey: ['pageCategories', locale],
-    queryFn: () => client.pageCategories({ locale }),
+    queryKey: ['PageCategories', locale],
+    queryFn: () => client.PageCategories({ locale }),
     staleTime: Infinity,
   })
 
-  const { data: blogPostsTagsData } = useQuery({
-    queryKey: ['blogPostsTags', locale],
-    queryFn: () => client.blogPostsTags({ locale }),
+  const { data: tagsData } = useQuery({
+    queryKey: ['Tags', locale],
+    queryFn: () => client.Tags({ locale }),
     staleTime: Infinity,
   })
 
@@ -65,7 +65,7 @@ const BlogPostsByTags = ({ section }: Props) => {
     <div className="flex flex-col gap-8">
       <BlogPostsFilter
         pageCategories={pageCategoriesData?.pageCategories?.data ?? []}
-        blogPostsTags={blogPostsTagsData?.tags?.data ?? []}
+        blogPostsTags={tagsData?.tags?.data ?? []}
         onTagChange={handleTagsChange}
       />
       {title || text ? (
@@ -111,4 +111,4 @@ const BlogPostsByTags = ({ section }: Props) => {
   )
 }
 
-export default BlogPostsByTags
+export default BlogPostsList

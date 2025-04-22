@@ -1067,6 +1067,27 @@ export type ComponentSectionsAccordionInput = {
   title?: InputMaybe<Scalars['String']['input']>
 }
 
+export type ComponentSectionsArticles = {
+  __typename?: 'ComponentSectionsArticles'
+  id: Scalars['ID']['output']
+  text?: Maybe<Scalars['String']['output']>
+  title?: Maybe<Scalars['String']['output']>
+}
+
+export type ComponentSectionsArticlesFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentSectionsArticlesFiltersInput>>>
+  not?: InputMaybe<ComponentSectionsArticlesFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<ComponentSectionsArticlesFiltersInput>>>
+  text?: InputMaybe<StringFilterInput>
+  title?: InputMaybe<StringFilterInput>
+}
+
+export type ComponentSectionsArticlesInput = {
+  id?: InputMaybe<Scalars['ID']['input']>
+  text?: InputMaybe<Scalars['String']['input']>
+  title?: InputMaybe<Scalars['String']['input']>
+}
+
 export type ComponentSectionsBanner = {
   __typename?: 'ComponentSectionsBanner'
   content?: Maybe<Scalars['String']['output']>
@@ -2657,6 +2678,7 @@ export type GenericMorph =
   | ComponentMenuMenuLink
   | ComponentMenuMenuSection
   | ComponentSectionsAccordion
+  | ComponentSectionsArticles
   | ComponentSectionsBanner
   | ComponentSectionsBlogPostsByCategory
   | ComponentSectionsBlogPostsList
@@ -3923,6 +3945,7 @@ export type PageRelationResponseCollection = {
 
 export type PageSectionsDynamicZone =
   | ComponentSectionsAccordion
+  | ComponentSectionsArticles
   | ComponentSectionsBanner
   | ComponentSectionsBlogPostsByCategory
   | ComponentSectionsBlogPostsList
@@ -5788,26 +5811,6 @@ export type BlogPostEntityFragment = {
         } | null
       }>
     } | null
-  } | null
-}
-
-export type PageCategoriesQueryVariables = Exact<{
-  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
-}>
-
-export type PageCategoriesQuery = {
-  __typename?: 'Query'
-  pageCategories?: {
-    __typename?: 'PageCategoryEntityResponseCollection'
-    data: Array<{
-      __typename?: 'PageCategoryEntity'
-      id?: string | null
-      attributes?: {
-        __typename?: 'PageCategory'
-        title?: string | null
-        color?: Enum_Pagecategory_Color | null
-      } | null
-    }>
   } | null
 }
 
@@ -8495,6 +8498,7 @@ export type PageBySlugQuery = {
                 urlLabel?: string | null
               } | null> | null
             }
+          | { __typename: 'ComponentSectionsArticles'; title?: string | null; text?: string | null }
           | {
               __typename: 'ComponentSectionsBanner'
               content?: string | null
@@ -9406,6 +9410,7 @@ export type PageEntityFragment = {
             urlLabel?: string | null
           } | null> | null
         }
+      | { __typename: 'ComponentSectionsArticles'; title?: string | null; text?: string | null }
       | {
           __typename: 'ComponentSectionsBanner'
           content?: string | null
@@ -11131,6 +11136,12 @@ export type BlogPostsListSectionFragment = {
   text?: string | null
 }
 
+export type ArticlesSectionFragment = {
+  __typename?: 'ComponentSectionsArticles'
+  title?: string | null
+  text?: string | null
+}
+
 export type BlogPostsByCategorySectionFragment = {
   __typename?: 'ComponentSectionsBlogPostsByCategory'
   title?: string | null
@@ -12008,6 +12019,12 @@ type Sections_ComponentSectionsAccordion_Fragment = {
   } | null> | null
 }
 
+type Sections_ComponentSectionsArticles_Fragment = {
+  __typename: 'ComponentSectionsArticles'
+  title?: string | null
+  text?: string | null
+}
+
 type Sections_ComponentSectionsBanner_Fragment = {
   __typename: 'ComponentSectionsBanner'
   content?: string | null
@@ -12648,6 +12665,7 @@ type Sections_Error_Fragment = { __typename: 'Error' }
 
 export type SectionsFragment =
   | Sections_ComponentSectionsAccordion_Fragment
+  | Sections_ComponentSectionsArticles_Fragment
   | Sections_ComponentSectionsBanner_Fragment
   | Sections_ComponentSectionsBlogPostsByCategory_Fragment
   | Sections_ComponentSectionsBlogPostsList_Fragment
@@ -13138,6 +13156,12 @@ export const NumericalListSectionFragmentDoc = gql`
   }
   ${NumericalListItemBlockFragmentDoc}
 `
+export const ArticlesSectionFragmentDoc = gql`
+  fragment ArticlesSection on ComponentSectionsArticles {
+    title
+    text
+  }
+`
 export const BlogPostsListSectionFragmentDoc = gql`
   fragment BlogPostsListSection on ComponentSectionsBlogPostsList {
     title
@@ -13591,6 +13615,9 @@ export const SectionsFragmentDoc = gql`
     ... on ComponentSectionsNumericalList {
       ...NumericalListSection
     }
+    ... on ComponentSectionsArticles {
+      ...ArticlesSection
+    }
     ... on ComponentSectionsBlogPostsList {
       ...BlogPostsListSection
     }
@@ -13651,6 +13678,7 @@ export const SectionsFragmentDoc = gql`
   ${CalculatorSectionFragmentDoc}
   ${VideosSectionFragmentDoc}
   ${NumericalListSectionFragmentDoc}
+  ${ArticlesSectionFragmentDoc}
   ${BlogPostsListSectionFragmentDoc}
   ${BlogPostsByCategorySectionFragmentDoc}
   ${InbaArticlesListSectionFragmentDoc}
@@ -14374,16 +14402,6 @@ export const LatestBlogsWithTagsDocument = gql`
   }
   ${LatestBlogPostEntityFragmentDoc}
 `
-export const PageCategoriesDocument = gql`
-  query pageCategories($locale: I18NLocaleCode) {
-    pageCategories(pagination: { limit: -1 }, locale: $locale) {
-      data {
-        ...PageCategoryEntity
-      }
-    }
-  }
-  ${PageCategoryEntityFragmentDoc}
-`
 export const BlogPostsTagsDocument = gql`
   query blogPostsTags($locale: I18NLocaleCode) {
     tags(pagination: { limit: -1 }, locale: $locale) {
@@ -14886,21 +14904,6 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
             ...wrappedRequestHeaders,
           }),
         'LatestBlogsWithTags',
-        'query',
-        variables,
-      )
-    },
-    pageCategories(
-      variables?: PageCategoriesQueryVariables,
-      requestHeaders?: GraphQLClientRequestHeaders,
-    ): Promise<PageCategoriesQuery> {
-      return withWrapper(
-        (wrappedRequestHeaders) =>
-          client.request<PageCategoriesQuery>(PageCategoriesDocument, variables, {
-            ...requestHeaders,
-            ...wrappedRequestHeaders,
-          }),
-        'pageCategories',
         'query',
         variables,
       )

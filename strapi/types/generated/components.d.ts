@@ -452,6 +452,18 @@ export interface SectionsAccordion extends Schema.Component {
   }
 }
 
+export interface SectionsArticles extends Schema.Component {
+  collectionName: 'components_sections_articles'
+  info: {
+    description: ''
+    displayName: 'Articles'
+  }
+  attributes: {
+    text: Attribute.Text
+    title: Attribute.String
+  }
+}
+
 export interface SectionsBanner extends Schema.Component {
   collectionName: 'components_sections_banners'
   info: {
@@ -1014,6 +1026,7 @@ declare module '@strapi/types' {
       'menu.menu-link': MenuMenuLink
       'menu.menu-section': MenuMenuSection
       'sections.accordion': SectionsAccordion
+      'sections.articles': SectionsArticles
       'sections.banner': SectionsBanner
       'sections.blog-posts-by-category': SectionsBlogPostsByCategory
       'sections.blog-posts-list': SectionsBlogPostsList
