@@ -190,26 +190,6 @@ query blogPostsTags($locale: I18NLocaleCode) {
   }
 }
 
-fragment TagEntity on TagEntity {
-  id
-  attributes {
-    title
-    pageCategory {
-      data {
-        ...PageCategoryEntity
-      }
-    }
-  }
-}
-
-fragment PageCategoryEntity on PageCategoryEntity {
-  id
-  attributes {
-    title
-    color
-  }
-}
-
 query Dev_AllBlogPosts(
   $sort: [String]
   $limit: Int

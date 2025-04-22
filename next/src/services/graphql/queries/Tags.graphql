@@ -1,0 +1,19 @@
+fragment TagEntity on TagEntity {
+  id
+  attributes {
+    title
+    pageCategory {
+      data {
+        ...PageCategoryEntity
+      }
+    }
+  }
+}
+
+query Tags($locale: I18NLocaleCode) {
+  tags(pagination: { limit: -1 }, locale: $locale) {
+    data {
+      ...TagEntity
+    }
+  }
+}
