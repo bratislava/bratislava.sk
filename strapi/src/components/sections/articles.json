@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_sections_articles",
+  "info": {
+    "displayName": "Articles",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "text": {
+      "type": "text"
+    }
+  }
+}

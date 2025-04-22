@@ -157,33 +157,19 @@ fragment BlogPostEntity on BlogPostEntity {
         }
       }
     }
-    moreLink {
-      ...BlogPostLink
-    }
     sections {
       ...Sections
     }
-  }
-}
-
-fragment BlogPostLink on ComponentBlocksBlogPostLink {
-  blogPost {
-    data {
-      id
-      attributes {
-        title
-        slug
+    locale
+    localizations {
+      data {
+        id
+        attributes {
+          slug
+          title
+          locale
+        }
       }
-    }
-  }
-  title
-  url
-}
-
-query pageCategories($locale: I18NLocaleCode) {
-  pageCategories(pagination: { limit: -1 }, locale: $locale) {
-    data {
-      ...PageCategoryEntity
     }
   }
 }
@@ -193,26 +179,6 @@ query blogPostsTags($locale: I18NLocaleCode) {
     data {
       ...TagEntity
     }
-  }
-}
-
-fragment TagEntity on TagEntity {
-  id
-  attributes {
-    title
-    pageCategory {
-      data {
-        ...PageCategoryEntity
-      }
-    }
-  }
-}
-
-fragment PageCategoryEntity on PageCategoryEntity {
-  id
-  attributes {
-    title
-    color
   }
 }
 

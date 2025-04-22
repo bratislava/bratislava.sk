@@ -14,9 +14,6 @@
           "slug",
           "date_added",
           "tag",
-          "moreLink.title",
-          "moreLink.url",
-          "moreLink.blogPost",
           "sections",
           "addedAt"
         ],
@@ -54,9 +51,6 @@
           "slug",
           "date_added",
           "tag",
-          "moreLink.title",
-          "moreLink.url",
-          "moreLink.blogPost",
           "sections",
           "addedAt"
         ],
@@ -76,9 +70,6 @@
           "slug",
           "date_added",
           "tag",
-          "moreLink.title",
-          "moreLink.url",
-          "moreLink.blogPost",
           "sections",
           "addedAt"
         ],

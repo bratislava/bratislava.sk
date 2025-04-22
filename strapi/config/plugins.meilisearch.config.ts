@@ -25,6 +25,8 @@ const searchIndexSettings = {
     'page.keywords',
     'page.subtext',
     'page.metaDiscription', // yes, it's a typo in the field name
+    'article.title',
+    'article.perex',
     'blog-post.title',
     'blog-post.excerpt',
     'inba-article.title',
@@ -35,14 +37,18 @@ const searchIndexSettings = {
   filterableAttributes: [
     // All
     'type',
-    // Page + Blog post + Inba article
+    // Page + Blog post + Article + Inba article
     'locale',
+    'article.tag.id',
     'blog-post.tag.id',
     'inba-article.inbaTag.id',
     // Regulation
     'regulation.category',
   ],
   sortableAttributes: [
+    // Article
+    'article.title',
+    'article.addedAtTimestamp',
     // Blog post
     'blog-post.title',
     'blog-post.addedAtTimestamp',
@@ -72,6 +78,22 @@ const config = {
     },
     settings: searchIndexSettings,
     transformEntry: ({ entry }) => wrapSearchIndexEntry('page', entry),
+  },
+  article: {
+    indexName: 'search_index',
+    entriesQuery: {
+      locale: 'all',
+      populate: ['tag.pageCategory', 'coverMedia'],
+    },
+    settings: searchIndexSettings,
+    transformEntry: ({ entry }) =>
+      wrapSearchIndexEntry('article', {
+        ...entry,
+        // Meilisearch doesn't support filtering dates as ISO strings, therefore we convert it to UNIX timestamp to
+        // use (number) filters.
+        addedAtTimestamp: entry.addedAt ? new Date(entry.addedAt).getTime() : undefined,
+        updatedAtTimestamp: entry.updated ? new Date(entry.updated).getTime() : undefined,
+      }),
   },
   'blog-post': {
     indexName: 'search_index',

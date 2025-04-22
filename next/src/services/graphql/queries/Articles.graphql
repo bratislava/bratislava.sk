@@ -1,0 +1,78 @@
+fragment ArticleSlugEntity on ArticleEntity {
+  __typename
+  id
+  attributes {
+    slug
+    title
+    locale
+  }
+}
+
+fragment ArticleCardEntity on ArticleEntity {
+  ...ArticleSlugEntity
+  attributes {
+    perex
+    addedAt
+    coverMedia {
+      data {
+        ...UploadImageEntity
+      }
+    }
+    tag {
+      data {
+        ...TagEntity
+      }
+    }
+  }
+}
+
+fragment ArticleEntity on ArticleEntity {
+  ...ArticleCardEntity
+  attributes {
+    alias
+    content
+    files {
+      ...FileBlock
+    }
+    gallery {
+      data {
+        ...UploadImageEntity
+      }
+    }
+  }
+}
+
+query ArticleBySlug($slug: String!, $locale: I18NLocaleCode!) {
+  articles(filters: { slug: { eq: $slug } }, locale: $locale) {
+    data {
+      ...ArticleEntity
+    }
+  }
+}
+
+query ArticlesStaticPaths($limit: Int = -1) {
+  articles(locale: "all", sort: "addedAt:desc", pagination: { limit: $limit }) {
+    data {
+      ...ArticleSlugEntity
+    }
+  }
+}
+
+query Dev_AllArticles(
+  $sort: [String]
+  $limit: Int
+  $start: Int
+  $filters: ArticleFiltersInput
+  $locale: I18NLocaleCode
+) {
+  articles(
+    sort: $sort
+    pagination: { limit: $limit, start: $start }
+    filters: $filters
+    locale: $locale
+  ) {
+    data {
+      ...ArticleEntity
+    }
+  }
+}

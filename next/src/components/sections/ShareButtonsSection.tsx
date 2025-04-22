@@ -1,12 +1,33 @@
-import React from 'react'
+import { Typography } from '@bratislava/component-library'
+import React, { PropsWithChildren } from 'react'
 
 import { FacebookIcon, InstagramIcon, LinkedinIcon, TwitterIcon } from '@/src/assets/images'
+import Button from '@/src/components/common/Button/Button'
 import SectionContainer from '@/src/components/common/SectionContainer/SectionContainer'
-import { SocialMediaButton } from '@/src/components/page-contents/BlogPostPageContent'
 import { useTranslation } from '@/src/utils/useTranslation'
 
 type Props = {
   twitterTitle?: string | null | undefined
+}
+
+const SocialMediaButton = ({
+  getLink,
+  children,
+}: PropsWithChildren<{ getLink: (link: string) => string }>) => {
+  const openSharePage = () => {
+    const w = 600
+    const h = 400
+    const l = screen.width / 2 - w / 2
+    const t = screen.height / 2 - h / 2
+
+    window.open(
+      getLink(window.location.href),
+      'pop',
+      `width=${w},height=${h},top=${t},left=${l},scrollbars=0`,
+    )
+  }
+
+  return <Button onPress={openSharePage}>{children}</Button>
 }
 
 const ShareButtonsSection = ({ twitterTitle }: Props) => {
@@ -17,8 +38,9 @@ const ShareButtonsSection = ({ twitterTitle }: Props) => {
   return (
     <SectionContainer className="mb-8">
       <div className="mt-14 flex flex-col">
-        {/* FIXME Typography. Convert to use Typography. Issue: different size than Figma span */}
-        <span className="text-h5">{t('ShareButtonsSection.share')}</span>
+        <Typography type="h2" size="h5">
+          {t('ShareButtonsSection.share')}
+        </Typography>
         <div className="flex gap-x-10 pt-5">
           <SocialMediaButton
             getLink={(socialLink) => `https://www.facebook.com/sharer/sharer.php?u=${socialLink}`}

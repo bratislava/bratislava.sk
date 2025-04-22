@@ -39,7 +39,14 @@
         }
       },
       "type": "enumeration",
-      "enum": ["red", "blue", "green", "yellow", "purple", "brown"]
+      "enum": [
+        "red",
+        "blue",
+        "green",
+        "yellow",
+        "purple",
+        "brown"
+      ]
     },
     "icon": {
       "pluginOptions": {

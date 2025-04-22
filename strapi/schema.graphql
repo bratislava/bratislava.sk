@@ -43,6 +43,76 @@ type AlertRelationResponseCollection {
   data: [AlertEntity!]!
 }
 
+type Article {
+  addedAt: DateTime!
+  alias: String
+  content: String
+  coverMedia: UploadFileEntityResponse
+  createdAt: DateTime
+  files(filters: ComponentBlocksFileFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksFile]
+  gallery(filters: UploadFileFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UploadFileRelationResponseCollection
+  locale: String
+  localizations(filters: ArticleFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): ArticleRelationResponseCollection
+  perex: String
+  publishedAt: DateTime
+  slug: String!
+  tag: TagEntityResponse
+  title: String!
+  updatedAt: DateTime
+}
+
+type ArticleEntity {
+  attributes: Article
+  id: ID
+}
+
+type ArticleEntityResponse {
+  data: ArticleEntity
+}
+
+type ArticleEntityResponseCollection {
+  data: [ArticleEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input ArticleFiltersInput {
+  addedAt: DateTimeFilterInput
+  alias: StringFilterInput
+  and: [ArticleFiltersInput]
+  content: StringFilterInput
+  createdAt: DateTimeFilterInput
+  files: ComponentBlocksFileFiltersInput
+  id: IDFilterInput
+  locale: StringFilterInput
+  localizations: ArticleFiltersInput
+  not: ArticleFiltersInput
+  or: [ArticleFiltersInput]
+  perex: StringFilterInput
+  publishedAt: DateTimeFilterInput
+  slug: StringFilterInput
+  tag: TagFiltersInput
+  title: StringFilterInput
+  updatedAt: DateTimeFilterInput
+}
+
+input ArticleInput {
+  addedAt: DateTime
+  alias: String
+  content: String
+  coverMedia: ID
+  files: [ComponentBlocksFileInput]
+  gallery: [ID]
+  perex: String
+  publishedAt: DateTime
+  slug: String
+  tag: ID
+  title: String
+}
+
+type ArticleRelationResponseCollection {
+  data: [ArticleEntity!]!
+}
+
 type BlogPost {
   addedAt: DateTime!
   coverImage: UploadFileEntityResponse
@@ -51,7 +121,6 @@ type BlogPost {
   excerpt: String
   locale: String
   localizations(filters: BlogPostFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): BlogPostRelationResponseCollection
-  moreLink: ComponentBlocksBlogPostLink
   publishedAt: DateTime
   sections: [BlogPostSectionsDynamicZone]
   slug: String!
@@ -83,7 +152,6 @@ input BlogPostFiltersInput {
   id: IDFilterInput
   locale: StringFilterInput
   localizations: BlogPostFiltersInput
-  moreLink: ComponentBlocksBlogPostLinkFiltersInput
   not: BlogPostFiltersInput
   or: [BlogPostFiltersInput]
   publishedAt: DateTimeFilterInput
@@ -98,7 +166,6 @@ input BlogPostInput {
   coverImage: ID
   date_added: DateTime
   excerpt: String
-  moreLink: ComponentBlocksBlogPostLinkInput
   publishedAt: DateTime
   sections: [BlogPostSectionsDynamicZoneInput!]
   slug: String
@@ -110,7 +177,7 @@ type BlogPostRelationResponseCollection {
   data: [BlogPostEntity!]!
 }
 
-union BlogPostSectionsDynamicZone = ComponentSectionsColumnedText | ComponentSectionsDivider | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsNarrowText | ComponentSectionsNumericalList | ComponentSectionsRegulations | ComponentSectionsTextWithImage | ComponentSectionsVideos | Error
+union BlogPostSectionsDynamicZone = ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsNarrowText | Error
 
 scalar BlogPostSectionsDynamicZoneInput
 
@@ -823,6 +890,26 @@ input ComponentSectionsAccordionInput {
   id: ID
   institutions: [ComponentAccordionItemsInstitutionInput]
   institutionsNarrow: [ComponentAccordionItemsInstitutionNarrowInput]
+  title: String
+}
+
+type ComponentSectionsArticles {
+  id: ID!
+  text: String
+  title: String
+}
+
+input ComponentSectionsArticlesFiltersInput {
+  and: [ComponentSectionsArticlesFiltersInput]
+  not: ComponentSectionsArticlesFiltersInput
+  or: [ComponentSectionsArticlesFiltersInput]
+  text: StringFilterInput
+  title: StringFilterInput
+}
+
+input ComponentSectionsArticlesInput {
+  id: ID
+  text: String
   title: String
 }
 
@@ -2181,7 +2268,7 @@ type GeneralRelationResponseCollection {
   data: [GeneralEntity!]!
 }
 
-union GenericMorph = Alert | BlogPost | ComponentAccordionItemsFlatText | ComponentAccordionItemsInstitution | ComponentAccordionItemsInstitutionNarrow | ComponentBlocksBlogPostLink | ComponentBlocksBookmarkLink | ComponentBlocksCommonLink | ComponentBlocksComparisonCard | ComponentBlocksComparisonItem | ComponentBlocksContactCard | ComponentBlocksFile | ComponentBlocksFileItem | ComponentBlocksFooterColumn | ComponentBlocksHomepageBookmark | ComponentBlocksHomepageHighlightsItem | ComponentBlocksIconWithTitleAndDescription | ComponentBlocksInBa | ComponentBlocksNumericalListItem | ComponentBlocksPageLink | ComponentBlocksProsAndConsCard | ComponentBlocksTestimonialItem | ComponentBlocksTimelineItem | ComponentBlocksTopServicesItem | ComponentBlocksVideo | ComponentGeneralHeader | ComponentGeneralHeaderLink | ComponentMenuMenuItem | ComponentMenuMenuLink | ComponentMenuMenuSection | ComponentSectionsAccordion | ComponentSectionsBanner | ComponentSectionsBlogPostsByCategory | ComponentSectionsBlogPostsList | ComponentSectionsCalculator | ComponentSectionsColumnedText | ComponentSectionsComparisonSection | ComponentSectionsContactsSection | ComponentSectionsDivider | ComponentSectionsFaqCategories | ComponentSectionsFaqs | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsHomepageEvents | ComponentSectionsHomepageHighlights | ComponentSectionsHomepageMayorAndCouncil | ComponentSectionsHomepageTabs | ComponentSectionsIconTitleDesc | ComponentSectionsIframe | ComponentSectionsInbaArticlesList | ComponentSectionsInbaReleases | ComponentSectionsLinks | ComponentSectionsNarrowText | ComponentSectionsNumericalList | ComponentSectionsOfficialBoard | ComponentSectionsOrganizationalStructure | ComponentSectionsProsAndConsSection | ComponentSectionsRegulations | ComponentSectionsRegulationsList | ComponentSectionsSubpageList | ComponentSectionsTestimonials | ComponentSectionsTextWithImage | ComponentSectionsTimeline | ComponentSectionsTopServices | ComponentSectionsVideos | ComponentSectionsWaves | ComponentTaxAdministratorsTaxAdministrator | Faq | FaqCategory | Footer | General | Homepage | I18NLocale | InbaArticle | InbaRelease | InbaTag | Menu | Page | PageCategory | Regulation | Tag | TaxAdministratorsList | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
+union GenericMorph = Alert | Article | BlogPost | ComponentAccordionItemsFlatText | ComponentAccordionItemsInstitution | ComponentAccordionItemsInstitutionNarrow | ComponentBlocksBlogPostLink | ComponentBlocksBookmarkLink | ComponentBlocksCommonLink | ComponentBlocksComparisonCard | ComponentBlocksComparisonItem | ComponentBlocksContactCard | ComponentBlocksFile | ComponentBlocksFileItem | ComponentBlocksFooterColumn | ComponentBlocksHomepageBookmark | ComponentBlocksHomepageHighlightsItem | ComponentBlocksIconWithTitleAndDescription | ComponentBlocksInBa | ComponentBlocksNumericalListItem | ComponentBlocksPageLink | ComponentBlocksProsAndConsCard | ComponentBlocksTestimonialItem | ComponentBlocksTimelineItem | ComponentBlocksTopServicesItem | ComponentBlocksVideo | ComponentGeneralHeader | ComponentGeneralHeaderLink | ComponentMenuMenuItem | ComponentMenuMenuLink | ComponentMenuMenuSection | ComponentSectionsAccordion | ComponentSectionsArticles | ComponentSectionsBanner | ComponentSectionsBlogPostsByCategory | ComponentSectionsBlogPostsList | ComponentSectionsCalculator | ComponentSectionsColumnedText | ComponentSectionsComparisonSection | ComponentSectionsContactsSection | ComponentSectionsDivider | ComponentSectionsFaqCategories | ComponentSectionsFaqs | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsHomepageEvents | ComponentSectionsHomepageHighlights | ComponentSectionsHomepageMayorAndCouncil | ComponentSectionsHomepageTabs | ComponentSectionsIconTitleDesc | ComponentSectionsIframe | ComponentSectionsInbaArticlesList | ComponentSectionsInbaReleases | ComponentSectionsLinks | ComponentSectionsNarrowText | ComponentSectionsNumericalList | ComponentSectionsOfficialBoard | ComponentSectionsOrganizationalStructure | ComponentSectionsProsAndConsSection | ComponentSectionsRegulations | ComponentSectionsRegulationsList | ComponentSectionsSubpageList | ComponentSectionsTestimonials | ComponentSectionsTextWithImage | ComponentSectionsTimeline | ComponentSectionsTopServices | ComponentSectionsVideos | ComponentSectionsWaves | ComponentTaxAdministratorsTaxAdministrator | Faq | FaqCategory | Footer | General | Homepage | I18NLocale | InbaArticle | InbaRelease | InbaTag | Menu | Page | PageCategory | Regulation | Tag | TaxAdministratorsList | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
 
 type Homepage {
   bookmarkTourists: ComponentBlocksHomepageBookmark
@@ -2635,6 +2722,8 @@ type Mutation {
   """Change user password. Confirm with the current password."""
   changePassword(currentPassword: String!, password: String!, passwordConfirmation: String!): UsersPermissionsLoginPayload
   createAlertLocalization(data: AlertInput, id: ID, locale: I18NLocaleCode): AlertEntityResponse
+  createArticle(data: ArticleInput!, locale: I18NLocaleCode): ArticleEntityResponse
+  createArticleLocalization(data: ArticleInput, id: ID, locale: I18NLocaleCode): ArticleEntityResponse
   createBlogPost(data: BlogPostInput!, locale: I18NLocaleCode): BlogPostEntityResponse
   createBlogPostLocalization(data: BlogPostInput, id: ID, locale: I18NLocaleCode): BlogPostEntityResponse
   createFaq(data: FaqInput!, locale: I18NLocaleCode): FaqEntityResponse
@@ -2666,6 +2755,7 @@ type Mutation {
   """Create a new user"""
   createUsersPermissionsUser(data: UsersPermissionsUserInput!): UsersPermissionsUserEntityResponse!
   deleteAlert(locale: I18NLocaleCode): AlertEntityResponse
+  deleteArticle(id: ID!, locale: I18NLocaleCode): ArticleEntityResponse
   deleteBlogPost(id: ID!, locale: I18NLocaleCode): BlogPostEntityResponse
   deleteFaq(id: ID!, locale: I18NLocaleCode): FaqEntityResponse
   deleteFaqCategory(id: ID!, locale: I18NLocaleCode): FaqCategoryEntityResponse
@@ -2707,6 +2797,7 @@ type Mutation {
   """
   resetPassword(code: String!, password: String!, passwordConfirmation: String!): UsersPermissionsLoginPayload
   updateAlert(data: AlertInput!, locale: I18NLocaleCode): AlertEntityResponse
+  updateArticle(data: ArticleInput!, id: ID!, locale: I18NLocaleCode): ArticleEntityResponse
   updateBlogPost(data: BlogPostInput!, id: ID!, locale: I18NLocaleCode): BlogPostEntityResponse
   updateFaq(data: FaqInput!, id: ID!, locale: I18NLocaleCode): FaqEntityResponse
   updateFaqCategory(data: FaqCategoryInput!, id: ID!, locale: I18NLocaleCode): FaqCategoryEntityResponse
@@ -2876,7 +2967,7 @@ type PageRelationResponseCollection {
   data: [PageEntity!]!
 }
 
-union PageSectionsDynamicZone = ComponentSectionsAccordion | ComponentSectionsBanner | ComponentSectionsBlogPostsByCategory | ComponentSectionsBlogPostsList | ComponentSectionsCalculator | ComponentSectionsColumnedText | ComponentSectionsComparisonSection | ComponentSectionsContactsSection | ComponentSectionsDivider | ComponentSectionsFaqCategories | ComponentSectionsFaqs | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsIconTitleDesc | ComponentSectionsIframe | ComponentSectionsInbaArticlesList | ComponentSectionsInbaReleases | ComponentSectionsLinks | ComponentSectionsNarrowText | ComponentSectionsNumericalList | ComponentSectionsOfficialBoard | ComponentSectionsOrganizationalStructure | ComponentSectionsProsAndConsSection | ComponentSectionsRegulations | ComponentSectionsRegulationsList | ComponentSectionsTestimonials | ComponentSectionsTextWithImage | ComponentSectionsTimeline | ComponentSectionsVideos | ComponentSectionsWaves | Error
+union PageSectionsDynamicZone = ComponentSectionsAccordion | ComponentSectionsArticles | ComponentSectionsBanner | ComponentSectionsBlogPostsByCategory | ComponentSectionsBlogPostsList | ComponentSectionsCalculator | ComponentSectionsColumnedText | ComponentSectionsComparisonSection | ComponentSectionsContactsSection | ComponentSectionsDivider | ComponentSectionsFaqCategories | ComponentSectionsFaqs | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsIconTitleDesc | ComponentSectionsIframe | ComponentSectionsInbaArticlesList | ComponentSectionsInbaReleases | ComponentSectionsLinks | ComponentSectionsNarrowText | ComponentSectionsNumericalList | ComponentSectionsOfficialBoard | ComponentSectionsOrganizationalStructure | ComponentSectionsProsAndConsSection | ComponentSectionsRegulations | ComponentSectionsRegulationsList | ComponentSectionsTestimonials | ComponentSectionsTextWithImage | ComponentSectionsTimeline | ComponentSectionsVideos | ComponentSectionsWaves | Error
 
 scalar PageSectionsDynamicZoneInput
 
@@ -2901,6 +2992,8 @@ enum PublicationState {
 
 type Query {
   alert(locale: I18NLocaleCode): AlertEntityResponse
+  article(id: ID, locale: I18NLocaleCode): ArticleEntityResponse
+  articles(filters: ArticleFiltersInput, locale: I18NLocaleCode, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): ArticleEntityResponseCollection
   blogPost(id: ID, locale: I18NLocaleCode): BlogPostEntityResponse
   blogPosts(filters: BlogPostFiltersInput, locale: I18NLocaleCode, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): BlogPostEntityResponseCollection
   faq(id: ID, locale: I18NLocaleCode): FaqEntityResponse
@@ -3044,6 +3137,7 @@ input StringFilterInput {
 }
 
 type Tag {
+  articles(filters: ArticleFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): ArticleRelationResponseCollection
   createdAt: DateTime
   locale: String
   localizations(filters: TagFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): TagRelationResponseCollection
@@ -3068,6 +3162,7 @@ type TagEntityResponseCollection {
 
 input TagFiltersInput {
   and: [TagFiltersInput]
+  articles: ArticleFiltersInput
   createdAt: DateTimeFilterInput
   id: IDFilterInput
   locale: StringFilterInput
@@ -3080,6 +3175,7 @@ input TagFiltersInput {
 }
 
 input TagInput {
+  articles: [ID]
   pageCategory: ID
   title: String
 }

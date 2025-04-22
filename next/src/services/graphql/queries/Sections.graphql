@@ -51,6 +51,11 @@ fragment BlogPostsListSection on ComponentSectionsBlogPostsList {
   text
 }
 
+fragment ArticlesSection on ComponentSectionsArticles {
+  title
+  text
+}
+
 fragment BlogPostsByCategorySection on ComponentSectionsBlogPostsByCategory {
   title
   text
@@ -460,6 +465,10 @@ fragment Sections on PageSectionsDynamicZone {
 
   ... on ComponentSectionsNumericalList {
     ...NumericalListSection
+  }
+
+  ... on ComponentSectionsArticles {
+    ...ArticlesSection
   }
 
   ... on ComponentSectionsBlogPostsList {
