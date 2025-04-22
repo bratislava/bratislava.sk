@@ -1,15 +1,14 @@
 {
-  "key": "plugin_content_manager_configuration_content_types::api::blog-post.blog-post",
+  "key": "plugin_content_manager_configuration_content_types::api::article.article",
   "value": {
-    "uid": "api::blog-post.blog-post",
     "settings": {
       "bulkable": true,
       "filterable": true,
       "searchable": true,
       "pageSize": 10,
-      "mainField": "slug",
-      "defaultSortBy": "updatedAt",
-      "defaultSortOrder": "DESC"
+      "mainField": "title",
+      "defaultSortBy": "title",
+      "defaultSortOrder": "ASC"
     },
     "metadatas": {
       "id": {
@@ -34,34 +33,6 @@
           "sortable": true
         }
       },
-      "excerpt": {
-        "edit": {
-          "label": "Perex (excerpt)",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "excerpt",
-          "searchable": true,
-          "sortable": true
-        }
-      },
-      "coverImage": {
-        "edit": {
-          "label": "Ilustračný obrázok",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "coverImage",
-          "searchable": false,
-          "sortable": false
-        }
-      },
       "slug": {
         "edit": {
           "label": "Slug",
@@ -74,6 +45,63 @@
           "label": "slug",
           "searchable": true,
           "sortable": true
+        }
+      },
+      "perex": {
+        "edit": {
+          "label": "Perex",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "perex",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "alias": {
+        "edit": {
+          "label": "Alias",
+          "description": "Alias slúži pre skrátenie URL adresy za účelom zdieľania a propagácie (podobne ako napr. bit.ly). Používajte v ňom iba malé písmená, čísla a pomlčky.",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "alias",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "coverMedia": {
+        "edit": {
+          "label": "Ilustračný obrázok",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "coverMedia",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "tag": {
+        "edit": {
+          "label": "Tag",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "title"
+        },
+        "list": {
+          "label": "tag",
+          "searchable": false,
+          "sortable": false
         }
       },
       "addedAt": {
@@ -90,45 +118,44 @@
           "sortable": true
         }
       },
-      "date_added": {
+      "content": {
         "edit": {
-          "label": "date_added",
+          "label": "Text",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "date_added",
-          "searchable": true,
-          "sortable": true
+          "label": "content",
+          "searchable": false,
+          "sortable": false
         }
       },
-      "tag": {
+      "files": {
         "edit": {
-          "label": "Tag",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true,
-          "mainField": "title"
-        },
-        "list": {
-          "label": "tag",
-          "searchable": true,
-          "sortable": true
-        }
-      },
-      "sections": {
-        "edit": {
-          "label": "Sekcie",
+          "label": "Súbory",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "sections",
+          "label": "files",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "gallery": {
+        "edit": {
+          "label": "Galéria",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "gallery",
           "searchable": false,
           "sortable": false
         }
@@ -208,13 +235,29 @@
         ],
         [
           {
-            "name": "excerpt",
+            "name": "addedAt",
+            "size": 6
+          },
+          {
+            "name": "alias",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "perex",
             "size": 12
           }
         ],
         [
           {
-            "name": "coverImage",
+            "name": "content",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "coverMedia",
             "size": 6
           },
           {
@@ -224,25 +267,20 @@
         ],
         [
           {
-            "name": "addedAt",
-            "size": 6
+            "name": "files",
+            "size": 12
           }
         ],
         [
           {
-            "name": "sections",
+            "name": "gallery",
             "size": 12
           }
         ]
       ],
-      "list": [
-        "id",
-        "coverImage",
-        "title",
-        "tag",
-        "updatedAt"
-      ]
-    }
+      "list": ["id", "title", "slug", "createdAt"]
+    },
+    "uid": "api::article.article"
   },
   "type": "object",
   "environment": null,

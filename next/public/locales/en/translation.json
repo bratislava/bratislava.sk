@@ -1,4 +1,6 @@
 {
+  "AliasInfoMessage.message.article": "You can also find this article at",
+  "AliasInfoMessage.message.page": "You can also find this page at",
   "BlogPostsFilter.allArticles": "All news",
   "BlogPostsFilter.articleFilter": "News filter",
   "BlogPostsFilter.subcategories": "Subcategories",

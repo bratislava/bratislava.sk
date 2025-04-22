@@ -52,6 +52,20 @@
     "slug": {
       "type": "uid",
       "targetField": "title",
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "addedAt": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "datetime",
       "required": true
     },
     "date_added": {
@@ -67,16 +81,6 @@
       "relation": "oneToOne",
       "target": "api::tag.tag"
     },
-    "moreLink": {
-      "type": "component",
-      "repeatable": false,
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "component": "blocks.blog-post-link"
-    },
     "sections": {
       "pluginOptions": {
         "i18n": {
@@ -85,24 +89,10 @@
       },
       "type": "dynamiczone",
       "components": [
-        "sections.columned-text",
-        "sections.text-with-image",
-        "sections.file-list",
-        "sections.regulations",
         "sections.narrow-text",
-        "sections.divider",
-        "sections.videos",
-        "sections.numerical-list",
+        "sections.file-list",
         "sections.gallery"
       ]
-    },
-    "addedAt": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": false
-        }
-      },
-      "type": "datetime"
     }
   }
 }

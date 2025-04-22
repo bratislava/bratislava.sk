@@ -23,12 +23,12 @@ export const prefetchPageSections = async (page: PageEntityFragment, locale: str
 
   if (sectionTypes.includes('ComponentSectionsBlogPostsList')) {
     await queryClient.prefetchQuery({
-      queryKey: ['blogPostsTags', locale],
-      queryFn: () => client.blogPostsTags({ locale }),
+      queryKey: ['Tags', locale],
+      queryFn: () => client.Tags({ locale }),
     })
     await queryClient.prefetchQuery({
-      queryKey: ['pageCategories', locale],
-      queryFn: () => client.pageCategories({ locale }),
+      queryKey: ['PageCategories', locale],
+      queryFn: () => client.PageCategories({ locale }),
     })
   }
 

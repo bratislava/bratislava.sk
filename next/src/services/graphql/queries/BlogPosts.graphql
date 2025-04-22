@@ -16,7 +16,7 @@ query LatestPostsByTags(
     locale: $locale
     filters: { tag: { title: { in: $tags } } }
     pagination: { limit: $limit, start: $start }
-    sort: "publishedAt:desc"
+    sort: "addedAt:desc"
   ) {
     data {
       ...BlogPostEntity
@@ -25,7 +25,7 @@ query LatestPostsByTags(
 }
 
 query BlogPostsStaticPaths {
-  blogPosts(locale: "all", sort: "publishedAt:desc") {
+  blogPosts(locale: "all", sort: "addedAt:desc") {
     data {
       id
       attributes {
@@ -37,14 +37,13 @@ query BlogPostsStaticPaths {
 }
 
 query BlogPostsRssFeed($locale: I18NLocaleCode!) {
-  blogPosts(locale: $locale, sort: "publishedAt:desc") {
+  blogPosts(locale: $locale, sort: "addedAt:desc") {
     data {
       id
       attributes {
         slug
         title
-        publishedAt
-        date_added
+        addedAt
         excerpt
         tag {
           data {
@@ -106,8 +105,7 @@ fragment LatestBlogPostEntity on BlogPostEntity {
         }
       }
     }
-    date_added
-    publishedAt
+    addedAt
     updatedAt
     tag {
       data {
@@ -133,9 +131,8 @@ fragment BlogPostEntity on BlogPostEntity {
     slug
     excerpt
     title
+    addedAt
     updatedAt
-    publishedAt
-    date_added
     tag {
       data {
         attributes {
@@ -160,34 +157,19 @@ fragment BlogPostEntity on BlogPostEntity {
         }
       }
     }
-    moreLink {
-      ...BlogPostLink
-    }
-    createdAt
     sections {
       ...Sections
     }
-  }
-}
-
-fragment BlogPostLink on ComponentBlocksBlogPostLink {
-  blogPost {
-    data {
-      id
-      attributes {
-        title
-        slug
+    locale
+    localizations {
+      data {
+        id
+        attributes {
+          slug
+          title
+          locale
+        }
       }
-    }
-  }
-  title
-  url
-}
-
-query pageCategories($locale: I18NLocaleCode) {
-  pageCategories(pagination: { limit: -1 }, locale: $locale) {
-    data {
-      ...PageCategoryEntity
     }
   }
 }
@@ -197,26 +179,6 @@ query blogPostsTags($locale: I18NLocaleCode) {
     data {
       ...TagEntity
     }
-  }
-}
-
-fragment TagEntity on TagEntity {
-  id
-  attributes {
-    title
-    pageCategory {
-      data {
-        ...PageCategoryEntity
-      }
-    }
-  }
-}
-
-fragment PageCategoryEntity on PageCategoryEntity {
-  id
-  attributes {
-    title
-    color
   }
 }
 

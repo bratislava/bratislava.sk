@@ -7,6 +7,12 @@
       "action": "api::alert.alert.find"
     },
     {
+      "action": "api::article.article.find"
+    },
+    {
+      "action": "api::article.article.findOne"
+    },
+    {
       "action": "api::blog-post.blog-post.find"
     },
     {

@@ -1,20 +1,20 @@
 import { Typography } from '@bratislava/component-library'
 import { keepPreviousData, useQuery } from '@tanstack/react-query'
-import React, { useEffect } from 'react'
+import React from 'react'
 
 import BlogPostCard from '@/src/components/cards/BlogPostCard'
+import BlogPostsFilter from '@/src/components/common/BlogPostsFilter/BlogPostsFilter'
 import Pagination from '@/src/components/common/Pagination/Pagination'
-import { BlogPostsByCategorySectionFragment } from '@/src/services/graphql'
+import { ArticlesSectionFragment } from '@/src/services/graphql'
 import { client } from '@/src/services/graphql/gql'
 import {
-  blogPostsDefaultFilters,
-  blogPostsFetcher,
-  getBlogPostsQueryKey,
-} from '@/src/services/meili/fetchers/blogPostsFetcher'
+  articlesDefaultFilters,
+  articlesFetcher,
+  getArticlesQueryKey,
+} from '@/src/services/meili/fetchers/articlesFetcher'
 import { getCategoryColorLocalStyle } from '@/src/utils/colors'
 import { getNumericLocalDate } from '@/src/utils/formatDate'
 import { generateImageSizes } from '@/src/utils/generateImageSizes'
-import { isDefined } from '@/src/utils/isDefined'
 import { useLocale } from '@/src/utils/useLocale'
 import { useRoutePreservedState } from '@/src/utils/useRoutePreservedState'
 import { useTranslation } from '@/src/utils/useTranslation'
@@ -22,17 +22,29 @@ import { useTranslation } from '@/src/utils/useTranslation'
 const imageSizes = generateImageSizes({ default: '100vw', md: '50vw', lg: '33vw' })
 
 type Props = {
-  section: BlogPostsByCategorySectionFragment
+  section: ArticlesSectionFragment
 }
 
-const BlogPostsByCategory = ({ section }: Props) => {
+const ArticlesSection = ({ section }: Props) => {
   const { t } = useTranslation()
   const locale = useLocale()
 
-  const { title, text, category } = section
+  const { title, text } = section
 
   const [filters, setFilters] = useRoutePreservedState({
-    ...blogPostsDefaultFilters,
+    ...articlesDefaultFilters,
+  })
+
+  const { data } = useQuery({
+    queryKey: getArticlesQueryKey(filters, locale),
+    queryFn: () => articlesFetcher(filters, locale),
+    placeholderData: keepPreviousData,
+  })
+
+  const { data: pageCategoriesData } = useQuery({
+    queryKey: ['PageCategories', locale],
+    queryFn: () => client.PageCategories({ locale }),
+    staleTime: Infinity,
   })
 
   const { data: tagsData } = useQuery({
@@ -41,33 +53,21 @@ const BlogPostsByCategory = ({ section }: Props) => {
     staleTime: Infinity,
   })
 
-  const tagIds =
-    tagsData?.tags?.data
-      .filter((tag) => {
-        return tag.attributes?.pageCategory?.data?.id === category?.data?.id
-      })
-      .map((tag) => tag.id ?? '')
-      .filter(isDefined) ?? []
-
-  useEffect(() => {
-    setFilters({ ...filters, tagIds })
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [tagsData])
-
-  // TODO prefetch section
-  const { data } = useQuery({
-    queryKey: getBlogPostsQueryKey(filters, locale),
-    queryFn: () => blogPostsFetcher(filters, locale),
-    placeholderData: keepPreviousData,
-    enabled: filters.tagIds.length > 0,
-  })
-
   const handlePageChange = (page: number) => {
     setFilters({ ...filters, page })
   }
 
+  const handleTagsChange = (tags: string[]) => {
+    setFilters({ ...filters, tagIds: tags })
+  }
+
   return (
     <div className="flex flex-col gap-8">
+      <BlogPostsFilter
+        pageCategories={pageCategoriesData?.pageCategories?.data ?? []}
+        blogPostsTags={tagsData?.tags?.data ?? []}
+        onTagChange={handleTagsChange}
+      />
       {title || text ? (
         <div className="flex flex-col gap-2">
           {title && <Typography type="h2">{title}</Typography>}
@@ -79,7 +79,7 @@ const BlogPostsByCategory = ({ section }: Props) => {
           if (!card.attributes) return null
 
           // TODO refactor sections that use BlogPostCard - it needs too much duplicate code while passing props
-          const { title: blogPostTitle, slug, coverImage, tag, addedAt } = card.attributes
+          const { title: blogPostTitle, slug, coverMedia, addedAt, perex, tag } = card.attributes
           const tagColor = tag?.data?.attributes?.pageCategory?.data?.attributes?.color
           const tagTitle = tag?.data?.attributes?.title
 
@@ -90,13 +90,15 @@ const BlogPostsByCategory = ({ section }: Props) => {
               date={getNumericLocalDate(addedAt)}
               tag={tagTitle ?? undefined}
               title={blogPostTitle ?? ''}
-              linkProps={{ children: t('readMore'), href: `/blog/${slug}` }}
-              imgSrc={coverImage?.data?.attributes?.url}
+              text={perex ?? undefined}
+              linkProps={{ children: t('readMore'), href: `/spravy/${slug}` }}
+              imgSrc={coverMedia?.data?.attributes?.url}
               imgSizes={imageSizes}
             />
           )
         })}
       </div>
+
       {data?.estimatedTotalHits ? (
         <Pagination
           key={filters.search}
@@ -109,4 +111,4 @@ const BlogPostsByCategory = ({ section }: Props) => {
   )
 }
 
-export default BlogPostsByCategory
+export default ArticlesSection

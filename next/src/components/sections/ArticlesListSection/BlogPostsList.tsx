@@ -25,7 +25,7 @@ type Props = {
   section: BlogPostsListSectionFragment
 }
 
-const BlogPostsByTags = ({ section }: Props) => {
+const BlogPostsList = ({ section }: Props) => {
   const { t } = useTranslation()
   const locale = useLocale()
 
@@ -42,14 +42,14 @@ const BlogPostsByTags = ({ section }: Props) => {
   })
 
   const { data: pageCategoriesData } = useQuery({
-    queryKey: ['pageCategories', locale],
-    queryFn: () => client.pageCategories({ locale }),
+    queryKey: ['PageCategories', locale],
+    queryFn: () => client.PageCategories({ locale }),
     staleTime: Infinity,
   })
 
-  const { data: blogPostsTagsData } = useQuery({
-    queryKey: ['blogPostsTags', locale],
-    queryFn: () => client.blogPostsTags({ locale }),
+  const { data: tagsData } = useQuery({
+    queryKey: ['Tags', locale],
+    queryFn: () => client.Tags({ locale }),
     staleTime: Infinity,
   })
 
@@ -65,7 +65,7 @@ const BlogPostsByTags = ({ section }: Props) => {
     <div className="flex flex-col gap-8">
       <BlogPostsFilter
         pageCategories={pageCategoriesData?.pageCategories?.data ?? []}
-        blogPostsTags={blogPostsTagsData?.tags?.data ?? []}
+        blogPostsTags={tagsData?.tags?.data ?? []}
         onTagChange={handleTagsChange}
       />
       {title || text ? (
@@ -79,15 +79,7 @@ const BlogPostsByTags = ({ section }: Props) => {
           if (!card.attributes) return null
 
           // TODO refactor sections that use BlogPostCard - it needs too much duplicate code while passing props
-          const {
-            title: blogPostTitle,
-            slug,
-            coverImage,
-            tag,
-            date_added,
-            publishedAt,
-            excerpt,
-          } = card.attributes
+          const { title: blogPostTitle, slug, coverImage, tag, addedAt, excerpt } = card.attributes
           const tagColor = tag?.data?.attributes?.pageCategory?.data?.attributes?.color
           const tagTitle = tag?.data?.attributes?.title
 
@@ -95,7 +87,7 @@ const BlogPostsByTags = ({ section }: Props) => {
             <BlogPostCard
               key={slug}
               style={getCategoryColorLocalStyle({ color: tagColor })}
-              date={getNumericLocalDate(date_added ?? publishedAt)}
+              date={getNumericLocalDate(addedAt)}
               tag={tagTitle ?? undefined}
               title={blogPostTitle ?? ''}
               text={excerpt ?? undefined}
@@ -119,4 +111,4 @@ const BlogPostsByTags = ({ section }: Props) => {
   )
 }
 
-export default BlogPostsByTags
+export default BlogPostsList

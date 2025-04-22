@@ -333,6 +333,99 @@ export interface ApiAlertAlert extends Schema.SingleType {
   }
 }
 
+export interface ApiArticleArticle extends Schema.CollectionType {
+  collectionName: 'articles'
+  info: {
+    description: ''
+    displayName: 'Articles (new)'
+    pluralName: 'articles'
+    singularName: 'article'
+  }
+  options: {
+    draftAndPublish: true
+  }
+  pluginOptions: {
+    i18n: {
+      localized: true
+    }
+  }
+  attributes: {
+    addedAt: Attribute.DateTime &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false
+        }
+      }>
+    alias: Attribute.UID &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true
+        }
+      }>
+    content: Attribute.RichText &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true
+        }
+      }>
+    coverMedia: Attribute.Media<'images'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false
+        }
+      }>
+    createdAt: Attribute.DateTime
+    createdBy: Attribute.Relation<'api::article.article', 'oneToOne', 'admin::user'> &
+      Attribute.Private
+    files: Attribute.Component<'blocks.file', true> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true
+        }
+      }> &
+      Attribute.SetMinMax<
+        {
+          min: 1
+        },
+        number
+      >
+    gallery: Attribute.Media<'images', true> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false
+        }
+      }>
+    locale: Attribute.String
+    localizations: Attribute.Relation<'api::article.article', 'oneToMany', 'api::article.article'>
+    perex: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true
+        }
+      }>
+    publishedAt: Attribute.DateTime
+    slug: Attribute.UID<'api::article.article', 'title'> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true
+        }
+      }>
+    tag: Attribute.Relation<'api::article.article', 'manyToOne', 'api::tag.tag'>
+    title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true
+        }
+      }>
+    updatedAt: Attribute.DateTime
+    updatedBy: Attribute.Relation<'api::article.article', 'oneToOne', 'admin::user'> &
+      Attribute.Private
+  }
+}
+
 export interface ApiBlogPostBlogPost extends Schema.CollectionType {
   collectionName: 'blog_posts'
   info: {
@@ -351,6 +444,7 @@ export interface ApiBlogPostBlogPost extends Schema.CollectionType {
   }
   attributes: {
     addedAt: Attribute.DateTime &
+      Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: false
@@ -383,32 +477,22 @@ export interface ApiBlogPostBlogPost extends Schema.CollectionType {
       'oneToMany',
       'api::blog-post.blog-post'
     >
-    moreLink: Attribute.Component<'blocks.blog-post-link'> &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true
-        }
-      }>
     publishedAt: Attribute.DateTime
     sections: Attribute.DynamicZone<
-      [
-        'sections.columned-text',
-        'sections.text-with-image',
-        'sections.file-list',
-        'sections.regulations',
-        'sections.narrow-text',
-        'sections.divider',
-        'sections.videos',
-        'sections.numerical-list',
-        'sections.gallery'
-      ]
+      ['sections.narrow-text', 'sections.file-list', 'sections.gallery']
     > &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true
         }
       }>
-    slug: Attribute.UID<'api::blog-post.blog-post', 'title'> & Attribute.Required
+    slug: Attribute.UID<'api::blog-post.blog-post', 'title'> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true
+        }
+      }>
     tag: Attribute.Relation<'api::blog-post.blog-post', 'oneToOne', 'api::tag.tag'>
     title: Attribute.String &
       Attribute.Required &
@@ -1084,6 +1168,7 @@ export interface ApiPagePage extends Schema.CollectionType {
     sections: Attribute.DynamicZone<
       [
         'sections.accordion',
+        'sections.articles',
         'sections.banner',
         'sections.blog-posts-list',
         'sections.blog-posts-by-category',
@@ -1223,6 +1308,7 @@ export interface ApiTagTag extends Schema.CollectionType {
     }
   }
   attributes: {
+    articles: Attribute.Relation<'api::tag.tag', 'oneToMany', 'api::article.article'>
     createdAt: Attribute.DateTime
     createdBy: Attribute.Relation<'api::tag.tag', 'oneToOne', 'admin::user'> & Attribute.Private
     locale: Attribute.String
@@ -1641,6 +1727,7 @@ declare module '@strapi/types' {
       'admin::transfer-token-permission': AdminTransferTokenPermission
       'admin::user': AdminUser
       'api::alert.alert': ApiAlertAlert
+      'api::article.article': ApiArticleArticle
       'api::blog-post.blog-post': ApiBlogPostBlogPost
       'api::faq-category.faq-category': ApiFaqCategoryFaqCategory
       'api::faq.faq': ApiFaqFaq

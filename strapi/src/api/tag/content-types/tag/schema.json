@@ -28,6 +28,12 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::page-category.page-category"
+    },
+    "articles": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::article.article",
+      "mappedBy": "tag"
     }
   }
 }

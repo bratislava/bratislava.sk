@@ -107,7 +107,7 @@ export const useQueryBySearchOption = ({
               linkHref: `/blog/${blogPostData.attributes?.slug}`,
               metadata: [
                 blogPostData.attributes?.tag?.data?.attributes?.title,
-                formatDate(blogPostData.attributes?.publishedAt),
+                formatDate(blogPostData.attributes?.addedAt),
               ],
               coverImageSrc: blogPostData.attributes?.coverImage?.data?.attributes?.url,
             }

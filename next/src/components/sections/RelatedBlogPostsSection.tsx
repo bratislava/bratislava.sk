@@ -52,7 +52,7 @@ const RelatedBlogPostsSection = ({ page, className }: Props) => {
             if (!card.attributes) return null
 
             // TODO refactor sections that use BlogPostCard - it needs too much duplicate code while passing props
-            const { title, slug, coverImage, tag, date_added, publishedAt } = card.attributes
+            const { title, slug, coverImage, tag, addedAt } = card.attributes
             const tagColor = tag?.data?.attributes?.pageCategory?.data?.attributes?.color
             const tagTitle = tag?.data?.attributes?.title
 
@@ -62,7 +62,7 @@ const RelatedBlogPostsSection = ({ page, className }: Props) => {
                 style={getCategoryColorLocalStyle({ color: tagColor })}
                 imgSrc={coverImage?.data?.attributes?.url}
                 imgSizes={imageSizes}
-                date={getNumericLocalDate(date_added ?? publishedAt)}
+                date={getNumericLocalDate(addedAt)}
                 title={title ?? ''}
                 tag={tagTitle ?? undefined}
                 linkProps={{
