@@ -1,13 +1,33 @@
 import { Typography } from '@bratislava/component-library'
-import React from 'react'
+import React, { PropsWithChildren } from 'react'
 
 import { FacebookIcon, InstagramIcon, LinkedinIcon, TwitterIcon } from '@/src/assets/images'
+import Button from '@/src/components/common/Button/Button'
 import SectionContainer from '@/src/components/common/SectionContainer/SectionContainer'
-import { SocialMediaButton } from '@/src/components/page-contents/BlogPostPageContent'
 import { useTranslation } from '@/src/utils/useTranslation'
 
 type Props = {
   twitterTitle?: string | null | undefined
+}
+
+const SocialMediaButton = ({
+  getLink,
+  children,
+}: PropsWithChildren<{ getLink: (link: string) => string }>) => {
+  const openSharePage = () => {
+    const w = 600
+    const h = 400
+    const l = screen.width / 2 - w / 2
+    const t = screen.height / 2 - h / 2
+
+    window.open(
+      getLink(window.location.href),
+      'pop',
+      `width=${w},height=${h},top=${t},left=${l},scrollbars=0`,
+    )
+  }
+
+  return <Button onPress={openSharePage}>{children}</Button>
 }
 
 const ShareButtonsSection = ({ twitterTitle }: Props) => {

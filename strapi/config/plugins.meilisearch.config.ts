@@ -37,9 +37,9 @@ const searchIndexSettings = {
   filterableAttributes: [
     // All
     'type',
-    // Page + Blog post + Inba article
+    // Page + Blog post + Article + Inba article
     'locale',
-    'article.tags.id',
+    'article.tag.id',
     'blog-post.tag.id',
     'inba-article.inbaTag.id',
     // Regulation

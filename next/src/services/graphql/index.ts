@@ -98,7 +98,7 @@ export type Article = {
   perex?: Maybe<Scalars['String']['output']>
   publishedAt?: Maybe<Scalars['DateTime']['output']>
   slug: Scalars['String']['output']
-  tags?: Maybe<TagRelationResponseCollection>
+  tag?: Maybe<TagEntityResponse>
   title: Scalars['String']['output']
   updatedAt?: Maybe<Scalars['DateTime']['output']>
 }
@@ -119,12 +119,6 @@ export type ArticleLocalizationsArgs = {
   filters?: InputMaybe<ArticleFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   publicationState?: InputMaybe<PublicationState>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
-}
-
-export type ArticleTagsArgs = {
-  filters?: InputMaybe<TagFiltersInput>
-  pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
 }
 
@@ -160,7 +154,7 @@ export type ArticleFiltersInput = {
   perex?: InputMaybe<StringFilterInput>
   publishedAt?: InputMaybe<DateTimeFilterInput>
   slug?: InputMaybe<StringFilterInput>
-  tags?: InputMaybe<TagFiltersInput>
+  tag?: InputMaybe<TagFiltersInput>
   title?: InputMaybe<StringFilterInput>
   updatedAt?: InputMaybe<DateTimeFilterInput>
 }
@@ -175,7 +169,7 @@ export type ArticleInput = {
   perex?: InputMaybe<Scalars['String']['input']>
   publishedAt?: InputMaybe<Scalars['DateTime']['input']>
   slug?: InputMaybe<Scalars['String']['input']>
-  tags?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
+  tag?: InputMaybe<Scalars['ID']['input']>
   title?: InputMaybe<Scalars['String']['input']>
 }
 
@@ -4952,9 +4946,9 @@ export type ArticleCardEntityFragment = {
         } | null
       } | null
     } | null
-    tags?: {
-      __typename?: 'TagRelationResponseCollection'
-      data: Array<{
+    tag?: {
+      __typename?: 'TagEntityResponse'
+      data?: {
         __typename?: 'TagEntity'
         id?: string | null
         attributes?: {
@@ -4973,7 +4967,7 @@ export type ArticleCardEntityFragment = {
             } | null
           } | null
         } | null
-      }>
+      } | null
     } | null
   } | null
 }
@@ -5043,9 +5037,9 @@ export type ArticleEntityFragment = {
         } | null
       } | null
     } | null
-    tags?: {
-      __typename?: 'TagRelationResponseCollection'
-      data: Array<{
+    tag?: {
+      __typename?: 'TagEntityResponse'
+      data?: {
         __typename?: 'TagEntity'
         id?: string | null
         attributes?: {
@@ -5064,7 +5058,7 @@ export type ArticleEntityFragment = {
             } | null
           } | null
         } | null
-      }>
+      } | null
     } | null
   } | null
 }
@@ -5143,9 +5137,9 @@ export type ArticleBySlugQuery = {
             } | null
           } | null
         } | null
-        tags?: {
-          __typename?: 'TagRelationResponseCollection'
-          data: Array<{
+        tag?: {
+          __typename?: 'TagEntityResponse'
+          data?: {
             __typename?: 'TagEntity'
             id?: string | null
             attributes?: {
@@ -5164,7 +5158,7 @@ export type ArticleBySlugQuery = {
                 } | null
               } | null
             } | null
-          }>
+          } | null
         } | null
       } | null
     }>
@@ -5271,9 +5265,9 @@ export type Dev_AllArticlesQuery = {
             } | null
           } | null
         } | null
-        tags?: {
-          __typename?: 'TagRelationResponseCollection'
-          data: Array<{
+        tag?: {
+          __typename?: 'TagEntityResponse'
+          data?: {
             __typename?: 'TagEntity'
             id?: string | null
             attributes?: {
@@ -5292,7 +5286,7 @@ export type Dev_AllArticlesQuery = {
                 } | null
               } | null
             } | null
-          }>
+          } | null
         } | null
       } | null
     }>
@@ -12871,7 +12865,7 @@ export const ArticleCardEntityFragmentDoc = gql`
           ...UploadImageEntity
         }
       }
-      tags {
+      tag {
         data {
           ...TagEntity
         }

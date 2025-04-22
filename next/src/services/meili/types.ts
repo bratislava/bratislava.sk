@@ -42,11 +42,9 @@ export type PageMeili = Omit<
 
 export type ArticleMeili = Omit<Article, '__typename' | 'tag' | 'coverMedia'> & {
   coverMedia?: UploadFile
-  tags?: Array<
-    Omit<Tag, '__typename' | 'pageCategory' | 'blogPosts' | 'articles'> & {
-      pageCategory?: Omit<PageCategory, '__typename' | 'pages'>
-    }
-  >
+  tag?: Omit<Tag, '__typename' | 'pageCategory' | 'blogPosts' | 'articles'> & {
+    pageCategory?: Omit<PageCategory, '__typename' | 'pages'>
+  }
 }
 
 export type BlogPostMeili = Omit<BlogPost, '__typename' | 'tag' | 'coverImage'> & {

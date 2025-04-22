@@ -33,7 +33,7 @@ export const articlesFetcher = (filters: ArticlesFilters, locale: string) => {
       filter: [
         'type = "article"',
         `locale = ${locale}`,
-        filters.tagIds.length > 0 ? `article.tags.id IN [${filters.tagIds.join(',')}]` : '',
+        filters.tagIds.length > 0 ? `article.tag.id IN [${filters.tagIds.join(',')}]` : '',
       ],
       sort: ['article.addedAtTimestamp:desc'],
       attributesToRetrieve: [
@@ -45,9 +45,9 @@ export const articlesFetcher = (filters: ArticlesFilters, locale: string) => {
         'article.slug',
         'article.coverMedia.url',
         'article.addedAt',
-        'article.tags.title',
-        'article.tags.pageCategory.color',
-        'article.tags.pageCategory.shortTitle',
+        'article.tag.title',
+        'article.tag.pageCategory.color',
+        'article.tag.pageCategory.shortTitle',
       ],
     })
     .then(unwrapFromSearchIndex('article'))
@@ -68,25 +68,22 @@ export const articlesFetcher = (filters: ArticlesFilters, locale: string) => {
                 },
               },
             },
-            // TODO tags
-            // tags: {
-            //   data: [
-            //     article.tags?.map((tag) => ({
-            //       __typename: "TagEntity",
-            //       attributes: {
-            //         __typename: "Tag"
-            //         title: tag.title,
-            //         pageCategory: {
-            //           data: {
-            //             attributes: {
-            //               color: tag.pageCategory?.color,
-            //             },
-            //           },
-            //         },
-            //       },
-            //     })),
-            //   ],
-            // },
+            tag: {
+              data: {
+                __typename: 'TagEntity',
+                attributes: {
+                  __typename: 'Tag',
+                  title: article.tag?.title,
+                  pageCategory: {
+                    data: {
+                      attributes: {
+                        color: article.tag?.pageCategory?.color,
+                      },
+                    },
+                  },
+                },
+              },
+            },
           },
         } satisfies Pick<ArticleCardEntityFragment, 'attributes'>
       })

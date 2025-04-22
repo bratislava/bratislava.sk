@@ -12,6 +12,7 @@ import {
   articlesFetcher,
   getArticlesQueryKey,
 } from '@/src/services/meili/fetchers/articlesFetcher'
+import { getCategoryColorLocalStyle } from '@/src/utils/colors'
 import { getNumericLocalDate } from '@/src/utils/formatDate'
 import { generateImageSizes } from '@/src/utils/generateImageSizes'
 import { useLocale } from '@/src/utils/useLocale'
@@ -77,18 +78,17 @@ const ArticlesSection = ({ section }: Props) => {
         {data?.hits.map((card) => {
           if (!card.attributes) return null
 
-          // TODO tags, path
           // TODO refactor sections that use BlogPostCard - it needs too much duplicate code while passing props
-          const { title: blogPostTitle, slug, coverMedia, addedAt, perex } = card.attributes
-          // const tagColor = tags?.data?.attributes?.pageCategory?.data?.attributes?.color
-          // const tagTitle = tags?.data?.attributes?.title
+          const { title: blogPostTitle, slug, coverMedia, addedAt, perex, tag } = card.attributes
+          const tagColor = tag?.data?.attributes?.pageCategory?.data?.attributes?.color
+          const tagTitle = tag?.data?.attributes?.title
 
           return (
             <BlogPostCard
               key={slug}
-              // style={getCategoryColorLocalStyle({ color: tagColor })}
+              style={getCategoryColorLocalStyle({ color: tagColor })}
               date={getNumericLocalDate(addedAt)}
-              // tag={tagTitle ?? undefined}
+              tag={tagTitle ?? undefined}
               title={blogPostTitle ?? ''}
               text={perex ?? undefined}
               linkProps={{ children: t('readMore'), href: `/spravy/${slug}` }}

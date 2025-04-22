@@ -1,10 +1,9 @@
 import { Typography } from '@bratislava/component-library'
 import * as React from 'react'
-import { PropsWithChildren, useMemo } from 'react'
+import { useMemo } from 'react'
 
 import AliasInfoMessage from '@/src/components/common/AliasInfoMessage/AliasInfoMessage'
 import { Breadcrumb } from '@/src/components/common/Breadcrumbs/Breadcrumbs'
-import Button from '@/src/components/common/Button/Button'
 import FileList from '@/src/components/common/FileList/FileList'
 import Gallery from '@/src/components/common/Gallery/Gallery'
 import PageHeader from '@/src/components/common/PageHeader/PageHeader'
@@ -17,34 +16,11 @@ import { formatDate } from '@/src/utils/formatDate'
 import { isDefined } from '@/src/utils/isDefined'
 import { getPageBreadcrumbs } from '@/src/utils/pageUtils_Deprecated'
 
-// TODO split this into separate file
-export const SocialMediaButton = ({
-  getLink,
-  children,
-}: PropsWithChildren<{ getLink: (link: string) => string }>) => {
-  const openSharePage = () => {
-    const w = 600
-    const h = 400
-    const l = screen.width / 2 - w / 2
-    const t = screen.height / 2 - h / 2
-
-    window.open(
-      getLink(window.location.href),
-      'pop',
-      `width=${w},height=${h},top=${t},left=${l},scrollbars=0`,
-    )
-  }
-
-  return <Button onPress={openSharePage}>{children}</Button>
-}
-
 type Props = {
   article: ArticleEntityFragment
 }
 
 const BlogPostPageContent = ({ article }: Props) => {
-  // const tag = article.attributes?.tag?.data?.attributes
-
   const { general } = useGeneralContext()
   const newsPage = general?.data?.attributes?.newsPage?.data
 
@@ -59,7 +35,8 @@ const BlogPostPageContent = ({ article }: Props) => {
     return null
   }
 
-  const { title, perex, content, files, gallery, alias, addedAt, coverMedia } = article.attributes
+  const { title, perex, tag, content, files, gallery, alias, addedAt, coverMedia } =
+    article.attributes
 
   const filteredFiles = files?.filter(isDefined) ?? []
   const filteredGalleryImages = gallery?.data.filter(isDefined) ?? []
@@ -71,7 +48,7 @@ const BlogPostPageContent = ({ article }: Props) => {
         title={title}
         breadcrumbs={breadcrumbs}
         subtext={formatDate(addedAt)}
-        // tag={tag?.title}
+        tag={tag?.data?.attributes?.title}
         imageSrc={coverMedia?.data?.attributes?.url}
       />
 

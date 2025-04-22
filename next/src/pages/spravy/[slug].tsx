@@ -6,11 +6,7 @@ import * as React from 'react'
 import PageLayout from '@/src/components/layouts/PageLayout'
 import ArticlePageContent from '@/src/components/page-contents/ArticlePageContent'
 import { GeneralContextProvider } from '@/src/components/providers/GeneralContextProvider'
-import {
-  ArticleEntityFragment,
-  Enum_Pagecategory_Color,
-  GeneralQuery,
-} from '@/src/services/graphql'
+import { ArticleEntityFragment, GeneralQuery } from '@/src/services/graphql'
 import { client } from '@/src/services/graphql/gql'
 import { GlobalCategoryColorProvider } from '@/src/utils/colors'
 import { useTitle } from '@/src/utils/useTitle'
@@ -89,7 +85,7 @@ const Page = ({ general, article }: PageProps) => {
         {perex && <meta name="description" content={perex} />}
       </Head>
       <GlobalCategoryColorProvider
-        color={Enum_Pagecategory_Color.Red} // article?.attributes?.tag?.data?.attributes?.pageCategory?.data?.attributes?.color}
+        color={article?.attributes?.tag?.data?.attributes?.pageCategory?.data?.attributes?.color}
       />
       <PageLayout>
         <ArticlePageContent article={article} />

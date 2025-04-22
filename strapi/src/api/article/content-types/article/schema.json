@@ -64,9 +64,9 @@
         }
       }
     },
-    "tags": {
+    "tag": {
       "type": "relation",
-      "relation": "manyToMany",
+      "relation": "manyToOne",
       "target": "api::tag.tag",
       "inversedBy": "articles"
     },
