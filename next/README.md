@@ -38,16 +38,6 @@ Strapi V4 does not export schema.graphql by default - instead, you'll need a run
 npm run gen
 ```
 
-## On-demand Strapi revalidation
-
-To use on-demand revalidation, we need to add one key in .env file i.e.
-
-```
-STRAPI_REVALIDATE_SECRET_TOKEN = <value>
-```
-
-This token should be the same as we pass in webhook url as query param.
-
 ## Next API endpoints and server-side functions
 
 Some external services, such as Active Directory or GINIS, must be called only from server for security reasons
