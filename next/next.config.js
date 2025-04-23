@@ -62,7 +62,12 @@ const nextConfig = {
       },
       {
         source: '/sprava/:path*',
-        destination: '/blog/:path*',
+        destination: '/spravy/:path*',
+        permanent: true,
+      },
+      {
+        source: '/blog/:path*',
+        destination: '/spravy/:path*',
         permanent: true,
       },
       /// Obmedzenia a poruchy

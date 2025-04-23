@@ -1,10 +1,10 @@
 import { PageEntityFragment } from '@/src/services/graphql'
-import { isDefined } from '@/src/utils/isDefined'
 import {
   articlesDefaultFilters,
   articlesFetcher,
   getArticlesQueryKey,
 } from '@/src/services/meili/fetchers/articlesFetcher'
+import { isDefined } from '@/src/utils/isDefined'
 
 const extractTags = (page: PageEntityFragment) => {
   return page.attributes?.relatedContents?.data.map((tag) => tag?.id).filter(isDefined) ?? []
@@ -22,7 +22,7 @@ export const getRelatedArticlesQueryKey = (page: PageEntityFragment, locale: str
 export const relatedArticlesFetcher = (page: PageEntityFragment, locale: string) => {
   const extractedTags = extractTags(page)
 
-  if (!extractedTags.length) {
+  if (extractedTags.length === 0) {
     return Promise.resolve(null)
   }
 

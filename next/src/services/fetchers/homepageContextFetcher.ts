@@ -18,7 +18,7 @@ export const homepageContextFetcher = async (locale: string): Promise<HomepageCo
     getTootootHomepageEvents().catch(() => null),
     client.Articles({
       limit: 7,
-      sort: 'addedAr:desc',
+      sort: 'addedAt:desc',
       locale,
     }),
   ])

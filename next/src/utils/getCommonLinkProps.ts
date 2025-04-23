@@ -16,6 +16,9 @@ export const getCommonLinkProps = (link: CommonLinkFragment | null | undefined) 
 
   if (link?.page?.data?.attributes?.slug) {
     href = `/${link.page.data.attributes.slug}`
+  } else if (link?.article?.data?.attributes?.slug) {
+    href = `/spravy/${link.article.data.attributes.slug}`
+    // TODO remove blog posts
   } else if (link?.blogPost?.data?.attributes?.slug) {
     href = `/blog/${link.blogPost.data.attributes.slug}`
   } else if (link?.url) {

@@ -42,6 +42,11 @@ fragment CommonLink on ComponentBlocksCommonLink {
       }
     }
   }
+  article {
+    data {
+      ...ArticleSlugEntity
+    }
+  }
   blogPost {
     data {
       id
