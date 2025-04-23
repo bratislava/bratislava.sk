@@ -20,32 +20,32 @@
           "sortable": false
         }
       },
-      "leftNewsItem": {
+      "leftArticle": {
         "edit": {
           "label": "Článok vľavo",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true,
-          "mainField": "slug"
+          "mainField": "title"
         },
         "list": {
-          "label": "leftNewsItem",
+          "label": "leftArticle",
           "searchable": true,
           "sortable": true
         }
       },
-      "rightNewsItem": {
+      "rightArticle": {
         "edit": {
           "label": "Článok vpravo",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true,
-          "mainField": "slug"
+          "mainField": "title"
         },
         "list": {
-          "label": "rightNewsItem",
+          "label": "rightArticle",
           "searchable": true,
           "sortable": true
         }
@@ -96,18 +96,18 @@
     "layouts": {
       "list": [
         "id",
-        "leftNewsItem",
-        "rightNewsItem",
-        "newsPageLink"
+        "newsPageLink",
+        "leftArticle",
+        "rightArticle"
       ],
       "edit": [
         [
           {
-            "name": "leftNewsItem",
+            "name": "leftArticle",
             "size": 6
           },
           {
-            "name": "rightNewsItem",
+            "name": "rightArticle",
             "size": 6
           }
         ],

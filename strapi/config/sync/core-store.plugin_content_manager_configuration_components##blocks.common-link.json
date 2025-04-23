@@ -49,6 +49,21 @@
           "sortable": true
         }
       },
+      "article": {
+        "edit": {
+          "label": "article",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "title"
+        },
+        "list": {
+          "label": "article",
+          "searchable": true,
+          "sortable": true
+        }
+      },
       "blogPost": {
         "edit": {
           "label": "blogPost",
@@ -124,6 +139,10 @@
         [
           {
             "name": "analyticsId",
+            "size": 6
+          },
+          {
+            "name": "article",
             "size": 6
           }
         ]

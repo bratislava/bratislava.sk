@@ -46,13 +46,43 @@
           "searchable": true,
           "sortable": true
         }
+      },
+      "category": {
+        "edit": {
+          "label": "Kategória",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "shortTitle"
+        },
+        "list": {
+          "label": "category",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "showAll": {
+        "edit": {
+          "label": "Zobraziť všetky",
+          "description": "Ak je toto pole TRUE, zobrazia sa všetky články spolu s filtrovaním. Ak je FALSE, zobrazia sa články podľa vybranej Kategórie vo vedľajšom poli.",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "showAll",
+          "searchable": true,
+          "sortable": true
+        }
       }
     },
     "layouts": {
       "list": [
         "id",
         "title",
-        "text"
+        "text",
+        "category"
       ],
       "edit": [
         [
@@ -65,6 +95,16 @@
           {
             "name": "text",
             "size": 12
+          }
+        ],
+        [
+          {
+            "name": "category",
+            "size": 6
+          },
+          {
+            "name": "showAll",
+            "size": 6
           }
         ]
       ]
