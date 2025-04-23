@@ -897,21 +897,27 @@ input ComponentSectionsAccordionInput {
 }
 
 type ComponentSectionsArticles {
+  category: PageCategoryEntityResponse
   id: ID!
+  showAll: Boolean
   text: String
   title: String
 }
 
 input ComponentSectionsArticlesFiltersInput {
   and: [ComponentSectionsArticlesFiltersInput]
+  category: PageCategoryFiltersInput
   not: ComponentSectionsArticlesFiltersInput
   or: [ComponentSectionsArticlesFiltersInput]
+  showAll: BooleanFilterInput
   text: StringFilterInput
   title: StringFilterInput
 }
 
 input ComponentSectionsArticlesInput {
+  category: ID
   id: ID
+  showAll: Boolean
   text: String
   title: String
 }

@@ -460,6 +460,12 @@ export interface SectionsArticles extends Schema.Component {
     displayName: 'Articles'
   }
   attributes: {
+    category: Attribute.Relation<
+      'sections.articles',
+      'oneToOne',
+      'api::page-category.page-category'
+    >
+    showAll: Attribute.Boolean & Attribute.DefaultTo<false>
     text: Attribute.Text
     title: Attribute.String
   }

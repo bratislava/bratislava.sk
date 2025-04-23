@@ -1066,21 +1066,27 @@ export type ComponentSectionsAccordionInput = {
 
 export type ComponentSectionsArticles = {
   __typename?: 'ComponentSectionsArticles'
+  category?: Maybe<PageCategoryEntityResponse>
   id: Scalars['ID']['output']
+  showAll?: Maybe<Scalars['Boolean']['output']>
   text?: Maybe<Scalars['String']['output']>
   title?: Maybe<Scalars['String']['output']>
 }
 
 export type ComponentSectionsArticlesFiltersInput = {
   and?: InputMaybe<Array<InputMaybe<ComponentSectionsArticlesFiltersInput>>>
+  category?: InputMaybe<PageCategoryFiltersInput>
   not?: InputMaybe<ComponentSectionsArticlesFiltersInput>
   or?: InputMaybe<Array<InputMaybe<ComponentSectionsArticlesFiltersInput>>>
+  showAll?: InputMaybe<BooleanFilterInput>
   text?: InputMaybe<StringFilterInput>
   title?: InputMaybe<StringFilterInput>
 }
 
 export type ComponentSectionsArticlesInput = {
+  category?: InputMaybe<Scalars['ID']['input']>
   id?: InputMaybe<Scalars['ID']['input']>
+  showAll?: InputMaybe<Scalars['Boolean']['input']>
   text?: InputMaybe<Scalars['String']['input']>
   title?: InputMaybe<Scalars['String']['input']>
 }
@@ -8901,7 +8907,24 @@ export type PageBySlugQuery = {
                 urlLabel?: string | null
               } | null> | null
             }
-          | { __typename: 'ComponentSectionsArticles'; title?: string | null; text?: string | null }
+          | {
+              __typename: 'ComponentSectionsArticles'
+              title?: string | null
+              text?: string | null
+              showAll?: boolean | null
+              category?: {
+                __typename?: 'PageCategoryEntityResponse'
+                data?: {
+                  __typename?: 'PageCategoryEntity'
+                  id?: string | null
+                  attributes?: {
+                    __typename?: 'PageCategory'
+                    title?: string | null
+                    color?: Enum_Pagecategory_Color | null
+                  } | null
+                } | null
+              } | null
+            }
           | {
               __typename: 'ComponentSectionsBanner'
               content?: string | null
@@ -9865,7 +9888,24 @@ export type PageEntityFragment = {
             urlLabel?: string | null
           } | null> | null
         }
-      | { __typename: 'ComponentSectionsArticles'; title?: string | null; text?: string | null }
+      | {
+          __typename: 'ComponentSectionsArticles'
+          title?: string | null
+          text?: string | null
+          showAll?: boolean | null
+          category?: {
+            __typename?: 'PageCategoryEntityResponse'
+            data?: {
+              __typename?: 'PageCategoryEntity'
+              id?: string | null
+              attributes?: {
+                __typename?: 'PageCategory'
+                title?: string | null
+                color?: Enum_Pagecategory_Color | null
+              } | null
+            } | null
+          } | null
+        }
       | {
           __typename: 'ComponentSectionsBanner'
           content?: string | null
@@ -11634,6 +11674,19 @@ export type ArticlesSectionFragment = {
   __typename?: 'ComponentSectionsArticles'
   title?: string | null
   text?: string | null
+  showAll?: boolean | null
+  category?: {
+    __typename?: 'PageCategoryEntityResponse'
+    data?: {
+      __typename?: 'PageCategoryEntity'
+      id?: string | null
+      attributes?: {
+        __typename?: 'PageCategory'
+        title?: string | null
+        color?: Enum_Pagecategory_Color | null
+      } | null
+    } | null
+  } | null
 }
 
 export type BlogPostsByCategorySectionFragment = {
@@ -12556,6 +12609,19 @@ type Sections_ComponentSectionsArticles_Fragment = {
   __typename: 'ComponentSectionsArticles'
   title?: string | null
   text?: string | null
+  showAll?: boolean | null
+  category?: {
+    __typename?: 'PageCategoryEntityResponse'
+    data?: {
+      __typename?: 'PageCategoryEntity'
+      id?: string | null
+      attributes?: {
+        __typename?: 'PageCategory'
+        title?: string | null
+        color?: Enum_Pagecategory_Color | null
+      } | null
+    } | null
+  } | null
 }
 
 type Sections_ComponentSectionsBanner_Fragment = {
@@ -13767,7 +13833,14 @@ export const ArticlesSectionFragmentDoc = gql`
   fragment ArticlesSection on ComponentSectionsArticles {
     title
     text
+    showAll
+    category {
+      data {
+        ...PageCategoryEntity
+      }
+    }
   }
+  ${PageCategoryEntityFragmentDoc}
 `
 export const BlogPostsListSectionFragmentDoc = gql`
   fragment BlogPostsListSection on ComponentSectionsBlogPostsList {

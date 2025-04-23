@@ -54,6 +54,12 @@ fragment BlogPostsListSection on ComponentSectionsBlogPostsList {
 fragment ArticlesSection on ComponentSectionsArticles {
   title
   text
+  showAll
+  category {
+    data {
+      ...PageCategoryEntity
+    }
+  }
 }
 
 fragment BlogPostsByCategorySection on ComponentSectionsBlogPostsByCategory {
