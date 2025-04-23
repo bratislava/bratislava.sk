@@ -7,9 +7,9 @@ import ResponsiveCarousel from '@/src/components/common/Carousel/ResponsiveCarou
 import SectionContainer from '@/src/components/common/SectionContainer/SectionContainer'
 import { PageEntityFragment } from '@/src/services/graphql'
 import {
-  getRelatedBlogPostsQueryKey,
-  relatedBlogPostsFetcher,
-} from '@/src/services/graphql/fetchers/relatedBlogPosts.fetcher'
+  getRelatedArticlesQueryKey,
+  relatedArticlesFetcher,
+} from '@/src/services/meili/fetchers/relatedArticlesFetcher'
 import { getCategoryColorLocalStyle } from '@/src/utils/colors'
 import { getNumericLocalDate } from '@/src/utils/formatDate'
 import { generateImageSizes } from '@/src/utils/generateImageSizes'
@@ -28,8 +28,8 @@ const RelatedArticlesSection = ({ page, className }: Props) => {
   const locale = useLocale()
 
   const { data } = useQuery({
-    queryKey: getRelatedBlogPostsQueryKey(page, locale),
-    queryFn: () => relatedBlogPostsFetcher(page, locale),
+    queryKey: getRelatedArticlesQueryKey(page, locale),
+    queryFn: () => relatedArticlesFetcher(page, locale),
     staleTime: Infinity,
   })
 

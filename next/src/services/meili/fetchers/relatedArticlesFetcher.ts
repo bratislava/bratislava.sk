@@ -16,17 +16,15 @@ const relatedArticlesFilters = (page: PageEntityFragment) => ({
   pageSize: 9,
 })
 
-export const getRelatedBlogPostsQueryKey = (page: PageEntityFragment, locale: string) =>
+export const getRelatedArticlesQueryKey = (page: PageEntityFragment, locale: string) =>
   getArticlesQueryKey(relatedArticlesFilters(page), locale)
 
-export const relatedBlogPostsFetcher = (page: PageEntityFragment, locale: string) => {
+export const relatedArticlesFetcher = (page: PageEntityFragment, locale: string) => {
   const extractedTags = extractTags(page)
 
   if (!extractedTags.length) {
     return Promise.resolve(null)
   }
-
-  console.log('related Articles filters', relatedArticlesFilters(page))
 
   return articlesFetcher(relatedArticlesFilters(page), locale)
 }
