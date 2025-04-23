@@ -1,24 +1,32 @@
 import { PageEntityFragment } from '@/src/services/graphql'
 import { isDefined } from '@/src/utils/isDefined'
-import { client } from '@/src/services/graphql/gql'
+import {
+  articlesDefaultFilters,
+  articlesFetcher,
+  getArticlesQueryKey,
+} from '@/src/services/meili/fetchers/articlesFetcher'
 
 const extractTags = (page: PageEntityFragment) => {
-  return page.attributes?.relatedContents?.data
-    .map((tag) => tag?.attributes?.title)
-    .filter(isDefined)
+  return page.attributes?.relatedContents?.data.map((tag) => tag?.id).filter(isDefined) ?? []
 }
-export const getRelatedBlogPostsQueryKey = (page: PageEntityFragment, locale: string) => [
-  'relatedBlogPosts',
-  extractTags(page) ?? null,
-  locale,
-]
+
+const relatedArticlesFilters = (page: PageEntityFragment) => ({
+  ...articlesDefaultFilters,
+  tagIds: extractTags(page),
+  pageSize: 9,
+})
+
+export const getRelatedBlogPostsQueryKey = (page: PageEntityFragment, locale: string) =>
+  getArticlesQueryKey(relatedArticlesFilters(page), locale)
 
 export const relatedBlogPostsFetcher = (page: PageEntityFragment, locale: string) => {
   const extractedTags = extractTags(page)
 
-  if (!extractedTags || extractedTags.length === 0) {
+  if (!extractedTags.length) {
     return Promise.resolve(null)
   }
 
-  return client.LatestPostsByTags({ locale, tags: extractedTags, limit: 9 })
+  console.log('related Articles filters', relatedArticlesFilters(page))
+
+  return articlesFetcher(relatedArticlesFilters(page), locale)
 }
