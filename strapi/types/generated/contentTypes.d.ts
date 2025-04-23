@@ -337,7 +337,7 @@ export interface ApiArticleArticle extends Schema.CollectionType {
   collectionName: 'articles'
   info: {
     description: ''
-    displayName: 'Articles (new)'
+    displayName: '\u010Cl\u00E1nky'
     pluralName: 'articles'
     singularName: 'article'
   }
@@ -430,7 +430,7 @@ export interface ApiBlogPostBlogPost extends Schema.CollectionType {
   collectionName: 'blog_posts'
   info: {
     description: ''
-    displayName: '\u010Cl\u00E1nky'
+    displayName: '\u010Cl\u00E1nky (star\u00E9)'
     pluralName: 'blog-posts'
     singularName: 'blog-post'
   }
