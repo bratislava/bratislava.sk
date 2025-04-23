@@ -31,7 +31,9 @@ const GeneralPageContent = ({ page }: GeneralPageProps) => {
 
       {/* Page - Common Sections */}
       <div className="mb-8">
-        {page.attributes?.sections && <Sections sections={page.attributes.sections} />}
+        {page.attributes?.sections?.length ? (
+          <Sections sections={page.attributes.sections} />
+        ) : null}
 
         <RelatedArticlesSection
           page={page}
