@@ -6,15 +6,15 @@
   },
   "options": {},
   "attributes": {
-    "leftNewsItem": {
+    "leftArticle": {
       "type": "relation",
       "relation": "oneToOne",
-      "target": "api::blog-post.blog-post"
+      "target": "api::article.article"
     },
-    "rightNewsItem": {
+    "rightArticle": {
       "type": "relation",
       "relation": "oneToOne",
-      "target": "api::blog-post.blog-post"
+      "target": "api::article.article"
     },
     "newsPageLink": {
       "type": "component",

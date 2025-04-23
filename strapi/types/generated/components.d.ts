@@ -84,6 +84,7 @@ export interface BlocksCommonLink extends Schema.Component {
   }
   attributes: {
     analyticsId: Attribute.String
+    article: Attribute.Relation<'blocks.common-link', 'oneToOne', 'api::article.article'>
     blogPost: Attribute.Relation<'blocks.common-link', 'oneToOne', 'api::blog-post.blog-post'>
     label: Attribute.String & Attribute.Required
     page: Attribute.Relation<'blocks.common-link', 'oneToOne', 'api::page.page'>
@@ -459,6 +460,12 @@ export interface SectionsArticles extends Schema.Component {
     displayName: 'Articles'
   }
   attributes: {
+    category: Attribute.Relation<
+      'sections.articles',
+      'oneToOne',
+      'api::page-category.page-category'
+    >
+    showAll: Attribute.Boolean & Attribute.DefaultTo<false>
     text: Attribute.Text
     title: Attribute.String
   }
@@ -522,8 +529,8 @@ export interface SectionsCalculator extends Schema.Component {
   }
   attributes: {
     another_adult_value: Attribute.Decimal
-    hasBackground: Attribute.Boolean
     child_value: Attribute.Decimal
+    hasBackground: Attribute.Boolean
     single_adult_value: Attribute.Decimal
   }
 }
@@ -713,18 +720,10 @@ export interface SectionsHomepageTabs extends Schema.Component {
     displayName: 'homepage tabs'
   }
   attributes: {
-    leftNewsItem: Attribute.Relation<
-      'sections.homepage-tabs',
-      'oneToOne',
-      'api::blog-post.blog-post'
-    >
+    leftArticle: Attribute.Relation<'sections.homepage-tabs', 'oneToOne', 'api::article.article'>
     newsPageLink: Attribute.Component<'blocks.common-link'>
     officialBoardPageLink: Attribute.Component<'blocks.common-link'>
-    rightNewsItem: Attribute.Relation<
-      'sections.homepage-tabs',
-      'oneToOne',
-      'api::blog-post.blog-post'
-    >
+    rightArticle: Attribute.Relation<'sections.homepage-tabs', 'oneToOne', 'api::article.article'>
     roadClosuresPageLink: Attribute.Component<'blocks.common-link'>
   }
 }

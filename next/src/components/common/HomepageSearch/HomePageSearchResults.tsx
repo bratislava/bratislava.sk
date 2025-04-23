@@ -50,7 +50,7 @@ const HomePageSearchResults = ({ searchValue, data, isLoading }: HomePageSearchR
           // eslint-disable-next-line react/no-array-index-key
           key={index}
           passHref
-          className="px-4 py-2 hover:bg-main-100 focus:bg-main-100"
+          className="px-4 py-2 hover:bg-grey-100 focus:bg-grey-100"
           ref={(el) => {
             inputRef.current[index] = el
           }}
@@ -65,7 +65,7 @@ const HomePageSearchResults = ({ searchValue, data, isLoading }: HomePageSearchR
       <Link
         href={`${t('links.searchLink')}?keyword=${searchValue}`}
         passHref
-        className="px-4 py-2 font-semibold hover:bg-main-100 focus:bg-main-100"
+        className="px-4 py-2 font-semibold hover:bg-grey-100 focus:bg-grey-100"
         ref={(el) => {
           inputRef.current[data.hits.length] = el
         }}

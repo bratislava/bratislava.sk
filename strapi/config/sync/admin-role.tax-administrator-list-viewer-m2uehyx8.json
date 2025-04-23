@@ -75,6 +75,7 @@
           "pageBackgroundImage",
           "headerLinks.label",
           "headerLinks.page",
+          "headerLinks.article",
           "headerLinks.blogPost",
           "headerLinks.url",
           "headerLinks.analyticsId",

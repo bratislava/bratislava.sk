@@ -5,75 +5,99 @@
   "permissions": [
     {
       "action": "plugin::content-manager.explorer.create",
-      "subject": "api::blog-post.blog-post",
+      "subject": "api::article.article",
       "properties": {
         "fields": [
           "title",
-          "excerpt",
-          "coverImage",
           "slug",
-          "date_added",
+          "perex",
+          "alias",
+          "coverMedia",
           "tag",
-          "sections",
-          "addedAt"
+          "addedAt",
+          "content",
+          "files.title",
+          "files.media",
+          "gallery"
         ],
-        "locales": ["en", "sk"]
+        "locales": [
+          "en",
+          "sk"
+        ]
       },
       "conditions": [],
       "actionParameters": {}
     },
     {
       "action": "plugin::content-manager.explorer.delete",
-      "subject": "api::blog-post.blog-post",
+      "subject": "api::article.article",
       "properties": {
-        "locales": ["en", "sk"]
+        "locales": [
+          "en",
+          "sk"
+        ]
       },
       "conditions": [],
       "actionParameters": {}
     },
     {
       "action": "plugin::content-manager.explorer.publish",
-      "subject": "api::blog-post.blog-post",
+      "subject": "api::article.article",
       "properties": {
-        "locales": ["en", "sk"]
+        "locales": [
+          "en",
+          "sk"
+        ]
       },
       "conditions": [],
       "actionParameters": {}
     },
     {
       "action": "plugin::content-manager.explorer.read",
-      "subject": "api::blog-post.blog-post",
+      "subject": "api::article.article",
       "properties": {
         "fields": [
           "title",
-          "excerpt",
-          "coverImage",
           "slug",
-          "date_added",
+          "perex",
+          "alias",
+          "coverMedia",
           "tag",
-          "sections",
-          "addedAt"
+          "addedAt",
+          "content",
+          "files.title",
+          "files.media",
+          "gallery"
         ],
-        "locales": ["en", "sk"]
+        "locales": [
+          "en",
+          "sk"
+        ]
       },
       "conditions": [],
       "actionParameters": {}
     },
     {
       "action": "plugin::content-manager.explorer.update",
-      "subject": "api::blog-post.blog-post",
+      "subject": "api::article.article",
       "properties": {
         "fields": [
           "title",
-          "excerpt",
-          "coverImage",
           "slug",
-          "date_added",
+          "perex",
+          "alias",
+          "coverMedia",
           "tag",
-          "sections",
-          "addedAt"
+          "addedAt",
+          "content",
+          "files.title",
+          "files.media",
+          "gallery"
         ],
-        "locales": ["en", "sk"]
+        "locales": [
+          "en",
+          "sk"
+        ]
       },
       "conditions": [],
       "actionParameters": {}
@@ -91,24 +115,28 @@
           "highlights.text",
           "highlights.cards.link.label",
           "highlights.cards.link.page",
+          "highlights.cards.link.article",
           "highlights.cards.link.blogPost",
           "highlights.cards.link.url",
           "highlights.cards.link.analyticsId",
           "highlights.cards.image",
-          "tabs.leftNewsItem",
-          "tabs.rightNewsItem",
+          "tabs.leftArticle",
+          "tabs.rightArticle",
           "tabs.newsPageLink.label",
           "tabs.newsPageLink.page",
+          "tabs.newsPageLink.article",
           "tabs.newsPageLink.blogPost",
           "tabs.newsPageLink.url",
           "tabs.newsPageLink.analyticsId",
           "tabs.officialBoardPageLink.label",
           "tabs.officialBoardPageLink.page",
+          "tabs.officialBoardPageLink.article",
           "tabs.officialBoardPageLink.blogPost",
           "tabs.officialBoardPageLink.url",
           "tabs.officialBoardPageLink.analyticsId",
           "tabs.roadClosuresPageLink.label",
           "tabs.roadClosuresPageLink.page",
+          "tabs.roadClosuresPageLink.article",
           "tabs.roadClosuresPageLink.blogPost",
           "tabs.roadClosuresPageLink.url",
           "tabs.roadClosuresPageLink.analyticsId",
@@ -116,11 +144,13 @@
           "mayorAndCouncil.text",
           "mayorAndCouncil.mayorCard.label",
           "mayorAndCouncil.mayorCard.page",
+          "mayorAndCouncil.mayorCard.article",
           "mayorAndCouncil.mayorCard.blogPost",
           "mayorAndCouncil.mayorCard.url",
           "mayorAndCouncil.mayorCard.analyticsId",
           "mayorAndCouncil.councilCard.label",
           "mayorAndCouncil.councilCard.page",
+          "mayorAndCouncil.councilCard.article",
           "mayorAndCouncil.councilCard.blogPost",
           "mayorAndCouncil.councilCard.url",
           "mayorAndCouncil.councilCard.analyticsId",
@@ -128,6 +158,7 @@
           "topServices.services.icon",
           "topServices.services.link.label",
           "topServices.services.link.page",
+          "topServices.services.link.article",
           "topServices.services.link.blogPost",
           "topServices.services.link.url",
           "topServices.services.link.analyticsId",
@@ -161,11 +192,15 @@
           "eventsSection.text",
           "eventsSection.eventsPageLink.label",
           "eventsSection.eventsPageLink.page",
+          "eventsSection.eventsPageLink.article",
           "eventsSection.eventsPageLink.blogPost",
           "eventsSection.eventsPageLink.url",
           "eventsSection.eventsPageLink.analyticsId"
         ],
-        "locales": ["en", "sk"]
+        "locales": [
+          "en",
+          "sk"
+        ]
       },
       "conditions": [],
       "actionParameters": {}
@@ -174,7 +209,10 @@
       "action": "plugin::content-manager.explorer.delete",
       "subject": "api::homepage.homepage",
       "properties": {
-        "locales": ["en", "sk"]
+        "locales": [
+          "en",
+          "sk"
+        ]
       },
       "conditions": [],
       "actionParameters": {}
@@ -183,7 +221,10 @@
       "action": "plugin::content-manager.explorer.publish",
       "subject": "api::homepage.homepage",
       "properties": {
-        "locales": ["en", "sk"]
+        "locales": [
+          "en",
+          "sk"
+        ]
       },
       "conditions": [],
       "actionParameters": {}
@@ -201,24 +242,28 @@
           "highlights.text",
           "highlights.cards.link.label",
           "highlights.cards.link.page",
+          "highlights.cards.link.article",
           "highlights.cards.link.blogPost",
           "highlights.cards.link.url",
           "highlights.cards.link.analyticsId",
           "highlights.cards.image",
-          "tabs.leftNewsItem",
-          "tabs.rightNewsItem",
+          "tabs.leftArticle",
+          "tabs.rightArticle",
           "tabs.newsPageLink.label",
           "tabs.newsPageLink.page",
+          "tabs.newsPageLink.article",
           "tabs.newsPageLink.blogPost",
           "tabs.newsPageLink.url",
           "tabs.newsPageLink.analyticsId",
           "tabs.officialBoardPageLink.label",
           "tabs.officialBoardPageLink.page",
+          "tabs.officialBoardPageLink.article",
           "tabs.officialBoardPageLink.blogPost",
           "tabs.officialBoardPageLink.url",
           "tabs.officialBoardPageLink.analyticsId",
           "tabs.roadClosuresPageLink.label",
           "tabs.roadClosuresPageLink.page",
+          "tabs.roadClosuresPageLink.article",
           "tabs.roadClosuresPageLink.blogPost",
           "tabs.roadClosuresPageLink.url",
           "tabs.roadClosuresPageLink.analyticsId",
@@ -226,11 +271,13 @@
           "mayorAndCouncil.text",
           "mayorAndCouncil.mayorCard.label",
           "mayorAndCouncil.mayorCard.page",
+          "mayorAndCouncil.mayorCard.article",
           "mayorAndCouncil.mayorCard.blogPost",
           "mayorAndCouncil.mayorCard.url",
           "mayorAndCouncil.mayorCard.analyticsId",
           "mayorAndCouncil.councilCard.label",
           "mayorAndCouncil.councilCard.page",
+          "mayorAndCouncil.councilCard.article",
           "mayorAndCouncil.councilCard.blogPost",
           "mayorAndCouncil.councilCard.url",
           "mayorAndCouncil.councilCard.analyticsId",
@@ -238,6 +285,7 @@
           "topServices.services.icon",
           "topServices.services.link.label",
           "topServices.services.link.page",
+          "topServices.services.link.article",
           "topServices.services.link.blogPost",
           "topServices.services.link.url",
           "topServices.services.link.analyticsId",
@@ -271,11 +319,15 @@
           "eventsSection.text",
           "eventsSection.eventsPageLink.label",
           "eventsSection.eventsPageLink.page",
+          "eventsSection.eventsPageLink.article",
           "eventsSection.eventsPageLink.blogPost",
           "eventsSection.eventsPageLink.url",
           "eventsSection.eventsPageLink.analyticsId"
         ],
-        "locales": ["en", "sk"]
+        "locales": [
+          "en",
+          "sk"
+        ]
       },
       "conditions": [],
       "actionParameters": {}
@@ -293,24 +345,28 @@
           "highlights.text",
           "highlights.cards.link.label",
           "highlights.cards.link.page",
+          "highlights.cards.link.article",
           "highlights.cards.link.blogPost",
           "highlights.cards.link.url",
           "highlights.cards.link.analyticsId",
           "highlights.cards.image",
-          "tabs.leftNewsItem",
-          "tabs.rightNewsItem",
+          "tabs.leftArticle",
+          "tabs.rightArticle",
           "tabs.newsPageLink.label",
           "tabs.newsPageLink.page",
+          "tabs.newsPageLink.article",
           "tabs.newsPageLink.blogPost",
           "tabs.newsPageLink.url",
           "tabs.newsPageLink.analyticsId",
           "tabs.officialBoardPageLink.label",
           "tabs.officialBoardPageLink.page",
+          "tabs.officialBoardPageLink.article",
           "tabs.officialBoardPageLink.blogPost",
           "tabs.officialBoardPageLink.url",
           "tabs.officialBoardPageLink.analyticsId",
           "tabs.roadClosuresPageLink.label",
           "tabs.roadClosuresPageLink.page",
+          "tabs.roadClosuresPageLink.article",
           "tabs.roadClosuresPageLink.blogPost",
           "tabs.roadClosuresPageLink.url",
           "tabs.roadClosuresPageLink.analyticsId",
@@ -318,11 +374,13 @@
           "mayorAndCouncil.text",
           "mayorAndCouncil.mayorCard.label",
           "mayorAndCouncil.mayorCard.page",
+          "mayorAndCouncil.mayorCard.article",
           "mayorAndCouncil.mayorCard.blogPost",
           "mayorAndCouncil.mayorCard.url",
           "mayorAndCouncil.mayorCard.analyticsId",
           "mayorAndCouncil.councilCard.label",
           "mayorAndCouncil.councilCard.page",
+          "mayorAndCouncil.councilCard.article",
           "mayorAndCouncil.councilCard.blogPost",
           "mayorAndCouncil.councilCard.url",
           "mayorAndCouncil.councilCard.analyticsId",
@@ -330,6 +388,7 @@
           "topServices.services.icon",
           "topServices.services.link.label",
           "topServices.services.link.page",
+          "topServices.services.link.article",
           "topServices.services.link.blogPost",
           "topServices.services.link.url",
           "topServices.services.link.analyticsId",
@@ -363,11 +422,15 @@
           "eventsSection.text",
           "eventsSection.eventsPageLink.label",
           "eventsSection.eventsPageLink.page",
+          "eventsSection.eventsPageLink.article",
           "eventsSection.eventsPageLink.blogPost",
           "eventsSection.eventsPageLink.url",
           "eventsSection.eventsPageLink.analyticsId"
         ],
-        "locales": ["en", "sk"]
+        "locales": [
+          "en",
+          "sk"
+        ]
       },
       "conditions": [],
       "actionParameters": {}
@@ -376,8 +439,15 @@
       "action": "plugin::content-manager.explorer.create",
       "subject": "api::tag.tag",
       "properties": {
-        "fields": ["title", "pageCategory"],
-        "locales": ["en", "sk"]
+        "fields": [
+          "title",
+          "pageCategory",
+          "articles"
+        ],
+        "locales": [
+          "en",
+          "sk"
+        ]
       },
       "conditions": [],
       "actionParameters": {}
@@ -386,7 +456,10 @@
       "action": "plugin::content-manager.explorer.delete",
       "subject": "api::tag.tag",
       "properties": {
-        "locales": ["en", "sk"]
+        "locales": [
+          "en",
+          "sk"
+        ]
       },
       "conditions": [],
       "actionParameters": {}
@@ -395,8 +468,15 @@
       "action": "plugin::content-manager.explorer.read",
       "subject": "api::tag.tag",
       "properties": {
-        "fields": ["title", "pageCategory"],
-        "locales": ["en", "sk"]
+        "fields": [
+          "title",
+          "pageCategory",
+          "articles"
+        ],
+        "locales": [
+          "en",
+          "sk"
+        ]
       },
       "conditions": [],
       "actionParameters": {}
@@ -405,8 +485,15 @@
       "action": "plugin::content-manager.explorer.update",
       "subject": "api::tag.tag",
       "properties": {
-        "fields": ["title", "pageCategory"],
-        "locales": ["en", "sk"]
+        "fields": [
+          "title",
+          "pageCategory",
+          "articles"
+        ],
+        "locales": [
+          "en",
+          "sk"
+        ]
       },
       "conditions": [],
       "actionParameters": {}

@@ -1,26 +1,17 @@
 import { Typography } from '@bratislava/component-library'
 import Image from 'next/image'
-import { useMemo, useState } from 'react'
+import { useState } from 'react'
 
 import HomePageSearch from '@/src/components/common/HomepageSearch/HomePageSearch'
-import { getParsedMenus } from '@/src/components/common/NavBar/NavMenu/getParsedMenus'
 import SectionContainer from '@/src/components/common/SectionContainer/SectionContainer'
-import { useGeneralContext } from '@/src/components/providers/GeneralContextProvider'
 import { useHomepageContext } from '@/src/components/providers/HomepageContextProvider'
 import cn from '@/src/utils/cn'
 import { generateImageSizes } from '@/src/utils/generateImageSizes'
-import { useTranslation } from '@/src/utils/useTranslation'
 
 const WelcomeHomepageSection = () => {
-  const { t } = useTranslation()
-  const { menu } = useGeneralContext()
   const { homepage } = useHomepageContext()
 
   const { welcomeHeadline, welcomeMedia } = homepage?.attributes ?? {}
-
-  const menus = useMemo(() => {
-    return getParsedMenus(menu, t('NavMenu.more'))
-  }, [menu, t])
 
   const [isSearchOpen, setSearchOpen] = useState<boolean>(false)
 

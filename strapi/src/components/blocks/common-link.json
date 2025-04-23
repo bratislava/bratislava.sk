@@ -15,6 +15,11 @@
       "relation": "oneToOne",
       "target": "api::page.page"
     },
+    "article": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::article.article"
+    },
     "blogPost": {
       "type": "relation",
       "relation": "oneToOne",

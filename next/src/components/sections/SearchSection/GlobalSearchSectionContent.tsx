@@ -183,7 +183,7 @@ const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
     search: searchValue,
     page: currentPage,
     pageSize: 12,
-    // tagIds need to be here for now, because BlogPost and InbaArticle fetchers filter by tagIds
+    // tagIds need to be here for now, because Articles and InbaArticle fetchers filter by tagIds
     tagIds: [],
     // Official board category id
     categoryId: !categoryId || categoryId === 'all' ? undefined : categoryId,

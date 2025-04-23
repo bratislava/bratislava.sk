@@ -16,10 +16,10 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<Response>) => {
     const localePrefix = payload.entry.locale === 'en' ? '/en' : ''
     const homepage = payload.entry.locale === 'en' ? '/en' : '/'
 
-    if (payload?.model === 'blog-post') {
-      const blogUrl = `${localePrefix}/blog/${payload?.entry?.slug}`
-      console.log('api/revalidate:', blogUrl)
-      await res.revalidate(blogUrl)
+    if (payload?.model === 'article') {
+      const articleUrl = `${localePrefix}/spravy/${payload?.entry?.slug}`
+      console.log('api/revalidate:', articleUrl)
+      await res.revalidate(articleUrl)
     }
 
     if (payload?.model === 'page') {

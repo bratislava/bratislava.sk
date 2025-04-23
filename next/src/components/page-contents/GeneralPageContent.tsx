@@ -4,7 +4,7 @@ import { useMemo } from 'react'
 import PageHeader from '@/src/components/common/PageHeader/PageHeader'
 import PageHeaderSections from '@/src/components/layouts/PageHeaderSections'
 import Sections from '@/src/components/layouts/Sections'
-import RelatedBlogPostsSection from '@/src/components/sections/RelatedBlogPostsSection'
+import RelatedArticlesSection from '@/src/components/sections/RelatedArticlesSection'
 import { PageEntityFragment } from '@/src/services/graphql'
 import { isDefined } from '@/src/utils/isDefined'
 import { getPageBreadcrumbs } from '@/src/utils/pageUtils_Deprecated'
@@ -31,8 +31,11 @@ const GeneralPageContent = ({ page }: GeneralPageProps) => {
 
       {/* Page - Common Sections */}
       <div className="mb-8">
-        {page.attributes?.sections && <Sections sections={page.attributes.sections} />}
-        <RelatedBlogPostsSection
+        {page.attributes?.sections?.length ? (
+          <Sections sections={page.attributes.sections} />
+        ) : null}
+
+        <RelatedArticlesSection
           page={page}
           // The same as Section
           className="pt-10 md:pt-18"

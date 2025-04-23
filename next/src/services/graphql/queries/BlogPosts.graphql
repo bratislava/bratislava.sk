@@ -6,24 +6,6 @@ query BlogPostBySlug($slug: String!, $locale: I18NLocaleCode!) {
   }
 }
 
-query LatestPostsByTags(
-  $locale: I18NLocaleCode!
-  $tags: [String]!
-  $limit: Int = -1
-  $start: Int = 0
-) {
-  blogPosts(
-    locale: $locale
-    filters: { tag: { title: { in: $tags } } }
-    pagination: { limit: $limit, start: $start }
-    sort: "addedAt:desc"
-  ) {
-    data {
-      ...BlogPostEntity
-    }
-  }
-}
-
 query BlogPostsStaticPaths {
   blogPosts(locale: "all", sort: "addedAt:desc") {
     data {
@@ -69,25 +51,6 @@ query BlogPostsRssFeed($locale: I18NLocaleCode!) {
           }
         }
       }
-    }
-  }
-}
-
-query LatestBlogsWithTags(
-  $sort: [String]
-  $limit: Int
-  $start: Int
-  $filters: BlogPostFiltersInput
-  $locale: I18NLocaleCode
-) {
-  blogPosts(
-    sort: $sort
-    pagination: { limit: $limit, start: $start }
-    filters: $filters
-    locale: $locale
-  ) {
-    data {
-      ...LatestBlogPostEntity
     }
   }
 }

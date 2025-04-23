@@ -12,12 +12,7 @@ export const homepageSearchDefaultFilters: HomepageSearchFilters = {
   search: '',
 }
 
-export const allSearchTypes = [
-  'page' as const,
-  'blog-post' as const,
-  'vzn' as const,
-  'regulation' as const,
-]
+export const allSearchTypes = ['page' as const, 'article' as const, 'regulation' as const]
 
 // https://stackoverflow.com/a/52331580
 export type Unpacked<T> = T extends (infer U)[] ? U : T
@@ -44,7 +39,7 @@ export const homepageSearchFetcher = (filters: HomepageSearchFilters, locale: st
     .search<MixedResults>(filters.search, {
       ...getMeilisearchPageOptions({ page: 1, pageSize: 5 }),
       filter: [
-        'type = "page" OR type = "blog-post" OR type = "regulation"',
+        'type = "page" OR type = "article" OR type = "regulation"',
         `locale = ${locale} OR locale NOT EXISTS`,
       ],
     })
@@ -56,14 +51,14 @@ export const homepageSearchFetcher = (filters: HomepageSearchFilters, locale: st
         // eslint-disable-next-line @typescript-eslint/no-explicit-any,@typescript-eslint/no-unsafe-member-access
         const dataInner = (hit as any)[type]
 
-        if (type === 'blog-post') {
+        if (type === 'article') {
           const { title, slug } = dataInner
 
           return {
             type,
             title,
             // TODO: Fix link - get slug by some proper function. This one works for now for both locales.
-            link: `/blog/${slug}`,
+            link: `/spravy/${slug}`,
             data: dataInner,
           } as HomepageSearchResult
         }

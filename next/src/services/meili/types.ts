@@ -29,7 +29,7 @@ export type SearchIndexWrapped<T extends string, K extends object> = {
 
 export type MixedResults =
   | SearchIndexWrapped<'page', PageMeili>
-  | SearchIndexWrapped<'blog-post', InbaArticleMeili>
+  | SearchIndexWrapped<'article', ArticleMeili>
   | SearchIndexWrapped<'regulation', RegulationMeili>
 
 export type PageMeili = Omit<

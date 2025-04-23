@@ -7,13 +7,12 @@ import ResponsiveCarousel from '@/src/components/common/Carousel/ResponsiveCarou
 import SectionContainer from '@/src/components/common/SectionContainer/SectionContainer'
 import { PageEntityFragment } from '@/src/services/graphql'
 import {
-  getRelatedBlogPostsQueryKey,
-  relatedBlogPostsFetcher,
-} from '@/src/services/graphql/fetchers/relatedBlogPosts.fetcher'
+  getRelatedArticlesQueryKey,
+  relatedArticlesFetcher,
+} from '@/src/services/meili/fetchers/relatedArticlesFetcher'
 import { getCategoryColorLocalStyle } from '@/src/utils/colors'
-import { getNumericLocalDate } from '@/src/utils/formatDate'
+import { formatDate } from '@/src/utils/formatDate'
 import { generateImageSizes } from '@/src/utils/generateImageSizes'
-import { isDefined } from '@/src/utils/isDefined'
 import { useLocale } from '@/src/utils/useLocale'
 import { useTranslation } from '@/src/utils/useTranslation'
 
@@ -24,17 +23,17 @@ type Props = {
 
 const imageSizes = generateImageSizes({ default: '100vw', md: '50vw', lg: '33vw' })
 
-const RelatedBlogPostsSection = ({ page, className }: Props) => {
+const RelatedArticlesSection = ({ page, className }: Props) => {
   const { t } = useTranslation()
   const locale = useLocale()
 
   const { data } = useQuery({
-    queryKey: getRelatedBlogPostsQueryKey(page, locale),
-    queryFn: () => relatedBlogPostsFetcher(page, locale),
+    queryKey: getRelatedArticlesQueryKey(page, locale),
+    queryFn: () => relatedArticlesFetcher(page, locale),
     staleTime: Infinity,
   })
 
-  if (!data?.blogPosts?.data?.length) {
+  if (!data?.hits.length) {
     return null
   }
 
@@ -43,31 +42,31 @@ const RelatedBlogPostsSection = ({ page, className }: Props) => {
       <div className="flex flex-col">
         <div className="flex">
           <div className="grow">
-            <Typography type="h2">{t('RelatedBlogPostsSection.relatedBlogPosts')}</Typography>
+            <Typography type="h2">{t('RelatedArticlesSection.relatedArticles')}</Typography>
           </div>
         </div>
 
         <ResponsiveCarousel
-          items={data.blogPosts.data.filter(isDefined).map((card) => {
+          items={data.hits.map((card) => {
             if (!card.attributes) return null
 
             // TODO refactor sections that use BlogPostCard - it needs too much duplicate code while passing props
-            const { title, slug, coverImage, tag, addedAt } = card.attributes
+            const { title, slug, coverMedia, tag, addedAt } = card.attributes
             const tagColor = tag?.data?.attributes?.pageCategory?.data?.attributes?.color
             const tagTitle = tag?.data?.attributes?.title
 
             return (
               <BlogPostCard
-                key={card.id}
+                key={slug}
                 style={getCategoryColorLocalStyle({ color: tagColor })}
-                imgSrc={coverImage?.data?.attributes?.url}
+                imgSrc={coverMedia?.data?.attributes?.url}
                 imgSizes={imageSizes}
-                date={getNumericLocalDate(addedAt)}
+                date={formatDate(addedAt)}
                 title={title ?? ''}
                 tag={tagTitle ?? undefined}
                 linkProps={{
-                  children: t('RelatedBlogPostsSection.readMore'),
-                  href: `/blog/${slug}`,
+                  children: t('RelatedArticlesSection.readMore'),
+                  href: `/spravy/${slug}`,
                 }}
               />
             )
@@ -78,4 +77,4 @@ const RelatedBlogPostsSection = ({ page, className }: Props) => {
   )
 }
 
-export default RelatedBlogPostsSection
+export default RelatedArticlesSection

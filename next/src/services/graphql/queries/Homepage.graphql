@@ -102,14 +102,14 @@ fragment HomepageHighlightsItem on ComponentBlocksHomepageHighlightsItem {
 }
 
 fragment HomepageTabs on ComponentSectionsHomepageTabs {
-  leftNewsItem {
+  leftArticle {
     data {
-      ...LatestBlogPostEntity
+      ...ArticleCardEntity
     }
   }
-  rightNewsItem {
+  rightArticle {
     data {
-      ...LatestBlogPostEntity
+      ...ArticleCardEntity
     }
   }
   newsPageLink {

@@ -47,6 +47,25 @@
       "actionParameters": {}
     },
     {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::homepage.homepage",
+      "properties": {
+        "fields": [
+          "inba.title",
+          "inba.content",
+          "inbaFrontImage",
+          "inbaRearImage",
+          "inbaUrl"
+        ],
+        "locales": [
+          "en",
+          "sk"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": {}
+    },
+    {
       "action": "plugin::content-manager.explorer.create",
       "subject": "api::inba-article.inba-article",
       "properties": {

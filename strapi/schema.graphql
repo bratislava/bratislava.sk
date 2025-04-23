@@ -356,6 +356,7 @@ input ComponentBlocksBookmarkLinkInput {
 
 type ComponentBlocksCommonLink {
   analyticsId: String
+  article: ArticleEntityResponse
   blogPost: BlogPostEntityResponse
   id: ID!
   label: String!
@@ -366,6 +367,7 @@ type ComponentBlocksCommonLink {
 input ComponentBlocksCommonLinkFiltersInput {
   analyticsId: StringFilterInput
   and: [ComponentBlocksCommonLinkFiltersInput]
+  article: ArticleFiltersInput
   blogPost: BlogPostFiltersInput
   label: StringFilterInput
   not: ComponentBlocksCommonLinkFiltersInput
@@ -376,6 +378,7 @@ input ComponentBlocksCommonLinkFiltersInput {
 
 input ComponentBlocksCommonLinkInput {
   analyticsId: String
+  article: ID
   blogPost: ID
   id: ID
   label: String
@@ -894,21 +897,27 @@ input ComponentSectionsAccordionInput {
 }
 
 type ComponentSectionsArticles {
+  category: PageCategoryEntityResponse
   id: ID!
+  showAll: Boolean
   text: String
   title: String
 }
 
 input ComponentSectionsArticlesFiltersInput {
   and: [ComponentSectionsArticlesFiltersInput]
+  category: PageCategoryFiltersInput
   not: ComponentSectionsArticlesFiltersInput
   or: [ComponentSectionsArticlesFiltersInput]
+  showAll: BooleanFilterInput
   text: StringFilterInput
   title: StringFilterInput
 }
 
 input ComponentSectionsArticlesInput {
+  category: ID
   id: ID
+  showAll: Boolean
   text: String
   title: String
 }
@@ -1285,30 +1294,30 @@ input ComponentSectionsHomepageMayorAndCouncilInput {
 
 type ComponentSectionsHomepageTabs {
   id: ID!
-  leftNewsItem: BlogPostEntityResponse
+  leftArticle: ArticleEntityResponse
   newsPageLink: ComponentBlocksCommonLink
   officialBoardPageLink: ComponentBlocksCommonLink
-  rightNewsItem: BlogPostEntityResponse
+  rightArticle: ArticleEntityResponse
   roadClosuresPageLink: ComponentBlocksCommonLink
 }
 
 input ComponentSectionsHomepageTabsFiltersInput {
   and: [ComponentSectionsHomepageTabsFiltersInput]
-  leftNewsItem: BlogPostFiltersInput
+  leftArticle: ArticleFiltersInput
   newsPageLink: ComponentBlocksCommonLinkFiltersInput
   not: ComponentSectionsHomepageTabsFiltersInput
   officialBoardPageLink: ComponentBlocksCommonLinkFiltersInput
   or: [ComponentSectionsHomepageTabsFiltersInput]
-  rightNewsItem: BlogPostFiltersInput
+  rightArticle: ArticleFiltersInput
   roadClosuresPageLink: ComponentBlocksCommonLinkFiltersInput
 }
 
 input ComponentSectionsHomepageTabsInput {
   id: ID
-  leftNewsItem: ID
+  leftArticle: ID
   newsPageLink: ComponentBlocksCommonLinkInput
   officialBoardPageLink: ComponentBlocksCommonLinkInput
-  rightNewsItem: ID
+  rightArticle: ID
   roadClosuresPageLink: ComponentBlocksCommonLinkInput
 }
 
