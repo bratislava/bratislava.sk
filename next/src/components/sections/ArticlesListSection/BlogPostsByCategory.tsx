@@ -7,10 +7,10 @@ import Pagination from '@/src/components/common/Pagination/Pagination'
 import { BlogPostsByCategorySectionFragment } from '@/src/services/graphql'
 import { client } from '@/src/services/graphql/gql'
 import {
-  blogPostsDefaultFilters,
-  blogPostsFetcher,
-  getBlogPostsQueryKey,
-} from '@/src/services/meili/fetchers/blogPostsFetcher'
+  articlesDefaultFilters,
+  articlesFetcher,
+  getArticlesQueryKey,
+} from '@/src/services/meili/fetchers/articlesFetcher'
 import { getCategoryColorLocalStyle } from '@/src/utils/colors'
 import { getNumericLocalDate } from '@/src/utils/formatDate'
 import { generateImageSizes } from '@/src/utils/generateImageSizes'
@@ -32,7 +32,7 @@ const BlogPostsByCategory = ({ section }: Props) => {
   const { title, text, category } = section
 
   const [filters, setFilters] = useRoutePreservedState({
-    ...blogPostsDefaultFilters,
+    ...articlesDefaultFilters,
   })
 
   const { data: tagsData } = useQuery({
@@ -56,8 +56,8 @@ const BlogPostsByCategory = ({ section }: Props) => {
 
   // TODO prefetch section
   const { data } = useQuery({
-    queryKey: getBlogPostsQueryKey(filters, locale),
-    queryFn: () => blogPostsFetcher(filters, locale),
+    queryKey: getArticlesQueryKey(filters, locale),
+    queryFn: () => articlesFetcher(filters, locale),
     placeholderData: keepPreviousData,
     enabled: filters.tagIds.length > 0,
   })
@@ -79,7 +79,7 @@ const BlogPostsByCategory = ({ section }: Props) => {
           if (!card.attributes) return null
 
           // TODO refactor sections that use BlogPostCard - it needs too much duplicate code while passing props
-          const { title: blogPostTitle, slug, coverImage, tag, addedAt } = card.attributes
+          const { title: articleTitle, slug, coverMedia, tag, addedAt } = card.attributes
           const tagColor = tag?.data?.attributes?.pageCategory?.data?.attributes?.color
           const tagTitle = tag?.data?.attributes?.title
 
@@ -89,9 +89,9 @@ const BlogPostsByCategory = ({ section }: Props) => {
               style={getCategoryColorLocalStyle({ color: tagColor })}
               date={getNumericLocalDate(addedAt)}
               tag={tagTitle ?? undefined}
-              title={blogPostTitle ?? ''}
-              linkProps={{ children: t('readMore'), href: `/blog/${slug}` }}
-              imgSrc={coverImage?.data?.attributes?.url}
+              title={articleTitle ?? ''}
+              linkProps={{ children: t('readMore'), href: `/spravy/${slug}` }}
+              imgSrc={coverMedia?.data?.attributes?.url}
               imgSizes={imageSizes}
             />
           )

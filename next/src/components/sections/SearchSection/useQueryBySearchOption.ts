@@ -7,16 +7,13 @@ import {
   officialBoardListFetcher,
   OfficialBoardListFilters,
 } from '@/src/services/ginis/fetchers/officialBoardListFetcher'
+import { Enum_Page_Pagecolor, Enum_Pagecategory_Color } from '@/src/services/graphql'
 import {
-  Enum_Page_Pagecolor,
-  Enum_Pagecategory_Color,
-  LatestBlogPostEntityFragment,
-} from '@/src/services/graphql'
-import {
-  blogPostsFetcher,
-  BlogPostsFilters,
-  getBlogPostsQueryKey,
-} from '@/src/services/meili/fetchers/blogPostsFetcher'
+  articlesFetcher,
+  ArticlesFilters,
+  getArticlesQueryKey,
+} from '@/src/services/meili/fetchers/articlesFetcher'
+import { BlogPostsFilters } from '@/src/services/meili/fetchers/blogPostsFetcher'
 import {
   getInbaArticlesQueryKey,
   inbaArticlesFetcher,
@@ -92,27 +89,25 @@ export const useQueryBySearchOption = ({
     },
   })
 
-  const blogPostsQuery = useQuery({
+  const articlesQuery = useQuery({
     // TODO filters type
-    queryKey: getBlogPostsQueryKey(filters as BlogPostsFilters, locale),
-    queryFn: () => blogPostsFetcher(filters as BlogPostsFilters, locale),
+    queryKey: getArticlesQueryKey(filters as ArticlesFilters, locale),
+    queryFn: () => articlesFetcher(filters as ArticlesFilters, locale),
     placeholderData: keepPreviousData,
     select: (data) => {
       const formattedData: SearchResult[] =
-        data?.hits?.map(
-          (blogPostData: Pick<LatestBlogPostEntityFragment, 'attributes'>): SearchResult => {
-            return {
-              title: blogPostData.attributes?.title,
-              uniqueId: blogPostData.attributes?.slug,
-              linkHref: `/blog/${blogPostData.attributes?.slug}`,
-              metadata: [
-                blogPostData.attributes?.tag?.data?.attributes?.title,
-                formatDate(blogPostData.attributes?.addedAt),
-              ],
-              coverImageSrc: blogPostData.attributes?.coverImage?.data?.attributes?.url,
-            }
-          },
-        ) ?? []
+        data?.hits?.map((articles): SearchResult => {
+          return {
+            title: articles.attributes?.title,
+            uniqueId: articles.attributes?.slug,
+            linkHref: `/spravy/${articles.attributes?.slug}`,
+            metadata: [
+              articles.attributes?.tag?.data?.attributes?.title,
+              formatDate(articles.attributes?.addedAt),
+            ],
+            coverImageSrc: articles.attributes?.coverMedia?.data?.attributes?.url,
+          }
+        }) ?? []
 
       return { searchResultsData: formattedData, searchResultsCount: data?.estimatedTotalHits ?? 0 }
     },
@@ -240,7 +235,7 @@ export const useQueryBySearchOption = ({
       return pagesQuery
 
     case 'articles':
-      return blogPostsQuery
+      return articlesQuery
 
     case 'inbaArticles':
       return inbaArticlesQuery
