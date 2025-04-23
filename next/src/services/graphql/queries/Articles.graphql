@@ -58,6 +58,25 @@ query ArticlesStaticPaths($limit: Int = -1) {
   }
 }
 
+query Articles(
+  $sort: [String]
+  $limit: Int
+  $start: Int
+  $filters: ArticleFiltersInput
+  $locale: I18NLocaleCode
+) {
+  articles(
+    sort: $sort
+    pagination: { limit: $limit, start: $start }
+    filters: $filters
+    locale: $locale
+  ) {
+    data {
+      ...ArticleCardEntity
+    }
+  }
+}
+
 query Dev_AllArticles(
   $sort: [String]
   $limit: Int

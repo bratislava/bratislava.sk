@@ -73,25 +73,6 @@ query BlogPostsRssFeed($locale: I18NLocaleCode!) {
   }
 }
 
-query LatestBlogsWithTags(
-  $sort: [String]
-  $limit: Int
-  $start: Int
-  $filters: BlogPostFiltersInput
-  $locale: I18NLocaleCode
-) {
-  blogPosts(
-    sort: $sort
-    pagination: { limit: $limit, start: $start }
-    filters: $filters
-    locale: $locale
-  ) {
-    data {
-      ...LatestBlogPostEntity
-    }
-  }
-}
-
 fragment LatestBlogPostEntity on BlogPostEntity {
   id
   attributes {

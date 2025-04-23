@@ -447,6 +447,7 @@ export type ComponentBlocksBookmarkLinkInput = {
 export type ComponentBlocksCommonLink = {
   __typename?: 'ComponentBlocksCommonLink'
   analyticsId?: Maybe<Scalars['String']['output']>
+  article?: Maybe<ArticleEntityResponse>
   blogPost?: Maybe<BlogPostEntityResponse>
   id: Scalars['ID']['output']
   label: Scalars['String']['output']
@@ -457,6 +458,7 @@ export type ComponentBlocksCommonLink = {
 export type ComponentBlocksCommonLinkFiltersInput = {
   analyticsId?: InputMaybe<StringFilterInput>
   and?: InputMaybe<Array<InputMaybe<ComponentBlocksCommonLinkFiltersInput>>>
+  article?: InputMaybe<ArticleFiltersInput>
   blogPost?: InputMaybe<BlogPostFiltersInput>
   label?: InputMaybe<StringFilterInput>
   not?: InputMaybe<ComponentBlocksCommonLinkFiltersInput>
@@ -467,6 +469,7 @@ export type ComponentBlocksCommonLinkFiltersInput = {
 
 export type ComponentBlocksCommonLinkInput = {
   analyticsId?: InputMaybe<Scalars['String']['input']>
+  article?: InputMaybe<Scalars['ID']['input']>
   blogPost?: InputMaybe<Scalars['ID']['input']>
   id?: InputMaybe<Scalars['ID']['input']>
   label?: InputMaybe<Scalars['String']['input']>
@@ -1532,30 +1535,30 @@ export type ComponentSectionsHomepageMayorAndCouncilInput = {
 export type ComponentSectionsHomepageTabs = {
   __typename?: 'ComponentSectionsHomepageTabs'
   id: Scalars['ID']['output']
-  leftNewsItem?: Maybe<BlogPostEntityResponse>
+  leftArticle?: Maybe<ArticleEntityResponse>
   newsPageLink?: Maybe<ComponentBlocksCommonLink>
   officialBoardPageLink?: Maybe<ComponentBlocksCommonLink>
-  rightNewsItem?: Maybe<BlogPostEntityResponse>
+  rightArticle?: Maybe<ArticleEntityResponse>
   roadClosuresPageLink?: Maybe<ComponentBlocksCommonLink>
 }
 
 export type ComponentSectionsHomepageTabsFiltersInput = {
   and?: InputMaybe<Array<InputMaybe<ComponentSectionsHomepageTabsFiltersInput>>>
-  leftNewsItem?: InputMaybe<BlogPostFiltersInput>
+  leftArticle?: InputMaybe<ArticleFiltersInput>
   newsPageLink?: InputMaybe<ComponentBlocksCommonLinkFiltersInput>
   not?: InputMaybe<ComponentSectionsHomepageTabsFiltersInput>
   officialBoardPageLink?: InputMaybe<ComponentBlocksCommonLinkFiltersInput>
   or?: InputMaybe<Array<InputMaybe<ComponentSectionsHomepageTabsFiltersInput>>>
-  rightNewsItem?: InputMaybe<BlogPostFiltersInput>
+  rightArticle?: InputMaybe<ArticleFiltersInput>
   roadClosuresPageLink?: InputMaybe<ComponentBlocksCommonLinkFiltersInput>
 }
 
 export type ComponentSectionsHomepageTabsInput = {
   id?: InputMaybe<Scalars['ID']['input']>
-  leftNewsItem?: InputMaybe<Scalars['ID']['input']>
+  leftArticle?: InputMaybe<Scalars['ID']['input']>
   newsPageLink?: InputMaybe<ComponentBlocksCommonLinkInput>
   officialBoardPageLink?: InputMaybe<ComponentBlocksCommonLinkInput>
-  rightNewsItem?: InputMaybe<Scalars['ID']['input']>
+  rightArticle?: InputMaybe<Scalars['ID']['input']>
   roadClosuresPageLink?: InputMaybe<ComponentBlocksCommonLinkInput>
 }
 
@@ -5186,6 +5189,74 @@ export type ArticlesStaticPathsQuery = {
   } | null
 }
 
+export type ArticlesQueryVariables = Exact<{
+  sort?: InputMaybe<
+    Array<InputMaybe<Scalars['String']['input']>> | InputMaybe<Scalars['String']['input']>
+  >
+  limit?: InputMaybe<Scalars['Int']['input']>
+  start?: InputMaybe<Scalars['Int']['input']>
+  filters?: InputMaybe<ArticleFiltersInput>
+  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
+}>
+
+export type ArticlesQuery = {
+  __typename?: 'Query'
+  articles?: {
+    __typename?: 'ArticleEntityResponseCollection'
+    data: Array<{
+      __typename: 'ArticleEntity'
+      id?: string | null
+      attributes?: {
+        __typename?: 'Article'
+        perex?: string | null
+        addedAt: any
+        slug: string
+        title: string
+        locale?: string | null
+        coverMedia?: {
+          __typename?: 'UploadFileEntityResponse'
+          data?: {
+            __typename?: 'UploadFileEntity'
+            id?: string | null
+            attributes?: {
+              __typename?: 'UploadFile'
+              url: string
+              width?: number | null
+              height?: number | null
+              caption?: string | null
+              alternativeText?: string | null
+              name: string
+            } | null
+          } | null
+        } | null
+        tag?: {
+          __typename?: 'TagEntityResponse'
+          data?: {
+            __typename?: 'TagEntity'
+            id?: string | null
+            attributes?: {
+              __typename?: 'Tag'
+              title?: string | null
+              pageCategory?: {
+                __typename?: 'PageCategoryEntityResponse'
+                data?: {
+                  __typename?: 'PageCategoryEntity'
+                  id?: string | null
+                  attributes?: {
+                    __typename?: 'PageCategory'
+                    title?: string | null
+                    color?: Enum_Pagecategory_Color | null
+                  } | null
+                } | null
+              } | null
+            } | null
+          } | null
+        } | null
+      } | null
+    }>
+  } | null
+}
+
 export type Dev_AllArticlesQueryVariables = Exact<{
   sort?: InputMaybe<
     Array<InputMaybe<Scalars['String']['input']>> | InputMaybe<Scalars['String']['input']>
@@ -5602,63 +5673,6 @@ export type BlogPostsRssFeedQuery = {
               url: string
               mime: string
               size: number
-            } | null
-          } | null
-        } | null
-      } | null
-    }>
-  } | null
-}
-
-export type LatestBlogsWithTagsQueryVariables = Exact<{
-  sort?: InputMaybe<
-    Array<InputMaybe<Scalars['String']['input']>> | InputMaybe<Scalars['String']['input']>
-  >
-  limit?: InputMaybe<Scalars['Int']['input']>
-  start?: InputMaybe<Scalars['Int']['input']>
-  filters?: InputMaybe<BlogPostFiltersInput>
-  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
-}>
-
-export type LatestBlogsWithTagsQuery = {
-  __typename?: 'Query'
-  blogPosts?: {
-    __typename?: 'BlogPostEntityResponseCollection'
-    data: Array<{
-      __typename?: 'BlogPostEntity'
-      id?: string | null
-      attributes?: {
-        __typename?: 'BlogPost'
-        slug: string
-        title: string
-        excerpt?: string | null
-        addedAt: any
-        updatedAt?: any | null
-        coverImage?: {
-          __typename?: 'UploadFileEntityResponse'
-          data?: {
-            __typename?: 'UploadFileEntity'
-            attributes?: { __typename?: 'UploadFile'; url: string } | null
-          } | null
-        } | null
-        tag?: {
-          __typename?: 'TagEntityResponse'
-          data?: {
-            __typename?: 'TagEntity'
-            attributes?: {
-              __typename?: 'Tag'
-              title?: string | null
-              pageCategory?: {
-                __typename?: 'PageCategoryEntityResponse'
-                data?: {
-                  __typename?: 'PageCategoryEntity'
-                  attributes?: {
-                    __typename?: 'PageCategory'
-                    title?: string | null
-                    color?: Enum_Pagecategory_Color | null
-                  } | null
-                } | null
-              } | null
             } | null
           } | null
         } | null
@@ -6842,29 +6856,39 @@ export type HomepageEntityFragment = {
     } | null
     tabs?: {
       __typename?: 'ComponentSectionsHomepageTabs'
-      leftNewsItem?: {
-        __typename?: 'BlogPostEntityResponse'
+      leftArticle?: {
+        __typename?: 'ArticleEntityResponse'
         data?: {
-          __typename?: 'BlogPostEntity'
+          __typename: 'ArticleEntity'
           id?: string | null
           attributes?: {
-            __typename?: 'BlogPost'
+            __typename?: 'Article'
+            perex?: string | null
+            addedAt: any
             slug: string
             title: string
-            excerpt?: string | null
-            addedAt: any
-            updatedAt?: any | null
-            coverImage?: {
+            locale?: string | null
+            coverMedia?: {
               __typename?: 'UploadFileEntityResponse'
               data?: {
                 __typename?: 'UploadFileEntity'
-                attributes?: { __typename?: 'UploadFile'; url: string } | null
+                id?: string | null
+                attributes?: {
+                  __typename?: 'UploadFile'
+                  url: string
+                  width?: number | null
+                  height?: number | null
+                  caption?: string | null
+                  alternativeText?: string | null
+                  name: string
+                } | null
               } | null
             } | null
             tag?: {
               __typename?: 'TagEntityResponse'
               data?: {
                 __typename?: 'TagEntity'
+                id?: string | null
                 attributes?: {
                   __typename?: 'Tag'
                   title?: string | null
@@ -6872,6 +6896,7 @@ export type HomepageEntityFragment = {
                     __typename?: 'PageCategoryEntityResponse'
                     data?: {
                       __typename?: 'PageCategoryEntity'
+                      id?: string | null
                       attributes?: {
                         __typename?: 'PageCategory'
                         title?: string | null
@@ -6885,29 +6910,39 @@ export type HomepageEntityFragment = {
           } | null
         } | null
       } | null
-      rightNewsItem?: {
-        __typename?: 'BlogPostEntityResponse'
+      rightArticle?: {
+        __typename?: 'ArticleEntityResponse'
         data?: {
-          __typename?: 'BlogPostEntity'
+          __typename: 'ArticleEntity'
           id?: string | null
           attributes?: {
-            __typename?: 'BlogPost'
+            __typename?: 'Article'
+            perex?: string | null
+            addedAt: any
             slug: string
             title: string
-            excerpt?: string | null
-            addedAt: any
-            updatedAt?: any | null
-            coverImage?: {
+            locale?: string | null
+            coverMedia?: {
               __typename?: 'UploadFileEntityResponse'
               data?: {
                 __typename?: 'UploadFileEntity'
-                attributes?: { __typename?: 'UploadFile'; url: string } | null
+                id?: string | null
+                attributes?: {
+                  __typename?: 'UploadFile'
+                  url: string
+                  width?: number | null
+                  height?: number | null
+                  caption?: string | null
+                  alternativeText?: string | null
+                  name: string
+                } | null
               } | null
             } | null
             tag?: {
               __typename?: 'TagEntityResponse'
               data?: {
                 __typename?: 'TagEntity'
+                id?: string | null
                 attributes?: {
                   __typename?: 'Tag'
                   title?: string | null
@@ -6915,6 +6950,7 @@ export type HomepageEntityFragment = {
                     __typename?: 'PageCategoryEntityResponse'
                     data?: {
                       __typename?: 'PageCategoryEntity'
+                      id?: string | null
                       attributes?: {
                         __typename?: 'PageCategory'
                         title?: string | null
@@ -7258,29 +7294,39 @@ export type HomepageQuery = {
         } | null
         tabs?: {
           __typename?: 'ComponentSectionsHomepageTabs'
-          leftNewsItem?: {
-            __typename?: 'BlogPostEntityResponse'
+          leftArticle?: {
+            __typename?: 'ArticleEntityResponse'
             data?: {
-              __typename?: 'BlogPostEntity'
+              __typename: 'ArticleEntity'
               id?: string | null
               attributes?: {
-                __typename?: 'BlogPost'
+                __typename?: 'Article'
+                perex?: string | null
+                addedAt: any
                 slug: string
                 title: string
-                excerpt?: string | null
-                addedAt: any
-                updatedAt?: any | null
-                coverImage?: {
+                locale?: string | null
+                coverMedia?: {
                   __typename?: 'UploadFileEntityResponse'
                   data?: {
                     __typename?: 'UploadFileEntity'
-                    attributes?: { __typename?: 'UploadFile'; url: string } | null
+                    id?: string | null
+                    attributes?: {
+                      __typename?: 'UploadFile'
+                      url: string
+                      width?: number | null
+                      height?: number | null
+                      caption?: string | null
+                      alternativeText?: string | null
+                      name: string
+                    } | null
                   } | null
                 } | null
                 tag?: {
                   __typename?: 'TagEntityResponse'
                   data?: {
                     __typename?: 'TagEntity'
+                    id?: string | null
                     attributes?: {
                       __typename?: 'Tag'
                       title?: string | null
@@ -7288,6 +7334,7 @@ export type HomepageQuery = {
                         __typename?: 'PageCategoryEntityResponse'
                         data?: {
                           __typename?: 'PageCategoryEntity'
+                          id?: string | null
                           attributes?: {
                             __typename?: 'PageCategory'
                             title?: string | null
@@ -7301,29 +7348,39 @@ export type HomepageQuery = {
               } | null
             } | null
           } | null
-          rightNewsItem?: {
-            __typename?: 'BlogPostEntityResponse'
+          rightArticle?: {
+            __typename?: 'ArticleEntityResponse'
             data?: {
-              __typename?: 'BlogPostEntity'
+              __typename: 'ArticleEntity'
               id?: string | null
               attributes?: {
-                __typename?: 'BlogPost'
+                __typename?: 'Article'
+                perex?: string | null
+                addedAt: any
                 slug: string
                 title: string
-                excerpt?: string | null
-                addedAt: any
-                updatedAt?: any | null
-                coverImage?: {
+                locale?: string | null
+                coverMedia?: {
                   __typename?: 'UploadFileEntityResponse'
                   data?: {
                     __typename?: 'UploadFileEntity'
-                    attributes?: { __typename?: 'UploadFile'; url: string } | null
+                    id?: string | null
+                    attributes?: {
+                      __typename?: 'UploadFile'
+                      url: string
+                      width?: number | null
+                      height?: number | null
+                      caption?: string | null
+                      alternativeText?: string | null
+                      name: string
+                    } | null
                   } | null
                 } | null
                 tag?: {
                   __typename?: 'TagEntityResponse'
                   data?: {
                     __typename?: 'TagEntity'
+                    id?: string | null
                     attributes?: {
                       __typename?: 'Tag'
                       title?: string | null
@@ -7331,6 +7388,7 @@ export type HomepageQuery = {
                         __typename?: 'PageCategoryEntityResponse'
                         data?: {
                           __typename?: 'PageCategoryEntity'
+                          id?: string | null
                           attributes?: {
                             __typename?: 'PageCategory'
                             title?: string | null
@@ -7685,29 +7743,39 @@ export type HomepageHighlightsItemFragment = {
 
 export type HomepageTabsFragment = {
   __typename?: 'ComponentSectionsHomepageTabs'
-  leftNewsItem?: {
-    __typename?: 'BlogPostEntityResponse'
+  leftArticle?: {
+    __typename?: 'ArticleEntityResponse'
     data?: {
-      __typename?: 'BlogPostEntity'
+      __typename: 'ArticleEntity'
       id?: string | null
       attributes?: {
-        __typename?: 'BlogPost'
+        __typename?: 'Article'
+        perex?: string | null
+        addedAt: any
         slug: string
         title: string
-        excerpt?: string | null
-        addedAt: any
-        updatedAt?: any | null
-        coverImage?: {
+        locale?: string | null
+        coverMedia?: {
           __typename?: 'UploadFileEntityResponse'
           data?: {
             __typename?: 'UploadFileEntity'
-            attributes?: { __typename?: 'UploadFile'; url: string } | null
+            id?: string | null
+            attributes?: {
+              __typename?: 'UploadFile'
+              url: string
+              width?: number | null
+              height?: number | null
+              caption?: string | null
+              alternativeText?: string | null
+              name: string
+            } | null
           } | null
         } | null
         tag?: {
           __typename?: 'TagEntityResponse'
           data?: {
             __typename?: 'TagEntity'
+            id?: string | null
             attributes?: {
               __typename?: 'Tag'
               title?: string | null
@@ -7715,6 +7783,7 @@ export type HomepageTabsFragment = {
                 __typename?: 'PageCategoryEntityResponse'
                 data?: {
                   __typename?: 'PageCategoryEntity'
+                  id?: string | null
                   attributes?: {
                     __typename?: 'PageCategory'
                     title?: string | null
@@ -7728,29 +7797,39 @@ export type HomepageTabsFragment = {
       } | null
     } | null
   } | null
-  rightNewsItem?: {
-    __typename?: 'BlogPostEntityResponse'
+  rightArticle?: {
+    __typename?: 'ArticleEntityResponse'
     data?: {
-      __typename?: 'BlogPostEntity'
+      __typename: 'ArticleEntity'
       id?: string | null
       attributes?: {
-        __typename?: 'BlogPost'
+        __typename?: 'Article'
+        perex?: string | null
+        addedAt: any
         slug: string
         title: string
-        excerpt?: string | null
-        addedAt: any
-        updatedAt?: any | null
-        coverImage?: {
+        locale?: string | null
+        coverMedia?: {
           __typename?: 'UploadFileEntityResponse'
           data?: {
             __typename?: 'UploadFileEntity'
-            attributes?: { __typename?: 'UploadFile'; url: string } | null
+            id?: string | null
+            attributes?: {
+              __typename?: 'UploadFile'
+              url: string
+              width?: number | null
+              height?: number | null
+              caption?: string | null
+              alternativeText?: string | null
+              name: string
+            } | null
           } | null
         } | null
         tag?: {
           __typename?: 'TagEntityResponse'
           data?: {
             __typename?: 'TagEntity'
+            id?: string | null
             attributes?: {
               __typename?: 'Tag'
               title?: string | null
@@ -7758,6 +7837,7 @@ export type HomepageTabsFragment = {
                 __typename?: 'PageCategoryEntityResponse'
                 data?: {
                   __typename?: 'PageCategoryEntity'
+                  id?: string | null
                   attributes?: {
                     __typename?: 'PageCategory'
                     title?: string | null
@@ -12921,6 +13001,40 @@ export const ArticleEntityFragmentDoc = gql`
   ${FileBlockFragmentDoc}
   ${UploadImageEntityFragmentDoc}
 `
+export const LatestBlogPostEntityFragmentDoc = gql`
+  fragment LatestBlogPostEntity on BlogPostEntity {
+    id
+    attributes {
+      slug
+      title
+      excerpt
+      coverImage {
+        data {
+          attributes {
+            url
+          }
+        }
+      }
+      addedAt
+      updatedAt
+      tag {
+        data {
+          attributes {
+            title
+            pageCategory {
+              data {
+                attributes {
+                  title
+                  color
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`
 export const UploadImageSrcEntityFragmentDoc = gql`
   fragment UploadImageSrcEntity on UploadFileEntity {
     id
@@ -13976,50 +14090,16 @@ export const HomepageHighlightsItemFragmentDoc = gql`
   ${CommonLinkFragmentDoc}
   ${UploadImageSrcEntityFragmentDoc}
 `
-export const LatestBlogPostEntityFragmentDoc = gql`
-  fragment LatestBlogPostEntity on BlogPostEntity {
-    id
-    attributes {
-      slug
-      title
-      excerpt
-      coverImage {
-        data {
-          attributes {
-            url
-          }
-        }
-      }
-      addedAt
-      updatedAt
-      tag {
-        data {
-          attributes {
-            title
-            pageCategory {
-              data {
-                attributes {
-                  title
-                  color
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-`
 export const HomepageTabsFragmentDoc = gql`
   fragment HomepageTabs on ComponentSectionsHomepageTabs {
-    leftNewsItem {
+    leftArticle {
       data {
-        ...LatestBlogPostEntity
+        ...ArticleCardEntity
       }
     }
-    rightNewsItem {
+    rightArticle {
       data {
-        ...LatestBlogPostEntity
+        ...ArticleCardEntity
       }
     }
     newsPageLink {
@@ -14032,7 +14112,7 @@ export const HomepageTabsFragmentDoc = gql`
       ...CommonLink
     }
   }
-  ${LatestBlogPostEntityFragmentDoc}
+  ${ArticleCardEntityFragmentDoc}
   ${CommonLinkFragmentDoc}
 `
 export const HomepageMayorAndCouncilFragmentDoc = gql`
@@ -14288,6 +14368,27 @@ export const ArticlesStaticPathsDocument = gql`
   }
   ${ArticleSlugEntityFragmentDoc}
 `
+export const ArticlesDocument = gql`
+  query Articles(
+    $sort: [String]
+    $limit: Int
+    $start: Int
+    $filters: ArticleFiltersInput
+    $locale: I18NLocaleCode
+  ) {
+    articles(
+      sort: $sort
+      pagination: { limit: $limit, start: $start }
+      filters: $filters
+      locale: $locale
+    ) {
+      data {
+        ...ArticleCardEntity
+      }
+    }
+  }
+  ${ArticleCardEntityFragmentDoc}
+`
 export const Dev_AllArticlesDocument = gql`
   query Dev_AllArticles(
     $sort: [String]
@@ -14389,27 +14490,6 @@ export const BlogPostsRssFeedDocument = gql`
       }
     }
   }
-`
-export const LatestBlogsWithTagsDocument = gql`
-  query LatestBlogsWithTags(
-    $sort: [String]
-    $limit: Int
-    $start: Int
-    $filters: BlogPostFiltersInput
-    $locale: I18NLocaleCode
-  ) {
-    blogPosts(
-      sort: $sort
-      pagination: { limit: $limit, start: $start }
-      filters: $filters
-      locale: $locale
-    ) {
-      data {
-        ...LatestBlogPostEntity
-      }
-    }
-  }
-  ${LatestBlogPostEntityFragmentDoc}
 `
 export const BlogPostsTagsDocument = gql`
   query blogPostsTags($locale: I18NLocaleCode) {
@@ -14827,6 +14907,21 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
         variables,
       )
     },
+    Articles(
+      variables?: ArticlesQueryVariables,
+      requestHeaders?: GraphQLClientRequestHeaders,
+    ): Promise<ArticlesQuery> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<ArticlesQuery>(ArticlesDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
+          }),
+        'Articles',
+        'query',
+        variables,
+      )
+    },
     Dev_AllArticles(
       variables?: Dev_AllArticlesQueryVariables,
       requestHeaders?: GraphQLClientRequestHeaders,
@@ -14898,21 +14993,6 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
             ...wrappedRequestHeaders,
           }),
         'BlogPostsRssFeed',
-        'query',
-        variables,
-      )
-    },
-    LatestBlogsWithTags(
-      variables?: LatestBlogsWithTagsQueryVariables,
-      requestHeaders?: GraphQLClientRequestHeaders,
-    ): Promise<LatestBlogsWithTagsQuery> {
-      return withWrapper(
-        (wrappedRequestHeaders) =>
-          client.request<LatestBlogsWithTagsQuery>(LatestBlogsWithTagsDocument, variables, {
-            ...requestHeaders,
-            ...wrappedRequestHeaders,
-          }),
-        'LatestBlogsWithTags',
         'query',
         variables,
       )

@@ -8,7 +8,7 @@ import MLink from '@/src/components/common/MLink/MLink'
 import Tag from '@/src/components/common/Tag/Tag'
 import { useHomepageContext } from '@/src/components/providers/HomepageContextProvider'
 import { getCategoryColorLocalStyle } from '@/src/utils/colors'
-import { getNumericLocalDate } from '@/src/utils/formatDate'
+import { formatDate } from '@/src/utils/formatDate'
 import { generateImageSizes } from '@/src/utils/generateImageSizes'
 import { getCommonLinkProps } from '@/src/utils/getCommonLinkProps'
 import { isDefined } from '@/src/utils/isDefined'
@@ -19,17 +19,19 @@ const imageSizes = generateImageSizes({ default: '50vw', lg: '33vw' })
 const TabPanelLatestNews = () => {
   const { t } = useTranslation()
 
-  const { homepage, blogPosts } = useHomepageContext()
+  const { homepage, latestArticles } = useHomepageContext()
   const { tabs } = homepage?.attributes ?? {}
-  const { leftNewsItem, rightNewsItem } = tabs ?? {}
-  const latestPostsFiltered =
-    blogPosts
+  const { leftArticle, rightArticle } = tabs ?? {}
+  const latestArticlesFiltered =
+    latestArticles
       ?.filter(isDefined)
-      .filter((post) => post.id !== leftNewsItem?.data?.id && post.id !== rightNewsItem?.data?.id)
+      .filter(
+        (article) => article.id !== leftArticle?.data?.id && article.id !== rightArticle?.data?.id,
+      )
       .slice(0, 4) ?? []
 
-  const allPosts =
-    [leftNewsItem?.data, rightNewsItem?.data, ...latestPostsFiltered]
+  const allLatestArticles =
+    [leftArticle?.data, rightArticle?.data, ...latestArticlesFiltered]
       .filter(isDefined)
       .slice(0, 6) ?? []
 
@@ -37,21 +39,21 @@ const TabPanelLatestNews = () => {
     <TabPanel id="LatestNews">
       <ResponsiveCarousel
         className="lg:hidden"
-        items={allPosts.map((blogPost) => {
-          const { title, slug, coverImage, addedAt, tag } = blogPost.attributes ?? {}
+        items={allLatestArticles.map((article) => {
+          const { title, slug, coverMedia, addedAt, tag } = article.attributes ?? {}
           const tagColor = tag?.data?.attributes?.pageCategory?.data?.attributes?.color
           const tagTitle = tag?.data?.attributes?.title
 
           return (
             <BlogPostCard
-              key={blogPost.id}
+              key={article.id}
               style={getCategoryColorLocalStyle({ color: tagColor })}
               variant="no-border"
-              date={getNumericLocalDate(addedAt)}
+              date={formatDate(addedAt)}
               tag={tagTitle ?? undefined}
               title={title ?? ''}
-              linkProps={{ children: t('HomepageTabs.readMore'), href: `/blog/${slug}` }}
-              imgSrc={coverImage?.data?.attributes?.url}
+              linkProps={{ children: t('HomepageTabs.readMore'), href: `/spravy/${slug}` }}
+              imgSrc={coverMedia?.data?.attributes?.url}
               imgSizes={imageSizes}
             />
           )
@@ -59,29 +61,29 @@ const TabPanelLatestNews = () => {
       />
       <div className="mt-14 hidden pb-8 lg:block">
         <div className="grid grid-cols-3 gap-x-8">
-          {[leftNewsItem?.data, rightNewsItem?.data].filter(isDefined).map((blogPost) => {
-            const { title, slug, coverImage, addedAt, tag, excerpt } = blogPost.attributes ?? {}
+          {[leftArticle?.data, rightArticle?.data].filter(isDefined).map((article) => {
+            const { title, slug, coverMedia, addedAt, tag, perex } = article.attributes ?? {}
             const tagColor = tag?.data?.attributes?.pageCategory?.data?.attributes?.color
             const tagTitle = tag?.data?.attributes?.title
 
             return (
               <BlogPostCard
-                key={blogPost.id}
+                key={article.id}
                 style={getCategoryColorLocalStyle({ color: tagColor })}
                 variant="no-border"
-                date={getNumericLocalDate(addedAt)}
+                date={formatDate(addedAt)}
                 tag={tagTitle ?? undefined}
                 title={title ?? ''}
-                linkProps={{ children: t('HomepageTabs.readMore'), href: `/blog/${slug}` }}
-                imgSrc={coverImage?.data?.attributes?.url}
+                linkProps={{ children: t('HomepageTabs.readMore'), href: `/spravy/${slug}` }}
+                imgSrc={coverMedia?.data?.attributes?.url}
                 imgSizes={imageSizes}
-                text={excerpt ?? undefined}
+                text={perex ?? undefined}
               />
             )
           })}
 
           <div className="hidden flex-col gap-6 lg:flex">
-            {latestPostsFiltered.map((post, index) => {
+            {latestArticlesFiltered.map((post, index) => {
               const { tag, slug, title } = post.attributes ?? {}
               const tagColor = tag?.data?.attributes?.pageCategory?.data?.attributes?.color
 
@@ -98,7 +100,7 @@ const TabPanelLatestNews = () => {
                     </div>
                   )}
                   <MLink
-                    href={`/blog/${slug}`}
+                    href={`/spravy/${slug}`}
                     stretched
                     variant="underlineOnHover"
                     className="line-clamp-3"
