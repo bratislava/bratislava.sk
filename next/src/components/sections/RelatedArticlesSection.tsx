@@ -11,7 +11,7 @@ import {
   relatedArticlesFetcher,
 } from '@/src/services/meili/fetchers/relatedArticlesFetcher'
 import { getCategoryColorLocalStyle } from '@/src/utils/colors'
-import { getNumericLocalDate } from '@/src/utils/formatDate'
+import { formatDate } from '@/src/utils/formatDate'
 import { generateImageSizes } from '@/src/utils/generateImageSizes'
 import { useLocale } from '@/src/utils/useLocale'
 import { useTranslation } from '@/src/utils/useTranslation'
@@ -61,7 +61,7 @@ const RelatedArticlesSection = ({ page, className }: Props) => {
                 style={getCategoryColorLocalStyle({ color: tagColor })}
                 imgSrc={coverMedia?.data?.attributes?.url}
                 imgSizes={imageSizes}
-                date={getNumericLocalDate(addedAt)}
+                date={formatDate(addedAt)}
                 title={title ?? ''}
                 tag={tagTitle ?? undefined}
                 linkProps={{

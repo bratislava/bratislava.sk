@@ -12,7 +12,7 @@ import {
   getArticlesQueryKey,
 } from '@/src/services/meili/fetchers/articlesFetcher'
 import { getCategoryColorLocalStyle } from '@/src/utils/colors'
-import { getNumericLocalDate } from '@/src/utils/formatDate'
+import { formatDate } from '@/src/utils/formatDate'
 import { generateImageSizes } from '@/src/utils/generateImageSizes'
 import { isDefined } from '@/src/utils/isDefined'
 import { useLocale } from '@/src/utils/useLocale'
@@ -87,7 +87,7 @@ const ArticlesByCategory = ({ section }: Props) => {
             <BlogPostCard
               key={slug}
               style={getCategoryColorLocalStyle({ color: tagColor })}
-              date={getNumericLocalDate(addedAt)}
+              date={formatDate(addedAt)}
               tag={tagTitle ?? undefined}
               title={articleTitle ?? ''}
               linkProps={{ children: t('readMore'), href: `/spravy/${slug}` }}
