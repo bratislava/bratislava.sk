@@ -424,7 +424,6 @@ export type ComponentBlocksCommonLink = {
   __typename?: 'ComponentBlocksCommonLink'
   analyticsId?: Maybe<Scalars['String']['output']>
   article?: Maybe<ArticleEntityResponse>
-  blogPost?: Maybe<BlogPostEntityResponse>
   id: Scalars['ID']['output']
   label: Scalars['String']['output']
   page?: Maybe<PageEntityResponse>
@@ -435,7 +434,6 @@ export type ComponentBlocksCommonLinkFiltersInput = {
   analyticsId?: InputMaybe<StringFilterInput>
   and?: InputMaybe<Array<InputMaybe<ComponentBlocksCommonLinkFiltersInput>>>
   article?: InputMaybe<ArticleFiltersInput>
-  blogPost?: InputMaybe<BlogPostFiltersInput>
   label?: InputMaybe<StringFilterInput>
   not?: InputMaybe<ComponentBlocksCommonLinkFiltersInput>
   or?: InputMaybe<Array<InputMaybe<ComponentBlocksCommonLinkFiltersInput>>>
@@ -446,7 +444,6 @@ export type ComponentBlocksCommonLinkFiltersInput = {
 export type ComponentBlocksCommonLinkInput = {
   analyticsId?: InputMaybe<Scalars['String']['input']>
   article?: InputMaybe<Scalars['ID']['input']>
-  blogPost?: InputMaybe<Scalars['ID']['input']>
   id?: InputMaybe<Scalars['ID']['input']>
   label?: InputMaybe<Scalars['String']['input']>
   page?: InputMaybe<Scalars['ID']['input']>
@@ -5886,14 +5883,6 @@ export type CommonLinkFragment = {
       } | null
     } | null
   } | null
-  blogPost?: {
-    __typename?: 'BlogPostEntityResponse'
-    data?: {
-      __typename?: 'BlogPostEntity'
-      id?: string | null
-      attributes?: { __typename?: 'BlogPost'; title: string; slug: string } | null
-    } | null
-  } | null
 }
 
 export type FooterColumnBlockFragment = {
@@ -5923,14 +5912,6 @@ export type FooterColumnBlockFragment = {
           title: string
           locale?: string | null
         } | null
-      } | null
-    } | null
-    blogPost?: {
-      __typename?: 'BlogPostEntityResponse'
-      data?: {
-        __typename?: 'BlogPostEntity'
-        id?: string | null
-        attributes?: { __typename?: 'BlogPost'; title: string; slug: string } | null
       } | null
     } | null
   } | null> | null
@@ -5970,14 +5951,6 @@ export type FooterFragment = {
           } | null
         } | null
       } | null
-      blogPost?: {
-        __typename?: 'BlogPostEntityResponse'
-        data?: {
-          __typename?: 'BlogPostEntity'
-          id?: string | null
-          attributes?: { __typename?: 'BlogPost'; title: string; slug: string } | null
-        } | null
-      } | null
     } | null> | null
   } | null> | null
   accessibilityPageLink?: {
@@ -6006,14 +5979,6 @@ export type FooterFragment = {
         } | null
       } | null
     } | null
-    blogPost?: {
-      __typename?: 'BlogPostEntityResponse'
-      data?: {
-        __typename?: 'BlogPostEntity'
-        id?: string | null
-        attributes?: { __typename?: 'BlogPost'; title: string; slug: string } | null
-      } | null
-    } | null
   } | null
   innovationsLink?: {
     __typename?: 'ComponentBlocksCommonLink'
@@ -6039,14 +6004,6 @@ export type FooterFragment = {
           title: string
           locale?: string | null
         } | null
-      } | null
-    } | null
-    blogPost?: {
-      __typename?: 'BlogPostEntityResponse'
-      data?: {
-        __typename?: 'BlogPostEntity'
-        id?: string | null
-        attributes?: { __typename?: 'BlogPost'; title: string; slug: string } | null
       } | null
     } | null
   } | null
@@ -6212,14 +6169,6 @@ export type GeneralFragment = {
             title: string
             locale?: string | null
           } | null
-        } | null
-      } | null
-      blogPost?: {
-        __typename?: 'BlogPostEntityResponse'
-        data?: {
-          __typename?: 'BlogPostEntity'
-          id?: string | null
-          attributes?: { __typename?: 'BlogPost'; title: string; slug: string } | null
         } | null
       } | null
     } | null
@@ -6391,14 +6340,6 @@ export type GeneralQuery = {
                   title: string
                   locale?: string | null
                 } | null
-              } | null
-            } | null
-            blogPost?: {
-              __typename?: 'BlogPostEntityResponse'
-              data?: {
-                __typename?: 'BlogPostEntity'
-                id?: string | null
-                attributes?: { __typename?: 'BlogPost'; title: string; slug: string } | null
               } | null
             } | null
           } | null
@@ -6612,14 +6553,6 @@ export type GeneralQuery = {
                 } | null
               } | null
             } | null
-            blogPost?: {
-              __typename?: 'BlogPostEntityResponse'
-              data?: {
-                __typename?: 'BlogPostEntity'
-                id?: string | null
-                attributes?: { __typename?: 'BlogPost'; title: string; slug: string } | null
-              } | null
-            } | null
           } | null> | null
         } | null> | null
         accessibilityPageLink?: {
@@ -6652,14 +6585,6 @@ export type GeneralQuery = {
               } | null
             } | null
           } | null
-          blogPost?: {
-            __typename?: 'BlogPostEntityResponse'
-            data?: {
-              __typename?: 'BlogPostEntity'
-              id?: string | null
-              attributes?: { __typename?: 'BlogPost'; title: string; slug: string } | null
-            } | null
-          } | null
         } | null
         innovationsLink?: {
           __typename?: 'ComponentBlocksCommonLink'
@@ -6689,14 +6614,6 @@ export type GeneralQuery = {
                 title: string
                 locale?: string | null
               } | null
-            } | null
-          } | null
-          blogPost?: {
-            __typename?: 'BlogPostEntityResponse'
-            data?: {
-              __typename?: 'BlogPostEntity'
-              id?: string | null
-              attributes?: { __typename?: 'BlogPost'; title: string; slug: string } | null
             } | null
           } | null
         } | null
@@ -6781,14 +6698,6 @@ export type HomepageEntityFragment = {
                 title: string
                 locale?: string | null
               } | null
-            } | null
-          } | null
-          blogPost?: {
-            __typename?: 'BlogPostEntityResponse'
-            data?: {
-              __typename?: 'BlogPostEntity'
-              id?: string | null
-              attributes?: { __typename?: 'BlogPost'; title: string; slug: string } | null
             } | null
           } | null
         }
@@ -6938,14 +6847,6 @@ export type HomepageEntityFragment = {
             } | null
           } | null
         } | null
-        blogPost?: {
-          __typename?: 'BlogPostEntityResponse'
-          data?: {
-            __typename?: 'BlogPostEntity'
-            id?: string | null
-            attributes?: { __typename?: 'BlogPost'; title: string; slug: string } | null
-          } | null
-        } | null
       } | null
       officialBoardPageLink?: {
         __typename?: 'ComponentBlocksCommonLink'
@@ -6973,14 +6874,6 @@ export type HomepageEntityFragment = {
             } | null
           } | null
         } | null
-        blogPost?: {
-          __typename?: 'BlogPostEntityResponse'
-          data?: {
-            __typename?: 'BlogPostEntity'
-            id?: string | null
-            attributes?: { __typename?: 'BlogPost'; title: string; slug: string } | null
-          } | null
-        } | null
       } | null
       roadClosuresPageLink?: {
         __typename?: 'ComponentBlocksCommonLink'
@@ -7006,14 +6899,6 @@ export type HomepageEntityFragment = {
               title: string
               locale?: string | null
             } | null
-          } | null
-        } | null
-        blogPost?: {
-          __typename?: 'BlogPostEntityResponse'
-          data?: {
-            __typename?: 'BlogPostEntity'
-            id?: string | null
-            attributes?: { __typename?: 'BlogPost'; title: string; slug: string } | null
           } | null
         } | null
       } | null
@@ -7048,14 +6933,6 @@ export type HomepageEntityFragment = {
             } | null
           } | null
         } | null
-        blogPost?: {
-          __typename?: 'BlogPostEntityResponse'
-          data?: {
-            __typename?: 'BlogPostEntity'
-            id?: string | null
-            attributes?: { __typename?: 'BlogPost'; title: string; slug: string } | null
-          } | null
-        } | null
       } | null
       councilCard?: {
         __typename?: 'ComponentBlocksCommonLink'
@@ -7081,14 +6958,6 @@ export type HomepageEntityFragment = {
               title: string
               locale?: string | null
             } | null
-          } | null
-        } | null
-        blogPost?: {
-          __typename?: 'BlogPostEntityResponse'
-          data?: {
-            __typename?: 'BlogPostEntity'
-            id?: string | null
-            attributes?: { __typename?: 'BlogPost'; title: string; slug: string } | null
           } | null
         } | null
       } | null
@@ -7121,14 +6990,6 @@ export type HomepageEntityFragment = {
               title: string
               locale?: string | null
             } | null
-          } | null
-        } | null
-        blogPost?: {
-          __typename?: 'BlogPostEntityResponse'
-          data?: {
-            __typename?: 'BlogPostEntity'
-            id?: string | null
-            attributes?: { __typename?: 'BlogPost'; title: string; slug: string } | null
           } | null
         } | null
       } | null
@@ -7167,14 +7028,6 @@ export type HomepageEntityFragment = {
                 title: string
                 locale?: string | null
               } | null
-            } | null
-          } | null
-          blogPost?: {
-            __typename?: 'BlogPostEntityResponse'
-            data?: {
-              __typename?: 'BlogPostEntity'
-              id?: string | null
-              attributes?: { __typename?: 'BlogPost'; title: string; slug: string } | null
             } | null
           } | null
         }
@@ -7323,14 +7176,6 @@ export type HomepageQuery = {
                     title: string
                     locale?: string | null
                   } | null
-                } | null
-              } | null
-              blogPost?: {
-                __typename?: 'BlogPostEntityResponse'
-                data?: {
-                  __typename?: 'BlogPostEntity'
-                  id?: string | null
-                  attributes?: { __typename?: 'BlogPost'; title: string; slug: string } | null
                 } | null
               } | null
             }
@@ -7484,14 +7329,6 @@ export type HomepageQuery = {
                 } | null
               } | null
             } | null
-            blogPost?: {
-              __typename?: 'BlogPostEntityResponse'
-              data?: {
-                __typename?: 'BlogPostEntity'
-                id?: string | null
-                attributes?: { __typename?: 'BlogPost'; title: string; slug: string } | null
-              } | null
-            } | null
           } | null
           officialBoardPageLink?: {
             __typename?: 'ComponentBlocksCommonLink'
@@ -7523,14 +7360,6 @@ export type HomepageQuery = {
                 } | null
               } | null
             } | null
-            blogPost?: {
-              __typename?: 'BlogPostEntityResponse'
-              data?: {
-                __typename?: 'BlogPostEntity'
-                id?: string | null
-                attributes?: { __typename?: 'BlogPost'; title: string; slug: string } | null
-              } | null
-            } | null
           } | null
           roadClosuresPageLink?: {
             __typename?: 'ComponentBlocksCommonLink'
@@ -7560,14 +7389,6 @@ export type HomepageQuery = {
                   title: string
                   locale?: string | null
                 } | null
-              } | null
-            } | null
-            blogPost?: {
-              __typename?: 'BlogPostEntityResponse'
-              data?: {
-                __typename?: 'BlogPostEntity'
-                id?: string | null
-                attributes?: { __typename?: 'BlogPost'; title: string; slug: string } | null
               } | null
             } | null
           } | null
@@ -7606,14 +7427,6 @@ export type HomepageQuery = {
                 } | null
               } | null
             } | null
-            blogPost?: {
-              __typename?: 'BlogPostEntityResponse'
-              data?: {
-                __typename?: 'BlogPostEntity'
-                id?: string | null
-                attributes?: { __typename?: 'BlogPost'; title: string; slug: string } | null
-              } | null
-            } | null
           } | null
           councilCard?: {
             __typename?: 'ComponentBlocksCommonLink'
@@ -7643,14 +7456,6 @@ export type HomepageQuery = {
                   title: string
                   locale?: string | null
                 } | null
-              } | null
-            } | null
-            blogPost?: {
-              __typename?: 'BlogPostEntityResponse'
-              data?: {
-                __typename?: 'BlogPostEntity'
-                id?: string | null
-                attributes?: { __typename?: 'BlogPost'; title: string; slug: string } | null
               } | null
             } | null
           } | null
@@ -7689,14 +7494,6 @@ export type HomepageQuery = {
                 } | null
               } | null
             } | null
-            blogPost?: {
-              __typename?: 'BlogPostEntityResponse'
-              data?: {
-                __typename?: 'BlogPostEntity'
-                id?: string | null
-                attributes?: { __typename?: 'BlogPost'; title: string; slug: string } | null
-              } | null
-            } | null
           } | null
         } | null
         topServices?: {
@@ -7733,14 +7530,6 @@ export type HomepageQuery = {
                     title: string
                     locale?: string | null
                   } | null
-                } | null
-              } | null
-              blogPost?: {
-                __typename?: 'BlogPostEntityResponse'
-                data?: {
-                  __typename?: 'BlogPostEntity'
-                  id?: string | null
-                  attributes?: { __typename?: 'BlogPost'; title: string; slug: string } | null
                 } | null
               } | null
             }
@@ -7876,14 +7665,6 @@ export type HomepageHighlightsItemFragment = {
           title: string
           locale?: string | null
         } | null
-      } | null
-    } | null
-    blogPost?: {
-      __typename?: 'BlogPostEntityResponse'
-      data?: {
-        __typename?: 'BlogPostEntity'
-        id?: string | null
-        attributes?: { __typename?: 'BlogPost'; title: string; slug: string } | null
       } | null
     } | null
   }
@@ -8033,14 +7814,6 @@ export type HomepageTabsFragment = {
         } | null
       } | null
     } | null
-    blogPost?: {
-      __typename?: 'BlogPostEntityResponse'
-      data?: {
-        __typename?: 'BlogPostEntity'
-        id?: string | null
-        attributes?: { __typename?: 'BlogPost'; title: string; slug: string } | null
-      } | null
-    } | null
   } | null
   officialBoardPageLink?: {
     __typename?: 'ComponentBlocksCommonLink'
@@ -8068,14 +7841,6 @@ export type HomepageTabsFragment = {
         } | null
       } | null
     } | null
-    blogPost?: {
-      __typename?: 'BlogPostEntityResponse'
-      data?: {
-        __typename?: 'BlogPostEntity'
-        id?: string | null
-        attributes?: { __typename?: 'BlogPost'; title: string; slug: string } | null
-      } | null
-    } | null
   } | null
   roadClosuresPageLink?: {
     __typename?: 'ComponentBlocksCommonLink'
@@ -8101,14 +7866,6 @@ export type HomepageTabsFragment = {
           title: string
           locale?: string | null
         } | null
-      } | null
-    } | null
-    blogPost?: {
-      __typename?: 'BlogPostEntityResponse'
-      data?: {
-        __typename?: 'BlogPostEntity'
-        id?: string | null
-        attributes?: { __typename?: 'BlogPost'; title: string; slug: string } | null
       } | null
     } | null
   } | null
@@ -8144,14 +7901,6 @@ export type HomepageMayorAndCouncilFragment = {
         } | null
       } | null
     } | null
-    blogPost?: {
-      __typename?: 'BlogPostEntityResponse'
-      data?: {
-        __typename?: 'BlogPostEntity'
-        id?: string | null
-        attributes?: { __typename?: 'BlogPost'; title: string; slug: string } | null
-      } | null
-    } | null
   } | null
   councilCard?: {
     __typename?: 'ComponentBlocksCommonLink'
@@ -8177,14 +7926,6 @@ export type HomepageMayorAndCouncilFragment = {
           title: string
           locale?: string | null
         } | null
-      } | null
-    } | null
-    blogPost?: {
-      __typename?: 'BlogPostEntityResponse'
-      data?: {
-        __typename?: 'BlogPostEntity'
-        id?: string | null
-        attributes?: { __typename?: 'BlogPost'; title: string; slug: string } | null
       } | null
     } | null
   } | null
@@ -8217,14 +7958,6 @@ export type TopServicesItemFragment = {
           title: string
           locale?: string | null
         } | null
-      } | null
-    } | null
-    blogPost?: {
-      __typename?: 'BlogPostEntityResponse'
-      data?: {
-        __typename?: 'BlogPostEntity'
-        id?: string | null
-        attributes?: { __typename?: 'BlogPost'; title: string; slug: string } | null
       } | null
     } | null
   }
@@ -8758,14 +8491,6 @@ export type PageBySlugQuery = {
               } | null
             } | null
           } | null
-          blogPost?: {
-            __typename?: 'BlogPostEntityResponse'
-            data?: {
-              __typename?: 'BlogPostEntity'
-              id?: string | null
-              attributes?: { __typename?: 'BlogPost'; title: string; slug: string } | null
-            } | null
-          } | null
         } | null> | null
         sections?: Array<
           | {
@@ -8894,14 +8619,6 @@ export type PageBySlugQuery = {
                     } | null
                   } | null
                 } | null
-                blogPost?: {
-                  __typename?: 'BlogPostEntityResponse'
-                  data?: {
-                    __typename?: 'BlogPostEntity'
-                    id?: string | null
-                    attributes?: { __typename?: 'BlogPost'; title: string; slug: string } | null
-                  } | null
-                } | null
               } | null
               secondaryLink?: {
                 __typename?: 'ComponentBlocksCommonLink'
@@ -8933,14 +8650,6 @@ export type PageBySlugQuery = {
                     } | null
                   } | null
                 } | null
-                blogPost?: {
-                  __typename?: 'BlogPostEntityResponse'
-                  data?: {
-                    __typename?: 'BlogPostEntity'
-                    id?: string | null
-                    attributes?: { __typename?: 'BlogPost'; title: string; slug: string } | null
-                  } | null
-                } | null
               } | null
               tertiaryLink?: {
                 __typename?: 'ComponentBlocksCommonLink'
@@ -8970,14 +8679,6 @@ export type PageBySlugQuery = {
                       title: string
                       locale?: string | null
                     } | null
-                  } | null
-                } | null
-                blogPost?: {
-                  __typename?: 'BlogPostEntityResponse'
-                  data?: {
-                    __typename?: 'BlogPostEntity'
-                    id?: string | null
-                    attributes?: { __typename?: 'BlogPost'; title: string; slug: string } | null
                   } | null
                 } | null
               } | null
@@ -9721,14 +9422,6 @@ export type PageEntityFragment = {
           } | null
         } | null
       } | null
-      blogPost?: {
-        __typename?: 'BlogPostEntityResponse'
-        data?: {
-          __typename?: 'BlogPostEntity'
-          id?: string | null
-          attributes?: { __typename?: 'BlogPost'; title: string; slug: string } | null
-        } | null
-      } | null
     } | null> | null
     sections?: Array<
       | {
@@ -9857,14 +9550,6 @@ export type PageEntityFragment = {
                 } | null
               } | null
             } | null
-            blogPost?: {
-              __typename?: 'BlogPostEntityResponse'
-              data?: {
-                __typename?: 'BlogPostEntity'
-                id?: string | null
-                attributes?: { __typename?: 'BlogPost'; title: string; slug: string } | null
-              } | null
-            } | null
           } | null
           secondaryLink?: {
             __typename?: 'ComponentBlocksCommonLink'
@@ -9896,14 +9581,6 @@ export type PageEntityFragment = {
                 } | null
               } | null
             } | null
-            blogPost?: {
-              __typename?: 'BlogPostEntityResponse'
-              data?: {
-                __typename?: 'BlogPostEntity'
-                id?: string | null
-                attributes?: { __typename?: 'BlogPost'; title: string; slug: string } | null
-              } | null
-            } | null
           } | null
           tertiaryLink?: {
             __typename?: 'ComponentBlocksCommonLink'
@@ -9933,14 +9610,6 @@ export type PageEntityFragment = {
                   title: string
                   locale?: string | null
                 } | null
-              } | null
-            } | null
-            blogPost?: {
-              __typename?: 'BlogPostEntityResponse'
-              data?: {
-                __typename?: 'BlogPostEntity'
-                id?: string | null
-                attributes?: { __typename?: 'BlogPost'; title: string; slug: string } | null
               } | null
             } | null
           } | null
@@ -12087,14 +11756,6 @@ export type BannerSectionFragment = {
         } | null
       } | null
     } | null
-    blogPost?: {
-      __typename?: 'BlogPostEntityResponse'
-      data?: {
-        __typename?: 'BlogPostEntity'
-        id?: string | null
-        attributes?: { __typename?: 'BlogPost'; title: string; slug: string } | null
-      } | null
-    } | null
   } | null
   secondaryLink?: {
     __typename?: 'ComponentBlocksCommonLink'
@@ -12122,14 +11783,6 @@ export type BannerSectionFragment = {
         } | null
       } | null
     } | null
-    blogPost?: {
-      __typename?: 'BlogPostEntityResponse'
-      data?: {
-        __typename?: 'BlogPostEntity'
-        id?: string | null
-        attributes?: { __typename?: 'BlogPost'; title: string; slug: string } | null
-      } | null
-    } | null
   } | null
   tertiaryLink?: {
     __typename?: 'ComponentBlocksCommonLink'
@@ -12155,14 +11808,6 @@ export type BannerSectionFragment = {
           title: string
           locale?: string | null
         } | null
-      } | null
-    } | null
-    blogPost?: {
-      __typename?: 'BlogPostEntityResponse'
-      data?: {
-        __typename?: 'BlogPostEntity'
-        id?: string | null
-        attributes?: { __typename?: 'BlogPost'; title: string; slug: string } | null
       } | null
     } | null
   } | null
@@ -12533,14 +12178,6 @@ type Sections_ComponentSectionsBanner_Fragment = {
         } | null
       } | null
     } | null
-    blogPost?: {
-      __typename?: 'BlogPostEntityResponse'
-      data?: {
-        __typename?: 'BlogPostEntity'
-        id?: string | null
-        attributes?: { __typename?: 'BlogPost'; title: string; slug: string } | null
-      } | null
-    } | null
   } | null
   secondaryLink?: {
     __typename?: 'ComponentBlocksCommonLink'
@@ -12568,14 +12205,6 @@ type Sections_ComponentSectionsBanner_Fragment = {
         } | null
       } | null
     } | null
-    blogPost?: {
-      __typename?: 'BlogPostEntityResponse'
-      data?: {
-        __typename?: 'BlogPostEntity'
-        id?: string | null
-        attributes?: { __typename?: 'BlogPost'; title: string; slug: string } | null
-      } | null
-    } | null
   } | null
   tertiaryLink?: {
     __typename?: 'ComponentBlocksCommonLink'
@@ -12601,14 +12230,6 @@ type Sections_ComponentSectionsBanner_Fragment = {
           title: string
           locale?: string | null
         } | null
-      } | null
-    } | null
-    blogPost?: {
-      __typename?: 'BlogPostEntityResponse'
-      data?: {
-        __typename?: 'BlogPostEntity'
-        id?: string | null
-        attributes?: { __typename?: 'BlogPost'; title: string; slug: string } | null
       } | null
     } | null
   } | null
@@ -13820,15 +13441,6 @@ export const CommonLinkFragmentDoc = gql`
     article {
       data {
         ...ArticleSlugEntity
-      }
-    }
-    blogPost {
-      data {
-        id
-        attributes {
-          title
-          slug
-        }
       }
     }
   }

@@ -20,11 +20,6 @@
       "relation": "oneToOne",
       "target": "api::article.article"
     },
-    "blogPost": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::blog-post.blog-post"
-    },
     "url": {
       "type": "string"
     },

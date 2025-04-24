@@ -334,7 +334,6 @@ input ComponentBlocksBookmarkLinkInput {
 type ComponentBlocksCommonLink {
   analyticsId: String
   article: ArticleEntityResponse
-  blogPost: BlogPostEntityResponse
   id: ID!
   label: String!
   page: PageEntityResponse
@@ -345,7 +344,6 @@ input ComponentBlocksCommonLinkFiltersInput {
   analyticsId: StringFilterInput
   and: [ComponentBlocksCommonLinkFiltersInput]
   article: ArticleFiltersInput
-  blogPost: BlogPostFiltersInput
   label: StringFilterInput
   not: ComponentBlocksCommonLinkFiltersInput
   or: [ComponentBlocksCommonLinkFiltersInput]
@@ -356,7 +354,6 @@ input ComponentBlocksCommonLinkFiltersInput {
 input ComponentBlocksCommonLinkInput {
   analyticsId: String
   article: ID
-  blogPost: ID
   id: ID
   label: String
   page: ID

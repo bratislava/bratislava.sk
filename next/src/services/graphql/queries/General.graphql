@@ -47,15 +47,6 @@ fragment CommonLink on ComponentBlocksCommonLink {
       ...ArticleSlugEntity
     }
   }
-  blogPost {
-    data {
-      id
-      attributes {
-        title
-        slug
-      }
-    }
-  }
 }
 
 fragment FooterColumnBlock on ComponentBlocksFooterColumn {

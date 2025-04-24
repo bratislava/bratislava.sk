@@ -72,7 +72,6 @@ export interface BlocksCommonLink extends Schema.Component {
   attributes: {
     analyticsId: Attribute.String
     article: Attribute.Relation<'blocks.common-link', 'oneToOne', 'api::article.article'>
-    blogPost: Attribute.Relation<'blocks.common-link', 'oneToOne', 'api::blog-post.blog-post'>
     label: Attribute.String & Attribute.Required
     page: Attribute.Relation<'blocks.common-link', 'oneToOne', 'api::page.page'>
     url: Attribute.String
