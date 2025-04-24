@@ -5293,145 +5293,6 @@ export type Dev_AllArticlesQuery = {
   } | null
 }
 
-export type BlogPostBySlugQueryVariables = Exact<{
-  slug: Scalars['String']['input']
-  locale: Scalars['I18NLocaleCode']['input']
-}>
-
-export type BlogPostBySlugQuery = {
-  __typename?: 'Query'
-  blogPosts?: {
-    __typename?: 'BlogPostEntityResponseCollection'
-    data: Array<{
-      __typename?: 'BlogPostEntity'
-      id?: string | null
-      attributes?: {
-        __typename?: 'BlogPost'
-        slug: string
-        excerpt?: string | null
-        title: string
-        addedAt: any
-        updatedAt?: any | null
-        locale?: string | null
-        tag?: {
-          __typename?: 'TagEntityResponse'
-          data?: {
-            __typename?: 'TagEntity'
-            id?: string | null
-            attributes?: {
-              __typename?: 'Tag'
-              title?: string | null
-              pageCategory?: {
-                __typename?: 'PageCategoryEntityResponse'
-                data?: {
-                  __typename?: 'PageCategoryEntity'
-                  id?: string | null
-                  attributes?: {
-                    __typename?: 'PageCategory'
-                    title?: string | null
-                    color?: Enum_Pagecategory_Color | null
-                  } | null
-                } | null
-              } | null
-            } | null
-          } | null
-        } | null
-        coverImage?: {
-          __typename?: 'UploadFileEntityResponse'
-          data?: {
-            __typename?: 'UploadFileEntity'
-            attributes?: { __typename?: 'UploadFile'; url: string } | null
-          } | null
-        } | null
-        sections?: Array<
-          | {
-              __typename: 'ComponentSectionsFileList'
-              title?: string | null
-              text?: string | null
-              fileList?: Array<{
-                __typename?: 'ComponentBlocksFile'
-                id: string
-                title?: string | null
-                media?: {
-                  __typename?: 'UploadFileEntityResponse'
-                  data?: {
-                    __typename?: 'UploadFileEntity'
-                    id?: string | null
-                    attributes?: {
-                      __typename?: 'UploadFile'
-                      url: string
-                      name: string
-                      ext?: string | null
-                      size: number
-                      createdAt?: any | null
-                      updatedAt?: any | null
-                    } | null
-                  } | null
-                } | null
-              } | null> | null
-            }
-          | {
-              __typename: 'ComponentSectionsGallery'
-              title?: string | null
-              text?: string | null
-              medias: {
-                __typename?: 'UploadFileRelationResponseCollection'
-                data: Array<{
-                  __typename?: 'UploadFileEntity'
-                  id?: string | null
-                  attributes?: {
-                    __typename?: 'UploadFile'
-                    url: string
-                    width?: number | null
-                    height?: number | null
-                    caption?: string | null
-                    alternativeText?: string | null
-                    name: string
-                  } | null
-                }>
-              }
-            }
-          | {
-              __typename: 'ComponentSectionsNarrowText'
-              content?: string | null
-              width?: Enum_Componentsectionsnarrowtext_Width | null
-              align?: Enum_Componentsectionsnarrowtext_Align | null
-            }
-          | { __typename: 'Error' }
-          | null
-        > | null
-        localizations?: {
-          __typename?: 'BlogPostRelationResponseCollection'
-          data: Array<{
-            __typename?: 'BlogPostEntity'
-            id?: string | null
-            attributes?: {
-              __typename?: 'BlogPost'
-              slug: string
-              title: string
-              locale?: string | null
-            } | null
-          }>
-        } | null
-      } | null
-    }>
-  } | null
-}
-
-export type BlogPostsStaticPathsQueryVariables = Exact<{ [key: string]: never }>
-
-export type BlogPostsStaticPathsQuery = {
-  __typename?: 'Query'
-  blogPosts?: {
-    __typename?: 'BlogPostEntityResponseCollection'
-    data: Array<{
-      __typename?: 'BlogPostEntity'
-      id?: string | null
-      attributes?: { __typename?: 'BlogPost'; slug: string; locale?: string | null } | null
-    }>
-  } | null
-}
-
 export type BlogPostsRssFeedQueryVariables = Exact<{
   locale: Scalars['I18NLocaleCode']['input']
 }>
@@ -5480,47 +5341,6 @@ export type BlogPostsRssFeedQuery = {
         } | null
       } | null
     }>
-  } | null
-}
-
-export type LatestBlogPostEntityFragment = {
-  __typename?: 'BlogPostEntity'
-  id?: string | null
-  attributes?: {
-    __typename?: 'BlogPost'
-    slug: string
-    title: string
-    excerpt?: string | null
-    addedAt: any
-    updatedAt?: any | null
-    coverImage?: {
-      __typename?: 'UploadFileEntityResponse'
-      data?: {
-        __typename?: 'UploadFileEntity'
-        attributes?: { __typename?: 'UploadFile'; url: string } | null
-      } | null
-    } | null
-    tag?: {
-      __typename?: 'TagEntityResponse'
-      data?: {
-        __typename?: 'TagEntity'
-        attributes?: {
-          __typename?: 'Tag'
-          title?: string | null
-          pageCategory?: {
-            __typename?: 'PageCategoryEntityResponse'
-            data?: {
-              __typename?: 'PageCategoryEntity'
-              attributes?: {
-                __typename?: 'PageCategory'
-                title?: string | null
-                color?: Enum_Pagecategory_Color | null
-              } | null
-            } | null
-          } | null
-        } | null
-      } | null
-    } | null
   } | null
 }
 
@@ -5635,37 +5455,6 @@ export type BlogPostEntityFragment = {
         } | null
       }>
     } | null
-  } | null
-}
-
-export type BlogPostsTagsQueryVariables = Exact<{
-  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
-}>
-
-export type BlogPostsTagsQuery = {
-  __typename?: 'Query'
-  tags?: {
-    __typename?: 'TagEntityResponseCollection'
-    data: Array<{
-      __typename?: 'TagEntity'
-      id?: string | null
-      attributes?: {
-        __typename?: 'Tag'
-        title?: string | null
-        pageCategory?: {
-          __typename?: 'PageCategoryEntityResponse'
-          data?: {
-            __typename?: 'PageCategoryEntity'
-            id?: string | null
-            attributes?: {
-              __typename?: 'PageCategory'
-              title?: string | null
-              color?: Enum_Pagecategory_Color | null
-            } | null
-          } | null
-        } | null
-      } | null
-    }>
   } | null
 }
 
@@ -13020,40 +12809,6 @@ export const ArticleEntityFragmentDoc = gql`
   ${FileBlockFragmentDoc}
   ${UploadImageEntityFragmentDoc}
 `
-export const LatestBlogPostEntityFragmentDoc = gql`
-  fragment LatestBlogPostEntity on BlogPostEntity {
-    id
-    attributes {
-      slug
-      title
-      excerpt
-      coverImage {
-        data {
-          attributes {
-            url
-          }
-        }
-      }
-      addedAt
-      updatedAt
-      tag {
-        data {
-          attributes {
-            title
-            pageCategory {
-              data {
-                attributes {
-                  title
-                  color
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-`
 export const UploadImageSrcEntityFragmentDoc = gql`
   fragment UploadImageSrcEntity on UploadFileEntity {
     id
@@ -14405,29 +14160,6 @@ export const Dev_AllArticlesDocument = gql`
   }
   ${ArticleEntityFragmentDoc}
 `
-export const BlogPostBySlugDocument = gql`
-  query BlogPostBySlug($slug: String!, $locale: I18NLocaleCode!) {
-    blogPosts(filters: { slug: { eq: $slug } }, locale: $locale) {
-      data {
-        ...BlogPostEntity
-      }
-    }
-  }
-  ${BlogPostEntityFragmentDoc}
-`
-export const BlogPostsStaticPathsDocument = gql`
-  query BlogPostsStaticPaths {
-    blogPosts(locale: "all", sort: "addedAt:desc") {
-      data {
-        id
-        attributes {
-          slug
-          locale
-        }
-      }
-    }
-  }
-`
 export const BlogPostsRssFeedDocument = gql`
   query BlogPostsRssFeed($locale: I18NLocaleCode!) {
     blogPosts(locale: $locale, sort: "addedAt:desc") {
@@ -14465,16 +14197,6 @@ export const BlogPostsRssFeedDocument = gql`
       }
     }
   }
-`
-export const BlogPostsTagsDocument = gql`
-  query blogPostsTags($locale: I18NLocaleCode) {
-    tags(pagination: { limit: -1 }, locale: $locale) {
-      data {
-        ...TagEntity
-      }
-    }
-  }
-  ${TagEntityFragmentDoc}
 `
 export const Dev_AllBlogPostsDocument = gql`
   query Dev_AllBlogPosts(
@@ -14912,36 +14634,6 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
         variables,
       )
     },
-    BlogPostBySlug(
-      variables: BlogPostBySlugQueryVariables,
-      requestHeaders?: GraphQLClientRequestHeaders,
-    ): Promise<BlogPostBySlugQuery> {
-      return withWrapper(
-        (wrappedRequestHeaders) =>
-          client.request<BlogPostBySlugQuery>(BlogPostBySlugDocument, variables, {
-            ...requestHeaders,
-            ...wrappedRequestHeaders,
-          }),
-        'BlogPostBySlug',
-        'query',
-        variables,
-      )
-    },
-    BlogPostsStaticPaths(
-      variables?: BlogPostsStaticPathsQueryVariables,
-      requestHeaders?: GraphQLClientRequestHeaders,
-    ): Promise<BlogPostsStaticPathsQuery> {
-      return withWrapper(
-        (wrappedRequestHeaders) =>
-          client.request<BlogPostsStaticPathsQuery>(BlogPostsStaticPathsDocument, variables, {
-            ...requestHeaders,
-            ...wrappedRequestHeaders,
-          }),
-        'BlogPostsStaticPaths',
-        'query',
-        variables,
-      )
-    },
     BlogPostsRssFeed(
       variables: BlogPostsRssFeedQueryVariables,
       requestHeaders?: GraphQLClientRequestHeaders,
@@ -14953,21 +14645,6 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
             ...wrappedRequestHeaders,
           }),
         'BlogPostsRssFeed',
-        'query',
-        variables,
-      )
-    },
-    blogPostsTags(
-      variables?: BlogPostsTagsQueryVariables,
-      requestHeaders?: GraphQLClientRequestHeaders,
-    ): Promise<BlogPostsTagsQuery> {
-      return withWrapper(
-        (wrappedRequestHeaders) =>
-          client.request<BlogPostsTagsQuery>(BlogPostsTagsDocument, variables, {
-            ...requestHeaders,
-            ...wrappedRequestHeaders,
-          }),
-        'blogPostsTags',
         'query',
         variables,
       )
