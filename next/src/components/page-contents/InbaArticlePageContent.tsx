@@ -8,7 +8,7 @@ import PageHeader from '@/src/components/common/PageHeader/PageHeader'
 import SectionContainer from '@/src/components/common/SectionContainer/SectionContainer'
 import Markdown from '@/src/components/formatting/Markdown/Markdown'
 import { useGeneralContext } from '@/src/components/providers/GeneralContextProvider'
-import ShareButtonsSection from '@/src/components/sections/ShareButtonsSection'
+import ShareButtons from '@/src/components/sections/ShareButtons'
 import { InbaArticleEntityFragment } from '@/src/services/graphql'
 import { formatDate, getNumericLocalDate } from '@/src/utils/formatDate'
 import { getPageBreadcrumbs } from '@/src/utils/pageUtils_Deprecated'
@@ -75,7 +75,9 @@ const InbaArticlePageContent = ({ inbaArticle }: InbaArticlePageContentProps) =>
           ) : null}
         </NarrowText>
       </SectionContainer>
-      <ShareButtonsSection twitterTitle={inbaArticle.attributes?.title} />
+      <SectionContainer className="pt-10 md:pt-18">
+        <ShareButtons twitterTitle={inbaArticle.attributes?.title} />
+      </SectionContainer>
     </>
   )
 }

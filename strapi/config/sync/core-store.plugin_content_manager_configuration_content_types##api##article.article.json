@@ -7,8 +7,8 @@
       "searchable": true,
       "pageSize": 10,
       "mainField": "title",
-      "defaultSortBy": "title",
-      "defaultSortOrder": "ASC"
+      "defaultSortBy": "updatedAt",
+      "defaultSortOrder": "DESC"
     },
     "metadatas": {
       "id": {
@@ -278,7 +278,14 @@
           }
         ]
       ],
-      "list": ["id", "title", "slug", "createdAt"]
+      "list": [
+        "id",
+        "coverMedia",
+        "title",
+        "slug",
+        "updatedAt",
+        "addedAt"
+      ]
     },
     "uid": "api::article.article"
   },

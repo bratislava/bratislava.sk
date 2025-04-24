@@ -12,7 +12,7 @@ import PageHeader from '@/src/components/common/PageHeader/PageHeader'
 import SectionContainer from '@/src/components/common/SectionContainer/SectionContainer'
 import Markdown from '@/src/components/formatting/Markdown/Markdown'
 import { useGeneralContext } from '@/src/components/providers/GeneralContextProvider'
-import ShareButtonsSection from '@/src/components/sections/ShareButtonsSection'
+import ShareButtons from '@/src/components/sections/ShareButtons'
 import { InbaReleaseEntityFragment } from '@/src/services/graphql'
 import cn from '@/src/utils/cn'
 import { formatDate } from '@/src/utils/formatDate'
@@ -104,7 +104,9 @@ const InbaReleasePageContent = ({ inbaRelease }: InbaReleasePageContentProps) =>
         </div>
       </SectionContainer>
 
-      <ShareButtonsSection twitterTitle={title} />
+      <SectionContainer className="pt-10 md:pt-18">
+        <ShareButtons twitterTitle={title} />
+      </SectionContainer>
     </>
   )
 }

@@ -5,7 +5,7 @@ import { Breadcrumb } from '@/src/components/common/Breadcrumbs/Breadcrumbs'
 import PageHeader from '@/src/components/common/PageHeader/PageHeader'
 import Sections from '@/src/components/layouts/Sections'
 import { useGeneralContext } from '@/src/components/providers/GeneralContextProvider'
-import ShareButtonsSection from '@/src/components/sections/ShareButtonsSection'
+import ShareButtons from '@/src/components/sections/ShareButtons'
 import { BlogPostEntityFragment } from '@/src/services/graphql'
 import { getNumericLocalDate } from '@/src/utils/formatDate'
 import { getPageBreadcrumbs } from '@/src/utils/pageUtils_Deprecated'
@@ -40,7 +40,7 @@ const BlogPostPageContent = ({ blogPost }: BlogPostPageContentProps) => {
       {/* Page - Common Sections */}
       {blogPost.attributes?.sections && <Sections sections={blogPost.attributes?.sections} />}
 
-      <ShareButtonsSection twitterTitle={blogPost.attributes?.title} />
+      <ShareButtons twitterTitle={blogPost.attributes?.title} />
     </>
   )
 }
