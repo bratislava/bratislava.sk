@@ -19,7 +19,7 @@ type Props = {
   text?: string
 } & CardBaseProps
 
-const BlogPostCard = ({ imgSrc, imgSizes, date, tag, title, text, linkProps, ...rest }: Props) => {
+const ArticleCard = ({ imgSrc, imgSizes, date, tag, title, text, linkProps, ...rest }: Props) => {
   return (
     <CardBase {...rest}>
       <div className="relative aspect-16/10 shrink-0">
@@ -57,4 +57,4 @@ const BlogPostCard = ({ imgSrc, imgSizes, date, tag, title, text, linkProps, ...
   )
 }
 
-export default BlogPostCard
+export default ArticleCard

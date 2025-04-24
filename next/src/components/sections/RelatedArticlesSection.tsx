@@ -2,7 +2,7 @@ import { Typography } from '@bratislava/component-library'
 import { useQuery } from '@tanstack/react-query'
 import React from 'react'
 
-import BlogPostCard from '@/src/components/cards/BlogPostCard'
+import ArticleCard from '@/src/components/cards/ArticleCard'
 import ResponsiveCarousel from '@/src/components/common/Carousel/ResponsiveCarousel'
 import SectionContainer from '@/src/components/common/SectionContainer/SectionContainer'
 import { PageEntityFragment } from '@/src/services/graphql'
@@ -50,13 +50,13 @@ const RelatedArticlesSection = ({ page, className }: Props) => {
           items={data.hits.map((card) => {
             if (!card.attributes) return null
 
-            // TODO refactor sections that use BlogPostCard - it needs too much duplicate code while passing props
+            // TODO refactor sections that use ArticleCard - it needs too much duplicate code while passing props
             const { title, slug, coverMedia, tag, addedAt } = card.attributes
             const tagColor = tag?.data?.attributes?.pageCategory?.data?.attributes?.color
             const tagTitle = tag?.data?.attributes?.title
 
             return (
-              <BlogPostCard
+              <ArticleCard
                 key={slug}
                 style={getCategoryColorLocalStyle({ color: tagColor })}
                 imgSrc={coverMedia?.data?.attributes?.url}

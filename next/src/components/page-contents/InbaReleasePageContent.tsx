@@ -27,7 +27,7 @@ export type InbaReleasePageContentProps = {
   inbaRelease: InbaReleaseEntityFragment
 }
 
-// TODO may need refactor, it was just copied from BlogPostPageContent that didn't undergo any refactoring
+// TODO may need refactor, it was just copied from legacy BlogPostPageContent that didn't undergo any refactoring
 
 const InbaReleasePageContent = ({ inbaRelease }: InbaReleasePageContentProps) => {
   const { t } = useTranslation()

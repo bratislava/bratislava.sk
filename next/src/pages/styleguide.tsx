@@ -3,8 +3,8 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 import AccordionShowcase from '@/src/components/styleguide/showcases/AccordionShowcase'
 import AlertShowCase from '@/src/components/styleguide/showcases/AlertShowCase'
+import ArticleCardShowcase from '@/src/components/styleguide/showcases/ArticleCardShowcase'
 import BannerShowCase from '@/src/components/styleguide/showcases/BannerShowCase'
-import BlogPostCardShowcase from '@/src/components/styleguide/showcases/BlogPostCardShowcase'
 import ButtonShowCase from '@/src/components/styleguide/showcases/ButtonShowCase'
 import CategoryCardShowcase from '@/src/components/styleguide/showcases/CategoryCardShowcase'
 import ContactsShowcase from '@/src/components/styleguide/showcases/ContactsShowcase'
@@ -31,7 +31,7 @@ const Styleguide = () => {
       <BannerShowCase />
       <EventCardShowcase />
       <CategoryCardShowcase />
-      <BlogPostCardShowcase />
+      <ArticleCardShowcase />
       <HomepageHorizontalCardShowcase />
       <ContactsShowcase />
     </StyleGuideWrapper>

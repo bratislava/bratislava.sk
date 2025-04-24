@@ -1,7 +1,7 @@
 import { Typography } from '@bratislava/component-library'
 import { TabPanel } from 'react-aria-components'
 
-import BlogPostCard from '@/src/components/cards/BlogPostCard'
+import ArticleCard from '@/src/components/cards/ArticleCard'
 import Button from '@/src/components/common/Button/Button'
 import ResponsiveCarousel from '@/src/components/common/Carousel/ResponsiveCarousel'
 import MLink from '@/src/components/common/MLink/MLink'
@@ -45,7 +45,7 @@ const TabPanelLatestNews = () => {
           const tagTitle = tag?.data?.attributes?.title
 
           return (
-            <BlogPostCard
+            <ArticleCard
               key={article.id}
               style={getCategoryColorLocalStyle({ color: tagColor })}
               variant="no-border"
@@ -67,7 +67,7 @@ const TabPanelLatestNews = () => {
             const tagTitle = tag?.data?.attributes?.title
 
             return (
-              <BlogPostCard
+              <ArticleCard
                 key={article.id}
                 style={getCategoryColorLocalStyle({ color: tagColor })}
                 variant="no-border"

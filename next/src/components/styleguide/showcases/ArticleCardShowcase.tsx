@@ -1,29 +1,29 @@
 import React from 'react'
 
-import BlogPostCard from '@/src/components/cards/BlogPostCard'
+import ArticleCard from '@/src/components/cards/ArticleCard'
 import Wrapper from '@/src/components/styleguide/Wrapper'
 import { CommonLinkProps } from '@/src/utils/getCommonLinkProps'
 
-const BlogPostCardShowcase = () => {
+const ArticleCardShowcase = () => {
   const cards = [
     {
       date: 'date goes here',
-      title: 'Blog post 1',
+      title: 'Article 1',
       linkProps: { children: 'More', href: '#' },
       text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl vel aliquam aliquam, nunc nisl aliquam nisl, vel aliquam nisl nisl sit amet lorem. Sed euismod, nisl vel aliquam aliquam, nunc nisl aliquam nisl, vel aliquam nisl nisl sit amet lorem.',
     },
     {
-      title: 'Blog post 2 with very very very very very very very very long title',
+      title: 'Article 2 with very very very very very very very very long title',
       linkProps: { children: 'More', href: '#' } as CommonLinkProps,
     },
     {
-      title: 'Blog post 3 with target blank',
+      title: 'Article 3 with target blank',
       linkProps: { children: 'More', href: '#', target: '_blank' } as CommonLinkProps,
       imgSrc: '/bratislava-placeholder.jpg',
     },
 
     {
-      title: 'Blog post 5 with no border',
+      title: 'Article 5 with no border',
       linkProps: { children: 'More', href: '#' } as CommonLinkProps,
       variant: 'no-border' as const,
       imgSrc: '/bratislava-placeholder.jpg',
@@ -31,15 +31,15 @@ const BlogPostCardShowcase = () => {
   ]
 
   return (
-    <Wrapper title="BlogPost Card">
+    <Wrapper title="Article Card">
       <div className="grid w-full grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
         {cards.map((blog, index) => (
           // eslint-disable-next-line react/no-array-index-key
-          <BlogPostCard key={index} {...blog} />
+          <ArticleCard key={index} {...blog} />
         ))}
       </div>
     </Wrapper>
   )
 }
 
-export default BlogPostCardShowcase
+export default ArticleCardShowcase

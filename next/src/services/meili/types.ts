@@ -1,6 +1,5 @@
 import {
   Article,
-  BlogPost,
   InbaArticle,
   InbaTag,
   Page,
@@ -42,14 +41,7 @@ export type PageMeili = Omit<
 
 export type ArticleMeili = Omit<Article, '__typename' | 'tag' | 'coverMedia'> & {
   coverMedia?: UploadFile
-  tag?: Omit<Tag, '__typename' | 'pageCategory' | 'blogPosts' | 'articles'> & {
-    pageCategory?: Omit<PageCategory, '__typename' | 'pages'>
-  }
-}
-
-export type BlogPostMeili = Omit<BlogPost, '__typename' | 'tag' | 'coverImage'> & {
-  coverImage?: UploadFile
-  tag?: Omit<Tag, '__typename' | 'pageCategory' | 'blogPosts' | 'articles'> & {
+  tag?: Omit<Tag, '__typename' | 'pageCategory' | 'articles'> & {
     pageCategory?: Omit<PageCategory, '__typename' | 'pages'>
   }
 }

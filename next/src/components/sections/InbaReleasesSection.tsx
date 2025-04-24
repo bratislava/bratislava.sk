@@ -46,7 +46,7 @@ const InbaReleasesSection = ({ section }: Props) => {
         {data.inbaReleases.data.map((inbaRelease) => {
           if (!inbaRelease.attributes) return null
 
-          // TODO refactor sections that use BlogPostCard - it needs too much duplicate code while passing props
+          // TODO refactor sections that use ArticleCard - it needs too much duplicate code while passing props
           const {
             title: inbaReleaseTitle,
             slug,
