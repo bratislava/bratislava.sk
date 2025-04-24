@@ -15,10 +15,10 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<Response>) => {
     const payload = req.body as RequestPayload
 
     console.log('api/revalidate: payload ==>', payload)
-    const localePrefix = payload.entry.locale === 'en' ? '/en' : ''
+    const localePrefix = payload?.entry?.locale === 'en' ? '/en' : ''
 
     console.log('api/revalidate: localePrefix ==>', localePrefix)
-    const homepage = payload.entry.locale === 'en' ? '/en' : '/'
+    const homepage = payload?.entry?.locale === 'en' ? '/en' : '/'
     console.log('api/revalidate: homepage ==>', homepage)
 
     if (payload?.model === 'blog-post') {
