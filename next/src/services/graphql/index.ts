@@ -5186,6 +5186,57 @@ export type ArticlesQuery = {
   } | null
 }
 
+export type ArticlesRssFeedQueryVariables = Exact<{
+  locale: Scalars['I18NLocaleCode']['input']
+}>
+
+export type ArticlesRssFeedQuery = {
+  __typename?: 'Query'
+  articles?: {
+    __typename?: 'ArticleEntityResponseCollection'
+    data: Array<{
+      __typename?: 'ArticleEntity'
+      id?: string | null
+      attributes?: {
+        __typename?: 'Article'
+        slug: string
+        title: string
+        addedAt: any
+        perex?: string | null
+        tag?: {
+          __typename?: 'TagEntityResponse'
+          data?: {
+            __typename?: 'TagEntity'
+            attributes?: {
+              __typename?: 'Tag'
+              title?: string | null
+              pageCategory?: {
+                __typename?: 'PageCategoryEntityResponse'
+                data?: {
+                  __typename?: 'PageCategoryEntity'
+                  attributes?: { __typename?: 'PageCategory'; title?: string | null } | null
+                } | null
+              } | null
+            } | null
+          } | null
+        } | null
+        coverMedia?: {
+          __typename?: 'UploadFileEntityResponse'
+          data?: {
+            __typename?: 'UploadFileEntity'
+            attributes?: {
+              __typename?: 'UploadFile'
+              url: string
+              mime: string
+              size: number
+            } | null
+          } | null
+        } | null
+      } | null
+    }>
+  } | null
+}
+
 export type Dev_AllArticlesQueryVariables = Exact<{
   sort?: InputMaybe<
     Array<InputMaybe<Scalars['String']['input']>> | InputMaybe<Scalars['String']['input']>
@@ -5285,57 +5336,6 @@ export type Dev_AllArticlesQuery = {
                   } | null
                 } | null
               } | null
-            } | null
-          } | null
-        } | null
-      } | null
-    }>
-  } | null
-}
-
-export type BlogPostsRssFeedQueryVariables = Exact<{
-  locale: Scalars['I18NLocaleCode']['input']
-}>
-
-export type BlogPostsRssFeedQuery = {
-  __typename?: 'Query'
-  blogPosts?: {
-    __typename?: 'BlogPostEntityResponseCollection'
-    data: Array<{
-      __typename?: 'BlogPostEntity'
-      id?: string | null
-      attributes?: {
-        __typename?: 'BlogPost'
-        slug: string
-        title: string
-        addedAt: any
-        excerpt?: string | null
-        tag?: {
-          __typename?: 'TagEntityResponse'
-          data?: {
-            __typename?: 'TagEntity'
-            attributes?: {
-              __typename?: 'Tag'
-              title?: string | null
-              pageCategory?: {
-                __typename?: 'PageCategoryEntityResponse'
-                data?: {
-                  __typename?: 'PageCategoryEntity'
-                  attributes?: { __typename?: 'PageCategory'; title?: string | null } | null
-                } | null
-              } | null
-            } | null
-          } | null
-        } | null
-        coverImage?: {
-          __typename?: 'UploadFileEntityResponse'
-          data?: {
-            __typename?: 'UploadFileEntity'
-            attributes?: {
-              __typename?: 'UploadFile'
-              url: string
-              mime: string
-              size: number
             } | null
           } | null
         } | null
@@ -14139,6 +14139,44 @@ export const ArticlesDocument = gql`
   }
   ${ArticleCardEntityFragmentDoc}
 `
+export const ArticlesRssFeedDocument = gql`
+  query ArticlesRssFeed($locale: I18NLocaleCode!) {
+    articles(locale: $locale, sort: "addedAt:desc") {
+      data {
+        id
+        attributes {
+          slug
+          title
+          addedAt
+          perex
+          tag {
+            data {
+              attributes {
+                title
+                pageCategory {
+                  data {
+                    attributes {
+                      title
+                    }
+                  }
+                }
+              }
+            }
+          }
+          coverMedia {
+            data {
+              attributes {
+                url
+                mime
+                size
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`
 export const Dev_AllArticlesDocument = gql`
   query Dev_AllArticles(
     $sort: [String]
@@ -14159,44 +14197,6 @@ export const Dev_AllArticlesDocument = gql`
     }
   }
   ${ArticleEntityFragmentDoc}
-`
-export const BlogPostsRssFeedDocument = gql`
-  query BlogPostsRssFeed($locale: I18NLocaleCode!) {
-    blogPosts(locale: $locale, sort: "addedAt:desc") {
-      data {
-        id
-        attributes {
-          slug
-          title
-          addedAt
-          excerpt
-          tag {
-            data {
-              attributes {
-                title
-                pageCategory {
-                  data {
-                    attributes {
-                      title
-                    }
-                  }
-                }
-              }
-            }
-          }
-          coverImage {
-            data {
-              attributes {
-                url
-                mime
-                size
-              }
-            }
-          }
-        }
-      }
-    }
-  }
 `
 export const Dev_AllBlogPostsDocument = gql`
   query Dev_AllBlogPosts(
@@ -14619,6 +14619,21 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
         variables,
       )
     },
+    ArticlesRssFeed(
+      variables: ArticlesRssFeedQueryVariables,
+      requestHeaders?: GraphQLClientRequestHeaders,
+    ): Promise<ArticlesRssFeedQuery> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<ArticlesRssFeedQuery>(ArticlesRssFeedDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
+          }),
+        'ArticlesRssFeed',
+        'query',
+        variables,
+      )
+    },
     Dev_AllArticles(
       variables?: Dev_AllArticlesQueryVariables,
       requestHeaders?: GraphQLClientRequestHeaders,
@@ -14630,21 +14645,6 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
             ...wrappedRequestHeaders,
           }),
         'Dev_AllArticles',
-        'query',
-        variables,
-      )
-    },
-    BlogPostsRssFeed(
-      variables: BlogPostsRssFeedQueryVariables,
-      requestHeaders?: GraphQLClientRequestHeaders,
-    ): Promise<BlogPostsRssFeedQuery> {
-      return withWrapper(
-        (wrappedRequestHeaders) =>
-          client.request<BlogPostsRssFeedQuery>(BlogPostsRssFeedDocument, variables, {
-            ...requestHeaders,
-            ...wrappedRequestHeaders,
-          }),
-        'BlogPostsRssFeed',
         'query',
         variables,
       )
