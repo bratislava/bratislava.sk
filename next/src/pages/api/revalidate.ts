@@ -13,8 +13,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<Response>) => {
   try {
     const payload = req.body as RequestPayload
 
-    const localePrefix = payload.entry.locale === 'en' ? '/en' : ''
-    const homepage = payload.entry.locale === 'en' ? '/en' : '/'
+    const localePrefix = payload?.entry?.locale === 'en' ? '/en' : ''
+    const homepage = payload?.entry?.locale === 'en' ? '/en' : '/'
 
     if (payload?.model === 'article') {
       const articleUrl = `${localePrefix}/spravy/${payload?.entry?.slug}`
