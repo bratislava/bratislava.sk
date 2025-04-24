@@ -4,7 +4,7 @@ import React, { useEffect } from 'react'
 
 import BlogPostCard from '@/src/components/cards/BlogPostCard'
 import Pagination from '@/src/components/common/Pagination/Pagination'
-import { ArticlesSectionFragment, BlogPostsByCategorySectionFragment } from '@/src/services/graphql'
+import { ArticlesSectionFragment } from '@/src/services/graphql'
 import { client } from '@/src/services/graphql/gql'
 import {
   articlesDefaultFilters,
@@ -22,7 +22,7 @@ import { useTranslation } from '@/src/utils/useTranslation'
 const imageSizes = generateImageSizes({ default: '100vw', md: '50vw', lg: '33vw' })
 
 type Props = {
-  section: ArticlesSectionFragment | BlogPostsByCategorySectionFragment
+  section: ArticlesSectionFragment
 }
 
 const ArticlesByCategory = ({ section }: Props) => {

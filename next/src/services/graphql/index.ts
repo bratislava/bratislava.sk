@@ -399,30 +399,6 @@ export type ComponentAccordionItemsInstitutionNarrowInput = {
   urlLabel?: InputMaybe<Scalars['String']['input']>
 }
 
-export type ComponentBlocksBlogPostLink = {
-  __typename?: 'ComponentBlocksBlogPostLink'
-  blogPost?: Maybe<BlogPostEntityResponse>
-  id: Scalars['ID']['output']
-  title?: Maybe<Scalars['String']['output']>
-  url?: Maybe<Scalars['String']['output']>
-}
-
-export type ComponentBlocksBlogPostLinkFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<ComponentBlocksBlogPostLinkFiltersInput>>>
-  blogPost?: InputMaybe<BlogPostFiltersInput>
-  not?: InputMaybe<ComponentBlocksBlogPostLinkFiltersInput>
-  or?: InputMaybe<Array<InputMaybe<ComponentBlocksBlogPostLinkFiltersInput>>>
-  title?: InputMaybe<StringFilterInput>
-  url?: InputMaybe<StringFilterInput>
-}
-
-export type ComponentBlocksBlogPostLinkInput = {
-  blogPost?: InputMaybe<Scalars['ID']['input']>
-  id?: InputMaybe<Scalars['ID']['input']>
-  title?: InputMaybe<Scalars['String']['input']>
-  url?: InputMaybe<Scalars['String']['input']>
-}
-
 export type ComponentBlocksBookmarkLink = {
   __typename?: 'ComponentBlocksBookmarkLink'
   href?: Maybe<Scalars['String']['output']>
@@ -1127,51 +1103,6 @@ export type ComponentSectionsBannerInput = {
   tertiaryLink?: InputMaybe<ComponentBlocksCommonLinkInput>
   title?: InputMaybe<Scalars['String']['input']>
   variant?: InputMaybe<Enum_Componentsectionsbanner_Variant>
-}
-
-export type ComponentSectionsBlogPostsByCategory = {
-  __typename?: 'ComponentSectionsBlogPostsByCategory'
-  category?: Maybe<PageCategoryEntityResponse>
-  id: Scalars['ID']['output']
-  text?: Maybe<Scalars['String']['output']>
-  title?: Maybe<Scalars['String']['output']>
-}
-
-export type ComponentSectionsBlogPostsByCategoryFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<ComponentSectionsBlogPostsByCategoryFiltersInput>>>
-  category?: InputMaybe<PageCategoryFiltersInput>
-  not?: InputMaybe<ComponentSectionsBlogPostsByCategoryFiltersInput>
-  or?: InputMaybe<Array<InputMaybe<ComponentSectionsBlogPostsByCategoryFiltersInput>>>
-  text?: InputMaybe<StringFilterInput>
-  title?: InputMaybe<StringFilterInput>
-}
-
-export type ComponentSectionsBlogPostsByCategoryInput = {
-  category?: InputMaybe<Scalars['ID']['input']>
-  id?: InputMaybe<Scalars['ID']['input']>
-  text?: InputMaybe<Scalars['String']['input']>
-  title?: InputMaybe<Scalars['String']['input']>
-}
-
-export type ComponentSectionsBlogPostsList = {
-  __typename?: 'ComponentSectionsBlogPostsList'
-  id: Scalars['ID']['output']
-  text?: Maybe<Scalars['String']['output']>
-  title?: Maybe<Scalars['String']['output']>
-}
-
-export type ComponentSectionsBlogPostsListFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<ComponentSectionsBlogPostsListFiltersInput>>>
-  not?: InputMaybe<ComponentSectionsBlogPostsListFiltersInput>
-  or?: InputMaybe<Array<InputMaybe<ComponentSectionsBlogPostsListFiltersInput>>>
-  text?: InputMaybe<StringFilterInput>
-  title?: InputMaybe<StringFilterInput>
-}
-
-export type ComponentSectionsBlogPostsListInput = {
-  id?: InputMaybe<Scalars['ID']['input']>
-  text?: InputMaybe<Scalars['String']['input']>
-  title?: InputMaybe<Scalars['String']['input']>
 }
 
 export type ComponentSectionsCalculator = {
@@ -2655,7 +2586,6 @@ export type GenericMorph =
   | ComponentAccordionItemsFlatText
   | ComponentAccordionItemsInstitution
   | ComponentAccordionItemsInstitutionNarrow
-  | ComponentBlocksBlogPostLink
   | ComponentBlocksBookmarkLink
   | ComponentBlocksCommonLink
   | ComponentBlocksComparisonCard
@@ -2683,8 +2613,6 @@ export type GenericMorph =
   | ComponentSectionsAccordion
   | ComponentSectionsArticles
   | ComponentSectionsBanner
-  | ComponentSectionsBlogPostsByCategory
-  | ComponentSectionsBlogPostsList
   | ComponentSectionsCalculator
   | ComponentSectionsColumnedText
   | ComponentSectionsComparisonSection
@@ -3950,8 +3878,6 @@ export type PageSectionsDynamicZone =
   | ComponentSectionsAccordion
   | ComponentSectionsArticles
   | ComponentSectionsBanner
-  | ComponentSectionsBlogPostsByCategory
-  | ComponentSectionsBlogPostsList
   | ComponentSectionsCalculator
   | ComponentSectionsColumnedText
   | ComponentSectionsComparisonSection
@@ -9057,24 +8983,6 @@ export type PageBySlugQuery = {
               } | null
             }
           | {
-              __typename: 'ComponentSectionsBlogPostsByCategory'
-              title?: string | null
-              text?: string | null
-              category?: {
-                __typename?: 'PageCategoryEntityResponse'
-                data?: {
-                  __typename?: 'PageCategoryEntity'
-                  id?: string | null
-                  attributes?: { __typename?: 'PageCategory'; title?: string | null } | null
-                } | null
-              } | null
-            }
-          | {
-              __typename: 'ComponentSectionsBlogPostsList'
-              title?: string | null
-              text?: string | null
-            }
-          | {
               __typename: 'ComponentSectionsCalculator'
               hasBackground?: boolean | null
               single_adult_value?: number | null
@@ -10036,24 +9944,6 @@ export type PageEntityFragment = {
               } | null
             } | null
           } | null
-        }
-      | {
-          __typename: 'ComponentSectionsBlogPostsByCategory'
-          title?: string | null
-          text?: string | null
-          category?: {
-            __typename?: 'PageCategoryEntityResponse'
-            data?: {
-              __typename?: 'PageCategoryEntity'
-              id?: string | null
-              attributes?: { __typename?: 'PageCategory'; title?: string | null } | null
-            } | null
-          } | null
-        }
-      | {
-          __typename: 'ComponentSectionsBlogPostsList'
-          title?: string | null
-          text?: string | null
         }
       | {
           __typename: 'ComponentSectionsCalculator'
@@ -11664,12 +11554,6 @@ export type TimelineSectionFragment = {
   } | null> | null
 }
 
-export type BlogPostsListSectionFragment = {
-  __typename?: 'ComponentSectionsBlogPostsList'
-  title?: string | null
-  text?: string | null
-}
-
 export type ArticlesSectionFragment = {
   __typename?: 'ComponentSectionsArticles'
   title?: string | null
@@ -11685,20 +11569,6 @@ export type ArticlesSectionFragment = {
         title?: string | null
         color?: Enum_Pagecategory_Color | null
       } | null
-    } | null
-  } | null
-}
-
-export type BlogPostsByCategorySectionFragment = {
-  __typename?: 'ComponentSectionsBlogPostsByCategory'
-  title?: string | null
-  text?: string | null
-  category?: {
-    __typename?: 'PageCategoryEntityResponse'
-    data?: {
-      __typename?: 'PageCategoryEntity'
-      id?: string | null
-      attributes?: { __typename?: 'PageCategory'; title?: string | null } | null
     } | null
   } | null
 }
@@ -12744,26 +12614,6 @@ type Sections_ComponentSectionsBanner_Fragment = {
   } | null
 }
 
-type Sections_ComponentSectionsBlogPostsByCategory_Fragment = {
-  __typename: 'ComponentSectionsBlogPostsByCategory'
-  title?: string | null
-  text?: string | null
-  category?: {
-    __typename?: 'PageCategoryEntityResponse'
-    data?: {
-      __typename?: 'PageCategoryEntity'
-      id?: string | null
-      attributes?: { __typename?: 'PageCategory'; title?: string | null } | null
-    } | null
-  } | null
-}
-
-type Sections_ComponentSectionsBlogPostsList_Fragment = {
-  __typename: 'ComponentSectionsBlogPostsList'
-  title?: string | null
-  text?: string | null
-}
-
 type Sections_ComponentSectionsCalculator_Fragment = {
   __typename: 'ComponentSectionsCalculator'
   hasBackground?: boolean | null
@@ -13305,8 +13155,6 @@ export type SectionsFragment =
   | Sections_ComponentSectionsAccordion_Fragment
   | Sections_ComponentSectionsArticles_Fragment
   | Sections_ComponentSectionsBanner_Fragment
-  | Sections_ComponentSectionsBlogPostsByCategory_Fragment
-  | Sections_ComponentSectionsBlogPostsList_Fragment
   | Sections_ComponentSectionsCalculator_Fragment
   | Sections_ComponentSectionsColumnedText_Fragment
   | Sections_ComponentSectionsComparisonSection_Fragment
@@ -13842,26 +13690,6 @@ export const ArticlesSectionFragmentDoc = gql`
   }
   ${PageCategoryEntityFragmentDoc}
 `
-export const BlogPostsListSectionFragmentDoc = gql`
-  fragment BlogPostsListSection on ComponentSectionsBlogPostsList {
-    title
-    text
-  }
-`
-export const BlogPostsByCategorySectionFragmentDoc = gql`
-  fragment BlogPostsByCategorySection on ComponentSectionsBlogPostsByCategory {
-    title
-    text
-    category {
-      data {
-        id
-        attributes {
-          title
-        }
-      }
-    }
-  }
-`
 export const InbaTagEntityFragmentDoc = gql`
   fragment InbaTagEntity on InbaTagEntity {
     id
@@ -14304,12 +14132,6 @@ export const SectionsFragmentDoc = gql`
     ... on ComponentSectionsArticles {
       ...ArticlesSection
     }
-    ... on ComponentSectionsBlogPostsList {
-      ...BlogPostsListSection
-    }
-    ... on ComponentSectionsBlogPostsByCategory {
-      ...BlogPostsByCategorySection
-    }
     ... on ComponentSectionsInbaArticlesList {
       ...InbaArticlesListSection
     }
@@ -14365,8 +14187,6 @@ export const SectionsFragmentDoc = gql`
   ${VideosSectionFragmentDoc}
   ${NumericalListSectionFragmentDoc}
   ${ArticlesSectionFragmentDoc}
-  ${BlogPostsListSectionFragmentDoc}
-  ${BlogPostsByCategorySectionFragmentDoc}
   ${InbaArticlesListSectionFragmentDoc}
   ${InbaReleasesSectionFragmentDoc}
   ${OrganizationalStructureSectionFragmentDoc}

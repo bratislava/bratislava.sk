@@ -21,7 +21,7 @@ export const prefetchPageSections = async (page: PageEntityFragment, locale: str
   //   await queryClient.prefetchQuery(getPartnersQueryKey(locale), () => partnersFetcher(locale))
   // }
 
-  if (sectionTypes.includes('ComponentSectionsBlogPostsList')) {
+  if (sectionTypes.includes('ComponentSectionsArticles')) {
     await queryClient.prefetchQuery({
       queryKey: ['Tags', locale],
       queryFn: () => client.Tags({ locale }),

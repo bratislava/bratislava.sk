@@ -2,9 +2,7 @@ import * as React from 'react'
 
 import SectionContainer from '@/src/components/common/SectionContainer/SectionContainer'
 import AccordionSection from '@/src/components/sections/AccordionSection'
-import ArticlesByCategory from '@/src/components/sections/ArticlesListSection/ArticlesByCategory'
 import ArticlesSection from '@/src/components/sections/ArticlesListSection/ArticlesSection'
-import BlogPostsList from '@/src/components/sections/ArticlesListSection/BlogPostsList'
 import InbaArticlesList from '@/src/components/sections/ArticlesListSection/InbaArticlesList'
 import BannerSection from '@/src/components/sections/BannerSection'
 import CalculatorSection from '@/src/components/sections/CalculatorSection_Deprecated/CalculatorSection_Deprecated'
@@ -69,12 +67,6 @@ const SectionContent = ({ section }: { section: SectionsFragment }) => {
 
     case 'ComponentSectionsArticles':
       return <ArticlesSection section={section} />
-
-    case 'ComponentSectionsBlogPostsList':
-      return <BlogPostsList section={section} />
-
-    case 'ComponentSectionsBlogPostsByCategory':
-      return <ArticlesByCategory section={section} />
 
     case 'ComponentSectionsInbaArticlesList':
       return <InbaArticlesList section={section} />
