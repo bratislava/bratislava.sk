@@ -5,7 +5,6 @@ import React from 'react'
 import ArticleCard from '@/src/components/cards/ArticleCard'
 import InbaArticlesFilter from '@/src/components/common/InbaArticlesFilter/InbaArticlesFilter'
 import Pagination from '@/src/components/common/Pagination/Pagination'
-import InbaFeaturedArticlesSection from '@/src/components/sections/InbaFeaturedArticlesSection'
 import { InbaArticlesListSectionFragment } from '@/src/services/graphql'
 import { client } from '@/src/services/graphql/gql'
 import {
@@ -29,7 +28,7 @@ const InbaArticlesList = ({ section }: Props) => {
   const { t } = useTranslation()
   const locale = useLocale()
 
-  const { title, text, featuredArticles } = section
+  const { title, text } = section
 
   const [filters, setFilters] = useRoutePreservedState({ ...inbaArticlesDefaultFilters })
 
@@ -56,9 +55,6 @@ const InbaArticlesList = ({ section }: Props) => {
 
   return (
     <div className="flex flex-col gap-8">
-      {featuredArticles?.data.length ? (
-        <InbaFeaturedArticlesSection articles={featuredArticles.data} />
-      ) : null}
       <InbaArticlesFilter tags={tagData?.inbaTags?.data || []} onChange={handleTagFilterChange} />
       {title || text ? (
         <div className="flex flex-col gap-2">

@@ -1308,7 +1308,6 @@ input ComponentSectionsIframeInput {
 }
 
 type ComponentSectionsInbaArticlesList {
-  featuredArts(filters: InbaArticleFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): InbaArticleRelationResponseCollection
   id: ID!
   text: String
   title: String
@@ -1316,7 +1315,6 @@ type ComponentSectionsInbaArticlesList {
 
 input ComponentSectionsInbaArticlesListFiltersInput {
   and: [ComponentSectionsInbaArticlesListFiltersInput]
-  featuredArts: InbaArticleFiltersInput
   not: ComponentSectionsInbaArticlesListFiltersInput
   or: [ComponentSectionsInbaArticlesListFiltersInput]
   text: StringFilterInput
@@ -1324,7 +1322,6 @@ input ComponentSectionsInbaArticlesListFiltersInput {
 }
 
 input ComponentSectionsInbaArticlesListInput {
-  featuredArts: [ID]
   id: ID
   text: String
   title: String
@@ -2430,7 +2427,7 @@ type InbaArticleRelationResponseCollection {
 type InbaRelease {
   coverImage: UploadFileEntityResponse
   createdAt: DateTime
-  files(filters: ComponentBlocksFileItemFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksFileItem]
+  files(filters: ComponentBlocksFileFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksFile]
   inbaArticles(filters: InbaArticleFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): InbaArticleRelationResponseCollection
   perex: String
   publishedAt: DateTime
@@ -2458,7 +2455,7 @@ type InbaReleaseEntityResponseCollection {
 input InbaReleaseFiltersInput {
   and: [InbaReleaseFiltersInput]
   createdAt: DateTimeFilterInput
-  files: ComponentBlocksFileItemFiltersInput
+  files: ComponentBlocksFileFiltersInput
   id: IDFilterInput
   inbaArticles: InbaArticleFiltersInput
   not: InbaReleaseFiltersInput
@@ -2473,7 +2470,7 @@ input InbaReleaseFiltersInput {
 
 input InbaReleaseInput {
   coverImage: ID
-  files: [ComponentBlocksFileItemInput]
+  files: [ComponentBlocksFileInput]
   inbaArticles: [ID]
   perex: String
   publishedAt: DateTime

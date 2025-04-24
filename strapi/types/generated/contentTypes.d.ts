@@ -925,7 +925,7 @@ export interface ApiInbaReleaseInbaRelease extends Schema.CollectionType {
     createdAt: Attribute.DateTime
     createdBy: Attribute.Relation<'api::inba-release.inba-release', 'oneToOne', 'admin::user'> &
       Attribute.Private
-    files: Attribute.Component<'blocks.file-item', true> &
+    files: Attribute.Component<'blocks.file', true> &
       Attribute.SetMinMax<
         {
           min: 1

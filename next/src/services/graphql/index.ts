@@ -1561,22 +1561,13 @@ export type ComponentSectionsIframeInput = {
 
 export type ComponentSectionsInbaArticlesList = {
   __typename?: 'ComponentSectionsInbaArticlesList'
-  featuredArts?: Maybe<InbaArticleRelationResponseCollection>
   id: Scalars['ID']['output']
   text?: Maybe<Scalars['String']['output']>
   title?: Maybe<Scalars['String']['output']>
 }
 
-export type ComponentSectionsInbaArticlesListFeaturedArtsArgs = {
-  filters?: InputMaybe<InbaArticleFiltersInput>
-  pagination?: InputMaybe<PaginationArg>
-  publicationState?: InputMaybe<PublicationState>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
-}
-
 export type ComponentSectionsInbaArticlesListFiltersInput = {
   and?: InputMaybe<Array<InputMaybe<ComponentSectionsInbaArticlesListFiltersInput>>>
-  featuredArts?: InputMaybe<InbaArticleFiltersInput>
   not?: InputMaybe<ComponentSectionsInbaArticlesListFiltersInput>
   or?: InputMaybe<Array<InputMaybe<ComponentSectionsInbaArticlesListFiltersInput>>>
   text?: InputMaybe<StringFilterInput>
@@ -1584,7 +1575,6 @@ export type ComponentSectionsInbaArticlesListFiltersInput = {
 }
 
 export type ComponentSectionsInbaArticlesListInput = {
-  featuredArts?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
   id?: InputMaybe<Scalars['ID']['input']>
   text?: InputMaybe<Scalars['String']['input']>
   title?: InputMaybe<Scalars['String']['input']>
@@ -2914,7 +2904,7 @@ export type InbaRelease = {
   __typename?: 'InbaRelease'
   coverImage?: Maybe<UploadFileEntityResponse>
   createdAt?: Maybe<Scalars['DateTime']['output']>
-  files?: Maybe<Array<Maybe<ComponentBlocksFileItem>>>
+  files?: Maybe<Array<Maybe<ComponentBlocksFile>>>
   inbaArticles?: Maybe<InbaArticleRelationResponseCollection>
   perex?: Maybe<Scalars['String']['output']>
   publishedAt?: Maybe<Scalars['DateTime']['output']>
@@ -2926,7 +2916,7 @@ export type InbaRelease = {
 }
 
 export type InbaReleaseFilesArgs = {
-  filters?: InputMaybe<ComponentBlocksFileItemFiltersInput>
+  filters?: InputMaybe<ComponentBlocksFileFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
 }
@@ -2958,7 +2948,7 @@ export type InbaReleaseEntityResponseCollection = {
 export type InbaReleaseFiltersInput = {
   and?: InputMaybe<Array<InputMaybe<InbaReleaseFiltersInput>>>
   createdAt?: InputMaybe<DateTimeFilterInput>
-  files?: InputMaybe<ComponentBlocksFileItemFiltersInput>
+  files?: InputMaybe<ComponentBlocksFileFiltersInput>
   id?: InputMaybe<IdFilterInput>
   inbaArticles?: InputMaybe<InbaArticleFiltersInput>
   not?: InputMaybe<InbaReleaseFiltersInput>
@@ -2973,7 +2963,7 @@ export type InbaReleaseFiltersInput = {
 
 export type InbaReleaseInput = {
   coverImage?: InputMaybe<Scalars['ID']['input']>
-  files?: InputMaybe<Array<InputMaybe<ComponentBlocksFileItemInput>>>
+  files?: InputMaybe<Array<InputMaybe<ComponentBlocksFileInput>>>
   inbaArticles?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
   perex?: InputMaybe<Scalars['String']['input']>
   publishedAt?: InputMaybe<Scalars['DateTime']['input']>
@@ -7973,9 +7963,10 @@ export type InbaReleaseBySlugQuery = {
           } | null
         } | null
         files?: Array<{
-          __typename?: 'ComponentBlocksFileItem'
+          __typename?: 'ComponentBlocksFile'
+          id: string
           title?: string | null
-          media: {
+          media?: {
             __typename?: 'UploadFileEntityResponse'
             data?: {
               __typename?: 'UploadFileEntity'
@@ -7990,7 +7981,7 @@ export type InbaReleaseBySlugQuery = {
                 updatedAt?: any | null
               } | null
             } | null
-          }
+          } | null
         } | null> | null
       } | null
     }>
@@ -8089,9 +8080,10 @@ export type InbaReleasesPaginatedQuery = {
           } | null
         } | null
         files?: Array<{
-          __typename?: 'ComponentBlocksFileItem'
+          __typename?: 'ComponentBlocksFile'
+          id: string
           title?: string | null
-          media: {
+          media?: {
             __typename?: 'UploadFileEntityResponse'
             data?: {
               __typename?: 'UploadFileEntity'
@@ -8106,7 +8098,7 @@ export type InbaReleasesPaginatedQuery = {
                 updatedAt?: any | null
               } | null
             } | null
-          }
+          } | null
         } | null> | null
       } | null
     }>
@@ -8155,9 +8147,10 @@ export type InbaReleaseEntityFragment = {
       } | null
     } | null
     files?: Array<{
-      __typename?: 'ComponentBlocksFileItem'
+      __typename?: 'ComponentBlocksFile'
+      id: string
       title?: string | null
-      media: {
+      media?: {
         __typename?: 'UploadFileEntityResponse'
         data?: {
           __typename?: 'UploadFileEntity'
@@ -8172,7 +8165,7 @@ export type InbaReleaseEntityFragment = {
             updatedAt?: any | null
           } | null
         } | null
-      }
+      } | null
     } | null> | null
   } | null
 }
@@ -8655,48 +8648,6 @@ export type PageBySlugQuery = {
               __typename: 'ComponentSectionsInbaArticlesList'
               title?: string | null
               text?: string | null
-              featuredArticles?: {
-                __typename?: 'InbaArticleRelationResponseCollection'
-                data: Array<{
-                  __typename?: 'InbaArticleEntity'
-                  id?: string | null
-                  attributes?: {
-                    __typename?: 'InbaArticle'
-                    title: string
-                    slug: string
-                    perex?: string | null
-                    publishedAt?: any | null
-                    content?: string | null
-                    coverImage?: {
-                      __typename?: 'UploadFileEntityResponse'
-                      data?: {
-                        __typename?: 'UploadFileEntity'
-                        attributes?: { __typename?: 'UploadFile'; url: string } | null
-                      } | null
-                    } | null
-                    inbaTag?: {
-                      __typename?: 'InbaTagEntityResponse'
-                      data?: {
-                        __typename?: 'InbaTagEntity'
-                        id?: string | null
-                        attributes?: { __typename?: 'InbaTag'; title: string } | null
-                      } | null
-                    } | null
-                    inbaRelease?: {
-                      __typename?: 'InbaReleaseEntityResponse'
-                      data?: {
-                        __typename?: 'InbaReleaseEntity'
-                        attributes?: {
-                          __typename?: 'InbaRelease'
-                          title: string
-                          releaseDate: any
-                          slug: string
-                        } | null
-                      } | null
-                    } | null
-                  } | null
-                }>
-              } | null
             }
           | {
               __typename: 'ComponentSectionsInbaReleases'
@@ -9582,48 +9533,6 @@ export type PageEntityFragment = {
           __typename: 'ComponentSectionsInbaArticlesList'
           title?: string | null
           text?: string | null
-          featuredArticles?: {
-            __typename?: 'InbaArticleRelationResponseCollection'
-            data: Array<{
-              __typename?: 'InbaArticleEntity'
-              id?: string | null
-              attributes?: {
-                __typename?: 'InbaArticle'
-                title: string
-                slug: string
-                perex?: string | null
-                publishedAt?: any | null
-                content?: string | null
-                coverImage?: {
-                  __typename?: 'UploadFileEntityResponse'
-                  data?: {
-                    __typename?: 'UploadFileEntity'
-                    attributes?: { __typename?: 'UploadFile'; url: string } | null
-                  } | null
-                } | null
-                inbaTag?: {
-                  __typename?: 'InbaTagEntityResponse'
-                  data?: {
-                    __typename?: 'InbaTagEntity'
-                    id?: string | null
-                    attributes?: { __typename?: 'InbaTag'; title: string } | null
-                  } | null
-                } | null
-                inbaRelease?: {
-                  __typename?: 'InbaReleaseEntityResponse'
-                  data?: {
-                    __typename?: 'InbaReleaseEntity'
-                    attributes?: {
-                      __typename?: 'InbaRelease'
-                      title: string
-                      releaseDate: any
-                      slug: string
-                    } | null
-                  } | null
-                } | null
-              } | null
-            }>
-          } | null
         }
       | { __typename: 'ComponentSectionsInbaReleases'; title?: string | null; text?: string | null }
       | {
@@ -11035,48 +10944,6 @@ export type InbaArticlesListSectionFragment = {
   __typename?: 'ComponentSectionsInbaArticlesList'
   title?: string | null
   text?: string | null
-  featuredArticles?: {
-    __typename?: 'InbaArticleRelationResponseCollection'
-    data: Array<{
-      __typename?: 'InbaArticleEntity'
-      id?: string | null
-      attributes?: {
-        __typename?: 'InbaArticle'
-        title: string
-        slug: string
-        perex?: string | null
-        publishedAt?: any | null
-        content?: string | null
-        coverImage?: {
-          __typename?: 'UploadFileEntityResponse'
-          data?: {
-            __typename?: 'UploadFileEntity'
-            attributes?: { __typename?: 'UploadFile'; url: string } | null
-          } | null
-        } | null
-        inbaTag?: {
-          __typename?: 'InbaTagEntityResponse'
-          data?: {
-            __typename?: 'InbaTagEntity'
-            id?: string | null
-            attributes?: { __typename?: 'InbaTag'; title: string } | null
-          } | null
-        } | null
-        inbaRelease?: {
-          __typename?: 'InbaReleaseEntityResponse'
-          data?: {
-            __typename?: 'InbaReleaseEntity'
-            attributes?: {
-              __typename?: 'InbaRelease'
-              title: string
-              releaseDate: any
-              slug: string
-            } | null
-          } | null
-        } | null
-      } | null
-    }>
-  } | null
 }
 
 export type InbaReleasesSectionFragment = {
@@ -12214,48 +12081,6 @@ type Sections_ComponentSectionsInbaArticlesList_Fragment = {
   __typename: 'ComponentSectionsInbaArticlesList'
   title?: string | null
   text?: string | null
-  featuredArticles?: {
-    __typename?: 'InbaArticleRelationResponseCollection'
-    data: Array<{
-      __typename?: 'InbaArticleEntity'
-      id?: string | null
-      attributes?: {
-        __typename?: 'InbaArticle'
-        title: string
-        slug: string
-        perex?: string | null
-        publishedAt?: any | null
-        content?: string | null
-        coverImage?: {
-          __typename?: 'UploadFileEntityResponse'
-          data?: {
-            __typename?: 'UploadFileEntity'
-            attributes?: { __typename?: 'UploadFile'; url: string } | null
-          } | null
-        } | null
-        inbaTag?: {
-          __typename?: 'InbaTagEntityResponse'
-          data?: {
-            __typename?: 'InbaTagEntity'
-            id?: string | null
-            attributes?: { __typename?: 'InbaTag'; title: string } | null
-          } | null
-        } | null
-        inbaRelease?: {
-          __typename?: 'InbaReleaseEntityResponse'
-          data?: {
-            __typename?: 'InbaReleaseEntity'
-            attributes?: {
-              __typename?: 'InbaRelease'
-              title: string
-              releaseDate: any
-              slug: string
-            } | null
-          } | null
-        } | null
-      } | null
-    }>
-  } | null
 }
 
 type Sections_ComponentSectionsInbaReleases_Fragment = {
@@ -13066,59 +12891,11 @@ export const ArticlesSectionFragmentDoc = gql`
   }
   ${PageCategoryEntityFragmentDoc}
 `
-export const InbaTagEntityFragmentDoc = gql`
-  fragment InbaTagEntity on InbaTagEntity {
-    id
-    attributes {
-      title
-    }
-  }
-`
-export const InbaArticleEntityFragmentDoc = gql`
-  fragment InbaArticleEntity on InbaArticleEntity {
-    id
-    attributes {
-      title
-      slug
-      perex
-      publishedAt
-      coverImage {
-        data {
-          attributes {
-            url
-          }
-        }
-      }
-      inbaTag {
-        data {
-          ...InbaTagEntity
-        }
-      }
-      content
-      inbaRelease {
-        data {
-          attributes {
-            title
-            releaseDate
-            slug
-          }
-        }
-      }
-    }
-  }
-  ${InbaTagEntityFragmentDoc}
-`
 export const InbaArticlesListSectionFragmentDoc = gql`
   fragment InbaArticlesListSection on ComponentSectionsInbaArticlesList {
     title
     text
-    featuredArticles: featuredArts {
-      data {
-        ...InbaArticleEntity
-      }
-    }
   }
-  ${InbaArticleEntityFragmentDoc}
 `
 export const InbaReleasesSectionFragmentDoc = gql`
   fragment InbaReleasesSection on ComponentSectionsInbaReleases {
@@ -13986,6 +13763,48 @@ export const HomepageEntityFragmentDoc = gql`
   ${HomepageInbaFragmentDoc}
   ${HomepageBookmarkFragmentDoc}
 `
+export const InbaTagEntityFragmentDoc = gql`
+  fragment InbaTagEntity on InbaTagEntity {
+    id
+    attributes {
+      title
+    }
+  }
+`
+export const InbaArticleEntityFragmentDoc = gql`
+  fragment InbaArticleEntity on InbaArticleEntity {
+    id
+    attributes {
+      title
+      slug
+      perex
+      publishedAt
+      coverImage {
+        data {
+          attributes {
+            url
+          }
+        }
+      }
+      inbaTag {
+        data {
+          ...InbaTagEntity
+        }
+      }
+      content
+      inbaRelease {
+        data {
+          attributes {
+            title
+            releaseDate
+            slug
+          }
+        }
+      }
+    }
+  }
+  ${InbaTagEntityFragmentDoc}
+`
 export const InbaReleaseEntityFragmentDoc = gql`
   fragment InbaReleaseEntity on InbaReleaseEntity {
     id
@@ -14005,6 +13824,7 @@ export const InbaReleaseEntityFragmentDoc = gql`
         }
       }
       files {
+        id
         title
         media {
           data {

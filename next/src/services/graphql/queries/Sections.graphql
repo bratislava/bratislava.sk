@@ -60,11 +60,6 @@ fragment ArticlesSection on ComponentSectionsArticles {
 fragment InbaArticlesListSection on ComponentSectionsInbaArticlesList {
   title
   text
-  featuredArticles: featuredArts {
-    data {
-      ...InbaArticleEntity
-    }
-  }
 }
 
 fragment InbaReleasesSection on ComponentSectionsInbaReleases {

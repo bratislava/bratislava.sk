@@ -723,11 +723,6 @@ export interface SectionsInbaArticlesList extends Schema.Component {
     displayName: 'in.ba articles'
   }
   attributes: {
-    featuredArts: Attribute.Relation<
-      'sections.inba-articles-list',
-      'oneToMany',
-      'api::inba-article.inba-article'
-    >
     text: Attribute.Text
     title: Attribute.String
   }
