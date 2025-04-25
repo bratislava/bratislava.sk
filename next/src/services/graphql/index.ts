@@ -7504,6 +7504,94 @@ export type HomepageInbaFragment = {
   content?: string | null
 }
 
+export type InbaArticleSlugEntityFragment = {
+  __typename?: 'InbaArticleEntity'
+  id?: string | null
+  attributes?: {
+    __typename?: 'InbaArticle'
+    slug: string
+    title: string
+    locale?: string | null
+  } | null
+}
+
+export type InbaArticleCardEntityFragment = {
+  __typename?: 'InbaArticleEntity'
+  id?: string | null
+  attributes?: {
+    __typename?: 'InbaArticle'
+    perex?: string | null
+    publishedAt?: any | null
+    slug: string
+    title: string
+    locale?: string | null
+    coverImage?: {
+      __typename?: 'UploadFileEntityResponse'
+      data?: {
+        __typename?: 'UploadFileEntity'
+        id?: string | null
+        attributes?: { __typename?: 'UploadFile'; url: string } | null
+      } | null
+    } | null
+    inbaTag?: {
+      __typename?: 'InbaTagEntityResponse'
+      data?: {
+        __typename?: 'InbaTagEntity'
+        id?: string | null
+        attributes?: { __typename?: 'InbaTag'; title: string } | null
+      } | null
+    } | null
+  } | null
+}
+
+export type InbaArticleEntityFragment = {
+  __typename?: 'InbaArticleEntity'
+  id?: string | null
+  attributes?: {
+    __typename?: 'InbaArticle'
+    content?: string | null
+    perex?: string | null
+    publishedAt?: any | null
+    slug: string
+    title: string
+    locale?: string | null
+    inbaRelease?: {
+      __typename?: 'InbaReleaseEntityResponse'
+      data?: {
+        __typename?: 'InbaReleaseEntity'
+        attributes?: {
+          __typename?: 'InbaRelease'
+          title: string
+          releaseDate: any
+          slug: string
+        } | null
+      } | null
+    } | null
+    coverImage?: {
+      __typename?: 'UploadFileEntityResponse'
+      data?: {
+        __typename?: 'UploadFileEntity'
+        id?: string | null
+        attributes?: { __typename?: 'UploadFile'; url: string } | null
+      } | null
+    } | null
+    inbaTag?: {
+      __typename?: 'InbaTagEntityResponse'
+      data?: {
+        __typename?: 'InbaTagEntity'
+        id?: string | null
+        attributes?: { __typename?: 'InbaTag'; title: string } | null
+      } | null
+    } | null
+  } | null
+}
+
+export type InbaTagEntityFragment = {
+  __typename?: 'InbaTagEntity'
+  id?: string | null
+  attributes?: { __typename?: 'InbaTag'; title: string } | null
+}
+
 export type InbaArticleBySlugQueryVariables = Exact<{
   slug: Scalars['String']['input']
   locale: Scalars['I18NLocaleCode']['input']
@@ -7518,26 +7606,12 @@ export type InbaArticleBySlugQuery = {
       id?: string | null
       attributes?: {
         __typename?: 'InbaArticle'
-        title: string
-        slug: string
+        content?: string | null
         perex?: string | null
         publishedAt?: any | null
-        content?: string | null
-        coverImage?: {
-          __typename?: 'UploadFileEntityResponse'
-          data?: {
-            __typename?: 'UploadFileEntity'
-            attributes?: { __typename?: 'UploadFile'; url: string } | null
-          } | null
-        } | null
-        inbaTag?: {
-          __typename?: 'InbaTagEntityResponse'
-          data?: {
-            __typename?: 'InbaTagEntity'
-            id?: string | null
-            attributes?: { __typename?: 'InbaTag'; title: string } | null
-          } | null
-        } | null
+        slug: string
+        title: string
+        locale?: string | null
         inbaRelease?: {
           __typename?: 'InbaReleaseEntityResponse'
           data?: {
@@ -7548,6 +7622,22 @@ export type InbaArticleBySlugQuery = {
               releaseDate: any
               slug: string
             } | null
+          } | null
+        } | null
+        coverImage?: {
+          __typename?: 'UploadFileEntityResponse'
+          data?: {
+            __typename?: 'UploadFileEntity'
+            id?: string | null
+            attributes?: { __typename?: 'UploadFile'; url: string } | null
+          } | null
+        } | null
+        inbaTag?: {
+          __typename?: 'InbaTagEntityResponse'
+          data?: {
+            __typename?: 'InbaTagEntity'
+            id?: string | null
+            attributes?: { __typename?: 'InbaTag'; title: string } | null
           } | null
         } | null
       } | null
@@ -7564,7 +7654,12 @@ export type InbaArticlesStaticPathsQuery = {
     data: Array<{
       __typename?: 'InbaArticleEntity'
       id?: string | null
-      attributes?: { __typename?: 'InbaArticle'; slug: string; locale?: string | null } | null
+      attributes?: {
+        __typename?: 'InbaArticle'
+        slug: string
+        title: string
+        locale?: string | null
+      } | null
     }>
   } | null
 }
@@ -7621,52 +7716,6 @@ export type InbaTagsQuery = {
       attributes?: { __typename?: 'InbaTag'; title: string } | null
     }>
   } | null
-}
-
-export type InbaArticleEntityFragment = {
-  __typename?: 'InbaArticleEntity'
-  id?: string | null
-  attributes?: {
-    __typename?: 'InbaArticle'
-    title: string
-    slug: string
-    perex?: string | null
-    publishedAt?: any | null
-    content?: string | null
-    coverImage?: {
-      __typename?: 'UploadFileEntityResponse'
-      data?: {
-        __typename?: 'UploadFileEntity'
-        attributes?: { __typename?: 'UploadFile'; url: string } | null
-      } | null
-    } | null
-    inbaTag?: {
-      __typename?: 'InbaTagEntityResponse'
-      data?: {
-        __typename?: 'InbaTagEntity'
-        id?: string | null
-        attributes?: { __typename?: 'InbaTag'; title: string } | null
-      } | null
-    } | null
-    inbaRelease?: {
-      __typename?: 'InbaReleaseEntityResponse'
-      data?: {
-        __typename?: 'InbaReleaseEntity'
-        attributes?: {
-          __typename?: 'InbaRelease'
-          title: string
-          releaseDate: any
-          slug: string
-        } | null
-      } | null
-    } | null
-  } | null
-}
-
-export type InbaTagEntityFragment = {
-  __typename?: 'InbaTagEntity'
-  id?: string | null
-  attributes?: { __typename?: 'InbaTag'; title: string } | null
 }
 
 export type InbaReleaseBySlugQueryVariables = Exact<{
@@ -12787,6 +12836,16 @@ export const HomepageEntityFragmentDoc = gql`
   ${HomepageInbaFragmentDoc}
   ${HomepageBookmarkFragmentDoc}
 `
+export const InbaArticleSlugEntityFragmentDoc = gql`
+  fragment InbaArticleSlugEntity on InbaArticleEntity {
+    id
+    attributes {
+      slug
+      title
+      locale
+    }
+  }
+`
 export const InbaTagEntityFragmentDoc = gql`
   fragment InbaTagEntity on InbaTagEntity {
     id
@@ -12795,19 +12854,15 @@ export const InbaTagEntityFragmentDoc = gql`
     }
   }
 `
-export const InbaArticleEntityFragmentDoc = gql`
-  fragment InbaArticleEntity on InbaArticleEntity {
-    id
+export const InbaArticleCardEntityFragmentDoc = gql`
+  fragment InbaArticleCardEntity on InbaArticleEntity {
+    ...InbaArticleSlugEntity
     attributes {
-      title
-      slug
       perex
       publishedAt
       coverImage {
         data {
-          attributes {
-            url
-          }
+          ...UploadImageSrcEntity
         }
       }
       inbaTag {
@@ -12815,6 +12870,16 @@ export const InbaArticleEntityFragmentDoc = gql`
           ...InbaTagEntity
         }
       }
+    }
+  }
+  ${InbaArticleSlugEntityFragmentDoc}
+  ${UploadImageSrcEntityFragmentDoc}
+  ${InbaTagEntityFragmentDoc}
+`
+export const InbaArticleEntityFragmentDoc = gql`
+  fragment InbaArticleEntity on InbaArticleEntity {
+    ...InbaArticleCardEntity
+    attributes {
       content
       inbaRelease {
         data {
@@ -12827,7 +12892,7 @@ export const InbaArticleEntityFragmentDoc = gql`
       }
     }
   }
-  ${InbaTagEntityFragmentDoc}
+  ${InbaArticleCardEntityFragmentDoc}
 `
 export const InbaReleaseEntityFragmentDoc = gql`
   fragment InbaReleaseEntity on InbaReleaseEntity {
@@ -13797,14 +13862,11 @@ export const InbaArticlesStaticPathsDocument = gql`
   query InbaArticlesStaticPaths {
     inbaArticles(locale: "all", sort: "publishedAt:desc") {
       data {
-        id
-        attributes {
-          slug
-          locale
-        }
+        ...InbaArticleSlugEntity
       }
     }
   }
+  ${InbaArticleSlugEntityFragmentDoc}
 `
 export const InbaArticlesRssFeedDocument = gql`
   query InbaArticlesRssFeed($locale: I18NLocaleCode!) {

@@ -1,5 +1,6 @@
 import {
   Article,
+  ArticleEntity,
   InbaArticle,
   InbaTag,
   Page,
@@ -39,12 +40,13 @@ export type PageMeili = Omit<
   pageBackgroundImage?: UploadFile
 }
 
-export type ArticleMeili = Omit<Article, '__typename' | 'tag' | 'coverMedia'> & {
-  coverMedia?: UploadFile
-  tag?: Omit<Tag, '__typename' | 'pageCategory' | 'articles'> & {
-    pageCategory?: Omit<PageCategory, '__typename' | 'pages'>
+export type ArticleMeili = Pick<ArticleEntity, 'id'> &
+  Omit<Article, 'tag' | 'coverMedia'> & {
+    coverMedia?: UploadFile
+    tag?: Omit<Tag, '__typename' | 'pageCategory' | 'articles'> & {
+      pageCategory?: Omit<PageCategory, '__typename' | 'pages'>
+    }
   }
-}
 
 export type InbaArticleMeili = Omit<InbaArticle, '__typename' | 'tags' | 'coverImage'> & {
   coverImage?: UploadFile

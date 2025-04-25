@@ -3,6 +3,7 @@ import { keepPreviousData, useQuery } from '@tanstack/react-query'
 import React, { useEffect } from 'react'
 
 import ArticleCard from '@/src/components/cards/ArticleCard'
+import { transformArticleProps } from '@/src/components/cards/transformArticleProps'
 import Pagination from '@/src/components/common/Pagination/Pagination'
 import { ArticlesSectionFragment } from '@/src/services/graphql'
 import { client } from '@/src/services/graphql/gql'
@@ -11,22 +12,15 @@ import {
   articlesFetcher,
   getArticlesQueryKey,
 } from '@/src/services/meili/fetchers/articlesFetcher'
-import { getCategoryColorLocalStyle } from '@/src/utils/colors'
-import { formatDate } from '@/src/utils/formatDate'
-import { generateImageSizes } from '@/src/utils/generateImageSizes'
 import { isDefined } from '@/src/utils/isDefined'
 import { useLocale } from '@/src/utils/useLocale'
 import { useRoutePreservedState } from '@/src/utils/useRoutePreservedState'
-import { useTranslation } from '@/src/utils/useTranslation'
-
-const imageSizes = generateImageSizes({ default: '100vw', md: '50vw', lg: '33vw' })
 
 type Props = {
   section: ArticlesSectionFragment
 }
 
 const ArticlesByCategory = ({ section }: Props) => {
-  const { t } = useTranslation()
   const locale = useLocale()
 
   const { title, text, category } = section
@@ -76,25 +70,9 @@ const ArticlesByCategory = ({ section }: Props) => {
       ) : null}
       <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
         {data?.hits.map((card) => {
-          if (!card.attributes) return null
-
-          // TODO refactor sections that use ArticleCard - it needs too much duplicate code while passing props
-          const { title: articleTitle, slug, coverMedia, tag, addedAt } = card.attributes
-          const tagColor = tag?.data?.attributes?.pageCategory?.data?.attributes?.color
-          const tagTitle = tag?.data?.attributes?.title
-
-          return (
-            <ArticleCard
-              key={slug}
-              style={getCategoryColorLocalStyle({ color: tagColor })}
-              date={formatDate(addedAt)}
-              tag={tagTitle ?? undefined}
-              title={articleTitle ?? ''}
-              linkProps={{ children: t('readMore'), href: `/spravy/${slug}` }}
-              imgSrc={coverMedia?.data?.attributes?.url}
-              imgSizes={imageSizes}
-            />
-          )
+          return card.attributes ? (
+            <ArticleCard key={card.attributes.slug} {...transformArticleProps(card.attributes)} />
+          ) : null
         })}
       </div>
       {data?.estimatedTotalHits ? (

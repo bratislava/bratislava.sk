@@ -2,23 +2,17 @@ import { Typography } from '@bratislava/component-library'
 import { TabPanel } from 'react-aria-components'
 
 import ArticleCard from '@/src/components/cards/ArticleCard'
+import { transformArticleProps } from '@/src/components/cards/transformArticleProps'
 import Button from '@/src/components/common/Button/Button'
 import ResponsiveCarousel from '@/src/components/common/Carousel/ResponsiveCarousel'
 import MLink from '@/src/components/common/MLink/MLink'
 import Tag from '@/src/components/common/Tag/Tag'
 import { useHomepageContext } from '@/src/components/providers/HomepageContextProvider'
 import { getCategoryColorLocalStyle } from '@/src/utils/colors'
-import { formatDate } from '@/src/utils/formatDate'
-import { generateImageSizes } from '@/src/utils/generateImageSizes'
 import { getCommonLinkProps } from '@/src/utils/getCommonLinkProps'
 import { isDefined } from '@/src/utils/isDefined'
-import { useTranslation } from '@/src/utils/useTranslation'
-
-const imageSizes = generateImageSizes({ default: '50vw', lg: '33vw' })
 
 const TabPanelLatestNews = () => {
-  const { t } = useTranslation()
-
   const { homepage, latestArticles } = useHomepageContext()
   const { tabs } = homepage?.attributes ?? {}
   const { leftArticle, rightArticle } = tabs ?? {}
@@ -40,46 +34,23 @@ const TabPanelLatestNews = () => {
       <ResponsiveCarousel
         className="lg:hidden"
         items={allLatestArticles.map((article) => {
-          const { title, slug, coverMedia, addedAt, tag } = article.attributes ?? {}
-          const tagColor = tag?.data?.attributes?.pageCategory?.data?.attributes?.color
-          const tagTitle = tag?.data?.attributes?.title
-
-          return (
+          return article.attributes ? (
             <ArticleCard
-              key={article.id}
-              style={getCategoryColorLocalStyle({ color: tagColor })}
-              variant="no-border"
-              date={formatDate(addedAt)}
-              tag={tagTitle ?? undefined}
-              title={title ?? ''}
-              linkProps={{ children: t('HomepageTabs.readMore'), href: `/spravy/${slug}` }}
-              imgSrc={coverMedia?.data?.attributes?.url}
-              imgSizes={imageSizes}
+              key={article.attributes.slug}
+              {...transformArticleProps(article.attributes)}
             />
-          )
+          ) : null
         })}
       />
       <div className="mt-14 hidden pb-8 lg:block">
         <div className="grid grid-cols-3 gap-x-8">
           {[leftArticle?.data, rightArticle?.data].filter(isDefined).map((article) => {
-            const { title, slug, coverMedia, addedAt, tag, perex } = article.attributes ?? {}
-            const tagColor = tag?.data?.attributes?.pageCategory?.data?.attributes?.color
-            const tagTitle = tag?.data?.attributes?.title
-
-            return (
+            return article.attributes ? (
               <ArticleCard
-                key={article.id}
-                style={getCategoryColorLocalStyle({ color: tagColor })}
-                variant="no-border"
-                date={formatDate(addedAt)}
-                tag={tagTitle ?? undefined}
-                title={title ?? ''}
-                linkProps={{ children: t('HomepageTabs.readMore'), href: `/spravy/${slug}` }}
-                imgSrc={coverMedia?.data?.attributes?.url}
-                imgSizes={imageSizes}
-                text={perex ?? undefined}
+                key={article.attributes.slug}
+                {...transformArticleProps(article.attributes)}
               />
-            )
+            ) : null
           })}
 
           <div className="hidden flex-col gap-6 lg:flex">

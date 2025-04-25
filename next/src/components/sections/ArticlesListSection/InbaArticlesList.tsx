@@ -3,6 +3,7 @@ import { keepPreviousData, useQuery } from '@tanstack/react-query'
 import React from 'react'
 
 import ArticleCard from '@/src/components/cards/ArticleCard'
+import { transformInbaArticleProps } from '@/src/components/cards/transformInbaArticleProps'
 import InbaArticlesFilter from '@/src/components/common/InbaArticlesFilter/InbaArticlesFilter'
 import Pagination from '@/src/components/common/Pagination/Pagination'
 import { InbaArticlesListSectionFragment } from '@/src/services/graphql'
@@ -12,20 +13,14 @@ import {
   inbaArticlesDefaultFilters,
   inbaArticlesFetcher,
 } from '@/src/services/meili/fetchers/inbaArticlesFetcher'
-import { getNumericLocalDate } from '@/src/utils/formatDate'
-import { generateImageSizes } from '@/src/utils/generateImageSizes'
 import { useLocale } from '@/src/utils/useLocale'
 import { useRoutePreservedState } from '@/src/utils/useRoutePreservedState'
-import { useTranslation } from '@/src/utils/useTranslation'
-
-const imageSizes = generateImageSizes({ default: '100vw', md: '50vw', lg: '33vw' })
 
 type Props = {
   section: InbaArticlesListSectionFragment
 }
 
 const InbaArticlesList = ({ section }: Props) => {
-  const { t } = useTranslation()
   const locale = useLocale()
 
   const { title, text } = section
@@ -64,31 +59,12 @@ const InbaArticlesList = ({ section }: Props) => {
       ) : null}
       <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
         {data?.hits.map((card) => {
-          if (!card.attributes) return null
-
-          // TODO refactor sections that use ArticleCard - it needs too much duplicate code while passing props
-          const {
-            title: inbaArticleTitle,
-            slug,
-            coverImage,
-            publishedAt,
-            inbaTag,
-            perex,
-          } = card.attributes
-          const tagTitle = inbaTag?.data?.attributes?.title
-
-          return (
+          return card.attributes ? (
             <ArticleCard
-              key={slug}
-              date={getNumericLocalDate(publishedAt)}
-              tag={tagTitle}
-              title={inbaArticleTitle}
-              text={perex ?? undefined}
-              linkProps={{ children: t('readMore'), href: `/inba/clanky/${slug}` }}
-              imgSrc={coverImage?.data?.attributes?.url}
-              imgSizes={imageSizes}
+              key={card.attributes.slug}
+              {...transformInbaArticleProps(card.attributes)}
             />
-          )
+          ) : null
         })}
       </div>
 
