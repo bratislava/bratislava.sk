@@ -12,9 +12,9 @@ import { isDefined } from '@/src/utils/isDefined'
 import { useLocale } from '@/src/utils/useLocale'
 import { useTranslation } from '@/src/utils/useTranslation'
 
-type BlogPostsFilterProps = {
+type Props = {
   pageCategories: PageCategoryEntityFragment[]
-  blogPostsTags?: TagEntityFragment[]
+  tags?: TagEntityFragment[]
   subtext?: string
   onTagChange: (tags: string[]) => void
 }
@@ -36,18 +36,13 @@ const filterTagsByPageCategory = (tags: TagEntityFragment[], pageCategory: Selec
   )
 }
 
-const BlogPostsFilter = ({
-  pageCategories,
-  blogPostsTags,
-  subtext,
-  onTagChange,
-}: BlogPostsFilterProps) => {
+const ArticlesFilter = ({ pageCategories, tags, subtext, onTagChange }: Props) => {
   const { t } = useTranslation()
   const locale = useLocale()
 
   const defaultChip = {
     id: '0',
-    title: t('BlogPostsFilter.allArticles'),
+    title: t('ArticlesFilter.allArticles'),
     color: Enum_Pagecategory_Color.Red,
   }
 
@@ -59,13 +54,13 @@ const BlogPostsFilter = ({
   useEffect(() => {
     onTagChange(Array.from(selectedTags, (item) => item.toString()))
     if (Array.from(selectedTags).length === 0) {
-      onTagChange(filterTagsByPageCategory(blogPostsTags ?? [], selectedPageCategory))
+      onTagChange(filterTagsByPageCategory(tags ?? [], selectedPageCategory))
     }
   }, [selectedTags])
 
   useEffect(() => {
     setSelectedTags(new Set<string>())
-    onTagChange(filterTagsByPageCategory(blogPostsTags ?? [], selectedPageCategory))
+    onTagChange(filterTagsByPageCategory(tags ?? [], selectedPageCategory))
     if (Array.from(selectedPageCategory).length === 0) {
       setSelectedPageCategory(new Set(defaultChip.id))
     }
@@ -79,7 +74,7 @@ const BlogPostsFilter = ({
   return (
     <div className="flex flex-col gap-6 py-18 lg:m-auto lg:w-[800px] lg:gap-10 lg:py-18">
       <div className="flex flex-col gap-2 lg:items-center">
-        <Label className="text-h3 font-semibold">{t('BlogPostsFilter.articleFilter')}</Label>
+        <Label className="text-h3 font-semibold">{t('ArticlesFilter.articleFilter')}</Label>
         {subtext && <Text>{subtext}</Text>}
       </div>
       <div>
@@ -120,11 +115,11 @@ const BlogPostsFilter = ({
         </TagGroup>
         {Array.from(selectedPageCategory)[0] !== defaultChip.id &&
         Array.from(selectedPageCategory)?.length &&
-        blogPostsTags?.length ? (
+        tags?.length ? (
           <div className="flex flex-col pt-8 lg:items-center">
             {Array.from(selectedPageCategory).length > 0 ? (
               <Label className="text-h5 pb-3 font-semibold">
-                {t('BlogPostsFilter.subcategories')}
+                {t('ArticlesFilter.subcategories')}
               </Label>
             ) : null}
             <TagGroup
@@ -133,7 +128,7 @@ const BlogPostsFilter = ({
               onSelectionChange={setSelectedTags}
             >
               <TagList className="flex flex-wrap gap-2 lg:justify-center">
-                {blogPostsTags
+                {tags
                   .filter(isDefined)
                   .filter((tag) => {
                     return (
@@ -167,4 +162,4 @@ const BlogPostsFilter = ({
   )
 }
 
-export default BlogPostsFilter
+export default ArticlesFilter

@@ -2,10 +2,9 @@ import { Typography } from '@bratislava/component-library'
 import { keepPreviousData, useQuery } from '@tanstack/react-query'
 import React from 'react'
 
-import BlogPostCard from '@/src/components/cards/BlogPostCard'
+import ArticleCard from '@/src/components/cards/ArticleCard'
 import InbaArticlesFilter from '@/src/components/common/InbaArticlesFilter/InbaArticlesFilter'
 import Pagination from '@/src/components/common/Pagination/Pagination'
-import InbaFeaturedArticlesSection from '@/src/components/sections/InbaFeaturedArticlesSection'
 import { InbaArticlesListSectionFragment } from '@/src/services/graphql'
 import { client } from '@/src/services/graphql/gql'
 import {
@@ -29,7 +28,7 @@ const InbaArticlesList = ({ section }: Props) => {
   const { t } = useTranslation()
   const locale = useLocale()
 
-  const { title, text, featuredArticles } = section
+  const { title, text } = section
 
   const [filters, setFilters] = useRoutePreservedState({ ...inbaArticlesDefaultFilters })
 
@@ -56,9 +55,6 @@ const InbaArticlesList = ({ section }: Props) => {
 
   return (
     <div className="flex flex-col gap-8">
-      {featuredArticles?.data.length ? (
-        <InbaFeaturedArticlesSection articles={featuredArticles.data} />
-      ) : null}
       <InbaArticlesFilter tags={tagData?.inbaTags?.data || []} onChange={handleTagFilterChange} />
       {title || text ? (
         <div className="flex flex-col gap-2">
@@ -70,7 +66,7 @@ const InbaArticlesList = ({ section }: Props) => {
         {data?.hits.map((card) => {
           if (!card.attributes) return null
 
-          // TODO refactor sections that use BlogPostCard - it needs too much duplicate code while passing props
+          // TODO refactor sections that use ArticleCard - it needs too much duplicate code while passing props
           const {
             title: inbaArticleTitle,
             slug,
@@ -82,7 +78,7 @@ const InbaArticlesList = ({ section }: Props) => {
           const tagTitle = inbaTag?.data?.attributes?.title
 
           return (
-            <BlogPostCard
+            <ArticleCard
               key={slug}
               date={getNumericLocalDate(publishedAt)}
               tag={tagTitle}

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import BlogPostHomepageHorizontalCard from '@/src/components/cards/HomepageHorizontalCard'
+import HomepageHorizontalCard from '@/src/components/cards/HomepageHorizontalCard'
 import Wrapper from '@/src/components/styleguide/Wrapper'
 import { CommonLinkProps } from '@/src/utils/getCommonLinkProps'
 
@@ -26,7 +26,7 @@ const HomepageHorizontalCardShowcase = () => {
       <div className="grid w-full grid-cols-1 gap-4 md:grid-cols-2">
         {cards.map((blog, index) => (
           // eslint-disable-next-line react/no-array-index-key
-          <BlogPostHomepageHorizontalCard key={index} {...blog} />
+          <HomepageHorizontalCard key={index} {...blog} />
         ))}
       </div>
     </Wrapper>

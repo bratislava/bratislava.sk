@@ -2,9 +2,8 @@ import { Typography } from '@bratislava/component-library'
 import * as React from 'react'
 import { Fragment, useMemo } from 'react'
 
-import FileRowCard from '@/src/components/cards/FileRowCard'
 import { Breadcrumb } from '@/src/components/common/Breadcrumbs/Breadcrumbs'
-import HorizontalDivider from '@/src/components/common/Divider/HorizontalDivider'
+import FileList from '@/src/components/common/FileList/FileList'
 import ImagePlaceholder from '@/src/components/common/Image/ImagePlaceholder'
 import StrapiImage from '@/src/components/common/Image/StrapiImage'
 import NarrowText from '@/src/components/common/NarrowText/NarrowText'
@@ -12,12 +11,10 @@ import PageHeader from '@/src/components/common/PageHeader/PageHeader'
 import SectionContainer from '@/src/components/common/SectionContainer/SectionContainer'
 import Markdown from '@/src/components/formatting/Markdown/Markdown'
 import { useGeneralContext } from '@/src/components/providers/GeneralContextProvider'
-import ShareButtonsSection from '@/src/components/sections/ShareButtonsSection'
+import ShareButtons from '@/src/components/sections/ShareButtons'
 import { InbaReleaseEntityFragment } from '@/src/services/graphql'
 import cn from '@/src/utils/cn'
 import { formatDate } from '@/src/utils/formatDate'
-import { formatFileExtension } from '@/src/utils/formatFileExtension'
-import { formatFileSize } from '@/src/utils/formatFileSize'
 import { isDefined } from '@/src/utils/isDefined'
 import { getPageBreadcrumbs } from '@/src/utils/pageUtils_Deprecated'
 import { useLocale } from '@/src/utils/useLocale'
@@ -27,7 +24,7 @@ export type InbaReleasePageContentProps = {
   inbaRelease: InbaReleaseEntityFragment
 }
 
-// TODO may need refactor, it was just copied from BlogPostPageContent that didn't undergo any refactoring
+// TODO may need refactor, it was just copied from legacy BlogPostPageContent that didn't undergo any refactoring
 
 const InbaReleasePageContent = ({ inbaRelease }: InbaReleasePageContentProps) => {
   const { t } = useTranslation()
@@ -80,31 +77,15 @@ const InbaReleasePageContent = ({ inbaRelease }: InbaReleasePageContentProps) =>
                 {t('InbaRelease.toDownload')}
               </Typography>
 
-              <ul className="flex flex-col rounded-lg border-2 py-2">
-                {files?.filter(isDefined).map((file, index) => (
-                  <Fragment key={file.media.data?.id}>
-                    {index > 0 ? <HorizontalDivider asListItem className="mx-4 lg:mx-6" /> : null}
-                    <li>
-                      <FileRowCard
-                        title={file.title ?? file.media.data?.attributes?.name ?? ''}
-                        downloadLink={file.media.data?.attributes?.url}
-                        format={formatFileExtension(file.media.data?.attributes?.ext) ?? undefined}
-                        size={
-                          file.media.data?.attributes?.size
-                            ? formatFileSize(file.media.data?.attributes?.size, locale)
-                            : undefined
-                        }
-                      />
-                    </li>
-                  </Fragment>
-                ))}
-              </ul>
+              <FileList files={files?.filter(isDefined) ?? []} />
             </div>
           </div>
         </div>
       </SectionContainer>
 
-      <ShareButtonsSection twitterTitle={title} />
+      <SectionContainer className="pt-10 md:pt-18">
+        <ShareButtons twitterTitle={title} />
+      </SectionContainer>
     </>
   )
 }

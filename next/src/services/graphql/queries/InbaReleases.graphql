@@ -64,6 +64,7 @@ fragment InbaReleaseEntity on InbaReleaseEntity {
       }
     }
     files {
+      id
       title
       media {
         data {

@@ -13,7 +13,6 @@ import {
   ArticlesFilters,
   getArticlesQueryKey,
 } from '@/src/services/meili/fetchers/articlesFetcher'
-import { BlogPostsFilters } from '@/src/services/meili/fetchers/blogPostsFetcher'
 import {
   getInbaArticlesQueryKey,
   inbaArticlesFetcher,
@@ -43,7 +42,7 @@ import { useTranslation } from '@/src/utils/useTranslation'
 
 export type SearchFilters =
   | PagesFilters
-  | BlogPostsFilters
+  | ArticlesFilters
   | InbaArticlesFilters
   | RegulationFilters
   | OfficialBoardListFilters
