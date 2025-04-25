@@ -4,7 +4,10 @@ import Rss from 'rss'
 import { client } from '@/src/services/graphql/gql'
 import { isDefined } from '@/src/utils/isDefined'
 
-const urlPrefix = { sk: 'https://www.bratislava.sk/blog', en: 'https://www.bratislava.sk/en/blog' }
+const urlPrefix = {
+  sk: 'https://www.bratislava.sk/spravy',
+  en: 'https://www.bratislava.sk/en/spravy',
+}
 const feedUrl = {
   sk: 'https://www.bratislava.sk/feed',
   en: 'https://www.bratislava.sk/feed?lang=en',
@@ -24,36 +27,36 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       throw new Error('Invalid language')
     }
 
-    const { blogPosts } = await client.BlogPostsRssFeed({ locale: language })
+    const { articles } = await client.ArticlesRssFeed({ locale: language })
 
     const feed = new Rss({
       title: 'Bratislava.sk',
-      description: 'The latest blog posts from Bratislava.sk',
+      description: 'The latest articles from Bratislava.sk',
       site_url: 'https://www.bratislava.sk',
       feed_url: feedUrl[language],
       language,
     })
 
-    blogPosts?.data?.filter(isDefined).forEach((post) => {
-      if (!post.attributes) {
+    articles?.data?.filter(isDefined).forEach((article) => {
+      if (!article.attributes) {
         return
       }
 
       feed.item({
-        title: post.attributes.title ?? '',
-        description: post.attributes.excerpt ?? '',
+        title: article.attributes.title ?? '',
+        description: article.attributes.perex ?? '',
         // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-        url: post.attributes.slug ? `${urlPrefix[language]}/${post.attributes.slug}` : '',
-        date: post.attributes.addedAt,
+        url: article.attributes.slug ? `${urlPrefix[language]}/${article.attributes.slug}` : '',
+        date: article.attributes.addedAt,
         categories: [
-          post.attributes.tag?.data?.attributes?.pageCategory?.data?.attributes?.title,
-          post.attributes.tag?.data?.attributes?.title,
+          article.attributes.tag?.data?.attributes?.pageCategory?.data?.attributes?.title,
+          article.attributes.tag?.data?.attributes?.title,
         ].filter(isDefined),
-        enclosure: post.attributes.coverImage?.data?.attributes
+        enclosure: article.attributes.coverMedia?.data?.attributes
           ? {
-              url: post.attributes.coverImage.data.attributes.url,
-              type: post.attributes.coverImage.data.attributes.mime,
-              size: Math.round(post.attributes.coverImage.data.attributes.size * 100),
+              url: article.attributes.coverMedia.data.attributes.url,
+              type: article.attributes.coverMedia.data.attributes.mime,
+              size: Math.round(article.attributes.coverMedia.data.attributes.size * 100),
             }
           : undefined,
       })

@@ -46,11 +46,6 @@ fragment TimelineSection on ComponentSectionsTimeline {
   }
 }
 
-fragment BlogPostsListSection on ComponentSectionsBlogPostsList {
-  title
-  text
-}
-
 fragment ArticlesSection on ComponentSectionsArticles {
   title
   text
@@ -62,27 +57,9 @@ fragment ArticlesSection on ComponentSectionsArticles {
   }
 }
 
-fragment BlogPostsByCategorySection on ComponentSectionsBlogPostsByCategory {
-  title
-  text
-  category {
-    data {
-      id
-      attributes {
-        title
-      }
-    }
-  }
-}
-
 fragment InbaArticlesListSection on ComponentSectionsInbaArticlesList {
   title
   text
-  featuredArticles: featuredArts {
-    data {
-      ...InbaArticleEntity
-    }
-  }
 }
 
 fragment InbaReleasesSection on ComponentSectionsInbaReleases {
@@ -475,14 +452,6 @@ fragment Sections on PageSectionsDynamicZone {
 
   ... on ComponentSectionsArticles {
     ...ArticlesSection
-  }
-
-  ... on ComponentSectionsBlogPostsList {
-    ...BlogPostsListSection
-  }
-
-  ... on ComponentSectionsBlogPostsByCategory {
-    ...BlogPostsByCategorySection
   }
 
   ... on ComponentSectionsInbaArticlesList {

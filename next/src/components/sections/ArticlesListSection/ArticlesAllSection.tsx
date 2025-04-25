@@ -2,8 +2,8 @@ import { Typography } from '@bratislava/component-library'
 import { keepPreviousData, useQuery } from '@tanstack/react-query'
 import React from 'react'
 
-import BlogPostCard from '@/src/components/cards/BlogPostCard'
-import BlogPostsFilter from '@/src/components/common/BlogPostsFilter/BlogPostsFilter'
+import ArticleCard from '@/src/components/cards/ArticleCard'
+import ArticlesFilter from '@/src/components/common/ArticlesFilter/ArticlesFilter'
 import Pagination from '@/src/components/common/Pagination/Pagination'
 import { ArticlesSectionFragment } from '@/src/services/graphql'
 import { client } from '@/src/services/graphql/gql'
@@ -63,9 +63,9 @@ const ArticlesAllSection = ({ section }: Props) => {
 
   return (
     <div className="flex flex-col gap-8">
-      <BlogPostsFilter
+      <ArticlesFilter
         pageCategories={pageCategoriesData?.pageCategories?.data ?? []}
-        blogPostsTags={tagsData?.tags?.data ?? []}
+        tags={tagsData?.tags?.data ?? []}
         onTagChange={handleTagsChange}
       />
       {title || text ? (
@@ -78,18 +78,18 @@ const ArticlesAllSection = ({ section }: Props) => {
         {data?.hits.map((card) => {
           if (!card.attributes) return null
 
-          // TODO refactor sections that use BlogPostCard - it needs too much duplicate code while passing props
-          const { title: blogPostTitle, slug, coverMedia, addedAt, perex, tag } = card.attributes
+          // TODO refactor sections that use ArticleCard - it needs too much duplicate code while passing props
+          const { title: articleTitle, slug, coverMedia, addedAt, perex, tag } = card.attributes
           const tagColor = tag?.data?.attributes?.pageCategory?.data?.attributes?.color
           const tagTitle = tag?.data?.attributes?.title
 
           return (
-            <BlogPostCard
+            <ArticleCard
               key={slug}
               style={getCategoryColorLocalStyle({ color: tagColor })}
               date={formatDate(addedAt)}
               tag={tagTitle ?? undefined}
-              title={blogPostTitle ?? ''}
+              title={articleTitle ?? ''}
               text={perex ?? undefined}
               linkProps={{ children: t('readMore'), href: `/spravy/${slug}` }}
               imgSrc={coverMedia?.data?.attributes?.url}

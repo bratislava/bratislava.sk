@@ -1,9 +1,9 @@
 {
   "AliasInfoMessage.message.article": "Tento článok nájdete aj na",
   "AliasInfoMessage.message.page": "Túto stránku nájdete aj na",
-  "BlogPostsFilter.allArticles": "Všetky správy",
-  "BlogPostsFilter.articleFilter": "Filter správ",
-  "BlogPostsFilter.subcategories": "Podkategórie",
+  "ArticlesFilter.allArticles": "Všetky správy",
+  "ArticlesFilter.articleFilter": "Filter správ",
+  "ArticlesFilter.subcategories": "Podkategórie",
   "Bookmark.aria.close": "Zavrieť",
   "Brand.capitalCity": "Hlavné mesto SR <semibold>Bratislava</semibold>",
   "Breadcrumbs.back": "Späť",

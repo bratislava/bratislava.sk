@@ -925,7 +925,7 @@ export interface ApiInbaReleaseInbaRelease extends Schema.CollectionType {
     createdAt: Attribute.DateTime
     createdBy: Attribute.Relation<'api::inba-release.inba-release', 'oneToOne', 'admin::user'> &
       Attribute.Private
-    files: Attribute.Component<'blocks.file-item', true> &
+    files: Attribute.Component<'blocks.file', true> &
       Attribute.SetMinMax<
         {
           min: 1
@@ -1170,8 +1170,6 @@ export interface ApiPagePage extends Schema.CollectionType {
         'sections.accordion',
         'sections.articles',
         'sections.banner',
-        'sections.blog-posts-list',
-        'sections.blog-posts-by-category',
         'sections.calculator',
         'sections.columned-text',
         'sections.comparison-section',

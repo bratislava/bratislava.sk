@@ -64,21 +64,6 @@
           "sortable": true
         }
       },
-      "blogPost": {
-        "edit": {
-          "label": "blogPost",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true,
-          "mainField": "slug"
-        },
-        "list": {
-          "label": "blogPost",
-          "searchable": true,
-          "sortable": true
-        }
-      },
       "url": {
         "edit": {
           "label": "url",
@@ -129,10 +114,6 @@
         [
           {
             "name": "url",
-            "size": 6
-          },
-          {
-            "name": "blogPost",
             "size": 6
           }
         ],

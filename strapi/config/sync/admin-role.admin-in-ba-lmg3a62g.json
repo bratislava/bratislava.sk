@@ -55,7 +55,11 @@
           "inba.content",
           "inbaFrontImage",
           "inbaRearImage",
-          "inbaUrl"
+          "inbaUrl",
+          "metaTitle",
+          "metaDescription",
+          "welcomeHeadline",
+          "welcomeMedia"
         ],
         "locales": [
           "en",

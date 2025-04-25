@@ -43,7 +43,7 @@
     "files": {
       "type": "component",
       "repeatable": true,
-      "component": "blocks.file-item",
+      "component": "blocks.file",
       "min": 1
     },
     "inbaArticles": {

@@ -1,7 +1,7 @@
 import { Typography } from '@bratislava/component-library'
 import React, { Fragment } from 'react'
 
-import BlogPostCard from '@/src/components/cards/BlogPostCard'
+import ArticleCard from '@/src/components/cards/ArticleCard'
 import HomepageHorizontalCard from '@/src/components/cards/HomepageHorizontalCard'
 import ResponsiveCarousel from '@/src/components/common/Carousel/ResponsiveCarousel'
 import { useHomepageContext } from '@/src/components/providers/HomepageContextProvider'
@@ -37,7 +37,7 @@ const HighlightsHomepageSection = () => {
 
           return (
             <Fragment key={highlight.id}>
-              <BlogPostCard
+              <ArticleCard
                 className="lg:hidden"
                 variant="no-border"
                 title={postTitle ?? ''}

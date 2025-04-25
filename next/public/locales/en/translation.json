@@ -1,9 +1,9 @@
 {
   "AliasInfoMessage.message.article": "You can also find this article at",
   "AliasInfoMessage.message.page": "You can also find this page at",
-  "BlogPostsFilter.allArticles": "All news",
-  "BlogPostsFilter.articleFilter": "News filter",
-  "BlogPostsFilter.subcategories": "Subcategories",
+  "ArticlesFilter.allArticles": "All news",
+  "ArticlesFilter.articleFilter": "News filter",
+  "ArticlesFilter.subcategories": "Subcategories",
   "Bookmark.aria.close": "Close",
   "Brand.capitalCity": "<semibold>Bratislava</semibold> the Capital City of Slovakia",
   "Breadcrumbs.back": "Back",

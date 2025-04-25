@@ -77,6 +77,43 @@ query Articles(
   }
 }
 
+query ArticlesRssFeed($locale: I18NLocaleCode!) {
+  articles(locale: $locale, sort: "addedAt:desc") {
+    data {
+      id
+      attributes {
+        slug
+        title
+        addedAt
+        perex
+        tag {
+          data {
+            attributes {
+              title
+              pageCategory {
+                data {
+                  attributes {
+                    title
+                  }
+                }
+              }
+            }
+          }
+        }
+        coverMedia {
+          data {
+            attributes {
+              url
+              mime
+              size
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
 query Dev_AllArticles(
   $sort: [String]
   $limit: Int

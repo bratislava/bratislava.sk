@@ -11,11 +11,6 @@
     },
     "text": {
       "type": "text"
-    },
-    "featuredArts": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::inba-article.inba-article"
     }
   }
 }

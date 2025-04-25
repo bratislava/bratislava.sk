@@ -7,10 +7,9 @@ import { Breadcrumb } from '@/src/components/common/Breadcrumbs/Breadcrumbs'
 import FileList from '@/src/components/common/FileList/FileList'
 import Gallery from '@/src/components/common/Gallery/Gallery'
 import PageHeader from '@/src/components/common/PageHeader/PageHeader'
-import SectionContainer from '@/src/components/common/SectionContainer/SectionContainer'
 import Markdown from '@/src/components/formatting/Markdown/Markdown'
 import { useGeneralContext } from '@/src/components/providers/GeneralContextProvider'
-import ShareButtonsSection from '@/src/components/sections/ShareButtonsSection'
+import ShareButtons from '@/src/components/sections/ShareButtons'
 import { ArticleEntityFragment } from '@/src/services/graphql'
 import { formatDate } from '@/src/utils/formatDate'
 import { isDefined } from '@/src/utils/isDefined'
@@ -51,26 +50,32 @@ const ArticlePageContent = ({ article }: Props) => {
         imageSrc={coverMedia?.data?.attributes?.url}
       />
 
-      <SectionContainer className="pt-10 md:pt-18">
-        <div className="flex flex-col gap-6 lg:gap-8">
-          {perex ? (
-            <Typography type="p" size="p-large">
-              {perex}
-            </Typography>
-          ) : null}
-          <Markdown content={content} />
-          {filteredFiles.length > 0 ? <FileList files={filteredFiles} /> : null}
+      <div
+        // TODO some of these classes are duplicated in SectionContainer - ponder what to do with it
+        className="mx-auto flex max-w-screen-xl gap-8 px-4 py-6 lg:px-8 lg:py-12"
+      >
+        <div className="flex w-200 flex-col gap-18">
+          <div className="flex flex-col gap-6 lg:gap-8">
+            {perex ? (
+              <Typography type="p" size="p-large" className="font-semibold">
+                {perex}
+              </Typography>
+            ) : null}
+            <Markdown content={content} />
+          </div>
+
           {filteredGalleryImages.length > 0 ? <Gallery images={filteredGalleryImages} /> : null}
+
+          {filteredFiles.length > 0 ? <FileList files={filteredFiles} /> : null}
+
+          <ShareButtons twitterTitle={title} />
+
+          {alias ? <AliasInfoMessage alias={alias} variant="article" /> : null}
         </div>
-      </SectionContainer>
 
-      <ShareButtonsSection twitterTitle={title} />
-
-      {alias ? (
-        <SectionContainer>
-          <AliasInfoMessage alias={alias} variant="article" />{' '}
-        </SectionContainer>
-      ) : null}
+        {/* Empty sidebar */}
+        <div aria-hidden className="grow basis-60 max-lg:hidden" />
+      </div>
     </>
   )
 }

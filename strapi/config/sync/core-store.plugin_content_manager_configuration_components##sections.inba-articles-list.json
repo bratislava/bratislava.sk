@@ -22,7 +22,7 @@
       },
       "title": {
         "edit": {
-          "label": "title",
+          "label": "Nadpis",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -36,7 +36,7 @@
       },
       "text": {
         "edit": {
-          "label": "text",
+          "label": "Text",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -47,45 +47,25 @@
           "searchable": true,
           "sortable": true
         }
-      },
-      "featuredArts": {
-        "edit": {
-          "label": "featuredArts",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true,
-          "mainField": "title"
-        },
-        "list": {
-          "label": "featuredArts",
-          "searchable": false,
-          "sortable": false
-        }
       }
     },
     "layouts": {
       "list": [
         "id",
         "title",
-        "text",
-        "featuredArts"
+        "text"
       ],
       "edit": [
         [
           {
             "name": "title",
-            "size": 6
-          },
-          {
-            "name": "text",
-            "size": 6
+            "size": 12
           }
         ],
         [
           {
-            "name": "featuredArts",
-            "size": 6
+            "name": "text",
+            "size": 12
           }
         ]
       ]

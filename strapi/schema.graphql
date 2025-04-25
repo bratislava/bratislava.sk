@@ -311,29 +311,6 @@ input ComponentAccordionItemsInstitutionNarrowInput {
   urlLabel: String
 }
 
-type ComponentBlocksBlogPostLink {
-  blogPost: BlogPostEntityResponse
-  id: ID!
-  title: String
-  url: String
-}
-
-input ComponentBlocksBlogPostLinkFiltersInput {
-  and: [ComponentBlocksBlogPostLinkFiltersInput]
-  blogPost: BlogPostFiltersInput
-  not: ComponentBlocksBlogPostLinkFiltersInput
-  or: [ComponentBlocksBlogPostLinkFiltersInput]
-  title: StringFilterInput
-  url: StringFilterInput
-}
-
-input ComponentBlocksBlogPostLinkInput {
-  blogPost: ID
-  id: ID
-  title: String
-  url: String
-}
-
 type ComponentBlocksBookmarkLink {
   href: String
   id: ID!
@@ -357,7 +334,6 @@ input ComponentBlocksBookmarkLinkInput {
 type ComponentBlocksCommonLink {
   analyticsId: String
   article: ArticleEntityResponse
-  blogPost: BlogPostEntityResponse
   id: ID!
   label: String!
   page: PageEntityResponse
@@ -368,7 +344,6 @@ input ComponentBlocksCommonLinkFiltersInput {
   analyticsId: StringFilterInput
   and: [ComponentBlocksCommonLinkFiltersInput]
   article: ArticleFiltersInput
-  blogPost: BlogPostFiltersInput
   label: StringFilterInput
   not: ComponentBlocksCommonLinkFiltersInput
   or: [ComponentBlocksCommonLinkFiltersInput]
@@ -379,7 +354,6 @@ input ComponentBlocksCommonLinkFiltersInput {
 input ComponentBlocksCommonLinkInput {
   analyticsId: String
   article: ID
-  blogPost: ID
   id: ID
   label: String
   page: ID
@@ -959,49 +933,6 @@ input ComponentSectionsBannerInput {
   variant: ENUM_COMPONENTSECTIONSBANNER_VARIANT
 }
 
-type ComponentSectionsBlogPostsByCategory {
-  category: PageCategoryEntityResponse
-  id: ID!
-  text: String
-  title: String
-}
-
-input ComponentSectionsBlogPostsByCategoryFiltersInput {
-  and: [ComponentSectionsBlogPostsByCategoryFiltersInput]
-  category: PageCategoryFiltersInput
-  not: ComponentSectionsBlogPostsByCategoryFiltersInput
-  or: [ComponentSectionsBlogPostsByCategoryFiltersInput]
-  text: StringFilterInput
-  title: StringFilterInput
-}
-
-input ComponentSectionsBlogPostsByCategoryInput {
-  category: ID
-  id: ID
-  text: String
-  title: String
-}
-
-type ComponentSectionsBlogPostsList {
-  id: ID!
-  text: String
-  title: String
-}
-
-input ComponentSectionsBlogPostsListFiltersInput {
-  and: [ComponentSectionsBlogPostsListFiltersInput]
-  not: ComponentSectionsBlogPostsListFiltersInput
-  or: [ComponentSectionsBlogPostsListFiltersInput]
-  text: StringFilterInput
-  title: StringFilterInput
-}
-
-input ComponentSectionsBlogPostsListInput {
-  id: ID
-  text: String
-  title: String
-}
-
 type ComponentSectionsCalculator {
   another_adult_value: Float
   child_value: Float
@@ -1377,7 +1308,6 @@ input ComponentSectionsIframeInput {
 }
 
 type ComponentSectionsInbaArticlesList {
-  featuredArts(filters: InbaArticleFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): InbaArticleRelationResponseCollection
   id: ID!
   text: String
   title: String
@@ -1385,7 +1315,6 @@ type ComponentSectionsInbaArticlesList {
 
 input ComponentSectionsInbaArticlesListFiltersInput {
   and: [ComponentSectionsInbaArticlesListFiltersInput]
-  featuredArts: InbaArticleFiltersInput
   not: ComponentSectionsInbaArticlesListFiltersInput
   or: [ComponentSectionsInbaArticlesListFiltersInput]
   text: StringFilterInput
@@ -1393,7 +1322,6 @@ input ComponentSectionsInbaArticlesListFiltersInput {
 }
 
 input ComponentSectionsInbaArticlesListInput {
-  featuredArts: [ID]
   id: ID
   text: String
   title: String
@@ -2277,7 +2205,7 @@ type GeneralRelationResponseCollection {
   data: [GeneralEntity!]!
 }
 
-union GenericMorph = Alert | Article | BlogPost | ComponentAccordionItemsFlatText | ComponentAccordionItemsInstitution | ComponentAccordionItemsInstitutionNarrow | ComponentBlocksBlogPostLink | ComponentBlocksBookmarkLink | ComponentBlocksCommonLink | ComponentBlocksComparisonCard | ComponentBlocksComparisonItem | ComponentBlocksContactCard | ComponentBlocksFile | ComponentBlocksFileItem | ComponentBlocksFooterColumn | ComponentBlocksHomepageBookmark | ComponentBlocksHomepageHighlightsItem | ComponentBlocksIconWithTitleAndDescription | ComponentBlocksInBa | ComponentBlocksNumericalListItem | ComponentBlocksPageLink | ComponentBlocksProsAndConsCard | ComponentBlocksTestimonialItem | ComponentBlocksTimelineItem | ComponentBlocksTopServicesItem | ComponentBlocksVideo | ComponentGeneralHeader | ComponentGeneralHeaderLink | ComponentMenuMenuItem | ComponentMenuMenuLink | ComponentMenuMenuSection | ComponentSectionsAccordion | ComponentSectionsArticles | ComponentSectionsBanner | ComponentSectionsBlogPostsByCategory | ComponentSectionsBlogPostsList | ComponentSectionsCalculator | ComponentSectionsColumnedText | ComponentSectionsComparisonSection | ComponentSectionsContactsSection | ComponentSectionsDivider | ComponentSectionsFaqCategories | ComponentSectionsFaqs | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsHomepageEvents | ComponentSectionsHomepageHighlights | ComponentSectionsHomepageMayorAndCouncil | ComponentSectionsHomepageTabs | ComponentSectionsIconTitleDesc | ComponentSectionsIframe | ComponentSectionsInbaArticlesList | ComponentSectionsInbaReleases | ComponentSectionsLinks | ComponentSectionsNarrowText | ComponentSectionsNumericalList | ComponentSectionsOfficialBoard | ComponentSectionsOrganizationalStructure | ComponentSectionsProsAndConsSection | ComponentSectionsRegulations | ComponentSectionsRegulationsList | ComponentSectionsSubpageList | ComponentSectionsTestimonials | ComponentSectionsTextWithImage | ComponentSectionsTimeline | ComponentSectionsTopServices | ComponentSectionsVideos | ComponentSectionsWaves | ComponentTaxAdministratorsTaxAdministrator | Faq | FaqCategory | Footer | General | Homepage | I18NLocale | InbaArticle | InbaRelease | InbaTag | Menu | Page | PageCategory | Regulation | Tag | TaxAdministratorsList | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
+union GenericMorph = Alert | Article | BlogPost | ComponentAccordionItemsFlatText | ComponentAccordionItemsInstitution | ComponentAccordionItemsInstitutionNarrow | ComponentBlocksBookmarkLink | ComponentBlocksCommonLink | ComponentBlocksComparisonCard | ComponentBlocksComparisonItem | ComponentBlocksContactCard | ComponentBlocksFile | ComponentBlocksFileItem | ComponentBlocksFooterColumn | ComponentBlocksHomepageBookmark | ComponentBlocksHomepageHighlightsItem | ComponentBlocksIconWithTitleAndDescription | ComponentBlocksInBa | ComponentBlocksNumericalListItem | ComponentBlocksPageLink | ComponentBlocksProsAndConsCard | ComponentBlocksTestimonialItem | ComponentBlocksTimelineItem | ComponentBlocksTopServicesItem | ComponentBlocksVideo | ComponentGeneralHeader | ComponentGeneralHeaderLink | ComponentMenuMenuItem | ComponentMenuMenuLink | ComponentMenuMenuSection | ComponentSectionsAccordion | ComponentSectionsArticles | ComponentSectionsBanner | ComponentSectionsCalculator | ComponentSectionsColumnedText | ComponentSectionsComparisonSection | ComponentSectionsContactsSection | ComponentSectionsDivider | ComponentSectionsFaqCategories | ComponentSectionsFaqs | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsHomepageEvents | ComponentSectionsHomepageHighlights | ComponentSectionsHomepageMayorAndCouncil | ComponentSectionsHomepageTabs | ComponentSectionsIconTitleDesc | ComponentSectionsIframe | ComponentSectionsInbaArticlesList | ComponentSectionsInbaReleases | ComponentSectionsLinks | ComponentSectionsNarrowText | ComponentSectionsNumericalList | ComponentSectionsOfficialBoard | ComponentSectionsOrganizationalStructure | ComponentSectionsProsAndConsSection | ComponentSectionsRegulations | ComponentSectionsRegulationsList | ComponentSectionsSubpageList | ComponentSectionsTestimonials | ComponentSectionsTextWithImage | ComponentSectionsTimeline | ComponentSectionsTopServices | ComponentSectionsVideos | ComponentSectionsWaves | ComponentTaxAdministratorsTaxAdministrator | Faq | FaqCategory | Footer | General | Homepage | I18NLocale | InbaArticle | InbaRelease | InbaTag | Menu | Page | PageCategory | Regulation | Tag | TaxAdministratorsList | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
 
 type Homepage {
   bookmarkTourists: ComponentBlocksHomepageBookmark
@@ -2499,7 +2427,7 @@ type InbaArticleRelationResponseCollection {
 type InbaRelease {
   coverImage: UploadFileEntityResponse
   createdAt: DateTime
-  files(filters: ComponentBlocksFileItemFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksFileItem]
+  files(filters: ComponentBlocksFileFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksFile]
   inbaArticles(filters: InbaArticleFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): InbaArticleRelationResponseCollection
   perex: String
   publishedAt: DateTime
@@ -2527,7 +2455,7 @@ type InbaReleaseEntityResponseCollection {
 input InbaReleaseFiltersInput {
   and: [InbaReleaseFiltersInput]
   createdAt: DateTimeFilterInput
-  files: ComponentBlocksFileItemFiltersInput
+  files: ComponentBlocksFileFiltersInput
   id: IDFilterInput
   inbaArticles: InbaArticleFiltersInput
   not: InbaReleaseFiltersInput
@@ -2542,7 +2470,7 @@ input InbaReleaseFiltersInput {
 
 input InbaReleaseInput {
   coverImage: ID
-  files: [ComponentBlocksFileItemInput]
+  files: [ComponentBlocksFileInput]
   inbaArticles: [ID]
   perex: String
   publishedAt: DateTime
@@ -2976,7 +2904,7 @@ type PageRelationResponseCollection {
   data: [PageEntity!]!
 }
 
-union PageSectionsDynamicZone = ComponentSectionsAccordion | ComponentSectionsArticles | ComponentSectionsBanner | ComponentSectionsBlogPostsByCategory | ComponentSectionsBlogPostsList | ComponentSectionsCalculator | ComponentSectionsColumnedText | ComponentSectionsComparisonSection | ComponentSectionsContactsSection | ComponentSectionsDivider | ComponentSectionsFaqCategories | ComponentSectionsFaqs | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsIconTitleDesc | ComponentSectionsIframe | ComponentSectionsInbaArticlesList | ComponentSectionsInbaReleases | ComponentSectionsLinks | ComponentSectionsNarrowText | ComponentSectionsNumericalList | ComponentSectionsOfficialBoard | ComponentSectionsOrganizationalStructure | ComponentSectionsProsAndConsSection | ComponentSectionsRegulations | ComponentSectionsRegulationsList | ComponentSectionsTestimonials | ComponentSectionsTextWithImage | ComponentSectionsTimeline | ComponentSectionsVideos | ComponentSectionsWaves | Error
+union PageSectionsDynamicZone = ComponentSectionsAccordion | ComponentSectionsArticles | ComponentSectionsBanner | ComponentSectionsCalculator | ComponentSectionsColumnedText | ComponentSectionsComparisonSection | ComponentSectionsContactsSection | ComponentSectionsDivider | ComponentSectionsFaqCategories | ComponentSectionsFaqs | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsIconTitleDesc | ComponentSectionsIframe | ComponentSectionsInbaArticlesList | ComponentSectionsInbaReleases | ComponentSectionsLinks | ComponentSectionsNarrowText | ComponentSectionsNumericalList | ComponentSectionsOfficialBoard | ComponentSectionsOrganizationalStructure | ComponentSectionsProsAndConsSection | ComponentSectionsRegulations | ComponentSectionsRegulationsList | ComponentSectionsTestimonials | ComponentSectionsTextWithImage | ComponentSectionsTimeline | ComponentSectionsVideos | ComponentSectionsWaves | Error
 
 scalar PageSectionsDynamicZoneInput
 

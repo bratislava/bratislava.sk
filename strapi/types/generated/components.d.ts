@@ -51,19 +51,6 @@ export interface AccordionItemsInstitutionNarrow extends Schema.Component {
   }
 }
 
-export interface BlocksBlogPostLink extends Schema.Component {
-  collectionName: 'components_blocks_blog_post_links'
-  info: {
-    displayName: 'blog Post Link'
-    icon: 'anchor'
-  }
-  attributes: {
-    blogPost: Attribute.Relation<'blocks.blog-post-link', 'oneToOne', 'api::blog-post.blog-post'>
-    title: Attribute.String
-    url: Attribute.String
-  }
-}
-
 export interface BlocksBookmarkLink extends Schema.Component {
   collectionName: 'components_blocks_bookmark_links'
   info: {
@@ -85,7 +72,6 @@ export interface BlocksCommonLink extends Schema.Component {
   attributes: {
     analyticsId: Attribute.String
     article: Attribute.Relation<'blocks.common-link', 'oneToOne', 'api::article.article'>
-    blogPost: Attribute.Relation<'blocks.common-link', 'oneToOne', 'api::blog-post.blog-post'>
     label: Attribute.String & Attribute.Required
     page: Attribute.Relation<'blocks.common-link', 'oneToOne', 'api::page.page'>
     url: Attribute.String
@@ -493,35 +479,6 @@ export interface SectionsBanner extends Schema.Component {
   }
 }
 
-export interface SectionsBlogPostsByCategory extends Schema.Component {
-  collectionName: 'components_sections_blog_posts_by_categories'
-  info: {
-    description: ''
-    displayName: 'Blog posts by category'
-  }
-  attributes: {
-    category: Attribute.Relation<
-      'sections.blog-posts-by-category',
-      'oneToOne',
-      'api::page-category.page-category'
-    >
-    text: Attribute.Text
-    title: Attribute.String
-  }
-}
-
-export interface SectionsBlogPostsList extends Schema.Component {
-  collectionName: 'components_sections_blog_posts_lists'
-  info: {
-    description: ''
-    displayName: 'Blog posts list'
-  }
-  attributes: {
-    text: Attribute.Text
-    title: Attribute.String
-  }
-}
-
 export interface SectionsCalculator extends Schema.Component {
   collectionName: 'components_sections_calculators'
   info: {
@@ -766,11 +723,6 @@ export interface SectionsInbaArticlesList extends Schema.Component {
     displayName: 'in.ba articles'
   }
   attributes: {
-    featuredArts: Attribute.Relation<
-      'sections.inba-articles-list',
-      'oneToMany',
-      'api::inba-article.inba-article'
-    >
     text: Attribute.Text
     title: Attribute.String
   }
@@ -999,7 +951,6 @@ declare module '@strapi/types' {
       'accordion-items.flat-text': AccordionItemsFlatText
       'accordion-items.institution': AccordionItemsInstitution
       'accordion-items.institution-narrow': AccordionItemsInstitutionNarrow
-      'blocks.blog-post-link': BlocksBlogPostLink
       'blocks.bookmark-link': BlocksBookmarkLink
       'blocks.common-link': BlocksCommonLink
       'blocks.comparison-card': BlocksComparisonCard
@@ -1027,8 +978,6 @@ declare module '@strapi/types' {
       'sections.accordion': SectionsAccordion
       'sections.articles': SectionsArticles
       'sections.banner': SectionsBanner
-      'sections.blog-posts-by-category': SectionsBlogPostsByCategory
-      'sections.blog-posts-list': SectionsBlogPostsList
       'sections.calculator': SectionsCalculator
       'sections.columned-text': SectionsColumnedText
       'sections.comparison-section': SectionsComparisonSection
