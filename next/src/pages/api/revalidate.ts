@@ -5,16 +5,16 @@ type Response = { revalidated: boolean } | { message: string } | string
 type RequestPayload = { model: string; entry: { slug: string; locale: string } }
 
 const handler = async (req: NextApiRequest, res: NextApiResponse<Response>) => {
-  // Check for secret to confirm this is a valid request
-  if (req.query.secret !== process.env.STRAPI_REVALIDATE_SECRET_TOKEN) {
+  // Check for secret to confirm this is a valid request, NEXT secret is getting from Strapi env variable
+  if (req.query.secret !== process.env.REVALIDATE_SECRET_TOKEN) {
     return res.status(401).json({ message: 'Invalid token' })
   }
 
   try {
     const payload = req.body as RequestPayload
 
-    const localePrefix = payload.entry.locale === 'en' ? '/en' : ''
-    const homepage = payload.entry.locale === 'en' ? '/en' : '/'
+    const localePrefix = payload?.entry?.locale === 'en' ? '/en' : ''
+    const homepage = payload?.entry?.locale === 'en' ? '/en' : '/'
 
     if (payload?.model === 'article') {
       const articleUrl = `${localePrefix}/spravy/${payload?.entry?.slug}`
