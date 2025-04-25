@@ -74,7 +74,7 @@ const ArticlePageContent = ({ article }: Props) => {
         </div>
 
         {/* Empty sidebar */}
-        <div className="grow basis-60 max-lg:hidden" />
+        <div aria-hidden className="grow basis-60 max-lg:hidden" />
       </div>
     </>
   )

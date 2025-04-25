@@ -5334,250 +5334,6 @@ export type Dev_AllArticlesQuery = {
   } | null
 }
 
-export type BlogPostEntityFragment = {
-  __typename?: 'BlogPostEntity'
-  id?: string | null
-  attributes?: {
-    __typename?: 'BlogPost'
-    slug: string
-    excerpt?: string | null
-    title: string
-    addedAt: any
-    updatedAt?: any | null
-    locale?: string | null
-    tag?: {
-      __typename?: 'TagEntityResponse'
-      data?: {
-        __typename?: 'TagEntity'
-        id?: string | null
-        attributes?: {
-          __typename?: 'Tag'
-          title?: string | null
-          pageCategory?: {
-            __typename?: 'PageCategoryEntityResponse'
-            data?: {
-              __typename?: 'PageCategoryEntity'
-              id?: string | null
-              attributes?: {
-                __typename?: 'PageCategory'
-                title?: string | null
-                color?: Enum_Pagecategory_Color | null
-              } | null
-            } | null
-          } | null
-        } | null
-      } | null
-    } | null
-    coverImage?: {
-      __typename?: 'UploadFileEntityResponse'
-      data?: {
-        __typename?: 'UploadFileEntity'
-        attributes?: { __typename?: 'UploadFile'; url: string } | null
-      } | null
-    } | null
-    sections?: Array<
-      | {
-          __typename: 'ComponentSectionsFileList'
-          title?: string | null
-          text?: string | null
-          fileList?: Array<{
-            __typename?: 'ComponentBlocksFile'
-            id: string
-            title?: string | null
-            media?: {
-              __typename?: 'UploadFileEntityResponse'
-              data?: {
-                __typename?: 'UploadFileEntity'
-                id?: string | null
-                attributes?: {
-                  __typename?: 'UploadFile'
-                  url: string
-                  name: string
-                  ext?: string | null
-                  size: number
-                  createdAt?: any | null
-                  updatedAt?: any | null
-                } | null
-              } | null
-            } | null
-          } | null> | null
-        }
-      | {
-          __typename: 'ComponentSectionsGallery'
-          title?: string | null
-          text?: string | null
-          medias: {
-            __typename?: 'UploadFileRelationResponseCollection'
-            data: Array<{
-              __typename?: 'UploadFileEntity'
-              id?: string | null
-              attributes?: {
-                __typename?: 'UploadFile'
-                url: string
-                width?: number | null
-                height?: number | null
-                caption?: string | null
-                alternativeText?: string | null
-                name: string
-              } | null
-            }>
-          }
-        }
-      | {
-          __typename: 'ComponentSectionsNarrowText'
-          content?: string | null
-          width?: Enum_Componentsectionsnarrowtext_Width | null
-          align?: Enum_Componentsectionsnarrowtext_Align | null
-        }
-      | { __typename: 'Error' }
-      | null
-    > | null
-    localizations?: {
-      __typename?: 'BlogPostRelationResponseCollection'
-      data: Array<{
-        __typename?: 'BlogPostEntity'
-        id?: string | null
-        attributes?: {
-          __typename?: 'BlogPost'
-          slug: string
-          title: string
-          locale?: string | null
-        } | null
-      }>
-    } | null
-  } | null
-}
-
-export type Dev_AllBlogPostsQueryVariables = Exact<{
-  sort?: InputMaybe<
-    Array<InputMaybe<Scalars['String']['input']>> | InputMaybe<Scalars['String']['input']>
-  >
-  limit?: InputMaybe<Scalars['Int']['input']>
-  start?: InputMaybe<Scalars['Int']['input']>
-  filters?: InputMaybe<BlogPostFiltersInput>
-  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
-}>
-
-export type Dev_AllBlogPostsQuery = {
-  __typename?: 'Query'
-  blogPosts?: {
-    __typename?: 'BlogPostEntityResponseCollection'
-    data: Array<{
-      __typename?: 'BlogPostEntity'
-      id?: string | null
-      attributes?: {
-        __typename?: 'BlogPost'
-        slug: string
-        excerpt?: string | null
-        title: string
-        addedAt: any
-        updatedAt?: any | null
-        locale?: string | null
-        tag?: {
-          __typename?: 'TagEntityResponse'
-          data?: {
-            __typename?: 'TagEntity'
-            id?: string | null
-            attributes?: {
-              __typename?: 'Tag'
-              title?: string | null
-              pageCategory?: {
-                __typename?: 'PageCategoryEntityResponse'
-                data?: {
-                  __typename?: 'PageCategoryEntity'
-                  id?: string | null
-                  attributes?: {
-                    __typename?: 'PageCategory'
-                    title?: string | null
-                    color?: Enum_Pagecategory_Color | null
-                  } | null
-                } | null
-              } | null
-            } | null
-          } | null
-        } | null
-        coverImage?: {
-          __typename?: 'UploadFileEntityResponse'
-          data?: {
-            __typename?: 'UploadFileEntity'
-            attributes?: { __typename?: 'UploadFile'; url: string } | null
-          } | null
-        } | null
-        sections?: Array<
-          | {
-              __typename: 'ComponentSectionsFileList'
-              title?: string | null
-              text?: string | null
-              fileList?: Array<{
-                __typename?: 'ComponentBlocksFile'
-                id: string
-                title?: string | null
-                media?: {
-                  __typename?: 'UploadFileEntityResponse'
-                  data?: {
-                    __typename?: 'UploadFileEntity'
-                    id?: string | null
-                    attributes?: {
-                      __typename?: 'UploadFile'
-                      url: string
-                      name: string
-                      ext?: string | null
-                      size: number
-                      createdAt?: any | null
-                      updatedAt?: any | null
-                    } | null
-                  } | null
-                } | null
-              } | null> | null
-            }
-          | {
-              __typename: 'ComponentSectionsGallery'
-              title?: string | null
-              text?: string | null
-              medias: {
-                __typename?: 'UploadFileRelationResponseCollection'
-                data: Array<{
-                  __typename?: 'UploadFileEntity'
-                  id?: string | null
-                  attributes?: {
-                    __typename?: 'UploadFile'
-                    url: string
-                    width?: number | null
-                    height?: number | null
-                    caption?: string | null
-                    alternativeText?: string | null
-                    name: string
-                  } | null
-                }>
-              }
-            }
-          | {
-              __typename: 'ComponentSectionsNarrowText'
-              content?: string | null
-              width?: Enum_Componentsectionsnarrowtext_Width | null
-              align?: Enum_Componentsectionsnarrowtext_Align | null
-            }
-          | { __typename: 'Error' }
-          | null
-        > | null
-        localizations?: {
-          __typename?: 'BlogPostRelationResponseCollection'
-          data: Array<{
-            __typename?: 'BlogPostEntity'
-            id?: string | null
-            attributes?: {
-              __typename?: 'BlogPost'
-              slug: string
-              title: string
-              locale?: string | null
-            } | null
-          }>
-        } | null
-      } | null
-    }>
-  } | null
-}
-
 export type FaqCategoryEntityFragment = {
   __typename?: 'FaqCategoryEntity'
   id?: string | null
@@ -12634,6 +12390,234 @@ export const ArticleEntityFragmentDoc = gql`
   ${FileBlockFragmentDoc}
   ${UploadImageEntityFragmentDoc}
 `
+export const CommonLinkFragmentDoc = gql`
+  fragment CommonLink on ComponentBlocksCommonLink {
+    label
+    url
+    analyticsId
+    page {
+      data {
+        id
+        attributes {
+          title
+          slug
+        }
+      }
+    }
+    article {
+      data {
+        ...ArticleSlugEntity
+      }
+    }
+  }
+  ${ArticleSlugEntityFragmentDoc}
+`
+export const FooterColumnBlockFragmentDoc = gql`
+  fragment FooterColumnBlock on ComponentBlocksFooterColumn {
+    title
+    links {
+      ...CommonLink
+    }
+  }
+  ${CommonLinkFragmentDoc}
+`
+export const FooterFragmentDoc = gql`
+  fragment Footer on Footer {
+    facebookUrl
+    instagramUrl
+    columns {
+      ...FooterColumnBlock
+    }
+    accessibilityPageLink {
+      ...CommonLink
+    }
+    innovationsLink {
+      ...CommonLink
+    }
+    contactText
+  }
+  ${FooterColumnBlockFragmentDoc}
+  ${CommonLinkFragmentDoc}
+`
+export const PageForMenuEntityFragmentDoc = gql`
+  fragment PageForMenuEntity on PageEntity {
+    id
+    attributes {
+      title
+      slug
+    }
+  }
+`
+export const MenuLinkFragmentDoc = gql`
+  fragment MenuLink on ComponentMenuMenuLink {
+    id
+    label
+    page {
+      data {
+        ...PageForMenuEntity
+      }
+    }
+    url
+  }
+  ${PageForMenuEntityFragmentDoc}
+`
+export const MenuSectionFragmentDoc = gql`
+  fragment MenuSection on ComponentMenuMenuSection {
+    id
+    label
+    icon
+    page {
+      data {
+        ...PageForMenuEntity
+      }
+    }
+    links {
+      ...MenuLink
+    }
+  }
+  ${PageForMenuEntityFragmentDoc}
+  ${MenuLinkFragmentDoc}
+`
+export const MenuItemFragmentDoc = gql`
+  fragment MenuItem on ComponentMenuMenuItem {
+    id
+    label
+    icon
+    page {
+      data {
+        ...PageForMenuEntity
+      }
+    }
+    sections {
+      ...MenuSection
+    }
+  }
+  ${PageForMenuEntityFragmentDoc}
+  ${MenuSectionFragmentDoc}
+`
+export const HeaderLinkFragmentDoc = gql`
+  fragment HeaderLink on ComponentGeneralHeaderLink {
+    label
+    page {
+      data {
+        id
+        attributes {
+          title
+          slug
+        }
+      }
+    }
+    url
+    showOnDesktop
+    showOnMobile
+    icon
+  }
+`
+export const GeneralPageRelationFragmentDoc = gql`
+  fragment GeneralPageRelation on PageEntity {
+    id
+    attributes {
+      title
+      slug
+    }
+  }
+`
+export const ParentPageFragmentDoc = gql`
+  fragment ParentPage on Page {
+    slug
+    locale
+    title
+  }
+`
+export const PageParentPagesFragmentDoc = gql`
+  fragment PageParentPages on PageEntity {
+    attributes {
+      ...ParentPage
+      parentPage {
+        data {
+          attributes {
+            ...ParentPage
+            parentPage {
+              data {
+                attributes {
+                  ...ParentPage
+                  parentPage {
+                    data {
+                      attributes {
+                        ...ParentPage
+                        parentPage {
+                          data {
+                            attributes {
+                              ...ParentPage
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  ${ParentPageFragmentDoc}
+`
+export const GeneralFragmentDoc = gql`
+  fragment General on General {
+    header {
+      links {
+        ...HeaderLink
+      }
+      accountLink {
+        ...CommonLink
+      }
+    }
+    newsPage {
+      data {
+        ...GeneralPageRelation
+        ...PageParentPages
+      }
+    }
+    officialBoardPage {
+      data {
+        ...GeneralPageRelation
+      }
+    }
+    privacyPolicyPage {
+      data {
+        ...GeneralPageRelation
+      }
+    }
+    vznPage {
+      data {
+        ...GeneralPageRelation
+      }
+    }
+    inbaPage {
+      data {
+        ...GeneralPageRelation
+      }
+    }
+    inbaReleasesPage {
+      data {
+        ...GeneralPageRelation
+      }
+    }
+  }
+  ${HeaderLinkFragmentDoc}
+  ${CommonLinkFragmentDoc}
+  ${GeneralPageRelationFragmentDoc}
+  ${PageParentPagesFragmentDoc}
+`
+export const AlertFragmentDoc = gql`
+  fragment Alert on Alert {
+    updatedAt
+    text
+  }
+`
 export const UploadImageSrcEntityFragmentDoc = gql`
   fragment UploadImageSrcEntity on UploadFileEntity {
     id
@@ -12641,6 +12625,241 @@ export const UploadImageSrcEntityFragmentDoc = gql`
       url
     }
   }
+`
+export const HomepageHighlightsItemFragmentDoc = gql`
+  fragment HomepageHighlightsItem on ComponentBlocksHomepageHighlightsItem {
+    id
+    link {
+      ...CommonLink
+    }
+    image {
+      data {
+        ...UploadImageSrcEntity
+      }
+    }
+  }
+  ${CommonLinkFragmentDoc}
+  ${UploadImageSrcEntityFragmentDoc}
+`
+export const HomepageTabsFragmentDoc = gql`
+  fragment HomepageTabs on ComponentSectionsHomepageTabs {
+    leftArticle {
+      data {
+        ...ArticleCardEntity
+      }
+    }
+    rightArticle {
+      data {
+        ...ArticleCardEntity
+      }
+    }
+    newsPageLink {
+      ...CommonLink
+    }
+    officialBoardPageLink {
+      ...CommonLink
+    }
+    roadClosuresPageLink {
+      ...CommonLink
+    }
+  }
+  ${ArticleCardEntityFragmentDoc}
+  ${CommonLinkFragmentDoc}
+`
+export const HomepageMayorAndCouncilFragmentDoc = gql`
+  fragment HomepageMayorAndCouncil on ComponentSectionsHomepageMayorAndCouncil {
+    title
+    text
+    mayorCard {
+      ...CommonLink
+    }
+    councilCard {
+      ...CommonLink
+    }
+  }
+  ${CommonLinkFragmentDoc}
+`
+export const TopServicesItemFragmentDoc = gql`
+  fragment TopServicesItem on ComponentBlocksTopServicesItem {
+    icon
+    link {
+      ...CommonLink
+    }
+  }
+  ${CommonLinkFragmentDoc}
+`
+export const HomepageInbaFragmentDoc = gql`
+  fragment HomepageInba on ComponentBlocksInBa {
+    title
+    content
+  }
+`
+export const HomepageBookmarkFragmentDoc = gql`
+  fragment HomepageBookmark on ComponentBlocksHomepageBookmark {
+    title
+    headline
+    text
+    link {
+      title
+      href
+    }
+    picture {
+      data {
+        attributes {
+          url
+        }
+      }
+    }
+    variant
+  }
+`
+export const HomepageEntityFragmentDoc = gql`
+  fragment HomepageEntity on HomepageEntity {
+    id
+    attributes {
+      updatedAt
+      createdAt
+      metaTitle
+      metaDescription
+      welcomeHeadline
+      welcomeMedia {
+        data {
+          ...UploadImageSrcEntity
+        }
+      }
+      highlights {
+        title
+        text
+        cards {
+          ...HomepageHighlightsItem
+        }
+      }
+      tabs {
+        ...HomepageTabs
+      }
+      mayorAndCouncil {
+        ...HomepageMayorAndCouncil
+      }
+      eventsSection {
+        title
+        text
+        eventsPageLink {
+          ...CommonLink
+        }
+      }
+      topServices {
+        title
+        services {
+          ...TopServicesItem
+        }
+      }
+      inba {
+        ...HomepageInba
+      }
+      inbaFrontImage {
+        data {
+          ...UploadImageSrcEntity
+        }
+      }
+      inbaRearImage {
+        data {
+          ...UploadImageSrcEntity
+        }
+      }
+      inbaUrl
+      cards {
+        ...HomepageBookmark
+      }
+      bookmarkTourists {
+        ...HomepageBookmark
+      }
+      bookmarkUkraine {
+        ...HomepageBookmark
+      }
+    }
+  }
+  ${UploadImageSrcEntityFragmentDoc}
+  ${HomepageHighlightsItemFragmentDoc}
+  ${HomepageTabsFragmentDoc}
+  ${HomepageMayorAndCouncilFragmentDoc}
+  ${CommonLinkFragmentDoc}
+  ${TopServicesItemFragmentDoc}
+  ${HomepageInbaFragmentDoc}
+  ${HomepageBookmarkFragmentDoc}
+`
+export const InbaTagEntityFragmentDoc = gql`
+  fragment InbaTagEntity on InbaTagEntity {
+    id
+    attributes {
+      title
+    }
+  }
+`
+export const InbaArticleEntityFragmentDoc = gql`
+  fragment InbaArticleEntity on InbaArticleEntity {
+    id
+    attributes {
+      title
+      slug
+      perex
+      publishedAt
+      coverImage {
+        data {
+          attributes {
+            url
+          }
+        }
+      }
+      inbaTag {
+        data {
+          ...InbaTagEntity
+        }
+      }
+      content
+      inbaRelease {
+        data {
+          attributes {
+            title
+            releaseDate
+            slug
+          }
+        }
+      }
+    }
+  }
+  ${InbaTagEntityFragmentDoc}
+`
+export const InbaReleaseEntityFragmentDoc = gql`
+  fragment InbaReleaseEntity on InbaReleaseEntity {
+    id
+    attributes {
+      title
+      slug
+      perex
+      releaseDate
+      coverImage {
+        data {
+          ...UploadImageEntity
+        }
+      }
+      rearImage {
+        data {
+          ...UploadImageEntity
+        }
+      }
+      files {
+        id
+        title
+        media {
+          data {
+            ...UploadFileEntity
+          }
+        }
+      }
+    }
+  }
+  ${UploadImageEntityFragmentDoc}
+  ${UploadFileEntityFragmentDoc}
 `
 export const IconTitleDescriptionBlockFragmentDoc = gql`
   fragment IconTitleDescriptionBlock on ComponentBlocksIconWithTitleAndDescription {
@@ -12955,28 +13174,6 @@ export const ComparisonSectionFragmentDoc = gql`
     }
   }
   ${ComparisonCardComponentFragmentDoc}
-`
-export const CommonLinkFragmentDoc = gql`
-  fragment CommonLink on ComponentBlocksCommonLink {
-    label
-    url
-    analyticsId
-    page {
-      data {
-        id
-        attributes {
-          title
-          slug
-        }
-      }
-    }
-    article {
-      data {
-        ...ArticleSlugEntity
-      }
-    }
-  }
-  ${ArticleSlugEntityFragmentDoc}
 `
 export const BannerSectionFragmentDoc = gql`
   fragment BannerSection on ComponentSectionsBanner {
@@ -13345,498 +13542,6 @@ export const SectionsFragmentDoc = gql`
   ${FaqsSectionFragmentDoc}
   ${FaqCategoriesSectionFragmentDoc}
 `
-export const BlogPostEntityFragmentDoc = gql`
-  fragment BlogPostEntity on BlogPostEntity {
-    id
-    attributes {
-      slug
-      excerpt
-      title
-      addedAt
-      updatedAt
-      tag {
-        data {
-          attributes {
-            title
-            pageCategory {
-              data {
-                attributes {
-                  title
-                  color
-                }
-                id
-              }
-            }
-          }
-          id
-        }
-      }
-      coverImage {
-        data {
-          attributes {
-            url
-          }
-        }
-      }
-      sections {
-        ...Sections
-      }
-      locale
-      localizations {
-        data {
-          id
-          attributes {
-            slug
-            title
-            locale
-          }
-        }
-      }
-    }
-  }
-  ${SectionsFragmentDoc}
-`
-export const FooterColumnBlockFragmentDoc = gql`
-  fragment FooterColumnBlock on ComponentBlocksFooterColumn {
-    title
-    links {
-      ...CommonLink
-    }
-  }
-  ${CommonLinkFragmentDoc}
-`
-export const FooterFragmentDoc = gql`
-  fragment Footer on Footer {
-    facebookUrl
-    instagramUrl
-    columns {
-      ...FooterColumnBlock
-    }
-    accessibilityPageLink {
-      ...CommonLink
-    }
-    innovationsLink {
-      ...CommonLink
-    }
-    contactText
-  }
-  ${FooterColumnBlockFragmentDoc}
-  ${CommonLinkFragmentDoc}
-`
-export const PageForMenuEntityFragmentDoc = gql`
-  fragment PageForMenuEntity on PageEntity {
-    id
-    attributes {
-      title
-      slug
-    }
-  }
-`
-export const MenuLinkFragmentDoc = gql`
-  fragment MenuLink on ComponentMenuMenuLink {
-    id
-    label
-    page {
-      data {
-        ...PageForMenuEntity
-      }
-    }
-    url
-  }
-  ${PageForMenuEntityFragmentDoc}
-`
-export const MenuSectionFragmentDoc = gql`
-  fragment MenuSection on ComponentMenuMenuSection {
-    id
-    label
-    icon
-    page {
-      data {
-        ...PageForMenuEntity
-      }
-    }
-    links {
-      ...MenuLink
-    }
-  }
-  ${PageForMenuEntityFragmentDoc}
-  ${MenuLinkFragmentDoc}
-`
-export const MenuItemFragmentDoc = gql`
-  fragment MenuItem on ComponentMenuMenuItem {
-    id
-    label
-    icon
-    page {
-      data {
-        ...PageForMenuEntity
-      }
-    }
-    sections {
-      ...MenuSection
-    }
-  }
-  ${PageForMenuEntityFragmentDoc}
-  ${MenuSectionFragmentDoc}
-`
-export const HeaderLinkFragmentDoc = gql`
-  fragment HeaderLink on ComponentGeneralHeaderLink {
-    label
-    page {
-      data {
-        id
-        attributes {
-          title
-          slug
-        }
-      }
-    }
-    url
-    showOnDesktop
-    showOnMobile
-    icon
-  }
-`
-export const GeneralPageRelationFragmentDoc = gql`
-  fragment GeneralPageRelation on PageEntity {
-    id
-    attributes {
-      title
-      slug
-    }
-  }
-`
-export const ParentPageFragmentDoc = gql`
-  fragment ParentPage on Page {
-    slug
-    locale
-    title
-  }
-`
-export const PageParentPagesFragmentDoc = gql`
-  fragment PageParentPages on PageEntity {
-    attributes {
-      ...ParentPage
-      parentPage {
-        data {
-          attributes {
-            ...ParentPage
-            parentPage {
-              data {
-                attributes {
-                  ...ParentPage
-                  parentPage {
-                    data {
-                      attributes {
-                        ...ParentPage
-                        parentPage {
-                          data {
-                            attributes {
-                              ...ParentPage
-                            }
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-  ${ParentPageFragmentDoc}
-`
-export const GeneralFragmentDoc = gql`
-  fragment General on General {
-    header {
-      links {
-        ...HeaderLink
-      }
-      accountLink {
-        ...CommonLink
-      }
-    }
-    newsPage {
-      data {
-        ...GeneralPageRelation
-        ...PageParentPages
-      }
-    }
-    officialBoardPage {
-      data {
-        ...GeneralPageRelation
-      }
-    }
-    privacyPolicyPage {
-      data {
-        ...GeneralPageRelation
-      }
-    }
-    vznPage {
-      data {
-        ...GeneralPageRelation
-      }
-    }
-    inbaPage {
-      data {
-        ...GeneralPageRelation
-      }
-    }
-    inbaReleasesPage {
-      data {
-        ...GeneralPageRelation
-      }
-    }
-  }
-  ${HeaderLinkFragmentDoc}
-  ${CommonLinkFragmentDoc}
-  ${GeneralPageRelationFragmentDoc}
-  ${PageParentPagesFragmentDoc}
-`
-export const AlertFragmentDoc = gql`
-  fragment Alert on Alert {
-    updatedAt
-    text
-  }
-`
-export const HomepageHighlightsItemFragmentDoc = gql`
-  fragment HomepageHighlightsItem on ComponentBlocksHomepageHighlightsItem {
-    id
-    link {
-      ...CommonLink
-    }
-    image {
-      data {
-        ...UploadImageSrcEntity
-      }
-    }
-  }
-  ${CommonLinkFragmentDoc}
-  ${UploadImageSrcEntityFragmentDoc}
-`
-export const HomepageTabsFragmentDoc = gql`
-  fragment HomepageTabs on ComponentSectionsHomepageTabs {
-    leftArticle {
-      data {
-        ...ArticleCardEntity
-      }
-    }
-    rightArticle {
-      data {
-        ...ArticleCardEntity
-      }
-    }
-    newsPageLink {
-      ...CommonLink
-    }
-    officialBoardPageLink {
-      ...CommonLink
-    }
-    roadClosuresPageLink {
-      ...CommonLink
-    }
-  }
-  ${ArticleCardEntityFragmentDoc}
-  ${CommonLinkFragmentDoc}
-`
-export const HomepageMayorAndCouncilFragmentDoc = gql`
-  fragment HomepageMayorAndCouncil on ComponentSectionsHomepageMayorAndCouncil {
-    title
-    text
-    mayorCard {
-      ...CommonLink
-    }
-    councilCard {
-      ...CommonLink
-    }
-  }
-  ${CommonLinkFragmentDoc}
-`
-export const TopServicesItemFragmentDoc = gql`
-  fragment TopServicesItem on ComponentBlocksTopServicesItem {
-    icon
-    link {
-      ...CommonLink
-    }
-  }
-  ${CommonLinkFragmentDoc}
-`
-export const HomepageInbaFragmentDoc = gql`
-  fragment HomepageInba on ComponentBlocksInBa {
-    title
-    content
-  }
-`
-export const HomepageBookmarkFragmentDoc = gql`
-  fragment HomepageBookmark on ComponentBlocksHomepageBookmark {
-    title
-    headline
-    text
-    link {
-      title
-      href
-    }
-    picture {
-      data {
-        attributes {
-          url
-        }
-      }
-    }
-    variant
-  }
-`
-export const HomepageEntityFragmentDoc = gql`
-  fragment HomepageEntity on HomepageEntity {
-    id
-    attributes {
-      updatedAt
-      createdAt
-      metaTitle
-      metaDescription
-      welcomeHeadline
-      welcomeMedia {
-        data {
-          ...UploadImageSrcEntity
-        }
-      }
-      highlights {
-        title
-        text
-        cards {
-          ...HomepageHighlightsItem
-        }
-      }
-      tabs {
-        ...HomepageTabs
-      }
-      mayorAndCouncil {
-        ...HomepageMayorAndCouncil
-      }
-      eventsSection {
-        title
-        text
-        eventsPageLink {
-          ...CommonLink
-        }
-      }
-      topServices {
-        title
-        services {
-          ...TopServicesItem
-        }
-      }
-      inba {
-        ...HomepageInba
-      }
-      inbaFrontImage {
-        data {
-          ...UploadImageSrcEntity
-        }
-      }
-      inbaRearImage {
-        data {
-          ...UploadImageSrcEntity
-        }
-      }
-      inbaUrl
-      cards {
-        ...HomepageBookmark
-      }
-      bookmarkTourists {
-        ...HomepageBookmark
-      }
-      bookmarkUkraine {
-        ...HomepageBookmark
-      }
-    }
-  }
-  ${UploadImageSrcEntityFragmentDoc}
-  ${HomepageHighlightsItemFragmentDoc}
-  ${HomepageTabsFragmentDoc}
-  ${HomepageMayorAndCouncilFragmentDoc}
-  ${CommonLinkFragmentDoc}
-  ${TopServicesItemFragmentDoc}
-  ${HomepageInbaFragmentDoc}
-  ${HomepageBookmarkFragmentDoc}
-`
-export const InbaTagEntityFragmentDoc = gql`
-  fragment InbaTagEntity on InbaTagEntity {
-    id
-    attributes {
-      title
-    }
-  }
-`
-export const InbaArticleEntityFragmentDoc = gql`
-  fragment InbaArticleEntity on InbaArticleEntity {
-    id
-    attributes {
-      title
-      slug
-      perex
-      publishedAt
-      coverImage {
-        data {
-          attributes {
-            url
-          }
-        }
-      }
-      inbaTag {
-        data {
-          ...InbaTagEntity
-        }
-      }
-      content
-      inbaRelease {
-        data {
-          attributes {
-            title
-            releaseDate
-            slug
-          }
-        }
-      }
-    }
-  }
-  ${InbaTagEntityFragmentDoc}
-`
-export const InbaReleaseEntityFragmentDoc = gql`
-  fragment InbaReleaseEntity on InbaReleaseEntity {
-    id
-    attributes {
-      title
-      slug
-      perex
-      releaseDate
-      coverImage {
-        data {
-          ...UploadImageEntity
-        }
-      }
-      rearImage {
-        data {
-          ...UploadImageEntity
-        }
-      }
-      files {
-        id
-        title
-        media {
-          data {
-            ...UploadFileEntity
-          }
-        }
-      }
-    }
-  }
-  ${UploadImageEntityFragmentDoc}
-  ${UploadFileEntityFragmentDoc}
-`
 export const LocalizationFragmentDoc = gql`
   fragment Localization on PageRelationResponseCollection {
     data {
@@ -14017,27 +13722,6 @@ export const Dev_AllArticlesDocument = gql`
     }
   }
   ${ArticleEntityFragmentDoc}
-`
-export const Dev_AllBlogPostsDocument = gql`
-  query Dev_AllBlogPosts(
-    $sort: [String]
-    $limit: Int
-    $start: Int
-    $filters: BlogPostFiltersInput
-    $locale: I18NLocaleCode
-  ) {
-    blogPosts(
-      sort: $sort
-      pagination: { limit: $limit, start: $start }
-      filters: $filters
-      locale: $locale
-    ) {
-      data {
-        ...BlogPostEntity
-      }
-    }
-  }
-  ${BlogPostEntityFragmentDoc}
 `
 export const GeneralDocument = gql`
   query General($locale: I18NLocaleCode!) {
@@ -14465,21 +14149,6 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
             ...wrappedRequestHeaders,
           }),
         'Dev_AllArticles',
-        'query',
-        variables,
-      )
-    },
-    Dev_AllBlogPosts(
-      variables?: Dev_AllBlogPostsQueryVariables,
-      requestHeaders?: GraphQLClientRequestHeaders,
-    ): Promise<Dev_AllBlogPostsQuery> {
-      return withWrapper(
-        (wrappedRequestHeaders) =>
-          client.request<Dev_AllBlogPostsQuery>(Dev_AllBlogPostsDocument, variables, {
-            ...requestHeaders,
-            ...wrappedRequestHeaders,
-          }),
-        'Dev_AllBlogPosts',
         'query',
         variables,
       )

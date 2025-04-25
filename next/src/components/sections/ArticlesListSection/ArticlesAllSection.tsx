@@ -79,7 +79,7 @@ const ArticlesAllSection = ({ section }: Props) => {
           if (!card.attributes) return null
 
           // TODO refactor sections that use ArticleCard - it needs too much duplicate code while passing props
-          const { title: blogPostTitle, slug, coverMedia, addedAt, perex, tag } = card.attributes
+          const { title: articleTitle, slug, coverMedia, addedAt, perex, tag } = card.attributes
           const tagColor = tag?.data?.attributes?.pageCategory?.data?.attributes?.color
           const tagTitle = tag?.data?.attributes?.title
 
@@ -89,7 +89,7 @@ const ArticlesAllSection = ({ section }: Props) => {
               style={getCategoryColorLocalStyle({ color: tagColor })}
               date={formatDate(addedAt)}
               tag={tagTitle ?? undefined}
-              title={blogPostTitle ?? ''}
+              title={articleTitle ?? ''}
               text={perex ?? undefined}
               linkProps={{ children: t('readMore'), href: `/spravy/${slug}` }}
               imgSrc={coverMedia?.data?.attributes?.url}
