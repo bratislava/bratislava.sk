@@ -67,8 +67,11 @@ module.exports = {
       'size-button-default': getFontSize([16, 24]),
 
       'size-p-large': getFontSize([20, 28]),
-      'size-p-default': getFontSize([16, 24]),
-      'size-p-small': getFontSize([14, 20]),
+      'size-p-large-r': getFontSize([18, 28]),
+      'size-p-default': getFontSize([18, 28]),
+      'size-p-default-r': getFontSize([16, 24]),
+      'size-component-default': getFontSize([16, 24]),
+      'size-component-small': getFontSize([14, 20]),
 
       'size-h6': getFontSize([16, 24]),
       'size-h6-r': getFontSize([16, 20]),

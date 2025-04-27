@@ -48,7 +48,7 @@ const EventCard = ({
             </MLink>
           </Typography>
 
-          <div className="text-small flex flex-col items-start font-medium">
+          <div className="text-component-small flex flex-col items-start font-medium">
             {/* FIXME Typography: Convert to use Typography. Issue: Different size and weight than typography have */}
             {address && <span className="line-clamp-1">{address}</span>}
             <span className="line-clamp-1">

@@ -36,9 +36,8 @@ const Markdown = ({ content, variant = 'default', className }: MarkdownProps) =>
       className={cn(
         styles.markdown,
         {
-          'text-large-respo': variant === 'default' || variant === 'accordion',
-          'text-default-respo': variant === 'small',
-          'text-default': variant === 'small-no-respo',
+          'text-large': variant === 'default' || variant === 'accordion',
+          'text-default': variant === 'small' || variant === 'small-no-respo',
         },
         className,
       )}

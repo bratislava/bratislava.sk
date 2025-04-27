@@ -57,7 +57,7 @@ const FileRowCard = ({
               {title}
             </MLink>
             {(uploadDate || format || size) && (
-              <span className="text-small text-grey-700 md:line-clamp-1">
+              <span className="text-component-small text-grey-700 md:line-clamp-1">
                 {/* TODO words should be separated by a dot with 12px gap, this is a simplified solution. */}
                 {[uploadDate, format, size].filter(isDefined).join(' • ')}
               </span>
