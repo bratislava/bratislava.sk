@@ -57,7 +57,7 @@ const ArticlePageContent = ({ article }: Props) => {
         <div className="flex w-200 flex-col gap-18">
           <div className="flex flex-col gap-6 lg:gap-8">
             {perex ? (
-              <Typography type="p" size="p-large" className="font-semibold">
+              <Typography type="p" size="p-large">
                 {perex}
               </Typography>
             ) : null}

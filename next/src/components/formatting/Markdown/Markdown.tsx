@@ -13,7 +13,7 @@ import styles from './Markdown.module.scss'
 
 export type MarkdownProps = {
   content: string | null | undefined
-  variant?: 'default' | 'small' | 'small-no-respo' | 'accordion'
+  variant?: 'default' | 'small' | 'large' | 'accordion'
   className?: string
 }
 
@@ -36,8 +36,9 @@ const Markdown = ({ content, variant = 'default', className }: MarkdownProps) =>
       className={cn(
         styles.markdown,
         {
-          'text-large': variant === 'default' || variant === 'accordion',
-          'text-default': variant === 'small' || variant === 'small-no-respo',
+          'text-large': variant === 'large',
+          'text-default': variant === 'default' || variant === 'accordion',
+          'text-component-default': variant === 'small',
         },
         className,
       )}
@@ -71,16 +72,22 @@ const Markdown = ({ content, variant = 'default', className }: MarkdownProps) =>
             />
           ),
           h3: ({ node, ...props }) => (
-            <Typography type="h3" size={variant === 'accordion' ? 'h4' : 'h3'} {...props} />
+            <Typography type="h3" size={variant === 'accordion' ? 'h5' : 'h3'} {...props} />
           ),
-          h4: ({ node, ...props }) => <h4 className="text-h4" {...props} />,
-          h5: ({ node, ...props }) => <h5 className="text-h4 font-medium" {...props} />,
-          h6: ({ node, ...props }) => <h6 className="text-h5" {...props} />,
+          h4: ({ node, ...props }) => (
+            <Typography type="h4" size={variant === 'accordion' ? 'h6' : 'h4'} {...props} />
+          ),
+          h5: ({ node, ...props }) => <Typography type="h5" {...props} />,
+          h6: ({ node, ...props }) => <Typography type="h6" {...props} />,
           p: ({ node, ...props }) => (
             <Typography
               type="p"
-              size={variant === 'small' ? 'p-small' : 'p-large'}
-              className="whitespace-pre-wrap"
+              // size={variant === 'small' ? 'p-small' : variant === 'large' ? 'p-large' : 'p'}
+              className={cn('whitespace-pre-wrap', {
+                'text-large': variant === 'large',
+                'text-default': variant === 'default' || variant === 'accordion',
+                'text-component-default': variant === 'small',
+              })}
               {...props}
             />
           ),
