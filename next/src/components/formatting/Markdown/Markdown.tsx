@@ -82,7 +82,6 @@ const Markdown = ({ content, variant = 'default', className }: MarkdownProps) =>
           p: ({ node, ...props }) => (
             <Typography
               type="p"
-              // size={variant === 'small' ? 'p-small' : variant === 'large' ? 'p-large' : 'p'}
               className={cn('whitespace-pre-wrap', {
                 'text-large': variant === 'large',
                 'text-default': variant === 'default' || variant === 'accordion',
