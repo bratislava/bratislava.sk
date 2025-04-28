@@ -7,8 +7,8 @@
       "filterable": true,
       "searchable": true,
       "pageSize": 10,
-      "mainField": "title",
-      "defaultSortBy": "title",
+      "mainField": "id",
+      "defaultSortBy": "id",
       "defaultSortOrder": "ASC"
     },
     "metadatas": {
@@ -19,56 +19,13 @@
           "searchable": false,
           "sortable": false
         }
-      },
-      "title": {
-        "edit": {
-          "label": "Nadpis",
-          "description": "Sekcia zobrazuje všetky nariadenia spolu s vyhľadávaním.",
-          "placeholder": "",
-          "visible": true,
-          "editable": false
-        },
-        "list": {
-          "label": "title",
-          "searchable": true,
-          "sortable": true
-        }
-      },
-      "text": {
-        "edit": {
-          "label": "Text",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": false
-        },
-        "list": {
-          "label": "text",
-          "searchable": true,
-          "sortable": true
-        }
       }
     },
     "layouts": {
       "list": [
-        "id",
-        "title",
-        "text"
+        "id"
       ],
-      "edit": [
-        [
-          {
-            "name": "title",
-            "size": 12
-          }
-        ],
-        [
-          {
-            "name": "text",
-            "size": 12
-          }
-        ]
-      ]
+      "edit": []
     },
     "isComponent": true
   },

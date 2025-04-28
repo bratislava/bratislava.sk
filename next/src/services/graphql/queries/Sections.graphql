@@ -358,11 +358,6 @@ fragment ContactsSection on ComponentSectionsContactsSection {
   type
 }
 
-fragment RegulationsListSection on ComponentSectionsRegulationsList {
-  title
-  text
-}
-
 fragment RegulationsSection on ComponentSectionsRegulations {
   regulations {
     data {
@@ -488,9 +483,7 @@ fragment Sections on PageSectionsDynamicZone {
     ...ContactsSection
   }
 
-  ... on ComponentSectionsRegulationsList {
-    ...RegulationsListSection
-  }
+  # ComponentSectionsRegulationsList has no attributes
 
   ... on ComponentSectionsRegulations {
     ...RegulationsSection

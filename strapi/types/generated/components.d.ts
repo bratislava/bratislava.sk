@@ -834,10 +834,7 @@ export interface SectionsRegulationsList extends Schema.Component {
     description: ''
     displayName: 'Regulations list'
   }
-  attributes: {
-    text: Attribute.Text
-    title: Attribute.String
-  }
+  attributes: {}
 }
 
 export interface SectionsSubpageList extends Schema.Component {

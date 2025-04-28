@@ -1779,22 +1779,16 @@ export type ComponentSectionsRegulationsInput = {
 export type ComponentSectionsRegulationsList = {
   __typename?: 'ComponentSectionsRegulationsList'
   id: Scalars['ID']['output']
-  text?: Maybe<Scalars['String']['output']>
-  title?: Maybe<Scalars['String']['output']>
 }
 
 export type ComponentSectionsRegulationsListFiltersInput = {
   and?: InputMaybe<Array<InputMaybe<ComponentSectionsRegulationsListFiltersInput>>>
   not?: InputMaybe<ComponentSectionsRegulationsListFiltersInput>
   or?: InputMaybe<Array<InputMaybe<ComponentSectionsRegulationsListFiltersInput>>>
-  text?: InputMaybe<StringFilterInput>
-  title?: InputMaybe<StringFilterInput>
 }
 
 export type ComponentSectionsRegulationsListInput = {
   id?: InputMaybe<Scalars['ID']['input']>
-  text?: InputMaybe<Scalars['String']['input']>
-  title?: InputMaybe<Scalars['String']['input']>
 }
 
 export type ComponentSectionsSubpageList = {
@@ -8675,11 +8669,7 @@ export type PageBySlugQuery = {
                 }>
               } | null
             }
-          | {
-              __typename: 'ComponentSectionsRegulationsList'
-              title?: string | null
-              text?: string | null
-            }
+          | { __typename: 'ComponentSectionsRegulationsList' }
           | {
               __typename: 'ComponentSectionsTestimonials'
               title?: string | null
@@ -9556,11 +9546,7 @@ export type PageEntityFragment = {
             }>
           } | null
         }
-      | {
-          __typename: 'ComponentSectionsRegulationsList'
-          title?: string | null
-          text?: string | null
-        }
+      | { __typename: 'ComponentSectionsRegulationsList' }
       | {
           __typename: 'ComponentSectionsTestimonials'
           title?: string | null
@@ -11309,12 +11295,6 @@ export type ContactsSectionFragment = {
   } | null> | null
 }
 
-export type RegulationsListSectionFragment = {
-  __typename?: 'ComponentSectionsRegulationsList'
-  title?: string | null
-  text?: string | null
-}
-
 export type RegulationsSectionFragment = {
   __typename?: 'ComponentSectionsRegulations'
   regulations?: {
@@ -12124,8 +12104,6 @@ type Sections_ComponentSectionsRegulations_Fragment = {
 
 type Sections_ComponentSectionsRegulationsList_Fragment = {
   __typename: 'ComponentSectionsRegulationsList'
-  title?: string | null
-  text?: string | null
 }
 
 type Sections_ComponentSectionsTestimonials_Fragment = {
@@ -13308,12 +13286,6 @@ export const ContactsSectionFragmentDoc = gql`
   }
   ${ContactCardBlockFragmentDoc}
 `
-export const RegulationsListSectionFragmentDoc = gql`
-  fragment RegulationsListSection on ComponentSectionsRegulationsList {
-    title
-    text
-  }
-`
 export const RegulationEntityFragmentDoc = gql`
   fragment RegulationEntity on RegulationEntity {
     id
@@ -13562,9 +13534,6 @@ export const SectionsFragmentDoc = gql`
     ... on ComponentSectionsContactsSection {
       ...ContactsSection
     }
-    ... on ComponentSectionsRegulationsList {
-      ...RegulationsListSection
-    }
     ... on ComponentSectionsRegulations {
       ...RegulationsSection
     }
@@ -13601,7 +13570,6 @@ export const SectionsFragmentDoc = gql`
   ${BannerSectionFragmentDoc}
   ${TimelineSectionFragmentDoc}
   ${ContactsSectionFragmentDoc}
-  ${RegulationsListSectionFragmentDoc}
   ${RegulationsSectionFragmentDoc}
   ${TestimonialsSectionFragmentDoc}
   ${FaqsSectionFragmentDoc}
