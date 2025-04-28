@@ -1498,22 +1498,16 @@ input ComponentSectionsRegulationsInput {
 
 type ComponentSectionsRegulationsList {
   id: ID!
-  text: String
-  title: String
 }
 
 input ComponentSectionsRegulationsListFiltersInput {
   and: [ComponentSectionsRegulationsListFiltersInput]
   not: ComponentSectionsRegulationsListFiltersInput
   or: [ComponentSectionsRegulationsListFiltersInput]
-  text: StringFilterInput
-  title: StringFilterInput
 }
 
 input ComponentSectionsRegulationsListInput {
   id: ID
-  text: String
-  title: String
 }
 
 type ComponentSectionsSubpageList {
