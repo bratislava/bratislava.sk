@@ -52,9 +52,12 @@ export const articlesFetcher = (filters: ArticlesFilters, locale: string) => {
     })
     .then(unwrapFromSearchIndex('article'))
     .then((response) => {
-      const hits = response.hits.map((article) => {
+      const hits: ArticleCardEntityFragment[] = response.hits.map((article) => {
         return {
+          id: article.id,
+          __typename: 'ArticleEntity',
           attributes: {
+            __typename: 'Article',
             title: article.title,
             slug: article.slug,
             perex: article.perex,
@@ -89,7 +92,7 @@ export const articlesFetcher = (filters: ArticlesFilters, locale: string) => {
               },
             }),
           },
-        } satisfies Pick<ArticleCardEntityFragment, 'attributes'>
+        } satisfies ArticleCardEntityFragment
       })
 
       return { ...response, hits }

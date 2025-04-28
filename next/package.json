@@ -32,7 +32,6 @@
     "@bratislava/component-library": "^0.1.2",
     "@bratislava/ginis-sdk": "^1.1.0",
     "@internationalized/date": "3.7.0",
-    "@js-joda/core": "5.6.4",
     "@next/third-parties": "^14.2.26",
     "@radix-ui/react-navigation-menu": "1.2.5",
     "@react-stately/utils": "3.10.5",

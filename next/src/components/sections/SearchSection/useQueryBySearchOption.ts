@@ -128,7 +128,7 @@ export const useQueryBySearchOption = ({
               inbaArticle.attributes?.inbaTag?.data?.attributes?.title,
               formatDate(inbaArticle.attributes.publishedAt),
             ],
-            coverImageSrc: inbaArticle.attributes.coverImage.data.attributes.url,
+            coverImageSrc: inbaArticle.attributes.coverImage?.data.attributes.url,
           }
         }) ?? []
 

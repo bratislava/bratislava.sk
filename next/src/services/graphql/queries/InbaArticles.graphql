@@ -1,3 +1,53 @@
+fragment InbaArticleSlugEntity on InbaArticleEntity {
+  id
+  attributes {
+    slug
+    title
+    locale
+  }
+}
+
+fragment InbaArticleCardEntity on InbaArticleEntity {
+  ...InbaArticleSlugEntity
+  attributes {
+    perex
+    publishedAt
+    coverImage {
+      data {
+        ...UploadImageSrcEntity
+      }
+    }
+    inbaTag {
+      data {
+        ...InbaTagEntity
+      }
+    }
+  }
+}
+
+fragment InbaArticleEntity on InbaArticleEntity {
+  ...InbaArticleCardEntity
+  attributes {
+    content
+    inbaRelease {
+      data {
+        attributes {
+          title
+          releaseDate
+          slug
+        }
+      }
+    }
+  }
+}
+
+fragment InbaTagEntity on InbaTagEntity {
+  id
+  attributes {
+    title
+  }
+}
+
 query InbaArticleBySlug($slug: String!, $locale: I18NLocaleCode!) {
   inbaArticles(filters: { slug: { eq: $slug } }, locale: $locale) {
     data {
@@ -9,11 +59,7 @@ query InbaArticleBySlug($slug: String!, $locale: I18NLocaleCode!) {
 query InbaArticlesStaticPaths {
   inbaArticles(locale: "all", sort: "publishedAt:desc") {
     data {
-      id
-      attributes {
-        slug
-        locale
-      }
+      ...InbaArticleSlugEntity
     }
   }
 }
@@ -53,44 +99,5 @@ query InbaTags($locale: I18NLocaleCode!) {
     data {
       ...InbaTagEntity
     }
-  }
-}
-
-fragment InbaArticleEntity on InbaArticleEntity {
-  id
-  attributes {
-    title
-    slug
-    perex
-    publishedAt
-    coverImage {
-      data {
-        attributes {
-          url
-        }
-      }
-    }
-    inbaTag {
-      data {
-        ...InbaTagEntity
-      }
-    }
-    content
-    inbaRelease {
-      data {
-        attributes {
-          title
-          releaseDate
-          slug
-        }
-      }
-    }
-  }
-}
-
-fragment InbaTagEntity on InbaTagEntity {
-  id
-  attributes {
-    title
   }
 }

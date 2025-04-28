@@ -9,17 +9,26 @@ import ImagePlaceholder from '@/src/components/common/Image/ImagePlaceholder'
 import Tag from '@/src/components/common/Tag/Tag'
 import { CommonLinkProps } from '@/src/utils/getCommonLinkProps'
 
-type Props = {
+export type ArticleCardProps = {
   title: string
   linkProps: CommonLinkProps
-  imgSrc?: string
+  imgSrc?: string | null | undefined
   imgSizes?: string
-  date?: string
-  tag?: string
-  text?: string
+  date?: string | null | undefined
+  tag?: string | null | undefined
+  text?: string | null | undefined
 } & CardBaseProps
 
-const ArticleCard = ({ imgSrc, imgSizes, date, tag, title, text, linkProps, ...rest }: Props) => {
+const ArticleCard = ({
+  imgSrc,
+  imgSizes,
+  date,
+  tag,
+  title,
+  text,
+  linkProps,
+  ...rest
+}: ArticleCardProps) => {
   return (
     <CardBase {...rest}>
       <div className="relative aspect-16/10 shrink-0">

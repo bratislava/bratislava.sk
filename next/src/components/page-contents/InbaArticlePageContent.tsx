@@ -10,7 +10,7 @@ import Markdown from '@/src/components/formatting/Markdown/Markdown'
 import { useGeneralContext } from '@/src/components/providers/GeneralContextProvider'
 import ShareButtons from '@/src/components/sections/ShareButtons'
 import { InbaArticleEntityFragment } from '@/src/services/graphql'
-import { formatDate, getNumericLocalDate } from '@/src/utils/formatDate'
+import { formatDate } from '@/src/utils/formatDate'
 import { getPageBreadcrumbs } from '@/src/utils/pageUtils_Deprecated'
 import { useTranslation } from '@/src/utils/useTranslation'
 
@@ -40,11 +40,14 @@ const InbaArticlePageContent = ({ inbaArticle }: InbaArticlePageContentProps) =>
 
   return (
     <>
-      {/* Header */}
       <PageHeader
         title={inbaArticle.attributes?.title}
         breadcrumbs={breadcrumbs}
-        subtext={inbaArticle && getNumericLocalDate(inbaArticle.attributes?.publishedAt)}
+        subtext={
+          inbaArticle.attributes?.publishedAt
+            ? formatDate(inbaArticle.attributes.publishedAt)
+            : null
+        }
         tag={inbaTagTitle}
         imageSrc={inbaArticle.attributes?.coverImage?.data?.attributes?.url}
       />
