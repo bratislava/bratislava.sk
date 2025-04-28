@@ -36,7 +36,13 @@ export const roleOrderingScore = (role: string | null | undefined) => {
     score = 3
   } else if (role.startsWith('Zástup')) {
     score = 2
-  } else if (role.startsWith('Hovor')) {
+  } else if (
+    role.startsWith('Hovor') ||
+    role.includes('sekret') ||
+    role.includes('Sekret') ||
+    role.includes('asistent') ||
+    role.includes('Asistent')
+  ) {
     score = 1
   }
 
