@@ -19,7 +19,7 @@ const FaqsGroup = ({ faqs }: FaqsGroupProps) => {
           return (
             // eslint-disable-next-line react/no-array-index-key
             <Accordion key={index} title={faq.attributes.title}>
-              <Markdown content={faq.attributes.body} variant="small-no-respo" />
+              <Markdown content={faq.attributes.body} variant="small" />
             </Accordion>
           )
         })

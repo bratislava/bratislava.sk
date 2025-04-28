@@ -54,32 +54,20 @@
     @apply text-size-h6 lg:text-size-h6-r;
   }
 
-  .text-large-respo {
-    @apply text-size-p-default lg:text-size-p-large;
-  }
-
-  .text-default-respo {
-    @apply text-size-p-small lg:text-size-p-default;
-  }
-
   .text-large {
-    @apply text-size-p-large;
+    @apply text-size-p-large-r lg:text-size-p-large;
   }
 
   .text-default {
-    @apply text-size-p-default;
+    @apply text-size-p-default-r lg:text-size-p-default;
   }
 
-  .text-small {
-    @apply text-size-p-small;
+  .text-component-default {
+    @apply text-size-component-default;
   }
 
-  .text-large {
-    @apply text-size-p-large;
-  }
-
-  .text-default {
-    @apply text-size-p-default;
+  .text-component-small {
+    @apply text-size-component-small;
   }
 
   .text-button {

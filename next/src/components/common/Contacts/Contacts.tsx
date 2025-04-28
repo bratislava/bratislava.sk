@@ -42,7 +42,7 @@ const Contacts = ({ section }: ContactsProps) => {
         })}
       >
         <Typography type="h2">{section.title}</Typography>
-        {section.description && <Markdown content={section.description} variant="small-no-respo" />}
+        {section.description && <Markdown content={section.description} />}
       </div>
       <div
         className={cn('hidden md:block', {

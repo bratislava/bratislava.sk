@@ -42,7 +42,7 @@ const OrganizationalStructureAccordionCard = ({
               <>
                 <div className="flex gap-x-4">
                   <Mail className="max-md:hidden" />
-                  <div className="text-small lg:text-default font-semibold">
+                  <div className="text-component-small lg:text-default font-semibold">
                     <div className="flex lg:hidden" data-cy="structure-accordion-card-email-mobile">
                       {mail}
                     </div>
@@ -52,7 +52,7 @@ const OrganizationalStructureAccordionCard = ({
                   </div>
                 </div>
                 {mailUserName?.length > mailBreakpoint && (
-                  <div className="text-small lg:text-default hidden font-semibold lg:flex lg:pl-12">
+                  <div className="text-component-small lg:text-default hidden font-semibold lg:flex lg:pl-12">
                     @{mailOrganization}
                   </div>
                 )}

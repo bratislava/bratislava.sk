@@ -50,7 +50,7 @@ const Testimonials = ({ section }: TestimonialsSectionProps) => {
     <div className="grid grid-cols-1 gap-6 md:grid-cols-12 md:gap-8">
       <div className="col-span-1 flex flex-col gap-3 md:col-span-5">
         {section.title ? <Typography type="h2">{section.title}</Typography> : null}
-        {section.text ? <Markdown content={section.text} variant="small-no-respo" /> : null}
+        {section.text ? <Markdown content={section.text} variant="small" /> : null}
       </div>
       <div className="col-span-1 hidden md:block" />
       <div className="col-span-1 md:col-span-6">

@@ -24,7 +24,7 @@ const MobileBreadcrumbs = ({ breadcrumbs }: BreadcrumbsProps) => {
   return (
     <div className="relative">
       <div className="flex justify-between">
-        <div className="text-small -mx-4 flex items-center gap-2 font-medium">
+        <div className="text-component-small -mx-4 flex items-center gap-2 font-medium">
           <Button
             onPress={goBack}
             variant="link"
@@ -53,7 +53,7 @@ const MobileBreadcrumbs = ({ breadcrumbs }: BreadcrumbsProps) => {
           <ol className="flex flex-col flex-wrap gap-1 py-2">
             {withHomeWithoutCurrent.map((breadcrumb, index) => (
               // eslint-disable-next-line react/no-array-index-key
-              <li className="text-small font-medium" key={index}>
+              <li className="text-component-small font-medium" key={index}>
                 {breadcrumb.path ? (
                   <MLink href={breadcrumb.path} variant="underlined" className="flex gap-1">
                     <BreadcrumbsChevronIcon className="shrink-0 rotate-180" />

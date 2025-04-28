@@ -10,6 +10,7 @@ import CategoryCardShowcase from '@/src/components/styleguide/showcases/Category
 import ContactsShowcase from '@/src/components/styleguide/showcases/ContactsShowcase'
 import EventCardShowcase from '@/src/components/styleguide/showcases/EventCardShowcase'
 import HomepageHorizontalCardShowcase from '@/src/components/styleguide/showcases/HomepageHorizontalCardShowcase'
+import MarkdownShowcase from '@/src/components/styleguide/showcases/MarkdownShowcase'
 import SpinnerShowCase from '@/src/components/styleguide/showcases/SpinnerShowCase'
 import TagShowCase from '@/src/components/styleguide/showcases/TagShowCase'
 import StyleGuideWrapper from '@/src/components/styleguide/StyleGuideWrapper'
@@ -23,6 +24,7 @@ const Styleguide = () => {
   return (
     <StyleGuideWrapper>
       {/* HERE ADD SHOWCASES */}
+      <MarkdownShowcase />
       <TagShowCase />
       <ButtonShowCase />
       <SpinnerShowCase />

@@ -57,7 +57,7 @@ const NumericalListItem = ({
         </div>
         <div
           className={cn(
-            'text-large-respo pl-5 lg:pl-11',
+            'text-large pl-5 lg:pl-11',
             {
               'pt-0': variant === 'combined',
             },
