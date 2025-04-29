@@ -47,22 +47,10 @@ describe('OS01 -', { testIsolation: false }, () => {
               'contain',
               'Primátor',
             )
-            cy.wrap(Cypress.$(`[data-cy=structure-accordion-card-name]`, content)).should(
+            cy.wrap(Cypress.$(`[data-cy=structure-accordion-card-email]`, content)).should(
               'contain',
-              'Vallo Matúš, Ing. arch.',
+              'primator@bratislava.sk',
             )
-
-            if (device === 'mobile') {
-              cy.wrap(Cypress.$(`[data-cy=structure-accordion-card-email-mobile]`, content)).should(
-                'contain',
-                'primator@bratislava.sk',
-              )
-            } else {
-              cy.wrap(Cypress.$(`[data-cy=structure-accordion-card-email]`, content)).should(
-                'contain',
-                'primator@bratislava.sk',
-              )
-            }
           })
         })
       })

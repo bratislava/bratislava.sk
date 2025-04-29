@@ -49,21 +49,19 @@ const OrganizationalStructureAccordion = ({
       </div>
 
       {isOpen && (
-        <div className={cn({ 'pt-8': !group.users?.length })}>
+        <div className={cn('ml-4 lg:ml-8', { 'pt-8': !group.users?.length })}>
           {group.users?.length ? (
             <OrganizationalStructureAccordionCards users={group.users} />
           ) : null}
-          {group.groups?.length ? (
-            <div className="lg:ml-8">
-              {group.groups.map((groupTmp) => (
+          {group.groups?.length
+            ? group.groups.map((groupTmp) => (
                 <OrganizationalStructureAccordion
                   key={groupTmp.id}
                   group={groupTmp}
                   level={level + 1}
                 />
-              ))}
-            </div>
-          ) : null}
+              ))
+            : null}
         </div>
       )}
     </div>
