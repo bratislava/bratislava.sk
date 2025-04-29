@@ -132,26 +132,27 @@ const RegulationPageContent = ({ regulation }: RegulationPageContentProps) => {
               {t('Regulation.amendments')}
             </Typography>
             {amendments?.length ? (
-              <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+              <ul className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
                 {amendments?.map((amendment) => {
-                  return (
-                    <RegulationCard
-                      title={`VZN ${amendment.attributes?.regNumber ?? ''}`}
-                      className="w-full"
-                      key={amendment.id}
-                      isUplneZnenie={amendment.attributes?.isFullTextRegulation}
-                      metadata={
-                        amendment.attributes?.attachments?.data.length
-                          ? t('Regulation.numberOfAttachments', {
-                              count: amendment.attributes?.attachments?.data.length,
-                            })
-                          : null
-                      }
-                      path={`/vzn/${amendment.attributes?.slug ?? ''}`}
-                    />
-                  )
+                  return amendment.attributes ? (
+                    <li key={amendment.id}>
+                      <RegulationCard
+                        title={`VZN ${amendment.attributes.regNumber}`}
+                        className="w-full"
+                        isUplneZnenie={amendment.attributes.isFullTextRegulation}
+                        metadata={
+                          amendment.attributes.attachments?.data.length
+                            ? t('Regulation.numberOfAttachments', {
+                                count: amendment.attributes.attachments?.data.length,
+                              })
+                            : null
+                        }
+                        path={`/vzn/${amendment.attributes.slug}`}
+                      />
+                    </li>
+                  ) : null
                 })}
-              </div>
+              </ul>
             ) : (
               <Typography type="p">{t('Regulation.noAmendmentsMessage')}</Typography>
             )}

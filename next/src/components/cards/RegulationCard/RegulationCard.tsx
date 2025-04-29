@@ -10,7 +10,6 @@ export type RegulationCardProps = {
   title: string
   path?: string
   className?: string
-  ariaLabel?: string
   isUplneZnenie?: boolean | null | undefined
   metadata?: string | null
 }
@@ -26,7 +25,6 @@ const RegulationCard = ({
   className,
   isUplneZnenie,
   metadata,
-  ariaLabel,
 }: RegulationCardProps) => {
   const { t } = useTranslation()
 
@@ -41,12 +39,11 @@ const RegulationCard = ({
       <div className="flex flex-col gap-1">
         <MLink
           href={path ?? '#'}
-          className="text-h5 line-clamp-1 break-words font-bold lg:line-clamp-3"
+          className="text-h6 break-words font-bold"
           stretched
           variant="underlineOnHover"
           target="_blank"
           rel="noreferrer"
-          aria-label={ariaLabel ?? t('Regulation.aria.linkToRegulationAriaLabel', { title })}
         >
           {title}
         </MLink>
