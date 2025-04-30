@@ -9,7 +9,7 @@ const OrganizationalStructureAccordionCards = ({
   users,
 }: OrganizationalStructureAccordionCardsProps) => {
   return (
-    <ul className="my-8 grid w-full gap-3 md:grid-cols-2 md:gap-8 lg:grid-cols-3">
+    <ul className="my-8 flex w-full flex-col gap-3 md:grid md:grid-cols-2 md:gap-8 lg:grid-cols-3">
       {users.map((user) => {
         const mail = user.otherMails?.length ? user.otherMails[0] : user.mail
 
