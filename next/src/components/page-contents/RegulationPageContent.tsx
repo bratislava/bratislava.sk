@@ -2,13 +2,14 @@ import { Typography } from '@bratislava/component-library'
 import React, { Fragment } from 'react'
 
 import FileRowCard from '@/src/components/cards/FileRowCard'
-import RegulationCard from '@/src/components/cards/RegulationCard/RegulationCard'
-import RegulationDetailMessage from '@/src/components/cards/RegulationCard/RegulationDetailMessage'
+import RegulationRowCard from '@/src/components/cards/RegulationRowCard'
 import HorizontalDivider from '@/src/components/common/Divider/HorizontalDivider'
 import MLink from '@/src/components/common/MLink/MLink'
 import PageHeader from '@/src/components/common/PageHeader/PageHeader'
+import RegulationDetailMessage from '@/src/components/common/Regulations/RegulationDetailMessage'
 import SectionContainer from '@/src/components/common/SectionContainer/SectionContainer'
 import { RegulationEntityFragment } from '@/src/services/graphql'
+import { formatDate } from '@/src/utils/formatDate'
 import { formatFileExtension } from '@/src/utils/formatFileExtension'
 import { formatFileSize } from '@/src/utils/formatFileSize'
 import { isDefined } from '@/src/utils/isDefined'
@@ -132,24 +133,28 @@ const RegulationPageContent = ({ regulation }: RegulationPageContentProps) => {
               {t('Regulation.amendments')}
             </Typography>
             {amendments?.length ? (
-              <ul className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
-                {amendments?.map((amendment) => {
+              <ul className="flex flex-col rounded-lg border-2 py-2">
+                {amendments?.map((amendment, index) => {
                   return amendment.attributes ? (
-                    <li key={amendment.id}>
-                      <RegulationCard
-                        title={`VZN ${amendment.attributes.regNumber}`}
-                        className="w-full"
-                        isUplneZnenie={amendment.attributes.isFullTextRegulation}
-                        metadata={
-                          amendment.attributes.attachments?.data.length
-                            ? t('Regulation.numberOfAttachments', {
-                                count: amendment.attributes.attachments?.data.length,
-                              })
-                            : null
-                        }
-                        path={`/vzn/${amendment.attributes.slug}`}
-                      />
-                    </li>
+                    <Fragment key={amendment.id}>
+                      {index > 0 ? <HorizontalDivider asListItem className="mx-4 lg:mx-6" /> : null}
+                      <li className="w-full">
+                        <RegulationRowCard
+                          title={`VZN ${amendment.attributes.regNumber}`}
+                          isFullTextRegulation={amendment.attributes.isFullTextRegulation}
+                          metadata={[
+                            formatDate(amendment.attributes.effectiveFrom),
+                            amendment.attributes.attachments?.data.length
+                              ? t('Regulation.numberOfAttachments', {
+                                  count: amendment.attributes.attachments?.data.length,
+                                })
+                              : null,
+                          ].filter(isDefined)}
+                          path={`/vzn/${amendment.attributes.slug}`}
+                          className="px-4 lg:px-6"
+                        />
+                      </li>
+                    </Fragment>
                   ) : null
                 })}
               </ul>

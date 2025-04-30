@@ -5,6 +5,7 @@ import Alert from '@/src/components/common/Alert_Deprecated/Alert_Deprecated'
 import MLink from '@/src/components/common/MLink/MLink'
 import { RegulationEntityFragment } from '@/src/services/graphql'
 import { formatDate } from '@/src/utils/formatDate'
+import { getRegulationMetadata } from '@/src/utils/getRegulationMetadata'
 import { isDefined } from '@/src/utils/isDefined'
 
 type RegulationDetailMessageProps = {
@@ -27,36 +28,31 @@ const RegulationMLink = ({ regNumber }: RegulationMLinkProps) => {
 }
 
 const RegulationDetailMessage = ({ regulation }: RegulationDetailMessageProps) => {
+  if (!regulation.attributes) {
+    return null
+  }
+
   const amending = regulation.attributes?.amending?.data.filter(isDefined)
   const cancellation = regulation.attributes?.cancellation?.data
 
-  const isCancelled = isDefined(cancellation)
-
-  // We want to show whether this regulation is amending any cancelled regulations, because in that case, this regulation is also cancelled
-  const cancelledAmendees = amending?.filter(
-    (amendee) => isDefined(amendee) && amendee.attributes?.cancellation?.data,
-  )
-  const hasCancelledAmendees = (cancelledAmendees?.length ?? 0) > 0
+  const { isCancelledDirectly, hasCancelledAmendees, cancelledAmendees, effectiveUntil } =
+    getRegulationMetadata(regulation.attributes)
 
   /* As a temporary solution, we use alert here, however incorrectly - its content should receive string,
    * but we need the ability to use bold text and links in the content.
    * A new component may be designed for this purpose.
    */
 
-  const alertType = isCancelled ? 'error' : hasCancelledAmendees ? 'warning' : 'success'
+  // The regulation is considered as cancelled if it has a direct cancellation regulation, but also if it is amending any cancelled regulations
+  const alertType = isCancelledDirectly || hasCancelledAmendees ? 'error' : 'success'
+  const alertMessage = isCancelledDirectly || hasCancelledAmendees ? 'Zrušené' : 'Platné'
 
-  const alertMessage = isCancelled
-    ? 'Zrušené'
-    : hasCancelledAmendees
-      ? 'Dopĺňa neplatné VZN'
-      : 'Platné'
-
-  // TODO Add sk localization after this component is refactored
-  const alertContent = isCancelled ? (
+  // TODO translations - use translations after this component is refactored
+  const alertContent = isCancelledDirectly ? (
     <Typography type="p" className="whitespace-normal">
       Toto VZN bolo zrušené všeobecne záväzným nariadením{' '}
-      <RegulationMLink regNumber={cancellation.attributes?.regNumber} /> dňa{' '}
-      <span className="font-medium">{formatDate(cancellation?.attributes?.effectiveFrom)}</span>.
+      <RegulationMLink regNumber={cancellation?.attributes?.regNumber} /> dňa{' '}
+      <span className="font-medium">{formatDate(effectiveUntil)}</span>.
     </Typography>
   ) : hasCancelledAmendees ? (
     <Typography type="p" className="whitespace-normal">

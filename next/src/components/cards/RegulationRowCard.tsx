@@ -11,22 +11,32 @@ type Props = {
   title: string
   path?: string
   className?: string
-  isUplneZnenie?: boolean | null | undefined
+  isFullTextRegulation?: boolean | null | undefined
+  isAmendee?: boolean | null | undefined
+  isCancelled?: boolean | null | undefined
   metadata?: string[] | null
 }
 
 /**
- * Figma: https://www.figma.com/file/17wbd0MDQcMW9NbXl6UPs8/DS-ESBS%2BBK%3A-Component-library?node-id=867%3A2067&mode=dev
+ * Figma: https://www.figma.com/design/17wbd0MDQcMW9NbXl6UPs8/DS--Component-library?node-id=14811-27790&m=dev
  */
 
-const RegulationRowCard = ({ title, path, className, isUplneZnenie, metadata }: Props) => {
+const RegulationRowCard = ({
+  title,
+  path,
+  className,
+  isFullTextRegulation,
+  isAmendee,
+  isCancelled,
+  metadata,
+}: Props) => {
   const { t } = useTranslation()
 
   return (
     <CardBase className={className} variant="no-border">
-      <div className="flex flex-row items-start justify-between gap-4 py-4 lg:items-center">
-        <div className="flex flex-col gap-1">
-          <div className="flex flex-col gap-2 lg:flex-row lg:items-center lg:gap-4">
+      <div className="flex flex-row justify-between gap-4 py-4">
+        <div className="flex flex-col gap-2 lg:gap-1">
+          <div className="flex flex-col items-start gap-2 lg:flex-row lg:items-center lg:gap-4">
             <MLink
               href={path ?? '#'}
               className="text-h6 break-words font-bold"
@@ -35,9 +45,22 @@ const RegulationRowCard = ({ title, path, className, isUplneZnenie, metadata }: 
             >
               {title}
             </MLink>
-            {isUplneZnenie && (
-              <Typography type="p" size="p-small" className="rounded border px-1 py-0.5">
+            {/* TODO style https://www.figma.com/design/17wbd0MDQcMW9NbXl6UPs8/DS--Component-library?node-id=14811-28150&m=dev */}
+            {isFullTextRegulation && (
+              <Typography type="p" size="p-small" className="rounded border px-2 py-0.5">
                 {t('Regulation.fullTextRegulation')}
+              </Typography>
+            )}
+            {/* TODO style and wording */}
+            {isAmendee && (
+              <Typography type="p" size="p-small" className="rounded border px-2 py-0.5">
+                {t('Regulation.amendment')}
+              </Typography>
+            )}
+            {/* TODO style */}
+            {isCancelled && (
+              <Typography type="p" size="p-small" className="rounded border px-2 py-0.5">
+                {t('Regulation.cancelled')}
               </Typography>
             )}
           </div>
@@ -47,7 +70,8 @@ const RegulationRowCard = ({ title, path, className, isUplneZnenie, metadata }: 
             </span>
           ) : null}
         </div>
-        <div className="flex shrink-0 items-center justify-center text-grey-700 md:rounded-lg md:border-grey-200">
+        {/* TODO styling (hover...) */}
+        <div className="flex shrink-0 items-center justify-center text-grey-700">
           {/* TODO create a proper wrapper for the icon component to handle paddings */}
           <div className="p-1.5 md:p-2.5">
             <ChevronRightIcon className="size-5" />
