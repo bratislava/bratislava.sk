@@ -33,7 +33,7 @@ const OrganizationalStructureTopLevelAccordion = ({
         <div className="h-1 w-full rounded-sm border border-transparent bg-category-200" />
       </div>
       {isOpen && (
-        <div className="px-5 pt-8" data-cy="organizational-structure-accordion-content">
+        <div className="pl-4" data-cy="organizational-structure-accordion-content">
           {group.users.length > 0 && <OrganizationalStructureAccordionCards users={group.users} />}
           {group.groups.map((groupInner) => (
             <OrganizationalStructureAccordion key={groupInner.id} group={groupInner} level={1} />
