@@ -1,20 +1,7 @@
-query PagesStaticPaths {
-  pages(pagination: { limit: -1 }) {
-    data {
-      id
-      attributes {
-        slug
-      }
-    }
-  }
-}
-
-query PageBySlug($slug: String!, $locale: I18NLocaleCode!) {
-  pages(filters: { slug: { eq: $slug } }, locale: $locale) {
-    data {
-      ...PageEntity
-    }
-  }
+fragment ParentPage on Page {
+  slug
+  locale
+  title
 }
 
 fragment PageParentPages on PageEntity {
@@ -51,11 +38,28 @@ fragment PageParentPages on PageEntity {
   }
 }
 
-fragment PageEntity on PageEntity {
+fragment Localization on PageRelationResponseCollection {
+  data {
+    attributes {
+      slug
+      locale
+    }
+  }
+}
+
+fragment PageSlugEntity on PageEntity {
   id
   attributes {
     slug
     title
+    locale
+  }
+}
+
+fragment PageEntity on PageEntity {
+  ...PageSlugEntity
+  attributes {
+    alias
     subtext
     pageColor
     metaDiscription
@@ -71,7 +75,6 @@ fragment PageEntity on PageEntity {
     sections {
       ...Sections
     }
-    locale
     localizations {
       ...Localization
     }
@@ -96,17 +99,35 @@ fragment PageEntity on PageEntity {
   ...PageParentPages
 }
 
-fragment ParentPage on Page {
-  slug
-  locale
-  title
+query PagesStaticPaths {
+  pages(pagination: { limit: -1 }) {
+    data {
+      id
+      attributes {
+        slug
+      }
+    }
+  }
 }
 
-fragment Localization on PageRelationResponseCollection {
-  data {
-    attributes {
-      slug
-      locale
+query PageBySlug($slug: String!, $locale: I18NLocaleCode!) {
+  pages(filters: { slug: { eq: $slug } }, locale: $locale) {
+    data {
+      ...PageEntity
+    }
+  }
+}
+
+# Based on OLO: https://github.com/bratislava/olo.sk/blob/master/next/src/services/graphql/queries/pages.gql
+query PageRedirectByAlias($alias: String!, $locale: I18NLocaleCode!) {
+  pages(filters: { alias: { eq: $alias } }, locale: $locale) {
+    data {
+      ...PageSlugEntity
+    }
+  }
+  articles(filters: { alias: { eq: $alias } }, locale: $locale) {
+    data {
+      ...ArticleSlugEntity
     }
   }
 }

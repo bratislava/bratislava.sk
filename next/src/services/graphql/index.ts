@@ -8002,6 +8002,904 @@ export type PageCategoriesQuery = {
   } | null
 }
 
+export type ParentPageFragment = {
+  __typename?: 'Page'
+  slug?: string | null
+  locale?: string | null
+  title?: string | null
+}
+
+export type PageParentPagesFragment = {
+  __typename?: 'PageEntity'
+  attributes?: {
+    __typename?: 'Page'
+    slug?: string | null
+    locale?: string | null
+    title?: string | null
+    parentPage?: {
+      __typename?: 'PageEntityResponse'
+      data?: {
+        __typename?: 'PageEntity'
+        attributes?: {
+          __typename?: 'Page'
+          slug?: string | null
+          locale?: string | null
+          title?: string | null
+          parentPage?: {
+            __typename?: 'PageEntityResponse'
+            data?: {
+              __typename?: 'PageEntity'
+              attributes?: {
+                __typename?: 'Page'
+                slug?: string | null
+                locale?: string | null
+                title?: string | null
+                parentPage?: {
+                  __typename?: 'PageEntityResponse'
+                  data?: {
+                    __typename?: 'PageEntity'
+                    attributes?: {
+                      __typename?: 'Page'
+                      slug?: string | null
+                      locale?: string | null
+                      title?: string | null
+                      parentPage?: {
+                        __typename?: 'PageEntityResponse'
+                        data?: {
+                          __typename?: 'PageEntity'
+                          attributes?: {
+                            __typename?: 'Page'
+                            slug?: string | null
+                            locale?: string | null
+                            title?: string | null
+                          } | null
+                        } | null
+                      } | null
+                    } | null
+                  } | null
+                } | null
+              } | null
+            } | null
+          } | null
+        } | null
+      } | null
+    } | null
+  } | null
+}
+
+export type LocalizationFragment = {
+  __typename?: 'PageRelationResponseCollection'
+  data: Array<{
+    __typename?: 'PageEntity'
+    attributes?: { __typename?: 'Page'; slug?: string | null; locale?: string | null } | null
+  }>
+}
+
+export type PageSlugEntityFragment = {
+  __typename?: 'PageEntity'
+  id?: string | null
+  attributes?: {
+    __typename?: 'Page'
+    slug?: string | null
+    title?: string | null
+    locale?: string | null
+  } | null
+}
+
+export type PageEntityFragment = {
+  __typename?: 'PageEntity'
+  id?: string | null
+  attributes?: {
+    __typename?: 'Page'
+    alias?: string | null
+    subtext?: string | null
+    pageColor?: Enum_Page_Pagecolor | null
+    metaDiscription?: string | null
+    keywords?: string | null
+    slug?: string | null
+    title?: string | null
+    locale?: string | null
+    pageBackgroundImage?: {
+      __typename?: 'UploadFileEntityResponse'
+      data?: {
+        __typename?: 'UploadFileEntity'
+        id?: string | null
+        attributes?: { __typename?: 'UploadFile'; url: string } | null
+      } | null
+    } | null
+    headerLinks?: Array<{
+      __typename?: 'ComponentBlocksCommonLink'
+      label: string
+      url?: string | null
+      analyticsId?: string | null
+      page?: {
+        __typename?: 'PageEntityResponse'
+        data?: {
+          __typename?: 'PageEntity'
+          id?: string | null
+          attributes?: { __typename?: 'Page'; title?: string | null; slug?: string | null } | null
+        } | null
+      } | null
+      article?: {
+        __typename?: 'ArticleEntityResponse'
+        data?: {
+          __typename: 'ArticleEntity'
+          id?: string | null
+          attributes?: {
+            __typename?: 'Article'
+            slug: string
+            title: string
+            locale?: string | null
+          } | null
+        } | null
+      } | null
+    } | null> | null
+    sections?: Array<
+      | {
+          __typename: 'ComponentSectionsAccordion'
+          title?: string | null
+          institutions?: Array<{
+            __typename?: 'ComponentAccordionItemsInstitution'
+            title?: string | null
+            subtitle?: string | null
+            category?: string | null
+            firstColumn?: string | null
+            secondColumn?: string | null
+            thirdColumn?: string | null
+            url?: string | null
+            urlLabel?: string | null
+          } | null> | null
+          flatText?: Array<{
+            __typename?: 'ComponentAccordionItemsFlatText'
+            category?: string | null
+            content?: string | null
+            width?: Enum_Componentaccordionitemsflattext_Width | null
+            align?: Enum_Componentaccordionitemsflattext_Align | null
+            moreLinkTitle?: string | null
+            moreLinkUrl?: string | null
+            moreLinkPage?: {
+              __typename?: 'PageEntityResponse'
+              data?: {
+                __typename?: 'PageEntity'
+                attributes?: {
+                  __typename?: 'Page'
+                  slug?: string | null
+                  title?: string | null
+                  locale?: string | null
+                } | null
+              } | null
+            } | null
+            fileList?: Array<{
+              __typename?: 'ComponentBlocksFileItem'
+              id: string
+              title?: string | null
+              media: {
+                __typename?: 'UploadFileEntityResponse'
+                data?: {
+                  __typename?: 'UploadFileEntity'
+                  id?: string | null
+                  attributes?: {
+                    __typename?: 'UploadFile'
+                    url: string
+                    name: string
+                    ext?: string | null
+                    size: number
+                    createdAt?: any | null
+                    updatedAt?: any | null
+                  } | null
+                } | null
+              }
+            } | null> | null
+          } | null> | null
+          institutionsNarrow?: Array<{
+            __typename?: 'ComponentAccordionItemsInstitutionNarrow'
+            title?: string | null
+            subtitle?: string | null
+            category?: string | null
+            url?: string | null
+            urlLabel?: string | null
+          } | null> | null
+        }
+      | {
+          __typename: 'ComponentSectionsArticles'
+          title?: string | null
+          text?: string | null
+          showAll?: boolean | null
+          category?: {
+            __typename?: 'PageCategoryEntityResponse'
+            data?: {
+              __typename?: 'PageCategoryEntity'
+              id?: string | null
+              attributes?: {
+                __typename?: 'PageCategory'
+                title?: string | null
+                color?: Enum_Pagecategory_Color | null
+              } | null
+            } | null
+          } | null
+        }
+      | {
+          __typename: 'ComponentSectionsBanner'
+          content?: string | null
+          contentPosition: Enum_Componentsectionsbanner_Contentposition
+          bannerTitle: string
+          bannerVariant: Enum_Componentsectionsbanner_Variant
+          media: {
+            __typename?: 'UploadFileEntityResponse'
+            data?: {
+              __typename?: 'UploadFileEntity'
+              attributes?: { __typename?: 'UploadFile'; url: string } | null
+            } | null
+          }
+          primaryLink?: {
+            __typename?: 'ComponentBlocksCommonLink'
+            label: string
+            url?: string | null
+            analyticsId?: string | null
+            page?: {
+              __typename?: 'PageEntityResponse'
+              data?: {
+                __typename?: 'PageEntity'
+                id?: string | null
+                attributes?: {
+                  __typename?: 'Page'
+                  title?: string | null
+                  slug?: string | null
+                } | null
+              } | null
+            } | null
+            article?: {
+              __typename?: 'ArticleEntityResponse'
+              data?: {
+                __typename: 'ArticleEntity'
+                id?: string | null
+                attributes?: {
+                  __typename?: 'Article'
+                  slug: string
+                  title: string
+                  locale?: string | null
+                } | null
+              } | null
+            } | null
+          } | null
+          secondaryLink?: {
+            __typename?: 'ComponentBlocksCommonLink'
+            label: string
+            url?: string | null
+            analyticsId?: string | null
+            page?: {
+              __typename?: 'PageEntityResponse'
+              data?: {
+                __typename?: 'PageEntity'
+                id?: string | null
+                attributes?: {
+                  __typename?: 'Page'
+                  title?: string | null
+                  slug?: string | null
+                } | null
+              } | null
+            } | null
+            article?: {
+              __typename?: 'ArticleEntityResponse'
+              data?: {
+                __typename: 'ArticleEntity'
+                id?: string | null
+                attributes?: {
+                  __typename?: 'Article'
+                  slug: string
+                  title: string
+                  locale?: string | null
+                } | null
+              } | null
+            } | null
+          } | null
+          tertiaryLink?: {
+            __typename?: 'ComponentBlocksCommonLink'
+            label: string
+            url?: string | null
+            analyticsId?: string | null
+            page?: {
+              __typename?: 'PageEntityResponse'
+              data?: {
+                __typename?: 'PageEntity'
+                id?: string | null
+                attributes?: {
+                  __typename?: 'Page'
+                  title?: string | null
+                  slug?: string | null
+                } | null
+              } | null
+            } | null
+            article?: {
+              __typename?: 'ArticleEntityResponse'
+              data?: {
+                __typename: 'ArticleEntity'
+                id?: string | null
+                attributes?: {
+                  __typename?: 'Article'
+                  slug: string
+                  title: string
+                  locale?: string | null
+                } | null
+              } | null
+            } | null
+          } | null
+        }
+      | {
+          __typename: 'ComponentSectionsCalculator'
+          hasBackground?: boolean | null
+          single_adult_value?: number | null
+          another_adult_value?: number | null
+          child_value?: number | null
+        }
+      | {
+          __typename: 'ComponentSectionsColumnedText'
+          content?: string | null
+          contentAlignment?: Enum_Componentsectionscolumnedtext_Contentalignment | null
+        }
+      | {
+          __typename: 'ComponentSectionsComparisonSection'
+          title?: string | null
+          text?: string | null
+          textAlignComparison: Enum_Componentsectionscomparisonsection_Textalign
+          cards: Array<{
+            __typename?: 'ComponentBlocksComparisonCard'
+            title: string
+            items: Array<{ __typename?: 'ComponentBlocksComparisonItem'; label: string } | null>
+            iconMedia?: {
+              __typename?: 'UploadFileEntityResponse'
+              data?: {
+                __typename?: 'UploadFileEntity'
+                attributes?: { __typename?: 'UploadFile'; url: string } | null
+              } | null
+            } | null
+          } | null>
+        }
+      | {
+          __typename: 'ComponentSectionsContactsSection'
+          id: string
+          title?: string | null
+          description?: string | null
+          hasBackground?: boolean | null
+          type: Enum_Componentsectionscontactssection_Type
+          addressContacts?: Array<{
+            __typename?: 'ComponentBlocksContactCard'
+            overrideLabel?: string | null
+            value: string
+          } | null> | null
+          emailContacts?: Array<{
+            __typename?: 'ComponentBlocksContactCard'
+            overrideLabel?: string | null
+            value: string
+          } | null> | null
+          phoneContacts?: Array<{
+            __typename?: 'ComponentBlocksContactCard'
+            overrideLabel?: string | null
+            value: string
+          } | null> | null
+          webContacts?: Array<{
+            __typename?: 'ComponentBlocksContactCard'
+            overrideLabel?: string | null
+            value: string
+          } | null> | null
+        }
+      | {
+          __typename: 'ComponentSectionsDivider'
+          style?: Enum_Componentsectionsdivider_Style | null
+        }
+      | {
+          __typename: 'ComponentSectionsFaqCategories'
+          title?: string | null
+          text?: string | null
+          faqCategories?: {
+            __typename?: 'FaqCategoryRelationResponseCollection'
+            data: Array<{
+              __typename?: 'FaqCategoryEntity'
+              id?: string | null
+              attributes?: {
+                __typename?: 'FaqCategory'
+                title: string
+                slug: string
+                faqs?: {
+                  __typename?: 'FaqRelationResponseCollection'
+                  data: Array<{
+                    __typename?: 'FaqEntity'
+                    id?: string | null
+                    attributes?: { __typename?: 'Faq'; title: string; body?: string | null } | null
+                  }>
+                } | null
+              } | null
+            }>
+          } | null
+        }
+      | {
+          __typename: 'ComponentSectionsFaqs'
+          title?: string | null
+          text?: string | null
+          faqs?: {
+            __typename?: 'FaqRelationResponseCollection'
+            data: Array<{
+              __typename?: 'FaqEntity'
+              id?: string | null
+              attributes?: { __typename?: 'Faq'; title: string; body?: string | null } | null
+            }>
+          } | null
+        }
+      | {
+          __typename: 'ComponentSectionsFileList'
+          title?: string | null
+          text?: string | null
+          fileList?: Array<{
+            __typename?: 'ComponentBlocksFile'
+            id: string
+            title?: string | null
+            media?: {
+              __typename?: 'UploadFileEntityResponse'
+              data?: {
+                __typename?: 'UploadFileEntity'
+                id?: string | null
+                attributes?: {
+                  __typename?: 'UploadFile'
+                  url: string
+                  name: string
+                  ext?: string | null
+                  size: number
+                  createdAt?: any | null
+                  updatedAt?: any | null
+                } | null
+              } | null
+            } | null
+          } | null> | null
+        }
+      | {
+          __typename: 'ComponentSectionsGallery'
+          title?: string | null
+          text?: string | null
+          medias: {
+            __typename?: 'UploadFileRelationResponseCollection'
+            data: Array<{
+              __typename?: 'UploadFileEntity'
+              id?: string | null
+              attributes?: {
+                __typename?: 'UploadFile'
+                url: string
+                width?: number | null
+                height?: number | null
+                caption?: string | null
+                alternativeText?: string | null
+                name: string
+              } | null
+            }>
+          }
+        }
+      | {
+          __typename: 'ComponentSectionsIconTitleDesc'
+          title?: string | null
+          list?: Array<{
+            __typename?: 'ComponentBlocksIconWithTitleAndDescription'
+            title?: string | null
+            desc?: string | null
+            disableIconBackground?: boolean | null
+            icon?: {
+              __typename?: 'UploadFileEntityResponse'
+              data?: {
+                __typename?: 'UploadFileEntity'
+                id?: string | null
+                attributes?: { __typename?: 'UploadFile'; url: string } | null
+              } | null
+            } | null
+          } | null> | null
+        }
+      | {
+          __typename: 'ComponentSectionsIframe'
+          url: string
+          iframeWidth: Enum_Componentsectionsiframe_Iframewidth
+          iframeHeight: string
+          fullHeight: boolean
+          allowFullscreen: boolean
+          css?: string | null
+          allowGeolocation?: boolean | null
+        }
+      | {
+          __typename: 'ComponentSectionsInbaArticlesList'
+          title?: string | null
+          text?: string | null
+        }
+      | { __typename: 'ComponentSectionsInbaReleases'; title?: string | null; text?: string | null }
+      | {
+          __typename: 'ComponentSectionsLinks'
+          title?: string | null
+          pageLinks?: Array<{
+            __typename?: 'ComponentBlocksPageLink'
+            title?: string | null
+            url?: string | null
+            page?: {
+              __typename?: 'PageEntityResponse'
+              data?: {
+                __typename?: 'PageEntity'
+                attributes?: {
+                  __typename?: 'Page'
+                  title?: string | null
+                  slug?: string | null
+                  locale?: string | null
+                } | null
+              } | null
+            } | null
+          } | null> | null
+        }
+      | {
+          __typename: 'ComponentSectionsNarrowText'
+          content?: string | null
+          width?: Enum_Componentsectionsnarrowtext_Width | null
+          align?: Enum_Componentsectionsnarrowtext_Align | null
+        }
+      | {
+          __typename: 'ComponentSectionsNumericalList'
+          id: string
+          title?: string | null
+          variant?: Enum_Componentsectionsnumericallist_Variant | null
+          buttonText?: string | null
+          buttonLink?: string | null
+          items?: Array<{
+            __typename?: 'ComponentBlocksNumericalListItem'
+            text?: string | null
+          } | null> | null
+        }
+      | { __typename: 'ComponentSectionsOfficialBoard' }
+      | { __typename: 'ComponentSectionsOrganizationalStructure'; title?: string | null }
+      | {
+          __typename: 'ComponentSectionsProsAndConsSection'
+          title?: string | null
+          text?: string | null
+          textAlignProsAndCons: Enum_Componentsectionsprosandconssection_Textalign
+          pros: {
+            __typename?: 'ComponentBlocksProsAndConsCard'
+            title: string
+            items: Array<{ __typename?: 'ComponentBlocksComparisonItem'; label: string } | null>
+          }
+          cons: {
+            __typename?: 'ComponentBlocksProsAndConsCard'
+            title: string
+            items: Array<{ __typename?: 'ComponentBlocksComparisonItem'; label: string } | null>
+          }
+        }
+      | {
+          __typename: 'ComponentSectionsRegulations'
+          regulations?: {
+            __typename?: 'RegulationRelationResponseCollection'
+            data: Array<{
+              __typename?: 'RegulationEntity'
+              id?: string | null
+              attributes?: {
+                __typename?: 'Regulation'
+                regNumber: string
+                slug: string
+                titleText?: string | null
+                fullTitle: string
+                effectiveFrom: any
+                category: Enum_Regulation_Category
+                isFullTextRegulation: boolean
+                mainDocument: {
+                  __typename?: 'UploadFileEntityResponse'
+                  data?: {
+                    __typename?: 'UploadFileEntity'
+                    id?: string | null
+                    attributes?: {
+                      __typename?: 'UploadFile'
+                      url: string
+                      name: string
+                      ext?: string | null
+                      size: number
+                      createdAt?: any | null
+                      updatedAt?: any | null
+                    } | null
+                  } | null
+                }
+                attachments?: {
+                  __typename?: 'UploadFileRelationResponseCollection'
+                  data: Array<{
+                    __typename?: 'UploadFileEntity'
+                    id?: string | null
+                    attributes?: {
+                      __typename?: 'UploadFile'
+                      url: string
+                      name: string
+                      ext?: string | null
+                      size: number
+                      createdAt?: any | null
+                      updatedAt?: any | null
+                    } | null
+                  }>
+                } | null
+                amendments?: {
+                  __typename?: 'RegulationRelationResponseCollection'
+                  data: Array<{
+                    __typename?: 'RegulationEntity'
+                    id?: string | null
+                    attributes?: {
+                      __typename?: 'Regulation'
+                      regNumber: string
+                      slug: string
+                      effectiveFrom: any
+                      isFullTextRegulation: boolean
+                      attachments?: {
+                        __typename?: 'UploadFileRelationResponseCollection'
+                        data: Array<{
+                          __typename?: 'UploadFileEntity'
+                          id?: string | null
+                          attributes?: {
+                            __typename?: 'UploadFile'
+                            url: string
+                            name: string
+                            ext?: string | null
+                            size: number
+                            createdAt?: any | null
+                            updatedAt?: any | null
+                          } | null
+                        }>
+                      } | null
+                    } | null
+                  }>
+                } | null
+                amending?: {
+                  __typename?: 'RegulationRelationResponseCollection'
+                  data: Array<{
+                    __typename?: 'RegulationEntity'
+                    id?: string | null
+                    attributes?: {
+                      __typename?: 'Regulation'
+                      regNumber: string
+                      slug: string
+                      effectiveFrom: any
+                      cancellation?: {
+                        __typename?: 'RegulationEntityResponse'
+                        data?: {
+                          __typename?: 'RegulationEntity'
+                          id?: string | null
+                          attributes?: {
+                            __typename?: 'Regulation'
+                            regNumber: string
+                            slug: string
+                            effectiveFrom: any
+                          } | null
+                        } | null
+                      } | null
+                      amending?: {
+                        __typename?: 'RegulationRelationResponseCollection'
+                        data: Array<{
+                          __typename?: 'RegulationEntity'
+                          id?: string | null
+                          attributes?: {
+                            __typename?: 'Regulation'
+                            regNumber: string
+                            slug: string
+                            cancellation?: {
+                              __typename?: 'RegulationEntityResponse'
+                              data?: {
+                                __typename?: 'RegulationEntity'
+                                id?: string | null
+                                attributes?: {
+                                  __typename?: 'Regulation'
+                                  regNumber: string
+                                  slug: string
+                                  effectiveFrom: any
+                                } | null
+                              } | null
+                            } | null
+                          } | null
+                        }>
+                      } | null
+                    } | null
+                  }>
+                } | null
+                cancellation?: {
+                  __typename?: 'RegulationEntityResponse'
+                  data?: {
+                    __typename?: 'RegulationEntity'
+                    id?: string | null
+                    attributes?: {
+                      __typename?: 'Regulation'
+                      regNumber: string
+                      slug: string
+                      effectiveFrom: any
+                    } | null
+                  } | null
+                } | null
+                cancelling?: {
+                  __typename?: 'RegulationRelationResponseCollection'
+                  data: Array<{
+                    __typename?: 'RegulationEntity'
+                    id?: string | null
+                    attributes?: {
+                      __typename?: 'Regulation'
+                      regNumber: string
+                      slug: string
+                      effectiveFrom: any
+                    } | null
+                  }>
+                } | null
+              } | null
+            }>
+          } | null
+        }
+      | { __typename: 'ComponentSectionsRegulationsList' }
+      | {
+          __typename: 'ComponentSectionsTestimonials'
+          title?: string | null
+          text?: string | null
+          hasBackground?: boolean | null
+          testimonials: Array<{
+            __typename?: 'ComponentBlocksTestimonialItem'
+            id: string
+            name: string
+            quote: string
+          } | null>
+        }
+      | {
+          __typename: 'ComponentSectionsTextWithImage'
+          content?: string | null
+          imagePosition?: Enum_Componentsectionstextwithimage_Imageposition | null
+          imageSrc?: {
+            __typename?: 'UploadFileEntityResponse'
+            data?: {
+              __typename?: 'UploadFileEntity'
+              attributes?: {
+                __typename?: 'UploadFile'
+                url: string
+                alternativeText?: string | null
+                width?: number | null
+                height?: number | null
+              } | null
+            } | null
+          } | null
+        }
+      | {
+          __typename: 'ComponentSectionsTimeline'
+          timelineItems?: Array<{
+            __typename?: 'ComponentBlocksTimelineItem'
+            id: string
+            title?: string | null
+            content?: string | null
+          } | null> | null
+        }
+      | {
+          __typename: 'ComponentSectionsVideos'
+          id: string
+          title?: string | null
+          subtitle?: string | null
+          videos?: Array<{
+            __typename?: 'ComponentBlocksVideo'
+            id: string
+            title?: string | null
+            speaker?: string | null
+            url?: string | null
+          } | null> | null
+        }
+      | {
+          __typename: 'ComponentSectionsWaves'
+          position?: Enum_Componentsectionswaves_Position | null
+        }
+      | { __typename: 'Error' }
+      | null
+    > | null
+    localizations?: {
+      __typename?: 'PageRelationResponseCollection'
+      data: Array<{
+        __typename?: 'PageEntity'
+        attributes?: { __typename?: 'Page'; slug?: string | null; locale?: string | null } | null
+      }>
+    } | null
+    pageHeaderSections?: Array<
+      | {
+          __typename: 'ComponentSectionsSubpageList'
+          id: string
+          subpageList?: Array<{
+            __typename?: 'ComponentBlocksPageLink'
+            title?: string | null
+            url?: string | null
+            page?: {
+              __typename?: 'PageEntityResponse'
+              data?: {
+                __typename?: 'PageEntity'
+                attributes?: {
+                  __typename?: 'Page'
+                  title?: string | null
+                  slug?: string | null
+                  locale?: string | null
+                } | null
+              } | null
+            } | null
+          } | null> | null
+        }
+      | { __typename: 'Error' }
+      | null
+    > | null
+    pageCategory?: {
+      __typename?: 'PageCategoryEntityResponse'
+      data?: {
+        __typename?: 'PageCategoryEntity'
+        id?: string | null
+        attributes?: {
+          __typename?: 'PageCategory'
+          title?: string | null
+          color?: Enum_Pagecategory_Color | null
+        } | null
+      } | null
+    } | null
+    relatedContents?: {
+      __typename?: 'TagRelationResponseCollection'
+      data: Array<{
+        __typename?: 'TagEntity'
+        id?: string | null
+        attributes?: {
+          __typename?: 'Tag'
+          title?: string | null
+          pageCategory?: {
+            __typename?: 'PageCategoryEntityResponse'
+            data?: {
+              __typename?: 'PageCategoryEntity'
+              id?: string | null
+              attributes?: {
+                __typename?: 'PageCategory'
+                title?: string | null
+                color?: Enum_Pagecategory_Color | null
+              } | null
+            } | null
+          } | null
+        } | null
+      }>
+    } | null
+    parentPage?: {
+      __typename?: 'PageEntityResponse'
+      data?: {
+        __typename?: 'PageEntity'
+        attributes?: {
+          __typename?: 'Page'
+          slug?: string | null
+          locale?: string | null
+          title?: string | null
+          parentPage?: {
+            __typename?: 'PageEntityResponse'
+            data?: {
+              __typename?: 'PageEntity'
+              attributes?: {
+                __typename?: 'Page'
+                slug?: string | null
+                locale?: string | null
+                title?: string | null
+                parentPage?: {
+                  __typename?: 'PageEntityResponse'
+                  data?: {
+                    __typename?: 'PageEntity'
+                    attributes?: {
+                      __typename?: 'Page'
+                      slug?: string | null
+                      locale?: string | null
+                      title?: string | null
+                      parentPage?: {
+                        __typename?: 'PageEntityResponse'
+                        data?: {
+                          __typename?: 'PageEntity'
+                          attributes?: {
+                            __typename?: 'Page'
+                            slug?: string | null
+                            locale?: string | null
+                            title?: string | null
+                          } | null
+                        } | null
+                      } | null
+                    } | null
+                  } | null
+                } | null
+              } | null
+            } | null
+          } | null
+        } | null
+      } | null
+    } | null
+  } | null
+}
+
 export type PagesStaticPathsQueryVariables = Exact<{ [key: string]: never }>
 
 export type PagesStaticPathsQuery = {
@@ -8030,12 +8928,13 @@ export type PageBySlugQuery = {
       id?: string | null
       attributes?: {
         __typename?: 'Page'
-        slug?: string | null
-        title?: string | null
+        alias?: string | null
         subtext?: string | null
         pageColor?: Enum_Page_Pagecolor | null
         metaDiscription?: string | null
         keywords?: string | null
+        slug?: string | null
+        title?: string | null
         locale?: string | null
         pageBackgroundImage?: {
           __typename?: 'UploadFileEntityResponse'
@@ -8856,890 +9755,39 @@ export type PageBySlugQuery = {
   } | null
 }
 
-export type PageParentPagesFragment = {
-  __typename?: 'PageEntity'
-  attributes?: {
-    __typename?: 'Page'
-    slug?: string | null
-    locale?: string | null
-    title?: string | null
-    parentPage?: {
-      __typename?: 'PageEntityResponse'
-      data?: {
-        __typename?: 'PageEntity'
-        attributes?: {
-          __typename?: 'Page'
-          slug?: string | null
-          locale?: string | null
-          title?: string | null
-          parentPage?: {
-            __typename?: 'PageEntityResponse'
-            data?: {
-              __typename?: 'PageEntity'
-              attributes?: {
-                __typename?: 'Page'
-                slug?: string | null
-                locale?: string | null
-                title?: string | null
-                parentPage?: {
-                  __typename?: 'PageEntityResponse'
-                  data?: {
-                    __typename?: 'PageEntity'
-                    attributes?: {
-                      __typename?: 'Page'
-                      slug?: string | null
-                      locale?: string | null
-                      title?: string | null
-                      parentPage?: {
-                        __typename?: 'PageEntityResponse'
-                        data?: {
-                          __typename?: 'PageEntity'
-                          attributes?: {
-                            __typename?: 'Page'
-                            slug?: string | null
-                            locale?: string | null
-                            title?: string | null
-                          } | null
-                        } | null
-                      } | null
-                    } | null
-                  } | null
-                } | null
-              } | null
-            } | null
-          } | null
-        } | null
+export type PageRedirectByAliasQueryVariables = Exact<{
+  alias: Scalars['String']['input']
+  locale: Scalars['I18NLocaleCode']['input']
+}>
+
+export type PageRedirectByAliasQuery = {
+  __typename?: 'Query'
+  pages?: {
+    __typename?: 'PageEntityResponseCollection'
+    data: Array<{
+      __typename?: 'PageEntity'
+      id?: string | null
+      attributes?: {
+        __typename?: 'Page'
+        slug?: string | null
+        title?: string | null
+        locale?: string | null
       } | null
-    } | null
+    }>
   } | null
-}
-
-export type PageEntityFragment = {
-  __typename?: 'PageEntity'
-  id?: string | null
-  attributes?: {
-    __typename?: 'Page'
-    slug?: string | null
-    title?: string | null
-    subtext?: string | null
-    pageColor?: Enum_Page_Pagecolor | null
-    metaDiscription?: string | null
-    keywords?: string | null
-    locale?: string | null
-    pageBackgroundImage?: {
-      __typename?: 'UploadFileEntityResponse'
-      data?: {
-        __typename?: 'UploadFileEntity'
-        id?: string | null
-        attributes?: { __typename?: 'UploadFile'; url: string } | null
+  articles?: {
+    __typename?: 'ArticleEntityResponseCollection'
+    data: Array<{
+      __typename: 'ArticleEntity'
+      id?: string | null
+      attributes?: {
+        __typename?: 'Article'
+        slug: string
+        title: string
+        locale?: string | null
       } | null
-    } | null
-    headerLinks?: Array<{
-      __typename?: 'ComponentBlocksCommonLink'
-      label: string
-      url?: string | null
-      analyticsId?: string | null
-      page?: {
-        __typename?: 'PageEntityResponse'
-        data?: {
-          __typename?: 'PageEntity'
-          id?: string | null
-          attributes?: { __typename?: 'Page'; title?: string | null; slug?: string | null } | null
-        } | null
-      } | null
-      article?: {
-        __typename?: 'ArticleEntityResponse'
-        data?: {
-          __typename: 'ArticleEntity'
-          id?: string | null
-          attributes?: {
-            __typename?: 'Article'
-            slug: string
-            title: string
-            locale?: string | null
-          } | null
-        } | null
-      } | null
-    } | null> | null
-    sections?: Array<
-      | {
-          __typename: 'ComponentSectionsAccordion'
-          title?: string | null
-          institutions?: Array<{
-            __typename?: 'ComponentAccordionItemsInstitution'
-            title?: string | null
-            subtitle?: string | null
-            category?: string | null
-            firstColumn?: string | null
-            secondColumn?: string | null
-            thirdColumn?: string | null
-            url?: string | null
-            urlLabel?: string | null
-          } | null> | null
-          flatText?: Array<{
-            __typename?: 'ComponentAccordionItemsFlatText'
-            category?: string | null
-            content?: string | null
-            width?: Enum_Componentaccordionitemsflattext_Width | null
-            align?: Enum_Componentaccordionitemsflattext_Align | null
-            moreLinkTitle?: string | null
-            moreLinkUrl?: string | null
-            moreLinkPage?: {
-              __typename?: 'PageEntityResponse'
-              data?: {
-                __typename?: 'PageEntity'
-                attributes?: {
-                  __typename?: 'Page'
-                  slug?: string | null
-                  title?: string | null
-                  locale?: string | null
-                } | null
-              } | null
-            } | null
-            fileList?: Array<{
-              __typename?: 'ComponentBlocksFileItem'
-              id: string
-              title?: string | null
-              media: {
-                __typename?: 'UploadFileEntityResponse'
-                data?: {
-                  __typename?: 'UploadFileEntity'
-                  id?: string | null
-                  attributes?: {
-                    __typename?: 'UploadFile'
-                    url: string
-                    name: string
-                    ext?: string | null
-                    size: number
-                    createdAt?: any | null
-                    updatedAt?: any | null
-                  } | null
-                } | null
-              }
-            } | null> | null
-          } | null> | null
-          institutionsNarrow?: Array<{
-            __typename?: 'ComponentAccordionItemsInstitutionNarrow'
-            title?: string | null
-            subtitle?: string | null
-            category?: string | null
-            url?: string | null
-            urlLabel?: string | null
-          } | null> | null
-        }
-      | {
-          __typename: 'ComponentSectionsArticles'
-          title?: string | null
-          text?: string | null
-          showAll?: boolean | null
-          category?: {
-            __typename?: 'PageCategoryEntityResponse'
-            data?: {
-              __typename?: 'PageCategoryEntity'
-              id?: string | null
-              attributes?: {
-                __typename?: 'PageCategory'
-                title?: string | null
-                color?: Enum_Pagecategory_Color | null
-              } | null
-            } | null
-          } | null
-        }
-      | {
-          __typename: 'ComponentSectionsBanner'
-          content?: string | null
-          contentPosition: Enum_Componentsectionsbanner_Contentposition
-          bannerTitle: string
-          bannerVariant: Enum_Componentsectionsbanner_Variant
-          media: {
-            __typename?: 'UploadFileEntityResponse'
-            data?: {
-              __typename?: 'UploadFileEntity'
-              attributes?: { __typename?: 'UploadFile'; url: string } | null
-            } | null
-          }
-          primaryLink?: {
-            __typename?: 'ComponentBlocksCommonLink'
-            label: string
-            url?: string | null
-            analyticsId?: string | null
-            page?: {
-              __typename?: 'PageEntityResponse'
-              data?: {
-                __typename?: 'PageEntity'
-                id?: string | null
-                attributes?: {
-                  __typename?: 'Page'
-                  title?: string | null
-                  slug?: string | null
-                } | null
-              } | null
-            } | null
-            article?: {
-              __typename?: 'ArticleEntityResponse'
-              data?: {
-                __typename: 'ArticleEntity'
-                id?: string | null
-                attributes?: {
-                  __typename?: 'Article'
-                  slug: string
-                  title: string
-                  locale?: string | null
-                } | null
-              } | null
-            } | null
-          } | null
-          secondaryLink?: {
-            __typename?: 'ComponentBlocksCommonLink'
-            label: string
-            url?: string | null
-            analyticsId?: string | null
-            page?: {
-              __typename?: 'PageEntityResponse'
-              data?: {
-                __typename?: 'PageEntity'
-                id?: string | null
-                attributes?: {
-                  __typename?: 'Page'
-                  title?: string | null
-                  slug?: string | null
-                } | null
-              } | null
-            } | null
-            article?: {
-              __typename?: 'ArticleEntityResponse'
-              data?: {
-                __typename: 'ArticleEntity'
-                id?: string | null
-                attributes?: {
-                  __typename?: 'Article'
-                  slug: string
-                  title: string
-                  locale?: string | null
-                } | null
-              } | null
-            } | null
-          } | null
-          tertiaryLink?: {
-            __typename?: 'ComponentBlocksCommonLink'
-            label: string
-            url?: string | null
-            analyticsId?: string | null
-            page?: {
-              __typename?: 'PageEntityResponse'
-              data?: {
-                __typename?: 'PageEntity'
-                id?: string | null
-                attributes?: {
-                  __typename?: 'Page'
-                  title?: string | null
-                  slug?: string | null
-                } | null
-              } | null
-            } | null
-            article?: {
-              __typename?: 'ArticleEntityResponse'
-              data?: {
-                __typename: 'ArticleEntity'
-                id?: string | null
-                attributes?: {
-                  __typename?: 'Article'
-                  slug: string
-                  title: string
-                  locale?: string | null
-                } | null
-              } | null
-            } | null
-          } | null
-        }
-      | {
-          __typename: 'ComponentSectionsCalculator'
-          hasBackground?: boolean | null
-          single_adult_value?: number | null
-          another_adult_value?: number | null
-          child_value?: number | null
-        }
-      | {
-          __typename: 'ComponentSectionsColumnedText'
-          content?: string | null
-          contentAlignment?: Enum_Componentsectionscolumnedtext_Contentalignment | null
-        }
-      | {
-          __typename: 'ComponentSectionsComparisonSection'
-          title?: string | null
-          text?: string | null
-          textAlignComparison: Enum_Componentsectionscomparisonsection_Textalign
-          cards: Array<{
-            __typename?: 'ComponentBlocksComparisonCard'
-            title: string
-            items: Array<{ __typename?: 'ComponentBlocksComparisonItem'; label: string } | null>
-            iconMedia?: {
-              __typename?: 'UploadFileEntityResponse'
-              data?: {
-                __typename?: 'UploadFileEntity'
-                attributes?: { __typename?: 'UploadFile'; url: string } | null
-              } | null
-            } | null
-          } | null>
-        }
-      | {
-          __typename: 'ComponentSectionsContactsSection'
-          id: string
-          title?: string | null
-          description?: string | null
-          hasBackground?: boolean | null
-          type: Enum_Componentsectionscontactssection_Type
-          addressContacts?: Array<{
-            __typename?: 'ComponentBlocksContactCard'
-            overrideLabel?: string | null
-            value: string
-          } | null> | null
-          emailContacts?: Array<{
-            __typename?: 'ComponentBlocksContactCard'
-            overrideLabel?: string | null
-            value: string
-          } | null> | null
-          phoneContacts?: Array<{
-            __typename?: 'ComponentBlocksContactCard'
-            overrideLabel?: string | null
-            value: string
-          } | null> | null
-          webContacts?: Array<{
-            __typename?: 'ComponentBlocksContactCard'
-            overrideLabel?: string | null
-            value: string
-          } | null> | null
-        }
-      | {
-          __typename: 'ComponentSectionsDivider'
-          style?: Enum_Componentsectionsdivider_Style | null
-        }
-      | {
-          __typename: 'ComponentSectionsFaqCategories'
-          title?: string | null
-          text?: string | null
-          faqCategories?: {
-            __typename?: 'FaqCategoryRelationResponseCollection'
-            data: Array<{
-              __typename?: 'FaqCategoryEntity'
-              id?: string | null
-              attributes?: {
-                __typename?: 'FaqCategory'
-                title: string
-                slug: string
-                faqs?: {
-                  __typename?: 'FaqRelationResponseCollection'
-                  data: Array<{
-                    __typename?: 'FaqEntity'
-                    id?: string | null
-                    attributes?: { __typename?: 'Faq'; title: string; body?: string | null } | null
-                  }>
-                } | null
-              } | null
-            }>
-          } | null
-        }
-      | {
-          __typename: 'ComponentSectionsFaqs'
-          title?: string | null
-          text?: string | null
-          faqs?: {
-            __typename?: 'FaqRelationResponseCollection'
-            data: Array<{
-              __typename?: 'FaqEntity'
-              id?: string | null
-              attributes?: { __typename?: 'Faq'; title: string; body?: string | null } | null
-            }>
-          } | null
-        }
-      | {
-          __typename: 'ComponentSectionsFileList'
-          title?: string | null
-          text?: string | null
-          fileList?: Array<{
-            __typename?: 'ComponentBlocksFile'
-            id: string
-            title?: string | null
-            media?: {
-              __typename?: 'UploadFileEntityResponse'
-              data?: {
-                __typename?: 'UploadFileEntity'
-                id?: string | null
-                attributes?: {
-                  __typename?: 'UploadFile'
-                  url: string
-                  name: string
-                  ext?: string | null
-                  size: number
-                  createdAt?: any | null
-                  updatedAt?: any | null
-                } | null
-              } | null
-            } | null
-          } | null> | null
-        }
-      | {
-          __typename: 'ComponentSectionsGallery'
-          title?: string | null
-          text?: string | null
-          medias: {
-            __typename?: 'UploadFileRelationResponseCollection'
-            data: Array<{
-              __typename?: 'UploadFileEntity'
-              id?: string | null
-              attributes?: {
-                __typename?: 'UploadFile'
-                url: string
-                width?: number | null
-                height?: number | null
-                caption?: string | null
-                alternativeText?: string | null
-                name: string
-              } | null
-            }>
-          }
-        }
-      | {
-          __typename: 'ComponentSectionsIconTitleDesc'
-          title?: string | null
-          list?: Array<{
-            __typename?: 'ComponentBlocksIconWithTitleAndDescription'
-            title?: string | null
-            desc?: string | null
-            disableIconBackground?: boolean | null
-            icon?: {
-              __typename?: 'UploadFileEntityResponse'
-              data?: {
-                __typename?: 'UploadFileEntity'
-                id?: string | null
-                attributes?: { __typename?: 'UploadFile'; url: string } | null
-              } | null
-            } | null
-          } | null> | null
-        }
-      | {
-          __typename: 'ComponentSectionsIframe'
-          url: string
-          iframeWidth: Enum_Componentsectionsiframe_Iframewidth
-          iframeHeight: string
-          fullHeight: boolean
-          allowFullscreen: boolean
-          css?: string | null
-          allowGeolocation?: boolean | null
-        }
-      | {
-          __typename: 'ComponentSectionsInbaArticlesList'
-          title?: string | null
-          text?: string | null
-        }
-      | { __typename: 'ComponentSectionsInbaReleases'; title?: string | null; text?: string | null }
-      | {
-          __typename: 'ComponentSectionsLinks'
-          title?: string | null
-          pageLinks?: Array<{
-            __typename?: 'ComponentBlocksPageLink'
-            title?: string | null
-            url?: string | null
-            page?: {
-              __typename?: 'PageEntityResponse'
-              data?: {
-                __typename?: 'PageEntity'
-                attributes?: {
-                  __typename?: 'Page'
-                  title?: string | null
-                  slug?: string | null
-                  locale?: string | null
-                } | null
-              } | null
-            } | null
-          } | null> | null
-        }
-      | {
-          __typename: 'ComponentSectionsNarrowText'
-          content?: string | null
-          width?: Enum_Componentsectionsnarrowtext_Width | null
-          align?: Enum_Componentsectionsnarrowtext_Align | null
-        }
-      | {
-          __typename: 'ComponentSectionsNumericalList'
-          id: string
-          title?: string | null
-          variant?: Enum_Componentsectionsnumericallist_Variant | null
-          buttonText?: string | null
-          buttonLink?: string | null
-          items?: Array<{
-            __typename?: 'ComponentBlocksNumericalListItem'
-            text?: string | null
-          } | null> | null
-        }
-      | { __typename: 'ComponentSectionsOfficialBoard' }
-      | { __typename: 'ComponentSectionsOrganizationalStructure'; title?: string | null }
-      | {
-          __typename: 'ComponentSectionsProsAndConsSection'
-          title?: string | null
-          text?: string | null
-          textAlignProsAndCons: Enum_Componentsectionsprosandconssection_Textalign
-          pros: {
-            __typename?: 'ComponentBlocksProsAndConsCard'
-            title: string
-            items: Array<{ __typename?: 'ComponentBlocksComparisonItem'; label: string } | null>
-          }
-          cons: {
-            __typename?: 'ComponentBlocksProsAndConsCard'
-            title: string
-            items: Array<{ __typename?: 'ComponentBlocksComparisonItem'; label: string } | null>
-          }
-        }
-      | {
-          __typename: 'ComponentSectionsRegulations'
-          regulations?: {
-            __typename?: 'RegulationRelationResponseCollection'
-            data: Array<{
-              __typename?: 'RegulationEntity'
-              id?: string | null
-              attributes?: {
-                __typename?: 'Regulation'
-                regNumber: string
-                slug: string
-                titleText?: string | null
-                fullTitle: string
-                effectiveFrom: any
-                category: Enum_Regulation_Category
-                isFullTextRegulation: boolean
-                mainDocument: {
-                  __typename?: 'UploadFileEntityResponse'
-                  data?: {
-                    __typename?: 'UploadFileEntity'
-                    id?: string | null
-                    attributes?: {
-                      __typename?: 'UploadFile'
-                      url: string
-                      name: string
-                      ext?: string | null
-                      size: number
-                      createdAt?: any | null
-                      updatedAt?: any | null
-                    } | null
-                  } | null
-                }
-                attachments?: {
-                  __typename?: 'UploadFileRelationResponseCollection'
-                  data: Array<{
-                    __typename?: 'UploadFileEntity'
-                    id?: string | null
-                    attributes?: {
-                      __typename?: 'UploadFile'
-                      url: string
-                      name: string
-                      ext?: string | null
-                      size: number
-                      createdAt?: any | null
-                      updatedAt?: any | null
-                    } | null
-                  }>
-                } | null
-                amendments?: {
-                  __typename?: 'RegulationRelationResponseCollection'
-                  data: Array<{
-                    __typename?: 'RegulationEntity'
-                    id?: string | null
-                    attributes?: {
-                      __typename?: 'Regulation'
-                      regNumber: string
-                      slug: string
-                      effectiveFrom: any
-                      isFullTextRegulation: boolean
-                      attachments?: {
-                        __typename?: 'UploadFileRelationResponseCollection'
-                        data: Array<{
-                          __typename?: 'UploadFileEntity'
-                          id?: string | null
-                          attributes?: {
-                            __typename?: 'UploadFile'
-                            url: string
-                            name: string
-                            ext?: string | null
-                            size: number
-                            createdAt?: any | null
-                            updatedAt?: any | null
-                          } | null
-                        }>
-                      } | null
-                    } | null
-                  }>
-                } | null
-                amending?: {
-                  __typename?: 'RegulationRelationResponseCollection'
-                  data: Array<{
-                    __typename?: 'RegulationEntity'
-                    id?: string | null
-                    attributes?: {
-                      __typename?: 'Regulation'
-                      regNumber: string
-                      slug: string
-                      effectiveFrom: any
-                      cancellation?: {
-                        __typename?: 'RegulationEntityResponse'
-                        data?: {
-                          __typename?: 'RegulationEntity'
-                          id?: string | null
-                          attributes?: {
-                            __typename?: 'Regulation'
-                            regNumber: string
-                            slug: string
-                            effectiveFrom: any
-                          } | null
-                        } | null
-                      } | null
-                      amending?: {
-                        __typename?: 'RegulationRelationResponseCollection'
-                        data: Array<{
-                          __typename?: 'RegulationEntity'
-                          id?: string | null
-                          attributes?: {
-                            __typename?: 'Regulation'
-                            regNumber: string
-                            slug: string
-                            cancellation?: {
-                              __typename?: 'RegulationEntityResponse'
-                              data?: {
-                                __typename?: 'RegulationEntity'
-                                id?: string | null
-                                attributes?: {
-                                  __typename?: 'Regulation'
-                                  regNumber: string
-                                  slug: string
-                                  effectiveFrom: any
-                                } | null
-                              } | null
-                            } | null
-                          } | null
-                        }>
-                      } | null
-                    } | null
-                  }>
-                } | null
-                cancellation?: {
-                  __typename?: 'RegulationEntityResponse'
-                  data?: {
-                    __typename?: 'RegulationEntity'
-                    id?: string | null
-                    attributes?: {
-                      __typename?: 'Regulation'
-                      regNumber: string
-                      slug: string
-                      effectiveFrom: any
-                    } | null
-                  } | null
-                } | null
-                cancelling?: {
-                  __typename?: 'RegulationRelationResponseCollection'
-                  data: Array<{
-                    __typename?: 'RegulationEntity'
-                    id?: string | null
-                    attributes?: {
-                      __typename?: 'Regulation'
-                      regNumber: string
-                      slug: string
-                      effectiveFrom: any
-                    } | null
-                  }>
-                } | null
-              } | null
-            }>
-          } | null
-        }
-      | { __typename: 'ComponentSectionsRegulationsList' }
-      | {
-          __typename: 'ComponentSectionsTestimonials'
-          title?: string | null
-          text?: string | null
-          hasBackground?: boolean | null
-          testimonials: Array<{
-            __typename?: 'ComponentBlocksTestimonialItem'
-            id: string
-            name: string
-            quote: string
-          } | null>
-        }
-      | {
-          __typename: 'ComponentSectionsTextWithImage'
-          content?: string | null
-          imagePosition?: Enum_Componentsectionstextwithimage_Imageposition | null
-          imageSrc?: {
-            __typename?: 'UploadFileEntityResponse'
-            data?: {
-              __typename?: 'UploadFileEntity'
-              attributes?: {
-                __typename?: 'UploadFile'
-                url: string
-                alternativeText?: string | null
-                width?: number | null
-                height?: number | null
-              } | null
-            } | null
-          } | null
-        }
-      | {
-          __typename: 'ComponentSectionsTimeline'
-          timelineItems?: Array<{
-            __typename?: 'ComponentBlocksTimelineItem'
-            id: string
-            title?: string | null
-            content?: string | null
-          } | null> | null
-        }
-      | {
-          __typename: 'ComponentSectionsVideos'
-          id: string
-          title?: string | null
-          subtitle?: string | null
-          videos?: Array<{
-            __typename?: 'ComponentBlocksVideo'
-            id: string
-            title?: string | null
-            speaker?: string | null
-            url?: string | null
-          } | null> | null
-        }
-      | {
-          __typename: 'ComponentSectionsWaves'
-          position?: Enum_Componentsectionswaves_Position | null
-        }
-      | { __typename: 'Error' }
-      | null
-    > | null
-    localizations?: {
-      __typename?: 'PageRelationResponseCollection'
-      data: Array<{
-        __typename?: 'PageEntity'
-        attributes?: { __typename?: 'Page'; slug?: string | null; locale?: string | null } | null
-      }>
-    } | null
-    pageHeaderSections?: Array<
-      | {
-          __typename: 'ComponentSectionsSubpageList'
-          id: string
-          subpageList?: Array<{
-            __typename?: 'ComponentBlocksPageLink'
-            title?: string | null
-            url?: string | null
-            page?: {
-              __typename?: 'PageEntityResponse'
-              data?: {
-                __typename?: 'PageEntity'
-                attributes?: {
-                  __typename?: 'Page'
-                  title?: string | null
-                  slug?: string | null
-                  locale?: string | null
-                } | null
-              } | null
-            } | null
-          } | null> | null
-        }
-      | { __typename: 'Error' }
-      | null
-    > | null
-    pageCategory?: {
-      __typename?: 'PageCategoryEntityResponse'
-      data?: {
-        __typename?: 'PageCategoryEntity'
-        id?: string | null
-        attributes?: {
-          __typename?: 'PageCategory'
-          title?: string | null
-          color?: Enum_Pagecategory_Color | null
-        } | null
-      } | null
-    } | null
-    relatedContents?: {
-      __typename?: 'TagRelationResponseCollection'
-      data: Array<{
-        __typename?: 'TagEntity'
-        id?: string | null
-        attributes?: {
-          __typename?: 'Tag'
-          title?: string | null
-          pageCategory?: {
-            __typename?: 'PageCategoryEntityResponse'
-            data?: {
-              __typename?: 'PageCategoryEntity'
-              id?: string | null
-              attributes?: {
-                __typename?: 'PageCategory'
-                title?: string | null
-                color?: Enum_Pagecategory_Color | null
-              } | null
-            } | null
-          } | null
-        } | null
-      }>
-    } | null
-    parentPage?: {
-      __typename?: 'PageEntityResponse'
-      data?: {
-        __typename?: 'PageEntity'
-        attributes?: {
-          __typename?: 'Page'
-          slug?: string | null
-          locale?: string | null
-          title?: string | null
-          parentPage?: {
-            __typename?: 'PageEntityResponse'
-            data?: {
-              __typename?: 'PageEntity'
-              attributes?: {
-                __typename?: 'Page'
-                slug?: string | null
-                locale?: string | null
-                title?: string | null
-                parentPage?: {
-                  __typename?: 'PageEntityResponse'
-                  data?: {
-                    __typename?: 'PageEntity'
-                    attributes?: {
-                      __typename?: 'Page'
-                      slug?: string | null
-                      locale?: string | null
-                      title?: string | null
-                      parentPage?: {
-                        __typename?: 'PageEntityResponse'
-                        data?: {
-                          __typename?: 'PageEntity'
-                          attributes?: {
-                            __typename?: 'Page'
-                            slug?: string | null
-                            locale?: string | null
-                            title?: string | null
-                          } | null
-                        } | null
-                      } | null
-                    } | null
-                  } | null
-                } | null
-              } | null
-            } | null
-          } | null
-        } | null
-      } | null
-    } | null
+    }>
   } | null
-}
-
-export type ParentPageFragment = {
-  __typename?: 'Page'
-  slug?: string | null
-  locale?: string | null
-  title?: string | null
-}
-
-export type LocalizationFragment = {
-  __typename?: 'PageRelationResponseCollection'
-  data: Array<{
-    __typename?: 'PageEntity'
-    attributes?: { __typename?: 'Page'; slug?: string | null; locale?: string | null } | null
-  }>
 }
 
 export type AllRegulationsQueryVariables = Exact<{ [key: string]: never }>
@@ -12907,6 +12955,16 @@ export const InbaReleaseEntityFragmentDoc = gql`
   ${UploadImageEntityFragmentDoc}
   ${UploadFileEntityFragmentDoc}
 `
+export const PageSlugEntityFragmentDoc = gql`
+  fragment PageSlugEntity on PageEntity {
+    id
+    attributes {
+      slug
+      title
+      locale
+    }
+  }
+`
 export const IconTitleDescriptionBlockFragmentDoc = gql`
   fragment IconTitleDescriptionBlock on ComponentBlocksIconWithTitleAndDescription {
     title
@@ -13608,10 +13666,9 @@ export const PageHeaderSectionsFragmentDoc = gql`
 `
 export const PageEntityFragmentDoc = gql`
   fragment PageEntity on PageEntity {
-    id
+    ...PageSlugEntity
     attributes {
-      slug
-      title
+      alias
       subtext
       pageColor
       metaDiscription
@@ -13627,7 +13684,6 @@ export const PageEntityFragmentDoc = gql`
       sections {
         ...Sections
       }
-      locale
       localizations {
         ...Localization
       }
@@ -13651,6 +13707,7 @@ export const PageEntityFragmentDoc = gql`
     }
     ...PageParentPages
   }
+  ${PageSlugEntityFragmentDoc}
   ${UploadImageSrcEntityFragmentDoc}
   ${CommonLinkFragmentDoc}
   ${SectionsFragmentDoc}
@@ -13965,6 +14022,22 @@ export const PageBySlugDocument = gql`
     }
   }
   ${PageEntityFragmentDoc}
+`
+export const PageRedirectByAliasDocument = gql`
+  query PageRedirectByAlias($alias: String!, $locale: I18NLocaleCode!) {
+    pages(filters: { alias: { eq: $alias } }, locale: $locale) {
+      data {
+        ...PageSlugEntity
+      }
+    }
+    articles(filters: { alias: { eq: $alias } }, locale: $locale) {
+      data {
+        ...ArticleSlugEntity
+      }
+    }
+  }
+  ${PageSlugEntityFragmentDoc}
+  ${ArticleSlugEntityFragmentDoc}
 `
 export const AllRegulationsDocument = gql`
   query allRegulations {
@@ -14392,6 +14465,21 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
             ...wrappedRequestHeaders,
           }),
         'PageBySlug',
+        'query',
+        variables,
+      )
+    },
+    PageRedirectByAlias(
+      variables: PageRedirectByAliasQueryVariables,
+      requestHeaders?: GraphQLClientRequestHeaders,
+    ): Promise<PageRedirectByAliasQuery> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<PageRedirectByAliasQuery>(PageRedirectByAliasDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
+          }),
+        'PageRedirectByAlias',
         'query',
         variables,
       )
