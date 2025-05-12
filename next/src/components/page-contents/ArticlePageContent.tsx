@@ -54,23 +54,24 @@ const ArticlePageContent = ({ article }: Props) => {
         // TODO some of these classes are duplicated in SectionContainer - ponder what to do with it
         className="mx-auto flex max-w-screen-xl gap-8 px-4 py-6 lg:px-8 lg:py-12"
       >
-        <div className="flex w-200 flex-col gap-18">
-          <div className="flex flex-col gap-6 lg:gap-8">
-            {perex ? (
-              <Typography type="p" size="p-large">
-                {perex}
-              </Typography>
-            ) : null}
-            <Markdown content={content} />
+        <div className="flex w-200 flex-col gap-4">
+          <div className="flex flex-col gap-18">
+            <div className="flex flex-col gap-6 lg:gap-8">
+              {perex ? (
+                <Typography type="p" size="p-large">
+                  {perex}
+                </Typography>
+              ) : null}
+              <Markdown content={content} />
+            </div>
+
+            {filteredGalleryImages.length > 0 ? <Gallery images={filteredGalleryImages} /> : null}
+
+            {filteredFiles.length > 0 ? <FileList files={filteredFiles} /> : null}
           </div>
-
-          {filteredGalleryImages.length > 0 ? <Gallery images={filteredGalleryImages} /> : null}
-
-          {filteredFiles.length > 0 ? <FileList files={filteredFiles} /> : null}
+          {alias ? <AliasInfoMessage alias={alias} variant="article" /> : null}
 
           <ShareButtons twitterTitle={title} />
-
-          {alias ? <AliasInfoMessage alias={alias} variant="article" /> : null}
         </div>
 
         {/* Empty sidebar */}

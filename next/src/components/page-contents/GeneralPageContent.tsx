@@ -1,7 +1,9 @@
 import * as React from 'react'
 import { useMemo } from 'react'
 
+import AliasInfoMessage from '@/src/components/common/AliasInfoMessage/AliasInfoMessage'
 import PageHeader from '@/src/components/common/PageHeader/PageHeader'
+import SectionContainer from '@/src/components/common/SectionContainer/SectionContainer'
 import PageHeaderSections from '@/src/components/layouts/PageHeaderSections'
 import Sections from '@/src/components/layouts/Sections'
 import RelatedArticlesSection from '@/src/components/sections/RelatedArticlesSection'
@@ -41,6 +43,12 @@ const GeneralPageContent = ({ page }: GeneralPageProps) => {
           className="pt-10 md:pt-18"
         />
       </div>
+
+      {page.attributes?.alias ? (
+        <SectionContainer>
+          <AliasInfoMessage alias={page.attributes.alias} variant="page" />
+        </SectionContainer>
+      ) : null}
     </>
   )
 }

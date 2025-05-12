@@ -89,7 +89,9 @@ export const getStaticProps: GetStaticProps<PageProps, StaticParams> = async ({
   if (redirectPath) {
     return {
       redirect: {
-        destination: redirectPath,
+        // For SK locale, prevent unnecessary redirects from `/sk/[redirectPath]` to `/[redirectPath]` - maybe it's not needed, but it's fewer redirects
+        // Other locales: /en/[alias] -> /en/[redirectPath]
+        destination: locale === 'sk' ? redirectPath : `/${locale}/${redirectPath}`,
         permanent: false,
       },
     }
