@@ -3667,6 +3667,7 @@ export type MutationUploadArgs = {
 
 export type Page = {
   __typename?: 'Page'
+  alias?: Maybe<Scalars['String']['output']>
   childPages?: Maybe<PageRelationResponseCollection>
   createdAt?: Maybe<Scalars['DateTime']['output']>
   headerLinks?: Maybe<Array<Maybe<ComponentBlocksCommonLink>>>
@@ -3808,6 +3809,7 @@ export type PageEntityResponseCollection = {
 }
 
 export type PageFiltersInput = {
+  alias?: InputMaybe<StringFilterInput>
   and?: InputMaybe<Array<InputMaybe<PageFiltersInput>>>
   childPages?: InputMaybe<PageFiltersInput>
   createdAt?: InputMaybe<DateTimeFilterInput>
@@ -3831,6 +3833,7 @@ export type PageFiltersInput = {
 }
 
 export type PageInput = {
+  alias?: InputMaybe<Scalars['String']['input']>
   childPages?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
   headerLinks?: InputMaybe<Array<InputMaybe<ComponentBlocksCommonLinkInput>>>
   keywords?: InputMaybe<Scalars['String']['input']>

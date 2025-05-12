@@ -48,6 +48,20 @@
           "sortable": true
         }
       },
+      "alias": {
+        "edit": {
+          "label": "Alias",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "alias",
+          "searchable": true,
+          "sortable": true
+        }
+      },
       "subtext": {
         "edit": {
           "label": "Text v hlavičke",
@@ -280,12 +294,6 @@
       }
     },
     "layouts": {
-      "list": [
-        "slug",
-        "title",
-        "updatedAt",
-        "parentPage"
-      ],
       "edit": [
         [
           {
@@ -366,7 +374,19 @@
             "name": "relatedContents",
             "size": 12
           }
+        ],
+        [
+          {
+            "name": "alias",
+            "size": 6
+          }
         ]
+      ],
+      "list": [
+        "slug",
+        "title",
+        "updatedAt",
+        "parentPage"
       ]
     }
   },

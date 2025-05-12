@@ -2757,6 +2757,7 @@ type Mutation {
 }
 
 type Page {
+  alias: String
   childPages(filters: PageFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): PageRelationResponseCollection
   createdAt: DateTime
   headerLinks(filters: ComponentBlocksCommonLinkFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksCommonLink]
@@ -2850,6 +2851,7 @@ type PageEntityResponseCollection {
 }
 
 input PageFiltersInput {
+  alias: StringFilterInput
   and: [PageFiltersInput]
   childPages: PageFiltersInput
   createdAt: DateTimeFilterInput
@@ -2873,6 +2875,7 @@ input PageFiltersInput {
 }
 
 input PageInput {
+  alias: String
   childPages: [ID]
   headerLinks: [ComponentBlocksCommonLinkInput]
   keywords: String

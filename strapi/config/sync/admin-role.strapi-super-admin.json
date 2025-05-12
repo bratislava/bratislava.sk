@@ -1323,6 +1323,7 @@
         "fields": [
           "title",
           "slug",
+          "alias",
           "subtext",
           "metaDiscription",
           "keywords",
@@ -1379,6 +1380,7 @@
         "fields": [
           "title",
           "slug",
+          "alias",
           "subtext",
           "metaDiscription",
           "keywords",
@@ -1411,6 +1413,7 @@
         "fields": [
           "title",
           "slug",
+          "alias",
           "subtext",
           "metaDiscription",
           "keywords",
