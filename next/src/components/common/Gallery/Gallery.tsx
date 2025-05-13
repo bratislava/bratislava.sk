@@ -69,8 +69,7 @@ const Gallery = ({ images = [] }: GalleryProps) => {
           {smallImages.length > 0 && (
             <div
               className={cn('grid grid-cols-2 gap-2 md:gap-8', {
-                'md:grid-cols-1': imageCount === 1,
-                'md:grid-cols-2': imageCount === 2,
+                'md:grid-cols-2': imageCount === 1 || imageCount === 2,
                 'md:grid-cols-3': imageCount === 3,
                 'md:grid-cols-4': imageCount > 3,
               })}
@@ -111,11 +110,9 @@ const Gallery = ({ images = [] }: GalleryProps) => {
                 >
                   <div className="absolute top-0 flex size-full flex-col items-center justify-center gap-0.5 bg-white p-2 text-center">
                     <Typography type="h2">+{moreImagesCount}</Typography>
-                    {isMobile ? null : (
-                      <Typography type="p" className="text-large">
-                        {t('Gallery.morePhotos', { count: moreImagesCount })}
-                      </Typography>
-                    )}
+                    <Typography type="p" className="text-large max-md:hidden">
+                      {t('Gallery.morePhotos', { count: moreImagesCount })}
+                    </Typography>
                   </div>
                 </div>
               )}
