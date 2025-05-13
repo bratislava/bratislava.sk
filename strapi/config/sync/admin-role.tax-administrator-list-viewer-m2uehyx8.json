@@ -67,6 +67,7 @@
         "fields": [
           "title",
           "slug",
+          "alias",
           "subtext",
           "metaDiscription",
           "keywords",

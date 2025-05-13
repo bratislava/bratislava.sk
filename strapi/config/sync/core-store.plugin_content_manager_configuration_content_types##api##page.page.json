@@ -51,7 +51,7 @@
       "alias": {
         "edit": {
           "label": "Alias",
-          "description": "",
+          "description": "Alias slúži pre skrátenie URL adresy za účelom zdieľania a propagácie (podobne ako napr. bit.ly). Používajte v ňom iba malé písmená, čísla a pomlčky. Ikeď by alias mal byť čo najkratší, odporúčame používať celé slová namiesto skratiek. POZOR, treba si ustrážiť, aby medzi Stránkami a Článkami neexistoval rovnaký alias.",
           "placeholder": "",
           "visible": true,
           "editable": true
@@ -378,7 +378,7 @@
         [
           {
             "name": "alias",
-            "size": 6
+            "size": 12
           }
         ]
       ],
