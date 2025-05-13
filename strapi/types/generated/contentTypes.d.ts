@@ -1116,6 +1116,12 @@ export interface ApiPagePage extends Schema.CollectionType {
     }
   }
   attributes: {
+    alias: Attribute.UID &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true
+        }
+      }>
     childPages: Attribute.Relation<'api::page.page', 'oneToMany', 'api::page.page'>
     createdAt: Attribute.DateTime
     createdBy: Attribute.Relation<'api::page.page', 'oneToOne', 'admin::user'> & Attribute.Private

@@ -53,20 +53,49 @@ export const getStaticProps: GetStaticProps<PageProps, StaticParams> = async ({
   params,
 }) => {
   const slug = params?.slug
+  const slugJoined = slug?.join('/')
 
   // eslint-disable-next-line no-console
-  console.log(`Revalidating page ${locale === 'en' ? '/en' : ''}/${slug?.join('/')}`)
+  console.log(`Revalidating page ${locale === 'en' ? '/en' : ''}/${slugJoined}`)
 
-  if (!slug || !locale) return { notFound: true }
+  if (!slug || !slugJoined || !locale) return { notFound: true }
 
-  const [{ pages }, general, translations] = await Promise.all([
-    client.PageBySlug({
-      slug: slug.join('/'),
-      locale,
-    }),
-    client.General({ locale }),
-    serverSideTranslations(locale),
-  ])
+  const [{ pages }, { pages: aliasPages, articles: aliasArticles }, general, translations] =
+    await Promise.all([
+      client.PageBySlug({ slug: slugJoined, locale }),
+      client.PageRedirectByAlias({ alias: slugJoined, locale }),
+      client.General({ locale }),
+      serverSideTranslations(locale),
+    ])
+
+  let redirectPath = ''
+
+  // Check if an Article with this alias exists
+  const aliasArticleSlug = aliasArticles?.data[0]?.attributes?.slug
+  if (aliasArticleSlug) {
+    // Get the full path for the article
+    redirectPath = `/spravy/${aliasArticleSlug}`
+  }
+
+  // Check if a Page with this alias exists
+  const aliasPageSlug = aliasPages?.data[0]?.attributes?.slug
+  if (aliasPageSlug) {
+    // Get the full path for the page by its slug
+    redirectPath = `/${aliasPageSlug}`
+  }
+
+  // Note that alias in pages and articles are unique only within their own content type
+  // If there are both a page and an article with the same alias, the page will override the `redirectPath` as it's checked as last
+  if (redirectPath) {
+    return {
+      redirect: {
+        // For SK locale, prevent unnecessary redirects from `/sk/[redirectPath]` to `/[redirectPath]` - maybe it's not needed, but it's fewer redirects
+        // Other locales: /en/[alias] -> /en/[redirectPath]
+        destination: locale === 'sk' ? redirectPath : `/${locale}/${redirectPath}`,
+        permanent: false,
+      },
+    }
+  }
 
   const page = pages?.data?.[0]
   if (!page) return { notFound: true }
