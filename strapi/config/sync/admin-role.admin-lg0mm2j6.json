@@ -1233,6 +1233,7 @@
         "fields": [
           "title",
           "slug",
+          "alias",
           "subtext",
           "metaDiscription",
           "keywords",
@@ -1241,6 +1242,7 @@
           "pageBackgroundImage",
           "headerLinks.label",
           "headerLinks.page",
+          "headerLinks.article",
           "headerLinks.url",
           "headerLinks.analyticsId",
           "pageHeaderSections",
@@ -1288,6 +1290,7 @@
         "fields": [
           "title",
           "slug",
+          "alias",
           "subtext",
           "metaDiscription",
           "keywords",
@@ -1296,6 +1299,7 @@
           "pageBackgroundImage",
           "headerLinks.label",
           "headerLinks.page",
+          "headerLinks.article",
           "headerLinks.url",
           "headerLinks.analyticsId",
           "pageHeaderSections",
@@ -1319,6 +1323,7 @@
         "fields": [
           "title",
           "slug",
+          "alias",
           "subtext",
           "metaDiscription",
           "keywords",
@@ -1327,6 +1332,7 @@
           "pageBackgroundImage",
           "headerLinks.label",
           "headerLinks.page",
+          "headerLinks.article",
           "headerLinks.url",
           "headerLinks.analyticsId",
           "pageHeaderSections",
