@@ -122,19 +122,159 @@ module.exports = {
     700: 'rgb(var(--color-category-700))',
     800: 'rgb(var(--color-category-800))',
   },
+  border: {
+    error: 'rgb(var(--color-border-error))',
+    success: 'rgb(var(--color-border-success))',
+    warning: 'rgb(var(--color-border-warning))',
+    passive: {
+      primary: 'rgb(var(--color-border-passive-primary))',
+      secondary: 'rgb(var(--color-border-passive-secondary))',
+    },
+    active: {
+      default: 'rgb(var(--color-border-active-default))',
+      hover: 'rgb(var(--color-border-active-hover))',
+      disabled: 'rgb(var(--color-border-active-disabled))',
+      focused: 'rgb(var(--color-border-active-focused))',
+      inverted: {
+        default: 'rgb(var(--color-border-active-inverted-default))',
+        hover: 'rgb(var(--color-border-active-inverted-hover))',
+      },
+      primary: {
+        default: 'rgb(var(--color-border-active-primary-default))',
+        hover: 'rgb(var(--color-border-active-primary-hover))',
+        pressed: 'rgb(var(--color-border-active-primary-pressed))',
+        inverted: {
+          default: 'rgb(var(--color-border-active-primary-inverted-default))',
+          hover: 'rgb(var(--color-border-active-primary-inverted-hover))',
+          pressed: 'rgb(var(--color-border-active-primary-inverted-pressed))',
+        },
+      },
+      secondary: {
+        default: 'rgb(var(--color-border-active-secondary-default))',
+        hover: 'rgb(var(--color-border-active-secondary-hover))',
+        pressed: 'rgb(var(--color-border-active-secondary-pressed))',
+        inverted: {
+          default: 'rgb(var(--color-border-active-secondary-inverted-default))',
+          hover: 'rgb(var(--color-border-active-secondary-inverted-hover))',
+          pressed: 'rgb(var(--color-border-active-secondary-inverted-pressed))',
+        },
+      },
+      tertiary: {
+        default: 'rgb(var(--color-border-active-tertiary-default))',
+        hover: 'rgb(var(--color-border-active-tertiary-hover))',
+        pressed: 'rgb(var(--color-border-active-tertiary-pressed))',
+        inverted: {
+          default: 'rgb(var(--color-border-active-tertiary-inverted-default))',
+          hover: 'rgb(var(--color-border-active-tertiary-inverted-hover))',
+          pressed: 'rgb(var(--color-border-active-tertiary-inverted-pressed))',
+        },
+      },
+    },
+    // OLD BORDER TOKENS
+    default: 'rgb(var(--token-border-default))',
+    hover: 'rgb(var(--token-border-hover))',
+    dark: 'rgb(var(--token-border-dark))',
+  },
   background: {
+    error: {
+      default: 'rgb(var(--color-background-error-default))',
+      hover: 'rgb(var(--color-background-error-hover))',
+      pressed: 'rgb(var(--color-background-error-pressed))',
+      soft: {
+        default: 'rgb(var(--color-background-error-soft-default))',
+        hover: 'rgb(var(--color-background-error-soft-hover))',
+        pressed: 'rgb(var(--color-background-error-soft-pressed))',
+      },
+    },
+    success: {
+      default: 'rgb(var(--color-background-success-default))',
+      soft: {
+        default: 'rgb(var(--color-background-success-soft-default))',
+      },
+    },
+    warning: {
+      default: 'rgb(var(--color-background-warning-default))',
+      soft: {
+        default: 'rgb(var(--color-background-warning-soft-default))',
+      },
+    },
+    passive: {
+      base: 'rgb(var(--color-background-passive-base))',
+      primary: 'rgb(var(--color-background-passive-primary))',
+      secondary: 'rgb(var(--color-background-passive-secondary))',
+      tertiary: 'rgb(var(--color-background-passive-tertiary))',
+      inverted: {
+        base: 'rgb(var(--color-background-passive-inverted-base))',
+      },
+    },
+    active: {
+      primary: {
+        default: 'rgb(var(--color-background-active-primary-default))',
+        hover: 'rgb(var(--color-background-active-primary-hover))',
+        pressed: 'rgb(var(--color-background-active-primary-pressed))',
+        inverted: {
+          default: 'rgb(var(--color-background-active-primary-inverted-default))',
+          hover: 'rgb(var(--color-background-active-primary-inverted-hover))',
+          pressed: 'rgb(var(--color-background-active-primary-inverted-pressed))',
+        },
+        soft: {
+          default: 'rgb(var(--color-background-active-primary-soft-default))',
+          hover: 'rgb(var(--color-background-active-primary-soft-hover))',
+          pressed: 'rgb(var(--color-background-active-primary-soft-pressed))',
+          inverted: {
+            default: 'rgb(var(--color-background-active-primary-soft-inverted-default))',
+            hover: 'rgb(var(--color-background-active-primary-soft-inverted-hover))',
+            pressed: 'rgb(var(--color-background-active-primary-soft-inverted-pressed))',
+          },
+        },
+      },
+      // secondary and tertiary variants are part of DS, but currently unused
+    },
+    // OLD BACKGROUND TOKENS
     primary: 'rgb(var(--token-background-primary))',
     secondary: 'rgb(var(--token-background-secondary))',
     tertiary: 'rgb(var(--token-background-tertiary))',
     primaryInverted: 'rgb(var(--token-background-primary-inverted))',
     disabled: 'rgb(var(--token-background-disabled))',
   },
-  border: {
-    default: 'rgb(var(--token-border-default))',
-    hover: 'rgb(var(--token-border-hover))',
-    dark: 'rgb(var(--token-border-dark))',
-  },
   content: {
+    error: {
+      default: 'rgb(var(--color-content-error-default))',
+      hover: 'rgb(var(--color-content-error-hover))',
+      pressed: 'rgb(var(--color-content-error-pressed))',
+    },
+    warning: {
+      default: 'rgb(var(--color-content-warning-default))',
+    },
+    success: {
+      default: 'rgb(var(--color-content-success-default))',
+    },
+    passive: {
+      primary: 'rgb(var(--color-content-passive-primary))',
+      secondary: 'rgb(var(--color-content-passive-secondary))',
+      tertiary: 'rgb(var(--color-content-passive-tertiary))',
+      inverted: {
+        primary: 'rgb(var(--color-content-passive-inverted-primary))',
+        secondary: 'rgb(var(--color-content-passive-inverted-secondary))',
+        tertiary: 'rgb(var(--color-content-passive-inverted-tertiary))',
+      },
+    },
+    active: {
+      primary: {
+        default: 'rgb(var(--color-content-active-primary-default))',
+        hover: 'rgb(var(--color-content-active-primary-hover))',
+        pressed: 'rgb(var(--color-content-active-primary-pressed))',
+        disabled: 'rgb(var(--color-content-active-primary-disabled))',
+        inverted: {
+          default: 'rgb(var(--color-content-active-primary-inverted-default))',
+          hover: 'rgb(var(--color-content-active-primary-inverted-hover))',
+          pressed: 'rgb(var(--color-content-active-primary-inverted-pressed))',
+          disabled: 'rgb(var(--color-content-active-primary-inverted-disabled))',
+        },
+      },
+      // secondary and tertiary variants are part of DS, but currently unused
+    },
+    // OLD CONTENT TOKENS
     primary: 'rgb(var(--token-content-primary))',
     secondary: 'rgb(var(--token-content-secondary))',
     tertiary: 'rgb(var(--token-content-tertiary))',
@@ -148,6 +288,7 @@ module.exports = {
       pressed: 'rgb(var(--token-content-link-pressed))',
     },
   },
+  // REMAINING OLD TOKENS
   action: {
     content: {
       default: 'rgb(var(--token-action-content-default))',
