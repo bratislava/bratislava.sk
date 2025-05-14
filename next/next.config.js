@@ -110,6 +110,85 @@ const nextConfig = {
         locale: false,
         permanent: true,
       },
+      // Renaming of pages
+      {
+        source:
+          '/zivotne-prostredie-a-vystavba/rozvoj-mesta/usmernovanie-vystavby/zavazne-stanovisko-k-investicnej-cinnosti',
+        destination:
+          '/zivotne-prostredie-a-vystavba/rozvoj-mesta/usmernovanie-vystavby/zavazne-stanovisko-hlavneho-mesta-sr-bratislavy-ako-organu-uzemneho-planovania',
+        permanent: true,
+      },
+      {
+        source:
+          '/en/environment-and-construction/development-of-the-city/construction-guidelines/investment-project-proclamation',
+        destination:
+          '/en/environment-and-construction/development-of-the-city/construction-guidelines/binding-opinion-of-the-capital-of-the-slovak-republic-bratislava',
+        locale: false,
+        permanent: true,
+      },
+      {
+        source: '/mesto-bratislava/archiv-mesta-bratislavy/archivne-pomocky/narodne-vybory',
+        destination:
+          '/mesto-bratislava/archiv-mesta-bratislavy/archivne-pomocky/archivny-fond-narodny-vybor-v-bratislave',
+        permanent: true,
+      },
+      {
+        source:
+          '/mesto-bratislava/archiv-mesta-bratislavy/archivne-pomocky/magistrat-mesta-bratislavy',
+        destination:
+          '/mesto-bratislava/archiv-mesta-bratislavy/archivne-pomocky/archivny-fond-magistrat-mesta-bratislavy',
+        permanent: true,
+      },
+      {
+        source: '/mesto-bratislava/archiv-mesta-bratislavy/archivne-pomocky/mestske-organizacie',
+        destination:
+          '/mesto-bratislava/archiv-mesta-bratislavy/archivne-pomocky/archivne-fondy-mestskych-organizacii',
+        permanent: true,
+      },
+      {
+        source:
+          '/mesto-bratislava/sprava-mesta/organizacie-mesta/obchodne-spolocnosti-mesta/mepasys',
+        destination:
+          '/mesto-bratislava/sprava-mesta/organizacie-mesta/obchodne-spolocnosti-mesta/paas-sro',
+        permanent: true,
+      },
+      {
+        source:
+          '/en/city-of-bratislava/city-administration/city-owned-entities/municipal-companies/city-parking-system',
+        destination:
+          '/en/city-of-bratislava/city-administration/city-owned-entities/municipal-companies/paas-sro',
+        locale: false,
+        permanent: true,
+      },
+      {
+        source: '/mesto-bratislava/transparentne-mesto/verejny-navrh-affiliate',
+        destination:
+          '/mesto-bratislava/transparentne-mesto/verejny-navrh-affiliate-pre-predaj-parkovneho',
+        permanent: true,
+      },
+      {
+        source: '/en/city-of-bratislava/transparent-city/open-call-affiliate',
+        destination:
+          '/en/city-of-bratislava/transparent-city/open-call-affiliate-for-parking-payment',
+        locale: false,
+        permanent: true,
+      },
+      {
+        source: '/mesto-bratislava/transparentne-mesto/planovane-zbery-dat-pomocou-dronou',
+        destination: '/mesto-bratislava/transparentne-mesto/planovane-zbery-dat-pomocou-dronov',
+        permanent: true,
+      },
+      {
+        source: '/socialne-sluzby-a-byvanie/socialne-sluzby-a-zariadenia/fortunacik',
+        destination: '/socialne-sluzby-a-byvanie/socialne-sluzby-a-zariadenia/fokus',
+        permanent: true,
+      },
+      {
+        source: '/en/social-services-and-housing/social-services-and-facilities/fortunacik',
+        destination: '/en/social-services-and-housing/social-services-and-facilities/fokus',
+        locale: false,
+        permanent: true,
+      },
     ]
   },
   // Docs: https://react-svgr.com/docs/next/
