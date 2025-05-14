@@ -149,22 +149,6 @@ export interface BlocksFooterColumn extends Schema.Component {
   }
 }
 
-export interface BlocksHomepageBookmark extends Schema.Component {
-  collectionName: 'components_blocks_homepage_bookmarks'
-  info: {
-    displayName: 'Homepage Bookmark'
-    icon: 'angle-double-left'
-  }
-  attributes: {
-    headline: Attribute.String
-    link: Attribute.Component<'blocks.bookmark-link'>
-    picture: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>
-    text: Attribute.String
-    title: Attribute.String
-    variant: Attribute.String
-  }
-}
-
 export interface BlocksHomepageHighlightsItem extends Schema.Component {
   collectionName: 'components_blocks_homepage_highlights_items'
   info: {
@@ -956,7 +940,6 @@ declare module '@strapi/types' {
       'blocks.file': BlocksFile
       'blocks.file-item': BlocksFileItem
       'blocks.footer-column': BlocksFooterColumn
-      'blocks.homepage-bookmark': BlocksHomepageBookmark
       'blocks.homepage-highlights-item': BlocksHomepageHighlightsItem
       'blocks.icon-with-title-and-description': BlocksIconWithTitleAndDescription
       'blocks.in-ba': BlocksInBa
