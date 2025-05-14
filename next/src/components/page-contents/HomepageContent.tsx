@@ -1,7 +1,6 @@
 import React from 'react'
 
 import Waves from '@/src/components/common/Waves/Waves'
-import BookmarksHomepageSection from '@/src/components/sections/homepage-sections/BookmarksHomepageSection'
 import EventsHomepageSection from '@/src/components/sections/homepage-sections/EventsHomepageSection'
 import InbaHomepageSection from '@/src/components/sections/homepage-sections/InbaHomepageSection'
 import NewsAndInfoHomepageSection from '@/src/components/sections/homepage-sections/NewsAndInfoHomepageSection'
@@ -11,8 +10,6 @@ import WelcomeHomepageSection from '@/src/components/sections/homepage-sections/
 const HomepageContent = () => {
   return (
     <>
-      <BookmarksHomepageSection />
-
       <WelcomeHomepageSection />
 
       <Waves waveColor="rgb(var(--color-grey-50))" wavePosition="top" />

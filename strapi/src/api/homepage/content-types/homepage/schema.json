@@ -47,9 +47,7 @@
       "type": "media",
       "multiple": false,
       "required": true,
-      "allowedTypes": [
-        "images"
-      ],
+      "allowedTypes": ["images"],
       "pluginOptions": {
         "i18n": {
           "localized": false
@@ -112,9 +110,7 @@
       "type": "media",
       "multiple": false,
       "required": true,
-      "allowedTypes": [
-        "images"
-      ],
+      "allowedTypes": ["images"],
       "pluginOptions": {
         "i18n": {
           "localized": false
@@ -125,9 +121,7 @@
       "type": "media",
       "multiple": false,
       "required": true,
-      "allowedTypes": [
-        "images"
-      ],
+      "allowedTypes": ["images"],
       "pluginOptions": {
         "i18n": {
           "localized": false
@@ -142,36 +136,6 @@
       },
       "type": "string",
       "required": false
-    },
-    "bookmarkTourists": {
-      "type": "component",
-      "repeatable": false,
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "component": "blocks.homepage-bookmark"
-    },
-    "bookmarkUkraine": {
-      "type": "component",
-      "repeatable": false,
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "component": "blocks.homepage-bookmark"
-    },
-    "cards": {
-      "type": "component",
-      "repeatable": true,
-      "component": "blocks.homepage-bookmark",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
     },
     "eventsSection": {
       "displayName": "homepage events",

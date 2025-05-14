@@ -188,48 +188,6 @@
           "sortable": true
         }
       },
-      "bookmarkTourists": {
-        "edit": {
-          "label": "bookmarkTourists",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "bookmarkTourists",
-          "searchable": false,
-          "sortable": false
-        }
-      },
-      "bookmarkUkraine": {
-        "edit": {
-          "label": "bookmarkUkraine",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "bookmarkUkraine",
-          "searchable": false,
-          "sortable": false
-        }
-      },
-      "cards": {
-        "edit": {
-          "label": "Záložky",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "cards",
-          "searchable": false,
-          "sortable": false
-        }
-      },
       "eventsSection": {
         "edit": {
           "label": "eventsSection",
@@ -307,8 +265,7 @@
       "list": [
         "id",
         "createdAt",
-        "updatedAt",
-        "bookmarkTourists"
+        "updatedAt"
       ],
       "edit": [
         [
@@ -375,12 +332,6 @@
           {
             "name": "inbaRearImage",
             "size": 6
-          }
-        ],
-        [
-          {
-            "name": "cards",
-            "size": 12
           }
         ],
         [

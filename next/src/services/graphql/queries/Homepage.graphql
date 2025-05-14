@@ -51,15 +51,6 @@ fragment HomepageEntity on HomepageEntity {
       }
     }
     inbaUrl
-    cards {
-      ...HomepageBookmark
-    }
-    bookmarkTourists {
-      ...HomepageBookmark
-    }
-    bookmarkUkraine {
-      ...HomepageBookmark
-    }
   }
 }
 
@@ -69,24 +60,6 @@ query Homepage($locale: I18NLocaleCode!) {
       ...HomepageEntity
     }
   }
-}
-
-fragment HomepageBookmark on ComponentBlocksHomepageBookmark {
-  title
-  headline
-  text
-  link {
-    title
-    href
-  }
-  picture {
-    data {
-      attributes {
-        url
-      }
-    }
-  }
-  variant
 }
 
 fragment HomepageHighlightsItem on ComponentBlocksHomepageHighlightsItem {

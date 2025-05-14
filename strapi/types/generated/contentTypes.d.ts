@@ -716,24 +716,6 @@ export interface ApiHomepageHomepage extends Schema.SingleType {
     }
   }
   attributes: {
-    bookmarkTourists: Attribute.Component<'blocks.homepage-bookmark'> &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true
-        }
-      }>
-    bookmarkUkraine: Attribute.Component<'blocks.homepage-bookmark'> &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true
-        }
-      }>
-    cards: Attribute.Component<'blocks.homepage-bookmark', true> &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true
-        }
-      }>
     createdAt: Attribute.DateTime
     createdBy: Attribute.Relation<'api::homepage.homepage', 'oneToOne', 'admin::user'> &
       Attribute.Private
