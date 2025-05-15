@@ -50,7 +50,8 @@
           "menus.sections.icon",
           "menus.sections.links.label",
           "menus.sections.links.page",
-          "menus.sections.links.url"
+          "menus.sections.links.url",
+          "menus.sections.links.analyticsId"
         ],
         "locales": [
           "en",
