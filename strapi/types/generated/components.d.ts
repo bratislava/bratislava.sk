@@ -60,7 +60,7 @@ export interface BlocksCommonLink extends Schema.Component {
   attributes: {
     analyticsId: Attribute.String
     article: Attribute.Relation<'blocks.common-link', 'oneToOne', 'api::article.article'>
-    label: Attribute.String & Attribute.Required
+    label: Attribute.String
     page: Attribute.Relation<'blocks.common-link', 'oneToOne', 'api::page.page'>
     url: Attribute.String
   }
@@ -299,7 +299,7 @@ export interface GeneralHeaderLink extends Schema.Component {
     icon: Attribute.Enumeration<['esluzby', 'kontakt', 'ukraina', 'som_turista']> &
       Attribute.Required &
       Attribute.DefaultTo<'kontakt'>
-    label: Attribute.String & Attribute.Required
+    label: Attribute.String
     page: Attribute.Relation<'general.header-link', 'oneToOne', 'api::page.page'>
     showOnDesktop: Attribute.Boolean & Attribute.Required & Attribute.DefaultTo<true>
     showOnMobile: Attribute.Boolean & Attribute.Required & Attribute.DefaultTo<true>
@@ -340,7 +340,7 @@ export interface MenuMenuLink extends Schema.Component {
   }
   attributes: {
     analyticsId: Attribute.String
-    label: Attribute.String & Attribute.Required
+    label: Attribute.String
     page: Attribute.Relation<'menu.menu-link', 'oneToOne', 'api::page.page'>
     url: Attribute.String
   }

@@ -7,8 +7,7 @@
   "options": {},
   "attributes": {
     "label": {
-      "type": "string",
-      "required": true
+      "type": "string"
     },
     "page": {
       "type": "relation",
@@ -32,12 +31,7 @@
       "type": "enumeration",
       "required": true,
       "default": "kontakt",
-      "enum": [
-        "esluzby",
-        "kontakt",
-        "ukraina",
-        "som_turista"
-      ]
+      "enum": ["esluzby", "kontakt", "ukraina", "som_turista"]
     },
     "analyticsId": {
       "type": "string"

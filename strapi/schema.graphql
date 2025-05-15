@@ -315,7 +315,7 @@ type ComponentBlocksCommonLink {
   analyticsId: String
   article: ArticleEntityResponse
   id: ID!
-  label: String!
+  label: String
   page: PageEntityResponse
   url: String
 }
@@ -693,7 +693,7 @@ type ComponentGeneralHeaderLink {
   analyticsId: String
   icon: ENUM_COMPONENTGENERALHEADERLINK_ICON!
   id: ID!
-  label: String!
+  label: String
   page: PageEntityResponse
   showOnDesktop: Boolean!
   showOnMobile: Boolean!
@@ -753,7 +753,7 @@ input ComponentMenuMenuItemInput {
 type ComponentMenuMenuLink {
   analyticsId: String
   id: ID!
-  label: String!
+  label: String
   page: PageEntityResponse
   url: String
 }

@@ -404,7 +404,7 @@ export type ComponentBlocksCommonLink = {
   analyticsId?: Maybe<Scalars['String']['output']>
   article?: Maybe<ArticleEntityResponse>
   id: Scalars['ID']['output']
-  label: Scalars['String']['output']
+  label?: Maybe<Scalars['String']['output']>
   page?: Maybe<PageEntityResponse>
   url?: Maybe<Scalars['String']['output']>
 }
@@ -824,7 +824,7 @@ export type ComponentGeneralHeaderLink = {
   analyticsId?: Maybe<Scalars['String']['output']>
   icon: Enum_Componentgeneralheaderlink_Icon
   id: Scalars['ID']['output']
-  label: Scalars['String']['output']
+  label?: Maybe<Scalars['String']['output']>
   page?: Maybe<PageEntityResponse>
   showOnDesktop: Scalars['Boolean']['output']
   showOnMobile: Scalars['Boolean']['output']
@@ -892,7 +892,7 @@ export type ComponentMenuMenuLink = {
   __typename?: 'ComponentMenuMenuLink'
   analyticsId?: Maybe<Scalars['String']['output']>
   id: Scalars['ID']['output']
-  label: Scalars['String']['output']
+  label?: Maybe<Scalars['String']['output']>
   page?: Maybe<PageEntityResponse>
   url?: Maybe<Scalars['String']['output']>
 }
@@ -5330,7 +5330,7 @@ export type UploadFileEntityFragment = {
 
 export type CommonLinkFragment = {
   __typename?: 'ComponentBlocksCommonLink'
-  label: string
+  label?: string | null
   url?: string | null
   analyticsId?: string | null
   page?: {
@@ -5386,7 +5386,7 @@ export type FooterColumnBlockFragment = {
   title: string
   links?: Array<{
     __typename?: 'ComponentBlocksCommonLink'
-    label: string
+    label?: string | null
     url?: string | null
     analyticsId?: string | null
     page?: {
@@ -5428,7 +5428,7 @@ export type FooterFragment = {
     title: string
     links?: Array<{
       __typename?: 'ComponentBlocksCommonLink'
-      label: string
+      label?: string | null
       url?: string | null
       analyticsId?: string | null
       page?: {
@@ -5461,7 +5461,7 @@ export type FooterFragment = {
   } | null> | null
   accessibilityPageLink?: {
     __typename?: 'ComponentBlocksCommonLink'
-    label: string
+    label?: string | null
     url?: string | null
     analyticsId?: string | null
     page?: {
@@ -5493,7 +5493,7 @@ export type FooterFragment = {
   } | null
   innovationsLink?: {
     __typename?: 'ComponentBlocksCommonLink'
-    label: string
+    label?: string | null
     url?: string | null
     analyticsId?: string | null
     page?: {
@@ -5528,7 +5528,7 @@ export type FooterFragment = {
 export type MenuLinkFragment = {
   __typename?: 'ComponentMenuMenuLink'
   id: string
-  label: string
+  label?: string | null
   url?: string | null
   analyticsId?: string | null
   page?: {
@@ -5567,7 +5567,7 @@ export type MenuSectionFragment = {
   links?: Array<{
     __typename?: 'ComponentMenuMenuLink'
     id: string
-    label: string
+    label?: string | null
     url?: string | null
     analyticsId?: string | null
     page?: {
@@ -5625,7 +5625,7 @@ export type MenuItemFragment = {
     links?: Array<{
       __typename?: 'ComponentMenuMenuLink'
       id: string
-      label: string
+      label?: string | null
       url?: string | null
       analyticsId?: string | null
       page?: {
@@ -5647,7 +5647,7 @@ export type MenuItemFragment = {
 
 export type HeaderLinkFragment = {
   __typename?: 'ComponentGeneralHeaderLink'
-  label: string
+  label?: string | null
   url?: string | null
   analyticsId?: string | null
   showOnDesktop: boolean
@@ -5680,7 +5680,7 @@ export type GeneralFragment = {
     __typename?: 'ComponentGeneralHeader'
     links?: Array<{
       __typename?: 'ComponentGeneralHeaderLink'
-      label: string
+      label?: string | null
       url?: string | null
       analyticsId?: string | null
       showOnDesktop: boolean
@@ -5702,7 +5702,7 @@ export type GeneralFragment = {
     } | null> | null
     accountLink?: {
       __typename?: 'ComponentBlocksCommonLink'
-      label: string
+      label?: string | null
       url?: string | null
       analyticsId?: string | null
       page?: {
@@ -5854,7 +5854,7 @@ export type GeneralQuery = {
           __typename?: 'ComponentGeneralHeader'
           links?: Array<{
             __typename?: 'ComponentGeneralHeaderLink'
-            label: string
+            label?: string | null
             url?: string | null
             analyticsId?: string | null
             showOnDesktop: boolean
@@ -5876,7 +5876,7 @@ export type GeneralQuery = {
           } | null> | null
           accountLink?: {
             __typename?: 'ComponentBlocksCommonLink'
-            label: string
+            label?: string | null
             url?: string | null
             analyticsId?: string | null
             page?: {
@@ -6056,7 +6056,7 @@ export type GeneralQuery = {
             links?: Array<{
               __typename?: 'ComponentMenuMenuLink'
               id: string
-              label: string
+              label?: string | null
               url?: string | null
               analyticsId?: string | null
               page?: {
@@ -6092,7 +6092,7 @@ export type GeneralQuery = {
           title: string
           links?: Array<{
             __typename?: 'ComponentBlocksCommonLink'
-            label: string
+            label?: string | null
             url?: string | null
             analyticsId?: string | null
             page?: {
@@ -6125,7 +6125,7 @@ export type GeneralQuery = {
         } | null> | null
         accessibilityPageLink?: {
           __typename?: 'ComponentBlocksCommonLink'
-          label: string
+          label?: string | null
           url?: string | null
           analyticsId?: string | null
           page?: {
@@ -6157,7 +6157,7 @@ export type GeneralQuery = {
         } | null
         innovationsLink?: {
           __typename?: 'ComponentBlocksCommonLink'
-          label: string
+          label?: string | null
           url?: string | null
           analyticsId?: string | null
           page?: {
@@ -6242,7 +6242,7 @@ export type HomepageEntityFragment = {
         id: string
         link: {
           __typename?: 'ComponentBlocksCommonLink'
-          label: string
+          label?: string | null
           url?: string | null
           analyticsId?: string | null
           page?: {
@@ -6394,7 +6394,7 @@ export type HomepageEntityFragment = {
       } | null
       newsPageLink?: {
         __typename?: 'ComponentBlocksCommonLink'
-        label: string
+        label?: string | null
         url?: string | null
         analyticsId?: string | null
         page?: {
@@ -6426,7 +6426,7 @@ export type HomepageEntityFragment = {
       } | null
       officialBoardPageLink?: {
         __typename?: 'ComponentBlocksCommonLink'
-        label: string
+        label?: string | null
         url?: string | null
         analyticsId?: string | null
         page?: {
@@ -6458,7 +6458,7 @@ export type HomepageEntityFragment = {
       } | null
       roadClosuresPageLink?: {
         __typename?: 'ComponentBlocksCommonLink'
-        label: string
+        label?: string | null
         url?: string | null
         analyticsId?: string | null
         page?: {
@@ -6495,7 +6495,7 @@ export type HomepageEntityFragment = {
       text?: string | null
       mayorCard?: {
         __typename?: 'ComponentBlocksCommonLink'
-        label: string
+        label?: string | null
         url?: string | null
         analyticsId?: string | null
         page?: {
@@ -6527,7 +6527,7 @@ export type HomepageEntityFragment = {
       } | null
       councilCard?: {
         __typename?: 'ComponentBlocksCommonLink'
-        label: string
+        label?: string | null
         url?: string | null
         analyticsId?: string | null
         page?: {
@@ -6564,7 +6564,7 @@ export type HomepageEntityFragment = {
       text?: string | null
       eventsPageLink?: {
         __typename?: 'ComponentBlocksCommonLink'
-        label: string
+        label?: string | null
         url?: string | null
         analyticsId?: string | null
         page?: {
@@ -6603,7 +6603,7 @@ export type HomepageEntityFragment = {
         icon: Enum_Componentblockstopservicesitem_Icon
         link: {
           __typename?: 'ComponentBlocksCommonLink'
-          label: string
+          label?: string | null
           url?: string | null
           analyticsId?: string | null
           page?: {
@@ -6695,7 +6695,7 @@ export type HomepageQuery = {
             id: string
             link: {
               __typename?: 'ComponentBlocksCommonLink'
-              label: string
+              label?: string | null
               url?: string | null
               analyticsId?: string | null
               page?: {
@@ -6847,7 +6847,7 @@ export type HomepageQuery = {
           } | null
           newsPageLink?: {
             __typename?: 'ComponentBlocksCommonLink'
-            label: string
+            label?: string | null
             url?: string | null
             analyticsId?: string | null
             page?: {
@@ -6879,7 +6879,7 @@ export type HomepageQuery = {
           } | null
           officialBoardPageLink?: {
             __typename?: 'ComponentBlocksCommonLink'
-            label: string
+            label?: string | null
             url?: string | null
             analyticsId?: string | null
             page?: {
@@ -6911,7 +6911,7 @@ export type HomepageQuery = {
           } | null
           roadClosuresPageLink?: {
             __typename?: 'ComponentBlocksCommonLink'
-            label: string
+            label?: string | null
             url?: string | null
             analyticsId?: string | null
             page?: {
@@ -6948,7 +6948,7 @@ export type HomepageQuery = {
           text?: string | null
           mayorCard?: {
             __typename?: 'ComponentBlocksCommonLink'
-            label: string
+            label?: string | null
             url?: string | null
             analyticsId?: string | null
             page?: {
@@ -6980,7 +6980,7 @@ export type HomepageQuery = {
           } | null
           councilCard?: {
             __typename?: 'ComponentBlocksCommonLink'
-            label: string
+            label?: string | null
             url?: string | null
             analyticsId?: string | null
             page?: {
@@ -7017,7 +7017,7 @@ export type HomepageQuery = {
           text?: string | null
           eventsPageLink?: {
             __typename?: 'ComponentBlocksCommonLink'
-            label: string
+            label?: string | null
             url?: string | null
             analyticsId?: string | null
             page?: {
@@ -7056,7 +7056,7 @@ export type HomepageQuery = {
             icon: Enum_Componentblockstopservicesitem_Icon
             link: {
               __typename?: 'ComponentBlocksCommonLink'
-              label: string
+              label?: string | null
               url?: string | null
               analyticsId?: string | null
               page?: {
@@ -7119,7 +7119,7 @@ export type HomepageHighlightsItemFragment = {
   id: string
   link: {
     __typename?: 'ComponentBlocksCommonLink'
-    label: string
+    label?: string | null
     url?: string | null
     analyticsId?: string | null
     page?: {
@@ -7271,7 +7271,7 @@ export type HomepageTabsFragment = {
   } | null
   newsPageLink?: {
     __typename?: 'ComponentBlocksCommonLink'
-    label: string
+    label?: string | null
     url?: string | null
     analyticsId?: string | null
     page?: {
@@ -7303,7 +7303,7 @@ export type HomepageTabsFragment = {
   } | null
   officialBoardPageLink?: {
     __typename?: 'ComponentBlocksCommonLink'
-    label: string
+    label?: string | null
     url?: string | null
     analyticsId?: string | null
     page?: {
@@ -7335,7 +7335,7 @@ export type HomepageTabsFragment = {
   } | null
   roadClosuresPageLink?: {
     __typename?: 'ComponentBlocksCommonLink'
-    label: string
+    label?: string | null
     url?: string | null
     analyticsId?: string | null
     page?: {
@@ -7373,7 +7373,7 @@ export type HomepageMayorAndCouncilFragment = {
   text?: string | null
   mayorCard?: {
     __typename?: 'ComponentBlocksCommonLink'
-    label: string
+    label?: string | null
     url?: string | null
     analyticsId?: string | null
     page?: {
@@ -7405,7 +7405,7 @@ export type HomepageMayorAndCouncilFragment = {
   } | null
   councilCard?: {
     __typename?: 'ComponentBlocksCommonLink'
-    label: string
+    label?: string | null
     url?: string | null
     analyticsId?: string | null
     page?: {
@@ -7442,7 +7442,7 @@ export type TopServicesItemFragment = {
   icon: Enum_Componentblockstopservicesitem_Icon
   link: {
     __typename?: 'ComponentBlocksCommonLink'
-    label: string
+    label?: string | null
     url?: string | null
     analyticsId?: string | null
     page?: {
@@ -8088,7 +8088,7 @@ export type PageEntityFragment = {
     } | null
     headerLinks?: Array<{
       __typename?: 'ComponentBlocksCommonLink'
-      label: string
+      label?: string | null
       url?: string | null
       analyticsId?: string | null
       page?: {
@@ -8217,7 +8217,7 @@ export type PageEntityFragment = {
           }
           primaryLink?: {
             __typename?: 'ComponentBlocksCommonLink'
-            label: string
+            label?: string | null
             url?: string | null
             analyticsId?: string | null
             page?: {
@@ -8249,7 +8249,7 @@ export type PageEntityFragment = {
           } | null
           secondaryLink?: {
             __typename?: 'ComponentBlocksCommonLink'
-            label: string
+            label?: string | null
             url?: string | null
             analyticsId?: string | null
             page?: {
@@ -8281,7 +8281,7 @@ export type PageEntityFragment = {
           } | null
           tertiaryLink?: {
             __typename?: 'ComponentBlocksCommonLink'
-            label: string
+            label?: string | null
             url?: string | null
             analyticsId?: string | null
             page?: {
@@ -8937,7 +8937,7 @@ export type PageBySlugQuery = {
         } | null
         headerLinks?: Array<{
           __typename?: 'ComponentBlocksCommonLink'
-          label: string
+          label?: string | null
           url?: string | null
           analyticsId?: string | null
           page?: {
@@ -9066,7 +9066,7 @@ export type PageBySlugQuery = {
               }
               primaryLink?: {
                 __typename?: 'ComponentBlocksCommonLink'
-                label: string
+                label?: string | null
                 url?: string | null
                 analyticsId?: string | null
                 page?: {
@@ -9098,7 +9098,7 @@ export type PageBySlugQuery = {
               } | null
               secondaryLink?: {
                 __typename?: 'ComponentBlocksCommonLink'
-                label: string
+                label?: string | null
                 url?: string | null
                 analyticsId?: string | null
                 page?: {
@@ -9130,7 +9130,7 @@ export type PageBySlugQuery = {
               } | null
               tertiaryLink?: {
                 __typename?: 'ComponentBlocksCommonLink'
-                label: string
+                label?: string | null
                 url?: string | null
                 analyticsId?: string | null
                 page?: {
@@ -11213,7 +11213,7 @@ export type BannerSectionFragment = {
   }
   primaryLink?: {
     __typename?: 'ComponentBlocksCommonLink'
-    label: string
+    label?: string | null
     url?: string | null
     analyticsId?: string | null
     page?: {
@@ -11245,7 +11245,7 @@ export type BannerSectionFragment = {
   } | null
   secondaryLink?: {
     __typename?: 'ComponentBlocksCommonLink'
-    label: string
+    label?: string | null
     url?: string | null
     analyticsId?: string | null
     page?: {
@@ -11277,7 +11277,7 @@ export type BannerSectionFragment = {
   } | null
   tertiaryLink?: {
     __typename?: 'ComponentBlocksCommonLink'
-    label: string
+    label?: string | null
     url?: string | null
     analyticsId?: string | null
     page?: {
@@ -11644,7 +11644,7 @@ type Sections_ComponentSectionsBanner_Fragment = {
   }
   primaryLink?: {
     __typename?: 'ComponentBlocksCommonLink'
-    label: string
+    label?: string | null
     url?: string | null
     analyticsId?: string | null
     page?: {
@@ -11676,7 +11676,7 @@ type Sections_ComponentSectionsBanner_Fragment = {
   } | null
   secondaryLink?: {
     __typename?: 'ComponentBlocksCommonLink'
-    label: string
+    label?: string | null
     url?: string | null
     analyticsId?: string | null
     page?: {
@@ -11708,7 +11708,7 @@ type Sections_ComponentSectionsBanner_Fragment = {
   } | null
   tertiaryLink?: {
     __typename?: 'ComponentBlocksCommonLink'
-    label: string
+    label?: string | null
     url?: string | null
     analyticsId?: string | null
     page?: {
