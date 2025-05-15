@@ -146,24 +146,10 @@ fragment WavesSection on ComponentSectionsWaves {
   position
 }
 
-fragment PageLinkBlock on ComponentBlocksPageLink {
-  title
-  url
-  page {
-    data {
-      attributes {
-        title
-        slug
-        locale
-      }
-    }
-  }
-}
-
 fragment LinksSection on ComponentSectionsLinks {
   title
   pageLinks(pagination: { limit: -1 }) {
-    ...PageLinkBlock
+    ...PageLink
   }
 }
 
@@ -505,7 +491,7 @@ fragment Sections on PageSectionsDynamicZone {
 fragment SubpageListPageHeaderSection on ComponentSectionsSubpageList {
   id
   subpageList(pagination: { limit: -1 }) {
-    ...PageLinkBlock
+    ...PageLink
   }
 }
 

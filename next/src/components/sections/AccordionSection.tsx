@@ -55,7 +55,7 @@ const AccordionSection = ({ section }: AccordionSectionProps) => {
           <Accordion key={`flatText-${index}`} title={text.category}>
             {text.items.filter(isPresent).map((item, itemIndex) => {
               const link = parsePageLink({
-                title: item.moreLinkTitle,
+                label: item.moreLinkTitle,
                 url: item.moreLinkUrl,
                 page: item.moreLinkPage,
               })

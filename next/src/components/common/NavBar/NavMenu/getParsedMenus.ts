@@ -1,4 +1,5 @@
 import { GeneralQuery } from '@/src/services/graphql'
+import { getCommonLinkProps } from '@/src/utils/getCommonLinkProps'
 import { isDefined } from '@/src/utils/isDefined'
 
 import { MenuItem, MenuLink } from './navMenuTypes'
@@ -22,23 +23,10 @@ export const getParsedMenus = (menu: GeneralQuery['menu'], moreLabel: string): M
               const sectionItems =
                 section.links
                   ?.map((menuLink) => {
-                    const menuLinkSlug = menuLink?.page?.data?.attributes?.slug
+                    const { children, href } = getCommonLinkProps(menuLink)
 
-                    if (menuLinkSlug) {
-                      return {
-                        label: menuLink.label,
-                        url: `/${menuLinkSlug}`,
-                      }
-                    }
-
-                    if (menuLink?.url) {
-                      return {
-                        label: menuLink.label,
-                        url: menuLink.url,
-                      }
-                    }
-
-                    return null
+                    // TODO target
+                    return { label: children, url: href }
                   })
                   .filter(isDefined) ?? []
 

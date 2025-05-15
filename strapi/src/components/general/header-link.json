@@ -1,7 +1,8 @@
 {
   "collectionName": "components_general_header_links",
   "info": {
-    "displayName": "header link"
+    "displayName": "header link",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -37,6 +38,9 @@
         "ukraina",
         "som_turista"
       ]
+    },
+    "analyticsId": {
+      "type": "string"
     }
   }
 }

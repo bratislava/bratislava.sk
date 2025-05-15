@@ -2,7 +2,7 @@ import groupBy from 'lodash/groupBy'
 import sortBy from 'lodash/sortBy'
 
 import { Breadcrumb } from '@/src/components/common/Breadcrumbs/Breadcrumbs'
-import { PageLinkBlockFragment, PageParentPagesFragment } from '@/src/services/graphql'
+import { PageLinkFragment, PageParentPagesFragment } from '@/src/services/graphql'
 
 // TODO this should be thrown away
 
@@ -28,7 +28,7 @@ export const pagePath = (
 }
 
 export const parsePageLink = (
-  pageLink?: PageLinkBlockFragment | null,
+  pageLink?: PageLinkFragment | null,
 ): { title: string; url: string } | null => {
   if (!pageLink) return null
   const param = {
@@ -41,7 +41,7 @@ export const parsePageLink = (
   }
 
   return {
-    title: pageLink.title || pageLink.page?.data?.attributes?.title || '',
+    title: pageLink.label || pageLink.page?.data?.attributes?.title || '',
     url: pageLink.url ?? pagePath(param) ?? pageLink.page?.data?.attributes?.slug ?? '#',
   }
 }

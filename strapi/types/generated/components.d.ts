@@ -51,18 +51,6 @@ export interface AccordionItemsInstitutionNarrow extends Schema.Component {
   }
 }
 
-export interface BlocksBookmarkLink extends Schema.Component {
-  collectionName: 'components_blocks_bookmark_links'
-  info: {
-    displayName: 'Bookmark Link'
-    icon: 'award'
-  }
-  attributes: {
-    href: Attribute.String
-    title: Attribute.String
-  }
-}
-
 export interface BlocksCommonLink extends Schema.Component {
   collectionName: 'components_blocks_common_links'
   info: {
@@ -204,9 +192,10 @@ export interface BlocksPageLink extends Schema.Component {
   collectionName: 'components_blocks_page_links'
   info: {
     description: ''
-    displayName: 'page Link'
+    displayName: 'page link'
   }
   attributes: {
+    analyticsId: Attribute.String
     page: Attribute.Relation<'blocks.page-link', 'oneToOne', 'api::page.page'>
     title: Attribute.String
     url: Attribute.String
@@ -302,9 +291,11 @@ export interface GeneralHeader extends Schema.Component {
 export interface GeneralHeaderLink extends Schema.Component {
   collectionName: 'components_general_header_links'
   info: {
+    description: ''
     displayName: 'header link'
   }
   attributes: {
+    analyticsId: Attribute.String
     icon: Attribute.Enumeration<['esluzby', 'kontakt', 'ukraina', 'som_turista']> &
       Attribute.Required &
       Attribute.DefaultTo<'kontakt'>
@@ -348,6 +339,7 @@ export interface MenuMenuLink extends Schema.Component {
     displayName: 'menu link'
   }
   attributes: {
+    analyticsId: Attribute.String
     label: Attribute.String & Attribute.Required
     page: Attribute.Relation<'menu.menu-link', 'oneToOne', 'api::page.page'>
     url: Attribute.String
@@ -932,7 +924,6 @@ declare module '@strapi/types' {
       'accordion-items.flat-text': AccordionItemsFlatText
       'accordion-items.institution': AccordionItemsInstitution
       'accordion-items.institution-narrow': AccordionItemsInstitutionNarrow
-      'blocks.bookmark-link': BlocksBookmarkLink
       'blocks.common-link': BlocksCommonLink
       'blocks.comparison-card': BlocksComparisonCard
       'blocks.comparison-item': BlocksComparisonItem

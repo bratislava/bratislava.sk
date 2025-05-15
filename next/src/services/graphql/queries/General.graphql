@@ -31,15 +31,9 @@ fragment UploadFileEntity on UploadFileEntity {
 
 fragment CommonLink on ComponentBlocksCommonLink {
   label
-  url
-  analyticsId
   page {
     data {
-      id
-      attributes {
-        title
-        slug
-      }
+      ...PageSlugEntity
     }
   }
   article {
@@ -47,6 +41,19 @@ fragment CommonLink on ComponentBlocksCommonLink {
       ...ArticleSlugEntity
     }
   }
+  url
+  analyticsId
+}
+
+fragment PageLink on ComponentBlocksPageLink {
+  label: title
+  page {
+    data {
+      ...PageSlugEntity
+    }
+  }
+  url
+  analyticsId
 }
 
 fragment FooterColumnBlock on ComponentBlocksFooterColumn {
@@ -71,23 +78,16 @@ fragment Footer on Footer {
   contactText
 }
 
-fragment PageForMenuEntity on PageEntity {
-  id
-  attributes {
-    title
-    slug
-  }
-}
-
 fragment MenuLink on ComponentMenuMenuLink {
   id
   label
   page {
     data {
-      ...PageForMenuEntity
+      ...PageSlugEntity
     }
   }
   url
+  analyticsId
 }
 
 fragment MenuSection on ComponentMenuMenuSection {
@@ -96,7 +96,7 @@ fragment MenuSection on ComponentMenuMenuSection {
   icon
   page {
     data {
-      ...PageForMenuEntity
+      ...PageSlugEntity
     }
   }
   links {
@@ -110,7 +110,7 @@ fragment MenuItem on ComponentMenuMenuItem {
   icon
   page {
     data {
-      ...PageForMenuEntity
+      ...PageSlugEntity
     }
   }
   sections {
@@ -122,14 +122,11 @@ fragment HeaderLink on ComponentGeneralHeaderLink {
   label
   page {
     data {
-      id
-      attributes {
-        title
-        slug
-      }
+      ...PageSlugEntity
     }
   }
   url
+  analyticsId
   showOnDesktop
   showOnMobile
   icon

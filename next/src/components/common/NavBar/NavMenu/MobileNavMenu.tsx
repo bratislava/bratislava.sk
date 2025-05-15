@@ -82,9 +82,6 @@ const MobileNavMenu = () => {
           {linksOnMobile?.length && <NavBarHorizontalDivider />}
 
           {linksOnMobile?.map((link, linkIndex) => {
-            // TODO better approach to links
-            const pageSlug = link.page?.data?.attributes?.slug
-
             return (
               // eslint-disable-next-line react/no-array-index-key
               <li key={linkIndex} className="relative flex items-center gap-2">
@@ -92,14 +89,7 @@ const MobileNavMenu = () => {
                   <Pictogram iconName={link.icon} />
                 </div>
                 <NavigationMenu.Link asChild onClick={() => setMobileMenuOpen(false)}>
-                  <MLink
-                    href={pageSlug ? `/${pageSlug}` : (link.url ?? '#')}
-                    target={link.url ? '_blank' : undefined}
-                    variant="underlined"
-                    stretched
-                  >
-                    {link.label}
-                  </MLink>
+                  <MLink variant="underlined" stretched {...getCommonLinkProps(link)} />
                 </NavigationMenu.Link>
               </li>
             )

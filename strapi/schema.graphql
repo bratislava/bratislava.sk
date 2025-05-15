@@ -311,26 +311,6 @@ input ComponentAccordionItemsInstitutionNarrowInput {
   urlLabel: String
 }
 
-type ComponentBlocksBookmarkLink {
-  href: String
-  id: ID!
-  title: String
-}
-
-input ComponentBlocksBookmarkLinkFiltersInput {
-  and: [ComponentBlocksBookmarkLinkFiltersInput]
-  href: StringFilterInput
-  not: ComponentBlocksBookmarkLinkFiltersInput
-  or: [ComponentBlocksBookmarkLinkFiltersInput]
-  title: StringFilterInput
-}
-
-input ComponentBlocksBookmarkLinkInput {
-  href: String
-  id: ID
-  title: String
-}
-
 type ComponentBlocksCommonLink {
   analyticsId: String
   article: ArticleEntityResponse
@@ -561,6 +541,7 @@ input ComponentBlocksNumericalListItemInput {
 }
 
 type ComponentBlocksPageLink {
+  analyticsId: String
   id: ID!
   page: PageEntityResponse
   title: String
@@ -568,6 +549,7 @@ type ComponentBlocksPageLink {
 }
 
 input ComponentBlocksPageLinkFiltersInput {
+  analyticsId: StringFilterInput
   and: [ComponentBlocksPageLinkFiltersInput]
   not: ComponentBlocksPageLinkFiltersInput
   or: [ComponentBlocksPageLinkFiltersInput]
@@ -577,6 +559,7 @@ input ComponentBlocksPageLinkFiltersInput {
 }
 
 input ComponentBlocksPageLinkInput {
+  analyticsId: String
   id: ID
   page: ID
   title: String
@@ -707,6 +690,7 @@ input ComponentGeneralHeaderInput {
 }
 
 type ComponentGeneralHeaderLink {
+  analyticsId: String
   icon: ENUM_COMPONENTGENERALHEADERLINK_ICON!
   id: ID!
   label: String!
@@ -717,6 +701,7 @@ type ComponentGeneralHeaderLink {
 }
 
 input ComponentGeneralHeaderLinkFiltersInput {
+  analyticsId: StringFilterInput
   and: [ComponentGeneralHeaderLinkFiltersInput]
   icon: StringFilterInput
   label: StringFilterInput
@@ -729,6 +714,7 @@ input ComponentGeneralHeaderLinkFiltersInput {
 }
 
 input ComponentGeneralHeaderLinkInput {
+  analyticsId: String
   icon: ENUM_COMPONENTGENERALHEADERLINK_ICON
   id: ID
   label: String
@@ -765,6 +751,7 @@ input ComponentMenuMenuItemInput {
 }
 
 type ComponentMenuMenuLink {
+  analyticsId: String
   id: ID!
   label: String!
   page: PageEntityResponse
@@ -772,6 +759,7 @@ type ComponentMenuMenuLink {
 }
 
 input ComponentMenuMenuLinkFiltersInput {
+  analyticsId: StringFilterInput
   and: [ComponentMenuMenuLinkFiltersInput]
   label: StringFilterInput
   not: ComponentMenuMenuLinkFiltersInput
@@ -781,6 +769,7 @@ input ComponentMenuMenuLinkFiltersInput {
 }
 
 input ComponentMenuMenuLinkInput {
+  analyticsId: String
   id: ID
   label: String
   page: ID
@@ -2168,7 +2157,7 @@ type GeneralRelationResponseCollection {
   data: [GeneralEntity!]!
 }
 
-union GenericMorph = Alert | Article | BlogPost | ComponentAccordionItemsFlatText | ComponentAccordionItemsInstitution | ComponentAccordionItemsInstitutionNarrow | ComponentBlocksBookmarkLink | ComponentBlocksCommonLink | ComponentBlocksComparisonCard | ComponentBlocksComparisonItem | ComponentBlocksContactCard | ComponentBlocksFile | ComponentBlocksFileItem | ComponentBlocksFooterColumn | ComponentBlocksHomepageHighlightsItem | ComponentBlocksIconWithTitleAndDescription | ComponentBlocksInBa | ComponentBlocksNumericalListItem | ComponentBlocksPageLink | ComponentBlocksProsAndConsCard | ComponentBlocksTestimonialItem | ComponentBlocksTimelineItem | ComponentBlocksTopServicesItem | ComponentBlocksVideo | ComponentGeneralHeader | ComponentGeneralHeaderLink | ComponentMenuMenuItem | ComponentMenuMenuLink | ComponentMenuMenuSection | ComponentSectionsAccordion | ComponentSectionsArticles | ComponentSectionsBanner | ComponentSectionsCalculator | ComponentSectionsColumnedText | ComponentSectionsComparisonSection | ComponentSectionsContactsSection | ComponentSectionsDivider | ComponentSectionsFaqCategories | ComponentSectionsFaqs | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsHomepageEvents | ComponentSectionsHomepageHighlights | ComponentSectionsHomepageMayorAndCouncil | ComponentSectionsHomepageTabs | ComponentSectionsIconTitleDesc | ComponentSectionsIframe | ComponentSectionsInbaArticlesList | ComponentSectionsInbaReleases | ComponentSectionsLinks | ComponentSectionsNarrowText | ComponentSectionsNumericalList | ComponentSectionsOfficialBoard | ComponentSectionsOrganizationalStructure | ComponentSectionsProsAndConsSection | ComponentSectionsRegulations | ComponentSectionsRegulationsList | ComponentSectionsSubpageList | ComponentSectionsTestimonials | ComponentSectionsTextWithImage | ComponentSectionsTimeline | ComponentSectionsTopServices | ComponentSectionsVideos | ComponentSectionsWaves | ComponentTaxAdministratorsTaxAdministrator | Faq | FaqCategory | Footer | General | Homepage | I18NLocale | InbaArticle | InbaRelease | InbaTag | Menu | Page | PageCategory | Regulation | Tag | TaxAdministratorsList | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
+union GenericMorph = Alert | Article | BlogPost | ComponentAccordionItemsFlatText | ComponentAccordionItemsInstitution | ComponentAccordionItemsInstitutionNarrow | ComponentBlocksCommonLink | ComponentBlocksComparisonCard | ComponentBlocksComparisonItem | ComponentBlocksContactCard | ComponentBlocksFile | ComponentBlocksFileItem | ComponentBlocksFooterColumn | ComponentBlocksHomepageHighlightsItem | ComponentBlocksIconWithTitleAndDescription | ComponentBlocksInBa | ComponentBlocksNumericalListItem | ComponentBlocksPageLink | ComponentBlocksProsAndConsCard | ComponentBlocksTestimonialItem | ComponentBlocksTimelineItem | ComponentBlocksTopServicesItem | ComponentBlocksVideo | ComponentGeneralHeader | ComponentGeneralHeaderLink | ComponentMenuMenuItem | ComponentMenuMenuLink | ComponentMenuMenuSection | ComponentSectionsAccordion | ComponentSectionsArticles | ComponentSectionsBanner | ComponentSectionsCalculator | ComponentSectionsColumnedText | ComponentSectionsComparisonSection | ComponentSectionsContactsSection | ComponentSectionsDivider | ComponentSectionsFaqCategories | ComponentSectionsFaqs | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsHomepageEvents | ComponentSectionsHomepageHighlights | ComponentSectionsHomepageMayorAndCouncil | ComponentSectionsHomepageTabs | ComponentSectionsIconTitleDesc | ComponentSectionsIframe | ComponentSectionsInbaArticlesList | ComponentSectionsInbaReleases | ComponentSectionsLinks | ComponentSectionsNarrowText | ComponentSectionsNumericalList | ComponentSectionsOfficialBoard | ComponentSectionsOrganizationalStructure | ComponentSectionsProsAndConsSection | ComponentSectionsRegulations | ComponentSectionsRegulationsList | ComponentSectionsSubpageList | ComponentSectionsTestimonials | ComponentSectionsTextWithImage | ComponentSectionsTimeline | ComponentSectionsTopServices | ComponentSectionsVideos | ComponentSectionsWaves | ComponentTaxAdministratorsTaxAdministrator | Faq | FaqCategory | Footer | General | Homepage | I18NLocale | InbaArticle | InbaRelease | InbaTag | Menu | Page | PageCategory | Regulation | Tag | TaxAdministratorsList | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
 
 type Homepage {
   createdAt: DateTime

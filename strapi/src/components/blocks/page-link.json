@@ -1,7 +1,7 @@
 {
   "collectionName": "components_blocks_page_links",
   "info": {
-    "displayName": "page Link",
+    "displayName": "page link",
     "description": ""
   },
   "options": {},
@@ -16,6 +16,9 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::page.page"
+    },
+    "analyticsId": {
+      "type": "string"
     }
   }
 }

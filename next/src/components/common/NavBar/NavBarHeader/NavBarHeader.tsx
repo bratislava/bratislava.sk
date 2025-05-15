@@ -40,23 +40,14 @@ const NavBarHeader = ({ className }: NavBarProps) => {
             ?.filter(isDefined)
             .filter((link) => link.showOnDesktop)
             .map((link, linkIndex) => {
-              // TODO better approach to links
-              const pageSlug = link.page?.data?.attributes?.slug
-              if (pageSlug || link.url) {
-                return (
-                  <MLink
-                    // eslint-disable-next-line react/no-array-index-key
-                    key={linkIndex}
-                    variant="underlined-medium"
-                    href={pageSlug ? `/${pageSlug}` : (link.url ?? '#')}
-                    target={link.url?.startsWith('http') ? '_blank' : undefined}
-                  >
-                    {link.label}
-                  </MLink>
-                )
-              }
-
-              return null
+              return (
+                <MLink
+                  // eslint-disable-next-line react/no-array-index-key
+                  key={linkIndex}
+                  variant="underlined-medium"
+                  {...getCommonLinkProps(link)}
+                />
+              )
             })}
 
           {accountLink ? (
