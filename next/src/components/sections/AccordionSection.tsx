@@ -7,8 +7,9 @@ import Institution from '@/src/components/common/Institution_Deprecated/Institut
 import NarrowText from '@/src/components/common/NarrowText/NarrowText'
 import Markdown from '@/src/components/formatting/Markdown/Markdown'
 import { AccordionSectionFragment } from '@/src/services/graphql'
+import { getCommonLinkProps } from '@/src/utils/getCommonLinkProps'
 import { isDefined } from '@/src/utils/isDefined'
-import { groupByCategory, parsePageLink } from '@/src/utils/pageUtils_Deprecated'
+import { groupByCategory } from '@/src/utils/pageUtils_Deprecated'
 import { isPresent } from '@/src/utils/utils'
 
 type AccordionSectionProps = {
@@ -54,26 +55,25 @@ const AccordionSection = ({ section }: AccordionSectionProps) => {
           // eslint-disable-next-line react/no-array-index-key
           <Accordion key={`flatText-${index}`} title={text.category}>
             {text.items.filter(isPresent).map((item, itemIndex) => {
-              const link = parsePageLink({
-                label: item.moreLinkTitle,
-                url: item.moreLinkUrl,
-                page: item.moreLinkPage,
-              })
-
               return (
                 // eslint-disable-next-line react/no-array-index-key
                 <div className="flex flex-col gap-4" key={itemIndex}>
                   <NarrowText align={item.align} width={item.width}>
                     <Markdown content={item.content} variant="accordion" />
                   </NarrowText>
-                  {item.fileList?.length ? (
+                  {item.fileList?.filter(isDefined).length ? (
                     <FileList files={item.fileList.filter(isDefined) ?? []} />
                   ) : null}
-                  {link?.url && link.title && (
-                    <Button href={link.url || '#'} variant="link">
-                      {link.title}
-                    </Button>
-                  )}
+                  {item.moreLinkUrl || item.moreLinkPage ? (
+                    <Button
+                      variant="link"
+                      {...getCommonLinkProps({
+                        label: item.moreLinkTitle,
+                        url: item.moreLinkUrl,
+                        page: item.moreLinkPage,
+                      })}
+                    />
+                  ) : null}
                 </div>
               )
             })}
