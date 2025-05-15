@@ -71,6 +71,8 @@
   --color-grey-50: 245 245 245; /*#F5F5F5*/
   --color-grey-0: 255 255 255; /*#fff*/
 
+  --color-transparent: transparent;
+
   --color-success-800: 1 90 41; /*#015A29*/
   --color-success-700: 1 132 61; /*#01843D*/
   --color-success-600: 52 157 100; /*#349D64*/
@@ -115,7 +117,102 @@
   --color-category-100: var(--color-main-100);
   --font-contrast-color: var(--color-grey-0);
 
-  /* This tokens are copied from OLO project and adjusted according to DS. Some tokens from DS are missing.  */
+  /* New tokens - border */
+
+  --color-border-error: var(--color-negative-700);
+  --color-border-success: var(--color-success-700);
+  --color-border-warning: var(--color-warning-700);
+
+  --color-border-passive-primary: var(--color-grey-200);
+  --color-border-passive-secondary: var(--color-grey-transparent);
+
+  --color-border-active-default: var(--color-grey-200);
+  --color-border-active-hover: var(--color-grey-300);
+  --color-border-active-disabled: var(--color-grey-300);
+  --color-border-active-focused: var(--color-grey-700);
+  --color-border-active-inverted-default: var(--color-grey-600);
+  --color-border-active-inverted-hover: var(--color-grey-500);
+
+  --color-border-active-primary-default: var(--color-grey-700);
+  --color-border-active-primary-hover: var(--color-grey-600);
+  --color-border-active-primary-pressed: var(--color-grey-800);
+  --color-border-active-primary-inverted-default: var(--color-grey-0);
+  --color-border-active-primary-inverted-hover: var(--color-grey-200);
+  --color-border-active-primary-inverted-pressed: var(--color-grey-300);
+
+  --color-border-active-secondary-default: var(--color-grey-700);
+  --color-border-active-secondary-hover: var(--color-grey-600);
+  --color-border-active-secondary-pressed: var(--color-grey-800);
+  --color-border-active-secondary-inverted-default: var(--color-grey-0);
+  --color-border-active-secondary-inverted-hover: var(--color-grey-200);
+  --color-border-active-secondary-inverted-pressed: var(--color-grey-300);
+
+  --color-border-active-tertiary-default: var(--color-grey-200);
+  --color-border-active-tertiary-hover: var(--color-grey-400);
+  --color-border-active-tertiary-pressed: var(--color-grey-500);
+  --color-border-active-tertiary-inverted-default: var(--color-grey-600);
+  --color-border-active-tertiary-inverted-hover: var(--color-grey-500);
+  --color-border-active-tertiary-inverted-pressed: var(--color-grey-400);
+
+  /* New tokens - background */
+
+  --color-background-error-default: var(--color-negative-700);
+  --color-background-error-hover: var(--color-negative-600);
+  --color-background-error-pressed: var(--color-negative-800);
+  --color-background-error-soft-default: var(--color-negative-100);
+  --color-background-error-soft-hover: var(--color-negative-200);
+  --color-background-error-soft-pressed: var(--color-negative-300);
+
+  --color-background-warning-default: var(--color-warning-700);
+  --color-background-warning-soft-default: var(--color-warning-100);
+
+  --color-background-success-default: var(--color-success-700);
+  --color-background-success-soft-default: var(--color-success-100);
+
+  --color-background-passive-base: var(--color-grey-0);
+  --color-background-passive-primary: var(--color-grey-50);
+  --color-background-passive-secondary: var(--color-grey-100);
+  --color-background-passive-tertiary: var(--color-grey-200);
+  --color-background-passive-inverted-base: var(--color-grey-800);
+
+  --color-background-active-primary-default: var(--color-grey-700);
+  --color-background-active-primary-hover: var(--color-grey-600);
+  --color-background-active-primary-pressed: var(--color-grey-800);
+  --color-background-active-primary-inverted-default: var(--color-grey-0);
+  --color-background-active-primary-inverted-hover: var(--color-grey-100);
+  --color-background-active-primary-inverted-pressed: var(--color-grey-200);
+  --color-background-active-primary-soft-default: var(--color-grey-transparent);
+  --color-background-active-primary-soft-hover: var(--color-grey-100);
+  --color-background-active-primary-soft-pressed: var(--color-grey-200);
+  --color-background-active-primary-soft-inverted-default: var(--color-grey-transparent);
+  --color-background-active-primary-soft-inverted-hover: var(--color-grey-600);
+  --color-background-active-primary-soft-inverted-pressed: var(--color-grey-500);
+  /* active secondary and tertiary variants are part of DS but not used currently  */
+
+  --color-content-error-default: var(--color-negative-700);
+  --color-content-error-hover: var(--color-negative-600);
+  --color-content-error-pressed: var(--color-negative-800);
+  --color-content-warning-default: var(--color-warning-700);
+  --color-content-success-default: var(--color-success-700);
+
+  --color-content-passive-primary: var(--color-grey-800);
+  --color-content-passive-secondary: var(--color-grey-700);
+  --color-content-passive-tertiary: var(--color-grey-600);
+  --color-content-passive-inverted-primary: var(--color-grey-0);
+  --color-content-passive-inverted-secondary: var(--color-grey-200);
+  --color-content-passive-inverted-tertiary: var(--color-grey-400);
+
+  --color-content-active-primary-default: var(--color-grey-700);
+  --color-content-active-primary-hover: var(--color-grey-600);
+  --color-content-active-primary-pressed: var(--color-grey-800);
+  --color-content-active-primary-disabled: var(--color-grey-500);
+  --color-content-active-primary-inverted-default: var(--color-grey-0);
+  --color-content-active-primary-inverted-hover: var(--color-grey-200);
+  --color-content-active-primary-inverted-pressed: var(--color-grey-300);
+  --color-content-active-primary-inverted-disabled: var(--color-grey-400);
+  /* active secondary and tertiary variants are part of DS but not used currently  */
+
+  /* OLD TOKENS */
   --token-background-primary: var(--color-grey-0);
   --token-background-secondary: var(--color-grey-50);
   --token-background-tertiary: var(--color-grey-100);

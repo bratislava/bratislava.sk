@@ -13,6 +13,7 @@ import HomepageHorizontalCardShowcase from '@/src/components/styleguide/showcase
 import MarkdownShowcase from '@/src/components/styleguide/showcases/MarkdownShowcase'
 import SpinnerShowCase from '@/src/components/styleguide/showcases/SpinnerShowCase'
 import TagShowCase from '@/src/components/styleguide/showcases/TagShowCase'
+import TokensShowcase from '@/src/components/styleguide/showcases/TokensShowcase'
 import StyleGuideWrapper from '@/src/components/styleguide/StyleGuideWrapper'
 import { isProductionDeployment } from '@/src/utils/utils'
 
@@ -23,6 +24,7 @@ const Styleguide = () => {
    * */
   return (
     <StyleGuideWrapper>
+      <TokensShowcase /> {/* Temporary */}
       {/* HERE ADD SHOWCASES */}
       <MarkdownShowcase />
       <TagShowCase />
