@@ -2,7 +2,7 @@ import React from 'react'
 
 import CategoryCard from '@/src/components/cards/CategoryCard'
 import Wrapper from '@/src/components/styleguide/Wrapper'
-import { CommonLinkProps } from '@/src/utils/getCommonLinkProps'
+import { CommonLinkProps } from '@/src/utils/getLinkProps'
 
 const CategoryCardShowcase = () => {
   const cards = [

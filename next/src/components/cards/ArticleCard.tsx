@@ -7,7 +7,7 @@ import CardContent from '@/src/components/cards/CardContent'
 import Button from '@/src/components/common/Button/Button'
 import ImagePlaceholder from '@/src/components/common/Image/ImagePlaceholder'
 import Tag from '@/src/components/common/Tag/Tag'
-import { CommonLinkProps } from '@/src/utils/getCommonLinkProps'
+import { CommonLinkProps } from '@/src/utils/getLinkProps'
 
 export type ArticleCardProps = {
   title: string

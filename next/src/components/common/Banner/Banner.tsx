@@ -6,7 +6,7 @@ import Markdown from '@/src/components/formatting/Markdown/Markdown'
 import { CommonLinkFragment, Enum_Componentsectionsbanner_Variant } from '@/src/services/graphql'
 import cn from '@/src/utils/cn'
 import { generateImageSizes } from '@/src/utils/generateImageSizes'
-import { getCommonLinkProps } from '@/src/utils/getCommonLinkProps'
+import { getLinkProps } from '@/src/utils/getLinkProps'
 
 type BannerProps = {
   title: string
@@ -56,9 +56,7 @@ const Banner = ({
         <div className="flex flex-col items-center gap-2 empty:hidden lg:flex-row lg:gap-4">
           {/* TODO styling of white buttons */}
           {/* TODO use only one responsive Button  */}
-          {primaryLink && (
-            <Button variant="solid" fullWidthMobile {...getCommonLinkProps(primaryLink)} />
-          )}
+          {primaryLink && <Button variant="solid" fullWidthMobile {...getLinkProps(primaryLink)} />}
           {secondaryLink && (
             <Button
               className={cn('hidden lg:flex', {
@@ -66,7 +64,7 @@ const Banner = ({
               })}
               variant="outline"
               fullWidthMobile
-              {...getCommonLinkProps(secondaryLink)}
+              {...getLinkProps(secondaryLink)}
             />
           )}
           {tertiaryLink && (
@@ -75,7 +73,7 @@ const Banner = ({
                 'text-white hover:text-white/80 focus:text-white/80': variant === 'dark',
               })}
               variant="link"
-              {...getCommonLinkProps(tertiaryLink)}
+              {...getLinkProps(tertiaryLink)}
             />
           )}
         </div>

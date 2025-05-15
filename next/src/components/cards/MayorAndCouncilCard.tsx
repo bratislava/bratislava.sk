@@ -3,7 +3,7 @@ import { Typography } from '@bratislava/component-library'
 import CardBase from '@/src/components/cards/CardBase'
 import CardContent from '@/src/components/cards/CardContent'
 import Button from '@/src/components/common/Button/Button'
-import { CommonLinkProps } from '@/src/utils/getCommonLinkProps'
+import { CommonLinkProps } from '@/src/utils/getLinkProps'
 
 type Props = {
   title: string

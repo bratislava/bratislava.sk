@@ -2,7 +2,7 @@ import { twMerge } from 'tailwind-merge'
 
 import Button from '@/src/components/common/Button/Button'
 import { SubpageListPageHeaderSectionFragment } from '@/src/services/graphql'
-import { getCommonLinkProps } from '@/src/utils/getCommonLinkProps'
+import { getLinkProps } from '@/src/utils/getLinkProps'
 import { isDefined } from '@/src/utils/isDefined'
 
 export type SubpageListProps = {
@@ -36,9 +36,9 @@ const SubpageList = ({ subpageList, className }: SubpageListProps) => {
           <Button
             variant="link"
             stretched
-            hasLinkIcon={getCommonLinkProps(subpage).target === '_blank'}
+            hasLinkIcon={getLinkProps(subpage).target === '_blank'}
             className="text-large lg:text-large tracking-wide"
-            {...getCommonLinkProps(subpage)}
+            {...getLinkProps(subpage)}
           />
         </div>
       ))}

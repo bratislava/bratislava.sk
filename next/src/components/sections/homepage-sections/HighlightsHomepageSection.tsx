@@ -5,7 +5,7 @@ import ArticleCard from '@/src/components/cards/ArticleCard'
 import HomepageHorizontalCard from '@/src/components/cards/HomepageHorizontalCard'
 import ResponsiveCarousel from '@/src/components/common/Carousel/ResponsiveCarousel'
 import { useHomepageContext } from '@/src/components/providers/HomepageContextProvider'
-import { getCommonLinkProps } from '@/src/utils/getCommonLinkProps'
+import { getLinkProps } from '@/src/utils/getLinkProps'
 import { isDefined } from '@/src/utils/isDefined'
 import { useTranslation } from '@/src/utils/useTranslation'
 
@@ -33,7 +33,7 @@ const HighlightsHomepageSection = () => {
         tablet={2}
         desktop={2}
         items={filteredHighlights.map((highlight) => {
-          const { children: postTitle, ...linkProps } = getCommonLinkProps(highlight.link)
+          const { children: postTitle, ...linkProps } = getLinkProps(highlight.link)
 
           return (
             <Fragment key={highlight.id}>

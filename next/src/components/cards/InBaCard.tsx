@@ -4,7 +4,7 @@ import Image from 'next/image'
 import CardBase from '@/src/components/cards/CardBase'
 import Button from '@/src/components/common/Button/Button'
 import cn from '@/src/utils/cn'
-import { CommonLinkProps } from '@/src/utils/getCommonLinkProps'
+import { CommonLinkProps } from '@/src/utils/getLinkProps'
 
 export type InBaCardProps = {
   className?: string

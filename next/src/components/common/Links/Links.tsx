@@ -5,7 +5,7 @@ import { ArrowRightIcon } from '@/src/assets/ui-icons'
 import Button from '@/src/components/common/Button/Button'
 import { LinksSectionFragment } from '@/src/services/graphql'
 import cn from '@/src/utils/cn'
-import { getCommonLinkProps } from '@/src/utils/getCommonLinkProps'
+import { getLinkProps } from '@/src/utils/getLinkProps'
 import { isDefined } from '@/src/utils/isDefined'
 
 export type LinksProps = {
@@ -26,8 +26,8 @@ const Links = ({ title, pageLinks, className }: LinksProps) => {
             <Button
               variant="link"
               startIcon={<ArrowRightIcon className="shrink-0" />}
-              {...getCommonLinkProps(pageLink)}
-              hasLinkIcon={getCommonLinkProps(pageLink).target === '_blank'} // show link icon only for external urls since we already use arrow icon in startIcon
+              {...getLinkProps(pageLink)}
+              hasLinkIcon={getLinkProps(pageLink).target === '_blank'} // show link icon only for external urls since we already use arrow icon in startIcon
             />
           </li>
         ))}

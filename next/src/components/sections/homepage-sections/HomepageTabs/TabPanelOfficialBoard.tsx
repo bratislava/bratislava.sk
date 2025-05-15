@@ -17,7 +17,7 @@ import {
 } from '@/src/services/ginis/fetchers/officialBoardListFetcher'
 import { base64Encode } from '@/src/utils/base64'
 import { formatDate } from '@/src/utils/formatDate'
-import { getCommonLinkProps } from '@/src/utils/getCommonLinkProps'
+import { getLinkProps } from '@/src/utils/getLinkProps'
 
 const TabPanelOfficialBoard = () => {
   const { homepage } = useHomepageContext()
@@ -89,7 +89,7 @@ const TabPanelOfficialBoard = () => {
             <Button
               variant="outline"
               data-cy="official-board-button"
-              {...getCommonLinkProps(tabs.officialBoardPageLink)}
+              {...getLinkProps(tabs.officialBoardPageLink)}
             />
           </div>
         ) : null}

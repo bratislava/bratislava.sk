@@ -7,7 +7,7 @@ import Institution from '@/src/components/common/Institution_Deprecated/Institut
 import NarrowText from '@/src/components/common/NarrowText/NarrowText'
 import Markdown from '@/src/components/formatting/Markdown/Markdown'
 import { AccordionSectionFragment } from '@/src/services/graphql'
-import { getCommonLinkProps } from '@/src/utils/getCommonLinkProps'
+import { getLinkProps } from '@/src/utils/getLinkProps'
 import { isDefined } from '@/src/utils/isDefined'
 import { groupByCategory } from '@/src/utils/pageUtils_Deprecated'
 import { isPresent } from '@/src/utils/utils'
@@ -67,7 +67,7 @@ const AccordionSection = ({ section }: AccordionSectionProps) => {
                   {item.moreLinkUrl || item.moreLinkPage ? (
                     <Button
                       variant="link"
-                      {...getCommonLinkProps({
+                      {...getLinkProps({
                         label: item.moreLinkTitle,
                         url: item.moreLinkUrl,
                         page: item.moreLinkPage,

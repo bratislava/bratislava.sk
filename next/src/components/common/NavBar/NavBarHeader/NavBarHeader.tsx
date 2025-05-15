@@ -7,7 +7,7 @@ import SkipToContentButton from '@/src/components/common/SkipToContentButton/Ski
 import { useGeneralContext } from '@/src/components/providers/GeneralContextProvider'
 import { useLocalizations } from '@/src/components/providers/LocalizationsProvider'
 import { getCategoryColorLocalStyle } from '@/src/utils/colors'
-import { getCommonLinkProps } from '@/src/utils/getCommonLinkProps'
+import { getLinkProps } from '@/src/utils/getLinkProps'
 import { isDefined } from '@/src/utils/isDefined'
 import { useTranslation } from '@/src/utils/useTranslation'
 
@@ -45,7 +45,7 @@ const NavBarHeader = ({ className }: NavBarProps) => {
                   // eslint-disable-next-line react/no-array-index-key
                   key={linkIndex}
                   variant="underlined-medium"
-                  {...getCommonLinkProps(link)}
+                  {...getLinkProps(link)}
                 />
               )
             })}
@@ -56,7 +56,7 @@ const NavBarHeader = ({ className }: NavBarProps) => {
               variant="outline"
               hasLinkIcon={false}
               data-cy="account-button"
-              {...getCommonLinkProps(accountLink)}
+              {...getLinkProps(accountLink)}
             />
           ) : (
             <Divider />

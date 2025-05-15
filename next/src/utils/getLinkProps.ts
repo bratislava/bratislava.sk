@@ -15,7 +15,7 @@ export type CommonLinkProps = {
   analyticsProps?: LinkAnalyticsProps
 }
 
-export const getCommonLinkProps = (
+export const getLinkProps = (
   link:
     | CommonLinkFragment
     | MenuLinkFragment
