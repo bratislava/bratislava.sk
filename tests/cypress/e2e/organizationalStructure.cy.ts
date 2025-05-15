@@ -9,6 +9,7 @@ describe('OS01 -', { testIsolation: false }, () => {
       context(device, Cypress.env('resolution')[`${device}`], () => {
         before(() => {
           cy.visit('/mesto-bratislava/sprava-mesta/magistrat/organizacna-struktura')
+          cy.setCookie('CookieConsent', 'false') // Set CookieBot cookies to something to prevent cookie banner to show up
         })
 
         it('1. Check organizational structure data.', () => {
