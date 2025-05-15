@@ -1,14 +1,18 @@
 import { twMerge } from 'tailwind-merge'
 
-import MLink from '@/src/components/common/MLink/MLink'
+import Button from '@/src/components/common/Button/Button'
+import { SubpageListPageHeaderSectionFragment } from '@/src/services/graphql'
+import { getCommonLinkProps } from '@/src/utils/getCommonLinkProps'
+import { isDefined } from '@/src/utils/isDefined'
 
 export type SubpageListProps = {
+  subpageList: SubpageListPageHeaderSectionFragment['subpageList']
   className?: string
-  subpageList?: { title?: string; url?: string }[]
 }
 
-const SubpageList = ({ className, subpageList }: SubpageListProps) => {
-  if (!subpageList || subpageList.length === 0) {
+const SubpageList = ({ subpageList, className }: SubpageListProps) => {
+  const filteredSubpageList = subpageList?.filter(isDefined) ?? []
+  if (filteredSubpageList.length === 0) {
     return null
   }
 
@@ -19,7 +23,7 @@ const SubpageList = ({ className, subpageList }: SubpageListProps) => {
         className,
       )}
     >
-      {subpageList.map((subpage, index) => (
+      {filteredSubpageList.map((subpage, index) => (
         <div
           // eslint-disable-next-line react/no-array-index-key
           key={index}
@@ -28,17 +32,14 @@ const SubpageList = ({ className, subpageList }: SubpageListProps) => {
           <div className="text-h3 flex size-12 shrink-0 grow-0 basis-12 items-center justify-center rounded-full bg-action-background-default font-semibold text-white sm:size-16 sm:basis-16">
             {index + 1}
           </div>
-          <div className="text-large font-medium leading-6 tracking-wide">
-            {/* FIXME Typography. Convert to use Typograhy. Issue: Different font weight than Figma <p> */}
-            <MLink
-              href={subpage.url ?? '#'}
-              target={subpage.url?.startsWith('http') ? '_blank' : undefined}
-              variant="underlineOnHover"
-              stretched
-            >
-              {subpage.title}
-            </MLink>
-          </div>
+          {/* FIXME Typography. Convert to use Typograhy. Issue: Different font weight than Figma <p> */}
+          <Button
+            variant="link"
+            stretched
+            hasLinkIcon={getCommonLinkProps(subpage).target === '_blank'}
+            className="text-large lg:text-large tracking-wide"
+            {...getCommonLinkProps(subpage)}
+          />
         </div>
       ))}
     </div>
