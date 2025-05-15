@@ -9,6 +9,7 @@ describe('English translation', { testIsolation: false }, () => {
       context(device, Cypress.env('resolution')[`${device}`], () => {
         before(() => {
           cy.visit('/kontakty')
+          cy.setCookie('CookieConsent', 'false') // Set CookieBot cookies to something to prevent cookie banner to show up
         })
 
         it('1. Translating contact page.', () => {

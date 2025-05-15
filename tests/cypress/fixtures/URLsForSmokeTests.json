@@ -8,7 +8,7 @@
     "status": 200
   },
   {
-    "path": "/uradne-a-navstevne-hodiny",
+    "path": "/kontakty",
     "status": 200
   },
   {
@@ -28,7 +28,15 @@
     "status": 200
   },
   {
+    "path": "/socialne-sluzby-a-byvanie",
+    "status": 200
+  },
+  {
     "path": "/vzdelavanie-a-volny-cas",
+    "status": 200
+  },
+  {
+    "path": "/kultura-a-komunity",
     "status": 200
   }
 ]

@@ -9,6 +9,7 @@ describe('S01 - ', { testIsolation: false }, () => {
       context(device, Cypress.env('resolution')[`${device}`], () => {
         beforeEach(() => {
           cy.visit('/')
+          cy.setCookie('CookieConsent', 'false') // Set CookieBot cookies to something to prevent cookie banner to show up
         })
 
         it('1. Checking search page.', () => {

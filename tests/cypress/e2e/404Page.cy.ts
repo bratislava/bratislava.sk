@@ -9,6 +9,7 @@ describe('Page 404', { testIsolation: false }, () => {
       context(device, Cypress.env('resolution')[`${device}`], () => {
         before(() => {
           cy.visit('/93dfcaf3d923ec47edb8580667473987', { failOnStatusCode: false })
+          cy.setCookie('CookieConsent', 'false') // Set CookieBot cookies to something to prevent cookie banner to show up
         })
 
         it('1. Check if the 404 page is displayed.', () => {
