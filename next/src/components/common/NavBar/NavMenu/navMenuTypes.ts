@@ -2,11 +2,9 @@ import {
   Enum_Componentmenumenuitem_Icon,
   Enum_Componentmenumenusection_Icon,
 } from '@/src/services/graphql'
+import { CommonLinkProps } from '@/src/utils/getLinkProps'
 
-export type MenuLink = {
-  label: string
-  url: string
-}
+export type MenuLink = CommonLinkProps
 
 export type MenuSection = {
   items: MenuLink[]
