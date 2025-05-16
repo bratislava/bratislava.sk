@@ -28,18 +28,13 @@ const NavMenuSection = ({ section, classNames }: NavigationSectionProps) => {
         )}
 
         <ul className="mt-1.5 flex flex-col">
-          {/* eslint-disable react/no-array-index-key */}
           {section.items?.map((menuLink, index) => {
-            return <NavMenuLink key={index} label={menuLink.label} url={menuLink.url} />
+            // eslint-disable-next-line react/no-array-index-key
+            return <NavMenuLink key={index} {...menuLink} />
           })}
-          {section.showMoreLink && (
-            <NavMenuLink
-              label={section.showMoreLink.label}
-              url={section.showMoreLink.url}
-              variant="showMoreLink"
-            />
-          )}
-          {/* eslint-enable react/no-array-index-key */}
+          {section.showMoreLink ? (
+            <NavMenuLink variant="showMoreLink" {...section.showMoreLink} />
+          ) : null}
         </ul>
       </div>
     </li>

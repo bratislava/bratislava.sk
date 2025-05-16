@@ -1,9 +1,7 @@
-import { Typography } from '@bratislava/component-library'
 import * as NavigationMenu from '@radix-ui/react-navigation-menu'
 import React from 'react'
 
 import Button from '@/src/components/common/Button/Button'
-import MLink from '@/src/components/common/MLink/MLink'
 
 import { useNavMenuContext } from './navMenuContext'
 import { MenuLink } from './navMenuTypes'
@@ -14,7 +12,7 @@ type NavMenuLinkProps = {
   variant?: 'simple' | 'showMoreLink'
 } & MenuLink
 
-const NavMenuLink = ({ label, url, variant = 'simple' }: NavMenuLinkProps) => {
+const NavMenuLink = ({ variant = 'simple', ...rest }: NavMenuLinkProps) => {
   const { setMobileMenuOpen } = useNavMenuContext()
 
   switch (variant) {
@@ -22,9 +20,14 @@ const NavMenuLink = ({ label, url, variant = 'simple' }: NavMenuLinkProps) => {
       return (
         <li className="flex">
           <NavigationMenu.Link asChild onClick={() => setMobileMenuOpen(false)}>
-            <MLink href={url} variant="underlineOnHover" className="w-full py-1">
-              <Typography type="p">{label}</Typography>
-            </MLink>
+            {/* Using Button with custom styles to be able to show link icon easily, not ideal, but it works */}
+            <Button
+              variant="link"
+              className="w-full justify-start py-1 font-normal no-underline hover:underline"
+              size="small"
+              {...rest}
+              hasLinkIcon={rest.target === '_blank'}
+            />
           </NavigationMenu.Link>
         </li>
       )
@@ -33,9 +36,7 @@ const NavMenuLink = ({ label, url, variant = 'simple' }: NavMenuLinkProps) => {
       return (
         <li className="flex">
           <NavigationMenu.Link asChild onClick={() => setMobileMenuOpen(false)}>
-            <Button variant="link" href={url} className="mt-2">
-              {label}
-            </Button>
+            <Button variant="link" className="mt-2" {...rest} />
           </NavigationMenu.Link>
         </li>
       )

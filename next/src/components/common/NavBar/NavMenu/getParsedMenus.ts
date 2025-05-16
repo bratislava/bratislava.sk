@@ -2,7 +2,7 @@ import { GeneralQuery } from '@/src/services/graphql'
 import { getLinkProps } from '@/src/utils/getLinkProps'
 import { isDefined } from '@/src/utils/isDefined'
 
-import { MenuItem, MenuLink } from './navMenuTypes'
+import { MenuItem } from './navMenuTypes'
 
 export const getParsedMenus = (menu: GeneralQuery['menu'], moreLabel: string): MenuItem[] => {
   return (
@@ -23,18 +23,12 @@ export const getParsedMenus = (menu: GeneralQuery['menu'], moreLabel: string): M
               const sectionItems =
                 section.links
                   ?.map((menuLink) => {
-                    const { children, href } = getLinkProps(menuLink)
-
-                    // TODO target
-                    return { label: children, url: href }
+                    return getLinkProps(menuLink)
                   })
                   .filter(isDefined) ?? []
 
               const showMoreLink = section.page?.data?.attributes
-                ? ({
-                    label: moreLabel,
-                    url: `/${section.page.data.attributes.slug}`,
-                  } as MenuLink)
+                ? getLinkProps({ label: moreLabel, page: section.page })
                 : undefined
 
               const sectionIcon = section.icon

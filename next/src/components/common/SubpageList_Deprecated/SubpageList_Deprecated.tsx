@@ -29,7 +29,7 @@ const SubpageList = ({ subpageList, className }: SubpageListProps) => {
           key={index}
           className="group relative flex items-center gap-x-8 gap-y-5 sm:flex-col sm:items-start"
         >
-          <div className="text-h3 flex size-12 shrink-0 grow-0 basis-12 items-center justify-center rounded-full bg-action-background-default font-semibold text-white sm:size-16 sm:basis-16">
+          <div className="text-h3 flex size-12 shrink-0 grow-0 basis-12 items-center justify-center rounded-full bg-action-background-default font-semibold text-white group-hover:bg-action-background-hover sm:size-16 sm:basis-16">
             {index + 1}
           </div>
           {/* FIXME Typography. Convert to use Typograhy. Issue: Different font weight than Figma <p> */}
