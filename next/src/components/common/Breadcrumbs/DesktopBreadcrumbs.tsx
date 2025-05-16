@@ -16,7 +16,7 @@ const DesktopBreadcrumbs = ({ breadcrumbs }: BreadcrumbsProps) => {
     <ol className="flex flex-wrap items-center gap-x-1 gap-y-1.5 py-3 lg:py-6">
       <li>
         <MLink
-          href="/next/public"
+          href="/"
           variant="underlined"
           className="shrink-0"
           aria-label={t('Breadcrumbs.homepage')}

@@ -16,8 +16,8 @@ const goBack = () => {
  */
 const MobileBreadcrumbs = ({ breadcrumbs }: BreadcrumbsProps) => {
   const { t } = useTranslation()
-  const witHome = [{ title: t('Breadcrumbs.homepage'), path: '/' }, ...breadcrumbs]
-  const withHomeWithoutCurrent = witHome.slice(0, -1)
+  const withHome = [{ title: t('Breadcrumbs.homepage'), path: '/' }, ...breadcrumbs]
+  const withHomeWithoutCurrent = withHome.slice(0, -1)
   const last = withHomeWithoutCurrent.at(-1)
   const showDetails = withHomeWithoutCurrent.length > 0
 
