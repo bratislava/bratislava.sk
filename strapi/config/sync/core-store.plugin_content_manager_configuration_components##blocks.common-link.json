@@ -22,8 +22,8 @@
       },
       "label": {
         "edit": {
-          "label": "label",
-          "description": "",
+          "label": "Text odkazu",
+          "description": "Ak je toto pole prázdne, text odkazu bude zodpovedať názvu zadanej entity (page, article...) alebo zadanej URL (z poľa url). Zo zvyšných polí treba vyplniť vždy iba jedno. Ak sa vyplní viacero, odkaz bude smerovať na prvé vyplnené pole a ostatné sa odignorujú.",
           "placeholder": "",
           "visible": true,
           "editable": true
@@ -36,7 +36,7 @@
       },
       "page": {
         "edit": {
-          "label": "page",
+          "label": "Stránka",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -51,7 +51,7 @@
       },
       "article": {
         "edit": {
-          "label": "article",
+          "label": "Článok",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -66,8 +66,8 @@
       },
       "url": {
         "edit": {
-          "label": "url",
-          "description": "",
+          "label": "Url",
+          "description": "Iba pre externé adresy - treba vždy vypĺňať s \"https://\" alebo \"http://\"",
           "placeholder": "",
           "visible": true,
           "editable": true
@@ -81,7 +81,7 @@
       "analyticsId": {
         "edit": {
           "label": "analyticsId",
-          "description": "",
+          "description": "Identifikátor, podľa ktorého vieme trackovať v Plausible poček kliknutí na tento odkaz.",
           "placeholder": "",
           "visible": true,
           "editable": true
@@ -104,10 +104,16 @@
         [
           {
             "name": "label",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "page",
             "size": 6
           },
           {
-            "name": "page",
+            "name": "article",
             "size": 6
           }
         ],
@@ -115,15 +121,9 @@
           {
             "name": "url",
             "size": 6
-          }
-        ],
-        [
-          {
-            "name": "analyticsId",
-            "size": 6
           },
           {
-            "name": "article",
+            "name": "analyticsId",
             "size": 6
           }
         ]

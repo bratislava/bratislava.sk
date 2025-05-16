@@ -7,7 +7,7 @@ import CardContent from '@/src/components/cards/CardContent'
 import Button from '@/src/components/common/Button/Button'
 import ImagePlaceholder from '@/src/components/common/Image/ImagePlaceholder'
 import cn from '@/src/utils/cn'
-import { CommonLinkProps } from '@/src/utils/getCommonLinkProps'
+import { CommonLinkProps } from '@/src/utils/getLinkProps'
 
 type Props = {
   title: string

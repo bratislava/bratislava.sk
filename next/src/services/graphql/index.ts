@@ -399,33 +399,12 @@ export type ComponentAccordionItemsInstitutionNarrowInput = {
   urlLabel?: InputMaybe<Scalars['String']['input']>
 }
 
-export type ComponentBlocksBookmarkLink = {
-  __typename?: 'ComponentBlocksBookmarkLink'
-  href?: Maybe<Scalars['String']['output']>
-  id: Scalars['ID']['output']
-  title?: Maybe<Scalars['String']['output']>
-}
-
-export type ComponentBlocksBookmarkLinkFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<ComponentBlocksBookmarkLinkFiltersInput>>>
-  href?: InputMaybe<StringFilterInput>
-  not?: InputMaybe<ComponentBlocksBookmarkLinkFiltersInput>
-  or?: InputMaybe<Array<InputMaybe<ComponentBlocksBookmarkLinkFiltersInput>>>
-  title?: InputMaybe<StringFilterInput>
-}
-
-export type ComponentBlocksBookmarkLinkInput = {
-  href?: InputMaybe<Scalars['String']['input']>
-  id?: InputMaybe<Scalars['ID']['input']>
-  title?: InputMaybe<Scalars['String']['input']>
-}
-
 export type ComponentBlocksCommonLink = {
   __typename?: 'ComponentBlocksCommonLink'
   analyticsId?: Maybe<Scalars['String']['output']>
   article?: Maybe<ArticleEntityResponse>
   id: Scalars['ID']['output']
-  label: Scalars['String']['output']
+  label?: Maybe<Scalars['String']['output']>
   page?: Maybe<PageEntityResponse>
   url?: Maybe<Scalars['String']['output']>
 }
@@ -674,6 +653,7 @@ export type ComponentBlocksNumericalListItemInput = {
 
 export type ComponentBlocksPageLink = {
   __typename?: 'ComponentBlocksPageLink'
+  analyticsId?: Maybe<Scalars['String']['output']>
   id: Scalars['ID']['output']
   page?: Maybe<PageEntityResponse>
   title?: Maybe<Scalars['String']['output']>
@@ -681,6 +661,7 @@ export type ComponentBlocksPageLink = {
 }
 
 export type ComponentBlocksPageLinkFiltersInput = {
+  analyticsId?: InputMaybe<StringFilterInput>
   and?: InputMaybe<Array<InputMaybe<ComponentBlocksPageLinkFiltersInput>>>
   not?: InputMaybe<ComponentBlocksPageLinkFiltersInput>
   or?: InputMaybe<Array<InputMaybe<ComponentBlocksPageLinkFiltersInput>>>
@@ -690,6 +671,7 @@ export type ComponentBlocksPageLinkFiltersInput = {
 }
 
 export type ComponentBlocksPageLinkInput = {
+  analyticsId?: InputMaybe<Scalars['String']['input']>
   id?: InputMaybe<Scalars['ID']['input']>
   page?: InputMaybe<Scalars['ID']['input']>
   title?: InputMaybe<Scalars['String']['input']>
@@ -839,9 +821,10 @@ export type ComponentGeneralHeaderInput = {
 
 export type ComponentGeneralHeaderLink = {
   __typename?: 'ComponentGeneralHeaderLink'
+  analyticsId?: Maybe<Scalars['String']['output']>
   icon: Enum_Componentgeneralheaderlink_Icon
   id: Scalars['ID']['output']
-  label: Scalars['String']['output']
+  label?: Maybe<Scalars['String']['output']>
   page?: Maybe<PageEntityResponse>
   showOnDesktop: Scalars['Boolean']['output']
   showOnMobile: Scalars['Boolean']['output']
@@ -849,6 +832,7 @@ export type ComponentGeneralHeaderLink = {
 }
 
 export type ComponentGeneralHeaderLinkFiltersInput = {
+  analyticsId?: InputMaybe<StringFilterInput>
   and?: InputMaybe<Array<InputMaybe<ComponentGeneralHeaderLinkFiltersInput>>>
   icon?: InputMaybe<StringFilterInput>
   label?: InputMaybe<StringFilterInput>
@@ -861,6 +845,7 @@ export type ComponentGeneralHeaderLinkFiltersInput = {
 }
 
 export type ComponentGeneralHeaderLinkInput = {
+  analyticsId?: InputMaybe<Scalars['String']['input']>
   icon?: InputMaybe<Enum_Componentgeneralheaderlink_Icon>
   id?: InputMaybe<Scalars['ID']['input']>
   label?: InputMaybe<Scalars['String']['input']>
@@ -905,13 +890,15 @@ export type ComponentMenuMenuItemInput = {
 
 export type ComponentMenuMenuLink = {
   __typename?: 'ComponentMenuMenuLink'
+  analyticsId?: Maybe<Scalars['String']['output']>
   id: Scalars['ID']['output']
-  label: Scalars['String']['output']
+  label?: Maybe<Scalars['String']['output']>
   page?: Maybe<PageEntityResponse>
   url?: Maybe<Scalars['String']['output']>
 }
 
 export type ComponentMenuMenuLinkFiltersInput = {
+  analyticsId?: InputMaybe<StringFilterInput>
   and?: InputMaybe<Array<InputMaybe<ComponentMenuMenuLinkFiltersInput>>>
   label?: InputMaybe<StringFilterInput>
   not?: InputMaybe<ComponentMenuMenuLinkFiltersInput>
@@ -921,6 +908,7 @@ export type ComponentMenuMenuLinkFiltersInput = {
 }
 
 export type ComponentMenuMenuLinkInput = {
+  analyticsId?: InputMaybe<Scalars['String']['input']>
   id?: InputMaybe<Scalars['ID']['input']>
   label?: InputMaybe<Scalars['String']['input']>
   page?: InputMaybe<Scalars['ID']['input']>
@@ -2535,7 +2523,6 @@ export type GenericMorph =
   | ComponentAccordionItemsFlatText
   | ComponentAccordionItemsInstitution
   | ComponentAccordionItemsInstitutionNarrow
-  | ComponentBlocksBookmarkLink
   | ComponentBlocksCommonLink
   | ComponentBlocksComparisonCard
   | ComponentBlocksComparisonItem
@@ -5343,7 +5330,7 @@ export type UploadFileEntityFragment = {
 
 export type CommonLinkFragment = {
   __typename?: 'ComponentBlocksCommonLink'
-  label: string
+  label?: string | null
   url?: string | null
   analyticsId?: string | null
   page?: {
@@ -5351,7 +5338,12 @@ export type CommonLinkFragment = {
     data?: {
       __typename?: 'PageEntity'
       id?: string | null
-      attributes?: { __typename?: 'Page'; title?: string | null; slug?: string | null } | null
+      attributes?: {
+        __typename?: 'Page'
+        slug?: string | null
+        title?: string | null
+        locale?: string | null
+      } | null
     } | null
   } | null
   article?: {
@@ -5369,12 +5361,32 @@ export type CommonLinkFragment = {
   } | null
 }
 
+export type PageLinkFragment = {
+  __typename?: 'ComponentBlocksPageLink'
+  url?: string | null
+  analyticsId?: string | null
+  label?: string | null
+  page?: {
+    __typename?: 'PageEntityResponse'
+    data?: {
+      __typename?: 'PageEntity'
+      id?: string | null
+      attributes?: {
+        __typename?: 'Page'
+        slug?: string | null
+        title?: string | null
+        locale?: string | null
+      } | null
+    } | null
+  } | null
+}
+
 export type FooterColumnBlockFragment = {
   __typename?: 'ComponentBlocksFooterColumn'
   title: string
   links?: Array<{
     __typename?: 'ComponentBlocksCommonLink'
-    label: string
+    label?: string | null
     url?: string | null
     analyticsId?: string | null
     page?: {
@@ -5382,7 +5394,12 @@ export type FooterColumnBlockFragment = {
       data?: {
         __typename?: 'PageEntity'
         id?: string | null
-        attributes?: { __typename?: 'Page'; title?: string | null; slug?: string | null } | null
+        attributes?: {
+          __typename?: 'Page'
+          slug?: string | null
+          title?: string | null
+          locale?: string | null
+        } | null
       } | null
     } | null
     article?: {
@@ -5411,7 +5428,7 @@ export type FooterFragment = {
     title: string
     links?: Array<{
       __typename?: 'ComponentBlocksCommonLink'
-      label: string
+      label?: string | null
       url?: string | null
       analyticsId?: string | null
       page?: {
@@ -5419,7 +5436,12 @@ export type FooterFragment = {
         data?: {
           __typename?: 'PageEntity'
           id?: string | null
-          attributes?: { __typename?: 'Page'; title?: string | null; slug?: string | null } | null
+          attributes?: {
+            __typename?: 'Page'
+            slug?: string | null
+            title?: string | null
+            locale?: string | null
+          } | null
         } | null
       } | null
       article?: {
@@ -5439,7 +5461,7 @@ export type FooterFragment = {
   } | null> | null
   accessibilityPageLink?: {
     __typename?: 'ComponentBlocksCommonLink'
-    label: string
+    label?: string | null
     url?: string | null
     analyticsId?: string | null
     page?: {
@@ -5447,7 +5469,12 @@ export type FooterFragment = {
       data?: {
         __typename?: 'PageEntity'
         id?: string | null
-        attributes?: { __typename?: 'Page'; title?: string | null; slug?: string | null } | null
+        attributes?: {
+          __typename?: 'Page'
+          slug?: string | null
+          title?: string | null
+          locale?: string | null
+        } | null
       } | null
     } | null
     article?: {
@@ -5466,7 +5493,7 @@ export type FooterFragment = {
   } | null
   innovationsLink?: {
     __typename?: 'ComponentBlocksCommonLink'
-    label: string
+    label?: string | null
     url?: string | null
     analyticsId?: string | null
     page?: {
@@ -5474,7 +5501,12 @@ export type FooterFragment = {
       data?: {
         __typename?: 'PageEntity'
         id?: string | null
-        attributes?: { __typename?: 'Page'; title?: string | null; slug?: string | null } | null
+        attributes?: {
+          __typename?: 'Page'
+          slug?: string | null
+          title?: string | null
+          locale?: string | null
+        } | null
       } | null
     } | null
     article?: {
@@ -5493,23 +5525,23 @@ export type FooterFragment = {
   } | null
 }
 
-export type PageForMenuEntityFragment = {
-  __typename?: 'PageEntity'
-  id?: string | null
-  attributes?: { __typename?: 'Page'; title?: string | null; slug?: string | null } | null
-}
-
 export type MenuLinkFragment = {
   __typename?: 'ComponentMenuMenuLink'
   id: string
-  label: string
+  label?: string | null
   url?: string | null
+  analyticsId?: string | null
   page?: {
     __typename?: 'PageEntityResponse'
     data?: {
       __typename?: 'PageEntity'
       id?: string | null
-      attributes?: { __typename?: 'Page'; title?: string | null; slug?: string | null } | null
+      attributes?: {
+        __typename?: 'Page'
+        slug?: string | null
+        title?: string | null
+        locale?: string | null
+      } | null
     } | null
   } | null
 }
@@ -5524,20 +5556,31 @@ export type MenuSectionFragment = {
     data?: {
       __typename?: 'PageEntity'
       id?: string | null
-      attributes?: { __typename?: 'Page'; title?: string | null; slug?: string | null } | null
+      attributes?: {
+        __typename?: 'Page'
+        slug?: string | null
+        title?: string | null
+        locale?: string | null
+      } | null
     } | null
   } | null
   links?: Array<{
     __typename?: 'ComponentMenuMenuLink'
     id: string
-    label: string
+    label?: string | null
     url?: string | null
+    analyticsId?: string | null
     page?: {
       __typename?: 'PageEntityResponse'
       data?: {
         __typename?: 'PageEntity'
         id?: string | null
-        attributes?: { __typename?: 'Page'; title?: string | null; slug?: string | null } | null
+        attributes?: {
+          __typename?: 'Page'
+          slug?: string | null
+          title?: string | null
+          locale?: string | null
+        } | null
       } | null
     } | null
   } | null> | null
@@ -5553,7 +5596,12 @@ export type MenuItemFragment = {
     data?: {
       __typename?: 'PageEntity'
       id?: string | null
-      attributes?: { __typename?: 'Page'; title?: string | null; slug?: string | null } | null
+      attributes?: {
+        __typename?: 'Page'
+        slug?: string | null
+        title?: string | null
+        locale?: string | null
+      } | null
     } | null
   } | null
   sections?: Array<{
@@ -5566,20 +5614,31 @@ export type MenuItemFragment = {
       data?: {
         __typename?: 'PageEntity'
         id?: string | null
-        attributes?: { __typename?: 'Page'; title?: string | null; slug?: string | null } | null
+        attributes?: {
+          __typename?: 'Page'
+          slug?: string | null
+          title?: string | null
+          locale?: string | null
+        } | null
       } | null
     } | null
     links?: Array<{
       __typename?: 'ComponentMenuMenuLink'
       id: string
-      label: string
+      label?: string | null
       url?: string | null
+      analyticsId?: string | null
       page?: {
         __typename?: 'PageEntityResponse'
         data?: {
           __typename?: 'PageEntity'
           id?: string | null
-          attributes?: { __typename?: 'Page'; title?: string | null; slug?: string | null } | null
+          attributes?: {
+            __typename?: 'Page'
+            slug?: string | null
+            title?: string | null
+            locale?: string | null
+          } | null
         } | null
       } | null
     } | null> | null
@@ -5588,8 +5647,9 @@ export type MenuItemFragment = {
 
 export type HeaderLinkFragment = {
   __typename?: 'ComponentGeneralHeaderLink'
-  label: string
+  label?: string | null
   url?: string | null
+  analyticsId?: string | null
   showOnDesktop: boolean
   showOnMobile: boolean
   icon: Enum_Componentgeneralheaderlink_Icon
@@ -5598,7 +5658,12 @@ export type HeaderLinkFragment = {
     data?: {
       __typename?: 'PageEntity'
       id?: string | null
-      attributes?: { __typename?: 'Page'; title?: string | null; slug?: string | null } | null
+      attributes?: {
+        __typename?: 'Page'
+        slug?: string | null
+        title?: string | null
+        locale?: string | null
+      } | null
     } | null
   } | null
 }
@@ -5615,8 +5680,9 @@ export type GeneralFragment = {
     __typename?: 'ComponentGeneralHeader'
     links?: Array<{
       __typename?: 'ComponentGeneralHeaderLink'
-      label: string
+      label?: string | null
       url?: string | null
+      analyticsId?: string | null
       showOnDesktop: boolean
       showOnMobile: boolean
       icon: Enum_Componentgeneralheaderlink_Icon
@@ -5625,13 +5691,18 @@ export type GeneralFragment = {
         data?: {
           __typename?: 'PageEntity'
           id?: string | null
-          attributes?: { __typename?: 'Page'; title?: string | null; slug?: string | null } | null
+          attributes?: {
+            __typename?: 'Page'
+            slug?: string | null
+            title?: string | null
+            locale?: string | null
+          } | null
         } | null
       } | null
     } | null> | null
     accountLink?: {
       __typename?: 'ComponentBlocksCommonLink'
-      label: string
+      label?: string | null
       url?: string | null
       analyticsId?: string | null
       page?: {
@@ -5639,7 +5710,12 @@ export type GeneralFragment = {
         data?: {
           __typename?: 'PageEntity'
           id?: string | null
-          attributes?: { __typename?: 'Page'; title?: string | null; slug?: string | null } | null
+          attributes?: {
+            __typename?: 'Page'
+            slug?: string | null
+            title?: string | null
+            locale?: string | null
+          } | null
         } | null
       } | null
       article?: {
@@ -5778,8 +5854,9 @@ export type GeneralQuery = {
           __typename?: 'ComponentGeneralHeader'
           links?: Array<{
             __typename?: 'ComponentGeneralHeaderLink'
-            label: string
+            label?: string | null
             url?: string | null
+            analyticsId?: string | null
             showOnDesktop: boolean
             showOnMobile: boolean
             icon: Enum_Componentgeneralheaderlink_Icon
@@ -5790,15 +5867,16 @@ export type GeneralQuery = {
                 id?: string | null
                 attributes?: {
                   __typename?: 'Page'
-                  title?: string | null
                   slug?: string | null
+                  title?: string | null
+                  locale?: string | null
                 } | null
               } | null
             } | null
           } | null> | null
           accountLink?: {
             __typename?: 'ComponentBlocksCommonLink'
-            label: string
+            label?: string | null
             url?: string | null
             analyticsId?: string | null
             page?: {
@@ -5808,8 +5886,9 @@ export type GeneralQuery = {
                 id?: string | null
                 attributes?: {
                   __typename?: 'Page'
-                  title?: string | null
                   slug?: string | null
+                  title?: string | null
+                  locale?: string | null
                 } | null
               } | null
             } | null
@@ -5950,8 +6029,9 @@ export type GeneralQuery = {
               id?: string | null
               attributes?: {
                 __typename?: 'Page'
-                title?: string | null
                 slug?: string | null
+                title?: string | null
+                locale?: string | null
               } | null
             } | null
           } | null
@@ -5967,16 +6047,18 @@ export type GeneralQuery = {
                 id?: string | null
                 attributes?: {
                   __typename?: 'Page'
-                  title?: string | null
                   slug?: string | null
+                  title?: string | null
+                  locale?: string | null
                 } | null
               } | null
             } | null
             links?: Array<{
               __typename?: 'ComponentMenuMenuLink'
               id: string
-              label: string
+              label?: string | null
               url?: string | null
+              analyticsId?: string | null
               page?: {
                 __typename?: 'PageEntityResponse'
                 data?: {
@@ -5984,8 +6066,9 @@ export type GeneralQuery = {
                   id?: string | null
                   attributes?: {
                     __typename?: 'Page'
-                    title?: string | null
                     slug?: string | null
+                    title?: string | null
+                    locale?: string | null
                   } | null
                 } | null
               } | null
@@ -6009,7 +6092,7 @@ export type GeneralQuery = {
           title: string
           links?: Array<{
             __typename?: 'ComponentBlocksCommonLink'
-            label: string
+            label?: string | null
             url?: string | null
             analyticsId?: string | null
             page?: {
@@ -6019,8 +6102,9 @@ export type GeneralQuery = {
                 id?: string | null
                 attributes?: {
                   __typename?: 'Page'
-                  title?: string | null
                   slug?: string | null
+                  title?: string | null
+                  locale?: string | null
                 } | null
               } | null
             } | null
@@ -6041,7 +6125,7 @@ export type GeneralQuery = {
         } | null> | null
         accessibilityPageLink?: {
           __typename?: 'ComponentBlocksCommonLink'
-          label: string
+          label?: string | null
           url?: string | null
           analyticsId?: string | null
           page?: {
@@ -6051,8 +6135,9 @@ export type GeneralQuery = {
               id?: string | null
               attributes?: {
                 __typename?: 'Page'
-                title?: string | null
                 slug?: string | null
+                title?: string | null
+                locale?: string | null
               } | null
             } | null
           } | null
@@ -6072,7 +6157,7 @@ export type GeneralQuery = {
         } | null
         innovationsLink?: {
           __typename?: 'ComponentBlocksCommonLink'
-          label: string
+          label?: string | null
           url?: string | null
           analyticsId?: string | null
           page?: {
@@ -6082,8 +6167,9 @@ export type GeneralQuery = {
               id?: string | null
               attributes?: {
                 __typename?: 'Page'
-                title?: string | null
                 slug?: string | null
+                title?: string | null
+                locale?: string | null
               } | null
             } | null
           } | null
@@ -6156,7 +6242,7 @@ export type HomepageEntityFragment = {
         id: string
         link: {
           __typename?: 'ComponentBlocksCommonLink'
-          label: string
+          label?: string | null
           url?: string | null
           analyticsId?: string | null
           page?: {
@@ -6166,8 +6252,9 @@ export type HomepageEntityFragment = {
               id?: string | null
               attributes?: {
                 __typename?: 'Page'
-                title?: string | null
                 slug?: string | null
+                title?: string | null
+                locale?: string | null
               } | null
             } | null
           } | null
@@ -6307,7 +6394,7 @@ export type HomepageEntityFragment = {
       } | null
       newsPageLink?: {
         __typename?: 'ComponentBlocksCommonLink'
-        label: string
+        label?: string | null
         url?: string | null
         analyticsId?: string | null
         page?: {
@@ -6315,7 +6402,12 @@ export type HomepageEntityFragment = {
           data?: {
             __typename?: 'PageEntity'
             id?: string | null
-            attributes?: { __typename?: 'Page'; title?: string | null; slug?: string | null } | null
+            attributes?: {
+              __typename?: 'Page'
+              slug?: string | null
+              title?: string | null
+              locale?: string | null
+            } | null
           } | null
         } | null
         article?: {
@@ -6334,7 +6426,7 @@ export type HomepageEntityFragment = {
       } | null
       officialBoardPageLink?: {
         __typename?: 'ComponentBlocksCommonLink'
-        label: string
+        label?: string | null
         url?: string | null
         analyticsId?: string | null
         page?: {
@@ -6342,7 +6434,12 @@ export type HomepageEntityFragment = {
           data?: {
             __typename?: 'PageEntity'
             id?: string | null
-            attributes?: { __typename?: 'Page'; title?: string | null; slug?: string | null } | null
+            attributes?: {
+              __typename?: 'Page'
+              slug?: string | null
+              title?: string | null
+              locale?: string | null
+            } | null
           } | null
         } | null
         article?: {
@@ -6361,7 +6458,7 @@ export type HomepageEntityFragment = {
       } | null
       roadClosuresPageLink?: {
         __typename?: 'ComponentBlocksCommonLink'
-        label: string
+        label?: string | null
         url?: string | null
         analyticsId?: string | null
         page?: {
@@ -6369,7 +6466,12 @@ export type HomepageEntityFragment = {
           data?: {
             __typename?: 'PageEntity'
             id?: string | null
-            attributes?: { __typename?: 'Page'; title?: string | null; slug?: string | null } | null
+            attributes?: {
+              __typename?: 'Page'
+              slug?: string | null
+              title?: string | null
+              locale?: string | null
+            } | null
           } | null
         } | null
         article?: {
@@ -6393,7 +6495,7 @@ export type HomepageEntityFragment = {
       text?: string | null
       mayorCard?: {
         __typename?: 'ComponentBlocksCommonLink'
-        label: string
+        label?: string | null
         url?: string | null
         analyticsId?: string | null
         page?: {
@@ -6401,7 +6503,12 @@ export type HomepageEntityFragment = {
           data?: {
             __typename?: 'PageEntity'
             id?: string | null
-            attributes?: { __typename?: 'Page'; title?: string | null; slug?: string | null } | null
+            attributes?: {
+              __typename?: 'Page'
+              slug?: string | null
+              title?: string | null
+              locale?: string | null
+            } | null
           } | null
         } | null
         article?: {
@@ -6420,7 +6527,7 @@ export type HomepageEntityFragment = {
       } | null
       councilCard?: {
         __typename?: 'ComponentBlocksCommonLink'
-        label: string
+        label?: string | null
         url?: string | null
         analyticsId?: string | null
         page?: {
@@ -6428,7 +6535,12 @@ export type HomepageEntityFragment = {
           data?: {
             __typename?: 'PageEntity'
             id?: string | null
-            attributes?: { __typename?: 'Page'; title?: string | null; slug?: string | null } | null
+            attributes?: {
+              __typename?: 'Page'
+              slug?: string | null
+              title?: string | null
+              locale?: string | null
+            } | null
           } | null
         } | null
         article?: {
@@ -6452,7 +6564,7 @@ export type HomepageEntityFragment = {
       text?: string | null
       eventsPageLink?: {
         __typename?: 'ComponentBlocksCommonLink'
-        label: string
+        label?: string | null
         url?: string | null
         analyticsId?: string | null
         page?: {
@@ -6460,7 +6572,12 @@ export type HomepageEntityFragment = {
           data?: {
             __typename?: 'PageEntity'
             id?: string | null
-            attributes?: { __typename?: 'Page'; title?: string | null; slug?: string | null } | null
+            attributes?: {
+              __typename?: 'Page'
+              slug?: string | null
+              title?: string | null
+              locale?: string | null
+            } | null
           } | null
         } | null
         article?: {
@@ -6486,7 +6603,7 @@ export type HomepageEntityFragment = {
         icon: Enum_Componentblockstopservicesitem_Icon
         link: {
           __typename?: 'ComponentBlocksCommonLink'
-          label: string
+          label?: string | null
           url?: string | null
           analyticsId?: string | null
           page?: {
@@ -6496,8 +6613,9 @@ export type HomepageEntityFragment = {
               id?: string | null
               attributes?: {
                 __typename?: 'Page'
-                title?: string | null
                 slug?: string | null
+                title?: string | null
+                locale?: string | null
               } | null
             } | null
           } | null
@@ -6577,7 +6695,7 @@ export type HomepageQuery = {
             id: string
             link: {
               __typename?: 'ComponentBlocksCommonLink'
-              label: string
+              label?: string | null
               url?: string | null
               analyticsId?: string | null
               page?: {
@@ -6587,8 +6705,9 @@ export type HomepageQuery = {
                   id?: string | null
                   attributes?: {
                     __typename?: 'Page'
-                    title?: string | null
                     slug?: string | null
+                    title?: string | null
+                    locale?: string | null
                   } | null
                 } | null
               } | null
@@ -6728,7 +6847,7 @@ export type HomepageQuery = {
           } | null
           newsPageLink?: {
             __typename?: 'ComponentBlocksCommonLink'
-            label: string
+            label?: string | null
             url?: string | null
             analyticsId?: string | null
             page?: {
@@ -6738,8 +6857,9 @@ export type HomepageQuery = {
                 id?: string | null
                 attributes?: {
                   __typename?: 'Page'
-                  title?: string | null
                   slug?: string | null
+                  title?: string | null
+                  locale?: string | null
                 } | null
               } | null
             } | null
@@ -6759,7 +6879,7 @@ export type HomepageQuery = {
           } | null
           officialBoardPageLink?: {
             __typename?: 'ComponentBlocksCommonLink'
-            label: string
+            label?: string | null
             url?: string | null
             analyticsId?: string | null
             page?: {
@@ -6769,8 +6889,9 @@ export type HomepageQuery = {
                 id?: string | null
                 attributes?: {
                   __typename?: 'Page'
-                  title?: string | null
                   slug?: string | null
+                  title?: string | null
+                  locale?: string | null
                 } | null
               } | null
             } | null
@@ -6790,7 +6911,7 @@ export type HomepageQuery = {
           } | null
           roadClosuresPageLink?: {
             __typename?: 'ComponentBlocksCommonLink'
-            label: string
+            label?: string | null
             url?: string | null
             analyticsId?: string | null
             page?: {
@@ -6800,8 +6921,9 @@ export type HomepageQuery = {
                 id?: string | null
                 attributes?: {
                   __typename?: 'Page'
-                  title?: string | null
                   slug?: string | null
+                  title?: string | null
+                  locale?: string | null
                 } | null
               } | null
             } | null
@@ -6826,7 +6948,7 @@ export type HomepageQuery = {
           text?: string | null
           mayorCard?: {
             __typename?: 'ComponentBlocksCommonLink'
-            label: string
+            label?: string | null
             url?: string | null
             analyticsId?: string | null
             page?: {
@@ -6836,8 +6958,9 @@ export type HomepageQuery = {
                 id?: string | null
                 attributes?: {
                   __typename?: 'Page'
-                  title?: string | null
                   slug?: string | null
+                  title?: string | null
+                  locale?: string | null
                 } | null
               } | null
             } | null
@@ -6857,7 +6980,7 @@ export type HomepageQuery = {
           } | null
           councilCard?: {
             __typename?: 'ComponentBlocksCommonLink'
-            label: string
+            label?: string | null
             url?: string | null
             analyticsId?: string | null
             page?: {
@@ -6867,8 +6990,9 @@ export type HomepageQuery = {
                 id?: string | null
                 attributes?: {
                   __typename?: 'Page'
-                  title?: string | null
                   slug?: string | null
+                  title?: string | null
+                  locale?: string | null
                 } | null
               } | null
             } | null
@@ -6893,7 +7017,7 @@ export type HomepageQuery = {
           text?: string | null
           eventsPageLink?: {
             __typename?: 'ComponentBlocksCommonLink'
-            label: string
+            label?: string | null
             url?: string | null
             analyticsId?: string | null
             page?: {
@@ -6903,8 +7027,9 @@ export type HomepageQuery = {
                 id?: string | null
                 attributes?: {
                   __typename?: 'Page'
-                  title?: string | null
                   slug?: string | null
+                  title?: string | null
+                  locale?: string | null
                 } | null
               } | null
             } | null
@@ -6931,7 +7056,7 @@ export type HomepageQuery = {
             icon: Enum_Componentblockstopservicesitem_Icon
             link: {
               __typename?: 'ComponentBlocksCommonLink'
-              label: string
+              label?: string | null
               url?: string | null
               analyticsId?: string | null
               page?: {
@@ -6941,8 +7066,9 @@ export type HomepageQuery = {
                   id?: string | null
                   attributes?: {
                     __typename?: 'Page'
-                    title?: string | null
                     slug?: string | null
+                    title?: string | null
+                    locale?: string | null
                   } | null
                 } | null
               } | null
@@ -6993,7 +7119,7 @@ export type HomepageHighlightsItemFragment = {
   id: string
   link: {
     __typename?: 'ComponentBlocksCommonLink'
-    label: string
+    label?: string | null
     url?: string | null
     analyticsId?: string | null
     page?: {
@@ -7001,7 +7127,12 @@ export type HomepageHighlightsItemFragment = {
       data?: {
         __typename?: 'PageEntity'
         id?: string | null
-        attributes?: { __typename?: 'Page'; title?: string | null; slug?: string | null } | null
+        attributes?: {
+          __typename?: 'Page'
+          slug?: string | null
+          title?: string | null
+          locale?: string | null
+        } | null
       } | null
     } | null
     article?: {
@@ -7140,7 +7271,7 @@ export type HomepageTabsFragment = {
   } | null
   newsPageLink?: {
     __typename?: 'ComponentBlocksCommonLink'
-    label: string
+    label?: string | null
     url?: string | null
     analyticsId?: string | null
     page?: {
@@ -7148,7 +7279,12 @@ export type HomepageTabsFragment = {
       data?: {
         __typename?: 'PageEntity'
         id?: string | null
-        attributes?: { __typename?: 'Page'; title?: string | null; slug?: string | null } | null
+        attributes?: {
+          __typename?: 'Page'
+          slug?: string | null
+          title?: string | null
+          locale?: string | null
+        } | null
       } | null
     } | null
     article?: {
@@ -7167,7 +7303,7 @@ export type HomepageTabsFragment = {
   } | null
   officialBoardPageLink?: {
     __typename?: 'ComponentBlocksCommonLink'
-    label: string
+    label?: string | null
     url?: string | null
     analyticsId?: string | null
     page?: {
@@ -7175,7 +7311,12 @@ export type HomepageTabsFragment = {
       data?: {
         __typename?: 'PageEntity'
         id?: string | null
-        attributes?: { __typename?: 'Page'; title?: string | null; slug?: string | null } | null
+        attributes?: {
+          __typename?: 'Page'
+          slug?: string | null
+          title?: string | null
+          locale?: string | null
+        } | null
       } | null
     } | null
     article?: {
@@ -7194,7 +7335,7 @@ export type HomepageTabsFragment = {
   } | null
   roadClosuresPageLink?: {
     __typename?: 'ComponentBlocksCommonLink'
-    label: string
+    label?: string | null
     url?: string | null
     analyticsId?: string | null
     page?: {
@@ -7202,7 +7343,12 @@ export type HomepageTabsFragment = {
       data?: {
         __typename?: 'PageEntity'
         id?: string | null
-        attributes?: { __typename?: 'Page'; title?: string | null; slug?: string | null } | null
+        attributes?: {
+          __typename?: 'Page'
+          slug?: string | null
+          title?: string | null
+          locale?: string | null
+        } | null
       } | null
     } | null
     article?: {
@@ -7227,7 +7373,7 @@ export type HomepageMayorAndCouncilFragment = {
   text?: string | null
   mayorCard?: {
     __typename?: 'ComponentBlocksCommonLink'
-    label: string
+    label?: string | null
     url?: string | null
     analyticsId?: string | null
     page?: {
@@ -7235,7 +7381,12 @@ export type HomepageMayorAndCouncilFragment = {
       data?: {
         __typename?: 'PageEntity'
         id?: string | null
-        attributes?: { __typename?: 'Page'; title?: string | null; slug?: string | null } | null
+        attributes?: {
+          __typename?: 'Page'
+          slug?: string | null
+          title?: string | null
+          locale?: string | null
+        } | null
       } | null
     } | null
     article?: {
@@ -7254,7 +7405,7 @@ export type HomepageMayorAndCouncilFragment = {
   } | null
   councilCard?: {
     __typename?: 'ComponentBlocksCommonLink'
-    label: string
+    label?: string | null
     url?: string | null
     analyticsId?: string | null
     page?: {
@@ -7262,7 +7413,12 @@ export type HomepageMayorAndCouncilFragment = {
       data?: {
         __typename?: 'PageEntity'
         id?: string | null
-        attributes?: { __typename?: 'Page'; title?: string | null; slug?: string | null } | null
+        attributes?: {
+          __typename?: 'Page'
+          slug?: string | null
+          title?: string | null
+          locale?: string | null
+        } | null
       } | null
     } | null
     article?: {
@@ -7286,7 +7442,7 @@ export type TopServicesItemFragment = {
   icon: Enum_Componentblockstopservicesitem_Icon
   link: {
     __typename?: 'ComponentBlocksCommonLink'
-    label: string
+    label?: string | null
     url?: string | null
     analyticsId?: string | null
     page?: {
@@ -7294,7 +7450,12 @@ export type TopServicesItemFragment = {
       data?: {
         __typename?: 'PageEntity'
         id?: string | null
-        attributes?: { __typename?: 'Page'; title?: string | null; slug?: string | null } | null
+        attributes?: {
+          __typename?: 'Page'
+          slug?: string | null
+          title?: string | null
+          locale?: string | null
+        } | null
       } | null
     } | null
     article?: {
@@ -7927,7 +8088,7 @@ export type PageEntityFragment = {
     } | null
     headerLinks?: Array<{
       __typename?: 'ComponentBlocksCommonLink'
-      label: string
+      label?: string | null
       url?: string | null
       analyticsId?: string | null
       page?: {
@@ -7935,7 +8096,12 @@ export type PageEntityFragment = {
         data?: {
           __typename?: 'PageEntity'
           id?: string | null
-          attributes?: { __typename?: 'Page'; title?: string | null; slug?: string | null } | null
+          attributes?: {
+            __typename?: 'Page'
+            slug?: string | null
+            title?: string | null
+            locale?: string | null
+          } | null
         } | null
       } | null
       article?: {
@@ -8051,7 +8217,7 @@ export type PageEntityFragment = {
           }
           primaryLink?: {
             __typename?: 'ComponentBlocksCommonLink'
-            label: string
+            label?: string | null
             url?: string | null
             analyticsId?: string | null
             page?: {
@@ -8061,8 +8227,9 @@ export type PageEntityFragment = {
                 id?: string | null
                 attributes?: {
                   __typename?: 'Page'
-                  title?: string | null
                   slug?: string | null
+                  title?: string | null
+                  locale?: string | null
                 } | null
               } | null
             } | null
@@ -8082,7 +8249,7 @@ export type PageEntityFragment = {
           } | null
           secondaryLink?: {
             __typename?: 'ComponentBlocksCommonLink'
-            label: string
+            label?: string | null
             url?: string | null
             analyticsId?: string | null
             page?: {
@@ -8092,8 +8259,9 @@ export type PageEntityFragment = {
                 id?: string | null
                 attributes?: {
                   __typename?: 'Page'
-                  title?: string | null
                   slug?: string | null
+                  title?: string | null
+                  locale?: string | null
                 } | null
               } | null
             } | null
@@ -8113,7 +8281,7 @@ export type PageEntityFragment = {
           } | null
           tertiaryLink?: {
             __typename?: 'ComponentBlocksCommonLink'
-            label: string
+            label?: string | null
             url?: string | null
             analyticsId?: string | null
             page?: {
@@ -8123,8 +8291,9 @@ export type PageEntityFragment = {
                 id?: string | null
                 attributes?: {
                   __typename?: 'Page'
-                  title?: string | null
                   slug?: string | null
+                  title?: string | null
+                  locale?: string | null
                 } | null
               } | null
             } | null
@@ -8329,16 +8498,18 @@ export type PageEntityFragment = {
           title?: string | null
           pageLinks?: Array<{
             __typename?: 'ComponentBlocksPageLink'
-            title?: string | null
             url?: string | null
+            analyticsId?: string | null
+            label?: string | null
             page?: {
               __typename?: 'PageEntityResponse'
               data?: {
                 __typename?: 'PageEntity'
+                id?: string | null
                 attributes?: {
                   __typename?: 'Page'
-                  title?: string | null
                   slug?: string | null
+                  title?: string | null
                   locale?: string | null
                 } | null
               } | null
@@ -8613,16 +8784,18 @@ export type PageEntityFragment = {
           id: string
           subpageList?: Array<{
             __typename?: 'ComponentBlocksPageLink'
-            title?: string | null
             url?: string | null
+            analyticsId?: string | null
+            label?: string | null
             page?: {
               __typename?: 'PageEntityResponse'
               data?: {
                 __typename?: 'PageEntity'
+                id?: string | null
                 attributes?: {
                   __typename?: 'Page'
-                  title?: string | null
                   slug?: string | null
+                  title?: string | null
                   locale?: string | null
                 } | null
               } | null
@@ -8764,7 +8937,7 @@ export type PageBySlugQuery = {
         } | null
         headerLinks?: Array<{
           __typename?: 'ComponentBlocksCommonLink'
-          label: string
+          label?: string | null
           url?: string | null
           analyticsId?: string | null
           page?: {
@@ -8774,8 +8947,9 @@ export type PageBySlugQuery = {
               id?: string | null
               attributes?: {
                 __typename?: 'Page'
-                title?: string | null
                 slug?: string | null
+                title?: string | null
+                locale?: string | null
               } | null
             } | null
           } | null
@@ -8892,7 +9066,7 @@ export type PageBySlugQuery = {
               }
               primaryLink?: {
                 __typename?: 'ComponentBlocksCommonLink'
-                label: string
+                label?: string | null
                 url?: string | null
                 analyticsId?: string | null
                 page?: {
@@ -8902,8 +9076,9 @@ export type PageBySlugQuery = {
                     id?: string | null
                     attributes?: {
                       __typename?: 'Page'
-                      title?: string | null
                       slug?: string | null
+                      title?: string | null
+                      locale?: string | null
                     } | null
                   } | null
                 } | null
@@ -8923,7 +9098,7 @@ export type PageBySlugQuery = {
               } | null
               secondaryLink?: {
                 __typename?: 'ComponentBlocksCommonLink'
-                label: string
+                label?: string | null
                 url?: string | null
                 analyticsId?: string | null
                 page?: {
@@ -8933,8 +9108,9 @@ export type PageBySlugQuery = {
                     id?: string | null
                     attributes?: {
                       __typename?: 'Page'
-                      title?: string | null
                       slug?: string | null
+                      title?: string | null
+                      locale?: string | null
                     } | null
                   } | null
                 } | null
@@ -8954,7 +9130,7 @@ export type PageBySlugQuery = {
               } | null
               tertiaryLink?: {
                 __typename?: 'ComponentBlocksCommonLink'
-                label: string
+                label?: string | null
                 url?: string | null
                 analyticsId?: string | null
                 page?: {
@@ -8964,8 +9140,9 @@ export type PageBySlugQuery = {
                     id?: string | null
                     attributes?: {
                       __typename?: 'Page'
-                      title?: string | null
                       slug?: string | null
+                      title?: string | null
+                      locale?: string | null
                     } | null
                   } | null
                 } | null
@@ -9178,16 +9355,18 @@ export type PageBySlugQuery = {
               title?: string | null
               pageLinks?: Array<{
                 __typename?: 'ComponentBlocksPageLink'
-                title?: string | null
                 url?: string | null
+                analyticsId?: string | null
+                label?: string | null
                 page?: {
                   __typename?: 'PageEntityResponse'
                   data?: {
                     __typename?: 'PageEntity'
+                    id?: string | null
                     attributes?: {
                       __typename?: 'Page'
-                      title?: string | null
                       slug?: string | null
+                      title?: string | null
                       locale?: string | null
                     } | null
                   } | null
@@ -9466,16 +9645,18 @@ export type PageBySlugQuery = {
               id: string
               subpageList?: Array<{
                 __typename?: 'ComponentBlocksPageLink'
-                title?: string | null
                 url?: string | null
+                analyticsId?: string | null
+                label?: string | null
                 page?: {
                   __typename?: 'PageEntityResponse'
                   data?: {
                     __typename?: 'PageEntity'
+                    id?: string | null
                     attributes?: {
                       __typename?: 'Page'
-                      title?: string | null
                       slug?: string | null
+                      title?: string | null
                       locale?: string | null
                     } | null
                   } | null
@@ -10755,39 +10936,23 @@ export type WavesSectionFragment = {
   position?: Enum_Componentsectionswaves_Position | null
 }
 
-export type PageLinkBlockFragment = {
-  __typename?: 'ComponentBlocksPageLink'
-  title?: string | null
-  url?: string | null
-  page?: {
-    __typename?: 'PageEntityResponse'
-    data?: {
-      __typename?: 'PageEntity'
-      attributes?: {
-        __typename?: 'Page'
-        title?: string | null
-        slug?: string | null
-        locale?: string | null
-      } | null
-    } | null
-  } | null
-}
-
 export type LinksSectionFragment = {
   __typename?: 'ComponentSectionsLinks'
   title?: string | null
   pageLinks?: Array<{
     __typename?: 'ComponentBlocksPageLink'
-    title?: string | null
     url?: string | null
+    analyticsId?: string | null
+    label?: string | null
     page?: {
       __typename?: 'PageEntityResponse'
       data?: {
         __typename?: 'PageEntity'
+        id?: string | null
         attributes?: {
           __typename?: 'Page'
-          title?: string | null
           slug?: string | null
+          title?: string | null
           locale?: string | null
         } | null
       } | null
@@ -11048,7 +11213,7 @@ export type BannerSectionFragment = {
   }
   primaryLink?: {
     __typename?: 'ComponentBlocksCommonLink'
-    label: string
+    label?: string | null
     url?: string | null
     analyticsId?: string | null
     page?: {
@@ -11056,7 +11221,12 @@ export type BannerSectionFragment = {
       data?: {
         __typename?: 'PageEntity'
         id?: string | null
-        attributes?: { __typename?: 'Page'; title?: string | null; slug?: string | null } | null
+        attributes?: {
+          __typename?: 'Page'
+          slug?: string | null
+          title?: string | null
+          locale?: string | null
+        } | null
       } | null
     } | null
     article?: {
@@ -11075,7 +11245,7 @@ export type BannerSectionFragment = {
   } | null
   secondaryLink?: {
     __typename?: 'ComponentBlocksCommonLink'
-    label: string
+    label?: string | null
     url?: string | null
     analyticsId?: string | null
     page?: {
@@ -11083,7 +11253,12 @@ export type BannerSectionFragment = {
       data?: {
         __typename?: 'PageEntity'
         id?: string | null
-        attributes?: { __typename?: 'Page'; title?: string | null; slug?: string | null } | null
+        attributes?: {
+          __typename?: 'Page'
+          slug?: string | null
+          title?: string | null
+          locale?: string | null
+        } | null
       } | null
     } | null
     article?: {
@@ -11102,7 +11277,7 @@ export type BannerSectionFragment = {
   } | null
   tertiaryLink?: {
     __typename?: 'ComponentBlocksCommonLink'
-    label: string
+    label?: string | null
     url?: string | null
     analyticsId?: string | null
     page?: {
@@ -11110,7 +11285,12 @@ export type BannerSectionFragment = {
       data?: {
         __typename?: 'PageEntity'
         id?: string | null
-        attributes?: { __typename?: 'Page'; title?: string | null; slug?: string | null } | null
+        attributes?: {
+          __typename?: 'Page'
+          slug?: string | null
+          title?: string | null
+          locale?: string | null
+        } | null
       } | null
     } | null
     article?: {
@@ -11464,7 +11644,7 @@ type Sections_ComponentSectionsBanner_Fragment = {
   }
   primaryLink?: {
     __typename?: 'ComponentBlocksCommonLink'
-    label: string
+    label?: string | null
     url?: string | null
     analyticsId?: string | null
     page?: {
@@ -11472,7 +11652,12 @@ type Sections_ComponentSectionsBanner_Fragment = {
       data?: {
         __typename?: 'PageEntity'
         id?: string | null
-        attributes?: { __typename?: 'Page'; title?: string | null; slug?: string | null } | null
+        attributes?: {
+          __typename?: 'Page'
+          slug?: string | null
+          title?: string | null
+          locale?: string | null
+        } | null
       } | null
     } | null
     article?: {
@@ -11491,7 +11676,7 @@ type Sections_ComponentSectionsBanner_Fragment = {
   } | null
   secondaryLink?: {
     __typename?: 'ComponentBlocksCommonLink'
-    label: string
+    label?: string | null
     url?: string | null
     analyticsId?: string | null
     page?: {
@@ -11499,7 +11684,12 @@ type Sections_ComponentSectionsBanner_Fragment = {
       data?: {
         __typename?: 'PageEntity'
         id?: string | null
-        attributes?: { __typename?: 'Page'; title?: string | null; slug?: string | null } | null
+        attributes?: {
+          __typename?: 'Page'
+          slug?: string | null
+          title?: string | null
+          locale?: string | null
+        } | null
       } | null
     } | null
     article?: {
@@ -11518,7 +11708,7 @@ type Sections_ComponentSectionsBanner_Fragment = {
   } | null
   tertiaryLink?: {
     __typename?: 'ComponentBlocksCommonLink'
-    label: string
+    label?: string | null
     url?: string | null
     analyticsId?: string | null
     page?: {
@@ -11526,7 +11716,12 @@ type Sections_ComponentSectionsBanner_Fragment = {
       data?: {
         __typename?: 'PageEntity'
         id?: string | null
-        attributes?: { __typename?: 'Page'; title?: string | null; slug?: string | null } | null
+        attributes?: {
+          __typename?: 'Page'
+          slug?: string | null
+          title?: string | null
+          locale?: string | null
+        } | null
       } | null
     } | null
     article?: {
@@ -11748,16 +11943,18 @@ type Sections_ComponentSectionsLinks_Fragment = {
   title?: string | null
   pageLinks?: Array<{
     __typename?: 'ComponentBlocksPageLink'
-    title?: string | null
     url?: string | null
+    analyticsId?: string | null
+    label?: string | null
     page?: {
       __typename?: 'PageEntityResponse'
       data?: {
         __typename?: 'PageEntity'
+        id?: string | null
         attributes?: {
           __typename?: 'Page'
-          title?: string | null
           slug?: string | null
+          title?: string | null
           locale?: string | null
         } | null
       } | null
@@ -12075,16 +12272,18 @@ export type SubpageListPageHeaderSectionFragment = {
   id: string
   subpageList?: Array<{
     __typename?: 'ComponentBlocksPageLink'
-    title?: string | null
     url?: string | null
+    analyticsId?: string | null
+    label?: string | null
     page?: {
       __typename?: 'PageEntityResponse'
       data?: {
         __typename?: 'PageEntity'
+        id?: string | null
         attributes?: {
           __typename?: 'Page'
-          title?: string | null
           slug?: string | null
+          title?: string | null
           locale?: string | null
         } | null
       } | null
@@ -12097,16 +12296,18 @@ type PageHeaderSections_ComponentSectionsSubpageList_Fragment = {
   id: string
   subpageList?: Array<{
     __typename?: 'ComponentBlocksPageLink'
-    title?: string | null
     url?: string | null
+    analyticsId?: string | null
+    label?: string | null
     page?: {
       __typename?: 'PageEntityResponse'
       data?: {
         __typename?: 'PageEntity'
+        id?: string | null
         attributes?: {
           __typename?: 'Page'
-          title?: string | null
           slug?: string | null
+          title?: string | null
           locale?: string | null
         } | null
       } | null
@@ -12286,18 +12487,22 @@ export const ArticleEntityFragmentDoc = gql`
   ${FileBlockFragmentDoc}
   ${UploadImageEntityFragmentDoc}
 `
+export const PageSlugEntityFragmentDoc = gql`
+  fragment PageSlugEntity on PageEntity {
+    id
+    attributes {
+      slug
+      title
+      locale
+    }
+  }
+`
 export const CommonLinkFragmentDoc = gql`
   fragment CommonLink on ComponentBlocksCommonLink {
     label
-    url
-    analyticsId
     page {
       data {
-        id
-        attributes {
-          title
-          slug
-        }
+        ...PageSlugEntity
       }
     }
     article {
@@ -12305,7 +12510,10 @@ export const CommonLinkFragmentDoc = gql`
         ...ArticleSlugEntity
       }
     }
+    url
+    analyticsId
   }
+  ${PageSlugEntityFragmentDoc}
   ${ArticleSlugEntityFragmentDoc}
 `
 export const FooterColumnBlockFragmentDoc = gql`
@@ -12335,27 +12543,19 @@ export const FooterFragmentDoc = gql`
   ${FooterColumnBlockFragmentDoc}
   ${CommonLinkFragmentDoc}
 `
-export const PageForMenuEntityFragmentDoc = gql`
-  fragment PageForMenuEntity on PageEntity {
-    id
-    attributes {
-      title
-      slug
-    }
-  }
-`
 export const MenuLinkFragmentDoc = gql`
   fragment MenuLink on ComponentMenuMenuLink {
     id
     label
     page {
       data {
-        ...PageForMenuEntity
+        ...PageSlugEntity
       }
     }
     url
+    analyticsId
   }
-  ${PageForMenuEntityFragmentDoc}
+  ${PageSlugEntityFragmentDoc}
 `
 export const MenuSectionFragmentDoc = gql`
   fragment MenuSection on ComponentMenuMenuSection {
@@ -12364,14 +12564,14 @@ export const MenuSectionFragmentDoc = gql`
     icon
     page {
       data {
-        ...PageForMenuEntity
+        ...PageSlugEntity
       }
     }
     links {
       ...MenuLink
     }
   }
-  ${PageForMenuEntityFragmentDoc}
+  ${PageSlugEntityFragmentDoc}
   ${MenuLinkFragmentDoc}
 `
 export const MenuItemFragmentDoc = gql`
@@ -12381,14 +12581,14 @@ export const MenuItemFragmentDoc = gql`
     icon
     page {
       data {
-        ...PageForMenuEntity
+        ...PageSlugEntity
       }
     }
     sections {
       ...MenuSection
     }
   }
-  ${PageForMenuEntityFragmentDoc}
+  ${PageSlugEntityFragmentDoc}
   ${MenuSectionFragmentDoc}
 `
 export const HeaderLinkFragmentDoc = gql`
@@ -12396,18 +12596,16 @@ export const HeaderLinkFragmentDoc = gql`
     label
     page {
       data {
-        id
-        attributes {
-          title
-          slug
-        }
+        ...PageSlugEntity
       }
     }
     url
+    analyticsId
     showOnDesktop
     showOnMobile
     icon
   }
+  ${PageSlugEntityFragmentDoc}
 `
 export const GeneralPageRelationFragmentDoc = gql`
   fragment GeneralPageRelation on PageEntity {
@@ -12744,16 +12942,6 @@ export const InbaReleaseEntityFragmentDoc = gql`
   ${UploadImageEntityFragmentDoc}
   ${UploadFileEntityFragmentDoc}
 `
-export const PageSlugEntityFragmentDoc = gql`
-  fragment PageSlugEntity on PageEntity {
-    id
-    attributes {
-      slug
-      title
-      locale
-    }
-  }
-`
 export const IconTitleDescriptionBlockFragmentDoc = gql`
   fragment IconTitleDescriptionBlock on ComponentBlocksIconWithTitleAndDescription {
     title
@@ -12848,29 +13036,27 @@ export const WavesSectionFragmentDoc = gql`
     position
   }
 `
-export const PageLinkBlockFragmentDoc = gql`
-  fragment PageLinkBlock on ComponentBlocksPageLink {
-    title
-    url
+export const PageLinkFragmentDoc = gql`
+  fragment PageLink on ComponentBlocksPageLink {
+    label: title
     page {
       data {
-        attributes {
-          title
-          slug
-          locale
-        }
+        ...PageSlugEntity
       }
     }
+    url
+    analyticsId
   }
+  ${PageSlugEntityFragmentDoc}
 `
 export const LinksSectionFragmentDoc = gql`
   fragment LinksSection on ComponentSectionsLinks {
     title
     pageLinks(pagination: { limit: -1 }) {
-      ...PageLinkBlock
+      ...PageLink
     }
   }
-  ${PageLinkBlockFragmentDoc}
+  ${PageLinkFragmentDoc}
 `
 export const ComponentAccordionItemsInstitutionFragmentDoc = gql`
   fragment ComponentAccordionItemsInstitution on ComponentAccordionItemsInstitution {
@@ -13439,10 +13625,10 @@ export const SubpageListPageHeaderSectionFragmentDoc = gql`
   fragment SubpageListPageHeaderSection on ComponentSectionsSubpageList {
     id
     subpageList(pagination: { limit: -1 }) {
-      ...PageLinkBlock
+      ...PageLink
     }
   }
-  ${PageLinkBlockFragmentDoc}
+  ${PageLinkFragmentDoc}
 `
 export const PageHeaderSectionsFragmentDoc = gql`
   fragment PageHeaderSections on PagePageHeaderSectionsDynamicZone {

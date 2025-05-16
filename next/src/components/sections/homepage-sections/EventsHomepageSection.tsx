@@ -6,7 +6,7 @@ import ResponsiveCarousel from '@/src/components/common/Carousel/ResponsiveCarou
 import SectionContainer from '@/src/components/common/SectionContainer/SectionContainer'
 import { useHomepageContext } from '@/src/components/providers/HomepageContextProvider'
 import { generateImageSizes } from '@/src/utils/generateImageSizes'
-import { getCommonLinkProps } from '@/src/utils/getCommonLinkProps'
+import { getLinkProps } from '@/src/utils/getLinkProps'
 
 const imageSizes = generateImageSizes({ default: '100vw', lg: '33vw' })
 
@@ -58,7 +58,7 @@ const EventsHomepageSection = () => {
         />
         {eventsPageLink && (
           <div className="flex justify-center">
-            <Button variant="outline" {...getCommonLinkProps(eventsPageLink)} />
+            <Button variant="outline" {...getLinkProps(eventsPageLink)} />
           </div>
         )}
       </div>

@@ -8,7 +8,7 @@ import Waves from '@/src/components/common/Waves/Waves'
 import { CommonLinkFragment } from '@/src/services/graphql'
 import cn from '@/src/utils/cn'
 import { generateImageSizes } from '@/src/utils/generateImageSizes'
-import { getCommonLinkProps } from '@/src/utils/getCommonLinkProps'
+import { getLinkProps } from '@/src/utils/getLinkProps'
 
 type PageHeaderProps = {
   title?: string | null
@@ -88,7 +88,7 @@ const PageHeader = ({
                     key={index}
                     variant={index === 0 ? 'solid' : 'outline'}
                     fullWidthMobile
-                    {...getCommonLinkProps(button)}
+                    {...getLinkProps(button)}
                   />
                 ))}
               </div>

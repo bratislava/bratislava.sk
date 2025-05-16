@@ -62,6 +62,20 @@
           "searchable": true,
           "sortable": true
         }
+      },
+      "analyticsId": {
+        "edit": {
+          "label": "analyticsId",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "analyticsId",
+          "searchable": true,
+          "sortable": true
+        }
       }
     },
     "layouts": {
@@ -86,6 +100,12 @@
           {
             "name": "page",
             "size": 12
+          }
+        ],
+        [
+          {
+            "name": "analyticsId",
+            "size": 6
           }
         ]
       ]

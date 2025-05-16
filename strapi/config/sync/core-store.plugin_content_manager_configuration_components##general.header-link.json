@@ -22,8 +22,8 @@
       },
       "label": {
         "edit": {
-          "label": "Popisok",
-          "description": "",
+          "label": "Text odkazu",
+          "description": "Z polí Stránka a Url treba vyplniť vždy iba jedno. Ak sa vyplní viacero, odkaz bude smerovať na prvé vyplnené pole a ostatné sa odignorujú.",
           "placeholder": "",
           "visible": true,
           "editable": true
@@ -37,7 +37,7 @@
       "page": {
         "edit": {
           "label": "Stránka",
-          "description": "(Pole Url musí byť prázdne)",
+          "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true,
@@ -52,7 +52,7 @@
       "url": {
         "edit": {
           "label": "Url",
-          "description": "(Pole Stránka musí byť prázdne)",
+          "description": "Iba pre externé adresy - treba vždy vypĺňať s \"https://\" alebo \"http://\"",
           "placeholder": "",
           "visible": true,
           "editable": true
@@ -104,6 +104,20 @@
           "searchable": true,
           "sortable": true
         }
+      },
+      "analyticsId": {
+        "edit": {
+          "label": "analyticsId",
+          "description": "Identifikátor, podľa ktorého vieme trackovať v Plausible poček kliknutí na tento odkaz.",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "analyticsId",
+          "searchable": true,
+          "sortable": true
+        }
       }
     },
     "layouts": {
@@ -117,11 +131,7 @@
         [
           {
             "name": "label",
-            "size": 6
-          },
-          {
-            "name": "icon",
-            "size": 6
+            "size": 12
           }
         ],
         [
@@ -131,6 +141,16 @@
           },
           {
             "name": "url",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "icon",
+            "size": 6
+          },
+          {
+            "name": "analyticsId",
             "size": 6
           }
         ],

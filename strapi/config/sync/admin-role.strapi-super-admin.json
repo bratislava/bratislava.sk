@@ -533,6 +533,7 @@
           "header.links.showOnDesktop",
           "header.links.showOnMobile",
           "header.links.icon",
+          "header.links.analyticsId",
           "header.accountLink.label",
           "header.accountLink.page",
           "header.accountLink.article",
@@ -576,6 +577,7 @@
           "header.links.showOnDesktop",
           "header.links.showOnMobile",
           "header.links.icon",
+          "header.links.analyticsId",
           "header.accountLink.label",
           "header.accountLink.page",
           "header.accountLink.article",
@@ -607,6 +609,7 @@
           "header.links.showOnDesktop",
           "header.links.showOnMobile",
           "header.links.icon",
+          "header.links.analyticsId",
           "header.accountLink.label",
           "header.accountLink.page",
           "header.accountLink.article",
@@ -1104,7 +1107,8 @@
           "menus.sections.icon",
           "menus.sections.links.label",
           "menus.sections.links.page",
-          "menus.sections.links.url"
+          "menus.sections.links.url",
+          "menus.sections.links.analyticsId"
         ],
         "locales": [
           "en",
@@ -1139,7 +1143,8 @@
           "menus.sections.icon",
           "menus.sections.links.label",
           "menus.sections.links.page",
-          "menus.sections.links.url"
+          "menus.sections.links.url",
+          "menus.sections.links.analyticsId"
         ],
         "locales": [
           "en",
@@ -1162,7 +1167,8 @@
           "menus.sections.icon",
           "menus.sections.links.label",
           "menus.sections.links.page",
-          "menus.sections.links.url"
+          "menus.sections.links.url",
+          "menus.sections.links.analyticsId"
         ],
         "locales": [
           "en",

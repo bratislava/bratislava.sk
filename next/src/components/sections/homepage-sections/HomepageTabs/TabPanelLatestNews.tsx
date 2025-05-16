@@ -9,7 +9,7 @@ import MLink from '@/src/components/common/MLink/MLink'
 import Tag from '@/src/components/common/Tag/Tag'
 import { useHomepageContext } from '@/src/components/providers/HomepageContextProvider'
 import { getCategoryColorLocalStyle } from '@/src/utils/colors'
-import { getCommonLinkProps } from '@/src/utils/getCommonLinkProps'
+import { getLinkProps } from '@/src/utils/getLinkProps'
 import { isDefined } from '@/src/utils/isDefined'
 
 const TabPanelLatestNews = () => {
@@ -88,7 +88,7 @@ const TabPanelLatestNews = () => {
       </div>
       {tabs?.newsPageLink ? (
         <div className="flex justify-center">
-          <Button variant="outline" hasLinkIcon {...getCommonLinkProps(tabs?.newsPageLink)} />
+          <Button variant="outline" hasLinkIcon {...getLinkProps(tabs?.newsPageLink)} />
         </div>
       ) : null}
     </TabPanel>

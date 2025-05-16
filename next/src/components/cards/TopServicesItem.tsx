@@ -3,7 +3,7 @@ import { Typography } from '@bratislava/component-library'
 import Button from '@/src/components/common/Button/Button'
 import Pictogram from '@/src/components/common/Pictogram/Pictogram'
 import { TopServicesItemFragment } from '@/src/services/graphql'
-import { getCommonLinkProps } from '@/src/utils/getCommonLinkProps'
+import { getLinkProps } from '@/src/utils/getLinkProps'
 import { useTranslation } from '@/src/utils/useTranslation'
 
 type TopNineItemProps = {
@@ -14,7 +14,7 @@ const TopServicesItem = ({ topServicesItem }: TopNineItemProps) => {
   const { t } = useTranslation()
   const { icon, link } = topServicesItem
 
-  const { children: label, ...linkProps } = getCommonLinkProps(link)
+  const { children: label, ...linkProps } = getLinkProps(link)
 
   return (
     <div className="relative flex gap-3 rounded-lg bg-white px-4 py-3 md:bg-transparent md:p-0 lg:gap-4">

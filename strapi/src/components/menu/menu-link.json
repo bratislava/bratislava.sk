@@ -7,8 +7,7 @@
   "options": {},
   "attributes": {
     "label": {
-      "type": "string",
-      "required": true
+      "type": "string"
     },
     "page": {
       "type": "relation",
@@ -16,6 +15,9 @@
       "target": "api::page.page"
     },
     "url": {
+      "type": "string"
+    },
+    "analyticsId": {
       "type": "string"
     }
   }

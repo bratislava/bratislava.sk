@@ -6,7 +6,7 @@ import MLink from '@/src/components/common/MLink/MLink'
 import Markdown from '@/src/components/formatting/Markdown/Markdown'
 import { useLocalizations } from '@/src/components/providers/LocalizationsProvider'
 import { FooterColumnBlockFragment, FooterFragment } from '@/src/services/graphql'
-import { getCommonLinkProps } from '@/src/utils/getCommonLinkProps'
+import { getLinkProps } from '@/src/utils/getLinkProps'
 import { isDefined } from '@/src/utils/isDefined'
 
 export const FooterSocialLinks = ({ facebookUrl, instagramUrl }: FooterFragment) => {
@@ -36,7 +36,7 @@ export const FooterContacts = ({ contactText }: FooterFragment) => {
 
 export const FooterAccessibilityLink = ({ accessibilityPageLink }: FooterFragment) => {
   return accessibilityPageLink ? (
-    <MLink variant="underlined" {...getCommonLinkProps(accessibilityPageLink)} />
+    <MLink variant="underlined" {...getLinkProps(accessibilityPageLink)} />
   ) : null
 }
 
@@ -45,7 +45,7 @@ export const FooterCopyright = ({ innovationsLink }: FooterFragment) => {
     <Trans
       i18nKey="Footer.copyright"
       components={{
-        innovations: <MLink variant="underlined" {...getCommonLinkProps(innovationsLink)} />,
+        innovations: <MLink variant="underlined" {...getLinkProps(innovationsLink)} />,
       }}
       values={{ year: new Date().getFullYear() }}
     />
@@ -57,7 +57,7 @@ export const FooterColumnLinks = ({ links }: FooterColumnBlockFragment) => {
     <>
       {links?.filter(isDefined)?.map((link, index) => (
         // eslint-disable-next-line react/no-array-index-key
-        <MLink variant="underlined" {...getCommonLinkProps(link)} key={index} />
+        <MLink variant="underlined" {...getLinkProps(link)} key={index} />
       ))}
     </>
   )

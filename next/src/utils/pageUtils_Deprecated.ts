@@ -2,50 +2,9 @@ import groupBy from 'lodash/groupBy'
 import sortBy from 'lodash/sortBy'
 
 import { Breadcrumb } from '@/src/components/common/Breadcrumbs/Breadcrumbs'
-import { PageLinkBlockFragment, PageParentPagesFragment } from '@/src/services/graphql'
+import { PageParentPagesFragment } from '@/src/services/graphql'
 
 // TODO this should be thrown away
-
-export const localePath = (locale: string, slug: string) => {
-  // Special case for slovak homepage, so it is not empty string
-  if (locale === 'sk' && slug === '') return '/'
-  const localePrefix = locale === 'sk' ? '' : `${locale}/`
-
-  return `${localePrefix}${slug || ''}`
-}
-
-export const pagePath = (
-  page?: {
-    locale?: string | null
-    slug?: string | null
-  } | null,
-): string | null => {
-  if (!page) return null
-  const { locale, slug } = page
-  if (!locale || !slug) return slug ?? null
-
-  return localePath(locale, slug)
-}
-
-export const parsePageLink = (
-  pageLink?: PageLinkBlockFragment | null,
-): { title: string; url: string } | null => {
-  if (!pageLink) return null
-  const param = {
-    locale: pageLink?.page?.data?.attributes?.locale,
-    slug: pageLink?.page?.data?.attributes?.slug,
-  }
-  if (pageLink.url === '') {
-    // eslint-disable-next-line no-param-reassign
-    pageLink.url = null
-  }
-
-  return {
-    title: pageLink.title || pageLink.page?.data?.attributes?.title || '',
-    url: pageLink.url ?? pagePath(param) ?? pageLink.page?.data?.attributes?.slug ?? '#',
-  }
-}
-
 // Page Accordion Items
 export const groupByCategory = <Category extends string | null, T extends { category?: Category }>(
   items: T[],

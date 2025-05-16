@@ -4,7 +4,7 @@ import React from 'react'
 import MayorAndCouncilCard from '@/src/components/cards/MayorAndCouncilCard'
 import { useHomepageContext } from '@/src/components/providers/HomepageContextProvider'
 import cn from '@/src/utils/cn'
-import { getCommonLinkProps } from '@/src/utils/getCommonLinkProps'
+import { getLinkProps } from '@/src/utils/getLinkProps'
 import { useTranslation } from '@/src/utils/useTranslation'
 
 type Props = {
@@ -18,8 +18,8 @@ const MayorAndCouncilHomepageSection = ({ className }: Props) => {
   const { mayorAndCouncil } = homepage?.attributes ?? {}
   const { title, text, mayorCard, councilCard } = mayorAndCouncil ?? {}
 
-  const { children: mayorLinkLabel, ...mayorLinkProps } = getCommonLinkProps(mayorCard)
-  const { children: councilLinkLabel, ...councilLinkProps } = getCommonLinkProps(councilCard)
+  const { children: mayorLinkLabel, ...mayorLinkProps } = getLinkProps(mayorCard)
+  const { children: councilLinkLabel, ...councilLinkProps } = getLinkProps(councilCard)
 
   return (
     <div className={cn('flex flex-col gap-6', className)}>

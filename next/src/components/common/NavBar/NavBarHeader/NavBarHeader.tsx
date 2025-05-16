@@ -7,7 +7,7 @@ import SkipToContentButton from '@/src/components/common/SkipToContentButton/Ski
 import { useGeneralContext } from '@/src/components/providers/GeneralContextProvider'
 import { useLocalizations } from '@/src/components/providers/LocalizationsProvider'
 import { getCategoryColorLocalStyle } from '@/src/utils/colors'
-import { getCommonLinkProps } from '@/src/utils/getCommonLinkProps'
+import { getLinkProps } from '@/src/utils/getLinkProps'
 import { isDefined } from '@/src/utils/isDefined'
 import { useTranslation } from '@/src/utils/useTranslation'
 
@@ -40,23 +40,14 @@ const NavBarHeader = ({ className }: NavBarProps) => {
             ?.filter(isDefined)
             .filter((link) => link.showOnDesktop)
             .map((link, linkIndex) => {
-              // TODO better approach to links
-              const pageSlug = link.page?.data?.attributes?.slug
-              if (pageSlug || link.url) {
-                return (
-                  <MLink
-                    // eslint-disable-next-line react/no-array-index-key
-                    key={linkIndex}
-                    variant="underlined-medium"
-                    href={pageSlug ? `/${pageSlug}` : (link.url ?? '#')}
-                    target={link.url?.startsWith('http') ? '_blank' : undefined}
-                  >
-                    {link.label}
-                  </MLink>
-                )
-              }
-
-              return null
+              return (
+                <MLink
+                  // eslint-disable-next-line react/no-array-index-key
+                  key={linkIndex}
+                  variant="underlined-medium"
+                  {...getLinkProps(link)}
+                />
+              )
             })}
 
           {accountLink ? (
@@ -65,7 +56,7 @@ const NavBarHeader = ({ className }: NavBarProps) => {
               variant="outline"
               hasLinkIcon={false}
               data-cy="account-button"
-              {...getCommonLinkProps(accountLink)}
+              {...getLinkProps(accountLink)}
             />
           ) : (
             <Divider />

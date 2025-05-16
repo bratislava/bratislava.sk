@@ -51,18 +51,6 @@ export interface AccordionItemsInstitutionNarrow extends Schema.Component {
   }
 }
 
-export interface BlocksBookmarkLink extends Schema.Component {
-  collectionName: 'components_blocks_bookmark_links'
-  info: {
-    displayName: 'Bookmark Link'
-    icon: 'award'
-  }
-  attributes: {
-    href: Attribute.String
-    title: Attribute.String
-  }
-}
-
 export interface BlocksCommonLink extends Schema.Component {
   collectionName: 'components_blocks_common_links'
   info: {
@@ -72,7 +60,7 @@ export interface BlocksCommonLink extends Schema.Component {
   attributes: {
     analyticsId: Attribute.String
     article: Attribute.Relation<'blocks.common-link', 'oneToOne', 'api::article.article'>
-    label: Attribute.String & Attribute.Required
+    label: Attribute.String
     page: Attribute.Relation<'blocks.common-link', 'oneToOne', 'api::page.page'>
     url: Attribute.String
   }
@@ -204,9 +192,10 @@ export interface BlocksPageLink extends Schema.Component {
   collectionName: 'components_blocks_page_links'
   info: {
     description: ''
-    displayName: 'page Link'
+    displayName: 'page link'
   }
   attributes: {
+    analyticsId: Attribute.String
     page: Attribute.Relation<'blocks.page-link', 'oneToOne', 'api::page.page'>
     title: Attribute.String
     url: Attribute.String
@@ -302,13 +291,15 @@ export interface GeneralHeader extends Schema.Component {
 export interface GeneralHeaderLink extends Schema.Component {
   collectionName: 'components_general_header_links'
   info: {
+    description: ''
     displayName: 'header link'
   }
   attributes: {
+    analyticsId: Attribute.String
     icon: Attribute.Enumeration<['esluzby', 'kontakt', 'ukraina', 'som_turista']> &
       Attribute.Required &
       Attribute.DefaultTo<'kontakt'>
-    label: Attribute.String & Attribute.Required
+    label: Attribute.String
     page: Attribute.Relation<'general.header-link', 'oneToOne', 'api::page.page'>
     showOnDesktop: Attribute.Boolean & Attribute.Required & Attribute.DefaultTo<true>
     showOnMobile: Attribute.Boolean & Attribute.Required & Attribute.DefaultTo<true>
@@ -348,7 +339,8 @@ export interface MenuMenuLink extends Schema.Component {
     displayName: 'menu link'
   }
   attributes: {
-    label: Attribute.String & Attribute.Required
+    analyticsId: Attribute.String
+    label: Attribute.String
     page: Attribute.Relation<'menu.menu-link', 'oneToOne', 'api::page.page'>
     url: Attribute.String
   }
@@ -932,7 +924,6 @@ declare module '@strapi/types' {
       'accordion-items.flat-text': AccordionItemsFlatText
       'accordion-items.institution': AccordionItemsInstitution
       'accordion-items.institution-narrow': AccordionItemsInstitutionNarrow
-      'blocks.bookmark-link': BlocksBookmarkLink
       'blocks.common-link': BlocksCommonLink
       'blocks.comparison-card': BlocksComparisonCard
       'blocks.comparison-item': BlocksComparisonItem

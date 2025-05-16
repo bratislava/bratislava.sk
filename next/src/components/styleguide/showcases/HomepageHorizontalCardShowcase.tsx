@@ -2,7 +2,7 @@ import React from 'react'
 
 import HomepageHorizontalCard from '@/src/components/cards/HomepageHorizontalCard'
 import Wrapper from '@/src/components/styleguide/Wrapper'
-import { CommonLinkProps } from '@/src/utils/getCommonLinkProps'
+import { CommonLinkProps } from '@/src/utils/getLinkProps'
 
 const HomepageHorizontalCardShowcase = () => {
   const cards = [
