@@ -68,97 +68,98 @@ export async function listArticles() {
 }
 
 // eslint-disable-next-line sonarjs/cognitive-complexity
-// export async function logAllSectionsByType({
-//   entityType,
-//   sectionName,
-//   locale,
-//   showExtendedInfo = false,
-// }: {
-//   entityType: 'blog-post'
-//   sectionName: SectionName
-//   locale?: string
-//   showExtendedInfo?: boolean
-// }) {
-//   let data
-//   let entities
-//
-//   const foundEntities: { count: number; [key: string]: number } = { count: 0 }
-//   let foundSectionsCount = 0
-//
-//   switch (entityType) {
-//     case 'blog-post':
-//       data = await client.Dev_AllBlogPosts({ locale: locale ?? 'all', limit: -1 })
-//       entities = data.blogPosts?.data ?? []
-//       break
-//
-//     default:
-//       break
-//   }
-//   if (!entities) {
-//     return
-//   }
-//
-//   console.log('\n')
-//
-//   console.log(`Searching through ${CONSOLE_BLUE}${process.env.STRAPI_URL}${CONSOLE_WHITE}`)
-//   console.log(
-//     `For all entities of type ${CONSOLE_BLUE}${entityType}${CONSOLE_WHITE}, logging all sections with __typename ${CONSOLE_BLUE}${sectionName}${CONSOLE_WHITE}`,
-//   )
-//   console.log('\n')
-//
-//   entities.forEach((entity) => {
-//     const strapiEntityLink = `${process.env.STRAPI_URL}/admin/content-manager/collection-types/api::${entityType}.${entityType}/${entity.id}`
-//     const strapiEntityLinkProd = `https://bratislava-strapi.bratislava.sk/admin/content-manager/collection-types/api::${entityType}.${entityType}/${entity.id}`
-//     const nextEntityLinkProd = `https://bratislava.sk/blog/${entity.attributes?.slug}`
-//
-//     const entityLog: { __typename: SectionName; title: string | undefined }[] = []
-//
-//     entity.attributes?.sections?.forEach((section) => {
-//       if (section?.__typename === sectionName) {
-//         entityLog.push({
-//           __typename: sectionName,
-//           title: entity.attributes?.title,
-//         })
-//
-//         foundSectionsCount += 1
-//         if (entity.id && !foundEntities[entity.id]) {
-//           foundEntities.count += 1
-//         }
-//       }
-//     })
-//
-//     const entityLogMessage = entityLog
-//       .map(
-//         (sectionLog) =>
-//           `- ${CONSOLE_GREEN}${sectionLog.title}${CONSOLE_WHITE} ${CONSOLE_GREY}${sectionLog.__typename}${CONSOLE_WHITE}`,
-//       )
-//       .join('\n')
-//
-//     if (entityLog.length === 0) return
-//
-//     if (showExtendedInfo) {
-//       console.log(`[${entityType}] ${entity.attributes?.title}`)
-//       console.log(`${strapiEntityLink}`)
-//       console.log(`${strapiEntityLinkProd}`)
-//       console.log(`${nextEntityLinkProd}`)
-//       console.log(entityLogMessage)
-//       console.log('\n')
-//     } else {
-//       console.log(
-//         `${entityLog.length}x ${sectionName?.replace('ComponentSections', '')} found at ${entity.attributes?.slug} ${CONSOLE_GREY}${strapiEntityLink}${CONSOLE_WHITE}`,
-//       )
-//     }
-//   })
-//
-//   console.log('\n')
-//   console.log(
-//     `${CONSOLE_YELLOW}Finished searching through ${CONSOLE_BLUE}${process.env.STRAPI_URL}${CONSOLE_GREY} (to search other Strapi instances, change your .env.local)`,
-//   )
-//   console.log(
-//     `${CONSOLE_YELLOW}Found ${CONSOLE_BLUE}${foundSectionsCount}${CONSOLE_YELLOW} sections with __typename ${CONSOLE_BLUE}${sectionName}${CONSOLE_YELLOW} within \u001B[34m${foundEntities.count} ${CONSOLE_YELLOW}entities of type ${CONSOLE_BLUE}${entityType}\u001B[0m `,
-//   )
-//   console.log(
-//     '_______________________________________________________________________________________________________________',
-//     '\n',
-//   )
-// }
+export async function logAllSectionsByType({
+  entityType,
+  sectionName,
+  locale,
+  showExtendedInfo = false,
+}: {
+  entityType: 'page'
+  sectionName: SectionName
+  locale?: string
+  showExtendedInfo?: boolean
+}) {
+  let data
+  let entities
+
+  const foundEntities: { count: number; [key: string]: number } = { count: 0 }
+  let foundSectionsCount = 0
+
+  // eslint-disable-next-line sonarjs/no-small-switch
+  switch (entityType) {
+    case 'page':
+      data = await client.Dev_AllPages({ locale: locale ?? 'all', limit: -1 })
+      entities = data.pages?.data ?? []
+      break
+
+    default:
+      break
+  }
+  if (!entities) {
+    return
+  }
+
+  console.log('\n')
+
+  console.log(`Searching through ${CONSOLE_BLUE}${process.env.STRAPI_URL}${CONSOLE_WHITE}`)
+  console.log(
+    `For all entities of type ${CONSOLE_BLUE}${entityType}${CONSOLE_WHITE}, logging all sections with __typename ${CONSOLE_BLUE}${sectionName}${CONSOLE_WHITE}`,
+  )
+  console.log('\n')
+
+  entities.forEach((entity) => {
+    const strapiEntityLink = `${process.env.STRAPI_URL}/admin/content-manager/collection-types/api::${entityType}.${entityType}/${entity.id}`
+    const strapiEntityLinkProd = `https://bratislava-strapi.bratislava.sk/admin/content-manager/collection-types/api::${entityType}.${entityType}/${entity.id}`
+    const nextEntityLinkProd = `https://bratislava.sk/${entity.attributes?.slug}`
+
+    const entityLog: { __typename: SectionName; title: string | null | undefined }[] = []
+
+    entity.attributes?.sections?.forEach((section) => {
+      if (section?.__typename === sectionName) {
+        entityLog.push({
+          __typename: sectionName,
+          title: entity.attributes?.title,
+        })
+
+        foundSectionsCount += 1
+        if (entity.id && !foundEntities[entity.id]) {
+          foundEntities.count += 1
+        }
+      }
+    })
+
+    const entityLogMessage = entityLog
+      .map(
+        (sectionLog) =>
+          `- ${CONSOLE_GREEN}${sectionLog.title}${CONSOLE_WHITE} ${CONSOLE_GREY}${sectionLog.__typename}${CONSOLE_WHITE}`,
+      )
+      .join('\n')
+
+    if (entityLog.length === 0) return
+
+    if (showExtendedInfo) {
+      console.log(`[${entityType}] ${entity.attributes?.title}`)
+      console.log(`${strapiEntityLink}`)
+      console.log(`${strapiEntityLinkProd}`)
+      console.log(`${nextEntityLinkProd}`)
+      console.log(entityLogMessage)
+      console.log('\n')
+    } else {
+      console.log(
+        `${entityLog.length}x ${sectionName?.replace('ComponentSections', '')} found at ${nextEntityLinkProd} ${CONSOLE_GREY}${strapiEntityLink}${CONSOLE_WHITE}`,
+      )
+    }
+  })
+
+  console.log('\n')
+  console.log(
+    `${CONSOLE_YELLOW}Finished searching through ${CONSOLE_BLUE}${process.env.STRAPI_URL}${CONSOLE_GREY} (to search other Strapi instances, change your .env.local)`,
+  )
+  console.log(
+    `${CONSOLE_YELLOW}Found ${CONSOLE_BLUE}${foundSectionsCount}${CONSOLE_YELLOW} sections with __typename ${CONSOLE_BLUE}${sectionName}${CONSOLE_YELLOW} within \u001B[34m${foundEntities.count} ${CONSOLE_YELLOW}entities of type ${CONSOLE_BLUE}${entityType}\u001B[0m `,
+  )
+  console.log(
+    '_______________________________________________________________________________________________________________',
+    '\n',
+  )
+}

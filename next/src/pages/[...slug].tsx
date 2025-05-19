@@ -15,6 +15,7 @@ import {
 import { GeneralQuery, PageEntityFragment } from '@/src/services/graphql'
 import { client } from '@/src/services/graphql/gql'
 import { GlobalCategoryColorProvider } from '@/src/utils/colors'
+import { NOT_FOUND } from '@/src/utils/consts'
 import { isDefined } from '@/src/utils/isDefined'
 import { prefetchPageSections } from '@/src/utils/prefetchPageSections'
 import { useTitle } from '@/src/utils/useTitle'
@@ -58,7 +59,9 @@ export const getStaticProps: GetStaticProps<PageProps, StaticParams> = async ({
   // eslint-disable-next-line no-console
   console.log(`Revalidating page ${locale === 'en' ? '/en' : ''}/${slugJoined}`)
 
-  if (!slug || !slugJoined || !locale) return { notFound: true }
+  if (!slug || !slugJoined || !locale) {
+    return NOT_FOUND
+  }
 
   const [{ pages }, { pages: aliasPages, articles: aliasArticles }, general, translations] =
     await Promise.all([
@@ -98,7 +101,9 @@ export const getStaticProps: GetStaticProps<PageProps, StaticParams> = async ({
   }
 
   const page = pages?.data?.[0]
-  if (!page) return { notFound: true }
+  if (!page) {
+    return NOT_FOUND
+  }
 
   const dehydratedState = await prefetchPageSections(page, locale)
 

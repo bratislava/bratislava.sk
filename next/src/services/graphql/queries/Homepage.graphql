@@ -22,14 +22,10 @@ fragment HomepageEntity on HomepageEntity {
       ...HomepageTabs
     }
     mayorAndCouncil {
-      ...HomepageMayorAndCouncil
+      ...HomepageMayorAndCouncilSection
     }
     eventsSection {
-      title
-      text
-      eventsPageLink {
-        ...CommonLink
-      }
+      ...TootootEventsSection
     }
     topServices {
       title
@@ -37,6 +33,10 @@ fragment HomepageEntity on HomepageEntity {
         ...TopServicesItem
       }
     }
+    inbaSection {
+      ...HomepageInbaSection
+    }
+    # TODO will be replaced by inbaSection
     inba {
       ...HomepageInba
     }
@@ -96,7 +96,7 @@ fragment HomepageTabs on ComponentSectionsHomepageTabs {
   }
 }
 
-fragment HomepageMayorAndCouncil on ComponentSectionsHomepageMayorAndCouncil {
+fragment HomepageMayorAndCouncilSection on ComponentSectionsHomepageMayorAndCouncil {
   title
   text
   mayorCard {
@@ -117,4 +117,22 @@ fragment TopServicesItem on ComponentBlocksTopServicesItem {
 fragment HomepageInba on ComponentBlocksInBa {
   title
   content
+}
+
+fragment HomepageInbaSection on ComponentSectionsHomepageInba {
+  title
+  text
+  inbaFrontImage {
+    data {
+      ...UploadImageEntity
+    }
+  }
+  inbaRearImage {
+    data {
+      ...UploadImageEntity
+    }
+  }
+  showMoreLink {
+    ...CommonLink
+  }
 }

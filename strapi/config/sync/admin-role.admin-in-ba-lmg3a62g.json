@@ -16,7 +16,16 @@
           "inba.content",
           "inbaFrontImage",
           "inbaRearImage",
-          "inbaUrl"
+          "inbaUrl",
+          "inbaSection.title",
+          "inbaSection.text",
+          "inbaSection.inbaFrontImage",
+          "inbaSection.inbaRearImage",
+          "inbaSection.showMoreLink.label",
+          "inbaSection.showMoreLink.page",
+          "inbaSection.showMoreLink.article",
+          "inbaSection.showMoreLink.url",
+          "inbaSection.showMoreLink.analyticsId"
         ],
         "locales": []
       },
@@ -36,7 +45,16 @@
           "inba.content",
           "inbaFrontImage",
           "inbaRearImage",
-          "inbaUrl"
+          "inbaUrl",
+          "inbaSection.title",
+          "inbaSection.text",
+          "inbaSection.inbaFrontImage",
+          "inbaSection.inbaRearImage",
+          "inbaSection.showMoreLink.label",
+          "inbaSection.showMoreLink.page",
+          "inbaSection.showMoreLink.article",
+          "inbaSection.showMoreLink.url",
+          "inbaSection.showMoreLink.analyticsId"
         ],
         "locales": [
           "en",
@@ -51,15 +69,24 @@
       "subject": "api::homepage.homepage",
       "properties": {
         "fields": [
+          "metaTitle",
+          "metaDescription",
+          "welcomeHeadline",
+          "welcomeMedia",
           "inba.title",
           "inba.content",
           "inbaFrontImage",
           "inbaRearImage",
           "inbaUrl",
-          "metaTitle",
-          "metaDescription",
-          "welcomeHeadline",
-          "welcomeMedia"
+          "inbaSection.title",
+          "inbaSection.text",
+          "inbaSection.inbaFrontImage",
+          "inbaSection.inbaRearImage",
+          "inbaSection.showMoreLink.label",
+          "inbaSection.showMoreLink.page",
+          "inbaSection.showMoreLink.article",
+          "inbaSection.showMoreLink.url",
+          "inbaSection.showMoreLink.analyticsId"
         ],
         "locales": [
           "en",

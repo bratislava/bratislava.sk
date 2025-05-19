@@ -363,12 +363,21 @@ fragment FaqsSection on ComponentSectionsFaqs {
 }
 
 fragment FaqCategoriesSection on ComponentSectionsFaqCategories {
+  id
   title
   text
   faqCategories {
     data {
       ...FaqCategoryEntity
     }
+  }
+}
+
+fragment TootootEventsSection on ComponentSectionsTootootEvents {
+  title
+  text
+  showMoreLink {
+    ...CommonLink
   }
 }
 
@@ -485,6 +494,10 @@ fragment Sections on PageSectionsDynamicZone {
 
   ... on ComponentSectionsFaqCategories {
     ...FaqCategoriesSection
+  }
+
+  ... on ComponentSectionsTootootEvents {
+    ...TootootEventsSection
   }
 }
 

@@ -111,12 +111,12 @@ export type TootootEvent = {
   isLongTerm: boolean
 }
 
-export const getTootootHomepageEventsQueryKey = () => ['TootootHomepageEvents']
+export const getTootootEventsQueryKey = () => ['TootootEvents']
 
 /**
  * Documentation: https://github.com/bratislava/bratislava.sk/files/11027013/Tootoot.Lippu.API.documentation.Profile.pdf
  */
-const fetchTootootHomepageEventsByProfiles = async (profileIds: string[]) => {
+const fetchTootootEventsByProfiles = async (profileIds: string[]) => {
   const result = await fetch(
     `https://api.tootoot.co/api/event/webForClubs?eventBegin=Future&page=0&perPage=${eventsCountToFetch}&profileId=${profileIds.join(
       ',',
@@ -136,9 +136,9 @@ const fetchTootootHomepageEventsByProfiles = async (profileIds: string[]) => {
  * First, events from Bratislava profile are displayed, then events up to "eventsCountToShow" are filled from other profiles (displayed
  * also here: https://www.bkis.sk/podujatia/).
  */
-export const getTootootHomepageEvents = async () => {
-  const eventsBa = await fetchTootootHomepageEventsByProfiles([cityTootootId])
-  const eventsOther = await fetchTootootHomepageEventsByProfiles(cityOrganizationsTootootIds)
+export const getTootootEvents = async () => {
+  const eventsBa = await fetchTootootEventsByProfiles([cityTootootId])
+  const eventsOther = await fetchTootootEventsByProfiles(cityOrganizationsTootootIds)
 
   // Hint from Tootoot: sorting events by endDate helps to prevent longer events to take space in first places for too long
   return [...sortBy(eventsBa, ['End']), ...sortBy(eventsOther, ['End'])]

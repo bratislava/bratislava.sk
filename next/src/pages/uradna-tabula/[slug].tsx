@@ -14,6 +14,7 @@ import { shouldMockGinis } from '@/src/services/ginis/utils/shouldMockGinis'
 import { GeneralQuery } from '@/src/services/graphql'
 import { client } from '@/src/services/graphql/gql'
 import { base64Decode } from '@/src/utils/base64'
+import { NOT_FOUND } from '@/src/utils/consts'
 
 type StaticParams = ParsedUrlQuery & {
   slug: string
@@ -35,7 +36,9 @@ export const getServerSideProps: GetServerSideProps<
     `Revalidating official board document ${locale === 'en' ? '/en' : ''}/${encodedDocumentId}`,
   )
 
-  if (!encodedDocumentId || !locale) return { notFound: true }
+  if (!encodedDocumentId || !locale) {
+    return NOT_FOUND
+  }
 
   const documentId = base64Decode(encodedDocumentId)
 
@@ -45,7 +48,7 @@ export const getServerSideProps: GetServerSideProps<
       `Invalid document ID for GINIS detailDokumentu. Encoded: ${encodedDocumentId} Decoded: ${documentId}`,
     )
 
-    return { notFound: true }
+    return NOT_FOUND
   }
 
   const [document, general, translations] = await Promise.all([
@@ -65,7 +68,7 @@ export const getServerSideProps: GetServerSideProps<
   }
 
   if (!document) {
-    return { notFound: true }
+    return NOT_FOUND
   }
 
   return {
