@@ -2,13 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-@import 'colors.css';
+@import './colors.css';
 @import '../../node_modules/@bratislava/component-library/dist/assets/style.css';
 
 /* Docs: https://tailwindcss.com/docs/functions-and-directives */
 @layer base {
   body {
-    @apply text-font antialiased;
+    @reference text-font antialiased;
   }
 
   h1,
@@ -17,61 +17,61 @@
   h4,
   h5,
   h6 {
-    @apply font-semibold;
+    @reference font-semibold;
   }
 }
 
 @layer components {
   .negative-x-spacing {
-    @apply -mx-4 px-4;
+    @reference -mx-4 px-4;
   }
 
   .text-h1-lg {
-    @apply text-size-h1-hero-r lg:text-size-h1-hero;
+    @reference text-size-h1-hero-r lg:text-size-h1-hero;
   }
 
   .text-h1 {
-    @apply text-size-h1-r lg:text-size-h1;
+    @reference text-size-h1-r lg:text-size-h1;
   }
 
   .text-h2 {
-    @apply text-size-h2-r lg:text-size-h2;
+    @reference text-size-h2-r lg:text-size-h2;
   }
 
   .text-h3 {
-    @apply text-size-h3-r lg:text-size-h3;
+    @reference text-size-h3-r lg:text-size-h3;
   }
 
   .text-h4 {
-    @apply text-size-h4-r lg:text-size-h4;
+    @reference text-size-h4-r lg:text-size-h4;
   }
 
   .text-h5 {
-    @apply text-size-h5-r lg:text-size-h5;
+    @reference text-size-h5-r lg:text-size-h5;
   }
 
   .text-h6 {
-    @apply text-size-h6 lg:text-size-h6-r;
+    @reference text-size-h6 lg:text-size-h6-r;
   }
 
   .text-large {
-    @apply text-size-p-large-r lg:text-size-p-large;
+    @reference text-size-p-large-r lg:text-size-p-large;
   }
 
   .text-default {
-    @apply text-size-p-default-r lg:text-size-p-default;
+    @reference text-size-p-default-r lg:text-size-p-default;
   }
 
   .text-component-default {
-    @apply text-size-component-default;
+    @reference text-size-component-default;
   }
 
   .text-component-small {
-    @apply text-size-component-small;
+    @reference text-size-component-small;
   }
 
   .text-button {
-    @apply text-size-button-default lg:text-size-button-large;
+    @reference text-size-button-default lg:text-size-button-large;
   }
 
   .modal-close-mobile-right {
@@ -88,15 +88,15 @@
   }
 
   .modal-content-rent-markdown ul {
-    @apply my-6 list-disc pl-12;
+    @reference my-6 list-disc pl-12;
   }
 
   .modal-content-rent-markdown ol {
-    @apply my-6 list-decimal pl-12;
+    @reference my-6 list-decimal pl-12;
   }
 
   .modal-content-rent-markdown p {
-    @apply mb-4;
+    @reference mb-4;
   }
 
   .modal-content-rent-markdown h1,
@@ -105,7 +105,7 @@
   .modal-content-rent-markdown h4,
   .modal-content-rent-markdown h5,
   .modal-content-rent-markdown h6 {
-    @apply my-6 font-bold;
+    @reference my-6 font-bold;
   }
 
   .modal-content-rent-markdown h1 {
@@ -133,7 +133,7 @@
   }
 
   .modal-content-rent-markdown a {
-    @apply font-bold underline;
+    @reference font-bold underline;
   }
 
   .text-title-center h1,
@@ -142,11 +142,11 @@
   .text-title-center h4,
   .text-title-center h5,
   .text-title-center h6 {
-    @apply mb-6 text-center;
+    @reference mb-6 text-center;
   }
 
   .inner-list .inner-list .rounded-full {
-    @apply bg-transparent;
+    @reference bg-transparent;
   }
 
   button[data-state='open'] > svg {
@@ -173,16 +173,16 @@
   }
 
   .base-input {
-    @apply box-border inline-block h-14 appearance-none rounded-10 border-3 px-6 py-0 font-medium text-font;
-    @apply border-white bg-white hover:border-category-600 focus:border-category-600 focus:outline-none;
+    @reference box-border inline-block h-14 appearance-none rounded-10 border-3 px-6 py-0 font-medium text-font;
+    @reference border-white bg-white hover:border-category-600 focus:border-category-600 focus:outline-none;
   }
 
   .base-input--with-error {
-    @apply border-error;
+    @reference border-error;
   }
 
   .base-input--disabled {
-    @apply bg-grey-100;
+    @reference bg-grey-100;
   }
 
   input:-webkit-autofill,
@@ -195,13 +195,13 @@
   /* Move safari key icon to the left for fields with type password */
   /*noinspection CssInvalidPseudoSelector*/
   input[type='password']::-webkit-credentials-auto-fill-button {
-    @apply mr-8;
+    @reference mr-8;
   }
 
   /* Move safari 'Strong password' to the left for fields with type password */
   /*noinspection CssInvalidPseudoSelector*/
   input[type='password']::-webkit-strong-password-auto-fill-button {
-    @apply mr-8 pb-2;
+    @reference mr-8 pb-2;
   }
 
   /* Remove arrows from input type='number' */
