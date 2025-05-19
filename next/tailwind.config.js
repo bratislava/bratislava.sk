@@ -33,22 +33,11 @@ module.exports = {
   plugins: [
     customVariants,
     removeNativeSearchInputStyling,
-    require('tailwind-scrollbar-hide'),
-    require('tailwindcss-react-aria-components'),
-    require('tailwindcss-animate'),
   ],
   corePlugins: {
     container: false,
   },
   theme: {
-    screens,
-    fontWeight: {
-      light: '300',
-      normal: '400',
-      medium: '500',
-      semibold: '600',
-      bold: '700',
-    },
     boxShadow: {
       lg: '0px 16px 24px rgba(0, 0, 0, 0.12)',
       md: '0px 8px 16px rgba(0, 0, 0, 0.12)',
@@ -89,7 +78,7 @@ module.exports = {
       'size-h1-hero-r': getFontSize([32, 40]),
     },
 
-    colors: colors,
+    // colors: colors,
     extend: {
       // Default theme has the border default color set as "colors.gray.200", but we use "grey" with "e" in our colors
       // This should be the only place where default tailwind config chooses some specific color from tailwind config.
@@ -97,9 +86,6 @@ module.exports = {
       borderColor: (theme) => ({
         DEFAULT: theme('colors.grey.200'),
       }),
-      rotate: {
-        270: '270deg',
-      },
       // Inspired by: https://www.radix-ui.com/docs/primitives/components/navigation-menu
       keyframes: {
         enterFromRight: {
@@ -166,16 +152,6 @@ module.exports = {
         7: 'repeat(7, minmax(0, 1fr))',
         8: 'repeat(8, minmax(0, 1fr))',
         9: 'repeat(9, minmax(0, 1fr))',
-      },
-      spacing: {
-        18: '4.5rem', // 72px
-        30: '7.5rem', // 120px
-        66: '17.5rem', // 280px
-        76: '19rem', // 304px
-        88: '22rem', // 352px
-        100: '25rem',
-        104: '26rem', // 416px
-        200: '50rem', // 800px
       },
       aspectRatio: {
         '16/10': '16 / 10',
