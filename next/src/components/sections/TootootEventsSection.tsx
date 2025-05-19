@@ -8,9 +8,9 @@ import SectionContainer from '@/src/components/common/SectionContainer/SectionCo
 import Spinner from '@/src/components/common/Spinner/Spinner'
 import { TootootEventsSectionFragment } from '@/src/services/graphql'
 import {
-  getTootootHomepageEvents,
-  getTootootHomepageEventsQueryKey,
-} from '@/src/services/tootoot/homepageTootootEvents.fetcher'
+  getTootootEvents,
+  getTootootEventsQueryKey,
+} from '@/src/services/tootoot/tootootEvents.fetcher'
 import { generateImageSizes } from '@/src/utils/generateImageSizes'
 import { getLinkProps } from '@/src/utils/getLinkProps'
 
@@ -24,8 +24,8 @@ const TootootEventsSection = ({ section }: Props) => {
   const { title, text, showMoreLink } = section
 
   const { data, isPending, isError, error } = useQuery({
-    queryKey: getTootootHomepageEventsQueryKey(),
-    queryFn: () => getTootootHomepageEvents(),
+    queryKey: getTootootEventsQueryKey(),
+    queryFn: () => getTootootEvents(),
   })
 
   return (

@@ -13,9 +13,9 @@ import { homepageContextFetcher } from '@/src/services/fetchers/homepageContextF
 import { GeneralQuery } from '@/src/services/graphql'
 import { client } from '@/src/services/graphql/gql'
 import {
-  getTootootHomepageEvents,
-  getTootootHomepageEventsQueryKey,
-} from '@/src/services/tootoot/homepageTootootEvents.fetcher'
+  getTootootEvents,
+  getTootootEventsQueryKey,
+} from '@/src/services/tootoot/tootootEvents.fetcher'
 import { NOT_FOUND } from '@/src/utils/consts'
 import { useTitle } from '@/src/utils/useTitle'
 
@@ -43,8 +43,8 @@ export const getStaticProps: GetStaticProps<PageProps> = async ({ locale }) => {
   const queryClient = new QueryClient()
 
   await queryClient.prefetchQuery({
-    queryKey: getTootootHomepageEventsQueryKey(),
-    queryFn: () => getTootootHomepageEvents(),
+    queryKey: getTootootEventsQueryKey(),
+    queryFn: () => getTootootEvents(),
   })
 
   const dehydratedState = dehydrate(queryClient)
