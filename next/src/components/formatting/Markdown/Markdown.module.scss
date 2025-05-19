@@ -51,11 +51,11 @@
   // margins
 
   & > *:first-child {
-    @apply mt-0;
+    @reference mt-0;
   }
 
   & > *:last-child {
-    @apply mb-0;
+    @reference mb-0;
   }
 
   & > h1,
@@ -64,21 +64,21 @@
   & > h4,
   & > h5,
   & > h6 {
-    @apply mb-4 mt-10;
+    @reference mb-4 mt-10;
   }
 
   & > blockquote {
-    @apply my-10;
+    @reference my-10;
   }
 
   & > figure {
-    @apply my-10;
+    @reference my-10;
   }
 
   // Select paragraphs that have an adjacent ol or ul
   & > p:has(+ ol),
   & > p:has(+ ul) {
-    @apply mb-3;
+    @reference mb-3;
   }
 
   // Adjust the margin of list items
@@ -86,7 +86,7 @@
   & > ol,
   & > ul {
     & > li {
-      @apply my-3;
+      @reference my-3;
     }
   }
   // TODO write the css the way we don't have to list all the elements again with :not (?)
@@ -95,6 +95,6 @@
     > *:not(h1):not(h2):not(h3):not(h4):not(h5):not(h6):not(ul):not(ol):not(blockquote):not(
       figure
     ):not(p:has(+ ol)):not(p:has(+ ul)) {
-    @apply my-6;
+    @reference my-6;
   }
 }
