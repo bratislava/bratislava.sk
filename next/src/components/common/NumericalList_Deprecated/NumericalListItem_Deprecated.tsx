@@ -65,7 +65,7 @@ const NumericalListItem = ({
               'w-full': !item,
             },
             {
-              'max-w-screen-sm': item,
+              'max-w-(--breakpoint-sm)': item,
             },
           )}
         >

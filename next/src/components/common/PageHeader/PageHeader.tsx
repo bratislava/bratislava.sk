@@ -52,7 +52,7 @@ const PageHeader = ({
         </div>
       )}
 
-      <div className="mx-auto max-w-screen-xl px-4 lg:px-8">
+      <div className="mx-auto max-w-(--breakpoint-xl) px-4 lg:px-8">
         <div className="flex flex-col">
           <Breadcrumbs breadcrumbs={breadcrumbs} />
 

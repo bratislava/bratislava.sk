@@ -43,7 +43,7 @@ export const SelectItem = ({ label, description, isDivider = false, ...rest }: S
         cn('flex cursor-pointer justify-between px-5 py-3 outline-none', {
           'bg-grey-100': isHovered,
           'ring ring-offset-2': isFocusVisible,
-          'after:h-0.5 after:bg-grey-200 after:[&:not(:last-child)]:block': isDivider,
+          'after:h-0.5 after:bg-grey-200 after:not-last:block': isDivider,
         })
       }
     >
@@ -102,7 +102,7 @@ const SelectField = <T extends object>({
       <FieldError>{errorMessage}</FieldError>
 
       <Popover
-        className="w-[--trigger-width] overflow-y-scroll rounded-md border-2 border-grey-800 bg-white py-2"
+        className="w-(--trigger-width) overflow-y-scroll rounded-md border-2 border-grey-800 bg-white py-2"
         shouldFlip={false}
       >
         <ListBox items={items}>{children}</ListBox>

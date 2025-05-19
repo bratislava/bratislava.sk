@@ -22,7 +22,7 @@ const SectionContainer = ({
     )}
     {...rest}
   >
-    <div className="mx-auto max-w-screen-xl px-4 lg:px-8">{children}</div>
+    <div className="mx-auto max-w-(--breakpoint-xl) px-4 lg:px-8">{children}</div>
   </div>
 )
 

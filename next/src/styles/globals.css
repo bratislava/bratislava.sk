@@ -1,9 +1,8 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
 
-@import './colors.css';
-@import '../../node_modules/@bratislava/component-library/dist/assets/style.css';
+@import './colors.css' layer(utilities);
+@import '../../node_modules/@bratislava/component-library/dist/assets/style.css'
+  layer(utilities);
 
 /* Docs: https://tailwindcss.com/docs/functions-and-directives */
 @layer base {

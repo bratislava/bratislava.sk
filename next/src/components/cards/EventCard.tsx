@@ -40,7 +40,7 @@ const EventCard = ({
   return (
     <CardBase variant="no-border" className={cn('rounded-lg text-white', className)}>
       <Image src={imageSrc} alt="" fill className="absolute object-cover" sizes={imageSizes} />
-      <CardContent className="relative inline-flex size-full flex-col items-start justify-end text-clip bg-gradient-to-b from-transparent to-[black] p-4 lg:p-5">
+      <CardContent className="relative inline-flex size-full flex-col items-start justify-end text-clip bg-linear-to-b from-transparent to-[black] p-4 lg:p-5">
         <div className="flex w-full flex-col items-start gap-4 self-stretch">
           <Typography type="h3" size="h5">
             <MLink href={linkHref} target="_blank" stretched variant="underlineOnHover">

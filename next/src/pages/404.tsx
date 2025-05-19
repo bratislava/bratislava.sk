@@ -34,7 +34,7 @@ const NotFoundPage = () => {
           <div data-cy="404-left-side" className="flex flex-col items-center lg:items-start">
             {/* text-5xl font-extrabold does not work */}
             {/* FIXME Typography. Convert to use Typography */}
-            <div className="pb-4 text-[48px] font-[800] lg:text-[64px]">404</div>
+            <div className="pb-4 text-[48px] font-extrabold lg:text-[64px]">404</div>
             <Typography type="p" size="p-large" className="max-w-xs pb-10 text-center lg:text-left">
               {t('NotFound.sorryNoResultsFound')}
             </Typography>

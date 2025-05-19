@@ -55,7 +55,7 @@ SearchResultCard.IconContainer = function ({
   return (
     <div
       className={cn(
-        'hidden h-[5rem] w-[5rem] shrink-0 items-center justify-center self-center rounded-lg bg-grey-100 lg:flex',
+        'hidden h-20 w-20 shrink-0 items-center justify-center self-center rounded-lg bg-grey-100 lg:flex',
         className,
       )}
     >
@@ -94,7 +94,7 @@ SearchResultCard.ImageFromPageColor = function ({
     <div
       style={colorStyle}
       className={cn(
-        'relative hidden h-[5rem] w-[5rem] shrink-0 items-center justify-center self-center overflow-hidden rounded-lg bg-category-100 lg:flex',
+        'relative hidden h-20 w-20 shrink-0 items-center justify-center self-center overflow-hidden rounded-lg bg-category-100 lg:flex',
         className,
       )}
     >
@@ -113,7 +113,7 @@ SearchResultCard.ImageFromUrl = function ({
   return (
     <div
       className={cn(
-        'relative hidden h-[5rem] w-[5rem] shrink-0 items-center justify-center self-center overflow-hidden rounded-lg bg-category-200 lg:flex',
+        'relative hidden h-20 w-20 shrink-0 items-center justify-center self-center overflow-hidden rounded-lg bg-category-200 lg:flex',
         className,
       )}
     >

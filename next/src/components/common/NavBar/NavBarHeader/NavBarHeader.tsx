@@ -28,7 +28,7 @@ const NavBarHeader = ({ className }: NavBarProps) => {
 
   return (
     <SectionContainer
-      className="relative z-[31] bg-white"
+      className="relative z-31 bg-white"
       style={getCategoryColorLocalStyle({ category: 'main' })}
     >
       <nav className="flex w-full items-center justify-between border-b border-grey-200">

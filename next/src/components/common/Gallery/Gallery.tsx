@@ -85,9 +85,9 @@ const Gallery = ({ images = [] }: GalleryProps) => {
                       className={cn(
                         'relative aspect-square cursor-pointer overflow-hidden rounded-lg',
                         {
-                          'md:aspect-[592/400]': imageCount === 1 || imageCount === 2,
-                          'md:aspect-[384/272]': imageCount === 3,
-                          'col-span-2 aspect-[288/140]':
+                          'md:aspect-592/400': imageCount === 1 || imageCount === 2,
+                          'md:aspect-384/272': imageCount === 3,
+                          'col-span-2 aspect-288/140':
                             isMobile && imageCount === 3 && index === 0,
                         },
                       )}

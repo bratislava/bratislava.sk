@@ -26,7 +26,7 @@ const NumericalList = ({
   return (
     <div>
       <div className="flex flex-col items-center justify-center py-12">
-        <div className="flex max-w-screen-md flex-col">
+        <div className="flex max-w-(--breakpoint-md) flex-col">
           {title ? (
             <div
               className={cn(
