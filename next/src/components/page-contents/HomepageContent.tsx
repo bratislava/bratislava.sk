@@ -15,19 +15,19 @@ const HomepageContent = () => {
     <>
       <WelcomeHomepageSection />
 
-      <Waves waveColor="rgb(var(--color-grey-50))" wavePosition="top" />
+      <Waves waveColor="var(--color-grey-50)" wavePosition="top" />
 
       <NewsAndInfoHomepageSection />
 
-      <Waves wavePosition="bottom" waveColor="rgb(var(--color-grey-50))" />
+      <Waves wavePosition="bottom" waveColor="var(--color-grey-50)" />
 
       {homepage?.attributes?.eventsSection ? (
         <TootootEventsSection section={homepage.attributes.eventsSection} />
       ) : null}
 
-      <Waves waveColor="rgb(var(--color-category-200))" wavePosition="top" />
+      <Waves waveColor="var(--color-category-200)" wavePosition="top" />
       <TopServicesHomepageSection />
-      <Waves waveColor="rgb(var(--color-category-200))" wavePosition="bottom" />
+      <Waves waveColor="var(--color-category-200)" wavePosition="bottom" />
 
       {homepage?.attributes?.inbaSection ? <InbaHomepageSection /> : null}
     </>
