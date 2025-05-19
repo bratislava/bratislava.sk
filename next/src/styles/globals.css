@@ -1,11 +1,11 @@
 @import 'tailwindcss';
-@import '../../node_modules/@bratislava/component-library/dist/assets/style.css' layer(utilities);
+/* @import '../../node_modules/@bratislava/component-library/dist/assets/style.css' layer(utilities); */
 
 @plugin 'tailwind-scrollbar-hide';
 @plugin 'tailwindcss-react-aria-components';
 @plugin 'tailwindcss-animate';
 
-/* @config "../../tailwind.config.js"; */
+@config "../../tailwind.config.js";
 
 /* Docs: https://tailwindcss.com/docs/functions-and-directives */
 
@@ -272,6 +272,13 @@
   --color-action-border-hover: var(--color-grey-600);
   --color-action-border-pressed: var(--color-grey-800);
 
+  /* Shadows */
+  --shadow-none: 'none';
+  --shadow-default: '0px 4px 12px rgba(0, 0, 0, 0.12)';
+  --shadow-sm: '0px 2px 8px rgba(0, 0, 0, 0.12)';
+  --shadow-md: '0px 8px 16px rgba(0, 0, 0, 0.12)';
+  --shadow-lg: '0px 16px 24px rgba(0, 0, 0, 0.12)';
+
   /* Font - weight, size, line height */
 
   --font-weight-light: 300;
@@ -280,12 +287,68 @@
   --font-weight-semibold: 600;
   --font-weight-bold: 700;
 
+  --text-button-large: 1rem; /* 16px */
+  --leading-button-large: 1.5rem; /* 24px */
+  --text-button-default: 0.875rem; /* 14px */
+  --leading-button-default: 1.5rem; /* 24px */
+
+  --text-p-large: 1.25rem; /* 20px */
+  --leading-p-large: 1.75rem; /* 28px */
+  --text-p-large-r: 1.25rem; /* 20px */
+  --leading-p-large-r: 1.75rem; /* 28px */
+
+  --text-p-default: 1rem; /* 16px */
+  --leading-p-default: 1.5rem; /* 24px */
+  --text-p-default-r: 1rem; /* 16px */
+  --leading-p-default-r: 1.5rem; /* 24px */
+
+  --text-component-default: 1rem; /* 16px */
+  --leading-component-default: 1.5rem; /* 24px */
+  --text-component-small: 1rem; /* 16px */
+  --leading-component-small: 1.5rem; /* 24px */
+
+  --text-h6: 1rem; /* 16px */
+  --leading-h6: 1.5rem; /* 24px */
+  --text-h6-r: 1rem; /* 16px */
+  --leading-h6-r: 1.5rem; /* 24px */
+
+  --text-h5: 1.25rem; /* 20px */
+  --leading-h5: 1.75rem; /* 28px */
+  --text-h5-r: 1rem; /* 16px */
+  --leading-h5-r: 1.5rem; /* 24px */
+
+  --text-h4: 1.5rem; /* 24px */
+  --leading-h4: 2rem; /* 32px */
+  --text-h4-r: 1.125rem; /* 18px */
+  --leading-h4-r: 1.625rem; /* 26px */
+
+  --text-h3: 1.75rem; /* 28px */
+  --leading-h3: 2.25rem; /* 36px */
+  --text-h3-r: 1.25rem; /* 20px */
+  --leading-h3-r: 1.75rem; /* 28px */
+
+  --text-h2: 2rem; /* 32px */
+  --leading-h2: 2.5rem; /* 40px */
+  --text-h2-r: 1.5rem; /* 24px */
+  --leading-h2-r: 2rem; /* 32px */
+
+  --text-h1: 2.5rem; /* 40px */
+  --leading-h1: 3rem; /* 48px */
+  --text-h1-r: 1.75rem; /* 28px */
+  --leading-h1-r: 2.25rem; /* 36px */
+
+  --text-h1-hero: 3.5rem; /* 56px */
+  --leading-h1-hero: 4rem; /* 64px */
+  --text-h1-hero-r: 2rem; /* 32px */
+  --leading-h1-hero-r: 2.5rem; /* 40px */
+
   /* ANIMATIONS */
 }
 
 @layer base {
   body {
-    @reference text-font antialiased;
+    @apply text-font antialiased;
+    font-family: 'Courier-new', sans-serif;
   }
 
   h1,
@@ -294,63 +357,20 @@
   h4,
   h5,
   h6 {
-    @reference font-semibold;
+    @apply font-semibold;
+  }
+
+  /* Set default border color: https://tailwindcss.com/docs/upgrade-guide#default-border-color */
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-grey-200);
   }
 }
 
 @layer components {
-  .negative-x-spacing {
-    @reference -mx-4 px-4;
-  }
-
-  .text-h1-lg {
-    @reference text-size-h1-hero-r lg:text-size-h1-hero;
-  }
-
-  .text-h1 {
-    @reference text-size-h1-r lg:text-size-h1;
-  }
-
-  .text-h2 {
-    @reference text-size-h2-r lg:text-size-h2;
-  }
-
-  .text-h3 {
-    @reference text-size-h3-r lg:text-size-h3;
-  }
-
-  .text-h4 {
-    @reference text-size-h4-r lg:text-size-h4;
-  }
-
-  .text-h5 {
-    @reference text-size-h5-r lg:text-size-h5;
-  }
-
-  .text-h6 {
-    @reference text-size-h6 lg:text-size-h6-r;
-  }
-
-  .text-large {
-    @reference text-size-p-large-r lg:text-size-p-large;
-  }
-
-  .text-default {
-    @reference text-size-p-default-r lg:text-size-p-default;
-  }
-
-  .text-component-default {
-    @reference text-size-component-default;
-  }
-
-  .text-component-small {
-    @reference text-size-component-small;
-  }
-
-  .text-button {
-    @reference text-size-button-default lg:text-size-button-large;
-  }
-
   .modal-close-mobile-right {
     right: 45%;
   }
@@ -365,15 +385,15 @@
   }
 
   .modal-content-rent-markdown ul {
-    @reference my-6 list-disc pl-12;
+    @apply my-6 list-disc pl-12;
   }
 
   .modal-content-rent-markdown ol {
-    @reference my-6 list-decimal pl-12;
+    @apply my-6 list-decimal pl-12;
   }
 
   .modal-content-rent-markdown p {
-    @reference mb-4;
+    @apply mb-4;
   }
 
   .modal-content-rent-markdown h1,
@@ -382,7 +402,7 @@
   .modal-content-rent-markdown h4,
   .modal-content-rent-markdown h5,
   .modal-content-rent-markdown h6 {
-    @reference my-6 font-bold;
+    @apply my-6 font-bold;
   }
 
   .modal-content-rent-markdown h1 {
@@ -410,7 +430,7 @@
   }
 
   .modal-content-rent-markdown a {
-    @reference font-bold underline;
+    @apply font-bold underline;
   }
 
   .text-title-center h1,
@@ -419,11 +439,11 @@
   .text-title-center h4,
   .text-title-center h5,
   .text-title-center h6 {
-    @reference mb-6 text-center;
+    @apply mb-6 text-center;
   }
 
   .inner-list .inner-list .rounded-full {
-    @reference bg-transparent;
+    @apply bg-transparent;
   }
 
   button[data-state='open'] > svg {
@@ -450,61 +470,184 @@
   }
 
   .base-input {
-    @reference box-border inline-block h-14 appearance-none rounded-10 border-3 px-6 py-0 font-medium text-font;
-    @reference border-white bg-white hover:border-category-600 focus:border-category-600 focus:outline-none;
+    /* TODO this line produces error when using @apply */
+    @apply box-border inline-block h-14 appearance-none rounded-[10] border-3 px-6 py-0 font-medium text-font;
+    @apply border-white bg-white hover:border-category-600 focus:border-category-600 focus:outline-none;
   }
 
   .base-input--with-error {
-    @reference border-error;
+    @apply border-error;
   }
 
   .base-input--disabled {
-    @reference bg-grey-100;
-  }
-
-  input:-webkit-autofill,
-  input:-webkit-autofill:hover,
-  input:-webkit-autofill:focus,
-  input:-webkit-autofill:active {
-    -webkit-box-shadow: 0 0 0 30px white inset !important;
-  }
-
-  /* Move safari key icon to the left for fields with type password */
-  /*noinspection CssInvalidPseudoSelector*/
-  input[type='password']::-webkit-credentials-auto-fill-button {
-    @reference mr-8;
-  }
-
-  /* Move safari 'Strong password' to the left for fields with type password */
-  /*noinspection CssInvalidPseudoSelector*/
-  input[type='password']::-webkit-strong-password-auto-fill-button {
-    @reference mr-8 pb-2;
-  }
-
-  /* Remove arrows from input type='number' */
-  input[type='number']::-webkit-inner-spin-button,
-  input[type='number']::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+    @apply bg-grey-100;
   }
 
   .form-group label.control-label {
     display: none;
   }
 
-  /* Remove native Safari arrows in accordions  */
-  details > summary {
-    list-style: none;
-  }
-  details > summary::-webkit-details-marker {
-    display: none;
+  /* styles for vertical timeline */
+  @media (max-width: 1170px) {
+    .vertical-timeline-element.vertical-timeline-element--with-image {
+      margin-top: 300px;
+    }
   }
 }
 
-/* styles for vertical timeline START */
-@media (max-width: 1170px) {
-  .vertical-timeline-element.vertical-timeline-element--with-image {
-    margin-top: 300px;
-  }
+/* UTILITIES - text */
+
+@utility text-size-button-large {
+  @apply text-button-large leading-button-large;
 }
-/* styles for vertical timeline END */
+
+@utility text-size-button-default {
+  @apply text-button-default leading-button-default;
+}
+
+@utility text-size-button {
+  @apply text-button-default leading-button-default lg:text-button-large lg:leading-button-large;
+}
+
+@utility text-size-p-large {
+  @apply text-p-large leading-p-large;
+}
+
+@utility text-size-p-large-r {
+  @apply text-p-large-r leading-p-large-r;
+}
+
+@utility text-size-p-default {
+  @apply text-p-default leading-p-default;
+}
+
+@utility text-size-p-default-r {
+  @apply text-p-default-r leading-p-default-r;
+}
+
+@utility text-size-component-default {
+  @apply text-component-default leading-component-default;
+}
+
+@utility text-size-component-small {
+  @apply text-component-small leading-component-small;
+}
+
+@utility text-size-h6 {
+  @apply text-h6 leading-h6;
+}
+
+@utility text-size-h6-r {
+  @apply text-h6-r leading-h6-r;
+}
+
+@utility text-size-h5 {
+  @apply text-h5 leading-h5;
+}
+
+@utility text-size-h5-r {
+  @apply text-h5-r leading-h5-r;
+}
+
+@utility text-size-h4 {
+  @apply text-h4 leading-h4;
+}
+
+@utility text-size-h4-r {
+  @apply text-h4-r leading-h4-r;
+}
+
+@utility text-size-h3 {
+  @apply text-h3 leading-h3;
+}
+
+@utility text-size-h3-r {
+  @apply text-h3-r leading-h3-r;
+}
+
+@utility text-size-h2 {
+  @apply text-h2 leading-h2;
+}
+
+@utility text-size-h2-r {
+  @apply text-h2-r leading-h2-r;
+}
+
+@utility text-size-h1 {
+  @apply text-h1 leading-h1;
+}
+
+@utility text-size-h1-r {
+  @apply text-h1-r leading-h1-r;
+}
+
+@utility text-size-h1-hero {
+  @apply text-h1-hero leading-h1-hero;
+}
+
+@utility text-size-h1-hero-r {
+  @apply text-h1-hero-r leading-h1-hero-r;
+}
+
+/* UTILITIES - other */
+
+@utility negative-x-spacing {
+  @apply -mx-4 px-4;
+}
+
+/* NATIVE STYLE OVERRIDES */
+
+/* Remove native Safari arrows in accordions  */
+details > summary {
+  list-style: none;
+}
+details > summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Remove arrows from input type='number' */
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  /* Chrome, Safari, Edge, Opera */
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type='number'] {
+  /* Firefox */
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+/* Move safari key icon to the left for fields with type password */
+/*noinspection CssInvalidPseudoSelector*/
+input[type='password']::-webkit-credentials-auto-fill-button {
+  @apply mr-8;
+}
+
+/* Move safari 'Strong password' to the left for fields with type password */
+/*noinspection CssInvalidPseudoSelector*/
+input[type='password']::-webkit-strong-password-auto-fill-button {
+  @apply mr-8 pb-2;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px white inset !important;
+}
+
+/**
+ * Remove X button and decorations in native search input
+ * https://github.com/tailwindlabs/tailwindcss/discussions/10190#discussioncomment-4994363
+ *
+ * Similar styles are used also in RAC example styling
+ * https://react-spectrum.adobe.com/react-aria/SearchField.html#example
+ */
+input[type='search']::-webkit-search-decoration,
+input[type='search']::-webkit-search-cancel-button,
+input[type='search']::-webkit-search-results-button,
+input[type='search']::-webkit-search-results-decoration {
+  display: none;
+}
