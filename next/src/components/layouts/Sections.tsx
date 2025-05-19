@@ -28,6 +28,7 @@ import RegulationsSection from '@/src/components/sections/RegulationsSection'
 import TestimonialsSection from '@/src/components/sections/TestimonialsSection'
 import TextWithImageSection from '@/src/components/sections/TextWithImageSection'
 import TimelineSection from '@/src/components/sections/TimelineSection'
+import TootootEventsSection from '@/src/components/sections/TootootEventsSection'
 import VideosSection from '@/src/components/sections/VideosSection'
 import WavesSection from '@/src/components/sections/WavesSection'
 import { SectionsFragment } from '@/src/services/graphql'
@@ -115,6 +116,9 @@ const SectionContent = ({ section }: { section: SectionsFragment }) => {
 
     case 'ComponentSectionsFaqCategories':
       return <FaqCategoriesSection section={section} />
+
+    case 'ComponentSectionsTootootEvents':
+      return <TootootEventsSection section={section} />
 
     default:
       return null

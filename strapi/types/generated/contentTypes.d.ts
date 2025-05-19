@@ -719,7 +719,7 @@ export interface ApiHomepageHomepage extends Schema.SingleType {
     createdAt: Attribute.DateTime
     createdBy: Attribute.Relation<'api::homepage.homepage', 'oneToOne', 'admin::user'> &
       Attribute.Private
-    eventsSection: Attribute.Component<'sections.homepage-events'> &
+    eventsSection: Attribute.Component<'sections.tootoot-events'> &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true
@@ -749,6 +749,12 @@ export interface ApiHomepageHomepage extends Schema.SingleType {
       Attribute.SetPluginOptions<{
         i18n: {
           localized: false
+        }
+      }>
+    inbaSection: Attribute.Component<'sections.homepage-inba'> &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true
         }
       }>
     inbaUrl: Attribute.String &
@@ -1182,6 +1188,7 @@ export interface ApiPagePage extends Schema.CollectionType {
         'sections.testimonials',
         'sections.text-with-image',
         'sections.timeline',
+        'sections.tootoot-events',
         'sections.videos',
         'sections.waves'
       ]
