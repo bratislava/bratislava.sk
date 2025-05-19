@@ -190,7 +190,7 @@
       },
       "eventsSection": {
         "edit": {
-          "label": "eventsSection",
+          "label": "Podujatia (Tootoot)",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -198,6 +198,20 @@
         },
         "list": {
           "label": "eventsSection",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "inbaSection": {
+        "edit": {
+          "label": "inba",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "inbaSection",
           "searchable": false,
           "sortable": false
         }
@@ -262,11 +276,6 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "createdAt",
-        "updatedAt"
-      ],
       "edit": [
         [
           {
@@ -339,7 +348,19 @@
             "name": "eventsSection",
             "size": 12
           }
+        ],
+        [
+          {
+            "name": "inbaSection",
+            "size": 12
+          }
         ]
+      ],
+      "list": [
+        "id",
+        "createdAt",
+        "updatedAt",
+        "eventsSection"
       ]
     }
   },

@@ -131,3 +131,22 @@ query PageRedirectByAlias($alias: String!, $locale: I18NLocaleCode!) {
     }
   }
 }
+
+query Dev_AllPages(
+  $sort: [String]
+  $limit: Int
+  $start: Int
+  $filters: PageFiltersInput
+  $locale: I18NLocaleCode
+) {
+  pages(
+    sort: $sort
+    pagination: { limit: $limit, start: $start }
+    filters: $filters
+    locale: $locale
+  ) {
+    data {
+      ...PageEntity
+    }
+  }
+}

@@ -10,6 +10,10 @@ import {
   getMsGraphStructureQueryKey,
   msGraphStructureFetcher,
 } from '@/src/services/ms-graph/fetchers/msGraphStructure.fetcher'
+import {
+  getTootootEvents,
+  getTootootEventsQueryKey,
+} from '@/src/services/tootoot/tootootEvents.fetcher'
 
 export const prefetchPageSections = async (page: PageEntityFragment, locale: string) => {
   const queryClient = new QueryClient()
@@ -50,6 +54,13 @@ export const prefetchPageSections = async (page: PageEntityFragment, locale: str
     await queryClient.prefetchQuery({
       queryKey: getMsGraphStructureQueryKey(),
       queryFn: () => msGraphStructureFetcher(),
+    })
+  }
+
+  if (sectionTypes.includes('ComponentSectionsTootootEvents')) {
+    await queryClient.prefetchQuery({
+      queryKey: getTootootEventsQueryKey(),
+      queryFn: () => getTootootEvents(),
     })
   }
 

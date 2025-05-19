@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_sections_tootoot_events",
+  "info": {
+    "displayName": "Tootoot events",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "text": {
+      "type": "text"
+    },
+    "showMoreLink": {
+      "type": "component",
+      "repeatable": false,
+      "component": "blocks.common-link"
+    }
+  }
+}
