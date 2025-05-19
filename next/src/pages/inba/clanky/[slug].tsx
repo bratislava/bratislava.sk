@@ -8,6 +8,7 @@ import InbaArticlePageContent from '@/src/components/page-contents/InbaArticlePa
 import { GeneralContextProvider } from '@/src/components/providers/GeneralContextProvider'
 import { GeneralQuery, InbaArticleEntityFragment } from '@/src/services/graphql'
 import { client } from '@/src/services/graphql/gql'
+import { NOT_FOUND } from '@/src/utils/consts'
 import { useTitle } from '@/src/utils/useTitle'
 
 type PageProps = {
@@ -48,7 +49,9 @@ export const getStaticProps: GetStaticProps<PageProps, StaticParams> = async ({
   // eslint-disable-next-line no-console
   console.log(`Revalidating inba article ${locale === 'en' ? '/en' : ''}/inba/clanky/${slug}`)
 
-  if (!slug || !locale) return { notFound: true }
+  if (!slug || !locale) {
+    return NOT_FOUND
+  }
 
   const [{ inbaArticles }, general, translations] = await Promise.all([
     client.InbaArticleBySlug({
@@ -60,7 +63,9 @@ export const getStaticProps: GetStaticProps<PageProps, StaticParams> = async ({
   ])
 
   const inbaArticle = inbaArticles?.data[0]
-  if (!inbaArticle) return { notFound: true }
+  if (!inbaArticle) {
+    return NOT_FOUND
+  }
 
   return {
     props: {

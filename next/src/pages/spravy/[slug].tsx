@@ -9,6 +9,7 @@ import { GeneralContextProvider } from '@/src/components/providers/GeneralContex
 import { ArticleEntityFragment, GeneralQuery } from '@/src/services/graphql'
 import { client } from '@/src/services/graphql/gql'
 import { GlobalCategoryColorProvider } from '@/src/utils/colors'
+import { NOT_FOUND } from '@/src/utils/consts'
 import { useTitle } from '@/src/utils/useTitle'
 
 type PageProps = {
@@ -49,7 +50,9 @@ export const getStaticProps: GetStaticProps<PageProps, StaticParams> = async ({
   // eslint-disable-next-line no-console
   console.log(`Revalidating article ${locale === 'en' ? '/en' : ''}/spravy/${slug}`)
 
-  if (!slug || !locale) return { notFound: true }
+  if (!slug || !locale) {
+    return NOT_FOUND
+  }
 
   const [{ articles }, general, translations] = await Promise.all([
     client.ArticleBySlug({ slug, locale }),
@@ -59,7 +62,7 @@ export const getStaticProps: GetStaticProps<PageProps, StaticParams> = async ({
 
   const article = articles?.data[0]
   if (!article) {
-    return { notFound: true }
+    return NOT_FOUND
   }
 
   return {

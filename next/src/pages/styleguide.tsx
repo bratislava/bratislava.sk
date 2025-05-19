@@ -15,6 +15,7 @@ import SpinnerShowCase from '@/src/components/styleguide/showcases/SpinnerShowCa
 import TagShowCase from '@/src/components/styleguide/showcases/TagShowCase'
 import TokensShowcase from '@/src/components/styleguide/showcases/TokensShowcase'
 import StyleGuideWrapper from '@/src/components/styleguide/StyleGuideWrapper'
+import { NOT_FOUND } from '@/src/utils/consts'
 import { isProductionDeployment } from '@/src/utils/utils'
 
 const Styleguide = () => {
@@ -44,7 +45,7 @@ const Styleguide = () => {
 
 export const getServerSideProps: GetServerSideProps = async ({ locale }) => {
   if (!locale || isProductionDeployment()) {
-    return { notFound: true }
+    return NOT_FOUND
   }
 
   const [translations] = await Promise.all([serverSideTranslations(locale)])
