@@ -11,6 +11,7 @@ import { LocalizationsProvider } from '@/src/components/providers/LocalizationsP
 import GlobalSearchSectionContent from '@/src/components/sections/SearchSection/GlobalSearchSectionContent'
 import { GeneralQuery } from '@/src/services/graphql'
 import { client } from '@/src/services/graphql/gql'
+import { NOT_FOUND } from '@/src/utils/consts'
 import { useTitle } from '@/src/utils/useTitle'
 import { useTranslation } from '@/src/utils/useTranslation'
 
@@ -22,7 +23,9 @@ export const getStaticProps: GetStaticProps<PageProps> = async ({ locale }) => {
   // eslint-disable-next-line no-console
   console.log(`Revalidating search ${locale}.`)
 
-  if (!locale) return { notFound: true }
+  if (!locale) {
+    return NOT_FOUND
+  }
 
   const [general, translations] = await Promise.all([
     client.General({ locale }),

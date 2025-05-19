@@ -11,6 +11,7 @@ import type { HomepageContext } from '@/src/services/fetchers/homepageContextFet
 import { homepageContextFetcher } from '@/src/services/fetchers/homepageContextFetcher'
 import { GeneralQuery } from '@/src/services/graphql'
 import { client } from '@/src/services/graphql/gql'
+import { NOT_FOUND } from '@/src/utils/consts'
 import { useTitle } from '@/src/utils/useTitle'
 
 type PageProps = {
@@ -22,7 +23,9 @@ export const getStaticProps: GetStaticProps<PageProps> = async ({ locale }) => {
   // eslint-disable-next-line no-console
   console.log(`Revalidating homepage ${locale}.`)
 
-  if (!locale) return { notFound: true }
+  if (!locale) {
+    return NOT_FOUND
+  }
 
   const [homepageContext, general, translations] = await Promise.all([
     homepageContextFetcher(locale),
