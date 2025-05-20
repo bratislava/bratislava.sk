@@ -91,8 +91,7 @@ export async function listPages() {
         ) ?? []
       if (
         sections.some(
-          (section) =>
-            section?.__typename === 'ComponentSectionsTextWithImage' && !section.imagePosition,
+          (section) => section?.__typename === 'ComponentSectionsTextWithImage' && !section.content,
         )
       ) {
         return true

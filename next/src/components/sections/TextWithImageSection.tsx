@@ -15,7 +15,7 @@ type TextWithImageSectionProps = {
 }
 
 const TextWithImageSection = ({ section }: TextWithImageSectionProps) => {
-  const { content, imagePosition, imageSrc: image, imageAspectRatio } = section
+  const { content, imagePosition, image, imageAspectRatio } = section
 
   const ImageContent = (
     <div
@@ -26,7 +26,7 @@ const TextWithImageSection = ({ section }: TextWithImageSectionProps) => {
           : 'aspect-square',
       )}
     >
-      {image?.data?.attributes ? (
+      {image.data?.attributes ? (
         <StrapiImage
           image={image.data.attributes}
           fill

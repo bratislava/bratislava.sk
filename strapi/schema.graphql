@@ -1516,7 +1516,7 @@ type ComponentSectionsTextWithImage {
   id: ID!
   imageAspectRatio: ENUM_COMPONENTSECTIONSTEXTWITHIMAGE_IMAGEASPECTRATIO
   imagePosition: ENUM_COMPONENTSECTIONSTEXTWITHIMAGE_IMAGEPOSITION!
-  imageSrc: UploadFileEntityResponse
+  imageSrc: UploadFileEntityResponse!
 }
 
 input ComponentSectionsTextWithImageFiltersInput {

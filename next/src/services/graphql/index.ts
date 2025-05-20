@@ -1810,7 +1810,7 @@ export type ComponentSectionsTextWithImage = {
   id: Scalars['ID']['output']
   imageAspectRatio?: Maybe<Enum_Componentsectionstextwithimage_Imageaspectratio>
   imagePosition: Enum_Componentsectionstextwithimage_Imageposition
-  imageSrc?: Maybe<UploadFileEntityResponse>
+  imageSrc: UploadFileEntityResponse
 }
 
 export type ComponentSectionsTextWithImageFiltersInput = {
@@ -8796,7 +8796,7 @@ export type PageEntityFragment = {
           content?: string | null
           imagePosition: Enum_Componentsectionstextwithimage_Imageposition
           imageAspectRatio?: Enum_Componentsectionstextwithimage_Imageaspectratio | null
-          imageSrc?: {
+          image: {
             __typename?: 'UploadFileEntityResponse'
             data?: {
               __typename?: 'UploadFileEntity'
@@ -8811,7 +8811,7 @@ export type PageEntityFragment = {
                 name: string
               } | null
             } | null
-          } | null
+          }
         }
       | {
           __typename: 'ComponentSectionsTextWithImageOverlapped'
@@ -9716,7 +9716,7 @@ export type PageBySlugQuery = {
               content?: string | null
               imagePosition: Enum_Componentsectionstextwithimage_Imageposition
               imageAspectRatio?: Enum_Componentsectionstextwithimage_Imageaspectratio | null
-              imageSrc?: {
+              image: {
                 __typename?: 'UploadFileEntityResponse'
                 data?: {
                   __typename?: 'UploadFileEntity'
@@ -9731,7 +9731,7 @@ export type PageBySlugQuery = {
                     name: string
                   } | null
                 } | null
-              } | null
+              }
             }
           | {
               __typename: 'ComponentSectionsTextWithImageOverlapped'
@@ -10668,7 +10668,7 @@ export type Dev_AllPagesQuery = {
               content?: string | null
               imagePosition: Enum_Componentsectionstextwithimage_Imageposition
               imageAspectRatio?: Enum_Componentsectionstextwithimage_Imageaspectratio | null
-              imageSrc?: {
+              image: {
                 __typename?: 'UploadFileEntityResponse'
                 data?: {
                   __typename?: 'UploadFileEntity'
@@ -10683,7 +10683,7 @@ export type Dev_AllPagesQuery = {
                     name: string
                   } | null
                 } | null
-              } | null
+              }
             }
           | {
               __typename: 'ComponentSectionsTextWithImageOverlapped'
@@ -11931,7 +11931,7 @@ export type TextWithImageSectionFragment = {
   content?: string | null
   imagePosition: Enum_Componentsectionstextwithimage_Imageposition
   imageAspectRatio?: Enum_Componentsectionstextwithimage_Imageaspectratio | null
-  imageSrc?: {
+  image: {
     __typename?: 'UploadFileEntityResponse'
     data?: {
       __typename?: 'UploadFileEntity'
@@ -11946,7 +11946,7 @@ export type TextWithImageSectionFragment = {
         name: string
       } | null
     } | null
-  } | null
+  }
 }
 
 export type TextWithImageOverlappedSectionFragment = {
@@ -13365,7 +13365,7 @@ type Sections_ComponentSectionsTextWithImage_Fragment = {
   content?: string | null
   imagePosition: Enum_Componentsectionstextwithimage_Imageposition
   imageAspectRatio?: Enum_Componentsectionstextwithimage_Imageaspectratio | null
-  imageSrc?: {
+  image: {
     __typename?: 'UploadFileEntityResponse'
     data?: {
       __typename?: 'UploadFileEntity'
@@ -13380,7 +13380,7 @@ type Sections_ComponentSectionsTextWithImage_Fragment = {
         name: string
       } | null
     } | null
-  } | null
+  }
 }
 
 type Sections_ComponentSectionsTextWithImageOverlapped_Fragment = {
@@ -14220,7 +14220,7 @@ export const TextWithImageSectionFragmentDoc = gql`
   fragment TextWithImageSection on ComponentSectionsTextWithImage {
     content
     imagePosition
-    imageSrc {
+    image: imageSrc {
       data {
         ...UploadImageEntity
       }

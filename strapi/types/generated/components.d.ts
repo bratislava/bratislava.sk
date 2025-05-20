@@ -857,7 +857,7 @@ export interface SectionsTextWithImage extends Schema.Component {
     imagePosition: Attribute.Enumeration<['left', 'right']> &
       Attribute.Required &
       Attribute.DefaultTo<'right'>
-    imageSrc: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>
+    imageSrc: Attribute.Media<'images'> & Attribute.Required
   }
 }
 
