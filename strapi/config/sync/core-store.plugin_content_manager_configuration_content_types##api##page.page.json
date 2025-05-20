@@ -122,7 +122,7 @@
       "pageColor": {
         "edit": {
           "label": "Farba",
-          "description": "",
+          "description": "Farba sa musí zhodovať s Kategóriou.",
           "placeholder": "",
           "visible": true,
           "editable": true
@@ -149,7 +149,7 @@
       },
       "headerLinks": {
         "edit": {
-          "label": "CTA buttony v hlavičke",
+          "label": "CTA buttony v hlavičke (najviac 2)",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -298,11 +298,7 @@
         [
           {
             "name": "title",
-            "size": 6
-          },
-          {
-            "name": "pageBackgroundImage",
-            "size": 6
+            "size": 12
           }
         ],
         [
@@ -313,11 +309,17 @@
         ],
         [
           {
-            "name": "pageColor",
+            "name": "pageBackgroundImage",
             "size": 6
           },
           {
             "name": "pageCategory",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "pageColor",
             "size": 6
           }
         ],

@@ -751,12 +751,6 @@ export interface ApiHomepageHomepage extends Schema.SingleType {
           localized: false
         }
       }>
-    inbaSection: Attribute.Component<'sections.homepage-inba'> &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true
-        }
-      }>
     inbaUrl: Attribute.String &
       Attribute.SetPluginOptions<{
         i18n: {
@@ -1210,7 +1204,8 @@ export interface ApiPagePage extends Schema.CollectionType {
           localized: true
         }
       }>
-    title: Attribute.Text &
+    title: Attribute.String &
+      Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true

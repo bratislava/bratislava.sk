@@ -29,7 +29,7 @@ const HomepageContent = () => {
       <TopServicesHomepageSection />
       <Waves waveColor="var(--color-category-200)" wavePosition="bottom" />
 
-      {homepage?.attributes?.inbaSection ? <InbaHomepageSection /> : null}
+      <InbaHomepageSection />
     </>
   )
 }
