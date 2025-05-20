@@ -4,7 +4,7 @@
 @plugin 'tailwindcss-react-aria-components';
 @plugin 'tailwindcss-animate';
 
-@config "../../tailwind.config.js";
+@source "../../node_modules/@bratislava/component-library/dist";
 
 /* Docs: https://tailwindcss.com/docs/functions-and-directives */
 
@@ -348,7 +348,7 @@
 
 @layer base {
   body {
-    @apply text-font;
+    @apply text-font antialiased;
     font-family: 'Inter', sans-serif;
   }
 

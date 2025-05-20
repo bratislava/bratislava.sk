@@ -71,12 +71,14 @@ export const FooterLanguageSwitcher = () => {
       {otherLanguage && (
         <>
           <MLink href={otherLanguage.path} variant="underlined" locale={otherLanguage.locale}>
-            <Typography variant="p-default">{otherLanguage.longName}</Typography>
+            <Typography variant="p-small">{otherLanguage.longName}</Typography>
           </MLink>
           <span>/</span>
         </>
       )}
-      <Typography type="span">{currentLanguage.longName}</Typography>
+      <Typography variant="p-small" className="font-semibold">
+        {currentLanguage.longName}
+      </Typography>
     </>
   )
 }

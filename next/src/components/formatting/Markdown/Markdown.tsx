@@ -91,19 +91,20 @@ const Markdown = ({ content, variant = 'default', className }: MarkdownProps) =>
               {children}
             </Typography>
           ),
-          p: ({ children, node, ...props }) => (
-            <Typography
-              variant="p-default"
-              className={cn('whitespace-pre-wrap', {
-                'text-size-p-large': variant === 'large',
-                'text-size-p-default': variant === 'default' || variant === 'accordion',
-                'text-size-p-small': variant === 'small',
-              })}
-              {...props}
-            >
-              {children}
-            </Typography>
-          ),
+          p: ({ children, node, ...props }) => {
+            const variantMap = {
+              default: 'p-default',
+              small: 'p-small',
+              large: 'p-large',
+              accordion: 'p-default',
+            } as const
+
+            return (
+              <Typography variant={variantMap[variant]} className="whitespace-pre-wrap" {...props}>
+                {children}
+              </Typography>
+            )
+          },
           strong: ({ node, ...props }) => <strong className="font-semibold" {...props} />,
           a: ({ node, href, title, children, ...props }) => {
             const isExternal = href?.startsWith('http')
