@@ -3,7 +3,11 @@ import React from 'react'
 import ImagePlaceholder from '@/src/components/common/Image/ImagePlaceholder'
 import StrapiImage from '@/src/components/common/Image/StrapiImage'
 import Markdown from '@/src/components/formatting/Markdown/Markdown'
-import { TextWithImageSectionFragment } from '@/src/services/graphql'
+import {
+  Enum_Componentsectionstextwithimage_Imageaspectratio,
+  TextWithImageSectionFragment,
+} from '@/src/services/graphql'
+import cn from '@/src/utils/cn'
 import { generateImageSizes } from '@/src/utils/generateImageSizes'
 
 type TextWithImageSectionProps = {
@@ -11,10 +15,17 @@ type TextWithImageSectionProps = {
 }
 
 const TextWithImageSection = ({ section }: TextWithImageSectionProps) => {
-  const { content, imagePosition, imageSrc: image } = section
+  const { content, imagePosition, imageSrc: image, imageAspectRatio } = section
 
   const ImageContent = (
-    <div className="bg-background-passive-primary relative aspect-square size-full shrink-0 overflow-hidden rounded-3xl lg:size-[540px]">
+    <div
+      className={cn(
+        'bg-background-passive-primary relative size-full shrink-0 overflow-hidden rounded-3xl lg:w-[540px]',
+        imageAspectRatio === Enum_Componentsectionstextwithimage_Imageaspectratio.Ratio_4_3
+          ? 'aspect-[4/3]'
+          : 'aspect-square',
+      )}
+    >
       {image?.data?.attributes ? (
         <StrapiImage
           image={image.data.attributes}

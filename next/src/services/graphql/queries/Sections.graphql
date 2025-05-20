@@ -83,14 +83,10 @@ fragment TextWithImageSection on ComponentSectionsTextWithImage {
   imagePosition
   imageSrc {
     data {
-      attributes {
-        url
-        alternativeText
-        width
-        height
-      }
+      ...UploadImageEntity
     }
   }
+  imageAspectRatio
 }
 
 fragment TextWithImageOverlappedSection on ComponentSectionsTextWithImageOverlapped {

@@ -1808,6 +1808,7 @@ export type ComponentSectionsTextWithImage = {
   __typename?: 'ComponentSectionsTextWithImage'
   content?: Maybe<Scalars['String']['output']>
   id: Scalars['ID']['output']
+  imageAspectRatio?: Maybe<Enum_Componentsectionstextwithimage_Imageaspectratio>
   imagePosition: Enum_Componentsectionstextwithimage_Imageposition
   imageSrc?: Maybe<UploadFileEntityResponse>
 }
@@ -1815,6 +1816,7 @@ export type ComponentSectionsTextWithImage = {
 export type ComponentSectionsTextWithImageFiltersInput = {
   and?: InputMaybe<Array<InputMaybe<ComponentSectionsTextWithImageFiltersInput>>>
   content?: InputMaybe<StringFilterInput>
+  imageAspectRatio?: InputMaybe<StringFilterInput>
   imagePosition?: InputMaybe<StringFilterInput>
   not?: InputMaybe<ComponentSectionsTextWithImageFiltersInput>
   or?: InputMaybe<Array<InputMaybe<ComponentSectionsTextWithImageFiltersInput>>>
@@ -1823,6 +1825,7 @@ export type ComponentSectionsTextWithImageFiltersInput = {
 export type ComponentSectionsTextWithImageInput = {
   content?: InputMaybe<Scalars['String']['input']>
   id?: InputMaybe<Scalars['ID']['input']>
+  imageAspectRatio?: InputMaybe<Enum_Componentsectionstextwithimage_Imageaspectratio>
   imagePosition?: InputMaybe<Enum_Componentsectionstextwithimage_Imageposition>
   imageSrc?: InputMaybe<Scalars['ID']['input']>
 }
@@ -2212,6 +2215,11 @@ export enum Enum_Componentsectionstextwithimageoverlapped_Imageposition {
   LeftShifted = 'left_shifted',
   Right = 'right',
   RightShifted = 'right_shifted',
+}
+
+export enum Enum_Componentsectionstextwithimage_Imageaspectratio {
+  Ratio_1_1 = 'ratio_1_1',
+  Ratio_4_3 = 'ratio_4_3',
 }
 
 export enum Enum_Componentsectionstextwithimage_Imageposition {
@@ -8787,16 +8795,20 @@ export type PageEntityFragment = {
           __typename: 'ComponentSectionsTextWithImage'
           content?: string | null
           imagePosition: Enum_Componentsectionstextwithimage_Imageposition
+          imageAspectRatio?: Enum_Componentsectionstextwithimage_Imageaspectratio | null
           imageSrc?: {
             __typename?: 'UploadFileEntityResponse'
             data?: {
               __typename?: 'UploadFileEntity'
+              id?: string | null
               attributes?: {
                 __typename?: 'UploadFile'
                 url: string
-                alternativeText?: string | null
                 width?: number | null
                 height?: number | null
+                caption?: string | null
+                alternativeText?: string | null
+                name: string
               } | null
             } | null
           } | null
@@ -9703,16 +9715,20 @@ export type PageBySlugQuery = {
               __typename: 'ComponentSectionsTextWithImage'
               content?: string | null
               imagePosition: Enum_Componentsectionstextwithimage_Imageposition
+              imageAspectRatio?: Enum_Componentsectionstextwithimage_Imageaspectratio | null
               imageSrc?: {
                 __typename?: 'UploadFileEntityResponse'
                 data?: {
                   __typename?: 'UploadFileEntity'
+                  id?: string | null
                   attributes?: {
                     __typename?: 'UploadFile'
                     url: string
-                    alternativeText?: string | null
                     width?: number | null
                     height?: number | null
+                    caption?: string | null
+                    alternativeText?: string | null
+                    name: string
                   } | null
                 } | null
               } | null
@@ -10651,16 +10667,20 @@ export type Dev_AllPagesQuery = {
               __typename: 'ComponentSectionsTextWithImage'
               content?: string | null
               imagePosition: Enum_Componentsectionstextwithimage_Imageposition
+              imageAspectRatio?: Enum_Componentsectionstextwithimage_Imageaspectratio | null
               imageSrc?: {
                 __typename?: 'UploadFileEntityResponse'
                 data?: {
                   __typename?: 'UploadFileEntity'
+                  id?: string | null
                   attributes?: {
                     __typename?: 'UploadFile'
                     url: string
-                    alternativeText?: string | null
                     width?: number | null
                     height?: number | null
+                    caption?: string | null
+                    alternativeText?: string | null
+                    name: string
                   } | null
                 } | null
               } | null
@@ -11910,16 +11930,20 @@ export type TextWithImageSectionFragment = {
   __typename?: 'ComponentSectionsTextWithImage'
   content?: string | null
   imagePosition: Enum_Componentsectionstextwithimage_Imageposition
+  imageAspectRatio?: Enum_Componentsectionstextwithimage_Imageaspectratio | null
   imageSrc?: {
     __typename?: 'UploadFileEntityResponse'
     data?: {
       __typename?: 'UploadFileEntity'
+      id?: string | null
       attributes?: {
         __typename?: 'UploadFile'
         url: string
-        alternativeText?: string | null
         width?: number | null
         height?: number | null
+        caption?: string | null
+        alternativeText?: string | null
+        name: string
       } | null
     } | null
   } | null
@@ -13340,16 +13364,20 @@ type Sections_ComponentSectionsTextWithImage_Fragment = {
   __typename: 'ComponentSectionsTextWithImage'
   content?: string | null
   imagePosition: Enum_Componentsectionstextwithimage_Imageposition
+  imageAspectRatio?: Enum_Componentsectionstextwithimage_Imageaspectratio | null
   imageSrc?: {
     __typename?: 'UploadFileEntityResponse'
     data?: {
       __typename?: 'UploadFileEntity'
+      id?: string | null
       attributes?: {
         __typename?: 'UploadFile'
         url: string
-        alternativeText?: string | null
         width?: number | null
         height?: number | null
+        caption?: string | null
+        alternativeText?: string | null
+        name: string
       } | null
     } | null
   } | null
@@ -14194,15 +14222,12 @@ export const TextWithImageSectionFragmentDoc = gql`
     imagePosition
     imageSrc {
       data {
-        attributes {
-          url
-          alternativeText
-          width
-          height
-        }
+        ...UploadImageEntity
       }
     }
+    imageAspectRatio
   }
+  ${UploadImageEntityFragmentDoc}
 `
 export const TextWithImageOverlappedSectionFragmentDoc = gql`
   fragment TextWithImageOverlappedSection on ComponentSectionsTextWithImageOverlapped {

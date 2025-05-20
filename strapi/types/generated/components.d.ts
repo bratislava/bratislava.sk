@@ -852,6 +852,8 @@ export interface SectionsTextWithImage extends Schema.Component {
   }
   attributes: {
     content: Attribute.RichText
+    imageAspectRatio: Attribute.Enumeration<['ratio 1:1', 'ratio 4:3']> &
+      Attribute.DefaultTo<'ratio 1:1'>
     imagePosition: Attribute.Enumeration<['left', 'right']> &
       Attribute.Required &
       Attribute.DefaultTo<'right'>
