@@ -118,7 +118,7 @@ const ArticlesFilter = ({ pageCategories, tags, subtext, onTagChange }: Props) =
         tags?.length ? (
           <div className="flex flex-col pt-8 lg:items-center">
             {Array.from(selectedPageCategory).length > 0 ? (
-              <Label className="text-h5 pb-3 font-semibold">
+              <Label className="pb-3 text-h5 font-semibold">
                 {t('ArticlesFilter.subcategories')}
               </Label>
             ) : null}

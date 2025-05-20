@@ -17,9 +17,9 @@ const Radio = ({ className, id, title, ...rest }: RadioProps) => {
         'base-radio',
         className,
         cn({
-          'hover:border-category-600 hover:border-opacity-100 focus:border-category-600 focus:border-opacity-100 focus:outline-none':
+          'hover:border-opacity-100 focus:border-opacity-100 hover:border-category-600 focus:border-category-600 focus:outline-none':
             !rest.checked,
-          'border-category-600 border-opacity-100 outline-none': rest.checked,
+          'border-opacity-100 border-category-600 outline-none': rest.checked,
         }),
       )}
     >

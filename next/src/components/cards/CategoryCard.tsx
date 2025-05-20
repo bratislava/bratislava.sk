@@ -15,7 +15,7 @@ const CategoryCard = ({ title, linkProps, ...rest }: Props) => {
     <CardBase className="h-[240px]" {...rest}>
       <CardContent className="h-full justify-between p-6">
         {/* FIXME Typography. Convert to use Typography. Issue: Probably safe to convert but cant find page where is this used for testing */}
-        <h3 className="text-h4 line-clamp-4 group-hover:underline">{title}</h3>
+        <h3 className="line-clamp-4 text-h4 group-hover:underline">{title}</h3>
         <Button variant="link" stretched {...linkProps} />
       </CardContent>
     </CardBase>

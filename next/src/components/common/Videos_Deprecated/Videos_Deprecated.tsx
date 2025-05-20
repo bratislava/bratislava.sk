@@ -42,7 +42,7 @@ const Video = ({
   return (
     <div className="mb-8 w-full lg:mb-0 xl:w-88">
       <iframe
-        className={cn('rounded-5 w-full', {
+        className={cn('w-full rounded-[5]', {
           'animate-pulse bg-grey-300': !isLoaded,
         })}
         title={title ?? undefined}

@@ -92,7 +92,6 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
     const isIconButton = Boolean(icon)
 
     /* TODO
-     *   - examine why `text-button` interferes with `text-[color]` and therefore is sometimes ignored
      *   - border should render inside button, not outside
      *   - focus text color for 'culture' and 'social' category should be -800
      */

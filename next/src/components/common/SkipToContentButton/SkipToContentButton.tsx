@@ -18,7 +18,7 @@ const SkipToContentButton = () => {
     <Button
       onPress={handleSkip}
       variant="solid"
-      className="fixed left-2 top-14 z-50 -translate-x-100 transition-transform focus:translate-x-0 md:top-16"
+      className="fixed top-14 left-2 z-50 -translate-x-100 transition-transform focus:translate-x-0 md:top-16"
     >
       {t('SkipToContentButton.skipNavigation')}
     </Button>

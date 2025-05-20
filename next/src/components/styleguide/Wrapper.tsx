@@ -11,7 +11,7 @@ type WrapperProps = {
 
 const Wrapper = ({ title, children, direction = 'row', noBorder }: WrapperProps) => {
   const wrapperClassNames = cn(
-    'border-t mb-10 flex flex-col border border-b-0 border-l-0 border-r-0 border-solid border-grey-800 pt-10',
+    'mb-10 flex flex-col border border-t border-r-0 border-b-0 border-l-0 border-solid border-grey-800 pt-10',
     {
       'border-t-0': noBorder,
     },
@@ -25,7 +25,7 @@ const Wrapper = ({ title, children, direction = 'row', noBorder }: WrapperProps)
   return (
     <div className={wrapperClassNames}>
       {/* FIXME Typography. Convert to use Typography. Issue: Probably safe to convert but cant find page where is this used for testing */}
-      {title && <h2 className="text-h2 pb-2">{title}</h2>}
+      {title && <h2 className="pb-2 text-h2">{title}</h2>}
       <div className={childrenClassNames}>{children}</div>
     </div>
   )

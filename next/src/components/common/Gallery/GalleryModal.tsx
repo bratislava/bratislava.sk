@@ -64,7 +64,7 @@ const GalleryModal = (props: ModalProps) => {
             <div
               {...underlayProps}
               className={cn(
-                'fixed inset-0 z-50 overflow-y-auto overflow-x-hidden bg-grey-800/60',
+                'fixed inset-0 z-50 overflow-x-hidden overflow-y-auto bg-grey-800/60',
                 underlayClassName,
               )}
             >
@@ -79,7 +79,7 @@ const GalleryModal = (props: ModalProps) => {
                     {showCloseButton && (
                       <Button
                         variant="solid"
-                        className="pointer-events-auto fixed right-6 top-6 z-30 rounded-full"
+                        className="pointer-events-auto fixed top-6 right-6 z-30 rounded-full"
                         aria-label={t('Gallery.aria.closeGallery')}
                         onPress={onClose}
                         icon={<CrossIcon />}

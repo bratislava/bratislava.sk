@@ -43,7 +43,7 @@ const MobileNavMenu = () => {
   return (
     <div
       className={cn(
-        'fixed left-0 top-14 z-28 flex w-screen flex-col gap-4 overflow-y-scroll bg-white px-4 py-6 lg:hidden',
+        'fixed top-14 left-0 z-28 flex w-screen flex-col gap-4 overflow-y-scroll bg-white px-4 py-6 lg:hidden',
         {
           'animate-fadeIn': isMobileMenuOpen,
           'animate-fadeOut': !isMobileMenuOpen,
@@ -98,7 +98,7 @@ const MobileNavMenu = () => {
 
         {/* Viewport represents popup div with links that appears under menu button */}
         <NavigationMenu.Viewport
-          className="fixed left-0 top-14 z-29 w-screen overflow-y-scroll data-[state=closed]:animate-exitToRight data-[state=open]:animate-enterFromRight"
+          className="data-[state=closed]:animate-exitToRight data-[state=open]:animate-enterFromRight fixed top-14 left-0 z-29 w-screen overflow-y-scroll"
           style={{ height: `calc(${height}px - 14*4px)` }}
         />
       </NavigationMenu.Root>

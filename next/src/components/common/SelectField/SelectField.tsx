@@ -74,7 +74,7 @@ const SelectField = <T extends object>({
   const disabled = props.isDisabled
 
   const style = cn(
-    'flex w-full justify-between gap-3 rounded-lg border-2 bg-white px-3 py-2 outline-none ring-offset-2 focus:border-grey-800 focus-visible:ring lg:px-4 lg:py-3',
+    'flex w-full justify-between gap-3 rounded-lg border-2 bg-white px-3 py-2 ring-offset-2 outline-none focus:border-grey-800 focus-visible:ring lg:px-4 lg:py-3',
     {
       'border-grey-200 hover:border-grey-400': !disabled,
       'border-negative-700 hover:border-negative-700': errorMessage && !disabled,

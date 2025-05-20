@@ -10,7 +10,7 @@ const TabPanelDisclosure = () => {
   return (
     <TabPanel id="Disclosure">
       {/* FIXME Typography: Convert to use Typography. Issue: Different size and weight than typography have */}
-      <div className="text-h4 mt-14 flex flex-col gap-4 px-8 text-center">
+      <div className="mt-14 flex flex-col gap-4 px-8 text-center text-h4">
         <div>{t('HomepageTabs.allInformationOnSite')}</div>
         <MLink
           variant="underlined"

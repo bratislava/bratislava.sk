@@ -46,7 +46,7 @@ const StyleGuideWrapper = ({ children }: StyleGuideWrapperProps) => {
         type="button"
         className={cn('m-2 h-14 w-40 rounded-lg border border-category-700 p-2 transition', {
           'bg-category-700 text-white': active,
-          'text-black bg-category-200': !active,
+          'bg-category-200 text-black': !active,
         })}
         style={colorStyle}
         onClick={() => setActiveBrandCategory(brand.category)}
@@ -61,9 +61,9 @@ const StyleGuideWrapper = ({ children }: StyleGuideWrapperProps) => {
       <GlobalCategoryColorProvider category={activeBrandCategory} />
       <div className="min-h-screen bg-[#E5E5E5]">
         <div className="mx-auto max-w-(--breakpoint-xl) px-4 pb-64 md:px-8 md:pt-12">
-          <h1 className="text-h1 mb-10 text-center underline">Style Guide</h1>
+          <h1 className="mb-10 text-center text-h1 underline">Style Guide</h1>
           <div className="mb-10">
-            <h1 className="text-h2 ml-2">Change brand of Style Guide</h1>
+            <h1 className="ml-2 text-h2">Change brand of Style Guide</h1>
             <p className="ml-2">
               <b>WARNING:</b> Components should change automatically brand color scheme after we
               change colors in :root based on chosen brand. Click on button for change in styleguide

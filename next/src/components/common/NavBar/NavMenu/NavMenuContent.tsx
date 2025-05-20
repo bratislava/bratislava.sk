@@ -49,7 +49,7 @@ const NavMenuContent = ({ colCount, sections, colorStyle }: NavMenuContentProps)
       onPointerLeave={(event) => event.preventDefault()}
       style={colorStyle}
     >
-      <div className="bg-category-200 relative z-29">
+      <div className="relative z-29 bg-category-200">
         {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions,jsx-a11y/no-noninteractive-element-interactions */}
         <ul
           className={cn('mx-auto grid w-full max-w-(--breakpoint-xl) gap-x-8 gap-y-6 px-4 py-8', {

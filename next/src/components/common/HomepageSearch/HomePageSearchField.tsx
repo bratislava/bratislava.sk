@@ -53,7 +53,7 @@ const HomePageSearchField = ({
       {/* TODO: fix rounded corners even no class is added (discovered on iPhones) */}
       {/* quickfixed with negative left margin on button */}
       <Button
-        className="-ml-1 h-12 rounded-l-none pl-4 pr-5 lg:h-14"
+        className="-ml-1 h-12 rounded-l-none pr-5 pl-4 lg:h-14"
         variant="solid"
         onPress={onSearchPressed}
         data-cy="homepage-search-button"

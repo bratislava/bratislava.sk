@@ -43,13 +43,13 @@ const ImageLightBox = (props: ImageLightBoxProps) => {
           .map(({ id, attributes }) => (
             <div
               key={id}
-              className="container pointer-events-none m-auto flex size-full max-w-6xl flex-col items-center justify-center md:px-[88px]"
+              className="pointer-events-none container m-auto flex size-full max-w-6xl flex-col items-center justify-center md:px-[88px]"
             >
               <StrapiImage
                 draggable="false"
                 // eslint-disable-next-line @typescript-eslint/no-non-null-assertion,@typescript-eslint/no-unnecessary-type-assertion
                 image={attributes!}
-                className="pointer-events-auto h-auto max-h-[86vh] w-full select-none object-contain"
+                className="pointer-events-auto h-auto max-h-[86vh] w-full object-contain select-none"
                 sizes="100vw"
               />
               {attributes?.caption !== attributes?.name && attributes?.caption && (
@@ -58,7 +58,7 @@ const ImageLightBox = (props: ImageLightBoxProps) => {
             </div>
           ))}
         pagination={({ goToPrevious, goToNext }) => (
-          <div className="container pointer-events-none absolute bottom-0 z-20 flex w-full max-w-6xl justify-between p-6 md:bottom-auto">
+          <div className="pointer-events-none absolute bottom-0 z-20 container flex w-full max-w-6xl justify-between p-6 md:bottom-auto">
             {images.length > 1 && (
               <>
                 <Button
