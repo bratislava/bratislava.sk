@@ -866,7 +866,9 @@ export interface SectionsTextWithImageOverlapped extends Schema.Component {
   attributes: {
     content: Attribute.RichText
     image: Attribute.Media<'images'> & Attribute.Required
-    imagePosition: Attribute.Enumeration<['left', 'right', 'left shifted', 'right shifted']>
+    imagePosition: Attribute.Enumeration<['left', 'right', 'left shifted', 'right shifted']> &
+      Attribute.Required &
+      Attribute.DefaultTo<'right'>
   }
 }
 

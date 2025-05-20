@@ -14,11 +14,20 @@
       "type": "media",
       "multiple": false,
       "required": true,
-      "allowedTypes": ["images"]
+      "allowedTypes": [
+        "images"
+      ]
     },
     "imagePosition": {
       "type": "enumeration",
-      "enum": ["left", "right", "left shifted", "right shifted"]
+      "enum": [
+        "left",
+        "right",
+        "left shifted",
+        "right shifted"
+      ],
+      "required": true,
+      "default": "right"
     }
   }
 }

@@ -1537,7 +1537,7 @@ type ComponentSectionsTextWithImageOverlapped {
   content: String
   id: ID!
   image: UploadFileEntityResponse!
-  imagePosition: ENUM_COMPONENTSECTIONSTEXTWITHIMAGEOVERLAPPED_IMAGEPOSITION
+  imagePosition: ENUM_COMPONENTSECTIONSTEXTWITHIMAGEOVERLAPPED_IMAGEPOSITION!
 }
 
 input ComponentSectionsTextWithImageOverlappedFiltersInput {

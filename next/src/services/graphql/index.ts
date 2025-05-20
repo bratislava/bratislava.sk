@@ -1832,7 +1832,7 @@ export type ComponentSectionsTextWithImageOverlapped = {
   content?: Maybe<Scalars['String']['output']>
   id: Scalars['ID']['output']
   image: UploadFileEntityResponse
-  imagePosition?: Maybe<Enum_Componentsectionstextwithimageoverlapped_Imageposition>
+  imagePosition: Enum_Componentsectionstextwithimageoverlapped_Imageposition
 }
 
 export type ComponentSectionsTextWithImageOverlappedFiltersInput = {
@@ -8804,7 +8804,7 @@ export type PageEntityFragment = {
       | {
           __typename: 'ComponentSectionsTextWithImageOverlapped'
           content?: string | null
-          textWithImageOverlappedImagePosition?: Enum_Componentsectionstextwithimageoverlapped_Imageposition | null
+          textWithImageOverlappedImagePosition: Enum_Componentsectionstextwithimageoverlapped_Imageposition
           image: {
             __typename?: 'UploadFileEntityResponse'
             data?: {
@@ -9720,7 +9720,7 @@ export type PageBySlugQuery = {
           | {
               __typename: 'ComponentSectionsTextWithImageOverlapped'
               content?: string | null
-              textWithImageOverlappedImagePosition?: Enum_Componentsectionstextwithimageoverlapped_Imageposition | null
+              textWithImageOverlappedImagePosition: Enum_Componentsectionstextwithimageoverlapped_Imageposition
               image: {
                 __typename?: 'UploadFileEntityResponse'
                 data?: {
@@ -10668,7 +10668,7 @@ export type Dev_AllPagesQuery = {
           | {
               __typename: 'ComponentSectionsTextWithImageOverlapped'
               content?: string | null
-              textWithImageOverlappedImagePosition?: Enum_Componentsectionstextwithimageoverlapped_Imageposition | null
+              textWithImageOverlappedImagePosition: Enum_Componentsectionstextwithimageoverlapped_Imageposition
               image: {
                 __typename?: 'UploadFileEntityResponse'
                 data?: {
@@ -11928,7 +11928,7 @@ export type TextWithImageSectionFragment = {
 export type TextWithImageOverlappedSectionFragment = {
   __typename?: 'ComponentSectionsTextWithImageOverlapped'
   content?: string | null
-  textWithImageOverlappedImagePosition?: Enum_Componentsectionstextwithimageoverlapped_Imageposition | null
+  textWithImageOverlappedImagePosition: Enum_Componentsectionstextwithimageoverlapped_Imageposition
   image: {
     __typename?: 'UploadFileEntityResponse'
     data?: {
@@ -13358,7 +13358,7 @@ type Sections_ComponentSectionsTextWithImage_Fragment = {
 type Sections_ComponentSectionsTextWithImageOverlapped_Fragment = {
   __typename: 'ComponentSectionsTextWithImageOverlapped'
   content?: string | null
-  textWithImageOverlappedImagePosition?: Enum_Componentsectionstextwithimageoverlapped_Imageposition | null
+  textWithImageOverlappedImagePosition: Enum_Componentsectionstextwithimageoverlapped_Imageposition
   image: {
     __typename?: 'UploadFileEntityResponse'
     data?: {
