@@ -1808,7 +1808,7 @@ export type ComponentSectionsTextWithImage = {
   __typename?: 'ComponentSectionsTextWithImage'
   content?: Maybe<Scalars['String']['output']>
   id: Scalars['ID']['output']
-  imagePosition?: Maybe<Enum_Componentsectionstextwithimage_Imageposition>
+  imagePosition: Enum_Componentsectionstextwithimage_Imageposition
   imageSrc?: Maybe<UploadFileEntityResponse>
 }
 
@@ -8786,7 +8786,7 @@ export type PageEntityFragment = {
       | {
           __typename: 'ComponentSectionsTextWithImage'
           content?: string | null
-          imagePosition?: Enum_Componentsectionstextwithimage_Imageposition | null
+          imagePosition: Enum_Componentsectionstextwithimage_Imageposition
           imageSrc?: {
             __typename?: 'UploadFileEntityResponse'
             data?: {
@@ -9702,7 +9702,7 @@ export type PageBySlugQuery = {
           | {
               __typename: 'ComponentSectionsTextWithImage'
               content?: string | null
-              imagePosition?: Enum_Componentsectionstextwithimage_Imageposition | null
+              imagePosition: Enum_Componentsectionstextwithimage_Imageposition
               imageSrc?: {
                 __typename?: 'UploadFileEntityResponse'
                 data?: {
@@ -10650,7 +10650,7 @@ export type Dev_AllPagesQuery = {
           | {
               __typename: 'ComponentSectionsTextWithImage'
               content?: string | null
-              imagePosition?: Enum_Componentsectionstextwithimage_Imageposition | null
+              imagePosition: Enum_Componentsectionstextwithimage_Imageposition
               imageSrc?: {
                 __typename?: 'UploadFileEntityResponse'
                 data?: {
@@ -11909,7 +11909,7 @@ export type DividerSectionFragment = {
 export type TextWithImageSectionFragment = {
   __typename?: 'ComponentSectionsTextWithImage'
   content?: string | null
-  imagePosition?: Enum_Componentsectionstextwithimage_Imageposition | null
+  imagePosition: Enum_Componentsectionstextwithimage_Imageposition
   imageSrc?: {
     __typename?: 'UploadFileEntityResponse'
     data?: {
@@ -13339,7 +13339,7 @@ type Sections_ComponentSectionsTestimonials_Fragment = {
 type Sections_ComponentSectionsTextWithImage_Fragment = {
   __typename: 'ComponentSectionsTextWithImage'
   content?: string | null
-  imagePosition?: Enum_Componentsectionstextwithimage_Imageposition | null
+  imagePosition: Enum_Componentsectionstextwithimage_Imageposition
   imageSrc?: {
     __typename?: 'UploadFileEntityResponse'
     data?: {

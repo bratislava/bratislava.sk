@@ -25,7 +25,9 @@
       "enum": [
         "left",
         "right"
-      ]
+      ],
+      "required": true,
+      "default": "right"
     }
   }
 }

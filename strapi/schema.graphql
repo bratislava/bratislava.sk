@@ -1514,7 +1514,7 @@ input ComponentSectionsTestimonialsInput {
 type ComponentSectionsTextWithImage {
   content: String
   id: ID!
-  imagePosition: ENUM_COMPONENTSECTIONSTEXTWITHIMAGE_IMAGEPOSITION
+  imagePosition: ENUM_COMPONENTSECTIONSTEXTWITHIMAGE_IMAGEPOSITION!
   imageSrc: UploadFileEntityResponse
 }
 
