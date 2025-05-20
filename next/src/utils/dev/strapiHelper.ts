@@ -67,6 +67,34 @@ export async function listArticles() {
   )
 }
 
+export async function listPages() {
+  const { pages: pagesResponse } = await client.Dev_AllPages({ locale: 'all', limit: -1 })
+
+  const pages = pagesResponse?.data ?? []
+
+  const filteredPages = pages
+    .map(({ id, attributes }) => {
+      return { id, ...attributes }
+    })
+    .filter(isDefined)
+    // .filter((page) => !page.title?.trim())
+    // .filter((page) => page.title?.includes('/n'))
+    // .filter((page) => page.title && page.title.length > 255)
+    // .filter((page) => {
+    // return page.pageColor !== page.pageCategory?.data?.attributes?.color
+    // })
+    .filter((page) => !page.slug?.includes('/'))
+
+  console.log('-----------------------------------------------------------------------------------')
+  console.log('Number of all pages:', pages.length)
+  console.log('Number of filteredPages:', filteredPages.length)
+  console.log(
+    filteredPages.map((page) => {
+      return `${page.id} ${page.slug}`
+    }),
+  )
+}
+
 // eslint-disable-next-line sonarjs/cognitive-complexity
 export async function logAllSectionsByType({
   entityType,
