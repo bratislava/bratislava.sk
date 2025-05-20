@@ -633,21 +633,6 @@ export interface SectionsHomepageHighlights extends Schema.Component {
   }
 }
 
-export interface SectionsHomepageInba extends Schema.Component {
-  collectionName: 'components_sections_homepage_inbas'
-  info: {
-    description: ''
-    displayName: 'homepage inba'
-  }
-  attributes: {
-    inbaFrontImage: Attribute.Media<'images'> & Attribute.Required
-    inbaRearImage: Attribute.Media<'images'> & Attribute.Required
-    showMoreLink: Attribute.Component<'blocks.common-link'>
-    text: Attribute.Text
-    title: Attribute.String
-  }
-}
-
 export interface SectionsHomepageMayorAndCouncil extends Schema.Component {
   collectionName: 'components_sections_homepage_mayor_and_councils'
   info: {
@@ -988,7 +973,6 @@ declare module '@strapi/types' {
       'sections.gallery': SectionsGallery
       'sections.homepage-events': SectionsHomepageEvents
       'sections.homepage-highlights': SectionsHomepageHighlights
-      'sections.homepage-inba': SectionsHomepageInba
       'sections.homepage-mayor-and-council': SectionsHomepageMayorAndCouncil
       'sections.homepage-tabs': SectionsHomepageTabs
       'sections.icon-title-desc': SectionsIconTitleDesc

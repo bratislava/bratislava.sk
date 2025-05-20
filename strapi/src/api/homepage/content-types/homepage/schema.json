@@ -144,16 +144,6 @@
         }
       },
       "component": "sections.tootoot-events"
-    },
-    "inbaSection": {
-      "type": "component",
-      "repeatable": false,
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "component": "sections.homepage-inba"
     }
   }
 }

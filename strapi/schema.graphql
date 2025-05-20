@@ -1155,33 +1155,6 @@ input ComponentSectionsHomepageHighlightsInput {
   title: String
 }
 
-type ComponentSectionsHomepageInba {
-  id: ID!
-  inbaFrontImage: UploadFileEntityResponse!
-  inbaRearImage: UploadFileEntityResponse!
-  showMoreLink: ComponentBlocksCommonLink
-  text: String
-  title: String
-}
-
-input ComponentSectionsHomepageInbaFiltersInput {
-  and: [ComponentSectionsHomepageInbaFiltersInput]
-  not: ComponentSectionsHomepageInbaFiltersInput
-  or: [ComponentSectionsHomepageInbaFiltersInput]
-  showMoreLink: ComponentBlocksCommonLinkFiltersInput
-  text: StringFilterInput
-  title: StringFilterInput
-}
-
-input ComponentSectionsHomepageInbaInput {
-  id: ID
-  inbaFrontImage: ID
-  inbaRearImage: ID
-  showMoreLink: ComponentBlocksCommonLinkInput
-  text: String
-  title: String
-}
-
 type ComponentSectionsHomepageMayorAndCouncil {
   councilCard: ComponentBlocksCommonLink
   id: ID!
@@ -2207,7 +2180,7 @@ type GeneralRelationResponseCollection {
   data: [GeneralEntity!]!
 }
 
-union GenericMorph = Alert | Article | BlogPost | ComponentAccordionItemsFlatText | ComponentAccordionItemsInstitution | ComponentAccordionItemsInstitutionNarrow | ComponentBlocksCommonLink | ComponentBlocksComparisonCard | ComponentBlocksComparisonItem | ComponentBlocksContactCard | ComponentBlocksFile | ComponentBlocksFileItem | ComponentBlocksFooterColumn | ComponentBlocksHomepageHighlightsItem | ComponentBlocksIconWithTitleAndDescription | ComponentBlocksInBa | ComponentBlocksNumericalListItem | ComponentBlocksPageLink | ComponentBlocksProsAndConsCard | ComponentBlocksTestimonialItem | ComponentBlocksTimelineItem | ComponentBlocksTopServicesItem | ComponentBlocksVideo | ComponentGeneralHeader | ComponentGeneralHeaderLink | ComponentMenuMenuItem | ComponentMenuMenuLink | ComponentMenuMenuSection | ComponentSectionsAccordion | ComponentSectionsArticles | ComponentSectionsBanner | ComponentSectionsCalculator | ComponentSectionsColumnedText | ComponentSectionsComparisonSection | ComponentSectionsContactsSection | ComponentSectionsDivider | ComponentSectionsFaqCategories | ComponentSectionsFaqs | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsHomepageEvents | ComponentSectionsHomepageHighlights | ComponentSectionsHomepageInba | ComponentSectionsHomepageMayorAndCouncil | ComponentSectionsHomepageTabs | ComponentSectionsIconTitleDesc | ComponentSectionsIframe | ComponentSectionsInbaArticlesList | ComponentSectionsInbaReleases | ComponentSectionsLinks | ComponentSectionsNarrowText | ComponentSectionsNumericalList | ComponentSectionsOfficialBoard | ComponentSectionsOrganizationalStructure | ComponentSectionsProsAndConsSection | ComponentSectionsRegulations | ComponentSectionsRegulationsList | ComponentSectionsSubpageList | ComponentSectionsTestimonials | ComponentSectionsTextWithImage | ComponentSectionsTimeline | ComponentSectionsTootootEvents | ComponentSectionsTopServices | ComponentSectionsVideos | ComponentSectionsWaves | ComponentTaxAdministratorsTaxAdministrator | Faq | FaqCategory | Footer | General | Homepage | I18NLocale | InbaArticle | InbaRelease | InbaTag | Menu | Page | PageCategory | Regulation | Tag | TaxAdministratorsList | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
+union GenericMorph = Alert | Article | BlogPost | ComponentAccordionItemsFlatText | ComponentAccordionItemsInstitution | ComponentAccordionItemsInstitutionNarrow | ComponentBlocksCommonLink | ComponentBlocksComparisonCard | ComponentBlocksComparisonItem | ComponentBlocksContactCard | ComponentBlocksFile | ComponentBlocksFileItem | ComponentBlocksFooterColumn | ComponentBlocksHomepageHighlightsItem | ComponentBlocksIconWithTitleAndDescription | ComponentBlocksInBa | ComponentBlocksNumericalListItem | ComponentBlocksPageLink | ComponentBlocksProsAndConsCard | ComponentBlocksTestimonialItem | ComponentBlocksTimelineItem | ComponentBlocksTopServicesItem | ComponentBlocksVideo | ComponentGeneralHeader | ComponentGeneralHeaderLink | ComponentMenuMenuItem | ComponentMenuMenuLink | ComponentMenuMenuSection | ComponentSectionsAccordion | ComponentSectionsArticles | ComponentSectionsBanner | ComponentSectionsCalculator | ComponentSectionsColumnedText | ComponentSectionsComparisonSection | ComponentSectionsContactsSection | ComponentSectionsDivider | ComponentSectionsFaqCategories | ComponentSectionsFaqs | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsHomepageEvents | ComponentSectionsHomepageHighlights | ComponentSectionsHomepageMayorAndCouncil | ComponentSectionsHomepageTabs | ComponentSectionsIconTitleDesc | ComponentSectionsIframe | ComponentSectionsInbaArticlesList | ComponentSectionsInbaReleases | ComponentSectionsLinks | ComponentSectionsNarrowText | ComponentSectionsNumericalList | ComponentSectionsOfficialBoard | ComponentSectionsOrganizationalStructure | ComponentSectionsProsAndConsSection | ComponentSectionsRegulations | ComponentSectionsRegulationsList | ComponentSectionsSubpageList | ComponentSectionsTestimonials | ComponentSectionsTextWithImage | ComponentSectionsTimeline | ComponentSectionsTootootEvents | ComponentSectionsTopServices | ComponentSectionsVideos | ComponentSectionsWaves | ComponentTaxAdministratorsTaxAdministrator | Faq | FaqCategory | Footer | General | Homepage | I18NLocale | InbaArticle | InbaRelease | InbaTag | Menu | Page | PageCategory | Regulation | Tag | TaxAdministratorsList | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
 
 type Homepage {
   createdAt: DateTime
@@ -2216,7 +2189,6 @@ type Homepage {
   inba: ComponentBlocksInBa
   inbaFrontImage: UploadFileEntityResponse!
   inbaRearImage: UploadFileEntityResponse!
-  inbaSection: ComponentSectionsHomepageInba
   inbaUrl: String
   locale: String
   localizations(publicationState: PublicationState = LIVE): HomepageRelationResponseCollection
@@ -2251,7 +2223,6 @@ input HomepageFiltersInput {
   eventsSection: ComponentSectionsTootootEventsFiltersInput
   highlights: ComponentSectionsHomepageHighlightsFiltersInput
   inba: ComponentBlocksInBaFiltersInput
-  inbaSection: ComponentSectionsHomepageInbaFiltersInput
   inbaUrl: StringFilterInput
   locale: StringFilterInput
   localizations: HomepageFiltersInput
@@ -2273,7 +2244,6 @@ input HomepageInput {
   inba: ComponentBlocksInBaInput
   inbaFrontImage: ID
   inbaRearImage: ID
-  inbaSection: ComponentSectionsHomepageInbaInput
   inbaUrl: String
   mayorAndCouncil: ComponentSectionsHomepageMayorAndCouncilInput
   metaDescription: String
