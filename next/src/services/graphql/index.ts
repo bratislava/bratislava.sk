@@ -1395,34 +1395,6 @@ export type ComponentSectionsHomepageHighlightsInput = {
   title?: InputMaybe<Scalars['String']['input']>
 }
 
-export type ComponentSectionsHomepageInba = {
-  __typename?: 'ComponentSectionsHomepageInba'
-  id: Scalars['ID']['output']
-  inbaFrontImage: UploadFileEntityResponse
-  inbaRearImage: UploadFileEntityResponse
-  showMoreLink?: Maybe<ComponentBlocksCommonLink>
-  text?: Maybe<Scalars['String']['output']>
-  title?: Maybe<Scalars['String']['output']>
-}
-
-export type ComponentSectionsHomepageInbaFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<ComponentSectionsHomepageInbaFiltersInput>>>
-  not?: InputMaybe<ComponentSectionsHomepageInbaFiltersInput>
-  or?: InputMaybe<Array<InputMaybe<ComponentSectionsHomepageInbaFiltersInput>>>
-  showMoreLink?: InputMaybe<ComponentBlocksCommonLinkFiltersInput>
-  text?: InputMaybe<StringFilterInput>
-  title?: InputMaybe<StringFilterInput>
-}
-
-export type ComponentSectionsHomepageInbaInput = {
-  id?: InputMaybe<Scalars['ID']['input']>
-  inbaFrontImage?: InputMaybe<Scalars['ID']['input']>
-  inbaRearImage?: InputMaybe<Scalars['ID']['input']>
-  showMoreLink?: InputMaybe<ComponentBlocksCommonLinkInput>
-  text?: InputMaybe<Scalars['String']['input']>
-  title?: InputMaybe<Scalars['String']['input']>
-}
-
 export type ComponentSectionsHomepageMayorAndCouncil = {
   __typename?: 'ComponentSectionsHomepageMayorAndCouncil'
   councilCard?: Maybe<ComponentBlocksCommonLink>
@@ -2611,7 +2583,6 @@ export type GenericMorph =
   | ComponentSectionsGallery
   | ComponentSectionsHomepageEvents
   | ComponentSectionsHomepageHighlights
-  | ComponentSectionsHomepageInba
   | ComponentSectionsHomepageMayorAndCouncil
   | ComponentSectionsHomepageTabs
   | ComponentSectionsIconTitleDesc
@@ -2664,7 +2635,6 @@ export type Homepage = {
   inba?: Maybe<ComponentBlocksInBa>
   inbaFrontImage: UploadFileEntityResponse
   inbaRearImage: UploadFileEntityResponse
-  inbaSection?: Maybe<ComponentSectionsHomepageInba>
   inbaUrl?: Maybe<Scalars['String']['output']>
   locale?: Maybe<Scalars['String']['output']>
   localizations?: Maybe<HomepageRelationResponseCollection>
@@ -2706,7 +2676,6 @@ export type HomepageFiltersInput = {
   eventsSection?: InputMaybe<ComponentSectionsTootootEventsFiltersInput>
   highlights?: InputMaybe<ComponentSectionsHomepageHighlightsFiltersInput>
   inba?: InputMaybe<ComponentBlocksInBaFiltersInput>
-  inbaSection?: InputMaybe<ComponentSectionsHomepageInbaFiltersInput>
   inbaUrl?: InputMaybe<StringFilterInput>
   locale?: InputMaybe<StringFilterInput>
   localizations?: InputMaybe<HomepageFiltersInput>
@@ -2728,7 +2697,6 @@ export type HomepageInput = {
   inba?: InputMaybe<ComponentBlocksInBaInput>
   inbaFrontImage?: InputMaybe<Scalars['ID']['input']>
   inbaRearImage?: InputMaybe<Scalars['ID']['input']>
-  inbaSection?: InputMaybe<ComponentSectionsHomepageInbaInput>
   inbaUrl?: InputMaybe<Scalars['String']['input']>
   mayorAndCouncil?: InputMaybe<ComponentSectionsHomepageMayorAndCouncilInput>
   metaDescription?: InputMaybe<Scalars['String']['input']>
@@ -6693,75 +6661,6 @@ export type HomepageEntityFragment = {
         }
       } | null>
     } | null
-    inbaSection?: {
-      __typename?: 'ComponentSectionsHomepageInba'
-      title?: string | null
-      text?: string | null
-      inbaFrontImage: {
-        __typename?: 'UploadFileEntityResponse'
-        data?: {
-          __typename?: 'UploadFileEntity'
-          id?: string | null
-          attributes?: {
-            __typename?: 'UploadFile'
-            url: string
-            width?: number | null
-            height?: number | null
-            caption?: string | null
-            alternativeText?: string | null
-            name: string
-          } | null
-        } | null
-      }
-      inbaRearImage: {
-        __typename?: 'UploadFileEntityResponse'
-        data?: {
-          __typename?: 'UploadFileEntity'
-          id?: string | null
-          attributes?: {
-            __typename?: 'UploadFile'
-            url: string
-            width?: number | null
-            height?: number | null
-            caption?: string | null
-            alternativeText?: string | null
-            name: string
-          } | null
-        } | null
-      }
-      showMoreLink?: {
-        __typename?: 'ComponentBlocksCommonLink'
-        label?: string | null
-        url?: string | null
-        analyticsId?: string | null
-        page?: {
-          __typename?: 'PageEntityResponse'
-          data?: {
-            __typename?: 'PageEntity'
-            id?: string | null
-            attributes?: {
-              __typename?: 'Page'
-              slug?: string | null
-              title: string
-              locale?: string | null
-            } | null
-          } | null
-        } | null
-        article?: {
-          __typename?: 'ArticleEntityResponse'
-          data?: {
-            __typename: 'ArticleEntity'
-            id?: string | null
-            attributes?: {
-              __typename?: 'Article'
-              slug: string
-              title: string
-              locale?: string | null
-            } | null
-          } | null
-        } | null
-      } | null
-    } | null
     inba?: {
       __typename?: 'ComponentBlocksInBa'
       title?: string | null
@@ -7215,75 +7114,6 @@ export type HomepageQuery = {
             }
           } | null>
         } | null
-        inbaSection?: {
-          __typename?: 'ComponentSectionsHomepageInba'
-          title?: string | null
-          text?: string | null
-          inbaFrontImage: {
-            __typename?: 'UploadFileEntityResponse'
-            data?: {
-              __typename?: 'UploadFileEntity'
-              id?: string | null
-              attributes?: {
-                __typename?: 'UploadFile'
-                url: string
-                width?: number | null
-                height?: number | null
-                caption?: string | null
-                alternativeText?: string | null
-                name: string
-              } | null
-            } | null
-          }
-          inbaRearImage: {
-            __typename?: 'UploadFileEntityResponse'
-            data?: {
-              __typename?: 'UploadFileEntity'
-              id?: string | null
-              attributes?: {
-                __typename?: 'UploadFile'
-                url: string
-                width?: number | null
-                height?: number | null
-                caption?: string | null
-                alternativeText?: string | null
-                name: string
-              } | null
-            } | null
-          }
-          showMoreLink?: {
-            __typename?: 'ComponentBlocksCommonLink'
-            label?: string | null
-            url?: string | null
-            analyticsId?: string | null
-            page?: {
-              __typename?: 'PageEntityResponse'
-              data?: {
-                __typename?: 'PageEntity'
-                id?: string | null
-                attributes?: {
-                  __typename?: 'Page'
-                  slug?: string | null
-                  title: string
-                  locale?: string | null
-                } | null
-              } | null
-            } | null
-            article?: {
-              __typename?: 'ArticleEntityResponse'
-              data?: {
-                __typename: 'ArticleEntity'
-                id?: string | null
-                attributes?: {
-                  __typename?: 'Article'
-                  slug: string
-                  title: string
-                  locale?: string | null
-                } | null
-              } | null
-            } | null
-          } | null
-        } | null
         inba?: {
           __typename?: 'ComponentBlocksInBa'
           title?: string | null
@@ -7674,76 +7504,6 @@ export type HomepageInbaFragment = {
   __typename?: 'ComponentBlocksInBa'
   title?: string | null
   content?: string | null
-}
-
-export type HomepageInbaSectionFragment = {
-  __typename?: 'ComponentSectionsHomepageInba'
-  title?: string | null
-  text?: string | null
-  inbaFrontImage: {
-    __typename?: 'UploadFileEntityResponse'
-    data?: {
-      __typename?: 'UploadFileEntity'
-      id?: string | null
-      attributes?: {
-        __typename?: 'UploadFile'
-        url: string
-        width?: number | null
-        height?: number | null
-        caption?: string | null
-        alternativeText?: string | null
-        name: string
-      } | null
-    } | null
-  }
-  inbaRearImage: {
-    __typename?: 'UploadFileEntityResponse'
-    data?: {
-      __typename?: 'UploadFileEntity'
-      id?: string | null
-      attributes?: {
-        __typename?: 'UploadFile'
-        url: string
-        width?: number | null
-        height?: number | null
-        caption?: string | null
-        alternativeText?: string | null
-        name: string
-      } | null
-    } | null
-  }
-  showMoreLink?: {
-    __typename?: 'ComponentBlocksCommonLink'
-    label?: string | null
-    url?: string | null
-    analyticsId?: string | null
-    page?: {
-      __typename?: 'PageEntityResponse'
-      data?: {
-        __typename?: 'PageEntity'
-        id?: string | null
-        attributes?: {
-          __typename?: 'Page'
-          slug?: string | null
-          title: string
-          locale?: string | null
-        } | null
-      } | null
-    } | null
-    article?: {
-      __typename?: 'ArticleEntityResponse'
-      data?: {
-        __typename: 'ArticleEntity'
-        id?: string | null
-        attributes?: {
-          __typename?: 'Article'
-          slug: string
-          title: string
-          locale?: string | null
-        } | null
-      } | null
-    } | null
-  } | null
 }
 
 export type InbaArticleSlugEntityFragment = {
@@ -14105,27 +13865,6 @@ export const TopServicesItemFragmentDoc = gql`
   }
   ${CommonLinkFragmentDoc}
 `
-export const HomepageInbaSectionFragmentDoc = gql`
-  fragment HomepageInbaSection on ComponentSectionsHomepageInba {
-    title
-    text
-    inbaFrontImage {
-      data {
-        ...UploadImageEntity
-      }
-    }
-    inbaRearImage {
-      data {
-        ...UploadImageEntity
-      }
-    }
-    showMoreLink {
-      ...CommonLink
-    }
-  }
-  ${UploadImageEntityFragmentDoc}
-  ${CommonLinkFragmentDoc}
-`
 export const HomepageInbaFragmentDoc = gql`
   fragment HomepageInba on ComponentBlocksInBa {
     title
@@ -14168,9 +13907,6 @@ export const HomepageEntityFragmentDoc = gql`
           ...TopServicesItem
         }
       }
-      inbaSection {
-        ...HomepageInbaSection
-      }
       inba {
         ...HomepageInba
       }
@@ -14193,7 +13929,6 @@ export const HomepageEntityFragmentDoc = gql`
   ${HomepageMayorAndCouncilSectionFragmentDoc}
   ${TootootEventsSectionFragmentDoc}
   ${TopServicesItemFragmentDoc}
-  ${HomepageInbaSectionFragmentDoc}
   ${HomepageInbaFragmentDoc}
 `
 export const InbaArticleSlugEntityFragmentDoc = gql`

@@ -33,13 +33,10 @@ fragment HomepageEntity on HomepageEntity {
         ...TopServicesItem
       }
     }
-    inbaSection {
-      ...HomepageInbaSection
-    }
-    # TODO will be replaced by inbaSection
     inba {
       ...HomepageInba
     }
+    # We use direct fields instead of a section to be able to have non-localized url and front/rear images
     inbaFrontImage {
       data {
         ...UploadImageSrcEntity
@@ -117,22 +114,4 @@ fragment TopServicesItem on ComponentBlocksTopServicesItem {
 fragment HomepageInba on ComponentBlocksInBa {
   title
   content
-}
-
-fragment HomepageInbaSection on ComponentSectionsHomepageInba {
-  title
-  text
-  inbaFrontImage {
-    data {
-      ...UploadImageEntity
-    }
-  }
-  inbaRearImage {
-    data {
-      ...UploadImageEntity
-    }
-  }
-  showMoreLink {
-    ...CommonLink
-  }
 }
