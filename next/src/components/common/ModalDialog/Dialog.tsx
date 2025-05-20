@@ -22,7 +22,7 @@ const Dialog = forwardRef<HTMLElement, Props>(({ children, title, ...props }, re
     <ReactAriaDialog
       ref={ref}
       {...props}
-      className="relative flex h-full flex-col overflow-y-hidden rounded-xl focus:outline-none"
+      className="relative flex h-full flex-col overflow-y-hidden rounded-xl focus:outline-hidden"
     >
       {({ close }) => (
         <>

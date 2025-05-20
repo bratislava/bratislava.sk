@@ -30,7 +30,7 @@ const OrganizationalStructureTopLevelAccordion = ({
             <ChevronDownSmall className="flex lg:hidden" />
           </div>
         </div>
-        <div className="h-1 w-full rounded-sm border border-transparent bg-category-200" />
+        <div className="h-1 w-full rounded-xs border border-transparent bg-category-200" />
       </div>
       {isOpen && (
         <div className="pl-4" data-cy="organizational-structure-accordion-content">

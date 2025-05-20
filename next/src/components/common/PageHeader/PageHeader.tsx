@@ -59,7 +59,7 @@ const PageHeader = ({
           <div className="flex flex-col gap-y-4 pt-3 pb-6 lg:gap-y-6 lg:pt-6 lg:pb-10">
             {/* TODO this tag is not in DS */}
             {tag && (
-              <span className="inline-block self-start rounded bg-category-700 px-3 py-1 text-size-p-default font-medium text-white">
+              <span className="inline-block self-start rounded-sm bg-category-700 px-3 py-1 text-size-p-default font-medium text-white">
                 {tag}
               </span>
             )}

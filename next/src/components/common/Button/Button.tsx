@@ -60,6 +60,10 @@ export type AnchorProps = Omit<AriaButtonProps<'a'>, 'children'> &
 
 export type PolymorphicProps = ButtonProps | AnchorProps
 
+/**
+ * Figma: https://www.figma.com/design/17wbd0MDQcMW9NbXl6UPs8/DS--Component-library?node-id=16846-52741&m=dev
+ */
+
 const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProps>(
   (
     {
@@ -100,10 +104,10 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
         ? (className ?? '')
         : cn(
             'inline-flex h-auto items-center justify-center gap-2 text-size-button-large leading-6 font-semibold transition',
-            'ring-offset-2 outline-none focus-visible:ring',
+            'ring-offset-2 outline-hidden focus-visible:ring-3',
 
             // we change rounded corners for link focus ring
-            { 'rounded-sm max-lg:gap-1': variant === 'link', 'rounded-lg': variant !== 'link' },
+            { 'rounded-xs max-lg:gap-1': variant === 'link', 'rounded-lg': variant !== 'link' },
 
             {
               'font-medium underline underline-offset-2': variant === 'link',
