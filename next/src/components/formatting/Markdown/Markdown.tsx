@@ -9,8 +9,6 @@ import remarkUnwrapImages from 'remark-unwrap-images'
 import MLink from '@/src/components/common/MLink/MLink'
 import cn from '@/src/utils/cn'
 
-import styles from './Markdown.module.scss'
-
 export type MarkdownProps = {
   content: string | null | undefined
   variant?: 'default' | 'small' | 'large' | 'accordion'
@@ -34,7 +32,7 @@ const Markdown = ({ content, variant = 'default', className }: MarkdownProps) =>
   return (
     <div
       className={cn(
-        styles.markdown,
+        'markdown',
         {
           'text-size-p-large': variant === 'large',
           'text-size-p-default': variant === 'default' || variant === 'accordion',
