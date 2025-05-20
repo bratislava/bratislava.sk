@@ -14,6 +14,12 @@ type TextWithImageSectionProps = {
   section: TextWithImageSectionFragment
 }
 
+/**
+ * Figma: https://www.figma.com/design/17wbd0MDQcMW9NbXl6UPs8/DS--Component-library?node-id=16091-8478&m=dev
+ *
+ * Based on OLO ImageAndTextSection https://github.com/bratislava/olo.sk/blob/master/next/src/components/sections/ImageAndTextSection.tsx
+ */
+
 const TextWithImageSection = ({ section }: TextWithImageSectionProps) => {
   const { content, imagePosition, image, imageAspectRatio } = section
 
