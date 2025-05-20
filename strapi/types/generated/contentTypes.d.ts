@@ -1181,6 +1181,7 @@ export interface ApiPagePage extends Schema.CollectionType {
         'sections.regulations-list',
         'sections.testimonials',
         'sections.text-with-image',
+        'sections.text-with-image-overlapped',
         'sections.timeline',
         'sections.tootoot-events',
         'sections.videos',

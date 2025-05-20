@@ -26,6 +26,7 @@ import ProsAndConsSection from '@/src/components/sections/ProsAndConsSection'
 import RegulationsListSection from '@/src/components/sections/RegulationsListSection'
 import RegulationsSection from '@/src/components/sections/RegulationsSection'
 import TestimonialsSection from '@/src/components/sections/TestimonialsSection'
+import TextWithImageOverlappedSection from '@/src/components/sections/TextWithImageOverlappedSection'
 import TextWithImageSection from '@/src/components/sections/TextWithImageSection'
 import TimelineSection from '@/src/components/sections/TimelineSection'
 import TootootEventsSection from '@/src/components/sections/TootootEventsSection'
@@ -47,6 +48,9 @@ const SectionContent = ({ section }: { section: SectionsFragment }) => {
 
     case 'ComponentSectionsTextWithImage':
       return <TextWithImageSection section={section} />
+
+    case 'ComponentSectionsTextWithImageOverlapped':
+      return <TextWithImageOverlappedSection section={section} />
 
     case 'ComponentSectionsFileList':
       return <FileListSection section={section} />

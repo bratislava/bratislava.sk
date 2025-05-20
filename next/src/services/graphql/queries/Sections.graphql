@@ -93,6 +93,16 @@ fragment TextWithImageSection on ComponentSectionsTextWithImage {
   }
 }
 
+fragment TextWithImageOverlappedSection on ComponentSectionsTextWithImageOverlapped {
+  content
+  textWithImageOverlappedImagePosition: imagePosition
+  image {
+    data {
+      ...UploadImageEntity
+    }
+  }
+}
+
 fragment IframeSection on ComponentSectionsIframe {
   url
   iframeWidth
@@ -394,6 +404,10 @@ fragment Sections on PageSectionsDynamicZone {
 
   ... on ComponentSectionsTextWithImage {
     ...TextWithImageSection
+  }
+
+  ... on ComponentSectionsTextWithImageOverlapped {
+    ...TextWithImageOverlappedSection
   }
 
   ... on ComponentSectionsIframe {

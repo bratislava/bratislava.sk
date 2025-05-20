@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_sections_text_with_image_overlappeds",
+  "info": {
+    "displayName": "Text with image overlapped",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "content": {
+      "type": "richtext",
+      "required": false
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": ["images"]
+    },
+    "imagePosition": {
+      "type": "enumeration",
+      "enum": ["left", "right", "left shifted", "right shifted"]
+    }
+  }
+}

@@ -1827,6 +1827,29 @@ export type ComponentSectionsTextWithImageInput = {
   imageSrc?: InputMaybe<Scalars['ID']['input']>
 }
 
+export type ComponentSectionsTextWithImageOverlapped = {
+  __typename?: 'ComponentSectionsTextWithImageOverlapped'
+  content?: Maybe<Scalars['String']['output']>
+  id: Scalars['ID']['output']
+  image: UploadFileEntityResponse
+  imagePosition?: Maybe<Enum_Componentsectionstextwithimageoverlapped_Imageposition>
+}
+
+export type ComponentSectionsTextWithImageOverlappedFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentSectionsTextWithImageOverlappedFiltersInput>>>
+  content?: InputMaybe<StringFilterInput>
+  imagePosition?: InputMaybe<StringFilterInput>
+  not?: InputMaybe<ComponentSectionsTextWithImageOverlappedFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<ComponentSectionsTextWithImageOverlappedFiltersInput>>>
+}
+
+export type ComponentSectionsTextWithImageOverlappedInput = {
+  content?: InputMaybe<Scalars['String']['input']>
+  id?: InputMaybe<Scalars['ID']['input']>
+  image?: InputMaybe<Scalars['ID']['input']>
+  imagePosition?: InputMaybe<Enum_Componentsectionstextwithimageoverlapped_Imageposition>
+}
+
 export type ComponentSectionsTimeline = {
   __typename?: 'ComponentSectionsTimeline'
   id: Scalars['ID']['output']
@@ -2182,6 +2205,13 @@ export enum Enum_Componentsectionsnumericallist_Variant {
 export enum Enum_Componentsectionsprosandconssection_Textalign {
   Center = 'center',
   Left = 'left',
+}
+
+export enum Enum_Componentsectionstextwithimageoverlapped_Imageposition {
+  Left = 'left',
+  LeftShifted = 'left_shifted',
+  Right = 'right',
+  RightShifted = 'right_shifted',
 }
 
 export enum Enum_Componentsectionstextwithimage_Imageposition {
@@ -2600,6 +2630,7 @@ export type GenericMorph =
   | ComponentSectionsSubpageList
   | ComponentSectionsTestimonials
   | ComponentSectionsTextWithImage
+  | ComponentSectionsTextWithImageOverlapped
   | ComponentSectionsTimeline
   | ComponentSectionsTootootEvents
   | ComponentSectionsTopServices
@@ -3849,6 +3880,7 @@ export type PageSectionsDynamicZone =
   | ComponentSectionsRegulationsList
   | ComponentSectionsTestimonials
   | ComponentSectionsTextWithImage
+  | ComponentSectionsTextWithImageOverlapped
   | ComponentSectionsTimeline
   | ComponentSectionsTootootEvents
   | ComponentSectionsVideos
@@ -8770,6 +8802,27 @@ export type PageEntityFragment = {
           } | null
         }
       | {
+          __typename: 'ComponentSectionsTextWithImageOverlapped'
+          content?: string | null
+          textWithImageOverlappedImagePosition?: Enum_Componentsectionstextwithimageoverlapped_Imageposition | null
+          image: {
+            __typename?: 'UploadFileEntityResponse'
+            data?: {
+              __typename?: 'UploadFileEntity'
+              id?: string | null
+              attributes?: {
+                __typename?: 'UploadFile'
+                url: string
+                width?: number | null
+                height?: number | null
+                caption?: string | null
+                alternativeText?: string | null
+                name: string
+              } | null
+            } | null
+          }
+        }
+      | {
           __typename: 'ComponentSectionsTimeline'
           timelineItems?: Array<{
             __typename?: 'ComponentBlocksTimelineItem'
@@ -9663,6 +9716,27 @@ export type PageBySlugQuery = {
                   } | null
                 } | null
               } | null
+            }
+          | {
+              __typename: 'ComponentSectionsTextWithImageOverlapped'
+              content?: string | null
+              textWithImageOverlappedImagePosition?: Enum_Componentsectionstextwithimageoverlapped_Imageposition | null
+              image: {
+                __typename?: 'UploadFileEntityResponse'
+                data?: {
+                  __typename?: 'UploadFileEntity'
+                  id?: string | null
+                  attributes?: {
+                    __typename?: 'UploadFile'
+                    url: string
+                    width?: number | null
+                    height?: number | null
+                    caption?: string | null
+                    alternativeText?: string | null
+                    name: string
+                  } | null
+                } | null
+              }
             }
           | {
               __typename: 'ComponentSectionsTimeline'
@@ -10590,6 +10664,27 @@ export type Dev_AllPagesQuery = {
                   } | null
                 } | null
               } | null
+            }
+          | {
+              __typename: 'ComponentSectionsTextWithImageOverlapped'
+              content?: string | null
+              textWithImageOverlappedImagePosition?: Enum_Componentsectionstextwithimageoverlapped_Imageposition | null
+              image: {
+                __typename?: 'UploadFileEntityResponse'
+                data?: {
+                  __typename?: 'UploadFileEntity'
+                  id?: string | null
+                  attributes?: {
+                    __typename?: 'UploadFile'
+                    url: string
+                    width?: number | null
+                    height?: number | null
+                    caption?: string | null
+                    alternativeText?: string | null
+                    name: string
+                  } | null
+                } | null
+              }
             }
           | {
               __typename: 'ComponentSectionsTimeline'
@@ -11828,6 +11923,28 @@ export type TextWithImageSectionFragment = {
       } | null
     } | null
   } | null
+}
+
+export type TextWithImageOverlappedSectionFragment = {
+  __typename?: 'ComponentSectionsTextWithImageOverlapped'
+  content?: string | null
+  textWithImageOverlappedImagePosition?: Enum_Componentsectionstextwithimageoverlapped_Imageposition | null
+  image: {
+    __typename?: 'UploadFileEntityResponse'
+    data?: {
+      __typename?: 'UploadFileEntity'
+      id?: string | null
+      attributes?: {
+        __typename?: 'UploadFile'
+        url: string
+        width?: number | null
+        height?: number | null
+        caption?: string | null
+        alternativeText?: string | null
+        name: string
+      } | null
+    } | null
+  }
 }
 
 export type IframeSectionFragment = {
@@ -13238,6 +13355,28 @@ type Sections_ComponentSectionsTextWithImage_Fragment = {
   } | null
 }
 
+type Sections_ComponentSectionsTextWithImageOverlapped_Fragment = {
+  __typename: 'ComponentSectionsTextWithImageOverlapped'
+  content?: string | null
+  textWithImageOverlappedImagePosition?: Enum_Componentsectionstextwithimageoverlapped_Imageposition | null
+  image: {
+    __typename?: 'UploadFileEntityResponse'
+    data?: {
+      __typename?: 'UploadFileEntity'
+      id?: string | null
+      attributes?: {
+        __typename?: 'UploadFile'
+        url: string
+        width?: number | null
+        height?: number | null
+        caption?: string | null
+        alternativeText?: string | null
+        name: string
+      } | null
+    } | null
+  }
+}
+
 type Sections_ComponentSectionsTimeline_Fragment = {
   __typename: 'ComponentSectionsTimeline'
   timelineItems?: Array<{
@@ -13334,6 +13473,7 @@ export type SectionsFragment =
   | Sections_ComponentSectionsRegulationsList_Fragment
   | Sections_ComponentSectionsTestimonials_Fragment
   | Sections_ComponentSectionsTextWithImage_Fragment
+  | Sections_ComponentSectionsTextWithImageOverlapped_Fragment
   | Sections_ComponentSectionsTimeline_Fragment
   | Sections_ComponentSectionsTootootEvents_Fragment
   | Sections_ComponentSectionsVideos_Fragment
@@ -14064,6 +14204,18 @@ export const TextWithImageSectionFragmentDoc = gql`
     }
   }
 `
+export const TextWithImageOverlappedSectionFragmentDoc = gql`
+  fragment TextWithImageOverlappedSection on ComponentSectionsTextWithImageOverlapped {
+    content
+    textWithImageOverlappedImagePosition: imagePosition
+    image {
+      data {
+        ...UploadImageEntity
+      }
+    }
+  }
+  ${UploadImageEntityFragmentDoc}
+`
 export const IframeSectionFragmentDoc = gql`
   fragment IframeSection on ComponentSectionsIframe {
     url
@@ -14590,6 +14742,9 @@ export const SectionsFragmentDoc = gql`
     ... on ComponentSectionsTextWithImage {
       ...TextWithImageSection
     }
+    ... on ComponentSectionsTextWithImageOverlapped {
+      ...TextWithImageOverlappedSection
+    }
     ... on ComponentSectionsIframe {
       ...IframeSection
     }
@@ -14669,6 +14824,7 @@ export const SectionsFragmentDoc = gql`
   ${IconTitleDescSectionFragmentDoc}
   ${DividerSectionFragmentDoc}
   ${TextWithImageSectionFragmentDoc}
+  ${TextWithImageOverlappedSectionFragmentDoc}
   ${IframeSectionFragmentDoc}
   ${GallerySectionFragmentDoc}
   ${FileListSectionFragmentDoc}

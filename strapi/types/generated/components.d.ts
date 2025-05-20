@@ -857,6 +857,19 @@ export interface SectionsTextWithImage extends Schema.Component {
   }
 }
 
+export interface SectionsTextWithImageOverlapped extends Schema.Component {
+  collectionName: 'components_sections_text_with_image_overlappeds'
+  info: {
+    description: ''
+    displayName: 'Text with image overlapped'
+  }
+  attributes: {
+    content: Attribute.RichText
+    image: Attribute.Media<'images'> & Attribute.Required
+    imagePosition: Attribute.Enumeration<['left', 'right', 'left shifted', 'right shifted']>
+  }
+}
+
 export interface SectionsTimeline extends Schema.Component {
   collectionName: 'components_sections_timelines'
   info: {
@@ -990,6 +1003,7 @@ declare module '@strapi/types' {
       'sections.subpage-list': SectionsSubpageList
       'sections.testimonials': SectionsTestimonials
       'sections.text-with-image': SectionsTextWithImage
+      'sections.text-with-image-overlapped': SectionsTextWithImageOverlapped
       'sections.timeline': SectionsTimeline
       'sections.tootoot-events': SectionsTootootEvents
       'sections.top-services': SectionsTopServices
