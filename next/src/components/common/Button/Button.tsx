@@ -100,9 +100,8 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
       variant === 'unstyled'
         ? (className ?? '')
         : cn(
-            // TODO text-button interferes with text-[color], as quickfix we set size and color here by arbitrary values
-            'inline-flex h-auto items-center justify-center gap-2 text-[1rem] font-semibold leading-6 transition',
-            'outline-none ring-offset-2 focus-visible:ring',
+            'inline-flex h-auto items-center justify-center gap-2 text-size-button-large leading-6 font-semibold transition',
+            'ring-offset-2 outline-none focus-visible:ring',
 
             // we change rounded corners for link focus ring
             { 'rounded-sm max-lg:gap-1': variant === 'link', 'rounded-lg': variant !== 'link' },
