@@ -2777,7 +2777,7 @@ type Page {
   sections: [PageSectionsDynamicZone]
   slug: String
   subtext: String
-  title: String
+  title: String!
   updatedAt: DateTime
 }
 

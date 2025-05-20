@@ -1210,7 +1210,8 @@ export interface ApiPagePage extends Schema.CollectionType {
           localized: true
         }
       }>
-    title: Attribute.Text &
+    title: Attribute.String &
+      Attribute.Required &
       Attribute.SetPluginOptions<{
         i18n: {
           localized: true
