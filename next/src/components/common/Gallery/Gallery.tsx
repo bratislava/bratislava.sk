@@ -109,7 +109,7 @@ const Gallery = ({ images = [] }: GalleryProps) => {
                 >
                   <div className="absolute top-0 flex size-full flex-col items-center justify-center gap-0.5 bg-white p-2 text-center">
                     <Typography variant="h2">+{moreImagesCount}</Typography>
-                    <Typography variant="p-default" className="text-large max-md:hidden">
+                    <Typography variant="p-default" className="text-size-p-large max-md:hidden">
                       {t('Gallery.morePhotos', { count: moreImagesCount })}
                     </Typography>
                   </div>

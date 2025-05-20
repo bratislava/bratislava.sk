@@ -1,5 +1,4 @@
 @import 'tailwindcss';
-/* @import '../../node_modules/@bratislava/component-library/dist/assets/style.css' layer(utilities); */
 
 @plugin 'tailwind-scrollbar-hide';
 @plugin 'tailwindcss-react-aria-components';
@@ -26,13 +25,12 @@
     as `rgba(var(--color-main-600), 0.25)`.
   */
 
-  /* TODO check if implemented correctly */
   --color-transparent: transparent;
   --color-current: currentColor;
 
   --color-white: var(--color-grey-0);
-  --color-font: var(--color-grey-700);
-  --color-font-contrast: var(--color-grey-0);
+  --color-font: var(--color-content-passive-primary);
+  --color-font-contrast: var(--color-content-passive-inverted-primary);
   --color-error: var(--color-negative-700);
 
   /* Bratislava main red */
@@ -287,68 +285,71 @@
   --font-weight-semibold: 600;
   --font-weight-bold: 700;
 
-  --text-button-large: 1rem; /* 16px */
-  --leading-button-large: 1.5rem; /* 24px */
-  --text-button-default: 0.875rem; /* 14px */
-  --leading-button-default: 1.5rem; /* 24px */
-
-  --text-p-large: 1.25rem; /* 20px */
-  --leading-p-large: 1.75rem; /* 28px */
-  --text-p-large-r: 1.25rem; /* 20px */
-  --leading-p-large-r: 1.75rem; /* 28px */
-
-  --text-p-default: 1rem; /* 16px */
-  --leading-p-default: 1.5rem; /* 24px */
-  --text-p-default-r: 1rem; /* 16px */
-  --leading-p-default-r: 1.5rem; /* 24px */
-
-  --text-component-default: 1rem; /* 16px */
-  --leading-component-default: 1.5rem; /* 24px */
-  --text-component-small: 1rem; /* 16px */
-  --leading-component-small: 1.5rem; /* 24px */
-
-  --text-h6: 1rem; /* 16px */
-  --leading-h6: 1.5rem; /* 24px */
-  --text-h6-r: 1rem; /* 16px */
-  --leading-h6-r: 1.5rem; /* 24px */
-
-  --text-h5: 1.25rem; /* 20px */
-  --leading-h5: 1.75rem; /* 28px */
-  --text-h5-r: 1rem; /* 16px */
-  --leading-h5-r: 1.5rem; /* 24px */
-
-  --text-h4: 1.5rem; /* 24px */
-  --leading-h4: 2rem; /* 32px */
-  --text-h4-r: 1.125rem; /* 18px */
-  --leading-h4-r: 1.625rem; /* 26px */
-
-  --text-h3: 1.75rem; /* 28px */
-  --leading-h3: 2.25rem; /* 36px */
-  --text-h3-r: 1.25rem; /* 20px */
-  --leading-h3-r: 1.75rem; /* 28px */
-
-  --text-h2: 2rem; /* 32px */
-  --leading-h2: 2.5rem; /* 40px */
-  --text-h2-r: 1.5rem; /* 24px */
-  --leading-h2-r: 2rem; /* 32px */
+  --text-h1-hero: 3.5rem; /* 56px */
+  --leading-h1-hero: 4rem; /* 64px */
+  --text-h1-hero-r: 2rem; /* 32px */
+  --leading-h1-hero-r: 2.5rem; /* 40px */
 
   --text-h1: 2.5rem; /* 40px */
   --leading-h1: 3rem; /* 48px */
   --text-h1-r: 1.75rem; /* 28px */
   --leading-h1-r: 2.25rem; /* 36px */
 
-  --text-h1-hero: 3.5rem; /* 56px */
-  --leading-h1-hero: 4rem; /* 64px */
-  --text-h1-hero-r: 2rem; /* 32px */
-  --leading-h1-hero-r: 2.5rem; /* 40px */
+  --text-h2: 2rem; /* 32px */
+  --leading-h2: 2.5rem; /* 40px */
+  --text-h2-r: 1.5rem; /* 24px */
+  --leading-h2-r: 2rem; /* 32px */
+
+  --text-h3: 1.75rem; /* 28px */
+  --leading-h3: 2.25rem; /* 36px */
+  --text-h3-r: 1.25rem; /* 20px */
+  --leading-h3-r: 1.75rem; /* 28px */
+
+  --text-h4: 1.5rem; /* 24px */
+  --leading-h4: 2rem; /* 32px */
+  --text-h4-r: 1.125rem; /* 18px */
+  --leading-h4-r: 1.625rem; /* 26px */
+
+  --text-h5: 1.25rem; /* 20px */
+  --leading-h5: 1.75rem; /* 28px */
+  --text-h5-r: 1rem; /* 16px */
+  --leading-h5-r: 1.5rem; /* 24px */
+
+  --text-h6: 1rem; /* 16px */
+  --leading-h6: 1.5rem; /* 24px */
+  --text-h6-r: 1rem; /* 16px */
+  --leading-h6-r: 1.5rem; /* 24px */
+
+  --text-p-large: 1.25rem; /* 20px */
+  --leading-p-large: 1.75rem; /* 28px */
+  --text-p-large-r: 1.125rem; /* 18px */
+  --leading-p-large-r: 1.75rem; /* 28px */
+
+  --text-p-default: 1.125rem; /* 18px */
+  --leading-p-default: 1.75rem; /* 28px */
+  --text-p-default-r: 1rem; /* 16px */
+  --leading-p-default-r: 1.5rem; /* 24px */
+
+  --text-p-small: 1rem; /* 16px */
+  --leading-p-small: 1.5rem; /* 24px */
+
+  --text-p-tiny: 0.875rem; /* 14px */
+  --leading-p-tiny: 1.25rem; /* 20px */
+
+  --text-button-large: 1rem; /* 16px */
+  --leading-button-large: 1.5rem; /* 24px */
+
+  --text-button-default: 0.875rem; /* 14px */
+  --leading-button-default: 1.5rem; /* 24px */
 
   /* ANIMATIONS */
+  /* TODO */
 }
 
 @layer base {
   body {
-    @apply text-font antialiased;
-    font-family: 'Courier-new', sans-serif;
+    @apply text-font;
+    font-family: 'Inter', sans-serif;
   }
 
   h1,
@@ -366,7 +367,7 @@
   ::before,
   ::backdrop,
   ::file-selector-button {
-    border-color: var(--color-grey-200);
+    border-color: var(--color-border-passive-primary);
   }
 }
 
@@ -470,7 +471,6 @@
   }
 
   .base-input {
-    /* TODO this line produces error when using @apply */
     @apply box-border inline-block h-14 appearance-none rounded-[10] border-3 px-6 py-0 font-medium text-font;
     @apply border-white bg-white hover:border-category-600 focus:border-category-600 focus:outline-none;
   }
@@ -497,16 +497,60 @@
 
 /* UTILITIES - text */
 
-@utility text-size-button-large {
-  @apply text-button-large leading-button-large;
+@utility text-size-h1-hero {
+  @apply text-h1-hero leading-h1-hero;
 }
 
-@utility text-size-button-default {
-  @apply text-button-default leading-button-default;
+@utility text-size-h1-hero-r {
+  @apply text-h1-hero-r leading-h1-hero-r;
 }
 
-@utility text-size-button {
-  @apply text-button-default leading-button-default lg:text-button-large lg:leading-button-large;
+@utility text-size-h1 {
+  @apply text-h1 leading-h1;
+}
+
+@utility text-size-h1-r {
+  @apply text-h1-r leading-h1-r;
+}
+
+@utility text-size-h2 {
+  @apply text-h2 leading-h2;
+}
+
+@utility text-size-h2-r {
+  @apply text-h2-r leading-h2-r;
+}
+
+@utility text-size-h3 {
+  @apply text-h3 leading-h3;
+}
+
+@utility text-size-h3-r {
+  @apply text-h3-r leading-h3-r;
+}
+
+@utility text-size-h4 {
+  @apply text-h4 leading-h4;
+}
+
+@utility text-size-h4-r {
+  @apply text-h4-r leading-h4-r;
+}
+
+@utility text-size-h5 {
+  @apply text-h5 leading-h5;
+}
+
+@utility text-size-h5-r {
+  @apply text-h5-r leading-h5-r;
+}
+
+@utility text-size-h6 {
+  @apply text-h6 leading-h6;
+}
+
+@utility text-size-h6-r {
+  @apply text-h6-r leading-h6-r;
 }
 
 @utility text-size-p-large {
@@ -525,68 +569,20 @@
   @apply text-p-default-r leading-p-default-r;
 }
 
-@utility text-size-component-default {
-  @apply text-component-default leading-component-default;
+@utility text-size-p-small {
+  @apply text-p-small leading-p-small;
 }
 
-@utility text-size-component-small {
-  @apply text-component-small leading-component-small;
+@utility text-size-p-tiny {
+  @apply text-p-tiny leading-p-tiny;
 }
 
-@utility text-size-h6 {
-  @apply text-h6 leading-h6;
+@utility text-size-button-large {
+  @apply text-button-large leading-button-large;
 }
 
-@utility text-size-h6-r {
-  @apply text-h6-r leading-h6-r;
-}
-
-@utility text-size-h5 {
-  @apply text-h5 leading-h5;
-}
-
-@utility text-size-h5-r {
-  @apply text-h5-r leading-h5-r;
-}
-
-@utility text-size-h4 {
-  @apply text-h4 leading-h4;
-}
-
-@utility text-size-h4-r {
-  @apply text-h4-r leading-h4-r;
-}
-
-@utility text-size-h3 {
-  @apply text-h3 leading-h3;
-}
-
-@utility text-size-h3-r {
-  @apply text-h3-r leading-h3-r;
-}
-
-@utility text-size-h2 {
-  @apply text-h2 leading-h2;
-}
-
-@utility text-size-h2-r {
-  @apply text-h2-r leading-h2-r;
-}
-
-@utility text-size-h1 {
-  @apply text-h1 leading-h1;
-}
-
-@utility text-size-h1-r {
-  @apply text-h1-r leading-h1-r;
-}
-
-@utility text-size-h1-hero {
-  @apply text-h1-hero leading-h1-hero;
-}
-
-@utility text-size-h1-hero-r {
-  @apply text-h1-hero-r leading-h1-hero-r;
+@utility text-size-button-default {
+  @apply text-button-default leading-button-default;
 }
 
 /* UTILITIES - other */
@@ -612,7 +608,6 @@ input[type='number']::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-
 input[type='number'] {
   /* Firefox */
   -moz-appearance: textfield;
@@ -631,6 +626,7 @@ input[type='password']::-webkit-strong-password-auto-fill-button {
   @apply mr-8 pb-2;
 }
 
+/* Override default styling for autofilled form fields */
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,

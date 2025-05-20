@@ -28,13 +28,13 @@ const HomepageTabs = ({ className }: HomepageTabsProps) => {
       <Tabs>
         <TabList
           aria-label={t('HomepageTabs.aria.tabListName')}
-          className="negative-x-spacing flex grid-cols-4 gap-x-4 overflow-auto overflow-y-hidden scrollbar-hide md:grid"
+          className="negative-x-spacing scrollbar-hide flex grid-cols-4 gap-x-4 overflow-auto overflow-y-hidden md:grid"
         >
           {tabs.map(({ id, label }) => (
             <Tab
               key={id}
               id={id}
-              className="text-large relative cursor-pointer whitespace-nowrap py-3 text-center selected:font-semibold md:py-5"
+              className="relative cursor-pointer py-3 text-center text-p-large whitespace-nowrap md:py-5 selected:font-semibold"
               data-cy={`homepage-tab-${id}`}
             >
               {({ isSelected }) => (

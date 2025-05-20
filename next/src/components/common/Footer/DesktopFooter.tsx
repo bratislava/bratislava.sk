@@ -65,7 +65,7 @@ const DesktopFooter = () => {
           </div>
         </div>
         <HorizontalDivider />
-        <div className="text-center text-component-default">
+        <div className="text-center text-size-p-small">
           <FooterCopyright {...attributes} />
         </div>
       </footer>

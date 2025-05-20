@@ -36,9 +36,9 @@ const Markdown = ({ content, variant = 'default', className }: MarkdownProps) =>
       className={cn(
         styles.markdown,
         {
-          'text-large': variant === 'large',
-          'text-default': variant === 'default' || variant === 'accordion',
-          'text-component-default': variant === 'small',
+          'text-size-p-large': variant === 'large',
+          'text-size-p-default': variant === 'default' || variant === 'accordion',
+          'text-size-p-small': variant === 'small',
         },
         className,
       )}
@@ -97,9 +97,9 @@ const Markdown = ({ content, variant = 'default', className }: MarkdownProps) =>
             <Typography
               variant="p-default"
               className={cn('whitespace-pre-wrap', {
-                'text-large': variant === 'large',
-                'text-default': variant === 'default' || variant === 'accordion',
-                'text-component-default': variant === 'small',
+                'text-size-p-large': variant === 'large',
+                'text-size-p-default': variant === 'default' || variant === 'accordion',
+                'text-size-p-small': variant === 'small',
               })}
               {...props}
             >

@@ -49,7 +49,7 @@ const InputField = ({
     React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>,
     'onChange'
   >) => (
-  <label className="text-large flex flex-col items-center text-center" htmlFor={id}>
+  <label className="flex flex-col items-center text-center text-size-p-large" htmlFor={id}>
     {label}
     <div className="relative mt-3 flex items-center">
       <Button
@@ -67,7 +67,7 @@ const InputField = ({
             onChange(parseInt(e.target.value, 10))
           }
         }}
-        className="number-control-none text-large box-border w-64 rounded-lg px-10 py-4 text-center"
+        className="number-control-none box-border w-64 rounded-lg px-10 py-4 text-center text-size-p-large"
         required
         type="number"
         min={0}
@@ -121,7 +121,7 @@ const MinimumCalculator_Deprecated = ({
         {t('MinimumCalculator.description')}
       </Typography>
       <form
-        className="text-large mt-10 flex flex-col items-center gap-y-8 font-medium"
+        className="mt-10 flex flex-col items-center gap-y-8 text-size-p-large font-medium"
         onSubmit={handleSubmit}
       >
         <InputField
@@ -179,7 +179,7 @@ const MinimumCalculator_Deprecated = ({
           <p className="text-h4">
             {canAcommodate ? t('MinimumCalculator.answerYes') : t('MinimumCalculator.answerNo')}
           </p>
-          <Typography variant="p-large" className="text-large m-auto mt-5 w-9/12">
+          <Typography variant="p-large" className="m-auto mt-5 w-9/12 text-size-p-large">
             {canAcommodate
               ? t('MinimumCalculator.answerDescriptionYes')
               : t('MinimumCalculator.answerDescriptionNo').replace(

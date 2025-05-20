@@ -65,7 +65,7 @@ const RegulationRowCard = ({
             )}
           </div>
           {metadata?.length ? (
-            <span className="text-component-default text-grey-700">
+            <span className="text-size-p-small text-grey-700">
               {metadata.filter(isDefined).join(' • ')}
             </span>
           ) : null}

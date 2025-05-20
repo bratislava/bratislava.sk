@@ -34,7 +34,7 @@ const Accordion = ({ variant = 'boxed', title, children }: AccordionProps) => {
   })
 
   const contentStyles = cn({
-    'text-default mx-4 mb-4 lg:mx-8 lg:mb-6': variant === 'boxed',
+    'mx-4 mb-4 text-size-p-default lg:mx-8 lg:mb-6': variant === 'boxed',
     'pb-6': variant === 'footer',
   })
 
