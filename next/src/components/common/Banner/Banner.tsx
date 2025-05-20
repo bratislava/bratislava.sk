@@ -47,7 +47,7 @@ const Banner = ({
         })}
       >
         <div className="flex flex-col items-start gap-3">
-          <Typography type="h2" size={variant === 'white_condensed' ? 'h4' : 'h2'}>
+          <Typography as="h2" variant={variant === 'white_condensed' ? 'h4' : 'h2'}>
             {title}
           </Typography>
 

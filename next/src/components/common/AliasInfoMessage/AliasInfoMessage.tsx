@@ -25,7 +25,7 @@ const AliasInfoMessage = ({ alias, variant = 'page' }: Props) => {
 
   return (
     <div className="py-8 italic">
-      <Typography type="p">
+      <Typography variant="p-default">
         {`${translationMap[variant]} `}
         {/* eslint-disable-next-line i18next/no-literal-string */}
         <MLink href={`/${alias}`} variant="underlined">

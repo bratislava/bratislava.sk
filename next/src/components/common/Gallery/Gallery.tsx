@@ -87,8 +87,7 @@ const Gallery = ({ images = [] }: GalleryProps) => {
                         {
                           'md:aspect-592/400': imageCount === 1 || imageCount === 2,
                           'md:aspect-384/272': imageCount === 3,
-                          'col-span-2 aspect-288/140':
-                            isMobile && imageCount === 3 && index === 0,
+                          'col-span-2 aspect-288/140': isMobile && imageCount === 3 && index === 0,
                         },
                       )}
                     >
@@ -109,8 +108,8 @@ const Gallery = ({ images = [] }: GalleryProps) => {
                   className="relative w-full cursor-pointer overflow-hidden rounded-lg border-2 border-action-content-default pt-[100%]"
                 >
                   <div className="absolute top-0 flex size-full flex-col items-center justify-center gap-0.5 bg-white p-2 text-center">
-                    <Typography type="h2">+{moreImagesCount}</Typography>
-                    <Typography type="p" className="text-large max-md:hidden">
+                    <Typography variant="h2">+{moreImagesCount}</Typography>
+                    <Typography variant="p-default" className="text-large max-md:hidden">
                       {t('Gallery.morePhotos', { count: moreImagesCount })}
                     </Typography>
                   </div>

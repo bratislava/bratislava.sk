@@ -18,7 +18,7 @@ const Timeline = ({ timelineItems }: TimelineProps) => {
           iconClassName="bg-category-600 flex flex-col justify-center items-center text-white text-h4 font-bold shadow-none!"
           icon={<>{index + 1}</>}
         >
-          <Typography type="h3" size="h4">
+          <Typography variant="h4" as="h3">
             {timelineItem.title}
           </Typography>
           <Markdown content={timelineItem.content} />

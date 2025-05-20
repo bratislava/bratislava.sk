@@ -46,7 +46,7 @@ const DesktopFooter = () => {
           {attributes.columns?.filter(isDefined).map((column, index) => (
             // eslint-disable-next-line react/no-array-index-key
             <div className="flex flex-col gap-3 lg:gap-4" key={index}>
-              <Typography type="h2" size="h5">
+              <Typography variant="h5" as="h2">
                 {column.title}
               </Typography>
               <div className="flex flex-col gap-3">
@@ -65,7 +65,7 @@ const DesktopFooter = () => {
           </div>
         </div>
         <HorizontalDivider />
-        <div className="text-component-default text-center">
+        <div className="text-center text-component-default">
           <FooterCopyright {...attributes} />
         </div>
       </footer>

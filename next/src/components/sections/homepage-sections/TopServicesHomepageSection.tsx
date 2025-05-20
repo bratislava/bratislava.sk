@@ -18,7 +18,7 @@ const TopServicesHomepageSection = () => {
 
   return (
     <SectionContainer className="bg-main-200 py-6 lg:py-18">
-      <Typography type="h2" className="pb-6 text-center lg:pb-12">
+      <Typography variant="h2" className="pb-6 text-center lg:pb-12">
         {topServices.title}
       </Typography>
       <TopServices items={topServicesFiltered} />

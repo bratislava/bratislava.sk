@@ -22,8 +22,8 @@ const HighlightsHomepageSection = () => {
     <div className="negative-x-spacing py-8 md:py-0">
       {title || text ? (
         <div className="flex flex-col gap-2 text-center lg:pt-18">
-          {title && <Typography type="h2">{title}</Typography>}
-          {text && <Typography type="p">{text}</Typography>}
+          {title && <Typography variant="h2">{title}</Typography>}
+          {text && <Typography variant="p-default">{text}</Typography>}
         </div>
       ) : null}
 

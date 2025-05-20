@@ -113,11 +113,11 @@ const MinimumCalculator_Deprecated = ({
 
   return (
     <div className={twMerge('bg-category-200 text-center text-font', className)}>
-      <Typography type="h2" size="h3">
+      <Typography variant="h3" as="h2">
         {t('MinimumCalculator.title')}
       </Typography>
 
-      <Typography type="p" className="m-auto mt-6 w-10/12 pt-0.5">
+      <Typography variant="p-default" className="m-auto mt-6 w-10/12 pt-0.5">
         {t('MinimumCalculator.description')}
       </Typography>
       <form
@@ -179,7 +179,7 @@ const MinimumCalculator_Deprecated = ({
           <p className="text-h4">
             {canAcommodate ? t('MinimumCalculator.answerYes') : t('MinimumCalculator.answerNo')}
           </p>
-          <Typography type="p" size="p-large" className="text-large m-auto mt-5 w-9/12">
+          <Typography variant="p-large" className="text-large m-auto mt-5 w-9/12">
             {canAcommodate
               ? t('MinimumCalculator.answerDescriptionYes')
               : t('MinimumCalculator.answerDescriptionNo').replace(

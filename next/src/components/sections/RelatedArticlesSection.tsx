@@ -38,7 +38,7 @@ const RelatedArticlesSection = ({ page, className }: Props) => {
       <div className="flex flex-col">
         <div className="flex">
           <div className="grow">
-            <Typography type="h2">{t('RelatedArticlesSection.relatedArticles')}</Typography>
+            <Typography variant="h2">{t('RelatedArticlesSection.relatedArticles')}</Typography>
           </div>
         </div>
 

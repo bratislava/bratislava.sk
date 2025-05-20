@@ -39,7 +39,7 @@ const RegulationRowCard = ({
           <div className="flex flex-col items-start gap-2 lg:flex-row lg:items-center lg:gap-4">
             <MLink
               href={path ?? '#'}
-              className="text-h6 break-words font-bold"
+              className="text-h6 font-bold break-words"
               stretched
               variant="underlineOnHover"
             >
@@ -47,19 +47,19 @@ const RegulationRowCard = ({
             </MLink>
             {/* TODO style https://www.figma.com/design/17wbd0MDQcMW9NbXl6UPs8/DS--Component-library?node-id=14811-28150&m=dev */}
             {isFullTextRegulation && (
-              <Typography type="p" size="p-small" className="rounded border px-2 py-0.5">
+              <Typography variant="p-small" className="rounded border px-2 py-0.5">
                 {t('Regulation.fullTextRegulation')}
               </Typography>
             )}
             {/* TODO style and wording */}
             {isAmendee && (
-              <Typography type="p" size="p-small" className="rounded border px-2 py-0.5">
+              <Typography variant="p-small" className="rounded border px-2 py-0.5">
                 {t('Regulation.amendment')}
               </Typography>
             )}
             {/* TODO style */}
             {isCancelled && (
-              <Typography type="p" size="p-small" className="rounded border px-2 py-0.5">
+              <Typography variant="p-small" className="rounded border px-2 py-0.5">
                 {t('Regulation.cancelled')}
               </Typography>
             )}

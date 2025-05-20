@@ -18,7 +18,7 @@ const Institution = ({ title, subtitle, content, url, urlLabel }: InstitutionPro
   return (
     <div className="relative h-full rounded-lg border-2 border-[rgba(51,51,51,0.25)] bg-white p-8">
       <div className="flex flex-col">
-        <Typography type="h4" size="h5" id={titleId} className="text-h5">
+        <Typography variant="h5" as="h4" id={titleId} className="text-h5">
           {title}
         </Typography>
 

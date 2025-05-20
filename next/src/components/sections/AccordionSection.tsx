@@ -20,7 +20,7 @@ const AccordionSection = ({ section }: AccordionSectionProps) => {
   return (
     <>
       {section.title && (
-        <Typography type="h2" className="flex justify-center pb-14">
+        <Typography variant="h2" className="flex justify-center pb-14">
           {section.title}
         </Typography>
       )}

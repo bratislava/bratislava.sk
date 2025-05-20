@@ -17,7 +17,7 @@ export type LinksProps = {
 const Links = ({ title, pageLinks, className }: LinksProps) => {
   return (
     <div className={cn('flex w-full flex-col gap-6 md:w-10/12', className)}>
-      {title && <Typography type="h2">{title}</Typography>}
+      {title && <Typography variant="h2">{title}</Typography>}
 
       <ul className="flex flex-col gap-4">
         {pageLinks?.filter(isDefined).map((pageLink, index) => (

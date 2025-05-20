@@ -41,7 +41,7 @@ const Contacts = ({ section }: ContactsProps) => {
           'md:col-span-5': isHorizontal,
         })}
       >
-        <Typography type="h2">{section.title}</Typography>
+        <Typography variant="h2">{section.title}</Typography>
         {section.description && <Markdown content={section.description} />}
       </div>
       <div

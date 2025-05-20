@@ -76,7 +76,7 @@ const TabPanelLatestNews = () => {
                     variant="underlineOnHover"
                     className="line-clamp-3"
                   >
-                    <Typography type="h3" size="h5">
+                    <Typography variant="h5" as="h3">
                       {title}
                     </Typography>
                   </MLink>

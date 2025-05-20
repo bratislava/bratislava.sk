@@ -143,8 +143,8 @@ SearchResultCard.TitleWithLink = function ({
       {href ? (
         <MLink stretched href={href}>
           <Typography
-            type="h3"
-            size="h6"
+            variant="h6"
+            as="h3"
             className={cn(
               'line-clamp-3 group-hover:underline md:line-clamp-2 lg:line-clamp-1',
               className,
@@ -155,8 +155,8 @@ SearchResultCard.TitleWithLink = function ({
         </MLink>
       ) : (
         <Typography
-          type="h3"
-          size="h6"
+          variant="h6"
+          as="h3"
           className={cn('line-clamp-3 md:line-clamp-2 lg:line-clamp-1', className)}
         >
           {title}
@@ -179,13 +179,11 @@ SearchResultCard.Metadata = function ({
       return (
         <Fragment key={item}>
           {index > 0 && (
-            <Typography type="p" size="p-small" className="max-lg:hidden">
+            <Typography variant="p-small" className="max-lg:hidden">
               •
             </Typography>
           )}
-          <Typography type="p" size="p-small">
-            {item}
-          </Typography>
+          <Typography variant="p-small">{item}</Typography>
         </Fragment>
       )
     }) ?? null

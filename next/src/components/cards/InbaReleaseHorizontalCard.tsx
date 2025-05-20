@@ -45,7 +45,7 @@ const InbaReleaseHorizontalCard = ({
         </div>
         <div className="flex grow flex-col gap-2">
           <MLink href={linkHref} stretched>
-            <Typography type="h3" size="h5" className="line-clamp-3 group-hover:underline">
+            <Typography variant="h5" as="h3" className="line-clamp-3 group-hover:underline">
               {title}
             </Typography>
           </MLink>
@@ -55,7 +55,7 @@ const InbaReleaseHorizontalCard = ({
             </div>
           )}
           {date && (
-            <Typography type="p" className="mt-1">
+            <Typography variant="p-default" className="mt-1">
               {t('InbaRelease.releasedOn', { date })}
             </Typography>
           )}

@@ -35,7 +35,7 @@ const PageHeader = ({
   return (
     <div className={cn('relative overflow-x-clip bg-category-200', className)}>
       {imageSrc && (
-        <div className="absolute right-0 top-0 hidden h-full w-[350px] md:block lg:w-[750px]">
+        <div className="absolute top-0 right-0 hidden h-full w-[350px] md:block lg:w-[750px]">
           <Image
             src={imageSrc}
             alt=""
@@ -56,7 +56,7 @@ const PageHeader = ({
         <div className="flex flex-col">
           <Breadcrumbs breadcrumbs={breadcrumbs} />
 
-          <div className="flex flex-col gap-y-4 pb-6 pt-3 lg:gap-y-6 lg:pb-10 lg:pt-6">
+          <div className="flex flex-col gap-y-4 pt-3 pb-6 lg:gap-y-6 lg:pt-6 lg:pb-10">
             {/* TODO this tag is not in DS */}
             {tag && (
               <span className="text-default inline-block self-start rounded bg-category-700 px-3 py-1 font-medium text-white">
@@ -67,15 +67,11 @@ const PageHeader = ({
             {(title || subtext) && (
               <div className="flex max-w-[800px] flex-col gap-y-1 lg:gap-y-4">
                 {title && (
-                  <Typography type="h1" data-cy="page-heading">
+                  <Typography variant="h1" data-cy="page-heading">
                     {title}
                   </Typography>
                 )}
-                {subtext && (
-                  <Typography type="p" size="p-large">
-                    {subtext}
-                  </Typography>
-                )}
+                {subtext && <Typography variant="p-large">{subtext}</Typography>}
               </div>
             )}
 

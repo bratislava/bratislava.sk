@@ -40,7 +40,7 @@ const IconTitleDescItem = ({
         )}
       </div>
       <div className="flex w-full flex-col gap-2 text-center">
-        <Typography type="h3" size="h4">
+        <Typography variant="h4" as="h3">
           {title}
         </Typography>
         <Markdown content={text} />

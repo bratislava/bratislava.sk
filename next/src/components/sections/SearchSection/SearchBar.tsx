@@ -36,7 +36,7 @@ const SearchBar = forwardRef<HTMLInputElement, SearchBarProps>(
         onSubmit={handleSearch}
       >
         <Label>
-          <Typography type="p" fontWeight="semibold">
+          <Typography variant="p-default" className="font-semibold">
             {t('SearchPage.whatAreYouLookingFor')}
           </Typography>
         </Label>
@@ -48,10 +48,10 @@ const SearchBar = forwardRef<HTMLInputElement, SearchBarProps>(
           />
           <SearchIcon
             aria-hidden
-            className="pointer-events-none absolute left-6 top-[calc(50%-0.75rem)]"
+            className="pointer-events-none absolute top-[calc(50%-0.75rem)] left-6"
           />
           {isLoading ? (
-            <Spinner size="sm" className="absolute right-15 top-[calc(50%-0.75rem)]" />
+            <Spinner size="sm" className="absolute top-[calc(50%-0.75rem)] right-15" />
           ) : null}
           {input ? (
             <Button
@@ -61,7 +61,7 @@ const SearchBar = forwardRef<HTMLInputElement, SearchBarProps>(
               variant="icon-wrapped-negative-margin"
               // Keyboard users use Escape to erase the input, they can't focus this button, so empty aria-label is okay
               aria-label=""
-              className="absolute right-6 top-[calc(50%-0.75rem)]"
+              className="absolute top-[calc(50%-0.75rem)] right-6"
             />
           ) : null}
         </div>

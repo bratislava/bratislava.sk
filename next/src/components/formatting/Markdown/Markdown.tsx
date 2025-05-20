@@ -63,32 +63,48 @@ const Markdown = ({ content, variant = 'default', className }: MarkdownProps) =>
           // We don't want to use h1 in markdown, so it returns standard <p> tag
           // Accordion uses h3 as its own heading, we want to display all the headings in markdown smaller or equal to h4.
           h1: 'p',
-          h2: ({ node, ...props }) => (
+          h2: ({ children, node, ...props }) => (
             <Typography
-              type="h2"
-              size={variant === 'accordion' ? 'h4' : 'h2'}
+              as="h2"
+              variant={variant === 'accordion' ? 'h4' : 'h2'}
               {...props}
               data-cy="heading-two"
-            />
+            >
+              {children}
+            </Typography>
           ),
-          h3: ({ node, ...props }) => (
-            <Typography type="h3" size={variant === 'accordion' ? 'h5' : 'h3'} {...props} />
+          h3: ({ children, node, ...props }) => (
+            <Typography as="h3" variant={variant === 'accordion' ? 'h5' : 'h3'} {...props}>
+              {children}
+            </Typography>
           ),
-          h4: ({ node, ...props }) => (
-            <Typography type="h4" size={variant === 'accordion' ? 'h6' : 'h4'} {...props} />
+          h4: ({ children, node, ...props }) => (
+            <Typography as="h4" variant={variant === 'accordion' ? 'h6' : 'h4'} {...props}>
+              {children}
+            </Typography>
           ),
-          h5: ({ node, ...props }) => <Typography type="h5" {...props} />,
-          h6: ({ node, ...props }) => <Typography type="h6" {...props} />,
-          p: ({ node, ...props }) => (
+          h5: ({ children, node, ...props }) => (
+            <Typography variant="h5" {...props}>
+              {children}
+            </Typography>
+          ),
+          h6: ({ children, node, ...props }) => (
+            <Typography variant="h6" {...props}>
+              {children}
+            </Typography>
+          ),
+          p: ({ children, node, ...props }) => (
             <Typography
-              type="p"
+              variant="p-default"
               className={cn('whitespace-pre-wrap', {
                 'text-large': variant === 'large',
                 'text-default': variant === 'default' || variant === 'accordion',
                 'text-component-default': variant === 'small',
               })}
               {...props}
-            />
+            >
+              {children}
+            </Typography>
           ),
           strong: ({ node, ...props }) => <strong className="font-semibold" {...props} />,
           a: ({ node, href, title, children, ...props }) => {
