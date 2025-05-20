@@ -604,16 +604,7 @@
           "eventsSection.showMoreLink.page",
           "eventsSection.showMoreLink.article",
           "eventsSection.showMoreLink.url",
-          "eventsSection.showMoreLink.analyticsId",
-          "inbaSection.title",
-          "inbaSection.text",
-          "inbaSection.inbaFrontImage",
-          "inbaSection.inbaRearImage",
-          "inbaSection.showMoreLink.label",
-          "inbaSection.showMoreLink.page",
-          "inbaSection.showMoreLink.article",
-          "inbaSection.showMoreLink.url",
-          "inbaSection.showMoreLink.analyticsId"
+          "eventsSection.showMoreLink.analyticsId"
         ],
         "locales": [
           "en",
@@ -711,16 +702,7 @@
           "eventsSection.showMoreLink.page",
           "eventsSection.showMoreLink.article",
           "eventsSection.showMoreLink.url",
-          "eventsSection.showMoreLink.analyticsId",
-          "inbaSection.title",
-          "inbaSection.text",
-          "inbaSection.inbaFrontImage",
-          "inbaSection.inbaRearImage",
-          "inbaSection.showMoreLink.label",
-          "inbaSection.showMoreLink.page",
-          "inbaSection.showMoreLink.article",
-          "inbaSection.showMoreLink.url",
-          "inbaSection.showMoreLink.analyticsId"
+          "eventsSection.showMoreLink.analyticsId"
         ],
         "locales": [
           "en",
@@ -794,16 +776,7 @@
           "eventsSection.showMoreLink.page",
           "eventsSection.showMoreLink.article",
           "eventsSection.showMoreLink.url",
-          "eventsSection.showMoreLink.analyticsId",
-          "inbaSection.title",
-          "inbaSection.text",
-          "inbaSection.inbaFrontImage",
-          "inbaSection.inbaRearImage",
-          "inbaSection.showMoreLink.label",
-          "inbaSection.showMoreLink.page",
-          "inbaSection.showMoreLink.article",
-          "inbaSection.showMoreLink.url",
-          "inbaSection.showMoreLink.analyticsId"
+          "eventsSection.showMoreLink.analyticsId"
         ],
         "locales": [
           "en",

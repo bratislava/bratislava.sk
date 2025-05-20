@@ -16,16 +16,7 @@
           "inba.content",
           "inbaFrontImage",
           "inbaRearImage",
-          "inbaUrl",
-          "inbaSection.title",
-          "inbaSection.text",
-          "inbaSection.inbaFrontImage",
-          "inbaSection.inbaRearImage",
-          "inbaSection.showMoreLink.label",
-          "inbaSection.showMoreLink.page",
-          "inbaSection.showMoreLink.article",
-          "inbaSection.showMoreLink.url",
-          "inbaSection.showMoreLink.analyticsId"
+          "inbaUrl"
         ],
         "locales": []
       },
@@ -45,16 +36,7 @@
           "inba.content",
           "inbaFrontImage",
           "inbaRearImage",
-          "inbaUrl",
-          "inbaSection.title",
-          "inbaSection.text",
-          "inbaSection.inbaFrontImage",
-          "inbaSection.inbaRearImage",
-          "inbaSection.showMoreLink.label",
-          "inbaSection.showMoreLink.page",
-          "inbaSection.showMoreLink.article",
-          "inbaSection.showMoreLink.url",
-          "inbaSection.showMoreLink.analyticsId"
+          "inbaUrl"
         ],
         "locales": [
           "en",
@@ -77,16 +59,7 @@
           "inba.content",
           "inbaFrontImage",
           "inbaRearImage",
-          "inbaUrl",
-          "inbaSection.title",
-          "inbaSection.text",
-          "inbaSection.inbaFrontImage",
-          "inbaSection.inbaRearImage",
-          "inbaSection.showMoreLink.label",
-          "inbaSection.showMoreLink.page",
-          "inbaSection.showMoreLink.article",
-          "inbaSection.showMoreLink.url",
-          "inbaSection.showMoreLink.analyticsId"
+          "inbaUrl"
         ],
         "locales": [
           "en",

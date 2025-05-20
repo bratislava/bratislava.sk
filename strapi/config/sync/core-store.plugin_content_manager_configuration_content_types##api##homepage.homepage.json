@@ -202,20 +202,6 @@
           "sortable": false
         }
       },
-      "inbaSection": {
-        "edit": {
-          "label": "inba",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "inbaSection",
-          "searchable": false,
-          "sortable": false
-        }
-      },
       "createdAt": {
         "edit": {
           "label": "createdAt",
@@ -276,6 +262,12 @@
       }
     },
     "layouts": {
+      "list": [
+        "id",
+        "createdAt",
+        "updatedAt",
+        "eventsSection"
+      ],
       "edit": [
         [
           {
@@ -317,6 +309,12 @@
         ],
         [
           {
+            "name": "eventsSection",
+            "size": 12
+          }
+        ],
+        [
+          {
             "name": "topServices",
             "size": 12
           }
@@ -342,25 +340,7 @@
             "name": "inbaRearImage",
             "size": 6
           }
-        ],
-        [
-          {
-            "name": "eventsSection",
-            "size": 12
-          }
-        ],
-        [
-          {
-            "name": "inbaSection",
-            "size": 12
-          }
         ]
-      ],
-      "list": [
-        "id",
-        "createdAt",
-        "updatedAt",
-        "eventsSection"
       ]
     }
   },
