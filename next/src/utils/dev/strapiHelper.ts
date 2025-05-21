@@ -83,7 +83,22 @@ export async function listPages() {
     // .filter((page) => {
     // return page.pageColor !== page.pageCategory?.data?.attributes?.color
     // })
-    .filter((page) => !page.slug?.includes('/'))
+    // .filter((page) => !page.slug?.includes('/'))
+    .filter((page) => {
+      const sections =
+        page.sections?.filter(
+          (section) => section?.__typename === 'ComponentSectionsTextWithImage',
+        ) ?? []
+      if (
+        sections.some(
+          (section) => section?.__typename === 'ComponentSectionsTextWithImage' && !section.content,
+        )
+      ) {
+        return true
+      }
+
+      return false
+    })
 
   console.log('-----------------------------------------------------------------------------------')
   console.log('Number of all pages:', pages.length)

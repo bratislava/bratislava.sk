@@ -1,7 +1,7 @@
 {
-  "collectionName": "components_sections_text_with_images",
+  "collectionName": "components_sections_text_with_image_overlappeds",
   "info": {
-    "displayName": "Text with Image",
+    "displayName": "Text with image overlapped",
     "description": ""
   },
   "options": {},
@@ -10,7 +10,7 @@
       "type": "richtext",
       "required": false
     },
-    "imageSrc": {
+    "image": {
       "type": "media",
       "multiple": false,
       "required": true,
@@ -22,19 +22,12 @@
       "type": "enumeration",
       "enum": [
         "left",
-        "right"
+        "right",
+        "left shifted",
+        "right shifted"
       ],
       "required": true,
       "default": "right"
-    },
-    "imageAspectRatio": {
-      "type": "enumeration",
-      "enum": [
-        "ratio 1:1",
-        "ratio 4:3"
-      ],
-      "required": false,
-      "default": "ratio 1:1"
     }
   }
 }

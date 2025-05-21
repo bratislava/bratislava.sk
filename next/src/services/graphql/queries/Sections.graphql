@@ -83,12 +83,18 @@ fragment TextWithImageSection on ComponentSectionsTextWithImage {
   imagePosition
   imageSrc {
     data {
-      attributes {
-        url
-        alternativeText
-        width
-        height
-      }
+      ...UploadImageEntity
+    }
+  }
+  imageAspectRatio
+}
+
+fragment TextWithImageOverlappedSection on ComponentSectionsTextWithImageOverlapped {
+  content
+  imagePositionTextWithImageOverlapped: imagePosition
+  image {
+    data {
+      ...UploadImageEntity
     }
   }
 }
@@ -394,6 +400,10 @@ fragment Sections on PageSectionsDynamicZone {
 
   ... on ComponentSectionsTextWithImage {
     ...TextWithImageSection
+  }
+
+  ... on ComponentSectionsTextWithImageOverlapped {
+    ...TextWithImageOverlappedSection
   }
 
   ... on ComponentSectionsIframe {
