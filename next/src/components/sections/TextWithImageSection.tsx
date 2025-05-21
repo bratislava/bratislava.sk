@@ -21,12 +21,12 @@ type TextWithImageSectionProps = {
  */
 
 const TextWithImageSection = ({ section }: TextWithImageSectionProps) => {
-  const { content, imagePosition, image, imageAspectRatio } = section
+  const { content, imagePosition, imageSrc: image, imageAspectRatio } = section
 
   const ImageContent = (
     <div
       className={cn(
-        'bg-background-passive-primary relative size-full shrink-0 overflow-hidden rounded-3xl lg:w-[540px]',
+        'relative size-full shrink-0 overflow-hidden rounded-3xl bg-background-passive-primary lg:w-[540px]',
         imageAspectRatio === Enum_Componentsectionstextwithimage_Imageaspectratio.Ratio_4_3
           ? 'aspect-[4/3]'
           : 'aspect-square',

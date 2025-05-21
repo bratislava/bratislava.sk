@@ -81,7 +81,7 @@ fragment DividerSection on ComponentSectionsDivider {
 fragment TextWithImageSection on ComponentSectionsTextWithImage {
   content
   imagePosition
-  image: imageSrc {
+  imageSrc {
     data {
       ...UploadImageEntity
     }
@@ -91,7 +91,7 @@ fragment TextWithImageSection on ComponentSectionsTextWithImage {
 
 fragment TextWithImageOverlappedSection on ComponentSectionsTextWithImageOverlapped {
   content
-  textWithImageOverlappedImagePosition: imagePosition
+  imagePositionTextWithImageOverlapped: imagePosition
   image {
     data {
       ...UploadImageEntity

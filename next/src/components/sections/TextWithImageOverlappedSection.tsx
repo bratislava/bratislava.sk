@@ -21,7 +21,7 @@ type TextWithImageSectionProps = {
  */
 
 const TextWithImageOverlappedSection = ({ section }: TextWithImageSectionProps) => {
-  const { content, textWithImageOverlappedImagePosition: imagePosition, image } = section
+  const { content, imagePositionTextWithImageOverlapped: imagePosition, image } = section
 
   const isImageShifted =
     imagePosition === Enum_Componentsectionstextwithimageoverlapped_Imageposition.LeftShifted ||
@@ -43,7 +43,7 @@ const TextWithImageOverlappedSection = ({ section }: TextWithImageSectionProps) 
   const DesktopTextContainer = (
     <div
       className={cn(
-        'bg-background-passive-primary z-[1] flex grow flex-col gap-6 self-start rounded-lg p-6 lg:rounded-2xl lg:p-18',
+        'z-[1] flex grow flex-col gap-6 self-start rounded-lg bg-background-passive-primary p-6 lg:rounded-2xl lg:p-18',
         {
           'lg:-ml-9': isImageLeft,
           'lg:-mr-9': isImageRight,
@@ -58,10 +58,13 @@ const TextWithImageOverlappedSection = ({ section }: TextWithImageSectionProps) 
 
   const MobileTextContainer = (
     <div
-      className={cn('z-1 flex w-full grow flex-col gap-6 self-start rounded-lg p-6', {
-        '-mt-6': isImageLeft,
-        '-mb-6': isImageRight,
-      })}
+      className={cn(
+        'z-[1] flex w-full grow flex-col gap-6 self-start rounded-lg bg-background-passive-primary p-6',
+        // {
+        //   '-mt-6': isImageLeft,
+        //   '-mb-6': isImageRight,
+        // },
+      )}
     >
       {TextContent}
     </div>
@@ -92,9 +95,9 @@ const TextWithImageOverlappedSection = ({ section }: TextWithImageSectionProps) 
 
   const MobileImageContainer = (
     <div
-      className={cn('aspect-320/246 relative -mx-4', {
-        '-mt-6': isImageLeft,
-        '-mb-6': isImageRight,
+      className={cn('relative -mx-4 aspect-[320/246]', {
+        '-mb-6': isImageLeft,
+        '-mt-6': isImageRight,
       })}
     >
       {ImageContent}
