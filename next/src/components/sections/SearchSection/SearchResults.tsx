@@ -100,13 +100,13 @@ const SearchResults = ({
           </ul>
         ) : filters.search ? (
           <div data-cy="no-search-results">
-            <Typography variant="p-default">{t('SearchPage.noResults')}</Typography>
+            <Typography variant="p-small">{t('SearchPage.noResults')}</Typography>
           </div>
         ) : (
           /* Contacts show only for non-empty search query */
           // TODO keep this also during the first loading
           // TODO IS PENDING, but handle contacts separately
-          <Typography variant="p-default">{t('SearchPage.enterSearchQuery')}</Typography>
+          <Typography variant="p-small">{t('SearchPage.enterSearchQuery')}</Typography>
         )}
 
         {variant === 'specificResults' && onPageChange ? (

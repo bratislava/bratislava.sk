@@ -254,7 +254,7 @@ const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
       </div>
 
       {getResultsCountById(selectedKey) > 0 ? (
-        <Typography variant="p-default">
+        <Typography variant="p-small">
           {t('SearchPage.showingResults', {
             // `?? 0` is here only for i18next-parser, otherwise, it doesn't create plurals
             count: getResultsCountById(selectedKey) ?? 0,

@@ -49,13 +49,13 @@ const RegulationDetailMessage = ({ regulation }: RegulationDetailMessageProps) =
 
   // TODO translations - use translations after this component is refactored
   const alertContent = isCancelledDirectly ? (
-    <Typography variant="p-default" className="whitespace-normal">
+    <Typography variant="p-small" className="whitespace-normal">
       Toto VZN bolo zrušené všeobecne záväzným nariadením{' '}
       <RegulationMLink regNumber={cancellation?.attributes?.regNumber} /> dňa{' '}
       <span className="font-medium">{formatDate(effectiveUntil)}</span>.
     </Typography>
   ) : hasCancelledAmendees ? (
-    <Typography variant="p-default" className="whitespace-normal">
+    <Typography variant="p-small" className="whitespace-normal">
       Toto VZN je dodatkom{' '}
       {cancelledAmendees?.map((cancelledAmendee, index) => {
         return (
@@ -84,7 +84,7 @@ const RegulationDetailMessage = ({ regulation }: RegulationDetailMessageProps) =
       .
     </Typography>
   ) : (
-    <Typography variant="p-default" className="whitespace-normal">
+    <Typography variant="p-small" className="whitespace-normal">
       Toto VZN je aktuálne platné, s dátumom účinnosti od{' '}
       <span className="font-medium whitespace-nowrap">
         {formatDate(regulation.attributes?.effectiveFrom)}

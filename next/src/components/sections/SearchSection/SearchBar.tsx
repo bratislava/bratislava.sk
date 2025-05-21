@@ -36,7 +36,7 @@ const SearchBar = forwardRef<HTMLInputElement, SearchBarProps>(
         onSubmit={handleSearch}
       >
         <Label>
-          <Typography variant="p-default" className="font-semibold">
+          <Typography variant="p-small" className="font-semibold">
             {t('SearchPage.whatAreYouLookingFor')}
           </Typography>
         </Label>

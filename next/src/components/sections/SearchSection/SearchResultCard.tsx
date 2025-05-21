@@ -146,7 +146,7 @@ SearchResultCard.TitleWithLink = function ({
             variant="h6"
             as="h3"
             className={cn(
-              'line-clamp-3 group-hover:underline md:line-clamp-2 lg:line-clamp-1',
+              'line-clamp-3 whitespace-normal group-hover:underline md:line-clamp-2 lg:line-clamp-1',
               className,
             )}
           >
@@ -157,7 +157,10 @@ SearchResultCard.TitleWithLink = function ({
         <Typography
           variant="h6"
           as="h3"
-          className={cn('line-clamp-3 md:line-clamp-2 lg:line-clamp-1', className)}
+          className={cn(
+            'line-clamp-3 whitespace-normal md:line-clamp-2 lg:line-clamp-1',
+            className,
+          )}
         >
           {title}
         </Typography>
@@ -179,11 +182,13 @@ SearchResultCard.Metadata = function ({
       return (
         <Fragment key={item}>
           {index > 0 && (
-            <Typography variant="p-small" className="max-lg:hidden">
+            <Typography variant="p-tiny" className="max-lg:hidden">
               •
             </Typography>
           )}
-          <Typography variant="p-small">{item}</Typography>
+          <Typography variant="p-tiny" className="whitespace-normal">
+            {item}
+          </Typography>
         </Fragment>
       )
     }) ?? null

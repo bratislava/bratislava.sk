@@ -21,7 +21,7 @@ const NavMenuTrigger = forwardRef<HTMLButtonElement, NavMenuTriggerProps>(
         onPointerLeave={(event) => event.preventDefault()}
         className="flex w-full"
       >
-        <div className="flex size-full items-center gap-2 text-size-p-default font-medium">
+        <div className="flex size-full items-center gap-2 text-size-p-default-r font-medium lg:text-size-p-default">
           <div className="flex grow items-center gap-2">
             <Pictogram iconName={menuItem.icon} aria-hidden />
             <div>{menuItem.label}</div>

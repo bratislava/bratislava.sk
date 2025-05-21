@@ -106,7 +106,7 @@ const ContactCtaCard = ({ className, contact, hasBackground }: ContactCtaCardPro
             {data.displayValue}
           </MLink>
         ) : (
-          <Typography variant="p-default" className="whitespace-pre-wrap">
+          <Typography variant="p-small" className="whitespace-pre-wrap">
             {data.displayValue}
           </Typography>
         )}

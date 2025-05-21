@@ -43,7 +43,7 @@ const ArticleCard = ({
           {(date || tag) && (
             <div className="flex items-center justify-between pb-2">
               {/* If no date, leaving empty div to push tag to the right */}
-              <Typography variant="p-small">{date}</Typography>
+              <Typography variant="p-tiny">{date}</Typography>
 
               {tag && <Tag text={tag} size="small" isColored />}
             </div>
@@ -53,7 +53,7 @@ const ArticleCard = ({
           </Typography>
 
           {text && (
-            <Typography variant="p-default" className="mt-1 line-clamp-4">
+            <Typography variant="p-small" className="mt-1 line-clamp-4">
               {text}
             </Typography>
           )}
