@@ -100,7 +100,7 @@ const Markdown = ({ content, variant = 'default', className }: MarkdownProps) =>
             } as const
 
             return (
-              <Typography variant={variantMap[variant]} className="whitespace-pre-wrap" {...props}>
+              <Typography variant={variantMap[variant]} {...props}>
                 {children}
               </Typography>
             )

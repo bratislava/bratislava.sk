@@ -1,5 +1,6 @@
+import { Typography } from '@bratislava/component-library'
 import * as NavigationMenu from '@radix-ui/react-navigation-menu'
-import React, { forwardRef } from 'react'
+import { forwardRef } from 'react'
 
 import { ChevronRightIcon } from '@/src/assets/ui-icons'
 import Pictogram from '@/src/components/common/Pictogram/Pictogram'
@@ -21,10 +22,12 @@ const NavMenuTrigger = forwardRef<HTMLButtonElement, NavMenuTriggerProps>(
         onPointerLeave={(event) => event.preventDefault()}
         className="flex w-full"
       >
-        <div className="flex size-full items-center gap-2 text-size-p-default-r font-medium lg:text-size-p-default">
+        <div className="flex size-full items-center gap-2 font-medium">
           <div className="flex grow items-center gap-2">
             <Pictogram iconName={menuItem.icon} aria-hidden />
-            <div>{menuItem.label}</div>
+            <Typography variant="p-small" className="whitespace-normal">
+              {menuItem.label}
+            </Typography>
           </div>
           <ChevronRightIcon aria-hidden className="shrink-0" />
         </div>
