@@ -31,7 +31,6 @@
   --color-white: var(--color-grey-0);
   --color-font: var(--color-content-passive-primary);
   --color-font-contrast: var(--color-content-passive-inverted-primary);
-  --color-error: var(--color-negative-700);
 
   /* Bratislava main red */
   --color-main-800: rgb(147, 37, 27); /*#93251B*/
@@ -235,7 +234,8 @@
   --color-content-active-primary-inverted-disabled: var(--color-grey-400);
   /* active secondary and tertiary variants are part of DS but not used currently  */
 
-  /* OLD TOKENS */
+  /* Old tokens - todo remove */
+
   --color-background-primary: var(--color-grey-0);
   --color-background-secondary: var(--color-grey-50);
   --color-background-tertiary: var(--color-grey-100);
@@ -271,11 +271,11 @@
   --color-action-border-pressed: var(--color-grey-800);
 
   /* Shadows */
-  --shadow-none: 'none';
-  --shadow-default: '0px 4px 12px rgba(0, 0, 0, 0.12)';
-  --shadow-sm: '0px 2px 8px rgba(0, 0, 0, 0.12)';
-  --shadow-md: '0px 8px 16px rgba(0, 0, 0, 0.12)';
-  --shadow-lg: '0px 16px 24px rgba(0, 0, 0, 0.12)';
+
+  --shadow: 0px 4px 12px rgba(0, 0, 0, 0.12);
+  --shadow-sm: 0px 2px 8px rgba(0, 0, 0, 0.12);
+  --shadow-md: 0px 80px 16px rgba(0, 0, 0, 0.12);
+  --shadow-lg: 0px 16px 24px rgba(0, 0, 0, 0.12);
 
   /* Font - weight, size, line height */
 
@@ -343,7 +343,17 @@
   --leading-button-default: 1.5rem; /* 24px */
 
   /* ANIMATIONS */
-  /* TODO */
+
+  --animate-scale-in: scaleIn 200ms ease;
+  --animate-scale-out: scaleOut 200ms ease;
+  --animate-fade-in: fadeIn 200ms ease;
+  --animate-fade-out: fadeOut 200ms ease;
+  --animate-enter-from-left: enterFromLeft 250ms ease;
+  --animate-enter-from-right: enterFromRight 250ms ease;
+  --animate-exit-to-left: exitToLeft 250ms ease;
+  --animate-exit-to-right: exitToRight 250ms ease;
+  --animate-enter-from-top: enterFromTop 250ms ease;
+  --animate-scale-y: scaleY 250ms ease;
 }
 
 @layer base {
@@ -361,6 +371,107 @@
     @apply font-semibold;
   }
 
+  /* ANIMATIONS */
+
+  @keyframes enterFromRight {
+    from {
+      opacity: 0;
+      transform: 'translateX(200px)';
+    }
+    to {
+      opacity: 1;
+      transform: 'translateX(0)';
+    }
+  }
+  @keyframes enterFromLeft {
+    from {
+      opacity: 0;
+      transform: 'translateX(-200px)';
+    }
+    to {
+      opacity: 1;
+      transform: 'translateX(0)';
+    }
+  }
+  @keyframes exitToRight {
+    from {
+      opacity: 1;
+      transform: 'translateX(0)';
+    }
+    to {
+      opacity: 0;
+      transform: 'translateX(200px)';
+    }
+  }
+  @keyframes exitToLeft {
+    from {
+      opacity: 1;
+      transform: 'translateX(0)';
+    }
+    to {
+      opacity: 0;
+      transform: 'translateX(-200px)';
+    }
+  }
+  @keyframes enterFromTop {
+    from {
+      opacity: 0;
+      transform: 'translateY(-200px)';
+    }
+    to {
+      opacity: 1;
+      transform: 'translateY(0)';
+    }
+  }
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: 'rotateX(-10deg) scale(0.9)';
+    }
+    to {
+      opacity: 1;
+      transform: 'rotateX(0deg) scale(1)';
+    }
+  }
+  @keyframes scaleOut {
+    from {
+      opacity: 1;
+      transform: 'rotateX(0deg) scale(1)';
+    }
+    to {
+      opacity: 0;
+      transform: 'rotateX(-10deg) scale(0.95)';
+    }
+  }
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+  @keyframes scaleY {
+    from {
+      opacity: 0;
+      transform: 'scaleY(0)';
+    }
+    to {
+      opacity: 1;
+      transform: 'scaleY(1)';
+    }
+  }
+
+  /* TAILWIND OVERRIDES */
+
   /* Set default border color: https://tailwindcss.com/docs/upgrade-guide#default-border-color */
   *,
   ::after,
@@ -368,6 +479,12 @@
   ::backdrop,
   ::file-selector-button {
     border-color: var(--color-border-passive-primary);
+  }
+
+  /* button cursor is not set to pointer on default in Tailwind v4, we do it manually */
+  button:not(:disabled),
+  [role='button']:not(:disabled) {
+    cursor: pointer;
   }
 }
 
@@ -577,7 +694,7 @@
   }
 
   .base-input--with-error {
-    @apply border-error;
+    @apply border-border-error;
   }
 
   .base-input--disabled {

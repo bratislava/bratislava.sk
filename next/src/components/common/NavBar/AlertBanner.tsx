@@ -42,7 +42,7 @@ const AlertBanner = forwardRef<HTMLDivElement>((props, forwardedRef) => {
       ref={forwardedRef}
       className={cn('bg-warning-700 text-white', {
         // TODO add some animation
-        // 'animate-scaleY': showAlert,
+        // 'animate-scale-y': showAlert,
       })}
     >
       <SectionContainer>
