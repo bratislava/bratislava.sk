@@ -21,18 +21,22 @@ const OrganizationalStructureAccordionCard = ({
     displayName && jobTitle ? (
       <div
         className={twMerge(
-          'flex flex-col break-words rounded-lg border-2 bg-white p-4 lg:p-5',
+          'flex flex-col rounded-lg border-2 bg-white p-4 break-words lg:p-5',
           className,
         )}
       >
-        <Typography type="h5" className="pb-2" data-cy="structure-accordion-card-name">
+        <Typography variant="h5" className="pb-2" data-cy="structure-accordion-card-name">
           {displayName}
         </Typography>
-        <Typography type="p" className="pb-6" data-cy="structure-accordion-card-job">
+        <Typography variant="p-default" className="pb-6" data-cy="structure-accordion-card-job">
           {jobTitle}
         </Typography>
         {mail ? (
-          <Typography type="p" className="font-semibold" data-cy="structure-accordion-card-email">
+          <Typography
+            variant="p-default"
+            className="font-semibold"
+            data-cy="structure-accordion-card-email"
+          >
             {mail}
           </Typography>
         ) : null}

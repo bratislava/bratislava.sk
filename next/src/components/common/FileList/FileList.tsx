@@ -22,8 +22,8 @@ const FileList = ({ className, title, text, files }: FileListProps) => {
     <div className={cn('flex flex-col gap-4 lg:gap-6', className)}>
       {title || text ? (
         <div className="flex flex-col gap-2">
-          {title ? <Typography type="h2">{title}</Typography> : null}
-          {text ? <Typography type="p">{text}</Typography> : null}
+          {title ? <Typography variant="h2">{title}</Typography> : null}
+          {text ? <Typography variant="p-default">{text}</Typography> : null}
         </div>
       ) : null}
 

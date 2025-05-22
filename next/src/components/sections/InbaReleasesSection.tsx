@@ -37,8 +37,8 @@ const InbaReleasesSection = ({ section }: Props) => {
     <div className="flex flex-col gap-8">
       {title || text ? (
         <div className="flex flex-col gap-2">
-          {title && <Typography type="h2">{title}</Typography>}
-          {text && <Typography type="p">{text}</Typography>}
+          {title && <Typography variant="h2">{title}</Typography>}
+          {text && <Typography variant="p-default">{text}</Typography>}
         </div>
       ) : null}
 

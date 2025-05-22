@@ -75,13 +75,13 @@ const Alert = ({
     )
 
     const contentStyle = cn('w-full', {
-      'text-default': variant === 'basic',
-      'text-default font-semibold': variant === 'message',
+      'text-size-p-default': variant === 'basic',
+      'text-size-p-default font-semibold': variant === 'message',
       'text-grey-0': solid,
       'text-grey-700': !solid,
     })
 
-    const extraButtonStyle = cn('text-default font-medium underline underline-offset-4', {
+    const extraButtonStyle = cn('text-size-p-default font-medium underline underline-offset-4', {
       'text-negative-700': type === 'error' && !solid,
       'text-success-700': type === 'success' && !solid,
       'text-grey-700': type === 'info' && !solid,
@@ -108,7 +108,7 @@ const Alert = ({
           <div className={contentStyle}>{message}</div>
         </div>
         <div
-          className={cn('text-default mt-2 w-full pl-9 font-normal', {
+          className={cn('mt-2 w-full pl-9 text-size-p-default font-normal', {
             'text-grey-0': solid,
             'text-grey-700': !solid,
           })}

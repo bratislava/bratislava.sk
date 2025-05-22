@@ -36,22 +36,22 @@ const SearchBar = forwardRef<HTMLInputElement, SearchBarProps>(
         onSubmit={handleSearch}
       >
         <Label>
-          <Typography type="p" fontWeight="semibold">
+          <Typography variant="p-small" className="font-semibold">
             {t('SearchPage.whatAreYouLookingFor')}
           </Typography>
         </Label>
         <div className="relative">
           {/* 3.75rem = 60px, 0.75rem = 12px */}
           <Input
-            className="relative w-full rounded-lg border-2 px-[3.75rem] py-5 pr-[5.75rem] outline-none hover:border-grey-400 focus:border-grey-800 focus-visible:ring focus-visible:ring-offset-2"
+            className="relative w-full rounded-lg border-2 px-15 py-5 pr-23 outline-hidden hover:border-grey-400 focus:border-grey-800 focus-visible:ring-3 focus-visible:ring-offset-2"
             data-cy="search-field"
           />
           <SearchIcon
             aria-hidden
-            className="pointer-events-none absolute left-6 top-[calc(50%_-_0.75rem)]"
+            className="pointer-events-none absolute top-[calc(50%-0.75rem)] left-6"
           />
           {isLoading ? (
-            <Spinner size="sm" className="absolute right-[3.75rem] top-[calc(50%_-_0.75rem)]" />
+            <Spinner size="sm" className="absolute top-[calc(50%-0.75rem)] right-15" />
           ) : null}
           {input ? (
             <Button
@@ -61,7 +61,7 @@ const SearchBar = forwardRef<HTMLInputElement, SearchBarProps>(
               variant="icon-wrapped-negative-margin"
               // Keyboard users use Escape to erase the input, they can't focus this button, so empty aria-label is okay
               aria-label=""
-              className="absolute right-6 top-[calc(50%_-_0.75rem)]"
+              className="absolute top-[calc(50%-0.75rem)] right-6"
             />
           ) : null}
         </div>

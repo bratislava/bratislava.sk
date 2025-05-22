@@ -64,7 +64,7 @@ const InbaReleasePageContent = ({ inbaRelease }: InbaReleasePageContentProps) =>
           <div className="flex w-full flex-col gap-8">
             {perex ? (
               <NarrowText align="left" width="full">
-                <Typography type="h2" size="h3" className="pb-4">
+                <Typography variant="h3" as="h2" className="pb-4">
                   {t('InbaRelease.inThisRelease')}
                 </Typography>
                 {/* Perex comes as plain text from Strapi, but we format it using Markdown component */}
@@ -73,7 +73,7 @@ const InbaReleasePageContent = ({ inbaRelease }: InbaReleasePageContentProps) =>
             ) : null}
 
             <div className="flex flex-col">
-              <Typography type="h2" size="h3" className="pb-4">
+              <Typography variant="h3" as="h2" className="pb-4">
                 {t('InbaRelease.toDownload')}
               </Typography>
 

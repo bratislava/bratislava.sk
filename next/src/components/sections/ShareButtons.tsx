@@ -36,7 +36,7 @@ const ShareButtons = ({ twitterTitle }: Props) => {
 
   return (
     <div className="flex flex-col gap-5">
-      <Typography type="h2" size="h5">
+      <Typography variant="h5" as="h2">
         {t('ShareButtonsSection.share')}
       </Typography>
       <div className="flex gap-10">

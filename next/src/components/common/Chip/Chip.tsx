@@ -16,9 +16,9 @@ const Chip = ({ variant = 'large', ...props }: ChipProps) => {
     <Tag
       {...props}
       className={cn(
-        'flex shrink-0 cursor-pointer items-center rounded-lg border-2 outline-none hover:bg-grey-200 focus-visible:ring focus-visible:ring-offset-2 selected:border-category-700 selected:bg-category-700 selected:text-grey-0 hover:selected:bg-category-700',
+        'flex shrink-0 cursor-pointer items-center rounded-lg border-2 outline-hidden hover:bg-grey-200 focus-visible:ring-3 focus-visible:ring-offset-2 selected:border-category-700 selected:bg-category-700 selected:text-grey-0 hover:selected:bg-category-700',
         {
-          'text-component-default px-3 py-1.5 lg:px-4 lg:py-2.5': variant === 'large',
+          'px-3 py-1.5 text-size-p-small lg:px-4 lg:py-2.5': variant === 'large',
           'px-2 text-size-p-small lg:px-3 lg:py-1.5': variant === 'small',
         },
       )}

@@ -32,7 +32,7 @@ const NavMenu = () => {
       aria-label={t('NavMenu.aria.navMenuLabel')}
     >
       <div className="relative z-30 border-b">
-        <NavigationMenu.List className="m-auto grid w-full max-w-screen-xl grid-flow-col grid-cols-6">
+        <NavigationMenu.List className="m-auto grid w-full max-w-(--breakpoint-xl) grid-flow-col grid-cols-6">
           {menus.map((menuItem, index) => (
             // eslint-disable-next-line react/no-array-index-key
             <NavMenuItem key={index} menu={menuItem} />
@@ -44,7 +44,7 @@ const NavMenu = () => {
       <NavigationMenu.Viewport
         // Together with onCLick in NavMenuContent, it closes the menu on click outside of container area
         onClick={() => setMenuValue('')}
-        className="absolute z-[29] h-screen w-full"
+        className="absolute z-29 h-screen w-full"
       />
     </NavigationMenu.Root>
   )

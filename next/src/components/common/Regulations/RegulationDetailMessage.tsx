@@ -49,13 +49,13 @@ const RegulationDetailMessage = ({ regulation }: RegulationDetailMessageProps) =
 
   // TODO translations - use translations after this component is refactored
   const alertContent = isCancelledDirectly ? (
-    <Typography type="p" className="whitespace-normal">
+    <Typography variant="p-small" className="whitespace-normal">
       Toto VZN bolo zrušené všeobecne záväzným nariadením{' '}
       <RegulationMLink regNumber={cancellation?.attributes?.regNumber} /> dňa{' '}
       <span className="font-medium">{formatDate(effectiveUntil)}</span>.
     </Typography>
   ) : hasCancelledAmendees ? (
-    <Typography type="p" className="whitespace-normal">
+    <Typography variant="p-small" className="whitespace-normal">
       Toto VZN je dodatkom{' '}
       {cancelledAmendees?.map((cancelledAmendee, index) => {
         return (
@@ -71,7 +71,7 @@ const RegulationDetailMessage = ({ regulation }: RegulationDetailMessageProps) =
               regNumber={cancelledAmendee.attributes?.cancellation?.data?.attributes?.regNumber}
             />{' '}
             s účinnosťou od{' '}
-            <span className="whitespace-nowrap font-medium">
+            <span className="font-medium whitespace-nowrap">
               {' '}
               {formatDate(
                 amending?.find((amended) => amended.attributes?.cancellation?.data)?.attributes
@@ -84,9 +84,9 @@ const RegulationDetailMessage = ({ regulation }: RegulationDetailMessageProps) =
       .
     </Typography>
   ) : (
-    <Typography type="p" className="whitespace-normal">
+    <Typography variant="p-small" className="whitespace-normal">
       Toto VZN je aktuálne platné, s dátumom účinnosti od{' '}
-      <span className="whitespace-nowrap font-medium">
+      <span className="font-medium whitespace-nowrap">
         {formatDate(regulation.attributes?.effectiveFrom)}
       </span>
       .

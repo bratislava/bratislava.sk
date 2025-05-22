@@ -4,7 +4,6 @@ module.exports = {
     'plugin:react/recommended',
     'plugin:@next/next/recommended',
     'plugin:i18next/recommended',
-    'plugin:tailwindcss/recommended',
     'plugin:@tanstack/eslint-plugin-query/recommended',
   ],
   plugins: ['only-warn'],

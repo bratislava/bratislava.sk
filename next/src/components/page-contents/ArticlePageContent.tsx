@@ -52,16 +52,12 @@ const ArticlePageContent = ({ article }: Props) => {
 
       <div
         // TODO some of these classes are duplicated in SectionContainer - ponder what to do with it
-        className="mx-auto flex max-w-screen-xl gap-8 px-4 py-6 lg:px-8 lg:py-12"
+        className="mx-auto flex max-w-(--breakpoint-xl) gap-8 px-4 py-6 lg:px-8 lg:py-12"
       >
         <div className="flex w-200 flex-col gap-4">
           <div className="flex flex-col gap-18">
             <div className="flex flex-col gap-6 lg:gap-8">
-              {perex ? (
-                <Typography type="p" size="p-large">
-                  {perex}
-                </Typography>
-              ) : null}
+              {perex ? <Typography variant="p-large">{perex}</Typography> : null}
               <Markdown content={content} />
             </div>
 

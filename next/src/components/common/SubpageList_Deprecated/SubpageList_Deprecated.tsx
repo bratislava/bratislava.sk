@@ -19,7 +19,7 @@ const SubpageList = ({ subpageList, className }: SubpageListProps) => {
   return (
     <div
       className={twMerge(
-        'mb-10 mt-10 grid grid-cols-1 gap-x-8 gap-y-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 lg:gap-x-10',
+        'mt-10 mb-10 grid grid-cols-1 gap-x-8 gap-y-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 lg:gap-x-10',
         className,
       )}
     >
@@ -29,7 +29,7 @@ const SubpageList = ({ subpageList, className }: SubpageListProps) => {
           key={index}
           className="group relative flex items-center gap-x-8 gap-y-5 sm:flex-col sm:items-start"
         >
-          <div className="text-h3 flex size-12 shrink-0 grow-0 basis-12 items-center justify-center rounded-full bg-action-background-default font-semibold text-white group-hover:bg-action-background-hover sm:size-16 sm:basis-16">
+          <div className="flex size-12 shrink-0 grow-0 basis-12 items-center justify-center rounded-full bg-action-background-default text-h3 font-semibold text-white group-hover:bg-action-background-hover sm:size-16 sm:basis-16">
             {index + 1}
           </div>
           {/* FIXME Typography. Convert to use Typograhy. Issue: Different font weight than Figma <p> */}
@@ -37,7 +37,7 @@ const SubpageList = ({ subpageList, className }: SubpageListProps) => {
             variant="link"
             stretched
             hasLinkIcon={getLinkProps(subpage).target === '_blank'}
-            className="text-large lg:text-large tracking-wide"
+            className="text-size-p-large tracking-wide lg:text-size-p-large"
             {...getLinkProps(subpage)}
           />
         </div>

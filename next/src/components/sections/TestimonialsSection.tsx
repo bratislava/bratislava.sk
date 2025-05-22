@@ -31,11 +31,11 @@ const TestimonialCard = ({
     >
       {/* TODO validate if this html syntax is ok */}
       <blockquote className="flex flex-col gap-4">
-        <Typography type="p">{testimonial.quote}</Typography>
+        <Typography variant="p-default">{testimonial.quote}</Typography>
         <footer>
           {/* TODO there probably should not be p inside cite, but cite should be used directly */}
           <cite>
-            <Typography type="p" fontWeight="semibold">
+            <Typography variant="p-default" className="font-semibold">
               {testimonial.name}
             </Typography>
           </cite>
@@ -49,7 +49,7 @@ const Testimonials = ({ section }: TestimonialsSectionProps) => {
   return (
     <div className="grid grid-cols-1 gap-6 md:grid-cols-12 md:gap-8">
       <div className="col-span-1 flex flex-col gap-3 md:col-span-5">
-        {section.title ? <Typography type="h2">{section.title}</Typography> : null}
+        {section.title ? <Typography variant="h2">{section.title}</Typography> : null}
         {section.text ? <Markdown content={section.text} variant="small" /> : null}
       </div>
       <div className="col-span-1 hidden md:block" />

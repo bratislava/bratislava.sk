@@ -24,7 +24,7 @@ const Regulations = ({ className, regulations }: Props) => {
 
   return (
     <div className={cn('flex flex-col gap-8', className)}>
-      <Typography type="h2">{t('Regulation.relatedRegulations')}</Typography>
+      <Typography variant="h2">{t('Regulation.relatedRegulations')}</Typography>
       {regulations?.length ? (
         <ul className="flex flex-col rounded-lg border-2 py-2">
           {regulations?.map((regulation, index) => {

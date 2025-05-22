@@ -65,7 +65,7 @@ const MobileFooter = () => {
           <FooterAccessibilityLink {...attributes} />
         </div>
         <HorizontalDivider />
-        <div className="text-default text-center">
+        <div className="text-center text-size-p-default">
           <FooterCopyright {...attributes} />
         </div>
       </footer>

@@ -25,8 +25,8 @@ const MayorAndCouncilHomepageSection = ({ className }: Props) => {
     <div className={cn('flex flex-col gap-6', className)}>
       {title || text ? (
         <div className="flex flex-col gap-2 text-center">
-          {title && <Typography type="h2">{title}</Typography>}
-          {text && <Typography type="p">{text}</Typography>}
+          {title && <Typography variant="h2">{title}</Typography>}
+          {text && <Typography variant="p-default">{text}</Typography>}
         </div>
       ) : null}
       <div className="flex w-full flex-col gap-4 lg:flex-row lg:gap-8">

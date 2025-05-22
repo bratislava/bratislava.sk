@@ -13,8 +13,8 @@ const GallerySection = ({ section: { title, text, medias } }: GallerySectionProp
     <div className="flex flex-col gap-6 lg:gap-12">
       {title || text ? (
         <div className="flex flex-col gap-2">
-          {title && <Typography type="h2">{title}</Typography>}
-          {text && <Typography type="p">{text}</Typography>}
+          {title && <Typography variant="h2">{title}</Typography>}
+          {text && <Typography variant="p-default">{text}</Typography>}
         </div>
       ) : null}
       <Gallery images={medias.data} />

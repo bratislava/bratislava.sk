@@ -1,6 +1,6 @@
 import { Typography } from '@bratislava/component-library'
 import { useIsFetching } from '@tanstack/react-query'
-import React, { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Selection, TagGroup, TagList } from 'react-aria-components'
 import { StringParam, useQueryParam, withDefault } from 'use-query-params'
 import { useDebounceValue } from 'usehooks-ts'
@@ -219,7 +219,7 @@ const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
             selectedKeys={selection}
             onSelectionChange={handleSelection}
           >
-            <TagList className="max-md:negative-x-spacing -m-1.5 flex gap-x-2 overflow-auto p-1.5 scrollbar-hide max-md:flex-nowrap">
+            <TagList className="-m-1.5 scrollbar-hide flex gap-x-2 overflow-auto p-1.5 max-md:negative-x-spacing max-md:flex-nowrap">
               {[defaultSearchOption, ...searchOptions].map((option) => {
                 return (
                   <Chip
@@ -254,7 +254,7 @@ const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
       </div>
 
       {getResultsCountById(selectedKey) > 0 ? (
-        <Typography type="p">
+        <Typography variant="p-small">
           {t('SearchPage.showingResults', {
             // `?? 0` is here only for i18next-parser, otherwise, it doesn't create plurals
             count: getResultsCountById(selectedKey) ?? 0,

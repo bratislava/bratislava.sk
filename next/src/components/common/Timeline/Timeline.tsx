@@ -15,10 +15,10 @@ const Timeline = ({ timelineItems }: TimelineProps) => {
         <VerticalTimelineElement
           key={timelineItem.id}
           textClassName="shadow-md"
-          iconClassName="bg-category-600 flex flex-col justify-center items-center text-white text-h4 font-bold !shadow-none"
+          iconClassName="bg-category-600 flex flex-col justify-center items-center text-white text-h4 font-bold shadow-none!"
           icon={<>{index + 1}</>}
         >
-          <Typography type="h3" size="h4">
+          <Typography variant="h4" as="h3" className="shadow-sm">
             {timelineItem.title}
           </Typography>
           <Markdown content={timelineItem.content} />

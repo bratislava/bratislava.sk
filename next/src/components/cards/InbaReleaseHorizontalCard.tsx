@@ -1,6 +1,5 @@
 import { Typography } from '@bratislava/component-library'
 import Image from 'next/image'
-import React from 'react'
 
 import { ChevronRightIcon } from '@/src/assets/ui-icons'
 import CardBase, { CardBaseProps } from '@/src/components/cards/CardBase'
@@ -36,7 +35,7 @@ const InbaReleaseHorizontalCard = ({
     <CardBase className="flex flex-row rounded-lg" {...rest}>
       <CardContent className="flex grow flex-row justify-between gap-4 lg:gap-8">
         <div className="w-[140px]">
-          <div className="relative aspect-inba overflow-hidden rounded-lg">
+          <div className="relative aspect-[1/1.4] overflow-hidden rounded-lg">
             {imgSrc ? (
               <Image src={imgSrc} alt="" sizes={imgSizes} fill className="object-cover" />
             ) : (
@@ -46,7 +45,7 @@ const InbaReleaseHorizontalCard = ({
         </div>
         <div className="flex grow flex-col gap-2">
           <MLink href={linkHref} stretched>
-            <Typography type="h3" size="h5" className="line-clamp-3 group-hover:underline">
+            <Typography variant="h5" as="h3" className="line-clamp-3 group-hover:underline">
               {title}
             </Typography>
           </MLink>
@@ -56,7 +55,7 @@ const InbaReleaseHorizontalCard = ({
             </div>
           )}
           {date && (
-            <Typography type="p" className="mt-1">
+            <Typography variant="p-default" className="mt-1">
               {t('InbaRelease.releasedOn', { date })}
             </Typography>
           )}

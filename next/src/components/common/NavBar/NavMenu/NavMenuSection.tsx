@@ -22,7 +22,7 @@ const NavMenuSection = ({ section, classNames }: NavigationSectionProps) => {
       )}
       <div className="w-full">
         {section.label && (
-          <Typography type="h3" size="h5" className="mt-1.5">
+          <Typography variant="h5" as="h3" className="mt-1.5">
             {section.label}
           </Typography>
         )}

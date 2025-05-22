@@ -40,15 +40,15 @@ const EventCard = ({
   return (
     <CardBase variant="no-border" className={cn('rounded-lg text-white', className)}>
       <Image src={imageSrc} alt="" fill className="absolute object-cover" sizes={imageSizes} />
-      <CardContent className="relative inline-flex size-full flex-col items-start justify-end text-clip bg-gradient-to-b from-transparent to-[black] p-4 lg:p-5">
+      <CardContent className="relative inline-flex size-full flex-col items-start justify-end bg-linear-to-b from-transparent to-[black] p-4 text-clip lg:p-5">
         <div className="flex w-full flex-col items-start gap-4 self-stretch">
-          <Typography type="h3" size="h5">
+          <Typography variant="h5" as="h3">
             <MLink href={linkHref} target="_blank" stretched variant="underlineOnHover">
               {title}
             </MLink>
           </Typography>
 
-          <div className="text-component-small flex flex-col items-start font-medium">
+          <div className="flex flex-col items-start text-size-p-tiny font-medium">
             {/* FIXME Typography: Convert to use Typography. Issue: Different size and weight than typography have */}
             {address && <span className="line-clamp-1">{address}</span>}
             <span className="line-clamp-1">
