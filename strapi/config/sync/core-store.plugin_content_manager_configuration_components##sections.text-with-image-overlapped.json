@@ -1,7 +1,6 @@
 {
-  "key": "plugin_content_manager_configuration_components::sections.text-with-image",
+  "key": "plugin_content_manager_configuration_components::sections.text-with-image-overlapped",
   "value": {
-    "uid": "sections.text-with-image",
     "settings": {
       "bulkable": true,
       "filterable": true,
@@ -16,14 +15,14 @@
         "edit": {},
         "list": {
           "label": "id",
-          "searchable": false,
-          "sortable": false
+          "searchable": true,
+          "sortable": true
         }
       },
       "content": {
         "edit": {
           "label": "Text",
-          "description": "V tejto sekcii používať iba nadpis, obyčaný text a hrubé písmo, prípadne odkazy. Ostatné formátovanie textu nie je v tejto sekcii vhodné.",
+          "description": "V tejto sekcii používať iba nadpis, obyčaný text a hrubé písmo. Ostatné formátovanie textu nie je v tejto sekcii vhodné.",
           "placeholder": "",
           "visible": true,
           "editable": true
@@ -34,7 +33,7 @@
           "sortable": false
         }
       },
-      "imageSrc": {
+      "image": {
         "edit": {
           "label": "Obrázok",
           "description": "",
@@ -43,7 +42,7 @@
           "editable": true
         },
         "list": {
-          "label": "imageSrc",
+          "label": "image",
           "searchable": false,
           "sortable": false
         }
@@ -61,28 +60,13 @@
           "searchable": true,
           "sortable": true
         }
-      },
-      "imageAspectRatio": {
-        "edit": {
-          "label": "Pomer strán obrázku",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "imageAspectRatio",
-          "searchable": true,
-          "sortable": true
-        }
       }
     },
     "layouts": {
       "list": [
         "id",
-        "imageSrc",
-        "imagePosition",
-        "imageAspectRatio"
+        "image",
+        "imagePosition"
       ],
       "edit": [
         [
@@ -93,22 +77,17 @@
         ],
         [
           {
-            "name": "imageSrc",
-            "size": 6
-          }
-        ],
-        [
-          {
-            "name": "imagePosition",
+            "name": "image",
             "size": 6
           },
           {
-            "name": "imageAspectRatio",
+            "name": "imagePosition",
             "size": 6
           }
         ]
       ]
     },
+    "uid": "sections.text-with-image-overlapped",
     "isComponent": true
   },
   "type": "object",
