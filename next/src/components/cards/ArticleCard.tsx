@@ -1,6 +1,6 @@
 import { Typography } from '@bratislava/component-library'
 import Image from 'next/image'
-import React from 'react'
+import React, { useId } from 'react'
 
 import CardBase, { CardBaseProps } from '@/src/components/cards/CardBase'
 import CardContent from '@/src/components/cards/CardContent'
@@ -29,6 +29,8 @@ const ArticleCard = ({
   linkProps,
   ...rest
 }: ArticleCardProps) => {
+  const titleId = useId()
+
   return (
     <CardBase {...rest}>
       <div className="relative aspect-16/10 shrink-0">
@@ -50,7 +52,12 @@ const ArticleCard = ({
               {tag && <Tag text={tag} size="small" isColored />}
             </div>
           )}
-          <Typography type="h3" size="h5" className="line-clamp-3 group-hover:underline">
+          <Typography
+            id={titleId}
+            type="h3"
+            size="h5"
+            className="line-clamp-3 group-hover:underline"
+          >
             {title}
           </Typography>
 
@@ -60,7 +67,13 @@ const ArticleCard = ({
             </Typography>
           )}
         </div>
-        <Button variant="link" stretched {...linkProps} className="mt-4 lg:mt-5" />
+        <Button
+          variant="link"
+          stretched
+          {...linkProps}
+          aria-labelledby={titleId}
+          className="mt-4 lg:mt-5"
+        />
       </CardContent>
     </CardBase>
   )

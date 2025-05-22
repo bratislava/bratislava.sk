@@ -1,4 +1,5 @@
 import { Typography } from '@bratislava/component-library'
+import { useId } from 'react'
 
 import Button from '@/src/components/common/Button/Button'
 import Pictogram from '@/src/components/common/Pictogram/Pictogram'
@@ -12,6 +13,8 @@ type TopNineItemProps = {
 
 const TopServicesItem = ({ topServicesItem }: TopNineItemProps) => {
   const { t } = useTranslation()
+  const titleId = useId()
+
   const { icon, link } = topServicesItem
 
   const { children: label, ...linkProps } = getLinkProps(link)
@@ -22,10 +25,10 @@ const TopServicesItem = ({ topServicesItem }: TopNineItemProps) => {
         <Pictogram iconName={icon} className="size-12 md:size-16" />
       </div>
       <div className="flex flex-col gap-1 lg:gap-2">
-        <Typography type="h3" size="h5">
+        <Typography id={titleId} type="h3" size="h5">
           {label}
         </Typography>
-        <Button variant="link" stretched {...linkProps}>
+        <Button variant="link" stretched {...linkProps} aria-labelledby={titleId}>
           {t('TopServices.learnMore')}
         </Button>
       </div>

@@ -1,5 +1,6 @@
 import { Typography } from '@bratislava/component-library'
 import Image from 'next/image'
+import { useId } from 'react'
 
 import CardBase from '@/src/components/cards/CardBase'
 import Button from '@/src/components/common/Button/Button'
@@ -23,6 +24,8 @@ const InBaCard = ({
   content,
   linkProps,
 }: InBaCardProps) => {
+  const titleId = useId()
+
   return (
     <CardBase
       variant="border"
@@ -52,11 +55,11 @@ const InBaCard = ({
           'md:items-start md:py-8 md:pl-12 md:pr-96 md:text-left',
         )}
       >
-        <Typography type="h2" size="h4">
+        <Typography id={titleId} type="h2" size="h4">
           {title}
         </Typography>
         <Typography type="p">{content}</Typography>
-        <Button variant="link" {...linkProps} stretched />
+        <Button variant="link" {...linkProps} stretched aria-labelledby={titleId} />
       </div>
     </CardBase>
   )
