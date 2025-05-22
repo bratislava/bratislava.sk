@@ -16,7 +16,7 @@ type Props = {
  */
 
 const ColumnsSection = ({ section }: Props) => {
-  const { title, text, columns } = section
+  const { title, text, columns, imageVariant } = section
 
   // eslint-disable-next-line unicorn/no-array-callback-reference
   const filteredColumns = columns?.filter(isDefined) ?? []
@@ -61,6 +61,7 @@ const ColumnsSection = ({ section }: Props) => {
             >
               <ColumnsSectionItem
                 {...item}
+                imageVariant={imageVariant}
                 imageSizes={generateImageSizes({
                   default: '100vw',
                   // Note that this doesn't match the logic above for 100%, but it's okay, because it's just a simple optimization
