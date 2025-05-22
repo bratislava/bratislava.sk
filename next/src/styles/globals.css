@@ -8,29 +8,17 @@
 
 /* Docs: https://tailwindcss.com/docs/functions-and-directives */
 
-@theme {
-  /* BREAKPOINTS */
-
-  --breakpoint-sm: 40rem; /* 640px  - phone landscape */
-  --breakpoint-md: 48rem; /* 768px  - iPad portrait   */
-  --breakpoint-lg: 64rem; /* 1024px - iPad landscape  */
-  --breakpoint-xl: 80rem; /* 1280px - small desktop   */
-
-  /* COLORS */
-
-  /*
-    These variables are used in different pages and component to override
-    colors of different things. They are defined as RGB values on purpose
-    so they can be used in `rgb(var(--color-main-600))` style or with transparency
-    as `rgba(var(--color-main-600), 0.25)`.
-  */
-
-  --color-transparent: transparent;
-  --color-current: currentColor;
-
-  --color-white: var(--color-grey-0);
-  --color-font: var(--color-content-passive-primary);
-  --color-font-contrast: var(--color-content-passive-inverted-primary);
+@theme static {
+  --color-grey-800: rgb(31, 31, 31); /*#1F1F1F*/
+  --color-grey-700: rgb(51, 51, 51); /*#333333*/
+  --color-grey-600: rgb(92, 92, 92); /*#5C5C5C*/
+  --color-grey-500: rgb(133, 133, 133); /*#858585*/
+  --color-grey-400: rgb(173, 173, 173); /*#ADADAD*/
+  --color-grey-300: rgb(194, 194, 194); /*#C2C2C2*/
+  --color-grey-200: rgb(214, 214, 214); /*#D6D6D6*/
+  --color-grey-100: rgb(235, 235, 235); /*#EBEBEB*/
+  --color-grey-50: rgb(245, 245, 245); /*#F5F5F5*/
+  --color-grey-0: rgb(255, 255, 255); /*#fff*/
 
   /* Bratislava main red */
   --color-main-800: rgb(147, 37, 27); /*#93251B*/
@@ -41,6 +29,16 @@
   --color-main-300: rgb(243, 195, 191); /*#F3C3BF*/
   --color-main-200: rgb(247, 215, 212); /*#F7D7D4*/
   --color-main-100: rgb(251, 235, 234); /*#FBEBEA*/
+
+  /* These variables are overridden in pages to get custom colors for each category */
+  --color-category-800: var(--color-main-800);
+  --color-category-700: var(--color-main-700);
+  --color-category-600: var(--color-main-600);
+  --color-category-500: var(--color-main-500);
+  --color-category-400: var(--color-main-400);
+  --color-category-300: var(--color-main-300);
+  --color-category-200: var(--color-main-200);
+  --color-category-100: var(--color-main-100);
 
   /* Bratislava category colors */
   --color-transport-800: rgb(0, 76, 109); /*#004c6d*/
@@ -87,17 +85,31 @@
   --color-culture-300: rgb(249, 221, 196); /*#f9ddc4*/
   --color-culture-200: rgb(251, 233, 215); /*#fbe9d7*/
   --color-culture-100: rgb(253, 244, 235); /*#fdf4eb*/
+}
 
-  --color-grey-800: rgb(31, 31, 31); /*#1F1F1F*/
-  --color-grey-700: rgb(51, 51, 51); /*#333333*/
-  --color-grey-600: rgb(92, 92, 92); /*#5C5C5C*/
-  --color-grey-500: rgb(133, 133, 133); /*#858585*/
-  --color-grey-400: rgb(173, 173, 173); /*#ADADAD*/
-  --color-grey-300: rgb(194, 194, 194); /*#C2C2C2*/
-  --color-grey-200: rgb(214, 214, 214); /*#D6D6D6*/
-  --color-grey-100: rgb(235, 235, 235); /*#EBEBEB*/
-  --color-grey-50: rgb(245, 245, 245); /*#F5F5F5*/
-  --color-grey-0: rgb(255, 255, 255); /*#fff*/
+@theme {
+  /* BREAKPOINTS */
+
+  --breakpoint-sm: 40rem; /* 640px  - phone landscape */
+  --breakpoint-md: 48rem; /* 768px  - iPad portrait   */
+  --breakpoint-lg: 64rem; /* 1024px - iPad landscape  */
+  --breakpoint-xl: 80rem; /* 1280px - small desktop   */
+
+  /* COLORS */
+
+  /*
+    These variables are used in different pages and component to override
+    colors of different things. They are defined as RGB values on purpose
+    so they can be used in `rgb(var(--color-main-600))` style or with transparency
+    as `rgba(var(--color-main-600), 0.25)`.
+  */
+
+  --color-transparent: transparent;
+  --color-current: currentColor;
+
+  --color-white: var(--color-grey-0);
+  --color-font: var(--color-content-passive-primary);
+  --color-font-contrast: var(--color-content-passive-inverted-primary);
 
   --color-success-800: rgb(1, 90, 41); /*#015A29*/
   --color-success-700: rgb(1, 132, 61); /*#01843D*/
@@ -128,16 +140,6 @@
   --color-warning-200: rgb(249, 229, 205); /*#F9E5CD*/
   --color-warning-100: rgb(252, 242, 230); /*#FCF2E6*/
   --color-warning-50: rgb(253, 248, 242); /*#FDF8F2*/
-
-  /* These variables are overridden in pages to get custom colors for each category */
-  --color-category-800: var(--color-main-800);
-  --color-category-700: var(--color-main-700);
-  --color-category-600: var(--color-main-600);
-  --color-category-500: var(--color-main-500);
-  --color-category-400: var(--color-main-400);
-  --color-category-300: var(--color-main-300);
-  --color-category-200: var(--color-main-200);
-  --color-category-100: var(--color-main-100);
 
   /* New tokens - border */
 
