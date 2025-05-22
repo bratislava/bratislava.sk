@@ -7,6 +7,7 @@ import InbaArticlesList from '@/src/components/sections/ArticlesListSection/Inba
 import BannerSection from '@/src/components/sections/BannerSection'
 import CalculatorSection from '@/src/components/sections/CalculatorSection_Deprecated/CalculatorSection_Deprecated'
 import ColumnedTextSection from '@/src/components/sections/ColumnedTextSection'
+import ColumnsSection from '@/src/components/sections/ColumnsSection'
 import ComparisonSection from '@/src/components/sections/ComparisonSection'
 import ContactsSection from '@/src/components/sections/ContactsSection'
 import DividerSection from '@/src/components/sections/DividerSection'
@@ -45,6 +46,9 @@ const SectionContent = ({ section }: { section: SectionsFragment }) => {
 
     case 'ComponentSectionsColumnedText':
       return <ColumnedTextSection section={section} />
+
+    case 'ComponentSectionsColumns':
+      return <ColumnsSection section={section} />
 
     case 'ComponentSectionsTextWithImage':
       return <TextWithImageSection section={section} />
