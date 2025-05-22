@@ -40,7 +40,7 @@ const ColumnsSectionItem = ({
               className={cn('relative', {
                 'relative h-18 w-18':
                   imageVariant === 'columnsSection_variant_withCircleIconBackground',
-                'relative h-30 w-full': imageVariant === 'columnsSection_variant_imageFixedSize',
+                'relative h-30 w-full': imageVariant === 'columnsSection_variant_imageFixedHeight',
                 // no classes for imageVariant === 'columnsSection_variant_imageNonFixedSize'
               })}
             >

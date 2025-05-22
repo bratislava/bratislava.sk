@@ -23,7 +23,7 @@
       "type": "enumeration",
       "enum": [
         "columnsSection.variant.withCircleIconBackground",
-        "columnsSection.variant.imageFixedSize",
+        "columnsSection.variant.imageFixedHeight",
         "columnsSection.variant.imageNonFixedSize"
       ],
       "required": true,

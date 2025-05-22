@@ -25,18 +25,13 @@ const ColumnsSection = ({ section }: Props) => {
     <div className="flex flex-col gap-6 lg:gap-12">
       {title || text ? (
         <div className="flex">
-          <div
-            className={cn(
-              'grow',
-              // { 'text-center': textAlign === 'center' }
-            )}
-          >
-            {title && <Typography variant="h2">{title}</Typography>}
-            {text && (
+          <div className={cn('grow text-center')}>
+            {title ? <Typography variant="h2">{title}</Typography> : null}
+            {text ? (
               <Typography variant="p-default" className="not-first:mt-2">
                 {text}
               </Typography>
-            )}
+            ) : null}
           </div>
         </div>
       ) : null}

@@ -511,7 +511,7 @@ export interface SectionsColumns extends Schema.Component {
     imageVariant: Attribute.Enumeration<
       [
         'columnsSection.variant.withCircleIconBackground',
-        'columnsSection.variant.imageFixedSize',
+        'columnsSection.variant.imageFixedHeight',
         'columnsSection.variant.imageNonFixedSize'
       ]
     > &

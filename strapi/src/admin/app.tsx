@@ -21,8 +21,18 @@ export default {
         'Auth.form.username.placeholder': 'napr. jankohrasko',
         'Auth.form.email.placeholder': 'napr. janko.hrasko@bratislava.sk',
         'Settings.webhooks.trigger.test': 'Testovací beh',
+
+        // Used in columns section
+        'columnsSection.variant.withCircleIconBackground': 'Piktogramy na kruhovom pozadí',
+        'columnsSection.variant.imageFixedHeight': 'S rovnakou pevnou výškou 120px',
+        'columnsSection.variant.imageNonFixedSize': 'Podľa veľkosti jednotlivých obrázkov',
       },
-      en: {},
+      en: {
+        // Used in columns section
+        'columnsSection.variant.withCircleIconBackground': 'Piktogramy na kruhovom pozadí',
+        'columnsSection.variant.imageFixedHeight': 'S rovnakou pevnou výškou 120px',
+        'columnsSection.variant.imageNonFixedSize': 'Podľa veľkosti jednotlivých obrázkov',
+      },
     },
   },
   bootstrap() {},
