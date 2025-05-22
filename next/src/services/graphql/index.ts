@@ -399,6 +399,29 @@ export type ComponentAccordionItemsInstitutionNarrowInput = {
   urlLabel?: InputMaybe<Scalars['String']['input']>
 }
 
+export type ComponentBlocksColumnsItem = {
+  __typename?: 'ComponentBlocksColumnsItem'
+  id: Scalars['ID']['output']
+  image?: Maybe<UploadFileEntityResponse>
+  text?: Maybe<Scalars['String']['output']>
+  title?: Maybe<Scalars['String']['output']>
+}
+
+export type ComponentBlocksColumnsItemFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentBlocksColumnsItemFiltersInput>>>
+  not?: InputMaybe<ComponentBlocksColumnsItemFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<ComponentBlocksColumnsItemFiltersInput>>>
+  text?: InputMaybe<StringFilterInput>
+  title?: InputMaybe<StringFilterInput>
+}
+
+export type ComponentBlocksColumnsItemInput = {
+  id?: InputMaybe<Scalars['ID']['input']>
+  image?: InputMaybe<Scalars['ID']['input']>
+  text?: InputMaybe<Scalars['String']['input']>
+  title?: InputMaybe<Scalars['String']['input']>
+}
+
 export type ComponentBlocksCommonLink = {
   __typename?: 'ComponentBlocksCommonLink'
   analyticsId?: Maybe<Scalars['String']['output']>
@@ -1104,6 +1127,39 @@ export type ComponentSectionsColumnedTextInput = {
   content?: InputMaybe<Scalars['String']['input']>
   contentAlignment?: InputMaybe<Enum_Componentsectionscolumnedtext_Contentalignment>
   id?: InputMaybe<Scalars['ID']['input']>
+}
+
+export type ComponentSectionsColumns = {
+  __typename?: 'ComponentSectionsColumns'
+  columns: Array<Maybe<ComponentBlocksColumnsItem>>
+  id: Scalars['ID']['output']
+  imageVariant: Enum_Componentsectionscolumns_Imagevariant
+  text?: Maybe<Scalars['String']['output']>
+  title?: Maybe<Scalars['String']['output']>
+}
+
+export type ComponentSectionsColumnsColumnsArgs = {
+  filters?: InputMaybe<ComponentBlocksColumnsItemFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type ComponentSectionsColumnsFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentSectionsColumnsFiltersInput>>>
+  columns?: InputMaybe<ComponentBlocksColumnsItemFiltersInput>
+  imageVariant?: InputMaybe<StringFilterInput>
+  not?: InputMaybe<ComponentSectionsColumnsFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<ComponentSectionsColumnsFiltersInput>>>
+  text?: InputMaybe<StringFilterInput>
+  title?: InputMaybe<StringFilterInput>
+}
+
+export type ComponentSectionsColumnsInput = {
+  columns?: InputMaybe<Array<InputMaybe<ComponentBlocksColumnsItemInput>>>
+  id?: InputMaybe<Scalars['ID']['input']>
+  imageVariant?: InputMaybe<Enum_Componentsectionscolumns_Imagevariant>
+  text?: InputMaybe<Scalars['String']['input']>
+  title?: InputMaybe<Scalars['String']['input']>
 }
 
 export type ComponentSectionsComparisonSection = {
@@ -2154,6 +2210,12 @@ export enum Enum_Componentsectionscolumnedtext_Contentalignment {
   Right = 'right',
 }
 
+export enum Enum_Componentsectionscolumns_Imagevariant {
+  ColumnsSectionVariantImageFixedSize = 'columnsSection_variant_imageFixedSize',
+  ColumnsSectionVariantImageNonFixedSize = 'columnsSection_variant_imageNonFixedSize',
+  ColumnsSectionVariantWithCircleIconBackground = 'columnsSection_variant_withCircleIconBackground',
+}
+
 export enum Enum_Componentsectionscomparisonsection_Textalign {
   Center = 'center',
   Left = 'left',
@@ -2585,6 +2647,7 @@ export type GenericMorph =
   | ComponentAccordionItemsFlatText
   | ComponentAccordionItemsInstitution
   | ComponentAccordionItemsInstitutionNarrow
+  | ComponentBlocksColumnsItem
   | ComponentBlocksCommonLink
   | ComponentBlocksComparisonCard
   | ComponentBlocksComparisonItem
@@ -2612,6 +2675,7 @@ export type GenericMorph =
   | ComponentSectionsBanner
   | ComponentSectionsCalculator
   | ComponentSectionsColumnedText
+  | ComponentSectionsColumns
   | ComponentSectionsComparisonSection
   | ComponentSectionsContactsSection
   | ComponentSectionsDivider
@@ -3867,6 +3931,7 @@ export type PageSectionsDynamicZone =
   | ComponentSectionsBanner
   | ComponentSectionsCalculator
   | ComponentSectionsColumnedText
+  | ComponentSectionsColumns
   | ComponentSectionsComparisonSection
   | ComponentSectionsContactsSection
   | ComponentSectionsDivider
@@ -8391,6 +8456,34 @@ export type PageEntityFragment = {
           contentAlignment?: Enum_Componentsectionscolumnedtext_Contentalignment | null
         }
       | {
+          __typename: 'ComponentSectionsColumns'
+          title?: string | null
+          text?: string | null
+          imageVariant: Enum_Componentsectionscolumns_Imagevariant
+          columns: Array<{
+            __typename?: 'ComponentBlocksColumnsItem'
+            id: string
+            title?: string | null
+            text?: string | null
+            image?: {
+              __typename?: 'UploadFileEntityResponse'
+              data?: {
+                __typename?: 'UploadFileEntity'
+                id?: string | null
+                attributes?: {
+                  __typename?: 'UploadFile'
+                  url: string
+                  width?: number | null
+                  height?: number | null
+                  caption?: string | null
+                  alternativeText?: string | null
+                  name: string
+                } | null
+              } | null
+            } | null
+          } | null>
+        }
+      | {
           __typename: 'ComponentSectionsComparisonSection'
           title?: string | null
           text?: string | null
@@ -9301,6 +9394,34 @@ export type PageBySlugQuery = {
               __typename: 'ComponentSectionsColumnedText'
               content?: string | null
               contentAlignment?: Enum_Componentsectionscolumnedtext_Contentalignment | null
+            }
+          | {
+              __typename: 'ComponentSectionsColumns'
+              title?: string | null
+              text?: string | null
+              imageVariant: Enum_Componentsectionscolumns_Imagevariant
+              columns: Array<{
+                __typename?: 'ComponentBlocksColumnsItem'
+                id: string
+                title?: string | null
+                text?: string | null
+                image?: {
+                  __typename?: 'UploadFileEntityResponse'
+                  data?: {
+                    __typename?: 'UploadFileEntity'
+                    id?: string | null
+                    attributes?: {
+                      __typename?: 'UploadFile'
+                      url: string
+                      width?: number | null
+                      height?: number | null
+                      caption?: string | null
+                      alternativeText?: string | null
+                      name: string
+                    } | null
+                  } | null
+                } | null
+              } | null>
             }
           | {
               __typename: 'ComponentSectionsComparisonSection'
@@ -10253,6 +10374,34 @@ export type Dev_AllPagesQuery = {
               __typename: 'ComponentSectionsColumnedText'
               content?: string | null
               contentAlignment?: Enum_Componentsectionscolumnedtext_Contentalignment | null
+            }
+          | {
+              __typename: 'ComponentSectionsColumns'
+              title?: string | null
+              text?: string | null
+              imageVariant: Enum_Componentsectionscolumns_Imagevariant
+              columns: Array<{
+                __typename?: 'ComponentBlocksColumnsItem'
+                id: string
+                title?: string | null
+                text?: string | null
+                image?: {
+                  __typename?: 'UploadFileEntityResponse'
+                  data?: {
+                    __typename?: 'UploadFileEntity'
+                    id?: string | null
+                    attributes?: {
+                      __typename?: 'UploadFile'
+                      url: string
+                      width?: number | null
+                      height?: number | null
+                      caption?: string | null
+                      alternativeText?: string | null
+                      name: string
+                    } | null
+                  } | null
+                } | null
+              } | null>
             }
           | {
               __typename: 'ComponentSectionsComparisonSection'
@@ -12059,6 +12208,58 @@ export type ColumnedTextSectionFragment = {
   contentAlignment?: Enum_Componentsectionscolumnedtext_Contentalignment | null
 }
 
+export type ColumnsItemFragment = {
+  __typename?: 'ComponentBlocksColumnsItem'
+  id: string
+  title?: string | null
+  text?: string | null
+  image?: {
+    __typename?: 'UploadFileEntityResponse'
+    data?: {
+      __typename?: 'UploadFileEntity'
+      id?: string | null
+      attributes?: {
+        __typename?: 'UploadFile'
+        url: string
+        width?: number | null
+        height?: number | null
+        caption?: string | null
+        alternativeText?: string | null
+        name: string
+      } | null
+    } | null
+  } | null
+}
+
+export type ColumnsSectionFragment = {
+  __typename?: 'ComponentSectionsColumns'
+  title?: string | null
+  text?: string | null
+  imageVariant: Enum_Componentsectionscolumns_Imagevariant
+  columns: Array<{
+    __typename?: 'ComponentBlocksColumnsItem'
+    id: string
+    title?: string | null
+    text?: string | null
+    image?: {
+      __typename?: 'UploadFileEntityResponse'
+      data?: {
+        __typename?: 'UploadFileEntity'
+        id?: string | null
+        attributes?: {
+          __typename?: 'UploadFile'
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
+      } | null
+    } | null
+  } | null>
+}
+
 export type NarrowTextSectionFragment = {
   __typename?: 'ComponentSectionsNarrowText'
   content?: string | null
@@ -12928,6 +13129,35 @@ type Sections_ComponentSectionsColumnedText_Fragment = {
   contentAlignment?: Enum_Componentsectionscolumnedtext_Contentalignment | null
 }
 
+type Sections_ComponentSectionsColumns_Fragment = {
+  __typename: 'ComponentSectionsColumns'
+  title?: string | null
+  text?: string | null
+  imageVariant: Enum_Componentsectionscolumns_Imagevariant
+  columns: Array<{
+    __typename?: 'ComponentBlocksColumnsItem'
+    id: string
+    title?: string | null
+    text?: string | null
+    image?: {
+      __typename?: 'UploadFileEntityResponse'
+      data?: {
+        __typename?: 'UploadFileEntity'
+        id?: string | null
+        attributes?: {
+          __typename?: 'UploadFile'
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
+      } | null
+    } | null
+  } | null>
+}
+
 type Sections_ComponentSectionsComparisonSection_Fragment = {
   __typename: 'ComponentSectionsComparisonSection'
   title?: string | null
@@ -13480,6 +13710,7 @@ export type SectionsFragment =
   | Sections_ComponentSectionsBanner_Fragment
   | Sections_ComponentSectionsCalculator_Fragment
   | Sections_ComponentSectionsColumnedText_Fragment
+  | Sections_ComponentSectionsColumns_Fragment
   | Sections_ComponentSectionsComparisonSection_Fragment
   | Sections_ComponentSectionsContactsSection_Fragment
   | Sections_ComponentSectionsDivider_Fragment
@@ -14280,6 +14511,30 @@ export const ColumnedTextSectionFragmentDoc = gql`
     contentAlignment
   }
 `
+export const ColumnsItemFragmentDoc = gql`
+  fragment ColumnsItem on ComponentBlocksColumnsItem {
+    id
+    title
+    text
+    image {
+      data {
+        ...UploadImageEntity
+      }
+    }
+  }
+  ${UploadImageEntityFragmentDoc}
+`
+export const ColumnsSectionFragmentDoc = gql`
+  fragment ColumnsSection on ComponentSectionsColumns {
+    title
+    text
+    columns(pagination: { limit: -1 }) {
+      ...ColumnsItem
+    }
+    imageVariant
+  }
+  ${ColumnsItemFragmentDoc}
+`
 export const NarrowTextSectionFragmentDoc = gql`
   fragment NarrowTextSection on ComponentSectionsNarrowText {
     content
@@ -14782,6 +15037,9 @@ export const SectionsFragmentDoc = gql`
     ... on ComponentSectionsColumnedText {
       ...ColumnedTextSection
     }
+    ... on ComponentSectionsColumns {
+      ...ColumnsSection
+    }
     ... on ComponentSectionsNarrowText {
       ...NarrowTextSection
     }
@@ -14854,6 +15112,7 @@ export const SectionsFragmentDoc = gql`
   ${GallerySectionFragmentDoc}
   ${FileListSectionFragmentDoc}
   ${ColumnedTextSectionFragmentDoc}
+  ${ColumnsSectionFragmentDoc}
   ${NarrowTextSectionFragmentDoc}
   ${WavesSectionFragmentDoc}
   ${LinksSectionFragmentDoc}

@@ -51,6 +51,18 @@ export interface AccordionItemsInstitutionNarrow extends Schema.Component {
   }
 }
 
+export interface BlocksColumnsItem extends Schema.Component {
+  collectionName: 'components_blocks_columns_items'
+  info: {
+    displayName: 'columns item'
+  }
+  attributes: {
+    image: Attribute.Media<'images'>
+    text: Attribute.RichText
+    title: Attribute.String
+  }
+}
+
 export interface BlocksCommonLink extends Schema.Component {
   collectionName: 'components_blocks_common_links'
   info: {
@@ -478,6 +490,35 @@ export interface SectionsColumnedText extends Schema.Component {
     content: Attribute.RichText
     contentAlignment: Attribute.Enumeration<['left', 'center', 'right']> &
       Attribute.DefaultTo<'left'>
+  }
+}
+
+export interface SectionsColumns extends Schema.Component {
+  collectionName: 'components_sections_columns'
+  info: {
+    description: ''
+    displayName: 'Columns'
+  }
+  attributes: {
+    columns: Attribute.Component<'blocks.columns-item', true> &
+      Attribute.Required &
+      Attribute.SetMinMax<
+        {
+          min: 1
+        },
+        number
+      >
+    imageVariant: Attribute.Enumeration<
+      [
+        'columnsSection.variant.withCircleIconBackground',
+        'columnsSection.variant.imageFixedSize',
+        'columnsSection.variant.imageNonFixedSize'
+      ]
+    > &
+      Attribute.Required &
+      Attribute.DefaultTo<'columnsSection.variant.withCircleIconBackground'>
+    text: Attribute.Text
+    title: Attribute.String
   }
 }
 
@@ -956,6 +997,7 @@ declare module '@strapi/types' {
       'accordion-items.flat-text': AccordionItemsFlatText
       'accordion-items.institution': AccordionItemsInstitution
       'accordion-items.institution-narrow': AccordionItemsInstitutionNarrow
+      'blocks.columns-item': BlocksColumnsItem
       'blocks.common-link': BlocksCommonLink
       'blocks.comparison-card': BlocksComparisonCard
       'blocks.comparison-item': BlocksComparisonItem
@@ -983,6 +1025,7 @@ declare module '@strapi/types' {
       'sections.banner': SectionsBanner
       'sections.calculator': SectionsCalculator
       'sections.columned-text': SectionsColumnedText
+      'sections.columns': SectionsColumns
       'sections.comparison-section': SectionsComparisonSection
       'sections.contacts-section': SectionsContactsSection
       'sections.divider': SectionsDivider

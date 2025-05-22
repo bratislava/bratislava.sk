@@ -142,6 +142,26 @@ fragment ColumnedTextSection on ComponentSectionsColumnedText {
   contentAlignment
 }
 
+fragment ColumnsItem on ComponentBlocksColumnsItem {
+  id
+  title
+  text
+  image {
+    data {
+      ...UploadImageEntity
+    }
+  }
+}
+
+fragment ColumnsSection on ComponentSectionsColumns {
+  title
+  text
+  columns(pagination: { limit: -1 }) {
+    ...ColumnsItem
+  }
+  imageVariant
+}
+
 fragment NarrowTextSection on ComponentSectionsNarrowText {
   content
   width
@@ -420,6 +440,10 @@ fragment Sections on PageSectionsDynamicZone {
 
   ... on ComponentSectionsColumnedText {
     ...ColumnedTextSection
+  }
+
+  ... on ComponentSectionsColumns {
+    ...ColumnsSection
   }
 
   ... on ComponentSectionsNarrowText {
