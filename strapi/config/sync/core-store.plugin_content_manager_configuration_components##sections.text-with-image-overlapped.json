@@ -22,7 +22,7 @@
       "content": {
         "edit": {
           "label": "Text",
-          "description": "V tejto sekcii používať iba nadpis, obyčaný text a hrubé písmo. Ostatné formátovanie textu nie je v tejto sekcii vhodné.",
+          "description": "V tejto sekcii prosíme používať iba nadpis, obyčajný text a hrubé písmo. Ostatné formátovanie textu nie je v tejto sekcii vhodné.",
           "placeholder": "",
           "visible": true,
           "editable": true
