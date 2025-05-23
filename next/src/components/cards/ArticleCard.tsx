@@ -50,7 +50,12 @@ const ArticleCard = ({
               {tag && <Tag text={tag} size="small" isColored />}
             </div>
           )}
-          <Typography id={titleId} as="h3" variant="h5" className="line-clamp-3 group-hover:underline">
+          <Typography
+            id={titleId}
+            as="h3"
+            variant="h5"
+            className="line-clamp-3 group-hover:underline"
+          >
             {title}
           </Typography>
 
