@@ -1,13 +1,13 @@
 {
-  "key": "plugin_content_manager_configuration_components::sections.text-with-image-overlapped",
+  "key": "plugin_content_manager_configuration_components::blocks.columns-item",
   "value": {
     "settings": {
       "bulkable": true,
       "filterable": true,
       "searchable": true,
       "pageSize": 10,
-      "mainField": "id",
-      "defaultSortBy": "id",
+      "mainField": "title",
+      "defaultSortBy": "title",
       "defaultSortOrder": "ASC"
     },
     "metadatas": {
@@ -19,23 +19,37 @@
           "sortable": false
         }
       },
-      "content": {
+      "title": {
         "edit": {
-          "label": "Text",
-          "description": "V tejto sekcii prosíme používať iba nadpis, obyčajný text a hrubé písmo. Ostatné formátovanie textu nie je v tejto sekcii vhodné.",
+          "label": "Nadpis",
+          "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "content",
+          "label": "title",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "text": {
+        "edit": {
+          "label": "Text",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "text",
           "searchable": false,
           "sortable": false
         }
       },
       "image": {
         "edit": {
-          "label": "Obrázok",
+          "label": "Piktogram / Obrázok",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -46,32 +60,24 @@
           "searchable": false,
           "sortable": false
         }
-      },
-      "imagePosition": {
-        "edit": {
-          "label": "Pozícia obrázku",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "imagePosition",
-          "searchable": true,
-          "sortable": true
-        }
       }
     },
     "layouts": {
       "list": [
         "id",
-        "image",
-        "imagePosition"
+        "title",
+        "image"
       ],
       "edit": [
         [
           {
-            "name": "content",
+            "name": "title",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "text",
             "size": 12
           }
         ],
@@ -79,15 +85,11 @@
           {
             "name": "image",
             "size": 6
-          },
-          {
-            "name": "imagePosition",
-            "size": 6
           }
         ]
       ]
     },
-    "uid": "sections.text-with-image-overlapped",
+    "uid": "blocks.columns-item",
     "isComponent": true
   },
   "type": "object",

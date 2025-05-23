@@ -1,0 +1,41 @@
+{
+  "collectionName": "components_sections_columns",
+  "info": {
+    "displayName": "Columns",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "text": {
+      "type": "text"
+    },
+    "columns": {
+      "type": "component",
+      "repeatable": true,
+      "component": "blocks.columns-item",
+      "required": true,
+      "min": 1
+    },
+    "imageVariant": {
+      "type": "enumeration",
+      "enum": [
+        "columnsSection.imageVariant.withCircleBackground",
+        "columnsSection.imageVariant.imageOriginalSize"
+      ],
+      "required": true,
+      "default": "columnsSection.imageVariant.withCircleBackground"
+    },
+    "responsiveLayout": {
+      "type": "enumeration",
+      "enum": [
+        "columnsSection.responsiveLayout.slider",
+        "columnsSection.responsiveLayout.oneColumn"
+      ],
+      "required": true,
+      "default": "columnsSection.responsiveLayout.slider"
+    }
+  }
+}

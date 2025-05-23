@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_blocks_columns_items",
+  "info": {
+    "displayName": "columns item"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "text": {
+      "type": "richtext"
+    },
+    "image": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

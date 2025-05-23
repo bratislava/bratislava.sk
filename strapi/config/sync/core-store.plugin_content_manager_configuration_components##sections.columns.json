@@ -1,0 +1,137 @@
+{
+  "key": "plugin_content_manager_configuration_components::sections.columns",
+  "value": {
+    "settings": {
+      "bulkable": true,
+      "filterable": true,
+      "searchable": true,
+      "pageSize": 10,
+      "mainField": "title",
+      "defaultSortBy": "title",
+      "defaultSortOrder": "ASC"
+    },
+    "metadatas": {
+      "id": {
+        "edit": {},
+        "list": {
+          "label": "id",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "title": {
+        "edit": {
+          "label": "Nadpis",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "title",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "text": {
+        "edit": {
+          "label": "Text",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "text",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "columns": {
+        "edit": {
+          "label": "Stĺpce",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "columns",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "imageVariant": {
+        "edit": {
+          "label": "Zobrazovať obrázky ako:",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "imageVariant",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "responsiveLayout": {
+        "edit": {
+          "label": "Rozloženie pri responzívnom zobrazení (mobil, tablet)",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "responsiveLayout",
+          "searchable": true,
+          "sortable": true
+        }
+      }
+    },
+    "layouts": {
+      "list": [
+        "id",
+        "title",
+        "text",
+        "columns"
+      ],
+      "edit": [
+        [
+          {
+            "name": "title",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "text",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "columns",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "imageVariant",
+            "size": 6
+          },
+          {
+            "name": "responsiveLayout",
+            "size": 6
+          }
+        ]
+      ]
+    },
+    "uid": "sections.columns",
+    "isComponent": true
+  },
+  "type": "object",
+  "environment": null,
+  "tag": null
+}

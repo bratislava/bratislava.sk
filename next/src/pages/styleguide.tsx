@@ -7,6 +7,7 @@ import ArticleCardShowcase from '@/src/components/styleguide/showcases/ArticleCa
 import BannerShowCase from '@/src/components/styleguide/showcases/BannerShowCase'
 import ButtonShowCase from '@/src/components/styleguide/showcases/ButtonShowCase'
 import CategoryCardShowcase from '@/src/components/styleguide/showcases/CategoryCardShowcase'
+import ColumnsShowcase from '@/src/components/styleguide/showcases/ColumnsShowcase'
 import ContactsShowcase from '@/src/components/styleguide/showcases/ContactsShowcase'
 import EventCardShowcase from '@/src/components/styleguide/showcases/EventCardShowcase'
 import HomepageHorizontalCardShowcase from '@/src/components/styleguide/showcases/HomepageHorizontalCardShowcase'
@@ -39,6 +40,7 @@ const Styleguide = () => {
       <ArticleCardShowcase />
       <HomepageHorizontalCardShowcase />
       <ContactsShowcase />
+      <ColumnsShowcase />
     </StyleGuideWrapper>
   )
 }
