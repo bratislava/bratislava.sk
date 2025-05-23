@@ -23,34 +23,27 @@ const ColumnsSectionItem = ({
   imageSizes,
   className,
 }: ColumnsSectionItemProps) => {
+  const isPictogramVariant = imageVariant === 'columnsSection_imageVariant_withCircleIconBackground'
+  const isOriginalSizeVariant = imageVariant === 'columnsSection_imageVariant_imageOriginalSize'
+
   return (
     <div className={cn('flex grow justify-center', className)}>
       <div className="flex w-full flex-col items-center gap-4">
         {image?.data?.attributes ? (
           <div
             className={cn('flex shrink-0 items-center justify-center', {
-              'bg-category-200 rounded-full p-6':
-                imageVariant === 'columnsSection_imageVariant_withCircleIconBackground',
-              'w-full': imageVariant === 'columnsSection_imageVariant_imageOriginalSize',
+              'bg-category-200 rounded-full p-6': isPictogramVariant,
+              'w-full': isOriginalSizeVariant,
             })}
           >
             {/* For variants withCircleIconBackground and imageFixedSize, we set the parent div to be `relative`,
                 and we use `fill` property with `object-contain` class on the image */}
             <div
-              className={cn({
-                'relative h-18 w-18':
-                  imageVariant === 'columnsSection_imageVariant_withCircleIconBackground',
+              className={cn('border', {
+                'relative h-18 w-18': isPictogramVariant,
               })}
             >
-              {imageVariant === 'columnsSection_imageVariant_imageOriginalSize' ? (
-                <StrapiImage
-                  alt=""
-                  image={image.data.attributes}
-                  sizes={imageSizes}
-                  // pointer-events must be disabled to drag-events work properly in Slider
-                  className="pointer-events-none"
-                />
-              ) : (
+              {isPictogramVariant ? (
                 <StrapiImage
                   alt=""
                   image={image.data.attributes}
@@ -58,6 +51,14 @@ const ColumnsSectionItem = ({
                   // pointer-events must be disabled to drag-events work properly in Slider
                   className="pointer-events-none object-contain"
                   fill
+                />
+              ) : (
+                <StrapiImage
+                  alt=""
+                  image={image.data.attributes}
+                  sizes={imageSizes}
+                  // pointer-events must be disabled to drag-events work properly in Slider
+                  className="pointer-events-none"
                 />
               )}
             </div>

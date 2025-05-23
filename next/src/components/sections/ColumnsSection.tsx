@@ -80,6 +80,7 @@ const ColumnsSection = ({ section }: Props) => {
                 // eslint-disable-next-line react/no-array-index-key
                 key={index}
                 {...item}
+                imageVariant={imageVariant}
                 imageSizes={generateImageSizes({ default: '100vw' })}
                 className="w-full"
               />
