@@ -1,3 +1,4 @@
+import { Typography } from '@bratislava/component-library'
 import React, { useId } from 'react'
 
 import CardBase, { CardBaseProps } from '@/src/components/cards/CardBase'
@@ -16,10 +17,9 @@ const CategoryCard = ({ title, linkProps, ...rest }: Props) => {
   return (
     <CardBase className="h-[240px]" {...rest}>
       <CardContent className="h-full justify-between p-6">
-        {/* FIXME Typography. Convert to use Typography. Issue: Probably safe to convert but cant find page where is this used for testing */}
-        <h3 id={titleId} className="line-clamp-4 text-h4 group-hover:underline">
+        <Typography id={titleId} variant="h4" as="h3" className="group-hover:underline">
           {title}
-        </h3>
+        </Typography>
         <Button variant="link" stretched {...linkProps} aria-labelledby={titleId} />
       </CardContent>
     </CardBase>
