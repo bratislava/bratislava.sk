@@ -1,4 +1,5 @@
 import { Typography } from '@bratislava/component-library'
+import { useId } from 'react'
 
 import CardBase from '@/src/components/cards/CardBase'
 import CardContent from '@/src/components/cards/CardContent'
@@ -12,6 +13,8 @@ type Props = {
 }
 
 const MayorAndCouncilCard = ({ title, imageSrc, linkProps }: Props) => {
+  const titleId = useId()
+
   return (
     <CardBase
       variant="no-border"
@@ -26,10 +29,10 @@ const MayorAndCouncilCard = ({ title, imageSrc, linkProps }: Props) => {
       </div>
 
       <CardContent className="flex w-full flex-col pl-32 lg:pl-72">
-        <Typography variant="h4" as="h3" className="mb-1.5 lg:mb-3">
+        <Typography id={titleId} variant="h4" as="h3" className="mb-1.5 lg:mb-3">
           {title}
         </Typography>
-        <Button stretched variant="link" {...linkProps} />
+        <Button stretched variant="link" {...linkProps} aria-labelledby={titleId} />
       </CardContent>
     </CardBase>
   )
