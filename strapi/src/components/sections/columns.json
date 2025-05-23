@@ -22,21 +22,20 @@
     "imageVariant": {
       "type": "enumeration",
       "enum": [
-        "columnsSection.variant.withCircleIconBackground",
-        "columnsSection.variant.imageFixedHeight",
-        "columnsSection.variant.imageNonFixedSize"
+        "columnsSection.imageVariant.withCircleIconBackground",
+        "columnsSection.imageVariant.imageOriginalSize"
       ],
       "required": true,
-      "default": "columnsSection.variant.withCircleIconBackground"
+      "default": "columnsSection.imageVariant.withCircleIconBackground"
     },
-    "respoLayout": {
+    "responsiveLayout": {
       "type": "enumeration",
       "enum": [
-        "columnsSection.respoLayout.slider",
-        "columnsSection.respoLayout.oneColumn"
+        "columnsSection.responsiveLayout.slider",
+        "columnsSection.responsiveLayout.oneColumn"
       ],
       "required": true,
-      "default": "columnsSection.respoLayout.slider"
+      "default": "columnsSection.responsiveLayout.slider"
     }
   }
 }

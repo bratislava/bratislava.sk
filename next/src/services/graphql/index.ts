@@ -1134,7 +1134,7 @@ export type ComponentSectionsColumns = {
   columns: Array<Maybe<ComponentBlocksColumnsItem>>
   id: Scalars['ID']['output']
   imageVariant: Enum_Componentsectionscolumns_Imagevariant
-  respoLayout: Enum_Componentsectionscolumns_Respolayout
+  responsiveLayout: Enum_Componentsectionscolumns_Responsivelayout
   text?: Maybe<Scalars['String']['output']>
   title?: Maybe<Scalars['String']['output']>
 }
@@ -1151,7 +1151,7 @@ export type ComponentSectionsColumnsFiltersInput = {
   imageVariant?: InputMaybe<StringFilterInput>
   not?: InputMaybe<ComponentSectionsColumnsFiltersInput>
   or?: InputMaybe<Array<InputMaybe<ComponentSectionsColumnsFiltersInput>>>
-  respoLayout?: InputMaybe<StringFilterInput>
+  responsiveLayout?: InputMaybe<StringFilterInput>
   text?: InputMaybe<StringFilterInput>
   title?: InputMaybe<StringFilterInput>
 }
@@ -1160,7 +1160,7 @@ export type ComponentSectionsColumnsInput = {
   columns?: InputMaybe<Array<InputMaybe<ComponentBlocksColumnsItemInput>>>
   id?: InputMaybe<Scalars['ID']['input']>
   imageVariant?: InputMaybe<Enum_Componentsectionscolumns_Imagevariant>
-  respoLayout?: InputMaybe<Enum_Componentsectionscolumns_Respolayout>
+  responsiveLayout?: InputMaybe<Enum_Componentsectionscolumns_Responsivelayout>
   text?: InputMaybe<Scalars['String']['input']>
   title?: InputMaybe<Scalars['String']['input']>
 }
@@ -2214,14 +2214,13 @@ export enum Enum_Componentsectionscolumnedtext_Contentalignment {
 }
 
 export enum Enum_Componentsectionscolumns_Imagevariant {
-  ColumnsSectionVariantImageFixedHeight = 'columnsSection_variant_imageFixedHeight',
-  ColumnsSectionVariantImageNonFixedSize = 'columnsSection_variant_imageNonFixedSize',
-  ColumnsSectionVariantWithCircleIconBackground = 'columnsSection_variant_withCircleIconBackground',
+  ColumnsSectionImageVariantImageOriginalSize = 'columnsSection_imageVariant_imageOriginalSize',
+  ColumnsSectionImageVariantWithCircleIconBackground = 'columnsSection_imageVariant_withCircleIconBackground',
 }
 
-export enum Enum_Componentsectionscolumns_Respolayout {
-  ColumnsSectionRespoLayoutOneColumn = 'columnsSection_respoLayout_oneColumn',
-  ColumnsSectionRespoLayoutSlider = 'columnsSection_respoLayout_slider',
+export enum Enum_Componentsectionscolumns_Responsivelayout {
+  ColumnsSectionResponsiveLayoutOneColumn = 'columnsSection_responsiveLayout_oneColumn',
+  ColumnsSectionResponsiveLayoutSlider = 'columnsSection_responsiveLayout_slider',
 }
 
 export enum Enum_Componentsectionscomparisonsection_Textalign {
@@ -8468,10 +8467,9 @@ export type PageEntityFragment = {
           title?: string | null
           text?: string | null
           imageVariant: Enum_Componentsectionscolumns_Imagevariant
-          respoLayout: Enum_Componentsectionscolumns_Respolayout
+          responsiveLayout: Enum_Componentsectionscolumns_Responsivelayout
           columns: Array<{
             __typename?: 'ComponentBlocksColumnsItem'
-            id: string
             title?: string | null
             text?: string | null
             image?: {
@@ -9409,10 +9407,9 @@ export type PageBySlugQuery = {
               title?: string | null
               text?: string | null
               imageVariant: Enum_Componentsectionscolumns_Imagevariant
-              respoLayout: Enum_Componentsectionscolumns_Respolayout
+              responsiveLayout: Enum_Componentsectionscolumns_Responsivelayout
               columns: Array<{
                 __typename?: 'ComponentBlocksColumnsItem'
-                id: string
                 title?: string | null
                 text?: string | null
                 image?: {
@@ -10390,10 +10387,9 @@ export type Dev_AllPagesQuery = {
               title?: string | null
               text?: string | null
               imageVariant: Enum_Componentsectionscolumns_Imagevariant
-              respoLayout: Enum_Componentsectionscolumns_Respolayout
+              responsiveLayout: Enum_Componentsectionscolumns_Responsivelayout
               columns: Array<{
                 __typename?: 'ComponentBlocksColumnsItem'
-                id: string
                 title?: string | null
                 text?: string | null
                 image?: {
@@ -12221,7 +12217,6 @@ export type ColumnedTextSectionFragment = {
 
 export type ColumnsItemFragment = {
   __typename?: 'ComponentBlocksColumnsItem'
-  id: string
   title?: string | null
   text?: string | null
   image?: {
@@ -12247,10 +12242,9 @@ export type ColumnsSectionFragment = {
   title?: string | null
   text?: string | null
   imageVariant: Enum_Componentsectionscolumns_Imagevariant
-  respoLayout: Enum_Componentsectionscolumns_Respolayout
+  responsiveLayout: Enum_Componentsectionscolumns_Responsivelayout
   columns: Array<{
     __typename?: 'ComponentBlocksColumnsItem'
-    id: string
     title?: string | null
     text?: string | null
     image?: {
@@ -13146,10 +13140,9 @@ type Sections_ComponentSectionsColumns_Fragment = {
   title?: string | null
   text?: string | null
   imageVariant: Enum_Componentsectionscolumns_Imagevariant
-  respoLayout: Enum_Componentsectionscolumns_Respolayout
+  responsiveLayout: Enum_Componentsectionscolumns_Responsivelayout
   columns: Array<{
     __typename?: 'ComponentBlocksColumnsItem'
-    id: string
     title?: string | null
     text?: string | null
     image?: {
@@ -14526,7 +14519,6 @@ export const ColumnedTextSectionFragmentDoc = gql`
 `
 export const ColumnsItemFragmentDoc = gql`
   fragment ColumnsItem on ComponentBlocksColumnsItem {
-    id
     title
     text
     image {
@@ -14545,7 +14537,7 @@ export const ColumnsSectionFragmentDoc = gql`
       ...ColumnsItem
     }
     imageVariant
-    respoLayout
+    responsiveLayout
   }
   ${ColumnsItemFragmentDoc}
 `

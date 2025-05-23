@@ -30,36 +30,34 @@ const ColumnsSectionItem = ({
           <div
             className={cn('flex shrink-0 items-center justify-center', {
               'bg-category-200 rounded-full p-6':
-                imageVariant === 'columnsSection_variant_withCircleIconBackground',
-              'w-full': imageVariant !== 'columnsSection_variant_withCircleIconBackground',
+                imageVariant === 'columnsSection_imageVariant_withCircleIconBackground',
+              'w-full': imageVariant === 'columnsSection_imageVariant_imageOriginalSize',
             })}
           >
             {/* For variants withCircleIconBackground and imageFixedSize, we set the parent div to be `relative`,
                 and we use `fill` property with `object-contain` class on the image */}
             <div
-              className={cn('relative', {
+              className={cn({
                 'relative h-18 w-18':
-                  imageVariant === 'columnsSection_variant_withCircleIconBackground',
-                'relative h-30 w-full': imageVariant === 'columnsSection_variant_imageFixedHeight',
-                // no classes for imageVariant === 'columnsSection_variant_imageNonFixedSize'
+                  imageVariant === 'columnsSection_imageVariant_withCircleIconBackground',
               })}
             >
-              {imageVariant === 'columnsSection_variant_imageNonFixedSize' ? (
+              {imageVariant === 'columnsSection_imageVariant_imageOriginalSize' ? (
                 <StrapiImage
+                  alt=""
                   image={image.data.attributes}
                   sizes={imageSizes}
                   // pointer-events must be disabled to drag-events work properly in Slider
                   className="pointer-events-none"
-                  alt=""
                 />
               ) : (
                 <StrapiImage
+                  alt=""
                   image={image.data.attributes}
                   sizes={imageSizes}
                   // pointer-events must be disabled to drag-events work properly in Slider
                   className="pointer-events-none object-contain"
                   fill
-                  alt=""
                 />
               )}
             </div>

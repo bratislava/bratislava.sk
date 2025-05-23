@@ -17,7 +17,7 @@ type Props = {
  */
 
 const ColumnsSection = ({ section }: Props) => {
-  const { title, text, columns, imageVariant, respoLayout } = section
+  const { title, text, columns, imageVariant, responsiveLayout } = section
 
   // eslint-disable-next-line unicorn/no-array-callback-reference
   const filteredColumns = columns?.filter(isDefined) ?? []
@@ -71,7 +71,7 @@ const ColumnsSection = ({ section }: Props) => {
       </ul>
 
       {/* Screen: Mobile */}
-      {respoLayout === 'columnsSection_respoLayout_slider' ? (
+      {responsiveLayout === 'columnsSection_responsiveLayout_slider' ? (
         <Slider
           // aria-labelledby={titleId} // TODO for better accessibility
           items={filteredColumns.map((item, index) => {

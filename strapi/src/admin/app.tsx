@@ -23,15 +23,17 @@ export default {
         'Settings.webhooks.trigger.test': 'Testovací beh',
 
         // Used in columns section
-        'columnsSection.variant.withCircleIconBackground': 'Piktogramy na kruhovom pozadí',
-        'columnsSection.variant.imageFixedHeight': 'S rovnakou pevnou výškou 120px',
-        'columnsSection.variant.imageNonFixedSize': 'Podľa veľkosti jednotlivých obrázkov',
+        'columnsSection.imageVariant.withCircleIconBackground': 'Piktogramy na kruhovom pozadí',
+        'columnsSection.imageVariant.imageOriginalSize': 'Obrázky s vlastnou veľkosťou',
+        'columnsSection.responsiveLayout.slider': 'Slider',
+        'columnsSection.responsiveLayout.oneColumn': 'Po sebou',
       },
       en: {
         // Used in columns section
-        'columnsSection.variant.withCircleIconBackground': 'Piktogramy na kruhovom pozadí',
-        'columnsSection.variant.imageFixedHeight': 'S rovnakou pevnou výškou 120px',
-        'columnsSection.variant.imageNonFixedSize': 'Podľa veľkosti jednotlivých obrázkov',
+        'columnsSection.imageVariant.withCircleIconBackground': 'Piktogramy na kruhovom pozadí',
+        'columnsSection.imageVariant.imageOriginalSize': 'Obrázky s vlastnou veľkosťou',
+        'columnsSection.responsiveLayout.slider': 'Slider',
+        'columnsSection.responsiveLayout.oneColumn': 'Po sebou',
       },
     },
   },

@@ -510,18 +510,17 @@ export interface SectionsColumns extends Schema.Component {
       >
     imageVariant: Attribute.Enumeration<
       [
-        'columnsSection.variant.withCircleIconBackground',
-        'columnsSection.variant.imageFixedHeight',
-        'columnsSection.variant.imageNonFixedSize'
+        'columnsSection.imageVariant.withCircleIconBackground',
+        'columnsSection.imageVariant.imageOriginalSize'
       ]
     > &
       Attribute.Required &
-      Attribute.DefaultTo<'columnsSection.variant.withCircleIconBackground'>
-    respoLayout: Attribute.Enumeration<
-      ['columnsSection.respoLayout.slider', 'columnsSection.respoLayout.oneColumn']
+      Attribute.DefaultTo<'columnsSection.imageVariant.withCircleIconBackground'>
+    responsiveLayout: Attribute.Enumeration<
+      ['columnsSection.responsiveLayout.slider', 'columnsSection.responsiveLayout.oneColumn']
     > &
       Attribute.Required &
-      Attribute.DefaultTo<'columnsSection.respoLayout.slider'>
+      Attribute.DefaultTo<'columnsSection.responsiveLayout.slider'>
     text: Attribute.Text
     title: Attribute.String
   }
