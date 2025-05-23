@@ -72,6 +72,7 @@
   "OfficialBoard.published": "Published",
   "OfficialBoard.publishedFrom": "Published from",
   "OfficialBoard.publishedTo": "Published to",
+  "Pagination.aria.currentPage": "Page {{page}}, current page",
   "Pagination.aria.goToNextPage": "Go to next page",
   "Pagination.aria.goToPage": "Go to page {{page}}",
   "Pagination.aria.goToPreviousPage": "Go to previous page",

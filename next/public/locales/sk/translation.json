@@ -74,6 +74,7 @@
   "OfficialBoard.published": "Zverejnené",
   "OfficialBoard.publishedFrom": "Zverejnené od",
   "OfficialBoard.publishedTo": "Zverejnené do",
+  "Pagination.aria.currentPage": "Stránka {{page}}, aktuálna stránka",
   "Pagination.aria.goToNextPage": "Ísť na ďalšiu stranu",
   "Pagination.aria.goToPage": "Ísť na stranu {{page}}",
   "Pagination.aria.goToPreviousPage": "Ísť na predchádzajúcu stranu",
