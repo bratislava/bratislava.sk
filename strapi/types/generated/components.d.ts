@@ -517,6 +517,11 @@ export interface SectionsColumns extends Schema.Component {
     > &
       Attribute.Required &
       Attribute.DefaultTo<'columnsSection.variant.withCircleIconBackground'>
+    respoLayout: Attribute.Enumeration<
+      ['columnsSection.respoLayout.slider', 'columnsSection.respoLayout.oneColumn']
+    > &
+      Attribute.Required &
+      Attribute.DefaultTo<'columnsSection.respoLayout.slider'>
     text: Attribute.Text
     title: Attribute.String
   }

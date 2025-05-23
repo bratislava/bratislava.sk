@@ -2,6 +2,7 @@ import { Typography } from '@bratislava/component-library'
 import React from 'react'
 
 import ColumnsSectionItem from '@/src/components/common/ColumnsSectionItem/ColumnsSectionItem'
+import Slider from '@/src/components/common/Slider/Slider'
 import { ColumnsSectionFragment } from '@/src/services/graphql'
 import cn from '@/src/utils/cn'
 import { generateImageSizes } from '@/src/utils/generateImageSizes'
@@ -16,7 +17,7 @@ type Props = {
  */
 
 const ColumnsSection = ({ section }: Props) => {
-  const { title, text, columns, imageVariant } = section
+  const { title, text, columns, imageVariant, respoLayout } = section
 
   // eslint-disable-next-line unicorn/no-array-callback-reference
   const filteredColumns = columns?.filter(isDefined) ?? []
@@ -70,39 +71,39 @@ const ColumnsSection = ({ section }: Props) => {
       </ul>
 
       {/* Screen: Mobile */}
-      <ul className="grid grid-cols-1 gap-x-8 gap-y-12">
-        {filteredColumns.map((item, index) => {
-          return (
-            <li
-              // eslint-disable-next-line react/no-array-index-key
-              key={index}
-            >
+      {respoLayout === 'columnsSection_respoLayout_slider' ? (
+        <Slider
+          // aria-labelledby={titleId} // TODO for better accessibility
+          items={filteredColumns.map((item, index) => {
+            return (
               <ColumnsSectionItem
+                // eslint-disable-next-line react/no-array-index-key
+                key={index}
                 {...item}
-                imageVariant={imageVariant}
                 imageSizes={generateImageSizes({ default: '100vw' })}
                 className="w-full"
               />
-            </li>
-          )
-        })}
-      </ul>
-      {/* TODO take Slider v OLO */}
-      {/* <Slider */}
-      {/*   aria-labelledby={titleId} */}
-      {/*   items={filteredColumns.map((item, index) => { */}
-      {/*     return ( */}
-      {/*       <ColumnsSectionItem */}
-      {/*         // eslint-disable-next-line react/no-array-index-key */}
-      {/*         key={index} */}
-      {/*         {...item} */}
-      {/*         imageSizes={generateImageSizes({ default: '100vw' })} */}
-      {/*         className="w-full" */}
-      {/*       /> */}
-      {/*     ) */}
-      {/*   })} */}
-      {/*   className="lg:hidden" */}
-      {/* /> */}
+            )
+          })}
+          className="lg:hidden"
+        />
+      ) : (
+        <ul className="flex flex-col gap-8 lg:hidden">
+          {filteredColumns.map((item, index) => {
+            return (
+              // eslint-disable-next-line react/no-array-index-key
+              <li key={index}>
+                <ColumnsSectionItem
+                  {...item}
+                  imageVariant={imageVariant}
+                  imageSizes={generateImageSizes({ default: '100vw' })}
+                  className="w-full"
+                />
+              </li>
+            )
+          })}
+        </ul>
+      )}
     </div>
   )
 }

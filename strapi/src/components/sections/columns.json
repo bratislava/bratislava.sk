@@ -28,6 +28,15 @@
       ],
       "required": true,
       "default": "columnsSection.variant.withCircleIconBackground"
+    },
+    "respoLayout": {
+      "type": "enumeration",
+      "enum": [
+        "columnsSection.respoLayout.slider",
+        "columnsSection.respoLayout.oneColumn"
+      ],
+      "required": true,
+      "default": "columnsSection.respoLayout.slider"
     }
   }
 }

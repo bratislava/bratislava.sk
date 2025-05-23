@@ -160,6 +160,7 @@ fragment ColumnsSection on ComponentSectionsColumns {
     ...ColumnsItem
   }
   imageVariant
+  respoLayout
 }
 
 fragment NarrowTextSection on ComponentSectionsNarrowText {
