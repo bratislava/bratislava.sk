@@ -40,66 +40,68 @@ const Pagination = ({ currentPage, totalCount, onPageChange = () => {} }: Pagina
         className="flex flex-wrap items-center justify-center gap-1 lg:gap-2"
         data-cy="pagination"
       >
-        {items.map(
-          ({ page, type, selected, disabled, onPress, 'aria-current': ariaCurrent }, index) => {
-            let children: ReactNode = null
+        {items.map(({ page, type, selected, disabled, onPress }, index) => {
+          let children: ReactNode = null
 
-            // eslint-disable-next-line unicorn/prefer-switch
-            if (type === 'start-ellipsis' || type === 'end-ellipsis') {
-              children = '…'
-            } else if (type === 'page') {
-              children = (
-                <Button
-                  variant={selected ? 'solid' : 'outline'}
-                  isDisabled={disabled}
-                  onPress={onPress}
-                  aria-current={ariaCurrent}
-                  aria-label={t('Pagination.aria.goToPage', { page })}
-                  className="flex size-10 shrink-0 grow-0 items-center justify-center rounded-full lg:size-12"
-                >
-                  {page}
-                </Button>
-              )
-            } else if (type === 'previous' || type === 'next') {
-              let icon: ReactNode
-              let ariaLabel = ''
-              if (type === 'previous') {
-                icon = <ArrowLeftIcon />
-                ariaLabel = t('Pagination.aria.goToPreviousPage')
-              }
-              if (type === 'next') {
-                icon = <ArrowRightIcon />
-                ariaLabel = t('Pagination.aria.goToNextPage')
-              }
-
-              children = (
-                <Button
-                  variant="plain"
-                  isDisabled={disabled}
-                  onPress={onPress}
-                  aria-label={ariaLabel}
-                  icon={icon}
-                  className="rounded-full"
-                />
-              )
+          // eslint-disable-next-line unicorn/prefer-switch
+          if (type === 'start-ellipsis' || type === 'end-ellipsis') {
+            children = '…'
+          } else if (type === 'page') {
+            children = (
+              <Button
+                variant={selected ? 'solid' : 'outline'}
+                isDisabled={disabled}
+                onPress={onPress}
+                aria-current={selected}
+                aria-label={
+                  selected
+                    ? t('Pagination.aria.currentPage', { page })
+                    : t('Pagination.aria.goToPage', { page })
+                }
+                className="flex size-10 shrink-0 grow-0 items-center justify-center rounded-full lg:size-12"
+              >
+                {page}
+              </Button>
+            )
+          } else if (type === 'previous' || type === 'next') {
+            let icon: ReactNode
+            let ariaLabel = ''
+            if (type === 'previous') {
+              icon = <ArrowLeftIcon />
+              ariaLabel = t('Pagination.aria.goToPreviousPage')
+            }
+            if (type === 'next') {
+              icon = <ArrowRightIcon />
+              ariaLabel = t('Pagination.aria.goToNextPage')
             }
 
-            return (
-              <li
-                // eslint-disable-next-line react/no-array-index-key
-                key={index}
-                className={cn({
-                  'flex w-10 items-center justify-center text-size-p-small font-semibold lg:w-12':
-                    type === 'start-ellipsis' || type === 'end-ellipsis',
-                  'lg:mr-2': type === 'previous',
-                  'lg:ml-2': type === 'next',
-                })}
-              >
-                {children}
-              </li>
+            children = (
+              <Button
+                variant="plain"
+                isDisabled={disabled}
+                onPress={onPress}
+                aria-label={ariaLabel}
+                icon={icon}
+                className="rounded-full"
+              />
             )
-          },
-        )}
+          }
+
+          return (
+            <li
+              // eslint-disable-next-line react/no-array-index-key
+              key={index}
+              className={cn({
+                'flex w-10 items-center justify-center text-size-p-small font-semibold lg:w-12':
+                  type === 'start-ellipsis' || type === 'end-ellipsis',
+                'lg:mr-2': type === 'previous',
+                'lg:ml-2': type === 'next',
+              })}
+            >
+              {children}
+            </li>
+          )
+        })}
       </ul>
     </nav>
   )
