@@ -69,7 +69,25 @@ const ColumnsSection = ({ section }: Props) => {
         })}
       </ul>
 
-      {/* /!* Screen: Mobile *!/ */}
+      {/* Screen: Mobile */}
+      <ul className="grid grid-cols-1 gap-x-8 gap-y-12">
+        {filteredColumns.map((item, index) => {
+          return (
+            <li
+              // eslint-disable-next-line react/no-array-index-key
+              key={index}
+            >
+              <ColumnsSectionItem
+                {...item}
+                imageVariant={imageVariant}
+                imageSizes={generateImageSizes({ default: '100vw' })}
+                className="w-full"
+              />
+            </li>
+          )
+        })}
+      </ul>
+      {/* TODO take Slider v OLO */}
       {/* <Slider */}
       {/*   aria-labelledby={titleId} */}
       {/*   items={filteredColumns.map((item, index) => { */}
