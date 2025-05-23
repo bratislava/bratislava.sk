@@ -22,11 +22,11 @@
     "imageVariant": {
       "type": "enumeration",
       "enum": [
-        "columnsSection.imageVariant.withCircleIconBackground",
+        "columnsSection.imageVariant.withCircleBackground",
         "columnsSection.imageVariant.imageOriginalSize"
       ],
       "required": true,
-      "default": "columnsSection.imageVariant.withCircleIconBackground"
+      "default": "columnsSection.imageVariant.withCircleBackground"
     },
     "responsiveLayout": {
       "type": "enumeration",

@@ -46,14 +46,14 @@ const sections: ColumnsSectionFragment[] = [
   {
     title: 'Pictograms, respo: Slider',
     imageVariant:
-      Enum_Componentsectionscolumns_Imagevariant.ColumnsSectionImageVariantWithCircleIconBackground,
+      Enum_Componentsectionscolumns_Imagevariant.ColumnsSectionImageVariantWithCircleBackground,
     responsiveLayout:
       Enum_Componentsectionscolumns_Responsivelayout.ColumnsSectionResponsiveLayoutSlider,
   },
   {
     title: 'Pictograms, respo: Grid',
     imageVariant:
-      Enum_Componentsectionscolumns_Imagevariant.ColumnsSectionImageVariantWithCircleIconBackground,
+      Enum_Componentsectionscolumns_Imagevariant.ColumnsSectionImageVariantWithCircleBackground,
     responsiveLayout:
       Enum_Componentsectionscolumns_Responsivelayout.ColumnsSectionResponsiveLayoutOneColumn,
   },
@@ -80,8 +80,8 @@ const MarkdownShowcase = () => {
     <Wrapper direction="column" title="Columns">
       {sections.map((section, index) => (
         // eslint-disable-next-line react/no-array-index-key
-        <Stack direction="column" key={index}>
-          <ColumnsSection section={section} />{' '}
+        <Stack direction="column" className="items-stretch" key={index}>
+          <ColumnsSection section={section} />
         </Stack>
       ))}
     </Wrapper>

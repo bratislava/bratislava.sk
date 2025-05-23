@@ -23,14 +23,14 @@ export default {
         'Settings.webhooks.trigger.test': 'Testovací beh',
 
         // Used in columns section
-        'columnsSection.imageVariant.withCircleIconBackground': 'Piktogramy na kruhovom pozadí',
+        'columnsSection.imageVariant.withCircleBackground': 'Piktogramy na kruhovom pozadí',
         'columnsSection.imageVariant.imageOriginalSize': 'Obrázky s vlastnou veľkosťou',
         'columnsSection.responsiveLayout.slider': 'Slider',
         'columnsSection.responsiveLayout.oneColumn': 'Po sebou',
       },
       en: {
         // Used in columns section
-        'columnsSection.imageVariant.withCircleIconBackground': 'Piktogramy na kruhovom pozadí',
+        'columnsSection.imageVariant.withCircleBackground': 'Piktogramy na kruhovom pozadí',
         'columnsSection.imageVariant.imageOriginalSize': 'Obrázky s vlastnou veľkosťou',
         'columnsSection.responsiveLayout.slider': 'Slider',
         'columnsSection.responsiveLayout.oneColumn': 'Po sebou',

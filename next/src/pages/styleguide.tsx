@@ -26,7 +26,6 @@ const Styleguide = () => {
    * */
   return (
     <StyleGuideWrapper>
-      <ColumnsShowcase />
       <TokensShowcase /> {/* Temporary */}
       {/* HERE ADD SHOWCASES */}
       <MarkdownShowcase />
@@ -41,6 +40,7 @@ const Styleguide = () => {
       <ArticleCardShowcase />
       <HomepageHorizontalCardShowcase />
       <ContactsShowcase />
+      <ColumnsShowcase />
     </StyleGuideWrapper>
   )
 }

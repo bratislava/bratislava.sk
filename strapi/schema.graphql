@@ -1898,7 +1898,7 @@ enum ENUM_COMPONENTSECTIONSCOLUMNEDTEXT_CONTENTALIGNMENT {
 
 enum ENUM_COMPONENTSECTIONSCOLUMNS_IMAGEVARIANT {
   columnsSection_imageVariant_imageOriginalSize
-  columnsSection_imageVariant_withCircleIconBackground
+  columnsSection_imageVariant_withCircleBackground
 }
 
 enum ENUM_COMPONENTSECTIONSCOLUMNS_RESPONSIVELAYOUT {

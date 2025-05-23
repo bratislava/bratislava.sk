@@ -2215,7 +2215,7 @@ export enum Enum_Componentsectionscolumnedtext_Contentalignment {
 
 export enum Enum_Componentsectionscolumns_Imagevariant {
   ColumnsSectionImageVariantImageOriginalSize = 'columnsSection_imageVariant_imageOriginalSize',
-  ColumnsSectionImageVariantWithCircleIconBackground = 'columnsSection_imageVariant_withCircleIconBackground',
+  ColumnsSectionImageVariantWithCircleBackground = 'columnsSection_imageVariant_withCircleBackground',
 }
 
 export enum Enum_Componentsectionscolumns_Responsivelayout {

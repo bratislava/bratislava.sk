@@ -23,7 +23,8 @@ const ColumnsSectionItem = ({
   imageSizes,
   className,
 }: ColumnsSectionItemProps) => {
-  const isPictogramVariant = imageVariant === 'columnsSection_imageVariant_withCircleIconBackground'
+  const isCircleBackgroundVariant =
+    imageVariant === 'columnsSection_imageVariant_withCircleBackground'
   const isOriginalSizeVariant = imageVariant === 'columnsSection_imageVariant_imageOriginalSize'
 
   return (
@@ -32,38 +33,25 @@ const ColumnsSectionItem = ({
         {image?.data?.attributes ? (
           <div
             className={cn('flex shrink-0 items-center justify-center', {
-              'bg-category-200 rounded-full p-6': isPictogramVariant,
+              'bg-category-200 rounded-full p-6': isCircleBackgroundVariant,
               'w-full': isOriginalSizeVariant,
             })}
           >
-            {/* For variants withCircleIconBackground and imageFixedSize, we set the parent div to be `relative`,
-                and we use `fill` property with `object-contain` class on the image */}
-            <div
-              className={cn('border', {
-                'relative h-18 w-18': isPictogramVariant,
-              })}
-            >
-              {isPictogramVariant ? (
-                <StrapiImage
-                  alt=""
-                  image={image.data.attributes}
-                  sizes={imageSizes}
-                  // pointer-events must be disabled to drag-events work properly in Slider
-                  className="pointer-events-none object-contain"
-                  fill
-                />
-              ) : (
-                <StrapiImage
-                  alt=""
-                  image={image.data.attributes}
-                  sizes={imageSizes}
-                  // pointer-events must be disabled to drag-events work properly in Slider
-                  className="pointer-events-none"
-                />
-              )}
+            <div className={cn({ 'relative h-18 w-18': isCircleBackgroundVariant })}>
+              <StrapiImage
+                alt=""
+                image={image.data.attributes}
+                sizes={imageSizes}
+                // pointer-events must be disabled to drag-events work properly in Slider
+                className={cn('pointer-events-none', {
+                  'object-contain': isCircleBackgroundVariant,
+                })}
+                fill={isCircleBackgroundVariant}
+              />
             </div>
           </div>
         ) : null}
+
         <div className="flex flex-col gap-2 text-center empty:hidden">
           {title ? (
             <Typography variant="h5" as="h3">
