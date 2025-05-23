@@ -38,27 +38,27 @@ const InBaCard = ({
       )}
     >
       {rearImageUrl && (
-        <div className="absolute top-0 w-24 translate-x-1/2 translate-y-[-57%] rotate-12 overflow-hidden rounded-lg md:right-0 md:top-auto md:w-40 md:translate-x-[15%] md:translate-y-0">
+        <div className="absolute top-0 w-24 translate-x-1/2 translate-y-[-57%] rotate-12 overflow-hidden rounded-lg md:top-auto md:right-0 md:w-40 md:translate-x-[15%] md:translate-y-0">
           <Image src={rearImageUrl} alt="" width="160" height="244" />
         </div>
       )}
 
       {frontImageUrl && (
-        <div className="absolute top-0 w-32 translate-x-[-30%] translate-y-[-57%] rotate-[-9deg] overflow-hidden rounded-lg md:right-0 md:top-auto md:w-52 md:translate-x-[-45%] md:translate-y-0">
+        <div className="absolute top-0 w-32 translate-x-[-30%] translate-y-[-57%] rotate-[-9deg] overflow-hidden rounded-lg md:top-auto md:right-0 md:w-52 md:translate-x-[-45%] md:translate-y-0">
           <Image src={frontImageUrl} alt="inba" width="211" height="329" />
         </div>
       )}
 
       <div
         className={cn(
-          'flex flex-col items-center gap-4 px-6 pb-8 pt-3 text-center',
-          'md:items-start md:py-8 md:pl-12 md:pr-96 md:text-left',
+          'flex flex-col items-center gap-4 px-6 pt-3 pb-8 text-center',
+          'md:items-start md:py-8 md:pr-96 md:pl-12 md:text-left',
         )}
       >
-        <Typography id={titleId} type="h2" size="h4">
+        <Typography id={titleId} variant="h4" as="h2">
           {title}
         </Typography>
-        <Typography type="p">{content}</Typography>
+        <Typography variant="p-default">{content}</Typography>
         <Button variant="link" {...linkProps} stretched aria-labelledby={titleId} />
       </div>
     </CardBase>

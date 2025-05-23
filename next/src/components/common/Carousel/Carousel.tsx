@@ -68,7 +68,7 @@ const Carousel = ({
     <div className={cn('relative', className)}>
       <ul
         className={cn(
-          'max-md:negative-x-spacing flex snap-x snap-mandatory gap-4 overflow-x-auto overflow-y-clip scrollbar-hide lg:-mx-2 lg:px-2',
+          'scrollbar-hide flex snap-x snap-mandatory gap-4 overflow-x-auto overflow-y-clip max-md:negative-x-spacing lg:-mx-2 lg:px-2',
           { 'py-8': hasVerticalPadding, '': !hasVerticalPadding },
           listClassName,
         )}
@@ -111,7 +111,7 @@ const Carousel = ({
                 excludeFromTabOrder
                 onPress={handleGoToPrevious}
                 className={cn(
-                  'absolute bottom-0 top-0 z-10 my-auto h-12 w-12 rounded-full',
+                  'absolute top-0 bottom-0 z-10 my-auto h-12 w-12 rounded-full',
                   'left-0 -translate-x-1/2 transform',
                   { hidden: isLeftControlHidden },
                 )}
@@ -123,7 +123,7 @@ const Carousel = ({
                 excludeFromTabOrder
                 onPress={handleGoToNext}
                 className={cn(
-                  'absolute bottom-0 top-0 z-10 my-auto h-12 w-12 rounded-full',
+                  'absolute top-0 bottom-0 z-10 my-auto h-12 w-12 rounded-full',
                   'right-0 translate-x-1/2 transform',
                   { hidden: isRightControlHidden },
                 )}

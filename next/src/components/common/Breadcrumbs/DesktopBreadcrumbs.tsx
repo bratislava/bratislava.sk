@@ -29,7 +29,7 @@ const DesktopBreadcrumbs = ({ breadcrumbs }: BreadcrumbsProps) => {
 
         return (
           // eslint-disable-next-line react/no-array-index-key
-          <li className="text-component-small flex gap-1 font-medium" key={index}>
+          <li className="flex gap-1 text-size-p-tiny font-medium" key={index}>
             <BreadcrumbsChevronIcon className="shrink-0" aria-hidden />
             {breadcrumb.path && !isLast ? (
               <MLink href={breadcrumb.path} variant="underlined">

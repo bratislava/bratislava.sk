@@ -20,7 +20,7 @@ const AccordionSection = ({ section }: AccordionSectionProps) => {
   return (
     <>
       {section.title && (
-        <Typography type="h2" className="flex justify-center pb-14">
+        <Typography variant="h2" className="flex justify-center pb-14">
           {section.title}
         </Typography>
       )}
@@ -64,7 +64,7 @@ const AccordionSection = ({ section }: AccordionSectionProps) => {
                   {item.fileList?.filter(isDefined).length ? (
                     <FileList files={item.fileList.filter(isDefined) ?? []} />
                   ) : null}
-                  {item.moreLinkUrl || item.moreLinkPage ? (
+                  {item.moreLinkUrl || item.moreLinkPage?.data?.attributes ? (
                     <Button
                       variant="link"
                       {...getLinkProps({

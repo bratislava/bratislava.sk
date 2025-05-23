@@ -25,7 +25,7 @@ const TopServicesItem = ({ topServicesItem }: TopNineItemProps) => {
         <Pictogram iconName={icon} className="size-12 md:size-16" />
       </div>
       <div className="flex flex-col gap-1 lg:gap-2">
-        <Typography id={titleId} type="h3" size="h5">
+        <Typography id={titleId} variant="h5" as="h3">
           {label}
         </Typography>
         <Button variant="link" stretched {...linkProps} aria-labelledby={titleId}>

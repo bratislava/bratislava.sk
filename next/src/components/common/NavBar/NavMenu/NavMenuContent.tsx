@@ -1,5 +1,5 @@
 import * as NavigationMenu from '@radix-ui/react-navigation-menu'
-import React, { CSSProperties, useMemo } from 'react'
+import { CSSProperties, useMemo } from 'react'
 
 import Waves from '@/src/components/common/Waves/Waves'
 import cn from '@/src/utils/cn'
@@ -49,10 +49,10 @@ const NavMenuContent = ({ colCount, sections, colorStyle }: NavMenuContentProps)
       onPointerLeave={(event) => event.preventDefault()}
       style={colorStyle}
     >
-      <div className="relative z-[29] bg-category-200">
+      <div className="relative z-29 bg-category-200">
         {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions,jsx-a11y/no-noninteractive-element-interactions */}
         <ul
-          className={cn('mx-auto grid w-full max-w-screen-xl gap-x-8 gap-y-6 px-4 py-8', {
+          className={cn('mx-auto grid w-full max-w-(--breakpoint-xl) gap-x-8 gap-y-6 px-4 py-8', {
             // Keeping for consistency with mestskakniznica.sk
             'grid-cols-3': colCount === 3,
             'grid-cols-4': colCount === 4,
@@ -89,9 +89,9 @@ const NavMenuContent = ({ colCount, sections, colorStyle }: NavMenuContentProps)
       </div>
       <Waves
         // padding-bottom is needed for drop-shadow to render properly on Safari
-        className="relative z-[28] pb-20 drop-shadow-xl"
+        className="relative z-28 pb-20 drop-shadow-xl"
         wavePosition="bottom"
-        waveColor="rgb(var(--color-category-200))"
+        waveColor="var(--color-category-200)"
       />
     </NavigationMenu.Content>
   )

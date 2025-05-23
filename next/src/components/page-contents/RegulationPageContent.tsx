@@ -70,7 +70,7 @@ const RegulationPageContent = ({ regulation }: RegulationPageContentProps) => {
           <RegulationDetailMessage regulation={regulation} />
           <div className="flex flex-row flex-wrap gap-6">
             <div className="flex grow basis-full flex-col gap-4">
-              <Typography type="h2" size="h3">
+              <Typography variant="h3" as="h2">
                 {t('Regulation.mainDocument')}
               </Typography>
 
@@ -85,13 +85,15 @@ const RegulationPageContent = ({ regulation }: RegulationPageContentProps) => {
                     downloadLink={mainDocument.data.attributes.url}
                   />
                 ) : (
-                  <Typography type="p">{t('Regulation.noAttachmentsMessage')}</Typography>
+                  <Typography variant="p-default">
+                    {t('Regulation.noAttachmentsMessage')}
+                  </Typography>
                 )}
               </div>
             </div>
 
             <div className="flex grow basis-full flex-col gap-4">
-              <Typography type="h2" size="h3">
+              <Typography variant="h3" as="h2">
                 {t('Regulation.attachments')}
               </Typography>
 
@@ -124,12 +126,12 @@ const RegulationPageContent = ({ regulation }: RegulationPageContentProps) => {
                     .filter(isDefined)}
                 </ul>
               ) : (
-                <Typography type="p">{t('Regulation.noAttachmentsMessage')}</Typography>
+                <Typography variant="p-default">{t('Regulation.noAttachmentsMessage')}</Typography>
               )}
             </div>
           </div>
           <div className="flex w-full flex-col gap-y-4">
-            <Typography type="h2" size="h3">
+            <Typography variant="h3" as="h2">
               {t('Regulation.amendments')}
             </Typography>
             {amendments?.length ? (
@@ -159,15 +161,15 @@ const RegulationPageContent = ({ regulation }: RegulationPageContentProps) => {
                 })}
               </ul>
             ) : (
-              <Typography type="p">{t('Regulation.noAmendmentsMessage')}</Typography>
+              <Typography variant="p-default">{t('Regulation.noAmendmentsMessage')}</Typography>
             )}
           </div>
           <div className="flex flex-col gap-y-4">
-            <Typography type="h2" size="h4">
+            <Typography variant="h4" as="h2">
               {t('Regulation.influenceOnOtherRegulations')}
             </Typography>
             <div className="flex flex-col gap-2">
-              <Typography type="p">
+              <Typography variant="p-default">
                 {amending?.length ? (
                   <>
                     {t('Regulation.thisRegulationAmends')}{' '}
@@ -187,7 +189,7 @@ const RegulationPageContent = ({ regulation }: RegulationPageContentProps) => {
                   <>{t('Regulation.thisRegulationDoesntAmend')}</>
                 )}
               </Typography>
-              <Typography type="p">
+              <Typography variant="p-default">
                 {cancelling?.length ? (
                   <>
                     {t('Regulation.thisRegulationCancells')}{' '}

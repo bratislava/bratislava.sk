@@ -42,7 +42,7 @@ const Video = ({
   return (
     <div className="mb-8 w-full lg:mb-0 xl:w-88">
       <iframe
-        className={cn('w-full rounded-5', {
+        className={cn('w-full rounded-[5]', {
           'animate-pulse bg-grey-300': !isLoaded,
         })}
         title={title ?? undefined}
@@ -53,11 +53,11 @@ const Video = ({
         onLoad={() => setLoaded(true)}
       />
       <MLink href={url ?? '#'} variant="underlineOnHover" target="_blank" rel="noreferrer">
-        <Typography type="h5" className="mt-8 cursor-pointer hover:underline">
+        <Typography variant="h5" className="mt-8 cursor-pointer hover:underline">
           {title}
         </Typography>
       </MLink>
-      <Typography type="p" className="mt-5">
+      <Typography variant="p-default" className="mt-5">
         {speaker}
       </Typography>
     </div>
@@ -75,11 +75,11 @@ export const Videos = ({ title, subtitle, videos }: VideosSectionFragment) => {
         {title || subtitle ? (
           <div className="flex flex-col gap-2">
             {title && (
-              <Typography type="h2" size="h4">
+              <Typography variant="h4" as="h2">
                 {title}
               </Typography>
             )}
-            {subtitle && <Typography type="p">{subtitle}</Typography>}
+            {subtitle && <Typography variant="p-default">{subtitle}</Typography>}
           </div>
         ) : null}
       </div>

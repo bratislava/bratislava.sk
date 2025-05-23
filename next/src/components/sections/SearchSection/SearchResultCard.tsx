@@ -55,7 +55,7 @@ SearchResultCard.IconContainer = function ({
   return (
     <div
       className={cn(
-        'hidden h-[5rem] w-[5rem] shrink-0 items-center justify-center self-center rounded-lg bg-grey-100 lg:flex',
+        'hidden h-20 w-20 shrink-0 items-center justify-center self-center rounded-lg bg-grey-100 lg:flex',
         className,
       )}
     >
@@ -94,7 +94,7 @@ SearchResultCard.ImageFromPageColor = function ({
     <div
       style={colorStyle}
       className={cn(
-        'relative hidden h-[5rem] w-[5rem] shrink-0 items-center justify-center self-center overflow-hidden rounded-lg bg-category-100 lg:flex',
+        'relative hidden h-20 w-20 shrink-0 items-center justify-center self-center overflow-hidden rounded-lg bg-category-100 lg:flex',
         className,
       )}
     >
@@ -113,7 +113,7 @@ SearchResultCard.ImageFromUrl = function ({
   return (
     <div
       className={cn(
-        'relative hidden h-[5rem] w-[5rem] shrink-0 items-center justify-center self-center overflow-hidden rounded-lg bg-category-200 lg:flex',
+        'relative hidden h-20 w-20 shrink-0 items-center justify-center self-center overflow-hidden rounded-lg bg-category-200 lg:flex',
         className,
       )}
     >
@@ -143,10 +143,10 @@ SearchResultCard.TitleWithLink = function ({
       {href ? (
         <MLink stretched href={href}>
           <Typography
-            type="h3"
-            size="h6"
+            variant="h6"
+            as="h3"
             className={cn(
-              'line-clamp-3 group-hover:underline md:line-clamp-2 lg:line-clamp-1',
+              'line-clamp-3 whitespace-normal group-hover:underline md:line-clamp-2 lg:line-clamp-1',
               className,
             )}
           >
@@ -155,9 +155,12 @@ SearchResultCard.TitleWithLink = function ({
         </MLink>
       ) : (
         <Typography
-          type="h3"
-          size="h6"
-          className={cn('line-clamp-3 md:line-clamp-2 lg:line-clamp-1', className)}
+          variant="h6"
+          as="h3"
+          className={cn(
+            'line-clamp-3 whitespace-normal md:line-clamp-2 lg:line-clamp-1',
+            className,
+          )}
         >
           {title}
         </Typography>
@@ -179,11 +182,11 @@ SearchResultCard.Metadata = function ({
       return (
         <Fragment key={item}>
           {index > 0 && (
-            <Typography type="p" size="p-small" className="max-lg:hidden">
+            <Typography variant="p-tiny" className="max-lg:hidden">
               •
             </Typography>
           )}
-          <Typography type="p" size="p-small">
+          <Typography variant="p-tiny" className="whitespace-normal">
             {item}
           </Typography>
         </Fragment>

@@ -37,12 +37,7 @@ const HomepageHorizontalCard = ({
       </div>
       <CardContent className="grow justify-between lg:px-10 lg:py-8">
         <div className="flex flex-col">
-          <Typography
-            id={titleId}
-            type="h3"
-            size="h5"
-            className="line-clamp-3 group-hover:underline"
-          >
+          <Typography id={titleId} variant="h5" as="h3" className="line-clamp-3 group-hover:underline">
             {title}
           </Typography>
         </div>

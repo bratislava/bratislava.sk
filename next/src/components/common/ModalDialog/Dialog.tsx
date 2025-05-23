@@ -22,7 +22,7 @@ const Dialog = forwardRef<HTMLElement, Props>(({ children, title, ...props }, re
     <ReactAriaDialog
       ref={ref}
       {...props}
-      className="relative flex h-full flex-col overflow-y-hidden rounded-xl focus:outline-none"
+      className="relative flex h-full flex-col overflow-y-hidden rounded-xl focus:outline-hidden"
     >
       {({ close }) => (
         <>
@@ -30,7 +30,7 @@ const Dialog = forwardRef<HTMLElement, Props>(({ children, title, ...props }, re
             <div className="flex shrink-0 items-start justify-between gap-4 border-b-2 px-6 py-4">
               {/* TODO use Heading, it renders as h2 so we get nested headings */}
               {/* <Heading slot="title"> */}
-              <Typography type="h2" size="h5">
+              <Typography variant="h5" as="h2">
                 {title}
               </Typography>
               {/* </Heading> */}
@@ -53,7 +53,7 @@ const Dialog = forwardRef<HTMLElement, Props>(({ children, title, ...props }, re
             <Button
               icon={<CrossIcon />}
               aria-label={t('Dialog.aria.close')}
-              className="absolute right-6 top-6 -m-2 bg-white hover:bg-grey-100"
+              className="absolute top-6 right-6 -m-2 bg-white hover:bg-grey-100"
               variant="outline"
               size="small"
               onPress={close}

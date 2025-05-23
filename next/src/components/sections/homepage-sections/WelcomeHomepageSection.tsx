@@ -18,8 +18,8 @@ const WelcomeHomepageSection = () => {
   return (
     <SectionContainer className="bg-white">
       <div className="relative flex flex-col gap-y-4 py-8 lg:flex-row lg:items-center lg:py-14">
-        <div className="z-[1] flex grow flex-col gap-8 lg:absolute">
-          <Typography type="h1" className="whitespace-pre-wrap">
+        <div className="z-1 flex grow flex-col gap-8 lg:absolute">
+          <Typography variant="h1" className="whitespace-pre-wrap">
             {welcomeHeadline}
           </Typography>
 
@@ -27,7 +27,7 @@ const WelcomeHomepageSection = () => {
         </div>
         <div
           className={cn(
-            'relative mx-auto h-[240px] w-full transition-all duration-300 sm:h-[300px] md:h-[378px] lg:ml-auto lg:mr-0 lg:w-[50%]',
+            'relative mx-auto h-[240px] w-full transition-all duration-300 sm:h-[300px] md:h-[378px] lg:mr-0 lg:ml-auto lg:w-[50%]',
             {
               'lg:opacity-25': isSearchOpen,
             },

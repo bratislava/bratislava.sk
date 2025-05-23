@@ -53,8 +53,8 @@ const InbaArticlesList = ({ section }: Props) => {
       <InbaArticlesFilter tags={tagData?.inbaTags?.data || []} onChange={handleTagFilterChange} />
       {title || text ? (
         <div className="flex flex-col gap-2">
-          {title && <Typography type="h2">{title}</Typography>}
-          {text && <Typography type="p">{text}</Typography>}
+          {title && <Typography variant="h2">{title}</Typography>}
+          {text && <Typography variant="p-default">{text}</Typography>}
         </div>
       ) : null}
       <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">

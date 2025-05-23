@@ -17,9 +17,10 @@ const Radio = ({ className, id, title, ...rest }: RadioProps) => {
         'base-radio',
         className,
         cn({
-          'hover:border-category-600 hover:border-opacity-100 focus:border-category-600 focus:border-opacity-100 focus:outline-none':
+          // TODO the border-opacity-* is deprecated in TW4, see https://tailwindcss.com/docs/upgrade-guide
+          'hover:border-opacity-100 focus:border-opacity-100 hover:border-category-600 focus:border-category-600 focus:outline-hidden':
             !rest.checked,
-          'border-category-600 border-opacity-100 outline-none': rest.checked,
+          'border-opacity-100 border-category-600 outline-hidden': rest.checked,
         }),
       )}
     >

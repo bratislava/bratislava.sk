@@ -56,7 +56,7 @@ const Page = ({ general }: PageProps) => {
             title={t('SearchPage.searching')}
             breadcrumbs={[{ title: t('SearchPage.searching'), path: null }]}
           />
-          <SectionContainer className="mb-8 mt-12">
+          <SectionContainer className="mt-12 mb-8">
             <GlobalSearchSectionContent variant="general" />
           </SectionContainer>
         </PageLayout>

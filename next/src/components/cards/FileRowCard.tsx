@@ -33,7 +33,7 @@ const FileRowCard = ({
 
   return (
     <div className={cn('relative', className)}>
-      <div className="flex flex-row items-start justify-between gap-x-4 py-4 pl-4 pr-2.5 md:px-6 lg:items-center">
+      <div className="flex flex-row items-start justify-between gap-x-4 py-4 pr-2.5 pl-4 md:px-6 lg:items-center">
         <div className="flex flex-row justify-between gap-x-2 md:items-center md:gap-x-4">
           <div className="md:rounded-lg md:bg-background-tertiary">
             {/* TODO create a proper wrapper for the icon component to handle paddings */}
@@ -44,7 +44,7 @@ const FileRowCard = ({
           <div className="flex flex-col gap-x-4 gap-y-1 md:w-full">
             <MLink
               href={downloadLink ?? '#'}
-              className="text-h6 line-clamp-3 break-words font-bold lg:line-clamp-2"
+              className="line-clamp-3 text-h6 font-bold break-words lg:line-clamp-2"
               stretched
               variant="underlineOnHover"
               target="_blank"
@@ -57,7 +57,7 @@ const FileRowCard = ({
               {title}
             </MLink>
             {(uploadDate || format || size) && (
-              <span className="text-component-small text-grey-700 md:line-clamp-1">
+              <span className="text-size-p-tiny text-grey-700 md:line-clamp-1">
                 {/* TODO words should be separated by a dot with 12px gap, this is a simplified solution. */}
                 {[uploadDate, format, size].filter(isDefined).join(' • ')}
               </span>

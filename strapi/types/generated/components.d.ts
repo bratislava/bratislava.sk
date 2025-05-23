@@ -852,8 +852,27 @@ export interface SectionsTextWithImage extends Schema.Component {
   }
   attributes: {
     content: Attribute.RichText
-    imagePosition: Attribute.Enumeration<['left', 'right']>
-    imageSrc: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>
+    imageAspectRatio: Attribute.Enumeration<['ratio 1:1', 'ratio 4:3']> &
+      Attribute.DefaultTo<'ratio 1:1'>
+    imagePosition: Attribute.Enumeration<['left', 'right']> &
+      Attribute.Required &
+      Attribute.DefaultTo<'right'>
+    imageSrc: Attribute.Media<'images'> & Attribute.Required
+  }
+}
+
+export interface SectionsTextWithImageOverlapped extends Schema.Component {
+  collectionName: 'components_sections_text_with_image_overlappeds'
+  info: {
+    description: ''
+    displayName: 'Text with image overlapped'
+  }
+  attributes: {
+    content: Attribute.RichText
+    image: Attribute.Media<'images'> & Attribute.Required
+    imagePosition: Attribute.Enumeration<['left', 'right', 'left shifted', 'right shifted']> &
+      Attribute.Required &
+      Attribute.DefaultTo<'right'>
   }
 }
 
@@ -990,6 +1009,7 @@ declare module '@strapi/types' {
       'sections.subpage-list': SectionsSubpageList
       'sections.testimonials': SectionsTestimonials
       'sections.text-with-image': SectionsTextWithImage
+      'sections.text-with-image-overlapped': SectionsTextWithImageOverlapped
       'sections.timeline': SectionsTimeline
       'sections.tootoot-events': SectionsTootootEvents
       'sections.top-services': SectionsTopServices

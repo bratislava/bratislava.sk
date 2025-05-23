@@ -30,7 +30,7 @@ const Modal = forwardRef<HTMLDivElement, Props>(
       <ModalOverlay
         ref={ref}
         className={cn(
-          'fixed left-0 top-0 z-50 flex h-[--visual-viewport-height] w-screen items-center justify-center bg-grey-800/[.48]',
+          'fixed top-0 left-0 z-50 flex h-(--visual-viewport-height) w-screen items-center justify-center bg-grey-800/[.48]',
           overlayClassname,
         )}
         isDismissable={isDismissable}
@@ -38,7 +38,7 @@ const Modal = forwardRef<HTMLDivElement, Props>(
       >
         <RACModal
           className={cn(
-            'relative m-4 h-[80%] max-h-[--visual-viewport-height] rounded-xl bg-white',
+            'relative m-4 h-[80%] max-h-(--visual-viewport-height) rounded-xl bg-white',
             {
               'w-full md:w-[592px]': width === 'fixed',
               'w-full': width === 'auto',

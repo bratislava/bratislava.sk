@@ -62,7 +62,7 @@ const OfficialBoardDocumentPageContent = ({ document }: OfficialBoardDocumentPag
       <SectionContainer className="my-8">
         <div className="mb-8 flex flex-col gap-y-12">
           <div className="flex flex-col gap-6">
-            <Typography type="h2" size="h4">
+            <Typography variant="h4" as="h2">
               {t('OfficialBoard.attachments')}
             </Typography>
             <ul className="flex flex-col rounded-lg border-2">
@@ -81,13 +81,15 @@ const OfficialBoardDocumentPageContent = ({ document }: OfficialBoardDocumentPag
                   </Fragment>
                 ))
               ) : (
-                <Typography type="p">{t('OfficialBoard.noAttachmentsMessage')}</Typography>
+                <Typography variant="p-default">
+                  {t('OfficialBoard.noAttachmentsMessage')}
+                </Typography>
               )}
             </ul>
           </div>
 
           <div className="flex flex-col gap-6">
-            <Typography type="h2" size="h4">
+            <Typography variant="h4" as="h2">
               {t('OfficialBoard.details')}
             </Typography>
             <dl className="-mt-1 lg:-mt-3">
@@ -96,7 +98,7 @@ const OfficialBoardDocumentPageContent = ({ document }: OfficialBoardDocumentPag
                   <dt className="mt-1 font-semibold after:content-[':'] lg:float-left lg:clear-left lg:mt-3 lg:w-40">
                     {dItem.title}
                   </dt>
-                  <dd className="mt-1 lg:ml-44 lg:mt-3">{dItem.description}</dd>
+                  <dd className="mt-1 lg:mt-3 lg:ml-44">{dItem.description}</dd>
                 </Fragment>
               ))}
             </dl>

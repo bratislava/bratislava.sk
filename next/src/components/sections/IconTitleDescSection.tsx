@@ -20,7 +20,7 @@ const IconTitleDescSection = ({ section }: IconTitleDescSectionProps) => {
       {title ? (
         <div className="flex">
           <div className="grow text-center">
-            {title && <Typography type="h2">{title}</Typography>}
+            {title && <Typography variant="h2">{title}</Typography>}
           </div>
           {/* TODO showMoreLink, subtext */}
           {/* <div>button</div> */}

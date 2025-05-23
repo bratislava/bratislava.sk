@@ -71,7 +71,9 @@ const TabPanelOfficialBoard = () => {
           ) : isError ? (
             // TODO translation
             <li>
-              <Typography type="p">Nepodarilo sa načítať dáta z úradnej tabule.</Typography>
+              <Typography variant="p-default">
+                Nepodarilo sa načítať dáta z úradnej tabule.
+              </Typography>
             </li>
           ) : (
             documents.map((document, index) => (

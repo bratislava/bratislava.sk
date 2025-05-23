@@ -20,9 +20,9 @@ const ComparisonSection = ({ section }: ComparisonSectionProps) => {
       {title || text ? (
         <div className="flex">
           <div className={cn('grow', { 'text-center': textAlign === 'center' })}>
-            {title && <Typography type="h2">{title}</Typography>}
+            {title && <Typography variant="h2">{title}</Typography>}
             {text && (
-              <Typography type="p" className="not-first:mt-2">
+              <Typography variant="p-default" className="not-first:mt-2">
                 {text}
               </Typography>
             )}

@@ -34,7 +34,7 @@ const NumericalListItem = ({
     >
       {variant === 'roadmap' && index > 0 && (
         <DashedLine
-          className="top-0 -mb-10 -ml-2 -mt-8"
+          className="top-0 -mt-8 -mb-10 -ml-2"
           position={position}
           color="rgb(var(--color-category-600))"
         />
@@ -49,7 +49,7 @@ const NumericalListItem = ({
       >
         <div
           className={cn(
-            'text-h4 z-10 flex h-10 w-10 min-w-16 shrink-0 items-center justify-center rounded-full font-semibold',
+            'z-10 flex h-10 w-10 min-w-16 shrink-0 items-center justify-center rounded-full text-h4 font-semibold',
             { 'bg-category-600 text-white': variant === 'roadmap' },
           )}
         >
@@ -57,7 +57,7 @@ const NumericalListItem = ({
         </div>
         <div
           className={cn(
-            'text-large pl-5 lg:pl-11',
+            'pl-5 text-size-p-large lg:pl-11',
             {
               'pt-0': variant === 'combined',
             },
@@ -65,7 +65,7 @@ const NumericalListItem = ({
               'w-full': !item,
             },
             {
-              'max-w-screen-sm': item,
+              'max-w-(--breakpoint-sm)': item,
             },
           )}
         >
