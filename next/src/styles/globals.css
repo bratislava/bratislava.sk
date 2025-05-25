@@ -90,6 +90,7 @@
 @theme {
   /* BREAKPOINTS */
 
+  /* Keep in sync with screens.ts */
   --breakpoint-sm: 40rem; /* 640px  - phone landscape */
   --breakpoint-md: 48rem; /* 768px  - iPad portrait   */
   --breakpoint-lg: 64rem; /* 1024px - iPad landscape  */

@@ -1,4 +1,6 @@
-module.exports = {
+// Keep in sync with breakpoint definitions in globals.css
+
+export const screens = {
   // 'no breakpoint' refers to phone portrait
   sm: '640px', // phone landscape
   md: '768px', // iPad portrait
