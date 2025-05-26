@@ -12,7 +12,7 @@ type ColumnsSectionItemProps = ColumnsSectionFragment['columns'][0] & {
 }
 
 /**
- * Figma: https://www.figma.com/design/2qF09hDT9QNcpdztVMNAY4/OLO-Web?node-id=1341-10129&m=dev
+ * Figma: https://www.figma.com/design/17wbd0MDQcMW9NbXl6UPs8/DS--Component-library?node-id=5865-15902&m=dev
  */
 
 const ColumnsSectionItem = ({

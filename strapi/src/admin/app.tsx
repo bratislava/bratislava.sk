@@ -26,14 +26,14 @@ export default {
         'columnsSection.imageVariant.withCircleBackground': 'Piktogramy na kruhovom pozadí',
         'columnsSection.imageVariant.imageOriginalSize': 'Obrázky s vlastnou veľkosťou',
         'columnsSection.responsiveLayout.slider': 'Slider',
-        'columnsSection.responsiveLayout.oneColumn': 'Po sebou',
+        'columnsSection.responsiveLayout.oneColumn': 'Pod sebou',
       },
       en: {
         // Used in columns section
         'columnsSection.imageVariant.withCircleBackground': 'Piktogramy na kruhovom pozadí',
         'columnsSection.imageVariant.imageOriginalSize': 'Obrázky s vlastnou veľkosťou',
         'columnsSection.responsiveLayout.slider': 'Slider',
-        'columnsSection.responsiveLayout.oneColumn': 'Po sebou',
+        'columnsSection.responsiveLayout.oneColumn': 'Pod sebou',
       },
     },
   },
