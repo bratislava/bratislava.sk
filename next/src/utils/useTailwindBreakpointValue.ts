@@ -1,6 +1,6 @@
 import { useWindowSize } from 'usehooks-ts'
 
-import screens from '@/tailwind.config.screens'
+import { screens } from '@/src/utils/screens'
 
 // TODO: Refactor this hook to be more generic
 export const useTailwindBreakpointValue = () => {

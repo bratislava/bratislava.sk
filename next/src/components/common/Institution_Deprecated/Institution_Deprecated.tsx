@@ -18,11 +18,9 @@ const Institution = ({ title, subtitle, content, url, urlLabel }: InstitutionPro
   return (
     <div className="relative h-full rounded-lg border-2 border-[rgba(51,51,51,0.25)] bg-white p-8">
       <div className="flex flex-col">
-        <div id={titleId}>
-          <Typography variant="h5" as="h4" className="text-h5">
-            {title}
-          </Typography>
-        </div>
+        <Typography variant="h5" as="h4" id={titleId} className="text-h5">
+          {title}
+        </Typography>
 
         {subtitle && <Markdown content={subtitle} />}
         {content?.length && (
