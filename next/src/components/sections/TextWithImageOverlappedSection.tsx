@@ -1,5 +1,6 @@
 import React from 'react'
 
+import Button from '@/src/components/common/Button/Button'
 import ImagePlaceholder from '@/src/components/common/Image/ImagePlaceholder'
 import StrapiImage from '@/src/components/common/Image/StrapiImage'
 import Markdown from '@/src/components/formatting/Markdown/Markdown'
@@ -9,6 +10,7 @@ import {
 } from '@/src/services/graphql'
 import cn from '@/src/utils/cn'
 import { generateImageSizes } from '@/src/utils/generateImageSizes'
+import { getLinkProps } from '@/src/utils/getLinkProps'
 
 type TextWithImageSectionProps = {
   section: TextWithImageOverlappedSectionFragment
@@ -21,7 +23,8 @@ type TextWithImageSectionProps = {
  */
 
 const TextWithImageOverlappedSection = ({ section }: TextWithImageSectionProps) => {
-  const { content, imagePositionTextWithImageOverlapped: imagePosition, image } = section
+  const { content, imagePositionTextWithImageOverlapped: imagePosition, image, links } = section
+  const [primaryButton, secondaryButton] = links ?? []
 
   const isImageShifted =
     imagePosition === Enum_Componentsectionstextwithimageoverlapped_Imageposition.LeftShifted ||
@@ -35,8 +38,19 @@ const TextWithImageOverlappedSection = ({ section }: TextWithImageSectionProps) 
     imagePosition === Enum_Componentsectionstextwithimageoverlapped_Imageposition.RightShifted
 
   const TextContent = (
-    <div>
+    <div className="flex grow flex-col gap-6">
       <Markdown content={content} />
+
+      {primaryButton || secondaryButton ? (
+        <div className="flex flex-col gap-3 lg:flex-row lg:gap-4">
+          {primaryButton ? (
+            <Button {...getLinkProps(primaryButton)} variant="solid" fullWidthMobile />
+          ) : null}
+          {secondaryButton ? (
+            <Button {...getLinkProps(secondaryButton)} variant="outline" fullWidthMobile />
+          ) : null}
+        </div>
+      ) : null}
     </div>
   )
 

@@ -1870,6 +1870,13 @@ export type ComponentSectionsTextWithImage = {
   imageAspectRatio?: Maybe<Enum_Componentsectionstextwithimage_Imageaspectratio>
   imagePosition: Enum_Componentsectionstextwithimage_Imageposition
   imageSrc: UploadFileEntityResponse
+  links?: Maybe<Array<Maybe<ComponentBlocksCommonLink>>>
+}
+
+export type ComponentSectionsTextWithImageLinksArgs = {
+  filters?: InputMaybe<ComponentBlocksCommonLinkFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
 }
 
 export type ComponentSectionsTextWithImageFiltersInput = {
@@ -1877,6 +1884,7 @@ export type ComponentSectionsTextWithImageFiltersInput = {
   content?: InputMaybe<StringFilterInput>
   imageAspectRatio?: InputMaybe<StringFilterInput>
   imagePosition?: InputMaybe<StringFilterInput>
+  links?: InputMaybe<ComponentBlocksCommonLinkFiltersInput>
   not?: InputMaybe<ComponentSectionsTextWithImageFiltersInput>
   or?: InputMaybe<Array<InputMaybe<ComponentSectionsTextWithImageFiltersInput>>>
 }
@@ -1887,6 +1895,7 @@ export type ComponentSectionsTextWithImageInput = {
   imageAspectRatio?: InputMaybe<Enum_Componentsectionstextwithimage_Imageaspectratio>
   imagePosition?: InputMaybe<Enum_Componentsectionstextwithimage_Imageposition>
   imageSrc?: InputMaybe<Scalars['ID']['input']>
+  links?: InputMaybe<Array<InputMaybe<ComponentBlocksCommonLinkInput>>>
 }
 
 export type ComponentSectionsTextWithImageOverlapped = {
@@ -1895,12 +1904,20 @@ export type ComponentSectionsTextWithImageOverlapped = {
   id: Scalars['ID']['output']
   image: UploadFileEntityResponse
   imagePosition: Enum_Componentsectionstextwithimageoverlapped_Imageposition
+  links?: Maybe<Array<Maybe<ComponentBlocksCommonLink>>>
+}
+
+export type ComponentSectionsTextWithImageOverlappedLinksArgs = {
+  filters?: InputMaybe<ComponentBlocksCommonLinkFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
 }
 
 export type ComponentSectionsTextWithImageOverlappedFiltersInput = {
   and?: InputMaybe<Array<InputMaybe<ComponentSectionsTextWithImageOverlappedFiltersInput>>>
   content?: InputMaybe<StringFilterInput>
   imagePosition?: InputMaybe<StringFilterInput>
+  links?: InputMaybe<ComponentBlocksCommonLinkFiltersInput>
   not?: InputMaybe<ComponentSectionsTextWithImageOverlappedFiltersInput>
   or?: InputMaybe<Array<InputMaybe<ComponentSectionsTextWithImageOverlappedFiltersInput>>>
 }
@@ -1910,6 +1927,7 @@ export type ComponentSectionsTextWithImageOverlappedInput = {
   id?: InputMaybe<Scalars['ID']['input']>
   image?: InputMaybe<Scalars['ID']['input']>
   imagePosition?: InputMaybe<Enum_Componentsectionstextwithimageoverlapped_Imageposition>
+  links?: InputMaybe<Array<InputMaybe<ComponentBlocksCommonLinkInput>>>
 }
 
 export type ComponentSectionsTimeline = {
@@ -8912,6 +8930,38 @@ export type PageEntityFragment = {
               } | null
             } | null
           }
+          links?: Array<{
+            __typename?: 'ComponentBlocksCommonLink'
+            label?: string | null
+            url?: string | null
+            analyticsId?: string | null
+            page?: {
+              __typename?: 'PageEntityResponse'
+              data?: {
+                __typename?: 'PageEntity'
+                id?: string | null
+                attributes?: {
+                  __typename?: 'Page'
+                  slug?: string | null
+                  title: string
+                  locale?: string | null
+                } | null
+              } | null
+            } | null
+            article?: {
+              __typename?: 'ArticleEntityResponse'
+              data?: {
+                __typename: 'ArticleEntity'
+                id?: string | null
+                attributes?: {
+                  __typename?: 'Article'
+                  slug: string
+                  title: string
+                  locale?: string | null
+                } | null
+              } | null
+            } | null
+          } | null> | null
         }
       | {
           __typename: 'ComponentSectionsTextWithImageOverlapped'
@@ -8933,6 +8983,38 @@ export type PageEntityFragment = {
               } | null
             } | null
           }
+          links?: Array<{
+            __typename?: 'ComponentBlocksCommonLink'
+            label?: string | null
+            url?: string | null
+            analyticsId?: string | null
+            page?: {
+              __typename?: 'PageEntityResponse'
+              data?: {
+                __typename?: 'PageEntity'
+                id?: string | null
+                attributes?: {
+                  __typename?: 'Page'
+                  slug?: string | null
+                  title: string
+                  locale?: string | null
+                } | null
+              } | null
+            } | null
+            article?: {
+              __typename?: 'ArticleEntityResponse'
+              data?: {
+                __typename: 'ArticleEntity'
+                id?: string | null
+                attributes?: {
+                  __typename?: 'Article'
+                  slug: string
+                  title: string
+                  locale?: string | null
+                } | null
+              } | null
+            } | null
+          } | null> | null
         }
       | {
           __typename: 'ComponentSectionsTimeline'
@@ -9860,6 +9942,38 @@ export type PageBySlugQuery = {
                   } | null
                 } | null
               }
+              links?: Array<{
+                __typename?: 'ComponentBlocksCommonLink'
+                label?: string | null
+                url?: string | null
+                analyticsId?: string | null
+                page?: {
+                  __typename?: 'PageEntityResponse'
+                  data?: {
+                    __typename?: 'PageEntity'
+                    id?: string | null
+                    attributes?: {
+                      __typename?: 'Page'
+                      slug?: string | null
+                      title: string
+                      locale?: string | null
+                    } | null
+                  } | null
+                } | null
+                article?: {
+                  __typename?: 'ArticleEntityResponse'
+                  data?: {
+                    __typename: 'ArticleEntity'
+                    id?: string | null
+                    attributes?: {
+                      __typename?: 'Article'
+                      slug: string
+                      title: string
+                      locale?: string | null
+                    } | null
+                  } | null
+                } | null
+              } | null> | null
             }
           | {
               __typename: 'ComponentSectionsTextWithImageOverlapped'
@@ -9881,6 +9995,38 @@ export type PageBySlugQuery = {
                   } | null
                 } | null
               }
+              links?: Array<{
+                __typename?: 'ComponentBlocksCommonLink'
+                label?: string | null
+                url?: string | null
+                analyticsId?: string | null
+                page?: {
+                  __typename?: 'PageEntityResponse'
+                  data?: {
+                    __typename?: 'PageEntity'
+                    id?: string | null
+                    attributes?: {
+                      __typename?: 'Page'
+                      slug?: string | null
+                      title: string
+                      locale?: string | null
+                    } | null
+                  } | null
+                } | null
+                article?: {
+                  __typename?: 'ArticleEntityResponse'
+                  data?: {
+                    __typename: 'ArticleEntity'
+                    id?: string | null
+                    attributes?: {
+                      __typename?: 'Article'
+                      slug: string
+                      title: string
+                      locale?: string | null
+                    } | null
+                  } | null
+                } | null
+              } | null> | null
             }
           | {
               __typename: 'ComponentSectionsTimeline'
@@ -10840,6 +10986,38 @@ export type Dev_AllPagesQuery = {
                   } | null
                 } | null
               }
+              links?: Array<{
+                __typename?: 'ComponentBlocksCommonLink'
+                label?: string | null
+                url?: string | null
+                analyticsId?: string | null
+                page?: {
+                  __typename?: 'PageEntityResponse'
+                  data?: {
+                    __typename?: 'PageEntity'
+                    id?: string | null
+                    attributes?: {
+                      __typename?: 'Page'
+                      slug?: string | null
+                      title: string
+                      locale?: string | null
+                    } | null
+                  } | null
+                } | null
+                article?: {
+                  __typename?: 'ArticleEntityResponse'
+                  data?: {
+                    __typename: 'ArticleEntity'
+                    id?: string | null
+                    attributes?: {
+                      __typename?: 'Article'
+                      slug: string
+                      title: string
+                      locale?: string | null
+                    } | null
+                  } | null
+                } | null
+              } | null> | null
             }
           | {
               __typename: 'ComponentSectionsTextWithImageOverlapped'
@@ -10861,6 +11039,38 @@ export type Dev_AllPagesQuery = {
                   } | null
                 } | null
               }
+              links?: Array<{
+                __typename?: 'ComponentBlocksCommonLink'
+                label?: string | null
+                url?: string | null
+                analyticsId?: string | null
+                page?: {
+                  __typename?: 'PageEntityResponse'
+                  data?: {
+                    __typename?: 'PageEntity'
+                    id?: string | null
+                    attributes?: {
+                      __typename?: 'Page'
+                      slug?: string | null
+                      title: string
+                      locale?: string | null
+                    } | null
+                  } | null
+                } | null
+                article?: {
+                  __typename?: 'ArticleEntityResponse'
+                  data?: {
+                    __typename: 'ArticleEntity'
+                    id?: string | null
+                    attributes?: {
+                      __typename?: 'Article'
+                      slug: string
+                      title: string
+                      locale?: string | null
+                    } | null
+                  } | null
+                } | null
+              } | null> | null
             }
           | {
               __typename: 'ComponentSectionsTimeline'
@@ -12103,6 +12313,38 @@ export type TextWithImageSectionFragment = {
       } | null
     } | null
   }
+  links?: Array<{
+    __typename?: 'ComponentBlocksCommonLink'
+    label?: string | null
+    url?: string | null
+    analyticsId?: string | null
+    page?: {
+      __typename?: 'PageEntityResponse'
+      data?: {
+        __typename?: 'PageEntity'
+        id?: string | null
+        attributes?: {
+          __typename?: 'Page'
+          slug?: string | null
+          title: string
+          locale?: string | null
+        } | null
+      } | null
+    } | null
+    article?: {
+      __typename?: 'ArticleEntityResponse'
+      data?: {
+        __typename: 'ArticleEntity'
+        id?: string | null
+        attributes?: {
+          __typename?: 'Article'
+          slug: string
+          title: string
+          locale?: string | null
+        } | null
+      } | null
+    } | null
+  } | null> | null
 }
 
 export type TextWithImageOverlappedSectionFragment = {
@@ -12125,6 +12367,38 @@ export type TextWithImageOverlappedSectionFragment = {
       } | null
     } | null
   }
+  links?: Array<{
+    __typename?: 'ComponentBlocksCommonLink'
+    label?: string | null
+    url?: string | null
+    analyticsId?: string | null
+    page?: {
+      __typename?: 'PageEntityResponse'
+      data?: {
+        __typename?: 'PageEntity'
+        id?: string | null
+        attributes?: {
+          __typename?: 'Page'
+          slug?: string | null
+          title: string
+          locale?: string | null
+        } | null
+      } | null
+    } | null
+    article?: {
+      __typename?: 'ArticleEntityResponse'
+      data?: {
+        __typename: 'ArticleEntity'
+        id?: string | null
+        attributes?: {
+          __typename?: 'Article'
+          slug: string
+          title: string
+          locale?: string | null
+        } | null
+      } | null
+    } | null
+  } | null> | null
 }
 
 export type IframeSectionFragment = {
@@ -13617,6 +13891,38 @@ type Sections_ComponentSectionsTextWithImage_Fragment = {
       } | null
     } | null
   }
+  links?: Array<{
+    __typename?: 'ComponentBlocksCommonLink'
+    label?: string | null
+    url?: string | null
+    analyticsId?: string | null
+    page?: {
+      __typename?: 'PageEntityResponse'
+      data?: {
+        __typename?: 'PageEntity'
+        id?: string | null
+        attributes?: {
+          __typename?: 'Page'
+          slug?: string | null
+          title: string
+          locale?: string | null
+        } | null
+      } | null
+    } | null
+    article?: {
+      __typename?: 'ArticleEntityResponse'
+      data?: {
+        __typename: 'ArticleEntity'
+        id?: string | null
+        attributes?: {
+          __typename?: 'Article'
+          slug: string
+          title: string
+          locale?: string | null
+        } | null
+      } | null
+    } | null
+  } | null> | null
 }
 
 type Sections_ComponentSectionsTextWithImageOverlapped_Fragment = {
@@ -13639,6 +13945,38 @@ type Sections_ComponentSectionsTextWithImageOverlapped_Fragment = {
       } | null
     } | null
   }
+  links?: Array<{
+    __typename?: 'ComponentBlocksCommonLink'
+    label?: string | null
+    url?: string | null
+    analyticsId?: string | null
+    page?: {
+      __typename?: 'PageEntityResponse'
+      data?: {
+        __typename?: 'PageEntity'
+        id?: string | null
+        attributes?: {
+          __typename?: 'Page'
+          slug?: string | null
+          title: string
+          locale?: string | null
+        } | null
+      } | null
+    } | null
+    article?: {
+      __typename?: 'ArticleEntityResponse'
+      data?: {
+        __typename: 'ArticleEntity'
+        id?: string | null
+        attributes?: {
+          __typename?: 'Article'
+          slug: string
+          title: string
+          locale?: string | null
+        } | null
+      } | null
+    } | null
+  } | null> | null
 }
 
 type Sections_ComponentSectionsTimeline_Fragment = {
@@ -14463,8 +14801,12 @@ export const TextWithImageSectionFragmentDoc = gql`
       }
     }
     imageAspectRatio
+    links {
+      ...CommonLink
+    }
   }
   ${UploadImageEntityFragmentDoc}
+  ${CommonLinkFragmentDoc}
 `
 export const TextWithImageOverlappedSectionFragmentDoc = gql`
   fragment TextWithImageOverlappedSection on ComponentSectionsTextWithImageOverlapped {
@@ -14475,8 +14817,12 @@ export const TextWithImageOverlappedSectionFragmentDoc = gql`
         ...UploadImageEntity
       }
     }
+    links {
+      ...CommonLink
+    }
   }
   ${UploadImageEntityFragmentDoc}
+  ${CommonLinkFragmentDoc}
 `
 export const IframeSectionFragmentDoc = gql`
   fragment IframeSection on ComponentSectionsIframe {
