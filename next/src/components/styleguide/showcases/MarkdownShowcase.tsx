@@ -55,7 +55,7 @@ H~2~O is the chemical formula for water.
 const MarkdownShowcase = () => {
   return (
     <Wrapper direction="column" title="Markdown">
-      <Stack className="grid grid-cols-4 items-start">
+      <Stack className="grid items-start lg:grid-cols-4">
         <Markdown content={markdownSample} variant="small" />
         <Markdown content={markdownSample} />
         <Markdown content={markdownSample} variant="large" />
