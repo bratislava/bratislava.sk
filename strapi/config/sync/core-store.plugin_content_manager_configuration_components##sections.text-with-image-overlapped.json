@@ -60,13 +60,28 @@
           "searchable": true,
           "sortable": true
         }
+      },
+      "links": {
+        "edit": {
+          "label": "CTA tlačidlá",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "links",
+          "searchable": false,
+          "sortable": false
+        }
       }
     },
     "layouts": {
       "list": [
         "id",
         "image",
-        "imagePosition"
+        "imagePosition",
+        "links"
       ],
       "edit": [
         [
@@ -83,6 +98,12 @@
           {
             "name": "imagePosition",
             "size": 6
+          }
+        ],
+        [
+          {
+            "name": "links",
+            "size": 12
           }
         ]
       ]

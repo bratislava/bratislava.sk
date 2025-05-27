@@ -87,6 +87,9 @@ fragment TextWithImageSection on ComponentSectionsTextWithImage {
     }
   }
   imageAspectRatio
+  links {
+    ...CommonLink
+  }
 }
 
 fragment TextWithImageOverlappedSection on ComponentSectionsTextWithImageOverlapped {
@@ -96,6 +99,9 @@ fragment TextWithImageOverlappedSection on ComponentSectionsTextWithImageOverlap
     data {
       ...UploadImageEntity
     }
+  }
+  links {
+    ...CommonLink
   }
 }
 

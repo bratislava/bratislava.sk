@@ -75,6 +75,20 @@
           "searchable": true,
           "sortable": true
         }
+      },
+      "links": {
+        "edit": {
+          "label": "CTA tlačidlá",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "links",
+          "searchable": false,
+          "sortable": false
+        }
       }
     },
     "layouts": {
@@ -105,6 +119,12 @@
           {
             "name": "imageAspectRatio",
             "size": 6
+          }
+        ],
+        [
+          {
+            "name": "links",
+            "size": 12
           }
         ]
       ]

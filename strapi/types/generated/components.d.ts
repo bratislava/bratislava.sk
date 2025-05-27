@@ -903,6 +903,13 @@ export interface SectionsTextWithImage extends Schema.Component {
       Attribute.Required &
       Attribute.DefaultTo<'right'>
     imageSrc: Attribute.Media<'images'> & Attribute.Required
+    links: Attribute.Component<'blocks.common-link', true> &
+      Attribute.SetMinMax<
+        {
+          max: 2
+        },
+        number
+      >
   }
 }
 
@@ -918,6 +925,13 @@ export interface SectionsTextWithImageOverlapped extends Schema.Component {
     imagePosition: Attribute.Enumeration<['left', 'right', 'left shifted', 'right shifted']> &
       Attribute.Required &
       Attribute.DefaultTo<'right'>
+    links: Attribute.Component<'blocks.common-link', true> &
+      Attribute.SetMinMax<
+        {
+          max: 2
+        },
+        number
+      >
   }
 }
 
