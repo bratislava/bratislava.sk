@@ -6,12 +6,7 @@ import { ColumnedTextSectionFragment } from '@/src/services/graphql'
 type ColumnedTextSectionProps = { section: ColumnedTextSectionFragment }
 
 const ColumnedTextSection = ({ section }: ColumnedTextSectionProps) => {
-  return (
-    <ColumnedText
-      content={section.content ?? ''}
-      contentAlignment={section.contentAlignment ?? undefined}
-    />
-  )
+  return <ColumnedText title={section.title} content={section.content ?? ''} />
 }
 
 export default ColumnedTextSection

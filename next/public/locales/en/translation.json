@@ -135,6 +135,8 @@
   "SearchPage.whatAreYouLookingFor": "What are you looking for?",
   "ShareButtonsSection.share": "Share",
   "SkipToContentButton.skipNavigation": "Skip navigation",
+  "slider.aria.controlButtons": "Control buttons",
+  "slider.aria.goToSlide": "Go to slide {{number}}",
   "Tag.aria.removeTag": "Remove tag {{tag}}",
   "TopServices.learnMore": "Read more",
   "useLocalizations.longName.en": "English",

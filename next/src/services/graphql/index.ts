@@ -1111,22 +1111,22 @@ export type ComponentSectionsCalculatorInput = {
 export type ComponentSectionsColumnedText = {
   __typename?: 'ComponentSectionsColumnedText'
   content?: Maybe<Scalars['String']['output']>
-  contentAlignment?: Maybe<Enum_Componentsectionscolumnedtext_Contentalignment>
   id: Scalars['ID']['output']
+  title?: Maybe<Scalars['String']['output']>
 }
 
 export type ComponentSectionsColumnedTextFiltersInput = {
   and?: InputMaybe<Array<InputMaybe<ComponentSectionsColumnedTextFiltersInput>>>
   content?: InputMaybe<StringFilterInput>
-  contentAlignment?: InputMaybe<StringFilterInput>
   not?: InputMaybe<ComponentSectionsColumnedTextFiltersInput>
   or?: InputMaybe<Array<InputMaybe<ComponentSectionsColumnedTextFiltersInput>>>
+  title?: InputMaybe<StringFilterInput>
 }
 
 export type ComponentSectionsColumnedTextInput = {
   content?: InputMaybe<Scalars['String']['input']>
-  contentAlignment?: InputMaybe<Enum_Componentsectionscolumnedtext_Contentalignment>
   id?: InputMaybe<Scalars['ID']['input']>
+  title?: InputMaybe<Scalars['String']['input']>
 }
 
 export type ComponentSectionsColumns = {
@@ -2223,12 +2223,6 @@ export enum Enum_Componentsectionsbanner_Variant {
   Color = 'color',
   Dark = 'dark',
   WhiteCondensed = 'white_condensed',
-}
-
-export enum Enum_Componentsectionscolumnedtext_Contentalignment {
-  Center = 'center',
-  Left = 'left',
-  Right = 'right',
 }
 
 export enum Enum_Componentsectionscolumns_Imagevariant {
@@ -8477,8 +8471,8 @@ export type PageEntityFragment = {
         }
       | {
           __typename: 'ComponentSectionsColumnedText'
+          title?: string | null
           content?: string | null
-          contentAlignment?: Enum_Componentsectionscolumnedtext_Contentalignment | null
         }
       | {
           __typename: 'ComponentSectionsColumns'
@@ -9481,8 +9475,8 @@ export type PageBySlugQuery = {
             }
           | {
               __typename: 'ComponentSectionsColumnedText'
+              title?: string | null
               content?: string | null
-              contentAlignment?: Enum_Componentsectionscolumnedtext_Contentalignment | null
             }
           | {
               __typename: 'ComponentSectionsColumns'
@@ -10525,8 +10519,8 @@ export type Dev_AllPagesQuery = {
             }
           | {
               __typename: 'ComponentSectionsColumnedText'
+              title?: string | null
               content?: string | null
-              contentAlignment?: Enum_Componentsectionscolumnedtext_Contentalignment | null
             }
           | {
               __typename: 'ComponentSectionsColumns'
@@ -12485,8 +12479,8 @@ export type FileItemBlockFragment = {
 
 export type ColumnedTextSectionFragment = {
   __typename?: 'ComponentSectionsColumnedText'
+  title?: string | null
   content?: string | null
-  contentAlignment?: Enum_Componentsectionscolumnedtext_Contentalignment | null
 }
 
 export type ColumnsItemFragment = {
@@ -13405,8 +13399,8 @@ type Sections_ComponentSectionsCalculator_Fragment = {
 
 type Sections_ComponentSectionsColumnedText_Fragment = {
   __typename: 'ComponentSectionsColumnedText'
+  title?: string | null
   content?: string | null
-  contentAlignment?: Enum_Componentsectionscolumnedtext_Contentalignment | null
 }
 
 type Sections_ComponentSectionsColumns_Fragment = {
@@ -14859,8 +14853,8 @@ export const FileListSectionFragmentDoc = gql`
 `
 export const ColumnedTextSectionFragmentDoc = gql`
   fragment ColumnedTextSection on ComponentSectionsColumnedText {
+    title
     content
-    contentAlignment
   }
 `
 export const ColumnsItemFragmentDoc = gql`
