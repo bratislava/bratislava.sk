@@ -941,22 +941,22 @@ input ComponentSectionsCalculatorInput {
 
 type ComponentSectionsColumnedText {
   content: String
-  contentAlignment: ENUM_COMPONENTSECTIONSCOLUMNEDTEXT_CONTENTALIGNMENT
   id: ID!
+  title: String
 }
 
 input ComponentSectionsColumnedTextFiltersInput {
   and: [ComponentSectionsColumnedTextFiltersInput]
   content: StringFilterInput
-  contentAlignment: StringFilterInput
   not: ComponentSectionsColumnedTextFiltersInput
   or: [ComponentSectionsColumnedTextFiltersInput]
+  title: StringFilterInput
 }
 
 input ComponentSectionsColumnedTextInput {
   content: String
-  contentAlignment: ENUM_COMPONENTSECTIONSCOLUMNEDTEXT_CONTENTALIGNMENT
   id: ID
+  title: String
 }
 
 type ComponentSectionsColumns {
@@ -1888,12 +1888,6 @@ enum ENUM_COMPONENTSECTIONSBANNER_VARIANT {
   color
   dark
   white_condensed
-}
-
-enum ENUM_COMPONENTSECTIONSCOLUMNEDTEXT_CONTENTALIGNMENT {
-  center
-  left
-  right
 }
 
 enum ENUM_COMPONENTSECTIONSCOLUMNS_IMAGEVARIANT {

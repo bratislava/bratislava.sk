@@ -488,8 +488,7 @@ export interface SectionsColumnedText extends Schema.Component {
   }
   attributes: {
     content: Attribute.RichText
-    contentAlignment: Attribute.Enumeration<['left', 'center', 'right']> &
-      Attribute.DefaultTo<'left'>
+    title: Attribute.String
   }
 }
 

@@ -138,8 +138,8 @@ fragment FileItemBlock on ComponentBlocksFileItem {
 }
 
 fragment ColumnedTextSection on ComponentSectionsColumnedText {
+  title
   content
-  contentAlignment
 }
 
 fragment ColumnsItem on ComponentBlocksColumnsItem {
