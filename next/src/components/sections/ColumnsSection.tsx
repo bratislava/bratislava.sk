@@ -25,7 +25,7 @@ const ColumnsSection = ({ section }: Props) => {
   return (
     <div className="flex flex-col gap-6 lg:gap-12">
       {title || text ? (
-        <div className="flex w-full gap-2 text-center">
+        <div className="flex w-full flex-col gap-2 text-center">
           {title ? <Typography variant="h2">{title}</Typography> : null}
           {text ? (
             <Typography variant="p-default" className="not-first:mt-2">

@@ -23,6 +23,7 @@ import NarrowTextSection from '@/src/components/sections/NarrowTextSection'
 import NumericalListSection from '@/src/components/sections/NumericalListSection'
 import OfficialBoardSection from '@/src/components/sections/OfficialBoardSection/OfficialBoardSection'
 import OrganizationalStructureSection from '@/src/components/sections/OrganizationalStructureSection'
+import PartnersSection from '@/src/components/sections/PartnersSection'
 import ProsAndConsSection from '@/src/components/sections/ProsAndConsSection'
 import RegulationsListSection from '@/src/components/sections/RegulationsListSection'
 import RegulationsSection from '@/src/components/sections/RegulationsSection'
@@ -127,6 +128,9 @@ const SectionContent = ({ section }: { section: SectionsFragment }) => {
 
     case 'ComponentSectionsTootootEvents':
       return <TootootEventsSection section={section} />
+
+    case 'ComponentSectionsPartners':
+      return <PartnersSection section={section} />
 
     default:
       return null

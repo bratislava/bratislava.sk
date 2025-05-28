@@ -413,6 +413,25 @@ fragment TootootEventsSection on ComponentSectionsTootootEvents {
   }
 }
 
+fragment PartnerBlock on ComponentBlocksPartner {
+  title
+  url
+  logo {
+    data {
+      ...UploadImageEntity
+    }
+  }
+}
+
+fragment PartnersSection on ComponentSectionsPartners {
+  title
+  text
+  partners(pagination: { limit: -1 }) {
+    ...PartnerBlock
+  }
+  logoRatio
+}
+
 fragment Sections on PageSectionsDynamicZone {
   __typename
 
@@ -538,6 +557,10 @@ fragment Sections on PageSectionsDynamicZone {
 
   ... on ComponentSectionsTootootEvents {
     ...TootootEventsSection
+  }
+
+  ... on ComponentSectionsPartners {
+    ...PartnersSection
   }
 }
 
