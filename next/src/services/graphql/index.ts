@@ -701,6 +701,29 @@ export type ComponentBlocksPageLinkInput = {
   url?: InputMaybe<Scalars['String']['input']>
 }
 
+export type ComponentBlocksPartner = {
+  __typename?: 'ComponentBlocksPartner'
+  id: Scalars['ID']['output']
+  logo: UploadFileEntityResponse
+  title: Scalars['String']['output']
+  url?: Maybe<Scalars['String']['output']>
+}
+
+export type ComponentBlocksPartnerFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentBlocksPartnerFiltersInput>>>
+  not?: InputMaybe<ComponentBlocksPartnerFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<ComponentBlocksPartnerFiltersInput>>>
+  title?: InputMaybe<StringFilterInput>
+  url?: InputMaybe<StringFilterInput>
+}
+
+export type ComponentBlocksPartnerInput = {
+  id?: InputMaybe<Scalars['ID']['input']>
+  logo?: InputMaybe<Scalars['ID']['input']>
+  title?: InputMaybe<Scalars['String']['input']>
+  url?: InputMaybe<Scalars['String']['input']>
+}
+
 export type ComponentBlocksProsAndConsCard = {
   __typename?: 'ComponentBlocksProsAndConsCard'
   id: Scalars['ID']['output']
@@ -1736,6 +1759,39 @@ export type ComponentSectionsOrganizationalStructureInput = {
   title?: InputMaybe<Scalars['String']['input']>
 }
 
+export type ComponentSectionsPartners = {
+  __typename?: 'ComponentSectionsPartners'
+  id: Scalars['ID']['output']
+  logoRatio: Enum_Componentsectionspartners_Logoratio
+  partners: Array<Maybe<ComponentBlocksPartner>>
+  text?: Maybe<Scalars['String']['output']>
+  title?: Maybe<Scalars['String']['output']>
+}
+
+export type ComponentSectionsPartnersPartnersArgs = {
+  filters?: InputMaybe<ComponentBlocksPartnerFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type ComponentSectionsPartnersFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentSectionsPartnersFiltersInput>>>
+  logoRatio?: InputMaybe<StringFilterInput>
+  not?: InputMaybe<ComponentSectionsPartnersFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<ComponentSectionsPartnersFiltersInput>>>
+  partners?: InputMaybe<ComponentBlocksPartnerFiltersInput>
+  text?: InputMaybe<StringFilterInput>
+  title?: InputMaybe<StringFilterInput>
+}
+
+export type ComponentSectionsPartnersInput = {
+  id?: InputMaybe<Scalars['ID']['input']>
+  logoRatio?: InputMaybe<Enum_Componentsectionspartners_Logoratio>
+  partners?: InputMaybe<Array<InputMaybe<ComponentBlocksPartnerInput>>>
+  text?: InputMaybe<Scalars['String']['input']>
+  title?: InputMaybe<Scalars['String']['input']>
+}
+
 export type ComponentSectionsProsAndConsSection = {
   __typename?: 'ComponentSectionsProsAndConsSection'
   cons: ComponentBlocksProsAndConsCard
@@ -2286,6 +2342,11 @@ export enum Enum_Componentsectionsnumericallist_Variant {
   Roadmap = 'roadmap',
 }
 
+export enum Enum_Componentsectionspartners_Logoratio {
+  Ratio_4_1 = 'ratio_4_1',
+  Ratio_4_3 = 'ratio_4_3',
+}
+
 export enum Enum_Componentsectionsprosandconssection_Textalign {
   Center = 'center',
   Left = 'left',
@@ -2679,6 +2740,7 @@ export type GenericMorph =
   | ComponentBlocksInBa
   | ComponentBlocksNumericalListItem
   | ComponentBlocksPageLink
+  | ComponentBlocksPartner
   | ComponentBlocksProsAndConsCard
   | ComponentBlocksTestimonialItem
   | ComponentBlocksTimelineItem
@@ -2715,6 +2777,7 @@ export type GenericMorph =
   | ComponentSectionsNumericalList
   | ComponentSectionsOfficialBoard
   | ComponentSectionsOrganizationalStructure
+  | ComponentSectionsPartners
   | ComponentSectionsProsAndConsSection
   | ComponentSectionsRegulations
   | ComponentSectionsRegulationsList
@@ -3967,6 +4030,7 @@ export type PageSectionsDynamicZone =
   | ComponentSectionsNumericalList
   | ComponentSectionsOfficialBoard
   | ComponentSectionsOrganizationalStructure
+  | ComponentSectionsPartners
   | ComponentSectionsProsAndConsSection
   | ComponentSectionsRegulations
   | ComponentSectionsRegulationsList
@@ -8716,6 +8780,33 @@ export type PageEntityFragment = {
       | { __typename: 'ComponentSectionsOfficialBoard' }
       | { __typename: 'ComponentSectionsOrganizationalStructure'; title?: string | null }
       | {
+          __typename: 'ComponentSectionsPartners'
+          title?: string | null
+          text?: string | null
+          logoRatio: Enum_Componentsectionspartners_Logoratio
+          partners: Array<{
+            __typename?: 'ComponentBlocksPartner'
+            title: string
+            url?: string | null
+            logo: {
+              __typename?: 'UploadFileEntityResponse'
+              data?: {
+                __typename?: 'UploadFileEntity'
+                id?: string | null
+                attributes?: {
+                  __typename?: 'UploadFile'
+                  url: string
+                  width?: number | null
+                  height?: number | null
+                  caption?: string | null
+                  alternativeText?: string | null
+                  name: string
+                } | null
+              } | null
+            }
+          } | null>
+        }
+      | {
           __typename: 'ComponentSectionsProsAndConsSection'
           title?: string | null
           text?: string | null
@@ -9727,6 +9818,33 @@ export type PageBySlugQuery = {
             }
           | { __typename: 'ComponentSectionsOfficialBoard' }
           | { __typename: 'ComponentSectionsOrganizationalStructure'; title?: string | null }
+          | {
+              __typename: 'ComponentSectionsPartners'
+              title?: string | null
+              text?: string | null
+              logoRatio: Enum_Componentsectionspartners_Logoratio
+              partners: Array<{
+                __typename?: 'ComponentBlocksPartner'
+                title: string
+                url?: string | null
+                logo: {
+                  __typename?: 'UploadFileEntityResponse'
+                  data?: {
+                    __typename?: 'UploadFileEntity'
+                    id?: string | null
+                    attributes?: {
+                      __typename?: 'UploadFile'
+                      url: string
+                      width?: number | null
+                      height?: number | null
+                      caption?: string | null
+                      alternativeText?: string | null
+                      name: string
+                    } | null
+                  } | null
+                }
+              } | null>
+            }
           | {
               __typename: 'ComponentSectionsProsAndConsSection'
               title?: string | null
@@ -10771,6 +10889,33 @@ export type Dev_AllPagesQuery = {
             }
           | { __typename: 'ComponentSectionsOfficialBoard' }
           | { __typename: 'ComponentSectionsOrganizationalStructure'; title?: string | null }
+          | {
+              __typename: 'ComponentSectionsPartners'
+              title?: string | null
+              text?: string | null
+              logoRatio: Enum_Componentsectionspartners_Logoratio
+              partners: Array<{
+                __typename?: 'ComponentBlocksPartner'
+                title: string
+                url?: string | null
+                logo: {
+                  __typename?: 'UploadFileEntityResponse'
+                  data?: {
+                    __typename?: 'UploadFileEntity'
+                    id?: string | null
+                    attributes?: {
+                      __typename?: 'UploadFile'
+                      url: string
+                      width?: number | null
+                      height?: number | null
+                      caption?: string | null
+                      alternativeText?: string | null
+                      name: string
+                    } | null
+                  } | null
+                }
+              } | null>
+            }
           | {
               __typename: 'ComponentSectionsProsAndConsSection'
               title?: string | null
@@ -13193,6 +13338,56 @@ export type TootootEventsSectionFragment = {
   } | null
 }
 
+export type PartnerBlockFragment = {
+  __typename?: 'ComponentBlocksPartner'
+  title: string
+  url?: string | null
+  logo: {
+    __typename?: 'UploadFileEntityResponse'
+    data?: {
+      __typename?: 'UploadFileEntity'
+      id?: string | null
+      attributes?: {
+        __typename?: 'UploadFile'
+        url: string
+        width?: number | null
+        height?: number | null
+        caption?: string | null
+        alternativeText?: string | null
+        name: string
+      } | null
+    } | null
+  }
+}
+
+export type PartnersSectionFragment = {
+  __typename?: 'ComponentSectionsPartners'
+  title?: string | null
+  text?: string | null
+  logoRatio: Enum_Componentsectionspartners_Logoratio
+  partners: Array<{
+    __typename?: 'ComponentBlocksPartner'
+    title: string
+    url?: string | null
+    logo: {
+      __typename?: 'UploadFileEntityResponse'
+      data?: {
+        __typename?: 'UploadFileEntity'
+        id?: string | null
+        attributes?: {
+          __typename?: 'UploadFile'
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
+      } | null
+    }
+  } | null>
+}
+
 type Sections_ComponentSectionsAccordion_Fragment = {
   __typename: 'ComponentSectionsAccordion'
   title?: string | null
@@ -13670,6 +13865,34 @@ type Sections_ComponentSectionsOrganizationalStructure_Fragment = {
   title?: string | null
 }
 
+type Sections_ComponentSectionsPartners_Fragment = {
+  __typename: 'ComponentSectionsPartners'
+  title?: string | null
+  text?: string | null
+  logoRatio: Enum_Componentsectionspartners_Logoratio
+  partners: Array<{
+    __typename?: 'ComponentBlocksPartner'
+    title: string
+    url?: string | null
+    logo: {
+      __typename?: 'UploadFileEntityResponse'
+      data?: {
+        __typename?: 'UploadFileEntity'
+        id?: string | null
+        attributes?: {
+          __typename?: 'UploadFile'
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
+      } | null
+    }
+  } | null>
+}
+
 type Sections_ComponentSectionsProsAndConsSection_Fragment = {
   __typename: 'ComponentSectionsProsAndConsSection'
   title?: string | null
@@ -14065,6 +14288,7 @@ export type SectionsFragment =
   | Sections_ComponentSectionsNumericalList_Fragment
   | Sections_ComponentSectionsOfficialBoard_Fragment
   | Sections_ComponentSectionsOrganizationalStructure_Fragment
+  | Sections_ComponentSectionsPartners_Fragment
   | Sections_ComponentSectionsProsAndConsSection_Fragment
   | Sections_ComponentSectionsRegulations_Fragment
   | Sections_ComponentSectionsRegulationsList_Fragment
@@ -15356,6 +15580,29 @@ export const FaqCategoriesSectionFragmentDoc = gql`
   }
   ${FaqCategoryEntityFragmentDoc}
 `
+export const PartnerBlockFragmentDoc = gql`
+  fragment PartnerBlock on ComponentBlocksPartner {
+    title
+    url
+    logo {
+      data {
+        ...UploadImageEntity
+      }
+    }
+  }
+  ${UploadImageEntityFragmentDoc}
+`
+export const PartnersSectionFragmentDoc = gql`
+  fragment PartnersSection on ComponentSectionsPartners {
+    title
+    text
+    partners(pagination: { limit: -1 }) {
+      ...PartnerBlock
+    }
+    logoRatio
+  }
+  ${PartnerBlockFragmentDoc}
+`
 export const SectionsFragmentDoc = gql`
   fragment Sections on PageSectionsDynamicZone {
     __typename
@@ -15449,6 +15696,9 @@ export const SectionsFragmentDoc = gql`
     ... on ComponentSectionsTootootEvents {
       ...TootootEventsSection
     }
+    ... on ComponentSectionsPartners {
+      ...PartnersSection
+    }
   }
   ${IconTitleDescSectionFragmentDoc}
   ${DividerSectionFragmentDoc}
@@ -15480,6 +15730,7 @@ export const SectionsFragmentDoc = gql`
   ${FaqsSectionFragmentDoc}
   ${FaqCategoriesSectionFragmentDoc}
   ${TootootEventsSectionFragmentDoc}
+  ${PartnersSectionFragmentDoc}
 `
 export const LocalizationFragmentDoc = gql`
   fragment Localization on PageRelationResponseCollection {

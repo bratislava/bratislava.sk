@@ -1,0 +1,31 @@
+{
+  "collectionName": "components_sections_partners",
+  "info": {
+    "displayName": "Partners",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "text": {
+      "type": "text"
+    },
+    "partners": {
+      "type": "component",
+      "repeatable": true,
+      "component": "blocks.partner",
+      "required": true
+    },
+    "logoRatio": {
+      "type": "enumeration",
+      "enum": [
+        "ratio 4:1",
+        "ratio 4:3"
+      ],
+      "required": true,
+      "default": "ratio 4:1"
+    }
+  }
+}

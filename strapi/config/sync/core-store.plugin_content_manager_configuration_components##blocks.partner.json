@@ -1,0 +1,99 @@
+{
+  "key": "plugin_content_manager_configuration_components::blocks.partner",
+  "value": {
+    "settings": {
+      "bulkable": true,
+      "filterable": true,
+      "searchable": true,
+      "pageSize": 10,
+      "mainField": "title",
+      "defaultSortBy": "title",
+      "defaultSortOrder": "ASC"
+    },
+    "metadatas": {
+      "id": {
+        "edit": {},
+        "list": {
+          "label": "id",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "title": {
+        "edit": {
+          "label": "Názov partnera",
+          "description": "Názov sa použije pre čítače obrazovky, preto ho prosím vyplňte poriadne, aj keď sa nikde na webe viditeľne nezobrazuje.",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "title",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "url": {
+        "edit": {
+          "label": "Url",
+          "description": "Odkaz na webstránku partnera musí začínať https://. Po vyplnení odkazu bude logo klikateľné. Nie je povinné ho vypĺňať, no ak ho vyĺňate, vyplňte ho pre všetkých partnerov v sekcii. (To znamená, že by ste mali zabezpečiť, aby buď boli klikateľné všetky logá, alebo žiadne logo).",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "url",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "logo": {
+        "edit": {
+          "label": "Logo",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "logo",
+          "searchable": false,
+          "sortable": false
+        }
+      }
+    },
+    "layouts": {
+      "list": [
+        "id",
+        "title",
+        "url",
+        "logo"
+      ],
+      "edit": [
+        [
+          {
+            "name": "title",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "url",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "logo",
+            "size": 6
+          }
+        ]
+      ]
+    },
+    "uid": "blocks.partner",
+    "isComponent": true
+  },
+  "type": "object",
+  "environment": null,
+  "tag": null
+}
