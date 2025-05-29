@@ -1,4 +1,5 @@
 {
+  "AlertBanner.aria.closeAlert": "Zavrieť upozornenie",
   "AliasInfoMessage.message.article": "Tento článok nájdete aj na",
   "AliasInfoMessage.message.page": "Túto stránku nájdete aj na",
   "ArticlesFilter.allArticles": "Všetky správy",
@@ -145,6 +146,8 @@
   "SearchPage.whatAreYouLookingFor": "Čo hľadáte?",
   "ShareButtonsSection.share": "Zdieľať",
   "SkipToContentButton.skipNavigation": "Preskočiť navigáciu",
+  "slider.aria.controlButtons": "",
+  "slider.aria.goToSlide": "",
   "Tag.aria.removeTag": "Odstrániť tag {{tag}}",
   "TopServices.learnMore": "Zistiť viac",
   "useLocalizations.longName.en": "English",
