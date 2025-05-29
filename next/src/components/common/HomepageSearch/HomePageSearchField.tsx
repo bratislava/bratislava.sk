@@ -1,3 +1,4 @@
+import { useTranslation } from 'next-i18next'
 import {
   DetailedHTMLProps,
   Dispatch,
@@ -26,6 +27,8 @@ const HomePageSearchField = ({
   inputClassName,
   ...rest
 }: HomePageSearchFieldProps) => {
+  const { t } = useTranslation()
+
   const handleOnKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'Enter') {
       onSearchPressed()
@@ -47,6 +50,7 @@ const HomePageSearchField = ({
         onKeyDown={handleOnKeyDown}
         value={value}
         autoComplete="off"
+        aria-label={t('SearchPage.enterKeyword')}
         {...rest}
         data-cy="homepage-search-field"
       />
@@ -55,6 +59,7 @@ const HomePageSearchField = ({
       <Button
         className="-ml-1 h-12 rounded-l-none pr-5 pl-4 lg:h-14"
         variant="solid"
+        aria-label={t('SearchBar.search')}
         onPress={onSearchPressed}
         data-cy="homepage-search-button"
       >
