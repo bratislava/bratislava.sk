@@ -9,10 +9,16 @@ type Props = {
   twitterTitle?: string | null | undefined
 }
 
+type SocialMediaButtonProps = {
+  getLink: (link: string) => string
+  platform: 'Facebook' | 'LinkedIn' | 'Instagram' | 'Twitter'
+}
+
 const SocialMediaButton = ({
   getLink,
+  platform,
   children,
-}: PropsWithChildren<{ getLink: (link: string) => string }>) => {
+}: PropsWithChildren<SocialMediaButtonProps>) => {
   const openSharePage = () => {
     const w = 600
     const h = 400
@@ -26,7 +32,7 @@ const SocialMediaButton = ({
     )
   }
 
-  return <Button onPress={openSharePage}>{children}</Button>
+  return <Button icon={children} aria-label={platform} onPress={openSharePage} />
 }
 
 const ShareButtons = ({ twitterTitle }: Props) => {
@@ -41,12 +47,14 @@ const ShareButtons = ({ twitterTitle }: Props) => {
       </Typography>
       <div className="flex gap-10">
         <SocialMediaButton
+          platform="Facebook"
           getLink={(socialLink) => `https://www.facebook.com/sharer/sharer.php?u=${socialLink}`}
         >
           <FacebookIcon className="size-8" />
         </SocialMediaButton>
 
         <SocialMediaButton
+          platform="LinkedIn"
           getLink={(socialLink) =>
             `https://www.linkedin.com/sharing/share-offsite/?url=${socialLink}`
           }
@@ -54,11 +62,15 @@ const ShareButtons = ({ twitterTitle }: Props) => {
           <LinkedinIcon className="size-8" />
         </SocialMediaButton>
 
-        <SocialMediaButton getLink={() => 'https://www.instagram.com/bratislava.sk/'}>
+        <SocialMediaButton
+          platform="Instagram"
+          getLink={() => 'https://www.instagram.com/bratislava.sk/'}
+        >
           <InstagramIcon className="size-8" />
         </SocialMediaButton>
 
         <SocialMediaButton
+          platform="Twitter"
           getLink={(socialLink) =>
             `https://twitter.com/intent/tweet?url=${socialLink}${twitterTextQuery}`
           }
