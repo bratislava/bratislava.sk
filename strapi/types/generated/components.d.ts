@@ -214,6 +214,18 @@ export interface BlocksPageLink extends Schema.Component {
   }
 }
 
+export interface BlocksPartner extends Schema.Component {
+  collectionName: 'components_blocks_partners'
+  info: {
+    displayName: 'partner'
+  }
+  attributes: {
+    logo: Attribute.Media<'images'> & Attribute.Required
+    title: Attribute.String & Attribute.Required
+    url: Attribute.String
+  }
+}
+
 export interface BlocksProsAndConsCard extends Schema.Component {
   collectionName: 'components_blocks_pros_and_cons_cards'
   info: {
@@ -488,8 +500,7 @@ export interface SectionsColumnedText extends Schema.Component {
   }
   attributes: {
     content: Attribute.RichText
-    contentAlignment: Attribute.Enumeration<['left', 'center', 'right']> &
-      Attribute.DefaultTo<'left'>
+    title: Attribute.String
   }
 }
 
@@ -817,6 +828,22 @@ export interface SectionsOrganizationalStructure extends Schema.Component {
   }
 }
 
+export interface SectionsPartners extends Schema.Component {
+  collectionName: 'components_sections_partners'
+  info: {
+    description: ''
+    displayName: 'Partners'
+  }
+  attributes: {
+    logoRatio: Attribute.Enumeration<['ratio 4:1', 'ratio 4:3']> &
+      Attribute.Required &
+      Attribute.DefaultTo<'ratio 4:1'>
+    partners: Attribute.Component<'blocks.partner', true> & Attribute.Required
+    text: Attribute.Text
+    title: Attribute.String
+  }
+}
+
 export interface SectionsProsAndConsSection extends Schema.Component {
   collectionName: 'components_sections_pros_and_cons_sections'
   info: {
@@ -903,6 +930,13 @@ export interface SectionsTextWithImage extends Schema.Component {
       Attribute.Required &
       Attribute.DefaultTo<'right'>
     imageSrc: Attribute.Media<'images'> & Attribute.Required
+    links: Attribute.Component<'blocks.common-link', true> &
+      Attribute.SetMinMax<
+        {
+          max: 2
+        },
+        number
+      >
   }
 }
 
@@ -918,6 +952,13 @@ export interface SectionsTextWithImageOverlapped extends Schema.Component {
     imagePosition: Attribute.Enumeration<['left', 'right', 'left shifted', 'right shifted']> &
       Attribute.Required &
       Attribute.DefaultTo<'right'>
+    links: Attribute.Component<'blocks.common-link', true> &
+      Attribute.SetMinMax<
+        {
+          max: 2
+        },
+        number
+      >
   }
 }
 
@@ -1014,6 +1055,7 @@ declare module '@strapi/types' {
       'blocks.in-ba': BlocksInBa
       'blocks.numerical-list-item': BlocksNumericalListItem
       'blocks.page-link': BlocksPageLink
+      'blocks.partner': BlocksPartner
       'blocks.pros-and-cons-card': BlocksProsAndConsCard
       'blocks.testimonial-item': BlocksTestimonialItem
       'blocks.timeline-item': BlocksTimelineItem
@@ -1050,6 +1092,7 @@ declare module '@strapi/types' {
       'sections.numerical-list': SectionsNumericalList
       'sections.official-board': SectionsOfficialBoard
       'sections.organizational-structure': SectionsOrganizationalStructure
+      'sections.partners': SectionsPartners
       'sections.pros-and-cons-section': SectionsProsAndConsSection
       'sections.regulations': SectionsRegulations
       'sections.regulations-list': SectionsRegulationsList

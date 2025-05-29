@@ -6,14 +6,11 @@
   },
   "options": {},
   "attributes": {
+    "title": {
+      "type": "string"
+    },
     "content": {
       "type": "richtext"
-    },
-    "contentAlignment": {
-      "type": "enumeration",
-      "enum": ["left", "center", "right"],
-      "default": "left",
-      "required": false
     }
   }
 }

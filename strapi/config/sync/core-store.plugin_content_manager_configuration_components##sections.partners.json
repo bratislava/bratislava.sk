@@ -1,13 +1,13 @@
 {
-  "key": "plugin_content_manager_configuration_components::sections.text-with-image-overlapped",
+  "key": "plugin_content_manager_configuration_components::sections.partners",
   "value": {
     "settings": {
       "bulkable": true,
       "filterable": true,
       "searchable": true,
       "pageSize": 10,
-      "mainField": "id",
-      "defaultSortBy": "id",
+      "mainField": "title",
+      "defaultSortBy": "title",
       "defaultSortOrder": "ASC"
     },
     "metadatas": {
@@ -19,96 +19,98 @@
           "sortable": false
         }
       },
-      "content": {
+      "title": {
         "edit": {
-          "label": "Text",
-          "description": "V tejto sekcii prosíme používať iba nadpis, obyčajný text a hrubé písmo. Ostatné formátovanie textu nie je v tejto sekcii vhodné.",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "content",
-          "searchable": false,
-          "sortable": false
-        }
-      },
-      "image": {
-        "edit": {
-          "label": "Obrázok",
+          "label": "Nadpis",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "image",
-          "searchable": false,
-          "sortable": false
-        }
-      },
-      "imagePosition": {
-        "edit": {
-          "label": "Pozícia obrázku",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "imagePosition",
+          "label": "title",
           "searchable": true,
           "sortable": true
         }
       },
-      "links": {
+      "text": {
         "edit": {
-          "label": "CTA tlačidlá",
+          "label": "Text",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "links",
+          "label": "text",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "partners": {
+        "edit": {
+          "label": "Partneri",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "partners",
           "searchable": false,
           "sortable": false
+        }
+      },
+      "logoRatio": {
+        "edit": {
+          "label": "Pomer strán",
+          "description": "Pri logách na šírku odporúčame použiť 4:1. Pri väčšom počte, alebo keď sú logá rôzne veľké, odporúčame použiť 4:3.",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "logoRatio",
+          "searchable": true,
+          "sortable": true
         }
       }
     },
     "layouts": {
       "list": [
         "id",
-        "image",
-        "imagePosition",
-        "links"
+        "title",
+        "text",
+        "partners"
       ],
       "edit": [
         [
           {
-            "name": "content",
+            "name": "title",
             "size": 12
           }
         ],
         [
           {
-            "name": "image",
-            "size": 6
-          },
-          {
-            "name": "imagePosition",
-            "size": 6
+            "name": "text",
+            "size": 12
           }
         ],
         [
           {
-            "name": "links",
+            "name": "partners",
             "size": 12
+          }
+        ],
+        [
+          {
+            "name": "logoRatio",
+            "size": 6
           }
         ]
       ]
     },
-    "uid": "sections.text-with-image-overlapped",
+    "uid": "sections.partners",
     "isComponent": true
   },
   "type": "object",

@@ -701,6 +701,29 @@ export type ComponentBlocksPageLinkInput = {
   url?: InputMaybe<Scalars['String']['input']>
 }
 
+export type ComponentBlocksPartner = {
+  __typename?: 'ComponentBlocksPartner'
+  id: Scalars['ID']['output']
+  logo: UploadFileEntityResponse
+  title: Scalars['String']['output']
+  url?: Maybe<Scalars['String']['output']>
+}
+
+export type ComponentBlocksPartnerFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentBlocksPartnerFiltersInput>>>
+  not?: InputMaybe<ComponentBlocksPartnerFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<ComponentBlocksPartnerFiltersInput>>>
+  title?: InputMaybe<StringFilterInput>
+  url?: InputMaybe<StringFilterInput>
+}
+
+export type ComponentBlocksPartnerInput = {
+  id?: InputMaybe<Scalars['ID']['input']>
+  logo?: InputMaybe<Scalars['ID']['input']>
+  title?: InputMaybe<Scalars['String']['input']>
+  url?: InputMaybe<Scalars['String']['input']>
+}
+
 export type ComponentBlocksProsAndConsCard = {
   __typename?: 'ComponentBlocksProsAndConsCard'
   id: Scalars['ID']['output']
@@ -1111,22 +1134,22 @@ export type ComponentSectionsCalculatorInput = {
 export type ComponentSectionsColumnedText = {
   __typename?: 'ComponentSectionsColumnedText'
   content?: Maybe<Scalars['String']['output']>
-  contentAlignment?: Maybe<Enum_Componentsectionscolumnedtext_Contentalignment>
   id: Scalars['ID']['output']
+  title?: Maybe<Scalars['String']['output']>
 }
 
 export type ComponentSectionsColumnedTextFiltersInput = {
   and?: InputMaybe<Array<InputMaybe<ComponentSectionsColumnedTextFiltersInput>>>
   content?: InputMaybe<StringFilterInput>
-  contentAlignment?: InputMaybe<StringFilterInput>
   not?: InputMaybe<ComponentSectionsColumnedTextFiltersInput>
   or?: InputMaybe<Array<InputMaybe<ComponentSectionsColumnedTextFiltersInput>>>
+  title?: InputMaybe<StringFilterInput>
 }
 
 export type ComponentSectionsColumnedTextInput = {
   content?: InputMaybe<Scalars['String']['input']>
-  contentAlignment?: InputMaybe<Enum_Componentsectionscolumnedtext_Contentalignment>
   id?: InputMaybe<Scalars['ID']['input']>
+  title?: InputMaybe<Scalars['String']['input']>
 }
 
 export type ComponentSectionsColumns = {
@@ -1736,6 +1759,39 @@ export type ComponentSectionsOrganizationalStructureInput = {
   title?: InputMaybe<Scalars['String']['input']>
 }
 
+export type ComponentSectionsPartners = {
+  __typename?: 'ComponentSectionsPartners'
+  id: Scalars['ID']['output']
+  logoRatio: Enum_Componentsectionspartners_Logoratio
+  partners: Array<Maybe<ComponentBlocksPartner>>
+  text?: Maybe<Scalars['String']['output']>
+  title?: Maybe<Scalars['String']['output']>
+}
+
+export type ComponentSectionsPartnersPartnersArgs = {
+  filters?: InputMaybe<ComponentBlocksPartnerFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type ComponentSectionsPartnersFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentSectionsPartnersFiltersInput>>>
+  logoRatio?: InputMaybe<StringFilterInput>
+  not?: InputMaybe<ComponentSectionsPartnersFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<ComponentSectionsPartnersFiltersInput>>>
+  partners?: InputMaybe<ComponentBlocksPartnerFiltersInput>
+  text?: InputMaybe<StringFilterInput>
+  title?: InputMaybe<StringFilterInput>
+}
+
+export type ComponentSectionsPartnersInput = {
+  id?: InputMaybe<Scalars['ID']['input']>
+  logoRatio?: InputMaybe<Enum_Componentsectionspartners_Logoratio>
+  partners?: InputMaybe<Array<InputMaybe<ComponentBlocksPartnerInput>>>
+  text?: InputMaybe<Scalars['String']['input']>
+  title?: InputMaybe<Scalars['String']['input']>
+}
+
 export type ComponentSectionsProsAndConsSection = {
   __typename?: 'ComponentSectionsProsAndConsSection'
   cons: ComponentBlocksProsAndConsCard
@@ -1870,6 +1926,13 @@ export type ComponentSectionsTextWithImage = {
   imageAspectRatio?: Maybe<Enum_Componentsectionstextwithimage_Imageaspectratio>
   imagePosition: Enum_Componentsectionstextwithimage_Imageposition
   imageSrc: UploadFileEntityResponse
+  links?: Maybe<Array<Maybe<ComponentBlocksCommonLink>>>
+}
+
+export type ComponentSectionsTextWithImageLinksArgs = {
+  filters?: InputMaybe<ComponentBlocksCommonLinkFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
 }
 
 export type ComponentSectionsTextWithImageFiltersInput = {
@@ -1877,6 +1940,7 @@ export type ComponentSectionsTextWithImageFiltersInput = {
   content?: InputMaybe<StringFilterInput>
   imageAspectRatio?: InputMaybe<StringFilterInput>
   imagePosition?: InputMaybe<StringFilterInput>
+  links?: InputMaybe<ComponentBlocksCommonLinkFiltersInput>
   not?: InputMaybe<ComponentSectionsTextWithImageFiltersInput>
   or?: InputMaybe<Array<InputMaybe<ComponentSectionsTextWithImageFiltersInput>>>
 }
@@ -1887,6 +1951,7 @@ export type ComponentSectionsTextWithImageInput = {
   imageAspectRatio?: InputMaybe<Enum_Componentsectionstextwithimage_Imageaspectratio>
   imagePosition?: InputMaybe<Enum_Componentsectionstextwithimage_Imageposition>
   imageSrc?: InputMaybe<Scalars['ID']['input']>
+  links?: InputMaybe<Array<InputMaybe<ComponentBlocksCommonLinkInput>>>
 }
 
 export type ComponentSectionsTextWithImageOverlapped = {
@@ -1895,12 +1960,20 @@ export type ComponentSectionsTextWithImageOverlapped = {
   id: Scalars['ID']['output']
   image: UploadFileEntityResponse
   imagePosition: Enum_Componentsectionstextwithimageoverlapped_Imageposition
+  links?: Maybe<Array<Maybe<ComponentBlocksCommonLink>>>
+}
+
+export type ComponentSectionsTextWithImageOverlappedLinksArgs = {
+  filters?: InputMaybe<ComponentBlocksCommonLinkFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
 }
 
 export type ComponentSectionsTextWithImageOverlappedFiltersInput = {
   and?: InputMaybe<Array<InputMaybe<ComponentSectionsTextWithImageOverlappedFiltersInput>>>
   content?: InputMaybe<StringFilterInput>
   imagePosition?: InputMaybe<StringFilterInput>
+  links?: InputMaybe<ComponentBlocksCommonLinkFiltersInput>
   not?: InputMaybe<ComponentSectionsTextWithImageOverlappedFiltersInput>
   or?: InputMaybe<Array<InputMaybe<ComponentSectionsTextWithImageOverlappedFiltersInput>>>
 }
@@ -1910,6 +1983,7 @@ export type ComponentSectionsTextWithImageOverlappedInput = {
   id?: InputMaybe<Scalars['ID']['input']>
   image?: InputMaybe<Scalars['ID']['input']>
   imagePosition?: InputMaybe<Enum_Componentsectionstextwithimageoverlapped_Imageposition>
+  links?: InputMaybe<Array<InputMaybe<ComponentBlocksCommonLinkInput>>>
 }
 
 export type ComponentSectionsTimeline = {
@@ -2207,12 +2281,6 @@ export enum Enum_Componentsectionsbanner_Variant {
   WhiteCondensed = 'white_condensed',
 }
 
-export enum Enum_Componentsectionscolumnedtext_Contentalignment {
-  Center = 'center',
-  Left = 'left',
-  Right = 'right',
-}
-
 export enum Enum_Componentsectionscolumns_Imagevariant {
   ColumnsSectionImageVariantImageOriginalSize = 'columnsSection_imageVariant_imageOriginalSize',
   ColumnsSectionImageVariantWithCircleBackground = 'columnsSection_imageVariant_withCircleBackground',
@@ -2272,6 +2340,11 @@ export enum Enum_Componentsectionsnumericallist_Variant {
   Basic = 'basic',
   Combined = 'combined',
   Roadmap = 'roadmap',
+}
+
+export enum Enum_Componentsectionspartners_Logoratio {
+  Ratio_4_1 = 'ratio_4_1',
+  Ratio_4_3 = 'ratio_4_3',
 }
 
 export enum Enum_Componentsectionsprosandconssection_Textalign {
@@ -2667,6 +2740,7 @@ export type GenericMorph =
   | ComponentBlocksInBa
   | ComponentBlocksNumericalListItem
   | ComponentBlocksPageLink
+  | ComponentBlocksPartner
   | ComponentBlocksProsAndConsCard
   | ComponentBlocksTestimonialItem
   | ComponentBlocksTimelineItem
@@ -2703,6 +2777,7 @@ export type GenericMorph =
   | ComponentSectionsNumericalList
   | ComponentSectionsOfficialBoard
   | ComponentSectionsOrganizationalStructure
+  | ComponentSectionsPartners
   | ComponentSectionsProsAndConsSection
   | ComponentSectionsRegulations
   | ComponentSectionsRegulationsList
@@ -3955,6 +4030,7 @@ export type PageSectionsDynamicZone =
   | ComponentSectionsNumericalList
   | ComponentSectionsOfficialBoard
   | ComponentSectionsOrganizationalStructure
+  | ComponentSectionsPartners
   | ComponentSectionsProsAndConsSection
   | ComponentSectionsRegulations
   | ComponentSectionsRegulationsList
@@ -8459,8 +8535,8 @@ export type PageEntityFragment = {
         }
       | {
           __typename: 'ComponentSectionsColumnedText'
+          title?: string | null
           content?: string | null
-          contentAlignment?: Enum_Componentsectionscolumnedtext_Contentalignment | null
         }
       | {
           __typename: 'ComponentSectionsColumns'
@@ -8704,6 +8780,33 @@ export type PageEntityFragment = {
       | { __typename: 'ComponentSectionsOfficialBoard' }
       | { __typename: 'ComponentSectionsOrganizationalStructure'; title?: string | null }
       | {
+          __typename: 'ComponentSectionsPartners'
+          title?: string | null
+          text?: string | null
+          logoRatio: Enum_Componentsectionspartners_Logoratio
+          partners: Array<{
+            __typename?: 'ComponentBlocksPartner'
+            title: string
+            url?: string | null
+            logo: {
+              __typename?: 'UploadFileEntityResponse'
+              data?: {
+                __typename?: 'UploadFileEntity'
+                id?: string | null
+                attributes?: {
+                  __typename?: 'UploadFile'
+                  url: string
+                  width?: number | null
+                  height?: number | null
+                  caption?: string | null
+                  alternativeText?: string | null
+                  name: string
+                } | null
+              } | null
+            }
+          } | null>
+        }
+      | {
           __typename: 'ComponentSectionsProsAndConsSection'
           title?: string | null
           text?: string | null
@@ -8912,6 +9015,38 @@ export type PageEntityFragment = {
               } | null
             } | null
           }
+          links?: Array<{
+            __typename?: 'ComponentBlocksCommonLink'
+            label?: string | null
+            url?: string | null
+            analyticsId?: string | null
+            page?: {
+              __typename?: 'PageEntityResponse'
+              data?: {
+                __typename?: 'PageEntity'
+                id?: string | null
+                attributes?: {
+                  __typename?: 'Page'
+                  slug?: string | null
+                  title: string
+                  locale?: string | null
+                } | null
+              } | null
+            } | null
+            article?: {
+              __typename?: 'ArticleEntityResponse'
+              data?: {
+                __typename: 'ArticleEntity'
+                id?: string | null
+                attributes?: {
+                  __typename?: 'Article'
+                  slug: string
+                  title: string
+                  locale?: string | null
+                } | null
+              } | null
+            } | null
+          } | null> | null
         }
       | {
           __typename: 'ComponentSectionsTextWithImageOverlapped'
@@ -8933,6 +9068,38 @@ export type PageEntityFragment = {
               } | null
             } | null
           }
+          links?: Array<{
+            __typename?: 'ComponentBlocksCommonLink'
+            label?: string | null
+            url?: string | null
+            analyticsId?: string | null
+            page?: {
+              __typename?: 'PageEntityResponse'
+              data?: {
+                __typename?: 'PageEntity'
+                id?: string | null
+                attributes?: {
+                  __typename?: 'Page'
+                  slug?: string | null
+                  title: string
+                  locale?: string | null
+                } | null
+              } | null
+            } | null
+            article?: {
+              __typename?: 'ArticleEntityResponse'
+              data?: {
+                __typename: 'ArticleEntity'
+                id?: string | null
+                attributes?: {
+                  __typename?: 'Article'
+                  slug: string
+                  title: string
+                  locale?: string | null
+                } | null
+              } | null
+            } | null
+          } | null> | null
         }
       | {
           __typename: 'ComponentSectionsTimeline'
@@ -9399,8 +9566,8 @@ export type PageBySlugQuery = {
             }
           | {
               __typename: 'ComponentSectionsColumnedText'
+              title?: string | null
               content?: string | null
-              contentAlignment?: Enum_Componentsectionscolumnedtext_Contentalignment | null
             }
           | {
               __typename: 'ComponentSectionsColumns'
@@ -9652,6 +9819,33 @@ export type PageBySlugQuery = {
           | { __typename: 'ComponentSectionsOfficialBoard' }
           | { __typename: 'ComponentSectionsOrganizationalStructure'; title?: string | null }
           | {
+              __typename: 'ComponentSectionsPartners'
+              title?: string | null
+              text?: string | null
+              logoRatio: Enum_Componentsectionspartners_Logoratio
+              partners: Array<{
+                __typename?: 'ComponentBlocksPartner'
+                title: string
+                url?: string | null
+                logo: {
+                  __typename?: 'UploadFileEntityResponse'
+                  data?: {
+                    __typename?: 'UploadFileEntity'
+                    id?: string | null
+                    attributes?: {
+                      __typename?: 'UploadFile'
+                      url: string
+                      width?: number | null
+                      height?: number | null
+                      caption?: string | null
+                      alternativeText?: string | null
+                      name: string
+                    } | null
+                  } | null
+                }
+              } | null>
+            }
+          | {
               __typename: 'ComponentSectionsProsAndConsSection'
               title?: string | null
               text?: string | null
@@ -9860,6 +10054,38 @@ export type PageBySlugQuery = {
                   } | null
                 } | null
               }
+              links?: Array<{
+                __typename?: 'ComponentBlocksCommonLink'
+                label?: string | null
+                url?: string | null
+                analyticsId?: string | null
+                page?: {
+                  __typename?: 'PageEntityResponse'
+                  data?: {
+                    __typename?: 'PageEntity'
+                    id?: string | null
+                    attributes?: {
+                      __typename?: 'Page'
+                      slug?: string | null
+                      title: string
+                      locale?: string | null
+                    } | null
+                  } | null
+                } | null
+                article?: {
+                  __typename?: 'ArticleEntityResponse'
+                  data?: {
+                    __typename: 'ArticleEntity'
+                    id?: string | null
+                    attributes?: {
+                      __typename?: 'Article'
+                      slug: string
+                      title: string
+                      locale?: string | null
+                    } | null
+                  } | null
+                } | null
+              } | null> | null
             }
           | {
               __typename: 'ComponentSectionsTextWithImageOverlapped'
@@ -9881,6 +10107,38 @@ export type PageBySlugQuery = {
                   } | null
                 } | null
               }
+              links?: Array<{
+                __typename?: 'ComponentBlocksCommonLink'
+                label?: string | null
+                url?: string | null
+                analyticsId?: string | null
+                page?: {
+                  __typename?: 'PageEntityResponse'
+                  data?: {
+                    __typename?: 'PageEntity'
+                    id?: string | null
+                    attributes?: {
+                      __typename?: 'Page'
+                      slug?: string | null
+                      title: string
+                      locale?: string | null
+                    } | null
+                  } | null
+                } | null
+                article?: {
+                  __typename?: 'ArticleEntityResponse'
+                  data?: {
+                    __typename: 'ArticleEntity'
+                    id?: string | null
+                    attributes?: {
+                      __typename?: 'Article'
+                      slug: string
+                      title: string
+                      locale?: string | null
+                    } | null
+                  } | null
+                } | null
+              } | null> | null
             }
           | {
               __typename: 'ComponentSectionsTimeline'
@@ -10379,8 +10637,8 @@ export type Dev_AllPagesQuery = {
             }
           | {
               __typename: 'ComponentSectionsColumnedText'
+              title?: string | null
               content?: string | null
-              contentAlignment?: Enum_Componentsectionscolumnedtext_Contentalignment | null
             }
           | {
               __typename: 'ComponentSectionsColumns'
@@ -10632,6 +10890,33 @@ export type Dev_AllPagesQuery = {
           | { __typename: 'ComponentSectionsOfficialBoard' }
           | { __typename: 'ComponentSectionsOrganizationalStructure'; title?: string | null }
           | {
+              __typename: 'ComponentSectionsPartners'
+              title?: string | null
+              text?: string | null
+              logoRatio: Enum_Componentsectionspartners_Logoratio
+              partners: Array<{
+                __typename?: 'ComponentBlocksPartner'
+                title: string
+                url?: string | null
+                logo: {
+                  __typename?: 'UploadFileEntityResponse'
+                  data?: {
+                    __typename?: 'UploadFileEntity'
+                    id?: string | null
+                    attributes?: {
+                      __typename?: 'UploadFile'
+                      url: string
+                      width?: number | null
+                      height?: number | null
+                      caption?: string | null
+                      alternativeText?: string | null
+                      name: string
+                    } | null
+                  } | null
+                }
+              } | null>
+            }
+          | {
               __typename: 'ComponentSectionsProsAndConsSection'
               title?: string | null
               text?: string | null
@@ -10840,6 +11125,38 @@ export type Dev_AllPagesQuery = {
                   } | null
                 } | null
               }
+              links?: Array<{
+                __typename?: 'ComponentBlocksCommonLink'
+                label?: string | null
+                url?: string | null
+                analyticsId?: string | null
+                page?: {
+                  __typename?: 'PageEntityResponse'
+                  data?: {
+                    __typename?: 'PageEntity'
+                    id?: string | null
+                    attributes?: {
+                      __typename?: 'Page'
+                      slug?: string | null
+                      title: string
+                      locale?: string | null
+                    } | null
+                  } | null
+                } | null
+                article?: {
+                  __typename?: 'ArticleEntityResponse'
+                  data?: {
+                    __typename: 'ArticleEntity'
+                    id?: string | null
+                    attributes?: {
+                      __typename?: 'Article'
+                      slug: string
+                      title: string
+                      locale?: string | null
+                    } | null
+                  } | null
+                } | null
+              } | null> | null
             }
           | {
               __typename: 'ComponentSectionsTextWithImageOverlapped'
@@ -10861,6 +11178,38 @@ export type Dev_AllPagesQuery = {
                   } | null
                 } | null
               }
+              links?: Array<{
+                __typename?: 'ComponentBlocksCommonLink'
+                label?: string | null
+                url?: string | null
+                analyticsId?: string | null
+                page?: {
+                  __typename?: 'PageEntityResponse'
+                  data?: {
+                    __typename?: 'PageEntity'
+                    id?: string | null
+                    attributes?: {
+                      __typename?: 'Page'
+                      slug?: string | null
+                      title: string
+                      locale?: string | null
+                    } | null
+                  } | null
+                } | null
+                article?: {
+                  __typename?: 'ArticleEntityResponse'
+                  data?: {
+                    __typename: 'ArticleEntity'
+                    id?: string | null
+                    attributes?: {
+                      __typename?: 'Article'
+                      slug: string
+                      title: string
+                      locale?: string | null
+                    } | null
+                  } | null
+                } | null
+              } | null> | null
             }
           | {
               __typename: 'ComponentSectionsTimeline'
@@ -12103,6 +12452,38 @@ export type TextWithImageSectionFragment = {
       } | null
     } | null
   }
+  links?: Array<{
+    __typename?: 'ComponentBlocksCommonLink'
+    label?: string | null
+    url?: string | null
+    analyticsId?: string | null
+    page?: {
+      __typename?: 'PageEntityResponse'
+      data?: {
+        __typename?: 'PageEntity'
+        id?: string | null
+        attributes?: {
+          __typename?: 'Page'
+          slug?: string | null
+          title: string
+          locale?: string | null
+        } | null
+      } | null
+    } | null
+    article?: {
+      __typename?: 'ArticleEntityResponse'
+      data?: {
+        __typename: 'ArticleEntity'
+        id?: string | null
+        attributes?: {
+          __typename?: 'Article'
+          slug: string
+          title: string
+          locale?: string | null
+        } | null
+      } | null
+    } | null
+  } | null> | null
 }
 
 export type TextWithImageOverlappedSectionFragment = {
@@ -12125,6 +12506,38 @@ export type TextWithImageOverlappedSectionFragment = {
       } | null
     } | null
   }
+  links?: Array<{
+    __typename?: 'ComponentBlocksCommonLink'
+    label?: string | null
+    url?: string | null
+    analyticsId?: string | null
+    page?: {
+      __typename?: 'PageEntityResponse'
+      data?: {
+        __typename?: 'PageEntity'
+        id?: string | null
+        attributes?: {
+          __typename?: 'Page'
+          slug?: string | null
+          title: string
+          locale?: string | null
+        } | null
+      } | null
+    } | null
+    article?: {
+      __typename?: 'ArticleEntityResponse'
+      data?: {
+        __typename: 'ArticleEntity'
+        id?: string | null
+        attributes?: {
+          __typename?: 'Article'
+          slug: string
+          title: string
+          locale?: string | null
+        } | null
+      } | null
+    } | null
+  } | null> | null
 }
 
 export type IframeSectionFragment = {
@@ -12211,8 +12624,8 @@ export type FileItemBlockFragment = {
 
 export type ColumnedTextSectionFragment = {
   __typename?: 'ComponentSectionsColumnedText'
+  title?: string | null
   content?: string | null
-  contentAlignment?: Enum_Componentsectionscolumnedtext_Contentalignment | null
 }
 
 export type ColumnsItemFragment = {
@@ -12925,6 +13338,56 @@ export type TootootEventsSectionFragment = {
   } | null
 }
 
+export type PartnerBlockFragment = {
+  __typename?: 'ComponentBlocksPartner'
+  title: string
+  url?: string | null
+  logo: {
+    __typename?: 'UploadFileEntityResponse'
+    data?: {
+      __typename?: 'UploadFileEntity'
+      id?: string | null
+      attributes?: {
+        __typename?: 'UploadFile'
+        url: string
+        width?: number | null
+        height?: number | null
+        caption?: string | null
+        alternativeText?: string | null
+        name: string
+      } | null
+    } | null
+  }
+}
+
+export type PartnersSectionFragment = {
+  __typename?: 'ComponentSectionsPartners'
+  title?: string | null
+  text?: string | null
+  logoRatio: Enum_Componentsectionspartners_Logoratio
+  partners: Array<{
+    __typename?: 'ComponentBlocksPartner'
+    title: string
+    url?: string | null
+    logo: {
+      __typename?: 'UploadFileEntityResponse'
+      data?: {
+        __typename?: 'UploadFileEntity'
+        id?: string | null
+        attributes?: {
+          __typename?: 'UploadFile'
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
+      } | null
+    }
+  } | null>
+}
+
 type Sections_ComponentSectionsAccordion_Fragment = {
   __typename: 'ComponentSectionsAccordion'
   title?: string | null
@@ -13131,8 +13594,8 @@ type Sections_ComponentSectionsCalculator_Fragment = {
 
 type Sections_ComponentSectionsColumnedText_Fragment = {
   __typename: 'ComponentSectionsColumnedText'
+  title?: string | null
   content?: string | null
-  contentAlignment?: Enum_Componentsectionscolumnedtext_Contentalignment | null
 }
 
 type Sections_ComponentSectionsColumns_Fragment = {
@@ -13402,6 +13865,34 @@ type Sections_ComponentSectionsOrganizationalStructure_Fragment = {
   title?: string | null
 }
 
+type Sections_ComponentSectionsPartners_Fragment = {
+  __typename: 'ComponentSectionsPartners'
+  title?: string | null
+  text?: string | null
+  logoRatio: Enum_Componentsectionspartners_Logoratio
+  partners: Array<{
+    __typename?: 'ComponentBlocksPartner'
+    title: string
+    url?: string | null
+    logo: {
+      __typename?: 'UploadFileEntityResponse'
+      data?: {
+        __typename?: 'UploadFileEntity'
+        id?: string | null
+        attributes?: {
+          __typename?: 'UploadFile'
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
+      } | null
+    }
+  } | null>
+}
+
 type Sections_ComponentSectionsProsAndConsSection_Fragment = {
   __typename: 'ComponentSectionsProsAndConsSection'
   title?: string | null
@@ -13617,6 +14108,38 @@ type Sections_ComponentSectionsTextWithImage_Fragment = {
       } | null
     } | null
   }
+  links?: Array<{
+    __typename?: 'ComponentBlocksCommonLink'
+    label?: string | null
+    url?: string | null
+    analyticsId?: string | null
+    page?: {
+      __typename?: 'PageEntityResponse'
+      data?: {
+        __typename?: 'PageEntity'
+        id?: string | null
+        attributes?: {
+          __typename?: 'Page'
+          slug?: string | null
+          title: string
+          locale?: string | null
+        } | null
+      } | null
+    } | null
+    article?: {
+      __typename?: 'ArticleEntityResponse'
+      data?: {
+        __typename: 'ArticleEntity'
+        id?: string | null
+        attributes?: {
+          __typename?: 'Article'
+          slug: string
+          title: string
+          locale?: string | null
+        } | null
+      } | null
+    } | null
+  } | null> | null
 }
 
 type Sections_ComponentSectionsTextWithImageOverlapped_Fragment = {
@@ -13639,6 +14162,38 @@ type Sections_ComponentSectionsTextWithImageOverlapped_Fragment = {
       } | null
     } | null
   }
+  links?: Array<{
+    __typename?: 'ComponentBlocksCommonLink'
+    label?: string | null
+    url?: string | null
+    analyticsId?: string | null
+    page?: {
+      __typename?: 'PageEntityResponse'
+      data?: {
+        __typename?: 'PageEntity'
+        id?: string | null
+        attributes?: {
+          __typename?: 'Page'
+          slug?: string | null
+          title: string
+          locale?: string | null
+        } | null
+      } | null
+    } | null
+    article?: {
+      __typename?: 'ArticleEntityResponse'
+      data?: {
+        __typename: 'ArticleEntity'
+        id?: string | null
+        attributes?: {
+          __typename?: 'Article'
+          slug: string
+          title: string
+          locale?: string | null
+        } | null
+      } | null
+    } | null
+  } | null> | null
 }
 
 type Sections_ComponentSectionsTimeline_Fragment = {
@@ -13733,6 +14288,7 @@ export type SectionsFragment =
   | Sections_ComponentSectionsNumericalList_Fragment
   | Sections_ComponentSectionsOfficialBoard_Fragment
   | Sections_ComponentSectionsOrganizationalStructure_Fragment
+  | Sections_ComponentSectionsPartners_Fragment
   | Sections_ComponentSectionsProsAndConsSection_Fragment
   | Sections_ComponentSectionsRegulations_Fragment
   | Sections_ComponentSectionsRegulationsList_Fragment
@@ -14463,8 +15019,12 @@ export const TextWithImageSectionFragmentDoc = gql`
       }
     }
     imageAspectRatio
+    links {
+      ...CommonLink
+    }
   }
   ${UploadImageEntityFragmentDoc}
+  ${CommonLinkFragmentDoc}
 `
 export const TextWithImageOverlappedSectionFragmentDoc = gql`
   fragment TextWithImageOverlappedSection on ComponentSectionsTextWithImageOverlapped {
@@ -14475,8 +15035,12 @@ export const TextWithImageOverlappedSectionFragmentDoc = gql`
         ...UploadImageEntity
       }
     }
+    links {
+      ...CommonLink
+    }
   }
   ${UploadImageEntityFragmentDoc}
+  ${CommonLinkFragmentDoc}
 `
 export const IframeSectionFragmentDoc = gql`
   fragment IframeSection on ComponentSectionsIframe {
@@ -14513,8 +15077,8 @@ export const FileListSectionFragmentDoc = gql`
 `
 export const ColumnedTextSectionFragmentDoc = gql`
   fragment ColumnedTextSection on ComponentSectionsColumnedText {
+    title
     content
-    contentAlignment
   }
 `
 export const ColumnsItemFragmentDoc = gql`
@@ -15016,6 +15580,29 @@ export const FaqCategoriesSectionFragmentDoc = gql`
   }
   ${FaqCategoryEntityFragmentDoc}
 `
+export const PartnerBlockFragmentDoc = gql`
+  fragment PartnerBlock on ComponentBlocksPartner {
+    title
+    url
+    logo {
+      data {
+        ...UploadImageEntity
+      }
+    }
+  }
+  ${UploadImageEntityFragmentDoc}
+`
+export const PartnersSectionFragmentDoc = gql`
+  fragment PartnersSection on ComponentSectionsPartners {
+    title
+    text
+    partners(pagination: { limit: -1 }) {
+      ...PartnerBlock
+    }
+    logoRatio
+  }
+  ${PartnerBlockFragmentDoc}
+`
 export const SectionsFragmentDoc = gql`
   fragment Sections on PageSectionsDynamicZone {
     __typename
@@ -15109,6 +15696,9 @@ export const SectionsFragmentDoc = gql`
     ... on ComponentSectionsTootootEvents {
       ...TootootEventsSection
     }
+    ... on ComponentSectionsPartners {
+      ...PartnersSection
+    }
   }
   ${IconTitleDescSectionFragmentDoc}
   ${DividerSectionFragmentDoc}
@@ -15140,6 +15730,7 @@ export const SectionsFragmentDoc = gql`
   ${FaqsSectionFragmentDoc}
   ${FaqCategoriesSectionFragmentDoc}
   ${TootootEventsSectionFragmentDoc}
+  ${PartnersSectionFragmentDoc}
 `
 export const LocalizationFragmentDoc = gql`
   fragment Localization on PageRelationResponseCollection {

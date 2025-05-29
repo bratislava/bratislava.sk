@@ -14,11 +14,11 @@ const Timeline = ({ timelineItems }: TimelineProps) => {
       {timelineItems.map((timelineItem, index) => (
         <VerticalTimelineElement
           key={timelineItem.id}
-          textClassName="shadow-md"
+          textClassName="shadow-sm"
           iconClassName="bg-category-600 flex flex-col justify-center items-center text-white text-h4 font-bold shadow-none!"
           icon={<>{index + 1}</>}
         >
-          <Typography variant="h4" as="h3" className="shadow-sm">
+          <Typography variant="h4" as="h3">
             {timelineItem.title}
           </Typography>
           <Markdown content={timelineItem.content} />

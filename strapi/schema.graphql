@@ -588,6 +588,28 @@ input ComponentBlocksPageLinkInput {
   url: String
 }
 
+type ComponentBlocksPartner {
+  id: ID!
+  logo: UploadFileEntityResponse!
+  title: String!
+  url: String
+}
+
+input ComponentBlocksPartnerFiltersInput {
+  and: [ComponentBlocksPartnerFiltersInput]
+  not: ComponentBlocksPartnerFiltersInput
+  or: [ComponentBlocksPartnerFiltersInput]
+  title: StringFilterInput
+  url: StringFilterInput
+}
+
+input ComponentBlocksPartnerInput {
+  id: ID
+  logo: ID
+  title: String
+  url: String
+}
+
 type ComponentBlocksProsAndConsCard {
   id: ID!
   items(filters: ComponentBlocksComparisonItemFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksComparisonItem]!
@@ -941,22 +963,22 @@ input ComponentSectionsCalculatorInput {
 
 type ComponentSectionsColumnedText {
   content: String
-  contentAlignment: ENUM_COMPONENTSECTIONSCOLUMNEDTEXT_CONTENTALIGNMENT
   id: ID!
+  title: String
 }
 
 input ComponentSectionsColumnedTextFiltersInput {
   and: [ComponentSectionsColumnedTextFiltersInput]
   content: StringFilterInput
-  contentAlignment: StringFilterInput
   not: ComponentSectionsColumnedTextFiltersInput
   or: [ComponentSectionsColumnedTextFiltersInput]
+  title: StringFilterInput
 }
 
 input ComponentSectionsColumnedTextInput {
   content: String
-  contentAlignment: ENUM_COMPONENTSECTIONSCOLUMNEDTEXT_CONTENTALIGNMENT
   id: ID
+  title: String
 }
 
 type ComponentSectionsColumns {
@@ -1459,6 +1481,32 @@ input ComponentSectionsOrganizationalStructureInput {
   title: String
 }
 
+type ComponentSectionsPartners {
+  id: ID!
+  logoRatio: ENUM_COMPONENTSECTIONSPARTNERS_LOGORATIO!
+  partners(filters: ComponentBlocksPartnerFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksPartner]!
+  text: String
+  title: String
+}
+
+input ComponentSectionsPartnersFiltersInput {
+  and: [ComponentSectionsPartnersFiltersInput]
+  logoRatio: StringFilterInput
+  not: ComponentSectionsPartnersFiltersInput
+  or: [ComponentSectionsPartnersFiltersInput]
+  partners: ComponentBlocksPartnerFiltersInput
+  text: StringFilterInput
+  title: StringFilterInput
+}
+
+input ComponentSectionsPartnersInput {
+  id: ID
+  logoRatio: ENUM_COMPONENTSECTIONSPARTNERS_LOGORATIO
+  partners: [ComponentBlocksPartnerInput]
+  text: String
+  title: String
+}
+
 type ComponentSectionsProsAndConsSection {
   cons: ComponentBlocksProsAndConsCard!
   id: ID!
@@ -1568,6 +1616,7 @@ type ComponentSectionsTextWithImage {
   imageAspectRatio: ENUM_COMPONENTSECTIONSTEXTWITHIMAGE_IMAGEASPECTRATIO
   imagePosition: ENUM_COMPONENTSECTIONSTEXTWITHIMAGE_IMAGEPOSITION!
   imageSrc: UploadFileEntityResponse!
+  links(filters: ComponentBlocksCommonLinkFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksCommonLink]
 }
 
 input ComponentSectionsTextWithImageFiltersInput {
@@ -1575,6 +1624,7 @@ input ComponentSectionsTextWithImageFiltersInput {
   content: StringFilterInput
   imageAspectRatio: StringFilterInput
   imagePosition: StringFilterInput
+  links: ComponentBlocksCommonLinkFiltersInput
   not: ComponentSectionsTextWithImageFiltersInput
   or: [ComponentSectionsTextWithImageFiltersInput]
 }
@@ -1585,6 +1635,7 @@ input ComponentSectionsTextWithImageInput {
   imageAspectRatio: ENUM_COMPONENTSECTIONSTEXTWITHIMAGE_IMAGEASPECTRATIO
   imagePosition: ENUM_COMPONENTSECTIONSTEXTWITHIMAGE_IMAGEPOSITION
   imageSrc: ID
+  links: [ComponentBlocksCommonLinkInput]
 }
 
 type ComponentSectionsTextWithImageOverlapped {
@@ -1592,12 +1643,14 @@ type ComponentSectionsTextWithImageOverlapped {
   id: ID!
   image: UploadFileEntityResponse!
   imagePosition: ENUM_COMPONENTSECTIONSTEXTWITHIMAGEOVERLAPPED_IMAGEPOSITION!
+  links(filters: ComponentBlocksCommonLinkFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksCommonLink]
 }
 
 input ComponentSectionsTextWithImageOverlappedFiltersInput {
   and: [ComponentSectionsTextWithImageOverlappedFiltersInput]
   content: StringFilterInput
   imagePosition: StringFilterInput
+  links: ComponentBlocksCommonLinkFiltersInput
   not: ComponentSectionsTextWithImageOverlappedFiltersInput
   or: [ComponentSectionsTextWithImageOverlappedFiltersInput]
 }
@@ -1607,6 +1660,7 @@ input ComponentSectionsTextWithImageOverlappedInput {
   id: ID
   image: ID
   imagePosition: ENUM_COMPONENTSECTIONSTEXTWITHIMAGEOVERLAPPED_IMAGEPOSITION
+  links: [ComponentBlocksCommonLinkInput]
 }
 
 type ComponentSectionsTimeline {
@@ -1890,12 +1944,6 @@ enum ENUM_COMPONENTSECTIONSBANNER_VARIANT {
   white_condensed
 }
 
-enum ENUM_COMPONENTSECTIONSCOLUMNEDTEXT_CONTENTALIGNMENT {
-  center
-  left
-  right
-}
-
 enum ENUM_COMPONENTSECTIONSCOLUMNS_IMAGEVARIANT {
   columnsSection_imageVariant_imageOriginalSize
   columnsSection_imageVariant_withCircleBackground
@@ -1955,6 +2003,11 @@ enum ENUM_COMPONENTSECTIONSNUMERICALLIST_VARIANT {
   basic
   combined
   roadmap
+}
+
+enum ENUM_COMPONENTSECTIONSPARTNERS_LOGORATIO {
+  ratio_4_1
+  ratio_4_3
 }
 
 enum ENUM_COMPONENTSECTIONSPROSANDCONSSECTION_TEXTALIGN {
@@ -2278,7 +2331,7 @@ type GeneralRelationResponseCollection {
   data: [GeneralEntity!]!
 }
 
-union GenericMorph = Alert | Article | BlogPost | ComponentAccordionItemsFlatText | ComponentAccordionItemsInstitution | ComponentAccordionItemsInstitutionNarrow | ComponentBlocksColumnsItem | ComponentBlocksCommonLink | ComponentBlocksComparisonCard | ComponentBlocksComparisonItem | ComponentBlocksContactCard | ComponentBlocksFile | ComponentBlocksFileItem | ComponentBlocksFooterColumn | ComponentBlocksHomepageHighlightsItem | ComponentBlocksIconWithTitleAndDescription | ComponentBlocksInBa | ComponentBlocksNumericalListItem | ComponentBlocksPageLink | ComponentBlocksProsAndConsCard | ComponentBlocksTestimonialItem | ComponentBlocksTimelineItem | ComponentBlocksTopServicesItem | ComponentBlocksVideo | ComponentGeneralHeader | ComponentGeneralHeaderLink | ComponentMenuMenuItem | ComponentMenuMenuLink | ComponentMenuMenuSection | ComponentSectionsAccordion | ComponentSectionsArticles | ComponentSectionsBanner | ComponentSectionsCalculator | ComponentSectionsColumnedText | ComponentSectionsColumns | ComponentSectionsComparisonSection | ComponentSectionsContactsSection | ComponentSectionsDivider | ComponentSectionsFaqCategories | ComponentSectionsFaqs | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsHomepageEvents | ComponentSectionsHomepageHighlights | ComponentSectionsHomepageMayorAndCouncil | ComponentSectionsHomepageTabs | ComponentSectionsIconTitleDesc | ComponentSectionsIframe | ComponentSectionsInbaArticlesList | ComponentSectionsInbaReleases | ComponentSectionsLinks | ComponentSectionsNarrowText | ComponentSectionsNumericalList | ComponentSectionsOfficialBoard | ComponentSectionsOrganizationalStructure | ComponentSectionsProsAndConsSection | ComponentSectionsRegulations | ComponentSectionsRegulationsList | ComponentSectionsSubpageList | ComponentSectionsTestimonials | ComponentSectionsTextWithImage | ComponentSectionsTextWithImageOverlapped | ComponentSectionsTimeline | ComponentSectionsTootootEvents | ComponentSectionsTopServices | ComponentSectionsVideos | ComponentSectionsWaves | ComponentTaxAdministratorsTaxAdministrator | Faq | FaqCategory | Footer | General | Homepage | I18NLocale | InbaArticle | InbaRelease | InbaTag | Menu | Page | PageCategory | Regulation | Tag | TaxAdministratorsList | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
+union GenericMorph = Alert | Article | BlogPost | ComponentAccordionItemsFlatText | ComponentAccordionItemsInstitution | ComponentAccordionItemsInstitutionNarrow | ComponentBlocksColumnsItem | ComponentBlocksCommonLink | ComponentBlocksComparisonCard | ComponentBlocksComparisonItem | ComponentBlocksContactCard | ComponentBlocksFile | ComponentBlocksFileItem | ComponentBlocksFooterColumn | ComponentBlocksHomepageHighlightsItem | ComponentBlocksIconWithTitleAndDescription | ComponentBlocksInBa | ComponentBlocksNumericalListItem | ComponentBlocksPageLink | ComponentBlocksPartner | ComponentBlocksProsAndConsCard | ComponentBlocksTestimonialItem | ComponentBlocksTimelineItem | ComponentBlocksTopServicesItem | ComponentBlocksVideo | ComponentGeneralHeader | ComponentGeneralHeaderLink | ComponentMenuMenuItem | ComponentMenuMenuLink | ComponentMenuMenuSection | ComponentSectionsAccordion | ComponentSectionsArticles | ComponentSectionsBanner | ComponentSectionsCalculator | ComponentSectionsColumnedText | ComponentSectionsColumns | ComponentSectionsComparisonSection | ComponentSectionsContactsSection | ComponentSectionsDivider | ComponentSectionsFaqCategories | ComponentSectionsFaqs | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsHomepageEvents | ComponentSectionsHomepageHighlights | ComponentSectionsHomepageMayorAndCouncil | ComponentSectionsHomepageTabs | ComponentSectionsIconTitleDesc | ComponentSectionsIframe | ComponentSectionsInbaArticlesList | ComponentSectionsInbaReleases | ComponentSectionsLinks | ComponentSectionsNarrowText | ComponentSectionsNumericalList | ComponentSectionsOfficialBoard | ComponentSectionsOrganizationalStructure | ComponentSectionsPartners | ComponentSectionsProsAndConsSection | ComponentSectionsRegulations | ComponentSectionsRegulationsList | ComponentSectionsSubpageList | ComponentSectionsTestimonials | ComponentSectionsTextWithImage | ComponentSectionsTextWithImageOverlapped | ComponentSectionsTimeline | ComponentSectionsTootootEvents | ComponentSectionsTopServices | ComponentSectionsVideos | ComponentSectionsWaves | ComponentTaxAdministratorsTaxAdministrator | Faq | FaqCategory | Footer | General | Homepage | I18NLocale | InbaArticle | InbaRelease | InbaTag | Menu | Page | PageCategory | Regulation | Tag | TaxAdministratorsList | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
 
 type Homepage {
   createdAt: DateTime
@@ -2971,7 +3024,7 @@ type PageRelationResponseCollection {
   data: [PageEntity!]!
 }
 
-union PageSectionsDynamicZone = ComponentSectionsAccordion | ComponentSectionsArticles | ComponentSectionsBanner | ComponentSectionsCalculator | ComponentSectionsColumnedText | ComponentSectionsColumns | ComponentSectionsComparisonSection | ComponentSectionsContactsSection | ComponentSectionsDivider | ComponentSectionsFaqCategories | ComponentSectionsFaqs | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsIconTitleDesc | ComponentSectionsIframe | ComponentSectionsInbaArticlesList | ComponentSectionsInbaReleases | ComponentSectionsLinks | ComponentSectionsNarrowText | ComponentSectionsNumericalList | ComponentSectionsOfficialBoard | ComponentSectionsOrganizationalStructure | ComponentSectionsProsAndConsSection | ComponentSectionsRegulations | ComponentSectionsRegulationsList | ComponentSectionsTestimonials | ComponentSectionsTextWithImage | ComponentSectionsTextWithImageOverlapped | ComponentSectionsTimeline | ComponentSectionsTootootEvents | ComponentSectionsVideos | ComponentSectionsWaves | Error
+union PageSectionsDynamicZone = ComponentSectionsAccordion | ComponentSectionsArticles | ComponentSectionsBanner | ComponentSectionsCalculator | ComponentSectionsColumnedText | ComponentSectionsColumns | ComponentSectionsComparisonSection | ComponentSectionsContactsSection | ComponentSectionsDivider | ComponentSectionsFaqCategories | ComponentSectionsFaqs | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsIconTitleDesc | ComponentSectionsIframe | ComponentSectionsInbaArticlesList | ComponentSectionsInbaReleases | ComponentSectionsLinks | ComponentSectionsNarrowText | ComponentSectionsNumericalList | ComponentSectionsOfficialBoard | ComponentSectionsOrganizationalStructure | ComponentSectionsPartners | ComponentSectionsProsAndConsSection | ComponentSectionsRegulations | ComponentSectionsRegulationsList | ComponentSectionsTestimonials | ComponentSectionsTextWithImage | ComponentSectionsTextWithImageOverlapped | ComponentSectionsTimeline | ComponentSectionsTootootEvents | ComponentSectionsVideos | ComponentSectionsWaves | Error
 
 scalar PageSectionsDynamicZoneInput
 

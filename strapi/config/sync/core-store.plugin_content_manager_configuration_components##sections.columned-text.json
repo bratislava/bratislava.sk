@@ -7,7 +7,7 @@
       "filterable": true,
       "searchable": true,
       "pageSize": 10,
-      "mainField": "id",
+      "mainField": "title",
       "defaultSortBy": "id",
       "defaultSortOrder": "ASC"
     },
@@ -20,10 +20,24 @@
           "sortable": false
         }
       },
+      "title": {
+        "edit": {
+          "label": "Nadpis",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "title",
+          "searchable": true,
+          "sortable": true
+        }
+      },
       "content": {
         "edit": {
-          "label": "content",
-          "description": "",
+          "label": "Text",
+          "description": "Stĺpce oddeľujeme slovom <break>.",
           "placeholder": "",
           "visible": true,
           "editable": true
@@ -33,38 +47,24 @@
           "searchable": false,
           "sortable": false
         }
-      },
-      "contentAlignment": {
-        "edit": {
-          "label": "contentAlignment",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "contentAlignment",
-          "searchable": true,
-          "sortable": true
-        }
       }
     },
     "layouts": {
       "list": [
         "id",
-        "contentAlignment"
+        "title"
       ],
       "edit": [
         [
           {
-            "name": "content",
+            "name": "title",
             "size": 12
           }
         ],
         [
           {
-            "name": "contentAlignment",
-            "size": 6
+            "name": "content",
+            "size": 12
           }
         ]
       ]

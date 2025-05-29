@@ -35,6 +35,12 @@
       ],
       "required": false,
       "default": "ratio 1:1"
+    },
+    "links": {
+      "type": "component",
+      "repeatable": true,
+      "component": "blocks.common-link",
+      "max": 2
     }
   }
 }

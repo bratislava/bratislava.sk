@@ -28,6 +28,12 @@
       ],
       "required": true,
       "default": "right"
+    },
+    "links": {
+      "type": "component",
+      "repeatable": true,
+      "component": "blocks.common-link",
+      "max": 2
     }
   }
 }

@@ -87,11 +87,14 @@ export async function listPages() {
     .filter((page) => {
       const sections =
         page.sections?.filter(
-          (section) => section?.__typename === 'ComponentSectionsTextWithImage',
+          (section) => section?.__typename === 'ComponentSectionsColumnedText',
         ) ?? []
       if (
         sections.some(
-          (section) => section?.__typename === 'ComponentSectionsTextWithImage' && !section.content,
+          (section) =>
+            section?.__typename === 'ComponentSectionsColumnedText' &&
+            section.content &&
+            section.content.split('<break>').length > 2,
         )
       ) {
         return true

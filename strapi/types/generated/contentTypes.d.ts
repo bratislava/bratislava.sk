@@ -1177,6 +1177,7 @@ export interface ApiPagePage extends Schema.CollectionType {
         'sections.numerical-list',
         'sections.official-board',
         'sections.organizational-structure',
+        'sections.partners',
         'sections.pros-and-cons-section',
         'sections.regulations',
         'sections.regulations-list',
