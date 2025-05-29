@@ -33,7 +33,7 @@ const ColumnsSectionItem = ({
         {image?.data?.attributes ? (
           <div
             className={cn('flex shrink-0 items-center justify-center', {
-              'bg-category-200 rounded-full p-6': isCircleBackgroundVariant,
+              'rounded-full bg-category-200 p-6': isCircleBackgroundVariant,
               'w-full': isOriginalSizeVariant,
             })}
           >
