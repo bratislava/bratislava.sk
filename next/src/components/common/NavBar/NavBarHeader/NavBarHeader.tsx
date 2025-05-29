@@ -62,7 +62,12 @@ const NavBarHeader = ({ className }: NavBarProps) => {
             <Divider />
           )}
 
-          <MLink data-cy="search-button" href={t('links.searchLink')} className="-mx-4 p-4">
+          <MLink
+            data-cy="search-button"
+            href={t('links.searchLink')}
+            aria-label={t('SearchBar.search')}
+            className="-mx-4 p-4"
+          >
             <SearchIcon />
           </MLink>
 

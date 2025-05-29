@@ -15,7 +15,7 @@ const Brand = ({ className, url = '#', withTitle }: BrandProps) => {
   return (
     <div className={cn('flex', className)}>
       <MLink className="flex items-center gap-x-3 text-[#F23005]" href={url}>
-        <BALogo className="shrink-0" />
+        <BALogo aria-hidden className="shrink-0" />
         {withTitle && (
           <span className="text-size-p-small">
             <Trans
