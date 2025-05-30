@@ -21,6 +21,7 @@ const mapSection = (
 const Contacts = ({ section }: ContactsProps) => {
   const contacts = [
     ...mapSection(section.addressContacts, ContactCtaCardType.Address),
+    ...mapSection(section.openingHoursContacts, ContactCtaCardType.OpeningHours),
     ...mapSection(section.emailContacts, ContactCtaCardType.Email),
     ...mapSection(section.phoneContacts, ContactCtaCardType.Phone),
     ...mapSection(section.webContacts, ContactCtaCardType.Web),

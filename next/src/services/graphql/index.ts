@@ -1228,6 +1228,7 @@ export type ComponentSectionsContactsSection = {
   emailContacts?: Maybe<Array<Maybe<ComponentBlocksContactCard>>>
   hasBackground?: Maybe<Scalars['Boolean']['output']>
   id: Scalars['ID']['output']
+  openingHoursContacts?: Maybe<Array<Maybe<ComponentBlocksContactCard>>>
   phoneContacts?: Maybe<Array<Maybe<ComponentBlocksContactCard>>>
   title?: Maybe<Scalars['String']['output']>
   type: Enum_Componentsectionscontactssection_Type
@@ -1241,6 +1242,12 @@ export type ComponentSectionsContactsSectionAddressContactsArgs = {
 }
 
 export type ComponentSectionsContactsSectionEmailContactsArgs = {
+  filters?: InputMaybe<ComponentBlocksContactCardFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type ComponentSectionsContactsSectionOpeningHoursContactsArgs = {
   filters?: InputMaybe<ComponentBlocksContactCardFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
@@ -1265,6 +1272,7 @@ export type ComponentSectionsContactsSectionFiltersInput = {
   emailContacts?: InputMaybe<ComponentBlocksContactCardFiltersInput>
   hasBackground?: InputMaybe<BooleanFilterInput>
   not?: InputMaybe<ComponentSectionsContactsSectionFiltersInput>
+  openingHoursContacts?: InputMaybe<ComponentBlocksContactCardFiltersInput>
   or?: InputMaybe<Array<InputMaybe<ComponentSectionsContactsSectionFiltersInput>>>
   phoneContacts?: InputMaybe<ComponentBlocksContactCardFiltersInput>
   title?: InputMaybe<StringFilterInput>
@@ -1278,6 +1286,7 @@ export type ComponentSectionsContactsSectionInput = {
   emailContacts?: InputMaybe<Array<InputMaybe<ComponentBlocksContactCardInput>>>
   hasBackground?: InputMaybe<Scalars['Boolean']['input']>
   id?: InputMaybe<Scalars['ID']['input']>
+  openingHoursContacts?: InputMaybe<Array<InputMaybe<ComponentBlocksContactCardInput>>>
   phoneContacts?: InputMaybe<Array<InputMaybe<ComponentBlocksContactCardInput>>>
   title?: InputMaybe<Scalars['String']['input']>
   type?: InputMaybe<Enum_Componentsectionscontactssection_Type>
@@ -8596,6 +8605,11 @@ export type PageEntityFragment = {
             overrideLabel?: string | null
             value: string
           } | null> | null
+          openingHoursContacts?: Array<{
+            __typename?: 'ComponentBlocksContactCard'
+            overrideLabel?: string | null
+            value: string
+          } | null> | null
           emailContacts?: Array<{
             __typename?: 'ComponentBlocksContactCard'
             overrideLabel?: string | null
@@ -9623,6 +9637,11 @@ export type PageBySlugQuery = {
               hasBackground?: boolean | null
               type: Enum_Componentsectionscontactssection_Type
               addressContacts?: Array<{
+                __typename?: 'ComponentBlocksContactCard'
+                overrideLabel?: string | null
+                value: string
+              } | null> | null
+              openingHoursContacts?: Array<{
                 __typename?: 'ComponentBlocksContactCard'
                 overrideLabel?: string | null
                 value: string
@@ -10694,6 +10713,11 @@ export type Dev_AllPagesQuery = {
               hasBackground?: boolean | null
               type: Enum_Componentsectionscontactssection_Type
               addressContacts?: Array<{
+                __typename?: 'ComponentBlocksContactCard'
+                overrideLabel?: string | null
+                value: string
+              } | null> | null
+              openingHoursContacts?: Array<{
                 __typename?: 'ComponentBlocksContactCard'
                 overrideLabel?: string | null
                 value: string
@@ -13082,6 +13106,11 @@ export type ContactsSectionFragment = {
     overrideLabel?: string | null
     value: string
   } | null> | null
+  openingHoursContacts?: Array<{
+    __typename?: 'ComponentBlocksContactCard'
+    overrideLabel?: string | null
+    value: string
+  } | null> | null
   emailContacts?: Array<{
     __typename?: 'ComponentBlocksContactCard'
     overrideLabel?: string | null
@@ -13654,6 +13683,11 @@ type Sections_ComponentSectionsContactsSection_Fragment = {
   hasBackground?: boolean | null
   type: Enum_Componentsectionscontactssection_Type
   addressContacts?: Array<{
+    __typename?: 'ComponentBlocksContactCard'
+    overrideLabel?: string | null
+    value: string
+  } | null> | null
+  openingHoursContacts?: Array<{
     __typename?: 'ComponentBlocksContactCard'
     overrideLabel?: string | null
     value: string
@@ -15388,6 +15422,9 @@ export const ContactsSectionFragmentDoc = gql`
     description
     hasBackground
     addressContacts {
+      ...ContactCardBlock
+    }
+    openingHoursContacts {
       ...ContactCardBlock
     }
     emailContacts {

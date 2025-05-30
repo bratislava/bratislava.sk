@@ -20,6 +20,11 @@
       "repeatable": true,
       "component": "blocks.contact-card"
     },
+    "openingHoursContacts": {
+      "type": "component",
+      "repeatable": true,
+      "component": "blocks.contact-card"
+    },
     "emailContacts": {
       "type": "component",
       "repeatable": true,
@@ -37,10 +42,7 @@
     },
     "type": {
       "type": "enumeration",
-      "enum": [
-        "horizontal",
-        "vertical"
-      ],
+      "enum": ["horizontal", "vertical"],
       "default": "horizontal",
       "required": true
     }
