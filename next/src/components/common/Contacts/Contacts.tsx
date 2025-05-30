@@ -66,7 +66,7 @@ const Contacts = ({ section }: ContactsProps) => {
                 'md:col-span-2': isHorizontal,
               })}
               contact={contact}
-              hasBackground={section.hasBackground ?? false}
+              hasBackground={false}
             />
           ))}
         </div>

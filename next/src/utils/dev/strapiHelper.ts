@@ -153,7 +153,8 @@ export async function logAllSectionsByType({
   entities.forEach((entity) => {
     const strapiEntityLink = `${process.env.STRAPI_URL}/admin/content-manager/collection-types/api::${entityType}.${entityType}/${entity.id}`
     const strapiEntityLinkProd = `https://bratislava-strapi.bratislava.sk/admin/content-manager/collection-types/api::${entityType}.${entityType}/${entity.id}`
-    const nextEntityLinkProd = `https://bratislava.sk/${entity.attributes?.slug}`
+    // const nextEntityLinkProd = `https://bratislava.sk/${entity.attributes?.slug}`
+    const nextEntityLinkProd = `http://localhost:3000/${entity.attributes?.slug}`
 
     const entityLog: { __typename: SectionName; title: string | null | undefined }[] = []
 
