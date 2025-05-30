@@ -86,14 +86,14 @@ const ContactCtaCard = ({ className, contact, hasBackground }: ContactCtaCardPro
     <div
       className={cn(
         'relative flex flex-col gap-4 rounded-lg p-4 md:flex-row md:items-center lg:p-6',
-        hasBackground ? 'bg-white' : 'bg-category-100',
+        hasBackground ? 'bg-white' : 'bg-gray-100',
         className,
       )}
     >
       <div
         className={cn(
-          'flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-category-100 text-category-700 lg:h-[56px] lg:w-[56px]',
-          hasBackground ? 'bg-category-100' : 'bg-white',
+          'flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gray-100 text-gray-700 lg:h-[56px] lg:w-[56px]',
+          hasBackground ? 'bg-gray-100' : 'bg-white',
         )}
       >
         <Icon className="size-6 lg:size-8" />
