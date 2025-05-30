@@ -18,13 +18,12 @@ export enum ContactCtaCardType {
 type ContactCtaCardProps = {
   className?: string
   contact: { type: ContactCtaCardType } & ContactCardBlockFragment
-  hasBackground?: boolean
 }
 
 /**
  * Figma: https://www.figma.com/file/17wbd0MDQcMW9NbXl6UPs8/DS-ESBS%3A-Component-library?type=design&node-id=8988-24516&t=ZrNmOvM307DSHwAu-0
  */
-const ContactCtaCard = ({ className, contact, hasBackground }: ContactCtaCardProps) => {
+const ContactCtaCard = ({ className, contact }: ContactCtaCardProps) => {
   const { t } = useTranslation()
 
   const label = useMemo(() => {
@@ -83,24 +82,14 @@ const ContactCtaCard = ({ className, contact, hasBackground }: ContactCtaCardPro
   const Icon = data.icon
 
   return (
-    <div
-      className={cn(
-        'relative flex flex-col gap-4 rounded-lg p-4 md:flex-row md:items-center lg:p-6',
-        hasBackground ? 'bg-white' : 'bg-gray-100',
-        className,
-      )}
-    >
-      <div
-        className={cn(
-          'flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gray-100 text-gray-700 lg:h-[56px] lg:w-[56px]',
-          hasBackground ? 'bg-gray-100' : 'bg-white',
-        )}
-      >
+    <div className={cn('relative flex flex-col gap-4 lg:flex-row lg:items-start', className)}>
+      <div className="flex shrink-0 items-center justify-center rounded-full text-gray-700">
         <Icon className="size-6 lg:size-8" />
       </div>
-      <div className="flex flex-col gap-y-1 overflow-hidden break-words">
-        {/* FIXME Typography. Convert to use Typograhpy component. Different font weight than Figma <p> */}
-        <p className="text-h6 font-semibold">{label}</p>
+      <div className="flex flex-col gap-1 overflow-hidden break-words">
+        <Typography variant="h6" as="p" className="font-semibold">
+          {label}
+        </Typography>
         {data.link ? (
           <MLink href={data.link} variant="underlined">
             {data.displayValue}
