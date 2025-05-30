@@ -1,6 +1,6 @@
 import { Typography } from '@bratislava/component-library'
 import React, { useMemo } from 'react'
-import { PhoneIcon } from 'src/assets/icons'
+import { PhoneIcon, ClockIcon } from 'src/assets/icons'
 
 import { AddressIcon, EmailIcon, WebIcon } from '@/src/assets/images'
 import MLink from '@/src/components/common/MLink/MLink'
@@ -9,10 +9,11 @@ import cn from '@/src/utils/cn'
 import { useTranslation } from '@/src/utils/useTranslation'
 
 export enum ContactCtaCardType {
-  Address,
-  Email,
-  Phone,
-  Web,
+  Address = 'Address',
+  OpeningHours = 'OpeningHours',
+  Email = 'Email',
+  Phone = 'Phone',
+  Web = 'Web',
 }
 
 type ContactCtaCardProps = {
@@ -35,6 +36,7 @@ const ContactCtaCard = ({ className, contact }: ContactCtaCardProps) => {
       [ContactCtaCardType.Email]: t('ContactCtaCard.email'),
       [ContactCtaCardType.Phone]: t('ContactCtaCard.phone'),
       [ContactCtaCardType.Address]: t('ContactCtaCard.address'),
+      [ContactCtaCardType.OpeningHours]: t('ContactCtaCard.openingHours'),
       [ContactCtaCardType.Web]: t('ContactCtaCard.web'),
     }[contact.type]
   }, [contact, t])
@@ -72,6 +74,10 @@ const ContactCtaCard = ({ className, contact }: ContactCtaCardProps) => {
       return { icon: AddressIcon, displayValue: contact.value }
     }
 
+    if (contact.type === ContactCtaCardType.OpeningHours) {
+      return { icon: ClockIcon, displayValue: contact.value.replaceAll('**', '') } // TODO remove replacing ** when it's cleaned in Strapi
+    }
+
     return null
   }, [contact])
 
@@ -82,7 +88,7 @@ const ContactCtaCard = ({ className, contact }: ContactCtaCardProps) => {
   const Icon = data.icon
 
   return (
-    <div className={cn('relative flex flex-col gap-4 lg:flex-row lg:items-start', className)}>
+    <div className={cn('relative flex items-start gap-4', className)}>
       <div className="flex shrink-0 items-center justify-center rounded-full text-gray-700">
         <Icon className="size-6 lg:size-8" />
       </div>

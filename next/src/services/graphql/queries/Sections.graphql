@@ -364,6 +364,9 @@ fragment ContactsSection on ComponentSectionsContactsSection {
   addressContacts {
     ...ContactCardBlock
   }
+  openingHoursContacts {
+    ...ContactCardBlock
+  }
   emailContacts {
     ...ContactCardBlock
   }

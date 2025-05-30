@@ -571,6 +571,7 @@ export interface SectionsContactsSection extends Schema.Component {
     description: Attribute.RichText
     emailContacts: Attribute.Component<'blocks.contact-card', true>
     hasBackground: Attribute.Boolean
+    openingHoursContacts: Attribute.Component<'blocks.contact-card', true>
     phoneContacts: Attribute.Component<'blocks.contact-card', true>
     title: Attribute.String
     type: Attribute.Enumeration<['horizontal', 'vertical']> &
