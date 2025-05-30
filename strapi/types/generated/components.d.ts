@@ -113,6 +113,19 @@ export interface BlocksContactCard extends Schema.Component {
   }
 }
 
+export interface BlocksContactPersonCard extends Schema.Component {
+  collectionName: 'components_blocks_contact_person_cards'
+  info: {
+    displayName: 'contact person card'
+  }
+  attributes: {
+    email: Attribute.Email
+    phone: Attribute.String
+    subtext: Attribute.String
+    title: Attribute.String & Attribute.Required
+  }
+}
+
 export interface BlocksFile extends Schema.Component {
   collectionName: 'components_blocks_files'
   info: {
@@ -572,6 +585,7 @@ export interface SectionsContactsSection extends Schema.Component {
     emailContacts: Attribute.Component<'blocks.contact-card', true>
     hasBackground: Attribute.Boolean
     openingHoursContacts: Attribute.Component<'blocks.contact-card', true>
+    personContacts: Attribute.Component<'blocks.contact-person-card', true>
     phoneContacts: Attribute.Component<'blocks.contact-card', true>
     title: Attribute.String
     type: Attribute.Enumeration<['horizontal', 'vertical']> &
@@ -1048,6 +1062,7 @@ declare module '@strapi/types' {
       'blocks.comparison-card': BlocksComparisonCard
       'blocks.comparison-item': BlocksComparisonItem
       'blocks.contact-card': BlocksContactCard
+      'blocks.contact-person-card': BlocksContactPersonCard
       'blocks.file': BlocksFile
       'blocks.file-item': BlocksFileItem
       'blocks.footer-column': BlocksFooterColumn

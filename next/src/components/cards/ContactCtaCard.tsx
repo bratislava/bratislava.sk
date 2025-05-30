@@ -1,11 +1,12 @@
 import { Typography } from '@bratislava/component-library'
 import React, { useMemo } from 'react'
-import { PhoneIcon, ClockIcon } from 'src/assets/icons'
+import { ClockIcon, PhoneIcon, ProfileIcon } from 'src/assets/icons'
 
 import { AddressIcon, EmailIcon, WebIcon } from '@/src/assets/images'
 import MLink from '@/src/components/common/MLink/MLink'
-import { ContactCardBlockFragment } from '@/src/services/graphql'
+import { ContactCardBlockFragment, ContactPersonCardBlockFragment } from '@/src/services/graphql'
 import cn from '@/src/utils/cn'
+import { isDefined } from '@/src/utils/isDefined'
 import { useTranslation } from '@/src/utils/useTranslation'
 
 export enum ContactCtaCardType {
@@ -18,7 +19,9 @@ export enum ContactCtaCardType {
 
 type ContactCtaCardProps = {
   className?: string
-  contact: { type: ContactCtaCardType } & ContactCardBlockFragment
+  contact:
+    | ({ type: 'Person' } & ContactPersonCardBlockFragment)
+    | ({ type: ContactCtaCardType } & ContactCardBlockFragment)
 }
 
 /**
@@ -28,6 +31,10 @@ const ContactCtaCard = ({ className, contact }: ContactCtaCardProps) => {
   const { t } = useTranslation()
 
   const label = useMemo(() => {
+    if (contact.type === 'Person') {
+      return contact.title
+    }
+
     if (contact.overrideLabel) {
       return contact.overrideLabel
     }
@@ -78,6 +85,13 @@ const ContactCtaCard = ({ className, contact }: ContactCtaCardProps) => {
       return { icon: ClockIcon, displayValue: contact.value.replaceAll('**', '') } // TODO remove replacing ** when it's cleaned in Strapi
     }
 
+    if (contact.type === 'Person') {
+      return {
+        icon: ProfileIcon,
+        displayValue: [contact.subtext, contact.email, contact.phone].filter(isDefined).join('\n'), // TODO formatting, links
+      }
+    }
+
     return null
   }, [contact])
 
@@ -88,7 +102,7 @@ const ContactCtaCard = ({ className, contact }: ContactCtaCardProps) => {
   const Icon = data.icon
 
   return (
-    <div className={cn('relative flex items-start gap-4', className)}>
+    <div className={cn('relative flex max-w-180 items-start gap-4', className)}>
       <div className="flex shrink-0 items-center justify-center rounded-full text-gray-700">
         <Icon className="size-6 lg:size-8" />
       </div>

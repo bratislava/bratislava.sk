@@ -40,9 +40,17 @@
       "repeatable": true,
       "component": "blocks.contact-card"
     },
+    "personContacts": {
+      "type": "component",
+      "repeatable": true,
+      "component": "blocks.contact-person-card"
+    },
     "type": {
       "type": "enumeration",
-      "enum": ["horizontal", "vertical"],
+      "enum": [
+        "horizontal",
+        "vertical"
+      ],
       "default": "horizontal",
       "required": true
     }

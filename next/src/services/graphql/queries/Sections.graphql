@@ -352,8 +352,17 @@ fragment BannerSection on ComponentSectionsBanner {
 }
 
 fragment ContactCardBlock on ComponentBlocksContactCard {
+  id
   overrideLabel
   value
+}
+
+fragment ContactPersonCardBlock on ComponentBlocksContactPersonCard {
+  id
+  title
+  subtext
+  email
+  phone
 }
 
 fragment ContactsSection on ComponentSectionsContactsSection {
@@ -375,6 +384,9 @@ fragment ContactsSection on ComponentSectionsContactsSection {
   }
   webContacts {
     ...ContactCardBlock
+  }
+  personContacts {
+    ...ContactPersonCardBlock
   }
   type
 }
