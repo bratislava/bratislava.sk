@@ -42,6 +42,15 @@ const Contacts = ({ section }: ContactsProps) => {
             contact={contact}
           />
         ))}
+        {section.personContacts?.filter(isDefined).map((person) => (
+          <ContactCtaCard
+            key={person.id}
+            contact={{
+              type: 'Person',
+              ...person,
+            }}
+          />
+        ))}
       </div>
     </div>
   )
