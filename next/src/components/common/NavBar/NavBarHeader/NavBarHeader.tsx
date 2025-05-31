@@ -1,4 +1,5 @@
-import SearchIcon from '@/src/assets/images/search-icon.svg'
+import { SearchIcon } from 'src/assets/icons'
+
 import Brand from '@/src/components/common/Brand/Brand'
 import Button from '@/src/components/common/Button/Button'
 import MLink from '@/src/components/common/MLink/MLink'

@@ -1,7 +1,6 @@
 import React from 'react'
+import { ChevronRightIcon, HomeIcon } from 'src/assets/icons'
 
-import BreadcrumbsChevronIcon from '@/src/assets/images/breadcrumbs-chevron.svg'
-import BreadcrumbsHomeIcon from '@/src/assets/images/breadcrumbs-home.svg'
 import type { BreadcrumbsProps } from '@/src/components/common/Breadcrumbs/Breadcrumbs'
 import MLink from '@/src/components/common/MLink/MLink'
 import { useTranslation } from '@/src/utils/useTranslation'
@@ -21,7 +20,7 @@ const DesktopBreadcrumbs = ({ breadcrumbs }: BreadcrumbsProps) => {
           className="shrink-0"
           aria-label={t('Breadcrumbs.homepage')}
         >
-          <BreadcrumbsHomeIcon />
+          <HomeIcon />
         </MLink>
       </li>
       {breadcrumbs.map((breadcrumb, index) => {
@@ -30,7 +29,7 @@ const DesktopBreadcrumbs = ({ breadcrumbs }: BreadcrumbsProps) => {
         return (
           // eslint-disable-next-line react/no-array-index-key
           <li className="flex gap-1 text-size-p-tiny font-medium" key={index}>
-            <BreadcrumbsChevronIcon className="shrink-0" aria-hidden />
+            <ChevronRightIcon className="shrink-0" aria-hidden />
             {breadcrumb.path && !isLast ? (
               <MLink href={breadcrumb.path} variant="underlined">
                 {breadcrumb.title}

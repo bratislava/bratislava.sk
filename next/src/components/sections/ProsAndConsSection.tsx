@@ -1,7 +1,7 @@
 import { Typography } from '@bratislava/component-library'
 import React from 'react'
+import { CheckIcon, CrossIcon } from 'src/assets/icons'
 
-import { CheckIcon, CrossIcon } from '@/src/assets/ui-icons'
 import ComparisonCard from '@/src/components/common/ComparisonCard/ComparisonCard'
 import { ProsAndConsSectionFragment } from '@/src/services/graphql'
 import cn from '@/src/utils/cn'

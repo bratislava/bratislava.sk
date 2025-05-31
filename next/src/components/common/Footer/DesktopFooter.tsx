@@ -1,6 +1,6 @@
 import { Typography } from '@bratislava/component-library'
 
-import EULogo from '@/src/assets/images/EULogo.svg'
+import { EuFlagSvg } from '@/src/assets/images'
 import Brand from '@/src/components/common/Brand/Brand'
 import HorizontalDivider from '@/src/components/common/Divider/HorizontalDivider'
 import {
@@ -36,7 +36,7 @@ const DesktopFooter = () => {
             <div className="flex gap-2">
               <FooterSocialLinks {...attributes} />
             </div>
-            <EULogo />
+            <EuFlagSvg />
           </div>
         </div>
         <HorizontalDivider />

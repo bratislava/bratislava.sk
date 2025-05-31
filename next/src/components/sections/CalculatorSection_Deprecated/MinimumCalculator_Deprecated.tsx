@@ -2,10 +2,10 @@ import { Typography } from '@bratislava/component-library'
 import React, { FormEvent } from 'react'
 import { twMerge } from 'tailwind-merge'
 
-import MinusIcon from '@/src/assets/images/minus.svg'
-import PlusIcon from '@/src/assets/images/plus.svg'
 import Button from '@/src/components/common/Button/Button'
 import Input from '@/src/components/sections/CalculatorSection_Deprecated/Input_Deprecated'
+import MinusIcon from '@/src/components/sections/CalculatorSection_Deprecated/minus.svg'
+import PlusIcon from '@/src/components/sections/CalculatorSection_Deprecated/plus.svg'
 import { useTranslation } from '@/src/utils/useTranslation'
 
 type MinimumCalculatorProps = {

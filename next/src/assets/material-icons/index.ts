@@ -1,0 +1,5 @@
+export { default as AccountBalanceIcon } from './account_balance.svg'
+export { default as AlternateEmailIcon } from './alternate_email.svg'
+export { default as EuroIcon } from './euro.svg'
+export { default as LanguageIcon } from './language.svg'
+export { default as LocationIcon } from './location.svg'

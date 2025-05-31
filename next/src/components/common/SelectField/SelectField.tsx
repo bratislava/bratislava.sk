@@ -13,8 +13,8 @@ import {
   Text,
   ValidationResult,
 } from 'react-aria-components'
+import { CheckInCircleIcon, ChevronDownIcon } from 'src/assets/icons'
 
-import { CheckInCircleIcon, ChevronDownIcon } from '@/src/assets/ui-icons'
 import cn from '@/src/utils/cn'
 
 // This component was copied from Enforcement project and updated to use newer react-aria-components version

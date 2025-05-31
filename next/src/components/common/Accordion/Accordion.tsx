@@ -1,7 +1,7 @@
 import { Typography } from '@bratislava/component-library'
 import { ReactNode } from 'react'
+import { ChevronDownIcon } from 'src/assets/icons'
 
-import { ChevronDownIcon } from '@/src/assets/ui-icons'
 import AnimateHeight from '@/src/components/formatting/AnimateHeight'
 import cn from '@/src/utils/cn'
 
