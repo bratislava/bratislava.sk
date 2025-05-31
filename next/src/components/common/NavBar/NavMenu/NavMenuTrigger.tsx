@@ -1,7 +1,7 @@
 import * as NavigationMenu from '@radix-ui/react-navigation-menu'
 import React, { CSSProperties, forwardRef } from 'react'
 
-import StickyMenuTopper from '@/src/assets/images/sticky-menu-topper.svg'
+import StickyMenuTopper from '@/src/components/common/NavBar/NavMenu/sticky-menu-topper.svg'
 
 type NavMenuTriggerProps = {
   label: string

@@ -24,7 +24,6 @@ import {
   TopServices_TuristomVHlavnomMeste,
   TopServices_UradneHodinyIcon,
 } from '@/src/assets/icons-top-services'
-import EServices48pxIcon from '@/src/assets/images/EServices.svg'
 import Accommodation48pxIcon from '@/src/assets/images/menu-icons/48px/accommodation_48px.svg'
 import Bike48pxIcon from '@/src/assets/images/menu-icons/48px/bike_48px.svg'
 import Calendar48pxIcon from '@/src/assets/images/menu-icons/48px/calendar_48px.svg'
@@ -115,7 +114,6 @@ import Travel64pxStrokeIcon from '@/src/assets/images/menu-icons/64px/travel_64p
 import Tree64pxIcon from '@/src/assets/images/menu-icons/64px/tree_64px.svg'
 import Trolleybus64pxIcon from '@/src/assets/images/menu-icons/64px/trolleybus_64px.svg'
 import Phone48pxIcon from '@/src/assets/images/phone-medium.svg'
-import TouristSign48pxIcon from '@/src/assets/images/Tourist-icon.svg'
 
 export type MenuIcon = string
 
@@ -181,10 +179,7 @@ export const ICON_URL_MAP: IconUrlMap = {
     koncepcia_06: Culture48pxIcon,
     komunity_06: Community48pxIcon,
     // Mobile menu links
-    esluzby: EServices48pxIcon,
     kontakt: Phone48pxIcon,
-    ukraina: SocialService48pxStrokeIcon,
-    som_turista: TouristSign48pxIcon,
     // Top Services
     bratislavske_konto: TopServices_BratislavskeKontoIcon,
     dane_a_poplatky: TopServices_DaneAPoplatkyIcon,

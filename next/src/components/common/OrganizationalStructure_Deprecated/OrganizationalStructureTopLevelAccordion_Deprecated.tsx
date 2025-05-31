@@ -1,7 +1,6 @@
 import { useToggle } from 'usehooks-ts'
 
-import ChevronDown from '@/src/assets/images/chevron-down-thin.svg'
-import ChevronDownSmall from '@/src/assets/images/chevron-down-thin-small.svg'
+import { ChevronDownIcon } from '@/src/assets/ui-icons'
 import { GetGroupMembersRecursiveResult } from '@/src/services/ms-graph/types'
 import cn from '@/src/utils/cn'
 
@@ -26,8 +25,7 @@ const OrganizationalStructureTopLevelAccordion = ({
           {/* FIXME Typography. Convert to use Typography. Issue: Header size for not header element */}
           <div className="text-h3">{group.displayName}</div>
           <div className={cn('ml-auto', { 'rotate-180': isOpen })}>
-            <ChevronDown className="hidden lg:flex" />
-            <ChevronDownSmall className="flex lg:hidden" />
+            <ChevronDownIcon className="size-6 lg:size-8" />
           </div>
         </div>
         <div className="h-1 w-full rounded-xs border border-transparent bg-category-200" />

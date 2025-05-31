@@ -1,7 +1,6 @@
 import React from 'react'
 
-import BreadcrumbsChevronIcon from '@/src/assets/images/breadcrumbs-chevron.svg'
-import { ChevronDownIcon } from '@/src/assets/ui-icons'
+import { ChevronDownIcon, ChevronRightIcon } from '@/src/assets/ui-icons'
 import type { BreadcrumbsProps } from '@/src/components/common/Breadcrumbs/Breadcrumbs'
 import Button from '@/src/components/common/Button/Button'
 import MLink from '@/src/components/common/MLink/MLink'
@@ -29,7 +28,7 @@ const MobileBreadcrumbs = ({ breadcrumbs }: BreadcrumbsProps) => {
             onPress={goBack}
             variant="link"
             className="shrink-0 py-3 pl-4 text-[14px]"
-            startIcon={<BreadcrumbsChevronIcon className="shrink-0 rotate-180" />}
+            startIcon={<ChevronRightIcon className="shrink-0 rotate-180" />}
           >
             {t('Breadcrumbs.back')}
           </Button>
@@ -56,12 +55,12 @@ const MobileBreadcrumbs = ({ breadcrumbs }: BreadcrumbsProps) => {
               <li className="text-size-p-tiny font-medium" key={index}>
                 {breadcrumb.path ? (
                   <MLink href={breadcrumb.path} variant="underlined" className="flex gap-1">
-                    <BreadcrumbsChevronIcon className="shrink-0 rotate-180" />
+                    <ChevronRightIcon className="shrink-0 rotate-180" />
                     {breadcrumb.title}
                   </MLink>
                 ) : (
                   <div className="flex gap-1">
-                    <BreadcrumbsChevronIcon className="shrink-0 rotate-180" />
+                    <ChevronRightIcon className="shrink-0 rotate-180" />
                     {breadcrumb.title}
                   </div>
                 )}
