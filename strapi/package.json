@@ -1,24 +1,22 @@
 {
   "name": "bratislava-strapi",
-  "private": true,
   "version": "1.4.0",
+  "private": true,
   "description": "A Strapi application",
+  "license": "MIT",
+  "author": {
+    "name": "A Strapi developer"
+  },
   "scripts": {
+    "build": "strapi build",
+    "cs": "config-sync",
     "dev": "npm run develop",
     "develop": "cross-env ENV_PATH='./.env.local' strapi develop",
+    "develop:admin": "cross-env ENV_PATH='./.env.local' strapi develop --watch-admin",
+    "postinstall": "patch-package",
     "start": "strapi start",
-    "build": "strapi build",
     "strapi": "strapi",
-    "ts:generate-types": "strapi ts:generate-types",
-    "cs": "config-sync",
-    "postinstall": "patch-package"
-  },
-  "devDependencies": {
-    "@babel/core": "^7.21.0",
-    "@babel/eslint-parser": "^7.19.1",
-    "eslint": "^8.36.0",
-    "eslint-config-prettier": "^8.6.0",
-    "eslint-scope": "^7.1.1"
+    "ts:generate-types": "strapi ts:generate-types"
   },
   "dependencies": {
     "@strapi/plugin-graphql": "4.25.22",
@@ -37,12 +35,12 @@
     "strapi-provider-upload-ts-minio": "^3.1.0",
     "styled-components": "^5.3.11"
   },
-  "author": {
-    "name": "A Strapi developer"
-  },
-  "license": "MIT",
-  "strapi": {
-    "uuid": "61130046-63b5-40a0-a617-713763ba3913"
+  "devDependencies": {
+    "@babel/core": "^7.21.0",
+    "@babel/eslint-parser": "^7.19.1",
+    "eslint": "^8.36.0",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-scope": "^7.1.1"
   },
   "engines": {
     "node": ">=20.19.x",
@@ -51,5 +49,8 @@
   "volta": {
     "node": "20.19.0",
     "npm": "10.8.1"
+  },
+  "strapi": {
+    "uuid": "61130046-63b5-40a0-a617-713763ba3913"
   }
 }

@@ -2,6 +2,34 @@
 
 import { Strapi } from '@strapi/strapi'
 
+type permissionSubject = 'api::page.page' | 'api::article.article'
+
+const conditions = [
+  {
+    displayName: 'Entity adminGroupId includes starz',
+    name: 'entity-admin-group-includes-starz',
+    plugin: 'content-manager',
+    handler: async (user: any) => {
+      const articlesWithStarzAdminGroup = await strapi.entityService.findMany(
+        user.permission.subject as permissionSubject,
+        {
+          fields: ['id'],
+          filters: {
+            adminGroups: {
+              adminGroupId: 'starz',
+            },
+          },
+          populate: ['adminGroups'],
+        }
+      )
+
+      const articleIds = articlesWithStarzAdminGroup?.map((article: any) => article.id) ?? []
+
+      return { id: { $in: articleIds } }
+    },
+  },
+]
+
 export default {
   /**
    * An asynchronous register function that runs before
@@ -44,7 +72,7 @@ export default {
 
   */
 
-  register(/*{ strapi }*/) { },
+  register(/*{ strapi }*/) {},
 
   /**
    * An asynchronous bootstrap function that runs before
@@ -70,11 +98,13 @@ export default {
         url: `${process.env.REVALIDATE_NEXT_URL}/api/revalidate?secret=${process.env.REVALIDATE_SECRET_TOKEN}`,
         events: ['entry.create', 'entry.update', 'entry.publish'],
         headers: {},
-        isEnabled: true
+        isEnabled: true,
       })
       console.log('Revalidate webhook created')
     } else {
       console.log('Revalidate webhook already exists')
     }
-  }
+
+    await strapi.admin.services.permission.conditionProvider.registerMany(conditions)
+  },
 }

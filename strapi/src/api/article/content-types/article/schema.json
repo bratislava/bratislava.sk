@@ -110,6 +110,12 @@
           "localized": false
         }
       }
+    },
+    "adminGroups": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::admin-group.admin-group",
+      "inversedBy": "articles"
     }
   }
 }

@@ -1,0 +1,35 @@
+{
+  "kind": "collectionType",
+  "collectionName": "admin_groups",
+  "info": {
+    "singularName": "admin-group",
+    "pluralName": "admin-groups",
+    "displayName": "Admin skupiny",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "adminGroupId": {
+      "type": "uid",
+      "targetField": "title"
+    },
+    "articles": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::article.article",
+      "mappedBy": "adminGroups"
+    },
+    "pages": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::page.page",
+      "mappedBy": "adminGroups"
+    }
+  }
+}
