@@ -1,8 +1,8 @@
 import { Typography } from '@bratislava/component-library'
 import * as NavigationMenu from '@radix-ui/react-navigation-menu'
 import { forwardRef } from 'react'
+import { ChevronRightIcon } from 'src/assets/icons'
 
-import { ChevronRightIcon } from '@/src/assets/ui-icons'
 import Pictogram from '@/src/components/common/Pictogram/Pictogram'
 
 import { MenuItem } from './navMenuTypes'

@@ -1,7 +1,7 @@
 import { Typography } from '@bratislava/component-library'
 import React from 'react'
+import { ArrowRightIcon } from 'src/assets/icons'
 
-import { ArrowRightIcon } from '@/src/assets/ui-icons'
 import Button from '@/src/components/common/Button/Button'
 import { LinksSectionFragment } from '@/src/services/graphql'
 import cn from '@/src/utils/cn'

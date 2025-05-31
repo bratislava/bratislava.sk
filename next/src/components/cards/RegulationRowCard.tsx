@@ -1,7 +1,7 @@
 import { Typography } from '@bratislava/component-library'
 import React from 'react'
+import { ChevronRightIcon } from 'src/assets/icons'
 
-import { ChevronRightIcon } from '@/src/assets/ui-icons'
 import CardBase from '@/src/components/cards/CardBase'
 import MLink from '@/src/components/common/MLink/MLink'
 import { isDefined } from '@/src/utils/isDefined'

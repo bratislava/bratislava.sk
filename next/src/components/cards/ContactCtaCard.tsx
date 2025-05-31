@@ -1,8 +1,8 @@
 import { Typography } from '@bratislava/component-library'
 import React, { useMemo } from 'react'
+import { PhoneIcon } from 'src/assets/icons'
 
 import { AddressIcon, EmailIcon, WebIcon } from '@/src/assets/images'
-import { PhoneIcon } from '@/src/assets/ui-icons'
 import MLink from '@/src/components/common/MLink/MLink'
 import { ContactCardBlockFragment } from '@/src/services/graphql'
 import cn from '@/src/utils/cn'

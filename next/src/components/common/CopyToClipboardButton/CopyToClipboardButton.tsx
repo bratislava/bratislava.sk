@@ -1,6 +1,6 @@
+import { CopyIcon } from 'src/assets/icons'
 import { useCopyToClipboard } from 'usehooks-ts'
 
-import { CopyIcon } from '@/src/assets/ui-icons'
 import Button from '@/src/components/common/Button/Button'
 import { useTranslation } from '@/src/utils/useTranslation'
 

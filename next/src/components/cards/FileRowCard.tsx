@@ -1,6 +1,6 @@
 import React from 'react'
+import { AttachmentIcon, DownloadIcon } from 'src/assets/icons'
 
-import { AttachmentIcon, DownloadIcon } from '@/src/assets/ui-icons'
 import MLink from '@/src/components/common/MLink/MLink'
 import cn from '@/src/utils/cn'
 import { isDefined } from '@/src/utils/isDefined'

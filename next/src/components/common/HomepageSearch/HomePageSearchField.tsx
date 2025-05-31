@@ -5,8 +5,8 @@ import {
   KeyboardEvent,
   SetStateAction,
 } from 'react'
+import { SearchIcon } from 'src/assets/icons'
 
-import { SearchIcon } from '@/src/assets/ui-icons'
 import Button from '@/src/components/common/Button/Button'
 
 type HomePageSearchFieldProps = {

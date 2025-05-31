@@ -1,8 +1,8 @@
 import { Typography } from '@bratislava/component-library'
 import Image from 'next/image'
 import React from 'react'
+import { InfoIcon } from 'src/assets/icons'
 
-import { InfoIcon } from '@/src/assets/ui-icons'
 import ComparisonCard from '@/src/components/common/ComparisonCard/ComparisonCard'
 import { ComparisonSectionFragment } from '@/src/services/graphql'
 import cn from '@/src/utils/cn'

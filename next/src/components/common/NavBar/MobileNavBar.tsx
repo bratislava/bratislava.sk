@@ -1,8 +1,8 @@
 import FocusTrap from 'focus-trap-react'
 import { usePathname } from 'next/navigation'
 import React, { useEffect } from 'react'
+import { CrossIcon, HamburgerIcon, SearchIcon } from 'src/assets/icons'
 
-import { CrossIcon, HamburgerIcon, SearchIcon } from '@/src/assets/ui-icons'
 import Brand from '@/src/components/common/Brand/Brand'
 import Button from '@/src/components/common/Button/Button'
 import MLink from '@/src/components/common/MLink/MLink'

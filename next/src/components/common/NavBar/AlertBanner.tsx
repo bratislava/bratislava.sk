@@ -1,8 +1,8 @@
 import { useQuery } from '@tanstack/react-query'
 import React, { forwardRef, useEffect, useState } from 'react'
+import { AlertIcon, CrossIcon } from 'src/assets/icons'
 import { useLocalStorage } from 'usehooks-ts'
 
-import { AlertIcon, CrossIcon } from '@/src/assets/ui-icons'
 import Button from '@/src/components/common/Button/Button'
 import SectionContainer from '@/src/components/common/SectionContainer/SectionContainer'
 import Markdown from '@/src/components/formatting/Markdown/Markdown'
