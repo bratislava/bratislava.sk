@@ -1,8 +1,4 @@
 export { default as AddressIcon } from './adresa.svg'
 export { default as BrandSVG } from './brand.svg'
 export { default as EmailIcon } from './e-mail.svg'
-export { default as FacebookIcon } from './facebook.svg'
-export { default as InstagramIcon } from './instagram.svg'
-export { default as LinkedinIcon } from './linkedin.svg'
-export { default as TwitterIcon } from './twitter.svg'
 export { default as WebIcon } from './web.svg'

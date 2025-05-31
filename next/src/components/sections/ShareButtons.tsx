@@ -1,7 +1,12 @@
 import { Typography } from '@bratislava/component-library'
 import React, { PropsWithChildren } from 'react'
 
-import { FacebookIcon, InstagramIcon, LinkedinIcon, TwitterIcon } from '@/src/assets/images'
+import {
+  FacebookIcon,
+  InstagramIcon,
+  LinkedinIcon,
+  TwitterIcon,
+} from '@/src/assets/icons-social-media'
 import Button from '@/src/components/common/Button/Button'
 import { useTranslation } from '@/src/utils/useTranslation'
 
