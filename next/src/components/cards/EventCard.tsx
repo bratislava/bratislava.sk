@@ -1,6 +1,6 @@
 import { Typography } from '@bratislava/component-library'
 import Image from 'next/image'
-import React from 'react'
+import React, { HTMLAttributes } from 'react'
 
 import CardBase from '@/src/components/cards/CardBase'
 import CardContent from '@/src/components/cards/CardContent'
@@ -19,7 +19,7 @@ type EventCardProps = {
   imageSrc: string
   imageSizes?: string
   className?: string
-}
+} & HTMLAttributes<HTMLElement>
 
 /**
  * Figma: https://www.figma.com/file/17wbd0MDQcMW9NbXl6UPs8/DS-ESBS%3A-Component-library?node-id=487-938&t=7RMKJATYwi0EYY9K-0

@@ -60,6 +60,7 @@ const TootootEventsSection = ({ section }: Props) => {
 
                 return (
                   <EventCard
+                    lang="sk" // Specify language for screen readers because we fetch only SK events also on EN page
                     key={url}
                     title={eventTitle}
                     linkHref={url}
