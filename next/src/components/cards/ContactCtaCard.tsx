@@ -1,8 +1,14 @@
 import { Typography } from '@bratislava/component-library'
 import React, { useMemo } from 'react'
-import { ClockIcon, PhoneIcon, ProfileIcon } from 'src/assets/icons'
 
-import { AddressIcon, EmailIcon, WebIcon } from '@/src/assets/images'
+import {
+  AddressIcon,
+  EmailIcon,
+  OpeningHoursIcon,
+  PersonIcon,
+  PhoneIcon,
+  WebIcon,
+} from '@/src/assets/icons-contacts'
 import MLink from '@/src/components/common/MLink/MLink'
 import { ContactCardBlockFragment, ContactPersonCardBlockFragment } from '@/src/services/graphql'
 import cn from '@/src/utils/cn'
@@ -82,12 +88,12 @@ const ContactCtaCard = ({ className, contact }: ContactCtaCardProps) => {
     }
 
     if (contact.type === ContactCtaCardType.OpeningHours) {
-      return { icon: ClockIcon, displayValue: contact.value.replaceAll('**', '') } // TODO remove replacing ** when it's cleaned in Strapi
+      return { icon: OpeningHoursIcon, displayValue: contact.value.replaceAll('**', '') } // TODO remove replacing ** when it's cleaned in Strapi
     }
 
     if (contact.type === 'Person') {
       return {
-        icon: ProfileIcon,
+        icon: PersonIcon,
         displayValue: [contact.subtext, contact.email, contact.phone].filter(isDefined).join('\n'), // TODO formatting, links
       }
     }
