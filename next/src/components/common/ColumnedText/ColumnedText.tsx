@@ -9,6 +9,7 @@ export type ColumnedTextProps = {
 }
 
 const ColumnedText = ({ title, content }: ColumnedTextProps) => {
+  // eslint-disable-next-line xss/no-mixed-html
   const breakWord = '<break>'
   const columns = content.split(breakWord)
 

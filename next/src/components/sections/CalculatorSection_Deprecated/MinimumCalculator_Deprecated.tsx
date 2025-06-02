@@ -1,3 +1,4 @@
+/* eslint-disable sonarjs/no-duplicate-string */
 import { Typography } from '@bratislava/component-library'
 import React, { FormEvent } from 'react'
 import { twMerge } from 'tailwind-merge'

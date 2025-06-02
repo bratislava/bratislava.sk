@@ -41,7 +41,7 @@ const TootootEventsSection = ({ section }: Props) => {
         {isPending ? (
           <Spinner />
         ) : isError ? (
-          <div>Error: {error.message}</div>
+          <div>{error.message}</div>
         ) : (
           <ResponsiveCarousel
             shiftVariant="byPage"

@@ -38,6 +38,7 @@ import { SectionsFragment } from '@/src/services/graphql'
 import cn from '@/src/utils/cn'
 
 const SectionContent = ({ section }: { section: SectionsFragment }) => {
+  // eslint-disable-next-line sonarjs/max-switch-cases
   switch (section.__typename) {
     case 'ComponentSectionsNarrowText':
       return <NarrowTextSection section={section} />

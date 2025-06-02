@@ -31,12 +31,7 @@ const OfficialBoardAdditionalFilters = ({
   const { t } = useTranslation()
 
   // TODO handle loading and error
-  const {
-    data: officialBoardCategories,
-    isLoading,
-    isError,
-    error,
-  } = useQuery({
+  const { data: officialBoardCategories } = useQuery({
     queryKey: getOfficialBoardCategoriesQueryKey(),
     queryFn: () => officialBoardCategoriesFetcher(),
     select: (res) => res.data,
@@ -91,6 +86,7 @@ const OfficialBoardAdditionalFilters = ({
 
           return (
             <SelectItem
+              key={item.id}
               id={item.id}
               textValue={item.title}
               label={`${item.title}${
