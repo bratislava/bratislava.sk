@@ -1,4 +1,3 @@
-/* eslint-disable sonarjs/no-duplicate-string */
 import NextLink from 'next/link'
 import { ComponentProps, forwardRef, PropsWithChildren, ReactNode, RefObject } from 'react'
 import { AriaButtonProps } from 'react-aria'

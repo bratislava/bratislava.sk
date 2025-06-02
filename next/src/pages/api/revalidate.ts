@@ -1,4 +1,4 @@
-/* eslint-disable no-console,sonarjs/no-duplicate-string */
+/* eslint-disable no-console */
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 type Response = { revalidated: boolean } | { message: string } | string

@@ -42,6 +42,7 @@ module.exports = {
     'pii/no-phone-number': 'off',
     'pii/no-email': 'off',
     'const-case/uppercase': 'off',
+    'sonarjs/no-duplicate-string': 'off',
 
     // TODO revisit
     'import/extensions': 'off',

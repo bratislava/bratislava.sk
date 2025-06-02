@@ -1,4 +1,4 @@
-/* eslint-disable no-console,sonarjs/no-duplicate-string */
+/* eslint-disable no-console */
 
 import ColumnsSection from '@/src/components/sections/ColumnsSection'
 import {
