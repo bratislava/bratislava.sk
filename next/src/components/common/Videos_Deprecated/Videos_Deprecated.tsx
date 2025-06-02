@@ -53,7 +53,7 @@ const Video = ({
         onLoad={() => setLoaded(true)}
       />
       <MLink href={url ?? '#'} variant="underlineOnHover" target="_blank" rel="noreferrer">
-        <Typography variant="h5" className="mt-8 cursor-pointer hover:underline">
+        <Typography variant="h5" as="h3" className="mt-8 cursor-pointer hover:underline">
           {title}
         </Typography>
       </MLink>
