@@ -64,6 +64,7 @@ export const useQueryBySearchOption = ({
 }: {
   optionKey: SearchOption['id']
   filters: SearchFilters
+  // eslint-disable-next-line sonarjs/cognitive-complexity
 }) => {
   const { t } = useTranslation()
   const locale = useLocale()
@@ -168,6 +169,7 @@ export const useQueryBySearchOption = ({
 
           const effectivityMessage = `${effectivityStatus} (${
             isCancelled ? '' : `${t('Regulation.validity.since')} `
+            // eslint-disable-next-line sonarjs/no-nested-template-literals
           }${effectiveFrom}${isCancelled ? ` – ${effectiveUntil}` : ''})`
 
           return {

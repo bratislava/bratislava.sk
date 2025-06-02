@@ -17,7 +17,10 @@ const AlertBanner = forwardRef<HTMLDivElement>((props, forwardedRef) => {
 
   const storageKey = `bratislava-sk-dismissible-alert-timestamp`
 
-  const { data } = useQuery({ queryKey: ['AlertBanner'], queryFn: () => client.Alert({ locale }) })
+  const { data } = useQuery({
+    queryKey: ['AlertBanner', locale],
+    queryFn: () => client.Alert({ locale }),
+  })
   const { alert } = data ?? {}
   const { text, updatedAt } = alert?.data?.attributes ?? {}
 

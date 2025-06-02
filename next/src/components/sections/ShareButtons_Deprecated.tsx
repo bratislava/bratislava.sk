@@ -19,6 +19,7 @@ type SocialMediaButtonProps = {
   platform: 'Facebook' | 'LinkedIn' | 'Instagram' | 'Twitter'
 }
 
+// TODO rewrite
 const SocialMediaButton = ({
   getLink,
   platform,
@@ -27,7 +28,10 @@ const SocialMediaButton = ({
   const openSharePage = () => {
     const w = 600
     const h = 400
+
+    // eslint-disable-next-line no-restricted-globals
     const l = screen.width / 2 - w / 2
+    // eslint-disable-next-line no-restricted-globals
     const t = screen.height / 2 - h / 2
 
     window.open(
@@ -40,7 +44,7 @@ const SocialMediaButton = ({
   return <Button icon={children} aria-label={platform} onPress={openSharePage} />
 }
 
-const ShareButtons = ({ twitterTitle }: Props) => {
+const ShareButtons_Deprecated = ({ twitterTitle }: Props) => {
   const { t } = useTranslation()
 
   const twitterTextQuery = twitterTitle ? `&text=${twitterTitle}` : ''
@@ -87,4 +91,4 @@ const ShareButtons = ({ twitterTitle }: Props) => {
   )
 }
 
-export default ShareButtons
+export default ShareButtons_Deprecated

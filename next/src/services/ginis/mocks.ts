@@ -1,5 +1,3 @@
-/* eslint-disable sonarjs/no-duplicate-string */
-
 // Because the GINIS backend is accessible only from internal Bratislava network,
 // if you need placeholder data, you can use the following mocks:
 

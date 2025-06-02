@@ -148,6 +148,7 @@
   "SkipToContentButton.skipNavigation": "Preskočiť navigáciu",
   "slider.aria.controlButtons": "Ovládacie tlačidlá",
   "slider.aria.goToSlide": "Ísť na slide {{number}}",
+  "TabPanelOfficialBoard.errorNoData": "Nepodarilo sa načítať dáta z úradnej tabule.",
   "Tag.aria.removeTag": "Odstrániť tag {{tag}}",
   "TopServices.learnMore": "Zistiť viac",
   "useLocalizations.longName.en": "English",

@@ -26,7 +26,7 @@ const OrganizationalStructure = ({ title }: OrganizationalStructureProps) => {
   }
 
   if (isError) {
-    return <div className="whitespace-pre">Error: {JSON.stringify(error, null, 2)}</div>
+    return <div className="whitespace-pre">{JSON.stringify(error, null, 2)}</div>
   }
 
   return (

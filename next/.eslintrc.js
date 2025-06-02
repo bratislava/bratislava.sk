@@ -40,7 +40,9 @@ module.exports = {
     // https://github.com/jsx-eslint/eslint-plugin-react/issues/2584#issuecomment-1191175244
     'react/jsx-no-useless-fragment': [2, { allowExpressions: true }],
     'pii/no-phone-number': 'off',
+    'pii/no-email': 'off',
     'const-case/uppercase': 'off',
+    'sonarjs/no-duplicate-string': 'off',
 
     // TODO revisit
     'import/extensions': 'off',

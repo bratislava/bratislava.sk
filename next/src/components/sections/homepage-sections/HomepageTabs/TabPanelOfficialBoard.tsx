@@ -1,5 +1,6 @@
 import { Typography } from '@bratislava/component-library'
 import { useQuery } from '@tanstack/react-query'
+import { useTranslation } from 'next-i18next'
 import { Fragment } from 'react'
 import { TabPanel } from 'react-aria-components'
 
@@ -20,6 +21,8 @@ import { formatDate } from '@/src/utils/formatDate'
 import { getLinkProps } from '@/src/utils/getLinkProps'
 
 const TabPanelOfficialBoard = () => {
+  const { t } = useTranslation()
+
   const { homepage } = useHomepageContext()
   const { tabs } = homepage?.attributes ?? {}
 
@@ -69,11 +72,8 @@ const TabPanelOfficialBoard = () => {
               <LoadingSpinner />
             </li>
           ) : isError ? (
-            // TODO translation
             <li>
-              <Typography variant="p-default">
-                Nepodarilo sa načítať dáta z úradnej tabule.
-              </Typography>
+              <Typography variant="p-default">{t('TabPanelOfficialBoard.errorNoData')}</Typography>
             </li>
           ) : (
             documents.map((document, index) => (

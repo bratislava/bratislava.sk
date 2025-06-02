@@ -13,6 +13,7 @@ type HomePageSearchResultsProps = {
   isLoading: boolean
 }
 
+// eslint-disable-next-line sonarjs/cognitive-complexity
 const HomePageSearchResults = ({ searchValue, data, isLoading }: HomePageSearchResultsProps) => {
   const { t } = useTranslation()
   const inputRef = useRef<(HTMLAnchorElement | null)[]>([])
