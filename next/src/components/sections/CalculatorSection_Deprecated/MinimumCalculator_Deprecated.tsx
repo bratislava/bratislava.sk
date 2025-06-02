@@ -24,9 +24,9 @@ const calculateLivingSituation = (
   income: number,
 ): [number, boolean] => {
   const minimumWage = singleAdultValue + (adults - 1) * anotherAdultValue + children * childValue
-  const canAccomodate = income >= minimumWage
+  const canAccommodate = income >= minimumWage
 
-  return [minimumWage, canAccomodate]
+  return [minimumWage, canAccommodate]
 }
 
 type InputFieldProps = {
@@ -98,7 +98,7 @@ const MinimumCalculator_Deprecated = ({
 
   const [submitted, setSubmitted] = React.useState(false)
 
-  const [livingWage, canAcommodate] = calculateLivingSituation(
+  const [livingWage, canAccommodate] = calculateLivingSituation(
     singleAdultValue,
     anotherAdultValue,
     childValue,
@@ -112,7 +112,9 @@ const MinimumCalculator_Deprecated = ({
   }
 
   return (
-    <div className={twMerge('bg-category-200 text-center text-font', className)}>
+    <div
+      className={twMerge('rounded-xl bg-category-200 p-4 text-center text-font lg:p-8', className)}
+    >
       <Typography variant="h3" as="h2">
         {t('MinimumCalculator.title')}
       </Typography>
@@ -177,10 +179,10 @@ const MinimumCalculator_Deprecated = ({
         <div className="mt-14">
           {/* FIXME Typography. Convert to use Typography. Issue: Figma <p> different font size */}
           <p className="text-h4">
-            {canAcommodate ? t('MinimumCalculator.answerYes') : t('MinimumCalculator.answerNo')}
+            {canAccommodate ? t('MinimumCalculator.answerYes') : t('MinimumCalculator.answerNo')}
           </p>
           <Typography variant="p-large" className="m-auto mt-5 w-9/12 text-size-p-large">
-            {canAcommodate
+            {canAccommodate
               ? t('MinimumCalculator.answerDescriptionYes')
               : t('MinimumCalculator.answerDescriptionNo').replace(
                   'XY',
