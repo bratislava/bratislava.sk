@@ -92,18 +92,18 @@
         ],
         [
           {
-            "name": "subtext",
-            "size": 12
-          }
-        ],
-        [
-          {
             "name": "email",
             "size": 6
           },
           {
             "name": "phone",
             "size": 6
+          }
+        ],
+        [
+          {
+            "name": "subtext",
+            "size": 12
           }
         ]
       ]
