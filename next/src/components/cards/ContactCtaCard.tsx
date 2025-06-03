@@ -12,7 +12,6 @@ import {
 import MLink from '@/src/components/common/MLink/MLink'
 import { ContactCardBlockFragment, ContactPersonCardBlockFragment } from '@/src/services/graphql'
 import cn from '@/src/utils/cn'
-import { isDefined } from '@/src/utils/isDefined'
 import { useTranslation } from '@/src/utils/useTranslation'
 
 export enum ContactCtaCardType {
@@ -88,13 +87,31 @@ const ContactCtaCard = ({ className, contact }: ContactCtaCardProps) => {
     }
 
     if (contact.type === ContactCtaCardType.OpeningHours) {
-      return { icon: OpeningHoursIcon, displayValue: contact.value.replaceAll('**', '') } // TODO remove replacing ** when it's cleaned in Strapi
+      return { icon: OpeningHoursIcon, displayValue: contact.value }
     }
 
     if (contact.type === 'Person') {
       return {
         icon: PersonIcon,
-        displayValue: [contact.subtext, contact.email, contact.phone].filter(isDefined).join('\n'), // TODO formatting, links
+        displayComponent: (
+          <div className="flex flex-col gap-1">
+            {contact.email ? (
+              <MLink href={`mailto:${contact.email}`} variant="underlined">
+                {contact.email}
+              </MLink>
+            ) : null}
+            {contact.phone ? (
+              <MLink href={`tel:${contact.phone?.replaceAll(/\s+/g, '')}`} variant="underlined">
+                {contact.phone}
+              </MLink>
+            ) : null}
+            {contact.subtext ? (
+              <Typography variant="p-small" className="whitespace-pre-wrap">
+                {contact.subtext}
+              </Typography>
+            ) : null}
+          </div>
+        ),
       }
     }
 
@@ -112,19 +129,20 @@ const ContactCtaCard = ({ className, contact }: ContactCtaCardProps) => {
       <div className="flex shrink-0 items-center justify-center rounded-full text-gray-700">
         <Icon className="size-6 lg:size-8" />
       </div>
-      <div className="flex flex-col gap-1 overflow-hidden break-all">
+      <div className="flex flex-col gap-1 overflow-hidden wrap-break-word">
         <Typography variant="h6" as="p" className="font-semibold">
           {label}
         </Typography>
-        {data.link ? (
-          <MLink href={data.link} variant="underlined">
-            {data.displayValue}
-          </MLink>
-        ) : (
-          <Typography variant="p-small" className="whitespace-pre-wrap">
-            {data.displayValue}
-          </Typography>
-        )}
+        {data.displayComponent ||
+          (data.link ? (
+            <MLink href={data.link} variant="underlined">
+              {data.displayValue}
+            </MLink>
+          ) : (
+            <Typography variant="p-small" className="whitespace-pre-wrap">
+              {data.displayValue}
+            </Typography>
+          ))}
       </div>
     </div>
   )
