@@ -22,8 +22,8 @@
       },
       "overrideLabel": {
         "edit": {
-          "label": "overrideLabel",
-          "description": "",
+          "label": "Nadpis kontaktu (ak treba špecifikovať)",
+          "description": "Toto políčko prosím vypĺňajte iba ak je potrebné použiť špecifický nadpis kontaktu. Ak je toto políčko prázdne, použije sa štandardný nadpis kontaktu (Adresa, Telefón, Email...)",
           "placeholder": "",
           "visible": true,
           "editable": true
@@ -36,7 +36,7 @@
       },
       "value": {
         "edit": {
-          "label": "value",
+          "label": "Text kontaktu",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -59,11 +59,13 @@
         [
           {
             "name": "overrideLabel",
-            "size": 6
-          },
+            "size": 12
+          }
+        ],
+        [
           {
             "name": "value",
-            "size": 6
+            "size": 12
           }
         ]
       ]

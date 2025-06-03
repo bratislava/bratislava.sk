@@ -25,7 +25,6 @@ import {
   TopServices_UradneHodinyIcon,
 } from 'src/assets/pictograms-top-services'
 
-import Phone48pxIcon from '@/src/assets/images/phone-medium.svg'
 import Accommodation48pxIcon from '@/src/assets/pictograms-menu/48px/accommodation_48px.svg'
 import Bike48pxIcon from '@/src/assets/pictograms-menu/48px/bike_48px.svg'
 import Calendar48pxIcon from '@/src/assets/pictograms-menu/48px/calendar_48px.svg'
@@ -54,6 +53,7 @@ import Map48pxIcon from '@/src/assets/pictograms-menu/48px/map_48px.svg'
 import Medal48pxIcon from '@/src/assets/pictograms-menu/48px/medal_48px.svg'
 import Panteon48pxIcon from '@/src/assets/pictograms-menu/48px/panteon_48px.svg'
 import Parking48pxIcon from '@/src/assets/pictograms-menu/48px/parking_48px.svg'
+import Phone48pxIcon from '@/src/assets/pictograms-menu/48px/phone_48px.svg'
 import PlantInHand48pxIcon from '@/src/assets/pictograms-menu/48px/plantInHand_48px.svg'
 import ReceivingGrant48pxIcon from '@/src/assets/pictograms-menu/48px/receivingGrant_48px.svg'
 import Road48pxIcon from '@/src/assets/pictograms-menu/48px/road_48px.svg'

@@ -33,7 +33,6 @@ import TextWithImageSection from '@/src/components/sections/TextWithImageSection
 import TimelineSection from '@/src/components/sections/TimelineSection'
 import TootootEventsSection from '@/src/components/sections/TootootEventsSection'
 import VideosSection from '@/src/components/sections/VideosSection'
-import WavesSection from '@/src/components/sections/WavesSection'
 import { SectionsFragment } from '@/src/services/graphql'
 import cn from '@/src/utils/cn'
 
@@ -141,20 +140,22 @@ const SectionContent = ({ section }: { section: SectionsFragment }) => {
 const Section = ({ section }: { section: SectionsFragment | null }) => {
   if (!section) return null
 
-  if (section.__typename === 'ComponentSectionsWaves') return <WavesSection section={section} />
+  if (section.__typename === 'ComponentSectionsWaves') {
+    return null
+    // return <WavesSection section={section} />
+  }
 
   if (section.__typename === 'ComponentSectionsNumericalList') {
     return <NumericalListSection section={section} />
   }
 
-  const hasBackground = ('hasBackground' in section && section.hasBackground) ?? false
+  const hasBackground = false // ('hasBackground' in section && section.hasBackground) ?? false
 
   return (
     <SectionContainer
       className={cn('pt-10 md:pt-18', {
         'bg-category-200 pb-14 md:pb-18': hasBackground,
       })}
-      hasBackground={hasBackground}
     >
       <SectionContent section={section} />
     </SectionContainer>

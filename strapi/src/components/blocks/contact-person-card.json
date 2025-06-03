@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_blocks_contact_person_cards",
+  "info": {
+    "displayName": "contact person card"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "subtext": {
+      "type": "string"
+    },
+    "email": {
+      "type": "email"
+    },
+    "phone": {
+      "type": "string"
+    }
+  }
+}
