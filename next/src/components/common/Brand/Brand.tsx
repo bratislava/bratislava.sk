@@ -1,4 +1,4 @@
-import { Trans } from 'next-i18next'
+import { Trans, useTranslation } from 'next-i18next'
 import React from 'react'
 
 import { BratislavaLogoSvg } from '@/src/assets/images'
@@ -11,12 +11,18 @@ export type BrandProps = {
   withTitle?: boolean
 }
 
-const Brand = ({ className, url = '#', withTitle }: BrandProps) => {
+const Brand = ({ className, url = '/', withTitle }: BrandProps) => {
+  const { t } = useTranslation()
+
   return (
     <div className={cn('flex', className)}>
-      <MLink className="flex items-center gap-x-3 text-[#F23005]" href={url}>
-        <BratislavaLogoSvg className="shrink-0" />
-        {withTitle && (
+      <MLink
+        className="flex items-center gap-x-3 text-[#F23005] hover:opacity-80"
+        href={url}
+        aria-label={t('Brand.ariaLabel')}
+      >
+        <BratislavaLogoSvg aria-hidden className="shrink-0" />
+        {withTitle ? (
           <span className="text-size-p-small">
             <Trans
               i18nKey="Brand.capitalCity"
@@ -25,7 +31,7 @@ const Brand = ({ className, url = '#', withTitle }: BrandProps) => {
               }}
             />
           </span>
-        )}
+        ) : null}
       </MLink>
     </div>
   )

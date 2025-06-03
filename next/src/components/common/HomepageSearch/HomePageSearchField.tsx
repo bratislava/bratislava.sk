@@ -50,6 +50,7 @@ const HomePageSearchField = ({
         onKeyDown={handleOnKeyDown}
         value={value}
         autoComplete="off"
+        aria-label={t('SearchPage.enterKeyword')}
         {...rest}
         data-cy="homepage-search-field"
       />

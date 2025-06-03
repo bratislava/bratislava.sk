@@ -32,7 +32,7 @@ const MobileFooter = () => {
       <HorizontalDivider />
       <footer className="flex flex-col gap-6 py-6">
         <div className="flex justify-center py-2 md:justify-start">
-          <Brand url="/" withTitle />
+          <Brand withTitle />
         </div>
         <div className="flex flex-col gap-6">
           <FooterContacts {...attributes} />

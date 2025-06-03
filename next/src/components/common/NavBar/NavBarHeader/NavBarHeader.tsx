@@ -35,7 +35,7 @@ const NavBarHeader = ({ className }: NavBarProps) => {
     >
       <nav className="flex w-full items-center justify-between border-b border-grey-200">
         <SkipToContentButton />
-        <Brand className="group" url="/" withTitle />
+        <Brand withTitle />
 
         <div className="flex h-full items-center gap-x-6">
           {links
@@ -64,7 +64,12 @@ const NavBarHeader = ({ className }: NavBarProps) => {
             <Divider />
           )}
 
-          <MLink data-cy="search-button" href={t('links.searchLink')} className="-mx-4 p-4">
+          <MLink
+            data-cy="search-button"
+            href={t('links.searchLink')}
+            aria-label={t('SearchBar.search')}
+            className="-mx-4 p-4"
+          >
             <SearchIcon />
           </MLink>
 
