@@ -5,9 +5,11 @@ import { isDefined } from '@/src/utils/isDefined'
 export function getRegulationMetadata(
   regulation: NonNullable<RegulationEntityFragment['attributes']>,
 ) {
+  // We want to show whether this regulation is amending any cancelled regulations, because in that case, this regulation is also cancelled
   const cancelledAmendees =
-    regulation.amending?.data.filter((amendee) => isDefined(amendee?.attributes?.cancellation)) ??
-    []
+    regulation.amending?.data.filter((amendee) =>
+      isDefined(amendee?.attributes?.cancellation?.data),
+    ) ?? []
   const isCancelledDirectly = isDefined(regulation.cancellation?.data)
   const hasCancelledAmendees = cancelledAmendees.length > 0
 

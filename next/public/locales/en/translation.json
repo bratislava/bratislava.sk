@@ -1,4 +1,5 @@
 {
+  "AlertBanner.aria.closeAlert": "Close alert",
   "AliasInfoMessage.message.article": "You can also find this article at",
   "AliasInfoMessage.message.page": "You can also find this page at",
   "ArticlesFilter.allArticles": "All news",
@@ -12,6 +13,7 @@
   "Carousel.aria.previous": "Previous",
   "ContactCtaCard.address": "Address",
   "ContactCtaCard.email": "Email",
+  "ContactCtaCard.openingHours": "Office hours",
   "ContactCtaCard.phone": "Phone",
   "ContactCtaCard.web": "Web",
   "CopyToClipboardButton.copyToClipboard": "Copy to clipboard",
@@ -137,6 +139,7 @@
   "SkipToContentButton.skipNavigation": "Skip navigation",
   "slider.aria.controlButtons": "Control buttons",
   "slider.aria.goToSlide": "Go to slide {{number}}",
+  "TabPanelOfficialBoard.errorNoData": "Error while fetching data from the official board.",
   "Tag.aria.removeTag": "Remove tag {{tag}}",
   "TopServices.learnMore": "Read more",
   "useLocalizations.longName.en": "English",

@@ -1,6 +1,6 @@
 import { Typography } from '@bratislava/component-library'
 import Image from 'next/image'
-import React from 'react'
+import React, { HTMLAttributes } from 'react'
 
 import CardBase from '@/src/components/cards/CardBase'
 import CardContent from '@/src/components/cards/CardContent'
@@ -19,7 +19,7 @@ type EventCardProps = {
   imageSrc: string
   imageSizes?: string
   className?: string
-}
+} & HTMLAttributes<HTMLElement>
 
 /**
  * Figma: https://www.figma.com/file/17wbd0MDQcMW9NbXl6UPs8/DS-ESBS%3A-Component-library?node-id=487-938&t=7RMKJATYwi0EYY9K-0
@@ -34,11 +34,12 @@ const EventCard = ({
   imageSrc,
   imageSizes,
   className,
+  ...rest
 }: EventCardProps) => {
   const { t } = useTranslation()
 
   return (
-    <CardBase variant="no-border" className={cn('rounded-lg text-white', className)}>
+    <CardBase variant="no-border" className={cn('rounded-lg text-white', className)} {...rest}>
       <Image src={imageSrc} alt="" fill className="absolute object-cover" sizes={imageSizes} />
       <CardContent className="relative inline-flex size-full flex-col items-start justify-end bg-linear-to-b from-transparent to-[black] p-4 text-clip lg:p-5">
         <div className="flex w-full flex-col items-start gap-4 self-stretch">

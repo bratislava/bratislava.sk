@@ -1,7 +1,6 @@
+import { ChevronDownIcon } from 'src/assets/icons'
 import { useToggle } from 'usehooks-ts'
 
-import ChevronDown from '@/src/assets/images/chevron-down-thin.svg'
-import ChevronDownSmall from '@/src/assets/images/chevron-down-thin-small.svg'
 import { GetGroupMembersRecursiveResult } from '@/src/services/ms-graph/types'
 import cn from '@/src/utils/cn'
 
@@ -24,6 +23,7 @@ const OrganizationalStructureAccordion = ({
 
   return (
     <div className="flex flex-col">
+      {/* eslint-disable-next-line jsx-a11y/interactive-supports-focus */}
       <div
         role="button"
         onClick={toggleIsOpen}
@@ -43,8 +43,7 @@ const OrganizationalStructureAccordion = ({
         {/* TODO fix chevron toggles - rotating 180 isn't quite right as the chevron 'jumps' higher - we should use
         different up-down asset */}
         <div className={cn('ml-auto pt-2.5', { 'rotate-180 pt-5': isOpen })}>
-          <ChevronDown className="hidden lg:flex" />
-          <ChevronDownSmall className="flex lg:hidden" />
+          <ChevronDownIcon className="size-6 lg:size-8" />
         </div>
       </div>
 

@@ -1,5 +1,6 @@
 /* eslint-disable i18next/no-literal-string */
-import { CalendarIcon, EditIcon, SearchIcon } from '@/src/assets/ui-icons'
+import { CalendarIcon, EditIcon, SearchIcon } from 'src/assets/icons'
+
 import Button, { PolymorphicProps } from '@/src/components/common/Button/Button'
 
 import Stack from '../Stack'

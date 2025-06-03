@@ -1,7 +1,7 @@
 import { Typography } from '@bratislava/component-library'
 import { Trans } from 'next-i18next'
 
-import { FacebookIcon, InstagramIcon } from '@/src/assets/images'
+import { FacebookIcon, InstagramIcon } from '@/src/assets/icons-social-media'
 import MLink from '@/src/components/common/MLink/MLink'
 import Markdown from '@/src/components/formatting/Markdown/Markdown'
 import { useLocalizations } from '@/src/components/providers/LocalizationsProvider'

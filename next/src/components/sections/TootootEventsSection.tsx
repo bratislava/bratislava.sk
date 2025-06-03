@@ -41,7 +41,7 @@ const TootootEventsSection = ({ section }: Props) => {
         {isPending ? (
           <Spinner />
         ) : isError ? (
-          <div>Error: {error.message}</div>
+          <div>{error.message}</div>
         ) : (
           <ResponsiveCarousel
             shiftVariant="byPage"
@@ -61,6 +61,7 @@ const TootootEventsSection = ({ section }: Props) => {
                 return (
                   <EventCard
                     key={url}
+                    lang="sk" // Specify language for screen readers because we fetch only SK events also on EN page
                     title={eventTitle}
                     linkHref={url}
                     imageSrc={imageSrc}

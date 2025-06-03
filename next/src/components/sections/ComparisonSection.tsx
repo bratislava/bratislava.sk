@@ -1,8 +1,8 @@
 import { Typography } from '@bratislava/component-library'
 import Image from 'next/image'
 import React from 'react'
+import { InfoIcon } from 'src/assets/icons'
 
-import { InfoIcon } from '@/src/assets/ui-icons'
 import ComparisonCard from '@/src/components/common/ComparisonCard/ComparisonCard'
 import { ComparisonSectionFragment } from '@/src/services/graphql'
 import cn from '@/src/utils/cn'
@@ -37,11 +37,13 @@ const ComparisonSection = ({ section }: ComparisonSectionProps) => {
           'lg:grid-cols-3': cards?.length === 3,
         })}
       >
-        {cards?.filter(isDefined).map((card) => {
+        {cards?.filter(isDefined).map((card, index) => {
           const imgUrl = card.iconMedia?.data?.attributes?.url
 
           return (
             <ComparisonCard
+              // eslint-disable-next-line react/no-array-index-key
+              key={index}
               icon={imgUrl ? <Image src={imgUrl} alt="" fill /> : <InfoIcon />}
               color="white"
               title={card.title}

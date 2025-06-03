@@ -520,6 +520,33 @@ export type ComponentBlocksContactCardInput = {
   value?: InputMaybe<Scalars['String']['input']>
 }
 
+export type ComponentBlocksContactPersonCard = {
+  __typename?: 'ComponentBlocksContactPersonCard'
+  email?: Maybe<Scalars['String']['output']>
+  id: Scalars['ID']['output']
+  phone?: Maybe<Scalars['String']['output']>
+  subtext?: Maybe<Scalars['String']['output']>
+  title: Scalars['String']['output']
+}
+
+export type ComponentBlocksContactPersonCardFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentBlocksContactPersonCardFiltersInput>>>
+  email?: InputMaybe<StringFilterInput>
+  not?: InputMaybe<ComponentBlocksContactPersonCardFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<ComponentBlocksContactPersonCardFiltersInput>>>
+  phone?: InputMaybe<StringFilterInput>
+  subtext?: InputMaybe<StringFilterInput>
+  title?: InputMaybe<StringFilterInput>
+}
+
+export type ComponentBlocksContactPersonCardInput = {
+  email?: InputMaybe<Scalars['String']['input']>
+  id?: InputMaybe<Scalars['ID']['input']>
+  phone?: InputMaybe<Scalars['String']['input']>
+  subtext?: InputMaybe<Scalars['String']['input']>
+  title?: InputMaybe<Scalars['String']['input']>
+}
+
 export type ComponentBlocksFile = {
   __typename?: 'ComponentBlocksFile'
   id: Scalars['ID']['output']
@@ -1228,6 +1255,8 @@ export type ComponentSectionsContactsSection = {
   emailContacts?: Maybe<Array<Maybe<ComponentBlocksContactCard>>>
   hasBackground?: Maybe<Scalars['Boolean']['output']>
   id: Scalars['ID']['output']
+  openingHoursContacts?: Maybe<Array<Maybe<ComponentBlocksContactCard>>>
+  personContacts?: Maybe<Array<Maybe<ComponentBlocksContactPersonCard>>>
   phoneContacts?: Maybe<Array<Maybe<ComponentBlocksContactCard>>>
   title?: Maybe<Scalars['String']['output']>
   type: Enum_Componentsectionscontactssection_Type
@@ -1242,6 +1271,18 @@ export type ComponentSectionsContactsSectionAddressContactsArgs = {
 
 export type ComponentSectionsContactsSectionEmailContactsArgs = {
   filters?: InputMaybe<ComponentBlocksContactCardFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type ComponentSectionsContactsSectionOpeningHoursContactsArgs = {
+  filters?: InputMaybe<ComponentBlocksContactCardFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type ComponentSectionsContactsSectionPersonContactsArgs = {
+  filters?: InputMaybe<ComponentBlocksContactPersonCardFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
 }
@@ -1265,7 +1306,9 @@ export type ComponentSectionsContactsSectionFiltersInput = {
   emailContacts?: InputMaybe<ComponentBlocksContactCardFiltersInput>
   hasBackground?: InputMaybe<BooleanFilterInput>
   not?: InputMaybe<ComponentSectionsContactsSectionFiltersInput>
+  openingHoursContacts?: InputMaybe<ComponentBlocksContactCardFiltersInput>
   or?: InputMaybe<Array<InputMaybe<ComponentSectionsContactsSectionFiltersInput>>>
+  personContacts?: InputMaybe<ComponentBlocksContactPersonCardFiltersInput>
   phoneContacts?: InputMaybe<ComponentBlocksContactCardFiltersInput>
   title?: InputMaybe<StringFilterInput>
   type?: InputMaybe<StringFilterInput>
@@ -1278,6 +1321,8 @@ export type ComponentSectionsContactsSectionInput = {
   emailContacts?: InputMaybe<Array<InputMaybe<ComponentBlocksContactCardInput>>>
   hasBackground?: InputMaybe<Scalars['Boolean']['input']>
   id?: InputMaybe<Scalars['ID']['input']>
+  openingHoursContacts?: InputMaybe<Array<InputMaybe<ComponentBlocksContactCardInput>>>
+  personContacts?: InputMaybe<Array<InputMaybe<ComponentBlocksContactPersonCardInput>>>
   phoneContacts?: InputMaybe<Array<InputMaybe<ComponentBlocksContactCardInput>>>
   title?: InputMaybe<Scalars['String']['input']>
   type?: InputMaybe<Enum_Componentsectionscontactssection_Type>
@@ -2732,6 +2777,7 @@ export type GenericMorph =
   | ComponentBlocksComparisonCard
   | ComponentBlocksComparisonItem
   | ComponentBlocksContactCard
+  | ComponentBlocksContactPersonCard
   | ComponentBlocksFile
   | ComponentBlocksFileItem
   | ComponentBlocksFooterColumn
@@ -8593,23 +8639,41 @@ export type PageEntityFragment = {
           type: Enum_Componentsectionscontactssection_Type
           addressContacts?: Array<{
             __typename?: 'ComponentBlocksContactCard'
+            id: string
+            overrideLabel?: string | null
+            value: string
+          } | null> | null
+          openingHoursContacts?: Array<{
+            __typename?: 'ComponentBlocksContactCard'
+            id: string
             overrideLabel?: string | null
             value: string
           } | null> | null
           emailContacts?: Array<{
             __typename?: 'ComponentBlocksContactCard'
+            id: string
             overrideLabel?: string | null
             value: string
           } | null> | null
           phoneContacts?: Array<{
             __typename?: 'ComponentBlocksContactCard'
+            id: string
             overrideLabel?: string | null
             value: string
           } | null> | null
           webContacts?: Array<{
             __typename?: 'ComponentBlocksContactCard'
+            id: string
             overrideLabel?: string | null
             value: string
+          } | null> | null
+          personContacts?: Array<{
+            __typename?: 'ComponentBlocksContactPersonCard'
+            id: string
+            title: string
+            subtext?: string | null
+            email?: string | null
+            phone?: string | null
           } | null> | null
         }
       | {
@@ -9624,23 +9688,41 @@ export type PageBySlugQuery = {
               type: Enum_Componentsectionscontactssection_Type
               addressContacts?: Array<{
                 __typename?: 'ComponentBlocksContactCard'
+                id: string
+                overrideLabel?: string | null
+                value: string
+              } | null> | null
+              openingHoursContacts?: Array<{
+                __typename?: 'ComponentBlocksContactCard'
+                id: string
                 overrideLabel?: string | null
                 value: string
               } | null> | null
               emailContacts?: Array<{
                 __typename?: 'ComponentBlocksContactCard'
+                id: string
                 overrideLabel?: string | null
                 value: string
               } | null> | null
               phoneContacts?: Array<{
                 __typename?: 'ComponentBlocksContactCard'
+                id: string
                 overrideLabel?: string | null
                 value: string
               } | null> | null
               webContacts?: Array<{
                 __typename?: 'ComponentBlocksContactCard'
+                id: string
                 overrideLabel?: string | null
                 value: string
+              } | null> | null
+              personContacts?: Array<{
+                __typename?: 'ComponentBlocksContactPersonCard'
+                id: string
+                title: string
+                subtext?: string | null
+                email?: string | null
+                phone?: string | null
               } | null> | null
             }
           | {
@@ -10695,23 +10777,41 @@ export type Dev_AllPagesQuery = {
               type: Enum_Componentsectionscontactssection_Type
               addressContacts?: Array<{
                 __typename?: 'ComponentBlocksContactCard'
+                id: string
+                overrideLabel?: string | null
+                value: string
+              } | null> | null
+              openingHoursContacts?: Array<{
+                __typename?: 'ComponentBlocksContactCard'
+                id: string
                 overrideLabel?: string | null
                 value: string
               } | null> | null
               emailContacts?: Array<{
                 __typename?: 'ComponentBlocksContactCard'
+                id: string
                 overrideLabel?: string | null
                 value: string
               } | null> | null
               phoneContacts?: Array<{
                 __typename?: 'ComponentBlocksContactCard'
+                id: string
                 overrideLabel?: string | null
                 value: string
               } | null> | null
               webContacts?: Array<{
                 __typename?: 'ComponentBlocksContactCard'
+                id: string
                 overrideLabel?: string | null
                 value: string
+              } | null> | null
+              personContacts?: Array<{
+                __typename?: 'ComponentBlocksContactPersonCard'
+                id: string
+                title: string
+                subtext?: string | null
+                email?: string | null
+                phone?: string | null
               } | null> | null
             }
           | {
@@ -13066,8 +13166,18 @@ export type BannerSectionFragment = {
 
 export type ContactCardBlockFragment = {
   __typename?: 'ComponentBlocksContactCard'
+  id: string
   overrideLabel?: string | null
   value: string
+}
+
+export type ContactPersonCardBlockFragment = {
+  __typename?: 'ComponentBlocksContactPersonCard'
+  id: string
+  title: string
+  subtext?: string | null
+  email?: string | null
+  phone?: string | null
 }
 
 export type ContactsSectionFragment = {
@@ -13079,23 +13189,41 @@ export type ContactsSectionFragment = {
   type: Enum_Componentsectionscontactssection_Type
   addressContacts?: Array<{
     __typename?: 'ComponentBlocksContactCard'
+    id: string
+    overrideLabel?: string | null
+    value: string
+  } | null> | null
+  openingHoursContacts?: Array<{
+    __typename?: 'ComponentBlocksContactCard'
+    id: string
     overrideLabel?: string | null
     value: string
   } | null> | null
   emailContacts?: Array<{
     __typename?: 'ComponentBlocksContactCard'
+    id: string
     overrideLabel?: string | null
     value: string
   } | null> | null
   phoneContacts?: Array<{
     __typename?: 'ComponentBlocksContactCard'
+    id: string
     overrideLabel?: string | null
     value: string
   } | null> | null
   webContacts?: Array<{
     __typename?: 'ComponentBlocksContactCard'
+    id: string
     overrideLabel?: string | null
     value: string
+  } | null> | null
+  personContacts?: Array<{
+    __typename?: 'ComponentBlocksContactPersonCard'
+    id: string
+    title: string
+    subtext?: string | null
+    email?: string | null
+    phone?: string | null
   } | null> | null
 }
 
@@ -13655,23 +13783,41 @@ type Sections_ComponentSectionsContactsSection_Fragment = {
   type: Enum_Componentsectionscontactssection_Type
   addressContacts?: Array<{
     __typename?: 'ComponentBlocksContactCard'
+    id: string
+    overrideLabel?: string | null
+    value: string
+  } | null> | null
+  openingHoursContacts?: Array<{
+    __typename?: 'ComponentBlocksContactCard'
+    id: string
     overrideLabel?: string | null
     value: string
   } | null> | null
   emailContacts?: Array<{
     __typename?: 'ComponentBlocksContactCard'
+    id: string
     overrideLabel?: string | null
     value: string
   } | null> | null
   phoneContacts?: Array<{
     __typename?: 'ComponentBlocksContactCard'
+    id: string
     overrideLabel?: string | null
     value: string
   } | null> | null
   webContacts?: Array<{
     __typename?: 'ComponentBlocksContactCard'
+    id: string
     overrideLabel?: string | null
     value: string
+  } | null> | null
+  personContacts?: Array<{
+    __typename?: 'ComponentBlocksContactPersonCard'
+    id: string
+    title: string
+    subtext?: string | null
+    email?: string | null
+    phone?: string | null
   } | null> | null
 }
 
@@ -15377,8 +15523,18 @@ export const TimelineSectionFragmentDoc = gql`
 `
 export const ContactCardBlockFragmentDoc = gql`
   fragment ContactCardBlock on ComponentBlocksContactCard {
+    id
     overrideLabel
     value
+  }
+`
+export const ContactPersonCardBlockFragmentDoc = gql`
+  fragment ContactPersonCardBlock on ComponentBlocksContactPersonCard {
+    id
+    title
+    subtext
+    email
+    phone
   }
 `
 export const ContactsSectionFragmentDoc = gql`
@@ -15390,6 +15546,9 @@ export const ContactsSectionFragmentDoc = gql`
     addressContacts {
       ...ContactCardBlock
     }
+    openingHoursContacts {
+      ...ContactCardBlock
+    }
     emailContacts {
       ...ContactCardBlock
     }
@@ -15399,9 +15558,13 @@ export const ContactsSectionFragmentDoc = gql`
     webContacts {
       ...ContactCardBlock
     }
+    personContacts {
+      ...ContactPersonCardBlock
+    }
     type
   }
   ${ContactCardBlockFragmentDoc}
+  ${ContactPersonCardBlockFragmentDoc}
 `
 export const RegulationEntityFragmentDoc = gql`
   fragment RegulationEntity on RegulationEntity {

@@ -11,13 +11,12 @@ import PageHeader from '@/src/components/common/PageHeader/PageHeader'
 import SectionContainer from '@/src/components/common/SectionContainer/SectionContainer'
 import Markdown from '@/src/components/formatting/Markdown/Markdown'
 import { useGeneralContext } from '@/src/components/providers/GeneralContextProvider'
-import ShareButtons from '@/src/components/sections/ShareButtons'
+import ShareButtons from '@/src/components/sections/ShareButtons_Deprecated'
 import { InbaReleaseEntityFragment } from '@/src/services/graphql'
 import cn from '@/src/utils/cn'
 import { formatDate } from '@/src/utils/formatDate'
 import { isDefined } from '@/src/utils/isDefined'
 import { getPageBreadcrumbs } from '@/src/utils/pageUtils_Deprecated'
-import { useLocale } from '@/src/utils/useLocale'
 import { useTranslation } from '@/src/utils/useTranslation'
 
 export type InbaReleasePageContentProps = {
@@ -28,7 +27,6 @@ export type InbaReleasePageContentProps = {
 
 const InbaReleasePageContent = ({ inbaRelease }: InbaReleasePageContentProps) => {
   const { t } = useTranslation()
-  const locale = useLocale()
 
   const { title, coverImage, perex, releaseDate, files } = inbaRelease.attributes ?? {}
   const coverImageAttr = coverImage?.data?.attributes

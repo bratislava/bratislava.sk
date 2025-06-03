@@ -22,7 +22,7 @@
       },
       "title": {
         "edit": {
-          "label": "title",
+          "label": "Nadpis",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -36,7 +36,7 @@
       },
       "description": {
         "edit": {
-          "label": "description",
+          "label": "Text",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -64,7 +64,7 @@
       },
       "addressContacts": {
         "edit": {
-          "label": "addressContacts",
+          "label": "Adresy",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -76,9 +76,23 @@
           "sortable": false
         }
       },
+      "openingHoursContacts": {
+        "edit": {
+          "label": "Úradné hodiny",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "openingHoursContacts",
+          "searchable": false,
+          "sortable": false
+        }
+      },
       "emailContacts": {
         "edit": {
-          "label": "emailContacts",
+          "label": "Email",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -92,7 +106,7 @@
       },
       "phoneContacts": {
         "edit": {
-          "label": "phoneContacts",
+          "label": "Telefón",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -106,7 +120,7 @@
       },
       "webContacts": {
         "edit": {
-          "label": "webContacts",
+          "label": "Web",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -114,6 +128,20 @@
         },
         "list": {
           "label": "webContacts",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "personContacts": {
+        "edit": {
+          "label": "Ľudia",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "personContacts",
           "searchable": false,
           "sortable": false
         }
@@ -144,7 +172,7 @@
         [
           {
             "name": "title",
-            "size": 6
+            "size": 12
           }
         ],
         [
@@ -155,13 +183,13 @@
         ],
         [
           {
-            "name": "hasBackground",
-            "size": 4
+            "name": "addressContacts",
+            "size": 12
           }
         ],
         [
           {
-            "name": "addressContacts",
+            "name": "openingHoursContacts",
             "size": 12
           }
         ],
@@ -185,8 +213,18 @@
         ],
         [
           {
+            "name": "personContacts",
+            "size": 12
+          }
+        ],
+        [
+          {
             "name": "type",
             "size": 6
+          },
+          {
+            "name": "hasBackground",
+            "size": 4
           }
         ]
       ]

@@ -43,7 +43,7 @@ const SearchResults = ({
     return null
   }
 
-  const { data, isPending, isError, error, isFetching } = searchQuery
+  const { data, isPending, isError, error } = searchQuery
   const { searchResultsData, searchResultsCount } = data ?? { searchResultsCount: 0 }
 
   const GENERAL_RESULTS_COUNT = 5
@@ -57,7 +57,7 @@ const SearchResults = ({
   }
 
   if (isError) {
-    return <Typography variant="p-default">Error {error.message}</Typography>
+    return <Typography variant="p-default">{error.message}</Typography>
   }
 
   return (

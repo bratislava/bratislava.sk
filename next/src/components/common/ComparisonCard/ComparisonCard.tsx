@@ -1,3 +1,4 @@
+import { Typography } from '@bratislava/component-library'
 import React, { ReactNode } from 'react'
 
 import cn from '@/src/utils/cn'
@@ -30,10 +31,14 @@ const ComparisonCard = ({ title, items, color, icon }: ComparisonProps) => {
           <div className="relative size-6">{icon}</div>
         </div>
         <div className="mt-6 flex flex-col">
-          {/* FIXME Typography. Convert to use Typography. Issue: Probably safe to convert but cant find page where is this used for testing */}
-          <h3 className="text-h3">{title}</h3>
+          <Typography variant="h3">{title}</Typography>
           <ul className="mt-1 list-disc pl-5">
-            {items?.map((item) => <li className="mt-3">{item}</li>)}
+            {items?.map((item, index) => (
+              // eslint-disable-next-line react/no-array-index-key
+              <li key={index} className="mt-3">
+                {item}
+              </li>
+            ))}
           </ul>
         </div>
       </div>

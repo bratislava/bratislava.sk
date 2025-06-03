@@ -9,6 +9,7 @@ export type RadioProps = React.DetailedHTMLProps<
   key: string
   title: string
 }
+// eslint-disable-next-line react/prop-types
 const Radio = ({ className, id, title, ...rest }: RadioProps) => {
   return (
     <label
