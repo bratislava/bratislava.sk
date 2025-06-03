@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
+import { ArrowLeftIcon, ArrowRightIcon } from 'src/assets/icons'
 
-import { ArrowLeftIcon, ArrowRightIcon } from '@/src/assets/ui-icons'
 import Button from '@/src/components/common/Button/Button'
 import GalleryModal, { ModalProps } from '@/src/components/common/Gallery/GalleryModal'
 import GallerySlider from '@/src/components/common/Gallery/GallerySlider'

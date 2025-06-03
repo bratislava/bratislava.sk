@@ -1,6 +1,6 @@
 import React, { ReactNode, useRef, useState } from 'react'
+import { ArrowLeftIcon, ArrowRightIcon } from 'src/assets/icons'
 
-import { ArrowLeftIcon, ArrowRightIcon } from '@/src/assets/ui-icons'
 import Button from '@/src/components/common/Button/Button'
 import cn from '@/src/utils/cn'
 import { useTranslation } from '@/src/utils/useTranslation'

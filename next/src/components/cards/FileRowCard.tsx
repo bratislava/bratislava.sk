@@ -1,6 +1,6 @@
 import React from 'react'
+import { AttachmentIcon, DownloadIcon } from 'src/assets/icons'
 
-import { AttachmentIcon, DownloadIcon } from '@/src/assets/ui-icons'
 import MLink from '@/src/components/common/MLink/MLink'
 import cn from '@/src/utils/cn'
 import { isDefined } from '@/src/utils/isDefined'
@@ -44,7 +44,7 @@ const FileRowCard = ({
           <div className="flex flex-col gap-x-4 gap-y-1 md:w-full">
             <MLink
               href={downloadLink ?? '#'}
-              className="line-clamp-3 text-h6 font-bold break-words lg:line-clamp-2"
+              className="line-clamp-3 text-h6 font-bold wrap-anywhere lg:line-clamp-2"
               stretched
               variant="underlineOnHover"
               target="_blank"

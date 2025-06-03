@@ -1,8 +1,6 @@
 import cn from '@/src/utils/cn'
 
 type StackProps = {
-  bg?: 'white' | 'dark'
-  width?: 'desktop' | 'mobile' | 'full' | null
   direction?: 'column' | 'row'
   children: React.ReactNode
   className?: string

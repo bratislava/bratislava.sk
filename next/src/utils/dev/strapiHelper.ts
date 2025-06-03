@@ -1,4 +1,4 @@
-/* eslint-disable no-console */
+/* eslint-disable no-console,@typescript-eslint/no-unused-vars */
 
 import { SectionsFragment } from '@/src/services/graphql'
 import { client } from '@/src/services/graphql/gql'
@@ -27,7 +27,8 @@ const filterMarkdown = (text: string) => {
   const h4Headings = text.match(/^#{4}\s+(.*)$/gm)
   const boldHeadings = text.match(/^\*\*+\s*(.*)\s*\*\*+$/gm)
   const bullets = text.match(/^•+\s*(.*)$/gm) // • //	//
-  const tabs = text.match(/	+(.*)$/gm)
+  // eslint-disable-next-line no-control-regex
+  const tabs = text.match(/	+(.*)$/gm) // checking for tabs
 
   return { h1Headings, h2Headings, h3Headings, h4Headings, boldHeadings, bullets, tabs }
 }
@@ -89,18 +90,14 @@ export async function listPages() {
         page.sections?.filter(
           (section) => section?.__typename === 'ComponentSectionsColumnedText',
         ) ?? []
-      if (
-        sections.some(
-          (section) =>
-            section?.__typename === 'ComponentSectionsColumnedText' &&
-            section.content &&
-            section.content.split('<break>').length > 2,
-        )
-      ) {
-        return true
-      }
 
-      return false
+      return sections.some(
+        (section) =>
+          section?.__typename === 'ComponentSectionsColumnedText' &&
+          section.content &&
+          // eslint-disable-next-line xss/no-mixed-html
+          section.content.split('<break>').length > 2,
+      )
     })
 
   console.log('-----------------------------------------------------------------------------------')
@@ -156,7 +153,8 @@ export async function logAllSectionsByType({
   entities.forEach((entity) => {
     const strapiEntityLink = `${process.env.STRAPI_URL}/admin/content-manager/collection-types/api::${entityType}.${entityType}/${entity.id}`
     const strapiEntityLinkProd = `https://bratislava-strapi.bratislava.sk/admin/content-manager/collection-types/api::${entityType}.${entityType}/${entity.id}`
-    const nextEntityLinkProd = `https://bratislava.sk/${entity.attributes?.slug}`
+    // const nextEntityLinkProd = `https://bratislava.sk/${entity.attributes?.slug}`
+    const nextEntityLinkProd = `http://localhost:3000/${entity.attributes?.slug}`
 
     const entityLog: { __typename: SectionName; title: string | null | undefined }[] = []
 

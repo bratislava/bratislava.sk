@@ -1,8 +1,8 @@
 import Link from 'next/link'
 import { useRef } from 'react'
+import { ChevronRightIcon } from 'src/assets/icons'
 import { useEventListener } from 'usehooks-ts'
 
-import { ChevronRightIcon } from '@/src/assets/ui-icons'
 import LoadingSpinner from '@/src/components/common/LoadingSpinner/LoadingSpinner'
 import { HomepageSearchData } from '@/src/services/meili/fetchers/homepageSearchFetcher'
 import { useTranslation } from '@/src/utils/useTranslation'
@@ -13,6 +13,7 @@ type HomePageSearchResultsProps = {
   isLoading: boolean
 }
 
+// eslint-disable-next-line sonarjs/cognitive-complexity
 const HomePageSearchResults = ({ searchValue, data, isLoading }: HomePageSearchResultsProps) => {
   const { t } = useTranslation()
   const inputRef = useRef<(HTMLAnchorElement | null)[]>([])

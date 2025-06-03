@@ -1,33 +1,45 @@
 import { Typography } from '@bratislava/component-library'
 import React, { useMemo } from 'react'
 
-import { AddressIcon, EmailIcon, WebIcon } from '@/src/assets/images'
-import { PhoneIcon } from '@/src/assets/ui-icons'
+import {
+  AddressIcon,
+  EmailIcon,
+  OpeningHoursIcon,
+  PersonIcon,
+  PhoneIcon,
+  WebIcon,
+} from '@/src/assets/icons-contacts'
 import MLink from '@/src/components/common/MLink/MLink'
-import { ContactCardBlockFragment } from '@/src/services/graphql'
+import { ContactCardBlockFragment, ContactPersonCardBlockFragment } from '@/src/services/graphql'
 import cn from '@/src/utils/cn'
 import { useTranslation } from '@/src/utils/useTranslation'
 
 export enum ContactCtaCardType {
-  Address,
-  Email,
-  Phone,
-  Web,
+  Address = 'Address',
+  OpeningHours = 'OpeningHours',
+  Email = 'Email',
+  Phone = 'Phone',
+  Web = 'Web',
 }
 
 type ContactCtaCardProps = {
   className?: string
-  contact: { type: ContactCtaCardType } & ContactCardBlockFragment
-  hasBackground?: boolean
+  contact:
+    | ({ type: 'Person' } & ContactPersonCardBlockFragment)
+    | ({ type: ContactCtaCardType } & ContactCardBlockFragment)
 }
 
 /**
  * Figma: https://www.figma.com/file/17wbd0MDQcMW9NbXl6UPs8/DS-ESBS%3A-Component-library?type=design&node-id=8988-24516&t=ZrNmOvM307DSHwAu-0
  */
-const ContactCtaCard = ({ className, contact, hasBackground }: ContactCtaCardProps) => {
+const ContactCtaCard = ({ className, contact }: ContactCtaCardProps) => {
   const { t } = useTranslation()
 
   const label = useMemo(() => {
+    if (contact.type === 'Person') {
+      return contact.title
+    }
+
     if (contact.overrideLabel) {
       return contact.overrideLabel
     }
@@ -36,6 +48,7 @@ const ContactCtaCard = ({ className, contact, hasBackground }: ContactCtaCardPro
       [ContactCtaCardType.Email]: t('ContactCtaCard.email'),
       [ContactCtaCardType.Phone]: t('ContactCtaCard.phone'),
       [ContactCtaCardType.Address]: t('ContactCtaCard.address'),
+      [ContactCtaCardType.OpeningHours]: t('ContactCtaCard.openingHours'),
       [ContactCtaCardType.Web]: t('ContactCtaCard.web'),
     }[contact.type]
   }, [contact, t])
@@ -73,6 +86,35 @@ const ContactCtaCard = ({ className, contact, hasBackground }: ContactCtaCardPro
       return { icon: AddressIcon, displayValue: contact.value }
     }
 
+    if (contact.type === ContactCtaCardType.OpeningHours) {
+      return { icon: OpeningHoursIcon, displayValue: contact.value }
+    }
+
+    if (contact.type === 'Person') {
+      return {
+        icon: PersonIcon,
+        displayComponent: (
+          <div className="flex flex-col gap-1">
+            {contact.email ? (
+              <MLink href={`mailto:${contact.email}`} variant="underlined">
+                {contact.email}
+              </MLink>
+            ) : null}
+            {contact.phone ? (
+              <MLink href={`tel:${contact.phone?.replaceAll(/\s+/g, '')}`} variant="underlined">
+                {contact.phone}
+              </MLink>
+            ) : null}
+            {contact.subtext ? (
+              <Typography variant="p-small" className="whitespace-pre-wrap">
+                {contact.subtext}
+              </Typography>
+            ) : null}
+          </div>
+        ),
+      }
+    }
+
     return null
   }, [contact])
 
@@ -83,33 +125,24 @@ const ContactCtaCard = ({ className, contact, hasBackground }: ContactCtaCardPro
   const Icon = data.icon
 
   return (
-    <div
-      className={cn(
-        'relative flex flex-col gap-4 rounded-lg p-4 md:flex-row md:items-center lg:p-6',
-        hasBackground ? 'bg-white' : 'bg-category-100',
-        className,
-      )}
-    >
-      <div
-        className={cn(
-          'flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-category-100 text-category-700 lg:h-[56px] lg:w-[56px]',
-          hasBackground ? 'bg-category-100' : 'bg-white',
-        )}
-      >
+    <div className={cn('relative flex max-w-180 items-start gap-4', className)}>
+      <div className="flex shrink-0 items-center justify-center rounded-full text-gray-700">
         <Icon className="size-6 lg:size-8" />
       </div>
-      <div className="flex flex-col gap-y-1 overflow-hidden break-words">
-        {/* FIXME Typography. Convert to use Typograhpy component. Different font weight than Figma <p> */}
-        <p className="text-h6 font-semibold">{label}</p>
-        {data.link ? (
-          <MLink href={data.link} variant="underlined">
-            {data.displayValue}
-          </MLink>
-        ) : (
-          <Typography variant="p-small" className="whitespace-pre-wrap">
-            {data.displayValue}
-          </Typography>
-        )}
+      <div className="flex flex-col gap-1 overflow-hidden wrap-break-word">
+        <Typography variant="h6" as="p" className="font-semibold">
+          {label}
+        </Typography>
+        {data.displayComponent ||
+          (data.link ? (
+            <MLink href={data.link} variant="underlined">
+              {data.displayValue}
+            </MLink>
+          ) : (
+            <Typography variant="p-small" className="whitespace-pre-wrap">
+              {data.displayValue}
+            </Typography>
+          ))}
       </div>
     </div>
   )

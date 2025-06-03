@@ -1,7 +1,7 @@
 import { Typography } from '@bratislava/component-library'
 import Image from 'next/image'
+import { ChevronRightIcon } from 'src/assets/icons'
 
-import { ChevronRightIcon } from '@/src/assets/ui-icons'
 import CardBase, { CardBaseProps } from '@/src/components/cards/CardBase'
 import CardContent from '@/src/components/cards/CardContent'
 import ImagePlaceholder from '@/src/components/common/Image/ImagePlaceholder'

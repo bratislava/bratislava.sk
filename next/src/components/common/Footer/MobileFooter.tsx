@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 
-import EULogo from '@/src/assets/images/EULogo.svg'
+import { EuFlagSvg } from '@/src/assets/images'
 import Accordion from '@/src/components/common/Accordion/Accordion'
 import Brand from '@/src/components/common/Brand/Brand'
 import HorizontalDivider from '@/src/components/common/Divider/HorizontalDivider'
@@ -32,7 +32,7 @@ const MobileFooter = () => {
       <HorizontalDivider />
       <footer className="flex flex-col gap-6 py-6">
         <div className="flex justify-center py-2 md:justify-start">
-          <Brand url="/" withTitle />
+          <Brand withTitle />
         </div>
         <div className="flex flex-col gap-6">
           <FooterContacts {...attributes} />
@@ -55,7 +55,7 @@ const MobileFooter = () => {
           <div className="-my-2 flex gap-2">
             <FooterSocialLinks {...attributes} />
           </div>
-          <EULogo />
+          <EuFlagSvg />
         </div>
         <div className="flex gap-4">
           <FooterLanguageSwitcher />

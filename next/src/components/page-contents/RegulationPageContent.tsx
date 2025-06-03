@@ -32,7 +32,7 @@ const RegulationPageContent = ({ regulation }: RegulationPageContentProps) => {
   const mainDocument = regulation.attributes?.mainDocument
   const amendments = regulation.attributes?.amendments?.data
     .filter((amendment) => isDefined(amendment))
-    .sort((a, b) => {
+    .sort(() => {
       return -1 // TODO now we are just reversing the order of items in strapi, but we could sort by regulation year and number
     })
   const amending = regulation.attributes?.amending?.data.filter(isDefined)

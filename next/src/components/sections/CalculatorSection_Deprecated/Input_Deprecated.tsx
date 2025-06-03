@@ -7,6 +7,7 @@ type InputProps = {
 }
 
 const Input = ({
+  // eslint-disable-next-line react/prop-types
   className,
   hasError,
   ...props
@@ -15,6 +16,7 @@ const Input = ({
   <input
     className={cn('base-input w-full', className, {
       'base-input--with-error': hasError,
+      // eslint-disable-next-line react/prop-types
       'base-input--disabled': props.disabled,
     })}
     {...props}

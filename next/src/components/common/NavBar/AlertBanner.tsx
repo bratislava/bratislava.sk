@@ -1,8 +1,9 @@
 import { useQuery } from '@tanstack/react-query'
+import { useTranslation } from 'next-i18next'
 import React, { forwardRef, useEffect, useState } from 'react'
+import { AlertIcon, CrossIcon } from 'src/assets/icons'
 import { useLocalStorage } from 'usehooks-ts'
 
-import { AlertIcon, CrossIcon } from '@/src/assets/ui-icons'
 import Button from '@/src/components/common/Button/Button'
 import SectionContainer from '@/src/components/common/SectionContainer/SectionContainer'
 import Markdown from '@/src/components/formatting/Markdown/Markdown'
@@ -11,11 +12,15 @@ import cn from '@/src/utils/cn'
 import { useLocale } from '@/src/utils/useLocale'
 
 const AlertBanner = forwardRef<HTMLDivElement>((props, forwardedRef) => {
+  const { t } = useTranslation()
   const locale = useLocale()
 
   const storageKey = `bratislava-sk-dismissible-alert-timestamp`
 
-  const { data } = useQuery({ queryKey: ['AlertBanner'], queryFn: () => client.Alert({ locale }) })
+  const { data } = useQuery({
+    queryKey: ['AlertBanner', locale],
+    queryFn: () => client.Alert({ locale }),
+  })
   const { alert } = data ?? {}
   const { text, updatedAt } = alert?.data?.attributes ?? {}
 
@@ -51,11 +56,10 @@ const AlertBanner = forwardRef<HTMLDivElement>((props, forwardedRef) => {
           <div className="grow">
             <Markdown content={text} variant="small" />
           </div>
-          {/* TODO translation */}
           <Button
             className="-m-3 h-fit shrink-0 p-3 lg:-m-4 lg:p-4"
             icon={<CrossIcon />}
-            aria-label="Zavrieť upozornenie"
+            aria-label={t('AlertBanner.aria.closeAlert')}
             onPress={() => handleClose()}
           />
         </div>
