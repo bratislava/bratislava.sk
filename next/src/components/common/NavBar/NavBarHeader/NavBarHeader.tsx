@@ -35,7 +35,7 @@ const NavBarHeader = ({ className }: NavBarProps) => {
     >
       <nav className="flex w-full items-center justify-between border-b border-grey-200">
         <SkipToContentButton />
-        <Brand className="group" url="/" withTitle />
+        <Brand withTitle />
 
         <div className="flex h-full items-center gap-x-6">
           {links
