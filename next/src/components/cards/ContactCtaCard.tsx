@@ -112,7 +112,7 @@ const ContactCtaCard = ({ className, contact }: ContactCtaCardProps) => {
       <div className="flex shrink-0 items-center justify-center rounded-full text-gray-700">
         <Icon className="size-6 lg:size-8" />
       </div>
-      <div className="flex flex-col gap-1 overflow-hidden break-words">
+      <div className="flex flex-col gap-1 overflow-hidden break-all">
         <Typography variant="h6" as="p" className="font-semibold">
           {label}
         </Typography>
