@@ -21,7 +21,7 @@ const OrganizationalStructureAccordionCard = ({
     displayName && jobTitle ? (
       <div
         className={twMerge(
-          'flex flex-col rounded-lg border-2 bg-white p-4 break-words lg:p-5',
+          'flex flex-col rounded-lg border-2 bg-white p-4 wrap-break-word lg:p-5',
           className,
         )}
       >
