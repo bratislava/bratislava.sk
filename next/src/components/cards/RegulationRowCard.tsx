@@ -39,7 +39,7 @@ const RegulationRowCard = ({
           <div className="flex flex-col items-start gap-2 lg:flex-row lg:items-center lg:gap-4">
             <MLink
               href={path ?? '#'}
-              className="text-h6 font-bold break-words"
+              className="text-h6 font-bold wrap-break-word"
               stretched
               variant="underlineOnHover"
             >
