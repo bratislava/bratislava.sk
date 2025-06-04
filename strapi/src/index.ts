@@ -2,16 +2,18 @@
 
 import { Strapi } from '@strapi/strapi'
 
-type permissionSubject = 'api::page.page' | 'api::article.article'
+type PermissionSubject = 'api::page.page' | 'api::article.article'
 
 const conditions = [
   {
     displayName: 'Entity adminGroupId includes starz',
     name: 'entity-admin-group-includes-starz',
     plugin: 'content-manager',
+    // The user object passed to handler is not typed unfortunately
+    // See more: https://docs-v4.strapi.io/dev-docs/configurations
     handler: async (user: any) => {
-      const articlesWithStarzAdminGroup = await strapi.entityService.findMany(
-        user.permission.subject as permissionSubject,
+      const entitiesWithStarzAdminGroup = await strapi.entityService.findMany(
+        user.permission.subject as PermissionSubject,
         {
           fields: ['id'],
           filters: {
@@ -23,9 +25,9 @@ const conditions = [
         }
       )
 
-      const articleIds = articlesWithStarzAdminGroup?.map((article: any) => article.id) ?? []
+      const entityIds = entitiesWithStarzAdminGroup?.map((entity: any) => entity.id) ?? []
 
-      return { id: { $in: articleIds } }
+      return { id: { $in: entityIds } }
     },
   },
 ]

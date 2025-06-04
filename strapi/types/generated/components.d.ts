@@ -499,8 +499,8 @@ export interface SectionsCalculator extends Schema.Component {
   }
   attributes: {
     another_adult_value: Attribute.Decimal
-    hasBackground: Attribute.Boolean
     child_value: Attribute.Decimal
+    hasBackground: Attribute.Boolean
     single_adult_value: Attribute.Decimal
   }
 }
