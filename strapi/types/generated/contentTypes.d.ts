@@ -301,6 +301,35 @@ export interface AdminUser extends Schema.CollectionType {
   }
 }
 
+export interface ApiAdminGroupAdminGroup extends Schema.CollectionType {
+  collectionName: 'admin_groups'
+  info: {
+    description: ''
+    displayName: 'Admin skupiny'
+    pluralName: 'admin-groups'
+    singularName: 'admin-group'
+  }
+  options: {
+    draftAndPublish: false
+  }
+  attributes: {
+    adminGroupId: Attribute.UID<'api::admin-group.admin-group', 'title'>
+    articles: Attribute.Relation<
+      'api::admin-group.admin-group',
+      'manyToMany',
+      'api::article.article'
+    >
+    createdAt: Attribute.DateTime
+    createdBy: Attribute.Relation<'api::admin-group.admin-group', 'oneToOne', 'admin::user'> &
+      Attribute.Private
+    pages: Attribute.Relation<'api::admin-group.admin-group', 'manyToMany', 'api::page.page'>
+    title: Attribute.String
+    updatedAt: Attribute.DateTime
+    updatedBy: Attribute.Relation<'api::admin-group.admin-group', 'oneToOne', 'admin::user'> &
+      Attribute.Private
+  }
+}
+
 export interface ApiAlertAlert extends Schema.SingleType {
   collectionName: 'alerts'
   info: {
@@ -357,6 +386,11 @@ export interface ApiArticleArticle extends Schema.CollectionType {
           localized: false
         }
       }>
+    adminGroups: Attribute.Relation<
+      'api::article.article',
+      'manyToMany',
+      'api::admin-group.admin-group'
+    >
     alias: Attribute.UID &
       Attribute.SetPluginOptions<{
         i18n: {
@@ -1098,6 +1132,7 @@ export interface ApiPagePage extends Schema.CollectionType {
     }
   }
   attributes: {
+    adminGroups: Attribute.Relation<'api::page.page', 'manyToMany', 'api::admin-group.admin-group'>
     alias: Attribute.UID &
       Attribute.SetPluginOptions<{
         i18n: {
@@ -1717,6 +1752,7 @@ declare module '@strapi/types' {
       'admin::transfer-token': AdminTransferToken
       'admin::transfer-token-permission': AdminTransferTokenPermission
       'admin::user': AdminUser
+      'api::admin-group.admin-group': ApiAdminGroupAdminGroup
       'api::alert.alert': ApiAlertAlert
       'api::article.article': ApiArticleArticle
       'api::blog-post.blog-post': ApiBlogPostBlogPost

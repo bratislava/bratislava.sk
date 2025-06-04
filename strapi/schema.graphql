@@ -2,6 +2,53 @@
 ### Do not make changes to this file directly
 
 
+type AdminGroup {
+  adminGroupId: String
+  articles(filters: ArticleFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): ArticleRelationResponseCollection
+  createdAt: DateTime
+  pages(filters: PageFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): PageRelationResponseCollection
+  title: String
+  updatedAt: DateTime
+}
+
+type AdminGroupEntity {
+  attributes: AdminGroup
+  id: ID
+}
+
+type AdminGroupEntityResponse {
+  data: AdminGroupEntity
+}
+
+type AdminGroupEntityResponseCollection {
+  data: [AdminGroupEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input AdminGroupFiltersInput {
+  adminGroupId: StringFilterInput
+  and: [AdminGroupFiltersInput]
+  articles: ArticleFiltersInput
+  createdAt: DateTimeFilterInput
+  id: IDFilterInput
+  not: AdminGroupFiltersInput
+  or: [AdminGroupFiltersInput]
+  pages: PageFiltersInput
+  title: StringFilterInput
+  updatedAt: DateTimeFilterInput
+}
+
+input AdminGroupInput {
+  adminGroupId: String
+  articles: [ID]
+  pages: [ID]
+  title: String
+}
+
+type AdminGroupRelationResponseCollection {
+  data: [AdminGroupEntity!]!
+}
+
 type Alert {
   createdAt: DateTime
   locale: String
@@ -45,6 +92,7 @@ type AlertRelationResponseCollection {
 
 type Article {
   addedAt: DateTime!
+  adminGroups(filters: AdminGroupFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): AdminGroupRelationResponseCollection
   alias: String
   content: String
   coverMedia: UploadFileEntityResponse
@@ -77,6 +125,7 @@ type ArticleEntityResponseCollection {
 
 input ArticleFiltersInput {
   addedAt: DateTimeFilterInput
+  adminGroups: AdminGroupFiltersInput
   alias: StringFilterInput
   and: [ArticleFiltersInput]
   content: StringFilterInput
@@ -97,6 +146,7 @@ input ArticleFiltersInput {
 
 input ArticleInput {
   addedAt: DateTime
+  adminGroups: [ID]
   alias: String
   content: String
   coverMedia: ID
@@ -2363,7 +2413,7 @@ type GeneralRelationResponseCollection {
   data: [GeneralEntity!]!
 }
 
-union GenericMorph = Alert | Article | BlogPost | ComponentAccordionItemsFlatText | ComponentAccordionItemsInstitution | ComponentAccordionItemsInstitutionNarrow | ComponentBlocksColumnsItem | ComponentBlocksCommonLink | ComponentBlocksComparisonCard | ComponentBlocksComparisonItem | ComponentBlocksContactCard | ComponentBlocksContactPersonCard | ComponentBlocksFile | ComponentBlocksFileItem | ComponentBlocksFooterColumn | ComponentBlocksHomepageHighlightsItem | ComponentBlocksIconWithTitleAndDescription | ComponentBlocksInBa | ComponentBlocksNumericalListItem | ComponentBlocksPageLink | ComponentBlocksPartner | ComponentBlocksProsAndConsCard | ComponentBlocksTestimonialItem | ComponentBlocksTimelineItem | ComponentBlocksTopServicesItem | ComponentBlocksVideo | ComponentGeneralHeader | ComponentGeneralHeaderLink | ComponentMenuMenuItem | ComponentMenuMenuLink | ComponentMenuMenuSection | ComponentSectionsAccordion | ComponentSectionsArticles | ComponentSectionsBanner | ComponentSectionsCalculator | ComponentSectionsColumnedText | ComponentSectionsColumns | ComponentSectionsComparisonSection | ComponentSectionsContactsSection | ComponentSectionsDivider | ComponentSectionsFaqCategories | ComponentSectionsFaqs | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsHomepageEvents | ComponentSectionsHomepageHighlights | ComponentSectionsHomepageMayorAndCouncil | ComponentSectionsHomepageTabs | ComponentSectionsIconTitleDesc | ComponentSectionsIframe | ComponentSectionsInbaArticlesList | ComponentSectionsInbaReleases | ComponentSectionsLinks | ComponentSectionsNarrowText | ComponentSectionsNumericalList | ComponentSectionsOfficialBoard | ComponentSectionsOrganizationalStructure | ComponentSectionsPartners | ComponentSectionsProsAndConsSection | ComponentSectionsRegulations | ComponentSectionsRegulationsList | ComponentSectionsSubpageList | ComponentSectionsTestimonials | ComponentSectionsTextWithImage | ComponentSectionsTextWithImageOverlapped | ComponentSectionsTimeline | ComponentSectionsTootootEvents | ComponentSectionsTopServices | ComponentSectionsVideos | ComponentSectionsWaves | ComponentTaxAdministratorsTaxAdministrator | Faq | FaqCategory | Footer | General | Homepage | I18NLocale | InbaArticle | InbaRelease | InbaTag | Menu | Page | PageCategory | Regulation | Tag | TaxAdministratorsList | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
+union GenericMorph = AdminGroup | Alert | Article | BlogPost | ComponentAccordionItemsFlatText | ComponentAccordionItemsInstitution | ComponentAccordionItemsInstitutionNarrow | ComponentBlocksColumnsItem | ComponentBlocksCommonLink | ComponentBlocksComparisonCard | ComponentBlocksComparisonItem | ComponentBlocksContactCard | ComponentBlocksContactPersonCard | ComponentBlocksFile | ComponentBlocksFileItem | ComponentBlocksFooterColumn | ComponentBlocksHomepageHighlightsItem | ComponentBlocksIconWithTitleAndDescription | ComponentBlocksInBa | ComponentBlocksNumericalListItem | ComponentBlocksPageLink | ComponentBlocksPartner | ComponentBlocksProsAndConsCard | ComponentBlocksTestimonialItem | ComponentBlocksTimelineItem | ComponentBlocksTopServicesItem | ComponentBlocksVideo | ComponentGeneralHeader | ComponentGeneralHeaderLink | ComponentMenuMenuItem | ComponentMenuMenuLink | ComponentMenuMenuSection | ComponentSectionsAccordion | ComponentSectionsArticles | ComponentSectionsBanner | ComponentSectionsCalculator | ComponentSectionsColumnedText | ComponentSectionsColumns | ComponentSectionsComparisonSection | ComponentSectionsContactsSection | ComponentSectionsDivider | ComponentSectionsFaqCategories | ComponentSectionsFaqs | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsHomepageEvents | ComponentSectionsHomepageHighlights | ComponentSectionsHomepageMayorAndCouncil | ComponentSectionsHomepageTabs | ComponentSectionsIconTitleDesc | ComponentSectionsIframe | ComponentSectionsInbaArticlesList | ComponentSectionsInbaReleases | ComponentSectionsLinks | ComponentSectionsNarrowText | ComponentSectionsNumericalList | ComponentSectionsOfficialBoard | ComponentSectionsOrganizationalStructure | ComponentSectionsPartners | ComponentSectionsProsAndConsSection | ComponentSectionsRegulations | ComponentSectionsRegulationsList | ComponentSectionsSubpageList | ComponentSectionsTestimonials | ComponentSectionsTextWithImage | ComponentSectionsTextWithImageOverlapped | ComponentSectionsTimeline | ComponentSectionsTootootEvents | ComponentSectionsTopServices | ComponentSectionsVideos | ComponentSectionsWaves | ComponentTaxAdministratorsTaxAdministrator | Faq | FaqCategory | Footer | General | Homepage | I18NLocale | InbaArticle | InbaRelease | InbaTag | Menu | Page | PageCategory | Regulation | Tag | TaxAdministratorsList | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
 
 type Homepage {
   createdAt: DateTime
@@ -2807,6 +2857,7 @@ type MenuRelationResponseCollection {
 type Mutation {
   """Change user password. Confirm with the current password."""
   changePassword(currentPassword: String!, password: String!, passwordConfirmation: String!): UsersPermissionsLoginPayload
+  createAdminGroup(data: AdminGroupInput!): AdminGroupEntityResponse
   createAlertLocalization(data: AlertInput, id: ID, locale: I18NLocaleCode): AlertEntityResponse
   createArticle(data: ArticleInput!, locale: I18NLocaleCode): ArticleEntityResponse
   createArticleLocalization(data: ArticleInput, id: ID, locale: I18NLocaleCode): ArticleEntityResponse
@@ -2840,6 +2891,7 @@ type Mutation {
 
   """Create a new user"""
   createUsersPermissionsUser(data: UsersPermissionsUserInput!): UsersPermissionsUserEntityResponse!
+  deleteAdminGroup(id: ID!): AdminGroupEntityResponse
   deleteAlert(locale: I18NLocaleCode): AlertEntityResponse
   deleteArticle(id: ID!, locale: I18NLocaleCode): ArticleEntityResponse
   deleteBlogPost(id: ID!, locale: I18NLocaleCode): BlogPostEntityResponse
@@ -2882,6 +2934,7 @@ type Mutation {
   Reset user password. Confirm with a code (resetToken from forgotPassword)
   """
   resetPassword(code: String!, password: String!, passwordConfirmation: String!): UsersPermissionsLoginPayload
+  updateAdminGroup(data: AdminGroupInput!, id: ID!): AdminGroupEntityResponse
   updateAlert(data: AlertInput!, locale: I18NLocaleCode): AlertEntityResponse
   updateArticle(data: ArticleInput!, id: ID!, locale: I18NLocaleCode): ArticleEntityResponse
   updateBlogPost(data: BlogPostInput!, id: ID!, locale: I18NLocaleCode): BlogPostEntityResponse
@@ -2912,6 +2965,7 @@ type Mutation {
 }
 
 type Page {
+  adminGroups(filters: AdminGroupFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): AdminGroupRelationResponseCollection
   alias: String
   childPages(filters: PageFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): PageRelationResponseCollection
   createdAt: DateTime
@@ -3006,6 +3060,7 @@ type PageEntityResponseCollection {
 }
 
 input PageFiltersInput {
+  adminGroups: AdminGroupFiltersInput
   alias: StringFilterInput
   and: [PageFiltersInput]
   childPages: PageFiltersInput
@@ -3030,6 +3085,7 @@ input PageFiltersInput {
 }
 
 input PageInput {
+  adminGroups: [ID]
   alias: String
   childPages: [ID]
   headerLinks: [ComponentBlocksCommonLinkInput]
@@ -3080,6 +3136,8 @@ enum PublicationState {
 }
 
 type Query {
+  adminGroup(id: ID): AdminGroupEntityResponse
+  adminGroups(filters: AdminGroupFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): AdminGroupEntityResponseCollection
   alert(locale: I18NLocaleCode): AlertEntityResponse
   article(id: ID, locale: I18NLocaleCode): ArticleEntityResponse
   articles(filters: ArticleFiltersInput, locale: I18NLocaleCode, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): ArticleEntityResponseCollection
