@@ -6,7 +6,6 @@ module.exports = {
     'plugin:i18next/recommended',
     'plugin:@tanstack/eslint-plugin-query/recommended',
   ],
-  // plugins: ['only-warn'],
   rules: {
     'react/react-in-jsx-scope': 'off',
     /** We use this a lot with isDefined and hasAttributes */
@@ -43,8 +42,6 @@ module.exports = {
     'pii/no-email': 'off',
     'const-case/uppercase': 'off',
     'sonarjs/no-duplicate-string': 'off',
-
-    // TODO revisit
     'import/extensions': 'off',
     'react/display-name': 'off',
     'unicorn/expiring-todo-comments': 'off',
