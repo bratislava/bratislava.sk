@@ -39,10 +39,6 @@ const SearchResults = ({
 
   const searchQuery = useQueryBySearchOption({ optionKey: searchOption.id, filters })
 
-  if (!searchQuery) {
-    return null
-  }
-
   const { data, isPending, isError, error } = searchQuery
   const { searchResultsData, searchResultsCount } = data ?? { searchResultsCount: 0 }
 
@@ -50,7 +46,7 @@ const SearchResults = ({
 
   useEffect(() => {
     onSetResultsCount(searchOption.id, searchResultsCount ?? 0)
-  }, [searchResultsCount])
+  }, [onSetResultsCount, searchOption.id, searchResultsCount])
 
   if (isPending) {
     return <LoadingSpinner />

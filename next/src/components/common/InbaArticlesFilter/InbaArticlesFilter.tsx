@@ -21,8 +21,10 @@ const InbaArticlesFilter = ({ tags, subtext, onChange }: InbaArticlesFilterProps
   const { t } = useTranslation()
   const [selectedTags, setSelectedTags] = useState<Selection>(new Set<string>())
 
+  // FIXME TODO revisit and enable rules
   useEffect(() => {
     onChange(Array.from(selectedTags, (item) => item.toString()))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedTags])
 
   return (

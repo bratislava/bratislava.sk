@@ -53,6 +53,7 @@ const ContactCtaCard = ({ className, contact }: ContactCtaCardProps) => {
     }[contact.type]
   }, [contact, t])
 
+  // eslint-disable-next-line sonarjs/cognitive-complexity
   const data = useMemo(() => {
     if (contact.type === ContactCtaCardType.Phone) {
       return {

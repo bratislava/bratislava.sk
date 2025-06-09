@@ -51,24 +51,30 @@ const ArticlesFilter = ({ pageCategories, tags, subtext, onTagChange }: Props) =
   )
   const [selectedTags, setSelectedTags] = useState<Selection>(new Set<string>())
 
+  // FIXME TODO revisit and enable rules
   useEffect(() => {
     onTagChange(Array.from(selectedTags, (item) => item.toString()))
     if (Array.from(selectedTags).length === 0) {
       onTagChange(filterTagsByPageCategory(tags ?? [], selectedPageCategory))
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedTags])
 
+  // FIXME TODO revisit and enable rules
   useEffect(() => {
     setSelectedTags(new Set<string>())
     onTagChange(filterTagsByPageCategory(tags ?? [], selectedPageCategory))
     if (Array.from(selectedPageCategory).length === 0) {
       setSelectedPageCategory(new Set(defaultChip.id))
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedPageCategory])
 
+  // FIXME TODO revisit and enable rules
   useEffect(() => {
     setSelectedPageCategory(new Set(defaultChip.id))
     setSelectedTags(new Set<string>())
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [locale])
 
   return (
