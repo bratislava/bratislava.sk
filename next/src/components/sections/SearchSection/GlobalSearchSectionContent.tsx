@@ -1,6 +1,6 @@
 import { Typography } from '@bratislava/component-library'
 import { useIsFetching } from '@tanstack/react-query'
-import { useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { Selection, TagGroup, TagList } from 'react-aria-components'
 import { StringParam, useQueryParam, withDefault } from 'use-query-params'
 import { useDebounceValue } from 'usehooks-ts'
@@ -141,14 +141,14 @@ const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
     Object.fromEntries(searchOptions.map((option): [string, number] => [option.id, 0])),
   )
 
-  const setResultsCountById = (optionId: SearchOption['id'], count: number) => {
+  const setResultsCountById = useCallback((optionId: SearchOption['id'], count: number) => {
     setResultsCount((prevResultsCount) => {
       return {
         ...prevResultsCount,
         [optionId]: count,
       }
     })
-  }
+  }, [])
 
   const getResultsCountById = (optionId: SearchOption['id']) => {
     if (optionId === defaultSearchOption.id) {

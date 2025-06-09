@@ -15,7 +15,8 @@ import { base64Decode } from '@/src/utils/base64'
  * @param req
  * @param res
  */
-const handler = async (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
+// eslint-disable-next-line consistent-return
+const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const { fileId: fileIdParam } = req.query
   const encodedFileId = typeof fileIdParam === 'string' ? fileIdParam : (fileIdParam?.[0] ?? '')
 

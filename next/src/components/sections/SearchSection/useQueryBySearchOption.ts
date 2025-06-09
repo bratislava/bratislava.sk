@@ -91,6 +91,7 @@ export const useQueryBySearchOption = ({
 
   const articlesQuery = useQuery({
     // TODO filters type
+    // eslint-disable-next-line @tanstack/query/exhaustive-deps
     queryKey: getArticlesQueryKey(filters as ArticlesFilters, locale),
     queryFn: () => articlesFetcher(filters as ArticlesFilters, locale),
     placeholderData: keepPreviousData,
@@ -115,6 +116,7 @@ export const useQueryBySearchOption = ({
 
   const inbaArticlesQuery = useQuery({
     // TODO filters type
+    // eslint-disable-next-line @tanstack/query/exhaustive-deps
     queryKey: getInbaArticlesQueryKey(filters as InbaArticlesFilters, locale),
     queryFn: () => inbaArticlesFetcher(filters as InbaArticlesFilters, locale),
     placeholderData: keepPreviousData,
@@ -251,6 +253,6 @@ export const useQueryBySearchOption = ({
       return officialBoardQuery
 
     default:
-      return null
+      return pagesQuery
   }
 }

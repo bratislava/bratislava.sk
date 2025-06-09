@@ -6,7 +6,7 @@ module.exports = {
     'plugin:i18next/recommended',
     'plugin:@tanstack/eslint-plugin-query/recommended',
   ],
-  plugins: ['only-warn'],
+  // plugins: ['only-warn'],
   rules: {
     'react/react-in-jsx-scope': 'off',
     /** We use this a lot with isDefined and hasAttributes */
