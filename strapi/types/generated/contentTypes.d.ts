@@ -1216,13 +1216,11 @@ export interface ApiPagePage extends Schema.CollectionType {
         'sections.pros-and-cons-section',
         'sections.regulations',
         'sections.regulations-list',
-        'sections.testimonials',
         'sections.text-with-image',
         'sections.text-with-image-overlapped',
         'sections.timeline',
         'sections.tootoot-events',
-        'sections.videos',
-        'sections.waves'
+        'sections.videos'
       ]
     > &
       Attribute.SetPluginOptions<{

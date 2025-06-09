@@ -160,6 +160,21 @@
           "sortable": false
         }
       },
+      "adminGroups": {
+        "edit": {
+          "label": "adminGroups",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "title"
+        },
+        "list": {
+          "label": "adminGroups",
+          "searchable": false,
+          "sortable": false
+        }
+      },
       "createdAt": {
         "edit": {
           "label": "createdAt",
@@ -220,6 +235,14 @@
       }
     },
     "layouts": {
+      "list": [
+        "id",
+        "coverMedia",
+        "title",
+        "slug",
+        "updatedAt",
+        "addedAt"
+      ],
       "edit": [
         [
           {
@@ -276,15 +299,13 @@
             "name": "gallery",
             "size": 12
           }
+        ],
+        [
+          {
+            "name": "adminGroups",
+            "size": 6
+          }
         ]
-      ],
-      "list": [
-        "id",
-        "coverMedia",
-        "title",
-        "slug",
-        "updatedAt",
-        "addedAt"
       ]
     },
     "uid": "api::article.article"

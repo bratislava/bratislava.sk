@@ -42,9 +42,10 @@ const Contacts = ({ section }: ContactsProps) => {
             contact={contact}
           />
         ))}
-        {section.personContacts?.filter(isDefined).map((person) => (
+        {section.personContacts?.filter(isDefined).map((person, index) => (
           <ContactCtaCard
-            key={person.id}
+            // eslint-disable-next-line react/no-array-index-key
+            key={index}
             contact={{
               type: 'Person',
               ...person,

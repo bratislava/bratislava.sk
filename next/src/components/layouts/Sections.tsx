@@ -27,14 +27,12 @@ import PartnersSection from '@/src/components/sections/PartnersSection'
 import ProsAndConsSection from '@/src/components/sections/ProsAndConsSection'
 import RegulationsListSection from '@/src/components/sections/RegulationsListSection'
 import RegulationsSection from '@/src/components/sections/RegulationsSection'
-import TestimonialsSection from '@/src/components/sections/TestimonialsSection'
 import TextWithImageOverlappedSection from '@/src/components/sections/TextWithImageOverlappedSection'
 import TextWithImageSection from '@/src/components/sections/TextWithImageSection'
 import TimelineSection from '@/src/components/sections/TimelineSection'
 import TootootEventsSection from '@/src/components/sections/TootootEventsSection'
 import VideosSection from '@/src/components/sections/VideosSection'
 import { SectionsFragment } from '@/src/services/graphql'
-import cn from '@/src/utils/cn'
 
 const SectionContent = ({ section }: { section: SectionsFragment }) => {
   // eslint-disable-next-line sonarjs/max-switch-cases
@@ -117,9 +115,6 @@ const SectionContent = ({ section }: { section: SectionsFragment }) => {
     case 'ComponentSectionsRegulations':
       return <RegulationsSection section={section} />
 
-    case 'ComponentSectionsTestimonials':
-      return <TestimonialsSection section={section} />
-
     case 'ComponentSectionsFaqs':
       return <FaqsSection section={section} />
 
@@ -140,23 +135,12 @@ const SectionContent = ({ section }: { section: SectionsFragment }) => {
 const Section = ({ section }: { section: SectionsFragment | null }) => {
   if (!section) return null
 
-  if (section.__typename === 'ComponentSectionsWaves') {
-    return null
-    // return <WavesSection section={section} />
-  }
-
   if (section.__typename === 'ComponentSectionsNumericalList') {
     return <NumericalListSection section={section} />
   }
 
-  const hasBackground = false // ('hasBackground' in section && section.hasBackground) ?? false
-
   return (
-    <SectionContainer
-      className={cn('pt-10 md:pt-18', {
-        'bg-category-200 pb-14 md:pb-18': hasBackground,
-      })}
-    >
+    <SectionContainer className="pt-10 md:pt-18">
       <SectionContent section={section} />
     </SectionContainer>
   )

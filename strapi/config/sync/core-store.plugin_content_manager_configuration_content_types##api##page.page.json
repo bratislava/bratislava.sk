@@ -234,6 +234,21 @@
           "sortable": false
         }
       },
+      "adminGroups": {
+        "edit": {
+          "label": "adminGroups",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "title"
+        },
+        "list": {
+          "label": "adminGroups",
+          "searchable": false,
+          "sortable": false
+        }
+      },
       "createdAt": {
         "edit": {
           "label": "createdAt",
@@ -294,6 +309,12 @@
       }
     },
     "layouts": {
+      "list": [
+        "slug",
+        "title",
+        "updatedAt",
+        "parentPage"
+      ],
       "edit": [
         [
           {
@@ -382,13 +403,13 @@
             "name": "alias",
             "size": 12
           }
+        ],
+        [
+          {
+            "name": "adminGroups",
+            "size": 6
+          }
         ]
-      ],
-      "list": [
-        "slug",
-        "title",
-        "updatedAt",
-        "parentPage"
       ]
     }
   },
