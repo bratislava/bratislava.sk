@@ -48,20 +48,6 @@
           "sortable": false
         }
       },
-      "hasBackground": {
-        "edit": {
-          "label": "hasBackground",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "hasBackground",
-          "searchable": true,
-          "sortable": true
-        }
-      },
       "addressContacts": {
         "edit": {
           "label": "Adresy",
@@ -145,27 +131,12 @@
           "searchable": false,
           "sortable": false
         }
-      },
-      "type": {
-        "edit": {
-          "label": "type",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "type",
-          "searchable": true,
-          "sortable": true
-        }
       }
     },
     "layouts": {
       "list": [
         "id",
         "title",
-        "hasBackground",
         "addressContacts"
       ],
       "edit": [
@@ -215,16 +186,6 @@
           {
             "name": "personContacts",
             "size": 12
-          }
-        ],
-        [
-          {
-            "name": "type",
-            "size": 6
-          },
-          {
-            "name": "hasBackground",
-            "size": 4
           }
         ]
       ]

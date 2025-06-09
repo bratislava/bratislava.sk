@@ -61,20 +61,6 @@
           "searchable": true,
           "sortable": true
         }
-      },
-      "hasBackground": {
-        "edit": {
-          "label": "hasBackground",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "hasBackground",
-          "searchable": true,
-          "sortable": true
-        }
       }
     },
     "layouts": {
@@ -100,10 +86,6 @@
           }
         ],
         [
-          {
-            "name": "hasBackground",
-            "size": 4
-          },
           {
             "name": "single_adult_value",
             "size": 4
