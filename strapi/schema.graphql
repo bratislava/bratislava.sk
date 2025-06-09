@@ -706,26 +706,6 @@ input ComponentBlocksProsAndConsCardInput {
   title: String
 }
 
-type ComponentBlocksTestimonialItem {
-  id: ID!
-  name: String!
-  quote: String!
-}
-
-input ComponentBlocksTestimonialItemFiltersInput {
-  and: [ComponentBlocksTestimonialItemFiltersInput]
-  name: StringFilterInput
-  not: ComponentBlocksTestimonialItemFiltersInput
-  or: [ComponentBlocksTestimonialItemFiltersInput]
-  quote: StringFilterInput
-}
-
-input ComponentBlocksTestimonialItemInput {
-  id: ID
-  name: String
-  quote: String
-}
-
 type ComponentBlocksTimelineItem {
   content: String
   id: ID!
@@ -1014,7 +994,6 @@ input ComponentSectionsBannerInput {
 type ComponentSectionsCalculator {
   another_adult_value: Float
   child_value: Float
-  hasBackground: Boolean
   id: ID!
   single_adult_value: Float
 }
@@ -1023,7 +1002,6 @@ input ComponentSectionsCalculatorFiltersInput {
   and: [ComponentSectionsCalculatorFiltersInput]
   another_adult_value: FloatFilterInput
   child_value: FloatFilterInput
-  hasBackground: BooleanFilterInput
   not: ComponentSectionsCalculatorFiltersInput
   or: [ComponentSectionsCalculatorFiltersInput]
   single_adult_value: FloatFilterInput
@@ -1032,7 +1010,6 @@ input ComponentSectionsCalculatorFiltersInput {
 input ComponentSectionsCalculatorInput {
   another_adult_value: Float
   child_value: Float
-  hasBackground: Boolean
   id: ID
   single_adult_value: Float
 }
@@ -1116,13 +1093,11 @@ type ComponentSectionsContactsSection {
   addressContacts(filters: ComponentBlocksContactCardFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksContactCard]
   description: String
   emailContacts(filters: ComponentBlocksContactCardFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksContactCard]
-  hasBackground: Boolean
   id: ID!
   openingHoursContacts(filters: ComponentBlocksContactCardFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksContactCard]
   personContacts(filters: ComponentBlocksContactPersonCardFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksContactPersonCard]
   phoneContacts(filters: ComponentBlocksContactCardFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksContactCard]
   title: String
-  type: ENUM_COMPONENTSECTIONSCONTACTSSECTION_TYPE!
   webContacts(filters: ComponentBlocksContactCardFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksContactCard]
 }
 
@@ -1131,14 +1106,12 @@ input ComponentSectionsContactsSectionFiltersInput {
   and: [ComponentSectionsContactsSectionFiltersInput]
   description: StringFilterInput
   emailContacts: ComponentBlocksContactCardFiltersInput
-  hasBackground: BooleanFilterInput
   not: ComponentSectionsContactsSectionFiltersInput
   openingHoursContacts: ComponentBlocksContactCardFiltersInput
   or: [ComponentSectionsContactsSectionFiltersInput]
   personContacts: ComponentBlocksContactPersonCardFiltersInput
   phoneContacts: ComponentBlocksContactCardFiltersInput
   title: StringFilterInput
-  type: StringFilterInput
   webContacts: ComponentBlocksContactCardFiltersInput
 }
 
@@ -1146,13 +1119,11 @@ input ComponentSectionsContactsSectionInput {
   addressContacts: [ComponentBlocksContactCardInput]
   description: String
   emailContacts: [ComponentBlocksContactCardInput]
-  hasBackground: Boolean
   id: ID
   openingHoursContacts: [ComponentBlocksContactCardInput]
   personContacts: [ComponentBlocksContactPersonCardInput]
   phoneContacts: [ComponentBlocksContactCardInput]
   title: String
-  type: ENUM_COMPONENTSECTIONSCONTACTSSECTION_TYPE
   webContacts: [ComponentBlocksContactCardInput]
 }
 
@@ -1666,32 +1637,6 @@ input ComponentSectionsSubpageListInput {
   subpageList: [ComponentBlocksPageLinkInput]
 }
 
-type ComponentSectionsTestimonials {
-  hasBackground: Boolean
-  id: ID!
-  testimonials(filters: ComponentBlocksTestimonialItemFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksTestimonialItem]!
-  text: String
-  title: String
-}
-
-input ComponentSectionsTestimonialsFiltersInput {
-  and: [ComponentSectionsTestimonialsFiltersInput]
-  hasBackground: BooleanFilterInput
-  not: ComponentSectionsTestimonialsFiltersInput
-  or: [ComponentSectionsTestimonialsFiltersInput]
-  testimonials: ComponentBlocksTestimonialItemFiltersInput
-  text: StringFilterInput
-  title: StringFilterInput
-}
-
-input ComponentSectionsTestimonialsInput {
-  hasBackground: Boolean
-  id: ID
-  testimonials: [ComponentBlocksTestimonialItemInput]
-  text: String
-  title: String
-}
-
 type ComponentSectionsTextWithImage {
   content: String
   id: ID!
@@ -1826,23 +1771,6 @@ input ComponentSectionsVideosInput {
   subtitle: String
   title: String
   videos: [ComponentBlocksVideoInput]
-}
-
-type ComponentSectionsWaves {
-  id: ID!
-  position: ENUM_COMPONENTSECTIONSWAVES_POSITION
-}
-
-input ComponentSectionsWavesFiltersInput {
-  and: [ComponentSectionsWavesFiltersInput]
-  not: ComponentSectionsWavesFiltersInput
-  or: [ComponentSectionsWavesFiltersInput]
-  position: StringFilterInput
-}
-
-input ComponentSectionsWavesInput {
-  id: ID
-  position: ENUM_COMPONENTSECTIONSWAVES_POSITION
 }
 
 type ComponentTaxAdministratorsTaxAdministrator {
@@ -2041,11 +1969,6 @@ enum ENUM_COMPONENTSECTIONSCOMPARISONSECTION_TEXTALIGN {
   left
 }
 
-enum ENUM_COMPONENTSECTIONSCONTACTSSECTION_TYPE {
-  horizontal
-  vertical
-}
-
 enum ENUM_COMPONENTSECTIONSDIVIDER_STYLE {
   bicykel_02_full_width
   budovy_04_full_width
@@ -2112,11 +2035,6 @@ enum ENUM_COMPONENTSECTIONSTEXTWITHIMAGE_IMAGEASPECTRATIO {
 enum ENUM_COMPONENTSECTIONSTEXTWITHIMAGE_IMAGEPOSITION {
   left
   right
-}
-
-enum ENUM_COMPONENTSECTIONSWAVES_POSITION {
-  bottom
-  top
 }
 
 enum ENUM_PAGECATEGORY_COLOR {
@@ -2413,7 +2331,7 @@ type GeneralRelationResponseCollection {
   data: [GeneralEntity!]!
 }
 
-union GenericMorph = AdminGroup | Alert | Article | BlogPost | ComponentAccordionItemsFlatText | ComponentAccordionItemsInstitution | ComponentAccordionItemsInstitutionNarrow | ComponentBlocksColumnsItem | ComponentBlocksCommonLink | ComponentBlocksComparisonCard | ComponentBlocksComparisonItem | ComponentBlocksContactCard | ComponentBlocksContactPersonCard | ComponentBlocksFile | ComponentBlocksFileItem | ComponentBlocksFooterColumn | ComponentBlocksHomepageHighlightsItem | ComponentBlocksIconWithTitleAndDescription | ComponentBlocksInBa | ComponentBlocksNumericalListItem | ComponentBlocksPageLink | ComponentBlocksPartner | ComponentBlocksProsAndConsCard | ComponentBlocksTestimonialItem | ComponentBlocksTimelineItem | ComponentBlocksTopServicesItem | ComponentBlocksVideo | ComponentGeneralHeader | ComponentGeneralHeaderLink | ComponentMenuMenuItem | ComponentMenuMenuLink | ComponentMenuMenuSection | ComponentSectionsAccordion | ComponentSectionsArticles | ComponentSectionsBanner | ComponentSectionsCalculator | ComponentSectionsColumnedText | ComponentSectionsColumns | ComponentSectionsComparisonSection | ComponentSectionsContactsSection | ComponentSectionsDivider | ComponentSectionsFaqCategories | ComponentSectionsFaqs | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsHomepageEvents | ComponentSectionsHomepageHighlights | ComponentSectionsHomepageMayorAndCouncil | ComponentSectionsHomepageTabs | ComponentSectionsIconTitleDesc | ComponentSectionsIframe | ComponentSectionsInbaArticlesList | ComponentSectionsInbaReleases | ComponentSectionsLinks | ComponentSectionsNarrowText | ComponentSectionsNumericalList | ComponentSectionsOfficialBoard | ComponentSectionsOrganizationalStructure | ComponentSectionsPartners | ComponentSectionsProsAndConsSection | ComponentSectionsRegulations | ComponentSectionsRegulationsList | ComponentSectionsSubpageList | ComponentSectionsTestimonials | ComponentSectionsTextWithImage | ComponentSectionsTextWithImageOverlapped | ComponentSectionsTimeline | ComponentSectionsTootootEvents | ComponentSectionsTopServices | ComponentSectionsVideos | ComponentSectionsWaves | ComponentTaxAdministratorsTaxAdministrator | Faq | FaqCategory | Footer | General | Homepage | I18NLocale | InbaArticle | InbaRelease | InbaTag | Menu | Page | PageCategory | Regulation | Tag | TaxAdministratorsList | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
+union GenericMorph = AdminGroup | Alert | Article | BlogPost | ComponentAccordionItemsFlatText | ComponentAccordionItemsInstitution | ComponentAccordionItemsInstitutionNarrow | ComponentBlocksColumnsItem | ComponentBlocksCommonLink | ComponentBlocksComparisonCard | ComponentBlocksComparisonItem | ComponentBlocksContactCard | ComponentBlocksContactPersonCard | ComponentBlocksFile | ComponentBlocksFileItem | ComponentBlocksFooterColumn | ComponentBlocksHomepageHighlightsItem | ComponentBlocksIconWithTitleAndDescription | ComponentBlocksInBa | ComponentBlocksNumericalListItem | ComponentBlocksPageLink | ComponentBlocksPartner | ComponentBlocksProsAndConsCard | ComponentBlocksTimelineItem | ComponentBlocksTopServicesItem | ComponentBlocksVideo | ComponentGeneralHeader | ComponentGeneralHeaderLink | ComponentMenuMenuItem | ComponentMenuMenuLink | ComponentMenuMenuSection | ComponentSectionsAccordion | ComponentSectionsArticles | ComponentSectionsBanner | ComponentSectionsCalculator | ComponentSectionsColumnedText | ComponentSectionsColumns | ComponentSectionsComparisonSection | ComponentSectionsContactsSection | ComponentSectionsDivider | ComponentSectionsFaqCategories | ComponentSectionsFaqs | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsHomepageEvents | ComponentSectionsHomepageHighlights | ComponentSectionsHomepageMayorAndCouncil | ComponentSectionsHomepageTabs | ComponentSectionsIconTitleDesc | ComponentSectionsIframe | ComponentSectionsInbaArticlesList | ComponentSectionsInbaReleases | ComponentSectionsLinks | ComponentSectionsNarrowText | ComponentSectionsNumericalList | ComponentSectionsOfficialBoard | ComponentSectionsOrganizationalStructure | ComponentSectionsPartners | ComponentSectionsProsAndConsSection | ComponentSectionsRegulations | ComponentSectionsRegulationsList | ComponentSectionsSubpageList | ComponentSectionsTextWithImage | ComponentSectionsTextWithImageOverlapped | ComponentSectionsTimeline | ComponentSectionsTootootEvents | ComponentSectionsTopServices | ComponentSectionsVideos | ComponentTaxAdministratorsTaxAdministrator | Faq | FaqCategory | Footer | General | Homepage | I18NLocale | InbaArticle | InbaRelease | InbaTag | Menu | Page | PageCategory | Regulation | Tag | TaxAdministratorsList | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
 
 type Homepage {
   createdAt: DateTime
@@ -3112,7 +3030,7 @@ type PageRelationResponseCollection {
   data: [PageEntity!]!
 }
 
-union PageSectionsDynamicZone = ComponentSectionsAccordion | ComponentSectionsArticles | ComponentSectionsBanner | ComponentSectionsCalculator | ComponentSectionsColumnedText | ComponentSectionsColumns | ComponentSectionsComparisonSection | ComponentSectionsContactsSection | ComponentSectionsDivider | ComponentSectionsFaqCategories | ComponentSectionsFaqs | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsIconTitleDesc | ComponentSectionsIframe | ComponentSectionsInbaArticlesList | ComponentSectionsInbaReleases | ComponentSectionsLinks | ComponentSectionsNarrowText | ComponentSectionsNumericalList | ComponentSectionsOfficialBoard | ComponentSectionsOrganizationalStructure | ComponentSectionsPartners | ComponentSectionsProsAndConsSection | ComponentSectionsRegulations | ComponentSectionsRegulationsList | ComponentSectionsTestimonials | ComponentSectionsTextWithImage | ComponentSectionsTextWithImageOverlapped | ComponentSectionsTimeline | ComponentSectionsTootootEvents | ComponentSectionsVideos | ComponentSectionsWaves | Error
+union PageSectionsDynamicZone = ComponentSectionsAccordion | ComponentSectionsArticles | ComponentSectionsBanner | ComponentSectionsCalculator | ComponentSectionsColumnedText | ComponentSectionsColumns | ComponentSectionsComparisonSection | ComponentSectionsContactsSection | ComponentSectionsDivider | ComponentSectionsFaqCategories | ComponentSectionsFaqs | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsIconTitleDesc | ComponentSectionsIframe | ComponentSectionsInbaArticlesList | ComponentSectionsInbaReleases | ComponentSectionsLinks | ComponentSectionsNarrowText | ComponentSectionsNumericalList | ComponentSectionsOfficialBoard | ComponentSectionsOrganizationalStructure | ComponentSectionsPartners | ComponentSectionsProsAndConsSection | ComponentSectionsRegulations | ComponentSectionsRegulationsList | ComponentSectionsTextWithImage | ComponentSectionsTextWithImageOverlapped | ComponentSectionsTimeline | ComponentSectionsTootootEvents | ComponentSectionsVideos | Error
 
 scalar PageSectionsDynamicZoneInput
 

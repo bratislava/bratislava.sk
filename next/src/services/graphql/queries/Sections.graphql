@@ -9,21 +9,6 @@ fragment IconTitleDescriptionBlock on ComponentBlocksIconWithTitleAndDescription
   }
 }
 
-fragment TestimonialItemBlock on ComponentBlocksTestimonialItem {
-  id
-  name
-  quote
-}
-
-fragment TestimonialsSection on ComponentSectionsTestimonials {
-  title
-  text
-  hasBackground
-  testimonials {
-    ...TestimonialItemBlock
-  }
-}
-
 fragment TimelineItemBlock on ComponentBlocksTimelineItem {
   id
   title
@@ -174,10 +159,6 @@ fragment NarrowTextSection on ComponentSectionsNarrowText {
   align
 }
 
-fragment WavesSection on ComponentSectionsWaves {
-  position
-}
-
 fragment LinksSection on ComponentSectionsLinks {
   title
   pageLinks(pagination: { limit: -1 }) {
@@ -239,7 +220,6 @@ fragment AccordionSection on ComponentSectionsAccordion {
 }
 
 fragment CalculatorSection on ComponentSectionsCalculator {
-  hasBackground
   single_adult_value
   another_adult_value
   child_value
@@ -352,13 +332,11 @@ fragment BannerSection on ComponentSectionsBanner {
 }
 
 fragment ContactCardBlock on ComponentBlocksContactCard {
-  id
   overrideLabel
   value
 }
 
 fragment ContactPersonCardBlock on ComponentBlocksContactPersonCard {
-  id
   title
   subtext
   email
@@ -369,7 +347,6 @@ fragment ContactsSection on ComponentSectionsContactsSection {
   id
   title
   description
-  hasBackground
   addressContacts {
     ...ContactCardBlock
   }
@@ -388,7 +365,6 @@ fragment ContactsSection on ComponentSectionsContactsSection {
   personContacts {
     ...ContactPersonCardBlock
   }
-  type
 }
 
 fragment RegulationsSection on ComponentSectionsRegulations {
@@ -490,10 +466,6 @@ fragment Sections on PageSectionsDynamicZone {
     ...NarrowTextSection
   }
 
-  ... on ComponentSectionsWaves {
-    ...WavesSection
-  }
-
   ... on ComponentSectionsLinks {
     ...LinksSection
   }
@@ -556,10 +528,6 @@ fragment Sections on PageSectionsDynamicZone {
 
   ... on ComponentSectionsRegulations {
     ...RegulationsSection
-  }
-
-  ... on ComponentSectionsTestimonials {
-    ...TestimonialsSection
   }
 
   ... on ComponentSectionsFaqs {

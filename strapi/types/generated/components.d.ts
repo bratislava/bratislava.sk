@@ -251,17 +251,6 @@ export interface BlocksProsAndConsCard extends Schema.Component {
   }
 }
 
-export interface BlocksTestimonialItem extends Schema.Component {
-  collectionName: 'components_blocks_testimonial_items'
-  info: {
-    displayName: 'testimonial item'
-  }
-  attributes: {
-    name: Attribute.String & Attribute.Required
-    quote: Attribute.Text & Attribute.Required
-  }
-}
-
 export interface BlocksTimelineItem extends Schema.Component {
   collectionName: 'components_blocks_timeline_items'
   info: {
@@ -495,12 +484,12 @@ export interface SectionsBanner extends Schema.Component {
 export interface SectionsCalculator extends Schema.Component {
   collectionName: 'components_sections_calculators'
   info: {
+    description: ''
     displayName: 'Calculator'
   }
   attributes: {
     another_adult_value: Attribute.Decimal
     child_value: Attribute.Decimal
-    hasBackground: Attribute.Boolean
     single_adult_value: Attribute.Decimal
   }
 }
@@ -577,20 +566,16 @@ export interface SectionsContactsSection extends Schema.Component {
   collectionName: 'components_sections_contacts_sections'
   info: {
     description: ''
-    displayName: 'Contacts section'
+    displayName: 'Contacts'
   }
   attributes: {
     addressContacts: Attribute.Component<'blocks.contact-card', true>
     description: Attribute.RichText
     emailContacts: Attribute.Component<'blocks.contact-card', true>
-    hasBackground: Attribute.Boolean
     openingHoursContacts: Attribute.Component<'blocks.contact-card', true>
     personContacts: Attribute.Component<'blocks.contact-person-card', true>
     phoneContacts: Attribute.Component<'blocks.contact-card', true>
     title: Attribute.String
-    type: Attribute.Enumeration<['horizontal', 'vertical']> &
-      Attribute.Required &
-      Attribute.DefaultTo<'horizontal'>
     webContacts: Attribute.Component<'blocks.contact-card', true>
   }
 }
@@ -910,27 +895,6 @@ export interface SectionsSubpageList extends Schema.Component {
   }
 }
 
-export interface SectionsTestimonials extends Schema.Component {
-  collectionName: 'components_sections_testimonials'
-  info: {
-    description: ''
-    displayName: 'Testimonials'
-  }
-  attributes: {
-    hasBackground: Attribute.Boolean
-    testimonials: Attribute.Component<'blocks.testimonial-item', true> &
-      Attribute.Required &
-      Attribute.SetMinMax<
-        {
-          min: 1
-        },
-        number
-      >
-    text: Attribute.String
-    title: Attribute.String
-  }
-}
-
 export interface SectionsTextWithImage extends Schema.Component {
   collectionName: 'components_sections_text_with_images'
   info: {
@@ -1026,16 +990,6 @@ export interface SectionsVideos extends Schema.Component {
   }
 }
 
-export interface SectionsWaves extends Schema.Component {
-  collectionName: 'components_sections_waves'
-  info: {
-    displayName: 'Waves'
-  }
-  attributes: {
-    position: Attribute.Enumeration<['top', 'bottom']>
-  }
-}
-
 export interface TaxAdministratorsTaxAdministrator extends Schema.Component {
   collectionName: 'components_tax_administrators_tax_administrators'
   info: {
@@ -1073,7 +1027,6 @@ declare module '@strapi/types' {
       'blocks.page-link': BlocksPageLink
       'blocks.partner': BlocksPartner
       'blocks.pros-and-cons-card': BlocksProsAndConsCard
-      'blocks.testimonial-item': BlocksTestimonialItem
       'blocks.timeline-item': BlocksTimelineItem
       'blocks.top-services-item': BlocksTopServicesItem
       'blocks.video': BlocksVideo
@@ -1113,14 +1066,12 @@ declare module '@strapi/types' {
       'sections.regulations': SectionsRegulations
       'sections.regulations-list': SectionsRegulationsList
       'sections.subpage-list': SectionsSubpageList
-      'sections.testimonials': SectionsTestimonials
       'sections.text-with-image': SectionsTextWithImage
       'sections.text-with-image-overlapped': SectionsTextWithImageOverlapped
       'sections.timeline': SectionsTimeline
       'sections.tootoot-events': SectionsTootootEvents
       'sections.top-services': SectionsTopServices
       'sections.videos': SectionsVideos
-      'sections.waves': SectionsWaves
       'tax-administrators.tax-administrator': TaxAdministratorsTaxAdministrator
     }
   }

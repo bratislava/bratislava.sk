@@ -1,7 +1,8 @@
 {
   "collectionName": "components_sections_calculators",
   "info": {
-    "displayName": "Calculator"
+    "displayName": "Calculator",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -13,9 +14,6 @@
     },
     "child_value": {
       "type": "decimal"
-    },
-    "hasBackground": {
-      "type": "boolean"
     }
   }
 }

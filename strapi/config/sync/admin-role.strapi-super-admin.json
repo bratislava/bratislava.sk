@@ -5,6 +5,55 @@
   "permissions": [
     {
       "action": "plugin::content-manager.explorer.create",
+      "subject": "api::admin-group.admin-group",
+      "properties": {
+        "fields": [
+          "title",
+          "adminGroupId",
+          "articles",
+          "pages"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": {}
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "subject": "api::admin-group.admin-group",
+      "properties": {},
+      "conditions": [],
+      "actionParameters": {}
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::admin-group.admin-group",
+      "properties": {
+        "fields": [
+          "title",
+          "adminGroupId",
+          "articles",
+          "pages"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": {}
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::admin-group.admin-group",
+      "properties": {
+        "fields": [
+          "title",
+          "adminGroupId",
+          "articles",
+          "pages"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": {}
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
       "subject": "api::alert.alert",
       "properties": {
         "fields": [
@@ -75,7 +124,8 @@
           "content",
           "files.title",
           "files.media",
-          "gallery"
+          "gallery",
+          "adminGroups"
         ],
         "locales": [
           "en",
@@ -124,7 +174,8 @@
           "content",
           "files.title",
           "files.media",
-          "gallery"
+          "gallery",
+          "adminGroups"
         ],
         "locales": [
           "en",
@@ -149,7 +200,8 @@
           "content",
           "files.title",
           "files.media",
-          "gallery"
+          "gallery",
+          "adminGroups"
         ],
         "locales": [
           "en",
@@ -1282,7 +1334,8 @@
           "sections",
           "parentPage",
           "childPages",
-          "relatedContents"
+          "relatedContents",
+          "adminGroups"
         ],
         "locales": [
           "en",
@@ -1339,7 +1392,8 @@
           "sections",
           "parentPage",
           "childPages",
-          "relatedContents"
+          "relatedContents",
+          "adminGroups"
         ],
         "locales": [
           "en",
@@ -1372,7 +1426,8 @@
           "sections",
           "parentPage",
           "childPages",
-          "relatedContents"
+          "relatedContents",
+          "adminGroups"
         ],
         "locales": [
           "en",

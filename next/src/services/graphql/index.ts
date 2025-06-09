@@ -38,6 +38,72 @@ export type Scalars = {
   Upload: { input: any; output: any }
 }
 
+export type AdminGroup = {
+  __typename?: 'AdminGroup'
+  adminGroupId?: Maybe<Scalars['String']['output']>
+  articles?: Maybe<ArticleRelationResponseCollection>
+  createdAt?: Maybe<Scalars['DateTime']['output']>
+  pages?: Maybe<PageRelationResponseCollection>
+  title?: Maybe<Scalars['String']['output']>
+  updatedAt?: Maybe<Scalars['DateTime']['output']>
+}
+
+export type AdminGroupArticlesArgs = {
+  filters?: InputMaybe<ArticleFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  publicationState?: InputMaybe<PublicationState>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type AdminGroupPagesArgs = {
+  filters?: InputMaybe<PageFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  publicationState?: InputMaybe<PublicationState>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type AdminGroupEntity = {
+  __typename?: 'AdminGroupEntity'
+  attributes?: Maybe<AdminGroup>
+  id?: Maybe<Scalars['ID']['output']>
+}
+
+export type AdminGroupEntityResponse = {
+  __typename?: 'AdminGroupEntityResponse'
+  data?: Maybe<AdminGroupEntity>
+}
+
+export type AdminGroupEntityResponseCollection = {
+  __typename?: 'AdminGroupEntityResponseCollection'
+  data: Array<AdminGroupEntity>
+  meta: ResponseCollectionMeta
+}
+
+export type AdminGroupFiltersInput = {
+  adminGroupId?: InputMaybe<StringFilterInput>
+  and?: InputMaybe<Array<InputMaybe<AdminGroupFiltersInput>>>
+  articles?: InputMaybe<ArticleFiltersInput>
+  createdAt?: InputMaybe<DateTimeFilterInput>
+  id?: InputMaybe<IdFilterInput>
+  not?: InputMaybe<AdminGroupFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<AdminGroupFiltersInput>>>
+  pages?: InputMaybe<PageFiltersInput>
+  title?: InputMaybe<StringFilterInput>
+  updatedAt?: InputMaybe<DateTimeFilterInput>
+}
+
+export type AdminGroupInput = {
+  adminGroupId?: InputMaybe<Scalars['String']['input']>
+  articles?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
+  pages?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
+  title?: InputMaybe<Scalars['String']['input']>
+}
+
+export type AdminGroupRelationResponseCollection = {
+  __typename?: 'AdminGroupRelationResponseCollection'
+  data: Array<AdminGroupEntity>
+}
+
 export type Alert = {
   __typename?: 'Alert'
   createdAt?: Maybe<Scalars['DateTime']['output']>
@@ -87,6 +153,7 @@ export type AlertRelationResponseCollection = {
 export type Article = {
   __typename?: 'Article'
   addedAt: Scalars['DateTime']['output']
+  adminGroups?: Maybe<AdminGroupRelationResponseCollection>
   alias?: Maybe<Scalars['String']['output']>
   content?: Maybe<Scalars['String']['output']>
   coverMedia?: Maybe<UploadFileEntityResponse>
@@ -101,6 +168,12 @@ export type Article = {
   tag?: Maybe<TagEntityResponse>
   title: Scalars['String']['output']
   updatedAt?: Maybe<Scalars['DateTime']['output']>
+}
+
+export type ArticleAdminGroupsArgs = {
+  filters?: InputMaybe<AdminGroupFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
 }
 
 export type ArticleFilesArgs = {
@@ -141,6 +214,7 @@ export type ArticleEntityResponseCollection = {
 
 export type ArticleFiltersInput = {
   addedAt?: InputMaybe<DateTimeFilterInput>
+  adminGroups?: InputMaybe<AdminGroupFiltersInput>
   alias?: InputMaybe<StringFilterInput>
   and?: InputMaybe<Array<InputMaybe<ArticleFiltersInput>>>
   content?: InputMaybe<StringFilterInput>
@@ -161,6 +235,7 @@ export type ArticleFiltersInput = {
 
 export type ArticleInput = {
   addedAt?: InputMaybe<Scalars['DateTime']['input']>
+  adminGroups?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
   alias?: InputMaybe<Scalars['String']['input']>
   content?: InputMaybe<Scalars['String']['input']>
   coverMedia?: InputMaybe<Scalars['ID']['input']>
@@ -778,27 +853,6 @@ export type ComponentBlocksProsAndConsCardInput = {
   title?: InputMaybe<Scalars['String']['input']>
 }
 
-export type ComponentBlocksTestimonialItem = {
-  __typename?: 'ComponentBlocksTestimonialItem'
-  id: Scalars['ID']['output']
-  name: Scalars['String']['output']
-  quote: Scalars['String']['output']
-}
-
-export type ComponentBlocksTestimonialItemFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<ComponentBlocksTestimonialItemFiltersInput>>>
-  name?: InputMaybe<StringFilterInput>
-  not?: InputMaybe<ComponentBlocksTestimonialItemFiltersInput>
-  or?: InputMaybe<Array<InputMaybe<ComponentBlocksTestimonialItemFiltersInput>>>
-  quote?: InputMaybe<StringFilterInput>
-}
-
-export type ComponentBlocksTestimonialItemInput = {
-  id?: InputMaybe<Scalars['ID']['input']>
-  name?: InputMaybe<Scalars['String']['input']>
-  quote?: InputMaybe<Scalars['String']['input']>
-}
-
 export type ComponentBlocksTimelineItem = {
   __typename?: 'ComponentBlocksTimelineItem'
   content?: Maybe<Scalars['String']['output']>
@@ -1135,7 +1189,6 @@ export type ComponentSectionsCalculator = {
   __typename?: 'ComponentSectionsCalculator'
   another_adult_value?: Maybe<Scalars['Float']['output']>
   child_value?: Maybe<Scalars['Float']['output']>
-  hasBackground?: Maybe<Scalars['Boolean']['output']>
   id: Scalars['ID']['output']
   single_adult_value?: Maybe<Scalars['Float']['output']>
 }
@@ -1144,7 +1197,6 @@ export type ComponentSectionsCalculatorFiltersInput = {
   and?: InputMaybe<Array<InputMaybe<ComponentSectionsCalculatorFiltersInput>>>
   another_adult_value?: InputMaybe<FloatFilterInput>
   child_value?: InputMaybe<FloatFilterInput>
-  hasBackground?: InputMaybe<BooleanFilterInput>
   not?: InputMaybe<ComponentSectionsCalculatorFiltersInput>
   or?: InputMaybe<Array<InputMaybe<ComponentSectionsCalculatorFiltersInput>>>
   single_adult_value?: InputMaybe<FloatFilterInput>
@@ -1153,7 +1205,6 @@ export type ComponentSectionsCalculatorFiltersInput = {
 export type ComponentSectionsCalculatorInput = {
   another_adult_value?: InputMaybe<Scalars['Float']['input']>
   child_value?: InputMaybe<Scalars['Float']['input']>
-  hasBackground?: InputMaybe<Scalars['Boolean']['input']>
   id?: InputMaybe<Scalars['ID']['input']>
   single_adult_value?: InputMaybe<Scalars['Float']['input']>
 }
@@ -1253,13 +1304,11 @@ export type ComponentSectionsContactsSection = {
   addressContacts?: Maybe<Array<Maybe<ComponentBlocksContactCard>>>
   description?: Maybe<Scalars['String']['output']>
   emailContacts?: Maybe<Array<Maybe<ComponentBlocksContactCard>>>
-  hasBackground?: Maybe<Scalars['Boolean']['output']>
   id: Scalars['ID']['output']
   openingHoursContacts?: Maybe<Array<Maybe<ComponentBlocksContactCard>>>
   personContacts?: Maybe<Array<Maybe<ComponentBlocksContactPersonCard>>>
   phoneContacts?: Maybe<Array<Maybe<ComponentBlocksContactCard>>>
   title?: Maybe<Scalars['String']['output']>
-  type: Enum_Componentsectionscontactssection_Type
   webContacts?: Maybe<Array<Maybe<ComponentBlocksContactCard>>>
 }
 
@@ -1304,14 +1353,12 @@ export type ComponentSectionsContactsSectionFiltersInput = {
   and?: InputMaybe<Array<InputMaybe<ComponentSectionsContactsSectionFiltersInput>>>
   description?: InputMaybe<StringFilterInput>
   emailContacts?: InputMaybe<ComponentBlocksContactCardFiltersInput>
-  hasBackground?: InputMaybe<BooleanFilterInput>
   not?: InputMaybe<ComponentSectionsContactsSectionFiltersInput>
   openingHoursContacts?: InputMaybe<ComponentBlocksContactCardFiltersInput>
   or?: InputMaybe<Array<InputMaybe<ComponentSectionsContactsSectionFiltersInput>>>
   personContacts?: InputMaybe<ComponentBlocksContactPersonCardFiltersInput>
   phoneContacts?: InputMaybe<ComponentBlocksContactCardFiltersInput>
   title?: InputMaybe<StringFilterInput>
-  type?: InputMaybe<StringFilterInput>
   webContacts?: InputMaybe<ComponentBlocksContactCardFiltersInput>
 }
 
@@ -1319,13 +1366,11 @@ export type ComponentSectionsContactsSectionInput = {
   addressContacts?: InputMaybe<Array<InputMaybe<ComponentBlocksContactCardInput>>>
   description?: InputMaybe<Scalars['String']['input']>
   emailContacts?: InputMaybe<Array<InputMaybe<ComponentBlocksContactCardInput>>>
-  hasBackground?: InputMaybe<Scalars['Boolean']['input']>
   id?: InputMaybe<Scalars['ID']['input']>
   openingHoursContacts?: InputMaybe<Array<InputMaybe<ComponentBlocksContactCardInput>>>
   personContacts?: InputMaybe<Array<InputMaybe<ComponentBlocksContactPersonCardInput>>>
   phoneContacts?: InputMaybe<Array<InputMaybe<ComponentBlocksContactCardInput>>>
   title?: InputMaybe<Scalars['String']['input']>
-  type?: InputMaybe<Enum_Componentsectionscontactssection_Type>
   webContacts?: InputMaybe<Array<InputMaybe<ComponentBlocksContactCardInput>>>
 }
 
@@ -1931,39 +1976,6 @@ export type ComponentSectionsSubpageListInput = {
   subpageList?: InputMaybe<Array<InputMaybe<ComponentBlocksPageLinkInput>>>
 }
 
-export type ComponentSectionsTestimonials = {
-  __typename?: 'ComponentSectionsTestimonials'
-  hasBackground?: Maybe<Scalars['Boolean']['output']>
-  id: Scalars['ID']['output']
-  testimonials: Array<Maybe<ComponentBlocksTestimonialItem>>
-  text?: Maybe<Scalars['String']['output']>
-  title?: Maybe<Scalars['String']['output']>
-}
-
-export type ComponentSectionsTestimonialsTestimonialsArgs = {
-  filters?: InputMaybe<ComponentBlocksTestimonialItemFiltersInput>
-  pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
-}
-
-export type ComponentSectionsTestimonialsFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<ComponentSectionsTestimonialsFiltersInput>>>
-  hasBackground?: InputMaybe<BooleanFilterInput>
-  not?: InputMaybe<ComponentSectionsTestimonialsFiltersInput>
-  or?: InputMaybe<Array<InputMaybe<ComponentSectionsTestimonialsFiltersInput>>>
-  testimonials?: InputMaybe<ComponentBlocksTestimonialItemFiltersInput>
-  text?: InputMaybe<StringFilterInput>
-  title?: InputMaybe<StringFilterInput>
-}
-
-export type ComponentSectionsTestimonialsInput = {
-  hasBackground?: InputMaybe<Scalars['Boolean']['input']>
-  id?: InputMaybe<Scalars['ID']['input']>
-  testimonials?: InputMaybe<Array<InputMaybe<ComponentBlocksTestimonialItemInput>>>
-  text?: InputMaybe<Scalars['String']['input']>
-  title?: InputMaybe<Scalars['String']['input']>
-}
-
 export type ComponentSectionsTextWithImage = {
   __typename?: 'ComponentSectionsTextWithImage'
   content?: Maybe<Scalars['String']['output']>
@@ -2134,24 +2146,6 @@ export type ComponentSectionsVideosInput = {
   subtitle?: InputMaybe<Scalars['String']['input']>
   title?: InputMaybe<Scalars['String']['input']>
   videos?: InputMaybe<Array<InputMaybe<ComponentBlocksVideoInput>>>
-}
-
-export type ComponentSectionsWaves = {
-  __typename?: 'ComponentSectionsWaves'
-  id: Scalars['ID']['output']
-  position?: Maybe<Enum_Componentsectionswaves_Position>
-}
-
-export type ComponentSectionsWavesFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<ComponentSectionsWavesFiltersInput>>>
-  not?: InputMaybe<ComponentSectionsWavesFiltersInput>
-  or?: InputMaybe<Array<InputMaybe<ComponentSectionsWavesFiltersInput>>>
-  position?: InputMaybe<StringFilterInput>
-}
-
-export type ComponentSectionsWavesInput = {
-  id?: InputMaybe<Scalars['ID']['input']>
-  position?: InputMaybe<Enum_Componentsectionswaves_Position>
 }
 
 export type ComponentTaxAdministratorsTaxAdministrator = {
@@ -2341,11 +2335,6 @@ export enum Enum_Componentsectionscomparisonsection_Textalign {
   Left = 'left',
 }
 
-export enum Enum_Componentsectionscontactssection_Type {
-  Horizontal = 'horizontal',
-  Vertical = 'vertical',
-}
-
 export enum Enum_Componentsectionsdivider_Style {
   Bicykel_02FullWidth = 'bicykel_02_full_width',
   Budovy_04FullWidth = 'budovy_04_full_width',
@@ -2412,11 +2401,6 @@ export enum Enum_Componentsectionstextwithimage_Imageaspectratio {
 export enum Enum_Componentsectionstextwithimage_Imageposition {
   Left = 'left',
   Right = 'right',
-}
-
-export enum Enum_Componentsectionswaves_Position {
-  Bottom = 'bottom',
-  Top = 'top',
 }
 
 export enum Enum_Pagecategory_Color {
@@ -2766,6 +2750,7 @@ export type GeneralRelationResponseCollection = {
 }
 
 export type GenericMorph =
+  | AdminGroup
   | Alert
   | Article
   | BlogPost
@@ -2788,7 +2773,6 @@ export type GenericMorph =
   | ComponentBlocksPageLink
   | ComponentBlocksPartner
   | ComponentBlocksProsAndConsCard
-  | ComponentBlocksTestimonialItem
   | ComponentBlocksTimelineItem
   | ComponentBlocksTopServicesItem
   | ComponentBlocksVideo
@@ -2828,14 +2812,12 @@ export type GenericMorph =
   | ComponentSectionsRegulations
   | ComponentSectionsRegulationsList
   | ComponentSectionsSubpageList
-  | ComponentSectionsTestimonials
   | ComponentSectionsTextWithImage
   | ComponentSectionsTextWithImageOverlapped
   | ComponentSectionsTimeline
   | ComponentSectionsTootootEvents
   | ComponentSectionsTopServices
   | ComponentSectionsVideos
-  | ComponentSectionsWaves
   | ComponentTaxAdministratorsTaxAdministrator
   | Faq
   | FaqCategory
@@ -3361,6 +3343,7 @@ export type Mutation = {
   __typename?: 'Mutation'
   /** Change user password. Confirm with the current password. */
   changePassword?: Maybe<UsersPermissionsLoginPayload>
+  createAdminGroup?: Maybe<AdminGroupEntityResponse>
   createAlertLocalization?: Maybe<AlertEntityResponse>
   createArticle?: Maybe<ArticleEntityResponse>
   createArticleLocalization?: Maybe<ArticleEntityResponse>
@@ -3392,6 +3375,7 @@ export type Mutation = {
   createUsersPermissionsRole?: Maybe<UsersPermissionsCreateRolePayload>
   /** Create a new user */
   createUsersPermissionsUser: UsersPermissionsUserEntityResponse
+  deleteAdminGroup?: Maybe<AdminGroupEntityResponse>
   deleteAlert?: Maybe<AlertEntityResponse>
   deleteArticle?: Maybe<ArticleEntityResponse>
   deleteBlogPost?: Maybe<BlogPostEntityResponse>
@@ -3426,6 +3410,7 @@ export type Mutation = {
   removeFile?: Maybe<UploadFileEntityResponse>
   /** Reset user password. Confirm with a code (resetToken from forgotPassword) */
   resetPassword?: Maybe<UsersPermissionsLoginPayload>
+  updateAdminGroup?: Maybe<AdminGroupEntityResponse>
   updateAlert?: Maybe<AlertEntityResponse>
   updateArticle?: Maybe<ArticleEntityResponse>
   updateBlogPost?: Maybe<BlogPostEntityResponse>
@@ -3457,6 +3442,10 @@ export type MutationChangePasswordArgs = {
   currentPassword: Scalars['String']['input']
   password: Scalars['String']['input']
   passwordConfirmation: Scalars['String']['input']
+}
+
+export type MutationCreateAdminGroupArgs = {
+  data: AdminGroupInput
 }
 
 export type MutationCreateAlertLocalizationArgs = {
@@ -3612,6 +3601,10 @@ export type MutationCreateUsersPermissionsUserArgs = {
   data: UsersPermissionsUserInput
 }
 
+export type MutationDeleteAdminGroupArgs = {
+  id: Scalars['ID']['input']
+}
+
 export type MutationDeleteAlertArgs = {
   locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
 }
@@ -3732,6 +3725,11 @@ export type MutationResetPasswordArgs = {
   code: Scalars['String']['input']
   password: Scalars['String']['input']
   passwordConfirmation: Scalars['String']['input']
+}
+
+export type MutationUpdateAdminGroupArgs = {
+  data: AdminGroupInput
+  id: Scalars['ID']['input']
 }
 
 export type MutationUpdateAlertArgs = {
@@ -3862,6 +3860,7 @@ export type MutationUploadArgs = {
 
 export type Page = {
   __typename?: 'Page'
+  adminGroups?: Maybe<AdminGroupRelationResponseCollection>
   alias?: Maybe<Scalars['String']['output']>
   childPages?: Maybe<PageRelationResponseCollection>
   createdAt?: Maybe<Scalars['DateTime']['output']>
@@ -3882,6 +3881,12 @@ export type Page = {
   subtext?: Maybe<Scalars['String']['output']>
   title: Scalars['String']['output']
   updatedAt?: Maybe<Scalars['DateTime']['output']>
+}
+
+export type PageAdminGroupsArgs = {
+  filters?: InputMaybe<AdminGroupFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
 }
 
 export type PageChildPagesArgs = {
@@ -4004,6 +4009,7 @@ export type PageEntityResponseCollection = {
 }
 
 export type PageFiltersInput = {
+  adminGroups?: InputMaybe<AdminGroupFiltersInput>
   alias?: InputMaybe<StringFilterInput>
   and?: InputMaybe<Array<InputMaybe<PageFiltersInput>>>
   childPages?: InputMaybe<PageFiltersInput>
@@ -4028,6 +4034,7 @@ export type PageFiltersInput = {
 }
 
 export type PageInput = {
+  adminGroups?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
   alias?: InputMaybe<Scalars['String']['input']>
   childPages?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
   headerLinks?: InputMaybe<Array<InputMaybe<ComponentBlocksCommonLinkInput>>>
@@ -4080,13 +4087,11 @@ export type PageSectionsDynamicZone =
   | ComponentSectionsProsAndConsSection
   | ComponentSectionsRegulations
   | ComponentSectionsRegulationsList
-  | ComponentSectionsTestimonials
   | ComponentSectionsTextWithImage
   | ComponentSectionsTextWithImageOverlapped
   | ComponentSectionsTimeline
   | ComponentSectionsTootootEvents
   | ComponentSectionsVideos
-  | ComponentSectionsWaves
   | Error
 
 export type Pagination = {
@@ -4111,6 +4116,8 @@ export enum PublicationState {
 
 export type Query = {
   __typename?: 'Query'
+  adminGroup?: Maybe<AdminGroupEntityResponse>
+  adminGroups?: Maybe<AdminGroupEntityResponseCollection>
   alert?: Maybe<AlertEntityResponse>
   article?: Maybe<ArticleEntityResponse>
   articles?: Maybe<ArticleEntityResponseCollection>
@@ -4150,6 +4157,16 @@ export type Query = {
   usersPermissionsRoles?: Maybe<UsersPermissionsRoleEntityResponseCollection>
   usersPermissionsUser?: Maybe<UsersPermissionsUserEntityResponse>
   usersPermissionsUsers?: Maybe<UsersPermissionsUserEntityResponseCollection>
+}
+
+export type QueryAdminGroupArgs = {
+  id?: InputMaybe<Scalars['ID']['input']>
+}
+
+export type QueryAdminGroupsArgs = {
+  filters?: InputMaybe<AdminGroupFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
 }
 
 export type QueryAlertArgs = {
@@ -8574,7 +8591,6 @@ export type PageEntityFragment = {
         }
       | {
           __typename: 'ComponentSectionsCalculator'
-          hasBackground?: boolean | null
           single_adult_value?: number | null
           another_adult_value?: number | null
           child_value?: number | null
@@ -8635,41 +8651,33 @@ export type PageEntityFragment = {
           id: string
           title?: string | null
           description?: string | null
-          hasBackground?: boolean | null
-          type: Enum_Componentsectionscontactssection_Type
           addressContacts?: Array<{
             __typename?: 'ComponentBlocksContactCard'
-            id: string
             overrideLabel?: string | null
             value: string
           } | null> | null
           openingHoursContacts?: Array<{
             __typename?: 'ComponentBlocksContactCard'
-            id: string
             overrideLabel?: string | null
             value: string
           } | null> | null
           emailContacts?: Array<{
             __typename?: 'ComponentBlocksContactCard'
-            id: string
             overrideLabel?: string | null
             value: string
           } | null> | null
           phoneContacts?: Array<{
             __typename?: 'ComponentBlocksContactCard'
-            id: string
             overrideLabel?: string | null
             value: string
           } | null> | null
           webContacts?: Array<{
             __typename?: 'ComponentBlocksContactCard'
-            id: string
             overrideLabel?: string | null
             value: string
           } | null> | null
           personContacts?: Array<{
             __typename?: 'ComponentBlocksContactPersonCard'
-            id: string
             title: string
             subtext?: string | null
             email?: string | null
@@ -9047,18 +9055,6 @@ export type PageEntityFragment = {
         }
       | { __typename: 'ComponentSectionsRegulationsList' }
       | {
-          __typename: 'ComponentSectionsTestimonials'
-          title?: string | null
-          text?: string | null
-          hasBackground?: boolean | null
-          testimonials: Array<{
-            __typename?: 'ComponentBlocksTestimonialItem'
-            id: string
-            name: string
-            quote: string
-          } | null>
-        }
-      | {
           __typename: 'ComponentSectionsTextWithImage'
           content?: string | null
           imagePosition: Enum_Componentsectionstextwithimage_Imageposition
@@ -9223,10 +9219,6 @@ export type PageEntityFragment = {
             speaker?: string | null
             url?: string | null
           } | null> | null
-        }
-      | {
-          __typename: 'ComponentSectionsWaves'
-          position?: Enum_Componentsectionswaves_Position | null
         }
       | { __typename: 'Error' }
       | null
@@ -9623,7 +9615,6 @@ export type PageBySlugQuery = {
             }
           | {
               __typename: 'ComponentSectionsCalculator'
-              hasBackground?: boolean | null
               single_adult_value?: number | null
               another_adult_value?: number | null
               child_value?: number | null
@@ -9684,41 +9675,33 @@ export type PageBySlugQuery = {
               id: string
               title?: string | null
               description?: string | null
-              hasBackground?: boolean | null
-              type: Enum_Componentsectionscontactssection_Type
               addressContacts?: Array<{
                 __typename?: 'ComponentBlocksContactCard'
-                id: string
                 overrideLabel?: string | null
                 value: string
               } | null> | null
               openingHoursContacts?: Array<{
                 __typename?: 'ComponentBlocksContactCard'
-                id: string
                 overrideLabel?: string | null
                 value: string
               } | null> | null
               emailContacts?: Array<{
                 __typename?: 'ComponentBlocksContactCard'
-                id: string
                 overrideLabel?: string | null
                 value: string
               } | null> | null
               phoneContacts?: Array<{
                 __typename?: 'ComponentBlocksContactCard'
-                id: string
                 overrideLabel?: string | null
                 value: string
               } | null> | null
               webContacts?: Array<{
                 __typename?: 'ComponentBlocksContactCard'
-                id: string
                 overrideLabel?: string | null
                 value: string
               } | null> | null
               personContacts?: Array<{
                 __typename?: 'ComponentBlocksContactPersonCard'
-                id: string
                 title: string
                 subtext?: string | null
                 email?: string | null
@@ -10104,18 +10087,6 @@ export type PageBySlugQuery = {
             }
           | { __typename: 'ComponentSectionsRegulationsList' }
           | {
-              __typename: 'ComponentSectionsTestimonials'
-              title?: string | null
-              text?: string | null
-              hasBackground?: boolean | null
-              testimonials: Array<{
-                __typename?: 'ComponentBlocksTestimonialItem'
-                id: string
-                name: string
-                quote: string
-              } | null>
-            }
-          | {
               __typename: 'ComponentSectionsTextWithImage'
               content?: string | null
               imagePosition: Enum_Componentsectionstextwithimage_Imageposition
@@ -10280,10 +10251,6 @@ export type PageBySlugQuery = {
                 speaker?: string | null
                 url?: string | null
               } | null> | null
-            }
-          | {
-              __typename: 'ComponentSectionsWaves'
-              position?: Enum_Componentsectionswaves_Position | null
             }
           | { __typename: 'Error' }
           | null
@@ -10712,7 +10679,6 @@ export type Dev_AllPagesQuery = {
             }
           | {
               __typename: 'ComponentSectionsCalculator'
-              hasBackground?: boolean | null
               single_adult_value?: number | null
               another_adult_value?: number | null
               child_value?: number | null
@@ -10773,41 +10739,33 @@ export type Dev_AllPagesQuery = {
               id: string
               title?: string | null
               description?: string | null
-              hasBackground?: boolean | null
-              type: Enum_Componentsectionscontactssection_Type
               addressContacts?: Array<{
                 __typename?: 'ComponentBlocksContactCard'
-                id: string
                 overrideLabel?: string | null
                 value: string
               } | null> | null
               openingHoursContacts?: Array<{
                 __typename?: 'ComponentBlocksContactCard'
-                id: string
                 overrideLabel?: string | null
                 value: string
               } | null> | null
               emailContacts?: Array<{
                 __typename?: 'ComponentBlocksContactCard'
-                id: string
                 overrideLabel?: string | null
                 value: string
               } | null> | null
               phoneContacts?: Array<{
                 __typename?: 'ComponentBlocksContactCard'
-                id: string
                 overrideLabel?: string | null
                 value: string
               } | null> | null
               webContacts?: Array<{
                 __typename?: 'ComponentBlocksContactCard'
-                id: string
                 overrideLabel?: string | null
                 value: string
               } | null> | null
               personContacts?: Array<{
                 __typename?: 'ComponentBlocksContactPersonCard'
-                id: string
                 title: string
                 subtext?: string | null
                 email?: string | null
@@ -11193,18 +11151,6 @@ export type Dev_AllPagesQuery = {
             }
           | { __typename: 'ComponentSectionsRegulationsList' }
           | {
-              __typename: 'ComponentSectionsTestimonials'
-              title?: string | null
-              text?: string | null
-              hasBackground?: boolean | null
-              testimonials: Array<{
-                __typename?: 'ComponentBlocksTestimonialItem'
-                id: string
-                name: string
-                quote: string
-              } | null>
-            }
-          | {
               __typename: 'ComponentSectionsTextWithImage'
               content?: string | null
               imagePosition: Enum_Componentsectionstextwithimage_Imageposition
@@ -11369,10 +11315,6 @@ export type Dev_AllPagesQuery = {
                 speaker?: string | null
                 url?: string | null
               } | null> | null
-            }
-          | {
-              __typename: 'ComponentSectionsWaves'
-              position?: Enum_Componentsectionswaves_Position | null
             }
           | { __typename: 'Error' }
           | null
@@ -12417,26 +12359,6 @@ export type IconTitleDescriptionBlockFragment = {
   } | null
 }
 
-export type TestimonialItemBlockFragment = {
-  __typename?: 'ComponentBlocksTestimonialItem'
-  id: string
-  name: string
-  quote: string
-}
-
-export type TestimonialsSectionFragment = {
-  __typename?: 'ComponentSectionsTestimonials'
-  title?: string | null
-  text?: string | null
-  hasBackground?: boolean | null
-  testimonials: Array<{
-    __typename?: 'ComponentBlocksTestimonialItem'
-    id: string
-    name: string
-    quote: string
-  } | null>
-}
-
 export type TimelineItemBlockFragment = {
   __typename?: 'ComponentBlocksTimelineItem'
   id: string
@@ -12786,11 +12708,6 @@ export type NarrowTextSectionFragment = {
   align?: Enum_Componentsectionsnarrowtext_Align | null
 }
 
-export type WavesSectionFragment = {
-  __typename?: 'ComponentSectionsWaves'
-  position?: Enum_Componentsectionswaves_Position | null
-}
-
 export type LinksSectionFragment = {
   __typename?: 'ComponentSectionsLinks'
   title?: string | null
@@ -12947,7 +12864,6 @@ export type AccordionSectionFragment = {
 
 export type CalculatorSectionFragment = {
   __typename?: 'ComponentSectionsCalculator'
-  hasBackground?: boolean | null
   single_adult_value?: number | null
   another_adult_value?: number | null
   child_value?: number | null
@@ -13166,14 +13082,12 @@ export type BannerSectionFragment = {
 
 export type ContactCardBlockFragment = {
   __typename?: 'ComponentBlocksContactCard'
-  id: string
   overrideLabel?: string | null
   value: string
 }
 
 export type ContactPersonCardBlockFragment = {
   __typename?: 'ComponentBlocksContactPersonCard'
-  id: string
   title: string
   subtext?: string | null
   email?: string | null
@@ -13185,41 +13099,33 @@ export type ContactsSectionFragment = {
   id: string
   title?: string | null
   description?: string | null
-  hasBackground?: boolean | null
-  type: Enum_Componentsectionscontactssection_Type
   addressContacts?: Array<{
     __typename?: 'ComponentBlocksContactCard'
-    id: string
     overrideLabel?: string | null
     value: string
   } | null> | null
   openingHoursContacts?: Array<{
     __typename?: 'ComponentBlocksContactCard'
-    id: string
     overrideLabel?: string | null
     value: string
   } | null> | null
   emailContacts?: Array<{
     __typename?: 'ComponentBlocksContactCard'
-    id: string
     overrideLabel?: string | null
     value: string
   } | null> | null
   phoneContacts?: Array<{
     __typename?: 'ComponentBlocksContactCard'
-    id: string
     overrideLabel?: string | null
     value: string
   } | null> | null
   webContacts?: Array<{
     __typename?: 'ComponentBlocksContactCard'
-    id: string
     overrideLabel?: string | null
     value: string
   } | null> | null
   personContacts?: Array<{
     __typename?: 'ComponentBlocksContactPersonCard'
-    id: string
     title: string
     subtext?: string | null
     email?: string | null
@@ -13714,7 +13620,6 @@ type Sections_ComponentSectionsBanner_Fragment = {
 
 type Sections_ComponentSectionsCalculator_Fragment = {
   __typename: 'ComponentSectionsCalculator'
-  hasBackground?: boolean | null
   single_adult_value?: number | null
   another_adult_value?: number | null
   child_value?: number | null
@@ -13779,41 +13684,33 @@ type Sections_ComponentSectionsContactsSection_Fragment = {
   id: string
   title?: string | null
   description?: string | null
-  hasBackground?: boolean | null
-  type: Enum_Componentsectionscontactssection_Type
   addressContacts?: Array<{
     __typename?: 'ComponentBlocksContactCard'
-    id: string
     overrideLabel?: string | null
     value: string
   } | null> | null
   openingHoursContacts?: Array<{
     __typename?: 'ComponentBlocksContactCard'
-    id: string
     overrideLabel?: string | null
     value: string
   } | null> | null
   emailContacts?: Array<{
     __typename?: 'ComponentBlocksContactCard'
-    id: string
     overrideLabel?: string | null
     value: string
   } | null> | null
   phoneContacts?: Array<{
     __typename?: 'ComponentBlocksContactCard'
-    id: string
     overrideLabel?: string | null
     value: string
   } | null> | null
   webContacts?: Array<{
     __typename?: 'ComponentBlocksContactCard'
-    id: string
     overrideLabel?: string | null
     value: string
   } | null> | null
   personContacts?: Array<{
     __typename?: 'ComponentBlocksContactPersonCard'
-    id: string
     title: string
     subtext?: string | null
     email?: string | null
@@ -14220,19 +14117,6 @@ type Sections_ComponentSectionsRegulationsList_Fragment = {
   __typename: 'ComponentSectionsRegulationsList'
 }
 
-type Sections_ComponentSectionsTestimonials_Fragment = {
-  __typename: 'ComponentSectionsTestimonials'
-  title?: string | null
-  text?: string | null
-  hasBackground?: boolean | null
-  testimonials: Array<{
-    __typename?: 'ComponentBlocksTestimonialItem'
-    id: string
-    name: string
-    quote: string
-  } | null>
-}
-
 type Sections_ComponentSectionsTextWithImage_Fragment = {
   __typename: 'ComponentSectionsTextWithImage'
   content?: string | null
@@ -14404,11 +14288,6 @@ type Sections_ComponentSectionsVideos_Fragment = {
   } | null> | null
 }
 
-type Sections_ComponentSectionsWaves_Fragment = {
-  __typename: 'ComponentSectionsWaves'
-  position?: Enum_Componentsectionswaves_Position | null
-}
-
 type Sections_Error_Fragment = { __typename: 'Error' }
 
 export type SectionsFragment =
@@ -14438,13 +14317,11 @@ export type SectionsFragment =
   | Sections_ComponentSectionsProsAndConsSection_Fragment
   | Sections_ComponentSectionsRegulations_Fragment
   | Sections_ComponentSectionsRegulationsList_Fragment
-  | Sections_ComponentSectionsTestimonials_Fragment
   | Sections_ComponentSectionsTextWithImage_Fragment
   | Sections_ComponentSectionsTextWithImageOverlapped_Fragment
   | Sections_ComponentSectionsTimeline_Fragment
   | Sections_ComponentSectionsTootootEvents_Fragment
   | Sections_ComponentSectionsVideos_Fragment
-  | Sections_ComponentSectionsWaves_Fragment
   | Sections_Error_Fragment
 
 export type SubpageListPageHeaderSectionFragment = {
@@ -15258,11 +15135,6 @@ export const NarrowTextSectionFragmentDoc = gql`
     align
   }
 `
-export const WavesSectionFragmentDoc = gql`
-  fragment WavesSection on ComponentSectionsWaves {
-    position
-  }
-`
 export const PageLinkFragmentDoc = gql`
   fragment PageLink on ComponentBlocksPageLink {
     label: title
@@ -15360,7 +15232,6 @@ export const AccordionSectionFragmentDoc = gql`
 `
 export const CalculatorSectionFragmentDoc = gql`
   fragment CalculatorSection on ComponentSectionsCalculator {
-    hasBackground
     single_adult_value
     another_adult_value
     child_value
@@ -15523,14 +15394,12 @@ export const TimelineSectionFragmentDoc = gql`
 `
 export const ContactCardBlockFragmentDoc = gql`
   fragment ContactCardBlock on ComponentBlocksContactCard {
-    id
     overrideLabel
     value
   }
 `
 export const ContactPersonCardBlockFragmentDoc = gql`
   fragment ContactPersonCardBlock on ComponentBlocksContactPersonCard {
-    id
     title
     subtext
     email
@@ -15542,7 +15411,6 @@ export const ContactsSectionFragmentDoc = gql`
     id
     title
     description
-    hasBackground
     addressContacts {
       ...ContactCardBlock
     }
@@ -15561,7 +15429,6 @@ export const ContactsSectionFragmentDoc = gql`
     personContacts {
       ...ContactPersonCardBlock
     }
-    type
   }
   ${ContactCardBlockFragmentDoc}
   ${ContactPersonCardBlockFragmentDoc}
@@ -15676,24 +15543,6 @@ export const RegulationsSectionFragmentDoc = gql`
   }
   ${RegulationEntityFragmentDoc}
 `
-export const TestimonialItemBlockFragmentDoc = gql`
-  fragment TestimonialItemBlock on ComponentBlocksTestimonialItem {
-    id
-    name
-    quote
-  }
-`
-export const TestimonialsSectionFragmentDoc = gql`
-  fragment TestimonialsSection on ComponentSectionsTestimonials {
-    title
-    text
-    hasBackground
-    testimonials {
-      ...TestimonialItemBlock
-    }
-  }
-  ${TestimonialItemBlockFragmentDoc}
-`
 export const FaqEntityFragmentDoc = gql`
   fragment FaqEntity on FaqEntity {
     id
@@ -15799,9 +15648,6 @@ export const SectionsFragmentDoc = gql`
     ... on ComponentSectionsNarrowText {
       ...NarrowTextSection
     }
-    ... on ComponentSectionsWaves {
-      ...WavesSection
-    }
     ... on ComponentSectionsLinks {
       ...LinksSection
     }
@@ -15847,9 +15693,6 @@ export const SectionsFragmentDoc = gql`
     ... on ComponentSectionsRegulations {
       ...RegulationsSection
     }
-    ... on ComponentSectionsTestimonials {
-      ...TestimonialsSection
-    }
     ... on ComponentSectionsFaqs {
       ...FaqsSection
     }
@@ -15873,7 +15716,6 @@ export const SectionsFragmentDoc = gql`
   ${ColumnedTextSectionFragmentDoc}
   ${ColumnsSectionFragmentDoc}
   ${NarrowTextSectionFragmentDoc}
-  ${WavesSectionFragmentDoc}
   ${LinksSectionFragmentDoc}
   ${AccordionSectionFragmentDoc}
   ${CalculatorSectionFragmentDoc}
@@ -15889,7 +15731,6 @@ export const SectionsFragmentDoc = gql`
   ${TimelineSectionFragmentDoc}
   ${ContactsSectionFragmentDoc}
   ${RegulationsSectionFragmentDoc}
-  ${TestimonialsSectionFragmentDoc}
   ${FaqsSectionFragmentDoc}
   ${FaqCategoriesSectionFragmentDoc}
   ${TootootEventsSectionFragmentDoc}
