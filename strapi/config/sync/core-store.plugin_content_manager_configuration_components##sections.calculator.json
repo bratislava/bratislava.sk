@@ -84,22 +84,6 @@
             "name": "child_value",
             "size": 4
           }
-        ],
-        [
-          {
-            "name": "single_adult_value",
-            "size": 4
-          },
-          {
-            "name": "another_adult_value",
-            "size": 4
-          }
-        ],
-        [
-          {
-            "name": "child_value",
-            "size": 4
-          }
         ]
       ]
     },
