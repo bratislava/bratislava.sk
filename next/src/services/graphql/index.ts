@@ -1392,6 +1392,37 @@ export type ComponentSectionsDividerInput = {
   style?: InputMaybe<Enum_Componentsectionsdivider_Style>
 }
 
+export type ComponentSectionsDocuments = {
+  __typename?: 'ComponentSectionsDocuments'
+  documents?: Maybe<DocumentRelationResponseCollection>
+  id: Scalars['ID']['output']
+  text?: Maybe<Scalars['String']['output']>
+  title?: Maybe<Scalars['String']['output']>
+}
+
+export type ComponentSectionsDocumentsDocumentsArgs = {
+  filters?: InputMaybe<DocumentFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  publicationState?: InputMaybe<PublicationState>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type ComponentSectionsDocumentsFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentSectionsDocumentsFiltersInput>>>
+  documents?: InputMaybe<DocumentFiltersInput>
+  not?: InputMaybe<ComponentSectionsDocumentsFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<ComponentSectionsDocumentsFiltersInput>>>
+  text?: InputMaybe<StringFilterInput>
+  title?: InputMaybe<StringFilterInput>
+}
+
+export type ComponentSectionsDocumentsInput = {
+  documents?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
+  id?: InputMaybe<Scalars['ID']['input']>
+  text?: InputMaybe<Scalars['String']['input']>
+  title?: InputMaybe<Scalars['String']['input']>
+}
+
 export type ComponentSectionsFaqCategories = {
   __typename?: 'ComponentSectionsFaqCategories'
   faqCategories?: Maybe<FaqCategoryRelationResponseCollection>
@@ -2228,6 +2259,125 @@ export type DateTimeFilterInput = {
   startsWith?: InputMaybe<Scalars['DateTime']['input']>
 }
 
+export type Document = {
+  __typename?: 'Document'
+  createdAt?: Maybe<Scalars['DateTime']['output']>
+  description?: Maybe<Scalars['String']['output']>
+  documentCategory?: Maybe<DocumentCategoryEntityResponse>
+  files: UploadFileRelationResponseCollection
+  publishedAt?: Maybe<Scalars['DateTime']['output']>
+  slug: Scalars['String']['output']
+  title: Scalars['String']['output']
+  updatedAt?: Maybe<Scalars['DateTime']['output']>
+}
+
+export type DocumentFilesArgs = {
+  filters?: InputMaybe<UploadFileFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type DocumentCategory = {
+  __typename?: 'DocumentCategory'
+  createdAt?: Maybe<Scalars['DateTime']['output']>
+  documents?: Maybe<DocumentRelationResponseCollection>
+  slug: Scalars['String']['output']
+  title: Scalars['String']['output']
+  updatedAt?: Maybe<Scalars['DateTime']['output']>
+}
+
+export type DocumentCategoryDocumentsArgs = {
+  filters?: InputMaybe<DocumentFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  publicationState?: InputMaybe<PublicationState>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type DocumentCategoryEntity = {
+  __typename?: 'DocumentCategoryEntity'
+  attributes?: Maybe<DocumentCategory>
+  id?: Maybe<Scalars['ID']['output']>
+}
+
+export type DocumentCategoryEntityResponse = {
+  __typename?: 'DocumentCategoryEntityResponse'
+  data?: Maybe<DocumentCategoryEntity>
+}
+
+export type DocumentCategoryEntityResponseCollection = {
+  __typename?: 'DocumentCategoryEntityResponseCollection'
+  data: Array<DocumentCategoryEntity>
+  meta: ResponseCollectionMeta
+}
+
+export type DocumentCategoryFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<DocumentCategoryFiltersInput>>>
+  createdAt?: InputMaybe<DateTimeFilterInput>
+  documents?: InputMaybe<DocumentFiltersInput>
+  id?: InputMaybe<IdFilterInput>
+  not?: InputMaybe<DocumentCategoryFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<DocumentCategoryFiltersInput>>>
+  slug?: InputMaybe<StringFilterInput>
+  title?: InputMaybe<StringFilterInput>
+  updatedAt?: InputMaybe<DateTimeFilterInput>
+}
+
+export type DocumentCategoryInput = {
+  documents?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
+  slug?: InputMaybe<Scalars['String']['input']>
+  title?: InputMaybe<Scalars['String']['input']>
+}
+
+export type DocumentCategoryRelationResponseCollection = {
+  __typename?: 'DocumentCategoryRelationResponseCollection'
+  data: Array<DocumentCategoryEntity>
+}
+
+export type DocumentEntity = {
+  __typename?: 'DocumentEntity'
+  attributes?: Maybe<Document>
+  id?: Maybe<Scalars['ID']['output']>
+}
+
+export type DocumentEntityResponse = {
+  __typename?: 'DocumentEntityResponse'
+  data?: Maybe<DocumentEntity>
+}
+
+export type DocumentEntityResponseCollection = {
+  __typename?: 'DocumentEntityResponseCollection'
+  data: Array<DocumentEntity>
+  meta: ResponseCollectionMeta
+}
+
+export type DocumentFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<DocumentFiltersInput>>>
+  createdAt?: InputMaybe<DateTimeFilterInput>
+  description?: InputMaybe<StringFilterInput>
+  documentCategory?: InputMaybe<DocumentCategoryFiltersInput>
+  id?: InputMaybe<IdFilterInput>
+  not?: InputMaybe<DocumentFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<DocumentFiltersInput>>>
+  publishedAt?: InputMaybe<DateTimeFilterInput>
+  slug?: InputMaybe<StringFilterInput>
+  title?: InputMaybe<StringFilterInput>
+  updatedAt?: InputMaybe<DateTimeFilterInput>
+}
+
+export type DocumentInput = {
+  description?: InputMaybe<Scalars['String']['input']>
+  documentCategory?: InputMaybe<Scalars['ID']['input']>
+  files?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
+  publishedAt?: InputMaybe<Scalars['DateTime']['input']>
+  slug?: InputMaybe<Scalars['String']['input']>
+  title?: InputMaybe<Scalars['String']['input']>
+}
+
+export type DocumentRelationResponseCollection = {
+  __typename?: 'DocumentRelationResponseCollection'
+  data: Array<DocumentEntity>
+}
+
 export enum Enum_Componentaccordionitemsflattext_Align {
   Center = 'center',
   Left = 'left',
@@ -2790,6 +2940,7 @@ export type GenericMorph =
   | ComponentSectionsComparisonSection
   | ComponentSectionsContactsSection
   | ComponentSectionsDivider
+  | ComponentSectionsDocuments
   | ComponentSectionsFaqCategories
   | ComponentSectionsFaqs
   | ComponentSectionsFileList
@@ -2819,6 +2970,8 @@ export type GenericMorph =
   | ComponentSectionsTopServices
   | ComponentSectionsVideos
   | ComponentTaxAdministratorsTaxAdministrator
+  | Document
+  | DocumentCategory
   | Faq
   | FaqCategory
   | Footer
@@ -3349,6 +3502,8 @@ export type Mutation = {
   createArticleLocalization?: Maybe<ArticleEntityResponse>
   createBlogPost?: Maybe<BlogPostEntityResponse>
   createBlogPostLocalization?: Maybe<BlogPostEntityResponse>
+  createDocument?: Maybe<DocumentEntityResponse>
+  createDocumentCategory?: Maybe<DocumentCategoryEntityResponse>
   createFaq?: Maybe<FaqEntityResponse>
   createFaqCategory?: Maybe<FaqCategoryEntityResponse>
   createFaqCategoryLocalization?: Maybe<FaqCategoryEntityResponse>
@@ -3379,6 +3534,8 @@ export type Mutation = {
   deleteAlert?: Maybe<AlertEntityResponse>
   deleteArticle?: Maybe<ArticleEntityResponse>
   deleteBlogPost?: Maybe<BlogPostEntityResponse>
+  deleteDocument?: Maybe<DocumentEntityResponse>
+  deleteDocumentCategory?: Maybe<DocumentCategoryEntityResponse>
   deleteFaq?: Maybe<FaqEntityResponse>
   deleteFaqCategory?: Maybe<FaqCategoryEntityResponse>
   deleteFooter?: Maybe<FooterEntityResponse>
@@ -3414,6 +3571,8 @@ export type Mutation = {
   updateAlert?: Maybe<AlertEntityResponse>
   updateArticle?: Maybe<ArticleEntityResponse>
   updateBlogPost?: Maybe<BlogPostEntityResponse>
+  updateDocument?: Maybe<DocumentEntityResponse>
+  updateDocumentCategory?: Maybe<DocumentCategoryEntityResponse>
   updateFaq?: Maybe<FaqEntityResponse>
   updateFaqCategory?: Maybe<FaqCategoryEntityResponse>
   updateFileInfo: UploadFileEntityResponse
@@ -3474,6 +3633,14 @@ export type MutationCreateBlogPostLocalizationArgs = {
   data?: InputMaybe<BlogPostInput>
   id?: InputMaybe<Scalars['ID']['input']>
   locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
+}
+
+export type MutationCreateDocumentArgs = {
+  data: DocumentInput
+}
+
+export type MutationCreateDocumentCategoryArgs = {
+  data: DocumentCategoryInput
 }
 
 export type MutationCreateFaqArgs = {
@@ -3619,6 +3786,14 @@ export type MutationDeleteBlogPostArgs = {
   locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
 }
 
+export type MutationDeleteDocumentArgs = {
+  id: Scalars['ID']['input']
+}
+
+export type MutationDeleteDocumentCategoryArgs = {
+  id: Scalars['ID']['input']
+}
+
 export type MutationDeleteFaqArgs = {
   id: Scalars['ID']['input']
   locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
@@ -3747,6 +3922,16 @@ export type MutationUpdateBlogPostArgs = {
   data: BlogPostInput
   id: Scalars['ID']['input']
   locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
+}
+
+export type MutationUpdateDocumentArgs = {
+  data: DocumentInput
+  id: Scalars['ID']['input']
+}
+
+export type MutationUpdateDocumentCategoryArgs = {
+  data: DocumentCategoryInput
+  id: Scalars['ID']['input']
 }
 
 export type MutationUpdateFaqArgs = {
@@ -4070,6 +4255,7 @@ export type PageSectionsDynamicZone =
   | ComponentSectionsComparisonSection
   | ComponentSectionsContactsSection
   | ComponentSectionsDivider
+  | ComponentSectionsDocuments
   | ComponentSectionsFaqCategories
   | ComponentSectionsFaqs
   | ComponentSectionsFileList
@@ -4123,6 +4309,10 @@ export type Query = {
   articles?: Maybe<ArticleEntityResponseCollection>
   blogPost?: Maybe<BlogPostEntityResponse>
   blogPosts?: Maybe<BlogPostEntityResponseCollection>
+  document?: Maybe<DocumentEntityResponse>
+  documentCategories?: Maybe<DocumentCategoryEntityResponseCollection>
+  documentCategory?: Maybe<DocumentCategoryEntityResponse>
+  documents?: Maybe<DocumentEntityResponseCollection>
   faq?: Maybe<FaqEntityResponse>
   faqCategories?: Maybe<FaqCategoryEntityResponseCollection>
   faqCategory?: Maybe<FaqCategoryEntityResponse>
@@ -4194,6 +4384,27 @@ export type QueryBlogPostArgs = {
 export type QueryBlogPostsArgs = {
   filters?: InputMaybe<BlogPostFiltersInput>
   locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
+  pagination?: InputMaybe<PaginationArg>
+  publicationState?: InputMaybe<PublicationState>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type QueryDocumentArgs = {
+  id?: InputMaybe<Scalars['ID']['input']>
+}
+
+export type QueryDocumentCategoriesArgs = {
+  filters?: InputMaybe<DocumentCategoryFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type QueryDocumentCategoryArgs = {
+  id?: InputMaybe<Scalars['ID']['input']>
+}
+
+export type QueryDocumentsArgs = {
+  filters?: InputMaybe<DocumentFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   publicationState?: InputMaybe<PublicationState>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
@@ -5540,6 +5751,122 @@ export type Dev_AllArticlesQuery = {
                 } | null
               } | null
             } | null
+          } | null
+        } | null
+      } | null
+    }>
+  } | null
+}
+
+export type DocumentCategoryEntityFragment = {
+  __typename?: 'DocumentCategoryEntity'
+  id?: string | null
+  attributes?: { __typename?: 'DocumentCategory'; title: string; slug: string } | null
+}
+
+export type DocumentSlugEntityFragment = {
+  __typename: 'DocumentEntity'
+  id?: string | null
+  attributes?: { __typename?: 'Document'; slug: string; title: string } | null
+}
+
+export type DocumentCardEntityFragment = {
+  __typename: 'DocumentEntity'
+  id?: string | null
+  attributes?: {
+    __typename?: 'Document'
+    publishedAt?: any | null
+    updatedAt?: any | null
+    slug: string
+    title: string
+    documentCategory?: {
+      __typename?: 'DocumentCategoryEntityResponse'
+      data?: {
+        __typename?: 'DocumentCategoryEntity'
+        id?: string | null
+        attributes?: { __typename?: 'DocumentCategory'; title: string; slug: string } | null
+      } | null
+    } | null
+  } | null
+}
+
+export type DocumentEntityFragment = {
+  __typename: 'DocumentEntity'
+  id?: string | null
+  attributes?: {
+    __typename?: 'Document'
+    description?: string | null
+    publishedAt?: any | null
+    updatedAt?: any | null
+    slug: string
+    title: string
+    files: {
+      __typename?: 'UploadFileRelationResponseCollection'
+      data: Array<{
+        __typename?: 'UploadFileEntity'
+        id?: string | null
+        attributes?: {
+          __typename?: 'UploadFile'
+          url: string
+          name: string
+          ext?: string | null
+          size: number
+          createdAt?: any | null
+          updatedAt?: any | null
+        } | null
+      }>
+    }
+    documentCategory?: {
+      __typename?: 'DocumentCategoryEntityResponse'
+      data?: {
+        __typename?: 'DocumentCategoryEntity'
+        id?: string | null
+        attributes?: { __typename?: 'DocumentCategory'; title: string; slug: string } | null
+      } | null
+    } | null
+  } | null
+}
+
+export type DocumentBySlugQueryVariables = Exact<{
+  slug: Scalars['String']['input']
+}>
+
+export type DocumentBySlugQuery = {
+  __typename?: 'Query'
+  documents?: {
+    __typename?: 'DocumentEntityResponseCollection'
+    data: Array<{
+      __typename: 'DocumentEntity'
+      id?: string | null
+      attributes?: {
+        __typename?: 'Document'
+        description?: string | null
+        publishedAt?: any | null
+        updatedAt?: any | null
+        slug: string
+        title: string
+        files: {
+          __typename?: 'UploadFileRelationResponseCollection'
+          data: Array<{
+            __typename?: 'UploadFileEntity'
+            id?: string | null
+            attributes?: {
+              __typename?: 'UploadFile'
+              url: string
+              name: string
+              ext?: string | null
+              size: number
+              createdAt?: any | null
+              updatedAt?: any | null
+            } | null
+          }>
+        }
+        documentCategory?: {
+          __typename?: 'DocumentCategoryEntityResponse'
+          data?: {
+            __typename?: 'DocumentCategoryEntity'
+            id?: string | null
+            attributes?: { __typename?: 'DocumentCategory'; title: string; slug: string } | null
           } | null
         } | null
       } | null
@@ -8689,6 +9016,37 @@ export type PageEntityFragment = {
           style?: Enum_Componentsectionsdivider_Style | null
         }
       | {
+          __typename: 'ComponentSectionsDocuments'
+          title?: string | null
+          text?: string | null
+          documents?: {
+            __typename?: 'DocumentRelationResponseCollection'
+            data: Array<{
+              __typename: 'DocumentEntity'
+              id?: string | null
+              attributes?: {
+                __typename?: 'Document'
+                publishedAt?: any | null
+                updatedAt?: any | null
+                slug: string
+                title: string
+                documentCategory?: {
+                  __typename?: 'DocumentCategoryEntityResponse'
+                  data?: {
+                    __typename?: 'DocumentCategoryEntity'
+                    id?: string | null
+                    attributes?: {
+                      __typename?: 'DocumentCategory'
+                      title: string
+                      slug: string
+                    } | null
+                  } | null
+                } | null
+              } | null
+            }>
+          } | null
+        }
+      | {
           __typename: 'ComponentSectionsFaqCategories'
           id: string
           title?: string | null
@@ -9711,6 +10069,37 @@ export type PageBySlugQuery = {
           | {
               __typename: 'ComponentSectionsDivider'
               style?: Enum_Componentsectionsdivider_Style | null
+            }
+          | {
+              __typename: 'ComponentSectionsDocuments'
+              title?: string | null
+              text?: string | null
+              documents?: {
+                __typename?: 'DocumentRelationResponseCollection'
+                data: Array<{
+                  __typename: 'DocumentEntity'
+                  id?: string | null
+                  attributes?: {
+                    __typename?: 'Document'
+                    publishedAt?: any | null
+                    updatedAt?: any | null
+                    slug: string
+                    title: string
+                    documentCategory?: {
+                      __typename?: 'DocumentCategoryEntityResponse'
+                      data?: {
+                        __typename?: 'DocumentCategoryEntity'
+                        id?: string | null
+                        attributes?: {
+                          __typename?: 'DocumentCategory'
+                          title: string
+                          slug: string
+                        } | null
+                      } | null
+                    } | null
+                  } | null
+                }>
+              } | null
             }
           | {
               __typename: 'ComponentSectionsFaqCategories'
@@ -10775,6 +11164,37 @@ export type Dev_AllPagesQuery = {
           | {
               __typename: 'ComponentSectionsDivider'
               style?: Enum_Componentsectionsdivider_Style | null
+            }
+          | {
+              __typename: 'ComponentSectionsDocuments'
+              title?: string | null
+              text?: string | null
+              documents?: {
+                __typename?: 'DocumentRelationResponseCollection'
+                data: Array<{
+                  __typename: 'DocumentEntity'
+                  id?: string | null
+                  attributes?: {
+                    __typename?: 'Document'
+                    publishedAt?: any | null
+                    updatedAt?: any | null
+                    slug: string
+                    title: string
+                    documentCategory?: {
+                      __typename?: 'DocumentCategoryEntityResponse'
+                      data?: {
+                        __typename?: 'DocumentCategoryEntity'
+                        id?: string | null
+                        attributes?: {
+                          __typename?: 'DocumentCategory'
+                          title: string
+                          slug: string
+                        } | null
+                      } | null
+                    } | null
+                  } | null
+                }>
+              } | null
             }
           | {
               __typename: 'ComponentSectionsFaqCategories'
@@ -13422,6 +13842,34 @@ export type PartnersSectionFragment = {
   } | null>
 }
 
+export type DocumentsSectionFragment = {
+  __typename?: 'ComponentSectionsDocuments'
+  title?: string | null
+  text?: string | null
+  documents?: {
+    __typename?: 'DocumentRelationResponseCollection'
+    data: Array<{
+      __typename: 'DocumentEntity'
+      id?: string | null
+      attributes?: {
+        __typename?: 'Document'
+        publishedAt?: any | null
+        updatedAt?: any | null
+        slug: string
+        title: string
+        documentCategory?: {
+          __typename?: 'DocumentCategoryEntityResponse'
+          data?: {
+            __typename?: 'DocumentCategoryEntity'
+            id?: string | null
+            attributes?: { __typename?: 'DocumentCategory'; title: string; slug: string } | null
+          } | null
+        } | null
+      } | null
+    }>
+  } | null
+}
+
 type Sections_ComponentSectionsAccordion_Fragment = {
   __typename: 'ComponentSectionsAccordion'
   title?: string | null
@@ -13721,6 +14169,34 @@ type Sections_ComponentSectionsContactsSection_Fragment = {
 type Sections_ComponentSectionsDivider_Fragment = {
   __typename: 'ComponentSectionsDivider'
   style?: Enum_Componentsectionsdivider_Style | null
+}
+
+type Sections_ComponentSectionsDocuments_Fragment = {
+  __typename: 'ComponentSectionsDocuments'
+  title?: string | null
+  text?: string | null
+  documents?: {
+    __typename?: 'DocumentRelationResponseCollection'
+    data: Array<{
+      __typename: 'DocumentEntity'
+      id?: string | null
+      attributes?: {
+        __typename?: 'Document'
+        publishedAt?: any | null
+        updatedAt?: any | null
+        slug: string
+        title: string
+        documentCategory?: {
+          __typename?: 'DocumentCategoryEntityResponse'
+          data?: {
+            __typename?: 'DocumentCategoryEntity'
+            id?: string | null
+            attributes?: { __typename?: 'DocumentCategory'; title: string; slug: string } | null
+          } | null
+        } | null
+      } | null
+    }>
+  } | null
 }
 
 type Sections_ComponentSectionsFaqCategories_Fragment = {
@@ -14300,6 +14776,7 @@ export type SectionsFragment =
   | Sections_ComponentSectionsComparisonSection_Fragment
   | Sections_ComponentSectionsContactsSection_Fragment
   | Sections_ComponentSectionsDivider_Fragment
+  | Sections_ComponentSectionsDocuments_Fragment
   | Sections_ComponentSectionsFaqCategories_Fragment
   | Sections_ComponentSectionsFaqs_Fragment
   | Sections_ComponentSectionsFileList_Fragment
@@ -14543,6 +15020,56 @@ export const ArticleEntityFragmentDoc = gql`
   ${ArticleCardEntityFragmentDoc}
   ${FileBlockFragmentDoc}
   ${UploadImageEntityFragmentDoc}
+`
+export const DocumentSlugEntityFragmentDoc = gql`
+  fragment DocumentSlugEntity on DocumentEntity {
+    __typename
+    id
+    attributes {
+      slug
+      title
+    }
+  }
+`
+export const DocumentCategoryEntityFragmentDoc = gql`
+  fragment DocumentCategoryEntity on DocumentCategoryEntity {
+    id
+    attributes {
+      title
+      slug
+    }
+  }
+`
+export const DocumentCardEntityFragmentDoc = gql`
+  fragment DocumentCardEntity on DocumentEntity {
+    ...DocumentSlugEntity
+    attributes {
+      publishedAt
+      updatedAt
+      documentCategory {
+        data {
+          ...DocumentCategoryEntity
+        }
+      }
+    }
+  }
+  ${DocumentSlugEntityFragmentDoc}
+  ${DocumentCategoryEntityFragmentDoc}
+`
+export const DocumentEntityFragmentDoc = gql`
+  fragment DocumentEntity on DocumentEntity {
+    ...DocumentCardEntity
+    attributes {
+      description
+      files {
+        data {
+          ...UploadFileEntity
+        }
+      }
+    }
+  }
+  ${DocumentCardEntityFragmentDoc}
+  ${UploadFileEntityFragmentDoc}
 `
 export const PageSlugEntityFragmentDoc = gql`
   fragment PageSlugEntity on PageEntity {
@@ -15615,6 +16142,18 @@ export const PartnersSectionFragmentDoc = gql`
   }
   ${PartnerBlockFragmentDoc}
 `
+export const DocumentsSectionFragmentDoc = gql`
+  fragment DocumentsSection on ComponentSectionsDocuments {
+    title
+    text
+    documents(pagination: { limit: -1 }) {
+      data {
+        ...DocumentCardEntity
+      }
+    }
+  }
+  ${DocumentCardEntityFragmentDoc}
+`
 export const SectionsFragmentDoc = gql`
   fragment Sections on PageSectionsDynamicZone {
     __typename
@@ -15705,6 +16244,9 @@ export const SectionsFragmentDoc = gql`
     ... on ComponentSectionsPartners {
       ...PartnersSection
     }
+    ... on ComponentSectionsDocuments {
+      ...DocumentsSection
+    }
   }
   ${IconTitleDescSectionFragmentDoc}
   ${DividerSectionFragmentDoc}
@@ -15735,6 +16277,7 @@ export const SectionsFragmentDoc = gql`
   ${FaqCategoriesSectionFragmentDoc}
   ${TootootEventsSectionFragmentDoc}
   ${PartnersSectionFragmentDoc}
+  ${DocumentsSectionFragmentDoc}
 `
 export const LocalizationFragmentDoc = gql`
   fragment Localization on PageRelationResponseCollection {
@@ -15915,6 +16458,16 @@ export const Dev_AllArticlesDocument = gql`
     }
   }
   ${ArticleEntityFragmentDoc}
+`
+export const DocumentBySlugDocument = gql`
+  query DocumentBySlug($slug: String!) {
+    documents(filters: { slug: { eq: $slug } }) {
+      data {
+        ...DocumentEntity
+      }
+    }
+  }
+  ${DocumentEntityFragmentDoc}
 `
 export const GeneralDocument = gql`
   query General($locale: I18NLocaleCode!) {
@@ -16376,6 +16929,21 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
             ...wrappedRequestHeaders,
           }),
         'Dev_AllArticles',
+        'query',
+        variables,
+      )
+    },
+    DocumentBySlug(
+      variables: DocumentBySlugQueryVariables,
+      requestHeaders?: GraphQLClientRequestHeaders,
+    ): Promise<DocumentBySlugQuery> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<DocumentBySlugQuery>(DocumentBySlugDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
+          }),
+        'DocumentBySlug',
         'query',
         variables,
       )
