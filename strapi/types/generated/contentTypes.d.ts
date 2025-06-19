@@ -541,6 +541,73 @@ export interface ApiBlogPostBlogPost extends Schema.CollectionType {
   }
 }
 
+export interface ApiDocumentCategoryDocumentCategory extends Schema.CollectionType {
+  collectionName: 'document_categories'
+  info: {
+    description: ''
+    displayName: 'Dokumenty - kateg\u00F3rie'
+    pluralName: 'document-categories'
+    singularName: 'document-category'
+  }
+  options: {
+    draftAndPublish: false
+  }
+  attributes: {
+    createdAt: Attribute.DateTime
+    createdBy: Attribute.Relation<
+      'api::document-category.document-category',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private
+    documents: Attribute.Relation<
+      'api::document-category.document-category',
+      'oneToMany',
+      'api::document.document'
+    >
+    slug: Attribute.UID<'api::document-category.document-category', 'title'> & Attribute.Required
+    title: Attribute.String & Attribute.Required
+    updatedAt: Attribute.DateTime
+    updatedBy: Attribute.Relation<
+      'api::document-category.document-category',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private
+  }
+}
+
+export interface ApiDocumentDocument extends Schema.CollectionType {
+  collectionName: 'documents'
+  info: {
+    description: ''
+    displayName: 'Dokumenty'
+    pluralName: 'documents'
+    singularName: 'document'
+  }
+  options: {
+    draftAndPublish: true
+  }
+  attributes: {
+    createdAt: Attribute.DateTime
+    createdBy: Attribute.Relation<'api::document.document', 'oneToOne', 'admin::user'> &
+      Attribute.Private
+    description: Attribute.Text
+    documentCategory: Attribute.Relation<
+      'api::document.document',
+      'manyToOne',
+      'api::document-category.document-category'
+    >
+    files: Attribute.Media<'images' | 'files', true> & Attribute.Required
+    publishedAt: Attribute.DateTime
+    slug: Attribute.UID<'api::document.document', 'title'> & Attribute.Required
+    title: Attribute.String & Attribute.Required
+    updatedAt: Attribute.DateTime
+    updatedBy: Attribute.Relation<'api::document.document', 'oneToOne', 'admin::user'> &
+      Attribute.Private
+  }
+}
+
 export interface ApiFaqCategoryFaqCategory extends Schema.CollectionType {
   collectionName: 'faq_categories'
   info: {
@@ -1199,6 +1266,7 @@ export interface ApiPagePage extends Schema.CollectionType {
         'sections.comparison-section',
         'sections.contacts-section',
         'sections.divider',
+        'sections.documents',
         'sections.faqs',
         'sections.faq-categories',
         'sections.file-list',
@@ -1754,6 +1822,8 @@ declare module '@strapi/types' {
       'api::alert.alert': ApiAlertAlert
       'api::article.article': ApiArticleArticle
       'api::blog-post.blog-post': ApiBlogPostBlogPost
+      'api::document-category.document-category': ApiDocumentCategoryDocumentCategory
+      'api::document.document': ApiDocumentDocument
       'api::faq-category.faq-category': ApiFaqCategoryFaqCategory
       'api::faq.faq': ApiFaqFaq
       'api::footer.footer': ApiFooterFooter
