@@ -19,6 +19,18 @@
       "action": "api::blog-post.blog-post.findOne"
     },
     {
+      "action": "api::document-category.document-category.find"
+    },
+    {
+      "action": "api::document-category.document-category.findOne"
+    },
+    {
+      "action": "api::document.document.find"
+    },
+    {
+      "action": "api::document.document.findOne"
+    },
+    {
       "action": "api::faq-category.faq-category.find"
     },
     {
