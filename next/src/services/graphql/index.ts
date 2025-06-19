@@ -5795,6 +5795,7 @@ export type DocumentEntityFragment = {
   id?: string | null
   attributes?: {
     __typename?: 'Document'
+    description?: string | null
     publishedAt?: any | null
     updatedAt?: any | null
     slug: string
@@ -5839,6 +5840,7 @@ export type DocumentBySlugQuery = {
       id?: string | null
       attributes?: {
         __typename?: 'Document'
+        description?: string | null
         publishedAt?: any | null
         updatedAt?: any | null
         slug: string
@@ -15058,6 +15060,7 @@ export const DocumentEntityFragmentDoc = gql`
   fragment DocumentEntity on DocumentEntity {
     ...DocumentCardEntity
     attributes {
+      description
       files {
         data {
           ...UploadFileEntity
