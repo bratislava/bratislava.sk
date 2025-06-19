@@ -1144,6 +1144,29 @@ input ComponentSectionsDividerInput {
   style: ENUM_COMPONENTSECTIONSDIVIDER_STYLE
 }
 
+type ComponentSectionsDocuments {
+  documents(filters: DocumentFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): DocumentRelationResponseCollection
+  id: ID!
+  text: String
+  title: String
+}
+
+input ComponentSectionsDocumentsFiltersInput {
+  and: [ComponentSectionsDocumentsFiltersInput]
+  documents: DocumentFiltersInput
+  not: ComponentSectionsDocumentsFiltersInput
+  or: [ComponentSectionsDocumentsFiltersInput]
+  text: StringFilterInput
+  title: StringFilterInput
+}
+
+input ComponentSectionsDocumentsInput {
+  documents: [ID]
+  id: ID
+  text: String
+  title: String
+}
+
 type ComponentSectionsFaqCategories {
   faqCategories(filters: FaqCategoryFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): FaqCategoryRelationResponseCollection
   id: ID!
@@ -1862,6 +1885,102 @@ input DateTimeFilterInput {
   startsWith: DateTime
 }
 
+type Document {
+  createdAt: DateTime
+  description: String
+  documentCategory: DocumentCategoryEntityResponse
+  files(filters: UploadFileFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UploadFileRelationResponseCollection!
+  publishedAt: DateTime
+  slug: String!
+  title: String!
+  updatedAt: DateTime
+}
+
+type DocumentCategory {
+  createdAt: DateTime
+  documents(filters: DocumentFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): DocumentRelationResponseCollection
+  slug: String!
+  title: String!
+  updatedAt: DateTime
+}
+
+type DocumentCategoryEntity {
+  attributes: DocumentCategory
+  id: ID
+}
+
+type DocumentCategoryEntityResponse {
+  data: DocumentCategoryEntity
+}
+
+type DocumentCategoryEntityResponseCollection {
+  data: [DocumentCategoryEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input DocumentCategoryFiltersInput {
+  and: [DocumentCategoryFiltersInput]
+  createdAt: DateTimeFilterInput
+  documents: DocumentFiltersInput
+  id: IDFilterInput
+  not: DocumentCategoryFiltersInput
+  or: [DocumentCategoryFiltersInput]
+  slug: StringFilterInput
+  title: StringFilterInput
+  updatedAt: DateTimeFilterInput
+}
+
+input DocumentCategoryInput {
+  documents: [ID]
+  slug: String
+  title: String
+}
+
+type DocumentCategoryRelationResponseCollection {
+  data: [DocumentCategoryEntity!]!
+}
+
+type DocumentEntity {
+  attributes: Document
+  id: ID
+}
+
+type DocumentEntityResponse {
+  data: DocumentEntity
+}
+
+type DocumentEntityResponseCollection {
+  data: [DocumentEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input DocumentFiltersInput {
+  and: [DocumentFiltersInput]
+  createdAt: DateTimeFilterInput
+  description: StringFilterInput
+  documentCategory: DocumentCategoryFiltersInput
+  id: IDFilterInput
+  not: DocumentFiltersInput
+  or: [DocumentFiltersInput]
+  publishedAt: DateTimeFilterInput
+  slug: StringFilterInput
+  title: StringFilterInput
+  updatedAt: DateTimeFilterInput
+}
+
+input DocumentInput {
+  description: String
+  documentCategory: ID
+  files: [ID]
+  publishedAt: DateTime
+  slug: String
+  title: String
+}
+
+type DocumentRelationResponseCollection {
+  data: [DocumentEntity!]!
+}
+
 enum ENUM_COMPONENTACCORDIONITEMSFLATTEXT_ALIGN {
   center
   left
@@ -2331,7 +2450,7 @@ type GeneralRelationResponseCollection {
   data: [GeneralEntity!]!
 }
 
-union GenericMorph = AdminGroup | Alert | Article | BlogPost | ComponentAccordionItemsFlatText | ComponentAccordionItemsInstitution | ComponentAccordionItemsInstitutionNarrow | ComponentBlocksColumnsItem | ComponentBlocksCommonLink | ComponentBlocksComparisonCard | ComponentBlocksComparisonItem | ComponentBlocksContactCard | ComponentBlocksContactPersonCard | ComponentBlocksFile | ComponentBlocksFileItem | ComponentBlocksFooterColumn | ComponentBlocksHomepageHighlightsItem | ComponentBlocksIconWithTitleAndDescription | ComponentBlocksInBa | ComponentBlocksNumericalListItem | ComponentBlocksPageLink | ComponentBlocksPartner | ComponentBlocksProsAndConsCard | ComponentBlocksTimelineItem | ComponentBlocksTopServicesItem | ComponentBlocksVideo | ComponentGeneralHeader | ComponentGeneralHeaderLink | ComponentMenuMenuItem | ComponentMenuMenuLink | ComponentMenuMenuSection | ComponentSectionsAccordion | ComponentSectionsArticles | ComponentSectionsBanner | ComponentSectionsCalculator | ComponentSectionsColumnedText | ComponentSectionsColumns | ComponentSectionsComparisonSection | ComponentSectionsContactsSection | ComponentSectionsDivider | ComponentSectionsFaqCategories | ComponentSectionsFaqs | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsHomepageEvents | ComponentSectionsHomepageHighlights | ComponentSectionsHomepageMayorAndCouncil | ComponentSectionsHomepageTabs | ComponentSectionsIconTitleDesc | ComponentSectionsIframe | ComponentSectionsInbaArticlesList | ComponentSectionsInbaReleases | ComponentSectionsLinks | ComponentSectionsNarrowText | ComponentSectionsNumericalList | ComponentSectionsOfficialBoard | ComponentSectionsOrganizationalStructure | ComponentSectionsPartners | ComponentSectionsProsAndConsSection | ComponentSectionsRegulations | ComponentSectionsRegulationsList | ComponentSectionsSubpageList | ComponentSectionsTextWithImage | ComponentSectionsTextWithImageOverlapped | ComponentSectionsTimeline | ComponentSectionsTootootEvents | ComponentSectionsTopServices | ComponentSectionsVideos | ComponentTaxAdministratorsTaxAdministrator | Faq | FaqCategory | Footer | General | Homepage | I18NLocale | InbaArticle | InbaRelease | InbaTag | Menu | Page | PageCategory | Regulation | Tag | TaxAdministratorsList | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
+union GenericMorph = AdminGroup | Alert | Article | BlogPost | ComponentAccordionItemsFlatText | ComponentAccordionItemsInstitution | ComponentAccordionItemsInstitutionNarrow | ComponentBlocksColumnsItem | ComponentBlocksCommonLink | ComponentBlocksComparisonCard | ComponentBlocksComparisonItem | ComponentBlocksContactCard | ComponentBlocksContactPersonCard | ComponentBlocksFile | ComponentBlocksFileItem | ComponentBlocksFooterColumn | ComponentBlocksHomepageHighlightsItem | ComponentBlocksIconWithTitleAndDescription | ComponentBlocksInBa | ComponentBlocksNumericalListItem | ComponentBlocksPageLink | ComponentBlocksPartner | ComponentBlocksProsAndConsCard | ComponentBlocksTimelineItem | ComponentBlocksTopServicesItem | ComponentBlocksVideo | ComponentGeneralHeader | ComponentGeneralHeaderLink | ComponentMenuMenuItem | ComponentMenuMenuLink | ComponentMenuMenuSection | ComponentSectionsAccordion | ComponentSectionsArticles | ComponentSectionsBanner | ComponentSectionsCalculator | ComponentSectionsColumnedText | ComponentSectionsColumns | ComponentSectionsComparisonSection | ComponentSectionsContactsSection | ComponentSectionsDivider | ComponentSectionsDocuments | ComponentSectionsFaqCategories | ComponentSectionsFaqs | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsHomepageEvents | ComponentSectionsHomepageHighlights | ComponentSectionsHomepageMayorAndCouncil | ComponentSectionsHomepageTabs | ComponentSectionsIconTitleDesc | ComponentSectionsIframe | ComponentSectionsInbaArticlesList | ComponentSectionsInbaReleases | ComponentSectionsLinks | ComponentSectionsNarrowText | ComponentSectionsNumericalList | ComponentSectionsOfficialBoard | ComponentSectionsOrganizationalStructure | ComponentSectionsPartners | ComponentSectionsProsAndConsSection | ComponentSectionsRegulations | ComponentSectionsRegulationsList | ComponentSectionsSubpageList | ComponentSectionsTextWithImage | ComponentSectionsTextWithImageOverlapped | ComponentSectionsTimeline | ComponentSectionsTootootEvents | ComponentSectionsTopServices | ComponentSectionsVideos | ComponentTaxAdministratorsTaxAdministrator | Document | DocumentCategory | Faq | FaqCategory | Footer | General | Homepage | I18NLocale | InbaArticle | InbaRelease | InbaTag | Menu | Page | PageCategory | Regulation | Tag | TaxAdministratorsList | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
 
 type Homepage {
   createdAt: DateTime
@@ -2781,6 +2900,8 @@ type Mutation {
   createArticleLocalization(data: ArticleInput, id: ID, locale: I18NLocaleCode): ArticleEntityResponse
   createBlogPost(data: BlogPostInput!, locale: I18NLocaleCode): BlogPostEntityResponse
   createBlogPostLocalization(data: BlogPostInput, id: ID, locale: I18NLocaleCode): BlogPostEntityResponse
+  createDocument(data: DocumentInput!): DocumentEntityResponse
+  createDocumentCategory(data: DocumentCategoryInput!): DocumentCategoryEntityResponse
   createFaq(data: FaqInput!, locale: I18NLocaleCode): FaqEntityResponse
   createFaqCategory(data: FaqCategoryInput!, locale: I18NLocaleCode): FaqCategoryEntityResponse
   createFaqCategoryLocalization(data: FaqCategoryInput, id: ID, locale: I18NLocaleCode): FaqCategoryEntityResponse
@@ -2813,6 +2934,8 @@ type Mutation {
   deleteAlert(locale: I18NLocaleCode): AlertEntityResponse
   deleteArticle(id: ID!, locale: I18NLocaleCode): ArticleEntityResponse
   deleteBlogPost(id: ID!, locale: I18NLocaleCode): BlogPostEntityResponse
+  deleteDocument(id: ID!): DocumentEntityResponse
+  deleteDocumentCategory(id: ID!): DocumentCategoryEntityResponse
   deleteFaq(id: ID!, locale: I18NLocaleCode): FaqEntityResponse
   deleteFaqCategory(id: ID!, locale: I18NLocaleCode): FaqCategoryEntityResponse
   deleteFooter(locale: I18NLocaleCode): FooterEntityResponse
@@ -2856,6 +2979,8 @@ type Mutation {
   updateAlert(data: AlertInput!, locale: I18NLocaleCode): AlertEntityResponse
   updateArticle(data: ArticleInput!, id: ID!, locale: I18NLocaleCode): ArticleEntityResponse
   updateBlogPost(data: BlogPostInput!, id: ID!, locale: I18NLocaleCode): BlogPostEntityResponse
+  updateDocument(data: DocumentInput!, id: ID!): DocumentEntityResponse
+  updateDocumentCategory(data: DocumentCategoryInput!, id: ID!): DocumentCategoryEntityResponse
   updateFaq(data: FaqInput!, id: ID!, locale: I18NLocaleCode): FaqEntityResponse
   updateFaqCategory(data: FaqCategoryInput!, id: ID!, locale: I18NLocaleCode): FaqCategoryEntityResponse
   updateFileInfo(id: ID!, info: FileInfoInput): UploadFileEntityResponse!
@@ -3030,7 +3155,7 @@ type PageRelationResponseCollection {
   data: [PageEntity!]!
 }
 
-union PageSectionsDynamicZone = ComponentSectionsAccordion | ComponentSectionsArticles | ComponentSectionsBanner | ComponentSectionsCalculator | ComponentSectionsColumnedText | ComponentSectionsColumns | ComponentSectionsComparisonSection | ComponentSectionsContactsSection | ComponentSectionsDivider | ComponentSectionsFaqCategories | ComponentSectionsFaqs | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsIconTitleDesc | ComponentSectionsIframe | ComponentSectionsInbaArticlesList | ComponentSectionsInbaReleases | ComponentSectionsLinks | ComponentSectionsNarrowText | ComponentSectionsNumericalList | ComponentSectionsOfficialBoard | ComponentSectionsOrganizationalStructure | ComponentSectionsPartners | ComponentSectionsProsAndConsSection | ComponentSectionsRegulations | ComponentSectionsRegulationsList | ComponentSectionsTextWithImage | ComponentSectionsTextWithImageOverlapped | ComponentSectionsTimeline | ComponentSectionsTootootEvents | ComponentSectionsVideos | Error
+union PageSectionsDynamicZone = ComponentSectionsAccordion | ComponentSectionsArticles | ComponentSectionsBanner | ComponentSectionsCalculator | ComponentSectionsColumnedText | ComponentSectionsColumns | ComponentSectionsComparisonSection | ComponentSectionsContactsSection | ComponentSectionsDivider | ComponentSectionsDocuments | ComponentSectionsFaqCategories | ComponentSectionsFaqs | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsIconTitleDesc | ComponentSectionsIframe | ComponentSectionsInbaArticlesList | ComponentSectionsInbaReleases | ComponentSectionsLinks | ComponentSectionsNarrowText | ComponentSectionsNumericalList | ComponentSectionsOfficialBoard | ComponentSectionsOrganizationalStructure | ComponentSectionsPartners | ComponentSectionsProsAndConsSection | ComponentSectionsRegulations | ComponentSectionsRegulationsList | ComponentSectionsTextWithImage | ComponentSectionsTextWithImageOverlapped | ComponentSectionsTimeline | ComponentSectionsTootootEvents | ComponentSectionsVideos | Error
 
 scalar PageSectionsDynamicZoneInput
 
@@ -3061,6 +3186,10 @@ type Query {
   articles(filters: ArticleFiltersInput, locale: I18NLocaleCode, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): ArticleEntityResponseCollection
   blogPost(id: ID, locale: I18NLocaleCode): BlogPostEntityResponse
   blogPosts(filters: BlogPostFiltersInput, locale: I18NLocaleCode, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): BlogPostEntityResponseCollection
+  document(id: ID): DocumentEntityResponse
+  documentCategories(filters: DocumentCategoryFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): DocumentCategoryEntityResponseCollection
+  documentCategory(id: ID): DocumentCategoryEntityResponse
+  documents(filters: DocumentFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): DocumentEntityResponseCollection
   faq(id: ID, locale: I18NLocaleCode): FaqEntityResponse
   faqCategories(filters: FaqCategoryFiltersInput, locale: I18NLocaleCode, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): FaqCategoryEntityResponseCollection
   faqCategory(id: ID, locale: I18NLocaleCode): FaqCategoryEntityResponse

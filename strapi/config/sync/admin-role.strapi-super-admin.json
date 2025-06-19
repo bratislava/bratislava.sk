@@ -303,6 +303,111 @@
     },
     {
       "action": "plugin::content-manager.explorer.create",
+      "subject": "api::document-category.document-category",
+      "properties": {
+        "fields": [
+          "title",
+          "slug",
+          "documents"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": {}
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "subject": "api::document-category.document-category",
+      "properties": {},
+      "conditions": [],
+      "actionParameters": {}
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::document-category.document-category",
+      "properties": {
+        "fields": [
+          "title",
+          "slug",
+          "documents"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": {}
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::document-category.document-category",
+      "properties": {
+        "fields": [
+          "title",
+          "slug",
+          "documents"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": {}
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "api::document.document",
+      "properties": {
+        "fields": [
+          "title",
+          "slug",
+          "files",
+          "description",
+          "documentCategory"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": {}
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "subject": "api::document.document",
+      "properties": {},
+      "conditions": [],
+      "actionParameters": {}
+    },
+    {
+      "action": "plugin::content-manager.explorer.publish",
+      "subject": "api::document.document",
+      "properties": {},
+      "conditions": [],
+      "actionParameters": {}
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::document.document",
+      "properties": {
+        "fields": [
+          "title",
+          "slug",
+          "files",
+          "description",
+          "documentCategory"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": {}
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::document.document",
+      "properties": {
+        "fields": [
+          "title",
+          "slug",
+          "files",
+          "description",
+          "documentCategory"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": {}
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
       "subject": "api::faq-category.faq-category",
       "properties": {
         "fields": [

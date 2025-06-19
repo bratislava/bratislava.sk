@@ -608,6 +608,19 @@ export interface SectionsDivider extends Schema.Component {
   }
 }
 
+export interface SectionsDocuments extends Schema.Component {
+  collectionName: 'components_sections_documents'
+  info: {
+    description: ''
+    displayName: 'Documents'
+  }
+  attributes: {
+    documents: Attribute.Relation<'sections.documents', 'oneToMany', 'api::document.document'>
+    text: Attribute.Text
+    title: Attribute.String & Attribute.DefaultTo<'Dokumenty'>
+  }
+}
+
 export interface SectionsFaqCategories extends Schema.Component {
   collectionName: 'components_sections_faq_categories'
   info: {
@@ -1044,6 +1057,7 @@ declare module '@strapi/types' {
       'sections.comparison-section': SectionsComparisonSection
       'sections.contacts-section': SectionsContactsSection
       'sections.divider': SectionsDivider
+      'sections.documents': SectionsDocuments
       'sections.faq-categories': SectionsFaqCategories
       'sections.faqs': SectionsFaqs
       'sections.file-list': SectionsFileList
