@@ -7,6 +7,7 @@ import FileRowCard from '@/src/components/cards/FileRowCard'
 import Breadcrumbs, { Breadcrumb } from '@/src/components/common/Breadcrumbs/Breadcrumbs'
 import HorizontalDivider from '@/src/components/common/Divider/HorizontalDivider'
 import DocumentPageHeader from '@/src/components/common/PageHeader/DocumentPageHeader'
+import SectionContainer from '@/src/components/common/SectionContainer/SectionContainer'
 import { DocumentEntityFragment } from '@/src/services/graphql'
 import { formatDate } from '@/src/utils/formatDate'
 import { formatFileExtension } from '@/src/utils/formatFileExtension'
@@ -53,19 +54,14 @@ const DocumentPageContent = ({ document }: Props) => {
   return (
     <>
       <div className="bg-grey-100">
-        <div
-          // TODO some of these classes are duplicated in SectionContainer - ponder what to do with it
-          className="mx-auto flex max-w-(--breakpoint-xl) px-4 lg:px-8"
-        >
+        <SectionContainer>
           <Breadcrumbs breadcrumbs={breadcrumbs} />
-        </div>
+        </SectionContainer>
       </div>
+
       <DocumentPageHeader document={document} />
 
-      <div
-        // TODO some of these classes are duplicated in SectionContainer - ponder what to do with it
-        className="mx-auto flex max-w-(--breakpoint-xl) gap-8 px-4 py-6 lg:px-8 lg:py-12"
-      >
+      <SectionContainer className="py-6 lg:py-12">
         <div className="flex w-200 flex-col gap-4 lg:gap-8">
           {filteredFiles.length > 1 ? (
             <ul className="flex flex-col rounded-lg border-2 py-2">
@@ -88,35 +84,31 @@ const DocumentPageContent = ({ document }: Props) => {
               )}
             </ul>
           ) : null}
-          <div className="flex flex-col gap-18">
-            <div className="flex flex-col gap-8 lg:gap-10">
+          <div className="flex flex-col gap-8 lg:gap-10">
+            <div className="flex flex-col gap-4">
+              <Typography variant="h2">{t('DocumentPageContent.detailsTitle')}</Typography>
               <div className="flex flex-col gap-4">
-                <Typography variant="h2">{t('DocumentPageContent.detailsTitle')}</Typography>
-                <div className="flex flex-col gap-4">
-                  {detailItems.map(({ label, value }, index) => (
-                    // eslint-disable-next-line react/no-array-index-key
-                    <div className="flex flex-col flex-wrap sm:flex-row sm:gap-x-6" key={index}>
-                      <Typography className="basis-1/3">{`${label}:`}</Typography>
-                      <Typography>{value}</Typography>
-                    </div>
-                  ))}
-                </div>
-              </div>
-              {description ? (
-                <>
-                  <HorizontalDivider />
-                  <div className="flex flex-col gap-4">
-                    <Typography variant="h2">
-                      {t('DocumentPageContent.descriptionTitle')}
-                    </Typography>
-                    <Typography>{description}</Typography>
+                {detailItems.map(({ label, value }, index) => (
+                  // eslint-disable-next-line react/no-array-index-key
+                  <div className="flex flex-col flex-wrap sm:flex-row sm:gap-x-6" key={index}>
+                    <Typography className="basis-1/3">{`${label}:`}</Typography>
+                    <Typography>{value}</Typography>
                   </div>
-                </>
-              ) : null}
+                ))}
+              </div>
             </div>
+            {description ? (
+              <>
+                <HorizontalDivider />
+                <div className="flex flex-col gap-4">
+                  <Typography variant="h2">{t('DocumentPageContent.descriptionTitle')}</Typography>
+                  <Typography>{description}</Typography>
+                </div>
+              </>
+            ) : null}
           </div>
         </div>
-      </div>
+      </SectionContainer>
     </>
   )
 }

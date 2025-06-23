@@ -3,6 +3,7 @@ import { useTranslation } from 'next-i18next'
 import { Fragment } from 'react'
 
 import { DocumentIcon, DownloadIcon } from '@/src/assets/icons'
+import Button from '@/src/components/common/Button/Button'
 import { DocumentEntityFragment } from '@/src/services/graphql'
 import cn from '@/src/utils/cn'
 import { formatDate } from '@/src/utils/formatDate'
@@ -10,14 +11,12 @@ import { formatFileExtension } from '@/src/utils/formatFileExtension'
 import { formatFileSize } from '@/src/utils/formatFileSize'
 import { isDefined } from '@/src/utils/isDefined'
 
-import Button from '../Button/Button'
-
 type Props = {
   document: DocumentEntityFragment
 }
 
 /**
- * Figma: https://www.figma.com/design/2qF09hDT9QNcpdztVMNAY4/OLO-Web?node-id=1946-18524&m=dev
+ * Figma OLO: https://www.figma.com/design/2qF09hDT9QNcpdztVMNAY4/OLO-Web?node-id=1946-18524&m=dev
  */
 
 const DocumentPageHeader = ({ document }: Props) => {
@@ -76,6 +75,7 @@ const DocumentPageHeader = ({ document }: Props) => {
                 <Button
                   variant="solid"
                   href={filteredFiles[0].attributes?.url ?? '#'}
+                  target="_blank"
                   hasLinkIcon={false}
                   startIcon={<DownloadIcon />}
                   // TODO use common function?
