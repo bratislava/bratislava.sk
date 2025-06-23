@@ -423,6 +423,16 @@ fragment PartnersSection on ComponentSectionsPartners {
   logoRatio
 }
 
+fragment DocumentsSection on ComponentSectionsDocuments {
+  title
+  text
+  documents(pagination: { limit: -1 }) {
+    data {
+      ...DocumentCardEntity
+    }
+  }
+}
+
 fragment Sections on PageSectionsDynamicZone {
   __typename
 
@@ -544,6 +554,10 @@ fragment Sections on PageSectionsDynamicZone {
 
   ... on ComponentSectionsPartners {
     ...PartnersSection
+  }
+
+  ... on ComponentSectionsDocuments {
+    ...DocumentsSection
   }
 }
 
