@@ -428,7 +428,7 @@ fragment DocumentsSection on ComponentSectionsDocuments {
   text
   documents(pagination: { limit: -1 }) {
     data {
-      ...DocumentCardEntity
+      ...DocumentEntity
     }
   }
 }

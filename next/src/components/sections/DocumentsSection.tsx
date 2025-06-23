@@ -1,10 +1,15 @@
 import { Typography } from '@bratislava/component-library'
+import { useTranslation } from 'next-i18next'
 import React, { Fragment } from 'react'
 
+import DocumentRowCard from '@/src/components/cards/DocumentRowCard'
 import HorizontalDivider from '@/src/components/common/Divider/HorizontalDivider'
-import MLink from '@/src/components/common/MLink/MLink'
 import { DocumentsSectionFragment } from '@/src/services/graphql'
+import { formatDate } from '@/src/utils/formatDate'
+import { formatFileExtension } from '@/src/utils/formatFileExtension'
+import { formatFileSize } from '@/src/utils/formatFileSize'
 import { isDefined } from '@/src/utils/isDefined'
+import { useLocale } from '@/src/utils/useLocale'
 
 type Props = {
   section: DocumentsSectionFragment
@@ -14,6 +19,9 @@ type Props = {
  * Figma OLO: https://www.figma.com/design/2qF09hDT9QNcpdztVMNAY4/OLO-Web?node-id=1932-18019&t=U7rn1Il95Xd9GkCS-0
  */
 const DocumentsSection = ({ section }: Props) => {
+  const { t } = useTranslation()
+  const locale = useLocale()
+
   const { title, text, documents } = section
 
   const filteredDocuments = documents?.data.filter(isDefined) ?? []
@@ -27,21 +35,63 @@ const DocumentsSection = ({ section }: Props) => {
         </div>
       ) : null}
 
-      {/* TODO implement proper row component https://www.figma.com/design/2qF09hDT9QNcpdztVMNAY4/OLO-Web?node-id=42-2243&t=U7rn1Il95Xd9GkCS-0 */}
       <ul className="flex flex-col rounded-lg border-2 py-2">
         {filteredDocuments
-          .map((document, index) =>
-            document.attributes ? (
+          .map((document, index) => {
+            if (!document.attributes) {
+              return null
+            }
+
+            const {
+              title: documentTitle,
+              files,
+              documentCategory,
+              slug,
+              updatedAt,
+            } = document.attributes
+
+            const filteredFiles = files.data.filter(isDefined)
+            const isSingleFile = filteredFiles.length === 1
+
+            const { size, url, ext } = filteredFiles[0].attributes ?? {}
+
+            return (
               <Fragment key={document.id}>
                 {index > 0 ? <HorizontalDivider asListItem className="mx-4 lg:mx-6" /> : null}
                 <li className="w-full">
-                  <MLink href={`/dokumenty/${document.attributes.slug}`} variant="underlined">
-                    {document.attributes.title}
-                  </MLink>
+                  <DocumentRowCard
+                    linkHref={isSingleFile ? (url ?? '#') : `/dokumenty/${slug}`}
+                    title={documentTitle}
+                    variant={isSingleFile ? 'single-file' : 'multiple-files'}
+                    className="px-4 lg:px-6"
+                    ariaLabel={
+                      isSingleFile
+                        ? t('FileList.aria.downloadFileAriaLabel', {
+                            title: documentTitle,
+                            format: formatFileExtension(ext),
+                            size: formatFileSize(size, locale),
+                          })
+                        : t('DocumentsSection.openDocumentPage', { title: documentTitle })
+                    }
+                    metadata={
+                      isSingleFile
+                        ? [
+                            formatDate(updatedAt),
+                            documentCategory?.data?.attributes?.title,
+                            formatFileExtension(ext),
+                            formatFileSize(size, locale),
+                          ].filter(isDefined)
+                        : [
+                            formatDate(updatedAt),
+                            documentCategory?.data?.attributes?.title,
+                            t('DocumentPageContent.numberOfFiles', { count: filteredFiles.length }),
+                          ].filter(isDefined)
+                    }
+                  />
                 </li>
               </Fragment>
-            ) : null,
-          )
+            )
+          })
           .filter(isDefined)}
       </ul>
     </div>
