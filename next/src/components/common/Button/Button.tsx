@@ -211,6 +211,7 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
       return (
         <MLink
           href={rest.href}
+          target={isExternal ? '_blank' : '_self'}
           ref={ref as RefObject<HTMLAnchorElement>}
           className={styles}
           analyticsProps={rest.analyticsProps}
