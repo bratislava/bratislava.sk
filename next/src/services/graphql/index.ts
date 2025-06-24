@@ -5770,13 +5770,14 @@ export type DocumentSlugEntityFragment = {
   attributes?: { __typename?: 'Document'; slug: string; title: string } | null
 }
 
-export type DocumentCardEntityFragment = {
+export type DocumentEntityFragment = {
   __typename: 'DocumentEntity'
   id?: string | null
   attributes?: {
     __typename?: 'Document'
     publishedAt?: any | null
     updatedAt?: any | null
+    description?: string | null
     slug: string
     title: string
     documentCategory?: {
@@ -5787,19 +5788,6 @@ export type DocumentCardEntityFragment = {
         attributes?: { __typename?: 'DocumentCategory'; title: string; slug: string } | null
       } | null
     } | null
-  } | null
-}
-
-export type DocumentEntityFragment = {
-  __typename: 'DocumentEntity'
-  id?: string | null
-  attributes?: {
-    __typename?: 'Document'
-    description?: string | null
-    publishedAt?: any | null
-    updatedAt?: any | null
-    slug: string
-    title: string
     files: {
       __typename?: 'UploadFileRelationResponseCollection'
       data: Array<{
@@ -5816,14 +5804,6 @@ export type DocumentEntityFragment = {
         } | null
       }>
     }
-    documentCategory?: {
-      __typename?: 'DocumentCategoryEntityResponse'
-      data?: {
-        __typename?: 'DocumentCategoryEntity'
-        id?: string | null
-        attributes?: { __typename?: 'DocumentCategory'; title: string; slug: string } | null
-      } | null
-    } | null
   } | null
 }
 
@@ -5840,11 +5820,19 @@ export type DocumentBySlugQuery = {
       id?: string | null
       attributes?: {
         __typename?: 'Document'
-        description?: string | null
         publishedAt?: any | null
         updatedAt?: any | null
+        description?: string | null
         slug: string
         title: string
+        documentCategory?: {
+          __typename?: 'DocumentCategoryEntityResponse'
+          data?: {
+            __typename?: 'DocumentCategoryEntity'
+            id?: string | null
+            attributes?: { __typename?: 'DocumentCategory'; title: string; slug: string } | null
+          } | null
+        } | null
         files: {
           __typename?: 'UploadFileRelationResponseCollection'
           data: Array<{
@@ -5861,14 +5849,6 @@ export type DocumentBySlugQuery = {
             } | null
           }>
         }
-        documentCategory?: {
-          __typename?: 'DocumentCategoryEntityResponse'
-          data?: {
-            __typename?: 'DocumentCategoryEntity'
-            id?: string | null
-            attributes?: { __typename?: 'DocumentCategory'; title: string; slug: string } | null
-          } | null
-        } | null
       } | null
     }>
   } | null
@@ -9028,6 +9008,7 @@ export type PageEntityFragment = {
                 __typename?: 'Document'
                 publishedAt?: any | null
                 updatedAt?: any | null
+                description?: string | null
                 slug: string
                 title: string
                 documentCategory?: {
@@ -9042,6 +9023,22 @@ export type PageEntityFragment = {
                     } | null
                   } | null
                 } | null
+                files: {
+                  __typename?: 'UploadFileRelationResponseCollection'
+                  data: Array<{
+                    __typename?: 'UploadFileEntity'
+                    id?: string | null
+                    attributes?: {
+                      __typename?: 'UploadFile'
+                      url: string
+                      name: string
+                      ext?: string | null
+                      size: number
+                      createdAt?: any | null
+                      updatedAt?: any | null
+                    } | null
+                  }>
+                }
               } | null
             }>
           } | null
@@ -10083,6 +10080,7 @@ export type PageBySlugQuery = {
                     __typename?: 'Document'
                     publishedAt?: any | null
                     updatedAt?: any | null
+                    description?: string | null
                     slug: string
                     title: string
                     documentCategory?: {
@@ -10097,6 +10095,22 @@ export type PageBySlugQuery = {
                         } | null
                       } | null
                     } | null
+                    files: {
+                      __typename?: 'UploadFileRelationResponseCollection'
+                      data: Array<{
+                        __typename?: 'UploadFileEntity'
+                        id?: string | null
+                        attributes?: {
+                          __typename?: 'UploadFile'
+                          url: string
+                          name: string
+                          ext?: string | null
+                          size: number
+                          createdAt?: any | null
+                          updatedAt?: any | null
+                        } | null
+                      }>
+                    }
                   } | null
                 }>
               } | null
@@ -11178,6 +11192,7 @@ export type Dev_AllPagesQuery = {
                     __typename?: 'Document'
                     publishedAt?: any | null
                     updatedAt?: any | null
+                    description?: string | null
                     slug: string
                     title: string
                     documentCategory?: {
@@ -11192,6 +11207,22 @@ export type Dev_AllPagesQuery = {
                         } | null
                       } | null
                     } | null
+                    files: {
+                      __typename?: 'UploadFileRelationResponseCollection'
+                      data: Array<{
+                        __typename?: 'UploadFileEntity'
+                        id?: string | null
+                        attributes?: {
+                          __typename?: 'UploadFile'
+                          url: string
+                          name: string
+                          ext?: string | null
+                          size: number
+                          createdAt?: any | null
+                          updatedAt?: any | null
+                        } | null
+                      }>
+                    }
                   } | null
                 }>
               } | null
@@ -13855,6 +13886,7 @@ export type DocumentsSectionFragment = {
         __typename?: 'Document'
         publishedAt?: any | null
         updatedAt?: any | null
+        description?: string | null
         slug: string
         title: string
         documentCategory?: {
@@ -13865,6 +13897,22 @@ export type DocumentsSectionFragment = {
             attributes?: { __typename?: 'DocumentCategory'; title: string; slug: string } | null
           } | null
         } | null
+        files: {
+          __typename?: 'UploadFileRelationResponseCollection'
+          data: Array<{
+            __typename?: 'UploadFileEntity'
+            id?: string | null
+            attributes?: {
+              __typename?: 'UploadFile'
+              url: string
+              name: string
+              ext?: string | null
+              size: number
+              createdAt?: any | null
+              updatedAt?: any | null
+            } | null
+          }>
+        }
       } | null
     }>
   } | null
@@ -14184,6 +14232,7 @@ type Sections_ComponentSectionsDocuments_Fragment = {
         __typename?: 'Document'
         publishedAt?: any | null
         updatedAt?: any | null
+        description?: string | null
         slug: string
         title: string
         documentCategory?: {
@@ -14194,6 +14243,22 @@ type Sections_ComponentSectionsDocuments_Fragment = {
             attributes?: { __typename?: 'DocumentCategory'; title: string; slug: string } | null
           } | null
         } | null
+        files: {
+          __typename?: 'UploadFileRelationResponseCollection'
+          data: Array<{
+            __typename?: 'UploadFileEntity'
+            id?: string | null
+            attributes?: {
+              __typename?: 'UploadFile'
+              url: string
+              name: string
+              ext?: string | null
+              size: number
+              createdAt?: any | null
+              updatedAt?: any | null
+            } | null
+          }>
+        }
       } | null
     }>
   } | null
@@ -15020,56 +15085,6 @@ export const ArticleEntityFragmentDoc = gql`
   ${ArticleCardEntityFragmentDoc}
   ${FileBlockFragmentDoc}
   ${UploadImageEntityFragmentDoc}
-`
-export const DocumentSlugEntityFragmentDoc = gql`
-  fragment DocumentSlugEntity on DocumentEntity {
-    __typename
-    id
-    attributes {
-      slug
-      title
-    }
-  }
-`
-export const DocumentCategoryEntityFragmentDoc = gql`
-  fragment DocumentCategoryEntity on DocumentCategoryEntity {
-    id
-    attributes {
-      title
-      slug
-    }
-  }
-`
-export const DocumentCardEntityFragmentDoc = gql`
-  fragment DocumentCardEntity on DocumentEntity {
-    ...DocumentSlugEntity
-    attributes {
-      publishedAt
-      updatedAt
-      documentCategory {
-        data {
-          ...DocumentCategoryEntity
-        }
-      }
-    }
-  }
-  ${DocumentSlugEntityFragmentDoc}
-  ${DocumentCategoryEntityFragmentDoc}
-`
-export const DocumentEntityFragmentDoc = gql`
-  fragment DocumentEntity on DocumentEntity {
-    ...DocumentCardEntity
-    attributes {
-      description
-      files {
-        data {
-          ...UploadFileEntity
-        }
-      }
-    }
-  }
-  ${DocumentCardEntityFragmentDoc}
-  ${UploadFileEntityFragmentDoc}
 `
 export const PageSlugEntityFragmentDoc = gql`
   fragment PageSlugEntity on PageEntity {
@@ -16142,17 +16157,59 @@ export const PartnersSectionFragmentDoc = gql`
   }
   ${PartnerBlockFragmentDoc}
 `
+export const DocumentSlugEntityFragmentDoc = gql`
+  fragment DocumentSlugEntity on DocumentEntity {
+    __typename
+    id
+    attributes {
+      slug
+      title
+    }
+  }
+`
+export const DocumentCategoryEntityFragmentDoc = gql`
+  fragment DocumentCategoryEntity on DocumentCategoryEntity {
+    id
+    attributes {
+      title
+      slug
+    }
+  }
+`
+export const DocumentEntityFragmentDoc = gql`
+  fragment DocumentEntity on DocumentEntity {
+    ...DocumentSlugEntity
+    attributes {
+      publishedAt
+      updatedAt
+      documentCategory {
+        data {
+          ...DocumentCategoryEntity
+        }
+      }
+      description
+      files {
+        data {
+          ...UploadFileEntity
+        }
+      }
+    }
+  }
+  ${DocumentSlugEntityFragmentDoc}
+  ${DocumentCategoryEntityFragmentDoc}
+  ${UploadFileEntityFragmentDoc}
+`
 export const DocumentsSectionFragmentDoc = gql`
   fragment DocumentsSection on ComponentSectionsDocuments {
     title
     text
     documents(pagination: { limit: -1 }) {
       data {
-        ...DocumentCardEntity
+        ...DocumentEntity
       }
     }
   }
-  ${DocumentCardEntityFragmentDoc}
+  ${DocumentEntityFragmentDoc}
 `
 export const SectionsFragmentDoc = gql`
   fragment Sections on PageSectionsDynamicZone {

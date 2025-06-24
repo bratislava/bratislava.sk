@@ -2,6 +2,7 @@ import { Typography } from '@bratislava/component-library'
 import { Trans } from 'next-i18next'
 
 import { FacebookIcon, InstagramIcon } from '@/src/assets/icons-social-media'
+import Button from '@/src/components/common/Button/Button'
 import MLink from '@/src/components/common/MLink/MLink'
 import Markdown from '@/src/components/formatting/Markdown/Markdown'
 import { useLocalizations } from '@/src/components/providers/LocalizationsProvider'
@@ -12,28 +13,28 @@ import { isDefined } from '@/src/utils/isDefined'
 export const FooterSocialLinks = ({ facebookUrl, instagramUrl }: FooterFragment) => {
   return (
     <>
-      {facebookUrl && (
-        <MLink
+      {facebookUrl ? (
+        <Button
           href={facebookUrl}
           target="_blank"
-          rel="noreferrer"
+          variant="icon-wrapped"
+          icon={<FacebookIcon />}
           aria-label="Facebook"
-          className="p-2"
-        >
-          <FacebookIcon aria-hidden className="size-5 md:size-6" />
-        </MLink>
-      )}
-      {instagramUrl && (
-        <MLink
+          rel="noreferrer"
+          hasLinkIcon={false}
+        />
+      ) : null}
+      {instagramUrl ? (
+        <Button
           href={instagramUrl}
           target="_blank"
-          rel="noreferrer"
+          variant="icon-wrapped"
+          icon={<InstagramIcon />}
           aria-label="Instagram"
-          className="p-2"
-        >
-          <InstagramIcon aria-hidden className="size-5 md:size-6" />
-        </MLink>
-      )}
+          rel="noreferrer"
+          hasLinkIcon={false}
+        />
+      ) : null}
     </>
   )
 }

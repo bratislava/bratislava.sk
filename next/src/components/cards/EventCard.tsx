@@ -7,6 +7,7 @@ import CardContent from '@/src/components/cards/CardContent'
 import MLink from '@/src/components/common/MLink/MLink'
 import FormatEventDateRange from '@/src/components/formatting/FormatEventDateRange'
 import cn from '@/src/utils/cn'
+import { getLinkProps } from '@/src/utils/getLinkProps'
 import { useTranslation } from '@/src/utils/useTranslation'
 
 type EventCardProps = {
@@ -44,9 +45,11 @@ const EventCard = ({
       <CardContent className="relative inline-flex size-full flex-col items-start justify-end bg-linear-to-b from-transparent to-[black] p-4 text-clip lg:p-5">
         <div className="flex w-full flex-col items-start gap-4 self-stretch">
           <Typography variant="h5" as="h3">
-            <MLink href={linkHref} target="_blank" stretched variant="underlineOnHover">
-              {title}
-            </MLink>
+            <MLink
+              stretched
+              variant="underlineOnHover"
+              {...getLinkProps({ label: title, url: linkHref })}
+            />
           </Typography>
 
           <div className="flex flex-col items-start text-size-p-tiny font-medium">

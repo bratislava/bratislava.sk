@@ -15,7 +15,7 @@ fragment DocumentSlugEntity on DocumentEntity {
   }
 }
 
-fragment DocumentCardEntity on DocumentEntity {
+fragment DocumentEntity on DocumentEntity {
   ...DocumentSlugEntity
   attributes {
     publishedAt
@@ -25,12 +25,6 @@ fragment DocumentCardEntity on DocumentEntity {
         ...DocumentCategoryEntity
       }
     }
-  }
-}
-
-fragment DocumentEntity on DocumentEntity {
-  ...DocumentCardEntity
-  attributes {
     description
     files {
       data {
