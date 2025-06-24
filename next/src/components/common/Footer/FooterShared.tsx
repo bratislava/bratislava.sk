@@ -18,7 +18,7 @@ export const FooterSocialLinks = ({ facebookUrl, instagramUrl }: FooterFragment)
           href={facebookUrl}
           target="_blank"
           variant="icon-wrapped"
-          icon={<FacebookIcon aria-hidden className="size-5 md:size-6" />}
+          icon={<FacebookIcon />}
           aria-label="Facebook"
           rel="noreferrer"
           hasLinkIcon={false}

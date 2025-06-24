@@ -37,7 +37,7 @@ const DocumentRowCard = ({
       <div className="bg-background-passive-base" title={title}>
         <div className="flex items-center gap-3 py-4 lg:gap-4">
           <div className="flex grow items-start gap-3 lg:gap-4">
-            <div className="lg:rounded-lg lg:bg-background-passive-secondary lg:p-3">
+            <div className="lg:rounded-lg lg:bg-background-passive-secondary lg:p-3 lg:text-content-passive-secondary">
               {variant === 'single-file' ? (
                 <AttachmentIcon className="size-5 md:size-6" />
               ) : (
