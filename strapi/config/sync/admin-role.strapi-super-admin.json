@@ -701,7 +701,8 @@
           "newsPage",
           "vznPage",
           "inbaPage",
-          "inbaReleasesPage"
+          "inbaReleasesPage",
+          "documentsPage"
         ],
         "locales": [
           "en",
@@ -745,7 +746,8 @@
           "newsPage",
           "vznPage",
           "inbaPage",
-          "inbaReleasesPage"
+          "inbaReleasesPage",
+          "documentsPage"
         ],
         "locales": [
           "en",
@@ -777,7 +779,8 @@
           "newsPage",
           "vznPage",
           "inbaPage",
-          "inbaReleasesPage"
+          "inbaReleasesPage",
+          "documentsPage"
         ],
         "locales": [
           "en",
