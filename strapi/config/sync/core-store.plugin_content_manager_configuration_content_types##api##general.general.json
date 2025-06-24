@@ -124,6 +124,21 @@
           "sortable": true
         }
       },
+      "documentsPage": {
+        "edit": {
+          "label": "documentsPage",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "title"
+        },
+        "list": {
+          "label": "documentsPage",
+          "searchable": true,
+          "sortable": true
+        }
+      },
       "createdAt": {
         "edit": {
           "label": "createdAt",
@@ -184,12 +199,6 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "header",
-        "createdAt",
-        "updatedAt"
-      ],
       "edit": [
         [
           {
@@ -203,11 +212,15 @@
             "size": 6
           },
           {
-            "name": "vznPage",
+            "name": "documentsPage",
             "size": 6
           }
         ],
         [
+          {
+            "name": "vznPage",
+            "size": 6
+          },
           {
             "name": "officialBoardPage",
             "size": 6
@@ -215,20 +228,26 @@
         ],
         [
           {
-            "name": "privacyPolicyPage",
+            "name": "inbaPage",
             "size": 6
           },
           {
-            "name": "inbaPage",
+            "name": "inbaReleasesPage",
             "size": 6
           }
         ],
         [
           {
-            "name": "inbaReleasesPage",
+            "name": "privacyPolicyPage",
             "size": 6
           }
         ]
+      ],
+      "list": [
+        "id",
+        "header",
+        "createdAt",
+        "updatedAt"
       ]
     }
   },

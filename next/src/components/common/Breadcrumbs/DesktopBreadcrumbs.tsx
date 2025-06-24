@@ -20,7 +20,7 @@ const DesktopBreadcrumbs = ({ breadcrumbs }: BreadcrumbsProps) => {
           className="shrink-0"
           aria-label={t('Breadcrumbs.homepage')}
         >
-          <HomeIcon />
+          <HomeIcon className="size-5 shrink-0" />
         </MLink>
       </li>
       {breadcrumbs.map((breadcrumb, index) => {
@@ -29,7 +29,7 @@ const DesktopBreadcrumbs = ({ breadcrumbs }: BreadcrumbsProps) => {
         return (
           // eslint-disable-next-line react/no-array-index-key
           <li className="flex gap-1 text-size-p-tiny font-medium" key={index}>
-            <ChevronRightIcon className="shrink-0" aria-hidden />
+            <ChevronRightIcon className="size-5 shrink-0" aria-hidden />
             {breadcrumb.path && !isLast ? (
               <MLink href={breadcrumb.path} variant="underlined">
                 {breadcrumb.title}

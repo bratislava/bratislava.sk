@@ -8,11 +8,13 @@ import Breadcrumbs, { Breadcrumb } from '@/src/components/common/Breadcrumbs/Bre
 import HorizontalDivider from '@/src/components/common/Divider/HorizontalDivider'
 import DocumentPageHeader from '@/src/components/common/PageHeader/DocumentPageHeader'
 import SectionContainer from '@/src/components/common/SectionContainer/SectionContainer'
+import { useGeneralContext } from '@/src/components/providers/GeneralContextProvider'
 import { DocumentEntityFragment } from '@/src/services/graphql'
 import { formatDate } from '@/src/utils/formatDate'
 import { formatFileExtension } from '@/src/utils/formatFileExtension'
 import { formatFileSize } from '@/src/utils/formatFileSize'
 import { isDefined } from '@/src/utils/isDefined'
+import { getPageBreadcrumbs } from '@/src/utils/pageUtils_Deprecated'
 
 type Props = {
   document: DocumentEntityFragment
@@ -24,9 +26,15 @@ type Props = {
 const DocumentPageContent = ({ document }: Props) => {
   const { t, i18n } = useTranslation()
 
+  const { general } = useGeneralContext()
+  const documentsPage = general?.data?.attributes?.documentsPage?.data
+
   const breadcrumbs = useMemo(() => {
-    return [{ title: document.attributes?.title ?? '', path: null } as Breadcrumb]
-  }, [document.attributes?.title])
+    return [
+      ...(documentsPage ? getPageBreadcrumbs(documentsPage) : []),
+      { title: document.attributes?.title ?? '', path: null } as Breadcrumb,
+    ]
+  }, [document.attributes?.title, documentsPage])
 
   if (!document.attributes) {
     return null

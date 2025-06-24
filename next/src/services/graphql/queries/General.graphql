@@ -132,14 +132,6 @@ fragment HeaderLink on ComponentGeneralHeaderLink {
   icon
 }
 
-fragment GeneralPageRelation on PageEntity {
-  id
-  attributes {
-    title
-    slug
-  }
-}
-
 fragment General on General {
   header {
     links {
@@ -151,33 +143,39 @@ fragment General on General {
   }
   newsPage {
     data {
-      ...GeneralPageRelation
+      ...PageSlugEntity
       ...PageParentPages
     }
   }
   officialBoardPage {
     data {
-      ...GeneralPageRelation
+      ...PageSlugEntity
     }
   }
   privacyPolicyPage {
     data {
-      ...GeneralPageRelation
+      ...PageSlugEntity
     }
   }
   vznPage {
     data {
-      ...GeneralPageRelation
+      ...PageSlugEntity
     }
   }
   inbaPage {
     data {
-      ...GeneralPageRelation
+      ...PageSlugEntity
     }
   }
   inbaReleasesPage {
     data {
-      ...GeneralPageRelation
+      ...PageSlugEntity
+    }
+  }
+  documentsPage {
+    data {
+      ...PageSlugEntity
+      ...PageParentPages
     }
   }
 }

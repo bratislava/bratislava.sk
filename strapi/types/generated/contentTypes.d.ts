@@ -780,6 +780,7 @@ export interface ApiGeneralGeneral extends Schema.SingleType {
     createdAt: Attribute.DateTime
     createdBy: Attribute.Relation<'api::general.general', 'oneToOne', 'admin::user'> &
       Attribute.Private
+    documentsPage: Attribute.Relation<'api::general.general', 'oneToOne', 'api::page.page'>
     header: Attribute.Component<'general.header'> &
       Attribute.SetPluginOptions<{
         i18n: {
