@@ -29,37 +29,34 @@ const searchIndexSettings = {
     'article.perex',
     'blog-post.title',
     'blog-post.excerpt',
+    'document.title',
+    'document.description',
     'inba-article.title',
     'regulation.regNumber',
     'regulation.titleText',
     'regulation.fullTitle',
   ],
   filterableAttributes: [
-    // All
     'type',
-    // Page + Blog post + Article + Inba article
     'locale',
     'article.tag.id',
     'blog-post.tag.id',
+    'document.documentCategory.id',
     'inba-article.inbaTag.id',
-    // Regulation
     'regulation.category',
   ],
   sortableAttributes: [
-    // Article
     'article.title',
     'article.addedAtTimestamp',
-    // Blog post
     'blog-post.title',
     'blog-post.addedAtTimestamp',
-    // Inba article
+    'document.publishedAtTimestamp',
+    'document.updatedAtTimestamp',
     'inba-article.title',
     'inba-article.publishedAtTimestamp',
-    // Vzn
     'vzn.validFrom',
     'vzn.publishedAt', // TODO is it needed?
     'vzn.publishedAtTimestamp',
-    // Regulation
     'regulation.effectiveFromTimestamp',
   ],
   pagination: {
@@ -108,6 +105,21 @@ const config = {
         // Meilisearch doesn't support filtering dates as ISO strings, therefore we convert it to UNIX timestamp to
         // use (number) filters.
         addedAtTimestamp: entry.addedAt ? new Date(entry.addedAt).getTime() : undefined,
+      }),
+  },
+  document: {
+    indexName: 'search_index',
+    entriesQuery: {
+      locale: 'all',
+    },
+    settings: searchIndexSettings,
+    transformEntry: ({ entry }) =>
+      wrapSearchIndexEntry('document', {
+        ...entry,
+        // Meilisearch doesn't support filtering dates as ISO strings, therefore we convert it to UNIX timestamp to
+        // use (number) filters.
+        publishedAtTimestamp: entry.publishedAt ? new Date(entry.publishedAt).getTime() : undefined,
+        updatedAtTimestamp: entry.updatedAt ? new Date(entry.updatedAt).getTime() : undefined,
       }),
   },
   'inba-article': {

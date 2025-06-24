@@ -1,6 +1,8 @@
 import {
   Article,
   ArticleEntity,
+  Document,
+  DocumentCategory,
   InbaArticle,
   InbaTag,
   Page,
@@ -47,6 +49,10 @@ export type ArticleMeili = Pick<ArticleEntity, 'id'> &
       pageCategory?: Omit<PageCategory, '__typename' | 'pages'>
     }
   }
+
+export type DocumentMeili = Omit<Document, '__typename' | 'documentCategory' | 'files'> & {
+  documentCategory?: Omit<DocumentCategory, '__typename' | 'documents'>
+}
 
 export type InbaArticleMeili = Omit<InbaArticle, '__typename' | 'tags' | 'coverImage'> & {
   coverImage?: UploadFile

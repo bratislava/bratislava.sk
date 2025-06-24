@@ -14,16 +14,7 @@ import { officialBoardListDefaultFilters } from '@/src/services/ginis/fetchers/o
 import { OfficialBoardPublicationState } from '@/src/services/ginis/types'
 import { getCategoryColorLocalStyle } from '@/src/utils/colors'
 import { useTranslation } from '@/src/utils/useTranslation'
-/*
- * RAC library recommends Selection as type for selection state, which is of type `'all' | Set`.
- * To use standard operations on Set, you have to check if selection is not 'all' to satisfy Typescript.
- * Even though we never use 'all' for selection, because it acts differently than we want.
- */
-/*
- * RAC library recommends Selection as type for selection state, which is of type `'all' | Set`.
- * To use standard operations on Set, you have to check if selection is not 'all' to satisfy Typescript.
- * Even though we never use 'all' for selection, because it acts differently than we want.
- */
+import { isProductionDeployment } from '@/src/utils/utils'
 
 /*
  * RAC library recommends Selection as type for selection state, which is of type `'all' | Set`.
@@ -36,6 +27,7 @@ export type SearchOption = {
     | 'allResults'
     | 'pages'
     | 'articles'
+    | 'documents'
     | 'inbaArticles'
     | 'regulations'
     | 'users'
@@ -82,6 +74,16 @@ const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
       displayName: t('SearchPage.article'),
       displayNamePlural: t('SearchPage.articles'),
     },
+    // Show Documents only if not in prod - TODO remove when ready to use according to OSO
+    ...(isProductionDeployment()
+      ? []
+      : [
+          {
+            id: 'documents' as const,
+            displayName: t('SearchPage.document'),
+            displayNamePlural: t('SearchPage.documents'),
+          },
+        ]),
     // {
     //   id: 'inbaArticles',
     //   displayName: t('SearchPage.inbaArticle'),

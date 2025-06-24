@@ -14,6 +14,10 @@ import {
   getArticlesQueryKey,
 } from '@/src/services/meili/fetchers/articlesFetcher'
 import {
+  documentsFetcher,
+  getDocumentsQueryKey,
+} from '@/src/services/meili/fetchers/documentsFetcher'
+import {
   getInbaArticlesQueryKey,
   inbaArticlesFetcher,
   InbaArticlesFilters,
@@ -97,16 +101,36 @@ export const useQueryBySearchOption = ({
     placeholderData: keepPreviousData,
     select: (data) => {
       const formattedData: SearchResult[] =
-        data?.hits?.map((articles): SearchResult => {
+        data?.hits?.map((article): SearchResult => {
           return {
-            title: articles.attributes?.title,
-            uniqueId: articles.attributes?.slug,
-            linkHref: `/spravy/${articles.attributes?.slug}`,
+            title: article.attributes?.title,
+            uniqueId: article.attributes?.slug,
+            linkHref: `/spravy/${article.attributes?.slug}`,
             metadata: [
-              articles.attributes?.tag?.data?.attributes?.title,
-              formatDate(articles.attributes?.addedAt),
+              article.attributes?.tag?.data?.attributes?.title,
+              formatDate(article.attributes?.addedAt),
             ],
-            coverImageSrc: articles.attributes?.coverMedia?.data?.attributes?.url,
+            coverImageSrc: article.attributes?.coverMedia?.data?.attributes?.url,
+          }
+        }) ?? []
+
+      return { searchResultsData: formattedData, searchResultsCount: data?.estimatedTotalHits ?? 0 }
+    },
+  })
+
+  const documentsQuery = useQuery({
+    queryKey: getDocumentsQueryKey(filters),
+    queryFn: () => documentsFetcher(filters),
+    placeholderData: keepPreviousData,
+    select: (data) => {
+      const formattedData: SearchResult[] =
+        data?.hits?.map((document): SearchResult => {
+          return {
+            title: document.title,
+            uniqueId: document.slug,
+            linkHref: `/dokumenty/${document.slug}`,
+            metadata: [document.documentCategory?.title, formatDate(document.updatedAt)],
+            customIconName: 'search_result_official_board',
           }
         }) ?? []
 
@@ -239,6 +263,9 @@ export const useQueryBySearchOption = ({
 
     case 'articles':
       return articlesQuery
+
+    case 'documents':
+      return documentsQuery
 
     case 'inbaArticles':
       return inbaArticlesQuery
