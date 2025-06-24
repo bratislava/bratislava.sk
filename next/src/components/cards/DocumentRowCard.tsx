@@ -49,7 +49,7 @@ const DocumentRowCard = ({
                 {title}
               </Typography>
               {metadata?.length ? (
-                <div className="flex items-center gap-3">
+                <div className="flex flex-wrap items-center gap-x-3">
                   {metadata.map((item, index) => (
                     // eslint-disable-next-line react/no-array-index-key
                     <Fragment key={index}>

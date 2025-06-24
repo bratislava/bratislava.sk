@@ -3,6 +3,7 @@ import { useTranslation } from 'next-i18next'
 import { Fragment } from 'react'
 
 import { DocumentIcon, DownloadIcon } from '@/src/assets/icons'
+import { FolderIcon } from '@/src/assets/material-icons'
 import Button from '@/src/components/common/Button/Button'
 import { DocumentEntityFragment } from '@/src/services/graphql'
 import cn from '@/src/utils/cn'
@@ -34,16 +35,16 @@ const DocumentPageHeader = ({ document }: Props) => {
   const fileExtensionString = formatFileExtension(filteredFiles[0].attributes?.ext)
   const fileSizeString = formatFileSize(filteredFiles[0].attributes?.size, locale)
 
+  const isSingleFile = filteredFiles.length === 1
+
   const metadata = (
-    filteredFiles.length === 1
+    isSingleFile
       ? [formattedUpdatedAt, fileExtensionString, fileSizeString]
       : [
           formattedUpdatedAt,
           t('DocumentPageContent.numberOfFiles', { count: filteredFiles.length }),
         ]
-  )
-    // eslint-disable-next-line unicorn/no-array-callback-reference
-    .filter(isDefined)
+  ).filter(isDefined)
 
   return (
     <div className={cn('relative overflow-x-clip bg-grey-100')}>
@@ -51,7 +52,7 @@ const DocumentPageHeader = ({ document }: Props) => {
         <div className="py-6 lg:py-8">
           <div className="flex flex-col items-start gap-4 lg:gap-6">
             <div className="rounded-2xl bg-background-passive-base p-4">
-              <DocumentIcon />
+              {isSingleFile ? <DocumentIcon /> : <FolderIcon />}
             </div>
             <div className="flex flex-col gap-6">
               <div className="flex flex-col gap-1">
@@ -71,7 +72,7 @@ const DocumentPageHeader = ({ document }: Props) => {
                   ))}
                 </div>
               </div>
-              {filteredFiles.length === 1 ? (
+              {isSingleFile ? (
                 <Button
                   variant="solid"
                   href={filteredFiles[0].attributes?.url ?? '#'}
