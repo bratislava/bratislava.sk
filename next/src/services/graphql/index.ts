@@ -1396,6 +1396,7 @@ export type ComponentSectionsDocuments = {
   __typename?: 'ComponentSectionsDocuments'
   documents?: Maybe<DocumentRelationResponseCollection>
   id: Scalars['ID']['output']
+  showAll?: Maybe<Scalars['Boolean']['output']>
   text?: Maybe<Scalars['String']['output']>
   title?: Maybe<Scalars['String']['output']>
 }
@@ -1412,6 +1413,7 @@ export type ComponentSectionsDocumentsFiltersInput = {
   documents?: InputMaybe<DocumentFiltersInput>
   not?: InputMaybe<ComponentSectionsDocumentsFiltersInput>
   or?: InputMaybe<Array<InputMaybe<ComponentSectionsDocumentsFiltersInput>>>
+  showAll?: InputMaybe<BooleanFilterInput>
   text?: InputMaybe<StringFilterInput>
   title?: InputMaybe<StringFilterInput>
 }
@@ -1419,6 +1421,7 @@ export type ComponentSectionsDocumentsFiltersInput = {
 export type ComponentSectionsDocumentsInput = {
   documents?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
   id?: InputMaybe<Scalars['ID']['input']>
+  showAll?: InputMaybe<Scalars['Boolean']['input']>
   text?: InputMaybe<Scalars['String']['input']>
   title?: InputMaybe<Scalars['String']['input']>
 }
@@ -9168,6 +9171,7 @@ export type PageEntityFragment = {
           __typename: 'ComponentSectionsDocuments'
           title?: string | null
           text?: string | null
+          showAll?: boolean | null
           documents?: {
             __typename?: 'DocumentRelationResponseCollection'
             data: Array<{
@@ -10240,6 +10244,7 @@ export type PageBySlugQuery = {
               __typename: 'ComponentSectionsDocuments'
               title?: string | null
               text?: string | null
+              showAll?: boolean | null
               documents?: {
                 __typename?: 'DocumentRelationResponseCollection'
                 data: Array<{
@@ -11352,6 +11357,7 @@ export type Dev_AllPagesQuery = {
               __typename: 'ComponentSectionsDocuments'
               title?: string | null
               text?: string | null
+              showAll?: boolean | null
               documents?: {
                 __typename?: 'DocumentRelationResponseCollection'
                 data: Array<{
@@ -14046,6 +14052,7 @@ export type DocumentsSectionFragment = {
   __typename?: 'ComponentSectionsDocuments'
   title?: string | null
   text?: string | null
+  showAll?: boolean | null
   documents?: {
     __typename?: 'DocumentRelationResponseCollection'
     data: Array<{
@@ -14392,6 +14399,7 @@ type Sections_ComponentSectionsDocuments_Fragment = {
   __typename: 'ComponentSectionsDocuments'
   title?: string | null
   text?: string | null
+  showAll?: boolean | null
   documents?: {
     __typename?: 'DocumentRelationResponseCollection'
     data: Array<{
@@ -16374,6 +16382,7 @@ export const DocumentsSectionFragmentDoc = gql`
         ...DocumentEntity
       }
     }
+    showAll
   }
   ${DocumentEntityFragmentDoc}
 `

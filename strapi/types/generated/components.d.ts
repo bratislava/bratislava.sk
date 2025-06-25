@@ -616,6 +616,7 @@ export interface SectionsDocuments extends Schema.Component {
   }
   attributes: {
     documents: Attribute.Relation<'sections.documents', 'oneToMany', 'api::document.document'>
+    showAll: Attribute.Boolean & Attribute.DefaultTo<false>
     text: Attribute.Text
     title: Attribute.String & Attribute.DefaultTo<'Dokumenty'>
   }

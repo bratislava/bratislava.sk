@@ -61,6 +61,20 @@
           "searchable": false,
           "sortable": false
         }
+      },
+      "showAll": {
+        "edit": {
+          "label": "Zobraziť všetky",
+          "description": "Ak je toto pole TRUE, zobrazia sa všetky Dokumenty spolu s vyhľadávaním. Ak je FALSE, zobrazia sa Dokumenty vybrané vo vedľajšom poli.",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "showAll",
+          "searchable": true,
+          "sortable": true
+        }
       }
     },
     "layouts": {
@@ -86,6 +100,12 @@
         [
           {
             "name": "documents",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "showAll",
             "size": 12
           }
         ]

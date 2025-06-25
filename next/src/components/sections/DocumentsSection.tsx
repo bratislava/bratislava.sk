@@ -4,6 +4,7 @@ import React, { Fragment } from 'react'
 
 import DocumentRowCard from '@/src/components/cards/DocumentRowCard'
 import HorizontalDivider from '@/src/components/common/Divider/HorizontalDivider'
+import DocumentsAllSection from '@/src/components/sections/DocumentsAllSection'
 import { DocumentsSectionFragment } from '@/src/services/graphql'
 import { formatDate } from '@/src/utils/formatDate'
 import { formatFileExtension } from '@/src/utils/formatFileExtension'
@@ -21,6 +22,10 @@ type Props = {
 const DocumentsSection = ({ section }: Props) => {
   const { t } = useTranslation()
   const locale = useLocale()
+
+  if (section.showAll) {
+    return <DocumentsAllSection />
+  }
 
   const { title, text, documents } = section
 

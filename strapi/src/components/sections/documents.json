@@ -17,6 +17,10 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::document.document"
+    },
+    "showAll": {
+      "type": "boolean",
+      "default": false
     }
   }
 }
