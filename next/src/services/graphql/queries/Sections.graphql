@@ -431,6 +431,7 @@ fragment DocumentsSection on ComponentSectionsDocuments {
       ...DocumentEntity
     }
   }
+  showAll
 }
 
 fragment Sections on PageSectionsDynamicZone {
