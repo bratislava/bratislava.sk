@@ -335,15 +335,23 @@
 
   --text-p-small: 1rem; /* 16px */
   --leading-p-small: 1.5rem; /* 24px */
+  --text-p-small-r: 1rem; /* 16px */
+  --leading-p-small-r: 1.5rem; /* 24px */
 
   --text-p-tiny: 0.875rem; /* 14px */
   --leading-p-tiny: 1.25rem; /* 20px */
+  --text-p-tiny-r: 0.875rem; /* 14px */
+  --leading-p-tiny-r: 1.25rem; /* 20px */
 
   --text-button-large: 1rem; /* 16px */
   --leading-button-large: 1.5rem; /* 24px */
+  --text-button-large-r: 1rem; /* 16px */
+  --leading-button-large-r: 1.5rem; /* 24px */
 
   --text-button-default: 0.875rem; /* 14px */
   --leading-button-default: 1.5rem; /* 24px */
+  --text-button-default-r: 0.875rem; /* 14px */
+  --leading-button-default-r: 1.5rem; /* 24px */
 
   /* ANIMATIONS */
 
@@ -794,16 +802,32 @@
   @apply text-p-small leading-p-small;
 }
 
+@utility text-size-p-small-r {
+  @apply text-p-small-r leading-p-small-r;
+}
+
 @utility text-size-p-tiny {
   @apply text-p-tiny leading-p-tiny;
+}
+
+@utility text-size-p-tiny-r {
+  @apply text-p-tiny-r leading-p-tiny-r;
 }
 
 @utility text-size-button-large {
   @apply text-button-large leading-button-large;
 }
 
+@utility text-size-button-large-r {
+  @apply text-button-large-r leading-button-large-r;
+}
+
 @utility text-size-button-default {
   @apply text-button-default leading-button-default;
+}
+
+@utility text-size-button-default-r {
+  @apply text-button-default-r leading-button-default-r;
 }
 
 /* UTILITIES - other */
