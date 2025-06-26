@@ -707,13 +707,6 @@
   .form-group label.control-label {
     display: none;
   }
-
-  /* styles for vertical timeline */
-  @media (max-width: 1170px) {
-    .vertical-timeline-element.vertical-timeline-element--with-image {
-      margin-top: 300px;
-    }
-  }
 }
 
 /* UTILITIES - text */

@@ -16,7 +16,6 @@ import FaqCategoriesSection from '@/src/components/sections/FaqCategoriesSection
 import FaqsSection from '@/src/components/sections/FaqsSection'
 import FileListSection from '@/src/components/sections/FileListSection'
 import GallerySection from '@/src/components/sections/GallerySection'
-import IconTitleDescSection from '@/src/components/sections/IconTitleDescSection'
 import IframeSection from '@/src/components/sections/IframeSection'
 import InbaReleasesSection from '@/src/components/sections/InbaReleasesSection'
 import LinksSection from '@/src/components/sections/LinksSection'
@@ -30,7 +29,6 @@ import RegulationsListSection from '@/src/components/sections/RegulationsListSec
 import RegulationsSection from '@/src/components/sections/RegulationsSection'
 import TextWithImageOverlappedSection from '@/src/components/sections/TextWithImageOverlappedSection'
 import TextWithImageSection from '@/src/components/sections/TextWithImageSection'
-import TimelineSection from '@/src/components/sections/TimelineSection'
 import TootootEventsSection from '@/src/components/sections/TootootEventsSection'
 import VideosSection from '@/src/components/sections/VideosSection'
 import { SectionsFragment } from '@/src/services/graphql'
@@ -40,9 +38,6 @@ const SectionContent = ({ section }: { section: SectionsFragment }) => {
   switch (section.__typename) {
     case 'ComponentSectionsNarrowText':
       return <NarrowTextSection section={section} />
-
-    case 'ComponentSectionsIconTitleDesc':
-      return <IconTitleDescSection section={section} />
 
     case 'ComponentSectionsColumnedText':
       return <ColumnedTextSection section={section} />
@@ -103,9 +98,6 @@ const SectionContent = ({ section }: { section: SectionsFragment }) => {
 
     case 'ComponentSectionsBanner':
       return <BannerSection section={section} />
-
-    case 'ComponentSectionsTimeline':
-      return <TimelineSection section={section} />
 
     case 'ComponentSectionsContactsSection':
       return <ContactsSection section={section} />

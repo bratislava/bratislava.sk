@@ -1,5 +1,4 @@
 /* eslint-disable @next/next/inline-script-id */
-import 'react-vertical-timeline-component/style.min.css'
 import '@/src/styles/globals.css'
 
 import { GoogleTagManager } from '@next/third-parties/google'

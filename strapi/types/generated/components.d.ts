@@ -174,20 +174,6 @@ export interface BlocksHomepageHighlightsItem extends Schema.Component {
   }
 }
 
-export interface BlocksIconWithTitleAndDescription extends Schema.Component {
-  collectionName: 'components_blocks_icon_with_title_and_descriptions'
-  info: {
-    description: ''
-    displayName: 'Icon With Title And Description'
-  }
-  attributes: {
-    desc: Attribute.RichText
-    disableIconBackground: Attribute.Boolean & Attribute.DefaultTo<false>
-    icon: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>
-    title: Attribute.String
-  }
-}
-
 export interface BlocksInBa extends Schema.Component {
   collectionName: 'components_blocks_in_bas'
   info: {
@@ -248,18 +234,6 @@ export interface BlocksProsAndConsCard extends Schema.Component {
   attributes: {
     items: Attribute.Component<'blocks.comparison-item', true> & Attribute.Required
     title: Attribute.String & Attribute.Required
-  }
-}
-
-export interface BlocksTimelineItem extends Schema.Component {
-  collectionName: 'components_blocks_timeline_items'
-  info: {
-    description: ''
-    displayName: 'Timeline item'
-  }
-  attributes: {
-    content: Attribute.RichText
-    title: Attribute.String
   }
 }
 
@@ -731,18 +705,6 @@ export interface SectionsHomepageTabs extends Schema.Component {
   }
 }
 
-export interface SectionsIconTitleDesc extends Schema.Component {
-  collectionName: 'components_sections_icon_title_descs'
-  info: {
-    description: ''
-    displayName: 'Icon Title Desc'
-  }
-  attributes: {
-    list: Attribute.Component<'blocks.icon-with-title-and-description', true>
-    title: Attribute.String
-  }
-}
-
 export interface SectionsIframe extends Schema.Component {
   collectionName: 'components_sections_iframes'
   info: {
@@ -758,6 +720,8 @@ export interface SectionsIframe extends Schema.Component {
     iframeWidth: Attribute.Enumeration<['full', 'container']> &
       Attribute.Required &
       Attribute.DefaultTo<'container'>
+    text: Attribute.Text
+    title: Attribute.String
     url: Attribute.String & Attribute.Required & Attribute.DefaultTo<'https://www.google.com'>
   }
 }
@@ -955,17 +919,6 @@ export interface SectionsTextWithImageOverlapped extends Schema.Component {
   }
 }
 
-export interface SectionsTimeline extends Schema.Component {
-  collectionName: 'components_sections_timelines'
-  info: {
-    description: ''
-    displayName: 'Timeline'
-  }
-  attributes: {
-    timelineItems: Attribute.Component<'blocks.timeline-item', true>
-  }
-}
-
 export interface SectionsTootootEvents extends Schema.Component {
   collectionName: 'components_sections_tootoot_events'
   info: {
@@ -1035,13 +988,11 @@ declare module '@strapi/types' {
       'blocks.file-item': BlocksFileItem
       'blocks.footer-column': BlocksFooterColumn
       'blocks.homepage-highlights-item': BlocksHomepageHighlightsItem
-      'blocks.icon-with-title-and-description': BlocksIconWithTitleAndDescription
       'blocks.in-ba': BlocksInBa
       'blocks.numerical-list-item': BlocksNumericalListItem
       'blocks.page-link': BlocksPageLink
       'blocks.partner': BlocksPartner
       'blocks.pros-and-cons-card': BlocksProsAndConsCard
-      'blocks.timeline-item': BlocksTimelineItem
       'blocks.top-services-item': BlocksTopServicesItem
       'blocks.video': BlocksVideo
       'general.header': GeneralHeader
@@ -1067,7 +1018,6 @@ declare module '@strapi/types' {
       'sections.homepage-highlights': SectionsHomepageHighlights
       'sections.homepage-mayor-and-council': SectionsHomepageMayorAndCouncil
       'sections.homepage-tabs': SectionsHomepageTabs
-      'sections.icon-title-desc': SectionsIconTitleDesc
       'sections.iframe': SectionsIframe
       'sections.inba-articles-list': SectionsInbaArticlesList
       'sections.inba-releases': SectionsInbaReleases
@@ -1083,7 +1033,6 @@ declare module '@strapi/types' {
       'sections.subpage-list': SectionsSubpageList
       'sections.text-with-image': SectionsTextWithImage
       'sections.text-with-image-overlapped': SectionsTextWithImageOverlapped
-      'sections.timeline': SectionsTimeline
       'sections.tootoot-events': SectionsTootootEvents
       'sections.top-services': SectionsTopServices
       'sections.videos': SectionsVideos

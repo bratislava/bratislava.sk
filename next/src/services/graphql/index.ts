@@ -709,32 +709,6 @@ export type ComponentBlocksHomepageHighlightsItemInput = {
   link?: InputMaybe<ComponentBlocksCommonLinkInput>
 }
 
-export type ComponentBlocksIconWithTitleAndDescription = {
-  __typename?: 'ComponentBlocksIconWithTitleAndDescription'
-  desc?: Maybe<Scalars['String']['output']>
-  disableIconBackground?: Maybe<Scalars['Boolean']['output']>
-  icon?: Maybe<UploadFileEntityResponse>
-  id: Scalars['ID']['output']
-  title?: Maybe<Scalars['String']['output']>
-}
-
-export type ComponentBlocksIconWithTitleAndDescriptionFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<ComponentBlocksIconWithTitleAndDescriptionFiltersInput>>>
-  desc?: InputMaybe<StringFilterInput>
-  disableIconBackground?: InputMaybe<BooleanFilterInput>
-  not?: InputMaybe<ComponentBlocksIconWithTitleAndDescriptionFiltersInput>
-  or?: InputMaybe<Array<InputMaybe<ComponentBlocksIconWithTitleAndDescriptionFiltersInput>>>
-  title?: InputMaybe<StringFilterInput>
-}
-
-export type ComponentBlocksIconWithTitleAndDescriptionInput = {
-  desc?: InputMaybe<Scalars['String']['input']>
-  disableIconBackground?: InputMaybe<Scalars['Boolean']['input']>
-  icon?: InputMaybe<Scalars['ID']['input']>
-  id?: InputMaybe<Scalars['ID']['input']>
-  title?: InputMaybe<Scalars['String']['input']>
-}
-
 export type ComponentBlocksInBa = {
   __typename?: 'ComponentBlocksInBa'
   content?: Maybe<Scalars['String']['output']>
@@ -850,27 +824,6 @@ export type ComponentBlocksProsAndConsCardFiltersInput = {
 export type ComponentBlocksProsAndConsCardInput = {
   id?: InputMaybe<Scalars['ID']['input']>
   items?: InputMaybe<Array<InputMaybe<ComponentBlocksComparisonItemInput>>>
-  title?: InputMaybe<Scalars['String']['input']>
-}
-
-export type ComponentBlocksTimelineItem = {
-  __typename?: 'ComponentBlocksTimelineItem'
-  content?: Maybe<Scalars['String']['output']>
-  id: Scalars['ID']['output']
-  title?: Maybe<Scalars['String']['output']>
-}
-
-export type ComponentBlocksTimelineItemFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<ComponentBlocksTimelineItemFiltersInput>>>
-  content?: InputMaybe<StringFilterInput>
-  not?: InputMaybe<ComponentBlocksTimelineItemFiltersInput>
-  or?: InputMaybe<Array<InputMaybe<ComponentBlocksTimelineItemFiltersInput>>>
-  title?: InputMaybe<StringFilterInput>
-}
-
-export type ComponentBlocksTimelineItemInput = {
-  content?: InputMaybe<Scalars['String']['input']>
-  id?: InputMaybe<Scalars['ID']['input']>
   title?: InputMaybe<Scalars['String']['input']>
 }
 
@@ -1658,33 +1611,6 @@ export type ComponentSectionsHomepageTabsInput = {
   roadClosuresPageLink?: InputMaybe<ComponentBlocksCommonLinkInput>
 }
 
-export type ComponentSectionsIconTitleDesc = {
-  __typename?: 'ComponentSectionsIconTitleDesc'
-  id: Scalars['ID']['output']
-  list?: Maybe<Array<Maybe<ComponentBlocksIconWithTitleAndDescription>>>
-  title?: Maybe<Scalars['String']['output']>
-}
-
-export type ComponentSectionsIconTitleDescListArgs = {
-  filters?: InputMaybe<ComponentBlocksIconWithTitleAndDescriptionFiltersInput>
-  pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
-}
-
-export type ComponentSectionsIconTitleDescFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<ComponentSectionsIconTitleDescFiltersInput>>>
-  list?: InputMaybe<ComponentBlocksIconWithTitleAndDescriptionFiltersInput>
-  not?: InputMaybe<ComponentSectionsIconTitleDescFiltersInput>
-  or?: InputMaybe<Array<InputMaybe<ComponentSectionsIconTitleDescFiltersInput>>>
-  title?: InputMaybe<StringFilterInput>
-}
-
-export type ComponentSectionsIconTitleDescInput = {
-  id?: InputMaybe<Scalars['ID']['input']>
-  list?: InputMaybe<Array<InputMaybe<ComponentBlocksIconWithTitleAndDescriptionInput>>>
-  title?: InputMaybe<Scalars['String']['input']>
-}
-
 export type ComponentSectionsIframe = {
   __typename?: 'ComponentSectionsIframe'
   allowFullscreen: Scalars['Boolean']['output']
@@ -1694,6 +1620,8 @@ export type ComponentSectionsIframe = {
   id: Scalars['ID']['output']
   iframeHeight: Scalars['String']['output']
   iframeWidth: Enum_Componentsectionsiframe_Iframewidth
+  text?: Maybe<Scalars['String']['output']>
+  title?: Maybe<Scalars['String']['output']>
   url: Scalars['String']['output']
 }
 
@@ -1707,6 +1635,8 @@ export type ComponentSectionsIframeFiltersInput = {
   iframeWidth?: InputMaybe<StringFilterInput>
   not?: InputMaybe<ComponentSectionsIframeFiltersInput>
   or?: InputMaybe<Array<InputMaybe<ComponentSectionsIframeFiltersInput>>>
+  text?: InputMaybe<StringFilterInput>
+  title?: InputMaybe<StringFilterInput>
   url?: InputMaybe<StringFilterInput>
 }
 
@@ -1718,6 +1648,8 @@ export type ComponentSectionsIframeInput = {
   id?: InputMaybe<Scalars['ID']['input']>
   iframeHeight?: InputMaybe<Scalars['String']['input']>
   iframeWidth?: InputMaybe<Enum_Componentsectionsiframe_Iframewidth>
+  text?: InputMaybe<Scalars['String']['input']>
+  title?: InputMaybe<Scalars['String']['input']>
   url?: InputMaybe<Scalars['String']['input']>
 }
 
@@ -2075,30 +2007,6 @@ export type ComponentSectionsTextWithImageOverlappedInput = {
   image?: InputMaybe<Scalars['ID']['input']>
   imagePosition?: InputMaybe<Enum_Componentsectionstextwithimageoverlapped_Imageposition>
   links?: InputMaybe<Array<InputMaybe<ComponentBlocksCommonLinkInput>>>
-}
-
-export type ComponentSectionsTimeline = {
-  __typename?: 'ComponentSectionsTimeline'
-  id: Scalars['ID']['output']
-  timelineItems?: Maybe<Array<Maybe<ComponentBlocksTimelineItem>>>
-}
-
-export type ComponentSectionsTimelineTimelineItemsArgs = {
-  filters?: InputMaybe<ComponentBlocksTimelineItemFiltersInput>
-  pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
-}
-
-export type ComponentSectionsTimelineFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<ComponentSectionsTimelineFiltersInput>>>
-  not?: InputMaybe<ComponentSectionsTimelineFiltersInput>
-  or?: InputMaybe<Array<InputMaybe<ComponentSectionsTimelineFiltersInput>>>
-  timelineItems?: InputMaybe<ComponentBlocksTimelineItemFiltersInput>
-}
-
-export type ComponentSectionsTimelineInput = {
-  id?: InputMaybe<Scalars['ID']['input']>
-  timelineItems?: InputMaybe<Array<InputMaybe<ComponentBlocksTimelineItemInput>>>
 }
 
 export type ComponentSectionsTootootEvents = {
@@ -2923,13 +2831,11 @@ export type GenericMorph =
   | ComponentBlocksFileItem
   | ComponentBlocksFooterColumn
   | ComponentBlocksHomepageHighlightsItem
-  | ComponentBlocksIconWithTitleAndDescription
   | ComponentBlocksInBa
   | ComponentBlocksNumericalListItem
   | ComponentBlocksPageLink
   | ComponentBlocksPartner
   | ComponentBlocksProsAndConsCard
-  | ComponentBlocksTimelineItem
   | ComponentBlocksTopServicesItem
   | ComponentBlocksVideo
   | ComponentGeneralHeader
@@ -2955,7 +2861,6 @@ export type GenericMorph =
   | ComponentSectionsHomepageHighlights
   | ComponentSectionsHomepageMayorAndCouncil
   | ComponentSectionsHomepageTabs
-  | ComponentSectionsIconTitleDesc
   | ComponentSectionsIframe
   | ComponentSectionsInbaArticlesList
   | ComponentSectionsInbaReleases
@@ -2971,7 +2876,6 @@ export type GenericMorph =
   | ComponentSectionsSubpageList
   | ComponentSectionsTextWithImage
   | ComponentSectionsTextWithImageOverlapped
-  | ComponentSectionsTimeline
   | ComponentSectionsTootootEvents
   | ComponentSectionsTopServices
   | ComponentSectionsVideos
@@ -4266,7 +4170,6 @@ export type PageSectionsDynamicZone =
   | ComponentSectionsFaqs
   | ComponentSectionsFileList
   | ComponentSectionsGallery
-  | ComponentSectionsIconTitleDesc
   | ComponentSectionsIframe
   | ComponentSectionsInbaArticlesList
   | ComponentSectionsInbaReleases
@@ -4281,7 +4184,6 @@ export type PageSectionsDynamicZone =
   | ComponentSectionsRegulationsList
   | ComponentSectionsTextWithImage
   | ComponentSectionsTextWithImageOverlapped
-  | ComponentSectionsTimeline
   | ComponentSectionsTootootEvents
   | ComponentSectionsVideos
   | Error
@@ -9303,25 +9205,9 @@ export type PageEntityFragment = {
           }
         }
       | {
-          __typename: 'ComponentSectionsIconTitleDesc'
-          title?: string | null
-          list?: Array<{
-            __typename?: 'ComponentBlocksIconWithTitleAndDescription'
-            title?: string | null
-            desc?: string | null
-            disableIconBackground?: boolean | null
-            icon?: {
-              __typename?: 'UploadFileEntityResponse'
-              data?: {
-                __typename?: 'UploadFileEntity'
-                id?: string | null
-                attributes?: { __typename?: 'UploadFile'; url: string } | null
-              } | null
-            } | null
-          } | null> | null
-        }
-      | {
           __typename: 'ComponentSectionsIframe'
+          title?: string | null
+          text?: string | null
           url: string
           iframeWidth: Enum_Componentsectionsiframe_Iframewidth
           iframeHeight: string
@@ -9687,15 +9573,6 @@ export type PageEntityFragment = {
                 } | null
               } | null
             } | null
-          } | null> | null
-        }
-      | {
-          __typename: 'ComponentSectionsTimeline'
-          timelineItems?: Array<{
-            __typename?: 'ComponentBlocksTimelineItem'
-            id: string
-            title?: string | null
-            content?: string | null
           } | null> | null
         }
       | {
@@ -10380,25 +10257,9 @@ export type PageBySlugQuery = {
               }
             }
           | {
-              __typename: 'ComponentSectionsIconTitleDesc'
-              title?: string | null
-              list?: Array<{
-                __typename?: 'ComponentBlocksIconWithTitleAndDescription'
-                title?: string | null
-                desc?: string | null
-                disableIconBackground?: boolean | null
-                icon?: {
-                  __typename?: 'UploadFileEntityResponse'
-                  data?: {
-                    __typename?: 'UploadFileEntity'
-                    id?: string | null
-                    attributes?: { __typename?: 'UploadFile'; url: string } | null
-                  } | null
-                } | null
-              } | null> | null
-            }
-          | {
               __typename: 'ComponentSectionsIframe'
+              title?: string | null
+              text?: string | null
               url: string
               iframeWidth: Enum_Componentsectionsiframe_Iframewidth
               iframeHeight: string
@@ -10768,15 +10629,6 @@ export type PageBySlugQuery = {
                     } | null
                   } | null
                 } | null
-              } | null> | null
-            }
-          | {
-              __typename: 'ComponentSectionsTimeline'
-              timelineItems?: Array<{
-                __typename?: 'ComponentBlocksTimelineItem'
-                id: string
-                title?: string | null
-                content?: string | null
               } | null> | null
             }
           | {
@@ -11493,25 +11345,9 @@ export type Dev_AllPagesQuery = {
               }
             }
           | {
-              __typename: 'ComponentSectionsIconTitleDesc'
-              title?: string | null
-              list?: Array<{
-                __typename?: 'ComponentBlocksIconWithTitleAndDescription'
-                title?: string | null
-                desc?: string | null
-                disableIconBackground?: boolean | null
-                icon?: {
-                  __typename?: 'UploadFileEntityResponse'
-                  data?: {
-                    __typename?: 'UploadFileEntity'
-                    id?: string | null
-                    attributes?: { __typename?: 'UploadFile'; url: string } | null
-                  } | null
-                } | null
-              } | null> | null
-            }
-          | {
               __typename: 'ComponentSectionsIframe'
+              title?: string | null
+              text?: string | null
               url: string
               iframeWidth: Enum_Componentsectionsiframe_Iframewidth
               iframeHeight: string
@@ -11881,15 +11717,6 @@ export type Dev_AllPagesQuery = {
                     } | null
                   } | null
                 } | null
-              } | null> | null
-            }
-          | {
-              __typename: 'ComponentSectionsTimeline'
-              timelineItems?: Array<{
-                __typename?: 'ComponentBlocksTimelineItem'
-                id: string
-                title?: string | null
-                content?: string | null
               } | null> | null
             }
           | {
@@ -12970,28 +12797,6 @@ export type RegulationEntityFragment = {
   } | null
 }
 
-export type IconTitleDescriptionBlockFragment = {
-  __typename?: 'ComponentBlocksIconWithTitleAndDescription'
-  title?: string | null
-  desc?: string | null
-  disableIconBackground?: boolean | null
-  icon?: {
-    __typename?: 'UploadFileEntityResponse'
-    data?: {
-      __typename?: 'UploadFileEntity'
-      id?: string | null
-      attributes?: { __typename?: 'UploadFile'; url: string } | null
-    } | null
-  } | null
-}
-
-export type TimelineItemBlockFragment = {
-  __typename?: 'ComponentBlocksTimelineItem'
-  id: string
-  title?: string | null
-  content?: string | null
-}
-
 export type GallerySectionFragment = {
   __typename?: 'ComponentSectionsGallery'
   title?: string | null
@@ -13012,16 +12817,6 @@ export type GallerySectionFragment = {
       } | null
     }>
   }
-}
-
-export type TimelineSectionFragment = {
-  __typename?: 'ComponentSectionsTimeline'
-  timelineItems?: Array<{
-    __typename?: 'ComponentBlocksTimelineItem'
-    id: string
-    title?: string | null
-    content?: string | null
-  } | null> | null
 }
 
 export type ArticlesSectionFragment = {
@@ -13053,25 +12848,6 @@ export type InbaReleasesSectionFragment = {
   __typename?: 'ComponentSectionsInbaReleases'
   title?: string | null
   text?: string | null
-}
-
-export type IconTitleDescSectionFragment = {
-  __typename?: 'ComponentSectionsIconTitleDesc'
-  title?: string | null
-  list?: Array<{
-    __typename?: 'ComponentBlocksIconWithTitleAndDescription'
-    title?: string | null
-    desc?: string | null
-    disableIconBackground?: boolean | null
-    icon?: {
-      __typename?: 'UploadFileEntityResponse'
-      data?: {
-        __typename?: 'UploadFileEntity'
-        id?: string | null
-        attributes?: { __typename?: 'UploadFile'; url: string } | null
-      } | null
-    } | null
-  } | null> | null
 }
 
 export type DividerSectionFragment = {
@@ -13190,6 +12966,8 @@ export type TextWithImageOverlappedSectionFragment = {
 
 export type IframeSectionFragment = {
   __typename?: 'ComponentSectionsIframe'
+  title?: string | null
+  text?: string | null
   url: string
   iframeWidth: Enum_Componentsectionsiframe_Iframewidth
   iframeHeight: string
@@ -14531,27 +14309,10 @@ type Sections_ComponentSectionsGallery_Fragment = {
   }
 }
 
-type Sections_ComponentSectionsIconTitleDesc_Fragment = {
-  __typename: 'ComponentSectionsIconTitleDesc'
-  title?: string | null
-  list?: Array<{
-    __typename?: 'ComponentBlocksIconWithTitleAndDescription'
-    title?: string | null
-    desc?: string | null
-    disableIconBackground?: boolean | null
-    icon?: {
-      __typename?: 'UploadFileEntityResponse'
-      data?: {
-        __typename?: 'UploadFileEntity'
-        id?: string | null
-        attributes?: { __typename?: 'UploadFile'; url: string } | null
-      } | null
-    } | null
-  } | null> | null
-}
-
 type Sections_ComponentSectionsIframe_Fragment = {
   __typename: 'ComponentSectionsIframe'
+  title?: string | null
+  text?: string | null
   url: string
   iframeWidth: Enum_Componentsectionsiframe_Iframewidth
   iframeHeight: string
@@ -14944,16 +14705,6 @@ type Sections_ComponentSectionsTextWithImageOverlapped_Fragment = {
   } | null> | null
 }
 
-type Sections_ComponentSectionsTimeline_Fragment = {
-  __typename: 'ComponentSectionsTimeline'
-  timelineItems?: Array<{
-    __typename?: 'ComponentBlocksTimelineItem'
-    id: string
-    title?: string | null
-    content?: string | null
-  } | null> | null
-}
-
 type Sections_ComponentSectionsTootootEvents_Fragment = {
   __typename: 'ComponentSectionsTootootEvents'
   title?: string | null
@@ -15023,7 +14774,6 @@ export type SectionsFragment =
   | Sections_ComponentSectionsFaqs_Fragment
   | Sections_ComponentSectionsFileList_Fragment
   | Sections_ComponentSectionsGallery_Fragment
-  | Sections_ComponentSectionsIconTitleDesc_Fragment
   | Sections_ComponentSectionsIframe_Fragment
   | Sections_ComponentSectionsInbaArticlesList_Fragment
   | Sections_ComponentSectionsInbaReleases_Fragment
@@ -15038,7 +14788,6 @@ export type SectionsFragment =
   | Sections_ComponentSectionsRegulationsList_Fragment
   | Sections_ComponentSectionsTextWithImage_Fragment
   | Sections_ComponentSectionsTextWithImageOverlapped_Fragment
-  | Sections_ComponentSectionsTimeline_Fragment
   | Sections_ComponentSectionsTootootEvents_Fragment
   | Sections_ComponentSectionsVideos_Fragment
   | Sections_Error_Fragment
@@ -15721,28 +15470,6 @@ export const InbaReleaseEntityFragmentDoc = gql`
   ${UploadImageEntityFragmentDoc}
   ${UploadFileEntityFragmentDoc}
 `
-export const IconTitleDescriptionBlockFragmentDoc = gql`
-  fragment IconTitleDescriptionBlock on ComponentBlocksIconWithTitleAndDescription {
-    title
-    desc
-    disableIconBackground
-    icon {
-      data {
-        ...UploadImageSrcEntity
-      }
-    }
-  }
-  ${UploadImageSrcEntityFragmentDoc}
-`
-export const IconTitleDescSectionFragmentDoc = gql`
-  fragment IconTitleDescSection on ComponentSectionsIconTitleDesc {
-    title
-    list {
-      ...IconTitleDescriptionBlock
-    }
-  }
-  ${IconTitleDescriptionBlockFragmentDoc}
-`
 export const DividerSectionFragmentDoc = gql`
   fragment DividerSection on ComponentSectionsDivider {
     style
@@ -15783,6 +15510,8 @@ export const TextWithImageOverlappedSectionFragmentDoc = gql`
 `
 export const IframeSectionFragmentDoc = gql`
   fragment IframeSection on ComponentSectionsIframe {
+    title
+    text
     url
     iframeWidth
     iframeHeight
@@ -16093,21 +15822,6 @@ export const BannerSectionFragmentDoc = gql`
   }
   ${CommonLinkFragmentDoc}
 `
-export const TimelineItemBlockFragmentDoc = gql`
-  fragment TimelineItemBlock on ComponentBlocksTimelineItem {
-    id
-    title
-    content
-  }
-`
-export const TimelineSectionFragmentDoc = gql`
-  fragment TimelineSection on ComponentSectionsTimeline {
-    timelineItems {
-      ...TimelineItemBlock
-    }
-  }
-  ${TimelineItemBlockFragmentDoc}
-`
 export const ContactCardBlockFragmentDoc = gql`
   fragment ContactCardBlock on ComponentBlocksContactCard {
     overrideLabel
@@ -16389,9 +16103,6 @@ export const DocumentsSectionFragmentDoc = gql`
 export const SectionsFragmentDoc = gql`
   fragment Sections on PageSectionsDynamicZone {
     __typename
-    ... on ComponentSectionsIconTitleDesc {
-      ...IconTitleDescSection
-    }
     ... on ComponentSectionsDivider {
       ...DividerSection
     }
@@ -16455,9 +16166,6 @@ export const SectionsFragmentDoc = gql`
     ... on ComponentSectionsBanner {
       ...BannerSection
     }
-    ... on ComponentSectionsTimeline {
-      ...TimelineSection
-    }
     ... on ComponentSectionsContactsSection {
       ...ContactsSection
     }
@@ -16480,7 +16188,6 @@ export const SectionsFragmentDoc = gql`
       ...DocumentsSection
     }
   }
-  ${IconTitleDescSectionFragmentDoc}
   ${DividerSectionFragmentDoc}
   ${TextWithImageSectionFragmentDoc}
   ${TextWithImageOverlappedSectionFragmentDoc}
@@ -16502,7 +16209,6 @@ export const SectionsFragmentDoc = gql`
   ${ProsAndConsSectionFragmentDoc}
   ${ComparisonSectionFragmentDoc}
   ${BannerSectionFragmentDoc}
-  ${TimelineSectionFragmentDoc}
   ${ContactsSectionFragmentDoc}
   ${RegulationsSectionFragmentDoc}
   ${FaqsSectionFragmentDoc}
