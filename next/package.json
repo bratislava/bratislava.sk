@@ -37,7 +37,6 @@
     "@react-stately/utils": "3.10.5",
     "@sindresorhus/slugify": "^2.2.1",
     "@tanstack/react-query": "5.71.1",
-    "@types/react-vertical-timeline-component": "^3.3.6",
     "@types/uuid": "^10.0.0",
     "axios": "1.8.4",
     "clsx": "2.1.1",
