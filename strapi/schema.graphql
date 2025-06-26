@@ -1325,6 +1325,8 @@ type ComponentSectionsIframe {
   id: ID!
   iframeHeight: String!
   iframeWidth: ENUM_COMPONENTSECTIONSIFRAME_IFRAMEWIDTH!
+  text: String
+  title: String
   url: String!
 }
 
@@ -1338,6 +1340,8 @@ input ComponentSectionsIframeFiltersInput {
   iframeWidth: StringFilterInput
   not: ComponentSectionsIframeFiltersInput
   or: [ComponentSectionsIframeFiltersInput]
+  text: StringFilterInput
+  title: StringFilterInput
   url: StringFilterInput
 }
 
@@ -1349,6 +1353,8 @@ input ComponentSectionsIframeInput {
   id: ID
   iframeHeight: String
   iframeWidth: ENUM_COMPONENTSECTIONSIFRAME_IFRAMEWIDTH
+  text: String
+  title: String
   url: String
 }
 

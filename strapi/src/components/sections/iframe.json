@@ -6,6 +6,12 @@
   },
   "options": {},
   "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "text": {
+      "type": "text"
+    },
     "url": {
       "type": "string",
       "required": true,
@@ -21,10 +27,7 @@
     },
     "iframeWidth": {
       "type": "enumeration",
-      "enum": [
-        "full",
-        "container"
-      ],
+      "enum": ["full", "container"],
       "default": "container",
       "required": true
     },

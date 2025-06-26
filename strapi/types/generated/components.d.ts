@@ -720,6 +720,8 @@ export interface SectionsIframe extends Schema.Component {
     iframeWidth: Attribute.Enumeration<['full', 'container']> &
       Attribute.Required &
       Attribute.DefaultTo<'container'>
+    text: Attribute.Text
+    title: Attribute.String
     url: Attribute.String & Attribute.Required & Attribute.DefaultTo<'https://www.google.com'>
   }
 }

@@ -61,6 +61,8 @@ fragment TextWithImageOverlappedSection on ComponentSectionsTextWithImageOverlap
 }
 
 fragment IframeSection on ComponentSectionsIframe {
+  title
+  text
   url
   iframeWidth
   iframeHeight

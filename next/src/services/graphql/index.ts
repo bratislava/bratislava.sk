@@ -1620,6 +1620,8 @@ export type ComponentSectionsIframe = {
   id: Scalars['ID']['output']
   iframeHeight: Scalars['String']['output']
   iframeWidth: Enum_Componentsectionsiframe_Iframewidth
+  text?: Maybe<Scalars['String']['output']>
+  title?: Maybe<Scalars['String']['output']>
   url: Scalars['String']['output']
 }
 
@@ -1633,6 +1635,8 @@ export type ComponentSectionsIframeFiltersInput = {
   iframeWidth?: InputMaybe<StringFilterInput>
   not?: InputMaybe<ComponentSectionsIframeFiltersInput>
   or?: InputMaybe<Array<InputMaybe<ComponentSectionsIframeFiltersInput>>>
+  text?: InputMaybe<StringFilterInput>
+  title?: InputMaybe<StringFilterInput>
   url?: InputMaybe<StringFilterInput>
 }
 
@@ -1644,6 +1648,8 @@ export type ComponentSectionsIframeInput = {
   id?: InputMaybe<Scalars['ID']['input']>
   iframeHeight?: InputMaybe<Scalars['String']['input']>
   iframeWidth?: InputMaybe<Enum_Componentsectionsiframe_Iframewidth>
+  text?: InputMaybe<Scalars['String']['input']>
+  title?: InputMaybe<Scalars['String']['input']>
   url?: InputMaybe<Scalars['String']['input']>
 }
 
@@ -9200,6 +9206,8 @@ export type PageEntityFragment = {
         }
       | {
           __typename: 'ComponentSectionsIframe'
+          title?: string | null
+          text?: string | null
           url: string
           iframeWidth: Enum_Componentsectionsiframe_Iframewidth
           iframeHeight: string
@@ -10250,6 +10258,8 @@ export type PageBySlugQuery = {
             }
           | {
               __typename: 'ComponentSectionsIframe'
+              title?: string | null
+              text?: string | null
               url: string
               iframeWidth: Enum_Componentsectionsiframe_Iframewidth
               iframeHeight: string
@@ -11336,6 +11346,8 @@ export type Dev_AllPagesQuery = {
             }
           | {
               __typename: 'ComponentSectionsIframe'
+              title?: string | null
+              text?: string | null
               url: string
               iframeWidth: Enum_Componentsectionsiframe_Iframewidth
               iframeHeight: string
@@ -12954,6 +12966,8 @@ export type TextWithImageOverlappedSectionFragment = {
 
 export type IframeSectionFragment = {
   __typename?: 'ComponentSectionsIframe'
+  title?: string | null
+  text?: string | null
   url: string
   iframeWidth: Enum_Componentsectionsiframe_Iframewidth
   iframeHeight: string
@@ -14297,6 +14311,8 @@ type Sections_ComponentSectionsGallery_Fragment = {
 
 type Sections_ComponentSectionsIframe_Fragment = {
   __typename: 'ComponentSectionsIframe'
+  title?: string | null
+  text?: string | null
   url: string
   iframeWidth: Enum_Componentsectionsiframe_Iframewidth
   iframeHeight: string
@@ -15494,6 +15510,8 @@ export const TextWithImageOverlappedSectionFragmentDoc = gql`
 `
 export const IframeSectionFragmentDoc = gql`
   fragment IframeSection on ComponentSectionsIframe {
+    title
+    text
     url
     iframeWidth
     iframeHeight

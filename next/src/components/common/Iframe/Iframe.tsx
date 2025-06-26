@@ -1,6 +1,9 @@
+import { Typography } from '@bratislava/component-library'
 import { useEffect, useRef, useState } from 'react'
 
 export type IframeProps = {
+  title?: string | null | undefined
+  text?: string | null | undefined
   url?: string
   iframeWidth: 'container' | 'full'
   iframeHeight: string
@@ -11,6 +14,8 @@ export type IframeProps = {
 }
 
 const Iframe = ({
+  title,
+  text,
   url,
   iframeWidth,
   iframeHeight,
@@ -42,15 +47,15 @@ const Iframe = ({
   }, [fullHeight, iframeHeight])
 
   return (
-    <div
-      style={{
-        height,
-      }}
-    >
+    <div className="flex flex-col gap-4 lg:gap-6">
+      {title || text ? (
+        <div className="flex flex-col gap-2">
+          {title ? <Typography variant="h2">{title}</Typography> : null}
+          {text ? <Typography variant="p-default">{text}</Typography> : null}
+        </div>
+      ) : null}
       <div
-        style={{
-          height,
-        }}
+        style={{ height }}
         className={iframeWidth === 'container' ? 'w-full' : 'absolute inset-x-0'}
       >
         <iframe
