@@ -9,12 +9,6 @@ fragment IconTitleDescriptionBlock on ComponentBlocksIconWithTitleAndDescription
   }
 }
 
-fragment TimelineItemBlock on ComponentBlocksTimelineItem {
-  id
-  title
-  content
-}
-
 fragment GallerySection on ComponentSectionsGallery {
   title
   text
@@ -22,12 +16,6 @@ fragment GallerySection on ComponentSectionsGallery {
     data {
       ...UploadImageEntity
     }
-  }
-}
-
-fragment TimelineSection on ComponentSectionsTimeline {
-  timelineItems {
-    ...TimelineItemBlock
   }
 }
 
@@ -525,10 +513,6 @@ fragment Sections on PageSectionsDynamicZone {
 
   ... on ComponentSectionsBanner {
     ...BannerSection
-  }
-
-  ... on ComponentSectionsTimeline {
-    ...TimelineSection
   }
 
   ... on ComponentSectionsContactsSection {

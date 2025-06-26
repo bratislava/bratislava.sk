@@ -30,7 +30,6 @@ import RegulationsListSection from '@/src/components/sections/RegulationsListSec
 import RegulationsSection from '@/src/components/sections/RegulationsSection'
 import TextWithImageOverlappedSection from '@/src/components/sections/TextWithImageOverlappedSection'
 import TextWithImageSection from '@/src/components/sections/TextWithImageSection'
-import TimelineSection from '@/src/components/sections/TimelineSection'
 import TootootEventsSection from '@/src/components/sections/TootootEventsSection'
 import VideosSection from '@/src/components/sections/VideosSection'
 import { SectionsFragment } from '@/src/services/graphql'
@@ -103,9 +102,6 @@ const SectionContent = ({ section }: { section: SectionsFragment }) => {
 
     case 'ComponentSectionsBanner':
       return <BannerSection section={section} />
-
-    case 'ComponentSectionsTimeline':
-      return <TimelineSection section={section} />
 
     case 'ComponentSectionsContactsSection':
       return <ContactsSection section={section} />

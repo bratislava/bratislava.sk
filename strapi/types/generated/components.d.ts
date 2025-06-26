@@ -251,18 +251,6 @@ export interface BlocksProsAndConsCard extends Schema.Component {
   }
 }
 
-export interface BlocksTimelineItem extends Schema.Component {
-  collectionName: 'components_blocks_timeline_items'
-  info: {
-    description: ''
-    displayName: 'Timeline item'
-  }
-  attributes: {
-    content: Attribute.RichText
-    title: Attribute.String
-  }
-}
-
 export interface BlocksTopServicesItem extends Schema.Component {
   collectionName: 'components_blocks_top_services_items'
   info: {
@@ -955,17 +943,6 @@ export interface SectionsTextWithImageOverlapped extends Schema.Component {
   }
 }
 
-export interface SectionsTimeline extends Schema.Component {
-  collectionName: 'components_sections_timelines'
-  info: {
-    description: ''
-    displayName: 'Timeline'
-  }
-  attributes: {
-    timelineItems: Attribute.Component<'blocks.timeline-item', true>
-  }
-}
-
 export interface SectionsTootootEvents extends Schema.Component {
   collectionName: 'components_sections_tootoot_events'
   info: {
@@ -1041,7 +1018,6 @@ declare module '@strapi/types' {
       'blocks.page-link': BlocksPageLink
       'blocks.partner': BlocksPartner
       'blocks.pros-and-cons-card': BlocksProsAndConsCard
-      'blocks.timeline-item': BlocksTimelineItem
       'blocks.top-services-item': BlocksTopServicesItem
       'blocks.video': BlocksVideo
       'general.header': GeneralHeader
@@ -1083,7 +1059,6 @@ declare module '@strapi/types' {
       'sections.subpage-list': SectionsSubpageList
       'sections.text-with-image': SectionsTextWithImage
       'sections.text-with-image-overlapped': SectionsTextWithImageOverlapped
-      'sections.timeline': SectionsTimeline
       'sections.tootoot-events': SectionsTootootEvents
       'sections.top-services': SectionsTopServices
       'sections.videos': SectionsVideos
