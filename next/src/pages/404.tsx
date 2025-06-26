@@ -31,13 +31,15 @@ const NotFoundPage = () => {
       <div className="flex h-screen w-screen px-7 py-10 md:pr-32 md:pl-36 xl:pr-66 xl:pl-80">
         <div className="flex w-full flex-col items-center md:flex-row-reverse md:justify-between">
           <img data-cy="404-image" src="/404_350px.png" alt="" />
-          <div data-cy="404-left-side" className="flex flex-col items-center lg:items-start">
-            {/* text-5xl font-extrabold does not work */}
-            {/* FIXME Typography. Convert to use Typography */}
-            <div className="pb-4 text-[48px] font-extrabold lg:text-[64px]">404</div>
-            <Typography variant="p-large" className="max-w-xs pb-10 text-center lg:text-left">
-              {t('NotFound.sorryNoResultsFound')}
-            </Typography>
+          <div data-cy="404-left-side" className="flex flex-col items-center gap-10 lg:items-start">
+            <div className="flex flex-col gap-4 text-center lg:text-left">
+              <Typography variant="h1" className="text-[3rem] font-extrabold lg:text-[4rem]">
+                404
+              </Typography>
+              <Typography variant="p-large" className="max-w-xs">
+                {t('NotFound.sorryNoResultsFound')}
+              </Typography>
+            </div>
 
             <Button variant="outline" href="/">
               {t('NotFound.toTheMainPage')}
