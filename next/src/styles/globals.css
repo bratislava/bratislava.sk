@@ -287,6 +287,7 @@
   --font-weight-medium: 500;
   --font-weight-semibold: 600;
   --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
 
   --text-h1-hero: 3.5rem; /* 56px */
   --leading-h1-hero: 4rem; /* 64px */

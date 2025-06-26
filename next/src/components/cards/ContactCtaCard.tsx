@@ -106,11 +106,7 @@ const ContactCtaCard = ({ className, contact }: ContactCtaCardProps) => {
                 {contact.phone}
               </MLink>
             ) : null}
-            {contact.subtext ? (
-              <Typography variant="p-small" className="whitespace-pre-wrap">
-                {contact.subtext}
-              </Typography>
-            ) : null}
+            {contact.subtext ? <Typography variant="p-small">{contact.subtext}</Typography> : null}
           </div>
         ),
       }
@@ -140,9 +136,7 @@ const ContactCtaCard = ({ className, contact }: ContactCtaCardProps) => {
               {data.displayValue}
             </MLink>
           ) : (
-            <Typography variant="p-small" className="whitespace-pre-wrap">
-              {data.displayValue}
-            </Typography>
+            <Typography variant="p-small">{data.displayValue}</Typography>
           ))}
       </div>
     </div>

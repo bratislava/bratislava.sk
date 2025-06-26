@@ -19,9 +19,7 @@ const WelcomeHomepageSection = () => {
     <SectionContainer className="bg-white">
       <div className="relative flex flex-col gap-y-4 py-8 lg:flex-row lg:items-center lg:py-14">
         <div className="z-1 flex grow flex-col gap-8 lg:absolute">
-          <Typography variant="h1" className="whitespace-pre-wrap">
-            {welcomeHeadline}
-          </Typography>
+          <Typography variant="h1">{welcomeHeadline}</Typography>
 
           <HomePageSearch isOpen={isSearchOpen} setOpen={setSearchOpen} />
         </div>
