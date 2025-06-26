@@ -174,20 +174,6 @@ export interface BlocksHomepageHighlightsItem extends Schema.Component {
   }
 }
 
-export interface BlocksIconWithTitleAndDescription extends Schema.Component {
-  collectionName: 'components_blocks_icon_with_title_and_descriptions'
-  info: {
-    description: ''
-    displayName: 'Icon With Title And Description'
-  }
-  attributes: {
-    desc: Attribute.RichText
-    disableIconBackground: Attribute.Boolean & Attribute.DefaultTo<false>
-    icon: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>
-    title: Attribute.String
-  }
-}
-
 export interface BlocksInBa extends Schema.Component {
   collectionName: 'components_blocks_in_bas'
   info: {
@@ -719,18 +705,6 @@ export interface SectionsHomepageTabs extends Schema.Component {
   }
 }
 
-export interface SectionsIconTitleDesc extends Schema.Component {
-  collectionName: 'components_sections_icon_title_descs'
-  info: {
-    description: ''
-    displayName: 'Icon Title Desc'
-  }
-  attributes: {
-    list: Attribute.Component<'blocks.icon-with-title-and-description', true>
-    title: Attribute.String
-  }
-}
-
 export interface SectionsIframe extends Schema.Component {
   collectionName: 'components_sections_iframes'
   info: {
@@ -1012,7 +986,6 @@ declare module '@strapi/types' {
       'blocks.file-item': BlocksFileItem
       'blocks.footer-column': BlocksFooterColumn
       'blocks.homepage-highlights-item': BlocksHomepageHighlightsItem
-      'blocks.icon-with-title-and-description': BlocksIconWithTitleAndDescription
       'blocks.in-ba': BlocksInBa
       'blocks.numerical-list-item': BlocksNumericalListItem
       'blocks.page-link': BlocksPageLink
@@ -1043,7 +1016,6 @@ declare module '@strapi/types' {
       'sections.homepage-highlights': SectionsHomepageHighlights
       'sections.homepage-mayor-and-council': SectionsHomepageMayorAndCouncil
       'sections.homepage-tabs': SectionsHomepageTabs
-      'sections.icon-title-desc': SectionsIconTitleDesc
       'sections.iframe': SectionsIframe
       'sections.inba-articles-list': SectionsInbaArticlesList
       'sections.inba-releases': SectionsInbaReleases

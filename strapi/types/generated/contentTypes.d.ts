@@ -1272,7 +1272,6 @@ export interface ApiPagePage extends Schema.CollectionType {
         'sections.faq-categories',
         'sections.file-list',
         'sections.gallery',
-        'sections.icon-title-desc',
         'sections.iframe',
         'sections.inba-articles-list',
         'sections.inba-releases',

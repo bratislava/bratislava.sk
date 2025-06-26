@@ -16,7 +16,6 @@ import FaqCategoriesSection from '@/src/components/sections/FaqCategoriesSection
 import FaqsSection from '@/src/components/sections/FaqsSection'
 import FileListSection from '@/src/components/sections/FileListSection'
 import GallerySection from '@/src/components/sections/GallerySection'
-import IconTitleDescSection from '@/src/components/sections/IconTitleDescSection'
 import IframeSection from '@/src/components/sections/IframeSection'
 import InbaReleasesSection from '@/src/components/sections/InbaReleasesSection'
 import LinksSection from '@/src/components/sections/LinksSection'
@@ -39,9 +38,6 @@ const SectionContent = ({ section }: { section: SectionsFragment }) => {
   switch (section.__typename) {
     case 'ComponentSectionsNarrowText':
       return <NarrowTextSection section={section} />
-
-    case 'ComponentSectionsIconTitleDesc':
-      return <IconTitleDescSection section={section} />
 
     case 'ComponentSectionsColumnedText':
       return <ColumnedTextSection section={section} />

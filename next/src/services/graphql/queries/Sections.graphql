@@ -1,14 +1,3 @@
-fragment IconTitleDescriptionBlock on ComponentBlocksIconWithTitleAndDescription {
-  title
-  desc
-  disableIconBackground
-  icon {
-    data {
-      ...UploadImageSrcEntity
-    }
-  }
-}
-
 fragment GallerySection on ComponentSectionsGallery {
   title
   text
@@ -38,13 +27,6 @@ fragment InbaArticlesListSection on ComponentSectionsInbaArticlesList {
 fragment InbaReleasesSection on ComponentSectionsInbaReleases {
   title
   text
-}
-
-fragment IconTitleDescSection on ComponentSectionsIconTitleDesc {
-  title
-  list {
-    ...IconTitleDescriptionBlock
-  }
 }
 
 fragment DividerSection on ComponentSectionsDivider {
@@ -424,10 +406,6 @@ fragment DocumentsSection on ComponentSectionsDocuments {
 
 fragment Sections on PageSectionsDynamicZone {
   __typename
-
-  ... on ComponentSectionsIconTitleDesc {
-    ...IconTitleDescSection
-  }
 
   ... on ComponentSectionsDivider {
     ...DividerSection

@@ -709,32 +709,6 @@ export type ComponentBlocksHomepageHighlightsItemInput = {
   link?: InputMaybe<ComponentBlocksCommonLinkInput>
 }
 
-export type ComponentBlocksIconWithTitleAndDescription = {
-  __typename?: 'ComponentBlocksIconWithTitleAndDescription'
-  desc?: Maybe<Scalars['String']['output']>
-  disableIconBackground?: Maybe<Scalars['Boolean']['output']>
-  icon?: Maybe<UploadFileEntityResponse>
-  id: Scalars['ID']['output']
-  title?: Maybe<Scalars['String']['output']>
-}
-
-export type ComponentBlocksIconWithTitleAndDescriptionFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<ComponentBlocksIconWithTitleAndDescriptionFiltersInput>>>
-  desc?: InputMaybe<StringFilterInput>
-  disableIconBackground?: InputMaybe<BooleanFilterInput>
-  not?: InputMaybe<ComponentBlocksIconWithTitleAndDescriptionFiltersInput>
-  or?: InputMaybe<Array<InputMaybe<ComponentBlocksIconWithTitleAndDescriptionFiltersInput>>>
-  title?: InputMaybe<StringFilterInput>
-}
-
-export type ComponentBlocksIconWithTitleAndDescriptionInput = {
-  desc?: InputMaybe<Scalars['String']['input']>
-  disableIconBackground?: InputMaybe<Scalars['Boolean']['input']>
-  icon?: InputMaybe<Scalars['ID']['input']>
-  id?: InputMaybe<Scalars['ID']['input']>
-  title?: InputMaybe<Scalars['String']['input']>
-}
-
 export type ComponentBlocksInBa = {
   __typename?: 'ComponentBlocksInBa'
   content?: Maybe<Scalars['String']['output']>
@@ -1635,33 +1609,6 @@ export type ComponentSectionsHomepageTabsInput = {
   officialBoardPageLink?: InputMaybe<ComponentBlocksCommonLinkInput>
   rightArticle?: InputMaybe<Scalars['ID']['input']>
   roadClosuresPageLink?: InputMaybe<ComponentBlocksCommonLinkInput>
-}
-
-export type ComponentSectionsIconTitleDesc = {
-  __typename?: 'ComponentSectionsIconTitleDesc'
-  id: Scalars['ID']['output']
-  list?: Maybe<Array<Maybe<ComponentBlocksIconWithTitleAndDescription>>>
-  title?: Maybe<Scalars['String']['output']>
-}
-
-export type ComponentSectionsIconTitleDescListArgs = {
-  filters?: InputMaybe<ComponentBlocksIconWithTitleAndDescriptionFiltersInput>
-  pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
-}
-
-export type ComponentSectionsIconTitleDescFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<ComponentSectionsIconTitleDescFiltersInput>>>
-  list?: InputMaybe<ComponentBlocksIconWithTitleAndDescriptionFiltersInput>
-  not?: InputMaybe<ComponentSectionsIconTitleDescFiltersInput>
-  or?: InputMaybe<Array<InputMaybe<ComponentSectionsIconTitleDescFiltersInput>>>
-  title?: InputMaybe<StringFilterInput>
-}
-
-export type ComponentSectionsIconTitleDescInput = {
-  id?: InputMaybe<Scalars['ID']['input']>
-  list?: InputMaybe<Array<InputMaybe<ComponentBlocksIconWithTitleAndDescriptionInput>>>
-  title?: InputMaybe<Scalars['String']['input']>
 }
 
 export type ComponentSectionsIframe = {
@@ -2878,7 +2825,6 @@ export type GenericMorph =
   | ComponentBlocksFileItem
   | ComponentBlocksFooterColumn
   | ComponentBlocksHomepageHighlightsItem
-  | ComponentBlocksIconWithTitleAndDescription
   | ComponentBlocksInBa
   | ComponentBlocksNumericalListItem
   | ComponentBlocksPageLink
@@ -2909,7 +2855,6 @@ export type GenericMorph =
   | ComponentSectionsHomepageHighlights
   | ComponentSectionsHomepageMayorAndCouncil
   | ComponentSectionsHomepageTabs
-  | ComponentSectionsIconTitleDesc
   | ComponentSectionsIframe
   | ComponentSectionsInbaArticlesList
   | ComponentSectionsInbaReleases
@@ -4219,7 +4164,6 @@ export type PageSectionsDynamicZone =
   | ComponentSectionsFaqs
   | ComponentSectionsFileList
   | ComponentSectionsGallery
-  | ComponentSectionsIconTitleDesc
   | ComponentSectionsIframe
   | ComponentSectionsInbaArticlesList
   | ComponentSectionsInbaReleases
@@ -9255,24 +9199,6 @@ export type PageEntityFragment = {
           }
         }
       | {
-          __typename: 'ComponentSectionsIconTitleDesc'
-          title?: string | null
-          list?: Array<{
-            __typename?: 'ComponentBlocksIconWithTitleAndDescription'
-            title?: string | null
-            desc?: string | null
-            disableIconBackground?: boolean | null
-            icon?: {
-              __typename?: 'UploadFileEntityResponse'
-              data?: {
-                __typename?: 'UploadFileEntity'
-                id?: string | null
-                attributes?: { __typename?: 'UploadFile'; url: string } | null
-              } | null
-            } | null
-          } | null> | null
-        }
-      | {
           __typename: 'ComponentSectionsIframe'
           url: string
           iframeWidth: Enum_Componentsectionsiframe_Iframewidth
@@ -10321,24 +10247,6 @@ export type PageBySlugQuery = {
                   } | null
                 }>
               }
-            }
-          | {
-              __typename: 'ComponentSectionsIconTitleDesc'
-              title?: string | null
-              list?: Array<{
-                __typename?: 'ComponentBlocksIconWithTitleAndDescription'
-                title?: string | null
-                desc?: string | null
-                disableIconBackground?: boolean | null
-                icon?: {
-                  __typename?: 'UploadFileEntityResponse'
-                  data?: {
-                    __typename?: 'UploadFileEntity'
-                    id?: string | null
-                    attributes?: { __typename?: 'UploadFile'; url: string } | null
-                  } | null
-                } | null
-              } | null> | null
             }
           | {
               __typename: 'ComponentSectionsIframe'
@@ -11425,24 +11333,6 @@ export type Dev_AllPagesQuery = {
                   } | null
                 }>
               }
-            }
-          | {
-              __typename: 'ComponentSectionsIconTitleDesc'
-              title?: string | null
-              list?: Array<{
-                __typename?: 'ComponentBlocksIconWithTitleAndDescription'
-                title?: string | null
-                desc?: string | null
-                disableIconBackground?: boolean | null
-                icon?: {
-                  __typename?: 'UploadFileEntityResponse'
-                  data?: {
-                    __typename?: 'UploadFileEntity'
-                    id?: string | null
-                    attributes?: { __typename?: 'UploadFile'; url: string } | null
-                  } | null
-                } | null
-              } | null> | null
             }
           | {
               __typename: 'ComponentSectionsIframe'
@@ -12895,21 +12785,6 @@ export type RegulationEntityFragment = {
   } | null
 }
 
-export type IconTitleDescriptionBlockFragment = {
-  __typename?: 'ComponentBlocksIconWithTitleAndDescription'
-  title?: string | null
-  desc?: string | null
-  disableIconBackground?: boolean | null
-  icon?: {
-    __typename?: 'UploadFileEntityResponse'
-    data?: {
-      __typename?: 'UploadFileEntity'
-      id?: string | null
-      attributes?: { __typename?: 'UploadFile'; url: string } | null
-    } | null
-  } | null
-}
-
 export type GallerySectionFragment = {
   __typename?: 'ComponentSectionsGallery'
   title?: string | null
@@ -12961,25 +12836,6 @@ export type InbaReleasesSectionFragment = {
   __typename?: 'ComponentSectionsInbaReleases'
   title?: string | null
   text?: string | null
-}
-
-export type IconTitleDescSectionFragment = {
-  __typename?: 'ComponentSectionsIconTitleDesc'
-  title?: string | null
-  list?: Array<{
-    __typename?: 'ComponentBlocksIconWithTitleAndDescription'
-    title?: string | null
-    desc?: string | null
-    disableIconBackground?: boolean | null
-    icon?: {
-      __typename?: 'UploadFileEntityResponse'
-      data?: {
-        __typename?: 'UploadFileEntity'
-        id?: string | null
-        attributes?: { __typename?: 'UploadFile'; url: string } | null
-      } | null
-    } | null
-  } | null> | null
 }
 
 export type DividerSectionFragment = {
@@ -14439,25 +14295,6 @@ type Sections_ComponentSectionsGallery_Fragment = {
   }
 }
 
-type Sections_ComponentSectionsIconTitleDesc_Fragment = {
-  __typename: 'ComponentSectionsIconTitleDesc'
-  title?: string | null
-  list?: Array<{
-    __typename?: 'ComponentBlocksIconWithTitleAndDescription'
-    title?: string | null
-    desc?: string | null
-    disableIconBackground?: boolean | null
-    icon?: {
-      __typename?: 'UploadFileEntityResponse'
-      data?: {
-        __typename?: 'UploadFileEntity'
-        id?: string | null
-        attributes?: { __typename?: 'UploadFile'; url: string } | null
-      } | null
-    } | null
-  } | null> | null
-}
-
 type Sections_ComponentSectionsIframe_Fragment = {
   __typename: 'ComponentSectionsIframe'
   url: string
@@ -14921,7 +14758,6 @@ export type SectionsFragment =
   | Sections_ComponentSectionsFaqs_Fragment
   | Sections_ComponentSectionsFileList_Fragment
   | Sections_ComponentSectionsGallery_Fragment
-  | Sections_ComponentSectionsIconTitleDesc_Fragment
   | Sections_ComponentSectionsIframe_Fragment
   | Sections_ComponentSectionsInbaArticlesList_Fragment
   | Sections_ComponentSectionsInbaReleases_Fragment
@@ -15618,28 +15454,6 @@ export const InbaReleaseEntityFragmentDoc = gql`
   ${UploadImageEntityFragmentDoc}
   ${UploadFileEntityFragmentDoc}
 `
-export const IconTitleDescriptionBlockFragmentDoc = gql`
-  fragment IconTitleDescriptionBlock on ComponentBlocksIconWithTitleAndDescription {
-    title
-    desc
-    disableIconBackground
-    icon {
-      data {
-        ...UploadImageSrcEntity
-      }
-    }
-  }
-  ${UploadImageSrcEntityFragmentDoc}
-`
-export const IconTitleDescSectionFragmentDoc = gql`
-  fragment IconTitleDescSection on ComponentSectionsIconTitleDesc {
-    title
-    list {
-      ...IconTitleDescriptionBlock
-    }
-  }
-  ${IconTitleDescriptionBlockFragmentDoc}
-`
 export const DividerSectionFragmentDoc = gql`
   fragment DividerSection on ComponentSectionsDivider {
     style
@@ -16271,9 +16085,6 @@ export const DocumentsSectionFragmentDoc = gql`
 export const SectionsFragmentDoc = gql`
   fragment Sections on PageSectionsDynamicZone {
     __typename
-    ... on ComponentSectionsIconTitleDesc {
-      ...IconTitleDescSection
-    }
     ... on ComponentSectionsDivider {
       ...DividerSection
     }
@@ -16359,7 +16170,6 @@ export const SectionsFragmentDoc = gql`
       ...DocumentsSection
     }
   }
-  ${IconTitleDescSectionFragmentDoc}
   ${DividerSectionFragmentDoc}
   ${TextWithImageSectionFragmentDoc}
   ${TextWithImageOverlappedSectionFragmentDoc}
