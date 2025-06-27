@@ -74,8 +74,8 @@ const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
       displayName: t('SearchPage.article'),
       displayNamePlural: t('SearchPage.articles'),
     },
-    // Show Documents only if not in prod - TODO remove when ready to use according to OSO
-    ...(isProductionDeployment()
+    // Show Documents in global search only if not in prod - TODO remove when ready to use according to OSO
+    ...(isProductionDeployment() && variant === 'general'
       ? []
       : [
           {
