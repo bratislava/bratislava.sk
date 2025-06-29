@@ -23,7 +23,7 @@
     "@strapi/plugin-i18n": "4.25.22",
     "@strapi/plugin-users-permissions": "4.25.22",
     "@strapi/provider-email-mailgun": "4.25.22",
-    "@strapi/strapi": "4.25.22",
+    "@strapi/strapi": "5.16.0",
     "patch-package": "^7.0.2",
     "pg": "8.11.6",
     "postinstall-postinstall": "^2.1.0",
