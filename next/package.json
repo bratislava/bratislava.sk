@@ -72,7 +72,7 @@
     "rss": "^1.2.2",
     "string-sanitizer": "^2.0.2",
     "tailwind-merge": "3.0.2",
-    "tailwind-scrollbar-hide": "^1.1.7",
+    "tailwind-scrollbar-hide": "^4.0.0",
     "tailwindcss-animate": "^1.0.7",
     "tailwindcss-react-aria-components": "2.0.0",
     "use-query-params": "^2.2.1",
