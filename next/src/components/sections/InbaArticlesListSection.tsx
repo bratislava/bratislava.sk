@@ -20,7 +20,7 @@ type Props = {
   section: InbaArticlesListSectionFragment
 }
 
-const InbaArticlesList = ({ section }: Props) => {
+const InbaArticlesListSection = ({ section }: Props) => {
   const locale = useLocale()
 
   const { title, text } = section
@@ -80,4 +80,4 @@ const InbaArticlesList = ({ section }: Props) => {
   )
 }
 
-export default InbaArticlesList
+export default InbaArticlesListSection

@@ -3,7 +3,6 @@ import * as React from 'react'
 import SectionContainer from '@/src/components/common/SectionContainer/SectionContainer'
 import AccordionSection from '@/src/components/sections/AccordionSection'
 import ArticlesSection from '@/src/components/sections/ArticlesListSection/ArticlesSection'
-import InbaArticlesList from '@/src/components/sections/ArticlesListSection/InbaArticlesList'
 import BannerSection from '@/src/components/sections/BannerSection'
 import CalculatorSection from '@/src/components/sections/CalculatorSection_Deprecated/CalculatorSection_Deprecated'
 import ColumnedTextSection from '@/src/components/sections/ColumnedTextSection'
@@ -17,6 +16,7 @@ import FaqsSection from '@/src/components/sections/FaqsSection'
 import FileListSection from '@/src/components/sections/FileListSection'
 import GallerySection from '@/src/components/sections/GallerySection'
 import IframeSection from '@/src/components/sections/IframeSection'
+import InbaArticlesListSection from '@/src/components/sections/InbaArticlesListSection'
 import InbaReleasesSection from '@/src/components/sections/InbaReleasesSection'
 import LinksSection from '@/src/components/sections/LinksSection'
 import NarrowTextSection from '@/src/components/sections/NarrowTextSection'
@@ -80,7 +80,7 @@ const SectionContent = ({ section }: { section: Section }) => {
       return <ArticlesSection section={section} />
 
     case 'ComponentSectionsInbaArticlesList':
-      return <InbaArticlesList section={section} />
+      return <InbaArticlesListSection section={section} />
 
     case 'ComponentSectionsInbaReleases':
       return <InbaReleasesSection section={section} />
