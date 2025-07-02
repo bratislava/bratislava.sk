@@ -24,37 +24,35 @@ const NumericalList = ({
   const href = buttonLink?.length ? buttonLink : '#'
 
   return (
-    <div>
-      <div className="flex flex-col items-center justify-center py-12">
-        <div className="flex max-w-(--breakpoint-md) flex-col">
-          {title ? (
-            <div
-              className={cn(
-                'pb-14 text-center',
-                { 'text-h3': variant !== 'roadmap' },
-                { 'text-h4': variant === 'roadmap' },
-              )}
-            >
-              {title}
-            </div>
-          ) : null}
+    <div className="flex flex-col items-center justify-center">
+      <div className="flex max-w-(--breakpoint-md) flex-col">
+        {title ? (
+          <div
+            className={cn(
+              'pb-14 text-center',
+              { 'text-h3': variant !== 'roadmap' },
+              { 'text-h4': variant === 'roadmap' },
+            )}
+          >
+            {title}
+          </div>
+        ) : null}
 
-          {items?.map((item, index) => (
-            <NumericalListItem
-              // eslint-disable-next-line react/no-array-index-key
-              key={index}
-              index={index}
-              item={item}
-              variant={variant}
-            />
-          ))}
-        </div>
-        {variant !== 'roadmap' && buttonText && (
-          <Button href={href} className="pt-10" variant="outline">
-            {buttonText}
-          </Button>
-        )}
+        {items?.map((item, index) => (
+          <NumericalListItem
+            // eslint-disable-next-line react/no-array-index-key
+            key={index}
+            index={index}
+            item={item}
+            variant={variant}
+          />
+        ))}
       </div>
+      {variant !== 'roadmap' && buttonText && (
+        <Button href={href} className="pt-10" variant="outline">
+          {buttonText}
+        </Button>
+      )}
     </div>
   )
 }

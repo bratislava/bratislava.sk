@@ -33,7 +33,14 @@ import TootootEventsSection from '@/src/components/sections/TootootEventsSection
 import VideosSection from '@/src/components/sections/VideosSection'
 import { SectionsFragment } from '@/src/services/graphql'
 
-const SectionContent = ({ section }: { section: SectionsFragment }) => {
+type Section = SectionsFragment
+
+type SectionsProps = {
+  sections: Section[]
+  className?: string
+}
+
+const SectionContent = ({ section }: { section: Section }) => {
   // eslint-disable-next-line sonarjs/max-switch-cases
   switch (section.__typename) {
     case 'ComponentSectionsNarrowText':
@@ -123,33 +130,24 @@ const SectionContent = ({ section }: { section: SectionsFragment }) => {
     case 'ComponentSectionsDocuments':
       return <DocumentsSection section={section} />
 
+    case 'ComponentSectionsNumericalList':
+      return <NumericalListSection section={section} />
+
     default:
       return null
   }
 }
 
-const Section = ({ section }: { section: SectionsFragment | null }) => {
-  if (!section) return null
-
-  if (section.__typename === 'ComponentSectionsNumericalList') {
-    return <NumericalListSection section={section} />
-  }
-
+const Sections = ({ sections, className }: SectionsProps) => {
   return (
-    <SectionContainer className="pt-10 md:pt-18">
-      <SectionContent section={section} />
-    </SectionContainer>
-  )
-}
-
-const Sections = ({ sections }: { sections: (SectionsFragment | null)[] }) => {
-  return (
-    <>
+    <div className={className}>
       {sections.map((section, index) => (
         // eslint-disable-next-line react/no-array-index-key
-        <Section key={index} section={section} />
+        <SectionContainer key={index}>
+          <SectionContent section={section} />
+        </SectionContainer>
       ))}
-    </>
+    </div>
   )
 }
 

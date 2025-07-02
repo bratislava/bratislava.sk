@@ -18,6 +18,8 @@ export type GeneralPageProps = {
 const GeneralPageContent = ({ page }: GeneralPageProps) => {
   const breadcrumbs = useMemo(() => getPageBreadcrumbs(page), [page])
 
+  const filteredSections = page.attributes?.sections?.filter(isDefined) ?? []
+
   return (
     <>
       {/* Header */}
@@ -32,16 +34,10 @@ const GeneralPageContent = ({ page }: GeneralPageProps) => {
       </PageHeader>
 
       {/* Page - Common Sections */}
-      <div className="mb-8">
-        {page.attributes?.sections?.length ? (
-          <Sections sections={page.attributes.sections} />
-        ) : null}
+      <div className="py-8">
+        <Sections sections={filteredSections} className="*:py-5 *:md:py-9" />
 
-        <RelatedArticlesSection
-          page={page}
-          // The same as Section
-          className="pt-10 md:pt-18"
-        />
+        <RelatedArticlesSection page={page} className="pt-5 lg:pt-9" />
       </div>
 
       {page.attributes?.alias ? (
