@@ -61,7 +61,7 @@ const InbaReleasesSection = ({ section }: Props) => {
               date={formatDate(releaseDate)}
               title={inbaReleaseTitle}
               text={perex}
-              linkHref={`/inba/archiv/${slug}`}
+              linkHref={`/inba/vydania/${slug}`}
               imgSrc={coverImage?.data?.attributes?.url}
               // imgSizes={imageSizes}
             />

@@ -36,7 +36,7 @@ const InbaArticlePageContent = ({ inbaArticle }: InbaArticlePageContentProps) =>
   const inbaTagTitle = inbaArticle.attributes?.inbaTag?.data?.attributes?.title
 
   const inbaRelease = inbaArticle.attributes?.inbaRelease?.data?.attributes
-  const inbaReleaseLink = `/inba/archiv/${inbaRelease?.slug}`
+  const inbaReleaseLink = `/inba/vydania/${inbaRelease?.slug}`
 
   return (
     <>
