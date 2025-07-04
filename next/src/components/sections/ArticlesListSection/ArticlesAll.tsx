@@ -20,7 +20,7 @@ type Props = {
   section: ArticlesSectionFragment
 }
 
-const ArticlesAllSection = ({ section }: Props) => {
+const ArticlesAll = ({ section }: Props) => {
   const locale = useLocale()
 
   const { title, text } = section
@@ -88,4 +88,4 @@ const ArticlesAllSection = ({ section }: Props) => {
   )
 }
 
-export default ArticlesAllSection
+export default ArticlesAll
