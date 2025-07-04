@@ -78,7 +78,7 @@ const InbaArticlePageContent = ({ inbaArticle }: InbaArticlePageContentProps) =>
           ) : null}
         </NarrowText>
       </SectionContainer>
-      <SectionContainer className="pt-10 md:pt-18">
+      <SectionContainer className="pt-10 pb-8 md:pt-18">
         <ShareButtons twitterTitle={inbaArticle.attributes?.title} />
       </SectionContainer>
     </>
