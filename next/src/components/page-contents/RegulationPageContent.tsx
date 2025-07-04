@@ -7,7 +7,7 @@ import HorizontalDivider from '@/src/components/common/Divider/HorizontalDivider
 import MLink from '@/src/components/common/MLink/MLink'
 import PageHeader from '@/src/components/common/PageHeader/PageHeader'
 import RegulationDetailMessage from '@/src/components/common/Regulations/RegulationDetailMessage'
-import SectionContainer from '@/src/components/common/SectionContainer/SectionContainer'
+import SectionContainer from '@/src/components/layouts/SectionContainer'
 import { RegulationEntityFragment } from '@/src/services/graphql'
 import { formatDate } from '@/src/utils/formatDate'
 import { formatFileExtension } from '@/src/utils/formatFileExtension'
