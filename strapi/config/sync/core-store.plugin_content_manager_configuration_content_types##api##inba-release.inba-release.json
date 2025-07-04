@@ -22,7 +22,7 @@
       },
       "title": {
         "edit": {
-          "label": "title",
+          "label": "Nadpis",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -36,7 +36,7 @@
       },
       "slug": {
         "edit": {
-          "label": "slug",
+          "label": "Slug",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -50,7 +50,7 @@
       },
       "releaseDate": {
         "edit": {
-          "label": "releaseDate",
+          "label": "Dátum vydania",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -64,7 +64,7 @@
       },
       "perex": {
         "edit": {
-          "label": "perex",
+          "label": "V tomto čísle nájdete",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -78,7 +78,7 @@
       },
       "coverImage": {
         "edit": {
-          "label": "coverImage",
+          "label": "Predný obrázok",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -92,8 +92,8 @@
       },
       "rearImage": {
         "edit": {
-          "label": "rearImage",
-          "description": "",
+          "label": "Zadný obrázok",
+          "description": "Použije sa hlavne na homepage.",
           "placeholder": "",
           "visible": true,
           "editable": true
@@ -106,7 +106,7 @@
       },
       "files": {
         "edit": {
-          "label": "files",
+          "label": "Súbory",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -120,7 +120,7 @@
       },
       "inbaArticles": {
         "edit": {
-          "label": "inbaArticles",
+          "label": "Články",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -231,6 +231,12 @@
         [
           {
             "name": "files",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "inbaArticles",
             "size": 12
           }
         ]

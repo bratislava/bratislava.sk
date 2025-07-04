@@ -22,7 +22,7 @@
       },
       "title": {
         "edit": {
-          "label": "title",
+          "label": "Nadpis",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -36,7 +36,7 @@
       },
       "slug": {
         "edit": {
-          "label": "slug",
+          "label": "Slug",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -50,7 +50,7 @@
       },
       "coverImage": {
         "edit": {
-          "label": "coverImage",
+          "label": "Ilustračný obrázok",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -64,7 +64,7 @@
       },
       "inbaTag": {
         "edit": {
-          "label": "inbaTag",
+          "label": "Tag",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -79,7 +79,7 @@
       },
       "inbaRelease": {
         "edit": {
-          "label": "inbaRelease",
+          "label": "Vydanie",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -94,7 +94,7 @@
       },
       "perex": {
         "edit": {
-          "label": "perex",
+          "label": "Perex",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -108,7 +108,7 @@
       },
       "content": {
         "edit": {
-          "label": "content",
+          "label": "Text",
           "description": "",
           "placeholder": "",
           "visible": true,
