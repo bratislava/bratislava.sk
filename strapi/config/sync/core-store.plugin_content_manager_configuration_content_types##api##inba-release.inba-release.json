@@ -8,8 +8,8 @@
       "searchable": true,
       "pageSize": 10,
       "mainField": "title",
-      "defaultSortBy": "title",
-      "defaultSortOrder": "ASC"
+      "defaultSortBy": "updatedAt",
+      "defaultSortOrder": "DESC"
     },
     "metadatas": {
       "id": {
@@ -193,12 +193,6 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "title",
-        "slug",
-        "releaseDate"
-      ],
       "edit": [
         [
           {
@@ -240,6 +234,15 @@
             "size": 12
           }
         ]
+      ],
+      "list": [
+        "id",
+        "coverImage",
+        "title",
+        "updatedAt",
+        "releaseDate",
+        "files",
+        "inbaArticles"
       ]
     }
   },
