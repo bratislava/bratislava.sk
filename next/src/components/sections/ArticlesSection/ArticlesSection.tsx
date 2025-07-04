@@ -1,8 +1,8 @@
 import React from 'react'
 
 import SectionContainer from '@/src/components/layouts/SectionContainer'
-import ArticlesAll from '@/src/components/sections/ArticlesListSection/ArticlesAll'
-import ArticlesByCategory from '@/src/components/sections/ArticlesListSection/ArticlesByCategory'
+import ArticlesAll from '@/src/components/sections/ArticlesSection/ArticlesAll'
+import ArticlesByCategory from '@/src/components/sections/ArticlesSection/ArticlesByCategory'
 import { ArticlesSectionFragment } from '@/src/services/graphql'
 
 type Props = {
