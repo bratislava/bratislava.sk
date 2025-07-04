@@ -1,6 +1,5 @@
 import * as React from 'react'
 
-import SectionContainer from '@/src/components/common/SectionContainer/SectionContainer'
 import AccordionSection from '@/src/components/sections/AccordionSection'
 import ArticlesSection from '@/src/components/sections/ArticlesListSection/ArticlesSection'
 import BannerSection from '@/src/components/sections/BannerSection'
@@ -143,9 +142,7 @@ const Sections = ({ sections, className }: SectionsProps) => {
     <div className={className}>
       {sections.map((section, index) => (
         // eslint-disable-next-line react/no-array-index-key
-        <SectionContainer key={index}>
-          <SectionContent section={section} />
-        </SectionContainer>
+        <SectionContent key={index} section={section} />
       ))}
     </div>
   )

@@ -1,8 +1,8 @@
 import { Typography } from '@bratislava/component-library'
 import React from 'react'
 
-import SectionContainer from '@/src/components/common/SectionContainer/SectionContainer'
 import TopServices from '@/src/components/common/TopServices/TopServices'
+import SectionContainer from '@/src/components/layouts/SectionContainer'
 import { useHomepageContext } from '@/src/components/providers/HomepageContextProvider'
 import { isDefined } from '@/src/utils/isDefined'
 

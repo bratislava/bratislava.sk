@@ -6,6 +6,7 @@ import FileList from '@/src/components/common/FileList/FileList'
 import Institution from '@/src/components/common/Institution_Deprecated/Institution_Deprecated'
 import NarrowText from '@/src/components/common/NarrowText/NarrowText'
 import Markdown from '@/src/components/formatting/Markdown/Markdown'
+import SectionContainer from '@/src/components/layouts/SectionContainer'
 import { AccordionSectionFragment } from '@/src/services/graphql'
 import { getLinkProps } from '@/src/utils/getLinkProps'
 import { isDefined } from '@/src/utils/isDefined'
@@ -18,7 +19,7 @@ type AccordionSectionProps = {
 
 const AccordionSection = ({ section }: AccordionSectionProps) => {
   return (
-    <>
+    <SectionContainer>
       {section.title && (
         <Typography variant="h2" className="flex justify-center pb-14">
           {section.title}
@@ -102,7 +103,7 @@ const AccordionSection = ({ section }: AccordionSectionProps) => {
           </Accordion>
         ))}
       </div>
-    </>
+    </SectionContainer>
   )
 }
 

@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { useState } from 'react'
 
 import HomePageSearch from '@/src/components/common/HomepageSearch/HomePageSearch'
-import SectionContainer from '@/src/components/common/SectionContainer/SectionContainer'
+import SectionContainer from '@/src/components/layouts/SectionContainer'
 import { useHomepageContext } from '@/src/components/providers/HomepageContextProvider'
 import cn from '@/src/utils/cn'
 import { generateImageSizes } from '@/src/utils/generateImageSizes'

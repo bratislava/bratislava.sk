@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 
 import InbaReleaseHorizontalCard from '@/src/components/cards/InbaReleaseHorizontalCard'
 import Pagination from '@/src/components/common/Pagination/Pagination'
+import SectionContainer from '@/src/components/layouts/SectionContainer'
 import { InbaReleasesSectionFragment } from '@/src/services/graphql'
 import {
   getInbaReleasesQueryKey,
@@ -34,49 +35,51 @@ const InbaReleasesSection = ({ section }: Props) => {
   }
 
   return (
-    <div className="flex flex-col gap-8">
-      {title || text ? (
-        <div className="flex flex-col gap-2">
-          {title && <Typography variant="h2">{title}</Typography>}
-          {text && <Typography variant="p-default">{text}</Typography>}
-        </div>
-      ) : null}
-
+    <SectionContainer>
       <div className="flex flex-col gap-8">
-        {data.inbaReleases.data.map((inbaRelease) => {
-          if (!inbaRelease.attributes) return null
+        {title || text ? (
+          <div className="flex flex-col gap-2">
+            {title && <Typography variant="h2">{title}</Typography>}
+            {text && <Typography variant="p-default">{text}</Typography>}
+          </div>
+        ) : null}
 
-          // TODO refactor sections that use ArticleCard - it needs too much duplicate code while passing props
-          const {
-            title: inbaReleaseTitle,
-            slug,
-            coverImage,
-            releaseDate,
-            perex,
-          } = inbaRelease.attributes
+        <div className="flex flex-col gap-8">
+          {data.inbaReleases.data.map((inbaRelease) => {
+            if (!inbaRelease.attributes) return null
 
-          return (
-            <InbaReleaseHorizontalCard
-              key={slug}
-              date={formatDate(releaseDate)}
-              title={inbaReleaseTitle}
-              text={perex}
-              linkHref={`/inba/archiv/${slug}`}
-              imgSrc={coverImage?.data?.attributes?.url}
-              // imgSizes={imageSizes}
-            />
-          )
-        })}
+            // TODO refactor sections that use ArticleCard - it needs too much duplicate code while passing props
+            const {
+              title: inbaReleaseTitle,
+              slug,
+              coverImage,
+              releaseDate,
+              perex,
+            } = inbaRelease.attributes
+
+            return (
+              <InbaReleaseHorizontalCard
+                key={slug}
+                date={formatDate(releaseDate)}
+                title={inbaReleaseTitle}
+                text={perex}
+                linkHref={`/inba/archiv/${slug}`}
+                imgSrc={coverImage?.data?.attributes?.url}
+                // imgSizes={imageSizes}
+              />
+            )
+          })}
+        </div>
+
+        {data.inbaReleases.data.length > 0 ? (
+          <Pagination
+            totalCount={Math.ceil(data.inbaReleases.data.length / filters.pageSize)}
+            currentPage={filters.page}
+            onPageChange={handlePageChange}
+          />
+        ) : null}
       </div>
-
-      {data.inbaReleases.data.length > 0 ? (
-        <Pagination
-          totalCount={Math.ceil(data.inbaReleases.data.length / filters.pageSize)}
-          currentPage={filters.page}
-          onPageChange={handlePageChange}
-        />
-      ) : null}
-    </div>
+    </SectionContainer>
   )
 }
 

@@ -1,6 +1,7 @@
 import React from 'react'
 
 import Links from '@/src/components/common/Links/Links'
+import SectionContainer from '@/src/components/layouts/SectionContainer'
 import { LinksSectionFragment } from '@/src/services/graphql'
 
 type LinksSectionProps = {
@@ -8,7 +9,11 @@ type LinksSectionProps = {
 }
 
 const LinksSection = ({ section }: LinksSectionProps) => {
-  return <Links title={section.title} pageLinks={section.pageLinks} />
+  return (
+    <SectionContainer>
+      <Links title={section.title} pageLinks={section.pageLinks} />
+    </SectionContainer>
+  )
 }
 
 export default LinksSection

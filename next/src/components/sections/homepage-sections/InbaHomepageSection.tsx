@@ -2,7 +2,7 @@ import { useTranslation } from 'next-i18next'
 import React from 'react'
 
 import InBaCard from '@/src/components/cards/InBaCard'
-import SectionContainer from '@/src/components/common/SectionContainer/SectionContainer'
+import SectionContainer from '@/src/components/layouts/SectionContainer'
 import { useHomepageContext } from '@/src/components/providers/HomepageContextProvider'
 import { getLinkProps } from '@/src/utils/getLinkProps'
 

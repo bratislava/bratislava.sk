@@ -4,8 +4,8 @@ import { useQuery } from '@tanstack/react-query'
 import EventCard from '@/src/components/cards/EventCard'
 import Button from '@/src/components/common/Button/Button'
 import ResponsiveCarousel from '@/src/components/common/Carousel/ResponsiveCarousel'
-import SectionContainer from '@/src/components/common/SectionContainer/SectionContainer'
 import Spinner from '@/src/components/common/Spinner/Spinner'
+import SectionContainer from '@/src/components/layouts/SectionContainer'
 import { TootootEventsSectionFragment } from '@/src/services/graphql'
 import {
   getTootootEvents,

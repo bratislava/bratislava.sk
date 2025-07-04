@@ -4,6 +4,7 @@ import Button from '@/src/components/common/Button/Button'
 import ImagePlaceholder from '@/src/components/common/Image/ImagePlaceholder'
 import StrapiImage from '@/src/components/common/Image/StrapiImage'
 import Markdown from '@/src/components/formatting/Markdown/Markdown'
+import SectionContainer from '@/src/components/layouts/SectionContainer'
 import {
   Enum_Componentsectionstextwithimageoverlapped_Imageposition,
   TextWithImageOverlappedSectionFragment,
@@ -119,7 +120,7 @@ const TextWithImageOverlappedSection = ({ section }: TextWithImageSectionProps) 
   )
 
   return (
-    <div>
+    <SectionContainer>
       <div className="hidden lg:grid lg:grid-cols-2">
         {isImageLeft ? (
           <>
@@ -146,7 +147,7 @@ const TextWithImageOverlappedSection = ({ section }: TextWithImageSectionProps) 
           </>
         )}
       </div>
-    </div>
+    </SectionContainer>
   )
 }
 

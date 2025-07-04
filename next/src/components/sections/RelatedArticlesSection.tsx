@@ -5,7 +5,7 @@ import React from 'react'
 import ArticleCard from '@/src/components/cards/ArticleCard'
 import { transformArticleProps } from '@/src/components/cards/transformArticleProps'
 import ResponsiveCarousel from '@/src/components/common/Carousel/ResponsiveCarousel'
-import SectionContainer from '@/src/components/common/SectionContainer/SectionContainer'
+import SectionContainer from '@/src/components/layouts/SectionContainer'
 import { PageEntityFragment } from '@/src/services/graphql'
 import {
   getRelatedArticlesQueryKey,

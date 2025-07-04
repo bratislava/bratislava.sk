@@ -1,6 +1,7 @@
 import React from 'react'
 
 import Regulations from '@/src/components/common/Regulations/Regulations'
+import SectionContainer from '@/src/components/layouts/SectionContainer'
 import { RegulationsSectionFragment } from '@/src/services/graphql'
 
 type Props = {
@@ -8,7 +9,11 @@ type Props = {
 }
 
 const RegulationsSection = ({ section }: Props) => {
-  return <Regulations regulations={section.regulations?.data} />
+  return (
+    <SectionContainer>
+      <Regulations regulations={section.regulations?.data} />
+    </SectionContainer>
+  )
 }
 
 export default RegulationsSection

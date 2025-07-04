@@ -1,7 +1,7 @@
 import React from 'react'
 
 import HorizontalDivider from '@/src/components/common/Divider/HorizontalDivider'
-import SectionContainer from '@/src/components/common/SectionContainer/SectionContainer'
+import SectionContainer from '@/src/components/layouts/SectionContainer'
 import HighlightsHomepageSection from '@/src/components/sections/homepage-sections/HighlightsHomepageSection'
 import HomepageTabs from '@/src/components/sections/homepage-sections/HomepageTabs/HomepageTabs'
 import MayorAndCouncilHomepageSection from '@/src/components/sections/homepage-sections/MayorAndCouncilHomepageSection'

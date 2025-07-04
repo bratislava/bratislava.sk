@@ -1,12 +1,17 @@
 import React from 'react'
 
 import Iframe from '@/src/components/common/Iframe/Iframe'
+import SectionContainer from '@/src/components/layouts/SectionContainer'
 import { IframeSectionFragment } from '@/src/services/graphql'
 
 type IframeSectionProps = { section: IframeSectionFragment }
 
 const IframeSection = ({ section }: IframeSectionProps) => {
-  return <Iframe {...section} />
+  return (
+    <SectionContainer>
+      <Iframe {...section} />
+    </SectionContainer>
+  )
 }
 
 export default IframeSection
