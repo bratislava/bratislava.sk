@@ -9,6 +9,10 @@ type FileListSectionProps = {
   section: FileListSectionFragment
 }
 
+/**
+ * Figma: https://www.figma.com/design/17wbd0MDQcMW9NbXl6UPs8/DS--Component-library?node-id=16920-16879&m=dev
+ */
+
 const FileListSection = ({ section }: FileListSectionProps) => {
   return (
     <SectionContainer>

@@ -1,12 +1,15 @@
-import { Typography } from '@bratislava/component-library'
-
 import Markdown from '@/src/components/formatting/Markdown/Markdown'
+import SectionHeader from '@/src/components/layouts/SectionHeader'
 import cn from '@/src/utils/cn'
 
 export type ColumnedTextProps = {
   title: string | null | undefined
   content: string
 }
+
+/**
+ * TODO Figma link
+ */
 
 const ColumnedText = ({ title, content }: ColumnedTextProps) => {
   // eslint-disable-next-line xss/no-mixed-html
@@ -15,7 +18,7 @@ const ColumnedText = ({ title, content }: ColumnedTextProps) => {
 
   return (
     <div className="flex flex-col gap-6 lg:gap-8">
-      {title ? <Typography variant="h2">{title}</Typography> : null}
+      <SectionHeader title={title} />
       <div
         className={cn('grid gap-6', {
           'grid-cols-1': columns.length === 1,

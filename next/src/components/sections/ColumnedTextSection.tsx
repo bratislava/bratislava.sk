@@ -6,6 +6,10 @@ import { ColumnedTextSectionFragment } from '@/src/services/graphql'
 
 type ColumnedTextSectionProps = { section: ColumnedTextSectionFragment }
 
+/**
+ * TODO Figma link
+ */
+
 const ColumnedTextSection = ({ section }: ColumnedTextSectionProps) => {
   return (
     <SectionContainer>

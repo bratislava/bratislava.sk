@@ -1,10 +1,10 @@
-import { Typography } from '@bratislava/component-library'
 import { useTranslation } from 'next-i18next'
 import React, { Fragment } from 'react'
 
 import DocumentRowCard from '@/src/components/cards/DocumentRowCard'
 import HorizontalDivider from '@/src/components/common/Divider/HorizontalDivider'
 import SectionContainer from '@/src/components/layouts/SectionContainer'
+import SectionHeader from '@/src/components/layouts/SectionHeader'
 import DocumentsAll from '@/src/components/sections/DocumentsSection/DocumentsAll'
 import { DocumentsSectionFragment } from '@/src/services/graphql'
 import { formatDate } from '@/src/utils/formatDate'
@@ -35,12 +35,7 @@ const DocumentsSection = ({ section }: Props) => {
         <DocumentsAll />
       ) : (
         <div className="flex flex-col gap-4 lg:gap-6">
-          {title || text ? (
-            <div className="flex flex-col gap-2">
-              {title ? <Typography variant="h2">{title}</Typography> : null}
-              {text ? <Typography variant="p-default">{text}</Typography> : null}
-            </div>
-          ) : null}
+          <SectionHeader title={title} text={text} />
 
           <ul className="flex flex-col rounded-lg border-2 py-2">
             {filteredDocuments

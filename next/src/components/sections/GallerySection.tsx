@@ -1,8 +1,8 @@
-import { Typography } from '@bratislava/component-library'
 import React from 'react'
 
 import Gallery from '@/src/components/common/Gallery/Gallery'
 import SectionContainer from '@/src/components/layouts/SectionContainer'
+import SectionHeader from '@/src/components/layouts/SectionHeader'
 import { GallerySectionFragment } from '@/src/services/graphql'
 
 export type GallerySectionProps = {
@@ -13,12 +13,7 @@ const GallerySection = ({ section: { title, text, medias } }: GallerySectionProp
   return (
     <SectionContainer>
       <div className="flex flex-col gap-6 lg:gap-12">
-        {title || text ? (
-          <div className="flex flex-col gap-2">
-            {title && <Typography variant="h2">{title}</Typography>}
-            {text && <Typography variant="p-default">{text}</Typography>}
-          </div>
-        ) : null}
+        <SectionHeader title={title} text={text} />
         <Gallery images={medias.data} />
       </div>
     </SectionContainer>

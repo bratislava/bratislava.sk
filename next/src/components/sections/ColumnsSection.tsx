@@ -1,9 +1,9 @@
-import { Typography } from '@bratislava/component-library'
 import React from 'react'
 
 import ColumnsSectionItem from '@/src/components/common/ColumnsSectionItem/ColumnsSectionItem'
 import Slider from '@/src/components/common/Slider/Slider'
 import SectionContainer from '@/src/components/layouts/SectionContainer'
+import SectionHeader from '@/src/components/layouts/SectionHeader'
 import { ColumnsSectionFragment } from '@/src/services/graphql'
 import cn from '@/src/utils/cn'
 import { generateImageSizes } from '@/src/utils/generateImageSizes'
@@ -26,17 +26,7 @@ const ColumnsSection = ({ section }: Props) => {
   return (
     <SectionContainer>
       <div className="flex flex-col gap-6 lg:gap-12">
-        {title || text ? (
-          <div className="flex w-full flex-col gap-2 text-center">
-            {title ? <Typography variant="h2">{title}</Typography> : null}
-            {text ? (
-              <Typography variant="p-default" className="not-first:mt-2">
-                {text}
-              </Typography>
-            ) : null}
-          </div>
-        ) : null}
-
+        <SectionHeader title={title} text={text} isCentered />
         {/* Screen: Desktop */}
         <ul className="flex w-full flex-wrap items-stretch justify-center gap-4 gap-y-6 max-lg:hidden lg:gap-8 lg:gap-y-14">
           {filteredColumns.map((item, index) => {

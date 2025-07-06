@@ -1,9 +1,9 @@
-import { Typography } from '@bratislava/component-library'
 import React, { Fragment } from 'react'
 
 import ArticleCard from '@/src/components/cards/ArticleCard'
 import HomepageHorizontalCard from '@/src/components/cards/HomepageHorizontalCard'
 import ResponsiveCarousel from '@/src/components/common/Carousel/ResponsiveCarousel'
+import SectionHeader from '@/src/components/layouts/SectionHeader'
 import { useHomepageContext } from '@/src/components/providers/HomepageContextProvider'
 import { getLinkProps } from '@/src/utils/getLinkProps'
 import { isDefined } from '@/src/utils/isDefined'
@@ -19,13 +19,8 @@ const HighlightsHomepageSection = () => {
   const filteredHighlights = cards?.filter(isDefined) ?? []
 
   return (
-    <div className="negative-x-spacing py-8 md:py-0">
-      {title || text ? (
-        <div className="flex flex-col gap-2 text-center lg:pt-18">
-          {title && <Typography variant="h2">{title}</Typography>}
-          {text && <Typography variant="p-default">{text}</Typography>}
-        </div>
-      ) : null}
+    <div className="negative-x-spacing py-8 md:pb-0 lg:pt-18">
+      <SectionHeader title={title} text={text} isCentered />
 
       <ResponsiveCarousel
         controlsVariant="side"
