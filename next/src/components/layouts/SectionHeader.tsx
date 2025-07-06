@@ -46,9 +46,9 @@ const SectionHeader = ({
       {title || text ? (
         <div
           className={cn(
-            'flex w-full flex-col items-start gap-4',
+            'flex w-full flex-col items-start gap-2',
             {
-              'items-center text-center': isCentered,
+              'mx-auto items-center text-center': isCentered,
               'max-w-[50rem]': !isFullWidth, // 50rem = 800px
             },
             className,
