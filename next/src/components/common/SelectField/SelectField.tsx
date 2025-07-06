@@ -102,7 +102,7 @@ const SelectField = <T extends object>({
       <FieldError>{errorMessage}</FieldError>
 
       <Popover
-        className="w-(--trigger-width) overflow-y-scroll rounded-md border-2 border-grey-800 bg-white py-2"
+        className="w-(--trigger-width) overflow-y-auto rounded-md border-2 border-grey-800 bg-white py-2"
         shouldFlip={false}
       >
         <ListBox items={items}>{children}</ListBox>
