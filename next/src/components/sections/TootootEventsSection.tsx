@@ -1,4 +1,3 @@
-import { Typography } from '@bratislava/component-library'
 import { useQuery } from '@tanstack/react-query'
 
 import EventCard from '@/src/components/cards/EventCard'
@@ -6,6 +5,7 @@ import Button from '@/src/components/common/Button/Button'
 import ResponsiveCarousel from '@/src/components/common/Carousel/ResponsiveCarousel'
 import Spinner from '@/src/components/common/Spinner/Spinner'
 import SectionContainer from '@/src/components/layouts/SectionContainer'
+import SectionHeader from '@/src/components/layouts/SectionHeader'
 import { TootootEventsSectionFragment } from '@/src/services/graphql'
 import {
   getTootootEvents,
@@ -20,6 +20,10 @@ type Props = {
   section: TootootEventsSectionFragment
 }
 
+/**
+ * TODO Figma link
+ */
+
 const TootootEventsSection = ({ section }: Props) => {
   const { title, text, showMoreLink } = section
 
@@ -30,13 +34,8 @@ const TootootEventsSection = ({ section }: Props) => {
 
   return (
     <SectionContainer>
-      <div className="py-8 md:pt-0">
-        {title || text ? (
-          <div className="flex flex-col gap-2 text-center lg:pt-18">
-            {title && <Typography variant="h2">{title}</Typography>}
-            {text && <Typography variant="p-default">{text}</Typography>}
-          </div>
-        ) : null}
+      <div className="py-8 md:pt-6 lg:pt-18">
+        <SectionHeader title={title} text={text} isCentered />
 
         {isPending ? (
           <Spinner />

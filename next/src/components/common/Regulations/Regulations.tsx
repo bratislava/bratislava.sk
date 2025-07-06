@@ -1,8 +1,8 @@
-import { Typography } from '@bratislava/component-library'
 import { Fragment } from 'react'
 
 import RegulationRowCard from '@/src/components/cards/RegulationRowCard'
 import HorizontalDivider from '@/src/components/common/Divider/HorizontalDivider'
+import SectionHeader from '@/src/components/layouts/SectionHeader'
 import { RegulationEntityFragment } from '@/src/services/graphql'
 import cn from '@/src/utils/cn'
 import { getRegulationMetadata } from '@/src/utils/getRegulationMetadata'
@@ -24,7 +24,7 @@ const Regulations = ({ className, regulations }: Props) => {
 
   return (
     <div className={cn('flex flex-col gap-8', className)}>
-      <Typography variant="h2">{t('Regulation.relatedRegulations')}</Typography>
+      <SectionHeader title={t('Regulation.relatedRegulations')} />
       {regulations?.length ? (
         <ul className="flex flex-col rounded-lg border-2 py-2">
           {regulations?.map((regulation, index) => {

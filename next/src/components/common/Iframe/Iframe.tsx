@@ -1,5 +1,6 @@
-import { Typography } from '@bratislava/component-library'
 import { useEffect, useRef, useState } from 'react'
+
+import SectionHeader from '@/src/components/layouts/SectionHeader'
 
 export type IframeProps = {
   title?: string | null | undefined
@@ -48,12 +49,7 @@ const Iframe = ({
 
   return (
     <div className="flex flex-col gap-4 lg:gap-6">
-      {title || text ? (
-        <div className="flex flex-col gap-2">
-          {title ? <Typography variant="h2">{title}</Typography> : null}
-          {text ? <Typography variant="p-default">{text}</Typography> : null}
-        </div>
-      ) : null}
+      <SectionHeader title={title} text={text} />
       <div
         style={{ height }}
         className={iframeWidth === 'container' ? 'w-full' : 'absolute inset-x-0'}

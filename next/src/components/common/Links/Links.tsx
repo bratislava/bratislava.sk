@@ -1,8 +1,8 @@
-import { Typography } from '@bratislava/component-library'
 import React from 'react'
 import { ArrowRightIcon } from 'src/assets/icons'
 
 import Button from '@/src/components/common/Button/Button'
+import SectionHeader from '@/src/components/layouts/SectionHeader'
 import { LinksSectionFragment } from '@/src/services/graphql'
 import cn from '@/src/utils/cn'
 import { getLinkProps } from '@/src/utils/getLinkProps'
@@ -14,10 +14,14 @@ export type LinksProps = {
   className?: string
 }
 
+/**
+ * TODO Figma link
+ */
+
 const Links = ({ title, pageLinks, className }: LinksProps) => {
   return (
     <div className={cn('flex w-full flex-col gap-6 md:w-10/12', className)}>
-      {title && <Typography variant="h2">{title}</Typography>}
+      <SectionHeader title={title} />
 
       <ul className="flex flex-col gap-4">
         {pageLinks?.filter(isDefined).map((pageLink, index) => (

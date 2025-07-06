@@ -9,6 +9,10 @@ type NarrowTextSectionProps = {
   section: NarrowTextSectionFragment
 }
 
+/**
+ * TODO Figma link
+ */
+
 const NarrowTextSection = ({ section }: NarrowTextSectionProps) => {
   if (!section.content) {
     return null

@@ -1,4 +1,3 @@
-import { Typography } from '@bratislava/component-library'
 import { useQuery } from '@tanstack/react-query'
 import React from 'react'
 
@@ -6,6 +5,7 @@ import ArticleCard from '@/src/components/cards/ArticleCard'
 import { transformArticleProps } from '@/src/components/cards/transformArticleProps'
 import ResponsiveCarousel from '@/src/components/common/Carousel/ResponsiveCarousel'
 import SectionContainer from '@/src/components/layouts/SectionContainer'
+import SectionHeader from '@/src/components/layouts/SectionHeader'
 import { PageEntityFragment } from '@/src/services/graphql'
 import {
   getRelatedArticlesQueryKey,
@@ -18,6 +18,10 @@ type Props = {
   page: PageEntityFragment
   className?: string
 }
+
+/**
+ * TODO Figma link
+ */
 
 const RelatedArticlesSection = ({ page, className }: Props) => {
   const { t } = useTranslation()
@@ -36,11 +40,7 @@ const RelatedArticlesSection = ({ page, className }: Props) => {
   return (
     <SectionContainer className={className}>
       <div className="flex flex-col">
-        <div className="flex">
-          <div className="grow">
-            <Typography variant="h2">{t('RelatedArticlesSection.relatedArticles')}</Typography>
-          </div>
-        </div>
+        <SectionHeader title={t('RelatedArticlesSection.relatedArticles')} />
 
         <ResponsiveCarousel
           items={data.hits.map((card) => {

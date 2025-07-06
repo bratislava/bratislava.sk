@@ -3,6 +3,7 @@ import React from 'react'
 
 import ResponsiveCarousel from '@/src/components/common/Carousel/ResponsiveCarousel'
 import MLink from '@/src/components/common/MLink/MLink'
+import SectionHeader from '@/src/components/layouts/SectionHeader'
 import { VideoBlockFragment, VideosSectionFragment } from '@/src/services/graphql'
 import cn from '@/src/utils/cn'
 import { isPresent } from '@/src/utils/utils'
@@ -64,6 +65,10 @@ const Video = ({
   )
 }
 
+/**
+ * TODO Figma link
+ */
+
 export const Videos = ({ title, subtitle, videos }: VideosSectionFragment) => {
   if (!videos) {
     return null
@@ -72,16 +77,7 @@ export const Videos = ({ title, subtitle, videos }: VideosSectionFragment) => {
   return (
     <div>
       <div className="py-8 md:pt-0">
-        {title || subtitle ? (
-          <div className="flex flex-col gap-2">
-            {title && (
-              <Typography variant="h4" as="h2">
-                {title}
-              </Typography>
-            )}
-            {subtitle && <Typography variant="p-default">{subtitle}</Typography>}
-          </div>
-        ) : null}
+        <SectionHeader title={title} text={subtitle} />
       </div>
 
       {/* Mobile */}

@@ -1,10 +1,10 @@
-import { Typography } from '@bratislava/component-library'
 import { keepPreviousData, useQuery } from '@tanstack/react-query'
 import React, { useState } from 'react'
 
 import InbaReleaseHorizontalCard from '@/src/components/cards/InbaReleaseHorizontalCard'
 import Pagination from '@/src/components/common/Pagination/Pagination'
 import SectionContainer from '@/src/components/layouts/SectionContainer'
+import SectionHeader from '@/src/components/layouts/SectionHeader'
 import { InbaReleasesSectionFragment } from '@/src/services/graphql'
 import {
   getInbaReleasesQueryKey,
@@ -14,6 +14,10 @@ import {
 import { formatDate } from '@/src/utils/formatDate'
 
 type Props = { section: InbaReleasesSectionFragment }
+
+/**
+ * TODO Figma link
+ */
 
 const InbaReleasesSection = ({ section }: Props) => {
   const { title, text } = section
@@ -37,12 +41,7 @@ const InbaReleasesSection = ({ section }: Props) => {
   return (
     <SectionContainer>
       <div className="flex flex-col gap-8">
-        {title || text ? (
-          <div className="flex flex-col gap-2">
-            {title && <Typography variant="h2">{title}</Typography>}
-            {text && <Typography variant="p-default">{text}</Typography>}
-          </div>
-        ) : null}
+        <SectionHeader title={title} text={text} />
 
         <div className="flex flex-col gap-8">
           {data.inbaReleases.data.map((inbaRelease) => {

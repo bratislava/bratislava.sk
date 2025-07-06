@@ -1,7 +1,7 @@
-import { Typography } from '@bratislava/component-library'
 import { useQuery } from '@tanstack/react-query'
 
 import LoadingSpinner from '@/src/components/common/LoadingSpinner/LoadingSpinner'
+import SectionHeader from '@/src/components/layouts/SectionHeader'
 import {
   getMsGraphStructureQueryKey,
   msGraphStructureFetcher,
@@ -12,6 +12,10 @@ import OrganizationalStructureTopLevelAccordion from './OrganizationalStructureT
 export type OrganizationalStructureProps = {
   title?: string | null
 }
+
+/**
+ * TODO Figma link
+ */
 
 // TODO add search
 const OrganizationalStructure = ({ title }: OrganizationalStructureProps) => {
@@ -31,7 +35,7 @@ const OrganizationalStructure = ({ title }: OrganizationalStructureProps) => {
 
   return (
     <div className="flex flex-col gap-4">
-      <Typography variant="h2">{title}</Typography>
+      <SectionHeader title={title} />
 
       <div className="flex flex-col" data-cy="organizational-structure-container">
         {data.groups.map((group) => (

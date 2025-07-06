@@ -1,8 +1,7 @@
-import { Typography } from '@bratislava/component-library'
-
 import StrapiImage from '@/src/components/common/Image/StrapiImage'
 import MLink from '@/src/components/common/MLink/MLink'
 import SectionContainer from '@/src/components/layouts/SectionContainer'
+import SectionHeader from '@/src/components/layouts/SectionHeader'
 import { PartnersSectionFragment } from '@/src/services/graphql'
 import cn from '@/src/utils/cn'
 import { generateImageSizes } from '@/src/utils/generateImageSizes'
@@ -14,6 +13,10 @@ type Props = {
   section: PartnersSectionFragment
 }
 
+/**
+ * TODO Figma link
+ */
+
 const PartnersSection = ({ section }: Props) => {
   const { title, text, partners, logoRatio } = section
 
@@ -23,12 +26,7 @@ const PartnersSection = ({ section }: Props) => {
   return (
     <SectionContainer>
       <div className="flex flex-col gap-6 lg:gap-8">
-        {title || text ? (
-          <div className="flex flex-col gap-2">
-            {title && <Typography variant="h2">{title}</Typography>}
-            {text && <Typography variant="p-default">{text}</Typography>}
-          </div>
-        ) : null}
+        <SectionHeader title={title} text={text} />
 
         <div
           className={cn('grid gap-6 gap-y-4 lg:gap-12', {
