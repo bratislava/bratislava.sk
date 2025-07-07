@@ -16727,7 +16727,7 @@ export const ArticlesDocument = gql`
 `
 export const ArticlesRssFeedDocument = gql`
   query ArticlesRssFeed($locale: I18NLocaleCode!) {
-    articles(locale: $locale, sort: "addedAt:desc") {
+    articles(locale: $locale, sort: "addedAt:desc", pagination: { limit: 20 }) {
       data {
         id
         attributes {
