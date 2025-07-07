@@ -39,39 +39,40 @@ const InbaReleasesSection = ({ section }: Props) => {
       <div className="flex flex-col gap-8">
         <SectionHeader title={title} text={text} />
 
-      <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-        {data?.hits.map((inbaRelease) => {
-          const {
-            title: inbaReleaseTitle,
-            slug,
-            coverImage,
-            releaseDate,
-            perex,
-          } = inbaRelease.attributes
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+          {data?.hits.map((inbaRelease) => {
+            const {
+              title: inbaReleaseTitle,
+              slug,
+              coverImage,
+              releaseDate,
+              perex,
+            } = inbaRelease.attributes
 
-          return (
-            <InbaReleaseCard
-              key={slug}
-              date={formatDate(releaseDate)}
-              title={inbaReleaseTitle}
-              text={perex}
-              linkHref={`/inba/vydania/${slug}`}
-              imgSrc={coverImage?.data?.attributes?.url}
-              // imgSizes={imageSizes}
-            />
-          )
-        })}
+            return (
+              <InbaReleaseCard
+                key={slug}
+                date={formatDate(releaseDate)}
+                title={inbaReleaseTitle}
+                text={perex}
+                linkHref={`/inba/vydania/${slug}`}
+                imgSrc={coverImage?.data?.attributes?.url}
+                // imgSizes={imageSizes}
+              />
+            )
+          })}
+        </div>
+
+        {data?.estimatedTotalHits ? (
+          <Pagination
+            key={filters.search}
+            totalCount={Math.ceil(data.estimatedTotalHits / filters.pageSize)}
+            currentPage={filters.page}
+            onPageChange={handlePageChange}
+          />
+        ) : null}
       </div>
-
-      {data?.estimatedTotalHits ? (
-        <Pagination
-          key={filters.search}
-          totalCount={Math.ceil(data.estimatedTotalHits / filters.pageSize)}
-          currentPage={filters.page}
-          onPageChange={handlePageChange}
-        />
-      ) : null}
-    </div>
+    </SectionContainer>
   )
 }
 
