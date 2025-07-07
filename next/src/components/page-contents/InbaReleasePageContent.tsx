@@ -81,7 +81,7 @@ const InbaReleasePageContent = ({ inbaRelease }: InbaReleasePageContentProps) =>
         </div>
       </SectionContainer>
 
-      <SectionContainer className="pt-10 md:pt-18">
+      <SectionContainer className="pt-10 pb-8 md:pt-18">
         <ShareButtons twitterTitle={title} />
       </SectionContainer>
     </>

@@ -9,7 +9,7 @@ import {
   getInbaReleasesQueryKey,
   inbaReleasesDefaultFilters,
   inbaReleasesFetcher,
-} from '@/src/services/graphql/fetchers/inbaReleases.fetcher'
+} from '@/src/services/meili/fetchers/inbaReleasesFetcher'
 import { formatDate } from '@/src/utils/formatDate'
 
 type Props = { section: InbaReleasesSectionFragment }
@@ -25,10 +25,6 @@ const InbaReleasesSection = ({ section }: Props) => {
     placeholderData: keepPreviousData,
   })
 
-  if (!data?.inbaReleases?.data?.length) {
-    return null
-  }
-
   const handlePageChange = (page: number) => {
     setFilters({ ...filters, page })
   }
@@ -43,10 +39,7 @@ const InbaReleasesSection = ({ section }: Props) => {
       ) : null}
 
       <div className="flex flex-col gap-8">
-        {data.inbaReleases.data.map((inbaRelease) => {
-          if (!inbaRelease.attributes) return null
-
-          // TODO refactor sections that use ArticleCard - it needs too much duplicate code while passing props
+        {data?.hits.map((inbaRelease) => {
           const {
             title: inbaReleaseTitle,
             slug,
@@ -61,7 +54,7 @@ const InbaReleasesSection = ({ section }: Props) => {
               date={formatDate(releaseDate)}
               title={inbaReleaseTitle}
               text={perex}
-              linkHref={`/inba/archiv/${slug}`}
+              linkHref={`/inba/vydania/${slug}`}
               imgSrc={coverImage?.data?.attributes?.url}
               // imgSizes={imageSizes}
             />
@@ -69,9 +62,10 @@ const InbaReleasesSection = ({ section }: Props) => {
         })}
       </div>
 
-      {data.inbaReleases.data.length > 0 ? (
+      {data?.estimatedTotalHits ? (
         <Pagination
-          totalCount={Math.ceil(data.inbaReleases.data.length / filters.pageSize)}
+          key={filters.search}
+          totalCount={Math.ceil(data.estimatedTotalHits / filters.pageSize)}
           currentPage={filters.page}
           onPageChange={handlePageChange}
         />

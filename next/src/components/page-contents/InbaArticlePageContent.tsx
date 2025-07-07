@@ -36,7 +36,7 @@ const InbaArticlePageContent = ({ inbaArticle }: InbaArticlePageContentProps) =>
   const inbaTagTitle = inbaArticle.attributes?.inbaTag?.data?.attributes?.title
 
   const inbaRelease = inbaArticle.attributes?.inbaRelease?.data?.attributes
-  const inbaReleaseLink = `/inba/archiv/${inbaRelease?.slug}`
+  const inbaReleaseLink = `/inba/vydania/${inbaRelease?.slug}`
 
   return (
     <>
@@ -78,7 +78,7 @@ const InbaArticlePageContent = ({ inbaArticle }: InbaArticlePageContentProps) =>
           ) : null}
         </NarrowText>
       </SectionContainer>
-      <SectionContainer className="pt-10 md:pt-18">
+      <SectionContainer className="pt-10 pb-8 md:pt-18">
         <ShareButtons twitterTitle={inbaArticle.attributes?.title} />
       </SectionContainer>
     </>

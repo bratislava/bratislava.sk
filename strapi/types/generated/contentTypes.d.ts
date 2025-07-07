@@ -1766,11 +1766,6 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
     draftAndPublish: false
     timestamps: true
   }
-  pluginOptions: {
-    'content-manager': {
-      visible: false
-    }
-  }
   attributes: {
     blocked: Attribute.Boolean & Attribute.DefaultTo<false>
     confirmationToken: Attribute.String & Attribute.Private

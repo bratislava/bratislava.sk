@@ -4,6 +4,8 @@ import {
   Document,
   DocumentCategory,
   InbaArticle,
+  InbaRelease,
+  InbaReleaseEntity,
   InbaTag,
   Page,
   PageCategory,
@@ -58,6 +60,12 @@ export type InbaArticleMeili = Omit<InbaArticle, '__typename' | 'tags' | 'coverI
   coverImage?: UploadFile
   inbaTag?: Pick<InbaTag, 'title'>
 }
+
+export type InbaReleaseMeili = Pick<InbaReleaseEntity, 'id'> &
+  Omit<InbaRelease, '__typename' | 'coverImage' | 'rearImage' | 'inbaArticles' | 'files'> & {
+    coverImage?: UploadFile
+    rearImage?: UploadFile
+  }
 
 export type RegulationMeili = Omit<
   Regulation,
