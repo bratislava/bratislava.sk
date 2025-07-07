@@ -11,7 +11,7 @@ type SearchBarProps = {
   placeholder?: string
   input: string
   setInput: Dispatch<SetStateAction<string>>
-  setSearchQuery: Dispatch<SetStateAction<string>>
+  setSearchQuery: (value: string) => void
   isLoading?: boolean
 }
 
@@ -30,7 +30,6 @@ const SearchBar = forwardRef<HTMLInputElement, SearchBarProps>(
         // 10rem scroll margin works fine for all screen sizes
         className="flex scroll-mt-40 flex-col gap-y-1"
         aria-label={t('SearchBar.search')}
-        defaultValue={placeholder}
         value={input}
         onChange={setInput}
         onSubmit={handleSearch}
@@ -43,6 +42,7 @@ const SearchBar = forwardRef<HTMLInputElement, SearchBarProps>(
         <div className="relative">
           {/* 3.75rem = 60px, 0.75rem = 12px */}
           <Input
+            placeholder={placeholder}
             className="relative w-full rounded-lg border-2 px-15 py-5 pr-23 outline-hidden hover:border-grey-400 focus:border-grey-800 focus-visible:ring-3 focus-visible:ring-offset-2"
             data-cy="search-field"
           />
