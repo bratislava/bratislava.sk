@@ -54,7 +54,7 @@ const InbaReleasePageContent = ({ inbaRelease }: InbaReleasePageContentProps) =>
         <div className="grid grid-cols-1 gap-16 lg:grid-cols-[1fr_2fr]">
           <div
             className={cn('overflow-hidden rounded-xl border-2', {
-              'aspect-inba': !coverImageAttr,
+              'aspect-5/8': !coverImageAttr,
             })}
           >
             {coverImageAttr ? <StrapiImage alt="" image={coverImageAttr} /> : <ImagePlaceholder />}

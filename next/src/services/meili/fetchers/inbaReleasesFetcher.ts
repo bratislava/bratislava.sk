@@ -10,7 +10,7 @@ export type InbaReleasesFilters = {
 
 export const inbaReleasesDefaultFilters: InbaReleasesFilters = {
   search: '',
-  pageSize: 9,
+  pageSize: 12,
   page: 1,
 }
 

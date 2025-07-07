@@ -2,7 +2,7 @@ import { Typography } from '@bratislava/component-library'
 import { keepPreviousData, useQuery } from '@tanstack/react-query'
 import React, { useState } from 'react'
 
-import InbaReleaseHorizontalCard from '@/src/components/cards/InbaReleaseHorizontalCard'
+import InbaReleaseCard from '@/src/components/cards/InbaReleaseCard'
 import Pagination from '@/src/components/common/Pagination/Pagination'
 import { InbaReleasesSectionFragment } from '@/src/services/graphql'
 import {
@@ -38,7 +38,7 @@ const InbaReleasesSection = ({ section }: Props) => {
         </div>
       ) : null}
 
-      <div className="flex flex-col gap-8">
+      <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
         {data?.hits.map((inbaRelease) => {
           const {
             title: inbaReleaseTitle,
@@ -49,7 +49,7 @@ const InbaReleasesSection = ({ section }: Props) => {
           } = inbaRelease.attributes
 
           return (
-            <InbaReleaseHorizontalCard
+            <InbaReleaseCard
               key={slug}
               date={formatDate(releaseDate)}
               title={inbaReleaseTitle}
