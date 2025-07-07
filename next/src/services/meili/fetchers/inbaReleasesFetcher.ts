@@ -38,7 +38,7 @@ export const inbaReleasesFetcher = (filters: InbaReleasesFilters) => {
               coverImage: {
                 data: {
                   attributes: {
-                    url: inbaRelease.coverImage?.url,
+                    url: inbaRelease.coverImage.url,
                   },
                 },
               },
@@ -47,7 +47,7 @@ export const inbaReleasesFetcher = (filters: InbaReleasesFilters) => {
               rearImage: {
                 data: {
                   attributes: {
-                    url: inbaRelease.rearImage?.url,
+                    url: inbaRelease.rearImage.url,
                   },
                 },
               },
