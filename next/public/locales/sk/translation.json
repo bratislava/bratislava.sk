@@ -58,6 +58,7 @@
   "InbaArticle.publishedInThisRelease": "Publikované v čísle {{releaseTitle}}, ktoré vyšlo {{releaseDate}}.",
   "InbaArticlesFilter.articleFilter": "Filter článkov",
   "InbaRelease.inThisRelease": "V tomto čísle nájdete",
+  "InbaRelease.releaseDetail": "Detail čísla",
   "InbaRelease.releasedOn": "Publikované {{date}}",
   "InbaRelease.toDownload": "Na stiahnutie",
   "links.searchLink": "/vyhladavanie",
