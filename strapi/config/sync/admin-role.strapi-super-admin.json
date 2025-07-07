@@ -1961,6 +1961,70 @@
       "actionParameters": {}
     },
     {
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "plugin::users-permissions.user",
+      "properties": {
+        "fields": [
+          "username",
+          "email",
+          "provider",
+          "password",
+          "resetPasswordToken",
+          "confirmationToken",
+          "confirmed",
+          "blocked",
+          "role"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": {}
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "subject": "plugin::users-permissions.user",
+      "properties": {},
+      "conditions": [],
+      "actionParameters": {}
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "plugin::users-permissions.user",
+      "properties": {
+        "fields": [
+          "username",
+          "email",
+          "provider",
+          "password",
+          "resetPasswordToken",
+          "confirmationToken",
+          "confirmed",
+          "blocked",
+          "role"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": {}
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "plugin::users-permissions.user",
+      "properties": {
+        "fields": [
+          "username",
+          "email",
+          "provider",
+          "password",
+          "resetPasswordToken",
+          "confirmationToken",
+          "confirmed",
+          "blocked",
+          "role"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": {}
+    },
+    {
       "action": "plugin::content-manager.single-types.configure-view",
       "subject": null,
       "properties": {},

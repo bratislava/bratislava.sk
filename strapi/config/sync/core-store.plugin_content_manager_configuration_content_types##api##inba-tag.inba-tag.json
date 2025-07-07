@@ -109,12 +109,6 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "title",
-        "createdAt",
-        "inbaArticles"
-      ],
       "edit": [
         [
           {
@@ -126,6 +120,13 @@
             "size": 6
           }
         ]
+      ],
+      "list": [
+        "id",
+        "title",
+        "createdAt",
+        "updatedAt",
+        "inbaArticles"
       ]
     }
   },

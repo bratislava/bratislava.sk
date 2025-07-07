@@ -6223,12 +6223,11 @@ export type GeneralFragment = {
     __typename?: 'PageEntityResponse'
     data?: {
       __typename?: 'PageEntity'
-      id?: string | null
       attributes?: {
         __typename?: 'Page'
         slug?: string | null
-        title: string
         locale?: string | null
+        title: string
         parentPage?: {
           __typename?: 'PageEntityResponse'
           data?: {
@@ -6284,12 +6283,59 @@ export type GeneralFragment = {
     __typename?: 'PageEntityResponse'
     data?: {
       __typename?: 'PageEntity'
-      id?: string | null
       attributes?: {
         __typename?: 'Page'
         slug?: string | null
-        title: string
         locale?: string | null
+        title: string
+        parentPage?: {
+          __typename?: 'PageEntityResponse'
+          data?: {
+            __typename?: 'PageEntity'
+            attributes?: {
+              __typename?: 'Page'
+              slug?: string | null
+              locale?: string | null
+              title: string
+              parentPage?: {
+                __typename?: 'PageEntityResponse'
+                data?: {
+                  __typename?: 'PageEntity'
+                  attributes?: {
+                    __typename?: 'Page'
+                    slug?: string | null
+                    locale?: string | null
+                    title: string
+                    parentPage?: {
+                      __typename?: 'PageEntityResponse'
+                      data?: {
+                        __typename?: 'PageEntity'
+                        attributes?: {
+                          __typename?: 'Page'
+                          slug?: string | null
+                          locale?: string | null
+                          title: string
+                          parentPage?: {
+                            __typename?: 'PageEntityResponse'
+                            data?: {
+                              __typename?: 'PageEntity'
+                              attributes?: {
+                                __typename?: 'Page'
+                                slug?: string | null
+                                locale?: string | null
+                                title: string
+                              } | null
+                            } | null
+                          } | null
+                        } | null
+                      } | null
+                    } | null
+                  } | null
+                } | null
+              } | null
+            } | null
+          } | null
+        } | null
       } | null
     } | null
   } | null
@@ -6297,12 +6343,59 @@ export type GeneralFragment = {
     __typename?: 'PageEntityResponse'
     data?: {
       __typename?: 'PageEntity'
-      id?: string | null
       attributes?: {
         __typename?: 'Page'
         slug?: string | null
-        title: string
         locale?: string | null
+        title: string
+        parentPage?: {
+          __typename?: 'PageEntityResponse'
+          data?: {
+            __typename?: 'PageEntity'
+            attributes?: {
+              __typename?: 'Page'
+              slug?: string | null
+              locale?: string | null
+              title: string
+              parentPage?: {
+                __typename?: 'PageEntityResponse'
+                data?: {
+                  __typename?: 'PageEntity'
+                  attributes?: {
+                    __typename?: 'Page'
+                    slug?: string | null
+                    locale?: string | null
+                    title: string
+                    parentPage?: {
+                      __typename?: 'PageEntityResponse'
+                      data?: {
+                        __typename?: 'PageEntity'
+                        attributes?: {
+                          __typename?: 'Page'
+                          slug?: string | null
+                          locale?: string | null
+                          title: string
+                          parentPage?: {
+                            __typename?: 'PageEntityResponse'
+                            data?: {
+                              __typename?: 'PageEntity'
+                              attributes?: {
+                                __typename?: 'Page'
+                                slug?: string | null
+                                locale?: string | null
+                                title: string
+                              } | null
+                            } | null
+                          } | null
+                        } | null
+                      } | null
+                    } | null
+                  } | null
+                } | null
+              } | null
+            } | null
+          } | null
+        } | null
       } | null
     } | null
   } | null
@@ -6310,12 +6403,59 @@ export type GeneralFragment = {
     __typename?: 'PageEntityResponse'
     data?: {
       __typename?: 'PageEntity'
-      id?: string | null
       attributes?: {
         __typename?: 'Page'
         slug?: string | null
-        title: string
         locale?: string | null
+        title: string
+        parentPage?: {
+          __typename?: 'PageEntityResponse'
+          data?: {
+            __typename?: 'PageEntity'
+            attributes?: {
+              __typename?: 'Page'
+              slug?: string | null
+              locale?: string | null
+              title: string
+              parentPage?: {
+                __typename?: 'PageEntityResponse'
+                data?: {
+                  __typename?: 'PageEntity'
+                  attributes?: {
+                    __typename?: 'Page'
+                    slug?: string | null
+                    locale?: string | null
+                    title: string
+                    parentPage?: {
+                      __typename?: 'PageEntityResponse'
+                      data?: {
+                        __typename?: 'PageEntity'
+                        attributes?: {
+                          __typename?: 'Page'
+                          slug?: string | null
+                          locale?: string | null
+                          title: string
+                          parentPage?: {
+                            __typename?: 'PageEntityResponse'
+                            data?: {
+                              __typename?: 'PageEntity'
+                              attributes?: {
+                                __typename?: 'Page'
+                                slug?: string | null
+                                locale?: string | null
+                                title: string
+                              } | null
+                            } | null
+                          } | null
+                        } | null
+                      } | null
+                    } | null
+                  } | null
+                } | null
+              } | null
+            } | null
+          } | null
+        } | null
       } | null
     } | null
   } | null
@@ -6323,12 +6463,59 @@ export type GeneralFragment = {
     __typename?: 'PageEntityResponse'
     data?: {
       __typename?: 'PageEntity'
-      id?: string | null
       attributes?: {
         __typename?: 'Page'
         slug?: string | null
-        title: string
         locale?: string | null
+        title: string
+        parentPage?: {
+          __typename?: 'PageEntityResponse'
+          data?: {
+            __typename?: 'PageEntity'
+            attributes?: {
+              __typename?: 'Page'
+              slug?: string | null
+              locale?: string | null
+              title: string
+              parentPage?: {
+                __typename?: 'PageEntityResponse'
+                data?: {
+                  __typename?: 'PageEntity'
+                  attributes?: {
+                    __typename?: 'Page'
+                    slug?: string | null
+                    locale?: string | null
+                    title: string
+                    parentPage?: {
+                      __typename?: 'PageEntityResponse'
+                      data?: {
+                        __typename?: 'PageEntity'
+                        attributes?: {
+                          __typename?: 'Page'
+                          slug?: string | null
+                          locale?: string | null
+                          title: string
+                          parentPage?: {
+                            __typename?: 'PageEntityResponse'
+                            data?: {
+                              __typename?: 'PageEntity'
+                              attributes?: {
+                                __typename?: 'Page'
+                                slug?: string | null
+                                locale?: string | null
+                                title: string
+                              } | null
+                            } | null
+                          } | null
+                        } | null
+                      } | null
+                    } | null
+                  } | null
+                } | null
+              } | null
+            } | null
+          } | null
+        } | null
       } | null
     } | null
   } | null
@@ -6336,12 +6523,59 @@ export type GeneralFragment = {
     __typename?: 'PageEntityResponse'
     data?: {
       __typename?: 'PageEntity'
-      id?: string | null
       attributes?: {
         __typename?: 'Page'
         slug?: string | null
-        title: string
         locale?: string | null
+        title: string
+        parentPage?: {
+          __typename?: 'PageEntityResponse'
+          data?: {
+            __typename?: 'PageEntity'
+            attributes?: {
+              __typename?: 'Page'
+              slug?: string | null
+              locale?: string | null
+              title: string
+              parentPage?: {
+                __typename?: 'PageEntityResponse'
+                data?: {
+                  __typename?: 'PageEntity'
+                  attributes?: {
+                    __typename?: 'Page'
+                    slug?: string | null
+                    locale?: string | null
+                    title: string
+                    parentPage?: {
+                      __typename?: 'PageEntityResponse'
+                      data?: {
+                        __typename?: 'PageEntity'
+                        attributes?: {
+                          __typename?: 'Page'
+                          slug?: string | null
+                          locale?: string | null
+                          title: string
+                          parentPage?: {
+                            __typename?: 'PageEntityResponse'
+                            data?: {
+                              __typename?: 'PageEntity'
+                              attributes?: {
+                                __typename?: 'Page'
+                                slug?: string | null
+                                locale?: string | null
+                                title: string
+                              } | null
+                            } | null
+                          } | null
+                        } | null
+                      } | null
+                    } | null
+                  } | null
+                } | null
+              } | null
+            } | null
+          } | null
+        } | null
       } | null
     } | null
   } | null
@@ -6349,12 +6583,11 @@ export type GeneralFragment = {
     __typename?: 'PageEntityResponse'
     data?: {
       __typename?: 'PageEntity'
-      id?: string | null
       attributes?: {
         __typename?: 'Page'
         slug?: string | null
-        title: string
         locale?: string | null
+        title: string
         parentPage?: {
           __typename?: 'PageEntityResponse'
           data?: {
@@ -6483,12 +6716,11 @@ export type GeneralQuery = {
           __typename?: 'PageEntityResponse'
           data?: {
             __typename?: 'PageEntity'
-            id?: string | null
             attributes?: {
               __typename?: 'Page'
               slug?: string | null
-              title: string
               locale?: string | null
+              title: string
               parentPage?: {
                 __typename?: 'PageEntityResponse'
                 data?: {
@@ -6544,12 +6776,59 @@ export type GeneralQuery = {
           __typename?: 'PageEntityResponse'
           data?: {
             __typename?: 'PageEntity'
-            id?: string | null
             attributes?: {
               __typename?: 'Page'
               slug?: string | null
-              title: string
               locale?: string | null
+              title: string
+              parentPage?: {
+                __typename?: 'PageEntityResponse'
+                data?: {
+                  __typename?: 'PageEntity'
+                  attributes?: {
+                    __typename?: 'Page'
+                    slug?: string | null
+                    locale?: string | null
+                    title: string
+                    parentPage?: {
+                      __typename?: 'PageEntityResponse'
+                      data?: {
+                        __typename?: 'PageEntity'
+                        attributes?: {
+                          __typename?: 'Page'
+                          slug?: string | null
+                          locale?: string | null
+                          title: string
+                          parentPage?: {
+                            __typename?: 'PageEntityResponse'
+                            data?: {
+                              __typename?: 'PageEntity'
+                              attributes?: {
+                                __typename?: 'Page'
+                                slug?: string | null
+                                locale?: string | null
+                                title: string
+                                parentPage?: {
+                                  __typename?: 'PageEntityResponse'
+                                  data?: {
+                                    __typename?: 'PageEntity'
+                                    attributes?: {
+                                      __typename?: 'Page'
+                                      slug?: string | null
+                                      locale?: string | null
+                                      title: string
+                                    } | null
+                                  } | null
+                                } | null
+                              } | null
+                            } | null
+                          } | null
+                        } | null
+                      } | null
+                    } | null
+                  } | null
+                } | null
+              } | null
             } | null
           } | null
         } | null
@@ -6557,12 +6836,59 @@ export type GeneralQuery = {
           __typename?: 'PageEntityResponse'
           data?: {
             __typename?: 'PageEntity'
-            id?: string | null
             attributes?: {
               __typename?: 'Page'
               slug?: string | null
-              title: string
               locale?: string | null
+              title: string
+              parentPage?: {
+                __typename?: 'PageEntityResponse'
+                data?: {
+                  __typename?: 'PageEntity'
+                  attributes?: {
+                    __typename?: 'Page'
+                    slug?: string | null
+                    locale?: string | null
+                    title: string
+                    parentPage?: {
+                      __typename?: 'PageEntityResponse'
+                      data?: {
+                        __typename?: 'PageEntity'
+                        attributes?: {
+                          __typename?: 'Page'
+                          slug?: string | null
+                          locale?: string | null
+                          title: string
+                          parentPage?: {
+                            __typename?: 'PageEntityResponse'
+                            data?: {
+                              __typename?: 'PageEntity'
+                              attributes?: {
+                                __typename?: 'Page'
+                                slug?: string | null
+                                locale?: string | null
+                                title: string
+                                parentPage?: {
+                                  __typename?: 'PageEntityResponse'
+                                  data?: {
+                                    __typename?: 'PageEntity'
+                                    attributes?: {
+                                      __typename?: 'Page'
+                                      slug?: string | null
+                                      locale?: string | null
+                                      title: string
+                                    } | null
+                                  } | null
+                                } | null
+                              } | null
+                            } | null
+                          } | null
+                        } | null
+                      } | null
+                    } | null
+                  } | null
+                } | null
+              } | null
             } | null
           } | null
         } | null
@@ -6570,12 +6896,59 @@ export type GeneralQuery = {
           __typename?: 'PageEntityResponse'
           data?: {
             __typename?: 'PageEntity'
-            id?: string | null
             attributes?: {
               __typename?: 'Page'
               slug?: string | null
-              title: string
               locale?: string | null
+              title: string
+              parentPage?: {
+                __typename?: 'PageEntityResponse'
+                data?: {
+                  __typename?: 'PageEntity'
+                  attributes?: {
+                    __typename?: 'Page'
+                    slug?: string | null
+                    locale?: string | null
+                    title: string
+                    parentPage?: {
+                      __typename?: 'PageEntityResponse'
+                      data?: {
+                        __typename?: 'PageEntity'
+                        attributes?: {
+                          __typename?: 'Page'
+                          slug?: string | null
+                          locale?: string | null
+                          title: string
+                          parentPage?: {
+                            __typename?: 'PageEntityResponse'
+                            data?: {
+                              __typename?: 'PageEntity'
+                              attributes?: {
+                                __typename?: 'Page'
+                                slug?: string | null
+                                locale?: string | null
+                                title: string
+                                parentPage?: {
+                                  __typename?: 'PageEntityResponse'
+                                  data?: {
+                                    __typename?: 'PageEntity'
+                                    attributes?: {
+                                      __typename?: 'Page'
+                                      slug?: string | null
+                                      locale?: string | null
+                                      title: string
+                                    } | null
+                                  } | null
+                                } | null
+                              } | null
+                            } | null
+                          } | null
+                        } | null
+                      } | null
+                    } | null
+                  } | null
+                } | null
+              } | null
             } | null
           } | null
         } | null
@@ -6583,12 +6956,59 @@ export type GeneralQuery = {
           __typename?: 'PageEntityResponse'
           data?: {
             __typename?: 'PageEntity'
-            id?: string | null
             attributes?: {
               __typename?: 'Page'
               slug?: string | null
-              title: string
               locale?: string | null
+              title: string
+              parentPage?: {
+                __typename?: 'PageEntityResponse'
+                data?: {
+                  __typename?: 'PageEntity'
+                  attributes?: {
+                    __typename?: 'Page'
+                    slug?: string | null
+                    locale?: string | null
+                    title: string
+                    parentPage?: {
+                      __typename?: 'PageEntityResponse'
+                      data?: {
+                        __typename?: 'PageEntity'
+                        attributes?: {
+                          __typename?: 'Page'
+                          slug?: string | null
+                          locale?: string | null
+                          title: string
+                          parentPage?: {
+                            __typename?: 'PageEntityResponse'
+                            data?: {
+                              __typename?: 'PageEntity'
+                              attributes?: {
+                                __typename?: 'Page'
+                                slug?: string | null
+                                locale?: string | null
+                                title: string
+                                parentPage?: {
+                                  __typename?: 'PageEntityResponse'
+                                  data?: {
+                                    __typename?: 'PageEntity'
+                                    attributes?: {
+                                      __typename?: 'Page'
+                                      slug?: string | null
+                                      locale?: string | null
+                                      title: string
+                                    } | null
+                                  } | null
+                                } | null
+                              } | null
+                            } | null
+                          } | null
+                        } | null
+                      } | null
+                    } | null
+                  } | null
+                } | null
+              } | null
             } | null
           } | null
         } | null
@@ -6596,12 +7016,59 @@ export type GeneralQuery = {
           __typename?: 'PageEntityResponse'
           data?: {
             __typename?: 'PageEntity'
-            id?: string | null
             attributes?: {
               __typename?: 'Page'
               slug?: string | null
-              title: string
               locale?: string | null
+              title: string
+              parentPage?: {
+                __typename?: 'PageEntityResponse'
+                data?: {
+                  __typename?: 'PageEntity'
+                  attributes?: {
+                    __typename?: 'Page'
+                    slug?: string | null
+                    locale?: string | null
+                    title: string
+                    parentPage?: {
+                      __typename?: 'PageEntityResponse'
+                      data?: {
+                        __typename?: 'PageEntity'
+                        attributes?: {
+                          __typename?: 'Page'
+                          slug?: string | null
+                          locale?: string | null
+                          title: string
+                          parentPage?: {
+                            __typename?: 'PageEntityResponse'
+                            data?: {
+                              __typename?: 'PageEntity'
+                              attributes?: {
+                                __typename?: 'Page'
+                                slug?: string | null
+                                locale?: string | null
+                                title: string
+                                parentPage?: {
+                                  __typename?: 'PageEntityResponse'
+                                  data?: {
+                                    __typename?: 'PageEntity'
+                                    attributes?: {
+                                      __typename?: 'Page'
+                                      slug?: string | null
+                                      locale?: string | null
+                                      title: string
+                                    } | null
+                                  } | null
+                                } | null
+                              } | null
+                            } | null
+                          } | null
+                        } | null
+                      } | null
+                    } | null
+                  } | null
+                } | null
+              } | null
             } | null
           } | null
         } | null
@@ -6609,12 +7076,11 @@ export type GeneralQuery = {
           __typename?: 'PageEntityResponse'
           data?: {
             __typename?: 'PageEntity'
-            id?: string | null
             attributes?: {
               __typename?: 'Page'
               slug?: string | null
-              title: string
               locale?: string | null
+              title: string
               parentPage?: {
                 __typename?: 'PageEntityResponse'
                 data?: {
@@ -8463,82 +8929,6 @@ export type InbaReleasesRssFeedQuery = {
             attributes?: { __typename?: 'UploadFile'; url: string } | null
           } | null
         } | null
-      } | null
-    }>
-  } | null
-}
-
-export type InbaReleasesPaginatedQueryVariables = Exact<{
-  page?: InputMaybe<Scalars['Int']['input']>
-  pageSize?: InputMaybe<Scalars['Int']['input']>
-}>
-
-export type InbaReleasesPaginatedQuery = {
-  __typename?: 'Query'
-  inbaReleases?: {
-    __typename?: 'InbaReleaseEntityResponseCollection'
-    data: Array<{
-      __typename?: 'InbaReleaseEntity'
-      id?: string | null
-      attributes?: {
-        __typename?: 'InbaRelease'
-        title: string
-        slug: string
-        perex?: string | null
-        releaseDate: any
-        coverImage?: {
-          __typename?: 'UploadFileEntityResponse'
-          data?: {
-            __typename?: 'UploadFileEntity'
-            id?: string | null
-            attributes?: {
-              __typename?: 'UploadFile'
-              url: string
-              width?: number | null
-              height?: number | null
-              caption?: string | null
-              alternativeText?: string | null
-              name: string
-            } | null
-          } | null
-        } | null
-        rearImage?: {
-          __typename?: 'UploadFileEntityResponse'
-          data?: {
-            __typename?: 'UploadFileEntity'
-            id?: string | null
-            attributes?: {
-              __typename?: 'UploadFile'
-              url: string
-              width?: number | null
-              height?: number | null
-              caption?: string | null
-              alternativeText?: string | null
-              name: string
-            } | null
-          } | null
-        } | null
-        files?: Array<{
-          __typename?: 'ComponentBlocksFile'
-          id: string
-          title?: string | null
-          media?: {
-            __typename?: 'UploadFileEntityResponse'
-            data?: {
-              __typename?: 'UploadFileEntity'
-              id?: string | null
-              attributes?: {
-                __typename?: 'UploadFile'
-                url: string
-                name: string
-                ext?: string | null
-                size: number
-                createdAt?: any | null
-                updatedAt?: any | null
-              } | null
-            } | null
-          } | null
-        } | null> | null
       } | null
     }>
   } | null
@@ -15187,45 +15577,42 @@ export const GeneralFragmentDoc = gql`
     }
     newsPage {
       data {
-        ...PageSlugEntity
         ...PageParentPages
       }
     }
     officialBoardPage {
       data {
-        ...PageSlugEntity
+        ...PageParentPages
       }
     }
     privacyPolicyPage {
       data {
-        ...PageSlugEntity
+        ...PageParentPages
       }
     }
     vznPage {
       data {
-        ...PageSlugEntity
+        ...PageParentPages
       }
     }
     inbaPage {
       data {
-        ...PageSlugEntity
+        ...PageParentPages
       }
     }
     inbaReleasesPage {
       data {
-        ...PageSlugEntity
+        ...PageParentPages
       }
     }
     documentsPage {
       data {
-        ...PageSlugEntity
         ...PageParentPages
       }
     }
   }
   ${HeaderLinkFragmentDoc}
   ${CommonLinkFragmentDoc}
-  ${PageSlugEntityFragmentDoc}
   ${PageParentPagesFragmentDoc}
 `
 export const AlertFragmentDoc = gql`
@@ -16340,7 +16727,7 @@ export const ArticlesDocument = gql`
 `
 export const ArticlesRssFeedDocument = gql`
   query ArticlesRssFeed($locale: I18NLocaleCode!) {
-    articles(locale: $locale, sort: "addedAt:desc") {
+    articles(locale: $locale, sort: "addedAt:desc", pagination: { limit: 20 }) {
       data {
         id
         attributes {
@@ -16571,16 +16958,6 @@ export const InbaReleasesRssFeedDocument = gql`
       }
     }
   }
-`
-export const InbaReleasesPaginatedDocument = gql`
-  query InbaReleasesPaginated($page: Int, $pageSize: Int) {
-    inbaReleases(sort: "releaseDate:desc", pagination: { page: $page, pageSize: $pageSize }) {
-      data {
-        ...InbaReleaseEntity
-      }
-    }
-  }
-  ${InbaReleaseEntityFragmentDoc}
 `
 export const PageCategoriesDocument = gql`
   query PageCategories($locale: I18NLocaleCode) {
@@ -17032,21 +17409,6 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
             ...wrappedRequestHeaders,
           }),
         'InbaReleasesRssFeed',
-        'query',
-        variables,
-      )
-    },
-    InbaReleasesPaginated(
-      variables?: InbaReleasesPaginatedQueryVariables,
-      requestHeaders?: GraphQLClientRequestHeaders,
-    ): Promise<InbaReleasesPaginatedQuery> {
-      return withWrapper(
-        (wrappedRequestHeaders) =>
-          client.request<InbaReleasesPaginatedQuery>(InbaReleasesPaginatedDocument, variables, {
-            ...requestHeaders,
-            ...wrappedRequestHeaders,
-          }),
-        'InbaReleasesPaginated',
         'query',
         variables,
       )

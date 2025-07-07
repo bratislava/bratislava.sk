@@ -143,38 +143,36 @@ fragment General on General {
   }
   newsPage {
     data {
-      ...PageSlugEntity
       ...PageParentPages
     }
   }
   officialBoardPage {
     data {
-      ...PageSlugEntity
+      ...PageParentPages
     }
   }
   privacyPolicyPage {
     data {
-      ...PageSlugEntity
+      ...PageParentPages
     }
   }
   vznPage {
     data {
-      ...PageSlugEntity
+      ...PageParentPages
     }
   }
   inbaPage {
     data {
-      ...PageSlugEntity
+      ...PageParentPages
     }
   }
   inbaReleasesPage {
     data {
-      ...PageSlugEntity
+      ...PageParentPages
     }
   }
   documentsPage {
     data {
-      ...PageSlugEntity
       ...PageParentPages
     }
   }

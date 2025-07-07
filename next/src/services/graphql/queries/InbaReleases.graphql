@@ -38,14 +38,6 @@ query InbaReleasesRssFeed {
   }
 }
 
-query InbaReleasesPaginated($page: Int, $pageSize: Int) {
-  inbaReleases(sort: "releaseDate:desc", pagination: { page: $page, pageSize: $pageSize }) {
-    data {
-      ...InbaReleaseEntity
-    }
-  }
-}
-
 fragment InbaReleaseEntity on InbaReleaseEntity {
   id
   attributes {

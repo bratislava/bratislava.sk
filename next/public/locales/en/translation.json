@@ -54,6 +54,7 @@
   "InbaArticle.publishedInThisRelease": "This article was published in the issue {{releaseTitle}} on {{releaseDate}}.",
   "InbaArticlesFilter.articleFilter": "Articles filter",
   "InbaRelease.inThisRelease": "In this issue",
+  "InbaRelease.releaseDetail": "Issue detail",
   "InbaRelease.releasedOn": "Published on {{date}}",
   "InbaRelease.toDownload": "Downloads",
   "links.searchLink": "/search",

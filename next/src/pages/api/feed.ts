@@ -9,8 +9,12 @@ const urlPrefix = {
   en: 'https://www.bratislava.sk/en/spravy',
 }
 const feedUrl = {
-  sk: 'https://www.bratislava.sk/feed',
-  en: 'https://www.bratislava.sk/feed?lang=en',
+  sk: 'https://www.bratislava.sk/api/feed',
+  en: 'https://www.bratislava.sk/api/feed?lang=en',
+}
+const description = {
+  sk: 'Najnovšie články z bratislava.sk',
+  en: 'The latest articles from bratislava.sk',
 }
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
@@ -31,7 +35,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
     const feed = new Rss({
       title: 'Bratislava.sk',
-      description: 'The latest articles from Bratislava.sk',
+      description: description[language],
       site_url: 'https://www.bratislava.sk',
       feed_url: feedUrl[language],
       language,
@@ -43,15 +47,12 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       }
 
       feed.item({
-        title: article.attributes.title ?? '',
+        title: article.attributes.title,
         description: article.attributes.perex ?? '',
         // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
         url: article.attributes.slug ? `${urlPrefix[language]}/${article.attributes.slug}` : '',
         date: article.attributes.addedAt,
-        categories: [
-          article.attributes.tag?.data?.attributes?.pageCategory?.data?.attributes?.title,
-          article.attributes.tag?.data?.attributes?.title,
-        ].filter(isDefined),
+        categories: [article.attributes.tag?.data?.attributes?.title].filter(isDefined),
         enclosure: article.attributes.coverMedia?.data?.attributes
           ? {
               url: article.attributes.coverMedia.data.attributes.url,

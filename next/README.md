@@ -1,6 +1,6 @@
 # Bratislava.sk
 
-This readme should get you up & running. For more detailed documentation, check the /docs file in the root of the repo.
+This readme should get you up & running.
 
 ## First-time setup
 
@@ -30,11 +30,12 @@ You can also setup local meilisearch instance using `docker compose` - see `dock
 
 ## Generate GraphQL
 
-Strapi V4 does not export schema.graphql by default - instead, you'll need a running server to generate types from graphql endpoint. Otherwise the process is the same
+To update queries or mutations, modify `*.graphql` files in `/services/graphql/queries` directory.
+The Schema is exported but the codegen is set up to run against running Strapi instance to generate types from
+graphql endpoint, simply run:
 
 ```bash
-# to update queries or mutations, modify *.graphql files in /graphql/queries directory
-# have the strapi server running locally on port 1337 and run the following
+# expects strapi running locally on port 1337
 npm run gen
 ```
 

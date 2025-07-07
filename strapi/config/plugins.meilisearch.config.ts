@@ -32,6 +32,7 @@ const searchIndexSettings = {
     'document.title',
     'document.description',
     'inba-article.title',
+    'inba-release.title',
     'regulation.regNumber',
     'regulation.titleText',
     'regulation.fullTitle',
@@ -54,6 +55,8 @@ const searchIndexSettings = {
     'document.updatedAtTimestamp',
     'inba-article.title',
     'inba-article.publishedAtTimestamp',
+    'inba-release.title',
+    'inba-release.releaseDate', // releaseDate is not datetime but only date (e.g. 2025-12-07), so we can sort by it directly instead of creating timestamp
     'vzn.validFrom',
     'vzn.publishedAt', // TODO is it needed?
     'vzn.publishedAtTimestamp',
@@ -135,6 +138,17 @@ const config = {
         // Meilisearch doesn't support filtering dates as ISO strings, therefore we convert it to UNIX timestamp to
         // use (number) filters.
         publishedAtTimestamp: entry.publishedAt ? new Date(entry.publishedAt).getTime() : undefined,
+      }),
+  },
+  'inba-release': {
+    indexName: 'search_index',
+    entriesQuery: {
+      locale: 'all',
+    },
+    settings: searchIndexSettings,
+    transformEntry: ({ entry }) =>
+      wrapSearchIndexEntry('inba-release', {
+        ...entry,
       }),
   },
   regulation: {
