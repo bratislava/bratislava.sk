@@ -8888,6 +8888,37 @@ export type InbaReleaseBySlugQuery = {
             } | null
           } | null
         } | null> | null
+        inbaArticles?: {
+          __typename?: 'InbaArticleRelationResponseCollection'
+          data: Array<{
+            __typename?: 'InbaArticleEntity'
+            id?: string | null
+            attributes?: {
+              __typename?: 'InbaArticle'
+              perex?: string | null
+              publishedAt?: any | null
+              slug: string
+              title: string
+              locale?: string | null
+              coverImage?: {
+                __typename?: 'UploadFileEntityResponse'
+                data?: {
+                  __typename?: 'UploadFileEntity'
+                  id?: string | null
+                  attributes?: { __typename?: 'UploadFile'; url: string } | null
+                } | null
+              } | null
+              inbaTag?: {
+                __typename?: 'InbaTagEntityResponse'
+                data?: {
+                  __typename?: 'InbaTagEntity'
+                  id?: string | null
+                  attributes?: { __typename?: 'InbaTag'; title: string } | null
+                } | null
+              } | null
+            } | null
+          }>
+        } | null
       } | null
     }>
   } | null
@@ -8996,6 +9027,37 @@ export type InbaReleaseEntityFragment = {
         } | null
       } | null
     } | null> | null
+    inbaArticles?: {
+      __typename?: 'InbaArticleRelationResponseCollection'
+      data: Array<{
+        __typename?: 'InbaArticleEntity'
+        id?: string | null
+        attributes?: {
+          __typename?: 'InbaArticle'
+          perex?: string | null
+          publishedAt?: any | null
+          slug: string
+          title: string
+          locale?: string | null
+          coverImage?: {
+            __typename?: 'UploadFileEntityResponse'
+            data?: {
+              __typename?: 'UploadFileEntity'
+              id?: string | null
+              attributes?: { __typename?: 'UploadFile'; url: string } | null
+            } | null
+          } | null
+          inbaTag?: {
+            __typename?: 'InbaTagEntityResponse'
+            data?: {
+              __typename?: 'InbaTagEntity'
+              id?: string | null
+              attributes?: { __typename?: 'InbaTag'; title: string } | null
+            } | null
+          } | null
+        } | null
+      }>
+    } | null
   } | null
 }
 
@@ -15852,10 +15914,16 @@ export const InbaReleaseEntityFragmentDoc = gql`
           }
         }
       }
+      inbaArticles {
+        data {
+          ...InbaArticleCardEntity
+        }
+      }
     }
   }
   ${UploadImageEntityFragmentDoc}
   ${UploadFileEntityFragmentDoc}
+  ${InbaArticleCardEntityFragmentDoc}
 `
 export const DividerSectionFragmentDoc = gql`
   fragment DividerSection on ComponentSectionsDivider {
