@@ -57,7 +57,7 @@ export const inbaArticlesFetcher = (filters: InbaArticlesFilters, locale: string
               coverImage: {
                 data: {
                   attributes: {
-                    url: inbaArticle.coverImage?.url,
+                    url: inbaArticle.coverImage.url,
                   },
                 },
               },
@@ -66,7 +66,7 @@ export const inbaArticlesFetcher = (filters: InbaArticlesFilters, locale: string
               inbaTag: {
                 data: {
                   attributes: {
-                    title: inbaArticle.inbaTag?.title,
+                    title: inbaArticle.inbaTag.title,
                   },
                 },
               },
