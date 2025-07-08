@@ -64,5 +64,10 @@ fragment InbaReleaseEntity on InbaReleaseEntity {
         }
       }
     }
+    inbaArticles {
+      data {
+        ...InbaArticleCardEntity
+      }
+    }
   }
 }
