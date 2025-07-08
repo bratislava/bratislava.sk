@@ -83,7 +83,7 @@ const InbaReleasesSection = ({ section }: Props) => {
                   } = inbaRelease.attributes
 
                   return (
-                    <li key={slug}>
+                    <li key={slug} className="*:h-full">
                       <InbaReleaseCard
                         date={formatDate(releaseDate)}
                         title={inbaReleaseTitle}

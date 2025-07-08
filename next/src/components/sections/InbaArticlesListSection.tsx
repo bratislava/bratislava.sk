@@ -136,14 +136,13 @@ const InbaArticlesListSection = ({ section }: Props) => {
             isLoading={isFetching}
           />
 
-          <div className="grid gap-8 lg:grid-cols-3">
+          <div className="grid gap-8 lg:grid-cols-2">
             <SelectField
               value={selectOptionsMap.get(selection) ?? defaultSelectionOption}
               options={selectOptions}
               onChange={handleSelectChange}
               placeholder={t('InbaArticlesListSection.selectionOptions.aria')}
               aria-label={t('InbaArticlesListSection.selectionOptions.aria')}
-              className="max-w-100"
             />
           </div>
         </div>
@@ -153,11 +152,11 @@ const InbaArticlesListSection = ({ section }: Props) => {
         ) : isPending ? (
           <LoadingSpinner />
         ) : (
-          <div>
+          <div className="flex flex-col gap-12">
             <ul className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
               {data?.hits.map((card) => {
                 return card.attributes ? (
-                  <li key={card.attributes.slug}>
+                  <li key={card.attributes.slug} className="*:h-full">
                     <ArticleCard {...transformInbaArticleProps(card.attributes)} />
                   </li>
                 ) : null
