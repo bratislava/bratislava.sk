@@ -3,6 +3,16 @@ import { dehydrate, QueryClient } from '@tanstack/react-query'
 import { PageEntityFragment } from '@/src/services/graphql'
 import { client } from '@/src/services/graphql/gql'
 import {
+  getInbaArticlesQueryKey,
+  inbaArticlesDefaultFilters,
+  inbaArticlesFetcher,
+} from '@/src/services/meili/fetchers/inbaArticlesFetcher'
+import {
+  getInbaReleasesQueryKey,
+  inbaReleasesDefaultFilters,
+  inbaReleasesFetcher,
+} from '@/src/services/meili/fetchers/inbaReleasesFetcher'
+import {
   getRelatedArticlesQueryKey,
   relatedArticlesFetcher,
 } from '@/src/services/meili/fetchers/relatedArticlesFetcher'
@@ -40,6 +50,17 @@ export const prefetchPageSections = async (page: PageEntityFragment, locale: str
     await queryClient.prefetchQuery({
       queryKey: ['InbaTags', locale],
       queryFn: () => client.InbaTags({ locale }),
+    })
+    await queryClient.prefetchQuery({
+      queryKey: getInbaArticlesQueryKey(inbaArticlesDefaultFilters, locale),
+      queryFn: () => inbaArticlesFetcher(inbaArticlesDefaultFilters, locale),
+    })
+  }
+
+  if (sectionTypes.includes('ComponentSectionsInbaReleases')) {
+    await queryClient.prefetchQuery({
+      queryKey: getInbaReleasesQueryKey(inbaReleasesDefaultFilters),
+      queryFn: () => inbaReleasesFetcher(inbaReleasesDefaultFilters),
     })
   }
 
