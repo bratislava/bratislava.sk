@@ -1,11 +1,10 @@
-import { Typography } from '@bratislava/component-library'
 import { keepPreviousData, useQuery } from '@tanstack/react-query'
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import ArticleCard from '@/src/components/cards/ArticleCard'
 import { transformArticleProps } from '@/src/components/cards/transformArticleProps'
-import ArticlesFilter from '@/src/components/common/ArticlesFilter/ArticlesFilter'
 import Pagination from '@/src/components/common/Pagination/Pagination'
+import SectionHeader from '@/src/components/layouts/SectionHeader'
 import { ArticlesSectionFragment } from '@/src/services/graphql'
 import { client } from '@/src/services/graphql/gql'
 import {
@@ -13,6 +12,7 @@ import {
   articlesFetcher,
   getArticlesQueryKey,
 } from '@/src/services/meili/fetchers/articlesFetcher'
+import { isDefined } from '@/src/utils/isDefined'
 import { useLocale } from '@/src/utils/useLocale'
 import { useRoutePreservedState } from '@/src/utils/useRoutePreservedState'
 
@@ -20,25 +20,17 @@ type Props = {
   section: ArticlesSectionFragment
 }
 
-const ArticlesAllSection = ({ section }: Props) => {
+/**
+ * TODO Figma link
+ */
+
+const ArticlesByCategory = ({ section }: Props) => {
   const locale = useLocale()
 
-  const { title, text } = section
+  const { title, text, category } = section
 
   const [filters, setFilters] = useRoutePreservedState({
     ...articlesDefaultFilters,
-  })
-
-  const { data } = useQuery({
-    queryKey: getArticlesQueryKey(filters, locale),
-    queryFn: () => articlesFetcher(filters, locale),
-    placeholderData: keepPreviousData,
-  })
-
-  const { data: pageCategoriesData } = useQuery({
-    queryKey: ['PageCategories', locale],
-    queryFn: () => client.PageCategories({ locale }),
-    staleTime: Infinity,
   })
 
   const { data: tagsData } = useQuery({
@@ -47,27 +39,34 @@ const ArticlesAllSection = ({ section }: Props) => {
     staleTime: Infinity,
   })
 
+  const tagIds =
+    tagsData?.tags?.data
+      .filter((tag) => {
+        return tag.attributes?.pageCategory?.data?.id === category?.data?.id
+      })
+      .map((tag) => tag.id ?? '')
+      .filter(isDefined) ?? []
+
+  useEffect(() => {
+    setFilters({ ...filters, tagIds })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [tagsData])
+
+  // TODO prefetch section
+  const { data } = useQuery({
+    queryKey: getArticlesQueryKey(filters, locale),
+    queryFn: () => articlesFetcher(filters, locale),
+    placeholderData: keepPreviousData,
+    enabled: filters.tagIds.length > 0,
+  })
+
   const handlePageChange = (page: number) => {
     setFilters({ ...filters, page })
   }
 
-  const handleTagsChange = (tags: string[]) => {
-    setFilters({ ...filters, tagIds: tags })
-  }
-
   return (
     <div className="flex flex-col gap-8">
-      <ArticlesFilter
-        pageCategories={pageCategoriesData?.pageCategories?.data ?? []}
-        tags={tagsData?.tags?.data ?? []}
-        onTagChange={handleTagsChange}
-      />
-      {title || text ? (
-        <div className="flex flex-col gap-2">
-          {title && <Typography variant="h2">{title}</Typography>}
-          {text && <Typography variant="p-default">{text}</Typography>}
-        </div>
-      ) : null}
+      <SectionHeader title={title} text={text} />
       <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
         {data?.hits.map((card) => {
           return card.attributes ? (
@@ -75,7 +74,6 @@ const ArticlesAllSection = ({ section }: Props) => {
           ) : null
         })}
       </div>
-
       {data?.estimatedTotalHits ? (
         <Pagination
           key={filters.search}
@@ -88,4 +86,4 @@ const ArticlesAllSection = ({ section }: Props) => {
   )
 }
 
-export default ArticlesAllSection
+export default ArticlesByCategory

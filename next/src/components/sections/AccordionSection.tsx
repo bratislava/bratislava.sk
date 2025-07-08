@@ -1,11 +1,11 @@
-import { Typography } from '@bratislava/component-library'
-
 import Accordion from '@/src/components/common/Accordion/Accordion'
 import Button from '@/src/components/common/Button/Button'
 import FileList from '@/src/components/common/FileList/FileList'
 import Institution from '@/src/components/common/Institution_Deprecated/Institution_Deprecated'
 import NarrowText from '@/src/components/common/NarrowText/NarrowText'
 import Markdown from '@/src/components/formatting/Markdown/Markdown'
+import SectionContainer from '@/src/components/layouts/SectionContainer'
+import SectionHeader from '@/src/components/layouts/SectionHeader'
 import { AccordionSectionFragment } from '@/src/services/graphql'
 import { getLinkProps } from '@/src/utils/getLinkProps'
 import { isDefined } from '@/src/utils/isDefined'
@@ -16,14 +16,19 @@ type AccordionSectionProps = {
   section: AccordionSectionFragment
 }
 
+/**
+ * TODO Figma link
+ */
+
 const AccordionSection = ({ section }: AccordionSectionProps) => {
   return (
-    <>
-      {section.title && (
-        <Typography variant="h2" className="flex justify-center pb-14">
-          {section.title}
-        </Typography>
-      )}
+    <SectionContainer>
+      <SectionHeader
+        title={section.title}
+        isCentered
+        // TODO Correct spacing between SectionHeader and remaining content
+        className="pb-6 lg:pb-8"
+      />
       <div className="flex flex-col gap-4">
         {groupByCategory(section.institutions?.filter(isPresent) ?? []).map(
           (institution, index) => (
@@ -102,7 +107,7 @@ const AccordionSection = ({ section }: AccordionSectionProps) => {
           </Accordion>
         ))}
       </div>
-    </>
+    </SectionContainer>
   )
 }
 

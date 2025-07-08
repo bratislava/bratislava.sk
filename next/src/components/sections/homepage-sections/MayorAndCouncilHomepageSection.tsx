@@ -1,7 +1,7 @@
-import { Typography } from '@bratislava/component-library'
 import React from 'react'
 
 import MayorAndCouncilCard from '@/src/components/cards/MayorAndCouncilCard'
+import SectionHeader from '@/src/components/layouts/SectionHeader'
 import { useHomepageContext } from '@/src/components/providers/HomepageContextProvider'
 import cn from '@/src/utils/cn'
 import { getLinkProps } from '@/src/utils/getLinkProps'
@@ -23,12 +23,7 @@ const MayorAndCouncilHomepageSection = ({ className }: Props) => {
 
   return (
     <div className={cn('flex flex-col gap-6', className)}>
-      {title || text ? (
-        <div className="flex flex-col gap-2 text-center">
-          {title && <Typography variant="h2">{title}</Typography>}
-          {text && <Typography variant="p-default">{text}</Typography>}
-        </div>
-      ) : null}
+      <SectionHeader title={title} text={text} isCentered />
       <div className="flex w-full flex-col gap-4 lg:flex-row lg:gap-8">
         {mayorLinkLabel && (
           <MayorAndCouncilCard

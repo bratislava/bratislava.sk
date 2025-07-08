@@ -1,6 +1,7 @@
 import React from 'react'
 
 import Contacts from '@/src/components/common/Contacts/Contacts'
+import SectionContainer from '@/src/components/layouts/SectionContainer'
 import { ContactsSectionFragment } from '@/src/services/graphql'
 
 type ContactsSectionProps = {
@@ -8,7 +9,11 @@ type ContactsSectionProps = {
 }
 
 const ContactsSection = ({ section }: ContactsSectionProps) => {
-  return <Contacts section={section} />
+  return (
+    <SectionContainer>
+      <Contacts section={section} />
+    </SectionContainer>
+  )
 }
 
 export default ContactsSection

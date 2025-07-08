@@ -11,6 +11,8 @@ import TootootEventsSection from '@/src/components/sections/TootootEventsSection
 const HomepageContent = () => {
   const { homepage } = useHomepageContext()
 
+  const { eventsSection } = homepage?.attributes ?? {}
+
   return (
     <>
       <WelcomeHomepageSection />
@@ -21,12 +23,12 @@ const HomepageContent = () => {
 
       <Waves wavePosition="bottom" waveColor="var(--color-grey-50)" />
 
-      {homepage?.attributes?.eventsSection ? (
-        <TootootEventsSection section={homepage.attributes.eventsSection} />
-      ) : null}
+      {eventsSection ? <TootootEventsSection section={eventsSection} /> : null}
 
       <Waves waveColor="var(--color-category-200)" wavePosition="top" />
+
       <TopServicesHomepageSection />
+
       <Waves waveColor="var(--color-category-200)" wavePosition="bottom" />
 
       <InbaHomepageSection />

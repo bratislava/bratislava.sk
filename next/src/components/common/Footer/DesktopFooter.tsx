@@ -11,7 +11,7 @@ import {
   FooterLanguageSwitcher,
   FooterSocialLinks,
 } from '@/src/components/common/Footer/FooterShared'
-import SectionContainer from '@/src/components/common/SectionContainer/SectionContainer'
+import SectionContainer from '@/src/components/layouts/SectionContainer'
 import { useGeneralContext } from '@/src/components/providers/GeneralContextProvider'
 import { isDefined } from '@/src/utils/isDefined'
 

@@ -4,6 +4,7 @@ import Button from '@/src/components/common/Button/Button'
 import ImagePlaceholder from '@/src/components/common/Image/ImagePlaceholder'
 import StrapiImage from '@/src/components/common/Image/StrapiImage'
 import Markdown from '@/src/components/formatting/Markdown/Markdown'
+import SectionContainer from '@/src/components/layouts/SectionContainer'
 import {
   Enum_Componentsectionstextwithimage_Imageaspectratio,
   TextWithImageSectionFragment,
@@ -67,20 +68,22 @@ const TextWithImageSection = ({ section }: TextWithImageSectionProps) => {
   )
 
   return (
-    <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:gap-[8.5rem]">
-      {imagePosition === 'left' ? (
-        <>
-          {ImageContent}
-          {TextContent}
-        </>
-      ) : null}
-      {imagePosition === 'right' ? (
-        <>
-          {TextContent}
-          {ImageContent}
-        </>
-      ) : null}
-    </div>
+    <SectionContainer>
+      <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:gap-[8.5rem]">
+        {imagePosition === 'left' ? (
+          <>
+            {ImageContent}
+            {TextContent}
+          </>
+        ) : null}
+        {imagePosition === 'right' ? (
+          <>
+            {TextContent}
+            {ImageContent}
+          </>
+        ) : null}
+      </div>
+    </SectionContainer>
   )
 }
 

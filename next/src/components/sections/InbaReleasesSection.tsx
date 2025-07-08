@@ -1,9 +1,10 @@
-import { Typography } from '@bratislava/component-library'
 import { keepPreviousData, useQuery } from '@tanstack/react-query'
 import React, { useState } from 'react'
 
 import InbaReleaseCard from '@/src/components/cards/InbaReleaseCard'
 import Pagination from '@/src/components/common/Pagination/Pagination'
+import SectionContainer from '@/src/components/layouts/SectionContainer'
+import SectionHeader from '@/src/components/layouts/SectionHeader'
 import { InbaReleasesSectionFragment } from '@/src/services/graphql'
 import {
   getInbaReleasesQueryKey,
@@ -13,6 +14,10 @@ import {
 import { formatDate } from '@/src/utils/formatDate'
 
 type Props = { section: InbaReleasesSectionFragment }
+
+/**
+ * TODO Figma link
+ */
 
 const InbaReleasesSection = ({ section }: Props) => {
   const { title, text } = section
@@ -30,47 +35,44 @@ const InbaReleasesSection = ({ section }: Props) => {
   }
 
   return (
-    <div className="flex flex-col gap-8">
-      {title || text ? (
-        <div className="flex flex-col gap-2">
-          {title && <Typography variant="h2">{title}</Typography>}
-          {text && <Typography variant="p-default">{text}</Typography>}
+    <SectionContainer>
+      <div className="flex flex-col gap-8">
+        <SectionHeader title={title} text={text} />
+
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+          {data?.hits.map((inbaRelease) => {
+            const {
+              title: inbaReleaseTitle,
+              slug,
+              coverImage,
+              releaseDate,
+              perex,
+            } = inbaRelease.attributes
+
+            return (
+              <InbaReleaseCard
+                key={slug}
+                date={formatDate(releaseDate)}
+                title={inbaReleaseTitle}
+                text={perex}
+                linkHref={`/inba/vydania/${slug}`}
+                imgSrc={coverImage?.data?.attributes?.url}
+                // imgSizes={imageSizes}
+              />
+            )
+          })}
         </div>
-      ) : null}
 
-      <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-        {data?.hits.map((inbaRelease) => {
-          const {
-            title: inbaReleaseTitle,
-            slug,
-            coverImage,
-            releaseDate,
-            perex,
-          } = inbaRelease.attributes
-
-          return (
-            <InbaReleaseCard
-              key={slug}
-              date={formatDate(releaseDate)}
-              title={inbaReleaseTitle}
-              text={perex}
-              linkHref={`/inba/vydania/${slug}`}
-              imgSrc={coverImage?.data?.attributes?.url}
-              // imgSizes={imageSizes}
-            />
-          )
-        })}
+        {data?.estimatedTotalHits ? (
+          <Pagination
+            key={filters.search}
+            totalCount={Math.ceil(data.estimatedTotalHits / filters.pageSize)}
+            currentPage={filters.page}
+            onPageChange={handlePageChange}
+          />
+        ) : null}
       </div>
-
-      {data?.estimatedTotalHits ? (
-        <Pagination
-          key={filters.search}
-          totalCount={Math.ceil(data.estimatedTotalHits / filters.pageSize)}
-          currentPage={filters.page}
-          onPageChange={handlePageChange}
-        />
-      ) : null}
-    </div>
+    </SectionContainer>
   )
 }
 

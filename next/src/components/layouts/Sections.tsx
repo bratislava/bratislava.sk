@@ -1,9 +1,7 @@
 import * as React from 'react'
 
-import SectionContainer from '@/src/components/common/SectionContainer/SectionContainer'
 import AccordionSection from '@/src/components/sections/AccordionSection'
-import ArticlesSection from '@/src/components/sections/ArticlesListSection/ArticlesSection'
-import InbaArticlesList from '@/src/components/sections/ArticlesListSection/InbaArticlesList'
+import ArticlesSection from '@/src/components/sections/ArticlesSection/ArticlesSection'
 import BannerSection from '@/src/components/sections/BannerSection'
 import CalculatorSection from '@/src/components/sections/CalculatorSection_Deprecated/CalculatorSection_Deprecated'
 import ColumnedTextSection from '@/src/components/sections/ColumnedTextSection'
@@ -11,12 +9,13 @@ import ColumnsSection from '@/src/components/sections/ColumnsSection'
 import ComparisonSection from '@/src/components/sections/ComparisonSection'
 import ContactsSection from '@/src/components/sections/ContactsSection'
 import DividerSection from '@/src/components/sections/DividerSection'
-import DocumentsSection from '@/src/components/sections/DocumentsSection'
+import DocumentsSection from '@/src/components/sections/DocumentsSection/DocumentsSection'
 import FaqCategoriesSection from '@/src/components/sections/FaqCategoriesSection'
 import FaqsSection from '@/src/components/sections/FaqsSection'
 import FileListSection from '@/src/components/sections/FileListSection'
 import GallerySection from '@/src/components/sections/GallerySection'
 import IframeSection from '@/src/components/sections/IframeSection'
+import InbaArticlesListSection from '@/src/components/sections/InbaArticlesListSection'
 import InbaReleasesSection from '@/src/components/sections/InbaReleasesSection'
 import LinksSection from '@/src/components/sections/LinksSection'
 import NarrowTextSection from '@/src/components/sections/NarrowTextSection'
@@ -33,7 +32,14 @@ import TootootEventsSection from '@/src/components/sections/TootootEventsSection
 import VideosSection from '@/src/components/sections/VideosSection'
 import { SectionsFragment } from '@/src/services/graphql'
 
-const SectionContent = ({ section }: { section: SectionsFragment }) => {
+type Section = SectionsFragment
+
+type SectionsProps = {
+  sections: Section[]
+  className?: string
+}
+
+const SectionContent = ({ section }: { section: Section }) => {
   // eslint-disable-next-line sonarjs/max-switch-cases
   switch (section.__typename) {
     case 'ComponentSectionsNarrowText':
@@ -73,7 +79,7 @@ const SectionContent = ({ section }: { section: SectionsFragment }) => {
       return <ArticlesSection section={section} />
 
     case 'ComponentSectionsInbaArticlesList':
-      return <InbaArticlesList section={section} />
+      return <InbaArticlesListSection section={section} />
 
     case 'ComponentSectionsInbaReleases':
       return <InbaReleasesSection section={section} />
@@ -123,33 +129,22 @@ const SectionContent = ({ section }: { section: SectionsFragment }) => {
     case 'ComponentSectionsDocuments':
       return <DocumentsSection section={section} />
 
+    case 'ComponentSectionsNumericalList':
+      return <NumericalListSection section={section} />
+
     default:
       return null
   }
 }
 
-const Section = ({ section }: { section: SectionsFragment | null }) => {
-  if (!section) return null
-
-  if (section.__typename === 'ComponentSectionsNumericalList') {
-    return <NumericalListSection section={section} />
-  }
-
+const Sections = ({ sections, className }: SectionsProps) => {
   return (
-    <SectionContainer className="pt-10 md:pt-18">
-      <SectionContent section={section} />
-    </SectionContainer>
-  )
-}
-
-const Sections = ({ sections }: { sections: (SectionsFragment | null)[] }) => {
-  return (
-    <>
+    <div className={className}>
       {sections.map((section, index) => (
         // eslint-disable-next-line react/no-array-index-key
-        <Section key={index} section={section} />
+        <SectionContent key={index} section={section} />
       ))}
-    </>
+    </div>
   )
 }
 

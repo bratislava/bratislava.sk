@@ -46,6 +46,10 @@ type Props =
       searchOption: Exclude<SearchOption['id'], 'allResults'>
     }
 
+/**
+ * TODO Figma link
+ */
+
 const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
   const { t } = useTranslation()
 
