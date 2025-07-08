@@ -1,3 +1,4 @@
+import { Typography } from '@bratislava/component-library'
 import { keepPreviousData, useQuery } from '@tanstack/react-query'
 import { useTranslation } from 'next-i18next'
 import React, { useEffect, useRef, useState } from 'react'
@@ -5,6 +6,7 @@ import { useDebounceValue } from 'usehooks-ts'
 
 import ArticleCard from '@/src/components/cards/ArticleCard'
 import { transformInbaArticleProps } from '@/src/components/cards/transformInbaArticleProps'
+import LoadingSpinner from '@/src/components/common/LoadingSpinner/LoadingSpinner'
 import Pagination from '@/src/components/common/Pagination/Pagination'
 import SelectField, { SelectOption } from '@/src/components/common/Select/Select'
 import SectionContainer from '@/src/components/layouts/SectionContainer'
@@ -108,7 +110,7 @@ const InbaArticlesListSection = ({ section }: Props) => {
   }, [selection, setFilters])
 
   // TODO prefetch section
-  const { data, isFetching } = useQuery({
+  const { data, isPending, isError, error, isFetching } = useQuery({
     queryKey: getInbaArticlesQueryKey(filters, locale),
     queryFn: () => inbaArticlesFetcher(filters, locale),
     placeholderData: keepPreviousData,
@@ -146,25 +148,34 @@ const InbaArticlesListSection = ({ section }: Props) => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {data?.hits.map((card) => {
-            return card.attributes ? (
-              <ArticleCard
-                key={card.attributes.slug}
-                {...transformInbaArticleProps(card.attributes)}
-              />
-            ) : null
-          })}
-        </div>
+        {isError ? (
+          <Typography variant="p-default">{error.message}</Typography>
+        ) : isPending ? (
+          <LoadingSpinner />
+        ) : (
+          <div>
+            <ul className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+              {data?.hits.map((card) => {
+                return card.attributes ? (
+                  <li key={card.attributes.slug}>
+                    <ArticleCard {...transformInbaArticleProps(card.attributes)} />
+                  </li>
+                ) : null
+              })}
+            </ul>
 
-        {data?.estimatedTotalHits ? (
-          <Pagination
-            key={filters.search}
-            totalCount={Math.ceil(data.estimatedTotalHits / filters.pageSize)}
-            currentPage={filters.page}
-            onPageChange={handlePageChange}
-          />
-        ) : null}
+            {data?.estimatedTotalHits ? (
+              <Pagination
+                key={filters.search}
+                totalCount={Math.ceil(data.estimatedTotalHits / filters.pageSize)}
+                currentPage={filters.page}
+                onPageChange={handlePageChange}
+              />
+            ) : (
+              <Typography>{t('SearchPage.noResults')}</Typography>
+            )}
+          </div>
+        )}
       </div>
     </SectionContainer>
   )
