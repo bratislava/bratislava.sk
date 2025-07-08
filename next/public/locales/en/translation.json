@@ -53,6 +53,8 @@
   "HomepageTabs.tabs.RoadClosures": "Road closures",
   "InbaArticle.publishedInThisRelease": "This article was published in the issue {{releaseTitle}} on {{releaseDate}}.",
   "InbaArticlesFilter.articleFilter": "Articles filter",
+  "InbaArticlesListSection.selectionOptions.allTags": "All articles",
+  "InbaArticlesListSection.selectionOptions.aria": "Tags",
   "InbaRelease.articlesInThisRelease": "Articles in this issue",
   "InbaRelease.inThisRelease": "In this issue",
   "InbaRelease.releaseDetail": "Issue detail",

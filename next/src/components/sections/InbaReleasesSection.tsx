@@ -83,7 +83,7 @@ const InbaReleasesSection = ({ section }: Props) => {
                   } = inbaRelease.attributes
 
                   return (
-                    <li key={slug}>
+                    <li key={slug} className="*:h-full">
                       <InbaReleaseCard
                         date={formatDate(releaseDate)}
                         title={inbaReleaseTitle}
@@ -98,7 +98,7 @@ const InbaReleasesSection = ({ section }: Props) => {
               </ul>
             ) : null}
 
-            {data?.estimatedTotalHits ? (
+            {data.estimatedTotalHits ? (
               <Pagination
                 key={filters.search}
                 totalCount={Math.ceil(data.estimatedTotalHits / filters.pageSize)}

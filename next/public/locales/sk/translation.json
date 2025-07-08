@@ -57,6 +57,8 @@
   "HomepageTabs.tabs.RoadClosures": "Rozkopávky",
   "InbaArticle.publishedInThisRelease": "Publikované v čísle {{releaseTitle}}, ktoré vyšlo {{releaseDate}}.",
   "InbaArticlesFilter.articleFilter": "Filter článkov",
+  "InbaArticlesListSection.selectionOptions.allTags": "Všetky články",
+  "InbaArticlesListSection.selectionOptions.aria": "Tagy",
   "InbaRelease.articlesInThisRelease": "Články v tomto čísle",
   "InbaRelease.inThisRelease": "V tomto čísle nájdete",
   "InbaRelease.releaseDetail": "Detail čísla",
