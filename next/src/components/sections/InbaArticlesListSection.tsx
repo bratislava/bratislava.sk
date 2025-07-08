@@ -109,7 +109,6 @@ const InbaArticlesListSection = ({ section }: Props) => {
     }))
   }, [selection, setFilters])
 
-  // TODO prefetch section
   const { data, isPending, isError, error, isFetching } = useQuery({
     queryKey: getInbaArticlesQueryKey(filters, locale),
     queryFn: () => inbaArticlesFetcher(filters, locale),
@@ -154,7 +153,7 @@ const InbaArticlesListSection = ({ section }: Props) => {
         ) : (
           <div className="flex flex-col gap-12">
             <ul className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-              {data?.hits.map((card) => {
+              {data.hits.map((card) => {
                 return card.attributes ? (
                   <li key={card.attributes.slug} className="*:h-full">
                     <ArticleCard {...transformInbaArticleProps(card.attributes)} />
@@ -163,7 +162,7 @@ const InbaArticlesListSection = ({ section }: Props) => {
               })}
             </ul>
 
-            {data?.estimatedTotalHits ? (
+            {data.estimatedTotalHits ? (
               <Pagination
                 key={filters.search}
                 totalCount={Math.ceil(data.estimatedTotalHits / filters.pageSize)}

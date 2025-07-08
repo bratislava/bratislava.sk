@@ -98,7 +98,7 @@ const InbaReleasesSection = ({ section }: Props) => {
               </ul>
             ) : null}
 
-            {data?.estimatedTotalHits ? (
+            {data.estimatedTotalHits ? (
               <Pagination
                 key={filters.search}
                 totalCount={Math.ceil(data.estimatedTotalHits / filters.pageSize)}
