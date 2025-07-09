@@ -12,9 +12,9 @@ const conditions = [
     // The user object passed to handler is not typed unfortunately
     // See more: https://docs-v4.strapi.io/dev-docs/configurations
     handler: async (user: any) => {
-      const entitiesWithStarzAdminGroup = await strapi.entityService.findMany(
-        user.permission.subject as PermissionSubject,
-        {
+      const entitiesWithStarzAdminGroup = await strapi
+        .documents(user.permission.subject as PermissionSubject)
+        .findMany({
           fields: ['id'],
           filters: {
             adminGroups: {
@@ -22,8 +22,7 @@ const conditions = [
             },
           },
           populate: ['adminGroups'],
-        }
-      )
+        })
 
       const entityIds = entitiesWithStarzAdminGroup?.map((entity: any) => entity.id) ?? []
 
