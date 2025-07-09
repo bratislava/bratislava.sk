@@ -1,7 +1,5 @@
 'use strict'
 
-import { Strapi } from '@strapi/strapi'
-
 type PermissionSubject = 'api::page.page' | 'api::article.article'
 
 const conditions = [
@@ -82,7 +80,7 @@ export default {
    * This gives you an opportunity to set up your data model,
    * run jobs, or perform some special logic.
    */
-  async bootstrap({ strapi }: { strapi: Strapi }) {
+  async bootstrap({ strapi }) {
     console.log('Bootstrap function started')
 
     // create Revalidate webhook according to this suggestion https://github.com/strapi/strapi/pull/20487#issuecomment-2482527848
