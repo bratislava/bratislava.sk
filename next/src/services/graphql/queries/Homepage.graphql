@@ -1,61 +1,51 @@
-fragment HomepageEntity on HomepageEntity {
-  id
-  attributes {
-    updatedAt
-    createdAt
-    metaTitle
-    metaDescription
-    welcomeHeadline
-    welcomeMedia {
-      data {
-        ...UploadImageSrcEntity
-      }
-    }
-    highlights {
-      title
-      text
-      cards {
-        ...HomepageHighlightsItem
-      }
-    }
-    tabs {
-      ...HomepageTabs
-    }
-    mayorAndCouncil {
-      ...HomepageMayorAndCouncilSection
-    }
-    eventsSection {
-      ...TootootEventsSection
-    }
-    topServices {
-      title
-      services {
-        ...TopServicesItem
-      }
-    }
-    inba {
-      ...HomepageInba
-    }
-    # We use direct fields instead of a section to be able to have non-localized url and front/rear images
-    inbaFrontImage {
-      data {
-        ...UploadImageSrcEntity
-      }
-    }
-    inbaRearImage {
-      data {
-        ...UploadImageSrcEntity
-      }
-    }
-    inbaUrl
+fragment HomepageEntity on Homepage {
+  documentId
+  updatedAt
+  createdAt
+  metaTitle
+  metaDescription
+  welcomeHeadline
+  welcomeMedia {
+    ...UploadImageSrcEntity
   }
+  highlights {
+    title
+    text
+    cards {
+      ...HomepageHighlightsItem
+    }
+  }
+  tabs {
+    ...HomepageTabs
+  }
+  mayorAndCouncil {
+    ...HomepageMayorAndCouncilSection
+  }
+  eventsSection {
+    ...TootootEventsSection
+  }
+  topServices {
+    title
+    services {
+      ...TopServicesItem
+    }
+  }
+  inba {
+    ...HomepageInba
+  }
+  # We use direct fields instead of a section to be able to have non-localized url and front/rear images
+  inbaFrontImage {
+    ...UploadImageSrcEntity
+  }
+  inbaRearImage {
+    ...UploadImageSrcEntity
+  }
+  inbaUrl
 }
 
 query Homepage($locale: I18NLocaleCode!) {
   homepage(locale: $locale) {
-    data {
-      ...HomepageEntity
-    }
+    ...HomepageEntity
   }
 }
 
@@ -65,22 +55,16 @@ fragment HomepageHighlightsItem on ComponentBlocksHomepageHighlightsItem {
     ...CommonLink
   }
   image {
-    data {
-      ...UploadImageSrcEntity
-    }
+    ...UploadImageSrcEntity
   }
 }
 
 fragment HomepageTabs on ComponentSectionsHomepageTabs {
   leftArticle {
-    data {
-      ...ArticleCardEntity
-    }
+    ...ArticleCardEntity
   }
   rightArticle {
-    data {
-      ...ArticleCardEntity
-    }
+    ...ArticleCardEntity
   }
   newsPageLink {
     ...CommonLink

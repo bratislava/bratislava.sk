@@ -4,131 +4,89 @@ fragment ParentPage on Page {
   title
 }
 
-fragment PageParentPages on PageEntity {
-  attributes {
+fragment PageParentPages on Page {
+  ...ParentPage
+  parentPage {
     ...ParentPage
     parentPage {
-      data {
-        attributes {
+      ...ParentPage
+      parentPage {
+        ...ParentPage
+        parentPage {
           ...ParentPage
-          parentPage {
-            data {
-              attributes {
-                ...ParentPage
-                parentPage {
-                  data {
-                    attributes {
-                      ...ParentPage
-                      parentPage {
-                        data {
-                          attributes {
-                            ...ParentPage
-                          }
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
         }
       }
     }
   }
 }
 
-fragment Localization on PageRelationResponseCollection {
-  data {
-    attributes {
-      slug
-      locale
-    }
-  }
+# TODO previously used in PageEntity fragment
+# fragment Localization on PageRelationResponseCollection {
+#   slug
+#   locale
+# }
+
+fragment PageSlugEntity on Page {
+  documentId
+  slug
+  title
+  locale
 }
 
-fragment PageSlugEntity on PageEntity {
-  id
-  attributes {
+fragment PageEntity on Page {
+  ...PageSlugEntity
+  alias
+  subtext
+  pageColor
+  metaDiscription
+  keywords
+  pageBackgroundImage {
+    ...UploadImageSrcEntity
+  }
+  headerLinks {
+    ...CommonLink
+  }
+  sections {
+    ...Sections
+  }
+  localizations {
     slug
-    title
     locale
   }
-}
-
-fragment PageEntity on PageEntity {
-  ...PageSlugEntity
-  attributes {
-    alias
-    subtext
-    pageColor
-    metaDiscription
-    keywords
-    pageBackgroundImage {
-      data {
-        ...UploadImageSrcEntity
-      }
-    }
-    headerLinks {
-      ...CommonLink
-    }
-    sections {
-      ...Sections
-    }
-    localizations {
-      ...Localization
-    }
-    pageHeaderSections {
-      ...PageHeaderSections
-    }
-    pageCategory {
-      data {
-        id
-        attributes {
-          title
-          color
-        }
-      }
-    }
-    relatedContents {
-      data {
-        ...TagEntity
-      }
-    }
+  pageHeaderSections {
+    ...PageHeaderSections
+  }
+  pageCategory {
+    documentId
+    title
+    color
+  }
+  relatedContents {
+    ...TagEntity
   }
   ...PageParentPages
 }
 
 query PagesStaticPaths {
   pages(pagination: { limit: -1 }) {
-    data {
-      id
-      attributes {
-        slug
-      }
-    }
+    documentId
+    slug
   }
 }
 
 query PageBySlug($slug: String!, $locale: I18NLocaleCode!) {
   pages(filters: { slug: { eq: $slug } }, locale: $locale) {
-    data {
-      ...PageEntity
-    }
+    ...PageEntity
   }
 }
 
 # Based on OLO: https://github.com/bratislava/olo.sk/blob/master/next/src/services/graphql/queries/pages.gql
 query PageRedirectByAlias($alias: String!, $locale: I18NLocaleCode!) {
   pages(filters: { alias: { eq: $alias } }, locale: $locale) {
-    data {
-      ...PageSlugEntity
-    }
+    ...PageSlugEntity
   }
   articles(filters: { alias: { eq: $alias } }, locale: $locale) {
-    data {
-      ...ArticleSlugEntity
-    }
+    ...ArticleSlugEntity
   }
 }
 
@@ -145,8 +103,6 @@ query Dev_AllPages(
     filters: $filters
     locale: $locale
   ) {
-    data {
-      ...PageEntity
-    }
+    ...PageEntity
   }
 }

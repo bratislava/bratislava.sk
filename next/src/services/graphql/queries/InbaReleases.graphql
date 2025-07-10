@@ -1,73 +1,49 @@
 query InbaReleaseBySlug($slug: String!) {
   inbaReleases(filters: { slug: { eq: $slug } }) {
-    data {
-      ...InbaReleaseEntity
-    }
+    ...InbaReleaseEntity
   }
 }
 
 query InbaReleasesStaticPaths {
   inbaReleases(sort: "releaseDate:desc") {
-    data {
-      id
-      attributes {
-        slug
-      }
-    }
+    documentId
+    slug
   }
 }
 
 query InbaReleasesRssFeed {
   inbaReleases(sort: "releaseDate:desc", pagination: { limit: -1 }) {
-    data {
-      id
-      attributes {
-        title
-        slug
-        perex
-        publishedAt
-        coverImage {
-          data {
-            attributes {
-              url
-            }
-          }
-        }
-      }
+    documentId
+    title
+    slug
+    perex
+    publishedAt
+    coverImage {
+      url
     }
   }
 }
 
-fragment InbaReleaseEntity on InbaReleaseEntity {
-  id
-  attributes {
+fragment InbaReleaseEntity on InbaRelease {
+  documentId
+  title
+  slug
+  perex
+  releaseDate
+  coverImage {
+    ...UploadImageEntity
+  }
+  rearImage {
+    ...UploadImageEntity
+  }
+  files {
+    id
     title
-    slug
-    perex
-    releaseDate
-    coverImage {
-      data {
-        ...UploadImageEntity
-      }
+    media {
+      ...UploadFileEntity
     }
-    rearImage {
-      data {
-        ...UploadImageEntity
-      }
-    }
-    files {
-      id
-      title
-      media {
-        data {
-          ...UploadFileEntity
-        }
-      }
-    }
-    inbaArticles {
-      data {
-        ...InbaArticleCardEntity
-      }
-    }
+  }
+  inbaArticles {
+    ...InbaArticleCardEntity
   }
 }

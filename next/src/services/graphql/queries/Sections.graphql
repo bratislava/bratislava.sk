@@ -2,9 +2,7 @@ fragment GallerySection on ComponentSectionsGallery {
   title
   text
   medias(pagination: { limit: -1 }) {
-    data {
-      ...UploadImageEntity
-    }
+    ...UploadImageEntity
   }
 }
 
@@ -13,9 +11,7 @@ fragment ArticlesSection on ComponentSectionsArticles {
   text
   showAll
   category {
-    data {
-      ...PageCategoryEntity
-    }
+    ...PageCategoryEntity
   }
 }
 
@@ -37,9 +33,7 @@ fragment TextWithImageSection on ComponentSectionsTextWithImage {
   content
   imagePosition
   imageSrc {
-    data {
-      ...UploadImageEntity
-    }
+    ...UploadImageEntity
   }
   imageAspectRatio
   links {
@@ -51,9 +45,7 @@ fragment TextWithImageOverlappedSection on ComponentSectionsTextWithImageOverlap
   content
   imagePositionTextWithImageOverlapped: imagePosition
   image {
-    data {
-      ...UploadImageEntity
-    }
+    ...UploadImageEntity
   }
   links {
     ...CommonLink
@@ -76,9 +68,7 @@ fragment FileBlock on ComponentBlocksFile {
   id
   title
   media {
-    data {
-      ...UploadFileEntity
-    }
+    ...UploadFileEntity
   }
 }
 
@@ -94,9 +84,7 @@ fragment FileItemBlock on ComponentBlocksFileItem {
   id
   title
   media {
-    data {
-      ...UploadFileEntity
-    }
+    ...UploadFileEntity
   }
 }
 
@@ -109,9 +97,7 @@ fragment ColumnsItem on ComponentBlocksColumnsItem {
   title
   text
   image {
-    data {
-      ...UploadImageEntity
-    }
+    ...UploadImageEntity
   }
 }
 
@@ -154,13 +140,9 @@ fragment ComponentAccordionItemsFlatText on ComponentAccordionItemsFlatText {
   moreLinkTitle
   moreLinkUrl
   moreLinkPage {
-    data {
-      attributes {
-        slug
-        title
-        locale
-      }
-    }
+    slug
+    title
+    locale
   }
   fileList {
     ...FileItemBlock
@@ -260,11 +242,7 @@ fragment ComparisonCardComponent on ComponentBlocksComparisonCard {
     label
   }
   iconMedia {
-    data {
-      attributes {
-        url
-      }
-    }
+    url
   }
 }
 
@@ -286,11 +264,7 @@ fragment BannerSection on ComponentSectionsBanner {
   contentPosition
   bannerVariant: variant
   media {
-    data {
-      attributes {
-        url
-      }
-    }
+    url
   }
   primaryLink {
     ...CommonLink
@@ -341,9 +315,7 @@ fragment ContactsSection on ComponentSectionsContactsSection {
 
 fragment RegulationsSection on ComponentSectionsRegulations {
   regulations {
-    data {
-      ...RegulationEntity
-    }
+    ...RegulationEntity
   }
 }
 
@@ -351,9 +323,7 @@ fragment FaqsSection on ComponentSectionsFaqs {
   title
   text
   faqs {
-    data {
-      ...FaqEntity
-    }
+    ...FaqEntity
   }
 }
 
@@ -362,9 +332,7 @@ fragment FaqCategoriesSection on ComponentSectionsFaqCategories {
   title
   text
   faqCategories {
-    data {
-      ...FaqCategoryEntity
-    }
+    ...FaqCategoryEntity
   }
 }
 
@@ -380,9 +348,7 @@ fragment PartnerBlock on ComponentBlocksPartner {
   title
   url
   logo {
-    data {
-      ...UploadImageEntity
-    }
+    ...UploadImageEntity
   }
 }
 
@@ -399,9 +365,7 @@ fragment DocumentsSection on ComponentSectionsDocuments {
   title
   text
   documents(pagination: { limit: -1 }) {
-    data {
-      ...DocumentEntity
-    }
+    ...DocumentEntity
   }
   showAll
 }

@@ -1,76 +1,56 @@
 query allRegulations {
   regulations(pagination: { limit: -1 }) {
-    data {
-      ...RegulationEntity
-    }
+    ...RegulationEntity
   }
 }
 
 query RegulationsStaticPaths {
   # Prerender only 30 most recently updated Regulations
   regulations(sort: "updatedAt:desc", pagination: { limit: 30 }) {
-    data {
-      id
-      attributes {
-        slug
-      }
-    }
+    documentId
+    slug
   }
 }
 
 query RegulationById($id: ID!) {
-  regulation(id: $id) {
-    data {
-      ...RegulationEntity
-    }
+  regulation(documentId: $id) {
+    ...RegulationEntity
   }
 }
 
 query RegulationBySlug($slug: String) {
   regulations(filters: { slug: { eq: $slug } }) {
-    data {
-      ...RegulationEntity
-    }
+    ...RegulationEntity
   }
 }
 
 query RegulationByYear($year: String) {
   regulations(filters: { slug: { endsWith: $year } }) {
-    data {
-      ...RegulationEntity
-    }
+    ...RegulationEntity
   }
 }
 
 mutation setFullTitleToRegulation($regulationId: ID!, $fullTitle: String) {
-  updateRegulation(id: $regulationId, data: { fullTitle: $fullTitle }) {
-    data {
-      id
-    }
+  updateRegulation(documentId: $regulationId, data: { fullTitle: $fullTitle }) {
+    documentId
   }
 }
 
 mutation setCancellationToRegulation($regulationId: ID!, $cancellationId: ID!) {
-  updateRegulation(id: $regulationId, data: { cancellation: $cancellationId }) {
-    data {
-      id
-    }
+  updateRegulation(documentId: $regulationId, data: { cancellation: $cancellationId }) {
+    documentId
   }
 }
 
 mutation setAmendmentsToRegulation($regulationId: ID!, $amendmentsIds: [ID!]) {
-  updateRegulation(id: $regulationId, data: { amendments: $amendmentsIds }) {
-    data {
-      id
-    }
+  updateRegulation(documentId: $regulationId, data: { amendments: $amendmentsIds }) {
+    documentId
   }
 }
 
 mutation deleteRegulationById($id: ID!) {
-  deleteRegulation(id: $id) {
-    data {
-      id
-    }
+  deleteRegulation(documentId: $id) {
+    documentId
   }
 }
 
@@ -98,109 +78,69 @@ mutation createBareRegulation(
       attachments: $attachmentsIds
     }
   ) {
-    data {
-      id
-      attributes {
-        regNumber
-      }
-    }
+    documentId
+    regNumber
   }
 }
 
-fragment RegulationEntity on RegulationEntity {
-  id
-  attributes {
+fragment RegulationEntity on Regulation {
+  documentId
+  regNumber
+  slug
+  titleText
+  fullTitle
+  effectiveFrom
+  category
+  isFullTextRegulation
+  mainDocument {
+    ...UploadFileEntity
+  }
+  attachments {
+    ...UploadFileEntity
+  }
+  amendments {
+    documentId
     regNumber
     slug
-    titleText
-    fullTitle
     effectiveFrom
-    category
     isFullTextRegulation
-    mainDocument {
-      data {
-        ...UploadFileEntity
-      }
-    }
     attachments {
-      data {
-        ...UploadFileEntity
-      }
+      ...UploadFileEntity
     }
-    amendments {
-      data {
-        id
-        attributes {
-          regNumber
-          slug
-          effectiveFrom
-          isFullTextRegulation
-          attachments {
-            data {
-              ...UploadFileEntity
-            }
-          }
-        }
-      }
+  }
+  amending {
+    documentId
+    regNumber
+    slug
+    effectiveFrom
+    cancellation {
+      documentId
+      regNumber
+      slug
+      effectiveFrom
     }
     amending {
-      data {
-        id
-        attributes {
-          regNumber
-          slug
-          effectiveFrom
-          cancellation {
-            data {
-              id
-              attributes {
-                regNumber
-                slug
-                effectiveFrom
-              }
-            }
-          }
-          amending {
-            data {
-              id
-              attributes {
-                regNumber
-                slug
-                cancellation {
-                  data {
-                    id
-                    attributes {
-                      regNumber
-                      slug
-                      effectiveFrom
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
+      documentId
+      regNumber
+      slug
+      cancellation {
+        documentId
+        regNumber
+        slug
+        effectiveFrom
       }
     }
-    cancellation {
-      data {
-        id
-        attributes {
-          regNumber
-          slug
-          effectiveFrom
-        }
-      }
-    }
-    cancelling {
-      data {
-        id
-        attributes {
-          regNumber
-          slug
-          effectiveFrom
-        }
-      }
-    }
+  }
+  cancellation {
+    documentId
+    regNumber
+    slug
+    effectiveFrom
+  }
+  cancelling {
+    documentId
+    regNumber
+    slug
+    effectiveFrom
   }
 }
