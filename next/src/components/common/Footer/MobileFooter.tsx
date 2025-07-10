@@ -22,8 +22,7 @@ import { isDefined } from '@/src/utils/isDefined'
 const MobileFooter = () => {
   const { footer } = useGeneralContext()
 
-  const attributes = footer?.data?.attributes
-  if (!attributes) {
+  if (!footer) {
     return null
   }
 
@@ -35,11 +34,11 @@ const MobileFooter = () => {
           <Brand withTitle />
         </div>
         <div className="flex flex-col gap-6">
-          <FooterContacts {...attributes} />
+          <FooterContacts {...footer} />
         </div>
         <div>
           <HorizontalDivider />
-          {attributes.columns?.filter(isDefined).map((column, index) => (
+          {footer.columns?.filter(isDefined).map((column, index) => (
             // eslint-disable-next-line react/no-array-index-key
             <Fragment key={index}>
               <Accordion variant="footer" title={column.title}>
@@ -53,7 +52,7 @@ const MobileFooter = () => {
         </div>
         <div className="flex flex-row items-center justify-between">
           <div className="-my-2 flex gap-2">
-            <FooterSocialLinks {...attributes} />
+            <FooterSocialLinks {...footer} />
           </div>
           <EuFlagSvg />
         </div>
@@ -62,11 +61,11 @@ const MobileFooter = () => {
         </div>
         <HorizontalDivider />
         <div className="flex gap-4">
-          <FooterAccessibilityLink {...attributes} />
+          <FooterAccessibilityLink {...footer} />
         </div>
         <HorizontalDivider />
         <div className="text-center text-size-p-default">
-          <FooterCopyright {...attributes} />
+          <FooterCopyright {...footer} />
         </div>
       </footer>
     </SectionContainer>

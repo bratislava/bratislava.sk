@@ -22,7 +22,7 @@ const MobileNavMenu = () => {
   const heightWithoutHeader = `calc(${height}px - 14*4px)`
 
   const { menu: generalMenu, general } = useGeneralContext()
-  const { header } = general?.data?.attributes ?? {}
+  const { header } = general ?? {}
   const { links, accountLink } = header ?? {}
   const linksOnMobile = links?.filter(isDefined).filter((link) => link.showOnMobile)
 

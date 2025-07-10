@@ -6,13 +6,13 @@ import { MenuItem } from './navMenuTypes'
 
 export const getParsedMenus = (menu: GeneralQuery['menu'], moreLabel: string): MenuItem[] => {
   return (
-    menu?.data?.attributes?.menus
+    menu?.menus
       ?.map((menuItem) => {
-        if (!menuItem?.page?.data?.attributes?.slug) return null
+        if (!menuItem?.page?.slug) return null
 
         const { label, icon } = menuItem
         // eslint-disable-next-line unicorn/consistent-destructuring
-        const linkHref = `/${menuItem.page.data.attributes.slug}`
+        const linkHref = `/${menuItem.page.slug}`
         const items =
           // eslint-disable-next-line unicorn/consistent-destructuring
           menuItem.sections
@@ -28,7 +28,7 @@ export const getParsedMenus = (menu: GeneralQuery['menu'], moreLabel: string): M
                   })
                   .filter(isDefined) ?? []
 
-              const showMoreLink = section.page?.data?.attributes
+              const showMoreLink = section.page
                 ? getLinkProps({ label: moreLabel, page: section.page })
                 : undefined
 

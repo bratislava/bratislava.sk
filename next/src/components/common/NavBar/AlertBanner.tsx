@@ -22,7 +22,7 @@ const AlertBanner = forwardRef<HTMLDivElement>((props, forwardedRef) => {
     queryFn: () => client.Alert({ locale }),
   })
   const { alert } = data ?? {}
-  const { text, updatedAt } = alert?.data?.attributes ?? {}
+  const { text, updatedAt } = alert ?? {}
 
   const [showAlert, setShowAlert] = useState(false)
   const [storageTimestamp, setStorageTimestamp] = useLocalStorage(storageKey, null)

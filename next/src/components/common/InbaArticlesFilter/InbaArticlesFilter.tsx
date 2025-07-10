@@ -41,18 +41,14 @@ const InbaArticlesFilter = ({ tags, subtext, onChange }: InbaArticlesFilterProps
       <TagList className="flex flex-wrap gap-3 lg:justify-center">
         {tags
           .map((tag: InbaTagEntityFragment) => {
-            if (!tag.id || !tag.attributes) {
-              return null
-            }
-
             return (
               <Chip
                 variant="large"
-                key={tag.id}
-                id={tag.id}
+                key={tag.documentId}
+                id={tag.documentId}
                 style={getCategoryColorLocalStyle({ category: 'main' })}
               >
-                {tag.attributes.title}
+                {tag.title}
               </Chip>
             )
           })
