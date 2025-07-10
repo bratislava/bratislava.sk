@@ -31,14 +31,13 @@ export type InbaReleasePageContentProps = {
 const InbaReleasePageContent = ({ inbaRelease }: InbaReleasePageContentProps) => {
   const { t } = useTranslation()
 
-  const { title, coverImage, perex, releaseDate, files, inbaArticles } =
-    inbaRelease.attributes ?? {}
-  const coverImageAttr = coverImage?.data?.attributes
+  const { title, coverImage, perex, releaseDate, files, inbaArticles } = inbaRelease
+  const coverImageAttr = coverImage
 
-  const filteredInbaArticles = inbaArticles?.data.filter(isDefined) ?? []
+  const filteredInbaArticles = inbaArticles.filter(isDefined) ?? []
 
   const { general } = useGeneralContext()
-  const parentBreadcrumbPageEntity = general?.data?.attributes?.inbaReleasesPage?.data
+  const parentBreadcrumbPageEntity = general?.inbaReleasesPage
 
   const breadcrumbs = useMemo(() => {
     return [
@@ -97,20 +96,16 @@ const InbaReleasePageContent = ({ inbaRelease }: InbaReleasePageContentProps) =>
 
             <ul className="flex flex-col rounded-lg border-2">
               {filteredInbaArticles.map((article, index) => {
-                if (!article.attributes) {
-                  return null
-                }
-
                 const cardData: SearchResult = {
-                  title: article.attributes.title,
-                  uniqueId: article.attributes.slug,
-                  linkHref: `/inba/clanky/${article.attributes.slug}`,
-                  coverImageSrc: article.attributes.coverImage?.data?.attributes?.url,
-                  metadata: [article.attributes.inbaTag?.data?.attributes?.title].filter(isDefined),
+                  title: article.title,
+                  uniqueId: article.slug,
+                  linkHref: `/inba/clanky/${article.slug}`,
+                  coverImageSrc: article.coverImage?.url,
+                  metadata: [article.inbaTag?.title].filter(isDefined),
                 }
 
                 return (
-                  <Fragment key={article.attributes.slug}>
+                  <Fragment key={article.slug}>
                     {index > 0 ? <HorizontalDivider asListItem className="mx-4 lg:mx-5" /> : null}
                     <li>
                       <SearchResultCard data={cardData} />

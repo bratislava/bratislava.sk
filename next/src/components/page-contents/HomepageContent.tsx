@@ -11,7 +11,7 @@ import TootootEventsSection from '@/src/components/sections/TootootEventsSection
 const HomepageContent = () => {
   const { homepage } = useHomepageContext()
 
-  const { eventsSection } = homepage?.attributes ?? {}
+  const { eventsSection } = homepage ?? {}
 
   return (
     <>

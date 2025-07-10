@@ -21,24 +21,19 @@ type Props = {
 
 const ArticlePageContent = ({ article }: Props) => {
   const { general } = useGeneralContext()
-  const newsPage = general?.data?.attributes?.newsPage?.data
+  const newsPage = general?.newsPage
 
   const breadcrumbs = useMemo(() => {
     return [
       ...(newsPage ? getPageBreadcrumbs(newsPage) : []),
-      { title: article.attributes?.title ?? '', path: null } as Breadcrumb,
+      { title: article.title ?? '', path: null } as Breadcrumb,
     ]
-  }, [article.attributes?.title, newsPage])
+  }, [article.title, newsPage])
 
-  if (!article.attributes) {
-    return null
-  }
-
-  const { title, perex, tag, content, files, gallery, alias, addedAt, coverMedia } =
-    article.attributes
+  const { title, perex, tag, content, files, gallery, alias, addedAt, coverMedia } = article
 
   const filteredFiles = files?.filter(isDefined) ?? []
-  const filteredGalleryImages = gallery?.data.filter(isDefined) ?? []
+  const filteredGalleryImages = gallery.filter(isDefined) ?? []
 
   return (
     <>
@@ -46,8 +41,8 @@ const ArticlePageContent = ({ article }: Props) => {
         title={title}
         breadcrumbs={breadcrumbs}
         subtext={formatDate(addedAt)}
-        tag={tag?.data?.attributes?.title}
-        imageSrc={coverMedia?.data?.attributes?.url}
+        tag={tag?.title}
+        imageSrc={coverMedia?.url}
       />
 
       <div
