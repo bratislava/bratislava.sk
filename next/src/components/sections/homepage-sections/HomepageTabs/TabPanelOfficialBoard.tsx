@@ -24,7 +24,7 @@ const TabPanelOfficialBoard = () => {
   const { t } = useTranslation()
 
   const { homepage } = useHomepageContext()
-  const { tabs } = homepage?.attributes ?? {}
+  const { tabs } = homepage ?? {}
 
   const filters = { ...officialBoardListDefaultFilters, pageSize: -1 }
 

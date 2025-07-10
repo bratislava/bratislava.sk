@@ -85,9 +85,9 @@ const TextWithImageOverlappedSection = ({ section }: TextWithImageSectionProps) 
     </div>
   )
 
-  const ImageContent = image?.data?.attributes ? (
+  const ImageContent = image ? (
     <StrapiImage
-      image={image.data.attributes}
+      image={image}
       fill
       sizes={generateImageSizes({ default: '100vw', lg: '50vw' })}
       className="object-cover"

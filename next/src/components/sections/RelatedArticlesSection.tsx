@@ -44,9 +44,7 @@ const RelatedArticlesSection = ({ page, className }: Props) => {
 
         <ResponsiveCarousel
           items={data.hits.map((card) => {
-            return card.attributes ? (
-              <ArticleCard key={card.attributes.slug} {...transformArticleProps(card.attributes)} />
-            ) : null
+            return card ? <ArticleCard key={card.slug} {...transformArticleProps(card)} /> : null
           })}
         />
       </div>

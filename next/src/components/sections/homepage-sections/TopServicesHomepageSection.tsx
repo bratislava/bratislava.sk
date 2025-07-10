@@ -8,7 +8,7 @@ import { isDefined } from '@/src/utils/isDefined'
 
 const TopServicesHomepageSection = () => {
   const { homepage } = useHomepageContext()
-  const { topServices } = homepage?.attributes ?? {}
+  const { topServices } = homepage ?? {}
 
   if (!topServices) {
     return null

@@ -36,7 +36,7 @@ const ComparisonSection = ({ section }: ComparisonSectionProps) => {
           })}
         >
           {cards?.filter(isDefined).map((card, index) => {
-            const imgUrl = card.iconMedia?.data?.attributes?.url
+            const imgUrl = card.iconMedia?.url
 
             return (
               <ComparisonCard

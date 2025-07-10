@@ -69,7 +69,7 @@ const AccordionSection = ({ section }: AccordionSectionProps) => {
                   {item.fileList?.filter(isDefined).length ? (
                     <FileList files={item.fileList.filter(isDefined) ?? []} />
                   ) : null}
-                  {item.moreLinkUrl || item.moreLinkPage?.data?.attributes ? (
+                  {item.moreLinkUrl || item.moreLinkPage ? (
                     <Button
                       variant="link"
                       {...getLinkProps({

@@ -67,13 +67,13 @@ const InbaArticlesListSection = ({ section }: Props) => {
   const selectOptions: SelectOption[] = [
     defaultSelectionOption,
     ...(
-      tagData?.inbaTags?.data
+      tagData?.inbaTags
         .map((tag) => {
-          if (!tag.attributes || !tag.id) return null
+          if (!tag?.documentId) return null
 
           return {
-            value: tag.id,
-            label: tag.attributes.title,
+            value: tag.documentId,
+            label: tag.title,
           }
         })
         .filter(isDefined) ?? []
@@ -153,13 +153,11 @@ const InbaArticlesListSection = ({ section }: Props) => {
         ) : (
           <div className="flex flex-col gap-12">
             <ul className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-              {data.hits.map((card) => {
-                return card.attributes ? (
-                  <li key={card.attributes.slug} className="*:h-full">
-                    <ArticleCard {...transformInbaArticleProps(card.attributes)} />
-                  </li>
-                ) : null
-              })}
+              {data.hits.map((card) => (
+                <li key={card.slug} className="*:h-full">
+                  <ArticleCard {...transformInbaArticleProps(card)} />
+                </li>
+              ))}
             </ul>
 
             {data.estimatedTotalHits ? (

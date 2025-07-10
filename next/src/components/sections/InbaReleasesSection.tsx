@@ -80,7 +80,7 @@ const InbaReleasesSection = ({ section }: Props) => {
                     coverImage,
                     releaseDate,
                     perex,
-                  } = inbaRelease.attributes
+                  } = inbaRelease
 
                   return (
                     <li key={slug} className="*:h-full">
@@ -89,7 +89,7 @@ const InbaReleasesSection = ({ section }: Props) => {
                         title={inbaReleaseTitle}
                         text={perex}
                         linkHref={`/inba/vydania/${slug}`}
-                        imgSrc={coverImage?.data?.attributes?.url}
+                        imgSrc={coverImage?.url}
                         imgSizes={imageSizes}
                       />
                     </li>

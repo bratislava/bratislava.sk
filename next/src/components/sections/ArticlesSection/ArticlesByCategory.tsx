@@ -40,11 +40,11 @@ const ArticlesByCategory = ({ section }: Props) => {
   })
 
   const tagIds =
-    tagsData?.tags?.data
+    tagsData?.tags
       .filter((tag) => {
-        return tag.attributes?.pageCategory?.data?.id === category?.data?.id
+        return tag?.pageCategory?.documentId === category?.documentId
       })
-      .map((tag) => tag.id ?? '')
+      .map((tag) => tag?.documentId ?? '')
       .filter(isDefined) ?? []
 
   useEffect(() => {
@@ -68,11 +68,7 @@ const ArticlesByCategory = ({ section }: Props) => {
     <div className="flex flex-col gap-8">
       <SectionHeader title={title} text={text} />
       <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-        {data?.hits.map((card) => {
-          return card.attributes ? (
-            <ArticleCard key={card.attributes.slug} {...transformArticleProps(card.attributes)} />
-          ) : null
-        })}
+        {data?.hits.map((card) => <ArticleCard key={card.slug} {...transformArticleProps(card)} />)}
       </div>
       {data?.estimatedTotalHits ? (
         <Pagination

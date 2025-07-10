@@ -18,7 +18,7 @@ type Props = {
 const FaqCategoriesSection = ({ section }: Props) => {
   const { title, text, faqCategories } = section ?? {}
 
-  const filteredFaqCategories = faqCategories?.data.filter(isDefined) ?? []
+  const filteredFaqCategories = faqCategories.filter(isDefined)
 
   return (
     <SectionContainer>
@@ -26,10 +26,8 @@ const FaqCategoriesSection = ({ section }: Props) => {
         <SectionHeader title={title} text={text} />
         {filteredFaqCategories
           .map((faqCategory) => {
-            if (!faqCategory.attributes) return null
-
-            const { title: categoryTitle, faqs, slug } = faqCategory.attributes
-            const filteredFaqs = faqs?.data.filter(isDefined) ?? []
+            const { title: categoryTitle, faqs, slug } = faqCategory
+            const filteredFaqs = faqs.filter(isDefined)
 
             return (
               <div key={slug} className="flex flex-col gap-8 lg:gap-10">

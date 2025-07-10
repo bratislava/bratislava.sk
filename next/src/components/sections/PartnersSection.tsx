@@ -41,10 +41,10 @@ const PartnersSection = ({ section }: Props) => {
         >
           {filteredPartners.map((partner, index) => {
             const Logo = () =>
-              partner.logo.data?.attributes ? (
+              partner.logo ? (
                 <StrapiImage
                   alt={`Logo ${partner.title}`}
-                  image={partner.logo.data.attributes}
+                  image={partner.logo}
                   sizes={imageSizes}
                   fill
                   className="object-contain"
