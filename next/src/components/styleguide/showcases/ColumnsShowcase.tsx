@@ -11,15 +11,12 @@ import Stack from '../Stack'
 import Wrapper from '../Wrapper'
 
 const image = {
-  data: {
-    attributes: {
-      __typename: 'UploadFile' as const,
-      url: 'https://cdn-api.bratislava.sk/strapi-homepage/upload/bratislava4_c7b0b62afe.png',
-      name: 'Bratislava logo',
-      width: 116,
-      height: 105,
-    },
-  },
+  __typename: 'UploadFile' as const,
+  documentId: '',
+  url: 'https://cdn-api.bratislava.sk/strapi-homepage/upload/bratislava4_c7b0b62afe.png',
+  name: 'Bratislava logo',
+  width: 116,
+  height: 105,
 }
 
 const sectionData: Omit<ColumnsSectionFragment, 'imageVariant' | 'responsiveLayout'> = {
