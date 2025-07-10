@@ -5,7 +5,6 @@ const graphqlConfig = {
     schema: true,
   },
   defaultLimit: 100,
-  v4CompatibilityMode: true,
 }
 
 export default graphqlConfig
