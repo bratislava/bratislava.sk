@@ -23,15 +23,15 @@ type StaticParams = {
 export const getStaticPaths: GetStaticPaths<StaticParams> = async () => {
   const { inbaArticles } = await client.InbaArticlesStaticPaths()
 
-  const paths = (inbaArticles?.data ?? [])
-    .filter((inbaArticle) => inbaArticle?.attributes?.slug && inbaArticle?.attributes?.locale)
+  const paths = inbaArticles
+    .filter((inbaArticle) => inbaArticle?.slug && inbaArticle?.locale)
     .map((inbaArticle) => ({
       params: {
         // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion,@typescript-eslint/no-non-null-assertion
-        slug: inbaArticle.attributes!.slug!,
+        slug: inbaArticle!.slug!,
       },
       // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion,@typescript-eslint/no-non-null-assertion
-      locale: inbaArticle.attributes!.locale!,
+      locale: inbaArticle!.locale!,
     }))
 
   // eslint-disable-next-line no-console
@@ -62,7 +62,7 @@ export const getStaticProps: GetStaticProps<PageProps, StaticParams> = async ({
     serverSideTranslations(locale),
   ])
 
-  const inbaArticle = inbaArticles?.data[0]
+  const inbaArticle = inbaArticles[0]
   if (!inbaArticle) {
     return NOT_FOUND
   }
@@ -79,7 +79,7 @@ export const getStaticProps: GetStaticProps<PageProps, StaticParams> = async ({
 }
 
 const Page = ({ general, inbaArticle }: PageProps) => {
-  const { title: inbaArticleTitle, perex } = inbaArticle.attributes ?? {}
+  const { title: inbaArticleTitle, perex } = inbaArticle ?? {}
 
   const title = useTitle(inbaArticleTitle)
 

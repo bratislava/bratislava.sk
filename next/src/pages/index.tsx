@@ -69,10 +69,10 @@ const Homepage = ({ homepageContext, general, dehydratedState }: PageProps) => {
         <HomepageContextProvider homepageContext={homepageContext}>
           <Head>
             <title>{title}</title>
-            {homepageContext.homepage?.attributes?.metaDescription && (
+            {homepageContext.homepage?.metaDescription && (
               <meta
                 name="description"
-                content={homepageContext.homepage?.attributes?.metaDescription ?? undefined}
+                content={homepageContext.homepage?.metaDescription ?? undefined}
               />
             )}
           </Head>
