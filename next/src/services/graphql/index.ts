@@ -8073,6 +8073,7 @@ export type PageEntityFragment = {
           moreLinkUrl?: string | null
           moreLinkPage?: {
             __typename?: 'Page'
+            documentId: string
             slug?: string | null
             title: string
             locale?: string | null
@@ -8795,6 +8796,7 @@ export type PageBySlugQuery = {
             moreLinkUrl?: string | null
             moreLinkPage?: {
               __typename?: 'Page'
+              documentId: string
               slug?: string | null
               title: string
               locale?: string | null
@@ -9546,6 +9548,7 @@ export type Dev_AllPagesQuery = {
             moreLinkUrl?: string | null
             moreLinkPage?: {
               __typename?: 'Page'
+              documentId: string
               slug?: string | null
               title: string
               locale?: string | null
@@ -11025,6 +11028,7 @@ export type ComponentAccordionItemsFlatTextFragment = {
   moreLinkUrl?: string | null
   moreLinkPage?: {
     __typename?: 'Page'
+    documentId: string
     slug?: string | null
     title: string
     locale?: string | null
@@ -11082,6 +11086,7 @@ export type AccordionSectionFragment = {
     moreLinkUrl?: string | null
     moreLinkPage?: {
       __typename?: 'Page'
+      documentId: string
       slug?: string | null
       title: string
       locale?: string | null
@@ -11574,6 +11579,7 @@ type Sections_ComponentSectionsAccordion_Fragment = {
     moreLinkUrl?: string | null
     moreLinkPage?: {
       __typename?: 'Page'
+      documentId: string
       slug?: string | null
       title: string
       locale?: string | null
@@ -12925,14 +12931,13 @@ export const ComponentAccordionItemsFlatTextFragmentDoc = gql`
     moreLinkTitle
     moreLinkUrl
     moreLinkPage {
-      slug
-      title
-      locale
+      ...PageSlugEntity
     }
     fileList {
       ...FileItemBlock
     }
   }
+  ${PageSlugEntityFragmentDoc}
   ${FileItemBlockFragmentDoc}
 `
 export const ComponentAccordionItemsInstitutionNarrowFragmentDoc = gql`

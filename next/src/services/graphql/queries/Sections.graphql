@@ -140,9 +140,7 @@ fragment ComponentAccordionItemsFlatText on ComponentAccordionItemsFlatText {
   moreLinkTitle
   moreLinkUrl
   moreLinkPage {
-    slug
-    title
-    locale
+    ...PageSlugEntity
   }
   fileList {
     ...FileItemBlock
