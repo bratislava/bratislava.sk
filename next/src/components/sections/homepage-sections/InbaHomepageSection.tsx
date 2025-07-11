@@ -11,16 +11,16 @@ const InbaHomepageSection = () => {
 
   const { homepage } = useHomepageContext()
 
-  const frontImageUrl = homepage?.attributes?.inbaFrontImage?.data?.attributes?.url
-  const rearImageUrl = homepage?.attributes?.inbaRearImage?.data?.attributes?.url
+  const frontImageUrl = homepage?.inbaFrontImage.url
+  const rearImageUrl = homepage?.inbaRearImage.url
 
   return (
     <SectionContainer className="mb-8">
       <InBaCard
         className="mx-auto mt-40 min-h-[200px] max-w-3xl md:mt-28"
-        title={homepage?.attributes?.inba?.title}
-        content={homepage?.attributes?.inba?.content}
-        linkProps={getLinkProps({ label: t('readMore'), url: homepage?.attributes?.inbaUrl })}
+        title={homepage?.inba?.title}
+        content={homepage?.inba?.content}
+        linkProps={getLinkProps({ label: t('readMore'), url: homepage?.inbaUrl })}
         frontImageUrl={frontImageUrl}
         rearImageUrl={rearImageUrl}
       />

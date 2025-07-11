@@ -23,12 +23,12 @@ type StaticParams = {
 export const getStaticPaths: GetStaticPaths<StaticParams> = async () => {
   const { inbaReleases } = await client.InbaReleasesStaticPaths()
 
-  const paths = (inbaReleases?.data ?? [])
-    .filter((inbaRelease) => inbaRelease?.attributes?.slug)
+  const paths = inbaReleases
+    .filter((inbaRelease) => inbaRelease?.slug)
     .map((inbaRelease) => ({
       params: {
         // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion,@typescript-eslint/no-non-null-assertion
-        slug: inbaRelease.attributes!.slug!,
+        slug: inbaRelease!.slug!,
       },
     }))
 
@@ -57,7 +57,7 @@ export const getStaticProps: GetStaticProps<PageProps, StaticParams> = async ({
     serverSideTranslations(locale),
   ])
 
-  const inbaRelease = inbaReleases?.data[0]
+  const inbaRelease = inbaReleases[0]
   if (!inbaRelease) {
     return NOT_FOUND
   }
@@ -74,7 +74,7 @@ export const getStaticProps: GetStaticProps<PageProps, StaticParams> = async ({
 }
 
 const Page = ({ general, inbaRelease }: PageProps) => {
-  const { title: inbaReleaseTitle, perex } = inbaRelease.attributes ?? {}
+  const { title: inbaReleaseTitle, perex } = inbaRelease
 
   const title = useTitle(inbaReleaseTitle)
 

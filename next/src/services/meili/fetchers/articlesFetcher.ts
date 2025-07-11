@@ -1,5 +1,3 @@
-import { ArticleCardEntityFragment } from '@/src/services/graphql'
-
 import { meiliClient } from '../meiliClient'
 import { ArticleMeili, SearchIndexWrapped } from '../types'
 import { getMeilisearchPageOptions, unwrapFromSearchIndex } from '../utils'
@@ -52,47 +50,35 @@ export const articlesFetcher = (filters: ArticlesFilters, locale: string) => {
     })
     .then(unwrapFromSearchIndex('article'))
     .then((response) => {
-      const hits: ArticleCardEntityFragment[] = response.hits.map((article) => {
+      const hits = response.hits.map((article) => {
         return {
-          id: article.id,
-          __typename: 'ArticleEntity',
-          attributes: {
-            __typename: 'Article',
-            title: article.title,
-            slug: article.slug,
-            perex: article.perex,
-            addedAt: article.addedAt,
-            ...(article.coverMedia && {
-              coverMedia: {
-                data: {
-                  attributes: {
-                    url: article.coverMedia.url ?? '',
-                    name: article.coverMedia.name ?? '',
-                    alternativeText: article.coverMedia.alternativeText ?? '',
-                  },
+          documentId: article.documentId,
+          __typename: 'Article',
+          title: article.title,
+          slug: article.slug,
+          perex: article.perex,
+          addedAt: article.addedAt,
+          ...(article.coverMedia && {
+            coverMedia: {
+              documentId: article.coverMedia.documentId,
+              url: article.coverMedia.url ?? '',
+              name: article.coverMedia.name ?? '',
+              alternativeText: article.coverMedia.alternativeText ?? '',
+            },
+          }),
+          ...(article.tag && {
+            tag: {
+              documentId: article.tag.documentId,
+              title: article.tag.title,
+              ...(article.tag.pageCategory && {
+                pageCategory: {
+                  documentId: article.tag.pageCategory.documentId,
+                  color: article.tag.pageCategory.color,
                 },
-              },
-            }),
-            ...(article.tag && {
-              tag: {
-                data: {
-                  attributes: {
-                    title: article.tag.title,
-                    ...(article.tag.pageCategory && {
-                      pageCategory: {
-                        data: {
-                          attributes: {
-                            color: article.tag.pageCategory.color,
-                          },
-                        },
-                      },
-                    }),
-                  },
-                },
-              },
-            }),
-          },
-        } satisfies ArticleCardEntityFragment
+              }),
+            },
+          }),
+        } as const
       })
 
       return { ...response, hits }

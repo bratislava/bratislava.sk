@@ -17,7 +17,7 @@ type Props = {
 const FaqsSection = ({ section }: Props) => {
   const { title, text, faqs } = section ?? {}
 
-  const filteredFaqs = faqs?.data.filter(isDefined) ?? []
+  const filteredFaqs = faqs.filter(isDefined) ?? []
 
   return (
     <SectionContainer>

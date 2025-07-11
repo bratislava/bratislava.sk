@@ -3,8 +3,8 @@ import { client } from '@/src/services/graphql/gql'
 import { isDefined } from '@/src/utils/isDefined'
 
 export type HomepageContext = {
-  homepage: HomepageEntityFragment | null
-  latestArticles: ArticleCardEntityFragment[] | null
+  homepage: HomepageEntityFragment | null | undefined
+  latestArticles: ArticleCardEntityFragment[]
 }
 
 export const homepageContextFetcher = async (locale: string): Promise<HomepageContext> => {
@@ -18,7 +18,7 @@ export const homepageContextFetcher = async (locale: string): Promise<HomepageCo
   ])
 
   return {
-    homepage: homepage?.data ?? null,
-    latestArticles: articles?.data?.filter(isDefined) ?? null,
+    homepage,
+    latestArticles: articles.filter(isDefined),
   }
 }

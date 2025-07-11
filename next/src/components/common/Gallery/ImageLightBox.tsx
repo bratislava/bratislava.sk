@@ -38,25 +38,23 @@ const ImageLightBox = (props: ImageLightBoxProps) => {
         description={t('Gallery.aria.imageLightBoxDescription')}
         allowKeyboardNavigation={images.length > 1}
         initialPage={initialImageIndex}
-        pages={images
-          .filter((image) => image.attributes)
-          .map(({ id, attributes }) => (
-            <div
-              key={id}
-              className="pointer-events-none container m-auto flex size-full max-w-6xl flex-col items-center justify-center md:px-[88px]"
-            >
-              <StrapiImage
-                draggable="false"
-                // eslint-disable-next-line @typescript-eslint/no-non-null-assertion,@typescript-eslint/no-unnecessary-type-assertion
-                image={attributes!}
-                className="pointer-events-auto h-auto max-h-[86vh] w-full object-contain select-none"
-                sizes="100vw"
-              />
-              {attributes?.caption !== attributes?.name && attributes?.caption && (
-                <div className="mt-4 bg-white px-2.5 py-0.5">{attributes?.caption}</div>
-              )}
-            </div>
-          ))}
+        pages={images.map((image) => (
+          <div
+            key={image.documentId}
+            className="pointer-events-none container m-auto flex size-full max-w-6xl flex-col items-center justify-center md:px-[88px]"
+          >
+            <StrapiImage
+              draggable="false"
+              // eslint-disable-next-line @typescript-eslint/no-non-null-assertion,@typescript-eslint/no-unnecessary-type-assertion
+              image={image}
+              className="pointer-events-auto h-auto max-h-[86vh] w-full object-contain select-none"
+              sizes="100vw"
+            />
+            {image.caption !== image.name && image.caption && (
+              <div className="mt-4 bg-white px-2.5 py-0.5">{image.caption}</div>
+            )}
+          </div>
+        ))}
         pagination={({ goToPrevious, goToNext }) => (
           <div className="pointer-events-none absolute bottom-0 z-20 container flex w-full max-w-6xl justify-between p-6 md:bottom-auto">
             {images.length > 1 && (

@@ -36,9 +36,9 @@ const TextWithImageSection = ({ section }: TextWithImageSectionProps) => {
           : 'aspect-square',
       )}
     >
-      {image.data?.attributes ? (
+      {image ? (
         <StrapiImage
-          image={image.data.attributes}
+          image={image}
           fill
           sizes={generateImageSizes({ default: '100vw', lg: '50vw' })}
           className="object-cover"

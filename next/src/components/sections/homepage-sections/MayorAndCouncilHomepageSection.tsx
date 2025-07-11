@@ -15,7 +15,7 @@ const MayorAndCouncilHomepageSection = ({ className }: Props) => {
   const { t } = useTranslation()
 
   const { homepage } = useHomepageContext()
-  const { mayorAndCouncil } = homepage?.attributes ?? {}
+  const { mayorAndCouncil } = homepage ?? {}
   const { title, text, mayorCard, councilCard } = mayorAndCouncil ?? {}
 
   const { children: mayorLinkLabel, ...mayorLinkProps } = getLinkProps(mayorCard)

@@ -24,45 +24,41 @@ const InbaArticlePageContent = ({ inbaArticle }: InbaArticlePageContentProps) =>
   const { t } = useTranslation()
 
   const { general } = useGeneralContext()
-  const inbaPage = general?.data?.attributes?.inbaPage?.data
+  const inbaPage = general?.inbaPage
 
   const breadcrumbs = useMemo(() => {
     return [
       ...(inbaPage ? getPageBreadcrumbs(inbaPage) : []),
-      { title: inbaArticle.attributes?.title ?? '', path: null } as Breadcrumb,
+      { title: inbaArticle.title ?? '', path: null } as Breadcrumb,
     ]
   }, [inbaArticle, inbaPage])
 
-  const inbaTagTitle = inbaArticle.attributes?.inbaTag?.data?.attributes?.title
+  const inbaTagTitle = inbaArticle.inbaTag?.title
 
-  const inbaRelease = inbaArticle.attributes?.inbaRelease?.data?.attributes
+  const { inbaRelease, title, publishedAt, coverImage, perex, content } = inbaArticle
   const inbaReleaseLink = `/inba/vydania/${inbaRelease?.slug}`
 
   return (
     <>
       <PageHeader
-        title={inbaArticle.attributes?.title}
+        title={title}
         breadcrumbs={breadcrumbs}
-        subtext={
-          inbaArticle.attributes?.publishedAt
-            ? formatDate(inbaArticle.attributes.publishedAt)
-            : null
-        }
+        subtext={publishedAt ? formatDate(publishedAt) : null}
         tag={inbaTagTitle}
-        imageSrc={inbaArticle.attributes?.coverImage?.data?.attributes?.url}
+        imageSrc={coverImage?.url}
       />
-      {inbaArticle.attributes?.perex ? (
+      {perex ? (
         <SectionContainer className="pt-10 md:pt-18">
           <NarrowText align="left" width="wide">
             {/* Perex comes as plain text from Strapi, so we manually add bold style and use Markdown to format it */}
             {/* TODO it may want to be styled and implemented more nicely */}
-            <Markdown content={`**${inbaArticle.attributes.perex}**`} />
+            <Markdown content={`**${perex}**`} />
           </NarrowText>
         </SectionContainer>
       ) : null}
       <SectionContainer className="pt-10 md:pt-18">
         <NarrowText align="left" width="wide">
-          <Markdown content={inbaArticle.attributes?.content} />
+          <Markdown content={content} />
           {inbaRelease ? (
             <div className="pt-4">
               {/* TODO Typography */}
@@ -79,7 +75,7 @@ const InbaArticlePageContent = ({ inbaArticle }: InbaArticlePageContentProps) =>
         </NarrowText>
       </SectionContainer>
       <SectionContainer className="pt-10 pb-8 md:pt-18">
-        <ShareButtons twitterTitle={inbaArticle.attributes?.title} />
+        <ShareButtons twitterTitle={title} />
       </SectionContainer>
     </>
   )

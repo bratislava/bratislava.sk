@@ -11,7 +11,7 @@ import { generateImageSizes } from '@/src/utils/generateImageSizes'
 const WelcomeHomepageSection = () => {
   const { homepage } = useHomepageContext()
 
-  const { welcomeHeadline, welcomeMedia } = homepage?.attributes ?? {}
+  const { welcomeHeadline, welcomeMedia } = homepage ?? {}
 
   const [isSearchOpen, setSearchOpen] = useState<boolean>(false)
 
@@ -32,7 +32,7 @@ const WelcomeHomepageSection = () => {
           )}
         >
           <Image
-            src={welcomeMedia?.data?.attributes?.url ?? ''}
+            src={welcomeMedia?.url ?? ''}
             alt=""
             priority
             quality={100}

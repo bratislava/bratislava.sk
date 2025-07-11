@@ -27,7 +27,7 @@ const DocumentsSection = ({ section }: Props) => {
 
   const { title, text, documents, showAll } = section
 
-  const filteredDocuments = documents?.data.filter(isDefined) ?? []
+  const filteredDocuments = documents.filter(isDefined)
 
   return (
     <SectionContainer>
@@ -40,25 +40,22 @@ const DocumentsSection = ({ section }: Props) => {
           <ul className="flex flex-col rounded-lg border-2 py-2">
             {filteredDocuments
               .map((document, index) => {
-                if (!document.attributes) {
-                  return null
-                }
-
                 const {
                   title: documentTitle,
                   files,
                   documentCategory,
                   slug,
                   updatedAt,
-                } = document.attributes
+                  documentId,
+                } = document
 
-                const filteredFiles = files.data.filter(isDefined)
+                const filteredFiles = files.filter(isDefined)
                 const isSingleFile = filteredFiles.length === 1
 
-                const { size, url, ext } = filteredFiles[0].attributes ?? {}
+                const { size, url, ext } = filteredFiles[0]
 
                 return (
-                  <Fragment key={document.id}>
+                  <Fragment key={documentId}>
                     {index > 0 ? <HorizontalDivider asListItem className="mx-4 lg:mx-6" /> : null}
                     <li className="w-full">
                       <DocumentRowCard
@@ -79,13 +76,13 @@ const DocumentsSection = ({ section }: Props) => {
                           isSingleFile
                             ? [
                                 formatDate(updatedAt),
-                                documentCategory?.data?.attributes?.title,
+                                documentCategory?.title,
                                 formatFileExtension(ext),
                                 formatFileSize(size, locale),
                               ].filter(isDefined)
                             : [
                                 formatDate(updatedAt),
-                                documentCategory?.data?.attributes?.title,
+                                documentCategory?.title,
                                 t('DocumentPageContent.numberOfFiles', {
                                   count: filteredFiles.length,
                                 }),

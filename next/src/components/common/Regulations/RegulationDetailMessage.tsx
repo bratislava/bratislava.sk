@@ -29,15 +29,11 @@ const RegulationMLink = ({ regNumber }: RegulationMLinkProps) => {
 }
 
 const RegulationDetailMessage = ({ regulation }: RegulationDetailMessageProps) => {
-  if (!regulation.attributes) {
-    return null
-  }
-
-  const amending = regulation.attributes?.amending?.data.filter(isDefined)
-  const cancellation = regulation.attributes?.cancellation?.data
+  const amending = regulation.amending?.filter(isDefined)
+  const { cancellation, effectiveFrom } = regulation
 
   const { isCancelledDirectly, hasCancelledAmendees, cancelledAmendees, effectiveUntil } =
-    getRegulationMetadata(regulation.attributes)
+    getRegulationMetadata(regulation)
 
   /* As a temporary solution, we use alert here, however incorrectly - its content should receive string,
    * but we need the ability to use bold text and links in the content.
@@ -52,31 +48,23 @@ const RegulationDetailMessage = ({ regulation }: RegulationDetailMessageProps) =
   const alertContent = isCancelledDirectly ? (
     <Typography variant="p-small" className="whitespace-normal">
       Toto VZN bolo zrušené všeobecne záväzným nariadením{' '}
-      <RegulationMLink regNumber={cancellation?.attributes?.regNumber} /> dňa{' '}
+      <RegulationMLink regNumber={cancellation?.regNumber} /> dňa{' '}
       <span className="font-medium">{formatDate(effectiveUntil)}</span>.
     </Typography>
   ) : hasCancelledAmendees ? (
     <Typography variant="p-small" className="whitespace-normal">
       Toto VZN je dodatkom{' '}
-      {cancelledAmendees?.map((cancelledAmendee, index) => {
+      {cancelledAmendees.filter(isDefined).map((cancelledAmendee, index) => {
         return (
-          <Fragment key={cancelledAmendee.id}>
-            {index === 0
-              ? ' k '
-              : index === (cancelledAmendees?.length ?? 0) - 1
-                ? ' a k '
-                : ', k '}{' '}
-            <RegulationMLink regNumber={cancelledAmendee.attributes?.regNumber} />, ktoré bolo
-            zrušené nariadením{' '}
-            <RegulationMLink
-              regNumber={cancelledAmendee.attributes?.cancellation?.data?.attributes?.regNumber}
-            />{' '}
-            s účinnosťou od{' '}
+          <Fragment key={cancelledAmendee.documentId}>
+            {index === 0 ? ' k ' : index === cancelledAmendees.length - 1 ? ' a k ' : ', k '}{' '}
+            <RegulationMLink regNumber={cancelledAmendee.regNumber} />, ktoré bolo zrušené
+            nariadením <RegulationMLink regNumber={cancelledAmendee.cancellation?.regNumber} /> s
+            účinnosťou od{' '}
             <span className="font-medium whitespace-nowrap">
               {' '}
               {formatDate(
-                amending?.find((amended) => amended.attributes?.cancellation?.data)?.attributes
-                  ?.cancellation?.data?.attributes?.effectiveFrom,
+                amending?.find((amended) => amended.cancellation)?.cancellation?.effectiveFrom,
               )}
             </span>
           </Fragment>
@@ -87,10 +75,7 @@ const RegulationDetailMessage = ({ regulation }: RegulationDetailMessageProps) =
   ) : (
     <Typography variant="p-small" className="whitespace-normal">
       Toto VZN je aktuálne platné, s dátumom účinnosti od{' '}
-      <span className="font-medium whitespace-nowrap">
-        {formatDate(regulation.attributes?.effectiveFrom)}
-      </span>
-      .
+      <span className="font-medium whitespace-nowrap">{formatDate(effectiveFrom)}</span>.
     </Typography>
   )
 

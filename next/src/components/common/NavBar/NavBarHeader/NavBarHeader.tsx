@@ -23,7 +23,7 @@ const NavBarHeader = ({ className }: NavBarProps) => {
   const { t } = useTranslation()
 
   const { general } = useGeneralContext()
-  const { header } = general?.data?.attributes ?? {}
+  const { header } = general ?? {}
   const { links, accountLink } = header ?? {}
 
   const { otherLanguage } = useLocalizations()

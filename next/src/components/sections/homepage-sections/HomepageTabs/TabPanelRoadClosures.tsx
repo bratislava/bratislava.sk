@@ -10,7 +10,7 @@ const TabPanelRoadClosures = () => {
   const locale = useLocale()
 
   const { homepage } = useHomepageContext()
-  const { tabs } = homepage?.attributes ?? {}
+  const { tabs } = homepage ?? {}
 
   return (
     <TabPanel id="RoadClosures">

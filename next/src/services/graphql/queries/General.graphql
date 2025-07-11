@@ -1,45 +1,35 @@
-fragment UploadImageSrcEntity on UploadFileEntity {
-  id
-  attributes {
-    url
-  }
+fragment UploadImageSrcEntity on UploadFile {
+  documentId
+  url
 }
 
-fragment UploadImageEntity on UploadFileEntity {
-  id
-  attributes {
-    url
-    width
-    height
-    caption
-    alternativeText
-    name
-  }
+fragment UploadImageEntity on UploadFile {
+  documentId
+  url
+  width
+  height
+  caption
+  alternativeText
+  name
 }
 
-fragment UploadFileEntity on UploadFileEntity {
-  id
-  attributes {
-    url
-    name
-    ext
-    size
-    createdAt
-    updatedAt
-  }
+fragment UploadFileEntity on UploadFile {
+  documentId
+  url
+  name
+  ext
+  size
+  createdAt
+  updatedAt
 }
 
 fragment CommonLink on ComponentBlocksCommonLink {
   label
   page {
-    data {
-      ...PageSlugEntity
-    }
+    ...PageSlugEntity
   }
   article {
-    data {
-      ...ArticleSlugEntity
-    }
+    ...ArticleSlugEntity
   }
   url
   analyticsId
@@ -48,9 +38,7 @@ fragment CommonLink on ComponentBlocksCommonLink {
 fragment PageLink on ComponentBlocksPageLink {
   label: title
   page {
-    data {
-      ...PageSlugEntity
-    }
+    ...PageSlugEntity
   }
   url
   analyticsId
@@ -82,9 +70,7 @@ fragment MenuLink on ComponentMenuMenuLink {
   id
   label
   page {
-    data {
-      ...PageSlugEntity
-    }
+    ...PageSlugEntity
   }
   url
   analyticsId
@@ -95,9 +81,7 @@ fragment MenuSection on ComponentMenuMenuSection {
   label
   icon
   page {
-    data {
-      ...PageSlugEntity
-    }
+    ...PageSlugEntity
   }
   links {
     ...MenuLink
@@ -109,9 +93,7 @@ fragment MenuItem on ComponentMenuMenuItem {
   label
   icon
   page {
-    data {
-      ...PageSlugEntity
-    }
+    ...PageSlugEntity
   }
   sections {
     ...MenuSection
@@ -121,9 +103,7 @@ fragment MenuItem on ComponentMenuMenuItem {
 fragment HeaderLink on ComponentGeneralHeaderLink {
   label
   page {
-    data {
-      ...PageSlugEntity
-    }
+    ...PageSlugEntity
   }
   url
   analyticsId
@@ -142,39 +122,25 @@ fragment General on General {
     }
   }
   newsPage {
-    data {
-      ...PageParentPages
-    }
+    ...PageParentPages
   }
   officialBoardPage {
-    data {
-      ...PageParentPages
-    }
+    ...PageParentPages
   }
   privacyPolicyPage {
-    data {
-      ...PageParentPages
-    }
+    ...PageParentPages
   }
   vznPage {
-    data {
-      ...PageParentPages
-    }
+    ...PageParentPages
   }
   inbaPage {
-    data {
-      ...PageParentPages
-    }
+    ...PageParentPages
   }
   inbaReleasesPage {
-    data {
-      ...PageParentPages
-    }
+    ...PageParentPages
   }
   documentsPage {
-    data {
-      ...PageParentPages
-    }
+    ...PageParentPages
   }
 }
 
@@ -185,43 +151,23 @@ fragment Alert on Alert {
 
 query General($locale: I18NLocaleCode!) {
   general(locale: $locale) {
-    data {
-      attributes {
-        ...General
-      }
-    }
+    ...General
   }
   menu(locale: $locale) {
-    data {
-      attributes {
-        menus {
-          ...MenuItem
-        }
-      }
+    menus {
+      ...MenuItem
     }
   }
   footer(locale: $locale) {
-    data {
-      attributes {
-        ...Footer
-      }
-    }
+    ...Footer
   }
   alert(locale: $locale) {
-    data {
-      attributes {
-        ...Alert
-      }
-    }
+    ...Alert
   }
 }
 
 query Alert($locale: I18NLocaleCode!) {
   alert(locale: $locale) {
-    data {
-      attributes {
-        ...Alert
-      }
-    }
+    ...Alert
   }
 }

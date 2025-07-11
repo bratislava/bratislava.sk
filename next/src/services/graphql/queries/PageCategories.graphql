@@ -1,15 +1,11 @@
-fragment PageCategoryEntity on PageCategoryEntity {
-  id
-  attributes {
-    title
-    color
-  }
+fragment PageCategoryEntity on PageCategory {
+  documentId
+  title
+  color
 }
 
 query PageCategories($locale: I18NLocaleCode) {
   pageCategories(pagination: { limit: -1 }, locale: $locale) {
-    data {
-      ...PageCategoryEntity
-    }
+    ...PageCategoryEntity
   }
 }

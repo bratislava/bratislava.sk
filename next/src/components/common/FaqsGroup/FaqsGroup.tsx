@@ -12,18 +12,12 @@ export type FaqsGroupProps = {
 const FaqsGroup = ({ faqs }: FaqsGroupProps) => {
   return (
     <div className="flex flex-col gap-4">
-      {faqs
-        .map((faq, index) => {
-          if (!faq.attributes) return null
-
-          return (
-            // eslint-disable-next-line react/no-array-index-key
-            <Accordion key={index} title={faq.attributes.title}>
-              <Markdown content={faq.attributes.body} variant="small" />
-            </Accordion>
-          )
-        })
-        .filter(isDefined)}
+      {faqs.filter(isDefined).map((faq, index) => (
+        // eslint-disable-next-line react/no-array-index-key
+        <Accordion key={index} title={faq.title}>
+          <Markdown content={faq.body} variant="small" />
+        </Accordion>
+      ))}
     </div>
   )
 }

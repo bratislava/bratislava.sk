@@ -34,14 +34,9 @@ const filterMarkdown = (text: string) => {
 }
 
 export async function listArticles() {
-  const { articles: articlesResponse } = await client.Dev_AllArticles({ locale: 'all', limit: -1 })
-
-  const articles = articlesResponse?.data ?? []
+  const { articles } = await client.Dev_AllArticles({ locale: 'all', limit: -1 })
 
   const filteredArticles = articles
-    .map(({ id, attributes }) => {
-      return { id, ...attributes }
-    })
     .filter(isDefined)
     // .filter((article) => !article.perex?.length)
     // .filter((article) => !article.content?.length)
@@ -63,20 +58,15 @@ export async function listArticles() {
   console.log('Number of filteredArticles:', filteredArticles.length)
   console.log(
     filteredArticles.map((article) => {
-      return `${article.id} ${article.slug}`
+      return `${article.documentId} ${article.slug}`
     }),
   )
 }
 
 export async function listPages() {
-  const { pages: pagesResponse } = await client.Dev_AllPages({ locale: 'all', limit: -1 })
-
-  const pages = pagesResponse?.data ?? []
+  const { pages } = await client.Dev_AllPages({ locale: 'all', limit: -1 })
 
   const filteredPages = pages
-    .map(({ id, attributes }) => {
-      return { id, ...attributes }
-    })
     .filter(isDefined)
     // .filter((page) => !page.title?.trim())
     // .filter((page) => page.title?.includes('/n'))
@@ -105,7 +95,7 @@ export async function listPages() {
   console.log('Number of filteredPages:', filteredPages.length)
   console.log(
     filteredPages.map((page) => {
-      return `${page.id} ${page.slug}`
+      return `${page.documentId} ${page.slug}`
     }),
   )
 }
@@ -132,7 +122,7 @@ export async function logAllSectionsByType({
   switch (entityType) {
     case 'page':
       data = await client.Dev_AllPages({ locale: locale ?? 'all', limit: -1 })
-      entities = data.pages?.data ?? []
+      entities = data.pages.filter(isDefined) ?? []
       break
 
     default:
@@ -151,22 +141,22 @@ export async function logAllSectionsByType({
   console.log('\n')
 
   entities.forEach((entity) => {
-    const strapiEntityLink = `${process.env.STRAPI_URL}/admin/content-manager/collection-types/api::${entityType}.${entityType}/${entity.id}`
-    const strapiEntityLinkProd = `https://bratislava-strapi.bratislava.sk/admin/content-manager/collection-types/api::${entityType}.${entityType}/${entity.id}`
+    const strapiEntityLink = `${process.env.STRAPI_URL}/admin/content-manager/collection-types/api::${entityType}.${entityType}/${entity.documentId}`
+    const strapiEntityLinkProd = `https://bratislava-strapi.bratislava.sk/admin/content-manager/collection-types/api::${entityType}.${entityType}/${entity.documentId}`
     // const nextEntityLinkProd = `https://bratislava.sk/${entity.attributes?.slug}`
-    const nextEntityLinkProd = `http://localhost:3000/${entity.attributes?.slug}`
+    const nextEntityLinkProd = `http://localhost:3000/${entity.slug}`
 
     const entityLog: { __typename: SectionName; title: string | null | undefined }[] = []
 
-    entity.attributes?.sections?.forEach((section) => {
+    entity.sections?.forEach((section) => {
       if (section?.__typename === sectionName) {
         entityLog.push({
           __typename: sectionName,
-          title: entity.attributes?.title,
+          title: entity.title,
         })
 
         foundSectionsCount += 1
-        if (entity.id && !foundEntities[entity.id]) {
+        if (entity.documentId && !foundEntities[entity.documentId]) {
           foundEntities.count += 1
         }
       }
@@ -182,7 +172,7 @@ export async function logAllSectionsByType({
     if (entityLog.length === 0) return
 
     if (showExtendedInfo) {
-      console.log(`[${entityType}] ${entity.attributes?.title}`)
+      console.log(`[${entityType}] ${entity.title}`)
       console.log(`${strapiEntityLink}`)
       console.log(`${strapiEntityLinkProd}`)
       console.log(`${nextEntityLinkProd}`)

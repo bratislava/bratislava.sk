@@ -24,16 +24,14 @@ const DocumentPageHeader = ({ document }: Props) => {
   const { t, i18n } = useTranslation()
   const locale = i18n.language
 
-  if (!document.attributes) return null
-
-  const { title, files, updatedAt } = document.attributes
+  const { title, files, updatedAt } = document
 
   // eslint-disable-next-line unicorn/no-array-callback-reference
-  const filteredFiles = files.data.filter(isDefined) ?? []
+  const filteredFiles = files.filter(isDefined) ?? []
 
   const formattedUpdatedAt = formatDate(updatedAt)
-  const fileExtensionString = formatFileExtension(filteredFiles[0].attributes?.ext)
-  const fileSizeString = formatFileSize(filteredFiles[0].attributes?.size, locale)
+  const fileExtensionString = formatFileExtension(filteredFiles[0].ext)
+  const fileSizeString = formatFileSize(filteredFiles[0].size, locale)
 
   const isSingleFile = filteredFiles.length === 1
 
@@ -75,13 +73,13 @@ const DocumentPageHeader = ({ document }: Props) => {
               {isSingleFile ? (
                 <Button
                   variant="solid"
-                  href={filteredFiles[0].attributes?.url ?? '#'}
+                  href={filteredFiles[0].url ?? '#'}
                   target="_blank"
                   hasLinkIcon={false}
                   startIcon={<DownloadIcon />}
                   // TODO use common function?
                   aria-label={t('FileList.aria.downloadFileAriaLabel', {
-                    title: filteredFiles[0].attributes?.name,
+                    title: filteredFiles[0].name,
                     format: fileExtensionString,
                     size: fileSizeString,
                   })}

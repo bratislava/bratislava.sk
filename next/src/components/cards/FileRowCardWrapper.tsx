@@ -22,14 +22,14 @@ const FileRowCardWrapper = ({ fileItem }: FileCardWrapperProps) => {
   const locale = useLocale()
   const { getDownloadAriaLabel } = useGetDownloadAriaLabel()
 
-  if (!fileItem.media?.data?.attributes) {
+  if (!fileItem.media) {
     return null
   }
 
   const transformFileProps = (
     fileItemInner: FileItemBlockFragment | FileBlockFragment,
   ): FileRowCardProps => {
-    const { url, ext, size, createdAt, name } = fileItemInner.media?.data?.attributes ?? {}
+    const { url, ext, size, createdAt, name } = fileItemInner.media ?? {}
 
     return {
       title: fileItemInner.title ?? name ?? '',

@@ -103,14 +103,11 @@ export const useQueryBySearchOption = ({
       const formattedData: SearchResult[] =
         data?.hits?.map((article): SearchResult => {
           return {
-            title: article.attributes?.title,
-            uniqueId: article.attributes?.slug,
-            linkHref: `/spravy/${article.attributes?.slug}`,
-            metadata: [
-              article.attributes?.tag?.data?.attributes?.title,
-              formatDate(article.attributes?.addedAt),
-            ],
-            coverImageSrc: article.attributes?.coverMedia?.data?.attributes?.url,
+            title: article.title,
+            uniqueId: article.slug,
+            linkHref: `/spravy/${article.slug}`,
+            metadata: [article.tag?.title, formatDate(article.addedAt)],
+            coverImageSrc: article.coverMedia?.url,
           }
         }) ?? []
 
@@ -148,14 +145,11 @@ export const useQueryBySearchOption = ({
       const formattedData: SearchResult[] =
         data?.hits?.map((inbaArticle): SearchResult => {
           return {
-            title: inbaArticle.attributes.title,
-            uniqueId: inbaArticle.attributes.slug,
-            linkHref: `/inba/clanky/${inbaArticle.attributes.slug}`,
-            metadata: [
-              inbaArticle.attributes?.inbaTag?.data?.attributes?.title,
-              formatDate(inbaArticle.attributes.publishedAt),
-            ],
-            coverImageSrc: inbaArticle.attributes.coverImage?.data.attributes.url,
+            title: inbaArticle.title,
+            uniqueId: inbaArticle.slug,
+            linkHref: `/inba/clanky/${inbaArticle.slug}`,
+            metadata: [inbaArticle.inbaTag?.title, formatDate(inbaArticle.publishedAt)],
+            coverImageSrc: inbaArticle.coverImage?.url,
           }
         }) ?? []
 

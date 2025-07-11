@@ -30,9 +30,9 @@ const filterTagsByPageCategory = (tags: TagEntityFragment[], pageCategory: Selec
     tags
       .filter(isDefined)
       .filter((tag) => {
-        return tag.attributes?.pageCategory?.data?.id === Array.from(pageCategory)[0]
+        return tag.pageCategory?.documentId === Array.from(pageCategory)[0]
       })
-      .map((subTag) => subTag?.id ?? '') ?? []
+      .map((subTag) => subTag?.documentId ?? '') ?? []
   )
 }
 
@@ -101,18 +101,18 @@ const ArticlesFilter = ({ pageCategories, tags, subtext, onTagChange }: Props) =
             </Chip>
             {pageCategories
               .map((pagecategory) => {
-                if (!pagecategory.id || !pagecategory.attributes?.title) {
+                if (!pagecategory.documentId || !pagecategory.title) {
                   return null
                 }
 
                 return (
                   <Chip
                     variant="large"
-                    key={pagecategory.id}
-                    id={pagecategory.id}
-                    style={getCategoryColorLocalStyle({ color: pagecategory.attributes.color })}
+                    key={pagecategory.documentId}
+                    id={pagecategory.documentId}
+                    style={getCategoryColorLocalStyle({ color: pagecategory.color })}
                   >
-                    {pagecategory.attributes.title}
+                    {pagecategory.title}
                   </Chip>
                 )
               })
@@ -137,25 +137,21 @@ const ArticlesFilter = ({ pageCategories, tags, subtext, onTagChange }: Props) =
                 {tags
                   .filter(isDefined)
                   .filter((tag) => {
-                    return (
-                      tag.attributes?.pageCategory?.data?.id === Array.from(selectedPageCategory)[0]
-                    )
+                    return tag.pageCategory?.documentId === Array.from(selectedPageCategory)[0]
                   })
                   .map((tag) => {
-                    if (!tag.id || !tag.attributes?.title) return null
+                    if (!tag.documentId || !tag.title) return null
 
                     return (
                       <Chip
                         variant="small"
                         style={getCategoryColorLocalStyle({
-                          color:
-                            tag.attributes.pageCategory?.data?.attributes?.color ??
-                            Enum_Pagecategory_Color.Red,
+                          color: tag.pageCategory?.color ?? Enum_Pagecategory_Color.Red,
                         })}
-                        key={tag.id}
-                        id={tag.id}
+                        key={tag.documentId}
+                        id={tag.documentId}
                       >
-                        {tag.attributes.title}
+                        {tag.title}
                       </Chip>
                     )
                   })}

@@ -28,19 +28,19 @@ export const getPageBreadcrumbs = (page: PageParentPagesFragment) => {
   if (!current) {
     return [] as Breadcrumb[]
   }
-  let parentPage = current?.attributes?.parentPage
+  let parentPage = current?.parentPage
   const breadcrumbs: Breadcrumb[] = [
     {
-      title: current?.attributes?.title ?? '',
-      path: current?.attributes?.slug ? `/${current.attributes.slug}` : null,
+      title: current?.title ?? '',
+      path: current?.slug ? `/${current.slug}` : null,
     },
   ]
-  while (parentPage?.data?.attributes) {
+  while (parentPage) {
     breadcrumbs.push({
-      title: parentPage?.data?.attributes?.title ?? '',
-      path: parentPage?.data?.attributes?.slug ? `/${parentPage.data.attributes.slug}` : null,
+      title: parentPage.title ?? '',
+      path: parentPage.slug ? `/${parentPage.slug}` : null,
     })
-    parentPage = parentPage?.data?.attributes?.parentPage
+    parentPage = parentPage.parentPage
   }
 
   return breadcrumbs.reverse()

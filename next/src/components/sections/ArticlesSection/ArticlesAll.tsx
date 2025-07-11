@@ -13,6 +13,7 @@ import {
   articlesFetcher,
   getArticlesQueryKey,
 } from '@/src/services/meili/fetchers/articlesFetcher'
+import { isDefined } from '@/src/utils/isDefined'
 import { useLocale } from '@/src/utils/useLocale'
 import { useRoutePreservedState } from '@/src/utils/useRoutePreservedState'
 
@@ -62,8 +63,8 @@ const ArticlesAll = ({ section }: Props) => {
   return (
     <div className="flex flex-col">
       <ArticlesFilter
-        pageCategories={pageCategoriesData?.pageCategories?.data ?? []}
-        tags={tagsData?.tags?.data ?? []}
+        pageCategories={pageCategoriesData?.pageCategories.filter(isDefined) ?? []}
+        tags={tagsData?.tags.filter(isDefined)}
         onTagChange={handleTagsChange}
       />
       <SectionHeader
@@ -74,11 +75,9 @@ const ArticlesAll = ({ section }: Props) => {
       />
       <div className="flex flex-col gap-8">
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {data?.hits.map((card) => {
-            return card.attributes ? (
-              <ArticleCard key={card.attributes.slug} {...transformArticleProps(card.attributes)} />
-            ) : null
-          })}
+          {data?.hits.map((card) => (
+            <ArticleCard key={card.slug} {...transformArticleProps(card)} />
+          ))}
         </div>
 
         {data?.estimatedTotalHits ? (

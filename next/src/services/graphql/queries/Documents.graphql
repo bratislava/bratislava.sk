@@ -1,43 +1,31 @@
-fragment DocumentCategoryEntity on DocumentCategoryEntity {
-  id
-  attributes {
-    title
-    slug
-  }
+fragment DocumentCategoryEntity on DocumentCategory {
+  documentId
+  title
+  slug
 }
 
-fragment DocumentSlugEntity on DocumentEntity {
+fragment DocumentSlugEntity on Document {
   __typename
-  id
-  attributes {
-    slug
-    title
-  }
+  documentId
+  slug
+  title
 }
 
-fragment DocumentEntity on DocumentEntity {
+fragment DocumentEntity on Document {
   ...DocumentSlugEntity
-  attributes {
-    publishedAt
-    updatedAt
-    documentCategory {
-      data {
-        ...DocumentCategoryEntity
-      }
-    }
-    description
-    files {
-      data {
-        ...UploadFileEntity
-      }
-    }
+  publishedAt
+  updatedAt
+  documentCategory {
+    ...DocumentCategoryEntity
+  }
+  description
+  files {
+    ...UploadFileEntity
   }
 }
 
 query DocumentBySlug($slug: String!) {
   documents(filters: { slug: { eq: $slug } }) {
-    data {
-      ...DocumentEntity
-    }
+    ...DocumentEntity
   }
 }

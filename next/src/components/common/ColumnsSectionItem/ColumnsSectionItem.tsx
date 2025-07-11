@@ -30,7 +30,7 @@ const ColumnsSectionItem = ({
   return (
     <div className={cn('flex grow justify-center', className)}>
       <div className="flex w-full flex-col items-center gap-4">
-        {image?.data?.attributes ? (
+        {image ? (
           <div
             className={cn('flex shrink-0 items-center justify-center', {
               'rounded-full bg-category-200 p-6': isCircleBackgroundVariant,
@@ -40,7 +40,7 @@ const ColumnsSectionItem = ({
             <div className={cn({ 'relative h-18 w-18': isCircleBackgroundVariant })}>
               <StrapiImage
                 alt=""
-                image={image.data.attributes}
+                image={image}
                 sizes={imageSizes}
                 // pointer-events must be disabled to drag-events work properly in Slider
                 className={cn('pointer-events-none', {
