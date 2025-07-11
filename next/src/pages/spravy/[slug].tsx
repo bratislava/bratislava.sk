@@ -22,7 +22,7 @@ type StaticParams = {
 }
 
 export const getStaticPaths: GetStaticPaths<StaticParams> = async () => {
-  const { articles } = await client.ArticlesStaticPaths({ limit: 30 })
+  const { articles } = await client.ArticlesStaticPaths({ limit: 30, locale: 'sk' })
 
   const paths = articles
     .filter((article) => article?.slug && article?.locale)

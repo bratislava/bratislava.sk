@@ -5791,6 +5791,7 @@ export type ArticleBySlugQuery = {
 
 export type ArticlesStaticPathsQueryVariables = Exact<{
   limit?: InputMaybe<Scalars['Int']['input']>
+  locale: Scalars['I18NLocaleCode']['input']
 }>
 
 export type ArticlesStaticPathsQuery = {
@@ -7769,7 +7770,9 @@ export type InbaArticleBySlugQuery = {
   } | null>
 }
 
-export type InbaArticlesStaticPathsQueryVariables = Exact<{ [key: string]: never }>
+export type InbaArticlesStaticPathsQueryVariables = Exact<{
+  locale: Scalars['I18NLocaleCode']['input']
+}>
 
 export type InbaArticlesStaticPathsQuery = {
   __typename?: 'Query'
@@ -13505,8 +13508,8 @@ export const ArticleBySlugDocument = gql`
   ${ArticleEntityFragmentDoc}
 `
 export const ArticlesStaticPathsDocument = gql`
-  query ArticlesStaticPaths($limit: Int = -1) {
-    articles(locale: "all", sort: "addedAt:desc", pagination: { limit: $limit }) {
+  query ArticlesStaticPaths($limit: Int = -1, $locale: I18NLocaleCode!) {
+    articles(locale: $locale, sort: "addedAt:desc", pagination: { limit: $limit }) {
       ...ArticleSlugEntity
     }
   }
@@ -13627,8 +13630,8 @@ export const InbaArticleBySlugDocument = gql`
   ${InbaArticleEntityFragmentDoc}
 `
 export const InbaArticlesStaticPathsDocument = gql`
-  query InbaArticlesStaticPaths {
-    inbaArticles(locale: "all", sort: "publishedAt:desc") {
+  query InbaArticlesStaticPaths($locale: I18NLocaleCode!) {
+    inbaArticles(locale: $locale, sort: "publishedAt:desc") {
       ...InbaArticleSlugEntity
     }
   }
@@ -13881,7 +13884,7 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
       )
     },
     ArticlesStaticPaths(
-      variables?: ArticlesStaticPathsQueryVariables,
+      variables: ArticlesStaticPathsQueryVariables,
       requestHeaders?: GraphQLClientRequestHeaders,
     ): Promise<ArticlesStaticPathsQuery> {
       return withWrapper(
@@ -14016,7 +14019,7 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
       )
     },
     InbaArticlesStaticPaths(
-      variables?: InbaArticlesStaticPathsQueryVariables,
+      variables: InbaArticlesStaticPathsQueryVariables,
       requestHeaders?: GraphQLClientRequestHeaders,
     ): Promise<InbaArticlesStaticPathsQuery> {
       return withWrapper(

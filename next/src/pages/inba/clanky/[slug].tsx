@@ -21,7 +21,7 @@ type StaticParams = {
 }
 
 export const getStaticPaths: GetStaticPaths<StaticParams> = async () => {
-  const { inbaArticles } = await client.InbaArticlesStaticPaths()
+  const { inbaArticles } = await client.InbaArticlesStaticPaths({ locale: 'sk' })
 
   const paths = inbaArticles
     .filter((inbaArticle) => inbaArticle?.slug && inbaArticle?.locale)

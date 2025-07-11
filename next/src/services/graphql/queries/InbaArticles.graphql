@@ -38,8 +38,8 @@ query InbaArticleBySlug($slug: String!, $locale: I18NLocaleCode!) {
   }
 }
 
-query InbaArticlesStaticPaths {
-  inbaArticles(locale: "all", sort: "publishedAt:desc") {
+query InbaArticlesStaticPaths($locale: I18NLocaleCode!) {
+  inbaArticles(locale: $locale, sort: "publishedAt:desc") {
     ...InbaArticleSlugEntity
   }
 }
