@@ -1,6 +1,6 @@
 'use strict'
 
-import { Strapi } from '@strapi/types/dist/core'
+import { Core } from '@strapi/strapi'
 
 type PermissionSubject = 'api::page.page' | 'api::article.article'
 
@@ -39,7 +39,7 @@ export default {
    * This gives you an opportunity to extend code.
    */
 
-  register({ strapi }: { strapi: Strapi }) {
+  register({ strapi }: { strapi: Core.Strapi }) {
     type AdminGroupId = 'starz'
 
     const getAdminGroup = async ({ adminGroupId }: { adminGroupId: AdminGroupId }) => {
@@ -119,7 +119,7 @@ export default {
    * This gives you an opportunity to set up your data model,
    * run jobs, or perform some special logic.
    */
-  async bootstrap({ strapi }: { strapi: Strapi }) {
+  async bootstrap({ strapi }: { strapi: Core.Strapi }) {
     // console.log('Bootstrap function started')
     //
     // // create Revalidate webhook according to this suggestion https://github.com/strapi/strapi/pull/20487#issuecomment-2482527848
