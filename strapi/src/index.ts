@@ -52,29 +52,29 @@ export default {
    * run jobs, or perform some special logic.
    */
   async bootstrap({ strapi }: { strapi: Core.Strapi }) {
-    // console.log('Bootstrap function started')
-    //
-    // // create Revalidate webhook according to this suggestion https://github.com/strapi/strapi/pull/20487#issuecomment-2482527848
-    // const webhook = await strapi.db.query('webhook').findOne({
-    //   where: {
-    //     name: 'Bootstrapped Revalidate',
-    //   },
-    // })
-    //
-    // if (!webhook) {
-    //   await strapi.webhookStore.createWebhook({
-    //     id: 'Bootstrapped Revalidate',
-    //     name: 'Bootstrapped Revalidate',
-    //     url: `${process.env.REVALIDATE_NEXT_URL}/api/revalidate?secret=${process.env.REVALIDATE_SECRET_TOKEN}`,
-    //     events: ['entry.create', 'entry.update', 'entry.publish'],
-    //     headers: {},
-    //     isEnabled: true,
-    //   })
-    //   console.log('Revalidate webhook created')
-    // } else {
-    //   console.log('Revalidate webhook already exists')
-    // }
-    //
+    console.log('Bootstrap function started')
+
+    // create Revalidate webhook according to this suggestion https://github.com/strapi/strapi/pull/20487#issuecomment-2419729414
+    const webhook = await strapi.db.query('strapi::webhook').findOne({
+      where: {
+        name: 'Bootstrapped Revalidate',
+      },
+    })
+
+    if (!webhook) {
+      strapi.get('webhookStore').createWebhook({
+        id: 'Bootstrapped Revalidate',
+        name: 'Bootstrapped Revalidate',
+        url: `${process.env.REVALIDATE_NEXT_URL}/api/revalidate?secret=${process.env.REVALIDATE_SECRET_TOKEN}`,
+        events: ['entry.create', 'entry.update', 'entry.publish'],
+        headers: {},
+        enabled: true,
+      })
+      console.log('Revalidate webhook created')
+    } else {
+      console.log('Revalidate webhook already exists')
+    }
+
     // await strapi.admin.services.permission.conditionProvider.registerMany(conditions)
   },
 }
