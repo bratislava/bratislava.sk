@@ -1,4 +1,4 @@
-type PermissionSubject = 'api::page.page' | 'api::article.article'
+// Docs: https://docs.strapi.io/cms/configurations/guides/rbac
 
 export const customRbacConditions = [
   {
@@ -6,75 +6,15 @@ export const customRbacConditions = [
     name: 'document-admin-group-includes-starz',
     // category (string, optional): conditions can be grouped into categories available in the admin panel; if undefined, the condition will appear under the "Default" category,
     plugin: 'content-manager',
-    // The user object passed to handler is not typed unfortunately
-    handler: async (user: any) => {
-      const documentsWithStarzAdminGroup = await strapi
-        .documents(user.permission.subject as PermissionSubject)
-        .findMany({
-          fields: [], // documentId is selected by default, and we don't need other fields so we provide an empty array
-          filters: {
-            adminGroups: {
-              adminGroupId: 'starz',
-            },
-          },
-          // populate: ['adminGroups'], // uncomment for debugging
-        })
 
-      const documentIds = documentsWithStarzAdminGroup?.map((document) => document.documentId) ?? []
-
-      return { documentId: { $in: documentIds } }
-    },
+    // Returns all documents which admin group relation contains "starz" admin group
+    // See inspiration in "Has same role as creator" condition https://github.com/strapi/strapi/blob/6eead6e4f529117e9530242ce0356e111abacced/packages/core/admin/server/src/config/admin-conditions.ts#L18
+    handler: async () => ({
+      adminGroups: {
+        $elemMatch: {
+          adminGroupId: { $eq: 'starz' },
+        },
+      },
+    }),
   },
 ]
-
-// User object example:
-
-// {
-//   id: 29,
-//     firstname: 'Developer',
-//   lastname: 'Account',
-//   username: null,
-//   email: 'dev@debug.com',
-//   password: '$2a$10$cC2sbJ0wmtV2vaOOTYMEPe/XUOWvuAelJBRK4cd6aQZkovzstewVa',
-//   resetPasswordToken: null,
-//   registrationToken: null,
-//   isActive: true,
-//   blocked: false,
-//   preferedLanguage: null,
-//   createdAt: '2022-07-14T05:22:00.761Z',
-//   updatedAt: '2025-07-13T18:26:14.754Z',
-//   documentId: 'ulofc6n1m0axc44kjf7oybqs',
-//   locale: null,
-//   publishedAt: '2025-07-09T12:03:54.397Z',
-//   roles: [
-//   {
-//     id: 10,
-//     name: 'Starz',
-//     code: 'starz-md207wo9',
-//     description: 'Vytvorené July 13th, 2025',
-//     createdAt: '2025-07-13T18:24:41.769Z',
-//     updatedAt: '2025-07-14T06:15:03.192Z',
-//     documentId: 'rd59edquhmlucexkq2dj82g8',
-//     locale: null,
-//     publishedAt: '2025-07-13T18:24:41.770Z'
-//   }
-// ],
-//   permission: {
-//   actionParameters: {},
-//   conditions: [ 'plugin::content-manager.document-admin-group-includes-starz' ],
-//     properties: {
-//     fields: [
-//       'title',       'slug',
-//       'perex',       'alias',
-//       'coverMedia',  'tag',
-//       'addedAt',     'content',
-//       'files.title', 'files.media',
-//       'gallery',     'adminGroups'
-//     ],
-//       locales: [ 'en', 'sk' ]
-//   },
-//   subject: 'api::article.article',
-//     id: 3872,
-//     action: 'plugin::content-manager.explorer.read'
-// }
-// }
