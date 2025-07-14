@@ -7,23 +7,22 @@ export const customRbacConditions = [
     // category (string, optional): conditions can be grouped into categories available in the admin panel; if undefined, the condition will appear under the "Default" category,
     plugin: 'content-manager',
     // The user object passed to handler is not typed unfortunately
-    // See more: https://docs-v4.strapi.io/dev-docs/configurations
     handler: async (user: any) => {
-      const entitiesWithStarzAdminGroup = await strapi
+      const documentsWithStarzAdminGroup = await strapi
         .documents(user.permission.subject as PermissionSubject)
         .findMany({
-          fields: ['id'],
+          fields: [], // documentId is selected by default, and we don't need other fields so we provide an empty array
           filters: {
             adminGroups: {
               adminGroupId: 'starz',
             },
           },
-          populate: ['adminGroups'],
+          // populate: ['adminGroups'], // uncomment for debugging
         })
 
-      const entityIds = entitiesWithStarzAdminGroup?.map((entity: any) => entity.id) ?? []
+      const documentIds = documentsWithStarzAdminGroup?.map((document) => document.documentId) ?? []
 
-      return { id: { $in: entityIds } }
+      return { documentId: { $in: documentIds } }
     },
   },
 ]
