@@ -34,15 +34,6 @@ export const inbaArticlesFetcher = (filters: InbaArticlesFilters, locale: string
         filters.tagIds.length > 0 ? `inba-article.inbaTag.id IN [${filters.tagIds.join(',')}]` : '',
       ],
       sort: ['inba-article.publishedAtTimestamp:desc'],
-      attributesToRetrieve: [
-        // Only properties that are required to display listing are retrieved
-        'inba-article.title',
-        'inba-article.slug',
-        'inba-article.perex',
-        'inba-article.coverImage.url',
-        'inba-article.publishedAt',
-        'inba-article.inbaTag.title',
-      ],
     })
     .then(unwrapFromSearchIndex('inba-article'))
     .then((response) => {
