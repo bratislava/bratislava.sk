@@ -7,8 +7,9 @@ type PermissionSubject = 'api::page.page' | 'api::article.article'
 
 const conditions = [
   {
-    displayName: 'Entity adminGroupId includes starz',
-    name: 'entity-admin-group-includes-starz',
+    displayName: 'Document adminGroupId includes starz',
+    name: 'document-admin-group-includes-starz',
+    // category (string, optional): conditions can be grouped into categories available in the admin panel; if undefined, the condition will appear under the "Default" category,
     plugin: 'content-manager',
     // The user object passed to handler is not typed unfortunately
     // See more: https://docs-v4.strapi.io/dev-docs/configurations
@@ -75,6 +76,6 @@ export default {
       console.log('Revalidate webhook already exists')
     }
 
-    // await strapi.admin.services.permission.conditionProvider.registerMany(conditions)
+    await strapi.admin.services.permission.conditionProvider.registerMany(conditions)
   },
 }
