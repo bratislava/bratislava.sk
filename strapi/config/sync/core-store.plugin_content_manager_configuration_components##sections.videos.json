@@ -61,13 +61,22 @@
           "searchable": false,
           "sortable": false
         }
+      },
+      "documentId": {
+        "edit": {},
+        "list": {
+          "label": "documentId",
+          "searchable": true,
+          "sortable": true
+        }
       }
     },
     "layouts": {
       "list": [
         "id",
         "title",
-        "subtitle"
+        "subtitle",
+        "documentId"
       ],
       "edit": [
         [

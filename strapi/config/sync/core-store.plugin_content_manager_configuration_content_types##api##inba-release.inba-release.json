@@ -190,9 +190,26 @@
           "searchable": true,
           "sortable": true
         }
+      },
+      "documentId": {
+        "edit": {},
+        "list": {
+          "label": "documentId",
+          "searchable": true,
+          "sortable": true
+        }
       }
     },
     "layouts": {
+      "list": [
+        "id",
+        "coverImage",
+        "title",
+        "updatedAt",
+        "releaseDate",
+        "files",
+        "inbaArticles"
+      ],
       "edit": [
         [
           {
@@ -240,15 +257,6 @@
             "size": 12
           }
         ]
-      ],
-      "list": [
-        "id",
-        "coverImage",
-        "title",
-        "updatedAt",
-        "releaseDate",
-        "files",
-        "inbaArticles"
       ]
     }
   },

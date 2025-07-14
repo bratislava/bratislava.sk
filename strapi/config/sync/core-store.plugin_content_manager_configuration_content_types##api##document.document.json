@@ -47,6 +47,20 @@
           "sortable": true
         }
       },
+      "files": {
+        "edit": {
+          "label": "Súbory",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "files",
+          "searchable": false,
+          "sortable": false
+        }
+      },
       "description": {
         "edit": {
           "label": "Popis",
@@ -74,20 +88,6 @@
           "label": "documentCategory",
           "searchable": true,
           "sortable": true
-        }
-      },
-      "files": {
-        "edit": {
-          "label": "Súbory",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "files",
-          "searchable": false,
-          "sortable": false
         }
       },
       "createdAt": {
@@ -147,9 +147,23 @@
           "searchable": true,
           "sortable": true
         }
+      },
+      "documentId": {
+        "edit": {},
+        "list": {
+          "label": "documentId",
+          "searchable": true,
+          "sortable": true
+        }
       }
     },
     "layouts": {
+      "list": [
+        "id",
+        "title",
+        "slug",
+        "createdAt"
+      ],
       "edit": [
         [
           {
@@ -179,12 +193,6 @@
             "size": 12
           }
         ]
-      ],
-      "list": [
-        "id",
-        "title",
-        "slug",
-        "createdAt"
       ]
     },
     "uid": "api::document.document"

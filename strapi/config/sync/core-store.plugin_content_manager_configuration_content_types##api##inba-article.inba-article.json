@@ -177,9 +177,26 @@
           "searchable": true,
           "sortable": true
         }
+      },
+      "documentId": {
+        "edit": {},
+        "list": {
+          "label": "documentId",
+          "searchable": true,
+          "sortable": true
+        }
       }
     },
     "layouts": {
+      "list": [
+        "id",
+        "coverImage",
+        "title",
+        "updatedAt",
+        "inbaTag",
+        "inbaRelease",
+        "perex"
+      ],
       "edit": [
         [
           {
@@ -221,15 +238,6 @@
             "size": 6
           }
         ]
-      ],
-      "list": [
-        "id",
-        "coverImage",
-        "title",
-        "updatedAt",
-        "inbaTag",
-        "inbaRelease",
-        "perex"
       ]
     }
   },

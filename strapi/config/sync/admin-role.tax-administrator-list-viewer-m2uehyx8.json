@@ -2,6 +2,8 @@
   "name": "Viewer: Tax Administrator list",
   "code": "tax-administrator-list-viewer-m2uehyx8",
   "description": "Can view Tax Administrators list and other content that is useful for product manager that handles taxes (mostly Pages, Faqs, Regulations, Menu...)",
+  "documentId": "rmyniks2b0z7j98mxtmycjos",
+  "locale": null,
   "permissions": [
     {
       "action": "plugin::content-manager.explorer.read",
@@ -18,7 +20,9 @@
         ]
       },
       "conditions": [],
-      "actionParameters": {}
+      "actionParameters": {},
+      "documentId": "wetdacp2cgwinbtleyumwb05",
+      "locale": null
     },
     {
       "action": "plugin::content-manager.explorer.read",
@@ -35,7 +39,9 @@
         ]
       },
       "conditions": [],
-      "actionParameters": {}
+      "actionParameters": {},
+      "documentId": "rpsl2uxzytzu11wxh89s1iyg",
+      "locale": null
     },
     {
       "action": "plugin::content-manager.explorer.read",
@@ -59,7 +65,9 @@
         ]
       },
       "conditions": [],
-      "actionParameters": {}
+      "actionParameters": {},
+      "documentId": "fusyokzcb0l1hprm64p43jm0",
+      "locale": null
     },
     {
       "action": "plugin::content-manager.explorer.read",
@@ -92,7 +100,9 @@
         ]
       },
       "conditions": [],
-      "actionParameters": {}
+      "actionParameters": {},
+      "documentId": "epm1s9nb80p47y1uthpf3zta",
+      "locale": null
     },
     {
       "action": "plugin::content-manager.explorer.read",
@@ -115,7 +125,9 @@
         ]
       },
       "conditions": [],
-      "actionParameters": {}
+      "actionParameters": {},
+      "documentId": "i4ps3q1jymlz4g9o6virf6xr",
+      "locale": null
     },
     {
       "action": "plugin::content-manager.explorer.read",
@@ -130,7 +142,9 @@
         ]
       },
       "conditions": [],
-      "actionParameters": {}
+      "actionParameters": {},
+      "documentId": "lu4ucmu6kw8xky6kl67jc0mu",
+      "locale": null
     }
   ]
 }
