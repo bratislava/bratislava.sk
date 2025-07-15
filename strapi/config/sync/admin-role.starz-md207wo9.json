@@ -1,0 +1,372 @@
+{
+  "name": "Starz",
+  "code": "starz-md207wo9",
+  "description": "Vytvorené July 13th, 2025",
+  "documentId": "rd59edquhmlucexkq2dj82g8",
+  "locale": null,
+  "permissions": [
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::admin-group.admin-group",
+      "properties": {
+        "fields": [
+          "title",
+          "adminGroupId",
+          "articles",
+          "pages"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": {},
+      "documentId": "bnrdp35uaaav132d0qz6dky4",
+      "locale": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "api::article.article",
+      "properties": {
+        "fields": [
+          "title",
+          "slug",
+          "perex",
+          "alias",
+          "coverMedia",
+          "tag",
+          "addedAt",
+          "content",
+          "files.title",
+          "files.media",
+          "gallery",
+          "adminGroups"
+        ],
+        "locales": [
+          "en",
+          "sk"
+        ]
+      },
+      "conditions": [
+        "plugin::content-manager.document-admin-group-includes-starz"
+      ],
+      "actionParameters": {},
+      "documentId": "f6655mwvibwdstnstzcjvec3",
+      "locale": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "subject": "api::article.article",
+      "properties": {
+        "locales": [
+          "en",
+          "sk"
+        ]
+      },
+      "conditions": [
+        "plugin::content-manager.document-admin-group-includes-starz"
+      ],
+      "actionParameters": {},
+      "documentId": "hqt7ddwpcpcoigispcnwr6uf",
+      "locale": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.publish",
+      "subject": "api::article.article",
+      "properties": {
+        "locales": [
+          "en",
+          "sk"
+        ]
+      },
+      "conditions": [
+        "plugin::content-manager.document-admin-group-includes-starz"
+      ],
+      "actionParameters": {},
+      "documentId": "jvmi4r44vg8lemwwv7sibc5m",
+      "locale": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::article.article",
+      "properties": {
+        "fields": [
+          "title",
+          "slug",
+          "perex",
+          "alias",
+          "coverMedia",
+          "tag",
+          "addedAt",
+          "content",
+          "files.title",
+          "files.media",
+          "gallery",
+          "adminGroups"
+        ],
+        "locales": [
+          "en",
+          "sk"
+        ]
+      },
+      "conditions": [
+        "plugin::content-manager.document-admin-group-includes-starz"
+      ],
+      "actionParameters": {},
+      "documentId": "pd6x38688d13ur4by65kkt94",
+      "locale": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::article.article",
+      "properties": {
+        "fields": [
+          "title",
+          "slug",
+          "perex",
+          "alias",
+          "coverMedia",
+          "tag",
+          "addedAt",
+          "content",
+          "files.title",
+          "files.media",
+          "gallery",
+          "adminGroups"
+        ],
+        "locales": [
+          "en",
+          "sk"
+        ]
+      },
+      "conditions": [
+        "plugin::content-manager.document-admin-group-includes-starz"
+      ],
+      "actionParameters": {},
+      "documentId": "wch4tv0buf4iftc1rjn5zjqr",
+      "locale": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "api::document.document",
+      "properties": {
+        "fields": [
+          "title",
+          "slug",
+          "files",
+          "description",
+          "documentCategory"
+        ]
+      },
+      "conditions": [
+        "plugin::content-manager.document-admin-group-includes-starz"
+      ],
+      "actionParameters": {},
+      "documentId": "wwydtr9v3df61isg2i3yx85b",
+      "locale": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "subject": "api::document.document",
+      "properties": {},
+      "conditions": [
+        "plugin::content-manager.document-admin-group-includes-starz"
+      ],
+      "actionParameters": {},
+      "documentId": "f21qlo6v0h267yuxbh1dj07e",
+      "locale": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.publish",
+      "subject": "api::document.document",
+      "properties": {},
+      "conditions": [
+        "plugin::content-manager.document-admin-group-includes-starz"
+      ],
+      "actionParameters": {},
+      "documentId": "n28uzbdbar22wrhe6qki2flh",
+      "locale": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::document.document",
+      "properties": {
+        "fields": [
+          "title",
+          "slug",
+          "files",
+          "description",
+          "documentCategory"
+        ]
+      },
+      "conditions": [
+        "plugin::content-manager.document-admin-group-includes-starz"
+      ],
+      "actionParameters": {},
+      "documentId": "cdvc5t4dgro0dh00ot9cymzf",
+      "locale": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::document.document",
+      "properties": {
+        "fields": [
+          "title",
+          "slug",
+          "files",
+          "description",
+          "documentCategory"
+        ]
+      },
+      "conditions": [
+        "plugin::content-manager.document-admin-group-includes-starz"
+      ],
+      "actionParameters": {},
+      "documentId": "pevn95wsxmysgtpn225322rw",
+      "locale": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "api::page.page",
+      "properties": {
+        "fields": [
+          "title",
+          "slug",
+          "alias",
+          "subtext",
+          "metaDiscription",
+          "keywords",
+          "pageCategory",
+          "pageColor",
+          "pageBackgroundImage",
+          "headerLinks.label",
+          "headerLinks.page",
+          "headerLinks.article",
+          "headerLinks.url",
+          "headerLinks.analyticsId",
+          "pageHeaderSections",
+          "sections",
+          "parentPage",
+          "childPages",
+          "relatedContents",
+          "adminGroups"
+        ],
+        "locales": [
+          "en",
+          "sk"
+        ]
+      },
+      "conditions": [
+        "plugin::content-manager.document-admin-group-includes-starz"
+      ],
+      "actionParameters": {},
+      "documentId": "nwc81ezs8j0alhj907kp255k",
+      "locale": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "subject": "api::page.page",
+      "properties": {
+        "locales": [
+          "en",
+          "sk"
+        ]
+      },
+      "conditions": [
+        "plugin::content-manager.document-admin-group-includes-starz"
+      ],
+      "actionParameters": {},
+      "documentId": "apo4mgvpovmdr657jhji0xey",
+      "locale": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.publish",
+      "subject": "api::page.page",
+      "properties": {
+        "locales": [
+          "en",
+          "sk"
+        ]
+      },
+      "conditions": [
+        "plugin::content-manager.document-admin-group-includes-starz"
+      ],
+      "actionParameters": {},
+      "documentId": "iy0q3x173y1pc03kgdn9j4is",
+      "locale": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::page.page",
+      "properties": {
+        "fields": [
+          "title",
+          "slug",
+          "alias",
+          "subtext",
+          "metaDiscription",
+          "keywords",
+          "pageCategory",
+          "pageColor",
+          "pageBackgroundImage",
+          "headerLinks.label",
+          "headerLinks.page",
+          "headerLinks.article",
+          "headerLinks.url",
+          "headerLinks.analyticsId",
+          "pageHeaderSections",
+          "sections",
+          "parentPage",
+          "childPages",
+          "relatedContents",
+          "adminGroups"
+        ],
+        "locales": [
+          "en",
+          "sk"
+        ]
+      },
+      "conditions": [
+        "plugin::content-manager.document-admin-group-includes-starz"
+      ],
+      "actionParameters": {},
+      "documentId": "c5vosozir2c8vr13x108ax6f",
+      "locale": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::page.page",
+      "properties": {
+        "fields": [
+          "title",
+          "slug",
+          "alias",
+          "subtext",
+          "metaDiscription",
+          "keywords",
+          "pageCategory",
+          "pageColor",
+          "pageBackgroundImage",
+          "headerLinks.label",
+          "headerLinks.page",
+          "headerLinks.article",
+          "headerLinks.url",
+          "headerLinks.analyticsId",
+          "pageHeaderSections",
+          "sections",
+          "parentPage",
+          "childPages",
+          "relatedContents",
+          "adminGroups"
+        ],
+        "locales": [
+          "en",
+          "sk"
+        ]
+      },
+      "conditions": [
+        "plugin::content-manager.document-admin-group-includes-starz"
+      ],
+      "actionParameters": {},
+      "documentId": "w42bwygqo5yt57xt1dslh5ti",
+      "locale": null
+    }
+  ]
+}
