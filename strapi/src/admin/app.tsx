@@ -43,6 +43,7 @@ export default {
           'Odpublikovať a nahradiť posledný návrh',
         'content-manager.containers.edit.tabs.draft': 'návrh',
         'content-manager.containers.edit.tabs.published': 'publikované',
+        'content-manager.containers.List.modified': 'Upravené',
         'content-manager.containers.edit.panels.default.title': 'Záznam',
 
         'content-manager.containers.edit.information.last-published.label': 'Publikované',
