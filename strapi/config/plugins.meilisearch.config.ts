@@ -74,7 +74,7 @@ const config = {
   page: {
     indexName: 'search_index',
     entriesQuery: {
-      locale: 'all',
+      locale: '*',
     },
     settings: searchIndexSettings,
     transformEntry: ({ entry }) => wrapSearchIndexEntry('page', entry),
@@ -82,7 +82,7 @@ const config = {
   article: {
     indexName: 'search_index',
     entriesQuery: {
-      locale: 'all',
+      locale: '*',
       populate: ['tag.pageCategory', 'coverMedia'],
     },
     settings: searchIndexSettings,
@@ -98,7 +98,7 @@ const config = {
   'blog-post': {
     indexName: 'search_index',
     entriesQuery: {
-      locale: 'all',
+      locale: '*',
       populate: ['tag.pageCategory', 'coverImage'],
     },
     settings: searchIndexSettings,
@@ -113,7 +113,7 @@ const config = {
   document: {
     indexName: 'search_index',
     entriesQuery: {
-      locale: 'all',
+      locale: '*',
     },
     settings: searchIndexSettings,
     transformEntry: ({ entry }) =>
@@ -128,7 +128,7 @@ const config = {
   'inba-article': {
     indexName: 'search_index',
     entriesQuery: {
-      locale: 'all',
+      locale: '*',
       populate: ['inbaTag', 'coverImage'],
     },
     settings: searchIndexSettings,
@@ -143,7 +143,7 @@ const config = {
   'inba-release': {
     indexName: 'search_index',
     entriesQuery: {
-      locale: 'all',
+      locale: '*',
     },
     settings: searchIndexSettings,
     transformEntry: ({ entry }) =>
@@ -154,6 +154,7 @@ const config = {
   regulation: {
     indexName: 'search_index',
     entriesQuery: {
+      locale: '*',
       populate: ['amending', 'amending.cancellation', 'cancellation'],
     },
     settings: searchIndexSettings,

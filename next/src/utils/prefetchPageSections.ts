@@ -29,7 +29,7 @@ export const prefetchPageSections = async (page: PageEntityFragment, locale: str
   const queryClient = new QueryClient()
 
   // TODO prefetch all needed sections
-  const sectionTypes = page?.attributes?.sections?.map((section) => section?.__typename) ?? []
+  const sectionTypes = page?.sections?.map((section) => section?.__typename) ?? []
 
   // if (sectionTypes.includes('ComponentSectionsPartners')) {
   //   await queryClient.prefetchQuery(getPartnersQueryKey(locale), () => partnersFetcher(locale))

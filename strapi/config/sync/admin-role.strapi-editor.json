@@ -2,5 +2,7 @@
   "name": "None",
   "code": "strapi-editor",
   "description": "No permissions. This role is used for deactivated users.",
+  "documentId": "whayx9bk9e9rp7gluysn1hgi",
+  "locale": null,
   "permissions": []
 }

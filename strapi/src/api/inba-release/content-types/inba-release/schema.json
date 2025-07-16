@@ -22,8 +22,8 @@
       "required": true
     },
     "releaseDate": {
-      "required": true,
-      "type": "date"
+      "type": "date",
+      "required": true
     },
     "perex": {
       "type": "text"
@@ -32,19 +32,22 @@
       "type": "media",
       "multiple": false,
       "required": false,
-      "allowedTypes": ["images"]
+      "allowedTypes": [
+        "images"
+      ]
     },
     "rearImage": {
       "type": "media",
       "multiple": false,
       "required": false,
-      "allowedTypes": ["images"]
+      "allowedTypes": [
+        "images"
+      ]
     },
     "files": {
       "type": "component",
-      "repeatable": true,
       "component": "blocks.file",
-      "min": 1
+      "repeatable": true
     },
     "inbaArticles": {
       "type": "relation",

@@ -18,19 +18,19 @@ export type GeneralPageProps = {
 const GeneralPageContent = ({ page }: GeneralPageProps) => {
   const breadcrumbs = useMemo(() => getPageBreadcrumbs(page), [page])
 
-  const filteredSections = page.attributes?.sections?.filter(isDefined) ?? []
+  const filteredSections = page.sections?.filter(isDefined) ?? []
 
   return (
     <>
       {/* Header */}
       <PageHeader
-        title={page.attributes?.title}
-        subtext={page.attributes?.subtext}
+        title={page.title}
+        subtext={page.subtext}
         breadcrumbs={breadcrumbs}
-        buttons={page.attributes?.headerLinks?.filter(isDefined)}
-        imageSrc={page.attributes?.pageBackgroundImage?.data?.attributes?.url}
+        buttons={page.headerLinks?.filter(isDefined)}
+        imageSrc={page.pageBackgroundImage?.url}
       >
-        <PageHeaderSections sections={page.attributes?.pageHeaderSections} />
+        <PageHeaderSections sections={page.pageHeaderSections} />
       </PageHeader>
 
       {/* Page - Common Sections */}
@@ -40,9 +40,9 @@ const GeneralPageContent = ({ page }: GeneralPageProps) => {
         <RelatedArticlesSection page={page} className="pt-5 lg:pt-9" />
       </div>
 
-      {page.attributes?.alias ? (
+      {page.alias ? (
         <SectionContainer>
-          <AliasInfoMessage alias={page.attributes.alias} variant="page" />
+          <AliasInfoMessage alias={page.alias} variant="page" />
         </SectionContainer>
       ) : null}
     </>

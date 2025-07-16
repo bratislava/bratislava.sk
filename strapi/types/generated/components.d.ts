@@ -1,6 +1,6 @@
-import type { Attribute, Schema } from '@strapi/strapi'
+import type { Schema, Struct } from '@strapi/strapi'
 
-export interface AccordionItemsFlatText extends Schema.Component {
+export interface AccordionItemsFlatText extends Struct.ComponentSchema {
   collectionName: 'components_accordion_items_flat_texts'
   info: {
     description: ''
@@ -8,125 +8,125 @@ export interface AccordionItemsFlatText extends Schema.Component {
     icon: 'adjust'
   }
   attributes: {
-    align: Attribute.Enumeration<['left', 'center', 'right']>
-    category: Attribute.String
-    content: Attribute.RichText
-    fileList: Attribute.Component<'blocks.file-item', true>
-    moreLinkPage: Attribute.Relation<'accordion-items.flat-text', 'oneToOne', 'api::page.page'>
-    moreLinkTitle: Attribute.String
-    moreLinkUrl: Attribute.String
-    width: Attribute.Enumeration<['narrow', 'default', 'wide', 'full']>
+    align: Schema.Attribute.Enumeration<['left', 'center', 'right']>
+    category: Schema.Attribute.String
+    content: Schema.Attribute.RichText
+    fileList: Schema.Attribute.Component<'blocks.file-item', true>
+    moreLinkPage: Schema.Attribute.Relation<'oneToOne', 'api::page.page'>
+    moreLinkTitle: Schema.Attribute.String
+    moreLinkUrl: Schema.Attribute.String
+    width: Schema.Attribute.Enumeration<['narrow', 'default', 'wide', 'full']>
   }
 }
 
-export interface AccordionItemsInstitution extends Schema.Component {
+export interface AccordionItemsInstitution extends Struct.ComponentSchema {
   collectionName: 'components_accordion_items_institutions'
   info: {
     displayName: 'Institution'
   }
   attributes: {
-    category: Attribute.String
-    firstColumn: Attribute.RichText
-    secondColumn: Attribute.RichText
-    subtitle: Attribute.RichText
-    thirdColumn: Attribute.RichText
-    title: Attribute.String
-    url: Attribute.String
-    urlLabel: Attribute.String
+    category: Schema.Attribute.String
+    firstColumn: Schema.Attribute.RichText
+    secondColumn: Schema.Attribute.RichText
+    subtitle: Schema.Attribute.RichText
+    thirdColumn: Schema.Attribute.RichText
+    title: Schema.Attribute.String
+    url: Schema.Attribute.String
+    urlLabel: Schema.Attribute.String
   }
 }
 
-export interface AccordionItemsInstitutionNarrow extends Schema.Component {
+export interface AccordionItemsInstitutionNarrow extends Struct.ComponentSchema {
   collectionName: 'components_sections_institution_narrows'
   info: {
     displayName: 'InstitutionNarrow'
     icon: 'ambulance'
   }
   attributes: {
-    category: Attribute.String
-    subtitle: Attribute.RichText
-    title: Attribute.String
-    url: Attribute.Text
-    urlLabel: Attribute.String
+    category: Schema.Attribute.String
+    subtitle: Schema.Attribute.RichText
+    title: Schema.Attribute.String
+    url: Schema.Attribute.Text
+    urlLabel: Schema.Attribute.String
   }
 }
 
-export interface BlocksColumnsItem extends Schema.Component {
+export interface BlocksColumnsItem extends Struct.ComponentSchema {
   collectionName: 'components_blocks_columns_items'
   info: {
     displayName: 'columns item'
   }
   attributes: {
-    image: Attribute.Media<'images'>
-    text: Attribute.RichText
-    title: Attribute.String
+    image: Schema.Attribute.Media<'images'>
+    text: Schema.Attribute.RichText
+    title: Schema.Attribute.String
   }
 }
 
-export interface BlocksCommonLink extends Schema.Component {
+export interface BlocksCommonLink extends Struct.ComponentSchema {
   collectionName: 'components_blocks_common_links'
   info: {
     description: ''
     displayName: 'common link'
   }
   attributes: {
-    analyticsId: Attribute.String
-    article: Attribute.Relation<'blocks.common-link', 'oneToOne', 'api::article.article'>
-    label: Attribute.String
-    page: Attribute.Relation<'blocks.common-link', 'oneToOne', 'api::page.page'>
-    url: Attribute.String
+    analyticsId: Schema.Attribute.String
+    article: Schema.Attribute.Relation<'oneToOne', 'api::article.article'>
+    label: Schema.Attribute.String
+    page: Schema.Attribute.Relation<'oneToOne', 'api::page.page'>
+    url: Schema.Attribute.String
   }
 }
 
-export interface BlocksComparisonCard extends Schema.Component {
+export interface BlocksComparisonCard extends Struct.ComponentSchema {
   collectionName: 'components_blocks_comparison_cards'
   info: {
     description: ''
     displayName: 'comparison card'
   }
   attributes: {
-    iconMedia: Attribute.Media<'images'>
-    items: Attribute.Component<'blocks.comparison-item', true> & Attribute.Required
-    title: Attribute.String & Attribute.Required
+    iconMedia: Schema.Attribute.Media<'images'>
+    items: Schema.Attribute.Component<'blocks.comparison-item', true> & Schema.Attribute.Required
+    title: Schema.Attribute.String & Schema.Attribute.Required
   }
 }
 
-export interface BlocksComparisonItem extends Schema.Component {
+export interface BlocksComparisonItem extends Struct.ComponentSchema {
   collectionName: 'components_blocks_comparison_items'
   info: {
     displayName: 'comparison item'
   }
   attributes: {
-    label: Attribute.String & Attribute.Required
+    label: Schema.Attribute.String & Schema.Attribute.Required
   }
 }
 
-export interface BlocksContactCard extends Schema.Component {
+export interface BlocksContactCard extends Struct.ComponentSchema {
   collectionName: 'components_blocks_contact_cards'
   info: {
     description: ''
     displayName: 'Contact card'
   }
   attributes: {
-    overrideLabel: Attribute.String
-    value: Attribute.Text & Attribute.Required
+    overrideLabel: Schema.Attribute.String
+    value: Schema.Attribute.Text & Schema.Attribute.Required
   }
 }
 
-export interface BlocksContactPersonCard extends Schema.Component {
+export interface BlocksContactPersonCard extends Struct.ComponentSchema {
   collectionName: 'components_blocks_contact_person_cards'
   info: {
     displayName: 'contact person card'
   }
   attributes: {
-    email: Attribute.Email
-    phone: Attribute.String
-    subtext: Attribute.String
-    title: Attribute.String & Attribute.Required
+    email: Schema.Attribute.Email
+    phone: Schema.Attribute.String
+    subtext: Schema.Attribute.String
+    title: Schema.Attribute.String & Schema.Attribute.Required
   }
 }
 
-export interface BlocksFile extends Schema.Component {
+export interface BlocksFile extends Struct.ComponentSchema {
   collectionName: 'components_blocks_files'
   info: {
     description: ''
@@ -134,47 +134,47 @@ export interface BlocksFile extends Schema.Component {
     icon: 'archive'
   }
   attributes: {
-    media: Attribute.Media<'images' | 'files' | 'videos' | 'audios'>
-    title: Attribute.String
+    media: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>
+    title: Schema.Attribute.String
   }
 }
 
-export interface BlocksFileItem extends Schema.Component {
+export interface BlocksFileItem extends Struct.ComponentSchema {
   collectionName: 'components_blocks_file_items'
   info: {
     description: ''
     displayName: 'file item'
   }
   attributes: {
-    media: Attribute.Media<'images' | 'files'> & Attribute.Required
-    title: Attribute.String
+    media: Schema.Attribute.Media<'images' | 'files'> & Schema.Attribute.Required
+    title: Schema.Attribute.String
   }
 }
 
-export interface BlocksFooterColumn extends Schema.Component {
+export interface BlocksFooterColumn extends Struct.ComponentSchema {
   collectionName: 'components_blocks_footer_column'
   info: {
     displayName: 'Footer Column'
   }
   attributes: {
-    links: Attribute.Component<'blocks.common-link', true>
-    title: Attribute.String & Attribute.Required
+    links: Schema.Attribute.Component<'blocks.common-link', true>
+    title: Schema.Attribute.String & Schema.Attribute.Required
   }
 }
 
-export interface BlocksHomepageHighlightsItem extends Schema.Component {
+export interface BlocksHomepageHighlightsItem extends Struct.ComponentSchema {
   collectionName: 'components_blocks_homepage_highlights_items'
   info: {
     description: ''
     displayName: 'homepage highlights item'
   }
   attributes: {
-    image: Attribute.Media<'images'> & Attribute.Required
-    link: Attribute.Component<'blocks.common-link'> & Attribute.Required
+    image: Schema.Attribute.Media<'images'> & Schema.Attribute.Required
+    link: Schema.Attribute.Component<'blocks.common-link', false> & Schema.Attribute.Required
   }
 }
 
-export interface BlocksInBa extends Schema.Component {
+export interface BlocksInBa extends Struct.ComponentSchema {
   collectionName: 'components_blocks_in_bas'
   info: {
     description: ''
@@ -182,69 +182,69 @@ export interface BlocksInBa extends Schema.Component {
     icon: 'asterisk'
   }
   attributes: {
-    content: Attribute.String
-    title: Attribute.String
+    content: Schema.Attribute.String
+    title: Schema.Attribute.String
   }
 }
 
-export interface BlocksNumericalListItem extends Schema.Component {
+export interface BlocksNumericalListItem extends Struct.ComponentSchema {
   collectionName: 'components_blocks_numerical_list_items'
   info: {
     description: ''
     displayName: 'Numerical List Item'
   }
   attributes: {
-    text: Attribute.RichText
-    title: Attribute.String & Attribute.Private
+    text: Schema.Attribute.RichText
+    title: Schema.Attribute.String & Schema.Attribute.Private
   }
 }
 
-export interface BlocksPageLink extends Schema.Component {
+export interface BlocksPageLink extends Struct.ComponentSchema {
   collectionName: 'components_blocks_page_links'
   info: {
     description: ''
     displayName: 'page link'
   }
   attributes: {
-    analyticsId: Attribute.String
-    page: Attribute.Relation<'blocks.page-link', 'oneToOne', 'api::page.page'>
-    title: Attribute.String
-    url: Attribute.String
+    analyticsId: Schema.Attribute.String
+    page: Schema.Attribute.Relation<'oneToOne', 'api::page.page'>
+    title: Schema.Attribute.String
+    url: Schema.Attribute.String
   }
 }
 
-export interface BlocksPartner extends Schema.Component {
+export interface BlocksPartner extends Struct.ComponentSchema {
   collectionName: 'components_blocks_partners'
   info: {
     displayName: 'partner'
   }
   attributes: {
-    logo: Attribute.Media<'images'> & Attribute.Required
-    title: Attribute.String & Attribute.Required
-    url: Attribute.String
+    logo: Schema.Attribute.Media<'images'> & Schema.Attribute.Required
+    title: Schema.Attribute.String & Schema.Attribute.Required
+    url: Schema.Attribute.String
   }
 }
 
-export interface BlocksProsAndConsCard extends Schema.Component {
+export interface BlocksProsAndConsCard extends Struct.ComponentSchema {
   collectionName: 'components_blocks_pros_and_cons_cards'
   info: {
     description: ''
     displayName: 'pros and cons card'
   }
   attributes: {
-    items: Attribute.Component<'blocks.comparison-item', true> & Attribute.Required
-    title: Attribute.String & Attribute.Required
+    items: Schema.Attribute.Component<'blocks.comparison-item', true> & Schema.Attribute.Required
+    title: Schema.Attribute.String & Schema.Attribute.Required
   }
 }
 
-export interface BlocksTopServicesItem extends Schema.Component {
+export interface BlocksTopServicesItem extends Struct.ComponentSchema {
   collectionName: 'components_blocks_top_services_items'
   info: {
     description: ''
     displayName: 'top services item'
   }
   attributes: {
-    icon: Attribute.Enumeration<
+    icon: Schema.Attribute.Enumeration<
       [
         'bratislavske_konto',
         'dane_a_poplatky',
@@ -255,105 +255,109 @@ export interface BlocksTopServicesItem extends Schema.Component {
         'organizacna_struktura',
         'uradne_hodiny',
         'pracovne_prilezitosti',
-        'prenajom_priestorov'
+        'prenajom_priestorov',
       ]
     > &
-      Attribute.Required &
-      Attribute.DefaultTo<'bratislavske_konto'>
-    link: Attribute.Component<'blocks.common-link'> & Attribute.Required
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'bratislavske_konto'>
+    link: Schema.Attribute.Component<'blocks.common-link', false> & Schema.Attribute.Required
   }
 }
 
-export interface BlocksVideo extends Schema.Component {
+export interface BlocksVideo extends Struct.ComponentSchema {
   collectionName: 'components_blocks_videos'
   info: {
     displayName: 'Video'
   }
   attributes: {
-    speaker: Attribute.String
-    title: Attribute.String
-    url: Attribute.String
+    speaker: Schema.Attribute.String
+    title: Schema.Attribute.String
+    url: Schema.Attribute.String
   }
 }
 
-export interface GeneralHeader extends Schema.Component {
+export interface GeneralHeader extends Struct.ComponentSchema {
   collectionName: 'components_general_headers'
   info: {
     description: ''
     displayName: 'header'
   }
   attributes: {
-    accountLink: Attribute.Component<'blocks.common-link'>
-    links: Attribute.Component<'general.header-link', true>
+    accountLink: Schema.Attribute.Component<'blocks.common-link', false>
+    links: Schema.Attribute.Component<'general.header-link', true>
   }
 }
 
-export interface GeneralHeaderLink extends Schema.Component {
+export interface GeneralHeaderLink extends Struct.ComponentSchema {
   collectionName: 'components_general_header_links'
   info: {
     description: ''
     displayName: 'header link'
   }
   attributes: {
-    analyticsId: Attribute.String
-    icon: Attribute.Enumeration<['esluzby', 'kontakt', 'ukraina', 'som_turista']> &
-      Attribute.Required &
-      Attribute.DefaultTo<'kontakt'>
-    label: Attribute.String
-    page: Attribute.Relation<'general.header-link', 'oneToOne', 'api::page.page'>
-    showOnDesktop: Attribute.Boolean & Attribute.Required & Attribute.DefaultTo<true>
-    showOnMobile: Attribute.Boolean & Attribute.Required & Attribute.DefaultTo<true>
-    url: Attribute.String
+    analyticsId: Schema.Attribute.String
+    icon: Schema.Attribute.Enumeration<['esluzby', 'kontakt', 'ukraina', 'som_turista']> &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'kontakt'>
+    label: Schema.Attribute.String
+    page: Schema.Attribute.Relation<'oneToOne', 'api::page.page'>
+    showOnDesktop: Schema.Attribute.Boolean &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<true>
+    showOnMobile: Schema.Attribute.Boolean &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<true>
+    url: Schema.Attribute.String
   }
 }
 
-export interface MenuMenuItem extends Schema.Component {
+export interface MenuMenuItem extends Struct.ComponentSchema {
   collectionName: 'components_menu_menu_items'
   info: {
     description: ''
     displayName: 'menu item'
   }
   attributes: {
-    icon: Attribute.Enumeration<
+    icon: Schema.Attribute.Enumeration<
       [
         'mesto_01',
         'doprava_mapy_02',
         'zp_vystavba_03',
         'socialna_pomoc_04',
         'vzdelavanie_05',
-        'kultura_06'
+        'kultura_06',
       ]
     > &
-      Attribute.Required &
-      Attribute.DefaultTo<'mesto_01'>
-    label: Attribute.Text & Attribute.Required
-    page: Attribute.Relation<'menu.menu-item', 'oneToOne', 'api::page.page'>
-    sections: Attribute.Component<'menu.menu-section', true>
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'mesto_01'>
+    label: Schema.Attribute.Text & Schema.Attribute.Required
+    page: Schema.Attribute.Relation<'oneToOne', 'api::page.page'>
+    sections: Schema.Attribute.Component<'menu.menu-section', true>
   }
 }
 
-export interface MenuMenuLink extends Schema.Component {
+export interface MenuMenuLink extends Struct.ComponentSchema {
   collectionName: 'components_menu_menu_links'
   info: {
     description: ''
     displayName: 'menu link'
   }
   attributes: {
-    analyticsId: Attribute.String
-    label: Attribute.String
-    page: Attribute.Relation<'menu.menu-link', 'oneToOne', 'api::page.page'>
-    url: Attribute.String
+    analyticsId: Schema.Attribute.String
+    label: Schema.Attribute.String
+    page: Schema.Attribute.Relation<'oneToOne', 'api::page.page'>
+    url: Schema.Attribute.String
   }
 }
 
-export interface MenuMenuSection extends Schema.Component {
+export interface MenuMenuSection extends Struct.ComponentSchema {
   collectionName: 'components_menu_menu_sections'
   info: {
     description: ''
     displayName: 'menu section'
   }
   attributes: {
-    icon: Attribute.Enumeration<
+    icon: Schema.Attribute.Enumeration<
       [
         'sprava_mesta_01',
         'transparentne_mesto_01',
@@ -390,178 +394,174 @@ export interface MenuMenuSection extends Schema.Component {
         'sluzby_06',
         'koncepcia_06',
         'komunity_06',
-        'covid_06'
+        'covid_06',
       ]
     > &
-      Attribute.Required &
-      Attribute.DefaultTo<'sprava_mesta_01'>
-    label: Attribute.String & Attribute.Required
-    links: Attribute.Component<'menu.menu-link', true>
-    page: Attribute.Relation<'menu.menu-section', 'oneToOne', 'api::page.page'>
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'sprava_mesta_01'>
+    label: Schema.Attribute.String & Schema.Attribute.Required
+    links: Schema.Attribute.Component<'menu.menu-link', true>
+    page: Schema.Attribute.Relation<'oneToOne', 'api::page.page'>
   }
 }
 
-export interface SectionsAccordion extends Schema.Component {
+export interface SectionsAccordion extends Struct.ComponentSchema {
   collectionName: 'components_sections_accordions'
   info: {
     description: ''
     displayName: 'Accordion'
   }
   attributes: {
-    flatText: Attribute.Component<'accordion-items.flat-text', true>
-    institutions: Attribute.Component<'accordion-items.institution', true>
-    institutionsNarrow: Attribute.Component<'accordion-items.institution-narrow', true>
-    title: Attribute.String
+    flatText: Schema.Attribute.Component<'accordion-items.flat-text', true>
+    institutions: Schema.Attribute.Component<'accordion-items.institution', true>
+    institutionsNarrow: Schema.Attribute.Component<'accordion-items.institution-narrow', true>
+    title: Schema.Attribute.String
   }
 }
 
-export interface SectionsArticles extends Schema.Component {
+export interface SectionsArticles extends Struct.ComponentSchema {
   collectionName: 'components_sections_articles'
   info: {
     description: ''
     displayName: 'Articles'
   }
   attributes: {
-    category: Attribute.Relation<
-      'sections.articles',
-      'oneToOne',
-      'api::page-category.page-category'
-    >
-    showAll: Attribute.Boolean & Attribute.DefaultTo<false>
-    text: Attribute.Text
-    title: Attribute.String
+    category: Schema.Attribute.Relation<'oneToOne', 'api::page-category.page-category'>
+    showAll: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>
+    text: Schema.Attribute.Text
+    title: Schema.Attribute.String
   }
 }
 
-export interface SectionsBanner extends Schema.Component {
+export interface SectionsBanner extends Struct.ComponentSchema {
   collectionName: 'components_sections_banners'
   info: {
     description: ''
     displayName: 'Banner'
   }
   attributes: {
-    content: Attribute.Text
-    contentPosition: Attribute.Enumeration<['left', 'right']> &
-      Attribute.Required &
-      Attribute.DefaultTo<'left'>
-    media: Attribute.Media<'images'> & Attribute.Required
-    primaryLink: Attribute.Component<'blocks.common-link'>
-    secondaryLink: Attribute.Component<'blocks.common-link'>
-    tertiaryLink: Attribute.Component<'blocks.common-link'>
-    title: Attribute.String & Attribute.Required
-    variant: Attribute.Enumeration<['color', 'dark', 'white_condensed']> &
-      Attribute.Required &
-      Attribute.DefaultTo<'color'>
+    content: Schema.Attribute.Text
+    contentPosition: Schema.Attribute.Enumeration<['left', 'right']> &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'left'>
+    media: Schema.Attribute.Media<'images'> & Schema.Attribute.Required
+    primaryLink: Schema.Attribute.Component<'blocks.common-link', false>
+    secondaryLink: Schema.Attribute.Component<'blocks.common-link', false>
+    tertiaryLink: Schema.Attribute.Component<'blocks.common-link', false>
+    title: Schema.Attribute.String & Schema.Attribute.Required
+    variant: Schema.Attribute.Enumeration<['color', 'dark', 'white_condensed']> &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'color'>
   }
 }
 
-export interface SectionsCalculator extends Schema.Component {
+export interface SectionsCalculator extends Struct.ComponentSchema {
   collectionName: 'components_sections_calculators'
   info: {
     description: ''
     displayName: 'Calculator'
   }
   attributes: {
-    another_adult_value: Attribute.Decimal
-    child_value: Attribute.Decimal
-    single_adult_value: Attribute.Decimal
+    another_adult_value: Schema.Attribute.Decimal
+    child_value: Schema.Attribute.Decimal
+    single_adult_value: Schema.Attribute.Decimal
   }
 }
 
-export interface SectionsColumnedText extends Schema.Component {
+export interface SectionsColumnedText extends Struct.ComponentSchema {
   collectionName: 'components_sections_columned_texts'
   info: {
     description: ''
     displayName: 'Columned Text'
   }
   attributes: {
-    content: Attribute.RichText
-    title: Attribute.String
+    content: Schema.Attribute.RichText
+    title: Schema.Attribute.String
   }
 }
 
-export interface SectionsColumns extends Schema.Component {
+export interface SectionsColumns extends Struct.ComponentSchema {
   collectionName: 'components_sections_columns'
   info: {
     description: ''
     displayName: 'Columns'
   }
   attributes: {
-    columns: Attribute.Component<'blocks.columns-item', true> &
-      Attribute.Required &
-      Attribute.SetMinMax<
+    columns: Schema.Attribute.Component<'blocks.columns-item', true> &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMax<
         {
           min: 1
         },
         number
       >
-    imageVariant: Attribute.Enumeration<
+    imageVariant: Schema.Attribute.Enumeration<
       [
         'columnsSection.imageVariant.withCircleBackground',
-        'columnsSection.imageVariant.imageOriginalSize'
+        'columnsSection.imageVariant.imageOriginalSize',
       ]
     > &
-      Attribute.Required &
-      Attribute.DefaultTo<'columnsSection.imageVariant.withCircleBackground'>
-    responsiveLayout: Attribute.Enumeration<
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'columnsSection.imageVariant.withCircleBackground'>
+    responsiveLayout: Schema.Attribute.Enumeration<
       ['columnsSection.responsiveLayout.slider', 'columnsSection.responsiveLayout.oneColumn']
     > &
-      Attribute.Required &
-      Attribute.DefaultTo<'columnsSection.responsiveLayout.slider'>
-    text: Attribute.Text
-    title: Attribute.String
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'columnsSection.responsiveLayout.slider'>
+    text: Schema.Attribute.Text
+    title: Schema.Attribute.String
   }
 }
 
-export interface SectionsComparisonSection extends Schema.Component {
+export interface SectionsComparisonSection extends Struct.ComponentSchema {
   collectionName: 'components_sections_comparison_sections'
   info: {
     description: ''
     displayName: 'Comparison Section'
   }
   attributes: {
-    cards: Attribute.Component<'blocks.comparison-card', true> &
-      Attribute.Required &
-      Attribute.SetMinMax<
+    cards: Schema.Attribute.Component<'blocks.comparison-card', true> &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMax<
         {
           max: 3
         },
         number
       >
-    text: Attribute.Text
-    textAlign: Attribute.Enumeration<['left', 'center']> &
-      Attribute.Required &
-      Attribute.DefaultTo<'left'>
-    title: Attribute.String
+    text: Schema.Attribute.Text
+    textAlign: Schema.Attribute.Enumeration<['left', 'center']> &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'left'>
+    title: Schema.Attribute.String
   }
 }
 
-export interface SectionsContactsSection extends Schema.Component {
+export interface SectionsContactsSection extends Struct.ComponentSchema {
   collectionName: 'components_sections_contacts_sections'
   info: {
     description: ''
     displayName: 'Contacts'
   }
   attributes: {
-    addressContacts: Attribute.Component<'blocks.contact-card', true>
-    description: Attribute.RichText
-    emailContacts: Attribute.Component<'blocks.contact-card', true>
-    openingHoursContacts: Attribute.Component<'blocks.contact-card', true>
-    personContacts: Attribute.Component<'blocks.contact-person-card', true>
-    phoneContacts: Attribute.Component<'blocks.contact-card', true>
-    title: Attribute.String
-    webContacts: Attribute.Component<'blocks.contact-card', true>
+    addressContacts: Schema.Attribute.Component<'blocks.contact-card', true>
+    description: Schema.Attribute.RichText
+    emailContacts: Schema.Attribute.Component<'blocks.contact-card', true>
+    openingHoursContacts: Schema.Attribute.Component<'blocks.contact-card', true>
+    personContacts: Schema.Attribute.Component<'blocks.contact-person-card', true>
+    phoneContacts: Schema.Attribute.Component<'blocks.contact-card', true>
+    title: Schema.Attribute.String
+    webContacts: Schema.Attribute.Component<'blocks.contact-card', true>
   }
 }
 
-export interface SectionsDivider extends Schema.Component {
+export interface SectionsDivider extends Struct.ComponentSchema {
   collectionName: 'components_sections_dividers'
   info: {
     description: ''
     displayName: 'Divider'
   }
   attributes: {
-    style: Attribute.Enumeration<
+    style: Schema.Attribute.Enumeration<
       [
         'mesto_01_full_width',
         'hrad_01_full_width',
@@ -576,69 +576,65 @@ export interface SectionsDivider extends Schema.Component {
         'budovy_04_full_width',
         'vzdelavanie',
         'skola',
-        'divadlo'
+        'divadlo',
       ]
     >
   }
 }
 
-export interface SectionsDocuments extends Schema.Component {
+export interface SectionsDocuments extends Struct.ComponentSchema {
   collectionName: 'components_sections_documents'
   info: {
     description: ''
     displayName: 'Documents'
   }
   attributes: {
-    documents: Attribute.Relation<'sections.documents', 'oneToMany', 'api::document.document'>
-    showAll: Attribute.Boolean & Attribute.DefaultTo<false>
-    text: Attribute.Text
-    title: Attribute.String & Attribute.DefaultTo<'Dokumenty'>
+    documents: Schema.Attribute.Relation<'oneToMany', 'api::document.document'>
+    showAll: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>
+    text: Schema.Attribute.Text
+    title: Schema.Attribute.String & Schema.Attribute.DefaultTo<'Dokumenty'>
   }
 }
 
-export interface SectionsFaqCategories extends Schema.Component {
+export interface SectionsFaqCategories extends Struct.ComponentSchema {
   collectionName: 'components_sections_faq_categories'
   info: {
     displayName: 'FAQ categories'
   }
   attributes: {
-    faqCategories: Attribute.Relation<
-      'sections.faq-categories',
-      'oneToMany',
-      'api::faq-category.faq-category'
-    >
-    text: Attribute.Text
-    title: Attribute.String
+    faqCategories: Schema.Attribute.Relation<'oneToMany', 'api::faq-category.faq-category'>
+    text: Schema.Attribute.Text
+    title: Schema.Attribute.String
   }
 }
 
-export interface SectionsFaqs extends Schema.Component {
+export interface SectionsFaqs extends Struct.ComponentSchema {
   collectionName: 'components_sections_faqs'
   info: {
     description: ''
     displayName: 'FAQs'
   }
   attributes: {
-    faqs: Attribute.Relation<'sections.faqs', 'oneToMany', 'api::faq.faq'>
-    text: Attribute.Text
-    title: Attribute.String
+    faqs: Schema.Attribute.Relation<'oneToMany', 'api::faq.faq'>
+    text: Schema.Attribute.Text
+    title: Schema.Attribute.String
   }
 }
 
-export interface SectionsFileList extends Schema.Component {
+export interface SectionsFileList extends Struct.ComponentSchema {
   collectionName: 'components_sections_file_lists'
   info: {
     description: ''
     displayName: 'File List'
   }
   attributes: {
-    fileList: Attribute.Component<'blocks.file', true>
-    text: Attribute.Text
-    title: Attribute.String
+    fileList: Schema.Attribute.Component<'blocks.file', true>
+    text: Schema.Attribute.Text
+    title: Schema.Attribute.String
   }
 }
 
-export interface SectionsGallery extends Schema.Component {
+export interface SectionsGallery extends Struct.ComponentSchema {
   collectionName: 'components_sections_galleries'
   info: {
     description: ''
@@ -646,147 +642,155 @@ export interface SectionsGallery extends Schema.Component {
     icon: 'camera'
   }
   attributes: {
-    medias: Attribute.Media<'images', true> & Attribute.Required
-    text: Attribute.Text
-    title: Attribute.String
+    medias: Schema.Attribute.Media<'images', true> & Schema.Attribute.Required
+    text: Schema.Attribute.Text
+    title: Schema.Attribute.String
   }
 }
 
-export interface SectionsHomepageEvents extends Schema.Component {
+export interface SectionsHomepageEvents extends Struct.ComponentSchema {
   collectionName: 'components_sections_homepage_events'
   info: {
     displayName: 'homepage events'
   }
   attributes: {
-    eventsPageLink: Attribute.Component<'blocks.common-link'>
-    text: Attribute.Text
-    title: Attribute.String
+    eventsPageLink: Schema.Attribute.Component<'blocks.common-link', false>
+    text: Schema.Attribute.Text
+    title: Schema.Attribute.String
   }
 }
 
-export interface SectionsHomepageHighlights extends Schema.Component {
+export interface SectionsHomepageHighlights extends Struct.ComponentSchema {
   collectionName: 'components_sections_homepage_highlights'
   info: {
     description: ''
     displayName: 'homepage highlights'
   }
   attributes: {
-    cards: Attribute.Component<'blocks.homepage-highlights-item', true>
-    text: Attribute.Text
-    title: Attribute.String
+    cards: Schema.Attribute.Component<'blocks.homepage-highlights-item', true>
+    text: Schema.Attribute.Text
+    title: Schema.Attribute.String
   }
 }
 
-export interface SectionsHomepageMayorAndCouncil extends Schema.Component {
+export interface SectionsHomepageMayorAndCouncil extends Struct.ComponentSchema {
   collectionName: 'components_sections_homepage_mayor_and_councils'
   info: {
     displayName: 'homepage mayor and council'
   }
   attributes: {
-    councilCard: Attribute.Component<'blocks.common-link'>
-    mayorCard: Attribute.Component<'blocks.common-link'>
-    text: Attribute.Text
-    title: Attribute.String
+    councilCard: Schema.Attribute.Component<'blocks.common-link', false>
+    mayorCard: Schema.Attribute.Component<'blocks.common-link', false>
+    text: Schema.Attribute.Text
+    title: Schema.Attribute.String
   }
 }
 
-export interface SectionsHomepageTabs extends Schema.Component {
+export interface SectionsHomepageTabs extends Struct.ComponentSchema {
   collectionName: 'components_sections_homepage_tabs'
   info: {
     description: ''
     displayName: 'homepage tabs'
   }
   attributes: {
-    leftArticle: Attribute.Relation<'sections.homepage-tabs', 'oneToOne', 'api::article.article'>
-    newsPageLink: Attribute.Component<'blocks.common-link'>
-    officialBoardPageLink: Attribute.Component<'blocks.common-link'>
-    rightArticle: Attribute.Relation<'sections.homepage-tabs', 'oneToOne', 'api::article.article'>
-    roadClosuresPageLink: Attribute.Component<'blocks.common-link'>
+    leftArticle: Schema.Attribute.Relation<'oneToOne', 'api::article.article'>
+    newsPageLink: Schema.Attribute.Component<'blocks.common-link', false>
+    officialBoardPageLink: Schema.Attribute.Component<'blocks.common-link', false>
+    rightArticle: Schema.Attribute.Relation<'oneToOne', 'api::article.article'>
+    roadClosuresPageLink: Schema.Attribute.Component<'blocks.common-link', false>
   }
 }
 
-export interface SectionsIframe extends Schema.Component {
+export interface SectionsIframe extends Struct.ComponentSchema {
   collectionName: 'components_sections_iframes'
   info: {
     description: ''
     displayName: 'Iframe'
   }
   attributes: {
-    allowFullscreen: Attribute.Boolean & Attribute.Required & Attribute.DefaultTo<true>
-    allowGeolocation: Attribute.Boolean & Attribute.DefaultTo<false>
-    css: Attribute.String
-    fullHeight: Attribute.Boolean & Attribute.Required & Attribute.DefaultTo<false>
-    iframeHeight: Attribute.String & Attribute.Required & Attribute.DefaultTo<'600px'>
-    iframeWidth: Attribute.Enumeration<['full', 'container']> &
-      Attribute.Required &
-      Attribute.DefaultTo<'container'>
-    text: Attribute.Text
-    title: Attribute.String
-    url: Attribute.String & Attribute.Required & Attribute.DefaultTo<'https://www.google.com'>
+    allowFullscreen: Schema.Attribute.Boolean &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<true>
+    allowGeolocation: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>
+    css: Schema.Attribute.String
+    fullHeight: Schema.Attribute.Boolean &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<false>
+    iframeHeight: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'600px'>
+    iframeWidth: Schema.Attribute.Enumeration<['full', 'container']> &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'container'>
+    text: Schema.Attribute.Text
+    title: Schema.Attribute.String
+    url: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'https://www.google.com'>
   }
 }
 
-export interface SectionsInbaArticlesList extends Schema.Component {
+export interface SectionsInbaArticlesList extends Struct.ComponentSchema {
   collectionName: 'components_sections_inba_articles_lists'
   info: {
     description: ''
     displayName: 'in.ba articles'
   }
   attributes: {
-    text: Attribute.Text
-    title: Attribute.String
+    text: Schema.Attribute.Text
+    title: Schema.Attribute.String
   }
 }
 
-export interface SectionsInbaReleases extends Schema.Component {
+export interface SectionsInbaReleases extends Struct.ComponentSchema {
   collectionName: 'components_sections_inba_releases'
   info: {
     displayName: 'in.ba releases'
   }
   attributes: {
-    text: Attribute.Text
-    title: Attribute.String
+    text: Schema.Attribute.Text
+    title: Schema.Attribute.String
   }
 }
 
-export interface SectionsLinks extends Schema.Component {
+export interface SectionsLinks extends Struct.ComponentSchema {
   collectionName: 'components_sections_links'
   info: {
     displayName: 'Links'
   }
   attributes: {
-    pageLinks: Attribute.Component<'blocks.page-link', true>
-    title: Attribute.String
+    pageLinks: Schema.Attribute.Component<'blocks.page-link', true>
+    title: Schema.Attribute.String
   }
 }
 
-export interface SectionsNarrowText extends Schema.Component {
+export interface SectionsNarrowText extends Struct.ComponentSchema {
   collectionName: 'components_sections_narrow_texts'
   info: {
     displayName: 'Narrow Text'
   }
   attributes: {
-    align: Attribute.Enumeration<['left', 'center', 'right']>
-    content: Attribute.RichText
-    width: Attribute.Enumeration<['narrow', 'default', 'wide', 'full']>
+    align: Schema.Attribute.Enumeration<['left', 'center', 'right']>
+    content: Schema.Attribute.RichText
+    width: Schema.Attribute.Enumeration<['narrow', 'default', 'wide', 'full']>
   }
 }
 
-export interface SectionsNumericalList extends Schema.Component {
+export interface SectionsNumericalList extends Struct.ComponentSchema {
   collectionName: 'components_sections_numerical_lists'
   info: {
     displayName: 'Numerical List'
   }
   attributes: {
-    buttonLink: Attribute.String
-    buttonText: Attribute.String
-    items: Attribute.Component<'blocks.numerical-list-item', true>
-    title: Attribute.String
-    variant: Attribute.Enumeration<['basic', 'combined', 'roadmap']>
+    buttonLink: Schema.Attribute.String
+    buttonText: Schema.Attribute.String
+    items: Schema.Attribute.Component<'blocks.numerical-list-item', true>
+    title: Schema.Attribute.String
+    variant: Schema.Attribute.Enumeration<['basic', 'combined', 'roadmap']>
   }
 }
 
-export interface SectionsOfficialBoard extends Schema.Component {
+export interface SectionsOfficialBoard extends Struct.ComponentSchema {
   collectionName: 'components_sections_official_boards'
   info: {
     displayName: 'Official board'
@@ -794,7 +798,7 @@ export interface SectionsOfficialBoard extends Schema.Component {
   attributes: {}
 }
 
-export interface SectionsOrganizationalStructure extends Schema.Component {
+export interface SectionsOrganizationalStructure extends Struct.ComponentSchema {
   collectionName: 'components_sections_organizational_structures'
   info: {
     description: ''
@@ -802,59 +806,55 @@ export interface SectionsOrganizationalStructure extends Schema.Component {
     icon: 'address-book'
   }
   attributes: {
-    title: Attribute.String
+    title: Schema.Attribute.String
   }
 }
 
-export interface SectionsPartners extends Schema.Component {
+export interface SectionsPartners extends Struct.ComponentSchema {
   collectionName: 'components_sections_partners'
   info: {
     description: ''
     displayName: 'Partners'
   }
   attributes: {
-    logoRatio: Attribute.Enumeration<['ratio 4:1', 'ratio 4:3']> &
-      Attribute.Required &
-      Attribute.DefaultTo<'ratio 4:1'>
-    partners: Attribute.Component<'blocks.partner', true> & Attribute.Required
-    text: Attribute.Text
-    title: Attribute.String
+    logoRatio: Schema.Attribute.Enumeration<['ratio 4:1', 'ratio 4:3']> &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'ratio 4:1'>
+    partners: Schema.Attribute.Component<'blocks.partner', true> & Schema.Attribute.Required
+    text: Schema.Attribute.Text
+    title: Schema.Attribute.String
   }
 }
 
-export interface SectionsProsAndConsSection extends Schema.Component {
+export interface SectionsProsAndConsSection extends Struct.ComponentSchema {
   collectionName: 'components_sections_pros_and_cons_sections'
   info: {
     description: ''
     displayName: 'Pros and Cons Section'
   }
   attributes: {
-    cons: Attribute.Component<'blocks.pros-and-cons-card'> & Attribute.Required
-    pros: Attribute.Component<'blocks.pros-and-cons-card'> & Attribute.Required
-    text: Attribute.Text
-    textAlign: Attribute.Enumeration<['left', 'center']> &
-      Attribute.Required &
-      Attribute.DefaultTo<'left'>
-    title: Attribute.String
+    cons: Schema.Attribute.Component<'blocks.pros-and-cons-card', false> & Schema.Attribute.Required
+    pros: Schema.Attribute.Component<'blocks.pros-and-cons-card', false> & Schema.Attribute.Required
+    text: Schema.Attribute.Text
+    textAlign: Schema.Attribute.Enumeration<['left', 'center']> &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'left'>
+    title: Schema.Attribute.String
   }
 }
 
-export interface SectionsRegulations extends Schema.Component {
+export interface SectionsRegulations extends Struct.ComponentSchema {
   collectionName: 'components_sections_regulations'
   info: {
     description: ''
     displayName: 'Regulations'
   }
   attributes: {
-    regulations: Attribute.Relation<
-      'sections.regulations',
-      'oneToMany',
-      'api::regulation.regulation'
-    >
+    regulations: Schema.Attribute.Relation<'oneToMany', 'api::regulation.regulation'>
   }
 }
 
-export interface SectionsRegulationsList extends Schema.Component {
+export interface SectionsRegulationsList extends Struct.ComponentSchema {
   collectionName: 'components_sections_regulations_lists'
   info: {
     description: ''
@@ -863,32 +863,32 @@ export interface SectionsRegulationsList extends Schema.Component {
   attributes: {}
 }
 
-export interface SectionsSubpageList extends Schema.Component {
+export interface SectionsSubpageList extends Struct.ComponentSchema {
   collectionName: 'components_sections_subpage_lists'
   info: {
     displayName: 'Subpage List'
   }
   attributes: {
-    subpageList: Attribute.Component<'blocks.page-link', true>
+    subpageList: Schema.Attribute.Component<'blocks.page-link', true>
   }
 }
 
-export interface SectionsTextWithImage extends Schema.Component {
+export interface SectionsTextWithImage extends Struct.ComponentSchema {
   collectionName: 'components_sections_text_with_images'
   info: {
     description: ''
     displayName: 'Text with Image'
   }
   attributes: {
-    content: Attribute.RichText
-    imageAspectRatio: Attribute.Enumeration<['ratio 1:1', 'ratio 4:3']> &
-      Attribute.DefaultTo<'ratio 1:1'>
-    imagePosition: Attribute.Enumeration<['left', 'right']> &
-      Attribute.Required &
-      Attribute.DefaultTo<'right'>
-    imageSrc: Attribute.Media<'images'> & Attribute.Required
-    links: Attribute.Component<'blocks.common-link', true> &
-      Attribute.SetMinMax<
+    content: Schema.Attribute.RichText
+    imageAspectRatio: Schema.Attribute.Enumeration<['ratio 1:1', 'ratio 4:3']> &
+      Schema.Attribute.DefaultTo<'ratio 1:1'>
+    imagePosition: Schema.Attribute.Enumeration<['left', 'right']> &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'right'>
+    imageSrc: Schema.Attribute.Media<'images'> & Schema.Attribute.Required
+    links: Schema.Attribute.Component<'blocks.common-link', true> &
+      Schema.Attribute.SetMinMax<
         {
           max: 2
         },
@@ -897,20 +897,22 @@ export interface SectionsTextWithImage extends Schema.Component {
   }
 }
 
-export interface SectionsTextWithImageOverlapped extends Schema.Component {
+export interface SectionsTextWithImageOverlapped extends Struct.ComponentSchema {
   collectionName: 'components_sections_text_with_image_overlappeds'
   info: {
     description: ''
     displayName: 'Text with image overlapped'
   }
   attributes: {
-    content: Attribute.RichText
-    image: Attribute.Media<'images'> & Attribute.Required
-    imagePosition: Attribute.Enumeration<['left', 'right', 'left shifted', 'right shifted']> &
-      Attribute.Required &
-      Attribute.DefaultTo<'right'>
-    links: Attribute.Component<'blocks.common-link', true> &
-      Attribute.SetMinMax<
+    content: Schema.Attribute.RichText
+    image: Schema.Attribute.Media<'images'> & Schema.Attribute.Required
+    imagePosition: Schema.Attribute.Enumeration<
+      ['left', 'right', 'left shifted', 'right shifted']
+    > &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'right'>
+    links: Schema.Attribute.Component<'blocks.common-link', true> &
+      Schema.Attribute.SetMinMax<
         {
           max: 2
         },
@@ -919,62 +921,63 @@ export interface SectionsTextWithImageOverlapped extends Schema.Component {
   }
 }
 
-export interface SectionsTootootEvents extends Schema.Component {
+export interface SectionsTootootEvents extends Struct.ComponentSchema {
   collectionName: 'components_sections_tootoot_events'
   info: {
     description: ''
     displayName: 'Tootoot events'
   }
   attributes: {
-    showMoreLink: Attribute.Component<'blocks.common-link'>
-    text: Attribute.Text
-    title: Attribute.String
+    showMoreLink: Schema.Attribute.Component<'blocks.common-link', false>
+    text: Schema.Attribute.Text
+    title: Schema.Attribute.String
   }
 }
 
-export interface SectionsTopServices extends Schema.Component {
+export interface SectionsTopServices extends Struct.ComponentSchema {
   collectionName: 'components_sections_top_services'
   info: {
     description: ''
     displayName: 'top services'
   }
   attributes: {
-    services: Attribute.Component<'blocks.top-services-item', true> & Attribute.Required
-    title: Attribute.String & Attribute.Required
+    services: Schema.Attribute.Component<'blocks.top-services-item', true> &
+      Schema.Attribute.Required
+    title: Schema.Attribute.String & Schema.Attribute.Required
   }
 }
 
-export interface SectionsVideos extends Schema.Component {
+export interface SectionsVideos extends Struct.ComponentSchema {
   collectionName: 'components_sections_videos'
   info: {
     description: ''
     displayName: 'Videos'
   }
   attributes: {
-    subtitle: Attribute.String
-    title: Attribute.String
-    videos: Attribute.Component<'blocks.video', true>
+    subtitle: Schema.Attribute.String
+    title: Schema.Attribute.String
+    videos: Schema.Attribute.Component<'blocks.video', true>
   }
 }
 
-export interface TaxAdministratorsTaxAdministrator extends Schema.Component {
+export interface TaxAdministratorsTaxAdministrator extends Struct.ComponentSchema {
   collectionName: 'components_tax_administrators_tax_administrators'
   info: {
     description: ''
     displayName: 'Tax administrator'
   }
   attributes: {
-    email: Attribute.Email & Attribute.Required
-    name: Attribute.String & Attribute.Required
-    officeNumber: Attribute.String & Attribute.Required
-    phone: Attribute.String & Attribute.Required
-    range: Attribute.String & Attribute.Required
+    email: Schema.Attribute.Email & Schema.Attribute.Required
+    name: Schema.Attribute.String & Schema.Attribute.Required
+    officeNumber: Schema.Attribute.String & Schema.Attribute.Required
+    phone: Schema.Attribute.String & Schema.Attribute.Required
+    range: Schema.Attribute.String & Schema.Attribute.Required
   }
 }
 
-declare module '@strapi/types' {
-  export module Shared {
-    export interface Components {
+declare module '@strapi/strapi' {
+  export module Public {
+    export interface ComponentSchemas {
       'accordion-items.flat-text': AccordionItemsFlatText
       'accordion-items.institution': AccordionItemsInstitution
       'accordion-items.institution-narrow': AccordionItemsInstitutionNarrow

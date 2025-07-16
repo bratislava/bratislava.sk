@@ -41,23 +41,19 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       language,
     })
 
-    articles?.data?.filter(isDefined).forEach((article) => {
-      if (!article.attributes) {
-        return
-      }
-
+    articles?.filter(isDefined).forEach((article) => {
       feed.item({
-        title: article.attributes.title,
-        description: article.attributes.perex ?? '',
+        title: article.title,
+        description: article.perex ?? '',
         // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-        url: article.attributes.slug ? `${urlPrefix[language]}/${article.attributes.slug}` : '',
-        date: article.attributes.addedAt,
-        categories: [article.attributes.tag?.data?.attributes?.title].filter(isDefined),
-        enclosure: article.attributes.coverMedia?.data?.attributes
+        url: article.slug ? `${urlPrefix[language]}/${article.slug}` : '',
+        date: article.addedAt,
+        categories: [article.tag?.title].filter(isDefined),
+        enclosure: article.coverMedia
           ? {
-              url: article.attributes.coverMedia.data.attributes.url,
-              type: article.attributes.coverMedia.data.attributes.mime,
-              size: Math.round(article.attributes.coverMedia.data.attributes.size * 100),
+              url: article.coverMedia.url,
+              type: article.coverMedia.mime,
+              size: Math.round(article.coverMedia.size * 100),
             }
           : undefined,
       })

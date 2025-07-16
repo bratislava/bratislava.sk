@@ -119,9 +119,23 @@
           "searchable": true,
           "sortable": true
         }
+      },
+      "documentId": {
+        "edit": {},
+        "list": {
+          "label": "documentId",
+          "searchable": true,
+          "sortable": true
+        }
       }
     },
     "layouts": {
+      "list": [
+        "id",
+        "title",
+        "createdAt",
+        "updatedAt"
+      ],
       "edit": [
         [
           {
@@ -141,12 +155,6 @@
             "size": 12
           }
         ]
-      ],
-      "list": [
-        "id",
-        "title",
-        "createdAt",
-        "updatedAt"
       ]
     },
     "uid": "api::document-category.document-category"

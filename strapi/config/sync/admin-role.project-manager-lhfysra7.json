@@ -2,41 +2,53 @@
   "name": "Project manager",
   "code": "project-manager-lhfysra7",
   "description": "Môže pridávať nových používateľov a má plnú kontrolu nad nastaveniami Meilisearch pluginu.\nUrčené pre: Projektových manažérov (použiť spolu s rolou Admin)\n\nVytvorené May 9th, 2023",
+  "documentId": "vfa4iyv1ume80dsnwzyjwi2d",
+  "locale": null,
   "permissions": [
     {
       "action": "admin::roles.read",
       "subject": null,
       "properties": {},
       "conditions": [],
-      "actionParameters": null
+      "actionParameters": null,
+      "documentId": "ylsnhzjpgd64tj6xexsr01qr",
+      "locale": null
     },
     {
       "action": "admin::users.create",
       "subject": null,
       "properties": {},
       "conditions": [],
-      "actionParameters": null
+      "actionParameters": null,
+      "documentId": "v0i9981oh5msxw3q3sqzsjyz",
+      "locale": null
     },
     {
       "action": "admin::users.read",
       "subject": null,
       "properties": {},
       "conditions": [],
-      "actionParameters": null
+      "actionParameters": null,
+      "documentId": "rvudl79alpdil5rin9kkb17h",
+      "locale": null
     },
     {
       "action": "admin::users.update",
       "subject": null,
       "properties": {},
       "conditions": [],
-      "actionParameters": null
+      "actionParameters": null,
+      "documentId": "nvxfnn5ksx4nou18rtqqu7k5",
+      "locale": null
     },
     {
       "action": "plugin::upload.settings.read",
       "subject": null,
       "properties": {},
       "conditions": [],
-      "actionParameters": null
+      "actionParameters": null,
+      "documentId": "ig7xh4q55zk1ptqfqy3urqkk",
+      "locale": null
     }
   ]
 }

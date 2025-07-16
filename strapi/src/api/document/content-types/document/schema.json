@@ -25,7 +25,10 @@
       "type": "media",
       "multiple": true,
       "required": true,
-      "allowedTypes": ["images", "files"]
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
     },
     "description": {
       "type": "text"
@@ -35,6 +38,12 @@
       "relation": "manyToOne",
       "target": "api::document-category.document-category",
       "inversedBy": "documents"
+    },
+    "adminGroups": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::admin-group.admin-group",
+      "mappedBy": "documents"
     }
   }
 }

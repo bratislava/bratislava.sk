@@ -76,12 +76,12 @@ const Gallery = ({ images = [] }: GalleryProps) => {
             >
               {smallImages
                 .map((image, index) => {
-                  if (!image.attributes) return null
+                  if (!image) return null
 
                   return (
                     <div
                       onClick={() => openAtImageIndex(index)}
-                      key={image.id}
+                      key={image.documentId}
                       className={cn(
                         'relative aspect-square cursor-pointer overflow-hidden rounded-lg',
                         {
@@ -91,11 +91,7 @@ const Gallery = ({ images = [] }: GalleryProps) => {
                         },
                       )}
                     >
-                      <StrapiImage
-                        image={image.attributes}
-                        fill
-                        className="absolute top-0 object-cover"
-                      />
+                      <StrapiImage image={image} fill className="absolute top-0 object-cover" />
                     </div>
                   )
                 })

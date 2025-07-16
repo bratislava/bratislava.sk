@@ -1,103 +1,69 @@
-fragment InbaArticleSlugEntity on InbaArticleEntity {
-  id
-  attributes {
-    slug
-    title
-    locale
-  }
+fragment InbaArticleSlugEntity on InbaArticle {
+  documentId
+  slug
+  title
+  locale
 }
 
-fragment InbaArticleCardEntity on InbaArticleEntity {
+fragment InbaArticleCardEntity on InbaArticle {
   ...InbaArticleSlugEntity
-  attributes {
-    perex
-    publishedAt
-    coverImage {
-      data {
-        ...UploadImageSrcEntity
-      }
-    }
-    inbaTag {
-      data {
-        ...InbaTagEntity
-      }
-    }
+  perex
+  publishedAt
+  coverImage {
+    ...UploadImageSrcEntity
+  }
+  inbaTag {
+    ...InbaTagEntity
   }
 }
 
-fragment InbaArticleEntity on InbaArticleEntity {
+fragment InbaArticleEntity on InbaArticle {
   ...InbaArticleCardEntity
-  attributes {
-    content
-    inbaRelease {
-      data {
-        attributes {
-          title
-          releaseDate
-          slug
-        }
-      }
-    }
+  content
+  inbaRelease {
+    title
+    releaseDate
+    slug
   }
 }
 
-fragment InbaTagEntity on InbaTagEntity {
-  id
-  attributes {
-    title
-  }
+fragment InbaTagEntity on InbaTag {
+  documentId
+  title
 }
 
 query InbaArticleBySlug($slug: String!, $locale: I18NLocaleCode!) {
   inbaArticles(filters: { slug: { eq: $slug } }, locale: $locale) {
-    data {
-      ...InbaArticleEntity
-    }
+    ...InbaArticleEntity
   }
 }
 
-query InbaArticlesStaticPaths {
-  inbaArticles(locale: "all", sort: "publishedAt:desc") {
-    data {
-      ...InbaArticleSlugEntity
-    }
+query InbaArticlesStaticPaths($locale: I18NLocaleCode!) {
+  inbaArticles(locale: $locale, sort: "publishedAt:desc") {
+    ...InbaArticleSlugEntity
   }
 }
 
 query InbaArticlesRssFeed($locale: I18NLocaleCode!) {
   inbaArticles(locale: $locale, sort: "publishedAt:desc") {
-    data {
-      id
-      attributes {
-        title
-        slug
-        perex
-        publishedAt
-        coverImage {
-          data {
-            attributes {
-              url
-            }
-          }
-        }
-        inbaTag {
-          data {
-            id
-            attributes {
-              title
-            }
-          }
-        }
-        content
-      }
+    documentId
+    title
+    slug
+    perex
+    publishedAt
+    coverImage {
+      url
     }
+    inbaTag {
+      documentId
+      title
+    }
+    content
   }
 }
 
 query InbaTags($locale: I18NLocaleCode!) {
   inbaTags(locale: $locale) {
-    data {
-      ...InbaTagEntity
-    }
+    ...InbaTagEntity
   }
 }

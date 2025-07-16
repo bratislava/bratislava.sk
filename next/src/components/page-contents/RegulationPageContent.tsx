@@ -22,27 +22,28 @@ type RegulationPageContentProps = {
 }
 
 const RegulationPageContent = ({ regulation }: RegulationPageContentProps) => {
-  const regulationShortTitle = `VZN ${regulation.attributes?.regNumber}`
+  const regulationShortTitle = `VZN ${regulation.regNumber}`
 
   const { t } = useTranslation()
   const locale = useLocale()
 
   const translationMap = useRegulationCategoryTranslationMap()
 
-  const mainDocument = regulation.attributes?.mainDocument
-  const amendments = regulation.attributes?.amendments?.data
+  const { mainDocument, attachments, regNumber, category, titleText } = regulation
+
+  const amendments = regulation.amendments
     .filter((amendment) => isDefined(amendment))
     .sort(() => {
       return -1 // TODO now we are just reversing the order of items in strapi, but we could sort by regulation year and number
     })
-  const amending = regulation.attributes?.amending?.data.filter(isDefined)
-  const cancelling = regulation.attributes?.cancelling?.data.filter(isDefined)
+  const amending = regulation.amending?.filter(isDefined)
+  const cancelling = regulation.cancelling?.filter(isDefined)
 
   const attachmentFiles =
-    regulation.attributes?.attachments?.data.map((attachment) => {
+    attachments?.filter(isDefined).map((attachment) => {
       return {
-        title: attachment.attributes?.name ?? 'Príloha',
-        media: { data: attachment },
+        title: attachment.name ?? 'Príloha',
+        media: attachment,
       }
     }) ?? []
 
@@ -54,15 +55,15 @@ const RegulationPageContent = ({ regulation }: RegulationPageContentProps) => {
           ? '/city-of-bratislava/city-administration/legislation/generally-binding-ordinances'
           : '/mesto-bratislava/sprava-mesta/legislativa-mesta/vseobecne-zavazne-nariadenia',
     },
-    { title: `VZN ${regulation.attributes?.regNumber}`, path: null },
+    { title: `VZN ${regNumber}`, path: null },
   ]
 
   return (
     <>
       <PageHeader
         title={regulationShortTitle}
-        tag={translationMap[regulation.attributes?.category ?? 'ostatne']}
-        subtext={regulation.attributes?.titleText}
+        tag={translationMap[category ?? 'ostatne']}
+        subtext={titleText}
         breadcrumbs={breadcrumbs}
       />
       <SectionContainer className="my-8">
@@ -76,13 +77,13 @@ const RegulationPageContent = ({ regulation }: RegulationPageContentProps) => {
 
               {/* TODO refactor to use standard component */}
               <div className="rounded-lg border-2 py-2">
-                {mainDocument?.data?.attributes ? (
+                {mainDocument ? (
                   <FileRowCard
-                    key={mainDocument.data.id}
-                    title={`VZN ${regulation.attributes?.regNumber}`}
-                    size={formatFileSize(mainDocument.data.attributes.size, locale)}
-                    format={formatFileExtension(mainDocument.data.attributes.ext) ?? undefined}
-                    downloadLink={mainDocument.data.attributes.url}
+                    key={mainDocument.documentId}
+                    title={`VZN ${regNumber}`}
+                    size={formatFileSize(mainDocument.size, locale)}
+                    format={formatFileExtension(mainDocument.ext) ?? undefined}
+                    downloadLink={mainDocument.url}
                   />
                 ) : (
                   <Typography variant="p-default">
@@ -102,22 +103,17 @@ const RegulationPageContent = ({ regulation }: RegulationPageContentProps) => {
                 <ul className="rounded-lg border-2 py-2">
                   {attachmentFiles
                     .map(({ media: attachmentMedia, title: attachmentTitle }, index) => {
-                      if (!attachmentMedia.data.attributes) return null
-
                       return (
-                        <Fragment key={attachmentMedia.data.id}>
+                        <Fragment key={attachmentMedia.documentId}>
                           {index > 0 ? (
                             <HorizontalDivider asListItem className="mx-4 lg:mx-6" />
                           ) : null}
                           <li>
                             <FileRowCard
-                              title={attachmentTitle ?? attachmentMedia.data.attributes.name}
-                              size={formatFileSize(attachmentMedia.data.attributes.size, locale)}
-                              format={
-                                formatFileExtension(attachmentMedia.data.attributes.ext) ??
-                                undefined
-                              }
-                              downloadLink={attachmentMedia.data.attributes.url}
+                              title={attachmentTitle ?? attachmentMedia.name}
+                              size={formatFileSize(attachmentMedia.size, locale)}
+                              format={formatFileExtension(attachmentMedia.ext) ?? undefined}
+                              downloadLink={attachmentMedia.url}
                             />
                           </li>
                         </Fragment>
@@ -136,29 +132,27 @@ const RegulationPageContent = ({ regulation }: RegulationPageContentProps) => {
             </Typography>
             {amendments?.length ? (
               <ul className="flex flex-col rounded-lg border-2 py-2">
-                {amendments?.map((amendment, index) => {
-                  return amendment.attributes ? (
-                    <Fragment key={amendment.id}>
-                      {index > 0 ? <HorizontalDivider asListItem className="mx-4 lg:mx-6" /> : null}
-                      <li className="w-full">
-                        <RegulationRowCard
-                          title={`VZN ${amendment.attributes.regNumber}`}
-                          isFullTextRegulation={amendment.attributes.isFullTextRegulation}
-                          metadata={[
-                            formatDate(amendment.attributes.effectiveFrom),
-                            amendment.attributes.attachments?.data.length
-                              ? t('Regulation.numberOfAttachments', {
-                                  count: amendment.attributes.attachments?.data.length,
-                                })
-                              : null,
-                          ].filter(isDefined)}
-                          path={`/vzn/${amendment.attributes.slug}`}
-                          className="px-4 lg:px-6"
-                        />
-                      </li>
-                    </Fragment>
-                  ) : null
-                })}
+                {amendments?.filter(isDefined).map((amendment, index) => (
+                  <Fragment key={amendment.documentId}>
+                    {index > 0 ? <HorizontalDivider asListItem className="mx-4 lg:mx-6" /> : null}
+                    <li className="w-full">
+                      <RegulationRowCard
+                        title={`VZN ${amendment.regNumber}`}
+                        isFullTextRegulation={amendment.isFullTextRegulation}
+                        metadata={[
+                          formatDate(amendment.effectiveFrom),
+                          amendment.attachments.length > 0
+                            ? t('Regulation.numberOfAttachments', {
+                                count: amendment.attachments.length,
+                              })
+                            : null,
+                        ].filter(isDefined)}
+                        path={`/vzn/${amendment.slug}`}
+                        className="px-4 lg:px-6"
+                      />
+                    </li>
+                  </Fragment>
+                ))}
               </ul>
             ) : (
               <Typography variant="p-default">{t('Regulation.noAmendmentsMessage')}</Typography>
@@ -174,12 +168,9 @@ const RegulationPageContent = ({ regulation }: RegulationPageContentProps) => {
                   <>
                     {t('Regulation.thisRegulationAmends')}{' '}
                     {amending.map((amendedRegulation, index) => (
-                      <Fragment key={amendedRegulation.id}>
-                        <MLink
-                          href={`/vzn/${amendedRegulation.attributes?.slug}`}
-                          variant="underlined-medium"
-                        >
-                          {`VZN ${amendedRegulation.attributes?.regNumber}`}
+                      <Fragment key={amendedRegulation.documentId}>
+                        <MLink href={`/vzn/${amendedRegulation.slug}`} variant="underlined-medium">
+                          {`VZN ${amendedRegulation.regNumber}`}
                         </MLink>
                         {index < amending.length - 1 ? ', ' : '.'}
                       </Fragment>
@@ -194,12 +185,12 @@ const RegulationPageContent = ({ regulation }: RegulationPageContentProps) => {
                   <>
                     {t('Regulation.thisRegulationCancells')}{' '}
                     {cancelling.map((cancelledRegulation, index) => (
-                      <Fragment key={cancelledRegulation.id}>
+                      <Fragment key={cancelledRegulation.documentId}>
                         <MLink
-                          href={`/vzn/${cancelledRegulation.attributes?.slug}`}
+                          href={`/vzn/${cancelledRegulation.slug}`}
                           variant="underlined-medium"
                         >
-                          {`VZN ${cancelledRegulation.attributes?.regNumber}`}
+                          {`VZN ${cancelledRegulation.regNumber}`}
                         </MLink>
                         {index < cancelling.length - 1 ? ', ' : '.'}
                       </Fragment>

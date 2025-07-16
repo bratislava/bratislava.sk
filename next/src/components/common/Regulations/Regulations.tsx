@@ -28,41 +28,37 @@ const Regulations = ({ className, regulations }: Props) => {
       {regulations?.length ? (
         <ul className="flex flex-col rounded-lg border-2 py-2">
           {regulations?.map((regulation, index) => {
-            if (!regulation.attributes) {
-              return null
-            }
+            const { effectiveUntil } = getRegulationMetadata(regulation)
 
-            const { effectiveUntil } = getRegulationMetadata(regulation.attributes)
-
-            const numberOfAmendments = regulation.attributes.amendments?.data.length
+            const numberOfAmendments = regulation.amendments.length
             const numberOfAmendmentsMessage = numberOfAmendments
               ? t('Regulation.numberOfAmendments', { count: numberOfAmendments })
               : null
 
             return (
-              <Fragment key={regulation.attributes.regNumber}>
+              <Fragment key={regulation.regNumber}>
                 {index > 0 ? <HorizontalDivider asListItem className="mx-4 lg:mx-6" /> : null}
                 <li className="w-full">
                   {/* TODO we show more details on staging for testing and cleanup purposes */}
                   {/* TODO rewrite to one component when we know what details we want to show  */}
                   {isProductionDeployment() ? (
                     <RegulationRowCard
-                      title={`VZN ${regulation.attributes.regNumber} ${regulation.attributes.titleText ?? ''}`}
+                      title={`VZN ${regulation.regNumber} ${regulation.titleText ?? ''}`}
                       metadata={[numberOfAmendmentsMessage].filter(isDefined)}
-                      isFullTextRegulation={regulation.attributes.isFullTextRegulation}
-                      // isAmendee={!!regulation.attributes.amending?.data?.length}
+                      isFullTextRegulation={regulation.isFullTextRegulation}
+                      // isAmendee={regulation.amending.length > 0}
                       // isCancelled={!!effectiveUntil}
-                      path={`/vzn/${regulation.attributes.slug}`}
+                      path={`/vzn/${regulation.slug}`}
                       className="px-4 lg:px-6"
                     />
                   ) : (
                     <RegulationRowCard
-                      title={`VZN ${regulation.attributes.regNumber} ${regulation.attributes.titleText ?? ''}`}
+                      title={`VZN ${regulation.regNumber} ${regulation.titleText ?? ''}`}
                       metadata={[numberOfAmendmentsMessage].filter(isDefined)}
-                      isFullTextRegulation={regulation.attributes.isFullTextRegulation}
-                      isAmendee={!!regulation.attributes.amending?.data?.length}
+                      isFullTextRegulation={regulation.isFullTextRegulation}
+                      isAmendee={regulation.amending.length > 0}
                       isCancelled={!!effectiveUntil}
-                      path={`/vzn/${regulation.attributes.slug}`}
+                      path={`/vzn/${regulation.slug}`}
                       className="px-4 lg:px-6"
                     />
                   )}

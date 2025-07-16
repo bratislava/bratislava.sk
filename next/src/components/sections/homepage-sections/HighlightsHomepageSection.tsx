@@ -13,7 +13,7 @@ const HighlightsHomepageSection = () => {
   const { t } = useTranslation()
 
   const { homepage } = useHomepageContext()
-  const { highlights } = homepage?.attributes ?? {}
+  const { highlights } = homepage ?? {}
   const { title, text, cards } = highlights ?? {}
 
   const filteredHighlights = cards?.filter(isDefined) ?? []
@@ -40,7 +40,7 @@ const HighlightsHomepageSection = () => {
                   children: t('readMore'),
                   ...linkProps,
                 }}
-                imgSrc={highlight.image?.data?.attributes?.url}
+                imgSrc={highlight.image.url}
               />
               <HomepageHorizontalCard
                 className="max-lg:hidden"
@@ -50,7 +50,7 @@ const HighlightsHomepageSection = () => {
                   children: t('readMore'),
                   ...linkProps,
                 }}
-                imgSrc={highlight.image?.data?.attributes?.url}
+                imgSrc={highlight.image.url}
               />
             </Fragment>
           )

@@ -20,6 +20,34 @@
           "sortable": false
         }
       },
+      "title": {
+        "edit": {
+          "label": "Nadpis",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "title",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "text": {
+        "edit": {
+          "label": "Text",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "text",
+          "searchable": true,
+          "sortable": true
+        }
+      },
       "url": {
         "edit": {
           "label": "url",
@@ -118,30 +146,10 @@
           "sortable": true
         }
       },
-      "title": {
-        "edit": {
-          "label": "Nadpis",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
+      "documentId": {
+        "edit": {},
         "list": {
-          "label": "title",
-          "searchable": true,
-          "sortable": true
-        }
-      },
-      "text": {
-        "edit": {
-          "label": "Text",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "text",
+          "label": "documentId",
           "searchable": true,
           "sortable": true
         }

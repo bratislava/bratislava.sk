@@ -2,6 +2,8 @@
   "name": "Admin: in.ba + Media Library",
   "code": "admin-in-ba-lmg3a62g",
   "description": "Plná správa nad inba článkami, tagmi a vydaniami\n\nCreated September 12th, 2023",
+  "documentId": "k8qj4vkav6eenbpipfk2r6um",
+  "locale": null,
   "permissions": [
     {
       "action": "plugin::content-manager.explorer.create",
@@ -21,7 +23,9 @@
         "locales": []
       },
       "conditions": [],
-      "actionParameters": {}
+      "actionParameters": {},
+      "documentId": "h1gfv33ebc4rkbfvnyia8md4",
+      "locale": null
     },
     {
       "action": "plugin::content-manager.explorer.read",
@@ -44,7 +48,9 @@
         ]
       },
       "conditions": [],
-      "actionParameters": {}
+      "actionParameters": {},
+      "documentId": "mpvjrucbhja7cfjfs3lgluey",
+      "locale": null
     },
     {
       "action": "plugin::content-manager.explorer.update",
@@ -67,7 +73,9 @@
         ]
       },
       "conditions": [],
-      "actionParameters": {}
+      "actionParameters": {},
+      "documentId": "sc5khq5v1gsfivzh9f4v61uf",
+      "locale": null
     },
     {
       "action": "plugin::content-manager.explorer.create",
@@ -88,7 +96,9 @@
         ]
       },
       "conditions": [],
-      "actionParameters": {}
+      "actionParameters": {},
+      "documentId": "az67yzr2dlp07z052a2t8m6g",
+      "locale": null
     },
     {
       "action": "plugin::content-manager.explorer.delete",
@@ -100,7 +110,9 @@
         ]
       },
       "conditions": [],
-      "actionParameters": {}
+      "actionParameters": {},
+      "documentId": "iezlcom04xe7h6jchhx4egmu",
+      "locale": null
     },
     {
       "action": "plugin::content-manager.explorer.publish",
@@ -112,7 +124,9 @@
         ]
       },
       "conditions": [],
-      "actionParameters": {}
+      "actionParameters": {},
+      "documentId": "r41ftwtrj3v17ifw22r8foci",
+      "locale": null
     },
     {
       "action": "plugin::content-manager.explorer.read",
@@ -133,7 +147,9 @@
         ]
       },
       "conditions": [],
-      "actionParameters": {}
+      "actionParameters": {},
+      "documentId": "rlcvu53g5p3pao6ta1m70jkk",
+      "locale": null
     },
     {
       "action": "plugin::content-manager.explorer.update",
@@ -154,7 +170,9 @@
         ]
       },
       "conditions": [],
-      "actionParameters": {}
+      "actionParameters": {},
+      "documentId": "sg2pdgk9pho6spyx5im1tq8y",
+      "locale": null
     },
     {
       "action": "plugin::content-manager.explorer.create",
@@ -173,21 +191,27 @@
         ]
       },
       "conditions": [],
-      "actionParameters": {}
+      "actionParameters": {},
+      "documentId": "trggxdjb1ov2uc5bsu7876tp",
+      "locale": null
     },
     {
       "action": "plugin::content-manager.explorer.delete",
       "subject": "api::inba-release.inba-release",
       "properties": {},
       "conditions": [],
-      "actionParameters": {}
+      "actionParameters": {},
+      "documentId": "oad1js2si6n8404fbsqq49nt",
+      "locale": null
     },
     {
       "action": "plugin::content-manager.explorer.publish",
       "subject": "api::inba-release.inba-release",
       "properties": {},
       "conditions": [],
-      "actionParameters": {}
+      "actionParameters": {},
+      "documentId": "s900e16ao7qnz92bi7c39amx",
+      "locale": null
     },
     {
       "action": "plugin::content-manager.explorer.read",
@@ -206,7 +230,9 @@
         ]
       },
       "conditions": [],
-      "actionParameters": {}
+      "actionParameters": {},
+      "documentId": "cav2fs32oj2vjzhggetm4mcq",
+      "locale": null
     },
     {
       "action": "plugin::content-manager.explorer.update",
@@ -225,7 +251,9 @@
         ]
       },
       "conditions": [],
-      "actionParameters": {}
+      "actionParameters": {},
+      "documentId": "vzrkrnxo2xk6o391mwimm83v",
+      "locale": null
     },
     {
       "action": "plugin::content-manager.explorer.create",
@@ -241,7 +269,9 @@
         ]
       },
       "conditions": [],
-      "actionParameters": {}
+      "actionParameters": {},
+      "documentId": "byzovhw0bd6x6hplqr26z07g",
+      "locale": null
     },
     {
       "action": "plugin::content-manager.explorer.delete",
@@ -253,7 +283,9 @@
         ]
       },
       "conditions": [],
-      "actionParameters": {}
+      "actionParameters": {},
+      "documentId": "jdicrduwaec6o4pbcu7djhuy",
+      "locale": null
     },
     {
       "action": "plugin::content-manager.explorer.read",
@@ -269,7 +301,9 @@
         ]
       },
       "conditions": [],
-      "actionParameters": {}
+      "actionParameters": {},
+      "documentId": "o21bq8wgbb26jmg0u1o8zyge",
+      "locale": null
     },
     {
       "action": "plugin::content-manager.explorer.update",
@@ -285,42 +319,54 @@
         ]
       },
       "conditions": [],
-      "actionParameters": {}
+      "actionParameters": {},
+      "documentId": "gztz56vo92o2bmftvpa01faz",
+      "locale": null
     },
     {
       "action": "plugin::upload.assets.copy-link",
       "subject": null,
       "properties": {},
       "conditions": [],
-      "actionParameters": {}
+      "actionParameters": {},
+      "documentId": "fpwowzr3mfug4lfixufg5ys7",
+      "locale": null
     },
     {
       "action": "plugin::upload.assets.create",
       "subject": null,
       "properties": {},
       "conditions": [],
-      "actionParameters": {}
+      "actionParameters": {},
+      "documentId": "frg4ezqsodevbjbrv6y137p2",
+      "locale": null
     },
     {
       "action": "plugin::upload.assets.download",
       "subject": null,
       "properties": {},
       "conditions": [],
-      "actionParameters": {}
+      "actionParameters": {},
+      "documentId": "j2gs6bzbe7c3bf73cgxwfafx",
+      "locale": null
     },
     {
       "action": "plugin::upload.assets.update",
       "subject": null,
       "properties": {},
       "conditions": [],
-      "actionParameters": {}
+      "actionParameters": {},
+      "documentId": "q6vtie2carr7kczb5vi0huwm",
+      "locale": null
     },
     {
       "action": "plugin::upload.read",
       "subject": null,
       "properties": {},
       "conditions": [],
-      "actionParameters": {}
+      "actionParameters": {},
+      "documentId": "mrem604jk6angibezusf2vdb",
+      "locale": null
     }
   ]
 }

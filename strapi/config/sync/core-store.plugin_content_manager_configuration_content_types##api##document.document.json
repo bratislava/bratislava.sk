@@ -47,6 +47,20 @@
           "sortable": true
         }
       },
+      "files": {
+        "edit": {
+          "label": "Súbory",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "files",
+          "searchable": false,
+          "sortable": false
+        }
+      },
       "description": {
         "edit": {
           "label": "Popis",
@@ -76,16 +90,17 @@
           "sortable": true
         }
       },
-      "files": {
+      "adminGroups": {
         "edit": {
-          "label": "Súbory",
+          "label": "adminGroups",
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true
+          "editable": true,
+          "mainField": "title"
         },
         "list": {
-          "label": "files",
+          "label": "adminGroups",
           "searchable": false,
           "sortable": false
         }
@@ -147,9 +162,23 @@
           "searchable": true,
           "sortable": true
         }
+      },
+      "documentId": {
+        "edit": {},
+        "list": {
+          "label": "documentId",
+          "searchable": true,
+          "sortable": true
+        }
       }
     },
     "layouts": {
+      "list": [
+        "id",
+        "title",
+        "slug",
+        "createdAt"
+      ],
       "edit": [
         [
           {
@@ -178,13 +207,13 @@
             "name": "description",
             "size": 12
           }
+        ],
+        [
+          {
+            "name": "adminGroups",
+            "size": 6
+          }
         ]
-      ],
-      "list": [
-        "id",
-        "title",
-        "slug",
-        "createdAt"
       ]
     },
     "uid": "api::document.document"

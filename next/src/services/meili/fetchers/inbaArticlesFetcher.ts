@@ -34,44 +34,28 @@ export const inbaArticlesFetcher = (filters: InbaArticlesFilters, locale: string
         filters.tagIds.length > 0 ? `inba-article.inbaTag.id IN [${filters.tagIds.join(',')}]` : '',
       ],
       sort: ['inba-article.publishedAtTimestamp:desc'],
-      attributesToRetrieve: [
-        // Only properties that are required to display listing are retrieved
-        'inba-article.title',
-        'inba-article.slug',
-        'inba-article.perex',
-        'inba-article.coverImage.url',
-        'inba-article.publishedAt',
-        'inba-article.inbaTag.title',
-      ],
     })
     .then(unwrapFromSearchIndex('inba-article'))
     .then((response) => {
       const hits = response.hits.map((inbaArticle) => {
         return {
-          attributes: {
-            title: inbaArticle.title,
-            slug: inbaArticle.slug,
-            perex: inbaArticle.perex,
-            publishedAt: inbaArticle.publishedAt,
-            ...(inbaArticle.coverImage && {
-              coverImage: {
-                data: {
-                  attributes: {
-                    url: inbaArticle.coverImage.url,
-                  },
-                },
-              },
-            }),
-            ...(inbaArticle.inbaTag && {
-              inbaTag: {
-                data: {
-                  attributes: {
-                    title: inbaArticle.inbaTag.title,
-                  },
-                },
-              },
-            }),
-          },
+          documentId: inbaArticle.documentId,
+          title: inbaArticle.title,
+          slug: inbaArticle.slug,
+          perex: inbaArticle.perex,
+          publishedAt: inbaArticle.publishedAt,
+          ...(inbaArticle.coverImage && {
+            coverImage: {
+              documentId: inbaArticle.coverImage.documentId,
+              url: inbaArticle.coverImage.url,
+            },
+          }),
+          ...(inbaArticle.inbaTag && {
+            inbaTag: {
+              documentId: inbaArticle.inbaTag.documentId,
+              title: inbaArticle.inbaTag.title,
+            },
+          }),
         } as const
       })
 

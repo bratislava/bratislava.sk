@@ -29,30 +29,20 @@ export const inbaReleasesFetcher = (filters: InbaReleasesFilters) => {
       const hits = response.hits.map((inbaRelease) => {
         return {
           id: inbaRelease.id,
-          attributes: {
-            title: inbaRelease.title,
-            slug: inbaRelease.slug,
-            perex: inbaRelease.perex,
-            releaseDate: inbaRelease.releaseDate,
-            ...(inbaRelease.coverImage && {
-              coverImage: {
-                data: {
-                  attributes: {
-                    url: inbaRelease.coverImage.url,
-                  },
-                },
-              },
-            }),
-            ...(inbaRelease.rearImage && {
-              rearImage: {
-                data: {
-                  attributes: {
-                    url: inbaRelease.rearImage.url,
-                  },
-                },
-              },
-            }),
-          },
+          title: inbaRelease.title,
+          slug: inbaRelease.slug,
+          perex: inbaRelease.perex,
+          releaseDate: inbaRelease.releaseDate,
+          ...(inbaRelease.coverImage && {
+            coverImage: {
+              url: inbaRelease.coverImage.url,
+            },
+          }),
+          ...(inbaRelease.rearImage && {
+            rearImage: {
+              url: inbaRelease.rearImage.url,
+            },
+          }),
         } as const
       })
 

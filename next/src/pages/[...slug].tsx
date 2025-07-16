@@ -34,12 +34,12 @@ export const getStaticPaths: GetStaticPaths<StaticParams> = async () => {
   // English pages are not generated.
   const { pages } = await client.PagesStaticPaths()
 
-  const paths = (pages?.data ?? [])
-    .filter((page) => page?.attributes?.slug)
+  const paths = pages
+    .filter((page) => page?.slug)
     .map((page) => ({
       params: {
         // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion,@typescript-eslint/no-non-null-assertion
-        slug: page.attributes!.slug!.split('/'),
+        slug: page!.slug!.split('/'),
       },
     }))
 
@@ -74,14 +74,14 @@ export const getStaticProps: GetStaticProps<PageProps, StaticParams> = async ({
   let redirectPath = ''
 
   // Check if an Article with this alias exists
-  const aliasArticleSlug = aliasArticles?.data[0]?.attributes?.slug
+  const aliasArticleSlug = aliasArticles[0]?.slug
   if (aliasArticleSlug) {
     // Get the full path for the article
     redirectPath = `/spravy/${aliasArticleSlug}`
   }
 
   // Check if a Page with this alias exists
-  const aliasPageSlug = aliasPages?.data[0]?.attributes?.slug
+  const aliasPageSlug = aliasPages[0]?.slug
   if (aliasPageSlug) {
     // Get the full path for the page by its slug
     redirectPath = `/${aliasPageSlug}`
@@ -100,7 +100,7 @@ export const getStaticProps: GetStaticProps<PageProps, StaticParams> = async ({
     }
   }
 
-  const page = pages?.data?.[0]
+  const page = pages[0]
   if (!page) {
     return NOT_FOUND
   }
@@ -119,24 +119,14 @@ export const getStaticProps: GetStaticProps<PageProps, StaticParams> = async ({
 }
 
 const Page = ({ general, page, dehydratedState }: PageProps) => {
-  const {
-    slug,
-    title: pageTitle,
-    metaDiscription,
-    subtext,
-    keywords,
-    locale,
-  } = page?.attributes ?? {}
+  const { slug, title: pageTitle, pageCategory, metaDiscription, subtext, keywords, locale } = page
 
-  const localization = page?.attributes?.localizations?.data?.[0]
+  const localization = page.localizations[0]
   const localizations = Object.fromEntries(
     [
       [locale as LanguageCode, `/${slug}`] as const,
       localization
-        ? ([
-            localization?.attributes?.locale as LanguageCode,
-            `/${localization?.attributes?.slug}`,
-          ] as const)
+        ? ([localization.locale as LanguageCode, `/${localization.slug}`] as const)
         : null,
     ].filter(isDefined),
   ) as Localizations
@@ -152,9 +142,7 @@ const Page = ({ general, page, dehydratedState }: PageProps) => {
             <meta name="description" content={metaDiscription ?? subtext ?? ''} />
             <meta name="keywords" content={keywords ?? ''} />
           </Head>
-          <GlobalCategoryColorProvider
-            color={page?.attributes?.pageCategory?.data?.attributes?.color}
-          />
+          <GlobalCategoryColorProvider color={pageCategory?.color} />
           <PageLayout>
             <GeneralPageContent page={page} />
           </PageLayout>

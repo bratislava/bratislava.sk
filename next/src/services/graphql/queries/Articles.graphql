@@ -1,60 +1,44 @@
-fragment ArticleSlugEntity on ArticleEntity {
+fragment ArticleSlugEntity on Article {
   __typename
-  id
-  attributes {
-    slug
-    title
-    locale
-  }
+  documentId
+  slug
+  title
+  locale
 }
 
-fragment ArticleCardEntity on ArticleEntity {
+fragment ArticleCardEntity on Article {
   ...ArticleSlugEntity
-  attributes {
-    perex
-    addedAt
-    coverMedia {
-      data {
-        ...UploadImageEntity
-      }
-    }
-    tag {
-      data {
-        ...TagEntity
-      }
-    }
+  perex
+  addedAt
+  coverMedia {
+    ...UploadImageEntity
+  }
+  tag {
+    ...TagEntity
   }
 }
 
-fragment ArticleEntity on ArticleEntity {
+fragment ArticleEntity on Article {
   ...ArticleCardEntity
-  attributes {
-    alias
-    content
-    files {
-      ...FileBlock
-    }
-    gallery {
-      data {
-        ...UploadImageEntity
-      }
-    }
+  alias
+  content
+  files {
+    ...FileBlock
+  }
+  gallery {
+    ...UploadImageEntity
   }
 }
 
 query ArticleBySlug($slug: String!, $locale: I18NLocaleCode!) {
   articles(filters: { slug: { eq: $slug } }, locale: $locale) {
-    data {
-      ...ArticleEntity
-    }
+    ...ArticleEntity
   }
 }
 
-query ArticlesStaticPaths($limit: Int = -1) {
-  articles(locale: "all", sort: "addedAt:desc", pagination: { limit: $limit }) {
-    data {
-      ...ArticleSlugEntity
-    }
+query ArticlesStaticPaths($limit: Int = -1, $locale: I18NLocaleCode!) {
+  articles(locale: $locale, sort: "addedAt:desc", pagination: { limit: $limit }) {
+    ...ArticleSlugEntity
   }
 }
 
@@ -71,46 +55,28 @@ query Articles(
     filters: $filters
     locale: $locale
   ) {
-    data {
-      ...ArticleCardEntity
-    }
+    ...ArticleCardEntity
   }
 }
 
 query ArticlesRssFeed($locale: I18NLocaleCode!) {
   # From docs: "Most feeds use 20 or fewer items." https://github.com/dylang/node-rss?tab=readme-ov-file#add-items-to-a-feed
   articles(locale: $locale, sort: "addedAt:desc", pagination: { limit: 20 }) {
-    data {
-      id
-      attributes {
-        slug
+    documentId
+    slug
+    title
+    addedAt
+    perex
+    tag {
+      title
+      pageCategory {
         title
-        addedAt
-        perex
-        tag {
-          data {
-            attributes {
-              title
-              pageCategory {
-                data {
-                  attributes {
-                    title
-                  }
-                }
-              }
-            }
-          }
-        }
-        coverMedia {
-          data {
-            attributes {
-              url
-              mime
-              size
-            }
-          }
-        }
       }
+    }
+    coverMedia {
+      url
+      mime
+      size
     }
   }
 }
@@ -128,8 +94,6 @@ query Dev_AllArticles(
     filters: $filters
     locale: $locale
   ) {
-    data {
-      ...ArticleEntity
-    }
+    ...ArticleEntity
   }
 }

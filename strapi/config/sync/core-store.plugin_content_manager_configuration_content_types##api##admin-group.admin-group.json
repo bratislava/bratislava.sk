@@ -77,6 +77,36 @@
           "sortable": false
         }
       },
+      "faqs": {
+        "edit": {
+          "label": "faqs",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "title"
+        },
+        "list": {
+          "label": "faqs",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "documents": {
+        "edit": {
+          "label": "documents",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "title"
+        },
+        "list": {
+          "label": "documents",
+          "searchable": false,
+          "sortable": false
+        }
+      },
       "createdAt": {
         "edit": {
           "label": "createdAt",
@@ -134,6 +164,14 @@
           "searchable": true,
           "sortable": true
         }
+      },
+      "documentId": {
+        "edit": {},
+        "list": {
+          "label": "documentId",
+          "searchable": true,
+          "sortable": true
+        }
       }
     },
     "layouts": {
@@ -161,6 +199,16 @@
           },
           {
             "name": "pages",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "faqs",
+            "size": 6
+          },
+          {
+            "name": "documents",
             "size": 6
           }
         ]

@@ -27,25 +27,21 @@ const DocumentPageContent = ({ document }: Props) => {
   const { t, i18n } = useTranslation()
 
   const { general } = useGeneralContext()
-  const documentsPage = general?.data?.attributes?.documentsPage?.data
+  const documentsPage = general?.documentsPage
 
   const breadcrumbs = useMemo(() => {
     return [
       ...(documentsPage ? getPageBreadcrumbs(documentsPage) : []),
-      { title: document.attributes?.title ?? '', path: null } as Breadcrumb,
+      { title: document.title ?? '', path: null } as Breadcrumb,
     ]
-  }, [document.attributes?.title, documentsPage])
+  }, [document.title, documentsPage])
 
-  if (!document.attributes) {
-    return null
-  }
-
-  const { description, files, documentCategory, publishedAt, updatedAt } = document.attributes
+  const { description, files, documentCategory, publishedAt, updatedAt } = document
 
   const detailItems = [
     {
       label: t('DocumentPageContent.documentCategory'),
-      value: documentCategory?.data?.attributes?.title,
+      value: documentCategory?.title,
     },
     {
       label: t('DocumentPageContent.publishedAt'),
@@ -57,7 +53,7 @@ const DocumentPageContent = ({ document }: Props) => {
     },
   ].filter((item) => !!item.value)
 
-  const filteredFiles = files?.data.filter(isDefined) ?? []
+  const filteredFiles = files.filter(isDefined) ?? []
 
   return (
     <>
@@ -73,23 +69,21 @@ const DocumentPageContent = ({ document }: Props) => {
         <div className="flex max-w-200 flex-col gap-4 lg:gap-8">
           {filteredFiles.length > 1 ? (
             <ul className="flex flex-col rounded-lg border-2 py-2">
-              {filteredFiles.map((file, index) =>
-                file.attributes ? (
-                  <Fragment key={file.id}>
-                    {index > 0 ? <HorizontalDivider asListItem className="mx-4 lg:mx-6" /> : null}
-                    <li className="w-full">
-                      <FileRowCard
-                        title={file.attributes.name}
-                        downloadLink={file.attributes.url}
-                        format={formatFileExtension(file.attributes.ext) ?? undefined}
-                        size={formatFileSize(file.attributes.size, i18n.language)}
-                        uploadDate={formatDate(file.attributes.createdAt)}
-                        // ariaLabel={getDownloadAriaLabel(fileItemInner)}
-                      />
-                    </li>
-                  </Fragment>
-                ) : null,
-              )}
+              {filteredFiles.map((file, index) => (
+                <Fragment key={file.documentId}>
+                  {index > 0 ? <HorizontalDivider asListItem className="mx-4 lg:mx-6" /> : null}
+                  <li className="w-full">
+                    <FileRowCard
+                      title={file.name}
+                      downloadLink={file.url}
+                      format={formatFileExtension(file.ext) ?? undefined}
+                      size={formatFileSize(file.size, i18n.language)}
+                      uploadDate={formatDate(file.createdAt)}
+                      // ariaLabel={getDownloadAriaLabel(fileItemInner)}
+                    />
+                  </li>
+                </Fragment>
+              ))}
             </ul>
           ) : null}
           <div className="flex flex-col gap-8 lg:gap-10">

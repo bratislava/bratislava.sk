@@ -21,8 +21,7 @@ import { isDefined } from '@/src/utils/isDefined'
 const DesktopFooter = () => {
   const { footer } = useGeneralContext()
 
-  const attributes = footer?.data?.attributes
-  if (!attributes) {
+  if (!footer) {
     return null
   }
 
@@ -34,16 +33,16 @@ const DesktopFooter = () => {
           <Brand withTitle />
           <div className="flex items-center gap-16">
             <div className="flex gap-2">
-              <FooterSocialLinks {...attributes} />
+              <FooterSocialLinks {...footer} />
             </div>
             <EuFlagSvg />
           </div>
         </div>
         <HorizontalDivider />
         <div className="flex justify-between gap-6">
-          <FooterContacts {...attributes} />
+          <FooterContacts {...footer} />
           <HorizontalDivider className="col-span-2 lg:hidden" />
-          {attributes.columns?.filter(isDefined).map((column, index) => (
+          {footer.columns?.filter(isDefined).map((column, index) => (
             // eslint-disable-next-line react/no-array-index-key
             <div className="flex flex-col gap-3 lg:gap-4" key={index}>
               <Typography variant="h5" as="h2">
@@ -58,7 +57,7 @@ const DesktopFooter = () => {
         <HorizontalDivider />
         <div className="flex flex-col gap-y-6 lg:flex-row lg:justify-between">
           <div className="flex justify-center gap-6 lg:justify-normal">
-            <FooterAccessibilityLink {...attributes} />
+            <FooterAccessibilityLink {...footer} />
           </div>
           <div className="flex justify-center gap-4 lg:justify-normal">
             <FooterLanguageSwitcher />
@@ -66,7 +65,7 @@ const DesktopFooter = () => {
         </div>
         <HorizontalDivider />
         <div className="text-center text-size-p-small">
-          <FooterCopyright {...attributes} />
+          <FooterCopyright {...footer} />
         </div>
       </footer>
     </SectionContainer>

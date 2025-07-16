@@ -24,12 +24,12 @@ type RegulationPageProps = {
 export const getStaticPaths: GetStaticPaths<StaticParams> = async () => {
   const { regulations } = await client.RegulationsStaticPaths()
 
-  const paths = (regulations?.data ?? [])
-    .filter((regulation) => regulation?.attributes?.slug)
+  const paths = regulations
+    .filter((regulation) => regulation?.slug)
     .map((regulation) => ({
       params: {
         // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion,@typescript-eslint/no-non-null-assertion
-        slug: regulation.attributes!.slug!,
+        slug: regulation!.slug!,
       },
     }))
 
@@ -58,7 +58,7 @@ export const getStaticProps: GetStaticProps<RegulationPageProps, StaticParams> =
     serverSideTranslations(locale),
   ])
 
-  const regulation = regulations?.data?.[0]
+  const regulation = regulations[0]
   if (!regulation) {
     return NOT_FOUND
   }
@@ -74,18 +74,15 @@ export const getStaticProps: GetStaticProps<RegulationPageProps, StaticParams> =
 }
 
 const RegulationPage = ({ general, regulation }: RegulationPageProps) => {
-  if (!regulation || !regulation.attributes) {
+  if (!regulation) {
     return null
   }
 
   return (
     <GeneralContextProvider general={general}>
       <Head>
-        <title>{`VZN ${regulation.attributes.regNumber}`}</title>
-        <meta
-          name="description"
-          content={`Všeobecné záväzné nariadenie ${regulation.attributes.fullTitle}`}
-        />
+        <title>{`VZN ${regulation.regNumber}`}</title>
+        <meta name="description" content={`Všeobecné záväzné nariadenie ${regulation.fullTitle}`} />
       </Head>
       <PageLayout>
         <RegulationPageContent regulation={regulation} />

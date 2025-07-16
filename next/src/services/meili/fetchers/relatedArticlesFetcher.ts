@@ -7,7 +7,7 @@ import {
 import { isDefined } from '@/src/utils/isDefined'
 
 const extractTags = (page: PageEntityFragment) => {
-  return page.attributes?.relatedContents?.data.map((tag) => tag?.id).filter(isDefined) ?? []
+  return page.relatedContents?.map((tag) => tag?.documentId).filter(isDefined) ?? []
 }
 
 const relatedArticlesFilters = (page: PageEntityFragment) => ({

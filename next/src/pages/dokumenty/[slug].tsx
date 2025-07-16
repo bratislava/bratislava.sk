@@ -23,16 +23,16 @@ type StaticParams = {
 // TODO
 export const getStaticPaths: GetStaticPaths<StaticParams> = async () => {
   // const { articles } = await client.ArticlesStaticPaths({ limit: 30 })
-  //
-  // const paths = (articles?.data ?? [])
-  //   .filter((article) => article?.attributes?.slug && article?.attributes?.locale)
+
+  // const paths = articles
+  //   .filter((article) => article?.slug && article?.locale)
   //   .map((article) => ({
   //     params: {
   //       // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion,@typescript-eslint/no-non-null-assertion
-  //       slug: article.attributes!.slug!,
+  //       slug: article!.slug!,
   //     },
   //     // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion,@typescript-eslint/no-non-null-assertion
-  //     locale: article.attributes!.locale!,
+  //     locale: article!.locale!,
   //   }))
 
   // // eslint-disable-next-line no-console
@@ -60,7 +60,7 @@ export const getStaticProps: GetStaticProps<PageProps, StaticParams> = async ({
     serverSideTranslations(locale),
   ])
 
-  const document = documents?.data[0]
+  const document = documents[0]
   if (!document) {
     return NOT_FOUND
   }
@@ -76,7 +76,7 @@ export const getStaticProps: GetStaticProps<PageProps, StaticParams> = async ({
 }
 
 const Page = ({ general, document }: PageProps) => {
-  const { title: documentTitle } = document.attributes ?? {}
+  const { title: documentTitle } = document ?? {}
 
   const title = useTitle(documentTitle)
 
