@@ -1,71 +1,80 @@
 // Document Service middlewares docs: https://docs.strapi.io/cms/api/document-service/middlewares#context
 
 import { Core } from '@strapi/strapi'
+import { AdminRole } from '../../types/generated/contentTypes'
+
+type AdminGroupId = 'starz'
+
+const getAdminGroup = async ({
+  adminGroupId,
+  strapi,
+}: {
+  adminGroupId: AdminGroupId
+  strapi: Core.Strapi
+}) => {
+  try {
+    const adminGroups = await strapi.documents('api::admin-group.admin-group').findMany({
+      filters: { adminGroupId },
+    })
+
+    if (adminGroups.length === 0) {
+      console.log('no adminGroup with adminGroupId=' + adminGroupId + ' found')
+    }
+
+    // adminGroupId has unique values, so we get at most one result
+    return adminGroups[0]
+  } catch (error) {
+    console.log('getAdminGroup failed with error', error)
+  }
+}
 
 export const registerDocumentServiceMiddlewares = ({ strapi }: { strapi: Core.Strapi }) => {
-  type AdminGroupId = 'starz'
-
-  const getAdminGroup = async ({ adminGroupId }: { adminGroupId: AdminGroupId }) => {
-    try {
-      const adminGroups = await strapi.documents('api::admin-group.admin-group').findMany({
-        filters: { adminGroupId },
-      })
-
-      // adminGroupId has unique values, so we get at most one result
-      return adminGroups[0]
-    } catch (error) {
-      console.log('getAdminGroup failed with error', error)
-    }
-  }
+  // TODO refactor to allow more adminGroup values
+  const STARZ_ADMINGROUP_ID = 'starz'   // Value of field adminGroupId of AdminGroup collection in Strapi, 
+  const STARZ_ROLE_NAME_REGEX = 'starz' // Admin role name in Strapi
 
   strapi.documents.use(async (context, next) => {
-    if (context.uid == 'api::article.article' && context.action == 'create') {
-      // Todo refactor to better handle the hardcoded 'starz' string
-      const starzAdminGroup = await getAdminGroup({ adminGroupId: 'starz' })
+    if (
+      (context.uid == 'api::article.article' ||
+        context.uid == 'api::page.page' ||
+        context.uid == 'api::document.document' ||
+        context.uid == 'api::faq.faq') &&
+      context.action == 'create'
+    ) {
+      const adminGroup = await getAdminGroup({ adminGroupId: STARZ_ADMINGROUP_ID, strapi })
 
-      if (!starzAdminGroup) {
-        console.log('no starz admin group found')
-      }
+      const document = context.params.data
+      const documentCreatorId = document.createdBy
 
-      const article = context.params.data
-      const articleCreatorId = article.createdBy
-
-      /**
-       * Here I encountered some difficulties:
-       * From context.params.data, I was able to retrieve only the id of its creator user
-       * However, Only documentId can be queried through document API
-       * So I used the Query Engine to get user by id
-       */
-      const articleCreator = await strapi.db.query('admin::user').findOne({
+      const documentCreatorUser = await strapi.db.query('admin::user').findOne({
         where: {
-          id: articleCreatorId,
+          id: documentCreatorId,
         },
         populate: {
           roles: true,
         },
       })
 
-      // Check if article creator role includes starz - If yes, add starz to adminGroups
+      // Check if document creator role includes starz - If yes, add starz to adminGroups
       if (
-        articleCreator.roles.some((role) => {
-          // TODO refactor hardcoded 'starz' string
-          return new RegExp(/starz/, 'i').test(role.name)
+        documentCreatorUser.roles.some((role) => {
+          console.log(JSON.stringify(role))
+          return new RegExp(STARZ_ROLE_NAME_REGEX, 'i').test(role.name)
         })
       ) {
-        if (article.adminGroups && 'connect' in article.adminGroups) {
+        if (document.adminGroups && 'connect' in document.adminGroups) {
           // Some value(s) in adminGroups already present
-          article.adminGroups = {
-            ...article.adminGroups,
+          document.adminGroups = {
+            ...document.adminGroups,
             connect: [
-              // Take ids of previous adminGroups
-              ...article.adminGroups.connect.map((relationItem) => relationItem.documentId),
-              // Append new admin group
-              starzAdminGroup.documentId,
+              // Take ids of previous adminGroups and add new admin group
+              ...document.adminGroups.connect.map((relationItem) => relationItem.documentId),
+              adminGroup.documentId,
             ],
           }
         } else {
           // No values in adminGroups relation, so we need to establish it
-          article.adminGroups = { ...article.adminGroups, connect: [starzAdminGroup.documentId] }
+          document.adminGroups = { ...document.adminGroups, connect: [adminGroup.documentId] }
         }
       }
     }
