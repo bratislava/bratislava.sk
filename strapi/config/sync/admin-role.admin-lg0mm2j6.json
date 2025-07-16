@@ -71,6 +71,25 @@
       "locale": null
     },
     {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::article-category.article-category",
+      "properties": {
+        "fields": [
+          "title",
+          "slug",
+          "articles"
+        ],
+        "locales": [
+          "en",
+          "sk"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": {},
+      "documentId": "v3183yogmyshugu7wdew6a9w",
+      "locale": null
+    },
+    {
       "action": "plugin::content-manager.explorer.create",
       "subject": "api::article.article",
       "properties": {
@@ -85,7 +104,8 @@
           "content",
           "files.title",
           "files.media",
-          "gallery"
+          "gallery",
+          "articleCategory"
         ],
         "locales": [
           "en",
@@ -94,7 +114,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "ak3s9ke88dpbwqdvlt464wgm",
+      "documentId": "bzaxpvto5571f6llp5uf46mg",
       "locale": null
     },
     {
@@ -140,7 +160,8 @@
           "content",
           "files.title",
           "files.media",
-          "gallery"
+          "gallery",
+          "articleCategory"
         ],
         "locales": [
           "en",
@@ -149,7 +170,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "yarr4kpcys5e7ywwmv7lbsl7",
+      "documentId": "u2emdi97ybwxdrg8j5l56xb5",
       "locale": null
     },
     {
@@ -167,7 +188,8 @@
           "content",
           "files.title",
           "files.media",
-          "gallery"
+          "gallery",
+          "articleCategory"
         ],
         "locales": [
           "en",
@@ -176,7 +198,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "hyvfdz8gai1q4ygzxcg4r2bs",
+      "documentId": "r760iq18ei1cnjzrbr4goc6x",
       "locale": null
     },
     {
