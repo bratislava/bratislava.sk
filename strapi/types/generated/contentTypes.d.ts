@@ -990,13 +990,7 @@ export interface ApiInbaReleaseInbaRelease extends Struct.CollectionTypeSchema {
     coverImage: Schema.Attribute.Media<'images'>
     createdAt: Schema.Attribute.DateTime
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> & Schema.Attribute.Private
-    files: Schema.Attribute.Component<'blocks.file', true> &
-      Schema.Attribute.SetMinMax<
-        {
-          min: 1
-        },
-        number
-      >
+    files: Schema.Attribute.Component<'blocks.file', true>
     inbaArticles: Schema.Attribute.Relation<'oneToMany', 'api::inba-article.inba-article'>
     locale: Schema.Attribute.String & Schema.Attribute.Private
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::inba-release.inba-release'> &
