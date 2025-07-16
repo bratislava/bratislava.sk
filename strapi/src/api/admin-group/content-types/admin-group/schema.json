@@ -30,6 +30,18 @@
       "relation": "manyToMany",
       "target": "api::page.page",
       "mappedBy": "adminGroups"
+    },
+    "faqs": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::faq.faq",
+      "inversedBy": "adminGroups"
+    },
+    "documents": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::document.document",
+      "inversedBy": "adminGroups"
     }
   }
 }

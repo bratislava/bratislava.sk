@@ -13,12 +13,14 @@
           "title",
           "adminGroupId",
           "articles",
-          "pages"
+          "pages",
+          "faqs",
+          "documents"
         ]
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "h0m24hbg8dfxvmrg23r7uyly",
+      "documentId": "wcf5djnv7douioidegjacgfr",
       "locale": null
     },
     {
@@ -47,12 +49,14 @@
           "title",
           "adminGroupId",
           "articles",
-          "pages"
+          "pages",
+          "faqs",
+          "documents"
         ]
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "xo1ol3q68mrxdgk2pkreulo6",
+      "documentId": "s1mnir38petxgaqwu4m0eqbt",
       "locale": null
     },
     {
@@ -63,12 +67,14 @@
           "title",
           "adminGroupId",
           "articles",
-          "pages"
+          "pages",
+          "faqs",
+          "documents"
         ]
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "wu7ubzh5rgjw2guxrepviodr",
+      "documentId": "vum5ox6rwvwfe27urnyldbi6",
       "locale": null
     },
     {
@@ -434,12 +440,13 @@
           "slug",
           "files",
           "description",
-          "documentCategory"
+          "documentCategory",
+          "adminGroups"
         ]
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "prdx309r15andddt3u05o9fj",
+      "documentId": "aqw8btwqsynlhuxktlwkpwtn",
       "locale": null
     },
     {
@@ -469,12 +476,13 @@
           "slug",
           "files",
           "description",
-          "documentCategory"
+          "documentCategory",
+          "adminGroups"
         ]
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "fwlu1l3b0yyc4n6rxshhmvs3",
+      "documentId": "aw3soroxjk46y1ugkq9q1by5",
       "locale": null
     },
     {
@@ -486,12 +494,13 @@
           "slug",
           "files",
           "description",
-          "documentCategory"
+          "documentCategory",
+          "adminGroups"
         ]
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "mgdb2ja6l6skqy7q595ixoav",
+      "documentId": "uwo7slrc5imd8glo9yo80x7n",
       "locale": null
     },
     {
@@ -586,7 +595,8 @@
         "fields": [
           "title",
           "body",
-          "faqCategory"
+          "faqCategory",
+          "adminGroups"
         ],
         "locales": [
           "en",
@@ -595,7 +605,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "v6y4hkwewfbai4dmtrs3yv6r",
+      "documentId": "w8bgpaxwrmrmq8ncynlo8l6z",
       "locale": null
     },
     {
@@ -633,7 +643,8 @@
         "fields": [
           "title",
           "body",
-          "faqCategory"
+          "faqCategory",
+          "adminGroups"
         ],
         "locales": [
           "en",
@@ -642,7 +653,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "jeov7ep2m56bw27gz0ilj9td",
+      "documentId": "bedzr04bha1km9gadb0i39a0",
       "locale": null
     },
     {
@@ -652,7 +663,8 @@
         "fields": [
           "title",
           "body",
-          "faqCategory"
+          "faqCategory",
+          "adminGroups"
         ],
         "locales": [
           "en",
@@ -661,7 +673,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "xd3it53uw0lo4vyrkjm2pfyq",
+      "documentId": "sja4socjm1u81hq45p7xvq9u",
       "locale": null
     },
     {

@@ -63,6 +63,21 @@
           "sortable": true
         }
       },
+      "adminGroups": {
+        "edit": {
+          "label": "adminGroups",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "title"
+        },
+        "list": {
+          "label": "adminGroups",
+          "searchable": false,
+          "sortable": false
+        }
+      },
       "createdAt": {
         "edit": {
           "label": "createdAt",
@@ -153,6 +168,10 @@
         [
           {
             "name": "faqCategory",
+            "size": 6
+          },
+          {
+            "name": "adminGroups",
             "size": 6
           }
         ]

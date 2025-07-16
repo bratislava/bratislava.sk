@@ -354,6 +354,8 @@ export interface ApiAdminGroupAdminGroup extends Struct.CollectionTypeSchema {
     articles: Schema.Attribute.Relation<'manyToMany', 'api::article.article'>
     createdAt: Schema.Attribute.DateTime
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> & Schema.Attribute.Private
+    documents: Schema.Attribute.Relation<'manyToMany', 'api::document.document'>
+    faqs: Schema.Attribute.Relation<'manyToMany', 'api::faq.faq'>
     locale: Schema.Attribute.String & Schema.Attribute.Private
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::admin-group.admin-group'> &
       Schema.Attribute.Private
@@ -600,6 +602,7 @@ export interface ApiDocumentDocument extends Struct.CollectionTypeSchema {
     draftAndPublish: true
   }
   attributes: {
+    adminGroups: Schema.Attribute.Relation<'manyToMany', 'api::admin-group.admin-group'>
     createdAt: Schema.Attribute.DateTime
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> & Schema.Attribute.Private
     description: Schema.Attribute.Text
@@ -676,6 +679,7 @@ export interface ApiFaqFaq extends Struct.CollectionTypeSchema {
     }
   }
   attributes: {
+    adminGroups: Schema.Attribute.Relation<'manyToMany', 'api::admin-group.admin-group'>
     body: Schema.Attribute.RichText &
       Schema.Attribute.SetPluginOptions<{
         i18n: {

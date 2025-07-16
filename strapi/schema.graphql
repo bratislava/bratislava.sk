@@ -8,6 +8,10 @@ type AdminGroup {
   articles_connection(filters: ArticleFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): ArticleRelationResponseCollection
   createdAt: DateTime
   documentId: ID!
+  documents(filters: DocumentFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [Document]!
+  documents_connection(filters: DocumentFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): DocumentRelationResponseCollection
+  faqs(filters: FaqFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [Faq]!
+  faqs_connection(filters: FaqFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): FaqRelationResponseCollection
   pages(filters: PageFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [Page]!
   pages_connection(filters: PageFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): PageRelationResponseCollection
   publishedAt: DateTime
@@ -35,6 +39,8 @@ input AdminGroupFiltersInput {
   articles: ArticleFiltersInput
   createdAt: DateTimeFilterInput
   documentId: IDFilterInput
+  documents: DocumentFiltersInput
+  faqs: FaqFiltersInput
   not: AdminGroupFiltersInput
   or: [AdminGroupFiltersInput]
   pages: PageFiltersInput
@@ -46,6 +52,8 @@ input AdminGroupFiltersInput {
 input AdminGroupInput {
   adminGroupId: String
   articles: [ID]
+  documents: [ID]
+  faqs: [ID]
   pages: [ID]
   publishedAt: DateTime
   title: String
@@ -1837,6 +1845,8 @@ type DeleteMutationResponse {
 }
 
 type Document {
+  adminGroups(filters: AdminGroupFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [AdminGroup]!
+  adminGroups_connection(filters: AdminGroupFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): AdminGroupRelationResponseCollection
   createdAt: DateTime
   description: String
   documentCategory: DocumentCategory
@@ -1913,6 +1923,7 @@ type DocumentEntityResponseCollection {
 }
 
 input DocumentFiltersInput {
+  adminGroups: AdminGroupFiltersInput
   and: [DocumentFiltersInput]
   createdAt: DateTimeFilterInput
   description: StringFilterInput
@@ -1927,6 +1938,7 @@ input DocumentFiltersInput {
 }
 
 input DocumentInput {
+  adminGroups: [ID]
   description: String
   documentCategory: ID
   files: [ID]
@@ -2158,6 +2170,8 @@ type Error {
 }
 
 type Faq {
+  adminGroups(filters: AdminGroupFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [AdminGroup]!
+  adminGroups_connection(filters: AdminGroupFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): AdminGroupRelationResponseCollection
   body: String
   createdAt: DateTime
   documentId: ID!
@@ -2239,6 +2253,7 @@ type FaqEntityResponseCollection {
 }
 
 input FaqFiltersInput {
+  adminGroups: AdminGroupFiltersInput
   and: [FaqFiltersInput]
   body: StringFilterInput
   createdAt: DateTimeFilterInput
@@ -2254,6 +2269,7 @@ input FaqFiltersInput {
 }
 
 input FaqInput {
+  adminGroups: [ID]
   body: String
   faqCategory: ID
   publishedAt: DateTime

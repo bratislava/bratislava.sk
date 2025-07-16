@@ -90,6 +90,21 @@
           "sortable": true
         }
       },
+      "adminGroups": {
+        "edit": {
+          "label": "adminGroups",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "title"
+        },
+        "list": {
+          "label": "adminGroups",
+          "searchable": false,
+          "sortable": false
+        }
+      },
       "createdAt": {
         "edit": {
           "label": "createdAt",
@@ -191,6 +206,12 @@
           {
             "name": "description",
             "size": 12
+          }
+        ],
+        [
+          {
+            "name": "adminGroups",
+            "size": 6
           }
         ]
       ]
