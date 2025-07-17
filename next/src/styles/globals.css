@@ -85,6 +85,24 @@
   --color-culture-300: rgb(249, 221, 196); /*#f9ddc4*/
   --color-culture-200: rgb(251, 233, 215); /*#fbe9d7*/
   --color-culture-100: rgb(253, 244, 235); /*#fdf4eb*/
+
+  --color-starz-primary-800: rgb(0, 48, 87); /*#003057*/
+  --color-starz-primary-700: rgb(0, 57, 104); /*#003968*/
+  --color-starz-primary-600: rgb(51, 97, 134); /*#336186*/
+  --color-starz-primary-500: rgb(128, 156, 180); /*#809CB4*/
+  --color-starz-primary-400: rgb(153, 176, 195); /*#99B0C3*/
+  --color-starz-primary-300: rgb(179, 196, 210); /*#B3C4D2*/
+  --color-starz-primary-200: rgb(204, 215, 225); /*#CCD7E1*/
+  --color-starz-primary-100: rgb(230, 235, 240); /*#E6EBF0*/
+
+  --color-starz-secondary-800: rgb(0, 89, 153); /*#005999*/
+  --color-starz-secondary-700: rgb(0, 106, 182); /*#006AB6*/
+  --color-starz-secondary-600: rgb(51, 136, 197); /*#3388C5*/
+  --color-starz-secondary-500: rgb(77, 151, 204); /*#4D97CC*/
+  --color-starz-secondary-400: rgb(128, 181, 219); /*#80B5DB*/
+  --color-starz-secondary-300: rgb(179, 210, 233); /*#B3D2E9*/
+  --color-starz-secondary-200: rgb(204, 225, 240); /*#CCE1F0*/
+  --color-starz-secondary-100: rgb(230, 240, 248); /*#E6F0F8*/
 }
 
 @theme {

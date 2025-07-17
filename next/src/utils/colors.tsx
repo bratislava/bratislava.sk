@@ -10,6 +10,9 @@ export type ColorCategory =
   | 'education'
   | 'culture'
   | 'grey'
+  | 'starz-secondary'
+
+export type PageColor = Enum_Pagecategory_Color | 'starz'
 
 const colorCategoryMap = {
   red: 'main',
@@ -18,7 +21,8 @@ const colorCategoryMap = {
   yellow: 'social',
   purple: 'education',
   brown: 'culture',
-} satisfies Record<Enum_Pagecategory_Color, ColorCategory>
+  starz: 'starz-secondary',
+} satisfies Record<PageColor, ColorCategory>
 
 const iconCategoryMap = {
   mesto_01: 'main',
@@ -29,9 +33,7 @@ const iconCategoryMap = {
   kultura_06: 'culture',
 } satisfies Record<Enum_Componentmenumenuitem_Icon, ColorCategory>
 
-const transformColorToCategory = (
-  pageColor: Enum_Pagecategory_Color | null | undefined,
-): ColorCategory => {
+const transformColorToCategory = (pageColor: PageColor | null | undefined): ColorCategory => {
   return colorCategoryMap[pageColor ?? 'red']
 }
 
@@ -55,7 +57,7 @@ const generateCssVariables = (category: ColorCategory) => {
 
 type Props =
   | {
-      color: Enum_Pagecategory_Color | null | undefined
+      color: PageColor | null | undefined
       category?: never
     }
   | {

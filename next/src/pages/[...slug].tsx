@@ -16,6 +16,7 @@ import { GeneralQuery, PageEntityFragment } from '@/src/services/graphql'
 import { client } from '@/src/services/graphql/gql'
 import { GlobalCategoryColorProvider } from '@/src/utils/colors'
 import { NOT_FOUND } from '@/src/utils/consts'
+import { getPageColor } from '@/src/utils/getPageColor'
 import { isDefined } from '@/src/utils/isDefined'
 import { prefetchPageSections } from '@/src/utils/prefetchPageSections'
 import { useTitle } from '@/src/utils/useTitle'
@@ -119,7 +120,7 @@ export const getStaticProps: GetStaticProps<PageProps, StaticParams> = async ({
 }
 
 const Page = ({ general, page, dehydratedState }: PageProps) => {
-  const { slug, title: pageTitle, pageCategory, metaDiscription, subtext, keywords, locale } = page
+  const { slug, title: pageTitle, metaDiscription, subtext, keywords, locale } = page
 
   const localization = page.localizations[0]
   const localizations = Object.fromEntries(
@@ -142,7 +143,7 @@ const Page = ({ general, page, dehydratedState }: PageProps) => {
             <meta name="description" content={metaDiscription ?? subtext ?? ''} />
             <meta name="keywords" content={keywords ?? ''} />
           </Head>
-          <GlobalCategoryColorProvider color={pageCategory?.color} />
+          <GlobalCategoryColorProvider color={getPageColor(page)} />
           <PageLayout>
             <GeneralPageContent page={page} />
           </PageLayout>
