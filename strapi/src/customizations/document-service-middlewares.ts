@@ -17,13 +17,13 @@ const getAdminGroup = async ({
     })
 
     if (adminGroups.length === 0) {
-      console.log('no adminGroup with adminGroupId=' + adminGroupId + ' found')
+      console.log('No adminGroup with adminGroupId=' + adminGroupId + ' found')
     }
 
     // adminGroupId has unique values, so we get at most one result
     return adminGroups[0]
   } catch (error) {
-    console.log('getAdminGroup failed with error', error)
+    console.log('Function getAdminGroup failed with error', error)
   }
 }
 
@@ -61,7 +61,7 @@ export const registerDocumentServiceMiddlewares = ({ strapi }: { strapi: Core.St
           return new RegExp(STARZ_ROLE_NAME_REGEX, 'i').test(role.name)
         })
       ) {
-        // Add admingroup based on document creator
+        // Add adminGroup based on document creator
         if (document.adminGroups && 'connect' in document.adminGroups) {
           // Some value(s) in adminGroups already present
           document.adminGroups = {
@@ -87,14 +87,14 @@ export const registerDocumentServiceMiddlewares = ({ strapi }: { strapi: Core.St
               },
             })
 
-            if (!tagToAssign) console.log('No tag ' + STARZ_ARTICLE_TAG_TITLE + 'found in database')
+            if (!tagToAssign) console.log('No tag with name ' + STARZ_ARTICLE_TAG_TITLE + ' found in database')
 
             article.tag = tagToAssign
           } catch (error) {
             console.log(
-              'Failed to assign tag' +
+              'Failed to assign tag ' +
                 STARZ_ARTICLE_TAG_TITLE +
-                ' to article documentId: ' +
+                ' to article with documentId: ' +
                 article.documentId
             )
             console.log(error)
