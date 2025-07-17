@@ -1,0 +1,53 @@
+diff --git a/node_modules/strapi-plugin-meilisearch/dist/server/index.js b/node_modules/strapi-plugin-meilisearch/dist/server/index.js
+index 20af84a..fa10912 100644
+--- a/node_modules/strapi-plugin-meilisearch/dist/server/index.js
++++ b/node_modules/strapi-plugin-meilisearch/dist/server/index.js
+@@ -1823,15 +1823,20 @@ const lifecycleService = ({ strapi: strapi2 }) => {
+       });
+       await strapi2.db.lifecycles.subscribe({
+         models: [contentTypeUid],
++        // Change based on an unreleased fix to the plugin:
++        // https://github.com/meilisearch/strapi-plugin-meilisearch/commit/68c6c1de5f0f3e48435217afeb43a851109dfa70#diff-840292325e3f3afd470bce91820d878543a157635f4a67fd28c88fdf0616c757
++        // However, we don't receive populated relation fields in the event result
++        // Therefore we get this document using the Query Engine API
+         async afterCreate(event) {
+           const { result } = event;
+           const meilisearch2 = strapi2.plugin("meilisearch").service("meilisearch");
+-          const entry = await contentTypeService2.getEntry({
+-            contentType: contentTypeUid,
+-            documentId: result.documentId,
+-            entriesQuery: meilisearch2.entriesQuery({ contentType: contentType2 })
+-          });
+-          meilisearch2.addEntriesToMeilisearch({
++          const entry = await strapi2.db.query(contentTypeUid).findOne({
++            where: {
++              id: result.id,
++            },
++            populate: true,
++          })
++          await meilisearch2.addEntriesToMeilisearch({
+             contentType: contentTypeUid,
+             entries: [entry]
+           }).catch((e) => {
+@@ -1869,17 +1874,14 @@ const lifecycleService = ({ strapi: strapi2 }) => {
+             );
+           });
+         },
++        // Change based on an unreleased fix to the plugin:
++        // https://github.com/meilisearch/strapi-plugin-meilisearch/commit/68c6c1de5f0f3e48435217afeb43a851109dfa70#diff-840292325e3f3afd470bce91820d878543a157635f4a67fd28c88fdf0616c757
+         async afterUpdate(event) {
+           const { result } = event;
+           const meilisearch2 = strapi2.plugin("meilisearch").service("meilisearch");
+-          const entry = await contentTypeService2.getEntry({
++          await meilisearch2.updateEntriesInMeilisearch({
+             contentType: contentTypeUid,
+-            documentId: result.documentId,
+-            entriesQuery: meilisearch2.entriesQuery({ contentType: contentType2 })
+-          });
+-          meilisearch2.updateEntriesInMeilisearch({
+-            contentType: contentTypeUid,
+-            entries: [entry]
++            entries: [result]
+           }).catch((e) => {
+             strapi2.log.error(
+               `Meilisearch could not update entry with id: ${result.id}: ${e.message}`
