@@ -46,6 +46,7 @@ export const articlesFetcher = (filters: ArticlesFilters, locale: string) => {
         'article.tag.title',
         'article.tag.pageCategory.color',
         'article.tag.pageCategory.shortTitle',
+        'article.articleCategory.title',
       ],
     })
     .then(unwrapFromSearchIndex('article'))
@@ -76,6 +77,12 @@ export const articlesFetcher = (filters: ArticlesFilters, locale: string) => {
                   color: article.tag.pageCategory.color,
                 },
               }),
+            },
+          }),
+          ...(article.articleCategory && {
+            articleCategory: {
+              documentId: article.articleCategory.documentId,
+              title: article.articleCategory.title,
             },
           }),
         } as const
