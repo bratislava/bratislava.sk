@@ -43,6 +43,10 @@ export type AdminGroup = {
   articles_connection?: Maybe<ArticleRelationResponseCollection>
   createdAt?: Maybe<Scalars['DateTime']['output']>
   documentId: Scalars['ID']['output']
+  documents: Array<Maybe<Document>>
+  documents_connection?: Maybe<DocumentRelationResponseCollection>
+  faqs: Array<Maybe<Faq>>
+  faqs_connection?: Maybe<FaqRelationResponseCollection>
   pages: Array<Maybe<Page>>
   pages_connection?: Maybe<PageRelationResponseCollection>
   publishedAt?: Maybe<Scalars['DateTime']['output']>
@@ -58,6 +62,30 @@ export type AdminGroupArticlesArgs = {
 
 export type AdminGroupArticles_ConnectionArgs = {
   filters?: InputMaybe<ArticleFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type AdminGroupDocumentsArgs = {
+  filters?: InputMaybe<DocumentFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type AdminGroupDocuments_ConnectionArgs = {
+  filters?: InputMaybe<DocumentFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type AdminGroupFaqsArgs = {
+  filters?: InputMaybe<FaqFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type AdminGroupFaqs_ConnectionArgs = {
+  filters?: InputMaybe<FaqFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
 }
@@ -97,6 +125,8 @@ export type AdminGroupFiltersInput = {
   articles?: InputMaybe<ArticleFiltersInput>
   createdAt?: InputMaybe<DateTimeFilterInput>
   documentId?: InputMaybe<IdFilterInput>
+  documents?: InputMaybe<DocumentFiltersInput>
+  faqs?: InputMaybe<FaqFiltersInput>
   not?: InputMaybe<AdminGroupFiltersInput>
   or?: InputMaybe<Array<InputMaybe<AdminGroupFiltersInput>>>
   pages?: InputMaybe<PageFiltersInput>
@@ -108,6 +138,8 @@ export type AdminGroupFiltersInput = {
 export type AdminGroupInput = {
   adminGroupId?: InputMaybe<Scalars['String']['input']>
   articles?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
+  documents?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
+  faqs?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
   pages?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
   publishedAt?: InputMaybe<Scalars['DateTime']['input']>
   title?: InputMaybe<Scalars['String']['input']>
@@ -2253,6 +2285,8 @@ export type DeleteMutationResponse = {
 
 export type Document = {
   __typename?: 'Document'
+  adminGroups: Array<Maybe<AdminGroup>>
+  adminGroups_connection?: Maybe<AdminGroupRelationResponseCollection>
   createdAt?: Maybe<Scalars['DateTime']['output']>
   description?: Maybe<Scalars['String']['output']>
   documentCategory?: Maybe<DocumentCategory>
@@ -2263,6 +2297,18 @@ export type Document = {
   slug: Scalars['String']['output']
   title: Scalars['String']['output']
   updatedAt?: Maybe<Scalars['DateTime']['output']>
+}
+
+export type DocumentAdminGroupsArgs = {
+  filters?: InputMaybe<AdminGroupFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type DocumentAdminGroups_ConnectionArgs = {
+  filters?: InputMaybe<AdminGroupFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
 }
 
 export type DocumentFilesArgs = {
@@ -2361,6 +2407,7 @@ export type DocumentEntityResponseCollection = {
 }
 
 export type DocumentFiltersInput = {
+  adminGroups?: InputMaybe<AdminGroupFiltersInput>
   and?: InputMaybe<Array<InputMaybe<DocumentFiltersInput>>>
   createdAt?: InputMaybe<DateTimeFilterInput>
   description?: InputMaybe<StringFilterInput>
@@ -2375,6 +2422,7 @@ export type DocumentFiltersInput = {
 }
 
 export type DocumentInput = {
+  adminGroups?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
   description?: InputMaybe<Scalars['String']['input']>
   documentCategory?: InputMaybe<Scalars['ID']['input']>
   files?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
@@ -2609,6 +2657,8 @@ export type Error = {
 
 export type Faq = {
   __typename?: 'Faq'
+  adminGroups: Array<Maybe<AdminGroup>>
+  adminGroups_connection?: Maybe<AdminGroupRelationResponseCollection>
   body?: Maybe<Scalars['String']['output']>
   createdAt?: Maybe<Scalars['DateTime']['output']>
   documentId: Scalars['ID']['output']
@@ -2619,6 +2669,18 @@ export type Faq = {
   publishedAt?: Maybe<Scalars['DateTime']['output']>
   title: Scalars['String']['output']
   updatedAt?: Maybe<Scalars['DateTime']['output']>
+}
+
+export type FaqAdminGroupsArgs = {
+  filters?: InputMaybe<AdminGroupFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type FaqAdminGroups_ConnectionArgs = {
+  filters?: InputMaybe<AdminGroupFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
 }
 
 export type FaqLocalizationsArgs = {
@@ -2734,6 +2796,7 @@ export type FaqEntityResponseCollection = {
 }
 
 export type FaqFiltersInput = {
+  adminGroups?: InputMaybe<AdminGroupFiltersInput>
   and?: InputMaybe<Array<InputMaybe<FaqFiltersInput>>>
   body?: InputMaybe<StringFilterInput>
   createdAt?: InputMaybe<DateTimeFilterInput>
@@ -2749,6 +2812,7 @@ export type FaqFiltersInput = {
 }
 
 export type FaqInput = {
+  adminGroups?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
   body?: InputMaybe<Scalars['String']['input']>
   faqCategory?: InputMaybe<Scalars['ID']['input']>
   publishedAt?: InputMaybe<Scalars['DateTime']['input']>
@@ -8702,6 +8766,7 @@ export type PageEntityFragment = {
       color?: Enum_Pagecategory_Color | null
     } | null
   } | null>
+  adminGroups: Array<{ __typename?: 'AdminGroup'; title?: string | null } | null>
   parentPage?: {
     __typename?: 'Page'
     slug?: string | null
@@ -9432,6 +9497,7 @@ export type PageBySlugQuery = {
         color?: Enum_Pagecategory_Color | null
       } | null
     } | null>
+    adminGroups: Array<{ __typename?: 'AdminGroup'; title?: string | null } | null>
     parentPage?: {
       __typename?: 'Page'
       slug?: string | null
@@ -10184,6 +10250,7 @@ export type Dev_AllPagesQuery = {
         color?: Enum_Pagecategory_Color | null
       } | null
     } | null>
+    adminGroups: Array<{ __typename?: 'AdminGroup'; title?: string | null } | null>
     parentPage?: {
       __typename?: 'Page'
       slug?: string | null
@@ -13490,6 +13557,9 @@ export const PageEntityFragmentDoc = gql`
       ...TagEntity
     }
     ...PageParentPages
+    adminGroups {
+      title
+    }
   }
   ${PageSlugEntityFragmentDoc}
   ${UploadImageSrcEntityFragmentDoc}
