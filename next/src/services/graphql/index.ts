@@ -43,6 +43,10 @@ export type AdminGroup = {
   articles_connection?: Maybe<ArticleRelationResponseCollection>
   createdAt?: Maybe<Scalars['DateTime']['output']>
   documentId: Scalars['ID']['output']
+  documents: Array<Maybe<Document>>
+  documents_connection?: Maybe<DocumentRelationResponseCollection>
+  faqs: Array<Maybe<Faq>>
+  faqs_connection?: Maybe<FaqRelationResponseCollection>
   pages: Array<Maybe<Page>>
   pages_connection?: Maybe<PageRelationResponseCollection>
   publishedAt?: Maybe<Scalars['DateTime']['output']>
@@ -58,6 +62,30 @@ export type AdminGroupArticlesArgs = {
 
 export type AdminGroupArticles_ConnectionArgs = {
   filters?: InputMaybe<ArticleFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type AdminGroupDocumentsArgs = {
+  filters?: InputMaybe<DocumentFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type AdminGroupDocuments_ConnectionArgs = {
+  filters?: InputMaybe<DocumentFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type AdminGroupFaqsArgs = {
+  filters?: InputMaybe<FaqFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type AdminGroupFaqs_ConnectionArgs = {
+  filters?: InputMaybe<FaqFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
 }
@@ -97,6 +125,8 @@ export type AdminGroupFiltersInput = {
   articles?: InputMaybe<ArticleFiltersInput>
   createdAt?: InputMaybe<DateTimeFilterInput>
   documentId?: InputMaybe<IdFilterInput>
+  documents?: InputMaybe<DocumentFiltersInput>
+  faqs?: InputMaybe<FaqFiltersInput>
   not?: InputMaybe<AdminGroupFiltersInput>
   or?: InputMaybe<Array<InputMaybe<AdminGroupFiltersInput>>>
   pages?: InputMaybe<PageFiltersInput>
@@ -108,6 +138,8 @@ export type AdminGroupFiltersInput = {
 export type AdminGroupInput = {
   adminGroupId?: InputMaybe<Scalars['String']['input']>
   articles?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
+  documents?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
+  faqs?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
   pages?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
   publishedAt?: InputMaybe<Scalars['DateTime']['input']>
   title?: InputMaybe<Scalars['String']['input']>
@@ -175,6 +207,7 @@ export type Article = {
   adminGroups: Array<Maybe<AdminGroup>>
   adminGroups_connection?: Maybe<AdminGroupRelationResponseCollection>
   alias?: Maybe<Scalars['String']['output']>
+  articleCategory?: Maybe<ArticleCategory>
   content?: Maybe<Scalars['String']['output']>
   coverMedia?: Maybe<UploadFile>
   createdAt?: Maybe<Scalars['DateTime']['output']>
@@ -235,6 +268,89 @@ export type ArticleLocalizations_ConnectionArgs = {
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
 }
 
+export type ArticleCategory = {
+  __typename?: 'ArticleCategory'
+  articles: Array<Maybe<Article>>
+  articles_connection?: Maybe<ArticleRelationResponseCollection>
+  createdAt?: Maybe<Scalars['DateTime']['output']>
+  documentId: Scalars['ID']['output']
+  locale?: Maybe<Scalars['String']['output']>
+  localizations: Array<Maybe<ArticleCategory>>
+  localizations_connection?: Maybe<ArticleCategoryRelationResponseCollection>
+  publishedAt?: Maybe<Scalars['DateTime']['output']>
+  slug: Scalars['String']['output']
+  title: Scalars['String']['output']
+  updatedAt?: Maybe<Scalars['DateTime']['output']>
+}
+
+export type ArticleCategoryArticlesArgs = {
+  filters?: InputMaybe<ArticleFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type ArticleCategoryArticles_ConnectionArgs = {
+  filters?: InputMaybe<ArticleFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type ArticleCategoryLocalizationsArgs = {
+  filters?: InputMaybe<ArticleCategoryFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type ArticleCategoryLocalizations_ConnectionArgs = {
+  filters?: InputMaybe<ArticleCategoryFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type ArticleCategoryEntity = {
+  __typename?: 'ArticleCategoryEntity'
+  attributes?: Maybe<ArticleCategory>
+  id?: Maybe<Scalars['ID']['output']>
+}
+
+export type ArticleCategoryEntityResponse = {
+  __typename?: 'ArticleCategoryEntityResponse'
+  data?: Maybe<ArticleCategory>
+}
+
+export type ArticleCategoryEntityResponseCollection = {
+  __typename?: 'ArticleCategoryEntityResponseCollection'
+  nodes: Array<ArticleCategory>
+  pageInfo: Pagination
+}
+
+export type ArticleCategoryFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ArticleCategoryFiltersInput>>>
+  articles?: InputMaybe<ArticleFiltersInput>
+  createdAt?: InputMaybe<DateTimeFilterInput>
+  documentId?: InputMaybe<IdFilterInput>
+  locale?: InputMaybe<StringFilterInput>
+  localizations?: InputMaybe<ArticleCategoryFiltersInput>
+  not?: InputMaybe<ArticleCategoryFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<ArticleCategoryFiltersInput>>>
+  publishedAt?: InputMaybe<DateTimeFilterInput>
+  slug?: InputMaybe<StringFilterInput>
+  title?: InputMaybe<StringFilterInput>
+  updatedAt?: InputMaybe<DateTimeFilterInput>
+}
+
+export type ArticleCategoryInput = {
+  articles?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
+  publishedAt?: InputMaybe<Scalars['DateTime']['input']>
+  slug?: InputMaybe<Scalars['String']['input']>
+  title?: InputMaybe<Scalars['String']['input']>
+}
+
+export type ArticleCategoryRelationResponseCollection = {
+  __typename?: 'ArticleCategoryRelationResponseCollection'
+  nodes: Array<ArticleCategory>
+}
+
 export type ArticleEntity = {
   __typename?: 'ArticleEntity'
   attributes?: Maybe<Article>
@@ -257,6 +373,7 @@ export type ArticleFiltersInput = {
   adminGroups?: InputMaybe<AdminGroupFiltersInput>
   alias?: InputMaybe<StringFilterInput>
   and?: InputMaybe<Array<InputMaybe<ArticleFiltersInput>>>
+  articleCategory?: InputMaybe<ArticleCategoryFiltersInput>
   content?: InputMaybe<StringFilterInput>
   createdAt?: InputMaybe<DateTimeFilterInput>
   documentId?: InputMaybe<IdFilterInput>
@@ -277,6 +394,7 @@ export type ArticleInput = {
   addedAt?: InputMaybe<Scalars['DateTime']['input']>
   adminGroups?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
   alias?: InputMaybe<Scalars['String']['input']>
+  articleCategory?: InputMaybe<Scalars['ID']['input']>
   content?: InputMaybe<Scalars['String']['input']>
   coverMedia?: InputMaybe<Scalars['ID']['input']>
   files?: InputMaybe<Array<InputMaybe<ComponentBlocksFileInput>>>
@@ -2253,6 +2371,8 @@ export type DeleteMutationResponse = {
 
 export type Document = {
   __typename?: 'Document'
+  adminGroups: Array<Maybe<AdminGroup>>
+  adminGroups_connection?: Maybe<AdminGroupRelationResponseCollection>
   createdAt?: Maybe<Scalars['DateTime']['output']>
   description?: Maybe<Scalars['String']['output']>
   documentCategory?: Maybe<DocumentCategory>
@@ -2263,6 +2383,18 @@ export type Document = {
   slug: Scalars['String']['output']
   title: Scalars['String']['output']
   updatedAt?: Maybe<Scalars['DateTime']['output']>
+}
+
+export type DocumentAdminGroupsArgs = {
+  filters?: InputMaybe<AdminGroupFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type DocumentAdminGroups_ConnectionArgs = {
+  filters?: InputMaybe<AdminGroupFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
 }
 
 export type DocumentFilesArgs = {
@@ -2361,6 +2493,7 @@ export type DocumentEntityResponseCollection = {
 }
 
 export type DocumentFiltersInput = {
+  adminGroups?: InputMaybe<AdminGroupFiltersInput>
   and?: InputMaybe<Array<InputMaybe<DocumentFiltersInput>>>
   createdAt?: InputMaybe<DateTimeFilterInput>
   description?: InputMaybe<StringFilterInput>
@@ -2375,6 +2508,7 @@ export type DocumentFiltersInput = {
 }
 
 export type DocumentInput = {
+  adminGroups?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
   description?: InputMaybe<Scalars['String']['input']>
   documentCategory?: InputMaybe<Scalars['ID']['input']>
   files?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
@@ -2609,6 +2743,8 @@ export type Error = {
 
 export type Faq = {
   __typename?: 'Faq'
+  adminGroups: Array<Maybe<AdminGroup>>
+  adminGroups_connection?: Maybe<AdminGroupRelationResponseCollection>
   body?: Maybe<Scalars['String']['output']>
   createdAt?: Maybe<Scalars['DateTime']['output']>
   documentId: Scalars['ID']['output']
@@ -2619,6 +2755,18 @@ export type Faq = {
   publishedAt?: Maybe<Scalars['DateTime']['output']>
   title: Scalars['String']['output']
   updatedAt?: Maybe<Scalars['DateTime']['output']>
+}
+
+export type FaqAdminGroupsArgs = {
+  filters?: InputMaybe<AdminGroupFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type FaqAdminGroups_ConnectionArgs = {
+  filters?: InputMaybe<AdminGroupFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
 }
 
 export type FaqLocalizationsArgs = {
@@ -2734,6 +2882,7 @@ export type FaqEntityResponseCollection = {
 }
 
 export type FaqFiltersInput = {
+  adminGroups?: InputMaybe<AdminGroupFiltersInput>
   and?: InputMaybe<Array<InputMaybe<FaqFiltersInput>>>
   body?: InputMaybe<StringFilterInput>
   createdAt?: InputMaybe<DateTimeFilterInput>
@@ -2749,6 +2898,7 @@ export type FaqFiltersInput = {
 }
 
 export type FaqInput = {
+  adminGroups?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
   body?: InputMaybe<Scalars['String']['input']>
   faqCategory?: InputMaybe<Scalars['ID']['input']>
   publishedAt?: InputMaybe<Scalars['DateTime']['input']>
@@ -2939,6 +3089,7 @@ export type GenericMorph =
   | AdminGroup
   | Alert
   | Article
+  | ArticleCategory
   | BlogPost
   | ComponentAccordionItemsFlatText
   | ComponentAccordionItemsInstitution
@@ -3569,6 +3720,7 @@ export type Mutation = {
   changePassword?: Maybe<UsersPermissionsLoginPayload>
   createAdminGroup?: Maybe<AdminGroup>
   createArticle?: Maybe<Article>
+  createArticleCategory?: Maybe<ArticleCategory>
   createBlogPost?: Maybe<BlogPost>
   createDocument?: Maybe<Document>
   createDocumentCategory?: Maybe<DocumentCategory>
@@ -3590,6 +3742,7 @@ export type Mutation = {
   deleteAdminGroup?: Maybe<DeleteMutationResponse>
   deleteAlert?: Maybe<DeleteMutationResponse>
   deleteArticle?: Maybe<DeleteMutationResponse>
+  deleteArticleCategory?: Maybe<DeleteMutationResponse>
   deleteBlogPost?: Maybe<DeleteMutationResponse>
   deleteDocument?: Maybe<DeleteMutationResponse>
   deleteDocumentCategory?: Maybe<DeleteMutationResponse>
@@ -3626,6 +3779,7 @@ export type Mutation = {
   updateAdminGroup?: Maybe<AdminGroup>
   updateAlert?: Maybe<Alert>
   updateArticle?: Maybe<Article>
+  updateArticleCategory?: Maybe<ArticleCategory>
   updateBlogPost?: Maybe<BlogPost>
   updateDocument?: Maybe<Document>
   updateDocumentCategory?: Maybe<DocumentCategory>
@@ -3665,6 +3819,12 @@ export type MutationCreateAdminGroupArgs = {
 
 export type MutationCreateArticleArgs = {
   data: ArticleInput
+  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
+  status?: InputMaybe<PublicationStatus>
+}
+
+export type MutationCreateArticleCategoryArgs = {
+  data: ArticleCategoryInput
   locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
   status?: InputMaybe<PublicationStatus>
 }
@@ -3764,6 +3924,11 @@ export type MutationDeleteAlertArgs = {
 }
 
 export type MutationDeleteArticleArgs = {
+  documentId: Scalars['ID']['input']
+  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
+}
+
+export type MutationDeleteArticleCategoryArgs = {
   documentId: Scalars['ID']['input']
   locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
 }
@@ -3896,6 +4061,13 @@ export type MutationUpdateAlertArgs = {
 
 export type MutationUpdateArticleArgs = {
   data: ArticleInput
+  documentId: Scalars['ID']['input']
+  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
+  status?: InputMaybe<PublicationStatus>
+}
+
+export type MutationUpdateArticleCategoryArgs = {
+  data: ArticleCategoryInput
   documentId: Scalars['ID']['input']
   locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
   status?: InputMaybe<PublicationStatus>
@@ -4339,6 +4511,9 @@ export type Query = {
   adminGroups_connection?: Maybe<AdminGroupEntityResponseCollection>
   alert?: Maybe<Alert>
   article?: Maybe<Article>
+  articleCategories: Array<Maybe<ArticleCategory>>
+  articleCategories_connection?: Maybe<ArticleCategoryEntityResponseCollection>
+  articleCategory?: Maybe<ArticleCategory>
   articles: Array<Maybe<Article>>
   articles_connection?: Maybe<ArticleEntityResponseCollection>
   blogPost?: Maybe<BlogPost>
@@ -4428,6 +4603,28 @@ export type QueryAlertArgs = {
 }
 
 export type QueryArticleArgs = {
+  documentId: Scalars['ID']['input']
+  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
+  status?: InputMaybe<PublicationStatus>
+}
+
+export type QueryArticleCategoriesArgs = {
+  filters?: InputMaybe<ArticleCategoryFiltersInput>
+  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+  status?: InputMaybe<PublicationStatus>
+}
+
+export type QueryArticleCategories_ConnectionArgs = {
+  filters?: InputMaybe<ArticleCategoryFiltersInput>
+  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+  status?: InputMaybe<PublicationStatus>
+}
+
+export type QueryArticleCategoryArgs = {
   documentId: Scalars['ID']['input']
   locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
   status?: InputMaybe<PublicationStatus>
@@ -5626,6 +5823,13 @@ export type UsersPermissionsUserRelationResponseCollection = {
   nodes: Array<UsersPermissionsUser>
 }
 
+export type ArticleCategoryEntityFragment = {
+  __typename?: 'ArticleCategory'
+  documentId: string
+  title: string
+  slug: string
+}
+
 export type ArticleSlugEntityFragment = {
   __typename: 'Article'
   documentId: string
@@ -5675,6 +5879,12 @@ export type ArticleEntityFragment = {
   slug: string
   title: string
   locale?: string | null
+  articleCategory?: {
+    __typename?: 'ArticleCategory'
+    documentId: string
+    title: string
+    slug: string
+  } | null
   files?: Array<{
     __typename?: 'ComponentBlocksFile'
     id: string
@@ -5740,6 +5950,12 @@ export type ArticleBySlugQuery = {
     slug: string
     title: string
     locale?: string | null
+    articleCategory?: {
+      __typename?: 'ArticleCategory'
+      documentId: string
+      title: string
+      slug: string
+    } | null
     files?: Array<{
       __typename?: 'ComponentBlocksFile'
       id: string
@@ -5893,6 +6109,12 @@ export type Dev_AllArticlesQuery = {
     slug: string
     title: string
     locale?: string | null
+    articleCategory?: {
+      __typename?: 'ArticleCategory'
+      documentId: string
+      title: string
+      slug: string
+    } | null
     files?: Array<{
       __typename?: 'ComponentBlocksFile'
       id: string
@@ -12371,6 +12593,13 @@ export const ArticleCardEntityFragmentDoc = gql`
   ${UploadImageEntityFragmentDoc}
   ${TagEntityFragmentDoc}
 `
+export const ArticleCategoryEntityFragmentDoc = gql`
+  fragment ArticleCategoryEntity on ArticleCategory {
+    documentId
+    title
+    slug
+  }
+`
 export const UploadFileEntityFragmentDoc = gql`
   fragment UploadFileEntity on UploadFile {
     documentId
@@ -12397,6 +12626,9 @@ export const ArticleEntityFragmentDoc = gql`
     ...ArticleCardEntity
     alias
     content
+    articleCategory {
+      ...ArticleCategoryEntity
+    }
     files {
       ...FileBlock
     }
@@ -12405,6 +12637,7 @@ export const ArticleEntityFragmentDoc = gql`
     }
   }
   ${ArticleCardEntityFragmentDoc}
+  ${ArticleCategoryEntityFragmentDoc}
   ${FileBlockFragmentDoc}
   ${UploadImageEntityFragmentDoc}
 `

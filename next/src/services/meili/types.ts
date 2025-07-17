@@ -1,5 +1,6 @@
 import {
   Article,
+  ArticleCategory,
   ArticleEntity,
   Document,
   DocumentCategory,
@@ -45,11 +46,12 @@ export type PageMeili = Omit<
 }
 
 export type ArticleMeili = Pick<ArticleEntity, 'id'> &
-  Omit<Article, 'tag' | 'coverMedia'> & {
+  Omit<Article, 'tag' | 'coverMedia' | 'articleCategory'> & {
     coverMedia?: UploadFile
     tag?: Omit<Tag, '__typename' | 'pageCategory' | 'articles'> & {
       pageCategory?: Omit<PageCategory, '__typename' | 'pages'>
     }
+    articleCategory?: Omit<ArticleCategory, '__typename' | 'articles'>
   }
 
 export type DocumentMeili = Omit<Document, '__typename' | 'documentCategory' | 'files'> & {
