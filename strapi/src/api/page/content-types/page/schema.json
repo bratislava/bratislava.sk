@@ -17,53 +17,53 @@
   },
   "attributes": {
     "title": {
+      "type": "string",
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "type": "string",
       "required": true
     },
     "slug": {
+      "type": "string",
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
-      },
-      "type": "string"
+      }
     },
     "alias": {
+      "type": "uid",
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
-      },
-      "type": "uid"
+      }
     },
     "subtext": {
+      "type": "text",
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
-      },
-      "type": "text"
+      }
     },
     "metaDiscription": {
+      "type": "text",
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
-      },
-      "type": "text"
+      }
     },
     "keywords": {
+      "type": "string",
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
-      },
-      "type": "string"
+      }
     },
     "pageCategory": {
       "type": "relation",
@@ -72,12 +72,12 @@
       "inversedBy": "pages"
     },
     "pageColor": {
+      "type": "enumeration",
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "type": "enumeration",
       "enum": [
         "red",
         "blue",
@@ -89,6 +89,11 @@
     },
     "pageBackgroundImage": {
       "type": "media",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
       "multiple": false,
       "required": false,
       "allowedTypes": [
@@ -96,41 +101,36 @@
         "files",
         "videos",
         "audios"
-      ],
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
+      ]
     },
     "headerLinks": {
       "type": "component",
-      "repeatable": true,
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "component": "blocks.common-link"
+      "component": "blocks.common-link",
+      "repeatable": true
     },
     "pageHeaderSections": {
+      "type": "dynamiczone",
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "type": "dynamiczone",
       "components": [
         "sections.subpage-list"
       ]
     },
     "sections": {
+      "type": "dynamiczone",
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "type": "dynamiczone",
       "components": [
         "sections.accordion",
         "sections.articles",
@@ -163,6 +163,18 @@
         "sections.tootoot-events",
         "sections.videos"
       ]
+    },
+    "sidebar": {
+      "type": "dynamiczone",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "components": [
+        "sidebars.empty-sidebar"
+      ],
+      "max": 1
     },
     "parentPage": {
       "type": "relation",
