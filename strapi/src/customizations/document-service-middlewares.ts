@@ -17,13 +17,13 @@ const getAdminGroup = async ({
     })
 
     if (adminGroups.length === 0) {
-      console.log('No adminGroup with adminGroupId=' + adminGroupId + ' found')
+      console.log(`No adminGroup with adminGroupId=${adminGroupId} found`)
     }
 
     // adminGroupId has unique values, so we get at most one result
     return adminGroups[0]
   } catch (error) {
-    console.log('Function getAdminGroup failed with error', error)
+    console.log('Function getAdminGroup failed with error: ', error)
   }
 }
 
@@ -31,7 +31,7 @@ export const registerDocumentServiceMiddlewares = ({ strapi }: { strapi: Core.St
   // TODO refactor to allow more adminGroup values
   const STARZ_ADMINGROUP_ID = 'starz' // adminGroupId of AdminGroup collection in Strapi,
   const STARZ_ROLE_NAME_REGEX = 'starz' // Admin role name in Strapi
-  const STARZ_ARTICLE_TAG_TITLE = 'Šport' // Tag name to be added to starz articles on creation
+  const STARZ_ARTICLE_TAG_TITLE = 'Šport' // Tag name to be added to starz articles on creation (works out of box on both locales)
 
   strapi.documents.use(async (context, next) => {
     if (
@@ -41,8 +41,6 @@ export const registerDocumentServiceMiddlewares = ({ strapi }: { strapi: Core.St
         context.uid === 'api::faq.faq') &&
       context.action === 'create'
     ) {
-      const adminGroup = await getAdminGroup({ adminGroupId: STARZ_ADMINGROUP_ID, strapi })
-
       const document = context.params.data
       const activeUserId = document.updatedBy
 
@@ -55,13 +53,18 @@ export const registerDocumentServiceMiddlewares = ({ strapi }: { strapi: Core.St
         },
       })
 
-      // Check if document creator role includes starz
       if (
+        // Check if active user role includes starz
         activeUser.roles.some((role) => {
           return new RegExp(STARZ_ROLE_NAME_REGEX, 'i').test(role.name)
         })
       ) {
-        // Add adminGroup based on document creator
+        // Assign adminGroup based on active user
+        const adminGroupToAssign = await getAdminGroup({
+          adminGroupId: STARZ_ADMINGROUP_ID,
+          strapi,
+        })
+
         if (document.adminGroups && 'connect' in document.adminGroups) {
           // Some value(s) in adminGroups already present
           document.adminGroups = {
@@ -69,12 +72,15 @@ export const registerDocumentServiceMiddlewares = ({ strapi }: { strapi: Core.St
             connect: [
               // Take ids of previous adminGroups and add new admin group
               ...document.adminGroups.connect.map((relationItem) => relationItem.documentId),
-              adminGroup.documentId,
+              adminGroupToAssign.documentId,
             ],
           }
         } else {
           // No values in adminGroups relation, so we need to establish it
-          document.adminGroups = { ...document.adminGroups, connect: [adminGroup.documentId] }
+          document.adminGroups = {
+            ...document.adminGroups,
+            connect: [adminGroupToAssign.documentId],
+          }
         }
 
         // Add 'sport' tag if article is created
@@ -87,15 +93,14 @@ export const registerDocumentServiceMiddlewares = ({ strapi }: { strapi: Core.St
               },
             })
 
-            if (!tagToAssign) console.log('No tag with name ' + STARZ_ARTICLE_TAG_TITLE + ' found in database')
+            if (!tagToAssign)
+              console.log(`No tag with name ${STARZ_ARTICLE_TAG_TITLE} found in database`)
 
             article.tag = tagToAssign
           } catch (error) {
             console.log(
-              'Failed to assign tag ' +
-                STARZ_ARTICLE_TAG_TITLE +
-                ' to article with documentId: ' +
-                article.documentId
+              `Failed to assign tag ${STARZ_ARTICLE_TAG_TITLE}
+                to article with documentId: ${article.documentId}`
             )
             console.log(error)
           }
