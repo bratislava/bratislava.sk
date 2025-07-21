@@ -1,0 +1,6 @@
+fragment Sidebars on PageSidebarDynamicZone {
+  ... on ComponentSidebarsEmptySidebar {
+    __typename
+    # This component has no fields
+  }
+}
