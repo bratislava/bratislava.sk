@@ -83,7 +83,7 @@ const config = {
     indexName: 'search_index',
     entriesQuery: {
       locale: '*',
-      populate: ['tag.pageCategory', 'coverMedia'],
+      populate: ['tag.pageCategory', 'coverMedia', 'articleCategory'],
     },
     settings: searchIndexSettings,
     transformEntry: ({ entry }) =>
