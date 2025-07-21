@@ -1,7 +1,6 @@
 // Document Service middlewares docs: https://docs.strapi.io/cms/api/document-service/middlewares#context
 
 import { Core } from '@strapi/strapi'
-import { AdminRole } from '../../types/generated/contentTypes'
 
 type AdminGroupId = 'starz'
 
@@ -18,50 +17,54 @@ const getAdminGroup = async ({
     })
 
     if (adminGroups.length === 0) {
-      console.log('no adminGroup with adminGroupId=' + adminGroupId + ' found')
+      console.log(`No adminGroup with adminGroupId=${adminGroupId} found`)
     }
 
     // adminGroupId has unique values, so we get at most one result
     return adminGroups[0]
   } catch (error) {
-    console.log('getAdminGroup failed with error', error)
+    console.log('Function getAdminGroup failed with error: ', error)
   }
 }
 
 export const registerDocumentServiceMiddlewares = ({ strapi }: { strapi: Core.Strapi }) => {
   // TODO refactor to allow more adminGroup values
-  const STARZ_ADMINGROUP_ID = 'starz'   // Value of field adminGroupId of AdminGroup collection in Strapi, 
+  const STARZ_ADMINGROUP_ID = 'starz' // adminGroupId of AdminGroup collection in Strapi,
   const STARZ_ROLE_NAME_REGEX = 'starz' // Admin role name in Strapi
+  const STARZ_ARTICLE_TAG_TITLE = 'Šport' // Tag name to be added to starz articles on creation (works out of box on both locales)
 
   strapi.documents.use(async (context, next) => {
     if (
-      (context.uid == 'api::article.article' ||
-        context.uid == 'api::page.page' ||
-        context.uid == 'api::document.document' ||
-        context.uid == 'api::faq.faq') &&
-      context.action == 'create'
+      (context.uid === 'api::article.article' ||
+        context.uid === 'api::page.page' ||
+        context.uid === 'api::document.document' ||
+        context.uid === 'api::faq.faq') &&
+      context.action === 'create'
     ) {
-      const adminGroup = await getAdminGroup({ adminGroupId: STARZ_ADMINGROUP_ID, strapi })
-
       const document = context.params.data
-      const documentCreatorId = document.createdBy
+      const activeUserId = document.updatedBy
 
-      const documentCreatorUser = await strapi.db.query('admin::user').findOne({
+      const activeUser = await strapi.db.query('admin::user').findOne({
         where: {
-          id: documentCreatorId,
+          id: activeUserId,
         },
         populate: {
           roles: true,
         },
       })
 
-      // Check if document creator role includes starz - If yes, add starz to adminGroups
       if (
-        documentCreatorUser.roles.some((role) => {
-          console.log(JSON.stringify(role))
+        // Check if active user role includes starz
+        activeUser.roles.some((role) => {
           return new RegExp(STARZ_ROLE_NAME_REGEX, 'i').test(role.name)
         })
       ) {
+        // Assign adminGroup based on active user
+        const adminGroupToAssign = await getAdminGroup({
+          adminGroupId: STARZ_ADMINGROUP_ID,
+          strapi,
+        })
+
         if (document.adminGroups && 'connect' in document.adminGroups) {
           // Some value(s) in adminGroups already present
           document.adminGroups = {
@@ -69,12 +72,38 @@ export const registerDocumentServiceMiddlewares = ({ strapi }: { strapi: Core.St
             connect: [
               // Take ids of previous adminGroups and add new admin group
               ...document.adminGroups.connect.map((relationItem) => relationItem.documentId),
-              adminGroup.documentId,
+              adminGroupToAssign.documentId,
             ],
           }
         } else {
           // No values in adminGroups relation, so we need to establish it
-          document.adminGroups = { ...document.adminGroups, connect: [adminGroup.documentId] }
+          document.adminGroups = {
+            ...document.adminGroups,
+            connect: [adminGroupToAssign.documentId],
+          }
+        }
+
+        // Add 'sport' tag if article is created
+        if (context.uid === 'api::article.article') {
+          const article = context.params.data
+          try {
+            const tagToAssign = await strapi.db.query('api::tag.tag').findOne({
+              where: {
+                title: { $eq: STARZ_ARTICLE_TAG_TITLE },
+              },
+            })
+
+            if (!tagToAssign)
+              console.log(`No tag with name ${STARZ_ARTICLE_TAG_TITLE} found in database`)
+
+            article.tag = tagToAssign
+          } catch (error) {
+            console.log(
+              `Failed to assign tag ${STARZ_ARTICLE_TAG_TITLE}
+                to article with documentId: ${article.documentId}`
+            )
+            console.log(error)
+          }
         }
       }
     }
