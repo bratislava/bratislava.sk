@@ -11,6 +11,16 @@
       "locale": null
     },
     {
+      "action": "api::article-category.article-category.find",
+      "documentId": "bq1sm1jn32mwmyljbxh0bki5",
+      "locale": null
+    },
+    {
+      "action": "api::article-category.article-category.findOne",
+      "documentId": "eq1ui77i806tm58fi9fs62xr",
+      "locale": null
+    },
+    {
       "action": "api::article.article.find",
       "documentId": "c56z8vc6d1uvhjs5l79tugj1",
       "locale": null
