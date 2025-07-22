@@ -114,6 +114,7 @@ type Article {
   adminGroups(filters: AdminGroupFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [AdminGroup]!
   adminGroups_connection(filters: AdminGroupFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): AdminGroupRelationResponseCollection
   alias: String
+  articleCategory: ArticleCategory
   content: String
   coverMedia: UploadFile
   createdAt: DateTime
@@ -130,6 +131,60 @@ type Article {
   tag: Tag
   title: String!
   updatedAt: DateTime
+}
+
+type ArticleCategory {
+  articles(filters: ArticleFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [Article]!
+  articles_connection(filters: ArticleFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): ArticleRelationResponseCollection
+  createdAt: DateTime
+  documentId: ID!
+  locale: String
+  localizations(filters: ArticleCategoryFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ArticleCategory]!
+  localizations_connection(filters: ArticleCategoryFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): ArticleCategoryRelationResponseCollection
+  publishedAt: DateTime
+  slug: String!
+  title: String!
+  updatedAt: DateTime
+}
+
+type ArticleCategoryEntity {
+  attributes: ArticleCategory
+  id: ID
+}
+
+type ArticleCategoryEntityResponse {
+  data: ArticleCategory
+}
+
+type ArticleCategoryEntityResponseCollection {
+  nodes: [ArticleCategory!]!
+  pageInfo: Pagination!
+}
+
+input ArticleCategoryFiltersInput {
+  and: [ArticleCategoryFiltersInput]
+  articles: ArticleFiltersInput
+  createdAt: DateTimeFilterInput
+  documentId: IDFilterInput
+  locale: StringFilterInput
+  localizations: ArticleCategoryFiltersInput
+  not: ArticleCategoryFiltersInput
+  or: [ArticleCategoryFiltersInput]
+  publishedAt: DateTimeFilterInput
+  slug: StringFilterInput
+  title: StringFilterInput
+  updatedAt: DateTimeFilterInput
+}
+
+input ArticleCategoryInput {
+  articles: [ID]
+  publishedAt: DateTime
+  slug: String
+  title: String
+}
+
+type ArticleCategoryRelationResponseCollection {
+  nodes: [ArticleCategory!]!
 }
 
 type ArticleEntity {
@@ -151,6 +206,7 @@ input ArticleFiltersInput {
   adminGroups: AdminGroupFiltersInput
   alias: StringFilterInput
   and: [ArticleFiltersInput]
+  articleCategory: ArticleCategoryFiltersInput
   content: StringFilterInput
   createdAt: DateTimeFilterInput
   documentId: IDFilterInput
@@ -171,6 +227,7 @@ input ArticleInput {
   addedAt: DateTime
   adminGroups: [ID]
   alias: String
+  articleCategory: ID
   content: String
   coverMedia: ID
   files: [ComponentBlocksFileInput]
@@ -1751,6 +1808,20 @@ input ComponentSectionsVideosInput {
   videos: [ComponentBlocksVideoInput]
 }
 
+type ComponentSidebarsEmptySidebar {
+  id: ID!
+}
+
+input ComponentSidebarsEmptySidebarFiltersInput {
+  and: [ComponentSidebarsEmptySidebarFiltersInput]
+  not: ComponentSidebarsEmptySidebarFiltersInput
+  or: [ComponentSidebarsEmptySidebarFiltersInput]
+}
+
+input ComponentSidebarsEmptySidebarInput {
+  id: ID
+}
+
 type ComponentTaxAdministratorsTaxAdministrator {
   email: String!
   id: ID!
@@ -2440,7 +2511,7 @@ type GeneralRelationResponseCollection {
   nodes: [General!]!
 }
 
-union GenericMorph = AdminGroup | Alert | Article | BlogPost | ComponentAccordionItemsFlatText | ComponentAccordionItemsInstitution | ComponentAccordionItemsInstitutionNarrow | ComponentBlocksColumnsItem | ComponentBlocksCommonLink | ComponentBlocksComparisonCard | ComponentBlocksComparisonItem | ComponentBlocksContactCard | ComponentBlocksContactPersonCard | ComponentBlocksFile | ComponentBlocksFileItem | ComponentBlocksFooterColumn | ComponentBlocksHomepageHighlightsItem | ComponentBlocksInBa | ComponentBlocksNumericalListItem | ComponentBlocksPageLink | ComponentBlocksPartner | ComponentBlocksProsAndConsCard | ComponentBlocksTopServicesItem | ComponentBlocksVideo | ComponentGeneralHeader | ComponentGeneralHeaderLink | ComponentMenuMenuItem | ComponentMenuMenuLink | ComponentMenuMenuSection | ComponentSectionsAccordion | ComponentSectionsArticles | ComponentSectionsBanner | ComponentSectionsCalculator | ComponentSectionsColumnedText | ComponentSectionsColumns | ComponentSectionsComparisonSection | ComponentSectionsContactsSection | ComponentSectionsDivider | ComponentSectionsDocuments | ComponentSectionsFaqCategories | ComponentSectionsFaqs | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsHomepageEvents | ComponentSectionsHomepageHighlights | ComponentSectionsHomepageMayorAndCouncil | ComponentSectionsHomepageTabs | ComponentSectionsIframe | ComponentSectionsInbaArticlesList | ComponentSectionsInbaReleases | ComponentSectionsLinks | ComponentSectionsNarrowText | ComponentSectionsNumericalList | ComponentSectionsOfficialBoard | ComponentSectionsOrganizationalStructure | ComponentSectionsPartners | ComponentSectionsProsAndConsSection | ComponentSectionsRegulations | ComponentSectionsRegulationsList | ComponentSectionsSubpageList | ComponentSectionsTextWithImage | ComponentSectionsTextWithImageOverlapped | ComponentSectionsTootootEvents | ComponentSectionsTopServices | ComponentSectionsVideos | ComponentTaxAdministratorsTaxAdministrator | Document | DocumentCategory | Faq | FaqCategory | Footer | General | Homepage | I18NLocale | InbaArticle | InbaRelease | InbaTag | Menu | Page | PageCategory | Regulation | ReviewWorkflowsWorkflow | ReviewWorkflowsWorkflowStage | Tag | TaxAdministratorsList | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
+union GenericMorph = AdminGroup | Alert | Article | ArticleCategory | BlogPost | ComponentAccordionItemsFlatText | ComponentAccordionItemsInstitution | ComponentAccordionItemsInstitutionNarrow | ComponentBlocksColumnsItem | ComponentBlocksCommonLink | ComponentBlocksComparisonCard | ComponentBlocksComparisonItem | ComponentBlocksContactCard | ComponentBlocksContactPersonCard | ComponentBlocksFile | ComponentBlocksFileItem | ComponentBlocksFooterColumn | ComponentBlocksHomepageHighlightsItem | ComponentBlocksInBa | ComponentBlocksNumericalListItem | ComponentBlocksPageLink | ComponentBlocksPartner | ComponentBlocksProsAndConsCard | ComponentBlocksTopServicesItem | ComponentBlocksVideo | ComponentGeneralHeader | ComponentGeneralHeaderLink | ComponentMenuMenuItem | ComponentMenuMenuLink | ComponentMenuMenuSection | ComponentSectionsAccordion | ComponentSectionsArticles | ComponentSectionsBanner | ComponentSectionsCalculator | ComponentSectionsColumnedText | ComponentSectionsColumns | ComponentSectionsComparisonSection | ComponentSectionsContactsSection | ComponentSectionsDivider | ComponentSectionsDocuments | ComponentSectionsFaqCategories | ComponentSectionsFaqs | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsHomepageEvents | ComponentSectionsHomepageHighlights | ComponentSectionsHomepageMayorAndCouncil | ComponentSectionsHomepageTabs | ComponentSectionsIframe | ComponentSectionsInbaArticlesList | ComponentSectionsInbaReleases | ComponentSectionsLinks | ComponentSectionsNarrowText | ComponentSectionsNumericalList | ComponentSectionsOfficialBoard | ComponentSectionsOrganizationalStructure | ComponentSectionsPartners | ComponentSectionsProsAndConsSection | ComponentSectionsRegulations | ComponentSectionsRegulationsList | ComponentSectionsSubpageList | ComponentSectionsTextWithImage | ComponentSectionsTextWithImageOverlapped | ComponentSectionsTootootEvents | ComponentSectionsTopServices | ComponentSectionsVideos | ComponentSidebarsEmptySidebar | ComponentTaxAdministratorsTaxAdministrator | Document | DocumentCategory | Faq | FaqCategory | Footer | General | Homepage | I18NLocale | InbaArticle | InbaRelease | InbaTag | Menu | Page | PageCategory | Regulation | ReviewWorkflowsWorkflow | ReviewWorkflowsWorkflowStage | Tag | TaxAdministratorsList | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
 
 type Homepage {
   createdAt: DateTime
@@ -2913,6 +2984,13 @@ type Mutation {
     locale: I18NLocaleCode
     status: PublicationStatus = PUBLISHED
   ): Article
+  createArticleCategory(
+    data: ArticleCategoryInput!
+
+    """The locale to use for the query"""
+    locale: I18NLocaleCode
+    status: PublicationStatus = PUBLISHED
+  ): ArticleCategory
   createBlogPost(
     data: BlogPostInput!
 
@@ -2987,6 +3065,12 @@ type Mutation {
     locale: I18NLocaleCode
   ): DeleteMutationResponse
   deleteArticle(
+    documentId: ID!
+
+    """The locale to use for the query"""
+    locale: I18NLocaleCode
+  ): DeleteMutationResponse
+  deleteArticleCategory(
     documentId: ID!
 
     """The locale to use for the query"""
@@ -3101,6 +3185,14 @@ type Mutation {
     locale: I18NLocaleCode
     status: PublicationStatus = PUBLISHED
   ): Article
+  updateArticleCategory(
+    data: ArticleCategoryInput!
+    documentId: ID!
+
+    """The locale to use for the query"""
+    locale: I18NLocaleCode
+    status: PublicationStatus = PUBLISHED
+  ): ArticleCategory
   updateBlogPost(
     data: BlogPostInput!
     documentId: ID!
@@ -3232,6 +3324,7 @@ type Page {
   relatedContents(filters: TagFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [Tag]!
   relatedContents_connection(filters: TagFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): TagRelationResponseCollection
   sections: [PageSectionsDynamicZone]
+  sidebar: [PageSidebarDynamicZone]
   slug: String
   subtext: String
   title: String!
@@ -3352,6 +3445,7 @@ input PageInput {
   publishedAt: DateTime
   relatedContents: [ID]
   sections: [PageSectionsDynamicZoneInput!]
+  sidebar: [PageSidebarDynamicZoneInput!]
   slug: String
   subtext: String
   title: String
@@ -3368,6 +3462,10 @@ type PageRelationResponseCollection {
 union PageSectionsDynamicZone = ComponentSectionsAccordion | ComponentSectionsArticles | ComponentSectionsBanner | ComponentSectionsCalculator | ComponentSectionsColumnedText | ComponentSectionsColumns | ComponentSectionsComparisonSection | ComponentSectionsContactsSection | ComponentSectionsDivider | ComponentSectionsDocuments | ComponentSectionsFaqCategories | ComponentSectionsFaqs | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsIframe | ComponentSectionsInbaArticlesList | ComponentSectionsInbaReleases | ComponentSectionsLinks | ComponentSectionsNarrowText | ComponentSectionsNumericalList | ComponentSectionsOfficialBoard | ComponentSectionsOrganizationalStructure | ComponentSectionsPartners | ComponentSectionsProsAndConsSection | ComponentSectionsRegulations | ComponentSectionsRegulationsList | ComponentSectionsTextWithImage | ComponentSectionsTextWithImageOverlapped | ComponentSectionsTootootEvents | ComponentSectionsVideos | Error
 
 scalar PageSectionsDynamicZoneInput
+
+union PageSidebarDynamicZone = ComponentSidebarsEmptySidebar | Error
+
+scalar PageSidebarDynamicZoneInput
 
 type Pagination {
   page: Int!
@@ -3404,6 +3502,31 @@ type Query {
     locale: I18NLocaleCode
     status: PublicationStatus = PUBLISHED
   ): Article
+  articleCategories(
+    filters: ArticleCategoryFiltersInput
+
+    """The locale to use for the query"""
+    locale: I18NLocaleCode
+    pagination: PaginationArg = {}
+    sort: [String] = []
+    status: PublicationStatus = PUBLISHED
+  ): [ArticleCategory]!
+  articleCategories_connection(
+    filters: ArticleCategoryFiltersInput
+
+    """The locale to use for the query"""
+    locale: I18NLocaleCode
+    pagination: PaginationArg = {}
+    sort: [String] = []
+    status: PublicationStatus = PUBLISHED
+  ): ArticleCategoryEntityResponseCollection
+  articleCategory(
+    documentId: ID!
+
+    """The locale to use for the query"""
+    locale: I18NLocaleCode
+    status: PublicationStatus = PUBLISHED
+  ): ArticleCategory
   articles(
     filters: ArticleFiltersInput
 

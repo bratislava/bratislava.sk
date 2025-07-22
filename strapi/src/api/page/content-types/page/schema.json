@@ -166,6 +166,18 @@
         "sections.videos"
       ]
     },
+    "sidebar": {
+      "type": "dynamiczone",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "components": [
+        "sidebars.empty-sidebar"
+      ],
+      "max": 1
+    },
     "parentPage": {
       "type": "relation",
       "relation": "manyToOne",

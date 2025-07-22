@@ -6,8 +6,10 @@ import PageHeader from '@/src/components/common/PageHeader/PageHeader'
 import PageHeaderSections from '@/src/components/layouts/PageHeaderSections'
 import SectionContainer from '@/src/components/layouts/SectionContainer'
 import Sections from '@/src/components/layouts/Sections'
+import Sidebars from '@/src/components/layouts/Sidebars'
 import RelatedArticlesSection from '@/src/components/sections/RelatedArticlesSection'
 import { PageEntityFragment } from '@/src/services/graphql'
+import cn from '@/src/utils/cn'
 import { isDefined } from '@/src/utils/isDefined'
 import { getPageBreadcrumbs } from '@/src/utils/pageUtils_Deprecated'
 
@@ -19,6 +21,9 @@ const GeneralPageContent = ({ page }: GeneralPageProps) => {
   const breadcrumbs = useMemo(() => getPageBreadcrumbs(page), [page])
 
   const filteredSections = page.sections?.filter(isDefined) ?? []
+
+  // Sidebar has always max 1 element
+  const [sidebar] = page.sidebar ?? []
 
   return (
     <>
@@ -33,11 +38,29 @@ const GeneralPageContent = ({ page }: GeneralPageProps) => {
         <PageHeaderSections sections={page.pageHeaderSections} />
       </PageHeader>
 
-      {/* Page - Common Sections */}
-      <div className="py-8">
-        <Sections sections={filteredSections} className="*:py-5 *:md:py-9" />
-
-        <RelatedArticlesSection page={page} className="pt-5 lg:pt-9" />
+      {/* Sections & Sidebar */}
+      <div
+        className={cn('flex flex-wrap-reverse gap-5 py-8 lg:gap-8', {
+          'mx-auto max-w-(--breakpoint-xl) px-4 lg:px-8': !!sidebar,
+        })}
+      >
+        <div
+          className={cn(
+            'w-[50rem]',
+            '[&_[data-sectionContainerOuter]]:not-first:pt-10',
+            '[&_[data-sectionContainerOuter]]:not-first:lg:pt-18',
+            {
+              '[&_[data-sectionContainerInner]]:px-0': !!sidebar,
+              '[&_[data-sectionContainerInner]]:lg:px-0': !!sidebar,
+            },
+          )}
+        >
+          <div className="flex w-full flex-col gap-5 lg:gap-9">
+            <Sections sections={filteredSections} />
+            <RelatedArticlesSection page={page} />
+          </div>
+        </div>
+        {sidebar ? <Sidebars sidebar={sidebar} className="max-w-[50rem] grow basis-72" /> : null}
       </div>
 
       {page.alias ? (

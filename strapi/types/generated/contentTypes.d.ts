@@ -400,6 +400,47 @@ export interface ApiAlertAlert extends Struct.SingleTypeSchema {
   }
 }
 
+export interface ApiArticleCategoryArticleCategory extends Struct.CollectionTypeSchema {
+  collectionName: 'article_categories'
+  info: {
+    displayName: '\u010Cl\u00E1nky - kateg\u00F3rie'
+    pluralName: 'article-categories'
+    singularName: 'article-category'
+  }
+  options: {
+    draftAndPublish: true
+  }
+  pluginOptions: {
+    i18n: {
+      localized: true
+    }
+  }
+  attributes: {
+    articles: Schema.Attribute.Relation<'oneToMany', 'api::article.article'>
+    createdAt: Schema.Attribute.DateTime
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> & Schema.Attribute.Private
+    locale: Schema.Attribute.String
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::article-category.article-category'>
+    publishedAt: Schema.Attribute.DateTime
+    slug: Schema.Attribute.UID<'title'> &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true
+        }
+      }>
+    title: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true
+        }
+      }>
+    updatedAt: Schema.Attribute.DateTime
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> & Schema.Attribute.Private
+  }
+}
+
 export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
   collectionName: 'articles'
   info: {
@@ -431,6 +472,10 @@ export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
           localized: true
         }
       }>
+    articleCategory: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::article-category.article-category'
+    >
     content: Schema.Attribute.RichText &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
@@ -1257,6 +1302,18 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
           localized: true
         }
       }>
+    sidebar: Schema.Attribute.DynamicZone<['sidebars.empty-sidebar']> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true
+        }
+      }> &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 1
+        },
+        number
+      >
     slug: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
@@ -1824,6 +1881,7 @@ declare module '@strapi/strapi' {
       'admin::user': AdminUser
       'api::admin-group.admin-group': ApiAdminGroupAdminGroup
       'api::alert.alert': ApiAlertAlert
+      'api::article-category.article-category': ApiArticleCategoryArticleCategory
       'api::article.article': ApiArticleArticle
       'api::blog-post.blog-post': ApiBlogPostBlogPost
       'api::document-category.document-category': ApiDocumentCategoryDocumentCategory

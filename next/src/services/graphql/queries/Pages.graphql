@@ -49,6 +49,9 @@ fragment PageEntity on Page {
   sections {
     ...Sections
   }
+  sidebar {
+    ...Sidebars
+  }
   localizations {
     slug
     locale

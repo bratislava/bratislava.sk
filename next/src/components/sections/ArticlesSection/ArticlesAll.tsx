@@ -57,7 +57,7 @@ const ArticlesAll = ({ section }: Props) => {
   }
 
   const handleTagsChange = (tags: string[]) => {
-    setFilters({ ...filters, tagIds: tags })
+    setFilters({ ...filters, tagDocumentIds: tags })
   }
 
   return (

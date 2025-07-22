@@ -1,3 +1,9 @@
+fragment ArticleCategoryEntity on ArticleCategory {
+  documentId
+  title
+  slug
+}
+
 fragment ArticleSlugEntity on Article {
   __typename
   documentId
@@ -22,6 +28,9 @@ fragment ArticleEntity on Article {
   ...ArticleCardEntity
   alias
   content
+  articleCategory {
+    ...ArticleCategoryEntity
+  }
   files {
     ...FileBlock
   }

@@ -153,7 +153,8 @@
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true
+          "editable": true,
+          "mainField": "label"
         },
         "list": {
           "label": "headerLinks",
@@ -185,6 +186,20 @@
         },
         "list": {
           "label": "sections",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "sidebar": {
+        "edit": {
+          "label": "Sidebar",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "sidebar",
           "searchable": false,
           "sortable": false
         }
@@ -317,12 +332,6 @@
       }
     },
     "layouts": {
-      "list": [
-        "slug",
-        "title",
-        "updatedAt",
-        "parentPage"
-      ],
       "edit": [
         [
           {
@@ -384,6 +393,12 @@
         ],
         [
           {
+            "name": "sidebar",
+            "size": 12
+          }
+        ],
+        [
+          {
             "name": "sections",
             "size": 12
           }
@@ -408,16 +423,22 @@
         ],
         [
           {
-            "name": "alias",
-            "size": 12
+            "name": "adminGroups",
+            "size": 6
           }
         ],
         [
           {
-            "name": "adminGroups",
-            "size": 6
+            "name": "alias",
+            "size": 12
           }
         ]
+      ],
+      "list": [
+        "slug",
+        "title",
+        "updatedAt",
+        "parentPage"
       ]
     }
   },

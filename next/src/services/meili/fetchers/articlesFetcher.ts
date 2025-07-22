@@ -6,14 +6,14 @@ export type ArticlesFilters = {
   search: string
   pageSize: number
   page: number
-  tagIds: string[]
+  tagDocumentIds: string[]
 }
 
 export const articlesDefaultFilters: ArticlesFilters = {
   search: '',
   pageSize: 6,
   page: 1,
-  tagIds: [],
+  tagDocumentIds: [],
 }
 
 export const getArticlesQueryKey = (filters: ArticlesFilters, locale: string) => [
@@ -31,22 +31,11 @@ export const articlesFetcher = (filters: ArticlesFilters, locale: string) => {
       filter: [
         'type = "article"',
         `locale = ${locale}`,
-        filters.tagIds.length > 0 ? `article.tag.id IN [${filters.tagIds.join(',')}]` : '',
+        filters.tagDocumentIds.length > 0
+          ? `article.tag.documentId IN [${filters.tagDocumentIds.join(',')}]`
+          : '',
       ],
       sort: ['article.addedAtTimestamp:desc'],
-      attributesToRetrieve: [
-        // Only properties that are required to display listing are retrieved
-        'article.id',
-        'article.title',
-        'article.perex',
-        'article.content',
-        'article.slug',
-        'article.coverMedia.url',
-        'article.addedAt',
-        'article.tag.title',
-        'article.tag.pageCategory.color',
-        'article.tag.pageCategory.shortTitle',
-      ],
     })
     .then(unwrapFromSearchIndex('article'))
     .then((response) => {
@@ -76,6 +65,12 @@ export const articlesFetcher = (filters: ArticlesFilters, locale: string) => {
                   color: article.tag.pageCategory.color,
                 },
               }),
+            },
+          }),
+          ...(article.articleCategory && {
+            articleCategory: {
+              documentId: article.articleCategory.documentId,
+              title: article.articleCategory.title,
             },
           }),
         } as const
