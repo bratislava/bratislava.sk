@@ -1764,6 +1764,7 @@
           "headerLinks.analyticsId",
           "pageHeaderSections",
           "sections",
+          "sidebar",
           "parentPage",
           "childPages",
           "relatedContents",
@@ -1776,7 +1777,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "b7dlrwaqccaxzwjqsy6ov5qw",
+      "documentId": "b99uppcy68erob2r6habv9tz",
       "locale": null
     },
     {
@@ -1828,6 +1829,7 @@
           "headerLinks.analyticsId",
           "pageHeaderSections",
           "sections",
+          "sidebar",
           "parentPage",
           "childPages",
           "relatedContents",
@@ -1840,7 +1842,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "gdcb9az3hauce3zphrk1ck41",
+      "documentId": "q7bz0vv9p4nt6woamtg4i0e1",
       "locale": null
     },
     {
@@ -1864,6 +1866,7 @@
           "headerLinks.analyticsId",
           "pageHeaderSections",
           "sections",
+          "sidebar",
           "parentPage",
           "childPages",
           "relatedContents",
@@ -1876,7 +1879,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "aky1evudmp905ttko0kvix0y",
+      "documentId": "wdc4fha1qz3hns7kanlp4qwd",
       "locale": null
     },
     {

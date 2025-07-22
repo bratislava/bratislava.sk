@@ -1299,6 +1299,18 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
           localized: true
         }
       }>
+    sidebar: Schema.Attribute.DynamicZone<['sidebars.empty-sidebar']> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true
+        }
+      }> &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 1
+        },
+        number
+      >
     slug: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{
         i18n: {

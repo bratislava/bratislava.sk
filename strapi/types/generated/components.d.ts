@@ -960,6 +960,14 @@ export interface SectionsVideos extends Struct.ComponentSchema {
   }
 }
 
+export interface SidebarsEmptySidebar extends Struct.ComponentSchema {
+  collectionName: 'components_sidebars_empty_sidebars'
+  info: {
+    displayName: 'Pr\u00E1zdny sidebar'
+  }
+  attributes: {}
+}
+
 export interface TaxAdministratorsTaxAdministrator extends Struct.ComponentSchema {
   collectionName: 'components_tax_administrators_tax_administrators'
   info: {
@@ -1039,6 +1047,7 @@ declare module '@strapi/strapi' {
       'sections.tootoot-events': SectionsTootootEvents
       'sections.top-services': SectionsTopServices
       'sections.videos': SectionsVideos
+      'sidebars.empty-sidebar': SidebarsEmptySidebar
       'tax-administrators.tax-administrator': TaxAdministratorsTaxAdministrator
     }
   }

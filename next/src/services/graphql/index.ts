@@ -32,6 +32,7 @@ export type Scalars = {
   Long: { input: any; output: any }
   PagePageHeaderSectionsDynamicZoneInput: { input: any; output: any }
   PageSectionsDynamicZoneInput: { input: any; output: any }
+  PageSidebarDynamicZoneInput: { input: any; output: any }
   /** A time string with format HH:mm:ss.SSS */
   Time: { input: any; output: any }
 }
@@ -2284,6 +2285,21 @@ export type ComponentSectionsVideosInput = {
   videos?: InputMaybe<Array<InputMaybe<ComponentBlocksVideoInput>>>
 }
 
+export type ComponentSidebarsEmptySidebar = {
+  __typename?: 'ComponentSidebarsEmptySidebar'
+  id: Scalars['ID']['output']
+}
+
+export type ComponentSidebarsEmptySidebarFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentSidebarsEmptySidebarFiltersInput>>>
+  not?: InputMaybe<ComponentSidebarsEmptySidebarFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<ComponentSidebarsEmptySidebarFiltersInput>>>
+}
+
+export type ComponentSidebarsEmptySidebarInput = {
+  id?: InputMaybe<Scalars['ID']['input']>
+}
+
 export type ComponentTaxAdministratorsTaxAdministrator = {
   __typename?: 'ComponentTaxAdministratorsTaxAdministrator'
   email: Scalars['String']['output']
@@ -3152,6 +3168,7 @@ export type GenericMorph =
   | ComponentSectionsTootootEvents
   | ComponentSectionsTopServices
   | ComponentSectionsVideos
+  | ComponentSidebarsEmptySidebar
   | ComponentTaxAdministratorsTaxAdministrator
   | Document
   | DocumentCategory
@@ -4233,6 +4250,7 @@ export type Page = {
   relatedContents: Array<Maybe<Tag>>
   relatedContents_connection?: Maybe<TagRelationResponseCollection>
   sections?: Maybe<Array<Maybe<PageSectionsDynamicZone>>>
+  sidebar?: Maybe<Array<Maybe<PageSidebarDynamicZone>>>
   slug?: Maybe<Scalars['String']['output']>
   subtext?: Maybe<Scalars['String']['output']>
   title: Scalars['String']['output']
@@ -4439,6 +4457,7 @@ export type PageInput = {
   publishedAt?: InputMaybe<Scalars['DateTime']['input']>
   relatedContents?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
   sections?: InputMaybe<Array<Scalars['PageSectionsDynamicZoneInput']['input']>>
+  sidebar?: InputMaybe<Array<Scalars['PageSidebarDynamicZoneInput']['input']>>
   slug?: InputMaybe<Scalars['String']['input']>
   subtext?: InputMaybe<Scalars['String']['input']>
   title?: InputMaybe<Scalars['String']['input']>
@@ -4483,6 +4502,8 @@ export type PageSectionsDynamicZone =
   | ComponentSectionsTootootEvents
   | ComponentSectionsVideos
   | Error
+
+export type PageSidebarDynamicZone = ComponentSidebarsEmptySidebar | Error
 
 export type Pagination = {
   __typename?: 'Pagination'
@@ -8885,6 +8906,9 @@ export type PageEntityFragment = {
     | { __typename: 'Error' }
     | null
   > | null
+  sidebar?: Array<
+    { __typename: 'ComponentSidebarsEmptySidebar' } | { __typename?: 'Error' } | null
+  > | null
   localizations: Array<{ __typename?: 'Page'; slug?: string | null; locale?: string | null } | null>
   pageHeaderSections?: Array<
     | {
@@ -9610,6 +9634,9 @@ export type PageBySlugQuery = {
         }
       | { __typename: 'Error' }
       | null
+    > | null
+    sidebar?: Array<
+      { __typename: 'ComponentSidebarsEmptySidebar' } | { __typename?: 'Error' } | null
     > | null
     localizations: Array<{
       __typename?: 'Page'
@@ -10362,6 +10389,9 @@ export type Dev_AllPagesQuery = {
         }
       | { __typename: 'Error' }
       | null
+    > | null
+    sidebar?: Array<
+      { __typename: 'ComponentSidebarsEmptySidebar' } | { __typename?: 'Error' } | null
     > | null
     localizations: Array<{
       __typename?: 'Page'
@@ -12509,6 +12539,16 @@ export type PageHeaderSectionsFragment =
   | PageHeaderSections_ComponentSectionsSubpageList_Fragment
   | PageHeaderSections_Error_Fragment
 
+type Sidebars_ComponentSidebarsEmptySidebar_Fragment = {
+  __typename: 'ComponentSidebarsEmptySidebar'
+}
+
+type Sidebars_Error_Fragment = { __typename?: 'Error' }
+
+export type SidebarsFragment =
+  | Sidebars_ComponentSidebarsEmptySidebar_Fragment
+  | Sidebars_Error_Fragment
+
 export type TagEntityFragment = {
   __typename?: 'Tag'
   documentId: string
@@ -13672,6 +13712,13 @@ export const SectionsFragmentDoc = gql`
   ${PartnersSectionFragmentDoc}
   ${DocumentsSectionFragmentDoc}
 `
+export const SidebarsFragmentDoc = gql`
+  fragment Sidebars on PageSidebarDynamicZone {
+    ... on ComponentSidebarsEmptySidebar {
+      __typename
+    }
+  }
+`
 export const SubpageListPageHeaderSectionFragmentDoc = gql`
   fragment SubpageListPageHeaderSection on ComponentSectionsSubpageList {
     id
@@ -13707,6 +13754,9 @@ export const PageEntityFragmentDoc = gql`
     sections {
       ...Sections
     }
+    sidebar {
+      ...Sidebars
+    }
     localizations {
       slug
       locale
@@ -13728,6 +13778,7 @@ export const PageEntityFragmentDoc = gql`
   ${UploadImageSrcEntityFragmentDoc}
   ${CommonLinkFragmentDoc}
   ${SectionsFragmentDoc}
+  ${SidebarsFragmentDoc}
   ${PageHeaderSectionsFragmentDoc}
   ${TagEntityFragmentDoc}
   ${PageParentPagesFragmentDoc}
