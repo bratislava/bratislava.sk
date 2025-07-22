@@ -61,34 +61,28 @@ const ArticlesAll = ({ section }: Props) => {
   }
 
   return (
-    <div className="flex flex-col">
-      <ArticlesFilter
-        pageCategories={pageCategoriesData?.pageCategories.filter(isDefined) ?? []}
-        tags={tagsData?.tags.filter(isDefined)}
-        onTagChange={handleTagsChange}
-      />
-      <SectionHeader
-        title={title}
-        text={text}
-        // TODO Correct spacing between SectionHeader and remaining content
-        className="pb-6 lg:pb-8"
-      />
-      <div className="flex flex-col gap-8">
-        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {data?.hits.map((card) => (
-            <ArticleCard key={card.slug} {...transformArticleProps(card)} />
-          ))}
-        </div>
-
-        {data?.estimatedTotalHits ? (
-          <Pagination
-            key={filters.search}
-            totalCount={Math.ceil(data.estimatedTotalHits / filters.pageSize)}
-            currentPage={filters.page}
-            onPageChange={handlePageChange}
-          />
-        ) : null}
+    <div className="flex flex-col gap-8">
+      <div>
+        <ArticlesFilter
+          pageCategories={pageCategoriesData?.pageCategories.filter(isDefined) ?? []}
+          tags={tagsData?.tags.filter(isDefined)}
+          onTagChange={handleTagsChange}
+        />
+        <SectionHeader title={title} text={text} />
       </div>
+
+      <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        {data?.hits.map((card) => <ArticleCard key={card.slug} {...transformArticleProps(card)} />)}
+      </div>
+
+      {data?.estimatedTotalHits ? (
+        <Pagination
+          key={filters.search}
+          totalCount={Math.ceil(data.estimatedTotalHits / filters.pageSize)}
+          currentPage={filters.page}
+          onPageChange={handlePageChange}
+        />
+      ) : null}
     </div>
   )
 }
