@@ -39,7 +39,7 @@ const ArticlesByCategory = ({ section }: Props) => {
     staleTime: Infinity,
   })
 
-  const tagIds =
+  const tagDocumentIds =
     tagsData?.tags
       .filter((tag) => {
         return tag?.pageCategory?.documentId === category?.documentId
@@ -48,7 +48,7 @@ const ArticlesByCategory = ({ section }: Props) => {
       .filter(isDefined) ?? []
 
   useEffect(() => {
-    setFilters({ ...filters, tagIds })
+    setFilters({ ...filters, tagDocumentIds })
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [tagsData])
 
@@ -57,7 +57,7 @@ const ArticlesByCategory = ({ section }: Props) => {
     queryKey: getArticlesQueryKey(filters, locale),
     queryFn: () => articlesFetcher(filters, locale),
     placeholderData: keepPreviousData,
-    enabled: filters.tagIds.length > 0,
+    enabled: filters.tagDocumentIds.length > 0,
   })
 
   const handlePageChange = (page: number) => {

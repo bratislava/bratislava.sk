@@ -105,7 +105,7 @@ const InbaArticlesListSection = ({ section }: Props) => {
     setFilters((previousState) => ({
       ...previousState,
       page: 1,
-      tagIds: selection === 'all' ? [] : [selection],
+      tagDocumentIds: selection === 'all' ? [] : [selection],
     }))
   }, [selection, setFilters])
 

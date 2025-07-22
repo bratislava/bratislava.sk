@@ -12,7 +12,7 @@ const extractTags = (page: PageEntityFragment) => {
 
 const relatedArticlesFilters = (page: PageEntityFragment) => ({
   ...articlesDefaultFilters,
-  tagIds: extractTags(page),
+  tagDocumentIds: extractTags(page),
   pageSize: 9,
 })
 
