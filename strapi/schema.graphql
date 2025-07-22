@@ -3225,7 +3225,7 @@ type Page {
   metaDiscription: String
   pageBackgroundImage: UploadFile
   pageCategory: PageCategory
-  pageColor: ENUM_PAGE_PAGECOLOR
+  pageColor: ENUM_PAGE_PAGECOLOR!
   pageHeaderSections: [PagePageHeaderSectionsDynamicZone]
   parentPage: Page
   publishedAt: DateTime

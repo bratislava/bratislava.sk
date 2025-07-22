@@ -4119,7 +4119,7 @@ export type Page = {
   metaDiscription?: Maybe<Scalars['String']['output']>
   pageBackgroundImage?: Maybe<UploadFile>
   pageCategory?: Maybe<PageCategory>
-  pageColor?: Maybe<Enum_Page_Pagecolor>
+  pageColor: Enum_Page_Pagecolor
   pageHeaderSections?: Maybe<Array<Maybe<PagePageHeaderSectionsDynamicZone>>>
   parentPage?: Maybe<Page>
   publishedAt?: Maybe<Scalars['DateTime']['output']>
@@ -8088,7 +8088,7 @@ export type PageEntityFragment = {
   __typename?: 'Page'
   alias?: string | null
   subtext?: string | null
-  pageColor?: Enum_Page_Pagecolor | null
+  pageColor: Enum_Page_Pagecolor
   metaDiscription?: string | null
   keywords?: string | null
   documentId: string
@@ -8806,7 +8806,7 @@ export type PageBySlugQuery = {
     __typename?: 'Page'
     alias?: string | null
     subtext?: string | null
-    pageColor?: Enum_Page_Pagecolor | null
+    pageColor: Enum_Page_Pagecolor
     metaDiscription?: string | null
     keywords?: string | null
     documentId: string
@@ -9553,7 +9553,7 @@ export type Dev_AllPagesQuery = {
     __typename?: 'Page'
     alias?: string | null
     subtext?: string | null
-    pageColor?: Enum_Page_Pagecolor | null
+    pageColor: Enum_Page_Pagecolor
     metaDiscription?: string | null
     keywords?: string | null
     documentId: string

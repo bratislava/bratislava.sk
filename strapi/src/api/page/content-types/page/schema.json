@@ -78,6 +78,7 @@
           "localized": false
         }
       },
+      "required": true,
       "enum": [
         "red",
         "blue",
