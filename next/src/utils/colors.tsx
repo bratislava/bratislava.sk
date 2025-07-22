@@ -16,7 +16,7 @@ export type ColorCategory =
   | 'grey'
   | 'starz-secondary'
 
-export type PageColor = Enum_Pagecategory_Color | 'starz'
+type PageColor = Enum_Page_Pagecolor | Enum_Pagecategory_Color
 
 const colorCategoryMap = {
   red: 'main',
@@ -63,7 +63,7 @@ const generateCssVariables = (category: ColorCategory) => {
 
 type Props =
   | {
-      color: PageColor | Enum_Page_Pagecolor | null | undefined
+      color: PageColor | null | undefined
       category?: never
     }
   | {

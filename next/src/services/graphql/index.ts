@@ -2635,6 +2635,7 @@ export enum Enum_Page_Pagecolor {
   Green = 'green',
   Purple = 'purple',
   Red = 'red',
+  Starz = 'starz',
   Yellow = 'yellow',
 }
 
