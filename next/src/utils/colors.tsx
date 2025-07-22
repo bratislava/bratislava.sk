@@ -38,7 +38,7 @@ const iconCategoryMap = {
 } satisfies Record<Enum_Componentmenumenuitem_Icon, ColorCategory>
 
 const transformColorToCategory = (
-  pageColor: PageColor | Enum_Page_Pagecolor | null | undefined,
+  pageColor: PageColor | null | undefined,
 ): ColorCategory => {
   return colorCategoryMap[pageColor ?? 'red']
 }
