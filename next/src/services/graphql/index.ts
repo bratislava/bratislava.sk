@@ -8749,12 +8749,6 @@ export type PageEntityFragment = {
     | { __typename: 'Error' }
     | null
   > | null
-  pageCategory?: {
-    __typename?: 'PageCategory'
-    documentId: string
-    title?: string | null
-    color?: Enum_Pagecategory_Color | null
-  } | null
   relatedContents: Array<{
     __typename?: 'Tag'
     documentId: string
@@ -9480,12 +9474,6 @@ export type PageBySlugQuery = {
       | { __typename: 'Error' }
       | null
     > | null
-    pageCategory?: {
-      __typename?: 'PageCategory'
-      documentId: string
-      title?: string | null
-      color?: Enum_Pagecategory_Color | null
-    } | null
     relatedContents: Array<{
       __typename?: 'Tag'
       documentId: string
@@ -10233,12 +10221,6 @@ export type Dev_AllPagesQuery = {
       | { __typename: 'Error' }
       | null
     > | null
-    pageCategory?: {
-      __typename?: 'PageCategory'
-      documentId: string
-      title?: string | null
-      color?: Enum_Pagecategory_Color | null
-    } | null
     relatedContents: Array<{
       __typename?: 'Tag'
       documentId: string
@@ -13547,11 +13529,6 @@ export const PageEntityFragmentDoc = gql`
     }
     pageHeaderSections {
       ...PageHeaderSections
-    }
-    pageCategory {
-      documentId
-      title
-      color
     }
     relatedContents {
       ...TagEntity

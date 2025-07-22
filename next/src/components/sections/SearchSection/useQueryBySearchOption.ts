@@ -84,8 +84,8 @@ export const useQueryBySearchOption = ({
             title: page.title,
             uniqueId: page.slug,
             linkHref: `/${page.slug}`,
-            metadata: [page.pageCategory?.title, formatDate(page.publishedAt)],
-            pageColor: page.pageCategory?.color,
+            metadata: [`/${page.slug}`, formatDate(page.publishedAt)],
+            pageColor: page.pageColor,
           }
         }) ?? []
 
