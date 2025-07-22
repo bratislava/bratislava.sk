@@ -40,10 +40,10 @@ const searchIndexSettings = {
   filterableAttributes: [
     'type',
     'locale',
-    'article.tag.id',
-    'blog-post.tag.id',
-    'document.documentCategory.id',
-    'inba-article.inbaTag.id',
+    'article.tag.documentId',
+    'blog-post.tag.documentId',
+    'document.documentCategory.documentId',
+    'inba-article.inbaTag.documentId',
     'regulation.category',
   ],
   sortableAttributes: [

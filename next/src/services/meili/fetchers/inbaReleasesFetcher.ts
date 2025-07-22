@@ -28,7 +28,7 @@ export const inbaReleasesFetcher = (filters: InbaReleasesFilters) => {
     .then((response) => {
       const hits = response.hits.map((inbaRelease) => {
         return {
-          id: inbaRelease.id,
+          documentId: inbaRelease.documentId,
           title: inbaRelease.title,
           slug: inbaRelease.slug,
           perex: inbaRelease.perex,
