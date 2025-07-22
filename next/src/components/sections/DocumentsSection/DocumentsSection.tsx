@@ -27,76 +27,80 @@ const DocumentsSection = ({ section }: Props) => {
 
   const { title, text, documents, showAll } = section
 
+  if (showAll) {
+    return (
+      <SectionContainer>
+        <DocumentsAll />
+      </SectionContainer>
+    )
+  }
+
   const filteredDocuments = documents.filter(isDefined)
 
   return (
     <SectionContainer>
-      {showAll ? (
-        <DocumentsAll />
-      ) : (
-        <div className="flex flex-col gap-4 lg:gap-6">
-          <SectionHeader title={title} text={text} />
+      <div className="flex flex-col gap-4 lg:gap-6">
+        <SectionHeader title={title} text={text} />
 
-          <ul className="flex flex-col rounded-lg border-2 py-2">
-            {filteredDocuments
-              .map((document, index) => {
-                const {
-                  title: documentTitle,
-                  files,
-                  documentCategory,
-                  slug,
-                  updatedAt,
-                  documentId,
-                } = document
+        <ul className="flex flex-col rounded-lg border-2 py-2">
+          {filteredDocuments
+            .map((document, index) => {
+              const {
+                title: documentTitle,
+                files,
+                documentCategory,
+                slug,
+                updatedAt,
+                documentId,
+              } = document
 
-                const filteredFiles = files.filter(isDefined)
-                const isSingleFile = filteredFiles.length === 1
+              const filteredFiles = files.filter(isDefined)
+              const isSingleFile = filteredFiles.length === 1
 
-                const { size, url, ext } = filteredFiles[0]
+              const { size, url, ext } = filteredFiles[0]
 
-                return (
-                  <Fragment key={documentId}>
-                    {index > 0 ? <HorizontalDivider asListItem className="mx-4 lg:mx-6" /> : null}
-                    <li className="w-full">
-                      <DocumentRowCard
-                        linkHref={isSingleFile ? (url ?? '#') : `/dokumenty/${slug}`}
-                        title={documentTitle}
-                        variant={isSingleFile ? 'single-file' : 'multiple-files'}
-                        className="px-4 lg:px-6"
-                        ariaLabel={
-                          isSingleFile
-                            ? t('FileList.aria.downloadFileAriaLabel', {
-                                title: documentTitle,
-                                format: formatFileExtension(ext),
-                                size: formatFileSize(size, locale),
-                              })
-                            : t('DocumentsSection.openDocumentPage', { title: documentTitle })
-                        }
-                        metadata={
-                          isSingleFile
-                            ? [
-                                formatDate(updatedAt),
-                                documentCategory?.title,
-                                formatFileExtension(ext),
-                                formatFileSize(size, locale),
-                              ].filter(isDefined)
-                            : [
-                                formatDate(updatedAt),
-                                documentCategory?.title,
-                                t('DocumentPageContent.numberOfFiles', {
-                                  count: filteredFiles.length,
-                                }),
-                              ].filter(isDefined)
-                        }
-                      />
-                    </li>
-                  </Fragment>
-                )
-              })
-              .filter(isDefined)}
-          </ul>
-        </div>
-      )}
+              return (
+                <Fragment key={documentId}>
+                  {index > 0 ? <HorizontalDivider asListItem className="mx-4 lg:mx-6" /> : null}
+                  <li className="w-full">
+                    <DocumentRowCard
+                      linkHref={isSingleFile ? (url ?? '#') : `/dokumenty/${slug}`}
+                      title={documentTitle}
+                      variant={isSingleFile ? 'single-file' : 'multiple-files'}
+                      className="px-4 lg:px-6"
+                      ariaLabel={
+                        isSingleFile
+                          ? t('FileList.aria.downloadFileAriaLabel', {
+                              title: documentTitle,
+                              format: formatFileExtension(ext),
+                              size: formatFileSize(size, locale),
+                            })
+                          : t('DocumentsSection.openDocumentPage', { title: documentTitle })
+                      }
+                      metadata={
+                        isSingleFile
+                          ? [
+                              formatDate(updatedAt),
+                              documentCategory?.title,
+                              formatFileExtension(ext),
+                              formatFileSize(size, locale),
+                            ].filter(isDefined)
+                          : [
+                              formatDate(updatedAt),
+                              documentCategory?.title,
+                              t('DocumentPageContent.numberOfFiles', {
+                                count: filteredFiles.length,
+                              }),
+                            ].filter(isDefined)
+                      }
+                    />
+                  </li>
+                </Fragment>
+              )
+            })
+            .filter(isDefined)}
+        </ul>
+      </div>
     </SectionContainer>
   )
 }
