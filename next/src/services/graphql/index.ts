@@ -8761,7 +8761,6 @@ export type PageEntityFragment = {
       color?: Enum_Pagecategory_Color | null
     } | null
   } | null>
-  adminGroups: Array<{ __typename?: 'AdminGroup'; title?: string | null } | null>
   parentPage?: {
     __typename?: 'Page'
     slug?: string | null
@@ -9486,7 +9485,6 @@ export type PageBySlugQuery = {
         color?: Enum_Pagecategory_Color | null
       } | null
     } | null>
-    adminGroups: Array<{ __typename?: 'AdminGroup'; title?: string | null } | null>
     parentPage?: {
       __typename?: 'Page'
       slug?: string | null
@@ -10233,7 +10231,6 @@ export type Dev_AllPagesQuery = {
         color?: Enum_Pagecategory_Color | null
       } | null
     } | null>
-    adminGroups: Array<{ __typename?: 'AdminGroup'; title?: string | null } | null>
     parentPage?: {
       __typename?: 'Page'
       slug?: string | null
@@ -13535,9 +13532,6 @@ export const PageEntityFragmentDoc = gql`
       ...TagEntity
     }
     ...PageParentPages
-    adminGroups {
-      title
-    }
   }
   ${PageSlugEntityFragmentDoc}
   ${UploadImageSrcEntityFragmentDoc}

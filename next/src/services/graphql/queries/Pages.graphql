@@ -60,9 +60,6 @@ fragment PageEntity on Page {
     ...TagEntity
   }
   ...PageParentPages
-  adminGroups {
-    title
-  }
 }
 
 query PagesStaticPaths {
