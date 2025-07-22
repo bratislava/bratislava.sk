@@ -59,11 +59,6 @@ fragment PageEntity on Page {
   pageHeaderSections {
     ...PageHeaderSections
   }
-  pageCategory {
-    documentId
-    title
-    color
-  }
   relatedContents {
     ...TagEntity
   }

@@ -75,16 +75,18 @@
       "type": "enumeration",
       "pluginOptions": {
         "i18n": {
-          "localized": true
+          "localized": false
         }
       },
+      "required": true,
       "enum": [
         "red",
         "blue",
         "green",
         "yellow",
         "purple",
-        "brown"
+        "brown",
+        "starz"
       ]
     },
     "pageBackgroundImage": {

@@ -1245,10 +1245,13 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
         }
       }>
     pageCategory: Schema.Attribute.Relation<'manyToOne', 'api::page-category.page-category'>
-    pageColor: Schema.Attribute.Enumeration<['red', 'blue', 'green', 'yellow', 'purple', 'brown']> &
+    pageColor: Schema.Attribute.Enumeration<
+      ['red', 'blue', 'green', 'yellow', 'purple', 'brown', 'starz']
+    > &
+      Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
-          localized: true
+          localized: false
         }
       }>
     pageHeaderSections: Schema.Attribute.DynamicZone<['sections.subpage-list']> &

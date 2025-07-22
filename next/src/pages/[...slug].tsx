@@ -119,7 +119,7 @@ export const getStaticProps: GetStaticProps<PageProps, StaticParams> = async ({
 }
 
 const Page = ({ general, page, dehydratedState }: PageProps) => {
-  const { slug, title: pageTitle, pageCategory, metaDiscription, subtext, keywords, locale } = page
+  const { slug, title: pageTitle, metaDiscription, subtext, keywords, locale, pageColor } = page
 
   const localization = page.localizations[0]
   const localizations = Object.fromEntries(
@@ -142,7 +142,7 @@ const Page = ({ general, page, dehydratedState }: PageProps) => {
             <meta name="description" content={metaDiscription ?? subtext ?? ''} />
             <meta name="keywords" content={keywords ?? ''} />
           </Head>
-          <GlobalCategoryColorProvider color={pageCategory?.color} />
+          <GlobalCategoryColorProvider color={pageColor} />
           <PageLayout>
             <GeneralPageContent page={page} />
           </PageLayout>
