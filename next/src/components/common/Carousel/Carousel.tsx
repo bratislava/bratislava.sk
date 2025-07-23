@@ -5,8 +5,6 @@ import Button from '@/src/components/common/Button/Button'
 import cn from '@/src/utils/cn'
 import { useTranslation } from '@/src/utils/useTranslation'
 
-// Inspired by MKB project and https://inclusive-components.design/a-content-slider/
-
 export type AllowedVisibleCount = 1 | 2 | 3 | 4
 
 export type CarouselProps = {
@@ -21,6 +19,10 @@ export type CarouselProps = {
   hasVerticalPadding?: boolean
   showControlsOnMobile?: boolean
 }
+
+/**
+ * Inspired by MKB project and https://inclusive-components.design/a-content-slider/
+ */
 
 const Carousel = ({
   className,
@@ -68,8 +70,11 @@ const Carousel = ({
     <div className={cn('relative', className)}>
       <ul
         className={cn(
-          'scrollbar-hide flex snap-x snap-mandatory gap-4 overflow-x-auto overflow-y-clip max-md:negative-x-spacing lg:-mx-2 lg:px-2',
-          { 'py-8': hasVerticalPadding, '': !hasVerticalPadding },
+          // if gap is changed, also change card width calculation
+          'scrollbar-hide flex snap-x snap-mandatory gap-3 overflow-x-auto overflow-y-clip max-md:negative-x-spacing lg:gap-8',
+          // show the whole focus ring
+          '-my-2 py-2 lg:-mx-2 lg:px-2',
+          { 'py-8 lg:py-8': hasVerticalPadding },
           listClassName,
         )}
         ref={scrollerRef}
@@ -86,9 +91,9 @@ const Carousel = ({
                     // 1rem represents 1 gap-4, if gap is changed, also change card width
                     'w-[calc(100%-1rem)] snap-center': visibleCount === 1,
                     'snap-start': visibleCount > 1,
-                    'w-[calc((100%-1rem)/2)]': visibleCount === 2,
-                    'w-[calc((100%-2rem)/3)]': visibleCount === 3,
-                    'w-[calc((100%-3rem)/4)]': visibleCount === 4,
+                    'w-[calc((100%-0.75rem)/2)]': visibleCount === 2,
+                    'w-[calc((100%-4rem)/3)]': visibleCount === 3,
+                    'w-[calc((100%-6rem)/4)]': visibleCount === 4,
                   },
                   itemClassName,
                 )}
