@@ -1,7 +1,7 @@
 import { Typography } from '@bratislava/component-library'
 import { TabPanel } from 'react-aria-components'
 
-import ArticleCard from '@/src/components/cards/ArticleCard'
+import ArticleCardOld from '@/src/components/cards/ArticleCardOld'
 import { transformArticleProps } from '@/src/components/cards/transformArticleProps'
 import Button from '@/src/components/common/Button/Button'
 import ResponsiveCarousel from '@/src/components/common/Carousel/ResponsiveCarousel'
@@ -34,13 +34,13 @@ const TabPanelLatestNews = () => {
       <ResponsiveCarousel
         className="lg:hidden"
         items={allLatestArticles.map((article) => (
-          <ArticleCard key={article.slug} {...transformArticleProps(article)} />
+          <ArticleCardOld key={article.slug} {...transformArticleProps(article)} />
         ))}
       />
       <div className="mt-14 hidden pb-8 lg:block">
         <div className="grid grid-cols-3 gap-x-8">
           {[leftArticle, rightArticle].filter(isDefined).map((article) => (
-            <ArticleCard key={article.slug} {...transformArticleProps(article)} />
+            <ArticleCardOld key={article.slug} {...transformArticleProps(article)} />
           ))}
 
           <div className="hidden flex-col gap-6 lg:flex">

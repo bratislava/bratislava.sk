@@ -44,8 +44,11 @@ const RelatedArticlesSection = ({ page, className }: Props) => {
 
         <ResponsiveCarousel
           items={data.hits.map((card) => {
-            return card ? <ArticleCard key={card.slug} {...transformArticleProps(card)} /> : null
+            return card ? (
+              <ArticleCard key={card.slug} {...transformArticleProps(card, { withText: false })} />
+            ) : null
           })}
+          desktop={4}
         />
       </div>
     </SectionContainer>

@@ -6,8 +6,13 @@ import { getCategoryColorLocalStyle } from '@/src/utils/colors'
 import { formatDate } from '@/src/utils/formatDate'
 import { generateImageSizes } from '@/src/utils/generateImageSizes'
 
-export const transformArticleProps = (article: NonNullable<ArticleCardEntityFragment>) => {
+export const transformArticleProps = (
+  article: NonNullable<ArticleCardEntityFragment>,
+  options?: { withText?: boolean; withTag?: boolean },
+) => {
   const imageSizes = generateImageSizes({ default: '100vw', md: '50vw', lg: '33vw' })
+
+  const { withText = true, withTag = true } = options ?? {}
 
   const { title, slug, coverMedia, addedAt, perex, tag } = article
   const tagColor = tag?.pageCategory?.color
@@ -19,8 +24,8 @@ export const transformArticleProps = (article: NonNullable<ArticleCardEntityFrag
     imgSrc: coverMedia?.url,
     imgSizes: imageSizes,
     date: formatDate(addedAt),
-    tag: tagTitle,
-    text: perex,
+    ...(withTag && { tag: tagTitle }),
+    ...(withText && { text: perex }),
     style: getCategoryColorLocalStyle({ color: tagColor }),
   }
 
