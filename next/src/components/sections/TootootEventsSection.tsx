@@ -34,7 +34,7 @@ const TootootEventsSection = ({ section }: Props) => {
 
   return (
     <SectionContainer>
-      <div className="py-8 md:pt-6 lg:pt-18">
+      <div className="py-8 lg:pt-18">
         <SectionHeader title={title} text={text} isCentered />
 
         {isPending ? (

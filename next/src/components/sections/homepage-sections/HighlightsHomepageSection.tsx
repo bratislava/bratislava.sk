@@ -19,7 +19,7 @@ const HighlightsHomepageSection = () => {
   const filteredHighlights = cards?.filter(isDefined) ?? []
 
   return (
-    <div className="negative-x-spacing py-8 md:pb-0 lg:pt-18">
+    <div className="negative-x-spacing py-8 lg:pt-18">
       <SectionHeader title={title} text={text} isCentered />
 
       <ResponsiveCarousel

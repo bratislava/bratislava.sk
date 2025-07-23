@@ -32,14 +32,12 @@ import TootootEventsSection from '@/src/components/sections/TootootEventsSection
 import VideosSection from '@/src/components/sections/VideosSection'
 import { SectionsFragment } from '@/src/services/graphql'
 
-type Section = SectionsFragment
-
 type SectionsProps = {
-  sections: Section[]
+  sections: SectionsFragment[]
   className?: string
 }
 
-const SectionContent = ({ section }: { section: Section }) => {
+const SectionContent = ({ section }: { section: SectionsFragment }) => {
   // eslint-disable-next-line sonarjs/max-switch-cases
   switch (section.__typename) {
     case 'ComponentSectionsNarrowText':
