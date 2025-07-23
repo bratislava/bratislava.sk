@@ -51,7 +51,7 @@ const ArticleCard = ({
       <CardContent variant="no-padding" className="grow justify-between">
         <div className="flex flex-col gap-2">
           {(date || tag) && (
-            <div className="flex flex-wrap items-center justify-between">
+            <div className="flex flex-wrap items-center justify-between gap-y-1">
               {/* If no date, leaving empty div to push tag to the right */}
               <Typography variant="p-small">{date}</Typography>
 
