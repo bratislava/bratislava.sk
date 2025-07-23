@@ -7,6 +7,7 @@ import CardContent from '@/src/components/cards/CardContent'
 import Button from '@/src/components/common/Button/Button'
 import ImagePlaceholder from '@/src/components/common/Image/ImagePlaceholder'
 import Tag from '@/src/components/common/Tag/Tag'
+import cn from '@/src/utils/cn'
 import { CommonLinkProps } from '@/src/utils/getLinkProps'
 
 export type ArticleCardProps = {
@@ -31,13 +32,14 @@ const ArticleCard = ({
   title,
   text,
   linkProps,
+  className,
   ...rest
 }: ArticleCardProps) => {
   const titleId = useId()
 
   return (
     // TODO transparent background could be handled cleaner
-    <CardBase variant="no-border" className="gap-4 bg-transparent" {...rest}>
+    <CardBase variant="no-border" className={cn('gap-4 bg-transparent', className)} {...rest}>
       {/* TODO create CardImage component, see OLO */}
       <div className="relative aspect-16/10 shrink-0 overflow-hidden rounded-lg">
         {imgSrc ? (
