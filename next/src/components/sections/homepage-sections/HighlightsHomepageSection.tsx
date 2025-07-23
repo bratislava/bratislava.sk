@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 
-import ArticleCard from '@/src/components/cards/ArticleCard'
+import ArticleCardOld from '@/src/components/cards/ArticleCardOld'
 import HomepageHorizontalCard from '@/src/components/cards/HomepageHorizontalCard'
 import ResponsiveCarousel from '@/src/components/common/Carousel/ResponsiveCarousel'
 import SectionHeader from '@/src/components/layouts/SectionHeader'
@@ -32,10 +32,9 @@ const HighlightsHomepageSection = () => {
 
           return (
             <Fragment key={highlight.id}>
-              <ArticleCard
+              <ArticleCardOld
                 className="lg:hidden"
-                variant="no-border"
-                title={postTitle ?? ''}
+                title={postTitle}
                 linkProps={{
                   children: t('readMore'),
                   ...linkProps,
