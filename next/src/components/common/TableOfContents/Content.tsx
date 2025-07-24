@@ -1,71 +1,30 @@
-import { useEffect, useState } from 'react'
-
 import Button from '@/src/components/common/Button/Button'
-import cn from '@/src/utils/cn'
-
-type HeadingProps = {
-  level: number
-  text: string
-  id: string
-  ref: React.RefObject<Element>
-}
+import { Heading } from '@/src/components/common/TableOfContents/useHeadings'
 
 type Props = {
-  headings: HeadingProps[]
-  headerOffset?: number
+  headings: Heading[]
+  scrollOffset?: number
 }
 
+// Prevents from scrolling the clicked table of contents item to the very top of window,
+// which would hide it behind navbar on small screens. Works also for desktop, so is set to default.
+const DEFAULT_SCROLL_OFFSET = 90
+
 /**
- * Figma: https://www.figma.com/design/2qF09hDT9QNcpdztVMNAY4/OLO-Web?node-id=3480-20808&node-type=symbol&t=Sy9hMuI0D75f0mQ0-0
- *
+ * Figma: https://www.figma.com/design/17wbd0MDQcMW9NbXl6UPs8/DS--Component-library?node-id=16846-20086&t=ETyVhQnBPMeYXsm0-4
+ * Based on OLO: https://github.com/bratislava/olo.sk/tree/master/next/src/components/common/TableOfContents
  */
 
-// Use Intersection Observer for easier finding active heading, documentation https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API
-// TODO: use Intersection Observer hook from useHooks https://usehooks.com/useintersectionobserver
-const Content = ({ headings, headerOffset }: Props) => {
-  const firstHeadingId = headings[0].id
-  const [activeHeadingId, setActiveHeadingId] = useState<string>(firstHeadingId)
-
-  useEffect(() => {
-    const handleIntersect = (headingEntries: IntersectionObserverEntry[]) => {
-      const visible = headingEntries
-        .filter((headingEntry) => headingEntry.isIntersecting)
-        .sort(
-          (headingEntryA, headingEntryB) =>
-            headingEntryA.boundingClientRect.top - headingEntryB.boundingClientRect.top,
-        )
-      if (visible.length > 0) {
-        setActiveHeadingId(visible[0].target.id)
-      }
-    }
-
-    const observer = new IntersectionObserver(handleIntersect, {
-      // Add negative margin to bottom of the root,so headlines are highlighted
-      // "later" when scrolling, not just after they enter the screen.
-      // https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API#rootmargin
-      rootMargin: '0px 0px -50% 0px',
-      threshold: 1,
-    })
-
-    headings.forEach((heading) => {
-      if (heading.ref && heading.ref.current) {
-        observer.observe(heading.ref.current)
-      }
-    })
-
-    return () => observer.disconnect()
-  }, [headings, headerOffset])
-
+const Content = ({ headings, scrollOffset = DEFAULT_SCROLL_OFFSET }: Props) => {
   const handleContentItemPress = (id: string) => {
-    const href = `#${id}`
-    const element = document.querySelector(href)
+    const element = document.querySelector(`#${id}`)
     if (!element) {
       return
     }
 
     const elementPosition = element?.getBoundingClientRect().top ?? 0 // current offset regarding the current window scroll
     const windowOffset = window.scrollY
-    const offsetPosition = elementPosition + windowOffset - (headerOffset ?? 0)
+    const offsetPosition = elementPosition + windowOffset - (scrollOffset ?? 0)
 
     window.scrollTo({ top: offsetPosition, behavior: 'smooth' })
   }
@@ -78,9 +37,7 @@ const Content = ({ headings, headerOffset }: Props) => {
             key={heading.id}
             variant="unstyled"
             onPress={() => handleContentItemPress(heading.id)}
-            className={cn('py-3 text-left hover:underline lg:py-4', {
-              'font-bold': heading.id === activeHeadingId,
-            })}
+            className="py-3 text-left hover:underline lg:py-4"
           >
             {heading.text}
           </Button>
@@ -90,12 +47,7 @@ const Content = ({ headings, headerOffset }: Props) => {
               key={heading.id}
               variant="unstyled"
               onPress={() => handleContentItemPress(heading.id)}
-              className={cn(
-                'border-l border-border-passive-primary py-2 pl-4 text-left hover:underline',
-                {
-                  'font-bold': heading.id === activeHeadingId,
-                },
-              )}
+              className="border-l border-border-passive-primary py-2 pl-4 text-left hover:underline"
             >
               {heading.text}
             </Button>

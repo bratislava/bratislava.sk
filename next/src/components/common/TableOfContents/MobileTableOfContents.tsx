@@ -4,11 +4,9 @@ import Accordion from '@/src/components/common/Accordion/Accordion'
 import Content from '@/src/components/common/TableOfContents/Content'
 import useHeadings from '@/src/components/common/TableOfContents/useHeadings'
 
-const HEADER_OFFSET = 90
-
 /**
  * Figma: https://www.figma.com/design/17wbd0MDQcMW9NbXl6UPs8/DS--Component-library?node-id=16846-20086&t=ETyVhQnBPMeYXsm0-4
- *
+ * Based on OLO: https://github.com/bratislava/olo.sk/tree/master/next/src/components/common/TableOfContents
  */
 
 const MobileTableOfContents = () => {
@@ -22,7 +20,7 @@ const MobileTableOfContents = () => {
   return (
     <div className="border-b border-border-passive-primary">
       <Accordion title={t('TableOfContents.title')}>
-        <Content headings={headings} headerOffset={HEADER_OFFSET} />
+        <Content headings={headings} />
       </Accordion>
     </div>
   )

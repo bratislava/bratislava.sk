@@ -1,7 +1,7 @@
 import { Typography } from '@bratislava/component-library'
 
 import Button from '@/src/components/common/Button/Button'
-import { ATTRIBUTE_TABLE_OF_CONTENTS_HEADING } from '@/src/components/common/TableOfContents/useHeadings'
+import { TABLE_OF_CONTENTS_HEADING_ATTRIBUTE } from '@/src/components/common/TableOfContents/useHeadings'
 import Markdown from '@/src/components/formatting/Markdown/Markdown'
 import { CommonLinkFragment } from '@/src/services/graphql'
 import cn from '@/src/utils/cn'
@@ -39,7 +39,7 @@ const SectionHeader = ({
 
   return (
     <div
-      data-toc={ATTRIBUTE_TABLE_OF_CONTENTS_HEADING}
+      {...TABLE_OF_CONTENTS_HEADING_ATTRIBUTE}
       className={cn('flex items-center lg:justify-end', {
         'flex items-start gap-y-4 max-lg:flex-col lg:justify-between': title,
         'lg:justify-start': !showMoreLink,

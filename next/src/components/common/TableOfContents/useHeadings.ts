@@ -1,85 +1,76 @@
-import { RefObject, useCallback, useEffect, useRef, useState } from 'react'
-import { useIsClient } from 'usehooks-ts'
+import { useLayoutEffect, useRef, useState } from 'react'
 
-import { GENERAL_PAGE_CONTENT_ID } from '@/src/components/page-contents/GeneralPageContent'
+export type Heading = {
+  level: number
+  text: string
+  id: string
+  ref: React.RefObject<Element>
+}
 
-type HeadingLevels = 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
+// Assign this id to the common parent element of all headings which should be included in the table of contents (toc)
+// This hook looks for headings only in children elements of this wrapper
+export const TABLE_OF_CONTENTS_WRAPPER_ID = 'table-of-contents-wrapper'
 
-// add all headings from the content
-export const ATTRIBUTE_TABLE_OF_CONTENTS = 'content'
+// Assign this attribute to elements, which should be queried for headings
+export const TABLE_OF_CONTENTS_HEADING_ATTRIBUTE = {
+  'data-table-of-contents': true,
+}
 
-// add heading with this attribute only, do not search through content
-export const ATTRIBUTE_TABLE_OF_CONTENTS_HEADING = 'heading'
+/**
+ * Based on OLO: https://github.com/bratislava/olo.sk/tree/master/next/src/components/common/TableOfContents
+ *
+ * TODO on page refresh, headings pop after page content is painted - find out if we can display all at once
+ */
 
-const useHeadings = () => {
-  const [headings, setHeadings] = useState<
-    { id: string; text: string; level: number; ref: RefObject<Element> }[]
-  >([])
-  const isClient = useIsClient()
+const useHeadings = ({ maxLevel = 2 }: { maxLevel?: 2 | 3 | 4 | 5 | 6 } = {}) => {
+  const [headings, setHeadings] = useState<Heading[]>([])
   const refs = useRef<Record<string, React.RefObject<Element>>>({})
 
-  const getQueryList = useCallback((headingLevels: HeadingLevels[]) => {
-    // list of all headings in the parent with data-toc attribute
-    const queryList = headingLevels
-      .map(
-        (level) =>
-          `#${GENERAL_PAGE_CONTENT_ID} div[data-toc=${ATTRIBUTE_TABLE_OF_CONTENTS}] ${level}`,
-      )
+  const headingLevelsToQuery = [2, 3, 4, 5, 6].filter((level) => level <= maxLevel)
+
+  const updateHeadings = () => {
+    const queryList = headingLevelsToQuery
+      .map((level) => `#${TABLE_OF_CONTENTS_WRAPPER_ID} :is(div[data-table-of-contents]) h${level}`)
       .join(', ')
 
-    // list of all headings that have directly data-toc attribute with -heading
-    const queryListHeadings = headingLevels
-      .map(
-        (level) =>
-          `#${GENERAL_PAGE_CONTENT_ID} div[data-toc=${ATTRIBUTE_TABLE_OF_CONTENTS_HEADING}] ${level}`,
-      )
-      .join(', ')
+    const headingsNodeList = document.querySelectorAll(queryList)
 
-    return `${queryList}, ${queryListHeadings}`
-  }, [])
+    const updatedHeadings = Array.from(headingsNodeList).map((element) => {
+      const { id, textContent, tagName } = element
+      refs.current[id] = { current: element }
 
-  // eslint-disable-next-line consistent-return
-  useEffect(() => {
-    if (isClient) {
-      const updateHeadings = () => {
-        const queryList = getQueryList(['h2', 'h3', 'h4', 'h5', 'h6']) // Move queryList here
-        const headingsNodeList = document.querySelectorAll(queryList)
-
-        // eslint-disable-next-line unicorn/prefer-spread
-        const updatedHeadings = Array.from(headingsNodeList).map((element) => {
-          const { id, textContent, tagName } = element
-          refs.current[id] = { current: element }
-
-          return {
-            id,
-            text: textContent ?? '""',
-            level: Number(String(tagName).slice(1).toLowerCase() as HeadingLevels),
-            ref: refs.current[id],
-          }
-        })
-        setHeadings(updatedHeadings)
+      return {
+        id,
+        text: textContent ?? '""',
+        level: Number(tagName.match(/\d/)),
+        ref: refs.current[id],
       }
+    })
+    setHeadings(updatedHeadings)
+  }
 
-      // Create a MutationObserver to watch for DOM changes
-      const observer = new MutationObserver(() => {
-        updateHeadings()
+  useLayoutEffect(() => {
+    // Create a MutationObserver to watch for DOM changes
+    // This ensures headings update when visiting a new page
+    const observer = new MutationObserver(() => {
+      updateHeadings()
+    })
+
+    const rootElement = document.querySelector(`#${TABLE_OF_CONTENTS_WRAPPER_ID}`)
+    if (rootElement) {
+      observer.observe(rootElement, {
+        childList: true, // Watch for added/removed child elements
+        subtree: true, // Watch the entire subtree of the root element
       })
-
-      // Observe changes in the root element
-      const rootElement = document.querySelector(`#${GENERAL_PAGE_CONTENT_ID}`)
-      if (rootElement) {
-        observer.observe(rootElement, {
-          childList: true, // Watch for added/removed child elements
-          subtree: true, // Watch the entire subtree of the root element
-        })
-      }
-
-      // Cleanup the event listener on unmount
-      return () => {
-        observer.disconnect()
-      }
     }
-  }, [getQueryList, isClient]) // Re-run when rootId or client state changes
+
+    // Cleanup the event listener on unmount
+    return () => {
+      observer.disconnect()
+    }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   return headings
 }
