@@ -7,6 +7,7 @@ import supersub from 'remark-supersub'
 import remarkUnwrapImages from 'remark-unwrap-images'
 
 import MLink from '@/src/components/common/MLink/MLink'
+import { ATTRIBUTE_TABLE_OF_CONTENTS } from '@/src/components/common/TableOfContents/useHeadings'
 import cn from '@/src/utils/cn'
 
 export type MarkdownProps = {
@@ -31,6 +32,7 @@ export type MarkdownProps = {
 const Markdown = ({ content, variant = 'default', className }: MarkdownProps) => {
   return (
     <div
+      data-toc={ATTRIBUTE_TABLE_OF_CONTENTS}
       className={cn(
         'markdown',
         {
