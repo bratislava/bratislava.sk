@@ -20,7 +20,7 @@ const DesktopTableOfContents = () => {
   return (
     <div className="flex flex-col divide-y divide-border-passive-primary overflow-hidden rounded-lg border border-border-passive-primary">
       <div className="p-6">
-        <Typography variant="h5">{t('serviceSection.headingsList')}</Typography>
+        <Typography variant="h5">{t('TableOfContents.title')}</Typography>
       </div>
       <Content headings={headings} />
     </div>

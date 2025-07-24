@@ -21,7 +21,7 @@ const MobileTableOfContents = () => {
 
   return (
     <div className="border-b border-border-passive-primary">
-      <Accordion title={t('serviceSection.headingsList')}>
+      <Accordion title={t('TableOfContents.title')}>
         <Content headings={headings} headerOffset={HEADER_OFFSET} />
       </Accordion>
     </div>
