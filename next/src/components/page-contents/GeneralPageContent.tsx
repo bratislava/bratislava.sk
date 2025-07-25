@@ -47,12 +47,12 @@ const GeneralPageContent = ({ page }: GeneralPageProps) => {
         <div
           className={cn(
             'w-full',
-            '[&_[data-sectionContainerOuter]]:not-first:pt-10',
-            '[&_[data-sectionContainerOuter]]:not-first:lg:pt-18',
+            '[&_[data-section-container-outer]]:not-first:pt-10',
+            '[&_[data-section-container-outer]]:not-first:lg:pt-18',
             {
-              'w-[50rem]': !!sidebar,
-              '[&_[data-sectionContainerInner]]:px-0': !!sidebar,
-              '[&_[data-sectionContainerInner]]:lg:px-0': !!sidebar,
+              'max-w-[50rem]': !!sidebar,
+              '[&_[data-section-container-inner]]:px-0': !!sidebar,
+              '[&_[data-section-container-inner]]:lg:px-0': !!sidebar,
             },
           )}
         >
