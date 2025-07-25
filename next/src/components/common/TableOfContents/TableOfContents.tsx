@@ -22,7 +22,7 @@ const DEFAULT_SCROLL_OFFSET = 90
  */
 
 const TableOfContents = ({
-  maxHeadingLevel,
+  maxHeadingLevel = 2,
   scrollOffset = DEFAULT_SCROLL_OFFSET,
   className,
 }: Props) => {
