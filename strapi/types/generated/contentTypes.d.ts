@@ -1291,6 +1291,7 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
         'sections.pros-and-cons-section',
         'sections.regulations',
         'sections.regulations-list',
+        'sections.table-of-contents',
         'sections.text-with-image',
         'sections.text-with-image-overlapped',
         'sections.tootoot-events',

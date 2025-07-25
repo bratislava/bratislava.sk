@@ -873,6 +873,14 @@ export interface SectionsSubpageList extends Struct.ComponentSchema {
   }
 }
 
+export interface SectionsTableOfContents extends Struct.ComponentSchema {
+  collectionName: 'components_sections_table_of_contents'
+  info: {
+    displayName: 'Table of Contents'
+  }
+  attributes: {}
+}
+
 export interface SectionsTextWithImage extends Struct.ComponentSchema {
   collectionName: 'components_sections_text_with_images'
   info: {
@@ -1042,6 +1050,7 @@ declare module '@strapi/strapi' {
       'sections.regulations': SectionsRegulations
       'sections.regulations-list': SectionsRegulationsList
       'sections.subpage-list': SectionsSubpageList
+      'sections.table-of-contents': SectionsTableOfContents
       'sections.text-with-image': SectionsTextWithImage
       'sections.text-with-image-overlapped': SectionsTextWithImageOverlapped
       'sections.tootoot-events': SectionsTootootEvents
