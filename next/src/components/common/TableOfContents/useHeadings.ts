@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 export type Heading = {
   level: number
@@ -49,26 +49,8 @@ const useHeadings = ({ maxLevel = 2 }: { maxLevel?: 2 | 3 | 4 | 5 | 6 } = {}) =>
     setHeadings(updatedHeadings)
   }
 
-  useLayoutEffect(() => {
-    // Create a MutationObserver to watch for DOM changes
-    // This ensures headings update when visiting a new page
-    const observer = new MutationObserver(() => {
-      updateHeadings()
-    })
-
-    const rootElement = document.querySelector(`#${TABLE_OF_CONTENTS_WRAPPER_ID}`)
-    if (rootElement) {
-      observer.observe(rootElement, {
-        childList: true, // Watch for added/removed child elements
-        subtree: true, // Watch the entire subtree of the root element
-      })
-    }
-
-    // Cleanup the event listener on unmount
-    return () => {
-      observer.disconnect()
-    }
-
+  useEffect(() => {
+    updateHeadings()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
