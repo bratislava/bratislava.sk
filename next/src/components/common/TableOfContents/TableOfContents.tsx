@@ -2,10 +2,12 @@ import { Typography } from '@bratislava/component-library'
 import { useTranslation } from 'next-i18next'
 
 import Button from '@/src/components/common/Button/Button'
+import HorizontalDivider from '@/src/components/common/Divider/HorizontalDivider'
 import useHeadings from '@/src/components/common/TableOfContents/useHeadings'
 import cn from '@/src/utils/cn'
 
 type Props = {
+  maxHeadingLevel?: 2 | 3 | 4 | 5 | 6
   scrollOffset?: number
   className?: string
 }
@@ -19,9 +21,13 @@ const DEFAULT_SCROLL_OFFSET = 90
  * Based on OLO: https://github.com/bratislava/olo.sk/tree/master/next/src/components/common/TableOfContents
  */
 
-const TableOfContents = ({ scrollOffset = DEFAULT_SCROLL_OFFSET, className }: Props) => {
+const TableOfContents = ({
+  maxHeadingLevel,
+  scrollOffset = DEFAULT_SCROLL_OFFSET,
+  className,
+}: Props) => {
   const { t } = useTranslation()
-  const headings = useHeadings()
+  const headings = useHeadings({ maxHeadingLevel })
 
   const handleItemPress = (id: string) => {
     const element = document.querySelector(`#${id}`)
@@ -29,9 +35,9 @@ const TableOfContents = ({ scrollOffset = DEFAULT_SCROLL_OFFSET, className }: Pr
       return
     }
 
-    const elementPosition = element?.getBoundingClientRect().top ?? 0 // current offset regarding the current window scroll
+    const elementPosition = element.getBoundingClientRect().top // current offset regarding the current window scroll
     const windowOffset = window.scrollY
-    const offsetPosition = elementPosition + windowOffset - (scrollOffset ?? 0)
+    const offsetPosition = elementPosition + windowOffset - scrollOffset
 
     window.scrollTo({ top: offsetPosition, behavior: 'smooth' })
   }
@@ -39,41 +45,49 @@ const TableOfContents = ({ scrollOffset = DEFAULT_SCROLL_OFFSET, className }: Pr
   return (
     <div
       className={cn(
-        'flex flex-col divide-y divide-border-passive-primary overflow-hidden rounded-lg border border-border-passive-primary',
+        'flex flex-col overflow-hidden rounded-lg border border-border-passive-primary bg-background-passive-base px-6',
         className,
       )}
     >
-      <div className="p-6">
-        <Typography variant="h5">{t('TableOfContents.title')}</Typography>
+      <div className="py-6">
+        <Typography variant="h5" as="h2">
+          {t('TableOfContents.title')}
+        </Typography>
       </div>
 
-      <div className="flex flex-col lg:px-6 lg:py-2">
+      <HorizontalDivider className="border-b" />
+
+      {/* TODO setup correct responsive design for small screens - now it is just a guess  */}
+      <ul className="flex flex-col py-4">
         {headings?.length
           ? headings.map((heading) => {
               return heading.level === 2 ? (
-                <Button
-                  key={heading.id}
-                  variant="unstyled"
-                  onPress={() => handleItemPress(heading.id)}
-                  className="py-3 text-left hover:underline lg:py-4"
-                >
-                  {heading.text}
-                </Button>
-              ) : (
-                <div key={heading.id} className="flex flex-col px-4 first:pt-4 last:pb-4">
+                <li key={heading.id} className="py-2 lg:py-3">
                   <Button
-                    key={heading.id}
-                    variant="unstyled"
+                    variant="link"
                     onPress={() => handleItemPress(heading.id)}
-                    className="border-l border-border-passive-primary py-2 pl-4 text-left hover:underline"
+                    className="no-underline hover:underline"
                   >
                     {heading.text}
                   </Button>
-                </div>
+                </li>
+              ) : (
+                <li
+                  key={heading.id}
+                  className="ml-4 border-l border-border-passive-primary px-4 py-2 pl-4"
+                >
+                  <Button
+                    variant="link"
+                    onPress={() => handleItemPress(heading.id)}
+                    className="text-left no-underline hover:underline"
+                  >
+                    {heading.text}
+                  </Button>
+                </li>
               )
             })
           : null}
-      </div>
+      </ul>
     </div>
   )
 }

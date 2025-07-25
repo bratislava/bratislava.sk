@@ -22,11 +22,11 @@ export const TABLE_OF_CONTENTS_HEADING_ATTRIBUTE = {
  * TODO on page refresh, headings pop after page content is painted - find out if we can display all at once
  */
 
-const useHeadings = ({ maxLevel = 2 }: { maxLevel?: 2 | 3 | 4 | 5 | 6 } = {}) => {
+const useHeadings = ({ maxHeadingLevel = 6 }: { maxHeadingLevel?: 2 | 3 | 4 | 5 | 6 } = {}) => {
   const [headings, setHeadings] = useState<Heading[]>([])
   const refs = useRef<Record<string, React.RefObject<Element>>>({})
 
-  const headingLevelsToQuery = [2, 3, 4, 5, 6].filter((level) => level <= maxLevel)
+  const headingLevelsToQuery = [2, 3, 4, 5, 6].filter((level) => level <= maxHeadingLevel)
 
   const updateHeadings = () => {
     const queryList = headingLevelsToQuery
