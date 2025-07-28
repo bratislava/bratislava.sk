@@ -57,7 +57,7 @@ const InbaReleasePageContent = ({ inbaRelease }: InbaReleasePageContentProps) =>
       <SectionContainer className="pt-10 md:pt-18">
         <div className="grid grid-cols-1 gap-16 lg:grid-cols-[1fr_2fr]">
           <div
-            className={cn('overflow-hidden rounded-xl border-2', {
+            className={cn('overflow-hidden rounded-xl border', {
               'aspect-5/8': !coverImageAttr,
             })}
           >
@@ -93,7 +93,7 @@ const InbaReleasePageContent = ({ inbaRelease }: InbaReleasePageContentProps) =>
               {t('InbaRelease.articlesInThisRelease')}
             </Typography>
 
-            <ul className="flex flex-col rounded-lg border-2">
+            <ul className="flex flex-col rounded-lg border">
               {filteredInbaArticles.map((article, index) => {
                 const cardData: SearchResult = {
                   title: article.title,

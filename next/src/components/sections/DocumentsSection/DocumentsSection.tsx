@@ -42,7 +42,7 @@ const DocumentsSection = ({ section }: Props) => {
       <div className="flex flex-col gap-4 lg:gap-6">
         <SectionHeader title={title} text={text} />
 
-        <ul className="flex flex-col rounded-lg border-2 py-2">
+        <ul className="flex flex-col rounded-lg border py-2">
           {filteredDocuments
             .map((document, index) => {
               const {

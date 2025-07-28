@@ -68,7 +68,7 @@ const DocumentPageContent = ({ document }: Props) => {
       <SectionContainer className="py-6 lg:py-12">
         <div className="flex max-w-200 flex-col gap-4 lg:gap-8">
           {filteredFiles.length > 1 ? (
-            <ul className="flex flex-col rounded-lg border-2 py-2">
+            <ul className="flex flex-col rounded-lg border py-2">
               {filteredFiles.map((file, index) => (
                 <Fragment key={file.documentId}>
                   {index > 0 ? <HorizontalDivider asListItem className="mx-4 lg:mx-6" /> : null}

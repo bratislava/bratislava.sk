@@ -19,7 +19,7 @@ export type AccordionProps = {
  */
 const Accordion = ({ variant = 'boxed', title, children }: AccordionProps) => {
   const borderStyles = cn('group flex w-full flex-col', {
-    'rounded-xl border-2 border-grey-200 bg-white open:border-grey-700 hover:border-grey-500 hover:open:border-grey-700':
+    'rounded-xl border border-grey-200 bg-white open:border-grey-700 hover:border-grey-500 hover:open:border-grey-700':
       variant === 'boxed',
   })
 

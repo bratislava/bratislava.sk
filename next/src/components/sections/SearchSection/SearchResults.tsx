@@ -74,7 +74,7 @@ const SearchResults = ({
         )}
 
         {searchResultsData?.length ? (
-          <ul className="flex flex-col rounded-lg border-2 py-2" data-cy="search-results">
+          <ul className="flex flex-col rounded-lg border py-2" data-cy="search-results">
             {searchResultsData
               .slice(0, variant === 'allResults' ? GENERAL_RESULTS_COUNT : undefined)
               .map((searchResultsItem, index) => {

@@ -123,7 +123,7 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
               'w-fit': !fullWidth && !fullWidthMobile,
 
               // border width
-              'border-2': isSolidOrOutlineVariant,
+              border: isSolidOrOutlineVariant,
 
               // padding - link variants
               'p-0': variant === 'link',

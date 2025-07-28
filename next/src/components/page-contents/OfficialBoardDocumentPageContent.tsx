@@ -65,7 +65,7 @@ const OfficialBoardDocumentPageContent = ({ document }: OfficialBoardDocumentPag
             <Typography variant="h4" as="h2">
               {t('OfficialBoard.attachments')}
             </Typography>
-            <ul className="flex flex-col rounded-lg border-2">
+            <ul className="flex flex-col rounded-lg border">
               {document.files.length > 0 ? (
                 document.files.map((file, index) => (
                   <Fragment key={file.id}>

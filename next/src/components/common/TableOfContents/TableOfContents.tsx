@@ -50,7 +50,7 @@ const TableOfContents = ({ scrollOffset = DEFAULT_SCROLL_OFFSET, className }: Pr
         </Typography>
       </div>
 
-      <HorizontalDivider className="border-b" />
+      <HorizontalDivider />
 
       {/* TODO setup correct responsive design for small screens - now it is just a guess  */}
       <ul className="flex flex-col py-4">

@@ -10,7 +10,7 @@ type HorizontalDividerProps = {
 
 const HorizontalDivider = ({ categoryColor, className, asListItem }: HorizontalDividerProps) => {
   const styles = cn(
-    'border-b-2',
+    'border-b',
     { 'border-category-600': categoryColor, 'border-grey-200': !categoryColor },
     className,
   )
