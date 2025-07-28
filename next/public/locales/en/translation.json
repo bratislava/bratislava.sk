@@ -157,7 +157,7 @@
   "SkipToContentButton.skipNavigation": "Skip navigation",
   "slider.aria.controlButtons": "Control buttons",
   "slider.aria.goToSlide": "Go to slide {{number}}",
-  "TableOfContents.title": "In this page",
+  "TableOfContents.title": "On this page",
   "TabPanelOfficialBoard.errorNoData": "Error while fetching data from the official board.",
   "Tag.aria.removeTag": "Remove tag {{tag}}",
   "TopServices.learnMore": "Read more",
