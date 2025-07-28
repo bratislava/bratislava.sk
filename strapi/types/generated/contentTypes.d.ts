@@ -1305,7 +1305,7 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
     showTableOfContents: Schema.Attribute.Boolean &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
-          localized: true
+          localized: false
         }
       }> &
       Schema.Attribute.DefaultTo<false>
