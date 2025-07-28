@@ -17,7 +17,7 @@ export type ColumnedTextProps = {
 // eslint-disable-next-line unicorn/prefer-set-has
 const SUPPORT_LEGACY_LAYOUT_PAGES_LIST = [
   '/doprava-a-mapy/doprava/dopravne-projekty/dunajska',
-  'vzdelavanie-a-volny-cas/sport/podujatia/turnaj-4-miest-2025/delegacie-miest',
+  '/vzdelavanie-a-volny-cas/sport/podujatia/turnaj-4-miest-2025/delegacie-miest',
 ]
 
 const ColumnedText = ({ title, content }: ColumnedTextProps) => {
