@@ -8,14 +8,12 @@ export interface AccordionItemsFlatText extends Struct.ComponentSchema {
     icon: 'adjust'
   }
   attributes: {
-    align: Schema.Attribute.Enumeration<['left', 'center', 'right']>
     category: Schema.Attribute.String
     content: Schema.Attribute.RichText
     fileList: Schema.Attribute.Component<'blocks.file-item', true>
     moreLinkPage: Schema.Attribute.Relation<'oneToOne', 'api::page.page'>
     moreLinkTitle: Schema.Attribute.String
     moreLinkUrl: Schema.Attribute.String
-    width: Schema.Attribute.Enumeration<['narrow', 'default', 'wide', 'full']>
   }
 }
 
@@ -770,9 +768,8 @@ export interface SectionsNarrowText extends Struct.ComponentSchema {
     displayName: 'Narrow Text'
   }
   attributes: {
-    align: Schema.Attribute.Enumeration<['left', 'center', 'right']>
     content: Schema.Attribute.RichText
-    width: Schema.Attribute.Enumeration<['narrow', 'default', 'wide', 'full']>
+    width: Schema.Attribute.Enumeration<['default', 'full']> & Schema.Attribute.DefaultTo<'default'>
   }
 }
 

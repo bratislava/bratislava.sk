@@ -1,9 +1,9 @@
 import React from 'react'
 
-import NarrowText from '@/src/components/common/NarrowText/NarrowText'
 import Markdown from '@/src/components/formatting/Markdown/Markdown'
 import SectionContainer from '@/src/components/layouts/SectionContainer'
 import { NarrowTextSectionFragment } from '@/src/services/graphql'
+import cn from '@/src/utils/cn'
 
 type NarrowTextSectionProps = {
   section: NarrowTextSectionFragment
@@ -20,9 +20,14 @@ const NarrowTextSection = ({ section }: NarrowTextSectionProps) => {
 
   return (
     <SectionContainer>
-      <NarrowText width={section.width ?? undefined}>
+      <div
+        className={cn('w-full', {
+          // TODO decide what is the default width
+          'lg:w-10/12': section.width !== 'full',
+        })}
+      >
         <Markdown content={section.content} />
-      </NarrowText>
+      </div>
     </SectionContainer>
   )
 }

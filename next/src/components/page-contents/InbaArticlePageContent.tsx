@@ -3,10 +3,8 @@ import { useMemo } from 'react'
 
 import { Breadcrumb } from '@/src/components/common/Breadcrumbs/Breadcrumbs'
 import MLink from '@/src/components/common/MLink/MLink'
-import NarrowText from '@/src/components/common/NarrowText/NarrowText'
 import PageHeader from '@/src/components/common/PageHeader/PageHeader'
 import Markdown from '@/src/components/formatting/Markdown/Markdown'
-import SectionContainer from '@/src/components/layouts/SectionContainer'
 import { useGeneralContext } from '@/src/components/providers/GeneralContextProvider'
 import ShareButtons from '@/src/components/sections/ShareButtons_Deprecated'
 import { InbaArticleEntityFragment } from '@/src/services/graphql'
@@ -47,36 +45,39 @@ const InbaArticlePageContent = ({ inbaArticle }: InbaArticlePageContentProps) =>
         tag={inbaTagTitle}
         imageSrc={coverImage?.url}
       />
-      {perex ? (
-        <SectionContainer className="pt-10 md:pt-18">
-          <NarrowText width="wide">
-            {/* Perex comes as plain text from Strapi, so we manually add bold style and use Markdown to format it */}
-            {/* TODO it may want to be styled and implemented more nicely */}
-            <Markdown content={`**${perex}**`} />
-          </NarrowText>
-        </SectionContainer>
-      ) : null}
-      <SectionContainer className="pt-10 md:pt-18">
-        <NarrowText width="wide">
-          <Markdown content={content} />
-          {inbaRelease ? (
-            <div className="pt-4">
-              {/* TODO Typography */}
-              <MLink href={inbaReleaseLink} variant="underlined">
-                <Markdown
-                  content={t('InbaArticle.publishedInThisRelease', {
-                    releaseTitle: inbaRelease.title,
-                    releaseDate: formatDate(inbaRelease.releaseDate),
-                  })}
-                />
-              </MLink>
+      <div
+        // TODO some of these classes are duplicated in SectionContainer - ponder what to do with it
+        className="mx-auto flex max-w-(--breakpoint-xl) gap-8 px-4 py-6 lg:px-8 lg:py-12"
+      >
+        <div className="flex w-200 flex-col gap-4">
+          <div className="flex flex-col gap-18">
+            <div className="flex flex-col gap-6 lg:gap-8">
+              {/* Perex comes as plain text from Strapi, so we manually add bold style and use Markdown to format it */}
+              {/* TODO it may want to be styled and implemented more nicely */}
+              {perex ? <Markdown content={`**${perex}**`} /> : null}
+              <Markdown content={content} />
+              {inbaRelease ? (
+                <div className="pt-4">
+                  {/* TODO Typography */}
+                  <MLink href={inbaReleaseLink} variant="underlined">
+                    <Markdown
+                      content={t('InbaArticle.publishedInThisRelease', {
+                        releaseTitle: inbaRelease.title,
+                        releaseDate: formatDate(inbaRelease.releaseDate),
+                      })}
+                    />
+                  </MLink>
+                </div>
+              ) : null}
             </div>
-          ) : null}
-        </NarrowText>
-      </SectionContainer>
-      <SectionContainer className="pt-10 pb-8 md:pt-18">
-        <ShareButtons twitterTitle={title} />
-      </SectionContainer>
+          </div>
+
+          <ShareButtons twitterTitle={title} />
+        </div>
+
+        {/* Empty sidebar */}
+        <div aria-hidden className="grow basis-60 max-lg:hidden" />
+      </div>
     </>
   )
 }

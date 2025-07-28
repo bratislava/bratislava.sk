@@ -134,7 +134,6 @@ fragment ComponentAccordionItemsInstitutionNarrow on ComponentAccordionItemsInst
 fragment ComponentAccordionItemsFlatText on ComponentAccordionItemsFlatText {
   category
   content
-  width
   moreLinkTitle
   moreLinkUrl
   moreLinkPage {

@@ -346,7 +346,6 @@ type ComponentAccordionItemsFlatText {
   moreLinkPage: Page
   moreLinkTitle: String
   moreLinkUrl: String
-  width: ENUM_COMPONENTACCORDIONITEMSFLATTEXT_WIDTH
 }
 
 input ComponentAccordionItemsFlatTextFiltersInput {
@@ -359,7 +358,6 @@ input ComponentAccordionItemsFlatTextFiltersInput {
   moreLinkUrl: StringFilterInput
   not: ComponentAccordionItemsFlatTextFiltersInput
   or: [ComponentAccordionItemsFlatTextFiltersInput]
-  width: StringFilterInput
 }
 
 input ComponentAccordionItemsFlatTextInput {
@@ -370,7 +368,6 @@ input ComponentAccordionItemsFlatTextInput {
   moreLinkPage: ID
   moreLinkTitle: String
   moreLinkUrl: String
-  width: ENUM_COMPONENTACCORDIONITEMSFLATTEXT_WIDTH
 }
 
 type ComponentAccordionItemsInstitution {
@@ -2016,13 +2013,6 @@ type DocumentRelationResponseCollection {
   nodes: [Document!]!
 }
 
-enum ENUM_COMPONENTACCORDIONITEMSFLATTEXT_WIDTH {
-  default
-  full
-  narrow
-  wide
-}
-
 enum ENUM_COMPONENTBLOCKSTOPSERVICESITEM_ICON {
   bratislavske_konto
   dane_a_poplatky
@@ -2142,8 +2132,6 @@ enum ENUM_COMPONENTSECTIONSIFRAME_IFRAMEWIDTH {
 enum ENUM_COMPONENTSECTIONSNARROWTEXT_WIDTH {
   default
   full
-  narrow
-  wide
 }
 
 enum ENUM_COMPONENTSECTIONSNUMERICALLIST_VARIANT {
