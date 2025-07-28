@@ -4221,6 +4221,7 @@ export type Page = {
   relatedContents: Array<Maybe<Tag>>
   relatedContents_connection?: Maybe<TagRelationResponseCollection>
   sections?: Maybe<Array<Maybe<PageSectionsDynamicZone>>>
+  showTableOfContents?: Maybe<Scalars['Boolean']['output']>
   sidebar?: Maybe<Array<Maybe<PageSidebarDynamicZone>>>
   slug?: Maybe<Scalars['String']['output']>
   subtext?: Maybe<Scalars['String']['output']>
@@ -4407,6 +4408,7 @@ export type PageFiltersInput = {
   parentPage?: InputMaybe<PageFiltersInput>
   publishedAt?: InputMaybe<DateTimeFilterInput>
   relatedContents?: InputMaybe<TagFiltersInput>
+  showTableOfContents?: InputMaybe<BooleanFilterInput>
   slug?: InputMaybe<StringFilterInput>
   subtext?: InputMaybe<StringFilterInput>
   title?: InputMaybe<StringFilterInput>
@@ -4428,6 +4430,7 @@ export type PageInput = {
   publishedAt?: InputMaybe<Scalars['DateTime']['input']>
   relatedContents?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
   sections?: InputMaybe<Array<Scalars['PageSectionsDynamicZoneInput']['input']>>
+  showTableOfContents?: InputMaybe<Scalars['Boolean']['input']>
   sidebar?: InputMaybe<Array<Scalars['PageSidebarDynamicZoneInput']['input']>>
   slug?: InputMaybe<Scalars['String']['input']>
   subtext?: InputMaybe<Scalars['String']['input']>
@@ -8240,6 +8243,7 @@ export type PageEntityFragment = {
   pageColor: Enum_Page_Pagecolor
   metaDiscription?: string | null
   keywords?: string | null
+  showTableOfContents?: boolean | null
   documentId: string
   slug?: string | null
   title: string
@@ -8957,6 +8961,7 @@ export type PageBySlugQuery = {
     pageColor: Enum_Page_Pagecolor
     metaDiscription?: string | null
     keywords?: string | null
+    showTableOfContents?: boolean | null
     documentId: string
     slug?: string | null
     title: string
@@ -9703,6 +9708,7 @@ export type Dev_AllPagesQuery = {
     pageColor: Enum_Page_Pagecolor
     metaDiscription?: string | null
     keywords?: string | null
+    showTableOfContents?: boolean | null
     documentId: string
     slug?: string | null
     title: string
@@ -13678,6 +13684,7 @@ export const PageEntityFragmentDoc = gql`
     pageColor
     metaDiscription
     keywords
+    showTableOfContents
     pageBackgroundImage {
       ...UploadImageSrcEntity
     }

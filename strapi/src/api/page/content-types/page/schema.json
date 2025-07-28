@@ -65,6 +65,15 @@
         }
       }
     },
+    "showTableOfContents": {
+      "type": "boolean",
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "default": false
+    },
     "pageCategory": {
       "type": "relation",
       "relation": "manyToOne",

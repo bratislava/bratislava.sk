@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars,jsx-a11y/heading-has-content */
 import { Typography } from '@bratislava/component-library'
+import slugify from '@sindresorhus/slugify'
 import ReactMarkdown, { defaultUrlTransform } from 'react-markdown'
 import rehypeRaw from 'rehype-raw'
 import remarkGfm from 'remark-gfm'
@@ -7,6 +8,7 @@ import supersub from 'remark-supersub'
 import remarkUnwrapImages from 'remark-unwrap-images'
 
 import MLink from '@/src/components/common/MLink/MLink'
+import { TABLE_OF_CONTENTS_HEADING_ATTRIBUTE } from '@/src/components/common/TableOfContents/useHeadings'
 import cn from '@/src/utils/cn'
 
 export type MarkdownProps = {
@@ -31,6 +33,7 @@ export type MarkdownProps = {
 const Markdown = ({ content, variant = 'default', className }: MarkdownProps) => {
   return (
     <div
+      {...TABLE_OF_CONTENTS_HEADING_ATTRIBUTE}
       className={cn(
         'markdown',
         {
@@ -65,6 +68,7 @@ const Markdown = ({ content, variant = 'default', className }: MarkdownProps) =>
             <Typography
               as="h2"
               variant={variant === 'accordion' ? 'h4' : 'h2'}
+              id={typeof children === 'string' ? slugify(children) : undefined}
               {...props}
               data-cy="heading-two"
             >

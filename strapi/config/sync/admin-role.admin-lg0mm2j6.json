@@ -1319,6 +1319,7 @@
           "subtext",
           "metaDiscription",
           "keywords",
+          "showTableOfContents",
           "pageCategory",
           "pageColor",
           "pageBackgroundImage",
@@ -1340,7 +1341,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "zami87a4p1tkom9mhfvbyvfw",
+      "documentId": "lsu6xzxebwzfmoysbk0rjxyv",
       "locale": null
     },
     {
@@ -1382,6 +1383,7 @@
           "subtext",
           "metaDiscription",
           "keywords",
+          "showTableOfContents",
           "pageCategory",
           "pageColor",
           "pageBackgroundImage",
@@ -1403,7 +1405,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "pph0x94sqlqr5gaorck4mn0g",
+      "documentId": "rn9ace30v86ib2cmm5052ek1",
       "locale": null
     },
     {
@@ -1417,6 +1419,7 @@
           "subtext",
           "metaDiscription",
           "keywords",
+          "showTableOfContents",
           "pageCategory",
           "pageColor",
           "pageBackgroundImage",
@@ -1438,7 +1441,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "oyoy74jb42paiwkjee57f70z",
+      "documentId": "o6c9i4feh6iovehyb9znhpo3",
       "locale": null
     },
     {

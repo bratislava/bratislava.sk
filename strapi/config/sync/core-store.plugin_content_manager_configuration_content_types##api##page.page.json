@@ -104,6 +104,20 @@
           "sortable": true
         }
       },
+      "showTableOfContents": {
+        "edit": {
+          "label": "Zobraziť obsah stránky",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "showTableOfContents",
+          "searchable": true,
+          "sortable": true
+        }
+      },
       "pageCategory": {
         "edit": {
           "label": "Kategória",
@@ -153,8 +167,7 @@
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true,
-          "mainField": "label"
+          "editable": true
         },
         "list": {
           "label": "headerLinks",
@@ -332,6 +345,7 @@
       }
     },
     "layouts": {
+      "list": ["slug", "title", "updatedAt", "parentPage"],
       "edit": [
         [
           {
@@ -387,6 +401,12 @@
         ],
         [
           {
+            "name": "showTableOfContents",
+            "size": 6
+          }
+        ],
+        [
+          {
             "name": "pageHeaderSections",
             "size": 12
           }
@@ -433,12 +453,6 @@
             "size": 12
           }
         ]
-      ],
-      "list": [
-        "slug",
-        "title",
-        "updatedAt",
-        "parentPage"
       ]
     }
   },

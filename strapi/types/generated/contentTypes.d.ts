@@ -1302,6 +1302,13 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
           localized: true
         }
       }>
+    showTableOfContents: Schema.Attribute.Boolean &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false
+        }
+      }> &
+      Schema.Attribute.DefaultTo<false>
     sidebar: Schema.Attribute.DynamicZone<['sidebars.empty-sidebar']> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {

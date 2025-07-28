@@ -8,6 +8,7 @@ import SectionContainer from '@/src/components/layouts/SectionContainer'
 import Sections from '@/src/components/layouts/Sections'
 import Sidebars from '@/src/components/layouts/Sidebars'
 import RelatedArticlesSection from '@/src/components/sections/RelatedArticlesSection'
+import TableOfContentsSection from '@/src/components/sections/TableOfContentsSection'
 import { PageEntityFragment } from '@/src/services/graphql'
 import cn from '@/src/utils/cn'
 import { isDefined } from '@/src/utils/isDefined'
@@ -40,6 +41,7 @@ const GeneralPageContent = ({ page }: GeneralPageProps) => {
 
       {/* Sections & Sidebar */}
       <div
+        key={page.documentId} // Helps to re-render table of contents on page change
         className={cn('flex flex-wrap-reverse gap-5 py-8 lg:gap-8', {
           'mx-auto max-w-(--breakpoint-xl) px-4 lg:px-8': !!sidebar,
         })}
@@ -56,6 +58,7 @@ const GeneralPageContent = ({ page }: GeneralPageProps) => {
           )}
         >
           <div className="flex w-full flex-col gap-5 lg:gap-9">
+            {page.showTableOfContents && <TableOfContentsSection />}
             <Sections sections={filteredSections} />
             <RelatedArticlesSection page={page} />
           </div>

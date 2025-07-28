@@ -3294,6 +3294,7 @@ type Page {
   relatedContents(filters: TagFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [Tag]!
   relatedContents_connection(filters: TagFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): TagRelationResponseCollection
   sections: [PageSectionsDynamicZone]
+  showTableOfContents: Boolean
   sidebar: [PageSidebarDynamicZone]
   slug: String
   subtext: String
@@ -3394,6 +3395,7 @@ input PageFiltersInput {
   parentPage: PageFiltersInput
   publishedAt: DateTimeFilterInput
   relatedContents: TagFiltersInput
+  showTableOfContents: BooleanFilterInput
   slug: StringFilterInput
   subtext: StringFilterInput
   title: StringFilterInput
@@ -3415,6 +3417,7 @@ input PageInput {
   publishedAt: DateTime
   relatedContents: [ID]
   sections: [PageSectionsDynamicZoneInput!]
+  showTableOfContents: Boolean
   sidebar: [PageSidebarDynamicZoneInput!]
   slug: String
   subtext: String

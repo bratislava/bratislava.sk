@@ -382,6 +382,7 @@
           "subtext",
           "metaDiscription",
           "keywords",
+          "showTableOfContents",
           "pageCategory",
           "pageColor",
           "pageBackgroundImage",
@@ -406,7 +407,7 @@
         "plugin::content-manager.document-admin-group-includes-starz"
       ],
       "actionParameters": {},
-      "documentId": "qf77muvruvo3n3tim5kb5pq7",
+      "documentId": "s2m7a33smbf1f7eowdqedra3",
       "locale": null
     },
     {
@@ -451,6 +452,7 @@
           "subtext",
           "metaDiscription",
           "keywords",
+          "showTableOfContents",
           "pageCategory",
           "pageColor",
           "pageBackgroundImage",
@@ -475,7 +477,7 @@
         "plugin::content-manager.document-admin-group-includes-starz"
       ],
       "actionParameters": {},
-      "documentId": "fc76dj5navboztxvcyp007yh",
+      "documentId": "fioflyh4h0yjnfaye79wdj0u",
       "locale": null
     },
     {
@@ -488,6 +490,7 @@
           "subtext",
           "metaDiscription",
           "keywords",
+          "showTableOfContents",
           "pageCategory",
           "pageColor",
           "pageBackgroundImage",
@@ -512,7 +515,7 @@
         "plugin::content-manager.document-admin-group-includes-starz"
       ],
       "actionParameters": {},
-      "documentId": "pgyfnol28i4bomtuewjv02z4",
+      "documentId": "d6enbiho75zki7qn52v5qzjx",
       "locale": null
     },
     {
