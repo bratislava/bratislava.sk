@@ -769,7 +769,8 @@ export interface SectionsNarrowText extends Struct.ComponentSchema {
   }
   attributes: {
     content: Schema.Attribute.RichText
-    width: Schema.Attribute.Enumeration<['default', 'full']> & Schema.Attribute.DefaultTo<'default'>
+    width: Schema.Attribute.Enumeration<['narrow', 'default', 'wide', 'full']> &
+      Schema.Attribute.DefaultTo<'default'>
   }
 }
 

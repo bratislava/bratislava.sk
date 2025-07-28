@@ -2648,6 +2648,8 @@ export enum Enum_Componentsectionsiframe_Iframewidth {
 export enum Enum_Componentsectionsnarrowtext_Width {
   Default = 'default',
   Full = 'full',
+  Narrow = 'narrow',
+  Wide = 'wide',
 }
 
 export enum Enum_Componentsectionsnumericallist_Variant {

@@ -12,7 +12,9 @@
       "type": "enumeration",
       "default": "default",
       "enum": [
+        "narrow",
         "default",
+        "wide",
         "full"
       ]
     }
