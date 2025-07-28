@@ -1291,7 +1291,6 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
         'sections.pros-and-cons-section',
         'sections.regulations',
         'sections.regulations-list',
-        'sections.table-of-contents',
         'sections.text-with-image',
         'sections.text-with-image-overlapped',
         'sections.tootoot-events',
@@ -1303,6 +1302,13 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
           localized: true
         }
       }>
+    showTableOfContents: Schema.Attribute.Boolean &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true
+        }
+      }> &
+      Schema.Attribute.DefaultTo<false>
     sidebar: Schema.Attribute.DynamicZone<['sidebars.empty-sidebar']> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {

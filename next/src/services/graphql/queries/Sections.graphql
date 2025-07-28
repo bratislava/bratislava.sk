@@ -486,8 +486,6 @@ fragment Sections on PageSectionsDynamicZone {
   ... on ComponentSectionsDocuments {
     ...DocumentsSection
   }
-
-  # ComponentSectionsTableOfContents has no attributes
 }
 
 fragment SubpageListPageHeaderSection on ComponentSectionsSubpageList {

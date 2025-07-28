@@ -26,7 +26,6 @@ import PartnersSection from '@/src/components/sections/PartnersSection'
 import ProsAndConsSection from '@/src/components/sections/ProsAndConsSection'
 import RegulationsListSection from '@/src/components/sections/RegulationsListSection'
 import RegulationsSection from '@/src/components/sections/RegulationsSection'
-import TableOfContentsSection from '@/src/components/sections/TableOfContentsSection'
 import TextWithImageOverlappedSection from '@/src/components/sections/TextWithImageOverlappedSection'
 import TextWithImageSection from '@/src/components/sections/TextWithImageSection'
 import TootootEventsSection from '@/src/components/sections/TootootEventsSection'
@@ -130,9 +129,6 @@ const SectionContent = ({ section }: { section: SectionsFragment }) => {
 
     case 'ComponentSectionsNumericalList':
       return <NumericalListSection section={section} />
-
-    case 'ComponentSectionsTableOfContents':
-      return <TableOfContentsSection />
 
     default:
       return null

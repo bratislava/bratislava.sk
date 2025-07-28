@@ -2137,21 +2137,6 @@ export type ComponentSectionsSubpageListInput = {
   subpageList?: InputMaybe<Array<InputMaybe<ComponentBlocksPageLinkInput>>>
 }
 
-export type ComponentSectionsTableOfContents = {
-  __typename?: 'ComponentSectionsTableOfContents'
-  id: Scalars['ID']['output']
-}
-
-export type ComponentSectionsTableOfContentsFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<ComponentSectionsTableOfContentsFiltersInput>>>
-  not?: InputMaybe<ComponentSectionsTableOfContentsFiltersInput>
-  or?: InputMaybe<Array<InputMaybe<ComponentSectionsTableOfContentsFiltersInput>>>
-}
-
-export type ComponentSectionsTableOfContentsInput = {
-  id?: InputMaybe<Scalars['ID']['input']>
-}
-
 export type ComponentSectionsTextWithImage = {
   __typename?: 'ComponentSectionsTextWithImage'
   content?: Maybe<Scalars['String']['output']>
@@ -3179,7 +3164,6 @@ export type GenericMorph =
   | ComponentSectionsRegulations
   | ComponentSectionsRegulationsList
   | ComponentSectionsSubpageList
-  | ComponentSectionsTableOfContents
   | ComponentSectionsTextWithImage
   | ComponentSectionsTextWithImageOverlapped
   | ComponentSectionsTootootEvents
@@ -4267,6 +4251,7 @@ export type Page = {
   relatedContents: Array<Maybe<Tag>>
   relatedContents_connection?: Maybe<TagRelationResponseCollection>
   sections?: Maybe<Array<Maybe<PageSectionsDynamicZone>>>
+  showTableOfContents?: Maybe<Scalars['Boolean']['output']>
   sidebar?: Maybe<Array<Maybe<PageSidebarDynamicZone>>>
   slug?: Maybe<Scalars['String']['output']>
   subtext?: Maybe<Scalars['String']['output']>
@@ -4453,6 +4438,7 @@ export type PageFiltersInput = {
   parentPage?: InputMaybe<PageFiltersInput>
   publishedAt?: InputMaybe<DateTimeFilterInput>
   relatedContents?: InputMaybe<TagFiltersInput>
+  showTableOfContents?: InputMaybe<BooleanFilterInput>
   slug?: InputMaybe<StringFilterInput>
   subtext?: InputMaybe<StringFilterInput>
   title?: InputMaybe<StringFilterInput>
@@ -4474,6 +4460,7 @@ export type PageInput = {
   publishedAt?: InputMaybe<Scalars['DateTime']['input']>
   relatedContents?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
   sections?: InputMaybe<Array<Scalars['PageSectionsDynamicZoneInput']['input']>>
+  showTableOfContents?: InputMaybe<Scalars['Boolean']['input']>
   sidebar?: InputMaybe<Array<Scalars['PageSidebarDynamicZoneInput']['input']>>
   slug?: InputMaybe<Scalars['String']['input']>
   subtext?: InputMaybe<Scalars['String']['input']>
@@ -4514,7 +4501,6 @@ export type PageSectionsDynamicZone =
   | ComponentSectionsProsAndConsSection
   | ComponentSectionsRegulations
   | ComponentSectionsRegulationsList
-  | ComponentSectionsTableOfContents
   | ComponentSectionsTextWithImage
   | ComponentSectionsTextWithImageOverlapped
   | ComponentSectionsTootootEvents
@@ -8287,6 +8273,7 @@ export type PageEntityFragment = {
   pageColor: Enum_Page_Pagecolor
   metaDiscription?: string | null
   keywords?: string | null
+  showTableOfContents?: boolean | null
   documentId: string
   slug?: string | null
   title: string
@@ -8812,7 +8799,6 @@ export type PageEntityFragment = {
         } | null>
       }
     | { __typename: 'ComponentSectionsRegulationsList' }
-    | { __typename: 'ComponentSectionsTableOfContents' }
     | {
         __typename: 'ComponentSectionsTextWithImage'
         content?: string | null
@@ -9008,6 +8994,7 @@ export type PageBySlugQuery = {
     pageColor: Enum_Page_Pagecolor
     metaDiscription?: string | null
     keywords?: string | null
+    showTableOfContents?: boolean | null
     documentId: string
     slug?: string | null
     title: string
@@ -9536,7 +9523,6 @@ export type PageBySlugQuery = {
           } | null>
         }
       | { __typename: 'ComponentSectionsRegulationsList' }
-      | { __typename: 'ComponentSectionsTableOfContents' }
       | {
           __typename: 'ComponentSectionsTextWithImage'
           content?: string | null
@@ -9758,6 +9744,7 @@ export type Dev_AllPagesQuery = {
     pageColor: Enum_Page_Pagecolor
     metaDiscription?: string | null
     keywords?: string | null
+    showTableOfContents?: boolean | null
     documentId: string
     slug?: string | null
     title: string
@@ -10286,7 +10273,6 @@ export type Dev_AllPagesQuery = {
           } | null>
         }
       | { __typename: 'ComponentSectionsRegulationsList' }
-      | { __typename: 'ComponentSectionsTableOfContents' }
       | {
           __typename: 'ComponentSectionsTextWithImage'
           content?: string | null
@@ -12352,10 +12338,6 @@ type Sections_ComponentSectionsRegulationsList_Fragment = {
   __typename: 'ComponentSectionsRegulationsList'
 }
 
-type Sections_ComponentSectionsTableOfContents_Fragment = {
-  __typename: 'ComponentSectionsTableOfContents'
-}
-
 type Sections_ComponentSectionsTextWithImage_Fragment = {
   __typename: 'ComponentSectionsTextWithImage'
   content?: string | null
@@ -12498,7 +12480,6 @@ export type SectionsFragment =
   | Sections_ComponentSectionsProsAndConsSection_Fragment
   | Sections_ComponentSectionsRegulations_Fragment
   | Sections_ComponentSectionsRegulationsList_Fragment
-  | Sections_ComponentSectionsTableOfContents_Fragment
   | Sections_ComponentSectionsTextWithImage_Fragment
   | Sections_ComponentSectionsTextWithImageOverlapped_Fragment
   | Sections_ComponentSectionsTootootEvents_Fragment
@@ -13753,6 +13734,7 @@ export const PageEntityFragmentDoc = gql`
     pageColor
     metaDiscription
     keywords
+    showTableOfContents
     pageBackgroundImage {
       ...UploadImageSrcEntity
     }
