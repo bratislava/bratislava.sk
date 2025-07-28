@@ -1,10 +1,8 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 export type Heading = {
-  level: number
   text: string
   id: string
-  ref: React.RefObject<Element>
 }
 
 // Assign this attribute to elements, which should be queried for headings
@@ -20,21 +18,17 @@ export const TABLE_OF_CONTENTS_HEADING_ATTRIBUTE = {
 
 const useHeadings = () => {
   const [headings, setHeadings] = useState<Heading[]>([])
-  const refs = useRef<Record<string, React.RefObject<Element>>>({})
 
   const updateHeadings = () => {
     const headingsQuery = 'main :is(div[data-table-of-contents]) h2'
     const headingsNodeList = document.querySelectorAll(headingsQuery)
 
     const updatedHeadings = Array.from(headingsNodeList).map((element) => {
-      const { id, textContent, tagName } = element
-      refs.current[id] = { current: element }
+      const { id, textContent } = element
 
       return {
         id,
         text: textContent ?? '""',
-        level: Number(tagName.match(/\d/)),
-        ref: refs.current[id],
       }
     })
     setHeadings(updatedHeadings)
