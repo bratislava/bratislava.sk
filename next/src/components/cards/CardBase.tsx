@@ -13,7 +13,7 @@ const CardBase = ({ variant = 'border', children, className, ...rest }: CardBase
       className={cn(
         'group relative flex flex-col overflow-hidden bg-white',
         {
-          'rounded-2xl border-2 border-grey-200 hover:border-grey-400': variant === 'border',
+          'rounded-2xl border border-grey-200 hover:border-grey-400': variant === 'border',
         },
         className,
       )}

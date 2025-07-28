@@ -22,7 +22,7 @@ const FileList = ({ className, title, text, files }: FileListProps) => {
     <div className={cn('flex flex-col gap-4 lg:gap-6', className)}>
       <SectionHeader title={title} text={text} />
 
-      <ul className="flex flex-col rounded-lg border-2 py-2">
+      <ul className="flex flex-col rounded-lg border py-2">
         {files.map((file, index) => (
           <Fragment key={file.id}>
             {index > 0 ? <HorizontalDivider asListItem className="mx-4 lg:mx-6" /> : null}

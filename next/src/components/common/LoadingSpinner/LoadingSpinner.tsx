@@ -13,7 +13,7 @@ const LoadingSpinner = ({ className, size = 'default', text }: LoadingSpinnerPro
         borderTopColor: 'currentColor',
       }}
       className={cn('box-border animate-spin rounded-full border-solid border-transparent', {
-        'h-8 w-8 border-2': size === 'small',
+        'h-8 w-8 border': size === 'small',
         'h-20 w-20 border-4': size === 'medium',
         'h-40 w-40 border-8': size === 'default',
       })}

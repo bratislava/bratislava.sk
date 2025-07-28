@@ -64,7 +64,7 @@ const FileRowCard = ({
             )}
           </div>
         </div>
-        <div className="flex shrink-0 items-center justify-center text-grey-700 md:rounded-lg md:border-2 md:border-grey-200">
+        <div className="flex shrink-0 items-center justify-center text-grey-700 md:rounded-lg md:border md:border-grey-200">
           {/* TODO create a proper wrapper for the icon component to handle paddings */}
           <div className="p-1.5 md:p-2.5">
             <DownloadIcon className="size-5" />

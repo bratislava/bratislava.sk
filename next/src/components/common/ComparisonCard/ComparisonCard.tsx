@@ -13,7 +13,7 @@ type ComparisonProps = {
 const ComparisonCard = ({ title, items, color, icon }: ComparisonProps) => {
   return (
     <li
-      className={cn('relative rounded-lg border-2', {
+      className={cn('relative rounded-lg border', {
         'border-success-700 bg-success-100': color === 'green',
         'border-negative-700 bg-negative-100': color === 'red',
         'border-grey-200 bg-white': color === 'white',

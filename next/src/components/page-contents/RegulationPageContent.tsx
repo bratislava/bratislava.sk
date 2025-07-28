@@ -76,7 +76,7 @@ const RegulationPageContent = ({ regulation }: RegulationPageContentProps) => {
               </Typography>
 
               {/* TODO refactor to use standard component */}
-              <div className="rounded-lg border-2 py-2">
+              <div className="rounded-lg border py-2">
                 {mainDocument ? (
                   <FileRowCard
                     key={mainDocument.documentId}
@@ -100,7 +100,7 @@ const RegulationPageContent = ({ regulation }: RegulationPageContentProps) => {
 
               {/* TODO refactor to use standard component */}
               {attachmentFiles?.length ? (
-                <ul className="rounded-lg border-2 py-2">
+                <ul className="rounded-lg border py-2">
                   {attachmentFiles
                     .map(({ media: attachmentMedia, title: attachmentTitle }, index) => {
                       return (
@@ -131,7 +131,7 @@ const RegulationPageContent = ({ regulation }: RegulationPageContentProps) => {
               {t('Regulation.amendments')}
             </Typography>
             {amendments?.length ? (
-              <ul className="flex flex-col rounded-lg border-2 py-2">
+              <ul className="flex flex-col rounded-lg border py-2">
                 {amendments?.filter(isDefined).map((amendment, index) => (
                   <Fragment key={amendment.documentId}>
                     {index > 0 ? <HorizontalDivider asListItem className="mx-4 lg:mx-6" /> : null}

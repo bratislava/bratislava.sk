@@ -74,7 +74,7 @@ const SelectField = <T extends object>({
   const disabled = props.isDisabled
 
   const style = cn(
-    'flex w-full justify-between gap-3 rounded-lg border-2 bg-white px-3 py-2 ring-offset-2 outline-hidden focus:border-grey-800 focus-visible:ring-3 lg:px-4 lg:py-3',
+    'flex w-full justify-between gap-3 rounded-lg border bg-white px-3 py-2 ring-offset-2 outline-hidden focus:border-grey-800 focus-visible:ring-3 lg:px-4 lg:py-3',
     {
       'border-grey-200 hover:border-grey-400': !disabled,
       'border-negative-700 hover:border-negative-700': errorMessage && !disabled,
@@ -102,7 +102,7 @@ const SelectField = <T extends object>({
       <FieldError>{errorMessage}</FieldError>
 
       <Popover
-        className="w-(--trigger-width) overflow-y-auto rounded-md border-2 border-grey-800 bg-white py-2"
+        className="w-(--trigger-width) overflow-y-auto rounded-md border border-grey-800 bg-white py-2"
         shouldFlip={false}
       >
         <ListBox items={items}>{children}</ListBox>

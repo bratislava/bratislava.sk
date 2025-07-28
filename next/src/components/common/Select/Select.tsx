@@ -61,7 +61,7 @@ type CustomCheckboxProps = {
 const CustomCheckbox = ({ isSelected }: CustomCheckboxProps) => (
   <div
     className={cn(
-      'size-7 items-center justify-center rounded-sm border-2 border-border-active-primary-inverted-pressed',
+      'size-7 items-center justify-center rounded-sm border border-border-active-primary-inverted-pressed',
       {
         'bg-background-active-primary-inverted-pressed text-content-active-primary-default':
           isSelected,
@@ -136,7 +136,7 @@ const SelectField = <
       // TODO handle tokens properly
       classNames={{
         control: ({ isFocused, isDisabled }) =>
-          cn('rounded-lg border-2 bg-background-passive-base hover:cursor-pointer!', {
+          cn('rounded-lg border bg-background-passive-base hover:cursor-pointer!', {
             'border-border-active-default': isDisabled,
             'border-border-active-focused': isFocused && !isDisabled,
             'border-border-active-default hover:border-border-active-hover':
@@ -174,7 +174,7 @@ const SelectField = <
             hidden: !hasValue || !isMulti,
           }),
         dropdownIndicator: () => 'p-1.5 -m-1.5 rounded-md',
-        menu: () => 'py-2 mt-2 border-2 bg-background-passive-base rounded-lg',
+        menu: () => 'py-2 mt-2 border bg-background-passive-base rounded-lg',
         groupHeading: () => 'ml-3 mt-2 mb-1 text-content-passive-secondary text-sm',
         option: ({ isFocused }) =>
           cn('flex! items-center justify-between px-5 py-3 hover:cursor-pointer!', {

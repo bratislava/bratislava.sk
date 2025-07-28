@@ -26,7 +26,7 @@ const Regulations = ({ className, regulations }: Props) => {
     <div className={cn('flex flex-col gap-8', className)}>
       <SectionHeader title={t('Regulation.relatedRegulations')} />
       {regulations?.length ? (
-        <ul className="flex flex-col rounded-lg border-2 py-2">
+        <ul className="flex flex-col rounded-lg border py-2">
           {regulations?.map((regulation, index) => {
             const { effectiveUntil } = getRegulationMetadata(regulation)
 
