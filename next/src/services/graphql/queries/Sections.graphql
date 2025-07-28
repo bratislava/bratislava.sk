@@ -114,7 +114,6 @@ fragment ColumnsSection on ComponentSectionsColumns {
 fragment NarrowTextSection on ComponentSectionsNarrowText {
   content
   width
-  align
 }
 
 fragment LinksSection on ComponentSectionsLinks {
@@ -136,7 +135,6 @@ fragment ComponentAccordionItemsFlatText on ComponentAccordionItemsFlatText {
   category
   content
   width
-  align
   moreLinkTitle
   moreLinkUrl
   moreLinkPage {

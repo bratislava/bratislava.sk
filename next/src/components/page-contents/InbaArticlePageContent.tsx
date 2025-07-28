@@ -49,7 +49,7 @@ const InbaArticlePageContent = ({ inbaArticle }: InbaArticlePageContentProps) =>
       />
       {perex ? (
         <SectionContainer className="pt-10 md:pt-18">
-          <NarrowText align="left" width="wide">
+          <NarrowText width="wide">
             {/* Perex comes as plain text from Strapi, so we manually add bold style and use Markdown to format it */}
             {/* TODO it may want to be styled and implemented more nicely */}
             <Markdown content={`**${perex}**`} />
@@ -57,7 +57,7 @@ const InbaArticlePageContent = ({ inbaArticle }: InbaArticlePageContentProps) =>
         </SectionContainer>
       ) : null}
       <SectionContainer className="pt-10 md:pt-18">
-        <NarrowText align="left" width="wide">
+        <NarrowText width="wide">
           <Markdown content={content} />
           {inbaRelease ? (
             <div className="pt-4">

@@ -339,7 +339,6 @@ input BooleanFilterInput {
 }
 
 type ComponentAccordionItemsFlatText {
-  align: ENUM_COMPONENTACCORDIONITEMSFLATTEXT_ALIGN
   category: String
   content: String
   fileList(filters: ComponentBlocksFileItemFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksFileItem]
@@ -351,7 +350,6 @@ type ComponentAccordionItemsFlatText {
 }
 
 input ComponentAccordionItemsFlatTextFiltersInput {
-  align: StringFilterInput
   and: [ComponentAccordionItemsFlatTextFiltersInput]
   category: StringFilterInput
   content: StringFilterInput
@@ -365,7 +363,6 @@ input ComponentAccordionItemsFlatTextFiltersInput {
 }
 
 input ComponentAccordionItemsFlatTextInput {
-  align: ENUM_COMPONENTACCORDIONITEMSFLATTEXT_ALIGN
   category: String
   content: String
   fileList: [ComponentBlocksFileItemInput]
@@ -1503,14 +1500,12 @@ input ComponentSectionsLinksInput {
 }
 
 type ComponentSectionsNarrowText {
-  align: ENUM_COMPONENTSECTIONSNARROWTEXT_ALIGN
   content: String
   id: ID!
   width: ENUM_COMPONENTSECTIONSNARROWTEXT_WIDTH
 }
 
 input ComponentSectionsNarrowTextFiltersInput {
-  align: StringFilterInput
   and: [ComponentSectionsNarrowTextFiltersInput]
   content: StringFilterInput
   not: ComponentSectionsNarrowTextFiltersInput
@@ -1519,7 +1514,6 @@ input ComponentSectionsNarrowTextFiltersInput {
 }
 
 input ComponentSectionsNarrowTextInput {
-  align: ENUM_COMPONENTSECTIONSNARROWTEXT_ALIGN
   content: String
   id: ID
   width: ENUM_COMPONENTSECTIONSNARROWTEXT_WIDTH
@@ -2022,12 +2016,6 @@ type DocumentRelationResponseCollection {
   nodes: [Document!]!
 }
 
-enum ENUM_COMPONENTACCORDIONITEMSFLATTEXT_ALIGN {
-  center
-  left
-  right
-}
-
 enum ENUM_COMPONENTACCORDIONITEMSFLATTEXT_WIDTH {
   default
   full
@@ -2149,12 +2137,6 @@ enum ENUM_COMPONENTSECTIONSDIVIDER_STYLE {
 enum ENUM_COMPONENTSECTIONSIFRAME_IFRAMEWIDTH {
   container
   full
-}
-
-enum ENUM_COMPONENTSECTIONSNARROWTEXT_ALIGN {
-  center
-  left
-  right
 }
 
 enum ENUM_COMPONENTSECTIONSNARROWTEXT_WIDTH {

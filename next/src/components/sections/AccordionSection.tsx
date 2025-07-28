@@ -63,7 +63,7 @@ const AccordionSection = ({ section }: AccordionSectionProps) => {
               return (
                 // eslint-disable-next-line react/no-array-index-key
                 <div className="flex flex-col gap-4" key={itemIndex}>
-                  <NarrowText align={item.align} width={item.width}>
+                  <NarrowText width={item.width}>
                     <Markdown content={item.content} variant="accordion" />
                   </NarrowText>
                   {item.fileList?.filter(isDefined).length ? (

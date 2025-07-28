@@ -20,7 +20,7 @@ const NarrowTextSection = ({ section }: NarrowTextSectionProps) => {
 
   return (
     <SectionContainer>
-      <NarrowText align={section.align ?? undefined} width={section.width ?? undefined}>
+      <NarrowText width={section.width ?? undefined}>
         <Markdown content={section.content} />
       </NarrowText>
     </SectionContainer>

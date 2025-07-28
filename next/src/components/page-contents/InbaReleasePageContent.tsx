@@ -66,7 +66,7 @@ const InbaReleasePageContent = ({ inbaRelease }: InbaReleasePageContentProps) =>
           </div>
           <div className="flex w-full flex-col gap-8">
             {perex ? (
-              <NarrowText align="left" width="full">
+              <NarrowText width="full">
                 <Typography variant="h3" as="h2" className="pb-4">
                   {t('InbaRelease.inThisRelease')}
                 </Typography>
