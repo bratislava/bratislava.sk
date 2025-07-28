@@ -8,13 +8,13 @@
     "content": {
       "type": "richtext"
     },
-    "align": {
-      "type": "enumeration",
-      "enum": ["left", "center", "right"]
-    },
     "width": {
       "type": "enumeration",
-      "enum": ["narrow", "default", "wide", "full"]
+      "default": "default",
+      "enum": [
+        "default",
+        "full"
+      ]
     }
   }
 }
