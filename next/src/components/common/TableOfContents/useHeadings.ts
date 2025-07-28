@@ -7,10 +7,6 @@ export type Heading = {
   ref: React.RefObject<Element>
 }
 
-// Assign this id to the common parent element of all headings which should be included in the table of contents (toc)
-// This hook looks for headings only in children elements of this wrapper
-export const TABLE_OF_CONTENTS_WRAPPER_ID = 'table-of-contents-wrapper'
-
 // Assign this attribute to elements, which should be queried for headings
 export const TABLE_OF_CONTENTS_HEADING_ATTRIBUTE = {
   'data-table-of-contents': true,
@@ -30,7 +26,7 @@ const useHeadings = ({ maxHeadingLevel = 6 }: { maxHeadingLevel?: 2 | 3 | 4 | 5 
 
   const updateHeadings = () => {
     const queryList = headingLevelsToQuery
-      .map((level) => `#${TABLE_OF_CONTENTS_WRAPPER_ID} :is(div[data-table-of-contents]) h${level}`)
+      .map((level) => `main :is(div[data-table-of-contents]) h${level}`)
       .join(', ')
 
     const headingsNodeList = document.querySelectorAll(queryList)

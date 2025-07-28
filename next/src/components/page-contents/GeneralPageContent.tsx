@@ -3,7 +3,6 @@ import { useMemo } from 'react'
 
 import AliasInfoMessage from '@/src/components/common/AliasInfoMessage/AliasInfoMessage'
 import PageHeader from '@/src/components/common/PageHeader/PageHeader'
-import { TABLE_OF_CONTENTS_WRAPPER_ID } from '@/src/components/common/TableOfContents/useHeadings'
 import PageHeaderSections from '@/src/components/layouts/PageHeaderSections'
 import SectionContainer from '@/src/components/layouts/SectionContainer'
 import Sections from '@/src/components/layouts/Sections'
@@ -42,7 +41,6 @@ const GeneralPageContent = ({ page }: GeneralPageProps) => {
 
       {/* Sections & Sidebar */}
       <div
-        id={TABLE_OF_CONTENTS_WRAPPER_ID}
         key={page.documentId} // Helps to re-render table of contents on page change
         className={cn('flex flex-wrap-reverse gap-5 py-8 lg:gap-8', {
           'mx-auto max-w-(--breakpoint-xl) px-4 lg:px-8': !!sidebar,
