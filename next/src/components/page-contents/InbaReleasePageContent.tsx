@@ -7,7 +7,6 @@ import HorizontalDivider from '@/src/components/common/Divider/HorizontalDivider
 import FileList from '@/src/components/common/FileList/FileList'
 import ImagePlaceholder from '@/src/components/common/Image/ImagePlaceholder'
 import StrapiImage from '@/src/components/common/Image/StrapiImage'
-import NarrowText from '@/src/components/common/NarrowText/NarrowText'
 import PageHeader from '@/src/components/common/PageHeader/PageHeader'
 import Markdown from '@/src/components/formatting/Markdown/Markdown'
 import SectionContainer from '@/src/components/layouts/SectionContainer'
@@ -66,13 +65,13 @@ const InbaReleasePageContent = ({ inbaRelease }: InbaReleasePageContentProps) =>
           </div>
           <div className="flex w-full flex-col gap-8">
             {perex ? (
-              <NarrowText align="left" width="full">
-                <Typography variant="h3" as="h2" className="pb-4">
+              <div className="flex flex-col gap-4">
+                <Typography variant="h3" as="h2">
                   {t('InbaRelease.inThisRelease')}
                 </Typography>
                 {/* Perex comes as plain text from Strapi, but we format it using Markdown component */}
                 <Markdown content={perex} />
-              </NarrowText>
+              </div>
             ) : null}
 
             <div className="flex flex-col">

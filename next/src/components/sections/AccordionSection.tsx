@@ -2,7 +2,6 @@ import Accordion from '@/src/components/common/Accordion/Accordion'
 import Button from '@/src/components/common/Button/Button'
 import FileList from '@/src/components/common/FileList/FileList'
 import Institution from '@/src/components/common/Institution_Deprecated/Institution_Deprecated'
-import NarrowText from '@/src/components/common/NarrowText/NarrowText'
 import Markdown from '@/src/components/formatting/Markdown/Markdown'
 import SectionContainer from '@/src/components/layouts/SectionContainer'
 import SectionHeader from '@/src/components/layouts/SectionHeader'
@@ -63,9 +62,7 @@ const AccordionSection = ({ section }: AccordionSectionProps) => {
               return (
                 // eslint-disable-next-line react/no-array-index-key
                 <div className="flex flex-col gap-4" key={itemIndex}>
-                  <NarrowText align={item.align} width={item.width}>
-                    <Markdown content={item.content} variant="accordion" />
-                  </NarrowText>
+                  <Markdown content={item.content} variant="accordion" />
                   {item.fileList?.filter(isDefined).length ? (
                     <FileList files={item.fileList.filter(isDefined) ?? []} />
                   ) : null}

@@ -64,7 +64,7 @@ export async function listArticles() {
 }
 
 export async function listPages() {
-  const { pages } = await client.Dev_AllPages({ locale: 'all', limit: -1 })
+  const { pages } = await client.Dev_AllPages({ locale: 'sk', limit: -1 })
 
   const filteredPages = pages
     .filter(isDefined)
@@ -77,16 +77,12 @@ export async function listPages() {
     // .filter((page) => !page.slug?.includes('/'))
     .filter((page) => {
       const sections =
-        page.sections?.filter(
-          (section) => section?.__typename === 'ComponentSectionsColumnedText',
-        ) ?? []
+        page.sections?.filter((section) => section?.__typename === 'ComponentSectionsNarrowText') ??
+        []
 
       return sections.some(
-        (section) =>
-          section?.__typename === 'ComponentSectionsColumnedText' &&
-          section.content &&
-          // eslint-disable-next-line xss/no-mixed-html
-          section.content.split('<break>').length > 2,
+        (section) => section?.__typename === 'ComponentSectionsNarrowText' && !section.width,
+        // section.width === 'wide',
       )
     })
 

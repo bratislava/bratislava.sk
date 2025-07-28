@@ -37,7 +37,7 @@
       "content": {
         "edit": {
           "label": "Text",
-          "description": "Stĺpce oddeľujeme slovom <break>.",
+          "description": "Stĺpce oddeľujeme slovom <break>. Text je možné rozdeliť na maximálne 2 stĺpce. V stĺpcoch prosím nepoužívajte obrázky.",
           "placeholder": "",
           "visible": true,
           "editable": true
@@ -58,11 +58,6 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "title",
-        "documentId"
-      ],
       "edit": [
         [
           {
@@ -76,6 +71,11 @@
             "size": 12
           }
         ]
+      ],
+      "list": [
+        "id",
+        "title",
+        "documentId"
       ]
     },
     "isComponent": true

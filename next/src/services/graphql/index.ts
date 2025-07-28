@@ -528,7 +528,6 @@ export type BooleanFilterInput = {
 
 export type ComponentAccordionItemsFlatText = {
   __typename?: 'ComponentAccordionItemsFlatText'
-  align?: Maybe<Enum_Componentaccordionitemsflattext_Align>
   category?: Maybe<Scalars['String']['output']>
   content?: Maybe<Scalars['String']['output']>
   fileList?: Maybe<Array<Maybe<ComponentBlocksFileItem>>>
@@ -536,7 +535,6 @@ export type ComponentAccordionItemsFlatText = {
   moreLinkPage?: Maybe<Page>
   moreLinkTitle?: Maybe<Scalars['String']['output']>
   moreLinkUrl?: Maybe<Scalars['String']['output']>
-  width?: Maybe<Enum_Componentaccordionitemsflattext_Width>
 }
 
 export type ComponentAccordionItemsFlatTextFileListArgs = {
@@ -546,7 +544,6 @@ export type ComponentAccordionItemsFlatTextFileListArgs = {
 }
 
 export type ComponentAccordionItemsFlatTextFiltersInput = {
-  align?: InputMaybe<StringFilterInput>
   and?: InputMaybe<Array<InputMaybe<ComponentAccordionItemsFlatTextFiltersInput>>>
   category?: InputMaybe<StringFilterInput>
   content?: InputMaybe<StringFilterInput>
@@ -556,11 +553,9 @@ export type ComponentAccordionItemsFlatTextFiltersInput = {
   moreLinkUrl?: InputMaybe<StringFilterInput>
   not?: InputMaybe<ComponentAccordionItemsFlatTextFiltersInput>
   or?: InputMaybe<Array<InputMaybe<ComponentAccordionItemsFlatTextFiltersInput>>>
-  width?: InputMaybe<StringFilterInput>
 }
 
 export type ComponentAccordionItemsFlatTextInput = {
-  align?: InputMaybe<Enum_Componentaccordionitemsflattext_Align>
   category?: InputMaybe<Scalars['String']['input']>
   content?: InputMaybe<Scalars['String']['input']>
   fileList?: InputMaybe<Array<InputMaybe<ComponentBlocksFileItemInput>>>
@@ -568,7 +563,6 @@ export type ComponentAccordionItemsFlatTextInput = {
   moreLinkPage?: InputMaybe<Scalars['ID']['input']>
   moreLinkTitle?: InputMaybe<Scalars['String']['input']>
   moreLinkUrl?: InputMaybe<Scalars['String']['input']>
-  width?: InputMaybe<Enum_Componentaccordionitemsflattext_Width>
 }
 
 export type ComponentAccordionItemsInstitution = {
@@ -1913,14 +1907,12 @@ export type ComponentSectionsLinksInput = {
 
 export type ComponentSectionsNarrowText = {
   __typename?: 'ComponentSectionsNarrowText'
-  align?: Maybe<Enum_Componentsectionsnarrowtext_Align>
   content?: Maybe<Scalars['String']['output']>
   id: Scalars['ID']['output']
   width?: Maybe<Enum_Componentsectionsnarrowtext_Width>
 }
 
 export type ComponentSectionsNarrowTextFiltersInput = {
-  align?: InputMaybe<StringFilterInput>
   and?: InputMaybe<Array<InputMaybe<ComponentSectionsNarrowTextFiltersInput>>>
   content?: InputMaybe<StringFilterInput>
   not?: InputMaybe<ComponentSectionsNarrowTextFiltersInput>
@@ -1929,7 +1921,6 @@ export type ComponentSectionsNarrowTextFiltersInput = {
 }
 
 export type ComponentSectionsNarrowTextInput = {
-  align?: InputMaybe<Enum_Componentsectionsnarrowtext_Align>
   content?: InputMaybe<Scalars['String']['input']>
   id?: InputMaybe<Scalars['ID']['input']>
   width?: InputMaybe<Enum_Componentsectionsnarrowtext_Width>
@@ -2538,19 +2529,6 @@ export type DocumentRelationResponseCollection = {
   nodes: Array<Document>
 }
 
-export enum Enum_Componentaccordionitemsflattext_Align {
-  Center = 'center',
-  Left = 'left',
-  Right = 'right',
-}
-
-export enum Enum_Componentaccordionitemsflattext_Width {
-  Default = 'default',
-  Full = 'full',
-  Narrow = 'narrow',
-  Wide = 'wide',
-}
-
 export enum Enum_Componentblockstopservicesitem_Icon {
   BratislavskeKonto = 'bratislavske_konto',
   DaneAPoplatky = 'dane_a_poplatky',
@@ -2667,17 +2645,9 @@ export enum Enum_Componentsectionsiframe_Iframewidth {
   Full = 'full',
 }
 
-export enum Enum_Componentsectionsnarrowtext_Align {
-  Center = 'center',
-  Left = 'left',
-  Right = 'right',
-}
-
 export enum Enum_Componentsectionsnarrowtext_Width {
   Default = 'default',
   Full = 'full',
-  Narrow = 'narrow',
-  Wide = 'wide',
 }
 
 export enum Enum_Componentsectionsnumericallist_Variant {
@@ -8314,8 +8284,6 @@ export type PageEntityFragment = {
           __typename?: 'ComponentAccordionItemsFlatText'
           category?: string | null
           content?: string | null
-          width?: Enum_Componentaccordionitemsflattext_Width | null
-          align?: Enum_Componentaccordionitemsflattext_Align | null
           moreLinkTitle?: string | null
           moreLinkUrl?: string | null
           moreLinkPage?: {
@@ -8648,7 +8616,6 @@ export type PageEntityFragment = {
         __typename: 'ComponentSectionsNarrowText'
         content?: string | null
         width?: Enum_Componentsectionsnarrowtext_Width | null
-        align?: Enum_Componentsectionsnarrowtext_Align | null
       }
     | {
         __typename: 'ComponentSectionsNumericalList'
@@ -9034,8 +9001,6 @@ export type PageBySlugQuery = {
             __typename?: 'ComponentAccordionItemsFlatText'
             category?: string | null
             content?: string | null
-            width?: Enum_Componentaccordionitemsflattext_Width | null
-            align?: Enum_Componentaccordionitemsflattext_Align | null
             moreLinkTitle?: string | null
             moreLinkUrl?: string | null
             moreLinkPage?: {
@@ -9371,7 +9336,6 @@ export type PageBySlugQuery = {
           __typename: 'ComponentSectionsNarrowText'
           content?: string | null
           width?: Enum_Componentsectionsnarrowtext_Width | null
-          align?: Enum_Componentsectionsnarrowtext_Align | null
         }
       | {
           __typename: 'ComponentSectionsNumericalList'
@@ -9783,8 +9747,6 @@ export type Dev_AllPagesQuery = {
             __typename?: 'ComponentAccordionItemsFlatText'
             category?: string | null
             content?: string | null
-            width?: Enum_Componentaccordionitemsflattext_Width | null
-            align?: Enum_Componentaccordionitemsflattext_Align | null
             moreLinkTitle?: string | null
             moreLinkUrl?: string | null
             moreLinkPage?: {
@@ -10120,7 +10082,6 @@ export type Dev_AllPagesQuery = {
           __typename: 'ComponentSectionsNarrowText'
           content?: string | null
           width?: Enum_Componentsectionsnarrowtext_Width | null
-          align?: Enum_Componentsectionsnarrowtext_Align | null
         }
       | {
           __typename: 'ComponentSectionsNumericalList'
@@ -11226,7 +11187,6 @@ export type NarrowTextSectionFragment = {
   __typename?: 'ComponentSectionsNarrowText'
   content?: string | null
   width?: Enum_Componentsectionsnarrowtext_Width | null
-  align?: Enum_Componentsectionsnarrowtext_Align | null
 }
 
 export type LinksSectionFragment = {
@@ -11260,8 +11220,6 @@ export type ComponentAccordionItemsFlatTextFragment = {
   __typename?: 'ComponentAccordionItemsFlatText'
   category?: string | null
   content?: string | null
-  width?: Enum_Componentaccordionitemsflattext_Width | null
-  align?: Enum_Componentaccordionitemsflattext_Align | null
   moreLinkTitle?: string | null
   moreLinkUrl?: string | null
   moreLinkPage?: {
@@ -11318,8 +11276,6 @@ export type AccordionSectionFragment = {
     __typename?: 'ComponentAccordionItemsFlatText'
     category?: string | null
     content?: string | null
-    width?: Enum_Componentaccordionitemsflattext_Width | null
-    align?: Enum_Componentaccordionitemsflattext_Align | null
     moreLinkTitle?: string | null
     moreLinkUrl?: string | null
     moreLinkPage?: {
@@ -11811,8 +11767,6 @@ type Sections_ComponentSectionsAccordion_Fragment = {
     __typename?: 'ComponentAccordionItemsFlatText'
     category?: string | null
     content?: string | null
-    width?: Enum_Componentaccordionitemsflattext_Width | null
-    align?: Enum_Componentaccordionitemsflattext_Align | null
     moreLinkTitle?: string | null
     moreLinkUrl?: string | null
     moreLinkPage?: {
@@ -12170,7 +12124,6 @@ type Sections_ComponentSectionsNarrowText_Fragment = {
   __typename: 'ComponentSectionsNarrowText'
   content?: string | null
   width?: Enum_Componentsectionsnarrowtext_Width | null
-  align?: Enum_Componentsectionsnarrowtext_Align | null
 }
 
 type Sections_ComponentSectionsNumericalList_Fragment = {
@@ -13136,7 +13089,6 @@ export const NarrowTextSectionFragmentDoc = gql`
   fragment NarrowTextSection on ComponentSectionsNarrowText {
     content
     width
-    align
   }
 `
 export const PageLinkFragmentDoc = gql`
@@ -13185,8 +13137,6 @@ export const ComponentAccordionItemsFlatTextFragmentDoc = gql`
   fragment ComponentAccordionItemsFlatText on ComponentAccordionItemsFlatText {
     category
     content
-    width
-    align
     moreLinkTitle
     moreLinkUrl
     moreLinkPage {

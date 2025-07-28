@@ -13,14 +13,6 @@
     "content": {
       "type": "richtext"
     },
-    "width": {
-      "type": "enumeration",
-      "enum": ["narrow", "default", "wide", "full"]
-    },
-    "align": {
-      "type": "enumeration",
-      "enum": ["left", "center", "right"]
-    },
     "moreLinkTitle": {
       "type": "string"
     },
@@ -34,8 +26,8 @@
     },
     "fileList": {
       "type": "component",
-      "repeatable": true,
-      "component": "blocks.file-item"
+      "component": "blocks.file-item",
+      "repeatable": true
     }
   }
 }
