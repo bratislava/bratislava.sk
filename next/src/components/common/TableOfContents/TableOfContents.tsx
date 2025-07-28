@@ -7,7 +7,6 @@ import useHeadings from '@/src/components/common/TableOfContents/useHeadings'
 import cn from '@/src/utils/cn'
 
 type Props = {
-  maxHeadingLevel?: 2 | 3 | 4 | 5 | 6
   scrollOffset?: number
   className?: string
 }
@@ -21,13 +20,9 @@ const DEFAULT_SCROLL_OFFSET = 90
  * Based on OLO: https://github.com/bratislava/olo.sk/tree/master/next/src/components/common/TableOfContents
  */
 
-const TableOfContents = ({
-  maxHeadingLevel = 2,
-  scrollOffset = DEFAULT_SCROLL_OFFSET,
-  className,
-}: Props) => {
+const TableOfContents = ({ scrollOffset = DEFAULT_SCROLL_OFFSET, className }: Props) => {
   const { t } = useTranslation()
-  const headings = useHeadings({ maxHeadingLevel })
+  const headings = useHeadings()
 
   const handleItemPress = (id: string) => {
     const element = document.querySelector(`#${id}`)
@@ -61,25 +56,12 @@ const TableOfContents = ({
       <ul className="flex flex-col py-4">
         {headings?.length
           ? headings.map((heading) => {
-              return heading.level === 2 ? (
+              return (
                 <li key={heading.id} className="py-2 lg:py-3">
                   <Button
                     variant="link"
                     onPress={() => handleItemPress(heading.id)}
                     className="no-underline hover:underline"
-                  >
-                    {heading.text}
-                  </Button>
-                </li>
-              ) : (
-                <li
-                  key={heading.id}
-                  className="ml-4 border-l border-border-passive-primary px-4 py-2 pl-4"
-                >
-                  <Button
-                    variant="link"
-                    onPress={() => handleItemPress(heading.id)}
-                    className="text-left no-underline hover:underline"
                   >
                     {heading.text}
                   </Button>
