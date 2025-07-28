@@ -1,4 +1,5 @@
 import { Typography } from '@bratislava/component-library'
+import slugify from '@sindresorhus/slugify'
 
 import Button from '@/src/components/common/Button/Button'
 import { TABLE_OF_CONTENTS_HEADING_ATTRIBUTE } from '@/src/components/common/TableOfContents/useHeadings'
@@ -57,7 +58,7 @@ const SectionHeader = ({
           )}
         >
           {title ? (
-            <Typography variant="h2" {...(titleId && { id: titleId })}>
+            <Typography variant="h2" id={titleId ?? slugify(title)}>
               {title}
             </Typography>
           ) : null}

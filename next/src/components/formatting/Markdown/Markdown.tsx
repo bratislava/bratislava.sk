@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars,jsx-a11y/heading-has-content */
 import { Typography } from '@bratislava/component-library'
+import slugify from '@sindresorhus/slugify'
 import ReactMarkdown, { defaultUrlTransform } from 'react-markdown'
 import rehypeRaw from 'rehype-raw'
 import remarkGfm from 'remark-gfm'
@@ -67,6 +68,7 @@ const Markdown = ({ content, variant = 'default', className }: MarkdownProps) =>
             <Typography
               as="h2"
               variant={variant === 'accordion' ? 'h4' : 'h2'}
+              id={children ? slugify(children?.toString()) : undefined}
               {...props}
               data-cy="heading-two"
             >
@@ -74,22 +76,40 @@ const Markdown = ({ content, variant = 'default', className }: MarkdownProps) =>
             </Typography>
           ),
           h3: ({ children, node, ...props }) => (
-            <Typography as="h3" variant={variant === 'accordion' ? 'h5' : 'h3'} {...props}>
+            <Typography
+              as="h3"
+              variant={variant === 'accordion' ? 'h5' : 'h3'}
+              id={children ? slugify(children?.toString()) : undefined}
+              {...props}
+            >
               {children}
             </Typography>
           ),
           h4: ({ children, node, ...props }) => (
-            <Typography as="h4" variant={variant === 'accordion' ? 'h6' : 'h4'} {...props}>
+            <Typography
+              as="h4"
+              variant={variant === 'accordion' ? 'h6' : 'h4'}
+              id={children ? slugify(children?.toString()) : undefined}
+              {...props}
+            >
               {children}
             </Typography>
           ),
           h5: ({ children, node, ...props }) => (
-            <Typography variant="h5" {...props}>
+            <Typography
+              variant="h5"
+              id={children ? slugify(children?.toString()) : undefined}
+              {...props}
+            >
               {children}
             </Typography>
           ),
           h6: ({ children, node, ...props }) => (
-            <Typography variant="h6" {...props}>
+            <Typography
+              variant="h6"
+              id={children ? slugify(children?.toString()) : undefined}
+              {...props}
+            >
               {children}
             </Typography>
           ),
