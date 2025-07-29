@@ -46,7 +46,7 @@ const NotFoundPage = ({ general }: PageProps) => {
 
       <PageLayout>
         <SectionContainer>
-          <div className="flex flex-col items-center gap-8 py-8 max-md:pt-0 md:flex-row-reverse md:justify-center md:py-14">
+          <div className="flex flex-col items-center gap-8 py-14 max-md:gap-0 max-md:pt-0 md:flex-row-reverse md:justify-center">
             <img data-cy="404-image" src="/404_350px.png" alt="" />
             <div data-cy="404-left-side" className="flex flex-col gap-10">
               <div className="flex flex-col gap-4 text-center md:text-left">
