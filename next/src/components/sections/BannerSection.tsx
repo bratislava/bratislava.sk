@@ -14,6 +14,7 @@ const BannerSection = ({ section }: BannerSectionProps) => {
         content={section.content}
         contentPosition={section.contentPosition}
         variant={section.bannerVariant}
+        size={section.size}
         imagePath={section.media.url}
         primaryLink={section.primaryLink}
         secondaryLink={section.secondaryLink}
