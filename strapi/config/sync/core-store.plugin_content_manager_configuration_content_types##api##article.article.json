@@ -138,8 +138,7 @@
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true,
-          "mainField": "title"
+          "editable": true
         },
         "list": {
           "label": "files",
@@ -259,6 +258,14 @@
       }
     },
     "layouts": {
+      "list": [
+        "id",
+        "coverMedia",
+        "title",
+        "slug",
+        "updatedAt",
+        "addedAt"
+      ],
       "edit": [
         [
           {
@@ -328,8 +335,7 @@
             "size": 12
           }
         ]
-      ],
-      "list": ["id", "coverMedia", "title", "slug", "updatedAt", "addedAt"]
+      ]
     },
     "uid": "api::article.article"
   },

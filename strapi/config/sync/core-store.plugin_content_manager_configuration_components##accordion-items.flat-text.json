@@ -48,34 +48,6 @@
           "sortable": false
         }
       },
-      "width": {
-        "edit": {
-          "label": "width",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "width",
-          "searchable": true,
-          "sortable": true
-        }
-      },
-      "align": {
-        "edit": {
-          "label": "align",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "align",
-          "searchable": true,
-          "sortable": true
-        }
-      },
       "moreLinkTitle": {
         "edit": {
           "label": "moreLinkTitle",
@@ -145,9 +117,7 @@
     "layouts": {
       "list": [
         "id",
-        "category",
-        "width",
-        "align"
+        "category"
       ],
       "edit": [
         [
@@ -160,16 +130,6 @@
           {
             "name": "content",
             "size": 12
-          }
-        ],
-        [
-          {
-            "name": "width",
-            "size": 6
-          },
-          {
-            "name": "align",
-            "size": 6
           }
         ],
         [
