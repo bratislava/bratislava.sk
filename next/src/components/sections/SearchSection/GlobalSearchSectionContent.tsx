@@ -13,6 +13,7 @@ import { SearchFilters } from '@/src/components/sections/SearchSection/useQueryB
 import { officialBoardListDefaultFilters } from '@/src/services/ginis/fetchers/officialBoardListFetcher'
 import { OfficialBoardPublicationState } from '@/src/services/ginis/types'
 import { getCategoryColorLocalStyle } from '@/src/utils/colors'
+import { useLogSearchQueryToPlausible } from '@/src/utils/useLogSearchQueryToPlausible'
 import { useTranslation } from '@/src/utils/useTranslation'
 import { isProductionDeployment } from '@/src/utils/utils'
 
@@ -65,6 +66,11 @@ const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
   useEffect(() => {
     setSearchValue(debouncedInput)
   }, [debouncedInput])
+
+  useLogSearchQueryToPlausible({
+    query: searchValue,
+    source: variant === 'general' ? 'global search' : searchOption,
+  })
 
   let defaultSearchOption: SearchOption = {
     id: 'allResults',

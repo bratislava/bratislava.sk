@@ -12,6 +12,7 @@ import {
 } from '@/src/services/meili/fetchers/homepageSearchFetcher'
 import cn from '@/src/utils/cn'
 import { useLocale } from '@/src/utils/useLocale'
+import { useLogSearchQueryToPlausible } from '@/src/utils/useLogSearchQueryToPlausible'
 import { useTranslation } from '@/src/utils/useTranslation'
 
 type HomePageSearchProps = {
@@ -37,6 +38,8 @@ const HomePageSearch = ({ isOpen, setOpen }: HomePageSearchProps) => {
   useEffect(() => {
     setSearchValue(debouncedInput)
   }, [debouncedInput])
+
+  useLogSearchQueryToPlausible({ query: searchValue, source: 'homepage' })
 
   const filters = { search: searchValue }
 
