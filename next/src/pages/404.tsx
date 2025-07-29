@@ -1,53 +1,72 @@
 import { Typography } from '@bratislava/component-library'
 import { GetStaticProps } from 'next'
 import Head from 'next/head'
+import { useRouter } from 'next/router'
+import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 import Button from '@/src/components/common/Button/Button'
+import PageLayout from '@/src/components/layouts/PageLayout'
+import SectionContainer from '@/src/components/layouts/SectionContainer'
+import { GeneralContextProvider } from '@/src/components/providers/GeneralContextProvider'
+import { GeneralQuery } from '@/src/services/graphql'
+import { client } from '@/src/services/graphql/gql'
 import { useTitle } from '@/src/utils/useTitle'
-import { useTranslation } from '@/src/utils/useTranslation'
+
+type PageProps = {
+  general: GeneralQuery
+}
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
-  const [translations] = await Promise.all([serverSideTranslations(locale ?? 'sk')])
+  const [general, translations] = await Promise.all([
+    client.General({ locale }),
+    serverSideTranslations(locale ?? 'sk'),
+  ])
 
   return {
     props: {
+      general,
       ...translations,
     },
     revalidate: 10,
   }
 }
 
-const NotFoundPage = () => {
+const NotFoundPage = ({ general }: PageProps) => {
   const { t } = useTranslation()
 
-  const title = useTitle('404')
+  const router = useRouter()
+  const title = useTitle(t('NotFound.pageTitle'))
 
   return (
-    <>
+    <GeneralContextProvider general={general}>
       <Head>
         <title>{title}</title>
       </Head>
-      <div className="flex h-screen w-screen px-7 py-10 md:pr-32 md:pl-36 xl:pr-66 xl:pl-80">
-        <div className="flex w-full flex-col items-center md:flex-row-reverse md:justify-between">
-          <img data-cy="404-image" src="/404_350px.png" alt="" />
-          <div data-cy="404-left-side" className="flex flex-col items-center gap-10 lg:items-start">
-            <div className="flex flex-col gap-4 text-center lg:text-left">
-              <Typography variant="h1" className="text-[3rem] font-extrabold lg:text-[4rem]">
-                404
-              </Typography>
-              <Typography variant="p-large" className="max-w-xs">
-                {t('NotFound.sorryNoResultsFound')}
-              </Typography>
-            </div>
 
-            <Button variant="outline" href="/">
-              {t('NotFound.toTheMainPage')}
-            </Button>
+      <PageLayout>
+        <SectionContainer>
+          <div className="flex flex-col items-center gap-8 py-14 max-md:gap-0 max-md:pt-0 md:flex-row-reverse md:justify-center">
+            <img data-cy="404-image" src="/404_350px.png" alt="" />
+            <div data-cy="404-left-side" className="flex flex-col gap-10">
+              <div className="flex flex-col gap-4 text-center md:text-left">
+                <Typography variant="h1">{t('NotFound.messageTitle')}</Typography>
+                <Typography variant="p-large">{t('NotFound.sorryNoResultsFound')}</Typography>
+              </div>
+
+              <div className="flex flex-wrap gap-3 md:gap-4">
+                <Button variant="solid" hasLinkIcon={false} fullWidthMobile href="/">
+                  {t('NotFound.toTheMainPage')}
+                </Button>
+                <Button variant="outline" fullWidthMobile onPress={() => router.back()}>
+                  {t('NotFound.toThePreviousPage')}
+                </Button>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-    </>
+        </SectionContainer>
+      </PageLayout>
+    </GeneralContextProvider>
   )
 }
 
