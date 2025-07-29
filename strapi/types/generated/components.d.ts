@@ -445,7 +445,6 @@ export interface SectionsBanner extends Struct.ComponentSchema {
     media: Schema.Attribute.Media<'images'> & Schema.Attribute.Required
     primaryLink: Schema.Attribute.Component<'blocks.common-link', false>
     secondaryLink: Schema.Attribute.Component<'blocks.common-link', false>
-    size: Schema.Attribute.Enumeration<['default', 'small']> & Schema.Attribute.DefaultTo<'default'>
     tertiaryLink: Schema.Attribute.Component<'blocks.common-link', false>
     title: Schema.Attribute.String & Schema.Attribute.Required
     variant: Schema.Attribute.Enumeration<['color', 'dark', 'white_condensed']> &

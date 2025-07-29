@@ -132,20 +132,6 @@
           "sortable": false
         }
       },
-      "size": {
-        "edit": {
-          "label": "Veľkosť",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "size",
-          "searchable": true,
-          "sortable": true
-        }
-      },
       "documentId": {
         "edit": {},
         "list": {
@@ -182,15 +168,11 @@
         [
           {
             "name": "contentPosition",
-            "size": 4
+            "size": 6
           },
           {
             "name": "variant",
-            "size": 4
-          },
-          {
-            "name": "size",
-            "size": 4
+            "size": 6
           }
         ],
         [

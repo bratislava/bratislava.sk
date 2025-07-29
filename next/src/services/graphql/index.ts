@@ -1266,7 +1266,6 @@ export type ComponentSectionsBanner = {
   media: UploadFile
   primaryLink?: Maybe<ComponentBlocksCommonLink>
   secondaryLink?: Maybe<ComponentBlocksCommonLink>
-  size?: Maybe<Enum_Componentsectionsbanner_Size>
   tertiaryLink?: Maybe<ComponentBlocksCommonLink>
   title: Scalars['String']['output']
   variant: Enum_Componentsectionsbanner_Variant
@@ -1280,7 +1279,6 @@ export type ComponentSectionsBannerFiltersInput = {
   or?: InputMaybe<Array<InputMaybe<ComponentSectionsBannerFiltersInput>>>
   primaryLink?: InputMaybe<ComponentBlocksCommonLinkFiltersInput>
   secondaryLink?: InputMaybe<ComponentBlocksCommonLinkFiltersInput>
-  size?: InputMaybe<StringFilterInput>
   tertiaryLink?: InputMaybe<ComponentBlocksCommonLinkFiltersInput>
   title?: InputMaybe<StringFilterInput>
   variant?: InputMaybe<StringFilterInput>
@@ -1293,7 +1291,6 @@ export type ComponentSectionsBannerInput = {
   media?: InputMaybe<Scalars['ID']['input']>
   primaryLink?: InputMaybe<ComponentBlocksCommonLinkInput>
   secondaryLink?: InputMaybe<ComponentBlocksCommonLinkInput>
-  size?: InputMaybe<Enum_Componentsectionsbanner_Size>
   tertiaryLink?: InputMaybe<ComponentBlocksCommonLinkInput>
   title?: InputMaybe<Scalars['String']['input']>
   variant?: InputMaybe<Enum_Componentsectionsbanner_Variant>
@@ -2603,11 +2600,6 @@ export enum Enum_Componentmenumenusection_Icon {
 export enum Enum_Componentsectionsbanner_Contentposition {
   Left = 'left',
   Right = 'right',
-}
-
-export enum Enum_Componentsectionsbanner_Size {
-  Default = 'default',
-  Small = 'small',
 }
 
 export enum Enum_Componentsectionsbanner_Variant {
@@ -8348,7 +8340,6 @@ export type PageEntityFragment = {
         __typename: 'ComponentSectionsBanner'
         content?: string | null
         contentPosition: Enum_Componentsectionsbanner_Contentposition
-        size?: Enum_Componentsectionsbanner_Size | null
         bannerTitle: string
         bannerVariant: Enum_Componentsectionsbanner_Variant
         media: { __typename?: 'UploadFile'; url: string }
@@ -9067,7 +9058,6 @@ export type PageBySlugQuery = {
           __typename: 'ComponentSectionsBanner'
           content?: string | null
           contentPosition: Enum_Componentsectionsbanner_Contentposition
-          size?: Enum_Componentsectionsbanner_Size | null
           bannerTitle: string
           bannerVariant: Enum_Componentsectionsbanner_Variant
           media: { __typename?: 'UploadFile'; url: string }
@@ -9815,7 +9805,6 @@ export type Dev_AllPagesQuery = {
           __typename: 'ComponentSectionsBanner'
           content?: string | null
           contentPosition: Enum_Componentsectionsbanner_Contentposition
-          size?: Enum_Componentsectionsbanner_Size | null
           bannerTitle: string
           bannerVariant: Enum_Componentsectionsbanner_Variant
           media: { __typename?: 'UploadFile'; url: string }
@@ -11429,7 +11418,6 @@ export type BannerSectionFragment = {
   __typename?: 'ComponentSectionsBanner'
   content?: string | null
   contentPosition: Enum_Componentsectionsbanner_Contentposition
-  size?: Enum_Componentsectionsbanner_Size | null
   bannerTitle: string
   bannerVariant: Enum_Componentsectionsbanner_Variant
   media: { __typename?: 'UploadFile'; url: string }
@@ -11839,7 +11827,6 @@ type Sections_ComponentSectionsBanner_Fragment = {
   __typename: 'ComponentSectionsBanner'
   content?: string | null
   contentPosition: Enum_Componentsectionsbanner_Contentposition
-  size?: Enum_Componentsectionsbanner_Size | null
   bannerTitle: string
   bannerVariant: Enum_Componentsectionsbanner_Variant
   media: { __typename?: 'UploadFile'; url: string }
@@ -13318,7 +13305,6 @@ export const BannerSectionFragmentDoc = gql`
     content
     contentPosition
     bannerVariant: variant
-    size
     media {
       url
     }

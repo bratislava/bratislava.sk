@@ -990,7 +990,6 @@ type ComponentSectionsBanner {
   media: UploadFile!
   primaryLink: ComponentBlocksCommonLink
   secondaryLink: ComponentBlocksCommonLink
-  size: ENUM_COMPONENTSECTIONSBANNER_SIZE
   tertiaryLink: ComponentBlocksCommonLink
   title: String!
   variant: ENUM_COMPONENTSECTIONSBANNER_VARIANT!
@@ -1004,7 +1003,6 @@ input ComponentSectionsBannerFiltersInput {
   or: [ComponentSectionsBannerFiltersInput]
   primaryLink: ComponentBlocksCommonLinkFiltersInput
   secondaryLink: ComponentBlocksCommonLinkFiltersInput
-  size: StringFilterInput
   tertiaryLink: ComponentBlocksCommonLinkFiltersInput
   title: StringFilterInput
   variant: StringFilterInput
@@ -1017,7 +1015,6 @@ input ComponentSectionsBannerInput {
   media: ID
   primaryLink: ComponentBlocksCommonLinkInput
   secondaryLink: ComponentBlocksCommonLinkInput
-  size: ENUM_COMPONENTSECTIONSBANNER_SIZE
   tertiaryLink: ComponentBlocksCommonLinkInput
   title: String
   variant: ENUM_COMPONENTSECTIONSBANNER_VARIANT
@@ -2087,11 +2084,6 @@ enum ENUM_COMPONENTMENUMENUSECTION_ICON {
 enum ENUM_COMPONENTSECTIONSBANNER_CONTENTPOSITION {
   left
   right
-}
-
-enum ENUM_COMPONENTSECTIONSBANNER_SIZE {
-  default
-  small
 }
 
 enum ENUM_COMPONENTSECTIONSBANNER_VARIANT {

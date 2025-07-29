@@ -258,7 +258,6 @@ fragment BannerSection on ComponentSectionsBanner {
   content
   contentPosition
   bannerVariant: variant
-  size
   media {
     url
   }

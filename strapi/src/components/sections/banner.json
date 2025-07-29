@@ -40,14 +40,6 @@
         "white_condensed"
       ]
     },
-    "size": {
-      "type": "enumeration",
-      "default": "default",
-      "enum": [
-        "default",
-        "small"
-      ]
-    },
     "primaryLink": {
       "type": "component",
       "component": "blocks.common-link",
