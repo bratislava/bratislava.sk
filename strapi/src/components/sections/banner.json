@@ -13,25 +13,6 @@
     "content": {
       "type": "text"
     },
-    "contentPosition": {
-      "type": "enumeration",
-      "enum": [
-        "left",
-        "right"
-      ],
-      "required": true,
-      "default": "left"
-    },
-    "variant": {
-      "type": "enumeration",
-      "enum": [
-        "color",
-        "dark",
-        "white_condensed"
-      ],
-      "required": true,
-      "default": "color"
-    },
     "media": {
       "type": "media",
       "multiple": false,
@@ -40,20 +21,47 @@
         "images"
       ]
     },
+    "contentPosition": {
+      "type": "enumeration",
+      "required": true,
+      "default": "left",
+      "enum": [
+        "left",
+        "right"
+      ]
+    },
+    "variant": {
+      "type": "enumeration",
+      "required": true,
+      "default": "color",
+      "enum": [
+        "color",
+        "dark",
+        "white_condensed"
+      ]
+    },
+    "size": {
+      "type": "enumeration",
+      "default": "default",
+      "enum": [
+        "default",
+        "small"
+      ]
+    },
     "primaryLink": {
       "type": "component",
-      "repeatable": false,
-      "component": "blocks.common-link"
+      "component": "blocks.common-link",
+      "repeatable": false
     },
     "secondaryLink": {
       "type": "component",
-      "repeatable": false,
-      "component": "blocks.common-link"
+      "component": "blocks.common-link",
+      "repeatable": false
     },
     "tertiaryLink": {
       "type": "component",
-      "repeatable": false,
-      "component": "blocks.common-link"
+      "component": "blocks.common-link",
+      "repeatable": false
     }
   }
 }
