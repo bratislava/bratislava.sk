@@ -114,6 +114,8 @@
   --breakpoint-lg: 64rem; /* 1024px - iPad landscape  */
   --breakpoint-xl: 80rem; /* 1280px - small desktop   */
 
+  --container-page-wide: 50.01rem; /* 50rem = 800px - width of page content when sidebar is added */
+
   /* COLORS */
 
   /*
