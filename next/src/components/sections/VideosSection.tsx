@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Videos } from '@/src/components/common/Videos_Deprecated/Videos_Deprecated'
+import Videos from '@/src/components/common/Videos_Deprecated/Videos_Deprecated'
 import SectionContainer from '@/src/components/layouts/SectionContainer'
 import { VideosSectionFragment } from '@/src/services/graphql'
 import { isDefined } from '@/src/utils/isDefined'
