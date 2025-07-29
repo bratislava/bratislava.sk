@@ -1,9 +1,9 @@
 import React from 'react'
 
-import { Videos } from '@/src/components/common/Videos_Deprecated/Videos_Deprecated'
+import Videos from '@/src/components/common/Videos_Deprecated/Videos_Deprecated'
 import SectionContainer from '@/src/components/layouts/SectionContainer'
 import { VideosSectionFragment } from '@/src/services/graphql'
-import { isPresent } from '@/src/utils/utils'
+import { isDefined } from '@/src/utils/isDefined'
 
 type VideosSectionProps = { section: VideosSectionFragment }
 
@@ -14,7 +14,7 @@ const VideosSection = ({ section }: VideosSectionProps) => {
         id={section.id}
         title={section.title}
         subtitle={section.subtitle}
-        videos={section?.videos?.filter(isPresent) ?? null}
+        videos={section?.videos?.filter(isDefined) ?? null}
       />
     </SectionContainer>
   )

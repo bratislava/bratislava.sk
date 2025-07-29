@@ -77,11 +77,10 @@ export async function listPages() {
     // .filter((page) => !page.slug?.includes('/'))
     .filter((page) => {
       const sections =
-        page.sections?.filter((section) => section?.__typename === 'ComponentSectionsNarrowText') ??
-        []
+        page.sections?.filter((section) => section?.__typename === 'ComponentSectionsVideos') ?? []
 
       return sections.some(
-        (section) => section?.__typename === 'ComponentSectionsNarrowText' && !section.width,
+        (section) => section?.__typename === 'ComponentSectionsVideos',
         // section.width === 'wide',
       )
     })
@@ -91,7 +90,14 @@ export async function listPages() {
   console.log('Number of filteredPages:', filteredPages.length)
   console.log(
     filteredPages.map((page) => {
-      return `${page.documentId} ${page.slug}`
+      const length = page.sections
+        ?.filter(isDefined)
+        .filter((section) => section.__typename === 'ComponentSectionsVideos')
+        .map((section) =>
+          section.__typename === 'ComponentSectionsVideos' ? section.videos?.length : -1,
+        )
+
+      return `${page.documentId} ${length} ${page.slug}`
     }),
   )
 }
@@ -176,7 +182,10 @@ export async function logAllSectionsByType({
       console.log('\n')
     } else {
       console.log(
-        `${entityLog.length}x ${sectionName?.replace('ComponentSections', '')} found at ${nextEntityLinkProd} ${CONSOLE_GREY}${strapiEntityLink}${CONSOLE_WHITE}`,
+        `${entityLog.length}x ${sectionName?.replace(
+          'ComponentSections',
+          '',
+        )} found at ${nextEntityLinkProd} ${CONSOLE_GREY}${strapiEntityLink}${CONSOLE_WHITE}`,
       )
     }
   })

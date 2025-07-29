@@ -91,7 +91,7 @@ const Carousel = ({
                     // 1rem represents 1 gap-4, if gap is changed, also change card width
                     'w-[calc(100%-1rem)] snap-center': visibleCount === 1,
                     'snap-start': visibleCount > 1,
-                    'w-[calc((100%-0.75rem)/2)]': visibleCount === 2,
+                    'w-[calc((100%-2rem)/2)]': visibleCount === 2,
                     'w-[calc((100%-4rem)/3)]': visibleCount === 3,
                     'w-[calc((100%-6rem)/4)]': visibleCount === 4,
                   },

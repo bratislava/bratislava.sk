@@ -1,78 +1,23 @@
-import { Typography } from '@bratislava/component-library'
 import React from 'react'
 
+import VideoCard from '@/src/components/cards/VideoCard'
+import { AllowedVisibleCount } from '@/src/components/common/Carousel/Carousel'
 import ResponsiveCarousel from '@/src/components/common/Carousel/ResponsiveCarousel'
-import MLink from '@/src/components/common/MLink/MLink'
 import SectionHeader from '@/src/components/layouts/SectionHeader'
-import { VideoBlockFragment, VideosSectionFragment } from '@/src/services/graphql'
-import cn from '@/src/utils/cn'
-import { isPresent } from '@/src/utils/utils'
-
-// TODO split into separate components
-
-const Video = ({
-  title,
-  speaker,
-  url,
-  size = 'default',
-}: VideoBlockFragment & { size?: 'default' | 'small' }) => {
-  const [embedUrl, setEmbedUrl] = React.useState('')
-  const [isLoaded, setLoaded] = React.useState(false)
-
-  React.useEffect(() => {
-    const parseYoutubeUrl = async () => {
-      if (url?.includes('fb.watch')) {
-        const fembedUrl = `https://www.facebook.com/plugins/video.php?href=${url}`
-        setEmbedUrl(fembedUrl)
-      } else {
-        const oembedUrl = `https://www.youtube.com/oembed?url=${url}&format=json`
-        const res = await fetch(oembedUrl)
-        const { html }: { html: string } = await res.json()
-
-        const substrStart = html.indexOf('src="') + 5
-        const substrEnd = html.indexOf('oembed') + 6
-        const embededUrl = html.slice(substrStart, substrEnd)
-
-        setEmbedUrl(embededUrl)
-      }
-    }
-
-    parseYoutubeUrl()
-  }, [url])
-
-  return (
-    <div className="mb-8 w-full lg:mb-0 xl:w-88">
-      <iframe
-        className={cn('w-full rounded-[5]', {
-          'animate-pulse bg-grey-300': !isLoaded,
-        })}
-        title={title ?? undefined}
-        // width={size === 'default' ? '350' : '280'}
-        height={size === 'default' ? '196' : '157'}
-        src={embedUrl}
-        allowFullScreen
-        onLoad={() => setLoaded(true)}
-      />
-      <MLink href={url ?? '#'} variant="underlineOnHover" target="_blank" rel="noreferrer">
-        <Typography variant="h5" as="h3" className="mt-8 cursor-pointer hover:underline">
-          {title}
-        </Typography>
-      </MLink>
-      <Typography variant="p-default" className="mt-5">
-        {speaker}
-      </Typography>
-    </div>
-  )
-}
+import { VideosSectionFragment } from '@/src/services/graphql'
+import { isDefined } from '@/src/utils/isDefined'
 
 /**
  * TODO Figma link
  */
 
-export const Videos = ({ title, subtitle, videos }: VideosSectionFragment) => {
+const Videos = ({ title, subtitle, videos }: VideosSectionFragment) => {
   if (!videos) {
     return null
   }
+
+  const filteredVideos = videos.filter(isDefined) ?? []
+  const videosCount = filteredVideos.length
 
   return (
     <div>
@@ -80,21 +25,16 @@ export const Videos = ({ title, subtitle, videos }: VideosSectionFragment) => {
         <SectionHeader title={title} text={subtitle} />
       </div>
 
-      {/* Mobile */}
+      {/* Using carousel for simplicity, it'll "behave as carousel" on desktop only if there is more than 4 videos  */}
       <ResponsiveCarousel
-        className="lg:hidden"
         hasVerticalPadding={false}
-        items={videos.filter(isPresent).map((video) => (
-          <Video key={video.url} size="small" {...video} />
+        items={filteredVideos.map((video) => (
+          <VideoCard key={video.url} {...video} />
         ))}
+        desktop={videosCount > 0 && videosCount <= 4 ? (videosCount as AllowedVisibleCount) : 4}
       />
-
-      {/* Desktop */}
-      <div className="hidden gap-8 lg:grid lg:grid-cols-3">
-        {videos.filter(isPresent).map((video) => (
-          <Video key={video.url} {...video} />
-        ))}
-      </div>
     </div>
   )
 }
+
+export default Videos
