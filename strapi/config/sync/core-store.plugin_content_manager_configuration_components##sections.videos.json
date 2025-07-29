@@ -22,7 +22,7 @@
       },
       "title": {
         "edit": {
-          "label": "title",
+          "label": "Nadpis",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -36,7 +36,7 @@
       },
       "subtitle": {
         "edit": {
-          "label": "subtitle",
+          "label": "Text",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -50,7 +50,7 @@
       },
       "videos": {
         "edit": {
-          "label": "videos",
+          "label": "Videá",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -82,11 +82,11 @@
         [
           {
             "name": "title",
-            "size": 6
+            "size": 12
           },
           {
             "name": "subtitle",
-            "size": 6
+            "size": 12
           }
         ],
         [

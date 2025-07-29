@@ -7,7 +7,7 @@
       "filterable": true,
       "searchable": true,
       "pageSize": 10,
-      "mainField": "title",
+      "mainField": "url",
       "defaultSortBy": "title",
       "defaultSortOrder": "ASC"
     },
@@ -22,7 +22,7 @@
       },
       "title": {
         "edit": {
-          "label": "title",
+          "label": "Názov videa",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -36,7 +36,7 @@
       },
       "speaker": {
         "edit": {
-          "label": "speaker",
+          "label": "Rečník / autor / moderátor",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -50,8 +50,8 @@
       },
       "url": {
         "edit": {
-          "label": "url",
-          "description": "",
+          "label": "Url",
+          "description": " ",
           "placeholder": "",
           "visible": true,
           "editable": true
@@ -72,29 +72,29 @@
       }
     },
     "layouts": {
+      "edit": [
+        [
+          {
+            "name": "url",
+            "size": 12
+          },
+          {
+            "name": "title",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "speaker",
+            "size": 12
+          }
+        ]
+      ],
       "list": [
         "id",
         "title",
         "speaker",
         "url"
-      ],
-      "edit": [
-        [
-          {
-            "name": "title",
-            "size": 6
-          },
-          {
-            "name": "speaker",
-            "size": 6
-          }
-        ],
-        [
-          {
-            "name": "url",
-            "size": 6
-          }
-        ]
       ]
     },
     "isComponent": true
