@@ -80,7 +80,9 @@ export async function listPages() {
         page.sections?.filter((section) => section?.__typename === 'ComponentSectionsVideos') ?? []
 
       return sections.some(
-        (section) => section?.__typename === 'ComponentSectionsVideos',
+        (section) =>
+          section?.__typename === 'ComponentSectionsVideos' &&
+          section.videos?.filter(isDefined).some((video) => !video.url),
         // section.width === 'wide',
       )
     })

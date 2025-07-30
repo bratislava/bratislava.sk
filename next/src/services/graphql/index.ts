@@ -1032,7 +1032,7 @@ export type ComponentBlocksVideo = {
   id: Scalars['ID']['output']
   speaker?: Maybe<Scalars['String']['output']>
   title?: Maybe<Scalars['String']['output']>
-  url?: Maybe<Scalars['String']['output']>
+  url: Scalars['String']['output']
 }
 
 export type ComponentBlocksVideoFiltersInput = {
@@ -8962,7 +8962,7 @@ export type PageEntityFragment = {
           id: string
           title?: string | null
           speaker?: string | null
-          url?: string | null
+          url: string
         } | null> | null
       }
     | { __typename: 'Error' }
@@ -9714,7 +9714,7 @@ export type PageBySlugQuery = {
             id: string
             title?: string | null
             speaker?: string | null
-            url?: string | null
+            url: string
           } | null> | null
         }
       | { __typename: 'Error' }
@@ -10492,7 +10492,7 @@ export type Dev_AllPagesQuery = {
             id: string
             title?: string | null
             speaker?: string | null
-            url?: string | null
+            url: string
           } | null> | null
         }
       | { __typename: 'Error' }
@@ -11481,7 +11481,7 @@ export type VideoBlockFragment = {
   id: string
   title?: string | null
   speaker?: string | null
-  url?: string | null
+  url: string
 }
 
 export type VideosSectionFragment = {
@@ -11494,7 +11494,7 @@ export type VideosSectionFragment = {
     id: string
     title?: string | null
     speaker?: string | null
-    url?: string | null
+    url: string
   } | null> | null
 }
 
@@ -12623,7 +12623,7 @@ type Sections_ComponentSectionsVideos_Fragment = {
     id: string
     title?: string | null
     speaker?: string | null
-    url?: string | null
+    url: string
   } | null> | null
 }
 

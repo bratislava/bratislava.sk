@@ -5,13 +5,14 @@
   },
   "options": {},
   "attributes": {
+    "url": {
+      "type": "string",
+      "required": true
+    },
     "title": {
       "type": "string"
     },
     "speaker": {
-      "type": "string"
-    },
-    "url": {
       "type": "string"
     }
   }

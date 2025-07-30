@@ -281,7 +281,7 @@ export interface BlocksVideo extends Struct.ComponentSchema {
   attributes: {
     speaker: Schema.Attribute.String
     title: Schema.Attribute.String
-    url: Schema.Attribute.String
+    url: Schema.Attribute.String & Schema.Attribute.Required
   }
 }
 
@@ -983,7 +983,7 @@ export interface SectionsVideos extends Struct.ComponentSchema {
     displayName: 'Videos'
   }
   attributes: {
-    subtitle: Schema.Attribute.String
+    subtitle: Schema.Attribute.Text
     title: Schema.Attribute.String
     videos: Schema.Attribute.Component<'blocks.video', true>
   }

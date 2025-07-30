@@ -10,12 +10,12 @@
       "type": "string"
     },
     "subtitle": {
-      "type": "string"
+      "type": "text"
     },
     "videos": {
       "type": "component",
-      "repeatable": true,
-      "component": "blocks.video"
+      "component": "blocks.video",
+      "repeatable": true
     }
   }
 }
