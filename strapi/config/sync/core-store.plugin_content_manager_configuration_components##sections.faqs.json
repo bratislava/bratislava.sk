@@ -22,7 +22,7 @@
       },
       "title": {
         "edit": {
-          "label": "title",
+          "label": "Nadpis",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -36,7 +36,7 @@
       },
       "text": {
         "edit": {
-          "label": "text",
+          "label": "Text",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -50,7 +50,7 @@
       },
       "faqs": {
         "edit": {
-          "label": "faqs",
+          "label": "FAQs",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -63,6 +63,20 @@
           "sortable": false
         }
       },
+      "titleLevel": {
+        "edit": {
+          "label": "Úroveň nadpisu sekcie",
+          "description": "Úroveň nadpisu meníme na h3 iba ak je to potrebné sémanticky. Nikdy ju nemeníme len kvôli vizuálnej veľkosti nadpisu.",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "titleLevel",
+          "searchable": true,
+          "sortable": true
+        }
+      },
       "documentId": {
         "edit": {},
         "list": {
@@ -73,29 +87,33 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "title",
-        "text",
-        "faqs"
-      ],
       "edit": [
         [
           {
             "name": "title",
-            "size": 6
+            "size": 12
           },
           {
             "name": "text",
-            "size": 6
+            "size": 12
           }
         ],
         [
           {
             "name": "faqs",
+            "size": 12
+          },
+          {
+            "name": "titleLevel",
             "size": 6
           }
         ]
+      ],
+      "list": [
+        "id",
+        "title",
+        "text",
+        "faqs"
       ]
     },
     "isComponent": true

@@ -62,6 +62,20 @@
           "sortable": false
         }
       },
+      "titleLevel": {
+        "edit": {
+          "label": "Úroveň nadpisu sekcie",
+          "description": "Úroveň nadpisu meníme na h3 iba ak je to potrebné sémanticky. Nikdy ju nemeníme len kvôli vizuálnej veľkosti nadpisu.",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "titleLevel",
+          "searchable": true,
+          "sortable": true
+        }
+      },
       "documentId": {
         "edit": {},
         "list": {
@@ -72,11 +86,6 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "title",
-        "documentId"
-      ],
       "edit": [
         [
           {
@@ -95,7 +104,19 @@
             "name": "medias",
             "size": 12
           }
+        ],
+        [
+          {
+            "name": "titleLevel",
+            "size": 6
+          }
         ]
+      ],
+      "list": [
+        "id",
+        "title",
+        "documentId",
+        "titleLevel"
       ]
     },
     "isComponent": true

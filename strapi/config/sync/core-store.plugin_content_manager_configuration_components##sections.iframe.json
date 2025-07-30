@@ -50,7 +50,7 @@
       },
       "url": {
         "edit": {
-          "label": "url",
+          "label": "Url",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -146,6 +146,20 @@
           "sortable": true
         }
       },
+      "titleLevel": {
+        "edit": {
+          "label": "Úroveň nadpisu sekcie",
+          "description": "Úroveň nadpisu meníme na h3 iba ak je to potrebné sémanticky. Nikdy ju nemeníme len kvôli vizuálnej veľkosti nadpisu.",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "titleLevel",
+          "searchable": true,
+          "sortable": true
+        }
+      },
       "documentId": {
         "edit": {},
         "list": {
@@ -156,12 +170,6 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "url",
-        "allowFullscreen",
-        "css"
-      ],
       "edit": [
         [
           {
@@ -178,7 +186,7 @@
         [
           {
             "name": "url",
-            "size": 6
+            "size": 12
           },
           {
             "name": "allowFullscreen",
@@ -187,11 +195,11 @@
         ],
         [
           {
-            "name": "css",
+            "name": "iframeWidth",
             "size": 6
           },
           {
-            "name": "iframeWidth",
+            "name": "css",
             "size": 6
           }
         ],
@@ -208,9 +216,19 @@
         [
           {
             "name": "allowGeolocation",
-            "size": 4
+            "size": 6
+          },
+          {
+            "name": "titleLevel",
+            "size": 6
           }
         ]
+      ],
+      "list": [
+        "id",
+        "url",
+        "allowFullscreen",
+        "css"
       ]
     },
     "isComponent": true
