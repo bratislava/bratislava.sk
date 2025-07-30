@@ -169,5 +169,7 @@
   "useLocalizations.shortName.en": "EN",
   "useLocalizations.shortName.sk": "SK",
   "useTitle.title": "Bratislava.sk",
-  "useTitle.titleWithChild": "{{childTitle}} – Bratislava.sk"
+  "useTitle.titleWithChild": "{{childTitle}} – Bratislava.sk",
+  "VideoCard.unsupportedVideo": "Unsupported video.",
+  "VideoCard.videoPlayer": "Video player"
 }

@@ -779,7 +779,7 @@ type ComponentBlocksVideo {
   id: ID!
   speaker: String
   title: String
-  url: String
+  url: String!
 }
 
 input ComponentBlocksVideoFiltersInput {
