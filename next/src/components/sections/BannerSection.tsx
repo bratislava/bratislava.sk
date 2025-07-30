@@ -9,18 +9,16 @@ type BannerSectionProps = { section: BannerSectionFragment }
 const BannerSection = ({ section }: BannerSectionProps) => {
   return (
     <SectionContainer>
-      <div className="@container">
-        <Banner
-          title={section.bannerTitle}
-          content={section.content}
-          contentPosition={section.contentPosition}
-          variant={section.bannerVariant}
-          imagePath={section.media.url}
-          primaryLink={section.primaryLink}
-          secondaryLink={section.secondaryLink}
-          tertiaryLink={section.tertiaryLink}
-        />
-      </div>
+      <Banner
+        title={section.bannerTitle}
+        content={section.content}
+        contentPosition={section.contentPosition}
+        variant={section.bannerVariant}
+        imagePath={section.media.url}
+        primaryLink={section.primaryLink}
+        secondaryLink={section.secondaryLink}
+        tertiaryLink={section.tertiaryLink}
+      />
     </SectionContainer>
   )
 }
