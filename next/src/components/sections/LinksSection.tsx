@@ -11,7 +11,11 @@ type LinksSectionProps = {
 const LinksSection = ({ section }: LinksSectionProps) => {
   return (
     <SectionContainer>
-      <Links title={section.title} pageLinks={section.pageLinks} />
+      <Links
+        title={section.title}
+        titleLevel={section.titleLevelLinksSection}
+        pageLinks={section.pageLinks}
+      />
     </SectionContainer>
   )
 }

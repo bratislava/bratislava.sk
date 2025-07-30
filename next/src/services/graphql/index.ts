@@ -1511,6 +1511,7 @@ export type ComponentSectionsDocuments = {
   showAll?: Maybe<Scalars['Boolean']['output']>
   text?: Maybe<Scalars['String']['output']>
   title?: Maybe<Scalars['String']['output']>
+  titleLevel?: Maybe<Enum_Componentsectionsdocuments_Titlelevel>
 }
 
 export type ComponentSectionsDocumentsDocumentsArgs = {
@@ -1533,6 +1534,7 @@ export type ComponentSectionsDocumentsFiltersInput = {
   showAll?: InputMaybe<BooleanFilterInput>
   text?: InputMaybe<StringFilterInput>
   title?: InputMaybe<StringFilterInput>
+  titleLevel?: InputMaybe<StringFilterInput>
 }
 
 export type ComponentSectionsDocumentsInput = {
@@ -1541,6 +1543,7 @@ export type ComponentSectionsDocumentsInput = {
   showAll?: InputMaybe<Scalars['Boolean']['input']>
   text?: InputMaybe<Scalars['String']['input']>
   title?: InputMaybe<Scalars['String']['input']>
+  titleLevel?: InputMaybe<Enum_Componentsectionsdocuments_Titlelevel>
 }
 
 export type ComponentSectionsFaqCategories = {
@@ -1883,6 +1886,7 @@ export type ComponentSectionsLinks = {
   id: Scalars['ID']['output']
   pageLinks?: Maybe<Array<Maybe<ComponentBlocksPageLink>>>
   title?: Maybe<Scalars['String']['output']>
+  titleLevel?: Maybe<Enum_Componentsectionslinks_Titlelevel>
 }
 
 export type ComponentSectionsLinksPageLinksArgs = {
@@ -1897,12 +1901,14 @@ export type ComponentSectionsLinksFiltersInput = {
   or?: InputMaybe<Array<InputMaybe<ComponentSectionsLinksFiltersInput>>>
   pageLinks?: InputMaybe<ComponentBlocksPageLinkFiltersInput>
   title?: InputMaybe<StringFilterInput>
+  titleLevel?: InputMaybe<StringFilterInput>
 }
 
 export type ComponentSectionsLinksInput = {
   id?: InputMaybe<Scalars['ID']['input']>
   pageLinks?: InputMaybe<Array<InputMaybe<ComponentBlocksPageLinkInput>>>
   title?: InputMaybe<Scalars['String']['input']>
+  titleLevel?: InputMaybe<Enum_Componentsectionslinks_Titlelevel>
 }
 
 export type ComponentSectionsNarrowText = {
@@ -2640,9 +2646,19 @@ export enum Enum_Componentsectionsdivider_Style {
   Vzdelavanie = 'vzdelavanie',
 }
 
+export enum Enum_Componentsectionsdocuments_Titlelevel {
+  H2 = 'h2',
+  H3 = 'h3',
+}
+
 export enum Enum_Componentsectionsiframe_Iframewidth {
   Container = 'container',
   Full = 'full',
+}
+
+export enum Enum_Componentsectionslinks_Titlelevel {
+  H2 = 'h2',
+  H3 = 'h3',
 }
 
 export enum Enum_Componentsectionsnarrowtext_Width {
@@ -8493,6 +8509,7 @@ export type PageEntityFragment = {
         title?: string | null
         text?: string | null
         showAll?: boolean | null
+        titleLevelDocumentsSection?: Enum_Componentsectionsdocuments_Titlelevel | null
         documents: Array<{
           __typename: 'Document'
           publishedAt?: any | null
@@ -8604,6 +8621,7 @@ export type PageEntityFragment = {
     | {
         __typename: 'ComponentSectionsLinks'
         title?: string | null
+        titleLevelLinksSection?: Enum_Componentsectionslinks_Titlelevel | null
         pageLinks?: Array<{
           __typename?: 'ComponentBlocksPageLink'
           url?: string | null
@@ -9214,6 +9232,7 @@ export type PageBySlugQuery = {
           title?: string | null
           text?: string | null
           showAll?: boolean | null
+          titleLevelDocumentsSection?: Enum_Componentsectionsdocuments_Titlelevel | null
           documents: Array<{
             __typename: 'Document'
             publishedAt?: any | null
@@ -9325,6 +9344,7 @@ export type PageBySlugQuery = {
       | {
           __typename: 'ComponentSectionsLinks'
           title?: string | null
+          titleLevelLinksSection?: Enum_Componentsectionslinks_Titlelevel | null
           pageLinks?: Array<{
             __typename?: 'ComponentBlocksPageLink'
             url?: string | null
@@ -9961,6 +9981,7 @@ export type Dev_AllPagesQuery = {
           title?: string | null
           text?: string | null
           showAll?: boolean | null
+          titleLevelDocumentsSection?: Enum_Componentsectionsdocuments_Titlelevel | null
           documents: Array<{
             __typename: 'Document'
             publishedAt?: any | null
@@ -10072,6 +10093,7 @@ export type Dev_AllPagesQuery = {
       | {
           __typename: 'ComponentSectionsLinks'
           title?: string | null
+          titleLevelLinksSection?: Enum_Componentsectionslinks_Titlelevel | null
           pageLinks?: Array<{
             __typename?: 'ComponentBlocksPageLink'
             url?: string | null
@@ -11200,6 +11222,7 @@ export type NarrowTextSectionFragment = {
 export type LinksSectionFragment = {
   __typename?: 'ComponentSectionsLinks'
   title?: string | null
+  titleLevelLinksSection?: Enum_Componentsectionslinks_Titlelevel | null
   pageLinks?: Array<{
     __typename?: 'ComponentBlocksPageLink'
     url?: string | null
@@ -11730,6 +11753,7 @@ export type DocumentsSectionFragment = {
   title?: string | null
   text?: string | null
   showAll?: boolean | null
+  titleLevelDocumentsSection?: Enum_Componentsectionsdocuments_Titlelevel | null
   documents: Array<{
     __typename: 'Document'
     publishedAt?: any | null
@@ -11990,6 +12014,7 @@ type Sections_ComponentSectionsDocuments_Fragment = {
   title?: string | null
   text?: string | null
   showAll?: boolean | null
+  titleLevelDocumentsSection?: Enum_Componentsectionsdocuments_Titlelevel | null
   documents: Array<{
     __typename: 'Document'
     publishedAt?: any | null
@@ -12113,6 +12138,7 @@ type Sections_ComponentSectionsInbaReleases_Fragment = {
 type Sections_ComponentSectionsLinks_Fragment = {
   __typename: 'ComponentSectionsLinks'
   title?: string | null
+  titleLevelLinksSection?: Enum_Componentsectionslinks_Titlelevel | null
   pageLinks?: Array<{
     __typename?: 'ComponentBlocksPageLink'
     url?: string | null
@@ -13116,6 +13142,7 @@ export const LinksSectionFragmentDoc = gql`
     pageLinks(pagination: { limit: -1 }) {
       ...PageLink
     }
+    titleLevelLinksSection: titleLevel
   }
   ${PageLinkFragmentDoc}
 `
@@ -13533,6 +13560,7 @@ export const DocumentsSectionFragmentDoc = gql`
       ...DocumentEntity
     }
     showAll
+    titleLevelDocumentsSection: titleLevel
   }
   ${DocumentEntityFragmentDoc}
 `

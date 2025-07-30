@@ -5,11 +5,13 @@ import React, { Fragment } from 'react'
 import { ArrowRightIcon, AttachmentIcon, DownloadIcon } from '@/src/assets/icons'
 import { FolderIcon } from '@/src/assets/material-icons'
 import CardBase from '@/src/components/cards/CardBase'
+import { CardTitleLevel } from '@/src/components/cards/getCardTitleLevel'
 import Button from '@/src/components/common/Button/Button'
 
 export type DocumentRowCardProps = {
   variant: 'single-file' | 'multiple-files'
   title: string
+  cardTitleLevel?: CardTitleLevel
   linkHref: string
   metadata?: string[]
   className?: string
@@ -25,6 +27,7 @@ export type DocumentRowCardProps = {
 const DocumentRowCard = ({
   variant,
   title,
+  cardTitleLevel = 'h3',
   linkHref,
   metadata,
   className,
@@ -45,7 +48,7 @@ const DocumentRowCard = ({
               )}
             </div>
             <div className="flex grow flex-col gap-1">
-              <Typography variant="h6" as="h3" className="group-hover:underline">
+              <Typography variant="h6" as={cardTitleLevel} className="group-hover:underline">
                 {title}
               </Typography>
               {metadata?.length ? (

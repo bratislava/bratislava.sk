@@ -591,6 +591,7 @@ export interface SectionsDocuments extends Struct.ComponentSchema {
     showAll: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>
     text: Schema.Attribute.Text
     title: Schema.Attribute.String & Schema.Attribute.DefaultTo<'Dokumenty'>
+    titleLevel: Schema.Attribute.Enumeration<['h2', 'h3']> & Schema.Attribute.DefaultTo<'h2'>
   }
 }
 
@@ -759,6 +760,7 @@ export interface SectionsLinks extends Struct.ComponentSchema {
   attributes: {
     pageLinks: Schema.Attribute.Component<'blocks.page-link', true>
     title: Schema.Attribute.String
+    titleLevel: Schema.Attribute.Enumeration<['h2', 'h3']> & Schema.Attribute.DefaultTo<'h2'>
   }
 }
 

@@ -1180,6 +1180,7 @@ type ComponentSectionsDocuments {
   showAll: Boolean
   text: String
   title: String
+  titleLevel: ENUM_COMPONENTSECTIONSDOCUMENTS_TITLELEVEL
 }
 
 input ComponentSectionsDocumentsFiltersInput {
@@ -1190,6 +1191,7 @@ input ComponentSectionsDocumentsFiltersInput {
   showAll: BooleanFilterInput
   text: StringFilterInput
   title: StringFilterInput
+  titleLevel: StringFilterInput
 }
 
 input ComponentSectionsDocumentsInput {
@@ -1198,6 +1200,7 @@ input ComponentSectionsDocumentsInput {
   showAll: Boolean
   text: String
   title: String
+  titleLevel: ENUM_COMPONENTSECTIONSDOCUMENTS_TITLELEVEL
 }
 
 type ComponentSectionsFaqCategories {
@@ -1480,6 +1483,7 @@ type ComponentSectionsLinks {
   id: ID!
   pageLinks(filters: ComponentBlocksPageLinkFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksPageLink]
   title: String
+  titleLevel: ENUM_COMPONENTSECTIONSLINKS_TITLELEVEL
 }
 
 input ComponentSectionsLinksFiltersInput {
@@ -1488,12 +1492,14 @@ input ComponentSectionsLinksFiltersInput {
   or: [ComponentSectionsLinksFiltersInput]
   pageLinks: ComponentBlocksPageLinkFiltersInput
   title: StringFilterInput
+  titleLevel: StringFilterInput
 }
 
 input ComponentSectionsLinksInput {
   id: ID
   pageLinks: [ComponentBlocksPageLinkInput]
   title: String
+  titleLevel: ENUM_COMPONENTSECTIONSLINKS_TITLELEVEL
 }
 
 type ComponentSectionsNarrowText {
@@ -2124,9 +2130,19 @@ enum ENUM_COMPONENTSECTIONSDIVIDER_STYLE {
   vzdelavanie
 }
 
+enum ENUM_COMPONENTSECTIONSDOCUMENTS_TITLELEVEL {
+  h2
+  h3
+}
+
 enum ENUM_COMPONENTSECTIONSIFRAME_IFRAMEWIDTH {
   container
   full
+}
+
+enum ENUM_COMPONENTSECTIONSLINKS_TITLELEVEL {
+  h2
+  h3
 }
 
 enum ENUM_COMPONENTSECTIONSNARROWTEXT_WIDTH {

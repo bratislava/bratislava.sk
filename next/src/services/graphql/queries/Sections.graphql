@@ -121,6 +121,7 @@ fragment LinksSection on ComponentSectionsLinks {
   pageLinks(pagination: { limit: -1 }) {
     ...PageLink
   }
+  titleLevelLinksSection: titleLevel
 }
 
 fragment ComponentAccordionItemsInstitutionNarrow on ComponentAccordionItemsInstitutionNarrow {
@@ -363,6 +364,7 @@ fragment DocumentsSection on ComponentSectionsDocuments {
     ...DocumentEntity
   }
   showAll
+  titleLevelDocumentsSection: titleLevel
 }
 
 fragment Sections on PageSectionsDynamicZone {

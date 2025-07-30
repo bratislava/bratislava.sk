@@ -1,6 +1,7 @@
 import React from 'react'
 import { ArrowRightIcon } from 'src/assets/icons'
 
+import { SectionTitleLevel } from '@/src/components/cards/getCardTitleLevel'
 import Button from '@/src/components/common/Button/Button'
 import SectionHeader from '@/src/components/layouts/SectionHeader'
 import { LinksSectionFragment } from '@/src/services/graphql'
@@ -10,6 +11,7 @@ import { isDefined } from '@/src/utils/isDefined'
 
 export type LinksProps = {
   title: string | null | undefined
+  titleLevel?: SectionTitleLevel | null | undefined
   pageLinks: LinksSectionFragment['pageLinks']
   className?: string
 }
