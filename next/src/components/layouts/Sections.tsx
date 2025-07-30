@@ -19,6 +19,7 @@ import InbaArticlesListSection from '@/src/components/sections/InbaArticlesListS
 import InbaReleasesSection from '@/src/components/sections/InbaReleasesSection'
 import LinksSection from '@/src/components/sections/LinksSection'
 import NarrowTextSection from '@/src/components/sections/NarrowTextSection'
+import NumbersOverviewSection from '@/src/components/sections/NumbersOverviewSection'
 import NumericalListSection from '@/src/components/sections/NumericalListSection'
 import OfficialBoardSection from '@/src/components/sections/OfficialBoardSection/OfficialBoardSection'
 import OrganizationalStructureSection from '@/src/components/sections/OrganizationalStructureSection'
@@ -129,6 +130,9 @@ const SectionContent = ({ section }: { section: SectionsFragment }) => {
 
     case 'ComponentSectionsNumericalList':
       return <NumericalListSection section={section} />
+
+    case 'ComponentSectionsNumbersOverview':
+      return <NumbersOverviewSection section={section} />
 
     default:
       return null
