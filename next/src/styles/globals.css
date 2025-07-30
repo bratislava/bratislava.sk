@@ -114,6 +114,8 @@
   --breakpoint-lg: 64rem; /* 1024px - iPad landscape  */
   --breakpoint-xl: 80rem; /* 1280px - small desktop   */
 
+  --container-page-wide: 50.063rem; /* 801px because narrow page width is 800px */
+
   /* COLORS */
 
   /*
