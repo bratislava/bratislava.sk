@@ -191,8 +191,8 @@ export interface BlocksNumbersOverviewItem extends Struct.ComponentSchema {
     displayName: 'numbersOverviewItem'
   }
   attributes: {
-    number: Schema.Attribute.Integer
-    text: Schema.Attribute.Text
+    number: Schema.Attribute.String & Schema.Attribute.Required
+    text: Schema.Attribute.Text & Schema.Attribute.Required
   }
 }
 

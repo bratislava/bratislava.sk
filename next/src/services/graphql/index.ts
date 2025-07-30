@@ -893,21 +893,21 @@ export type ComponentBlocksInBaInput = {
 export type ComponentBlocksNumbersOverviewItem = {
   __typename?: 'ComponentBlocksNumbersOverviewItem'
   id: Scalars['ID']['output']
-  number?: Maybe<Scalars['Int']['output']>
-  text?: Maybe<Scalars['String']['output']>
+  number: Scalars['String']['output']
+  text: Scalars['String']['output']
 }
 
 export type ComponentBlocksNumbersOverviewItemFiltersInput = {
   and?: InputMaybe<Array<InputMaybe<ComponentBlocksNumbersOverviewItemFiltersInput>>>
   not?: InputMaybe<ComponentBlocksNumbersOverviewItemFiltersInput>
-  number?: InputMaybe<IntFilterInput>
+  number?: InputMaybe<StringFilterInput>
   or?: InputMaybe<Array<InputMaybe<ComponentBlocksNumbersOverviewItemFiltersInput>>>
   text?: InputMaybe<StringFilterInput>
 }
 
 export type ComponentBlocksNumbersOverviewItemInput = {
   id?: InputMaybe<Scalars['ID']['input']>
-  number?: InputMaybe<Scalars['Int']['input']>
+  number?: InputMaybe<Scalars['String']['input']>
   text?: InputMaybe<Scalars['String']['input']>
 }
 
@@ -8704,11 +8704,11 @@ export type PageEntityFragment = {
             locale?: string | null
           } | null
         } | null
-        items?: Array<{
+        numbersOverviewItems?: Array<{
           __typename?: 'ComponentBlocksNumbersOverviewItem'
           id: string
-          number?: number | null
-          text?: string | null
+          number: string
+          text: string
         } | null> | null
       }
     | {
@@ -9456,11 +9456,11 @@ export type PageBySlugQuery = {
               locale?: string | null
             } | null
           } | null
-          items?: Array<{
+          numbersOverviewItems?: Array<{
             __typename?: 'ComponentBlocksNumbersOverviewItem'
             id: string
-            number?: number | null
-            text?: string | null
+            number: string
+            text: string
           } | null> | null
         }
       | {
@@ -10234,11 +10234,11 @@ export type Dev_AllPagesQuery = {
               locale?: string | null
             } | null
           } | null
-          items?: Array<{
+          numbersOverviewItems?: Array<{
             __typename?: 'ComponentBlocksNumbersOverviewItem'
             id: string
-            number?: number | null
-            text?: string | null
+            number: string
+            text: string
           } | null> | null
         }
       | {
@@ -11910,8 +11910,8 @@ export type DocumentsSectionFragment = {
 export type NumbersOverviewItemBlockFragment = {
   __typename?: 'ComponentBlocksNumbersOverviewItem'
   id: string
-  number?: number | null
-  text?: string | null
+  number: string
+  text: string
 }
 
 export type NumbersOverviewSectionFragment = {
@@ -11938,11 +11938,11 @@ export type NumbersOverviewSectionFragment = {
       locale?: string | null
     } | null
   } | null
-  items?: Array<{
+  numbersOverviewItems?: Array<{
     __typename?: 'ComponentBlocksNumbersOverviewItem'
     id: string
-    number?: number | null
-    text?: string | null
+    number: string
+    text: string
   } | null> | null
 }
 
@@ -12347,11 +12347,11 @@ type Sections_ComponentSectionsNumbersOverview_Fragment = {
       locale?: string | null
     } | null
   } | null
-  items?: Array<{
+  numbersOverviewItems?: Array<{
     __typename?: 'ComponentBlocksNumbersOverviewItem'
     id: string
-    number?: number | null
-    text?: string | null
+    number: string
+    text: string
   } | null> | null
 }
 
@@ -13772,7 +13772,7 @@ export const NumbersOverviewSectionFragmentDoc = gql`
     showMoreLink {
       ...CommonLink
     }
-    items {
+    numbersOverviewItems: items {
       ...NumbersOverviewItemBlock
     }
   }

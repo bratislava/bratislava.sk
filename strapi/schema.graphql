@@ -672,21 +672,21 @@ input ComponentBlocksInBaInput {
 
 type ComponentBlocksNumbersOverviewItem {
   id: ID!
-  number: Int
-  text: String
+  number: String!
+  text: String!
 }
 
 input ComponentBlocksNumbersOverviewItemFiltersInput {
   and: [ComponentBlocksNumbersOverviewItemFiltersInput]
   not: ComponentBlocksNumbersOverviewItemFiltersInput
-  number: IntFilterInput
+  number: StringFilterInput
   or: [ComponentBlocksNumbersOverviewItemFiltersInput]
   text: StringFilterInput
 }
 
 input ComponentBlocksNumbersOverviewItemInput {
   id: ID
-  number: Int
+  number: String
   text: String
 }
 

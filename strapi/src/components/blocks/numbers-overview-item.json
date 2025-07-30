@@ -6,10 +6,13 @@
   "options": {},
   "attributes": {
     "number": {
-      "type": "integer"
+      "type": "string",
+      "required": true,
+      "regex": "\\d*"
     },
     "text": {
-      "type": "text"
+      "type": "text",
+      "required": true
     }
   },
   "config": {}
