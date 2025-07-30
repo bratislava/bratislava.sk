@@ -61,7 +61,7 @@ const SectionHeader = ({
           )}
         >
           {title ? (
-            <Typography variant="h2" as={titleLevel ?? 'h2'} id={titleId ?? slugify(title)}>
+            <Typography variant={titleLevel ?? 'h2'} id={titleId ?? slugify(title)}>
               {title}
             </Typography>
           ) : null}

@@ -10,7 +10,7 @@
       "type": "string"
     },
     "subtitle": {
-      "type": "string"
+      "type": "text"
     },
     "videos": {
       "type": "component",

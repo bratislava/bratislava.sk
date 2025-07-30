@@ -20,6 +20,7 @@ const FileListSection = ({ section }: FileListSectionProps) => {
         title={section.title}
         text={section.text}
         files={section.fileList?.filter(isDefined) ?? []}
+        titleLevel={section.titleLevelFileListSection}
       />
     </SectionContainer>
   )

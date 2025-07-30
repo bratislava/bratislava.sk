@@ -961,7 +961,7 @@ export interface SectionsVideos extends Struct.ComponentSchema {
     displayName: 'Videos'
   }
   attributes: {
-    subtitle: Schema.Attribute.String
+    subtitle: Schema.Attribute.Text
     title: Schema.Attribute.String
     titleLevel: Schema.Attribute.Enumeration<['h2', 'h3']> & Schema.Attribute.DefaultTo<'h2'>
     videos: Schema.Attribute.Component<'blocks.video', true>
