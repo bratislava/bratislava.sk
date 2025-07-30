@@ -19,17 +19,29 @@ const mapSection = (
  */
 
 const Contacts = ({ section }: ContactsProps) => {
+  const {
+    title,
+    description,
+    titleLevelContactsSection: titleLevel,
+    addressContacts,
+    openingHoursContacts,
+    emailContacts,
+    phoneContacts,
+    webContacts,
+    personContacts,
+  } = section
+
   const contacts = [
-    ...mapSection(section.addressContacts, ContactCtaCardType.Address),
-    ...mapSection(section.openingHoursContacts, ContactCtaCardType.OpeningHours),
-    ...mapSection(section.emailContacts, ContactCtaCardType.Email),
-    ...mapSection(section.phoneContacts, ContactCtaCardType.Phone),
-    ...mapSection(section.webContacts, ContactCtaCardType.Web),
+    ...mapSection(addressContacts, ContactCtaCardType.Address),
+    ...mapSection(openingHoursContacts, ContactCtaCardType.OpeningHours),
+    ...mapSection(emailContacts, ContactCtaCardType.Email),
+    ...mapSection(phoneContacts, ContactCtaCardType.Phone),
+    ...mapSection(webContacts, ContactCtaCardType.Web),
   ]
 
   return (
     <div className="flex flex-col gap-6 rounded-xl bg-gray-100 p-4 lg:gap-8 lg:p-8">
-      <SectionHeader title={section.title} text={section.description} asRichtext />
+      <SectionHeader title={title} titleLevel={titleLevel} text={description} asRichtext />
 
       <div className="flex flex-col gap-6 lg:gap-8">
         {contacts.map((contact, index) => (
@@ -39,7 +51,7 @@ const Contacts = ({ section }: ContactsProps) => {
             contact={contact}
           />
         ))}
-        {section.personContacts?.filter(isDefined).map((person, index) => (
+        {personContacts?.filter(isDefined).map((person, index) => (
           <ContactCtaCard
             // eslint-disable-next-line react/no-array-index-key
             key={index}

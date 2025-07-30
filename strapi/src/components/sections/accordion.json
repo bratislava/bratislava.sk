@@ -6,23 +6,31 @@
   },
   "options": {},
   "attributes": {
+    "title": {
+      "type": "string"
+    },
     "institutions": {
       "type": "component",
-      "repeatable": true,
-      "component": "accordion-items.institution"
+      "component": "accordion-items.institution",
+      "repeatable": true
     },
     "flatText": {
       "type": "component",
-      "repeatable": true,
-      "component": "accordion-items.flat-text"
+      "component": "accordion-items.flat-text",
+      "repeatable": true
     },
     "institutionsNarrow": {
       "type": "component",
-      "repeatable": true,
-      "component": "accordion-items.institution-narrow"
+      "component": "accordion-items.institution-narrow",
+      "repeatable": true
     },
-    "title": {
-      "type": "string"
+    "titleLevel": {
+      "type": "enumeration",
+      "default": "h2",
+      "enum": [
+        "h2",
+        "h3"
+      ]
     }
   }
 }

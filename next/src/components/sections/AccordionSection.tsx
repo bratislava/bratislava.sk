@@ -24,6 +24,7 @@ const AccordionSection = ({ section }: AccordionSectionProps) => {
     <SectionContainer>
       <SectionHeader
         title={section.title}
+        titleLevel={section.titleLevelAccordionSection}
         isCentered
         // TODO Correct spacing between SectionHeader and remaining content
         className="pb-6 lg:pb-8"

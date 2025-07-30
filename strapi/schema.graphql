@@ -937,6 +937,7 @@ type ComponentSectionsAccordion {
   institutions(filters: ComponentAccordionItemsInstitutionFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentAccordionItemsInstitution]
   institutionsNarrow(filters: ComponentAccordionItemsInstitutionNarrowFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentAccordionItemsInstitutionNarrow]
   title: String
+  titleLevel: ENUM_COMPONENTSECTIONSACCORDION_TITLELEVEL
 }
 
 input ComponentSectionsAccordionFiltersInput {
@@ -947,6 +948,7 @@ input ComponentSectionsAccordionFiltersInput {
   not: ComponentSectionsAccordionFiltersInput
   or: [ComponentSectionsAccordionFiltersInput]
   title: StringFilterInput
+  titleLevel: StringFilterInput
 }
 
 input ComponentSectionsAccordionInput {
@@ -955,6 +957,7 @@ input ComponentSectionsAccordionInput {
   institutions: [ComponentAccordionItemsInstitutionInput]
   institutionsNarrow: [ComponentAccordionItemsInstitutionNarrowInput]
   title: String
+  titleLevel: ENUM_COMPONENTSECTIONSACCORDION_TITLELEVEL
 }
 
 type ComponentSectionsArticles {
@@ -1127,6 +1130,7 @@ type ComponentSectionsContactsSection {
   personContacts(filters: ComponentBlocksContactPersonCardFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksContactPersonCard]
   phoneContacts(filters: ComponentBlocksContactCardFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksContactCard]
   title: String
+  titleLevel: ENUM_COMPONENTSECTIONSCONTACTSSECTION_TITLELEVEL
   webContacts(filters: ComponentBlocksContactCardFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksContactCard]
 }
 
@@ -1141,6 +1145,7 @@ input ComponentSectionsContactsSectionFiltersInput {
   personContacts: ComponentBlocksContactPersonCardFiltersInput
   phoneContacts: ComponentBlocksContactCardFiltersInput
   title: StringFilterInput
+  titleLevel: StringFilterInput
   webContacts: ComponentBlocksContactCardFiltersInput
 }
 
@@ -1153,6 +1158,7 @@ input ComponentSectionsContactsSectionInput {
   personContacts: [ComponentBlocksContactPersonCardInput]
   phoneContacts: [ComponentBlocksContactCardInput]
   title: String
+  titleLevel: ENUM_COMPONENTSECTIONSCONTACTSSECTION_TITLELEVEL
   webContacts: [ComponentBlocksContactCardInput]
 }
 
@@ -1233,6 +1239,7 @@ type ComponentSectionsFaqs {
   id: ID!
   text: String
   title: String
+  titleLevel: ENUM_COMPONENTSECTIONSFAQS_TITLELEVEL
 }
 
 input ComponentSectionsFaqsFiltersInput {
@@ -1242,6 +1249,7 @@ input ComponentSectionsFaqsFiltersInput {
   or: [ComponentSectionsFaqsFiltersInput]
   text: StringFilterInput
   title: StringFilterInput
+  titleLevel: StringFilterInput
 }
 
 input ComponentSectionsFaqsInput {
@@ -1249,6 +1257,7 @@ input ComponentSectionsFaqsInput {
   id: ID
   text: String
   title: String
+  titleLevel: ENUM_COMPONENTSECTIONSFAQS_TITLELEVEL
 }
 
 type ComponentSectionsFileList {
@@ -1256,6 +1265,7 @@ type ComponentSectionsFileList {
   id: ID!
   text: String
   title: String
+  titleLevel: ENUM_COMPONENTSECTIONSFILELIST_TITLELEVEL
 }
 
 input ComponentSectionsFileListFiltersInput {
@@ -1265,6 +1275,7 @@ input ComponentSectionsFileListFiltersInput {
   or: [ComponentSectionsFileListFiltersInput]
   text: StringFilterInput
   title: StringFilterInput
+  titleLevel: StringFilterInput
 }
 
 input ComponentSectionsFileListInput {
@@ -1272,6 +1283,7 @@ input ComponentSectionsFileListInput {
   id: ID
   text: String
   title: String
+  titleLevel: ENUM_COMPONENTSECTIONSFILELIST_TITLELEVEL
 }
 
 type ComponentSectionsGallery {
@@ -1280,6 +1292,7 @@ type ComponentSectionsGallery {
   medias_connection(filters: UploadFileFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UploadFileRelationResponseCollection!
   text: String
   title: String
+  titleLevel: ENUM_COMPONENTSECTIONSGALLERY_TITLELEVEL
 }
 
 input ComponentSectionsGalleryFiltersInput {
@@ -1288,6 +1301,7 @@ input ComponentSectionsGalleryFiltersInput {
   or: [ComponentSectionsGalleryFiltersInput]
   text: StringFilterInput
   title: StringFilterInput
+  titleLevel: StringFilterInput
 }
 
 input ComponentSectionsGalleryInput {
@@ -1295,6 +1309,7 @@ input ComponentSectionsGalleryInput {
   medias: [ID]
   text: String
   title: String
+  titleLevel: ENUM_COMPONENTSECTIONSGALLERY_TITLELEVEL
 }
 
 type ComponentSectionsHomepageEvents {
@@ -1408,6 +1423,7 @@ type ComponentSectionsIframe {
   iframeWidth: ENUM_COMPONENTSECTIONSIFRAME_IFRAMEWIDTH!
   text: String
   title: String
+  titleLevel: ENUM_COMPONENTSECTIONSIFRAME_TITLELEVEL
   url: String!
 }
 
@@ -1423,6 +1439,7 @@ input ComponentSectionsIframeFiltersInput {
   or: [ComponentSectionsIframeFiltersInput]
   text: StringFilterInput
   title: StringFilterInput
+  titleLevel: StringFilterInput
   url: StringFilterInput
 }
 
@@ -1436,6 +1453,7 @@ input ComponentSectionsIframeInput {
   iframeWidth: ENUM_COMPONENTSECTIONSIFRAME_IFRAMEWIDTH
   text: String
   title: String
+  titleLevel: ENUM_COMPONENTSECTIONSIFRAME_TITLELEVEL
   url: String
 }
 
@@ -1588,6 +1606,7 @@ type ComponentSectionsPartners {
   partners(filters: ComponentBlocksPartnerFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksPartner]!
   text: String
   title: String
+  titleLevel: ENUM_COMPONENTSECTIONSPARTNERS_TITLELEVEL
 }
 
 input ComponentSectionsPartnersFiltersInput {
@@ -1598,6 +1617,7 @@ input ComponentSectionsPartnersFiltersInput {
   partners: ComponentBlocksPartnerFiltersInput
   text: StringFilterInput
   title: StringFilterInput
+  titleLevel: StringFilterInput
 }
 
 input ComponentSectionsPartnersInput {
@@ -1606,6 +1626,7 @@ input ComponentSectionsPartnersInput {
   partners: [ComponentBlocksPartnerInput]
   text: String
   title: String
+  titleLevel: ENUM_COMPONENTSECTIONSPARTNERS_TITLELEVEL
 }
 
 type ComponentSectionsProsAndConsSection {
@@ -1786,6 +1807,7 @@ type ComponentSectionsVideos {
   id: ID!
   subtitle: String
   title: String
+  titleLevel: ENUM_COMPONENTSECTIONSVIDEOS_TITLELEVEL
   videos(filters: ComponentBlocksVideoFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksVideo]
 }
 
@@ -1795,6 +1817,7 @@ input ComponentSectionsVideosFiltersInput {
   or: [ComponentSectionsVideosFiltersInput]
   subtitle: StringFilterInput
   title: StringFilterInput
+  titleLevel: StringFilterInput
   videos: ComponentBlocksVideoFiltersInput
 }
 
@@ -1802,6 +1825,7 @@ input ComponentSectionsVideosInput {
   id: ID
   subtitle: String
   title: String
+  titleLevel: ENUM_COMPONENTSECTIONSVIDEOS_TITLELEVEL
   videos: [ComponentBlocksVideoInput]
 }
 
@@ -2087,6 +2111,11 @@ enum ENUM_COMPONENTMENUMENUSECTION_ICON {
   zivotne_prostredie_03
 }
 
+enum ENUM_COMPONENTSECTIONSACCORDION_TITLELEVEL {
+  h2
+  h3
+}
+
 enum ENUM_COMPONENTSECTIONSBANNER_CONTENTPOSITION {
   left
   right
@@ -2113,6 +2142,11 @@ enum ENUM_COMPONENTSECTIONSCOMPARISONSECTION_TEXTALIGN {
   left
 }
 
+enum ENUM_COMPONENTSECTIONSCONTACTSSECTION_TITLELEVEL {
+  h2
+  h3
+}
+
 enum ENUM_COMPONENTSECTIONSDIVIDER_STYLE {
   bicykel_02_full_width
   budovy_04_full_width
@@ -2135,9 +2169,29 @@ enum ENUM_COMPONENTSECTIONSDOCUMENTS_TITLELEVEL {
   h3
 }
 
+enum ENUM_COMPONENTSECTIONSFAQS_TITLELEVEL {
+  h2
+  h3
+}
+
+enum ENUM_COMPONENTSECTIONSFILELIST_TITLELEVEL {
+  h2
+  h3
+}
+
+enum ENUM_COMPONENTSECTIONSGALLERY_TITLELEVEL {
+  h2
+  h3
+}
+
 enum ENUM_COMPONENTSECTIONSIFRAME_IFRAMEWIDTH {
   container
   full
+}
+
+enum ENUM_COMPONENTSECTIONSIFRAME_TITLELEVEL {
+  h2
+  h3
 }
 
 enum ENUM_COMPONENTSECTIONSLINKS_TITLELEVEL {
@@ -2163,6 +2217,11 @@ enum ENUM_COMPONENTSECTIONSPARTNERS_LOGORATIO {
   ratio_4_3
 }
 
+enum ENUM_COMPONENTSECTIONSPARTNERS_TITLELEVEL {
+  h2
+  h3
+}
+
 enum ENUM_COMPONENTSECTIONSPROSANDCONSSECTION_TEXTALIGN {
   center
   left
@@ -2183,6 +2242,11 @@ enum ENUM_COMPONENTSECTIONSTEXTWITHIMAGE_IMAGEASPECTRATIO {
 enum ENUM_COMPONENTSECTIONSTEXTWITHIMAGE_IMAGEPOSITION {
   left
   right
+}
+
+enum ENUM_COMPONENTSECTIONSVIDEOS_TITLELEVEL {
+  h2
+  h3
 }
 
 enum ENUM_PAGECATEGORY_COLOR {

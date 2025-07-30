@@ -14,8 +14,16 @@
     },
     "fileList": {
       "type": "component",
-      "repeatable": true,
-      "component": "blocks.file"
+      "component": "blocks.file",
+      "repeatable": true
+    },
+    "titleLevel": {
+      "type": "enumeration",
+      "default": "h2",
+      "enum": [
+        "h2",
+        "h3"
+      ]
     }
   }
 }

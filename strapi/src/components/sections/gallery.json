@@ -20,6 +20,14 @@
       "allowedTypes": [
         "images"
       ]
+    },
+    "titleLevel": {
+      "type": "enumeration",
+      "default": "h2",
+      "enum": [
+        "h2",
+        "h3"
+      ]
     }
   }
 }

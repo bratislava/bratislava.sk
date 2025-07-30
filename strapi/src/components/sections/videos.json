@@ -10,12 +10,20 @@
       "type": "string"
     },
     "subtitle": {
-      "type": "text"
+      "type": "string"
     },
     "videos": {
       "type": "component",
       "component": "blocks.video",
       "repeatable": true
+    },
+    "titleLevel": {
+      "type": "enumeration",
+      "default": "h2",
+      "enum": [
+        "h2",
+        "h3"
+      ]
     }
   }
 }

@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { getCardTitleLevel } from '@/src/components/cards/getCardTitleLevel'
 import FaqsGroup from '@/src/components/common/FaqsGroup/FaqsGroup'
 import SectionContainer from '@/src/components/layouts/SectionContainer'
 import SectionHeader from '@/src/components/layouts/SectionHeader'
@@ -15,16 +16,19 @@ type Props = {
  */
 
 const FaqsSection = ({ section }: Props) => {
-  const { title, text, faqs } = section ?? {}
+  const { title, text, faqs, titleLevelFaqsSection: titleLevel } = section ?? {}
 
   const filteredFaqs = faqs.filter(isDefined) ?? []
+
+  // If no section title is provided, accordions act as h2, otherwise they accommodate to section titleLevel
+  const accordionTitleLevel = title ? getCardTitleLevel(titleLevel) : 'h2'
 
   return (
     <SectionContainer>
       <div className="flex flex-col gap-6 lg:gap-12">
-        <SectionHeader title={title} text={text} />
+        <SectionHeader title={title} titleLevel={titleLevel} text={text} />
 
-        <FaqsGroup faqs={filteredFaqs} />
+        <FaqsGroup faqs={filteredFaqs} accordionTitleLevel={accordionTitleLevel} />
       </div>
     </SectionContainer>
   )

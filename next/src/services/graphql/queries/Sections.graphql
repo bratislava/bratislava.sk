@@ -4,6 +4,7 @@ fragment GallerySection on ComponentSectionsGallery {
   medias(pagination: { limit: -1 }) {
     ...UploadImageEntity
   }
+  titleLevelGallerySection: titleLevel
 }
 
 fragment ArticlesSection on ComponentSectionsArticles {
@@ -62,6 +63,7 @@ fragment IframeSection on ComponentSectionsIframe {
   allowFullscreen
   css
   allowGeolocation
+  titleLevelIframeSection: titleLevel
 }
 
 fragment FileBlock on ComponentBlocksFile {
@@ -78,6 +80,7 @@ fragment FileListSection on ComponentSectionsFileList {
   fileList(pagination: { limit: -1 }) {
     ...FileBlock
   }
+  titleLevelFileListSection: titleLevel
 }
 
 fragment FileItemBlock on ComponentBlocksFileItem {
@@ -167,6 +170,7 @@ fragment AccordionSection on ComponentSectionsAccordion {
   institutionsNarrow(pagination: { limit: -1 }) {
     ...ComponentAccordionItemsInstitutionNarrow
   }
+  titleLevelAccordionSection: titleLevel
 }
 
 fragment CalculatorSection on ComponentSectionsCalculator {
@@ -189,6 +193,7 @@ fragment VideosSection on ComponentSectionsVideos {
   videos {
     ...VideoBlock
   }
+  titleLevelVideosSection: titleLevel
 }
 
 fragment NumericalListItemBlock on ComponentBlocksNumericalListItem {
@@ -307,6 +312,7 @@ fragment ContactsSection on ComponentSectionsContactsSection {
   personContacts {
     ...ContactPersonCardBlock
   }
+  titleLevelContactsSection: titleLevel
 }
 
 fragment RegulationsSection on ComponentSectionsRegulations {
@@ -321,6 +327,7 @@ fragment FaqsSection on ComponentSectionsFaqs {
   faqs {
     ...FaqEntity
   }
+  titleLevelFaqsSection: titleLevel
 }
 
 fragment FaqCategoriesSection on ComponentSectionsFaqCategories {
@@ -355,6 +362,7 @@ fragment PartnersSection on ComponentSectionsPartners {
     ...PartnerBlock
   }
   logoRatio
+  titleLevelPartnersSection: titleLevel
 }
 
 fragment DocumentsSection on ComponentSectionsDocuments {
