@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_sections_numbers_overviews",
+  "info": {
+    "displayName": "Numbers Overview"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "text": {
+      "type": "text"
+    },
+    "showMoreLink": {
+      "type": "component",
+      "component": "blocks.common-link",
+      "repeatable": false
+    },
+    "items": {
+      "type": "component",
+      "component": "blocks.numbers-overview-item",
+      "repeatable": true,
+      "min": 1,
+      "max": 4
+    }
+  },
+  "config": {}
+}

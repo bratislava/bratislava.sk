@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_blocks_numbers_overview_items",
+  "info": {
+    "displayName": "numbersOverviewItem"
+  },
+  "options": {},
+  "attributes": {
+    "number": {
+      "type": "integer"
+    },
+    "text": {
+      "type": "text"
+    }
+  },
+  "config": {}
+}
