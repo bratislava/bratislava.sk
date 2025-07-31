@@ -1193,6 +1193,7 @@ export type ComponentSectionsAccordion = {
   institutions?: Maybe<Array<Maybe<ComponentAccordionItemsInstitution>>>
   institutionsNarrow?: Maybe<Array<Maybe<ComponentAccordionItemsInstitutionNarrow>>>
   title?: Maybe<Scalars['String']['output']>
+  titleLevel?: Maybe<Enum_Componentsectionsaccordion_Titlelevel>
 }
 
 export type ComponentSectionsAccordionFlatTextArgs = {
@@ -1221,6 +1222,7 @@ export type ComponentSectionsAccordionFiltersInput = {
   not?: InputMaybe<ComponentSectionsAccordionFiltersInput>
   or?: InputMaybe<Array<InputMaybe<ComponentSectionsAccordionFiltersInput>>>
   title?: InputMaybe<StringFilterInput>
+  titleLevel?: InputMaybe<StringFilterInput>
 }
 
 export type ComponentSectionsAccordionInput = {
@@ -1229,6 +1231,7 @@ export type ComponentSectionsAccordionInput = {
   institutions?: InputMaybe<Array<InputMaybe<ComponentAccordionItemsInstitutionInput>>>
   institutionsNarrow?: InputMaybe<Array<InputMaybe<ComponentAccordionItemsInstitutionNarrowInput>>>
   title?: InputMaybe<Scalars['String']['input']>
+  titleLevel?: InputMaybe<Enum_Componentsectionsaccordion_Titlelevel>
 }
 
 export type ComponentSectionsArticles = {
@@ -1420,6 +1423,7 @@ export type ComponentSectionsContactsSection = {
   personContacts?: Maybe<Array<Maybe<ComponentBlocksContactPersonCard>>>
   phoneContacts?: Maybe<Array<Maybe<ComponentBlocksContactCard>>>
   title?: Maybe<Scalars['String']['output']>
+  titleLevel?: Maybe<Enum_Componentsectionscontactssection_Titlelevel>
   webContacts?: Maybe<Array<Maybe<ComponentBlocksContactCard>>>
 }
 
@@ -1470,6 +1474,7 @@ export type ComponentSectionsContactsSectionFiltersInput = {
   personContacts?: InputMaybe<ComponentBlocksContactPersonCardFiltersInput>
   phoneContacts?: InputMaybe<ComponentBlocksContactCardFiltersInput>
   title?: InputMaybe<StringFilterInput>
+  titleLevel?: InputMaybe<StringFilterInput>
   webContacts?: InputMaybe<ComponentBlocksContactCardFiltersInput>
 }
 
@@ -1482,6 +1487,7 @@ export type ComponentSectionsContactsSectionInput = {
   personContacts?: InputMaybe<Array<InputMaybe<ComponentBlocksContactPersonCardInput>>>
   phoneContacts?: InputMaybe<Array<InputMaybe<ComponentBlocksContactCardInput>>>
   title?: InputMaybe<Scalars['String']['input']>
+  titleLevel?: InputMaybe<Enum_Componentsectionscontactssection_Titlelevel>
   webContacts?: InputMaybe<Array<InputMaybe<ComponentBlocksContactCardInput>>>
 }
 
@@ -1511,6 +1517,7 @@ export type ComponentSectionsDocuments = {
   showAll?: Maybe<Scalars['Boolean']['output']>
   text?: Maybe<Scalars['String']['output']>
   title?: Maybe<Scalars['String']['output']>
+  titleLevel?: Maybe<Enum_Componentsectionsdocuments_Titlelevel>
 }
 
 export type ComponentSectionsDocumentsDocumentsArgs = {
@@ -1533,6 +1540,7 @@ export type ComponentSectionsDocumentsFiltersInput = {
   showAll?: InputMaybe<BooleanFilterInput>
   text?: InputMaybe<StringFilterInput>
   title?: InputMaybe<StringFilterInput>
+  titleLevel?: InputMaybe<StringFilterInput>
 }
 
 export type ComponentSectionsDocumentsInput = {
@@ -1541,6 +1549,7 @@ export type ComponentSectionsDocumentsInput = {
   showAll?: InputMaybe<Scalars['Boolean']['input']>
   text?: InputMaybe<Scalars['String']['input']>
   title?: InputMaybe<Scalars['String']['input']>
+  titleLevel?: InputMaybe<Enum_Componentsectionsdocuments_Titlelevel>
 }
 
 export type ComponentSectionsFaqCategories = {
@@ -1587,6 +1596,7 @@ export type ComponentSectionsFaqs = {
   id: Scalars['ID']['output']
   text?: Maybe<Scalars['String']['output']>
   title?: Maybe<Scalars['String']['output']>
+  titleLevel?: Maybe<Enum_Componentsectionsfaqs_Titlelevel>
 }
 
 export type ComponentSectionsFaqsFaqsArgs = {
@@ -1608,6 +1618,7 @@ export type ComponentSectionsFaqsFiltersInput = {
   or?: InputMaybe<Array<InputMaybe<ComponentSectionsFaqsFiltersInput>>>
   text?: InputMaybe<StringFilterInput>
   title?: InputMaybe<StringFilterInput>
+  titleLevel?: InputMaybe<StringFilterInput>
 }
 
 export type ComponentSectionsFaqsInput = {
@@ -1615,6 +1626,7 @@ export type ComponentSectionsFaqsInput = {
   id?: InputMaybe<Scalars['ID']['input']>
   text?: InputMaybe<Scalars['String']['input']>
   title?: InputMaybe<Scalars['String']['input']>
+  titleLevel?: InputMaybe<Enum_Componentsectionsfaqs_Titlelevel>
 }
 
 export type ComponentSectionsFileList = {
@@ -1623,6 +1635,7 @@ export type ComponentSectionsFileList = {
   id: Scalars['ID']['output']
   text?: Maybe<Scalars['String']['output']>
   title?: Maybe<Scalars['String']['output']>
+  titleLevel?: Maybe<Enum_Componentsectionsfilelist_Titlelevel>
 }
 
 export type ComponentSectionsFileListFileListArgs = {
@@ -1638,6 +1651,7 @@ export type ComponentSectionsFileListFiltersInput = {
   or?: InputMaybe<Array<InputMaybe<ComponentSectionsFileListFiltersInput>>>
   text?: InputMaybe<StringFilterInput>
   title?: InputMaybe<StringFilterInput>
+  titleLevel?: InputMaybe<StringFilterInput>
 }
 
 export type ComponentSectionsFileListInput = {
@@ -1645,6 +1659,7 @@ export type ComponentSectionsFileListInput = {
   id?: InputMaybe<Scalars['ID']['input']>
   text?: InputMaybe<Scalars['String']['input']>
   title?: InputMaybe<Scalars['String']['input']>
+  titleLevel?: InputMaybe<Enum_Componentsectionsfilelist_Titlelevel>
 }
 
 export type ComponentSectionsGallery = {
@@ -1654,6 +1669,7 @@ export type ComponentSectionsGallery = {
   medias_connection: UploadFileRelationResponseCollection
   text?: Maybe<Scalars['String']['output']>
   title?: Maybe<Scalars['String']['output']>
+  titleLevel?: Maybe<Enum_Componentsectionsgallery_Titlelevel>
 }
 
 export type ComponentSectionsGalleryMediasArgs = {
@@ -1674,6 +1690,7 @@ export type ComponentSectionsGalleryFiltersInput = {
   or?: InputMaybe<Array<InputMaybe<ComponentSectionsGalleryFiltersInput>>>
   text?: InputMaybe<StringFilterInput>
   title?: InputMaybe<StringFilterInput>
+  titleLevel?: InputMaybe<StringFilterInput>
 }
 
 export type ComponentSectionsGalleryInput = {
@@ -1681,6 +1698,7 @@ export type ComponentSectionsGalleryInput = {
   medias?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
   text?: InputMaybe<Scalars['String']['input']>
   title?: InputMaybe<Scalars['String']['input']>
+  titleLevel?: InputMaybe<Enum_Componentsectionsgallery_Titlelevel>
 }
 
 export type ComponentSectionsHomepageEvents = {
@@ -1805,6 +1823,7 @@ export type ComponentSectionsIframe = {
   iframeWidth: Enum_Componentsectionsiframe_Iframewidth
   text?: Maybe<Scalars['String']['output']>
   title?: Maybe<Scalars['String']['output']>
+  titleLevel?: Maybe<Enum_Componentsectionsiframe_Titlelevel>
   url: Scalars['String']['output']
 }
 
@@ -1820,6 +1839,7 @@ export type ComponentSectionsIframeFiltersInput = {
   or?: InputMaybe<Array<InputMaybe<ComponentSectionsIframeFiltersInput>>>
   text?: InputMaybe<StringFilterInput>
   title?: InputMaybe<StringFilterInput>
+  titleLevel?: InputMaybe<StringFilterInput>
   url?: InputMaybe<StringFilterInput>
 }
 
@@ -1833,6 +1853,7 @@ export type ComponentSectionsIframeInput = {
   iframeWidth?: InputMaybe<Enum_Componentsectionsiframe_Iframewidth>
   text?: InputMaybe<Scalars['String']['input']>
   title?: InputMaybe<Scalars['String']['input']>
+  titleLevel?: InputMaybe<Enum_Componentsectionsiframe_Titlelevel>
   url?: InputMaybe<Scalars['String']['input']>
 }
 
@@ -1883,6 +1904,7 @@ export type ComponentSectionsLinks = {
   id: Scalars['ID']['output']
   pageLinks?: Maybe<Array<Maybe<ComponentBlocksPageLink>>>
   title?: Maybe<Scalars['String']['output']>
+  titleLevel?: Maybe<Enum_Componentsectionslinks_Titlelevel>
 }
 
 export type ComponentSectionsLinksPageLinksArgs = {
@@ -1897,12 +1919,14 @@ export type ComponentSectionsLinksFiltersInput = {
   or?: InputMaybe<Array<InputMaybe<ComponentSectionsLinksFiltersInput>>>
   pageLinks?: InputMaybe<ComponentBlocksPageLinkFiltersInput>
   title?: InputMaybe<StringFilterInput>
+  titleLevel?: InputMaybe<StringFilterInput>
 }
 
 export type ComponentSectionsLinksInput = {
   id?: InputMaybe<Scalars['ID']['input']>
   pageLinks?: InputMaybe<Array<InputMaybe<ComponentBlocksPageLinkInput>>>
   title?: InputMaybe<Scalars['String']['input']>
+  titleLevel?: InputMaybe<Enum_Componentsectionslinks_Titlelevel>
 }
 
 export type ComponentSectionsNarrowText = {
@@ -2002,6 +2026,7 @@ export type ComponentSectionsPartners = {
   partners: Array<Maybe<ComponentBlocksPartner>>
   text?: Maybe<Scalars['String']['output']>
   title?: Maybe<Scalars['String']['output']>
+  titleLevel?: Maybe<Enum_Componentsectionspartners_Titlelevel>
 }
 
 export type ComponentSectionsPartnersPartnersArgs = {
@@ -2018,6 +2043,7 @@ export type ComponentSectionsPartnersFiltersInput = {
   partners?: InputMaybe<ComponentBlocksPartnerFiltersInput>
   text?: InputMaybe<StringFilterInput>
   title?: InputMaybe<StringFilterInput>
+  titleLevel?: InputMaybe<StringFilterInput>
 }
 
 export type ComponentSectionsPartnersInput = {
@@ -2026,6 +2052,7 @@ export type ComponentSectionsPartnersInput = {
   partners?: InputMaybe<Array<InputMaybe<ComponentBlocksPartnerInput>>>
   text?: InputMaybe<Scalars['String']['input']>
   title?: InputMaybe<Scalars['String']['input']>
+  titleLevel?: InputMaybe<Enum_Componentsectionspartners_Titlelevel>
 }
 
 export type ComponentSectionsProsAndConsSection = {
@@ -2251,6 +2278,7 @@ export type ComponentSectionsVideos = {
   id: Scalars['ID']['output']
   subtitle?: Maybe<Scalars['String']['output']>
   title?: Maybe<Scalars['String']['output']>
+  titleLevel?: Maybe<Enum_Componentsectionsvideos_Titlelevel>
   videos?: Maybe<Array<Maybe<ComponentBlocksVideo>>>
 }
 
@@ -2266,6 +2294,7 @@ export type ComponentSectionsVideosFiltersInput = {
   or?: InputMaybe<Array<InputMaybe<ComponentSectionsVideosFiltersInput>>>
   subtitle?: InputMaybe<StringFilterInput>
   title?: InputMaybe<StringFilterInput>
+  titleLevel?: InputMaybe<StringFilterInput>
   videos?: InputMaybe<ComponentBlocksVideoFiltersInput>
 }
 
@@ -2273,6 +2302,7 @@ export type ComponentSectionsVideosInput = {
   id?: InputMaybe<Scalars['ID']['input']>
   subtitle?: InputMaybe<Scalars['String']['input']>
   title?: InputMaybe<Scalars['String']['input']>
+  titleLevel?: InputMaybe<Enum_Componentsectionsvideos_Titlelevel>
   videos?: InputMaybe<Array<InputMaybe<ComponentBlocksVideoInput>>>
 }
 
@@ -2597,6 +2627,11 @@ export enum Enum_Componentmenumenusection_Icon {
   ZivotneProstredie_03 = 'zivotne_prostredie_03',
 }
 
+export enum Enum_Componentsectionsaccordion_Titlelevel {
+  H2 = 'h2',
+  H3 = 'h3',
+}
+
 export enum Enum_Componentsectionsbanner_Contentposition {
   Left = 'left',
   Right = 'right',
@@ -2623,6 +2658,11 @@ export enum Enum_Componentsectionscomparisonsection_Textalign {
   Left = 'left',
 }
 
+export enum Enum_Componentsectionscontactssection_Titlelevel {
+  H2 = 'h2',
+  H3 = 'h3',
+}
+
 export enum Enum_Componentsectionsdivider_Style {
   Bicykel_02FullWidth = 'bicykel_02_full_width',
   Budovy_04FullWidth = 'budovy_04_full_width',
@@ -2640,9 +2680,39 @@ export enum Enum_Componentsectionsdivider_Style {
   Vzdelavanie = 'vzdelavanie',
 }
 
+export enum Enum_Componentsectionsdocuments_Titlelevel {
+  H2 = 'h2',
+  H3 = 'h3',
+}
+
+export enum Enum_Componentsectionsfaqs_Titlelevel {
+  H2 = 'h2',
+  H3 = 'h3',
+}
+
+export enum Enum_Componentsectionsfilelist_Titlelevel {
+  H2 = 'h2',
+  H3 = 'h3',
+}
+
+export enum Enum_Componentsectionsgallery_Titlelevel {
+  H2 = 'h2',
+  H3 = 'h3',
+}
+
 export enum Enum_Componentsectionsiframe_Iframewidth {
   Container = 'container',
   Full = 'full',
+}
+
+export enum Enum_Componentsectionsiframe_Titlelevel {
+  H2 = 'h2',
+  H3 = 'h3',
+}
+
+export enum Enum_Componentsectionslinks_Titlelevel {
+  H2 = 'h2',
+  H3 = 'h3',
 }
 
 export enum Enum_Componentsectionsnarrowtext_Width {
@@ -2661,6 +2731,11 @@ export enum Enum_Componentsectionsnumericallist_Variant {
 export enum Enum_Componentsectionspartners_Logoratio {
   Ratio_4_1 = 'ratio_4_1',
   Ratio_4_3 = 'ratio_4_3',
+}
+
+export enum Enum_Componentsectionspartners_Titlelevel {
+  H2 = 'h2',
+  H3 = 'h3',
 }
 
 export enum Enum_Componentsectionsprosandconssection_Textalign {
@@ -2683,6 +2758,11 @@ export enum Enum_Componentsectionstextwithimage_Imageaspectratio {
 export enum Enum_Componentsectionstextwithimage_Imageposition {
   Left = 'left',
   Right = 'right',
+}
+
+export enum Enum_Componentsectionsvideos_Titlelevel {
+  H2 = 'h2',
+  H3 = 'h3',
 }
 
 export enum Enum_Pagecategory_Color {
@@ -8275,6 +8355,7 @@ export type PageEntityFragment = {
     | {
         __typename: 'ComponentSectionsAccordion'
         title?: string | null
+        titleLevelAccordionSection?: Enum_Componentsectionsaccordion_Titlelevel | null
         institutions?: Array<{
           __typename?: 'ComponentAccordionItemsInstitution'
           title?: string | null
@@ -8454,6 +8535,7 @@ export type PageEntityFragment = {
         id: string
         title?: string | null
         description?: string | null
+        titleLevelContactsSection?: Enum_Componentsectionscontactssection_Titlelevel | null
         addressContacts?: Array<{
           __typename?: 'ComponentBlocksContactCard'
           overrideLabel?: string | null
@@ -8493,6 +8575,7 @@ export type PageEntityFragment = {
         title?: string | null
         text?: string | null
         showAll?: boolean | null
+        titleLevelDocumentsSection?: Enum_Componentsectionsdocuments_Titlelevel | null
         documents: Array<{
           __typename: 'Document'
           publishedAt?: any | null
@@ -8541,6 +8624,7 @@ export type PageEntityFragment = {
         __typename: 'ComponentSectionsFaqs'
         title?: string | null
         text?: string | null
+        titleLevelFaqsSection?: Enum_Componentsectionsfaqs_Titlelevel | null
         faqs: Array<{
           __typename?: 'Faq'
           documentId: string
@@ -8552,6 +8636,7 @@ export type PageEntityFragment = {
         __typename: 'ComponentSectionsFileList'
         title?: string | null
         text?: string | null
+        titleLevelFileListSection?: Enum_Componentsectionsfilelist_Titlelevel | null
         fileList?: Array<{
           __typename?: 'ComponentBlocksFile'
           id: string
@@ -8572,6 +8657,7 @@ export type PageEntityFragment = {
         __typename: 'ComponentSectionsGallery'
         title?: string | null
         text?: string | null
+        titleLevelGallerySection?: Enum_Componentsectionsgallery_Titlelevel | null
         medias: Array<{
           __typename?: 'UploadFile'
           documentId: string
@@ -8594,6 +8680,7 @@ export type PageEntityFragment = {
         allowFullscreen: boolean
         css?: string | null
         allowGeolocation?: boolean | null
+        titleLevelIframeSection?: Enum_Componentsectionsiframe_Titlelevel | null
       }
     | {
         __typename: 'ComponentSectionsInbaArticlesList'
@@ -8604,6 +8691,7 @@ export type PageEntityFragment = {
     | {
         __typename: 'ComponentSectionsLinks'
         title?: string | null
+        titleLevelLinksSection?: Enum_Componentsectionslinks_Titlelevel | null
         pageLinks?: Array<{
           __typename?: 'ComponentBlocksPageLink'
           url?: string | null
@@ -8642,6 +8730,7 @@ export type PageEntityFragment = {
         title?: string | null
         text?: string | null
         logoRatio: Enum_Componentsectionspartners_Logoratio
+        titleLevelPartnersSection?: Enum_Componentsectionspartners_Titlelevel | null
         partners: Array<{
           __typename?: 'ComponentBlocksPartner'
           title: string
@@ -8869,6 +8958,7 @@ export type PageEntityFragment = {
         id: string
         title?: string | null
         subtitle?: string | null
+        titleLevelVideosSection?: Enum_Componentsectionsvideos_Titlelevel | null
         videos?: Array<{
           __typename?: 'ComponentBlocksVideo'
           id: string
@@ -8993,6 +9083,7 @@ export type PageBySlugQuery = {
       | {
           __typename: 'ComponentSectionsAccordion'
           title?: string | null
+          titleLevelAccordionSection?: Enum_Componentsectionsaccordion_Titlelevel | null
           institutions?: Array<{
             __typename?: 'ComponentAccordionItemsInstitution'
             title?: string | null
@@ -9172,6 +9263,7 @@ export type PageBySlugQuery = {
           id: string
           title?: string | null
           description?: string | null
+          titleLevelContactsSection?: Enum_Componentsectionscontactssection_Titlelevel | null
           addressContacts?: Array<{
             __typename?: 'ComponentBlocksContactCard'
             overrideLabel?: string | null
@@ -9214,6 +9306,7 @@ export type PageBySlugQuery = {
           title?: string | null
           text?: string | null
           showAll?: boolean | null
+          titleLevelDocumentsSection?: Enum_Componentsectionsdocuments_Titlelevel | null
           documents: Array<{
             __typename: 'Document'
             publishedAt?: any | null
@@ -9262,6 +9355,7 @@ export type PageBySlugQuery = {
           __typename: 'ComponentSectionsFaqs'
           title?: string | null
           text?: string | null
+          titleLevelFaqsSection?: Enum_Componentsectionsfaqs_Titlelevel | null
           faqs: Array<{
             __typename?: 'Faq'
             documentId: string
@@ -9273,6 +9367,7 @@ export type PageBySlugQuery = {
           __typename: 'ComponentSectionsFileList'
           title?: string | null
           text?: string | null
+          titleLevelFileListSection?: Enum_Componentsectionsfilelist_Titlelevel | null
           fileList?: Array<{
             __typename?: 'ComponentBlocksFile'
             id: string
@@ -9293,6 +9388,7 @@ export type PageBySlugQuery = {
           __typename: 'ComponentSectionsGallery'
           title?: string | null
           text?: string | null
+          titleLevelGallerySection?: Enum_Componentsectionsgallery_Titlelevel | null
           medias: Array<{
             __typename?: 'UploadFile'
             documentId: string
@@ -9315,6 +9411,7 @@ export type PageBySlugQuery = {
           allowFullscreen: boolean
           css?: string | null
           allowGeolocation?: boolean | null
+          titleLevelIframeSection?: Enum_Componentsectionsiframe_Titlelevel | null
         }
       | {
           __typename: 'ComponentSectionsInbaArticlesList'
@@ -9325,6 +9422,7 @@ export type PageBySlugQuery = {
       | {
           __typename: 'ComponentSectionsLinks'
           title?: string | null
+          titleLevelLinksSection?: Enum_Componentsectionslinks_Titlelevel | null
           pageLinks?: Array<{
             __typename?: 'ComponentBlocksPageLink'
             url?: string | null
@@ -9363,6 +9461,7 @@ export type PageBySlugQuery = {
           title?: string | null
           text?: string | null
           logoRatio: Enum_Componentsectionspartners_Logoratio
+          titleLevelPartnersSection?: Enum_Componentsectionspartners_Titlelevel | null
           partners: Array<{
             __typename?: 'ComponentBlocksPartner'
             title: string
@@ -9590,6 +9689,7 @@ export type PageBySlugQuery = {
           id: string
           title?: string | null
           subtitle?: string | null
+          titleLevelVideosSection?: Enum_Componentsectionsvideos_Titlelevel | null
           videos?: Array<{
             __typename?: 'ComponentBlocksVideo'
             id: string
@@ -9740,6 +9840,7 @@ export type Dev_AllPagesQuery = {
       | {
           __typename: 'ComponentSectionsAccordion'
           title?: string | null
+          titleLevelAccordionSection?: Enum_Componentsectionsaccordion_Titlelevel | null
           institutions?: Array<{
             __typename?: 'ComponentAccordionItemsInstitution'
             title?: string | null
@@ -9919,6 +10020,7 @@ export type Dev_AllPagesQuery = {
           id: string
           title?: string | null
           description?: string | null
+          titleLevelContactsSection?: Enum_Componentsectionscontactssection_Titlelevel | null
           addressContacts?: Array<{
             __typename?: 'ComponentBlocksContactCard'
             overrideLabel?: string | null
@@ -9961,6 +10063,7 @@ export type Dev_AllPagesQuery = {
           title?: string | null
           text?: string | null
           showAll?: boolean | null
+          titleLevelDocumentsSection?: Enum_Componentsectionsdocuments_Titlelevel | null
           documents: Array<{
             __typename: 'Document'
             publishedAt?: any | null
@@ -10009,6 +10112,7 @@ export type Dev_AllPagesQuery = {
           __typename: 'ComponentSectionsFaqs'
           title?: string | null
           text?: string | null
+          titleLevelFaqsSection?: Enum_Componentsectionsfaqs_Titlelevel | null
           faqs: Array<{
             __typename?: 'Faq'
             documentId: string
@@ -10020,6 +10124,7 @@ export type Dev_AllPagesQuery = {
           __typename: 'ComponentSectionsFileList'
           title?: string | null
           text?: string | null
+          titleLevelFileListSection?: Enum_Componentsectionsfilelist_Titlelevel | null
           fileList?: Array<{
             __typename?: 'ComponentBlocksFile'
             id: string
@@ -10040,6 +10145,7 @@ export type Dev_AllPagesQuery = {
           __typename: 'ComponentSectionsGallery'
           title?: string | null
           text?: string | null
+          titleLevelGallerySection?: Enum_Componentsectionsgallery_Titlelevel | null
           medias: Array<{
             __typename?: 'UploadFile'
             documentId: string
@@ -10062,6 +10168,7 @@ export type Dev_AllPagesQuery = {
           allowFullscreen: boolean
           css?: string | null
           allowGeolocation?: boolean | null
+          titleLevelIframeSection?: Enum_Componentsectionsiframe_Titlelevel | null
         }
       | {
           __typename: 'ComponentSectionsInbaArticlesList'
@@ -10072,6 +10179,7 @@ export type Dev_AllPagesQuery = {
       | {
           __typename: 'ComponentSectionsLinks'
           title?: string | null
+          titleLevelLinksSection?: Enum_Componentsectionslinks_Titlelevel | null
           pageLinks?: Array<{
             __typename?: 'ComponentBlocksPageLink'
             url?: string | null
@@ -10110,6 +10218,7 @@ export type Dev_AllPagesQuery = {
           title?: string | null
           text?: string | null
           logoRatio: Enum_Componentsectionspartners_Logoratio
+          titleLevelPartnersSection?: Enum_Componentsectionspartners_Titlelevel | null
           partners: Array<{
             __typename?: 'ComponentBlocksPartner'
             title: string
@@ -10337,6 +10446,7 @@ export type Dev_AllPagesQuery = {
           id: string
           title?: string | null
           subtitle?: string | null
+          titleLevelVideosSection?: Enum_Componentsectionsvideos_Titlelevel | null
           videos?: Array<{
             __typename?: 'ComponentBlocksVideo'
             id: string
@@ -10965,6 +11075,7 @@ export type GallerySectionFragment = {
   __typename?: 'ComponentSectionsGallery'
   title?: string | null
   text?: string | null
+  titleLevelGallerySection?: Enum_Componentsectionsgallery_Titlelevel | null
   medias: Array<{
     __typename?: 'UploadFile'
     documentId: string
@@ -11091,6 +11202,7 @@ export type IframeSectionFragment = {
   allowFullscreen: boolean
   css?: string | null
   allowGeolocation?: boolean | null
+  titleLevelIframeSection?: Enum_Componentsectionsiframe_Titlelevel | null
 }
 
 export type FileBlockFragment = {
@@ -11113,6 +11225,7 @@ export type FileListSectionFragment = {
   __typename?: 'ComponentSectionsFileList'
   title?: string | null
   text?: string | null
+  titleLevelFileListSection?: Enum_Componentsectionsfilelist_Titlelevel | null
   fileList?: Array<{
     __typename?: 'ComponentBlocksFile'
     id: string
@@ -11200,6 +11313,7 @@ export type NarrowTextSectionFragment = {
 export type LinksSectionFragment = {
   __typename?: 'ComponentSectionsLinks'
   title?: string | null
+  titleLevelLinksSection?: Enum_Componentsectionslinks_Titlelevel | null
   pageLinks?: Array<{
     __typename?: 'ComponentBlocksPageLink'
     url?: string | null
@@ -11269,6 +11383,7 @@ export type ComponentAccordionItemsInstitutionFragment = {
 export type AccordionSectionFragment = {
   __typename?: 'ComponentSectionsAccordion'
   title?: string | null
+  titleLevelAccordionSection?: Enum_Componentsectionsaccordion_Titlelevel | null
   institutions?: Array<{
     __typename?: 'ComponentAccordionItemsInstitution'
     title?: string | null
@@ -11339,6 +11454,7 @@ export type VideosSectionFragment = {
   id: string
   title?: string | null
   subtitle?: string | null
+  titleLevelVideosSection?: Enum_Componentsectionsvideos_Titlelevel | null
   videos?: Array<{
     __typename?: 'ComponentBlocksVideo'
     id: string
@@ -11502,6 +11618,7 @@ export type ContactsSectionFragment = {
   id: string
   title?: string | null
   description?: string | null
+  titleLevelContactsSection?: Enum_Componentsectionscontactssection_Titlelevel | null
   addressContacts?: Array<{
     __typename?: 'ComponentBlocksContactCard'
     overrideLabel?: string | null
@@ -11634,6 +11751,7 @@ export type FaqsSectionFragment = {
   __typename?: 'ComponentSectionsFaqs'
   title?: string | null
   text?: string | null
+  titleLevelFaqsSection?: Enum_Componentsectionsfaqs_Titlelevel | null
   faqs: Array<{
     __typename?: 'Faq'
     documentId: string
@@ -11708,6 +11826,7 @@ export type PartnersSectionFragment = {
   title?: string | null
   text?: string | null
   logoRatio: Enum_Componentsectionspartners_Logoratio
+  titleLevelPartnersSection?: Enum_Componentsectionspartners_Titlelevel | null
   partners: Array<{
     __typename?: 'ComponentBlocksPartner'
     title: string
@@ -11730,6 +11849,7 @@ export type DocumentsSectionFragment = {
   title?: string | null
   text?: string | null
   showAll?: boolean | null
+  titleLevelDocumentsSection?: Enum_Componentsectionsdocuments_Titlelevel | null
   documents: Array<{
     __typename: 'Document'
     publishedAt?: any | null
@@ -11760,6 +11880,7 @@ export type DocumentsSectionFragment = {
 type Sections_ComponentSectionsAccordion_Fragment = {
   __typename: 'ComponentSectionsAccordion'
   title?: string | null
+  titleLevelAccordionSection?: Enum_Componentsectionsaccordion_Titlelevel | null
   institutions?: Array<{
     __typename?: 'ComponentAccordionItemsInstitution'
     title?: string | null
@@ -11946,6 +12067,7 @@ type Sections_ComponentSectionsContactsSection_Fragment = {
   id: string
   title?: string | null
   description?: string | null
+  titleLevelContactsSection?: Enum_Componentsectionscontactssection_Titlelevel | null
   addressContacts?: Array<{
     __typename?: 'ComponentBlocksContactCard'
     overrideLabel?: string | null
@@ -11990,6 +12112,7 @@ type Sections_ComponentSectionsDocuments_Fragment = {
   title?: string | null
   text?: string | null
   showAll?: boolean | null
+  titleLevelDocumentsSection?: Enum_Componentsectionsdocuments_Titlelevel | null
   documents: Array<{
     __typename: 'Document'
     publishedAt?: any | null
@@ -12040,6 +12163,7 @@ type Sections_ComponentSectionsFaqs_Fragment = {
   __typename: 'ComponentSectionsFaqs'
   title?: string | null
   text?: string | null
+  titleLevelFaqsSection?: Enum_Componentsectionsfaqs_Titlelevel | null
   faqs: Array<{
     __typename?: 'Faq'
     documentId: string
@@ -12052,6 +12176,7 @@ type Sections_ComponentSectionsFileList_Fragment = {
   __typename: 'ComponentSectionsFileList'
   title?: string | null
   text?: string | null
+  titleLevelFileListSection?: Enum_Componentsectionsfilelist_Titlelevel | null
   fileList?: Array<{
     __typename?: 'ComponentBlocksFile'
     id: string
@@ -12073,6 +12198,7 @@ type Sections_ComponentSectionsGallery_Fragment = {
   __typename: 'ComponentSectionsGallery'
   title?: string | null
   text?: string | null
+  titleLevelGallerySection?: Enum_Componentsectionsgallery_Titlelevel | null
   medias: Array<{
     __typename?: 'UploadFile'
     documentId: string
@@ -12096,6 +12222,7 @@ type Sections_ComponentSectionsIframe_Fragment = {
   allowFullscreen: boolean
   css?: string | null
   allowGeolocation?: boolean | null
+  titleLevelIframeSection?: Enum_Componentsectionsiframe_Titlelevel | null
 }
 
 type Sections_ComponentSectionsInbaArticlesList_Fragment = {
@@ -12113,6 +12240,7 @@ type Sections_ComponentSectionsInbaReleases_Fragment = {
 type Sections_ComponentSectionsLinks_Fragment = {
   __typename: 'ComponentSectionsLinks'
   title?: string | null
+  titleLevelLinksSection?: Enum_Componentsectionslinks_Titlelevel | null
   pageLinks?: Array<{
     __typename?: 'ComponentBlocksPageLink'
     url?: string | null
@@ -12161,6 +12289,7 @@ type Sections_ComponentSectionsPartners_Fragment = {
   title?: string | null
   text?: string | null
   logoRatio: Enum_Componentsectionspartners_Logoratio
+  titleLevelPartnersSection?: Enum_Componentsectionspartners_Titlelevel | null
   partners: Array<{
     __typename?: 'ComponentBlocksPartner'
     title: string
@@ -12397,6 +12526,7 @@ type Sections_ComponentSectionsVideos_Fragment = {
   id: string
   title?: string | null
   subtitle?: string | null
+  titleLevelVideosSection?: Enum_Componentsectionsvideos_Titlelevel | null
   videos?: Array<{
     __typename?: 'ComponentBlocksVideo'
     id: string
@@ -13043,6 +13173,7 @@ export const IframeSectionFragmentDoc = gql`
     allowFullscreen
     css
     allowGeolocation
+    titleLevelIframeSection: titleLevel
   }
 `
 export const GallerySectionFragmentDoc = gql`
@@ -13052,6 +13183,7 @@ export const GallerySectionFragmentDoc = gql`
     medias(pagination: { limit: -1 }) {
       ...UploadImageEntity
     }
+    titleLevelGallerySection: titleLevel
   }
   ${UploadImageEntityFragmentDoc}
 `
@@ -13062,6 +13194,7 @@ export const FileListSectionFragmentDoc = gql`
     fileList(pagination: { limit: -1 }) {
       ...FileBlock
     }
+    titleLevelFileListSection: titleLevel
   }
   ${FileBlockFragmentDoc}
 `
@@ -13116,6 +13249,7 @@ export const LinksSectionFragmentDoc = gql`
     pageLinks(pagination: { limit: -1 }) {
       ...PageLink
     }
+    titleLevelLinksSection: titleLevel
   }
   ${PageLinkFragmentDoc}
 `
@@ -13178,6 +13312,7 @@ export const AccordionSectionFragmentDoc = gql`
     institutionsNarrow(pagination: { limit: -1 }) {
       ...ComponentAccordionItemsInstitutionNarrow
     }
+    titleLevelAccordionSection: titleLevel
   }
   ${ComponentAccordionItemsInstitutionFragmentDoc}
   ${ComponentAccordionItemsFlatTextFragmentDoc}
@@ -13206,6 +13341,7 @@ export const VideosSectionFragmentDoc = gql`
     videos {
       ...VideoBlock
     }
+    titleLevelVideosSection: titleLevel
   }
   ${VideoBlockFragmentDoc}
 `
@@ -13357,6 +13493,7 @@ export const ContactsSectionFragmentDoc = gql`
     personContacts {
       ...ContactPersonCardBlock
     }
+    titleLevelContactsSection: titleLevel
   }
   ${ContactCardBlockFragmentDoc}
   ${ContactPersonCardBlockFragmentDoc}
@@ -13447,6 +13584,7 @@ export const FaqsSectionFragmentDoc = gql`
     faqs {
       ...FaqEntity
     }
+    titleLevelFaqsSection: titleLevel
   }
   ${FaqEntityFragmentDoc}
 `
@@ -13490,6 +13628,7 @@ export const PartnersSectionFragmentDoc = gql`
       ...PartnerBlock
     }
     logoRatio
+    titleLevelPartnersSection: titleLevel
   }
   ${PartnerBlockFragmentDoc}
 `
@@ -13533,6 +13672,7 @@ export const DocumentsSectionFragmentDoc = gql`
       ...DocumentEntity
     }
     showAll
+    titleLevelDocumentsSection: titleLevel
   }
   ${DocumentEntityFragmentDoc}
 `

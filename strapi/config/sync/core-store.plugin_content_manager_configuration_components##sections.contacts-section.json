@@ -54,7 +54,8 @@
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true
+          "editable": true,
+          "mainField": "overrideLabel"
         },
         "list": {
           "label": "addressContacts",
@@ -68,7 +69,8 @@
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true
+          "editable": true,
+          "mainField": "overrideLabel"
         },
         "list": {
           "label": "openingHoursContacts",
@@ -82,7 +84,8 @@
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true
+          "editable": true,
+          "mainField": "overrideLabel"
         },
         "list": {
           "label": "emailContacts",
@@ -96,7 +99,8 @@
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true
+          "editable": true,
+          "mainField": "overrideLabel"
         },
         "list": {
           "label": "phoneContacts",
@@ -110,7 +114,8 @@
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true
+          "editable": true,
+          "mainField": "overrideLabel"
         },
         "list": {
           "label": "webContacts",
@@ -124,12 +129,27 @@
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true
+          "editable": true,
+          "mainField": "title"
         },
         "list": {
           "label": "personContacts",
           "searchable": false,
           "sortable": false
+        }
+      },
+      "titleLevel": {
+        "edit": {
+          "label": "Úroveň nadpisu sekcie",
+          "description": "Úroveň nadpisu meníme na h3 iba ak je to potrebné sémanticky. Nikdy ju nemeníme len kvôli vizuálnej veľkosti nadpisu.",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "titleLevel",
+          "searchable": true,
+          "sortable": true
         }
       },
       "documentId": {
@@ -142,12 +162,6 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "title",
-        "addressContacts",
-        "documentId"
-      ],
       "edit": [
         [
           {
@@ -196,7 +210,19 @@
             "name": "personContacts",
             "size": 12
           }
+        ],
+        [
+          {
+            "name": "titleLevel",
+            "size": 6
+          }
         ]
+      ],
+      "list": [
+        "id",
+        "title",
+        "addressContacts",
+        "documentId"
       ]
     },
     "isComponent": true

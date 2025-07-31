@@ -14,33 +14,41 @@
     },
     "addressContacts": {
       "type": "component",
-      "repeatable": true,
-      "component": "blocks.contact-card"
+      "component": "blocks.contact-card",
+      "repeatable": true
     },
     "openingHoursContacts": {
       "type": "component",
-      "repeatable": true,
-      "component": "blocks.contact-card"
+      "component": "blocks.contact-card",
+      "repeatable": true
     },
     "emailContacts": {
       "type": "component",
-      "repeatable": true,
-      "component": "blocks.contact-card"
+      "component": "blocks.contact-card",
+      "repeatable": true
     },
     "phoneContacts": {
       "type": "component",
-      "repeatable": true,
-      "component": "blocks.contact-card"
+      "component": "blocks.contact-card",
+      "repeatable": true
     },
     "webContacts": {
       "type": "component",
-      "repeatable": true,
-      "component": "blocks.contact-card"
+      "component": "blocks.contact-card",
+      "repeatable": true
     },
     "personContacts": {
       "type": "component",
-      "repeatable": true,
-      "component": "blocks.contact-person-card"
+      "component": "blocks.contact-person-card",
+      "repeatable": true
+    },
+    "titleLevel": {
+      "type": "enumeration",
+      "default": "h2",
+      "enum": [
+        "h2",
+        "h3"
+      ]
     }
   }
 }

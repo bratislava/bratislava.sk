@@ -1,6 +1,7 @@
 import { Typography } from '@bratislava/component-library'
 import slugify from '@sindresorhus/slugify'
 
+import { SectionTitleLevel } from '@/src/components/cards/getCardTitleLevel'
 import Button from '@/src/components/common/Button/Button'
 import { TABLE_OF_CONTENTS_HEADING_ATTRIBUTE } from '@/src/components/common/TableOfContents/useHeadings'
 import Markdown from '@/src/components/formatting/Markdown/Markdown'
@@ -11,6 +12,7 @@ import { getLinkProps } from '@/src/utils/getLinkProps'
 type SectionHeaderProps = {
   title?: string | null | undefined
   titleId?: string
+  titleLevel?: SectionTitleLevel | null | undefined
   text?: string | null | undefined
   asRichtext?: boolean
   isFullWidth?: boolean
@@ -27,6 +29,7 @@ type SectionHeaderProps = {
 const SectionHeader = ({
   title,
   titleId,
+  titleLevel,
   text,
   asRichtext = false,
   isFullWidth = false,
@@ -58,7 +61,7 @@ const SectionHeader = ({
           )}
         >
           {title ? (
-            <Typography variant="h2" id={titleId ?? slugify(title)}>
+            <Typography variant={titleLevel ?? 'h2'} id={titleId ?? slugify(title)}>
               {title}
             </Typography>
           ) : null}

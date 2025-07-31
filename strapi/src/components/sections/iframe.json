@@ -14,27 +14,30 @@
     },
     "url": {
       "type": "string",
-      "required": true,
-      "default": "https://www.google.com"
+      "default": "https://www.google.com",
+      "required": true
     },
     "allowFullscreen": {
       "type": "boolean",
-      "default": true,
-      "required": true
+      "required": true,
+      "default": true
     },
     "css": {
       "type": "string"
     },
     "iframeWidth": {
       "type": "enumeration",
-      "enum": ["full", "container"],
+      "required": true,
       "default": "container",
-      "required": true
+      "enum": [
+        "full",
+        "container"
+      ]
     },
     "iframeHeight": {
       "type": "string",
-      "required": true,
-      "default": "600px"
+      "default": "600px",
+      "required": true
     },
     "fullHeight": {
       "type": "boolean",
@@ -44,6 +47,14 @@
     "allowGeolocation": {
       "type": "boolean",
       "default": false
+    },
+    "titleLevel": {
+      "type": "enumeration",
+      "default": "h2",
+      "enum": [
+        "h2",
+        "h3"
+      ]
     }
   }
 }

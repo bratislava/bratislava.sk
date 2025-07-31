@@ -22,7 +22,7 @@
       },
       "title": {
         "edit": {
-          "label": "title",
+          "label": "Nadpis",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -36,16 +36,31 @@
       },
       "pageLinks": {
         "edit": {
-          "label": "pageLinks",
+          "label": "Odkazy",
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true
+          "editable": true,
+          "mainField": "title"
         },
         "list": {
           "label": "pageLinks",
           "searchable": false,
           "sortable": false
+        }
+      },
+      "titleLevel": {
+        "edit": {
+          "label": "Úroveň nadpisu sekcie",
+          "description": "Úroveň nadpisu meníme na h3 iba ak je to potrebné sémanticky. Nikdy ju nemeníme len kvôli vizuálnej veľkosti nadpisu.",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "titleLevel",
+          "searchable": true,
+          "sortable": true
         }
       },
       "documentId": {
@@ -58,16 +73,11 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "title",
-        "documentId"
-      ],
       "edit": [
         [
           {
             "name": "title",
-            "size": 6
+            "size": 12
           }
         ],
         [
@@ -75,7 +85,19 @@
             "name": "pageLinks",
             "size": 12
           }
+        ],
+        [
+          {
+            "name": "titleLevel",
+            "size": 6
+          }
         ]
+      ],
+      "list": [
+        "id",
+        "title",
+        "documentId",
+        "titleLevel"
       ]
     },
     "isComponent": true

@@ -9,7 +9,7 @@ type IframeSectionProps = { section: IframeSectionFragment }
 const IframeSection = ({ section }: IframeSectionProps) => {
   return (
     <SectionContainer>
-      <Iframe {...section} />
+      <Iframe {...section} titleLevel={section.titleLevelIframeSection} />
     </SectionContainer>
   )
 }

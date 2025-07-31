@@ -1,6 +1,7 @@
 import React from 'react'
 import { ArrowRightIcon } from 'src/assets/icons'
 
+import { SectionTitleLevel } from '@/src/components/cards/getCardTitleLevel'
 import Button from '@/src/components/common/Button/Button'
 import SectionHeader from '@/src/components/layouts/SectionHeader'
 import { LinksSectionFragment } from '@/src/services/graphql'
@@ -10,6 +11,7 @@ import { isDefined } from '@/src/utils/isDefined'
 
 export type LinksProps = {
   title: string | null | undefined
+  titleLevel?: SectionTitleLevel | null | undefined
   pageLinks: LinksSectionFragment['pageLinks']
   className?: string
 }
@@ -18,10 +20,10 @@ export type LinksProps = {
  * TODO Figma link
  */
 
-const Links = ({ title, pageLinks, className }: LinksProps) => {
+const Links = ({ title, titleLevel, pageLinks, className }: LinksProps) => {
   return (
     <div className={cn('flex w-full flex-col gap-6 md:w-10/12', className)}>
-      <SectionHeader title={title} />
+      <SectionHeader title={title} titleLevel={titleLevel} />
 
       <ul className="flex flex-col gap-4">
         {pageLinks?.filter(isDefined).map((pageLink, index) => (

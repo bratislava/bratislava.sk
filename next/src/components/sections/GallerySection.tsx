@@ -10,11 +10,13 @@ export type GallerySectionProps = {
   section: GallerySectionFragment
 }
 
-const GallerySection = ({ section: { title, text, medias } }: GallerySectionProps) => {
+const GallerySection = ({
+  section: { title, text, medias, titleLevelGallerySection: titleLevel },
+}: GallerySectionProps) => {
   return (
     <SectionContainer>
       <div className="flex flex-col gap-6 lg:gap-12">
-        <SectionHeader title={title} text={text} />
+        <SectionHeader title={title} titleLevel={titleLevel} text={text} />
         <Gallery images={medias.filter(isDefined)} />
       </div>
     </SectionContainer>
