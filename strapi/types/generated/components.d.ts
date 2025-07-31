@@ -191,9 +191,9 @@ export interface BlocksLinkCardsItem extends Struct.ComponentSchema {
     displayName: 'Link Cards Item'
   }
   attributes: {
-    link: Schema.Attribute.Component<'blocks.common-link', false>
+    link: Schema.Attribute.Component<'blocks.common-link', false> & Schema.Attribute.Required
     text: Schema.Attribute.String
-    title: Schema.Attribute.String
+    title: Schema.Attribute.String & Schema.Attribute.Required
   }
 }
 

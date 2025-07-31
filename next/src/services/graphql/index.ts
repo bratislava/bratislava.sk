@@ -893,9 +893,9 @@ export type ComponentBlocksInBaInput = {
 export type ComponentBlocksLinkCardsItem = {
   __typename?: 'ComponentBlocksLinkCardsItem'
   id: Scalars['ID']['output']
-  link?: Maybe<ComponentBlocksCommonLink>
+  link: ComponentBlocksCommonLink
   text?: Maybe<Scalars['String']['output']>
-  title?: Maybe<Scalars['String']['output']>
+  title: Scalars['String']['output']
 }
 
 export type ComponentBlocksLinkCardsItemFiltersInput = {
@@ -8761,9 +8761,9 @@ export type PageEntityFragment = {
         linkCardsItems?: Array<{
           __typename?: 'ComponentBlocksLinkCardsItem'
           id: string
-          title?: string | null
+          title: string
           text?: string | null
-          link?: {
+          link: {
             __typename?: 'ComponentBlocksCommonLink'
             label?: string | null
             url?: string | null
@@ -8782,7 +8782,7 @@ export type PageEntityFragment = {
               title: string
               locale?: string | null
             } | null
-          } | null
+          }
         } | null> | null
       }
     | {
@@ -9524,9 +9524,9 @@ export type PageBySlugQuery = {
           linkCardsItems?: Array<{
             __typename?: 'ComponentBlocksLinkCardsItem'
             id: string
-            title?: string | null
+            title: string
             text?: string | null
-            link?: {
+            link: {
               __typename?: 'ComponentBlocksCommonLink'
               label?: string | null
               url?: string | null
@@ -9545,7 +9545,7 @@ export type PageBySlugQuery = {
                 title: string
                 locale?: string | null
               } | null
-            } | null
+            }
           } | null> | null
         }
       | {
@@ -10313,9 +10313,9 @@ export type Dev_AllPagesQuery = {
           linkCardsItems?: Array<{
             __typename?: 'ComponentBlocksLinkCardsItem'
             id: string
-            title?: string | null
+            title: string
             text?: string | null
-            link?: {
+            link: {
               __typename?: 'ComponentBlocksCommonLink'
               label?: string | null
               url?: string | null
@@ -10334,7 +10334,7 @@ export type Dev_AllPagesQuery = {
                 title: string
                 locale?: string | null
               } | null
-            } | null
+            }
           } | null> | null
         }
       | {
@@ -12041,9 +12041,9 @@ export type DocumentsSectionFragment = {
 export type LinkCardsItemBlockFragment = {
   __typename?: 'ComponentBlocksLinkCardsItem'
   id: string
-  title?: string | null
+  title: string
   text?: string | null
-  link?: {
+  link: {
     __typename?: 'ComponentBlocksCommonLink'
     label?: string | null
     url?: string | null
@@ -12062,7 +12062,7 @@ export type LinkCardsItemBlockFragment = {
       title: string
       locale?: string | null
     } | null
-  } | null
+  }
 }
 
 export type LinkCardsSectionFragment = {
@@ -12073,9 +12073,9 @@ export type LinkCardsSectionFragment = {
   linkCardsItems?: Array<{
     __typename?: 'ComponentBlocksLinkCardsItem'
     id: string
-    title?: string | null
+    title: string
     text?: string | null
-    link?: {
+    link: {
       __typename?: 'ComponentBlocksCommonLink'
       label?: string | null
       url?: string | null
@@ -12094,7 +12094,7 @@ export type LinkCardsSectionFragment = {
         title: string
         locale?: string | null
       } | null
-    } | null
+    }
   } | null> | null
 }
 
@@ -12466,9 +12466,9 @@ type Sections_ComponentSectionsLinkCards_Fragment = {
   linkCardsItems?: Array<{
     __typename?: 'ComponentBlocksLinkCardsItem'
     id: string
-    title?: string | null
+    title: string
     text?: string | null
-    link?: {
+    link: {
       __typename?: 'ComponentBlocksCommonLink'
       label?: string | null
       url?: string | null
@@ -12487,7 +12487,7 @@ type Sections_ComponentSectionsLinkCards_Fragment = {
         title: string
         locale?: string | null
       } | null
-    } | null
+    }
   } | null> | null
 }
 

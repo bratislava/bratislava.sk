@@ -6,7 +6,8 @@
   "options": {},
   "attributes": {
     "title": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "text": {
       "type": "string"
@@ -14,7 +15,8 @@
     "link": {
       "type": "component",
       "component": "blocks.common-link",
-      "repeatable": false
+      "repeatable": false,
+      "required": true
     }
   },
   "config": {}

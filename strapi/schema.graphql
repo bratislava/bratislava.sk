@@ -672,9 +672,9 @@ input ComponentBlocksInBaInput {
 
 type ComponentBlocksLinkCardsItem {
   id: ID!
-  link: ComponentBlocksCommonLink
+  link: ComponentBlocksCommonLink!
   text: String
-  title: String
+  title: String!
 }
 
 input ComponentBlocksLinkCardsItemFiltersInput {
