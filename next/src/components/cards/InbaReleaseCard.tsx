@@ -33,7 +33,7 @@ const InbaReleaseCard = ({
   return (
     <CardBase variant="no-border" className="rounded-none" {...rest}>
       <div className="flex grow flex-col justify-between gap-4 lg:gap-6">
-        <div className="relative aspect-5/8 overflow-hidden rounded-lg border">
+        <div className="relative aspect-inba overflow-hidden rounded-lg border">
           {imgSrc ? (
             <Image src={imgSrc} alt="" sizes={imgSizes} fill className="object-cover" />
           ) : (

@@ -3,6 +3,7 @@ import * as React from 'react'
 import { Fragment, useMemo } from 'react'
 
 import { Breadcrumb } from '@/src/components/common/Breadcrumbs/Breadcrumbs'
+import Button from '@/src/components/common/Button/Button'
 import HorizontalDivider from '@/src/components/common/Divider/HorizontalDivider'
 import FileList from '@/src/components/common/FileList/FileList'
 import ImagePlaceholder from '@/src/components/common/Image/ImagePlaceholder'
@@ -15,23 +16,19 @@ import SearchResultCard from '@/src/components/sections/SearchSection/SearchResu
 import { SearchResult } from '@/src/components/sections/SearchSection/useQueryBySearchOption'
 import ShareButtons from '@/src/components/sections/ShareButtons_Deprecated'
 import { InbaReleaseEntityFragment } from '@/src/services/graphql'
-import cn from '@/src/utils/cn'
 import { formatDate } from '@/src/utils/formatDate'
 import { isDefined } from '@/src/utils/isDefined'
 import { getPageBreadcrumbs } from '@/src/utils/pageUtils_Deprecated'
 import { useTranslation } from '@/src/utils/useTranslation'
 
-export type InbaReleasePageContentProps = {
+type Props = {
   inbaRelease: InbaReleaseEntityFragment
 }
 
-// TODO may need refactor, it was just copied from legacy BlogPostPageContent that didn't undergo any refactoring
-
-const InbaReleasePageContent = ({ inbaRelease }: InbaReleasePageContentProps) => {
+const InbaReleasePageContent = ({ inbaRelease }: Props) => {
   const { t } = useTranslation()
 
   const { title, coverImage, perex, releaseDate, files, inbaArticles } = inbaRelease
-  const coverImageAttr = coverImage
 
   const filteredInbaArticles = inbaArticles.filter(isDefined) ?? []
 
@@ -41,7 +38,7 @@ const InbaReleasePageContent = ({ inbaRelease }: InbaReleasePageContentProps) =>
   const breadcrumbs = useMemo(() => {
     return [
       ...(parentBreadcrumbPageEntity ? getPageBreadcrumbs(parentBreadcrumbPageEntity) : []),
-      { title: title ?? '', path: null } as Breadcrumb,
+      { title, path: null } as Breadcrumb,
     ]
   }, [parentBreadcrumbPageEntity, title])
 
@@ -51,28 +48,27 @@ const InbaReleasePageContent = ({ inbaRelease }: InbaReleasePageContentProps) =>
         title={title}
         breadcrumbs={breadcrumbs}
         subtext={releaseDate && t('InbaRelease.releasedOn', { date: formatDate(releaseDate) })}
+        hasWaves={false}
       />
 
-      {/* TODO redesign according to figma */}
-      <SectionContainer className="pt-10 md:pt-18">
-        <div className="grid grid-cols-1 gap-16 lg:grid-cols-[1fr_2fr]">
-          <div
-            className={cn('overflow-hidden rounded-xl border', {
-              'aspect-5/8': !coverImageAttr,
-            })}
-          >
-            {coverImageAttr ? <StrapiImage alt="" image={coverImageAttr} /> : <ImagePlaceholder />}
-          </div>
-          <div className="flex w-full flex-col gap-8">
-            {perex ? (
-              <div className="flex flex-col gap-4">
-                <Typography variant="h3" as="h2">
-                  {t('InbaRelease.inThisRelease')}
-                </Typography>
-                {/* Perex comes as plain text from Strapi, but we format it using Markdown component */}
-                <Markdown content={perex} />
-              </div>
-            ) : null}
+      <SectionContainer className="pt-10 md:pt-12">
+        <div className="grid grid-cols-1 gap-10 lg:grid-cols-[592fr_488fr] lg:gap-34">
+          <div className="flex w-full flex-col gap-12">
+            <div className="flex w-full flex-col gap-8">
+              {perex ? (
+                <div className="flex flex-col gap-4">
+                  <Typography variant="h3" as="h2">
+                    {t('InbaRelease.inThisRelease')}
+                  </Typography>
+                  {/* Perex comes as plain text from Strapi, but we format it using Markdown component */}
+                  <Markdown content={perex} />
+                </div>
+              ) : null}
+
+              <Button href="#clanky-v-tomto-cisle" variant="link">
+                {t('InbaRelease.articlesInThisRelease')}
+              </Button>
+            </div>
 
             <div className="flex flex-col">
               <Typography variant="h3" as="h2" className="pb-4">
@@ -82,6 +78,13 @@ const InbaReleasePageContent = ({ inbaRelease }: InbaReleasePageContentProps) =>
               <FileList files={files?.filter(isDefined) ?? []} />
             </div>
           </div>
+
+          <div
+            // Negative top margin was set so its top edge is aligned with title's top edge
+            className="aspect-inba overflow-hidden rounded-xl border lg:-mt-45"
+          >
+            {coverImage ? <StrapiImage alt="" image={coverImage} /> : <ImagePlaceholder />}
+          </div>
         </div>
       </SectionContainer>
 
@@ -89,7 +92,7 @@ const InbaReleasePageContent = ({ inbaRelease }: InbaReleasePageContentProps) =>
       {filteredInbaArticles.length > 0 ? (
         <SectionContainer className="pt-10 md:pt-18">
           <div className="flex flex-col gap-3 lg:gap-4">
-            <Typography variant="h3" as="h2" className="pb-4">
+            <Typography variant="h3" as="h2" className="pb-4" id="clanky-v-tomto-cisle">
               {t('InbaRelease.articlesInThisRelease')}
             </Typography>
 
