@@ -1,0 +1,30 @@
+{
+  "collectionName": "components_sections_link_cards",
+  "info": {
+    "displayName": "Link Cards"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "text": {
+      "type": "text"
+    },
+    "linkCardsItems": {
+      "type": "component",
+      "component": "blocks.link-cards-item",
+      "repeatable": true,
+      "min": 1
+    },
+    "titleLevel": {
+      "type": "enumeration",
+      "default": "h2",
+      "enum": [
+        "h2",
+        "h3"
+      ]
+    }
+  },
+  "config": {}
+}

@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_blocks_link_cards_items",
+  "info": {
+    "displayName": "Link Cards Item"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "text": {
+      "type": "string"
+    },
+    "link": {
+      "type": "component",
+      "component": "blocks.common-link",
+      "repeatable": false
+    }
+  },
+  "config": {}
+}

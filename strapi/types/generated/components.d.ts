@@ -185,6 +185,18 @@ export interface BlocksInBa extends Struct.ComponentSchema {
   }
 }
 
+export interface BlocksLinkCardsItem extends Struct.ComponentSchema {
+  collectionName: 'components_blocks_link_cards_items'
+  info: {
+    displayName: 'Link Cards Item'
+  }
+  attributes: {
+    link: Schema.Attribute.Component<'blocks.common-link', false>
+    text: Schema.Attribute.String
+    title: Schema.Attribute.String
+  }
+}
+
 export interface BlocksNumericalListItem extends Struct.ComponentSchema {
   collectionName: 'components_blocks_numerical_list_items'
   info: {
@@ -758,6 +770,25 @@ export interface SectionsInbaReleases extends Struct.ComponentSchema {
   }
 }
 
+export interface SectionsLinkCards extends Struct.ComponentSchema {
+  collectionName: 'components_sections_link_cards'
+  info: {
+    displayName: 'Link Cards'
+  }
+  attributes: {
+    linkCardsItems: Schema.Attribute.Component<'blocks.link-cards-item', true> &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 1
+        },
+        number
+      >
+    text: Schema.Attribute.Text
+    title: Schema.Attribute.String
+    titleLevel: Schema.Attribute.Enumeration<['h2', 'h3']> & Schema.Attribute.DefaultTo<'h2'>
+  }
+}
+
 export interface SectionsLinks extends Struct.ComponentSchema {
   collectionName: 'components_sections_links'
   info: {
@@ -1008,6 +1039,7 @@ declare module '@strapi/strapi' {
       'blocks.footer-column': BlocksFooterColumn
       'blocks.homepage-highlights-item': BlocksHomepageHighlightsItem
       'blocks.in-ba': BlocksInBa
+      'blocks.link-cards-item': BlocksLinkCardsItem
       'blocks.numerical-list-item': BlocksNumericalListItem
       'blocks.page-link': BlocksPageLink
       'blocks.partner': BlocksPartner
@@ -1040,6 +1072,7 @@ declare module '@strapi/strapi' {
       'sections.iframe': SectionsIframe
       'sections.inba-articles-list': SectionsInbaArticlesList
       'sections.inba-releases': SectionsInbaReleases
+      'sections.link-cards': SectionsLinkCards
       'sections.links': SectionsLinks
       'sections.narrow-text': SectionsNarrowText
       'sections.numerical-list': SectionsNumericalList
