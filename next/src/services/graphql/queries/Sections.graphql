@@ -375,6 +375,24 @@ fragment DocumentsSection on ComponentSectionsDocuments {
   titleLevelDocumentsSection: titleLevel
 }
 
+fragment LinkCardsItemBlock on ComponentBlocksLinkCardsItem {
+  id
+  title
+  text
+  link {
+    ...CommonLink
+  }
+}
+
+fragment LinkCardsSection on ComponentSectionsLinkCards {
+  title
+  text
+  linkCardsItems {
+    ...LinkCardsItemBlock
+  }
+  titleLevelLinkCardsSection: titleLevel
+}
+
 fragment Sections on PageSectionsDynamicZone {
   __typename
 
@@ -492,6 +510,10 @@ fragment Sections on PageSectionsDynamicZone {
 
   ... on ComponentSectionsDocuments {
     ...DocumentsSection
+  }
+  
+  ... on ComponentSectionsLinkCards {
+    ...LinkCardsSection
   }
 }
 

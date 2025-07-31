@@ -890,6 +890,30 @@ export type ComponentBlocksInBaInput = {
   title?: InputMaybe<Scalars['String']['input']>
 }
 
+export type ComponentBlocksLinkCardsItem = {
+  __typename?: 'ComponentBlocksLinkCardsItem'
+  id: Scalars['ID']['output']
+  link?: Maybe<ComponentBlocksCommonLink>
+  text?: Maybe<Scalars['String']['output']>
+  title?: Maybe<Scalars['String']['output']>
+}
+
+export type ComponentBlocksLinkCardsItemFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentBlocksLinkCardsItemFiltersInput>>>
+  link?: InputMaybe<ComponentBlocksCommonLinkFiltersInput>
+  not?: InputMaybe<ComponentBlocksLinkCardsItemFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<ComponentBlocksLinkCardsItemFiltersInput>>>
+  text?: InputMaybe<StringFilterInput>
+  title?: InputMaybe<StringFilterInput>
+}
+
+export type ComponentBlocksLinkCardsItemInput = {
+  id?: InputMaybe<Scalars['ID']['input']>
+  link?: InputMaybe<ComponentBlocksCommonLinkInput>
+  text?: InputMaybe<Scalars['String']['input']>
+  title?: InputMaybe<Scalars['String']['input']>
+}
+
 export type ComponentBlocksNumericalListItem = {
   __typename?: 'ComponentBlocksNumericalListItem'
   id: Scalars['ID']['output']
@@ -1899,6 +1923,39 @@ export type ComponentSectionsInbaReleasesInput = {
   title?: InputMaybe<Scalars['String']['input']>
 }
 
+export type ComponentSectionsLinkCards = {
+  __typename?: 'ComponentSectionsLinkCards'
+  id: Scalars['ID']['output']
+  linkCardsItems?: Maybe<Array<Maybe<ComponentBlocksLinkCardsItem>>>
+  text?: Maybe<Scalars['String']['output']>
+  title?: Maybe<Scalars['String']['output']>
+  titleLevel?: Maybe<Enum_Componentsectionslinkcards_Titlelevel>
+}
+
+export type ComponentSectionsLinkCardsLinkCardsItemsArgs = {
+  filters?: InputMaybe<ComponentBlocksLinkCardsItemFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type ComponentSectionsLinkCardsFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentSectionsLinkCardsFiltersInput>>>
+  linkCardsItems?: InputMaybe<ComponentBlocksLinkCardsItemFiltersInput>
+  not?: InputMaybe<ComponentSectionsLinkCardsFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<ComponentSectionsLinkCardsFiltersInput>>>
+  text?: InputMaybe<StringFilterInput>
+  title?: InputMaybe<StringFilterInput>
+  titleLevel?: InputMaybe<StringFilterInput>
+}
+
+export type ComponentSectionsLinkCardsInput = {
+  id?: InputMaybe<Scalars['ID']['input']>
+  linkCardsItems?: InputMaybe<Array<InputMaybe<ComponentBlocksLinkCardsItemInput>>>
+  text?: InputMaybe<Scalars['String']['input']>
+  title?: InputMaybe<Scalars['String']['input']>
+  titleLevel?: InputMaybe<Enum_Componentsectionslinkcards_Titlelevel>
+}
+
 export type ComponentSectionsLinks = {
   __typename?: 'ComponentSectionsLinks'
   id: Scalars['ID']['output']
@@ -2710,6 +2767,11 @@ export enum Enum_Componentsectionsiframe_Titlelevel {
   H3 = 'h3',
 }
 
+export enum Enum_Componentsectionslinkcards_Titlelevel {
+  H2 = 'h2',
+  H3 = 'h3',
+}
+
 export enum Enum_Componentsectionslinks_Titlelevel {
   H2 = 'h2',
   H3 = 'h3',
@@ -3174,6 +3236,7 @@ export type GenericMorph =
   | ComponentBlocksFooterColumn
   | ComponentBlocksHomepageHighlightsItem
   | ComponentBlocksInBa
+  | ComponentBlocksLinkCardsItem
   | ComponentBlocksNumericalListItem
   | ComponentBlocksPageLink
   | ComponentBlocksPartner
@@ -3206,6 +3269,7 @@ export type GenericMorph =
   | ComponentSectionsIframe
   | ComponentSectionsInbaArticlesList
   | ComponentSectionsInbaReleases
+  | ComponentSectionsLinkCards
   | ComponentSectionsLinks
   | ComponentSectionsNarrowText
   | ComponentSectionsNumericalList
@@ -4544,6 +4608,7 @@ export type PageSectionsDynamicZone =
   | ComponentSectionsIframe
   | ComponentSectionsInbaArticlesList
   | ComponentSectionsInbaReleases
+  | ComponentSectionsLinkCards
   | ComponentSectionsLinks
   | ComponentSectionsNarrowText
   | ComponentSectionsNumericalList
@@ -8689,6 +8754,38 @@ export type PageEntityFragment = {
       }
     | { __typename: 'ComponentSectionsInbaReleases'; title?: string | null; text?: string | null }
     | {
+        __typename: 'ComponentSectionsLinkCards'
+        title?: string | null
+        text?: string | null
+        titleLevelLinkCardsSection?: Enum_Componentsectionslinkcards_Titlelevel | null
+        linkCardsItems?: Array<{
+          __typename?: 'ComponentBlocksLinkCardsItem'
+          id: string
+          title?: string | null
+          text?: string | null
+          link?: {
+            __typename?: 'ComponentBlocksCommonLink'
+            label?: string | null
+            url?: string | null
+            analyticsId?: string | null
+            page?: {
+              __typename?: 'Page'
+              documentId: string
+              slug?: string | null
+              title: string
+              locale?: string | null
+            } | null
+            article?: {
+              __typename: 'Article'
+              documentId: string
+              slug: string
+              title: string
+              locale?: string | null
+            } | null
+          } | null
+        } | null> | null
+      }
+    | {
         __typename: 'ComponentSectionsLinks'
         title?: string | null
         titleLevelLinksSection?: Enum_Componentsectionslinks_Titlelevel | null
@@ -9419,6 +9516,38 @@ export type PageBySlugQuery = {
           text?: string | null
         }
       | { __typename: 'ComponentSectionsInbaReleases'; title?: string | null; text?: string | null }
+      | {
+          __typename: 'ComponentSectionsLinkCards'
+          title?: string | null
+          text?: string | null
+          titleLevelLinkCardsSection?: Enum_Componentsectionslinkcards_Titlelevel | null
+          linkCardsItems?: Array<{
+            __typename?: 'ComponentBlocksLinkCardsItem'
+            id: string
+            title?: string | null
+            text?: string | null
+            link?: {
+              __typename?: 'ComponentBlocksCommonLink'
+              label?: string | null
+              url?: string | null
+              analyticsId?: string | null
+              page?: {
+                __typename?: 'Page'
+                documentId: string
+                slug?: string | null
+                title: string
+                locale?: string | null
+              } | null
+              article?: {
+                __typename: 'Article'
+                documentId: string
+                slug: string
+                title: string
+                locale?: string | null
+              } | null
+            } | null
+          } | null> | null
+        }
       | {
           __typename: 'ComponentSectionsLinks'
           title?: string | null
@@ -10176,6 +10305,38 @@ export type Dev_AllPagesQuery = {
           text?: string | null
         }
       | { __typename: 'ComponentSectionsInbaReleases'; title?: string | null; text?: string | null }
+      | {
+          __typename: 'ComponentSectionsLinkCards'
+          title?: string | null
+          text?: string | null
+          titleLevelLinkCardsSection?: Enum_Componentsectionslinkcards_Titlelevel | null
+          linkCardsItems?: Array<{
+            __typename?: 'ComponentBlocksLinkCardsItem'
+            id: string
+            title?: string | null
+            text?: string | null
+            link?: {
+              __typename?: 'ComponentBlocksCommonLink'
+              label?: string | null
+              url?: string | null
+              analyticsId?: string | null
+              page?: {
+                __typename?: 'Page'
+                documentId: string
+                slug?: string | null
+                title: string
+                locale?: string | null
+              } | null
+              article?: {
+                __typename: 'Article'
+                documentId: string
+                slug: string
+                title: string
+                locale?: string | null
+              } | null
+            } | null
+          } | null> | null
+        }
       | {
           __typename: 'ComponentSectionsLinks'
           title?: string | null
@@ -11877,6 +12038,66 @@ export type DocumentsSectionFragment = {
   } | null>
 }
 
+export type LinkCardsItemBlockFragment = {
+  __typename?: 'ComponentBlocksLinkCardsItem'
+  id: string
+  title?: string | null
+  text?: string | null
+  link?: {
+    __typename?: 'ComponentBlocksCommonLink'
+    label?: string | null
+    url?: string | null
+    analyticsId?: string | null
+    page?: {
+      __typename?: 'Page'
+      documentId: string
+      slug?: string | null
+      title: string
+      locale?: string | null
+    } | null
+    article?: {
+      __typename: 'Article'
+      documentId: string
+      slug: string
+      title: string
+      locale?: string | null
+    } | null
+  } | null
+}
+
+export type LinkCardsSectionFragment = {
+  __typename?: 'ComponentSectionsLinkCards'
+  title?: string | null
+  text?: string | null
+  titleLevelLinkCardsSection?: Enum_Componentsectionslinkcards_Titlelevel | null
+  linkCardsItems?: Array<{
+    __typename?: 'ComponentBlocksLinkCardsItem'
+    id: string
+    title?: string | null
+    text?: string | null
+    link?: {
+      __typename?: 'ComponentBlocksCommonLink'
+      label?: string | null
+      url?: string | null
+      analyticsId?: string | null
+      page?: {
+        __typename?: 'Page'
+        documentId: string
+        slug?: string | null
+        title: string
+        locale?: string | null
+      } | null
+      article?: {
+        __typename: 'Article'
+        documentId: string
+        slug: string
+        title: string
+        locale?: string | null
+      } | null
+    } | null
+  } | null> | null
+}
+
 type Sections_ComponentSectionsAccordion_Fragment = {
   __typename: 'ComponentSectionsAccordion'
   title?: string | null
@@ -12237,6 +12458,39 @@ type Sections_ComponentSectionsInbaReleases_Fragment = {
   text?: string | null
 }
 
+type Sections_ComponentSectionsLinkCards_Fragment = {
+  __typename: 'ComponentSectionsLinkCards'
+  title?: string | null
+  text?: string | null
+  titleLevelLinkCardsSection?: Enum_Componentsectionslinkcards_Titlelevel | null
+  linkCardsItems?: Array<{
+    __typename?: 'ComponentBlocksLinkCardsItem'
+    id: string
+    title?: string | null
+    text?: string | null
+    link?: {
+      __typename?: 'ComponentBlocksCommonLink'
+      label?: string | null
+      url?: string | null
+      analyticsId?: string | null
+      page?: {
+        __typename?: 'Page'
+        documentId: string
+        slug?: string | null
+        title: string
+        locale?: string | null
+      } | null
+      article?: {
+        __typename: 'Article'
+        documentId: string
+        slug: string
+        title: string
+        locale?: string | null
+      } | null
+    } | null
+  } | null> | null
+}
+
 type Sections_ComponentSectionsLinks_Fragment = {
   __typename: 'ComponentSectionsLinks'
   title?: string | null
@@ -12556,6 +12810,7 @@ export type SectionsFragment =
   | Sections_ComponentSectionsIframe_Fragment
   | Sections_ComponentSectionsInbaArticlesList_Fragment
   | Sections_ComponentSectionsInbaReleases_Fragment
+  | Sections_ComponentSectionsLinkCards_Fragment
   | Sections_ComponentSectionsLinks_Fragment
   | Sections_ComponentSectionsNarrowText_Fragment
   | Sections_ComponentSectionsNumericalList_Fragment
@@ -13676,6 +13931,28 @@ export const DocumentsSectionFragmentDoc = gql`
   }
   ${DocumentEntityFragmentDoc}
 `
+export const LinkCardsItemBlockFragmentDoc = gql`
+  fragment LinkCardsItemBlock on ComponentBlocksLinkCardsItem {
+    id
+    title
+    text
+    link {
+      ...CommonLink
+    }
+  }
+  ${CommonLinkFragmentDoc}
+`
+export const LinkCardsSectionFragmentDoc = gql`
+  fragment LinkCardsSection on ComponentSectionsLinkCards {
+    title
+    text
+    linkCardsItems {
+      ...LinkCardsItemBlock
+    }
+    titleLevelLinkCardsSection: titleLevel
+  }
+  ${LinkCardsItemBlockFragmentDoc}
+`
 export const SectionsFragmentDoc = gql`
   fragment Sections on PageSectionsDynamicZone {
     __typename
@@ -13763,6 +14040,9 @@ export const SectionsFragmentDoc = gql`
     ... on ComponentSectionsDocuments {
       ...DocumentsSection
     }
+    ... on ComponentSectionsLinkCards {
+      ...LinkCardsSection
+    }
   }
   ${DividerSectionFragmentDoc}
   ${TextWithImageSectionFragmentDoc}
@@ -13792,6 +14072,7 @@ export const SectionsFragmentDoc = gql`
   ${TootootEventsSectionFragmentDoc}
   ${PartnersSectionFragmentDoc}
   ${DocumentsSectionFragmentDoc}
+  ${LinkCardsSectionFragmentDoc}
 `
 export const SidebarsFragmentDoc = gql`
   fragment Sidebars on PageSidebarDynamicZone {
