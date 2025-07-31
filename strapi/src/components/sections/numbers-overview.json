@@ -16,7 +16,7 @@
       "component": "blocks.common-link",
       "repeatable": false
     },
-    "items": {
+    "numbersOverviewItems": {
       "type": "component",
       "component": "blocks.numbers-overview-item",
       "repeatable": true,

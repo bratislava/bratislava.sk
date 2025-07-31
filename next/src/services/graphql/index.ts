@@ -1974,13 +1974,13 @@ export type ComponentSectionsNarrowTextInput = {
 export type ComponentSectionsNumbersOverview = {
   __typename?: 'ComponentSectionsNumbersOverview'
   id: Scalars['ID']['output']
-  items?: Maybe<Array<Maybe<ComponentBlocksNumbersOverviewItem>>>
+  numbersOverviewItems?: Maybe<Array<Maybe<ComponentBlocksNumbersOverviewItem>>>
   showMoreLink?: Maybe<ComponentBlocksCommonLink>
   text?: Maybe<Scalars['String']['output']>
   title?: Maybe<Scalars['String']['output']>
 }
 
-export type ComponentSectionsNumbersOverviewItemsArgs = {
+export type ComponentSectionsNumbersOverviewNumbersOverviewItemsArgs = {
   filters?: InputMaybe<ComponentBlocksNumbersOverviewItemFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
@@ -1988,8 +1988,8 @@ export type ComponentSectionsNumbersOverviewItemsArgs = {
 
 export type ComponentSectionsNumbersOverviewFiltersInput = {
   and?: InputMaybe<Array<InputMaybe<ComponentSectionsNumbersOverviewFiltersInput>>>
-  items?: InputMaybe<ComponentBlocksNumbersOverviewItemFiltersInput>
   not?: InputMaybe<ComponentSectionsNumbersOverviewFiltersInput>
+  numbersOverviewItems?: InputMaybe<ComponentBlocksNumbersOverviewItemFiltersInput>
   or?: InputMaybe<Array<InputMaybe<ComponentSectionsNumbersOverviewFiltersInput>>>
   showMoreLink?: InputMaybe<ComponentBlocksCommonLinkFiltersInput>
   text?: InputMaybe<StringFilterInput>
@@ -1998,7 +1998,7 @@ export type ComponentSectionsNumbersOverviewFiltersInput = {
 
 export type ComponentSectionsNumbersOverviewInput = {
   id?: InputMaybe<Scalars['ID']['input']>
-  items?: InputMaybe<Array<InputMaybe<ComponentBlocksNumbersOverviewItemInput>>>
+  numbersOverviewItems?: InputMaybe<Array<InputMaybe<ComponentBlocksNumbersOverviewItemInput>>>
   showMoreLink?: InputMaybe<ComponentBlocksCommonLinkInput>
   text?: InputMaybe<Scalars['String']['input']>
   title?: InputMaybe<Scalars['String']['input']>
@@ -13912,7 +13912,7 @@ export const NumbersOverviewSectionFragmentDoc = gql`
     showMoreLink {
       ...CommonLink
     }
-    numbersOverviewItems: items {
+    numbersOverviewItems {
       ...NumbersOverviewItemBlock
     }
   }

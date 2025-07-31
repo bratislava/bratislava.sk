@@ -387,7 +387,7 @@ fragment NumbersOverviewSection on ComponentSectionsNumbersOverview {
   showMoreLink {
     ...CommonLink
   }
-  numbersOverviewItems: items {
+  numbersOverviewItems {
     ...NumbersOverviewItemBlock
   }
 }

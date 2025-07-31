@@ -1562,7 +1562,7 @@ input ComponentSectionsNarrowTextInput {
 
 type ComponentSectionsNumbersOverview {
   id: ID!
-  items(filters: ComponentBlocksNumbersOverviewItemFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksNumbersOverviewItem]
+  numbersOverviewItems(filters: ComponentBlocksNumbersOverviewItemFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksNumbersOverviewItem]
   showMoreLink: ComponentBlocksCommonLink
   text: String
   title: String
@@ -1570,8 +1570,8 @@ type ComponentSectionsNumbersOverview {
 
 input ComponentSectionsNumbersOverviewFiltersInput {
   and: [ComponentSectionsNumbersOverviewFiltersInput]
-  items: ComponentBlocksNumbersOverviewItemFiltersInput
   not: ComponentSectionsNumbersOverviewFiltersInput
+  numbersOverviewItems: ComponentBlocksNumbersOverviewItemFiltersInput
   or: [ComponentSectionsNumbersOverviewFiltersInput]
   showMoreLink: ComponentBlocksCommonLinkFiltersInput
   text: StringFilterInput
@@ -1580,7 +1580,7 @@ input ComponentSectionsNumbersOverviewFiltersInput {
 
 input ComponentSectionsNumbersOverviewInput {
   id: ID
-  items: [ComponentBlocksNumbersOverviewItemInput]
+  numbersOverviewItems: [ComponentBlocksNumbersOverviewItemInput]
   showMoreLink: ComponentBlocksCommonLinkInput
   text: String
   title: String

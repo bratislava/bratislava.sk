@@ -188,7 +188,7 @@ export interface BlocksInBa extends Struct.ComponentSchema {
 export interface BlocksNumbersOverviewItem extends Struct.ComponentSchema {
   collectionName: 'components_blocks_numbers_overview_items'
   info: {
-    displayName: 'numbersOverviewItem'
+    displayName: 'Numbers Overview Item'
   }
   attributes: {
     number: Schema.Attribute.String & Schema.Attribute.Required
@@ -799,7 +799,7 @@ export interface SectionsNumbersOverview extends Struct.ComponentSchema {
     displayName: 'Numbers Overview'
   }
   attributes: {
-    items: Schema.Attribute.Component<'blocks.numbers-overview-item', true> &
+    numbersOverviewItems: Schema.Attribute.Component<'blocks.numbers-overview-item', true> &
       Schema.Attribute.SetMinMax<
         {
           max: 4
