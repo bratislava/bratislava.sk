@@ -22,7 +22,7 @@
       },
       "title": {
         "edit": {
-          "label": "title",
+          "label": "Nadpis",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -36,7 +36,7 @@
       },
       "content": {
         "edit": {
-          "label": "content",
+          "label": "Text",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -50,7 +50,7 @@
       },
       "contentPosition": {
         "edit": {
-          "label": "contentPosition",
+          "label": "Umiestnenie textu",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -64,7 +64,7 @@
       },
       "variant": {
         "edit": {
-          "label": "variant",
+          "label": "Farba",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -78,7 +78,7 @@
       },
       "media": {
         "edit": {
-          "label": "media",
+          "label": "Obrázok",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -153,9 +153,15 @@
           {
             "name": "title",
             "size": 6
-          },
+          }
+        ],
+        [
           {
             "name": "content",
+            "size": 6
+          },
+          {
+            "name": "media",
             "size": 6
           }
         ],
@@ -166,12 +172,6 @@
           },
           {
             "name": "variant",
-            "size": 6
-          }
-        ],
-        [
-          {
-            "name": "media",
             "size": 6
           }
         ],
