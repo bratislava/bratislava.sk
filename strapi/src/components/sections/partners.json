@@ -14,18 +14,26 @@
     },
     "partners": {
       "type": "component",
-      "repeatable": true,
       "component": "blocks.partner",
+      "repeatable": true,
       "required": true
     },
     "logoRatio": {
       "type": "enumeration",
+      "required": true,
+      "default": "ratio 4:1",
       "enum": [
         "ratio 4:1",
         "ratio 4:3"
-      ],
-      "required": true,
-      "default": "ratio 4:1"
+      ]
+    },
+    "titleLevel": {
+      "type": "enumeration",
+      "default": "h2",
+      "enum": [
+        "h2",
+        "h3"
+      ]
     }
   }
 }

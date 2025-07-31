@@ -19,6 +19,10 @@ type BannerProps = {
   tertiaryLink?: CommonLinkFragment | null
 }
 
+/**
+ * Figma: https://www.figma.com/design/17wbd0MDQcMW9NbXl6UPs8/DS--Component-library?node-id=17306-19086&m=dev
+ */
+
 const Banner = ({
   title,
   content,
@@ -31,20 +35,22 @@ const Banner = ({
 }: BannerProps) => {
   return (
     <div
-      // overflow-hidden ensures image not to overlap with rounded corners
-      className={cn('flex h-full w-full overflow-hidden', {
-        'rounded-xl bg-category-200 text-grey-700': variant === 'color',
-        'rounded-xl bg-grey-800 text-white': variant === 'dark',
-        'rounded-lg border bg-white text-grey-700': variant === 'white_condensed',
-        'flex-col lg:flex-row': contentPosition === 'left',
-        'flex-col-reverse lg:flex-row-reverse': contentPosition === 'right',
-      })}
+      className={cn(
+        // overflow-hidden ensures image not to overlap with rounded corners
+        'flex h-full w-full overflow-hidden rounded-lg @page-wide:rounded-xl',
+        {
+          'bg-category-200 text-grey-700': variant === 'color',
+          'bg-grey-800 text-white': variant === 'dark',
+          'border bg-white text-grey-700': variant === 'white_condensed',
+          'flex-col lg:flex-row': contentPosition === 'left',
+          'flex-col-reverse lg:flex-row-reverse': contentPosition === 'right',
+        },
+      )}
     >
       <div
-        className={cn('flex h-full w-full flex-col gap-4 px-4 py-6 lg:w-1/2 lg:gap-6', {
-          'lg:p-12': variant === 'white_condensed',
-          'lg:p-18': variant !== 'white_condensed',
-        })}
+        className={cn(
+          'flex h-full w-full flex-col gap-4 p-4 lg:w-1/2 lg:gap-6 @min-page-wide:p-12',
+        )}
       >
         <div className="flex flex-col items-start gap-3">
           <Typography as="h2" variant={variant === 'white_condensed' ? 'h4' : 'h2'}>
@@ -53,13 +59,12 @@ const Banner = ({
 
           {content && <Markdown content={content} />}
         </div>
-        <div className="flex flex-col items-center gap-2 empty:hidden lg:flex-row lg:gap-4">
+        <div className="flex flex-col flex-wrap gap-2 empty:hidden lg:flex-row lg:items-center lg:gap-4">
           {/* TODO styling of white buttons */}
-          {/* TODO use only one responsive Button  */}
           {primaryLink && <Button variant="solid" fullWidthMobile {...getLinkProps(primaryLink)} />}
           {secondaryLink && (
             <Button
-              className={cn('hidden lg:flex', {
+              className={cn({
                 'text-white hover:text-white/80 focus:text-white/80': variant === 'dark',
               })}
               variant="outline"
@@ -69,7 +74,7 @@ const Banner = ({
           )}
           {tertiaryLink && (
             <Button
-              className={cn('hidden font-semibold no-underline not-first:ml-2 lg:flex', {
+              className={cn('font-semibold no-underline', {
                 'text-white hover:text-white/80 focus:text-white/80': variant === 'dark',
               })}
               variant="link"

@@ -20,16 +20,14 @@ const NarrowTextSection = ({ section }: NarrowTextSectionProps) => {
 
   return (
     <SectionContainer>
-      <div className="@container">
-        <div
-          className={cn('w-full', {
-            // TODO decide what is the default width
-            // Using @container for apply narrower width only on pages without sidebar (50rem)
-            '@min-[50rem]:w-10/12': section.width !== 'full',
-          })}
-        >
-          <Markdown content={section.content} />
-        </div>
+      <div
+        className={cn('w-full', {
+          // TODO decide what is the default width
+          // Using @container for apply narrower width only on pages without sidebar (50rem)
+          '@min-[50rem]:w-10/12': section.width !== 'full',
+        })}
+      >
+        <Markdown content={section.content} />
       </div>
     </SectionContainer>
   )

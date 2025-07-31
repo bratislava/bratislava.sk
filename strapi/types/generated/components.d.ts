@@ -425,6 +425,7 @@ export interface SectionsAccordion extends Struct.ComponentSchema {
     institutions: Schema.Attribute.Component<'accordion-items.institution', true>
     institutionsNarrow: Schema.Attribute.Component<'accordion-items.institution-narrow', true>
     title: Schema.Attribute.String
+    titleLevel: Schema.Attribute.Enumeration<['h2', 'h3']> & Schema.Attribute.DefaultTo<'h2'>
   }
 }
 
@@ -559,6 +560,7 @@ export interface SectionsContactsSection extends Struct.ComponentSchema {
     personContacts: Schema.Attribute.Component<'blocks.contact-person-card', true>
     phoneContacts: Schema.Attribute.Component<'blocks.contact-card', true>
     title: Schema.Attribute.String
+    titleLevel: Schema.Attribute.Enumeration<['h2', 'h3']> & Schema.Attribute.DefaultTo<'h2'>
     webContacts: Schema.Attribute.Component<'blocks.contact-card', true>
   }
 }
@@ -602,6 +604,7 @@ export interface SectionsDocuments extends Struct.ComponentSchema {
     showAll: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>
     text: Schema.Attribute.Text
     title: Schema.Attribute.String & Schema.Attribute.DefaultTo<'Dokumenty'>
+    titleLevel: Schema.Attribute.Enumeration<['h2', 'h3']> & Schema.Attribute.DefaultTo<'h2'>
   }
 }
 
@@ -627,6 +630,7 @@ export interface SectionsFaqs extends Struct.ComponentSchema {
     faqs: Schema.Attribute.Relation<'oneToMany', 'api::faq.faq'>
     text: Schema.Attribute.Text
     title: Schema.Attribute.String
+    titleLevel: Schema.Attribute.Enumeration<['h2', 'h3']> & Schema.Attribute.DefaultTo<'h2'>
   }
 }
 
@@ -640,6 +644,7 @@ export interface SectionsFileList extends Struct.ComponentSchema {
     fileList: Schema.Attribute.Component<'blocks.file', true>
     text: Schema.Attribute.Text
     title: Schema.Attribute.String
+    titleLevel: Schema.Attribute.Enumeration<['h2', 'h3']> & Schema.Attribute.DefaultTo<'h2'>
   }
 }
 
@@ -654,6 +659,7 @@ export interface SectionsGallery extends Struct.ComponentSchema {
     medias: Schema.Attribute.Media<'images', true> & Schema.Attribute.Required
     text: Schema.Attribute.Text
     title: Schema.Attribute.String
+    titleLevel: Schema.Attribute.Enumeration<['h2', 'h3']> & Schema.Attribute.DefaultTo<'h2'>
   }
 }
 
@@ -733,6 +739,7 @@ export interface SectionsIframe extends Struct.ComponentSchema {
       Schema.Attribute.DefaultTo<'container'>
     text: Schema.Attribute.Text
     title: Schema.Attribute.String
+    titleLevel: Schema.Attribute.Enumeration<['h2', 'h3']> & Schema.Attribute.DefaultTo<'h2'>
     url: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<'https://www.google.com'>
@@ -770,6 +777,7 @@ export interface SectionsLinks extends Struct.ComponentSchema {
   attributes: {
     pageLinks: Schema.Attribute.Component<'blocks.page-link', true>
     title: Schema.Attribute.String
+    titleLevel: Schema.Attribute.Enumeration<['h2', 'h3']> & Schema.Attribute.DefaultTo<'h2'>
   }
 }
 
@@ -852,6 +860,7 @@ export interface SectionsPartners extends Struct.ComponentSchema {
     partners: Schema.Attribute.Component<'blocks.partner', true> & Schema.Attribute.Required
     text: Schema.Attribute.Text
     title: Schema.Attribute.String
+    titleLevel: Schema.Attribute.Enumeration<['h2', 'h3']> & Schema.Attribute.DefaultTo<'h2'>
   }
 }
 
@@ -985,6 +994,7 @@ export interface SectionsVideos extends Struct.ComponentSchema {
   attributes: {
     subtitle: Schema.Attribute.Text
     title: Schema.Attribute.String
+    titleLevel: Schema.Attribute.Enumeration<['h2', 'h3']> & Schema.Attribute.DefaultTo<'h2'>
     videos: Schema.Attribute.Component<'blocks.video', true>
   }
 }

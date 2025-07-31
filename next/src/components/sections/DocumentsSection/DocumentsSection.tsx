@@ -2,6 +2,7 @@ import { useTranslation } from 'next-i18next'
 import React, { Fragment } from 'react'
 
 import DocumentRowCard from '@/src/components/cards/DocumentRowCard'
+import { getCardTitleLevel } from '@/src/components/cards/getCardTitleLevel'
 import HorizontalDivider from '@/src/components/common/Divider/HorizontalDivider'
 import SectionContainer from '@/src/components/layouts/SectionContainer'
 import SectionHeader from '@/src/components/layouts/SectionHeader'
@@ -25,7 +26,7 @@ const DocumentsSection = ({ section }: Props) => {
   const { t } = useTranslation()
   const locale = useLocale()
 
-  const { title, text, documents, showAll } = section
+  const { title, text, documents, showAll, titleLevelDocumentsSection: titleLevel } = section
 
   if (showAll) {
     return (
@@ -40,7 +41,7 @@ const DocumentsSection = ({ section }: Props) => {
   return (
     <SectionContainer>
       <div className="flex flex-col gap-4 lg:gap-6">
-        <SectionHeader title={title} text={text} />
+        <SectionHeader title={title} titleLevel={titleLevel} text={text} />
 
         <ul className="flex flex-col rounded-lg border py-2">
           {filteredDocuments
@@ -66,6 +67,7 @@ const DocumentsSection = ({ section }: Props) => {
                     <DocumentRowCard
                       linkHref={isSingleFile ? (url ?? '#') : `/dokumenty/${slug}`}
                       title={documentTitle}
+                      cardTitleLevel={getCardTitleLevel(titleLevel)}
                       variant={isSingleFile ? 'single-file' : 'multiple-files'}
                       className="px-4 lg:px-6"
                       ariaLabel={

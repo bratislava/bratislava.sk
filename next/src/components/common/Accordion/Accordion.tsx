@@ -2,6 +2,7 @@ import { Typography } from '@bratislava/component-library'
 import { ReactNode } from 'react'
 import { ChevronDownIcon } from 'src/assets/icons'
 
+import { AccordionTitleLevel } from '@/src/components/cards/getCardTitleLevel'
 import AnimateHeight from '@/src/components/formatting/AnimateHeight'
 import cn from '@/src/utils/cn'
 
@@ -9,6 +10,7 @@ export type AccordionProps = {
   variant?: 'boxed' | 'footer'
   title: string | ReactNode | null | undefined
   children?: ReactNode
+  accordionTitleLevel?: AccordionTitleLevel
 }
 
 /**
@@ -17,7 +19,12 @@ export type AccordionProps = {
  *
  * Note: Only size h4 is implemented and used - this is desired behaviour until we get better accordion design in figma.
  */
-const Accordion = ({ variant = 'boxed', title, children }: AccordionProps) => {
+const Accordion = ({
+  variant = 'boxed',
+  title,
+  children,
+  accordionTitleLevel = 'h3',
+}: AccordionProps) => {
   const borderStyles = cn('group flex w-full flex-col', {
     'rounded-xl border border-grey-200 bg-white open:border-grey-700 hover:border-grey-500 hover:open:border-grey-700':
       variant === 'boxed',
@@ -43,7 +50,7 @@ const Accordion = ({ variant = 'boxed', title, children }: AccordionProps) => {
       <details className={borderStyles}>
         <summary className={buttonStyles}>
           {/* TODO accordions often have no parent title, so they should act as h2 */}
-          <Typography variant="h4" as="h3" className="min-w-0 grow">
+          <Typography variant="h4" as={accordionTitleLevel} className="min-w-0 grow">
             {title}
           </Typography>
 

@@ -10,8 +10,16 @@
     },
     "pageLinks": {
       "type": "component",
-      "repeatable": true,
-      "component": "blocks.page-link"
+      "component": "blocks.page-link",
+      "repeatable": true
+    },
+    "titleLevel": {
+      "type": "enumeration",
+      "default": "h2",
+      "enum": [
+        "h2",
+        "h3"
+      ]
     }
   }
 }

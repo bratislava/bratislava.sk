@@ -18,7 +18,7 @@ type Props = {
  */
 
 const PartnersSection = ({ section }: Props) => {
-  const { title, text, partners, logoRatio } = section
+  const { title, text, partners, logoRatio, titleLevelPartnersSection: titleLevel } = section
 
   const filteredPartners = partners.filter(isDefined)
   const count = filteredPartners.length
@@ -26,7 +26,7 @@ const PartnersSection = ({ section }: Props) => {
   return (
     <SectionContainer>
       <div className="flex flex-col gap-6 lg:gap-8">
-        <SectionHeader title={title} text={text} />
+        <SectionHeader title={title} titleLevel={titleLevel} text={text} />
 
         <div
           className={cn('grid gap-6 gap-y-4 lg:gap-12', {

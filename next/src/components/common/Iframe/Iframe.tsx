@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 
+import { SectionTitleLevel } from '@/src/components/cards/getCardTitleLevel'
 import SectionHeader from '@/src/components/layouts/SectionHeader'
 
 export type IframeProps = {
@@ -12,6 +13,7 @@ export type IframeProps = {
   allowFullscreen: boolean
   allowGeolocation?: boolean | null
   css?: string | null
+  titleLevel?: SectionTitleLevel | null | undefined
 }
 
 const Iframe = ({
@@ -24,6 +26,7 @@ const Iframe = ({
   allowFullscreen,
   allowGeolocation = false,
   css,
+  titleLevel,
 }: IframeProps) => {
   const ref = useRef<HTMLIFrameElement>(null)
 
@@ -49,7 +52,7 @@ const Iframe = ({
 
   return (
     <div className="flex flex-col gap-4 lg:gap-6">
-      <SectionHeader title={title} text={text} />
+      <SectionHeader title={title} titleLevel={titleLevel} text={text} />
       <div
         style={{ height }}
         className={iframeWidth === 'container' ? 'w-full' : 'absolute inset-x-0'}

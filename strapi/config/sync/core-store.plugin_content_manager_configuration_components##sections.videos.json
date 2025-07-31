@@ -54,12 +54,27 @@
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true
+          "editable": true,
+          "mainField": "url"
         },
         "list": {
           "label": "videos",
           "searchable": false,
           "sortable": false
+        }
+      },
+      "titleLevel": {
+        "edit": {
+          "label": "Úroveň nadpisu sekcie",
+          "description": "Úroveň nadpisu meníme na h3 iba ak je to potrebné sémanticky. Nikdy ju nemeníme len kvôli vizuálnej veľkosti nadpisu.",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "titleLevel",
+          "searchable": true,
+          "sortable": true
         }
       },
       "documentId": {
@@ -72,12 +87,6 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "title",
-        "subtitle",
-        "documentId"
-      ],
       "edit": [
         [
           {
@@ -94,7 +103,19 @@
             "name": "videos",
             "size": 12
           }
+        ],
+        [
+          {
+            "name": "titleLevel",
+            "size": 6
+          }
         ]
+      ],
+      "list": [
+        "id",
+        "title",
+        "subtitle",
+        "documentId"
       ]
     },
     "isComponent": true

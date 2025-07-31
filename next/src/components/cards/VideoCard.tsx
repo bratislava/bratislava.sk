@@ -2,6 +2,7 @@ import { Typography } from '@bratislava/component-library'
 import { useTranslation } from 'next-i18next'
 import React, { useState } from 'react'
 
+import { CardTitleLevel } from '@/src/components/cards/getCardTitleLevel'
 import MLink from '@/src/components/common/MLink/MLink'
 import { VideoBlockFragment } from '@/src/services/graphql'
 import cn from '@/src/utils/cn'
@@ -11,7 +12,11 @@ import { getVideoIframeSrc } from '@/src/utils/videoEmbedUtils'
  * TODO figma link
  */
 
-const VideoCard = ({ title, speaker, url: untrimmedUrl }: VideoBlockFragment) => {
+type Props = {
+  cardTitleLevel?: CardTitleLevel
+} & VideoBlockFragment
+
+const VideoCard = ({ title, speaker, url: untrimmedUrl, cardTitleLevel = 'h3' }: Props) => {
   const { t } = useTranslation()
   const [isLoaded, setLoaded] = useState(false)
 
@@ -47,7 +52,7 @@ const VideoCard = ({ title, speaker, url: untrimmedUrl }: VideoBlockFragment) =>
           rel="noreferrer"
           stretched
         >
-          <Typography variant="h5" as="h3">
+          <Typography variant="h5" as={cardTitleLevel}>
             {title}
           </Typography>
         </MLink>
