@@ -13,7 +13,9 @@ const CardBase = ({ variant = 'border', children, className, ...rest }: CardBase
       className={cn(
         'group relative flex flex-col overflow-hidden bg-white',
         {
-          'rounded-2xl border border-grey-200 hover:border-grey-400': variant === 'border',
+          // only change border color on hover if link is present among children
+          'rounded-2xl border border-grey-200 has-[[href]]:hover:border-grey-400':
+            variant === 'border',
         },
         className,
       )}
