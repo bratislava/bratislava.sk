@@ -45,7 +45,7 @@ const SectionHeader = ({
     <div
       {...TABLE_OF_CONTENTS_HEADING_ATTRIBUTE}
       className={cn('flex items-center lg:justify-end', {
-        'flex items-start gap-y-4 max-lg:flex-col lg:justify-between': title,
+        'flex flex-col items-start gap-y-4 lg:flex-row lg:flex-wrap lg:justify-between': title,
         'lg:justify-start': !showMoreLink,
       })}
     >
@@ -77,7 +77,7 @@ const SectionHeader = ({
 
       {showMoreLink ? (
         <div
-          className={cn({
+          className={cn('min-w-fit', {
             // Styling is a bit different from Figma, to make it more consistent.
             // Adding mt-2 when title is used for better alignment to center of first line
             'lg:mt-2': title,

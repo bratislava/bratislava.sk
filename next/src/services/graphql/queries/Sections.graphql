@@ -375,6 +375,23 @@ fragment DocumentsSection on ComponentSectionsDocuments {
   titleLevelDocumentsSection: titleLevel
 }
 
+fragment NumbersOverviewItemBlock on ComponentBlocksNumbersOverviewItem {
+  id
+  number
+  text
+}
+
+fragment NumbersOverviewSection on ComponentSectionsNumbersOverview {
+  title
+  text
+  showMoreLink {
+    ...CommonLink
+  }
+  numbersOverviewItems {
+    ...NumbersOverviewItemBlock
+  }
+}
+
 fragment Sections on PageSectionsDynamicZone {
   __typename
 
@@ -492,6 +509,10 @@ fragment Sections on PageSectionsDynamicZone {
 
   ... on ComponentSectionsDocuments {
     ...DocumentsSection
+  }
+
+  ... on ComponentSectionsNumbersOverview {
+    ...NumbersOverviewSection
   }
 }
 
