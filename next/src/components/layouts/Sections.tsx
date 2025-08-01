@@ -17,6 +17,7 @@ import GallerySection from '@/src/components/sections/GallerySection'
 import IframeSection from '@/src/components/sections/IframeSection'
 import InbaArticlesListSection from '@/src/components/sections/InbaArticlesListSection'
 import InbaReleasesSection from '@/src/components/sections/InbaReleasesSection'
+import LinkCardsSection from '@/src/components/sections/LinkCardsSection'
 import LinksSection from '@/src/components/sections/LinksSection'
 import NarrowTextSection from '@/src/components/sections/NarrowTextSection'
 import NumericalListSection from '@/src/components/sections/NumericalListSection'
@@ -129,6 +130,9 @@ const SectionContent = ({ section }: { section: SectionsFragment }) => {
 
     case 'ComponentSectionsNumericalList':
       return <NumericalListSection section={section} />
+
+    case 'ComponentSectionsLinkCards':
+      return <LinkCardsSection section={section} />
 
     default:
       return null
