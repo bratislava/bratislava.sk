@@ -58,12 +58,11 @@ const ListingCard = ({
       <div className="flex grow flex-col justify-between gap-4 p-4">
         <div className="flex flex-col gap-2">
           <div className="flex flex-col gap-2">
-            {/* TODO: title level based on section */}
             <Typography
               id={titleId}
               as={cardTitleLevel}
               variant="h5"
-              className="group-hover:underline"
+              className={cn({ 'group-hover:underline': linkProps })}
             >
               {title}
             </Typography>
