@@ -17,6 +17,7 @@ type PageHeaderProps = {
   tag?: string | null
   className?: string | null
   imageSrc?: string | null
+  hasWaves?: boolean
 } & BreadcrumbsProps
 
 /**
@@ -30,6 +31,7 @@ const PageHeader = ({
   imageSrc,
   tag,
   className,
+  hasWaves = true,
   children,
 }: PropsWithChildren<PageHeaderProps>) => {
   return (
@@ -115,13 +117,15 @@ const PageHeader = ({
           - Note: w-full fixes the overflow on mobile
         Overlap by 1px (-mb-px) to prevent a thin line between the waves and the main content.
       */}
-      <Waves
-        wavePosition="top"
-        waveColor="white"
-        className={cn('relative -mb-px', {
-          'max-md:absolute max-md:bottom-0 max-md:w-full': !!imageSrc,
-        })}
-      />
+      {hasWaves ? (
+        <Waves
+          wavePosition="top"
+          waveColor="white"
+          className={cn('relative -mb-px', {
+            'max-md:absolute max-md:bottom-0 max-md:w-full': !!imageSrc,
+          })}
+        />
+      ) : null}
     </div>
   )
 }

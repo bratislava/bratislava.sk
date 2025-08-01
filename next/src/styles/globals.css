@@ -386,9 +386,16 @@
   --animate-exit-to-right: exitToRight 250ms ease;
   --animate-enter-from-top: enterFromTop 250ms ease;
   --animate-scale-y: scaleY 250ms ease;
+
+  /* Aspect ratio */
+  --aspect-inba: 5 / 8
 }
 
 @layer base {
+  * {
+    scroll-behavior: smooth;
+  }
+
   body {
     @apply text-font antialiased;
     font-family: 'Inter', sans-serif;
