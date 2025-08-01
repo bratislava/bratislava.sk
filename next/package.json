@@ -95,7 +95,7 @@
     "@types/react-dom": "18.3.5",
     "@types/rss": "^0.0.32",
     "@types/xml2js": "^0.4.14",
-    "@typescript-eslint/eslint-plugin": "^6.21.0",
+    "@typescript-eslint/eslint-plugin": "^8.38.0",
     "@typescript-eslint/parser": "^6.21.0",
     "eslint": "8.57.1",
     "eslint-config-adjunct": "4.12.2",
