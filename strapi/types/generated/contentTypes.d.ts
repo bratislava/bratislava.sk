@@ -354,8 +354,6 @@ export interface ApiAdminGroupAdminGroup extends Struct.CollectionTypeSchema {
     articles: Schema.Attribute.Relation<'manyToMany', 'api::article.article'>
     createdAt: Schema.Attribute.DateTime
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> & Schema.Attribute.Private
-    documents: Schema.Attribute.Relation<'manyToMany', 'api::document.document'>
-    faqs: Schema.Attribute.Relation<'manyToMany', 'api::faq.faq'>
     locale: Schema.Attribute.String & Schema.Attribute.Private
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::admin-group.admin-group'> &
       Schema.Attribute.Private
@@ -602,7 +600,6 @@ export interface ApiDocumentDocument extends Struct.CollectionTypeSchema {
     draftAndPublish: true
   }
   attributes: {
-    adminGroups: Schema.Attribute.Relation<'manyToMany', 'api::admin-group.admin-group'>
     createdAt: Schema.Attribute.DateTime
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> & Schema.Attribute.Private
     description: Schema.Attribute.Text
@@ -679,7 +676,6 @@ export interface ApiFaqFaq extends Struct.CollectionTypeSchema {
     }
   }
   attributes: {
-    adminGroups: Schema.Attribute.Relation<'manyToMany', 'api::admin-group.admin-group'>
     body: Schema.Attribute.RichText &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
@@ -1170,6 +1166,7 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
           localized: true
         }
       }>
+    childPages: Schema.Attribute.Relation<'oneToMany', 'api::page.page'>
     createdAt: Schema.Attribute.DateTime
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> & Schema.Attribute.Private
     headerLinks: Schema.Attribute.Component<'blocks.common-link', true> &
@@ -1178,7 +1175,6 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
           localized: true
         }
       }>
-    childPages: Schema.Attribute.Relation<'oneToMany', 'api::page.page'>
     keywords: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
@@ -1662,10 +1658,10 @@ export interface PluginUploadFolder extends Struct.CollectionTypeSchema {
     }
   }
   attributes: {
+    children: Schema.Attribute.Relation<'oneToMany', 'plugin::upload.folder'>
     createdAt: Schema.Attribute.DateTime
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> & Schema.Attribute.Private
     files: Schema.Attribute.Relation<'oneToMany', 'plugin::upload.file'>
-    children: Schema.Attribute.Relation<'oneToMany', 'plugin::upload.folder'>
     locale: Schema.Attribute.String & Schema.Attribute.Private
     localizations: Schema.Attribute.Relation<'oneToMany', 'plugin::upload.folder'> &
       Schema.Attribute.Private

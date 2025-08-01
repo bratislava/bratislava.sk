@@ -1,7 +1,6 @@
 // Document Service middlewares docs: https://docs.strapi.io/cms/api/document-service/middlewares#context
 
 import { Core } from '@strapi/strapi'
-import { AdminRole } from '../../types/generated/contentTypes'
 
 type AdminGroupId = 'starz'
 
@@ -30,15 +29,12 @@ const getAdminGroup = async ({
 
 export const registerDocumentServiceMiddlewares = ({ strapi }: { strapi: Core.Strapi }) => {
   // TODO refactor to allow more adminGroup values
-  const STARZ_ADMINGROUP_ID = 'starz'   // Value of field adminGroupId of AdminGroup collection in Strapi, 
+  const STARZ_ADMINGROUP_ID = 'starz' // Value of field adminGroupId of AdminGroup collection in Strapi,
   const STARZ_ROLE_NAME_REGEX = 'starz' // Admin role name in Strapi
 
   strapi.documents.use(async (context, next) => {
     if (
-      (context.uid == 'api::article.article' ||
-        context.uid == 'api::page.page' ||
-        context.uid == 'api::document.document' ||
-        context.uid == 'api::faq.faq') &&
+      (context.uid == 'api::article.article' || context.uid == 'api::page.page') &&
       context.action == 'create'
     ) {
       const adminGroup = await getAdminGroup({ adminGroupId: STARZ_ADMINGROUP_ID, strapi })

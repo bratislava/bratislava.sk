@@ -38,12 +38,6 @@
       "relation": "manyToOne",
       "target": "api::faq-category.faq-category",
       "inversedBy": "faqs"
-    },
-    "adminGroups": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::admin-group.admin-group",
-      "mappedBy": "faqs"
     }
   }
 }
