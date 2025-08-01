@@ -25,6 +25,10 @@ type Props = {
   inbaRelease: InbaReleaseEntityFragment
 }
 
+/**
+ * Figma: https://www.figma.com/design/A9aoQH2FGhR1D14wvvk6FW/Mestsk%C3%BD-web--bratislava.sk-?node-id=2452-2134&m=dev
+ */
+
 const InbaReleasePageContent = ({ inbaRelease }: Props) => {
   const { t } = useTranslation()
 
@@ -70,8 +74,8 @@ const InbaReleasePageContent = ({ inbaRelease }: Props) => {
               </Button>
             </div>
 
-            <div className="flex flex-col">
-              <Typography variant="h3" as="h2" className="pb-4">
+            <div className="flex flex-col gap-4">
+              <Typography variant="h3" as="h2">
                 {t('InbaRelease.toDownload')}
               </Typography>
 
@@ -91,8 +95,8 @@ const InbaReleasePageContent = ({ inbaRelease }: Props) => {
       {/* TODO pagination - replace by meilisearch fetcher + useQuery and prefetch? */}
       {filteredInbaArticles.length > 0 ? (
         <SectionContainer className="pt-10 md:pt-18">
-          <div className="flex flex-col gap-3 lg:gap-4">
-            <Typography variant="h3" as="h2" className="pb-4" id="clanky-v-tomto-cisle">
+          <div className="flex flex-col gap-5 lg:gap-6">
+            <Typography variant="h3" as="h2" id="clanky-v-tomto-cisle">
               {t('InbaRelease.articlesInThisRelease')}
             </Typography>
 
