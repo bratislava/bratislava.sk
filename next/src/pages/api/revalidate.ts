@@ -28,6 +28,18 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<Response>) => {
       await res.revalidate(pageUrl)
     }
 
+    if (payload?.model === 'inba-article') {
+      const articleUrl = `${localePrefix}/inba/clanky/${payload?.entry?.slug}`
+      console.log('api/revalidate:', articleUrl)
+      await res.revalidate(articleUrl)
+    }
+
+    if (payload?.model === 'inba-release') {
+      const articleUrl = `${localePrefix}/inba/vydania/${payload?.entry?.slug}`
+      console.log('api/revalidate:', articleUrl)
+      await res.revalidate(articleUrl)
+    }
+
     /** Always revalidate homepage */
     console.log('api/revalidate:', homepage)
     await res.revalidate(homepage)
