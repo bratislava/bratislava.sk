@@ -29,15 +29,15 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<Response>) => {
     }
 
     if (payload?.model === 'inba-article') {
-      const articleUrl = `${localePrefix}/inba/clanky/${payload?.entry?.slug}`
-      console.log('api/revalidate:', articleUrl)
-      await res.revalidate(articleUrl)
+      const inbaArticleUrl = `${localePrefix}/inba/clanky/${payload?.entry?.slug}`
+      console.log('api/revalidate:', inbaArticleUrl)
+      await res.revalidate(inbaArticleUrl)
     }
 
     if (payload?.model === 'inba-release') {
-      const articleUrl = `${localePrefix}/inba/vydania/${payload?.entry?.slug}`
-      console.log('api/revalidate:', articleUrl)
-      await res.revalidate(articleUrl)
+      const inbaReleaseUrl = `${localePrefix}/inba/vydania/${payload?.entry?.slug}`
+      console.log('api/revalidate:', inbaReleaseUrl)
+      await res.revalidate(inbaReleaseUrl)
     }
 
     /** Always revalidate homepage */
