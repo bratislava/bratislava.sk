@@ -10,10 +10,10 @@ import cn from '@/src/utils/cn'
 import { generateImageSizes } from '@/src/utils/generateImageSizes'
 import { getLinkProps } from '@/src/utils/getLinkProps'
 
-type PageHeaderProps = {
+export type PageHeaderProps = {
   title?: string | null
   subtext?: string | null
-  buttons?: CommonLinkFragment[] | null
+  headerLinks?: CommonLinkFragment[] | null
   tag?: string | null
   className?: string | null
   imageSrc?: string | null
@@ -27,7 +27,7 @@ const PageHeader = ({
   title,
   subtext,
   breadcrumbs,
-  buttons,
+  headerLinks,
   imageSrc,
   tag,
   className,
@@ -77,10 +77,10 @@ const PageHeader = ({
               </div>
             )}
 
-            {buttons?.length ? (
+            {headerLinks?.length ? (
               // wrapping to flex-row earlier (md) to prevent too wide buttons on tablet
               <div className="flex max-w-[800px] flex-col gap-2 md:flex-row lg:gap-3">
-                {buttons.map((button, index) => (
+                {headerLinks.map((button, index) => (
                   <Button
                     // eslint-disable-next-line react/no-array-index-key
                     key={index}
