@@ -890,6 +890,27 @@ export type ComponentBlocksInBaInput = {
   title?: InputMaybe<Scalars['String']['input']>
 }
 
+export type ComponentBlocksNumbersOverviewItem = {
+  __typename?: 'ComponentBlocksNumbersOverviewItem'
+  id: Scalars['ID']['output']
+  number: Scalars['String']['output']
+  text: Scalars['String']['output']
+}
+
+export type ComponentBlocksNumbersOverviewItemFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentBlocksNumbersOverviewItemFiltersInput>>>
+  not?: InputMaybe<ComponentBlocksNumbersOverviewItemFiltersInput>
+  number?: InputMaybe<StringFilterInput>
+  or?: InputMaybe<Array<InputMaybe<ComponentBlocksNumbersOverviewItemFiltersInput>>>
+  text?: InputMaybe<StringFilterInput>
+}
+
+export type ComponentBlocksNumbersOverviewItemInput = {
+  id?: InputMaybe<Scalars['ID']['input']>
+  number?: InputMaybe<Scalars['String']['input']>
+  text?: InputMaybe<Scalars['String']['input']>
+}
+
 export type ComponentBlocksNumericalListItem = {
   __typename?: 'ComponentBlocksNumericalListItem'
   id: Scalars['ID']['output']
@@ -1948,6 +1969,39 @@ export type ComponentSectionsNarrowTextInput = {
   content?: InputMaybe<Scalars['String']['input']>
   id?: InputMaybe<Scalars['ID']['input']>
   width?: InputMaybe<Enum_Componentsectionsnarrowtext_Width>
+}
+
+export type ComponentSectionsNumbersOverview = {
+  __typename?: 'ComponentSectionsNumbersOverview'
+  id: Scalars['ID']['output']
+  numbersOverviewItems?: Maybe<Array<Maybe<ComponentBlocksNumbersOverviewItem>>>
+  showMoreLink?: Maybe<ComponentBlocksCommonLink>
+  text?: Maybe<Scalars['String']['output']>
+  title?: Maybe<Scalars['String']['output']>
+}
+
+export type ComponentSectionsNumbersOverviewNumbersOverviewItemsArgs = {
+  filters?: InputMaybe<ComponentBlocksNumbersOverviewItemFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type ComponentSectionsNumbersOverviewFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentSectionsNumbersOverviewFiltersInput>>>
+  not?: InputMaybe<ComponentSectionsNumbersOverviewFiltersInput>
+  numbersOverviewItems?: InputMaybe<ComponentBlocksNumbersOverviewItemFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<ComponentSectionsNumbersOverviewFiltersInput>>>
+  showMoreLink?: InputMaybe<ComponentBlocksCommonLinkFiltersInput>
+  text?: InputMaybe<StringFilterInput>
+  title?: InputMaybe<StringFilterInput>
+}
+
+export type ComponentSectionsNumbersOverviewInput = {
+  id?: InputMaybe<Scalars['ID']['input']>
+  numbersOverviewItems?: InputMaybe<Array<InputMaybe<ComponentBlocksNumbersOverviewItemInput>>>
+  showMoreLink?: InputMaybe<ComponentBlocksCommonLinkInput>
+  text?: InputMaybe<Scalars['String']['input']>
+  title?: InputMaybe<Scalars['String']['input']>
 }
 
 export type ComponentSectionsNumericalList = {
@@ -3174,6 +3228,7 @@ export type GenericMorph =
   | ComponentBlocksFooterColumn
   | ComponentBlocksHomepageHighlightsItem
   | ComponentBlocksInBa
+  | ComponentBlocksNumbersOverviewItem
   | ComponentBlocksNumericalListItem
   | ComponentBlocksPageLink
   | ComponentBlocksPartner
@@ -3208,6 +3263,7 @@ export type GenericMorph =
   | ComponentSectionsInbaReleases
   | ComponentSectionsLinks
   | ComponentSectionsNarrowText
+  | ComponentSectionsNumbersOverview
   | ComponentSectionsNumericalList
   | ComponentSectionsOfficialBoard
   | ComponentSectionsOrganizationalStructure
@@ -4546,6 +4602,7 @@ export type PageSectionsDynamicZone =
   | ComponentSectionsInbaReleases
   | ComponentSectionsLinks
   | ComponentSectionsNarrowText
+  | ComponentSectionsNumbersOverview
   | ComponentSectionsNumericalList
   | ComponentSectionsOfficialBoard
   | ComponentSectionsOrganizationalStructure
@@ -8712,6 +8769,37 @@ export type PageEntityFragment = {
         width?: Enum_Componentsectionsnarrowtext_Width | null
       }
     | {
+        __typename: 'ComponentSectionsNumbersOverview'
+        title?: string | null
+        text?: string | null
+        showMoreLink?: {
+          __typename?: 'ComponentBlocksCommonLink'
+          label?: string | null
+          url?: string | null
+          analyticsId?: string | null
+          page?: {
+            __typename?: 'Page'
+            documentId: string
+            slug?: string | null
+            title: string
+            locale?: string | null
+          } | null
+          article?: {
+            __typename: 'Article'
+            documentId: string
+            slug: string
+            title: string
+            locale?: string | null
+          } | null
+        } | null
+        numbersOverviewItems?: Array<{
+          __typename?: 'ComponentBlocksNumbersOverviewItem'
+          id: string
+          number: string
+          text: string
+        } | null> | null
+      }
+    | {
         __typename: 'ComponentSectionsNumericalList'
         id: string
         title?: string | null
@@ -9441,6 +9529,37 @@ export type PageBySlugQuery = {
           __typename: 'ComponentSectionsNarrowText'
           content?: string | null
           width?: Enum_Componentsectionsnarrowtext_Width | null
+        }
+      | {
+          __typename: 'ComponentSectionsNumbersOverview'
+          title?: string | null
+          text?: string | null
+          showMoreLink?: {
+            __typename?: 'ComponentBlocksCommonLink'
+            label?: string | null
+            url?: string | null
+            analyticsId?: string | null
+            page?: {
+              __typename?: 'Page'
+              documentId: string
+              slug?: string | null
+              title: string
+              locale?: string | null
+            } | null
+            article?: {
+              __typename: 'Article'
+              documentId: string
+              slug: string
+              title: string
+              locale?: string | null
+            } | null
+          } | null
+          numbersOverviewItems?: Array<{
+            __typename?: 'ComponentBlocksNumbersOverviewItem'
+            id: string
+            number: string
+            text: string
+          } | null> | null
         }
       | {
           __typename: 'ComponentSectionsNumericalList'
@@ -10198,6 +10317,37 @@ export type Dev_AllPagesQuery = {
           __typename: 'ComponentSectionsNarrowText'
           content?: string | null
           width?: Enum_Componentsectionsnarrowtext_Width | null
+        }
+      | {
+          __typename: 'ComponentSectionsNumbersOverview'
+          title?: string | null
+          text?: string | null
+          showMoreLink?: {
+            __typename?: 'ComponentBlocksCommonLink'
+            label?: string | null
+            url?: string | null
+            analyticsId?: string | null
+            page?: {
+              __typename?: 'Page'
+              documentId: string
+              slug?: string | null
+              title: string
+              locale?: string | null
+            } | null
+            article?: {
+              __typename: 'Article'
+              documentId: string
+              slug: string
+              title: string
+              locale?: string | null
+            } | null
+          } | null
+          numbersOverviewItems?: Array<{
+            __typename?: 'ComponentBlocksNumbersOverviewItem'
+            id: string
+            number: string
+            text: string
+          } | null> | null
         }
       | {
           __typename: 'ComponentSectionsNumericalList'
@@ -11877,6 +12027,45 @@ export type DocumentsSectionFragment = {
   } | null>
 }
 
+export type NumbersOverviewItemBlockFragment = {
+  __typename?: 'ComponentBlocksNumbersOverviewItem'
+  id: string
+  number: string
+  text: string
+}
+
+export type NumbersOverviewSectionFragment = {
+  __typename?: 'ComponentSectionsNumbersOverview'
+  title?: string | null
+  text?: string | null
+  showMoreLink?: {
+    __typename?: 'ComponentBlocksCommonLink'
+    label?: string | null
+    url?: string | null
+    analyticsId?: string | null
+    page?: {
+      __typename?: 'Page'
+      documentId: string
+      slug?: string | null
+      title: string
+      locale?: string | null
+    } | null
+    article?: {
+      __typename: 'Article'
+      documentId: string
+      slug: string
+      title: string
+      locale?: string | null
+    } | null
+  } | null
+  numbersOverviewItems?: Array<{
+    __typename?: 'ComponentBlocksNumbersOverviewItem'
+    id: string
+    number: string
+    text: string
+  } | null> | null
+}
+
 type Sections_ComponentSectionsAccordion_Fragment = {
   __typename: 'ComponentSectionsAccordion'
   title?: string | null
@@ -12262,6 +12451,38 @@ type Sections_ComponentSectionsNarrowText_Fragment = {
   width?: Enum_Componentsectionsnarrowtext_Width | null
 }
 
+type Sections_ComponentSectionsNumbersOverview_Fragment = {
+  __typename: 'ComponentSectionsNumbersOverview'
+  title?: string | null
+  text?: string | null
+  showMoreLink?: {
+    __typename?: 'ComponentBlocksCommonLink'
+    label?: string | null
+    url?: string | null
+    analyticsId?: string | null
+    page?: {
+      __typename?: 'Page'
+      documentId: string
+      slug?: string | null
+      title: string
+      locale?: string | null
+    } | null
+    article?: {
+      __typename: 'Article'
+      documentId: string
+      slug: string
+      title: string
+      locale?: string | null
+    } | null
+  } | null
+  numbersOverviewItems?: Array<{
+    __typename?: 'ComponentBlocksNumbersOverviewItem'
+    id: string
+    number: string
+    text: string
+  } | null> | null
+}
+
 type Sections_ComponentSectionsNumericalList_Fragment = {
   __typename: 'ComponentSectionsNumericalList'
   id: string
@@ -12558,6 +12779,7 @@ export type SectionsFragment =
   | Sections_ComponentSectionsInbaReleases_Fragment
   | Sections_ComponentSectionsLinks_Fragment
   | Sections_ComponentSectionsNarrowText_Fragment
+  | Sections_ComponentSectionsNumbersOverview_Fragment
   | Sections_ComponentSectionsNumericalList_Fragment
   | Sections_ComponentSectionsOfficialBoard_Fragment
   | Sections_ComponentSectionsOrganizationalStructure_Fragment
@@ -13676,6 +13898,27 @@ export const DocumentsSectionFragmentDoc = gql`
   }
   ${DocumentEntityFragmentDoc}
 `
+export const NumbersOverviewItemBlockFragmentDoc = gql`
+  fragment NumbersOverviewItemBlock on ComponentBlocksNumbersOverviewItem {
+    id
+    number
+    text
+  }
+`
+export const NumbersOverviewSectionFragmentDoc = gql`
+  fragment NumbersOverviewSection on ComponentSectionsNumbersOverview {
+    title
+    text
+    showMoreLink {
+      ...CommonLink
+    }
+    numbersOverviewItems {
+      ...NumbersOverviewItemBlock
+    }
+  }
+  ${CommonLinkFragmentDoc}
+  ${NumbersOverviewItemBlockFragmentDoc}
+`
 export const SectionsFragmentDoc = gql`
   fragment Sections on PageSectionsDynamicZone {
     __typename
@@ -13763,6 +14006,9 @@ export const SectionsFragmentDoc = gql`
     ... on ComponentSectionsDocuments {
       ...DocumentsSection
     }
+    ... on ComponentSectionsNumbersOverview {
+      ...NumbersOverviewSection
+    }
   }
   ${DividerSectionFragmentDoc}
   ${TextWithImageSectionFragmentDoc}
@@ -13792,6 +14038,7 @@ export const SectionsFragmentDoc = gql`
   ${TootootEventsSectionFragmentDoc}
   ${PartnersSectionFragmentDoc}
   ${DocumentsSectionFragmentDoc}
+  ${NumbersOverviewSectionFragmentDoc}
 `
 export const SidebarsFragmentDoc = gql`
   fragment Sidebars on PageSidebarDynamicZone {

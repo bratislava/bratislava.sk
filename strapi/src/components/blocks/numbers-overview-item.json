@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_blocks_numbers_overview_items",
+  "info": {
+    "displayName": "Numbers Overview Item"
+  },
+  "options": {},
+  "attributes": {
+    "number": {
+      "type": "string",
+      "required": true,
+      "regex": "\\d*"
+    },
+    "text": {
+      "type": "text",
+      "required": true
+    }
+  },
+  "config": {}
+}

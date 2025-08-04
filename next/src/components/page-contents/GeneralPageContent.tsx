@@ -56,7 +56,7 @@ const GeneralPageContent = ({ page }: GeneralPageProps) => {
             },
           )}
         >
-          <div className="flex w-full flex-col gap-5 lg:gap-9">
+          <div className="flex w-full flex-col">
             {page.showTableOfContents && <TableOfContentsSection />}
             <Sections sections={filteredSections} />
             <RelatedArticlesSection page={page} />

@@ -185,6 +185,17 @@ export interface BlocksInBa extends Struct.ComponentSchema {
   }
 }
 
+export interface BlocksNumbersOverviewItem extends Struct.ComponentSchema {
+  collectionName: 'components_blocks_numbers_overview_items'
+  info: {
+    displayName: 'Numbers Overview Item'
+  }
+  attributes: {
+    number: Schema.Attribute.String & Schema.Attribute.Required
+    text: Schema.Attribute.Text & Schema.Attribute.Required
+  }
+}
+
 export interface BlocksNumericalListItem extends Struct.ComponentSchema {
   collectionName: 'components_blocks_numerical_list_items'
   info: {
@@ -782,6 +793,26 @@ export interface SectionsNarrowText extends Struct.ComponentSchema {
   }
 }
 
+export interface SectionsNumbersOverview extends Struct.ComponentSchema {
+  collectionName: 'components_sections_numbers_overviews'
+  info: {
+    displayName: 'Numbers Overview'
+  }
+  attributes: {
+    numbersOverviewItems: Schema.Attribute.Component<'blocks.numbers-overview-item', true> &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 4
+          min: 1
+        },
+        number
+      >
+    showMoreLink: Schema.Attribute.Component<'blocks.common-link', false>
+    text: Schema.Attribute.Text
+    title: Schema.Attribute.String
+  }
+}
+
 export interface SectionsNumericalList extends Struct.ComponentSchema {
   collectionName: 'components_sections_numerical_lists'
   info: {
@@ -1008,6 +1039,7 @@ declare module '@strapi/strapi' {
       'blocks.footer-column': BlocksFooterColumn
       'blocks.homepage-highlights-item': BlocksHomepageHighlightsItem
       'blocks.in-ba': BlocksInBa
+      'blocks.numbers-overview-item': BlocksNumbersOverviewItem
       'blocks.numerical-list-item': BlocksNumericalListItem
       'blocks.page-link': BlocksPageLink
       'blocks.partner': BlocksPartner
@@ -1042,6 +1074,7 @@ declare module '@strapi/strapi' {
       'sections.inba-releases': SectionsInbaReleases
       'sections.links': SectionsLinks
       'sections.narrow-text': SectionsNarrowText
+      'sections.numbers-overview': SectionsNumbersOverview
       'sections.numerical-list': SectionsNumericalList
       'sections.official-board': SectionsOfficialBoard
       'sections.organizational-structure': SectionsOrganizationalStructure

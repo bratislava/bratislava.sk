@@ -1290,6 +1290,7 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
         'sections.inba-releases',
         'sections.links',
         'sections.narrow-text',
+        'sections.numbers-overview',
         'sections.numerical-list',
         'sections.official-board',
         'sections.organizational-structure',
