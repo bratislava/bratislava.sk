@@ -1,3 +1,4 @@
+import { dehydrate, DehydratedState, HydrationBoundary, QueryClient } from '@tanstack/react-query'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import Head from 'next/head'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
@@ -8,12 +9,18 @@ import InbaReleasePageContent from '@/src/components/page-contents/InbaReleasePa
 import { GeneralContextProvider } from '@/src/components/providers/GeneralContextProvider'
 import { GeneralQuery, InbaReleaseEntityFragment } from '@/src/services/graphql'
 import { client } from '@/src/services/graphql/gql'
+import {
+  getInbaArticlesQueryKey,
+  inbaArticlesDefaultFilters,
+  inbaArticlesFetcher,
+} from '@/src/services/meili/fetchers/inbaArticlesFetcher'
 import { NOT_FOUND } from '@/src/utils/consts'
 import { useTitle } from '@/src/utils/useTitle'
 
 type PageProps = {
   general: GeneralQuery
   inbaRelease: InbaReleaseEntityFragment
+  dehydratedState: DehydratedState
 }
 
 type StaticParams = {
@@ -62,32 +69,50 @@ export const getStaticProps: GetStaticProps<PageProps, StaticParams> = async ({
     return NOT_FOUND
   }
 
+  // Prefetch data
+  const queryClient = new QueryClient()
+
+  const filters = {
+    ...inbaArticlesDefaultFilters,
+    releaseDocumentIds: [inbaRelease.documentId],
+  }
+
+  await queryClient.prefetchQuery({
+    queryKey: getInbaArticlesQueryKey(filters, locale),
+    queryFn: () => inbaArticlesFetcher(filters, locale),
+  })
+
+  const dehydratedState = dehydrate(queryClient)
+
   return {
     props: {
       general,
       slug,
       inbaRelease,
       ...translations,
+      dehydratedState,
     },
     revalidate: 10,
   }
 }
 
-const Page = ({ general, inbaRelease }: PageProps) => {
+const Page = ({ general, inbaRelease, dehydratedState }: PageProps) => {
   const { title: inbaReleaseTitle, perex } = inbaRelease
 
   const title = useTitle(inbaReleaseTitle)
 
   return (
-    <GeneralContextProvider general={general}>
-      <Head>
-        <title>{title}</title>
-        {perex && <meta name="description" content={perex} />}
-      </Head>
-      <PageLayout>
-        <InbaReleasePageContent inbaRelease={inbaRelease} />
-      </PageLayout>
-    </GeneralContextProvider>
+    <HydrationBoundary state={dehydratedState}>
+      <GeneralContextProvider general={general}>
+        <Head>
+          <title>{title}</title>
+          {perex && <meta name="description" content={perex} />}
+        </Head>
+        <PageLayout>
+          <InbaReleasePageContent inbaRelease={inbaRelease} />
+        </PageLayout>
+      </GeneralContextProvider>
+    </HydrationBoundary>
   )
 }
 
