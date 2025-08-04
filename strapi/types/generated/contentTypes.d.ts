@@ -1259,7 +1259,13 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
         i18n: {
           localized: true
         }
-      }>
+      }> &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 1
+        },
+        number
+      >
     parentPage: Schema.Attribute.Relation<'manyToOne', 'api::page.page'>
     publishedAt: Schema.Attribute.DateTime
     relatedContents: Schema.Attribute.Relation<'oneToMany', 'api::tag.tag'>
