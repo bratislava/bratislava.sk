@@ -1,29 +1,52 @@
 import React from 'react'
 
+import { Breadcrumb } from '@/src/components/common/Breadcrumbs/Breadcrumbs'
+import PageHeader from '@/src/components/common/PageHeader/PageHeader'
 import SubpageListPageHeaderSection from '@/src/components/sections/headers/SubpageListPageHeaderSection_Deprecated'
-import { PageHeaderSectionsFragment } from '@/src/services/graphql'
-import { isPresent } from '@/src/utils/utils'
+import { PageEntityFragment, PageHeaderSectionsFragment } from '@/src/services/graphql'
+import { isDefined } from '@/src/utils/isDefined'
 
-type PageHeaderSectionsProps = {
-  sections: (PageHeaderSectionsFragment | null | undefined)[] | null | undefined
+type Props = Pick<
+  PageEntityFragment,
+  'title' | 'subtext' | 'headerLinks' | 'pageBackgroundImage'
+> & {
+  breadcrumbs: Breadcrumb[]
+  header: PageHeaderSectionsFragment | null | undefined
 }
 
-const PageHeaderSections = ({ sections }: PageHeaderSectionsProps) => {
-  return (
-    <>
-      {sections?.filter(isPresent).map((section, index) => {
-        // eslint-disable-next-line sonarjs/no-small-switch
-        switch (section.__typename) {
-          case 'ComponentSectionsSubpageList':
-            // eslint-disable-next-line react/no-array-index-key
-            return <SubpageListPageHeaderSection key={index} section={section} />
+const PageHeaderSections = ({
+  title,
+  subtext,
+  headerLinks,
+  pageBackgroundImage,
+  breadcrumbs,
+  header,
+}: Props) => {
+  // eslint-disable-next-line sonarjs/no-small-switch
+  switch (header?.__typename) {
+    case 'ComponentSectionsSubpageList':
+      return (
+        <SubpageListPageHeaderSection
+          title={title}
+          subtext={subtext}
+          breadcrumbs={breadcrumbs}
+          headerLinks={headerLinks?.filter(isDefined)}
+          imageSrc={pageBackgroundImage?.url}
+          header={header}
+        />
+      )
 
-          default:
-            return null
-        }
-      })}
-    </>
-  )
+    default:
+      return (
+        <PageHeader
+          title={title}
+          subtext={subtext}
+          breadcrumbs={breadcrumbs}
+          headerLinks={headerLinks?.filter(isDefined)}
+          imageSrc={pageBackgroundImage?.url}
+        />
+      )
+  }
 }
 
 export default PageHeaderSections

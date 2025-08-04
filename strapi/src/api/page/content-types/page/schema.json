@@ -133,7 +133,8 @@
       },
       "components": [
         "sections.subpage-list"
-      ]
+      ],
+      "max": 1
     },
     "sections": {
       "type": "dynamiczone",

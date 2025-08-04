@@ -2,7 +2,6 @@ import * as React from 'react'
 import { useMemo } from 'react'
 
 import AliasInfoMessage from '@/src/components/common/AliasInfoMessage/AliasInfoMessage'
-import PageHeader from '@/src/components/common/PageHeader/PageHeader'
 import PageHeaderSections from '@/src/components/layouts/PageHeaderSections'
 import SectionContainer from '@/src/components/layouts/SectionContainer'
 import Sections from '@/src/components/layouts/Sections'
@@ -23,21 +22,21 @@ const GeneralPageContent = ({ page }: GeneralPageProps) => {
 
   const filteredSections = page.sections?.filter(isDefined) ?? []
 
-  // Sidebar has always max 1 element
+  // These fields have always max 1 element
+  const [header] = page.pageHeaderSections ?? []
   const [sidebar] = page.sidebar ?? []
 
   return (
     <>
       {/* Header */}
-      <PageHeader
+      <PageHeaderSections
+        header={header}
         title={page.title}
         subtext={page.subtext}
         breadcrumbs={breadcrumbs}
-        buttons={page.headerLinks?.filter(isDefined)}
-        imageSrc={page.pageBackgroundImage?.url}
-      >
-        <PageHeaderSections sections={page.pageHeaderSections} />
-      </PageHeader>
+        headerLinks={page.headerLinks?.filter(isDefined)}
+        pageBackgroundImage={page.pageBackgroundImage}
+      />
 
       {/* Sections & Sidebar */}
       <div
