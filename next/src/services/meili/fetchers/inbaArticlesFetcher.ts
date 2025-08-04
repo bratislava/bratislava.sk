@@ -7,6 +7,7 @@ export type InbaArticlesFilters = {
   pageSize: number
   page: number
   tagDocumentIds: string[]
+  releaseDocumentIds: string[]
 }
 
 export const inbaArticlesDefaultFilters: InbaArticlesFilters = {
@@ -14,6 +15,7 @@ export const inbaArticlesDefaultFilters: InbaArticlesFilters = {
   pageSize: 9,
   page: 1,
   tagDocumentIds: [],
+  releaseDocumentIds: [],
 }
 
 export const getInbaArticlesQueryKey = (filters: InbaArticlesFilters, locale: string) => [
@@ -33,6 +35,9 @@ export const inbaArticlesFetcher = (filters: InbaArticlesFilters, locale: string
         `locale = ${locale}`,
         filters.tagDocumentIds.length > 0
           ? `inba-article.inbaTag.documentId IN [${filters.tagDocumentIds.join(',')}]`
+          : '',
+        filters.releaseDocumentIds.length > 0
+          ? `inba-article.inbaRelease.documentId IN [${filters.releaseDocumentIds.join(',')}]`
           : '',
       ],
       sort: ['inba-article.publishedAtTimestamp:desc'],

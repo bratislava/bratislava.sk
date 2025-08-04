@@ -44,6 +44,7 @@ const searchIndexSettings = {
     'blog-post.tag.documentId',
     'document.documentCategory.documentId',
     'inba-article.inbaTag.documentId',
+    'inba-article.inbaRelease.documentId',
     'regulation.category',
   ],
   sortableAttributes: [
@@ -129,7 +130,7 @@ const config = {
     indexName: 'search_index',
     entriesQuery: {
       locale: '*',
-      populate: ['inbaTag', 'coverImage'],
+      populate: ['inbaTag', 'coverImage', 'inbaRelease'],
     },
     settings: searchIndexSettings,
     transformEntry: ({ entry }) =>
