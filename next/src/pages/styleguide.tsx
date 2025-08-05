@@ -9,12 +9,12 @@ import ButtonShowCase from '@/src/components/styleguide/showcases/ButtonShowCase
 import CategoryCardShowcase from '@/src/components/styleguide/showcases/CategoryCardShowcase'
 import ColumnsShowcase from '@/src/components/styleguide/showcases/ColumnsShowcase'
 import ContactsShowcase from '@/src/components/styleguide/showcases/ContactsShowcase'
-import EventCardShowcase from '@/src/components/styleguide/showcases/EventCardShowcase'
 import HomepageHorizontalCardShowcase from '@/src/components/styleguide/showcases/HomepageHorizontalCardShowcase'
 import MarkdownShowcase from '@/src/components/styleguide/showcases/MarkdownShowcase'
 import SpinnerShowCase from '@/src/components/styleguide/showcases/SpinnerShowCase'
 import TagShowCase from '@/src/components/styleguide/showcases/TagShowCase'
 import TokensShowcase from '@/src/components/styleguide/showcases/TokensShowcase'
+import TootootEventCardShowcase from '@/src/components/styleguide/showcases/TootootEventCardShowcase'
 import StyleGuideWrapper from '@/src/components/styleguide/StyleGuideWrapper'
 import { NOT_FOUND } from '@/src/utils/consts'
 import { isProductionDeployment } from '@/src/utils/utils'
@@ -35,7 +35,7 @@ const Styleguide = () => {
       <AlertShowCase />
       <AccordionShowcase />
       <BannerShowCase />
-      <EventCardShowcase />
+      <TootootEventCardShowcase />
       <CategoryCardShowcase />
       <ArticleCardShowcase />
       <HomepageHorizontalCardShowcase />
