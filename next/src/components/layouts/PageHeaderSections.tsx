@@ -2,6 +2,7 @@ import React from 'react'
 
 import { Breadcrumb } from '@/src/components/common/Breadcrumbs/Breadcrumbs'
 import PageHeader from '@/src/components/common/PageHeader/PageHeader'
+import PageHeaderEvent from '@/src/components/sections/headers/PageHeaderEvent'
 import SubpageListPageHeaderSection from '@/src/components/sections/headers/SubpageListPageHeaderSection_Deprecated'
 import { PageEntityFragment, PageHeaderSectionsFragment } from '@/src/services/graphql'
 import { isDefined } from '@/src/utils/isDefined'
@@ -22,7 +23,8 @@ const PageHeaderSections = ({
   breadcrumbs,
   header,
 }: Props) => {
-  // eslint-disable-next-line sonarjs/no-small-switch
+  const filteredHeaderLinks = headerLinks?.filter(isDefined) ?? []
+
   switch (header?.__typename) {
     case 'ComponentSectionsSubpageList':
       return (
@@ -30,8 +32,19 @@ const PageHeaderSections = ({
           title={title}
           subtext={subtext}
           breadcrumbs={breadcrumbs}
-          headerLinks={headerLinks?.filter(isDefined)}
+          headerLinks={filteredHeaderLinks}
           imageSrc={pageBackgroundImage?.url}
+          header={header}
+        />
+      )
+
+    case 'ComponentHeaderSectionsEvent':
+      return (
+        <PageHeaderEvent
+          title={title}
+          breadcrumbs={breadcrumbs}
+          headerLinks={filteredHeaderLinks}
+          image={pageBackgroundImage}
           header={header}
         />
       )
@@ -42,7 +55,7 @@ const PageHeaderSections = ({
           title={title}
           subtext={subtext}
           breadcrumbs={breadcrumbs}
-          headerLinks={headerLinks?.filter(isDefined)}
+          headerLinks={filteredHeaderLinks}
           imageSrc={pageBackgroundImage?.url}
         />
       )
