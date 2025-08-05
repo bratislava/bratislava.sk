@@ -25,13 +25,13 @@ const SearchResultCard = ({ data }: SearchResultCardProps) => {
         className="group relative flex flex-row items-stretch gap-4 overflow-hidden bg-white py-4"
         data-cy="search-result-card"
       >
-        {data.coverImageSrc ? (
-          <SearchResultCard.ImageFromUrl imgUrl={data.coverImageSrc} />
-        ) : data.customIconName ? (
+        {data.customIconName ? (
           <SearchResultCard.ImageFromIconName iconName={data.customIconName} />
         ) : data.pageColor ? (
           <SearchResultCard.ImageFromPageColor pageColor={data.pageColor} />
-        ) : null}
+        ) : (
+          <SearchResultCard.ImageFromUrl imgUrl={data.coverImageSrc} />
+        )}
 
         <div className="flex w-full flex-row gap-4">
           <div className="flex w-full flex-col justify-center gap-3 lg:gap-2">
@@ -107,7 +107,7 @@ SearchResultCard.ImageFromUrl = function ({
   imgUrl,
   className,
 }: {
-  imgUrl: string
+  imgUrl: string | null | undefined
   className?: string
 }) {
   return (
@@ -117,13 +117,15 @@ SearchResultCard.ImageFromUrl = function ({
         className,
       )}
     >
-      <Image
-        src={imgUrl}
-        alt=""
-        sizes={generateImageSizes({ default: '150px' })}
-        fill
-        className="object-cover"
-      />
+      {imgUrl ? (
+        <Image
+          src={imgUrl}
+          alt=""
+          sizes={generateImageSizes({ default: '150px' })}
+          fill
+          className="object-cover"
+        />
+      ) : null}
       <ImagePlaceholder />
     </div>
   )
