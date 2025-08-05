@@ -875,7 +875,7 @@ input ComponentGeneralHeaderLinkInput {
 
 type ComponentHeaderSectionsEvent {
   address: String
-  date: Date!
+  date: Date
   id: ID!
 }
 

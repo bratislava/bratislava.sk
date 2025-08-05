@@ -1117,7 +1117,7 @@ export type ComponentGeneralHeaderLinkInput = {
 export type ComponentHeaderSectionsEvent = {
   __typename?: 'ComponentHeaderSectionsEvent'
   address?: Maybe<Scalars['String']['output']>
-  date: Scalars['Date']['output']
+  date?: Maybe<Scalars['Date']['output']>
   id: Scalars['ID']['output']
 }
 
@@ -9088,7 +9088,7 @@ export type PageEntityFragment = {
   > | null
   localizations: Array<{ __typename?: 'Page'; slug?: string | null; locale?: string | null } | null>
   pageHeaderSections?: Array<
-    | { __typename: 'ComponentHeaderSectionsEvent'; date: any; address?: string | null }
+    | { __typename: 'ComponentHeaderSectionsEvent'; date?: any | null; address?: string | null }
     | {
         __typename: 'ComponentSectionsSubpageList'
         id: string
@@ -9855,7 +9855,7 @@ export type PageBySlugQuery = {
       locale?: string | null
     } | null>
     pageHeaderSections?: Array<
-      | { __typename: 'ComponentHeaderSectionsEvent'; date: any; address?: string | null }
+      | { __typename: 'ComponentHeaderSectionsEvent'; date?: any | null; address?: string | null }
       | {
           __typename: 'ComponentSectionsSubpageList'
           id: string
@@ -10644,7 +10644,7 @@ export type Dev_AllPagesQuery = {
       locale?: string | null
     } | null>
     pageHeaderSections?: Array<
-      | { __typename: 'ComponentHeaderSectionsEvent'; date: any; address?: string | null }
+      | { __typename: 'ComponentHeaderSectionsEvent'; date?: any | null; address?: string | null }
       | {
           __typename: 'ComponentSectionsSubpageList'
           id: string
@@ -12841,13 +12841,13 @@ export type SubpageListPageHeaderSectionFragment = {
 
 export type EventPageHeaderSectionFragment = {
   __typename?: 'ComponentHeaderSectionsEvent'
-  date: any
+  date?: any | null
   address?: string | null
 }
 
 type PageHeaderSections_ComponentHeaderSectionsEvent_Fragment = {
   __typename: 'ComponentHeaderSectionsEvent'
-  date: any
+  date?: any | null
   address?: string | null
 }
 

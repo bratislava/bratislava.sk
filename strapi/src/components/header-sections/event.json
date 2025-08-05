@@ -7,7 +7,7 @@
   "attributes": {
     "date": {
       "type": "date",
-      "required": true
+      "required": false
     },
     "address": {
       "type": "text"

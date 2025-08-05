@@ -327,7 +327,7 @@ export interface HeaderSectionsEvent extends Struct.ComponentSchema {
   }
   attributes: {
     address: Schema.Attribute.Text
-    date: Schema.Attribute.Date & Schema.Attribute.Required
+    date: Schema.Attribute.Date
   }
 }
 

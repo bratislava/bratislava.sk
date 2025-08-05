@@ -41,19 +41,23 @@ const PageHeaderEvent = ({ title, breadcrumbs, headerLinks, image, header }: Pro
       <div className="flex w-full flex-col overflow-hidden rounded-2xl bg-background-passive-base lg:flex-row">
         <div className="flex flex-col justify-between gap-6 p-4 lg:w-[26rem] lg:gap-40 lg:p-6">
           <div className="flex flex-col gap-6 lg:gap-8">
-            {/* Date display - Screen: mobile */}
-            <div className="lg:hidden">
-              <Typography variant="p-default">{formatDate(date)}</Typography>
-            </div>
-            {/* Date display - Screen: desktop */}
-            <div className="max-lg:hidden">
-              <div className="flex size-20 flex-col items-center justify-center rounded-lg bg-background-passive-inverted-base text-content-passive-inverted-primary">
-                <Typography variant="h3" as="p">
-                  {day}
-                </Typography>
-                <Typography variant="p-small">{month}</Typography>
-              </div>
-            </div>
+            {date ? (
+              <>
+                {/* Date display - Screen: mobile */}
+                <div className="lg:hidden">
+                  <Typography variant="p-default">{formatDate(date)}</Typography>
+                </div>
+                {/* Date display - Screen: desktop */}
+                <div className="max-lg:hidden">
+                  <div className="flex size-20 flex-col items-center justify-center rounded-lg bg-background-passive-inverted-base text-content-passive-inverted-primary">
+                    <Typography variant="h3" as="p">
+                      {day}
+                    </Typography>
+                    <Typography variant="p-small">{month}</Typography>
+                  </div>
+                </div>
+              </>
+            ) : null}
             <div className="flex flex-col gap-2 lg:gap-4">
               <Typography variant="h1">{title}</Typography>
               <Typography variant="p-default">{address}</Typography>
