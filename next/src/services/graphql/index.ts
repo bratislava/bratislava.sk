@@ -1594,6 +1594,46 @@ export type ComponentSectionsDocumentsInput = {
   titleLevel?: InputMaybe<Enum_Componentsectionsdocuments_Titlelevel>
 }
 
+export type ComponentSectionsEvents = {
+  __typename?: 'ComponentSectionsEvents'
+  eventPages: Array<Maybe<Page>>
+  eventPages_connection?: Maybe<PageRelationResponseCollection>
+  id: Scalars['ID']['output']
+  text?: Maybe<Scalars['String']['output']>
+  title?: Maybe<Scalars['String']['output']>
+  titleLevel?: Maybe<Enum_Componentsectionsevents_Titlelevel>
+}
+
+export type ComponentSectionsEventsEventPagesArgs = {
+  filters?: InputMaybe<PageFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type ComponentSectionsEventsEventPages_ConnectionArgs = {
+  filters?: InputMaybe<PageFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type ComponentSectionsEventsFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentSectionsEventsFiltersInput>>>
+  eventPages?: InputMaybe<PageFiltersInput>
+  not?: InputMaybe<ComponentSectionsEventsFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<ComponentSectionsEventsFiltersInput>>>
+  text?: InputMaybe<StringFilterInput>
+  title?: InputMaybe<StringFilterInput>
+  titleLevel?: InputMaybe<StringFilterInput>
+}
+
+export type ComponentSectionsEventsInput = {
+  eventPages?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
+  id?: InputMaybe<Scalars['ID']['input']>
+  text?: InputMaybe<Scalars['String']['input']>
+  title?: InputMaybe<Scalars['String']['input']>
+  titleLevel?: InputMaybe<Enum_Componentsectionsevents_Titlelevel>
+}
+
 export type ComponentSectionsFaqCategories = {
   __typename?: 'ComponentSectionsFaqCategories'
   faqCategories: Array<Maybe<FaqCategory>>
@@ -2760,6 +2800,11 @@ export enum Enum_Componentsectionsdocuments_Titlelevel {
   H3 = 'h3',
 }
 
+export enum Enum_Componentsectionsevents_Titlelevel {
+  H2 = 'h2',
+  H3 = 'h3',
+}
+
 export enum Enum_Componentsectionsfaqs_Titlelevel {
   H2 = 'h2',
   H3 = 'h3',
@@ -3272,6 +3317,7 @@ export type GenericMorph =
   | ComponentSectionsContactsSection
   | ComponentSectionsDivider
   | ComponentSectionsDocuments
+  | ComponentSectionsEvents
   | ComponentSectionsFaqCategories
   | ComponentSectionsFaqs
   | ComponentSectionsFileList
@@ -4618,6 +4664,7 @@ export type PageSectionsDynamicZone =
   | ComponentSectionsContactsSection
   | ComponentSectionsDivider
   | ComponentSectionsDocuments
+  | ComponentSectionsEvents
   | ComponentSectionsFaqCategories
   | ComponentSectionsFaqs
   | ComponentSectionsFileList
@@ -8400,6 +8447,46 @@ export type PageSlugEntityFragment = {
   locale?: string | null
 }
 
+export type PageCardEntityFragment = {
+  __typename?: 'Page'
+  documentId: string
+  slug?: string | null
+  title: string
+  locale?: string | null
+  pageBackgroundImage?: { __typename?: 'UploadFile'; documentId: string; url: string } | null
+}
+
+export type EventPageCardEntityFragment = {
+  __typename?: 'Page'
+  documentId: string
+  slug?: string | null
+  title: string
+  locale?: string | null
+  pageHeaderSections?: Array<
+    | { __typename: 'ComponentHeaderSectionsEvent'; date?: any | null; address?: string | null }
+    | {
+        __typename: 'ComponentSectionsSubpageList'
+        id: string
+        subpageList?: Array<{
+          __typename?: 'ComponentBlocksPageLink'
+          url?: string | null
+          analyticsId?: string | null
+          label?: string | null
+          page?: {
+            __typename?: 'Page'
+            documentId: string
+            slug?: string | null
+            title: string
+            locale?: string | null
+          } | null
+        } | null> | null
+      }
+    | { __typename: 'Error' }
+    | null
+  > | null
+  pageBackgroundImage?: { __typename?: 'UploadFile'; documentId: string; url: string } | null
+}
+
 export type PageEntityFragment = {
   __typename?: 'Page'
   alias?: string | null
@@ -8412,7 +8499,6 @@ export type PageEntityFragment = {
   slug?: string | null
   title: string
   locale?: string | null
-  pageBackgroundImage?: { __typename?: 'UploadFile'; documentId: string; url: string } | null
   headerLinks?: Array<{
     __typename?: 'ComponentBlocksCommonLink'
     label?: string | null
@@ -8682,6 +8768,50 @@ export type PageEntityFragment = {
             createdAt?: any | null
             updatedAt?: any | null
           } | null>
+        } | null>
+      }
+    | {
+        __typename: 'ComponentSectionsEvents'
+        title?: string | null
+        text?: string | null
+        titleLevelEventsSection?: Enum_Componentsectionsevents_Titlelevel | null
+        eventPages: Array<{
+          __typename?: 'Page'
+          documentId: string
+          slug?: string | null
+          title: string
+          locale?: string | null
+          pageHeaderSections?: Array<
+            | {
+                __typename: 'ComponentHeaderSectionsEvent'
+                date?: any | null
+                address?: string | null
+              }
+            | {
+                __typename: 'ComponentSectionsSubpageList'
+                id: string
+                subpageList?: Array<{
+                  __typename?: 'ComponentBlocksPageLink'
+                  url?: string | null
+                  analyticsId?: string | null
+                  label?: string | null
+                  page?: {
+                    __typename?: 'Page'
+                    documentId: string
+                    slug?: string | null
+                    title: string
+                    locale?: string | null
+                  } | null
+                } | null> | null
+              }
+            | { __typename: 'Error' }
+            | null
+          > | null
+          pageBackgroundImage?: {
+            __typename?: 'UploadFile'
+            documentId: string
+            url: string
+          } | null
         } | null>
       }
     | {
@@ -9120,6 +9250,7 @@ export type PageEntityFragment = {
       color?: Enum_Pagecategory_Color | null
     } | null
   } | null>
+  pageBackgroundImage?: { __typename?: 'UploadFile'; documentId: string; url: string } | null
   parentPage?: {
     __typename?: 'Page'
     slug?: string | null
@@ -9172,7 +9303,6 @@ export type PageBySlugQuery = {
     slug?: string | null
     title: string
     locale?: string | null
-    pageBackgroundImage?: { __typename?: 'UploadFile'; documentId: string; url: string } | null
     headerLinks?: Array<{
       __typename?: 'ComponentBlocksCommonLink'
       label?: string | null
@@ -9445,6 +9575,50 @@ export type PageBySlugQuery = {
               createdAt?: any | null
               updatedAt?: any | null
             } | null>
+          } | null>
+        }
+      | {
+          __typename: 'ComponentSectionsEvents'
+          title?: string | null
+          text?: string | null
+          titleLevelEventsSection?: Enum_Componentsectionsevents_Titlelevel | null
+          eventPages: Array<{
+            __typename?: 'Page'
+            documentId: string
+            slug?: string | null
+            title: string
+            locale?: string | null
+            pageHeaderSections?: Array<
+              | {
+                  __typename: 'ComponentHeaderSectionsEvent'
+                  date?: any | null
+                  address?: string | null
+                }
+              | {
+                  __typename: 'ComponentSectionsSubpageList'
+                  id: string
+                  subpageList?: Array<{
+                    __typename?: 'ComponentBlocksPageLink'
+                    url?: string | null
+                    analyticsId?: string | null
+                    label?: string | null
+                    page?: {
+                      __typename?: 'Page'
+                      documentId: string
+                      slug?: string | null
+                      title: string
+                      locale?: string | null
+                    } | null
+                  } | null> | null
+                }
+              | { __typename: 'Error' }
+              | null
+            > | null
+            pageBackgroundImage?: {
+              __typename?: 'UploadFile'
+              documentId: string
+              url: string
+            } | null
           } | null>
         }
       | {
@@ -9887,6 +10061,7 @@ export type PageBySlugQuery = {
         color?: Enum_Pagecategory_Color | null
       } | null
     } | null>
+    pageBackgroundImage?: { __typename?: 'UploadFile'; documentId: string; url: string } | null
     parentPage?: {
       __typename?: 'Page'
       slug?: string | null
@@ -9961,7 +10136,6 @@ export type Dev_AllPagesQuery = {
     slug?: string | null
     title: string
     locale?: string | null
-    pageBackgroundImage?: { __typename?: 'UploadFile'; documentId: string; url: string } | null
     headerLinks?: Array<{
       __typename?: 'ComponentBlocksCommonLink'
       label?: string | null
@@ -10234,6 +10408,50 @@ export type Dev_AllPagesQuery = {
               createdAt?: any | null
               updatedAt?: any | null
             } | null>
+          } | null>
+        }
+      | {
+          __typename: 'ComponentSectionsEvents'
+          title?: string | null
+          text?: string | null
+          titleLevelEventsSection?: Enum_Componentsectionsevents_Titlelevel | null
+          eventPages: Array<{
+            __typename?: 'Page'
+            documentId: string
+            slug?: string | null
+            title: string
+            locale?: string | null
+            pageHeaderSections?: Array<
+              | {
+                  __typename: 'ComponentHeaderSectionsEvent'
+                  date?: any | null
+                  address?: string | null
+                }
+              | {
+                  __typename: 'ComponentSectionsSubpageList'
+                  id: string
+                  subpageList?: Array<{
+                    __typename?: 'ComponentBlocksPageLink'
+                    url?: string | null
+                    analyticsId?: string | null
+                    label?: string | null
+                    page?: {
+                      __typename?: 'Page'
+                      documentId: string
+                      slug?: string | null
+                      title: string
+                      locale?: string | null
+                    } | null
+                  } | null> | null
+                }
+              | { __typename: 'Error' }
+              | null
+            > | null
+            pageBackgroundImage?: {
+              __typename?: 'UploadFile'
+              documentId: string
+              url: string
+            } | null
           } | null>
         }
       | {
@@ -10676,6 +10894,7 @@ export type Dev_AllPagesQuery = {
         color?: Enum_Pagecategory_Color | null
       } | null
     } | null>
+    pageBackgroundImage?: { __typename?: 'UploadFile'; documentId: string; url: string } | null
     parentPage?: {
       __typename?: 'Page'
       slug?: string | null
@@ -12094,6 +12313,43 @@ export type NumbersOverviewSectionFragment = {
   } | null> | null
 }
 
+export type EventsSectionFragment = {
+  __typename?: 'ComponentSectionsEvents'
+  title?: string | null
+  text?: string | null
+  titleLevelEventsSection?: Enum_Componentsectionsevents_Titlelevel | null
+  eventPages: Array<{
+    __typename?: 'Page'
+    documentId: string
+    slug?: string | null
+    title: string
+    locale?: string | null
+    pageHeaderSections?: Array<
+      | { __typename: 'ComponentHeaderSectionsEvent'; date?: any | null; address?: string | null }
+      | {
+          __typename: 'ComponentSectionsSubpageList'
+          id: string
+          subpageList?: Array<{
+            __typename?: 'ComponentBlocksPageLink'
+            url?: string | null
+            analyticsId?: string | null
+            label?: string | null
+            page?: {
+              __typename?: 'Page'
+              documentId: string
+              slug?: string | null
+              title: string
+              locale?: string | null
+            } | null
+          } | null> | null
+        }
+      | { __typename: 'Error' }
+      | null
+    > | null
+    pageBackgroundImage?: { __typename?: 'UploadFile'; documentId: string; url: string } | null
+  } | null>
+}
+
 type Sections_ComponentSectionsAccordion_Fragment = {
   __typename: 'ComponentSectionsAccordion'
   title?: string | null
@@ -12354,6 +12610,43 @@ type Sections_ComponentSectionsDocuments_Fragment = {
       createdAt?: any | null
       updatedAt?: any | null
     } | null>
+  } | null>
+}
+
+type Sections_ComponentSectionsEvents_Fragment = {
+  __typename: 'ComponentSectionsEvents'
+  title?: string | null
+  text?: string | null
+  titleLevelEventsSection?: Enum_Componentsectionsevents_Titlelevel | null
+  eventPages: Array<{
+    __typename?: 'Page'
+    documentId: string
+    slug?: string | null
+    title: string
+    locale?: string | null
+    pageHeaderSections?: Array<
+      | { __typename: 'ComponentHeaderSectionsEvent'; date?: any | null; address?: string | null }
+      | {
+          __typename: 'ComponentSectionsSubpageList'
+          id: string
+          subpageList?: Array<{
+            __typename?: 'ComponentBlocksPageLink'
+            url?: string | null
+            analyticsId?: string | null
+            label?: string | null
+            page?: {
+              __typename?: 'Page'
+              documentId: string
+              slug?: string | null
+              title: string
+              locale?: string | null
+            } | null
+          } | null> | null
+        }
+      | { __typename: 'Error' }
+      | null
+    > | null
+    pageBackgroundImage?: { __typename?: 'UploadFile'; documentId: string; url: string } | null
   } | null>
 }
 
@@ -12798,6 +13091,7 @@ export type SectionsFragment =
   | Sections_ComponentSectionsContactsSection_Fragment
   | Sections_ComponentSectionsDivider_Fragment
   | Sections_ComponentSectionsDocuments_Fragment
+  | Sections_ComponentSectionsEvents_Fragment
   | Sections_ComponentSectionsFaqCategories_Fragment
   | Sections_ComponentSectionsFaqs_Fragment
   | Sections_ComponentSectionsFileList_Fragment
@@ -13391,6 +13685,16 @@ export const InbaReleaseEntityFragmentDoc = gql`
   ${UploadFileEntityFragmentDoc}
   ${InbaArticleCardEntityFragmentDoc}
 `
+export const PageCardEntityFragmentDoc = gql`
+  fragment PageCardEntity on Page {
+    ...PageSlugEntity
+    pageBackgroundImage {
+      ...UploadImageSrcEntity
+    }
+  }
+  ${PageSlugEntityFragmentDoc}
+  ${UploadImageSrcEntityFragmentDoc}
+`
 export const DividerSectionFragmentDoc = gql`
   fragment DividerSection on ComponentSectionsDivider {
     style
@@ -13960,6 +14264,55 @@ export const NumbersOverviewSectionFragmentDoc = gql`
   ${CommonLinkFragmentDoc}
   ${NumbersOverviewItemBlockFragmentDoc}
 `
+export const SubpageListPageHeaderSectionFragmentDoc = gql`
+  fragment SubpageListPageHeaderSection on ComponentSectionsSubpageList {
+    id
+    subpageList(pagination: { limit: -1 }) {
+      ...PageLink
+    }
+  }
+  ${PageLinkFragmentDoc}
+`
+export const EventPageHeaderSectionFragmentDoc = gql`
+  fragment EventPageHeaderSection on ComponentHeaderSectionsEvent {
+    date
+    address
+  }
+`
+export const PageHeaderSectionsFragmentDoc = gql`
+  fragment PageHeaderSections on PagePageHeaderSectionsDynamicZone {
+    __typename
+    ... on ComponentSectionsSubpageList {
+      ...SubpageListPageHeaderSection
+    }
+    ... on ComponentHeaderSectionsEvent {
+      ...EventPageHeaderSection
+    }
+  }
+  ${SubpageListPageHeaderSectionFragmentDoc}
+  ${EventPageHeaderSectionFragmentDoc}
+`
+export const EventPageCardEntityFragmentDoc = gql`
+  fragment EventPageCardEntity on Page {
+    ...PageCardEntity
+    pageHeaderSections {
+      ...PageHeaderSections
+    }
+  }
+  ${PageCardEntityFragmentDoc}
+  ${PageHeaderSectionsFragmentDoc}
+`
+export const EventsSectionFragmentDoc = gql`
+  fragment EventsSection on ComponentSectionsEvents {
+    title
+    text
+    eventPages {
+      ...EventPageCardEntity
+    }
+    titleLevelEventsSection: titleLevel
+  }
+  ${EventPageCardEntityFragmentDoc}
+`
 export const SectionsFragmentDoc = gql`
   fragment Sections on PageSectionsDynamicZone {
     __typename
@@ -14050,6 +14403,9 @@ export const SectionsFragmentDoc = gql`
     ... on ComponentSectionsNumbersOverview {
       ...NumbersOverviewSection
     }
+    ... on ComponentSectionsEvents {
+      ...EventsSection
+    }
   }
   ${DividerSectionFragmentDoc}
   ${TextWithImageSectionFragmentDoc}
@@ -14080,6 +14436,7 @@ export const SectionsFragmentDoc = gql`
   ${PartnersSectionFragmentDoc}
   ${DocumentsSectionFragmentDoc}
   ${NumbersOverviewSectionFragmentDoc}
+  ${EventsSectionFragmentDoc}
 `
 export const SidebarsFragmentDoc = gql`
   fragment Sidebars on PageSidebarDynamicZone {
@@ -14088,46 +14445,15 @@ export const SidebarsFragmentDoc = gql`
     }
   }
 `
-export const SubpageListPageHeaderSectionFragmentDoc = gql`
-  fragment SubpageListPageHeaderSection on ComponentSectionsSubpageList {
-    id
-    subpageList(pagination: { limit: -1 }) {
-      ...PageLink
-    }
-  }
-  ${PageLinkFragmentDoc}
-`
-export const EventPageHeaderSectionFragmentDoc = gql`
-  fragment EventPageHeaderSection on ComponentHeaderSectionsEvent {
-    date
-    address
-  }
-`
-export const PageHeaderSectionsFragmentDoc = gql`
-  fragment PageHeaderSections on PagePageHeaderSectionsDynamicZone {
-    __typename
-    ... on ComponentSectionsSubpageList {
-      ...SubpageListPageHeaderSection
-    }
-    ... on ComponentHeaderSectionsEvent {
-      ...EventPageHeaderSection
-    }
-  }
-  ${SubpageListPageHeaderSectionFragmentDoc}
-  ${EventPageHeaderSectionFragmentDoc}
-`
 export const PageEntityFragmentDoc = gql`
   fragment PageEntity on Page {
-    ...PageSlugEntity
+    ...PageCardEntity
     alias
     subtext
     pageColor
     metaDiscription
     keywords
     showTableOfContents
-    pageBackgroundImage {
-      ...UploadImageSrcEntity
-    }
     headerLinks {
       ...CommonLink
     }
@@ -14149,8 +14475,7 @@ export const PageEntityFragmentDoc = gql`
     }
     ...PageParentPages
   }
-  ${PageSlugEntityFragmentDoc}
-  ${UploadImageSrcEntityFragmentDoc}
+  ${PageCardEntityFragmentDoc}
   ${CommonLinkFragmentDoc}
   ${SectionsFragmentDoc}
   ${SidebarsFragmentDoc}

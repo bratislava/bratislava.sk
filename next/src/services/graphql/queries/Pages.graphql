@@ -33,17 +33,29 @@ fragment PageSlugEntity on Page {
   locale
 }
 
-fragment PageEntity on Page {
+fragment PageCardEntity on Page {
   ...PageSlugEntity
+  pageBackgroundImage {
+    ...UploadImageSrcEntity
+  }
+}
+
+fragment EventPageCardEntity on Page {
+  ...PageCardEntity
+  pageHeaderSections {
+    ...PageHeaderSections
+  }
+}
+
+fragment PageEntity on Page {
+  ...PageCardEntity
   alias
   subtext
   pageColor
   metaDiscription
   keywords
   showTableOfContents
-  pageBackgroundImage {
-    ...UploadImageSrcEntity
-  }
+
   headerLinks {
     ...CommonLink
   }

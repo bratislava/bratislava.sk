@@ -392,6 +392,15 @@ fragment NumbersOverviewSection on ComponentSectionsNumbersOverview {
   }
 }
 
+fragment EventsSection on ComponentSectionsEvents {
+  title
+  text
+  eventPages {
+    ...EventPageCardEntity
+  }
+  titleLevelEventsSection: titleLevel
+}
+
 fragment Sections on PageSectionsDynamicZone {
   __typename
 
@@ -513,6 +522,10 @@ fragment Sections on PageSectionsDynamicZone {
 
   ... on ComponentSectionsNumbersOverview {
     ...NumbersOverviewSection
+  }
+
+  ... on ComponentSectionsEvents {
+    ...EventsSection
   }
 }
 
