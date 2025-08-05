@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars,jsx-a11y/heading-has-content */
 import { Typography } from '@bratislava/component-library'
 import slugify from '@sindresorhus/slugify'
+import Image from 'next/image'
 import ReactMarkdown, { defaultUrlTransform } from 'react-markdown'
 import rehypeRaw from 'rehype-raw'
 import remarkGfm from 'remark-gfm'
@@ -127,11 +128,28 @@ const Markdown = ({ content, variant = 'default', className }: MarkdownProps) =>
               </MLink>
             )
           },
-          // TODO caption from Strapi, use <figure> and <figcaption> tags, see Marianum project
           img: ({ node, src, alt, title, ...props }) => (
-            <div className="flex justify-center">
-              {src && <img src={src} alt={alt} {...props} />}
-            </div>
+            // Based on OLO: https://github.com/bratislava/olo.sk/blob/master/next/src/components/formatting/Markdown.tsx#L179
+            // TODO Note from OLO: This can still produce a hydration error, because the remark-unwrap-images only works when image is the only child of the paragraph
+            <figure className="flex flex-col items-center gap-4">
+              <Image
+                {...props}
+                src={src ?? ''}
+                width="0"
+                height="0"
+                sizes="100vw"
+                alt={alt ?? ''}
+                className="h-auto w-full overflow-hidden rounded-xl"
+              />
+              {title ? (
+                <figcaption
+                  aria-hidden={title === alt}
+                  className="text-center text-size-p-small text-content-passive-tertiary"
+                >
+                  {title}
+                </figcaption>
+              ) : null}
+            </figure>
           ),
           blockquote: ({ node, ...props }) => (
             <blockquote className="my-4 border-l-4 border-category-600 py-2 pl-8" {...props} />

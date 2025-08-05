@@ -54,3 +54,10 @@ and then run the command to create a patch file:
 ```bash
 npx patch-package @strapi/admin
 ```
+
+### @strapi/content-manager
+
+We change Wysiwyg editor image inserting so it inserts also image title (caption), so we can display it on FE.
+```bash
+npx patch-package @strapi/content-manager
+```
