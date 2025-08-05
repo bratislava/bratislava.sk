@@ -78,6 +78,7 @@ const PageHeaderEvent = ({ title, breadcrumbs, headerLinks, image, header }: Pro
             <StrapiImage
               image={image}
               fill
+              alt=""
               sizes={generateImageSizes({ default: '100vw', lg: '75vw' })}
               className="object-cover"
             />
