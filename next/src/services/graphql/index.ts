@@ -1114,6 +1114,27 @@ export type ComponentGeneralHeaderLinkInput = {
   url?: InputMaybe<Scalars['String']['input']>
 }
 
+export type ComponentHeaderSectionsEvent = {
+  __typename?: 'ComponentHeaderSectionsEvent'
+  address?: Maybe<Scalars['String']['output']>
+  date: Scalars['Date']['output']
+  id: Scalars['ID']['output']
+}
+
+export type ComponentHeaderSectionsEventFiltersInput = {
+  address?: InputMaybe<StringFilterInput>
+  and?: InputMaybe<Array<InputMaybe<ComponentHeaderSectionsEventFiltersInput>>>
+  date?: InputMaybe<DateFilterInput>
+  not?: InputMaybe<ComponentHeaderSectionsEventFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<ComponentHeaderSectionsEventFiltersInput>>>
+}
+
+export type ComponentHeaderSectionsEventInput = {
+  address?: InputMaybe<Scalars['String']['input']>
+  date?: InputMaybe<Scalars['Date']['input']>
+  id?: InputMaybe<Scalars['ID']['input']>
+}
+
 export type ComponentMenuMenuItem = {
   __typename?: 'ComponentMenuMenuItem'
   icon: Enum_Componentmenumenuitem_Icon
@@ -3237,6 +3258,7 @@ export type GenericMorph =
   | ComponentBlocksVideo
   | ComponentGeneralHeader
   | ComponentGeneralHeaderLink
+  | ComponentHeaderSectionsEvent
   | ComponentMenuMenuItem
   | ComponentMenuMenuLink
   | ComponentMenuMenuSection
@@ -4575,7 +4597,10 @@ export type PageInput = {
   title?: InputMaybe<Scalars['String']['input']>
 }
 
-export type PagePageHeaderSectionsDynamicZone = ComponentSectionsSubpageList | Error
+export type PagePageHeaderSectionsDynamicZone =
+  | ComponentHeaderSectionsEvent
+  | ComponentSectionsSubpageList
+  | Error
 
 export type PageRelationResponseCollection = {
   __typename?: 'PageRelationResponseCollection'
@@ -9063,6 +9088,7 @@ export type PageEntityFragment = {
   > | null
   localizations: Array<{ __typename?: 'Page'; slug?: string | null; locale?: string | null } | null>
   pageHeaderSections?: Array<
+    | { __typename: 'ComponentHeaderSectionsEvent'; date: any; address?: string | null }
     | {
         __typename: 'ComponentSectionsSubpageList'
         id: string
@@ -9829,6 +9855,7 @@ export type PageBySlugQuery = {
       locale?: string | null
     } | null>
     pageHeaderSections?: Array<
+      | { __typename: 'ComponentHeaderSectionsEvent'; date: any; address?: string | null }
       | {
           __typename: 'ComponentSectionsSubpageList'
           id: string
@@ -10617,6 +10644,7 @@ export type Dev_AllPagesQuery = {
       locale?: string | null
     } | null>
     pageHeaderSections?: Array<
+      | { __typename: 'ComponentHeaderSectionsEvent'; date: any; address?: string | null }
       | {
           __typename: 'ComponentSectionsSubpageList'
           id: string
@@ -12811,6 +12839,18 @@ export type SubpageListPageHeaderSectionFragment = {
   } | null> | null
 }
 
+export type EventPageHeaderSectionFragment = {
+  __typename?: 'ComponentHeaderSectionsEvent'
+  date: any
+  address?: string | null
+}
+
+type PageHeaderSections_ComponentHeaderSectionsEvent_Fragment = {
+  __typename: 'ComponentHeaderSectionsEvent'
+  date: any
+  address?: string | null
+}
+
 type PageHeaderSections_ComponentSectionsSubpageList_Fragment = {
   __typename: 'ComponentSectionsSubpageList'
   id: string
@@ -12832,6 +12872,7 @@ type PageHeaderSections_ComponentSectionsSubpageList_Fragment = {
 type PageHeaderSections_Error_Fragment = { __typename: 'Error' }
 
 export type PageHeaderSectionsFragment =
+  | PageHeaderSections_ComponentHeaderSectionsEvent_Fragment
   | PageHeaderSections_ComponentSectionsSubpageList_Fragment
   | PageHeaderSections_Error_Fragment
 
@@ -14056,14 +14097,24 @@ export const SubpageListPageHeaderSectionFragmentDoc = gql`
   }
   ${PageLinkFragmentDoc}
 `
+export const EventPageHeaderSectionFragmentDoc = gql`
+  fragment EventPageHeaderSection on ComponentHeaderSectionsEvent {
+    date
+    address
+  }
+`
 export const PageHeaderSectionsFragmentDoc = gql`
   fragment PageHeaderSections on PagePageHeaderSectionsDynamicZone {
     __typename
     ... on ComponentSectionsSubpageList {
       ...SubpageListPageHeaderSection
     }
+    ... on ComponentHeaderSectionsEvent {
+      ...EventPageHeaderSection
+    }
   }
   ${SubpageListPageHeaderSectionFragmentDoc}
+  ${EventPageHeaderSectionFragmentDoc}
 `
 export const PageEntityFragmentDoc = gql`
   fragment PageEntity on Page {

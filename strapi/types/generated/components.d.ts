@@ -320,6 +320,17 @@ export interface GeneralHeaderLink extends Struct.ComponentSchema {
   }
 }
 
+export interface HeaderSectionsEvent extends Struct.ComponentSchema {
+  collectionName: 'components_header_sections_events'
+  info: {
+    displayName: 'Event'
+  }
+  attributes: {
+    address: Schema.Attribute.Text
+    date: Schema.Attribute.Date & Schema.Attribute.Required
+  }
+}
+
 export interface MenuMenuItem extends Struct.ComponentSchema {
   collectionName: 'components_menu_menu_items'
   info: {
@@ -1048,6 +1059,7 @@ declare module '@strapi/strapi' {
       'blocks.video': BlocksVideo
       'general.header': GeneralHeader
       'general.header-link': GeneralHeaderLink
+      'header-sections.event': HeaderSectionsEvent
       'menu.menu-item': MenuMenuItem
       'menu.menu-link': MenuMenuLink
       'menu.menu-section': MenuMenuSection
