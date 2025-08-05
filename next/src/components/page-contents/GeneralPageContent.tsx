@@ -56,11 +56,9 @@ const GeneralPageContent = ({ page }: GeneralPageProps) => {
             },
           )}
         >
-          <div className="flex w-full flex-col">
-            {page.showTableOfContents && <TableOfContentsSection />}
-            <Sections sections={filteredSections} />
-            <RelatedArticlesSection page={page} />
-          </div>
+          {page.showTableOfContents && <TableOfContentsSection />}
+          <Sections sections={filteredSections} />
+          <RelatedArticlesSection page={page} />
         </div>
         {sidebar ? <Sidebars sidebar={sidebar} className="max-w-[50rem] grow basis-72" /> : null}
       </div>
