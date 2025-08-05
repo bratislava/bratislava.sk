@@ -75,7 +75,10 @@ const PageHeaderEvent = ({ title, breadcrumbs, headerLinks, image, header }: Pro
                 />
               ))}
             </div>
-          ) : null}
+          ) : (
+            // Empty div to keep whitespace below title even if no link is provided
+            <div aria-hidden />
+          )}
         </div>
         <div className="relative grow max-lg:aspect-288/162">
           {image ? (
