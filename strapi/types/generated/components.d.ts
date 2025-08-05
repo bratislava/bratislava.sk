@@ -619,6 +619,19 @@ export interface SectionsDocuments extends Struct.ComponentSchema {
   }
 }
 
+export interface SectionsEvents extends Struct.ComponentSchema {
+  collectionName: 'components_sections_events'
+  info: {
+    displayName: 'Events'
+  }
+  attributes: {
+    eventPages: Schema.Attribute.Relation<'oneToMany', 'api::page.page'>
+    text: Schema.Attribute.Text
+    title: Schema.Attribute.String
+    titleLevel: Schema.Attribute.Enumeration<['h2', 'h3']> & Schema.Attribute.DefaultTo<'h2'>
+  }
+}
+
 export interface SectionsFaqCategories extends Struct.ComponentSchema {
   collectionName: 'components_sections_faq_categories'
   info: {
@@ -1073,6 +1086,7 @@ declare module '@strapi/strapi' {
       'sections.contacts-section': SectionsContactsSection
       'sections.divider': SectionsDivider
       'sections.documents': SectionsDocuments
+      'sections.events': SectionsEvents
       'sections.faq-categories': SectionsFaqCategories
       'sections.faqs': SectionsFaqs
       'sections.file-list': SectionsFileList

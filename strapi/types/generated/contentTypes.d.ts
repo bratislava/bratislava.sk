@@ -1283,6 +1283,7 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
         'sections.contacts-section',
         'sections.divider',
         'sections.documents',
+        'sections.events',
         'sections.faqs',
         'sections.faq-categories',
         'sections.file-list',
