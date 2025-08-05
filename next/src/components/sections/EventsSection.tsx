@@ -22,9 +22,11 @@ const EventsSection = ({ section }: EventsSectionProps) => {
   const [currentPage, setCurrentPage] = useState<number>(1)
   const PAGE_SIZE = 8
 
-  const filteredEventPages = eventPages
-    .filter(isDefined)
-    .slice(PAGE_SIZE * (currentPage - 1), PAGE_SIZE * currentPage)
+  const totalEventPages = eventPages.filter(isDefined)
+  const eventPagesToShow = totalEventPages.slice(
+    PAGE_SIZE * (currentPage - 1),
+    PAGE_SIZE * currentPage,
+  )
 
   const scrollRef = useRef<null | HTMLDivElement>(null)
 
@@ -50,16 +52,16 @@ const EventsSection = ({ section }: EventsSectionProps) => {
           <SectionHeader title={title} text={text} titleLevel={titleLevel} />
 
           <ul className="flex flex-col gap-8 lg:gap-4">
-            {filteredEventPages.map((eventPage) => (
+            {eventPagesToShow.map((eventPage) => (
               <li key={eventPage.documentId}>
                 <EventCard eventPage={eventPage} cardTitleLevel={getCardTitleLevel(titleLevel)} />
               </li>
             ))}
           </ul>
         </div>
-        {filteredEventPages.length > PAGE_SIZE ? (
+        {totalEventPages.length > PAGE_SIZE ? (
           <Pagination
-            totalCount={Math.ceil(filteredEventPages.length / PAGE_SIZE)}
+            totalCount={Math.ceil(totalEventPages.length / PAGE_SIZE)}
             currentPage={currentPage}
             onPageChange={handlePageChange}
           />
