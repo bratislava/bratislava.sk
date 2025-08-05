@@ -58,7 +58,11 @@ const TableOfContents = ({ scrollOffset = DEFAULT_SCROLL_OFFSET, className }: Pr
           ? headings.map((heading) => {
               return (
                 <li key={heading.id} className="py-2 lg:py-3">
-                  <Button variant="link" onPress={() => handleItemPress(heading.id)}>
+                  <Button
+                    variant="link"
+                    className="text-left"
+                    onPress={() => handleItemPress(heading.id)}
+                  >
                     {heading.text}
                   </Button>
                 </li>
