@@ -132,6 +132,7 @@
         }
       },
       "components": [
+        "header-sections.event",
         "sections.subpage-list"
       ],
       "max": 1

@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_header_sections_events",
+  "info": {
+    "displayName": "Event"
+  },
+  "options": {},
+  "attributes": {
+    "date": {
+      "type": "date",
+      "required": false
+    },
+    "address": {
+      "type": "text"
+    }
+  },
+  "config": {}
+}

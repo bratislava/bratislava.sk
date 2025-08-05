@@ -1254,7 +1254,9 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
           localized: false
         }
       }>
-    pageHeaderSections: Schema.Attribute.DynamicZone<['sections.subpage-list']> &
+    pageHeaderSections: Schema.Attribute.DynamicZone<
+      ['header-sections.event', 'sections.subpage-list']
+    > &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true

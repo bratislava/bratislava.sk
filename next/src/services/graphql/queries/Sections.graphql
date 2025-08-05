@@ -523,10 +523,19 @@ fragment SubpageListPageHeaderSection on ComponentSectionsSubpageList {
   }
 }
 
+fragment EventPageHeaderSection on ComponentHeaderSectionsEvent {
+  date
+  address
+}
+
 fragment PageHeaderSections on PagePageHeaderSectionsDynamicZone {
   __typename
 
   ... on ComponentSectionsSubpageList {
     ...SubpageListPageHeaderSection
+  }
+
+  ... on ComponentHeaderSectionsEvent {
+    ...EventPageHeaderSection
   }
 }
