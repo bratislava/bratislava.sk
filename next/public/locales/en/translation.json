@@ -31,7 +31,7 @@
   "DocumentPageContent.publishedAt": "Created",
   "DocumentPageContent.updatedAt": "Updated",
   "DocumentsSection.openDocumentPage": "Go to page of document {{title}}",
-  "EventCard.from": "from",
+  "EventCard.linkLabel": "Show details",
   "FileList.aria.downloadFile": "Download file",
   "FileList.aria.downloadFileAriaLabel": "Download file {{title}}, format {{format}}, {{size}}",
   "Footer.copyright": "© {{year}} Hlavné mesto SR Bratislava",

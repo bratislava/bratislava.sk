@@ -33,7 +33,7 @@
   "DocumentPageContent.publishedAt": "Vytvorené",
   "DocumentPageContent.updatedAt": "Aktualizované",
   "DocumentsSection.openDocumentPage": "Prejsť na stránku dokumentu {{title}}",
-  "EventCard.from": "od",
+  "EventCard.linkLabel": "Zobraziť detaily",
   "FileList.aria.downloadFile": "Stiahnuť súbor",
   "FileList.aria.downloadFileAriaLabel": "Stiahnuť súbor {{title}}, formát {{format}}, {{size}}",
   "Footer.copyright": "© {{year}} Hlavné mesto SR Bratislava, vytvorili <innovations>Inovácie mesta Bratislava</innovations>",

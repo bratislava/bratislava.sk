@@ -1,67 +1,83 @@
 import { Typography } from '@bratislava/component-library'
 import Image from 'next/image'
-import React, { HTMLAttributes } from 'react'
+import React, { useId } from 'react'
 
 import CardBase from '@/src/components/cards/CardBase'
-import CardContent from '@/src/components/cards/CardContent'
-import MLink from '@/src/components/common/MLink/MLink'
-import FormatEventDateRange from '@/src/components/formatting/FormatEventDateRange'
-import cn from '@/src/utils/cn'
+import { CardTitleLevel } from '@/src/components/cards/getCardTitleLevel'
+import Button from '@/src/components/common/Button/Button'
+import ImagePlaceholder from '@/src/components/common/Image/ImagePlaceholder'
+import { EventPageCardEntityFragment } from '@/src/services/graphql'
+import { formatDate } from '@/src/utils/formatDate'
+import { generateImageSizes } from '@/src/utils/generateImageSizes'
 import { getLinkProps } from '@/src/utils/getLinkProps'
 import { useTranslation } from '@/src/utils/useTranslation'
 
-type EventCardProps = {
-  title: string
-  linkHref: string
-  address?: string
-  dateFrom: string
-  dateTo: string | null
-  isLongTerm?: boolean
-  imageSrc: string
-  imageSizes?: string
-  className?: string
-} & HTMLAttributes<HTMLElement>
+type Props = {
+  eventPage: EventPageCardEntityFragment
+  cardTitleLevel?: CardTitleLevel
+}
 
 /**
- * Figma: https://www.figma.com/file/17wbd0MDQcMW9NbXl6UPs8/DS-ESBS%3A-Component-library?node-id=487-938&t=7RMKJATYwi0EYY9K-0
+ * Figma: https://www.figma.com/design/17wbd0MDQcMW9NbXl6UPs8/DS--Component-library?node-id=17952-15643&t=TnBDoFjQ0SyGzgY6-4
  */
-const EventCard = ({
-  title,
-  linkHref,
-  address,
-  dateFrom,
-  dateTo,
-  isLongTerm,
-  imageSrc,
-  imageSizes,
-  className,
-  ...rest
-}: EventCardProps) => {
+
+const EventCard = ({ eventPage, cardTitleLevel = 'h3' }: Props) => {
   const { t } = useTranslation()
+  const titleId = useId()
+
+  const imageSizes = generateImageSizes({ default: '100vw', md: '33vw' })
+
+  const { title, pageBackgroundImage, pageHeaderSections } = eventPage
+
+  // Pages have always max 1 header
+  const [header] = pageHeaderSections ?? []
+  const { date, address } = header?.__typename === 'ComponentHeaderSectionsEvent' ? header : {}
+
+  const metadata = [formatDate(date), address]
+    .filter((metadataItem) => !!metadataItem)
+    .join('  •  ')
 
   return (
-    <CardBase variant="no-border" className={cn('rounded-lg text-white', className)} {...rest}>
-      <Image src={imageSrc} alt="" fill className="absolute object-cover" sizes={imageSizes} />
-      <CardContent className="relative inline-flex size-full flex-col items-start justify-end bg-linear-to-b from-transparent to-[black] p-4 text-clip lg:p-5">
-        <div className="flex w-full flex-col items-start gap-4 self-stretch">
-          <Typography variant="h5" as="h3">
-            <MLink
-              stretched
-              variant="underlineOnHover"
-              {...getLinkProps({ label: title, url: linkHref })}
+    <CardBase
+      variant="border"
+      className="max-lg:rounded-non bg-background-passive-base max-lg:border-0"
+    >
+      <div className="flex w-full flex-col lg:flex-row">
+        <div className="relative aspect-384/216 overflow-hidden max-lg:rounded-lg lg:w-[384px]">
+          {pageBackgroundImage?.url ? (
+            <Image
+              src={pageBackgroundImage.url}
+              alt=""
+              sizes={imageSizes}
+              fill
+              className="object-cover"
             />
-          </Typography>
-
-          <div className="flex flex-col items-start text-size-p-tiny font-medium">
-            {/* FIXME Typography: Convert to use Typography. Issue: Different size and weight than typography have */}
-            {address && <span className="line-clamp-1">{address}</span>}
-            <span className="line-clamp-1">
-              {isLongTerm && `${t('EventCard.from')} `}
-              <FormatEventDateRange dateFrom={dateFrom} dateTo={dateTo ?? undefined} />
-            </span>
-          </div>
+          ) : (
+            <ImagePlaceholder />
+          )}
         </div>
-      </CardContent>
+        <div className="flex grow flex-col justify-between max-lg:gap-4 max-lg:pt-4 lg:px-8 lg:pt-8 lg:pb-6">
+          <div className="flex flex-col gap-2 lg:gap-3">
+            <Typography
+              id={titleId}
+              variant="h3"
+              as={cardTitleLevel}
+              className="group-hover:underline"
+            >
+              {title}
+            </Typography>
+            <Typography variant="p-small">{metadata}</Typography>
+          </div>
+          <Button
+            stretched
+            variant="link"
+            href={getLinkProps({ page: eventPage }).href}
+            aria-labelledby={titleId}
+          >
+            {t('EventCard.linkLabel')}
+          </Button>
+        </div>
+      </div>
     </CardBase>
   )
 }
