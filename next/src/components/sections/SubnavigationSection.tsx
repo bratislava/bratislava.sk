@@ -1,3 +1,4 @@
+import { useTranslation } from 'next-i18next'
 import React from 'react'
 
 import SubnavigationCard from '@/src/components/cards/SubnavigationCard'
@@ -16,6 +17,8 @@ type Props = {
  */
 
 const SubnavigationSection = ({ section }: Props) => {
+  const { t } = useTranslation()
+
   const { links } = section ?? {}
 
   const filteredLinks = links?.filter(isDefined) ?? []
@@ -23,7 +26,7 @@ const SubnavigationSection = ({ section }: Props) => {
   return (
     <SectionContainer className="py-6 lg:py-24">
       <div className="flex flex-col gap-6 lg:gap-16">
-        <SectionHeader title="Subnavigation" />
+        <SectionHeader title={t('SubnavigationSection.title')} />
 
         <ul className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
           {filteredLinks.map((card) => {
