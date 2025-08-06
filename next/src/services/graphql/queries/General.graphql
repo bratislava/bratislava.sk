@@ -35,6 +35,16 @@ fragment CommonLink on ComponentBlocksCommonLink {
   analyticsId
 }
 
+fragment CardLink on ComponentBlocksCardLink {
+  label
+  subtext
+  page {
+    ...PageSlugEntity
+  }
+  url
+  analyticsId
+}
+
 fragment PageLink on ComponentBlocksPageLink {
   label: title
   page {

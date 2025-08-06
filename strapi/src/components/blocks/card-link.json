@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_blocks_card_links",
+  "info": {
+    "displayName": "card link"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string"
+    },
+    "subtext": {
+      "type": "string"
+    },
+    "page": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::page.page"
+    },
+    "url": {
+      "type": "string",
+      "required": false
+    },
+    "analyticsId": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}
