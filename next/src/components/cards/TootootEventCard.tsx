@@ -56,7 +56,7 @@ const TootootEventCard = ({
             {/* FIXME Typography: Convert to use Typography. Issue: Different size and weight than typography have */}
             {address && <span className="line-clamp-1">{address}</span>}
             <span className="line-clamp-1">
-              {isLongTerm && `${t('TootootEventCard.from')} `}
+              {isLongTerm && `${t('common.from')} `}
               <FormatEventDateRange dateFrom={dateFrom} dateTo={dateTo ?? undefined} />
             </span>
           </div>

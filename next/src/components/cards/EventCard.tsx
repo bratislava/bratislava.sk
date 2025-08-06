@@ -74,7 +74,7 @@ const EventCard = ({ eventPage, cardTitleLevel = 'h3' }: Props) => {
             href={getLinkProps({ page: eventPage }).href}
             aria-labelledby={titleId}
           >
-            {t('EventCard.linkLabel')}
+            {t('common.showDetails')}
           </Button>
         </div>
       </div>
