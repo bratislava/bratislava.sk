@@ -1,0 +1,105 @@
+{
+  "key": "plugin_content_manager_configuration_components::header-sections.facility",
+  "value": {
+    "settings": {
+      "bulkable": true,
+      "filterable": true,
+      "searchable": true,
+      "pageSize": 10,
+      "mainField": "address",
+      "defaultSortBy": "address",
+      "defaultSortOrder": "ASC"
+    },
+    "metadatas": {
+      "id": {
+        "edit": {},
+        "list": {
+          "label": "id",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "address": {
+        "edit": {
+          "label": "Adresa",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "address",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "navigateToLink": {
+        "edit": {
+          "label": "Odkaz na navigáciu",
+          "description": "Napríklad Google Mapy",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "navigateToLink",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "media": {
+        "edit": {
+          "label": "Obrázky",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "media",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "documentId": {
+        "edit": {},
+        "list": {
+          "label": "documentId",
+          "searchable": true,
+          "sortable": true
+        }
+      }
+    },
+    "layouts": {
+      "list": [
+        "id",
+        "address",
+        "navigateToLink",
+        "media"
+      ],
+      "edit": [
+        [
+          {
+            "name": "address",
+            "size": 6
+          },
+          {
+            "name": "navigateToLink",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "media",
+            "size": 12
+          }
+        ]
+      ]
+    },
+    "uid": "header-sections.facility",
+    "isComponent": true
+  },
+  "type": "object",
+  "environment": null,
+  "tag": null
+}
