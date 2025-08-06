@@ -40,7 +40,7 @@ fragment PageCardEntity on Page {
   }
 }
 
-fragment EventPageCardEntity on Page {
+fragment PageCardWithHeadersEntity on Page {
   ...PageCardEntity
   pageHeaderSections {
     ...PageHeaderSections

@@ -6,14 +6,14 @@ import CardBase from '@/src/components/cards/CardBase'
 import { CardTitleLevel } from '@/src/components/cards/getCardTitleLevel'
 import Button from '@/src/components/common/Button/Button'
 import ImagePlaceholder from '@/src/components/common/Image/ImagePlaceholder'
-import { EventPageCardEntityFragment } from '@/src/services/graphql'
+import { PageCardWithHeadersEntityFragment } from '@/src/services/graphql'
 import { formatDate } from '@/src/utils/formatDate'
 import { generateImageSizes } from '@/src/utils/generateImageSizes'
 import { getLinkProps } from '@/src/utils/getLinkProps'
 import { useTranslation } from '@/src/utils/useTranslation'
 
 type Props = {
-  eventPage: EventPageCardEntityFragment
+  eventPage: PageCardWithHeadersEntityFragment
   cardTitleLevel?: CardTitleLevel
 }
 

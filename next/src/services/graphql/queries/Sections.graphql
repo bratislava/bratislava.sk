@@ -396,7 +396,7 @@ fragment EventsSection on ComponentSectionsEvents {
   title
   text
   eventPages {
-    ...EventPageCardEntity
+    ...PageCardWithHeadersEntity
   }
   titleLevelEventsSection: titleLevel
 }

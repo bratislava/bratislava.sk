@@ -8456,7 +8456,7 @@ export type PageCardEntityFragment = {
   pageBackgroundImage?: { __typename?: 'UploadFile'; documentId: string; url: string } | null
 }
 
-export type EventPageCardEntityFragment = {
+export type PageCardWithHeadersEntityFragment = {
   __typename?: 'Page'
   documentId: string
   slug?: string | null
@@ -14292,8 +14292,8 @@ export const PageHeaderSectionsFragmentDoc = gql`
   ${SubpageListPageHeaderSectionFragmentDoc}
   ${EventPageHeaderSectionFragmentDoc}
 `
-export const EventPageCardEntityFragmentDoc = gql`
-  fragment EventPageCardEntity on Page {
+export const PageCardWithHeadersEntityFragmentDoc = gql`
+  fragment PageCardWithHeadersEntity on Page {
     ...PageCardEntity
     pageHeaderSections {
       ...PageHeaderSections
@@ -14307,11 +14307,11 @@ export const EventsSectionFragmentDoc = gql`
     title
     text
     eventPages {
-      ...EventPageCardEntity
+      ...PageCardWithHeadersEntity
     }
     titleLevelEventsSection: titleLevel
   }
-  ${EventPageCardEntityFragmentDoc}
+  ${PageCardWithHeadersEntityFragmentDoc}
 `
 export const SectionsFragmentDoc = gql`
   fragment Sections on PageSectionsDynamicZone {
