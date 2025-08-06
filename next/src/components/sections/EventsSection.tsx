@@ -6,6 +6,9 @@ import Pagination from '@/src/components/common/Pagination/Pagination'
 import SectionContainer from '@/src/components/layouts/SectionContainer'
 import SectionHeader from '@/src/components/layouts/SectionHeader'
 import { EventsSectionFragment } from '@/src/services/graphql'
+import { formatDate } from '@/src/utils/formatDate'
+import { generateImageSizes } from '@/src/utils/generateImageSizes'
+import { getLinkProps } from '@/src/utils/getLinkProps'
 import { isDefined } from '@/src/utils/isDefined'
 
 type EventsSectionProps = {
@@ -18,6 +21,8 @@ type EventsSectionProps = {
 
 const EventsSection = ({ section }: EventsSectionProps) => {
   const { title, text, titleLevelEventsSection: titleLevel, eventPages } = section
+
+  const imageSizes = generateImageSizes({ default: '100vw', md: '33vw' })
 
   const [currentPage, setCurrentPage] = useState<number>(1)
   const PAGE_SIZE = 8
@@ -42,11 +47,36 @@ const EventsSection = ({ section }: EventsSectionProps) => {
           <SectionHeader title={title} text={text} titleLevel={titleLevel} />
 
           <ul className="flex flex-col gap-8 lg:gap-4">
-            {eventPagesToShow.map((eventPage) => (
-              <li key={eventPage.documentId}>
-                <EventCard eventPage={eventPage} cardTitleLevel={getCardTitleLevel(titleLevel)} />
-              </li>
-            ))}
+            {eventPagesToShow.map((eventPage) => {
+              const {
+                documentId,
+                title: eventPageTitle,
+                pageBackgroundImage,
+                pageHeaderSections,
+              } = eventPage
+
+              // Pages have always max 1 header
+              const [header] = pageHeaderSections ?? []
+              const { date, address } =
+                header?.__typename === 'ComponentHeaderSectionsEvent' ? header : {}
+
+              const metadata = [formatDate(date), address]
+                .filter((metadataItem) => !!metadataItem)
+                .join('  •  ')
+
+              return (
+                <li key={documentId}>
+                  <EventCard
+                    title={eventPageTitle}
+                    linkHref={getLinkProps({ page: eventPage }).href}
+                    imageSrc={pageBackgroundImage?.url}
+                    imageSizes={imageSizes}
+                    metadata={metadata}
+                    cardTitleLevel={getCardTitleLevel(titleLevel)}
+                  />
+                </li>
+              )
+            })}
           </ul>
         </div>
         {totalEventPages.length > PAGE_SIZE ? (
