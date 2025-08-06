@@ -35,7 +35,6 @@ import { SectionsFragment } from '@/src/services/graphql'
 
 type SectionsProps = {
   sections: SectionsFragment[]
-  className?: string
 }
 
 const SectionContent = ({ section }: { section: SectionsFragment }) => {
@@ -139,14 +138,14 @@ const SectionContent = ({ section }: { section: SectionsFragment }) => {
   }
 }
 
-const Sections = ({ sections, className }: SectionsProps) => {
+const Sections = ({ sections }: SectionsProps) => {
   return (
-    <div className={className}>
+    <>
       {sections.map((section, index) => (
         // eslint-disable-next-line react/no-array-index-key
         <SectionContent key={index} section={section} />
       ))}
-    </div>
+    </>
   )
 }
 
