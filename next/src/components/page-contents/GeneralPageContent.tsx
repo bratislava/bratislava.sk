@@ -59,9 +59,8 @@ const GeneralPageContent = ({ page }: GeneralPageProps) => {
         >
           {page.showTableOfContents && <TableOfContentsSection />}
           {page.subnavigation ? <SubnavigationSection section={page.subnavigation} /> : null}
-            <Sections sections={filteredSections} />
-            <RelatedArticlesSection page={page} />
-
+          <Sections sections={filteredSections} />
+          <RelatedArticlesSection page={page} />
         </div>
         {sidebar ? <Sidebars sidebar={sidebar} className="max-w-[50rem] grow basis-72" /> : null}
       </div>
