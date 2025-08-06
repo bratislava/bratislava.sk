@@ -38,10 +38,7 @@ const EventCard = ({ eventPage, cardTitleLevel = 'h3' }: Props) => {
     .join('  •  ')
 
   return (
-    <CardBase
-      variant="border"
-      className="bg-background-passive-base max-lg:rounded-none max-lg:border-0"
-    >
+    <CardBase variant="border" className="max-lg:rounded-none max-lg:border-0">
       <div className="flex w-full flex-col lg:flex-row">
         <div className="relative aspect-384/216 overflow-hidden max-lg:rounded-lg lg:w-[384px]">
           {pageBackgroundImage?.url ? (

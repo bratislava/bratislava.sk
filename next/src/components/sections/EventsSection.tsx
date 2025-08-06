@@ -32,22 +32,12 @@ const EventsSection = ({ section }: EventsSectionProps) => {
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page)
-
-    // TODO scroll handling is based on TableOfContents - consider extracting
-
-    if (!scrollRef.current) return
-
-    const elementPosition = scrollRef.current.getBoundingClientRect().top
-    const windowOffset = window.scrollY
-    const scrollOffset = 90 // Adjust for fixed navbar/header
-    const offsetPosition = elementPosition + windowOffset - scrollOffset
-
-    window.scrollTo({ top: offsetPosition, behavior: 'instant' })
+    scrollRef.current?.scrollIntoView({ behavior: 'smooth' })
   }
 
   return (
     <SectionContainer className="py-6 lg:py-12">
-      <div className="flex flex-col gap-8" ref={scrollRef}>
+      <div className="flex scroll-m-20 flex-col gap-8" ref={scrollRef}>
         <div className="flex flex-col gap-6 lg:gap-12">
           <SectionHeader title={title} text={text} titleLevel={titleLevel} />
 
