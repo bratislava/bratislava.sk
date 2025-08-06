@@ -61,8 +61,6 @@ const EventsSection = ({ section }: EventsSectionProps) => {
                 header?.__typename === 'ComponentHeaderSectionsEvent' ? header : {}
 
               const metadata = [formatDate(date), address]
-                .filter((metadataItem) => !!metadataItem)
-                .join('  •  ')
 
               return (
                 <li key={documentId}>

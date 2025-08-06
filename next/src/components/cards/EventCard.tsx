@@ -13,7 +13,7 @@ type Props = {
   linkHref: string
   imageSrc: string | null | undefined
   imageSizes?: string
-  metadata?: string | null | undefined
+  metadata?: (string | null | undefined)[]
   cardTitleLevel?: CardTitleLevel
 }
 
@@ -52,7 +52,11 @@ const EventCard = ({
             >
               {title}
             </Typography>
-            <Typography variant="p-small">{metadata}</Typography>
+            {metadata?.length ? (
+              <Typography variant="p-small">
+                {metadata.filter((metadataItem) => !!metadataItem).join('  •  ')}
+              </Typography>
+            ) : null}
           </div>
           <Button stretched variant="link" href={linkHref} aria-labelledby={titleId}>
             {t('common.showDetails')}
