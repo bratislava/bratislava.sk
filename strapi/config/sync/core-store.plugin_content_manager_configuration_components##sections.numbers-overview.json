@@ -53,8 +53,7 @@
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true,
-          "mainField": "label"
+          "editable": true
         },
         "list": {
           "label": "showMoreLink",
@@ -68,8 +67,7 @@
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true,
-          "mainField": "number"
+          "editable": true
         },
         "list": {
           "label": "numbersOverviewItems",

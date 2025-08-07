@@ -40,8 +40,7 @@
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true,
-          "mainField": "title"
+          "editable": true
         },
         "list": {
           "label": "institutions",
@@ -55,8 +54,7 @@
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true,
-          "mainField": "category"
+          "editable": true
         },
         "list": {
           "label": "flatText",
@@ -70,8 +68,7 @@
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true,
-          "mainField": "title"
+          "editable": true
         },
         "list": {
           "label": "institutionsNarrow",
