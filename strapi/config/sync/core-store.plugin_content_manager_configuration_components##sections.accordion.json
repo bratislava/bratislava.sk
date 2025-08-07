@@ -103,6 +103,12 @@
       }
     },
     "layouts": {
+      "list": [
+        "id",
+        "title",
+        "documentId",
+        "titleLevel"
+      ],
       "edit": [
         [
           {
@@ -134,12 +140,6 @@
             "size": 6
           }
         ]
-      ],
-      "list": [
-        "id",
-        "title",
-        "documentId",
-        "titleLevel"
       ]
     },
     "isComponent": true

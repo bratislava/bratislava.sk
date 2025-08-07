@@ -87,6 +87,12 @@
       }
     },
     "layouts": {
+      "list": [
+        "id",
+        "title",
+        "subtitle",
+        "documentId"
+      ],
       "edit": [
         [
           {
@@ -110,12 +116,6 @@
             "size": 6
           }
         ]
-      ],
-      "list": [
-        "id",
-        "title",
-        "subtitle",
-        "documentId"
       ]
     },
     "isComponent": true
