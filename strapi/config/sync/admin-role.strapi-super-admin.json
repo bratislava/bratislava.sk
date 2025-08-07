@@ -85,8 +85,8 @@
           "text"
         ],
         "locales": [
-          "en",
-          "sk"
+          "sk",
+          "en"
         ]
       },
       "conditions": [],
@@ -99,8 +99,8 @@
       "subject": "api::alert.alert",
       "properties": {
         "locales": [
-          "en",
-          "sk"
+          "sk",
+          "en"
         ]
       },
       "conditions": [],
@@ -113,8 +113,8 @@
       "subject": "api::alert.alert",
       "properties": {
         "locales": [
-          "en",
-          "sk"
+          "sk",
+          "en"
         ]
       },
       "conditions": [],
@@ -130,8 +130,8 @@
           "text"
         ],
         "locales": [
-          "en",
-          "sk"
+          "sk",
+          "en"
         ]
       },
       "conditions": [],
@@ -147,8 +147,8 @@
           "text"
         ],
         "locales": [
-          "en",
-          "sk"
+          "sk",
+          "en"
         ]
       },
       "conditions": [],
@@ -166,8 +166,8 @@
           "articles"
         ],
         "locales": [
-          "en",
-          "sk"
+          "sk",
+          "en"
         ]
       },
       "conditions": [],
@@ -180,8 +180,8 @@
       "subject": "api::article-category.article-category",
       "properties": {
         "locales": [
-          "en",
-          "sk"
+          "sk",
+          "en"
         ]
       },
       "conditions": [],
@@ -194,8 +194,8 @@
       "subject": "api::article-category.article-category",
       "properties": {
         "locales": [
-          "en",
-          "sk"
+          "sk",
+          "en"
         ]
       },
       "conditions": [],
@@ -213,8 +213,8 @@
           "articles"
         ],
         "locales": [
-          "en",
-          "sk"
+          "sk",
+          "en"
         ]
       },
       "conditions": [],
@@ -232,8 +232,8 @@
           "articles"
         ],
         "locales": [
-          "en",
-          "sk"
+          "sk",
+          "en"
         ]
       },
       "conditions": [],
@@ -261,8 +261,8 @@
           "articleCategory"
         ],
         "locales": [
-          "en",
-          "sk"
+          "sk",
+          "en"
         ]
       },
       "conditions": [],
@@ -275,8 +275,8 @@
       "subject": "api::article.article",
       "properties": {
         "locales": [
-          "en",
-          "sk"
+          "sk",
+          "en"
         ]
       },
       "conditions": [],
@@ -289,8 +289,8 @@
       "subject": "api::article.article",
       "properties": {
         "locales": [
-          "en",
-          "sk"
+          "sk",
+          "en"
         ]
       },
       "conditions": [],
@@ -318,8 +318,8 @@
           "articleCategory"
         ],
         "locales": [
-          "en",
-          "sk"
+          "sk",
+          "en"
         ]
       },
       "conditions": [],
@@ -347,8 +347,8 @@
           "articleCategory"
         ],
         "locales": [
-          "en",
-          "sk"
+          "sk",
+          "en"
         ]
       },
       "conditions": [],
@@ -371,8 +371,8 @@
           "sections"
         ],
         "locales": [
-          "en",
-          "sk"
+          "sk",
+          "en"
         ]
       },
       "conditions": [],
@@ -385,8 +385,8 @@
       "subject": "api::blog-post.blog-post",
       "properties": {
         "locales": [
-          "en",
-          "sk"
+          "sk",
+          "en"
         ]
       },
       "conditions": [],
@@ -399,8 +399,8 @@
       "subject": "api::blog-post.blog-post",
       "properties": {
         "locales": [
-          "en",
-          "sk"
+          "sk",
+          "en"
         ]
       },
       "conditions": [],
@@ -423,8 +423,8 @@
           "sections"
         ],
         "locales": [
-          "en",
-          "sk"
+          "sk",
+          "en"
         ]
       },
       "conditions": [],
@@ -447,8 +447,8 @@
           "sections"
         ],
         "locales": [
-          "en",
-          "sk"
+          "sk",
+          "en"
         ]
       },
       "conditions": [],
@@ -601,8 +601,8 @@
           "faqs"
         ],
         "locales": [
-          "en",
-          "sk"
+          "sk",
+          "en"
         ]
       },
       "conditions": [],
@@ -615,8 +615,8 @@
       "subject": "api::faq-category.faq-category",
       "properties": {
         "locales": [
-          "en",
-          "sk"
+          "sk",
+          "en"
         ]
       },
       "conditions": [],
@@ -629,8 +629,8 @@
       "subject": "api::faq-category.faq-category",
       "properties": {
         "locales": [
-          "en",
-          "sk"
+          "sk",
+          "en"
         ]
       },
       "conditions": [],
@@ -648,8 +648,8 @@
           "faqs"
         ],
         "locales": [
-          "en",
-          "sk"
+          "sk",
+          "en"
         ]
       },
       "conditions": [],
@@ -667,8 +667,8 @@
           "faqs"
         ],
         "locales": [
-          "en",
-          "sk"
+          "sk",
+          "en"
         ]
       },
       "conditions": [],
@@ -687,8 +687,8 @@
           "adminGroups"
         ],
         "locales": [
-          "en",
-          "sk"
+          "sk",
+          "en"
         ]
       },
       "conditions": [],
@@ -701,8 +701,8 @@
       "subject": "api::faq.faq",
       "properties": {
         "locales": [
-          "en",
-          "sk"
+          "sk",
+          "en"
         ]
       },
       "conditions": [],
@@ -715,8 +715,8 @@
       "subject": "api::faq.faq",
       "properties": {
         "locales": [
-          "en",
-          "sk"
+          "sk",
+          "en"
         ]
       },
       "conditions": [],
@@ -735,8 +735,8 @@
           "adminGroups"
         ],
         "locales": [
-          "en",
-          "sk"
+          "sk",
+          "en"
         ]
       },
       "conditions": [],
@@ -755,8 +755,8 @@
           "adminGroups"
         ],
         "locales": [
-          "en",
-          "sk"
+          "sk",
+          "en"
         ]
       },
       "conditions": [],
@@ -790,8 +790,8 @@
           "contactText"
         ],
         "locales": [
-          "en",
-          "sk"
+          "sk",
+          "en"
         ]
       },
       "conditions": [],
@@ -804,8 +804,8 @@
       "subject": "api::footer.footer",
       "properties": {
         "locales": [
-          "en",
-          "sk"
+          "sk",
+          "en"
         ]
       },
       "conditions": [],
@@ -818,8 +818,8 @@
       "subject": "api::footer.footer",
       "properties": {
         "locales": [
-          "en",
-          "sk"
+          "sk",
+          "en"
         ]
       },
       "conditions": [],
@@ -853,8 +853,8 @@
           "contactText"
         ],
         "locales": [
-          "en",
-          "sk"
+          "sk",
+          "en"
         ]
       },
       "conditions": [],
@@ -888,8 +888,8 @@
           "contactText"
         ],
         "locales": [
-          "en",
-          "sk"
+          "sk",
+          "en"
         ]
       },
       "conditions": [],
@@ -923,8 +923,8 @@
           "documentsPage"
         ],
         "locales": [
-          "en",
-          "sk"
+          "sk",
+          "en"
         ]
       },
       "conditions": [],
@@ -937,8 +937,8 @@
       "subject": "api::general.general",
       "properties": {
         "locales": [
-          "en",
-          "sk"
+          "sk",
+          "en"
         ]
       },
       "conditions": [],
@@ -951,8 +951,8 @@
       "subject": "api::general.general",
       "properties": {
         "locales": [
-          "en",
-          "sk"
+          "sk",
+          "en"
         ]
       },
       "conditions": [],
@@ -986,8 +986,8 @@
           "documentsPage"
         ],
         "locales": [
-          "en",
-          "sk"
+          "sk",
+          "en"
         ]
       },
       "conditions": [],
@@ -1021,8 +1021,8 @@
           "documentsPage"
         ],
         "locales": [
-          "en",
-          "sk"
+          "sk",
+          "en"
         ]
       },
       "conditions": [],
@@ -1097,8 +1097,8 @@
           "eventsSection.showMoreLink.analyticsId"
         ],
         "locales": [
-          "en",
-          "sk"
+          "sk",
+          "en"
         ]
       },
       "conditions": [],
@@ -1111,8 +1111,8 @@
       "subject": "api::homepage.homepage",
       "properties": {
         "locales": [
-          "en",
-          "sk"
+          "sk",
+          "en"
         ]
       },
       "conditions": [],
@@ -1125,8 +1125,8 @@
       "subject": "api::homepage.homepage",
       "properties": {
         "locales": [
-          "en",
-          "sk"
+          "sk",
+          "en"
         ]
       },
       "conditions": [],
@@ -1201,8 +1201,8 @@
           "eventsSection.showMoreLink.analyticsId"
         ],
         "locales": [
-          "en",
-          "sk"
+          "sk",
+          "en"
         ]
       },
       "conditions": [],
@@ -1277,8 +1277,8 @@
           "eventsSection.showMoreLink.analyticsId"
         ],
         "locales": [
-          "en",
-          "sk"
+          "sk",
+          "en"
         ]
       },
       "conditions": [],
@@ -1300,8 +1300,8 @@
           "content"
         ],
         "locales": [
-          "en",
-          "sk"
+          "sk",
+          "en"
         ]
       },
       "conditions": [],
@@ -1314,8 +1314,8 @@
       "subject": "api::inba-article.inba-article",
       "properties": {
         "locales": [
-          "en",
-          "sk"
+          "sk",
+          "en"
         ]
       },
       "conditions": [],
@@ -1328,8 +1328,8 @@
       "subject": "api::inba-article.inba-article",
       "properties": {
         "locales": [
-          "en",
-          "sk"
+          "sk",
+          "en"
         ]
       },
       "conditions": [],
@@ -1351,8 +1351,8 @@
           "content"
         ],
         "locales": [
-          "en",
-          "sk"
+          "sk",
+          "en"
         ]
       },
       "conditions": [],
@@ -1374,8 +1374,8 @@
           "content"
         ],
         "locales": [
-          "en",
-          "sk"
+          "sk",
+          "en"
         ]
       },
       "conditions": [],
@@ -1473,8 +1473,8 @@
           "inbaArticles"
         ],
         "locales": [
-          "en",
-          "sk"
+          "sk",
+          "en"
         ]
       },
       "conditions": [],
@@ -1487,8 +1487,8 @@
       "subject": "api::inba-tag.inba-tag",
       "properties": {
         "locales": [
-          "en",
-          "sk"
+          "sk",
+          "en"
         ]
       },
       "conditions": [],
@@ -1501,8 +1501,8 @@
       "subject": "api::inba-tag.inba-tag",
       "properties": {
         "locales": [
-          "en",
-          "sk"
+          "sk",
+          "en"
         ]
       },
       "conditions": [],
@@ -1519,8 +1519,8 @@
           "inbaArticles"
         ],
         "locales": [
-          "en",
-          "sk"
+          "sk",
+          "en"
         ]
       },
       "conditions": [],
@@ -1537,8 +1537,8 @@
           "inbaArticles"
         ],
         "locales": [
-          "en",
-          "sk"
+          "sk",
+          "en"
         ]
       },
       "conditions": [],
@@ -1563,8 +1563,8 @@
           "menus.sections.links.analyticsId"
         ],
         "locales": [
-          "en",
-          "sk"
+          "sk",
+          "en"
         ]
       },
       "conditions": [],
@@ -1577,8 +1577,8 @@
       "subject": "api::menu.menu",
       "properties": {
         "locales": [
-          "en",
-          "sk"
+          "sk",
+          "en"
         ]
       },
       "conditions": [],
@@ -1591,8 +1591,8 @@
       "subject": "api::menu.menu",
       "properties": {
         "locales": [
-          "en",
-          "sk"
+          "sk",
+          "en"
         ]
       },
       "conditions": [],
@@ -1617,8 +1617,8 @@
           "menus.sections.links.analyticsId"
         ],
         "locales": [
-          "en",
-          "sk"
+          "sk",
+          "en"
         ]
       },
       "conditions": [],
@@ -1643,8 +1643,8 @@
           "menus.sections.links.analyticsId"
         ],
         "locales": [
-          "en",
-          "sk"
+          "sk",
+          "en"
         ]
       },
       "conditions": [],
@@ -1664,8 +1664,8 @@
           "pages"
         ],
         "locales": [
-          "en",
-          "sk"
+          "sk",
+          "en"
         ]
       },
       "conditions": [],
@@ -1678,8 +1678,8 @@
       "subject": "api::page-category.page-category",
       "properties": {
         "locales": [
-          "en",
-          "sk"
+          "sk",
+          "en"
         ]
       },
       "conditions": [],
@@ -1692,8 +1692,8 @@
       "subject": "api::page-category.page-category",
       "properties": {
         "locales": [
-          "en",
-          "sk"
+          "sk",
+          "en"
         ]
       },
       "conditions": [],
@@ -1713,8 +1713,8 @@
           "pages"
         ],
         "locales": [
-          "en",
-          "sk"
+          "sk",
+          "en"
         ]
       },
       "conditions": [],
@@ -1734,8 +1734,8 @@
           "pages"
         ],
         "locales": [
-          "en",
-          "sk"
+          "sk",
+          "en"
         ]
       },
       "conditions": [],
@@ -1777,8 +1777,8 @@
           "adminGroups"
         ],
         "locales": [
-          "en",
-          "sk"
+          "sk",
+          "en"
         ]
       },
       "conditions": [],
@@ -1791,8 +1791,8 @@
       "subject": "api::page.page",
       "properties": {
         "locales": [
-          "en",
-          "sk"
+          "sk",
+          "en"
         ]
       },
       "conditions": [],
@@ -1805,8 +1805,8 @@
       "subject": "api::page.page",
       "properties": {
         "locales": [
-          "en",
-          "sk"
+          "sk",
+          "en"
         ]
       },
       "conditions": [],
@@ -1848,8 +1848,8 @@
           "adminGroups"
         ],
         "locales": [
-          "en",
-          "sk"
+          "sk",
+          "en"
         ]
       },
       "conditions": [],
@@ -1891,8 +1891,8 @@
           "adminGroups"
         ],
         "locales": [
-          "en",
-          "sk"
+          "sk",
+          "en"
         ]
       },
       "conditions": [],
@@ -2003,8 +2003,8 @@
           "articles"
         ],
         "locales": [
-          "en",
-          "sk"
+          "sk",
+          "en"
         ]
       },
       "conditions": [],
@@ -2017,8 +2017,8 @@
       "subject": "api::tag.tag",
       "properties": {
         "locales": [
-          "en",
-          "sk"
+          "sk",
+          "en"
         ]
       },
       "conditions": [],
@@ -2031,8 +2031,8 @@
       "subject": "api::tag.tag",
       "properties": {
         "locales": [
-          "en",
-          "sk"
+          "sk",
+          "en"
         ]
       },
       "conditions": [],
@@ -2050,8 +2050,8 @@
           "articles"
         ],
         "locales": [
-          "en",
-          "sk"
+          "sk",
+          "en"
         ]
       },
       "conditions": [],
@@ -2069,8 +2069,8 @@
           "articles"
         ],
         "locales": [
-          "en",
-          "sk"
+          "sk",
+          "en"
         ]
       },
       "conditions": [],
