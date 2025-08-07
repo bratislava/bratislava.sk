@@ -162,6 +162,12 @@
       }
     },
     "layouts": {
+      "list": [
+        "id",
+        "title",
+        "addressContacts",
+        "documentId"
+      ],
       "edit": [
         [
           {
@@ -217,12 +223,6 @@
             "size": 6
           }
         ]
-      ],
-      "list": [
-        "id",
-        "title",
-        "addressContacts",
-        "documentId"
       ]
     },
     "isComponent": true

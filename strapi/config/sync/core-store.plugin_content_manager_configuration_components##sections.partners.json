@@ -100,6 +100,12 @@
       }
     },
     "layouts": {
+      "list": [
+        "id",
+        "title",
+        "text",
+        "partners"
+      ],
       "edit": [
         [
           {
@@ -129,12 +135,6 @@
             "size": 6
           }
         ]
-      ],
-      "list": [
-        "id",
-        "title",
-        "text",
-        "partners"
       ]
     },
     "uid": "sections.partners",
