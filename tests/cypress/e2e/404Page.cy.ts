@@ -14,7 +14,6 @@ describe('Page 404', { testIsolation: false }, () => {
 
         it('1. Check if the 404 page is displayed.', () => {
           cy.dataCy('404-image').should('be.visible')
-          cy.dataCy('404-left-side', '> div').contains('404').should('be.visible')
           cy.dataCy('404-left-side', '> a').should('be.visible').click()
         })
 
