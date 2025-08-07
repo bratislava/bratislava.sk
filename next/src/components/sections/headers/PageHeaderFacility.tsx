@@ -48,8 +48,8 @@ const PageHeaderFacility = ({ title, breadcrumbs, headerLinks, header }: Props) 
         <div className="flex flex-col gap-6 lg:gap-8 lg:pb-6">
           <div className="flex flex-col gap-2 lg:gap-4">
             <Typography variant="h1">{title}</Typography>
-            <div className="flex flex-wrap gap-x-3">
-              <Typography variant="p-small">{address}</Typography>
+            <div className="flex flex-wrap gap-x-3 empty:hidden">
+              {address ? <Typography variant="p-small">{address}</Typography> : null}
               {navigateToLink ? (
                 <Button
                   variant="link"
