@@ -10,6 +10,7 @@ import ComparisonSection from '@/src/components/sections/ComparisonSection'
 import ContactsSection from '@/src/components/sections/ContactsSection'
 import DividerSection from '@/src/components/sections/DividerSection'
 import DocumentsSection from '@/src/components/sections/DocumentsSection/DocumentsSection'
+import EventsSection from '@/src/components/sections/EventsSection'
 import FaqCategoriesSection from '@/src/components/sections/FaqCategoriesSection'
 import FaqsSection from '@/src/components/sections/FaqsSection'
 import FileListSection from '@/src/components/sections/FileListSection'
@@ -132,6 +133,9 @@ const SectionContent = ({ section }: { section: SectionsFragment }) => {
 
     case 'ComponentSectionsNumbersOverview':
       return <NumbersOverviewSection section={section} />
+
+    case 'ComponentSectionsEvents':
+      return <EventsSection section={section} />
 
     default:
       return null

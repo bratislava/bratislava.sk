@@ -1,16 +1,16 @@
 import React from 'react'
 
-import EventCard from '@/src/components/cards/EventCard'
+import TootootEventCard from '@/src/components/cards/TootootEventCard'
 import Stack from '@/src/components/styleguide/Stack'
 import Wrapper from '@/src/components/styleguide/Wrapper'
 import { generateImageSizes } from '@/src/utils/generateImageSizes'
 
-const EventCardShowcase = () => {
+const TootootEventCardShowcase = () => {
   return (
     <Wrapper direction="column" title="Event Card">
       <Stack direction="row">
         {/* Height end width should be set by parent component, e.g. Carousel */}
-        <EventCard
+        <TootootEventCard
           title="My Awesome Event"
           linkHref="#"
           address="123 Main St, Anytown USA"
@@ -20,7 +20,7 @@ const EventCardShowcase = () => {
           imageSizes={generateImageSizes({ default: '272px', lg: '384px' })}
           className="h-58 w-[272px] lg:h-75 lg:w-96"
         />
-        <EventCard
+        <TootootEventCard
           title="My Awesome With Very Very Very Very Very Very Very Very Very Long Event Name"
           linkHref="#"
           address="123 Main St, Very Very Very Very Very Very Long City USA"
@@ -34,4 +34,4 @@ const EventCardShowcase = () => {
     </Wrapper>
   )
 }
-export default EventCardShowcase
+export default TootootEventCardShowcase
