@@ -99,6 +99,8 @@
   "OfficialBoard.published": "Zverejnené",
   "OfficialBoard.publishedFrom": "Zverejnené od",
   "OfficialBoard.publishedTo": "Zverejnené do",
+  "PageHeaderFacility.allPhotos": "Všetky fotky",
+  "PageHeaderFacility.navigate": "Navigovať",
   "Pagination.aria.goToNextPage": "Ísť na ďalšiu stranu",
   "Pagination.aria.goToPage": "Ísť na stranu {{page}}",
   "Pagination.aria.goToPreviousPage": "Ísť na predchádzajúcu stranu",

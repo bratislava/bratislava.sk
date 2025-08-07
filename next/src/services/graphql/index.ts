@@ -1165,6 +1165,42 @@ export type ComponentHeaderSectionsEventInput = {
   id?: InputMaybe<Scalars['ID']['input']>
 }
 
+export type ComponentHeaderSectionsFacility = {
+  __typename?: 'ComponentHeaderSectionsFacility'
+  address?: Maybe<Scalars['String']['output']>
+  id: Scalars['ID']['output']
+  media: Array<Maybe<UploadFile>>
+  media_connection: UploadFileRelationResponseCollection
+  navigateToLink?: Maybe<Scalars['String']['output']>
+}
+
+export type ComponentHeaderSectionsFacilityMediaArgs = {
+  filters?: InputMaybe<UploadFileFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type ComponentHeaderSectionsFacilityMedia_ConnectionArgs = {
+  filters?: InputMaybe<UploadFileFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type ComponentHeaderSectionsFacilityFiltersInput = {
+  address?: InputMaybe<StringFilterInput>
+  and?: InputMaybe<Array<InputMaybe<ComponentHeaderSectionsFacilityFiltersInput>>>
+  navigateToLink?: InputMaybe<StringFilterInput>
+  not?: InputMaybe<ComponentHeaderSectionsFacilityFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<ComponentHeaderSectionsFacilityFiltersInput>>>
+}
+
+export type ComponentHeaderSectionsFacilityInput = {
+  address?: InputMaybe<Scalars['String']['input']>
+  id?: InputMaybe<Scalars['ID']['input']>
+  media?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
+  navigateToLink?: InputMaybe<Scalars['String']['input']>
+}
+
 export type ComponentMenuMenuItem = {
   __typename?: 'ComponentMenuMenuItem'
   icon: Enum_Componentmenumenuitem_Icon
@@ -3359,6 +3395,7 @@ export type GenericMorph =
   | ComponentGeneralHeader
   | ComponentGeneralHeaderLink
   | ComponentHeaderSectionsEvent
+  | ComponentHeaderSectionsFacility
   | ComponentMenuMenuItem
   | ComponentMenuMenuLink
   | ComponentMenuMenuSection
@@ -4704,6 +4741,7 @@ export type PageInput = {
 
 export type PagePageHeaderSectionsDynamicZone =
   | ComponentHeaderSectionsEvent
+  | ComponentHeaderSectionsFacility
   | ComponentSectionsSubpageList
   | Error
 
@@ -8539,6 +8577,21 @@ export type PageCardWithHeadersEntityFragment = {
   pageHeaderSections?: Array<
     | { __typename: 'ComponentHeaderSectionsEvent'; date?: any | null; address?: string | null }
     | {
+        __typename: 'ComponentHeaderSectionsFacility'
+        address?: string | null
+        navigateToLink?: string | null
+        media: Array<{
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null>
+      }
+    | {
         __typename: 'ComponentSectionsSubpageList'
         id: string
         subpageList?: Array<{
@@ -8595,6 +8648,21 @@ export type PageEntityFragment = {
   } | null> | null
   pageHeaderSections?: Array<
     | { __typename: 'ComponentHeaderSectionsEvent'; date?: any | null; address?: string | null }
+    | {
+        __typename: 'ComponentHeaderSectionsFacility'
+        address?: string | null
+        navigateToLink?: string | null
+        media: Array<{
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null>
+      }
     | {
         __typename: 'ComponentSectionsSubpageList'
         id: string
@@ -8900,6 +8968,21 @@ export type PageEntityFragment = {
                 __typename: 'ComponentHeaderSectionsEvent'
                 date?: any | null
                 address?: string | null
+              }
+            | {
+                __typename: 'ComponentHeaderSectionsFacility'
+                address?: string | null
+                navigateToLink?: string | null
+                media: Array<{
+                  __typename?: 'UploadFile'
+                  documentId: string
+                  url: string
+                  width?: number | null
+                  height?: number | null
+                  caption?: string | null
+                  alternativeText?: string | null
+                  name: string
+                } | null>
               }
             | {
                 __typename: 'ComponentSectionsSubpageList'
@@ -9418,6 +9501,21 @@ export type PageBySlugQuery = {
     pageHeaderSections?: Array<
       | { __typename: 'ComponentHeaderSectionsEvent'; date?: any | null; address?: string | null }
       | {
+          __typename: 'ComponentHeaderSectionsFacility'
+          address?: string | null
+          navigateToLink?: string | null
+          media: Array<{
+            __typename?: 'UploadFile'
+            documentId: string
+            url: string
+            width?: number | null
+            height?: number | null
+            caption?: string | null
+            alternativeText?: string | null
+            name: string
+          } | null>
+        }
+      | {
           __typename: 'ComponentSectionsSubpageList'
           id: string
           subpageList?: Array<{
@@ -9725,6 +9823,21 @@ export type PageBySlugQuery = {
                   __typename: 'ComponentHeaderSectionsEvent'
                   date?: any | null
                   address?: string | null
+                }
+              | {
+                  __typename: 'ComponentHeaderSectionsFacility'
+                  address?: string | null
+                  navigateToLink?: string | null
+                  media: Array<{
+                    __typename?: 'UploadFile'
+                    documentId: string
+                    url: string
+                    width?: number | null
+                    height?: number | null
+                    caption?: string | null
+                    alternativeText?: string | null
+                    name: string
+                  } | null>
                 }
               | {
                   __typename: 'ComponentSectionsSubpageList'
@@ -10269,6 +10382,21 @@ export type Dev_AllPagesQuery = {
     pageHeaderSections?: Array<
       | { __typename: 'ComponentHeaderSectionsEvent'; date?: any | null; address?: string | null }
       | {
+          __typename: 'ComponentHeaderSectionsFacility'
+          address?: string | null
+          navigateToLink?: string | null
+          media: Array<{
+            __typename?: 'UploadFile'
+            documentId: string
+            url: string
+            width?: number | null
+            height?: number | null
+            caption?: string | null
+            alternativeText?: string | null
+            name: string
+          } | null>
+        }
+      | {
           __typename: 'ComponentSectionsSubpageList'
           id: string
           subpageList?: Array<{
@@ -10576,6 +10704,21 @@ export type Dev_AllPagesQuery = {
                   __typename: 'ComponentHeaderSectionsEvent'
                   date?: any | null
                   address?: string | null
+                }
+              | {
+                  __typename: 'ComponentHeaderSectionsFacility'
+                  address?: string | null
+                  navigateToLink?: string | null
+                  media: Array<{
+                    __typename?: 'UploadFile'
+                    documentId: string
+                    url: string
+                    width?: number | null
+                    height?: number | null
+                    caption?: string | null
+                    alternativeText?: string | null
+                    name: string
+                  } | null>
                 }
               | {
                   __typename: 'ComponentSectionsSubpageList'
@@ -12474,6 +12617,21 @@ export type EventsSectionFragment = {
     pageHeaderSections?: Array<
       | { __typename: 'ComponentHeaderSectionsEvent'; date?: any | null; address?: string | null }
       | {
+          __typename: 'ComponentHeaderSectionsFacility'
+          address?: string | null
+          navigateToLink?: string | null
+          media: Array<{
+            __typename?: 'UploadFile'
+            documentId: string
+            url: string
+            width?: number | null
+            height?: number | null
+            caption?: string | null
+            alternativeText?: string | null
+            name: string
+          } | null>
+        }
+      | {
           __typename: 'ComponentSectionsSubpageList'
           id: string
           subpageList?: Array<{
@@ -12773,6 +12931,21 @@ type Sections_ComponentSectionsEvents_Fragment = {
     locale?: string | null
     pageHeaderSections?: Array<
       | { __typename: 'ComponentHeaderSectionsEvent'; date?: any | null; address?: string | null }
+      | {
+          __typename: 'ComponentHeaderSectionsFacility'
+          address?: string | null
+          navigateToLink?: string | null
+          media: Array<{
+            __typename?: 'UploadFile'
+            documentId: string
+            url: string
+            width?: number | null
+            height?: number | null
+            caption?: string | null
+            alternativeText?: string | null
+            name: string
+          } | null>
+        }
       | {
           __typename: 'ComponentSectionsSubpageList'
           id: string
@@ -13286,10 +13459,42 @@ export type EventPageHeaderSectionFragment = {
   address?: string | null
 }
 
+export type FacilityPageHeaderSectionFragment = {
+  __typename?: 'ComponentHeaderSectionsFacility'
+  address?: string | null
+  navigateToLink?: string | null
+  media: Array<{
+    __typename?: 'UploadFile'
+    documentId: string
+    url: string
+    width?: number | null
+    height?: number | null
+    caption?: string | null
+    alternativeText?: string | null
+    name: string
+  } | null>
+}
+
 type PageHeaderSections_ComponentHeaderSectionsEvent_Fragment = {
   __typename: 'ComponentHeaderSectionsEvent'
   date?: any | null
   address?: string | null
+}
+
+type PageHeaderSections_ComponentHeaderSectionsFacility_Fragment = {
+  __typename: 'ComponentHeaderSectionsFacility'
+  address?: string | null
+  navigateToLink?: string | null
+  media: Array<{
+    __typename?: 'UploadFile'
+    documentId: string
+    url: string
+    width?: number | null
+    height?: number | null
+    caption?: string | null
+    alternativeText?: string | null
+    name: string
+  } | null>
 }
 
 type PageHeaderSections_ComponentSectionsSubpageList_Fragment = {
@@ -13314,6 +13519,7 @@ type PageHeaderSections_Error_Fragment = { __typename: 'Error' }
 
 export type PageHeaderSectionsFragment =
   | PageHeaderSections_ComponentHeaderSectionsEvent_Fragment
+  | PageHeaderSections_ComponentHeaderSectionsFacility_Fragment
   | PageHeaderSections_ComponentSectionsSubpageList_Fragment
   | PageHeaderSections_Error_Fragment
 
@@ -13868,6 +14074,16 @@ export const EventPageHeaderSectionFragmentDoc = gql`
     address
   }
 `
+export const FacilityPageHeaderSectionFragmentDoc = gql`
+  fragment FacilityPageHeaderSection on ComponentHeaderSectionsFacility {
+    address
+    navigateToLink
+    media {
+      ...UploadImageEntity
+    }
+  }
+  ${UploadImageEntityFragmentDoc}
+`
 export const PageHeaderSectionsFragmentDoc = gql`
   fragment PageHeaderSections on PagePageHeaderSectionsDynamicZone {
     __typename
@@ -13877,9 +14093,13 @@ export const PageHeaderSectionsFragmentDoc = gql`
     ... on ComponentHeaderSectionsEvent {
       ...EventPageHeaderSection
     }
+    ... on ComponentHeaderSectionsFacility {
+      ...FacilityPageHeaderSection
+    }
   }
   ${SubpageListPageHeaderSectionFragmentDoc}
   ${EventPageHeaderSectionFragmentDoc}
+  ${FacilityPageHeaderSectionFragmentDoc}
 `
 export const CardLinkFragmentDoc = gql`
   fragment CardLink on ComponentBlocksCardLink {

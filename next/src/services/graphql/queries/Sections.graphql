@@ -548,6 +548,14 @@ fragment EventPageHeaderSection on ComponentHeaderSectionsEvent {
   address
 }
 
+fragment FacilityPageHeaderSection on ComponentHeaderSectionsFacility {
+  address
+  navigateToLink
+  media {
+    ...UploadImageEntity
+  }
+}
+
 fragment PageHeaderSections on PagePageHeaderSectionsDynamicZone {
   __typename
 
@@ -557,5 +565,9 @@ fragment PageHeaderSections on PagePageHeaderSectionsDynamicZone {
 
   ... on ComponentHeaderSectionsEvent {
     ...EventPageHeaderSection
+  }
+
+  ... on ComponentHeaderSectionsFacility {
+    ...FacilityPageHeaderSection
   }
 }

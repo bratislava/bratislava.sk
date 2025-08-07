@@ -345,6 +345,18 @@ export interface HeaderSectionsEvent extends Struct.ComponentSchema {
   }
 }
 
+export interface HeaderSectionsFacility extends Struct.ComponentSchema {
+  collectionName: 'components_header_sections_facilities'
+  info: {
+    displayName: 'Facility'
+  }
+  attributes: {
+    address: Schema.Attribute.Text
+    media: Schema.Attribute.Media<'images' | 'files', true> & Schema.Attribute.Required
+    navigateToLink: Schema.Attribute.String
+  }
+}
+
 export interface MenuMenuItem extends Struct.ComponentSchema {
   collectionName: 'components_menu_menu_items'
   info: {
@@ -1098,6 +1110,7 @@ declare module '@strapi/strapi' {
       'general.header': GeneralHeader
       'general.header-link': GeneralHeaderLink
       'header-sections.event': HeaderSectionsEvent
+      'header-sections.facility': HeaderSectionsFacility
       'menu.menu-item': MenuMenuItem
       'menu.menu-link': MenuMenuLink
       'menu.menu-section': MenuMenuSection

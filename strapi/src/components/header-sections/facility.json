@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_header_sections_facilities",
+  "info": {
+    "displayName": "Facility"
+  },
+  "options": {},
+  "attributes": {
+    "address": {
+      "type": "text"
+    },
+    "navigateToLink": {
+      "type": "string"
+    },
+    "media": {
+      "type": "media",
+      "multiple": true,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    }
+  },
+  "config": {}
+}

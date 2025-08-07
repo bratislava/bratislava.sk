@@ -118,7 +118,11 @@
           "localized": true
         }
       },
-      "components": ["header-sections.event", "sections.subpage-list"],
+      "components": [
+        "header-sections.event",
+        "header-sections.facility",
+        "sections.subpage-list"
+      ],
       "max": 1
     },
     "subnavigation": {
