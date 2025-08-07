@@ -1215,6 +1215,7 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
           localized: true
         }
       }>
+    childPages: Schema.Attribute.Relation<'oneToMany', 'api::page.page'>
     createdAt: Schema.Attribute.DateTime
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> & Schema.Attribute.Private
     headerLinks: Schema.Attribute.Component<'blocks.common-link', true> &
@@ -1223,7 +1224,6 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
           localized: true
         }
       }>
-    childPages: Schema.Attribute.Relation<'oneToMany', 'api::page.page'>
     keywords: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
@@ -1745,10 +1745,10 @@ export interface PluginUploadFolder extends Struct.CollectionTypeSchema {
     }
   }
   attributes: {
+    children: Schema.Attribute.Relation<'oneToMany', 'plugin::upload.folder'>
     createdAt: Schema.Attribute.DateTime
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> & Schema.Attribute.Private
     files: Schema.Attribute.Relation<'oneToMany', 'plugin::upload.file'>
-    children: Schema.Attribute.Relation<'oneToMany', 'plugin::upload.folder'>
     locale: Schema.Attribute.String & Schema.Attribute.Private
     localizations: Schema.Attribute.Relation<'oneToMany', 'plugin::upload.folder'> &
       Schema.Attribute.Private
