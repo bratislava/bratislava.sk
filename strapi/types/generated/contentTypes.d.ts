@@ -1337,6 +1337,12 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
           localized: true
         }
       }>
+    subnavigation: Schema.Attribute.Component<'sections.subnavigation', false> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true
+        }
+      }>
     subtext: Schema.Attribute.Text &
       Schema.Attribute.SetPluginOptions<{
         i18n: {

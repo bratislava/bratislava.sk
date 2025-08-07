@@ -167,7 +167,8 @@
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true
+          "editable": true,
+          "mainField": "label"
         },
         "list": {
           "label": "headerLinks",
@@ -185,6 +186,21 @@
         },
         "list": {
           "label": "pageHeaderSections",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "subnavigation": {
+        "edit": {
+          "label": "Rozcestník",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "documentId"
+        },
+        "list": {
+          "label": "subnavigation",
           "searchable": false,
           "sortable": false
         }
@@ -345,7 +361,6 @@
       }
     },
     "layouts": {
-      "list": ["slug", "title", "updatedAt", "parentPage"],
       "edit": [
         [
           {
@@ -413,6 +428,12 @@
         ],
         [
           {
+            "name": "subnavigation",
+            "size": 12
+          }
+        ],
+        [
+          {
             "name": "sidebar",
             "size": 12
           }
@@ -420,12 +441,6 @@
         [
           {
             "name": "sections",
-            "size": 12
-          }
-        ],
-        [
-          {
-            "name": "parentPage",
             "size": 12
           }
         ],
@@ -443,8 +458,8 @@
         ],
         [
           {
-            "name": "adminGroups",
-            "size": 6
+            "name": "parentPage",
+            "size": 12
           }
         ],
         [
@@ -452,7 +467,19 @@
             "name": "alias",
             "size": 12
           }
+        ],
+        [
+          {
+            "name": "adminGroups",
+            "size": 6
+          }
         ]
+      ],
+      "list": [
+        "slug",
+        "title",
+        "updatedAt",
+        "parentPage"
       ]
     }
   },

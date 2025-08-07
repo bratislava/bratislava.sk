@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_sections_subnavigations",
+  "info": {
+    "displayName": "subnavigation"
+  },
+  "options": {},
+  "attributes": {
+    "links": {
+      "type": "component",
+      "component": "blocks.card-link",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}

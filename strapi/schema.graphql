@@ -437,6 +437,35 @@ input ComponentAccordionItemsInstitutionNarrowInput {
   urlLabel: String
 }
 
+type ComponentBlocksCardLink {
+  analyticsId: String
+  id: ID!
+  label: String
+  page: Page
+  subtext: String
+  url: String
+}
+
+input ComponentBlocksCardLinkFiltersInput {
+  analyticsId: StringFilterInput
+  and: [ComponentBlocksCardLinkFiltersInput]
+  label: StringFilterInput
+  not: ComponentBlocksCardLinkFiltersInput
+  or: [ComponentBlocksCardLinkFiltersInput]
+  page: PageFiltersInput
+  subtext: StringFilterInput
+  url: StringFilterInput
+}
+
+input ComponentBlocksCardLinkInput {
+  analyticsId: String
+  id: ID
+  label: String
+  page: ID
+  subtext: String
+  url: String
+}
+
 type ComponentBlocksColumnsItem {
   id: ID!
   image: UploadFile
@@ -1783,6 +1812,23 @@ input ComponentSectionsRegulationsListInput {
   id: ID
 }
 
+type ComponentSectionsSubnavigation {
+  id: ID!
+  links(filters: ComponentBlocksCardLinkFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksCardLink]
+}
+
+input ComponentSectionsSubnavigationFiltersInput {
+  and: [ComponentSectionsSubnavigationFiltersInput]
+  links: ComponentBlocksCardLinkFiltersInput
+  not: ComponentSectionsSubnavigationFiltersInput
+  or: [ComponentSectionsSubnavigationFiltersInput]
+}
+
+input ComponentSectionsSubnavigationInput {
+  id: ID
+  links: [ComponentBlocksCardLinkInput]
+}
+
 type ComponentSectionsSubpageList {
   id: ID!
   subpageList(filters: ComponentBlocksPageLinkFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksPageLink]
@@ -2661,7 +2707,7 @@ type GeneralRelationResponseCollection {
   nodes: [General!]!
 }
 
-union GenericMorph = AdminGroup | Alert | Article | ArticleCategory | BlogPost | ComponentAccordionItemsFlatText | ComponentAccordionItemsInstitution | ComponentAccordionItemsInstitutionNarrow | ComponentBlocksColumnsItem | ComponentBlocksCommonLink | ComponentBlocksComparisonCard | ComponentBlocksComparisonItem | ComponentBlocksContactCard | ComponentBlocksContactPersonCard | ComponentBlocksFile | ComponentBlocksFileItem | ComponentBlocksFooterColumn | ComponentBlocksHomepageHighlightsItem | ComponentBlocksInBa | ComponentBlocksNumbersOverviewItem | ComponentBlocksNumericalListItem | ComponentBlocksPageLink | ComponentBlocksPartner | ComponentBlocksProsAndConsCard | ComponentBlocksTopServicesItem | ComponentBlocksVideo | ComponentGeneralHeader | ComponentGeneralHeaderLink | ComponentHeaderSectionsEvent | ComponentMenuMenuItem | ComponentMenuMenuLink | ComponentMenuMenuSection | ComponentSectionsAccordion | ComponentSectionsArticles | ComponentSectionsBanner | ComponentSectionsCalculator | ComponentSectionsColumnedText | ComponentSectionsColumns | ComponentSectionsComparisonSection | ComponentSectionsContactsSection | ComponentSectionsDivider | ComponentSectionsDocuments | ComponentSectionsEvents | ComponentSectionsFaqCategories | ComponentSectionsFaqs | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsHomepageEvents | ComponentSectionsHomepageHighlights | ComponentSectionsHomepageMayorAndCouncil | ComponentSectionsHomepageTabs | ComponentSectionsIframe | ComponentSectionsInbaArticlesList | ComponentSectionsInbaReleases | ComponentSectionsLinks | ComponentSectionsNarrowText | ComponentSectionsNumbersOverview | ComponentSectionsNumericalList | ComponentSectionsOfficialBoard | ComponentSectionsOrganizationalStructure | ComponentSectionsPartners | ComponentSectionsProsAndConsSection | ComponentSectionsRegulations | ComponentSectionsRegulationsList | ComponentSectionsSubpageList | ComponentSectionsTextWithImage | ComponentSectionsTextWithImageOverlapped | ComponentSectionsTootootEvents | ComponentSectionsTopServices | ComponentSectionsVideos | ComponentSidebarsEmptySidebar | ComponentTaxAdministratorsTaxAdministrator | Document | DocumentCategory | Faq | FaqCategory | Footer | General | Homepage | I18NLocale | InbaArticle | InbaRelease | InbaTag | Menu | Page | PageCategory | Regulation | ReviewWorkflowsWorkflow | ReviewWorkflowsWorkflowStage | Tag | TaxAdministratorsList | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
+union GenericMorph = AdminGroup | Alert | Article | ArticleCategory | BlogPost | ComponentAccordionItemsFlatText | ComponentAccordionItemsInstitution | ComponentAccordionItemsInstitutionNarrow | ComponentBlocksCardLink | ComponentBlocksColumnsItem | ComponentBlocksCommonLink | ComponentBlocksComparisonCard | ComponentBlocksComparisonItem | ComponentBlocksContactCard | ComponentBlocksContactPersonCard | ComponentBlocksFile | ComponentBlocksFileItem | ComponentBlocksFooterColumn | ComponentBlocksHomepageHighlightsItem | ComponentBlocksInBa | ComponentBlocksNumbersOverviewItem | ComponentBlocksNumericalListItem | ComponentBlocksPageLink | ComponentBlocksPartner | ComponentBlocksProsAndConsCard | ComponentBlocksTopServicesItem | ComponentBlocksVideo | ComponentGeneralHeader | ComponentGeneralHeaderLink | ComponentHeaderSectionsEvent | ComponentMenuMenuItem | ComponentMenuMenuLink | ComponentMenuMenuSection | ComponentSectionsAccordion | ComponentSectionsArticles | ComponentSectionsBanner | ComponentSectionsCalculator | ComponentSectionsColumnedText | ComponentSectionsColumns | ComponentSectionsComparisonSection | ComponentSectionsContactsSection | ComponentSectionsDivider | ComponentSectionsDocuments | ComponentSectionsEvents | ComponentSectionsFaqCategories | ComponentSectionsFaqs | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsHomepageEvents | ComponentSectionsHomepageHighlights | ComponentSectionsHomepageMayorAndCouncil | ComponentSectionsHomepageTabs | ComponentSectionsIframe | ComponentSectionsInbaArticlesList | ComponentSectionsInbaReleases | ComponentSectionsLinks | ComponentSectionsNarrowText | ComponentSectionsNumbersOverview | ComponentSectionsNumericalList | ComponentSectionsOfficialBoard | ComponentSectionsOrganizationalStructure | ComponentSectionsPartners | ComponentSectionsProsAndConsSection | ComponentSectionsRegulations | ComponentSectionsRegulationsList | ComponentSectionsSubnavigation | ComponentSectionsSubpageList | ComponentSectionsTextWithImage | ComponentSectionsTextWithImageOverlapped | ComponentSectionsTootootEvents | ComponentSectionsTopServices | ComponentSectionsVideos | ComponentSidebarsEmptySidebar | ComponentTaxAdministratorsTaxAdministrator | Document | DocumentCategory | Faq | FaqCategory | Footer | General | Homepage | I18NLocale | InbaArticle | InbaRelease | InbaTag | Menu | Page | PageCategory | Regulation | ReviewWorkflowsWorkflow | ReviewWorkflowsWorkflowStage | Tag | TaxAdministratorsList | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
 
 type Homepage {
   createdAt: DateTime
@@ -3477,6 +3523,7 @@ type Page {
   showTableOfContents: Boolean
   sidebar: [PageSidebarDynamicZone]
   slug: String
+  subnavigation: ComponentSectionsSubnavigation
   subtext: String
   title: String!
   updatedAt: DateTime
@@ -3577,6 +3624,7 @@ input PageFiltersInput {
   relatedContents: TagFiltersInput
   showTableOfContents: BooleanFilterInput
   slug: StringFilterInput
+  subnavigation: ComponentSectionsSubnavigationFiltersInput
   subtext: StringFilterInput
   title: StringFilterInput
   updatedAt: DateTimeFilterInput
@@ -3600,6 +3648,7 @@ input PageInput {
   showTableOfContents: Boolean
   sidebar: [PageSidebarDynamicZoneInput!]
   slug: String
+  subnavigation: ComponentSectionsSubnavigationInput
   subtext: String
   title: String
 }

@@ -121,6 +121,16 @@
       "components": ["header-sections.event", "sections.subpage-list"],
       "max": 1
     },
+    "subnavigation": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "sections.subnavigation",
+      "repeatable": false
+    },
     "sections": {
       "type": "dynamiczone",
       "pluginOptions": {

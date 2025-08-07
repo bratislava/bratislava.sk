@@ -7,6 +7,7 @@ import SectionContainer from '@/src/components/layouts/SectionContainer'
 import Sections from '@/src/components/layouts/Sections'
 import Sidebars from '@/src/components/layouts/Sidebars'
 import RelatedArticlesSection from '@/src/components/sections/RelatedArticlesSection'
+import SubnavigationSection from '@/src/components/sections/SubnavigationSection'
 import TableOfContentsSection from '@/src/components/sections/TableOfContentsSection'
 import { PageEntityFragment } from '@/src/services/graphql'
 import cn from '@/src/utils/cn'
@@ -56,11 +57,10 @@ const GeneralPageContent = ({ page }: GeneralPageProps) => {
             },
           )}
         >
-          <div className="flex w-full flex-col">
-            {page.showTableOfContents && <TableOfContentsSection />}
-            <Sections sections={filteredSections} />
-            <RelatedArticlesSection page={page} />
-          </div>
+          {page.showTableOfContents && <TableOfContentsSection />}
+          {page.subnavigation ? <SubnavigationSection section={page.subnavigation} /> : null}
+          <Sections sections={filteredSections} />
+          <RelatedArticlesSection page={page} />
         </div>
         {sidebar ? <Sidebars sidebar={sidebar} className="max-w-[50rem] grow basis-72" /> : null}
       </div>

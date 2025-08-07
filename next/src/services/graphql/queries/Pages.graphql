@@ -59,6 +59,12 @@ fragment PageEntity on Page {
   headerLinks {
     ...CommonLink
   }
+  pageHeaderSections {
+    ...PageHeaderSections
+  }
+  subnavigation {
+    ...SubnavigationSection
+  }
   sections {
     ...Sections
   }
@@ -68,9 +74,6 @@ fragment PageEntity on Page {
   localizations {
     slug
     locale
-  }
-  pageHeaderSections {
-    ...PageHeaderSections
   }
   relatedContents {
     ...TagEntity
