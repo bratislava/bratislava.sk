@@ -23,11 +23,13 @@ type ButtonOrIconButton =
     } & PropsWithChildren)
 
 type ButtonBase = {
+  // When adding a new variant, include it also in is...Variant booleans below
   variant?:
     | 'unstyled'
     | 'icon-wrapped'
     | 'icon-wrapped-negative-margin'
     | 'solid'
+    | 'solid-inverted'
     | 'outline'
     | 'plain'
     | 'negative-solid'
@@ -86,7 +88,8 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
   ) => {
     const isLoadingOrDisabled = isLoading || isDisabled
 
-    const isSolidVariant = variant === 'solid' || variant === 'negative-solid'
+    const isSolidVariant =
+      variant === 'solid' || variant === 'negative-solid' || variant === 'solid-inverted'
     const isOutlineVariant = variant === 'outline'
     const isSolidOrOutlineVariant = isSolidVariant || isOutlineVariant
     const isPlainVariant = variant === 'plain' || variant === 'negative-plain'
@@ -160,6 +163,14 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
                 variant === 'solid',
               'hover:border-action-border-hover hover:bg-action-background-hover':
                 variant === 'solid',
+
+              // colors - bg, border, content - variant solid (figma: boxed primary inverted)
+              'border-background-active-primary-inverted-default bg-background-active-primary-inverted-default text-content-active-primary-default':
+                variant === 'solid-inverted',
+              'active:border-background-active-primary-inverted-pressed active:bg-background-active-primary-inverted-pressed':
+                variant === 'solid-inverted',
+              'hover:border-background-active-primary-inverted-hover hover:bg-background-active-primary-inverted-hover':
+                variant === 'solid-inverted',
 
               // colors - bg, border, content - variant outline (figma: boxed secondary)
               'border-action-border-default bg-transparent text-action-content-default':
