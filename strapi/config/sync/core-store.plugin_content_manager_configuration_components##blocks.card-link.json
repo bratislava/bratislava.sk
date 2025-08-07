@@ -6,8 +6,8 @@
       "filterable": true,
       "searchable": true,
       "pageSize": 10,
-      "mainField": "documentId",
-      "defaultSortBy": "documentId",
+      "mainField": "label",
+      "defaultSortBy": "label",
       "defaultSortOrder": "ASC"
     },
     "metadatas": {
