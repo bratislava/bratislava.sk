@@ -11,6 +11,10 @@ type Props = {
   linkPropsWithoutChildren: Omit<CommonLinkProps, 'children'>
 } & CardBaseProps
 
+/**
+ * Figma: https://www.figma.com/design/17wbd0MDQcMW9NbXl6UPs8/DS--Component-library?node-id=17952-15659&m=dev
+ */
+
 const SubnavigationCard = ({ title, text, linkPropsWithoutChildren, ...rest }: Props) => {
   const titleId = useId()
 
@@ -27,7 +31,7 @@ const SubnavigationCard = ({ title, text, linkPropsWithoutChildren, ...rest }: P
           className="pt-0.5"
         />
 
-        <div className="flex flex-col gap-2 group-hover:text-action-content-hover">
+        <div className="flex flex-col gap-2 group-hover:text-content-active-primary-hover">
           <Typography id={titleId} variant="h5" as="h3" className="group-hover:underline">
             {title}
           </Typography>
