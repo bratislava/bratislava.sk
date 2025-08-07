@@ -1,3 +1,10 @@
+fragment SubnavigationSection on ComponentSectionsSubnavigation {
+  links {
+    id
+    ...CardLink
+  }
+}
+
 fragment GallerySection on ComponentSectionsGallery {
   title
   text
