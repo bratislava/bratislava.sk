@@ -54,8 +54,7 @@
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true,
-          "mainField": "overrideLabel"
+          "editable": true
         },
         "list": {
           "label": "addressContacts",
@@ -69,8 +68,7 @@
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true,
-          "mainField": "overrideLabel"
+          "editable": true
         },
         "list": {
           "label": "openingHoursContacts",
@@ -84,8 +82,7 @@
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true,
-          "mainField": "overrideLabel"
+          "editable": true
         },
         "list": {
           "label": "emailContacts",
@@ -99,8 +96,7 @@
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true,
-          "mainField": "overrideLabel"
+          "editable": true
         },
         "list": {
           "label": "phoneContacts",
@@ -114,8 +110,7 @@
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true,
-          "mainField": "overrideLabel"
+          "editable": true
         },
         "list": {
           "label": "webContacts",
@@ -129,8 +124,7 @@
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true,
-          "mainField": "title"
+          "editable": true
         },
         "list": {
           "label": "personContacts",

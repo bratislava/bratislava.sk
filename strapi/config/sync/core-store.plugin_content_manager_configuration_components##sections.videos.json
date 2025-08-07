@@ -54,8 +54,7 @@
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true,
-          "mainField": "url"
+          "editable": true
         },
         "list": {
           "label": "videos",
