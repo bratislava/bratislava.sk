@@ -33,19 +33,37 @@ fragment PageSlugEntity on Page {
   locale
 }
 
-fragment PageEntity on Page {
+fragment PageCardEntity on Page {
   ...PageSlugEntity
+  pageBackgroundImage {
+    ...UploadImageSrcEntity
+  }
+}
+
+fragment PageCardWithHeadersEntity on Page {
+  ...PageCardEntity
+  pageHeaderSections {
+    ...PageHeaderSections
+  }
+}
+
+fragment PageEntity on Page {
+  ...PageCardEntity
   alias
   subtext
   pageColor
   metaDiscription
   keywords
   showTableOfContents
-  pageBackgroundImage {
-    ...UploadImageSrcEntity
-  }
+
   headerLinks {
     ...CommonLink
+  }
+  pageHeaderSections {
+    ...PageHeaderSections
+  }
+  subnavigation {
+    ...SubnavigationSection
   }
   sections {
     ...Sections
@@ -56,9 +74,6 @@ fragment PageEntity on Page {
   localizations {
     slug
     locale
-  }
-  pageHeaderSections {
-    ...PageHeaderSections
   }
   relatedContents {
     ...TagEntity

@@ -2,6 +2,7 @@ import { ReactNode } from 'react'
 
 import { LinkAnalyticsProps } from '@/src/components/common/MLink/MLink'
 import {
+  CardLinkFragment,
   CommonLinkFragment,
   HeaderLinkFragment,
   MenuLinkFragment,
@@ -21,6 +22,7 @@ export const getLinkProps = (
     | MenuLinkFragment
     | HeaderLinkFragment
     | PageLinkFragment
+    | CardLinkFragment
     | null
     | undefined,
 ) => {

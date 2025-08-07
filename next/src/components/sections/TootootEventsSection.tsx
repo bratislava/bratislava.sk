@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query'
 
-import EventCard from '@/src/components/cards/EventCard'
+import TootootEventCard from '@/src/components/cards/TootootEventCard'
 import Button from '@/src/components/common/Button/Button'
 import ResponsiveCarousel from '@/src/components/common/Carousel/ResponsiveCarousel'
 import Spinner from '@/src/components/common/Spinner/Spinner'
@@ -58,7 +58,7 @@ const TootootEventsSection = ({ section }: Props) => {
                 } = event
 
                 return (
-                  <EventCard
+                  <TootootEventCard
                     key={url}
                     lang="sk" // Specify language for screen readers because we fetch only SK events also on EN page
                     title={eventTitle}

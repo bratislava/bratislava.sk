@@ -49,6 +49,20 @@ export interface AccordionItemsInstitutionNarrow extends Struct.ComponentSchema 
   }
 }
 
+export interface BlocksCardLink extends Struct.ComponentSchema {
+  collectionName: 'components_blocks_card_links'
+  info: {
+    displayName: 'card link'
+  }
+  attributes: {
+    analyticsId: Schema.Attribute.String
+    label: Schema.Attribute.String
+    page: Schema.Attribute.Relation<'oneToOne', 'api::page.page'>
+    subtext: Schema.Attribute.String
+    url: Schema.Attribute.String
+  }
+}
+
 export interface BlocksColumnsItem extends Struct.ComponentSchema {
   collectionName: 'components_blocks_columns_items'
   info: {
@@ -631,6 +645,19 @@ export interface SectionsDocuments extends Struct.ComponentSchema {
   }
 }
 
+export interface SectionsEvents extends Struct.ComponentSchema {
+  collectionName: 'components_sections_events'
+  info: {
+    displayName: 'Events'
+  }
+  attributes: {
+    eventPages: Schema.Attribute.Relation<'oneToMany', 'api::page.page'>
+    text: Schema.Attribute.Text
+    title: Schema.Attribute.String
+    titleLevel: Schema.Attribute.Enumeration<['h2', 'h3']> & Schema.Attribute.DefaultTo<'h2'>
+  }
+}
+
 export interface SectionsFaqCategories extends Struct.ComponentSchema {
   collectionName: 'components_sections_faq_categories'
   info: {
@@ -924,6 +951,16 @@ export interface SectionsRegulationsList extends Struct.ComponentSchema {
   attributes: {}
 }
 
+export interface SectionsSubnavigation extends Struct.ComponentSchema {
+  collectionName: 'components_sections_subnavigations'
+  info: {
+    displayName: 'subnavigation'
+  }
+  attributes: {
+    links: Schema.Attribute.Component<'blocks.card-link', true>
+  }
+}
+
 export interface SectionsSubpageList extends Struct.ComponentSchema {
   collectionName: 'components_sections_subpage_lists'
   info: {
@@ -1051,6 +1088,7 @@ declare module '@strapi/strapi' {
       'accordion-items.flat-text': AccordionItemsFlatText
       'accordion-items.institution': AccordionItemsInstitution
       'accordion-items.institution-narrow': AccordionItemsInstitutionNarrow
+      'blocks.card-link': BlocksCardLink
       'blocks.columns-item': BlocksColumnsItem
       'blocks.common-link': BlocksCommonLink
       'blocks.comparison-card': BlocksComparisonCard
@@ -1086,6 +1124,7 @@ declare module '@strapi/strapi' {
       'sections.contacts-section': SectionsContactsSection
       'sections.divider': SectionsDivider
       'sections.documents': SectionsDocuments
+      'sections.events': SectionsEvents
       'sections.faq-categories': SectionsFaqCategories
       'sections.faqs': SectionsFaqs
       'sections.file-list': SectionsFileList
@@ -1107,6 +1146,7 @@ declare module '@strapi/strapi' {
       'sections.pros-and-cons-section': SectionsProsAndConsSection
       'sections.regulations': SectionsRegulations
       'sections.regulations-list': SectionsRegulationsList
+      'sections.subnavigation': SectionsSubnavigation
       'sections.subpage-list': SectionsSubpageList
       'sections.text-with-image': SectionsTextWithImage
       'sections.text-with-image-overlapped': SectionsTextWithImageOverlapped

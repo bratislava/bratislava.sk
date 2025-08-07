@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_sections_events",
+  "info": {
+    "displayName": "Events"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "text": {
+      "type": "text"
+    },
+    "eventPages": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::page.page"
+    },
+    "titleLevel": {
+      "type": "enumeration",
+      "default": "h2",
+      "enum": [
+        "h2",
+        "h3"
+      ]
+    }
+  },
+  "config": {}
+}

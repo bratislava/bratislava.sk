@@ -88,15 +88,7 @@
         }
       },
       "required": true,
-      "enum": [
-        "red",
-        "blue",
-        "green",
-        "yellow",
-        "purple",
-        "brown",
-        "starz"
-      ]
+      "enum": ["red", "blue", "green", "yellow", "purple", "brown", "starz"]
     },
     "pageBackgroundImage": {
       "type": "media",
@@ -107,12 +99,7 @@
       },
       "multiple": false,
       "required": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
+      "allowedTypes": ["images", "files", "videos", "audios"]
     },
     "headerLinks": {
       "type": "component",
@@ -138,6 +125,16 @@
       ],
       "max": 1
     },
+    "subnavigation": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "sections.subnavigation",
+      "repeatable": false
+    },
     "sections": {
       "type": "dynamiczone",
       "pluginOptions": {
@@ -156,6 +153,7 @@
         "sections.contacts-section",
         "sections.divider",
         "sections.documents",
+        "sections.events",
         "sections.faqs",
         "sections.faq-categories",
         "sections.file-list",
@@ -186,9 +184,7 @@
           "localized": true
         }
       },
-      "components": [
-        "sidebars.empty-sidebar"
-      ],
+      "components": ["sidebars.empty-sidebar"],
       "max": 1
     },
     "parentPage": {

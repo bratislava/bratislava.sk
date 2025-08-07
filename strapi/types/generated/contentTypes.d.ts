@@ -1283,6 +1283,7 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
         'sections.contacts-section',
         'sections.divider',
         'sections.documents',
+        'sections.events',
         'sections.faqs',
         'sections.faq-categories',
         'sections.file-list',
@@ -1331,6 +1332,12 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
         number
       >
     slug: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true
+        }
+      }>
+    subnavigation: Schema.Attribute.Component<'sections.subnavigation', false> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true

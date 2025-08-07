@@ -1,3 +1,10 @@
+fragment SubnavigationSection on ComponentSectionsSubnavigation {
+  links {
+    id
+    ...CardLink
+  }
+}
+
 fragment GallerySection on ComponentSectionsGallery {
   title
   text
@@ -392,6 +399,15 @@ fragment NumbersOverviewSection on ComponentSectionsNumbersOverview {
   }
 }
 
+fragment EventsSection on ComponentSectionsEvents {
+  title
+  text
+  eventPages {
+    ...PageCardWithHeadersEntity
+  }
+  titleLevelEventsSection: titleLevel
+}
+
 fragment Sections on PageSectionsDynamicZone {
   __typename
 
@@ -513,6 +529,10 @@ fragment Sections on PageSectionsDynamicZone {
 
   ... on ComponentSectionsNumbersOverview {
     ...NumbersOverviewSection
+  }
+
+  ... on ComponentSectionsEvents {
+    ...EventsSection
   }
 }
 
