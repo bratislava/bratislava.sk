@@ -408,6 +408,15 @@ fragment EventsSection on ComponentSectionsEvents {
   titleLevelEventsSection: titleLevel
 }
 
+fragment FacilitiesSection on ComponentSectionsFacilities {
+  title
+  text
+  facilityPages {
+    ...PageCardEntity
+  }
+  titleLevelFacilitiesSection: titleLevel
+}
+
 fragment Sections on PageSectionsDynamicZone {
   __typename
 
@@ -533,6 +542,10 @@ fragment Sections on PageSectionsDynamicZone {
 
   ... on ComponentSectionsEvents {
     ...EventsSection
+  }
+
+  ... on ComponentSectionsFacilities {
+    ...FacilitiesSection
   }
 }
 
