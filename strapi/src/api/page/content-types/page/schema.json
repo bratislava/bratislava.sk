@@ -154,6 +154,7 @@
         "sections.divider",
         "sections.documents",
         "sections.events",
+        "sections.facilities",
         "sections.faqs",
         "sections.faq-categories",
         "sections.file-list",

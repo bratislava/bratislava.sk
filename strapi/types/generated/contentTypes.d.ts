@@ -1284,6 +1284,7 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
         'sections.divider',
         'sections.documents',
         'sections.events',
+        'sections.facilities',
         'sections.faqs',
         'sections.faq-categories',
         'sections.file-list',
