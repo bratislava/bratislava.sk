@@ -1700,6 +1700,46 @@ export type ComponentSectionsEventsInput = {
   titleLevel?: InputMaybe<Enum_Componentsectionsevents_Titlelevel>
 }
 
+export type ComponentSectionsFacilities = {
+  __typename?: 'ComponentSectionsFacilities'
+  facilityPages: Array<Maybe<Page>>
+  facilityPages_connection?: Maybe<PageRelationResponseCollection>
+  id: Scalars['ID']['output']
+  text?: Maybe<Scalars['String']['output']>
+  title?: Maybe<Scalars['String']['output']>
+  titleLevel?: Maybe<Enum_Componentsectionsfacilities_Titlelevel>
+}
+
+export type ComponentSectionsFacilitiesFacilityPagesArgs = {
+  filters?: InputMaybe<PageFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type ComponentSectionsFacilitiesFacilityPages_ConnectionArgs = {
+  filters?: InputMaybe<PageFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type ComponentSectionsFacilitiesFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentSectionsFacilitiesFiltersInput>>>
+  facilityPages?: InputMaybe<PageFiltersInput>
+  not?: InputMaybe<ComponentSectionsFacilitiesFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<ComponentSectionsFacilitiesFiltersInput>>>
+  text?: InputMaybe<StringFilterInput>
+  title?: InputMaybe<StringFilterInput>
+  titleLevel?: InputMaybe<StringFilterInput>
+}
+
+export type ComponentSectionsFacilitiesInput = {
+  facilityPages?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
+  id?: InputMaybe<Scalars['ID']['input']>
+  text?: InputMaybe<Scalars['String']['input']>
+  title?: InputMaybe<Scalars['String']['input']>
+  titleLevel?: InputMaybe<Enum_Componentsectionsfacilities_Titlelevel>
+}
+
 export type ComponentSectionsFaqCategories = {
   __typename?: 'ComponentSectionsFaqCategories'
   faqCategories: Array<Maybe<FaqCategory>>
@@ -2895,6 +2935,11 @@ export enum Enum_Componentsectionsevents_Titlelevel {
   H3 = 'h3',
 }
 
+export enum Enum_Componentsectionsfacilities_Titlelevel {
+  H2 = 'h2',
+  H3 = 'h3',
+}
+
 export enum Enum_Componentsectionsfaqs_Titlelevel {
   H2 = 'h2',
   H3 = 'h3',
@@ -3410,6 +3455,7 @@ export type GenericMorph =
   | ComponentSectionsDivider
   | ComponentSectionsDocuments
   | ComponentSectionsEvents
+  | ComponentSectionsFacilities
   | ComponentSectionsFaqCategories
   | ComponentSectionsFaqs
   | ComponentSectionsFileList
@@ -4762,6 +4808,7 @@ export type PageSectionsDynamicZone =
   | ComponentSectionsDivider
   | ComponentSectionsDocuments
   | ComponentSectionsEvents
+  | ComponentSectionsFacilities
   | ComponentSectionsFaqCategories
   | ComponentSectionsFaqs
   | ComponentSectionsFileList
@@ -9012,6 +9059,24 @@ export type PageEntityFragment = {
         } | null>
       }
     | {
+        __typename: 'ComponentSectionsFacilities'
+        title?: string | null
+        text?: string | null
+        titleLevelFacilitiesSection?: Enum_Componentsectionsfacilities_Titlelevel | null
+        facilityPages: Array<{
+          __typename?: 'Page'
+          documentId: string
+          slug?: string | null
+          title: string
+          locale?: string | null
+          pageBackgroundImage?: {
+            __typename?: 'UploadFile'
+            documentId: string
+            url: string
+          } | null
+        } | null>
+      }
+    | {
         __typename: 'ComponentSectionsFaqCategories'
         id: string
         title?: string | null
@@ -9859,6 +9924,24 @@ export type PageBySlugQuery = {
               | { __typename: 'Error' }
               | null
             > | null
+            pageBackgroundImage?: {
+              __typename?: 'UploadFile'
+              documentId: string
+              url: string
+            } | null
+          } | null>
+        }
+      | {
+          __typename: 'ComponentSectionsFacilities'
+          title?: string | null
+          text?: string | null
+          titleLevelFacilitiesSection?: Enum_Componentsectionsfacilities_Titlelevel | null
+          facilityPages: Array<{
+            __typename?: 'Page'
+            documentId: string
+            slug?: string | null
+            title: string
+            locale?: string | null
             pageBackgroundImage?: {
               __typename?: 'UploadFile'
               documentId: string
@@ -10740,6 +10823,24 @@ export type Dev_AllPagesQuery = {
               | { __typename: 'Error' }
               | null
             > | null
+            pageBackgroundImage?: {
+              __typename?: 'UploadFile'
+              documentId: string
+              url: string
+            } | null
+          } | null>
+        }
+      | {
+          __typename: 'ComponentSectionsFacilities'
+          title?: string | null
+          text?: string | null
+          titleLevelFacilitiesSection?: Enum_Componentsectionsfacilities_Titlelevel | null
+          facilityPages: Array<{
+            __typename?: 'Page'
+            documentId: string
+            slug?: string | null
+            title: string
+            locale?: string | null
             pageBackgroundImage?: {
               __typename?: 'UploadFile'
               documentId: string
@@ -12655,6 +12756,21 @@ export type EventsSectionFragment = {
   } | null>
 }
 
+export type FacilitiesSectionFragment = {
+  __typename?: 'ComponentSectionsFacilities'
+  title?: string | null
+  text?: string | null
+  titleLevelFacilitiesSection?: Enum_Componentsectionsfacilities_Titlelevel | null
+  facilityPages: Array<{
+    __typename?: 'Page'
+    documentId: string
+    slug?: string | null
+    title: string
+    locale?: string | null
+    pageBackgroundImage?: { __typename?: 'UploadFile'; documentId: string; url: string } | null
+  } | null>
+}
+
 type Sections_ComponentSectionsAccordion_Fragment = {
   __typename: 'ComponentSectionsAccordion'
   title?: string | null
@@ -12966,6 +13082,21 @@ type Sections_ComponentSectionsEvents_Fragment = {
       | { __typename: 'Error' }
       | null
     > | null
+    pageBackgroundImage?: { __typename?: 'UploadFile'; documentId: string; url: string } | null
+  } | null>
+}
+
+type Sections_ComponentSectionsFacilities_Fragment = {
+  __typename: 'ComponentSectionsFacilities'
+  title?: string | null
+  text?: string | null
+  titleLevelFacilitiesSection?: Enum_Componentsectionsfacilities_Titlelevel | null
+  facilityPages: Array<{
+    __typename?: 'Page'
+    documentId: string
+    slug?: string | null
+    title: string
+    locale?: string | null
     pageBackgroundImage?: { __typename?: 'UploadFile'; documentId: string; url: string } | null
   } | null>
 }
@@ -13412,6 +13543,7 @@ export type SectionsFragment =
   | Sections_ComponentSectionsDivider_Fragment
   | Sections_ComponentSectionsDocuments_Fragment
   | Sections_ComponentSectionsEvents_Fragment
+  | Sections_ComponentSectionsFacilities_Fragment
   | Sections_ComponentSectionsFaqCategories_Fragment
   | Sections_ComponentSectionsFaqs_Fragment
   | Sections_ComponentSectionsFileList_Fragment
@@ -14701,6 +14833,17 @@ export const EventsSectionFragmentDoc = gql`
   }
   ${PageCardWithHeadersEntityFragmentDoc}
 `
+export const FacilitiesSectionFragmentDoc = gql`
+  fragment FacilitiesSection on ComponentSectionsFacilities {
+    title
+    text
+    facilityPages {
+      ...PageCardEntity
+    }
+    titleLevelFacilitiesSection: titleLevel
+  }
+  ${PageCardEntityFragmentDoc}
+`
 export const SectionsFragmentDoc = gql`
   fragment Sections on PageSectionsDynamicZone {
     __typename
@@ -14794,6 +14937,9 @@ export const SectionsFragmentDoc = gql`
     ... on ComponentSectionsEvents {
       ...EventsSection
     }
+    ... on ComponentSectionsFacilities {
+      ...FacilitiesSection
+    }
   }
   ${DividerSectionFragmentDoc}
   ${TextWithImageSectionFragmentDoc}
@@ -14825,6 +14971,7 @@ export const SectionsFragmentDoc = gql`
   ${DocumentsSectionFragmentDoc}
   ${NumbersOverviewSectionFragmentDoc}
   ${EventsSectionFragmentDoc}
+  ${FacilitiesSectionFragmentDoc}
 `
 export const SidebarsFragmentDoc = gql`
   fragment Sidebars on PageSidebarDynamicZone {

@@ -658,6 +658,19 @@ export interface SectionsEvents extends Struct.ComponentSchema {
   }
 }
 
+export interface SectionsFacilities extends Struct.ComponentSchema {
+  collectionName: 'components_sections_facilities'
+  info: {
+    displayName: 'Facilities'
+  }
+  attributes: {
+    facilityPages: Schema.Attribute.Relation<'oneToMany', 'api::page.page'>
+    text: Schema.Attribute.String
+    title: Schema.Attribute.String
+    titleLevel: Schema.Attribute.Enumeration<['h2', 'h3']> & Schema.Attribute.DefaultTo<'h2'>
+  }
+}
+
 export interface SectionsFaqCategories extends Struct.ComponentSchema {
   collectionName: 'components_sections_faq_categories'
   info: {
@@ -1125,6 +1138,7 @@ declare module '@strapi/strapi' {
       'sections.divider': SectionsDivider
       'sections.documents': SectionsDocuments
       'sections.events': SectionsEvents
+      'sections.facilities': SectionsFacilities
       'sections.faq-categories': SectionsFaqCategories
       'sections.faqs': SectionsFaqs
       'sections.file-list': SectionsFileList
