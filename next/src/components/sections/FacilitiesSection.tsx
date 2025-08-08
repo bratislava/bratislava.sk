@@ -36,9 +36,8 @@ const FacilitiesSection = ({ section }: FacilitiesSectionProps) => {
         >
           {filteredFacilityPages.map((facilityPage) => {
             return (
-              <li key={facilityPage?.documentId} className="h-full">
+              <li key={facilityPage.documentId} className="*:h-full">
                 <FacilityCard
-                  title={facilityPage.title}
                   cardTitleLevel={getCardTitleLevel(titleLevel)}
                   image={facilityPage.pageBackgroundImage}
                   linkProps={getLinkProps({ page: facilityPage })}

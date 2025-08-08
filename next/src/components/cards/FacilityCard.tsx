@@ -11,7 +11,6 @@ import cn from '@/src/utils/cn'
 import { CommonLinkProps } from '@/src/utils/getLinkProps'
 
 export type Props = {
-  title: string
   linkProps: CommonLinkProps
   cardTitleLevel?: CardTitleLevel
   image?: StrapiUploadImage | null | undefined
@@ -23,7 +22,6 @@ export type Props = {
  */
 
 const FacilityCard = ({
-  title,
   cardTitleLevel = 'h3',
   image,
   imageSizes,
@@ -33,10 +31,12 @@ const FacilityCard = ({
 }: Props) => {
   const titleId = useId()
 
+  const { children, ...restLinkProps } = linkProps
+
   return (
     <CardBase
       variant="border"
-      className={cn('h-full rounded-lg bg-background-passive-base', className)}
+      className={cn('rounded-lg bg-background-passive-base', className)}
       {...rest}
     >
       {/* TODO create CardImage component, see OLO */}
@@ -48,14 +48,14 @@ const FacilityCard = ({
         )}
       </div>
       <div className="flex h-full items-center justify-between gap-6 p-4 lg:p-6">
-        <MLink href={linkProps.href} target={linkProps.target} stretched>
+        <MLink {...restLinkProps} stretched>
           <Typography
             id={titleId}
             as={cardTitleLevel}
             variant="h5"
-            className={cn({ 'group-hover:underline': linkProps })}
+            className="group-hover:underline"
           >
-            {title}
+            {children}
           </Typography>
         </MLink>
         <ArrowRightIcon className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-background-passive-primary p-2" />
