@@ -1,7 +1,7 @@
 import {
   ArticleCardEntityFragment,
   HomepageEntityFragment,
-  LatestInbaReleaseQuery,
+  InbaReleaseHomepageInbaCardEntityFragment,
 } from '@/src/services/graphql'
 import { client } from '@/src/services/graphql/gql'
 import { isDefined } from '@/src/utils/isDefined'
@@ -9,7 +9,7 @@ import { isDefined } from '@/src/utils/isDefined'
 export type HomepageContext = {
   homepage: HomepageEntityFragment | null | undefined
   latestArticles: ArticleCardEntityFragment[]
-  latestInbaRelease: LatestInbaReleaseQuery['inbaReleases'][number] | null | undefined
+  latestInbaRelease: InbaReleaseHomepageInbaCardEntityFragment | null | undefined
 }
 
 export const homepageContextFetcher = async (locale: string): Promise<HomepageContext> => {

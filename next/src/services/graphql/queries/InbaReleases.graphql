@@ -1,3 +1,45 @@
+fragment InbaReleaseSlugEntity on InbaRelease {
+  documentId
+  title
+  slug
+}
+
+fragment InbaReleaseCardEntity on InbaRelease {
+  ...InbaReleaseSlugEntity
+  perex
+  releaseDate
+  coverImage {
+    ...UploadImageEntity
+  }
+}
+
+fragment InbaReleaseEntity on InbaRelease {
+  ...InbaReleaseCardEntity
+  rearImage {
+    ...UploadImageEntity
+  }
+  files {
+    id
+    title
+    media {
+      ...UploadFileEntity
+    }
+  }
+  inbaArticles {
+    ...InbaArticleCardEntity
+  }
+}
+
+fragment InbaReleaseHomepageInbaCardEntity on InbaRelease {
+  documentId
+  coverImage {
+    ...UploadImageEntity
+  }
+  rearImage {
+    ...UploadImageEntity
+  }
+}
+
 query InbaReleaseBySlug($slug: String!) {
   inbaReleases(filters: { slug: { eq: $slug } }) {
     ...InbaReleaseEntity
@@ -13,53 +55,12 @@ query InbaReleasesStaticPaths {
 
 query InbaReleasesRssFeed {
   inbaReleases(sort: "releaseDate:desc", pagination: { limit: -1 }) {
-    documentId
-    title
-    slug
-    perex
-    publishedAt
-    coverImage {
-      url
-    }
+    ...InbaReleaseCardEntity
   }
 }
 
 query LatestInbaRelease {
   inbaReleases(sort: "releaseDate:desc", pagination: { limit: 1 }) {
-    documentId
-    title
-    slug
-    perex
-    releaseDate
-    coverImage {
-      ...UploadImageEntity
-    }
-    rearImage {
-      ...UploadImageEntity
-    }
-  }
-}
-
-fragment InbaReleaseEntity on InbaRelease {
-  documentId
-  title
-  slug
-  perex
-  releaseDate
-  coverImage {
-    ...UploadImageEntity
-  }
-  rearImage {
-    ...UploadImageEntity
-  }
-  files {
-    id
-    title
-    media {
-      ...UploadFileEntity
-    }
-  }
-  inbaArticles {
-    ...InbaArticleCardEntity
+   ...InbaReleaseHomepageInbaCardEntity
   }
 }
