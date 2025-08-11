@@ -24,7 +24,7 @@ const SubnavigationSection = ({ section }: Props) => {
   const filteredLinks = links?.filter(isDefined) ?? []
 
   return (
-    <SectionContainer className="py-6 lg:py-24">
+    <SectionContainer className="py-6 lg:pt-16">
       <div className="flex flex-col gap-6 lg:gap-16">
         <SectionHeader title={t('SubnavigationSection.title')} />
 

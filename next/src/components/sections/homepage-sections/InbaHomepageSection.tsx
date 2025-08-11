@@ -9,10 +9,7 @@ import { getLinkProps } from '@/src/utils/getLinkProps'
 const InbaHomepageSection = () => {
   const { t } = useTranslation()
 
-  const { homepage } = useHomepageContext()
-
-  const frontImageUrl = homepage?.inbaFrontImage.url
-  const rearImageUrl = homepage?.inbaRearImage.url
+  const { homepage, latestInbaRelease } = useHomepageContext()
 
   return (
     <SectionContainer className="mb-8">
@@ -21,8 +18,8 @@ const InbaHomepageSection = () => {
         title={homepage?.inba?.title}
         content={homepage?.inba?.content}
         linkProps={getLinkProps({ label: t('readMore'), url: homepage?.inbaUrl })}
-        frontImageUrl={frontImageUrl}
-        rearImageUrl={rearImageUrl}
+        frontImageUrl={latestInbaRelease?.coverImage?.url}
+        rearImageUrl={latestInbaRelease?.rearImage?.url}
       />
       <div aria-hidden className="hidden md:block md:h-20" />
     </SectionContainer>

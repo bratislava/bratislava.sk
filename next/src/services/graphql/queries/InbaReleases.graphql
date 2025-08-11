@@ -24,6 +24,22 @@ query InbaReleasesRssFeed {
   }
 }
 
+query LatestInbaRelease {
+  inbaReleases(sort: "releaseDate:desc", pagination: { limit: 1 }) {
+    documentId
+    title
+    slug
+    perex
+    releaseDate
+    coverImage {
+      ...UploadImageEntity
+    }
+    rearImage {
+      ...UploadImageEntity
+    }
+  }
+}
+
 fragment InbaReleaseEntity on InbaRelease {
   documentId
   title

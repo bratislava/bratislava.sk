@@ -45,7 +45,7 @@ const InBaCard = ({
 
       {frontImageUrl && (
         <div className="absolute top-0 w-32 translate-x-[-30%] translate-y-[-57%] rotate-[-9deg] overflow-hidden rounded-lg md:top-auto md:right-0 md:w-52 md:translate-x-[-45%] md:translate-y-0">
-          <Image src={frontImageUrl} alt="inba" width="211" height="329" />
+          <Image src={frontImageUrl} alt="" width="211" height="329" />
         </div>
       )}
 

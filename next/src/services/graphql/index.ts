@@ -8484,6 +8484,40 @@ export type InbaReleasesRssFeedQuery = {
   } | null>
 }
 
+export type LatestInbaReleaseQueryVariables = Exact<{ [key: string]: never }>
+
+export type LatestInbaReleaseQuery = {
+  __typename?: 'Query'
+  inbaReleases: Array<{
+    __typename?: 'InbaRelease'
+    documentId: string
+    title: string
+    slug: string
+    perex?: string | null
+    releaseDate: any
+    coverImage?: {
+      __typename?: 'UploadFile'
+      documentId: string
+      url: string
+      width?: number | null
+      height?: number | null
+      caption?: string | null
+      alternativeText?: string | null
+      name: string
+    } | null
+    rearImage?: {
+      __typename?: 'UploadFile'
+      documentId: string
+      url: string
+      width?: number | null
+      height?: number | null
+      caption?: string | null
+      alternativeText?: string | null
+      name: string
+    } | null
+  } | null>
+}
+
 export type InbaReleaseEntityFragment = {
   __typename?: 'InbaRelease'
   documentId: string
@@ -15217,6 +15251,24 @@ export const InbaReleasesRssFeedDocument = gql`
     }
   }
 `
+export const LatestInbaReleaseDocument = gql`
+  query LatestInbaRelease {
+    inbaReleases(sort: "releaseDate:desc", pagination: { limit: 1 }) {
+      documentId
+      title
+      slug
+      perex
+      releaseDate
+      coverImage {
+        ...UploadImageEntity
+      }
+      rearImage {
+        ...UploadImageEntity
+      }
+    }
+  }
+  ${UploadImageEntityFragmentDoc}
+`
 export const PageCategoriesDocument = gql`
   query PageCategories($locale: I18NLocaleCode) {
     pageCategories(pagination: { limit: -1 }, locale: $locale) {
@@ -15627,6 +15679,21 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
             ...wrappedRequestHeaders,
           }),
         'InbaReleasesRssFeed',
+        'query',
+        variables,
+      )
+    },
+    LatestInbaRelease(
+      variables?: LatestInbaReleaseQueryVariables,
+      requestHeaders?: GraphQLClientRequestHeaders,
+    ): Promise<LatestInbaReleaseQuery> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<LatestInbaReleaseQuery>(LatestInbaReleaseDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
+          }),
+        'LatestInbaRelease',
         'query',
         variables,
       )
