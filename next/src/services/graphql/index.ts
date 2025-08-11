@@ -6560,6 +6560,138 @@ export type FaqEntityFragment = {
   body?: string | null
 }
 
+export type UploadFileFragment = { __typename?: 'UploadFile'; documentId: string }
+
+export type AllFilesQueryVariables = Exact<{
+  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
+}>
+
+export type AllFilesQuery = {
+  __typename?: 'Query'
+  articles: Array<{
+    __typename?: 'Article'
+    coverMedia?: { __typename?: 'UploadFile'; documentId: string } | null
+    gallery: Array<{ __typename?: 'UploadFile'; documentId: string } | null>
+    files?: Array<{
+      __typename?: 'ComponentBlocksFile'
+      media?: { __typename?: 'UploadFile'; documentId: string } | null
+    } | null> | null
+  } | null>
+  inbaArticles: Array<{
+    __typename?: 'InbaArticle'
+    coverImage?: { __typename?: 'UploadFile'; documentId: string } | null
+  } | null>
+  inbaReleases: Array<{
+    __typename?: 'InbaRelease'
+    coverImage?: { __typename?: 'UploadFile'; documentId: string } | null
+    rearImage?: { __typename?: 'UploadFile'; documentId: string } | null
+    files?: Array<{
+      __typename?: 'ComponentBlocksFile'
+      media?: { __typename?: 'UploadFile'; documentId: string } | null
+    } | null> | null
+  } | null>
+  regulations: Array<{
+    __typename?: 'Regulation'
+    mainDocument: { __typename?: 'UploadFile'; documentId: string }
+    attachments: Array<{ __typename?: 'UploadFile'; documentId: string } | null>
+  } | null>
+  pages: Array<{
+    __typename?: 'Page'
+    pageBackgroundImage?: { __typename?: 'UploadFile'; documentId: string } | null
+    pageHeaderSections?: Array<
+      | { __typename?: 'ComponentHeaderSectionsEvent' }
+      | {
+          __typename?: 'ComponentHeaderSectionsFacility'
+          media: Array<{ __typename?: 'UploadFile'; documentId: string } | null>
+        }
+      | { __typename?: 'ComponentSectionsSubpageList' }
+      | { __typename?: 'Error' }
+      | null
+    > | null
+    sections?: Array<
+      | {
+          __typename?: 'ComponentSectionsAccordion'
+          flatText?: Array<{
+            __typename?: 'ComponentAccordionItemsFlatText'
+            fileList?: Array<{
+              __typename?: 'ComponentBlocksFileItem'
+              media: { __typename?: 'UploadFile'; documentId: string }
+            } | null> | null
+          } | null> | null
+        }
+      | { __typename?: 'ComponentSectionsArticles' }
+      | {
+          __typename?: 'ComponentSectionsBanner'
+          media: { __typename?: 'UploadFile'; documentId: string }
+        }
+      | { __typename?: 'ComponentSectionsCalculator' }
+      | { __typename?: 'ComponentSectionsColumnedText' }
+      | {
+          __typename?: 'ComponentSectionsColumns'
+          columns: Array<{
+            __typename?: 'ComponentBlocksColumnsItem'
+            image?: { __typename?: 'UploadFile'; documentId: string } | null
+          } | null>
+        }
+      | {
+          __typename?: 'ComponentSectionsComparisonSection'
+          cards: Array<{
+            __typename?: 'ComponentBlocksComparisonCard'
+            iconMedia?: { __typename?: 'UploadFile'; documentId: string } | null
+          } | null>
+        }
+      | { __typename?: 'ComponentSectionsContactsSection' }
+      | { __typename?: 'ComponentSectionsDivider' }
+      | { __typename?: 'ComponentSectionsDocuments' }
+      | { __typename?: 'ComponentSectionsEvents' }
+      | { __typename?: 'ComponentSectionsFaqCategories' }
+      | { __typename?: 'ComponentSectionsFaqs' }
+      | {
+          __typename?: 'ComponentSectionsFileList'
+          fileList?: Array<{
+            __typename?: 'ComponentBlocksFile'
+            media?: { __typename?: 'UploadFile'; documentId: string } | null
+          } | null> | null
+        }
+      | {
+          __typename?: 'ComponentSectionsGallery'
+          medias: Array<{ __typename?: 'UploadFile'; documentId: string } | null>
+        }
+      | { __typename?: 'ComponentSectionsIframe' }
+      | { __typename?: 'ComponentSectionsInbaArticlesList' }
+      | { __typename?: 'ComponentSectionsInbaReleases' }
+      | { __typename?: 'ComponentSectionsLinks' }
+      | { __typename?: 'ComponentSectionsNarrowText' }
+      | { __typename?: 'ComponentSectionsNumbersOverview' }
+      | { __typename?: 'ComponentSectionsNumericalList' }
+      | { __typename?: 'ComponentSectionsOfficialBoard' }
+      | { __typename?: 'ComponentSectionsOrganizationalStructure' }
+      | {
+          __typename?: 'ComponentSectionsPartners'
+          partners: Array<{
+            __typename?: 'ComponentBlocksPartner'
+            logo: { __typename?: 'UploadFile'; documentId: string }
+          } | null>
+        }
+      | { __typename?: 'ComponentSectionsProsAndConsSection' }
+      | { __typename?: 'ComponentSectionsRegulations' }
+      | { __typename?: 'ComponentSectionsRegulationsList' }
+      | {
+          __typename?: 'ComponentSectionsTextWithImage'
+          imageSrc: { __typename?: 'UploadFile'; documentId: string }
+        }
+      | {
+          __typename?: 'ComponentSectionsTextWithImageOverlapped'
+          image: { __typename?: 'UploadFile'; documentId: string }
+        }
+      | { __typename?: 'ComponentSectionsTootootEvents' }
+      | { __typename?: 'ComponentSectionsVideos' }
+      | { __typename?: 'Error' }
+      | null
+    > | null
+  } | null>
+}
+
 export type UploadImageSrcEntityFragment = {
   __typename?: 'UploadFile'
   documentId: string
@@ -11193,6 +11325,17 @@ export type Dev_AllPagesQuery = {
   } | null>
 }
 
+export type UpdatePageMutationVariables = Exact<{
+  documentId: Scalars['ID']['input']
+  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
+  pageInput: PageInput
+}>
+
+export type UpdatePageMutation = {
+  __typename?: 'Mutation'
+  updatePage?: { __typename?: 'Page'; documentId: string } | null
+}
+
 export type AllRegulationsQueryVariables = Exact<{ [key: string]: never }>
 
 export type AllRegulationsQuery = {
@@ -13665,6 +13808,11 @@ export const ArticleEntityFragmentDoc = gql`
   ${FileBlockFragmentDoc}
   ${UploadImageEntityFragmentDoc}
 `
+export const UploadFileFragmentDoc = gql`
+  fragment UploadFile on UploadFile {
+    documentId
+  }
+`
 export const PageSlugEntityFragmentDoc = gql`
   fragment PageSlugEntity on Page {
     documentId
@@ -14959,6 +15107,121 @@ export const DocumentBySlugDocument = gql`
   }
   ${DocumentEntityFragmentDoc}
 `
+export const AllFilesDocument = gql`
+  query allFiles($locale: I18NLocaleCode) {
+    articles(locale: $locale, pagination: { limit: -1 }) {
+      coverMedia {
+        ...UploadFile
+      }
+      gallery(pagination: { limit: -1 }) {
+        ...UploadFile
+      }
+      files(pagination: { limit: -1 }) {
+        media {
+          ...UploadFile
+        }
+      }
+    }
+    inbaArticles(locale: $locale, pagination: { limit: -1 }) {
+      coverImage {
+        ...UploadFile
+      }
+    }
+    inbaReleases(pagination: { limit: -1 }) {
+      coverImage {
+        ...UploadFile
+      }
+      rearImage {
+        ...UploadFile
+      }
+      files(pagination: { limit: -1 }) {
+        media {
+          ...UploadFile
+        }
+      }
+    }
+    regulations(pagination: { limit: -1 }) {
+      mainDocument {
+        ...UploadFile
+      }
+      attachments(pagination: { limit: -1 }) {
+        ...UploadFile
+      }
+    }
+    pages(locale: $locale, pagination: { limit: -1 }) {
+      pageBackgroundImage {
+        ...UploadFile
+      }
+      pageHeaderSections {
+        ... on ComponentHeaderSectionsFacility {
+          media(pagination: { limit: -1 }) {
+            ...UploadFile
+          }
+        }
+      }
+      sections {
+        ... on ComponentSectionsAccordion {
+          flatText(pagination: { limit: -1 }) {
+            fileList(pagination: { limit: -1 }) {
+              media {
+                ...UploadFile
+              }
+            }
+          }
+        }
+        ... on ComponentSectionsBanner {
+          media {
+            ...UploadFile
+          }
+        }
+        ... on ComponentSectionsColumns {
+          columns(pagination: { limit: -1 }) {
+            image {
+              ...UploadFile
+            }
+          }
+        }
+        ... on ComponentSectionsComparisonSection {
+          cards(pagination: { limit: -1 }) {
+            iconMedia {
+              ...UploadFile
+            }
+          }
+        }
+        ... on ComponentSectionsFileList {
+          fileList(pagination: { limit: -1 }) {
+            media {
+              ...UploadFile
+            }
+          }
+        }
+        ... on ComponentSectionsGallery {
+          medias(pagination: { limit: -1 }) {
+            ...UploadFile
+          }
+        }
+        ... on ComponentSectionsPartners {
+          partners(pagination: { limit: -1 }) {
+            logo {
+              ...UploadFile
+            }
+          }
+        }
+        ... on ComponentSectionsTextWithImage {
+          imageSrc {
+            ...UploadFile
+          }
+        }
+        ... on ComponentSectionsTextWithImageOverlapped {
+          image {
+            ...UploadFile
+          }
+        }
+      }
+    }
+  }
+  ${UploadFileFragmentDoc}
+`
 export const GeneralDocument = gql`
   query General($locale: I18NLocaleCode!) {
     general(locale: $locale) {
@@ -15124,6 +15387,13 @@ export const Dev_AllPagesDocument = gql`
     }
   }
   ${PageEntityFragmentDoc}
+`
+export const UpdatePageDocument = gql`
+  mutation updatePage($documentId: ID!, $locale: I18NLocaleCode, $pageInput: PageInput!) {
+    updatePage(documentId: $documentId, locale: $locale, data: $pageInput) {
+      documentId
+    }
+  }
 `
 export const AllRegulationsDocument = gql`
   query allRegulations {
@@ -15330,6 +15600,21 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
             ...wrappedRequestHeaders,
           }),
         'DocumentBySlug',
+        'query',
+        variables,
+      )
+    },
+    allFiles(
+      variables?: AllFilesQueryVariables,
+      requestHeaders?: GraphQLClientRequestHeaders,
+    ): Promise<AllFilesQuery> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<AllFilesQuery>(AllFilesDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
+          }),
+        'allFiles',
         'query',
         variables,
       )
@@ -15556,6 +15841,21 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
           }),
         'Dev_AllPages',
         'query',
+        variables,
+      )
+    },
+    updatePage(
+      variables: UpdatePageMutationVariables,
+      requestHeaders?: GraphQLClientRequestHeaders,
+    ): Promise<UpdatePageMutation> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<UpdatePageMutation>(UpdatePageDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
+          }),
+        'updatePage',
+        'mutation',
         variables,
       )
     },

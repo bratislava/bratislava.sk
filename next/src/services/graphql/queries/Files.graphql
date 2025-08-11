@@ -1,0 +1,116 @@
+fragment UploadFile on UploadFile {
+  documentId
+}
+
+query allFiles($locale: I18NLocaleCode) {
+  articles(locale: $locale, pagination: { limit: -1 }) {
+    coverMedia {
+      ...UploadFile
+    }
+    gallery(pagination: { limit: -1 }) {
+      ...UploadFile
+    }
+    files(pagination: { limit: -1 }) {
+      media {
+        ...UploadFile
+      }
+    }
+  }
+  inbaArticles(locale: $locale, pagination: { limit: -1 }) {
+    coverImage {
+      ...UploadFile
+    }
+  }
+  inbaReleases(pagination: { limit: -1 }) {
+    coverImage {
+      ...UploadFile
+    }
+    rearImage {
+      ...UploadFile
+    }
+    files(pagination: { limit: -1 }) {
+      media {
+        ...UploadFile
+      }
+    }
+  }
+  regulations(pagination: { limit: -1 }) {
+    mainDocument {
+      ...UploadFile
+    }
+    attachments(pagination: { limit: -1 }) {
+      ...UploadFile
+    }
+  }
+  pages(locale: $locale, pagination: { limit: -1 }) {
+    pageBackgroundImage {
+      ...UploadFile
+    }
+    pageHeaderSections {
+      ...on ComponentHeaderSectionsFacility {
+        media(pagination: { limit: -1 }) {
+          ...UploadFile
+        }
+      }
+    }
+    sections {
+      ...on ComponentSectionsAccordion {
+        flatText(pagination: { limit: -1 }) {
+          fileList(pagination: { limit: -1 }) {
+            media {
+              ...UploadFile
+            }
+          }
+        }
+      }
+      ...on ComponentSectionsBanner {
+        media {
+          ...UploadFile
+        }
+      }
+      ...on ComponentSectionsColumns {
+        columns(pagination: { limit: -1 }) {
+          image {
+            ...UploadFile
+          }
+        }
+      }
+      ...on ComponentSectionsComparisonSection {
+        cards(pagination: { limit: -1 }) {
+          iconMedia {
+            ...UploadFile
+          }
+        }
+      }
+      ...on ComponentSectionsFileList {
+        fileList(pagination: { limit: -1 }) {
+          media {
+            ...UploadFile
+          }
+        }
+      }
+      ...on ComponentSectionsGallery {
+        medias(pagination: { limit: -1 }) {
+          ...UploadFile
+        }
+      }
+      ...on ComponentSectionsPartners {
+        partners(pagination: { limit: -1 }) {
+          logo {
+            ...UploadFile
+          }
+        }
+      }
+      ...on ComponentSectionsTextWithImage {
+        imageSrc {
+          ...UploadFile
+        }
+      }
+      ...on ComponentSectionsTextWithImageOverlapped {
+        image {
+          ...UploadFile
+        }
+      }
+    }
+  }
+}
