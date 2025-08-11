@@ -60,15 +60,15 @@ const ImageLightBox = (props: ImageLightBoxProps) => {
             {images.length > 1 && (
               <>
                 <Button
-                  variant="solid"
-                  className="pointer-events-auto rounded-full text-white"
+                  variant="solid-inverted"
+                  className="pointer-events-auto rounded-full"
                   aria-label={t('Gallery.aria.previousImage')}
                   onPress={goToPrevious}
                   icon={<ArrowLeftIcon />}
                 />
 
                 <Button
-                  variant="solid"
+                  variant="solid-inverted"
                   className="pointer-events-auto rounded-full"
                   aria-label={t('Gallery.aria.nextImage')}
                   onPress={goToNext}
