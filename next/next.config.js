@@ -32,12 +32,12 @@ const nextConfig = {
         // Graphql Proxy
         {
           source: '/graphql',
-          destination: `${process.env.STRAPI_URL}/graphql`,
+          destination: `${process.env.NEXT_PUBLIC_STRAPI_URL}/graphql`,
         },
         // Media proxy for getting media from Strapi
         {
           source: '/uploads/:file',
-          destination: `${process.env.STRAPI_URL}/uploads/:file`,
+          destination: `${process.env.NEXT_PUBLIC_STRAPI_URL}/uploads/:file`,
         },
         /**
          * Rewrites to make the translation of URL work. Based on an approached outlined here:
@@ -51,7 +51,7 @@ const nextConfig = {
     }
   },
   serverRuntimeConfig: {
-    strapiUrl: process.env.STRAPI_URL,
+    strapiUrl: process.env.NEXT_PUBLIC_STRAPI_URL,
   },
   // Always add new redirects at the end of the array with a comment why it is needed
   async redirects() {

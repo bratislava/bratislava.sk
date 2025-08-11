@@ -138,14 +138,16 @@ export async function logAllSectionsByType({
 
   console.log('\n')
 
-  console.log(`Searching through ${CONSOLE_BLUE}${process.env.STRAPI_URL}${CONSOLE_WHITE}`)
+  console.log(
+    `Searching through ${CONSOLE_BLUE}${process.env.NEXT_PUBLIC_STRAPI_URL}${CONSOLE_WHITE}`,
+  )
   console.log(
     `For all entities of type ${CONSOLE_BLUE}${entityType}${CONSOLE_WHITE}, logging all sections with __typename ${CONSOLE_BLUE}${sectionName}${CONSOLE_WHITE}`,
   )
   console.log('\n')
 
   entities.forEach((entity) => {
-    const strapiEntityLink = `${process.env.STRAPI_URL}/admin/content-manager/collection-types/api::${entityType}.${entityType}/${entity.documentId}`
+    const strapiEntityLink = `${process.env.NEXT_PUBLIC_STRAPI_URL}/admin/content-manager/collection-types/api::${entityType}.${entityType}/${entity.documentId}`
     const strapiEntityLinkProd = `https://bratislava-strapi.bratislava.sk/admin/content-manager/collection-types/api::${entityType}.${entityType}/${entity.documentId}`
     // const nextEntityLinkProd = `https://bratislava.sk/${entity.attributes?.slug}`
     const nextEntityLinkProd = `http://localhost:3000/${entity.slug}`
@@ -194,7 +196,7 @@ export async function logAllSectionsByType({
 
   console.log('\n')
   console.log(
-    `${CONSOLE_YELLOW}Finished searching through ${CONSOLE_BLUE}${process.env.STRAPI_URL}${CONSOLE_GREY} (to search other Strapi instances, change your .env.local)`,
+    `${CONSOLE_YELLOW}Finished searching through ${CONSOLE_BLUE}${process.env.NEXT_PUBLIC_STRAPI_URL}${CONSOLE_GREY} (to search other Strapi instances, change your .env.local)`,
   )
   console.log(
     `${CONSOLE_YELLOW}Found ${CONSOLE_BLUE}${foundSectionsCount}${CONSOLE_YELLOW} sections with __typename ${CONSOLE_BLUE}${sectionName}${CONSOLE_YELLOW} within \u001B[34m${foundEntities.count} ${CONSOLE_YELLOW}entities of type ${CONSOLE_BLUE}${entityType}\u001B[0m `,
