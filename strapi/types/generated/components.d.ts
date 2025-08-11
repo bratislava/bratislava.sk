@@ -195,6 +195,7 @@ export interface BlocksInBa extends Struct.ComponentSchema {
   }
   attributes: {
     content: Schema.Attribute.String
+    showMoreLink: Schema.Attribute.Component<'blocks.common-link', false>
     title: Schema.Attribute.String
   }
 }

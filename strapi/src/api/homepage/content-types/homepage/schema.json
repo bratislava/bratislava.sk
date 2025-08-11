@@ -17,133 +17,104 @@
   },
   "attributes": {
     "metaTitle": {
+      "type": "string",
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "type": "string",
       "required": true
     },
     "metaDescription": {
+      "type": "text",
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "type": "text",
       "required": true
     },
     "welcomeHeadline": {
+      "type": "text",
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "type": "text",
       "required": true
     },
     "welcomeMedia": {
       "type": "media",
-      "multiple": false,
-      "required": true,
-      "allowedTypes": ["images"],
       "pluginOptions": {
         "i18n": {
           "localized": false
         }
-      }
+      },
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
     },
     "highlights": {
       "type": "component",
-      "repeatable": false,
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "component": "sections.homepage-highlights"
+      "component": "sections.homepage-highlights",
+      "repeatable": false
     },
     "tabs": {
       "type": "component",
-      "repeatable": false,
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "component": "sections.homepage-tabs"
+      "component": "sections.homepage-tabs",
+      "repeatable": false
     },
     "mayorAndCouncil": {
       "type": "component",
-      "repeatable": false,
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "component": "sections.homepage-mayor-and-council"
+      "component": "sections.homepage-mayor-and-council",
+      "repeatable": false
     },
     "topServices": {
       "type": "component",
-      "repeatable": false,
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "component": "sections.top-services"
+      "component": "sections.top-services",
+      "repeatable": false
     },
     "inba": {
       "type": "component",
-      "repeatable": false,
-      "component": "blocks.in-ba",
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
-      }
-    },
-    "inbaFrontImage": {
-      "type": "media",
-      "multiple": false,
-      "required": true,
-      "allowedTypes": ["images"],
-      "pluginOptions": {
-        "i18n": {
-          "localized": false
-        }
-      }
-    },
-    "inbaRearImage": {
-      "type": "media",
-      "multiple": false,
-      "required": true,
-      "allowedTypes": ["images"],
-      "pluginOptions": {
-        "i18n": {
-          "localized": false
-        }
-      }
-    },
-    "inbaUrl": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": false
-        }
       },
-      "type": "string",
-      "required": false
+      "component": "blocks.in-ba",
+      "repeatable": false
     },
     "eventsSection": {
       "type": "component",
-      "repeatable": false,
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "component": "sections.tootoot-events"
+      "component": "sections.tootoot-events",
+      "repeatable": false
     }
   }
 }

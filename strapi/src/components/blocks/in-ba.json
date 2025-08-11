@@ -12,6 +12,11 @@
     },
     "content": {
       "type": "string"
+    },
+    "showMoreLink": {
+      "type": "component",
+      "component": "blocks.common-link",
+      "repeatable": false
     }
   }
 }
