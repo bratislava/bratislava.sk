@@ -40,6 +40,7 @@
     "@types/uuid": "^10.0.0",
     "axios": "1.8.4",
     "clsx": "2.1.1",
+    "dotenv": "^17.2.1",
     "focus-trap-react": "^11.0.3",
     "framer-motion": "^12.6.0",
     "graphql": "16.10.0",
@@ -137,6 +138,8 @@
     "sass": "^1.62.1",
     "sharp": "0.32.6",
     "tailwindcss": "^4.1.7",
+    "ts-node": "^10.9.2",
+    "tsconfig-paths": "^4.2.0",
     "typescript": "5.8.2"
   },
   "engines": {

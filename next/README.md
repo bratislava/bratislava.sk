@@ -39,7 +39,19 @@ graphql endpoint, simply run:
 npm run gen
 ```
 
-## Next API endpoints and server-side functions
+## Notes
+
+### How to run local scripts
+
+You can run a local script using `ts-node`. Scripts are located in `scripts/` folder. Development only scripts (those that are run from locale machine) are located in `scripts/dev/` subfolder.
+
+To run a script outside Next.js environment, we have to add `dotenv` support for reading .env files (e.g. `dotenv.config({ path: '.env.local' })`), and run scripts together with `tsconfig-paths/register` to resolve path aliases (`@/*`):
+
+```
+ts-node -r tsconfig-paths/register scripts/.../nameOfYourScript.ts
+```
+
+### Next API endpoints and server-side functions
 
 Some external services, such as Active Directory or GINIS, must be called only from server for security reasons
 or because they are available only from the internal network. For this purpose, we use Next API endpoints.
@@ -49,6 +61,6 @@ These functions are grouped usually in `server` subdirectory of a specific servi
 
 Use Next API endpoints only if needed for mentioned reasons. Otherwise, fetch data directly from client.
 
-## Resources
+### Resources
 
 There is one resource that needs to be available in https://bratislava.sk/Img/bratislava4.png, it is used in mails in signature as logo. Therefore please don't erase `public/Img/bratislava4.png`.
