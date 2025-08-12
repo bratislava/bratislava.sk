@@ -903,6 +903,7 @@ export type ComponentBlocksInBa = {
   __typename?: 'ComponentBlocksInBa'
   content?: Maybe<Scalars['String']['output']>
   id: Scalars['ID']['output']
+  showMoreLink?: Maybe<ComponentBlocksCommonLink>
   title?: Maybe<Scalars['String']['output']>
 }
 
@@ -911,12 +912,14 @@ export type ComponentBlocksInBaFiltersInput = {
   content?: InputMaybe<StringFilterInput>
   not?: InputMaybe<ComponentBlocksInBaFiltersInput>
   or?: InputMaybe<Array<InputMaybe<ComponentBlocksInBaFiltersInput>>>
+  showMoreLink?: InputMaybe<ComponentBlocksCommonLinkFiltersInput>
   title?: InputMaybe<StringFilterInput>
 }
 
 export type ComponentBlocksInBaInput = {
   content?: InputMaybe<Scalars['String']['input']>
   id?: InputMaybe<Scalars['ID']['input']>
+  showMoreLink?: InputMaybe<ComponentBlocksCommonLinkInput>
   title?: InputMaybe<Scalars['String']['input']>
 }
 
@@ -3517,9 +3520,6 @@ export type Homepage = {
   eventsSection?: Maybe<ComponentSectionsTootootEvents>
   highlights?: Maybe<ComponentSectionsHomepageHighlights>
   inba?: Maybe<ComponentBlocksInBa>
-  inbaFrontImage: UploadFile
-  inbaRearImage: UploadFile
-  inbaUrl?: Maybe<Scalars['String']['output']>
   locale?: Maybe<Scalars['String']['output']>
   localizations: Array<Maybe<Homepage>>
   localizations_connection?: Maybe<HomepageRelationResponseCollection>
@@ -3557,7 +3557,6 @@ export type HomepageFiltersInput = {
   eventsSection?: InputMaybe<ComponentSectionsTootootEventsFiltersInput>
   highlights?: InputMaybe<ComponentSectionsHomepageHighlightsFiltersInput>
   inba?: InputMaybe<ComponentBlocksInBaFiltersInput>
-  inbaUrl?: InputMaybe<StringFilterInput>
   locale?: InputMaybe<StringFilterInput>
   localizations?: InputMaybe<HomepageFiltersInput>
   mayorAndCouncil?: InputMaybe<ComponentSectionsHomepageMayorAndCouncilFiltersInput>
@@ -3576,9 +3575,6 @@ export type HomepageInput = {
   eventsSection?: InputMaybe<ComponentSectionsTootootEventsInput>
   highlights?: InputMaybe<ComponentSectionsHomepageHighlightsInput>
   inba?: InputMaybe<ComponentBlocksInBaInput>
-  inbaFrontImage?: InputMaybe<Scalars['ID']['input']>
-  inbaRearImage?: InputMaybe<Scalars['ID']['input']>
-  inbaUrl?: InputMaybe<Scalars['String']['input']>
   mayorAndCouncil?: InputMaybe<ComponentSectionsHomepageMayorAndCouncilInput>
   metaDescription?: InputMaybe<Scalars['String']['input']>
   metaTitle?: InputMaybe<Scalars['String']['input']>
@@ -7528,7 +7524,6 @@ export type HomepageEntityFragment = {
   metaTitle: string
   metaDescription: string
   welcomeHeadline: string
-  inbaUrl?: string | null
   welcomeMedia: { __typename?: 'UploadFile'; documentId: string; url: string }
   highlights?: {
     __typename?: 'ComponentSectionsHomepageHighlights'
@@ -7785,9 +7780,27 @@ export type HomepageEntityFragment = {
     __typename?: 'ComponentBlocksInBa'
     title?: string | null
     content?: string | null
+    showMoreLink?: {
+      __typename?: 'ComponentBlocksCommonLink'
+      label?: string | null
+      url?: string | null
+      analyticsId?: string | null
+      page?: {
+        __typename?: 'Page'
+        documentId: string
+        slug?: string | null
+        title: string
+        locale?: string | null
+      } | null
+      article?: {
+        __typename: 'Article'
+        documentId: string
+        slug: string
+        title: string
+        locale?: string | null
+      } | null
+    } | null
   } | null
-  inbaFrontImage: { __typename?: 'UploadFile'; documentId: string; url: string }
-  inbaRearImage: { __typename?: 'UploadFile'; documentId: string; url: string }
 }
 
 export type HomepageQueryVariables = Exact<{
@@ -7804,7 +7817,6 @@ export type HomepageQuery = {
     metaTitle: string
     metaDescription: string
     welcomeHeadline: string
-    inbaUrl?: string | null
     welcomeMedia: { __typename?: 'UploadFile'; documentId: string; url: string }
     highlights?: {
       __typename?: 'ComponentSectionsHomepageHighlights'
@@ -8061,9 +8073,27 @@ export type HomepageQuery = {
       __typename?: 'ComponentBlocksInBa'
       title?: string | null
       content?: string | null
+      showMoreLink?: {
+        __typename?: 'ComponentBlocksCommonLink'
+        label?: string | null
+        url?: string | null
+        analyticsId?: string | null
+        page?: {
+          __typename?: 'Page'
+          documentId: string
+          slug?: string | null
+          title: string
+          locale?: string | null
+        } | null
+        article?: {
+          __typename: 'Article'
+          documentId: string
+          slug: string
+          title: string
+          locale?: string | null
+        } | null
+      } | null
     } | null
-    inbaFrontImage: { __typename?: 'UploadFile'; documentId: string; url: string }
-    inbaRearImage: { __typename?: 'UploadFile'; documentId: string; url: string }
   } | null
 }
 
@@ -8292,6 +8322,26 @@ export type HomepageInbaFragment = {
   __typename?: 'ComponentBlocksInBa'
   title?: string | null
   content?: string | null
+  showMoreLink?: {
+    __typename?: 'ComponentBlocksCommonLink'
+    label?: string | null
+    url?: string | null
+    analyticsId?: string | null
+    page?: {
+      __typename?: 'Page'
+      documentId: string
+      slug?: string | null
+      title: string
+      locale?: string | null
+    } | null
+    article?: {
+      __typename: 'Article'
+      documentId: string
+      slug: string
+      title: string
+      locale?: string | null
+    } | null
+  } | null
 }
 
 export type InbaArticleSlugEntityFragment = {
@@ -8400,6 +8450,112 @@ export type InbaTagsQuery = {
   inbaTags: Array<{ __typename?: 'InbaTag'; documentId: string; title: string } | null>
 }
 
+export type InbaReleaseSlugEntityFragment = {
+  __typename?: 'InbaRelease'
+  documentId: string
+  title: string
+  slug: string
+}
+
+export type InbaReleaseCardEntityFragment = {
+  __typename?: 'InbaRelease'
+  perex?: string | null
+  releaseDate: any
+  documentId: string
+  title: string
+  slug: string
+  coverImage?: {
+    __typename?: 'UploadFile'
+    documentId: string
+    url: string
+    width?: number | null
+    height?: number | null
+    caption?: string | null
+    alternativeText?: string | null
+    name: string
+  } | null
+}
+
+export type InbaReleaseEntityFragment = {
+  __typename?: 'InbaRelease'
+  perex?: string | null
+  releaseDate: any
+  documentId: string
+  title: string
+  slug: string
+  rearImage?: {
+    __typename?: 'UploadFile'
+    documentId: string
+    url: string
+    width?: number | null
+    height?: number | null
+    caption?: string | null
+    alternativeText?: string | null
+    name: string
+  } | null
+  files?: Array<{
+    __typename?: 'ComponentBlocksFile'
+    id: string
+    title?: string | null
+    media?: {
+      __typename?: 'UploadFile'
+      documentId: string
+      url: string
+      name: string
+      ext?: string | null
+      size: number
+      createdAt?: any | null
+      updatedAt?: any | null
+    } | null
+  } | null> | null
+  inbaArticles: Array<{
+    __typename?: 'InbaArticle'
+    perex?: string | null
+    publishedAt?: any | null
+    documentId: string
+    slug: string
+    title: string
+    locale?: string | null
+    coverImage?: { __typename?: 'UploadFile'; documentId: string; url: string } | null
+    inbaTag?: { __typename?: 'InbaTag'; documentId: string; title: string } | null
+  } | null>
+  coverImage?: {
+    __typename?: 'UploadFile'
+    documentId: string
+    url: string
+    width?: number | null
+    height?: number | null
+    caption?: string | null
+    alternativeText?: string | null
+    name: string
+  } | null
+}
+
+export type InbaReleaseHomepageInbaCardEntityFragment = {
+  __typename?: 'InbaRelease'
+  documentId: string
+  coverImage?: {
+    __typename?: 'UploadFile'
+    documentId: string
+    url: string
+    width?: number | null
+    height?: number | null
+    caption?: string | null
+    alternativeText?: string | null
+    name: string
+  } | null
+  rearImage?: {
+    __typename?: 'UploadFile'
+    documentId: string
+    url: string
+    width?: number | null
+    height?: number | null
+    caption?: string | null
+    alternativeText?: string | null
+    name: string
+  } | null
+}
+
 export type InbaReleaseBySlugQueryVariables = Exact<{
   slug: Scalars['String']['input']
 }>
@@ -8408,21 +8564,11 @@ export type InbaReleaseBySlugQuery = {
   __typename?: 'Query'
   inbaReleases: Array<{
     __typename?: 'InbaRelease'
+    perex?: string | null
+    releaseDate: any
     documentId: string
     title: string
     slug: string
-    perex?: string | null
-    releaseDate: any
-    coverImage?: {
-      __typename?: 'UploadFile'
-      documentId: string
-      url: string
-      width?: number | null
-      height?: number | null
-      caption?: string | null
-      alternativeText?: string | null
-      name: string
-    } | null
     rearImage?: {
       __typename?: 'UploadFile'
       documentId: string
@@ -8459,6 +8605,16 @@ export type InbaReleaseBySlugQuery = {
       coverImage?: { __typename?: 'UploadFile'; documentId: string; url: string } | null
       inbaTag?: { __typename?: 'InbaTag'; documentId: string; title: string } | null
     } | null>
+    coverImage?: {
+      __typename?: 'UploadFile'
+      documentId: string
+      url: string
+      width?: number | null
+      height?: number | null
+      caption?: string | null
+      alternativeText?: string | null
+      name: string
+    } | null
   } | null>
 }
 
@@ -8475,67 +8631,51 @@ export type InbaReleasesRssFeedQuery = {
   __typename?: 'Query'
   inbaReleases: Array<{
     __typename?: 'InbaRelease'
+    perex?: string | null
+    releaseDate: any
     documentId: string
     title: string
     slug: string
-    perex?: string | null
-    publishedAt?: any | null
-    coverImage?: { __typename?: 'UploadFile'; url: string } | null
-  } | null>
-}
-
-export type InbaReleaseEntityFragment = {
-  __typename?: 'InbaRelease'
-  documentId: string
-  title: string
-  slug: string
-  perex?: string | null
-  releaseDate: any
-  coverImage?: {
-    __typename?: 'UploadFile'
-    documentId: string
-    url: string
-    width?: number | null
-    height?: number | null
-    caption?: string | null
-    alternativeText?: string | null
-    name: string
-  } | null
-  rearImage?: {
-    __typename?: 'UploadFile'
-    documentId: string
-    url: string
-    width?: number | null
-    height?: number | null
-    caption?: string | null
-    alternativeText?: string | null
-    name: string
-  } | null
-  files?: Array<{
-    __typename?: 'ComponentBlocksFile'
-    id: string
-    title?: string | null
-    media?: {
+    coverImage?: {
       __typename?: 'UploadFile'
       documentId: string
       url: string
+      width?: number | null
+      height?: number | null
+      caption?: string | null
+      alternativeText?: string | null
       name: string
-      ext?: string | null
-      size: number
-      createdAt?: any | null
-      updatedAt?: any | null
     } | null
-  } | null> | null
-  inbaArticles: Array<{
-    __typename?: 'InbaArticle'
-    perex?: string | null
-    publishedAt?: any | null
+  } | null>
+}
+
+export type LatestInbaReleaseQueryVariables = Exact<{ [key: string]: never }>
+
+export type LatestInbaReleaseQuery = {
+  __typename?: 'Query'
+  inbaReleases: Array<{
+    __typename?: 'InbaRelease'
     documentId: string
-    slug: string
-    title: string
-    locale?: string | null
-    coverImage?: { __typename?: 'UploadFile'; documentId: string; url: string } | null
-    inbaTag?: { __typename?: 'InbaTag'; documentId: string; title: string } | null
+    coverImage?: {
+      __typename?: 'UploadFile'
+      documentId: string
+      url: string
+      width?: number | null
+      height?: number | null
+      caption?: string | null
+      alternativeText?: string | null
+      name: string
+    } | null
+    rearImage?: {
+      __typename?: 'UploadFile'
+      documentId: string
+      url: string
+      width?: number | null
+      height?: number | null
+      caption?: string | null
+      alternativeText?: string | null
+      name: string
+    } | null
   } | null>
 }
 
@@ -14046,7 +14186,11 @@ export const HomepageInbaFragmentDoc = gql`
   fragment HomepageInba on ComponentBlocksInBa {
     title
     content
+    showMoreLink {
+      ...CommonLink
+    }
   }
+  ${CommonLinkFragmentDoc}
 `
 export const HomepageEntityFragmentDoc = gql`
   fragment HomepageEntity on Homepage {
@@ -14084,13 +14228,6 @@ export const HomepageEntityFragmentDoc = gql`
     inba {
       ...HomepageInba
     }
-    inbaFrontImage {
-      ...UploadImageSrcEntity
-    }
-    inbaRearImage {
-      ...UploadImageSrcEntity
-    }
-    inbaUrl
   }
   ${UploadImageSrcEntityFragmentDoc}
   ${HomepageHighlightsItemFragmentDoc}
@@ -14142,16 +14279,28 @@ export const InbaArticleEntityFragmentDoc = gql`
   }
   ${InbaArticleCardEntityFragmentDoc}
 `
-export const InbaReleaseEntityFragmentDoc = gql`
-  fragment InbaReleaseEntity on InbaRelease {
+export const InbaReleaseSlugEntityFragmentDoc = gql`
+  fragment InbaReleaseSlugEntity on InbaRelease {
     documentId
     title
     slug
+  }
+`
+export const InbaReleaseCardEntityFragmentDoc = gql`
+  fragment InbaReleaseCardEntity on InbaRelease {
+    ...InbaReleaseSlugEntity
     perex
     releaseDate
     coverImage {
       ...UploadImageEntity
     }
+  }
+  ${InbaReleaseSlugEntityFragmentDoc}
+  ${UploadImageEntityFragmentDoc}
+`
+export const InbaReleaseEntityFragmentDoc = gql`
+  fragment InbaReleaseEntity on InbaRelease {
+    ...InbaReleaseCardEntity
     rearImage {
       ...UploadImageEntity
     }
@@ -14166,9 +14315,22 @@ export const InbaReleaseEntityFragmentDoc = gql`
       ...InbaArticleCardEntity
     }
   }
+  ${InbaReleaseCardEntityFragmentDoc}
   ${UploadImageEntityFragmentDoc}
   ${UploadFileEntityFragmentDoc}
   ${InbaArticleCardEntityFragmentDoc}
+`
+export const InbaReleaseHomepageInbaCardEntityFragmentDoc = gql`
+  fragment InbaReleaseHomepageInbaCardEntity on InbaRelease {
+    documentId
+    coverImage {
+      ...UploadImageEntity
+    }
+    rearImage {
+      ...UploadImageEntity
+    }
+  }
+  ${UploadImageEntityFragmentDoc}
 `
 export const PageCardEntityFragmentDoc = gql`
   fragment PageCardEntity on Page {
@@ -15206,16 +15368,18 @@ export const InbaReleasesStaticPathsDocument = gql`
 export const InbaReleasesRssFeedDocument = gql`
   query InbaReleasesRssFeed {
     inbaReleases(sort: "releaseDate:desc", pagination: { limit: -1 }) {
-      documentId
-      title
-      slug
-      perex
-      publishedAt
-      coverImage {
-        url
-      }
+      ...InbaReleaseCardEntity
     }
   }
+  ${InbaReleaseCardEntityFragmentDoc}
+`
+export const LatestInbaReleaseDocument = gql`
+  query LatestInbaRelease {
+    inbaReleases(sort: "releaseDate:desc", pagination: { limit: 1 }) {
+      ...InbaReleaseHomepageInbaCardEntity
+    }
+  }
+  ${InbaReleaseHomepageInbaCardEntityFragmentDoc}
 `
 export const PageCategoriesDocument = gql`
   query PageCategories($locale: I18NLocaleCode) {
@@ -15627,6 +15791,21 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
             ...wrappedRequestHeaders,
           }),
         'InbaReleasesRssFeed',
+        'query',
+        variables,
+      )
+    },
+    LatestInbaRelease(
+      variables?: LatestInbaReleaseQueryVariables,
+      requestHeaders?: GraphQLClientRequestHeaders,
+    ): Promise<LatestInbaReleaseQuery> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<LatestInbaReleaseQuery>(LatestInbaReleaseDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
+          }),
+        'LatestInbaRelease',
         'query',
         variables,
       )

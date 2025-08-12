@@ -33,14 +33,6 @@ fragment HomepageEntity on Homepage {
   inba {
     ...HomepageInba
   }
-  # We use direct fields instead of a section to be able to have non-localized url and front/rear images
-  inbaFrontImage {
-    ...UploadImageSrcEntity
-  }
-  inbaRearImage {
-    ...UploadImageSrcEntity
-  }
-  inbaUrl
 }
 
 query Homepage($locale: I18NLocaleCode!) {
@@ -98,4 +90,7 @@ fragment TopServicesItem on ComponentBlocksTopServicesItem {
 fragment HomepageInba on ComponentBlocksInBa {
   title
   content
+  showMoreLink {
+    ...CommonLink
+  }
 }

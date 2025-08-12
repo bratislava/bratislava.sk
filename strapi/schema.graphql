@@ -682,6 +682,7 @@ input ComponentBlocksHomepageHighlightsItemInput {
 type ComponentBlocksInBa {
   content: String
   id: ID!
+  showMoreLink: ComponentBlocksCommonLink
   title: String
 }
 
@@ -690,12 +691,14 @@ input ComponentBlocksInBaFiltersInput {
   content: StringFilterInput
   not: ComponentBlocksInBaFiltersInput
   or: [ComponentBlocksInBaFiltersInput]
+  showMoreLink: ComponentBlocksCommonLinkFiltersInput
   title: StringFilterInput
 }
 
 input ComponentBlocksInBaInput {
   content: String
   id: ID
+  showMoreLink: ComponentBlocksCommonLinkInput
   title: String
 }
 
@@ -2770,9 +2773,6 @@ type Homepage {
   eventsSection: ComponentSectionsTootootEvents
   highlights: ComponentSectionsHomepageHighlights
   inba: ComponentBlocksInBa
-  inbaFrontImage: UploadFile!
-  inbaRearImage: UploadFile!
-  inbaUrl: String
   locale: String
   localizations: [Homepage]!
   localizations_connection: HomepageRelationResponseCollection
@@ -2807,7 +2807,6 @@ input HomepageFiltersInput {
   eventsSection: ComponentSectionsTootootEventsFiltersInput
   highlights: ComponentSectionsHomepageHighlightsFiltersInput
   inba: ComponentBlocksInBaFiltersInput
-  inbaUrl: StringFilterInput
   locale: StringFilterInput
   localizations: HomepageFiltersInput
   mayorAndCouncil: ComponentSectionsHomepageMayorAndCouncilFiltersInput
@@ -2826,9 +2825,6 @@ input HomepageInput {
   eventsSection: ComponentSectionsTootootEventsInput
   highlights: ComponentSectionsHomepageHighlightsInput
   inba: ComponentBlocksInBaInput
-  inbaFrontImage: ID
-  inbaRearImage: ID
-  inbaUrl: String
   mayorAndCouncil: ComponentSectionsHomepageMayorAndCouncilInput
   metaDescription: String
   metaTitle: String
