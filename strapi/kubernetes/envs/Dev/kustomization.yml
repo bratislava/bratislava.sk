@@ -6,6 +6,7 @@ resources:
   - secrets/strapi.secret.yml
   - secrets/revalidate.secret.yml
   - secrets/mailgun.secret.yml
+  - secrets/minio-secret.yaml
 
 generatorOptions:
   disableNameSuffixHash: true
