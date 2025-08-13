@@ -20,7 +20,7 @@ type Props = {
 }
 
 /**
- * TODO Figma link
+ * Figma: https://www.figma.com/design/17wbd0MDQcMW9NbXl6UPs8/DS--Component-library?node-id=16846-35571&m=dev
  */
 
 const RelatedArticlesSection = ({ page, className }: Props) => {
