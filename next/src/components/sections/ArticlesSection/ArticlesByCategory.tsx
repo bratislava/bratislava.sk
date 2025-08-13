@@ -66,11 +66,16 @@ const ArticlesByCategory = ({ section }: Props) => {
       <SectionHeader title={title} text={text} />
       {data?.hits ? (
         <ResponsiveCarousel
-          items={data.hits.map((card) => {
-            return card ? (
-              <ArticleCard key={card.slug} {...transformArticleProps(card, { withText: false })} />
-            ) : null
-          })}
+          items={data.hits
+            .map((card) => {
+              return card ? (
+                <ArticleCard
+                  key={card.slug}
+                  {...transformArticleProps(card, { withText: false })}
+                />
+              ) : null
+            })
+            .filter(isDefined)}
           desktop={4}
         />
       ) : null}
