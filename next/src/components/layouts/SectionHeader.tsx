@@ -17,6 +17,7 @@ type SectionHeaderProps = {
   asRichtext?: boolean
   isFullWidth?: boolean
   isCentered?: boolean
+  excludeFromTableOfContents?: boolean
   showMoreLink?: CommonLinkFragment | null | undefined
   className?: string
 }
@@ -34,6 +35,7 @@ const SectionHeader = ({
   asRichtext = false,
   isFullWidth = false,
   isCentered = false,
+  excludeFromTableOfContents = false,
   showMoreLink,
   className,
 }: SectionHeaderProps) => {
@@ -43,7 +45,7 @@ const SectionHeader = ({
 
   return (
     <div
-      {...TABLE_OF_CONTENTS_HEADING_ATTRIBUTE}
+      {...(excludeFromTableOfContents ? undefined : TABLE_OF_CONTENTS_HEADING_ATTRIBUTE)}
       className={cn('flex items-center lg:justify-end', {
         'flex flex-col items-start gap-y-4 lg:flex-row lg:flex-wrap lg:justify-between': title,
         'lg:justify-start': !showMoreLink,

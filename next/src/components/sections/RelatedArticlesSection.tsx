@@ -40,7 +40,10 @@ const RelatedArticlesSection = ({ page, className }: Props) => {
   return (
     <SectionContainer className={className}>
       <div className="flex flex-col">
-        <SectionHeader title={t('RelatedArticlesSection.relatedArticles')} />
+        <SectionHeader
+          title={t('RelatedArticlesSection.relatedArticles')}
+          excludeFromTableOfContents
+        />
 
         <ResponsiveCarousel
           items={data.hits.map((card) => {
