@@ -3,7 +3,7 @@ import React, { useEffect } from 'react'
 
 import ArticleCard from '@/src/components/cards/ArticleCard'
 import { transformArticleProps } from '@/src/components/cards/transformArticleProps'
-import Pagination from '@/src/components/common/Pagination/Pagination'
+import ResponsiveCarousel from '@/src/components/common/Carousel/ResponsiveCarousel'
 import SectionHeader from '@/src/components/layouts/SectionHeader'
 import { ArticlesSectionFragment } from '@/src/services/graphql'
 import { client } from '@/src/services/graphql/gql'
@@ -21,7 +21,7 @@ type Props = {
 }
 
 /**
- * TODO Figma link
+ * Figma: https://www.figma.com/design/17wbd0MDQcMW9NbXl6UPs8/DS--Component-library?node-id=16846-35571&m=dev
  */
 
 const ArticlesByCategory = ({ section }: Props) => {
@@ -31,6 +31,7 @@ const ArticlesByCategory = ({ section }: Props) => {
 
   const [filters, setFilters] = useRoutePreservedState({
     ...articlesDefaultFilters,
+    pageSize: 12,
   })
 
   const { data: tagsData } = useQuery({
@@ -60,22 +61,22 @@ const ArticlesByCategory = ({ section }: Props) => {
     enabled: filters.tagDocumentIds.length > 0,
   })
 
-  const handlePageChange = (page: number) => {
-    setFilters({ ...filters, page })
-  }
-
   return (
-    <div className="flex flex-col gap-8">
+    <div className="flex flex-col">
       <SectionHeader title={title} text={text} />
-      <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-        {data?.hits.map((card) => <ArticleCard key={card.slug} {...transformArticleProps(card)} />)}
-      </div>
-      {data?.estimatedTotalHits ? (
-        <Pagination
-          key={filters.search}
-          totalCount={Math.ceil(data.estimatedTotalHits / filters.pageSize)}
-          currentPage={filters.page}
-          onPageChange={handlePageChange}
+      {data?.hits ? (
+        <ResponsiveCarousel
+          items={data.hits
+            .map((card) => {
+              return card ? (
+                <ArticleCard
+                  key={card.slug}
+                  {...transformArticleProps(card, { withText: false })}
+                />
+              ) : null
+            })
+            .filter(isDefined)}
+          desktop={4}
         />
       ) : null}
     </div>

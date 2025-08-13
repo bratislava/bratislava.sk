@@ -6687,6 +6687,7 @@ export type AllFilesQuery = {
       | { __typename?: 'ComponentSectionsDivider' }
       | { __typename?: 'ComponentSectionsDocuments' }
       | { __typename?: 'ComponentSectionsEvents' }
+      | { __typename?: 'ComponentSectionsFacilities' }
       | { __typename?: 'ComponentSectionsFaqCategories' }
       | { __typename?: 'ComponentSectionsFaqs' }
       | {
