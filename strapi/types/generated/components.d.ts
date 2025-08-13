@@ -953,6 +953,7 @@ export interface SectionsRegulations extends Struct.ComponentSchema {
   }
   attributes: {
     regulations: Schema.Attribute.Relation<'oneToMany', 'api::regulation.regulation'>
+    showAll: Schema.Attribute.Boolean
   }
 }
 

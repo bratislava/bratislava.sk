@@ -1837,6 +1837,7 @@ type ComponentSectionsRegulations {
   id: ID!
   regulations(filters: RegulationFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [Regulation]!
   regulations_connection(filters: RegulationFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): RegulationRelationResponseCollection
+  showAll: Boolean
 }
 
 input ComponentSectionsRegulationsFiltersInput {
@@ -1844,11 +1845,13 @@ input ComponentSectionsRegulationsFiltersInput {
   not: ComponentSectionsRegulationsFiltersInput
   or: [ComponentSectionsRegulationsFiltersInput]
   regulations: RegulationFiltersInput
+  showAll: BooleanFilterInput
 }
 
 input ComponentSectionsRegulationsInput {
   id: ID
   regulations: [ID]
+  showAll: Boolean
 }
 
 type ComponentSectionsRegulationsList {
