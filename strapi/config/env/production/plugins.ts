@@ -1,17 +1,24 @@
 export default ({ env }) => ({
   upload: {
     config: {
-      provider: 'strapi-provider-upload-ts-minio',
+      // Docs: https://github.com/strapi/strapi/tree/main/packages/providers/upload-aws-s3
+      provider: 'aws-s3',
       providerOptions: {
-        accessKey: env('MINIO_ACCESS_KEY', 'AKIAIOSFODNN7EXAMPLE'),
-        secretKey: env('MINIO_SECRET_KEY', 'wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY'),
-        bucket: env('MINIO_BUCKET', 'strapi'),
-        endPoint: env('MINIO_ENDPOINT', 'localhost'),
-        port: env.int('MINIO_PORT', 9000),
-        useSSL: env('MINIO_USE_SSL', false),
-        folder: 'upload',
-        isDocker: true,
-        host: env('MINIO_HOST', 'localhost:9000'),
+        // This is how we set up "subdomain" style of urls, e.g. "bucket-name.s3.bratislava.sk/..."
+        baseUrl: env('MINIO_PUBLIC_ENDPOINT'),
+        // Works like a folder, https://forum.strapi.io/t/how-to-specify-the-folder-for-strapi-provider-upload-aws-s3-plugin/30805/2
+        rootPath: 'upload',
+        s3Options: {
+          credentials: {
+            accessKeyId: env('MINIO_ACCESS_KEY'),
+            secretAccessKey: env('MINIO_SECRET_KEY'),
+          },
+          endpoint: env('MINIO_PRIVATE_ENDPOINT'),
+          region: 'bratislava',
+          params: {
+            Bucket: env('MINIO_BUCKET'),
+          },
+        },
       },
     },
   },

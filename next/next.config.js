@@ -8,6 +8,7 @@ const svgoConfig = require('./svgo.config.js')
 const nextConfig = {
   i18n: i18nextConfig.i18n,
   reactStrictMode: true,
+  output: 'standalone',
   images: {
     remotePatterns: [
       {
@@ -20,12 +21,15 @@ const nextConfig = {
       },
       {
         protocol: 'https',
+        hostname: '*.s3.bratislava.sk',
+      },
+      {
+        protocol: 'https',
         hostname: 'api.tootoot.co',
         pathname: '/api/event/*/images/*/*/*/(AUTO|WIDTH|HEIGHT|MINSIDE)',
       },
     ],
   },
-  output: 'standalone',
   async rewrites() {
     return {
       beforeFiles: [
