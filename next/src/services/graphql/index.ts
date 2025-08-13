@@ -2314,6 +2314,7 @@ export type ComponentSectionsRegulations = {
   id: Scalars['ID']['output']
   regulations: Array<Maybe<Regulation>>
   regulations_connection?: Maybe<RegulationRelationResponseCollection>
+  showAll?: Maybe<Scalars['Boolean']['output']>
 }
 
 export type ComponentSectionsRegulationsRegulationsArgs = {
@@ -2333,11 +2334,13 @@ export type ComponentSectionsRegulationsFiltersInput = {
   not?: InputMaybe<ComponentSectionsRegulationsFiltersInput>
   or?: InputMaybe<Array<InputMaybe<ComponentSectionsRegulationsFiltersInput>>>
   regulations?: InputMaybe<RegulationFiltersInput>
+  showAll?: InputMaybe<BooleanFilterInput>
 }
 
 export type ComponentSectionsRegulationsInput = {
   id?: InputMaybe<Scalars['ID']['input']>
   regulations?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
+  showAll?: InputMaybe<Scalars['Boolean']['input']>
 }
 
 export type ComponentSectionsRegulationsList = {
@@ -9543,6 +9546,7 @@ export type PageEntityFragment = {
       }
     | {
         __typename: 'ComponentSectionsRegulations'
+        showAll?: boolean | null
         regulations: Array<{
           __typename?: 'Regulation'
           documentId: string
@@ -10416,6 +10420,7 @@ export type PageBySlugQuery = {
         }
       | {
           __typename: 'ComponentSectionsRegulations'
+          showAll?: boolean | null
           regulations: Array<{
             __typename?: 'Regulation'
             documentId: string
@@ -11315,6 +11320,7 @@ export type Dev_AllPagesQuery = {
         }
       | {
           __typename: 'ComponentSectionsRegulations'
+          showAll?: boolean | null
           regulations: Array<{
             __typename?: 'Regulation'
             documentId: string
@@ -12727,6 +12733,7 @@ export type ContactsSectionFragment = {
 
 export type RegulationsSectionFragment = {
   __typename?: 'ComponentSectionsRegulations'
+  showAll?: boolean | null
   regulations: Array<{
     __typename?: 'Regulation'
     documentId: string
@@ -13603,6 +13610,7 @@ type Sections_ComponentSectionsProsAndConsSection_Fragment = {
 
 type Sections_ComponentSectionsRegulations_Fragment = {
   __typename: 'ComponentSectionsRegulations'
+  showAll?: boolean | null
   regulations: Array<{
     __typename?: 'Regulation'
     documentId: string
@@ -14990,6 +14998,7 @@ export const RegulationEntityFragmentDoc = gql`
 `
 export const RegulationsSectionFragmentDoc = gql`
   fragment RegulationsSection on ComponentSectionsRegulations {
+    showAll
     regulations {
       ...RegulationEntity
     }

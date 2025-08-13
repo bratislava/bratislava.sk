@@ -6,10 +6,24 @@
   },
   "options": {},
   "attributes": {
+    "showAll": {
+      "type": "boolean",
+      "default": false
+    },
     "regulations": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::regulation.regulation"
+      "target": "api::regulation.regulation",
+      "conditions": {
+        "visible": {
+          "!=": [
+            {
+              "var": "showAll"
+            },
+            true
+          ]
+        }
+      }
     }
   }
 }

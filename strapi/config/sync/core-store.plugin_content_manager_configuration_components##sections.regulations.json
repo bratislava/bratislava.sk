@@ -20,6 +20,20 @@
           "sortable": false
         }
       },
+      "showAll": {
+        "edit": {
+          "label": "Zobraziť všetky",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "showAll",
+          "searchable": true,
+          "sortable": true
+        }
+      },
       "regulations": {
         "edit": {
           "label": "Všeobecne záväzné nariadenia",
@@ -45,18 +59,25 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "regulations",
-        "documentId"
-      ],
       "edit": [
+        [
+          {
+            "name": "showAll",
+            "size": 12
+          }
+        ],
         [
           {
             "name": "regulations",
             "size": 12
           }
         ]
+      ],
+      "list": [
+        "id",
+        "regulations",
+        "documentId",
+        "showAll"
       ]
     },
     "isComponent": true
