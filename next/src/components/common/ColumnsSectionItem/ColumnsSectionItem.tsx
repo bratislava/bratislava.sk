@@ -1,5 +1,6 @@
 import { Typography } from '@bratislava/component-library'
 import React from 'react'
+import Markdown from 'react-markdown'
 
 import StrapiImage from '@/src/components/common/Image/StrapiImage'
 import { ColumnsSectionFragment } from '@/src/services/graphql'
@@ -58,7 +59,8 @@ const ColumnsSectionItem = ({
               {title}
             </Typography>
           ) : null}
-          {text ? <Typography>{text}</Typography> : null}
+          {/* We use Markdown formatting to allow bold, even tho there is only long text field in Strapi */}
+          {text ? <Markdown>{text}</Markdown> : null}
         </div>
       </div>
     </div>
