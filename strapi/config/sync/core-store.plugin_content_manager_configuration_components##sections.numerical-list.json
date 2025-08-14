@@ -22,7 +22,7 @@
       },
       "title": {
         "edit": {
-          "label": "title",
+          "label": "Nadpis",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -34,60 +34,47 @@
           "sortable": true
         }
       },
-      "variant": {
+      "text": {
         "edit": {
-          "label": "variant",
+          "label": "Text",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "variant",
-          "searchable": true,
-          "sortable": true
-        }
-      },
-      "buttonText": {
-        "edit": {
-          "label": "buttonText",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "buttonText",
-          "searchable": true,
-          "sortable": true
-        }
-      },
-      "buttonLink": {
-        "edit": {
-          "label": "buttonLink",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "buttonLink",
+          "label": "text",
           "searchable": true,
           "sortable": true
         }
       },
       "items": {
         "edit": {
+          "label": "Položky číslovaného zoznamu",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "documentId"
+        },
+        "list": {
           "label": "items",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "variant": {
+        "edit": {
+          "label": "Variant",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "items",
-          "searchable": false,
-          "sortable": false
+          "label": "variant",
+          "searchable": true,
+          "sortable": true
         }
       },
       "documentId": {
@@ -100,30 +87,20 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "title",
-        "variant",
-        "buttonText"
-      ],
       "edit": [
         [
           {
             "name": "title",
-            "size": 6
-          },
-          {
-            "name": "variant",
-            "size": 6
+            "size": 12
           }
         ],
         [
           {
-            "name": "buttonText",
-            "size": 6
+            "name": "text",
+            "size": 12
           },
           {
-            "name": "buttonLink",
+            "name": "variant",
             "size": 6
           }
         ],
@@ -133,6 +110,12 @@
             "size": 12
           }
         ]
+      ],
+      "list": [
+        "id",
+        "title",
+        "variant",
+        "text"
       ]
     },
     "isComponent": true

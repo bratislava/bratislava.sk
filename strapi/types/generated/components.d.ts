@@ -219,7 +219,6 @@ export interface BlocksNumericalListItem extends Struct.ComponentSchema {
   }
   attributes: {
     text: Schema.Attribute.RichText
-    title: Schema.Attribute.String & Schema.Attribute.Private
   }
 }
 
@@ -883,11 +882,12 @@ export interface SectionsNumericalList extends Struct.ComponentSchema {
     displayName: 'Numerical List'
   }
   attributes: {
-    buttonLink: Schema.Attribute.String
-    buttonText: Schema.Attribute.String
     items: Schema.Attribute.Component<'blocks.numerical-list-item', true>
+    text: Schema.Attribute.Text
     title: Schema.Attribute.String
-    variant: Schema.Attribute.Enumeration<['basic', 'combined', 'roadmap']>
+    variant: Schema.Attribute.Enumeration<['basic', 'roadmap']> &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'basic'>
   }
 }
 

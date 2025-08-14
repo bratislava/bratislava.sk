@@ -15,10 +15,7 @@
           "welcomeHeadline",
           "welcomeMedia",
           "inba.title",
-          "inba.content",
-          "inbaFrontImage",
-          "inbaRearImage",
-          "inbaUrl"
+          "inba.content"
         ],
         "locales": []
       },
@@ -37,10 +34,7 @@
           "welcomeHeadline",
           "welcomeMedia",
           "inba.title",
-          "inba.content",
-          "inbaFrontImage",
-          "inbaRearImage",
-          "inbaUrl"
+          "inba.content"
         ],
         "locales": [
           "en",
@@ -62,10 +56,7 @@
           "welcomeHeadline",
           "welcomeMedia",
           "inba.title",
-          "inba.content",
-          "inbaFrontImage",
-          "inbaRearImage",
-          "inbaUrl"
+          "inba.content"
         ],
         "locales": [
           "en",

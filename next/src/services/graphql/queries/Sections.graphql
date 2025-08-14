@@ -209,13 +209,12 @@ fragment NumericalListItemBlock on ComponentBlocksNumericalListItem {
 
 fragment NumericalListSection on ComponentSectionsNumericalList {
   id
+  title
+  text
   items {
     ...NumericalListItemBlock
   }
-  title
   variant
-  buttonText
-  buttonLink
 }
 
 fragment OrganizationalStructureSection on ComponentSectionsOrganizationalStructure {

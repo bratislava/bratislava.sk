@@ -7,8 +7,8 @@
       "filterable": true,
       "searchable": true,
       "pageSize": 10,
-      "mainField": "title",
-      "defaultSortBy": "title",
+      "mainField": "documentId",
+      "defaultSortBy": "documentId",
       "defaultSortOrder": "ASC"
     },
     "metadatas": {
@@ -22,8 +22,8 @@
       },
       "text": {
         "edit": {
-          "label": "text",
-          "description": "",
+          "label": "Text",
+          "description": "Prosíme používať z formátovacích nástrojov iba Bold (hrubé písmo).",
           "placeholder": "",
           "visible": true,
           "editable": true
@@ -32,20 +32,6 @@
           "label": "text",
           "searchable": false,
           "sortable": false
-        }
-      },
-      "title": {
-        "edit": {
-          "label": "title",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "title",
-          "searchable": true,
-          "sortable": true
         }
       },
       "documentId": {
@@ -58,24 +44,17 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "title",
-        "documentId"
-      ],
       "edit": [
         [
           {
             "name": "text",
             "size": 12
           }
-        ],
-        [
-          {
-            "name": "title",
-            "size": 6
-          }
         ]
+      ],
+      "list": [
+        "id",
+        "documentId"
       ]
     },
     "isComponent": true

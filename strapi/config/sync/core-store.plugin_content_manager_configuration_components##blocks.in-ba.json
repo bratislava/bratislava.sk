@@ -48,6 +48,20 @@
           "sortable": true
         }
       },
+      "showMoreLink": {
+        "edit": {
+          "label": "showMoreLink",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "showMoreLink",
+          "searchable": false,
+          "sortable": false
+        }
+      },
       "documentId": {
         "edit": {},
         "list": {
@@ -74,6 +88,12 @@
         [
           {
             "name": "content",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "showMoreLink",
             "size": 12
           }
         ]
