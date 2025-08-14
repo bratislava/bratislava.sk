@@ -13,14 +13,24 @@
     "text": {
       "type": "text"
     },
-    "documents": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::document.document"
-    },
     "showAll": {
       "type": "boolean",
       "default": false
+    },
+    "documents": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::document.document",
+      "conditions": {
+        "visible": {
+          "!=": [
+            {
+              "var": "showAll"
+            },
+            true
+          ]
+        }
+      }
     },
     "titleLevel": {
       "type": "enumeration",
