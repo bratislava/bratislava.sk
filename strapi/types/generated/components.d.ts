@@ -886,6 +886,7 @@ export interface SectionsNumericalList extends Struct.ComponentSchema {
     text: Schema.Attribute.Text
     title: Schema.Attribute.String
     variant: Schema.Attribute.Enumeration<['basic', 'roadmap']> &
+      Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<'basic'>
   }
 }

@@ -2180,7 +2180,7 @@ export type ComponentSectionsNumericalList = {
   items?: Maybe<Array<Maybe<ComponentBlocksNumericalListItem>>>
   text?: Maybe<Scalars['String']['output']>
   title?: Maybe<Scalars['String']['output']>
-  variant?: Maybe<Enum_Componentsectionsnumericallist_Variant>
+  variant: Enum_Componentsectionsnumericallist_Variant
 }
 
 export type ComponentSectionsNumericalListItemsArgs = {
@@ -9493,7 +9493,7 @@ export type PageEntityFragment = {
         id: string
         title?: string | null
         text?: string | null
-        variant?: Enum_Componentsectionsnumericallist_Variant | null
+        variant: Enum_Componentsectionsnumericallist_Variant
         items?: Array<{
           __typename?: 'ComponentBlocksNumericalListItem'
           text?: string | null
@@ -10366,7 +10366,7 @@ export type PageBySlugQuery = {
           id: string
           title?: string | null
           text?: string | null
-          variant?: Enum_Componentsectionsnumericallist_Variant | null
+          variant: Enum_Componentsectionsnumericallist_Variant
           items?: Array<{
             __typename?: 'ComponentBlocksNumericalListItem'
             text?: string | null
@@ -11265,7 +11265,7 @@ export type Dev_AllPagesQuery = {
           id: string
           title?: string | null
           text?: string | null
-          variant?: Enum_Componentsectionsnumericallist_Variant | null
+          variant: Enum_Componentsectionsnumericallist_Variant
           items?: Array<{
             __typename?: 'ComponentBlocksNumericalListItem'
             text?: string | null
@@ -12545,7 +12545,7 @@ export type NumericalListSectionFragment = {
   id: string
   title?: string | null
   text?: string | null
-  variant?: Enum_Componentsectionsnumericallist_Variant | null
+  variant: Enum_Componentsectionsnumericallist_Variant
   items?: Array<{
     __typename?: 'ComponentBlocksNumericalListItem'
     text?: string | null
@@ -13543,7 +13543,7 @@ type Sections_ComponentSectionsNumericalList_Fragment = {
   id: string
   title?: string | null
   text?: string | null
-  variant?: Enum_Componentsectionsnumericallist_Variant | null
+  variant: Enum_Componentsectionsnumericallist_Variant
   items?: Array<{
     __typename?: 'ComponentBlocksNumericalListItem'
     text?: string | null

@@ -18,6 +18,7 @@
     },
     "variant": {
       "type": "enumeration",
+      "required": true,
       "default": "basic",
       "enum": [
         "basic",
