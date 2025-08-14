@@ -1,5 +1,5 @@
-import DashedLine from '@/src/components/common/NumericalList_Deprecated/DashedLine_Deprecated'
 import Markdown from '@/src/components/formatting/Markdown/Markdown'
+import DashedLine from '@/src/components/sections/NumericalListSection_Deprecated/DashedLine_Deprecated'
 import cn from '@/src/utils/cn'
 
 export type NumericalListItemProps = {

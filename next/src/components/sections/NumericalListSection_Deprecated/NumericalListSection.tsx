@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-unnecessary-type-assertion,@typescript-eslint/no-non-null-assertion */
 import React from 'react'
 
-import NumericalListItem from '@/src/components/common/NumericalList_Deprecated/NumericalListItem_Deprecated'
 import SectionContainer from '@/src/components/layouts/SectionContainer'
 import SectionHeader from '@/src/components/layouts/SectionHeader'
+import NumericalListItem from '@/src/components/sections/NumericalListSection_Deprecated/NumericalListItem_Deprecated'
 import { NumericalListSectionFragment } from '@/src/services/graphql'
 import { isDefined } from '@/src/utils/isDefined'
 

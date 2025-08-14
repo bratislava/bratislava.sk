@@ -1,4 +1,4 @@
-import CompleteDashedLineSvg from '@/src/components/common/NumericalList_Deprecated/CompleteDashedLineSvg_Deprecated'
+import CompleteDashedLineSvg from '@/src/components/sections/NumericalListSection_Deprecated/CompleteDashedLineSvg_Deprecated'
 import cn from '@/src/utils/cn'
 
 export type DashedLineProps = {
