@@ -146,48 +146,6 @@
           "sortable": false
         }
       },
-      "inbaFrontImage": {
-        "edit": {
-          "label": "inba predný obrázok",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "inbaFrontImage",
-          "searchable": false,
-          "sortable": false
-        }
-      },
-      "inbaRearImage": {
-        "edit": {
-          "label": "inba zadný obrázok",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "inbaRearImage",
-          "searchable": false,
-          "sortable": false
-        }
-      },
-      "inbaUrl": {
-        "edit": {
-          "label": "inba URL",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "inbaUrl",
-          "searchable": true,
-          "sortable": true
-        }
-      },
       "eventsSection": {
         "edit": {
           "label": "Podujatia (Tootoot)",
@@ -331,22 +289,6 @@
           {
             "name": "inba",
             "size": 12
-          }
-        ],
-        [
-          {
-            "name": "inbaUrl",
-            "size": 6
-          }
-        ],
-        [
-          {
-            "name": "inbaFrontImage",
-            "size": 6
-          },
-          {
-            "name": "inbaRearImage",
-            "size": 6
           }
         ]
       ]
