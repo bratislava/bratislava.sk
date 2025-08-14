@@ -1347,27 +1347,59 @@ export type ComponentSectionsAccordionInput = {
 
 export type ComponentSectionsArticles = {
   __typename?: 'ComponentSectionsArticles'
+  adminGroups: Array<Maybe<AdminGroup>>
+  adminGroups_connection?: Maybe<AdminGroupRelationResponseCollection>
   category?: Maybe<PageCategory>
   id: Scalars['ID']['output']
   showAll?: Maybe<Scalars['Boolean']['output']>
+  tags: Array<Maybe<Tag>>
+  tags_connection?: Maybe<TagRelationResponseCollection>
   text?: Maybe<Scalars['String']['output']>
   title?: Maybe<Scalars['String']['output']>
 }
 
+export type ComponentSectionsArticlesAdminGroupsArgs = {
+  filters?: InputMaybe<AdminGroupFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type ComponentSectionsArticlesAdminGroups_ConnectionArgs = {
+  filters?: InputMaybe<AdminGroupFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type ComponentSectionsArticlesTagsArgs = {
+  filters?: InputMaybe<TagFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type ComponentSectionsArticlesTags_ConnectionArgs = {
+  filters?: InputMaybe<TagFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
 export type ComponentSectionsArticlesFiltersInput = {
+  adminGroups?: InputMaybe<AdminGroupFiltersInput>
   and?: InputMaybe<Array<InputMaybe<ComponentSectionsArticlesFiltersInput>>>
   category?: InputMaybe<PageCategoryFiltersInput>
   not?: InputMaybe<ComponentSectionsArticlesFiltersInput>
   or?: InputMaybe<Array<InputMaybe<ComponentSectionsArticlesFiltersInput>>>
   showAll?: InputMaybe<BooleanFilterInput>
+  tags?: InputMaybe<TagFiltersInput>
   text?: InputMaybe<StringFilterInput>
   title?: InputMaybe<StringFilterInput>
 }
 
 export type ComponentSectionsArticlesInput = {
+  adminGroups?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
   category?: InputMaybe<Scalars['ID']['input']>
   id?: InputMaybe<Scalars['ID']['input']>
   showAll?: InputMaybe<Scalars['Boolean']['input']>
+  tags?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
   text?: InputMaybe<Scalars['String']['input']>
   title?: InputMaybe<Scalars['String']['input']>
 }
@@ -6168,6 +6200,8 @@ export type UsersPermissionsUserRelationResponseCollection = {
   nodes: Array<UsersPermissionsUser>
 }
 
+export type AdminGroupEntityFragment = { __typename?: 'AdminGroup'; documentId: string }
+
 export type ArticleCategoryEntityFragment = {
   __typename?: 'ArticleCategory'
   documentId: string
@@ -9085,6 +9119,18 @@ export type PageEntityFragment = {
           title?: string | null
           color?: Enum_Pagecategory_Color | null
         } | null
+        tags: Array<{
+          __typename?: 'Tag'
+          documentId: string
+          title?: string | null
+          pageCategory?: {
+            __typename?: 'PageCategory'
+            documentId: string
+            title?: string | null
+            color?: Enum_Pagecategory_Color | null
+          } | null
+        } | null>
+        adminGroups: Array<{ __typename?: 'AdminGroup'; documentId: string } | null>
       }
     | {
         __typename: 'ComponentSectionsBanner'
@@ -9955,6 +10001,18 @@ export type PageBySlugQuery = {
             title?: string | null
             color?: Enum_Pagecategory_Color | null
           } | null
+          tags: Array<{
+            __typename?: 'Tag'
+            documentId: string
+            title?: string | null
+            pageCategory?: {
+              __typename?: 'PageCategory'
+              documentId: string
+              title?: string | null
+              color?: Enum_Pagecategory_Color | null
+            } | null
+          } | null>
+          adminGroups: Array<{ __typename?: 'AdminGroup'; documentId: string } | null>
         }
       | {
           __typename: 'ComponentSectionsBanner'
@@ -10854,6 +10912,18 @@ export type Dev_AllPagesQuery = {
             title?: string | null
             color?: Enum_Pagecategory_Color | null
           } | null
+          tags: Array<{
+            __typename?: 'Tag'
+            documentId: string
+            title?: string | null
+            pageCategory?: {
+              __typename?: 'PageCategory'
+              documentId: string
+              title?: string | null
+              color?: Enum_Pagecategory_Color | null
+            } | null
+          } | null>
+          adminGroups: Array<{ __typename?: 'AdminGroup'; documentId: string } | null>
         }
       | {
           __typename: 'ComponentSectionsBanner'
@@ -12170,6 +12240,18 @@ export type ArticlesSectionFragment = {
     title?: string | null
     color?: Enum_Pagecategory_Color | null
   } | null
+  tags: Array<{
+    __typename?: 'Tag'
+    documentId: string
+    title?: string | null
+    pageCategory?: {
+      __typename?: 'PageCategory'
+      documentId: string
+      title?: string | null
+      color?: Enum_Pagecategory_Color | null
+    } | null
+  } | null>
+  adminGroups: Array<{ __typename?: 'AdminGroup'; documentId: string } | null>
 }
 
 export type InbaArticlesListSectionFragment = {
@@ -13119,6 +13201,18 @@ type Sections_ComponentSectionsArticles_Fragment = {
     title?: string | null
     color?: Enum_Pagecategory_Color | null
   } | null
+  tags: Array<{
+    __typename?: 'Tag'
+    documentId: string
+    title?: string | null
+    pageCategory?: {
+      __typename?: 'PageCategory'
+      documentId: string
+      title?: string | null
+      color?: Enum_Pagecategory_Color | null
+    } | null
+  } | null>
+  adminGroups: Array<{ __typename?: 'AdminGroup'; documentId: string } | null>
 }
 
 type Sections_ComponentSectionsBanner_Fragment = {
@@ -14787,6 +14881,11 @@ export const NumericalListSectionFragmentDoc = gql`
   }
   ${NumericalListItemBlockFragmentDoc}
 `
+export const AdminGroupEntityFragmentDoc = gql`
+  fragment AdminGroupEntity on AdminGroup {
+    documentId
+  }
+`
 export const ArticlesSectionFragmentDoc = gql`
   fragment ArticlesSection on ComponentSectionsArticles {
     title
@@ -14795,8 +14894,16 @@ export const ArticlesSectionFragmentDoc = gql`
     category {
       ...PageCategoryEntity
     }
+    tags {
+      ...TagEntity
+    }
+    adminGroups {
+      ...AdminGroupEntity
+    }
   }
   ${PageCategoryEntityFragmentDoc}
+  ${TagEntityFragmentDoc}
+  ${AdminGroupEntityFragmentDoc}
 `
 export const InbaArticlesListSectionFragmentDoc = gql`
   fragment InbaArticlesListSection on ComponentSectionsInbaArticlesList {
