@@ -6,6 +6,16 @@
   "locale": null,
   "permissions": [
     {
+      "action": "api::admin-group.admin-group.find",
+      "documentId": "sumrxhrfjovjj0yybxiwqh1k",
+      "locale": null
+    },
+    {
+      "action": "api::admin-group.admin-group.findOne",
+      "documentId": "ucjhz1999u7zw42j9m74npgy",
+      "locale": null
+    },
+    {
       "action": "api::alert.alert.find",
       "documentId": "y1trr2dak04brwpoajk29alg",
       "locale": null
