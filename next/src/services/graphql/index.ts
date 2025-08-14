@@ -2176,10 +2176,9 @@ export type ComponentSectionsNumbersOverviewInput = {
 
 export type ComponentSectionsNumericalList = {
   __typename?: 'ComponentSectionsNumericalList'
-  buttonLink?: Maybe<Scalars['String']['output']>
-  buttonText?: Maybe<Scalars['String']['output']>
   id: Scalars['ID']['output']
   items?: Maybe<Array<Maybe<ComponentBlocksNumericalListItem>>>
+  text?: Maybe<Scalars['String']['output']>
   title?: Maybe<Scalars['String']['output']>
   variant?: Maybe<Enum_Componentsectionsnumericallist_Variant>
 }
@@ -2192,20 +2191,18 @@ export type ComponentSectionsNumericalListItemsArgs = {
 
 export type ComponentSectionsNumericalListFiltersInput = {
   and?: InputMaybe<Array<InputMaybe<ComponentSectionsNumericalListFiltersInput>>>
-  buttonLink?: InputMaybe<StringFilterInput>
-  buttonText?: InputMaybe<StringFilterInput>
   items?: InputMaybe<ComponentBlocksNumericalListItemFiltersInput>
   not?: InputMaybe<ComponentSectionsNumericalListFiltersInput>
   or?: InputMaybe<Array<InputMaybe<ComponentSectionsNumericalListFiltersInput>>>
+  text?: InputMaybe<StringFilterInput>
   title?: InputMaybe<StringFilterInput>
   variant?: InputMaybe<StringFilterInput>
 }
 
 export type ComponentSectionsNumericalListInput = {
-  buttonLink?: InputMaybe<Scalars['String']['input']>
-  buttonText?: InputMaybe<Scalars['String']['input']>
   id?: InputMaybe<Scalars['ID']['input']>
   items?: InputMaybe<Array<InputMaybe<ComponentBlocksNumericalListItemInput>>>
+  text?: InputMaybe<Scalars['String']['input']>
   title?: InputMaybe<Scalars['String']['input']>
   variant?: InputMaybe<Enum_Componentsectionsnumericallist_Variant>
 }
@@ -2985,7 +2982,6 @@ export enum Enum_Componentsectionsnarrowtext_Width {
 
 export enum Enum_Componentsectionsnumericallist_Variant {
   Basic = 'basic',
-  Combined = 'combined',
   Roadmap = 'roadmap',
 }
 
@@ -9496,9 +9492,8 @@ export type PageEntityFragment = {
         __typename: 'ComponentSectionsNumericalList'
         id: string
         title?: string | null
+        text?: string | null
         variant?: Enum_Componentsectionsnumericallist_Variant | null
-        buttonText?: string | null
-        buttonLink?: string | null
         items?: Array<{
           __typename?: 'ComponentBlocksNumericalListItem'
           text?: string | null
@@ -10370,9 +10365,8 @@ export type PageBySlugQuery = {
           __typename: 'ComponentSectionsNumericalList'
           id: string
           title?: string | null
+          text?: string | null
           variant?: Enum_Componentsectionsnumericallist_Variant | null
-          buttonText?: string | null
-          buttonLink?: string | null
           items?: Array<{
             __typename?: 'ComponentBlocksNumericalListItem'
             text?: string | null
@@ -11270,9 +11264,8 @@ export type Dev_AllPagesQuery = {
           __typename: 'ComponentSectionsNumericalList'
           id: string
           title?: string | null
+          text?: string | null
           variant?: Enum_Componentsectionsnumericallist_Variant | null
-          buttonText?: string | null
-          buttonLink?: string | null
           items?: Array<{
             __typename?: 'ComponentBlocksNumericalListItem'
             text?: string | null
@@ -12551,9 +12544,8 @@ export type NumericalListSectionFragment = {
   __typename?: 'ComponentSectionsNumericalList'
   id: string
   title?: string | null
+  text?: string | null
   variant?: Enum_Componentsectionsnumericallist_Variant | null
-  buttonText?: string | null
-  buttonLink?: string | null
   items?: Array<{
     __typename?: 'ComponentBlocksNumericalListItem'
     text?: string | null
@@ -13550,9 +13542,8 @@ type Sections_ComponentSectionsNumericalList_Fragment = {
   __typename: 'ComponentSectionsNumericalList'
   id: string
   title?: string | null
+  text?: string | null
   variant?: Enum_Componentsectionsnumericallist_Variant | null
-  buttonText?: string | null
-  buttonLink?: string | null
   items?: Array<{
     __typename?: 'ComponentBlocksNumericalListItem'
     text?: string | null
@@ -14787,13 +14778,12 @@ export const NumericalListItemBlockFragmentDoc = gql`
 export const NumericalListSectionFragmentDoc = gql`
   fragment NumericalListSection on ComponentSectionsNumericalList {
     id
+    title
+    text
     items {
       ...NumericalListItemBlock
     }
-    title
     variant
-    buttonText
-    buttonLink
   }
   ${NumericalListItemBlockFragmentDoc}
 `

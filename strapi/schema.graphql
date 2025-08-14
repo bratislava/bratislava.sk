@@ -1716,30 +1716,27 @@ input ComponentSectionsNumbersOverviewInput {
 }
 
 type ComponentSectionsNumericalList {
-  buttonLink: String
-  buttonText: String
   id: ID!
   items(filters: ComponentBlocksNumericalListItemFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksNumericalListItem]
+  text: String
   title: String
   variant: ENUM_COMPONENTSECTIONSNUMERICALLIST_VARIANT
 }
 
 input ComponentSectionsNumericalListFiltersInput {
   and: [ComponentSectionsNumericalListFiltersInput]
-  buttonLink: StringFilterInput
-  buttonText: StringFilterInput
   items: ComponentBlocksNumericalListItemFiltersInput
   not: ComponentSectionsNumericalListFiltersInput
   or: [ComponentSectionsNumericalListFiltersInput]
+  text: StringFilterInput
   title: StringFilterInput
   variant: StringFilterInput
 }
 
 input ComponentSectionsNumericalListInput {
-  buttonLink: String
-  buttonText: String
   id: ID
   items: [ComponentBlocksNumericalListItemInput]
+  text: String
   title: String
   variant: ENUM_COMPONENTSECTIONSNUMERICALLIST_VARIANT
 }
@@ -2413,7 +2410,6 @@ enum ENUM_COMPONENTSECTIONSNARROWTEXT_WIDTH {
 
 enum ENUM_COMPONENTSECTIONSNUMERICALLIST_VARIANT {
   basic
-  combined
   roadmap
 }
 

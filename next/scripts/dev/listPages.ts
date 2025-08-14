@@ -11,7 +11,7 @@ const gql = new GraphQLClient(`${process.env.NEXT_PUBLIC_STRAPI_URL}/graphql`)
 export const client = getSdk(gql)
 
 export const listPages = async () => {
-  const { pages } = await client.Dev_AllPages({ locale: 'sk', limit: -1 })
+  const { pages } = await client.Dev_AllPages({ locale: 'en', limit: -1 })
 
   const filteredPages = pages
     .filter(isDefined)
@@ -29,8 +29,7 @@ export const listPages = async () => {
         ) ?? []
 
       return sections.some(
-        (section) =>
-          section?.__typename === 'ComponentSectionsNumericalList' && section.variant === 'roadmap',
+        (section) => section?.__typename === 'ComponentSectionsNumericalList' && !section.variant,
         // section.width === 'wide',
       )
     })

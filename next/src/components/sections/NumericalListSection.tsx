@@ -4,7 +4,7 @@ import React from 'react'
 import NumericalList from '@/src/components/common/NumericalList_Deprecated/NumericalList_Deprecated'
 import SectionContainer from '@/src/components/layouts/SectionContainer'
 import { NumericalListSectionFragment } from '@/src/services/graphql'
-import { isPresent } from '@/src/utils/utils'
+import { isDefined } from '@/src/utils/isDefined'
 
 type NumericalListSectionProps = {
   section: NumericalListSectionFragment
@@ -15,9 +15,8 @@ const NumericalListSection = ({ section }: NumericalListSectionProps) => {
     <SectionContainer>
       <NumericalList
         title={section.title}
-        items={section.items?.filter(isPresent)}
-        buttonText={section.buttonText}
-        buttonLink={section.buttonLink}
+        text={section.text}
+        items={section.items?.map((item) => item?.text).filter(isDefined)}
         variant={section.variant ?? undefined}
       />
     </SectionContainer>

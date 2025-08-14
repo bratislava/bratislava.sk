@@ -8,20 +8,21 @@
     "title": {
       "type": "string"
     },
-    "variant": {
-      "type": "enumeration",
-      "enum": ["basic", "combined", "roadmap"]
-    },
-    "buttonText": {
-      "type": "string"
-    },
-    "buttonLink": {
-      "type": "string"
+    "text": {
+      "type": "text"
     },
     "items": {
       "type": "component",
-      "repeatable": true,
-      "component": "blocks.numerical-list-item"
+      "component": "blocks.numerical-list-item",
+      "repeatable": true
+    },
+    "variant": {
+      "type": "enumeration",
+      "default": "basic",
+      "enum": [
+        "basic",
+        "roadmap"
+      ]
     }
   }
 }

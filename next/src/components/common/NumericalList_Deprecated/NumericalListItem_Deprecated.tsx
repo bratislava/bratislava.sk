@@ -1,16 +1,15 @@
 import DashedLine from '@/src/components/common/NumericalList_Deprecated/DashedLine_Deprecated'
-import { NumericalListItemObject } from '@/src/components/common/NumericalList_Deprecated/NumericalList_Deprecated'
 import Markdown from '@/src/components/formatting/Markdown/Markdown'
 import cn from '@/src/utils/cn'
 
 export type NumericalListItemProps = {
   index: number
-  item?: NumericalListItemObject
+  text: string
   variant: 'basic' | 'roadmap'
   className?: string
 }
 
-const NumericalListItem = ({ index, item, variant, className }: NumericalListItemProps) => {
+const NumericalListItem = ({ index, text, variant, className }: NumericalListItemProps) => {
   return (
     <div className={cn(className)}>
       {variant === 'roadmap' && index > 0 ? (
@@ -36,7 +35,7 @@ const NumericalListItem = ({ index, item, variant, className }: NumericalListIte
           {index + 1}
         </div>
 
-        <Markdown content={item?.text} />
+        <Markdown content={text} />
       </div>
     </div>
   )
