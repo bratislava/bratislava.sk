@@ -7,7 +7,7 @@ import { isDefined } from '@/src/utils/isDefined'
 // Load envs
 dotenv.config({ path: '.env.local' })
 
-const gql = new GraphQLClient(`${process.env.STRAPI_URL}/graphql`)
+const gql = new GraphQLClient(`${process.env.NEXT_PUBLIC_STRAPI_URL}/graphql`)
 export const client = getSdk(gql)
 
 // Run for both locales separately

@@ -6,7 +6,7 @@ import { isDefined } from '@/src/utils/isDefined'
 
 dotenv.config({ path: '.env.local' })
 
-const gql = new GraphQLClient(`${process.env.STRAPI_URL}/graphql`)
+const gql = new GraphQLClient(`${process.env.NEXT_PUBLIC_STRAPI_URL}/graphql`)
 export const client = getSdk(gql)
 
 // Triple-check & test locally before running!
@@ -18,7 +18,7 @@ const locale = 'sk'
  * Temporary script to migrate SubpageList header section to new Subnavigation (rozcestnik)
  */
 export const migrateSubnavigation = async () => {
-  console.log(process.env.STRAPI_URL)
+  console.log(process.env.NEXT_PUBLIC_STRAPI_URL)
 
   const { pages } = await client.Dev_AllPages({ locale, limit: -1 })
 
