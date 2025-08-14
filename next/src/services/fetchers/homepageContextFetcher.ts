@@ -19,6 +19,7 @@ export const homepageContextFetcher = async (locale: string): Promise<HomepageCo
       limit: 7,
       sort: 'addedAt:desc',
       locale,
+      filters: { adminGroups: { adminGroupId: { eq: null } } },
     }),
     client.LatestInbaRelease(),
   ])
