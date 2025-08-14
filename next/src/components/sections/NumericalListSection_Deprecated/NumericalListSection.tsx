@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unnecessary-type-assertion,@typescript-eslint/no-non-null-assertion */
 import React from 'react'
 
 import SectionContainer from '@/src/components/layouts/SectionContainer'
@@ -18,20 +17,17 @@ const NumericalListSection = ({ section }: NumericalListSectionProps) => {
 
   return (
     <SectionContainer>
-      <div className="flex flex-col items-center justify-center gap-8 lg:gap-12">
+      <div className="flex flex-col items-center justify-center gap-8 lg:gap-10">
         <SectionHeader title={title} text={text} isCentered />
 
-        <div className="flex max-w-(--breakpoint-md) flex-col">
+        <ol className="flex max-w-(--breakpoint-md) flex-col">
           {filteredItems.map((item, index) => (
-            <NumericalListItem
-              // eslint-disable-next-line react/no-array-index-key
-              key={index}
-              index={index}
-              text={item}
-              variant={variant}
-            />
+            // eslint-disable-next-line react/no-array-index-key
+            <li key={index}>
+              <NumericalListItem index={index} text={item} variant={variant} />
+            </li>
           ))}
-        </div>
+        </ol>
       </div>
     </SectionContainer>
   )
