@@ -19,10 +19,11 @@
     "ts:generate-types": "strapi ts:generate-types"
   },
   "dependencies": {
-    "@strapi/plugin-graphql": "5.18.0",
-    "@strapi/plugin-users-permissions": "5.18.0",
-    "@strapi/provider-email-mailgun": "5.18.0",
-    "@strapi/strapi": "5.18.0",
+    "@strapi/plugin-graphql": "5.18.1",
+    "@strapi/plugin-users-permissions": "5.18.1",
+    "@strapi/provider-email-mailgun": "5.18.",
+    "@strapi/provider-upload-aws-s3": "5.18.1",
+    "@strapi/strapi": "5.18.1",
     "patch-package": "^7.0.2",
     "pg": "8.11.6",
     "postinstall-postinstall": "^2.1.0",
@@ -31,7 +32,6 @@
     "react-router-dom": "^6.0.0",
     "strapi-plugin-config-sync": "^3.1.2",
     "strapi-plugin-meilisearch": "0.13.2",
-    "strapi-provider-upload-ts-minio": "^3.1.0",
     "styled-components": "^6.0.0"
   },
   "devDependencies": {

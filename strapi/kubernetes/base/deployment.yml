@@ -38,7 +38,7 @@ spec:
             - secretRef:
                 name: ${BUILD_REPOSITORY_NAME}-meilisearch-secret
             - secretRef:
-                name: minio-secret-standalone
+                name: ${BUILD_REPOSITORY_NAME}-minio-secret
             - secretRef:
                 name: ${BUILD_REPOSITORY_NAME}-revalidate-secret
             - secretRef:

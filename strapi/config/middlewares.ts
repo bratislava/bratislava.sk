@@ -1,4 +1,4 @@
-export default [
+export default ({ env }) => [
   'strapi::logger',
   'strapi::errors',
   {
@@ -7,8 +7,21 @@ export default [
       contentSecurityPolicy: {
         directives: {
           'connect-src': ["'self'", 'https:'],
-          'img-src': ["'self'", 'data:', 'blob:', 'cdn-api.bratislava.sk'],
-          'media-src': ["'self'", 'data:', 'blob:', 'cdn-api.bratislava.sk'],
+          'img-src': [
+            "'self'",
+            'data:',
+            'blob:',
+            'market-assets.strapi.io',
+            'cdn-api.bratislava.sk',
+            `${env('MINIO_BUCKET')}.s3.bratislava.sk`,
+          ],
+          'media-src': [
+            "'self'",
+            'data:',
+            'blob:',
+            'cdn-api.bratislava.sk',
+            `${env('MINIO_BUCKET')}.s3.bratislava.sk`,
+          ],
           upgradeInsecureRequests: null,
         },
       },
