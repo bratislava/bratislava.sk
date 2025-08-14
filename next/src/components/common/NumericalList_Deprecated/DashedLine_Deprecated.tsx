@@ -1,16 +1,15 @@
-import { twMerge } from 'tailwind-merge'
-
 import CompleteDashedLineSvg from '@/src/components/common/NumericalList_Deprecated/CompleteDashedLineSvg_Deprecated'
+import cn from '@/src/utils/cn'
 
 export type DashedLineProps = {
-  position: string
-  className: string
+  position?: string
   color: string
+  className?: string
 }
 
 const DashedLine = ({ position, className, color }: DashedLineProps) => {
   return (
-    <div className={twMerge('relative h-[170px] overflow-hidden md:h-24', className)}>
+    <div className={cn('h-24 overflow-hidden', className)}>
       {position === 'right' ? (
         <CompleteDashedLineSvg color={color} />
       ) : (

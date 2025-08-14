@@ -1,5 +1,3 @@
-import { ReactNode } from 'react'
-
 import DashedLine from '@/src/components/common/NumericalList_Deprecated/DashedLine_Deprecated'
 import { NumericalListItemObject } from '@/src/components/common/NumericalList_Deprecated/NumericalList_Deprecated'
 import Markdown from '@/src/components/formatting/Markdown/Markdown'
@@ -8,75 +6,37 @@ import cn from '@/src/utils/cn'
 export type NumericalListItemProps = {
   index: number
   item?: NumericalListItemObject
-  variant: 'basic' | 'combined' | 'roadmap'
-  children?: ReactNode
+  variant: 'basic' | 'roadmap'
   className?: string
 }
 
-const NumericalListItem = ({
-  index,
-  item,
-  variant,
-  children,
-  className,
-}: NumericalListItemProps) => {
-  const position = index % 2 === 0 ? 'left' : 'right'
-
+const NumericalListItem = ({ index, item, variant, className }: NumericalListItemProps) => {
   return (
-    <div
-      key={index}
-      className={cn(
-        className,
-        'flex flex-col',
-        { 'mb-5 lg:mb-8': variant !== 'roadmap' },
-        'last:mb-0',
-      )}
-    >
-      {variant === 'roadmap' && index > 0 && (
+    <div className={cn(className)}>
+      {variant === 'roadmap' && index > 0 ? (
         <DashedLine
-          className="top-0 -mt-8 -mb-10 -ml-2"
-          position={position}
-          color="rgb(var(--color-category-600))"
+          className="relative top-0 left-0 -mt-8 -mb-10 -ml-2"
+          position={index % 2 === 0 ? 'left' : 'right'}
+          color="var(--color-category-600)"
         />
-      )}
+      ) : null}
+
       <div
-        className={cn(
-          'group flex items-center pr-8',
-          { 'h-16': variant === 'roadmap' },
-          { 'h-auto': variant !== 'roadmap' },
-          { 'items-center': variant !== 'combined' },
-        )}
+        className={cn('flex items-center', {
+          'h-16 gap-8 lg:gap-12': variant === 'roadmap',
+          'h-auto gap-6 lg:gap-8': variant !== 'roadmap',
+          'mt-6': variant !== 'roadmap' && index !== 0,
+        })}
       >
         <div
           className={cn(
-            'z-10 flex h-10 w-10 min-w-16 shrink-0 items-center justify-center rounded-full text-h4 font-semibold',
-            { 'bg-category-600 text-white': variant === 'roadmap' },
+            'z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-category-600 text-size-h5 font-semibold text-white',
           )}
         >
           {index + 1}
         </div>
-        <div
-          className={cn(
-            'pl-5 text-size-p-large lg:pl-11',
-            {
-              'pt-0': variant === 'combined',
-            },
-            {
-              'w-full': !item,
-            },
-            {
-              'max-w-(--breakpoint-sm)': item,
-            },
-          )}
-        >
-          {item && (
-            <Markdown
-              // TODO investigate former numericalList class and variant === 'combined'
-              content={item.text}
-            />
-          )}
-          {children}
-        </div>
+
+        <Markdown content={item?.text} />
       </div>
     </div>
   )
