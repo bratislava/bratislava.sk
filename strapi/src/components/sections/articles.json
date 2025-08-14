@@ -30,6 +30,36 @@
           ]
         }
       }
+    },
+    "tags": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::tag.tag",
+      "conditions": {
+        "visible": {
+          "!=": [
+            {
+              "var": "showAll"
+            },
+            true
+          ]
+        }
+      }
+    },
+    "adminGroups": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::admin-group.admin-group",
+      "conditions": {
+        "visible": {
+          "!=": [
+            {
+              "var": "showAll"
+            },
+            true
+          ]
+        }
+      }
     }
   }
 }

@@ -1056,27 +1056,35 @@ input ComponentSectionsAccordionInput {
 }
 
 type ComponentSectionsArticles {
+  adminGroups(filters: AdminGroupFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [AdminGroup]!
+  adminGroups_connection(filters: AdminGroupFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): AdminGroupRelationResponseCollection
   category: PageCategory
   id: ID!
   showAll: Boolean
+  tags(filters: TagFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [Tag]!
+  tags_connection(filters: TagFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): TagRelationResponseCollection
   text: String
   title: String
 }
 
 input ComponentSectionsArticlesFiltersInput {
+  adminGroups: AdminGroupFiltersInput
   and: [ComponentSectionsArticlesFiltersInput]
   category: PageCategoryFiltersInput
   not: ComponentSectionsArticlesFiltersInput
   or: [ComponentSectionsArticlesFiltersInput]
   showAll: BooleanFilterInput
+  tags: TagFiltersInput
   text: StringFilterInput
   title: StringFilterInput
 }
 
 input ComponentSectionsArticlesInput {
+  adminGroups: [ID]
   category: ID
   id: ID
   showAll: Boolean
+  tags: [ID]
   text: String
   title: String
 }
