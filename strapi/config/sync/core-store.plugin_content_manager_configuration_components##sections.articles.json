@@ -63,7 +63,7 @@
       },
       "category": {
         "edit": {
-          "label": "Kategória",
+          "label": "Kategória (toto pole prosíme napoužívať, bude odstránené)",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -136,7 +136,7 @@
           }
         ],
         [
-                    {
+          {
             "name": "category",
             "size": 6
           }
