@@ -1352,6 +1352,7 @@ export type ComponentSectionsArticles = {
   category?: Maybe<PageCategory>
   id: Scalars['ID']['output']
   showAll?: Maybe<Scalars['Boolean']['output']>
+  showMoreLink?: Maybe<ComponentBlocksCommonLink>
   tags: Array<Maybe<Tag>>
   tags_connection?: Maybe<TagRelationResponseCollection>
   text?: Maybe<Scalars['String']['output']>
@@ -1389,6 +1390,7 @@ export type ComponentSectionsArticlesFiltersInput = {
   not?: InputMaybe<ComponentSectionsArticlesFiltersInput>
   or?: InputMaybe<Array<InputMaybe<ComponentSectionsArticlesFiltersInput>>>
   showAll?: InputMaybe<BooleanFilterInput>
+  showMoreLink?: InputMaybe<ComponentBlocksCommonLinkFiltersInput>
   tags?: InputMaybe<TagFiltersInput>
   text?: InputMaybe<StringFilterInput>
   title?: InputMaybe<StringFilterInput>
@@ -1399,6 +1401,7 @@ export type ComponentSectionsArticlesInput = {
   category?: InputMaybe<Scalars['ID']['input']>
   id?: InputMaybe<Scalars['ID']['input']>
   showAll?: InputMaybe<Scalars['Boolean']['input']>
+  showMoreLink?: InputMaybe<ComponentBlocksCommonLinkInput>
   tags?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
   text?: InputMaybe<Scalars['String']['input']>
   title?: InputMaybe<Scalars['String']['input']>
@@ -9131,6 +9134,26 @@ export type PageEntityFragment = {
           } | null
         } | null>
         adminGroups: Array<{ __typename?: 'AdminGroup'; documentId: string } | null>
+        showMoreLink?: {
+          __typename?: 'ComponentBlocksCommonLink'
+          label?: string | null
+          url?: string | null
+          analyticsId?: string | null
+          page?: {
+            __typename?: 'Page'
+            documentId: string
+            slug?: string | null
+            title: string
+            locale?: string | null
+          } | null
+          article?: {
+            __typename: 'Article'
+            documentId: string
+            slug: string
+            title: string
+            locale?: string | null
+          } | null
+        } | null
       }
     | {
         __typename: 'ComponentSectionsBanner'
@@ -10013,6 +10036,26 @@ export type PageBySlugQuery = {
             } | null
           } | null>
           adminGroups: Array<{ __typename?: 'AdminGroup'; documentId: string } | null>
+          showMoreLink?: {
+            __typename?: 'ComponentBlocksCommonLink'
+            label?: string | null
+            url?: string | null
+            analyticsId?: string | null
+            page?: {
+              __typename?: 'Page'
+              documentId: string
+              slug?: string | null
+              title: string
+              locale?: string | null
+            } | null
+            article?: {
+              __typename: 'Article'
+              documentId: string
+              slug: string
+              title: string
+              locale?: string | null
+            } | null
+          } | null
         }
       | {
           __typename: 'ComponentSectionsBanner'
@@ -10924,6 +10967,26 @@ export type Dev_AllPagesQuery = {
             } | null
           } | null>
           adminGroups: Array<{ __typename?: 'AdminGroup'; documentId: string } | null>
+          showMoreLink?: {
+            __typename?: 'ComponentBlocksCommonLink'
+            label?: string | null
+            url?: string | null
+            analyticsId?: string | null
+            page?: {
+              __typename?: 'Page'
+              documentId: string
+              slug?: string | null
+              title: string
+              locale?: string | null
+            } | null
+            article?: {
+              __typename: 'Article'
+              documentId: string
+              slug: string
+              title: string
+              locale?: string | null
+            } | null
+          } | null
         }
       | {
           __typename: 'ComponentSectionsBanner'
@@ -12252,6 +12315,26 @@ export type ArticlesSectionFragment = {
     } | null
   } | null>
   adminGroups: Array<{ __typename?: 'AdminGroup'; documentId: string } | null>
+  showMoreLink?: {
+    __typename?: 'ComponentBlocksCommonLink'
+    label?: string | null
+    url?: string | null
+    analyticsId?: string | null
+    page?: {
+      __typename?: 'Page'
+      documentId: string
+      slug?: string | null
+      title: string
+      locale?: string | null
+    } | null
+    article?: {
+      __typename: 'Article'
+      documentId: string
+      slug: string
+      title: string
+      locale?: string | null
+    } | null
+  } | null
 }
 
 export type InbaArticlesListSectionFragment = {
@@ -13213,6 +13296,26 @@ type Sections_ComponentSectionsArticles_Fragment = {
     } | null
   } | null>
   adminGroups: Array<{ __typename?: 'AdminGroup'; documentId: string } | null>
+  showMoreLink?: {
+    __typename?: 'ComponentBlocksCommonLink'
+    label?: string | null
+    url?: string | null
+    analyticsId?: string | null
+    page?: {
+      __typename?: 'Page'
+      documentId: string
+      slug?: string | null
+      title: string
+      locale?: string | null
+    } | null
+    article?: {
+      __typename: 'Article'
+      documentId: string
+      slug: string
+      title: string
+      locale?: string | null
+    } | null
+  } | null
 }
 
 type Sections_ComponentSectionsBanner_Fragment = {
@@ -14900,10 +15003,14 @@ export const ArticlesSectionFragmentDoc = gql`
     adminGroups {
       ...AdminGroupEntity
     }
+    showMoreLink {
+      ...CommonLink
+    }
   }
   ${PageCategoryEntityFragmentDoc}
   ${TagEntityFragmentDoc}
   ${AdminGroupEntityFragmentDoc}
+  ${CommonLinkFragmentDoc}
 `
 export const InbaArticlesListSectionFragmentDoc = gql`
   fragment InbaArticlesListSection on ComponentSectionsInbaArticlesList {

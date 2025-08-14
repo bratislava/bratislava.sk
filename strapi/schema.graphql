@@ -1061,6 +1061,7 @@ type ComponentSectionsArticles {
   category: PageCategory
   id: ID!
   showAll: Boolean
+  showMoreLink: ComponentBlocksCommonLink
   tags(filters: TagFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [Tag]!
   tags_connection(filters: TagFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): TagRelationResponseCollection
   text: String
@@ -1074,6 +1075,7 @@ input ComponentSectionsArticlesFiltersInput {
   not: ComponentSectionsArticlesFiltersInput
   or: [ComponentSectionsArticlesFiltersInput]
   showAll: BooleanFilterInput
+  showMoreLink: ComponentBlocksCommonLinkFiltersInput
   tags: TagFiltersInput
   text: StringFilterInput
   title: StringFilterInput
@@ -1084,6 +1086,7 @@ input ComponentSectionsArticlesInput {
   category: ID
   id: ID
   showAll: Boolean
+  showMoreLink: ComponentBlocksCommonLinkInput
   tags: [ID]
   text: String
   title: String

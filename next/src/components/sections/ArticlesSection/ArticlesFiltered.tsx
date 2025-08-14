@@ -27,7 +27,7 @@ type Props = {
 const ArticlesFiltered = ({ section }: Props) => {
   const locale = useLocale()
 
-  const { title, text, category, tags, adminGroups } = section
+  const { title, text, category, tags, adminGroups, showMoreLink } = section
 
   const adminGroupDocumentIds = adminGroups
     .map((adminGroup) => adminGroup?.documentId)
@@ -76,11 +76,7 @@ const ArticlesFiltered = ({ section }: Props) => {
 
   return (
     <div className="flex flex-col gap-8">
-      <SectionHeader
-        title={title}
-        text={text}
-        // TODO showMoreLink
-      />
+      <SectionHeader title={title} text={text} showMoreLink={showMoreLink} />
       {data?.hits ? (
         <ResponsiveCarousel
           items={data.hits

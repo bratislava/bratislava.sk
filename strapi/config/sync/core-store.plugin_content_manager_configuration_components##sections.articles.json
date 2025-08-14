@@ -106,6 +106,20 @@
           "sortable": false
         }
       },
+      "showMoreLink": {
+        "edit": {
+          "label": "showMoreLink",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "showMoreLink",
+          "searchable": false,
+          "sortable": false
+        }
+      },
       "documentId": {
         "edit": {},
         "list": {
@@ -116,6 +130,12 @@
       }
     },
     "layouts": {
+      "list": [
+        "id",
+        "title",
+        "text",
+        "category"
+      ],
       "edit": [
         [
           {
@@ -152,13 +172,13 @@
             "name": "adminGroups",
             "size": 6
           }
+        ],
+        [
+          {
+            "name": "showMoreLink",
+            "size": 12
+          }
         ]
-      ],
-      "list": [
-        "id",
-        "title",
-        "text",
-        "category"
       ]
     },
     "uid": "sections.articles",

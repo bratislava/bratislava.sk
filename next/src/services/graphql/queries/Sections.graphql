@@ -27,6 +27,9 @@ fragment ArticlesSection on ComponentSectionsArticles {
   adminGroups {
     ...AdminGroupEntity
   }
+  showMoreLink {
+    ...CommonLink
+  }
 }
 
 fragment InbaArticlesListSection on ComponentSectionsInbaArticlesList {
