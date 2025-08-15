@@ -1,16 +1,18 @@
 import { Typography } from '@bratislava/component-library'
 import React, { useMemo } from 'react'
 
-import { SendIcon, ServicesIcon } from '@/src/assets/icons'
 import {
   AddressIcon,
+  CityServicesIcon,
   EmailIcon,
+  EuroIcon,
+  MapIcon,
   OpeningHoursIcon,
   PersonIcon,
   PhoneIcon,
+  PlaneIcon,
   WebIcon,
 } from '@/src/assets/icons-contacts'
-import { DirectionsIcon } from '@/src/assets/material-icons'
 import MLink from '@/src/components/common/MLink/MLink'
 import {
   ContactCardBlockFragment,
@@ -105,19 +107,16 @@ const ContactCtaCard = ({ className, contact }: ContactCtaCardProps) => {
       return { icon: OpeningHoursIcon, displayValue: contact.value }
     }
 
-    // TODO icon
     if (contact.type === ContactCtaCardType.PostalAddress) {
-      return { icon: SendIcon, displayValue: contact.value }
+      return { icon: PlaneIcon, displayValue: contact.value }
     }
 
-    // TODO icon
     if (contact.type === ContactCtaCardType.BillingInfo) {
-      return { icon: ServicesIcon, displayValue: contact.value }
+      return { icon: CityServicesIcon, displayValue: contact.value }
     }
 
-    // TODO icon
     if (contact.type === ContactCtaCardType.BankConnection) {
-      return { icon: AddressIcon, displayValue: contact.value }
+      return { icon: EuroIcon, displayValue: contact.value }
     }
 
     if (contact.type === 'Person') {
@@ -143,8 +142,7 @@ const ContactCtaCard = ({ className, contact }: ContactCtaCardProps) => {
 
     if (contact.type === 'Directions') {
       return {
-        // TODO icon
-        icon: DirectionsIcon,
+        icon: MapIcon,
         displayComponent: (
           <div className="flex flex-col gap-4">
             <div className="flex flex-col gap-1">
