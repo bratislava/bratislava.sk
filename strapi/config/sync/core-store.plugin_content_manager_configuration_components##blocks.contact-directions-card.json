@@ -21,8 +21,8 @@
       },
       "overrideLabel": {
         "edit": {
-          "label": "overrideLabel",
-          "description": "",
+          "label": "Nadpis kontaktu (ak treba špecifikovať)",
+          "description": "Toto políčko prosím vypĺňajte iba ak je potrebné použiť špecifický nadpis kontaktu. Ak je toto políčko prázdne, použije sa štandardný nadpis kontaktu (Navštívte nás, Úradné hodiny, Email, Telefón, Web, Korešpondenčná adresa, Fakturačné údaje, Bankové spojenie, Ako sa k nám dostať...)",
           "placeholder": "",
           "visible": true,
           "editable": true
@@ -35,8 +35,8 @@
       },
       "address": {
         "edit": {
-          "label": "address",
-          "description": "",
+          "label": "Adresa",
+          "description": "Uvádzajte iba adresu (ulica, číslo, prípadne aj PSČ a Bratislava-mestská časť), všetko do jedného riadku.",
           "placeholder": "",
           "visible": true,
           "editable": true
@@ -49,7 +49,7 @@
       },
       "parkingInfo": {
         "edit": {
-          "label": "parkingInfo",
+          "label": "Parkovanie",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -63,7 +63,7 @@
       },
       "publicTransportInfo": {
         "edit": {
-          "label": "publicTransportInfo",
+          "label": "MHD",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -77,7 +77,7 @@
       },
       "barrierFreeInfo": {
         "edit": {
-          "label": "barrierFreeInfo",
+          "label": "Bezbariérovosť",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -85,27 +85,13 @@
         },
         "list": {
           "label": "barrierFreeInfo",
-          "searchable": true,
-          "sortable": true
-        }
-      },
-      "navigateToLink": {
-        "edit": {
-          "label": "navigateToLink",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "navigateToLink",
           "searchable": true,
           "sortable": true
         }
       },
       "iframeUrl": {
         "edit": {
-          "label": "iframeUrl",
+          "label": "Google Maps iframe url",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -127,21 +113,15 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "overrideLabel",
-        "address",
-        "parkingInfo"
-      ],
       "edit": [
         [
           {
             "name": "overrideLabel",
-            "size": 6
+            "size": 12
           },
           {
             "name": "address",
-            "size": 6
+            "size": 12
           }
         ],
         [
@@ -158,18 +138,20 @@
           {
             "name": "barrierFreeInfo",
             "size": 6
-          },
-          {
-            "name": "navigateToLink",
-            "size": 6
           }
         ],
         [
           {
             "name": "iframeUrl",
-            "size": 6
+            "size": 12
           }
         ]
+      ],
+      "list": [
+        "id",
+        "overrideLabel",
+        "address",
+        "parkingInfo"
       ]
     },
     "uid": "blocks.contact-directions-card",

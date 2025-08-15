@@ -54,8 +54,7 @@
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true,
-          "mainField": "overrideLabel"
+          "editable": true
         },
         "list": {
           "label": "addressContacts",
@@ -69,8 +68,7 @@
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true,
-          "mainField": "overrideLabel"
+          "editable": true
         },
         "list": {
           "label": "openingHoursContacts",
@@ -84,8 +82,7 @@
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true,
-          "mainField": "overrideLabel"
+          "editable": true
         },
         "list": {
           "label": "emailContacts",
@@ -99,8 +96,7 @@
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true,
-          "mainField": "overrideLabel"
+          "editable": true
         },
         "list": {
           "label": "phoneContacts",
@@ -114,8 +110,7 @@
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true,
-          "mainField": "overrideLabel"
+          "editable": true
         },
         "list": {
           "label": "webContacts",
@@ -129,8 +124,7 @@
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true,
-          "mainField": "overrideLabel"
+          "editable": true
         },
         "list": {
           "label": "postalAddressContacts",
@@ -144,8 +138,7 @@
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true,
-          "mainField": "overrideLabel"
+          "editable": true
         },
         "list": {
           "label": "billingInfoContacts",
@@ -159,8 +152,7 @@
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true,
-          "mainField": "overrideLabel"
+          "editable": true
         },
         "list": {
           "label": "bankConnectionContacts",
@@ -174,8 +166,7 @@
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true,
-          "mainField": "title"
+          "editable": true
         },
         "list": {
           "label": "personContacts",
@@ -189,8 +180,7 @@
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true,
-          "mainField": "overrideLabel"
+          "editable": true
         },
         "list": {
           "label": "directionsContact",
@@ -222,6 +212,12 @@
       }
     },
     "layouts": {
+      "list": [
+        "id",
+        "title",
+        "addressContacts",
+        "documentId"
+      ],
       "edit": [
         [
           {
@@ -301,12 +297,6 @@
             "size": 6
           }
         ]
-      ],
-      "list": [
-        "id",
-        "title",
-        "addressContacts",
-        "documentId"
       ]
     },
     "isComponent": true
