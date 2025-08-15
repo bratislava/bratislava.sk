@@ -1,0 +1,163 @@
+{
+  "key": "plugin_content_manager_configuration_components::blocks.contact-directions-card",
+  "value": {
+    "settings": {
+      "bulkable": true,
+      "filterable": true,
+      "searchable": true,
+      "pageSize": 10,
+      "mainField": "overrideLabel",
+      "defaultSortBy": "overrideLabel",
+      "defaultSortOrder": "ASC"
+    },
+    "metadatas": {
+      "id": {
+        "edit": {},
+        "list": {
+          "label": "id",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "overrideLabel": {
+        "edit": {
+          "label": "Nadpis kontaktu (ak treba špecifikovať)",
+          "description": "Toto políčko prosím vypĺňajte iba ak je potrebné použiť špecifický nadpis kontaktu. Ak je toto políčko prázdne, použije sa štandardný nadpis kontaktu (Navštívte nás, Úradné hodiny, Email, Telefón, Web, Korešpondenčná adresa, Fakturačné údaje, Bankové spojenie, Ako sa k nám dostať...)",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "overrideLabel",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "address": {
+        "edit": {
+          "label": "Adresa",
+          "description": "Uvádzajte iba adresu (ulica, číslo, prípadne aj PSČ a Bratislava-mestská časť), všetko do jedného riadku.",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "address",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "parkingInfo": {
+        "edit": {
+          "label": "Parkovanie",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "parkingInfo",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "publicTransportInfo": {
+        "edit": {
+          "label": "MHD",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "publicTransportInfo",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "barrierFreeInfo": {
+        "edit": {
+          "label": "Bezbariérovosť",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "barrierFreeInfo",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "iframeUrl": {
+        "edit": {
+          "label": "Google Maps iframe url",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "iframeUrl",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "documentId": {
+        "edit": {},
+        "list": {
+          "label": "documentId",
+          "searchable": true,
+          "sortable": true
+        }
+      }
+    },
+    "layouts": {
+      "edit": [
+        [
+          {
+            "name": "overrideLabel",
+            "size": 12
+          },
+          {
+            "name": "address",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "parkingInfo",
+            "size": 6
+          },
+          {
+            "name": "publicTransportInfo",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "barrierFreeInfo",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "iframeUrl",
+            "size": 12
+          }
+        ]
+      ],
+      "list": [
+        "id",
+        "overrideLabel",
+        "address",
+        "parkingInfo"
+      ]
+    },
+    "uid": "blocks.contact-directions-card",
+    "isComponent": true
+  },
+  "type": "object",
+  "environment": null,
+  "tag": null
+}

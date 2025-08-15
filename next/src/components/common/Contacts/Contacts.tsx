@@ -28,6 +28,10 @@ const Contacts = ({ section }: ContactsProps) => {
     emailContacts,
     phoneContacts,
     webContacts,
+    postalAddressContacts,
+    billingInfoContacts,
+    bankConnectionContacts,
+    directionsContact,
     personContacts,
   } = section
 
@@ -37,6 +41,9 @@ const Contacts = ({ section }: ContactsProps) => {
     ...mapSection(emailContacts, ContactCtaCardType.Email),
     ...mapSection(phoneContacts, ContactCtaCardType.Phone),
     ...mapSection(webContacts, ContactCtaCardType.Web),
+    ...mapSection(postalAddressContacts, ContactCtaCardType.PostalAddress),
+    ...mapSection(billingInfoContacts, ContactCtaCardType.BillingInfo),
+    ...mapSection(bankConnectionContacts, ContactCtaCardType.BankConnection),
   ]
 
   return (
@@ -61,6 +68,14 @@ const Contacts = ({ section }: ContactsProps) => {
             }}
           />
         ))}
+        {directionsContact ? (
+          <ContactCtaCard
+            contact={{
+              type: 'Directions',
+              ...directionsContact,
+            }}
+          />
+        ) : null}
       </div>
     </div>
   )

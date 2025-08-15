@@ -50,7 +50,7 @@
       },
       "addressContacts": {
         "edit": {
-          "label": "Adresy",
+          "label": "Navštívte nás",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -118,6 +118,48 @@
           "sortable": false
         }
       },
+      "postalAddressContacts": {
+        "edit": {
+          "label": "Korešpondenčná adresa",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "postalAddressContacts",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "billingInfoContacts": {
+        "edit": {
+          "label": "Fakturačné údaje",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "billingInfoContacts",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "bankConnectionContacts": {
+        "edit": {
+          "label": "Bankové spojenie",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "bankConnectionContacts",
+          "searchable": false,
+          "sortable": false
+        }
+      },
       "personContacts": {
         "edit": {
           "label": "Ľudia",
@@ -128,6 +170,20 @@
         },
         "list": {
           "label": "personContacts",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "directionsContact": {
+        "edit": {
+          "label": "Ako sa k nám dostať",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "directionsContact",
           "searchable": false,
           "sortable": false
         }
@@ -207,7 +263,31 @@
         ],
         [
           {
+            "name": "postalAddressContacts",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "billingInfoContacts",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "bankConnectionContacts",
+            "size": 12
+          }
+        ],
+        [
+          {
             "name": "personContacts",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "directionsContact",
             "size": 12
           }
         ],

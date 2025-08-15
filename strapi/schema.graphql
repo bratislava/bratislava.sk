@@ -576,6 +576,38 @@ input ComponentBlocksContactCardInput {
   value: String
 }
 
+type ComponentBlocksContactDirectionsCard {
+  address: String!
+  barrierFreeInfo: String
+  id: ID!
+  iframeUrl: String
+  overrideLabel: String
+  parkingInfo: String
+  publicTransportInfo: String
+}
+
+input ComponentBlocksContactDirectionsCardFiltersInput {
+  address: StringFilterInput
+  and: [ComponentBlocksContactDirectionsCardFiltersInput]
+  barrierFreeInfo: StringFilterInput
+  iframeUrl: StringFilterInput
+  not: ComponentBlocksContactDirectionsCardFiltersInput
+  or: [ComponentBlocksContactDirectionsCardFiltersInput]
+  overrideLabel: StringFilterInput
+  parkingInfo: StringFilterInput
+  publicTransportInfo: StringFilterInput
+}
+
+input ComponentBlocksContactDirectionsCardInput {
+  address: String
+  barrierFreeInfo: String
+  id: ID
+  iframeUrl: String
+  overrideLabel: String
+  parkingInfo: String
+  publicTransportInfo: String
+}
+
 type ComponentBlocksContactPersonCard {
   email: String
   id: ID!
@@ -1229,12 +1261,16 @@ input ComponentSectionsComparisonSectionInput {
 
 type ComponentSectionsContactsSection {
   addressContacts(filters: ComponentBlocksContactCardFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksContactCard]
+  bankConnectionContacts(filters: ComponentBlocksContactCardFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksContactCard]
+  billingInfoContacts(filters: ComponentBlocksContactCardFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksContactCard]
   description: String
+  directionsContact: ComponentBlocksContactDirectionsCard
   emailContacts(filters: ComponentBlocksContactCardFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksContactCard]
   id: ID!
   openingHoursContacts(filters: ComponentBlocksContactCardFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksContactCard]
   personContacts(filters: ComponentBlocksContactPersonCardFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksContactPersonCard]
   phoneContacts(filters: ComponentBlocksContactCardFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksContactCard]
+  postalAddressContacts(filters: ComponentBlocksContactCardFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksContactCard]
   title: String
   titleLevel: ENUM_COMPONENTSECTIONSCONTACTSSECTION_TITLELEVEL
   webContacts(filters: ComponentBlocksContactCardFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksContactCard]
@@ -1243,13 +1279,17 @@ type ComponentSectionsContactsSection {
 input ComponentSectionsContactsSectionFiltersInput {
   addressContacts: ComponentBlocksContactCardFiltersInput
   and: [ComponentSectionsContactsSectionFiltersInput]
+  bankConnectionContacts: ComponentBlocksContactCardFiltersInput
+  billingInfoContacts: ComponentBlocksContactCardFiltersInput
   description: StringFilterInput
+  directionsContact: ComponentBlocksContactDirectionsCardFiltersInput
   emailContacts: ComponentBlocksContactCardFiltersInput
   not: ComponentSectionsContactsSectionFiltersInput
   openingHoursContacts: ComponentBlocksContactCardFiltersInput
   or: [ComponentSectionsContactsSectionFiltersInput]
   personContacts: ComponentBlocksContactPersonCardFiltersInput
   phoneContacts: ComponentBlocksContactCardFiltersInput
+  postalAddressContacts: ComponentBlocksContactCardFiltersInput
   title: StringFilterInput
   titleLevel: StringFilterInput
   webContacts: ComponentBlocksContactCardFiltersInput
@@ -1257,12 +1297,16 @@ input ComponentSectionsContactsSectionFiltersInput {
 
 input ComponentSectionsContactsSectionInput {
   addressContacts: [ComponentBlocksContactCardInput]
+  bankConnectionContacts: [ComponentBlocksContactCardInput]
+  billingInfoContacts: [ComponentBlocksContactCardInput]
   description: String
+  directionsContact: ComponentBlocksContactDirectionsCardInput
   emailContacts: [ComponentBlocksContactCardInput]
   id: ID
   openingHoursContacts: [ComponentBlocksContactCardInput]
   personContacts: [ComponentBlocksContactPersonCardInput]
   phoneContacts: [ComponentBlocksContactCardInput]
+  postalAddressContacts: [ComponentBlocksContactCardInput]
   title: String
   titleLevel: ENUM_COMPONENTSECTIONSCONTACTSSECTION_TITLELEVEL
   webContacts: [ComponentBlocksContactCardInput]
@@ -2775,7 +2819,7 @@ type GeneralRelationResponseCollection {
   nodes: [General!]!
 }
 
-union GenericMorph = AdminGroup | Alert | Article | ArticleCategory | BlogPost | ComponentAccordionItemsFlatText | ComponentAccordionItemsInstitution | ComponentAccordionItemsInstitutionNarrow | ComponentBlocksCardLink | ComponentBlocksColumnsItem | ComponentBlocksCommonLink | ComponentBlocksComparisonCard | ComponentBlocksComparisonItem | ComponentBlocksContactCard | ComponentBlocksContactPersonCard | ComponentBlocksFile | ComponentBlocksFileItem | ComponentBlocksFooterColumn | ComponentBlocksHomepageHighlightsItem | ComponentBlocksInBa | ComponentBlocksNumbersOverviewItem | ComponentBlocksNumericalListItem | ComponentBlocksPageLink | ComponentBlocksPartner | ComponentBlocksProsAndConsCard | ComponentBlocksTopServicesItem | ComponentBlocksVideo | ComponentGeneralHeader | ComponentGeneralHeaderLink | ComponentHeaderSectionsEvent | ComponentHeaderSectionsFacility | ComponentMenuMenuItem | ComponentMenuMenuLink | ComponentMenuMenuSection | ComponentSectionsAccordion | ComponentSectionsArticles | ComponentSectionsBanner | ComponentSectionsCalculator | ComponentSectionsColumnedText | ComponentSectionsColumns | ComponentSectionsComparisonSection | ComponentSectionsContactsSection | ComponentSectionsDivider | ComponentSectionsDocuments | ComponentSectionsEvents | ComponentSectionsFacilities | ComponentSectionsFaqCategories | ComponentSectionsFaqs | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsHomepageEvents | ComponentSectionsHomepageHighlights | ComponentSectionsHomepageMayorAndCouncil | ComponentSectionsHomepageTabs | ComponentSectionsIframe | ComponentSectionsInbaArticlesList | ComponentSectionsInbaReleases | ComponentSectionsLinks | ComponentSectionsNarrowText | ComponentSectionsNumbersOverview | ComponentSectionsNumericalList | ComponentSectionsOfficialBoard | ComponentSectionsOrganizationalStructure | ComponentSectionsPartners | ComponentSectionsProsAndConsSection | ComponentSectionsRegulations | ComponentSectionsRegulationsList | ComponentSectionsSubnavigation | ComponentSectionsSubpageList | ComponentSectionsTextWithImage | ComponentSectionsTextWithImageOverlapped | ComponentSectionsTootootEvents | ComponentSectionsTopServices | ComponentSectionsVideos | ComponentSidebarsEmptySidebar | ComponentTaxAdministratorsTaxAdministrator | Document | DocumentCategory | Faq | FaqCategory | Footer | General | Homepage | I18NLocale | InbaArticle | InbaRelease | InbaTag | Menu | Page | PageCategory | Regulation | ReviewWorkflowsWorkflow | ReviewWorkflowsWorkflowStage | Tag | TaxAdministratorsList | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
+union GenericMorph = AdminGroup | Alert | Article | ArticleCategory | BlogPost | ComponentAccordionItemsFlatText | ComponentAccordionItemsInstitution | ComponentAccordionItemsInstitutionNarrow | ComponentBlocksCardLink | ComponentBlocksColumnsItem | ComponentBlocksCommonLink | ComponentBlocksComparisonCard | ComponentBlocksComparisonItem | ComponentBlocksContactCard | ComponentBlocksContactDirectionsCard | ComponentBlocksContactPersonCard | ComponentBlocksFile | ComponentBlocksFileItem | ComponentBlocksFooterColumn | ComponentBlocksHomepageHighlightsItem | ComponentBlocksInBa | ComponentBlocksNumbersOverviewItem | ComponentBlocksNumericalListItem | ComponentBlocksPageLink | ComponentBlocksPartner | ComponentBlocksProsAndConsCard | ComponentBlocksTopServicesItem | ComponentBlocksVideo | ComponentGeneralHeader | ComponentGeneralHeaderLink | ComponentHeaderSectionsEvent | ComponentHeaderSectionsFacility | ComponentMenuMenuItem | ComponentMenuMenuLink | ComponentMenuMenuSection | ComponentSectionsAccordion | ComponentSectionsArticles | ComponentSectionsBanner | ComponentSectionsCalculator | ComponentSectionsColumnedText | ComponentSectionsColumns | ComponentSectionsComparisonSection | ComponentSectionsContactsSection | ComponentSectionsDivider | ComponentSectionsDocuments | ComponentSectionsEvents | ComponentSectionsFacilities | ComponentSectionsFaqCategories | ComponentSectionsFaqs | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsHomepageEvents | ComponentSectionsHomepageHighlights | ComponentSectionsHomepageMayorAndCouncil | ComponentSectionsHomepageTabs | ComponentSectionsIframe | ComponentSectionsInbaArticlesList | ComponentSectionsInbaReleases | ComponentSectionsLinks | ComponentSectionsNarrowText | ComponentSectionsNumbersOverview | ComponentSectionsNumericalList | ComponentSectionsOfficialBoard | ComponentSectionsOrganizationalStructure | ComponentSectionsPartners | ComponentSectionsProsAndConsSection | ComponentSectionsRegulations | ComponentSectionsRegulationsList | ComponentSectionsSubnavigation | ComponentSectionsSubpageList | ComponentSectionsTextWithImage | ComponentSectionsTextWithImageOverlapped | ComponentSectionsTootootEvents | ComponentSectionsTopServices | ComponentSectionsVideos | ComponentSidebarsEmptySidebar | ComponentTaxAdministratorsTaxAdministrator | Document | DocumentCategory | Faq | FaqCategory | Footer | General | Homepage | I18NLocale | InbaArticle | InbaRelease | InbaTag | Menu | Page | PageCategory | Regulation | ReviewWorkflowsWorkflow | ReviewWorkflowsWorkflowStage | Tag | TaxAdministratorsList | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
 
 type Homepage {
   createdAt: DateTime

@@ -3,14 +3,22 @@ import React, { useMemo } from 'react'
 
 import {
   AddressIcon,
+  CityServicesIcon,
   EmailIcon,
+  EuroIcon,
+  MapIcon,
   OpeningHoursIcon,
   PersonIcon,
   PhoneIcon,
+  PlaneIcon,
   WebIcon,
 } from '@/src/assets/icons-contacts'
 import MLink from '@/src/components/common/MLink/MLink'
-import { ContactCardBlockFragment, ContactPersonCardBlockFragment } from '@/src/services/graphql'
+import {
+  ContactCardBlockFragment,
+  ContactDirectionsCardBlockFragment,
+  ContactPersonCardBlockFragment,
+} from '@/src/services/graphql'
 import cn from '@/src/utils/cn'
 import { useTranslation } from '@/src/utils/useTranslation'
 
@@ -20,13 +28,17 @@ export enum ContactCtaCardType {
   Email = 'Email',
   Phone = 'Phone',
   Web = 'Web',
+  PostalAddress = 'PostalAddress',
+  BillingInfo = 'BillingInfo',
+  BankConnection = 'BankConnection',
 }
 
 type ContactCtaCardProps = {
   className?: string
   contact:
-    | ({ type: 'Person' } & ContactPersonCardBlockFragment)
     | ({ type: ContactCtaCardType } & ContactCardBlockFragment)
+    | ({ type: 'Person' } & ContactPersonCardBlockFragment)
+    | ({ type: 'Directions' } & ContactDirectionsCardBlockFragment)
 }
 
 /**
@@ -50,6 +62,10 @@ const ContactCtaCard = ({ className, contact }: ContactCtaCardProps) => {
       [ContactCtaCardType.Address]: t('ContactCtaCard.address'),
       [ContactCtaCardType.OpeningHours]: t('ContactCtaCard.openingHours'),
       [ContactCtaCardType.Web]: t('ContactCtaCard.web'),
+      [ContactCtaCardType.PostalAddress]: t('ContactCtaCard.postalAddress'),
+      [ContactCtaCardType.BillingInfo]: t('ContactCtaCard.billingInfo'),
+      [ContactCtaCardType.BankConnection]: t('ContactCtaCard.bankConnection'),
+      Directions: t('ContactCtaCard.directions'),
     }[contact.type]
   }, [contact, t])
 
@@ -91,6 +107,18 @@ const ContactCtaCard = ({ className, contact }: ContactCtaCardProps) => {
       return { icon: OpeningHoursIcon, displayValue: contact.value }
     }
 
+    if (contact.type === ContactCtaCardType.PostalAddress) {
+      return { icon: PlaneIcon, displayValue: contact.value }
+    }
+
+    if (contact.type === ContactCtaCardType.BillingInfo) {
+      return { icon: CityServicesIcon, displayValue: contact.value }
+    }
+
+    if (contact.type === ContactCtaCardType.BankConnection) {
+      return { icon: EuroIcon, displayValue: contact.value }
+    }
+
     if (contact.type === 'Person') {
       return {
         icon: PersonIcon,
@@ -107,6 +135,43 @@ const ContactCtaCard = ({ className, contact }: ContactCtaCardProps) => {
               </MLink>
             ) : null}
             {contact.subtext ? <Typography variant="p-small">{contact.subtext}</Typography> : null}
+          </div>
+        ),
+      }
+    }
+
+    if (contact.type === 'Directions') {
+      return {
+        icon: MapIcon,
+        displayComponent: (
+          <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-1">
+              <Typography variant="p-small">{contact.address}</Typography>
+              {contact.parkingInfo ? (
+                <Typography variant="p-small">{contact.parkingInfo}</Typography>
+              ) : null}
+              {contact.publicTransportInfo ? (
+                <Typography variant="p-small">{contact.publicTransportInfo}</Typography>
+              ) : null}
+              {contact.barrierFreeInfo ? (
+                <Typography variant="p-small">{contact.barrierFreeInfo}</Typography>
+              ) : null}
+            </div>
+            {contact.iframeUrl ? (
+              <div className="aspect-video">
+                <iframe
+                  title="Mapa"
+                  src={contact.iframeUrl}
+                  className="h-full w-full border"
+                  allow="geolocation *"
+                  // This should prevent iframes to collect cookies. Otherwise, they collect their cookies we don't have consent for.
+                  // It may not work if the iframe needs some necessary cookies, or it may block some iframe to render at all.
+                  // But it seems to work for all of our iframes so far.
+                  // https://stackoverflow.com/questions/44837450/recommended-method-to-prevent-any-content-inside-iframe-from-setting-cookies
+                  sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-forms"
+                />
+              </div>
+            ) : null}
           </div>
         ),
       }

@@ -37,10 +37,30 @@
       "component": "blocks.contact-card",
       "repeatable": true
     },
+    "postalAddressContacts": {
+      "type": "component",
+      "component": "blocks.contact-card",
+      "repeatable": true
+    },
+    "billingInfoContacts": {
+      "type": "component",
+      "component": "blocks.contact-card",
+      "repeatable": true
+    },
+    "bankConnectionContacts": {
+      "type": "component",
+      "component": "blocks.contact-card",
+      "repeatable": true
+    },
     "personContacts": {
       "type": "component",
       "component": "blocks.contact-person-card",
       "repeatable": true
+    },
+    "directionsContact": {
+      "type": "component",
+      "component": "blocks.contact-directions-card",
+      "repeatable": false
     },
     "titleLevel": {
       "type": "enumeration",

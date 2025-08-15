@@ -305,6 +305,15 @@ fragment ContactPersonCardBlock on ComponentBlocksContactPersonCard {
   phone
 }
 
+fragment ContactDirectionsCardBlock on ComponentBlocksContactDirectionsCard {
+  overrideLabel
+  address
+  parkingInfo
+  publicTransportInfo
+  barrierFreeInfo
+  iframeUrl
+}
+
 fragment ContactsSection on ComponentSectionsContactsSection {
   id
   title
@@ -324,8 +333,20 @@ fragment ContactsSection on ComponentSectionsContactsSection {
   webContacts {
     ...ContactCardBlock
   }
+  postalAddressContacts {
+    ...ContactCardBlock
+  }
+  billingInfoContacts {
+    ...ContactCardBlock
+  }
+  bankConnectionContacts {
+    ...ContactCardBlock
+  }
   personContacts {
     ...ContactPersonCardBlock
+  }
+  directionsContact{
+    ...ContactDirectionsCardBlock
   }
   titleLevelContactsSection: titleLevel
 }
