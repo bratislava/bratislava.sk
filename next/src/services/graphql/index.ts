@@ -1347,27 +1347,62 @@ export type ComponentSectionsAccordionInput = {
 
 export type ComponentSectionsArticles = {
   __typename?: 'ComponentSectionsArticles'
+  adminGroups: Array<Maybe<AdminGroup>>
+  adminGroups_connection?: Maybe<AdminGroupRelationResponseCollection>
   category?: Maybe<PageCategory>
   id: Scalars['ID']['output']
   showAll?: Maybe<Scalars['Boolean']['output']>
+  showMoreLink?: Maybe<ComponentBlocksCommonLink>
+  tags: Array<Maybe<Tag>>
+  tags_connection?: Maybe<TagRelationResponseCollection>
   text?: Maybe<Scalars['String']['output']>
   title?: Maybe<Scalars['String']['output']>
 }
 
+export type ComponentSectionsArticlesAdminGroupsArgs = {
+  filters?: InputMaybe<AdminGroupFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type ComponentSectionsArticlesAdminGroups_ConnectionArgs = {
+  filters?: InputMaybe<AdminGroupFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type ComponentSectionsArticlesTagsArgs = {
+  filters?: InputMaybe<TagFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type ComponentSectionsArticlesTags_ConnectionArgs = {
+  filters?: InputMaybe<TagFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
 export type ComponentSectionsArticlesFiltersInput = {
+  adminGroups?: InputMaybe<AdminGroupFiltersInput>
   and?: InputMaybe<Array<InputMaybe<ComponentSectionsArticlesFiltersInput>>>
   category?: InputMaybe<PageCategoryFiltersInput>
   not?: InputMaybe<ComponentSectionsArticlesFiltersInput>
   or?: InputMaybe<Array<InputMaybe<ComponentSectionsArticlesFiltersInput>>>
   showAll?: InputMaybe<BooleanFilterInput>
+  showMoreLink?: InputMaybe<ComponentBlocksCommonLinkFiltersInput>
+  tags?: InputMaybe<TagFiltersInput>
   text?: InputMaybe<StringFilterInput>
   title?: InputMaybe<StringFilterInput>
 }
 
 export type ComponentSectionsArticlesInput = {
+  adminGroups?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
   category?: InputMaybe<Scalars['ID']['input']>
   id?: InputMaybe<Scalars['ID']['input']>
   showAll?: InputMaybe<Scalars['Boolean']['input']>
+  showMoreLink?: InputMaybe<ComponentBlocksCommonLinkInput>
+  tags?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
   text?: InputMaybe<Scalars['String']['input']>
   title?: InputMaybe<Scalars['String']['input']>
 }
@@ -6168,6 +6203,8 @@ export type UsersPermissionsUserRelationResponseCollection = {
   nodes: Array<UsersPermissionsUser>
 }
 
+export type AdminGroupEntityFragment = { __typename?: 'AdminGroup'; documentId: string }
+
 export type ArticleCategoryEntityFragment = {
   __typename?: 'ArticleCategory'
   documentId: string
@@ -9085,6 +9122,38 @@ export type PageEntityFragment = {
           title?: string | null
           color?: Enum_Pagecategory_Color | null
         } | null
+        tags: Array<{
+          __typename?: 'Tag'
+          documentId: string
+          title?: string | null
+          pageCategory?: {
+            __typename?: 'PageCategory'
+            documentId: string
+            title?: string | null
+            color?: Enum_Pagecategory_Color | null
+          } | null
+        } | null>
+        adminGroups: Array<{ __typename?: 'AdminGroup'; documentId: string } | null>
+        showMoreLink?: {
+          __typename?: 'ComponentBlocksCommonLink'
+          label?: string | null
+          url?: string | null
+          analyticsId?: string | null
+          page?: {
+            __typename?: 'Page'
+            documentId: string
+            slug?: string | null
+            title: string
+            locale?: string | null
+          } | null
+          article?: {
+            __typename: 'Article'
+            documentId: string
+            slug: string
+            title: string
+            locale?: string | null
+          } | null
+        } | null
       }
     | {
         __typename: 'ComponentSectionsBanner'
@@ -9954,6 +10023,38 @@ export type PageBySlugQuery = {
             documentId: string
             title?: string | null
             color?: Enum_Pagecategory_Color | null
+          } | null
+          tags: Array<{
+            __typename?: 'Tag'
+            documentId: string
+            title?: string | null
+            pageCategory?: {
+              __typename?: 'PageCategory'
+              documentId: string
+              title?: string | null
+              color?: Enum_Pagecategory_Color | null
+            } | null
+          } | null>
+          adminGroups: Array<{ __typename?: 'AdminGroup'; documentId: string } | null>
+          showMoreLink?: {
+            __typename?: 'ComponentBlocksCommonLink'
+            label?: string | null
+            url?: string | null
+            analyticsId?: string | null
+            page?: {
+              __typename?: 'Page'
+              documentId: string
+              slug?: string | null
+              title: string
+              locale?: string | null
+            } | null
+            article?: {
+              __typename: 'Article'
+              documentId: string
+              slug: string
+              title: string
+              locale?: string | null
+            } | null
           } | null
         }
       | {
@@ -10853,6 +10954,38 @@ export type Dev_AllPagesQuery = {
             documentId: string
             title?: string | null
             color?: Enum_Pagecategory_Color | null
+          } | null
+          tags: Array<{
+            __typename?: 'Tag'
+            documentId: string
+            title?: string | null
+            pageCategory?: {
+              __typename?: 'PageCategory'
+              documentId: string
+              title?: string | null
+              color?: Enum_Pagecategory_Color | null
+            } | null
+          } | null>
+          adminGroups: Array<{ __typename?: 'AdminGroup'; documentId: string } | null>
+          showMoreLink?: {
+            __typename?: 'ComponentBlocksCommonLink'
+            label?: string | null
+            url?: string | null
+            analyticsId?: string | null
+            page?: {
+              __typename?: 'Page'
+              documentId: string
+              slug?: string | null
+              title: string
+              locale?: string | null
+            } | null
+            article?: {
+              __typename: 'Article'
+              documentId: string
+              slug: string
+              title: string
+              locale?: string | null
+            } | null
           } | null
         }
       | {
@@ -12170,6 +12303,38 @@ export type ArticlesSectionFragment = {
     title?: string | null
     color?: Enum_Pagecategory_Color | null
   } | null
+  tags: Array<{
+    __typename?: 'Tag'
+    documentId: string
+    title?: string | null
+    pageCategory?: {
+      __typename?: 'PageCategory'
+      documentId: string
+      title?: string | null
+      color?: Enum_Pagecategory_Color | null
+    } | null
+  } | null>
+  adminGroups: Array<{ __typename?: 'AdminGroup'; documentId: string } | null>
+  showMoreLink?: {
+    __typename?: 'ComponentBlocksCommonLink'
+    label?: string | null
+    url?: string | null
+    analyticsId?: string | null
+    page?: {
+      __typename?: 'Page'
+      documentId: string
+      slug?: string | null
+      title: string
+      locale?: string | null
+    } | null
+    article?: {
+      __typename: 'Article'
+      documentId: string
+      slug: string
+      title: string
+      locale?: string | null
+    } | null
+  } | null
 }
 
 export type InbaArticlesListSectionFragment = {
@@ -13118,6 +13283,38 @@ type Sections_ComponentSectionsArticles_Fragment = {
     documentId: string
     title?: string | null
     color?: Enum_Pagecategory_Color | null
+  } | null
+  tags: Array<{
+    __typename?: 'Tag'
+    documentId: string
+    title?: string | null
+    pageCategory?: {
+      __typename?: 'PageCategory'
+      documentId: string
+      title?: string | null
+      color?: Enum_Pagecategory_Color | null
+    } | null
+  } | null>
+  adminGroups: Array<{ __typename?: 'AdminGroup'; documentId: string } | null>
+  showMoreLink?: {
+    __typename?: 'ComponentBlocksCommonLink'
+    label?: string | null
+    url?: string | null
+    analyticsId?: string | null
+    page?: {
+      __typename?: 'Page'
+      documentId: string
+      slug?: string | null
+      title: string
+      locale?: string | null
+    } | null
+    article?: {
+      __typename: 'Article'
+      documentId: string
+      slug: string
+      title: string
+      locale?: string | null
+    } | null
   } | null
 }
 
@@ -14787,6 +14984,11 @@ export const NumericalListSectionFragmentDoc = gql`
   }
   ${NumericalListItemBlockFragmentDoc}
 `
+export const AdminGroupEntityFragmentDoc = gql`
+  fragment AdminGroupEntity on AdminGroup {
+    documentId
+  }
+`
 export const ArticlesSectionFragmentDoc = gql`
   fragment ArticlesSection on ComponentSectionsArticles {
     title
@@ -14795,8 +14997,20 @@ export const ArticlesSectionFragmentDoc = gql`
     category {
       ...PageCategoryEntity
     }
+    tags {
+      ...TagEntity
+    }
+    adminGroups {
+      ...AdminGroupEntity
+    }
+    showMoreLink {
+      ...CommonLink
+    }
   }
   ${PageCategoryEntityFragmentDoc}
+  ${TagEntityFragmentDoc}
+  ${AdminGroupEntityFragmentDoc}
+  ${CommonLinkFragmentDoc}
 `
 export const InbaArticlesListSectionFragmentDoc = gql`
   fragment InbaArticlesListSection on ComponentSectionsInbaArticlesList {

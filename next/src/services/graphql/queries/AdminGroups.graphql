@@ -1,0 +1,3 @@
+fragment AdminGroupEntity on AdminGroup {
+  documentId
+}

@@ -12,14 +12,69 @@
     "text": {
       "type": "text"
     },
-    "category": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::page-category.page-category"
-    },
     "showAll": {
       "type": "boolean",
       "default": false
+    },
+    "category": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::page-category.page-category",
+      "conditions": {
+        "visible": {
+          "!=": [
+            {
+              "var": "showAll"
+            },
+            true
+          ]
+        }
+      }
+    },
+    "tags": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::tag.tag",
+      "conditions": {
+        "visible": {
+          "!=": [
+            {
+              "var": "showAll"
+            },
+            true
+          ]
+        }
+      }
+    },
+    "adminGroups": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::admin-group.admin-group",
+      "conditions": {
+        "visible": {
+          "!=": [
+            {
+              "var": "showAll"
+            },
+            true
+          ]
+        }
+      }
+    },
+    "showMoreLink": {
+      "type": "component",
+      "conditions": {
+        "visible": {
+          "!=": [
+            {
+              "var": "showAll"
+            },
+            true
+          ]
+        }
+      },
+      "component": "blocks.common-link",
+      "repeatable": false
     }
   }
 }

@@ -65,7 +65,7 @@
       "showAll": {
         "edit": {
           "label": "Zobraziť všetky",
-          "description": "Ak je toto pole TRUE, zobrazia sa všetky Dokumenty spolu s vyhľadávaním. Ak je FALSE, zobrazia sa Dokumenty vybrané vo vedľajšom poli.",
+          "description": "Ak je toto pole TRUE, zobrazia sa všetky Dokumenty spolu s vyhľadávaním. Ak je FALSE, zobrazia sa Dokumenty vybrané v poli Dokumenty",
           "placeholder": "",
           "visible": true,
           "editable": true
@@ -115,13 +115,13 @@
         ],
         [
           {
-            "name": "documents",
+            "name": "showAll",
             "size": 12
           }
         ],
         [
           {
-            "name": "showAll",
+            "name": "documents",
             "size": 12
           }
         ],

@@ -24,46 +24,59 @@ type Props = {
  * Figma: https://www.figma.com/design/17wbd0MDQcMW9NbXl6UPs8/DS--Component-library?node-id=16846-35571&m=dev
  */
 
-const ArticlesByCategory = ({ section }: Props) => {
+const ArticlesFiltered = ({ section }: Props) => {
   const locale = useLocale()
 
-  const { title, text, category } = section
+  const { title, text, category, tags, adminGroups, showMoreLink } = section
+
+  const adminGroupDocumentIds = adminGroups
+    .map((adminGroup) => adminGroup?.documentId)
+    .filter(isDefined)
+
+  const tagDocumentIds = tags.map((tag) => tag?.documentId).filter(isDefined)
 
   const [filters, setFilters] = useRoutePreservedState({
     ...articlesDefaultFilters,
+    adminGroupDocumentIds,
+    tagDocumentIds,
     pageSize: 12,
   })
 
-  const { data: tagsData } = useQuery({
+  // TODO remove this after removing main categories in strapi
+  const { data: tagsDataFromCategoryField } = useQuery({
     queryKey: ['Tags', locale],
     queryFn: () => client.Tags({ locale }),
     staleTime: Infinity,
+    enabled: !!category,
   })
 
-  const tagDocumentIds =
-    tagsData?.tags
-      .filter((tag) => {
-        return tag?.pageCategory?.documentId === category?.documentId
-      })
-      .map((tag) => tag?.documentId ?? '')
-      .filter(isDefined) ?? []
-
+  // TODO remove this after removing main categories in strapi
   useEffect(() => {
-    setFilters({ ...filters, tagDocumentIds })
+    if (!category || !tagsDataFromCategoryField) return
+    setFilters({
+      ...filters,
+      adminGroupDocumentIds: [],
+      tagDocumentIds:
+        tagsDataFromCategoryField.tags
+          .filter((tag) => {
+            return tag?.pageCategory?.documentId === category?.documentId
+          })
+          .map((tag) => tag?.documentId ?? '')
+          .filter(isDefined) ?? [],
+    })
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [tagsData])
+  }, [tagsDataFromCategoryField])
 
   // TODO prefetch section
   const { data } = useQuery({
     queryKey: getArticlesQueryKey(filters, locale),
     queryFn: () => articlesFetcher(filters, locale),
     placeholderData: keepPreviousData,
-    enabled: filters.tagDocumentIds.length > 0,
   })
 
   return (
-    <div className="flex flex-col">
-      <SectionHeader title={title} text={text} />
+    <div className="flex flex-col gap-8">
+      <SectionHeader title={title} text={text} showMoreLink={showMoreLink} />
       {data?.hits ? (
         <ResponsiveCarousel
           items={data.hits
@@ -71,16 +84,17 @@ const ArticlesByCategory = ({ section }: Props) => {
               return card ? (
                 <ArticleCard
                   key={card.slug}
-                  {...transformArticleProps(card, { withText: false })}
+                  {...transformArticleProps(card, { withText: false, withTag: false })}
                 />
               ) : null
             })
             .filter(isDefined)}
-          desktop={4}
+          desktop={3}
+          hasVerticalPadding={false}
         />
       ) : null}
     </div>
   )
 }
 
-export default ArticlesByCategory
+export default ArticlesFiltered

@@ -41,6 +41,7 @@ const searchIndexSettings = {
     'type',
     'locale',
     'article.tag.documentId',
+    'article.adminGroups.documentId',
     'blog-post.tag.documentId',
     'document.documentCategory.documentId',
     'inba-article.inbaTag.documentId',

@@ -21,6 +21,15 @@ fragment ArticlesSection on ComponentSectionsArticles {
   category {
     ...PageCategoryEntity
   }
+  tags {
+    ...TagEntity
+  }
+  adminGroups {
+    ...AdminGroupEntity
+  }
+  showMoreLink {
+    ...CommonLink
+  }
 }
 
 fragment InbaArticlesListSection on ComponentSectionsInbaArticlesList {

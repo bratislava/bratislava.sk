@@ -47,9 +47,23 @@
           "sortable": true
         }
       },
+      "showAll": {
+        "edit": {
+          "label": "Zobraziť všetky",
+          "description": "Ak je toto pole TRUE, zobrazia sa všetky články spolu s filtrovaním. Ak je FALSE, zobrazia sa články, ktoré spĺňajú kritériá v poliach nižšie.",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "showAll",
+          "searchable": true,
+          "sortable": true
+        }
+      },
       "category": {
         "edit": {
-          "label": "Kategória",
+          "label": "Kategória (toto pole prosíme napoužívať, bude odstránené)",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -62,18 +76,48 @@
           "sortable": true
         }
       },
-      "showAll": {
+      "tags": {
         "edit": {
-          "label": "Zobraziť všetky",
-          "description": "Ak je toto pole TRUE, zobrazia sa všetky články spolu s filtrovaním. Ak je FALSE, zobrazia sa články podľa vybranej Kategórie vo vedľajšom poli.",
+          "label": "Tagy",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "title"
+        },
+        "list": {
+          "label": "tags",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "adminGroups": {
+        "edit": {
+          "label": "Admin skupiny",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "title"
+        },
+        "list": {
+          "label": "adminGroups",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "showMoreLink": {
+        "edit": {
+          "label": "showMoreLink",
+          "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "showAll",
-          "searchable": true,
-          "sortable": true
+          "label": "showMoreLink",
+          "searchable": false,
+          "sortable": false
         }
       },
       "documentId": {
@@ -107,12 +151,32 @@
         ],
         [
           {
+            "name": "showAll",
+            "size": 12
+          }
+        ],
+        [
+          {
             "name": "category",
             "size": 6
-          },
+          }
+        ],
+        [
           {
-            "name": "showAll",
+            "name": "tags",
             "size": 6
+          }
+        ],
+        [
+          {
+            "name": "adminGroups",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "showMoreLink",
+            "size": 12
           }
         ]
       ]

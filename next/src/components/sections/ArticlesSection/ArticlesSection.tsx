@@ -2,7 +2,7 @@ import React from 'react'
 
 import SectionContainer from '@/src/components/layouts/SectionContainer'
 import ArticlesAll from '@/src/components/sections/ArticlesSection/ArticlesAll'
-import ArticlesByCategory from '@/src/components/sections/ArticlesSection/ArticlesByCategory'
+import ArticlesFiltered from '@/src/components/sections/ArticlesSection/ArticlesFiltered'
 import { ArticlesSectionFragment } from '@/src/services/graphql'
 
 type Props = {
@@ -12,11 +12,7 @@ type Props = {
 const ArticlesSection = ({ section }: Props) => {
   return (
     <SectionContainer>
-      {section.showAll ? (
-        <ArticlesAll section={section} />
-      ) : (
-        <ArticlesByCategory section={section} />
-      )}
+      {section.showAll ? <ArticlesAll section={section} /> : <ArticlesFiltered section={section} />}
     </SectionContainer>
   )
 }

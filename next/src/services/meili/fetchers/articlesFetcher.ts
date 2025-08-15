@@ -7,6 +7,7 @@ export type ArticlesFilters = {
   pageSize: number
   page: number
   tagDocumentIds: string[]
+  adminGroupDocumentIds: string[]
 }
 
 export const articlesDefaultFilters: ArticlesFilters = {
@@ -14,6 +15,7 @@ export const articlesDefaultFilters: ArticlesFilters = {
   pageSize: 6,
   page: 1,
   tagDocumentIds: [],
+  adminGroupDocumentIds: [],
 }
 
 export const getArticlesQueryKey = (filters: ArticlesFilters, locale: string) => [
@@ -33,6 +35,9 @@ export const articlesFetcher = (filters: ArticlesFilters, locale: string) => {
         `locale = ${locale}`,
         filters.tagDocumentIds.length > 0
           ? `article.tag.documentId IN [${filters.tagDocumentIds.join(',')}]`
+          : '',
+        filters.adminGroupDocumentIds.length > 0
+          ? `article.adminGroups.documentId IN [${filters.adminGroupDocumentIds.join(',')}]`
           : '',
       ],
       sort: ['article.addedAtTimestamp:desc'],
