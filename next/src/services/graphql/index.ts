@@ -791,7 +791,6 @@ export type ComponentBlocksContactDirectionsCard = {
   barrierFreeInfo?: Maybe<Scalars['String']['output']>
   id: Scalars['ID']['output']
   iframeUrl?: Maybe<Scalars['String']['output']>
-  navigateToLink?: Maybe<Scalars['String']['output']>
   overrideLabel?: Maybe<Scalars['String']['output']>
   parkingInfo?: Maybe<Scalars['String']['output']>
   publicTransportInfo?: Maybe<Scalars['String']['output']>
@@ -802,7 +801,6 @@ export type ComponentBlocksContactDirectionsCardFiltersInput = {
   and?: InputMaybe<Array<InputMaybe<ComponentBlocksContactDirectionsCardFiltersInput>>>
   barrierFreeInfo?: InputMaybe<StringFilterInput>
   iframeUrl?: InputMaybe<StringFilterInput>
-  navigateToLink?: InputMaybe<StringFilterInput>
   not?: InputMaybe<ComponentBlocksContactDirectionsCardFiltersInput>
   or?: InputMaybe<Array<InputMaybe<ComponentBlocksContactDirectionsCardFiltersInput>>>
   overrideLabel?: InputMaybe<StringFilterInput>
@@ -815,7 +813,6 @@ export type ComponentBlocksContactDirectionsCardInput = {
   barrierFreeInfo?: InputMaybe<Scalars['String']['input']>
   id?: InputMaybe<Scalars['ID']['input']>
   iframeUrl?: InputMaybe<Scalars['String']['input']>
-  navigateToLink?: InputMaybe<Scalars['String']['input']>
   overrideLabel?: InputMaybe<Scalars['String']['input']>
   parkingInfo?: InputMaybe<Scalars['String']['input']>
   publicTransportInfo?: InputMaybe<Scalars['String']['input']>
@@ -9326,7 +9323,6 @@ export type PageEntityFragment = {
           parkingInfo?: string | null
           publicTransportInfo?: string | null
           barrierFreeInfo?: string | null
-          navigateToLink?: string | null
           iframeUrl?: string | null
         } | null
       }
@@ -10221,7 +10217,6 @@ export type PageBySlugQuery = {
             parkingInfo?: string | null
             publicTransportInfo?: string | null
             barrierFreeInfo?: string | null
-            navigateToLink?: string | null
             iframeUrl?: string | null
           } | null
         }
@@ -11145,7 +11140,6 @@ export type Dev_AllPagesQuery = {
             parkingInfo?: string | null
             publicTransportInfo?: string | null
             barrierFreeInfo?: string | null
-            navigateToLink?: string | null
             iframeUrl?: string | null
           } | null
         }
@@ -12832,7 +12826,6 @@ export type ContactDirectionsCardBlockFragment = {
   parkingInfo?: string | null
   publicTransportInfo?: string | null
   barrierFreeInfo?: string | null
-  navigateToLink?: string | null
   iframeUrl?: string | null
 }
 
@@ -12896,7 +12889,6 @@ export type ContactsSectionFragment = {
     parkingInfo?: string | null
     publicTransportInfo?: string | null
     barrierFreeInfo?: string | null
-    navigateToLink?: string | null
     iframeUrl?: string | null
   } | null
 }
@@ -13477,7 +13469,6 @@ type Sections_ComponentSectionsContactsSection_Fragment = {
     parkingInfo?: string | null
     publicTransportInfo?: string | null
     barrierFreeInfo?: string | null
-    navigateToLink?: string | null
     iframeUrl?: string | null
   } | null
 }
@@ -15104,7 +15095,6 @@ export const ContactDirectionsCardBlockFragmentDoc = gql`
     parkingInfo
     publicTransportInfo
     barrierFreeInfo
-    navigateToLink
     iframeUrl
   }
 `

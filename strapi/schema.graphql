@@ -581,7 +581,6 @@ type ComponentBlocksContactDirectionsCard {
   barrierFreeInfo: String
   id: ID!
   iframeUrl: String
-  navigateToLink: String
   overrideLabel: String
   parkingInfo: String
   publicTransportInfo: String
@@ -592,7 +591,6 @@ input ComponentBlocksContactDirectionsCardFiltersInput {
   and: [ComponentBlocksContactDirectionsCardFiltersInput]
   barrierFreeInfo: StringFilterInput
   iframeUrl: StringFilterInput
-  navigateToLink: StringFilterInput
   not: ComponentBlocksContactDirectionsCardFiltersInput
   or: [ComponentBlocksContactDirectionsCardFiltersInput]
   overrideLabel: StringFilterInput
@@ -605,7 +603,6 @@ input ComponentBlocksContactDirectionsCardInput {
   barrierFreeInfo: String
   id: ID
   iframeUrl: String
-  navigateToLink: String
   overrideLabel: String
   parkingInfo: String
   publicTransportInfo: String

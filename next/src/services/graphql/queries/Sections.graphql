@@ -302,7 +302,6 @@ fragment ContactDirectionsCardBlock on ComponentBlocksContactDirectionsCard {
   parkingInfo
   publicTransportInfo
   barrierFreeInfo
-  navigateToLink
   iframeUrl
 }
 

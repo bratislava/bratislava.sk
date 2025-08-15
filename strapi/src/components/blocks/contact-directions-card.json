@@ -21,9 +21,6 @@
     "barrierFreeInfo": {
       "type": "text"
     },
-    "navigateToLink": {
-      "type": "string"
-    },
     "iframeUrl": {
       "type": "string"
     }

@@ -156,12 +156,6 @@ const ContactCtaCard = ({ className, contact }: ContactCtaCardProps) => {
               {contact.barrierFreeInfo ? (
                 <Typography variant="p-small">{contact.barrierFreeInfo}</Typography>
               ) : null}
-              {contact.navigateToLink ? (
-                <MLink href={contact.navigateToLink} variant="underlined">
-                  {/* TODO label */}
-                  {contact.navigateToLink}
-                </MLink>
-              ) : null}
             </div>
             {contact.iframeUrl ? (
               <div className="aspect-video">

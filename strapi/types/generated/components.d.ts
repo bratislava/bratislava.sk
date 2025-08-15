@@ -134,7 +134,6 @@ export interface BlocksContactDirectionsCard extends Struct.ComponentSchema {
     address: Schema.Attribute.String & Schema.Attribute.Required
     barrierFreeInfo: Schema.Attribute.Text
     iframeUrl: Schema.Attribute.String
-    navigateToLink: Schema.Attribute.String
     overrideLabel: Schema.Attribute.String
     parkingInfo: Schema.Attribute.Text
     publicTransportInfo: Schema.Attribute.Text
