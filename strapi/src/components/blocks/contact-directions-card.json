@@ -1,0 +1,32 @@
+{
+  "collectionName": "components_blocks_contact_directions_cards",
+  "info": {
+    "displayName": "contact directions card"
+  },
+  "options": {},
+  "attributes": {
+    "overrideLabel": {
+      "type": "string"
+    },
+    "address": {
+      "type": "string",
+      "required": true
+    },
+    "parkingInfo": {
+      "type": "text"
+    },
+    "publicTransportInfo": {
+      "type": "text"
+    },
+    "barrierFreeInfo": {
+      "type": "text"
+    },
+    "navigateToLink": {
+      "type": "string"
+    },
+    "iframeUrl": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

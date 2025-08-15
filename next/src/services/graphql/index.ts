@@ -785,6 +785,42 @@ export type ComponentBlocksContactCardInput = {
   value?: InputMaybe<Scalars['String']['input']>
 }
 
+export type ComponentBlocksContactDirectionsCard = {
+  __typename?: 'ComponentBlocksContactDirectionsCard'
+  address: Scalars['String']['output']
+  barrierFreeInfo?: Maybe<Scalars['String']['output']>
+  id: Scalars['ID']['output']
+  iframeUrl?: Maybe<Scalars['String']['output']>
+  navigateToLink?: Maybe<Scalars['String']['output']>
+  overrideLabel?: Maybe<Scalars['String']['output']>
+  parkingInfo?: Maybe<Scalars['String']['output']>
+  publicTransportInfo?: Maybe<Scalars['String']['output']>
+}
+
+export type ComponentBlocksContactDirectionsCardFiltersInput = {
+  address?: InputMaybe<StringFilterInput>
+  and?: InputMaybe<Array<InputMaybe<ComponentBlocksContactDirectionsCardFiltersInput>>>
+  barrierFreeInfo?: InputMaybe<StringFilterInput>
+  iframeUrl?: InputMaybe<StringFilterInput>
+  navigateToLink?: InputMaybe<StringFilterInput>
+  not?: InputMaybe<ComponentBlocksContactDirectionsCardFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<ComponentBlocksContactDirectionsCardFiltersInput>>>
+  overrideLabel?: InputMaybe<StringFilterInput>
+  parkingInfo?: InputMaybe<StringFilterInput>
+  publicTransportInfo?: InputMaybe<StringFilterInput>
+}
+
+export type ComponentBlocksContactDirectionsCardInput = {
+  address?: InputMaybe<Scalars['String']['input']>
+  barrierFreeInfo?: InputMaybe<Scalars['String']['input']>
+  id?: InputMaybe<Scalars['ID']['input']>
+  iframeUrl?: InputMaybe<Scalars['String']['input']>
+  navigateToLink?: InputMaybe<Scalars['String']['input']>
+  overrideLabel?: InputMaybe<Scalars['String']['input']>
+  parkingInfo?: InputMaybe<Scalars['String']['input']>
+  publicTransportInfo?: InputMaybe<Scalars['String']['input']>
+}
+
 export type ComponentBlocksContactPersonCard = {
   __typename?: 'ComponentBlocksContactPersonCard'
   email?: Maybe<Scalars['String']['output']>
@@ -1527,18 +1563,34 @@ export type ComponentSectionsComparisonSectionInput = {
 export type ComponentSectionsContactsSection = {
   __typename?: 'ComponentSectionsContactsSection'
   addressContacts?: Maybe<Array<Maybe<ComponentBlocksContactCard>>>
+  bankConnectionContacts?: Maybe<Array<Maybe<ComponentBlocksContactCard>>>
+  billingInfoContacts?: Maybe<Array<Maybe<ComponentBlocksContactCard>>>
   description?: Maybe<Scalars['String']['output']>
+  directionsContact?: Maybe<ComponentBlocksContactDirectionsCard>
   emailContacts?: Maybe<Array<Maybe<ComponentBlocksContactCard>>>
   id: Scalars['ID']['output']
   openingHoursContacts?: Maybe<Array<Maybe<ComponentBlocksContactCard>>>
   personContacts?: Maybe<Array<Maybe<ComponentBlocksContactPersonCard>>>
   phoneContacts?: Maybe<Array<Maybe<ComponentBlocksContactCard>>>
+  postalAddressContacts?: Maybe<Array<Maybe<ComponentBlocksContactCard>>>
   title?: Maybe<Scalars['String']['output']>
   titleLevel?: Maybe<Enum_Componentsectionscontactssection_Titlelevel>
   webContacts?: Maybe<Array<Maybe<ComponentBlocksContactCard>>>
 }
 
 export type ComponentSectionsContactsSectionAddressContactsArgs = {
+  filters?: InputMaybe<ComponentBlocksContactCardFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type ComponentSectionsContactsSectionBankConnectionContactsArgs = {
+  filters?: InputMaybe<ComponentBlocksContactCardFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type ComponentSectionsContactsSectionBillingInfoContactsArgs = {
   filters?: InputMaybe<ComponentBlocksContactCardFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
@@ -1568,6 +1620,12 @@ export type ComponentSectionsContactsSectionPhoneContactsArgs = {
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
 }
 
+export type ComponentSectionsContactsSectionPostalAddressContactsArgs = {
+  filters?: InputMaybe<ComponentBlocksContactCardFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
 export type ComponentSectionsContactsSectionWebContactsArgs = {
   filters?: InputMaybe<ComponentBlocksContactCardFiltersInput>
   pagination?: InputMaybe<PaginationArg>
@@ -1577,13 +1635,17 @@ export type ComponentSectionsContactsSectionWebContactsArgs = {
 export type ComponentSectionsContactsSectionFiltersInput = {
   addressContacts?: InputMaybe<ComponentBlocksContactCardFiltersInput>
   and?: InputMaybe<Array<InputMaybe<ComponentSectionsContactsSectionFiltersInput>>>
+  bankConnectionContacts?: InputMaybe<ComponentBlocksContactCardFiltersInput>
+  billingInfoContacts?: InputMaybe<ComponentBlocksContactCardFiltersInput>
   description?: InputMaybe<StringFilterInput>
+  directionsContact?: InputMaybe<ComponentBlocksContactDirectionsCardFiltersInput>
   emailContacts?: InputMaybe<ComponentBlocksContactCardFiltersInput>
   not?: InputMaybe<ComponentSectionsContactsSectionFiltersInput>
   openingHoursContacts?: InputMaybe<ComponentBlocksContactCardFiltersInput>
   or?: InputMaybe<Array<InputMaybe<ComponentSectionsContactsSectionFiltersInput>>>
   personContacts?: InputMaybe<ComponentBlocksContactPersonCardFiltersInput>
   phoneContacts?: InputMaybe<ComponentBlocksContactCardFiltersInput>
+  postalAddressContacts?: InputMaybe<ComponentBlocksContactCardFiltersInput>
   title?: InputMaybe<StringFilterInput>
   titleLevel?: InputMaybe<StringFilterInput>
   webContacts?: InputMaybe<ComponentBlocksContactCardFiltersInput>
@@ -1591,12 +1653,16 @@ export type ComponentSectionsContactsSectionFiltersInput = {
 
 export type ComponentSectionsContactsSectionInput = {
   addressContacts?: InputMaybe<Array<InputMaybe<ComponentBlocksContactCardInput>>>
+  bankConnectionContacts?: InputMaybe<Array<InputMaybe<ComponentBlocksContactCardInput>>>
+  billingInfoContacts?: InputMaybe<Array<InputMaybe<ComponentBlocksContactCardInput>>>
   description?: InputMaybe<Scalars['String']['input']>
+  directionsContact?: InputMaybe<ComponentBlocksContactDirectionsCardInput>
   emailContacts?: InputMaybe<Array<InputMaybe<ComponentBlocksContactCardInput>>>
   id?: InputMaybe<Scalars['ID']['input']>
   openingHoursContacts?: InputMaybe<Array<InputMaybe<ComponentBlocksContactCardInput>>>
   personContacts?: InputMaybe<Array<InputMaybe<ComponentBlocksContactPersonCardInput>>>
   phoneContacts?: InputMaybe<Array<InputMaybe<ComponentBlocksContactCardInput>>>
+  postalAddressContacts?: InputMaybe<Array<InputMaybe<ComponentBlocksContactCardInput>>>
   title?: InputMaybe<Scalars['String']['input']>
   titleLevel?: InputMaybe<Enum_Componentsectionscontactssection_Titlelevel>
   webContacts?: InputMaybe<Array<InputMaybe<ComponentBlocksContactCardInput>>>
@@ -3426,6 +3492,7 @@ export type GenericMorph =
   | ComponentBlocksComparisonCard
   | ComponentBlocksComparisonItem
   | ComponentBlocksContactCard
+  | ComponentBlocksContactDirectionsCard
   | ComponentBlocksContactPersonCard
   | ComponentBlocksFile
   | ComponentBlocksFileItem
@@ -9230,6 +9297,21 @@ export type PageEntityFragment = {
           overrideLabel?: string | null
           value: string
         } | null> | null
+        postalAddressContacts?: Array<{
+          __typename?: 'ComponentBlocksContactCard'
+          overrideLabel?: string | null
+          value: string
+        } | null> | null
+        billingInfoContacts?: Array<{
+          __typename?: 'ComponentBlocksContactCard'
+          overrideLabel?: string | null
+          value: string
+        } | null> | null
+        bankConnectionContacts?: Array<{
+          __typename?: 'ComponentBlocksContactCard'
+          overrideLabel?: string | null
+          value: string
+        } | null> | null
         personContacts?: Array<{
           __typename?: 'ComponentBlocksContactPersonCard'
           title: string
@@ -9237,6 +9319,16 @@ export type PageEntityFragment = {
           email?: string | null
           phone?: string | null
         } | null> | null
+        directionsContact?: {
+          __typename?: 'ComponentBlocksContactDirectionsCard'
+          overrideLabel?: string | null
+          address: string
+          parkingInfo?: string | null
+          publicTransportInfo?: string | null
+          barrierFreeInfo?: string | null
+          navigateToLink?: string | null
+          iframeUrl?: string | null
+        } | null
       }
     | { __typename: 'ComponentSectionsDivider'; style?: Enum_Componentsectionsdivider_Style | null }
     | {
@@ -10100,6 +10192,21 @@ export type PageBySlugQuery = {
             overrideLabel?: string | null
             value: string
           } | null> | null
+          postalAddressContacts?: Array<{
+            __typename?: 'ComponentBlocksContactCard'
+            overrideLabel?: string | null
+            value: string
+          } | null> | null
+          billingInfoContacts?: Array<{
+            __typename?: 'ComponentBlocksContactCard'
+            overrideLabel?: string | null
+            value: string
+          } | null> | null
+          bankConnectionContacts?: Array<{
+            __typename?: 'ComponentBlocksContactCard'
+            overrideLabel?: string | null
+            value: string
+          } | null> | null
           personContacts?: Array<{
             __typename?: 'ComponentBlocksContactPersonCard'
             title: string
@@ -10107,6 +10214,16 @@ export type PageBySlugQuery = {
             email?: string | null
             phone?: string | null
           } | null> | null
+          directionsContact?: {
+            __typename?: 'ComponentBlocksContactDirectionsCard'
+            overrideLabel?: string | null
+            address: string
+            parkingInfo?: string | null
+            publicTransportInfo?: string | null
+            barrierFreeInfo?: string | null
+            navigateToLink?: string | null
+            iframeUrl?: string | null
+          } | null
         }
       | {
           __typename: 'ComponentSectionsDivider'
@@ -10999,6 +11116,21 @@ export type Dev_AllPagesQuery = {
             overrideLabel?: string | null
             value: string
           } | null> | null
+          postalAddressContacts?: Array<{
+            __typename?: 'ComponentBlocksContactCard'
+            overrideLabel?: string | null
+            value: string
+          } | null> | null
+          billingInfoContacts?: Array<{
+            __typename?: 'ComponentBlocksContactCard'
+            overrideLabel?: string | null
+            value: string
+          } | null> | null
+          bankConnectionContacts?: Array<{
+            __typename?: 'ComponentBlocksContactCard'
+            overrideLabel?: string | null
+            value: string
+          } | null> | null
           personContacts?: Array<{
             __typename?: 'ComponentBlocksContactPersonCard'
             title: string
@@ -11006,6 +11138,16 @@ export type Dev_AllPagesQuery = {
             email?: string | null
             phone?: string | null
           } | null> | null
+          directionsContact?: {
+            __typename?: 'ComponentBlocksContactDirectionsCard'
+            overrideLabel?: string | null
+            address: string
+            parkingInfo?: string | null
+            publicTransportInfo?: string | null
+            barrierFreeInfo?: string | null
+            navigateToLink?: string | null
+            iframeUrl?: string | null
+          } | null
         }
       | {
           __typename: 'ComponentSectionsDivider'
@@ -12683,6 +12825,17 @@ export type ContactPersonCardBlockFragment = {
   phone?: string | null
 }
 
+export type ContactDirectionsCardBlockFragment = {
+  __typename?: 'ComponentBlocksContactDirectionsCard'
+  overrideLabel?: string | null
+  address: string
+  parkingInfo?: string | null
+  publicTransportInfo?: string | null
+  barrierFreeInfo?: string | null
+  navigateToLink?: string | null
+  iframeUrl?: string | null
+}
+
 export type ContactsSectionFragment = {
   __typename?: 'ComponentSectionsContactsSection'
   id: string
@@ -12714,6 +12867,21 @@ export type ContactsSectionFragment = {
     overrideLabel?: string | null
     value: string
   } | null> | null
+  postalAddressContacts?: Array<{
+    __typename?: 'ComponentBlocksContactCard'
+    overrideLabel?: string | null
+    value: string
+  } | null> | null
+  billingInfoContacts?: Array<{
+    __typename?: 'ComponentBlocksContactCard'
+    overrideLabel?: string | null
+    value: string
+  } | null> | null
+  bankConnectionContacts?: Array<{
+    __typename?: 'ComponentBlocksContactCard'
+    overrideLabel?: string | null
+    value: string
+  } | null> | null
   personContacts?: Array<{
     __typename?: 'ComponentBlocksContactPersonCard'
     title: string
@@ -12721,6 +12889,16 @@ export type ContactsSectionFragment = {
     email?: string | null
     phone?: string | null
   } | null> | null
+  directionsContact?: {
+    __typename?: 'ComponentBlocksContactDirectionsCard'
+    overrideLabel?: string | null
+    address: string
+    parkingInfo?: string | null
+    publicTransportInfo?: string | null
+    barrierFreeInfo?: string | null
+    navigateToLink?: string | null
+    iframeUrl?: string | null
+  } | null
 }
 
 export type RegulationsSectionFragment = {
@@ -13270,6 +13448,21 @@ type Sections_ComponentSectionsContactsSection_Fragment = {
     overrideLabel?: string | null
     value: string
   } | null> | null
+  postalAddressContacts?: Array<{
+    __typename?: 'ComponentBlocksContactCard'
+    overrideLabel?: string | null
+    value: string
+  } | null> | null
+  billingInfoContacts?: Array<{
+    __typename?: 'ComponentBlocksContactCard'
+    overrideLabel?: string | null
+    value: string
+  } | null> | null
+  bankConnectionContacts?: Array<{
+    __typename?: 'ComponentBlocksContactCard'
+    overrideLabel?: string | null
+    value: string
+  } | null> | null
   personContacts?: Array<{
     __typename?: 'ComponentBlocksContactPersonCard'
     title: string
@@ -13277,6 +13470,16 @@ type Sections_ComponentSectionsContactsSection_Fragment = {
     email?: string | null
     phone?: string | null
   } | null> | null
+  directionsContact?: {
+    __typename?: 'ComponentBlocksContactDirectionsCard'
+    overrideLabel?: string | null
+    address: string
+    parkingInfo?: string | null
+    publicTransportInfo?: string | null
+    barrierFreeInfo?: string | null
+    navigateToLink?: string | null
+    iframeUrl?: string | null
+  } | null
 }
 
 type Sections_ComponentSectionsDivider_Fragment = {
@@ -14894,6 +15097,17 @@ export const ContactPersonCardBlockFragmentDoc = gql`
     phone
   }
 `
+export const ContactDirectionsCardBlockFragmentDoc = gql`
+  fragment ContactDirectionsCardBlock on ComponentBlocksContactDirectionsCard {
+    overrideLabel
+    address
+    parkingInfo
+    publicTransportInfo
+    barrierFreeInfo
+    navigateToLink
+    iframeUrl
+  }
+`
 export const ContactsSectionFragmentDoc = gql`
   fragment ContactsSection on ComponentSectionsContactsSection {
     id
@@ -14914,13 +15128,26 @@ export const ContactsSectionFragmentDoc = gql`
     webContacts {
       ...ContactCardBlock
     }
+    postalAddressContacts {
+      ...ContactCardBlock
+    }
+    billingInfoContacts {
+      ...ContactCardBlock
+    }
+    bankConnectionContacts {
+      ...ContactCardBlock
+    }
     personContacts {
       ...ContactPersonCardBlock
+    }
+    directionsContact {
+      ...ContactDirectionsCardBlock
     }
     titleLevelContactsSection: titleLevel
   }
   ${ContactCardBlockFragmentDoc}
   ${ContactPersonCardBlockFragmentDoc}
+  ${ContactDirectionsCardBlockFragmentDoc}
 `
 export const RegulationEntityFragmentDoc = gql`
   fragment RegulationEntity on Regulation {
