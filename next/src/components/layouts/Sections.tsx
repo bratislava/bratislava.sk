@@ -27,7 +27,6 @@ import OfficialBoardSection from '@/src/components/sections/OfficialBoardSection
 import OrganizationalStructureSection from '@/src/components/sections/OrganizationalStructureSection'
 import PartnersSection from '@/src/components/sections/PartnersSection'
 import ProsAndConsSection from '@/src/components/sections/ProsAndConsSection'
-import RegulationsListSection from '@/src/components/sections/RegulationsListSection'
 import RegulationsSection from '@/src/components/sections/RegulationsSection'
 import TextWithImageOverlappedSection from '@/src/components/sections/TextWithImageOverlappedSection'
 import TextWithImageSection from '@/src/components/sections/TextWithImageSection'
@@ -107,9 +106,6 @@ const SectionContent = ({ section }: { section: SectionsFragment }) => {
 
     case 'ComponentSectionsContactsSection':
       return <ContactsSection section={section} />
-
-    case 'ComponentSectionsRegulationsList':
-      return <RegulationsListSection />
 
     case 'ComponentSectionsRegulations':
       return <RegulationsSection section={section} />
