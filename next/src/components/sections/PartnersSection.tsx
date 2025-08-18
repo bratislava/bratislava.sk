@@ -35,8 +35,8 @@ const PartnersSection = ({ section }: Props) => {
             'lg:grid-cols-2': count <= 2,
             'lg:grid-cols-3': count === 3,
             'lg:grid-cols-4': count === 4,
-            'lg:grid-cols-5': count === 5,
-            'lg:grid-cols-6': count >= 6,
+            'lg:grid-cols-5 lg:@max-page-wide:grid-cols-4': count === 5,
+            'lg:grid-cols-6 lg:@max-page-wide:grid-cols-4': count >= 6,
           })}
         >
           {filteredPartners.map((partner, index) => {
