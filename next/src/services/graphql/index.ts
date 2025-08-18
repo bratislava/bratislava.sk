@@ -2438,21 +2438,6 @@ export type ComponentSectionsRegulationsInput = {
   showAll?: InputMaybe<Scalars['Boolean']['input']>
 }
 
-export type ComponentSectionsRegulationsList = {
-  __typename?: 'ComponentSectionsRegulationsList'
-  id: Scalars['ID']['output']
-}
-
-export type ComponentSectionsRegulationsListFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<ComponentSectionsRegulationsListFiltersInput>>>
-  not?: InputMaybe<ComponentSectionsRegulationsListFiltersInput>
-  or?: InputMaybe<Array<InputMaybe<ComponentSectionsRegulationsListFiltersInput>>>
-}
-
-export type ComponentSectionsRegulationsListInput = {
-  id?: InputMaybe<Scalars['ID']['input']>
-}
-
 export type ComponentSectionsSubnavigation = {
   __typename?: 'ComponentSectionsSubnavigation'
   id: Scalars['ID']['output']
@@ -3577,7 +3562,6 @@ export type GenericMorph =
   | ComponentSectionsPartners
   | ComponentSectionsProsAndConsSection
   | ComponentSectionsRegulations
-  | ComponentSectionsRegulationsList
   | ComponentSectionsSubnavigation
   | ComponentSectionsSubpageList
   | ComponentSectionsTextWithImage
@@ -4919,7 +4903,6 @@ export type PageSectionsDynamicZone =
   | ComponentSectionsPartners
   | ComponentSectionsProsAndConsSection
   | ComponentSectionsRegulations
-  | ComponentSectionsRegulationsList
   | ComponentSectionsTextWithImage
   | ComponentSectionsTextWithImageOverlapped
   | ComponentSectionsTootootEvents
@@ -6819,7 +6802,6 @@ export type AllFilesQuery = {
         }
       | { __typename?: 'ComponentSectionsProsAndConsSection' }
       | { __typename?: 'ComponentSectionsRegulations' }
-      | { __typename?: 'ComponentSectionsRegulationsList' }
       | {
           __typename?: 'ComponentSectionsTextWithImage'
           imageSrc: { __typename?: 'UploadFile'; documentId: string }
@@ -9790,7 +9772,6 @@ export type PageEntityFragment = {
           } | null>
         } | null>
       }
-    | { __typename: 'ComponentSectionsRegulationsList' }
     | {
         __typename: 'ComponentSectionsTextWithImage'
         content?: string | null
@@ -10719,7 +10700,6 @@ export type PageBySlugQuery = {
             } | null>
           } | null>
         }
-      | { __typename: 'ComponentSectionsRegulationsList' }
       | {
           __typename: 'ComponentSectionsTextWithImage'
           content?: string | null
@@ -11674,7 +11654,6 @@ export type Dev_AllPagesQuery = {
             } | null>
           } | null>
         }
-      | { __typename: 'ComponentSectionsRegulationsList' }
       | {
           __typename: 'ComponentSectionsTextWithImage'
           content?: string | null
@@ -14085,10 +14064,6 @@ type Sections_ComponentSectionsRegulations_Fragment = {
   } | null>
 }
 
-type Sections_ComponentSectionsRegulationsList_Fragment = {
-  __typename: 'ComponentSectionsRegulationsList'
-}
-
 type Sections_ComponentSectionsTextWithImage_Fragment = {
   __typename: 'ComponentSectionsTextWithImage'
   content?: string | null
@@ -14234,7 +14209,6 @@ export type SectionsFragment =
   | Sections_ComponentSectionsPartners_Fragment
   | Sections_ComponentSectionsProsAndConsSection_Fragment
   | Sections_ComponentSectionsRegulations_Fragment
-  | Sections_ComponentSectionsRegulationsList_Fragment
   | Sections_ComponentSectionsTextWithImage_Fragment
   | Sections_ComponentSectionsTextWithImageOverlapped_Fragment
   | Sections_ComponentSectionsTootootEvents_Fragment
