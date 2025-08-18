@@ -540,8 +540,6 @@ fragment Sections on PageSectionsDynamicZone {
     ...ContactsSection
   }
 
-  # ComponentSectionsRegulationsList has no attributes
-
   ... on ComponentSectionsRegulations {
     ...RegulationsSection
   }

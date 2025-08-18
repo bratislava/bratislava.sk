@@ -979,15 +979,6 @@ export interface SectionsRegulations extends Struct.ComponentSchema {
   }
 }
 
-export interface SectionsRegulationsList extends Struct.ComponentSchema {
-  collectionName: 'components_sections_regulations_lists'
-  info: {
-    description: ''
-    displayName: 'Regulations list'
-  }
-  attributes: {}
-}
-
 export interface SectionsSubnavigation extends Struct.ComponentSchema {
   collectionName: 'components_sections_subnavigations'
   info: {
@@ -1184,7 +1175,6 @@ declare module '@strapi/strapi' {
       'sections.partners': SectionsPartners
       'sections.pros-and-cons-section': SectionsProsAndConsSection
       'sections.regulations': SectionsRegulations
-      'sections.regulations-list': SectionsRegulationsList
       'sections.subnavigation': SectionsSubnavigation
       'sections.subpage-list': SectionsSubpageList
       'sections.text-with-image': SectionsTextWithImage
