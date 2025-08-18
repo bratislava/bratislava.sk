@@ -20,7 +20,7 @@ type Props = {
 const PartnersSection = ({ section }: Props) => {
   const { title, text, partners, logoRatio, titleLevelPartnersSection: titleLevel } = section
 
-  const filteredPartners = partners.filter(isDefined).slice(0, 5)
+  const filteredPartners = partners.filter(isDefined)
   const count = filteredPartners.length
 
   return (
