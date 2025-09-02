@@ -9480,6 +9480,47 @@ export type PageEntityFragment = {
           slug?: string | null
           title: string
           locale?: string | null
+          pageHeaderSections?: Array<
+            | {
+                __typename: 'ComponentHeaderSectionsEvent'
+                date?: any | null
+                address?: string | null
+              }
+            | {
+                __typename: 'ComponentHeaderSectionsFacility'
+                address?: string | null
+                navigateToLink?: string | null
+                media: Array<{
+                  __typename?: 'UploadFile'
+                  documentId: string
+                  url: string
+                  width?: number | null
+                  height?: number | null
+                  caption?: string | null
+                  alternativeText?: string | null
+                  name: string
+                } | null>
+              }
+            | {
+                __typename: 'ComponentSectionsSubpageList'
+                id: string
+                subpageList?: Array<{
+                  __typename?: 'ComponentBlocksPageLink'
+                  url?: string | null
+                  analyticsId?: string | null
+                  label?: string | null
+                  page?: {
+                    __typename?: 'Page'
+                    documentId: string
+                    slug?: string | null
+                    title: string
+                    locale?: string | null
+                  } | null
+                } | null> | null
+              }
+            | { __typename: 'Error' }
+            | null
+          > | null
           pageBackgroundImage?: {
             __typename?: 'UploadFile'
             documentId: string
@@ -10408,6 +10449,47 @@ export type PageBySlugQuery = {
             slug?: string | null
             title: string
             locale?: string | null
+            pageHeaderSections?: Array<
+              | {
+                  __typename: 'ComponentHeaderSectionsEvent'
+                  date?: any | null
+                  address?: string | null
+                }
+              | {
+                  __typename: 'ComponentHeaderSectionsFacility'
+                  address?: string | null
+                  navigateToLink?: string | null
+                  media: Array<{
+                    __typename?: 'UploadFile'
+                    documentId: string
+                    url: string
+                    width?: number | null
+                    height?: number | null
+                    caption?: string | null
+                    alternativeText?: string | null
+                    name: string
+                  } | null>
+                }
+              | {
+                  __typename: 'ComponentSectionsSubpageList'
+                  id: string
+                  subpageList?: Array<{
+                    __typename?: 'ComponentBlocksPageLink'
+                    url?: string | null
+                    analyticsId?: string | null
+                    label?: string | null
+                    page?: {
+                      __typename?: 'Page'
+                      documentId: string
+                      slug?: string | null
+                      title: string
+                      locale?: string | null
+                    } | null
+                  } | null> | null
+                }
+              | { __typename: 'Error' }
+              | null
+            > | null
             pageBackgroundImage?: {
               __typename?: 'UploadFile'
               documentId: string
@@ -11362,6 +11444,47 @@ export type Dev_AllPagesQuery = {
             slug?: string | null
             title: string
             locale?: string | null
+            pageHeaderSections?: Array<
+              | {
+                  __typename: 'ComponentHeaderSectionsEvent'
+                  date?: any | null
+                  address?: string | null
+                }
+              | {
+                  __typename: 'ComponentHeaderSectionsFacility'
+                  address?: string | null
+                  navigateToLink?: string | null
+                  media: Array<{
+                    __typename?: 'UploadFile'
+                    documentId: string
+                    url: string
+                    width?: number | null
+                    height?: number | null
+                    caption?: string | null
+                    alternativeText?: string | null
+                    name: string
+                  } | null>
+                }
+              | {
+                  __typename: 'ComponentSectionsSubpageList'
+                  id: string
+                  subpageList?: Array<{
+                    __typename?: 'ComponentBlocksPageLink'
+                    url?: string | null
+                    analyticsId?: string | null
+                    label?: string | null
+                    page?: {
+                      __typename?: 'Page'
+                      documentId: string
+                      slug?: string | null
+                      title: string
+                      locale?: string | null
+                    } | null
+                  } | null> | null
+                }
+              | { __typename: 'Error' }
+              | null
+            > | null
             pageBackgroundImage?: {
               __typename?: 'UploadFile'
               documentId: string
@@ -13364,6 +13487,43 @@ export type FacilitiesSectionFragment = {
     slug?: string | null
     title: string
     locale?: string | null
+    pageHeaderSections?: Array<
+      | { __typename: 'ComponentHeaderSectionsEvent'; date?: any | null; address?: string | null }
+      | {
+          __typename: 'ComponentHeaderSectionsFacility'
+          address?: string | null
+          navigateToLink?: string | null
+          media: Array<{
+            __typename?: 'UploadFile'
+            documentId: string
+            url: string
+            width?: number | null
+            height?: number | null
+            caption?: string | null
+            alternativeText?: string | null
+            name: string
+          } | null>
+        }
+      | {
+          __typename: 'ComponentSectionsSubpageList'
+          id: string
+          subpageList?: Array<{
+            __typename?: 'ComponentBlocksPageLink'
+            url?: string | null
+            analyticsId?: string | null
+            label?: string | null
+            page?: {
+              __typename?: 'Page'
+              documentId: string
+              slug?: string | null
+              title: string
+              locale?: string | null
+            } | null
+          } | null> | null
+        }
+      | { __typename: 'Error' }
+      | null
+    > | null
     pageBackgroundImage?: { __typename?: 'UploadFile'; documentId: string; url: string } | null
   } | null>
 }
@@ -13750,6 +13910,43 @@ type Sections_ComponentSectionsFacilities_Fragment = {
     slug?: string | null
     title: string
     locale?: string | null
+    pageHeaderSections?: Array<
+      | { __typename: 'ComponentHeaderSectionsEvent'; date?: any | null; address?: string | null }
+      | {
+          __typename: 'ComponentHeaderSectionsFacility'
+          address?: string | null
+          navigateToLink?: string | null
+          media: Array<{
+            __typename?: 'UploadFile'
+            documentId: string
+            url: string
+            width?: number | null
+            height?: number | null
+            caption?: string | null
+            alternativeText?: string | null
+            name: string
+          } | null>
+        }
+      | {
+          __typename: 'ComponentSectionsSubpageList'
+          id: string
+          subpageList?: Array<{
+            __typename?: 'ComponentBlocksPageLink'
+            url?: string | null
+            analyticsId?: string | null
+            label?: string | null
+            page?: {
+              __typename?: 'Page'
+              documentId: string
+              slug?: string | null
+              title: string
+              locale?: string | null
+            } | null
+          } | null> | null
+        }
+      | { __typename: 'Error' }
+      | null
+    > | null
     pageBackgroundImage?: { __typename?: 'UploadFile'; documentId: string; url: string } | null
   } | null>
 }
@@ -15553,11 +15750,11 @@ export const FacilitiesSectionFragmentDoc = gql`
     title
     text
     facilityPages {
-      ...PageCardEntity
+      ...PageCardWithHeadersEntity
     }
     titleLevelFacilitiesSection: titleLevel
   }
-  ${PageCardEntityFragmentDoc}
+  ${PageCardWithHeadersEntityFragmentDoc}
 `
 export const SectionsFragmentDoc = gql`
   fragment Sections on PageSectionsDynamicZone {

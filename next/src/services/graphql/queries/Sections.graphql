@@ -442,7 +442,7 @@ fragment FacilitiesSection on ComponentSectionsFacilities {
   title
   text
   facilityPages {
-    ...PageCardEntity
+    ...PageCardWithHeadersEntity
   }
   titleLevelFacilitiesSection: titleLevel
 }
