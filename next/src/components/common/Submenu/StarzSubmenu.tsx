@@ -46,7 +46,7 @@ const StarzSubmenu = ({ landingPage }: Props) => {
                 key={submenuPage.documentId}
                 variant="link-inverted"
                 {...getLinkProps({ label: submenuPage.title, page: submenuPage })}
-                className="px-2 py-3"
+                className="px-2 py-3 font-normal no-underline hover:underline"
                 hasLinkIcon={false}
               />
             ))}
