@@ -14,6 +14,7 @@ export type Props = {
   linkProps: CommonLinkProps
   cardTitleLevel?: CardTitleLevel
   image?: StrapiUploadImage | null | undefined
+  imageClassName?: string
   imageSizes?: string
 } & CardBaseProps
 
@@ -24,6 +25,7 @@ export type Props = {
 const FacilityCard = ({
   cardTitleLevel = 'h3',
   image,
+  imageClassName,
   imageSizes,
   linkProps,
   className,
@@ -40,7 +42,7 @@ const FacilityCard = ({
       {...rest}
     >
       {/* TODO create CardImage component, see OLO */}
-      <div className="relative aspect-384/272 shrink-0 overflow-hidden">
+      <div className={cn('relative aspect-592/272 shrink-0 overflow-hidden', imageClassName)}>
         {image ? (
           <StrapiImage alt="" image={image} sizes={imageSizes} className="object-cover" fill />
         ) : (

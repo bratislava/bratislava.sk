@@ -41,6 +41,9 @@ const FacilitiesSection = ({ section }: FacilitiesSectionProps) => {
                   cardTitleLevel={getCardTitleLevel(titleLevel)}
                   image={facilityPage.pageBackgroundImage}
                   linkProps={getLinkProps({ page: facilityPage })}
+                  imageClassName={
+                    filteredFacilityPages.length < 3 ? 'lg:aspect-592/272' : 'aspect-384/272'
+                  }
                 />
               </li>
             )
