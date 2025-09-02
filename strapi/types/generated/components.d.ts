@@ -687,7 +687,7 @@ export interface SectionsFacilities extends Struct.ComponentSchema {
   }
   attributes: {
     facilityPages: Schema.Attribute.Relation<'oneToMany', 'api::page.page'>
-    text: Schema.Attribute.String
+    text: Schema.Attribute.Text
     title: Schema.Attribute.String
     titleLevel: Schema.Attribute.Enumeration<['h2', 'h3']> & Schema.Attribute.DefaultTo<'h2'>
   }

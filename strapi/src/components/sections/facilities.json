@@ -9,7 +9,7 @@
       "type": "string"
     },
     "text": {
-      "type": "string"
+      "type": "text"
     },
     "facilityPages": {
       "type": "relation",
