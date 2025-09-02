@@ -12,6 +12,7 @@
         "fields": [
           "title",
           "adminGroupId",
+          "landingPage",
           "articles",
           "pages",
           "faqs",
@@ -20,7 +21,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "naf3w2bkc7724cdfb2i00vd4",
+      "documentId": "c8y7qxdn4fwefe7eqoilh356",
       "locale": null
     },
     {
@@ -48,6 +49,7 @@
         "fields": [
           "title",
           "adminGroupId",
+          "landingPage",
           "articles",
           "pages",
           "faqs",
@@ -56,7 +58,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "ze9rkpxpnwk55fjwx9hh2vnv",
+      "documentId": "maua35yl67vkcpchrm1ii0d7",
       "locale": null
     },
     {
@@ -66,6 +68,7 @@
         "fields": [
           "title",
           "adminGroupId",
+          "landingPage",
           "articles",
           "pages",
           "faqs",
@@ -74,7 +77,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "jv7yn2g0dlqeibkch1fxsrur",
+      "documentId": "ix1pb0p3rtbdiufe7uivmu15",
       "locale": null
     },
     {

@@ -48,6 +48,7 @@ export type AdminGroup = {
   documents_connection?: Maybe<DocumentRelationResponseCollection>
   faqs: Array<Maybe<Faq>>
   faqs_connection?: Maybe<FaqRelationResponseCollection>
+  landingPage?: Maybe<Page>
   pages: Array<Maybe<Page>>
   pages_connection?: Maybe<PageRelationResponseCollection>
   publishedAt?: Maybe<Scalars['DateTime']['output']>
@@ -128,6 +129,7 @@ export type AdminGroupFiltersInput = {
   documentId?: InputMaybe<IdFilterInput>
   documents?: InputMaybe<DocumentFiltersInput>
   faqs?: InputMaybe<FaqFiltersInput>
+  landingPage?: InputMaybe<PageFiltersInput>
   not?: InputMaybe<AdminGroupFiltersInput>
   or?: InputMaybe<Array<InputMaybe<AdminGroupFiltersInput>>>
   pages?: InputMaybe<PageFiltersInput>
@@ -141,6 +143,7 @@ export type AdminGroupInput = {
   articles?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
   documents?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
   faqs?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
+  landingPage?: InputMaybe<Scalars['ID']['input']>
   pages?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
   publishedAt?: InputMaybe<Scalars['DateTime']['input']>
   title?: InputMaybe<Scalars['String']['input']>
@@ -6250,7 +6253,27 @@ export type UsersPermissionsUserRelationResponseCollection = {
   nodes: Array<UsersPermissionsUser>
 }
 
-export type AdminGroupEntityFragment = { __typename?: 'AdminGroup'; documentId: string }
+export type AdminGroupDocumentIdEntityFragment = { __typename?: 'AdminGroup'; documentId: string }
+
+export type AdminGroupEntityFragment = {
+  __typename?: 'AdminGroup'
+  adminGroupId?: string | null
+  documentId: string
+  landingPage?: {
+    __typename?: 'Page'
+    documentId: string
+    slug?: string | null
+    title: string
+    locale?: string | null
+    childPages: Array<{
+      __typename?: 'Page'
+      documentId: string
+      slug?: string | null
+      title: string
+      locale?: string | null
+    } | null>
+  } | null
+}
 
 export type ArticleCategoryEntityFragment = {
   __typename?: 'ArticleCategory'
@@ -7136,26 +7159,31 @@ export type GeneralFragment = {
   } | null
   newsPage?: {
     __typename?: 'Page'
+    documentId: string
     slug?: string | null
     locale?: string | null
     title: string
     parentPage?: {
       __typename?: 'Page'
+      documentId: string
       slug?: string | null
       locale?: string | null
       title: string
       parentPage?: {
         __typename?: 'Page'
+        documentId: string
         slug?: string | null
         locale?: string | null
         title: string
         parentPage?: {
           __typename?: 'Page'
+          documentId: string
           slug?: string | null
           locale?: string | null
           title: string
           parentPage?: {
             __typename?: 'Page'
+            documentId: string
             slug?: string | null
             locale?: string | null
             title: string
@@ -7166,26 +7194,31 @@ export type GeneralFragment = {
   } | null
   officialBoardPage?: {
     __typename?: 'Page'
+    documentId: string
     slug?: string | null
     locale?: string | null
     title: string
     parentPage?: {
       __typename?: 'Page'
+      documentId: string
       slug?: string | null
       locale?: string | null
       title: string
       parentPage?: {
         __typename?: 'Page'
+        documentId: string
         slug?: string | null
         locale?: string | null
         title: string
         parentPage?: {
           __typename?: 'Page'
+          documentId: string
           slug?: string | null
           locale?: string | null
           title: string
           parentPage?: {
             __typename?: 'Page'
+            documentId: string
             slug?: string | null
             locale?: string | null
             title: string
@@ -7196,26 +7229,31 @@ export type GeneralFragment = {
   } | null
   privacyPolicyPage?: {
     __typename?: 'Page'
+    documentId: string
     slug?: string | null
     locale?: string | null
     title: string
     parentPage?: {
       __typename?: 'Page'
+      documentId: string
       slug?: string | null
       locale?: string | null
       title: string
       parentPage?: {
         __typename?: 'Page'
+        documentId: string
         slug?: string | null
         locale?: string | null
         title: string
         parentPage?: {
           __typename?: 'Page'
+          documentId: string
           slug?: string | null
           locale?: string | null
           title: string
           parentPage?: {
             __typename?: 'Page'
+            documentId: string
             slug?: string | null
             locale?: string | null
             title: string
@@ -7226,26 +7264,31 @@ export type GeneralFragment = {
   } | null
   vznPage?: {
     __typename?: 'Page'
+    documentId: string
     slug?: string | null
     locale?: string | null
     title: string
     parentPage?: {
       __typename?: 'Page'
+      documentId: string
       slug?: string | null
       locale?: string | null
       title: string
       parentPage?: {
         __typename?: 'Page'
+        documentId: string
         slug?: string | null
         locale?: string | null
         title: string
         parentPage?: {
           __typename?: 'Page'
+          documentId: string
           slug?: string | null
           locale?: string | null
           title: string
           parentPage?: {
             __typename?: 'Page'
+            documentId: string
             slug?: string | null
             locale?: string | null
             title: string
@@ -7256,26 +7299,31 @@ export type GeneralFragment = {
   } | null
   inbaPage?: {
     __typename?: 'Page'
+    documentId: string
     slug?: string | null
     locale?: string | null
     title: string
     parentPage?: {
       __typename?: 'Page'
+      documentId: string
       slug?: string | null
       locale?: string | null
       title: string
       parentPage?: {
         __typename?: 'Page'
+        documentId: string
         slug?: string | null
         locale?: string | null
         title: string
         parentPage?: {
           __typename?: 'Page'
+          documentId: string
           slug?: string | null
           locale?: string | null
           title: string
           parentPage?: {
             __typename?: 'Page'
+            documentId: string
             slug?: string | null
             locale?: string | null
             title: string
@@ -7286,26 +7334,31 @@ export type GeneralFragment = {
   } | null
   inbaReleasesPage?: {
     __typename?: 'Page'
+    documentId: string
     slug?: string | null
     locale?: string | null
     title: string
     parentPage?: {
       __typename?: 'Page'
+      documentId: string
       slug?: string | null
       locale?: string | null
       title: string
       parentPage?: {
         __typename?: 'Page'
+        documentId: string
         slug?: string | null
         locale?: string | null
         title: string
         parentPage?: {
           __typename?: 'Page'
+          documentId: string
           slug?: string | null
           locale?: string | null
           title: string
           parentPage?: {
             __typename?: 'Page'
+            documentId: string
             slug?: string | null
             locale?: string | null
             title: string
@@ -7316,26 +7369,31 @@ export type GeneralFragment = {
   } | null
   documentsPage?: {
     __typename?: 'Page'
+    documentId: string
     slug?: string | null
     locale?: string | null
     title: string
     parentPage?: {
       __typename?: 'Page'
+      documentId: string
       slug?: string | null
       locale?: string | null
       title: string
       parentPage?: {
         __typename?: 'Page'
+        documentId: string
         slug?: string | null
         locale?: string | null
         title: string
         parentPage?: {
           __typename?: 'Page'
+          documentId: string
           slug?: string | null
           locale?: string | null
           title: string
           parentPage?: {
             __typename?: 'Page'
+            documentId: string
             slug?: string | null
             locale?: string | null
             title: string
@@ -7397,26 +7455,31 @@ export type GeneralQuery = {
     } | null
     newsPage?: {
       __typename?: 'Page'
+      documentId: string
       slug?: string | null
       locale?: string | null
       title: string
       parentPage?: {
         __typename?: 'Page'
+        documentId: string
         slug?: string | null
         locale?: string | null
         title: string
         parentPage?: {
           __typename?: 'Page'
+          documentId: string
           slug?: string | null
           locale?: string | null
           title: string
           parentPage?: {
             __typename?: 'Page'
+            documentId: string
             slug?: string | null
             locale?: string | null
             title: string
             parentPage?: {
               __typename?: 'Page'
+              documentId: string
               slug?: string | null
               locale?: string | null
               title: string
@@ -7427,26 +7490,31 @@ export type GeneralQuery = {
     } | null
     officialBoardPage?: {
       __typename?: 'Page'
+      documentId: string
       slug?: string | null
       locale?: string | null
       title: string
       parentPage?: {
         __typename?: 'Page'
+        documentId: string
         slug?: string | null
         locale?: string | null
         title: string
         parentPage?: {
           __typename?: 'Page'
+          documentId: string
           slug?: string | null
           locale?: string | null
           title: string
           parentPage?: {
             __typename?: 'Page'
+            documentId: string
             slug?: string | null
             locale?: string | null
             title: string
             parentPage?: {
               __typename?: 'Page'
+              documentId: string
               slug?: string | null
               locale?: string | null
               title: string
@@ -7457,26 +7525,31 @@ export type GeneralQuery = {
     } | null
     privacyPolicyPage?: {
       __typename?: 'Page'
+      documentId: string
       slug?: string | null
       locale?: string | null
       title: string
       parentPage?: {
         __typename?: 'Page'
+        documentId: string
         slug?: string | null
         locale?: string | null
         title: string
         parentPage?: {
           __typename?: 'Page'
+          documentId: string
           slug?: string | null
           locale?: string | null
           title: string
           parentPage?: {
             __typename?: 'Page'
+            documentId: string
             slug?: string | null
             locale?: string | null
             title: string
             parentPage?: {
               __typename?: 'Page'
+              documentId: string
               slug?: string | null
               locale?: string | null
               title: string
@@ -7487,26 +7560,31 @@ export type GeneralQuery = {
     } | null
     vznPage?: {
       __typename?: 'Page'
+      documentId: string
       slug?: string | null
       locale?: string | null
       title: string
       parentPage?: {
         __typename?: 'Page'
+        documentId: string
         slug?: string | null
         locale?: string | null
         title: string
         parentPage?: {
           __typename?: 'Page'
+          documentId: string
           slug?: string | null
           locale?: string | null
           title: string
           parentPage?: {
             __typename?: 'Page'
+            documentId: string
             slug?: string | null
             locale?: string | null
             title: string
             parentPage?: {
               __typename?: 'Page'
+              documentId: string
               slug?: string | null
               locale?: string | null
               title: string
@@ -7517,26 +7595,31 @@ export type GeneralQuery = {
     } | null
     inbaPage?: {
       __typename?: 'Page'
+      documentId: string
       slug?: string | null
       locale?: string | null
       title: string
       parentPage?: {
         __typename?: 'Page'
+        documentId: string
         slug?: string | null
         locale?: string | null
         title: string
         parentPage?: {
           __typename?: 'Page'
+          documentId: string
           slug?: string | null
           locale?: string | null
           title: string
           parentPage?: {
             __typename?: 'Page'
+            documentId: string
             slug?: string | null
             locale?: string | null
             title: string
             parentPage?: {
               __typename?: 'Page'
+              documentId: string
               slug?: string | null
               locale?: string | null
               title: string
@@ -7547,26 +7630,31 @@ export type GeneralQuery = {
     } | null
     inbaReleasesPage?: {
       __typename?: 'Page'
+      documentId: string
       slug?: string | null
       locale?: string | null
       title: string
       parentPage?: {
         __typename?: 'Page'
+        documentId: string
         slug?: string | null
         locale?: string | null
         title: string
         parentPage?: {
           __typename?: 'Page'
+          documentId: string
           slug?: string | null
           locale?: string | null
           title: string
           parentPage?: {
             __typename?: 'Page'
+            documentId: string
             slug?: string | null
             locale?: string | null
             title: string
             parentPage?: {
               __typename?: 'Page'
+              documentId: string
               slug?: string | null
               locale?: string | null
               title: string
@@ -7577,26 +7665,31 @@ export type GeneralQuery = {
     } | null
     documentsPage?: {
       __typename?: 'Page'
+      documentId: string
       slug?: string | null
       locale?: string | null
       title: string
       parentPage?: {
         __typename?: 'Page'
+        documentId: string
         slug?: string | null
         locale?: string | null
         title: string
         parentPage?: {
           __typename?: 'Page'
+          documentId: string
           slug?: string | null
           locale?: string | null
           title: string
           parentPage?: {
             __typename?: 'Page'
+            documentId: string
             slug?: string | null
             locale?: string | null
             title: string
             parentPage?: {
               __typename?: 'Page'
+              documentId: string
               slug?: string | null
               locale?: string | null
               title: string
@@ -8917,6 +9010,7 @@ export type PageCategoriesQuery = {
 
 export type ParentPageFragment = {
   __typename?: 'Page'
+  documentId: string
   slug?: string | null
   locale?: string | null
   title: string
@@ -8924,26 +9018,31 @@ export type ParentPageFragment = {
 
 export type PageParentPagesFragment = {
   __typename?: 'Page'
+  documentId: string
   slug?: string | null
   locale?: string | null
   title: string
   parentPage?: {
     __typename?: 'Page'
+    documentId: string
     slug?: string | null
     locale?: string | null
     title: string
     parentPage?: {
       __typename?: 'Page'
+      documentId: string
       slug?: string | null
       locale?: string | null
       title: string
       parentPage?: {
         __typename?: 'Page'
+        documentId: string
         slug?: string | null
         locale?: string | null
         title: string
         parentPage?: {
           __typename?: 'Page'
+          documentId: string
           slug?: string | null
           locale?: string | null
           title: string
@@ -9028,6 +9127,25 @@ export type PageEntityFragment = {
   slug?: string | null
   title: string
   locale?: string | null
+  adminGroups: Array<{
+    __typename?: 'AdminGroup'
+    adminGroupId?: string | null
+    documentId: string
+    landingPage?: {
+      __typename?: 'Page'
+      documentId: string
+      slug?: string | null
+      title: string
+      locale?: string | null
+      childPages: Array<{
+        __typename?: 'Page'
+        documentId: string
+        slug?: string | null
+        title: string
+        locale?: string | null
+      } | null>
+    } | null
+  } | null>
   headerLinks?: Array<{
     __typename?: 'ComponentBlocksCommonLink'
     label?: string | null
@@ -9903,21 +10021,25 @@ export type PageEntityFragment = {
   pageBackgroundImage?: { __typename?: 'UploadFile'; documentId: string; url: string } | null
   parentPage?: {
     __typename?: 'Page'
+    documentId: string
     slug?: string | null
     locale?: string | null
     title: string
     parentPage?: {
       __typename?: 'Page'
+      documentId: string
       slug?: string | null
       locale?: string | null
       title: string
       parentPage?: {
         __typename?: 'Page'
+        documentId: string
         slug?: string | null
         locale?: string | null
         title: string
         parentPage?: {
           __typename?: 'Page'
+          documentId: string
           slug?: string | null
           locale?: string | null
           title: string
@@ -9953,6 +10075,25 @@ export type PageBySlugQuery = {
     slug?: string | null
     title: string
     locale?: string | null
+    adminGroups: Array<{
+      __typename?: 'AdminGroup'
+      adminGroupId?: string | null
+      documentId: string
+      landingPage?: {
+        __typename?: 'Page'
+        documentId: string
+        slug?: string | null
+        title: string
+        locale?: string | null
+        childPages: Array<{
+          __typename?: 'Page'
+          documentId: string
+          slug?: string | null
+          title: string
+          locale?: string | null
+        } | null>
+      } | null
+    } | null>
     headerLinks?: Array<{
       __typename?: 'ComponentBlocksCommonLink'
       label?: string | null
@@ -10835,21 +10976,25 @@ export type PageBySlugQuery = {
     pageBackgroundImage?: { __typename?: 'UploadFile'; documentId: string; url: string } | null
     parentPage?: {
       __typename?: 'Page'
+      documentId: string
       slug?: string | null
       locale?: string | null
       title: string
       parentPage?: {
         __typename?: 'Page'
+        documentId: string
         slug?: string | null
         locale?: string | null
         title: string
         parentPage?: {
           __typename?: 'Page'
+          documentId: string
           slug?: string | null
           locale?: string | null
           title: string
           parentPage?: {
             __typename?: 'Page'
+            documentId: string
             slug?: string | null
             locale?: string | null
             title: string
@@ -10907,6 +11052,25 @@ export type Dev_AllPagesQuery = {
     slug?: string | null
     title: string
     locale?: string | null
+    adminGroups: Array<{
+      __typename?: 'AdminGroup'
+      adminGroupId?: string | null
+      documentId: string
+      landingPage?: {
+        __typename?: 'Page'
+        documentId: string
+        slug?: string | null
+        title: string
+        locale?: string | null
+        childPages: Array<{
+          __typename?: 'Page'
+          documentId: string
+          slug?: string | null
+          title: string
+          locale?: string | null
+        } | null>
+      } | null
+    } | null>
     headerLinks?: Array<{
       __typename?: 'ComponentBlocksCommonLink'
       label?: string | null
@@ -11789,21 +11953,25 @@ export type Dev_AllPagesQuery = {
     pageBackgroundImage?: { __typename?: 'UploadFile'; documentId: string; url: string } | null
     parentPage?: {
       __typename?: 'Page'
+      documentId: string
       slug?: string | null
       locale?: string | null
       title: string
       parentPage?: {
         __typename?: 'Page'
+        documentId: string
         slug?: string | null
         locale?: string | null
         title: string
         parentPage?: {
           __typename?: 'Page'
+          documentId: string
           slug?: string | null
           locale?: string | null
           title: string
           parentPage?: {
             __typename?: 'Page'
+            documentId: string
             slug?: string | null
             locale?: string | null
             title: string
@@ -14558,6 +14726,7 @@ export const HeaderLinkFragmentDoc = gql`
 `
 export const ParentPageFragmentDoc = gql`
   fragment ParentPage on Page {
+    documentId
     slug
     locale
     title
@@ -14854,6 +15023,25 @@ export const PageCardEntityFragmentDoc = gql`
   }
   ${PageSlugEntityFragmentDoc}
   ${UploadImageSrcEntityFragmentDoc}
+`
+export const AdminGroupDocumentIdEntityFragmentDoc = gql`
+  fragment AdminGroupDocumentIdEntity on AdminGroup {
+    documentId
+  }
+`
+export const AdminGroupEntityFragmentDoc = gql`
+  fragment AdminGroupEntity on AdminGroup {
+    ...AdminGroupDocumentIdEntity
+    adminGroupId
+    landingPage {
+      ...PageSlugEntity
+      childPages {
+        ...PageSlugEntity
+      }
+    }
+  }
+  ${AdminGroupDocumentIdEntityFragmentDoc}
+  ${PageSlugEntityFragmentDoc}
 `
 export const PageLinkFragmentDoc = gql`
   fragment PageLink on ComponentBlocksPageLink {
@@ -15152,11 +15340,6 @@ export const NumericalListSectionFragmentDoc = gql`
   }
   ${NumericalListItemBlockFragmentDoc}
 `
-export const AdminGroupEntityFragmentDoc = gql`
-  fragment AdminGroupEntity on AdminGroup {
-    documentId
-  }
-`
 export const ArticlesSectionFragmentDoc = gql`
   fragment ArticlesSection on ComponentSectionsArticles {
     title
@@ -15169,7 +15352,7 @@ export const ArticlesSectionFragmentDoc = gql`
       ...TagEntity
     }
     adminGroups {
-      ...AdminGroupEntity
+      ...AdminGroupDocumentIdEntity
     }
     showMoreLink {
       ...CommonLink
@@ -15177,7 +15360,7 @@ export const ArticlesSectionFragmentDoc = gql`
   }
   ${PageCategoryEntityFragmentDoc}
   ${TagEntityFragmentDoc}
-  ${AdminGroupEntityFragmentDoc}
+  ${AdminGroupDocumentIdEntityFragmentDoc}
   ${CommonLinkFragmentDoc}
 `
 export const InbaArticlesListSectionFragmentDoc = gql`
@@ -15704,6 +15887,9 @@ export const PageEntityFragmentDoc = gql`
     metaDiscription
     keywords
     showTableOfContents
+    adminGroups {
+      ...AdminGroupEntity
+    }
     headerLinks {
       ...CommonLink
     }
@@ -15729,6 +15915,7 @@ export const PageEntityFragmentDoc = gql`
     ...PageParentPages
   }
   ${PageCardEntityFragmentDoc}
+  ${AdminGroupEntityFragmentDoc}
   ${CommonLinkFragmentDoc}
   ${PageHeaderSectionsFragmentDoc}
   ${SubnavigationSectionFragmentDoc}

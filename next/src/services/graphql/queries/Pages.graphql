@@ -1,4 +1,5 @@
 fragment ParentPage on Page {
+  documentId
   slug
   locale
   title
@@ -55,7 +56,9 @@ fragment PageEntity on Page {
   metaDiscription
   keywords
   showTableOfContents
-
+  adminGroups {
+    ...AdminGroupEntity
+  }
   headerLinks {
     ...CommonLink
   }

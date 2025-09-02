@@ -12,6 +12,7 @@ type AdminGroup {
   documents_connection(filters: DocumentFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): DocumentRelationResponseCollection
   faqs(filters: FaqFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [Faq]!
   faqs_connection(filters: FaqFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): FaqRelationResponseCollection
+  landingPage: Page
   pages(filters: PageFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [Page]!
   pages_connection(filters: PageFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): PageRelationResponseCollection
   publishedAt: DateTime
@@ -41,6 +42,7 @@ input AdminGroupFiltersInput {
   documentId: IDFilterInput
   documents: DocumentFiltersInput
   faqs: FaqFiltersInput
+  landingPage: PageFiltersInput
   not: AdminGroupFiltersInput
   or: [AdminGroupFiltersInput]
   pages: PageFiltersInput
@@ -54,6 +56,7 @@ input AdminGroupInput {
   articles: [ID]
   documents: [ID]
   faqs: [ID]
+  landingPage: ID
   pages: [ID]
   publishedAt: DateTime
   title: String

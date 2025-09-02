@@ -1,7 +1,7 @@
-import * as React from 'react'
 import { useMemo } from 'react'
 
 import AliasInfoMessage from '@/src/components/common/AliasInfoMessage/AliasInfoMessage'
+import StarzSubmenu from '@/src/components/common/Submenu/StarzSubmenu'
 import PageHeaderSections from '@/src/components/layouts/PageHeaderSections'
 import SectionContainer from '@/src/components/layouts/SectionContainer'
 import Sections from '@/src/components/layouts/Sections'
@@ -27,8 +27,17 @@ const GeneralPageContent = ({ page }: GeneralPageProps) => {
   const [header] = page.pageHeaderSections ?? []
   const [sidebar] = page.sidebar ?? []
 
+  const starzAdminGroup = page.adminGroups
+    .filter(isDefined)
+    .find((adminGroup) => adminGroup.adminGroupId === 'starz')
+
   return (
     <>
+      {/* Starz submenu - TODO make it more generic in future when more organizations need it */}
+      {starzAdminGroup?.landingPage ? (
+        <StarzSubmenu landingPage={starzAdminGroup.landingPage} />
+      ) : null}
+
       {/* Header */}
       <PageHeaderSections
         header={header}

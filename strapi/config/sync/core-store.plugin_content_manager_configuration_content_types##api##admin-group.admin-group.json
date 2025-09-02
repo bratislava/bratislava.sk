@@ -47,6 +47,21 @@
           "sortable": true
         }
       },
+      "landingPage": {
+        "edit": {
+          "label": "landingPage",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "title"
+        },
+        "list": {
+          "label": "landingPage",
+          "searchable": true,
+          "sortable": true
+        }
+      },
       "articles": {
         "edit": {
           "label": "articles",
@@ -175,6 +190,13 @@
       }
     },
     "layouts": {
+      "list": [
+        "id",
+        "title",
+        "adminGroupId",
+        "createdAt",
+        "updatedAt"
+      ],
       "edit": [
         [
           {
@@ -205,14 +227,13 @@
             "name": "documents",
             "size": 6
           }
+        ],
+        [
+          {
+            "name": "landingPage",
+            "size": 6
+          }
         ]
-      ],
-      "list": [
-        "id",
-        "title",
-        "adminGroupId",
-        "createdAt",
-        "updatedAt"
       ]
     },
     "uid": "api::admin-group.admin-group"
