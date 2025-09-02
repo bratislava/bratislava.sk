@@ -160,7 +160,7 @@ const ContactCtaCard = ({ className, contact }: ContactCtaCardProps) => {
             {contact.iframeUrl ? (
               <div className="aspect-video">
                 <iframe
-                  title="Mapa"
+                  title={t('ContactCtaCard.directions.iframeTitle')}
                   src={contact.iframeUrl}
                   className="h-full w-full border"
                   allow="geolocation *"
@@ -178,7 +178,7 @@ const ContactCtaCard = ({ className, contact }: ContactCtaCardProps) => {
     }
 
     return null
-  }, [contact])
+  }, [contact, t])
 
   if (!data) {
     return null
@@ -191,7 +191,7 @@ const ContactCtaCard = ({ className, contact }: ContactCtaCardProps) => {
       <div className="flex shrink-0 items-center justify-center rounded-full text-gray-700">
         <Icon className="size-6 lg:size-8" />
       </div>
-      <div className="flex flex-col gap-1 overflow-hidden wrap-break-word">
+      <div className="flex w-full flex-col gap-1 overflow-hidden wrap-break-word">
         <Typography variant="h6" as="p" className="font-semibold">
           {label}
         </Typography>

@@ -21,6 +21,7 @@
   "ContactCtaCard.bankConnection": "Bankové spojenie",
   "ContactCtaCard.billingInfo": "Fakturačné údaje",
   "ContactCtaCard.directions": "Ako sa k nám dostať",
+  "ContactCtaCard.directions.iframeTitle": "Mapa",
   "ContactCtaCard.email": "Email",
   "ContactCtaCard.openingHours": "Úradné hodiny",
   "ContactCtaCard.phone": "Telefón",

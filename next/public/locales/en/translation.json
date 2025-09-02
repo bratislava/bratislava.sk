@@ -21,6 +21,7 @@
   "ContactCtaCard.bankConnection": "Bank connection",
   "ContactCtaCard.billingInfo": "Billing information",
   "ContactCtaCard.directions": "How to get there",
+  "ContactCtaCard.directions.iframeTitle": "Map",
   "ContactCtaCard.email": "Email",
   "ContactCtaCard.openingHours": "Office hours",
   "ContactCtaCard.phone": "Phone",
