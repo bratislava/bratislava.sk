@@ -1093,6 +1093,8 @@ input ComponentSectionsAccordionInput {
 type ComponentSectionsArticles {
   adminGroups(filters: AdminGroupFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [AdminGroup]!
   adminGroups_connection(filters: AdminGroupFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): AdminGroupRelationResponseCollection
+  articles(filters: ArticleFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [Article]!
+  articles_connection(filters: ArticleFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): ArticleRelationResponseCollection
   category: PageCategory
   id: ID!
   showAll: Boolean
@@ -1106,6 +1108,7 @@ type ComponentSectionsArticles {
 input ComponentSectionsArticlesFiltersInput {
   adminGroups: AdminGroupFiltersInput
   and: [ComponentSectionsArticlesFiltersInput]
+  articles: ArticleFiltersInput
   category: PageCategoryFiltersInput
   not: ComponentSectionsArticlesFiltersInput
   or: [ComponentSectionsArticlesFiltersInput]
@@ -1118,6 +1121,7 @@ input ComponentSectionsArticlesFiltersInput {
 
 input ComponentSectionsArticlesInput {
   adminGroups: [ID]
+  articles: [ID]
   category: ID
   id: ID
   showAll: Boolean

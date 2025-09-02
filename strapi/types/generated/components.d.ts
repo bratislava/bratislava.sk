@@ -489,6 +489,7 @@ export interface SectionsArticles extends Struct.ComponentSchema {
   }
   attributes: {
     adminGroups: Schema.Attribute.Relation<'oneToMany', 'api::admin-group.admin-group'>
+    articles: Schema.Attribute.Relation<'oneToMany', 'api::article.article'>
     category: Schema.Attribute.Relation<'oneToOne', 'api::page-category.page-category'>
     showAll: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>
     showMoreLink: Schema.Attribute.Component<'blocks.common-link', false>

@@ -46,6 +46,21 @@
         }
       }
     },
+    "articles": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::article.article",
+      "conditions": {
+        "visible": {
+          "!=": [
+            {
+              "var": "showAll"
+            },
+            true
+          ]
+        }
+      }
+    },
     "adminGroups": {
       "type": "relation",
       "relation": "oneToMany",
