@@ -1,3 +1,14 @@
-fragment AdminGroupEntity on AdminGroup {
+fragment AdminGroupDocumentIdEntity on AdminGroup {
   documentId
+}
+
+fragment AdminGroupEntity on AdminGroup {
+  ...AdminGroupDocumentIdEntity
+  adminGroupId
+  landingPage {
+    ...PageSlugEntity
+    childPages {
+      ...PageSlugEntity
+    }
+  }
 }

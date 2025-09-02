@@ -35,6 +35,7 @@ type ButtonBase = {
     | 'negative-solid'
     | 'negative-plain'
     | 'link'
+    | 'link-inverted'
   size?: 'responsive' | 'large' | 'small'
   className?: string
   fullWidth?: boolean
@@ -96,6 +97,7 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
     const isIconWrappedVariant =
       variant === 'icon-wrapped' || variant === 'icon-wrapped-negative-margin'
     const isIconButton = Boolean(icon)
+    const isLinkVariant = variant === 'link' || variant === 'link-inverted'
 
     /* TODO
      *   - border should render inside button, not outside
@@ -109,10 +111,13 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
             'ring-offset-2 outline-hidden focus-visible:ring-3',
 
             // we change rounded corners for link focus ring
-            { 'rounded-xs max-lg:gap-1': variant === 'link', 'rounded-lg': variant !== 'link' },
+            {
+              'rounded-xs max-lg:gap-1': isLinkVariant,
+              'rounded-lg': !isLinkVariant,
+            },
 
             {
-              'font-medium underline underline-offset-2': variant === 'link',
+              'font-medium underline underline-offset-2': isLinkVariant,
 
               // disabled or loading
               'opacity-50': isLoadingOrDisabled,
@@ -129,7 +134,7 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
               border: isSolidOrOutlineVariant,
 
               // padding - link variants
-              'p-0': variant === 'link',
+              'p-0': isLinkVariant,
 
               // padding - icon-wrapped variant
               'p-2 outline-offset-0': isIconButton && isIconWrappedVariant,
@@ -164,7 +169,7 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
               'hover:border-action-border-hover hover:bg-action-background-hover':
                 variant === 'solid',
 
-              // colors - bg, border, content - variant solid (figma: boxed primary inverted)
+              // colors - bg, border, content - variant solid-inverted (figma: boxed primary inverted)
               'border-background-active-primary-inverted-default bg-background-active-primary-inverted-default text-content-active-primary-default':
                 variant === 'solid-inverted',
               'active:border-background-active-primary-inverted-pressed active:bg-background-active-primary-inverted-pressed':
@@ -200,6 +205,11 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
               // colors - bg, border, content - variant link
               'hover:text-action-content-hover': variant === 'link',
               'text-action-content-default active:text-action-content-pressed': variant === 'link',
+
+              // colors - bg, border, content - variant link-inverted
+              'hover:text-content-active-primary-inverted-hover': variant === 'link-inverted',
+              'text-content-active-primary-inverted-default active:text-content-active-primary-inverted-pressed':
+                variant === 'link-inverted',
 
               // svg icons
               '[&>svg]:h-5 [&>svg]:w-5 [&>svg]:lg:h-6 [&>svg]:lg:w-6': size === 'responsive',

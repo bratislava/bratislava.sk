@@ -356,6 +356,7 @@ export interface ApiAdminGroupAdminGroup extends Struct.CollectionTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> & Schema.Attribute.Private
     documents: Schema.Attribute.Relation<'manyToMany', 'api::document.document'>
     faqs: Schema.Attribute.Relation<'manyToMany', 'api::faq.faq'>
+    landingPage: Schema.Attribute.Relation<'oneToOne', 'api::page.page'>
     locale: Schema.Attribute.String & Schema.Attribute.Private
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::admin-group.admin-group'> &
       Schema.Attribute.Private

@@ -19,6 +19,11 @@
       "type": "uid",
       "targetField": "title"
     },
+    "landingPage": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::page.page"
+    },
     "articles": {
       "type": "relation",
       "relation": "manyToMany",
