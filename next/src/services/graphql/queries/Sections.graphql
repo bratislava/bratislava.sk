@@ -18,6 +18,9 @@ fragment ArticlesSection on ComponentSectionsArticles {
   title
   text
   showAll
+  articles {
+    ...ArticleCardEntity
+  }
   category {
     ...PageCategoryEntity
   }
