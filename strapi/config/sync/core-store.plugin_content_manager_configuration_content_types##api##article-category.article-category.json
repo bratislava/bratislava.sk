@@ -7,8 +7,8 @@
       "searchable": true,
       "pageSize": 10,
       "mainField": "title",
-      "defaultSortBy": "documentId",
-      "defaultSortOrder": "ASC"
+      "defaultSortOrder": "ASC",
+      "defaultSortBy": "id"
     },
     "metadatas": {
       "id": {
@@ -150,9 +150,9 @@
       ],
       "list": [
         "id",
-        "createdAt",
-        "updatedAt",
-        "createdBy"
+        "title",
+        "slug",
+        "articles"
       ]
     },
     "uid": "api::article-category.article-category"

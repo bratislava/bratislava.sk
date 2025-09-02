@@ -130,12 +130,6 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "title",
-        "createdAt",
-        "updatedAt"
-      ],
       "edit": [
         [
           {
@@ -155,6 +149,13 @@
             "size": 12
           }
         ]
+      ],
+      "list": [
+        "id",
+        "title",
+        "slug",
+        "createdAt",
+        "updatedAt"
       ]
     },
     "uid": "api::document-category.document-category"

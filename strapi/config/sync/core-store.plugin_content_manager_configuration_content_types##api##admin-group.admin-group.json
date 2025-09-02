@@ -175,12 +175,6 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "title",
-        "adminGroupId",
-        "articles"
-      ],
       "edit": [
         [
           {
@@ -212,6 +206,13 @@
             "size": 6
           }
         ]
+      ],
+      "list": [
+        "id",
+        "title",
+        "adminGroupId",
+        "createdAt",
+        "updatedAt"
       ]
     },
     "uid": "api::admin-group.admin-group"
