@@ -179,13 +179,13 @@
         ],
         [
           {
-            "name": "category",
+            "name": "adminGroups",
             "size": 6
           }
         ],
         [
           {
-            "name": "adminGroups",
+            "name": "category",
             "size": 6
           }
         ],
