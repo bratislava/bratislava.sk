@@ -47,6 +47,20 @@
           "sortable": true
         }
       },
+      "contentManagedBy": {
+        "edit": {
+          "label": "contentManagedBy",
+          "description": "Hodnota poľa sa doplní na prázdne miesto v správe \"Obsah tejto stránky je spravovaný mestskou organizáciou ________\", ktorú používateľ uvidí na spodku stránky.",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "contentManagedBy",
+          "searchable": true,
+          "sortable": true
+        }
+      },
       "landingPage": {
         "edit": {
           "label": "landingPage",
@@ -190,13 +204,6 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "title",
-        "adminGroupId",
-        "createdAt",
-        "updatedAt"
-      ],
       "edit": [
         [
           {
@@ -209,31 +216,46 @@
           }
         ],
         [
-          {
-            "name": "articles",
+  {
+            "name": "contentManagedBy",
             "size": 6
           },
           {
-            "name": "pages",
+            "name": "landingPage",
             "size": 6
+          }
+        ],
+        [
+          {
+            "name": "articles",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "pages",
+            "size": 12
           }
         ],
         [
           {
             "name": "faqs",
-            "size": 6
-          },
-          {
-            "name": "documents",
-            "size": 6
+            "size": 12
           }
         ],
         [
           {
-            "name": "landingPage",
-            "size": 6
+            "name": "documents",
+            "size": 12
           }
         ]
+      ],
+      "list": [
+        "id",
+        "title",
+        "adminGroupId",
+        "createdAt",
+        "updatedAt"
       ]
     },
     "uid": "api::admin-group.admin-group"
