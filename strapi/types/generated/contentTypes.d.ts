@@ -352,6 +352,7 @@ export interface ApiAdminGroupAdminGroup extends Struct.CollectionTypeSchema {
   attributes: {
     adminGroupId: Schema.Attribute.UID<'title'>
     articles: Schema.Attribute.Relation<'manyToMany', 'api::article.article'>
+    contentManagedBy: Schema.Attribute.String
     createdAt: Schema.Attribute.DateTime
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> & Schema.Attribute.Private
     documents: Schema.Attribute.Relation<'manyToMany', 'api::document.document'>

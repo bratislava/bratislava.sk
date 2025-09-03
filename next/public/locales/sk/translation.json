@@ -27,6 +27,8 @@
   "ContactCtaCard.phone": "Telefón",
   "ContactCtaCard.postalAddress": "Korešpondenčná adresa",
   "ContactCtaCard.web": "Web",
+  "ContentManagedBy.copyright": "© {{year}} {{contentManager}}",
+  "ContentManagedBy.message": "Obsah tejto stránky je spravovaný mestskou organizáciou {{contentManager}}.",
   "CopyToClipboardButton.copyToClipboard": "Kopírovať obsah",
   "Dialog.aria.close": "Zavrieť vyskakovacie okno",
   "DocumentPageContent.descriptionTitle": "Popis",

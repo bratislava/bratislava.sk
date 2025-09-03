@@ -5,6 +5,7 @@ fragment AdminGroupDocumentIdEntity on AdminGroup {
 fragment AdminGroupEntity on AdminGroup {
   ...AdminGroupDocumentIdEntity
   adminGroupId
+  contentManagedBy
   landingPage {
     ...PageSlugEntity
     childPages {

@@ -12,6 +12,8 @@
         "fields": [
           "title",
           "adminGroupId",
+          "contentManagedBy",
+          "landingPage",
           "articles",
           "pages",
           "faqs",
@@ -20,7 +22,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "np3ttpekkn38mx1enumtweb9",
+      "documentId": "gn5qk10p8ciqmpq92than8zl",
       "locale": null
     },
     {
