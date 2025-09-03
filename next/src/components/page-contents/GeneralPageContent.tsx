@@ -1,6 +1,7 @@
 import { useMemo } from 'react'
 
 import AliasInfoMessage from '@/src/components/common/AliasInfoMessage/AliasInfoMessage'
+import ContentManagedBy from '@/src/components/common/ContentManagedBy/ContentManagedBy'
 import StarzSubmenu from '@/src/components/common/Submenu/StarzSubmenu'
 import PageHeaderSections from '@/src/components/layouts/PageHeaderSections'
 import SectionContainer from '@/src/components/layouts/SectionContainer'
@@ -77,6 +78,12 @@ const GeneralPageContent = ({ page }: GeneralPageProps) => {
       {page.alias ? (
         <SectionContainer>
           <AliasInfoMessage alias={page.alias} variant="page" />
+        </SectionContainer>
+      ) : null}
+
+      {starzAdminGroup?.contentManagedBy ? (
+        <SectionContainer className="bg-background-passive-primary">
+          <ContentManagedBy contentManager={starzAdminGroup.contentManagedBy} />
         </SectionContainer>
       ) : null}
     </>
