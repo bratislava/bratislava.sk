@@ -42,6 +42,7 @@ export type AdminGroup = {
   adminGroupId?: Maybe<Scalars['String']['output']>
   articles: Array<Maybe<Article>>
   articles_connection?: Maybe<ArticleRelationResponseCollection>
+  contentManagedBy?: Maybe<Scalars['String']['output']>
   createdAt?: Maybe<Scalars['DateTime']['output']>
   documentId: Scalars['ID']['output']
   documents: Array<Maybe<Document>>
@@ -125,6 +126,7 @@ export type AdminGroupFiltersInput = {
   adminGroupId?: InputMaybe<StringFilterInput>
   and?: InputMaybe<Array<InputMaybe<AdminGroupFiltersInput>>>
   articles?: InputMaybe<ArticleFiltersInput>
+  contentManagedBy?: InputMaybe<StringFilterInput>
   createdAt?: InputMaybe<DateTimeFilterInput>
   documentId?: InputMaybe<IdFilterInput>
   documents?: InputMaybe<DocumentFiltersInput>
@@ -141,6 +143,7 @@ export type AdminGroupFiltersInput = {
 export type AdminGroupInput = {
   adminGroupId?: InputMaybe<Scalars['String']['input']>
   articles?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
+  contentManagedBy?: InputMaybe<Scalars['String']['input']>
   documents?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
   faqs?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
   landingPage?: InputMaybe<Scalars['ID']['input']>
@@ -6274,6 +6277,7 @@ export type AdminGroupDocumentIdEntityFragment = { __typename?: 'AdminGroup'; do
 export type AdminGroupEntityFragment = {
   __typename?: 'AdminGroup'
   adminGroupId?: string | null
+  contentManagedBy?: string | null
   documentId: string
   landingPage?: {
     __typename?: 'Page'
@@ -9146,6 +9150,7 @@ export type PageEntityFragment = {
   adminGroups: Array<{
     __typename?: 'AdminGroup'
     adminGroupId?: string | null
+    contentManagedBy?: string | null
     documentId: string
     landingPage?: {
       __typename?: 'Page'
@@ -10165,6 +10170,7 @@ export type PageBySlugQuery = {
     adminGroups: Array<{
       __typename?: 'AdminGroup'
       adminGroupId?: string | null
+      contentManagedBy?: string | null
       documentId: string
       landingPage?: {
         __typename?: 'Page'
@@ -11213,6 +11219,7 @@ export type Dev_AllPagesQuery = {
     adminGroups: Array<{
       __typename?: 'AdminGroup'
       adminGroupId?: string | null
+      contentManagedBy?: string | null
       documentId: string
       landingPage?: {
         __typename?: 'Page'
@@ -15396,6 +15403,7 @@ export const AdminGroupEntityFragmentDoc = gql`
   fragment AdminGroupEntity on AdminGroup {
     ...AdminGroupDocumentIdEntity
     adminGroupId
+    contentManagedBy
     landingPage {
       ...PageSlugEntity
       childPages {
