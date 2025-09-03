@@ -27,10 +27,19 @@ type Props = {
 const ArticlesFiltered = ({ section }: Props) => {
   const locale = useLocale()
 
-  const { title, text, articles, category, tags, adminGroups, showMoreLink } = section
+  const {
+    title,
+    text,
+    articles: articlesFromStrapi,
+    category,
+    tags,
+    adminGroups,
+    showMoreLink,
+  } = section
 
   const adminGroupDocumentIds = adminGroups
     .map((adminGroup) => adminGroup?.documentId)
+
     .filter(isDefined)
 
   const tagDocumentIds = tags.map((tag) => tag?.documentId).filter(isDefined)
@@ -76,10 +85,17 @@ const ArticlesFiltered = ({ section }: Props) => {
     enabled: !!category || tags.length > 0 || adminGroupDocumentIds.length > 0,
   })
 
-  const articlesToShow = [...(articles?.filter(isDefined) ?? []), ...(data?.hits ?? [])].slice(
-    0,
-    12,
-  )
+  const articlesToShow = [
+    ...(articlesFromStrapi.filter(isDefined) ?? []),
+    ...(data?.hits
+      .filter((articleFromMeili) =>
+        articlesFromStrapi.every(
+          // filter out articles which are already selected manually in Strapi
+          (articleFromStrapi) => articleFromStrapi?.documentId !== articleFromMeili.documentId,
+        ),
+      )
+      .filter(isDefined) ?? []),
+  ].slice(0, 12)
 
   return (
     <div className="flex flex-col gap-8">
