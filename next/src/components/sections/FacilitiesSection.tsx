@@ -35,12 +35,19 @@ const FacilitiesSection = ({ section }: FacilitiesSectionProps) => {
           )}
         >
           {filteredFacilityPages.map((facilityPage) => {
+            // Pages have always max 1 header
+            const [header] = facilityPage.pageHeaderSections ?? []
+            const { media } = header?.__typename === 'ComponentHeaderSectionsFacility' ? header : {}
+
             return (
               <li key={facilityPage.documentId} className="*:h-full">
                 <FacilityCard
                   cardTitleLevel={getCardTitleLevel(titleLevel)}
-                  image={facilityPage.pageBackgroundImage}
+                  image={media?.filter(isDefined)[0]}
                   linkProps={getLinkProps({ page: facilityPage })}
+                  imageClassName={
+                    filteredFacilityPages.length < 3 ? 'lg:aspect-592/272' : 'aspect-384/272'
+                  }
                 />
               </li>
             )
