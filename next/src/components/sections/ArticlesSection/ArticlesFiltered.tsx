@@ -27,10 +27,19 @@ type Props = {
 const ArticlesFiltered = ({ section }: Props) => {
   const locale = useLocale()
 
-  const { title, text, category, tags, adminGroups, showMoreLink } = section
+  const {
+    title,
+    text,
+    articles: articlesFromStrapi,
+    category,
+    tags,
+    adminGroups,
+    showMoreLink,
+  } = section
 
   const adminGroupDocumentIds = adminGroups
     .map((adminGroup) => adminGroup?.documentId)
+
     .filter(isDefined)
 
   const tagDocumentIds = tags.map((tag) => tag?.documentId).filter(isDefined)
@@ -72,14 +81,28 @@ const ArticlesFiltered = ({ section }: Props) => {
     queryKey: getArticlesQueryKey(filters, locale),
     queryFn: () => articlesFetcher(filters, locale),
     placeholderData: keepPreviousData,
+    // don't fetch if this section contains only manually selected articles
+    enabled: !!category || tags.length > 0 || adminGroupDocumentIds.length > 0,
   })
+
+  const articlesToShow = [
+    ...(articlesFromStrapi.filter(isDefined) ?? []),
+    ...(data?.hits
+      .filter((articleFromMeili) =>
+        articlesFromStrapi.every(
+          // filter out articles which are already selected manually in Strapi
+          (articleFromStrapi) => articleFromStrapi?.documentId !== articleFromMeili.documentId,
+        ),
+      )
+      .filter(isDefined) ?? []),
+  ].slice(0, 12)
 
   return (
     <div className="flex flex-col gap-8">
       <SectionHeader title={title} text={text} showMoreLink={showMoreLink} />
-      {data?.hits ? (
+      {articlesToShow.length > 0 ? (
         <ResponsiveCarousel
-          items={data.hits
+          items={articlesToShow
             .map((card) => {
               return card ? (
                 <ArticleCard

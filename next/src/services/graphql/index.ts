@@ -1385,6 +1385,8 @@ export type ComponentSectionsArticles = {
   __typename?: 'ComponentSectionsArticles'
   adminGroups: Array<Maybe<AdminGroup>>
   adminGroups_connection?: Maybe<AdminGroupRelationResponseCollection>
+  articles: Array<Maybe<Article>>
+  articles_connection?: Maybe<ArticleRelationResponseCollection>
   category?: Maybe<PageCategory>
   id: Scalars['ID']['output']
   showAll?: Maybe<Scalars['Boolean']['output']>
@@ -1407,6 +1409,18 @@ export type ComponentSectionsArticlesAdminGroups_ConnectionArgs = {
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
 }
 
+export type ComponentSectionsArticlesArticlesArgs = {
+  filters?: InputMaybe<ArticleFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type ComponentSectionsArticlesArticles_ConnectionArgs = {
+  filters?: InputMaybe<ArticleFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
 export type ComponentSectionsArticlesTagsArgs = {
   filters?: InputMaybe<TagFiltersInput>
   pagination?: InputMaybe<PaginationArg>
@@ -1422,6 +1436,7 @@ export type ComponentSectionsArticlesTags_ConnectionArgs = {
 export type ComponentSectionsArticlesFiltersInput = {
   adminGroups?: InputMaybe<AdminGroupFiltersInput>
   and?: InputMaybe<Array<InputMaybe<ComponentSectionsArticlesFiltersInput>>>
+  articles?: InputMaybe<ArticleFiltersInput>
   category?: InputMaybe<PageCategoryFiltersInput>
   not?: InputMaybe<ComponentSectionsArticlesFiltersInput>
   or?: InputMaybe<Array<InputMaybe<ComponentSectionsArticlesFiltersInput>>>
@@ -1434,6 +1449,7 @@ export type ComponentSectionsArticlesFiltersInput = {
 
 export type ComponentSectionsArticlesInput = {
   adminGroups?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
+  articles?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
   category?: InputMaybe<Scalars['ID']['input']>
   id?: InputMaybe<Scalars['ID']['input']>
   showAll?: InputMaybe<Scalars['Boolean']['input']>
@@ -9280,6 +9296,36 @@ export type PageEntityFragment = {
         title?: string | null
         text?: string | null
         showAll?: boolean | null
+        articles: Array<{
+          __typename: 'Article'
+          perex?: string | null
+          addedAt: any
+          documentId: string
+          slug: string
+          title: string
+          locale?: string | null
+          coverMedia?: {
+            __typename?: 'UploadFile'
+            documentId: string
+            url: string
+            width?: number | null
+            height?: number | null
+            caption?: string | null
+            alternativeText?: string | null
+            name: string
+          } | null
+          tag?: {
+            __typename?: 'Tag'
+            documentId: string
+            title?: string | null
+            pageCategory?: {
+              __typename?: 'PageCategory'
+              documentId: string
+              title?: string | null
+              color?: Enum_Pagecategory_Color | null
+            } | null
+          } | null
+        } | null>
         category?: {
           __typename?: 'PageCategory'
           documentId: string
@@ -10269,6 +10315,36 @@ export type PageBySlugQuery = {
           title?: string | null
           text?: string | null
           showAll?: boolean | null
+          articles: Array<{
+            __typename: 'Article'
+            perex?: string | null
+            addedAt: any
+            documentId: string
+            slug: string
+            title: string
+            locale?: string | null
+            coverMedia?: {
+              __typename?: 'UploadFile'
+              documentId: string
+              url: string
+              width?: number | null
+              height?: number | null
+              caption?: string | null
+              alternativeText?: string | null
+              name: string
+            } | null
+            tag?: {
+              __typename?: 'Tag'
+              documentId: string
+              title?: string | null
+              pageCategory?: {
+                __typename?: 'PageCategory'
+                documentId: string
+                title?: string | null
+                color?: Enum_Pagecategory_Color | null
+              } | null
+            } | null
+          } | null>
           category?: {
             __typename?: 'PageCategory'
             documentId: string
@@ -11287,6 +11363,36 @@ export type Dev_AllPagesQuery = {
           title?: string | null
           text?: string | null
           showAll?: boolean | null
+          articles: Array<{
+            __typename: 'Article'
+            perex?: string | null
+            addedAt: any
+            documentId: string
+            slug: string
+            title: string
+            locale?: string | null
+            coverMedia?: {
+              __typename?: 'UploadFile'
+              documentId: string
+              url: string
+              width?: number | null
+              height?: number | null
+              caption?: string | null
+              alternativeText?: string | null
+              name: string
+            } | null
+            tag?: {
+              __typename?: 'Tag'
+              documentId: string
+              title?: string | null
+              pageCategory?: {
+                __typename?: 'PageCategory'
+                documentId: string
+                title?: string | null
+                color?: Enum_Pagecategory_Color | null
+              } | null
+            } | null
+          } | null>
           category?: {
             __typename?: 'PageCategory'
             documentId: string
@@ -12703,6 +12809,36 @@ export type ArticlesSectionFragment = {
   title?: string | null
   text?: string | null
   showAll?: boolean | null
+  articles: Array<{
+    __typename: 'Article'
+    perex?: string | null
+    addedAt: any
+    documentId: string
+    slug: string
+    title: string
+    locale?: string | null
+    coverMedia?: {
+      __typename?: 'UploadFile'
+      documentId: string
+      url: string
+      width?: number | null
+      height?: number | null
+      caption?: string | null
+      alternativeText?: string | null
+      name: string
+    } | null
+    tag?: {
+      __typename?: 'Tag'
+      documentId: string
+      title?: string | null
+      pageCategory?: {
+        __typename?: 'PageCategory'
+        documentId: string
+        title?: string | null
+        color?: Enum_Pagecategory_Color | null
+      } | null
+    } | null
+  } | null>
   category?: {
     __typename?: 'PageCategory'
     documentId: string
@@ -13755,6 +13891,36 @@ type Sections_ComponentSectionsArticles_Fragment = {
   title?: string | null
   text?: string | null
   showAll?: boolean | null
+  articles: Array<{
+    __typename: 'Article'
+    perex?: string | null
+    addedAt: any
+    documentId: string
+    slug: string
+    title: string
+    locale?: string | null
+    coverMedia?: {
+      __typename?: 'UploadFile'
+      documentId: string
+      url: string
+      width?: number | null
+      height?: number | null
+      caption?: string | null
+      alternativeText?: string | null
+      name: string
+    } | null
+    tag?: {
+      __typename?: 'Tag'
+      documentId: string
+      title?: string | null
+      pageCategory?: {
+        __typename?: 'PageCategory'
+        documentId: string
+        title?: string | null
+        color?: Enum_Pagecategory_Color | null
+      } | null
+    } | null
+  } | null>
   category?: {
     __typename?: 'PageCategory'
     documentId: string
@@ -15542,6 +15708,9 @@ export const ArticlesSectionFragmentDoc = gql`
     title
     text
     showAll
+    articles {
+      ...ArticleCardEntity
+    }
     category {
       ...PageCategoryEntity
     }
@@ -15555,6 +15724,7 @@ export const ArticlesSectionFragmentDoc = gql`
       ...CommonLink
     }
   }
+  ${ArticleCardEntityFragmentDoc}
   ${PageCategoryEntityFragmentDoc}
   ${TagEntityFragmentDoc}
   ${AdminGroupDocumentIdEntityFragmentDoc}

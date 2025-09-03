@@ -63,7 +63,7 @@
       },
       "category": {
         "edit": {
-          "label": "Kategória (toto pole prosíme napoužívať, bude odstránené)",
+          "label": "Kategória (toto pole prosíme nepoužívať, bude odstránené)",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -91,6 +91,21 @@
           "sortable": false
         }
       },
+      "articles": {
+        "edit": {
+          "label": "Články",
+          "description": "Umožní pripnúť konkrétne články. Články z tohto poľa sa zobrazia ako prvé. Ak je vyplnené aj pole Tagy, nasledovať budú články s vybranými tagmi.",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "title"
+        },
+        "list": {
+          "label": "articles",
+          "searchable": false,
+          "sortable": false
+        }
+      },
       "adminGroups": {
         "edit": {
           "label": "Admin skupiny",
@@ -112,7 +127,8 @@
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true
+          "editable": true,
+          "mainField": "label"
         },
         "list": {
           "label": "showMoreLink",
@@ -130,12 +146,6 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "title",
-        "text",
-        "category"
-      ],
       "edit": [
         [
           {
@@ -157,7 +167,7 @@
         ],
         [
           {
-            "name": "category",
+            "name": "articles",
             "size": 6
           }
         ],
@@ -175,10 +185,22 @@
         ],
         [
           {
+            "name": "category",
+            "size": 6
+          }
+        ],
+        [
+          {
             "name": "showMoreLink",
             "size": 12
           }
         ]
+      ],
+      "list": [
+        "id",
+        "title",
+        "text",
+        "category"
       ]
     },
     "uid": "sections.articles",
