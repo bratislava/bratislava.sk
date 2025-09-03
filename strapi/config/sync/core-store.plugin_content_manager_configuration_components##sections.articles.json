@@ -94,7 +94,7 @@
       "articles": {
         "edit": {
           "label": "Články",
-          "description": "Umožní pripnúť konkrétne články. Články z tohto poľa sa zobrazia ako prvé. Ak je vyplnené aj pole Tagy, nasledovať budú články s vbyranými tagmi.",
+          "description": "Umožní pripnúť konkrétne články. Články z tohto poľa sa zobrazia ako prvé. Ak je vyplnené aj pole Tagy, nasledovať budú články s vybranými tagmi.",
           "placeholder": "",
           "visible": true,
           "editable": true,
