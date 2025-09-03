@@ -6,6 +6,7 @@ type AdminGroup {
   adminGroupId: String
   articles(filters: ArticleFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [Article]!
   articles_connection(filters: ArticleFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): ArticleRelationResponseCollection
+  contentManagedBy: String
   createdAt: DateTime
   documentId: ID!
   documents(filters: DocumentFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [Document]!
@@ -38,6 +39,7 @@ input AdminGroupFiltersInput {
   adminGroupId: StringFilterInput
   and: [AdminGroupFiltersInput]
   articles: ArticleFiltersInput
+  contentManagedBy: StringFilterInput
   createdAt: DateTimeFilterInput
   documentId: IDFilterInput
   documents: DocumentFiltersInput
@@ -54,6 +56,7 @@ input AdminGroupFiltersInput {
 input AdminGroupInput {
   adminGroupId: String
   articles: [ID]
+  contentManagedBy: String
   documents: [ID]
   faqs: [ID]
   landingPage: ID
