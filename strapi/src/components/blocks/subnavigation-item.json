@@ -1,7 +1,7 @@
 {
-  "collectionName": "components_blocks_card_links",
+  "collectionName": "components_blocks_subnavigation_items",
   "info": {
-    "displayName": "card link"
+    "displayName": "Subnavigation item"
   },
   "options": {},
   "attributes": {
@@ -9,24 +9,15 @@
       "type": "string"
     },
     "subtext": {
-      "type": "string"
+      "type": "text"
     },
     "page": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::page.page"
     },
-    "media": {
-      "type": "media",
-      "multiple": false,
-      "allowedTypes": [
-        "images",
-        "files"
-      ]
-    },
     "url": {
-      "type": "string",
-      "required": false
+      "type": "string"
     },
     "analyticsId": {
       "type": "string"

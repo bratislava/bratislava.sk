@@ -57,6 +57,7 @@ export interface BlocksCardLink extends Struct.ComponentSchema {
   attributes: {
     analyticsId: Schema.Attribute.String
     label: Schema.Attribute.String
+    media: Schema.Attribute.Media<'images' | 'files'>
     page: Schema.Attribute.Relation<'oneToOne', 'api::page.page'>
     subtext: Schema.Attribute.String
     url: Schema.Attribute.String
@@ -272,6 +273,41 @@ export interface BlocksProsAndConsCard extends Struct.ComponentSchema {
   attributes: {
     items: Schema.Attribute.Component<'blocks.comparison-item', true> & Schema.Attribute.Required
     title: Schema.Attribute.String & Schema.Attribute.Required
+  }
+}
+
+export interface BlocksStarzLandingPageBanner extends Struct.ComponentSchema {
+  collectionName: 'components_blocks_starz_landing_page_banners'
+  info: {
+    displayName: 'STaRZ Landing Page Banner'
+  }
+  attributes: {
+    content: Schema.Attribute.String
+    contentPosition: Schema.Attribute.Enumeration<['left', 'right']> &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'left'>
+    media: Schema.Attribute.Media<'images' | 'files'> & Schema.Attribute.Required
+    primaryLink: Schema.Attribute.Component<'blocks.common-link', false>
+    secondaryLink: Schema.Attribute.Component<'blocks.common-link', false>
+    tertiaryLink: Schema.Attribute.Component<'blocks.common-link', false>
+    title: Schema.Attribute.String & Schema.Attribute.Required
+    variant: Schema.Attribute.Enumeration<['color', 'dark', 'white_condensed']> &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'white_condensed'>
+  }
+}
+
+export interface BlocksSubnavigationItem extends Struct.ComponentSchema {
+  collectionName: 'components_blocks_subnavigation_items'
+  info: {
+    displayName: 'Subnavigation item'
+  }
+  attributes: {
+    analyticsId: Schema.Attribute.String
+    label: Schema.Attribute.String
+    page: Schema.Attribute.Relation<'oneToOne', 'api::page.page'>
+    subtext: Schema.Attribute.Text
+    url: Schema.Attribute.String
   }
 }
 
@@ -980,13 +1016,25 @@ export interface SectionsRegulations extends Struct.ComponentSchema {
   }
 }
 
+export interface SectionsStarzLandingPage extends Struct.ComponentSchema {
+  collectionName: 'components_sections_starz_landing_pages'
+  info: {
+    displayName: 'STaRZ Landing Page'
+  }
+  attributes: {
+    banner: Schema.Attribute.Component<'blocks.starz-landing-page-banner', false> &
+      Schema.Attribute.Required
+    cardLinks: Schema.Attribute.Component<'blocks.card-link', true>
+  }
+}
+
 export interface SectionsSubnavigation extends Struct.ComponentSchema {
   collectionName: 'components_sections_subnavigations'
   info: {
     displayName: 'subnavigation'
   }
   attributes: {
-    links: Schema.Attribute.Component<'blocks.card-link', true>
+    links: Schema.Attribute.Component<'blocks.subnavigation-item', true>
   }
 }
 
@@ -1135,6 +1183,8 @@ declare module '@strapi/strapi' {
       'blocks.page-link': BlocksPageLink
       'blocks.partner': BlocksPartner
       'blocks.pros-and-cons-card': BlocksProsAndConsCard
+      'blocks.starz-landing-page-banner': BlocksStarzLandingPageBanner
+      'blocks.subnavigation-item': BlocksSubnavigationItem
       'blocks.top-services-item': BlocksTopServicesItem
       'blocks.video': BlocksVideo
       'general.header': GeneralHeader
@@ -1176,6 +1226,7 @@ declare module '@strapi/strapi' {
       'sections.partners': SectionsPartners
       'sections.pros-and-cons-section': SectionsProsAndConsSection
       'sections.regulations': SectionsRegulations
+      'sections.starz-landing-page': SectionsStarzLandingPage
       'sections.subnavigation': SectionsSubnavigation
       'sections.subpage-list': SectionsSubpageList
       'sections.text-with-image': SectionsTextWithImage
