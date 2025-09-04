@@ -3,7 +3,11 @@ import Image from 'next/image'
 
 import Button from '@/src/components/common/Button/Button'
 import Markdown from '@/src/components/formatting/Markdown/Markdown'
-import { CommonLinkFragment, Enum_Componentsectionsbanner_Variant } from '@/src/services/graphql'
+import {
+  CommonLinkFragment,
+  Enum_Componentblocksstarzlandingpagebanner_Variant,
+  Enum_Componentsectionsbanner_Variant,
+} from '@/src/services/graphql'
 import cn from '@/src/utils/cn'
 import { generateImageSizes } from '@/src/utils/generateImageSizes'
 import { getLinkProps } from '@/src/utils/getLinkProps'
@@ -12,11 +16,12 @@ type BannerProps = {
   title: string
   content?: string | null
   contentPosition?: 'left' | 'right'
-  variant: Enum_Componentsectionsbanner_Variant
+  variant: Enum_Componentsectionsbanner_Variant | Enum_Componentblocksstarzlandingpagebanner_Variant
   imagePath?: string
   primaryLink?: CommonLinkFragment | null
   secondaryLink?: CommonLinkFragment | null
   tertiaryLink?: CommonLinkFragment | null
+  className?: string
 }
 
 /**
@@ -32,6 +37,7 @@ const Banner = ({
   primaryLink,
   secondaryLink,
   tertiaryLink,
+  className,
 }: BannerProps) => {
   return (
     <div
@@ -45,6 +51,7 @@ const Banner = ({
           'flex-col lg:flex-row': contentPosition === 'left',
           'flex-col-reverse lg:flex-row-reverse': contentPosition === 'right',
         },
+        className,
       )}
     >
       <div

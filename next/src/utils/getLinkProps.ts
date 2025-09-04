@@ -7,6 +7,7 @@ import {
   HeaderLinkFragment,
   MenuLinkFragment,
   PageLinkFragment,
+  SubnavigationItemFragment,
 } from '@/src/services/graphql'
 
 export type CommonLinkProps = {
@@ -23,6 +24,7 @@ export const getLinkProps = (
     | HeaderLinkFragment
     | PageLinkFragment
     | CardLinkFragment
+    | SubnavigationItemFragment
     | null
     | undefined,
 ) => {

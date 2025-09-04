@@ -1,5 +1,5 @@
 {
-  "key": "plugin_content_manager_configuration_components::blocks.card-link",
+  "key": "plugin_content_manager_configuration_components::blocks.subnavigation-item",
   "value": {
     "settings": {
       "bulkable": true,
@@ -62,20 +62,6 @@
           "sortable": true
         }
       },
-      "media": {
-        "edit": {
-          "label": "Obrázok",
-          "description": "Vypĺňa sa v prípade, ak ide o URL odkaz. V prípade odkazu na stránku sa v karte zobrazí ilustračný obrázok danej stránky.",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "media",
-          "searchable": false,
-          "sortable": false
-        }
-      },
       "url": {
         "edit": {
           "label": "Url",
@@ -114,15 +100,21 @@
       }
     },
     "layouts": {
+      "list": [
+        "id",
+        "label",
+        "subtext",
+        "page"
+      ],
       "edit": [
         [
           {
             "name": "label",
-            "size": 12
+            "size": 6
           },
           {
             "name": "subtext",
-            "size": 12
+            "size": 6
           }
         ],
         [
@@ -137,25 +129,13 @@
             "size": 6
           },
           {
-            "name": "media",
-            "size": 6
-          }
-        ],
-        [
-          {
             "name": "analyticsId",
             "size": 6
           }
         ]
-      ],
-      "list": [
-        "id",
-        "label",
-        "subtext",
-        "page"
       ]
     },
-    "uid": "blocks.card-link",
+    "uid": "blocks.subnavigation-item",
     "isComponent": true
   },
   "type": "object",

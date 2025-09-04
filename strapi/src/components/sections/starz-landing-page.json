@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_sections_starz_landing_pages",
+  "info": {
+    "displayName": "STaRZ Landing Page"
+  },
+  "options": {},
+  "attributes": {
+    "banner": {
+      "type": "component",
+      "component": "blocks.starz-landing-page-banner",
+      "repeatable": false,
+      "required": true
+    },
+    "cardLinks": {
+      "type": "component",
+      "component": "blocks.card-link",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}

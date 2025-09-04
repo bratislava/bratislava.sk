@@ -38,8 +38,11 @@ fragment CommonLink on ComponentBlocksCommonLink {
 fragment CardLink on ComponentBlocksCardLink {
   label
   subtext
+  media {
+    ...UploadImageEntity
+  }
   page {
-    ...PageSlugEntity
+    ...PageCardEntity
   }
   url
   analyticsId
