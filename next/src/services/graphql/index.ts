@@ -3490,11 +3490,14 @@ export type Footer = {
   facebookUrl?: Maybe<Scalars['String']['output']>
   innovationsLink?: Maybe<ComponentBlocksCommonLink>
   instagramUrl?: Maybe<Scalars['String']['output']>
+  linkedinUrl?: Maybe<Scalars['String']['output']>
   locale?: Maybe<Scalars['String']['output']>
   localizations: Array<Maybe<Footer>>
   localizations_connection?: Maybe<FooterRelationResponseCollection>
   publishedAt?: Maybe<Scalars['DateTime']['output']>
+  tiktokUrl?: Maybe<Scalars['String']['output']>
   updatedAt?: Maybe<Scalars['DateTime']['output']>
+  youtubeUrl?: Maybe<Scalars['String']['output']>
 }
 
 export type FooterColumnsArgs = {
@@ -3529,12 +3532,15 @@ export type FooterFiltersInput = {
   facebookUrl?: InputMaybe<StringFilterInput>
   innovationsLink?: InputMaybe<ComponentBlocksCommonLinkFiltersInput>
   instagramUrl?: InputMaybe<StringFilterInput>
+  linkedinUrl?: InputMaybe<StringFilterInput>
   locale?: InputMaybe<StringFilterInput>
   localizations?: InputMaybe<FooterFiltersInput>
   not?: InputMaybe<FooterFiltersInput>
   or?: InputMaybe<Array<InputMaybe<FooterFiltersInput>>>
   publishedAt?: InputMaybe<DateTimeFilterInput>
+  tiktokUrl?: InputMaybe<StringFilterInput>
   updatedAt?: InputMaybe<DateTimeFilterInput>
+  youtubeUrl?: InputMaybe<StringFilterInput>
 }
 
 export type FooterInput = {
@@ -3544,7 +3550,10 @@ export type FooterInput = {
   facebookUrl?: InputMaybe<Scalars['String']['input']>
   innovationsLink?: InputMaybe<ComponentBlocksCommonLinkInput>
   instagramUrl?: InputMaybe<Scalars['String']['input']>
+  linkedinUrl?: InputMaybe<Scalars['String']['input']>
   publishedAt?: InputMaybe<Scalars['DateTime']['input']>
+  tiktokUrl?: InputMaybe<Scalars['String']['input']>
+  youtubeUrl?: InputMaybe<Scalars['String']['input']>
 }
 
 export type FooterRelationResponseCollection = {
@@ -7092,6 +7101,9 @@ export type FooterFragment = {
   __typename?: 'Footer'
   facebookUrl?: string | null
   instagramUrl?: string | null
+  youtubeUrl?: string | null
+  linkedinUrl?: string | null
+  tiktokUrl?: string | null
   contactText?: string | null
   columns?: Array<{
     __typename?: 'ComponentBlocksFooterColumn'
@@ -7890,6 +7902,9 @@ export type GeneralQuery = {
     __typename?: 'Footer'
     facebookUrl?: string | null
     instagramUrl?: string | null
+    youtubeUrl?: string | null
+    linkedinUrl?: string | null
+    tiktokUrl?: string | null
     contactText?: string | null
     columns?: Array<{
       __typename?: 'ComponentBlocksFooterColumn'
@@ -15703,6 +15718,9 @@ export const FooterFragmentDoc = gql`
   fragment Footer on Footer {
     facebookUrl
     instagramUrl
+    youtubeUrl
+    linkedinUrl
+    tiktokUrl
     columns {
       ...FooterColumnBlock
     }

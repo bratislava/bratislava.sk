@@ -67,6 +67,9 @@ fragment FooterColumnBlock on ComponentBlocksFooterColumn {
 fragment Footer on Footer {
   facebookUrl
   instagramUrl
+  youtubeUrl
+  linkedinUrl
+  tiktokUrl
   columns {
     ...FooterColumnBlock
   }
