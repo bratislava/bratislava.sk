@@ -1,7 +1,13 @@
 import { Typography } from '@bratislava/component-library'
 import { Trans } from 'next-i18next'
 
-import { FacebookIcon, InstagramIcon } from '@/src/assets/icons-social-media'
+import {
+  FacebookIcon,
+  InstagramIcon,
+  LinkedinIcon,
+  TiktokIcon,
+  YoutubeIcon,
+} from '@/src/assets/icons-social-media'
 import Button from '@/src/components/common/Button/Button'
 import MLink from '@/src/components/common/MLink/MLink'
 import Markdown from '@/src/components/formatting/Markdown/Markdown'
@@ -10,31 +16,42 @@ import { FooterColumnBlockFragment, FooterFragment } from '@/src/services/graphq
 import { getLinkProps } from '@/src/utils/getLinkProps'
 import { isDefined } from '@/src/utils/isDefined'
 
-export const FooterSocialLinks = ({ facebookUrl, instagramUrl }: FooterFragment) => {
+export const FooterSocialLinks = ({
+  facebookUrl,
+  instagramUrl,
+  youtubeUrl,
+  linkedinUrl,
+  tiktokUrl,
+}: FooterFragment) => {
+  const socialLinks = [
+    { url: facebookUrl, icon: <FacebookIcon />, ariaLabel: 'Facebook' },
+    { url: instagramUrl, icon: <InstagramIcon />, ariaLabel: 'Instagram' },
+    { url: youtubeUrl, icon: <YoutubeIcon />, ariaLabel: 'YouTube' },
+    { url: linkedinUrl, icon: <LinkedinIcon />, ariaLabel: 'LinkedIn' },
+    { url: tiktokUrl, icon: <TiktokIcon />, ariaLabel: 'TikTok' },
+  ]
+
   return (
     <>
-      {facebookUrl ? (
-        <Button
-          href={facebookUrl}
-          target="_blank"
-          variant="icon-wrapped"
-          icon={<FacebookIcon />}
-          aria-label="Facebook"
-          rel="noreferrer"
-          hasLinkIcon={false}
-        />
-      ) : null}
-      {instagramUrl ? (
-        <Button
-          href={instagramUrl}
-          target="_blank"
-          variant="icon-wrapped"
-          icon={<InstagramIcon />}
-          aria-label="Instagram"
-          rel="noreferrer"
-          hasLinkIcon={false}
-        />
-      ) : null}
+      {socialLinks
+        .map(({ url, icon, ariaLabel }, index) => {
+          if (!url) return null
+
+          return (
+            <Button
+              // eslint-disable-next-line react/no-array-index-key
+              key={index}
+              href={url}
+              icon={icon}
+              aria-label={ariaLabel}
+              target="_blank"
+              variant="icon-wrapped"
+              rel="noreferrer"
+              hasLinkIcon={false}
+            />
+          )
+        })
+        .filter(isDefined)}
     </>
   )
 }

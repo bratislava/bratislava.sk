@@ -2795,11 +2795,14 @@ type Footer {
   facebookUrl: String
   innovationsLink: ComponentBlocksCommonLink
   instagramUrl: String
+  linkedinUrl: String
   locale: String
   localizations: [Footer]!
   localizations_connection: FooterRelationResponseCollection
   publishedAt: DateTime
+  tiktokUrl: String
   updatedAt: DateTime
+  youtubeUrl: String
 }
 
 type FooterEntity {
@@ -2825,12 +2828,15 @@ input FooterFiltersInput {
   facebookUrl: StringFilterInput
   innovationsLink: ComponentBlocksCommonLinkFiltersInput
   instagramUrl: StringFilterInput
+  linkedinUrl: StringFilterInput
   locale: StringFilterInput
   localizations: FooterFiltersInput
   not: FooterFiltersInput
   or: [FooterFiltersInput]
   publishedAt: DateTimeFilterInput
+  tiktokUrl: StringFilterInput
   updatedAt: DateTimeFilterInput
+  youtubeUrl: StringFilterInput
 }
 
 input FooterInput {
@@ -2840,7 +2846,10 @@ input FooterInput {
   facebookUrl: String
   innovationsLink: ComponentBlocksCommonLinkInput
   instagramUrl: String
+  linkedinUrl: String
   publishedAt: DateTime
+  tiktokUrl: String
+  youtubeUrl: String
 }
 
 type FooterRelationResponseCollection {
