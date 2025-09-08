@@ -27,6 +27,8 @@
   "ContactCtaCard.phone": "Phone",
   "ContactCtaCard.postalAddress": "Postal address",
   "ContactCtaCard.web": "Web",
+  "ContentManagedBy.copyright": "© {{year}} {{contentManager}}",
+  "ContentManagedBy.message": "The content on this page is managed by the city organization {{contentManager}}.",
   "CopyToClipboardButton.copyToClipboard": "Copy to clipboard",
   "Dialog.aria.close": "Close dialog",
   "DocumentPageContent.descriptionTitle": "Description",

@@ -19,6 +19,10 @@
       "type": "uid",
       "targetField": "title"
     },
+    "contentManagedBy": {
+      "type": "string",
+      "required": false
+    },
     "landingPage": {
       "type": "relation",
       "relation": "oneToOne",
