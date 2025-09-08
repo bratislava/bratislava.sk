@@ -43,13 +43,12 @@ const Banner = ({
     <div
       className={cn(
         // overflow-hidden ensures image not to overlap with rounded corners
-        'flex h-full w-full overflow-hidden rounded-lg @page-wide:rounded-xl',
+        'flex h-full w-full flex-col-reverse overflow-hidden rounded-lg lg:flex-row-reverse @page-wide:rounded-xl',
         {
           'bg-category-200 text-grey-700': variant === 'color',
           'bg-grey-800 text-white': variant === 'dark',
           'border bg-white text-grey-700': variant === 'white_condensed',
           'flex-col lg:flex-row': contentPosition === 'left',
-          'flex-col-reverse lg:flex-row-reverse': contentPosition === 'right',
         },
         className,
       )}

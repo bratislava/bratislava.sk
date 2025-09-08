@@ -57,7 +57,7 @@ export interface BlocksCardLink extends Struct.ComponentSchema {
   attributes: {
     analyticsId: Schema.Attribute.String
     label: Schema.Attribute.String
-    media: Schema.Attribute.Media<'images' | 'files'>
+    media: Schema.Attribute.Media<'images'>
     page: Schema.Attribute.Relation<'oneToOne', 'api::page.page'>
     subtext: Schema.Attribute.String
     url: Schema.Attribute.String

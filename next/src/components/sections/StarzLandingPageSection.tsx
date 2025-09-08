@@ -19,18 +19,12 @@ const StarzLandingPageSection = ({ section }: StarzLandingPageSectionProps) => {
   return (
     <SectionContainer className="py-6 lg:py-12">
       <div className="flex flex-col gap-6 lg:gap-8">
-        <Banner imagePath={media.url} {...restBannerProps} className="flex-col-reverse" />
+        <Banner imagePath={media.url} {...restBannerProps} />
         {filteredCardLinks.length > 0 ? (
           <ResponsiveCarousel
             items={filteredCardLinks
               .map((card, index) => {
-                const cardLinkProps = card.page
-                  ? getLinkProps({ page: card.page })
-                  : getLinkProps({ url: card.url })
-
-                const cardTitle = card.label ?? cardLinkProps.children
-
-                const cardImage = card.page ? card.page.pageBackgroundImage : card.media
+                const cardImage = card.media ?? card.page?.pageBackgroundImage
 
                 const imageSizes = generateImageSizes({ default: '100vw', md: '50vw', lg: '33vw' })
 
@@ -38,16 +32,15 @@ const StarzLandingPageSection = ({ section }: StarzLandingPageSectionProps) => {
                   <LinkCard
                     // eslint-disable-next-line react/no-array-index-key
                     key={index}
-                    title={cardTitle}
+                    title={getLinkProps(card).children}
                     text={card.subtext}
                     image={cardImage}
                     imageSizes={imageSizes}
-                    linkProps={cardLinkProps}
+                    linkProps={getLinkProps(card)}
                   />
                 ) : null
               })
               .filter(isDefined)}
-            desktop={3}
             hasVerticalPadding={false}
             hideControls
           />
