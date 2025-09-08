@@ -7,7 +7,7 @@
   "attributes": {
     "links": {
       "type": "component",
-      "component": "blocks.card-link",
+      "component": "blocks.subnavigation-link",
       "repeatable": true
     }
   },

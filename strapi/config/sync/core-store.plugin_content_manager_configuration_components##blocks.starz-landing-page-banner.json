@@ -1,0 +1,203 @@
+{
+  "key": "plugin_content_manager_configuration_components::blocks.starz-landing-page-banner",
+  "value": {
+    "settings": {
+      "bulkable": true,
+      "filterable": true,
+      "searchable": true,
+      "pageSize": 10,
+      "mainField": "title",
+      "defaultSortBy": "title",
+      "defaultSortOrder": "ASC"
+    },
+    "metadatas": {
+      "id": {
+        "edit": {},
+        "list": {
+          "label": "id",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "title": {
+        "edit": {
+          "label": "Nadpis",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "title",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "content": {
+        "edit": {
+          "label": "Text",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "content",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "media": {
+        "edit": {
+          "label": "Obrázok",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "media",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "contentPosition": {
+        "edit": {
+          "label": "Umiestnenie textu",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "contentPosition",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "variant": {
+        "edit": {
+          "label": "Farba",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "variant",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "primaryLink": {
+        "edit": {
+          "label": "primaryLink",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "primaryLink",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "secondaryLink": {
+        "edit": {
+          "label": "secondaryLink",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "secondaryLink",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "tertiaryLink": {
+        "edit": {
+          "label": "tertiaryLink",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "tertiaryLink",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "documentId": {
+        "edit": {},
+        "list": {
+          "label": "documentId",
+          "searchable": true,
+          "sortable": true
+        }
+      }
+    },
+    "layouts": {
+      "list": [
+        "id",
+        "title",
+        "content",
+        "primaryLink"
+      ],
+      "edit": [
+        [
+          {
+            "name": "title",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "content",
+            "size": 6
+          },
+          {
+            "name": "media",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "contentPosition",
+            "size": 6
+          },
+          {
+            "name": "variant",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "primaryLink",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "secondaryLink",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "tertiaryLink",
+            "size": 12
+          }
+        ]
+      ]
+    },
+    "uid": "blocks.starz-landing-page-banner",
+    "isComponent": true
+  },
+  "type": "object",
+  "environment": null,
+  "tag": null
+}

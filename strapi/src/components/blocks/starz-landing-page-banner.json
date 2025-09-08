@@ -1,0 +1,60 @@
+{
+  "collectionName": "components_blocks_starz_landing_page_banners",
+  "info": {
+    "displayName": "STaRZ Landing Page Banner"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "content": {
+      "type": "string"
+    },
+    "media": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    },
+    "contentPosition": {
+      "type": "enumeration",
+      "required": true,
+      "default": "left",
+      "enum": [
+        "left",
+        "right"
+      ]
+    },
+    "variant": {
+      "type": "enumeration",
+      "required": true,
+      "default": "white_condensed",
+      "enum": [
+        "color",
+        "dark",
+        "white_condensed"
+      ]
+    },
+    "primaryLink": {
+      "type": "component",
+      "component": "blocks.common-link",
+      "repeatable": false
+    },
+    "secondaryLink": {
+      "type": "component",
+      "component": "blocks.common-link",
+      "repeatable": false
+    },
+    "tertiaryLink": {
+      "type": "component",
+      "component": "blocks.common-link",
+      "repeatable": false
+    }
+  },
+  "config": {}
+}

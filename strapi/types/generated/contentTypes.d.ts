@@ -1283,6 +1283,7 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
         'sections.partners',
         'sections.pros-and-cons-section',
         'sections.regulations',
+        'sections.starz-landing-page',
         'sections.text-with-image',
         'sections.text-with-image-overlapped',
         'sections.tootoot-events',

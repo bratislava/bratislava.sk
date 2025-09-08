@@ -1,8 +1,18 @@
 fragment SubnavigationSection on ComponentSectionsSubnavigation {
   links {
     id
-    ...CardLink
+    ...SubnavigationLink
   }
+}
+
+fragment SubnavigationLink on ComponentBlocksSubnavigationLink {
+  label
+  subtext
+  page {
+    ...PageSlugEntity
+  }
+  url
+  analyticsId
 }
 
 fragment GallerySection on ComponentSectionsGallery {
@@ -449,6 +459,29 @@ fragment FacilitiesSection on ComponentSectionsFacilities {
   }
   titleLevelFacilitiesSection: titleLevel
 }
+fragment StarzLandingPageSection on ComponentSectionsStarzLandingPage {
+  banner {
+    title
+    content
+    contentPosition
+    variant
+    media {
+      ...UploadImageEntity
+    }
+    primaryLink {
+      ...CommonLink
+    }
+    secondaryLink {
+      ...CommonLink
+    }
+    tertiaryLink {
+      ...CommonLink
+    }
+  }
+  cardLinks {
+    ...CardLink
+  }
+}
 
 fragment Sections on PageSectionsDynamicZone {
   __typename
@@ -577,6 +610,10 @@ fragment Sections on PageSectionsDynamicZone {
 
   ... on ComponentSectionsFacilities {
     ...FacilitiesSection
+  }
+  
+  ... on ComponentSectionsStarzLandingPage {
+    ...StarzLandingPageSection
   }
 }
 

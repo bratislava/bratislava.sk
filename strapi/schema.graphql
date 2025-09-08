@@ -447,6 +447,7 @@ type ComponentBlocksCardLink {
   analyticsId: String
   id: ID!
   label: String
+  media: UploadFile
   page: Page
   subtext: String
   url: String
@@ -467,6 +468,7 @@ input ComponentBlocksCardLinkInput {
   analyticsId: String
   id: ID
   label: String
+  media: ID
   page: ID
   subtext: String
   url: String
@@ -843,6 +845,72 @@ input ComponentBlocksProsAndConsCardInput {
   id: ID
   items: [ComponentBlocksComparisonItemInput]
   title: String
+}
+
+type ComponentBlocksStarzLandingPageBanner {
+  content: String
+  contentPosition: ENUM_COMPONENTBLOCKSSTARZLANDINGPAGEBANNER_CONTENTPOSITION!
+  id: ID!
+  media: UploadFile!
+  primaryLink: ComponentBlocksCommonLink
+  secondaryLink: ComponentBlocksCommonLink
+  tertiaryLink: ComponentBlocksCommonLink
+  title: String!
+  variant: ENUM_COMPONENTBLOCKSSTARZLANDINGPAGEBANNER_VARIANT!
+}
+
+input ComponentBlocksStarzLandingPageBannerFiltersInput {
+  and: [ComponentBlocksStarzLandingPageBannerFiltersInput]
+  content: StringFilterInput
+  contentPosition: StringFilterInput
+  not: ComponentBlocksStarzLandingPageBannerFiltersInput
+  or: [ComponentBlocksStarzLandingPageBannerFiltersInput]
+  primaryLink: ComponentBlocksCommonLinkFiltersInput
+  secondaryLink: ComponentBlocksCommonLinkFiltersInput
+  tertiaryLink: ComponentBlocksCommonLinkFiltersInput
+  title: StringFilterInput
+  variant: StringFilterInput
+}
+
+input ComponentBlocksStarzLandingPageBannerInput {
+  content: String
+  contentPosition: ENUM_COMPONENTBLOCKSSTARZLANDINGPAGEBANNER_CONTENTPOSITION
+  id: ID
+  media: ID
+  primaryLink: ComponentBlocksCommonLinkInput
+  secondaryLink: ComponentBlocksCommonLinkInput
+  tertiaryLink: ComponentBlocksCommonLinkInput
+  title: String
+  variant: ENUM_COMPONENTBLOCKSSTARZLANDINGPAGEBANNER_VARIANT
+}
+
+type ComponentBlocksSubnavigationLink {
+  analyticsId: String
+  id: ID!
+  label: String
+  page: Page
+  subtext: String
+  url: String
+}
+
+input ComponentBlocksSubnavigationLinkFiltersInput {
+  analyticsId: StringFilterInput
+  and: [ComponentBlocksSubnavigationLinkFiltersInput]
+  label: StringFilterInput
+  not: ComponentBlocksSubnavigationLinkFiltersInput
+  or: [ComponentBlocksSubnavigationLinkFiltersInput]
+  page: PageFiltersInput
+  subtext: StringFilterInput
+  url: StringFilterInput
+}
+
+input ComponentBlocksSubnavigationLinkInput {
+  analyticsId: String
+  id: ID
+  label: String
+  page: ID
+  subtext: String
+  url: String
 }
 
 type ComponentBlocksTopServicesItem {
@@ -1916,21 +1984,41 @@ input ComponentSectionsRegulationsInput {
   showAll: Boolean
 }
 
+type ComponentSectionsStarzLandingPage {
+  banner: ComponentBlocksStarzLandingPageBanner!
+  cardLinks(filters: ComponentBlocksCardLinkFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksCardLink]
+  id: ID!
+}
+
+input ComponentSectionsStarzLandingPageFiltersInput {
+  and: [ComponentSectionsStarzLandingPageFiltersInput]
+  banner: ComponentBlocksStarzLandingPageBannerFiltersInput
+  cardLinks: ComponentBlocksCardLinkFiltersInput
+  not: ComponentSectionsStarzLandingPageFiltersInput
+  or: [ComponentSectionsStarzLandingPageFiltersInput]
+}
+
+input ComponentSectionsStarzLandingPageInput {
+  banner: ComponentBlocksStarzLandingPageBannerInput
+  cardLinks: [ComponentBlocksCardLinkInput]
+  id: ID
+}
+
 type ComponentSectionsSubnavigation {
   id: ID!
-  links(filters: ComponentBlocksCardLinkFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksCardLink]
+  links(filters: ComponentBlocksSubnavigationLinkFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksSubnavigationLink]
 }
 
 input ComponentSectionsSubnavigationFiltersInput {
   and: [ComponentSectionsSubnavigationFiltersInput]
-  links: ComponentBlocksCardLinkFiltersInput
+  links: ComponentBlocksSubnavigationLinkFiltersInput
   not: ComponentSectionsSubnavigationFiltersInput
   or: [ComponentSectionsSubnavigationFiltersInput]
 }
 
 input ComponentSectionsSubnavigationInput {
   id: ID
-  links: [ComponentBlocksCardLinkInput]
+  links: [ComponentBlocksSubnavigationLinkInput]
 }
 
 type ComponentSectionsSubpageList {
@@ -2284,6 +2372,17 @@ input DocumentInput {
 
 type DocumentRelationResponseCollection {
   nodes: [Document!]!
+}
+
+enum ENUM_COMPONENTBLOCKSSTARZLANDINGPAGEBANNER_CONTENTPOSITION {
+  left
+  right
+}
+
+enum ENUM_COMPONENTBLOCKSSTARZLANDINGPAGEBANNER_VARIANT {
+  color
+  dark
+  white_condensed
 }
 
 enum ENUM_COMPONENTBLOCKSTOPSERVICESITEM_ICON {
@@ -2815,7 +2914,7 @@ type GeneralRelationResponseCollection {
   nodes: [General!]!
 }
 
-union GenericMorph = AdminGroup | Alert | Article | ArticleCategory | BlogPost | ComponentAccordionItemsFlatText | ComponentAccordionItemsInstitution | ComponentAccordionItemsInstitutionNarrow | ComponentBlocksCardLink | ComponentBlocksColumnsItem | ComponentBlocksCommonLink | ComponentBlocksComparisonCard | ComponentBlocksComparisonItem | ComponentBlocksContactCard | ComponentBlocksContactDirectionsCard | ComponentBlocksContactPersonCard | ComponentBlocksFile | ComponentBlocksFileItem | ComponentBlocksFooterColumn | ComponentBlocksHomepageHighlightsItem | ComponentBlocksInBa | ComponentBlocksNumbersOverviewItem | ComponentBlocksNumericalListItem | ComponentBlocksPageLink | ComponentBlocksPartner | ComponentBlocksProsAndConsCard | ComponentBlocksTopServicesItem | ComponentBlocksVideo | ComponentGeneralHeader | ComponentGeneralHeaderLink | ComponentHeaderSectionsEvent | ComponentHeaderSectionsFacility | ComponentMenuMenuItem | ComponentMenuMenuLink | ComponentMenuMenuSection | ComponentSectionsAccordion | ComponentSectionsArticles | ComponentSectionsBanner | ComponentSectionsCalculator | ComponentSectionsColumnedText | ComponentSectionsColumns | ComponentSectionsComparisonSection | ComponentSectionsContactsSection | ComponentSectionsDivider | ComponentSectionsDocuments | ComponentSectionsEvents | ComponentSectionsFacilities | ComponentSectionsFaqCategories | ComponentSectionsFaqs | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsHomepageEvents | ComponentSectionsHomepageHighlights | ComponentSectionsHomepageMayorAndCouncil | ComponentSectionsHomepageTabs | ComponentSectionsIframe | ComponentSectionsInbaArticlesList | ComponentSectionsInbaReleases | ComponentSectionsLinks | ComponentSectionsNarrowText | ComponentSectionsNumbersOverview | ComponentSectionsNumericalList | ComponentSectionsOfficialBoard | ComponentSectionsOrganizationalStructure | ComponentSectionsPartners | ComponentSectionsProsAndConsSection | ComponentSectionsRegulations | ComponentSectionsSubnavigation | ComponentSectionsSubpageList | ComponentSectionsTextWithImage | ComponentSectionsTextWithImageOverlapped | ComponentSectionsTootootEvents | ComponentSectionsTopServices | ComponentSectionsVideos | ComponentSidebarsEmptySidebar | ComponentTaxAdministratorsTaxAdministrator | Document | DocumentCategory | Faq | FaqCategory | Footer | General | Homepage | I18NLocale | InbaArticle | InbaRelease | InbaTag | Menu | Page | PageCategory | Regulation | ReviewWorkflowsWorkflow | ReviewWorkflowsWorkflowStage | Tag | TaxAdministratorsList | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
+union GenericMorph = AdminGroup | Alert | Article | ArticleCategory | BlogPost | ComponentAccordionItemsFlatText | ComponentAccordionItemsInstitution | ComponentAccordionItemsInstitutionNarrow | ComponentBlocksCardLink | ComponentBlocksColumnsItem | ComponentBlocksCommonLink | ComponentBlocksComparisonCard | ComponentBlocksComparisonItem | ComponentBlocksContactCard | ComponentBlocksContactDirectionsCard | ComponentBlocksContactPersonCard | ComponentBlocksFile | ComponentBlocksFileItem | ComponentBlocksFooterColumn | ComponentBlocksHomepageHighlightsItem | ComponentBlocksInBa | ComponentBlocksNumbersOverviewItem | ComponentBlocksNumericalListItem | ComponentBlocksPageLink | ComponentBlocksPartner | ComponentBlocksProsAndConsCard | ComponentBlocksStarzLandingPageBanner | ComponentBlocksSubnavigationLink | ComponentBlocksTopServicesItem | ComponentBlocksVideo | ComponentGeneralHeader | ComponentGeneralHeaderLink | ComponentHeaderSectionsEvent | ComponentHeaderSectionsFacility | ComponentMenuMenuItem | ComponentMenuMenuLink | ComponentMenuMenuSection | ComponentSectionsAccordion | ComponentSectionsArticles | ComponentSectionsBanner | ComponentSectionsCalculator | ComponentSectionsColumnedText | ComponentSectionsColumns | ComponentSectionsComparisonSection | ComponentSectionsContactsSection | ComponentSectionsDivider | ComponentSectionsDocuments | ComponentSectionsEvents | ComponentSectionsFacilities | ComponentSectionsFaqCategories | ComponentSectionsFaqs | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsHomepageEvents | ComponentSectionsHomepageHighlights | ComponentSectionsHomepageMayorAndCouncil | ComponentSectionsHomepageTabs | ComponentSectionsIframe | ComponentSectionsInbaArticlesList | ComponentSectionsInbaReleases | ComponentSectionsLinks | ComponentSectionsNarrowText | ComponentSectionsNumbersOverview | ComponentSectionsNumericalList | ComponentSectionsOfficialBoard | ComponentSectionsOrganizationalStructure | ComponentSectionsPartners | ComponentSectionsProsAndConsSection | ComponentSectionsRegulations | ComponentSectionsStarzLandingPage | ComponentSectionsSubnavigation | ComponentSectionsSubpageList | ComponentSectionsTextWithImage | ComponentSectionsTextWithImageOverlapped | ComponentSectionsTootootEvents | ComponentSectionsTopServices | ComponentSectionsVideos | ComponentSidebarsEmptySidebar | ComponentTaxAdministratorsTaxAdministrator | Document | DocumentCategory | Faq | FaqCategory | Footer | General | Homepage | I18NLocale | InbaArticle | InbaRelease | InbaTag | Menu | Page | PageCategory | Regulation | ReviewWorkflowsWorkflow | ReviewWorkflowsWorkflowStage | Tag | TaxAdministratorsList | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
 
 type Homepage {
   createdAt: DateTime
@@ -3762,7 +3861,7 @@ type PageRelationResponseCollection {
   nodes: [Page!]!
 }
 
-union PageSectionsDynamicZone = ComponentSectionsAccordion | ComponentSectionsArticles | ComponentSectionsBanner | ComponentSectionsCalculator | ComponentSectionsColumnedText | ComponentSectionsColumns | ComponentSectionsComparisonSection | ComponentSectionsContactsSection | ComponentSectionsDivider | ComponentSectionsDocuments | ComponentSectionsEvents | ComponentSectionsFacilities | ComponentSectionsFaqCategories | ComponentSectionsFaqs | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsIframe | ComponentSectionsInbaArticlesList | ComponentSectionsInbaReleases | ComponentSectionsLinks | ComponentSectionsNarrowText | ComponentSectionsNumbersOverview | ComponentSectionsNumericalList | ComponentSectionsOfficialBoard | ComponentSectionsOrganizationalStructure | ComponentSectionsPartners | ComponentSectionsProsAndConsSection | ComponentSectionsRegulations | ComponentSectionsTextWithImage | ComponentSectionsTextWithImageOverlapped | ComponentSectionsTootootEvents | ComponentSectionsVideos | Error
+union PageSectionsDynamicZone = ComponentSectionsAccordion | ComponentSectionsArticles | ComponentSectionsBanner | ComponentSectionsCalculator | ComponentSectionsColumnedText | ComponentSectionsColumns | ComponentSectionsComparisonSection | ComponentSectionsContactsSection | ComponentSectionsDivider | ComponentSectionsDocuments | ComponentSectionsEvents | ComponentSectionsFacilities | ComponentSectionsFaqCategories | ComponentSectionsFaqs | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsIframe | ComponentSectionsInbaArticlesList | ComponentSectionsInbaReleases | ComponentSectionsLinks | ComponentSectionsNarrowText | ComponentSectionsNumbersOverview | ComponentSectionsNumericalList | ComponentSectionsOfficialBoard | ComponentSectionsOrganizationalStructure | ComponentSectionsPartners | ComponentSectionsProsAndConsSection | ComponentSectionsRegulations | ComponentSectionsStarzLandingPage | ComponentSectionsTextWithImage | ComponentSectionsTextWithImageOverlapped | ComponentSectionsTootootEvents | ComponentSectionsVideos | Error
 
 scalar PageSectionsDynamicZoneInput
 
