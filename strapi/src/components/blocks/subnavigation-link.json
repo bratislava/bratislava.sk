@@ -1,7 +1,7 @@
 {
-  "collectionName": "components_blocks_subnavigation_items",
+  "collectionName": "components_blocks_subnavigation_links",
   "info": {
-    "displayName": "Subnavigation item"
+    "displayName": "Subnavigation link"
   },
   "options": {},
   "attributes": {

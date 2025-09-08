@@ -297,10 +297,10 @@ export interface BlocksStarzLandingPageBanner extends Struct.ComponentSchema {
   }
 }
 
-export interface BlocksSubnavigationItem extends Struct.ComponentSchema {
-  collectionName: 'components_blocks_subnavigation_items'
+export interface BlocksSubnavigationLink extends Struct.ComponentSchema {
+  collectionName: 'components_blocks_subnavigation_links'
   info: {
-    displayName: 'Subnavigation item'
+    displayName: 'Subnavigation link'
   }
   attributes: {
     analyticsId: Schema.Attribute.String
@@ -1034,7 +1034,7 @@ export interface SectionsSubnavigation extends Struct.ComponentSchema {
     displayName: 'subnavigation'
   }
   attributes: {
-    links: Schema.Attribute.Component<'blocks.subnavigation-item', true>
+    links: Schema.Attribute.Component<'blocks.subnavigation-link', true>
   }
 }
 
@@ -1184,7 +1184,7 @@ declare module '@strapi/strapi' {
       'blocks.partner': BlocksPartner
       'blocks.pros-and-cons-card': BlocksProsAndConsCard
       'blocks.starz-landing-page-banner': BlocksStarzLandingPageBanner
-      'blocks.subnavigation-item': BlocksSubnavigationItem
+      'blocks.subnavigation-link': BlocksSubnavigationLink
       'blocks.top-services-item': BlocksTopServicesItem
       'blocks.video': BlocksVideo
       'general.header': GeneralHeader

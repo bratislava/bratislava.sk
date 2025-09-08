@@ -1,11 +1,11 @@
 fragment SubnavigationSection on ComponentSectionsSubnavigation {
   links {
     id
-    ...SubnavigationItem
+    ...SubnavigationLink
   }
 }
 
-fragment SubnavigationItem on ComponentBlocksSubnavigationItem {
+fragment SubnavigationLink on ComponentBlocksSubnavigationLink {
   label
   subtext
   page {

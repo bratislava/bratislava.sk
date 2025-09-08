@@ -1115,8 +1115,8 @@ export type ComponentBlocksStarzLandingPageBannerInput = {
   variant?: InputMaybe<Enum_Componentblocksstarzlandingpagebanner_Variant>
 }
 
-export type ComponentBlocksSubnavigationItem = {
-  __typename?: 'ComponentBlocksSubnavigationItem'
+export type ComponentBlocksSubnavigationLink = {
+  __typename?: 'ComponentBlocksSubnavigationLink'
   analyticsId?: Maybe<Scalars['String']['output']>
   id: Scalars['ID']['output']
   label?: Maybe<Scalars['String']['output']>
@@ -1125,18 +1125,18 @@ export type ComponentBlocksSubnavigationItem = {
   url?: Maybe<Scalars['String']['output']>
 }
 
-export type ComponentBlocksSubnavigationItemFiltersInput = {
+export type ComponentBlocksSubnavigationLinkFiltersInput = {
   analyticsId?: InputMaybe<StringFilterInput>
-  and?: InputMaybe<Array<InputMaybe<ComponentBlocksSubnavigationItemFiltersInput>>>
+  and?: InputMaybe<Array<InputMaybe<ComponentBlocksSubnavigationLinkFiltersInput>>>
   label?: InputMaybe<StringFilterInput>
-  not?: InputMaybe<ComponentBlocksSubnavigationItemFiltersInput>
-  or?: InputMaybe<Array<InputMaybe<ComponentBlocksSubnavigationItemFiltersInput>>>
+  not?: InputMaybe<ComponentBlocksSubnavigationLinkFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<ComponentBlocksSubnavigationLinkFiltersInput>>>
   page?: InputMaybe<PageFiltersInput>
   subtext?: InputMaybe<StringFilterInput>
   url?: InputMaybe<StringFilterInput>
 }
 
-export type ComponentBlocksSubnavigationItemInput = {
+export type ComponentBlocksSubnavigationLinkInput = {
   analyticsId?: InputMaybe<Scalars['String']['input']>
   id?: InputMaybe<Scalars['ID']['input']>
   label?: InputMaybe<Scalars['String']['input']>
@@ -2557,25 +2557,25 @@ export type ComponentSectionsStarzLandingPageInput = {
 export type ComponentSectionsSubnavigation = {
   __typename?: 'ComponentSectionsSubnavigation'
   id: Scalars['ID']['output']
-  links?: Maybe<Array<Maybe<ComponentBlocksSubnavigationItem>>>
+  links?: Maybe<Array<Maybe<ComponentBlocksSubnavigationLink>>>
 }
 
 export type ComponentSectionsSubnavigationLinksArgs = {
-  filters?: InputMaybe<ComponentBlocksSubnavigationItemFiltersInput>
+  filters?: InputMaybe<ComponentBlocksSubnavigationLinkFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
 }
 
 export type ComponentSectionsSubnavigationFiltersInput = {
   and?: InputMaybe<Array<InputMaybe<ComponentSectionsSubnavigationFiltersInput>>>
-  links?: InputMaybe<ComponentBlocksSubnavigationItemFiltersInput>
+  links?: InputMaybe<ComponentBlocksSubnavigationLinkFiltersInput>
   not?: InputMaybe<ComponentSectionsSubnavigationFiltersInput>
   or?: InputMaybe<Array<InputMaybe<ComponentSectionsSubnavigationFiltersInput>>>
 }
 
 export type ComponentSectionsSubnavigationInput = {
   id?: InputMaybe<Scalars['ID']['input']>
-  links?: InputMaybe<Array<InputMaybe<ComponentBlocksSubnavigationItemInput>>>
+  links?: InputMaybe<Array<InputMaybe<ComponentBlocksSubnavigationLinkInput>>>
 }
 
 export type ComponentSectionsSubpageList = {
@@ -3649,7 +3649,7 @@ export type GenericMorph =
   | ComponentBlocksPartner
   | ComponentBlocksProsAndConsCard
   | ComponentBlocksStarzLandingPageBanner
-  | ComponentBlocksSubnavigationItem
+  | ComponentBlocksSubnavigationLink
   | ComponentBlocksTopServicesItem
   | ComponentBlocksVideo
   | ComponentGeneralHeader
@@ -9346,7 +9346,7 @@ export type PageEntityFragment = {
   subnavigation?: {
     __typename?: 'ComponentSectionsSubnavigation'
     links?: Array<{
-      __typename?: 'ComponentBlocksSubnavigationItem'
+      __typename?: 'ComponentBlocksSubnavigationLink'
       id: string
       label?: string | null
       subtext?: string | null
@@ -10474,7 +10474,7 @@ export type PageBySlugQuery = {
     subnavigation?: {
       __typename?: 'ComponentSectionsSubnavigation'
       links?: Array<{
-        __typename?: 'ComponentBlocksSubnavigationItem'
+        __typename?: 'ComponentBlocksSubnavigationLink'
         id: string
         label?: string | null
         subtext?: string | null
@@ -11631,7 +11631,7 @@ export type Dev_AllPagesQuery = {
     subnavigation?: {
       __typename?: 'ComponentSectionsSubnavigation'
       links?: Array<{
-        __typename?: 'ComponentBlocksSubnavigationItem'
+        __typename?: 'ComponentBlocksSubnavigationLink'
         id: string
         label?: string | null
         subtext?: string | null
@@ -13222,7 +13222,7 @@ export type RegulationEntityFragment = {
 export type SubnavigationSectionFragment = {
   __typename?: 'ComponentSectionsSubnavigation'
   links?: Array<{
-    __typename?: 'ComponentBlocksSubnavigationItem'
+    __typename?: 'ComponentBlocksSubnavigationLink'
     id: string
     label?: string | null
     subtext?: string | null
@@ -13238,8 +13238,8 @@ export type SubnavigationSectionFragment = {
   } | null> | null
 }
 
-export type SubnavigationItemFragment = {
-  __typename?: 'ComponentBlocksSubnavigationItem'
+export type SubnavigationLinkFragment = {
+  __typename?: 'ComponentBlocksSubnavigationLink'
   label?: string | null
   subtext?: string | null
   url?: string | null
@@ -16138,8 +16138,8 @@ export const PageHeaderSectionsFragmentDoc = gql`
   ${EventPageHeaderSectionFragmentDoc}
   ${FacilityPageHeaderSectionFragmentDoc}
 `
-export const SubnavigationItemFragmentDoc = gql`
-  fragment SubnavigationItem on ComponentBlocksSubnavigationItem {
+export const SubnavigationLinkFragmentDoc = gql`
+  fragment SubnavigationLink on ComponentBlocksSubnavigationLink {
     label
     subtext
     page {
@@ -16154,10 +16154,10 @@ export const SubnavigationSectionFragmentDoc = gql`
   fragment SubnavigationSection on ComponentSectionsSubnavigation {
     links {
       id
-      ...SubnavigationItem
+      ...SubnavigationLink
     }
   }
-  ${SubnavigationItemFragmentDoc}
+  ${SubnavigationLinkFragmentDoc}
 `
 export const DividerSectionFragmentDoc = gql`
   fragment DividerSection on ComponentSectionsDivider {

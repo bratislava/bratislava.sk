@@ -7,7 +7,7 @@
   "attributes": {
     "links": {
       "type": "component",
-      "component": "blocks.subnavigation-item",
+      "component": "blocks.subnavigation-link",
       "repeatable": true
     }
   },

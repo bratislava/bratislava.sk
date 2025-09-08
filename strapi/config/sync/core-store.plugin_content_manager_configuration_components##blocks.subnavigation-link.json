@@ -1,5 +1,5 @@
 {
-  "key": "plugin_content_manager_configuration_components::blocks.subnavigation-item",
+  "key": "plugin_content_manager_configuration_components::blocks.subnavigation-link",
   "value": {
     "settings": {
       "bulkable": true,
@@ -100,12 +100,6 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "label",
-        "subtext",
-        "page"
-      ],
       "edit": [
         [
           {
@@ -121,21 +115,27 @@
           {
             "name": "page",
             "size": 6
-          }
-        ],
-        [
+          },
           {
             "name": "url",
             "size": 6
-          },
+          }
+        ],
+        [
           {
             "name": "analyticsId",
             "size": 6
           }
         ]
+      ],
+      "list": [
+        "id",
+        "label",
+        "subtext",
+        "page"
       ]
     },
-    "uid": "blocks.subnavigation-item",
+    "uid": "blocks.subnavigation-link",
     "isComponent": true
   },
   "type": "object",
