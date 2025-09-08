@@ -16,7 +16,7 @@ const ContentManagedBy = ({ contentManager }: Props) => {
   const { t } = useTranslation()
 
   return (
-    <div className="flex flex-wrap items-center justify-between gap-4 py-4 max-sm:flex-col max-sm:text-center lg:py-6">
+    <div className="flex flex-wrap items-center justify-between gap-4 py-4 max-lg:flex-col max-lg:text-center lg:py-6">
       <div className="flex items-center gap-3">
         <InfoIcon className="size-6 max-lg:hidden" />
         <Typography variant="p-small">
