@@ -48,6 +48,48 @@
           "sortable": true
         }
       },
+      "youtubeUrl": {
+        "edit": {
+          "label": "youtubeUrl",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "youtubeUrl",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "linkedinUrl": {
+        "edit": {
+          "label": "linkedinUrl",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "linkedinUrl",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "tiktokUrl": {
+        "edit": {
+          "label": "tiktokUrl",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "tiktokUrl",
+          "searchable": true,
+          "sortable": true
+        }
+      },
       "columns": {
         "edit": {
           "label": "columns",
@@ -192,6 +234,18 @@
           },
           {
             "name": "instagramUrl",
+            "size": 6
+          },
+                    {
+            "name": "youtubeUrl",
+            "size": 6
+          },
+          {
+            "name": "linkedinUrl",
+            "size": 6
+          },
+          {
+            "name": "tiktokUrl",
             "size": 6
           }
         ],

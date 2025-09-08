@@ -777,6 +777,9 @@
         "fields": [
           "facebookUrl",
           "instagramUrl",
+          "youtubeUrl",
+          "linkedinUrl",
+          "tiktokUrl",
           "columns.title",
           "columns.links.label",
           "columns.links.page",
@@ -802,7 +805,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "kmj8km6wk127g9nkymxu3f1k",
+      "documentId": "cjho357fq25k7a428i73rn15",
       "locale": null
     },
     {
@@ -840,6 +843,9 @@
         "fields": [
           "facebookUrl",
           "instagramUrl",
+          "youtubeUrl",
+          "linkedinUrl",
+          "tiktokUrl",
           "columns.title",
           "columns.links.label",
           "columns.links.page",
@@ -865,7 +871,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "k9iksojjm9ey3qbtfjksnson",
+      "documentId": "p1wq6pfx7c8vqwf3w2np07hc",
       "locale": null
     },
     {
@@ -875,6 +881,9 @@
         "fields": [
           "facebookUrl",
           "instagramUrl",
+          "youtubeUrl",
+          "linkedinUrl",
+          "tiktokUrl",
           "columns.title",
           "columns.links.label",
           "columns.links.page",
@@ -900,7 +909,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "xot517gsqzbk5mjwwv9yf4n9",
+      "documentId": "t754s91swojk2fuzlkv04gnb",
       "locale": null
     },
     {
