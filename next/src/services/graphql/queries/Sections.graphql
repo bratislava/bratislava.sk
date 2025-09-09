@@ -483,6 +483,23 @@ fragment StarzLandingPageSection on ComponentSectionsStarzLandingPage {
   }
 }
 
+fragment OpeningHoursSection on ComponentSectionsOpeningHours {
+  title
+  text
+  openingHoursItems {
+    ...OpeningHoursItem
+  }
+  bannerOpeningHoursSection: banner {
+    text
+  }
+  titleLevelOpeningHoursSection: titleLevel
+}
+
+fragment OpeningHoursItem on ComponentBlocksOpeningHoursItem {
+  label
+  value
+}
+
 fragment Sections on PageSectionsDynamicZone {
   __typename
 
@@ -614,6 +631,10 @@ fragment Sections on PageSectionsDynamicZone {
   
   ... on ComponentSectionsStarzLandingPage {
     ...StarzLandingPageSection
+  }
+
+  ... on ComponentSectionsOpeningHours {
+    ...OpeningHoursSection
   }
 }
 

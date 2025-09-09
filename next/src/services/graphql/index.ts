@@ -1003,6 +1003,45 @@ export type ComponentBlocksNumericalListItemInput = {
   text?: InputMaybe<Scalars['String']['input']>
 }
 
+export type ComponentBlocksOpeningHoursBanner = {
+  __typename?: 'ComponentBlocksOpeningHoursBanner'
+  id: Scalars['ID']['output']
+  text?: Maybe<Scalars['String']['output']>
+}
+
+export type ComponentBlocksOpeningHoursBannerFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentBlocksOpeningHoursBannerFiltersInput>>>
+  not?: InputMaybe<ComponentBlocksOpeningHoursBannerFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<ComponentBlocksOpeningHoursBannerFiltersInput>>>
+  text?: InputMaybe<StringFilterInput>
+}
+
+export type ComponentBlocksOpeningHoursBannerInput = {
+  id?: InputMaybe<Scalars['ID']['input']>
+  text?: InputMaybe<Scalars['String']['input']>
+}
+
+export type ComponentBlocksOpeningHoursItem = {
+  __typename?: 'ComponentBlocksOpeningHoursItem'
+  id: Scalars['ID']['output']
+  label: Scalars['String']['output']
+  value: Scalars['String']['output']
+}
+
+export type ComponentBlocksOpeningHoursItemFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentBlocksOpeningHoursItemFiltersInput>>>
+  label?: InputMaybe<StringFilterInput>
+  not?: InputMaybe<ComponentBlocksOpeningHoursItemFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<ComponentBlocksOpeningHoursItemFiltersInput>>>
+  value?: InputMaybe<StringFilterInput>
+}
+
+export type ComponentBlocksOpeningHoursItemInput = {
+  id?: InputMaybe<Scalars['ID']['input']>
+  label?: InputMaybe<Scalars['String']['input']>
+  value?: InputMaybe<Scalars['String']['input']>
+}
+
 export type ComponentBlocksPageLink = {
   __typename?: 'ComponentBlocksPageLink'
   analyticsId?: Maybe<Scalars['String']['output']>
@@ -2412,6 +2451,42 @@ export type ComponentSectionsOfficialBoardInput = {
   id?: InputMaybe<Scalars['ID']['input']>
 }
 
+export type ComponentSectionsOpeningHours = {
+  __typename?: 'ComponentSectionsOpeningHours'
+  banner?: Maybe<ComponentBlocksOpeningHoursBanner>
+  id: Scalars['ID']['output']
+  openingHoursItems?: Maybe<Array<Maybe<ComponentBlocksOpeningHoursItem>>>
+  text?: Maybe<Scalars['String']['output']>
+  title?: Maybe<Scalars['String']['output']>
+  titleLevel?: Maybe<Enum_Componentsectionsopeninghours_Titlelevel>
+}
+
+export type ComponentSectionsOpeningHoursOpeningHoursItemsArgs = {
+  filters?: InputMaybe<ComponentBlocksOpeningHoursItemFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type ComponentSectionsOpeningHoursFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentSectionsOpeningHoursFiltersInput>>>
+  banner?: InputMaybe<ComponentBlocksOpeningHoursBannerFiltersInput>
+  not?: InputMaybe<ComponentSectionsOpeningHoursFiltersInput>
+  openingHoursItems?: InputMaybe<ComponentBlocksOpeningHoursItemFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<ComponentSectionsOpeningHoursFiltersInput>>>
+  text?: InputMaybe<StringFilterInput>
+  title?: InputMaybe<StringFilterInput>
+  titleLevel?: InputMaybe<StringFilterInput>
+}
+
+export type ComponentSectionsOpeningHoursInput = {
+  banner?: InputMaybe<ComponentBlocksOpeningHoursBannerInput>
+  id?: InputMaybe<Scalars['ID']['input']>
+  openingHoursItems?: InputMaybe<Array<InputMaybe<ComponentBlocksOpeningHoursItemInput>>>
+  text?: InputMaybe<Scalars['String']['input']>
+  title?: InputMaybe<Scalars['String']['input']>
+  titleLevel?: InputMaybe<Enum_Componentsectionsopeninghours_Titlelevel>
+}
+
 export type ComponentSectionsOrganizationalStructure = {
   __typename?: 'ComponentSectionsOrganizationalStructure'
   id: Scalars['ID']['output']
@@ -3198,6 +3273,11 @@ export enum Enum_Componentsectionsnumericallist_Variant {
   Roadmap = 'roadmap',
 }
 
+export enum Enum_Componentsectionsopeninghours_Titlelevel {
+  H2 = 'h2',
+  H3 = 'h3',
+}
+
 export enum Enum_Componentsectionspartners_Logoratio {
   Ratio_4_1 = 'ratio_4_1',
   Ratio_4_3 = 'ratio_4_3',
@@ -3657,6 +3737,8 @@ export type GenericMorph =
   | ComponentBlocksInBa
   | ComponentBlocksNumbersOverviewItem
   | ComponentBlocksNumericalListItem
+  | ComponentBlocksOpeningHoursBanner
+  | ComponentBlocksOpeningHoursItem
   | ComponentBlocksPageLink
   | ComponentBlocksPartner
   | ComponentBlocksProsAndConsCard
@@ -3699,6 +3781,7 @@ export type GenericMorph =
   | ComponentSectionsNumbersOverview
   | ComponentSectionsNumericalList
   | ComponentSectionsOfficialBoard
+  | ComponentSectionsOpeningHours
   | ComponentSectionsOrganizationalStructure
   | ComponentSectionsPartners
   | ComponentSectionsProsAndConsSection
@@ -5041,6 +5124,7 @@ export type PageSectionsDynamicZone =
   | ComponentSectionsNumbersOverview
   | ComponentSectionsNumericalList
   | ComponentSectionsOfficialBoard
+  | ComponentSectionsOpeningHours
   | ComponentSectionsOrganizationalStructure
   | ComponentSectionsPartners
   | ComponentSectionsProsAndConsSection
@@ -6956,6 +7040,7 @@ export type AllFilesQuery = {
       | { __typename?: 'ComponentSectionsNumbersOverview' }
       | { __typename?: 'ComponentSectionsNumericalList' }
       | { __typename?: 'ComponentSectionsOfficialBoard' }
+      | { __typename?: 'ComponentSectionsOpeningHours' }
       | { __typename?: 'ComponentSectionsOrganizationalStructure' }
       | {
           __typename?: 'ComponentSectionsPartners'
@@ -9988,6 +10073,21 @@ export type PageEntityFragment = {
         } | null> | null
       }
     | { __typename: 'ComponentSectionsOfficialBoard' }
+    | {
+        __typename: 'ComponentSectionsOpeningHours'
+        title?: string | null
+        text?: string | null
+        titleLevelOpeningHoursSection?: Enum_Componentsectionsopeninghours_Titlelevel | null
+        openingHoursItems?: Array<{
+          __typename?: 'ComponentBlocksOpeningHoursItem'
+          label: string
+          value: string
+        } | null> | null
+        bannerOpeningHoursSection?: {
+          __typename?: 'ComponentBlocksOpeningHoursBanner'
+          text?: string | null
+        } | null
+      }
     | { __typename: 'ComponentSectionsOrganizationalStructure'; title?: string | null }
     | {
         __typename: 'ComponentSectionsPartners'
@@ -11120,6 +11220,21 @@ export type PageBySlugQuery = {
           } | null> | null
         }
       | { __typename: 'ComponentSectionsOfficialBoard' }
+      | {
+          __typename: 'ComponentSectionsOpeningHours'
+          title?: string | null
+          text?: string | null
+          titleLevelOpeningHoursSection?: Enum_Componentsectionsopeninghours_Titlelevel | null
+          openingHoursItems?: Array<{
+            __typename?: 'ComponentBlocksOpeningHoursItem'
+            label: string
+            value: string
+          } | null> | null
+          bannerOpeningHoursSection?: {
+            __typename?: 'ComponentBlocksOpeningHoursBanner'
+            text?: string | null
+          } | null
+        }
       | { __typename: 'ComponentSectionsOrganizationalStructure'; title?: string | null }
       | {
           __typename: 'ComponentSectionsPartners'
@@ -12278,6 +12393,21 @@ export type Dev_AllPagesQuery = {
           } | null> | null
         }
       | { __typename: 'ComponentSectionsOfficialBoard' }
+      | {
+          __typename: 'ComponentSectionsOpeningHours'
+          title?: string | null
+          text?: string | null
+          titleLevelOpeningHoursSection?: Enum_Componentsectionsopeninghours_Titlelevel | null
+          openingHoursItems?: Array<{
+            __typename?: 'ComponentBlocksOpeningHoursItem'
+            label: string
+            value: string
+          } | null> | null
+          bannerOpeningHoursSection?: {
+            __typename?: 'ComponentBlocksOpeningHoursBanner'
+            text?: string | null
+          } | null
+        }
       | { __typename: 'ComponentSectionsOrganizationalStructure'; title?: string | null }
       | {
           __typename: 'ComponentSectionsPartners'
@@ -14426,6 +14556,28 @@ export type StarzLandingPageSectionFragment = {
   } | null> | null
 }
 
+export type OpeningHoursSectionFragment = {
+  __typename?: 'ComponentSectionsOpeningHours'
+  title?: string | null
+  text?: string | null
+  titleLevelOpeningHoursSection?: Enum_Componentsectionsopeninghours_Titlelevel | null
+  openingHoursItems?: Array<{
+    __typename?: 'ComponentBlocksOpeningHoursItem'
+    label: string
+    value: string
+  } | null> | null
+  bannerOpeningHoursSection?: {
+    __typename?: 'ComponentBlocksOpeningHoursBanner'
+    text?: string | null
+  } | null
+}
+
+export type OpeningHoursItemFragment = {
+  __typename?: 'ComponentBlocksOpeningHoursItem'
+  label: string
+  value: string
+}
+
 type Sections_ComponentSectionsAccordion_Fragment = {
   __typename: 'ComponentSectionsAccordion'
   title?: string | null
@@ -15049,6 +15201,22 @@ type Sections_ComponentSectionsOfficialBoard_Fragment = {
   __typename: 'ComponentSectionsOfficialBoard'
 }
 
+type Sections_ComponentSectionsOpeningHours_Fragment = {
+  __typename: 'ComponentSectionsOpeningHours'
+  title?: string | null
+  text?: string | null
+  titleLevelOpeningHoursSection?: Enum_Componentsectionsopeninghours_Titlelevel | null
+  openingHoursItems?: Array<{
+    __typename?: 'ComponentBlocksOpeningHoursItem'
+    label: string
+    value: string
+  } | null> | null
+  bannerOpeningHoursSection?: {
+    __typename?: 'ComponentBlocksOpeningHoursBanner'
+    text?: string | null
+  } | null
+}
+
 type Sections_ComponentSectionsOrganizationalStructure_Fragment = {
   __typename: 'ComponentSectionsOrganizationalStructure'
   title?: string | null
@@ -15436,6 +15604,7 @@ export type SectionsFragment =
   | Sections_ComponentSectionsNumbersOverview_Fragment
   | Sections_ComponentSectionsNumericalList_Fragment
   | Sections_ComponentSectionsOfficialBoard_Fragment
+  | Sections_ComponentSectionsOpeningHours_Fragment
   | Sections_ComponentSectionsOrganizationalStructure_Fragment
   | Sections_ComponentSectionsPartners_Fragment
   | Sections_ComponentSectionsProsAndConsSection_Fragment
@@ -16858,6 +17027,26 @@ export const StarzLandingPageSectionFragmentDoc = gql`
   ${CommonLinkFragmentDoc}
   ${CardLinkFragmentDoc}
 `
+export const OpeningHoursItemFragmentDoc = gql`
+  fragment OpeningHoursItem on ComponentBlocksOpeningHoursItem {
+    label
+    value
+  }
+`
+export const OpeningHoursSectionFragmentDoc = gql`
+  fragment OpeningHoursSection on ComponentSectionsOpeningHours {
+    title
+    text
+    openingHoursItems {
+      ...OpeningHoursItem
+    }
+    bannerOpeningHoursSection: banner {
+      text
+    }
+    titleLevelOpeningHoursSection: titleLevel
+  }
+  ${OpeningHoursItemFragmentDoc}
+`
 export const SectionsFragmentDoc = gql`
   fragment Sections on PageSectionsDynamicZone {
     __typename
@@ -16957,6 +17146,9 @@ export const SectionsFragmentDoc = gql`
     ... on ComponentSectionsStarzLandingPage {
       ...StarzLandingPageSection
     }
+    ... on ComponentSectionsOpeningHours {
+      ...OpeningHoursSection
+    }
   }
   ${DividerSectionFragmentDoc}
   ${TextWithImageSectionFragmentDoc}
@@ -16990,6 +17182,7 @@ export const SectionsFragmentDoc = gql`
   ${EventsSectionFragmentDoc}
   ${FacilitiesSectionFragmentDoc}
   ${StarzLandingPageSectionFragmentDoc}
+  ${OpeningHoursSectionFragmentDoc}
 `
 export const SidebarsFragmentDoc = gql`
   fragment Sidebars on PageSidebarDynamicZone {
