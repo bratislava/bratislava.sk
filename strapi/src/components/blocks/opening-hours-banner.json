@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_blocks_opening_hours_banners",
+  "info": {
+    "displayName": "Opening Hours Banner"
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "richtext"
+    }
+  },
+  "config": {}
+}

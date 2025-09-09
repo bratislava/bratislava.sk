@@ -1298,6 +1298,7 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
         'sections.numerical-list',
         'sections.official-board',
         'sections.organizational-structure',
+        'sections.opening-hours',
         'sections.partners',
         'sections.pros-and-cons-section',
         'sections.regulations',
