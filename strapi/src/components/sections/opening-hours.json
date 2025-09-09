@@ -1,0 +1,36 @@
+{
+  "collectionName": "components_sections_opening_hours",
+  "info": {
+    "displayName": "Opening Hours"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "default": "Otváracie hodiny"
+    },
+    "text": {
+      "type": "text"
+    },
+    "alertMessage": {
+      "type": "component",
+      "component": "blocks.opening-hours-alert-message",
+      "repeatable": false
+    },
+    "openingHoursItems": {
+      "type": "component",
+      "component": "blocks.opening-hours-item",
+      "repeatable": true,
+      "min": 1
+    },
+    "titleLevel": {
+      "type": "enumeration",
+      "default": "h2",
+      "enum": [
+        "h2",
+        "h3"
+      ]
+    }
+  },
+  "config": {}
+}

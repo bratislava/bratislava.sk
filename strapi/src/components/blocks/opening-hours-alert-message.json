@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_blocks_opening_hours_alert_messages",
+  "info": {
+    "displayName": "Opening Hours Alert Message"
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "richtext"
+    }
+  },
+  "config": {}
+}

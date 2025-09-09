@@ -24,6 +24,7 @@ import NarrowTextSection from '@/src/components/sections/NarrowTextSection'
 import NumbersOverviewSection from '@/src/components/sections/NumbersOverviewSection'
 import NumericalListSection from '@/src/components/sections/NumericalListSection_Deprecated/NumericalListSection'
 import OfficialBoardSection from '@/src/components/sections/OfficialBoardSection/OfficialBoardSection'
+import OpeningHoursSection from '@/src/components/sections/OpeningHoursSection'
 import OrganizationalStructureSection from '@/src/components/sections/OrganizationalStructureSection'
 import PartnersSection from '@/src/components/sections/PartnersSection'
 import ProsAndConsSection from '@/src/components/sections/ProsAndConsSection'
@@ -140,6 +141,9 @@ const SectionContent = ({ section }: { section: SectionsFragment }) => {
 
     case 'ComponentSectionsStarzLandingPage':
       return <StarzLandingPageSection section={section} />
+
+    case 'ComponentSectionsOpeningHours':
+      return <OpeningHoursSection section={section} />
 
     default:
       return null

@@ -238,6 +238,27 @@ export interface BlocksNumericalListItem extends Struct.ComponentSchema {
   }
 }
 
+export interface BlocksOpeningHoursAlertMessage extends Struct.ComponentSchema {
+  collectionName: 'components_blocks_opening_hours_alert_messages'
+  info: {
+    displayName: 'Opening Hours Alert Message'
+  }
+  attributes: {
+    text: Schema.Attribute.RichText
+  }
+}
+
+export interface BlocksOpeningHoursItem extends Struct.ComponentSchema {
+  collectionName: 'components_blocks_opening_hours_items'
+  info: {
+    displayName: 'Opening Hours Item'
+  }
+  attributes: {
+    label: Schema.Attribute.String & Schema.Attribute.Required
+    value: Schema.Attribute.String & Schema.Attribute.Required
+  }
+}
+
 export interface BlocksPageLink extends Struct.ComponentSchema {
   collectionName: 'components_blocks_page_links'
   info: {
@@ -958,6 +979,26 @@ export interface SectionsOfficialBoard extends Struct.ComponentSchema {
   attributes: {}
 }
 
+export interface SectionsOpeningHours extends Struct.ComponentSchema {
+  collectionName: 'components_sections_opening_hours'
+  info: {
+    displayName: 'Opening Hours'
+  }
+  attributes: {
+    alertMessage: Schema.Attribute.Component<'blocks.opening-hours-alert-message', false>
+    openingHoursItems: Schema.Attribute.Component<'blocks.opening-hours-item', true> &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 1
+        },
+        number
+      >
+    text: Schema.Attribute.Text
+    title: Schema.Attribute.String & Schema.Attribute.DefaultTo<'Otv\u00E1racie hodiny'>
+    titleLevel: Schema.Attribute.Enumeration<['h2', 'h3']> & Schema.Attribute.DefaultTo<'h2'>
+  }
+}
+
 export interface SectionsOrganizationalStructure extends Struct.ComponentSchema {
   collectionName: 'components_sections_organizational_structures'
   info: {
@@ -1180,6 +1221,8 @@ declare module '@strapi/strapi' {
       'blocks.in-ba': BlocksInBa
       'blocks.numbers-overview-item': BlocksNumbersOverviewItem
       'blocks.numerical-list-item': BlocksNumericalListItem
+      'blocks.opening-hours-alert-message': BlocksOpeningHoursAlertMessage
+      'blocks.opening-hours-item': BlocksOpeningHoursItem
       'blocks.page-link': BlocksPageLink
       'blocks.partner': BlocksPartner
       'blocks.pros-and-cons-card': BlocksProsAndConsCard
@@ -1222,6 +1265,7 @@ declare module '@strapi/strapi' {
       'sections.numbers-overview': SectionsNumbersOverview
       'sections.numerical-list': SectionsNumericalList
       'sections.official-board': SectionsOfficialBoard
+      'sections.opening-hours': SectionsOpeningHours
       'sections.organizational-structure': SectionsOrganizationalStructure
       'sections.partners': SectionsPartners
       'sections.pros-and-cons-section': SectionsProsAndConsSection
