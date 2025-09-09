@@ -238,10 +238,10 @@ export interface BlocksNumericalListItem extends Struct.ComponentSchema {
   }
 }
 
-export interface BlocksOpeningHoursBanner extends Struct.ComponentSchema {
-  collectionName: 'components_blocks_opening_hours_banners'
+export interface BlocksOpeningHoursAlertMessage extends Struct.ComponentSchema {
+  collectionName: 'components_blocks_opening_hours_alert_messages'
   info: {
-    displayName: 'Opening Hours Banner'
+    displayName: 'Opening Hours Alert Message'
   }
   attributes: {
     text: Schema.Attribute.RichText
@@ -985,7 +985,7 @@ export interface SectionsOpeningHours extends Struct.ComponentSchema {
     displayName: 'Opening Hours'
   }
   attributes: {
-    banner: Schema.Attribute.Component<'blocks.opening-hours-banner', false>
+    alertMessage: Schema.Attribute.Component<'blocks.opening-hours-alert-message', false>
     openingHoursItems: Schema.Attribute.Component<'blocks.opening-hours-item', true> &
       Schema.Attribute.SetMinMax<
         {
@@ -1221,7 +1221,7 @@ declare module '@strapi/strapi' {
       'blocks.in-ba': BlocksInBa
       'blocks.numbers-overview-item': BlocksNumbersOverviewItem
       'blocks.numerical-list-item': BlocksNumericalListItem
-      'blocks.opening-hours-banner': BlocksOpeningHoursBanner
+      'blocks.opening-hours-alert-message': BlocksOpeningHoursAlertMessage
       'blocks.opening-hours-item': BlocksOpeningHoursItem
       'blocks.page-link': BlocksPageLink
       'blocks.partner': BlocksPartner

@@ -1,7 +1,7 @@
 {
-  "collectionName": "components_blocks_opening_hours_banners",
+  "collectionName": "components_blocks_opening_hours_alert_messages",
   "info": {
-    "displayName": "Opening Hours Banner"
+    "displayName": "Opening Hours Alert Message"
   },
   "options": {},
   "attributes": {

@@ -47,16 +47,16 @@
           "sortable": true
         }
       },
-      "banner": {
+      "alertMessage": {
         "edit": {
-          "label": "Banner",
+          "label": "Oznam zmeny otváracích hodín",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "banner",
+          "label": "alertMessage",
           "searchable": false,
           "sortable": false
         }
@@ -102,8 +102,7 @@
       "list": [
         "id",
         "title",
-        "text",
-        "banner"
+        "text"
       ],
       "edit": [
         [
@@ -126,7 +125,7 @@
         ],
         [
           {
-            "name": "banner",
+            "name": "alertMessage",
             "size": 12
           }
         ],

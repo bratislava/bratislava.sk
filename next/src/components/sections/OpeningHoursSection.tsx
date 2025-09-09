@@ -2,7 +2,7 @@ import { Typography } from '@bratislava/component-library'
 import React from 'react'
 
 import { getCardTitleLevel } from '@/src/components/cards/getCardTitleLevel'
-import Markdown from '@/src/components/formatting/Markdown/Markdown'
+import AlertMessage from '@/src/components/common/AlertMessage/AlertMessage'
 import SectionContainer from '@/src/components/layouts/SectionContainer'
 import SectionHeader from '@/src/components/layouts/SectionHeader'
 import { OpeningHoursSectionFragment } from '@/src/services/graphql'
@@ -23,7 +23,7 @@ const OpeningHoursSection = ({ section }: OpeningHoursSectionProps) => {
   const {
     title,
     text,
-    bannerOpeningHoursSection: banner,
+    alertMessage,
     openingHoursItems,
     titleLevelOpeningHoursSection: titleLevel,
   } = section
@@ -35,12 +35,13 @@ const OpeningHoursSection = ({ section }: OpeningHoursSectionProps) => {
       <div className="flex max-w-200 flex-col gap-4 lg:gap-6">
         <div className="flex flex-col gap-4">
           <SectionHeader title={title} text={text} titleLevel={titleLevel} />
-          <div className="flex flex-col gap-4 overflow-hidden rounded-lg bg-background-warning-soft-default p-4">
-            <Typography variant="h6" as={getCardTitleLevel(titleLevel)}>
-              {t('OpeningHoursSection.banner.title')}
-            </Typography>
-            {banner?.text ? <Markdown variant="small" content={banner.text} /> : null}
-          </div>
+          {alertMessage ? (
+            <AlertMessage
+              title={t('OpeningHoursSection.banner.title')}
+              titleLevel={getCardTitleLevel(titleLevel)}
+              text={alertMessage.text}
+            />
+          ) : null}
         </div>
         <div className="flex flex-col divide-y divide-border-passive-primary rounded-lg border border-border-passive-primary px-4 py-2 text-content-passive-secondary lg:px-6">
           {filteredOpeningHoursItems.map((item, index) => {

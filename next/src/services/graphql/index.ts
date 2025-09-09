@@ -1003,22 +1003,22 @@ export type ComponentBlocksNumericalListItemInput = {
   text?: InputMaybe<Scalars['String']['input']>
 }
 
-export type ComponentBlocksOpeningHoursBanner = {
-  __typename?: 'ComponentBlocksOpeningHoursBanner'
+export type ComponentBlocksOpeningHoursAlertMessage = {
+  __typename?: 'ComponentBlocksOpeningHoursAlertMessage'
   id: Scalars['ID']['output']
-  text?: Maybe<Scalars['String']['output']>
+  text?: Maybe<Scalars['JSON']['output']>
 }
 
-export type ComponentBlocksOpeningHoursBannerFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<ComponentBlocksOpeningHoursBannerFiltersInput>>>
-  not?: InputMaybe<ComponentBlocksOpeningHoursBannerFiltersInput>
-  or?: InputMaybe<Array<InputMaybe<ComponentBlocksOpeningHoursBannerFiltersInput>>>
-  text?: InputMaybe<StringFilterInput>
+export type ComponentBlocksOpeningHoursAlertMessageFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentBlocksOpeningHoursAlertMessageFiltersInput>>>
+  not?: InputMaybe<ComponentBlocksOpeningHoursAlertMessageFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<ComponentBlocksOpeningHoursAlertMessageFiltersInput>>>
+  text?: InputMaybe<JsonFilterInput>
 }
 
-export type ComponentBlocksOpeningHoursBannerInput = {
+export type ComponentBlocksOpeningHoursAlertMessageInput = {
   id?: InputMaybe<Scalars['ID']['input']>
-  text?: InputMaybe<Scalars['String']['input']>
+  text?: InputMaybe<Scalars['JSON']['input']>
 }
 
 export type ComponentBlocksOpeningHoursItem = {
@@ -2453,7 +2453,7 @@ export type ComponentSectionsOfficialBoardInput = {
 
 export type ComponentSectionsOpeningHours = {
   __typename?: 'ComponentSectionsOpeningHours'
-  banner?: Maybe<ComponentBlocksOpeningHoursBanner>
+  alertMessage?: Maybe<ComponentBlocksOpeningHoursAlertMessage>
   id: Scalars['ID']['output']
   openingHoursItems?: Maybe<Array<Maybe<ComponentBlocksOpeningHoursItem>>>
   text?: Maybe<Scalars['String']['output']>
@@ -2468,8 +2468,8 @@ export type ComponentSectionsOpeningHoursOpeningHoursItemsArgs = {
 }
 
 export type ComponentSectionsOpeningHoursFiltersInput = {
+  alertMessage?: InputMaybe<ComponentBlocksOpeningHoursAlertMessageFiltersInput>
   and?: InputMaybe<Array<InputMaybe<ComponentSectionsOpeningHoursFiltersInput>>>
-  banner?: InputMaybe<ComponentBlocksOpeningHoursBannerFiltersInput>
   not?: InputMaybe<ComponentSectionsOpeningHoursFiltersInput>
   openingHoursItems?: InputMaybe<ComponentBlocksOpeningHoursItemFiltersInput>
   or?: InputMaybe<Array<InputMaybe<ComponentSectionsOpeningHoursFiltersInput>>>
@@ -2479,7 +2479,7 @@ export type ComponentSectionsOpeningHoursFiltersInput = {
 }
 
 export type ComponentSectionsOpeningHoursInput = {
-  banner?: InputMaybe<ComponentBlocksOpeningHoursBannerInput>
+  alertMessage?: InputMaybe<ComponentBlocksOpeningHoursAlertMessageInput>
   id?: InputMaybe<Scalars['ID']['input']>
   openingHoursItems?: InputMaybe<Array<InputMaybe<ComponentBlocksOpeningHoursItemInput>>>
   text?: InputMaybe<Scalars['String']['input']>
@@ -3737,7 +3737,7 @@ export type GenericMorph =
   | ComponentBlocksInBa
   | ComponentBlocksNumbersOverviewItem
   | ComponentBlocksNumericalListItem
-  | ComponentBlocksOpeningHoursBanner
+  | ComponentBlocksOpeningHoursAlertMessage
   | ComponentBlocksOpeningHoursItem
   | ComponentBlocksPageLink
   | ComponentBlocksPartner
@@ -10083,9 +10083,9 @@ export type PageEntityFragment = {
           label: string
           value: string
         } | null> | null
-        bannerOpeningHoursSection?: {
-          __typename?: 'ComponentBlocksOpeningHoursBanner'
-          text?: string | null
+        alertMessage?: {
+          __typename?: 'ComponentBlocksOpeningHoursAlertMessage'
+          text?: any | null
         } | null
       }
     | { __typename: 'ComponentSectionsOrganizationalStructure'; title?: string | null }
@@ -11230,9 +11230,9 @@ export type PageBySlugQuery = {
             label: string
             value: string
           } | null> | null
-          bannerOpeningHoursSection?: {
-            __typename?: 'ComponentBlocksOpeningHoursBanner'
-            text?: string | null
+          alertMessage?: {
+            __typename?: 'ComponentBlocksOpeningHoursAlertMessage'
+            text?: any | null
           } | null
         }
       | { __typename: 'ComponentSectionsOrganizationalStructure'; title?: string | null }
@@ -12403,9 +12403,9 @@ export type Dev_AllPagesQuery = {
             label: string
             value: string
           } | null> | null
-          bannerOpeningHoursSection?: {
-            __typename?: 'ComponentBlocksOpeningHoursBanner'
-            text?: string | null
+          alertMessage?: {
+            __typename?: 'ComponentBlocksOpeningHoursAlertMessage'
+            text?: any | null
           } | null
         }
       | { __typename: 'ComponentSectionsOrganizationalStructure'; title?: string | null }
@@ -14566,9 +14566,9 @@ export type OpeningHoursSectionFragment = {
     label: string
     value: string
   } | null> | null
-  bannerOpeningHoursSection?: {
-    __typename?: 'ComponentBlocksOpeningHoursBanner'
-    text?: string | null
+  alertMessage?: {
+    __typename?: 'ComponentBlocksOpeningHoursAlertMessage'
+    text?: any | null
   } | null
 }
 
@@ -15211,9 +15211,9 @@ type Sections_ComponentSectionsOpeningHours_Fragment = {
     label: string
     value: string
   } | null> | null
-  bannerOpeningHoursSection?: {
-    __typename?: 'ComponentBlocksOpeningHoursBanner'
-    text?: string | null
+  alertMessage?: {
+    __typename?: 'ComponentBlocksOpeningHoursAlertMessage'
+    text?: any | null
   } | null
 }
 
@@ -17040,7 +17040,7 @@ export const OpeningHoursSectionFragmentDoc = gql`
     openingHoursItems {
       ...OpeningHoursItem
     }
-    bannerOpeningHoursSection: banner {
+    alertMessage {
       text
     }
     titleLevelOpeningHoursSection: titleLevel

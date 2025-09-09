@@ -12,9 +12,9 @@
     "text": {
       "type": "text"
     },
-    "banner": {
+    "alertMessage": {
       "type": "component",
-      "component": "blocks.opening-hours-banner",
+      "component": "blocks.opening-hours-alert-message",
       "repeatable": false
     },
     "openingHoursItems": {

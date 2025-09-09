@@ -489,7 +489,7 @@ fragment OpeningHoursSection on ComponentSectionsOpeningHours {
   openingHoursItems {
     ...OpeningHoursItem
   }
-  bannerOpeningHoursSection: banner {
+  alertMessage {
     text
   }
   titleLevelOpeningHoursSection: titleLevel
