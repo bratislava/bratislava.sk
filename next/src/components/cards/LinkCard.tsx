@@ -4,8 +4,8 @@ import React, { useId } from 'react'
 import CardBase, { CardBaseProps } from '@/src/components/cards/CardBase'
 import { CardTitleLevel } from '@/src/components/cards/getCardTitleLevel'
 import Button from '@/src/components/common/Button/Button'
-import ImagePlaceholder from '@/src/components/common/Image/ImagePlaceholder'
-import StrapiImage, { StrapiUploadImage } from '@/src/components/common/Image/StrapiImage'
+import CardImage from '@/src/components/common/Image/CardImage'
+import { StrapiUploadImage } from '@/src/components/common/Image/StrapiImage'
 import cn from '@/src/utils/cn'
 import { CommonLinkProps } from '@/src/utils/getLinkProps'
 
@@ -35,12 +35,6 @@ const LinkCard = ({
 }: LinkCardProps) => {
   const titleId = useId()
 
-  const imageToShow = image ? (
-    <StrapiImage alt="" image={image} sizes={imageSizes} className="object-cover" fill />
-  ) : (
-    <ImagePlaceholder />
-  )
-
   const { children, ...restLinkProps } = linkProps || {}
 
   return (
@@ -49,10 +43,12 @@ const LinkCard = ({
       className={cn('h-full bg-background-passive-base', className)}
       {...rest}
     >
-      {/* TODO create CardImage component, see OLO */}
-      <div className="relative aspect-272/162 shrink-0 overflow-hidden lg:aspect-384/158">
-        {imageToShow}
-      </div>
+      <CardImage
+        imgSrc={image?.url}
+        className="aspect-272/162 lg:aspect-384/158"
+        sizes={imageSizes}
+      />
+
       <div className="flex grow flex-col justify-between gap-4 p-4">
         <div className="flex flex-col gap-2">
           <div className="flex flex-col gap-2">

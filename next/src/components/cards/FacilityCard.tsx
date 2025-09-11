@@ -4,8 +4,8 @@ import React, { useId } from 'react'
 import { ArrowRightIcon } from '@/src/assets/icons'
 import CardBase, { CardBaseProps } from '@/src/components/cards/CardBase'
 import { CardTitleLevel } from '@/src/components/cards/getCardTitleLevel'
-import ImagePlaceholder from '@/src/components/common/Image/ImagePlaceholder'
-import StrapiImage, { StrapiUploadImage } from '@/src/components/common/Image/StrapiImage'
+import CardImage from '@/src/components/common/Image/CardImage'
+import { StrapiUploadImage } from '@/src/components/common/Image/StrapiImage'
 import MLink from '@/src/components/common/MLink/MLink'
 import cn from '@/src/utils/cn'
 import { CommonLinkProps } from '@/src/utils/getLinkProps'
@@ -41,14 +41,8 @@ const FacilityCard = ({
       className={cn('rounded-lg bg-background-passive-base', className)}
       {...rest}
     >
-      {/* TODO create CardImage component, see OLO */}
-      <div className={cn('relative aspect-592/272 shrink-0 overflow-hidden', imageClassName)}>
-        {image ? (
-          <StrapiImage alt="" image={image} sizes={imageSizes} className="object-cover" fill />
-        ) : (
-          <ImagePlaceholder />
-        )}
-      </div>
+      <CardImage imgSrc={image?.url} className="aspect-592/272" sizes={imageSizes} />
+
       <div className="flex h-full items-center justify-between gap-6 p-4 lg:p-6">
         <MLink {...restLinkProps} stretched>
           <Typography

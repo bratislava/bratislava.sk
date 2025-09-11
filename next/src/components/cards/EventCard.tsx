@@ -1,11 +1,10 @@
 import { Typography } from '@bratislava/component-library'
-import Image from 'next/image'
 import React, { useId } from 'react'
 
 import CardBase from '@/src/components/cards/CardBase'
 import { CardTitleLevel } from '@/src/components/cards/getCardTitleLevel'
 import Button from '@/src/components/common/Button/Button'
-import ImagePlaceholder from '@/src/components/common/Image/ImagePlaceholder'
+import CardImage from '@/src/components/common/Image/CardImage'
 import { useTranslation } from '@/src/utils/useTranslation'
 
 type Props = {
@@ -35,13 +34,12 @@ const EventCard = ({
   return (
     <CardBase variant="border" className="max-lg:rounded-none max-lg:border-0">
       <div className="flex w-full flex-col lg:flex-row">
-        <div className="relative aspect-384/216 overflow-hidden max-lg:rounded-lg lg:w-[24rem]">
-          {imageSrc ? (
-            <Image src={imageSrc} alt="" sizes={imageSizes} fill className="object-cover" />
-          ) : (
-            <ImagePlaceholder />
-          )}
-        </div>
+        <CardImage
+          imgSrc={imageSrc}
+          sizes={imageSizes}
+          className="aspect-384/216 max-lg:rounded-lg lg:w-[24rem]"
+        />
+
         <div className="flex grow flex-col justify-between max-lg:gap-4 max-lg:pt-4 lg:px-8 lg:pt-8 lg:pb-6">
           <div className="flex flex-col gap-2 lg:gap-3">
             <Typography
