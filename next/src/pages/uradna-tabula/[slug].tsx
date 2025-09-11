@@ -1,9 +1,10 @@
 import { ParsedUrlQuery } from 'node:querystring'
 
 import { GetServerSideProps } from 'next'
-import Head from 'next/head'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import * as React from 'react'
 
+import SeoHead from '@/src/components/common/SeoHead/SeoHead'
 import PageLayout from '@/src/components/layouts/PageLayout'
 import OfficialBoardDocumentPageContent from '@/src/components/page-contents/OfficialBoardDocumentPageContent'
 import { GeneralContextProvider } from '@/src/components/providers/GeneralContextProvider'
@@ -87,10 +88,8 @@ const OfficialBoardPage = ({ general, document }: OfficialBoardDocumentPageProps
 
   return (
     <GeneralContextProvider general={general}>
-      <Head>
-        <title>{document.title}</title>
-        <meta name="description" content={document.description} />
-      </Head>
+      <SeoHead title={document.title} description={document.description} />
+
       <PageLayout>
         <OfficialBoardDocumentPageContent document={document} />
       </PageLayout>

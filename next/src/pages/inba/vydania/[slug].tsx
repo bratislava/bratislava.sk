@@ -1,9 +1,9 @@
 import { dehydrate, DehydratedState, HydrationBoundary, QueryClient } from '@tanstack/react-query'
 import { GetStaticPaths, GetStaticProps } from 'next'
-import Head from 'next/head'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import * as React from 'react'
 
+import SeoHead from '@/src/components/common/SeoHead/SeoHead'
 import PageLayout from '@/src/components/layouts/PageLayout'
 import InbaReleasePageContent from '@/src/components/page-contents/InbaReleasePageContent'
 import { GeneralContextProvider } from '@/src/components/providers/GeneralContextProvider'
@@ -15,7 +15,6 @@ import {
   inbaArticlesFetcher,
 } from '@/src/services/meili/fetchers/inbaArticlesFetcher'
 import { NOT_FOUND } from '@/src/utils/consts'
-import { useTitle } from '@/src/utils/useTitle'
 
 type PageProps = {
   general: GeneralQuery
@@ -97,17 +96,13 @@ export const getStaticProps: GetStaticProps<PageProps, StaticParams> = async ({
 }
 
 const Page = ({ general, inbaRelease, dehydratedState }: PageProps) => {
-  const { title: inbaReleaseTitle, perex } = inbaRelease
-
-  const title = useTitle(inbaReleaseTitle)
+  const { title, perex } = inbaRelease
 
   return (
     <HydrationBoundary state={dehydratedState}>
       <GeneralContextProvider general={general}>
-        <Head>
-          <title>{title}</title>
-          {perex && <meta name="description" content={perex} />}
-        </Head>
+        <SeoHead title={title} description={perex} />
+
         <PageLayout>
           <InbaReleasePageContent inbaRelease={inbaRelease} />
         </PageLayout>

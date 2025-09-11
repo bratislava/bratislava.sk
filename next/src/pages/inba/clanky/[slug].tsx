@@ -1,15 +1,14 @@
 import { GetStaticPaths, GetStaticProps } from 'next'
-import Head from 'next/head'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import * as React from 'react'
 
+import SeoHead from '@/src/components/common/SeoHead/SeoHead'
 import PageLayout from '@/src/components/layouts/PageLayout'
 import InbaArticlePageContent from '@/src/components/page-contents/InbaArticlePageContent'
 import { GeneralContextProvider } from '@/src/components/providers/GeneralContextProvider'
 import { GeneralQuery, InbaArticleEntityFragment } from '@/src/services/graphql'
 import { client } from '@/src/services/graphql/gql'
 import { NOT_FOUND } from '@/src/utils/consts'
-import { useTitle } from '@/src/utils/useTitle'
 
 type PageProps = {
   general: GeneralQuery
@@ -79,16 +78,12 @@ export const getStaticProps: GetStaticProps<PageProps, StaticParams> = async ({
 }
 
 const Page = ({ general, inbaArticle }: PageProps) => {
-  const { title: inbaArticleTitle, perex } = inbaArticle ?? {}
-
-  const title = useTitle(inbaArticleTitle)
+  const { title, perex } = inbaArticle ?? {}
 
   return (
     <GeneralContextProvider general={general}>
-      <Head>
-        <title>{title}</title>
-        {perex && <meta name="description" content={perex} />}
-      </Head>
+      <SeoHead title={title} description={perex} />
+
       <PageLayout>
         <InbaArticlePageContent inbaArticle={inbaArticle} />
       </PageLayout>

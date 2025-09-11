@@ -1,17 +1,16 @@
 import { Typography } from '@bratislava/component-library'
 import { GetStaticProps } from 'next'
-import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 import Button from '@/src/components/common/Button/Button'
+import SeoHead from '@/src/components/common/SeoHead/SeoHead'
 import PageLayout from '@/src/components/layouts/PageLayout'
 import SectionContainer from '@/src/components/layouts/SectionContainer'
 import { GeneralContextProvider } from '@/src/components/providers/GeneralContextProvider'
 import { GeneralQuery } from '@/src/services/graphql'
 import { client } from '@/src/services/graphql/gql'
-import { useTitle } from '@/src/utils/useTitle'
 
 type PageProps = {
   general: GeneralQuery
@@ -36,13 +35,11 @@ const NotFoundPage = ({ general }: PageProps) => {
   const { t } = useTranslation()
 
   const router = useRouter()
-  const title = useTitle(t('NotFound.pageTitle'))
+  const title = t('NotFound.pageTitle')
 
   return (
     <GeneralContextProvider general={general}>
-      <Head>
-        <title>{title}</title>
-      </Head>
+      <SeoHead title={title} />
 
       <PageLayout>
         <SectionContainer>

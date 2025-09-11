@@ -1,8 +1,8 @@
 import { GetStaticPaths, GetStaticProps } from 'next'
-import Head from 'next/head'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import * as React from 'react'
 
+import SeoHead from '@/src/components/common/SeoHead/SeoHead'
 import PageLayout from '@/src/components/layouts/PageLayout'
 import ArticlePageContent from '@/src/components/page-contents/ArticlePageContent'
 import { GeneralContextProvider } from '@/src/components/providers/GeneralContextProvider'
@@ -10,7 +10,6 @@ import { ArticleEntityFragment, GeneralQuery } from '@/src/services/graphql'
 import { client } from '@/src/services/graphql/gql'
 import { GlobalCategoryColorProvider } from '@/src/utils/colors'
 import { NOT_FOUND } from '@/src/utils/consts'
-import { useTitle } from '@/src/utils/useTitle'
 
 type PageProps = {
   general: GeneralQuery
@@ -77,16 +76,12 @@ export const getStaticProps: GetStaticProps<PageProps, StaticParams> = async ({
 }
 
 const Page = ({ general, article }: PageProps) => {
-  const { title: articleTitle, perex } = article ?? {}
-
-  const title = useTitle(articleTitle)
+  const { title, perex } = article ?? {}
 
   return (
     <GeneralContextProvider general={general}>
-      <Head>
-        <title>{title}</title>
-        {perex && <meta name="description" content={perex} />}
-      </Head>
+      <SeoHead title={title} description={perex} />
+
       <GlobalCategoryColorProvider color={article?.tag?.pageCategory?.color} />
       <PageLayout>
         <ArticlePageContent article={article} />

@@ -51,6 +51,7 @@
   "Gallery.aria.previousImage": "Previous image",
   "Gallery.morePhotos_one": "photo",
   "Gallery.morePhotos_other": "photos",
+  "Homepage.title": "Home",
   "HomepageSearchResults.allResults": "All results",
   "HomepageSearchResults.sorryNoResultsFound": "Sorry, we couldn't find what you are looking for.",
   "HomepageTabs.allInformationOnSite": "All news can be find on site",
@@ -179,8 +180,6 @@
   "useLocalizations.longName.sk": "Slovensky",
   "useLocalizations.shortName.en": "EN",
   "useLocalizations.shortName.sk": "SK",
-  "useTitle.title": "Bratislava.sk",
-  "useTitle.titleWithChild": "{{childTitle}} – Bratislava.sk",
   "VideoCard.unsupportedVideo": "Unsupported video.",
   "VideoCard.videoPlayer": "Video player"
 }
