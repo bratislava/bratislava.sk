@@ -24,9 +24,9 @@ const HomepageHorizontalCardShowcase = () => {
   return (
     <Wrapper title="Homepage horizontal Card">
       <div className="grid w-full grid-cols-1 gap-4 md:grid-cols-2">
-        {cards.map((blog, index) => (
+        {cards.map((card, index) => (
           // eslint-disable-next-line react/no-array-index-key
-          <HomepageHorizontalCard key={index} {...blog} />
+          <HomepageHorizontalCard key={index} {...card} />
         ))}
       </div>
     </Wrapper>

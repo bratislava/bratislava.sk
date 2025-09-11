@@ -533,81 +533,6 @@ export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
   }
 }
 
-export interface ApiBlogPostBlogPost extends Struct.CollectionTypeSchema {
-  collectionName: 'blog_posts'
-  info: {
-    description: ''
-    displayName: '\u010Cl\u00E1nky (star\u00E9)'
-    pluralName: 'blog-posts'
-    singularName: 'blog-post'
-  }
-  options: {
-    draftAndPublish: true
-  }
-  pluginOptions: {
-    i18n: {
-      localized: true
-    }
-  }
-  attributes: {
-    addedAt: Schema.Attribute.DateTime &
-      Schema.Attribute.Required &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: false
-        }
-      }>
-    coverImage: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'> &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true
-        }
-      }>
-    createdAt: Schema.Attribute.DateTime
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> & Schema.Attribute.Private
-    date_added: Schema.Attribute.DateTime &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true
-        }
-      }>
-    excerpt: Schema.Attribute.Text &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true
-        }
-      }>
-    locale: Schema.Attribute.String
-    localizations: Schema.Attribute.Relation<'oneToMany', 'api::blog-post.blog-post'>
-    publishedAt: Schema.Attribute.DateTime
-    sections: Schema.Attribute.DynamicZone<
-      ['sections.narrow-text', 'sections.file-list', 'sections.gallery']
-    > &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true
-        }
-      }>
-    slug: Schema.Attribute.UID<'title'> &
-      Schema.Attribute.Required &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true
-        }
-      }>
-    tag: Schema.Attribute.Relation<'oneToOne', 'api::tag.tag'>
-    title: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true
-        }
-      }>
-    updatedAt: Schema.Attribute.DateTime
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> & Schema.Attribute.Private
-  }
-}
-
 export interface ApiDocumentCategoryDocumentCategory extends Struct.CollectionTypeSchema {
   collectionName: 'document_categories'
   info: {
@@ -1908,7 +1833,6 @@ declare module '@strapi/strapi' {
       'api::alert.alert': ApiAlertAlert
       'api::article-category.article-category': ApiArticleCategoryArticleCategory
       'api::article.article': ApiArticleArticle
-      'api::blog-post.blog-post': ApiBlogPostBlogPost
       'api::document-category.document-category': ApiDocumentCategoryDocumentCategory
       'api::document.document': ApiDocumentDocument
       'api::faq-category.faq-category': ApiFaqCategoryFaqCategory

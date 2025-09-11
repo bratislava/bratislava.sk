@@ -19,7 +19,6 @@ export type Scalars = {
   Boolean: { input: boolean; output: boolean }
   Int: { input: number; output: number }
   Float: { input: number; output: number }
-  BlogPostSectionsDynamicZoneInput: { input: any; output: any }
   /** A date string, such as 2007-12-03, compliant with the `full-date` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar. */
   Date: { input: any; output: any }
   /** A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for representation of dates and times using the Gregorian calendar. */
@@ -417,95 +416,6 @@ export type ArticleRelationResponseCollection = {
   __typename?: 'ArticleRelationResponseCollection'
   nodes: Array<Article>
 }
-
-export type BlogPost = {
-  __typename?: 'BlogPost'
-  addedAt: Scalars['DateTime']['output']
-  coverImage?: Maybe<UploadFile>
-  createdAt?: Maybe<Scalars['DateTime']['output']>
-  date_added?: Maybe<Scalars['DateTime']['output']>
-  documentId: Scalars['ID']['output']
-  excerpt?: Maybe<Scalars['String']['output']>
-  locale?: Maybe<Scalars['String']['output']>
-  localizations: Array<Maybe<BlogPost>>
-  localizations_connection?: Maybe<BlogPostRelationResponseCollection>
-  publishedAt?: Maybe<Scalars['DateTime']['output']>
-  sections?: Maybe<Array<Maybe<BlogPostSectionsDynamicZone>>>
-  slug: Scalars['String']['output']
-  tag?: Maybe<Tag>
-  title: Scalars['String']['output']
-  updatedAt?: Maybe<Scalars['DateTime']['output']>
-}
-
-export type BlogPostLocalizationsArgs = {
-  filters?: InputMaybe<BlogPostFiltersInput>
-  pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
-}
-
-export type BlogPostLocalizations_ConnectionArgs = {
-  filters?: InputMaybe<BlogPostFiltersInput>
-  pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
-}
-
-export type BlogPostEntity = {
-  __typename?: 'BlogPostEntity'
-  attributes?: Maybe<BlogPost>
-  id?: Maybe<Scalars['ID']['output']>
-}
-
-export type BlogPostEntityResponse = {
-  __typename?: 'BlogPostEntityResponse'
-  data?: Maybe<BlogPost>
-}
-
-export type BlogPostEntityResponseCollection = {
-  __typename?: 'BlogPostEntityResponseCollection'
-  nodes: Array<BlogPost>
-  pageInfo: Pagination
-}
-
-export type BlogPostFiltersInput = {
-  addedAt?: InputMaybe<DateTimeFilterInput>
-  and?: InputMaybe<Array<InputMaybe<BlogPostFiltersInput>>>
-  createdAt?: InputMaybe<DateTimeFilterInput>
-  date_added?: InputMaybe<DateTimeFilterInput>
-  documentId?: InputMaybe<IdFilterInput>
-  excerpt?: InputMaybe<StringFilterInput>
-  locale?: InputMaybe<StringFilterInput>
-  localizations?: InputMaybe<BlogPostFiltersInput>
-  not?: InputMaybe<BlogPostFiltersInput>
-  or?: InputMaybe<Array<InputMaybe<BlogPostFiltersInput>>>
-  publishedAt?: InputMaybe<DateTimeFilterInput>
-  slug?: InputMaybe<StringFilterInput>
-  tag?: InputMaybe<TagFiltersInput>
-  title?: InputMaybe<StringFilterInput>
-  updatedAt?: InputMaybe<DateTimeFilterInput>
-}
-
-export type BlogPostInput = {
-  addedAt?: InputMaybe<Scalars['DateTime']['input']>
-  coverImage?: InputMaybe<Scalars['ID']['input']>
-  date_added?: InputMaybe<Scalars['DateTime']['input']>
-  excerpt?: InputMaybe<Scalars['String']['input']>
-  publishedAt?: InputMaybe<Scalars['DateTime']['input']>
-  sections?: InputMaybe<Array<Scalars['BlogPostSectionsDynamicZoneInput']['input']>>
-  slug?: InputMaybe<Scalars['String']['input']>
-  tag?: InputMaybe<Scalars['ID']['input']>
-  title?: InputMaybe<Scalars['String']['input']>
-}
-
-export type BlogPostRelationResponseCollection = {
-  __typename?: 'BlogPostRelationResponseCollection'
-  nodes: Array<BlogPost>
-}
-
-export type BlogPostSectionsDynamicZone =
-  | ComponentSectionsFileList
-  | ComponentSectionsGallery
-  | ComponentSectionsNarrowText
-  | Error
 
 export type BooleanFilterInput = {
   and?: InputMaybe<Array<InputMaybe<Scalars['Boolean']['input']>>>
@@ -3718,7 +3628,6 @@ export type GenericMorph =
   | Alert
   | Article
   | ArticleCategory
-  | BlogPost
   | ComponentAccordionItemsFlatText
   | ComponentAccordionItemsInstitution
   | ComponentAccordionItemsInstitutionNarrow
@@ -4357,7 +4266,6 @@ export type Mutation = {
   createAdminGroup?: Maybe<AdminGroup>
   createArticle?: Maybe<Article>
   createArticleCategory?: Maybe<ArticleCategory>
-  createBlogPost?: Maybe<BlogPost>
   createDocument?: Maybe<Document>
   createDocumentCategory?: Maybe<DocumentCategory>
   createFaq?: Maybe<Faq>
@@ -4379,7 +4287,6 @@ export type Mutation = {
   deleteAlert?: Maybe<DeleteMutationResponse>
   deleteArticle?: Maybe<DeleteMutationResponse>
   deleteArticleCategory?: Maybe<DeleteMutationResponse>
-  deleteBlogPost?: Maybe<DeleteMutationResponse>
   deleteDocument?: Maybe<DeleteMutationResponse>
   deleteDocumentCategory?: Maybe<DeleteMutationResponse>
   deleteFaq?: Maybe<DeleteMutationResponse>
@@ -4416,7 +4323,6 @@ export type Mutation = {
   updateAlert?: Maybe<Alert>
   updateArticle?: Maybe<Article>
   updateArticleCategory?: Maybe<ArticleCategory>
-  updateBlogPost?: Maybe<BlogPost>
   updateDocument?: Maybe<Document>
   updateDocumentCategory?: Maybe<DocumentCategory>
   updateFaq?: Maybe<Faq>
@@ -4461,12 +4367,6 @@ export type MutationCreateArticleArgs = {
 
 export type MutationCreateArticleCategoryArgs = {
   data: ArticleCategoryInput
-  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
-  status?: InputMaybe<PublicationStatus>
-}
-
-export type MutationCreateBlogPostArgs = {
-  data: BlogPostInput
   locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
   status?: InputMaybe<PublicationStatus>
 }
@@ -4565,11 +4465,6 @@ export type MutationDeleteArticleArgs = {
 }
 
 export type MutationDeleteArticleCategoryArgs = {
-  documentId: Scalars['ID']['input']
-  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
-}
-
-export type MutationDeleteBlogPostArgs = {
   documentId: Scalars['ID']['input']
   locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
 }
@@ -4704,13 +4599,6 @@ export type MutationUpdateArticleArgs = {
 
 export type MutationUpdateArticleCategoryArgs = {
   data: ArticleCategoryInput
-  documentId: Scalars['ID']['input']
-  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
-  status?: InputMaybe<PublicationStatus>
-}
-
-export type MutationUpdateBlogPostArgs = {
-  data: BlogPostInput
   documentId: Scalars['ID']['input']
   locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
   status?: InputMaybe<PublicationStatus>
@@ -5170,9 +5058,6 @@ export type Query = {
   articleCategory?: Maybe<ArticleCategory>
   articles: Array<Maybe<Article>>
   articles_connection?: Maybe<ArticleEntityResponseCollection>
-  blogPost?: Maybe<BlogPost>
-  blogPosts: Array<Maybe<BlogPost>>
-  blogPosts_connection?: Maybe<BlogPostEntityResponseCollection>
   document?: Maybe<Document>
   documentCategories: Array<Maybe<DocumentCategory>>
   documentCategories_connection?: Maybe<DocumentCategoryEntityResponseCollection>
@@ -5294,28 +5179,6 @@ export type QueryArticlesArgs = {
 
 export type QueryArticles_ConnectionArgs = {
   filters?: InputMaybe<ArticleFiltersInput>
-  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
-  pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
-  status?: InputMaybe<PublicationStatus>
-}
-
-export type QueryBlogPostArgs = {
-  documentId: Scalars['ID']['input']
-  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
-  status?: InputMaybe<PublicationStatus>
-}
-
-export type QueryBlogPostsArgs = {
-  filters?: InputMaybe<BlogPostFiltersInput>
-  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
-  pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
-  status?: InputMaybe<PublicationStatus>
-}
-
-export type QueryBlogPosts_ConnectionArgs = {
-  filters?: InputMaybe<BlogPostFiltersInput>
   locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>

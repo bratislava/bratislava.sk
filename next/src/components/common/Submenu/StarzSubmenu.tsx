@@ -35,34 +35,32 @@ const StarzSubmenu = ({ landingPage }: Props) => {
 
   // Beware of paddings, margins and gaps - they are used to enlarge clickable/touchable area of links, and they are carefully set to fit Figma design together
   return (
-    <div className="bg-starz-primary-700">
-      <SectionContainer>
-        <div className="flex gap-6">
-          <div className="relative -m-2 self-center p-2">
-            <MLink
-              aria-label={ariaLabel}
-              {...linkProps}
-              className="text-content-active-primary-inverted-default transition hover:text-content-active-primary-inverted-hover active:text-content-active-primary-inverted-pressed"
-              stretched
-            >
-              <StarzLogoSvg />
-            </MLink>
-          </div>
-          <div className="my-4 border-l" aria-hidden />
-          <div className="-ml-2 flex flex-wrap gap-2 py-2">
-            {childPages.map((submenuPage) => (
-              <Button
-                key={submenuPage.documentId}
-                variant="link-inverted"
-                {...getLinkProps({ label: submenuPage.title, page: submenuPage })}
-                className="px-2 py-3 font-normal no-underline hover:underline"
-                hasLinkIcon={false}
-              />
-            ))}
-          </div>
+    <SectionContainer className="bg-starz-primary-700">
+      <div className="flex gap-6">
+        <div className="relative -m-2 self-center p-2">
+          <MLink
+            aria-label={ariaLabel}
+            {...linkProps}
+            className="text-content-active-primary-inverted-default transition hover:text-content-active-primary-inverted-hover active:text-content-active-primary-inverted-pressed"
+            stretched
+          >
+            <StarzLogoSvg />
+          </MLink>
         </div>
-      </SectionContainer>
-    </div>
+        <div className="my-4 border-l" aria-hidden />
+        <div className="-ml-2 flex flex-wrap gap-2 py-2">
+          {childPages.map((submenuPage) => (
+            <Button
+              key={submenuPage.documentId}
+              variant="link-inverted"
+              {...getLinkProps({ label: submenuPage.title, page: submenuPage })}
+              className="px-2 py-3 font-normal no-underline hover:underline"
+              hasLinkIcon={false}
+            />
+          ))}
+        </div>
+      </div>
+    </SectionContainer>
   )
 }
 
