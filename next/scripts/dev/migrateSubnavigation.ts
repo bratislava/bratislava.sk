@@ -56,9 +56,9 @@ export const migrateSubnavigation = async () => {
     const links =
       oldLinks.map((link) => {
         return {
-          label: link.label,
-          url: link.url,
-          analyticsId: link.analyticsId,
+          label: link.label?.trim(),
+          url: link.url?.trim(),
+          analyticsId: link.analyticsId?.trim(),
           page: link.page?.documentId,
         }
       }) ?? []

@@ -2,6 +2,7 @@ import { useTranslation } from 'next-i18next'
 import React from 'react'
 
 import SubnavigationCard from '@/src/components/cards/SubnavigationCard'
+import HorizontalDivider from '@/src/components/common/Divider/HorizontalDivider'
 import SectionContainer from '@/src/components/layouts/SectionContainer'
 import SectionHeader from '@/src/components/layouts/SectionHeader'
 import { SubnavigationSectionFragment } from '@/src/services/graphql'
@@ -17,17 +18,15 @@ type Props = {
  */
 
 const SubnavigationSection = ({ section }: Props) => {
-  const { t } = useTranslation()
-
   const { links } = section ?? {}
+  const { t } = useTranslation()
 
   const filteredLinks = links?.filter(isDefined) ?? []
 
   return (
-    <SectionContainer className="py-6 lg:pt-16">
+    <SectionContainer className="pt-6 lg:pt-16">
+      <SectionHeader title={t('SubnavigationSection.aria.title')} className="sr-only" />
       <div className="flex flex-col gap-6 lg:gap-16">
-        <SectionHeader title={t('SubnavigationSection.title')} />
-
         <ul className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
           {filteredLinks.map((card) => {
             const { children: label, ...linkProps } = getLinkProps(card)
@@ -43,6 +42,8 @@ const SubnavigationSection = ({ section }: Props) => {
             )
           })}
         </ul>
+
+        <HorizontalDivider />
       </div>
     </SectionContainer>
   )

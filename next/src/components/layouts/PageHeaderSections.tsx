@@ -14,6 +14,7 @@ type Props = Pick<
 > & {
   breadcrumbs: Breadcrumb[]
   header: PageHeaderSectionsFragment | null | undefined
+  hasSubnavigationTmp?: boolean
 }
 
 const PageHeaderSections = ({
@@ -23,12 +24,21 @@ const PageHeaderSections = ({
   pageBackgroundImage,
   breadcrumbs,
   header,
+  hasSubnavigationTmp,
 }: Props) => {
   const filteredHeaderLinks = headerLinks?.filter(isDefined) ?? []
 
   switch (header?.__typename) {
     case 'ComponentSectionsSubpageList':
-      return (
+      return hasSubnavigationTmp ? (
+        <PageHeader
+          title={title}
+          subtext={subtext}
+          breadcrumbs={breadcrumbs}
+          headerLinks={filteredHeaderLinks}
+          imageSrc={pageBackgroundImage?.url}
+        />
+      ) : (
         <SubpageListPageHeaderSection
           title={title}
           subtext={subtext}
