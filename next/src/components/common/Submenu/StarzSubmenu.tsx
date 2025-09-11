@@ -7,6 +7,7 @@ import SectionContainer from '@/src/components/layouts/SectionContainer'
 import { AdminGroupEntityFragment } from '@/src/services/graphql'
 import { getLinkProps } from '@/src/utils/getLinkProps'
 import { isDefined } from '@/src/utils/isDefined'
+import { useLocale } from '@/src/utils/useLocale'
 
 type Props = {
   landingPage: NonNullable<AdminGroupEntityFragment['landingPage']>
@@ -20,9 +21,17 @@ type Props = {
  * TODO make it more generic in future when more organizations need it
  */
 const StarzSubmenu = ({ landingPage }: Props) => {
-  const childPages = landingPage.childPages.filter(isDefined) ?? []
+  const locale = useLocale()
 
-  const { children: ariaLabel, ...linkProps } = getLinkProps({ page: landingPage })
+  // Strapi returns only other locales in localizations prop
+  const localisedLandingPage =
+    landingPage.locale === locale
+      ? landingPage
+      : landingPage.localizations.find((page) => page?.locale === locale)
+
+  const childPages = localisedLandingPage?.childPages.filter(isDefined) ?? []
+
+  const { children: ariaLabel, ...linkProps } = getLinkProps({ page: localisedLandingPage })
 
   // Beware of paddings, margins and gaps - they are used to enlarge clickable/touchable area of links, and they are carefully set to fit Figma design together
   return (

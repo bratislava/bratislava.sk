@@ -2,14 +2,21 @@ fragment AdminGroupDocumentIdEntity on AdminGroup {
   documentId
 }
 
+fragment PageSubnavigationEntity on Page {
+  ...PageSlugEntity
+  childPages {
+    ...PageSlugEntity
+  }
+}
+
 fragment AdminGroupEntity on AdminGroup {
   ...AdminGroupDocumentIdEntity
   adminGroupId
   contentManagedBy
   landingPage {
-    ...PageSlugEntity
-    childPages {
-      ...PageSlugEntity
+    ...PageSubnavigationEntity
+    localizations {
+      ...PageSubnavigationEntity
     }
   }
 }
