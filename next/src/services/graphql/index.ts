@@ -1006,19 +1006,19 @@ export type ComponentBlocksNumericalListItemInput = {
 export type ComponentBlocksOpeningHoursAlertMessage = {
   __typename?: 'ComponentBlocksOpeningHoursAlertMessage'
   id: Scalars['ID']['output']
-  text?: Maybe<Scalars['JSON']['output']>
+  text?: Maybe<Scalars['String']['output']>
 }
 
 export type ComponentBlocksOpeningHoursAlertMessageFiltersInput = {
   and?: InputMaybe<Array<InputMaybe<ComponentBlocksOpeningHoursAlertMessageFiltersInput>>>
   not?: InputMaybe<ComponentBlocksOpeningHoursAlertMessageFiltersInput>
   or?: InputMaybe<Array<InputMaybe<ComponentBlocksOpeningHoursAlertMessageFiltersInput>>>
-  text?: InputMaybe<JsonFilterInput>
+  text?: InputMaybe<StringFilterInput>
 }
 
 export type ComponentBlocksOpeningHoursAlertMessageInput = {
   id?: InputMaybe<Scalars['ID']['input']>
-  text?: InputMaybe<Scalars['JSON']['input']>
+  text?: InputMaybe<Scalars['String']['input']>
 }
 
 export type ComponentBlocksOpeningHoursItem = {
@@ -6479,6 +6479,21 @@ export type UsersPermissionsUserRelationResponseCollection = {
 
 export type AdminGroupDocumentIdEntityFragment = { __typename?: 'AdminGroup'; documentId: string }
 
+export type PageSubnavigationEntityFragment = {
+  __typename?: 'Page'
+  documentId: string
+  slug?: string | null
+  title: string
+  locale?: string | null
+  childPages: Array<{
+    __typename?: 'Page'
+    documentId: string
+    slug?: string | null
+    title: string
+    locale?: string | null
+  } | null>
+}
+
 export type AdminGroupEntityFragment = {
   __typename?: 'AdminGroup'
   adminGroupId?: string | null
@@ -6490,6 +6505,20 @@ export type AdminGroupEntityFragment = {
     slug?: string | null
     title: string
     locale?: string | null
+    localizations: Array<{
+      __typename?: 'Page'
+      documentId: string
+      slug?: string | null
+      title: string
+      locale?: string | null
+      childPages: Array<{
+        __typename?: 'Page'
+        documentId: string
+        slug?: string | null
+        title: string
+        locale?: string | null
+      } | null>
+    } | null>
     childPages: Array<{
       __typename?: 'Page'
       documentId: string
@@ -9382,6 +9411,20 @@ export type PageEntityFragment = {
       slug?: string | null
       title: string
       locale?: string | null
+      localizations: Array<{
+        __typename?: 'Page'
+        documentId: string
+        slug?: string | null
+        title: string
+        locale?: string | null
+        childPages: Array<{
+          __typename?: 'Page'
+          documentId: string
+          slug?: string | null
+          title: string
+          locale?: string | null
+        } | null>
+      } | null>
       childPages: Array<{
         __typename?: 'Page'
         documentId: string
@@ -10085,7 +10128,7 @@ export type PageEntityFragment = {
         } | null> | null
         alertMessage?: {
           __typename?: 'ComponentBlocksOpeningHoursAlertMessage'
-          text?: any | null
+          text?: string | null
         } | null
       }
     | { __typename: 'ComponentSectionsOrganizationalStructure'; title?: string | null }
@@ -10526,6 +10569,20 @@ export type PageBySlugQuery = {
         slug?: string | null
         title: string
         locale?: string | null
+        localizations: Array<{
+          __typename?: 'Page'
+          documentId: string
+          slug?: string | null
+          title: string
+          locale?: string | null
+          childPages: Array<{
+            __typename?: 'Page'
+            documentId: string
+            slug?: string | null
+            title: string
+            locale?: string | null
+          } | null>
+        } | null>
         childPages: Array<{
           __typename?: 'Page'
           documentId: string
@@ -11232,7 +11289,7 @@ export type PageBySlugQuery = {
           } | null> | null
           alertMessage?: {
             __typename?: 'ComponentBlocksOpeningHoursAlertMessage'
-            text?: any | null
+            text?: string | null
           } | null
         }
       | { __typename: 'ComponentSectionsOrganizationalStructure'; title?: string | null }
@@ -11699,6 +11756,20 @@ export type Dev_AllPagesQuery = {
         slug?: string | null
         title: string
         locale?: string | null
+        localizations: Array<{
+          __typename?: 'Page'
+          documentId: string
+          slug?: string | null
+          title: string
+          locale?: string | null
+          childPages: Array<{
+            __typename?: 'Page'
+            documentId: string
+            slug?: string | null
+            title: string
+            locale?: string | null
+          } | null>
+        } | null>
         childPages: Array<{
           __typename?: 'Page'
           documentId: string
@@ -12405,7 +12476,7 @@ export type Dev_AllPagesQuery = {
           } | null> | null
           alertMessage?: {
             __typename?: 'ComponentBlocksOpeningHoursAlertMessage'
-            text?: any | null
+            text?: string | null
           } | null
         }
       | { __typename: 'ComponentSectionsOrganizationalStructure'; title?: string | null }
@@ -14568,7 +14639,7 @@ export type OpeningHoursSectionFragment = {
   } | null> | null
   alertMessage?: {
     __typename?: 'ComponentBlocksOpeningHoursAlertMessage'
-    text?: any | null
+    text?: string | null
   } | null
 }
 
@@ -15213,7 +15284,7 @@ type Sections_ComponentSectionsOpeningHours_Fragment = {
   } | null> | null
   alertMessage?: {
     __typename?: 'ComponentBlocksOpeningHoursAlertMessage'
-    text?: any | null
+    text?: string | null
   } | null
 }
 
@@ -16265,20 +16336,29 @@ export const AdminGroupDocumentIdEntityFragmentDoc = gql`
     documentId
   }
 `
+export const PageSubnavigationEntityFragmentDoc = gql`
+  fragment PageSubnavigationEntity on Page {
+    ...PageSlugEntity
+    childPages {
+      ...PageSlugEntity
+    }
+  }
+  ${PageSlugEntityFragmentDoc}
+`
 export const AdminGroupEntityFragmentDoc = gql`
   fragment AdminGroupEntity on AdminGroup {
     ...AdminGroupDocumentIdEntity
     adminGroupId
     contentManagedBy
     landingPage {
-      ...PageSlugEntity
-      childPages {
-        ...PageSlugEntity
+      ...PageSubnavigationEntity
+      localizations {
+        ...PageSubnavigationEntity
       }
     }
   }
   ${AdminGroupDocumentIdEntityFragmentDoc}
-  ${PageSlugEntityFragmentDoc}
+  ${PageSubnavigationEntityFragmentDoc}
 `
 export const PageLinkFragmentDoc = gql`
   fragment PageLink on ComponentBlocksPageLink {
