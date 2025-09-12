@@ -1,10 +1,10 @@
 import { ParsedUrlQuery } from 'node:querystring'
 
 import { GetStaticPaths, GetStaticProps } from 'next'
-import Head from 'next/head'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import * as React from 'react'
 
+import SeoHead from '@/src/components/common/SeoHead/SeoHead'
 import PageLayout from '@/src/components/layouts/PageLayout'
 import RegulationPageContent from '@/src/components/page-contents/RegulationPageContent'
 import { GeneralContextProvider } from '@/src/components/providers/GeneralContextProvider'
@@ -80,10 +80,11 @@ const RegulationPage = ({ general, regulation }: RegulationPageProps) => {
 
   return (
     <GeneralContextProvider general={general}>
-      <Head>
-        <title>{`VZN ${regulation.regNumber}`}</title>
-        <meta name="description" content={`Všeobecné záväzné nariadenie ${regulation.fullTitle}`} />
-      </Head>
+      <SeoHead
+        title={`VZN ${regulation.regNumber}`}
+        description={`Všeobecné záväzné nariadenie ${regulation.fullTitle}`}
+      />
+
       <PageLayout>
         <RegulationPageContent regulation={regulation} />
       </PageLayout>

@@ -23,7 +23,9 @@ const HomepageContent = () => {
 
       <Waves wavePosition="bottom" waveColor="var(--color-grey-50)" />
 
-      {eventsSection ? <TootootEventsSection section={eventsSection} /> : null}
+      {eventsSection ? (
+        <TootootEventsSection section={eventsSection} className="py-8 lg:pt-18" />
+      ) : null}
 
       <Waves waveColor="var(--color-category-200)" wavePosition="top" />
 

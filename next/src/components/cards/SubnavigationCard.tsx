@@ -32,7 +32,7 @@ const SubnavigationCard = ({ title, text, linkPropsWithoutChildren, ...rest }: P
         />
 
         <div className="flex flex-col gap-2 group-hover:text-content-active-primary-hover">
-          <Typography id={titleId} variant="h5" as="h3" className="group-hover:underline">
+          <Typography id={titleId} variant="h5" as="h3" className="underline underline-offset-2">
             {title}
           </Typography>
           <Typography variant="p-small">{text}</Typography>

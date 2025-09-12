@@ -55,6 +55,7 @@
   "Gallery.morePhotos_few": "fotografie",
   "Gallery.morePhotos_many": "fotografií",
   "Gallery.morePhotos_other": "fotografií",
+  "Homepage.title": "Domov",
   "HomepageSearchResults.allResults": "Všetky výsledky",
   "HomepageSearchResults.sorryNoResultsFound": "Ľutujeme, pre dané vyhľadávanie sa nenašli žiadne výsledky.",
   "HomepageTabs.allInformationOnSite": "Všetky informácie nájdete na stránke",
@@ -191,8 +192,6 @@
   "useLocalizations.longName.sk": "Slovensky",
   "useLocalizations.shortName.en": "EN",
   "useLocalizations.shortName.sk": "SK",
-  "useTitle.title": "Bratislava.sk",
-  "useTitle.titleWithChild": "{{childTitle}} – Bratislava.sk",
   "VideoCard.unsupportedVideo": "Nepodporovaný formát videa.",
   "VideoCard.videoPlayer": "Video prehrávač"
 }

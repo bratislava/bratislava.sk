@@ -1,10 +1,9 @@
 import { Typography } from '@bratislava/component-library'
-import Image from 'next/image'
 import React, { useId } from 'react'
 
 import CardBase, { CardBaseProps } from '@/src/components/cards/CardBase'
 import Button from '@/src/components/common/Button/Button'
-import ImagePlaceholder from '@/src/components/common/Image/ImagePlaceholder'
+import CardImage from '@/src/components/common/Image/CardImage'
 import { useTranslation } from '@/src/utils/useTranslation'
 
 type Props = {
@@ -33,13 +32,7 @@ const InbaReleaseCard = ({
   return (
     <CardBase variant="no-border" className="rounded-none" {...rest}>
       <div className="flex grow flex-col justify-between gap-4 lg:gap-6">
-        <div className="relative aspect-inba overflow-hidden rounded-lg border">
-          {imgSrc ? (
-            <Image src={imgSrc} alt="" sizes={imgSizes} fill className="object-cover" />
-          ) : (
-            <ImagePlaceholder />
-          )}
-        </div>
+        <CardImage imgSrc={imgSrc} sizes={imgSizes} className="aspect-inba rounded-lg border" />
 
         <div className="flex grow flex-col gap-2">
           <Typography

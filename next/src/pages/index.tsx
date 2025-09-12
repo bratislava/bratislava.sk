@@ -1,9 +1,10 @@
 import { dehydrate, DehydratedState, HydrationBoundary, QueryClient } from '@tanstack/react-query'
 import { GetStaticProps } from 'next'
-import Head from 'next/head'
+import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import React from 'react'
 
+import SeoHead from '@/src/components/common/SeoHead/SeoHead'
 import PageLayout from '@/src/components/layouts/PageLayout'
 import HomepageContent from '@/src/components/page-contents/HomepageContent'
 import { GeneralContextProvider } from '@/src/components/providers/GeneralContextProvider'
@@ -17,7 +18,6 @@ import {
   getTootootEventsQueryKey,
 } from '@/src/services/tootoot/tootootEvents.fetcher'
 import { NOT_FOUND } from '@/src/utils/consts'
-import { useTitle } from '@/src/utils/useTitle'
 
 type PageProps = {
   homepageContext: HomepageContext
@@ -61,21 +61,16 @@ export const getStaticProps: GetStaticProps<PageProps> = async ({ locale }) => {
 }
 
 const Homepage = ({ homepageContext, general, dehydratedState }: PageProps) => {
-  const title = useTitle()
+  const { t } = useTranslation()
 
   return (
     <HydrationBoundary state={dehydratedState}>
       <GeneralContextProvider general={general}>
         <HomepageContextProvider homepageContext={homepageContext}>
-          <Head>
-            <title>{title}</title>
-            {homepageContext.homepage?.metaDescription && (
-              <meta
-                name="description"
-                content={homepageContext.homepage?.metaDescription ?? undefined}
-              />
-            )}
-          </Head>
+          <SeoHead
+            title={t('Homepage.title')}
+            description={homepageContext.homepage?.metaDescription}
+          />
 
           <PageLayout>
             <HomepageContent />

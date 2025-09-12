@@ -1,11 +1,10 @@
 import { Typography } from '@bratislava/component-library'
-import Image from 'next/image'
 import React, { useId } from 'react'
 
 import CardBase, { CardBaseProps } from '@/src/components/cards/CardBase'
 import CardContent from '@/src/components/cards/CardContent'
 import Button from '@/src/components/common/Button/Button'
-import ImagePlaceholder from '@/src/components/common/Image/ImagePlaceholder'
+import CardImage from '@/src/components/common/Image/CardImage'
 import Tag from '@/src/components/common/Tag/Tag'
 import { CommonLinkProps } from '@/src/utils/getLinkProps'
 
@@ -33,13 +32,8 @@ const ArticleCard = ({
 
   return (
     <CardBase {...rest}>
-      <div className="relative aspect-16/10 shrink-0">
-        {imgSrc ? (
-          <Image src={imgSrc} alt="" sizes={imgSizes} fill className="object-cover" />
-        ) : (
-          <ImagePlaceholder />
-        )}
-      </div>
+      <CardImage imgSrc={imgSrc} className="aspect-16/10" />
+
       <CardContent className="grow justify-between">
         <div className="flex flex-col">
           {(date || tag) && (

@@ -1,9 +1,9 @@
 import { GetStaticProps } from 'next'
-import Head from 'next/head'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import * as React from 'react'
 
 import PageHeader from '@/src/components/common/PageHeader/PageHeader'
+import SeoHead from '@/src/components/common/SeoHead/SeoHead'
 import PageLayout from '@/src/components/layouts/PageLayout'
 import SectionContainer from '@/src/components/layouts/SectionContainer'
 import { GeneralContextProvider } from '@/src/components/providers/GeneralContextProvider'
@@ -12,7 +12,6 @@ import GlobalSearchSectionContent from '@/src/components/sections/SearchSection/
 import { GeneralQuery } from '@/src/services/graphql'
 import { client } from '@/src/services/graphql/gql'
 import { NOT_FOUND } from '@/src/utils/consts'
-import { useTitle } from '@/src/utils/useTitle'
 import { useTranslation } from '@/src/utils/useTranslation'
 
 type PageProps = {
@@ -43,14 +42,12 @@ export const getStaticProps: GetStaticProps<PageProps> = async ({ locale }) => {
 
 const Page = ({ general }: PageProps) => {
   const { t } = useTranslation()
-  const title = useTitle(t('SearchPage.searching'))
 
   return (
     <GeneralContextProvider general={general}>
       <LocalizationsProvider localizations={{ sk: '/vyhladavanie', en: '/search' }}>
-        <Head>
-          <title>{title}</title>
-        </Head>
+        <SeoHead title={t('SearchPage.searching')} />
+
         <PageLayout>
           <PageHeader
             title={t('SearchPage.searching')}

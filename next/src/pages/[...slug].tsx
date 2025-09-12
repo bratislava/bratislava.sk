@@ -1,9 +1,9 @@
 import { DehydratedState, HydrationBoundary } from '@tanstack/react-query'
 import { GetStaticPaths, GetStaticProps } from 'next'
-import Head from 'next/head'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import React from 'react'
 
+import SeoHead from '@/src/components/common/SeoHead/SeoHead'
 import PageLayout from '@/src/components/layouts/PageLayout'
 import GeneralPageContent from '@/src/components/page-contents/GeneralPageContent'
 import { GeneralContextProvider } from '@/src/components/providers/GeneralContextProvider'
@@ -18,7 +18,6 @@ import { GlobalCategoryColorProvider } from '@/src/utils/colors'
 import { NOT_FOUND } from '@/src/utils/consts'
 import { isDefined } from '@/src/utils/isDefined'
 import { prefetchPageSections } from '@/src/utils/prefetchPageSections'
-import { useTitle } from '@/src/utils/useTitle'
 
 type PageProps = {
   general: GeneralQuery
@@ -119,7 +118,7 @@ export const getStaticProps: GetStaticProps<PageProps, StaticParams> = async ({
 }
 
 const Page = ({ general, page, dehydratedState }: PageProps) => {
-  const { slug, title: pageTitle, metaDiscription, subtext, keywords, locale, pageColor } = page
+  const { slug, title, metaDiscription, subtext, keywords, locale, pageColor } = page
 
   const localization = page.localizations[0]
   const localizations = Object.fromEntries(
@@ -131,17 +130,11 @@ const Page = ({ general, page, dehydratedState }: PageProps) => {
     ].filter(isDefined),
   ) as Localizations
 
-  const title = useTitle(pageTitle)
-
   return (
     <HydrationBoundary state={dehydratedState}>
       <GeneralContextProvider general={general}>
         <LocalizationsProvider localizations={localizations}>
-          <Head>
-            <title>{title}</title>
-            <meta name="description" content={metaDiscription ?? subtext ?? ''} />
-            <meta name="keywords" content={keywords ?? ''} />
-          </Head>
+          <SeoHead title={title} description={metaDiscription ?? subtext} keywords={keywords} />
           <GlobalCategoryColorProvider color={pageColor} />
           <PageLayout>
             <GeneralPageContent page={page} />

@@ -1,11 +1,10 @@
 import { Typography } from '@bratislava/component-library'
-import Image from 'next/image'
 import React, { useId } from 'react'
 
 import CardBase, { CardBaseProps } from '@/src/components/cards/CardBase'
 import CardContent from '@/src/components/cards/CardContent'
 import Button from '@/src/components/common/Button/Button'
-import ImagePlaceholder from '@/src/components/common/Image/ImagePlaceholder'
+import CardImage from '@/src/components/common/Image/CardImage'
 import Tag from '@/src/components/common/Tag/Tag'
 import cn from '@/src/utils/cn'
 import { CommonLinkProps } from '@/src/utils/getLinkProps'
@@ -40,14 +39,8 @@ const ArticleCard = ({
   return (
     // TODO transparent background could be handled cleaner
     <CardBase variant="no-border" className={cn('gap-4 bg-transparent', className)} {...rest}>
-      {/* TODO create CardImage component, see OLO */}
-      <div className="relative aspect-16/10 shrink-0 overflow-hidden rounded-lg">
-        {imgSrc ? (
-          <Image src={imgSrc} alt="" sizes={imgSizes} fill className="object-cover" />
-        ) : (
-          <ImagePlaceholder />
-        )}
-      </div>
+      <CardImage imgSrc={imgSrc} className="aspect-16/10 rounded-lg" />
+
       <CardContent variant="no-padding" className="grow justify-between">
         <div className="flex flex-col gap-2">
           {(date || tag) && (
