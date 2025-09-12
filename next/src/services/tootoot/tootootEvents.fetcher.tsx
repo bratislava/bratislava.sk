@@ -2,10 +2,10 @@
 
 import sortBy from 'lodash/sortBy'
 
-import { cityOrganizationsTootootIds, cityTootootId } from '@/src/services/tootoot/constants'
+import { tootootIds } from '@/src/services/tootoot/constants'
 
 // This constant is bigger than shown events because of filtering, may be adjusted if needed
-const eventsCountToFetch = 24
+const eventsCountToFetch = 120
 const eventsCountToShow = 12
 
 type TootootEventResponse = {
@@ -137,11 +137,10 @@ const fetchTootootEventsByProfiles = async (profileIds: string[]) => {
  * also here: https://www.bkis.sk/podujatia/).
  */
 export const getTootootEvents = async () => {
-  const eventsBa = await fetchTootootEventsByProfiles([cityTootootId])
-  const eventsOther = await fetchTootootEventsByProfiles(cityOrganizationsTootootIds)
+  const allEvents = await fetchTootootEventsByProfiles(tootootIds)
 
   // Hint from Tootoot: sorting events by endDate helps to prevent longer events to take space in first places for too long
-  return [...sortBy(eventsBa, ['End']), ...sortBy(eventsOther, ['End'])]
+  return sortBy(allEvents, ['End'])
     .slice(0, eventsCountToShow)
     .map((event) => {
       // If the event is so called "long-term", it returns this:
