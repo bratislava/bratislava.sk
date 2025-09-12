@@ -1079,6 +1079,7 @@ type ComponentMenuMenuSection {
   label: String!
   links(filters: ComponentMenuMenuLinkFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentMenuMenuLink]
   page: Page
+  subtext: String
 }
 
 input ComponentMenuMenuSectionFiltersInput {
@@ -1089,6 +1090,7 @@ input ComponentMenuMenuSectionFiltersInput {
   not: ComponentMenuMenuSectionFiltersInput
   or: [ComponentMenuMenuSectionFiltersInput]
   page: PageFiltersInput
+  subtext: StringFilterInput
 }
 
 input ComponentMenuMenuSectionInput {
@@ -1097,6 +1099,7 @@ input ComponentMenuMenuSectionInput {
   label: String
   links: [ComponentMenuMenuLinkInput]
   page: ID
+  subtext: String
 }
 
 type ComponentSectionsAccordion {

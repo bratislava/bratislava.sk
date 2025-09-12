@@ -96,6 +96,7 @@ fragment MenuSection on ComponentMenuMenuSection {
   id
   label
   icon
+  subtext
   page {
     ...PageSlugEntity
   }

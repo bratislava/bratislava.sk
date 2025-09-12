@@ -1329,6 +1329,7 @@ export type ComponentMenuMenuSection = {
   label: Scalars['String']['output']
   links?: Maybe<Array<Maybe<ComponentMenuMenuLink>>>
   page?: Maybe<Page>
+  subtext?: Maybe<Scalars['String']['output']>
 }
 
 export type ComponentMenuMenuSectionLinksArgs = {
@@ -1345,6 +1346,7 @@ export type ComponentMenuMenuSectionFiltersInput = {
   not?: InputMaybe<ComponentMenuMenuSectionFiltersInput>
   or?: InputMaybe<Array<InputMaybe<ComponentMenuMenuSectionFiltersInput>>>
   page?: InputMaybe<PageFiltersInput>
+  subtext?: InputMaybe<StringFilterInput>
 }
 
 export type ComponentMenuMenuSectionInput = {
@@ -1353,6 +1355,7 @@ export type ComponentMenuMenuSectionInput = {
   label?: InputMaybe<Scalars['String']['input']>
   links?: InputMaybe<Array<InputMaybe<ComponentMenuMenuLinkInput>>>
   page?: InputMaybe<Scalars['ID']['input']>
+  subtext?: InputMaybe<Scalars['String']['input']>
 }
 
 export type ComponentSectionsAccordion = {
@@ -7168,6 +7171,7 @@ export type MenuSectionFragment = {
   id: string
   label: string
   icon: Enum_Componentmenumenusection_Icon
+  subtext?: string | null
   page?: {
     __typename?: 'Page'
     documentId: string
@@ -7208,6 +7212,7 @@ export type MenuItemFragment = {
     id: string
     label: string
     icon: Enum_Componentmenumenusection_Icon
+    subtext?: string | null
     page?: {
       __typename?: 'Page'
       documentId: string
@@ -7851,6 +7856,7 @@ export type GeneralQuery = {
         id: string
         label: string
         icon: Enum_Componentmenumenusection_Icon
+        subtext?: string | null
         page?: {
           __typename?: 'Page'
           documentId: string
@@ -15855,6 +15861,7 @@ export const MenuSectionFragmentDoc = gql`
     id
     label
     icon
+    subtext
     page {
       ...PageSlugEntity
     }

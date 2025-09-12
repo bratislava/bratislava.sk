@@ -58,11 +58,13 @@
         "covid_06"
       ]
     },
+    "subtext": {
+      "type": "string"
+    },
     "links": {
-      "displayName": "menu link",
       "type": "component",
-      "repeatable": true,
-      "component": "menu.menu-link"
+      "component": "menu.menu-link",
+      "repeatable": true
     }
   }
 }
