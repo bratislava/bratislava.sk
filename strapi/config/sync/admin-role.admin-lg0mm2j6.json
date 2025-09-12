@@ -1291,6 +1291,7 @@
           "menus.sections.label",
           "menus.sections.page",
           "menus.sections.icon",
+          "menus.sections.subtext",
           "menus.sections.links.label",
           "menus.sections.links.page",
           "menus.sections.links.url",
@@ -1303,7 +1304,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "pvyz94eehh2r4jgg1u6qa253",
+      "documentId": "z3b96mnmr6z82j45b8e1qdzr",
       "locale": null
     },
     {
@@ -1331,6 +1332,7 @@
           "menus.sections.label",
           "menus.sections.page",
           "menus.sections.icon",
+          "menus.sections.subtext",
           "menus.sections.links.label",
           "menus.sections.links.page",
           "menus.sections.links.url",
@@ -1343,7 +1345,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "futbelgyske6j1bai912w3os",
+      "documentId": "ahsgvcprj0liljn1zdqx2r67",
       "locale": null
     },
     {
@@ -1357,6 +1359,7 @@
           "menus.sections.label",
           "menus.sections.page",
           "menus.sections.icon",
+          "menus.sections.subtext",
           "menus.sections.links.label",
           "menus.sections.links.page",
           "menus.sections.links.url",
@@ -1369,7 +1372,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "yl63r1ebfn58y1mfuqke57uh",
+      "documentId": "zhcvw5k2yksq7dr8qfq0y9dy",
       "locale": null
     },
     {

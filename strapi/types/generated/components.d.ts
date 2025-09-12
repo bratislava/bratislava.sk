@@ -520,6 +520,7 @@ export interface MenuMenuSection extends Struct.ComponentSchema {
     label: Schema.Attribute.String & Schema.Attribute.Required
     links: Schema.Attribute.Component<'menu.menu-link', true>
     page: Schema.Attribute.Relation<'oneToOne', 'api::page.page'>
+    subtext: Schema.Attribute.String
   }
 }
 

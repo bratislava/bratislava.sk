@@ -63,13 +63,28 @@
           "sortable": true
         }
       },
+      "subtext": {
+        "edit": {
+          "label": "subtext",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "subtext",
+          "searchable": true,
+          "sortable": true
+        }
+      },
       "links": {
         "edit": {
           "label": "links",
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true
+          "editable": true,
+          "mainField": "label"
         },
         "list": {
           "label": "links",
@@ -87,12 +102,6 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "page",
-        "icon",
-        "label"
-      ],
       "edit": [
         [
           {
@@ -107,7 +116,11 @@
         [
           {
             "name": "page",
-            "size": 6
+            "size": 12
+          },
+          {
+            "name": "subtext",
+            "size": 12
           }
         ],
         [
@@ -116,6 +129,12 @@
             "size": 12
           }
         ]
+      ],
+      "list": [
+        "id",
+        "page",
+        "icon",
+        "label"
       ]
     },
     "isComponent": true
