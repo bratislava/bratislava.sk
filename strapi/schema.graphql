@@ -249,76 +249,6 @@ type ArticleRelationResponseCollection {
   nodes: [Article!]!
 }
 
-type BlogPost {
-  addedAt: DateTime!
-  coverImage: UploadFile
-  createdAt: DateTime
-  date_added: DateTime
-  documentId: ID!
-  excerpt: String
-  locale: String
-  localizations(filters: BlogPostFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [BlogPost]!
-  localizations_connection(filters: BlogPostFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): BlogPostRelationResponseCollection
-  publishedAt: DateTime
-  sections: [BlogPostSectionsDynamicZone]
-  slug: String!
-  tag: Tag
-  title: String!
-  updatedAt: DateTime
-}
-
-type BlogPostEntity {
-  attributes: BlogPost
-  id: ID
-}
-
-type BlogPostEntityResponse {
-  data: BlogPost
-}
-
-type BlogPostEntityResponseCollection {
-  nodes: [BlogPost!]!
-  pageInfo: Pagination!
-}
-
-input BlogPostFiltersInput {
-  addedAt: DateTimeFilterInput
-  and: [BlogPostFiltersInput]
-  createdAt: DateTimeFilterInput
-  date_added: DateTimeFilterInput
-  documentId: IDFilterInput
-  excerpt: StringFilterInput
-  locale: StringFilterInput
-  localizations: BlogPostFiltersInput
-  not: BlogPostFiltersInput
-  or: [BlogPostFiltersInput]
-  publishedAt: DateTimeFilterInput
-  slug: StringFilterInput
-  tag: TagFiltersInput
-  title: StringFilterInput
-  updatedAt: DateTimeFilterInput
-}
-
-input BlogPostInput {
-  addedAt: DateTime
-  coverImage: ID
-  date_added: DateTime
-  excerpt: String
-  publishedAt: DateTime
-  sections: [BlogPostSectionsDynamicZoneInput!]
-  slug: String
-  tag: ID
-  title: String
-}
-
-type BlogPostRelationResponseCollection {
-  nodes: [BlogPost!]!
-}
-
-union BlogPostSectionsDynamicZone = ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsNarrowText | Error
-
-scalar BlogPostSectionsDynamicZoneInput
-
 input BooleanFilterInput {
   and: [Boolean]
   between: [Boolean]
@@ -2994,7 +2924,7 @@ type GeneralRelationResponseCollection {
   nodes: [General!]!
 }
 
-union GenericMorph = AdminGroup | Alert | Article | ArticleCategory | BlogPost | ComponentAccordionItemsFlatText | ComponentAccordionItemsInstitution | ComponentAccordionItemsInstitutionNarrow | ComponentBlocksCardLink | ComponentBlocksColumnsItem | ComponentBlocksCommonLink | ComponentBlocksComparisonCard | ComponentBlocksComparisonItem | ComponentBlocksContactCard | ComponentBlocksContactDirectionsCard | ComponentBlocksContactPersonCard | ComponentBlocksFile | ComponentBlocksFileItem | ComponentBlocksFooterColumn | ComponentBlocksHomepageHighlightsItem | ComponentBlocksInBa | ComponentBlocksNumbersOverviewItem | ComponentBlocksNumericalListItem | ComponentBlocksOpeningHoursAlertMessage | ComponentBlocksOpeningHoursItem | ComponentBlocksPageLink | ComponentBlocksPartner | ComponentBlocksProsAndConsCard | ComponentBlocksStarzLandingPageBanner | ComponentBlocksSubnavigationLink | ComponentBlocksTopServicesItem | ComponentBlocksVideo | ComponentGeneralHeader | ComponentGeneralHeaderLink | ComponentHeaderSectionsEvent | ComponentHeaderSectionsFacility | ComponentMenuMenuItem | ComponentMenuMenuLink | ComponentMenuMenuSection | ComponentSectionsAccordion | ComponentSectionsArticles | ComponentSectionsBanner | ComponentSectionsCalculator | ComponentSectionsColumnedText | ComponentSectionsColumns | ComponentSectionsComparisonSection | ComponentSectionsContactsSection | ComponentSectionsDivider | ComponentSectionsDocuments | ComponentSectionsEvents | ComponentSectionsFacilities | ComponentSectionsFaqCategories | ComponentSectionsFaqs | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsHomepageEvents | ComponentSectionsHomepageHighlights | ComponentSectionsHomepageMayorAndCouncil | ComponentSectionsHomepageTabs | ComponentSectionsIframe | ComponentSectionsInbaArticlesList | ComponentSectionsInbaReleases | ComponentSectionsLinks | ComponentSectionsNarrowText | ComponentSectionsNumbersOverview | ComponentSectionsNumericalList | ComponentSectionsOfficialBoard | ComponentSectionsOpeningHours | ComponentSectionsOrganizationalStructure | ComponentSectionsPartners | ComponentSectionsProsAndConsSection | ComponentSectionsRegulations | ComponentSectionsStarzLandingPage | ComponentSectionsSubnavigation | ComponentSectionsSubpageList | ComponentSectionsTextWithImage | ComponentSectionsTextWithImageOverlapped | ComponentSectionsTootootEvents | ComponentSectionsTopServices | ComponentSectionsVideos | ComponentSidebarsEmptySidebar | ComponentTaxAdministratorsTaxAdministrator | Document | DocumentCategory | Faq | FaqCategory | Footer | General | Homepage | I18NLocale | InbaArticle | InbaRelease | InbaTag | Menu | Page | PageCategory | Regulation | ReviewWorkflowsWorkflow | ReviewWorkflowsWorkflowStage | Tag | TaxAdministratorsList | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
+union GenericMorph = AdminGroup | Alert | Article | ArticleCategory | ComponentAccordionItemsFlatText | ComponentAccordionItemsInstitution | ComponentAccordionItemsInstitutionNarrow | ComponentBlocksCardLink | ComponentBlocksColumnsItem | ComponentBlocksCommonLink | ComponentBlocksComparisonCard | ComponentBlocksComparisonItem | ComponentBlocksContactCard | ComponentBlocksContactDirectionsCard | ComponentBlocksContactPersonCard | ComponentBlocksFile | ComponentBlocksFileItem | ComponentBlocksFooterColumn | ComponentBlocksHomepageHighlightsItem | ComponentBlocksInBa | ComponentBlocksNumbersOverviewItem | ComponentBlocksNumericalListItem | ComponentBlocksOpeningHoursAlertMessage | ComponentBlocksOpeningHoursItem | ComponentBlocksPageLink | ComponentBlocksPartner | ComponentBlocksProsAndConsCard | ComponentBlocksStarzLandingPageBanner | ComponentBlocksSubnavigationLink | ComponentBlocksTopServicesItem | ComponentBlocksVideo | ComponentGeneralHeader | ComponentGeneralHeaderLink | ComponentHeaderSectionsEvent | ComponentHeaderSectionsFacility | ComponentMenuMenuItem | ComponentMenuMenuLink | ComponentMenuMenuSection | ComponentSectionsAccordion | ComponentSectionsArticles | ComponentSectionsBanner | ComponentSectionsCalculator | ComponentSectionsColumnedText | ComponentSectionsColumns | ComponentSectionsComparisonSection | ComponentSectionsContactsSection | ComponentSectionsDivider | ComponentSectionsDocuments | ComponentSectionsEvents | ComponentSectionsFacilities | ComponentSectionsFaqCategories | ComponentSectionsFaqs | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsHomepageEvents | ComponentSectionsHomepageHighlights | ComponentSectionsHomepageMayorAndCouncil | ComponentSectionsHomepageTabs | ComponentSectionsIframe | ComponentSectionsInbaArticlesList | ComponentSectionsInbaReleases | ComponentSectionsLinks | ComponentSectionsNarrowText | ComponentSectionsNumbersOverview | ComponentSectionsNumericalList | ComponentSectionsOfficialBoard | ComponentSectionsOpeningHours | ComponentSectionsOrganizationalStructure | ComponentSectionsPartners | ComponentSectionsProsAndConsSection | ComponentSectionsRegulations | ComponentSectionsStarzLandingPage | ComponentSectionsSubnavigation | ComponentSectionsSubpageList | ComponentSectionsTextWithImage | ComponentSectionsTextWithImageOverlapped | ComponentSectionsTootootEvents | ComponentSectionsTopServices | ComponentSectionsVideos | ComponentSidebarsEmptySidebar | ComponentTaxAdministratorsTaxAdministrator | Document | DocumentCategory | Faq | FaqCategory | Footer | General | Homepage | I18NLocale | InbaArticle | InbaRelease | InbaTag | Menu | Page | PageCategory | Regulation | ReviewWorkflowsWorkflow | ReviewWorkflowsWorkflowStage | Tag | TaxAdministratorsList | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
 
 type Homepage {
   createdAt: DateTime
@@ -3467,13 +3397,6 @@ type Mutation {
     locale: I18NLocaleCode
     status: PublicationStatus = PUBLISHED
   ): ArticleCategory
-  createBlogPost(
-    data: BlogPostInput!
-
-    """The locale to use for the query"""
-    locale: I18NLocaleCode
-    status: PublicationStatus = PUBLISHED
-  ): BlogPost
   createDocument(data: DocumentInput!, status: PublicationStatus = PUBLISHED): Document
   createDocumentCategory(data: DocumentCategoryInput!, status: PublicationStatus = PUBLISHED): DocumentCategory
   createFaq(
@@ -3547,12 +3470,6 @@ type Mutation {
     locale: I18NLocaleCode
   ): DeleteMutationResponse
   deleteArticleCategory(
-    documentId: ID!
-
-    """The locale to use for the query"""
-    locale: I18NLocaleCode
-  ): DeleteMutationResponse
-  deleteBlogPost(
     documentId: ID!
 
     """The locale to use for the query"""
@@ -3669,14 +3586,6 @@ type Mutation {
     locale: I18NLocaleCode
     status: PublicationStatus = PUBLISHED
   ): ArticleCategory
-  updateBlogPost(
-    data: BlogPostInput!
-    documentId: ID!
-
-    """The locale to use for the query"""
-    locale: I18NLocaleCode
-    status: PublicationStatus = PUBLISHED
-  ): BlogPost
   updateDocument(data: DocumentInput!, documentId: ID!, status: PublicationStatus = PUBLISHED): Document
   updateDocumentCategory(data: DocumentCategoryInput!, documentId: ID!, status: PublicationStatus = PUBLISHED): DocumentCategory
   updateFaq(
@@ -4027,31 +3936,6 @@ type Query {
     sort: [String] = []
     status: PublicationStatus = PUBLISHED
   ): ArticleEntityResponseCollection
-  blogPost(
-    documentId: ID!
-
-    """The locale to use for the query"""
-    locale: I18NLocaleCode
-    status: PublicationStatus = PUBLISHED
-  ): BlogPost
-  blogPosts(
-    filters: BlogPostFiltersInput
-
-    """The locale to use for the query"""
-    locale: I18NLocaleCode
-    pagination: PaginationArg = {}
-    sort: [String] = []
-    status: PublicationStatus = PUBLISHED
-  ): [BlogPost]!
-  blogPosts_connection(
-    filters: BlogPostFiltersInput
-
-    """The locale to use for the query"""
-    locale: I18NLocaleCode
-    pagination: PaginationArg = {}
-    sort: [String] = []
-    status: PublicationStatus = PUBLISHED
-  ): BlogPostEntityResponseCollection
   document(documentId: ID!, status: PublicationStatus = PUBLISHED): Document
   documentCategories(filters: DocumentCategoryFiltersInput, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED): [DocumentCategory]!
   documentCategories_connection(filters: DocumentCategoryFiltersInput, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED): DocumentCategoryEntityResponseCollection

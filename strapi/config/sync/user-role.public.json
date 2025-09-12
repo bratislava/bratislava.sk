@@ -41,16 +41,6 @@
       "locale": null
     },
     {
-      "action": "api::blog-post.blog-post.find",
-      "documentId": "g7d1sh8g4pme4ayzzbr8ay21",
-      "locale": null
-    },
-    {
-      "action": "api::blog-post.blog-post.findOne",
-      "documentId": "c6xhuouoqma0xy25y0t3fgyp",
-      "locale": null
-    },
-    {
       "action": "api::document-category.document-category.find",
       "documentId": "r7p2504rofx3fkkyefomgblf",
       "locale": null
@@ -158,6 +148,11 @@
     {
       "action": "api::page.page.findOne",
       "documentId": "xcld4b6xamzcrj23bwidjptf",
+      "locale": null
+    },
+    {
+      "action": "api::page.page.update",
+      "documentId": "s6ft1c41i645kn6fdpvo1lmz",
       "locale": null
     },
     {
