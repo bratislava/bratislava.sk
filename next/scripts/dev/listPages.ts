@@ -24,12 +24,12 @@ export const listPages = async () => {
     // .filter((page) => !page.slug?.includes('/'))
     .filter((page) => {
       const sections =
-        page.sections?.filter(
-          (section) => section?.__typename === 'ComponentSectionsNumericalList',
-        ) ?? []
+        page.sections?.filter((section) => section?.__typename === 'ComponentSectionsNarrowText') ??
+        []
 
       return sections.some(
-        (section) => section?.__typename === 'ComponentSectionsNumericalList',
+        (section) =>
+          section?.__typename === 'ComponentSectionsNarrowText' && section.content?.includes('<'),
         // section.width === 'wide',
       )
     })

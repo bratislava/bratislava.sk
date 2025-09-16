@@ -3,7 +3,6 @@ import { Typography } from '@bratislava/component-library'
 import slugify from '@sindresorhus/slugify'
 import Image from 'next/image'
 import ReactMarkdown, { defaultUrlTransform } from 'react-markdown'
-import rehypeRaw from 'rehype-raw'
 import remarkGfm from 'remark-gfm'
 import supersub from 'remark-supersub'
 import remarkUnwrapImages from 'remark-unwrap-images'
@@ -30,7 +29,6 @@ export type MarkdownProps = {
  * https://www.figma.com/file/zVMiy9wMv6JYpab68Zm24A/DEPRECATED%3A-DS-ESBS%3A-Template-pages?type=design&node-id=19-2181&t=dkGyoRUm089BWYWu-0
  */
 
-// FIXME Typography. Convert to Typography. Headers and p.
 const Markdown = ({ content, variant = 'default', className }: MarkdownProps) => {
   return (
     <div
@@ -57,8 +55,6 @@ const Markdown = ({ content, variant = 'default', className }: MarkdownProps) =>
           ],
           supersub,
         ]}
-        // TODO remove rehypeRaw
-        rehypePlugins={[rehypeRaw]}
         components={{
           // Standard components: a, blockquote, br, code, em, h1, h2, h3, h4, h5, h6, hr, img, li, ol, p, pre, strong, and ul
 
