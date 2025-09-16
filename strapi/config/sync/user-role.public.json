@@ -151,11 +151,6 @@
       "locale": null
     },
     {
-      "action": "api::page.page.update",
-      "documentId": "s6ft1c41i645kn6fdpvo1lmz",
-      "locale": null
-    },
-    {
       "action": "api::regulation.regulation.find",
       "documentId": "rpr7wk56n33jqy1egd6faeyq",
       "locale": null
