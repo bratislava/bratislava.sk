@@ -221,7 +221,7 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
 
     if (rest.href) {
       const isExternal = rest.href.startsWith('http')
-      const isAnchor = rest.href.startsWith('#')
+      const isAnchor = rest.href.startsWith('#') && rest.href !== '#'
       const linkIcon = hasLinkIcon ? (
         isExternal ? (
           <ExportIcon className="shrink-0" />
