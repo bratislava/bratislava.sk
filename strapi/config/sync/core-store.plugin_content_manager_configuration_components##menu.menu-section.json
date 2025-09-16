@@ -83,8 +83,7 @@
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true,
-          "mainField": "label"
+          "editable": true
         },
         "list": {
           "label": "links",
@@ -102,6 +101,12 @@
       }
     },
     "layouts": {
+      "list": [
+        "id",
+        "page",
+        "icon",
+        "label"
+      ],
       "edit": [
         [
           {
@@ -117,10 +122,6 @@
           {
             "name": "page",
             "size": 12
-          },
-          {
-            "name": "subtext",
-            "size": 12
           }
         ],
         [
@@ -128,13 +129,13 @@
             "name": "links",
             "size": 12
           }
+        ],
+        [
+          {
+            "name": "subtext",
+            "size": 6
+          }
         ]
-      ],
-      "list": [
-        "id",
-        "page",
-        "icon",
-        "label"
       ]
     },
     "isComponent": true
