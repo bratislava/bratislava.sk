@@ -20,6 +20,106 @@
           "sortable": false
         }
       },
+      "label": {
+        "edit": {
+          "label": "label",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "label",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "subtext": {
+        "edit": {
+          "label": "subtext",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "subtext",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "article": {
+        "edit": {
+          "label": "article",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "title"
+        },
+        "list": {
+          "label": "article",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "page": {
+        "edit": {
+          "label": "page",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "title"
+        },
+        "list": {
+          "label": "page",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "media": {
+        "edit": {
+          "label": "media",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "media",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "url": {
+        "edit": {
+          "label": "url",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "url",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "analyticsId": {
+        "edit": {
+          "label": "analyticsId",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "analyticsId",
+          "searchable": true,
+          "sortable": true
+        }
+      },
       "link": {
         "edit": {
           "label": "Odkaz",
@@ -74,6 +174,40 @@
         [
           {
             "name": "image",
+            "size": 6
+          },
+          {
+            "name": "label",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "subtext",
+            "size": 6
+          },
+          {
+            "name": "article",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "page",
+            "size": 6
+          },
+          {
+            "name": "media",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "url",
+            "size": 6
+          },
+          {
+            "name": "analyticsId",
             "size": 6
           }
         ]

@@ -43,6 +43,19 @@ query Homepage($locale: I18NLocaleCode!) {
 
 fragment HomepageHighlightsItem on ComponentBlocksHomepageHighlightsItem {
   id # keep for .map() key
+  label
+  subtext
+  page {
+    ...PageCardEntity
+  }
+  article {
+    ...ArticleCardEntity
+  }
+  url
+  media {
+    ...UploadImageEntity
+  }
+  analyticsId
   link {
     ...CommonLink
   }
