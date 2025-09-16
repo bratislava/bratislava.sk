@@ -1,58 +1,54 @@
 import { Typography } from '@bratislava/component-library'
 import { useTranslation } from 'next-i18next'
-import React, { Fragment } from 'react'
+import React, { Fragment, useId } from 'react'
 
-import { ArrowRightIcon, AttachmentIcon, DownloadIcon } from '@/src/assets/icons'
-import { FolderIcon } from '@/src/assets/material-icons'
+import { LanguageIcon } from '@/src/assets/material-icons'
 import CardBase from '@/src/components/cards/CardBase'
 import { CardTitleLevel } from '@/src/components/cards/getCardTitleLevel'
 import Button from '@/src/components/common/Button/Button'
 import cn from '@/src/utils/cn'
 
-export type DocumentRowCardProps = {
-  variant: 'single-file' | 'multiple-files'
+export type LinkRowCardProps = {
   title: string
   cardTitleLevel?: CardTitleLevel
   linkHref: string
   metadata?: string[]
   className?: string
-  ariaLabel?: string
 }
 
 /**
- * Based on OLO https://github.com/bratislava/olo.sk/blob/master/next/src/components/cards/FileRowCard.tsx
- *
- * Figma OLO: https://www.figma.com/file/2qF09hDT9QNcpdztVMNAY4/OLO-Web?type=design&node-id=42-2223&mode=dev
+ * TODO Figma link
  */
 
-const DocumentRowCard = ({
-  variant,
+const LinkRowCard = ({
   title,
   cardTitleLevel = 'h3',
   linkHref,
   metadata,
   className,
-  ariaLabel,
-}: DocumentRowCardProps) => {
+}: LinkRowCardProps) => {
   const { t } = useTranslation()
+
+  const titleId = useId()
 
   return (
     <CardBase variant="no-border" className={cn('bg-background-passive-base', className)}>
       <div className="flex items-center gap-3 py-4 lg:gap-4">
-        <div className="flex grow items-start gap-3 lg:gap-4">
+        <div className="flex grow items-center gap-3 lg:gap-4">
           <div className="lg:rounded-lg lg:bg-background-passive-secondary lg:p-3 lg:text-content-passive-secondary">
-            {variant === 'single-file' ? (
-              <AttachmentIcon className="size-5 md:size-6" />
-            ) : (
-              <FolderIcon className="size-5 md:size-6" />
-            )}
+            <LanguageIcon className="size-5 shrink-0 md:size-6" />
           </div>
           <div className="flex grow flex-col gap-1">
-            <Typography variant="h6" as={cardTitleLevel} className="group-hover:underline">
+            <Typography
+              id={titleId}
+              variant="h6"
+              as={cardTitleLevel}
+              className="group-hover:underline"
+            >
               {title}
             </Typography>
             {metadata?.length ? (
-              <div className="flex flex-wrap items-center gap-x-3">
+              <div className="flex flex-wrap items-center gap-x-3 text-content-passive-secondary">
                 {metadata.map((item, index) => (
                   // eslint-disable-next-line react/no-array-index-key
                   <Fragment key={index}>
@@ -62,7 +58,10 @@ const DocumentRowCard = ({
                         aria-hidden
                       />
                     ) : null}
-                    <Typography variant="p-small">{item}</Typography>
+                    {/* Using break-all because we pass very long urls to metadata */}
+                    <Typography variant="p-small" className="break-all">
+                      {item}
+                    </Typography>
                   </Fragment>
                 ))}
               </div>
@@ -73,25 +72,18 @@ const DocumentRowCard = ({
         <Button
           variant="outline"
           href={linkHref}
+          aria-labelledby={titleId}
           stretched
-          hasLinkIcon={false}
-          // eslint-disable-next-line sonarjs/no-duplicate-string
-          startIcon={variant === 'single-file' ? <DownloadIcon /> : undefined}
-          // eslint-disable-next-line sonarjs/no-duplicate-string
-          aria-label={ariaLabel ?? `${t('common.showMore')}: ${title}`}
-          endIcon={variant === 'multiple-files' ? <ArrowRightIcon /> : undefined}
           className="whitespace-nowrap max-lg:hidden"
         >
-          {variant === 'single-file' ? t('common.download') : t('common.show')}
+          {t('LinkRowCard.goToWeb')}
         </Button>
         {/* Screen: mobile */}
         <Button
           variant="unstyled"
           href={linkHref}
-          aria-label={ariaLabel ?? `${t('common.showMore')}: ${title}`}
+          aria-labelledby={titleId}
           stretched
-          hasLinkIcon={false}
-          icon={variant === 'single-file' ? <DownloadIcon /> : <ArrowRightIcon />}
           className="ml-auto p-1.5 lg:hidden"
         />
       </div>
@@ -99,4 +91,4 @@ const DocumentRowCard = ({
   )
 }
 
-export default DocumentRowCard
+export default LinkRowCard

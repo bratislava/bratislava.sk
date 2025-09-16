@@ -1,8 +1,8 @@
-import React from 'react'
-import { ArrowRightIcon } from 'src/assets/icons'
+import React, { Fragment } from 'react'
 
 import { SectionTitleLevel } from '@/src/components/cards/getCardTitleLevel'
-import Button from '@/src/components/common/Button/Button'
+import LinkRowCard from '@/src/components/cards/LinkRowCard'
+import HorizontalDivider from '@/src/components/common/Divider/HorizontalDivider'
 import SectionHeader from '@/src/components/layouts/SectionHeader'
 import { LinksSectionFragment } from '@/src/services/graphql'
 import cn from '@/src/utils/cn'
@@ -22,21 +22,28 @@ export type LinksProps = {
 
 const Links = ({ title, titleLevel, pageLinks, className }: LinksProps) => {
   return (
-    <div className={cn('flex w-full flex-col gap-6 md:w-10/12', className)}>
+    <div className={cn('flex w-full flex-col gap-6', className)}>
       <SectionHeader title={title} titleLevel={titleLevel} />
 
-      <ul className="flex flex-col gap-4">
-        {pageLinks?.filter(isDefined).map((pageLink, index) => (
-          // eslint-disable-next-line react/no-array-index-key
-          <li key={index}>
-            <Button
-              variant="link"
-              startIcon={<ArrowRightIcon className="shrink-0" />}
-              {...getLinkProps(pageLink)}
-              hasLinkIcon={getLinkProps(pageLink).target === '_blank'} // show link icon only for external urls since we already use arrow icon in startIcon
-            />
-          </li>
-        ))}
+      <ul className="flex flex-col rounded-lg border py-2">
+        {pageLinks?.filter(isDefined).map((pageLink, index) => {
+          const { children: linkTitle, href } = getLinkProps(pageLink)
+
+          return (
+            // eslint-disable-next-line react/no-array-index-key
+            <Fragment key={index}>
+              {index > 0 ? <HorizontalDivider asListItem className="mx-4 lg:mx-6" /> : null}
+              <li className="w-full">
+                <LinkRowCard
+                  title={linkTitle}
+                  linkHref={href}
+                  metadata={[href]}
+                  className="px-4 lg:px-6"
+                />
+              </li>
+            </Fragment>
+          )
+        })}
       </ul>
     </div>
   )
