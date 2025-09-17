@@ -631,22 +631,42 @@ input ComponentBlocksFooterColumnInput {
 }
 
 type ComponentBlocksHomepageHighlightsItem {
+  analyticsId: String
+  article: Article
   id: ID!
   image: UploadFile!
+  label: String
   link: ComponentBlocksCommonLink!
+  media: UploadFile
+  page: Page
+  subtext: String
+  url: String
 }
 
 input ComponentBlocksHomepageHighlightsItemFiltersInput {
+  analyticsId: StringFilterInput
   and: [ComponentBlocksHomepageHighlightsItemFiltersInput]
+  article: ArticleFiltersInput
+  label: StringFilterInput
   link: ComponentBlocksCommonLinkFiltersInput
   not: ComponentBlocksHomepageHighlightsItemFiltersInput
   or: [ComponentBlocksHomepageHighlightsItemFiltersInput]
+  page: PageFiltersInput
+  subtext: StringFilterInput
+  url: StringFilterInput
 }
 
 input ComponentBlocksHomepageHighlightsItemInput {
+  analyticsId: String
+  article: ID
   id: ID
   image: ID
+  label: String
   link: ComponentBlocksCommonLinkInput
+  media: ID
+  page: ID
+  subtext: String
+  url: String
 }
 
 type ComponentBlocksInBa {
