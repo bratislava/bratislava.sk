@@ -88,7 +88,7 @@ const MobileBreadcrumbs = ({ breadcrumbs }: BreadcrumbsProps) => {
                 })}
               </ol>
             </div>
-            <HorizontalDivider />
+            <HorizontalDivider className="border-category-400" />
             <ol className="flex flex-col flex-wrap gap-1 py-4">
               {withHomeWithoutCurrent.map((breadcrumb, index) => (
                 // eslint-disable-next-line react/no-array-index-key
