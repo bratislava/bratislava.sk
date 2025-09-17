@@ -3,13 +3,17 @@ import { usePathname } from 'next/navigation'
 import React, { useEffect } from 'react'
 import { CrossIcon, HamburgerIcon, SearchIcon } from 'src/assets/icons'
 
-import Brand from '@/src/components/common/Brand/Brand'
 import Button from '@/src/components/common/Button/Button'
+import Brand from '@/src/components/common/Logos/Brand'
+import StarzLogo from '@/src/components/common/Logos/StarzLogo'
 import MLink from '@/src/components/common/MLink/MLink'
 import AlertBanner from '@/src/components/common/NavBar/AlertBanner'
+import { useAdminGroupsContext } from '@/src/components/providers/AdminGroupsContextProvider'
 import { useLocalizations } from '@/src/components/providers/LocalizationsProvider'
 import cn from '@/src/utils/cn'
 import { getCategoryColorLocalStyle } from '@/src/utils/colors'
+import { getLinkProps } from '@/src/utils/getLinkProps'
+import { useLocale } from '@/src/utils/useLocale'
 import { useTranslation } from '@/src/utils/useTranslation'
 
 import MobileNavMenu from './NavMenu/MobileNavMenu'
@@ -25,20 +29,42 @@ type MobileNavBarProps = {
 
 const MobileNavBar = ({ className }: MobileNavBarProps) => {
   const { t } = useTranslation()
+  const locale = useLocale()
   const pathname = usePathname()
   const { isMobileMenuOpen, setMobileMenuOpen } = useNavMenuContext()
+  const { adminGroups } = useAdminGroupsContext()
   const { otherLanguage } = useLocalizations()
 
   useEffect(() => {
     setMobileMenuOpen(false)
   }, [pathname, setMobileMenuOpen])
 
+  // TODO refactor when more adminGroups will be implemented
+  const starzAdminGroup = adminGroups.find((adminGroup) => adminGroup.adminGroupId === 'starz')
+
+  const starzLandingPage = starzAdminGroup?.landingPage
+
+  // Strapi returns only other locales in localizations prop
+  const localisedStarzLandingPage =
+    starzLandingPage?.locale === locale
+      ? starzLandingPage
+      : starzLandingPage?.localizations.find((page) => page?.locale === locale)
+
   return (
     <div className={className}>
       <FocusTrap active={isMobileMenuOpen}>
         <div style={getCategoryColorLocalStyle({ category: 'main' })}>
           <div className="fixed top-0 z-30 flex h-14 w-full items-center justify-between border-b bg-white px-4 text-grey-700">
-            <Brand className="-ml-4 px-4 py-3" />
+            <div className="flex gap-4 divide-x py-3">
+              <Brand className="-ml-4 px-4" />
+              {starzAdminGroup ? (
+                <StarzLogo
+                  variant="dark-blue"
+                  linkProps={getLinkProps({ page: localisedStarzLandingPage })}
+                  className="-m-2 h-5.5 p-2"
+                />
+              ) : null}
+            </div>
             <div className="flex items-center">
               {otherLanguage && (
                 <MLink

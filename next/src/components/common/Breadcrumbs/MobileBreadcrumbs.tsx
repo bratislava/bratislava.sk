@@ -1,9 +1,15 @@
+import { Typography } from '@bratislava/component-library'
 import React from 'react'
-import { ChevronDownIcon, ChevronRightIcon } from 'src/assets/icons'
+import { ArrowLeftIcon, ChevronDownIcon, ChevronRightIcon } from 'src/assets/icons'
 
 import type { BreadcrumbsProps } from '@/src/components/common/Breadcrumbs/Breadcrumbs'
 import Button from '@/src/components/common/Button/Button'
+import HorizontalDivider from '@/src/components/common/Divider/HorizontalDivider'
 import MLink from '@/src/components/common/MLink/MLink'
+import { useAdminGroupsContext } from '@/src/components/providers/AdminGroupsContextProvider'
+import { getLinkProps } from '@/src/utils/getLinkProps'
+import { isDefined } from '@/src/utils/isDefined'
+import { useLocale } from '@/src/utils/useLocale'
 import { useTranslation } from '@/src/utils/useTranslation'
 
 const goBack = () => {
@@ -15,10 +21,24 @@ const goBack = () => {
  */
 const MobileBreadcrumbs = ({ breadcrumbs }: BreadcrumbsProps) => {
   const { t } = useTranslation()
+  const locale = useLocale()
   const withHome = [{ title: t('Breadcrumbs.homepage'), path: '/' }, ...breadcrumbs]
   const withHomeWithoutCurrent = withHome.slice(0, -1)
   const last = withHomeWithoutCurrent.at(-1)
   const showDetails = withHomeWithoutCurrent.length > 0
+
+  const { adminGroups } = useAdminGroupsContext()
+
+  // TODO refactor when more adminGroups are implemented
+  const starzAdminGroup = adminGroups.find((adminGroup) => adminGroup.adminGroupId === 'starz')
+
+  const starzLandingPage = starzAdminGroup?.landingPage
+
+  // Strapi returns only other locales in localizations prop
+  const localisedStarzLandingPage =
+    starzLandingPage?.locale === locale
+      ? starzLandingPage
+      : starzLandingPage?.localizations.find((page) => page?.locale === locale)
 
   return (
     <div className="relative">
@@ -42,31 +62,52 @@ const MobileBreadcrumbs = ({ breadcrumbs }: BreadcrumbsProps) => {
           )}
         </div>
       </div>
-
       {/* TODO: Accordion height animation. */}
       {showDetails && (
         <details className="group">
           <summary className="absolute top-0 right-0 -mr-4 block cursor-pointer p-4">
             <ChevronDownIcon className="size-5 shrink-0 transition-transform group-open:rotate-180" />
           </summary>
-          <ol className="flex flex-col flex-wrap gap-1 py-2">
-            {withHomeWithoutCurrent.map((breadcrumb, index) => (
-              // eslint-disable-next-line react/no-array-index-key
-              <li className="text-size-p-tiny font-medium" key={index}>
-                {breadcrumb.path ? (
-                  <MLink href={breadcrumb.path} variant="underlined" className="flex gap-1">
-                    <ChevronRightIcon className="size-5 shrink-0 rotate-180" />
-                    {breadcrumb.title}
-                  </MLink>
-                ) : (
-                  <div className="flex gap-1">
-                    <ChevronRightIcon className="size-5 shrink-0 rotate-180" />
-                    {breadcrumb.title}
-                  </div>
-                )}
-              </li>
-            ))}
-          </ol>
+          <div>
+            <div className="flex flex-col gap-4 py-4">
+              {/* TODO refactor when more adminGroups are implemented */}
+              <Typography variant="h5">{t('MobileNavBar.secondaryMenu')}</Typography>
+              <ol className="flex flex-col gap-0.5">
+                {localisedStarzLandingPage?.childPages.filter(isDefined).map((childPage, index) => {
+                  const childPageLinkProps = getLinkProps({ page: childPage })
+
+                  return (
+                    // eslint-disable-next-line react/no-array-index-key
+                    <li className="text-size-p-tiny font-medium" key={index}>
+                      <MLink variant="underlined" className="flex gap-2" {...childPageLinkProps}>
+                        <ArrowLeftIcon className="size-5 shrink-0 rotate-180" />
+                        {childPageLinkProps.children}
+                      </MLink>
+                    </li>
+                  )
+                })}
+              </ol>
+            </div>
+            <HorizontalDivider />
+            <ol className="flex flex-col flex-wrap gap-1 py-4">
+              {withHomeWithoutCurrent.map((breadcrumb, index) => (
+                // eslint-disable-next-line react/no-array-index-key
+                <li className="text-size-p-tiny font-medium" key={index}>
+                  {breadcrumb.path ? (
+                    <MLink href={breadcrumb.path} variant="underlined" className="flex gap-1">
+                      <ChevronRightIcon className="size-5 shrink-0 rotate-180" />
+                      {breadcrumb.title}
+                    </MLink>
+                  ) : (
+                    <div className="flex gap-1">
+                      <ChevronRightIcon className="size-5 shrink-0 rotate-180" />
+                      {breadcrumb.title}
+                    </div>
+                  )}
+                </li>
+              ))}
+            </ol>
+          </div>
         </details>
       )}
     </div>
