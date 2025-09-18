@@ -1,7 +1,7 @@
 import { SearchIcon } from 'src/assets/icons'
 
-import Brand from '@/src/components/common/Brand/Brand'
 import Button from '@/src/components/common/Button/Button'
+import Brand from '@/src/components/common/Logos/Brand'
 import MLink from '@/src/components/common/MLink/MLink'
 import SkipToContentButton from '@/src/components/common/SkipToContentButton/SkipToContentButton'
 import SectionContainer from '@/src/components/layouts/SectionContainer'

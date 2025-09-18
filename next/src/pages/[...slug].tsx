@@ -6,6 +6,7 @@ import React from 'react'
 import SeoHead from '@/src/components/common/SeoHead/SeoHead'
 import PageLayout from '@/src/components/layouts/PageLayout'
 import GeneralPageContent from '@/src/components/page-contents/GeneralPageContent'
+import { AdminGroupsContextProvider } from '@/src/components/providers/AdminGroupsContextProvider'
 import { GeneralContextProvider } from '@/src/components/providers/GeneralContextProvider'
 import {
   LanguageCode,
@@ -118,7 +119,7 @@ export const getStaticProps: GetStaticProps<PageProps, StaticParams> = async ({
 }
 
 const Page = ({ general, page, dehydratedState }: PageProps) => {
-  const { slug, title, metaDiscription, subtext, keywords, locale, pageColor } = page
+  const { slug, title, metaDiscription, subtext, keywords, locale, pageColor, adminGroups } = page
 
   const localization = page.localizations[0]
   const localizations = Object.fromEntries(
@@ -133,13 +134,15 @@ const Page = ({ general, page, dehydratedState }: PageProps) => {
   return (
     <HydrationBoundary state={dehydratedState}>
       <GeneralContextProvider general={general}>
-        <LocalizationsProvider localizations={localizations}>
-          <SeoHead title={title} description={metaDiscription ?? subtext} keywords={keywords} />
-          <GlobalCategoryColorProvider color={pageColor} />
-          <PageLayout>
-            <GeneralPageContent page={page} />
-          </PageLayout>
-        </LocalizationsProvider>
+        <AdminGroupsContextProvider adminGroups={adminGroups}>
+          <LocalizationsProvider localizations={localizations}>
+            <SeoHead title={title} description={metaDiscription ?? subtext} keywords={keywords} />
+            <GlobalCategoryColorProvider color={pageColor} />
+            <PageLayout>
+              <GeneralPageContent page={page} />
+            </PageLayout>
+          </LocalizationsProvider>
+        </AdminGroupsContextProvider>
       </GeneralContextProvider>
     </HydrationBoundary>
   )

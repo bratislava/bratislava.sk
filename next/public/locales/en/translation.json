@@ -83,6 +83,7 @@
   "MinimumCalculator.title": "Living wage calculator",
   "MobileNavBar.closeMenu": "Close the menu",
   "MobileNavBar.openMenu": "Open menu",
+  "MobileNavBar.secondaryMenu": "Menu",
   "NavMenu.aria.backTo": "Back to {{backTo}}",
   "NavMenu.aria.navMenuLabel": "Main menu",
   "NavMenu.more": "More",
