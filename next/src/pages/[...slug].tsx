@@ -134,7 +134,7 @@ const Page = ({ general, page, dehydratedState }: PageProps) => {
   return (
     <HydrationBoundary state={dehydratedState}>
       <GeneralContextProvider general={general}>
-        <AdminGroupsContextProvider adminGroups={adminGroups}>
+        <AdminGroupsContextProvider adminGroups={adminGroups.filter(isDefined)}>
           <LocalizationsProvider localizations={localizations}>
             <SeoHead title={title} description={metaDiscription ?? subtext} keywords={keywords} />
             <GlobalCategoryColorProvider color={pageColor} />

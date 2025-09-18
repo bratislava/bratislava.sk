@@ -19,10 +19,12 @@ const StarzLogo = ({ linkProps, variant = 'dark-blue', className }: StarzLogoPro
       className={cn(
         'relative box-content transition',
         {
-          'text-starz-primary-700 hover:text-starz-primary-600 active:text-starz-primary-800':
-            variant === 'dark-blue',
-          'text-content-active-primary-inverted-default hover:text-content-active-primary-inverted-hover active:text-content-active-primary-inverted-pressed':
-            variant === 'white',
+          'text-starz-primary-700': variant === 'dark-blue',
+          'hover:text-starz-primary-600 active:text-starz-primary-800':
+            variant === 'dark-blue' && href,
+          'text-content-active-primary-inverted-default': variant === 'white',
+          'hover:text-content-active-primary-inverted-hover active:text-content-active-primary-inverted-pressed':
+            variant === 'white' && href,
         },
         className,
       )}

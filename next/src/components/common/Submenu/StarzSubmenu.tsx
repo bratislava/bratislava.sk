@@ -7,7 +7,7 @@ import { AdminGroupEntityFragment } from '@/src/services/graphql'
 import cn from '@/src/utils/cn'
 import { getLinkProps } from '@/src/utils/getLinkProps'
 import { isDefined } from '@/src/utils/isDefined'
-import { useLocale } from '@/src/utils/useLocale'
+import { useGetLocalisedPage } from '@/src/utils/useGetLocalisedPage'
 
 type Props = {
   landingPage: NonNullable<AdminGroupEntityFragment['landingPage']>
@@ -22,13 +22,7 @@ type Props = {
  * TODO make it more generic in future when more organizations need it
  */
 const StarzSubmenu = ({ landingPage, className }: Props) => {
-  const locale = useLocale()
-
-  // Strapi returns only other locales in localizations prop
-  const localisedLandingPage =
-    landingPage.locale === locale
-      ? landingPage
-      : landingPage.localizations.find((page) => page?.locale === locale)
+  const localisedLandingPage = useGetLocalisedPage(landingPage)
 
   const childPages = localisedLandingPage?.childPages.filter(isDefined) ?? []
 

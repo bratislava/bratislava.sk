@@ -1,6 +1,6 @@
 import { Typography } from '@bratislava/component-library'
 import React from 'react'
-import { ArrowLeftIcon, ChevronDownIcon, ChevronRightIcon } from 'src/assets/icons'
+import { ArrowRightIcon, ChevronDownIcon, ChevronRightIcon } from 'src/assets/icons'
 
 import type { BreadcrumbsProps } from '@/src/components/common/Breadcrumbs/Breadcrumbs'
 import Button from '@/src/components/common/Button/Button'
@@ -9,7 +9,7 @@ import MLink from '@/src/components/common/MLink/MLink'
 import { useAdminGroupsContext } from '@/src/components/providers/AdminGroupsContextProvider'
 import { getLinkProps } from '@/src/utils/getLinkProps'
 import { isDefined } from '@/src/utils/isDefined'
-import { useLocale } from '@/src/utils/useLocale'
+import { useGetLocalisedPage } from '@/src/utils/useGetLocalisedPage'
 import { useTranslation } from '@/src/utils/useTranslation'
 
 const goBack = () => {
@@ -21,7 +21,6 @@ const goBack = () => {
  */
 const MobileBreadcrumbs = ({ breadcrumbs }: BreadcrumbsProps) => {
   const { t } = useTranslation()
-  const locale = useLocale()
   const withHome = [{ title: t('Breadcrumbs.homepage'), path: '/' }, ...breadcrumbs]
   const withHomeWithoutCurrent = withHome.slice(0, -1)
   const last = withHomeWithoutCurrent.at(-1)
@@ -32,13 +31,7 @@ const MobileBreadcrumbs = ({ breadcrumbs }: BreadcrumbsProps) => {
   // TODO refactor when more adminGroups are implemented
   const starzAdminGroup = adminGroups.find((adminGroup) => adminGroup.adminGroupId === 'starz')
 
-  const starzLandingPage = starzAdminGroup?.landingPage
-
-  // Strapi returns only other locales in localizations prop
-  const localisedStarzLandingPage =
-    starzLandingPage?.locale === locale
-      ? starzLandingPage
-      : starzLandingPage?.localizations.find((page) => page?.locale === locale)
+  const localisedStarzLandingPage = useGetLocalisedPage(starzAdminGroup?.landingPage)
 
   return (
     <div className="relative">
@@ -80,7 +73,7 @@ const MobileBreadcrumbs = ({ breadcrumbs }: BreadcrumbsProps) => {
                     // eslint-disable-next-line react/no-array-index-key
                     <li className="text-size-p-tiny font-medium" key={index}>
                       <MLink variant="underlined" className="flex gap-2" {...childPageLinkProps}>
-                        <ArrowLeftIcon className="size-5 shrink-0 rotate-180" />
+                        <ArrowRightIcon className="size-5 shrink-0" />
                         {childPageLinkProps.children}
                       </MLink>
                     </li>

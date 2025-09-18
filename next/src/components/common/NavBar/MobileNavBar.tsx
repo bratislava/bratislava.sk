@@ -13,7 +13,7 @@ import { useLocalizations } from '@/src/components/providers/LocalizationsProvid
 import cn from '@/src/utils/cn'
 import { getCategoryColorLocalStyle } from '@/src/utils/colors'
 import { getLinkProps } from '@/src/utils/getLinkProps'
-import { useLocale } from '@/src/utils/useLocale'
+import { useGetLocalisedPage } from '@/src/utils/useGetLocalisedPage'
 import { useTranslation } from '@/src/utils/useTranslation'
 
 import MobileNavMenu from './NavMenu/MobileNavMenu'
@@ -29,7 +29,6 @@ type MobileNavBarProps = {
 
 const MobileNavBar = ({ className }: MobileNavBarProps) => {
   const { t } = useTranslation()
-  const locale = useLocale()
   const pathname = usePathname()
   const { isMobileMenuOpen, setMobileMenuOpen } = useNavMenuContext()
   const { adminGroups } = useAdminGroupsContext()
@@ -42,13 +41,7 @@ const MobileNavBar = ({ className }: MobileNavBarProps) => {
   // TODO refactor when more adminGroups will be implemented
   const starzAdminGroup = adminGroups.find((adminGroup) => adminGroup.adminGroupId === 'starz')
 
-  const starzLandingPage = starzAdminGroup?.landingPage
-
-  // Strapi returns only other locales in localizations prop
-  const localisedStarzLandingPage =
-    starzLandingPage?.locale === locale
-      ? starzLandingPage
-      : starzLandingPage?.localizations.find((page) => page?.locale === locale)
+  const localisedStarzLandingPage = useGetLocalisedPage(starzAdminGroup?.landingPage)
 
   return (
     <div className={className}>
