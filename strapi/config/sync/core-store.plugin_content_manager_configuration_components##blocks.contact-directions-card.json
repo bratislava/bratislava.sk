@@ -78,7 +78,7 @@
       "barrierFreeInfo": {
         "edit": {
           "label": "Bezbariérovosť",
-          "description": "",
+          "description": "Uveďte, či je prístup do priestoru bezbariérový, čiastočne bariérový alebo bariérový. Uveďte, aké bariéry sa v ňom nachádzajú.",
           "placeholder": "",
           "visible": true,
           "editable": true
@@ -92,7 +92,7 @@
       "iframeUrl": {
         "edit": {
           "label": "Google Maps iframe url",
-          "description": "",
+          "description": "Vložte iba dlhú url z <iframe> elementu (Zdieľať > Vložiť mapu), nie celý <iframe> element. Vkladajte mapu so základným podkladom, nie satelitné zobrazenie.",
           "placeholder": "",
           "visible": true,
           "editable": true
@@ -138,12 +138,10 @@
           {
             "name": "barrierFreeInfo",
             "size": 6
-          }
-        ],
-        [
+          },
           {
             "name": "iframeUrl",
-            "size": 12
+            "size": 6
           }
         ]
       ],

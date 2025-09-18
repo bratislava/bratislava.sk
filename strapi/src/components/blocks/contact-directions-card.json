@@ -22,7 +22,7 @@
       "type": "text"
     },
     "iframeUrl": {
-      "type": "string"
+      "type": "text"
     }
   },
   "config": {}
