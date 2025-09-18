@@ -165,6 +165,8 @@
   /* New tokens - border */
 
   --color-border-error: var(--color-negative-700);
+  --color-border-error-hover: var(--color-negative-600);
+
   --color-border-success: var(--color-success-700);
   --color-border-warning: var(--color-warning-700);
 
