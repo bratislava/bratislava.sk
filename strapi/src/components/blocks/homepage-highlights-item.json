@@ -6,6 +6,36 @@
   },
   "options": {},
   "attributes": {
+    "label": {
+      "type": "string"
+    },
+    "subtext": {
+      "type": "string"
+    },
+    "page": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::page.page"
+    },
+    "article": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::article.article"
+    },
+    "media": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "url": {
+      "type": "string",
+      "required": false
+    },
+    "analyticsId": {
+      "type": "string"
+    },
     "link": {
       "type": "component",
       "repeatable": false,

@@ -197,8 +197,15 @@ export interface BlocksHomepageHighlightsItem extends Struct.ComponentSchema {
     displayName: 'homepage highlights item'
   }
   attributes: {
+    analyticsId: Schema.Attribute.String
+    article: Schema.Attribute.Relation<'oneToOne', 'api::article.article'>
     image: Schema.Attribute.Media<'images'> & Schema.Attribute.Required
+    label: Schema.Attribute.String
     link: Schema.Attribute.Component<'blocks.common-link', false> & Schema.Attribute.Required
+    media: Schema.Attribute.Media<'images'>
+    page: Schema.Attribute.Relation<'oneToOne', 'api::page.page'>
+    subtext: Schema.Attribute.String
+    url: Schema.Attribute.String
   }
 }
 

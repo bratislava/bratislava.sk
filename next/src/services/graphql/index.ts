@@ -832,22 +832,42 @@ export type ComponentBlocksFooterColumnInput = {
 
 export type ComponentBlocksHomepageHighlightsItem = {
   __typename?: 'ComponentBlocksHomepageHighlightsItem'
+  analyticsId?: Maybe<Scalars['String']['output']>
+  article?: Maybe<Article>
   id: Scalars['ID']['output']
   image: UploadFile
+  label?: Maybe<Scalars['String']['output']>
   link: ComponentBlocksCommonLink
+  media?: Maybe<UploadFile>
+  page?: Maybe<Page>
+  subtext?: Maybe<Scalars['String']['output']>
+  url?: Maybe<Scalars['String']['output']>
 }
 
 export type ComponentBlocksHomepageHighlightsItemFiltersInput = {
+  analyticsId?: InputMaybe<StringFilterInput>
   and?: InputMaybe<Array<InputMaybe<ComponentBlocksHomepageHighlightsItemFiltersInput>>>
+  article?: InputMaybe<ArticleFiltersInput>
+  label?: InputMaybe<StringFilterInput>
   link?: InputMaybe<ComponentBlocksCommonLinkFiltersInput>
   not?: InputMaybe<ComponentBlocksHomepageHighlightsItemFiltersInput>
   or?: InputMaybe<Array<InputMaybe<ComponentBlocksHomepageHighlightsItemFiltersInput>>>
+  page?: InputMaybe<PageFiltersInput>
+  subtext?: InputMaybe<StringFilterInput>
+  url?: InputMaybe<StringFilterInput>
 }
 
 export type ComponentBlocksHomepageHighlightsItemInput = {
+  analyticsId?: InputMaybe<Scalars['String']['input']>
+  article?: InputMaybe<Scalars['ID']['input']>
   id?: InputMaybe<Scalars['ID']['input']>
   image?: InputMaybe<Scalars['ID']['input']>
+  label?: InputMaybe<Scalars['String']['input']>
   link?: InputMaybe<ComponentBlocksCommonLinkInput>
+  media?: InputMaybe<Scalars['ID']['input']>
+  page?: InputMaybe<Scalars['ID']['input']>
+  subtext?: InputMaybe<Scalars['String']['input']>
+  url?: InputMaybe<Scalars['String']['input']>
 }
 
 export type ComponentBlocksInBa = {
@@ -7982,6 +8002,58 @@ export type HomepageEntityFragment = {
     cards?: Array<{
       __typename?: 'ComponentBlocksHomepageHighlightsItem'
       id: string
+      label?: string | null
+      subtext?: string | null
+      url?: string | null
+      analyticsId?: string | null
+      page?: {
+        __typename?: 'Page'
+        documentId: string
+        slug?: string | null
+        title: string
+        locale?: string | null
+        pageBackgroundImage?: { __typename?: 'UploadFile'; documentId: string; url: string } | null
+      } | null
+      article?: {
+        __typename: 'Article'
+        perex?: string | null
+        addedAt: any
+        documentId: string
+        slug: string
+        title: string
+        locale?: string | null
+        coverMedia?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
+        tag?: {
+          __typename?: 'Tag'
+          documentId: string
+          title?: string | null
+          pageCategory?: {
+            __typename?: 'PageCategory'
+            documentId: string
+            title?: string | null
+            color?: Enum_Pagecategory_Color | null
+          } | null
+        } | null
+      } | null
+      media?: {
+        __typename?: 'UploadFile'
+        documentId: string
+        url: string
+        width?: number | null
+        height?: number | null
+        caption?: string | null
+        alternativeText?: string | null
+        name: string
+      } | null
       link: {
         __typename?: 'ComponentBlocksCommonLink'
         label?: string | null
@@ -8275,6 +8347,62 @@ export type HomepageQuery = {
       cards?: Array<{
         __typename?: 'ComponentBlocksHomepageHighlightsItem'
         id: string
+        label?: string | null
+        subtext?: string | null
+        url?: string | null
+        analyticsId?: string | null
+        page?: {
+          __typename?: 'Page'
+          documentId: string
+          slug?: string | null
+          title: string
+          locale?: string | null
+          pageBackgroundImage?: {
+            __typename?: 'UploadFile'
+            documentId: string
+            url: string
+          } | null
+        } | null
+        article?: {
+          __typename: 'Article'
+          perex?: string | null
+          addedAt: any
+          documentId: string
+          slug: string
+          title: string
+          locale?: string | null
+          coverMedia?: {
+            __typename?: 'UploadFile'
+            documentId: string
+            url: string
+            width?: number | null
+            height?: number | null
+            caption?: string | null
+            alternativeText?: string | null
+            name: string
+          } | null
+          tag?: {
+            __typename?: 'Tag'
+            documentId: string
+            title?: string | null
+            pageCategory?: {
+              __typename?: 'PageCategory'
+              documentId: string
+              title?: string | null
+              color?: Enum_Pagecategory_Color | null
+            } | null
+          } | null
+        } | null
+        media?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
         link: {
           __typename?: 'ComponentBlocksCommonLink'
           label?: string | null
@@ -8550,6 +8678,58 @@ export type HomepageQuery = {
 export type HomepageHighlightsItemFragment = {
   __typename?: 'ComponentBlocksHomepageHighlightsItem'
   id: string
+  label?: string | null
+  subtext?: string | null
+  url?: string | null
+  analyticsId?: string | null
+  page?: {
+    __typename?: 'Page'
+    documentId: string
+    slug?: string | null
+    title: string
+    locale?: string | null
+    pageBackgroundImage?: { __typename?: 'UploadFile'; documentId: string; url: string } | null
+  } | null
+  article?: {
+    __typename: 'Article'
+    perex?: string | null
+    addedAt: any
+    documentId: string
+    slug: string
+    title: string
+    locale?: string | null
+    coverMedia?: {
+      __typename?: 'UploadFile'
+      documentId: string
+      url: string
+      width?: number | null
+      height?: number | null
+      caption?: string | null
+      alternativeText?: string | null
+      name: string
+    } | null
+    tag?: {
+      __typename?: 'Tag'
+      documentId: string
+      title?: string | null
+      pageCategory?: {
+        __typename?: 'PageCategory'
+        documentId: string
+        title?: string | null
+        color?: Enum_Pagecategory_Color | null
+      } | null
+    } | null
+  } | null
+  media?: {
+    __typename?: 'UploadFile'
+    documentId: string
+    url: string
+    width?: number | null
+    height?: number | null
+    caption?: string | null
+    alternativeText?: string | null
+    name: string
+  } | null
   link: {
     __typename?: 'ComponentBlocksCommonLink'
     label?: string | null
@@ -15975,9 +16155,32 @@ export const UploadImageSrcEntityFragmentDoc = gql`
     url
   }
 `
+export const PageCardEntityFragmentDoc = gql`
+  fragment PageCardEntity on Page {
+    ...PageSlugEntity
+    pageBackgroundImage {
+      ...UploadImageSrcEntity
+    }
+  }
+  ${PageSlugEntityFragmentDoc}
+  ${UploadImageSrcEntityFragmentDoc}
+`
 export const HomepageHighlightsItemFragmentDoc = gql`
   fragment HomepageHighlightsItem on ComponentBlocksHomepageHighlightsItem {
     id
+    label
+    subtext
+    page {
+      ...PageCardEntity
+    }
+    article {
+      ...ArticleCardEntity
+    }
+    url
+    media {
+      ...UploadImageEntity
+    }
+    analyticsId
     link {
       ...CommonLink
     }
@@ -15985,6 +16188,9 @@ export const HomepageHighlightsItemFragmentDoc = gql`
       ...UploadImageSrcEntity
     }
   }
+  ${PageCardEntityFragmentDoc}
+  ${ArticleCardEntityFragmentDoc}
+  ${UploadImageEntityFragmentDoc}
   ${CommonLinkFragmentDoc}
   ${UploadImageSrcEntityFragmentDoc}
 `
@@ -16190,16 +16396,6 @@ export const InbaReleaseHomepageInbaCardEntityFragmentDoc = gql`
     }
   }
   ${UploadImageEntityFragmentDoc}
-`
-export const PageCardEntityFragmentDoc = gql`
-  fragment PageCardEntity on Page {
-    ...PageSlugEntity
-    pageBackgroundImage {
-      ...UploadImageSrcEntity
-    }
-  }
-  ${PageSlugEntityFragmentDoc}
-  ${UploadImageSrcEntityFragmentDoc}
 `
 export const AdminGroupDocumentIdEntityFragmentDoc = gql`
   fragment AdminGroupDocumentIdEntity on AdminGroup {
