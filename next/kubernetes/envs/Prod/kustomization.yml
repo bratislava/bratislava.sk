@@ -1,6 +1,5 @@
 resources:
   - ../../base
-  - scaler.yml
   - ./secrets/msal.secret.yml
   - pdb.yml
   - redirects/odhrnieme.ingress.yml
