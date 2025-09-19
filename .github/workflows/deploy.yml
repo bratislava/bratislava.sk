@@ -20,8 +20,8 @@ jobs:
     uses: bratislava/github-actions/.github/workflows/deploy-with-bratiska-cli-inhouse.yml@beta
     with:
       directory: next/
-      cluster: tkg-innov-dev
-      url: https://tkg.dev.bratislava.sk
+      cluster: development
+      url: https://dev.tkgis.bratislava.sk:6443
       debug: --debug
       version: beta
     secrets:
@@ -37,8 +37,8 @@ jobs:
     uses: bratislava/github-actions/.github/workflows/deploy-with-bratiska-cli-inhouse.yml@beta
     with:
       directory: strapi/
-      cluster: tkg-innov-dev
-      url: https://tkg.dev.bratislava.sk
+      cluster: development
+      url: https://dev.tkgis.bratislava.sk:6443
       debug: --debug
       version: beta
     secrets:
@@ -54,8 +54,8 @@ jobs:
     uses: bratislava/github-actions/.github/workflows/deploy-with-bratiska-cli-inhouse.yml@beta
     with:
       directory: next/
-      cluster: tkg-innov-dev
-      url: https://tkg.dev.bratislava.sk
+      cluster: development
+      url: https://dev.tkgis.bratislava.sk:6443
       debug: --debug
       version: beta
     secrets:
