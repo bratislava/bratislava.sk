@@ -66,7 +66,7 @@ const NewsletterSection = ({ section }: Props) => {
     setStatusMessage(t('NewsletterSection.sending'))
 
     if (newsletterType === Enum_Componentsectionsnewsletter_Newslettertype.Starz) {
-      const res = await fetch('/api/newsletter-starz/subscribe', {
+      const response = await fetch('/api/newsletter-starz/subscribe', {
         body: JSON.stringify({
           email: emailToSubscribe,
         }),
@@ -76,19 +76,17 @@ const NewsletterSection = ({ section }: Props) => {
         method: 'POST',
       })
 
-      const { error } = await res.json()
+      const { error } = await response.json()
 
       if (error) {
         // eslint-disable-next-line no-console
         console.error(error)
         clearMessages()
         setErrorMessage(t('NewsletterSection.error.somethingWentWrong'))
-
-        return
+      } else {
+        clearMessages()
+        setSuccessMessage(t('NewsletterSection.success'))
       }
-
-      clearMessages()
-      setSuccessMessage(t('NewsletterSection.success'))
     }
   }
 
