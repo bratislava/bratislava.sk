@@ -8,7 +8,7 @@ resources:
   - redirects/behdevin.ingress.yml
   - redirects/social.ingress.yml
   - redirects/primacialnypalac.ingress.yml
-
+  - secrets/starz-ecomail.secret.yml
 configMapGenerator:
   - name: ${BUILD_REPOSITORY_NAME}-env
     namespace: ${NAMESPACE}

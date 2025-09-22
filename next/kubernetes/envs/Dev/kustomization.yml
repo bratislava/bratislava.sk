@@ -2,7 +2,7 @@ resources:
   - ../../base
   - scaler.yml
   - ./secrets/msal.secret.yml
-
+  - secrets/starz-ecomail.secret.yml
 configMapGenerator:
   - name: ${BUILD_REPOSITORY_NAME}-env
     namespace: ${NAMESPACE}
