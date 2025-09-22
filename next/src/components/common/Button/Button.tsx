@@ -108,7 +108,7 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
         ? (className ?? '')
         : cn(
             'inline-flex h-auto items-center justify-center gap-2 text-size-button-large leading-6 font-semibold transition',
-            'ring-offset-2 outline-hidden focus-visible:ring-3',
+            'focus-ring-base',
 
             // we change rounded corners for link focus ring
             {
@@ -162,7 +162,7 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
               'p-2': size === 'large' && isIconButton && isPlainVariant,
 
               // colors - bg, border, content - variant solid (figma: boxed primary)
-              'border-action-border-default bg-action-background-default text-white':
+              'border-action-border-default bg-background-active-primary-default text-white':
                 variant === 'solid',
               'active:border-action-border-pressed active:bg-action-background-pressed':
                 variant === 'solid',
@@ -175,6 +175,8 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
               'active:border-background-active-primary-inverted-pressed active:bg-background-active-primary-inverted-pressed':
                 variant === 'solid-inverted',
               'hover:border-background-active-primary-inverted-hover hover:bg-background-active-primary-inverted-hover':
+                variant === 'solid-inverted',
+              'ring-white ring-offset-3 ring-offset-border-active-primary-default':
                 variant === 'solid-inverted',
 
               // colors - bg, border, content - variant outline (figma: boxed secondary)
