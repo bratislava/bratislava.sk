@@ -31,6 +31,8 @@ spec:
             - secretRef:
                 name: ${BUILD_REPOSITORY_NAME}-msal-secret
             - secretRef:
+                name: ${BUILD_REPOSITORY_NAME}-starz-ecomail-secret
+            - secretRef:
                 name: bratislava-strapi-revalidate-secret
             - configMapRef:
                 name: ${BUILD_REPOSITORY_NAME}-env
