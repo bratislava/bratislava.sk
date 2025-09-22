@@ -32,7 +32,7 @@ const FileRowCard = ({
   const { t } = useTranslation()
 
   return (
-    <div className={cn('relative', className)}>
+    <div className={cn('focus-ring-wrapper relative', className)}>
       <div className="flex flex-row items-start justify-between gap-x-4 py-4 pr-2.5 pl-4 md:px-6 lg:items-center">
         <div className="flex flex-row justify-between gap-x-2 md:items-center md:gap-x-4">
           <div className="md:rounded-lg md:bg-background-tertiary">

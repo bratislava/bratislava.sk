@@ -191,7 +191,10 @@ const ContactCtaCard = ({ className, contact }: ContactCtaCardProps) => {
       <div className="flex shrink-0 items-center justify-center rounded-full text-gray-700">
         <Icon className="size-6 lg:size-8" />
       </div>
-      <div className="flex w-full flex-col gap-1 overflow-hidden wrap-break-word">
+      <div
+        // margin and padding added to show full focus ring
+        className="-m-1 flex w-full flex-col gap-1 overflow-hidden p-1 wrap-break-word"
+      >
         <Typography variant="h6" as="p" className="font-semibold">
           {label}
         </Typography>
