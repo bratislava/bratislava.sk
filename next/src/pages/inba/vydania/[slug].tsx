@@ -6,6 +6,7 @@ import * as React from 'react'
 import SeoHead from '@/src/components/common/SeoHead/SeoHead'
 import PageLayout from '@/src/components/layouts/PageLayout'
 import InbaReleasePageContent from '@/src/components/page-contents/InbaReleasePageContent'
+import { AdminGroupsContextProvider } from '@/src/components/providers/AdminGroupsContextProvider'
 import { GeneralContextProvider } from '@/src/components/providers/GeneralContextProvider'
 import { GeneralQuery, InbaReleaseEntityFragment } from '@/src/services/graphql'
 import { client } from '@/src/services/graphql/gql'
@@ -101,11 +102,13 @@ const Page = ({ general, inbaRelease, dehydratedState }: PageProps) => {
   return (
     <HydrationBoundary state={dehydratedState}>
       <GeneralContextProvider general={general}>
-        <SeoHead title={title} description={perex} />
+        <AdminGroupsContextProvider adminGroups={[]}>
+          <SeoHead title={title} description={perex} />
 
-        <PageLayout>
-          <InbaReleasePageContent inbaRelease={inbaRelease} />
-        </PageLayout>
+          <PageLayout>
+            <InbaReleasePageContent inbaRelease={inbaRelease} />
+          </PageLayout>
+        </AdminGroupsContextProvider>
       </GeneralContextProvider>
     </HydrationBoundary>
   )

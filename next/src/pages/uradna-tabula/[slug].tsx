@@ -7,6 +7,7 @@ import * as React from 'react'
 import SeoHead from '@/src/components/common/SeoHead/SeoHead'
 import PageLayout from '@/src/components/layouts/PageLayout'
 import OfficialBoardDocumentPageContent from '@/src/components/page-contents/OfficialBoardDocumentPageContent'
+import { AdminGroupsContextProvider } from '@/src/components/providers/AdminGroupsContextProvider'
 import { GeneralContextProvider } from '@/src/components/providers/GeneralContextProvider'
 import { mockedParsedDocumentDetail } from '@/src/services/ginis/mocks'
 import { getOfficialBoardParsedDocument } from '@/src/services/ginis/server/getOfficialBoardParsedDocument'
@@ -88,11 +89,13 @@ const OfficialBoardPage = ({ general, document }: OfficialBoardDocumentPageProps
 
   return (
     <GeneralContextProvider general={general}>
-      <SeoHead title={document.title} description={document.description} />
+      <AdminGroupsContextProvider adminGroups={[]}>
+        <SeoHead title={document.title} description={document.description} />
 
-      <PageLayout>
-        <OfficialBoardDocumentPageContent document={document} />
-      </PageLayout>
+        <PageLayout>
+          <OfficialBoardDocumentPageContent document={document} />
+        </PageLayout>
+      </AdminGroupsContextProvider>
     </GeneralContextProvider>
   )
 }

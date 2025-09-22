@@ -5,6 +5,7 @@ import * as React from 'react'
 import SeoHead from '@/src/components/common/SeoHead/SeoHead'
 import PageLayout from '@/src/components/layouts/PageLayout'
 import DocumentPageContent from '@/src/components/page-contents/DocumentPageContent'
+import { AdminGroupsContextProvider } from '@/src/components/providers/AdminGroupsContextProvider'
 import { GeneralContextProvider } from '@/src/components/providers/GeneralContextProvider'
 import { DocumentEntityFragment, GeneralQuery } from '@/src/services/graphql'
 import { client } from '@/src/services/graphql/gql'
@@ -79,11 +80,13 @@ const Page = ({ general, document }: PageProps) => {
 
   return (
     <GeneralContextProvider general={general}>
-      <SeoHead title={title} />
+      <AdminGroupsContextProvider adminGroups={[]}>
+        <SeoHead title={title} />
 
-      <PageLayout>
-        <DocumentPageContent document={document} />
-      </PageLayout>
+        <PageLayout>
+          <DocumentPageContent document={document} />
+        </PageLayout>
+      </AdminGroupsContextProvider>
     </GeneralContextProvider>
   )
 }
