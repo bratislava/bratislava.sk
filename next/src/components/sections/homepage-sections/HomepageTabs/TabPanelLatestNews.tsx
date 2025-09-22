@@ -52,7 +52,7 @@ const TabPanelLatestNews = () => {
                 <div
                   // eslint-disable-next-line react/no-array-index-key
                   key={index}
-                  className="relative"
+                  className="focus-ring-wrapper relative"
                   style={getCategoryColorLocalStyle({ color: tagColor })}
                 >
                   {tag?.title && (

@@ -11,7 +11,7 @@ const InbaHomepageSection = () => {
   return (
     <SectionContainer className="mb-8">
       <InBaCard
-        className="mx-auto mt-40 min-h-[200px] max-w-3xl md:mt-28"
+        className="focus-ring-wrapper mx-auto mt-40 min-h-[200px] max-w-3xl md:mt-28"
         title={homepage?.inba?.title}
         content={homepage?.inba?.content}
         linkProps={getLinkProps(homepage?.inba?.showMoreLink)}
