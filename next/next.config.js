@@ -82,6 +82,11 @@ const nextConfig = {
         permanent: true,
       },
       {
+        source: '/vzdelavanie-a-volny-cas/sport/:path*',
+        destination: '/vzdelavanie-a-volny-cas/starz/:path*',
+        permanent: true,
+      },
+      {
         source: '/en/education-and-leisure/camping/:path*',
         destination: '/en/education-and-leisure/sport/camping/:path*',
         locale: false,
