@@ -30,7 +30,7 @@ const InBaCard = ({
     <CardBase
       variant="border"
       className={cn(
-        'flex-col items-center md:flex-row',
+        'flex-col items-center overflow-visible md:flex-row',
         {
           'pt-24 md:pt-0': !!frontImageUrl,
         },
