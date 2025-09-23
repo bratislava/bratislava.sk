@@ -176,8 +176,7 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
                 variant === 'solid-inverted',
               'hover:border-background-active-primary-inverted-hover hover:bg-background-active-primary-inverted-hover':
                 variant === 'solid-inverted',
-              'ring-white ring-offset-3 ring-offset-border-active-primary-default':
-                variant === 'solid-inverted',
+              'ring-white ring-offset-border-active-primary-default': variant === 'solid-inverted',
 
               // colors - bg, border, content - variant outline (figma: boxed secondary)
               'border-action-border-default bg-transparent text-action-content-default':

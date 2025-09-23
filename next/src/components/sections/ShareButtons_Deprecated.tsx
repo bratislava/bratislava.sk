@@ -43,6 +43,7 @@ const SocialMediaButton = ({
 
   return (
     <Button
+      variant="unstyled"
       icon={children}
       aria-label={platform}
       onPress={openSharePage}
