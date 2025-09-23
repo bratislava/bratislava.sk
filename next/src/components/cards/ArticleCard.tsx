@@ -37,8 +37,15 @@ const ArticleCard = ({
   const titleId = useId()
 
   return (
-    // TODO transparent background could be handled cleaner
-    <CardBase variant="no-border" className={cn('gap-4 bg-transparent', className)} {...rest}>
+    <CardBase
+      variant="no-border"
+      className={cn(
+        // TODO transparent background could be handled cleaner
+        'gap-4 overflow-visible rounded-lg bg-transparent',
+        className,
+      )}
+      {...rest}
+    >
       <CardImage imgSrc={imgSrc} className="aspect-16/10 rounded-lg" />
 
       <CardContent variant="no-padding" className="grow justify-between">
