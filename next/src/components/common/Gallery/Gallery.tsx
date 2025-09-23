@@ -58,7 +58,7 @@ const Gallery = ({ images = [] }: GalleryProps) => {
 
   return (
     <>
-      <div className="relative flex w-full flex-col">
+      <div className="wrapper-focus-ring relative flex w-full flex-col rounded-lg">
         <div
           role="button"
           tabIndex={0}
