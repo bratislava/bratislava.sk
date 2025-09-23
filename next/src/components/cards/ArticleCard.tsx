@@ -41,7 +41,7 @@ const ArticleCard = ({
       variant="no-border"
       className={cn(
         // TODO transparent background could be handled cleaner
-        'gap-4 overflow-visible rounded-lg bg-transparent',
+        'gap-4 rounded-lg bg-transparent',
         className,
       )}
       {...rest}

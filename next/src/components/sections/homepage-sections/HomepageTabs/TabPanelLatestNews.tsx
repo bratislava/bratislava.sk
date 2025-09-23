@@ -52,7 +52,7 @@ const TabPanelLatestNews = () => {
                 <div
                   // eslint-disable-next-line react/no-array-index-key
                   key={index}
-                  // maring and padding serve to display focus ring better
+                  // margin and padding serve to display focus ring better
                   className="wrapper-focus-ring relative -m-1 rounded-sm p-1"
                   style={getCategoryColorLocalStyle({ color: tagColor })}
                 >
