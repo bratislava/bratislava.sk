@@ -740,12 +740,12 @@
     @apply bg-grey-100;
   }
 
-  .focus-ring-base {
+  .base-focus-ring {
     @apply ring-border-active-primary-default ring-offset-3 outline-none;
     @apply focus-visible:ring-3 focus-visible:transition-shadow;
   }
 
-  .focus-ring-wrapper {
+  .wrapper-focus-ring {
     @apply ring-border-active-primary-default ring-offset-3 outline-none;
     @apply focus-within:[&:has(:focus-visible)]:ring-3 focus-within:[&:has(:focus-visible)]:transition-shadow;
     @apply [&_*]:focus-visible:ring-0 [&_*]:focus-visible:ring-offset-0 [&_*]:focus-visible:outline-none;

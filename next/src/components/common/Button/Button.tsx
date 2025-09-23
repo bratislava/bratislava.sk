@@ -108,7 +108,7 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
         ? (className ?? '')
         : cn(
             'inline-flex h-auto items-center justify-center gap-2 text-size-button-large leading-6 font-semibold transition',
-            'focus-ring-base',
+            'base-focus-ring',
 
             // we change rounded corners for link focus ring
             {

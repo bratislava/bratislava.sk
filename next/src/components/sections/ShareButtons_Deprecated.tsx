@@ -47,7 +47,7 @@ const SocialMediaButton = ({
       icon={children}
       aria-label={platform}
       onPress={openSharePage}
-      className="focus-ring-base"
+      className="base-focus-ring"
     />
   )
 }

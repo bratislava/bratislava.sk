@@ -43,7 +43,7 @@ const SearchBar = forwardRef<HTMLInputElement, SearchBarProps>(
           {/* 3.75rem = 60px, 0.75rem = 12px */}
           <Input
             placeholder={placeholder}
-            className="focus-ring-base relative w-full rounded-lg border px-15 py-5 pr-23 outline-hidden hover:border-grey-400 focus:border-grey-800"
+            className="base-focus-ring relative w-full rounded-lg border px-15 py-5 pr-23 outline-hidden hover:border-grey-400 focus:border-grey-800"
             data-cy="search-field"
           />
           <SearchIcon
