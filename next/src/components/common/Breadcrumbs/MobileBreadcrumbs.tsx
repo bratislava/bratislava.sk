@@ -33,6 +33,8 @@ const MobileBreadcrumbs = ({ breadcrumbs }: BreadcrumbsProps) => {
 
   const localisedStarzLandingPage = useGetLocalisedPage(starzAdminGroup?.landingPage)
 
+  const showSecondaryMenu = !!starzAdminGroup
+
   return (
     <div className="relative">
       <div className="flex justify-between">
@@ -62,26 +64,35 @@ const MobileBreadcrumbs = ({ breadcrumbs }: BreadcrumbsProps) => {
             <ChevronDownIcon className="size-5 shrink-0 transition-transform group-open:rotate-180" />
           </summary>
           <div>
-            <div className="flex flex-col gap-4 py-4">
-              {/* TODO refactor when more adminGroups are implemented */}
-              <Typography variant="h5">{t('MobileNavBar.secondaryMenu')}</Typography>
-              <ol className="flex flex-col gap-0.5">
-                {localisedStarzLandingPage?.childPages.filter(isDefined).map((childPage, index) => {
-                  const childPageLinkProps = getLinkProps({ page: childPage })
+            {showSecondaryMenu && (
+              <>
+                <div className="flex flex-col gap-4 py-4">
+                  <Typography variant="h5">{t('MobileNavBar.secondaryMenu')}</Typography>
+                  <ol className="flex flex-col gap-0.5">
+                    {localisedStarzLandingPage?.childPages
+                      .filter(isDefined)
+                      .map((childPage, index) => {
+                        const childPageLinkProps = getLinkProps({ page: childPage })
 
-                  return (
-                    // eslint-disable-next-line react/no-array-index-key
-                    <li className="text-size-p-tiny font-medium" key={index}>
-                      <MLink variant="underlined" className="flex gap-2" {...childPageLinkProps}>
-                        <ArrowRightIcon className="size-5 shrink-0" />
-                        {childPageLinkProps.children}
-                      </MLink>
-                    </li>
-                  )
-                })}
-              </ol>
-            </div>
-            <HorizontalDivider className="border-category-400" />
+                        return (
+                          // eslint-disable-next-line react/no-array-index-key
+                          <li className="text-size-p-tiny font-medium" key={index}>
+                            <MLink
+                              variant="underlined"
+                              className="flex gap-2"
+                              {...childPageLinkProps}
+                            >
+                              <ArrowRightIcon className="size-5 shrink-0" />
+                              {childPageLinkProps.children}
+                            </MLink>
+                          </li>
+                        )
+                      })}
+                  </ol>
+                </div>
+                <HorizontalDivider className="border-category-400" />
+              </>
+            )}
             <ol className="flex flex-col flex-wrap gap-1 py-4">
               {withHomeWithoutCurrent.map((breadcrumb, index) => (
                 // eslint-disable-next-line react/no-array-index-key
