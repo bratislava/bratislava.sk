@@ -40,7 +40,7 @@ const PageHeaderEvent = ({ title, breadcrumbs, headerLinks, image, header }: Pro
     <PageHeader breadcrumbs={breadcrumbs}>
       <div className="flex w-full flex-col overflow-hidden rounded-2xl bg-background-passive-base lg:flex-row">
         <div className="flex flex-col justify-between gap-6 p-4 lg:w-[26rem] lg:gap-40 lg:p-6">
-          <div className="flex flex-col gap-6 lg:gap-8">
+          <div className="flex flex-col items-start gap-6 lg:gap-8">
             {date ? (
               <>
                 {/* Date display - Screen: mobile */}
@@ -49,7 +49,7 @@ const PageHeaderEvent = ({ title, breadcrumbs, headerLinks, image, header }: Pro
                 </div>
                 {/* Date display - Screen: desktop */}
                 <div className="max-lg:hidden">
-                  <div className="flex size-20 flex-col items-center justify-center rounded-lg bg-background-passive-inverted-base text-content-passive-inverted-primary">
+                  <div className="flex h-20 min-w-20 flex-col items-center justify-center rounded-lg bg-background-passive-inverted-base px-2 text-content-passive-inverted-primary">
                     <Typography variant="h3" as="p">
                       {day}
                     </Typography>

@@ -2,7 +2,6 @@ import React, { Fragment } from 'react'
 
 import { EuFlagSvg } from '@/src/assets/images'
 import Accordion from '@/src/components/common/Accordion/Accordion'
-import Brand from '@/src/components/common/Brand/Brand'
 import HorizontalDivider from '@/src/components/common/Divider/HorizontalDivider'
 import {
   FooterAccessibilityLink,
@@ -12,6 +11,7 @@ import {
   FooterLanguageSwitcher,
   FooterSocialLinks,
 } from '@/src/components/common/Footer/FooterShared'
+import Brand from '@/src/components/common/Logos/Brand'
 import SectionContainer from '@/src/components/layouts/SectionContainer'
 import { useGeneralContext } from '@/src/components/providers/GeneralContextProvider'
 import { isDefined } from '@/src/utils/isDefined'

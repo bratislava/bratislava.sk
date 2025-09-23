@@ -1,16 +1,17 @@
 import React from 'react'
 
-import { StarzLogoSvg } from '@/src/assets/images'
 import Button from '@/src/components/common/Button/Button'
-import MLink from '@/src/components/common/MLink/MLink'
+import StarzLogo from '@/src/components/common/Logos/StarzLogo'
 import SectionContainer from '@/src/components/layouts/SectionContainer'
 import { AdminGroupEntityFragment } from '@/src/services/graphql'
+import cn from '@/src/utils/cn'
 import { getLinkProps } from '@/src/utils/getLinkProps'
 import { isDefined } from '@/src/utils/isDefined'
-import { useLocale } from '@/src/utils/useLocale'
+import { useGetLocalisedPage } from '@/src/utils/useGetLocalisedPage'
 
 type Props = {
   landingPage: NonNullable<AdminGroupEntityFragment['landingPage']>
+  className?: string
 }
 
 /**
@@ -20,35 +21,22 @@ type Props = {
  *
  * TODO make it more generic in future when more organizations need it
  */
-const StarzSubmenu = ({ landingPage }: Props) => {
-  const locale = useLocale()
-
-  // Strapi returns only other locales in localizations prop
-  const localisedLandingPage =
-    landingPage.locale === locale
-      ? landingPage
-      : landingPage.localizations.find((page) => page?.locale === locale)
+const StarzSubmenu = ({ landingPage, className }: Props) => {
+  const localisedLandingPage = useGetLocalisedPage(landingPage)
 
   const childPages = localisedLandingPage?.childPages.filter(isDefined) ?? []
 
-  const { children: ariaLabel, ...linkProps } = getLinkProps({ page: localisedLandingPage })
-
   // Beware of paddings, margins and gaps - they are used to enlarge clickable/touchable area of links, and they are carefully set to fit Figma design together
   return (
-    <SectionContainer className="bg-starz-primary-700">
+    <SectionContainer className={cn('bg-starz-primary-700', className)}>
       <div className="flex gap-6">
-        <div className="relative -m-2 self-center p-2">
-          <MLink
-            aria-label={ariaLabel}
-            {...linkProps}
-            className="text-content-active-primary-inverted-default transition hover:text-content-active-primary-inverted-hover active:text-content-active-primary-inverted-pressed"
-            stretched
-          >
-            <StarzLogoSvg />
-          </MLink>
-        </div>
+        <StarzLogo
+          variant="white"
+          linkProps={getLinkProps({ page: localisedLandingPage })}
+          className="-m-2 self-center p-2"
+        />
         <div className="my-4 border-l" aria-hidden />
-        <div className="-ml-2 flex flex-wrap gap-2 py-2">
+        <div className="-ml-2 flex flex-wrap gap-x-2 py-2">
           {childPages.map((submenuPage) => (
             <Button
               key={submenuPage.documentId}

@@ -5,6 +5,7 @@ import * as React from 'react'
 import SeoHead from '@/src/components/common/SeoHead/SeoHead'
 import PageLayout from '@/src/components/layouts/PageLayout'
 import InbaArticlePageContent from '@/src/components/page-contents/InbaArticlePageContent'
+import { AdminGroupsContextProvider } from '@/src/components/providers/AdminGroupsContextProvider'
 import { GeneralContextProvider } from '@/src/components/providers/GeneralContextProvider'
 import { GeneralQuery, InbaArticleEntityFragment } from '@/src/services/graphql'
 import { client } from '@/src/services/graphql/gql'
@@ -82,11 +83,13 @@ const Page = ({ general, inbaArticle }: PageProps) => {
 
   return (
     <GeneralContextProvider general={general}>
-      <SeoHead title={title} description={perex} />
+      <AdminGroupsContextProvider adminGroups={[]}>
+        <SeoHead title={title} description={perex} />
 
-      <PageLayout>
-        <InbaArticlePageContent inbaArticle={inbaArticle} />
-      </PageLayout>
+        <PageLayout>
+          <InbaArticlePageContent inbaArticle={inbaArticle} />
+        </PageLayout>
+      </AdminGroupsContextProvider>
     </GeneralContextProvider>
   )
 }

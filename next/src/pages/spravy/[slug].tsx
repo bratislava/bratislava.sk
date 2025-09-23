@@ -5,6 +5,7 @@ import * as React from 'react'
 import SeoHead from '@/src/components/common/SeoHead/SeoHead'
 import PageLayout from '@/src/components/layouts/PageLayout'
 import ArticlePageContent from '@/src/components/page-contents/ArticlePageContent'
+import { AdminGroupsContextProvider } from '@/src/components/providers/AdminGroupsContextProvider'
 import { GeneralContextProvider } from '@/src/components/providers/GeneralContextProvider'
 import { ArticleEntityFragment, GeneralQuery } from '@/src/services/graphql'
 import { client } from '@/src/services/graphql/gql'
@@ -80,12 +81,14 @@ const Page = ({ general, article }: PageProps) => {
 
   return (
     <GeneralContextProvider general={general}>
-      <SeoHead title={title} description={perex} />
+      <AdminGroupsContextProvider adminGroups={[]}>
+        <SeoHead title={title} description={perex} />
 
-      <GlobalCategoryColorProvider color={article?.tag?.pageCategory?.color} />
-      <PageLayout>
-        <ArticlePageContent article={article} />
-      </PageLayout>
+        <GlobalCategoryColorProvider color={article?.tag?.pageCategory?.color} />
+        <PageLayout>
+          <ArticlePageContent article={article} />
+        </PageLayout>
+      </AdminGroupsContextProvider>
     </GeneralContextProvider>
   )
 }

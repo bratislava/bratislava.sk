@@ -6,6 +6,7 @@ import PageHeader from '@/src/components/common/PageHeader/PageHeader'
 import SeoHead from '@/src/components/common/SeoHead/SeoHead'
 import PageLayout from '@/src/components/layouts/PageLayout'
 import SectionContainer from '@/src/components/layouts/SectionContainer'
+import { AdminGroupsContextProvider } from '@/src/components/providers/AdminGroupsContextProvider'
 import { GeneralContextProvider } from '@/src/components/providers/GeneralContextProvider'
 import { LocalizationsProvider } from '@/src/components/providers/LocalizationsProvider'
 import GlobalSearchSectionContent from '@/src/components/sections/SearchSection/GlobalSearchSectionContent'
@@ -45,19 +46,21 @@ const Page = ({ general }: PageProps) => {
 
   return (
     <GeneralContextProvider general={general}>
-      <LocalizationsProvider localizations={{ sk: '/vyhladavanie', en: '/search' }}>
-        <SeoHead title={t('SearchPage.searching')} />
+      <AdminGroupsContextProvider adminGroups={[]}>
+        <LocalizationsProvider localizations={{ sk: '/vyhladavanie', en: '/search' }}>
+          <SeoHead title={t('SearchPage.searching')} />
 
-        <PageLayout>
-          <PageHeader
-            title={t('SearchPage.searching')}
-            breadcrumbs={[{ title: t('SearchPage.searching'), path: null }]}
-          />
-          <SectionContainer className="mt-12 mb-8">
-            <GlobalSearchSectionContent variant="general" />
-          </SectionContainer>
-        </PageLayout>
-      </LocalizationsProvider>
+          <PageLayout>
+            <PageHeader
+              title={t('SearchPage.searching')}
+              breadcrumbs={[{ title: t('SearchPage.searching'), path: null }]}
+            />
+            <SectionContainer className="mt-12 mb-8">
+              <GlobalSearchSectionContent variant="general" />
+            </SectionContainer>
+          </PageLayout>
+        </LocalizationsProvider>
+      </AdminGroupsContextProvider>
     </GeneralContextProvider>
   )
 }
