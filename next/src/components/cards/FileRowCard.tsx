@@ -1,6 +1,7 @@
 import React from 'react'
 import { AttachmentIcon, DownloadIcon } from 'src/assets/icons'
 
+import CardBase from '@/src/components/cards/CardBase'
 import MLink from '@/src/components/common/MLink/MLink'
 import cn from '@/src/utils/cn'
 import { isDefined } from '@/src/utils/isDefined'
@@ -32,7 +33,7 @@ const FileRowCard = ({
   const { t } = useTranslation()
 
   return (
-    <div className={cn('focus-ring-wrapper relative', className)}>
+    <CardBase className={cn('ring-inset', className)} variant="no-border">
       <div className="flex flex-row items-start justify-between gap-x-4 py-4 pr-2.5 pl-4 md:px-6 lg:items-center">
         <div className="flex flex-row justify-between gap-x-2 md:items-center md:gap-x-4">
           <div className="md:rounded-lg md:bg-background-tertiary">
@@ -71,7 +72,7 @@ const FileRowCard = ({
           </div>
         </div>
       </div>
-    </div>
+    </CardBase>
   )
 }
 

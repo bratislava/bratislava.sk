@@ -11,6 +11,7 @@ const CardBase = ({ variant = 'border', children, className, ...rest }: CardBase
     <div
       // overflow-hidden ensures image not to overlap with rounded corners
       className={cn(
+        // TODO consider removing bg-white
         'group relative flex flex-col overflow-hidden bg-white',
         'focus-ring-wrapper',
         {

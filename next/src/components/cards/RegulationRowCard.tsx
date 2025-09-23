@@ -34,14 +34,7 @@ const RegulationRowCard = ({
   const { t } = useTranslation()
 
   return (
-    <CardBase
-      className={cn(
-        // background color set to transparent so focus ring is visible
-        'bg-transparent',
-        className,
-      )}
-      variant="no-border"
-    >
+    <CardBase className={cn('ring-inset', className)} variant="no-border">
       <div className="flex flex-row justify-between gap-4 py-4">
         <div className="flex flex-col gap-2 lg:gap-1">
           <div className="flex flex-col items-start gap-2 lg:flex-row lg:items-center lg:gap-4">
