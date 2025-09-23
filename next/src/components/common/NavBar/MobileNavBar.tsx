@@ -54,7 +54,7 @@ const MobileNavBar = ({ className }: MobileNavBarProps) => {
                 <StarzLogo
                   variant="dark-blue"
                   linkProps={getLinkProps({ page: localisedStarzLandingPage })}
-                  className="-m-2 h-5.5 p-2"
+                  className="-m-2 h-5.5 shrink-0 p-2"
                 />
               ) : null}
             </div>
