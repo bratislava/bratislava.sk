@@ -390,7 +390,7 @@
   --animate-scale-y: scaleY 250ms ease;
 
   /* Aspect ratio */
-  --aspect-inba: 5 / 8
+  --aspect-inba: 5 / 8;
 }
 
 @layer base {
@@ -740,6 +740,17 @@
 
   .base-input--disabled {
     @apply bg-grey-100;
+  }
+
+  .base-focus-ring {
+    @apply ring-border-active-primary-default ring-offset-3 outline-none;
+    @apply focus-visible:ring-3 focus-visible:transition-shadow;
+  }
+
+  .wrapper-focus-ring {
+    @apply ring-border-active-primary-default ring-offset-3 outline-none;
+    @apply focus-within:[&:has(:focus-visible)]:ring-3 focus-within:[&:has(:focus-visible)]:transition-shadow;
+    @apply [&_*]:focus-visible:ring-0 [&_*]:focus-visible:ring-offset-0 [&_*]:focus-visible:outline-none;
   }
 
   .form-group label.control-label {

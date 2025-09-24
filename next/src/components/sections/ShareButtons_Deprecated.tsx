@@ -41,7 +41,15 @@ const SocialMediaButton = ({
     )
   }
 
-  return <Button icon={children} aria-label={platform} onPress={openSharePage} />
+  return (
+    <Button
+      variant="unstyled"
+      icon={children}
+      aria-label={platform}
+      onPress={openSharePage}
+      className="base-focus-ring"
+    />
+  )
 }
 
 const ShareButtons_Deprecated = ({ twitterTitle }: Props) => {

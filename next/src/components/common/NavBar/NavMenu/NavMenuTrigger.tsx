@@ -18,7 +18,7 @@ const NavMenuTrigger = forwardRef<HTMLButtonElement, NavMenuTriggerProps>(
         onPointerMove={(event) => event.preventDefault()}
         onPointerLeave={(event) => event.preventDefault()}
         style={colorStyle}
-        className="group flex size-full flex-col items-center py-4 whitespace-pre-wrap hover:font-semibold data-[state=open]:font-semibold"
+        className="base-focus-ring group flex size-full flex-col items-center py-4 whitespace-pre-wrap ring-inset hover:font-semibold data-[state=open]:font-semibold"
       >
         {/* FIXME Typography: Convert to use Typography. */}
         {label}

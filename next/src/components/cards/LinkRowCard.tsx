@@ -32,7 +32,7 @@ const LinkRowCard = ({
   const titleId = useId()
 
   return (
-    <CardBase variant="no-border" className={cn('bg-background-passive-base', className)}>
+    <CardBase variant="no-border" className={cn('ring-inset', className)}>
       <div className="flex items-center gap-3 py-4 lg:gap-4">
         <div className="flex grow items-center gap-3 lg:gap-4">
           <div className="lg:rounded-lg lg:bg-background-passive-secondary lg:p-3 lg:text-content-passive-secondary">

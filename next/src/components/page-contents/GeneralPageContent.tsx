@@ -36,7 +36,7 @@ const GeneralPageContent = ({ page }: GeneralPageProps) => {
     <>
       {/* Starz submenu - TODO make it more generic in future when more organizations need it */}
       {starzAdminGroup?.landingPage ? (
-        <StarzSubmenu landingPage={starzAdminGroup.landingPage} />
+        <StarzSubmenu landingPage={starzAdminGroup.landingPage} className="max-lg:hidden" />
       ) : null}
 
       {/* Header */}

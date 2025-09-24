@@ -25,7 +25,7 @@ const MLink = forwardRef<HTMLAnchorElement, LinkProps>(
     const plausible = usePlausible()
 
     const styles = cn(
-      'underline-offset-2',
+      'base-focus-ring rounded-xs underline-offset-2',
       {
         'underline lg:no-underline lg:hover:underline': variant === 'underlineOnHover',
         // TODO solve hover color, currently we use opacity, so text can have any color, but it can cause some design or accessibility issues

@@ -55,7 +55,7 @@ const PartnersSection = ({ section }: Props) => {
               <div
                 // eslint-disable-next-line react/no-array-index-key
                 key={index}
-                className={cn('relative grow', {
+                className={cn('wrapper-focus-ring relative grow rounded-sm', {
                   'aspect-4/3': logoRatio === 'ratio_4_3',
                   'aspect-4/1': logoRatio === 'ratio_4_1',
                 })}

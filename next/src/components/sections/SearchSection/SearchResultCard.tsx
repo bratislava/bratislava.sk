@@ -20,9 +20,9 @@ type SearchResultCardProps = {
 
 const SearchResultCard = ({ data }: SearchResultCardProps) => {
   return (
-    <div className="px-5 lg:px-6">
+    <div className="wrapper-focus-ring px-5 ring-inset lg:px-6">
       <div
-        className="group relative flex flex-row items-stretch gap-4 overflow-hidden bg-white py-4"
+        className="group relative flex flex-row items-stretch gap-4 overflow-hidden py-4"
         data-cy="search-result-card"
       >
         {data.customIconName ? (

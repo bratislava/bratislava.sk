@@ -1,7 +1,7 @@
 import { SearchIcon } from 'src/assets/icons'
 
-import Brand from '@/src/components/common/Brand/Brand'
 import Button from '@/src/components/common/Button/Button'
+import Brand from '@/src/components/common/Logos/Brand'
 import MLink from '@/src/components/common/MLink/MLink'
 import SkipToContentButton from '@/src/components/common/SkipToContentButton/SkipToContentButton'
 import SectionContainer from '@/src/components/layouts/SectionContainer'
@@ -33,7 +33,7 @@ const NavBarHeader = ({ className }: NavBarProps) => {
       className={cn('relative z-31 bg-white', className)}
       style={getCategoryColorLocalStyle({ category: 'main' })}
     >
-      <nav className="flex w-full items-center justify-between border-b border-grey-200">
+      <nav className="flex w-full items-center justify-between border-b border-grey-200 py-2">
         <SkipToContentButton />
         <Brand withTitle />
 
@@ -64,20 +64,21 @@ const NavBarHeader = ({ className }: NavBarProps) => {
             <Divider />
           )}
 
-          <MLink
+          <Button
+            variant="icon-wrapped"
             data-cy="search-button"
             href={t('links.searchLink')}
             aria-label={t('SearchBar.search')}
-            className="-mx-4 p-4"
-          >
-            <SearchIcon />
-          </MLink>
+            className="-m-4 p-4"
+            hasLinkIcon={false}
+            icon={<SearchIcon />}
+          />
 
           <Divider />
 
           {otherLanguage && (
             <MLink
-              variant="underlined"
+              variant="underlined-medium"
               href={otherLanguage.path}
               locale={otherLanguage.locale}
               data-cy="change-language-button"

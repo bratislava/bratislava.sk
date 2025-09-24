@@ -7,6 +7,7 @@ import * as React from 'react'
 import SeoHead from '@/src/components/common/SeoHead/SeoHead'
 import PageLayout from '@/src/components/layouts/PageLayout'
 import RegulationPageContent from '@/src/components/page-contents/RegulationPageContent'
+import { AdminGroupsContextProvider } from '@/src/components/providers/AdminGroupsContextProvider'
 import { GeneralContextProvider } from '@/src/components/providers/GeneralContextProvider'
 import { GeneralQuery, RegulationEntityFragment } from '@/src/services/graphql'
 import { client } from '@/src/services/graphql/gql'
@@ -80,14 +81,16 @@ const RegulationPage = ({ general, regulation }: RegulationPageProps) => {
 
   return (
     <GeneralContextProvider general={general}>
-      <SeoHead
-        title={`VZN ${regulation.regNumber}`}
-        description={`Všeobecné záväzné nariadenie ${regulation.fullTitle}`}
-      />
+      <AdminGroupsContextProvider adminGroups={[]}>
+        <SeoHead
+          title={`VZN ${regulation.regNumber}`}
+          description={`Všeobecné záväzné nariadenie ${regulation.fullTitle}`}
+        />
 
-      <PageLayout>
-        <RegulationPageContent regulation={regulation} />
-      </PageLayout>
+        <PageLayout>
+          <RegulationPageContent regulation={regulation} />
+        </PageLayout>
+      </AdminGroupsContextProvider>
     </GeneralContextProvider>
   )
 }

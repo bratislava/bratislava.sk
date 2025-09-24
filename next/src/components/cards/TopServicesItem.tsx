@@ -20,7 +20,7 @@ const TopServicesItem = ({ topServicesItem }: TopNineItemProps) => {
   const { children: label, ...linkProps } = getLinkProps(link)
 
   return (
-    <div className="relative flex gap-3 rounded-lg bg-white px-4 py-3 md:bg-transparent md:p-0 lg:gap-4">
+    <div className="wrapper-focus-ring relative flex gap-3 rounded-lg bg-white px-4 py-3 md:bg-transparent md:p-0 lg:gap-4">
       <div aria-hidden>
         <Pictogram iconName={icon} className="size-12 md:size-16" />
       </div>

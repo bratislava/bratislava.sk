@@ -30,7 +30,7 @@ const InbaReleaseCard = ({
   const titleId = useId()
 
   return (
-    <CardBase variant="no-border" className="rounded-none" {...rest}>
+    <CardBase variant="no-border" className="rounded-lg" {...rest}>
       <div className="flex grow flex-col justify-between gap-4 lg:gap-6">
         <CardImage imgSrc={imgSrc} sizes={imgSizes} className="aspect-inba rounded-lg border" />
 

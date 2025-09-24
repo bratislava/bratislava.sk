@@ -24,7 +24,7 @@ const VideoCard = ({ title, speaker, url: untrimmedUrl, cardTitleLevel = 'h3' }:
   const src = getVideoIframeSrc(url)
 
   return (
-    <div className="flex flex-col gap-4">
+    <div className="wrapper-focus-ring flex flex-col gap-4 rounded-lg">
       <div className="relative aspect-video w-full overflow-hidden rounded-lg">
         {src ? (
           <iframe

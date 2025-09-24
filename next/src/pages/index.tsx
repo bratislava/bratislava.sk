@@ -7,6 +7,7 @@ import React from 'react'
 import SeoHead from '@/src/components/common/SeoHead/SeoHead'
 import PageLayout from '@/src/components/layouts/PageLayout'
 import HomepageContent from '@/src/components/page-contents/HomepageContent'
+import { AdminGroupsContextProvider } from '@/src/components/providers/AdminGroupsContextProvider'
 import { GeneralContextProvider } from '@/src/components/providers/GeneralContextProvider'
 import { HomepageContextProvider } from '@/src/components/providers/HomepageContextProvider'
 import type { HomepageContext } from '@/src/services/fetchers/homepageContextFetcher'
@@ -66,16 +67,18 @@ const Homepage = ({ homepageContext, general, dehydratedState }: PageProps) => {
   return (
     <HydrationBoundary state={dehydratedState}>
       <GeneralContextProvider general={general}>
-        <HomepageContextProvider homepageContext={homepageContext}>
-          <SeoHead
-            title={t('Homepage.title')}
-            description={homepageContext.homepage?.metaDescription}
-          />
+        <AdminGroupsContextProvider adminGroups={[]}>
+          <HomepageContextProvider homepageContext={homepageContext}>
+            <SeoHead
+              title={t('Homepage.title')}
+              description={homepageContext.homepage?.metaDescription}
+            />
 
-          <PageLayout>
-            <HomepageContent />
-          </PageLayout>
-        </HomepageContextProvider>
+            <PageLayout>
+              <HomepageContent />
+            </PageLayout>
+          </HomepageContextProvider>
+        </AdminGroupsContextProvider>
       </GeneralContextProvider>
     </HydrationBoundary>
   )

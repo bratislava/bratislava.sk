@@ -1,14 +1,14 @@
 resources:
   - ../../base
-  - scaler.yml
-  - secrets/msal.secret.yml
   - pdb.yml
   - redirects/odhrnieme.ingress.yml
   - redirects/10000stromov.ingress.yml
   - redirects/behdevin.ingress.yml
   - redirects/social.ingress.yml
   - redirects/primacialnypalac.ingress.yml
+  - secrets/msal.secret.yml
   - secrets/starz-ecomail.secret.yml
+
 configMapGenerator:
   - name: ${BUILD_REPOSITORY_NAME}-env
     namespace: ${NAMESPACE}

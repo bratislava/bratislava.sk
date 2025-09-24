@@ -8,6 +8,7 @@ import Button from '@/src/components/common/Button/Button'
 import SeoHead from '@/src/components/common/SeoHead/SeoHead'
 import PageLayout from '@/src/components/layouts/PageLayout'
 import SectionContainer from '@/src/components/layouts/SectionContainer'
+import { AdminGroupsContextProvider } from '@/src/components/providers/AdminGroupsContextProvider'
 import { GeneralContextProvider } from '@/src/components/providers/GeneralContextProvider'
 import { GeneralQuery } from '@/src/services/graphql'
 import { client } from '@/src/services/graphql/gql'
@@ -39,30 +40,32 @@ const NotFoundPage = ({ general }: PageProps) => {
 
   return (
     <GeneralContextProvider general={general}>
-      <SeoHead title={title} />
+      <AdminGroupsContextProvider adminGroups={[]}>
+        <SeoHead title={title} />
 
-      <PageLayout>
-        <SectionContainer>
-          <div className="flex flex-col items-center gap-8 py-14 max-md:gap-0 max-md:pt-0 md:flex-row-reverse md:justify-center">
-            <img data-cy="404-image" src="/404_350px.png" alt="" />
-            <div data-cy="404-left-side" className="flex flex-col gap-10">
-              <div className="flex flex-col gap-4 text-center md:text-left">
-                <Typography variant="h1">{t('NotFound.messageTitle')}</Typography>
-                <Typography variant="p-large">{t('NotFound.sorryNoResultsFound')}</Typography>
-              </div>
+        <PageLayout>
+          <SectionContainer>
+            <div className="flex flex-col items-center gap-8 py-14 max-md:gap-0 max-md:pt-0 md:flex-row-reverse md:justify-center">
+              <img data-cy="404-image" src="/404_350px.png" alt="" />
+              <div data-cy="404-left-side" className="flex flex-col gap-10">
+                <div className="flex flex-col gap-4 text-center md:text-left">
+                  <Typography variant="h1">{t('NotFound.messageTitle')}</Typography>
+                  <Typography variant="p-large">{t('NotFound.sorryNoResultsFound')}</Typography>
+                </div>
 
-              <div className="flex flex-wrap gap-3 md:gap-4">
-                <Button variant="solid" hasLinkIcon={false} fullWidthMobile href="/">
-                  {t('NotFound.toTheMainPage')}
-                </Button>
-                <Button variant="outline" fullWidthMobile onPress={() => router.back()}>
-                  {t('NotFound.toThePreviousPage')}
-                </Button>
+                <div className="flex flex-wrap gap-3 md:gap-4">
+                  <Button variant="solid" hasLinkIcon={false} fullWidthMobile href="/">
+                    {t('NotFound.toTheMainPage')}
+                  </Button>
+                  <Button variant="outline" fullWidthMobile onPress={() => router.back()}>
+                    {t('NotFound.toThePreviousPage')}
+                  </Button>
+                </div>
               </div>
             </div>
-          </div>
-        </SectionContainer>
-      </PageLayout>
+          </SectionContainer>
+        </PageLayout>
+      </AdminGroupsContextProvider>
     </GeneralContextProvider>
   )
 }
