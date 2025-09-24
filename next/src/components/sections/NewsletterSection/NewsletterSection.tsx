@@ -1,4 +1,6 @@
 import { Typography } from '@bratislava/component-library'
+import { useMutation } from '@tanstack/react-query'
+import axios from 'axios'
 import React, { useRef, useState } from 'react'
 
 import { FacebookIcon, InstagramIcon } from '@/src/assets/icons-social-media'
@@ -53,7 +55,36 @@ const NewsletterSection = ({ section }: Props) => {
     return { isValid: true }
   }
 
-  const handleSubmit = async (emailToSubscribe: string) => {
+  const newsletterEndpointsMap: Record<Enum_Componentsectionsnewsletter_Newslettertype, string> = {
+    starz: '/api/newsletter-starz/subscribe',
+  }
+
+  const subscribeToNewsletterMutation = useMutation({
+    mutationFn: (emailToSubscribeeeee: string) =>
+      axios.post(
+        newsletterEndpointsMap[newsletterType],
+        {
+          email: emailToSubscribeeeee,
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        },
+      ),
+    onSuccess: () => {
+      clearMessages()
+      setSuccessMessage(t('NewsletterSection.success'))
+    },
+    onError: (error) => {
+      // eslint-disable-next-line no-console
+      console.error(error)
+      clearMessages()
+      setErrorMessage(t('NewsletterSection.error.somethingWentWrong'))
+    },
+  })
+
+  const handleSubmit = async (submittedEmail: string) => {
     clearMessages()
 
     if (!validateForm().isValid) {
@@ -65,29 +96,7 @@ const NewsletterSection = ({ section }: Props) => {
 
     setStatusMessage(t('NewsletterSection.sending'))
 
-    if (newsletterType === Enum_Componentsectionsnewsletter_Newslettertype.Starz) {
-      const response = await fetch('/api/newsletter-starz/subscribe', {
-        body: JSON.stringify({
-          email: emailToSubscribe,
-        }),
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        method: 'POST',
-      })
-
-      const { error } = await response.json()
-
-      if (error) {
-        // eslint-disable-next-line no-console
-        console.error(error)
-        clearMessages()
-        setErrorMessage(t('NewsletterSection.error.somethingWentWrong'))
-      } else {
-        clearMessages()
-        setSuccessMessage(t('NewsletterSection.success'))
-      }
-    }
+    subscribeToNewsletterMutation.mutate(submittedEmail)
   }
 
   return (

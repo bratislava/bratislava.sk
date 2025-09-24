@@ -1,4 +1,5 @@
 /* eslint-disable no-console */
+import axios from 'axios'
 import { NextApiRequest, NextApiResponse } from 'next'
 
 type ResponseData = {
@@ -23,20 +24,20 @@ const Subscribe = async (req: NextApiRequest, res: NextApiResponse<ResponseData>
     if (!process.env.STARZ_ECOMAIL_API_KEY)
       throw new Error('Missing environment variable STARZ_ECOMAIL_API_KEY')
 
-    const ecomailResponse = await fetch(ECOMAIL_ADD_SUBSCRIBER_URL, {
-      body: JSON.stringify({
+    await axios.post(
+      ECOMAIL_ADD_SUBSCRIBER_URL,
+      {
         subscriber_data: {
           email,
         },
-      }),
-      headers: {
-        'Content-Type': 'application/json',
-        key: process.env.STARZ_ECOMAIL_API_KEY,
       },
-      method: 'POST',
-    })
-
-    await ecomailResponse.json()
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          key: process.env.STARZ_ECOMAIL_API_KEY,
+        },
+      },
+    )
 
     // If the email is already subscribed, ecomail sends a successful response, so we don't handle this case differently
 
