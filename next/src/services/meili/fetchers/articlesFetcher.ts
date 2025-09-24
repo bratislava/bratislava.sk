@@ -33,10 +33,10 @@ export const articlesFetcher = (filters: ArticlesFilters, locale: string) => {
       filter: [
         'type = "article"',
         `locale = ${locale}`,
-        filters.tagDocumentIds.length > 0
+        filters.tagDocumentIds?.length > 0
           ? `article.tag.documentId IN [${filters.tagDocumentIds.join(',')}]`
           : '',
-        filters.adminGroupDocumentIds.length > 0
+        filters.adminGroupDocumentIds?.length > 0
           ? `article.adminGroups.documentId IN [${filters.adminGroupDocumentIds.join(',')}]`
           : '',
       ],
