@@ -11,16 +11,15 @@ import {
 import cn from '@/src/utils/cn'
 
 type Props = RACInputProps & {
-  helpText?: string
+  helptext?: string
   errorMessage?: string
-  successMessage?: string
 } & (
     | {
-        labelText: string
+        label: string
         'aria-label'?: string
       }
     | {
-        labelText?: never
+        label?: never
         'aria-label': string
       }
   )
@@ -30,19 +29,18 @@ type Props = RACInputProps & {
  */
 
 const Input = forwardRef<HTMLInputElement, Props>(
-  ({ labelText, helpText, errorMessage, successMessage, className, ...restProps }, ref) => {
+  ({ label, helptext, errorMessage, className, ...restProps }, ref) => {
     return (
       <RACTextField isInvalid={!!errorMessage} className={cn('flex flex-col gap-2', className)}>
-        {labelText ? (
+        {label ? (
           <RACLabel>
-            <Typography variant="h6">{labelText}</Typography>
+            <Typography variant="h6">{label}</Typography>
           </RACLabel>
         ) : null}
-        {helpText ? <Typography variant="p-small">{helpText}</Typography> : null}
+        {helptext ? <Typography variant="p-small">{helptext}</Typography> : null}
         <RACInput
           className={cn(
-            'rounded-lg border border-border-active-default px-4 py-3 outline-hidden',
-            'ring-offset-2 transition hover:border-border-active-hover focus:border-border-active-focused focus-visible:ring-2',
+            'base-focus-ring rounded-lg border border-border-active-default px-4 py-3 outline-hidden hover:border-border-active-hover',
             {
               'border-border-error hover:border-border-error-hover focus:border-border-error':
                 errorMessage,
@@ -56,11 +54,6 @@ const Input = forwardRef<HTMLInputElement, Props>(
             {errorMessage}
           </Typography>
         </RACFieldError>
-        {successMessage ? (
-          <Typography variant="p-small" className="text-content-success-default">
-            {successMessage}
-          </Typography>
-        ) : null}
       </RACTextField>
     )
   },

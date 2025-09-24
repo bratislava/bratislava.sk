@@ -41,9 +41,7 @@ const NewsletterSection = ({ section }: Props) => {
   const { title, text, socialLinksTitle, newsletterType, facebookUrl, instagramUrl } = section
 
   const validateForm = () => {
-    const VALID_EMAIL_FORMAT =
-      // eslint-disable-next-line security/detect-unsafe-regex
-      /^(([^\s"(),.:;<>@[\\\]]+(\.[^\s"(),.:;<>@[\\\]]+)*)|(".+"))@((\[(?:\d{1,3}\.){3}\d{1,3}])|(([\dA-Za-z-]+\.)+[A-Za-z]{2,}))$/
+    const VALID_EMAIL_FORMAT = /.*@.*\..*/
 
     if (email.length === 0) {
       return { isValid: false, error: t('NewsletterSection.error.emailMandatory') }
@@ -101,8 +99,8 @@ const NewsletterSection = ({ section }: Props) => {
 
   return (
     <SectionContainer className="lg:py-24">
-      <div className="flex flex-col items-start justify-between gap-8 lg:flex-row lg:gap-10">
-        <div className="flex max-w-150 flex-col gap-6 lg:gap-10">
+      <div className="flex flex-col items-start justify-between gap-8 lg:flex-row lg:gap-34">
+        <div className="flex flex-col gap-6 lg:gap-10">
           <SectionHeader title={title} text={text} />
           <div className="flex flex-col gap-4">
             <Typography variant="h5" as="p" className="font-semibold">
@@ -136,12 +134,12 @@ const NewsletterSection = ({ section }: Props) => {
             </div>
           </div>
         </div>
-        <div className="flex max-w-122 grow flex-col gap-4 lg:gap-6 lg:rounded-lg lg:border lg:border-border-passive-primary lg:p-8">
+        <div className="flex grow flex-col gap-4 lg:min-w-100 lg:gap-6 lg:rounded-lg lg:border lg:border-border-passive-primary lg:p-8">
           <div className="flex flex-col gap-2">
             <Input
               ref={inputRef}
               value={email}
-              labelText={t('NewsletterSection.inputLabel')}
+              label={t('NewsletterSection.inputLabel')}
               onChange={(event) => setEmail(event.target.value)}
               onKeyDown={(event) => {
                 if (event.key === 'Enter') {
@@ -149,8 +147,12 @@ const NewsletterSection = ({ section }: Props) => {
                 }
               }}
               errorMessage={errorMessage}
-              successMessage={successMessage}
             />
+            {successMessage ? (
+              <Typography variant="p-small" className="text-content-success-default">
+                {successMessage}
+              </Typography>
+            ) : null}
             {statusMessage ? (
               <Typography variant="p-small" className="text-content-info-default">
                 {statusMessage}
