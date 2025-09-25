@@ -2,6 +2,7 @@ import * as NavigationMenu from '@radix-ui/react-navigation-menu'
 import { usePathname } from 'next/navigation'
 import { useEffect, useMemo } from 'react'
 
+import SectionContainer from '@/src/components/layouts/SectionContainer'
 import { useGeneralContext } from '@/src/components/providers/GeneralContextProvider'
 import { useTranslation } from '@/src/utils/useTranslation'
 
@@ -32,12 +33,14 @@ const NavMenu = () => {
       aria-label={t('NavMenu.aria.navMenuLabel')}
     >
       <div className="relative z-30 border-b">
-        <NavigationMenu.List className="m-auto grid w-full max-w-(--breakpoint-xl) grid-flow-col grid-cols-6">
-          {menus.map((menuItem, index) => (
-            // eslint-disable-next-line react/no-array-index-key
-            <NavMenuItem key={index} menu={menuItem} />
-          ))}
-        </NavigationMenu.List>
+        <SectionContainer>
+          <NavigationMenu.List className="flex flex-wrap gap-4 py-4">
+            {menus.map((menuItem, index) => (
+              // eslint-disable-next-line react/no-array-index-key
+              <NavMenuItem key={index} menu={menuItem} />
+            ))}
+          </NavigationMenu.List>
+        </SectionContainer>
       </div>
 
       {/* Viewport represents popup div with links that appears under menu button */}

@@ -16,7 +16,7 @@ const NavMenuItem = ({ menu }: NavItemProps) => {
   const colorStyle = getCategoryColorLocalStyle({ category })
 
   return (
-    <NavigationMenu.Item>
+    <NavigationMenu.Item className="wrapper-focus-ring rounded-xs">
       <NavMenuTrigger label={menu.label} colorStyle={colorStyle} />
       <NavMenuContent sections={menu.items} colCount={menu.colCount} colorStyle={colorStyle} />
     </NavigationMenu.Item>

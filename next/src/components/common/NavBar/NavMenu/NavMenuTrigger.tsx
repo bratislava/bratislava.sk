@@ -1,7 +1,8 @@
+import { Typography } from '@bratislava/component-library'
 import * as NavigationMenu from '@radix-ui/react-navigation-menu'
 import React, { CSSProperties, forwardRef } from 'react'
 
-import StickyMenuTopper from '@/src/components/common/NavBar/NavMenu/sticky-menu-topper.svg'
+import { ChevronDownIcon } from '@/src/assets/icons'
 
 type NavMenuTriggerProps = {
   label: string
@@ -18,11 +19,15 @@ const NavMenuTrigger = forwardRef<HTMLButtonElement, NavMenuTriggerProps>(
         onPointerMove={(event) => event.preventDefault()}
         onPointerLeave={(event) => event.preventDefault()}
         style={colorStyle}
-        className="base-focus-ring group flex size-full flex-col items-center py-4 whitespace-pre-wrap ring-inset hover:font-semibold data-[state=open]:font-semibold"
+        className="group size-full items-center ring-inset hover:font-semibold data-[state=open]:font-semibold"
       >
-        {/* FIXME Typography: Convert to use Typography. */}
-        {label}
-        <StickyMenuTopper className="group:data-[state=open]:opacity-100 absolute bottom-[-7px] text-category-600 opacity-100 transition group-hover:opacity-100" />
+        <div className="-m-2 flex items-center gap-1 p-2">
+          <Typography variant="p-small">{label}</Typography>
+          <ChevronDownIcon
+            // Icon size slightly altered so that menu doesn't overflow on standard screens, margin-t added to align with menu label
+            className="mt-0.5 size-4.75 group-data-[state=open]:rotate-180"
+          />
+        </div>
       </NavigationMenu.Trigger>
     )
   },
