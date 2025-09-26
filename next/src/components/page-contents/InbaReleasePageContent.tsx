@@ -152,7 +152,7 @@ const InbaReleasePageContent = ({ inbaRelease }: Props) => {
             />
 
             {data.hits.length > 0 ? (
-              <ul className="flex flex-col rounded-lg border">
+              <ul className="flex flex-col rounded-lg border py-2">
                 {data.hits.map((article, index) => {
                   const cardData: SearchResult = {
                     title: article.title,
