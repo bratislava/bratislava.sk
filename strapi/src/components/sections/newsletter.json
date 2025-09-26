@@ -1,0 +1,32 @@
+{
+  "collectionName": "components_sections_newsletters",
+  "info": {
+    "displayName": "Newsletter"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "text": {
+      "type": "text"
+    },
+    "newsletterType": {
+      "type": "enumeration",
+      "required": true,
+      "enum": [
+        "starz"
+      ]
+    },
+    "socialLinksTitle": {
+      "type": "string"
+    },
+    "facebookUrl": {
+      "type": "string"
+    },
+    "instagramUrl": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

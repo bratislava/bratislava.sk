@@ -8,9 +8,9 @@ resources:
   - service-database.yml
   - service-meilisearch.yml
   # Add any secrets here
-  #- ./secrets/database.secret.dev.yml
-  #- ./secrets/database.secret.staging.yml
-  #- ./secrets/database.secret.prod.yml
+  #- secrets/database.secret.dev.yml
+  #- secrets/database.secret.staging.yml
+  #- secrets/database.secret.prod.yml
 configurations:
   - configuration.yml
 

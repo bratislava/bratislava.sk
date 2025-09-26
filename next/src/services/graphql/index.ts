@@ -2303,6 +2303,39 @@ export type ComponentSectionsNarrowTextInput = {
   width?: InputMaybe<Enum_Componentsectionsnarrowtext_Width>
 }
 
+export type ComponentSectionsNewsletter = {
+  __typename?: 'ComponentSectionsNewsletter'
+  facebookUrl?: Maybe<Scalars['String']['output']>
+  id: Scalars['ID']['output']
+  instagramUrl?: Maybe<Scalars['String']['output']>
+  newsletterType: Enum_Componentsectionsnewsletter_Newslettertype
+  socialLinksTitle?: Maybe<Scalars['String']['output']>
+  text?: Maybe<Scalars['String']['output']>
+  title?: Maybe<Scalars['String']['output']>
+}
+
+export type ComponentSectionsNewsletterFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentSectionsNewsletterFiltersInput>>>
+  facebookUrl?: InputMaybe<StringFilterInput>
+  instagramUrl?: InputMaybe<StringFilterInput>
+  newsletterType?: InputMaybe<StringFilterInput>
+  not?: InputMaybe<ComponentSectionsNewsletterFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<ComponentSectionsNewsletterFiltersInput>>>
+  socialLinksTitle?: InputMaybe<StringFilterInput>
+  text?: InputMaybe<StringFilterInput>
+  title?: InputMaybe<StringFilterInput>
+}
+
+export type ComponentSectionsNewsletterInput = {
+  facebookUrl?: InputMaybe<Scalars['String']['input']>
+  id?: InputMaybe<Scalars['ID']['input']>
+  instagramUrl?: InputMaybe<Scalars['String']['input']>
+  newsletterType?: InputMaybe<Enum_Componentsectionsnewsletter_Newslettertype>
+  socialLinksTitle?: InputMaybe<Scalars['String']['input']>
+  text?: InputMaybe<Scalars['String']['input']>
+  title?: InputMaybe<Scalars['String']['input']>
+}
+
 export type ComponentSectionsNumbersOverview = {
   __typename?: 'ComponentSectionsNumbersOverview'
   id: Scalars['ID']['output']
@@ -3201,6 +3234,10 @@ export enum Enum_Componentsectionsnarrowtext_Width {
   Wide = 'wide',
 }
 
+export enum Enum_Componentsectionsnewsletter_Newslettertype {
+  Starz = 'starz',
+}
+
 export enum Enum_Componentsectionsnumericallist_Variant {
   Basic = 'basic',
   Roadmap = 'roadmap',
@@ -3710,6 +3747,7 @@ export type GenericMorph =
   | ComponentSectionsInbaReleases
   | ComponentSectionsLinks
   | ComponentSectionsNarrowText
+  | ComponentSectionsNewsletter
   | ComponentSectionsNumbersOverview
   | ComponentSectionsNumericalList
   | ComponentSectionsOfficialBoard
@@ -5032,6 +5070,7 @@ export type PageSectionsDynamicZone =
   | ComponentSectionsInbaReleases
   | ComponentSectionsLinks
   | ComponentSectionsNarrowText
+  | ComponentSectionsNewsletter
   | ComponentSectionsNumbersOverview
   | ComponentSectionsNumericalList
   | ComponentSectionsOfficialBoard
@@ -6952,6 +6991,7 @@ export type AllFilesQuery = {
       | { __typename?: 'ComponentSectionsInbaReleases' }
       | { __typename?: 'ComponentSectionsLinks' }
       | { __typename?: 'ComponentSectionsNarrowText' }
+      | { __typename?: 'ComponentSectionsNewsletter' }
       | { __typename?: 'ComponentSectionsNumbersOverview' }
       | { __typename?: 'ComponentSectionsNumericalList' }
       | { __typename?: 'ComponentSectionsOfficialBoard' }
@@ -10123,6 +10163,15 @@ export type PageEntityFragment = {
         width?: Enum_Componentsectionsnarrowtext_Width | null
       }
     | {
+        __typename: 'ComponentSectionsNewsletter'
+        title?: string | null
+        text?: string | null
+        newsletterType: Enum_Componentsectionsnewsletter_Newslettertype
+        socialLinksTitle?: string | null
+        facebookUrl?: string | null
+        instagramUrl?: string | null
+      }
+    | {
         __typename: 'ComponentSectionsNumbersOverview'
         title?: string | null
         text?: string | null
@@ -11282,6 +11331,15 @@ export type PageBySlugQuery = {
           __typename: 'ComponentSectionsNarrowText'
           content?: string | null
           width?: Enum_Componentsectionsnarrowtext_Width | null
+        }
+      | {
+          __typename: 'ComponentSectionsNewsletter'
+          title?: string | null
+          text?: string | null
+          newsletterType: Enum_Componentsectionsnewsletter_Newslettertype
+          socialLinksTitle?: string | null
+          facebookUrl?: string | null
+          instagramUrl?: string | null
         }
       | {
           __typename: 'ComponentSectionsNumbersOverview'
@@ -12469,6 +12527,15 @@ export type Dev_AllPagesQuery = {
           __typename: 'ComponentSectionsNarrowText'
           content?: string | null
           width?: Enum_Componentsectionsnarrowtext_Width | null
+        }
+      | {
+          __typename: 'ComponentSectionsNewsletter'
+          title?: string | null
+          text?: string | null
+          newsletterType: Enum_Componentsectionsnewsletter_Newslettertype
+          socialLinksTitle?: string | null
+          facebookUrl?: string | null
+          instagramUrl?: string | null
         }
       | {
           __typename: 'ComponentSectionsNumbersOverview'
@@ -14698,6 +14765,16 @@ export type OpeningHoursItemFragment = {
   value: string
 }
 
+export type NewsletterSectionFragment = {
+  __typename?: 'ComponentSectionsNewsletter'
+  title?: string | null
+  text?: string | null
+  newsletterType: Enum_Componentsectionsnewsletter_Newslettertype
+  socialLinksTitle?: string | null
+  facebookUrl?: string | null
+  instagramUrl?: string | null
+}
+
 type Sections_ComponentSectionsAccordion_Fragment = {
   __typename: 'ComponentSectionsAccordion'
   title?: string | null
@@ -15273,6 +15350,16 @@ type Sections_ComponentSectionsNarrowText_Fragment = {
   width?: Enum_Componentsectionsnarrowtext_Width | null
 }
 
+type Sections_ComponentSectionsNewsletter_Fragment = {
+  __typename: 'ComponentSectionsNewsletter'
+  title?: string | null
+  text?: string | null
+  newsletterType: Enum_Componentsectionsnewsletter_Newslettertype
+  socialLinksTitle?: string | null
+  facebookUrl?: string | null
+  instagramUrl?: string | null
+}
+
 type Sections_ComponentSectionsNumbersOverview_Fragment = {
   __typename: 'ComponentSectionsNumbersOverview'
   title?: string | null
@@ -15721,6 +15808,7 @@ export type SectionsFragment =
   | Sections_ComponentSectionsInbaReleases_Fragment
   | Sections_ComponentSectionsLinks_Fragment
   | Sections_ComponentSectionsNarrowText_Fragment
+  | Sections_ComponentSectionsNewsletter_Fragment
   | Sections_ComponentSectionsNumbersOverview_Fragment
   | Sections_ComponentSectionsNumericalList_Fragment
   | Sections_ComponentSectionsOfficialBoard_Fragment
@@ -17193,6 +17281,16 @@ export const OpeningHoursSectionFragmentDoc = gql`
   }
   ${OpeningHoursItemFragmentDoc}
 `
+export const NewsletterSectionFragmentDoc = gql`
+  fragment NewsletterSection on ComponentSectionsNewsletter {
+    title
+    text
+    newsletterType
+    socialLinksTitle
+    facebookUrl
+    instagramUrl
+  }
+`
 export const SectionsFragmentDoc = gql`
   fragment Sections on PageSectionsDynamicZone {
     __typename
@@ -17295,6 +17393,9 @@ export const SectionsFragmentDoc = gql`
     ... on ComponentSectionsOpeningHours {
       ...OpeningHoursSection
     }
+    ... on ComponentSectionsNewsletter {
+      ...NewsletterSection
+    }
   }
   ${DividerSectionFragmentDoc}
   ${TextWithImageSectionFragmentDoc}
@@ -17329,6 +17430,7 @@ export const SectionsFragmentDoc = gql`
   ${FacilitiesSectionFragmentDoc}
   ${StarzLandingPageSectionFragmentDoc}
   ${OpeningHoursSectionFragmentDoc}
+  ${NewsletterSectionFragmentDoc}
 `
 export const SidebarsFragmentDoc = gql`
   fragment Sidebars on PageSidebarDynamicZone {
