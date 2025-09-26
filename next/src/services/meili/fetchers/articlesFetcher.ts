@@ -6,8 +6,8 @@ export type ArticlesFilters = {
   search: string
   pageSize: number
   page: number
-  tagDocumentIds: string[]
-  adminGroupDocumentIds: string[]
+  tagDocumentIds?: string[]
+  adminGroupDocumentIds?: string[]
 }
 
 export const articlesDefaultFilters: ArticlesFilters = {
@@ -33,10 +33,10 @@ export const articlesFetcher = (filters: ArticlesFilters, locale: string) => {
       filter: [
         'type = "article"',
         `locale = ${locale}`,
-        filters.tagDocumentIds?.length > 0
+        filters.tagDocumentIds?.length
           ? `article.tag.documentId IN [${filters.tagDocumentIds.join(',')}]`
           : '',
-        filters.adminGroupDocumentIds?.length > 0
+        filters.adminGroupDocumentIds?.length
           ? `article.adminGroups.documentId IN [${filters.adminGroupDocumentIds.join(',')}]`
           : '',
       ],

@@ -196,8 +196,6 @@ const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
     search: searchValue,
     page: currentPage,
     pageSize: 12,
-    // tagDocumentIds need to be here for now, because Articles and InbaArticle fetchers filter by tagDocumentIds
-    tagDocumentIds: [],
     // Official board category id
     categoryId: !categoryId || categoryId === 'all' ? undefined : categoryId,
     publicationState: publicationState ?? undefined,
