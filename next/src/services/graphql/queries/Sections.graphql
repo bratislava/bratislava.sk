@@ -500,6 +500,15 @@ fragment OpeningHoursItem on ComponentBlocksOpeningHoursItem {
   value
 }
 
+fragment NewsletterSection on ComponentSectionsNewsletter {
+  title
+  text
+  newsletterType
+  socialLinksTitle
+  facebookUrl
+  instagramUrl
+}
+
 fragment Sections on PageSectionsDynamicZone {
   __typename
 
@@ -635,6 +644,10 @@ fragment Sections on PageSectionsDynamicZone {
 
   ... on ComponentSectionsOpeningHours {
     ...OpeningHoursSection
+  }
+  
+  ... on ComponentSectionsNewsletter {
+    ...NewsletterSection
   }
 }
 
