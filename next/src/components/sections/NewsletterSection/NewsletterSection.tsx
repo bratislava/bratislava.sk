@@ -58,11 +58,11 @@ const NewsletterSection = ({ section }: Props) => {
   }
 
   const subscribeToNewsletterMutation = useMutation({
-    mutationFn: (emailToSubscribeeeee: string) =>
+    mutationFn: (emailToSubscribe: string) =>
       axios.post(
         newsletterEndpointsMap[newsletterType],
         {
-          email: emailToSubscribeeeee,
+          email: emailToSubscribe,
         },
         {
           headers: {
@@ -134,7 +134,7 @@ const NewsletterSection = ({ section }: Props) => {
             </div>
           </div>
         </div>
-        <div className="flex grow flex-col gap-4 lg:min-w-100 lg:gap-6 lg:rounded-lg lg:border lg:border-border-passive-primary lg:p-8">
+        <div className="flex grow flex-col gap-4 lg:min-w-100 lg:gap-6 lg:rounded-lg lg:border lg:p-8">
           <div className="flex flex-col gap-2">
             <Input
               ref={inputRef}
@@ -159,11 +159,7 @@ const NewsletterSection = ({ section }: Props) => {
               </Typography>
             ) : null}
           </div>
-          <Button
-            variant="solid"
-            onPress={() => handleSubmit(email)}
-            className="ring-border-active-focused"
-          >
+          <Button variant="solid" onPress={() => handleSubmit(email)}>
             {t('NewsletterSection.subscribeButton')}
           </Button>
         </div>
