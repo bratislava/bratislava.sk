@@ -8,7 +8,10 @@ import Spinner from '@/src/components/common/Spinner/Spinner'
 import SectionContainer from '@/src/components/layouts/SectionContainer'
 import SectionHeader from '@/src/components/layouts/SectionHeader'
 import { TootootEventsSectionFragment } from '@/src/services/graphql'
-import { getTootootEvents, getTootootEventsQueryKey } from '@/src/services/tootoot/tootootEvents.fetcher'
+import {
+  getTootootEvents,
+  getTootootEventsQueryKey,
+} from '@/src/services/tootoot/tootootEvents.fetcher'
 import cn from '@/src/utils/cn'
 import { generateImageSizes } from '@/src/utils/generateImageSizes'
 import { getLinkProps } from '@/src/utils/getLinkProps'
