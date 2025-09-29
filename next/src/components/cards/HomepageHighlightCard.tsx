@@ -27,7 +27,7 @@ const HomepageHighlightCard = ({
   className,
   ...rest
 }: Props) => {
-  const { children: title, ...linkPropsRest } = linkProps
+  const { children: title, ...restLinkProps } = linkProps
 
   return (
     <CardBase className={cn('flex flex-col rounded-lg lg:flex-row', className)} {...rest}>
@@ -36,11 +36,11 @@ const HomepageHighlightCard = ({
       <CardContent className="grow gap-2 lg:px-10 lg:py-8">
         <Button
           variant="link"
-          {...linkPropsRest}
+          {...restLinkProps}
           stretched
           fullWidth
           className="items-start justify-between [&>svg]:mt-0.5 lg:[&>svg]:-mr-2" // align link icon with first line and into right corner
-          hasLinkIcon={linkPropsRest.target === '_blank'}
+          hasLinkIcon={restLinkProps.target === '_blank'}
         >
           <Typography variant="h5" as="h3" className="line-clamp-3">
             {title}
