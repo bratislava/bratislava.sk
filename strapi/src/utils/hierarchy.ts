@@ -40,10 +40,11 @@ export async function handleHierarchyBeforeCreate(
   //  - connected to DRAFT (never published page)
   const newParentId = newData.parent?.set?.[0]?.id
   const newSlug = newData.slug
+  const locale = newData.locale ?? 'sk'
 
   // Here we need use `connection` and `knex` to get the old published data
   // `strapi.documents` or `strapi.db.query` does not return the old published data here (strapi issue/future)
-  const oldDataPublished = await getOldPublishedDocument(newData.documentId)
+  const oldDataPublished = await getOldPublishedDocument(newData.documentId, locale)
 
   log(`beforeCreate ${documentType}`, {
     newData,
@@ -73,7 +74,7 @@ const getFunctionsForDocumentType = (documentType: DocumentType) => {
   switch (documentType) {
     case "api::page.page": {
       return {
-        getOldPublishedDocument: (documentId: ID) =>
+        getOldPublishedDocument: (documentId: ID, locale: string) =>
           strapi.db
             .connection("pages")
             .leftJoin(
@@ -88,6 +89,7 @@ const getFunctionsForDocumentType = (documentType: DocumentType) => {
             )
             .select(["pages.*", "parent_pages.id as parent_id"])
             .where("pages.document_id", documentId)
+            .where("pages.locale", locale)
             .whereNotNull("pages.published_at")
             .first(),
       }
