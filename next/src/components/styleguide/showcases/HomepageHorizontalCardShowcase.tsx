@@ -1,6 +1,6 @@
 import React from 'react'
 
-import HomepageHorizontalCard from '@/src/components/cards/HomepageHorizontalCard'
+import HomepageHighlightCard from '@/src/components/cards/HomepageHighlightCard'
 import Wrapper from '@/src/components/styleguide/Wrapper'
 import { CommonLinkProps } from '@/src/utils/getLinkProps'
 
@@ -26,7 +26,7 @@ const HomepageHorizontalCardShowcase = () => {
       <div className="grid w-full grid-cols-1 gap-4 md:grid-cols-2">
         {cards.map((card, index) => (
           // eslint-disable-next-line react/no-array-index-key
-          <HomepageHorizontalCard key={index} {...card} />
+          <HomepageHighlightCard key={index} {...card} />
         ))}
       </div>
     </Wrapper>
