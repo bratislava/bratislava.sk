@@ -391,6 +391,7 @@
 
   /* Aspect ratio */
   --aspect-inba: 5 / 8;
+  --aspect-tootoot: 2 / 1; /* Taken as average image sizes used on tootoot.fm and bkis.sk */
 }
 
 @layer base {

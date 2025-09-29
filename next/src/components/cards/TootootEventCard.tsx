@@ -1,9 +1,9 @@
 import { Typography } from '@bratislava/component-library'
-import Image from 'next/image'
 import React, { HTMLAttributes } from 'react'
 
 import CardBase from '@/src/components/cards/CardBase'
 import CardContent from '@/src/components/cards/CardContent'
+import CardImage from '@/src/components/common/Image/CardImage'
 import MLink from '@/src/components/common/MLink/MLink'
 import FormatEventDateRange from '@/src/components/formatting/FormatEventDateRange'
 import cn from '@/src/utils/cn'
@@ -40,26 +40,31 @@ const TootootEventCard = ({
   const { t } = useTranslation()
 
   return (
-    <CardBase variant="no-border" className={cn('rounded-lg text-white', className)} {...rest}>
-      <Image src={imageSrc} alt="" fill className="absolute object-cover" sizes={imageSizes} />
-      <CardContent className="relative inline-flex size-full flex-col items-start justify-end bg-linear-to-b from-transparent to-[black] p-4 text-clip lg:p-5">
-        <div className="flex w-full flex-col items-start gap-4 self-stretch">
-          <Typography variant="h5" as="h3">
-            <MLink
-              stretched
-              variant="underlineOnHover"
-              {...getLinkProps({ label: title, url: linkHref })}
-            />
-          </Typography>
+    <CardBase
+      variant="no-border"
+      className={cn('gap-4 rounded-lg bg-transparent', className)}
+      {...rest}
+    >
+      <CardImage imgSrc={imageSrc} className="aspect-tootoot rounded-lg" sizes={imageSizes} />
 
-          <div className="flex flex-col items-start text-size-p-tiny font-medium">
-            {/* FIXME Typography: Convert to use Typography. Issue: Different size and weight than typography have */}
-            {address && <span className="line-clamp-1">{address}</span>}
-            <span className="line-clamp-1">
-              {isLongTerm && `${t('common.from')} `}
-              <FormatEventDateRange dateFrom={dateFrom} dateTo={dateTo ?? undefined} />
-            </span>
-          </div>
+      <CardContent variant="no-padding" className="grow gap-2">
+        <Typography variant="h5" as="h3">
+          <MLink
+            stretched
+            variant="underlineOnHover"
+            {...getLinkProps({ label: title, url: linkHref })}
+          />
+        </Typography>
+        <div className="flex flex-col">
+          <Typography variant="p-small">
+            {isLongTerm && `${t('common.from')} `}
+            <FormatEventDateRange dateFrom={dateFrom} dateTo={dateTo ?? undefined} />
+          </Typography>
+          {address ? (
+            <Typography variant="p-small" className="line-clamp-1">
+              {address}
+            </Typography>
+          ) : null}
         </div>
       </CardContent>
     </CardBase>
