@@ -120,7 +120,7 @@ const SectionContent = ({ section }: { section: SectionsFragment }) => {
       return <FaqCategoriesSection section={section} />
 
     case 'ComponentSectionsTootootEvents':
-      return <TootootEventsSection section={section} />
+      return <TootootEventsSection section={section} variant="grid" />
 
     case 'ComponentSectionsPartners':
       return <PartnersSection section={section} />
