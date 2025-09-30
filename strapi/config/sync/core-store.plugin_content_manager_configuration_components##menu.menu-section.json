@@ -77,20 +77,6 @@
           "sortable": true
         }
       },
-      "links": {
-        "edit": {
-          "label": "links",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "links",
-          "searchable": false,
-          "sortable": false
-        }
-      },
       "documentId": {
         "edit": {},
         "list": {
@@ -121,12 +107,6 @@
         [
           {
             "name": "page",
-            "size": 12
-          }
-        ],
-        [
-          {
-            "name": "links",
             "size": 12
           }
         ],

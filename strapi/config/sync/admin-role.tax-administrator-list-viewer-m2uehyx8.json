@@ -53,11 +53,7 @@
           "menus.icon",
           "menus.sections.label",
           "menus.sections.page",
-          "menus.sections.icon",
-          "menus.sections.links.label",
-          "menus.sections.links.page",
-          "menus.sections.links.url",
-          "menus.sections.links.analyticsId"
+          "menus.sections.icon"
         ],
         "locales": [
           "en",

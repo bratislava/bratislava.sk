@@ -100,9 +100,6 @@ fragment MenuSection on ComponentMenuMenuSection {
   page {
     ...PageSlugEntity
   }
-  links {
-    ...MenuLink
-  }
 }
 
 fragment MenuItem on ComponentMenuMenuItem {

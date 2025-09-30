@@ -7,7 +7,6 @@ import { CommonLinkProps } from '@/src/utils/getLinkProps'
 export type MenuLink = CommonLinkProps
 
 export type MenuSection = {
-  items: MenuLink[]
   colSpan: number
   label: string
   subtext?: string | null | undefined

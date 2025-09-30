@@ -60,11 +60,6 @@
     },
     "subtext": {
       "type": "string"
-    },
-    "links": {
-      "type": "component",
-      "component": "menu.menu-link",
-      "repeatable": true
     }
   }
 }

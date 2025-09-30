@@ -21,13 +21,6 @@ export const getParsedMenus = (menu: GeneralQuery['menu'], moreLabel: string): M
 
               const sectionLabel = section.label
 
-              const sectionItems =
-                section.links
-                  ?.map((menuLink) => {
-                    return getLinkProps(menuLink)
-                  })
-                  .filter(isDefined) ?? []
-
               const showMoreLink = section.page
                 ? getLinkProps({ label: moreLabel, page: section.page })
                 : undefined
@@ -36,7 +29,6 @@ export const getParsedMenus = (menu: GeneralQuery['menu'], moreLabel: string): M
 
               return {
                 label: sectionLabel,
-                items: sectionItems,
                 subtext: section.subtext,
                 showMoreLink,
                 icon: sectionIcon,

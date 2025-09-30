@@ -1291,11 +1291,7 @@
           "menus.sections.label",
           "menus.sections.page",
           "menus.sections.icon",
-          "menus.sections.subtext",
-          "menus.sections.links.label",
-          "menus.sections.links.page",
-          "menus.sections.links.url",
-          "menus.sections.links.analyticsId"
+          "menus.sections.subtext"
         ],
         "locales": [
           "sk",
@@ -1332,11 +1328,7 @@
           "menus.sections.label",
           "menus.sections.page",
           "menus.sections.icon",
-          "menus.sections.subtext",
-          "menus.sections.links.label",
-          "menus.sections.links.page",
-          "menus.sections.links.url",
-          "menus.sections.links.analyticsId"
+          "menus.sections.subtext"
         ],
         "locales": [
           "sk",
@@ -1359,11 +1351,7 @@
           "menus.sections.label",
           "menus.sections.page",
           "menus.sections.icon",
-          "menus.sections.subtext",
-          "menus.sections.links.label",
-          "menus.sections.links.page",
-          "menus.sections.links.url",
-          "menus.sections.links.analyticsId"
+          "menus.sections.subtext"
         ],
         "locales": [
           "sk",
