@@ -16,6 +16,10 @@ import { getParsedMenus } from './getParsedMenus'
 import MobileNavMenuItem from './MobileNavMenuItem'
 import { useNavMenuContext } from './navMenuContext'
 
+/**
+ * Figma: https://www.figma.com/design/17wbd0MDQcMW9NbXl6UPs8/DS--Component-library?node-id=16846-33525&m=dev
+ */
+
 const MobileNavMenu = () => {
   const { t } = useTranslation()
   const { height } = useWindowSize()
@@ -43,7 +47,7 @@ const MobileNavMenu = () => {
   return (
     <div
       className={cn(
-        'fixed top-14 left-0 z-28 flex w-screen flex-col gap-4 overflow-y-scroll bg-white px-4 py-6 lg:hidden',
+        'fixed top-14 left-0 z-28 flex w-screen flex-col gap-4 overflow-y-scroll bg-white p-4 lg:hidden',
         {
           'animate-fade-in': isMobileMenuOpen,
           'animate-fade-out': !isMobileMenuOpen,
@@ -56,7 +60,7 @@ const MobileNavMenu = () => {
         onValueChange={setMenuValue}
         aria-label={t('NavMenu.aria.navMenuLabel')}
       >
-        <NavigationMenu.List className="flex flex-col gap-2">
+        <NavigationMenu.List className="flex flex-col gap-4">
           {menus.map((menu, index) => (
             // eslint-disable-next-line react/no-array-index-key
             <MobileNavMenuItem key={index} menu={menu} />
@@ -86,7 +90,7 @@ const MobileNavMenu = () => {
               // eslint-disable-next-line react/no-array-index-key
               <li key={linkIndex} className="relative flex items-center gap-2">
                 <div aria-hidden>
-                  <Pictogram iconName={link.icon} />
+                  <Pictogram iconName={link.icon} className="size-8" />
                 </div>
                 <NavigationMenu.Link asChild onClick={() => setMobileMenuOpen(false)}>
                   <MLink variant="underlined" stretched {...getLinkProps(link)} />
@@ -98,7 +102,7 @@ const MobileNavMenu = () => {
 
         {/* Viewport represents popup div with links that appears under menu button */}
         <NavigationMenu.Viewport
-          className="fixed top-14 left-0 z-29 w-screen overflow-y-scroll data-[state=closed]:animate-exit-to-right data-[state=open]:animate-enter-from-right"
+          className="fixed top-14 left-0 z-29 w-screen overflow-y-auto data-[state=closed]:animate-exit-to-right data-[state=open]:animate-enter-from-right"
           style={{ height: `calc(${height}px - 14*4px)` }}
         />
       </NavigationMenu.Root>

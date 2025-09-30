@@ -2,9 +2,10 @@ import * as NavigationMenu from '@radix-ui/react-navigation-menu'
 import React, { CSSProperties } from 'react'
 import { ChevronLeftIcon } from 'src/assets/icons'
 
+import NavBarHorizontalDivider from '@/src/components/common/NavBar/NavMenu/NavBarHorizontalDivider'
+import NavMenuLink from '@/src/components/common/NavBar/NavMenu/NavMenuLink'
 import { useTranslation } from '@/src/utils/useTranslation'
 
-import NavBarHorizontalDivider from './NavBarHorizontalDivider'
 import { useNavMenuContext } from './navMenuContext'
 import NavMenuSection from './NavMenuSection'
 import { MenuItem } from './navMenuTypes'
@@ -14,10 +15,14 @@ type NavMenuContentProps = {
   colorStyle: CSSProperties
 }
 
+/**
+ * Figma: https://www.figma.com/design/17wbd0MDQcMW9NbXl6UPs8/DS--Component-library?node-id=19079-20827&m=dev
+ */
+
 const MobileNavMenuContent = ({ menuItem, colorStyle }: NavMenuContentProps) => {
   const { t } = useTranslation()
   const { setMenuValue } = useNavMenuContext()
-  const { items: sections, label: parentLabel } = menuItem
+  const { items: sections, label, linkHref } = menuItem
 
   return (
     <NavigationMenu.Content
@@ -25,33 +30,42 @@ const MobileNavMenuContent = ({ menuItem, colorStyle }: NavMenuContentProps) => 
       // https://github.com/radix-ui/primitives/issues/1630#issuecomment-1237106380
       onPointerMove={(event) => event.preventDefault()}
       onPointerLeave={(event) => event.preventDefault()}
-      className="bg-category-200"
+      className="bg-background-passive-base"
       style={colorStyle}
     >
-      {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */}
-      <ul className="flex w-full flex-col gap-2 px-4 py-8">
-        <li className="w-full">
+      <ul className="flex flex-col">
+        <li className="p-4">
           {/* Our Button (implemented by react-aria-components) is not compatible with radix and causes press events problem on mobile */}
           <button
             type="button"
             onClick={() => setMenuValue('')}
-            className="-my-2 -ml-4 flex w-full gap-2 px-4 py-2"
-            aria-label={t('NavMenu.aria.backTo', { backTo: parentLabel })}
+            className="-my-2 -ml-4 flex w-full gap-2 px-4 py-2 font-medium underline underline-offset-2"
           >
             <ChevronLeftIcon aria-hidden />
-            {parentLabel}
+            {t('MobileNavMenuContent.goBackToMainCategories')}
           </button>
         </li>
 
-        <NavBarHorizontalDivider categoryColor />
+        <NavBarHorizontalDivider className="mb-3" />
 
-        {/* eslint-disable react/no-array-index-key */}
         {sections.map((section, index) => {
-          return (
-            <NavMenuSection key={index} section={section} classNames={index === 0 ? '' : 'pt-8'} />
-          )
+          // eslint-disable-next-line react/no-array-index-key
+          return <NavMenuSection key={index} section={section} />
         })}
-        {/* eslint-enable react/no-array-index-key */}
+
+        <NavBarHorizontalDivider className="mt-3" />
+
+        <li className="p-4">
+          <NavMenuLink
+            variant="goToCategoryLink"
+            href={linkHref}
+            ariaLabel={t('NavMenuContent.aria.goToCategory', {
+              category: label,
+            })}
+          >
+            {t('NavMenuContent.goToCategory')}
+          </NavMenuLink>
+        </li>
       </ul>
     </NavigationMenu.Content>
   )

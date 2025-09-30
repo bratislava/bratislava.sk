@@ -37,6 +37,7 @@ export const getParsedMenus = (menu: GeneralQuery['menu'], moreLabel: string): M
               return {
                 label: sectionLabel,
                 items: sectionItems,
+                subtext: section.subtext,
                 showMoreLink,
                 icon: sectionIcon,
                 colSpan: 1,
