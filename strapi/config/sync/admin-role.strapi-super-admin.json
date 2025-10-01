@@ -1499,7 +1499,11 @@
           "menus.sections.label",
           "menus.sections.page",
           "menus.sections.icon",
-          "menus.sections.subtext"
+          "menus.sections.subtext",
+          "menus.sections.links.label",
+          "menus.sections.links.page",
+          "menus.sections.links.url",
+          "menus.sections.links.analyticsId"
         ],
         "locales": [
           "sk",
@@ -1508,7 +1512,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "xcgy4kk7ulgk893cd4q3mdq1",
+      "documentId": "bext466soim10ex0fo50vat6",
       "locale": null
     },
     {
@@ -1550,7 +1554,11 @@
           "menus.sections.label",
           "menus.sections.page",
           "menus.sections.icon",
-          "menus.sections.subtext"
+          "menus.sections.subtext",
+          "menus.sections.links.label",
+          "menus.sections.links.page",
+          "menus.sections.links.url",
+          "menus.sections.links.analyticsId"
         ],
         "locales": [
           "sk",
@@ -1559,7 +1567,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "lkoyf6lmon4des4qxx1zbtpz",
+      "documentId": "z6ow0qddhto2biyxntmuf1q3",
       "locale": null
     },
     {
@@ -1573,7 +1581,11 @@
           "menus.sections.label",
           "menus.sections.page",
           "menus.sections.icon",
-          "menus.sections.subtext"
+          "menus.sections.subtext",
+          "menus.sections.links.label",
+          "menus.sections.links.page",
+          "menus.sections.links.url",
+          "menus.sections.links.analyticsId"
         ],
         "locales": [
           "sk",
@@ -1582,7 +1594,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "gul0sqf5rba3fi7hh2uqzbmb",
+      "documentId": "yk57cth0rvd4kyb9x4tnq4am",
       "locale": null
     },
     {

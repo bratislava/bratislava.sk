@@ -525,6 +525,7 @@ export interface MenuMenuSection extends Struct.ComponentSchema {
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<'sprava_mesta_01'>
     label: Schema.Attribute.String & Schema.Attribute.Required
+    links: Schema.Attribute.Component<'menu.menu-link', true>
     page: Schema.Attribute.Relation<'oneToOne', 'api::page.page'>
     subtext: Schema.Attribute.String
   }

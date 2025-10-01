@@ -1347,14 +1347,22 @@ export type ComponentMenuMenuSection = {
   icon: Enum_Componentmenumenusection_Icon
   id: Scalars['ID']['output']
   label: Scalars['String']['output']
+  links?: Maybe<Array<Maybe<ComponentMenuMenuLink>>>
   page?: Maybe<Page>
   subtext?: Maybe<Scalars['String']['output']>
+}
+
+export type ComponentMenuMenuSectionLinksArgs = {
+  filters?: InputMaybe<ComponentMenuMenuLinkFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
 }
 
 export type ComponentMenuMenuSectionFiltersInput = {
   and?: InputMaybe<Array<InputMaybe<ComponentMenuMenuSectionFiltersInput>>>
   icon?: InputMaybe<StringFilterInput>
   label?: InputMaybe<StringFilterInput>
+  links?: InputMaybe<ComponentMenuMenuLinkFiltersInput>
   not?: InputMaybe<ComponentMenuMenuSectionFiltersInput>
   or?: InputMaybe<Array<InputMaybe<ComponentMenuMenuSectionFiltersInput>>>
   page?: InputMaybe<PageFiltersInput>
@@ -1365,6 +1373,7 @@ export type ComponentMenuMenuSectionInput = {
   icon?: InputMaybe<Enum_Componentmenumenusection_Icon>
   id?: InputMaybe<Scalars['ID']['input']>
   label?: InputMaybe<Scalars['String']['input']>
+  links?: InputMaybe<Array<InputMaybe<ComponentMenuMenuLinkInput>>>
   page?: InputMaybe<Scalars['ID']['input']>
   subtext?: InputMaybe<Scalars['String']['input']>
 }
@@ -7230,6 +7239,20 @@ export type MenuSectionFragment = {
     title: string
     locale?: string | null
   } | null
+  links?: Array<{
+    __typename?: 'ComponentMenuMenuLink'
+    id: string
+    label?: string | null
+    url?: string | null
+    analyticsId?: string | null
+    page?: {
+      __typename?: 'Page'
+      documentId: string
+      slug?: string | null
+      title: string
+      locale?: string | null
+    } | null
+  } | null> | null
 }
 
 export type MenuItemFragment = {
@@ -7257,6 +7280,20 @@ export type MenuItemFragment = {
       title: string
       locale?: string | null
     } | null
+    links?: Array<{
+      __typename?: 'ComponentMenuMenuLink'
+      id: string
+      label?: string | null
+      url?: string | null
+      analyticsId?: string | null
+      page?: {
+        __typename?: 'Page'
+        documentId: string
+        slug?: string | null
+        title: string
+        locale?: string | null
+      } | null
+    } | null> | null
   } | null> | null
 }
 
@@ -7887,6 +7924,20 @@ export type GeneralQuery = {
           title: string
           locale?: string | null
         } | null
+        links?: Array<{
+          __typename?: 'ComponentMenuMenuLink'
+          id: string
+          label?: string | null
+          url?: string | null
+          analyticsId?: string | null
+          page?: {
+            __typename?: 'Page'
+            documentId: string
+            slug?: string | null
+            title: string
+            locale?: string | null
+          } | null
+        } | null> | null
       } | null> | null
     } | null> | null
   } | null
@@ -16082,8 +16133,12 @@ export const MenuSectionFragmentDoc = gql`
     page {
       ...PageSlugEntity
     }
+    links {
+      ...MenuLink
+    }
   }
   ${PageSlugEntityFragmentDoc}
+  ${MenuLinkFragmentDoc}
 `
 export const MenuItemFragmentDoc = gql`
   fragment MenuItem on ComponentMenuMenuItem {

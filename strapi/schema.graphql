@@ -1097,6 +1097,7 @@ type ComponentMenuMenuSection {
   icon: ENUM_COMPONENTMENUMENUSECTION_ICON!
   id: ID!
   label: String!
+  links(filters: ComponentMenuMenuLinkFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentMenuMenuLink]
   page: Page
   subtext: String
 }
@@ -1105,6 +1106,7 @@ input ComponentMenuMenuSectionFiltersInput {
   and: [ComponentMenuMenuSectionFiltersInput]
   icon: StringFilterInput
   label: StringFilterInput
+  links: ComponentMenuMenuLinkFiltersInput
   not: ComponentMenuMenuSectionFiltersInput
   or: [ComponentMenuMenuSectionFiltersInput]
   page: PageFiltersInput
@@ -1115,6 +1117,7 @@ input ComponentMenuMenuSectionInput {
   icon: ENUM_COMPONENTMENUMENUSECTION_ICON
   id: ID
   label: String
+  links: [ComponentMenuMenuLinkInput]
   page: ID
   subtext: String
 }
