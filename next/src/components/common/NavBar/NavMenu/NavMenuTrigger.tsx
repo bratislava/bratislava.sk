@@ -22,7 +22,15 @@ const NavMenuTrigger = forwardRef<HTMLButtonElement, NavMenuTriggerProps>(
         className="group size-full items-center ring-inset hover:font-semibold data-[state=open]:font-semibold"
       >
         <div className="-m-2 flex items-center gap-1 p-2">
-          <Typography variant="p-small">{label}</Typography>
+          <div className="relative">
+            {/* Invisible semibold label added to prevent layout shifting when text weight changes */}
+            <Typography variant="p-small" className="invisible font-semibold" aria-hidden>
+              {label}
+            </Typography>
+            <Typography variant="p-small" className="absolute inset-0">
+              {label}
+            </Typography>
+          </div>
           <ChevronDownIcon
             // Icon size slightly altered so that menu doesn't overflow on standard screens, margin-t added to align with menu label
             className="mt-0.5 size-4.75 group-data-[state=open]:rotate-180"
