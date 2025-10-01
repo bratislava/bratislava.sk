@@ -2,9 +2,15 @@ import React from 'react'
 
 import HorizontalDivider from '@/src/components/common/Divider/HorizontalDivider'
 
-const NavBarHorizontalDivider = ({ categoryColor }: { categoryColor?: boolean }) => (
-  <li aria-hidden className="py-2">
-    <HorizontalDivider categoryColor={categoryColor} />
+const NavBarHorizontalDivider = ({
+  categoryColor,
+  className,
+}: {
+  categoryColor?: boolean
+  className?: string
+}) => (
+  <li aria-hidden>
+    <HorizontalDivider categoryColor={categoryColor} className={className} />
   </li>
 )
 

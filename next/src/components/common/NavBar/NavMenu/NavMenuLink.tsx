@@ -9,34 +9,39 @@ import { MenuLink } from './navMenuTypes'
 // https://www.radix-ui.com/docs/primitives/components/navigation-menu#with-client-side-routing
 
 type NavMenuLinkProps = {
-  variant?: 'simple' | 'showMoreLink'
+  variant: 'menuSectionLink' | 'goToCategoryLink'
+  ariaLabel?: string
 } & MenuLink
 
-const NavMenuLink = ({ variant = 'simple', ...rest }: NavMenuLinkProps) => {
+const NavMenuLink = ({ variant, ariaLabel, ...rest }: NavMenuLinkProps) => {
   const { setMobileMenuOpen } = useNavMenuContext()
 
   switch (variant) {
-    case 'simple':
+    case 'menuSectionLink':
       return (
-        <li className="flex">
-          <NavigationMenu.Link asChild onClick={() => setMobileMenuOpen(false)}>
-            {/* Using Button with custom styles to be able to show link icon easily, not ideal, but it works */}
-            <Button
-              variant="link"
-              className="w-full justify-start py-1 font-normal no-underline hover:underline"
-              size="small"
-              {...rest}
-              hasLinkIcon={rest.target === '_blank'}
-            />
-          </NavigationMenu.Link>
-        </li>
+        <NavigationMenu.Link asChild onClick={() => setMobileMenuOpen(false)}>
+          {/* Using Button with custom styles to be able to show link icon easily, not ideal, but it works */}
+          <Button
+            variant="link"
+            className="w-full justify-between py-1 font-normal no-underline hover:underline"
+            size="small"
+            aria-label={ariaLabel}
+            {...rest}
+            stretched
+          />
+        </NavigationMenu.Link>
       )
 
-    case 'showMoreLink':
+    case 'goToCategoryLink':
       return (
         <li className="flex">
-          <NavigationMenu.Link asChild onClick={() => setMobileMenuOpen(false)}>
-            <Button variant="link" className="mt-2" {...rest} />
+          <NavigationMenu.Link
+            asChild
+            aria-label={ariaLabel}
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            {/* flex-row-reverse used to have the icon on the left side */}
+            <Button variant="link" className="flex-row-reverse" {...rest} />
           </NavigationMenu.Link>
         </li>
       )

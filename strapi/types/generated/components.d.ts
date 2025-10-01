@@ -455,7 +455,7 @@ export interface MenuMenuItem extends Struct.ComponentSchema {
     > &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<'mesto_01'>
-    label: Schema.Attribute.Text & Schema.Attribute.Required
+    label: Schema.Attribute.String & Schema.Attribute.Required
     page: Schema.Attribute.Relation<'oneToOne', 'api::page.page'>
     sections: Schema.Attribute.Component<'menu.menu-section', true>
   }

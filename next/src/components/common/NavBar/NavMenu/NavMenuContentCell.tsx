@@ -6,6 +6,10 @@ type NavMenuCellProps = {
   colSpan: number
 }
 
+/**
+ * Figma: https://www.figma.com/design/17wbd0MDQcMW9NbXl6UPs8/DS--Component-library?node-id=19079-20827&m=dev
+ */
+
 const NavMenuContentCell = ({ colSpan, children }: PropsWithChildren<NavMenuCellProps>) => {
   return (
     <div
