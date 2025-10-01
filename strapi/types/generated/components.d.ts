@@ -943,6 +943,21 @@ export interface SectionsNarrowText extends Struct.ComponentSchema {
   }
 }
 
+export interface SectionsNewsletter extends Struct.ComponentSchema {
+  collectionName: 'components_sections_newsletters'
+  info: {
+    displayName: 'Newsletter'
+  }
+  attributes: {
+    facebookUrl: Schema.Attribute.String
+    instagramUrl: Schema.Attribute.String
+    newsletterType: Schema.Attribute.Enumeration<['starz']> & Schema.Attribute.Required
+    socialLinksTitle: Schema.Attribute.String
+    text: Schema.Attribute.Text
+    title: Schema.Attribute.String
+  }
+}
+
 export interface SectionsNumbersOverview extends Struct.ComponentSchema {
   collectionName: 'components_sections_numbers_overviews'
   info: {
@@ -1269,6 +1284,7 @@ declare module '@strapi/strapi' {
       'sections.inba-releases': SectionsInbaReleases
       'sections.links': SectionsLinks
       'sections.narrow-text': SectionsNarrowText
+      'sections.newsletter': SectionsNewsletter
       'sections.numbers-overview': SectionsNumbersOverview
       'sections.numerical-list': SectionsNumericalList
       'sections.official-board': SectionsOfficialBoard

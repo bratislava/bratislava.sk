@@ -21,6 +21,7 @@ import InbaArticlesListSection from '@/src/components/sections/InbaArticlesListS
 import InbaReleasesSection from '@/src/components/sections/InbaReleasesSection'
 import LinksSection from '@/src/components/sections/LinksSection'
 import NarrowTextSection from '@/src/components/sections/NarrowTextSection'
+import NewsletterSection from '@/src/components/sections/NewsletterSection/NewsletterSection'
 import NumbersOverviewSection from '@/src/components/sections/NumbersOverviewSection'
 import NumericalListSection from '@/src/components/sections/NumericalListSection_Deprecated/NumericalListSection'
 import OfficialBoardSection from '@/src/components/sections/OfficialBoardSection/OfficialBoardSection'
@@ -119,7 +120,7 @@ const SectionContent = ({ section }: { section: SectionsFragment }) => {
       return <FaqCategoriesSection section={section} />
 
     case 'ComponentSectionsTootootEvents':
-      return <TootootEventsSection section={section} />
+      return <TootootEventsSection section={section} variant="grid" />
 
     case 'ComponentSectionsPartners':
       return <PartnersSection section={section} />
@@ -144,6 +145,9 @@ const SectionContent = ({ section }: { section: SectionsFragment }) => {
 
     case 'ComponentSectionsOpeningHours':
       return <OpeningHoursSection section={section} />
+
+    case 'ComponentSectionsNewsletter':
+      return <NewsletterSection section={section} />
 
     default:
       return null

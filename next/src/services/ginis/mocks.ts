@@ -7,9 +7,10 @@ import {
   ParsedOfficialBoardDocumentDetail,
 } from '@/src/services/ginis/types'
 
+// Document ids must start with # with at least one digit following
 export const mockedParsedDocuments: ParsedOfficialBoardDocument[] = [
   {
-    id: 'mock-1',
+    id: '#1',
     title: 'Mocked document title 1',
     publishedFrom: '2022-01-01',
     description: 'hello world',
@@ -17,7 +18,7 @@ export const mockedParsedDocuments: ParsedOfficialBoardDocument[] = [
     categoryName: 'Mocked category name 1',
   },
   {
-    id: 'mock-2',
+    id: '#2',
     title: 'Mocked document title 1',
     publishedFrom: '2022-01-01',
     description: 'hello world',
@@ -25,7 +26,7 @@ export const mockedParsedDocuments: ParsedOfficialBoardDocument[] = [
     categoryName: 'Mocked category name 2',
   },
   {
-    id: 'mock-3',
+    id: '#3',
     title: 'Mocked document title 1',
     publishedFrom: '2022-01-01',
     description: 'hello world',
@@ -56,7 +57,7 @@ export const getALotOfMockedDocs = async () => {
 }
 
 export const mockedParsedDocumentDetail: ParsedOfficialBoardDocumentDetail = {
-  id: 'mocked-document-1',
+  id: '#1',
   title: 'Mocked document title 1',
   publishedFrom: '2022-01-01',
   description: 'hello world',

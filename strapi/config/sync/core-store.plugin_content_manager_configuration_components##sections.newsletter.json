@@ -1,0 +1,165 @@
+{
+  "key": "plugin_content_manager_configuration_components::sections.newsletter",
+  "value": {
+    "settings": {
+      "bulkable": true,
+      "filterable": true,
+      "searchable": true,
+      "pageSize": 10,
+      "mainField": "title",
+      "defaultSortBy": "title",
+      "defaultSortOrder": "ASC"
+    },
+    "metadatas": {
+      "id": {
+        "edit": {},
+        "list": {
+          "label": "id",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "title": {
+        "edit": {
+          "label": "Nadpis",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "title",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "text": {
+        "edit": {
+          "label": "Text",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "text",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "newsletterType": {
+        "edit": {
+          "label": "Typ newslettra",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "newsletterType",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "socialLinksTitle": {
+        "edit": {
+          "label": "Nadpis nad ikonkami sociálnych sietí",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "socialLinksTitle",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "facebookUrl": {
+        "edit": {
+          "label": "Facebook Url",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "facebookUrl",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "instagramUrl": {
+        "edit": {
+          "label": "Instagram Url",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "instagramUrl",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "documentId": {
+        "edit": {},
+        "list": {
+          "label": "documentId",
+          "searchable": true,
+          "sortable": true
+        }
+      }
+    },
+    "layouts": {
+      "list": [
+        "id",
+        "title",
+        "text",
+        "socialLinksTitle"
+      ],
+      "edit": [
+        [
+          {
+            "name": "title",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "text",
+            "size": 12
+          }
+        ],
+                [
+          {
+            "name": "newsletterType",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "socialLinksTitle",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "facebookUrl",
+            "size": 6
+          },
+          {
+            "name": "instagramUrl",
+            "size": 6
+          }
+        ]
+      ]
+    },
+    "uid": "sections.newsletter",
+    "isComponent": true
+  },
+  "type": "object",
+  "environment": null,
+  "tag": null
+}

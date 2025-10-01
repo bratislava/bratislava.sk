@@ -1,17 +1,13 @@
 import React, { Fragment } from 'react'
 
-import ArticleCardOld from '@/src/components/cards/ArticleCardOld'
-import HomepageHorizontalCard from '@/src/components/cards/HomepageHorizontalCard'
+import HomepageHighlightCard from '@/src/components/cards/HomepageHighlightCard'
 import ResponsiveCarousel from '@/src/components/common/Carousel/ResponsiveCarousel'
 import SectionHeader from '@/src/components/layouts/SectionHeader'
 import { useHomepageContext } from '@/src/components/providers/HomepageContextProvider'
 import { getLinkProps } from '@/src/utils/getLinkProps'
 import { isDefined } from '@/src/utils/isDefined'
-import { useTranslation } from '@/src/utils/useTranslation'
 
 const HighlightsHomepageSection = () => {
-  const { t } = useTranslation()
-
   const { homepage } = useHomepageContext()
   const { highlights } = homepage ?? {}
   const { title, text, cards } = highlights ?? {}
@@ -19,7 +15,7 @@ const HighlightsHomepageSection = () => {
   const filteredHighlights = cards?.filter(isDefined) ?? []
 
   return (
-    <div className="negative-x-spacing py-8 lg:pt-18">
+    <div className="flex flex-col py-8 lg:pt-18">
       <SectionHeader title={title} text={text} isCentered />
 
       <ResponsiveCarousel
@@ -28,27 +24,14 @@ const HighlightsHomepageSection = () => {
         tablet={2}
         desktop={2}
         items={filteredHighlights.map((highlight) => {
-          const { children: postTitle, ...linkProps } = getLinkProps(highlight.link)
+          const linkProps = getLinkProps(highlight)
 
           return (
             <Fragment key={highlight.id}>
-              <ArticleCardOld
-                className="lg:hidden"
-                title={postTitle}
-                linkProps={{
-                  children: t('readMore'),
-                  ...linkProps,
-                }}
-                imgSrc={highlight.image.url}
-              />
-              <HomepageHorizontalCard
-                className="max-lg:hidden"
+              <HomepageHighlightCard
                 variant="no-border"
-                title={postTitle ?? ''}
-                linkProps={{
-                  children: t('readMore'),
-                  ...linkProps,
-                }}
+                linkProps={linkProps}
+                subtext={highlight.subtext ?? undefined}
                 imgSrc={highlight.image.url}
               />
             </Fragment>
