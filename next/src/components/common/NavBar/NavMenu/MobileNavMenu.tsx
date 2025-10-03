@@ -47,7 +47,7 @@ const MobileNavMenu = () => {
   return (
     <div
       className={cn(
-        'fixed top-14 left-0 z-28 flex w-screen flex-col gap-4 overflow-y-scroll bg-white p-4 lg:hidden',
+        'fixed top-14 left-0 z-28 flex w-screen flex-col gap-4 overflow-y-auto bg-white p-4 lg:hidden',
         {
           'animate-fade-in': isMobileMenuOpen,
           'animate-fade-out': !isMobileMenuOpen,
