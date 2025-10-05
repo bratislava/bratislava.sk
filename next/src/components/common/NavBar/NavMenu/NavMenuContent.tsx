@@ -4,7 +4,7 @@ import { CSSProperties, useMemo } from 'react'
 import HorizontalDivider from '@/src/components/common/Divider/HorizontalDivider'
 import NavMenuLink from '@/src/components/common/NavBar/NavMenu/NavMenuLink'
 import cn from '@/src/utils/cn'
-import { useTranslation } from '@/src/utils/useTranslation'
+import { CommonLinkProps } from '@/src/utils/getLinkProps'
 
 import NavMenuContentCell from './NavMenuContentCell'
 import NavMenuSection from './NavMenuSection'
@@ -14,8 +14,7 @@ type NavMenuContentProps = {
   colCount: number
   sections: MenuSection[]
   colorStyle: CSSProperties
-  parentLabel: string
-  parentHref: string
+  seeAllLinkProps: CommonLinkProps
 }
 
 /**
@@ -26,11 +25,8 @@ const NavMenuContent = ({
   colCount,
   sections,
   colorStyle,
-  parentLabel,
-  parentHref,
+  seeAllLinkProps,
 }: NavMenuContentProps) => {
-  const { t } = useTranslation()
-
   // Parse sections into grid cells:
   // - group sections with colSpan=0 to column
   // - sections with colSpan=0 should be followed by section with colSpan=1 - this needs to be set up in Strapi
@@ -105,15 +101,7 @@ const NavMenuContent = ({
           // Together with onCLick in Viewport, it closes the menu on click outside of container area
           onClick={(event) => event.stopPropagation()}
         >
-          <NavMenuLink
-            variant="goToCategoryLink"
-            href={parentHref}
-            ariaLabel={t('NavMenuContent.aria.goToCategory', {
-              category: parentLabel,
-            })}
-          >
-            {t('NavMenuContent.goToCategory')}
-          </NavMenuLink>
+          <NavMenuLink variant="goToCategoryLink" {...seeAllLinkProps} />
         </div>
       </div>
     </NavigationMenu.Content>

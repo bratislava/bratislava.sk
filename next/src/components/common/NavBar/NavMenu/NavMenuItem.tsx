@@ -26,8 +26,7 @@ const NavMenuItem = ({ menu }: NavItemProps) => {
         sections={menu.items}
         colCount={menu.colCount}
         colorStyle={colorStyle}
-        parentLabel={menu.label}
-        parentHref={menu.linkHref}
+        seeAllLinkProps={menu.seeAllLinkProps}
       />
     </NavigationMenu.Item>
   )

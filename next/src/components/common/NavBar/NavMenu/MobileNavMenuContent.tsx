@@ -22,7 +22,7 @@ type NavMenuContentProps = {
 const MobileNavMenuContent = ({ menuItem, colorStyle }: NavMenuContentProps) => {
   const { t } = useTranslation()
   const { setMenuValue } = useNavMenuContext()
-  const { items: sections, label, linkHref } = menuItem
+  const { items: sections, seeAllLinkProps } = menuItem
 
   return (
     <NavigationMenu.Content
@@ -56,15 +56,7 @@ const MobileNavMenuContent = ({ menuItem, colorStyle }: NavMenuContentProps) => 
         <HorizontalDivider asListItem className="mt-3" />
 
         <li className="p-4">
-          <NavMenuLink
-            variant="goToCategoryLink"
-            href={linkHref}
-            ariaLabel={t('NavMenuContent.aria.goToCategory', {
-              category: label,
-            })}
-          >
-            {t('NavMenuContent.goToCategory')}
-          </NavMenuLink>
+          <NavMenuLink variant="goToCategoryLink" {...seeAllLinkProps} />
         </li>
       </ul>
     </NavigationMenu.Content>
