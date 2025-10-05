@@ -2,7 +2,7 @@ import * as NavigationMenu from '@radix-ui/react-navigation-menu'
 import React, { CSSProperties } from 'react'
 import { ChevronLeftIcon } from 'src/assets/icons'
 
-import NavBarHorizontalDivider from '@/src/components/common/NavBar/NavMenu/NavBarHorizontalDivider'
+import HorizontalDivider from '@/src/components/common/Divider/HorizontalDivider'
 import NavMenuLink from '@/src/components/common/NavBar/NavMenu/NavMenuLink'
 import { useTranslation } from '@/src/utils/useTranslation'
 
@@ -46,14 +46,14 @@ const MobileNavMenuContent = ({ menuItem, colorStyle }: NavMenuContentProps) => 
           </button>
         </li>
 
-        <NavBarHorizontalDivider className="mb-3" />
+        <HorizontalDivider asListItem className="mb-3" />
 
         {sections.map((section, index) => {
           // eslint-disable-next-line react/no-array-index-key
           return <NavMenuSection key={index} section={section} />
         })}
 
-        <NavBarHorizontalDivider className="mt-3" />
+        <HorizontalDivider asListItem className="mt-3" />
 
         <li className="p-4">
           <NavMenuLink

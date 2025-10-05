@@ -3,8 +3,8 @@ import { useMemo } from 'react'
 import { useEventListener, useScrollLock, useWindowSize } from 'usehooks-ts'
 
 import Button from '@/src/components/common/Button/Button'
+import HorizontalDivider from '@/src/components/common/Divider/HorizontalDivider'
 import MLink from '@/src/components/common/MLink/MLink'
-import NavBarHorizontalDivider from '@/src/components/common/NavBar/NavMenu/NavBarHorizontalDivider'
 import Pictogram from '@/src/components/common/Pictogram/Pictogram'
 import { useGeneralContext } from '@/src/components/providers/GeneralContextProvider'
 import cn from '@/src/utils/cn'
@@ -68,7 +68,7 @@ const MobileNavMenu = () => {
 
           {accountLink && (
             <>
-              <NavBarHorizontalDivider />
+              <HorizontalDivider asListItem />
               <li className="my-1 flex justify-center md:justify-start">
                 <NavigationMenu.Link asChild onClick={() => setMobileMenuOpen(false)}>
                   <Button
@@ -83,7 +83,7 @@ const MobileNavMenu = () => {
             </>
           )}
 
-          {linksOnMobile?.length && <NavBarHorizontalDivider />}
+          {linksOnMobile?.length && <HorizontalDivider asListItem />}
 
           {linksOnMobile?.map((link, linkIndex) => {
             return (

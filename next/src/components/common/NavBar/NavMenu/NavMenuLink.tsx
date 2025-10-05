@@ -34,16 +34,14 @@ const NavMenuLink = ({ variant, ariaLabel, ...rest }: NavMenuLinkProps) => {
 
     case 'goToCategoryLink':
       return (
-        <li className="flex">
-          <NavigationMenu.Link
-            asChild
-            aria-label={ariaLabel}
-            onClick={() => setMobileMenuOpen(false)}
-          >
-            {/* flex-row-reverse used to have the icon on the left side */}
-            <Button variant="link" className="flex-row-reverse" {...rest} />
-          </NavigationMenu.Link>
-        </li>
+        <NavigationMenu.Link
+          asChild
+          aria-label={ariaLabel}
+          onClick={() => setMobileMenuOpen(false)}
+        >
+          {/* flex-row-reverse used to have the icon on the left side */}
+          <Button variant="link" className="flex-row-reverse" {...rest} />
+        </NavigationMenu.Link>
       )
 
     default:

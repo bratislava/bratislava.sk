@@ -59,7 +59,7 @@ const NavMenuContent = ({
 
   return (
     <NavigationMenu.Content
-      // To disable "onHover" behavior, needs to be set also in NavMenuTrigger
+      // To disable "onHover" behaviour, needs to be set also in NavMenuTrigger
       // https://github.com/radix-ui/primitives/issues/1630#issuecomment-1237106380
       onPointerMove={(event) => event.preventDefault()}
       onPointerLeave={(event) => event.preventDefault()}
@@ -101,7 +101,7 @@ const NavMenuContent = ({
         <HorizontalDivider />
         {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */}
         <div
-          className="border-b p-8"
+          className="flex border-b p-8"
           // Together with onCLick in Viewport, it closes the menu on click outside of container area
           onClick={(event) => event.stopPropagation()}
         >

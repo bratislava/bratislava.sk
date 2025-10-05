@@ -19,7 +19,7 @@ const NavMenuTrigger = forwardRef<HTMLButtonElement, NavMenuTriggerProps>(
         onPointerMove={(event) => event.preventDefault()}
         onPointerLeave={(event) => event.preventDefault()}
         style={colorStyle}
-        className="group size-full items-center ring-inset hover:font-semibold data-[state=open]:font-semibold"
+        className="base-focus-ring group size-full items-center rounded-xs hover:font-semibold data-[state=open]:font-semibold"
       >
         <div className="-m-2 flex items-center gap-1 p-2">
           <div className="relative">
@@ -32,7 +32,7 @@ const NavMenuTrigger = forwardRef<HTMLButtonElement, NavMenuTriggerProps>(
             </Typography>
           </div>
           <ChevronDownIcon
-            // Icon size slightly altered so that menu doesn't overflow on standard screens, margin-t added to align with menu label
+            // Icon size and margin-top slightly altered so that visually it looks as in figma
             className="mt-0.5 size-4.75 group-data-[state=open]:rotate-180"
           />
         </div>

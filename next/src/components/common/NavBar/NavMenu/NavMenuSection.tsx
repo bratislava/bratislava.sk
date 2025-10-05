@@ -30,7 +30,7 @@ const NavMenuSection = ({ section }: NavigationSectionProps) => {
           <div className="flex items-center">
             <NavMenuLink variant="menuSectionLink" href={href ?? '#'} {...restLinkProps}>
               <Typography variant="h5" as="h3">
-                {label}
+                {label} 
               </Typography>
             </NavMenuLink>
           </div>
