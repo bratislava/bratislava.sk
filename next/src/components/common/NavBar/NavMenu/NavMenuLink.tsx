@@ -23,9 +23,9 @@ const NavMenuLink = ({ variant, subtext, ariaLabel, ...restLinkProps }: NavMenuL
   switch (variant) {
     case 'menuSectionLink':
       return (
-        <NavigationMenu.Link asChild onClick={() => setMobileMenuOpen(false)}>
-          <div className="wrapper-focus-ring flex w-full flex-col gap-2 focus-within:rounded-sm">
-            <div className="flex items-center">
+        <div className="wrapper-focus-ring flex w-full flex-col gap-2 focus-within:rounded-sm">
+          <div className="flex items-center">
+            <NavigationMenu.Link asChild onClick={() => setMobileMenuOpen(false)}>
               <Button
                 variant="link"
                 className="w-full justify-between py-1 text-size-h5 font-semibold no-underline hover:underline"
@@ -33,11 +33,11 @@ const NavMenuLink = ({ variant, subtext, ariaLabel, ...restLinkProps }: NavMenuL
                 {...restLinkProps}
                 stretched
               />
-            </div>
-
-            {subtext ? <Typography variant="p-small">{subtext}</Typography> : null}
+            </NavigationMenu.Link>
           </div>
-        </NavigationMenu.Link>
+
+          {subtext ? <Typography variant="p-small">{subtext}</Typography> : null}
+        </div>
       )
 
     case 'goToCategoryLink':
@@ -47,9 +47,9 @@ const NavMenuLink = ({ variant, subtext, ariaLabel, ...restLinkProps }: NavMenuL
           aria-label={ariaLabel}
           onClick={() => setMobileMenuOpen(false)}
         >
-          {/* flex-row-reverse used to have the icon on the left side */}
           <Button
             variant="link"
+            // flex-row-reverse used to have the icon on the left side
             className="flex-row-reverse"
             aria-label={t('NavMenuLink.aria.goToCategory', {
               category: restLinkProps.children,
