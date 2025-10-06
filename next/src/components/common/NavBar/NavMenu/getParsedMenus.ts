@@ -12,7 +12,7 @@ export const getParsedMenus = (menu: GeneralQuery['menu'], moreLabel: string): M
 
         const { label, page, icon } = menuItem
 
-        const seeAllLinkProps = getLinkProps({ label, page })
+        const seeAllLinkProps = page ? getLinkProps({ label, page }) : undefined
 
         const items =
           // eslint-disable-next-line unicorn/consistent-destructuring

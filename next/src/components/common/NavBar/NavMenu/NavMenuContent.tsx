@@ -14,7 +14,7 @@ type NavMenuContentProps = {
   colCount: number
   sections: MenuSection[]
   colorStyle: CSSProperties
-  seeAllLinkProps: CommonLinkProps
+  seeAllLinkProps?: CommonLinkProps
 }
 
 /**
@@ -95,14 +95,16 @@ const NavMenuContent = ({
           {/* eslint-enable react/no-array-index-key */}
         </ul>
         <HorizontalDivider />
-        {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */}
-        <div
-          className="flex border-b p-8"
-          // Together with onCLick in Viewport, it closes the menu on click outside of container area
-          onClick={(event) => event.stopPropagation()}
-        >
-          <NavMenuLink variant="goToCategoryLink" {...seeAllLinkProps} />
-        </div>
+        {seeAllLinkProps ? (
+          // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
+          <div
+            className="flex border-b p-8"
+            // Together with onCLick in Viewport, it closes the menu on click outside of container area
+            onClick={(event) => event.stopPropagation()}
+          >
+            <NavMenuLink variant="goToCategoryLink" {...seeAllLinkProps} />
+          </div>
+        ) : null}
       </div>
     </NavigationMenu.Content>
   )

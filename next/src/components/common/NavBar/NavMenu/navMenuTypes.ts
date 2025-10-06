@@ -20,5 +20,5 @@ export type MenuItem = {
   colCount: number
   items: MenuSection[]
   icon: Enum_Componentmenumenuitem_Icon
-  seeAllLinkProps: CommonLinkProps
+  seeAllLinkProps?: CommonLinkProps
 }

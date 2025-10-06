@@ -55,9 +55,11 @@ const MobileNavMenuContent = ({ menuItem, colorStyle }: NavMenuContentProps) => 
 
         <HorizontalDivider asListItem className="mt-3" />
 
-        <li className="p-4">
-          <NavMenuLink variant="goToCategoryLink" {...seeAllLinkProps} />
-        </li>
+        {seeAllLinkProps ? (
+          <li className="p-4">
+            <NavMenuLink variant="goToCategoryLink" {...seeAllLinkProps} />
+          </li>
+        ) : null}
       </ul>
     </NavigationMenu.Content>
   )
