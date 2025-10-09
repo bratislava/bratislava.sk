@@ -6,16 +6,20 @@ export type ArticlesFilters = {
   search: string
   pageSize: number
   page: number
+  articleCategoryDocumentIds?: string[]
   tagDocumentIds?: string[]
   adminGroupDocumentIds?: string[]
+  excludeArticlesWithAssignedAdminGroups?: boolean
 }
 
 export const articlesDefaultFilters: ArticlesFilters = {
   search: '',
   pageSize: 6,
   page: 1,
+  articleCategoryDocumentIds: [],
   tagDocumentIds: [],
   adminGroupDocumentIds: [],
+  excludeArticlesWithAssignedAdminGroups: false,
 }
 
 export const getArticlesQueryKey = (filters: ArticlesFilters, locale: string) => [
@@ -33,11 +37,17 @@ export const articlesFetcher = (filters: ArticlesFilters, locale: string) => {
       filter: [
         'type = "article"',
         `locale = ${locale}`,
+        filters.articleCategoryDocumentIds?.length
+          ? `article.articleCategory.documentId IN [${filters.articleCategoryDocumentIds.join(',')}]`
+          : '',
         filters.tagDocumentIds?.length
           ? `article.tag.documentId IN [${filters.tagDocumentIds.join(',')}]`
           : '',
         filters.adminGroupDocumentIds?.length
           ? `article.adminGroups.documentId IN [${filters.adminGroupDocumentIds.join(',')}]`
+          : '',
+        filters.excludeArticlesWithAssignedAdminGroups
+          ? 'article.adminGroups.documentId NOT EXISTS'
           : '',
       ],
       sort: ['article.addedAtTimestamp:desc'],
