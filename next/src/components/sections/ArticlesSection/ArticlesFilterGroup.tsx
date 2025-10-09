@@ -110,7 +110,7 @@ const ArticlesFilterGroup = ({ filters, onFiltersChange }: Props) => {
         items={articleCategoriesSelectItems}
         selectedKey={filters.articleCategoryDocumentIds?.[0] ?? null}
         placeholder={t('ArticlesFilterGroup.allArticleCategories')}
-        onSelectionChange={(key) => handleCategoryChange(key.toString())}
+        onSelectionChange={(key) => handleCategoryChange(key?.toString() ?? '')}
       >
         {(item) => <SelectItem label={item.title} id={item.documentId} />}
       </SelectField>
@@ -119,7 +119,7 @@ const ArticlesFilterGroup = ({ filters, onFiltersChange }: Props) => {
         items={tagsSelectItems}
         selectedKey={filters.tagDocumentIds?.[0] ?? null}
         placeholder={t('ArticlesFilterGroup.allTags')}
-        onSelectionChange={(key) => handleTagChange(key.toString())}
+        onSelectionChange={(key) => handleTagChange(key?.toString() ?? '')}
       >
         {(item) => <SelectItem label={item.title} id={item.documentId} />}
       </SelectField>
@@ -132,7 +132,7 @@ const ArticlesFilterGroup = ({ filters, onFiltersChange }: Props) => {
             : (filters.adminGroupDocumentIds?.[0] ?? null)
         }
         placeholder={t('ArticlesFilterGroup.allAdminGroups')}
-        onSelectionChange={(key) => handleAuthorChange(key.toString())}
+        onSelectionChange={(key) => handleAuthorChange(key?.toString() ?? '')}
       >
         {(item) => <SelectItem label={item.title} id={item.documentId} />}
       </SelectField>
