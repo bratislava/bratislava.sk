@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 
 import HomepageHighlightCard from '@/src/components/cards/HomepageHighlightCard'
 import ResponsiveCarousel from '@/src/components/common/Carousel/ResponsiveCarousel'
@@ -27,14 +27,17 @@ const HighlightsHomepageSection = () => {
           const linkProps = getLinkProps(highlight)
 
           return (
-            <Fragment key={highlight.id}>
-              <HomepageHighlightCard
-                variant="no-border"
-                linkProps={linkProps}
-                subtext={highlight.subtext ?? undefined}
-                imgSrc={highlight.image.url}
-              />
-            </Fragment>
+            <HomepageHighlightCard
+              key={highlight.id}
+              variant="no-border"
+              linkProps={linkProps}
+              subtext={highlight.subtext ?? undefined}
+              imgSrc={
+                highlight.media?.url ??
+                highlight.article?.coverMedia?.url ??
+                highlight.page?.pageBackgroundImage?.url
+              }
+            />
           )
         })}
       />
