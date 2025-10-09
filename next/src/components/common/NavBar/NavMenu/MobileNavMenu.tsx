@@ -3,8 +3,8 @@ import { useMemo } from 'react'
 import { useEventListener, useScrollLock, useWindowSize } from 'usehooks-ts'
 
 import Button from '@/src/components/common/Button/Button'
-import HorizontalDivider from '@/src/components/common/Divider/HorizontalDivider'
 import MLink from '@/src/components/common/MLink/MLink'
+import NavBarHorizontalDivider from '@/src/components/common/NavBar/NavMenu/NavBarHorizontalDivider'
 import Pictogram from '@/src/components/common/Pictogram/Pictogram'
 import { useGeneralContext } from '@/src/components/providers/GeneralContextProvider'
 import cn from '@/src/utils/cn'
@@ -15,10 +15,6 @@ import { useTranslation } from '@/src/utils/useTranslation'
 import { getParsedMenus } from './getParsedMenus'
 import MobileNavMenuItem from './MobileNavMenuItem'
 import { useNavMenuContext } from './navMenuContext'
-
-/**
- * Figma: https://www.figma.com/design/17wbd0MDQcMW9NbXl6UPs8/DS--Component-library?node-id=16846-33525&m=dev
- */
 
 const MobileNavMenu = () => {
   const { t } = useTranslation()
@@ -47,7 +43,7 @@ const MobileNavMenu = () => {
   return (
     <div
       className={cn(
-        'fixed top-14 left-0 z-28 flex w-screen flex-col gap-4 overflow-y-auto bg-white p-4 lg:hidden',
+        'fixed top-14 left-0 z-28 flex w-screen flex-col gap-4 overflow-y-scroll bg-white px-4 py-6 lg:hidden',
         {
           'animate-fade-in': isMobileMenuOpen,
           'animate-fade-out': !isMobileMenuOpen,
@@ -60,7 +56,7 @@ const MobileNavMenu = () => {
         onValueChange={setMenuValue}
         aria-label={t('NavMenu.aria.navMenuLabel')}
       >
-        <NavigationMenu.List className="flex flex-col gap-4">
+        <NavigationMenu.List className="flex flex-col gap-2">
           {menus.map((menu, index) => (
             // eslint-disable-next-line react/no-array-index-key
             <MobileNavMenuItem key={index} menu={menu} />
@@ -68,7 +64,7 @@ const MobileNavMenu = () => {
 
           {accountLink && (
             <>
-              <HorizontalDivider asListItem />
+              <NavBarHorizontalDivider />
               <li className="my-1 flex justify-center md:justify-start">
                 <NavigationMenu.Link asChild onClick={() => setMobileMenuOpen(false)}>
                   <Button
@@ -83,14 +79,14 @@ const MobileNavMenu = () => {
             </>
           )}
 
-          {linksOnMobile?.length && <HorizontalDivider asListItem />}
+          {linksOnMobile?.length && <NavBarHorizontalDivider />}
 
           {linksOnMobile?.map((link, linkIndex) => {
             return (
               // eslint-disable-next-line react/no-array-index-key
               <li key={linkIndex} className="relative flex items-center gap-2">
                 <div aria-hidden>
-                  <Pictogram iconName={link.icon} className="size-8" />
+                  <Pictogram iconName={link.icon} />
                 </div>
                 <NavigationMenu.Link asChild onClick={() => setMobileMenuOpen(false)}>
                   <MLink variant="underlined" stretched {...getLinkProps(link)} />
@@ -102,7 +98,7 @@ const MobileNavMenu = () => {
 
         {/* Viewport represents popup div with links that appears under menu button */}
         <NavigationMenu.Viewport
-          className="fixed top-14 left-0 z-29 w-screen overflow-y-auto data-[state=closed]:animate-exit-to-right data-[state=open]:animate-enter-from-right"
+          className="fixed top-14 left-0 z-29 w-screen overflow-y-scroll data-[state=closed]:animate-exit-to-right data-[state=open]:animate-enter-from-right"
           style={{ height: `calc(${height}px - 14*4px)` }}
         />
       </NavigationMenu.Root>
