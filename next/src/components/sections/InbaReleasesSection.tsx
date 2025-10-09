@@ -57,9 +57,9 @@ const InbaReleasesSection = ({ section }: Props) => {
         <SectionHeader title={title} text={text} />
 
         <SearchBar
-          input={input}
-          setInput={setInput}
-          setSearchQuery={(value) =>
+          value={input}
+          onChange={setInput}
+          onSubmit={(value) =>
             setFilters((previousState) => ({ ...previousState, search: value, page: 1 }))
           }
           isLoading={isFetching}

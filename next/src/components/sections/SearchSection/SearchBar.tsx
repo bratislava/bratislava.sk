@@ -1,6 +1,6 @@
 import { Typography } from '@bratislava/component-library'
-import { Dispatch, forwardRef, SetStateAction } from 'react'
-import { Input, Label, SearchField } from 'react-aria-components'
+import { forwardRef } from 'react'
+import { Input, Label, SearchField, SearchFieldProps } from 'react-aria-components'
 import { RemoveIcon, SearchIcon } from 'src/assets/icons'
 
 import Button from '@/src/components/common/Button/Button'
@@ -9,19 +9,13 @@ import { useTranslation } from '@/src/utils/useTranslation'
 
 type SearchBarProps = {
   placeholder?: string
-  input: string
-  setInput: Dispatch<SetStateAction<string>>
-  setSearchQuery: (value: string) => void
+  value: string
   isLoading?: boolean
-}
+} & SearchFieldProps
 
 const SearchBar = forwardRef<HTMLInputElement, SearchBarProps>(
-  ({ placeholder, input, setInput, setSearchQuery, isLoading }, forwardedRef) => {
+  ({ placeholder, value, onChange, isLoading, ...rest }, forwardedRef) => {
     const { t } = useTranslation()
-
-    const handleSearch = () => {
-      setSearchQuery(input)
-    }
 
     return (
       <SearchField
@@ -30,9 +24,9 @@ const SearchBar = forwardRef<HTMLInputElement, SearchBarProps>(
         // 10rem scroll margin works fine for all screen sizes
         className="flex scroll-mt-40 flex-col gap-y-1"
         aria-label={t('SearchBar.search')}
-        value={input}
-        onChange={setInput}
-        onSubmit={handleSearch}
+        value={value}
+        onChange={onChange}
+        {...rest}
       >
         <Label>
           <Typography variant="p-small" className="font-semibold">
@@ -53,7 +47,7 @@ const SearchBar = forwardRef<HTMLInputElement, SearchBarProps>(
           {isLoading ? (
             <Spinner size="sm" className="absolute top-[calc(50%-0.75rem)] right-15" />
           ) : null}
-          {input ? (
+          {value ? (
             <Button
               // We don't want responsive sizing, to keep the button well aligned with the input
               size="large"
