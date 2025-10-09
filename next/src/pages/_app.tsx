@@ -8,6 +8,7 @@ import Head from 'next/head'
 import { appWithTranslation } from 'next-i18next'
 import PlausibleProvider from 'next-plausible'
 import { NextAdapter } from 'next-query-params'
+import { NuqsAdapter } from 'nuqs/adapters/next/pages'
 import { OverlayProvider } from 'react-aria'
 import { QueryParamProvider } from 'use-query-params'
 
@@ -51,21 +52,23 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
       >
         <BAQueryClientProvider>
           <QueryParamProvider adapter={NextAdapter}>
-            <BAI18nProvider>
-              <OverlayProvider>
-                <NavMenuContextProvider>
-                  {/* This root div is used for locked body when mobile menu ist open, see MobileNavMenu component */}
-                  <div id="root">
-                    <Component {...pageProps} />
-                  </div>
-                  <GoogleTagManager
-                    gtmId={process.env.NEXT_PUBLIC_GTM_ID ?? ''}
-                    auth={process.env.NEXT_PUBLIC_GTM_AUTH ?? ''}
-                    preview={process.env.NEXT_PUBLIC_GTM_PREVIEW ?? ''}
-                  />
-                </NavMenuContextProvider>
-              </OverlayProvider>
-            </BAI18nProvider>
+            <NuqsAdapter>
+              <BAI18nProvider>
+                <OverlayProvider>
+                  <NavMenuContextProvider>
+                    {/* This root div is used for locked body when mobile menu ist open, see MobileNavMenu component */}
+                    <div id="root">
+                      <Component {...pageProps} />
+                    </div>
+                    <GoogleTagManager
+                      gtmId={process.env.NEXT_PUBLIC_GTM_ID ?? ''}
+                      auth={process.env.NEXT_PUBLIC_GTM_AUTH ?? ''}
+                      preview={process.env.NEXT_PUBLIC_GTM_PREVIEW ?? ''}
+                    />
+                  </NavMenuContextProvider>
+                </OverlayProvider>
+              </BAI18nProvider>
+            </NuqsAdapter>
           </QueryParamProvider>
         </BAQueryClientProvider>
       </PlausibleProvider>
