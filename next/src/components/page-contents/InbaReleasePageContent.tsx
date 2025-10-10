@@ -143,9 +143,9 @@ const InbaReleasePageContent = ({ inbaRelease }: Props) => {
 
             <SearchBar
               ref={searchRef}
-              input={input}
-              setInput={setInput}
-              setSearchQuery={(value) =>
+              value={input}
+              onChange={setInput}
+              onSubmit={(value) =>
                 setFilters((previousState) => ({ ...previousState, search: value, page: 1 }))
               }
               isLoading={isFetching}

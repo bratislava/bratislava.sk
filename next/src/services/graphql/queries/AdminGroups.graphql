@@ -11,6 +11,7 @@ fragment PageSubnavigationEntity on Page {
 
 fragment AdminGroupEntity on AdminGroup {
   ...AdminGroupDocumentIdEntity
+  title
   adminGroupId
   contentManagedBy
   landingPage {
@@ -18,5 +19,11 @@ fragment AdminGroupEntity on AdminGroup {
     localizations {
       ...PageSubnavigationEntity
     }
+  }
+}
+
+query AdminGroups($limit: Int = -1) {
+  adminGroups(pagination: { limit: $limit }) {
+    ...AdminGroupEntity
   }
 }

@@ -63,7 +63,7 @@
       },
       "category": {
         "edit": {
-          "label": "Kategória (toto pole prosíme nepoužívať, bude odstránené)",
+          "label": "Typ (toto pole prosíme nepoužívať, bude odstránené)",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -78,7 +78,7 @@
       },
       "tags": {
         "edit": {
-          "label": "Tagy",
+          "label": "Témy",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -127,7 +127,8 @@
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true
+          "editable": true,
+          "mainField": "label"
         },
         "list": {
           "label": "showMoreLink",
@@ -145,12 +146,6 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "title",
-        "text",
-        "category"
-      ],
       "edit": [
         [
           {
@@ -200,6 +195,12 @@
             "size": 12
           }
         ]
+      ],
+      "list": [
+        "id",
+        "title",
+        "text",
+        "category"
       ]
     },
     "uid": "sections.articles",

@@ -91,7 +91,7 @@
       },
       "tag": {
         "edit": {
-          "label": "Tag",
+          "label": "Téma",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -138,7 +138,8 @@
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true
+          "editable": true,
+          "mainField": "title"
         },
         "list": {
           "label": "files",
@@ -177,7 +178,7 @@
       },
       "articleCategory": {
         "edit": {
-          "label": "Kategória",
+          "label": "Typ",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -258,14 +259,6 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "coverMedia",
-        "title",
-        "slug",
-        "updatedAt",
-        "addedAt"
-      ],
       "edit": [
         [
           {
@@ -335,6 +328,14 @@
             "size": 12
           }
         ]
+      ],
+      "list": [
+        "id",
+        "coverMedia",
+        "title",
+        "slug",
+        "updatedAt",
+        "addedAt"
       ]
     },
     "uid": "api::article.article"

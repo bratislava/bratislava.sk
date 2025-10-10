@@ -405,7 +405,7 @@ export interface ApiAlertAlert extends Struct.SingleTypeSchema {
 export interface ApiArticleCategoryArticleCategory extends Struct.CollectionTypeSchema {
   collectionName: 'article_categories'
   info: {
-    displayName: '\u010Cl\u00E1nky - kateg\u00F3rie'
+    displayName: '\u010Cl\u00E1nky - typy'
     pluralName: 'article-categories'
     singularName: 'article-category'
   }
@@ -1344,7 +1344,7 @@ export interface ApiTagTag extends Struct.CollectionTypeSchema {
   collectionName: 'tags'
   info: {
     description: ''
-    displayName: 'Tagy'
+    displayName: '\u010Cl\u00E1nky - t\u00E9my'
     pluralName: 'tags'
     singularName: 'tag'
   }

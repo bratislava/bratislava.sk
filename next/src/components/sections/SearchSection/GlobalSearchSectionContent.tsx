@@ -216,9 +216,9 @@ const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
         <SearchBar
           ref={searchRef}
           placeholder={t('SearchPage.enterKeyword')}
-          input={input}
-          setInput={setInput}
-          setSearchQuery={setSearchValue}
+          value={input}
+          onChange={setInput}
+          onSubmit={setSearchValue}
           isLoading={fetchingQueriesCount > 0}
         />
 

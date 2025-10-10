@@ -6416,6 +6416,7 @@ export type PageSubnavigationEntityFragment = {
 
 export type AdminGroupEntityFragment = {
   __typename?: 'AdminGroup'
+  title?: string | null
   adminGroupId?: string | null
   contentManagedBy?: string | null
   documentId: string
@@ -6447,6 +6448,49 @@ export type AdminGroupEntityFragment = {
       locale?: string | null
     } | null>
   } | null
+}
+
+export type AdminGroupsQueryVariables = Exact<{
+  limit?: InputMaybe<Scalars['Int']['input']>
+}>
+
+export type AdminGroupsQuery = {
+  __typename?: 'Query'
+  adminGroups: Array<{
+    __typename?: 'AdminGroup'
+    title?: string | null
+    adminGroupId?: string | null
+    contentManagedBy?: string | null
+    documentId: string
+    landingPage?: {
+      __typename?: 'Page'
+      documentId: string
+      slug?: string | null
+      title: string
+      locale?: string | null
+      localizations: Array<{
+        __typename?: 'Page'
+        documentId: string
+        slug?: string | null
+        title: string
+        locale?: string | null
+        childPages: Array<{
+          __typename?: 'Page'
+          documentId: string
+          slug?: string | null
+          title: string
+          locale?: string | null
+        } | null>
+      } | null>
+      childPages: Array<{
+        __typename?: 'Page'
+        documentId: string
+        slug?: string | null
+        title: string
+        locale?: string | null
+      } | null>
+    } | null
+  } | null>
 }
 
 export type ArticleCategoryEntityFragment = {
@@ -6644,6 +6688,20 @@ export type ArticlesStaticPathsQuery = {
     slug: string
     title: string
     locale?: string | null
+  } | null>
+}
+
+export type ArticleCategoriesQueryVariables = Exact<{
+  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
+}>
+
+export type ArticleCategoriesQuery = {
+  __typename?: 'Query'
+  articleCategories: Array<{
+    __typename?: 'ArticleCategory'
+    documentId: string
+    title: string
+    slug: string
   } | null>
 }
 
@@ -9423,6 +9481,7 @@ export type PageEntityFragment = {
   locale?: string | null
   adminGroups: Array<{
     __typename?: 'AdminGroup'
+    title?: string | null
     adminGroupId?: string | null
     contentManagedBy?: string | null
     documentId: string
@@ -10590,6 +10649,7 @@ export type PageBySlugQuery = {
     locale?: string | null
     adminGroups: Array<{
       __typename?: 'AdminGroup'
+      title?: string | null
       adminGroupId?: string | null
       contentManagedBy?: string | null
       documentId: string
@@ -11786,6 +11846,7 @@ export type Dev_AllPagesQuery = {
     locale?: string | null
     adminGroups: Array<{
       __typename?: 'AdminGroup'
+      title?: string | null
       adminGroupId?: string | null
       contentManagedBy?: string | null
       documentId: string
@@ -16426,6 +16487,7 @@ export const PageSubnavigationEntityFragmentDoc = gql`
 export const AdminGroupEntityFragmentDoc = gql`
   fragment AdminGroupEntity on AdminGroup {
     ...AdminGroupDocumentIdEntity
+    title
     adminGroupId
     contentManagedBy
     landingPage {
@@ -17409,6 +17471,14 @@ export const PageEntityFragmentDoc = gql`
   ${TagEntityFragmentDoc}
   ${PageParentPagesFragmentDoc}
 `
+export const AdminGroupsDocument = gql`
+  query AdminGroups($limit: Int = -1) {
+    adminGroups(pagination: { limit: $limit }) {
+      ...AdminGroupEntity
+    }
+  }
+  ${AdminGroupEntityFragmentDoc}
+`
 export const ArticleBySlugDocument = gql`
   query ArticleBySlug($slug: String!, $locale: I18NLocaleCode!) {
     articles(filters: { slug: { eq: $slug } }, locale: $locale) {
@@ -17424,6 +17494,14 @@ export const ArticlesStaticPathsDocument = gql`
     }
   }
   ${ArticleSlugEntityFragmentDoc}
+`
+export const ArticleCategoriesDocument = gql`
+  query ArticleCategories($locale: I18NLocaleCode) {
+    articleCategories(pagination: { limit: -1 }, locale: $locale) {
+      ...ArticleCategoryEntity
+    }
+  }
+  ${ArticleCategoryEntityFragmentDoc}
 `
 export const ArticlesDocument = gql`
   query Articles(
@@ -17902,6 +17980,21 @@ const defaultWrapper: SdkFunctionWrapper = (action, _operationName, _operationTy
 
 export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = defaultWrapper) {
   return {
+    AdminGroups(
+      variables?: AdminGroupsQueryVariables,
+      requestHeaders?: GraphQLClientRequestHeaders,
+    ): Promise<AdminGroupsQuery> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<AdminGroupsQuery>(AdminGroupsDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
+          }),
+        'AdminGroups',
+        'query',
+        variables,
+      )
+    },
     ArticleBySlug(
       variables: ArticleBySlugQueryVariables,
       requestHeaders?: GraphQLClientRequestHeaders,
@@ -17928,6 +18021,21 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
             ...wrappedRequestHeaders,
           }),
         'ArticlesStaticPaths',
+        'query',
+        variables,
+      )
+    },
+    ArticleCategories(
+      variables?: ArticleCategoriesQueryVariables,
+      requestHeaders?: GraphQLClientRequestHeaders,
+    ): Promise<ArticleCategoriesQuery> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<ArticleCategoriesQuery>(ArticleCategoriesDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
+          }),
+        'ArticleCategories',
         'query',
         variables,
       )
