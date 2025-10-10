@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "redirects",
+  "info": {
+    "singularName": "redirect",
+    "pluralName": "redirects",
+    "displayName": "Redirect"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "source": {
+      "type": "string",
+      "required": true
+    },
+    "destination": {
+      "type": "string",
+      "required": true
+    },
+    "permanent": {
+      "type": "boolean",
+      "default": false
+    },
+    "page": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::page.page",
+      "inversedBy": "redirects"
+    }
+  }
+}
