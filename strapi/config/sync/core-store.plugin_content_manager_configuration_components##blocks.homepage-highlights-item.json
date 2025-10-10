@@ -48,21 +48,6 @@
           "sortable": true
         }
       },
-      "article": {
-        "edit": {
-          "label": "Článok",
-          "description": "Použite toto políčko, ak ide o článok z bratislava.sk.",
-          "placeholder": "",
-          "visible": true,
-          "editable": true,
-          "mainField": "title"
-        },
-        "list": {
-          "label": "article",
-          "searchable": true,
-          "sortable": true
-        }
-      },
       "page": {
         "edit": {
           "label": "Stránka",
@@ -74,6 +59,21 @@
         },
         "list": {
           "label": "page",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "article": {
+        "edit": {
+          "label": "Článok",
+          "description": "Použite toto políčko, ak ide o článok z bratislava.sk.",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "title"
+        },
+        "list": {
+          "label": "article",
           "searchable": true,
           "sortable": true
         }
@@ -120,34 +120,6 @@
           "sortable": true
         }
       },
-      "link": {
-        "edit": {
-          "label": "Odkaz",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "link",
-          "searchable": false,
-          "sortable": false
-        }
-      },
-      "image": {
-        "edit": {
-          "label": "Obrázky",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "image",
-          "searchable": false,
-          "sortable": false
-        }
-      },
       "documentId": {
         "edit": {},
         "list": {
@@ -158,6 +130,10 @@
       }
     },
     "layouts": {
+      "list": [
+        "id",
+        "documentId"
+      ],
       "edit": [
         [
           {
@@ -197,12 +173,6 @@
             "size": 4
           }
         ]
-      ],
-      "list": [
-        "id",
-        "link",
-        "image",
-        "documentId"
       ]
     },
     "isComponent": true

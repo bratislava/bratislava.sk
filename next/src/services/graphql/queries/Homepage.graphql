@@ -56,12 +56,6 @@ fragment HomepageHighlightsItem on ComponentBlocksHomepageHighlightsItem {
     ...UploadImageEntity
   }
   analyticsId
-  link {
-    ...CommonLink
-  }
-  image {
-    ...UploadImageSrcEntity
-  }
 }
 
 fragment HomepageTabs on ComponentSectionsHomepageTabs {

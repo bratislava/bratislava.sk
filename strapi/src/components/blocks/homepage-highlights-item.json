@@ -35,20 +35,6 @@
     },
     "analyticsId": {
       "type": "string"
-    },
-    "link": {
-      "type": "component",
-      "repeatable": false,
-      "required": true,
-      "component": "blocks.common-link"
-    },
-    "image": {
-      "allowedTypes": [
-        "images"
-      ],
-      "type": "media",
-      "multiple": false,
-      "required": true
     }
   }
 }
