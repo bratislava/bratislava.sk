@@ -77,7 +77,7 @@ const ArticlesFilterGroup = ({ filters, onFiltersChange }: Props) => {
   const handleCategoryChange = (selectedCategoryIds: string) => {
     onFiltersChange({
       ...filters,
-      articleCategoryDocumentIds: [selectedCategoryIds].filter((id) => id && id !== ''),
+      articleCategoryDocumentIds: [selectedCategoryIds].filter(Boolean),
       page: 1,
     })
   }
@@ -85,7 +85,7 @@ const ArticlesFilterGroup = ({ filters, onFiltersChange }: Props) => {
   const handleTagChange = (selectedTagId: string) => {
     onFiltersChange({
       ...filters,
-      tagDocumentIds: [selectedTagId].filter((id) => id && id !== ''),
+      tagDocumentIds: [selectedTagId].filter(Boolean),
       page: 1,
     })
   }
@@ -96,7 +96,7 @@ const ArticlesFilterGroup = ({ filters, onFiltersChange }: Props) => {
       adminGroupDocumentIds:
         selectedAdminGroupId === CITY_HALL_SELECT_ITEM.documentId
           ? []
-          : [selectedAdminGroupId].filter((id) => id && id !== ''),
+          : [selectedAdminGroupId].filter(Boolean),
       excludeArticlesWithAssignedAdminGroups:
         selectedAdminGroupId === CITY_HALL_SELECT_ITEM.documentId,
       page: 1,

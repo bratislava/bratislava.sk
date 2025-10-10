@@ -15,19 +15,19 @@ export const useArticlesFilters = () => {
           parse: String,
         },
         articleCategoryDocumentIds: {
-          defaultValue: articlesDefaultFilters.articleCategoryDocumentIds ?? [],
+          defaultValue: articlesDefaultFilters.articleCategoryDocumentIds,
           parse: (value) => [value],
         },
         tagDocumentIds: {
-          defaultValue: articlesDefaultFilters.tagDocumentIds ?? [],
+          defaultValue: articlesDefaultFilters.tagDocumentIds,
           parse: (value) => [value],
         },
         adminGroupDocumentIds: {
-          defaultValue: articlesDefaultFilters.adminGroupDocumentIds ?? [],
+          defaultValue: articlesDefaultFilters.adminGroupDocumentIds,
           parse: (value) => [value],
         },
         excludeArticlesWithAssignedAdminGroups: {
-          defaultValue: articlesDefaultFilters.excludeArticlesWithAssignedAdminGroups ?? false,
+          defaultValue: articlesDefaultFilters.excludeArticlesWithAssignedAdminGroups,
           parse: (value) => value === 'true',
         },
         page: {
@@ -40,7 +40,7 @@ export const useArticlesFilters = () => {
         },
       },
       {
-        history: 'push',
+        history: 'replace',
         urlKeys: {
           search: 'search',
           articleCategoryDocumentIds: 'type',

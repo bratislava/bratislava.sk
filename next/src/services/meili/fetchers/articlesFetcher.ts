@@ -12,7 +12,7 @@ export type ArticlesFilters = {
   excludeArticlesWithAssignedAdminGroups?: boolean
 }
 
-export const articlesDefaultFilters: ArticlesFilters = {
+export const articlesDefaultFilters: Required<ArticlesFilters> = {
   search: '',
   pageSize: 6,
   page: 1,
