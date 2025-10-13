@@ -2,6 +2,11 @@ import { useQuery } from '@tanstack/react-query'
 import React from 'react'
 
 import SelectField, { SelectItem } from '@/src/components/common/SelectField/SelectField'
+import {
+  AdminGroupEntityFragment,
+  ArticleCategoryEntityFragment,
+  TagEntityFragment,
+} from '@/src/services/graphql'
 import { client } from '@/src/services/graphql/gql'
 import { ArticlesFilters } from '@/src/services/meili/fetchers/articlesFetcher'
 import { isDefined } from '@/src/utils/isDefined'
@@ -28,10 +33,11 @@ const ArticlesFilterGroup = ({ filters, onFiltersChange }: Props) => {
     select: (res) => res.articleCategories.filter(isDefined) ?? [],
   })
 
-  const articleCategoriesSelectItems = [
+  const articleCategoriesSelectItems: ArticleCategoryEntityFragment[] = [
     {
       title: t('ArticlesFilterGroup.allArticleCategories'),
       documentId: '',
+      slug: '',
     },
     ...(articleCategories ?? []),
   ]
@@ -40,13 +46,14 @@ const ArticlesFilterGroup = ({ filters, onFiltersChange }: Props) => {
     queryKey: ['Tags', locale],
     queryFn: () => client.Tags({ locale }),
     staleTime: Infinity,
-    select: (res) => res.tags.filter(isDefined),
+    select: (res) => res.tags.filter(isDefined) ?? [],
   })
 
-  const tagsSelectItems = [
+  const tagsSelectItems: TagEntityFragment[] = [
     {
       title: t('ArticlesFilterGroup.allTags'),
       documentId: '',
+      slug: '',
     },
     ...(tags ?? []),
   ]
@@ -55,7 +62,11 @@ const ArticlesFilterGroup = ({ filters, onFiltersChange }: Props) => {
     queryKey: ['AdminGroups'],
     queryFn: () => client.AdminGroups(),
     staleTime: Infinity,
-    select: (res) => res.adminGroups.filter(isDefined),
+    select: (res) =>
+      res.adminGroups
+        .filter(isDefined)
+        // TODO remove this last filter after slug is set to required
+        .filter((adminGroup) => adminGroup.slug) ?? [],
   })
 
   // "City Hall" is a special option that means articles without any assigned admin group
@@ -63,12 +74,14 @@ const ArticlesFilterGroup = ({ filters, onFiltersChange }: Props) => {
   const CITY_HALL_SELECT_ITEM = {
     title: t('ArticlesFilterGroup.cityHall'),
     documentId: t('ArticlesFilterGroup.cityHall'),
+    slug: t('ArticlesFilterGroup.cityHall'),
   }
 
-  const adminGroupsSelectItems = [
+  const adminGroupsSelectItems: AdminGroupEntityFragment[] = [
     {
       title: t('ArticlesFilterGroup.allAdminGroups'),
       documentId: '',
+      slug: '',
     },
     CITY_HALL_SELECT_ITEM,
     ...(adminGroups ?? []),
@@ -77,7 +90,7 @@ const ArticlesFilterGroup = ({ filters, onFiltersChange }: Props) => {
   const handleCategoryChange = (selectedCategoryIds: string) => {
     onFiltersChange({
       ...filters,
-      articleCategoryDocumentIds: [selectedCategoryIds].filter(Boolean),
+      articleCategorySlugs: [selectedCategoryIds].filter(Boolean),
       page: 1,
     })
   }
@@ -85,7 +98,7 @@ const ArticlesFilterGroup = ({ filters, onFiltersChange }: Props) => {
   const handleTagChange = (selectedTagId: string) => {
     onFiltersChange({
       ...filters,
-      tagDocumentIds: [selectedTagId].filter(Boolean),
+      tagSlugs: [selectedTagId].filter(Boolean),
       page: 1,
     })
   }
@@ -93,12 +106,11 @@ const ArticlesFilterGroup = ({ filters, onFiltersChange }: Props) => {
   const handleAuthorChange = (selectedAdminGroupId: string) => {
     onFiltersChange({
       ...filters,
-      adminGroupDocumentIds:
-        selectedAdminGroupId === CITY_HALL_SELECT_ITEM.documentId
+      adminGroupSlugs:
+        selectedAdminGroupId === CITY_HALL_SELECT_ITEM.slug
           ? []
           : [selectedAdminGroupId].filter(Boolean),
-      excludeArticlesWithAssignedAdminGroups:
-        selectedAdminGroupId === CITY_HALL_SELECT_ITEM.documentId,
+      excludeArticlesWithAssignedAdminGroups: selectedAdminGroupId === CITY_HALL_SELECT_ITEM.slug,
       page: 1,
     })
   }
@@ -108,20 +120,26 @@ const ArticlesFilterGroup = ({ filters, onFiltersChange }: Props) => {
       <SelectField
         label={t('ArticlesFilterGroup.categoryLabel')}
         items={articleCategoriesSelectItems}
-        selectedKey={filters.articleCategoryDocumentIds?.[0] ?? null}
+        selectedKey={filters.articleCategorySlugs?.[0] ?? null}
         placeholder={t('ArticlesFilterGroup.allArticleCategories')}
         onSelectionChange={(key) => handleCategoryChange(key?.toString() ?? '')}
       >
-        {(item) => <SelectItem label={item.title} id={item.documentId} />}
+        {(item) => <SelectItem label={item.title} id={item.slug} />}
       </SelectField>
       <SelectField
         label={t('ArticlesFilterGroup.tagLabel')}
         items={tagsSelectItems}
-        selectedKey={filters.tagDocumentIds?.[0] ?? null}
+        selectedKey={filters.tagSlugs?.[0] ?? null}
         placeholder={t('ArticlesFilterGroup.allTags')}
         onSelectionChange={(key) => handleTagChange(key?.toString() ?? '')}
       >
-        {(item) => <SelectItem label={item.title} id={item.documentId} />}
+        {(item) => (
+          <SelectItem
+            label={item.title}
+            // TODO remove ?? '' after slug is set to required
+            id={item.slug ?? ''}
+          />
+        )}
       </SelectField>
       <SelectField
         label={t('ArticlesFilterGroup.adminGroupLabel')}
@@ -129,12 +147,18 @@ const ArticlesFilterGroup = ({ filters, onFiltersChange }: Props) => {
         selectedKey={
           filters.excludeArticlesWithAssignedAdminGroups
             ? CITY_HALL_SELECT_ITEM.title
-            : (filters.adminGroupDocumentIds?.[0] ?? null)
+            : (filters.adminGroupSlugs?.[0] ?? null)
         }
         placeholder={t('ArticlesFilterGroup.allAdminGroups')}
         onSelectionChange={(key) => handleAuthorChange(key?.toString() ?? '')}
       >
-        {(item) => <SelectItem label={item.title} id={item.documentId} />}
+        {(item) => (
+          <SelectItem
+            label={item.title}
+            // TODO remove ?? '' after slug is set to required
+            id={item.slug ?? ''}
+          />
+        )}
       </SelectField>
     </div>
   )

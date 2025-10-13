@@ -21,16 +21,16 @@ export const useArticlesFilters = () => {
     (filters: ArticlesFiltersQueryParams) => void,
   ] = useQueryStates(
     {
-      articleCategoryDocumentIds: {
-        defaultValue: articlesDefaultFilters.articleCategoryDocumentIds,
+      articleCategorySlugs: {
+        defaultValue: articlesDefaultFilters.articleCategorySlugs,
         parse: (value) => [value].filter(Boolean),
       },
-      tagDocumentIds: {
-        defaultValue: articlesDefaultFilters.tagDocumentIds,
+      tagSlugs: {
+        defaultValue: articlesDefaultFilters.tagSlugs,
         parse: (value) => [value].filter(Boolean),
       },
-      adminGroupDocumentIds: {
-        defaultValue: articlesDefaultFilters.adminGroupDocumentIds,
+      adminGroupSlugs: {
+        defaultValue: articlesDefaultFilters.adminGroupSlugs,
         parse: (value) => [value].filter(Boolean),
       },
       excludeArticlesWithAssignedAdminGroups: {
@@ -41,9 +41,9 @@ export const useArticlesFilters = () => {
     {
       history: 'replace',
       urlKeys: {
-        articleCategoryDocumentIds: 'type',
-        tagDocumentIds: 'topic',
-        adminGroupDocumentIds: 'author',
+        articleCategorySlugs: 'type',
+        tagSlugs: 'topic',
+        adminGroupSlugs: 'author',
         excludeArticlesWithAssignedAdminGroups: 'cityHallOnly',
       },
     },
