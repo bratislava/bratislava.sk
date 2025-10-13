@@ -14,7 +14,6 @@ type ArticlesFiltersQueryParams = Pick<
   | 'excludeArticlesWithAssignedAdminGroups'
 >
 
-// TODO: query by slug instead of documentId for better readability
 export const useArticlesFilters = () => {
   const [filtersQueryParams, setFiltersQueryParams]: [
     ArticlesFiltersQueryParams,
@@ -23,15 +22,15 @@ export const useArticlesFilters = () => {
     {
       articleCategorySlugs: {
         defaultValue: articlesDefaultFilters.articleCategorySlugs,
-        parse: (value) => [value].filter(Boolean),
+        parse: (value) => [value],
       },
       tagSlugs: {
         defaultValue: articlesDefaultFilters.tagSlugs,
-        parse: (value) => [value].filter(Boolean),
+        parse: (value) => [value],
       },
       adminGroupSlugs: {
         defaultValue: articlesDefaultFilters.adminGroupSlugs,
-        parse: (value) => [value].filter(Boolean),
+        parse: (value) => [value],
       },
       excludeArticlesWithAssignedAdminGroups: {
         defaultValue: articlesDefaultFilters.excludeArticlesWithAssignedAdminGroups,

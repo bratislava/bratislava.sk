@@ -1,12 +1,8 @@
+import { SingleSelection } from '@react-types/shared'
 import { useQuery } from '@tanstack/react-query'
 import React from 'react'
 
 import SelectField, { SelectItem } from '@/src/components/common/SelectField/SelectField'
-import {
-  AdminGroupEntityFragment,
-  ArticleCategoryEntityFragment,
-  TagEntityFragment,
-} from '@/src/services/graphql'
 import { client } from '@/src/services/graphql/gql'
 import { ArticlesFilters } from '@/src/services/meili/fetchers/articlesFetcher'
 import { isDefined } from '@/src/utils/isDefined'
@@ -33,10 +29,9 @@ const ArticlesFilterGroup = ({ filters, onFiltersChange }: Props) => {
     select: (res) => res.articleCategories.filter(isDefined) ?? [],
   })
 
-  const articleCategoriesSelectItems: ArticleCategoryEntityFragment[] = [
+  const articleCategoriesSelectItems = [
     {
       title: t('ArticlesFilterGroup.allArticleCategories'),
-      documentId: '',
       slug: '',
     },
     ...(articleCategories ?? []),
@@ -49,10 +44,9 @@ const ArticlesFilterGroup = ({ filters, onFiltersChange }: Props) => {
     select: (res) => res.tags.filter(isDefined) ?? [],
   })
 
-  const tagsSelectItems: TagEntityFragment[] = [
+  const tagsSelectItems = [
     {
       title: t('ArticlesFilterGroup.allTags'),
-      documentId: '',
       slug: '',
     },
     ...(tags ?? []),
@@ -73,44 +67,52 @@ const ArticlesFilterGroup = ({ filters, onFiltersChange }: Props) => {
   // It is not present in the admin groups list in strapi, so we add it here manually
   const CITY_HALL_SELECT_ITEM = {
     title: t('ArticlesFilterGroup.cityHall'),
-    documentId: t('ArticlesFilterGroup.cityHall'),
     slug: t('ArticlesFilterGroup.cityHall'),
   }
 
-  const adminGroupsSelectItems: AdminGroupEntityFragment[] = [
+  const adminGroupsSelectItems = [
     {
       title: t('ArticlesFilterGroup.allAdminGroups'),
-      documentId: '',
       slug: '',
     },
     CITY_HALL_SELECT_ITEM,
     ...(adminGroups ?? []),
   ]
 
-  const handleCategoryChange = (selectedCategoryIds: string) => {
+  const handleCategoryChange = (selectedCategory: SingleSelection['selectedKey']) => {
     onFiltersChange({
       ...filters,
-      articleCategorySlugs: [selectedCategoryIds].filter(Boolean),
+      articleCategorySlugs:
+        selectedCategory && typeof selectedCategory === 'string' ? [selectedCategory] : [],
       page: 1,
     })
   }
 
-  const handleTagChange = (selectedTagId: string) => {
+  const handleTagChange = (selectedTag: SingleSelection['selectedKey']) => {
     onFiltersChange({
       ...filters,
-      tagSlugs: [selectedTagId].filter(Boolean),
+      tagSlugs: selectedTag && typeof selectedTag === 'string' ? [selectedTag] : [],
       page: 1,
     })
   }
 
-  const handleAuthorChange = (selectedAdminGroupId: string) => {
+  const handleAuthorChange = (selectedAdminGroup: SingleSelection['selectedKey']) => {
+    if (selectedAdminGroup === CITY_HALL_SELECT_ITEM.slug) {
+      onFiltersChange({
+        ...filters,
+        adminGroupSlugs: [],
+        excludeArticlesWithAssignedAdminGroups: true,
+        page: 1,
+      })
+
+      return
+    }
+
     onFiltersChange({
       ...filters,
       adminGroupSlugs:
-        selectedAdminGroupId === CITY_HALL_SELECT_ITEM.slug
-          ? []
-          : [selectedAdminGroupId].filter(Boolean),
-      excludeArticlesWithAssignedAdminGroups: selectedAdminGroupId === CITY_HALL_SELECT_ITEM.slug,
+        selectedAdminGroup && typeof selectedAdminGroup === 'string' ? [selectedAdminGroup] : [],
+      excludeArticlesWithAssignedAdminGroups: false,
       page: 1,
     })
   }
@@ -122,7 +124,7 @@ const ArticlesFilterGroup = ({ filters, onFiltersChange }: Props) => {
         items={articleCategoriesSelectItems}
         selectedKey={filters.articleCategorySlugs?.[0] ?? null}
         placeholder={t('ArticlesFilterGroup.allArticleCategories')}
-        onSelectionChange={(key) => handleCategoryChange(key?.toString() ?? '')}
+        onSelectionChange={handleCategoryChange}
       >
         {(item) => <SelectItem label={item.title} id={item.slug} />}
       </SelectField>
@@ -131,7 +133,7 @@ const ArticlesFilterGroup = ({ filters, onFiltersChange }: Props) => {
         items={tagsSelectItems}
         selectedKey={filters.tagSlugs?.[0] ?? null}
         placeholder={t('ArticlesFilterGroup.allTags')}
-        onSelectionChange={(key) => handleTagChange(key?.toString() ?? '')}
+        onSelectionChange={handleTagChange}
       >
         {(item) => (
           <SelectItem
@@ -150,7 +152,7 @@ const ArticlesFilterGroup = ({ filters, onFiltersChange }: Props) => {
             : (filters.adminGroupSlugs?.[0] ?? null)
         }
         placeholder={t('ArticlesFilterGroup.allAdminGroups')}
-        onSelectionChange={(key) => handleAuthorChange(key?.toString() ?? '')}
+        onSelectionChange={handleAuthorChange}
       >
         {(item) => (
           <SelectItem
