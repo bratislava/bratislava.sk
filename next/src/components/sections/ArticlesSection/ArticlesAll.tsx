@@ -1,6 +1,7 @@
 import { Typography } from '@bratislava/component-library'
 import { keepPreviousData, useQuery } from '@tanstack/react-query'
 import React, { useEffect, useRef, useState } from 'react'
+import { useDebounceValue } from 'usehooks-ts'
 
 import ArticleCard from '@/src/components/cards/ArticleCard'
 import { transformArticleProps } from '@/src/components/cards/transformArticleProps'
@@ -32,36 +33,18 @@ const ArticlesAll = ({ section }: Props) => {
 
   const { title, text } = section
 
-  const { filters, setFilters } = useArticlesFilters()
+  const { filters, setFilters, setSearch, setPage } = useArticlesFilters()
 
-  // URL query params are not availible on first render, so we need to synchonize them
   const [input, setInput] = useState('')
-
-  useEffect(() => {
-    setInput(filters.search)
-  }, [filters.search])
-
-  // TODO debounce input
-  // const [debouncedInput] = useDebounceValue(input, 300)
-
-  const handlePageChange = (page: number) => {
-    setFilters({ ...filters, page })
-  }
+  const [debouncedInput] = useDebounceValue(input, 300)
 
   const handleFiltersChange = (newFilters: ArticlesFilters) => {
-    setFilters({ ...filters, ...newFilters, page: 1 })
+    setFilters({ ...newFilters, page: 1 })
   }
 
-  const handleInputChange = (newSearch: string) => {
-    setInput(newSearch)
-    setFilters({ ...filters, search: newSearch, page: 1 })
-  }
-
-  // TODO debounce input
-  // useEffect(() => {
-  //   setFilters({ ...filters, search: debouncedInput, page: 1 })
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [debouncedInput])
+  useEffect(() => {
+    setSearch(debouncedInput)
+  }, [debouncedInput, setSearch])
 
   const { data, isPending } = useQuery({
     queryKey: getArticlesQueryKey(filters, locale),
@@ -83,7 +66,7 @@ const ArticlesAll = ({ section }: Props) => {
           ref={searchRef}
           placeholder={t('SearchPage.enterKeyword')}
           value={input}
-          onChange={handleInputChange}
+          onChange={setInput}
           isLoading={isPending}
         />
         <ArticlesFilterGroup filters={filters} onFiltersChange={handleFiltersChange} />
@@ -104,7 +87,7 @@ const ArticlesAll = ({ section }: Props) => {
           key={filters.search}
           totalCount={Math.ceil(data.estimatedTotalHits / filters.pageSize)}
           currentPage={filters.page}
-          onPageChange={handlePageChange}
+          onPageChange={setPage}
         />
       ) : null}
     </div>
