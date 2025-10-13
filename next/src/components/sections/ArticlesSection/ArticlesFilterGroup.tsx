@@ -83,7 +83,10 @@ const ArticlesFilterGroup = ({ filters, onFiltersChange }: Props) => {
     onFiltersChange({
       ...filters,
       articleCategorySlugs:
-        selectedCategory && typeof selectedCategory === 'string' ? [selectedCategory] : [],
+        // We check for empty strings, otherwise they would end up as [""] in meilisearch filters
+        typeof selectedCategory === 'string' && selectedCategory.length > 0
+          ? [selectedCategory]
+          : [],
       page: 1,
     })
   }
@@ -91,7 +94,8 @@ const ArticlesFilterGroup = ({ filters, onFiltersChange }: Props) => {
   const handleTagChange = (selectedTag: SingleSelection['selectedKey']) => {
     onFiltersChange({
       ...filters,
-      tagSlugs: selectedTag && typeof selectedTag === 'string' ? [selectedTag] : [],
+      // We check for empty strings, otherwise they would end up as [""] in meilisearch filters
+      tagSlugs: typeof selectedTag === 'string' && selectedTag.length > 0 ? [selectedTag] : [],
       page: 1,
     })
   }
@@ -111,7 +115,10 @@ const ArticlesFilterGroup = ({ filters, onFiltersChange }: Props) => {
     onFiltersChange({
       ...filters,
       adminGroupSlugs:
-        selectedAdminGroup && typeof selectedAdminGroup === 'string' ? [selectedAdminGroup] : [],
+        // We check for empty strings, otherwise they would end up as [""] in meilisearch filters
+        typeof selectedAdminGroup === 'string' && selectedAdminGroup.length > 0
+          ? [selectedAdminGroup]
+          : [],
       excludeArticlesWithAssignedAdminGroups: false,
       page: 1,
     })

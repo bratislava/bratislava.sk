@@ -22,15 +22,15 @@ export const useArticlesFilters = () => {
     {
       articleCategorySlugs: {
         defaultValue: articlesDefaultFilters.articleCategorySlugs,
-        parse: (value) => [value],
+        parse: (value) => (value ? [value] : []),
       },
       tagSlugs: {
         defaultValue: articlesDefaultFilters.tagSlugs,
-        parse: (value) => [value],
+        parse: (value) => (value ? [value] : []),
       },
       adminGroupSlugs: {
         defaultValue: articlesDefaultFilters.adminGroupSlugs,
-        parse: (value) => [value],
+        parse: (value) => (value ? [value] : []),
       },
       excludeArticlesWithAssignedAdminGroups: {
         defaultValue: articlesDefaultFilters.excludeArticlesWithAssignedAdminGroups,
