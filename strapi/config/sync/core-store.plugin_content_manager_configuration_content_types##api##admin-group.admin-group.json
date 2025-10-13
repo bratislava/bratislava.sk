@@ -273,7 +273,7 @@
       "list": [
         "id",
         "title",
-        "adminGroupId",
+        "slug",
         "createdAt",
         "updatedAt"
       ]

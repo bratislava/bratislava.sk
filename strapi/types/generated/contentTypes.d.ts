@@ -1365,6 +1365,12 @@ export interface ApiTagTag extends Struct.CollectionTypeSchema {
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::tag.tag'>
     pageCategory: Schema.Attribute.Relation<'oneToOne', 'api::page-category.page-category'>
     publishedAt: Schema.Attribute.DateTime
+    slug: Schema.Attribute.UID<'title'> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true
+        }
+      }>
     title: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{
         i18n: {

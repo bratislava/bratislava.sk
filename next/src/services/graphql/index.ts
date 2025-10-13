@@ -5914,6 +5914,7 @@ export type Tag = {
   localizations_connection?: Maybe<TagRelationResponseCollection>
   pageCategory?: Maybe<PageCategory>
   publishedAt?: Maybe<Scalars['DateTime']['output']>
+  slug?: Maybe<Scalars['String']['output']>
   title?: Maybe<Scalars['String']['output']>
   updatedAt?: Maybe<Scalars['DateTime']['output']>
 }
@@ -5970,6 +5971,7 @@ export type TagFiltersInput = {
   or?: InputMaybe<Array<InputMaybe<TagFiltersInput>>>
   pageCategory?: InputMaybe<PageCategoryFiltersInput>
   publishedAt?: InputMaybe<DateTimeFilterInput>
+  slug?: InputMaybe<StringFilterInput>
   title?: InputMaybe<StringFilterInput>
   updatedAt?: InputMaybe<DateTimeFilterInput>
 }
@@ -5978,6 +5980,7 @@ export type TagInput = {
   articles?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
   pageCategory?: InputMaybe<Scalars['ID']['input']>
   publishedAt?: InputMaybe<Scalars['DateTime']['input']>
+  slug?: InputMaybe<Scalars['String']['input']>
   title?: InputMaybe<Scalars['String']['input']>
 }
 
@@ -6540,6 +6543,7 @@ export type ArticleCardEntityFragment = {
     __typename?: 'Tag'
     documentId: string
     title?: string | null
+    slug?: string | null
     pageCategory?: {
       __typename?: 'PageCategory'
       documentId: string
@@ -6604,6 +6608,7 @@ export type ArticleEntityFragment = {
     __typename?: 'Tag'
     documentId: string
     title?: string | null
+    slug?: string | null
     pageCategory?: {
       __typename?: 'PageCategory'
       documentId: string
@@ -6675,6 +6680,7 @@ export type ArticleBySlugQuery = {
       __typename?: 'Tag'
       documentId: string
       title?: string | null
+      slug?: string | null
       pageCategory?: {
         __typename?: 'PageCategory'
         documentId: string
@@ -6749,6 +6755,7 @@ export type ArticlesQuery = {
       __typename?: 'Tag'
       documentId: string
       title?: string | null
+      slug?: string | null
       pageCategory?: {
         __typename?: 'PageCategory'
         documentId: string
@@ -6848,6 +6855,7 @@ export type Dev_AllArticlesQuery = {
       __typename?: 'Tag'
       documentId: string
       title?: string | null
+      slug?: string | null
       pageCategory?: {
         __typename?: 'PageCategory'
         documentId: string
@@ -8139,6 +8147,7 @@ export type HomepageEntityFragment = {
           __typename?: 'Tag'
           documentId: string
           title?: string | null
+          slug?: string | null
           pageCategory?: {
             __typename?: 'PageCategory'
             documentId: string
@@ -8204,6 +8213,7 @@ export type HomepageEntityFragment = {
         __typename?: 'Tag'
         documentId: string
         title?: string | null
+        slug?: string | null
         pageCategory?: {
           __typename?: 'PageCategory'
           documentId: string
@@ -8234,6 +8244,7 @@ export type HomepageEntityFragment = {
         __typename?: 'Tag'
         documentId: string
         title?: string | null
+        slug?: string | null
         pageCategory?: {
           __typename?: 'PageCategory'
           documentId: string
@@ -8488,6 +8499,7 @@ export type HomepageQuery = {
             __typename?: 'Tag'
             documentId: string
             title?: string | null
+            slug?: string | null
             pageCategory?: {
               __typename?: 'PageCategory'
               documentId: string
@@ -8553,6 +8565,7 @@ export type HomepageQuery = {
           __typename?: 'Tag'
           documentId: string
           title?: string | null
+          slug?: string | null
           pageCategory?: {
             __typename?: 'PageCategory'
             documentId: string
@@ -8583,6 +8596,7 @@ export type HomepageQuery = {
           __typename?: 'Tag'
           documentId: string
           title?: string | null
+          slug?: string | null
           pageCategory?: {
             __typename?: 'PageCategory'
             documentId: string
@@ -8815,6 +8829,7 @@ export type HomepageHighlightsItemFragment = {
       __typename?: 'Tag'
       documentId: string
       title?: string | null
+      slug?: string | null
       pageCategory?: {
         __typename?: 'PageCategory'
         documentId: string
@@ -8880,6 +8895,7 @@ export type HomepageTabsFragment = {
       __typename?: 'Tag'
       documentId: string
       title?: string | null
+      slug?: string | null
       pageCategory?: {
         __typename?: 'PageCategory'
         documentId: string
@@ -8910,6 +8926,7 @@ export type HomepageTabsFragment = {
       __typename?: 'Tag'
       documentId: string
       title?: string | null
+      slug?: string | null
       pageCategory?: {
         __typename?: 'PageCategory'
         documentId: string
@@ -9744,6 +9761,7 @@ export type PageEntityFragment = {
             __typename?: 'Tag'
             documentId: string
             title?: string | null
+            slug?: string | null
             pageCategory?: {
               __typename?: 'PageCategory'
               documentId: string
@@ -9762,6 +9780,7 @@ export type PageEntityFragment = {
           __typename?: 'Tag'
           documentId: string
           title?: string | null
+          slug?: string | null
           pageCategory?: {
             __typename?: 'PageCategory'
             documentId: string
@@ -10657,6 +10676,7 @@ export type PageEntityFragment = {
     __typename?: 'Tag'
     documentId: string
     title?: string | null
+    slug?: string | null
     pageCategory?: {
       __typename?: 'PageCategory'
       documentId: string
@@ -10913,6 +10933,7 @@ export type PageBySlugQuery = {
               __typename?: 'Tag'
               documentId: string
               title?: string | null
+              slug?: string | null
               pageCategory?: {
                 __typename?: 'PageCategory'
                 documentId: string
@@ -10931,6 +10952,7 @@ export type PageBySlugQuery = {
             __typename?: 'Tag'
             documentId: string
             title?: string | null
+            slug?: string | null
             pageCategory?: {
               __typename?: 'PageCategory'
               documentId: string
@@ -11833,6 +11855,7 @@ export type PageBySlugQuery = {
       __typename?: 'Tag'
       documentId: string
       title?: string | null
+      slug?: string | null
       pageCategory?: {
         __typename?: 'PageCategory'
         documentId: string
@@ -12111,6 +12134,7 @@ export type Dev_AllPagesQuery = {
               __typename?: 'Tag'
               documentId: string
               title?: string | null
+              slug?: string | null
               pageCategory?: {
                 __typename?: 'PageCategory'
                 documentId: string
@@ -12129,6 +12153,7 @@ export type Dev_AllPagesQuery = {
             __typename?: 'Tag'
             documentId: string
             title?: string | null
+            slug?: string | null
             pageCategory?: {
               __typename?: 'PageCategory'
               documentId: string
@@ -13031,6 +13056,7 @@ export type Dev_AllPagesQuery = {
       __typename?: 'Tag'
       documentId: string
       title?: string | null
+      slug?: string | null
       pageCategory?: {
         __typename?: 'PageCategory'
         documentId: string
@@ -13705,6 +13731,7 @@ export type ArticlesSectionFragment = {
       __typename?: 'Tag'
       documentId: string
       title?: string | null
+      slug?: string | null
       pageCategory?: {
         __typename?: 'PageCategory'
         documentId: string
@@ -13723,6 +13750,7 @@ export type ArticlesSectionFragment = {
     __typename?: 'Tag'
     documentId: string
     title?: string | null
+    slug?: string | null
     pageCategory?: {
       __typename?: 'PageCategory'
       documentId: string
@@ -14925,6 +14953,7 @@ type Sections_ComponentSectionsArticles_Fragment = {
       __typename?: 'Tag'
       documentId: string
       title?: string | null
+      slug?: string | null
       pageCategory?: {
         __typename?: 'PageCategory'
         documentId: string
@@ -14943,6 +14972,7 @@ type Sections_ComponentSectionsArticles_Fragment = {
     __typename?: 'Tag'
     documentId: string
     title?: string | null
+    slug?: string | null
     pageCategory?: {
       __typename?: 'PageCategory'
       documentId: string
@@ -15995,6 +16025,7 @@ export type TagEntityFragment = {
   __typename?: 'Tag'
   documentId: string
   title?: string | null
+  slug?: string | null
   pageCategory?: {
     __typename?: 'PageCategory'
     documentId: string
@@ -16013,6 +16044,7 @@ export type TagsQuery = {
     __typename?: 'Tag'
     documentId: string
     title?: string | null
+    slug?: string | null
     pageCategory?: {
       __typename?: 'PageCategory'
       documentId: string
@@ -16053,6 +16085,7 @@ export const TagEntityFragmentDoc = gql`
   fragment TagEntity on Tag {
     documentId
     title
+    slug
     pageCategory {
       ...PageCategoryEntity
     }

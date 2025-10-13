@@ -40,6 +40,7 @@ const searchIndexSettings = {
     'locale',
     'article.articleCategory.documentId',
     'article.tag.documentId',
+    'article.tag.slug',
     'article.adminGroups',
     'article.adminGroups.documentId',
     'document.documentCategory.documentId',

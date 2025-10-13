@@ -22,7 +22,7 @@
       },
       "title": {
         "edit": {
-          "label": "title",
+          "label": "Názov",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -34,10 +34,24 @@
           "sortable": true
         }
       },
+      "slug": {
+        "edit": {
+          "label": "Slug",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "slug",
+          "searchable": true,
+          "sortable": true
+        }
+      },
       "pageCategory": {
         "edit": {
-          "label": "pageCategory",
-          "description": "",
+          "label": "Hlavná kategória",
+          "description": " ",
           "placeholder": "",
           "visible": true,
           "editable": true,
@@ -51,7 +65,7 @@
       },
       "articles": {
         "edit": {
-          "label": "articles",
+          "label": "Články",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -132,29 +146,37 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "title",
-        "pageCategory",
-        "createdBy"
-      ],
       "edit": [
         [
           {
             "name": "title",
-            "size": 6
-          },
+            "size": 12
+          }
+        ],
+        [
           {
-            "name": "pageCategory",
-            "size": 6
+            "name": "slug",
+            "size": 12
           }
         ],
         [
           {
             "name": "articles",
-            "size": 6
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "pageCategory",
+            "size": 12
           }
         ]
+      ],
+      "list": [
+        "id",
+        "title",
+        "slug",
+        "createdBy"
       ]
     }
   },
