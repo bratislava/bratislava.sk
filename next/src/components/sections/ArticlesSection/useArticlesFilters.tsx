@@ -6,19 +6,8 @@ import {
   ArticlesFilters,
 } from '@/src/services/meili/fetchers/articlesFetcher'
 
-type ArticlesFiltersQueryParams = Pick<
-  ArticlesFilters,
-  | 'articleCategoryDocumentIds'
-  | 'tagDocumentIds'
-  | 'adminGroupDocumentIds'
-  | 'excludeArticlesWithAssignedAdminGroups'
->
-
 export const useArticlesFilters = () => {
-  const [filtersQueryParams, setFiltersQueryParams]: [
-    ArticlesFiltersQueryParams,
-    (filters: ArticlesFiltersQueryParams) => void,
-  ] = useQueryStates(
+  const [filtersQueryParams, setFiltersQueryParams] = useQueryStates(
     {
       articleCategorySlugs: {
         defaultValue: articlesDefaultFilters.articleCategorySlugs,
