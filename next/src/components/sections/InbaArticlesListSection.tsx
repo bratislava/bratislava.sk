@@ -127,9 +127,9 @@ const InbaArticlesListSection = ({ section }: Props) => {
         <div className="flex flex-col gap-4">
           <SearchBar
             ref={searchRef}
-            value={input}
-            onChange={setInput}
-            onSubmit={(value) =>
+            input={input}
+            setInput={setInput}
+            setSearchQuery={(value) =>
               setFilters((previousState) => ({ ...previousState, search: value, page: 1 }))
             }
             isLoading={isFetching}
