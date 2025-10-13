@@ -7,7 +7,7 @@
       "filterable": true,
       "searchable": true,
       "pageSize": 10,
-      "mainField": "documentId",
+      "mainField": "label",
       "defaultSortBy": "id",
       "defaultSortOrder": "ASC"
     },
@@ -22,7 +22,7 @@
       },
       "label": {
         "edit": {
-          "label": "label",
+          "label": "Nadpis",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -36,7 +36,7 @@
       },
       "subtext": {
         "edit": {
-          "label": "subtext",
+          "label": "Text",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -48,40 +48,40 @@
           "sortable": true
         }
       },
-      "article": {
+      "page": {
         "edit": {
-          "label": "article",
-          "description": "",
+          "label": "Stránka",
+          "description": "Použite toto políčko, ak ide o stránku z bratislava.sk.",
           "placeholder": "",
           "visible": true,
           "editable": true,
-          "mainField": "title"
+          "mainField": "slug"
         },
         "list": {
-          "label": "article",
+          "label": "page",
           "searchable": true,
           "sortable": true
         }
       },
-      "page": {
+      "article": {
         "edit": {
-          "label": "page",
-          "description": "",
+          "label": "Článok",
+          "description": "Použite toto políčko, ak ide o článok z bratislava.sk.",
           "placeholder": "",
           "visible": true,
           "editable": true,
           "mainField": "title"
         },
         "list": {
-          "label": "page",
+          "label": "article",
           "searchable": true,
           "sortable": true
         }
       },
       "media": {
         "edit": {
-          "label": "media",
-          "description": "",
+          "label": "Obrázok",
+          "description": "V pípade, že odkazujeme na Článok alebo Stránku (nie cez políčko Url), obrázok sa automaticky dotiahne z daného článku alebo stránky.",
           "placeholder": "",
           "visible": true,
           "editable": true
@@ -94,8 +94,8 @@
       },
       "url": {
         "edit": {
-          "label": "url",
-          "description": "",
+          "label": "Url",
+          "description": "Toto políčko používame pre odkazy na externé stránky.",
           "placeholder": "",
           "visible": true,
           "editable": true
@@ -120,34 +120,6 @@
           "sortable": true
         }
       },
-      "link": {
-        "edit": {
-          "label": "Odkaz",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "link",
-          "searchable": false,
-          "sortable": false
-        }
-      },
-      "image": {
-        "edit": {
-          "label": "Obrázky",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "image",
-          "searchable": false,
-          "sortable": false
-        }
-      },
       "documentId": {
         "edit": {},
         "list": {
@@ -160,55 +132,45 @@
     "layouts": {
       "list": [
         "id",
-        "link",
-        "image",
         "documentId"
       ],
       "edit": [
         [
           {
-            "name": "link",
+            "name": "label",
             "size": 12
           }
         ],
         [
           {
-            "name": "image",
-            "size": 6
-          },
-          {
-            "name": "label",
-            "size": 6
-          }
-        ],
-        [
-          {
             "name": "subtext",
-            "size": 6
-          },
-          {
-            "name": "article",
-            "size": 6
+            "size": 12
           }
         ],
         [
-          {
-            "name": "page",
-            "size": 6
-          },
           {
             "name": "media",
-            "size": 6
+            "size": 12
+          },
+          {
+            "name": "page",
+            "size": 8
+          }
+        ],
+        [
+          {
+            "name": "article",
+            "size": 8
           }
         ],
         [
           {
             "name": "url",
-            "size": 6
+            "size": 8
           },
           {
             "name": "analyticsId",
-            "size": 6
+            "size": 4
           }
         ]
       ]

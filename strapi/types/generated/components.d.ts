@@ -199,9 +199,7 @@ export interface BlocksHomepageHighlightsItem extends Struct.ComponentSchema {
   attributes: {
     analyticsId: Schema.Attribute.String
     article: Schema.Attribute.Relation<'oneToOne', 'api::article.article'>
-    image: Schema.Attribute.Media<'images'> & Schema.Attribute.Required
     label: Schema.Attribute.String
-    link: Schema.Attribute.Component<'blocks.common-link', false> & Schema.Attribute.Required
     media: Schema.Attribute.Media<'images'>
     page: Schema.Attribute.Relation<'oneToOne', 'api::page.page'>
     subtext: Schema.Attribute.String
@@ -455,7 +453,7 @@ export interface MenuMenuItem extends Struct.ComponentSchema {
     > &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<'mesto_01'>
-    label: Schema.Attribute.String & Schema.Attribute.Required
+    label: Schema.Attribute.Text & Schema.Attribute.Required
     page: Schema.Attribute.Relation<'oneToOne', 'api::page.page'>
     sections: Schema.Attribute.Component<'menu.menu-section', true>
   }

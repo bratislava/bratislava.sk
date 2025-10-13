@@ -637,9 +637,7 @@ type ComponentBlocksHomepageHighlightsItem {
   analyticsId: String
   article: Article
   id: ID!
-  image: UploadFile!
   label: String
-  link: ComponentBlocksCommonLink!
   media: UploadFile
   page: Page
   subtext: String
@@ -651,7 +649,6 @@ input ComponentBlocksHomepageHighlightsItemFiltersInput {
   and: [ComponentBlocksHomepageHighlightsItemFiltersInput]
   article: ArticleFiltersInput
   label: StringFilterInput
-  link: ComponentBlocksCommonLinkFiltersInput
   not: ComponentBlocksHomepageHighlightsItemFiltersInput
   or: [ComponentBlocksHomepageHighlightsItemFiltersInput]
   page: PageFiltersInput
@@ -663,9 +660,7 @@ input ComponentBlocksHomepageHighlightsItemInput {
   analyticsId: String
   article: ID
   id: ID
-  image: ID
   label: String
-  link: ComponentBlocksCommonLinkInput
   media: ID
   page: ID
   subtext: String

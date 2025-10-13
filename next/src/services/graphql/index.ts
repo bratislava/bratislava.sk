@@ -838,9 +838,7 @@ export type ComponentBlocksHomepageHighlightsItem = {
   analyticsId?: Maybe<Scalars['String']['output']>
   article?: Maybe<Article>
   id: Scalars['ID']['output']
-  image: UploadFile
   label?: Maybe<Scalars['String']['output']>
-  link: ComponentBlocksCommonLink
   media?: Maybe<UploadFile>
   page?: Maybe<Page>
   subtext?: Maybe<Scalars['String']['output']>
@@ -852,7 +850,6 @@ export type ComponentBlocksHomepageHighlightsItemFiltersInput = {
   and?: InputMaybe<Array<InputMaybe<ComponentBlocksHomepageHighlightsItemFiltersInput>>>
   article?: InputMaybe<ArticleFiltersInput>
   label?: InputMaybe<StringFilterInput>
-  link?: InputMaybe<ComponentBlocksCommonLinkFiltersInput>
   not?: InputMaybe<ComponentBlocksHomepageHighlightsItemFiltersInput>
   or?: InputMaybe<Array<InputMaybe<ComponentBlocksHomepageHighlightsItemFiltersInput>>>
   page?: InputMaybe<PageFiltersInput>
@@ -864,9 +861,7 @@ export type ComponentBlocksHomepageHighlightsItemInput = {
   analyticsId?: InputMaybe<Scalars['String']['input']>
   article?: InputMaybe<Scalars['ID']['input']>
   id?: InputMaybe<Scalars['ID']['input']>
-  image?: InputMaybe<Scalars['ID']['input']>
   label?: InputMaybe<Scalars['String']['input']>
-  link?: InputMaybe<ComponentBlocksCommonLinkInput>
   media?: InputMaybe<Scalars['ID']['input']>
   page?: InputMaybe<Scalars['ID']['input']>
   subtext?: InputMaybe<Scalars['String']['input']>
@@ -8166,27 +8161,6 @@ export type HomepageEntityFragment = {
         alternativeText?: string | null
         name: string
       } | null
-      link: {
-        __typename?: 'ComponentBlocksCommonLink'
-        label?: string | null
-        url?: string | null
-        analyticsId?: string | null
-        page?: {
-          __typename?: 'Page'
-          documentId: string
-          slug?: string | null
-          title: string
-          locale?: string | null
-        } | null
-        article?: {
-          __typename: 'Article'
-          documentId: string
-          slug: string
-          title: string
-          locale?: string | null
-        } | null
-      }
-      image: { __typename?: 'UploadFile'; documentId: string; url: string }
     } | null> | null
   } | null
   tabs?: {
@@ -8518,27 +8492,6 @@ export type HomepageQuery = {
           alternativeText?: string | null
           name: string
         } | null
-        link: {
-          __typename?: 'ComponentBlocksCommonLink'
-          label?: string | null
-          url?: string | null
-          analyticsId?: string | null
-          page?: {
-            __typename?: 'Page'
-            documentId: string
-            slug?: string | null
-            title: string
-            locale?: string | null
-          } | null
-          article?: {
-            __typename: 'Article'
-            documentId: string
-            slug: string
-            title: string
-            locale?: string | null
-          } | null
-        }
-        image: { __typename?: 'UploadFile'; documentId: string; url: string }
       } | null> | null
     } | null
     tabs?: {
@@ -8848,27 +8801,6 @@ export type HomepageHighlightsItemFragment = {
     alternativeText?: string | null
     name: string
   } | null
-  link: {
-    __typename?: 'ComponentBlocksCommonLink'
-    label?: string | null
-    url?: string | null
-    analyticsId?: string | null
-    page?: {
-      __typename?: 'Page'
-      documentId: string
-      slug?: string | null
-      title: string
-      locale?: string | null
-    } | null
-    article?: {
-      __typename: 'Article'
-      documentId: string
-      slug: string
-      title: string
-      locale?: string | null
-    } | null
-  }
-  image: { __typename?: 'UploadFile'; documentId: string; url: string }
 }
 
 export type HomepageTabsFragment = {
@@ -16371,18 +16303,10 @@ export const HomepageHighlightsItemFragmentDoc = gql`
       ...UploadImageEntity
     }
     analyticsId
-    link {
-      ...CommonLink
-    }
-    image {
-      ...UploadImageSrcEntity
-    }
   }
   ${PageCardEntityFragmentDoc}
   ${ArticleCardEntityFragmentDoc}
   ${UploadImageEntityFragmentDoc}
-  ${CommonLinkFragmentDoc}
-  ${UploadImageSrcEntityFragmentDoc}
 `
 export const HomepageTabsFragmentDoc = gql`
   fragment HomepageTabs on ComponentSectionsHomepageTabs {

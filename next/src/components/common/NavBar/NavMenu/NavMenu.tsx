@@ -9,10 +9,6 @@ import { getParsedMenus } from './getParsedMenus'
 import { useNavMenuContext } from './navMenuContext'
 import NavMenuItem from './NavMenuItem'
 
-/**
- * Figma: https://www.figma.com/design/17wbd0MDQcMW9NbXl6UPs8/DS--Component-library?node-id=16846-33525&m=dev
- */
-
 const NavMenu = () => {
   const { t } = useTranslation()
   const pathname = usePathname()
@@ -35,8 +31,8 @@ const NavMenu = () => {
       onValueChange={setMenuValue}
       aria-label={t('NavMenu.aria.navMenuLabel')}
     >
-      <div className="relative z-30 mx-auto border-b px-4 lg:px-8">
-        <NavigationMenu.List className="flex flex-wrap gap-4 py-4">
+      <div className="relative z-30 border-b">
+        <NavigationMenu.List className="m-auto grid w-full max-w-(--breakpoint-xl) grid-flow-col grid-cols-6">
           {menus.map((menuItem, index) => (
             // eslint-disable-next-line react/no-array-index-key
             <NavMenuItem key={index} menu={menuItem} />

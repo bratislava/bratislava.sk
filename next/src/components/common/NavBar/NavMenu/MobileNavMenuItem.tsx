@@ -11,10 +11,6 @@ type NavItemProps = {
   menu: MenuItem
 }
 
-/**
- * Figma: https://www.figma.com/design/17wbd0MDQcMW9NbXl6UPs8/DS--Component-library?node-id=16846-33525&m=dev
- */
-
 const MobileNavMenuItem = ({ menu }: NavItemProps) => {
   const category = transformIconToCategory(menu.icon)
   const colorStyle = getCategoryColorLocalStyle({ category })

@@ -1,8 +1,7 @@
-import { Typography } from '@bratislava/component-library'
 import * as NavigationMenu from '@radix-ui/react-navigation-menu'
 import React, { CSSProperties, forwardRef } from 'react'
 
-import { ChevronDownIcon } from '@/src/assets/icons'
+import StickyMenuTopper from '@/src/components/common/NavBar/NavMenu/sticky-menu-topper.svg'
 
 type NavMenuTriggerProps = {
   label: string
@@ -19,23 +18,11 @@ const NavMenuTrigger = forwardRef<HTMLButtonElement, NavMenuTriggerProps>(
         onPointerMove={(event) => event.preventDefault()}
         onPointerLeave={(event) => event.preventDefault()}
         style={colorStyle}
-        className="base-focus-ring group size-full items-center rounded-xs hover:font-semibold data-[state=open]:font-semibold"
+        className="base-focus-ring group flex size-full flex-col items-center py-4 whitespace-pre-wrap ring-inset hover:font-semibold data-[state=open]:font-semibold"
       >
-        <div className="-m-2 flex items-center gap-1 p-2">
-          <div className="relative">
-            {/* Invisible semibold label added to prevent layout shifting when text weight changes */}
-            <Typography variant="p-small" className="invisible font-semibold" aria-hidden>
-              {label}
-            </Typography>
-            <Typography variant="p-small" className="absolute inset-0">
-              {label}
-            </Typography>
-          </div>
-          <ChevronDownIcon
-            // Icon size and margin-top slightly altered so that visually it looks as in figma
-            className="mt-0.5 size-4.75 group-data-[state=open]:rotate-180"
-          />
-        </div>
+        {/* FIXME Typography: Convert to use Typography. */}
+        {label}
+        <StickyMenuTopper className="group:data-[state=open]:opacity-100 absolute bottom-[-7px] text-category-600 opacity-100 transition group-hover:opacity-100" />
       </NavigationMenu.Trigger>
     )
   },

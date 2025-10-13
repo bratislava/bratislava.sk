@@ -7,7 +7,7 @@
   "options": {},
   "attributes": {
     "label": {
-      "type": "string",
+      "type": "text",
       "required": true
     },
     "page": {
@@ -29,9 +29,10 @@
       ]
     },
     "sections": {
+      "displayName": "menu section",
       "type": "component",
-      "component": "menu.menu-section",
-      "repeatable": true
+      "repeatable": true,
+      "component": "menu.menu-section"
     }
   }
 }
