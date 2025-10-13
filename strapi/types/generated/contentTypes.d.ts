@@ -363,7 +363,8 @@ export interface ApiAdminGroupAdminGroup extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private
     pages: Schema.Attribute.Relation<'manyToMany', 'api::page.page'>
     publishedAt: Schema.Attribute.DateTime
-    title: Schema.Attribute.String
+    slug: Schema.Attribute.UID<'title'>
+    title: Schema.Attribute.String & Schema.Attribute.Required
     updatedAt: Schema.Attribute.DateTime
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> & Schema.Attribute.Private
   }

@@ -12,6 +12,7 @@ fragment PageSubnavigationEntity on Page {
 fragment AdminGroupEntity on AdminGroup {
   ...AdminGroupDocumentIdEntity
   title
+  slug
   adminGroupId
   contentManagedBy
   landingPage {

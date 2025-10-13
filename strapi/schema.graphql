@@ -17,7 +17,8 @@ type AdminGroup {
   pages(filters: PageFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [Page]!
   pages_connection(filters: PageFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): PageRelationResponseCollection
   publishedAt: DateTime
-  title: String
+  slug: String
+  title: String!
   updatedAt: DateTime
 }
 
@@ -49,6 +50,7 @@ input AdminGroupFiltersInput {
   or: [AdminGroupFiltersInput]
   pages: PageFiltersInput
   publishedAt: DateTimeFilterInput
+  slug: StringFilterInput
   title: StringFilterInput
   updatedAt: DateTimeFilterInput
 }
@@ -62,6 +64,7 @@ input AdminGroupInput {
   landingPage: ID
   pages: [ID]
   publishedAt: DateTime
+  slug: String
   title: String
 }
 

@@ -52,7 +52,8 @@ export type AdminGroup = {
   pages: Array<Maybe<Page>>
   pages_connection?: Maybe<PageRelationResponseCollection>
   publishedAt?: Maybe<Scalars['DateTime']['output']>
-  title?: Maybe<Scalars['String']['output']>
+  slug?: Maybe<Scalars['String']['output']>
+  title: Scalars['String']['output']
   updatedAt?: Maybe<Scalars['DateTime']['output']>
 }
 
@@ -135,6 +136,7 @@ export type AdminGroupFiltersInput = {
   or?: InputMaybe<Array<InputMaybe<AdminGroupFiltersInput>>>
   pages?: InputMaybe<PageFiltersInput>
   publishedAt?: InputMaybe<DateTimeFilterInput>
+  slug?: InputMaybe<StringFilterInput>
   title?: InputMaybe<StringFilterInput>
   updatedAt?: InputMaybe<DateTimeFilterInput>
 }
@@ -148,6 +150,7 @@ export type AdminGroupInput = {
   landingPage?: InputMaybe<Scalars['ID']['input']>
   pages?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
   publishedAt?: InputMaybe<Scalars['DateTime']['input']>
+  slug?: InputMaybe<Scalars['String']['input']>
   title?: InputMaybe<Scalars['String']['input']>
 }
 
@@ -6421,7 +6424,8 @@ export type PageSubnavigationEntityFragment = {
 
 export type AdminGroupEntityFragment = {
   __typename?: 'AdminGroup'
-  title?: string | null
+  title: string
+  slug?: string | null
   adminGroupId?: string | null
   contentManagedBy?: string | null
   documentId: string
@@ -6463,7 +6467,8 @@ export type AdminGroupsQuery = {
   __typename?: 'Query'
   adminGroups: Array<{
     __typename?: 'AdminGroup'
-    title?: string | null
+    title: string
+    slug?: string | null
     adminGroupId?: string | null
     contentManagedBy?: string | null
     documentId: string
@@ -9549,7 +9554,8 @@ export type PageEntityFragment = {
   locale?: string | null
   adminGroups: Array<{
     __typename?: 'AdminGroup'
-    title?: string | null
+    title: string
+    slug?: string | null
     adminGroupId?: string | null
     contentManagedBy?: string | null
     documentId: string
@@ -10717,7 +10723,8 @@ export type PageBySlugQuery = {
     locale?: string | null
     adminGroups: Array<{
       __typename?: 'AdminGroup'
-      title?: string | null
+      title: string
+      slug?: string | null
       adminGroupId?: string | null
       contentManagedBy?: string | null
       documentId: string
@@ -11914,7 +11921,8 @@ export type Dev_AllPagesQuery = {
     locale?: string | null
     adminGroups: Array<{
       __typename?: 'AdminGroup'
-      title?: string | null
+      title: string
+      slug?: string | null
       adminGroupId?: string | null
       contentManagedBy?: string | null
       documentId: string
@@ -16564,6 +16572,7 @@ export const AdminGroupEntityFragmentDoc = gql`
   fragment AdminGroupEntity on AdminGroup {
     ...AdminGroupDocumentIdEntity
     title
+    slug
     adminGroupId
     contentManagedBy
     landingPage {
