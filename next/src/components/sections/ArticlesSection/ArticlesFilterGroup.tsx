@@ -32,7 +32,7 @@ const ArticlesFilterGroup = ({ filters, onFiltersChange }: Props) => {
   const articleCategoriesSelectItems = [
     {
       title: t('ArticlesFilterGroup.allArticleCategories'),
-      slug: '',
+      slug: 'all',
     },
     ...(articleCategories ?? []),
   ]
@@ -47,7 +47,7 @@ const ArticlesFilterGroup = ({ filters, onFiltersChange }: Props) => {
   const tagsSelectItems = [
     {
       title: t('ArticlesFilterGroup.allTags'),
-      slug: '',
+      slug: 'all',
     },
     ...(tags ?? []),
   ]
@@ -73,7 +73,7 @@ const ArticlesFilterGroup = ({ filters, onFiltersChange }: Props) => {
   const adminGroupsSelectItems = [
     {
       title: t('ArticlesFilterGroup.allAdminGroups'),
-      slug: '',
+      slug: 'all',
     },
     CITY_HALL_SELECT_ITEM,
     ...(adminGroups ?? []),
@@ -83,8 +83,7 @@ const ArticlesFilterGroup = ({ filters, onFiltersChange }: Props) => {
     onFiltersChange({
       ...filters,
       articleCategorySlugs:
-        // We check for empty strings, otherwise they would end up as [""] in meilisearch filters
-        typeof selectedCategory === 'string' && selectedCategory.length > 0
+        typeof selectedCategory === 'string' && selectedCategory !== 'all'
           ? [selectedCategory]
           : [],
       page: 1,
@@ -94,8 +93,7 @@ const ArticlesFilterGroup = ({ filters, onFiltersChange }: Props) => {
   const handleTagChange = (selectedTag: SingleSelection['selectedKey']) => {
     onFiltersChange({
       ...filters,
-      // We check for empty strings, otherwise they would end up as [""] in meilisearch filters
-      tagSlugs: typeof selectedTag === 'string' && selectedTag.length > 0 ? [selectedTag] : [],
+      tagSlugs: typeof selectedTag === 'string' && selectedTag !== 'all' ? [selectedTag] : [],
       page: 1,
     })
   }
@@ -115,8 +113,7 @@ const ArticlesFilterGroup = ({ filters, onFiltersChange }: Props) => {
     onFiltersChange({
       ...filters,
       adminGroupSlugs:
-        // We check for empty strings, otherwise they would end up as [""] in meilisearch filters
-        typeof selectedAdminGroup === 'string' && selectedAdminGroup.length > 0
+        typeof selectedAdminGroup === 'string' && selectedAdminGroup !== 'all'
           ? [selectedAdminGroup]
           : [],
       excludeArticlesWithAssignedAdminGroups: false,
