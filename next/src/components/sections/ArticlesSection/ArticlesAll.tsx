@@ -65,8 +65,9 @@ const ArticlesAll = ({ section }: Props) => {
         <SearchBar
           ref={searchRef}
           placeholder={t('SearchPage.enterKeyword')}
-          value={input}
-          onChange={setInput}
+          input={input}
+          setInput={setInput}
+          setSearchQuery={setInput}
           isLoading={isPending}
         />
         <ArticlesFilterGroup filters={filters} onFiltersChange={handleFiltersChange} />
