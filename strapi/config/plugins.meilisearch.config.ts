@@ -38,8 +38,13 @@ const searchIndexSettings = {
   filterableAttributes: [
     'type',
     'locale',
+    'article.articleCategory.documentId',
+    'article.articleCategory.slug',
     'article.tag.documentId',
+    'article.tag.slug',
+    'article.adminGroups',
     'article.adminGroups.documentId',
+    'article.adminGroups.slug',
     'document.documentCategory.documentId',
     'inba-article.inbaTag.documentId',
     'inba-article.inbaRelease.documentId',
@@ -80,7 +85,7 @@ const config = {
     indexName: 'search_index',
     entriesQuery: {
       locale: '*',
-      populate: ['tag.pageCategory', 'coverMedia', 'articleCategory'],
+      populate: ['tag.pageCategory', 'coverMedia', 'articleCategory', "adminGroups"],
     },
     settings: searchIndexSettings,
     transformEntry: ({ entry }) =>

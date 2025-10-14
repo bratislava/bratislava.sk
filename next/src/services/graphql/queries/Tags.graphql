@@ -1,6 +1,7 @@
 fragment TagEntity on Tag {
   documentId
   title
+  slug
   pageCategory {
     ...PageCategoryEntity
   }

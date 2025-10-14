@@ -1,86 +1,94 @@
+import { Typography } from '@bratislava/component-library'
 import { keepPreviousData, useQuery } from '@tanstack/react-query'
-import React from 'react'
+import React, { useEffect, useRef, useState } from 'react'
+import { useDebounceValue } from 'usehooks-ts'
 
 import ArticleCard from '@/src/components/cards/ArticleCard'
 import { transformArticleProps } from '@/src/components/cards/transformArticleProps'
-import ArticlesFilter from '@/src/components/common/ArticlesFilter/ArticlesFilter'
 import Pagination from '@/src/components/common/Pagination/Pagination'
 import SectionHeader from '@/src/components/layouts/SectionHeader'
+import ArticlesFilterGroup from '@/src/components/sections/ArticlesSection/ArticlesFilterGroup'
+import { useArticlesFilters } from '@/src/components/sections/ArticlesSection/useArticlesFilters'
+import SearchBar from '@/src/components/sections/SearchSection/SearchBar'
 import { ArticlesSectionFragment } from '@/src/services/graphql'
-import { client } from '@/src/services/graphql/gql'
 import {
-  articlesDefaultFilters,
   articlesFetcher,
+  ArticlesFilters,
   getArticlesQueryKey,
 } from '@/src/services/meili/fetchers/articlesFetcher'
-import { isDefined } from '@/src/utils/isDefined'
 import { useLocale } from '@/src/utils/useLocale'
-import { useRoutePreservedState } from '@/src/utils/useRoutePreservedState'
+import { useTranslation } from '@/src/utils/useTranslation'
 
 type Props = {
   section: ArticlesSectionFragment
 }
 
 /**
- * TODO Figma link
+ * Figma: https://www.figma.com/design/17wbd0MDQcMW9NbXl6UPs8/DS--Component-library?node-id=18995-28122&m=dev
  */
 
 const ArticlesAll = ({ section }: Props) => {
+  const { t } = useTranslation()
   const locale = useLocale()
 
   const { title, text } = section
 
-  const [filters, setFilters] = useRoutePreservedState({
-    ...articlesDefaultFilters,
-  })
+  const { filters, setFilters, setSearch, setPage } = useArticlesFilters()
 
-  const { data } = useQuery({
+  const [input, setInput] = useState('')
+  const [debouncedInput] = useDebounceValue(input, 300)
+
+  const handleFiltersChange = (newFilters: ArticlesFilters) => {
+    setFilters({ ...newFilters, page: 1 })
+  }
+
+  useEffect(() => {
+    setSearch(debouncedInput)
+  }, [debouncedInput, setSearch])
+
+  const { data, isPending } = useQuery({
     queryKey: getArticlesQueryKey(filters, locale),
     queryFn: () => articlesFetcher(filters, locale),
     placeholderData: keepPreviousData,
   })
 
-  const { data: pageCategoriesData } = useQuery({
-    queryKey: ['PageCategories', locale],
-    queryFn: () => client.PageCategories({ locale }),
-    staleTime: Infinity,
-  })
+  const searchRef = useRef<null | HTMLInputElement>(null)
 
-  const { data: tagsData } = useQuery({
-    queryKey: ['Tags', locale],
-    queryFn: () => client.Tags({ locale }),
-    staleTime: Infinity,
-  })
-
-  const handlePageChange = (page: number) => {
-    setFilters({ ...filters, page })
-  }
-
-  const handleTagsChange = (tags: string[]) => {
-    setFilters({ ...filters, tagDocumentIds: tags })
-  }
+  useEffect(() => {
+    searchRef.current?.scrollIntoView({ behavior: 'smooth' })
+  }, [filters.page, filters.pageSize])
 
   return (
     <div className="flex flex-col gap-8">
-      <div>
-        <ArticlesFilter
-          pageCategories={pageCategoriesData?.pageCategories.filter(isDefined) ?? []}
-          tags={tagsData?.tags.filter(isDefined)}
-          onTagChange={handleTagsChange}
-        />
+      <div className="flex flex-col gap-6">
         <SectionHeader title={title} text={text} />
+        <SearchBar
+          ref={searchRef}
+          placeholder={t('SearchPage.enterKeyword')}
+          input={input}
+          setInput={setInput}
+          setSearchQuery={setInput}
+          isLoading={isPending}
+        />
+        <ArticlesFilterGroup filters={filters} onFiltersChange={handleFiltersChange} />
       </div>
 
-      <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-        {data?.hits.map((card) => <ArticleCard key={card.slug} {...transformArticleProps(card)} />)}
-      </div>
+      {data?.hits?.length ? (
+        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          {data.hits.map((card) => (
+            <ArticleCard key={card.slug} {...transformArticleProps(card)} />
+          ))}
+        </div>
+      ) : (
+        <Typography>{t('ArticlesAll.noResults')}</Typography>
+      )}
 
       {data?.estimatedTotalHits ? (
         <Pagination
           key={filters.search}
           totalCount={Math.ceil(data.estimatedTotalHits / filters.pageSize)}
           currentPage={filters.page}
-          onPageChange={handlePageChange}
+          onPageChange={setPage}
         />
       ) : null}
     </div>

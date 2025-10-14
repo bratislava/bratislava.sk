@@ -363,7 +363,8 @@ export interface ApiAdminGroupAdminGroup extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private
     pages: Schema.Attribute.Relation<'manyToMany', 'api::page.page'>
     publishedAt: Schema.Attribute.DateTime
-    title: Schema.Attribute.String
+    slug: Schema.Attribute.UID<'title'>
+    title: Schema.Attribute.String & Schema.Attribute.Required
     updatedAt: Schema.Attribute.DateTime
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> & Schema.Attribute.Private
   }
@@ -405,7 +406,7 @@ export interface ApiAlertAlert extends Struct.SingleTypeSchema {
 export interface ApiArticleCategoryArticleCategory extends Struct.CollectionTypeSchema {
   collectionName: 'article_categories'
   info: {
-    displayName: '\u010Cl\u00E1nky - kateg\u00F3rie'
+    displayName: '\u010Cl\u00E1nky - typy'
     pluralName: 'article-categories'
     singularName: 'article-category'
   }
@@ -1344,7 +1345,7 @@ export interface ApiTagTag extends Struct.CollectionTypeSchema {
   collectionName: 'tags'
   info: {
     description: ''
-    displayName: 'Tagy'
+    displayName: '\u010Cl\u00E1nky - t\u00E9my'
     pluralName: 'tags'
     singularName: 'tag'
   }
@@ -1364,6 +1365,12 @@ export interface ApiTagTag extends Struct.CollectionTypeSchema {
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::tag.tag'>
     pageCategory: Schema.Attribute.Relation<'oneToOne', 'api::page-category.page-category'>
     publishedAt: Schema.Attribute.DateTime
+    slug: Schema.Attribute.UID<'title'> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true
+        }
+      }>
     title: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{
         i18n: {

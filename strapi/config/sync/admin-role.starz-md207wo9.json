@@ -11,6 +11,7 @@
       "properties": {
         "fields": [
           "title",
+          "slug",
           "adminGroupId",
           "contentManagedBy",
           "landingPage",
@@ -22,7 +23,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "gn5qk10p8ciqmpq92than8zl",
+      "documentId": "rs9angut11777bej6lvw3kei",
       "locale": null
     },
     {
@@ -121,6 +122,7 @@
           "files.title",
           "files.media",
           "gallery",
+          "adminGroups",
           "articleCategory"
         ],
         "locales": [
@@ -132,7 +134,7 @@
         "plugin::content-manager.document-admin-group-includes-starz"
       ],
       "actionParameters": {},
-      "documentId": "frbyr5h8s5oqtc1oeyi5du27",
+      "documentId": "uq1ftp44j2k0c4e1elol53xj",
       "locale": null
     },
     {
@@ -338,7 +340,8 @@
         "fields": [
           "title",
           "body",
-          "faqCategory"
+          "faqCategory",
+          "adminGroups"
         ],
         "locales": [
           "sk",
@@ -349,7 +352,7 @@
         "plugin::content-manager.document-admin-group-includes-starz"
       ],
       "actionParameters": {},
-      "documentId": "uybxkq6bf0gco9x8e1fdvbw4",
+      "documentId": "uhz9hgf320yha8mxsyxu9lqf",
       "locale": null
     },
     {
@@ -563,6 +566,7 @@
       "properties": {
         "fields": [
           "title",
+          "slug",
           "pageCategory",
           "articles"
         ],
@@ -573,7 +577,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "zmsx9hn8bnoqj5mjoni2xufg",
+      "documentId": "cg1b4w7g78gc0injcxmo7r6x",
       "locale": null
     },
     {

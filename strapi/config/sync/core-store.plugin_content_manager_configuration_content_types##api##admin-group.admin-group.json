@@ -33,6 +33,20 @@
           "sortable": true
         }
       },
+      "slug": {
+        "edit": {
+          "label": "slug",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "slug",
+          "searchable": true,
+          "sortable": true
+        }
+      },
       "adminGroupId": {
         "edit": {
           "label": "adminGroupId",
@@ -211,12 +225,12 @@
             "size": 6
           },
           {
-            "name": "adminGroupId",
+            "name": "slug",
             "size": 6
           }
         ],
         [
-  {
+          {
             "name": "contentManagedBy",
             "size": 6
           },
@@ -248,12 +262,18 @@
             "name": "documents",
             "size": 12
           }
+        ],
+        [
+          {
+            "name": "adminGroupId",
+            "size": 6
+          }
         ]
       ],
       "list": [
         "id",
         "title",
-        "adminGroupId",
+        "slug",
         "createdAt",
         "updatedAt"
       ]

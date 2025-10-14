@@ -11,6 +11,7 @@
       "properties": {
         "fields": [
           "title",
+          "slug",
           "adminGroupId",
           "contentManagedBy",
           "landingPage",
@@ -22,7 +23,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "jykcs9vkvpgg5teq35ik47hx",
+      "documentId": "lrgy8g7e1iaoh1t2pgl2fgbr",
       "locale": null
     },
     {
@@ -49,6 +50,7 @@
       "properties": {
         "fields": [
           "title",
+          "slug",
           "adminGroupId",
           "contentManagedBy",
           "landingPage",
@@ -60,7 +62,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "d49bc8ksgi419c6y6550srmp",
+      "documentId": "zbz7ujpceb80sicyssubqltb",
       "locale": null
     },
     {
@@ -69,6 +71,7 @@
       "properties": {
         "fields": [
           "title",
+          "slug",
           "adminGroupId",
           "contentManagedBy",
           "landingPage",
@@ -80,7 +83,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "mldysbgfgm1sqn788k0gzev7",
+      "documentId": "erx34knslnky22b7gvfoeslm",
       "locale": null
     },
     {
@@ -1926,6 +1929,7 @@
       "properties": {
         "fields": [
           "title",
+          "slug",
           "pageCategory",
           "articles"
         ],
@@ -1936,7 +1940,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "l79u6iuqfisnvwcer1mr63c1",
+      "documentId": "xyv2a87mhzivhbeiyh6766g4",
       "locale": null
     },
     {
@@ -1973,6 +1977,7 @@
       "properties": {
         "fields": [
           "title",
+          "slug",
           "pageCategory",
           "articles"
         ],
@@ -1983,7 +1988,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "afmvoqfcmvptiszscmmig8ym",
+      "documentId": "s1jn0bz4yfqw7so9t6sic87m",
       "locale": null
     },
     {
@@ -1992,6 +1997,7 @@
       "properties": {
         "fields": [
           "title",
+          "slug",
           "pageCategory",
           "articles"
         ],
@@ -2002,7 +2008,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "m5w3yj7xyn0km5ebq8ext5th",
+      "documentId": "xalpyf2y1r29ixgg71gztt45",
       "locale": null
     },
     {

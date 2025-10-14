@@ -51,6 +51,12 @@ query ArticlesStaticPaths($limit: Int = -1, $locale: I18NLocaleCode!) {
   }
 }
 
+query ArticleCategories($locale: I18NLocaleCode) {
+  articleCategories(pagination: { limit: -1 }, locale: $locale) {
+    ...ArticleCategoryEntity
+  }
+}
+
 query Articles(
   $sort: [String]
   $limit: Int

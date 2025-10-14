@@ -63,7 +63,7 @@
       },
       "category": {
         "edit": {
-          "label": "Kategória (toto pole prosíme nepoužívať, bude odstránené)",
+          "label": "Typ (toto pole prosíme nepoužívať, bude odstránené)",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -78,7 +78,7 @@
       },
       "tags": {
         "edit": {
-          "label": "Tagy",
+          "label": "Témy",
           "description": "",
           "placeholder": "",
           "visible": true,

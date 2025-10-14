@@ -91,7 +91,7 @@
       },
       "tag": {
         "edit": {
-          "label": "Tag",
+          "label": "Téma",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -177,7 +177,7 @@
       },
       "articleCategory": {
         "edit": {
-          "label": "Kategória",
+          "label": "Typ",
           "description": "",
           "placeholder": "",
           "visible": true,

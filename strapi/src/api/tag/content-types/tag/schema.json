@@ -4,7 +4,7 @@
   "info": {
     "singularName": "tag",
     "pluralName": "tags",
-    "displayName": "Tagy",
+    "displayName": "Články - témy",
     "description": ""
   },
   "options": {
@@ -23,6 +23,15 @@
           "localized": true
         }
       }
+    },
+    "slug": {
+      "type": "uid",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "targetField": "title"
     },
     "pageCategory": {
       "type": "relation",

@@ -1704,6 +1704,7 @@
       "properties": {
         "fields": [
           "title",
+          "slug",
           "pageCategory",
           "articles"
         ],
@@ -1714,7 +1715,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "juwxd2xu4pc1nlzmgyl3p324",
+      "documentId": "du4z36w68hf23wu2qzwj22hb",
       "locale": null
     },
     {
@@ -1751,6 +1752,7 @@
       "properties": {
         "fields": [
           "title",
+          "slug",
           "pageCategory",
           "articles"
         ],
@@ -1761,7 +1763,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "kp1namjuk3i1bmo8liozhvms",
+      "documentId": "vfhsb2l1inerieo58kw2bs27",
       "locale": null
     },
     {
@@ -1770,6 +1772,7 @@
       "properties": {
         "fields": [
           "title",
+          "slug",
           "pageCategory",
           "articles"
         ],
@@ -1780,7 +1783,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "jfj4omrk8d6yii6eqe2g0thu",
+      "documentId": "qd8fypr7duh03j5n8a2e1x49",
       "locale": null
     },
     {
