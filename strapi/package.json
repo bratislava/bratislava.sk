@@ -23,7 +23,7 @@
     "@strapi/plugin-users-permissions": "5.18.1",
     "@strapi/provider-email-mailgun": "5.18.",
     "@strapi/provider-upload-aws-s3": "5.18.1",
-    "@strapi/strapi": "5.18.1",
+    "@strapi/strapi": "5.28.0",
     "patch-package": "^7.0.2",
     "pg": "8.11.6",
     "postinstall-postinstall": "^2.1.0",
