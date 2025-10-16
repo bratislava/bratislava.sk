@@ -18,7 +18,7 @@ const Brand = ({ className, url = '/', withTitle }: BrandProps) => {
     <div className={cn('flex', className)}>
       <MLink
         // margin and padding added to show full focus ring
-        className="base-focus-ring -m-2 flex items-center gap-x-3 p-2 text-[#F23005] hover:opacity-80"
+        className="-m-2 flex items-center gap-x-3 p-2 text-[#F23005] hover:opacity-80"
         href={url}
         aria-label={t('Brand.ariaLabel')}
       >
