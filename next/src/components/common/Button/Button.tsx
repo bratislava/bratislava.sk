@@ -103,12 +103,12 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
      *   - border should render inside button, not outside
      *   - focus text color for 'culture' and 'social' category should be -800
      */
-    const styles =
+    const styles = cn(
+      'base-focus-ring',
       variant === 'unstyled'
-        ? (className ?? '')
+        ? ''
         : cn(
             'inline-flex h-auto items-center justify-center gap-2 text-size-button-large leading-6 font-semibold transition',
-            'base-focus-ring',
 
             // we change rounded corners for link focus ring
             {
@@ -217,8 +217,9 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
               '[&>svg]:h-5 [&>svg]:w-5': size === 'small',
               '[&>svg]:h-6 [&>svg]:w-6': size === 'large',
             },
-            className,
-          )
+          ),
+      className,
+    )
 
     if (rest.href) {
       const isExternal = rest.href.startsWith('http')
