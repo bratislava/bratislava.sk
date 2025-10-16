@@ -51,6 +51,10 @@ export const getLinkProps = (
     target = href.startsWith('http') ? '_blank' : undefined
   }
 
+  // To allow setting url query parameters from strapi we use the url field if it starts with '?'
+  const urlQueryParams = link?.url?.startsWith('?') ? link.url : null
+  href += urlQueryParams
+
   const analyticsProps: LinkAnalyticsProps | undefined = link?.analyticsId
     ? { id: link.analyticsId }
     : undefined
