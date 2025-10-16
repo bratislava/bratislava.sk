@@ -14,7 +14,7 @@ type NumbersOverviewSectionProps = {
 
 const NumbersOverviewSection = ({ section }: NumbersOverviewSectionProps) => {
   return (
-    <SectionContainer className="py-6 lg:py-24">
+    <SectionContainer className="py-6 lg:py-16">
       <NumbersOverview section={section} />
     </SectionContainer>
   )
