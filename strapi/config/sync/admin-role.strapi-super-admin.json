@@ -1475,6 +1475,75 @@
     },
     {
       "action": "plugin::content-manager.explorer.create",
+      "subject": "api::internal-job.internal-job",
+      "properties": {
+        "fields": [
+          "jobType",
+          "relatedDocumentId",
+          "payload",
+          "state",
+          "error"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": {},
+      "documentId": "vchxalbv3k9qboh1k1w6q7r5",
+      "locale": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "subject": "api::internal-job.internal-job",
+      "properties": {},
+      "conditions": [],
+      "actionParameters": {},
+      "documentId": "h05q2tdkz3a1levlufzqpbz0",
+      "locale": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.publish",
+      "subject": "api::internal-job.internal-job",
+      "properties": {},
+      "conditions": [],
+      "actionParameters": {},
+      "documentId": "aiwvrs9esuybflksmmw7kccn",
+      "locale": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::internal-job.internal-job",
+      "properties": {
+        "fields": [
+          "jobType",
+          "relatedDocumentId",
+          "payload",
+          "state",
+          "error"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": {},
+      "documentId": "aet2036otrek38oinhh47kym",
+      "locale": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::internal-job.internal-job",
+      "properties": {
+        "fields": [
+          "jobType",
+          "relatedDocumentId",
+          "payload",
+          "state",
+          "error"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": {},
+      "documentId": "adsyqc733berdar2lzbjq1w6",
+      "locale": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
       "subject": "api::menu.menu",
       "properties": {
         "fields": [
@@ -1680,9 +1749,11 @@
         "fields": [
           "title",
           "slug",
+          "path",
           "alias",
           "subtext",
           "metaDiscription",
+          "metaDescription",
           "keywords",
           "showTableOfContents",
           "pageCategory",
@@ -1703,6 +1774,11 @@
           "sidebar",
           "parentPage",
           "childPages",
+          "parent",
+          "children",
+          "fullPath",
+          "redirects",
+          "breadcrumbTitle",
           "relatedContents",
           "adminGroups"
         ],
@@ -1713,7 +1789,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "waxnr78bzg60ilpto57r27rr",
+      "documentId": "iow816swjuro1rfz4kor0rdo",
       "locale": null
     },
     {
@@ -1751,9 +1827,11 @@
         "fields": [
           "title",
           "slug",
+          "path",
           "alias",
           "subtext",
           "metaDiscription",
+          "metaDescription",
           "keywords",
           "showTableOfContents",
           "pageCategory",
@@ -1774,6 +1852,11 @@
           "sidebar",
           "parentPage",
           "childPages",
+          "parent",
+          "children",
+          "fullPath",
+          "redirects",
+          "breadcrumbTitle",
           "relatedContents",
           "adminGroups"
         ],
@@ -1784,7 +1867,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "c6wbo0qizaol2xa4jmufq08p",
+      "documentId": "mv4hlf7hd81vgiazuy2lrgtc",
       "locale": null
     },
     {
@@ -1794,9 +1877,11 @@
         "fields": [
           "title",
           "slug",
+          "path",
           "alias",
           "subtext",
           "metaDiscription",
+          "metaDescription",
           "keywords",
           "showTableOfContents",
           "pageCategory",
@@ -1817,6 +1902,11 @@
           "sidebar",
           "parentPage",
           "childPages",
+          "parent",
+          "children",
+          "fullPath",
+          "redirects",
+          "breadcrumbTitle",
           "relatedContents",
           "adminGroups"
         ],
@@ -1827,7 +1917,73 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "cvreseik22irmxmd28kytiz1",
+      "documentId": "mbqte5htb6kz5u63irl07cgs",
+      "locale": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "api::redirect.redirect",
+      "properties": {
+        "fields": [
+          "source",
+          "destination",
+          "permanent",
+          "page"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": {},
+      "documentId": "t8xovdv6bsb2jw48nu5iqvly",
+      "locale": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "subject": "api::redirect.redirect",
+      "properties": {},
+      "conditions": [],
+      "actionParameters": {},
+      "documentId": "qkoa34kzyui88hccsianwmk7",
+      "locale": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.publish",
+      "subject": "api::redirect.redirect",
+      "properties": {},
+      "conditions": [],
+      "actionParameters": {},
+      "documentId": "sy0qtntw08025qj32trskdr8",
+      "locale": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::redirect.redirect",
+      "properties": {
+        "fields": [
+          "source",
+          "destination",
+          "permanent",
+          "page"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": {},
+      "documentId": "x0hchdfzrbjdq0phrl3q13na",
+      "locale": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::redirect.redirect",
+      "properties": {
+        "fields": [
+          "source",
+          "destination",
+          "permanent",
+          "page"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": {},
+      "documentId": "td0z37tskbqdayhuvw70ba0o",
       "locale": null
     },
     {

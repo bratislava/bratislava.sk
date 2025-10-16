@@ -33,6 +33,14 @@
         }
       }
     },
+    "path": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
     "alias": {
       "type": "uid",
       "pluginOptions": {
@@ -50,6 +58,14 @@
       }
     },
     "metaDiscription": {
+      "type": "text",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "metaDescription": {
       "type": "text",
       "pluginOptions": {
         "i18n": {
@@ -216,6 +232,42 @@
       "relation": "oneToMany",
       "target": "api::page.page",
       "mappedBy": "parentPage"
+    },
+    "parent": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::page.page",
+      "inversedBy": "children"
+    },
+    "children": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::page.page",
+      "mappedBy": "parent"
+    },
+    "fullPath": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string",
+      "required": false,
+      "unique": true
+    },
+    "redirects": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::redirect.redirect",
+      "mappedBy": "page"
+    },
+    "breadcrumbTitle": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string"
     },
     "relatedContents": {
       "type": "relation",
