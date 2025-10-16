@@ -57,7 +57,8 @@ const AlertBanner = forwardRef<HTMLDivElement>((props, forwardedRef) => {
             <Markdown content={text} variant="small" />
           </div>
           <Button
-            className="-m-3 h-fit shrink-0 p-3 lg:-m-4 lg:p-4"
+            variant="icon-wrapped-negative-margin"
+            className="h-fit shrink-0"
             icon={<CrossIcon />}
             aria-label={t('AlertBanner.aria.closeAlert')}
             onPress={() => handleClose()}
