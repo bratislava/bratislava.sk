@@ -46,6 +46,10 @@ const searchIndexSettings = {
     'article.adminGroups.documentId',
     'article.adminGroups.slug',
     'document.documentCategory.documentId',
+    'document.documentCategory.slug',
+    'document.adminGroups',
+    'document.adminGroups.documentId',
+    'document.adminGroups.slug',
     'inba-article.inbaTag.documentId',
     'inba-article.inbaRelease.documentId',
     'regulation.category',
@@ -85,7 +89,7 @@ const config = {
     indexName: 'search_index',
     entriesQuery: {
       locale: '*',
-      populate: ['tag.pageCategory', 'coverMedia', 'articleCategory', "adminGroups"],
+      populate: ['tag.pageCategory', 'coverMedia', 'articleCategory', 'adminGroups'],
     },
     settings: searchIndexSettings,
     transformEntry: ({ entry }) =>
@@ -101,6 +105,7 @@ const config = {
     indexName: 'search_index',
     entriesQuery: {
       locale: '*',
+      populate: ['documentCategory', 'adminGroups'],
     },
     settings: searchIndexSettings,
     transformEntry: ({ entry }) =>
