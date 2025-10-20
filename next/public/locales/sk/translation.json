@@ -124,7 +124,7 @@
   "OfficialBoard.publishedFrom": "Zverejnené od",
   "OfficialBoard.publishedTo": "Zverejnené do",
   "OpeningHoursSection.banner.title": "Zmena otváracích hodín!",
-  "PageHeaderFacility.allPhotos": "Všetky fotky",
+  "PageHeaderFacility.allPhotos": "Všetky fotky ({{count}})",
   "PageHeaderFacility.navigate": "Navigovať",
   "Pagination.aria.goToNextPage": "Ísť na ďalšiu stranu",
   "Pagination.aria.goToPage": "Ísť na stranu {{page}}",
