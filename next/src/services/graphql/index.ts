@@ -6937,6 +6937,18 @@ export type DocumentBySlugQuery = {
   } | null>
 }
 
+export type DocumentCategoriesQueryVariables = Exact<{ [key: string]: never }>
+
+export type DocumentCategoriesQuery = {
+  __typename?: 'Query'
+  documentCategories: Array<{
+    __typename?: 'DocumentCategory'
+    documentId: string
+    title: string
+    slug: string
+  } | null>
+}
+
 export type FaqCategoryEntityFragment = {
   __typename?: 'FaqCategory'
   documentId: string
@@ -17806,6 +17818,14 @@ export const DocumentBySlugDocument = gql`
   }
   ${DocumentEntityFragmentDoc}
 `
+export const DocumentCategoriesDocument = gql`
+  query DocumentCategories {
+    documentCategories(pagination: { limit: -1 }) {
+      ...DocumentCategoryEntity
+    }
+  }
+  ${DocumentCategoryEntityFragmentDoc}
+`
 export const AllFilesDocument = gql`
   query allFiles($locale: I18NLocaleCode) {
     articles(locale: $locale, pagination: { limit: -1 }) {
@@ -18331,6 +18351,21 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
             ...wrappedRequestHeaders,
           }),
         'DocumentBySlug',
+        'query',
+        variables,
+      )
+    },
+    DocumentCategories(
+      variables?: DocumentCategoriesQueryVariables,
+      requestHeaders?: GraphQLClientRequestHeaders,
+    ): Promise<DocumentCategoriesQuery> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<DocumentCategoriesQuery>(DocumentCategoriesDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
+          }),
+        'DocumentCategories',
         'query',
         variables,
       )
