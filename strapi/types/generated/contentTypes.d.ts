@@ -521,7 +521,7 @@ export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
           localized: true
         }
       }>
-    tag: Schema.Attribute.Relation<'manyToOne', 'api::tag.tag'>
+    tag: Schema.Attribute.Relation<'manyToMany', 'api::tag.tag'>
     title: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{
@@ -1358,7 +1358,7 @@ export interface ApiTagTag extends Struct.CollectionTypeSchema {
     }
   }
   attributes: {
-    articles: Schema.Attribute.Relation<'oneToMany', 'api::article.article'>
+    articles: Schema.Attribute.Relation<'manyToMany', 'api::article.article'>
     createdAt: Schema.Attribute.DateTime
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> & Schema.Attribute.Private
     locale: Schema.Attribute.String

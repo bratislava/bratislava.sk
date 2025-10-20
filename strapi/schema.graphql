@@ -137,7 +137,8 @@ type Article {
   perex: String
   publishedAt: DateTime
   slug: String!
-  tag: Tag
+  tag(filters: TagFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [Tag]!
+  tag_connection(filters: TagFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): TagRelationResponseCollection
   title: String!
   updatedAt: DateTime
 }
@@ -244,7 +245,7 @@ input ArticleInput {
   perex: String
   publishedAt: DateTime
   slug: String
-  tag: ID
+  tag: [ID]
   title: String
 }
 

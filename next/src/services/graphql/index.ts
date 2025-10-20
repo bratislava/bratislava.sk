@@ -230,7 +230,8 @@ export type Article = {
   perex?: Maybe<Scalars['String']['output']>
   publishedAt?: Maybe<Scalars['DateTime']['output']>
   slug: Scalars['String']['output']
-  tag?: Maybe<Tag>
+  tag: Array<Maybe<Tag>>
+  tag_connection?: Maybe<TagRelationResponseCollection>
   title: Scalars['String']['output']
   updatedAt?: Maybe<Scalars['DateTime']['output']>
 }
@@ -273,6 +274,18 @@ export type ArticleLocalizationsArgs = {
 
 export type ArticleLocalizations_ConnectionArgs = {
   filters?: InputMaybe<ArticleFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type ArticleTagArgs = {
+  filters?: InputMaybe<TagFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type ArticleTag_ConnectionArgs = {
+  filters?: InputMaybe<TagFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
 }
@@ -411,7 +424,7 @@ export type ArticleInput = {
   perex?: InputMaybe<Scalars['String']['input']>
   publishedAt?: InputMaybe<Scalars['DateTime']['input']>
   slug?: InputMaybe<Scalars['String']['input']>
-  tag?: InputMaybe<Scalars['ID']['input']>
+  tag?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
   title?: InputMaybe<Scalars['String']['input']>
 }
 
@@ -6537,7 +6550,7 @@ export type ArticleCardEntityFragment = {
     alternativeText?: string | null
     name: string
   } | null
-  tag?: {
+  tag: Array<{
     __typename?: 'Tag'
     documentId: string
     title?: string | null
@@ -6548,7 +6561,7 @@ export type ArticleCardEntityFragment = {
       title?: string | null
       color?: Enum_Pagecategory_Color | null
     } | null
-  } | null
+  } | null>
 }
 
 export type ArticleEntityFragment = {
@@ -6602,7 +6615,7 @@ export type ArticleEntityFragment = {
     alternativeText?: string | null
     name: string
   } | null
-  tag?: {
+  tag: Array<{
     __typename?: 'Tag'
     documentId: string
     title?: string | null
@@ -6613,7 +6626,7 @@ export type ArticleEntityFragment = {
       title?: string | null
       color?: Enum_Pagecategory_Color | null
     } | null
-  } | null
+  } | null>
 }
 
 export type ArticleBySlugQueryVariables = Exact<{
@@ -6674,7 +6687,7 @@ export type ArticleBySlugQuery = {
       alternativeText?: string | null
       name: string
     } | null
-    tag?: {
+    tag: Array<{
       __typename?: 'Tag'
       documentId: string
       title?: string | null
@@ -6685,7 +6698,7 @@ export type ArticleBySlugQuery = {
         title?: string | null
         color?: Enum_Pagecategory_Color | null
       } | null
-    } | null
+    } | null>
   } | null>
 }
 
@@ -6749,7 +6762,7 @@ export type ArticlesQuery = {
       alternativeText?: string | null
       name: string
     } | null
-    tag?: {
+    tag: Array<{
       __typename?: 'Tag'
       documentId: string
       title?: string | null
@@ -6760,7 +6773,7 @@ export type ArticlesQuery = {
         title?: string | null
         color?: Enum_Pagecategory_Color | null
       } | null
-    } | null
+    } | null>
   } | null>
 }
 
@@ -6777,11 +6790,11 @@ export type ArticlesRssFeedQuery = {
     title: string
     addedAt: any
     perex?: string | null
-    tag?: {
+    tag: Array<{
       __typename?: 'Tag'
       title?: string | null
       pageCategory?: { __typename?: 'PageCategory'; title?: string | null } | null
-    } | null
+    } | null>
     coverMedia?: { __typename?: 'UploadFile'; url: string; mime: string; size: number } | null
   } | null>
 }
@@ -6849,7 +6862,7 @@ export type Dev_AllArticlesQuery = {
       alternativeText?: string | null
       name: string
     } | null
-    tag?: {
+    tag: Array<{
       __typename?: 'Tag'
       documentId: string
       title?: string | null
@@ -6860,7 +6873,7 @@ export type Dev_AllArticlesQuery = {
         title?: string | null
         color?: Enum_Pagecategory_Color | null
       } | null
-    } | null
+    } | null>
   } | null>
 }
 
@@ -7195,7 +7208,7 @@ export type CardLinkFragment = {
       alternativeText?: string | null
       name: string
     } | null
-    tag?: {
+    tag: Array<{
       __typename?: 'Tag'
       documentId: string
       title?: string | null
@@ -7206,7 +7219,7 @@ export type CardLinkFragment = {
         title?: string | null
         color?: Enum_Pagecategory_Color | null
       } | null
-    } | null
+    } | null>
   } | null
 }
 
@@ -8184,7 +8197,7 @@ export type HomepageEntityFragment = {
           alternativeText?: string | null
           name: string
         } | null
-        tag?: {
+        tag: Array<{
           __typename?: 'Tag'
           documentId: string
           title?: string | null
@@ -8195,7 +8208,7 @@ export type HomepageEntityFragment = {
             title?: string | null
             color?: Enum_Pagecategory_Color | null
           } | null
-        } | null
+        } | null>
       } | null
       media?: {
         __typename?: 'UploadFile'
@@ -8229,7 +8242,7 @@ export type HomepageEntityFragment = {
         alternativeText?: string | null
         name: string
       } | null
-      tag?: {
+      tag: Array<{
         __typename?: 'Tag'
         documentId: string
         title?: string | null
@@ -8240,7 +8253,7 @@ export type HomepageEntityFragment = {
           title?: string | null
           color?: Enum_Pagecategory_Color | null
         } | null
-      } | null
+      } | null>
     } | null
     rightArticle?: {
       __typename: 'Article'
@@ -8260,7 +8273,7 @@ export type HomepageEntityFragment = {
         alternativeText?: string | null
         name: string
       } | null
-      tag?: {
+      tag: Array<{
         __typename?: 'Tag'
         documentId: string
         title?: string | null
@@ -8271,7 +8284,7 @@ export type HomepageEntityFragment = {
           title?: string | null
           color?: Enum_Pagecategory_Color | null
         } | null
-      } | null
+      } | null>
     } | null
     newsPageLink?: {
       __typename?: 'ComponentBlocksCommonLink'
@@ -8515,7 +8528,7 @@ export type HomepageQuery = {
             alternativeText?: string | null
             name: string
           } | null
-          tag?: {
+          tag: Array<{
             __typename?: 'Tag'
             documentId: string
             title?: string | null
@@ -8526,7 +8539,7 @@ export type HomepageQuery = {
               title?: string | null
               color?: Enum_Pagecategory_Color | null
             } | null
-          } | null
+          } | null>
         } | null
         media?: {
           __typename?: 'UploadFile'
@@ -8560,7 +8573,7 @@ export type HomepageQuery = {
           alternativeText?: string | null
           name: string
         } | null
-        tag?: {
+        tag: Array<{
           __typename?: 'Tag'
           documentId: string
           title?: string | null
@@ -8571,7 +8584,7 @@ export type HomepageQuery = {
             title?: string | null
             color?: Enum_Pagecategory_Color | null
           } | null
-        } | null
+        } | null>
       } | null
       rightArticle?: {
         __typename: 'Article'
@@ -8591,7 +8604,7 @@ export type HomepageQuery = {
           alternativeText?: string | null
           name: string
         } | null
-        tag?: {
+        tag: Array<{
           __typename?: 'Tag'
           documentId: string
           title?: string | null
@@ -8602,7 +8615,7 @@ export type HomepageQuery = {
             title?: string | null
             color?: Enum_Pagecategory_Color | null
           } | null
-        } | null
+        } | null>
       } | null
       newsPageLink?: {
         __typename?: 'ComponentBlocksCommonLink'
@@ -8824,7 +8837,7 @@ export type HomepageHighlightsItemFragment = {
       alternativeText?: string | null
       name: string
     } | null
-    tag?: {
+    tag: Array<{
       __typename?: 'Tag'
       documentId: string
       title?: string | null
@@ -8835,7 +8848,7 @@ export type HomepageHighlightsItemFragment = {
         title?: string | null
         color?: Enum_Pagecategory_Color | null
       } | null
-    } | null
+    } | null>
   } | null
   media?: {
     __typename?: 'UploadFile'
@@ -8869,7 +8882,7 @@ export type HomepageTabsFragment = {
       alternativeText?: string | null
       name: string
     } | null
-    tag?: {
+    tag: Array<{
       __typename?: 'Tag'
       documentId: string
       title?: string | null
@@ -8880,7 +8893,7 @@ export type HomepageTabsFragment = {
         title?: string | null
         color?: Enum_Pagecategory_Color | null
       } | null
-    } | null
+    } | null>
   } | null
   rightArticle?: {
     __typename: 'Article'
@@ -8900,7 +8913,7 @@ export type HomepageTabsFragment = {
       alternativeText?: string | null
       name: string
     } | null
-    tag?: {
+    tag: Array<{
       __typename?: 'Tag'
       documentId: string
       title?: string | null
@@ -8911,7 +8924,7 @@ export type HomepageTabsFragment = {
         title?: string | null
         color?: Enum_Pagecategory_Color | null
       } | null
-    } | null
+    } | null>
   } | null
   newsPageLink?: {
     __typename?: 'ComponentBlocksCommonLink'
@@ -9735,7 +9748,7 @@ export type PageEntityFragment = {
             alternativeText?: string | null
             name: string
           } | null
-          tag?: {
+          tag: Array<{
             __typename?: 'Tag'
             documentId: string
             title?: string | null
@@ -9746,7 +9759,7 @@ export type PageEntityFragment = {
               title?: string | null
               color?: Enum_Pagecategory_Color | null
             } | null
-          } | null
+          } | null>
         } | null>
         category?: {
           __typename?: 'PageCategory'
@@ -10549,7 +10562,7 @@ export type PageEntityFragment = {
               alternativeText?: string | null
               name: string
             } | null
-            tag?: {
+            tag: Array<{
               __typename?: 'Tag'
               documentId: string
               title?: string | null
@@ -10560,7 +10573,7 @@ export type PageEntityFragment = {
                 title?: string | null
                 color?: Enum_Pagecategory_Color | null
               } | null
-            } | null
+            } | null>
           } | null
         } | null> | null
       }
@@ -10938,7 +10951,7 @@ export type PageBySlugQuery = {
               alternativeText?: string | null
               name: string
             } | null
-            tag?: {
+            tag: Array<{
               __typename?: 'Tag'
               documentId: string
               title?: string | null
@@ -10949,7 +10962,7 @@ export type PageBySlugQuery = {
                 title?: string | null
                 color?: Enum_Pagecategory_Color | null
               } | null
-            } | null
+            } | null>
           } | null>
           category?: {
             __typename?: 'PageCategory'
@@ -11755,7 +11768,7 @@ export type PageBySlugQuery = {
                 alternativeText?: string | null
                 name: string
               } | null
-              tag?: {
+              tag: Array<{
                 __typename?: 'Tag'
                 documentId: string
                 title?: string | null
@@ -11766,7 +11779,7 @@ export type PageBySlugQuery = {
                   title?: string | null
                   color?: Enum_Pagecategory_Color | null
                 } | null
-              } | null
+              } | null>
             } | null
           } | null> | null
         }
@@ -12170,7 +12183,7 @@ export type Dev_AllPagesQuery = {
               alternativeText?: string | null
               name: string
             } | null
-            tag?: {
+            tag: Array<{
               __typename?: 'Tag'
               documentId: string
               title?: string | null
@@ -12181,7 +12194,7 @@ export type Dev_AllPagesQuery = {
                 title?: string | null
                 color?: Enum_Pagecategory_Color | null
               } | null
-            } | null
+            } | null>
           } | null>
           category?: {
             __typename?: 'PageCategory'
@@ -12987,7 +13000,7 @@ export type Dev_AllPagesQuery = {
                 alternativeText?: string | null
                 name: string
               } | null
-              tag?: {
+              tag: Array<{
                 __typename?: 'Tag'
                 documentId: string
                 title?: string | null
@@ -12998,7 +13011,7 @@ export type Dev_AllPagesQuery = {
                   title?: string | null
                   color?: Enum_Pagecategory_Color | null
                 } | null
-              } | null
+              } | null>
             } | null
           } | null> | null
         }
@@ -13798,7 +13811,7 @@ export type ArticlesSectionFragment = {
       alternativeText?: string | null
       name: string
     } | null
-    tag?: {
+    tag: Array<{
       __typename?: 'Tag'
       documentId: string
       title?: string | null
@@ -13809,7 +13822,7 @@ export type ArticlesSectionFragment = {
         title?: string | null
         color?: Enum_Pagecategory_Color | null
       } | null
-    } | null
+    } | null>
   } | null>
   category?: {
     __typename?: 'PageCategory'
@@ -14926,7 +14939,7 @@ export type StarzLandingPageSectionFragment = {
         alternativeText?: string | null
         name: string
       } | null
-      tag?: {
+      tag: Array<{
         __typename?: 'Tag'
         documentId: string
         title?: string | null
@@ -14937,7 +14950,7 @@ export type StarzLandingPageSectionFragment = {
           title?: string | null
           color?: Enum_Pagecategory_Color | null
         } | null
-      } | null
+      } | null>
     } | null
   } | null> | null
 }
@@ -15051,7 +15064,7 @@ type Sections_ComponentSectionsArticles_Fragment = {
       alternativeText?: string | null
       name: string
     } | null
-    tag?: {
+    tag: Array<{
       __typename?: 'Tag'
       documentId: string
       title?: string | null
@@ -15062,7 +15075,7 @@ type Sections_ComponentSectionsArticles_Fragment = {
         title?: string | null
         color?: Enum_Pagecategory_Color | null
       } | null
-    } | null
+    } | null>
   } | null>
   category?: {
     __typename?: 'PageCategory'
@@ -15886,7 +15899,7 @@ type Sections_ComponentSectionsStarzLandingPage_Fragment = {
         alternativeText?: string | null
         name: string
       } | null
-      tag?: {
+      tag: Array<{
         __typename?: 'Tag'
         documentId: string
         title?: string | null
@@ -15897,7 +15910,7 @@ type Sections_ComponentSectionsStarzLandingPage_Fragment = {
           title?: string | null
           color?: Enum_Pagecategory_Color | null
         } | null
-      } | null
+      } | null>
     } | null
   } | null> | null
 }
