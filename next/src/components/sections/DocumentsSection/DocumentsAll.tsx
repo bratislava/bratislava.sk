@@ -66,7 +66,7 @@ const DocumentsAllSection = ({ section }: Props) => {
           placeholder={t('SearchPage.enterKeyword')}
           input={input}
           setInput={setInput}
-          setSearchQuery={setInput}
+          setSearchQuery={setSearch}
           isLoading={isPending}
         />
         <DocumentsFilterGroup filters={filters} onFiltersChange={handleFiltersChange} />
