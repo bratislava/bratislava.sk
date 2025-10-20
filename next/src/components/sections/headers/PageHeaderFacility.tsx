@@ -112,7 +112,7 @@ const PageHeaderFacility = ({ title, breadcrumbs, headerLinks, header }: Props) 
                   .slice(0, 3)}
                 <div className="absolute right-4 bottom-4 z-1">
                   <Button variant="solid-inverted" onPress={() => openAtImageIndex(0)}>
-                    {t('PageHeaderFacility.allPhotos')}
+                    {t('PageHeaderFacility.allPhotos', { count: imageCount })}
                   </Button>
                 </div>
               </ul>
