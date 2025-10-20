@@ -48,7 +48,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
         url: article.slug ? `${urlPrefix[language]}/${article.slug}` : '',
         date: article.addedAt,
-        categories: [article.tag?.title].filter(isDefined),
+        categories: article.tag.map((tag) => tag?.title).filter(isDefined) ?? [],
         enclosure: article.coverMedia
           ? {
               url: article.coverMedia.url,
