@@ -77,32 +77,9 @@ export const articlesFetcher = (filters: ArticlesFilters, locale: string) => {
           slug: article.slug,
           perex: article.perex,
           addedAt: article.addedAt,
-          ...(article.coverMedia && {
-            coverMedia: {
-              documentId: article.coverMedia.documentId,
-              url: article.coverMedia.url ?? '',
-              name: article.coverMedia.name ?? '',
-              alternativeText: article.coverMedia.alternativeText ?? '',
-            },
-          }),
-          ...(article.tag && {
-            tag: {
-              documentId: article.tag.documentId,
-              title: article.tag.title,
-              ...(article.tag.pageCategory && {
-                pageCategory: {
-                  documentId: article.tag.pageCategory.documentId,
-                  color: article.tag.pageCategory.color,
-                },
-              }),
-            },
-          }),
-          ...(article.articleCategory && {
-            articleCategory: {
-              documentId: article.articleCategory.documentId,
-              title: article.articleCategory.title,
-            },
-          }),
+          coverMedia: article.coverMedia,
+          tag: article.tag,
+          articleCategory: article.articleCategory,
         } as const
       })
 
