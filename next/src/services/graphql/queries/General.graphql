@@ -44,6 +44,9 @@ fragment CardLink on ComponentBlocksCardLink {
   page {
     ...PageCardEntity
   }
+  article {
+    ...ArticleCardEntity
+  }
   url
   analyticsId
 }

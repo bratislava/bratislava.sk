@@ -378,6 +378,7 @@ input ComponentAccordionItemsInstitutionNarrowInput {
 
 type ComponentBlocksCardLink {
   analyticsId: String
+  article: Article
   id: ID!
   label: String
   media: UploadFile
@@ -389,6 +390,7 @@ type ComponentBlocksCardLink {
 input ComponentBlocksCardLinkFiltersInput {
   analyticsId: StringFilterInput
   and: [ComponentBlocksCardLinkFiltersInput]
+  article: ArticleFiltersInput
   label: StringFilterInput
   not: ComponentBlocksCardLinkFiltersInput
   or: [ComponentBlocksCardLinkFiltersInput]
@@ -399,6 +401,7 @@ input ComponentBlocksCardLinkFiltersInput {
 
 input ComponentBlocksCardLinkInput {
   analyticsId: String
+  article: ID
   id: ID
   label: String
   media: ID

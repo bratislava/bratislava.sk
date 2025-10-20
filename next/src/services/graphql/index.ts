@@ -556,6 +556,7 @@ export type ComponentAccordionItemsInstitutionNarrowInput = {
 export type ComponentBlocksCardLink = {
   __typename?: 'ComponentBlocksCardLink'
   analyticsId?: Maybe<Scalars['String']['output']>
+  article?: Maybe<Article>
   id: Scalars['ID']['output']
   label?: Maybe<Scalars['String']['output']>
   media?: Maybe<UploadFile>
@@ -567,6 +568,7 @@ export type ComponentBlocksCardLink = {
 export type ComponentBlocksCardLinkFiltersInput = {
   analyticsId?: InputMaybe<StringFilterInput>
   and?: InputMaybe<Array<InputMaybe<ComponentBlocksCardLinkFiltersInput>>>
+  article?: InputMaybe<ArticleFiltersInput>
   label?: InputMaybe<StringFilterInput>
   not?: InputMaybe<ComponentBlocksCardLinkFiltersInput>
   or?: InputMaybe<Array<InputMaybe<ComponentBlocksCardLinkFiltersInput>>>
@@ -577,6 +579,7 @@ export type ComponentBlocksCardLinkFiltersInput = {
 
 export type ComponentBlocksCardLinkInput = {
   analyticsId?: InputMaybe<Scalars['String']['input']>
+  article?: InputMaybe<Scalars['ID']['input']>
   id?: InputMaybe<Scalars['ID']['input']>
   label?: InputMaybe<Scalars['String']['input']>
   media?: InputMaybe<Scalars['ID']['input']>
@@ -7162,6 +7165,37 @@ export type CardLinkFragment = {
     locale?: string | null
     pageBackgroundImage?: { __typename?: 'UploadFile'; documentId: string; url: string } | null
   } | null
+  article?: {
+    __typename: 'Article'
+    perex?: string | null
+    addedAt: any
+    documentId: string
+    slug: string
+    title: string
+    locale?: string | null
+    coverMedia?: {
+      __typename?: 'UploadFile'
+      documentId: string
+      url: string
+      width?: number | null
+      height?: number | null
+      caption?: string | null
+      alternativeText?: string | null
+      name: string
+    } | null
+    tag?: {
+      __typename?: 'Tag'
+      documentId: string
+      title?: string | null
+      slug?: string | null
+      pageCategory?: {
+        __typename?: 'PageCategory'
+        documentId: string
+        title?: string | null
+        color?: Enum_Pagecategory_Color | null
+      } | null
+    } | null
+  } | null
 }
 
 export type PageLinkFragment = {
@@ -10485,6 +10519,37 @@ export type PageEntityFragment = {
               url: string
             } | null
           } | null
+          article?: {
+            __typename: 'Article'
+            perex?: string | null
+            addedAt: any
+            documentId: string
+            slug: string
+            title: string
+            locale?: string | null
+            coverMedia?: {
+              __typename?: 'UploadFile'
+              documentId: string
+              url: string
+              width?: number | null
+              height?: number | null
+              caption?: string | null
+              alternativeText?: string | null
+              name: string
+            } | null
+            tag?: {
+              __typename?: 'Tag'
+              documentId: string
+              title?: string | null
+              slug?: string | null
+              pageCategory?: {
+                __typename?: 'PageCategory'
+                documentId: string
+                title?: string | null
+                color?: Enum_Pagecategory_Color | null
+              } | null
+            } | null
+          } | null
         } | null> | null
       }
     | {
@@ -11658,6 +11723,37 @@ export type PageBySlugQuery = {
                 __typename?: 'UploadFile'
                 documentId: string
                 url: string
+              } | null
+            } | null
+            article?: {
+              __typename: 'Article'
+              perex?: string | null
+              addedAt: any
+              documentId: string
+              slug: string
+              title: string
+              locale?: string | null
+              coverMedia?: {
+                __typename?: 'UploadFile'
+                documentId: string
+                url: string
+                width?: number | null
+                height?: number | null
+                caption?: string | null
+                alternativeText?: string | null
+                name: string
+              } | null
+              tag?: {
+                __typename?: 'Tag'
+                documentId: string
+                title?: string | null
+                slug?: string | null
+                pageCategory?: {
+                  __typename?: 'PageCategory'
+                  documentId: string
+                  title?: string | null
+                  color?: Enum_Pagecategory_Color | null
+                } | null
               } | null
             } | null
           } | null> | null
@@ -12859,6 +12955,37 @@ export type Dev_AllPagesQuery = {
                 __typename?: 'UploadFile'
                 documentId: string
                 url: string
+              } | null
+            } | null
+            article?: {
+              __typename: 'Article'
+              perex?: string | null
+              addedAt: any
+              documentId: string
+              slug: string
+              title: string
+              locale?: string | null
+              coverMedia?: {
+                __typename?: 'UploadFile'
+                documentId: string
+                url: string
+                width?: number | null
+                height?: number | null
+                caption?: string | null
+                alternativeText?: string | null
+                name: string
+              } | null
+              tag?: {
+                __typename?: 'Tag'
+                documentId: string
+                title?: string | null
+                slug?: string | null
+                pageCategory?: {
+                  __typename?: 'PageCategory'
+                  documentId: string
+                  title?: string | null
+                  color?: Enum_Pagecategory_Color | null
+                } | null
               } | null
             } | null
           } | null> | null
@@ -14769,6 +14896,37 @@ export type StarzLandingPageSectionFragment = {
       locale?: string | null
       pageBackgroundImage?: { __typename?: 'UploadFile'; documentId: string; url: string } | null
     } | null
+    article?: {
+      __typename: 'Article'
+      perex?: string | null
+      addedAt: any
+      documentId: string
+      slug: string
+      title: string
+      locale?: string | null
+      coverMedia?: {
+        __typename?: 'UploadFile'
+        documentId: string
+        url: string
+        width?: number | null
+        height?: number | null
+        caption?: string | null
+        alternativeText?: string | null
+        name: string
+      } | null
+      tag?: {
+        __typename?: 'Tag'
+        documentId: string
+        title?: string | null
+        slug?: string | null
+        pageCategory?: {
+          __typename?: 'PageCategory'
+          documentId: string
+          title?: string | null
+          color?: Enum_Pagecategory_Color | null
+        } | null
+      } | null
+    } | null
   } | null> | null
 }
 
@@ -15697,6 +15855,37 @@ type Sections_ComponentSectionsStarzLandingPage_Fragment = {
       title: string
       locale?: string | null
       pageBackgroundImage?: { __typename?: 'UploadFile'; documentId: string; url: string } | null
+    } | null
+    article?: {
+      __typename: 'Article'
+      perex?: string | null
+      addedAt: any
+      documentId: string
+      slug: string
+      title: string
+      locale?: string | null
+      coverMedia?: {
+        __typename?: 'UploadFile'
+        documentId: string
+        url: string
+        width?: number | null
+        height?: number | null
+        caption?: string | null
+        alternativeText?: string | null
+        name: string
+      } | null
+      tag?: {
+        __typename?: 'Tag'
+        documentId: string
+        title?: string | null
+        slug?: string | null
+        pageCategory?: {
+          __typename?: 'PageCategory'
+          documentId: string
+          title?: string | null
+          color?: Enum_Pagecategory_Color | null
+        } | null
+      } | null
     } | null
   } | null> | null
 }
@@ -17255,11 +17444,15 @@ export const CardLinkFragmentDoc = gql`
     page {
       ...PageCardEntity
     }
+    article {
+      ...ArticleCardEntity
+    }
     url
     analyticsId
   }
   ${UploadImageEntityFragmentDoc}
   ${PageCardEntityFragmentDoc}
+  ${ArticleCardEntityFragmentDoc}
 `
 export const StarzLandingPageSectionFragmentDoc = gql`
   fragment StarzLandingPageSection on ComponentSectionsStarzLandingPage {
