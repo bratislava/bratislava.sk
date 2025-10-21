@@ -52,7 +52,7 @@ export type AdminGroup = {
   pages: Array<Maybe<Page>>
   pages_connection?: Maybe<PageRelationResponseCollection>
   publishedAt?: Maybe<Scalars['DateTime']['output']>
-  slug?: Maybe<Scalars['String']['output']>
+  slug: Scalars['String']['output']
   title: Scalars['String']['output']
   updatedAt?: Maybe<Scalars['DateTime']['output']>
 }
@@ -6167,8 +6167,8 @@ export type Tag = {
   localizations_connection?: Maybe<TagRelationResponseCollection>
   pageCategory?: Maybe<PageCategory>
   publishedAt?: Maybe<Scalars['DateTime']['output']>
-  slug?: Maybe<Scalars['String']['output']>
-  title?: Maybe<Scalars['String']['output']>
+  slug: Scalars['String']['output']
+  title: Scalars['String']['output']
   updatedAt?: Maybe<Scalars['DateTime']['output']>
 }
 
@@ -6681,7 +6681,7 @@ export type PageSubnavigationEntityFragment = {
 export type AdminGroupEntityFragment = {
   __typename?: 'AdminGroup'
   title: string
-  slug?: string | null
+  slug: string
   adminGroupId?: string | null
   contentManagedBy?: string | null
   documentId: string
@@ -6724,7 +6724,7 @@ export type AdminGroupsQuery = {
   adminGroups: Array<{
     __typename?: 'AdminGroup'
     title: string
-    slug?: string | null
+    slug: string
     adminGroupId?: string | null
     contentManagedBy?: string | null
     documentId: string
@@ -6795,8 +6795,8 @@ export type ArticleCardEntityFragment = {
   tag?: {
     __typename?: 'Tag'
     documentId: string
-    title?: string | null
-    slug?: string | null
+    title: string
+    slug: string
     pageCategory?: {
       __typename?: 'PageCategory'
       documentId: string
@@ -6860,8 +6860,8 @@ export type ArticleEntityFragment = {
   tag?: {
     __typename?: 'Tag'
     documentId: string
-    title?: string | null
-    slug?: string | null
+    title: string
+    slug: string
     pageCategory?: {
       __typename?: 'PageCategory'
       documentId: string
@@ -6932,8 +6932,8 @@ export type ArticleBySlugQuery = {
     tag?: {
       __typename?: 'Tag'
       documentId: string
-      title?: string | null
-      slug?: string | null
+      title: string
+      slug: string
       pageCategory?: {
         __typename?: 'PageCategory'
         documentId: string
@@ -7007,8 +7007,8 @@ export type ArticlesQuery = {
     tag?: {
       __typename?: 'Tag'
       documentId: string
-      title?: string | null
-      slug?: string | null
+      title: string
+      slug: string
       pageCategory?: {
         __typename?: 'PageCategory'
         documentId: string
@@ -7034,7 +7034,7 @@ export type ArticlesRssFeedQuery = {
     perex?: string | null
     tag?: {
       __typename?: 'Tag'
-      title?: string | null
+      title: string
       pageCategory?: { __typename?: 'PageCategory'; title?: string | null } | null
     } | null
     coverMedia?: { __typename?: 'UploadFile'; url: string; mime: string; size: number } | null
@@ -7107,8 +7107,8 @@ export type Dev_AllArticlesQuery = {
     tag?: {
       __typename?: 'Tag'
       documentId: string
-      title?: string | null
-      slug?: string | null
+      title: string
+      slug: string
       pageCategory?: {
         __typename?: 'PageCategory'
         documentId: string
@@ -7453,8 +7453,8 @@ export type CardLinkFragment = {
     tag?: {
       __typename?: 'Tag'
       documentId: string
-      title?: string | null
-      slug?: string | null
+      title: string
+      slug: string
       pageCategory?: {
         __typename?: 'PageCategory'
         documentId: string
@@ -8442,8 +8442,8 @@ export type HomepageEntityFragment = {
         tag?: {
           __typename?: 'Tag'
           documentId: string
-          title?: string | null
-          slug?: string | null
+          title: string
+          slug: string
           pageCategory?: {
             __typename?: 'PageCategory'
             documentId: string
@@ -8487,8 +8487,8 @@ export type HomepageEntityFragment = {
       tag?: {
         __typename?: 'Tag'
         documentId: string
-        title?: string | null
-        slug?: string | null
+        title: string
+        slug: string
         pageCategory?: {
           __typename?: 'PageCategory'
           documentId: string
@@ -8518,8 +8518,8 @@ export type HomepageEntityFragment = {
       tag?: {
         __typename?: 'Tag'
         documentId: string
-        title?: string | null
-        slug?: string | null
+        title: string
+        slug: string
         pageCategory?: {
           __typename?: 'PageCategory'
           documentId: string
@@ -8773,8 +8773,8 @@ export type HomepageQuery = {
           tag?: {
             __typename?: 'Tag'
             documentId: string
-            title?: string | null
-            slug?: string | null
+            title: string
+            slug: string
             pageCategory?: {
               __typename?: 'PageCategory'
               documentId: string
@@ -8818,8 +8818,8 @@ export type HomepageQuery = {
         tag?: {
           __typename?: 'Tag'
           documentId: string
-          title?: string | null
-          slug?: string | null
+          title: string
+          slug: string
           pageCategory?: {
             __typename?: 'PageCategory'
             documentId: string
@@ -8849,8 +8849,8 @@ export type HomepageQuery = {
         tag?: {
           __typename?: 'Tag'
           documentId: string
-          title?: string | null
-          slug?: string | null
+          title: string
+          slug: string
           pageCategory?: {
             __typename?: 'PageCategory'
             documentId: string
@@ -9082,8 +9082,8 @@ export type HomepageHighlightsItemFragment = {
     tag?: {
       __typename?: 'Tag'
       documentId: string
-      title?: string | null
-      slug?: string | null
+      title: string
+      slug: string
       pageCategory?: {
         __typename?: 'PageCategory'
         documentId: string
@@ -9127,8 +9127,8 @@ export type HomepageTabsFragment = {
     tag?: {
       __typename?: 'Tag'
       documentId: string
-      title?: string | null
-      slug?: string | null
+      title: string
+      slug: string
       pageCategory?: {
         __typename?: 'PageCategory'
         documentId: string
@@ -9158,8 +9158,8 @@ export type HomepageTabsFragment = {
     tag?: {
       __typename?: 'Tag'
       documentId: string
-      title?: string | null
-      slug?: string | null
+      title: string
+      slug: string
       pageCategory?: {
         __typename?: 'PageCategory'
         documentId: string
@@ -9805,7 +9805,7 @@ export type PageEntityFragment = {
   adminGroups: Array<{
     __typename?: 'AdminGroup'
     title: string
-    slug?: string | null
+    slug: string
     adminGroupId?: string | null
     contentManagedBy?: string | null
     documentId: string
@@ -9993,8 +9993,8 @@ export type PageEntityFragment = {
           tag?: {
             __typename?: 'Tag'
             documentId: string
-            title?: string | null
-            slug?: string | null
+            title: string
+            slug: string
             pageCategory?: {
               __typename?: 'PageCategory'
               documentId: string
@@ -10012,8 +10012,8 @@ export type PageEntityFragment = {
         tags: Array<{
           __typename?: 'Tag'
           documentId: string
-          title?: string | null
-          slug?: string | null
+          title: string
+          slug: string
           pageCategory?: {
             __typename?: 'PageCategory'
             documentId: string
@@ -10807,8 +10807,8 @@ export type PageEntityFragment = {
             tag?: {
               __typename?: 'Tag'
               documentId: string
-              title?: string | null
-              slug?: string | null
+              title: string
+              slug: string
               pageCategory?: {
                 __typename?: 'PageCategory'
                 documentId: string
@@ -10939,8 +10939,8 @@ export type PageEntityFragment = {
   relatedContents: Array<{
     __typename?: 'Tag'
     documentId: string
-    title?: string | null
-    slug?: string | null
+    title: string
+    slug: string
     pageCategory?: {
       __typename?: 'PageCategory'
       documentId: string
@@ -11008,7 +11008,7 @@ export type PageBySlugQuery = {
     adminGroups: Array<{
       __typename?: 'AdminGroup'
       title: string
-      slug?: string | null
+      slug: string
       adminGroupId?: string | null
       contentManagedBy?: string | null
       documentId: string
@@ -11196,8 +11196,8 @@ export type PageBySlugQuery = {
             tag?: {
               __typename?: 'Tag'
               documentId: string
-              title?: string | null
-              slug?: string | null
+              title: string
+              slug: string
               pageCategory?: {
                 __typename?: 'PageCategory'
                 documentId: string
@@ -11215,8 +11215,8 @@ export type PageBySlugQuery = {
           tags: Array<{
             __typename?: 'Tag'
             documentId: string
-            title?: string | null
-            slug?: string | null
+            title: string
+            slug: string
             pageCategory?: {
               __typename?: 'PageCategory'
               documentId: string
@@ -12013,8 +12013,8 @@ export type PageBySlugQuery = {
               tag?: {
                 __typename?: 'Tag'
                 documentId: string
-                title?: string | null
-                slug?: string | null
+                title: string
+                slug: string
                 pageCategory?: {
                   __typename?: 'PageCategory'
                   documentId: string
@@ -12149,8 +12149,8 @@ export type PageBySlugQuery = {
     relatedContents: Array<{
       __typename?: 'Tag'
       documentId: string
-      title?: string | null
-      slug?: string | null
+      title: string
+      slug: string
       pageCategory?: {
         __typename?: 'PageCategory'
         documentId: string
@@ -12240,7 +12240,7 @@ export type Dev_AllPagesQuery = {
     adminGroups: Array<{
       __typename?: 'AdminGroup'
       title: string
-      slug?: string | null
+      slug: string
       adminGroupId?: string | null
       contentManagedBy?: string | null
       documentId: string
@@ -12428,8 +12428,8 @@ export type Dev_AllPagesQuery = {
             tag?: {
               __typename?: 'Tag'
               documentId: string
-              title?: string | null
-              slug?: string | null
+              title: string
+              slug: string
               pageCategory?: {
                 __typename?: 'PageCategory'
                 documentId: string
@@ -12447,8 +12447,8 @@ export type Dev_AllPagesQuery = {
           tags: Array<{
             __typename?: 'Tag'
             documentId: string
-            title?: string | null
-            slug?: string | null
+            title: string
+            slug: string
             pageCategory?: {
               __typename?: 'PageCategory'
               documentId: string
@@ -13245,8 +13245,8 @@ export type Dev_AllPagesQuery = {
               tag?: {
                 __typename?: 'Tag'
                 documentId: string
-                title?: string | null
-                slug?: string | null
+                title: string
+                slug: string
                 pageCategory?: {
                   __typename?: 'PageCategory'
                   documentId: string
@@ -13381,8 +13381,8 @@ export type Dev_AllPagesQuery = {
     relatedContents: Array<{
       __typename?: 'Tag'
       documentId: string
-      title?: string | null
-      slug?: string | null
+      title: string
+      slug: string
       pageCategory?: {
         __typename?: 'PageCategory'
         documentId: string
@@ -14056,8 +14056,8 @@ export type ArticlesSectionFragment = {
     tag?: {
       __typename?: 'Tag'
       documentId: string
-      title?: string | null
-      slug?: string | null
+      title: string
+      slug: string
       pageCategory?: {
         __typename?: 'PageCategory'
         documentId: string
@@ -14075,8 +14075,8 @@ export type ArticlesSectionFragment = {
   tags: Array<{
     __typename?: 'Tag'
     documentId: string
-    title?: string | null
-    slug?: string | null
+    title: string
+    slug: string
     pageCategory?: {
       __typename?: 'PageCategory'
       documentId: string
@@ -15184,8 +15184,8 @@ export type StarzLandingPageSectionFragment = {
       tag?: {
         __typename?: 'Tag'
         documentId: string
-        title?: string | null
-        slug?: string | null
+        title: string
+        slug: string
         pageCategory?: {
           __typename?: 'PageCategory'
           documentId: string
@@ -15309,8 +15309,8 @@ type Sections_ComponentSectionsArticles_Fragment = {
     tag?: {
       __typename?: 'Tag'
       documentId: string
-      title?: string | null
-      slug?: string | null
+      title: string
+      slug: string
       pageCategory?: {
         __typename?: 'PageCategory'
         documentId: string
@@ -15328,8 +15328,8 @@ type Sections_ComponentSectionsArticles_Fragment = {
   tags: Array<{
     __typename?: 'Tag'
     documentId: string
-    title?: string | null
-    slug?: string | null
+    title: string
+    slug: string
     pageCategory?: {
       __typename?: 'PageCategory'
       documentId: string
@@ -16144,8 +16144,8 @@ type Sections_ComponentSectionsStarzLandingPage_Fragment = {
       tag?: {
         __typename?: 'Tag'
         documentId: string
-        title?: string | null
-        slug?: string | null
+        title: string
+        slug: string
         pageCategory?: {
           __typename?: 'PageCategory'
           documentId: string
@@ -16412,8 +16412,8 @@ export type SidebarsFragment =
 export type TagEntityFragment = {
   __typename?: 'Tag'
   documentId: string
-  title?: string | null
-  slug?: string | null
+  title: string
+  slug: string
   pageCategory?: {
     __typename?: 'PageCategory'
     documentId: string
@@ -16431,8 +16431,8 @@ export type TagsQuery = {
   tags: Array<{
     __typename?: 'Tag'
     documentId: string
-    title?: string | null
-    slug?: string | null
+    title: string
+    slug: string
     pageCategory?: {
       __typename?: 'PageCategory'
       documentId: string

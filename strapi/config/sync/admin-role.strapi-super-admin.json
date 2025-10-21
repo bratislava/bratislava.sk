@@ -260,14 +260,14 @@
           "perex",
           "alias",
           "coverMedia",
+          "articleCategory",
           "tag",
           "addedAt",
           "content",
           "files.title",
           "files.media",
           "gallery",
-          "adminGroups",
-          "articleCategory"
+          "adminGroups"
         ],
         "locales": [
           "sk",
@@ -276,7 +276,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "g2dcd5i50ajx46fx2204iyxh",
+      "documentId": "ipx76kzhohvo6tmcl4rh0f2u",
       "locale": null
     },
     {
@@ -317,14 +317,14 @@
           "perex",
           "alias",
           "coverMedia",
+          "articleCategory",
           "tag",
           "addedAt",
           "content",
           "files.title",
           "files.media",
           "gallery",
-          "adminGroups",
-          "articleCategory"
+          "adminGroups"
         ],
         "locales": [
           "sk",
@@ -333,7 +333,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "ynbud2gwmg6nnbeg1xt0tqqy",
+      "documentId": "opfg1k1tkzyq1m4ckxyeumev",
       "locale": null
     },
     {
@@ -346,14 +346,14 @@
           "perex",
           "alias",
           "coverMedia",
+          "articleCategory",
           "tag",
           "addedAt",
           "content",
           "files.title",
           "files.media",
           "gallery",
-          "adminGroups",
-          "articleCategory"
+          "adminGroups"
         ],
         "locales": [
           "sk",
@@ -362,7 +362,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "s1wthibci74jumgd9ryvptbj",
+      "documentId": "p3h64gz3d8xw0uuizkxgbae0",
       "locale": null
     },
     {

@@ -64,6 +64,12 @@
         "images"
       ]
     },
+    "articleCategory": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::article-category.article-category",
+      "inversedBy": "articles"
+    },
     "tag": {
       "type": "relation",
       "relation": "manyToOne",
@@ -114,12 +120,6 @@
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::admin-group.admin-group",
-      "inversedBy": "articles"
-    },
-    "articleCategory": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::article-category.article-category",
       "inversedBy": "articles"
     }
   }

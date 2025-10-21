@@ -17,7 +17,7 @@ type AdminGroup {
   pages(filters: PageFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [Page]!
   pages_connection(filters: PageFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): PageRelationResponseCollection
   publishedAt: DateTime
-  slug: String
+  slug: String!
   title: String!
   updatedAt: DateTime
 }
@@ -4595,8 +4595,8 @@ type Tag {
   localizations_connection(filters: TagFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): TagRelationResponseCollection
   pageCategory: PageCategory
   publishedAt: DateTime
-  slug: String
-  title: String
+  slug: String!
+  title: String!
   updatedAt: DateTime
 }
 
