@@ -14,7 +14,7 @@ type ComparisonSectionProps = {
 }
 
 /**
- * TODO Figma link
+ * Figma: https://www.figma.com/design/17wbd0MDQcMW9NbXl6UPs8/DS--Component-library?node-id=5825-10014&m=dev
  */
 
 const ComparisonSection = ({ section }: ComparisonSectionProps) => {
