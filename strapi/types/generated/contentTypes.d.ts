@@ -363,7 +363,7 @@ export interface ApiAdminGroupAdminGroup extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private
     pages: Schema.Attribute.Relation<'manyToMany', 'api::page.page'>
     publishedAt: Schema.Attribute.DateTime
-    slug: Schema.Attribute.UID<'title'>
+    slug: Schema.Attribute.UID<'title'> & Schema.Attribute.Required
     title: Schema.Attribute.String & Schema.Attribute.Required
     updatedAt: Schema.Attribute.DateTime
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> & Schema.Attribute.Private
@@ -1450,12 +1450,14 @@ export interface ApiTagTag extends Struct.CollectionTypeSchema {
     pageCategory: Schema.Attribute.Relation<'oneToOne', 'api::page-category.page-category'>
     publishedAt: Schema.Attribute.DateTime
     slug: Schema.Attribute.UID<'title'> &
+      Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true
         }
       }>
     title: Schema.Attribute.String &
+      Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true

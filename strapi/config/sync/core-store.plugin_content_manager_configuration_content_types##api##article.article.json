@@ -138,7 +138,8 @@
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true
+          "editable": true,
+          "mainField": "title"
         },
         "list": {
           "label": "files",
@@ -178,7 +179,7 @@
       "articleCategory": {
         "edit": {
           "label": "Typ",
-          "description": "",
+          "description": "Perex tlačových správ začína miestom a dátumom, napr. \"Bratislava, 15. marca 2025\".",
           "placeholder": "",
           "visible": true,
           "editable": true,
@@ -258,14 +259,6 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "coverMedia",
-        "title",
-        "slug",
-        "updatedAt",
-        "addedAt"
-      ],
       "edit": [
         [
           {
@@ -335,6 +328,14 @@
             "size": 12
           }
         ]
+      ],
+      "list": [
+        "id",
+        "coverMedia",
+        "title",
+        "slug",
+        "updatedAt",
+        "addedAt"
       ]
     },
     "uid": "api::article.article"

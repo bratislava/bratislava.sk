@@ -19,7 +19,7 @@
     "slug": {
       "type": "uid",
       "targetField": "title",
-      "required": false
+      "required": true
     },
     "adminGroupId": {
       "type": "uid",
