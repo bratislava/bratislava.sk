@@ -231,6 +231,8 @@ export type Article = {
   publishedAt?: Maybe<Scalars['DateTime']['output']>
   slug: Scalars['String']['output']
   tag?: Maybe<Tag>
+  tags: Array<Maybe<Tag>>
+  tags_connection?: Maybe<TagRelationResponseCollection>
   title: Scalars['String']['output']
   updatedAt?: Maybe<Scalars['DateTime']['output']>
 }
@@ -273,6 +275,18 @@ export type ArticleLocalizationsArgs = {
 
 export type ArticleLocalizations_ConnectionArgs = {
   filters?: InputMaybe<ArticleFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type ArticleTagsArgs = {
+  filters?: InputMaybe<TagFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type ArticleTags_ConnectionArgs = {
+  filters?: InputMaybe<TagFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
 }
@@ -395,6 +409,7 @@ export type ArticleFiltersInput = {
   publishedAt?: InputMaybe<DateTimeFilterInput>
   slug?: InputMaybe<StringFilterInput>
   tag?: InputMaybe<TagFiltersInput>
+  tags?: InputMaybe<TagFiltersInput>
   title?: InputMaybe<StringFilterInput>
   updatedAt?: InputMaybe<DateTimeFilterInput>
 }
@@ -412,6 +427,7 @@ export type ArticleInput = {
   publishedAt?: InputMaybe<Scalars['DateTime']['input']>
   slug?: InputMaybe<Scalars['String']['input']>
   tag?: InputMaybe<Scalars['ID']['input']>
+  tags?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
   title?: InputMaybe<Scalars['String']['input']>
 }
 
@@ -6847,6 +6863,18 @@ export type ArticleEntityFragment = {
     alternativeText?: string | null
     name: string
   } | null>
+  tags: Array<{
+    __typename?: 'Tag'
+    documentId: string
+    title: string
+    slug: string
+    pageCategory?: {
+      __typename?: 'PageCategory'
+      documentId: string
+      title?: string | null
+      color?: Enum_Pagecategory_Color | null
+    } | null
+  } | null>
   coverMedia?: {
     __typename?: 'UploadFile'
     documentId: string
@@ -6918,6 +6946,18 @@ export type ArticleBySlugQuery = {
       caption?: string | null
       alternativeText?: string | null
       name: string
+    } | null>
+    tags: Array<{
+      __typename?: 'Tag'
+      documentId: string
+      title: string
+      slug: string
+      pageCategory?: {
+        __typename?: 'PageCategory'
+        documentId: string
+        title?: string | null
+        color?: Enum_Pagecategory_Color | null
+      } | null
     } | null>
     coverMedia?: {
       __typename?: 'UploadFile'
@@ -7093,6 +7133,18 @@ export type Dev_AllArticlesQuery = {
       caption?: string | null
       alternativeText?: string | null
       name: string
+    } | null>
+    tags: Array<{
+      __typename?: 'Tag'
+      documentId: string
+      title: string
+      slug: string
+      pageCategory?: {
+        __typename?: 'PageCategory'
+        documentId: string
+        title?: string | null
+        color?: Enum_Pagecategory_Color | null
+      } | null
     } | null>
     coverMedia?: {
       __typename?: 'UploadFile'
@@ -16538,11 +16590,15 @@ export const ArticleEntityFragmentDoc = gql`
     gallery {
       ...UploadImageEntity
     }
+    tags {
+      ...TagEntity
+    }
   }
   ${ArticleCardEntityFragmentDoc}
   ${ArticleCategoryEntityFragmentDoc}
   ${FileBlockFragmentDoc}
   ${UploadImageEntityFragmentDoc}
+  ${TagEntityFragmentDoc}
 `
 export const UploadFileFragmentDoc = gql`
   fragment UploadFile on UploadFile {
