@@ -2623,30 +2623,6 @@ export type ComponentSectionsSubnavigationInput = {
   links?: InputMaybe<Array<InputMaybe<ComponentBlocksSubnavigationLinkInput>>>
 }
 
-export type ComponentSectionsSubpageList = {
-  __typename?: 'ComponentSectionsSubpageList'
-  id: Scalars['ID']['output']
-  subpageList?: Maybe<Array<Maybe<ComponentBlocksPageLink>>>
-}
-
-export type ComponentSectionsSubpageListSubpageListArgs = {
-  filters?: InputMaybe<ComponentBlocksPageLinkFiltersInput>
-  pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
-}
-
-export type ComponentSectionsSubpageListFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<ComponentSectionsSubpageListFiltersInput>>>
-  not?: InputMaybe<ComponentSectionsSubpageListFiltersInput>
-  or?: InputMaybe<Array<InputMaybe<ComponentSectionsSubpageListFiltersInput>>>
-  subpageList?: InputMaybe<ComponentBlocksPageLinkFiltersInput>
-}
-
-export type ComponentSectionsSubpageListInput = {
-  id?: InputMaybe<Scalars['ID']['input']>
-  subpageList?: InputMaybe<Array<InputMaybe<ComponentBlocksPageLinkInput>>>
-}
-
 export type ComponentSectionsTextWithImage = {
   __typename?: 'ComponentSectionsTextWithImage'
   content?: Maybe<Scalars['String']['output']>
@@ -3770,7 +3746,6 @@ export type GenericMorph =
   | ComponentSectionsRegulations
   | ComponentSectionsStarzLandingPage
   | ComponentSectionsSubnavigation
-  | ComponentSectionsSubpageList
   | ComponentSectionsTextWithImage
   | ComponentSectionsTextWithImageOverlapped
   | ComponentSectionsTootootEvents
@@ -5196,7 +5171,6 @@ export type PageInput = {
 export type PagePageHeaderSectionsDynamicZone =
   | ComponentHeaderSectionsEvent
   | ComponentHeaderSectionsFacility
-  | ComponentSectionsSubpageList
   | Error
 
 export type PageRelationResponseCollection = {
@@ -7268,7 +7242,6 @@ export type AllFilesQuery = {
           __typename?: 'ComponentHeaderSectionsFacility'
           media: Array<{ __typename?: 'UploadFile'; documentId: string } | null>
         }
-      | { __typename?: 'ComponentSectionsSubpageList' }
       | { __typename?: 'Error' }
       | null
     > | null
@@ -9767,23 +9740,6 @@ export type PageCardWithHeadersEntityFragment = {
           name: string
         } | null>
       }
-    | {
-        __typename: 'ComponentSectionsSubpageList'
-        id: string
-        subpageList?: Array<{
-          __typename?: 'ComponentBlocksPageLink'
-          url?: string | null
-          analyticsId?: string | null
-          label?: string | null
-          page?: {
-            __typename?: 'Page'
-            documentId: string
-            slug?: string | null
-            title: string
-            locale?: string | null
-          } | null
-        } | null> | null
-      }
     | { __typename: 'Error' }
     | null
   > | null
@@ -9874,23 +9830,6 @@ export type PageEntityFragment = {
           alternativeText?: string | null
           name: string
         } | null>
-      }
-    | {
-        __typename: 'ComponentSectionsSubpageList'
-        id: string
-        subpageList?: Array<{
-          __typename?: 'ComponentBlocksPageLink'
-          url?: string | null
-          analyticsId?: string | null
-          label?: string | null
-          page?: {
-            __typename?: 'Page'
-            documentId: string
-            slug?: string | null
-            title: string
-            locale?: string | null
-          } | null
-        } | null> | null
       }
     | { __typename: 'Error' }
     | null
@@ -10284,23 +10223,6 @@ export type PageEntityFragment = {
                   name: string
                 } | null>
               }
-            | {
-                __typename: 'ComponentSectionsSubpageList'
-                id: string
-                subpageList?: Array<{
-                  __typename?: 'ComponentBlocksPageLink'
-                  url?: string | null
-                  analyticsId?: string | null
-                  label?: string | null
-                  page?: {
-                    __typename?: 'Page'
-                    documentId: string
-                    slug?: string | null
-                    title: string
-                    locale?: string | null
-                  } | null
-                } | null> | null
-              }
             | { __typename: 'Error' }
             | null
           > | null
@@ -10342,23 +10264,6 @@ export type PageEntityFragment = {
                   alternativeText?: string | null
                   name: string
                 } | null>
-              }
-            | {
-                __typename: 'ComponentSectionsSubpageList'
-                id: string
-                subpageList?: Array<{
-                  __typename?: 'ComponentBlocksPageLink'
-                  url?: string | null
-                  analyticsId?: string | null
-                  label?: string | null
-                  page?: {
-                    __typename?: 'Page'
-                    documentId: string
-                    slug?: string | null
-                    title: string
-                    locale?: string | null
-                  } | null
-                } | null> | null
               }
             | { __typename: 'Error' }
             | null
@@ -11078,23 +10983,6 @@ export type PageBySlugQuery = {
             name: string
           } | null>
         }
-      | {
-          __typename: 'ComponentSectionsSubpageList'
-          id: string
-          subpageList?: Array<{
-            __typename?: 'ComponentBlocksPageLink'
-            url?: string | null
-            analyticsId?: string | null
-            label?: string | null
-            page?: {
-              __typename?: 'Page'
-              documentId: string
-              slug?: string | null
-              title: string
-              locale?: string | null
-            } | null
-          } | null> | null
-        }
       | { __typename: 'Error' }
       | null
     > | null
@@ -11490,23 +11378,6 @@ export type PageBySlugQuery = {
                     name: string
                   } | null>
                 }
-              | {
-                  __typename: 'ComponentSectionsSubpageList'
-                  id: string
-                  subpageList?: Array<{
-                    __typename?: 'ComponentBlocksPageLink'
-                    url?: string | null
-                    analyticsId?: string | null
-                    label?: string | null
-                    page?: {
-                      __typename?: 'Page'
-                      documentId: string
-                      slug?: string | null
-                      title: string
-                      locale?: string | null
-                    } | null
-                  } | null> | null
-                }
               | { __typename: 'Error' }
               | null
             > | null
@@ -11548,23 +11419,6 @@ export type PageBySlugQuery = {
                     alternativeText?: string | null
                     name: string
                   } | null>
-                }
-              | {
-                  __typename: 'ComponentSectionsSubpageList'
-                  id: string
-                  subpageList?: Array<{
-                    __typename?: 'ComponentBlocksPageLink'
-                    url?: string | null
-                    analyticsId?: string | null
-                    label?: string | null
-                    page?: {
-                      __typename?: 'Page'
-                      documentId: string
-                      slug?: string | null
-                      title: string
-                      locale?: string | null
-                    } | null
-                  } | null> | null
                 }
               | { __typename: 'Error' }
               | null
@@ -12310,23 +12164,6 @@ export type Dev_AllPagesQuery = {
             name: string
           } | null>
         }
-      | {
-          __typename: 'ComponentSectionsSubpageList'
-          id: string
-          subpageList?: Array<{
-            __typename?: 'ComponentBlocksPageLink'
-            url?: string | null
-            analyticsId?: string | null
-            label?: string | null
-            page?: {
-              __typename?: 'Page'
-              documentId: string
-              slug?: string | null
-              title: string
-              locale?: string | null
-            } | null
-          } | null> | null
-        }
       | { __typename: 'Error' }
       | null
     > | null
@@ -12722,23 +12559,6 @@ export type Dev_AllPagesQuery = {
                     name: string
                   } | null>
                 }
-              | {
-                  __typename: 'ComponentSectionsSubpageList'
-                  id: string
-                  subpageList?: Array<{
-                    __typename?: 'ComponentBlocksPageLink'
-                    url?: string | null
-                    analyticsId?: string | null
-                    label?: string | null
-                    page?: {
-                      __typename?: 'Page'
-                      documentId: string
-                      slug?: string | null
-                      title: string
-                      locale?: string | null
-                    } | null
-                  } | null> | null
-                }
               | { __typename: 'Error' }
               | null
             > | null
@@ -12780,23 +12600,6 @@ export type Dev_AllPagesQuery = {
                     alternativeText?: string | null
                     name: string
                   } | null>
-                }
-              | {
-                  __typename: 'ComponentSectionsSubpageList'
-                  id: string
-                  subpageList?: Array<{
-                    __typename?: 'ComponentBlocksPageLink'
-                    url?: string | null
-                    analyticsId?: string | null
-                    label?: string | null
-                    page?: {
-                      __typename?: 'Page'
-                      documentId: string
-                      slug?: string | null
-                      title: string
-                      locale?: string | null
-                    } | null
-                  } | null> | null
                 }
               | { __typename: 'Error' }
               | null
@@ -14984,23 +14787,6 @@ export type EventsSectionFragment = {
             name: string
           } | null>
         }
-      | {
-          __typename: 'ComponentSectionsSubpageList'
-          id: string
-          subpageList?: Array<{
-            __typename?: 'ComponentBlocksPageLink'
-            url?: string | null
-            analyticsId?: string | null
-            label?: string | null
-            page?: {
-              __typename?: 'Page'
-              documentId: string
-              slug?: string | null
-              title: string
-              locale?: string | null
-            } | null
-          } | null> | null
-        }
       | { __typename: 'Error' }
       | null
     > | null
@@ -15035,23 +14821,6 @@ export type FacilitiesSectionFragment = {
             alternativeText?: string | null
             name: string
           } | null>
-        }
-      | {
-          __typename: 'ComponentSectionsSubpageList'
-          id: string
-          subpageList?: Array<{
-            __typename?: 'ComponentBlocksPageLink'
-            url?: string | null
-            analyticsId?: string | null
-            label?: string | null
-            page?: {
-              __typename?: 'Page'
-              documentId: string
-              slug?: string | null
-              title: string
-              locale?: string | null
-            } | null
-          } | null> | null
         }
       | { __typename: 'Error' }
       | null
@@ -15608,23 +15377,6 @@ type Sections_ComponentSectionsEvents_Fragment = {
             name: string
           } | null>
         }
-      | {
-          __typename: 'ComponentSectionsSubpageList'
-          id: string
-          subpageList?: Array<{
-            __typename?: 'ComponentBlocksPageLink'
-            url?: string | null
-            analyticsId?: string | null
-            label?: string | null
-            page?: {
-              __typename?: 'Page'
-              documentId: string
-              slug?: string | null
-              title: string
-              locale?: string | null
-            } | null
-          } | null> | null
-        }
       | { __typename: 'Error' }
       | null
     > | null
@@ -15659,23 +15411,6 @@ type Sections_ComponentSectionsFacilities_Fragment = {
             alternativeText?: string | null
             name: string
           } | null>
-        }
-      | {
-          __typename: 'ComponentSectionsSubpageList'
-          id: string
-          subpageList?: Array<{
-            __typename?: 'ComponentBlocksPageLink'
-            url?: string | null
-            analyticsId?: string | null
-            label?: string | null
-            page?: {
-              __typename?: 'Page'
-              documentId: string
-              slug?: string | null
-              title: string
-              locale?: string | null
-            } | null
-          } | null> | null
         }
       | { __typename: 'Error' }
       | null
@@ -16311,24 +16046,6 @@ export type SectionsFragment =
   | Sections_ComponentSectionsVideos_Fragment
   | Sections_Error_Fragment
 
-export type SubpageListPageHeaderSectionFragment = {
-  __typename?: 'ComponentSectionsSubpageList'
-  id: string
-  subpageList?: Array<{
-    __typename?: 'ComponentBlocksPageLink'
-    url?: string | null
-    analyticsId?: string | null
-    label?: string | null
-    page?: {
-      __typename?: 'Page'
-      documentId: string
-      slug?: string | null
-      title: string
-      locale?: string | null
-    } | null
-  } | null> | null
-}
-
 export type EventPageHeaderSectionFragment = {
   __typename?: 'ComponentHeaderSectionsEvent'
   date?: any | null
@@ -16373,30 +16090,11 @@ type PageHeaderSections_ComponentHeaderSectionsFacility_Fragment = {
   } | null>
 }
 
-type PageHeaderSections_ComponentSectionsSubpageList_Fragment = {
-  __typename: 'ComponentSectionsSubpageList'
-  id: string
-  subpageList?: Array<{
-    __typename?: 'ComponentBlocksPageLink'
-    url?: string | null
-    analyticsId?: string | null
-    label?: string | null
-    page?: {
-      __typename?: 'Page'
-      documentId: string
-      slug?: string | null
-      title: string
-      locale?: string | null
-    } | null
-  } | null> | null
-}
-
 type PageHeaderSections_Error_Fragment = { __typename: 'Error' }
 
 export type PageHeaderSectionsFragment =
   | PageHeaderSections_ComponentHeaderSectionsEvent_Fragment
   | PageHeaderSections_ComponentHeaderSectionsFacility_Fragment
-  | PageHeaderSections_ComponentSectionsSubpageList_Fragment
   | PageHeaderSections_Error_Fragment
 
 type Sidebars_ComponentSidebarsEmptySidebar_Fragment = {
@@ -16998,26 +16696,6 @@ export const AdminGroupEntityFragmentDoc = gql`
   ${AdminGroupDocumentIdEntityFragmentDoc}
   ${PageSubnavigationEntityFragmentDoc}
 `
-export const PageLinkFragmentDoc = gql`
-  fragment PageLink on ComponentBlocksPageLink {
-    label: title
-    page {
-      ...PageSlugEntity
-    }
-    url
-    analyticsId
-  }
-  ${PageSlugEntityFragmentDoc}
-`
-export const SubpageListPageHeaderSectionFragmentDoc = gql`
-  fragment SubpageListPageHeaderSection on ComponentSectionsSubpageList {
-    id
-    subpageList(pagination: { limit: -1 }) {
-      ...PageLink
-    }
-  }
-  ${PageLinkFragmentDoc}
-`
 export const EventPageHeaderSectionFragmentDoc = gql`
   fragment EventPageHeaderSection on ComponentHeaderSectionsEvent {
     date
@@ -17037,9 +16715,6 @@ export const FacilityPageHeaderSectionFragmentDoc = gql`
 export const PageHeaderSectionsFragmentDoc = gql`
   fragment PageHeaderSections on PagePageHeaderSectionsDynamicZone {
     __typename
-    ... on ComponentSectionsSubpageList {
-      ...SubpageListPageHeaderSection
-    }
     ... on ComponentHeaderSectionsEvent {
       ...EventPageHeaderSection
     }
@@ -17047,7 +16722,6 @@ export const PageHeaderSectionsFragmentDoc = gql`
       ...FacilityPageHeaderSection
     }
   }
-  ${SubpageListPageHeaderSectionFragmentDoc}
   ${EventPageHeaderSectionFragmentDoc}
   ${FacilityPageHeaderSectionFragmentDoc}
 `
@@ -17175,6 +16849,17 @@ export const NarrowTextSectionFragmentDoc = gql`
     content
     width
   }
+`
+export const PageLinkFragmentDoc = gql`
+  fragment PageLink on ComponentBlocksPageLink {
+    label: title
+    page {
+      ...PageSlugEntity
+    }
+    url
+    analyticsId
+  }
+  ${PageSlugEntityFragmentDoc}
 `
 export const LinksSectionFragmentDoc = gql`
   fragment LinksSection on ComponentSectionsLinks {

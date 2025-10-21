@@ -637,7 +637,7 @@ fragment Sections on PageSectionsDynamicZone {
   ... on ComponentSectionsFacilities {
     ...FacilitiesSection
   }
-  
+
   ... on ComponentSectionsStarzLandingPage {
     ...StarzLandingPageSection
   }
@@ -645,16 +645,9 @@ fragment Sections on PageSectionsDynamicZone {
   ... on ComponentSectionsOpeningHours {
     ...OpeningHoursSection
   }
-  
+
   ... on ComponentSectionsNewsletter {
     ...NewsletterSection
-  }
-}
-
-fragment SubpageListPageHeaderSection on ComponentSectionsSubpageList {
-  id
-  subpageList(pagination: { limit: -1 }) {
-    ...PageLink
   }
 }
 
@@ -673,10 +666,6 @@ fragment FacilityPageHeaderSection on ComponentHeaderSectionsFacility {
 
 fragment PageHeaderSections on PagePageHeaderSectionsDynamicZone {
   __typename
-
-  ... on ComponentSectionsSubpageList {
-    ...SubpageListPageHeaderSection
-  }
 
   ... on ComponentHeaderSectionsEvent {
     ...EventPageHeaderSection

@@ -1101,16 +1101,6 @@ export interface SectionsSubnavigation extends Struct.ComponentSchema {
   }
 }
 
-export interface SectionsSubpageList extends Struct.ComponentSchema {
-  collectionName: 'components_sections_subpage_lists'
-  info: {
-    displayName: 'Subpage List'
-  }
-  attributes: {
-    subpageList: Schema.Attribute.Component<'blocks.page-link', true>
-  }
-}
-
 export interface SectionsTextWithImage extends Struct.ComponentSchema {
   collectionName: 'components_sections_text_with_images'
   info: {
@@ -1295,7 +1285,6 @@ declare module '@strapi/strapi' {
       'sections.regulations': SectionsRegulations
       'sections.starz-landing-page': SectionsStarzLandingPage
       'sections.subnavigation': SectionsSubnavigation
-      'sections.subpage-list': SectionsSubpageList
       'sections.text-with-image': SectionsTextWithImage
       'sections.text-with-image-overlapped': SectionsTextWithImageOverlapped
       'sections.tootoot-events': SectionsTootootEvents
