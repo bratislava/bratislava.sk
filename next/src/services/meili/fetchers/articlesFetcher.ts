@@ -88,6 +88,7 @@ export const articlesFetcher = (filters: ArticlesFilters, locale: string) => {
           ...(article.tag && {
             tag: {
               documentId: article.tag.documentId,
+              slug: article.tag.slug,
               title: article.tag.title,
               ...(article.tag.pageCategory && {
                 pageCategory: {
