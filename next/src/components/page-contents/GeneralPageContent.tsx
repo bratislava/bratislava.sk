@@ -47,7 +47,6 @@ const GeneralPageContent = ({ page }: GeneralPageProps) => {
         breadcrumbs={breadcrumbs}
         headerLinks={page.headerLinks?.filter(isDefined)}
         pageBackgroundImage={page.pageBackgroundImage}
-        hasSubnavigationTmp={!!page.subnavigation?.links?.length}
       />
 
       {/* Sections & Sidebar */}

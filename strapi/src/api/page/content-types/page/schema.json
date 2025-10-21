@@ -149,8 +149,7 @@
       },
       "components": [
         "header-sections.event",
-        "header-sections.facility",
-        "sections.subpage-list"
+        "header-sections.facility"
       ],
       "max": 1
     },
@@ -246,12 +245,12 @@
       "mappedBy": "parent"
     },
     "fullPath": {
+      "type": "string",
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "type": "string",
       "required": false,
       "unique": true
     },
@@ -262,12 +261,12 @@
       "mappedBy": "page"
     },
     "breadcrumbTitle": {
+      "type": "string",
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
-      },
-      "type": "string"
+      }
     },
     "relatedContents": {
       "type": "relation",
