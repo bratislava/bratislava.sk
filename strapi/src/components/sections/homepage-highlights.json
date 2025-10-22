@@ -1,7 +1,7 @@
 {
   "collectionName": "components_sections_homepage_highlights",
   "info": {
-    "displayName": "homepage highlights",
+    "displayName": "Homepage - Highlighty",
     "description": ""
   },
   "options": {},
@@ -13,10 +13,9 @@
       "type": "text"
     },
     "cards": {
-      "displayName": "homepage highlights item",
       "type": "component",
-      "repeatable": true,
-      "component": "blocks.homepage-highlights-item"
+      "component": "blocks.homepage-highlights-item",
+      "repeatable": true
     }
   }
 }

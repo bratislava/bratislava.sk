@@ -1,7 +1,7 @@
 {
   "collectionName": "components_sections_columns",
   "info": {
-    "displayName": "Columns",
+    "displayName": "Stĺpce",
     "description": ""
   },
   "options": {},
@@ -14,28 +14,28 @@
     },
     "columns": {
       "type": "component",
-      "repeatable": true,
       "component": "blocks.columns-item",
+      "repeatable": true,
       "required": true,
       "min": 1
     },
     "imageVariant": {
       "type": "enumeration",
+      "required": true,
+      "default": "columnsSection.imageVariant.withCircleBackground",
       "enum": [
         "columnsSection.imageVariant.withCircleBackground",
         "columnsSection.imageVariant.imageOriginalSize"
-      ],
-      "required": true,
-      "default": "columnsSection.imageVariant.withCircleBackground"
+      ]
     },
     "responsiveLayout": {
       "type": "enumeration",
+      "required": true,
+      "default": "columnsSection.responsiveLayout.slider",
       "enum": [
         "columnsSection.responsiveLayout.slider",
         "columnsSection.responsiveLayout.oneColumn"
-      ],
-      "required": true,
-      "default": "columnsSection.responsiveLayout.slider"
+      ]
     }
   }
 }

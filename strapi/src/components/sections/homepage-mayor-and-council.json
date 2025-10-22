@@ -1,7 +1,7 @@
 {
   "collectionName": "components_sections_homepage_mayor_and_councils",
   "info": {
-    "displayName": "homepage mayor and council"
+    "displayName": "Homepage - Primátor a zastupiteľstvo"
   },
   "options": {},
   "attributes": {
@@ -13,13 +13,13 @@
     },
     "mayorCard": {
       "type": "component",
-      "repeatable": false,
-      "component": "blocks.common-link"
+      "component": "blocks.common-link",
+      "repeatable": false
     },
     "councilCard": {
       "type": "component",
-      "repeatable": false,
-      "component": "blocks.common-link"
+      "component": "blocks.common-link",
+      "repeatable": false
     }
   }
 }
