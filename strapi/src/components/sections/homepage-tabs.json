@@ -1,7 +1,7 @@
 {
   "collectionName": "components_sections_homepage_tabs",
   "info": {
-    "displayName": "homepage tabs",
+    "displayName": "Homepage - Taby",
     "description": ""
   },
   "options": {},
@@ -18,18 +18,18 @@
     },
     "newsPageLink": {
       "type": "component",
-      "repeatable": false,
-      "component": "blocks.common-link"
+      "component": "blocks.common-link",
+      "repeatable": false
     },
     "officialBoardPageLink": {
       "type": "component",
-      "repeatable": false,
-      "component": "blocks.common-link"
+      "component": "blocks.common-link",
+      "repeatable": false
     },
     "roadClosuresPageLink": {
       "type": "component",
-      "repeatable": false,
-      "component": "blocks.common-link"
+      "component": "blocks.common-link",
+      "repeatable": false
     }
   }
 }

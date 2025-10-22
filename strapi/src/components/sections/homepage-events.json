@@ -1,7 +1,7 @@
 {
   "collectionName": "components_sections_homepage_events",
   "info": {
-    "displayName": "homepage events"
+    "displayName": "Homepage - Podujatia"
   },
   "options": {},
   "attributes": {
@@ -13,8 +13,8 @@
     },
     "eventsPageLink": {
       "type": "component",
-      "repeatable": false,
-      "component": "blocks.common-link"
+      "component": "blocks.common-link",
+      "repeatable": false
     }
   }
 }
