@@ -40,7 +40,7 @@ const ComparisonSection = ({ section }: ComparisonSectionProps) => {
 
             return (
               <ComparisonCard
-                // eslint-disable-next-line react/no-array-index-key
+                 
                 key={index}
                 icon={imgUrl ? <Image src={imgUrl} alt="" fill /> : <InfoIcon />}
                 color="white"

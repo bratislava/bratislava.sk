@@ -11,7 +11,7 @@ export function getRegulationMetadata(regulation: NonNullable<RegulationEntityFr
 
   const isCancelled = isCancelledDirectly || hasCancelledAmendees
 
-  // eslint-disable-next-line prefer-destructuring
+   
   const effectiveFrom = regulation.effectiveFrom
   const effectiveUntil = formatDate(
     regulation.cancellation?.effectiveFrom ?? cancelledAmendees[0]?.cancellation?.effectiveFrom,

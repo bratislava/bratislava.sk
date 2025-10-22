@@ -13,7 +13,7 @@ type HomePageSearchResultsProps = {
   isLoading: boolean
 }
 
-// eslint-disable-next-line sonarjs/cognitive-complexity
+ 
 const HomePageSearchResults = ({ searchValue, data, isLoading }: HomePageSearchResultsProps) => {
   const { t } = useTranslation()
   const inputRef = useRef<(HTMLAnchorElement | null)[]>([])
@@ -48,7 +48,7 @@ const HomePageSearchResults = ({ searchValue, data, isLoading }: HomePageSearchR
       {data.hits.map(({ title, link }, index) => (
         <Link
           href={link}
-          // eslint-disable-next-line react/no-array-index-key
+           
           key={index}
           passHref
           className="base-focus-ring px-4 py-2 ring-inset hover:bg-grey-100 focus:bg-grey-100"

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
+ 
 const historyStateKeyStateMap = new Map<string, any>()
 
 /**
@@ -13,7 +13,7 @@ const historyStateKeyStateMap = new Map<string, any>()
  */
 export const useRoutePreservedState = <T>(defaultValue: T) => {
   const historyStateKey =
-    // eslint-disable-next-line no-restricted-globals
+     
     typeof history === 'undefined' ? null : (history.state as { key: string }).key
 
   const getDefaultState = () => {
@@ -29,7 +29,7 @@ export const useRoutePreservedState = <T>(defaultValue: T) => {
   const [state] = useStateReturnValue
 
   useEffect(() => {
-    // eslint-disable-next-line no-restricted-globals
+     
     historyStateKeyStateMap.set((history.state as { key: string }).key, state)
   }, [state])
 

@@ -58,7 +58,7 @@ const MobileNavMenu = () => {
       >
         <NavigationMenu.List className="flex flex-col gap-2">
           {menus.map((menu, index) => (
-            // eslint-disable-next-line react/no-array-index-key
+             
             <MobileNavMenuItem key={index} menu={menu} />
           ))}
 
@@ -83,7 +83,7 @@ const MobileNavMenu = () => {
 
           {linksOnMobile?.map((link, linkIndex) => {
             return (
-              // eslint-disable-next-line react/no-array-index-key
+               
               <li key={linkIndex} className="relative flex items-center gap-2">
                 <div aria-hidden>
                   <Pictogram iconName={link.icon} />

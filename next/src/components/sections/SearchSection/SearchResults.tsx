@@ -32,7 +32,7 @@ const SearchResults = ({
   onShowMore,
   onPageChange,
   // TODO use onLoadingChange to signal loading state to parent component
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+   
   onLoadingChange,
 }: SearchResultsProps) => {
   const { t } = useTranslation()

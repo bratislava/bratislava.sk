@@ -49,7 +49,7 @@ const ColumnedText = ({ title, content }: ColumnedTextProps) => {
       >
         {columns.map((column, index) => (
           <Markdown
-            content={column} // eslint-disable-next-line react/no-array-index-key
+            content={column}  
             key={index}
           />
         ))}

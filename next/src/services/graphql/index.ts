@@ -2,12 +2,10 @@ import { GraphQLClient, RequestOptions } from 'graphql-request'
 import gql from 'graphql-tag'
 export type Maybe<T> = T | null
 export type InputMaybe<T> = Maybe<T>
-export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] }
+export type Exact<T extends Record<string, unknown>> = { [K in keyof T]: T[K] }
 export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> }
 export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> }
-export type MakeEmpty<T extends { [key: string]: unknown }, K extends keyof T> = {
-  [_ in K]?: never
-}
+export type MakeEmpty<T extends Record<string, unknown>, K extends keyof T> = Partial<Record<K, never>>
 export type Incremental<T> =
   | T
   | { [P in keyof T]?: P extends ' $fragmentName' | '__typename' ? T[P] : never }
@@ -9300,14 +9298,14 @@ export type InbaReleaseBySlugQuery = {
   } | null>
 }
 
-export type InbaReleasesStaticPathsQueryVariables = Exact<{ [key: string]: never }>
+export type InbaReleasesStaticPathsQueryVariables = Exact<Record<string, never>>
 
 export type InbaReleasesStaticPathsQuery = {
   __typename?: 'Query'
   inbaReleases: Array<{ __typename?: 'InbaRelease'; documentId: string; slug: string } | null>
 }
 
-export type InbaReleasesRssFeedQueryVariables = Exact<{ [key: string]: never }>
+export type InbaReleasesRssFeedQueryVariables = Exact<Record<string, never>>
 
 export type InbaReleasesRssFeedQuery = {
   __typename?: 'Query'
@@ -9331,7 +9329,7 @@ export type InbaReleasesRssFeedQuery = {
   } | null>
 }
 
-export type LatestInbaReleaseQueryVariables = Exact<{ [key: string]: never }>
+export type LatestInbaReleaseQueryVariables = Exact<Record<string, never>>
 
 export type LatestInbaReleaseQuery = {
   __typename?: 'Query'
@@ -10647,7 +10645,7 @@ export type PageEntityFragment = {
   } | null
 }
 
-export type PagesStaticPathsQueryVariables = Exact<{ [key: string]: never }>
+export type PagesStaticPathsQueryVariables = Exact<Record<string, never>>
 
 export type PagesStaticPathsQuery = {
   __typename?: 'Query'
@@ -13039,7 +13037,7 @@ export type UpdatePageMutation = {
   updatePage?: { __typename?: 'Page'; documentId: string } | null
 }
 
-export type AllRegulationsQueryVariables = Exact<{ [key: string]: never }>
+export type AllRegulationsQueryVariables = Exact<Record<string, never>>
 
 export type AllRegulationsQuery = {
   __typename?: 'Query'
@@ -13135,7 +13133,7 @@ export type AllRegulationsQuery = {
   } | null>
 }
 
-export type RegulationsStaticPathsQueryVariables = Exact<{ [key: string]: never }>
+export type RegulationsStaticPathsQueryVariables = Exact<Record<string, never>>
 
 export type RegulationsStaticPathsQuery = {
   __typename?: 'Query'

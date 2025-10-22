@@ -34,7 +34,7 @@ const NavMenu = () => {
       <div className="relative z-30 border-b">
         <NavigationMenu.List className="m-auto grid w-full max-w-(--breakpoint-xl) grid-flow-col grid-cols-6">
           {menus.map((menuItem, index) => (
-            // eslint-disable-next-line react/no-array-index-key
+             
             <NavMenuItem key={index} menu={menuItem} />
           ))}
         </NavigationMenu.List>

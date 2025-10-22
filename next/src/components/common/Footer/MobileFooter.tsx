@@ -39,7 +39,7 @@ const MobileFooter = () => {
         <div>
           <HorizontalDivider />
           {footer.columns?.filter(isDefined).map((column, index) => (
-            // eslint-disable-next-line react/no-array-index-key
+             
             <Fragment key={index}>
               <Accordion variant="footer" title={column.title}>
                 <div className="flex flex-col gap-3">

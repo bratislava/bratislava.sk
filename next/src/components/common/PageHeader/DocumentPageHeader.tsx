@@ -57,7 +57,7 @@ const DocumentPageHeader = ({ document }: Props) => {
                 <Typography variant="h1">{title}</Typography>
                 <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:gap-3">
                   {metadata.map((item, index) => (
-                    // eslint-disable-next-line react/no-array-index-key
+                     
                     <Fragment key={index}>
                       {index > 0 ? (
                         <div

@@ -16,7 +16,7 @@ const TabPanelDisclosure = () => {
           variant="underlined"
           className="font-semibold"
           href="https://zverejnovanie.bratislava.sk"
-          // eslint-disable-next-line i18next/no-literal-string
+           
         >
           zverejnovanie.bratislava.sk
         </MLink>

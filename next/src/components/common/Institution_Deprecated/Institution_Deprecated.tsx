@@ -26,7 +26,7 @@ const Institution = ({ title, subtitle, content, url, urlLabel }: InstitutionPro
         {content?.length && (
           <div className="mt-6 grid w-full grid-cols-1 gap-8 md:auto-cols-fr md:grid-flow-col">
             {content.map((contentCol, index) => (
-              // eslint-disable-next-line react/no-array-index-key
+               
               <Markdown key={index} content={contentCol} />
             ))}
           </div>

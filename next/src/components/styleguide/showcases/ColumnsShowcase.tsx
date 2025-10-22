@@ -1,4 +1,4 @@
-/* eslint-disable no-console */
+ 
 
 import ColumnsSection from '@/src/components/sections/ColumnsSection'
 import {
@@ -76,7 +76,7 @@ const MarkdownShowcase = () => {
   return (
     <Wrapper direction="column" title="Columns">
       {sections.map((section, index) => (
-        // eslint-disable-next-line react/no-array-index-key
+         
         <Stack direction="column" className="items-stretch" key={index}>
           <ColumnsSection section={section} />
         </Stack>

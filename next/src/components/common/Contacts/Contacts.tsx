@@ -53,14 +53,14 @@ const Contacts = ({ section }: ContactsProps) => {
       <div className="flex flex-col gap-6 lg:gap-8">
         {contacts.map((contact, index) => (
           <ContactCtaCard
-            // eslint-disable-next-line react/no-array-index-key
+             
             key={index}
             contact={contact}
           />
         ))}
         {personContacts?.filter(isDefined).map((person, index) => (
           <ContactCtaCard
-            // eslint-disable-next-line react/no-array-index-key
+             
             key={index}
             contact={{
               type: 'Person',

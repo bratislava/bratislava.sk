@@ -1,4 +1,4 @@
-/* eslint-disable i18next/no-literal-string */
+ 
 import { Typography } from '@bratislava/component-library'
 import React, { Fragment } from 'react'
 

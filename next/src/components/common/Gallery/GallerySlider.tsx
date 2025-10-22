@@ -20,7 +20,7 @@ type SliderProps = {
   description?: string
 }
 
-const variants: { [name: string]: Variant } = {
+const variants: Record<string, Variant> = {
   enter: (direction: number) => {
     return {
       x: direction > 0 ? 1000 : -1000,
@@ -58,7 +58,7 @@ const GallerySlider = forwardRef<HTMLDivElement, SliderProps>(
       description,
     },
     forwardedRef,
-    // eslint-disable-next-line sonarjs/cognitive-complexity
+     
   ) => {
     const { t } = useTranslation()
     const [isFocused, setFocused] = useState(false)

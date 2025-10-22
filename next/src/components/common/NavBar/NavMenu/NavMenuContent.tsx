@@ -50,7 +50,7 @@ const NavMenuContent = ({ colCount, sections, colorStyle }: NavMenuContentProps)
       style={colorStyle}
     >
       <div className="relative z-29 bg-category-200">
-        {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions,jsx-a11y/no-noninteractive-element-interactions */}
+        {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-noninteractive-element-interactions */}
         <ul
           className={cn('mx-auto grid w-full max-w-(--breakpoint-xl) gap-x-8 gap-y-6 px-4 py-8', {
             // Keeping for consistency with mestskakniznica.sk
@@ -60,7 +60,7 @@ const NavMenuContent = ({ colCount, sections, colorStyle }: NavMenuContentProps)
           // Together with onCLick in Viewport, it closes the menu on click outside of container area
           onClick={(event) => event.stopPropagation()}
         >
-          {/* eslint-disable react/no-array-index-key */}
+          { }
           {menuCells.map((cell, index) => {
             // Keeping for consistency with mestskakniznica.sk
             if (Array.isArray(cell)) {
@@ -84,7 +84,7 @@ const NavMenuContent = ({ colCount, sections, colorStyle }: NavMenuContentProps)
               </NavMenuContentCell>
             )
           })}
-          {/* eslint-enable react/no-array-index-key */}
+          { }
         </ul>
       </div>
       <Waves

@@ -44,7 +44,7 @@ const NavBarHeader = ({ className }: NavBarProps) => {
             .map((link, linkIndex) => {
               return (
                 <MLink
-                  // eslint-disable-next-line react/no-array-index-key
+                   
                   key={linkIndex}
                   variant="underlined-medium"
                   {...getLinkProps(link)}

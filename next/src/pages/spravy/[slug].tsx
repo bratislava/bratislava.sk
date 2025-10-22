@@ -28,10 +28,10 @@ export const getStaticPaths: GetStaticPaths<StaticParams> = async () => {
     .filter((article) => article?.slug && article?.locale)
     .map((article) => ({
       params: {
-        // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion,@typescript-eslint/no-non-null-assertion
+        // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
         slug: article!.slug!,
       },
-      // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion,@typescript-eslint/no-non-null-assertion
+       
       locale: article!.locale!,
     }))
 

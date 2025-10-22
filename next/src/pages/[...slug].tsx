@@ -38,7 +38,7 @@ export const getStaticPaths: GetStaticPaths<StaticParams> = async () => {
     .filter((page) => page?.slug)
     .map((page) => ({
       params: {
-        // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion,@typescript-eslint/no-non-null-assertion
+         
         slug: page!.slug!.split('/'),
       },
     }))

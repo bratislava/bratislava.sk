@@ -29,7 +29,7 @@ const NavMenuSection = ({ section, classNames }: NavigationSectionProps) => {
 
         <ul className="mt-1.5 flex flex-col">
           {section.items?.map((menuLink, index) => {
-            // eslint-disable-next-line react/no-array-index-key
+             
             return <NavMenuLink key={index} {...menuLink} />
           })}
           {section.showMoreLink ? (

@@ -1,4 +1,4 @@
-/* eslint-disable no-console,@typescript-eslint/no-unused-vars */
+/* eslint-disable no-console */
 
 import { SectionsFragment } from '@/src/services/graphql'
 import { client } from '@/src/services/graphql/gql'
@@ -104,7 +104,7 @@ export async function listPages() {
   )
 }
 
-// eslint-disable-next-line sonarjs/cognitive-complexity
+ 
 export async function logAllSectionsByType({
   entityType,
   sectionName,

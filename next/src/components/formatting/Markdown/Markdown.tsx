@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unused-vars,jsx-a11y/heading-has-content */
+ 
 import { Typography } from '@bratislava/component-library'
 import slugify from '@sindresorhus/slugify'
 import Image from 'next/image'

@@ -25,7 +25,7 @@ const SubpageList = ({ subpageList, className }: SubpageListProps) => {
     >
       {filteredSubpageList.map((subpage, index) => (
         <div
-          // eslint-disable-next-line react/no-array-index-key
+           
           key={index}
           className="group relative flex items-center gap-x-8 gap-y-5 sm:flex-col sm:items-start"
         >

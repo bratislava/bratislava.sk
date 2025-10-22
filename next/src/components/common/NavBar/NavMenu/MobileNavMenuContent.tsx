@@ -28,7 +28,7 @@ const MobileNavMenuContent = ({ menuItem, colorStyle }: NavMenuContentProps) => 
       className="bg-category-200"
       style={colorStyle}
     >
-      {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */}
+      { }
       <ul className="flex w-full flex-col gap-2 px-4 py-8">
         <li className="w-full">
           {/* Our Button (implemented by react-aria-components) is not compatible with radix and causes press events problem on mobile */}
@@ -45,13 +45,13 @@ const MobileNavMenuContent = ({ menuItem, colorStyle }: NavMenuContentProps) => 
 
         <NavBarHorizontalDivider categoryColor />
 
-        {/* eslint-disable react/no-array-index-key */}
+        { }
         {sections.map((section, index) => {
           return (
             <NavMenuSection key={index} section={section} classNames={index === 0 ? '' : 'pt-8'} />
           )
         })}
-        {/* eslint-enable react/no-array-index-key */}
+        { }
       </ul>
     </NavigationMenu.Content>
   )

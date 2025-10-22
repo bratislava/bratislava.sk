@@ -54,7 +54,7 @@ const DocumentRowCard = ({
             {metadata?.length ? (
               <div className="flex flex-wrap items-center gap-x-3">
                 {metadata.map((item, index) => (
-                  // eslint-disable-next-line react/no-array-index-key
+                   
                   <Fragment key={index}>
                     {index > 0 ? (
                       <div
@@ -75,9 +75,9 @@ const DocumentRowCard = ({
           href={linkHref}
           stretched
           hasLinkIcon={false}
-          // eslint-disable-next-line sonarjs/no-duplicate-string
+           
           startIcon={variant === 'single-file' ? <DownloadIcon /> : undefined}
-          // eslint-disable-next-line sonarjs/no-duplicate-string
+           
           aria-label={ariaLabel ?? `${t('common.showMore')}: ${title}`}
           endIcon={variant === 'multiple-files' ? <ArrowRightIcon /> : undefined}
           className="whitespace-nowrap max-lg:hidden"

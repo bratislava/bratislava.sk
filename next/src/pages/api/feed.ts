@@ -45,7 +45,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       feed.item({
         title: article.title,
         description: article.perex ?? '',
-        // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
+         
         url: article.slug ? `${urlPrefix[language]}/${article.slug}` : '',
         date: article.addedAt,
         categories: [article.tag?.title].filter(isDefined),

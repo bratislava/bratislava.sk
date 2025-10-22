@@ -67,7 +67,7 @@ const PageHeaderFacility = ({ title, breadcrumbs, headerLinks, header }: Props) 
             <div className="flex flex-wrap gap-3">
               {headerLinks.map((headerLink, index) => (
                 <Button
-                  // eslint-disable-next-line react/no-array-index-key
+                   
                   key={index}
                   variant={index === 0 ? 'solid' : 'outline'}
                   fullWidthMobile

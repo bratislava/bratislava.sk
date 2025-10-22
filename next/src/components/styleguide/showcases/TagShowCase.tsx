@@ -7,7 +7,7 @@ import Wrapper from '../Wrapper'
 const TagShowCase = () => {
   return (
     <Wrapper direction="column" title="Tag">
-      {/* eslint-disable-next-line i18next/no-literal-string */}
+      { }
       <div>
         WARNING: branded colors are automatically set from primary and secondary colors from
         tailwind config as its set brand{' '}

@@ -39,7 +39,7 @@ export const FooterSocialLinks = ({
 
           return (
             <Button
-              // eslint-disable-next-line react/no-array-index-key
+               
               key={index}
               href={url}
               icon={icon}
@@ -86,7 +86,7 @@ export const FooterColumnLinks = ({ links }: FooterColumnBlockFragment) => {
   return (
     <>
       {links?.filter(isDefined)?.map((link, index) => (
-        // eslint-disable-next-line react/no-array-index-key
+         
         <MLink variant="underlined" {...getLinkProps(link)} key={index} />
       ))}
     </>

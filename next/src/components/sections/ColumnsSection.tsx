@@ -32,7 +32,7 @@ const ColumnsSection = ({ section }: Props) => {
           {filteredColumns.map((item, index) => {
             return (
               <li
-                // eslint-disable-next-line react/no-array-index-key
+                 
                 key={index}
                 className={cn('w-[33%] max-w-[50%]', {
                   // Control number of items per row based on their count so it looks good
@@ -67,7 +67,7 @@ const ColumnsSection = ({ section }: Props) => {
             items={filteredColumns.map((item, index) => {
               return (
                 <ColumnsSectionItem
-                  // eslint-disable-next-line react/no-array-index-key
+                   
                   key={index}
                   {...item}
                   imageVariant={imageVariant}
@@ -82,7 +82,7 @@ const ColumnsSection = ({ section }: Props) => {
           <ul className="flex flex-col gap-8 lg:hidden">
             {filteredColumns.map((item, index) => {
               return (
-                // eslint-disable-next-line react/no-array-index-key
+                 
                 <li key={index}>
                   <ColumnsSectionItem
                     {...item}

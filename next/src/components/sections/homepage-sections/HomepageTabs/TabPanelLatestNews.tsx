@@ -50,7 +50,7 @@ const TabPanelLatestNews = () => {
 
               return (
                 <div
-                  // eslint-disable-next-line react/no-array-index-key
+                   
                   key={index}
                   // margin and padding serve to display focus ring better
                   className="wrapper-focus-ring relative -m-1 rounded-sm p-1"

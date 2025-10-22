@@ -29,9 +29,9 @@ const SocialMediaButton = ({
     const w = 600
     const h = 400
 
-    // eslint-disable-next-line no-restricted-globals
+     
     const l = screen.width / 2 - w / 2
-    // eslint-disable-next-line no-restricted-globals
+     
     const t = screen.height / 2 - h / 2
 
     window.open(

@@ -95,7 +95,7 @@ const Slider = ({ items, autoRotateInterval, className, ...rest }: SliderProps) 
           >
             {items.map((_, index) => (
               <li
-                // eslint-disable-next-line react/no-array-index-key
+                 
                 key={index}
                 role="tab"
               >

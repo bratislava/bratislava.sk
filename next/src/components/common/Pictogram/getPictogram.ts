@@ -122,8 +122,8 @@ export type MenuIcon = string
 type IconComponent = typeof Accommodation48pxIcon
 
 type IconUrlMap = {
-  size_48: { [key: MenuIcon]: IconComponent }
-  size_64: { [key: MenuIcon]: IconComponent }
+  size_48: Record<MenuIcon, IconComponent>
+  size_64: Record<MenuIcon, IconComponent>
 }
 
 type IconCollection = {
