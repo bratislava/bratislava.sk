@@ -176,7 +176,8 @@
         "id",
         "title",
         "slug",
-        "createdBy"
+        "articles",
+        "pageCategory"
       ]
     }
   },
