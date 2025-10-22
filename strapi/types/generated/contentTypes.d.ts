@@ -522,6 +522,7 @@ export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
         }
       }>
     tag: Schema.Attribute.Relation<'manyToOne', 'api::tag.tag'>
+    tags: Schema.Attribute.Relation<'oneToMany', 'api::tag.tag'>
     title: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{
