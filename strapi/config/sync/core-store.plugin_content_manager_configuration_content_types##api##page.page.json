@@ -6,7 +6,7 @@
       "bulkable": true,
       "filterable": true,
       "searchable": true,
-      "pageSize": 100,
+      "pageSize": 10,
       "mainField": "slug",
       "defaultSortBy": "updatedAt",
       "defaultSortOrder": "DESC"
@@ -460,12 +460,6 @@
       }
     },
     "layouts": {
-      "list": [
-        "slug",
-        "title",
-        "updatedAt",
-        "parentPage"
-      ],
       "edit": [
         [
           {
@@ -613,6 +607,15 @@
             "size": 6
           }
         ]
+      ],
+      "list": [
+        "slug",
+        "title",
+        "parentPage",
+        "updatedAt",
+        "updatedBy",
+        "adminGroups",
+        "subtext"
       ]
     }
   },
