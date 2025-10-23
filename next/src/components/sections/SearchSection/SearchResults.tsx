@@ -32,7 +32,7 @@ const SearchResults = ({
   onShowMore,
   onPageChange,
   // TODO use onLoadingChange to signal loading state to parent component
-   
+
   onLoadingChange,
 }: SearchResultsProps) => {
   const { t } = useTranslation()
@@ -76,6 +76,7 @@ const SearchResults = ({
         {searchResultsData?.length ? (
           <ul className="flex flex-col rounded-lg border py-2" data-cy="search-results">
             {searchResultsData
+              // eslint-disable-next-line sonarjs/argument-type
               .slice(0, variant === 'allResults' ? GENERAL_RESULTS_COUNT : undefined)
               .map((searchResultsItem, index) => {
                 return (

@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/inline-script-id */
 import '@/src/styles/globals.css'
 
 import { GoogleTagManager } from '@next/third-parties/google'

@@ -143,7 +143,7 @@ const NewsletterSection = ({ section }: Props) => {
               onChange={(event) => setEmail(event.target.value)}
               onKeyDown={(event) => {
                 if (event.key === 'Enter') {
-                  handleSubmit(email)
+                  void handleSubmit(email)
                 }
               }}
               errorMessage={errorMessage}
@@ -159,7 +159,7 @@ const NewsletterSection = ({ section }: Props) => {
               </Typography>
             ) : null}
           </div>
-          <Button variant="solid" onPress={() => handleSubmit(email)}>
+          <Button variant="solid" onPress={() => void handleSubmit(email)}>
             {t('NewsletterSection.subscribeButton')}
           </Button>
         </div>

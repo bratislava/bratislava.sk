@@ -45,7 +45,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       feed.item({
         title: article.title,
         description: article.perex ?? '',
-         
+
         url: article.slug ? `${urlPrefix[language]}/${article.slug}` : '',
         date: article.addedAt,
         categories: [article.tag?.title].filter(isDefined),
@@ -62,7 +62,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     res.setHeader('Content-Type', 'text/xml')
     res.write(feed.xml())
     res.end()
-  } catch (error) {
+  } catch {
     res.status(500).json({ message: 'Error generating RSS feed' })
   }
 }

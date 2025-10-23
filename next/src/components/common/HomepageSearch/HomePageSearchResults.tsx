@@ -21,7 +21,6 @@ const HomePageSearchResults = ({ searchValue, data, isLoading }: HomePageSearchR
     if (e.key !== 'ArrowDown' && e.key !== 'ArrowUp') {
       return
     }
-    // eslint-disable-next-line xss/no-mixed-html
     const index = inputRef.current.indexOf(e.target as HTMLAnchorElement)
     if (index === -1) {
       return

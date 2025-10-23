@@ -205,6 +205,10 @@ export default [
       'const-case/uppercase': 'off',
       'sonarjs/no-redundant-optional': 'off',
       '@typescript-eslint/no-unused-vars': 'off',
+
+      // Custom rule configurations
+      '@typescript-eslint/no-empty-function': 'off',
+      'sonarjs/fixme-tag': 'warn',
     },
     settings: {
       react: {

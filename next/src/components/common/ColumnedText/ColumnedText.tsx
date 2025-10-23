@@ -14,14 +14,12 @@ export type ColumnedTextProps = {
  */
 
 // Temporarily support more columns on these specific pages, until it's not relevant and we can remove the legacy support globally
-// eslint-disable-next-line unicorn/prefer-set-has
 const SUPPORT_LEGACY_LAYOUT_PAGES_LIST = [
   '/doprava-a-mapy/doprava/dopravne-projekty/dunajska',
   '/vzdelavanie-a-volny-cas/sport/podujatia/turnaj-4-miest-2025/delegacie-miest',
 ]
 
 const ColumnedText = ({ title, content }: ColumnedTextProps) => {
-  // eslint-disable-next-line xss/no-mixed-html
   const breakWord = '<break>'
   const columns = content.split(breakWord)
 
@@ -48,10 +46,7 @@ const ColumnedText = ({ title, content }: ColumnedTextProps) => {
         })}
       >
         {columns.map((column, index) => (
-          <Markdown
-            content={column}  
-            key={index}
-          />
+          <Markdown content={column} key={index} />
         ))}
       </div>
     </div>

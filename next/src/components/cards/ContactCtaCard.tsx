@@ -94,7 +94,7 @@ const ContactCtaCard = ({ className, contact }: ContactCtaCardProps) => {
           displayValue = contact.value.replace(/^(http|https):\/\//, '').replace(/\/$/, '')
         }
         // eslint-disable-next-line no-empty
-      } catch (error) {}
+      } catch {}
 
       return { icon: WebIcon, displayValue, link: contact.value }
     }

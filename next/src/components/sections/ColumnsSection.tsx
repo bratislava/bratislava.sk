@@ -20,7 +20,6 @@ type Props = {
 const ColumnsSection = ({ section }: Props) => {
   const { title, text, columns, imageVariant, responsiveLayout } = section
 
-  // eslint-disable-next-line unicorn/no-array-callback-reference
   const filteredColumns = columns?.filter(isDefined) ?? []
 
   return (

@@ -26,7 +26,6 @@ const DocumentPageHeader = ({ document }: Props) => {
 
   const { title, files, updatedAt } = document
 
-  // eslint-disable-next-line unicorn/no-array-callback-reference
   const filteredFiles = files.filter(isDefined) ?? []
 
   const formattedUpdatedAt = formatDate(updatedAt)

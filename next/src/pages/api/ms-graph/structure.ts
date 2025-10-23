@@ -16,8 +16,7 @@ const handler = async (
 
     return res.status(200).json(orgStructure)
   } catch (error) {
-    // TODO type
-    // @ts-ignore
+    // @ts-expect-error - TODO type
     return res.status(500).json({ error: error.message })
   }
 }

@@ -59,7 +59,6 @@ const InbaReleasePageContent = ({ inbaRelease }: Props) => {
 
   const [filters, setFilters] = useRoutePreservedState({
     ...inbaArticlesDefaultFilters,
-    // eslint-disable-next-line unicorn/consistent-destructuring
     releaseDocumentIds: [inbaRelease.documentId],
   })
   const [input, setInput] = useState('')
