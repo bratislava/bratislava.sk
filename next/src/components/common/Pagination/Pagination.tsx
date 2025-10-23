@@ -86,7 +86,6 @@ const Pagination = ({ currentPage, totalCount, onPageChange = () => {} }: Pagina
 
             return (
               <li
-                 
                 key={index}
                 className={cn({
                   'flex w-10 items-center justify-center text-size-p-small font-semibold lg:w-12':

@@ -13,7 +13,6 @@ type HomePageSearchResultsProps = {
   isLoading: boolean
 }
 
- 
 const HomePageSearchResults = ({ searchValue, data, isLoading }: HomePageSearchResultsProps) => {
   const { t } = useTranslation()
   const inputRef = useRef<(HTMLAnchorElement | null)[]>([])
@@ -48,7 +47,6 @@ const HomePageSearchResults = ({ searchValue, data, isLoading }: HomePageSearchR
       {data.hits.map(({ title, link }, index) => (
         <Link
           href={link}
-           
           key={index}
           passHref
           className="base-focus-ring px-4 py-2 ring-inset hover:bg-grey-100 focus:bg-grey-100"
