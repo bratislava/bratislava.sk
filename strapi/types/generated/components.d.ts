@@ -415,7 +415,7 @@ export interface GeneralHeaderLink extends Struct.ComponentSchema {
 export interface HeaderSectionsEvent extends Struct.ComponentSchema {
   collectionName: 'components_header_sections_events'
   info: {
-    displayName: 'Event'
+    displayName: 'Podujatie'
   }
   attributes: {
     address: Schema.Attribute.Text
@@ -426,7 +426,7 @@ export interface HeaderSectionsEvent extends Struct.ComponentSchema {
 export interface HeaderSectionsFacility extends Struct.ComponentSchema {
   collectionName: 'components_header_sections_facilities'
   info: {
-    displayName: 'Facility'
+    displayName: 'Prev\u00E1dzka'
   }
   attributes: {
     address: Schema.Attribute.Text
