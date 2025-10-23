@@ -90,6 +90,7 @@ export default [
       '@typescript-eslint/promise-function-async': 'error',
       '@typescript-eslint/require-array-sort-compare': 'error',
       '@typescript-eslint/switch-exhaustiveness-check': 'error',
+      '@typescript-eslint/no-empty-function': 'off',
 
       // Additional ESLint rules from common config
       'no-console': 'warn',
@@ -126,6 +127,19 @@ export default [
       'require-await': 'warn',
       yoda: 'error',
 
+      // common SonarJS configuration extension
+      'sonarjs/fixme-tag': 'warn',
+      'sonarjs/deprecation': 'warn',
+      'sonarjs/no-duplicate-string': 'off',
+      'sonarjs/prefer-immediate-return': 'off',
+      'sonarjs/no-useless-catch': 'off',
+      'sonarjs/no-commented-code': 'off',
+      'sonarjs/todo-tag': 'off',
+      'sonarjs/no-nested-conditional': 'off',
+      // Disable sonarjs/different-types-comparison until JS-619 is resolved
+      // https://sonarsource.atlassian.net/browse/JS-619
+      'sonarjs/different-types-comparison': 'off',
+
       // FE/project specifuc config
 
       // React specific rules
@@ -148,10 +162,7 @@ export default [
 
       // Disabled rules from previous config
       'max-classes-per-file': 'off',
-      'sonarjs/no-duplicate-string': 'off',
       'class-methods-use-this': 'off',
-      'sonarjs/prefer-immediate-return': 'off',
-      'sonarjs/no-useless-catch': 'off',
       'no-useless-catch': 'off',
       'no-await-in-loop': 'off',
       '@typescript-eslint/return-await': 'off',
@@ -169,9 +180,6 @@ export default [
 
       // TODO good rules, require work to fix and were skipped over in eslint v9 upgrade
       '@typescript-eslint/no-explicit-any': 'off',
-      'sonarjs/no-commented-code': 'off',
-      'sonarjs/todo-tag': 'off',
-      'sonarjs/no-nested-conditional': 'off',
       '@typescript-eslint/no-empty-object-type': 'warn',
       '@typescript-eslint/switch-exhaustiveness-check': 'warn',
       'sonarjs/function-return-type': 'warn',
@@ -179,7 +187,7 @@ export default [
       '@typescript-eslint/require-await': 'warn',
       '@typescript-eslint/no-unsafe-call': 'warn',
       'sonarjs/no-unsafe-unzip': 'warn',
-      '@typescript-eslint/no-unsafe-enum-comparison': 'warn',
+      '@typescript-eslint/no-unsafe-enum-comparison': 'off',
       '@typescript-eslint/no-unsafe-member-access': 'warn',
       '@typescript-eslint/no-unsafe-assignment': 'off',
       '@typescript-eslint/no-unsafe-argument': 'off',
@@ -205,10 +213,6 @@ export default [
       'const-case/uppercase': 'off',
       'sonarjs/no-redundant-optional': 'off',
       '@typescript-eslint/no-unused-vars': 'off',
-
-      // Custom rule configurations
-      '@typescript-eslint/no-empty-function': 'off',
-      'sonarjs/fixme-tag': 'warn',
     },
     settings: {
       react: {
