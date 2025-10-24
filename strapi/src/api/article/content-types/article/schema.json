@@ -72,9 +72,8 @@
     },
     "tag": {
       "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::tag.tag",
-      "inversedBy": "articles"
+      "relation": "oneToOne",
+      "target": "api::tag.tag"
     },
     "addedAt": {
       "type": "datetime",
@@ -124,8 +123,9 @@
     },
     "tags": {
       "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::tag.tag"
+      "relation": "manyToMany",
+      "target": "api::tag.tag",
+      "inversedBy": "articles"
     }
   }
 }
