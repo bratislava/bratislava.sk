@@ -60,15 +60,18 @@
       },
       "multiple": false,
       "required": false,
-      "allowedTypes": [
-        "images"
-      ]
+      "allowedTypes": ["images"]
+    },
+    "articleCategory": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::article-category.article-category",
+      "inversedBy": "articles"
     },
     "tag": {
       "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::tag.tag",
-      "inversedBy": "articles"
+      "relation": "oneToOne",
+      "target": "api::tag.tag"
     },
     "addedAt": {
       "type": "datetime",
@@ -106,9 +109,7 @@
       },
       "multiple": true,
       "required": false,
-      "allowedTypes": [
-        "images"
-      ]
+      "allowedTypes": ["images"]
     },
     "adminGroups": {
       "type": "relation",
@@ -116,10 +117,10 @@
       "target": "api::admin-group.admin-group",
       "inversedBy": "articles"
     },
-    "articleCategory": {
+    "tags": {
       "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::article-category.article-category",
+      "relation": "manyToMany",
+      "target": "api::tag.tag",
       "inversedBy": "articles"
     }
   }

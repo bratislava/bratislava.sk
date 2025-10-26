@@ -154,8 +154,7 @@
         "id",
         "title",
         "slug",
-        "createdAt",
-        "updatedAt"
+        "documents"
       ]
     },
     "uid": "api::document-category.document-category"

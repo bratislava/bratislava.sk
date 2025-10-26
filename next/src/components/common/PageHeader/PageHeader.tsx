@@ -37,7 +37,7 @@ const PageHeader = ({
   return (
     <div className={cn('relative overflow-x-clip bg-category-200', className)}>
       {imageSrc && (
-        <div className="absolute top-0 right-0 hidden h-full w-[350px] md:block lg:w-[750px]">
+        <div className="absolute top-0 right-0 hidden h-full w-[350px] md:block lg:w-[500px] xl:w-[750px]">
           <Image
             src={imageSrc}
             alt=""
@@ -47,7 +47,7 @@ const PageHeader = ({
               maskImage:
                 'linear-gradient(to right, rgba(0,0,0,0), rgba(0,0,0,1) 50%, rgba(0,0,0,1))',
             }}
-            sizes={generateImageSizes({ default: '350px', lg: '750px' })}
+            sizes={generateImageSizes({ default: '350px', lg: '500px', xl: '750px' })}
             fill
             className="pointer-events-none size-full object-cover"
           />
@@ -67,7 +67,7 @@ const PageHeader = ({
             )}
 
             {(title || subtext) && (
-              <div className="flex max-w-[800px] flex-col gap-y-1 lg:gap-y-4">
+              <div className="flex max-w-[640px] flex-col gap-y-1 lg:gap-y-4">
                 {title && (
                   <Typography variant="h1" data-cy="page-heading">
                     {title}
@@ -79,7 +79,7 @@ const PageHeader = ({
 
             {headerLinks?.length ? (
               // wrapping to flex-row earlier (md) to prevent too wide buttons on tablet
-              <div className="flex max-w-[800px] flex-col gap-2 md:flex-row lg:gap-3">
+              <div className="flex max-w-[640px] flex-col gap-2 md:flex-row lg:gap-3">
                 {headerLinks.map((button, index) => (
                   <Button
                     // eslint-disable-next-line react/no-array-index-key

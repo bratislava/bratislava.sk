@@ -415,7 +415,7 @@ export interface GeneralHeaderLink extends Struct.ComponentSchema {
 export interface HeaderSectionsEvent extends Struct.ComponentSchema {
   collectionName: 'components_header_sections_events'
   info: {
-    displayName: 'Event'
+    displayName: 'Podujatie'
   }
   attributes: {
     address: Schema.Attribute.Text
@@ -426,7 +426,7 @@ export interface HeaderSectionsEvent extends Struct.ComponentSchema {
 export interface HeaderSectionsFacility extends Struct.ComponentSchema {
   collectionName: 'components_header_sections_facilities'
   info: {
-    displayName: 'Facility'
+    displayName: 'Prev\u00E1dzka'
   }
   attributes: {
     address: Schema.Attribute.Text
@@ -534,7 +534,7 @@ export interface SectionsAccordion extends Struct.ComponentSchema {
   collectionName: 'components_sections_accordions'
   info: {
     description: ''
-    displayName: 'Accordion'
+    displayName: 'Akorde\u00F3n'
   }
   attributes: {
     flatText: Schema.Attribute.Component<'accordion-items.flat-text', true>
@@ -549,7 +549,7 @@ export interface SectionsArticles extends Struct.ComponentSchema {
   collectionName: 'components_sections_articles'
   info: {
     description: ''
-    displayName: 'Articles'
+    displayName: '\u010Cl\u00E1nky'
   }
   attributes: {
     adminGroups: Schema.Attribute.Relation<'oneToMany', 'api::admin-group.admin-group'>
@@ -589,7 +589,7 @@ export interface SectionsCalculator extends Struct.ComponentSchema {
   collectionName: 'components_sections_calculators'
   info: {
     description: ''
-    displayName: 'Calculator'
+    displayName: 'Kalkula\u010Dka \u017Eivotn\u00E9ho minima'
   }
   attributes: {
     another_adult_value: Schema.Attribute.Decimal
@@ -602,7 +602,7 @@ export interface SectionsColumnedText extends Struct.ComponentSchema {
   collectionName: 'components_sections_columned_texts'
   info: {
     description: ''
-    displayName: 'Columned Text'
+    displayName: 'Richtext (st\u013Apce)'
   }
   attributes: {
     content: Schema.Attribute.RichText
@@ -614,7 +614,7 @@ export interface SectionsColumns extends Struct.ComponentSchema {
   collectionName: 'components_sections_columns'
   info: {
     description: ''
-    displayName: 'Columns'
+    displayName: 'St\u013Apce'
   }
   attributes: {
     columns: Schema.Attribute.Component<'blocks.columns-item', true> &
@@ -647,7 +647,7 @@ export interface SectionsComparisonSection extends Struct.ComponentSchema {
   collectionName: 'components_sections_comparison_sections'
   info: {
     description: ''
-    displayName: 'Comparison Section'
+    displayName: 'Porovnanie'
   }
   attributes: {
     cards: Schema.Attribute.Component<'blocks.comparison-card', true> &
@@ -670,7 +670,7 @@ export interface SectionsContactsSection extends Struct.ComponentSchema {
   collectionName: 'components_sections_contacts_sections'
   info: {
     description: ''
-    displayName: 'Contacts'
+    displayName: 'Kontakty'
   }
   attributes: {
     addressContacts: Schema.Attribute.Component<'blocks.contact-card', true>
@@ -721,7 +721,7 @@ export interface SectionsDocuments extends Struct.ComponentSchema {
   collectionName: 'components_sections_documents'
   info: {
     description: ''
-    displayName: 'Documents'
+    displayName: 'Dokumenty'
   }
   attributes: {
     documents: Schema.Attribute.Relation<'oneToMany', 'api::document.document'>
@@ -735,7 +735,7 @@ export interface SectionsDocuments extends Struct.ComponentSchema {
 export interface SectionsEvents extends Struct.ComponentSchema {
   collectionName: 'components_sections_events'
   info: {
-    displayName: 'Events'
+    displayName: 'Podujatia'
   }
   attributes: {
     eventPages: Schema.Attribute.Relation<'oneToMany', 'api::page.page'>
@@ -748,7 +748,7 @@ export interface SectionsEvents extends Struct.ComponentSchema {
 export interface SectionsFacilities extends Struct.ComponentSchema {
   collectionName: 'components_sections_facilities'
   info: {
-    displayName: 'Facilities'
+    displayName: 'Prev\u00E1dzky'
   }
   attributes: {
     facilityPages: Schema.Attribute.Relation<'oneToMany', 'api::page.page'>
@@ -761,7 +761,7 @@ export interface SectionsFacilities extends Struct.ComponentSchema {
 export interface SectionsFaqCategories extends Struct.ComponentSchema {
   collectionName: 'components_sections_faq_categories'
   info: {
-    displayName: 'FAQ categories'
+    displayName: 'FAQ kateg\u00F3rie'
   }
   attributes: {
     faqCategories: Schema.Attribute.Relation<'oneToMany', 'api::faq-category.faq-category'>
@@ -774,7 +774,7 @@ export interface SectionsFaqs extends Struct.ComponentSchema {
   collectionName: 'components_sections_faqs'
   info: {
     description: ''
-    displayName: 'FAQs'
+    displayName: 'FAQ'
   }
   attributes: {
     faqs: Schema.Attribute.Relation<'oneToMany', 'api::faq.faq'>
@@ -788,7 +788,7 @@ export interface SectionsFileList extends Struct.ComponentSchema {
   collectionName: 'components_sections_file_lists'
   info: {
     description: ''
-    displayName: 'File List'
+    displayName: 'S\u00FAbory (nepou\u017E\u00EDva\u0165)'
   }
   attributes: {
     fileList: Schema.Attribute.Component<'blocks.file', true>
@@ -802,7 +802,7 @@ export interface SectionsGallery extends Struct.ComponentSchema {
   collectionName: 'components_sections_galleries'
   info: {
     description: ''
-    displayName: 'Gallery'
+    displayName: 'Gal\u00E9ria'
     icon: 'camera'
   }
   attributes: {
@@ -816,7 +816,7 @@ export interface SectionsGallery extends Struct.ComponentSchema {
 export interface SectionsHomepageEvents extends Struct.ComponentSchema {
   collectionName: 'components_sections_homepage_events'
   info: {
-    displayName: 'homepage events'
+    displayName: 'Homepage - Podujatia'
   }
   attributes: {
     eventsPageLink: Schema.Attribute.Component<'blocks.common-link', false>
@@ -829,7 +829,7 @@ export interface SectionsHomepageHighlights extends Struct.ComponentSchema {
   collectionName: 'components_sections_homepage_highlights'
   info: {
     description: ''
-    displayName: 'homepage highlights'
+    displayName: 'Homepage - Highlighty'
   }
   attributes: {
     cards: Schema.Attribute.Component<'blocks.homepage-highlights-item', true>
@@ -841,7 +841,7 @@ export interface SectionsHomepageHighlights extends Struct.ComponentSchema {
 export interface SectionsHomepageMayorAndCouncil extends Struct.ComponentSchema {
   collectionName: 'components_sections_homepage_mayor_and_councils'
   info: {
-    displayName: 'homepage mayor and council'
+    displayName: 'Homepage - Prim\u00E1tor a zastupite\u013Estvo'
   }
   attributes: {
     councilCard: Schema.Attribute.Component<'blocks.common-link', false>
@@ -855,7 +855,7 @@ export interface SectionsHomepageTabs extends Struct.ComponentSchema {
   collectionName: 'components_sections_homepage_tabs'
   info: {
     description: ''
-    displayName: 'homepage tabs'
+    displayName: 'Homepage - Taby'
   }
   attributes: {
     leftArticle: Schema.Attribute.Relation<'oneToOne', 'api::article.article'>
@@ -900,7 +900,7 @@ export interface SectionsInbaArticlesList extends Struct.ComponentSchema {
   collectionName: 'components_sections_inba_articles_lists'
   info: {
     description: ''
-    displayName: 'in.ba articles'
+    displayName: 'in.ba \u010Dl\u00E1nky'
   }
   attributes: {
     text: Schema.Attribute.Text
@@ -911,7 +911,7 @@ export interface SectionsInbaArticlesList extends Struct.ComponentSchema {
 export interface SectionsInbaReleases extends Struct.ComponentSchema {
   collectionName: 'components_sections_inba_releases'
   info: {
-    displayName: 'in.ba releases'
+    displayName: 'in.ba vydania'
   }
   attributes: {
     text: Schema.Attribute.Text
@@ -922,7 +922,7 @@ export interface SectionsInbaReleases extends Struct.ComponentSchema {
 export interface SectionsLinks extends Struct.ComponentSchema {
   collectionName: 'components_sections_links'
   info: {
-    displayName: 'Links'
+    displayName: 'Odkazy'
   }
   attributes: {
     pageLinks: Schema.Attribute.Component<'blocks.page-link', true>
@@ -934,7 +934,7 @@ export interface SectionsLinks extends Struct.ComponentSchema {
 export interface SectionsNarrowText extends Struct.ComponentSchema {
   collectionName: 'components_sections_narrow_texts'
   info: {
-    displayName: 'Narrow Text'
+    displayName: 'Richtext'
   }
   attributes: {
     content: Schema.Attribute.RichText
@@ -961,7 +961,7 @@ export interface SectionsNewsletter extends Struct.ComponentSchema {
 export interface SectionsNumbersOverview extends Struct.ComponentSchema {
   collectionName: 'components_sections_numbers_overviews'
   info: {
-    displayName: 'Numbers Overview'
+    displayName: '\u010C\u00EDseln\u00FD preh\u013Ead'
   }
   attributes: {
     numbersOverviewItems: Schema.Attribute.Component<'blocks.numbers-overview-item', true> &
@@ -981,7 +981,7 @@ export interface SectionsNumbersOverview extends Struct.ComponentSchema {
 export interface SectionsNumericalList extends Struct.ComponentSchema {
   collectionName: 'components_sections_numerical_lists'
   info: {
-    displayName: 'Numerical List'
+    displayName: '\u010C\u00EDseln\u00FD zoznam'
   }
   attributes: {
     items: Schema.Attribute.Component<'blocks.numerical-list-item', true>
@@ -996,7 +996,7 @@ export interface SectionsNumericalList extends Struct.ComponentSchema {
 export interface SectionsOfficialBoard extends Struct.ComponentSchema {
   collectionName: 'components_sections_official_boards'
   info: {
-    displayName: 'Official board'
+    displayName: '\u00DAradn\u00E1 tabu\u013Ea'
   }
   attributes: {}
 }
@@ -1004,7 +1004,7 @@ export interface SectionsOfficialBoard extends Struct.ComponentSchema {
 export interface SectionsOpeningHours extends Struct.ComponentSchema {
   collectionName: 'components_sections_opening_hours'
   info: {
-    displayName: 'Opening Hours'
+    displayName: 'Otv\u00E1racie hodiny'
   }
   attributes: {
     alertMessage: Schema.Attribute.Component<'blocks.opening-hours-alert-message', false>
@@ -1025,7 +1025,7 @@ export interface SectionsOrganizationalStructure extends Struct.ComponentSchema 
   collectionName: 'components_sections_organizational_structures'
   info: {
     description: ''
-    displayName: 'Organizational structure'
+    displayName: 'Organiza\u010Dn\u00E1 \u0161trukt\u00FAra'
     icon: 'address-book'
   }
   attributes: {
@@ -1037,7 +1037,7 @@ export interface SectionsPartners extends Struct.ComponentSchema {
   collectionName: 'components_sections_partners'
   info: {
     description: ''
-    displayName: 'Partners'
+    displayName: 'Partneri'
   }
   attributes: {
     logoRatio: Schema.Attribute.Enumeration<['ratio 4:1', 'ratio 4:3']> &
@@ -1054,7 +1054,7 @@ export interface SectionsProsAndConsSection extends Struct.ComponentSchema {
   collectionName: 'components_sections_pros_and_cons_sections'
   info: {
     description: ''
-    displayName: 'Pros and Cons Section'
+    displayName: 'Pre a proti'
   }
   attributes: {
     cons: Schema.Attribute.Component<'blocks.pros-and-cons-card', false> & Schema.Attribute.Required
@@ -1071,7 +1071,7 @@ export interface SectionsRegulations extends Struct.ComponentSchema {
   collectionName: 'components_sections_regulations'
   info: {
     description: ''
-    displayName: 'Regulations'
+    displayName: 'V\u0161eobecne z\u00E1v\u00E4zn\u00E9 nariadenia'
   }
   attributes: {
     regulations: Schema.Attribute.Relation<'oneToMany', 'api::regulation.regulation'>
@@ -1101,21 +1101,11 @@ export interface SectionsSubnavigation extends Struct.ComponentSchema {
   }
 }
 
-export interface SectionsSubpageList extends Struct.ComponentSchema {
-  collectionName: 'components_sections_subpage_lists'
-  info: {
-    displayName: 'Subpage List'
-  }
-  attributes: {
-    subpageList: Schema.Attribute.Component<'blocks.page-link', true>
-  }
-}
-
 export interface SectionsTextWithImage extends Struct.ComponentSchema {
   collectionName: 'components_sections_text_with_images'
   info: {
     description: ''
-    displayName: 'Text with Image'
+    displayName: 'Text s obr\u00E1zkom'
   }
   attributes: {
     content: Schema.Attribute.RichText
@@ -1139,7 +1129,7 @@ export interface SectionsTextWithImageOverlapped extends Struct.ComponentSchema 
   collectionName: 'components_sections_text_with_image_overlappeds'
   info: {
     description: ''
-    displayName: 'Text with image overlapped'
+    displayName: 'Text s obr\u00E1zkom (prekryt\u00FD)'
   }
   attributes: {
     content: Schema.Attribute.RichText
@@ -1163,7 +1153,7 @@ export interface SectionsTootootEvents extends Struct.ComponentSchema {
   collectionName: 'components_sections_tootoot_events'
   info: {
     description: ''
-    displayName: 'Tootoot events'
+    displayName: 'Podujatia (Tootoot)'
   }
   attributes: {
     showMoreLink: Schema.Attribute.Component<'blocks.common-link', false>
@@ -1189,7 +1179,7 @@ export interface SectionsVideos extends Struct.ComponentSchema {
   collectionName: 'components_sections_videos'
   info: {
     description: ''
-    displayName: 'Videos'
+    displayName: 'Vide\u00E1'
   }
   attributes: {
     subtitle: Schema.Attribute.Text
@@ -1295,7 +1285,6 @@ declare module '@strapi/strapi' {
       'sections.regulations': SectionsRegulations
       'sections.starz-landing-page': SectionsStarzLandingPage
       'sections.subnavigation': SectionsSubnavigation
-      'sections.subpage-list': SectionsSubpageList
       'sections.text-with-image': SectionsTextWithImage
       'sections.text-with-image-overlapped': SectionsTextWithImageOverlapped
       'sections.tootoot-events': SectionsTootootEvents

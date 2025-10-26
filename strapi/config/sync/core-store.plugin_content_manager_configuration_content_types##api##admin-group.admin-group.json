@@ -275,7 +275,10 @@
         "title",
         "slug",
         "createdAt",
-        "updatedAt"
+        "updatedAt",
+        "contentManagedBy",
+        "landingPage",
+        "adminGroupId"
       ]
     },
     "uid": "api::admin-group.admin-group"

@@ -126,7 +126,7 @@
   "OfficialBoard.publishedFrom": "Published from",
   "OfficialBoard.publishedTo": "Published to",
   "OpeningHoursSection.banner.title": "Opening hours change!",
-  "PageHeaderFacility.allPhotos": "All photos",
+  "PageHeaderFacility.allPhotos": "All photos ({{count}})",
   "PageHeaderFacility.navigate": "Navigate",
   "Pagination.aria.goToNextPage": "Go to next page",
   "Pagination.aria.goToPage": "Go to page {{page}}",

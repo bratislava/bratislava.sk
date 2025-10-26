@@ -1,7 +1,7 @@
 {
   "collectionName": "components_sections_tootoot_events",
   "info": {
-    "displayName": "Tootoot events",
+    "displayName": "Podujatia (Tootoot)",
     "description": ""
   },
   "options": {},
@@ -14,8 +14,8 @@
     },
     "showMoreLink": {
       "type": "component",
-      "repeatable": false,
-      "component": "blocks.common-link"
+      "component": "blocks.common-link",
+      "repeatable": false
     }
   }
 }

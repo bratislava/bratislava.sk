@@ -179,7 +179,7 @@
       "articleCategory": {
         "edit": {
           "label": "Typ",
-          "description": "",
+          "description": "Perex tlačových správ začína miestom a dátumom, napr. \"Bratislava, 15. marca 2025\".",
           "placeholder": "",
           "visible": true,
           "editable": true,

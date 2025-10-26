@@ -1,7 +1,7 @@
 {
   "collectionName": "components_sections_text_with_image_overlappeds",
   "info": {
-    "displayName": "Text with image overlapped",
+    "displayName": "Text s obrázkom (prekrytý)",
     "description": ""
   },
   "options": {},
@@ -20,19 +20,19 @@
     },
     "imagePosition": {
       "type": "enumeration",
+      "required": true,
+      "default": "right",
       "enum": [
         "left",
         "right",
         "left shifted",
         "right shifted"
-      ],
-      "required": true,
-      "default": "right"
+      ]
     },
     "links": {
       "type": "component",
-      "repeatable": true,
       "component": "blocks.common-link",
+      "repeatable": true,
       "max": 2
     }
   }

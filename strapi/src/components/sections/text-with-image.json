@@ -1,7 +1,7 @@
 {
   "collectionName": "components_sections_text_with_images",
   "info": {
-    "displayName": "Text with Image",
+    "displayName": "Text s obrázkom",
     "description": ""
   },
   "options": {},
@@ -20,26 +20,26 @@
     },
     "imagePosition": {
       "type": "enumeration",
+      "required": true,
+      "default": "right",
       "enum": [
         "left",
         "right"
-      ],
-      "required": true,
-      "default": "right"
+      ]
     },
     "imageAspectRatio": {
       "type": "enumeration",
+      "required": false,
+      "default": "ratio 1:1",
       "enum": [
         "ratio 1:1",
         "ratio 4:3"
-      ],
-      "required": false,
-      "default": "ratio 1:1"
+      ]
     },
     "links": {
       "type": "component",
-      "repeatable": true,
       "component": "blocks.common-link",
+      "repeatable": true,
       "max": 2
     }
   }

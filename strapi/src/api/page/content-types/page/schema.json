@@ -33,6 +33,14 @@
         }
       }
     },
+    "path": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
     "alias": {
       "type": "uid",
       "pluginOptions": {
@@ -50,6 +58,14 @@
       }
     },
     "metaDiscription": {
+      "type": "text",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "metaDescription": {
       "type": "text",
       "pluginOptions": {
         "i18n": {
@@ -88,15 +104,7 @@
         }
       },
       "required": true,
-      "enum": [
-        "red",
-        "blue",
-        "green",
-        "yellow",
-        "purple",
-        "brown",
-        "starz"
-      ]
+      "enum": ["red", "blue", "green", "yellow", "purple", "brown", "starz"]
     },
     "pageBackgroundImage": {
       "type": "media",
@@ -107,12 +115,7 @@
       },
       "multiple": false,
       "required": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
+      "allowedTypes": ["images", "files", "videos", "audios"]
     },
     "headerLinks": {
       "type": "component",
@@ -131,11 +134,7 @@
           "localized": true
         }
       },
-      "components": [
-        "header-sections.event",
-        "header-sections.facility",
-        "sections.subpage-list"
-      ],
+      "components": ["header-sections.event", "header-sections.facility"],
       "max": 1
     },
     "subnavigation": {
@@ -156,41 +155,41 @@
         }
       },
       "components": [
+        "sections.narrow-text",
         "sections.accordion",
-        "sections.articles",
         "sections.banner",
-        "sections.calculator",
-        "sections.columned-text",
-        "sections.columns",
-        "sections.comparison-section",
-        "sections.contacts-section",
+        "sections.numbers-overview",
+        "sections.numerical-list",
+        "sections.articles",
         "sections.divider",
         "sections.documents",
-        "sections.events",
-        "sections.facilities",
         "sections.faqs",
         "sections.faq-categories",
-        "sections.file-list",
         "sections.gallery",
         "sections.iframe",
         "sections.inba-articles-list",
         "sections.inba-releases",
-        "sections.links",
-        "sections.narrow-text",
+        "sections.calculator",
+        "sections.contacts-section",
         "sections.newsletter",
-        "sections.numbers-overview",
-        "sections.numerical-list",
-        "sections.official-board",
+        "sections.links",
         "sections.organizational-structure",
         "sections.opening-hours",
         "sections.partners",
+        "sections.events",
+        "sections.tootoot-events",
+        "sections.comparison-section",
         "sections.pros-and-cons-section",
-        "sections.regulations",
+        "sections.facilities",
+        "sections.columned-text",
         "sections.starz-landing-page",
+        "sections.columns",
+        "sections.file-list",
         "sections.text-with-image",
         "sections.text-with-image-overlapped",
-        "sections.tootoot-events",
-        "sections.videos"
+        "sections.official-board",
+        "sections.videos",
+        "sections.regulations"
       ]
     },
     "sidebar": {
@@ -200,9 +199,7 @@
           "localized": true
         }
       },
-      "components": [
-        "sidebars.empty-sidebar"
-      ],
+      "components": ["sidebars.empty-sidebar"],
       "max": 1
     },
     "parentPage": {
@@ -216,6 +213,42 @@
       "relation": "oneToMany",
       "target": "api::page.page",
       "mappedBy": "parentPage"
+    },
+    "parent": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::page.page",
+      "inversedBy": "children"
+    },
+    "children": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::page.page",
+      "mappedBy": "parent"
+    },
+    "fullPath": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "required": false,
+      "unique": true
+    },
+    "redirects": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::redirect.redirect",
+      "mappedBy": "page"
+    },
+    "breadcrumbTitle": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "relatedContents": {
       "type": "relation",

@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react'
 import { useDebounceValue } from 'usehooks-ts'
 
 import { useLocale } from '@/src/utils/useLocale'
-import { isProductionDeployment } from '@/src/utils/utils'
 
 export type PlausibleEvents = {
   Vyhladavanie: { Query: string; Language: string; 'Search source'?: string }
@@ -32,12 +31,7 @@ export const useLogSearchQueryToPlausible = ({
 
   useEffect(() => {
     const sanitizedInput = debouncedInputForPlausible.toLowerCase().replaceAll(/\s+/g, ' ').trim()
-    if (
-      // TODO Remove isProd check when tested properly
-      !isProductionDeployment() &&
-      sanitizedInput.length > 2 &&
-      sanitizedInput !== lastInputForPlausible
-    ) {
+    if (sanitizedInput.length > 2 && sanitizedInput !== lastInputForPlausible) {
       plausible('Vyhladavanie', {
         props: {
           Query: sanitizedInput,

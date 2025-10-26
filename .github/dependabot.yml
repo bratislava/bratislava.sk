@@ -9,10 +9,12 @@ updates:
     directory: '/strapi' # Location of package manifests
     schedule:
       interval: 'monthly'
+      day: 'sunday'
     rebase-strategy: 'disabled'
 
   - package-ecosystem: 'npm' # See documentation for possible values
     directory: '/next' # Location of package manifests
     schedule:
       interval: 'monthly'
+      day: 'sunday'
     rebase-strategy: 'disabled'
