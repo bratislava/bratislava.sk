@@ -89,9 +89,24 @@
           "sortable": false
         }
       },
+      "articleCategory": {
+        "edit": {
+          "label": "Typ",
+          "description": "Perex tlačových správ začína miestom a dátumom, napr. \"Bratislava, 15. marca 2025\".",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "title"
+        },
+        "list": {
+          "label": "articleCategory",
+          "searchable": true,
+          "sortable": true
+        }
+      },
       "tag": {
         "edit": {
-          "label": "Témy",
+          "label": "Tag",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -100,8 +115,8 @@
         },
         "list": {
           "label": "tag",
-          "searchable": false,
-          "sortable": false
+          "searchable": true,
+          "sortable": true
         }
       },
       "addedAt": {
@@ -138,8 +153,7 @@
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true,
-          "mainField": "title"
+          "editable": true
         },
         "list": {
           "label": "files",
@@ -176,19 +190,19 @@
           "sortable": false
         }
       },
-      "articleCategory": {
+      "tags": {
         "edit": {
-          "label": "Typ",
-          "description": "Perex tlačových správ začína miestom a dátumom, napr. \"Bratislava, 15. marca 2025\".",
+          "label": "Témy",
+          "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true,
           "mainField": "title"
         },
         "list": {
-          "label": "articleCategory",
-          "searchable": true,
-          "sortable": true
+          "label": "tags",
+          "searchable": false,
+          "sortable": false
         }
       },
       "createdAt": {
@@ -259,6 +273,14 @@
       }
     },
     "layouts": {
+      "list": [
+        "id",
+        "coverMedia",
+        "title",
+        "slug",
+        "updatedAt",
+        "addedAt"
+      ],
       "edit": [
         [
           {
@@ -300,7 +322,7 @@
             "size": 6
           },
           {
-            "name": "tag",
+            "name": "tags",
             "size": 6
           }
         ],
@@ -327,15 +349,13 @@
             "name": "adminGroups",
             "size": 12
           }
+        ],
+        [
+          {
+            "name": "tag",
+            "size": 6
+          }
         ]
-      ],
-      "list": [
-        "id",
-        "coverMedia",
-        "title",
-        "slug",
-        "updatedAt",
-        "addedAt"
       ]
     },
     "uid": "api::article.article"
