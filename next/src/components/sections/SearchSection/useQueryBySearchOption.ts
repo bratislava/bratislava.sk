@@ -102,13 +102,13 @@ export const useQueryBySearchOption = ({
     select: (data) => {
       const formattedData: SearchResult[] =
         data?.hits?.map((article): SearchResult => {
-          const tagTitles = article.tags.filter(isDefined).map((tag) => tag.title)
-
           return {
             title: article.title,
             uniqueId: article.slug,
             linkHref: `/spravy/${article.slug}`,
-            metadata: [...tagTitles, formatDate(article.addedAt)],
+            metadata: [article.articleCategory?.title, formatDate(article.addedAt)].filter(
+              isDefined,
+            ),
             coverImageSrc: article.coverMedia?.url,
           }
         }) ?? []
