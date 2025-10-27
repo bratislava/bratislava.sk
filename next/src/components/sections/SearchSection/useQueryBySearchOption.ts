@@ -102,8 +102,7 @@ export const useQueryBySearchOption = ({
     select: (data) => {
       const formattedData: SearchResult[] =
         data?.hits?.map((article): SearchResult => {
-          const tagTitles =
-            article.tag?.length > 0 ? article.tag?.filter(isDefined).map((tag) => tag.title) : []
+          const tagTitles = article.tags.filter(isDefined).map((tag) => tag.title)
 
           return {
             title: article.title,
