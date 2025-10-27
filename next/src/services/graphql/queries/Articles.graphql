@@ -19,7 +19,7 @@ fragment ArticleCardEntity on Article {
   coverMedia {
     ...UploadImageEntity
   }
-  tag {
+  tags {
     ...TagEntity
   }
 }
@@ -36,9 +36,6 @@ fragment ArticleEntity on Article {
   }
   gallery {
     ...UploadImageEntity
-  }
-  tags {
-    ...TagEntity
   }
 }
 
@@ -85,7 +82,7 @@ query ArticlesRssFeed($locale: I18NLocaleCode!) {
     title
     addedAt
     perex
-    tag {
+    tags {
       title
       pageCategory {
         title
