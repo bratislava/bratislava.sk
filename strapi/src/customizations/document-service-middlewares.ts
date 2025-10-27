@@ -97,15 +97,13 @@ export const registerDocumentServiceMiddlewares = ({ strapi }: { strapi: Core.St
             if (!tagToAssign)
               console.log(`No tag with name ${STARZ_ARTICLE_TAG_TITLE} found in database`)
 
-            console.log(JSON.stringify(article.tags))
-
             // TODO extract this as a function and unify with adminGroups relation assignment
             if (article.tags && 'connect' in article.tags) {
               // Some value(s) in tags already present
               article.tags = {
                 ...article.tags,
                 connect: [
-                  // Take ids of previous tags and add new admin group
+                  // Take ids of previous tags and add new tag
                   ...article.tags.connect.map((relationItem) => relationItem.documentId),
                   tagToAssign.documentId,
                 ],

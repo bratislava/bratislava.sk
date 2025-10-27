@@ -47,7 +47,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         description: article.perex ?? '',
         url: article.slug ? `${urlPrefix[language]}/${article.slug}` : '',
         date: article.addedAt,
-        categories: article.tags.map((tag) => tag?.title).filter(isDefined) ?? [],
+        categories: article.tags.filter(isDefined).map((tag) => tag?.title),
         enclosure: article.coverMedia
           ? {
               url: article.coverMedia.url,
