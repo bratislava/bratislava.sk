@@ -5,7 +5,6 @@ metadata:
     cert-manager.io/cluster-issuer: cloudflare-dns01
     cert-manager.io/issue-temporary-certificate: 'true'
     ingress.kubernetes.io/redirect-to: https://bratislava.sk/socialne-sluzby-a-byvanie/aktivity-v-socialnej-oblasti/ludia-bez-domova-sa-rataju
-    kubernetes.io/ingress.class: haproxy
   labels:
     service: redirect
   name: social-${BUILD_REPOSITORY_NAME}-ingress
