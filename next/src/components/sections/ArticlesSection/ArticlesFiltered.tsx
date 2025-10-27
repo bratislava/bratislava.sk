@@ -107,7 +107,7 @@ const ArticlesFiltered = ({ section }: Props) => {
               return card ? (
                 <ArticleCard
                   key={card.slug}
-                  {...transformArticleProps(card, { withText: false, withTag: false })}
+                  {...transformArticleProps(card, { withText: false })}
                 />
               ) : null
             })

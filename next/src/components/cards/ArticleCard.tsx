@@ -5,7 +5,6 @@ import CardBase, { CardBaseProps } from '@/src/components/cards/CardBase'
 import CardContent from '@/src/components/cards/CardContent'
 import Button from '@/src/components/common/Button/Button'
 import CardImage from '@/src/components/common/Image/CardImage'
-import Tag from '@/src/components/common/Tag/Tag'
 import cn from '@/src/utils/cn'
 import { CommonLinkProps } from '@/src/utils/getLinkProps'
 
@@ -15,7 +14,6 @@ export type ArticleCardProps = {
   imgSrc?: string | null | undefined
   imgSizes?: string
   date?: string | null | undefined
-  tag?: string | null | undefined
   text?: string | null | undefined
 } & CardBaseProps
 
@@ -27,7 +25,6 @@ const ArticleCard = ({
   imgSrc,
   imgSizes,
   date,
-  tag,
   title,
   text,
   linkProps,
@@ -50,14 +47,7 @@ const ArticleCard = ({
 
       <CardContent variant="no-padding" className="grow justify-between">
         <div className="flex flex-col gap-2">
-          {(date || tag) && (
-            <div className="flex flex-wrap items-center justify-between gap-y-1">
-              {/* If no date, leaving empty div to push tag to the right */}
-              <Typography variant="p-small">{date}</Typography>
-
-              {tag && <Tag text={tag} size="small" isColored />}
-            </div>
-          )}
+          {date && <Typography variant="p-small">{date}</Typography>}
           <div className="flex flex-col gap-1">
             <Typography
               id={titleId}
