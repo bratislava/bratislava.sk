@@ -8,7 +8,6 @@ metadata:
   annotations:
     cert-manager.io/cluster-issuer: cloudflare-dns01
     cert-manager.io/issue-temporary-certificate: 'true'
-    kubernetes.io/ingress.class: haproxy
     ingress.kubernetes.io/redirect-to: https://${BRATISKA_HOSTNAME}/zivotne-prostredie-a-vystavba/klima/klimaticka-vyzva
 spec:
   tls:
