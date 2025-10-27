@@ -60,9 +60,7 @@
       },
       "multiple": false,
       "required": false,
-      "allowedTypes": [
-        "images"
-      ]
+      "allowedTypes": ["images"]
     },
     "articleCategory": {
       "type": "relation",
@@ -111,9 +109,7 @@
       },
       "multiple": true,
       "required": false,
-      "allowedTypes": [
-        "images"
-      ]
+      "allowedTypes": ["images"]
     },
     "adminGroups": {
       "type": "relation",

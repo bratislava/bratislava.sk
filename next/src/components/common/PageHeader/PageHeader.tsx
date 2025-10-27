@@ -14,7 +14,8 @@ export type PageHeaderProps = {
   title?: string | null
   subtext?: string | null
   headerLinks?: CommonLinkFragment[] | null
-  tag?: string | null
+  // TODO remove the string[] type in Articles redesign cleanup
+  tag?: string[] | string | null
   className?: string | null
   imageSrc?: string | null
   hasWaves?: boolean
@@ -60,11 +61,25 @@ const PageHeader = ({
 
           <div className="flex flex-col gap-y-4 pt-3 pb-6 lg:gap-y-6 lg:pt-6 lg:pb-10">
             {/* TODO this tag is not in DS */}
-            {tag && (
-              <span className="inline-block self-start rounded-sm bg-category-700 px-3 py-1 text-size-p-default font-medium text-white">
-                {tag}
-              </span>
-            )}
+            {tag ? (
+              // TODO remove array handling after Articles redesign cleanup
+              Array.isArray(tag) && tag.length > 0 ? (
+                <div className="flex flex-wrap gap-2">
+                  {tag.map((tagItem, index) => (
+                    // eslint-disable-next-line react/no-array-index-key
+                    <div key={index}>
+                      <span className="inline-block self-start rounded-sm bg-white px-3 py-1 text-size-p-default font-medium text-content-passive-primary">
+                        {tagItem}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <span className="inline-block self-start rounded-sm bg-category-700 px-3 py-1 text-size-p-default font-medium text-white">
+                  {tag}
+                </span>
+              )
+            ) : null}
 
             {(title || subtext) && (
               <div className="flex max-w-[640px] flex-col gap-y-1 lg:gap-y-4">

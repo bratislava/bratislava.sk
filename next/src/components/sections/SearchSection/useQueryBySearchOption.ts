@@ -106,7 +106,9 @@ export const useQueryBySearchOption = ({
             title: article.title,
             uniqueId: article.slug,
             linkHref: `/spravy/${article.slug}`,
-            metadata: [article.tag?.title, formatDate(article.addedAt)],
+            metadata: [article.articleCategory?.title, formatDate(article.addedAt)].filter(
+              isDefined,
+            ),
             coverImageSrc: article.coverMedia?.url,
           }
         }) ?? []

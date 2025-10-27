@@ -30,8 +30,9 @@ const ArticlePageContent = ({ article }: Props) => {
     ]
   }, [article.title, newsPage])
 
-  const { title, perex, tag, content, files, gallery, alias, addedAt, coverMedia } = article
+  const { title, perex, tags, content, files, gallery, alias, addedAt, coverMedia } = article
 
+  const filteredTagTitles = tags.filter(isDefined).map((tag) => tag.title)
   const filteredFiles = files?.filter(isDefined) ?? []
   const filteredGalleryImages = gallery.filter(isDefined) ?? []
 
@@ -41,7 +42,7 @@ const ArticlePageContent = ({ article }: Props) => {
         title={title}
         breadcrumbs={breadcrumbs}
         subtext={formatDate(addedAt)}
-        tag={tag?.title}
+        tag={filteredTagTitles}
         imageSrc={coverMedia?.url}
       />
 

@@ -11,7 +11,6 @@ import {
   Page,
   PageCategory,
   Regulation,
-  Tag,
   UploadFile,
 } from '../graphql'
 
@@ -46,11 +45,8 @@ export type PageMeili = Omit<
 }
 
 export type ArticleMeili = Pick<ArticleEntity, 'id'> &
-  Omit<Article, 'tag' | 'coverMedia' | 'articleCategory'> & {
+  Omit<Article, 'coverMedia' | 'articleCategory'> & {
     coverMedia?: UploadFile
-    tag?: Omit<Tag, '__typename' | 'pageCategory' | 'articles'> & {
-      pageCategory?: Omit<PageCategory, '__typename' | 'pages'>
-    }
     articleCategory?: Omit<ArticleCategory, '__typename' | 'articles'>
   }
 

@@ -11,6 +11,7 @@ import { ArticleEntityFragment, GeneralQuery } from '@/src/services/graphql'
 import { client } from '@/src/services/graphql/gql'
 import { GlobalCategoryColorProvider } from '@/src/utils/colors'
 import { NOT_FOUND } from '@/src/utils/consts'
+import { isDefined } from '@/src/utils/isDefined'
 
 type PageProps = {
   general: GeneralQuery
@@ -77,14 +78,17 @@ export const getStaticProps: GetStaticProps<PageProps, StaticParams> = async ({
 }
 
 const Page = ({ general, article }: PageProps) => {
-  const { title, perex } = article ?? {}
+  const { title, perex, tags } = article ?? {}
+
+  // TODO remove style when page categories are removed
+  const firstTagColor = tags.find(isDefined)?.pageCategory?.color
 
   return (
     <GeneralContextProvider general={general}>
       <AdminGroupsContextProvider adminGroups={[]}>
         <SeoHead title={title} description={perex} />
 
-        <GlobalCategoryColorProvider color={article?.tag?.pageCategory?.color} />
+        <GlobalCategoryColorProvider color={firstTagColor} />
         <PageLayout>
           <ArticlePageContent article={article} />
         </PageLayout>

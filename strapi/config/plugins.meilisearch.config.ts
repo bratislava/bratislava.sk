@@ -42,6 +42,8 @@ const searchIndexSettings = {
     'article.articleCategory.slug',
     'article.tag.documentId',
     'article.tag.slug',
+    'article.tags.documentId',
+    'article.tags.slug',
     'article.adminGroups',
     'article.adminGroups.documentId',
     'article.adminGroups.slug',
@@ -89,7 +91,13 @@ const config = {
     indexName: 'search_index',
     entriesQuery: {
       locale: '*',
-      populate: ['tag.pageCategory', 'coverMedia', 'articleCategory', 'adminGroups'],
+      populate: [
+        'tag.pageCategory',
+        'tags.pageCategory',
+        'coverMedia',
+        'articleCategory',
+        'adminGroups',
+      ],
     },
     settings: searchIndexSettings,
     transformEntry: ({ entry }) =>

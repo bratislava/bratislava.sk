@@ -6782,7 +6782,7 @@ export type ArticleCardEntityFragment = {
     alternativeText?: string | null
     name: string
   } | null
-  tag?: {
+  tags: Array<{
     __typename?: 'Tag'
     documentId: string
     title: string
@@ -6793,7 +6793,7 @@ export type ArticleCardEntityFragment = {
       title?: string | null
       color?: Enum_Pagecategory_Color | null
     } | null
-  } | null
+  } | null>
 }
 
 export type ArticleEntityFragment = {
@@ -6837,6 +6837,16 @@ export type ArticleEntityFragment = {
     alternativeText?: string | null
     name: string
   } | null>
+  coverMedia?: {
+    __typename?: 'UploadFile'
+    documentId: string
+    url: string
+    width?: number | null
+    height?: number | null
+    caption?: string | null
+    alternativeText?: string | null
+    name: string
+  } | null
   tags: Array<{
     __typename?: 'Tag'
     documentId: string
@@ -6849,28 +6859,6 @@ export type ArticleEntityFragment = {
       color?: Enum_Pagecategory_Color | null
     } | null
   } | null>
-  coverMedia?: {
-    __typename?: 'UploadFile'
-    documentId: string
-    url: string
-    width?: number | null
-    height?: number | null
-    caption?: string | null
-    alternativeText?: string | null
-    name: string
-  } | null
-  tag?: {
-    __typename?: 'Tag'
-    documentId: string
-    title: string
-    slug: string
-    pageCategory?: {
-      __typename?: 'PageCategory'
-      documentId: string
-      title?: string | null
-      color?: Enum_Pagecategory_Color | null
-    } | null
-  } | null
 }
 
 export type ArticleBySlugQueryVariables = Exact<{
@@ -6921,6 +6909,16 @@ export type ArticleBySlugQuery = {
       alternativeText?: string | null
       name: string
     } | null>
+    coverMedia?: {
+      __typename?: 'UploadFile'
+      documentId: string
+      url: string
+      width?: number | null
+      height?: number | null
+      caption?: string | null
+      alternativeText?: string | null
+      name: string
+    } | null
     tags: Array<{
       __typename?: 'Tag'
       documentId: string
@@ -6933,28 +6931,6 @@ export type ArticleBySlugQuery = {
         color?: Enum_Pagecategory_Color | null
       } | null
     } | null>
-    coverMedia?: {
-      __typename?: 'UploadFile'
-      documentId: string
-      url: string
-      width?: number | null
-      height?: number | null
-      caption?: string | null
-      alternativeText?: string | null
-      name: string
-    } | null
-    tag?: {
-      __typename?: 'Tag'
-      documentId: string
-      title: string
-      slug: string
-      pageCategory?: {
-        __typename?: 'PageCategory'
-        documentId: string
-        title?: string | null
-        color?: Enum_Pagecategory_Color | null
-      } | null
-    } | null
   } | null>
 }
 
@@ -7018,7 +6994,7 @@ export type ArticlesQuery = {
       alternativeText?: string | null
       name: string
     } | null
-    tag?: {
+    tags: Array<{
       __typename?: 'Tag'
       documentId: string
       title: string
@@ -7029,7 +7005,7 @@ export type ArticlesQuery = {
         title?: string | null
         color?: Enum_Pagecategory_Color | null
       } | null
-    } | null
+    } | null>
   } | null>
 }
 
@@ -7046,11 +7022,11 @@ export type ArticlesRssFeedQuery = {
     title: string
     addedAt: any
     perex?: string | null
-    tag?: {
+    tags: Array<{
       __typename?: 'Tag'
       title: string
       pageCategory?: { __typename?: 'PageCategory'; title?: string | null } | null
-    } | null
+    } | null>
     coverMedia?: { __typename?: 'UploadFile'; url: string; mime: string; size: number } | null
   } | null>
 }
@@ -7108,6 +7084,16 @@ export type Dev_AllArticlesQuery = {
       alternativeText?: string | null
       name: string
     } | null>
+    coverMedia?: {
+      __typename?: 'UploadFile'
+      documentId: string
+      url: string
+      width?: number | null
+      height?: number | null
+      caption?: string | null
+      alternativeText?: string | null
+      name: string
+    } | null
     tags: Array<{
       __typename?: 'Tag'
       documentId: string
@@ -7120,28 +7106,6 @@ export type Dev_AllArticlesQuery = {
         color?: Enum_Pagecategory_Color | null
       } | null
     } | null>
-    coverMedia?: {
-      __typename?: 'UploadFile'
-      documentId: string
-      url: string
-      width?: number | null
-      height?: number | null
-      caption?: string | null
-      alternativeText?: string | null
-      name: string
-    } | null
-    tag?: {
-      __typename?: 'Tag'
-      documentId: string
-      title: string
-      slug: string
-      pageCategory?: {
-        __typename?: 'PageCategory'
-        documentId: string
-        title?: string | null
-        color?: Enum_Pagecategory_Color | null
-      } | null
-    } | null
   } | null>
 }
 
@@ -7475,7 +7439,7 @@ export type CardLinkFragment = {
       alternativeText?: string | null
       name: string
     } | null
-    tag?: {
+    tags: Array<{
       __typename?: 'Tag'
       documentId: string
       title: string
@@ -7486,7 +7450,7 @@ export type CardLinkFragment = {
         title?: string | null
         color?: Enum_Pagecategory_Color | null
       } | null
-    } | null
+    } | null>
   } | null
 }
 
@@ -8464,7 +8428,7 @@ export type HomepageEntityFragment = {
           alternativeText?: string | null
           name: string
         } | null
-        tag?: {
+        tags: Array<{
           __typename?: 'Tag'
           documentId: string
           title: string
@@ -8475,7 +8439,7 @@ export type HomepageEntityFragment = {
             title?: string | null
             color?: Enum_Pagecategory_Color | null
           } | null
-        } | null
+        } | null>
       } | null
       media?: {
         __typename?: 'UploadFile'
@@ -8509,7 +8473,7 @@ export type HomepageEntityFragment = {
         alternativeText?: string | null
         name: string
       } | null
-      tag?: {
+      tags: Array<{
         __typename?: 'Tag'
         documentId: string
         title: string
@@ -8520,7 +8484,7 @@ export type HomepageEntityFragment = {
           title?: string | null
           color?: Enum_Pagecategory_Color | null
         } | null
-      } | null
+      } | null>
     } | null
     rightArticle?: {
       __typename: 'Article'
@@ -8540,7 +8504,7 @@ export type HomepageEntityFragment = {
         alternativeText?: string | null
         name: string
       } | null
-      tag?: {
+      tags: Array<{
         __typename?: 'Tag'
         documentId: string
         title: string
@@ -8551,7 +8515,7 @@ export type HomepageEntityFragment = {
           title?: string | null
           color?: Enum_Pagecategory_Color | null
         } | null
-      } | null
+      } | null>
     } | null
     newsPageLink?: {
       __typename?: 'ComponentBlocksCommonLink'
@@ -8795,7 +8759,7 @@ export type HomepageQuery = {
             alternativeText?: string | null
             name: string
           } | null
-          tag?: {
+          tags: Array<{
             __typename?: 'Tag'
             documentId: string
             title: string
@@ -8806,7 +8770,7 @@ export type HomepageQuery = {
               title?: string | null
               color?: Enum_Pagecategory_Color | null
             } | null
-          } | null
+          } | null>
         } | null
         media?: {
           __typename?: 'UploadFile'
@@ -8840,7 +8804,7 @@ export type HomepageQuery = {
           alternativeText?: string | null
           name: string
         } | null
-        tag?: {
+        tags: Array<{
           __typename?: 'Tag'
           documentId: string
           title: string
@@ -8851,7 +8815,7 @@ export type HomepageQuery = {
             title?: string | null
             color?: Enum_Pagecategory_Color | null
           } | null
-        } | null
+        } | null>
       } | null
       rightArticle?: {
         __typename: 'Article'
@@ -8871,7 +8835,7 @@ export type HomepageQuery = {
           alternativeText?: string | null
           name: string
         } | null
-        tag?: {
+        tags: Array<{
           __typename?: 'Tag'
           documentId: string
           title: string
@@ -8882,7 +8846,7 @@ export type HomepageQuery = {
             title?: string | null
             color?: Enum_Pagecategory_Color | null
           } | null
-        } | null
+        } | null>
       } | null
       newsPageLink?: {
         __typename?: 'ComponentBlocksCommonLink'
@@ -9104,7 +9068,7 @@ export type HomepageHighlightsItemFragment = {
       alternativeText?: string | null
       name: string
     } | null
-    tag?: {
+    tags: Array<{
       __typename?: 'Tag'
       documentId: string
       title: string
@@ -9115,7 +9079,7 @@ export type HomepageHighlightsItemFragment = {
         title?: string | null
         color?: Enum_Pagecategory_Color | null
       } | null
-    } | null
+    } | null>
   } | null
   media?: {
     __typename?: 'UploadFile'
@@ -9149,7 +9113,7 @@ export type HomepageTabsFragment = {
       alternativeText?: string | null
       name: string
     } | null
-    tag?: {
+    tags: Array<{
       __typename?: 'Tag'
       documentId: string
       title: string
@@ -9160,7 +9124,7 @@ export type HomepageTabsFragment = {
         title?: string | null
         color?: Enum_Pagecategory_Color | null
       } | null
-    } | null
+    } | null>
   } | null
   rightArticle?: {
     __typename: 'Article'
@@ -9180,7 +9144,7 @@ export type HomepageTabsFragment = {
       alternativeText?: string | null
       name: string
     } | null
-    tag?: {
+    tags: Array<{
       __typename?: 'Tag'
       documentId: string
       title: string
@@ -9191,7 +9155,7 @@ export type HomepageTabsFragment = {
         title?: string | null
         color?: Enum_Pagecategory_Color | null
       } | null
-    } | null
+    } | null>
   } | null
   newsPageLink?: {
     __typename?: 'ComponentBlocksCommonLink'
@@ -9981,7 +9945,7 @@ export type PageEntityFragment = {
             alternativeText?: string | null
             name: string
           } | null
-          tag?: {
+          tags: Array<{
             __typename?: 'Tag'
             documentId: string
             title: string
@@ -9992,7 +9956,7 @@ export type PageEntityFragment = {
               title?: string | null
               color?: Enum_Pagecategory_Color | null
             } | null
-          } | null
+          } | null>
         } | null>
         category?: {
           __typename?: 'PageCategory'
@@ -10761,7 +10725,7 @@ export type PageEntityFragment = {
               alternativeText?: string | null
               name: string
             } | null
-            tag?: {
+            tags: Array<{
               __typename?: 'Tag'
               documentId: string
               title: string
@@ -10772,7 +10736,7 @@ export type PageEntityFragment = {
                 title?: string | null
                 color?: Enum_Pagecategory_Color | null
               } | null
-            } | null
+            } | null>
           } | null
         } | null> | null
       }
@@ -11133,7 +11097,7 @@ export type PageBySlugQuery = {
               alternativeText?: string | null
               name: string
             } | null
-            tag?: {
+            tags: Array<{
               __typename?: 'Tag'
               documentId: string
               title: string
@@ -11144,7 +11108,7 @@ export type PageBySlugQuery = {
                 title?: string | null
                 color?: Enum_Pagecategory_Color | null
               } | null
-            } | null
+            } | null>
           } | null>
           category?: {
             __typename?: 'PageCategory'
@@ -11916,7 +11880,7 @@ export type PageBySlugQuery = {
                 alternativeText?: string | null
                 name: string
               } | null
-              tag?: {
+              tags: Array<{
                 __typename?: 'Tag'
                 documentId: string
                 title: string
@@ -11927,7 +11891,7 @@ export type PageBySlugQuery = {
                   title?: string | null
                   color?: Enum_Pagecategory_Color | null
                 } | null
-              } | null
+              } | null>
             } | null
           } | null> | null
         }
@@ -12314,7 +12278,7 @@ export type Dev_AllPagesQuery = {
               alternativeText?: string | null
               name: string
             } | null
-            tag?: {
+            tags: Array<{
               __typename?: 'Tag'
               documentId: string
               title: string
@@ -12325,7 +12289,7 @@ export type Dev_AllPagesQuery = {
                 title?: string | null
                 color?: Enum_Pagecategory_Color | null
               } | null
-            } | null
+            } | null>
           } | null>
           category?: {
             __typename?: 'PageCategory'
@@ -13097,7 +13061,7 @@ export type Dev_AllPagesQuery = {
                 alternativeText?: string | null
                 name: string
               } | null
-              tag?: {
+              tags: Array<{
                 __typename?: 'Tag'
                 documentId: string
                 title: string
@@ -13108,7 +13072,7 @@ export type Dev_AllPagesQuery = {
                   title?: string | null
                   color?: Enum_Pagecategory_Color | null
                 } | null
-              } | null
+              } | null>
             } | null
           } | null> | null
         }
@@ -13908,7 +13872,7 @@ export type ArticlesSectionFragment = {
       alternativeText?: string | null
       name: string
     } | null
-    tag?: {
+    tags: Array<{
       __typename?: 'Tag'
       documentId: string
       title: string
@@ -13919,7 +13883,7 @@ export type ArticlesSectionFragment = {
         title?: string | null
         color?: Enum_Pagecategory_Color | null
       } | null
-    } | null
+    } | null>
   } | null>
   category?: {
     __typename?: 'PageCategory'
@@ -15002,7 +14966,7 @@ export type StarzLandingPageSectionFragment = {
         alternativeText?: string | null
         name: string
       } | null
-      tag?: {
+      tags: Array<{
         __typename?: 'Tag'
         documentId: string
         title: string
@@ -15013,7 +14977,7 @@ export type StarzLandingPageSectionFragment = {
           title?: string | null
           color?: Enum_Pagecategory_Color | null
         } | null
-      } | null
+      } | null>
     } | null
   } | null> | null
 }
@@ -15127,7 +15091,7 @@ type Sections_ComponentSectionsArticles_Fragment = {
       alternativeText?: string | null
       name: string
     } | null
-    tag?: {
+    tags: Array<{
       __typename?: 'Tag'
       documentId: string
       title: string
@@ -15138,7 +15102,7 @@ type Sections_ComponentSectionsArticles_Fragment = {
         title?: string | null
         color?: Enum_Pagecategory_Color | null
       } | null
-    } | null
+    } | null>
   } | null>
   category?: {
     __typename?: 'PageCategory'
@@ -15928,7 +15892,7 @@ type Sections_ComponentSectionsStarzLandingPage_Fragment = {
         alternativeText?: string | null
         name: string
       } | null
-      tag?: {
+      tags: Array<{
         __typename?: 'Tag'
         documentId: string
         title: string
@@ -15939,7 +15903,7 @@ type Sections_ComponentSectionsStarzLandingPage_Fragment = {
           title?: string | null
           color?: Enum_Pagecategory_Color | null
         } | null
-      } | null
+      } | null>
     } | null
   } | null> | null
 }
@@ -16238,7 +16202,7 @@ export const ArticleCardEntityFragmentDoc = gql`
     coverMedia {
       ...UploadImageEntity
     }
-    tag {
+    tags {
       ...TagEntity
     }
   }
@@ -16288,15 +16252,11 @@ export const ArticleEntityFragmentDoc = gql`
     gallery {
       ...UploadImageEntity
     }
-    tags {
-      ...TagEntity
-    }
   }
   ${ArticleCardEntityFragmentDoc}
   ${ArticleCategoryEntityFragmentDoc}
   ${FileBlockFragmentDoc}
   ${UploadImageEntityFragmentDoc}
-  ${TagEntityFragmentDoc}
 `
 export const UploadFileFragmentDoc = gql`
   fragment UploadFile on UploadFile {
@@ -17773,7 +17733,7 @@ export const ArticlesRssFeedDocument = gql`
       title
       addedAt
       perex
-      tag {
+      tags {
         title
         pageCategory {
           title
