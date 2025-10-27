@@ -52,9 +52,9 @@ export const articlesFetcher = (filters: ArticlesFilters, locale: string) => {
           ? `article.articleCategory.slug IN [${filters.articleCategorySlugs.join(',')}]`
           : '',
         filters.tagDocumentIds?.length
-          ? `article.tag.documentId IN [${filters.tagDocumentIds.join(',')}]`
+          ? `article.tags.documentId IN [${filters.tagDocumentIds.join(',')}]`
           : '',
-        filters.tagSlugs?.length ? `article.tag.slug IN [${filters.tagSlugs.join(',')}]` : '',
+        filters.tagSlugs?.length ? `article.tags.slug IN [${filters.tagSlugs.join(',')}]` : '',
         filters.adminGroupDocumentIds?.length
           ? `article.adminGroups.documentId IN [${filters.adminGroupDocumentIds.join(',')}]`
           : '',
@@ -79,6 +79,7 @@ export const articlesFetcher = (filters: ArticlesFilters, locale: string) => {
           addedAt: article.addedAt,
           coverMedia: article.coverMedia,
           tag: article.tag,
+          tags: article.tags,
           articleCategory: article.articleCategory,
         } as const
       })
