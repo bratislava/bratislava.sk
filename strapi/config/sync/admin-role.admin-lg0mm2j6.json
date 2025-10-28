@@ -106,7 +106,8 @@
           "files.media",
           "gallery",
           "adminGroups",
-          "tags"
+          "tags",
+          "inbaRelease"
         ],
         "locales": [
           "sk",
@@ -115,7 +116,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "fn8gh95kh1v71jez5wfky5pp",
+      "documentId": "svrurd30a633fgx2j2s4b2hh",
       "locale": null
     },
     {
@@ -163,7 +164,8 @@
           "files.media",
           "gallery",
           "adminGroups",
-          "tags"
+          "tags",
+          "inbaRelease"
         ],
         "locales": [
           "sk",
@@ -172,7 +174,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "n67lcytxk0slmm16vuuqu48c",
+      "documentId": "qq3xqwh1pwvef9wfk91biza9",
       "locale": null
     },
     {
@@ -192,7 +194,8 @@
           "files.media",
           "gallery",
           "adminGroups",
-          "tags"
+          "tags",
+          "inbaRelease"
         ],
         "locales": [
           "sk",
@@ -201,7 +204,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "p5sb4aqy7y02t9e6dk1gjvgb",
+      "documentId": "l58tiui8br0rjd0h6xu2ble0",
       "locale": null
     },
     {
@@ -1049,7 +1052,8 @@
           "inbaTag",
           "inbaRelease",
           "perex",
-          "content"
+          "content",
+          "tags"
         ],
         "locales": [
           "sk",
@@ -1058,7 +1062,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "wviq22gv8vol901wpt9e01rj",
+      "documentId": "umgmt52q39u92xarwuci2pil",
       "locale": null
     },
     {
@@ -1100,7 +1104,8 @@
           "inbaTag",
           "inbaRelease",
           "perex",
-          "content"
+          "content",
+          "tags"
         ],
         "locales": [
           "sk",
@@ -1109,7 +1114,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "zlppgr9g5wjjh1ejch2qn4nx",
+      "documentId": "cuodcrymzp7g3x8xzserzhts",
       "locale": null
     },
     {
@@ -1123,7 +1128,8 @@
           "inbaTag",
           "inbaRelease",
           "perex",
-          "content"
+          "content",
+          "tags"
         ],
         "locales": [
           "sk",
@@ -1132,7 +1138,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "lbb3zb4ksyrszrr5djxnssb0",
+      "documentId": "vkc3fxw4iih3wxhbsoiiq4xp",
       "locale": null
     },
     {
@@ -1148,12 +1154,13 @@
           "rearImage",
           "files.title",
           "files.media",
-          "inbaArticles"
+          "inbaArticles",
+          "articles"
         ]
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "oysitam3cv4dq3hhttnv4mh6",
+      "documentId": "byyoxwdpj8pbzuoflg848abn",
       "locale": null
     },
     {
@@ -1187,12 +1194,13 @@
           "rearImage",
           "files.title",
           "files.media",
-          "inbaArticles"
+          "inbaArticles",
+          "articles"
         ]
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "biyotl5iab5taxldmsxf4skj",
+      "documentId": "tlpnnu8iqldtg2h7snge83q4",
       "locale": null
     },
     {
@@ -1208,12 +1216,13 @@
           "rearImage",
           "files.title",
           "files.media",
-          "inbaArticles"
+          "inbaArticles",
+          "articles"
         ]
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "wevcmcci1lnqf4ncid4g9qjd",
+      "documentId": "wy38p172ey90ytvempdurfvd",
       "locale": null
     },
     {

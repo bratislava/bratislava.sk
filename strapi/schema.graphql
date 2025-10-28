@@ -131,6 +131,7 @@ type Article {
   files(filters: ComponentBlocksFileFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksFile]
   gallery(filters: UploadFileFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [UploadFile]!
   gallery_connection(filters: UploadFileFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UploadFileRelationResponseCollection
+  inbaRelease: InbaRelease
   locale: String
   localizations(filters: ArticleFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [Article]!
   localizations_connection(filters: ArticleFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): ArticleRelationResponseCollection
@@ -222,6 +223,7 @@ input ArticleFiltersInput {
   createdAt: DateTimeFilterInput
   documentId: IDFilterInput
   files: ComponentBlocksFileFiltersInput
+  inbaRelease: InbaReleaseFiltersInput
   locale: StringFilterInput
   localizations: ArticleFiltersInput
   not: ArticleFiltersInput
@@ -244,6 +246,7 @@ input ArticleInput {
   coverMedia: ID
   files: [ComponentBlocksFileInput]
   gallery: [ID]
+  inbaRelease: ID
   perex: String
   publishedAt: DateTime
   slug: String
@@ -3142,6 +3145,8 @@ type InbaArticle {
   perex: String
   publishedAt: DateTime
   slug: String!
+  tags(filters: TagFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [Tag]!
+  tags_connection(filters: TagFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): TagRelationResponseCollection
   title: String!
   updatedAt: DateTime
 }
@@ -3174,6 +3179,7 @@ input InbaArticleFiltersInput {
   perex: StringFilterInput
   publishedAt: DateTimeFilterInput
   slug: StringFilterInput
+  tags: TagFiltersInput
   title: StringFilterInput
   updatedAt: DateTimeFilterInput
 }
@@ -3186,6 +3192,7 @@ input InbaArticleInput {
   perex: String
   publishedAt: DateTime
   slug: String
+  tags: [ID]
   title: String
 }
 
@@ -3194,6 +3201,8 @@ type InbaArticleRelationResponseCollection {
 }
 
 type InbaRelease {
+  articles(filters: ArticleFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [Article]!
+  articles_connection(filters: ArticleFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): ArticleRelationResponseCollection
   coverImage: UploadFile
   createdAt: DateTime
   documentId: ID!
@@ -3225,6 +3234,7 @@ type InbaReleaseEntityResponseCollection {
 
 input InbaReleaseFiltersInput {
   and: [InbaReleaseFiltersInput]
+  articles: ArticleFiltersInput
   createdAt: DateTimeFilterInput
   documentId: IDFilterInput
   files: ComponentBlocksFileFiltersInput
@@ -3240,6 +3250,7 @@ input InbaReleaseFiltersInput {
 }
 
 input InbaReleaseInput {
+  articles: [ID]
   coverImage: ID
   files: [ComponentBlocksFileInput]
   inbaArticles: [ID]

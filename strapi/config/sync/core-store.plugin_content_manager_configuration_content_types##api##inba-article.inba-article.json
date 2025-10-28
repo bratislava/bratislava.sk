@@ -120,6 +120,21 @@
           "sortable": false
         }
       },
+      "tags": {
+        "edit": {
+          "label": "tags",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "title"
+        },
+        "list": {
+          "label": "tags",
+          "searchable": false,
+          "sortable": false
+        }
+      },
       "createdAt": {
         "edit": {
           "label": "createdAt",
@@ -235,6 +250,12 @@
           },
           {
             "name": "inbaRelease",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "tags",
             "size": 6
           }
         ]

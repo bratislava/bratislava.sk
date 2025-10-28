@@ -505,6 +505,7 @@ export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
           localized: false
         }
       }>
+    inbaRelease: Schema.Attribute.Relation<'manyToOne', 'api::inba-release.inba-release'>
     locale: Schema.Attribute.String
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::article.article'>
     perex: Schema.Attribute.Text &
@@ -939,6 +940,7 @@ export interface ApiInbaArticleInbaArticle extends Struct.CollectionTypeSchema {
           localized: true
         }
       }>
+    tags: Schema.Attribute.Relation<'oneToMany', 'api::tag.tag'>
     title: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{
@@ -963,6 +965,7 @@ export interface ApiInbaReleaseInbaRelease extends Struct.CollectionTypeSchema {
     draftAndPublish: true
   }
   attributes: {
+    articles: Schema.Attribute.Relation<'oneToMany', 'api::article.article'>
     coverImage: Schema.Attribute.Media<'images'>
     createdAt: Schema.Attribute.DateTime
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> & Schema.Attribute.Private
