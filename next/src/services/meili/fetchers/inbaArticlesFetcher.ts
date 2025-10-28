@@ -51,18 +51,9 @@ export const inbaArticlesFetcher = (filters: InbaArticlesFilters, locale: string
           slug: inbaArticle.slug,
           perex: inbaArticle.perex,
           publishedAt: inbaArticle.publishedAt,
-          ...(inbaArticle.coverImage && {
-            coverImage: {
-              documentId: inbaArticle.coverImage.documentId,
-              url: inbaArticle.coverImage.url,
-            },
-          }),
-          ...(inbaArticle.inbaTag && {
-            inbaTag: {
-              documentId: inbaArticle.inbaTag.documentId,
-              title: inbaArticle.inbaTag.title,
-            },
-          }),
+          coverImage: inbaArticle.coverImage,
+          inbaTag: inbaArticle.inbaTag,
+          tags: inbaArticle.tags,
         } as const
       })
 
