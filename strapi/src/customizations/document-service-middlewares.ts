@@ -115,8 +115,6 @@ export const registerDocumentServiceMiddlewares = ({ strapi }: { strapi: Core.St
                 connect: [tagToAssign.documentId],
               }
             }
-
-            article.tags = tagToAssign
           } catch (error) {
             console.log(
               `Failed to assign tag ${STARZ_ARTICLE_TAG_TITLE}
