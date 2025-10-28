@@ -153,7 +153,8 @@
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true
+          "editable": true,
+          "mainField": "title"
         },
         "list": {
           "label": "files",
@@ -203,6 +204,21 @@
           "label": "tags",
           "searchable": false,
           "sortable": false
+        }
+      },
+      "inbaRelease": {
+        "edit": {
+          "label": "inba vydanie",
+          "description": "Pole sa vypĺňa iba pre inba články.",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "title"
+        },
+        "list": {
+          "label": "inbaRelease",
+          "searchable": true,
+          "sortable": true
         }
       },
       "createdAt": {
@@ -273,14 +289,6 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "coverMedia",
-        "title",
-        "slug",
-        "updatedAt",
-        "addedAt"
-      ],
       "edit": [
         [
           {
@@ -354,8 +362,20 @@
           {
             "name": "tag",
             "size": 6
+          },
+          {
+            "name": "inbaRelease",
+            "size": 6
           }
         ]
+      ],
+      "list": [
+        "id",
+        "coverMedia",
+        "title",
+        "slug",
+        "updatedAt",
+        "addedAt"
       ]
     },
     "uid": "api::article.article"

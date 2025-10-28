@@ -28,6 +28,9 @@ fragment InbaReleaseEntity on InbaRelease {
   inbaArticles {
     ...InbaArticleCardEntity
   }
+  articles {
+    ...ArticleCardEntity
+  }
 }
 
 fragment InbaReleaseHomepageInbaCardEntity on InbaRelease {
@@ -61,6 +64,6 @@ query InbaReleasesRssFeed {
 
 query LatestInbaRelease {
   inbaReleases(sort: "releaseDate:desc", pagination: { limit: 1 }) {
-   ...InbaReleaseHomepageInbaCardEntity
+    ...InbaReleaseHomepageInbaCardEntity
   }
 }

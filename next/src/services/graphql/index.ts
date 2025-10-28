@@ -224,6 +224,7 @@ export type Article = {
   files?: Maybe<Array<Maybe<ComponentBlocksFile>>>
   gallery: Array<Maybe<UploadFile>>
   gallery_connection?: Maybe<UploadFileRelationResponseCollection>
+  inbaRelease?: Maybe<InbaRelease>
   locale?: Maybe<Scalars['String']['output']>
   localizations: Array<Maybe<Article>>
   localizations_connection?: Maybe<ArticleRelationResponseCollection>
@@ -401,6 +402,7 @@ export type ArticleFiltersInput = {
   createdAt?: InputMaybe<DateTimeFilterInput>
   documentId?: InputMaybe<IdFilterInput>
   files?: InputMaybe<ComponentBlocksFileFiltersInput>
+  inbaRelease?: InputMaybe<InbaReleaseFiltersInput>
   locale?: InputMaybe<StringFilterInput>
   localizations?: InputMaybe<ArticleFiltersInput>
   not?: InputMaybe<ArticleFiltersInput>
@@ -423,6 +425,7 @@ export type ArticleInput = {
   coverMedia?: InputMaybe<Scalars['ID']['input']>
   files?: InputMaybe<Array<InputMaybe<ComponentBlocksFileInput>>>
   gallery?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
+  inbaRelease?: InputMaybe<Scalars['ID']['input']>
   perex?: InputMaybe<Scalars['String']['input']>
   publishedAt?: InputMaybe<Scalars['DateTime']['input']>
   slug?: InputMaybe<Scalars['String']['input']>
@@ -3961,6 +3964,8 @@ export type InbaArticle = {
   perex?: Maybe<Scalars['String']['output']>
   publishedAt?: Maybe<Scalars['DateTime']['output']>
   slug: Scalars['String']['output']
+  tags: Array<Maybe<Tag>>
+  tags_connection?: Maybe<TagRelationResponseCollection>
   title: Scalars['String']['output']
   updatedAt?: Maybe<Scalars['DateTime']['output']>
 }
@@ -3973,6 +3978,18 @@ export type InbaArticleLocalizationsArgs = {
 
 export type InbaArticleLocalizations_ConnectionArgs = {
   filters?: InputMaybe<InbaArticleFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type InbaArticleTagsArgs = {
+  filters?: InputMaybe<TagFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type InbaArticleTags_ConnectionArgs = {
+  filters?: InputMaybe<TagFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
 }
@@ -4008,6 +4025,7 @@ export type InbaArticleFiltersInput = {
   perex?: InputMaybe<StringFilterInput>
   publishedAt?: InputMaybe<DateTimeFilterInput>
   slug?: InputMaybe<StringFilterInput>
+  tags?: InputMaybe<TagFiltersInput>
   title?: InputMaybe<StringFilterInput>
   updatedAt?: InputMaybe<DateTimeFilterInput>
 }
@@ -4020,6 +4038,7 @@ export type InbaArticleInput = {
   perex?: InputMaybe<Scalars['String']['input']>
   publishedAt?: InputMaybe<Scalars['DateTime']['input']>
   slug?: InputMaybe<Scalars['String']['input']>
+  tags?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
   title?: InputMaybe<Scalars['String']['input']>
 }
 
@@ -4030,6 +4049,8 @@ export type InbaArticleRelationResponseCollection = {
 
 export type InbaRelease = {
   __typename?: 'InbaRelease'
+  articles: Array<Maybe<Article>>
+  articles_connection?: Maybe<ArticleRelationResponseCollection>
   coverImage?: Maybe<UploadFile>
   createdAt?: Maybe<Scalars['DateTime']['output']>
   documentId: Scalars['ID']['output']
@@ -4043,6 +4064,18 @@ export type InbaRelease = {
   slug: Scalars['String']['output']
   title: Scalars['String']['output']
   updatedAt?: Maybe<Scalars['DateTime']['output']>
+}
+
+export type InbaReleaseArticlesArgs = {
+  filters?: InputMaybe<ArticleFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type InbaReleaseArticles_ConnectionArgs = {
+  filters?: InputMaybe<ArticleFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
 }
 
 export type InbaReleaseFilesArgs = {
@@ -4082,6 +4115,7 @@ export type InbaReleaseEntityResponseCollection = {
 
 export type InbaReleaseFiltersInput = {
   and?: InputMaybe<Array<InputMaybe<InbaReleaseFiltersInput>>>
+  articles?: InputMaybe<ArticleFiltersInput>
   createdAt?: InputMaybe<DateTimeFilterInput>
   documentId?: InputMaybe<IdFilterInput>
   files?: InputMaybe<ComponentBlocksFileFiltersInput>
@@ -4097,6 +4131,7 @@ export type InbaReleaseFiltersInput = {
 }
 
 export type InbaReleaseInput = {
+  articles?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
   coverImage?: InputMaybe<Scalars['ID']['input']>
   files?: InputMaybe<Array<InputMaybe<ComponentBlocksFileInput>>>
   inbaArticles?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
@@ -6837,6 +6872,24 @@ export type ArticleEntityFragment = {
     alternativeText?: string | null
     name: string
   } | null>
+  inbaRelease?: {
+    __typename?: 'InbaRelease'
+    perex?: string | null
+    releaseDate: any
+    documentId: string
+    title: string
+    slug: string
+    coverImage?: {
+      __typename?: 'UploadFile'
+      documentId: string
+      url: string
+      width?: number | null
+      height?: number | null
+      caption?: string | null
+      alternativeText?: string | null
+      name: string
+    } | null
+  } | null
   coverMedia?: {
     __typename?: 'UploadFile'
     documentId: string
@@ -6909,6 +6962,24 @@ export type ArticleBySlugQuery = {
       alternativeText?: string | null
       name: string
     } | null>
+    inbaRelease?: {
+      __typename?: 'InbaRelease'
+      perex?: string | null
+      releaseDate: any
+      documentId: string
+      title: string
+      slug: string
+      coverImage?: {
+        __typename?: 'UploadFile'
+        documentId: string
+        url: string
+        width?: number | null
+        height?: number | null
+        caption?: string | null
+        alternativeText?: string | null
+        name: string
+      } | null
+    } | null
     coverMedia?: {
       __typename?: 'UploadFile'
       documentId: string
@@ -7084,6 +7155,24 @@ export type Dev_AllArticlesQuery = {
       alternativeText?: string | null
       name: string
     } | null>
+    inbaRelease?: {
+      __typename?: 'InbaRelease'
+      perex?: string | null
+      releaseDate: any
+      documentId: string
+      title: string
+      slug: string
+      coverImage?: {
+        __typename?: 'UploadFile'
+        documentId: string
+        url: string
+        width?: number | null
+        height?: number | null
+        caption?: string | null
+        alternativeText?: string | null
+        name: string
+      } | null
+    } | null
     coverMedia?: {
       __typename?: 'UploadFile'
       documentId: string
@@ -9334,6 +9423,18 @@ export type InbaArticleCardEntityFragment = {
   locale?: string | null
   coverImage?: { __typename?: 'UploadFile'; documentId: string; url: string } | null
   inbaTag?: { __typename?: 'InbaTag'; documentId: string; title: string } | null
+  tags: Array<{
+    __typename?: 'Tag'
+    documentId: string
+    title: string
+    slug: string
+    pageCategory?: {
+      __typename?: 'PageCategory'
+      documentId: string
+      title?: string | null
+      color?: Enum_Pagecategory_Color | null
+    } | null
+  } | null>
 }
 
 export type InbaArticleEntityFragment = {
@@ -9348,6 +9449,18 @@ export type InbaArticleEntityFragment = {
   inbaRelease?: { __typename?: 'InbaRelease'; title: string; releaseDate: any; slug: string } | null
   coverImage?: { __typename?: 'UploadFile'; documentId: string; url: string } | null
   inbaTag?: { __typename?: 'InbaTag'; documentId: string; title: string } | null
+  tags: Array<{
+    __typename?: 'Tag'
+    documentId: string
+    title: string
+    slug: string
+    pageCategory?: {
+      __typename?: 'PageCategory'
+      documentId: string
+      title?: string | null
+      color?: Enum_Pagecategory_Color | null
+    } | null
+  } | null>
 }
 
 export type InbaTagEntityFragment = { __typename?: 'InbaTag'; documentId: string; title: string }
@@ -9376,6 +9489,18 @@ export type InbaArticleBySlugQuery = {
     } | null
     coverImage?: { __typename?: 'UploadFile'; documentId: string; url: string } | null
     inbaTag?: { __typename?: 'InbaTag'; documentId: string; title: string } | null
+    tags: Array<{
+      __typename?: 'Tag'
+      documentId: string
+      title: string
+      slug: string
+      pageCategory?: {
+        __typename?: 'PageCategory'
+        documentId: string
+        title?: string | null
+        color?: Enum_Pagecategory_Color | null
+      } | null
+    } | null>
   } | null>
 }
 
@@ -9490,6 +9615,49 @@ export type InbaReleaseEntityFragment = {
     locale?: string | null
     coverImage?: { __typename?: 'UploadFile'; documentId: string; url: string } | null
     inbaTag?: { __typename?: 'InbaTag'; documentId: string; title: string } | null
+    tags: Array<{
+      __typename?: 'Tag'
+      documentId: string
+      title: string
+      slug: string
+      pageCategory?: {
+        __typename?: 'PageCategory'
+        documentId: string
+        title?: string | null
+        color?: Enum_Pagecategory_Color | null
+      } | null
+    } | null>
+  } | null>
+  articles: Array<{
+    __typename: 'Article'
+    perex?: string | null
+    addedAt: any
+    documentId: string
+    slug: string
+    title: string
+    locale?: string | null
+    coverMedia?: {
+      __typename?: 'UploadFile'
+      documentId: string
+      url: string
+      width?: number | null
+      height?: number | null
+      caption?: string | null
+      alternativeText?: string | null
+      name: string
+    } | null
+    tags: Array<{
+      __typename?: 'Tag'
+      documentId: string
+      title: string
+      slug: string
+      pageCategory?: {
+        __typename?: 'PageCategory'
+        documentId: string
+        title?: string | null
+        color?: Enum_Pagecategory_Color | null
+      } | null
+    } | null>
   } | null>
   coverImage?: {
     __typename?: 'UploadFile'
@@ -9576,6 +9744,49 @@ export type InbaReleaseBySlugQuery = {
       locale?: string | null
       coverImage?: { __typename?: 'UploadFile'; documentId: string; url: string } | null
       inbaTag?: { __typename?: 'InbaTag'; documentId: string; title: string } | null
+      tags: Array<{
+        __typename?: 'Tag'
+        documentId: string
+        title: string
+        slug: string
+        pageCategory?: {
+          __typename?: 'PageCategory'
+          documentId: string
+          title?: string | null
+          color?: Enum_Pagecategory_Color | null
+        } | null
+      } | null>
+    } | null>
+    articles: Array<{
+      __typename: 'Article'
+      perex?: string | null
+      addedAt: any
+      documentId: string
+      slug: string
+      title: string
+      locale?: string | null
+      coverMedia?: {
+        __typename?: 'UploadFile'
+        documentId: string
+        url: string
+        width?: number | null
+        height?: number | null
+        caption?: string | null
+        alternativeText?: string | null
+        name: string
+      } | null
+      tags: Array<{
+        __typename?: 'Tag'
+        documentId: string
+        title: string
+        slug: string
+        pageCategory?: {
+          __typename?: 'PageCategory'
+          documentId: string
+          title?: string | null
+          color?: Enum_Pagecategory_Color | null
+        } | null
+      } | null>
     } | null>
     coverImage?: {
       __typename?: 'UploadFile'
@@ -16238,6 +16449,25 @@ export const FileBlockFragmentDoc = gql`
   }
   ${UploadFileEntityFragmentDoc}
 `
+export const InbaReleaseSlugEntityFragmentDoc = gql`
+  fragment InbaReleaseSlugEntity on InbaRelease {
+    documentId
+    title
+    slug
+  }
+`
+export const InbaReleaseCardEntityFragmentDoc = gql`
+  fragment InbaReleaseCardEntity on InbaRelease {
+    ...InbaReleaseSlugEntity
+    perex
+    releaseDate
+    coverImage {
+      ...UploadImageEntity
+    }
+  }
+  ${InbaReleaseSlugEntityFragmentDoc}
+  ${UploadImageEntityFragmentDoc}
+`
 export const ArticleEntityFragmentDoc = gql`
   fragment ArticleEntity on Article {
     ...ArticleCardEntity
@@ -16252,11 +16482,15 @@ export const ArticleEntityFragmentDoc = gql`
     gallery {
       ...UploadImageEntity
     }
+    inbaRelease {
+      ...InbaReleaseCardEntity
+    }
   }
   ${ArticleCardEntityFragmentDoc}
   ${ArticleCategoryEntityFragmentDoc}
   ${FileBlockFragmentDoc}
   ${UploadImageEntityFragmentDoc}
+  ${InbaReleaseCardEntityFragmentDoc}
 `
 export const UploadFileFragmentDoc = gql`
   fragment UploadFile on UploadFile {
@@ -16611,10 +16845,14 @@ export const InbaArticleCardEntityFragmentDoc = gql`
     inbaTag {
       ...InbaTagEntity
     }
+    tags {
+      ...TagEntity
+    }
   }
   ${InbaArticleSlugEntityFragmentDoc}
   ${UploadImageSrcEntityFragmentDoc}
   ${InbaTagEntityFragmentDoc}
+  ${TagEntityFragmentDoc}
 `
 export const InbaArticleEntityFragmentDoc = gql`
   fragment InbaArticleEntity on InbaArticle {
@@ -16627,25 +16865,6 @@ export const InbaArticleEntityFragmentDoc = gql`
     }
   }
   ${InbaArticleCardEntityFragmentDoc}
-`
-export const InbaReleaseSlugEntityFragmentDoc = gql`
-  fragment InbaReleaseSlugEntity on InbaRelease {
-    documentId
-    title
-    slug
-  }
-`
-export const InbaReleaseCardEntityFragmentDoc = gql`
-  fragment InbaReleaseCardEntity on InbaRelease {
-    ...InbaReleaseSlugEntity
-    perex
-    releaseDate
-    coverImage {
-      ...UploadImageEntity
-    }
-  }
-  ${InbaReleaseSlugEntityFragmentDoc}
-  ${UploadImageEntityFragmentDoc}
 `
 export const InbaReleaseEntityFragmentDoc = gql`
   fragment InbaReleaseEntity on InbaRelease {
@@ -16663,11 +16882,15 @@ export const InbaReleaseEntityFragmentDoc = gql`
     inbaArticles {
       ...InbaArticleCardEntity
     }
+    articles {
+      ...ArticleCardEntity
+    }
   }
   ${InbaReleaseCardEntityFragmentDoc}
   ${UploadImageEntityFragmentDoc}
   ${UploadFileEntityFragmentDoc}
   ${InbaArticleCardEntityFragmentDoc}
+  ${ArticleCardEntityFragmentDoc}
 `
 export const InbaReleaseHomepageInbaCardEntityFragmentDoc = gql`
   fragment InbaReleaseHomepageInbaCardEntity on InbaRelease {

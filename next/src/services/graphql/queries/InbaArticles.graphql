@@ -15,6 +15,9 @@ fragment InbaArticleCardEntity on InbaArticle {
   inbaTag {
     ...InbaTagEntity
   }
+  tags {
+    ...TagEntity
+  }
 }
 
 fragment InbaArticleEntity on InbaArticle {

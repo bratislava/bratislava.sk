@@ -60,7 +60,9 @@
       },
       "multiple": false,
       "required": false,
-      "allowedTypes": ["images"]
+      "allowedTypes": [
+        "images"
+      ]
     },
     "articleCategory": {
       "type": "relation",
@@ -109,7 +111,9 @@
       },
       "multiple": true,
       "required": false,
-      "allowedTypes": ["images"]
+      "allowedTypes": [
+        "images"
+      ]
     },
     "adminGroups": {
       "type": "relation",
@@ -121,6 +125,12 @@
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::tag.tag",
+      "inversedBy": "articles"
+    },
+    "inbaRelease": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::inba-release.inba-release",
       "inversedBy": "articles"
     }
   }
