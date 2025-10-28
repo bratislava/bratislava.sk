@@ -54,7 +54,7 @@ export type DocumentMeili = Omit<Document, '__typename' | 'documentCategory' | '
   documentCategory?: Omit<DocumentCategory, '__typename' | 'documents'>
 }
 
-export type InbaArticleMeili = Omit<InbaArticle, '__typename' | 'tags' | 'coverImage'> & {
+export type InbaArticleMeili = Omit<InbaArticle, '__typename' | 'coverImage'> & {
   coverImage?: UploadFile
   inbaTag?: Pick<InbaTag, 'title'>
 }
