@@ -1,17 +1,11 @@
 import {
-  Article,
-  ArticleCategory,
-  ArticleEntity,
-  Document,
-  DocumentCategory,
-  InbaArticle,
-  InbaRelease,
-  InbaReleaseEntity,
-  InbaTag,
+  ArticleEntityFragment,
+  DocumentEntityFragment,
+  InbaArticleEntityFragment,
+  InbaReleaseEntityFragment,
   Page,
-  PageCategory,
-  Regulation,
-  UploadFile,
+  PageEntityFragment,
+  RegulationEntityFragment,
 } from '../graphql'
 
 /**
@@ -28,48 +22,19 @@ export type SearchIndexWrapped<T extends string, K extends object> = {
   type: T
 }
 
-// Meilisearch doesn't nest entities in `data.attributes`, therefore in order to use Strapi types we need to `Omit` those
-// attributes that are nested and replace them with their direct representations.
-
 export type MixedResults =
   | SearchIndexWrapped<'page', PageMeili>
   | SearchIndexWrapped<'article', ArticleMeili>
   | SearchIndexWrapped<'regulation', RegulationMeili>
 
-export type PageMeili = Omit<
-  Page,
-  '__typename' | 'pageCategory' | 'pageBackgroundImage' | 'parentPage' | 'childPages'
-> & {
-  pageCategory?: Omit<PageCategory, '__typename' | 'pages'>
-  pageBackgroundImage?: UploadFile
-}
+export type PageMeili = PageEntityFragment & Page['publishedAt']
 
-export type ArticleMeili = Pick<ArticleEntity, 'id'> &
-  Omit<Article, 'coverMedia' | 'articleCategory'> & {
-    coverMedia?: UploadFile
-    articleCategory?: Omit<ArticleCategory, '__typename' | 'articles'>
-  }
+export type ArticleMeili = ArticleEntityFragment
 
-export type DocumentMeili = Omit<Document, '__typename' | 'documentCategory' | 'files'> & {
-  documentCategory?: Omit<DocumentCategory, '__typename' | 'documents'>
-}
+export type DocumentMeili = DocumentEntityFragment
 
-export type InbaArticleMeili = Omit<InbaArticle, '__typename' | 'coverImage'> & {
-  coverImage?: UploadFile
-  inbaTag?: Pick<InbaTag, 'title'>
-}
+export type InbaArticleMeili = InbaArticleEntityFragment
 
-export type InbaReleaseMeili = Pick<InbaReleaseEntity, 'id'> &
-  Omit<InbaRelease, '__typename' | 'coverImage' | 'rearImage' | 'inbaArticles' | 'files'> & {
-    coverImage?: UploadFile
-    rearImage?: UploadFile
-  }
+export type InbaReleaseMeili = InbaReleaseEntityFragment
 
-export type RegulationMeili = Omit<
-  Regulation,
-  '__typename' | 'amending' | 'cancellation' | 'effectiveFrom'
-> & {
-  amending?: RegulationMeili[]
-  cancellation?: RegulationMeili
-  effectiveFrom?: string
-}
+export type RegulationMeili = RegulationEntityFragment

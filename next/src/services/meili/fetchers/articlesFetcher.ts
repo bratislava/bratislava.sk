@@ -68,22 +68,4 @@ export const articlesFetcher = (filters: ArticlesFilters, locale: string) => {
       sort: ['article.addedAtTimestamp:desc'],
     })
     .then(unwrapFromSearchIndex('article'))
-    .then((response) => {
-      const hits = response.hits.map((article) => {
-        return {
-          documentId: article.documentId,
-          __typename: 'Article',
-          title: article.title,
-          slug: article.slug,
-          perex: article.perex,
-          addedAt: article.addedAt,
-          coverMedia: article.coverMedia,
-          tag: article.tag,
-          tags: article.tags,
-          articleCategory: article.articleCategory,
-        } as const
-      })
-
-      return { ...response, hits }
-    })
 }

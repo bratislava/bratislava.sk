@@ -25,27 +25,4 @@ export const inbaReleasesFetcher = (filters: InbaReleasesFilters) => {
       sort: ['inba-release.releaseDate:desc'],
     })
     .then(unwrapFromSearchIndex('inba-release'))
-    .then((response) => {
-      const hits = response.hits.map((inbaRelease) => {
-        return {
-          documentId: inbaRelease.documentId,
-          title: inbaRelease.title,
-          slug: inbaRelease.slug,
-          perex: inbaRelease.perex,
-          releaseDate: inbaRelease.releaseDate,
-          ...(inbaRelease.coverImage && {
-            coverImage: {
-              url: inbaRelease.coverImage.url,
-            },
-          }),
-          ...(inbaRelease.rearImage && {
-            rearImage: {
-              url: inbaRelease.rearImage.url,
-            },
-          }),
-        } as const
-      })
-
-      return { ...response, hits }
-    })
 }
