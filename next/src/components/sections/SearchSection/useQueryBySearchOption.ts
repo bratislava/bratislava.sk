@@ -94,14 +94,12 @@ export const useQueryBySearchOption = ({
   })
 
   const articlesQuery = useQuery({
-    // TODO filters type
-    // eslint-disable-next-line @tanstack/query/exhaustive-deps
-    queryKey: getArticlesQueryKey(filters as ArticlesFilters, locale),
-    queryFn: () => articlesFetcher(filters as ArticlesFilters, locale),
+    queryKey: getArticlesQueryKey(filters, locale),
+    queryFn: () => articlesFetcher(filters, locale),
     placeholderData: keepPreviousData,
     select: (data) => {
       const formattedData: SearchResult[] =
-        data?.hits?.map((article): SearchResult => {
+        data?.hits?.map((article) => {
           return {
             title: article.title,
             uniqueId: article.slug,
@@ -123,7 +121,7 @@ export const useQueryBySearchOption = ({
     placeholderData: keepPreviousData,
     select: (data) => {
       const formattedData: SearchResult[] =
-        data?.hits?.map((document): SearchResult => {
+        data?.hits?.map((document) => {
           return {
             title: document.title,
             uniqueId: document.slug,
@@ -138,14 +136,12 @@ export const useQueryBySearchOption = ({
   })
 
   const inbaArticlesQuery = useQuery({
-    // TODO filters type
-    // eslint-disable-next-line @tanstack/query/exhaustive-deps
-    queryKey: getInbaArticlesQueryKey(filters as InbaArticlesFilters, locale),
-    queryFn: () => inbaArticlesFetcher(filters as InbaArticlesFilters, locale),
+    queryKey: getInbaArticlesQueryKey(filters, locale),
+    queryFn: () => inbaArticlesFetcher(filters, locale),
     placeholderData: keepPreviousData,
     select: (data) => {
       const formattedData: SearchResult[] =
-        data?.hits?.map((inbaArticle): SearchResult => {
+        data?.hits?.map((inbaArticle) => {
           return {
             title: inbaArticle.title,
             uniqueId: inbaArticle.slug,
@@ -162,13 +158,12 @@ export const useQueryBySearchOption = ({
   const regulationCategoryTranslationMap = useRegulationCategoryTranslationMap()
 
   const regulationsQuery = useQuery({
-    // TODO filters type
     queryKey: getRegulationsQueryKey(filters),
     queryFn: () => regulationsFetcher(filters),
     placeholderData: keepPreviousData,
     select: (data) => {
       const formattedData: SearchResult[] =
-        data?.hits?.map((regulation): SearchResult => {
+        data?.hits?.map((regulation) => {
           const categoryDisplayName = isDefined(regulation.category)
             ? regulationCategoryTranslationMap[regulation.category]
             : null
