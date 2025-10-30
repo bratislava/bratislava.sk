@@ -358,7 +358,7 @@ fragment ContactsSection on ComponentSectionsContactsSection {
   personContacts {
     ...ContactPersonCardBlock
   }
-  directionsContact{
+  directionsContact {
     ...ContactDirectionsCardBlock
   }
   titleLevelContactsSection: titleLevel
@@ -509,6 +509,12 @@ fragment NewsletterSection on ComponentSectionsNewsletter {
   instagramUrl
 }
 
+fragment InbaLatestReleaseSection on ComponentSectionsInbaLatestRelease {
+  articles {
+    ...ArticleCardEntity
+  }
+}
+
 fragment Sections on PageSectionsDynamicZone {
   __typename
 
@@ -648,6 +654,10 @@ fragment Sections on PageSectionsDynamicZone {
 
   ... on ComponentSectionsNewsletter {
     ...NewsletterSection
+  }
+
+  ... on ComponentSectionsInbaLatestRelease {
+    ...InbaLatestReleaseSection
   }
 }
 
