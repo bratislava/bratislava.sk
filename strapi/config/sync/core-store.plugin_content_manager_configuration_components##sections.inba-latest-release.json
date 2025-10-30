@@ -1,0 +1,66 @@
+{
+  "key": "plugin_content_manager_configuration_components::sections.inba-latest-release",
+  "value": {
+    "settings": {
+      "bulkable": true,
+      "filterable": true,
+      "searchable": true,
+      "pageSize": 10,
+      "mainField": "documentId",
+      "defaultSortBy": "documentId",
+      "defaultSortOrder": "ASC"
+    },
+    "metadatas": {
+      "id": {
+        "edit": {},
+        "list": {
+          "label": "id",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "articles": {
+        "edit": {
+          "label": "Pripnuté články",
+          "description": "Sekcia automaticky zobrazia vždy tri inba články z najnovšieho vydania. Ak sú v tomto políčku vybrané články (max 3), zobrazia sa namiesto automatických.",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "title"
+        },
+        "list": {
+          "label": "articles",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "documentId": {
+        "edit": {},
+        "list": {
+          "label": "documentId",
+          "searchable": true,
+          "sortable": true
+        }
+      }
+    },
+    "layouts": {
+      "edit": [
+        [
+          {
+            "name": "articles",
+            "size": 12
+          }
+        ]
+      ],
+      "list": [
+        "id",
+        "articles"
+      ]
+    },
+    "uid": "sections.inba-latest-release",
+    "isComponent": true
+  },
+  "type": "object",
+  "environment": null,
+  "tag": null
+}
