@@ -908,6 +908,16 @@ export interface SectionsInbaArticlesList extends Struct.ComponentSchema {
   }
 }
 
+export interface SectionsInbaLatestRelease extends Struct.ComponentSchema {
+  collectionName: 'components_sections_inba_latest_releases'
+  info: {
+    displayName: 'in.ba najnov\u0161ie vydanie'
+  }
+  attributes: {
+    articles: Schema.Attribute.Relation<'oneToMany', 'api::article.article'>
+  }
+}
+
 export interface SectionsInbaReleases extends Struct.ComponentSchema {
   collectionName: 'components_sections_inba_releases'
   info: {
@@ -1271,6 +1281,7 @@ declare module '@strapi/strapi' {
       'sections.homepage-tabs': SectionsHomepageTabs
       'sections.iframe': SectionsIframe
       'sections.inba-articles-list': SectionsInbaArticlesList
+      'sections.inba-latest-release': SectionsInbaLatestRelease
       'sections.inba-releases': SectionsInbaReleases
       'sections.links': SectionsLinks
       'sections.narrow-text': SectionsNarrowText

@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_sections_inba_latest_releases",
+  "info": {
+    "displayName": "in.ba najnovšie vydanie"
+  },
+  "options": {},
+  "attributes": {
+    "articles": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::article.article"
+    }
+  },
+  "config": {}
+}
