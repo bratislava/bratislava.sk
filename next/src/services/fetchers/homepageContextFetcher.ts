@@ -22,7 +22,7 @@ export const homepageContextFetcher = async (locale: string): Promise<HomepageCo
       // Only show articles with no adminGroup assigned
       filters: { adminGroups: { adminGroupId: { eq: null } } },
     }),
-    client.LatestInbaRelease(),
+    client.HomepageLatestInbaRelease(),
   ])
 
   return {

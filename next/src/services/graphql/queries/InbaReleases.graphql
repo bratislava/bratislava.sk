@@ -62,8 +62,14 @@ query InbaReleasesRssFeed {
   }
 }
 
-query LatestInbaRelease {
+query HomepageLatestInbaRelease {
   inbaReleases(sort: "releaseDate:desc", pagination: { limit: 1 }) {
     ...InbaReleaseHomepageInbaCardEntity
+  }
+}
+
+query LatestInbaRelease {
+  inbaReleases(sort: "releaseDate:desc", pagination: { limit: 1 }) {
+    ...InbaReleaseEntity
   }
 }

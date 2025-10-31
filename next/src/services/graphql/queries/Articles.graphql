@@ -19,6 +19,9 @@ fragment ArticleCardEntity on Article {
   coverMedia {
     ...UploadImageEntity
   }
+  articleCategory {
+    title
+  }
   tags {
     ...TagEntity
   }
