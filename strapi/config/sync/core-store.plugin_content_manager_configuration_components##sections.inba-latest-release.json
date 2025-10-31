@@ -22,7 +22,7 @@
       "articles": {
         "edit": {
           "label": "Pripnuté články",
-          "description": "Sekcia automaticky zobrazia vždy tri inba články z najnovšieho vydania. Ak sú v tomto políčku vybrané články (max 3), zobrazia sa namiesto automatických.",
+          "description": "Sekcia vždy zobrazí 3 inba články z najnovšieho vydania. Ak sú v tomto políčku vybrané nejaké články (max 3), zobrazia sa ako prvé. Zvyšné sa doplnia automaticky.",
           "placeholder": "",
           "visible": true,
           "editable": true,
@@ -73,11 +73,7 @@
           }
         ]
       ],
-      "list": [
-        "id",
-        "articles",
-        "allReleasesPage"
-      ]
+      "list": ["id", "articles", "allReleasesPage"]
     },
     "uid": "sections.inba-latest-release",
     "isComponent": true
