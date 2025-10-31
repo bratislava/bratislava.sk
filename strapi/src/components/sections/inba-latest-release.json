@@ -9,6 +9,11 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::article.article"
+    },
+    "allReleasesPage": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::page.page"
     }
   },
   "config": {}

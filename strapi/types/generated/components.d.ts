@@ -914,6 +914,7 @@ export interface SectionsInbaLatestRelease extends Struct.ComponentSchema {
     displayName: 'in.ba najnov\u0161ie vydanie'
   }
   attributes: {
+    allReleasesPage: Schema.Attribute.Relation<'oneToOne', 'api::page.page'>
     articles: Schema.Attribute.Relation<'oneToMany', 'api::article.article'>
   }
 }

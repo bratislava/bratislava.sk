@@ -513,6 +513,9 @@ fragment InbaLatestReleaseSection on ComponentSectionsInbaLatestRelease {
   articles {
     ...ArticleCardEntity
   }
+  allReleasesPage {
+    ...PageSlugEntity
+  }
 }
 
 fragment Sections on PageSectionsDynamicZone {

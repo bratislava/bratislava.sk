@@ -34,6 +34,21 @@
           "sortable": false
         }
       },
+      "allReleasesPage": {
+        "edit": {
+          "label": "Stránka so všetkými vydaniami",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "title"
+        },
+        "list": {
+          "label": "allReleasesPage",
+          "searchable": true,
+          "sortable": true
+        }
+      },
       "documentId": {
         "edit": {},
         "list": {
@@ -50,11 +65,18 @@
             "name": "articles",
             "size": 12
           }
+        ],
+        [
+          {
+            "name": "allReleasesPage",
+            "size": 12
+          }
         ]
       ],
       "list": [
         "id",
-        "articles"
+        "articles",
+        "allReleasesPage"
       ]
     },
     "uid": "sections.inba-latest-release",

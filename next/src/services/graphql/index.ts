@@ -2253,6 +2253,7 @@ export type ComponentSectionsInbaArticlesListInput = {
 
 export type ComponentSectionsInbaLatestRelease = {
   __typename?: 'ComponentSectionsInbaLatestRelease'
+  allReleasesPage?: Maybe<Page>
   articles: Array<Maybe<Article>>
   articles_connection?: Maybe<ArticleRelationResponseCollection>
   id: Scalars['ID']['output']
@@ -2271,6 +2272,7 @@ export type ComponentSectionsInbaLatestReleaseArticles_ConnectionArgs = {
 }
 
 export type ComponentSectionsInbaLatestReleaseFiltersInput = {
+  allReleasesPage?: InputMaybe<PageFiltersInput>
   and?: InputMaybe<Array<InputMaybe<ComponentSectionsInbaLatestReleaseFiltersInput>>>
   articles?: InputMaybe<ArticleFiltersInput>
   not?: InputMaybe<ComponentSectionsInbaLatestReleaseFiltersInput>
@@ -2278,6 +2280,7 @@ export type ComponentSectionsInbaLatestReleaseFiltersInput = {
 }
 
 export type ComponentSectionsInbaLatestReleaseInput = {
+  allReleasesPage?: InputMaybe<Scalars['ID']['input']>
   articles?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
   id?: InputMaybe<Scalars['ID']['input']>
 }
@@ -6850,6 +6853,7 @@ export type ArticleCardEntityFragment = {
     alternativeText?: string | null
     name: string
   } | null
+  articleCategory?: { __typename?: 'ArticleCategory'; title: string } | null
   tags: Array<{
     __typename?: 'Tag'
     documentId: string
@@ -6876,8 +6880,8 @@ export type ArticleEntityFragment = {
   locale?: string | null
   articleCategory?: {
     __typename?: 'ArticleCategory'
-    documentId: string
     title: string
+    documentId: string
     slug: string
   } | null
   files?: Array<{
@@ -6966,8 +6970,8 @@ export type ArticleBySlugQuery = {
     locale?: string | null
     articleCategory?: {
       __typename?: 'ArticleCategory'
-      documentId: string
       title: string
+      documentId: string
       slug: string
     } | null
     files?: Array<{
@@ -7098,6 +7102,7 @@ export type ArticlesQuery = {
       alternativeText?: string | null
       name: string
     } | null
+    articleCategory?: { __typename?: 'ArticleCategory'; title: string } | null
     tags: Array<{
       __typename?: 'Tag'
       documentId: string
@@ -7159,8 +7164,8 @@ export type Dev_AllArticlesQuery = {
     locale?: string | null
     articleCategory?: {
       __typename?: 'ArticleCategory'
-      documentId: string
       title: string
+      documentId: string
       slug: string
     } | null
     files?: Array<{
@@ -7562,6 +7567,7 @@ export type CardLinkFragment = {
       alternativeText?: string | null
       name: string
     } | null
+    articleCategory?: { __typename?: 'ArticleCategory'; title: string } | null
     tags: Array<{
       __typename?: 'Tag'
       documentId: string
@@ -8551,6 +8557,7 @@ export type HomepageEntityFragment = {
           alternativeText?: string | null
           name: string
         } | null
+        articleCategory?: { __typename?: 'ArticleCategory'; title: string } | null
         tags: Array<{
           __typename?: 'Tag'
           documentId: string
@@ -8596,6 +8603,7 @@ export type HomepageEntityFragment = {
         alternativeText?: string | null
         name: string
       } | null
+      articleCategory?: { __typename?: 'ArticleCategory'; title: string } | null
       tags: Array<{
         __typename?: 'Tag'
         documentId: string
@@ -8627,6 +8635,7 @@ export type HomepageEntityFragment = {
         alternativeText?: string | null
         name: string
       } | null
+      articleCategory?: { __typename?: 'ArticleCategory'; title: string } | null
       tags: Array<{
         __typename?: 'Tag'
         documentId: string
@@ -8882,6 +8891,7 @@ export type HomepageQuery = {
             alternativeText?: string | null
             name: string
           } | null
+          articleCategory?: { __typename?: 'ArticleCategory'; title: string } | null
           tags: Array<{
             __typename?: 'Tag'
             documentId: string
@@ -8927,6 +8937,7 @@ export type HomepageQuery = {
           alternativeText?: string | null
           name: string
         } | null
+        articleCategory?: { __typename?: 'ArticleCategory'; title: string } | null
         tags: Array<{
           __typename?: 'Tag'
           documentId: string
@@ -8958,6 +8969,7 @@ export type HomepageQuery = {
           alternativeText?: string | null
           name: string
         } | null
+        articleCategory?: { __typename?: 'ArticleCategory'; title: string } | null
         tags: Array<{
           __typename?: 'Tag'
           documentId: string
@@ -9191,6 +9203,7 @@ export type HomepageHighlightsItemFragment = {
       alternativeText?: string | null
       name: string
     } | null
+    articleCategory?: { __typename?: 'ArticleCategory'; title: string } | null
     tags: Array<{
       __typename?: 'Tag'
       documentId: string
@@ -9236,6 +9249,7 @@ export type HomepageTabsFragment = {
       alternativeText?: string | null
       name: string
     } | null
+    articleCategory?: { __typename?: 'ArticleCategory'; title: string } | null
     tags: Array<{
       __typename?: 'Tag'
       documentId: string
@@ -9267,6 +9281,7 @@ export type HomepageTabsFragment = {
       alternativeText?: string | null
       name: string
     } | null
+    articleCategory?: { __typename?: 'ArticleCategory'; title: string } | null
     tags: Array<{
       __typename?: 'Tag'
       documentId: string
@@ -9680,6 +9695,7 @@ export type InbaReleaseEntityFragment = {
       alternativeText?: string | null
       name: string
     } | null
+    articleCategory?: { __typename?: 'ArticleCategory'; title: string } | null
     tags: Array<{
       __typename?: 'Tag'
       documentId: string
@@ -9809,6 +9825,7 @@ export type InbaReleaseBySlugQuery = {
         alternativeText?: string | null
         name: string
       } | null
+      articleCategory?: { __typename?: 'ArticleCategory'; title: string } | null
       tags: Array<{
         __typename?: 'Tag'
         documentId: string
@@ -9973,6 +9990,7 @@ export type LatestInbaReleaseQuery = {
         alternativeText?: string | null
         name: string
       } | null
+      articleCategory?: { __typename?: 'ArticleCategory'; title: string } | null
       tags: Array<{
         __typename?: 'Tag'
         documentId: string
@@ -10293,6 +10311,7 @@ export type PageEntityFragment = {
             alternativeText?: string | null
             name: string
           } | null
+          articleCategory?: { __typename?: 'ArticleCategory'; title: string } | null
           tags: Array<{
             __typename?: 'Tag'
             documentId: string
@@ -10744,6 +10763,7 @@ export type PageEntityFragment = {
             alternativeText?: string | null
             name: string
           } | null
+          articleCategory?: { __typename?: 'ArticleCategory'; title: string } | null
           tags: Array<{
             __typename?: 'Tag'
             documentId: string
@@ -10757,6 +10777,13 @@ export type PageEntityFragment = {
             } | null
           } | null>
         } | null>
+        allReleasesPage?: {
+          __typename?: 'Page'
+          documentId: string
+          slug?: string | null
+          title: string
+          locale?: string | null
+        } | null
       }
     | { __typename: 'ComponentSectionsInbaReleases'; title?: string | null; text?: string | null }
     | {
@@ -11107,6 +11134,7 @@ export type PageEntityFragment = {
               alternativeText?: string | null
               name: string
             } | null
+            articleCategory?: { __typename?: 'ArticleCategory'; title: string } | null
             tags: Array<{
               __typename?: 'Tag'
               documentId: string
@@ -11479,6 +11507,7 @@ export type PageBySlugQuery = {
               alternativeText?: string | null
               name: string
             } | null
+            articleCategory?: { __typename?: 'ArticleCategory'; title: string } | null
             tags: Array<{
               __typename?: 'Tag'
               documentId: string
@@ -11933,6 +11962,7 @@ export type PageBySlugQuery = {
               alternativeText?: string | null
               name: string
             } | null
+            articleCategory?: { __typename?: 'ArticleCategory'; title: string } | null
             tags: Array<{
               __typename?: 'Tag'
               documentId: string
@@ -11946,6 +11976,13 @@ export type PageBySlugQuery = {
               } | null
             } | null>
           } | null>
+          allReleasesPage?: {
+            __typename?: 'Page'
+            documentId: string
+            slug?: string | null
+            title: string
+            locale?: string | null
+          } | null
         }
       | { __typename: 'ComponentSectionsInbaReleases'; title?: string | null; text?: string | null }
       | {
@@ -12296,6 +12333,7 @@ export type PageBySlugQuery = {
                 alternativeText?: string | null
                 name: string
               } | null
+              articleCategory?: { __typename?: 'ArticleCategory'; title: string } | null
               tags: Array<{
                 __typename?: 'Tag'
                 documentId: string
@@ -12694,6 +12732,7 @@ export type Dev_AllPagesQuery = {
               alternativeText?: string | null
               name: string
             } | null
+            articleCategory?: { __typename?: 'ArticleCategory'; title: string } | null
             tags: Array<{
               __typename?: 'Tag'
               documentId: string
@@ -13148,6 +13187,7 @@ export type Dev_AllPagesQuery = {
               alternativeText?: string | null
               name: string
             } | null
+            articleCategory?: { __typename?: 'ArticleCategory'; title: string } | null
             tags: Array<{
               __typename?: 'Tag'
               documentId: string
@@ -13161,6 +13201,13 @@ export type Dev_AllPagesQuery = {
               } | null
             } | null>
           } | null>
+          allReleasesPage?: {
+            __typename?: 'Page'
+            documentId: string
+            slug?: string | null
+            title: string
+            locale?: string | null
+          } | null
         }
       | { __typename: 'ComponentSectionsInbaReleases'; title?: string | null; text?: string | null }
       | {
@@ -13511,6 +13558,7 @@ export type Dev_AllPagesQuery = {
                 alternativeText?: string | null
                 name: string
               } | null
+              articleCategory?: { __typename?: 'ArticleCategory'; title: string } | null
               tags: Array<{
                 __typename?: 'Tag'
                 documentId: string
@@ -14322,6 +14370,7 @@ export type ArticlesSectionFragment = {
       alternativeText?: string | null
       name: string
     } | null
+    articleCategory?: { __typename?: 'ArticleCategory'; title: string } | null
     tags: Array<{
       __typename?: 'Tag'
       documentId: string
@@ -15416,6 +15465,7 @@ export type StarzLandingPageSectionFragment = {
         alternativeText?: string | null
         name: string
       } | null
+      articleCategory?: { __typename?: 'ArticleCategory'; title: string } | null
       tags: Array<{
         __typename?: 'Tag'
         documentId: string
@@ -15484,6 +15534,7 @@ export type InbaLatestReleaseSectionFragment = {
       alternativeText?: string | null
       name: string
     } | null
+    articleCategory?: { __typename?: 'ArticleCategory'; title: string } | null
     tags: Array<{
       __typename?: 'Tag'
       documentId: string
@@ -15497,6 +15548,13 @@ export type InbaLatestReleaseSectionFragment = {
       } | null
     } | null>
   } | null>
+  allReleasesPage?: {
+    __typename?: 'Page'
+    documentId: string
+    slug?: string | null
+    title: string
+    locale?: string | null
+  } | null
 }
 
 type Sections_ComponentSectionsAccordion_Fragment = {
@@ -15576,6 +15634,7 @@ type Sections_ComponentSectionsArticles_Fragment = {
       alternativeText?: string | null
       name: string
     } | null
+    articleCategory?: { __typename?: 'ArticleCategory'; title: string } | null
     tags: Array<{
       __typename?: 'Tag'
       documentId: string
@@ -16031,6 +16090,7 @@ type Sections_ComponentSectionsInbaLatestRelease_Fragment = {
       alternativeText?: string | null
       name: string
     } | null
+    articleCategory?: { __typename?: 'ArticleCategory'; title: string } | null
     tags: Array<{
       __typename?: 'Tag'
       documentId: string
@@ -16044,6 +16104,13 @@ type Sections_ComponentSectionsInbaLatestRelease_Fragment = {
       } | null
     } | null>
   } | null>
+  allReleasesPage?: {
+    __typename?: 'Page'
+    documentId: string
+    slug?: string | null
+    title: string
+    locale?: string | null
+  } | null
 }
 
 type Sections_ComponentSectionsInbaReleases_Fragment = {
@@ -16412,6 +16479,7 @@ type Sections_ComponentSectionsStarzLandingPage_Fragment = {
         alternativeText?: string | null
         name: string
       } | null
+      articleCategory?: { __typename?: 'ArticleCategory'; title: string } | null
       tags: Array<{
         __typename?: 'Tag'
         documentId: string
@@ -16722,6 +16790,9 @@ export const ArticleCardEntityFragmentDoc = gql`
     addedAt
     coverMedia {
       ...UploadImageEntity
+    }
+    articleCategory {
+      title
     }
     tags {
       ...TagEntity
@@ -18018,8 +18089,12 @@ export const InbaLatestReleaseSectionFragmentDoc = gql`
     articles {
       ...ArticleCardEntity
     }
+    allReleasesPage {
+      ...PageSlugEntity
+    }
   }
   ${ArticleCardEntityFragmentDoc}
+  ${PageSlugEntityFragmentDoc}
 `
 export const SectionsFragmentDoc = gql`
   fragment Sections on PageSectionsDynamicZone {

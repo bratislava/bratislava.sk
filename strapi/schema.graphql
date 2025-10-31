@@ -1758,12 +1758,14 @@ input ComponentSectionsInbaArticlesListInput {
 }
 
 type ComponentSectionsInbaLatestRelease {
+  allReleasesPage: Page
   articles(filters: ArticleFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [Article]!
   articles_connection(filters: ArticleFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): ArticleRelationResponseCollection
   id: ID!
 }
 
 input ComponentSectionsInbaLatestReleaseFiltersInput {
+  allReleasesPage: PageFiltersInput
   and: [ComponentSectionsInbaLatestReleaseFiltersInput]
   articles: ArticleFiltersInput
   not: ComponentSectionsInbaLatestReleaseFiltersInput
@@ -1771,6 +1773,7 @@ input ComponentSectionsInbaLatestReleaseFiltersInput {
 }
 
 input ComponentSectionsInbaLatestReleaseInput {
+  allReleasesPage: ID
   articles: [ID]
   id: ID
 }
