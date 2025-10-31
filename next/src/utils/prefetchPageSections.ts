@@ -1,5 +1,6 @@
 import { dehydrate, QueryClient } from '@tanstack/react-query'
 
+import { latestInbaReleaseQueryOptions } from '@/src/components/sections/InbaLatestReleaseSection'
 import { PageEntityFragment } from '@/src/services/graphql'
 import { client } from '@/src/services/graphql/gql'
 import {
@@ -62,6 +63,10 @@ export const prefetchPageSections = async (page: PageEntityFragment, locale: str
       queryKey: getInbaReleasesQueryKey(inbaReleasesDefaultFilters),
       queryFn: () => inbaReleasesFetcher(inbaReleasesDefaultFilters),
     })
+  }
+
+  if (sectionTypes.includes('ComponentSectionsInbaLatestRelease')) {
+    await queryClient.prefetchQuery(latestInbaReleaseQueryOptions)
   }
 
   // TODO this does not work, throws ERR_CONNECTION_REFUSED
