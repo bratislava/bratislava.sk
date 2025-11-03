@@ -8,7 +8,7 @@ describe('English translation', { testIsolation: false }, () => {
     .forEach((device) => {
       context(device, Cypress.env('resolution')[`${device}`], () => {
         before(() => {
-          cy.visit('/kontakty')
+          cy.visit('/kontakty-a-uradne-hodiny')
           cy.setCookie('CookieConsent', 'false') // Set CookieBot cookies to something to prevent cookie banner to show up
         })
 
@@ -17,7 +17,7 @@ describe('English translation', { testIsolation: false }, () => {
             .eq(0)
             .invoke('text')
             .then((text) => {
-              expect(text.replace(/\u00a0/g, ' ')).equal('Úradné hodiny')
+              expect(text.replace(/\u00a0/g, ' ')).equal('Kontakty')
             })
 
           if (device === 'desktop') {
@@ -41,8 +41,8 @@ describe('English translation', { testIsolation: false }, () => {
 
         it('3. Checking original language.', () => {
           cy.wait(500)
-          cy.location('pathname', { timeout: 10000 }).should('eq', '/kontakty')
-          cy.dataCy('heading-two').eq(0).should('contain.text', 'Úradné hodiny')
+          cy.location('pathname', { timeout: 10000 }).should('eq', '/kontakty-a-uradne-hodiny')
+          cy.dataCy('heading-two').eq(0).should('contain.text', 'Kontakty')
         })
       })
     })

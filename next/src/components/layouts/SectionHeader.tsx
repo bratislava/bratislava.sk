@@ -38,6 +38,7 @@ const SectionHeader = ({
   excludeFromTableOfContents = false,
   showMoreLink,
   className,
+  // eslint-disable-next-line sonarjs/cognitive-complexity
 }: SectionHeaderProps) => {
   if (!title && !text && !showMoreLink) {
     return null
@@ -63,7 +64,11 @@ const SectionHeader = ({
           )}
         >
           {title ? (
-            <Typography variant={titleLevel ?? 'h2'} id={titleId ?? slugify(title)}>
+            <Typography
+              variant={titleLevel ?? 'h2'}
+              id={titleId ?? slugify(title)}
+              data-cy={titleLevel === 'h2' ? 'heading-two' : undefined}
+            >
               {title}
             </Typography>
           ) : null}
