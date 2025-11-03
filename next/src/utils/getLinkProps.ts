@@ -48,6 +48,7 @@ export const getLinkProps = (
     href = `/spravy/${link.article.slug}`
   } else if (link?.url) {
     label = link.label ?? link.url
+    href = link.url
     target = href.startsWith('http') ? '_blank' : undefined
 
     // To allow setting url query parameters from strapi we use the url field if it starts with '?'
