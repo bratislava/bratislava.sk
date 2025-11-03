@@ -89,9 +89,24 @@
           "sortable": false
         }
       },
+      "articleCategory": {
+        "edit": {
+          "label": "Typ",
+          "description": "Perex tlačových správ začína miestom a dátumom, napr. \"Bratislava, 15. marca 2025\".",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "title"
+        },
+        "list": {
+          "label": "articleCategory",
+          "searchable": true,
+          "sortable": true
+        }
+      },
       "tag": {
         "edit": {
-          "label": "Téma",
+          "label": "Tag",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -100,8 +115,8 @@
         },
         "list": {
           "label": "tag",
-          "searchable": false,
-          "sortable": false
+          "searchable": true,
+          "sortable": true
         }
       },
       "addedAt": {
@@ -138,7 +153,8 @@
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true
+          "editable": true,
+          "mainField": "title"
         },
         "list": {
           "label": "files",
@@ -175,9 +191,9 @@
           "sortable": false
         }
       },
-      "articleCategory": {
+      "tags": {
         "edit": {
-          "label": "Typ",
+          "label": "Témy",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -185,7 +201,22 @@
           "mainField": "title"
         },
         "list": {
-          "label": "articleCategory",
+          "label": "tags",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "inbaRelease": {
+        "edit": {
+          "label": "inba vydanie",
+          "description": "Pole sa vypĺňa iba pre inba články.",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "title"
+        },
+        "list": {
+          "label": "inbaRelease",
           "searchable": true,
           "sortable": true
         }
@@ -258,14 +289,6 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "coverMedia",
-        "title",
-        "slug",
-        "updatedAt",
-        "addedAt"
-      ],
       "edit": [
         [
           {
@@ -307,7 +330,7 @@
             "size": 6
           },
           {
-            "name": "tag",
+            "name": "tags",
             "size": 6
           }
         ],
@@ -334,7 +357,25 @@
             "name": "adminGroups",
             "size": 12
           }
+        ],
+        [
+          {
+            "name": "tag",
+            "size": 6
+          },
+          {
+            "name": "inbaRelease",
+            "size": 6
+          }
         ]
+      ],
+      "list": [
+        "id",
+        "coverMedia",
+        "title",
+        "slug",
+        "updatedAt",
+        "addedAt"
       ]
     },
     "uid": "api::article.article"

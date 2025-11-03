@@ -43,29 +43,4 @@ export const inbaArticlesFetcher = (filters: InbaArticlesFilters, locale: string
       sort: ['inba-article.publishedAtTimestamp:desc'],
     })
     .then(unwrapFromSearchIndex('inba-article'))
-    .then((response) => {
-      const hits = response.hits.map((inbaArticle) => {
-        return {
-          documentId: inbaArticle.documentId,
-          title: inbaArticle.title,
-          slug: inbaArticle.slug,
-          perex: inbaArticle.perex,
-          publishedAt: inbaArticle.publishedAt,
-          ...(inbaArticle.coverImage && {
-            coverImage: {
-              documentId: inbaArticle.coverImage.documentId,
-              url: inbaArticle.coverImage.url,
-            },
-          }),
-          ...(inbaArticle.inbaTag && {
-            inbaTag: {
-              documentId: inbaArticle.inbaTag.documentId,
-              title: inbaArticle.inbaTag.title,
-            },
-          }),
-        } as const
-      })
-
-      return { ...response, hits }
-    })
 }

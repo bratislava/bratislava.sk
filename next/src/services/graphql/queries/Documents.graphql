@@ -29,3 +29,9 @@ query DocumentBySlug($slug: String!) {
     ...DocumentEntity
   }
 }
+
+query DocumentCategories {
+  documentCategories(pagination: { limit: -1 }) {
+    ...DocumentCategoryEntity
+  }
+}

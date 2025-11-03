@@ -8,8 +8,7 @@ import { generateImageSizes } from '@/src/utils/generateImageSizes'
 export const transformInbaArticleProps = (article: NonNullable<InbaArticleCardEntityFragment>) => {
   const imageSizes = generateImageSizes({ default: '100vw', md: '50vw', lg: '33vw' })
 
-  const { title, slug, coverImage, publishedAt, perex, inbaTag } = article
-  const tagTitle = inbaTag?.title
+  const { title, slug, coverImage, publishedAt, perex } = article
 
   const propsToReturn: ArticleCardProps = {
     title,
@@ -17,7 +16,6 @@ export const transformInbaArticleProps = (article: NonNullable<InbaArticleCardEn
     imgSrc: coverImage?.url,
     imgSizes: imageSizes,
     date: formatDate(publishedAt),
-    tag: tagTitle,
     text: perex,
   }
 

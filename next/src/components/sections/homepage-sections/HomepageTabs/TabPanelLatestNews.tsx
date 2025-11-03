@@ -1,14 +1,15 @@
 import { Typography } from '@bratislava/component-library'
+import { Fragment } from 'react'
 import { TabPanel } from 'react-aria-components'
 
 import ArticleCardOld from '@/src/components/cards/ArticleCardOld'
 import { transformArticleProps } from '@/src/components/cards/transformArticleProps'
 import Button from '@/src/components/common/Button/Button'
 import ResponsiveCarousel from '@/src/components/common/Carousel/ResponsiveCarousel'
+import HorizontalDivider from '@/src/components/common/Divider/HorizontalDivider'
 import MLink from '@/src/components/common/MLink/MLink'
-import Tag from '@/src/components/common/Tag/Tag'
 import { useHomepageContext } from '@/src/components/providers/HomepageContextProvider'
-import { getCategoryColorLocalStyle } from '@/src/utils/colors'
+import { formatDate } from '@/src/utils/formatDate'
 import { getLinkProps } from '@/src/utils/getLinkProps'
 import { isDefined } from '@/src/utils/isDefined'
 
@@ -45,33 +46,28 @@ const TabPanelLatestNews = () => {
 
           <div className="hidden flex-col gap-6 lg:flex">
             {latestArticlesFiltered.map((post, index) => {
-              const { tag, slug, title } = post
-              const tagColor = tag?.pageCategory?.color
+              const { slug, title, addedAt } = post
 
               return (
-                <div
-                   
-                  key={index}
-                  // margin and padding serve to display focus ring better
-                  className="wrapper-focus-ring relative -m-1 rounded-sm p-1"
-                  style={getCategoryColorLocalStyle({ color: tagColor })}
-                >
-                  {tag?.title && (
-                    <div className="mb-3">
-                      <Tag text={tag.title} size="small" isColored />
-                    </div>
-                  )}
-                  <MLink
-                    href={`/spravy/${slug}`}
-                    stretched
-                    variant="underlineOnHover"
-                    className="line-clamp-3"
+                <Fragment key={index}>
+                  {index > 0 && <HorizontalDivider />}
+                  <div
+                    // margin and padding serve to display focus ring better
+                    className="wrapper-focus-ring relative -m-1 flex flex-col gap-2 rounded-sm p-1"
                   >
-                    <Typography variant="h5" as="h3">
-                      {title}
-                    </Typography>
-                  </MLink>
-                </div>
+                    <Typography variant="p-small">{formatDate(addedAt)}</Typography>
+                    <MLink
+                      href={`/spravy/${slug}`}
+                      stretched
+                      variant="underlineOnHover"
+                      className="line-clamp-3"
+                    >
+                      <Typography variant="h5" as="h3">
+                        {title}
+                      </Typography>
+                    </MLink>
+                  </div>
+                </Fragment>
               )
             })}
           </div>

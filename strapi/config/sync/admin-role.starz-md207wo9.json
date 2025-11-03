@@ -54,13 +54,13 @@
           "slug",
           "perex",
           "coverMedia",
-          "tag",
+          "articleCategory",
           "addedAt",
           "content",
           "files.title",
           "files.media",
           "gallery",
-          "articleCategory"
+          "tags"
         ],
         "locales": [
           "sk",
@@ -71,7 +71,7 @@
         "plugin::content-manager.document-admin-group-includes-starz"
       ],
       "actionParameters": {},
-      "documentId": "f6widr5tssehmgmduf1744p0",
+      "documentId": "mr83dgnuzapqyu6tx4y0o58x",
       "locale": null
     },
     {
@@ -116,14 +116,14 @@
           "perex",
           "alias",
           "coverMedia",
-          "tag",
+          "articleCategory",
           "addedAt",
           "content",
           "files.title",
           "files.media",
           "gallery",
           "adminGroups",
-          "articleCategory"
+          "tags"
         ],
         "locales": [
           "sk",
@@ -134,7 +134,7 @@
         "plugin::content-manager.document-admin-group-includes-starz"
       ],
       "actionParameters": {},
-      "documentId": "uq1ftp44j2k0c4e1elol53xj",
+      "documentId": "v215d4aaqp7s32fwnq9f5q8p",
       "locale": null
     },
     {
@@ -146,13 +146,13 @@
           "slug",
           "perex",
           "coverMedia",
-          "tag",
+          "articleCategory",
           "addedAt",
           "content",
           "files.title",
           "files.media",
           "gallery",
-          "articleCategory"
+          "tags"
         ],
         "locales": [
           "sk",
@@ -163,7 +163,7 @@
         "plugin::content-manager.document-admin-group-includes-starz"
       ],
       "actionParameters": {},
-      "documentId": "c8jyikicldt43crbpkyria4s",
+      "documentId": "zi4q0z706lm38yp2loldvlfs",
       "locale": null
     },
     {

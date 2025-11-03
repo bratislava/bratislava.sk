@@ -29,6 +29,7 @@ export const getLinkProps = (
     | HomepageHighlightsItemFragment
     | null
     | undefined,
+  // eslint-disable-next-line sonarjs/cognitive-complexity
 ) => {
   let href = '#'
   let label = link?.label ?? ''
@@ -47,8 +48,12 @@ export const getLinkProps = (
     href = `/spravy/${link.article.slug}`
   } else if (link?.url) {
     label = link.label ?? link.url
-    href = link.url
     target = href.startsWith('http') ? '_blank' : undefined
+
+    // To allow setting url query parameters from strapi we use the url field if it starts with '?'
+    if (link?.url?.startsWith('?')) {
+      href += link.url
+    } else href = link.url
   }
 
   const analyticsProps: LinkAnalyticsProps | undefined = link?.analyticsId

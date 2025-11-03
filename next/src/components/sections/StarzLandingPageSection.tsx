@@ -24,7 +24,10 @@ const StarzLandingPageSection = ({ section }: StarzLandingPageSectionProps) => {
           <ResponsiveCarousel
             items={filteredCardLinks
               .map((card, index) => {
-                const cardImage = card.media ?? card.page?.pageBackgroundImage
+                const cardImage =
+                  card.media ??
+                  // If more links are filled in strapi (e.g. both page and article), choose the first non-empty field
+                  (card.page ? card.page?.pageBackgroundImage : card.article?.coverMedia)
 
                 const imageSizes = generateImageSizes({ default: '100vw', md: '50vw', lg: '33vw' })
 

@@ -8,8 +8,8 @@
       "searchable": true,
       "pageSize": 10,
       "mainField": "title",
-      "defaultSortBy": "title",
-      "defaultSortOrder": "ASC"
+      "defaultSortBy": "updatedAt",
+      "defaultSortOrder": "DESC"
     },
     "metadatas": {
       "id": {
@@ -146,12 +146,6 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "title",
-        "faqCategory",
-        "createdAt"
-      ],
       "edit": [
         [
           {
@@ -175,6 +169,13 @@
             "size": 6
           }
         ]
+      ],
+      "list": [
+        "id",
+        "title",
+        "faqCategory",
+        "updatedAt",
+        "adminGroups"
       ]
     }
   },

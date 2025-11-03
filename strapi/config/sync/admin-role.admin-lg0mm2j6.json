@@ -99,14 +99,15 @@
           "perex",
           "alias",
           "coverMedia",
-          "tag",
+          "articleCategory",
           "addedAt",
           "content",
           "files.title",
           "files.media",
           "gallery",
           "adminGroups",
-          "articleCategory"
+          "tags",
+          "inbaRelease"
         ],
         "locales": [
           "sk",
@@ -115,7 +116,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "iuwtsskr8plzptyx7qh9e7jx",
+      "documentId": "svrurd30a633fgx2j2s4b2hh",
       "locale": null
     },
     {
@@ -156,14 +157,15 @@
           "perex",
           "alias",
           "coverMedia",
-          "tag",
+          "articleCategory",
           "addedAt",
           "content",
           "files.title",
           "files.media",
           "gallery",
           "adminGroups",
-          "articleCategory"
+          "tags",
+          "inbaRelease"
         ],
         "locales": [
           "sk",
@@ -172,7 +174,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "ftwmjarp1wm63e763popor4k",
+      "documentId": "qq3xqwh1pwvef9wfk91biza9",
       "locale": null
     },
     {
@@ -185,14 +187,15 @@
           "perex",
           "alias",
           "coverMedia",
-          "tag",
+          "articleCategory",
           "addedAt",
           "content",
           "files.title",
           "files.media",
           "gallery",
           "adminGroups",
-          "articleCategory"
+          "tags",
+          "inbaRelease"
         ],
         "locales": [
           "sk",
@@ -201,7 +204,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "u1e9d5a37c13vih7ikz9cd15",
+      "documentId": "l58tiui8br0rjd0h6xu2ble0",
       "locale": null
     },
     {
@@ -784,6 +787,13 @@
           "welcomeMedia",
           "highlights.title",
           "highlights.text",
+          "highlights.cards.label",
+          "highlights.cards.subtext",
+          "highlights.cards.page",
+          "highlights.cards.article",
+          "highlights.cards.media",
+          "highlights.cards.url",
+          "highlights.cards.analyticsId",
           "tabs.leftArticle",
           "tabs.rightArticle",
           "tabs.newsPageLink.label",
@@ -822,6 +832,11 @@
           "topServices.services.link.analyticsId",
           "inba.title",
           "inba.content",
+          "inba.showMoreLink.label",
+          "inba.showMoreLink.page",
+          "inba.showMoreLink.article",
+          "inba.showMoreLink.url",
+          "inba.showMoreLink.analyticsId",
           "eventsSection.title",
           "eventsSection.text",
           "eventsSection.showMoreLink.label",
@@ -837,7 +852,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "hcxswp4c7ew3qlg47q2f74fc",
+      "documentId": "l0m0ydkkl7y8qpmi5rrv2mf7",
       "locale": null
     },
     {
@@ -879,6 +894,13 @@
           "welcomeMedia",
           "highlights.title",
           "highlights.text",
+          "highlights.cards.label",
+          "highlights.cards.subtext",
+          "highlights.cards.page",
+          "highlights.cards.article",
+          "highlights.cards.media",
+          "highlights.cards.url",
+          "highlights.cards.analyticsId",
           "tabs.leftArticle",
           "tabs.rightArticle",
           "tabs.newsPageLink.label",
@@ -917,6 +939,11 @@
           "topServices.services.link.analyticsId",
           "inba.title",
           "inba.content",
+          "inba.showMoreLink.label",
+          "inba.showMoreLink.page",
+          "inba.showMoreLink.article",
+          "inba.showMoreLink.url",
+          "inba.showMoreLink.analyticsId",
           "eventsSection.title",
           "eventsSection.text",
           "eventsSection.showMoreLink.label",
@@ -932,7 +959,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "he3myan0e1qkw1y41evgyizk",
+      "documentId": "kg9hgk9dyk027eb1fq20cad7",
       "locale": null
     },
     {
@@ -946,6 +973,13 @@
           "welcomeMedia",
           "highlights.title",
           "highlights.text",
+          "highlights.cards.label",
+          "highlights.cards.subtext",
+          "highlights.cards.page",
+          "highlights.cards.article",
+          "highlights.cards.media",
+          "highlights.cards.url",
+          "highlights.cards.analyticsId",
           "tabs.leftArticle",
           "tabs.rightArticle",
           "tabs.newsPageLink.label",
@@ -984,6 +1018,11 @@
           "topServices.services.link.analyticsId",
           "inba.title",
           "inba.content",
+          "inba.showMoreLink.label",
+          "inba.showMoreLink.page",
+          "inba.showMoreLink.article",
+          "inba.showMoreLink.url",
+          "inba.showMoreLink.analyticsId",
           "eventsSection.title",
           "eventsSection.text",
           "eventsSection.showMoreLink.label",
@@ -999,7 +1038,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "vlr99q1nkfgzacfm1oo6ul0y",
+      "documentId": "l1teoj234atkcr0sk79a5f5j",
       "locale": null
     },
     {
@@ -1013,7 +1052,8 @@
           "inbaTag",
           "inbaRelease",
           "perex",
-          "content"
+          "content",
+          "tags"
         ],
         "locales": [
           "sk",
@@ -1022,7 +1062,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "wviq22gv8vol901wpt9e01rj",
+      "documentId": "umgmt52q39u92xarwuci2pil",
       "locale": null
     },
     {
@@ -1064,7 +1104,8 @@
           "inbaTag",
           "inbaRelease",
           "perex",
-          "content"
+          "content",
+          "tags"
         ],
         "locales": [
           "sk",
@@ -1073,7 +1114,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "zlppgr9g5wjjh1ejch2qn4nx",
+      "documentId": "cuodcrymzp7g3x8xzserzhts",
       "locale": null
     },
     {
@@ -1087,7 +1128,8 @@
           "inbaTag",
           "inbaRelease",
           "perex",
-          "content"
+          "content",
+          "tags"
         ],
         "locales": [
           "sk",
@@ -1096,7 +1138,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "lbb3zb4ksyrszrr5djxnssb0",
+      "documentId": "vkc3fxw4iih3wxhbsoiiq4xp",
       "locale": null
     },
     {
@@ -1112,12 +1154,13 @@
           "rearImage",
           "files.title",
           "files.media",
-          "inbaArticles"
+          "inbaArticles",
+          "articles"
         ]
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "oysitam3cv4dq3hhttnv4mh6",
+      "documentId": "byyoxwdpj8pbzuoflg848abn",
       "locale": null
     },
     {
@@ -1151,12 +1194,13 @@
           "rearImage",
           "files.title",
           "files.media",
-          "inbaArticles"
+          "inbaArticles",
+          "articles"
         ]
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "biyotl5iab5taxldmsxf4skj",
+      "documentId": "tlpnnu8iqldtg2h7snge83q4",
       "locale": null
     },
     {
@@ -1172,12 +1216,13 @@
           "rearImage",
           "files.title",
           "files.media",
-          "inbaArticles"
+          "inbaArticles",
+          "articles"
         ]
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "wevcmcci1lnqf4ncid4g9qjd",
+      "documentId": "wy38p172ey90ytvempdurfvd",
       "locale": null
     },
     {

@@ -1,7 +1,7 @@
 {
   "collectionName": "components_sections_pros_and_cons_sections",
   "info": {
-    "displayName": "Pros and Cons Section",
+    "displayName": "Pre a proti",
     "description": ""
   },
   "options": {},
@@ -14,23 +14,23 @@
     },
     "textAlign": {
       "type": "enumeration",
+      "required": true,
+      "default": "left",
       "enum": [
         "left",
         "center"
-      ],
-      "required": true,
-      "default": "left"
+      ]
     },
     "pros": {
       "type": "component",
-      "repeatable": false,
       "component": "blocks.pros-and-cons-card",
+      "repeatable": false,
       "required": true
     },
     "cons": {
       "type": "component",
-      "repeatable": false,
       "component": "blocks.pros-and-cons-card",
+      "repeatable": false,
       "required": true
     }
   }

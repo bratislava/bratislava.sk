@@ -16,6 +16,11 @@
       "relation": "oneToOne",
       "target": "api::page.page"
     },
+    "article": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::article.article"
+    },
     "media": {
       "type": "media",
       "multiple": false,

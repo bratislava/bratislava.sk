@@ -6,7 +6,7 @@
       "bulkable": true,
       "filterable": true,
       "searchable": true,
-      "pageSize": 100,
+      "pageSize": 10,
       "mainField": "slug",
       "defaultSortBy": "updatedAt",
       "defaultSortOrder": "DESC"
@@ -44,6 +44,20 @@
         },
         "list": {
           "label": "slug",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "path": {
+        "edit": {
+          "label": "path",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "path",
           "searchable": true,
           "sortable": true
         }
@@ -86,6 +100,20 @@
         },
         "list": {
           "label": "metaDiscription",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "metaDescription": {
+        "edit": {
+          "label": "metaDescription",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "metaDescription",
           "searchable": true,
           "sortable": true
         }
@@ -261,6 +289,79 @@
           "sortable": false
         }
       },
+      "parent": {
+        "edit": {
+          "label": "parent",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "title"
+        },
+        "list": {
+          "label": "parent",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "children": {
+        "edit": {
+          "label": "children",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "title"
+        },
+        "list": {
+          "label": "children",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "fullPath": {
+        "edit": {
+          "label": "fullPath",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "fullPath",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "redirects": {
+        "edit": {
+          "label": "redirects",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "source"
+        },
+        "list": {
+          "label": "redirects",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "breadcrumbTitle": {
+        "edit": {
+          "label": "breadcrumbTitle",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "breadcrumbTitle",
+          "searchable": true,
+          "sortable": true
+        }
+      },
       "relatedContents": {
         "edit": {
           "label": "Súvisiaci obsah",
@@ -359,12 +460,6 @@
       }
     },
     "layouts": {
-      "list": [
-        "slug",
-        "title",
-        "updatedAt",
-        "parentPage"
-      ],
       "edit": [
         [
           {
@@ -476,8 +571,51 @@
           {
             "name": "adminGroups",
             "size": 6
+          },
+          {
+            "name": "path",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "metaDescription",
+            "size": 6
+          },
+          {
+            "name": "parent",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "children",
+            "size": 6
+          },
+          {
+            "name": "fullPath",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "redirects",
+            "size": 6
+          },
+          {
+            "name": "breadcrumbTitle",
+            "size": 6
           }
         ]
+      ],
+      "list": [
+        "slug",
+        "title",
+        "parentPage",
+        "updatedAt",
+        "updatedBy",
+        "adminGroups",
+        "subtext"
       ]
     }
   },

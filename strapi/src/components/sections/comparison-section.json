@@ -1,7 +1,7 @@
 {
   "collectionName": "components_sections_comparison_sections",
   "info": {
-    "displayName": "Comparison Section",
+    "displayName": "Porovnanie",
     "description": ""
   },
   "options": {},
@@ -14,18 +14,17 @@
     },
     "textAlign": {
       "type": "enumeration",
+      "required": true,
+      "default": "left",
       "enum": [
         "left",
         "center"
-      ],
-      "required": true,
-      "default": "left"
+      ]
     },
     "cards": {
-      "displayName": "comparison card",
       "type": "component",
-      "repeatable": true,
       "component": "blocks.comparison-card",
+      "repeatable": true,
       "required": true,
       "max": 3
     }

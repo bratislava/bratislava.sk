@@ -260,6 +260,7 @@
           "perex",
           "alias",
           "coverMedia",
+          "articleCategory",
           "tag",
           "addedAt",
           "content",
@@ -267,7 +268,8 @@
           "files.media",
           "gallery",
           "adminGroups",
-          "articleCategory"
+          "tags",
+          "inbaRelease"
         ],
         "locales": [
           "sk",
@@ -276,7 +278,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "g2dcd5i50ajx46fx2204iyxh",
+      "documentId": "itqxfpyi03p7apdncpeuspzn",
       "locale": null
     },
     {
@@ -317,6 +319,7 @@
           "perex",
           "alias",
           "coverMedia",
+          "articleCategory",
           "tag",
           "addedAt",
           "content",
@@ -324,7 +327,8 @@
           "files.media",
           "gallery",
           "adminGroups",
-          "articleCategory"
+          "tags",
+          "inbaRelease"
         ],
         "locales": [
           "sk",
@@ -333,7 +337,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "ynbud2gwmg6nnbeg1xt0tqqy",
+      "documentId": "qorpzzilr8l9q0kdmnzn6b5x",
       "locale": null
     },
     {
@@ -346,6 +350,7 @@
           "perex",
           "alias",
           "coverMedia",
+          "articleCategory",
           "tag",
           "addedAt",
           "content",
@@ -353,7 +358,8 @@
           "files.media",
           "gallery",
           "adminGroups",
-          "articleCategory"
+          "tags",
+          "inbaRelease"
         ],
         "locales": [
           "sk",
@@ -362,7 +368,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "s1wthibci74jumgd9ryvptbj",
+      "documentId": "bgmg1i8d9mizrq7s3g2rnu3y",
       "locale": null
     },
     {
@@ -1224,7 +1230,8 @@
           "inbaTag",
           "inbaRelease",
           "perex",
-          "content"
+          "content",
+          "tags"
         ],
         "locales": [
           "sk",
@@ -1233,7 +1240,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "jzjy6ktjsgezpwmdn3yezlp3",
+      "documentId": "rpeuroo07x3gpyvp1sjemqwt",
       "locale": null
     },
     {
@@ -1275,7 +1282,8 @@
           "inbaTag",
           "inbaRelease",
           "perex",
-          "content"
+          "content",
+          "tags"
         ],
         "locales": [
           "sk",
@@ -1284,7 +1292,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "ffdvlecb4imyk0kfvv43cbcj",
+      "documentId": "tdt6d3pf1he8h89jlrc11m5t",
       "locale": null
     },
     {
@@ -1298,7 +1306,8 @@
           "inbaTag",
           "inbaRelease",
           "perex",
-          "content"
+          "content",
+          "tags"
         ],
         "locales": [
           "sk",
@@ -1307,7 +1316,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "nvebsra8cupxqwjnat36xz9d",
+      "documentId": "ypktl2tv5b5wekyzjp2ah1l8",
       "locale": null
     },
     {
@@ -1323,12 +1332,13 @@
           "rearImage",
           "files.title",
           "files.media",
-          "inbaArticles"
+          "inbaArticles",
+          "articles"
         ]
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "o8vwrbn2hcbc6899qzm8v22t",
+      "documentId": "epewyx57tosyzsi0qqu8ngvv",
       "locale": null
     },
     {
@@ -1362,12 +1372,13 @@
           "rearImage",
           "files.title",
           "files.media",
-          "inbaArticles"
+          "inbaArticles",
+          "articles"
         ]
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "ak88squf5780y3xoj0mlawvd",
+      "documentId": "nfg0qp1qto4oa5d3sfvz0t11",
       "locale": null
     },
     {
@@ -1383,12 +1394,13 @@
           "rearImage",
           "files.title",
           "files.media",
-          "inbaArticles"
+          "inbaArticles",
+          "articles"
         ]
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "ekerzrdvkjvv35ygbtgkxw0b",
+      "documentId": "v5sq1dvypl13xh2lwi3bktvh",
       "locale": null
     },
     {
@@ -1471,6 +1483,75 @@
       "conditions": [],
       "actionParameters": {},
       "documentId": "xx90yzf17cs47hyrsarqzvtd",
+      "locale": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "api::internal-job.internal-job",
+      "properties": {
+        "fields": [
+          "jobType",
+          "relatedDocumentId",
+          "payload",
+          "state",
+          "error"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": {},
+      "documentId": "vchxalbv3k9qboh1k1w6q7r5",
+      "locale": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "subject": "api::internal-job.internal-job",
+      "properties": {},
+      "conditions": [],
+      "actionParameters": {},
+      "documentId": "h05q2tdkz3a1levlufzqpbz0",
+      "locale": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.publish",
+      "subject": "api::internal-job.internal-job",
+      "properties": {},
+      "conditions": [],
+      "actionParameters": {},
+      "documentId": "aiwvrs9esuybflksmmw7kccn",
+      "locale": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::internal-job.internal-job",
+      "properties": {
+        "fields": [
+          "jobType",
+          "relatedDocumentId",
+          "payload",
+          "state",
+          "error"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": {},
+      "documentId": "aet2036otrek38oinhh47kym",
+      "locale": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::internal-job.internal-job",
+      "properties": {
+        "fields": [
+          "jobType",
+          "relatedDocumentId",
+          "payload",
+          "state",
+          "error"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": {},
+      "documentId": "adsyqc733berdar2lzbjq1w6",
       "locale": null
     },
     {
@@ -1680,9 +1761,11 @@
         "fields": [
           "title",
           "slug",
+          "path",
           "alias",
           "subtext",
           "metaDiscription",
+          "metaDescription",
           "keywords",
           "showTableOfContents",
           "pageCategory",
@@ -1703,6 +1786,11 @@
           "sidebar",
           "parentPage",
           "childPages",
+          "parent",
+          "children",
+          "fullPath",
+          "redirects",
+          "breadcrumbTitle",
           "relatedContents",
           "adminGroups"
         ],
@@ -1713,7 +1801,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "waxnr78bzg60ilpto57r27rr",
+      "documentId": "iow816swjuro1rfz4kor0rdo",
       "locale": null
     },
     {
@@ -1751,9 +1839,11 @@
         "fields": [
           "title",
           "slug",
+          "path",
           "alias",
           "subtext",
           "metaDiscription",
+          "metaDescription",
           "keywords",
           "showTableOfContents",
           "pageCategory",
@@ -1774,6 +1864,11 @@
           "sidebar",
           "parentPage",
           "childPages",
+          "parent",
+          "children",
+          "fullPath",
+          "redirects",
+          "breadcrumbTitle",
           "relatedContents",
           "adminGroups"
         ],
@@ -1784,7 +1879,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "c6wbo0qizaol2xa4jmufq08p",
+      "documentId": "mv4hlf7hd81vgiazuy2lrgtc",
       "locale": null
     },
     {
@@ -1794,9 +1889,11 @@
         "fields": [
           "title",
           "slug",
+          "path",
           "alias",
           "subtext",
           "metaDiscription",
+          "metaDescription",
           "keywords",
           "showTableOfContents",
           "pageCategory",
@@ -1817,6 +1914,11 @@
           "sidebar",
           "parentPage",
           "childPages",
+          "parent",
+          "children",
+          "fullPath",
+          "redirects",
+          "breadcrumbTitle",
           "relatedContents",
           "adminGroups"
         ],
@@ -1827,7 +1929,73 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "cvreseik22irmxmd28kytiz1",
+      "documentId": "mbqte5htb6kz5u63irl07cgs",
+      "locale": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "api::redirect.redirect",
+      "properties": {
+        "fields": [
+          "source",
+          "destination",
+          "permanent",
+          "page"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": {},
+      "documentId": "t8xovdv6bsb2jw48nu5iqvly",
+      "locale": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "subject": "api::redirect.redirect",
+      "properties": {},
+      "conditions": [],
+      "actionParameters": {},
+      "documentId": "qkoa34kzyui88hccsianwmk7",
+      "locale": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.publish",
+      "subject": "api::redirect.redirect",
+      "properties": {},
+      "conditions": [],
+      "actionParameters": {},
+      "documentId": "sy0qtntw08025qj32trskdr8",
+      "locale": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::redirect.redirect",
+      "properties": {
+        "fields": [
+          "source",
+          "destination",
+          "permanent",
+          "page"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": {},
+      "documentId": "x0hchdfzrbjdq0phrl3q13na",
+      "locale": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::redirect.redirect",
+      "properties": {
+        "fields": [
+          "source",
+          "destination",
+          "permanent",
+          "page"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": {},
+      "documentId": "td0z37tskbqdayhuvw70ba0o",
       "locale": null
     },
     {

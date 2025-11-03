@@ -22,7 +22,8 @@
         "i18n": {
           "localized": true
         }
-      }
+      },
+      "required": true
     },
     "slug": {
       "type": "uid",
@@ -31,7 +32,8 @@
           "localized": true
         }
       },
-      "targetField": "title"
+      "targetField": "title",
+      "required": true
     },
     "pageCategory": {
       "type": "relation",
@@ -40,9 +42,9 @@
     },
     "articles": {
       "type": "relation",
-      "relation": "oneToMany",
+      "relation": "manyToMany",
       "target": "api::article.article",
-      "mappedBy": "tag"
+      "mappedBy": "tags"
     }
   }
 }

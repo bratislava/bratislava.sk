@@ -31,7 +31,7 @@ const DocumentsSection = ({ section }: Props) => {
   if (showAll) {
     return (
       <SectionContainer>
-        <DocumentsAll />
+        <DocumentsAll section={section} />
       </SectionContainer>
     )
   }

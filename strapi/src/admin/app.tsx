@@ -1,3 +1,6 @@
+import type { StrapiApp } from '@strapi/strapi/admin'
+import InternalJobsRunActions from './extensions/InternalJobsRunActions'
+
 export default {
   config: {
     // Add slovak as option for strapi admin
@@ -95,5 +98,10 @@ export default {
       },
     },
   },
-  bootstrap() {},
+  bootstrap(app: StrapiApp) {
+    app.getPlugin("content-manager").injectComponent("listView", "actions", {
+      name: "InternalJobsRunAction",
+      Component: InternalJobsRunActions,
+    })
+  },
 }

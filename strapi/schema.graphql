@@ -17,7 +17,7 @@ type AdminGroup {
   pages(filters: PageFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [Page]!
   pages_connection(filters: PageFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): PageRelationResponseCollection
   publishedAt: DateTime
-  slug: String
+  slug: String!
   title: String!
   updatedAt: DateTime
 }
@@ -131,6 +131,7 @@ type Article {
   files(filters: ComponentBlocksFileFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksFile]
   gallery(filters: UploadFileFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [UploadFile]!
   gallery_connection(filters: UploadFileFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UploadFileRelationResponseCollection
+  inbaRelease: InbaRelease
   locale: String
   localizations(filters: ArticleFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [Article]!
   localizations_connection(filters: ArticleFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): ArticleRelationResponseCollection
@@ -138,6 +139,8 @@ type Article {
   publishedAt: DateTime
   slug: String!
   tag: Tag
+  tags(filters: TagFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [Tag]!
+  tags_connection(filters: TagFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): TagRelationResponseCollection
   title: String!
   updatedAt: DateTime
 }
@@ -220,6 +223,7 @@ input ArticleFiltersInput {
   createdAt: DateTimeFilterInput
   documentId: IDFilterInput
   files: ComponentBlocksFileFiltersInput
+  inbaRelease: InbaReleaseFiltersInput
   locale: StringFilterInput
   localizations: ArticleFiltersInput
   not: ArticleFiltersInput
@@ -228,6 +232,7 @@ input ArticleFiltersInput {
   publishedAt: DateTimeFilterInput
   slug: StringFilterInput
   tag: TagFiltersInput
+  tags: TagFiltersInput
   title: StringFilterInput
   updatedAt: DateTimeFilterInput
 }
@@ -241,10 +246,12 @@ input ArticleInput {
   coverMedia: ID
   files: [ComponentBlocksFileInput]
   gallery: [ID]
+  inbaRelease: ID
   perex: String
   publishedAt: DateTime
   slug: String
   tag: ID
+  tags: [ID]
   title: String
 }
 
@@ -378,6 +385,7 @@ input ComponentAccordionItemsInstitutionNarrowInput {
 
 type ComponentBlocksCardLink {
   analyticsId: String
+  article: Article
   id: ID!
   label: String
   media: UploadFile
@@ -389,6 +397,7 @@ type ComponentBlocksCardLink {
 input ComponentBlocksCardLinkFiltersInput {
   analyticsId: StringFilterInput
   and: [ComponentBlocksCardLinkFiltersInput]
+  article: ArticleFiltersInput
   label: StringFilterInput
   not: ComponentBlocksCardLinkFiltersInput
   or: [ComponentBlocksCardLinkFiltersInput]
@@ -399,6 +408,7 @@ input ComponentBlocksCardLinkFiltersInput {
 
 input ComponentBlocksCardLinkInput {
   analyticsId: String
+  article: ID
   id: ID
   label: String
   media: ID
@@ -2070,23 +2080,6 @@ input ComponentSectionsSubnavigationInput {
   links: [ComponentBlocksSubnavigationLinkInput]
 }
 
-type ComponentSectionsSubpageList {
-  id: ID!
-  subpageList(filters: ComponentBlocksPageLinkFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksPageLink]
-}
-
-input ComponentSectionsSubpageListFiltersInput {
-  and: [ComponentSectionsSubpageListFiltersInput]
-  not: ComponentSectionsSubpageListFiltersInput
-  or: [ComponentSectionsSubpageListFiltersInput]
-  subpageList: ComponentBlocksPageLinkFiltersInput
-}
-
-input ComponentSectionsSubpageListInput {
-  id: ID
-  subpageList: [ComponentBlocksPageLinkInput]
-}
-
 type ComponentSectionsTextWithImage {
   content: String
   id: ID!
@@ -2658,6 +2651,17 @@ enum ENUM_COMPONENTSECTIONSVIDEOS_TITLELEVEL {
   h3
 }
 
+enum ENUM_INTERNALJOB_JOBTYPE {
+  CREATE_REDIRECT
+  RECALCULATE_FULLPATH
+}
+
+enum ENUM_INTERNALJOB_STATE {
+  completed
+  failed
+  pending
+}
+
 enum ENUM_PAGECATEGORY_COLOR {
   blue
   brown
@@ -2981,7 +2985,7 @@ type GeneralRelationResponseCollection {
   nodes: [General!]!
 }
 
-union GenericMorph = AdminGroup | Alert | Article | ArticleCategory | ComponentAccordionItemsFlatText | ComponentAccordionItemsInstitution | ComponentAccordionItemsInstitutionNarrow | ComponentBlocksCardLink | ComponentBlocksColumnsItem | ComponentBlocksCommonLink | ComponentBlocksComparisonCard | ComponentBlocksComparisonItem | ComponentBlocksContactCard | ComponentBlocksContactDirectionsCard | ComponentBlocksContactPersonCard | ComponentBlocksFile | ComponentBlocksFileItem | ComponentBlocksFooterColumn | ComponentBlocksHomepageHighlightsItem | ComponentBlocksInBa | ComponentBlocksNumbersOverviewItem | ComponentBlocksNumericalListItem | ComponentBlocksOpeningHoursAlertMessage | ComponentBlocksOpeningHoursItem | ComponentBlocksPageLink | ComponentBlocksPartner | ComponentBlocksProsAndConsCard | ComponentBlocksStarzLandingPageBanner | ComponentBlocksSubnavigationLink | ComponentBlocksTopServicesItem | ComponentBlocksVideo | ComponentGeneralHeader | ComponentGeneralHeaderLink | ComponentHeaderSectionsEvent | ComponentHeaderSectionsFacility | ComponentMenuMenuItem | ComponentMenuMenuLink | ComponentMenuMenuSection | ComponentSectionsAccordion | ComponentSectionsArticles | ComponentSectionsBanner | ComponentSectionsCalculator | ComponentSectionsColumnedText | ComponentSectionsColumns | ComponentSectionsComparisonSection | ComponentSectionsContactsSection | ComponentSectionsDivider | ComponentSectionsDocuments | ComponentSectionsEvents | ComponentSectionsFacilities | ComponentSectionsFaqCategories | ComponentSectionsFaqs | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsHomepageEvents | ComponentSectionsHomepageHighlights | ComponentSectionsHomepageMayorAndCouncil | ComponentSectionsHomepageTabs | ComponentSectionsIframe | ComponentSectionsInbaArticlesList | ComponentSectionsInbaReleases | ComponentSectionsLinks | ComponentSectionsNarrowText | ComponentSectionsNewsletter | ComponentSectionsNumbersOverview | ComponentSectionsNumericalList | ComponentSectionsOfficialBoard | ComponentSectionsOpeningHours | ComponentSectionsOrganizationalStructure | ComponentSectionsPartners | ComponentSectionsProsAndConsSection | ComponentSectionsRegulations | ComponentSectionsStarzLandingPage | ComponentSectionsSubnavigation | ComponentSectionsSubpageList | ComponentSectionsTextWithImage | ComponentSectionsTextWithImageOverlapped | ComponentSectionsTootootEvents | ComponentSectionsTopServices | ComponentSectionsVideos | ComponentSidebarsEmptySidebar | ComponentTaxAdministratorsTaxAdministrator | Document | DocumentCategory | Faq | FaqCategory | Footer | General | Homepage | I18NLocale | InbaArticle | InbaRelease | InbaTag | Menu | Page | PageCategory | Regulation | ReviewWorkflowsWorkflow | ReviewWorkflowsWorkflowStage | Tag | TaxAdministratorsList | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
+union GenericMorph = AdminGroup | Alert | Article | ArticleCategory | ComponentAccordionItemsFlatText | ComponentAccordionItemsInstitution | ComponentAccordionItemsInstitutionNarrow | ComponentBlocksCardLink | ComponentBlocksColumnsItem | ComponentBlocksCommonLink | ComponentBlocksComparisonCard | ComponentBlocksComparisonItem | ComponentBlocksContactCard | ComponentBlocksContactDirectionsCard | ComponentBlocksContactPersonCard | ComponentBlocksFile | ComponentBlocksFileItem | ComponentBlocksFooterColumn | ComponentBlocksHomepageHighlightsItem | ComponentBlocksInBa | ComponentBlocksNumbersOverviewItem | ComponentBlocksNumericalListItem | ComponentBlocksOpeningHoursAlertMessage | ComponentBlocksOpeningHoursItem | ComponentBlocksPageLink | ComponentBlocksPartner | ComponentBlocksProsAndConsCard | ComponentBlocksStarzLandingPageBanner | ComponentBlocksSubnavigationLink | ComponentBlocksTopServicesItem | ComponentBlocksVideo | ComponentGeneralHeader | ComponentGeneralHeaderLink | ComponentHeaderSectionsEvent | ComponentHeaderSectionsFacility | ComponentMenuMenuItem | ComponentMenuMenuLink | ComponentMenuMenuSection | ComponentSectionsAccordion | ComponentSectionsArticles | ComponentSectionsBanner | ComponentSectionsCalculator | ComponentSectionsColumnedText | ComponentSectionsColumns | ComponentSectionsComparisonSection | ComponentSectionsContactsSection | ComponentSectionsDivider | ComponentSectionsDocuments | ComponentSectionsEvents | ComponentSectionsFacilities | ComponentSectionsFaqCategories | ComponentSectionsFaqs | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsHomepageEvents | ComponentSectionsHomepageHighlights | ComponentSectionsHomepageMayorAndCouncil | ComponentSectionsHomepageTabs | ComponentSectionsIframe | ComponentSectionsInbaArticlesList | ComponentSectionsInbaReleases | ComponentSectionsLinks | ComponentSectionsNarrowText | ComponentSectionsNewsletter | ComponentSectionsNumbersOverview | ComponentSectionsNumericalList | ComponentSectionsOfficialBoard | ComponentSectionsOpeningHours | ComponentSectionsOrganizationalStructure | ComponentSectionsPartners | ComponentSectionsProsAndConsSection | ComponentSectionsRegulations | ComponentSectionsStarzLandingPage | ComponentSectionsSubnavigation | ComponentSectionsTextWithImage | ComponentSectionsTextWithImageOverlapped | ComponentSectionsTootootEvents | ComponentSectionsTopServices | ComponentSectionsVideos | ComponentSidebarsEmptySidebar | ComponentTaxAdministratorsTaxAdministrator | Document | DocumentCategory | Faq | FaqCategory | Footer | General | Homepage | I18NLocale | InbaArticle | InbaRelease | InbaTag | InternalJob | Menu | Page | PageCategory | Redirect | Regulation | ReviewWorkflowsWorkflow | ReviewWorkflowsWorkflowStage | Tag | TaxAdministratorsList | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
 
 type Homepage {
   createdAt: DateTime
@@ -3141,6 +3145,8 @@ type InbaArticle {
   perex: String
   publishedAt: DateTime
   slug: String!
+  tags(filters: TagFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [Tag]!
+  tags_connection(filters: TagFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): TagRelationResponseCollection
   title: String!
   updatedAt: DateTime
 }
@@ -3173,6 +3179,7 @@ input InbaArticleFiltersInput {
   perex: StringFilterInput
   publishedAt: DateTimeFilterInput
   slug: StringFilterInput
+  tags: TagFiltersInput
   title: StringFilterInput
   updatedAt: DateTimeFilterInput
 }
@@ -3185,6 +3192,7 @@ input InbaArticleInput {
   perex: String
   publishedAt: DateTime
   slug: String
+  tags: [ID]
   title: String
 }
 
@@ -3193,6 +3201,8 @@ type InbaArticleRelationResponseCollection {
 }
 
 type InbaRelease {
+  articles(filters: ArticleFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [Article]!
+  articles_connection(filters: ArticleFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): ArticleRelationResponseCollection
   coverImage: UploadFile
   createdAt: DateTime
   documentId: ID!
@@ -3224,6 +3234,7 @@ type InbaReleaseEntityResponseCollection {
 
 input InbaReleaseFiltersInput {
   and: [InbaReleaseFiltersInput]
+  articles: ArticleFiltersInput
   createdAt: DateTimeFilterInput
   documentId: IDFilterInput
   files: ComponentBlocksFileFiltersInput
@@ -3239,6 +3250,7 @@ input InbaReleaseFiltersInput {
 }
 
 input InbaReleaseInput {
+  articles: [ID]
   coverImage: ID
   files: [ComponentBlocksFileInput]
   inbaArticles: [ID]
@@ -3328,6 +3340,60 @@ input IntFilterInput {
   null: Boolean
   or: [Int]
   startsWith: Int
+}
+
+type InternalJob {
+  createdAt: DateTime
+  documentId: ID!
+  error: String
+  jobType: ENUM_INTERNALJOB_JOBTYPE!
+  payload: JSON!
+  publishedAt: DateTime
+  relatedDocumentId: String
+  state: ENUM_INTERNALJOB_STATE!
+  updatedAt: DateTime
+}
+
+type InternalJobEntity {
+  attributes: InternalJob
+  id: ID
+}
+
+type InternalJobEntityResponse {
+  data: InternalJob
+}
+
+type InternalJobEntityResponseCollection {
+  nodes: [InternalJob!]!
+  pageInfo: Pagination!
+}
+
+input InternalJobFiltersInput {
+  and: [InternalJobFiltersInput]
+  createdAt: DateTimeFilterInput
+  documentId: IDFilterInput
+  error: StringFilterInput
+  jobType: StringFilterInput
+  not: InternalJobFiltersInput
+  or: [InternalJobFiltersInput]
+  payload: JSONFilterInput
+  publishedAt: DateTimeFilterInput
+  relatedDocumentId: StringFilterInput
+  state: StringFilterInput
+  updatedAt: DateTimeFilterInput
+}
+
+input InternalJobInput {
+  error: String
+  jobType: ENUM_INTERNALJOB_JOBTYPE
+  payload: JSON
+  publishedAt: DateTime
+  relatedDocumentId: String
+  state: ENUM_INTERNALJOB_STATE
+}
+
+type InternalJobRelationResponseCollection {
+  nodes: [InternalJob!]!
 }
 
 """
@@ -3485,6 +3551,7 @@ type Mutation {
     locale: I18NLocaleCode
     status: PublicationStatus = PUBLISHED
   ): InbaTag
+  createInternalJob(data: InternalJobInput!, status: PublicationStatus = PUBLISHED): InternalJob
   createPage(
     data: PageInput!
 
@@ -3499,6 +3566,7 @@ type Mutation {
     locale: I18NLocaleCode
     status: PublicationStatus = PUBLISHED
   ): PageCategory
+  createRedirect(data: RedirectInput!, status: PublicationStatus = PUBLISHED): Redirect
   createRegulation(data: RegulationInput!, status: PublicationStatus = PUBLISHED): Regulation
   createReviewWorkflowsWorkflow(data: ReviewWorkflowsWorkflowInput!, status: PublicationStatus = PUBLISHED): ReviewWorkflowsWorkflow
   createReviewWorkflowsWorkflowStage(data: ReviewWorkflowsWorkflowStageInput!, status: PublicationStatus = PUBLISHED): ReviewWorkflowsWorkflowStage
@@ -3571,6 +3639,7 @@ type Mutation {
     """The locale to use for the query"""
     locale: I18NLocaleCode
   ): DeleteMutationResponse
+  deleteInternalJob(documentId: ID!): DeleteMutationResponse
   deleteMenu(
     """The locale to use for the query"""
     locale: I18NLocaleCode
@@ -3587,6 +3656,7 @@ type Mutation {
     """The locale to use for the query"""
     locale: I18NLocaleCode
   ): DeleteMutationResponse
+  deleteRedirect(documentId: ID!): DeleteMutationResponse
   deleteRegulation(documentId: ID!): DeleteMutationResponse
   deleteReviewWorkflowsWorkflow(documentId: ID!): DeleteMutationResponse
   deleteReviewWorkflowsWorkflowStage(documentId: ID!): DeleteMutationResponse
@@ -3699,6 +3769,7 @@ type Mutation {
     locale: I18NLocaleCode
     status: PublicationStatus = PUBLISHED
   ): InbaTag
+  updateInternalJob(data: InternalJobInput!, documentId: ID!, status: PublicationStatus = PUBLISHED): InternalJob
   updateMenu(
     data: MenuInput!
 
@@ -3722,6 +3793,7 @@ type Mutation {
     locale: I18NLocaleCode
     status: PublicationStatus = PUBLISHED
   ): PageCategory
+  updateRedirect(data: RedirectInput!, documentId: ID!, status: PublicationStatus = PUBLISHED): Redirect
   updateRegulation(data: RegulationInput!, documentId: ID!, status: PublicationStatus = PUBLISHED): Regulation
   updateReviewWorkflowsWorkflow(data: ReviewWorkflowsWorkflowInput!, documentId: ID!, status: PublicationStatus = PUBLISHED): ReviewWorkflowsWorkflow
   updateReviewWorkflowsWorkflowStage(data: ReviewWorkflowsWorkflowStageInput!, documentId: ID!, status: PublicationStatus = PUBLISHED): ReviewWorkflowsWorkflowStage
@@ -3747,22 +3819,31 @@ type Page {
   adminGroups(filters: AdminGroupFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [AdminGroup]!
   adminGroups_connection(filters: AdminGroupFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): AdminGroupRelationResponseCollection
   alias: String
+  breadcrumbTitle: String
   childPages(filters: PageFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [Page]!
   childPages_connection(filters: PageFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): PageRelationResponseCollection
+  children(filters: PageFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [Page]!
+  children_connection(filters: PageFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): PageRelationResponseCollection
   createdAt: DateTime
   documentId: ID!
+  fullPath: String
   headerLinks(filters: ComponentBlocksCommonLinkFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksCommonLink]
   keywords: String
   locale: String
   localizations(filters: PageFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [Page]!
   localizations_connection(filters: PageFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): PageRelationResponseCollection
+  metaDescription: String
   metaDiscription: String
   pageBackgroundImage: UploadFile
   pageCategory: PageCategory
   pageColor: ENUM_PAGE_PAGECOLOR!
   pageHeaderSections: [PagePageHeaderSectionsDynamicZone]
+  parent: Page
   parentPage: Page
+  path: String
   publishedAt: DateTime
+  redirects(filters: RedirectFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [Redirect]!
+  redirects_connection(filters: RedirectFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): RedirectRelationResponseCollection
   relatedContents(filters: TagFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [Tag]!
   relatedContents_connection(filters: TagFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): TagRelationResponseCollection
   sections: [PageSectionsDynamicZone]
@@ -3853,20 +3934,27 @@ input PageFiltersInput {
   adminGroups: AdminGroupFiltersInput
   alias: StringFilterInput
   and: [PageFiltersInput]
+  breadcrumbTitle: StringFilterInput
   childPages: PageFiltersInput
+  children: PageFiltersInput
   createdAt: DateTimeFilterInput
   documentId: IDFilterInput
+  fullPath: StringFilterInput
   headerLinks: ComponentBlocksCommonLinkFiltersInput
   keywords: StringFilterInput
   locale: StringFilterInput
   localizations: PageFiltersInput
+  metaDescription: StringFilterInput
   metaDiscription: StringFilterInput
   not: PageFiltersInput
   or: [PageFiltersInput]
   pageCategory: PageCategoryFiltersInput
   pageColor: StringFilterInput
+  parent: PageFiltersInput
   parentPage: PageFiltersInput
+  path: StringFilterInput
   publishedAt: DateTimeFilterInput
+  redirects: RedirectFiltersInput
   relatedContents: TagFiltersInput
   showTableOfContents: BooleanFilterInput
   slug: StringFilterInput
@@ -3879,16 +3967,23 @@ input PageFiltersInput {
 input PageInput {
   adminGroups: [ID]
   alias: String
+  breadcrumbTitle: String
   childPages: [ID]
+  children: [ID]
+  fullPath: String
   headerLinks: [ComponentBlocksCommonLinkInput]
   keywords: String
+  metaDescription: String
   metaDiscription: String
   pageBackgroundImage: ID
   pageCategory: ID
   pageColor: ENUM_PAGE_PAGECOLOR
   pageHeaderSections: [PagePageHeaderSectionsDynamicZoneInput!]
+  parent: ID
   parentPage: ID
+  path: String
   publishedAt: DateTime
+  redirects: [ID]
   relatedContents: [ID]
   sections: [PageSectionsDynamicZoneInput!]
   showTableOfContents: Boolean
@@ -3899,7 +3994,7 @@ input PageInput {
   title: String
 }
 
-union PagePageHeaderSectionsDynamicZone = ComponentHeaderSectionsEvent | ComponentHeaderSectionsFacility | ComponentSectionsSubpageList | Error
+union PagePageHeaderSectionsDynamicZone = ComponentHeaderSectionsEvent | ComponentHeaderSectionsFacility | Error
 
 scalar PagePageHeaderSectionsDynamicZoneInput
 
@@ -4120,6 +4215,9 @@ type Query {
     sort: [String] = []
     status: PublicationStatus = PUBLISHED
   ): InbaTagEntityResponseCollection
+  internalJob(documentId: ID!, status: PublicationStatus = PUBLISHED): InternalJob
+  internalJobs(filters: InternalJobFiltersInput, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED): [InternalJob]!
+  internalJobs_connection(filters: InternalJobFiltersInput, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED): InternalJobEntityResponseCollection
   me: UsersPermissionsMe
   menu(
     """The locale to use for the query"""
@@ -4176,6 +4274,9 @@ type Query {
     sort: [String] = []
     status: PublicationStatus = PUBLISHED
   ): PageEntityResponseCollection
+  redirect(documentId: ID!, status: PublicationStatus = PUBLISHED): Redirect
+  redirects(filters: RedirectFiltersInput, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED): [Redirect]!
+  redirects_connection(filters: RedirectFiltersInput, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED): RedirectEntityResponseCollection
   regulation(documentId: ID!, status: PublicationStatus = PUBLISHED): Regulation
   regulations(filters: RegulationFiltersInput, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED): [Regulation]!
   regulations_connection(filters: RegulationFiltersInput, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED): RegulationEntityResponseCollection
@@ -4220,6 +4321,57 @@ type Query {
   usersPermissionsUser(documentId: ID!, status: PublicationStatus = PUBLISHED): UsersPermissionsUser
   usersPermissionsUsers(filters: UsersPermissionsUserFiltersInput, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED): [UsersPermissionsUser]!
   usersPermissionsUsers_connection(filters: UsersPermissionsUserFiltersInput, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED): UsersPermissionsUserEntityResponseCollection
+}
+
+type Redirect {
+  createdAt: DateTime
+  destination: String!
+  documentId: ID!
+  page: Page
+  permanent: Boolean
+  publishedAt: DateTime
+  source: String!
+  updatedAt: DateTime
+}
+
+type RedirectEntity {
+  attributes: Redirect
+  id: ID
+}
+
+type RedirectEntityResponse {
+  data: Redirect
+}
+
+type RedirectEntityResponseCollection {
+  nodes: [Redirect!]!
+  pageInfo: Pagination!
+}
+
+input RedirectFiltersInput {
+  and: [RedirectFiltersInput]
+  createdAt: DateTimeFilterInput
+  destination: StringFilterInput
+  documentId: IDFilterInput
+  not: RedirectFiltersInput
+  or: [RedirectFiltersInput]
+  page: PageFiltersInput
+  permanent: BooleanFilterInput
+  publishedAt: DateTimeFilterInput
+  source: StringFilterInput
+  updatedAt: DateTimeFilterInput
+}
+
+input RedirectInput {
+  destination: String
+  page: ID
+  permanent: Boolean
+  publishedAt: DateTime
+  source: String
+}
+
+type RedirectRelationResponseCollection {
+  nodes: [Redirect!]!
 }
 
 type Regulation {
@@ -4441,8 +4593,8 @@ type Tag {
   localizations_connection(filters: TagFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): TagRelationResponseCollection
   pageCategory: PageCategory
   publishedAt: DateTime
-  slug: String
-  title: String
+  slug: String!
+  title: String!
   updatedAt: DateTime
 }
 
