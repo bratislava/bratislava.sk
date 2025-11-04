@@ -198,11 +198,6 @@ const nextConfig = {
         locale: false,
         permanent: true,
       },
-      {
-        source: '/kontakty',
-        destination: '/kontakty-a-uradne-hodiny',
-        permanent: true,
-      },
     ]
   },
   // Docs: https://react-svgr.com/docs/next/
