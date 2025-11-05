@@ -12,7 +12,7 @@ export type ArticleRowCardProps = {
   linkProps: CommonLinkProps
   imgSrc?: string | null | undefined
   imgSizes?: string
-  metadata?: (string | null | undefined)[]
+  metadata?: string[]
 } & CardBaseProps
 
 /**

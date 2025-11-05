@@ -18,7 +18,7 @@ import { getLinkProps } from '@/src/utils/getLinkProps'
 import { isDefined } from '@/src/utils/isDefined'
 
 export const latestInbaReleaseQueryOptions = {
-  queryKey: ['Latest Inba Release'],
+  queryKey: ['LatestInbaRelease'],
   queryFn: () => client.LatestInbaRelease(),
   placeholderData: keepPreviousData,
 }
@@ -126,7 +126,7 @@ const InbaLatestReleaseSection = ({ section }: Props) => {
               </ul>
               {/* Screen: Desktop */}
               <div className="max-lg:hidden">
-                <Button variant="link" href={`inba/vydania/${latestInbaRelease.slug}`}>
+                <Button variant="link" href={`/inba/vydania/${latestInbaRelease.slug}`}>
                   {t('InbaLatestReleaseSection.readAllArticles', {
                     articlesCount: latestInbaRelease.articles.length,
                   })}
@@ -134,7 +134,7 @@ const InbaLatestReleaseSection = ({ section }: Props) => {
               </div>
               {/* Screen: Mobile */}
               <div className="flex flex-col gap-4 lg:hidden">
-                <Button variant="solid" fullWidth href={`inba/vydania/${latestInbaRelease.slug}`}>
+                <Button variant="solid" fullWidth href={`/inba/vydania/${latestInbaRelease.slug}`}>
                   {t('InbaLatestReleaseSection.readRelease')}
                 </Button>
                 <Button variant="outline" fullWidth {...getLinkProps({ page: allReleasesPage })}>
