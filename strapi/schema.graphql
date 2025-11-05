@@ -1759,22 +1759,28 @@ input ComponentSectionsInbaArticlesListInput {
 
 type ComponentSectionsInbaReleases {
   id: ID!
+  showMoreLink: ComponentBlocksCommonLink
   text: String
   title: String
+  variant: ENUM_COMPONENTSECTIONSINBARELEASES_VARIANT
 }
 
 input ComponentSectionsInbaReleasesFiltersInput {
   and: [ComponentSectionsInbaReleasesFiltersInput]
   not: ComponentSectionsInbaReleasesFiltersInput
   or: [ComponentSectionsInbaReleasesFiltersInput]
+  showMoreLink: ComponentBlocksCommonLinkFiltersInput
   text: StringFilterInput
   title: StringFilterInput
+  variant: StringFilterInput
 }
 
 input ComponentSectionsInbaReleasesInput {
   id: ID
+  showMoreLink: ComponentBlocksCommonLinkInput
   text: String
   title: String
+  variant: ENUM_COMPONENTSECTIONSINBARELEASES_VARIANT
 }
 
 type ComponentSectionsLinks {
@@ -2586,6 +2592,11 @@ enum ENUM_COMPONENTSECTIONSIFRAME_IFRAMEWIDTH {
 enum ENUM_COMPONENTSECTIONSIFRAME_TITLELEVEL {
   h2
   h3
+}
+
+enum ENUM_COMPONENTSECTIONSINBARELEASES_VARIANT {
+  carousel
+  grid
 }
 
 enum ENUM_COMPONENTSECTIONSLINKS_TITLELEVEL {

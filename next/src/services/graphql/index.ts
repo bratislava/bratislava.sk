@@ -2254,22 +2254,28 @@ export type ComponentSectionsInbaArticlesListInput = {
 export type ComponentSectionsInbaReleases = {
   __typename?: 'ComponentSectionsInbaReleases'
   id: Scalars['ID']['output']
+  showMoreLink?: Maybe<ComponentBlocksCommonLink>
   text?: Maybe<Scalars['String']['output']>
   title?: Maybe<Scalars['String']['output']>
+  variant?: Maybe<Enum_Componentsectionsinbareleases_Variant>
 }
 
 export type ComponentSectionsInbaReleasesFiltersInput = {
   and?: InputMaybe<Array<InputMaybe<ComponentSectionsInbaReleasesFiltersInput>>>
   not?: InputMaybe<ComponentSectionsInbaReleasesFiltersInput>
   or?: InputMaybe<Array<InputMaybe<ComponentSectionsInbaReleasesFiltersInput>>>
+  showMoreLink?: InputMaybe<ComponentBlocksCommonLinkFiltersInput>
   text?: InputMaybe<StringFilterInput>
   title?: InputMaybe<StringFilterInput>
+  variant?: InputMaybe<StringFilterInput>
 }
 
 export type ComponentSectionsInbaReleasesInput = {
   id?: InputMaybe<Scalars['ID']['input']>
+  showMoreLink?: InputMaybe<ComponentBlocksCommonLinkInput>
   text?: InputMaybe<Scalars['String']['input']>
   title?: InputMaybe<Scalars['String']['input']>
+  variant?: InputMaybe<Enum_Componentsectionsinbareleases_Variant>
 }
 
 export type ComponentSectionsLinks = {
@@ -3216,6 +3222,11 @@ export enum Enum_Componentsectionsiframe_Iframewidth {
 export enum Enum_Componentsectionsiframe_Titlelevel {
   H2 = 'h2',
   H3 = 'h3',
+}
+
+export enum Enum_Componentsectionsinbareleases_Variant {
+  Carousel = 'carousel',
+  Grid = 'grid',
 }
 
 export enum Enum_Componentsectionslinks_Titlelevel {
@@ -10587,7 +10598,32 @@ export type PageEntityFragment = {
         title?: string | null
         text?: string | null
       }
-    | { __typename: 'ComponentSectionsInbaReleases'; title?: string | null; text?: string | null }
+    | {
+        __typename: 'ComponentSectionsInbaReleases'
+        title?: string | null
+        text?: string | null
+        variantInbaReleasesSection?: Enum_Componentsectionsinbareleases_Variant | null
+        showMoreLink?: {
+          __typename?: 'ComponentBlocksCommonLink'
+          label?: string | null
+          url?: string | null
+          analyticsId?: string | null
+          page?: {
+            __typename?: 'Page'
+            documentId: string
+            slug?: string | null
+            title: string
+            locale?: string | null
+          } | null
+          article?: {
+            __typename: 'Article'
+            documentId: string
+            slug: string
+            title: string
+            locale?: string | null
+          } | null
+        } | null
+      }
     | {
         __typename: 'ComponentSectionsLinks'
         title?: string | null
@@ -11742,7 +11778,32 @@ export type PageBySlugQuery = {
           title?: string | null
           text?: string | null
         }
-      | { __typename: 'ComponentSectionsInbaReleases'; title?: string | null; text?: string | null }
+      | {
+          __typename: 'ComponentSectionsInbaReleases'
+          title?: string | null
+          text?: string | null
+          variantInbaReleasesSection?: Enum_Componentsectionsinbareleases_Variant | null
+          showMoreLink?: {
+            __typename?: 'ComponentBlocksCommonLink'
+            label?: string | null
+            url?: string | null
+            analyticsId?: string | null
+            page?: {
+              __typename?: 'Page'
+              documentId: string
+              slug?: string | null
+              title: string
+              locale?: string | null
+            } | null
+            article?: {
+              __typename: 'Article'
+              documentId: string
+              slug: string
+              title: string
+              locale?: string | null
+            } | null
+          } | null
+        }
       | {
           __typename: 'ComponentSectionsLinks'
           title?: string | null
@@ -12923,7 +12984,32 @@ export type Dev_AllPagesQuery = {
           title?: string | null
           text?: string | null
         }
-      | { __typename: 'ComponentSectionsInbaReleases'; title?: string | null; text?: string | null }
+      | {
+          __typename: 'ComponentSectionsInbaReleases'
+          title?: string | null
+          text?: string | null
+          variantInbaReleasesSection?: Enum_Componentsectionsinbareleases_Variant | null
+          showMoreLink?: {
+            __typename?: 'ComponentBlocksCommonLink'
+            label?: string | null
+            url?: string | null
+            analyticsId?: string | null
+            page?: {
+              __typename?: 'Page'
+              documentId: string
+              slug?: string | null
+              title: string
+              locale?: string | null
+            } | null
+            article?: {
+              __typename: 'Article'
+              documentId: string
+              slug: string
+              title: string
+              locale?: string | null
+            } | null
+          } | null
+        }
       | {
           __typename: 'ComponentSectionsLinks'
           title?: string | null
@@ -14147,6 +14233,27 @@ export type InbaReleasesSectionFragment = {
   __typename?: 'ComponentSectionsInbaReleases'
   title?: string | null
   text?: string | null
+  variantInbaReleasesSection?: Enum_Componentsectionsinbareleases_Variant | null
+  showMoreLink?: {
+    __typename?: 'ComponentBlocksCommonLink'
+    label?: string | null
+    url?: string | null
+    analyticsId?: string | null
+    page?: {
+      __typename?: 'Page'
+      documentId: string
+      slug?: string | null
+      title: string
+      locale?: string | null
+    } | null
+    article?: {
+      __typename: 'Article'
+      documentId: string
+      slug: string
+      title: string
+      locale?: string | null
+    } | null
+  } | null
 }
 
 export type DividerSectionFragment = {
@@ -15741,6 +15848,27 @@ type Sections_ComponentSectionsInbaReleases_Fragment = {
   __typename: 'ComponentSectionsInbaReleases'
   title?: string | null
   text?: string | null
+  variantInbaReleasesSection?: Enum_Componentsectionsinbareleases_Variant | null
+  showMoreLink?: {
+    __typename?: 'ComponentBlocksCommonLink'
+    label?: string | null
+    url?: string | null
+    analyticsId?: string | null
+    page?: {
+      __typename?: 'Page'
+      documentId: string
+      slug?: string | null
+      title: string
+      locale?: string | null
+    } | null
+    article?: {
+      __typename: 'Article'
+      documentId: string
+      slug: string
+      title: string
+      locale?: string | null
+    } | null
+  } | null
 }
 
 type Sections_ComponentSectionsLinks_Fragment = {
@@ -17256,7 +17384,12 @@ export const InbaReleasesSectionFragmentDoc = gql`
   fragment InbaReleasesSection on ComponentSectionsInbaReleases {
     title
     text
+    variantInbaReleasesSection: variant
+    showMoreLink {
+      ...CommonLink
+    }
   }
+  ${CommonLinkFragmentDoc}
 `
 export const OrganizationalStructureSectionFragmentDoc = gql`
   fragment OrganizationalStructureSection on ComponentSectionsOrganizationalStructure {
