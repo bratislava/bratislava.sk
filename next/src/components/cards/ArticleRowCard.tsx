@@ -77,18 +77,16 @@ const ArticleRowCard = ({
           ) : null}
         </div>
 
-        <div className="flex flex-col gap-2">
-          <MLink stretched {...linkProps}>
-            <Typography
-              id={titleId}
-              as="h3"
-              variant="h5"
-              className="line-clamp-3 group-hover:underline"
-            >
-              {title}
-            </Typography>
-          </MLink>
-        </div>
+        <MLink stretched {...linkProps}>
+          <Typography
+            id={titleId}
+            as="h3"
+            variant="h5"
+            className="line-clamp-3 group-hover:underline"
+          >
+            {title}
+          </Typography>
+        </MLink>
       </div>
     </CardBase>
   )

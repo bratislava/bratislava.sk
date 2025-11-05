@@ -23,7 +23,7 @@ export const latestInbaReleaseQueryOptions = {
   placeholderData: keepPreviousData,
 }
 
-const imgSizes = generateImageSizes({ default: '100vw', lg: '33vw' })
+const imageSizes = generateImageSizes({ default: '100vw', lg: '33vw' })
 
 type Props = { section: InbaLatestReleaseSectionFragment }
 
@@ -38,9 +38,13 @@ const InbaLatestReleaseSection = ({ section }: Props) => {
 
   const { data, isPending, isError, error } = useQuery(latestInbaReleaseQueryOptions)
 
-  if (isError) return <Typography variant="p-default">{error?.message}</Typography>
+  if (isPending) {
+    return <LoadingSpinner />
+  }
 
-  if (isPending) return <LoadingSpinner />
+  if (isError) {
+    return <Typography variant="p-default">{error?.message}</Typography>
+  }
 
   const latestInbaRelease = data.inbaReleases[0]
 
@@ -66,7 +70,7 @@ const InbaLatestReleaseSection = ({ section }: Props) => {
         <div className="flex flex-col gap-6 lg:flex-row lg:gap-34">
           <CardImage
             imgSrc={latestInbaRelease.coverImage?.url}
-            sizes={imgSizes}
+            sizes={imageSizes}
             className="0 aspect-inba w-full max-w-140 rounded-md border lg:w-[22rem] lg:rounded-lg"
           />
           <div className="flex w-full flex-col gap-4">
@@ -108,7 +112,7 @@ const InbaLatestReleaseSection = ({ section }: Props) => {
                         <ArticleRowCard
                           title={article.title}
                           imgSrc={article.coverMedia?.url}
-                          imgSizes={imgSizes}
+                          imgSizes={imageSizes}
                           metadata={[
                             formatDate(article.addedAt),
                             article.articleCategory?.title,

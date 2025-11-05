@@ -24,7 +24,7 @@ const imageSizes = generateImageSizes({ default: '100vw', md: '50vw', lg: '25vw'
 type Props = { section: InbaReleasesSectionFragment }
 
 /**
- * TODO https://www.figma.com/design/17wbd0MDQcMW9NbXl6UPs8/DS--Component-library?node-id=17826-20475&t=U4e51CzBdWvas8QP-4
+ * Figma: https://www.figma.com/design/17wbd0MDQcMW9NbXl6UPs8/DS--Component-library?node-id=17826-20475&t=U4e51CzBdWvas8QP-4
  */
 
 const InbaReleasesSection = ({ section }: Props) => {
