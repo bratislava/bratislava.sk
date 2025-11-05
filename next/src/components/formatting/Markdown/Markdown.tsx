@@ -67,7 +67,6 @@ const Markdown = ({ content, variant = 'default', className }: MarkdownProps) =>
               variant={variant === 'accordion' ? 'h4' : 'h2'}
               id={typeof children === 'string' ? slugify(children) : undefined}
               {...props}
-              data-cy="heading-two"
             >
               {children}
             </Typography>

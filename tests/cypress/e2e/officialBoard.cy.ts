@@ -28,7 +28,8 @@ describe('OB - 1', { testIsolation: false }, () => {
           cy.dataCy('search-field').type('Zápis{enter}')
           cy.dataCy('search-results').find('[data-cy=search-result-card]').should('exist')
 
-          cy.dataCy('search-field').clear().type('vjftrfrcygoihikjki{enter}')
+          cy.dataCy('search-field').clear()
+          cy.dataCy('search-field').type('vjftrfrcygoihikjki{enter}')
           cy.dataCy('no-search-results').should('exist')
           cy.dataCy('no-search-results').should('contain', 'Žiadne výsledky')
         })
