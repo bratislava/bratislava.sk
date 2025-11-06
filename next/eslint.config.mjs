@@ -1,3 +1,6 @@
+import next from "eslint-config-next";
+import nextCoreWebVitals from "eslint-config-next/core-web-vitals";
+import nextTypescript from "eslint-config-next/typescript";
 import js from '@eslint/js'
 import tseslint from '@typescript-eslint/eslint-plugin'
 import tsparser from '@typescript-eslint/parser'
@@ -16,6 +19,9 @@ import prettier from 'eslint-config-prettier'
 import globals from 'globals'
 
 export default [
+  ...next,
+  ...nextCoreWebVitals,
+  ...nextTypescript,
   // Base configuration for all files
   {
     files: ['**/*.{js,jsx,ts,tsx}'],
@@ -248,5 +254,5 @@ export default [
       '.next/**',
       'out/**',
     ],
-  },
-]
+  }
+];
