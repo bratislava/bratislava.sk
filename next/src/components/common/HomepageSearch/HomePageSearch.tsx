@@ -25,8 +25,8 @@ const HomePageSearch = ({ isOpen, setOpen }: HomePageSearchProps) => {
   const { t } = useTranslation()
   const locale = useLocale()
 
-  const ref = useRef(null)
-  useOnClickOutside(ref, () => setOpen(false))
+  const ref = useRef<HTMLDivElement>(null)
+  useOnClickOutside(ref as React.RefObject<HTMLElement>, () => setOpen(false))
 
   const [input, setInput] = useState<string>('')
   const [debouncedInput] = useDebounceValue(input, 1300)
@@ -49,7 +49,6 @@ const HomePageSearch = ({ isOpen, setOpen }: HomePageSearchProps) => {
   })
 
   const handleSearchPressed = useCallback(() => {
-     
     router.push(`${t('links.searchLink')}?keyword=${input}`)
   }, [router, input, t])
 

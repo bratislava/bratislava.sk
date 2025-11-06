@@ -1,28 +1,61 @@
-import next from "eslint-config-next";
-import nextCoreWebVitals from "eslint-config-next/core-web-vitals";
-import nextTypescript from "eslint-config-next/typescript";
+import { FlatCompat } from '@eslint/eslintrc'
+import path from 'path'
+import { fileURLToPath } from 'url'
 import js from '@eslint/js'
 import tseslint from '@typescript-eslint/eslint-plugin'
 import tsparser from '@typescript-eslint/parser'
-import react from 'eslint-plugin-react'
-import reactHooks from 'eslint-plugin-react-hooks'
-import jsxA11y from 'eslint-plugin-jsx-a11y'
-import importPlugin from 'eslint-plugin-import'
 import security from 'eslint-plugin-security'
 import noUnsanitized from 'eslint-plugin-no-unsanitized'
 import sonarjs from 'eslint-plugin-sonarjs'
 import simpleImportSort from 'eslint-plugin-simple-import-sort'
 import i18next from 'eslint-plugin-i18next'
 import tanstackQuery from '@tanstack/eslint-plugin-query'
-// import nextPlugin from '@next/eslint-plugin-next' // Disabled due to ESLint v9 compatibility
 import prettier from 'eslint-config-prettier'
 import globals from 'globals'
 
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
+
+const compat = new FlatCompat({
+  baseDirectory: __dirname,
+  recommendedConfig: js.configs.recommended,
+})
+
 export default [
-  ...next,
-  ...nextCoreWebVitals,
-  ...nextTypescript,
-  // Base configuration for all files
+  // Extend Next.js configs using FlatCompat
+  // Rules that modify Next.js-provided plugins (react, react-hooks, next, import, jsx-a11y) should be included here
+  // NOTE - eslint-plugin-next has some issues with flat config on v15, which only got resolved in v16
+  // somewhat related issues: https://github.com/vercel/next.js/issues/73655 and those linked here: https://github.com/vercel/next.js/pull/83763
+  // until v16, we'll get "The Next.js plugin was not detected in your ESLint configuration." errors during build
+  ...compat.config({
+    extends: [
+      'eslint-config-next',
+      'eslint-config-next/core-web-vitals',
+      'eslint-config-next/typescript',
+    ],
+    rules: {
+      // React specific rules (overrides for Next.js react plugin)
+      'react/function-component-definition': [2, { namedComponents: 'arrow-function' }],
+      'react/require-default-props': 'off',
+      'react/react-in-jsx-scope': 'off',
+      'react/jsx-no-useless-fragment': [2, { allowExpressions: true }],
+      'react/display-name': 'off',
+
+      // Import rules (overrides for Next.js import plugin)
+      'import/prefer-default-export': 'off',
+      'import/extensions': 'off',
+      'import/no-unresolved': 'off',
+      'import/namespace': 'off',
+      'import/default': 'off',
+      'import/no-duplicates': 'off',
+      'import/no-named-as-default': 'off',
+      'import/no-named-as-default-member': 'off',
+
+      // JSX A11y rules (overrides for Next.js jsx-a11y plugin)
+      'jsx-a11y/anchor-is-valid': 'off',
+      'jsx-a11y/img-redundant-alt': 'warn',
+    },
+  }),
   {
     files: ['**/*.{js,jsx,ts,tsx}'],
     languageOptions: {
@@ -30,52 +63,24 @@ export default [
       parserOptions: {
         project: './tsconfig.json',
         tsconfigRootDir: import.meta.dirname,
-        sourceType: 'module',
-        ecmaVersion: 2021,
-        ecmaFeatures: {
-          jsx: true,
-        },
       },
       globals: {
         ...globals.browser,
         ...globals.node,
         ...globals.es2021,
-        Buffer: 'readonly',
-        process: 'readonly',
-        console: 'readonly',
-        setTimeout: 'readonly',
-        setInterval: 'readonly',
-        clearTimeout: 'readonly',
-        clearInterval: 'readonly',
-        Express: 'readonly',
       },
     },
     plugins: {
       '@typescript-eslint': tseslint,
-      react: react,
-      'react-hooks': reactHooks,
-      'jsx-a11y': jsxA11y,
-      import: importPlugin,
       'simple-import-sort': simpleImportSort,
       security: security,
       'no-unsanitized': noUnsanitized,
       sonarjs: sonarjs,
       i18next: i18next,
       '@tanstack/query': tanstackQuery,
-      // '@next/next': nextPlugin, // Disabled due to ESLint v9 compatibility
     },
     rules: {
-      // rulesets
-      ...js.configs.recommended.rules,
-      ...tseslint.configs.recommended.rules,
-      ...tseslint.configs['recommended-type-checked'].rules,
-      ...tseslint.configs.stylistic.rules,
-      ...react.configs.recommended.rules,
-      ...react.configs['jsx-runtime'].rules,
-      ...reactHooks.configs.recommended.rules,
-      ...jsxA11y.configs.recommended.rules,
-      ...importPlugin.configs.recommended.rules,
-      ...importPlugin.configs.typescript.rules,
+      // Additional rulesets not included in eslint-config-next
       ...prettier.rules,
       'simple-import-sort/imports': 'error',
       'simple-import-sort/exports': 'error',
@@ -146,23 +151,6 @@ export default [
       // https://sonarsource.atlassian.net/browse/JS-619
       'sonarjs/different-types-comparison': 'off',
 
-      // FE/project specifuc config
-
-      // React specific rules
-      'react/function-component-definition': [2, { namedComponents: 'arrow-function' }],
-      'react/require-default-props': 'off',
-      'react/react-in-jsx-scope': 'off',
-      'react/jsx-no-useless-fragment': [2, { allowExpressions: true }],
-      'react/display-name': 'off',
-
-      // Import rules
-      'import/prefer-default-export': 'off',
-      'import/extensions': 'off',
-
-      // JSX A11y rules
-      'jsx-a11y/anchor-is-valid': 'off',
-      'jsx-a11y/img-redundant-alt': 'warn',
-
       // i18next rules
       'i18next/no-literal-string': 'off',
 
@@ -202,12 +190,6 @@ export default [
       '@typescript-eslint/no-redundant-type-constituents': 'off',
       '@typescript-eslint/promise-function-async': 'off',
       '@typescript-eslint/restrict-template-expressions': 'off',
-      'import/no-unresolved': 'off',
-      'import/namespace': 'off',
-      'import/default': 'off',
-      'import/no-duplicates': 'off',
-      'import/no-named-as-default': 'off',
-      'import/no-named-as-default-member': 'off',
       'sonarjs/slow-regex': 'off',
       'sonarjs/prefer-regexp-exec': 'off',
       'security/detect-unsafe-regex': 'off',
@@ -219,17 +201,6 @@ export default [
       'const-case/uppercase': 'off',
       'sonarjs/no-redundant-optional': 'off',
       '@typescript-eslint/no-unused-vars': 'off',
-    },
-    settings: {
-      react: {
-        version: 'detect',
-      },
-      'import/resolver': {
-        typescript: {
-          alwaysTryTypes: true,
-          project: './tsconfig.json',
-        },
-      },
     },
   },
   // Next.js specific configuration
@@ -249,10 +220,12 @@ export default [
       '*.config.mjs',
       'eslint.config.js',
       'eslint.config.mjs',
+      'next-env.d.ts',
       '**/*.svg',
       'graphql/**',
+      'src/services/graphql/**',
       '.next/**',
       'out/**',
     ],
-  }
-];
+  },
+]

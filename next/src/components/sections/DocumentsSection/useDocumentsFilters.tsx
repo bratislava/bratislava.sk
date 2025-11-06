@@ -42,7 +42,8 @@ export const useDocumentsFilters = () => {
   }
 
   const setFilters = (newFilters: DocumentsFilters) => {
-    setFiltersQueryParams(newFilters)
+    // TODO promise ignored on purpose ?
+    void setFiltersQueryParams(newFilters)
     setSearch(newFilters.search)
     setPage(newFilters.page)
   }
