@@ -10,6 +10,29 @@
     },
     "text": {
       "type": "text"
+    },
+    "variant": {
+      "type": "enumeration",
+      "default": "grid",
+      "enum": [
+        "grid",
+        "carousel"
+      ]
+    },
+    "showMoreLink": {
+      "type": "component",
+      "conditions": {
+        "visible": {
+          "==": [
+            {
+              "var": "variant"
+            },
+            "carousel"
+          ]
+        }
+      },
+      "component": "blocks.common-link",
+      "repeatable": false
     }
   }
 }

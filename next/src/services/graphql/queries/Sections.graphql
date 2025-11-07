@@ -53,6 +53,10 @@ fragment InbaArticlesListSection on ComponentSectionsInbaArticlesList {
 fragment InbaReleasesSection on ComponentSectionsInbaReleases {
   title
   text
+  variantInbaReleasesSection: variant
+  showMoreLink {
+    ...CommonLink
+  }
 }
 
 fragment DividerSection on ComponentSectionsDivider {
