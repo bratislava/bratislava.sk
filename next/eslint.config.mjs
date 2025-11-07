@@ -1,38 +1,48 @@
-import { FlatCompat } from '@eslint/eslintrc'
+// nodejs utils
 import path from 'path'
 import { fileURLToPath } from 'url'
-import js from '@eslint/js'
-import tseslint from '@typescript-eslint/eslint-plugin'
-import tsparser from '@typescript-eslint/parser'
+
+// "core" eslint setup
+import { FlatCompat } from '@eslint/eslintrc'
+import eslint from '@eslint/js'
+import { defineConfig } from 'eslint/config'
+import tseslint from 'typescript-eslint'
+import prettier from 'eslint-config-prettier'
+import globals from 'globals'
+
+// additional eslint config
 import security from 'eslint-plugin-security'
 import noUnsanitized from 'eslint-plugin-no-unsanitized'
 import sonarjs from 'eslint-plugin-sonarjs'
 import simpleImportSort from 'eslint-plugin-simple-import-sort'
 import i18next from 'eslint-plugin-i18next'
 import tanstackQuery from '@tanstack/eslint-plugin-query'
-import prettier from 'eslint-config-prettier'
-import globals from 'globals'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
 const compat = new FlatCompat({
   baseDirectory: __dirname,
-  recommendedConfig: js.configs.recommended,
 })
 
-export default [
+const simpleImportSortConfig = {
+  plugins: {
+    'simple-import-sort': simpleImportSort,
+  },
+  rules: {
+    'simple-import-sort/imports': 'error',
+    'simple-import-sort/exports': 'error',
+  },
+}
+
+export default defineConfig(
   // Extend Next.js configs using FlatCompat
   // Rules that modify Next.js-provided plugins (react, react-hooks, next, import, jsx-a11y) should be included here
   // NOTE - eslint-plugin-next has some issues with flat config on v15, which only got resolved in v16
   // somewhat related issues: https://github.com/vercel/next.js/issues/73655 and those linked here: https://github.com/vercel/next.js/pull/83763
   // until v16, we'll get "The Next.js plugin was not detected in your ESLint configuration." errors during build
   ...compat.config({
-    extends: [
-      'eslint-config-next',
-      'eslint-config-next/core-web-vitals',
-      'eslint-config-next/typescript',
-    ],
+    extends: ['next', 'next/core-web-vitals', 'next/typescript'],
     rules: {
       // React specific rules (overrides for Next.js react plugin)
       'react/function-component-definition': [2, { namedComponents: 'arrow-function' }],
@@ -57,12 +67,9 @@ export default [
     },
   }),
   {
-    files: ['**/*.{js,jsx,ts,tsx}'],
     languageOptions: {
-      parser: tsparser,
       parserOptions: {
-        project: './tsconfig.json',
-        tsconfigRootDir: import.meta.dirname,
+        projectService: true,
       },
       globals: {
         ...globals.browser,
@@ -70,26 +77,19 @@ export default [
         ...globals.es2021,
       },
     },
-    plugins: {
-      '@typescript-eslint': tseslint,
-      'simple-import-sort': simpleImportSort,
-      security: security,
-      'no-unsanitized': noUnsanitized,
-      sonarjs: sonarjs,
-      i18next: i18next,
-      '@tanstack/query': tanstackQuery,
-    },
+  },
+  eslint.configs.recommended,
+  tseslint.configs.strictTypeChecked,
+  tseslint.configs.stylistic,
+  prettier,
+  simpleImportSortConfig,
+  security.configs.recommended,
+  noUnsanitized.configs.recommended,
+  sonarjs.configs.recommended,
+  i18next.configs['flat/recommended'],
+  tanstackQuery.configs['flat/recommended'],
+  {
     rules: {
-      // Additional rulesets not included in eslint-config-next
-      ...prettier.rules,
-      'simple-import-sort/imports': 'error',
-      'simple-import-sort/exports': 'error',
-      ...security.configs.recommended.rules,
-      ...noUnsanitized.configs.recommended.rules,
-      ...sonarjs.configs.recommended.rules,
-      ...i18next.configs.recommended.rules,
-      ...tanstackQuery.configs.recommended.rules,
-
       // Additional TypeScript ESLint rules from common config
       '@typescript-eslint/no-restricted-imports': 'error',
       '@typescript-eslint/no-loop-func': 'error',
@@ -228,4 +228,4 @@ export default [
       'out/**',
     ],
   },
-]
+)
