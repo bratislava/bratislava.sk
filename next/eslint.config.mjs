@@ -195,12 +195,12 @@ export default defineConfig(
       'security/detect-unsafe-regex': 'off',
       'security/detect-object-injection': 'off',
       'no-implicit-coercion': 'off',
-      'no-undef': 'off', // TypeScript handles this
-
-      // Disable rules that don't exist or cause issues
-      'const-case/uppercase': 'off',
-      'sonarjs/no-redundant-optional': 'off',
-      '@typescript-eslint/no-unused-vars': 'off',
+      'sonarjs/no-redundant-optional': 'warn',
+      '@typescript-eslint/no-unused-vars': 'warn',
+      '@typescript-eslint/no-unnecessary-condition': 'warn', // there is a LOT of this one
+      '@typescript-eslint/no-non-null-assertion': 'warn',
+      '@typescript-eslint/no-deprecated': 'warn',
+      '@typescript-eslint/no-unnecessary-type-conversion': 'warn',
     },
   },
   // Next.js specific configuration
