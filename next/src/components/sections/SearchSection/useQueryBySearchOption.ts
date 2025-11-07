@@ -68,7 +68,6 @@ export const useQueryBySearchOption = ({
 }: {
   optionKey: SearchOption['id']
   filters: SearchFilters
-   
 }) => {
   const { t } = useTranslation()
   const locale = useLocale()

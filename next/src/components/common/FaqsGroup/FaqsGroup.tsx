@@ -15,7 +15,6 @@ const FaqsGroup = ({ faqs, accordionTitleLevel }: FaqsGroupProps) => {
   return (
     <div className="flex flex-col gap-4">
       {faqs.filter(isDefined).map((faq, index) => (
-         
         <Accordion key={index} title={faq.title} accordionTitleLevel={accordionTitleLevel}>
           <Markdown content={faq.body} variant="small" />
         </Accordion>

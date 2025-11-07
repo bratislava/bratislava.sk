@@ -14,7 +14,7 @@ const range = (start: number, end: number) => {
  *
  * https://github.com/mui/material-ui/blob/512896973499adbbda057e7f3685d1b23cc02de9/packages/mui-material/src/usePagination/usePagination.js
  */
- 
+
 export default function usePagination(props: {
   boundaryCount?: number
   count?: number
@@ -79,7 +79,7 @@ export default function usePagination(props: {
     ...startPages,
 
     // Start ellipsis
-     
+
     ...(siblingsStart > boundaryCount + 2
       ? ['start-ellipsis' as const]
       : boundaryCount + 1 < count - boundaryCount
@@ -90,7 +90,7 @@ export default function usePagination(props: {
     ...range(siblingsStart, siblingsEnd),
 
     // End ellipsis
-     
+
     ...(siblingsEnd < count - boundaryCount - 1
       ? ['end-ellipsis' as const]
       : count - boundaryCount > boundaryCount

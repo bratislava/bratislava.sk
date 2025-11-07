@@ -16,7 +16,6 @@ const TabPanelDisclosure = () => {
           variant="underlined"
           className="font-semibold"
           href="https://zverejnovanie.bratislava.sk"
-           
         >
           zverejnovanie.bratislava.sk
         </MLink>

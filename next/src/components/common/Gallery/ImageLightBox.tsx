@@ -45,7 +45,6 @@ const ImageLightBox = (props: ImageLightBoxProps) => {
           >
             <StrapiImage
               draggable="false"
-               
               image={image}
               className="pointer-events-auto h-auto max-h-[86vh] w-full object-contain select-none"
               sizes="100vw"

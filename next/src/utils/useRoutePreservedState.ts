@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 
- 
 const historyStateKeyStateMap = new Map<string, any>()
 
 /**
@@ -13,7 +12,6 @@ const historyStateKeyStateMap = new Map<string, any>()
  */
 export const useRoutePreservedState = <T>(defaultValue: T) => {
   const historyStateKey =
-     
     typeof history === 'undefined' ? null : (history.state as { key: string }).key
 
   const getDefaultState = () => {
@@ -29,7 +27,6 @@ export const useRoutePreservedState = <T>(defaultValue: T) => {
   const [state] = useStateReturnValue
 
   useEffect(() => {
-     
     historyStateKeyStateMap.set((history.state as { key: string }).key, state)
   }, [state])
 

@@ -27,7 +27,7 @@ type TootootEventResponse = {
     _id: string
     Type: string
   }[]
-   
+
   Collaborators: any[]
   Categories: Venue[]
   Status: string

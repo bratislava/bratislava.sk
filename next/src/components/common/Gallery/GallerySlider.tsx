@@ -58,7 +58,6 @@ const GallerySlider = forwardRef<HTMLDivElement, SliderProps>(
       description,
     },
     forwardedRef,
-     
   ) => {
     const { t } = useTranslation()
     const [isFocused, setFocused] = useState(false)
@@ -104,7 +103,9 @@ const GallerySlider = forwardRef<HTMLDivElement, SliderProps>(
         paginate(1)
       }, autoSwipeDuration)
 
-      return () => clearInterval(timer)
+      return () => {
+        clearInterval(timer)
+      }
     }, [autoSwipeDuration, paginate, isDragging, pages, isFocused])
 
     const goToPage = useCallback(
@@ -136,12 +137,14 @@ const GallerySlider = forwardRef<HTMLDivElement, SliderProps>(
     )
 
     return (
-      // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
       <div
-        // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
         tabIndex={0}
-        onFocus={() => setFocused(true)}
-        onBlur={() => setFocused(false)}
+        onFocus={() => {
+          setFocused(true)
+        }}
+        onBlur={() => {
+          setFocused(false)
+        }}
         ref={forwardedRef}
         onKeyUp={keyUpHandler}
         role="application"

@@ -54,7 +54,6 @@ const DocumentRowCard = ({
             {metadata?.length ? (
               <div className="flex flex-wrap items-center gap-x-3">
                 {metadata.map((item, index) => (
-                   
                   <Fragment key={index}>
                     {index > 0 ? (
                       <div
@@ -75,9 +74,7 @@ const DocumentRowCard = ({
           href={linkHref}
           stretched
           hasLinkIcon={false}
-           
           startIcon={variant === 'single-file' ? <DownloadIcon /> : undefined}
-           
           aria-label={ariaLabel ?? `${t('common.showMore')}: ${title}`}
           endIcon={variant === 'multiple-files' ? <ArrowRightIcon /> : undefined}
           className="whitespace-nowrap max-lg:hidden"

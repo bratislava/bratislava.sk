@@ -119,7 +119,7 @@ const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
   // TODO We mutate these values in order to use variable search sections, for example to search only in one search option. The current solution works, but it may be refactored in the future.
   if (variant === 'specific') {
     searchOptions = searchOptions.filter((option) => option.id === searchOption)
-     
+
     defaultSearchOption = searchOptions[0]
   }
 

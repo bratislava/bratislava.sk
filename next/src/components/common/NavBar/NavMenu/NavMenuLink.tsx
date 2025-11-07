@@ -19,7 +19,12 @@ const NavMenuLink = ({ variant = 'simple', ...rest }: NavMenuLinkProps) => {
     case 'simple':
       return (
         <li className="flex">
-          <NavigationMenu.Link asChild onClick={() => setMobileMenuOpen(false)}>
+          <NavigationMenu.Link
+            asChild
+            onClick={() => {
+              setMobileMenuOpen(false)
+            }}
+          >
             {/* Using Button with custom styles to be able to show link icon easily, not ideal, but it works */}
             <Button
               variant="link"
@@ -35,7 +40,12 @@ const NavMenuLink = ({ variant = 'simple', ...rest }: NavMenuLinkProps) => {
     case 'showMoreLink':
       return (
         <li className="flex">
-          <NavigationMenu.Link asChild onClick={() => setMobileMenuOpen(false)}>
+          <NavigationMenu.Link
+            asChild
+            onClick={() => {
+              setMobileMenuOpen(false)
+            }}
+          >
             <Button variant="link" className="mt-2" {...rest} />
           </NavigationMenu.Link>
         </li>

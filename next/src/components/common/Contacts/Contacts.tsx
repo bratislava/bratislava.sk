@@ -52,15 +52,10 @@ const Contacts = ({ section }: ContactsProps) => {
 
       <div className="flex flex-col gap-6 lg:gap-8">
         {contacts.map((contact, index) => (
-          <ContactCtaCard
-             
-            key={index}
-            contact={contact}
-          />
+          <ContactCtaCard key={index} contact={contact} />
         ))}
         {personContacts?.filter(isDefined).map((person, index) => (
           <ContactCtaCard
-             
             key={index}
             contact={{
               type: 'Person',

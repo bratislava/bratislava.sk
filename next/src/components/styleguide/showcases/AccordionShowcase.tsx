@@ -1,4 +1,3 @@
- 
 import React from 'react'
 
 import Accordion from '@/src/components/common/Accordion/Accordion'

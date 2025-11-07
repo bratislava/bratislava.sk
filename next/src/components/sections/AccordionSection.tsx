@@ -40,7 +40,6 @@ const AccordionSection = ({ section }: AccordionSectionProps) => {
         <div className="flex flex-col gap-4">
           {groupByCategory(institutions?.filter(isPresent) ?? []).map((institution, index) => (
             <Accordion
-               
               key={`institution-${index}`}
               title={institution.category}
               accordionTitleLevel={accordionTitleLevel}
@@ -48,7 +47,6 @@ const AccordionSection = ({ section }: AccordionSectionProps) => {
               <div className="flex flex-col gap-4">
                 {institution.items.filter(isPresent).map((file, itemIndex) => (
                   <Institution
-                     
                     key={itemIndex}
                     title={file.title ?? undefined}
                     subtitle={file.subtitle ?? undefined}
@@ -65,14 +63,12 @@ const AccordionSection = ({ section }: AccordionSectionProps) => {
 
           {groupByCategory(flatText?.filter(isPresent) ?? []).map((text, index) => (
             <Accordion
-               
               key={`flatText-${index}`}
               title={text.category}
               accordionTitleLevel={accordionTitleLevel}
             >
               {text.items.filter(isPresent).map((item, itemIndex) => {
                 return (
-                   
                   <div className="flex flex-col gap-4" key={itemIndex}>
                     <Markdown content={item.content} variant="accordion" />
                     {item.fileList?.filter(isDefined).length ? (
@@ -95,9 +91,7 @@ const AccordionSection = ({ section }: AccordionSectionProps) => {
           ))}
 
           {groupByCategory(institutionsNarrow?.filter(isPresent) ?? []).map((text, index) => (
-             
             <Accordion
-               
               key={`institutionsNarrow-${index}`}
               title={text.category}
               accordionTitleLevel={accordionTitleLevel}
@@ -105,7 +99,6 @@ const AccordionSection = ({ section }: AccordionSectionProps) => {
               <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
                 {text.items.filter(isPresent).map((file, fileIndex) => (
                   <Institution
-                     
                     key={fileIndex}
                     title={file.title ?? undefined}
                     subtitle={file.subtitle ?? undefined}

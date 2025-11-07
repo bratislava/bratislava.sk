@@ -29,7 +29,6 @@ const NavMenuSection = ({ section, classNames }: NavigationSectionProps) => {
 
         <ul className="mt-1.5 flex flex-col">
           {section.items?.map((menuLink, index) => {
-             
             return <NavMenuLink key={index} {...menuLink} />
           })}
           {section.showMoreLink ? (

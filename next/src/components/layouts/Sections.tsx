@@ -158,7 +158,6 @@ const Sections = ({ sections }: SectionsProps) => {
   return (
     <>
       {sections.map((section, index) => (
-         
         <SectionContent key={index} section={section} />
       ))}
     </>

@@ -1,4 +1,3 @@
- 
 import { Typography } from '@bratislava/component-library'
 import React, { Fragment } from 'react'
 

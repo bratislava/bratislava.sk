@@ -22,7 +22,6 @@ const NumericalListSection = ({ section }: NumericalListSectionProps) => {
 
         <ol className="flex max-w-(--breakpoint-md) flex-col">
           {filteredItems.map((item, index) => (
-             
             <li key={index}>
               <NumericalListItem index={index} text={item} variant={variant} />
             </li>

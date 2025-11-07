@@ -32,7 +32,7 @@ export const getStaticPaths: GetStaticPaths<StaticParams> = async () => {
         // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
         slug: article!.slug!,
       },
-       
+
       locale: article!.locale!,
     }))
 

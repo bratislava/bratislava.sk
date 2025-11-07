@@ -140,7 +140,9 @@ const NewsletterSection = ({ section }: Props) => {
               ref={inputRef}
               value={email}
               label={t('NewsletterSection.inputLabel')}
-              onChange={(event) => setEmail(event.target.value)}
+              onChange={(event) => {
+                setEmail(event.target.value)
+              }}
               onKeyDown={(event) => {
                 if (event.key === 'Enter') {
                   void handleSubmit(email)

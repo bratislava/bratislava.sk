@@ -38,7 +38,6 @@ export const getStaticPaths: GetStaticPaths<StaticParams> = async () => {
     .filter((page) => page?.slug)
     .map((page) => ({
       params: {
-         
         slug: page!.slug!.split('/'),
       },
     }))

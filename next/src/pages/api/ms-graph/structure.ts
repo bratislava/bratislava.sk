@@ -14,10 +14,10 @@ const handler = async (
 
     const orgStructure = await getGroupMembersRecursive(accessToken ?? '', MS_GRAPH_GROUP_ID, null)
 
-    return res.status(200).json(orgStructure)
+    res.status(200).json(orgStructure)
   } catch (error) {
     // @ts-expect-error - TODO type
-    return res.status(500).json({ error: error.message })
+    res.status(500).json({ error: error.message })
   }
 }
 

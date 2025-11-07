@@ -36,7 +36,6 @@ const useHeadings = () => {
 
   useEffect(() => {
     updateHeadings()
-     
   }, [])
 
   return headings

@@ -247,7 +247,7 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
           {icon ?? children}
           {linkIcon ?? endIcon}
         </MLink>
-      );
+      )
     }
 
     return (
@@ -268,7 +268,7 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
         )}
         {!isLoading && endIcon}
       </RACButton>
-    );
+    )
   },
 )
 

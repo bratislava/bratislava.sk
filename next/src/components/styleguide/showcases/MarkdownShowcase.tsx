@@ -1,5 +1,3 @@
- 
-
 import Markdown from '@/src/components/formatting/Markdown/Markdown'
 
 import Stack from '../Stack'

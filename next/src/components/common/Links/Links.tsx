@@ -30,7 +30,6 @@ const Links = ({ title, titleLevel, pageLinks, className }: LinksProps) => {
           const { children: linkTitle, href } = getLinkProps(pageLink)
 
           return (
-             
             <Fragment key={index}>
               {index > 0 ? <HorizontalDivider asListItem className="mx-4 lg:mx-6" /> : null}
               <li className="w-full">

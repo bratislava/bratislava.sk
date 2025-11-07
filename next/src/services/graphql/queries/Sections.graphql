@@ -358,7 +358,7 @@ fragment ContactsSection on ComponentSectionsContactsSection {
   personContacts {
     ...ContactPersonCardBlock
   }
-  directionsContact{
+  directionsContact {
     ...ContactDirectionsCardBlock
   }
   titleLevelContactsSection: titleLevel

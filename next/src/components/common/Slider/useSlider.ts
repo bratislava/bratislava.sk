@@ -54,11 +54,15 @@ export const useSlider = (itemsCount: number, autoRotateInterval?: number) => {
   // eslint-disable-next-line consistent-return
   useEffect(() => {
     if (canAutoRotate) {
-      const handleVisibilityChange = () => setIsWindowFocused(!document.hidden)
+      const handleVisibilityChange = () => {
+        setIsWindowFocused(!document.hidden)
+      }
       // Pause autorotation when the window is unfocused to prevent slide rendering bugs
       document.addEventListener('visibilitychange', handleVisibilityChange)
 
-      return () => document.removeEventListener('visibilitychange', handleVisibilityChange)
+      return () => {
+        document.removeEventListener('visibilitychange', handleVisibilityChange)
+      }
     }
   }, [canAutoRotate])
 
@@ -68,7 +72,9 @@ export const useSlider = (itemsCount: number, autoRotateInterval?: number) => {
       // The slider auto-rotates only from left to right to avoid rendering bugs
       const timer = setInterval(handleGoToNext, autoRotateInterval)
 
-      return () => clearInterval(timer)
+      return () => {
+        clearInterval(timer)
+      }
     }
   }, [canAutoRotate, autoRotateInterval, handleGoToNext])
 

@@ -104,7 +104,6 @@ export async function listPages() {
   )
 }
 
- 
 export async function logAllSectionsByType({
   entityType,
   sectionName,
@@ -179,9 +178,9 @@ export async function logAllSectionsByType({
 
     if (showExtendedInfo) {
       console.log(`[${entityType}] ${entity.title}`)
-      console.log(`${strapiEntityLink}`)
-      console.log(`${strapiEntityLinkProd}`)
-      console.log(`${nextEntityLinkProd}`)
+      console.log(strapiEntityLink)
+      console.log(strapiEntityLinkProd)
+      console.log(nextEntityLinkProd)
       console.log(entityLogMessage)
       console.log('\n')
     } else {

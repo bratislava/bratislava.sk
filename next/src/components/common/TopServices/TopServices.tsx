@@ -15,10 +15,8 @@ const TopServices = ({ items }: TopServicesProps) => (
       items={
         items?.length
           ? chunk(items, 3)?.map((itemsChunk, chunkIndex) => (
-               
               <div key={String(chunkIndex)} className="flex w-full shrink-0 flex-col gap-2">
                 {itemsChunk.map((item, itemIndex) => (
-                   
                   <TopServicesItem key={itemIndex} topServicesItem={item} />
                 ))}
               </div>
@@ -28,7 +26,6 @@ const TopServices = ({ items }: TopServicesProps) => (
     />
     <ul className="hidden md:grid md:grid-cols-2 md:gap-x-8 md:gap-y-10 lg:grid-cols-3">
       {items?.map((item, index) => (
-         
         <li key={index}>
           <TopServicesItem topServicesItem={item} />
         </li>

@@ -34,7 +34,6 @@ const NavMenu = () => {
       <div className="relative z-30 border-b">
         <NavigationMenu.List className="m-auto grid w-full max-w-(--breakpoint-xl) grid-flow-col grid-cols-6">
           {menus.map((menuItem, index) => (
-             
             <NavMenuItem key={index} menu={menuItem} />
           ))}
         </NavigationMenu.List>
@@ -43,7 +42,9 @@ const NavMenu = () => {
       {/* Viewport represents popup div with links that appears under menu button */}
       <NavigationMenu.Viewport
         // Together with onCLick in NavMenuContent, it closes the menu on click outside of container area
-        onClick={() => setMenuValue('')}
+        onClick={() => {
+          setMenuValue('')
+        }}
         className="absolute z-29 h-screen w-full"
       />
     </NavigationMenu.Root>

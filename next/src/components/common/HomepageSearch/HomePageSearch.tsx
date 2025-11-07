@@ -26,7 +26,9 @@ const HomePageSearch = ({ isOpen, setOpen }: HomePageSearchProps) => {
   const locale = useLocale()
 
   const ref = useRef<HTMLDivElement>(null)
-  useOnClickOutside(ref as React.RefObject<HTMLElement>, () => setOpen(false))
+  useOnClickOutside(ref as React.RefObject<HTMLElement>, () => {
+    setOpen(false)
+  })
 
   const [input, setInput] = useState<string>('')
   const [debouncedInput] = useDebounceValue(input, 1300)
@@ -56,7 +58,7 @@ const HomePageSearch = ({ isOpen, setOpen }: HomePageSearchProps) => {
     <div ref={ref} className="relative">
       <div
         className={cn(
-          `${isOpen ? 'md:w-[634px]' : 'md:w-[444px]'}`,
+          isOpen ? 'md:w-[634px]' : 'md:w-[444px]',
           'w-full transition-all duration-300',
         )}
       >
@@ -64,7 +66,9 @@ const HomePageSearch = ({ isOpen, setOpen }: HomePageSearchProps) => {
           value={input}
           setValue={setInput}
           onSearchPressed={handleSearchPressed}
-          onFocus={() => setOpen(true)}
+          onFocus={() => {
+            setOpen(true)
+          }}
         />
       </div>
       <AnimateHeight isVisible={isOpen} className="absolute top-full z-40 mt-2 w-full md:w-[634px]">

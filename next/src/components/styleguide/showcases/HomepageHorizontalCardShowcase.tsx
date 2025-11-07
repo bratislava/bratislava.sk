@@ -25,7 +25,6 @@ const HomepageHorizontalCardShowcase = () => {
     <Wrapper title="Homepage horizontal Card">
       <div className="grid w-full grid-cols-1 gap-4 md:grid-cols-2">
         {cards.map((card, index) => (
-           
           <HomepageHighlightCard key={index} {...card} />
         ))}
       </div>

@@ -45,12 +45,15 @@ const NavMenuContent = ({ colCount, sections, colorStyle }: NavMenuContentProps)
     <NavigationMenu.Content
       // To disable "onHover" behaviour, needs to be set also in NavMenuTrigger
       // https://github.com/radix-ui/primitives/issues/1630#issuecomment-1237106380
-      onPointerMove={(event) => event.preventDefault()}
-      onPointerLeave={(event) => event.preventDefault()}
+      onPointerMove={(event) => {
+        event.preventDefault()
+      }}
+      onPointerLeave={(event) => {
+        event.preventDefault()
+      }}
       style={colorStyle}
     >
       <div className="relative z-29 bg-category-200">
-        {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-noninteractive-element-interactions */}
         <ul
           className={cn('mx-auto grid w-full max-w-(--breakpoint-xl) gap-x-8 gap-y-6 px-4 py-8', {
             // Keeping for consistency with mestskakniznica.sk
@@ -58,9 +61,10 @@ const NavMenuContent = ({ colCount, sections, colorStyle }: NavMenuContentProps)
             'grid-cols-4': colCount === 4,
           })}
           // Together with onCLick in Viewport, it closes the menu on click outside of container area
-          onClick={(event) => event.stopPropagation()}
+          onClick={(event) => {
+            event.stopPropagation()
+          }}
         >
-          { }
           {menuCells.map((cell, index) => {
             // Keeping for consistency with mestskakniznica.sk
             if (Array.isArray(cell)) {
@@ -84,7 +88,6 @@ const NavMenuContent = ({ colCount, sections, colorStyle }: NavMenuContentProps)
               </NavMenuContentCell>
             )
           })}
-          { }
         </ul>
       </div>
       <Waves

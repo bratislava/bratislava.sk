@@ -27,7 +27,6 @@ const CategoryCardShowcase = () => {
     <Wrapper title="Category Card">
       <div className="grid w-full grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
         {cards.map(({ title, linkProps, variant }, index) => (
-           
           <CategoryCard key={index} title={title} linkProps={linkProps} variant={variant} />
         ))}
       </div>

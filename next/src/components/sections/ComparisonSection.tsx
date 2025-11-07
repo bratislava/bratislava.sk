@@ -40,7 +40,6 @@ const ComparisonSection = ({ section }: ComparisonSectionProps) => {
 
             return (
               <ComparisonCard
-                 
                 key={index}
                 icon={imgUrl ? <Image src={imgUrl} alt="" fill /> : <InfoIcon />}
                 color="white"

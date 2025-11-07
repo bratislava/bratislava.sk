@@ -67,7 +67,6 @@ const PageHeaderFacility = ({ title, breadcrumbs, headerLinks, header }: Props) 
             <div className="flex flex-wrap gap-3">
               {headerLinks.map((headerLink, index) => (
                 <Button
-                   
                   key={index}
                   variant={index === 0 ? 'solid' : 'outline'}
                   fullWidthMobile
@@ -111,7 +110,12 @@ const PageHeaderFacility = ({ title, breadcrumbs, headerLinks, header }: Props) 
                   .filter(isDefined)
                   .slice(0, 3)}
                 <div className="absolute right-4 bottom-4 z-1">
-                  <Button variant="solid-inverted" onPress={() => openAtImageIndex(0)}>
+                  <Button
+                    variant="solid-inverted"
+                    onPress={() => {
+                      openAtImageIndex(0)
+                    }}
+                  >
                     {t('PageHeaderFacility.allPhotos', { count: imageCount })}
                   </Button>
                 </div>
@@ -132,7 +136,12 @@ const PageHeaderFacility = ({ title, breadcrumbs, headerLinks, header }: Props) 
                 <ImagePlaceholder />
               )}
               <div className="absolute right-2 bottom-2 z-1 sm:right-3 sm:bottom-3">
-                <Button variant="solid-inverted" onPress={() => openAtImageIndex(0)}>
+                <Button
+                  variant="solid-inverted"
+                  onPress={() => {
+                    openAtImageIndex(0)
+                  }}
+                >
                   {t('PageHeaderFacility.allPhotos', { count: imageCount })}
                 </Button>
               </div>
@@ -141,7 +150,9 @@ const PageHeaderFacility = ({ title, breadcrumbs, headerLinks, header }: Props) 
         </div>
       </PageHeader>
       <ImageLightBox
-        onClose={() => overlayState.close()}
+        onClose={() => {
+          overlayState.close()
+        }}
         isOpen={overlayState.isOpen}
         images={filteredImages}
         initialImageIndex={initialImageIndex}

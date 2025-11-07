@@ -9,16 +9,16 @@ export const useGetDownloadAriaLabel = () => {
   const locale = useLocale()
 
   const getDownloadAriaLabel = (file: FileItemBlockFragment | FileBlockFragment): string => {
-    if (!file) return `${t('FileList.aria.downloadFile')}`
+    if (!file) return t('FileList.aria.downloadFile')
 
     const formattedFileFormat = formatFileExtension(file.media?.ext)
     const formattedFileSize = formatFileSize(file.media?.size, locale)
 
-    return `${t('FileList.aria.downloadFileAriaLabel', {
+    return t('FileList.aria.downloadFileAriaLabel', {
       title: file.title ?? file.media?.name,
       format: formattedFileFormat,
       size: formattedFileSize,
-    })}`
+    })
   }
 
   return { getDownloadAriaLabel }

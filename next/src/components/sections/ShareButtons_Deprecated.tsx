@@ -29,9 +29,8 @@ const SocialMediaButton = ({
     const w = 600
     const h = 400
 
-     
     const l = screen.width / 2 - w / 2
-     
+
     const t = screen.height / 2 - h / 2
 
     window.open(
