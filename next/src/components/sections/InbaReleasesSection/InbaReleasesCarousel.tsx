@@ -34,7 +34,7 @@ const InbaReleasesCarousel = ({ section }: Props) => {
     <div className="flex flex-col gap-8">
       <SectionHeader title={title} text={text} showMoreLink={showMoreLink} />
       {isError ? (
-        <Typography variant="p-default">{error?.message}</Typography>
+        <Typography variant="p-default">{error.message}</Typography>
       ) : isPending ? (
         <LoadingSpinner />
       ) : (
