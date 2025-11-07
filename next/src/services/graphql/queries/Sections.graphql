@@ -53,6 +53,10 @@ fragment InbaArticlesListSection on ComponentSectionsInbaArticlesList {
 fragment InbaReleasesSection on ComponentSectionsInbaReleases {
   title
   text
+  variantInbaReleasesSection: variant
+  showMoreLink {
+    ...CommonLink
+  }
 }
 
 fragment DividerSection on ComponentSectionsDivider {
@@ -358,7 +362,7 @@ fragment ContactsSection on ComponentSectionsContactsSection {
   personContacts {
     ...ContactPersonCardBlock
   }
-  directionsContact{
+  directionsContact {
     ...ContactDirectionsCardBlock
   }
   titleLevelContactsSection: titleLevel

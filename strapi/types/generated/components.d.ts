@@ -914,8 +914,10 @@ export interface SectionsInbaReleases extends Struct.ComponentSchema {
     displayName: 'in.ba vydania'
   }
   attributes: {
+    showMoreLink: Schema.Attribute.Component<'blocks.common-link', false>
     text: Schema.Attribute.Text
     title: Schema.Attribute.String
+    variant: Schema.Attribute.Enumeration<['grid', 'carousel']> & Schema.Attribute.DefaultTo<'grid'>
   }
 }
 
