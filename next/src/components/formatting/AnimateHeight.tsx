@@ -42,8 +42,9 @@ const AnimateHeight = ({
       initial={initialIsVisible.current ? 'opened' : 'closed'}
       animate={isVisible ? 'opened' : 'closed'}
       variants={{
-        opened: { ...openedVariant, height },
-        closed: { ...closedVariant, height: 0 },
+        // TODO when variant is a function this does not work as expected - variant is likely never function, if so rewrite that it's explicit
+        opened: { ...(typeof openedVariant === 'function' ? {} : openedVariant), height },
+        closed: { ...(typeof closedVariant === 'function' ? {} : closedVariant), height: 0 },
       }}
       inherit={false}
       transition={{
