@@ -513,6 +513,15 @@ fragment NewsletterSection on ComponentSectionsNewsletter {
   instagramUrl
 }
 
+fragment InbaLatestReleaseSection on ComponentSectionsInbaLatestRelease {
+  articles {
+    ...ArticleCardEntity
+  }
+  allReleasesPage {
+    ...PageSlugEntity
+  }
+}
+
 fragment Sections on PageSectionsDynamicZone {
   __typename
 
@@ -652,6 +661,10 @@ fragment Sections on PageSectionsDynamicZone {
 
   ... on ComponentSectionsNewsletter {
     ...NewsletterSection
+  }
+
+  ... on ComponentSectionsInbaLatestRelease {
+    ...InbaLatestReleaseSection
   }
 }
 

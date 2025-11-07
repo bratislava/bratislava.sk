@@ -47,21 +47,21 @@ const SectionHeader = ({
   return (
     <div
       {...(excludeFromTableOfContents ? undefined : TABLE_OF_CONTENTS_HEADING_ATTRIBUTE)}
-      className={cn('flex items-center lg:justify-end', {
-        'flex flex-col items-start gap-y-4 lg:flex-row lg:flex-wrap lg:justify-between': title,
-        'lg:justify-start': !showMoreLink,
-      })}
+      className={cn(
+        'flex items-center lg:justify-end',
+        {
+          'flex flex-col items-start gap-y-4 lg:flex-row lg:flex-wrap lg:justify-between': title,
+          'lg:justify-start': !showMoreLink,
+        },
+        className,
+      )}
     >
       {title || text ? (
         <div
-          className={cn(
-            'flex w-full flex-col items-start gap-2',
-            {
-              'mx-auto items-center text-center': isCentered,
-              'max-w-[50rem]': !isFullWidth, // 50rem = 800px
-            },
-            className,
-          )}
+          className={cn('flex w-full flex-col items-start gap-2', {
+            'mx-auto items-center text-center': isCentered,
+            'max-w-[50rem]': !isFullWidth, // 50rem = 800px
+          })}
         >
           {title ? (
             <Typography variant={titleLevel ?? 'h2'} id={titleId ?? slugify(title)}>
