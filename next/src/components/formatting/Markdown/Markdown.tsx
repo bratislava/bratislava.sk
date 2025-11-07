@@ -123,29 +123,38 @@ const Markdown = ({ content, variant = 'default', className }: MarkdownProps) =>
               </MLink>
             )
           },
-          img: ({ node, src, alt, title, ...props }) => (
-            // Based on OLO: https://github.com/bratislava/olo.sk/blob/master/next/src/components/formatting/Markdown.tsx#L179
-            // TODO Note from OLO: This can still produce a hydration error, because the remark-unwrap-images only works when image is the only child of the paragraph
-            <figure className="flex flex-col items-center gap-4">
-              <Image
-                {...props}
-                src={src ?? ''}
-                width="0"
-                height="0"
-                sizes="100vw"
-                alt={alt ?? ''}
-                className="h-auto w-full overflow-hidden rounded-xl"
-              />
-              {title ? (
-                <figcaption
-                  aria-hidden={title === alt}
-                  className="text-center text-size-p-small text-content-passive-tertiary"
-                >
-                  {title}
-                </figcaption>
-              ) : null}
-            </figure>
-          ),
+          img: ({ node, src, alt, title, ...props }) => {
+            // this is a new feature behind a flag in React 19.1, this is to conform with the possible, if very unlikely, new type
+            if (src instanceof Blob) {
+              throw new Error(
+                'Passed a Blob object into img src in Markdown. Blobs in src are not yet supported by Next.js Image component.',
+              )
+            }
+
+            return (
+              // Based on OLO: https://github.com/bratislava/olo.sk/blob/master/next/src/components/formatting/Markdown.tsx#L179
+              // TODO Note from OLO: This can still produce a hydration error, because the remark-unwrap-images only works when image is the only child of the paragraph
+              <figure className="flex flex-col items-center gap-4">
+                <Image
+                  {...props}
+                  src={src ?? ''}
+                  width="0"
+                  height="0"
+                  sizes="100vw"
+                  alt={alt ?? ''}
+                  className="h-auto w-full overflow-hidden rounded-xl"
+                />
+                {title ? (
+                  <figcaption
+                    aria-hidden={title === alt}
+                    className="text-center text-size-p-small text-content-passive-tertiary"
+                  >
+                    {title}
+                  </figcaption>
+                ) : null}
+              </figure>
+            )
+          },
           blockquote: ({ node, ...props }) => (
             <blockquote className="my-4 border-l-4 border-category-600 py-2 pl-8" {...props} />
           ),
