@@ -54,6 +54,7 @@ const PaginationWithInput = ({
             className={cn(
               'items-center justify-center',
               // Set input width to fit three digits
+              // TODO consider setting input width dynamically according to number of pages
               '[&_input]:w-16 [&_input]:text-center',
             )}
           />
