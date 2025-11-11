@@ -53,6 +53,10 @@ fragment InbaArticlesListSection on ComponentSectionsInbaArticlesList {
 fragment InbaReleasesSection on ComponentSectionsInbaReleases {
   title
   text
+  variantInbaReleasesSection: variant
+  showMoreLink {
+    ...CommonLink
+  }
 }
 
 fragment DividerSection on ComponentSectionsDivider {
@@ -509,6 +513,15 @@ fragment NewsletterSection on ComponentSectionsNewsletter {
   instagramUrl
 }
 
+fragment InbaLatestReleaseSection on ComponentSectionsInbaLatestRelease {
+  articles {
+    ...ArticleCardEntity
+  }
+  allReleasesPage {
+    ...PageSlugEntity
+  }
+}
+
 fragment Sections on PageSectionsDynamicZone {
   __typename
 
@@ -648,6 +661,10 @@ fragment Sections on PageSectionsDynamicZone {
 
   ... on ComponentSectionsNewsletter {
     ...NewsletterSection
+  }
+
+  ... on ComponentSectionsInbaLatestRelease {
+    ...InbaLatestReleaseSection
   }
 }
 

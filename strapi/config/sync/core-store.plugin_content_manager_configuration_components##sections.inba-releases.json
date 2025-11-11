@@ -48,6 +48,35 @@
           "sortable": true
         }
       },
+      "variant": {
+        "edit": {
+          "label": "Variant",
+          "description": "GRID zobrazí vydania v mriežke spolu s vyhĺadávaním, CAROUSEL zobrazí vydania v riadku spolu s linkom",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "variant",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "showMoreLink": {
+        "edit": {
+          "label": "Link",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "label"
+        },
+        "list": {
+          "label": "showMoreLink",
+          "searchable": false,
+          "sortable": false
+        }
+      },
       "documentId": {
         "edit": {},
         "list": {
@@ -58,12 +87,6 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "title",
-        "text",
-        "documentId"
-      ],
       "edit": [
         [
           {
@@ -76,7 +99,25 @@
             "name": "text",
             "size": 12
           }
+        ],
+        [
+          {
+            "name": "variant",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "showMoreLink",
+            "size": 12
+          }
         ]
+      ],
+      "list": [
+        "id",
+        "title",
+        "text",
+        "documentId"
       ]
     },
     "isComponent": true

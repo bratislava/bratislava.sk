@@ -93,6 +93,7 @@ const config = {
       locale: '*',
       populate: [
         'tag.pageCategory',
+        'tags',
         'tags.pageCategory',
         'coverMedia',
         'articleCategory',

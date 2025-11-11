@@ -34,6 +34,9 @@ export const getLinkProps = (
   let label = link?.label ?? ''
   let target: '_blank' | undefined
 
+  // To allow setting url query parameters from strapi we use the url field if it starts with '?'
+  const queryParams = link?.url?.startsWith('?') ? link.url : ''
+
   if (!link) {
     return { children: label, href } // TODO?
   }
@@ -45,15 +48,13 @@ export const getLinkProps = (
   } else if ('article' in link && link.article) {
     label = link.label ?? link.article.title
     href = `/spravy/${link.article.slug}`
-  } else if (link?.url) {
+  } else if (link?.url && !queryParams) {
     label = link.label ?? link.url
+    href = link.url
     target = href.startsWith('http') ? '_blank' : undefined
-
-    // To allow setting url query parameters from strapi we use the url field if it starts with '?'
-    if (link?.url?.startsWith('?')) {
-      href += link.url
-    } else href = link.url
   }
+
+  if (queryParams) href = `${href}${queryParams}`
 
   const analyticsProps: LinkAnalyticsProps | undefined = link?.analyticsId
     ? { id: link.analyticsId }

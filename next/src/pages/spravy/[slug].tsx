@@ -81,7 +81,8 @@ const Page = ({ general, article }: PageProps) => {
   const { title, perex, tags } = article ?? {}
 
   // TODO remove style when page categories are removed
-  const firstTagColor = tags.find(isDefined)?.pageCategory?.color
+  // TODO type - using tags.find (without '?') produces no error locally, however it introduced some error in production
+  const firstTagColor = tags?.find(isDefined)?.pageCategory?.color
 
   return (
     <GeneralContextProvider general={general}>

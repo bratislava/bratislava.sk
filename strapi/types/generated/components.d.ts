@@ -908,14 +908,27 @@ export interface SectionsInbaArticlesList extends Struct.ComponentSchema {
   }
 }
 
+export interface SectionsInbaLatestRelease extends Struct.ComponentSchema {
+  collectionName: 'components_sections_inba_latest_releases'
+  info: {
+    displayName: 'in.ba najnov\u0161ie vydanie'
+  }
+  attributes: {
+    allReleasesPage: Schema.Attribute.Relation<'oneToOne', 'api::page.page'>
+    articles: Schema.Attribute.Relation<'oneToMany', 'api::article.article'>
+  }
+}
+
 export interface SectionsInbaReleases extends Struct.ComponentSchema {
   collectionName: 'components_sections_inba_releases'
   info: {
     displayName: 'in.ba vydania'
   }
   attributes: {
+    showMoreLink: Schema.Attribute.Component<'blocks.common-link', false>
     text: Schema.Attribute.Text
     title: Schema.Attribute.String
+    variant: Schema.Attribute.Enumeration<['grid', 'carousel']> & Schema.Attribute.DefaultTo<'grid'>
   }
 }
 
@@ -1271,6 +1284,7 @@ declare module '@strapi/strapi' {
       'sections.homepage-tabs': SectionsHomepageTabs
       'sections.iframe': SectionsIframe
       'sections.inba-articles-list': SectionsInbaArticlesList
+      'sections.inba-latest-release': SectionsInbaLatestRelease
       'sections.inba-releases': SectionsInbaReleases
       'sections.links': SectionsLinks
       'sections.narrow-text': SectionsNarrowText

@@ -110,13 +110,8 @@ const PageHeaderFacility = ({ title, breadcrumbs, headerLinks, header }: Props) 
                   .filter(isDefined)
                   .slice(0, 3)}
                 <div className="absolute right-4 bottom-4 z-1">
-                  <Button
-                    variant="solid-inverted"
-                    onPress={() => {
-                      openAtImageIndex(0)
-                    }}
-                  >
-                    {t('PageHeaderFacility.allPhotos', { count: imageCount })}
+                  <Button variant="solid-inverted" onPress={() => { openAtImageIndex(0); }}>
+                    {t('PageHeaderFacility.allPhotos', { imageCount })}
                   </Button>
                 </div>
               </ul>
@@ -136,13 +131,8 @@ const PageHeaderFacility = ({ title, breadcrumbs, headerLinks, header }: Props) 
                 <ImagePlaceholder />
               )}
               <div className="absolute right-2 bottom-2 z-1 sm:right-3 sm:bottom-3">
-                <Button
-                  variant="solid-inverted"
-                  onPress={() => {
-                    openAtImageIndex(0)
-                  }}
-                >
-                  {t('PageHeaderFacility.allPhotos', { count: imageCount })}
+                <Button variant="solid-inverted" onPress={() => { openAtImageIndex(0); }}>
+                  {t('PageHeaderFacility.allPhotos', { imageCount })}
                 </Button>
               </div>
             </div>
