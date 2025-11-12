@@ -32,7 +32,7 @@ describe('English translation', { testIsolation: false }, () => {
         })
 
         it('displays EN homepage with welcome text', () => {
-          cy.get('h1').first().should('contain.text', 'Vitajte')
+          cy.get('h1').first().should('contain.text', 'Welcome')
         })
 
         it('displays SK homepage after changing translation again', () => {
