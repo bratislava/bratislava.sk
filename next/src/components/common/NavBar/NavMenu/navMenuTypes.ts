@@ -9,7 +9,8 @@ export type MenuLink = CommonLinkProps
 export type MenuSection = {
   items: MenuLink[]
   colSpan: number
-  label?: string
+  label: string
+  subtext?: string | null | undefined
   showMoreLink?: MenuLink
   icon?: Enum_Componentmenumenusection_Icon
 }
@@ -19,5 +20,5 @@ export type MenuItem = {
   colCount: number
   items: MenuSection[]
   icon: Enum_Componentmenumenuitem_Icon
-  linkHref: string
+  seeAllLinkProps?: CommonLinkProps
 }

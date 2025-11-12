@@ -11,6 +11,10 @@ type NavItemProps = {
   menu: MenuItem
 }
 
+/**
+ * Figma: https://www.figma.com/design/17wbd0MDQcMW9NbXl6UPs8/DS--Component-library?node-id=16846-33525&m=dev
+ */
+
 const NavMenuItem = ({ menu }: NavItemProps) => {
   const category = transformIconToCategory(menu.icon)
   const colorStyle = getCategoryColorLocalStyle({ category })
@@ -18,7 +22,12 @@ const NavMenuItem = ({ menu }: NavItemProps) => {
   return (
     <NavigationMenu.Item>
       <NavMenuTrigger label={menu.label} colorStyle={colorStyle} />
-      <NavMenuContent sections={menu.items} colCount={menu.colCount} colorStyle={colorStyle} />
+      <NavMenuContent
+        sections={menu.items}
+        colCount={menu.colCount}
+        colorStyle={colorStyle}
+        seeAllLinkProps={menu.seeAllLinkProps}
+      />
     </NavigationMenu.Item>
   )
 }
