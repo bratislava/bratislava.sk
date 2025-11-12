@@ -34,6 +34,9 @@ fragment ArticlesSection on ComponentSectionsArticles {
   category {
     ...PageCategoryEntity
   }
+  articleCategories {
+    ...ArticleCategoryEntity
+  }
   tags {
     ...TagEntity
   }

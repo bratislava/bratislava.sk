@@ -76,6 +76,36 @@
           "sortable": true
         }
       },
+      "articles": {
+        "edit": {
+          "label": "Články",
+          "description": "Umožní pripnúť konkrétne články. Články z tohto poľa sa zobrazia ako prvé. Ak sú vyplnené aj polia nižšie (Typy, Témy, Admin skupiny), za pripnutými článkami sa zobrazia články, pre ktoré platia hodnoty zvyšných polí súčasne.",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "title"
+        },
+        "list": {
+          "label": "articles",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "articleCategories": {
+        "edit": {
+          "label": "Typy",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "title"
+        },
+        "list": {
+          "label": "articleCategories",
+          "searchable": false,
+          "sortable": false
+        }
+      },
       "tags": {
         "edit": {
           "label": "Témy",
@@ -87,21 +117,6 @@
         },
         "list": {
           "label": "tags",
-          "searchable": false,
-          "sortable": false
-        }
-      },
-      "articles": {
-        "edit": {
-          "label": "Články",
-          "description": "Umožní pripnúť konkrétne články. Články z tohto poľa sa zobrazia ako prvé. Ak je vyplnené aj pole Tagy, nasledovať budú články s vybranými tagmi.",
-          "placeholder": "",
-          "visible": true,
-          "editable": true,
-          "mainField": "title"
-        },
-        "list": {
-          "label": "articles",
           "searchable": false,
           "sortable": false
         }
@@ -127,7 +142,8 @@
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true
+          "editable": true,
+          "mainField": "label"
         },
         "list": {
           "label": "showMoreLink",
@@ -145,12 +161,6 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "title",
-        "text",
-        "category"
-      ],
       "edit": [
         [
           {
@@ -178,6 +188,12 @@
         ],
         [
           {
+            "name": "articleCategories",
+            "size": 6
+          }
+        ],
+        [
+          {
             "name": "tags",
             "size": 6
           }
@@ -200,7 +216,8 @@
             "size": 12
           }
         ]
-      ]
+      ],
+      "list": ["id", "title", "text", "category"]
     },
     "uid": "sections.articles",
     "isComponent": true
