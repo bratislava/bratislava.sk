@@ -34,7 +34,6 @@ const ComparisonCard = ({ title, items, color, icon }: ComparisonProps) => {
           <Typography variant="h3">{title}</Typography>
           <ul className="mt-1 list-disc pl-5">
             {items?.map((item, index) => (
-              // eslint-disable-next-line react/no-array-index-key
               <li key={index} className="mt-3">
                 {item}
               </li>

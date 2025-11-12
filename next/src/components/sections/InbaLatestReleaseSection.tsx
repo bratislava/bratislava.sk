@@ -104,7 +104,7 @@ const InbaLatestReleaseSection = ({ section }: Props) => {
                 {articlesToShow.map((article, index) => {
                   return (
                     <Fragment
-                      // eslint-disable-next-line react/no-array-index-key
+                       
                       key={index}
                     >
                       {index > 0 && <HorizontalDivider asListItem />}

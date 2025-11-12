@@ -238,7 +238,7 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
         <MLink
           href={rest.href}
           target={isExternal ? '_blank' : '_self'}
-          ref={ref as RefObject<HTMLAnchorElement>}
+          ref={ref as RefObject<HTMLAnchorElement | null>}
           className={styles}
           analyticsProps={rest.analyticsProps}
           {...rest}
@@ -252,7 +252,7 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
 
     return (
       <RACButton
-        ref={ref as RefObject<HTMLButtonElement>}
+        ref={ref as RefObject<HTMLButtonElement | null>}
         isDisabled={isLoadingOrDisabled}
         className={styles}
         {...rest}

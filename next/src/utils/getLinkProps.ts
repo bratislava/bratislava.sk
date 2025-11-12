@@ -29,7 +29,6 @@ export const getLinkProps = (
     | HomepageHighlightsItemFragment
     | null
     | undefined,
-  // eslint-disable-next-line sonarjs/cognitive-complexity
 ) => {
   let href = '#'
   let label = link?.label ?? ''

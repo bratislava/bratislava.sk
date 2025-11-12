@@ -116,14 +116,12 @@ import Travel64pxStrokeIcon from '@/src/assets/pictograms-menu/64px/travel_64px_
 import Tree64pxIcon from '@/src/assets/pictograms-menu/64px/tree_64px.svg'
 import Trolleybus64pxIcon from '@/src/assets/pictograms-menu/64px/trolleybus_64px.svg'
 
-export type MenuIcon = string
-
 // The type of any icon is fine.
 type IconComponent = typeof Accommodation48pxIcon
 
 type IconUrlMap = {
-  size_48: { [key: MenuIcon]: IconComponent }
-  size_64: { [key: MenuIcon]: IconComponent }
+  size_48: Record<string, IconComponent>
+  size_64: Record<string, IconComponent>
 }
 
 type IconCollection = {
@@ -261,7 +259,7 @@ export const ICON_URL_MAP: IconUrlMap = {
  *
  * @param iconName
  */
-export function getPictogram(iconName?: MenuIcon): undefined | IconCollection {
+export function getPictogram(iconName?: string): undefined | IconCollection {
   if (!iconName) {
     return undefined
   }

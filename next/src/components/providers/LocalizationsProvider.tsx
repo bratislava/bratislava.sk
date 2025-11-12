@@ -50,7 +50,7 @@ export const useLocalizations = () => {
       locale: otherLanguageCode,
       shortName: shortNameMap[otherLanguageCode],
       longName: longNameMap[otherLanguageCode],
-      // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
+
       path: context?.[otherLanguageCode] ?? '/',
     },
   }

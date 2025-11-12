@@ -7,7 +7,9 @@ type RequestPayload = { model: string; entry: { slug: string; locale: string } }
 const handler = async (req: NextApiRequest, res: NextApiResponse<Response>) => {
   // Check for secret to confirm this is a valid request, NEXT secret is getting from Strapi env variable
   if (req.query.secret !== process.env.REVALIDATE_SECRET_TOKEN) {
-    return res.status(401).json({ message: 'Invalid token' })
+    res.status(401).json({ message: 'Invalid token' })
+
+    return
   }
 
   try {
@@ -44,11 +46,11 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<Response>) => {
     console.log('api/revalidate:', homepage)
     await res.revalidate(homepage)
 
-    return res.json({ revalidated: true })
+    res.json({ revalidated: true })
   } catch (error) {
     console.log('api/revalidate: Error while revalidating ==>', error)
 
-    return res.status(500).send('Error revalidating')
+    res.status(500).send('Error revalidating')
   }
 }
 

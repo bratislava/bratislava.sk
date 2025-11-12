@@ -30,6 +30,7 @@ const StarzLogo = ({ linkProps, variant = 'dark-blue', className }: StarzLogoPro
       )}
     >
       {href ? (
+        // eslint-disable-next-line @typescript-eslint/no-base-to-string
         <MLink href={href} aria-label={ariaLabel?.toString()} {...restLinkProps} stretched>
           <StarzLogoSvg className="size-full" />
         </MLink>

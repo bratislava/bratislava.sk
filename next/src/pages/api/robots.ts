@@ -4,16 +4,18 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 const handler = async (_req: NextApiRequest, res: NextApiResponse) => {
   if (process.env.NEXT_PUBLIC_DEPLOYMENT === 'prod') {
     /* In production, disallow to crawl /api endpoints */
-    return res.send(
+    res.send(
       `
         User-agent: *
         Disallow: /api/
       `,
     )
+
+    return
   }
 
   /* If not in production, disallow to crawl the website completely */
-  return res.send(
+  res.send(
     `
       User-Agent: *
       Disallow: /

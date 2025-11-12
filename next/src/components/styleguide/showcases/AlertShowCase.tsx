@@ -13,13 +13,9 @@ const AlertShowCase = () => {
         <Alert message="Alert text" type="warning" />
       </Stack>
       <Stack direction="column">
-        {/* eslint-disable-next-line lodash/prefer-noop */}
         <Alert message="Alert text" type="error" close={() => {}} />
-        {/* eslint-disable-next-line lodash/prefer-noop */}
         <Alert message="Alert text" type="success" close={() => {}} />
-        {/* eslint-disable-next-line lodash/prefer-noop */}
         <Alert message="Alert text" type="info" close={() => {}} />
-        {/* eslint-disable-next-line lodash/prefer-noop */}
         <Alert message="Alert text" type="warning" close={() => {}} />
       </Stack>
       <Stack direction="column">
@@ -29,13 +25,9 @@ const AlertShowCase = () => {
         <Alert message="Alert text" type="warning" solid />
       </Stack>
       <Stack direction="column">
-        {/* eslint-disable-next-line lodash/prefer-noop */}
         <Alert message="Alert text" type="error" close={() => {}} solid />
-        {/* eslint-disable-next-line lodash/prefer-noop */}
         <Alert message="Alert text" type="success" close={() => {}} solid />
-        {/* eslint-disable-next-line lodash/prefer-noop */}
         <Alert message="Alert text" type="info" close={() => {}} solid />
-        {/* eslint-disable-next-line lodash/prefer-noop */}
         <Alert message="Alert text" type="warning" close={() => {}} solid />
       </Stack>
       <Stack direction="column">
@@ -95,7 +87,6 @@ const AlertShowCase = () => {
         />
       </Stack>
       <Stack direction="column">
-        {/* eslint-disable-next-line lodash/prefer-noop */}
         <Alert
           message="Alert text"
           type="error"
@@ -106,7 +97,6 @@ const AlertShowCase = () => {
           variant="message"
           content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
         />
-        {/* eslint-disable-next-line lodash/prefer-noop */}
         <Alert
           message="Alert text"
           type="success"
@@ -117,7 +107,6 @@ const AlertShowCase = () => {
           variant="message"
           content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
         />
-        {/* eslint-disable-next-line lodash/prefer-noop */}
         <Alert
           message="Alert text"
           type="info"
@@ -128,7 +117,6 @@ const AlertShowCase = () => {
           variant="message"
           content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
         />
-        {/* eslint-disable-next-line lodash/prefer-noop */}
         <Alert
           message="Alert text"
           type="warning"
@@ -141,7 +129,6 @@ const AlertShowCase = () => {
         />
       </Stack>
       <Stack direction="column">
-        {/* eslint-disable-next-line lodash/prefer-noop */}
         <Alert
           message="Alert text"
           solid
@@ -153,7 +140,6 @@ const AlertShowCase = () => {
           variant="message"
           content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
         />
-        {/* eslint-disable-next-line lodash/prefer-noop */}
         <Alert
           message="Alert text"
           solid
@@ -165,7 +151,6 @@ const AlertShowCase = () => {
           variant="message"
           content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
         />
-        {/* eslint-disable-next-line lodash/prefer-noop */}
         <Alert
           message="Alert text"
           solid
@@ -177,7 +162,6 @@ const AlertShowCase = () => {
           variant="message"
           content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
         />
-        {/* eslint-disable-next-line lodash/prefer-noop */}
         <Alert
           message="Alert text"
           solid

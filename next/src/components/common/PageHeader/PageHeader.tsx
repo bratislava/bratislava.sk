@@ -66,7 +66,6 @@ const PageHeader = ({
               Array.isArray(tag) && tag.length > 0 ? (
                 <div className="flex flex-wrap gap-2">
                   {tag.map((tagItem, index) => (
-                    // eslint-disable-next-line react/no-array-index-key
                     <div key={index}>
                       <span className="inline-block self-start rounded-sm bg-white px-3 py-1 text-size-p-default font-medium text-content-passive-primary">
                         {tagItem}
@@ -97,7 +96,6 @@ const PageHeader = ({
               <div className="flex max-w-[640px] flex-col gap-2 md:flex-row lg:gap-3">
                 {headerLinks.map((button, index) => (
                   <Button
-                    // eslint-disable-next-line react/no-array-index-key
                     key={index}
                     variant={index === 0 ? 'solid' : 'outline'}
                     fullWidthMobile

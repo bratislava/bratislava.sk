@@ -68,7 +68,7 @@ const ArticleRowCard = ({
           {metadata?.length ? (
             <div>
               {metadata.map((metaDataItem, index) => (
-                // eslint-disable-next-line react/no-array-index-key
+                 
                 <Typography key={index} variant="p-small">
                   {metaDataItem}
                 </Typography>

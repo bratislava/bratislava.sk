@@ -48,7 +48,7 @@ export const homepageSearchFetcher = (filters: HomepageSearchFilters, locale: st
         const { type } = hit
 
         // TODO: Fix types, but not worth it.
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any,@typescript-eslint/no-unsafe-member-access
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
         const dataInner = (hit as any)[type]
 
         if (type === 'article') {

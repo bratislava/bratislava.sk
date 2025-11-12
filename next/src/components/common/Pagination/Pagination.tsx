@@ -44,7 +44,6 @@ const Pagination = ({ currentPage, totalCount, onPageChange = () => {} }: Pagina
           ({ page, type, selected, disabled, onPress, 'aria-current': ariaCurrent }, index) => {
             let children: ReactNode = null
 
-            // eslint-disable-next-line unicorn/prefer-switch
             if (type === 'start-ellipsis' || type === 'end-ellipsis') {
               children = '…'
             } else if (type === 'page') {
@@ -86,7 +85,6 @@ const Pagination = ({ currentPage, totalCount, onPageChange = () => {} }: Pagina
 
             return (
               <li
-                // eslint-disable-next-line react/no-array-index-key
                 key={index}
                 className={cn({
                   'flex w-10 items-center justify-center text-size-p-small font-semibold lg:w-12':

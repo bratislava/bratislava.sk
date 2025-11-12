@@ -61,7 +61,9 @@ const TableOfContents = ({ scrollOffset = DEFAULT_SCROLL_OFFSET, className }: Pr
                   <Button
                     variant="link"
                     className="text-left"
-                    onPress={() => handleItemPress(heading.id)}
+                    onPress={() => {
+                      handleItemPress(heading.id)
+                    }}
                   >
                     {heading.text}
                   </Button>

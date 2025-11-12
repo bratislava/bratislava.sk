@@ -1,4 +1,3 @@
-/* eslint-disable i18next/no-literal-string */
 import * as React from 'react'
 import { ReactNode, useState } from 'react'
 
@@ -50,7 +49,9 @@ const StyleGuideWrapper = ({ children }: StyleGuideWrapperProps) => {
           'bg-category-200 text-black': !active,
         })}
         style={colorStyle}
-        onClick={() => setActiveBrandCategory(brand.category)}
+        onClick={() => {
+          setActiveBrandCategory(brand.category)
+        }}
       >
         {brand.label}
       </button>

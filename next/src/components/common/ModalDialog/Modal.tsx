@@ -3,14 +3,12 @@ import { Modal as RACModal, ModalOverlay, ModalOverlayProps } from 'react-aria-c
 
 import cn from '@/src/utils/cn'
 
-type PropsBase = {
+type Props = {
   width?: 'fixed' | 'auto'
   overlayClassname?: string
   modalClassname?: string
   children: ReactNode
 } & Omit<ModalOverlayProps, 'children' | 'className' | 'style'>
-
-type Props = PropsBase
 
 /**
  * From docs: A modal is an overlay element which blocks interaction with elements outside it.

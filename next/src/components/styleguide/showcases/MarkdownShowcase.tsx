@@ -1,5 +1,3 @@
-/* eslint-disable no-console */
-
 import Markdown from '@/src/components/formatting/Markdown/Markdown'
 
 import Stack from '../Stack'

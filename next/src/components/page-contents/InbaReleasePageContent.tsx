@@ -59,7 +59,6 @@ const InbaReleasePageContent = ({ inbaRelease }: Props) => {
 
   const [filters, setFilters] = useRoutePreservedState({
     ...inbaArticlesDefaultFilters,
-    // eslint-disable-next-line unicorn/consistent-destructuring
     releaseDocumentIds: [inbaRelease.documentId],
   })
   const [input, setInput] = useState('')
@@ -145,9 +144,9 @@ const InbaReleasePageContent = ({ inbaRelease }: Props) => {
               ref={searchRef}
               input={input}
               setInput={setInput}
-              setSearchQuery={(value) =>
+              setSearchQuery={(value) => {
                 setFilters((previousState) => ({ ...previousState, search: value, page: 1 }))
-              }
+              }}
               isLoading={isFetching}
             />
 

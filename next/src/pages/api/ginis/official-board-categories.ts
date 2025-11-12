@@ -22,7 +22,7 @@ const handler = async (
     console.log(error)
   }
 
-  return res.json(result)
+  res.json(result)
 }
 
 export default handler

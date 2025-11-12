@@ -1,4 +1,3 @@
-/* eslint-disable i18next/no-literal-string */
 import { CalendarIcon, EditIcon, SearchIcon } from 'src/assets/icons'
 
 import Button, { PolymorphicProps } from '@/src/components/common/Button/Button'

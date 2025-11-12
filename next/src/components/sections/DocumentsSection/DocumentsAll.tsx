@@ -76,7 +76,6 @@ const DocumentsAllSection = ({ section }: Props) => {
         <ul className="flex flex-col rounded-lg border py-2" data-cy="search-results">
           {data.hits.map((document, index) => {
             return (
-              // eslint-disable-next-line react/no-array-index-key
               <Fragment key={index}>
                 {index > 0 ? <HorizontalDivider asListItem className="mx-4 lg:mx-6" /> : null}
                 <li>

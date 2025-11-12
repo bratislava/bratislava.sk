@@ -58,7 +58,7 @@ const InbaReleasesGrid = ({ section }: Props) => {
         input={input}
         setInput={setInput}
         setSearchQuery={(value) =>
-          setFilters((previousState) => ({ ...previousState, search: value, page: 1 }))
+          { setFilters((previousState) => ({ ...previousState, search: value, page: 1 })); }
         }
         isLoading={isFetching}
       />

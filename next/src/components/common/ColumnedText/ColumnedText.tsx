@@ -8,11 +8,10 @@ export type ColumnedTextProps = {
 }
 
 /**
- * TODO Figma link
+ * Figma: https://www.figma.com/design/17wbd0MDQcMW9NbXl6UPs8/DS--Component-library?node-id=19701-18350&t=UgfVQA53RV7lBsh5-4
  */
 
 const ColumnedText = ({ title, content }: ColumnedTextProps) => {
-  // eslint-disable-next-line xss/no-mixed-html
   const breakWord = '<break>'
   let columns = content.split(breakWord)
 
@@ -31,11 +30,7 @@ const ColumnedText = ({ title, content }: ColumnedTextProps) => {
         })}
       >
         {columns.map((column, index) => (
-          <Markdown
-            // eslint-disable-next-line react/no-array-index-key
-            key={index}
-            content={column}
-          />
+          <Markdown key={index} content={column} />
         ))}
       </div>
     </div>

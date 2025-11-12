@@ -1,4 +1,4 @@
-/* eslint-disable no-console,@typescript-eslint/no-unused-vars */
+/* eslint-disable no-console */
 
 import { SectionsFragment } from '@/src/services/graphql'
 import { client } from '@/src/services/graphql/gql'
@@ -104,7 +104,6 @@ export async function listPages() {
   )
 }
 
-// eslint-disable-next-line sonarjs/cognitive-complexity
 export async function logAllSectionsByType({
   entityType,
   sectionName,
@@ -179,9 +178,9 @@ export async function logAllSectionsByType({
 
     if (showExtendedInfo) {
       console.log(`[${entityType}] ${entity.title}`)
-      console.log(`${strapiEntityLink}`)
-      console.log(`${strapiEntityLinkProd}`)
-      console.log(`${nextEntityLinkProd}`)
+      console.log(strapiEntityLink)
+      console.log(strapiEntityLinkProd)
+      console.log(nextEntityLinkProd)
       console.log(entityLogMessage)
       console.log('\n')
     } else {

@@ -19,7 +19,6 @@ const OrganizationalStructureTopLevelAccordion = ({
 
   return (
     <div className="flex flex-col" data-cy="organizational-structure-accordion">
-      {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */}
       <div className="flex cursor-pointer flex-col gap-y-8 pt-8" onClick={toggleIsOpen}>
         <div className="flex items-center lg:px-5">
           <div className="mr-6 size-6 shrink-0 rounded-full bg-category-600 lg:size-8" />

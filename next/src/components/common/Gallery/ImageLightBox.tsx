@@ -45,7 +45,6 @@ const ImageLightBox = (props: ImageLightBoxProps) => {
           >
             <StrapiImage
               draggable="false"
-              // eslint-disable-next-line @typescript-eslint/no-non-null-assertion,@typescript-eslint/no-unnecessary-type-assertion
               image={image}
               className="pointer-events-auto h-auto max-h-[86vh] w-full object-contain select-none"
               sizes="100vw"

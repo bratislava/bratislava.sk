@@ -15,8 +15,12 @@ const NavMenuTrigger = forwardRef<HTMLButtonElement, NavMenuTriggerProps>(
         ref={forwardedRef}
         // To disable "onHover" behaviour, needs to be set also in NavMenuContent
         // https://github.com/radix-ui/primitives/issues/1630#issuecomment-1237106380
-        onPointerMove={(event) => event.preventDefault()}
-        onPointerLeave={(event) => event.preventDefault()}
+        onPointerMove={(event) => {
+          event.preventDefault()
+        }}
+        onPointerLeave={(event) => {
+          event.preventDefault()
+        }}
         style={colorStyle}
         className="base-focus-ring group flex size-full flex-col items-center py-4 whitespace-pre-wrap ring-inset hover:font-semibold data-[state=open]:font-semibold"
       >

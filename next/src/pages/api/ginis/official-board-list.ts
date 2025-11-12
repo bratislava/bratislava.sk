@@ -50,7 +50,7 @@ const handler = async (
   const start = (page - 1) * pageSize
   const end = start + pageSize
 
-  return res.json({
+  res.json({
     // TODO remove this hacky solution
     // ignoring negative pageSize to be able to return all results for old approach in OfficialBoardSection
     items: pageSize < 0 ? result : result.slice(start, end),

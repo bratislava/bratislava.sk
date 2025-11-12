@@ -1,9 +1,9 @@
 import { FC, useMemo } from 'react'
 
-import { getPictogram, MenuIcon } from '@/src/components/common/Pictogram/getPictogram'
+import { getPictogram } from '@/src/components/common/Pictogram/getPictogram'
 
 type Props = {
-  iconName: MenuIcon | undefined
+  iconName: string | undefined
   className?: string
 }
 
