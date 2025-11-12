@@ -32,20 +32,26 @@ const ArticlesFiltered = ({ section }: Props) => {
     text,
     articles: articlesFromStrapi,
     category,
+    articleCategories,
     tags,
     adminGroups,
     showMoreLink,
   } = section
+
+  const articleCategoryDocumentIds = articleCategories
+    .map((articleCategory) => articleCategory?.documentId)
+    .filter(isDefined)
+
+  const tagDocumentIds = tags.map((tag) => tag?.documentId).filter(isDefined)
 
   const adminGroupDocumentIds = adminGroups
     .map((adminGroup) => adminGroup?.documentId)
 
     .filter(isDefined)
 
-  const tagDocumentIds = tags.map((tag) => tag?.documentId).filter(isDefined)
-
   const [filters, setFilters] = useRoutePreservedState({
     ...articlesDefaultFilters,
+    articleCategoryDocumentIds,
     adminGroupDocumentIds,
     tagDocumentIds,
     pageSize: 12,

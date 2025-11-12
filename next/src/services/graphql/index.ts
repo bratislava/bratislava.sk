@@ -1450,6 +1450,8 @@ export type ComponentSectionsArticles = {
   __typename?: 'ComponentSectionsArticles'
   adminGroups: Array<Maybe<AdminGroup>>
   adminGroups_connection?: Maybe<AdminGroupRelationResponseCollection>
+  articleCategories: Array<Maybe<ArticleCategory>>
+  articleCategories_connection?: Maybe<ArticleCategoryRelationResponseCollection>
   articles: Array<Maybe<Article>>
   articles_connection?: Maybe<ArticleRelationResponseCollection>
   category?: Maybe<PageCategory>
@@ -1470,6 +1472,18 @@ export type ComponentSectionsArticlesAdminGroupsArgs = {
 
 export type ComponentSectionsArticlesAdminGroups_ConnectionArgs = {
   filters?: InputMaybe<AdminGroupFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type ComponentSectionsArticlesArticleCategoriesArgs = {
+  filters?: InputMaybe<ArticleCategoryFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type ComponentSectionsArticlesArticleCategories_ConnectionArgs = {
+  filters?: InputMaybe<ArticleCategoryFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
 }
@@ -1501,6 +1515,7 @@ export type ComponentSectionsArticlesTags_ConnectionArgs = {
 export type ComponentSectionsArticlesFiltersInput = {
   adminGroups?: InputMaybe<AdminGroupFiltersInput>
   and?: InputMaybe<Array<InputMaybe<ComponentSectionsArticlesFiltersInput>>>
+  articleCategories?: InputMaybe<ArticleCategoryFiltersInput>
   articles?: InputMaybe<ArticleFiltersInput>
   category?: InputMaybe<PageCategoryFiltersInput>
   not?: InputMaybe<ComponentSectionsArticlesFiltersInput>
@@ -1514,6 +1529,7 @@ export type ComponentSectionsArticlesFiltersInput = {
 
 export type ComponentSectionsArticlesInput = {
   adminGroups?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
+  articleCategories?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
   articles?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
   category?: InputMaybe<Scalars['ID']['input']>
   id?: InputMaybe<Scalars['ID']['input']>
@@ -10342,6 +10358,12 @@ export type PageEntityFragment = {
           title?: string | null
           color?: Enum_Pagecategory_Color | null
         } | null
+        articleCategories: Array<{
+          __typename?: 'ArticleCategory'
+          documentId: string
+          title: string
+          slug: string
+        } | null>
         tags: Array<{
           __typename?: 'Tag'
           documentId: string
@@ -11563,6 +11585,12 @@ export type PageBySlugQuery = {
             title?: string | null
             color?: Enum_Pagecategory_Color | null
           } | null
+          articleCategories: Array<{
+            __typename?: 'ArticleCategory'
+            documentId: string
+            title: string
+            slug: string
+          } | null>
           tags: Array<{
             __typename?: 'Tag'
             documentId: string
@@ -12813,6 +12841,12 @@ export type Dev_AllPagesQuery = {
             title?: string | null
             color?: Enum_Pagecategory_Color | null
           } | null
+          articleCategories: Array<{
+            __typename?: 'ArticleCategory'
+            documentId: string
+            title: string
+            slug: string
+          } | null>
           tags: Array<{
             __typename?: 'Tag'
             documentId: string
@@ -14476,6 +14510,12 @@ export type ArticlesSectionFragment = {
     title?: string | null
     color?: Enum_Pagecategory_Color | null
   } | null
+  articleCategories: Array<{
+    __typename?: 'ArticleCategory'
+    documentId: string
+    title: string
+    slug: string
+  } | null>
   tags: Array<{
     __typename?: 'Tag'
     documentId: string
@@ -15761,6 +15801,12 @@ type Sections_ComponentSectionsArticles_Fragment = {
     title?: string | null
     color?: Enum_Pagecategory_Color | null
   } | null
+  articleCategories: Array<{
+    __typename?: 'ArticleCategory'
+    documentId: string
+    title: string
+    slug: string
+  } | null>
   tags: Array<{
     __typename?: 'Tag'
     documentId: string
@@ -17739,6 +17785,9 @@ export const ArticlesSectionFragmentDoc = gql`
     category {
       ...PageCategoryEntity
     }
+    articleCategories {
+      ...ArticleCategoryEntity
+    }
     tags {
       ...TagEntity
     }
@@ -17751,6 +17800,7 @@ export const ArticlesSectionFragmentDoc = gql`
   }
   ${ArticleCardEntityFragmentDoc}
   ${PageCategoryEntityFragmentDoc}
+  ${ArticleCategoryEntityFragmentDoc}
   ${TagEntityFragmentDoc}
   ${AdminGroupDocumentIdEntityFragmentDoc}
   ${CommonLinkFragmentDoc}
