@@ -42,6 +42,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
         <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#e46054" />
         <meta name="msapplication-TileColor" content="#da532c" />
         <meta name="theme-color" content="#ffffff" />
+        <meta name="facebook-domain-verification" content="wsocz1lzanrhtdgbciadnqzmyi6el1" />
       </Head>
 
       <PlausibleProvider
