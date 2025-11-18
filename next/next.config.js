@@ -75,6 +75,11 @@ const nextConfig = {
         destination: '/spravy/:path*',
         permanent: true,
       },
+      {
+        source: '/inba/clanky/:path*',
+        destination: '/spravy/:path*',
+        permanent: true,
+      },
       // Rearrange Camping in sitemap, rename from "camping" to "kemping" in slovak
       {
         source: '/vzdelavanie-a-volny-cas/camping/:path*',
