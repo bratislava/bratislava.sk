@@ -25,9 +25,6 @@ fragment InbaReleaseEntity on InbaRelease {
       ...UploadFileEntity
     }
   }
-  inbaArticles {
-    ...InbaArticleCardEntity
-  }
   articles {
     ...ArticleCardEntity
   }

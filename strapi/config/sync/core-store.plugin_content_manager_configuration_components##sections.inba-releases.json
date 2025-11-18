@@ -68,8 +68,7 @@
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true,
-          "mainField": "label"
+          "editable": true
         },
         "list": {
           "label": "showMoreLink",
@@ -87,6 +86,12 @@
       }
     },
     "layouts": {
+      "list": [
+        "id",
+        "title",
+        "text",
+        "documentId"
+      ],
       "edit": [
         [
           {
@@ -112,12 +117,6 @@
             "size": 12
           }
         ]
-      ],
-      "list": [
-        "id",
-        "title",
-        "text",
-        "documentId"
       ]
     },
     "isComponent": true

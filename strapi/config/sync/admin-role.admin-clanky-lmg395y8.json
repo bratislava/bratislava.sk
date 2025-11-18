@@ -96,7 +96,8 @@
           "files.title",
           "files.media",
           "gallery",
-          "tags"
+          "tags",
+          "inbaRelease"
         ],
         "locales": [
           "sk",
@@ -105,7 +106,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "p0900nqfrilnhzcfzk6w15kz",
+      "documentId": "rrffztocr4cas7qbyvbp8adn",
       "locale": null
     },
     {
@@ -366,44 +367,12 @@
       "locale": null
     },
     {
-      "action": "plugin::content-manager.explorer.create",
-      "subject": "api::tag.tag",
-      "properties": {
-        "fields": [
-          "title",
-          "pageCategory",
-          "articles"
-        ],
-        "locales": [
-          "sk",
-          "en"
-        ]
-      },
-      "conditions": [],
-      "actionParameters": {},
-      "documentId": "oxayj1nqadnkkijlmjllkbgr",
-      "locale": null
-    },
-    {
-      "action": "plugin::content-manager.explorer.delete",
-      "subject": "api::tag.tag",
-      "properties": {
-        "locales": [
-          "sk",
-          "en"
-        ]
-      },
-      "conditions": [],
-      "actionParameters": {},
-      "documentId": "xr01lnwbo2e9u3ddbk2zlpx8",
-      "locale": null
-    },
-    {
       "action": "plugin::content-manager.explorer.read",
       "subject": "api::tag.tag",
       "properties": {
         "fields": [
           "title",
+          "slug",
           "pageCategory",
           "articles"
         ],
@@ -414,26 +383,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "ek23wzwqh34dj4wnjm5evbe2",
-      "locale": null
-    },
-    {
-      "action": "plugin::content-manager.explorer.update",
-      "subject": "api::tag.tag",
-      "properties": {
-        "fields": [
-          "title",
-          "pageCategory",
-          "articles"
-        ],
-        "locales": [
-          "sk",
-          "en"
-        ]
-      },
-      "conditions": [],
-      "actionParameters": {},
-      "documentId": "esmxfzgvrjefax8ob7ft3n64",
+      "documentId": "k2v7uo64pmyzvgwverxmfqvv",
       "locale": null
     },
     {

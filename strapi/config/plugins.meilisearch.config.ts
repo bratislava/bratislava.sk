@@ -38,6 +38,7 @@ const searchIndexSettings = {
   filterableAttributes: [
     'type',
     'locale',
+    'article.documentId',
     'article.articleCategory.documentId',
     'article.articleCategory.slug',
     'article.tag.documentId',
