@@ -94,11 +94,6 @@ const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
             displayNamePlural: t('SearchPage.documents'),
           },
         ]),
-    // {
-    //   id: 'inbaArticles',
-    //   displayName: t('SearchPage.inbaArticle'),
-    //   displayNamePlural: t('SearchPage.inbaArticles'),
-    // },
     {
       id: 'users',
       displayName: t('SearchPage.contact'),

@@ -8,6 +8,7 @@ export type ArticlesFilters = {
   search: string
   pageSize: number
   page: number
+  documentIds?: string[]
   articleCategoryDocumentIds?: string[]
   articleCategorySlugs?: string[]
   tagDocumentIds?: string[]
@@ -21,6 +22,7 @@ export const articlesDefaultFilters: Required<ArticlesFilters> = {
   search: '',
   pageSize: 6,
   page: 1,
+  documentIds: [],
   articleCategoryDocumentIds: [],
   articleCategorySlugs: [],
   tagDocumentIds: [],
@@ -45,6 +47,9 @@ export const articlesFetcher = (filters: ArticlesFilters, locale: string) => {
       filter: [
         'type = "article"',
         `locale = ${locale}`,
+        filters.documentIds?.length
+          ? `article.documentId IN [${filters.documentIds.join(',')}]`
+          : '',
         filters.articleCategoryDocumentIds?.length
           ? `article.articleCategory.documentId IN [${filters.articleCategoryDocumentIds.join(',')}]`
           : '',
