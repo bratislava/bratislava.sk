@@ -10,6 +10,7 @@ import CardImage from '@/src/components/common/Image/CardImage'
 import LoadingSpinner from '@/src/components/common/LoadingSpinner/LoadingSpinner'
 import SectionContainer from '@/src/components/layouts/SectionContainer'
 import SectionHeader from '@/src/components/layouts/SectionHeader'
+import { useGeneralContext } from '@/src/components/providers/GeneralContextProvider'
 import { InbaLatestReleaseSectionFragment } from '@/src/services/graphql'
 import { client } from '@/src/services/graphql/gql'
 import { formatDate } from '@/src/utils/formatDate'
@@ -34,7 +35,9 @@ type Props = { section: InbaLatestReleaseSectionFragment }
 const InbaLatestReleaseSection = ({ section }: Props) => {
   const { t } = useTranslation()
 
-  const { articles: articlesFromSection, allReleasesPage } = section
+  const { general } = useGeneralContext()
+
+  const { articles: articlesFromSection } = section
 
   const { data, isPending, isError, error } = useQuery(latestInbaReleaseQueryOptions)
 
@@ -73,40 +76,13 @@ const InbaLatestReleaseSection = ({ section }: Props) => {
             sizes={imageSizes}
             className="0 aspect-inba w-full max-w-140 rounded-md border lg:w-[22rem] lg:rounded-lg"
           />
-          <div className="flex w-full flex-col gap-4">
-            {/* Screen: Desktop */}
-            <div className="flex flex-col gap-8 max-lg:hidden">
-              <SectionHeader
-                title={t('InbaLatestReleaseSection.latestRelease')}
-                showMoreLink={{
-                  page: allReleasesPage,
-                  label: t('InbaLatestReleaseSection.allReleases'),
-                }}
-                className="lg:flex-nowrap"
-              />
-              <HorizontalDivider />
-              <Typography variant="h4" as="h3">
-                {t('InbaLatestReleaseSection.inReleaseYouWillFind', {
-                  releaseName: latestInbaRelease.title,
-                })}
-              </Typography>
-            </div>
-            {/* Screen: Mobile */}
-            <div className="lg:hidden">
-              <Typography variant="h2">
-                {t('InbaLatestReleaseSection.latestRelease', {
-                  releaseName: latestInbaRelease.title,
-                })}
-              </Typography>
-            </div>
+          <div className="flex w-full flex-col gap-4 lg:gap-8">
+            <SectionHeader title={t('InbaLatestReleaseSection.latestRelease')} />
             <div className="flex flex-col gap-4 lg:gap-6">
               <ul className="flex flex-col rounded-lg border px-4 lg:px-6">
                 {articlesToShow.map((article, index) => {
                   return (
-                    <Fragment
-                      // eslint-disable-next-line react/no-array-index-key
-                      key={index}
-                    >
+                    <Fragment key={article.documentId}>
                       {index > 0 && <HorizontalDivider asListItem />}
                       <li className="py-4">
                         <ArticleRowCard
@@ -124,20 +100,19 @@ const InbaLatestReleaseSection = ({ section }: Props) => {
                   )
                 })}
               </ul>
-              {/* Screen: Desktop */}
-              <div className="max-lg:hidden">
-                <Button variant="link" href={`/inba/vydania/${latestInbaRelease.slug}`}>
-                  {t('InbaLatestReleaseSection.readAllArticles', {
-                    articlesCount: latestInbaRelease.articles.length,
-                  })}
-                </Button>
-              </div>
-              {/* Screen: Mobile */}
-              <div className="flex flex-col gap-4 lg:hidden">
-                <Button variant="solid" fullWidth href={`/inba/vydania/${latestInbaRelease.slug}`}>
+              <div className="flex flex-col gap-4 lg:flex-row">
+                <Button
+                  variant="solid"
+                  href={`${getLinkProps({ page: general?.inbaReleasesPage }).href}/${latestInbaRelease.slug}`}
+                  className="max-lg:w-full"
+                >
                   {t('InbaLatestReleaseSection.readRelease')}
                 </Button>
-                <Button variant="outline" fullWidth {...getLinkProps({ page: allReleasesPage })}>
+                <Button
+                  variant="outline"
+                  {...getLinkProps({ page: general?.inbaReleasesPage })}
+                  className="max-lg:w-full"
+                >
                   {t('InbaLatestReleaseSection.allReleases')}
                 </Button>
               </div>
