@@ -26,12 +26,21 @@ export const getOfficialBoardParsedList = async (options: {
      * It will throw an GinisError if the request fails - if the cause is axios error, it's available in error.axiosError
      * https://robot.gordic.cz/xrg/Default.html?c=OpenMethodDetail&moduleName=UDE&version=390&methodName=seznam-dokumentu&type=request
      */
-    const response = await ginis.ude.seznamDokumentu({
-      Stav: publicationStateSanitized,
-      'Id-kategorie': categoryId,
-      Nazev: searchQueryTrimmed,
-    })
-    documents = response['Seznam-dokumentu']
+    if (publicationStateSanitized === 'vyveseno') {
+      const response = await ginis.ude.seznamDokumentu({
+        Stav: publicationStateSanitized,
+        'Id-kategorie': categoryId,
+        Nazev: searchQueryTrimmed,
+      })
+      documents = response['Seznam-dokumentu']
+    } else {
+      const response = await ginis.ude.seznamDokumentuFilterArchiv({
+        Stav: publicationStateSanitized,
+        'Id-kategorie': categoryId,
+        Nazev: searchQueryTrimmed,
+      })
+      documents = response['Seznam-dokumentu']
+    }
   } catch (error) {
     // TODO handle error
     // eslint-disable-next-line no-console
