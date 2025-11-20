@@ -24,15 +24,7 @@ import { isProductionDeployment } from '@/src/utils/utils'
  */
 
 export type SearchOption = {
-  id:
-    | 'allResults'
-    | 'pages'
-    | 'articles'
-    | 'documents'
-    | 'inbaArticles'
-    | 'regulations'
-    | 'users'
-    | 'officialBoard'
+  id: 'allResults' | 'pages' | 'articles' | 'documents' | 'regulations' | 'users' | 'officialBoard'
   displayName?: string
   displayNamePlural: string
 }

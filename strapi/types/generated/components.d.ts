@@ -900,18 +900,6 @@ export interface SectionsIframe extends Struct.ComponentSchema {
   }
 }
 
-export interface SectionsInbaArticlesList extends Struct.ComponentSchema {
-  collectionName: 'components_sections_inba_articles_lists'
-  info: {
-    description: ''
-    displayName: 'in.ba \u010Dl\u00E1nky (nepou\u017E\u00EDva\u0165)'
-  }
-  attributes: {
-    text: Schema.Attribute.Text
-    title: Schema.Attribute.String
-  }
-}
-
 export interface SectionsInbaLatestRelease extends Struct.ComponentSchema {
   collectionName: 'components_sections_inba_latest_releases'
   info: {
@@ -1287,7 +1275,6 @@ declare module '@strapi/strapi' {
       'sections.homepage-mayor-and-council': SectionsHomepageMayorAndCouncil
       'sections.homepage-tabs': SectionsHomepageTabs
       'sections.iframe': SectionsIframe
-      'sections.inba-articles-list': SectionsInbaArticlesList
       'sections.inba-latest-release': SectionsInbaLatestRelease
       'sections.inba-releases': SectionsInbaReleases
       'sections.links': SectionsLinks

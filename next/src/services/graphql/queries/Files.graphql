@@ -16,11 +16,6 @@ query allFiles($locale: I18NLocaleCode) {
       }
     }
   }
-  inbaArticles(locale: $locale, pagination: { limit: -1 }) {
-    coverImage {
-      ...UploadFile
-    }
-  }
   inbaReleases(pagination: { limit: -1 }) {
     coverImage {
       ...UploadFile
@@ -47,14 +42,14 @@ query allFiles($locale: I18NLocaleCode) {
       ...UploadFile
     }
     pageHeaderSections {
-      ...on ComponentHeaderSectionsFacility {
+      ... on ComponentHeaderSectionsFacility {
         media(pagination: { limit: -1 }) {
           ...UploadFile
         }
       }
     }
     sections {
-      ...on ComponentSectionsAccordion {
+      ... on ComponentSectionsAccordion {
         flatText(pagination: { limit: -1 }) {
           fileList(pagination: { limit: -1 }) {
             media {
@@ -63,50 +58,50 @@ query allFiles($locale: I18NLocaleCode) {
           }
         }
       }
-      ...on ComponentSectionsBanner {
+      ... on ComponentSectionsBanner {
         media {
           ...UploadFile
         }
       }
-      ...on ComponentSectionsColumns {
+      ... on ComponentSectionsColumns {
         columns(pagination: { limit: -1 }) {
           image {
             ...UploadFile
           }
         }
       }
-      ...on ComponentSectionsComparisonSection {
+      ... on ComponentSectionsComparisonSection {
         cards(pagination: { limit: -1 }) {
           iconMedia {
             ...UploadFile
           }
         }
       }
-      ...on ComponentSectionsFileList {
+      ... on ComponentSectionsFileList {
         fileList(pagination: { limit: -1 }) {
           media {
             ...UploadFile
           }
         }
       }
-      ...on ComponentSectionsGallery {
+      ... on ComponentSectionsGallery {
         medias(pagination: { limit: -1 }) {
           ...UploadFile
         }
       }
-      ...on ComponentSectionsPartners {
+      ... on ComponentSectionsPartners {
         partners(pagination: { limit: -1 }) {
           logo {
             ...UploadFile
           }
         }
       }
-      ...on ComponentSectionsTextWithImage {
+      ... on ComponentSectionsTextWithImage {
         imageSrc {
           ...UploadFile
         }
       }
-      ...on ComponentSectionsTextWithImageOverlapped {
+      ... on ComponentSectionsTextWithImageOverlapped {
         image {
           ...UploadFile
         }

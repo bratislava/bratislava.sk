@@ -2246,27 +2246,6 @@ export type ComponentSectionsIframeInput = {
   url?: InputMaybe<Scalars['String']['input']>
 }
 
-export type ComponentSectionsInbaArticlesList = {
-  __typename?: 'ComponentSectionsInbaArticlesList'
-  id: Scalars['ID']['output']
-  text?: Maybe<Scalars['String']['output']>
-  title?: Maybe<Scalars['String']['output']>
-}
-
-export type ComponentSectionsInbaArticlesListFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<ComponentSectionsInbaArticlesListFiltersInput>>>
-  not?: InputMaybe<ComponentSectionsInbaArticlesListFiltersInput>
-  or?: InputMaybe<Array<InputMaybe<ComponentSectionsInbaArticlesListFiltersInput>>>
-  text?: InputMaybe<StringFilterInput>
-  title?: InputMaybe<StringFilterInput>
-}
-
-export type ComponentSectionsInbaArticlesListInput = {
-  id?: InputMaybe<Scalars['ID']['input']>
-  text?: InputMaybe<Scalars['String']['input']>
-  title?: InputMaybe<Scalars['String']['input']>
-}
-
 export type ComponentSectionsInbaLatestRelease = {
   __typename?: 'ComponentSectionsInbaLatestRelease'
   allReleasesPage?: Maybe<Page>
@@ -3811,7 +3790,6 @@ export type GenericMorph =
   | ComponentSectionsHomepageMayorAndCouncil
   | ComponentSectionsHomepageTabs
   | ComponentSectionsIframe
-  | ComponentSectionsInbaArticlesList
   | ComponentSectionsInbaLatestRelease
   | ComponentSectionsInbaReleases
   | ComponentSectionsLinks
@@ -5309,7 +5287,6 @@ export type PageSectionsDynamicZone =
   | ComponentSectionsFileList
   | ComponentSectionsGallery
   | ComponentSectionsIframe
-  | ComponentSectionsInbaArticlesList
   | ComponentSectionsInbaLatestRelease
   | ComponentSectionsInbaReleases
   | ComponentSectionsLinks
@@ -7395,10 +7372,6 @@ export type AllFilesQuery = {
       media?: { __typename?: 'UploadFile'; documentId: string } | null
     } | null> | null
   } | null>
-  inbaArticles: Array<{
-    __typename?: 'InbaArticle'
-    coverImage?: { __typename?: 'UploadFile'; documentId: string } | null
-  } | null>
   inbaReleases: Array<{
     __typename?: 'InbaRelease'
     coverImage?: { __typename?: 'UploadFile'; documentId: string } | null
@@ -7476,7 +7449,6 @@ export type AllFilesQuery = {
           medias: Array<{ __typename?: 'UploadFile'; documentId: string } | null>
         }
       | { __typename?: 'ComponentSectionsIframe' }
-      | { __typename?: 'ComponentSectionsInbaArticlesList' }
       | { __typename?: 'ComponentSectionsInbaLatestRelease' }
       | { __typename?: 'ComponentSectionsInbaReleases' }
       | { __typename?: 'ComponentSectionsLinks' }
@@ -10640,7 +10612,6 @@ export type PageEntityFragment = {
         allowGeolocation?: boolean | null
         titleLevelIframeSection?: Enum_Componentsectionsiframe_Titlelevel | null
       }
-    | { __typename: 'ComponentSectionsInbaArticlesList' }
     | {
         __typename: 'ComponentSectionsInbaLatestRelease'
         articles: Array<{
@@ -11881,7 +11852,6 @@ export type PageBySlugQuery = {
           allowGeolocation?: boolean | null
           titleLevelIframeSection?: Enum_Componentsectionsiframe_Titlelevel | null
         }
-      | { __typename: 'ComponentSectionsInbaArticlesList' }
       | {
           __typename: 'ComponentSectionsInbaLatestRelease'
           articles: Array<{
@@ -13148,7 +13118,6 @@ export type Dev_AllPagesQuery = {
           allowGeolocation?: boolean | null
           titleLevelIframeSection?: Enum_Componentsectionsiframe_Titlelevel | null
         }
-      | { __typename: 'ComponentSectionsInbaArticlesList' }
       | {
           __typename: 'ComponentSectionsInbaLatestRelease'
           articles: Array<{
@@ -16128,10 +16097,6 @@ type Sections_ComponentSectionsIframe_Fragment = {
   titleLevelIframeSection?: Enum_Componentsectionsiframe_Titlelevel | null
 }
 
-type Sections_ComponentSectionsInbaArticlesList_Fragment = {
-  __typename: 'ComponentSectionsInbaArticlesList'
-}
-
 type Sections_ComponentSectionsInbaLatestRelease_Fragment = {
   __typename: 'ComponentSectionsInbaLatestRelease'
   articles: Array<{
@@ -16723,7 +16688,6 @@ export type SectionsFragment =
   | Sections_ComponentSectionsFileList_Fragment
   | Sections_ComponentSectionsGallery_Fragment
   | Sections_ComponentSectionsIframe_Fragment
-  | Sections_ComponentSectionsInbaArticlesList_Fragment
   | Sections_ComponentSectionsInbaLatestRelease_Fragment
   | Sections_ComponentSectionsInbaReleases_Fragment
   | Sections_ComponentSectionsLinks_Fragment
@@ -18458,11 +18422,6 @@ export const AllFilesDocument = gql`
         media {
           ...UploadFile
         }
-      }
-    }
-    inbaArticles(locale: $locale, pagination: { limit: -1 }) {
-      coverImage {
-        ...UploadFile
       }
     }
     inbaReleases(pagination: { limit: -1 }) {
