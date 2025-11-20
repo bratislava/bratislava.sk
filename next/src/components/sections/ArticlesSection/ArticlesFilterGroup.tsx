@@ -56,11 +56,7 @@ const ArticlesFilterGroup = ({ filters, onFiltersChange }: Props) => {
     queryKey: ['AdminGroups'],
     queryFn: () => client.AdminGroups(),
     staleTime: Infinity,
-    select: (res) =>
-      res.adminGroups
-        .filter(isDefined)
-        // TODO remove this last filter after slug is set to required
-        .filter((adminGroup) => adminGroup.slug) ?? [],
+    select: (res) => res.adminGroups.filter(isDefined),
   })
 
   // "City Hall" is a special option that means articles without any assigned admin group
@@ -122,7 +118,7 @@ const ArticlesFilterGroup = ({ filters, onFiltersChange }: Props) => {
   }
 
   return (
-    <div className="grid grid-cols-1 gap-x-8 gap-y-4 lg:grid-cols-3">
+    <div className="flex flex-col gap-6">
       <SelectField
         label={t('ArticlesFilterGroup.categoryLabel')}
         items={articleCategoriesSelectItems}

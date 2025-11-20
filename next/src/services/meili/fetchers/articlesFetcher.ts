@@ -19,7 +19,7 @@ export type ArticlesFilters = {
 
 export const articlesDefaultFilters: Required<ArticlesFilters> = {
   search: '',
-  pageSize: 6,
+  pageSize: 15,
   page: 1,
   articleCategoryDocumentIds: [],
   articleCategorySlugs: [],

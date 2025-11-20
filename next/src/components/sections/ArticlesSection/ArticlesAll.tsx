@@ -1,12 +1,13 @@
 import { Typography } from '@bratislava/component-library'
 import { keepPreviousData, useQuery } from '@tanstack/react-query'
-import React, { useEffect, useRef, useState } from 'react'
+import React, { Fragment, useEffect, useRef, useState } from 'react'
 import { useDebounceValue } from 'usehooks-ts'
 
-import ArticleCard from '@/src/components/cards/ArticleCard'
-import { transformArticleProps } from '@/src/components/cards/transformArticleProps'
-import Pagination from '@/src/components/common/Pagination/Pagination'
+import ArticleRowCard from '@/src/components/cards/ArticleRowCard'
+import HorizontalDivider from '@/src/components/common/Divider/HorizontalDivider'
+import PaginationWithInput from '@/src/components/common/Pagination/PaginationWithInput'
 import SectionHeader from '@/src/components/layouts/SectionHeader'
+import ArticlesActiveFilters from '@/src/components/sections/ArticlesSection/ArticlesActiveFilters'
 import ArticlesFilterGroup from '@/src/components/sections/ArticlesSection/ArticlesFilterGroup'
 import { useArticlesFilters } from '@/src/components/sections/ArticlesSection/useArticlesFilters'
 import SearchBar from '@/src/components/sections/SearchSection/SearchBar'
@@ -16,12 +17,18 @@ import {
   ArticlesFilters,
   getArticlesQueryKey,
 } from '@/src/services/meili/fetchers/articlesFetcher'
+import { formatDate } from '@/src/utils/formatDate'
+import { generateImageSizes } from '@/src/utils/generateImageSizes'
+import { getLinkProps } from '@/src/utils/getLinkProps'
+import { isDefined } from '@/src/utils/isDefined'
 import { useLocale } from '@/src/utils/useLocale'
 import { useTranslation } from '@/src/utils/useTranslation'
 
 type Props = {
   section: ArticlesSectionFragment
 }
+
+const imageSizes = generateImageSizes({ default: '50vw', md: '33vw' })
 
 /**
  * Figma: https://www.figma.com/design/17wbd0MDQcMW9NbXl6UPs8/DS--Component-library?node-id=18995-28122&m=dev
@@ -70,27 +77,59 @@ const ArticlesAll = ({ section }: Props) => {
           setSearchQuery={setSearch}
           isLoading={isPending}
         />
-        <ArticlesFilterGroup filters={filters} onFiltersChange={handleFiltersChange} />
       </div>
 
-      {data?.hits?.length ? (
-        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {data.hits.map((card) => (
-            <ArticleCard key={card.slug} {...transformArticleProps(card)} />
-          ))}
+      <div className="flex flex-col gap-6 lg:flex-row lg:gap-8">
+        <div className="shrink-0 lg:basis-80">
+          <ArticlesFilterGroup filters={filters} onFiltersChange={handleFiltersChange} />
         </div>
-      ) : (
-        <Typography>{t('ArticlesAll.noResults')}</Typography>
-      )}
+        <div className="flex grow flex-col gap-6">
+          <ArticlesActiveFilters
+            filters={filters}
+            setFilters={setFilters}
+            pageSize={data?.hits.length}
+            totalCount={data?.estimatedTotalHits}
+          />
+          {data?.hits?.length ? (
+            <ul className="flex flex-col">
+              {data.hits.map((article, index) => {
+                const metadata = [
+                  formatDate(article.addedAt),
+                  article.articleCategory?.title,
+                ].filter(isDefined)
 
-      {data?.estimatedTotalHits ? (
-        <Pagination
-          key={filters.search}
-          totalCount={Math.ceil(data.estimatedTotalHits / filters.pageSize)}
-          currentPage={filters.page}
-          onPageChange={setPage}
-        />
-      ) : null}
+                return (
+                  <Fragment key={article.documentId}>
+                    {index > 0 && <HorizontalDivider asListItem />}
+                    <li className="py-4 first:pt-0">
+                      <ArticleRowCard
+                        title={article.title}
+                        imgSrc={article.coverMedia?.url}
+                        imgSizes={imageSizes}
+                        metadata={metadata}
+                        linkProps={getLinkProps({ article })}
+                      />
+                    </li>
+                  </Fragment>
+                )
+              })}
+            </ul>
+          ) : (
+            <Typography>{t('ArticlesAll.noResults')}</Typography>
+          )}
+
+          {data?.estimatedTotalHits ? (
+            <div className="flex justify-center">
+              <PaginationWithInput
+                key={filters.search}
+                totalCount={Math.ceil(data.estimatedTotalHits / filters.pageSize)}
+                currentPage={filters.page}
+                onPageChange={setPage}
+              />
+            </div>
+          ) : null}
+        </div>
+      </div>
     </div>
   )
 }
