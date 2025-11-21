@@ -1,4 +1,5 @@
 import { isDefined } from '@/src/utils/isDefined'
+import { useTranslation } from '@/src/utils/useTranslation'
 
 import { meiliClient } from '../meiliClient'
 import { ArticleMeili, SearchIndexWrapped } from '../types'
@@ -14,7 +15,22 @@ export type ArticlesFilters = {
   tagSlugs?: string[]
   adminGroupDocumentIds?: string[]
   adminGroupSlugs?: string[]
-  excludeArticlesWithAssignedAdminGroups?: boolean
+}
+
+// "City Hall" is a special option that means articles without any assigned admin group
+// It is not present in the admin groups list in strapi, so we add it here manually
+// TODO Consider adding City Hall as a proper admin group
+const CITY_HALL_ADIMNGROUP_SLUG = 'bratislava'
+
+export const useGetCityHallAdminGroup = () => {
+  const { t } = useTranslation()
+
+  const CITY_HALL_ADMINGROUP = {
+    title: t('ArticlesFilterGroup.cityHall'),
+    slug: CITY_HALL_ADIMNGROUP_SLUG,
+  }
+
+  return { CITY_HALL_ADMINGROUP }
 }
 
 export const articlesDefaultFilters: Required<ArticlesFilters> = {
@@ -27,7 +43,6 @@ export const articlesDefaultFilters: Required<ArticlesFilters> = {
   tagSlugs: [],
   adminGroupDocumentIds: [],
   adminGroupSlugs: [],
-  excludeArticlesWithAssignedAdminGroups: false,
 }
 
 export const getArticlesQueryKey = (filters: ArticlesFilters, locale: string) => [
@@ -38,6 +53,13 @@ export const getArticlesQueryKey = (filters: ArticlesFilters, locale: string) =>
 ]
 
 export const articlesFetcher = (filters: ArticlesFilters, locale: string) => {
+  const adminGroupSlugsWithoutCityHall = filters.adminGroupSlugs?.filter(
+    (slug) => slug !== CITY_HALL_ADIMNGROUP_SLUG,
+  )
+
+  const showCityHallArticles = filters.adminGroupSlugs?.includes(CITY_HALL_ADIMNGROUP_SLUG)
+  const showOnlyCityHallArticles = showCityHallArticles && !adminGroupSlugsWithoutCityHall?.length
+
   return meiliClient
     .index('search_index')
     .search<SearchIndexWrapped<'article', ArticleMeili>>(filters.search, {
@@ -45,25 +67,28 @@ export const articlesFetcher = (filters: ArticlesFilters, locale: string) => {
       filter: [
         'type = "article"',
         `locale = ${locale}`,
+        // Categories
         filters.articleCategoryDocumentIds?.length
           ? `article.articleCategory.documentId IN [${filters.articleCategoryDocumentIds.join(',')}]`
           : '',
         filters.articleCategorySlugs?.length
           ? `article.articleCategory.slug IN [${filters.articleCategorySlugs.join(',')}]`
           : '',
+        // Tags
         filters.tagDocumentIds?.length
           ? `article.tags.documentId IN [${filters.tagDocumentIds.join(',')}]`
           : '',
         filters.tagSlugs?.length ? `article.tags.slug IN [${filters.tagSlugs.join(',')}]` : '',
+        // Authors
         filters.adminGroupDocumentIds?.length
           ? `article.adminGroups.documentId IN [${filters.adminGroupDocumentIds.join(',')}]`
           : '',
-        filters.adminGroupSlugs?.length
-          ? `article.adminGroups.slug IN [${filters.adminGroupSlugs.join(',')}]`
+        adminGroupSlugsWithoutCityHall?.length
+          ? showCityHallArticles
+            ? `(article.adminGroups.slug IN [${adminGroupSlugsWithoutCityHall.join(',')}]) OR article.adminGroups.documentId NOT EXISTS`
+            : `article.adminGroups.slug IN [${adminGroupSlugsWithoutCityHall.join(',')}]`
           : '',
-        filters.excludeArticlesWithAssignedAdminGroups
-          ? 'article.adminGroups.documentId NOT EXISTS'
-          : '',
+        showOnlyCityHallArticles ? 'article.adminGroups.documentId NOT EXISTS' : '',
       ].filter(isDefined),
       sort: ['article.addedAtTimestamp:desc'],
     })

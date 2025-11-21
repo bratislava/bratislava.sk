@@ -8,7 +8,7 @@ import HorizontalDivider from '@/src/components/common/Divider/HorizontalDivider
 import PaginationWithInput from '@/src/components/common/Pagination/PaginationWithInput'
 import SectionHeader from '@/src/components/layouts/SectionHeader'
 import ArticlesActiveFilters from '@/src/components/sections/ArticlesSection/ArticlesActiveFilters'
-import ArticlesFilterGroup from '@/src/components/sections/ArticlesSection/ArticlesFilterGroup'
+import ArticlesCheckboxFilters from '@/src/components/sections/ArticlesSection/ArticlesCheckboxFilters'
 import { useArticlesFilters } from '@/src/components/sections/ArticlesSection/useArticlesFilters'
 import SearchBar from '@/src/components/sections/SearchSection/SearchBar'
 import { ArticlesSectionFragment } from '@/src/services/graphql'
@@ -80,15 +80,15 @@ const ArticlesAll = ({ section }: Props) => {
       </div>
 
       <div className="flex flex-col gap-6 lg:flex-row lg:gap-8">
-        <div className="shrink-0 lg:basis-80">
-          <ArticlesFilterGroup filters={filters} onFiltersChange={handleFiltersChange} />
+        <div className="shrink-0 lg:max-w-80">
+          <ArticlesCheckboxFilters filters={filters} onFiltersChange={handleFiltersChange} />
         </div>
         <div className="flex grow flex-col gap-6">
           <ArticlesActiveFilters
             filters={filters}
             setFilters={setFilters}
-            pageSize={data?.hits.length}
-            totalCount={data?.estimatedTotalHits}
+            pageSize={data?.hits.length ?? 0}
+            totalCount={data?.estimatedTotalHits ?? 0}
           />
           {data?.hits?.length ? (
             <ul className="flex flex-col">

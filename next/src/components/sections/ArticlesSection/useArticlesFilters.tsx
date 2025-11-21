@@ -21,10 +21,6 @@ export const useArticlesFilters = () => {
         defaultValue: articlesDefaultFilters.adminGroupSlugs,
         parse: (value) => (value ? [value] : []),
       },
-      excludeArticlesWithAssignedAdminGroups: {
-        defaultValue: articlesDefaultFilters.excludeArticlesWithAssignedAdminGroups,
-        parse: (value) => value === 'true',
-      },
     },
     {
       history: 'replace',
@@ -32,7 +28,6 @@ export const useArticlesFilters = () => {
         articleCategorySlugs: 'type',
         tagSlugs: 'topic',
         adminGroupSlugs: 'author',
-        excludeArticlesWithAssignedAdminGroups: 'cityHallOnly',
       },
     },
   )
