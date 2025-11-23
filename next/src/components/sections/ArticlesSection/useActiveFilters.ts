@@ -6,6 +6,12 @@ import { useGetCityHallAdminGroup } from '@/src/services/meili/fetchers/articles
 import { isDefined } from '@/src/utils/isDefined'
 import { useLocale } from '@/src/utils/useLocale'
 
+export type ActiveFiltersTags = {
+  slug: string
+  label: string | undefined
+  handleRemove: () => void
+}[]
+
 export const useActiveFilters = ({
   filters,
   setFilters,
@@ -35,7 +41,7 @@ export const useActiveFilters = ({
 
   const { CITY_HALL_ADMINGROUP } = useGetCityHallAdminGroup()
 
-  const activeFilterTags = [
+  const activeFiltersTags = [
     // Article categories
     ...filters.articleCategorySlugs.map((articleCategorySlug) => {
       return {
@@ -84,5 +90,5 @@ export const useActiveFilters = ({
     }),
   ].filter(isDefined)
 
-  return { activeFilterTags }
+  return { activeFiltersTags } satisfies { activeFiltersTags: ActiveFiltersTags }
 }
