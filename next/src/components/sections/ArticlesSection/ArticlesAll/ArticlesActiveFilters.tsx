@@ -23,13 +23,15 @@ export type ArticlesActiveFiltersProps = {
   totalCount: number
 }
 
+type ArticlesActiveFiltersTagListProps = {
+  activeFiltersTags: ActiveFiltersTags
+  setFilters: ArticlesActiveFiltersProps['setFilters']
+}
+
 const ArticlesActiveFiltersTagList = ({
   activeFiltersTags,
   setFilters,
-}: {
-  activeFiltersTags: ActiveFiltersTags
-  setFilters: ArticlesActiveFiltersProps['setFilters']
-}) => {
+}: ArticlesActiveFiltersTagListProps) => {
   const { t } = useTranslation()
 
   return (
@@ -80,7 +82,6 @@ const ArticlesActiveFiltersTagList = ({
   )
 }
 
-// TODO Make this component more generic, independent of articles
 const ArticlesActiveFilters = ({
   filters,
   setFilters,
@@ -111,10 +112,6 @@ const ArticlesActiveFilters = ({
     activeTag?.handleRemove()
   }
 
-  const tagListElement = (
-    <ArticlesActiveFiltersTagList activeFiltersTags={activeFiltersTags} setFilters={setFilters} />
-  )
-
   const labelElement = (
     <Label>
       <Typography variant="p-small" className="font-semibold">
@@ -128,6 +125,7 @@ const ArticlesActiveFilters = ({
   ) : null
 
   const tagGroupProps: TagGroupProps = { selectionMode: 'none', onRemove: handleRemove }
+  const tagListProps: ArticlesActiveFiltersTagListProps = { activeFiltersTags, setFilters }
 
   return (
     <>
@@ -137,16 +135,16 @@ const ArticlesActiveFilters = ({
           {labelElement}
           {totalCountElement}
         </div>
-        {tagListElement}
+        <ArticlesActiveFiltersTagList {...tagListProps} />
       </TagGroup>
       {/* Screen: mobile */}
       <TagGroup {...tagGroupProps} className="flex flex-col gap-4 lg:hidden">
         <details className="group">
-          <summary className="flex flex-wrap justify-between gap-2 max-lg:flex-col">
+          <summary className="flex justify-between">
             {labelElement}
             <ChevronDownIcon className="size-5 shrink-0 transition-transform group-open:rotate-180" />
           </summary>
-          {tagListElement}
+          <ArticlesActiveFiltersTagList {...tagListProps} />
         </details>
         {totalCountElement}
       </TagGroup>
