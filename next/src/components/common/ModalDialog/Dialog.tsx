@@ -1,6 +1,6 @@
 import { Typography } from '@bratislava/component-library'
 import { forwardRef, ReactNode } from 'react'
-import { Dialog as ReactAriaDialog, DialogProps } from 'react-aria-components'
+import { Dialog as ReactAriaDialog, DialogProps, DialogRenderProps } from 'react-aria-components'
 import { CrossIcon } from 'src/assets/icons'
 
 import Button from '@/src/components/common/Button/Button'
@@ -8,7 +8,10 @@ import { useTranslation } from '@/src/utils/useTranslation'
 
 type TitleProps = { title: string; 'aria-label'?: string } | { title?: never; 'aria-label': string }
 
-type Props = { children: ReactNode } & TitleProps & Omit<DialogProps, 'children' | 'aria-label'>
+type Props = {
+  children: ReactNode | ((props: DialogRenderProps) => ReactNode)
+} & TitleProps &
+  Omit<DialogProps, 'children' | 'aria-label'>
 
 /*
  * Styling of Dialog to have fixed header and scrollable body is challenging.
@@ -44,7 +47,9 @@ const Dialog = forwardRef<HTMLElement, Props>(({ children, title, ...props }, re
             </div>
           ) : null}
 
-          <div className="flex grow flex-col overflow-y-auto p-6">{children}</div>
+          <div className="flex grow flex-col overflow-y-auto p-6">
+            {typeof children === 'function' ? children({ close }) : children}
+          </div>
 
           {/* If we want to implement some fixed footer, it goes here, with "flex shrink-0" */}
 
