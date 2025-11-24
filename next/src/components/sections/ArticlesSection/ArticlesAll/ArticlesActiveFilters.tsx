@@ -1,5 +1,5 @@
 import { Typography } from '@bratislava/component-library'
-import { Label, Tag, TagGroup, TagList } from 'react-aria-components'
+import { Key, Label, Tag, TagGroup, TagGroupProps, TagList } from 'react-aria-components'
 
 import { ChevronDownIcon, CrossIcon, CrossInCircleIcon } from '@/src/assets/icons'
 import Button from '@/src/components/common/Button/Button'
@@ -9,7 +9,6 @@ import {
 } from '@/src/components/sections/ArticlesSection/ArticlesAll/useActiveFilters'
 import { useArticlesFilters } from '@/src/components/sections/ArticlesSection/ArticlesAll/useArticlesFilters'
 import { articlesDefaultFilters } from '@/src/services/meili/fetchers/articlesFetcher'
-import cn from '@/src/utils/cn'
 import { useTranslation } from '@/src/utils/useTranslation'
 
 /**
@@ -22,7 +21,6 @@ export type ArticlesActiveFiltersProps = {
   setFilters: ReturnType<typeof useArticlesFilters>['setFilters']
   currentResultsCount: number
   totalCount: number
-  className?: string
 }
 
 const ArticlesActiveFiltersTagList = ({
@@ -88,7 +86,6 @@ const ArticlesActiveFilters = ({
   setFilters,
   totalCount,
   currentResultsCount,
-  className,
 }: ArticlesActiveFiltersProps) => {
   const { t } = useTranslation()
 
@@ -108,53 +105,52 @@ const ArticlesActiveFilters = ({
     )
   }
 
+  const handleRemove = (item: Set<Key>) => {
+    const itemLabel = Array.from(item.values())[0]
+    const activeTag = activeFiltersTags.find((tag) => tag.label === itemLabel)
+    activeTag?.handleRemove()
+  }
+
+  const tagListElement = (
+    <ArticlesActiveFiltersTagList activeFiltersTags={activeFiltersTags} setFilters={setFilters} />
+  )
+
+  const labelElement = (
+    <Label>
+      <Typography variant="p-small" className="font-semibold">
+        {t('ArticlesAll.activeFilters')}
+      </Typography>
+    </Label>
+  )
+
+  const totalCountElement = totalCount ? (
+    <Typography variant="p-small">{articlesCountMessage}</Typography>
+  ) : null
+
+  const tagGroupProps: TagGroupProps = { selectionMode: 'none', onRemove: handleRemove }
+
   return (
-    <TagGroup
-      selectionMode="none"
-      className={cn('flex flex-col gap-4', className)}
-      onRemove={(item) => {
-        // items are stored as a Set
-        const itemLabel = Array.from(item.values())[0]
-        const activeTag = activeFiltersTags.find((tag) => tag.label === itemLabel)
-        activeTag?.handleRemove()
-      }}
-    >
+    <>
       {/* Screen: desktop */}
-      <div className="max-lg:hidden">
+      <TagGroup {...tagGroupProps} className="max-lg:hidden">
         <div className="flex flex-wrap justify-between gap-2 max-lg:flex-col">
-          <Label>
-            <Typography variant="p-small" className="font-semibold">
-              {t('ArticlesAll.activeFilters')}
-            </Typography>
-          </Label>
-          {totalCount ? <Typography variant="p-small">{articlesCountMessage}</Typography> : null}
+          {labelElement}
+          {totalCountElement}
         </div>
-        <ArticlesActiveFiltersTagList
-          activeFiltersTags={activeFiltersTags}
-          setFilters={setFilters}
-        />
-      </div>
+        {tagListElement}
+      </TagGroup>
       {/* Screen: mobile */}
-      <div className="flex flex-col gap-4 lg:hidden">
+      <TagGroup {...tagGroupProps} className="flex flex-col gap-4 lg:hidden">
         <details className="group">
           <summary className="flex flex-wrap justify-between gap-2 max-lg:flex-col">
-            <div className="flex justify-between">
-              <Label>
-                <Typography variant="p-small" className="font-semibold">
-                  {t('ArticlesAll.activeFilters')}
-                </Typography>
-              </Label>
-              <ChevronDownIcon className="size-5 shrink-0 transition-transform group-open:rotate-180" />
-            </div>
+            {labelElement}
+            <ChevronDownIcon className="size-5 shrink-0 transition-transform group-open:rotate-180" />
           </summary>
-          <ArticlesActiveFiltersTagList
-            activeFiltersTags={activeFiltersTags}
-            setFilters={setFilters}
-          />
+          {tagListElement}
         </details>
-        {totalCount ? <Typography variant="p-small">{articlesCountMessage}</Typography> : null}
-      </div>
-    </TagGroup>
+        {totalCountElement}
+      </TagGroup>
+    </>
   )
 }
 
