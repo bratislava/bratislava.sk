@@ -104,14 +104,14 @@ const InbaLatestReleaseSection = ({ section }: Props) => {
                 <Button
                   variant="solid"
                   href={`${getLinkProps({ page: general?.inbaReleasesPage }).href}/${latestInbaRelease.slug}`}
-                  className="max-lg:w-full"
+                  fullWidthMobile
                 >
                   {t('InbaLatestReleaseSection.readRelease')}
                 </Button>
                 <Button
                   variant="outline"
                   {...getLinkProps({ page: general?.inbaReleasesPage })}
-                  className="max-lg:w-full"
+                  fullWidthMobile
                 >
                   {t('InbaLatestReleaseSection.allReleases')}
                 </Button>
