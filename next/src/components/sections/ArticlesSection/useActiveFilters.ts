@@ -1,4 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
+import { useMemo } from 'react'
 
 import { ArticlesActiveFiltersProps } from '@/src/components/sections/ArticlesSection/ArticlesActiveFilters'
 import { client } from '@/src/services/graphql/gql'
@@ -41,9 +42,8 @@ export const useActiveFilters = ({
 
   const { CITY_HALL_ADMINGROUP } = useGetCityHallAdminGroup()
 
-  const activeFiltersTags = [
-    // Article categories
-    ...filters.articleCategorySlugs.map((articleCategorySlug) => {
+  const activeArticleCategories = useMemo(() => {
+    return filters.articleCategorySlugs.map((articleCategorySlug) => {
       return {
         slug: articleCategorySlug,
         label: articleCategories?.find(
@@ -58,9 +58,12 @@ export const useActiveFilters = ({
           })
         },
       }
-    }),
-    // Tags
-    ...filters.tagSlugs.map((tagSlug) => {
+    })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [articleCategories, filters.articleCategorySlugs, setFilters])
+
+  const activeTags = useMemo(() => {
+    return filters.tagSlugs.map((tagSlug) => {
       return {
         slug: tagSlug,
         label: tags?.find((tag) => tag.slug === tagSlug)?.title,
@@ -71,9 +74,12 @@ export const useActiveFilters = ({
           })
         },
       }
-    }),
-    // Admin groups
-    ...filters.adminGroupSlugs.map((adminGroupSlug) => {
+    })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [tags, filters.tagSlugs, setFilters])
+
+  const activeAuthors = useMemo(() => {
+    return filters.adminGroupSlugs.map((adminGroupSlug) => {
       const adminGroupsWithCityHall = [...(adminGroups ?? []), CITY_HALL_ADMINGROUP]
 
       return {
@@ -87,8 +93,14 @@ export const useActiveFilters = ({
           })
         },
       }
-    }),
-  ]
+    })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [adminGroups, filters.adminGroupSlugs, setFilters])
+
+  const activeFiltersTags = useMemo(() => {
+    return [...activeArticleCategories, ...activeTags, ...activeAuthors]
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [filters.articleCategorySlugs, filters.tagSlugs, filters.adminGroupSlugs])
 
   return { activeFiltersTags } satisfies { activeFiltersTags: ActiveFiltersTags }
 }
