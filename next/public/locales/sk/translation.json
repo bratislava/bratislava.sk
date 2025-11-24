@@ -10,6 +10,7 @@
   "ArticlesAll.resultsCountMessage_few": "Zobrazujeme {{count}} výsledky z {{totalCount}}",
   "ArticlesAll.resultsCountMessage_many": "Zobrazujeme {{count}} výsledky z {{totalCount}}",
   "ArticlesAll.resultsCountMessage_other": "Zobrazujeme {{count}} výsledkov z {{totalCount}}",
+  "ArticlesCheckboxFiltersModal.applyFiltersButton": "Zobraziť vybrané",
   "ArticlesCheckboxFiltersModal.title": "Filter",
   "ArticlesCheckboxGroup.adminGroupLabel": "Autor obsahu",
   "ArticlesCheckboxGroup.categoryLabel": "Typ obsahu",

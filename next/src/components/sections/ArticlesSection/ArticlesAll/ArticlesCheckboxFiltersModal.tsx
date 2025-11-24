@@ -2,6 +2,7 @@ import { useTranslation } from 'next-i18next'
 import { ReactNode } from 'react'
 import { DialogTrigger } from 'react-aria-components'
 
+import Button from '@/src/components/common/Button/Button'
 import Dialog from '@/src/components/common/ModalDialog/Dialog'
 import Modal from '@/src/components/common/ModalDialog/Modal'
 import ArticlesCheckboxFilters from '@/src/components/sections/ArticlesSection/ArticlesAll/ArticlesCheckboxFilters'
@@ -23,9 +24,22 @@ const ArticlesCheckboxFiltersModal = ({ triggerButton, filters, onFiltersChange 
   return (
     <DialogTrigger>
       {triggerButton}
-      <Modal width="auto" modalClassname="h-[100dvh] rounded-none mx-0">
+      <Modal width="auto" modalClassname="h-[100dvh] rounded-none m-0 w-full">
         <Dialog title={t('ArticlesCheckboxFiltersModal.title')}>
-          <ArticlesCheckboxFilters filters={filters} onFiltersChange={onFiltersChange} />
+          {({ close }) => {
+            return (
+              <>
+                <div className="scrollbar-hide overflow-y-auto">
+                  <ArticlesCheckboxFilters filters={filters} onFiltersChange={onFiltersChange} />
+                </div>
+                <div className="absolute bottom-0 border-t border-border-passive-primary bg-background-passive-base py-3">
+                  <Button variant="solid" onPress={close} fullWidth>
+                    {t('ArticlesCheckboxFiltersModal.applyFiltersButton')}
+                  </Button>
+                </div>
+              </>
+            )
+          }}
         </Dialog>
       </Modal>
     </DialogTrigger>

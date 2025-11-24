@@ -8,6 +8,7 @@
   "ArticlesAll.noResults": "No results",
   "ArticlesAll.resultsCountMessage_one": "Showing {{count}} result out of {{totalCount}}",
   "ArticlesAll.resultsCountMessage_other": "Showing {{count}} results out of {{totalCount}}",
+  "ArticlesCheckboxFiltersModal.applyFiltersButton": "Show selected",
   "ArticlesCheckboxFiltersModal.title": "Filter",
   "ArticlesCheckboxGroup.adminGroupLabel": "Author",
   "ArticlesCheckboxGroup.categoryLabel": "Content type",
