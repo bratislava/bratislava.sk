@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query'
 
-import CheckboxGroup from '@/src/components/sections/ArticlesSection/CheckboxGroup'
+import CheckboxGroup from '@/src/components/common/CheckBoxGroup/CheckboxGroup'
 import { client } from '@/src/services/graphql/gql'
 import {
   ArticlesFilters,

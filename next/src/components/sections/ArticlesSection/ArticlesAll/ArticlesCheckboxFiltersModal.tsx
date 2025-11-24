@@ -4,7 +4,7 @@ import { DialogTrigger } from 'react-aria-components'
 
 import Dialog from '@/src/components/common/ModalDialog/Dialog'
 import Modal from '@/src/components/common/ModalDialog/Modal'
-import ArticlesCheckboxFilters from '@/src/components/sections/ArticlesSection/ArticlesCheckboxFilters'
+import ArticlesCheckboxFilters from '@/src/components/sections/ArticlesSection/ArticlesAll/ArticlesCheckboxFilters'
 import { ArticlesFilters } from '@/src/services/meili/fetchers/articlesFetcher'
 
 type Props = {

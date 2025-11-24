@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query'
 import { useMemo } from 'react'
 
-import { ArticlesActiveFiltersProps } from '@/src/components/sections/ArticlesSection/ArticlesActiveFilters'
+import { ArticlesActiveFiltersProps } from '@/src/components/sections/ArticlesSection/ArticlesAll/ArticlesActiveFilters'
 import { client } from '@/src/services/graphql/gql'
 import { useGetCityHallAdminGroup } from '@/src/services/meili/fetchers/articlesFetcher'
 import { isDefined } from '@/src/utils/isDefined'

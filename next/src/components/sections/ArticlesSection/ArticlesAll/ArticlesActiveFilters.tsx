@@ -6,8 +6,8 @@ import Button from '@/src/components/common/Button/Button'
 import {
   ActiveFiltersTags,
   useActiveFilters,
-} from '@/src/components/sections/ArticlesSection/useActiveFilters'
-import { useArticlesFilters } from '@/src/components/sections/ArticlesSection/useArticlesFilters'
+} from '@/src/components/sections/ArticlesSection/ArticlesAll/useActiveFilters'
+import { useArticlesFilters } from '@/src/components/sections/ArticlesSection/ArticlesAll/useArticlesFilters'
 import { articlesDefaultFilters } from '@/src/services/meili/fetchers/articlesFetcher'
 import cn from '@/src/utils/cn'
 import { useTranslation } from '@/src/utils/useTranslation'
