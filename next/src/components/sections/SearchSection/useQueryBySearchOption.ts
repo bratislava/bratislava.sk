@@ -19,7 +19,7 @@ import {
 } from '@/src/services/meili/fetchers/documentsFetcher'
 import {
   getPagesQueryKey,
-  pagesFetcherUseQuery,
+  pagesFetcher,
   PagesFilters,
 } from '@/src/services/meili/fetchers/pagesFetcher'
 import {
@@ -69,7 +69,7 @@ export const useQueryBySearchOption = ({
 
   const pagesQuery = useQuery({
     queryKey: getPagesQueryKey(filters, locale),
-    queryFn: () => pagesFetcherUseQuery(filters, locale),
+    queryFn: () => pagesFetcher(filters, locale),
     placeholderData: keepPreviousData,
     select: (data) => {
       const formattedData: SearchResult[] =
