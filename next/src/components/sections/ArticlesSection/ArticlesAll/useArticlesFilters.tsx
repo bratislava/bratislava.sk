@@ -6,20 +6,24 @@ import {
   ArticlesFilters,
 } from '@/src/services/meili/fetchers/articlesFetcher'
 
+const parseSlugs = (value: string): string[] => {
+  return value ? value.split(',') : []
+}
+
 export const useArticlesFilters = () => {
   const [filtersQueryParams, setFiltersQueryParams] = useQueryStates(
     {
       articleCategorySlugs: {
         defaultValue: articlesDefaultFilters.articleCategorySlugs,
-        parse: (value) => (value ? [value] : []),
+        parse: parseSlugs,
       },
       tagSlugs: {
         defaultValue: articlesDefaultFilters.tagSlugs,
-        parse: (value) => (value ? [value] : []),
+        parse: parseSlugs,
       },
       adminGroupSlugs: {
         defaultValue: articlesDefaultFilters.adminGroupSlugs,
-        parse: (value) => (value ? [value] : []),
+        parse: parseSlugs,
       },
     },
     {
