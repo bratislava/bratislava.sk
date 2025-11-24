@@ -3,12 +3,15 @@ import { keepPreviousData, useQuery } from '@tanstack/react-query'
 import React, { Fragment, useEffect, useRef, useState } from 'react'
 import { useDebounceValue } from 'usehooks-ts'
 
+import { FilterIcon } from '@/src/assets/icons'
 import ArticleRowCard from '@/src/components/cards/ArticleRowCard'
+import Button from '@/src/components/common/Button/Button'
 import HorizontalDivider from '@/src/components/common/Divider/HorizontalDivider'
 import PaginationWithInput from '@/src/components/common/Pagination/PaginationWithInput'
 import SectionHeader from '@/src/components/layouts/SectionHeader'
 import ArticlesActiveFilters from '@/src/components/sections/ArticlesSection/ArticlesActiveFilters'
 import ArticlesCheckboxFilters from '@/src/components/sections/ArticlesSection/ArticlesCheckboxFilters'
+import ArticlesCheckboxFiltersModal from '@/src/components/sections/ArticlesSection/ArticlesCheckboxFiltersModal'
 import { useArticlesFilters } from '@/src/components/sections/ArticlesSection/useArticlesFilters'
 import SearchBar from '@/src/components/sections/SearchSection/SearchBar'
 import { ArticlesSectionFragment } from '@/src/services/graphql'
@@ -80,8 +83,21 @@ const ArticlesAll = ({ section }: Props) => {
       </div>
 
       <div className="flex flex-col gap-6 lg:flex-row lg:gap-8">
-        <div className="shrink-0 lg:max-w-80">
+        {/* Screen: desktop */}
+        <div className="max-w-80 shrink-0 max-lg:hidden">
           <ArticlesCheckboxFilters filters={filters} onFiltersChange={handleFiltersChange} />
+        </div>
+        {/* Screen: mobile */}
+        <div className="lg:hidden">
+          <ArticlesCheckboxFiltersModal
+            filters={filters}
+            onFiltersChange={handleFiltersChange}
+            triggerButton={
+              <Button variant="outline" startIcon={<FilterIcon />} fullWidth>
+                {t(`ArticlesCheckboxFiltersModal.title`)}
+              </Button>
+            }
+          />
         </div>
         <div className="flex grow flex-col gap-6">
           <ArticlesActiveFilters
