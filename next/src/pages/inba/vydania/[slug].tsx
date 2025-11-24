@@ -17,7 +17,6 @@ import {
   getArticlesQueryKey,
 } from '@/src/services/meili/fetchers/articlesFetcher'
 import { NOT_FOUND } from '@/src/utils/consts'
-import { isDefined } from '@/src/utils/isDefined'
 
 type PageProps = {
   general: GeneralQuery
@@ -71,16 +70,12 @@ export const getStaticProps: GetStaticProps<PageProps, StaticParams> = async ({
     return NOT_FOUND
   }
 
-  const articlesDocumentIds = inbaRelease.articles
-    .filter(isDefined)
-    .map((article) => article.documentId)
-
   // Prefetch data
   const queryClient = new QueryClient()
 
   const filters: ArticlesFilters = {
     ...articlesDefaultFilters,
-    documentIds: articlesDocumentIds,
+    inbaReleaseSlugs: [inbaRelease.slug],
   }
 
   await queryClient.prefetchQuery({

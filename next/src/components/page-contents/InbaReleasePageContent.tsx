@@ -47,7 +47,7 @@ const InbaReleasePageContent = ({ inbaRelease }: Props) => {
   const { t } = useTranslation()
   const locale = useLocale()
 
-  const { title, coverImage, perex, releaseDate, files, articles } = inbaRelease
+  const { title, slug, coverImage, perex, releaseDate, files } = inbaRelease
 
   const { general } = useGeneralContext()
   const parentBreadcrumbPageEntity = general?.inbaReleasesPage
@@ -59,12 +59,9 @@ const InbaReleasePageContent = ({ inbaRelease }: Props) => {
     ]
   }, [parentBreadcrumbPageEntity, title])
 
-  const articlesDocumentIds = articles.filter(isDefined).map((article) => article.documentId)
-
   const [filters, setFilters] = useRoutePreservedState<ArticlesFilters>({
     ...articlesDefaultFilters,
-    // If no articles are found, we explicitly pass empty string to trigger the filters - otherwise, all articles would be fetched
-    documentIds: articlesDocumentIds.length > 0 ? articlesDocumentIds : [''],
+    inbaReleaseSlugs: [slug],
   })
   const [input, setInput] = useState('')
   const [debouncedInput] = useDebounceValue(input, 300)

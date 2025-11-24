@@ -13,6 +13,7 @@ export type ArticlesFilters = {
   adminGroupDocumentIds?: string[]
   adminGroupSlugs?: string[]
   excludeArticlesWithAssignedAdminGroups?: boolean
+  inbaReleaseSlugs?: string[]
 }
 
 export const articlesDefaultFilters: Required<ArticlesFilters> = {
@@ -24,6 +25,7 @@ export const articlesDefaultFilters: Required<ArticlesFilters> = {
   adminGroupDocumentIds: [],
   adminGroupSlugs: [],
   excludeArticlesWithAssignedAdminGroups: false,
+  inbaReleaseSlugs: [],
 }
 
 export const getArticlesQueryKey = (filters: ArticlesFilters, locale: string) => [
@@ -50,6 +52,9 @@ export const articlesFetcher = (filters: ArticlesFilters, locale: string) => {
           : '',
         filters.excludeArticlesWithAssignedAdminGroups
           ? 'article.adminGroups.documentId NOT EXISTS'
+          : '',
+        filters.inbaReleaseSlugs?.length
+          ? `article.inbaRelease.slug IN [${filters.inbaReleaseSlugs.join(',')}]`
           : '',
       ].filter(isDefined),
       sort: ['article.addedAtTimestamp:desc'],
