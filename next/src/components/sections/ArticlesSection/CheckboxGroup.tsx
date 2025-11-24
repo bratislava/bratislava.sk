@@ -20,6 +20,7 @@ type CheckboxGroupOptions = {
 type Props = Pick<RACCheckboxGroupProps, 'value' | 'onChange'> & {
   label: string
   items: CheckboxGroupOptions
+  initialDisplayCount?: number
 }
 /**
  * Figma: https://www.figma.com/design/17wbd0MDQcMW9NbXl6UPs8/DS--Component-library?node-id=16717-20068&t=dOg5br7HlXCsYQKD-4
@@ -27,11 +28,10 @@ type Props = Pick<RACCheckboxGroupProps, 'value' | 'onChange'> & {
  * TODO focus ring now travels through every checkbox on tab - consider making this skippable as in TagGroup
  */
 
-const CheckboxGroup = ({ label, value, items, onChange }: Props) => {
+const CheckboxGroup = ({ label, value, items, initialDisplayCount = 8, onChange }: Props) => {
   const { t } = useTranslation()
 
-  const DEFAULT_DISPLAYED_ITEMS_COUNT = 8
-  const [displayedItemsCount, setDisplayedItemsCount] = useState(DEFAULT_DISPLAYED_ITEMS_COUNT)
+  const [displayedItemsCount, setDisplayedItemsCount] = useState(initialDisplayCount)
 
   return (
     <RACCheckboxGroup className="flex flex-col gap-2" value={value} onChange={onChange}>
@@ -44,7 +44,7 @@ const CheckboxGroup = ({ label, value, items, onChange }: Props) => {
                 key={item.value}
                 value={item.value}
                 className={({ isHovered }) => {
-                  return cn('base-focus-ring options-center flex gap-3 rounded-sm', {
+                  return cn('base-focus-ring flex items-center gap-3 rounded-sm', {
                     'text-content-active-primary-hover': isHovered,
                   })
                 }}
@@ -74,7 +74,7 @@ const CheckboxGroup = ({ label, value, items, onChange }: Props) => {
             )
           })}
         </div>
-        {items.length > DEFAULT_DISPLAYED_ITEMS_COUNT && items.length !== displayedItemsCount ? (
+        {items.length > initialDisplayCount && items.length !== displayedItemsCount ? (
           <>
             <HorizontalDivider />
             <Button

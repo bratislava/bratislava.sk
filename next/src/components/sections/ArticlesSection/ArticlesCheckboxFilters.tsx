@@ -29,14 +29,14 @@ const ArticlesCheckboxFilters = ({ filters, onFiltersChange, className }: Props)
     queryKey: ['ArticleCategories', locale],
     queryFn: () => client.ArticleCategories({ locale }),
     staleTime: Infinity,
-    select: (res) => res.articleCategories.filter(isDefined) ?? [],
+    select: (res) => res.articleCategories.filter(isDefined),
   })
 
   const { data: tags } = useQuery({
     queryKey: ['Tags', locale],
     queryFn: () => client.Tags({ locale }),
     staleTime: Infinity,
-    select: (res) => res.tags.filter(isDefined) ?? [],
+    select: (res) => res.tags.filter(isDefined),
   })
 
   const { data: adminGroups } = useQuery({
@@ -89,7 +89,7 @@ const ArticlesCheckboxFilters = ({ filters, onFiltersChange, className }: Props)
       />
       {tags ? (
         <CheckboxGroup
-          label={t('ArticlesCheckboxGroup.categoryLabel')}
+          label={t('ArticlesCheckboxGroup.tagLabel')}
           value={filters.tagSlugs}
           onChange={handleTagsChange}
           items={tags.map((tag) => {
@@ -99,7 +99,7 @@ const ArticlesCheckboxFilters = ({ filters, onFiltersChange, className }: Props)
       ) : null}
       {articleCategories ? (
         <CheckboxGroup
-          label={t('ArticlesCheckboxGroup.tagLabel')}
+          label={t('ArticlesCheckboxGroup.categoryLabel')}
           value={filters.articleCategorySlugs}
           onChange={handleCategoriesChange}
           items={articleCategories.map((articleCategory) => {

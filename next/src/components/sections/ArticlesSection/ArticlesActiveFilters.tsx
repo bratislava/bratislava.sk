@@ -20,7 +20,7 @@ import { useTranslation } from '@/src/utils/useTranslation'
 export type ArticlesActiveFiltersProps = {
   filters: ReturnType<typeof useArticlesFilters>['filters']
   setFilters: ReturnType<typeof useArticlesFilters>['setFilters']
-  pageSize: number
+  currentResultsCount: number
   totalCount: number
   className?: string
 }
@@ -87,7 +87,7 @@ const ArticlesActiveFilters = ({
   filters,
   setFilters,
   totalCount,
-  pageSize,
+  currentResultsCount,
   className,
 }: ArticlesActiveFiltersProps) => {
   const { t } = useTranslation()
@@ -95,7 +95,7 @@ const ArticlesActiveFilters = ({
   const { activeFiltersTags } = useActiveFilters({ filters, setFilters })
 
   const articlesCountMessage = t('ArticlesAll.resultsCountMessage', {
-    count: pageSize,
+    count: currentResultsCount,
     totalCount,
   })
 
@@ -110,7 +110,7 @@ const ArticlesActiveFilters = ({
 
   return (
     <TagGroup
-      selectionMode="single"
+      selectionMode="none"
       className={cn('flex flex-col gap-4', className)}
       onRemove={(item) => {
         // items are stored as a Set

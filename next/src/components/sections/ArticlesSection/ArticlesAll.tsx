@@ -103,7 +103,7 @@ const ArticlesAll = ({ section }: Props) => {
           <ArticlesActiveFilters
             filters={filters}
             setFilters={setFilters}
-            pageSize={data?.hits.length ?? 0}
+            currentResultsCount={data?.hits.length ?? 0}
             totalCount={data?.estimatedTotalHits ?? 0}
           />
           {data?.hits?.length ? (

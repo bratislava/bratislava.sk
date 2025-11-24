@@ -22,14 +22,14 @@ export const useActiveFilters = ({
     queryKey: ['ArticleCategories', locale],
     queryFn: () => client.ArticleCategories({ locale }),
     staleTime: Infinity,
-    select: (res) => res.articleCategories.filter(isDefined) ?? [],
+    select: (res) => res.articleCategories.filter(isDefined),
   })
 
   const { data: tags } = useQuery({
     queryKey: ['Tags', locale],
     queryFn: () => client.Tags({ locale }),
     staleTime: Infinity,
-    select: (res) => res.tags.filter(isDefined) ?? [],
+    select: (res) => res.tags.filter(isDefined),
   })
 
   const { data: adminGroups } = useQuery({
@@ -88,7 +88,7 @@ export const useActiveFilters = ({
         },
       }
     }),
-  ].filter(isDefined)
+  ]
 
   return { activeFiltersTags } satisfies { activeFiltersTags: ActiveFiltersTags }
 }

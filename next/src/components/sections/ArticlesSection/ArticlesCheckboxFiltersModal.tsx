@@ -7,7 +7,7 @@ import Modal from '@/src/components/common/ModalDialog/Modal'
 import ArticlesCheckboxFilters from '@/src/components/sections/ArticlesSection/ArticlesCheckboxFilters'
 import { ArticlesFilters } from '@/src/services/meili/fetchers/articlesFetcher'
 
-type ShareModalProps = {
+type Props = {
   triggerButton: ReactNode
   filters: ArticlesFilters
   onFiltersChange: (filters: ArticlesFilters) => void
@@ -17,11 +17,7 @@ type ShareModalProps = {
  * Figma: https://www.figma.com/design/2qF09hDT9QNcpdztVMNAY4/OLO-Web?node-id=1341-11025&m=dev
  */
 
-const ArticlesCheckboxFiltersModal = ({
-  triggerButton,
-  filters,
-  onFiltersChange,
-}: ShareModalProps) => {
+const ArticlesCheckboxFiltersModal = ({ triggerButton, filters, onFiltersChange }: Props) => {
   const { t } = useTranslation()
 
   return (

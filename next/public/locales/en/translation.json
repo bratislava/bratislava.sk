@@ -81,7 +81,7 @@
   "InbaArticlesListSection.selectionOptions.allTags": "All articles",
   "InbaArticlesListSection.selectionOptions.aria": "Tags",
   "InbaLatestReleaseSection.allReleases": "All releases",
-  "InbaLatestReleaseSection.inReleaseYouWillFind": "In release {{releaseName}} you will fin",
+  "InbaLatestReleaseSection.inReleaseYouWillFind": "In release {{releaseName}} you will find",
   "InbaLatestReleaseSection.latestRelease": "Latest release",
   "InbaLatestReleaseSection.notFound": "No release found",
   "InbaLatestReleaseSection.readAllArticles": "Read all articles {{articlesCount}}",

@@ -20,14 +20,14 @@ export type ArticlesFilters = {
 // "City Hall" is a special option that means articles without any assigned admin group
 // It is not present in the admin groups list in strapi, so we add it here manually
 // TODO Consider adding City Hall as a proper admin group
-const CITY_HALL_ADIMNGROUP_SLUG = 'bratislava'
+const CITY_HALL_ADMINGROUP_SLUG = 'bratislava'
 
 export const useGetCityHallAdminGroup = () => {
   const { t } = useTranslation()
 
   const CITY_HALL_ADMINGROUP = {
     title: t('ArticlesFilterGroup.cityHall'),
-    slug: CITY_HALL_ADIMNGROUP_SLUG,
+    slug: CITY_HALL_ADMINGROUP_SLUG,
   }
 
   return { CITY_HALL_ADMINGROUP }
@@ -54,10 +54,10 @@ export const getArticlesQueryKey = (filters: ArticlesFilters, locale: string) =>
 
 export const articlesFetcher = (filters: ArticlesFilters, locale: string) => {
   const adminGroupSlugsWithoutCityHall = filters.adminGroupSlugs?.filter(
-    (slug) => slug !== CITY_HALL_ADIMNGROUP_SLUG,
+    (slug) => slug !== CITY_HALL_ADMINGROUP_SLUG,
   )
 
-  const showCityHallArticles = filters.adminGroupSlugs?.includes(CITY_HALL_ADIMNGROUP_SLUG)
+  const showCityHallArticles = filters.adminGroupSlugs?.includes(CITY_HALL_ADMINGROUP_SLUG)
   const showOnlyCityHallArticles = showCityHallArticles && !adminGroupSlugsWithoutCityHall?.length
 
   return meiliClient
