@@ -11,10 +11,11 @@ import { GeneralContextProvider } from '@/src/components/providers/GeneralContex
 import { GeneralQuery, InbaReleaseEntityFragment } from '@/src/services/graphql'
 import { client } from '@/src/services/graphql/gql'
 import {
-  getInbaArticlesQueryKey,
-  inbaArticlesDefaultFilters,
-  inbaArticlesFetcher,
-} from '@/src/services/meili/fetchers/inbaArticlesFetcher'
+  articlesDefaultFilters,
+  articlesFetcher,
+  ArticlesFilters,
+  getArticlesQueryKey,
+} from '@/src/services/meili/fetchers/articlesFetcher'
 import { NOT_FOUND } from '@/src/utils/consts'
 
 type PageProps = {
@@ -72,14 +73,14 @@ export const getStaticProps: GetStaticProps<PageProps, StaticParams> = async ({
   // Prefetch data
   const queryClient = new QueryClient()
 
-  const filters = {
-    ...inbaArticlesDefaultFilters,
-    releaseDocumentIds: [inbaRelease.documentId],
+  const filters: ArticlesFilters = {
+    ...articlesDefaultFilters,
+    inbaReleaseSlugs: [inbaRelease.slug],
   }
 
   await queryClient.prefetchQuery({
-    queryKey: getInbaArticlesQueryKey(filters, locale),
-    queryFn: () => inbaArticlesFetcher(filters, locale),
+    queryKey: getArticlesQueryKey(filters, locale),
+    queryFn: () => articlesFetcher(filters, locale),
   })
 
   const dehydratedState = dehydrate(queryClient)

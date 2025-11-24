@@ -19,8 +19,13 @@ export const homepageContextFetcher = async (locale: string): Promise<HomepageCo
       limit: 7,
       sort: 'addedAt:desc',
       locale,
-      // Only show articles with no adminGroup assigned
-      filters: { adminGroups: { adminGroupId: { eq: null } } },
+      filters: {
+        and: [
+          // Exclude inba articles and articles with adminGroup
+          { adminGroups: { adminGroupId: { eq: null } } },
+          { articleCategory: { title: { notContains: 'in.ba' } } },
+        ],
+      },
     }),
     client.HomepageLatestInbaRelease(),
   ])

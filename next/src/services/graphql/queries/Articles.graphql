@@ -20,7 +20,7 @@ fragment ArticleCardEntity on Article {
     ...UploadImageEntity
   }
   articleCategory {
-    title
+    ...ArticleCategoryEntity
   }
   tags {
     ...TagEntity

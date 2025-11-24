@@ -18,13 +18,8 @@ import {
   getDocumentsQueryKey,
 } from '@/src/services/meili/fetchers/documentsFetcher'
 import {
-  getInbaArticlesQueryKey,
-  inbaArticlesFetcher,
-  InbaArticlesFilters,
-} from '@/src/services/meili/fetchers/inbaArticlesFetcher'
-import {
   getPagesQueryKey,
-  pagesFetcherUseQuery,
+  pagesFetcher,
   PagesFilters,
 } from '@/src/services/meili/fetchers/pagesFetcher'
 import {
@@ -47,7 +42,6 @@ import { useTranslation } from '@/src/utils/useTranslation'
 export type SearchFilters =
   | PagesFilters
   | ArticlesFilters
-  | InbaArticlesFilters
   | RegulationFilters
   | OfficialBoardListFilters
 
@@ -75,7 +69,7 @@ export const useQueryBySearchOption = ({
 
   const pagesQuery = useQuery({
     queryKey: getPagesQueryKey(filters, locale),
-    queryFn: () => pagesFetcherUseQuery(filters, locale),
+    queryFn: () => pagesFetcher(filters, locale),
     placeholderData: keepPreviousData,
     select: (data) => {
       const formattedData: SearchResult[] =
@@ -128,26 +122,6 @@ export const useQueryBySearchOption = ({
             linkHref: `/dokumenty/${document.slug}`,
             metadata: [document.documentCategory?.title, formatDate(document.updatedAt)],
             customIconName: 'search_result_official_board',
-          }
-        }) ?? []
-
-      return { searchResultsData: formattedData, searchResultsCount: data?.estimatedTotalHits ?? 0 }
-    },
-  })
-
-  const inbaArticlesQuery = useQuery({
-    queryKey: getInbaArticlesQueryKey(filters, locale),
-    queryFn: () => inbaArticlesFetcher(filters, locale),
-    placeholderData: keepPreviousData,
-    select: (data) => {
-      const formattedData: SearchResult[] =
-        data?.hits?.map((inbaArticle) => {
-          return {
-            title: inbaArticle.title,
-            uniqueId: inbaArticle.slug,
-            linkHref: `/inba/clanky/${inbaArticle.slug}`,
-            metadata: [inbaArticle.inbaTag?.title, formatDate(inbaArticle.publishedAt)],
-            coverImageSrc: inbaArticle.coverImage?.url,
           }
         }) ?? []
 
@@ -257,9 +231,6 @@ export const useQueryBySearchOption = ({
 
     case 'documents':
       return documentsQuery
-
-    case 'inbaArticles':
-      return inbaArticlesQuery
 
     case 'users':
       return usersQuery
