@@ -37,13 +37,14 @@ const ArticlesActiveFiltersTagList = ({
   return (
     <div className="flex flex-wrap gap-2 pt-4">
       <TagList className="flex flex-wrap gap-2">
-        {activeFiltersTags.map((tag) => {
+        {activeFiltersTags.map((tag, index) => {
           const { label, handleRemove } = tag
 
           return (
             <Tag
               className="base-focus-ring relative flex w-fit items-center gap-2 rounded-lg border border-background-passive-secondary bg-background-passive-secondary px-3 py-2 text-content-active-primary-default hover:border-border-active-primary-hover hover:text-content-active-primary-hover"
-              key={label}
+              // eslint-disable-next-line react/no-array-index-key
+              key={index}
               id={label}
             >
               <Typography variant="p-small" className="font-medium">
