@@ -84,7 +84,7 @@
   "InbaLatestReleaseSection.inReleaseYouWillFind": "In release {{releaseName}} you will find",
   "InbaLatestReleaseSection.latestRelease": "Latest release",
   "InbaLatestReleaseSection.notFound": "No release found",
-  "InbaLatestReleaseSection.readAllArticles": "Read all articles {{articlesCount}}",
+  "InbaLatestReleaseSection.readAllArticles": "Read all articles ({{articlesCount}})",
   "InbaLatestReleaseSection.readRelease": "Read the release",
   "InbaRelease.articlesInThisRelease": "Articles in this issue",
   "InbaRelease.inThisRelease": "In this issue",
