@@ -1,3 +1,4 @@
+import IframeResizer from '@iframe-resizer/react'
 import { useEffect, useRef, useState } from 'react'
 
 import { SectionTitleLevel } from '@/src/components/cards/getCardTitleLevel'
@@ -8,7 +9,6 @@ export type IframeProps = {
   title?: string | null | undefined
   text?: string | null | undefined
   url?: string
-  iframeWidth: 'container' | 'full'
   iframeHeight: string
   fullHeight: boolean
   hasBorder?: boolean | null
@@ -22,7 +22,6 @@ const Iframe = ({
   title,
   text,
   url,
-  iframeWidth,
   iframeHeight,
   fullHeight,
   allowFullscreen,
@@ -56,27 +55,23 @@ const Iframe = ({
   return (
     <div className="flex flex-col gap-4 lg:gap-6">
       <SectionHeader title={title} titleLevel={titleLevel} text={text} />
-      <div
-        style={{ height }}
-        className={iframeWidth === 'container' ? 'w-full' : 'absolute inset-x-0'}
-      >
-        <iframe
-          title={url}
-          ref={ref}
-          src={url}
-          className={cn('w-full', {
-            border: hasBorder,
-          })}
-          height={height}
-          allowFullScreen={allowFullscreen}
-          allow={allowGeolocation ? 'geolocation *' : undefined}
-          // This should prevent iframes to collect cookies. Otherwise, they collect their cookies we don't have consent for.
-          // It may not work if the iframe needs some necessary cookies, or it may block some iframe to render at all.
-          // But it seems to work for all of our iframes so far.
-          // https://stackoverflow.com/questions/44837450/recommended-method-to-prevent-any-content-inside-iframe-from-setting-cookies
-          sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-forms"
-        />
-      </div>
+      <IframeResizer
+        license="GPLv3"
+        title={url}
+        ref={ref}
+        src={url}
+        className={cn('w-full', {
+          border: hasBorder,
+        })}
+        height={height}
+        allowFullScreen={allowFullscreen}
+        allow={allowGeolocation ? 'geolocation *' : undefined}
+        // This should prevent iframes to collect cookies. Otherwise, they collect their cookies we don't have consent for.
+        // It may not work if the iframe needs some necessary cookies, or it may block some iframe to render at all.
+        // But it seems to work for all of our iframes so far.
+        // https://stackoverflow.com/questions/44837450/recommended-method-to-prevent-any-content-inside-iframe-from-setting-cookies
+        sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-forms"
+      />
     </div>
   )
 }
