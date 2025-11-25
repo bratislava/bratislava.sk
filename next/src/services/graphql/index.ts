@@ -2207,6 +2207,7 @@ export type ComponentSectionsIframe = {
   allowGeolocation?: Maybe<Scalars['Boolean']['output']>
   css?: Maybe<Scalars['String']['output']>
   fullHeight: Scalars['Boolean']['output']
+  hasBorder?: Maybe<Scalars['Boolean']['output']>
   id: Scalars['ID']['output']
   iframeHeight: Scalars['String']['output']
   iframeWidth: Enum_Componentsectionsiframe_Iframewidth
@@ -2222,6 +2223,7 @@ export type ComponentSectionsIframeFiltersInput = {
   and?: InputMaybe<Array<InputMaybe<ComponentSectionsIframeFiltersInput>>>
   css?: InputMaybe<StringFilterInput>
   fullHeight?: InputMaybe<BooleanFilterInput>
+  hasBorder?: InputMaybe<BooleanFilterInput>
   iframeHeight?: InputMaybe<StringFilterInput>
   iframeWidth?: InputMaybe<StringFilterInput>
   not?: InputMaybe<ComponentSectionsIframeFiltersInput>
@@ -2237,6 +2239,7 @@ export type ComponentSectionsIframeInput = {
   allowGeolocation?: InputMaybe<Scalars['Boolean']['input']>
   css?: InputMaybe<Scalars['String']['input']>
   fullHeight?: InputMaybe<Scalars['Boolean']['input']>
+  hasBorder?: InputMaybe<Scalars['Boolean']['input']>
   id?: InputMaybe<Scalars['ID']['input']>
   iframeHeight?: InputMaybe<Scalars['String']['input']>
   iframeWidth?: InputMaybe<Enum_Componentsectionsiframe_Iframewidth>
@@ -10607,6 +10610,7 @@ export type PageEntityFragment = {
         iframeWidth: Enum_Componentsectionsiframe_Iframewidth
         iframeHeight: string
         fullHeight: boolean
+        hasBorder?: boolean | null
         allowFullscreen: boolean
         css?: string | null
         allowGeolocation?: boolean | null
@@ -11847,6 +11851,7 @@ export type PageBySlugQuery = {
           iframeWidth: Enum_Componentsectionsiframe_Iframewidth
           iframeHeight: string
           fullHeight: boolean
+          hasBorder?: boolean | null
           allowFullscreen: boolean
           css?: string | null
           allowGeolocation?: boolean | null
@@ -13113,6 +13118,7 @@ export type Dev_AllPagesQuery = {
           iframeWidth: Enum_Componentsectionsiframe_Iframewidth
           iframeHeight: string
           fullHeight: boolean
+          hasBorder?: boolean | null
           allowFullscreen: boolean
           css?: string | null
           allowGeolocation?: boolean | null
@@ -14535,6 +14541,7 @@ export type IframeSectionFragment = {
   iframeWidth: Enum_Componentsectionsiframe_Iframewidth
   iframeHeight: string
   fullHeight: boolean
+  hasBorder?: boolean | null
   allowFullscreen: boolean
   css?: string | null
   allowGeolocation?: boolean | null
@@ -16091,6 +16098,7 @@ type Sections_ComponentSectionsIframe_Fragment = {
   iframeWidth: Enum_Componentsectionsiframe_Iframewidth
   iframeHeight: string
   fullHeight: boolean
+  hasBorder?: boolean | null
   allowFullscreen: boolean
   css?: string | null
   allowGeolocation?: boolean | null
@@ -17416,6 +17424,7 @@ export const IframeSectionFragmentDoc = gql`
     iframeWidth
     iframeHeight
     fullHeight
+    hasBorder
     allowFullscreen
     css
     allowGeolocation

@@ -91,6 +91,7 @@ fragment IframeSection on ComponentSectionsIframe {
   iframeWidth
   iframeHeight
   fullHeight
+  hasBorder
   allowFullscreen
   css
   allowGeolocation

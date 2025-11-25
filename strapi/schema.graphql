@@ -1702,6 +1702,7 @@ type ComponentSectionsIframe {
   allowGeolocation: Boolean
   css: String
   fullHeight: Boolean!
+  hasBorder: Boolean
   id: ID!
   iframeHeight: String!
   iframeWidth: ENUM_COMPONENTSECTIONSIFRAME_IFRAMEWIDTH!
@@ -1717,6 +1718,7 @@ input ComponentSectionsIframeFiltersInput {
   and: [ComponentSectionsIframeFiltersInput]
   css: StringFilterInput
   fullHeight: BooleanFilterInput
+  hasBorder: BooleanFilterInput
   iframeHeight: StringFilterInput
   iframeWidth: StringFilterInput
   not: ComponentSectionsIframeFiltersInput
@@ -1732,6 +1734,7 @@ input ComponentSectionsIframeInput {
   allowGeolocation: Boolean
   css: String
   fullHeight: Boolean
+  hasBorder: Boolean
   id: ID
   iframeHeight: String
   iframeWidth: ENUM_COMPONENTSECTIONSIFRAME_IFRAMEWIDTH

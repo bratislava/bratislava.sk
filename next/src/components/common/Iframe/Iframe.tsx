@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 
 import { SectionTitleLevel } from '@/src/components/cards/getCardTitleLevel'
 import SectionHeader from '@/src/components/layouts/SectionHeader'
+import cn from '@/src/utils/cn'
 
 export type IframeProps = {
   title?: string | null | undefined
@@ -10,6 +11,7 @@ export type IframeProps = {
   iframeWidth: 'container' | 'full'
   iframeHeight: string
   fullHeight: boolean
+  hasBorder?: boolean | null
   allowFullscreen: boolean
   allowGeolocation?: boolean | null
   css?: string | null
@@ -24,6 +26,7 @@ const Iframe = ({
   iframeHeight,
   fullHeight,
   allowFullscreen,
+  hasBorder = true,
   allowGeolocation = false,
   css,
   titleLevel,
@@ -61,7 +64,9 @@ const Iframe = ({
           title={url}
           ref={ref}
           src={url}
-          className="w-full border"
+          className={cn('w-full', {
+            border: hasBorder,
+          })}
           height={height}
           allowFullScreen={allowFullscreen}
           allow={allowGeolocation ? 'geolocation *' : undefined}

@@ -44,6 +44,10 @@
       "required": true,
       "default": false
     },
+    "hasBorder": {
+      "type": "boolean",
+      "default": true
+    },
     "allowGeolocation": {
       "type": "boolean",
       "default": false

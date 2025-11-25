@@ -132,6 +132,20 @@
           "sortable": true
         }
       },
+      "hasBorder": {
+        "edit": {
+          "label": "Zobraziť orámovanie (border)",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "hasBorder",
+          "searchable": true,
+          "sortable": true
+        }
+      },
       "allowGeolocation": {
         "edit": {
           "label": "allowGeolocation",
@@ -187,26 +201,16 @@
           {
             "name": "url",
             "size": 12
-          },
-          {
-            "name": "allowFullscreen",
-            "size": 4
           }
         ],
         [
           {
             "name": "iframeWidth",
-            "size": 6
+            "size": 4
           },
           {
-            "name": "css",
-            "size": 6
-          }
-        ],
-        [
-          {
             "name": "iframeHeight",
-            "size": 6
+            "size": 4
           },
           {
             "name": "fullHeight",
@@ -215,21 +219,34 @@
         ],
         [
           {
-            "name": "allowGeolocation",
-            "size": 6
+            "name": "allowFullscreen",
+            "size": 4
           },
           {
+            "name": "hasBorder",
+            "size": 4
+          }
+        ],
+        [
+          {
+            "name": "allowGeolocation",
+            "size": 4
+          }
+        ],
+        [
+          {
+            "name": "css",
+            "size": 12
+          }
+        ],
+        [
+          {
             "name": "titleLevel",
-            "size": 6
+            "size": 12
           }
         ]
       ],
-      "list": [
-        "id",
-        "url",
-        "allowFullscreen",
-        "css"
-      ]
+      "list": ["id", "url", "allowFullscreen", "css"]
     },
     "isComponent": true
   },
