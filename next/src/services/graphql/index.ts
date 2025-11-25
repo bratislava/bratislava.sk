@@ -2210,7 +2210,6 @@ export type ComponentSectionsIframe = {
   hasBorder?: Maybe<Scalars['Boolean']['output']>
   id: Scalars['ID']['output']
   iframeHeight: Scalars['String']['output']
-  iframeWidth: Enum_Componentsectionsiframe_Iframewidth
   text?: Maybe<Scalars['String']['output']>
   title?: Maybe<Scalars['String']['output']>
   titleLevel?: Maybe<Enum_Componentsectionsiframe_Titlelevel>
@@ -2225,7 +2224,6 @@ export type ComponentSectionsIframeFiltersInput = {
   fullHeight?: InputMaybe<BooleanFilterInput>
   hasBorder?: InputMaybe<BooleanFilterInput>
   iframeHeight?: InputMaybe<StringFilterInput>
-  iframeWidth?: InputMaybe<StringFilterInput>
   not?: InputMaybe<ComponentSectionsIframeFiltersInput>
   or?: InputMaybe<Array<InputMaybe<ComponentSectionsIframeFiltersInput>>>
   text?: InputMaybe<StringFilterInput>
@@ -2242,7 +2240,6 @@ export type ComponentSectionsIframeInput = {
   hasBorder?: InputMaybe<Scalars['Boolean']['input']>
   id?: InputMaybe<Scalars['ID']['input']>
   iframeHeight?: InputMaybe<Scalars['String']['input']>
-  iframeWidth?: InputMaybe<Enum_Componentsectionsiframe_Iframewidth>
   text?: InputMaybe<Scalars['String']['input']>
   title?: InputMaybe<Scalars['String']['input']>
   titleLevel?: InputMaybe<Enum_Componentsectionsiframe_Titlelevel>
@@ -3244,11 +3241,6 @@ export enum Enum_Componentsectionsfilelist_Titlelevel {
 export enum Enum_Componentsectionsgallery_Titlelevel {
   H2 = 'h2',
   H3 = 'h3',
-}
-
-export enum Enum_Componentsectionsiframe_Iframewidth {
-  Container = 'container',
-  Full = 'full',
 }
 
 export enum Enum_Componentsectionsiframe_Titlelevel {
@@ -10607,7 +10599,6 @@ export type PageEntityFragment = {
         title?: string | null
         text?: string | null
         url: string
-        iframeWidth: Enum_Componentsectionsiframe_Iframewidth
         iframeHeight: string
         fullHeight: boolean
         hasBorder?: boolean | null
@@ -11848,7 +11839,6 @@ export type PageBySlugQuery = {
           title?: string | null
           text?: string | null
           url: string
-          iframeWidth: Enum_Componentsectionsiframe_Iframewidth
           iframeHeight: string
           fullHeight: boolean
           hasBorder?: boolean | null
@@ -13115,7 +13105,6 @@ export type Dev_AllPagesQuery = {
           title?: string | null
           text?: string | null
           url: string
-          iframeWidth: Enum_Componentsectionsiframe_Iframewidth
           iframeHeight: string
           fullHeight: boolean
           hasBorder?: boolean | null
@@ -14538,7 +14527,6 @@ export type IframeSectionFragment = {
   title?: string | null
   text?: string | null
   url: string
-  iframeWidth: Enum_Componentsectionsiframe_Iframewidth
   iframeHeight: string
   fullHeight: boolean
   hasBorder?: boolean | null
@@ -16095,7 +16083,6 @@ type Sections_ComponentSectionsIframe_Fragment = {
   title?: string | null
   text?: string | null
   url: string
-  iframeWidth: Enum_Componentsectionsiframe_Iframewidth
   iframeHeight: string
   fullHeight: boolean
   hasBorder?: boolean | null
@@ -17421,7 +17408,6 @@ export const IframeSectionFragmentDoc = gql`
     title
     text
     url
-    iframeWidth
     iframeHeight
     fullHeight
     hasBorder

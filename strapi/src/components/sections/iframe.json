@@ -25,15 +25,6 @@
     "css": {
       "type": "string"
     },
-    "iframeWidth": {
-      "type": "enumeration",
-      "required": true,
-      "default": "container",
-      "enum": [
-        "full",
-        "container"
-      ]
-    },
     "iframeHeight": {
       "type": "string",
       "default": "600px",
