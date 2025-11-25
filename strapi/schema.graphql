@@ -1702,9 +1702,9 @@ type ComponentSectionsIframe {
   allowGeolocation: Boolean
   css: String
   fullHeight: Boolean!
+  hasBorder: Boolean
   id: ID!
   iframeHeight: String!
-  iframeWidth: ENUM_COMPONENTSECTIONSIFRAME_IFRAMEWIDTH!
   text: String
   title: String
   titleLevel: ENUM_COMPONENTSECTIONSIFRAME_TITLELEVEL
@@ -1717,8 +1717,8 @@ input ComponentSectionsIframeFiltersInput {
   and: [ComponentSectionsIframeFiltersInput]
   css: StringFilterInput
   fullHeight: BooleanFilterInput
+  hasBorder: BooleanFilterInput
   iframeHeight: StringFilterInput
-  iframeWidth: StringFilterInput
   not: ComponentSectionsIframeFiltersInput
   or: [ComponentSectionsIframeFiltersInput]
   text: StringFilterInput
@@ -1732,9 +1732,9 @@ input ComponentSectionsIframeInput {
   allowGeolocation: Boolean
   css: String
   fullHeight: Boolean
+  hasBorder: Boolean
   id: ID
   iframeHeight: String
-  iframeWidth: ENUM_COMPONENTSECTIONSIFRAME_IFRAMEWIDTH
   text: String
   title: String
   titleLevel: ENUM_COMPONENTSECTIONSIFRAME_TITLELEVEL
@@ -2587,11 +2587,6 @@ enum ENUM_COMPONENTSECTIONSFILELIST_TITLELEVEL {
 enum ENUM_COMPONENTSECTIONSGALLERY_TITLELEVEL {
   h2
   h3
-}
-
-enum ENUM_COMPONENTSECTIONSIFRAME_IFRAMEWIDTH {
-  container
-  full
 }
 
 enum ENUM_COMPONENTSECTIONSIFRAME_TITLELEVEL {

@@ -88,9 +88,9 @@ fragment IframeSection on ComponentSectionsIframe {
   title
   text
   url
-  iframeWidth
   iframeHeight
   fullHeight
+  hasBorder
   allowFullscreen
   css
   allowGeolocation

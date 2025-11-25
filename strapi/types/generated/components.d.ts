@@ -885,12 +885,10 @@ export interface SectionsIframe extends Struct.ComponentSchema {
     fullHeight: Schema.Attribute.Boolean &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<false>
+    hasBorder: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>
     iframeHeight: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<'600px'>
-    iframeWidth: Schema.Attribute.Enumeration<['full', 'container']> &
-      Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<'container'>
     text: Schema.Attribute.Text
     title: Schema.Attribute.String
     titleLevel: Schema.Attribute.Enumeration<['h2', 'h3']> & Schema.Attribute.DefaultTo<'h2'>
