@@ -147,7 +147,7 @@ const SectionContent = ({ section }: { section: SectionsFragment }) => {
       return <NewsletterSection section={section} />
 
     case 'ComponentSectionsInbaLatestRelease':
-      return <InbaLatestReleaseSection section={section} />
+      return <InbaLatestReleaseSection />
 
     default:
       return null
