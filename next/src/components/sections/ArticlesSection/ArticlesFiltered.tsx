@@ -46,7 +46,6 @@ const ArticlesFiltered = ({ section }: Props) => {
 
   const adminGroupDocumentIds = adminGroups
     .map((adminGroup) => adminGroup?.documentId)
-
     .filter(isDefined)
 
   const [filters, setFilters] = useRoutePreservedState({
@@ -87,8 +86,12 @@ const ArticlesFiltered = ({ section }: Props) => {
     queryKey: getArticlesQueryKey(filters, locale),
     queryFn: () => articlesFetcher(filters, locale),
     placeholderData: keepPreviousData,
-    // don't fetch if this section contains only manually selected articles
-    enabled: !!category || tags.length > 0 || adminGroupDocumentIds.length > 0,
+    enabled:
+      // don't fetch if section contains only manually selected articles and no other filters
+      !(
+        articlesFromStrapi.length > 0 &&
+        [category, ...articleCategories, ...tags, ...adminGroups].filter(isDefined).length === 0
+      ),
   })
 
   const articlesToShow = [
