@@ -153,7 +153,8 @@
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true
+          "editable": true,
+          "mainField": "title"
         },
         "list": {
           "label": "files",
@@ -193,7 +194,7 @@
       "tags": {
         "edit": {
           "label": "Témy",
-          "description": "",
+          "description": "Vypĺňame maximálne 3 témy.",
           "placeholder": "",
           "visible": true,
           "editable": true,
@@ -288,14 +289,6 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "coverMedia",
-        "title",
-        "slug",
-        "updatedAt",
-        "addedAt"
-      ],
       "edit": [
         [
           {
@@ -375,6 +368,14 @@
             "size": 6
           }
         ]
+      ],
+      "list": [
+        "id",
+        "coverMedia",
+        "title",
+        "slug",
+        "updatedAt",
+        "addedAt"
       ]
     },
     "uid": "api::article.article"
