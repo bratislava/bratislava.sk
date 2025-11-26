@@ -86,10 +86,7 @@ const InbaLatestReleaseSection = () => {
                           title={article.title}
                           imgSrc={article.coverMedia?.url}
                           imgSizes={imageSizes}
-                          metadata={[
-                            formatDate(article.addedAt),
-                            article.articleCategory?.title,
-                          ].filter(isDefined)}
+                          metadata={[formatDate(article.addedAt)].filter(isDefined)}
                           linkProps={getLinkProps({ article })}
                         />
                       </li>
