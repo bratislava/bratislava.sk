@@ -1,7 +1,7 @@
 {
   "name": "Starz",
   "code": "starz-md207wo9",
-  "description": "Vytvorené July 13th, 2025",
+  "description": "Správa nad starz článkami a stránkami.\n\nVytvorené July 13th, 2025",
   "documentId": "rd59edquhmlucexkq2dj82g8",
   "locale": null,
   "permissions": [
@@ -123,7 +123,8 @@
           "files.media",
           "gallery",
           "adminGroups",
-          "tags"
+          "tags",
+          "inbaRelease"
         ],
         "locales": [
           "sk",
@@ -134,7 +135,7 @@
         "plugin::content-manager.document-admin-group-includes-starz"
       ],
       "actionParameters": {},
-      "documentId": "v215d4aaqp7s32fwnq9f5q8p",
+      "documentId": "kx3qo2l5i9eg6p5k3xk8pthe",
       "locale": null
     },
     {

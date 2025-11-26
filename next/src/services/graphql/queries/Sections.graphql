@@ -48,11 +48,6 @@ fragment ArticlesSection on ComponentSectionsArticles {
   }
 }
 
-fragment InbaArticlesListSection on ComponentSectionsInbaArticlesList {
-  title
-  text
-}
-
 fragment InbaReleasesSection on ComponentSectionsInbaReleases {
   title
   text
@@ -93,9 +88,9 @@ fragment IframeSection on ComponentSectionsIframe {
   title
   text
   url
-  iframeWidth
   iframeHeight
   fullHeight
+  hasBorder
   allowFullscreen
   css
   allowGeolocation
@@ -586,10 +581,6 @@ fragment Sections on PageSectionsDynamicZone {
 
   ... on ComponentSectionsArticles {
     ...ArticlesSection
-  }
-
-  ... on ComponentSectionsInbaArticlesList {
-    ...InbaArticlesListSection
   }
 
   ... on ComponentSectionsInbaReleases {

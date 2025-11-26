@@ -21,18 +21,7 @@ export const getPagesQueryKey = (filters: PagesFilters, locale: string) => [
   locale,
 ]
 
-export const pagesFetcherUseQuery = (filters: PagesFilters, locale: string) => {
-  return meiliClient
-    .index('search_index')
-    .search<SearchIndexWrapped<'page', PageMeili>>(filters.search, {
-      ...getMeilisearchPageOptions({ page: filters.page ?? 1, pageSize: filters.pageSize ?? 5 }),
-      filter: ['type = "page"', `locale = ${locale}`],
-      sort: [],
-    })
-    .then(unwrapFromSearchIndex('page'))
-}
-
-export const pagesFetcher = (filters: PagesFilters, locale: string) => () => {
+export const pagesFetcher = (filters: PagesFilters, locale: string) => {
   return meiliClient
     .index('search_index')
     .search<SearchIndexWrapped<'page', PageMeili>>(filters.search, {

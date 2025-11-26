@@ -6,6 +6,138 @@
   "locale": null,
   "permissions": [
     {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::article-category.article-category",
+      "properties": {
+        "fields": [
+          "title",
+          "slug",
+          "articles"
+        ],
+        "locales": [
+          "sk",
+          "en"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": {},
+      "documentId": "hxw7o97r2moq113fv42h23ov",
+      "locale": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "api::article.article",
+      "properties": {
+        "fields": [
+          "title",
+          "slug",
+          "perex",
+          "coverMedia",
+          "articleCategory",
+          "addedAt",
+          "content",
+          "files.title",
+          "files.media",
+          "gallery",
+          "tags",
+          "inbaRelease"
+        ],
+        "locales": [
+          "sk",
+          "en"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": {},
+      "documentId": "taut6z3idllsilxqdyzkje9m",
+      "locale": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "subject": "api::article.article",
+      "properties": {
+        "locales": [
+          "sk",
+          "en"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": {},
+      "documentId": "pcdikee5t64iqrkjvz7gedrc",
+      "locale": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.publish",
+      "subject": "api::article.article",
+      "properties": {
+        "locales": [
+          "sk",
+          "en"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": {},
+      "documentId": "wy88739sqg1ekdftd22avspu",
+      "locale": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::article.article",
+      "properties": {
+        "fields": [
+          "title",
+          "slug",
+          "perex",
+          "alias",
+          "coverMedia",
+          "articleCategory",
+          "addedAt",
+          "content",
+          "files.title",
+          "files.media",
+          "gallery",
+          "tags",
+          "inbaRelease"
+        ],
+        "locales": [
+          "sk",
+          "en"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": {},
+      "documentId": "uf4m2qutma4tn5rtbvkzv0e0",
+      "locale": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::article.article",
+      "properties": {
+        "fields": [
+          "title",
+          "slug",
+          "perex",
+          "coverMedia",
+          "articleCategory",
+          "addedAt",
+          "content",
+          "files.title",
+          "files.media",
+          "gallery",
+          "tags",
+          "inbaRelease"
+        ],
+        "locales": [
+          "sk",
+          "en"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": {},
+      "documentId": "olow4aojs0wmv3ef4w3tioz4",
+      "locale": null
+    },
+    {
       "action": "plugin::content-manager.explorer.create",
       "subject": "api::homepage.homepage",
       "properties": {
@@ -66,106 +198,6 @@
       "conditions": [],
       "actionParameters": {},
       "documentId": "gvyea28stw3gakabt7s4t55y",
-      "locale": null
-    },
-    {
-      "action": "plugin::content-manager.explorer.create",
-      "subject": "api::inba-article.inba-article",
-      "properties": {
-        "fields": [
-          "title",
-          "slug",
-          "coverImage",
-          "inbaTag",
-          "inbaRelease",
-          "perex",
-          "content",
-          "tags"
-        ],
-        "locales": [
-          "sk",
-          "en"
-        ]
-      },
-      "conditions": [],
-      "actionParameters": {},
-      "documentId": "tfm9m4o7bqomew6f9w890tb8",
-      "locale": null
-    },
-    {
-      "action": "plugin::content-manager.explorer.delete",
-      "subject": "api::inba-article.inba-article",
-      "properties": {
-        "locales": [
-          "sk",
-          "en"
-        ]
-      },
-      "conditions": [],
-      "actionParameters": {},
-      "documentId": "q38cn5ci8mmkta9tocos1251",
-      "locale": null
-    },
-    {
-      "action": "plugin::content-manager.explorer.publish",
-      "subject": "api::inba-article.inba-article",
-      "properties": {
-        "locales": [
-          "sk",
-          "en"
-        ]
-      },
-      "conditions": [],
-      "actionParameters": {},
-      "documentId": "ri85pnc0y58p1621jmr2w8bs",
-      "locale": null
-    },
-    {
-      "action": "plugin::content-manager.explorer.read",
-      "subject": "api::inba-article.inba-article",
-      "properties": {
-        "fields": [
-          "title",
-          "slug",
-          "coverImage",
-          "inbaTag",
-          "inbaRelease",
-          "perex",
-          "content",
-          "tags"
-        ],
-        "locales": [
-          "sk",
-          "en"
-        ]
-      },
-      "conditions": [],
-      "actionParameters": {},
-      "documentId": "djlguaxm66rk519inviuspkq",
-      "locale": null
-    },
-    {
-      "action": "plugin::content-manager.explorer.update",
-      "subject": "api::inba-article.inba-article",
-      "properties": {
-        "fields": [
-          "title",
-          "slug",
-          "coverImage",
-          "inbaTag",
-          "inbaRelease",
-          "perex",
-          "content",
-          "tags"
-        ],
-        "locales": [
-          "sk",
-          "en"
-        ]
-      },
-      "conditions": [],
-      "actionParameters": {},
-      "documentId": "as38feohgy089xrynfnm7y0p",
       "locale": null
     },
     {
@@ -253,44 +285,14 @@
       "locale": null
     },
     {
-      "action": "plugin::content-manager.explorer.create",
-      "subject": "api::inba-tag.inba-tag",
-      "properties": {
-        "fields": [
-          "title",
-          "inbaArticles"
-        ],
-        "locales": [
-          "sk",
-          "en"
-        ]
-      },
-      "conditions": [],
-      "actionParameters": {},
-      "documentId": "s5kf0lojn7hep9vy56ogai2p",
-      "locale": null
-    },
-    {
-      "action": "plugin::content-manager.explorer.delete",
-      "subject": "api::inba-tag.inba-tag",
-      "properties": {
-        "locales": [
-          "sk",
-          "en"
-        ]
-      },
-      "conditions": [],
-      "actionParameters": {},
-      "documentId": "jz2g83mc78xi1sbgfaniksta",
-      "locale": null
-    },
-    {
       "action": "plugin::content-manager.explorer.read",
-      "subject": "api::inba-tag.inba-tag",
+      "subject": "api::tag.tag",
       "properties": {
         "fields": [
           "title",
-          "inbaArticles"
+          "slug",
+          "pageCategory",
+          "articles"
         ],
         "locales": [
           "sk",
@@ -299,25 +301,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "ckomt8elekmlqtr3qtarzyk6",
-      "locale": null
-    },
-    {
-      "action": "plugin::content-manager.explorer.update",
-      "subject": "api::inba-tag.inba-tag",
-      "properties": {
-        "fields": [
-          "title",
-          "inbaArticles"
-        ],
-        "locales": [
-          "sk",
-          "en"
-        ]
-      },
-      "conditions": [],
-      "actionParameters": {},
-      "documentId": "tjgyephpczuv2066o60b6fn1",
+      "documentId": "y2sp35ro2evqzrqomxennu7p",
       "locale": null
     },
     {

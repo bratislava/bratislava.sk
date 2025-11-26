@@ -23,3 +23,7 @@ Each sub-project contains README which should get you up and running. More docum
 🐳 `docker-compose.yml` - if you need to quickly setup postgres or meilisearch instance, run `docker compose up` (or `docker compose up postgres`, `docker compose up meilisearch`) in this directory (you need docker installed)
 
 - in case of using `podman` use command `docker-compose up postgres`
+
+## Acknowledgments
+
+This project utilizes the [iframe-resizer](https://github.com/davidjbradshaw/iframe-resizer) library, which is an open-source project developed by [David J. Bradshaw](https://github.com/davidjbradshaw). We are grateful for the work that has been put into this library and its contribution to the open-source community.

@@ -142,8 +142,7 @@
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true,
-          "mainField": "label"
+          "editable": true
         },
         "list": {
           "label": "showMoreLink",
@@ -161,6 +160,12 @@
       }
     },
     "layouts": {
+      "list": [
+        "id",
+        "title",
+        "text",
+        "category"
+      ],
       "edit": [
         [
           {
@@ -216,8 +221,7 @@
             "size": 12
           }
         ]
-      ],
-      "list": ["id", "title", "text", "category"]
+      ]
     },
     "uid": "sections.articles",
     "isComponent": true

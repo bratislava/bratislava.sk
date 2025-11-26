@@ -9,12 +9,11 @@ export type ArticlesFilters = {
   search: string
   pageSize: number
   page: number
-  articleCategoryDocumentIds?: string[]
   articleCategorySlugs?: string[]
-  tagDocumentIds?: string[]
   tagSlugs?: string[]
   adminGroupDocumentIds?: string[]
   adminGroupSlugs?: string[]
+  inbaReleaseSlugs?: string[]
 }
 
 // "City Hall" is a special option that means articles without any assigned admin group
@@ -37,12 +36,11 @@ export const articlesDefaultFilters: Required<ArticlesFilters> = {
   search: '',
   pageSize: 15,
   page: 1,
-  articleCategoryDocumentIds: [],
   articleCategorySlugs: [],
-  tagDocumentIds: [],
   tagSlugs: [],
   adminGroupDocumentIds: [],
   adminGroupSlugs: [],
+  inbaReleaseSlugs: [],
 }
 
 export const getArticlesQueryKey = (filters: ArticlesFilters, locale: string) => [
@@ -67,19 +65,13 @@ export const articlesFetcher = (filters: ArticlesFilters, locale: string) => {
       filter: [
         'type = "article"',
         `locale = ${locale}`,
-        // Categories
-        filters.articleCategoryDocumentIds?.length
-          ? `article.articleCategory.documentId IN [${filters.articleCategoryDocumentIds.join(',')}]`
-          : '',
         filters.articleCategorySlugs?.length
           ? `article.articleCategory.slug IN [${filters.articleCategorySlugs.join(',')}]`
           : '',
-        // Tags
-        filters.tagDocumentIds?.length
-          ? `article.tags.documentId IN [${filters.tagDocumentIds.join(',')}]`
-          : '',
         filters.tagSlugs?.length ? `article.tags.slug IN [${filters.tagSlugs.join(',')}]` : '',
-        // Authors
+        filters.inbaReleaseSlugs?.length
+          ? `article.inbaRelease.slug IN [${filters.inbaReleaseSlugs.join(',')}]`
+          : '',
         filters.adminGroupDocumentIds?.length
           ? `article.adminGroups.documentId IN [${filters.adminGroupDocumentIds.join(',')}]`
           : '',

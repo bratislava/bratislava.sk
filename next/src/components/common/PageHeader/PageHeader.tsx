@@ -75,7 +75,7 @@ const PageHeader = ({
                   ))}
                 </div>
               ) : (
-                <span className="inline-block self-start rounded-sm bg-category-700 px-3 py-1 text-size-p-default font-medium text-white">
+                <span className="inline-block self-start rounded-sm bg-category-700 px-3 py-1 text-size-p-default font-medium text-white empty:hidden">
                   {tag}
                 </span>
               )

@@ -22,11 +22,13 @@ import { SearchResult } from '@/src/components/sections/SearchSection/useQueryBy
 import ShareButtons from '@/src/components/sections/ShareButtons_Deprecated'
 import { InbaReleaseEntityFragment } from '@/src/services/graphql'
 import {
-  getInbaArticlesQueryKey,
-  inbaArticlesDefaultFilters,
-  inbaArticlesFetcher,
-} from '@/src/services/meili/fetchers/inbaArticlesFetcher'
+  articlesDefaultFilters,
+  articlesFetcher,
+  ArticlesFilters,
+  getArticlesQueryKey,
+} from '@/src/services/meili/fetchers/articlesFetcher'
 import { formatDate } from '@/src/utils/formatDate'
+import { getLinkProps } from '@/src/utils/getLinkProps'
 import { isDefined } from '@/src/utils/isDefined'
 import { getPageBreadcrumbs } from '@/src/utils/pageUtils_Deprecated'
 import { useLocale } from '@/src/utils/useLocale'
@@ -45,7 +47,7 @@ const InbaReleasePageContent = ({ inbaRelease }: Props) => {
   const { t } = useTranslation()
   const locale = useLocale()
 
-  const { title, coverImage, perex, releaseDate, files } = inbaRelease
+  const { title, slug, coverImage, perex, releaseDate, files } = inbaRelease
 
   const { general } = useGeneralContext()
   const parentBreadcrumbPageEntity = general?.inbaReleasesPage
@@ -57,18 +59,17 @@ const InbaReleasePageContent = ({ inbaRelease }: Props) => {
     ]
   }, [parentBreadcrumbPageEntity, title])
 
-  const [filters, setFilters] = useRoutePreservedState({
-    ...inbaArticlesDefaultFilters,
-    // eslint-disable-next-line unicorn/consistent-destructuring
-    releaseDocumentIds: [inbaRelease.documentId],
+  const [filters, setFilters] = useRoutePreservedState<ArticlesFilters>({
+    ...articlesDefaultFilters,
+    inbaReleaseSlugs: [slug],
   })
   const [input, setInput] = useState('')
   const [debouncedInput] = useDebounceValue(input, 300)
   const searchRef = useRef<null | HTMLInputElement>(null)
 
   const { data, isPending, isError, error, isFetching } = useQuery({
-    queryKey: getInbaArticlesQueryKey(filters, locale),
-    queryFn: () => inbaArticlesFetcher(filters, locale),
+    queryKey: getArticlesQueryKey(filters, locale),
+    queryFn: () => articlesFetcher(filters, locale),
     placeholderData: keepPreviousData,
   })
 
@@ -157,9 +158,9 @@ const InbaReleasePageContent = ({ inbaRelease }: Props) => {
                   const cardData: SearchResult = {
                     title: article.title,
                     uniqueId: article.slug,
-                    linkHref: `/inba/clanky/${article.slug}`,
-                    coverImageSrc: article.coverImage?.url,
-                    metadata: [article.inbaTag?.title].filter(isDefined),
+                    linkHref: getLinkProps({ article }).href,
+                    coverImageSrc: article.coverMedia?.url,
+                    metadata: article.tags.map((tag) => tag?.title).filter(isDefined),
                   }
 
                   return (
