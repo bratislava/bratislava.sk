@@ -28,6 +28,9 @@ fragment InbaReleaseEntity on InbaRelease {
   articles {
     ...ArticleCardEntity
   }
+  featuredArticles {
+    ...ArticleCardEntity
+  }
 }
 
 fragment InbaReleaseHomepageInbaCardEntity on InbaRelease {

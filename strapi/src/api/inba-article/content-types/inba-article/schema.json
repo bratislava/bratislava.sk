@@ -54,12 +54,6 @@
       "target": "api::inba-tag.inba-tag",
       "inversedBy": "inbaArticles"
     },
-    "inbaRelease": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::inba-release.inba-release",
-      "inversedBy": "inbaArticles"
-    },
     "perex": {
       "type": "text",
       "pluginOptions": {

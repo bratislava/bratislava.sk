@@ -922,7 +922,6 @@ export interface ApiInbaArticleInbaArticle extends Struct.CollectionTypeSchema {
       }>
     createdAt: Schema.Attribute.DateTime
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> & Schema.Attribute.Private
-    inbaRelease: Schema.Attribute.Relation<'manyToOne', 'api::inba-release.inba-release'>
     inbaTag: Schema.Attribute.Relation<'manyToOne', 'api::inba-tag.inba-tag'>
     locale: Schema.Attribute.String
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::inba-article.inba-article'>
@@ -969,8 +968,8 @@ export interface ApiInbaReleaseInbaRelease extends Struct.CollectionTypeSchema {
     coverImage: Schema.Attribute.Media<'images'>
     createdAt: Schema.Attribute.DateTime
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> & Schema.Attribute.Private
+    featuredArticles: Schema.Attribute.Relation<'oneToMany', 'api::article.article'>
     files: Schema.Attribute.Component<'blocks.file', true>
-    inbaArticles: Schema.Attribute.Relation<'oneToMany', 'api::inba-article.inba-article'>
     locale: Schema.Attribute.String & Schema.Attribute.Private
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::inba-release.inba-release'> &
       Schema.Attribute.Private

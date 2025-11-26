@@ -49,17 +49,16 @@
       "component": "blocks.file",
       "repeatable": true
     },
-    "inbaArticles": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::inba-article.inba-article",
-      "mappedBy": "inbaRelease"
-    },
     "articles": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::article.article",
       "mappedBy": "inbaRelease"
+    },
+    "featuredArticles": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::article.article"
     }
   }
 }

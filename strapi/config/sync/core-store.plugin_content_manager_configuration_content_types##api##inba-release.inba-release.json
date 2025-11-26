@@ -110,25 +110,11 @@
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "files",
-          "searchable": false,
-          "sortable": false
-        }
-      },
-      "inbaArticles": {
-        "edit": {
-          "label": "Články (deprecated)",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
           "editable": true,
           "mainField": "title"
         },
         "list": {
-          "label": "inbaArticles",
+          "label": "files",
           "searchable": false,
           "sortable": false
         }
@@ -144,6 +130,21 @@
         },
         "list": {
           "label": "articles",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "featuredArticles": {
+        "edit": {
+          "label": "Pripnuté články (max 3)",
+          "description": "Umožňuje vybrať články, ktoré sa zobrazia ako prvé v sekcii in.ba najnovšie vydanie.",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "title"
+        },
+        "list": {
+          "label": "featuredArticles",
           "searchable": false,
           "sortable": false
         }
@@ -265,7 +266,7 @@
         ],
         [
           {
-            "name": "inbaArticles",
+            "name": "featuredArticles",
             "size": 12
           }
         ]
