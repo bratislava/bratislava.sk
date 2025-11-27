@@ -84,7 +84,7 @@ const ArticlesAll = ({ section }: Props) => {
 
       <div className="flex flex-col gap-6 lg:flex-row lg:gap-8">
         {/* Screen: desktop */}
-        <div className="max-w-80 shrink-0 max-lg:hidden">
+        <div className="w-100 shrink-0 max-lg:hidden">
           <ArticlesCheckboxFilters filters={filters} onFiltersChange={handleFiltersChange} />
         </div>
         {/* Screen: mobile */}
