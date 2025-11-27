@@ -28,16 +28,17 @@ const ArticlesCheckboxFiltersModal = ({ triggerButton, filters, onFiltersChange 
         <Dialog title={t('ArticlesCheckboxFiltersModal.title')}>
           {({ close }) => {
             return (
-              <>
+              <div className="flex h-full flex-col justify-between">
                 <div className="scrollbar-hide overflow-y-auto">
                   <ArticlesCheckboxFilters filters={filters} onFiltersChange={onFiltersChange} />
                 </div>
-                <div className="absolute bottom-0 border-t border-border-passive-primary bg-background-passive-base py-3">
+                <div className="w-full border-t border-border-passive-primary pt-3">
+                  {/* TODO Consider rendering this as a Dialog footer */}
                   <Button variant="solid" onPress={close} fullWidth>
                     {t('ArticlesCheckboxFiltersModal.applyFiltersButton')}
                   </Button>
                 </div>
-              </>
+              </div>
             )
           }}
         </Dialog>
