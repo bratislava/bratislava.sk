@@ -193,7 +193,7 @@
       "tags": {
         "edit": {
           "label": "Témy",
-          "description": "",
+          "description": "Vypĺňame maximálne 3 témy.",
           "placeholder": "",
           "visible": true,
           "editable": true,

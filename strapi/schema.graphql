@@ -1742,23 +1742,16 @@ input ComponentSectionsIframeInput {
 }
 
 type ComponentSectionsInbaLatestRelease {
-  allReleasesPage: Page
-  articles(filters: ArticleFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [Article]!
-  articles_connection(filters: ArticleFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): ArticleRelationResponseCollection
   id: ID!
 }
 
 input ComponentSectionsInbaLatestReleaseFiltersInput {
-  allReleasesPage: PageFiltersInput
   and: [ComponentSectionsInbaLatestReleaseFiltersInput]
-  articles: ArticleFiltersInput
   not: ComponentSectionsInbaLatestReleaseFiltersInput
   or: [ComponentSectionsInbaLatestReleaseFiltersInput]
 }
 
 input ComponentSectionsInbaLatestReleaseInput {
-  allReleasesPage: ID
-  articles: [ID]
   id: ID
 }
 
@@ -3148,7 +3141,6 @@ type InbaArticle {
   coverImage: UploadFile
   createdAt: DateTime
   documentId: ID!
-  inbaRelease: InbaRelease
   inbaTag: InbaTag
   locale: String
   localizations(filters: InbaArticleFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [InbaArticle]!
@@ -3181,7 +3173,6 @@ input InbaArticleFiltersInput {
   content: StringFilterInput
   createdAt: DateTimeFilterInput
   documentId: IDFilterInput
-  inbaRelease: InbaReleaseFiltersInput
   inbaTag: InbaTagFiltersInput
   locale: StringFilterInput
   localizations: InbaArticleFiltersInput
@@ -3198,7 +3189,6 @@ input InbaArticleFiltersInput {
 input InbaArticleInput {
   content: String
   coverImage: ID
-  inbaRelease: ID
   inbaTag: ID
   perex: String
   publishedAt: DateTime
@@ -3217,9 +3207,9 @@ type InbaRelease {
   coverImage: UploadFile
   createdAt: DateTime
   documentId: ID!
+  featuredArticles(filters: ArticleFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [Article]!
+  featuredArticles_connection(filters: ArticleFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): ArticleRelationResponseCollection
   files(filters: ComponentBlocksFileFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksFile]
-  inbaArticles(filters: InbaArticleFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [InbaArticle]!
-  inbaArticles_connection(filters: InbaArticleFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): InbaArticleRelationResponseCollection
   perex: String
   publishedAt: DateTime
   rearImage: UploadFile
@@ -3248,8 +3238,8 @@ input InbaReleaseFiltersInput {
   articles: ArticleFiltersInput
   createdAt: DateTimeFilterInput
   documentId: IDFilterInput
+  featuredArticles: ArticleFiltersInput
   files: ComponentBlocksFileFiltersInput
-  inbaArticles: InbaArticleFiltersInput
   not: InbaReleaseFiltersInput
   or: [InbaReleaseFiltersInput]
   perex: StringFilterInput
@@ -3263,8 +3253,8 @@ input InbaReleaseFiltersInput {
 input InbaReleaseInput {
   articles: [ID]
   coverImage: ID
+  featuredArticles: [ID]
   files: [ComponentBlocksFileInput]
-  inbaArticles: [ID]
   perex: String
   publishedAt: DateTime
   rearImage: ID

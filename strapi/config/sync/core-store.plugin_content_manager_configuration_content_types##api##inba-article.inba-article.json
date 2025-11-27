@@ -77,21 +77,6 @@
           "sortable": true
         }
       },
-      "inbaRelease": {
-        "edit": {
-          "label": "Vydanie",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true,
-          "mainField": "title"
-        },
-        "list": {
-          "label": "inbaRelease",
-          "searchable": true,
-          "sortable": true
-        }
-      },
       "perex": {
         "edit": {
           "label": "Perex",
@@ -209,7 +194,6 @@
         "title",
         "updatedAt",
         "inbaTag",
-        "inbaRelease",
         "perex"
       ],
       "edit": [
@@ -246,10 +230,6 @@
         [
           {
             "name": "inbaTag",
-            "size": 6
-          },
-          {
-            "name": "inbaRelease",
             "size": 6
           }
         ],

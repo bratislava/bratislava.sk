@@ -11,7 +11,6 @@ import LoadingSpinner from '@/src/components/common/LoadingSpinner/LoadingSpinne
 import SectionContainer from '@/src/components/layouts/SectionContainer'
 import SectionHeader from '@/src/components/layouts/SectionHeader'
 import { useGeneralContext } from '@/src/components/providers/GeneralContextProvider'
-import { InbaLatestReleaseSectionFragment } from '@/src/services/graphql'
 import { client } from '@/src/services/graphql/gql'
 import { formatDate } from '@/src/utils/formatDate'
 import { generateImageSizes } from '@/src/utils/generateImageSizes'
@@ -26,18 +25,14 @@ export const latestInbaReleaseQueryOptions = {
 
 const imageSizes = generateImageSizes({ default: '100vw', lg: '33vw' })
 
-type Props = { section: InbaLatestReleaseSectionFragment }
-
 /**
  * Figma: https://www.figma.com/design/17wbd0MDQcMW9NbXl6UPs8/DS--Component-library?node-id=18311-26160&t=vxeRfz8aJUl4a6MT-4
  */
 
-const InbaLatestReleaseSection = ({ section }: Props) => {
+const InbaLatestReleaseSection = () => {
   const { t } = useTranslation()
 
   const { general } = useGeneralContext()
-
-  const { articles: articlesFromSection } = section
 
   const { data, isPending, isError, error } = useQuery(latestInbaReleaseQueryOptions)
 
@@ -54,13 +49,15 @@ const InbaLatestReleaseSection = ({ section }: Props) => {
   if (!latestInbaRelease)
     return <Typography variant="p-default">{t('InbaLatestReleaseSection.notFound')}</Typography>
 
+  const featuredArticles = latestInbaRelease.featuredArticles.filter(isDefined)
+
   const articlesToShow = [
-    ...articlesFromSection,
+    ...featuredArticles,
     ...latestInbaRelease.articles.filter(
       (articleFromRelease) =>
         // Don't show same article twice
-        !articlesFromSection.some(
-          (articleFromSection) => articleFromSection?.documentId === articleFromRelease?.documentId,
+        !featuredArticles.some(
+          (featuredArticle) => featuredArticle?.documentId === articleFromRelease?.documentId,
         ),
     ),
   ]
@@ -89,10 +86,7 @@ const InbaLatestReleaseSection = ({ section }: Props) => {
                           title={article.title}
                           imgSrc={article.coverMedia?.url}
                           imgSizes={imageSizes}
-                          metadata={[
-                            formatDate(article.addedAt),
-                            article.articleCategory?.title,
-                          ].filter(isDefined)}
+                          metadata={[formatDate(article.addedAt)].filter(isDefined)}
                           linkProps={getLinkProps({ article })}
                         />
                       </li>

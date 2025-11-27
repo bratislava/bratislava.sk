@@ -1054,13 +1054,13 @@
           "rearImage",
           "files.title",
           "files.media",
-          "inbaArticles",
-          "articles"
+          "articles",
+          "featuredArticles"
         ]
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "byyoxwdpj8pbzuoflg848abn",
+      "documentId": "maoo0ys09qjma8nk2yetwcwn",
       "locale": null
     },
     {
@@ -1094,13 +1094,13 @@
           "rearImage",
           "files.title",
           "files.media",
-          "inbaArticles",
-          "articles"
+          "articles",
+          "featuredArticles"
         ]
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "tlpnnu8iqldtg2h7snge83q4",
+      "documentId": "tsacwc18w8akytwakra8ql49",
       "locale": null
     },
     {
@@ -1116,13 +1116,13 @@
           "rearImage",
           "files.title",
           "files.media",
-          "inbaArticles",
-          "articles"
+          "articles",
+          "featuredArticles"
         ]
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "wy38p172ey90ytvempdurfvd",
+      "documentId": "ek46q908v1zta9ozt1xfflb8",
       "locale": null
     },
     {
