@@ -36,14 +36,13 @@ const ArticlesActiveFiltersTagList = ({
 
   return (
     <div className="flex flex-wrap gap-2 pt-4">
-      <TagList className="flex flex-wrap gap-2">
-        {activeFiltersTags.map((tag) => {
-          const { label, slug, handleRemove } = tag
+      <TagList className="flex flex-wrap gap-2" items={activeFiltersTags}>
+        {(item) => {
+          const { label, slug, handleRemove } = item
 
           return (
             <Tag
               className="base-focus-ring relative flex w-fit items-center gap-2 rounded-lg border border-background-passive-secondary bg-background-passive-secondary px-3 py-2 text-content-active-primary-default hover:border-border-active-primary-hover hover:text-content-active-primary-hover"
-              key={slug}
               id={slug}
             >
               <Typography variant="p-small" className="font-medium">
@@ -61,7 +60,7 @@ const ArticlesActiveFiltersTagList = ({
               />
             </Tag>
           )
-        })}
+        }}
       </TagList>
       {activeFiltersTags.length > 0 ? (
         <Button
@@ -106,10 +105,10 @@ const ArticlesActiveFilters = ({
     )
   }
 
-  const handleRemove = (item: Set<Key>) => {
-    const itemLabel = Array.from(item.values())[0]
-    const activeTag = activeFiltersTags.find((tag) => tag.label === itemLabel)
-    activeTag?.handleRemove()
+  const removeActiveTag = (selection: Set<Key>) => {
+    const slugToRemove = Array.from(selection.values())[0]
+    const activeTagToRemove = activeFiltersTags.find((tag) => tag.slug === slugToRemove)
+    activeTagToRemove?.handleRemove()
   }
 
   const labelElement = (
@@ -124,7 +123,10 @@ const ArticlesActiveFilters = ({
     <Typography variant="p-small">{articlesCountMessage}</Typography>
   ) : null
 
-  const tagGroupProps: TagGroupProps = { selectionMode: 'none', onRemove: handleRemove }
+  const tagGroupProps: TagGroupProps = {
+    selectionMode: 'none',
+    onRemove: removeActiveTag,
+  }
   const tagListProps: ArticlesActiveFiltersTagListProps = { activeFiltersTags, setFilters }
 
   return (
