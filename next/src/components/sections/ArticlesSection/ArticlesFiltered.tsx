@@ -10,6 +10,7 @@ import { client } from '@/src/services/graphql/gql'
 import {
   articlesDefaultFilters,
   articlesFetcher,
+  ArticlesFilters,
   getArticlesQueryKey,
 } from '@/src/services/meili/fetchers/articlesFetcher'
 import { isDefined } from '@/src/utils/isDefined'
@@ -38,21 +39,21 @@ const ArticlesFiltered = ({ section }: Props) => {
     showMoreLink,
   } = section
 
-  const articleCategoryDocumentIds = articleCategories
-    .map((articleCategory) => articleCategory?.documentId)
+  const articleCategorySlugs = articleCategories
+    .map((articleCategory) => articleCategory?.slug)
     .filter(isDefined)
 
-  const tagDocumentIds = tags.map((tag) => tag?.documentId).filter(isDefined)
+  const tagSlugs = tags.map((tag) => tag?.slug).filter(isDefined)
 
   const adminGroupDocumentIds = adminGroups
     .map((adminGroup) => adminGroup?.documentId)
     .filter(isDefined)
 
-  const [filters, setFilters] = useRoutePreservedState({
+  const [filters, setFilters] = useRoutePreservedState<ArticlesFilters>({
     ...articlesDefaultFilters,
-    articleCategoryDocumentIds,
+    articleCategorySlugs,
     adminGroupDocumentIds,
-    tagDocumentIds,
+    tagSlugs,
     pageSize: 12,
   })
 
@@ -70,12 +71,12 @@ const ArticlesFiltered = ({ section }: Props) => {
     setFilters({
       ...filters,
       adminGroupDocumentIds: [],
-      tagDocumentIds:
+      tagSlugs:
         tagsDataFromCategoryField.tags
           .filter((tag) => {
             return tag?.pageCategory?.documentId === category?.documentId
           })
-          .map((tag) => tag?.documentId ?? '')
+          .map((tag) => tag?.slug ?? '')
           .filter(isDefined) ?? [],
     })
     // eslint-disable-next-line react-hooks/exhaustive-deps
