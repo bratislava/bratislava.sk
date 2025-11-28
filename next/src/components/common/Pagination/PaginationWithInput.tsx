@@ -61,9 +61,9 @@ const PaginationWithInput = ({
 
           <div className="flex gap-1">
             <div className="flex size-6 justify-center">
-              <Typography variant="p-default">/</Typography>
+              <Typography variant="p-small">/</Typography>
             </div>
-            <Typography variant="p-default">{totalCount}</Typography>
+            <Typography variant="p-small">{totalCount}</Typography>
           </div>
         </div>
 
