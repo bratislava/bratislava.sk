@@ -1,6 +1,6 @@
 import { Typography } from '@bratislava/component-library'
-import { forwardRef, ReactNode } from 'react'
-import { Dialog as ReactAriaDialog, DialogProps, DialogRenderProps } from 'react-aria-components'
+import { forwardRef } from 'react'
+import { Dialog as ReactAriaDialog, DialogProps } from 'react-aria-components'
 import { CrossIcon } from 'src/assets/icons'
 
 import Button from '@/src/components/common/Button/Button'
@@ -8,10 +8,7 @@ import { useTranslation } from '@/src/utils/useTranslation'
 
 type TitleProps = { title: string; 'aria-label'?: string } | { title?: never; 'aria-label': string }
 
-type Props = {
-  children: ReactNode | ((props: DialogRenderProps) => ReactNode)
-} & TitleProps &
-  Omit<DialogProps, 'children' | 'aria-label'>
+type Props = TitleProps & Omit<DialogProps, 'aria-label'>
 
 /*
  * Styling of Dialog to have fixed header and scrollable body is challenging.

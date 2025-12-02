@@ -66,7 +66,7 @@ const CheckboxGroup = ({
               }}
               fullWidth
             >
-              {t('CheckboxGroup.showMore')}
+              {t('common.showMore')}
             </Button>
           </>
         ) : null}
