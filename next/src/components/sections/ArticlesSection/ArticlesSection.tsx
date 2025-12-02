@@ -1,7 +1,7 @@
 import React from 'react'
 
 import SectionContainer from '@/src/components/layouts/SectionContainer'
-import ArticlesAll from '@/src/components/sections/ArticlesSection/ArticlesAll'
+import ArticlesAll from '@/src/components/sections/ArticlesSection/ArticlesAll/ArticlesAll'
 import ArticlesFiltered from '@/src/components/sections/ArticlesSection/ArticlesFiltered'
 import { ArticlesSectionFragment } from '@/src/services/graphql'
 

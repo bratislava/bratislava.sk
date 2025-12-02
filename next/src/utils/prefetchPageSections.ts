@@ -33,9 +33,18 @@ export const prefetchPageSections = async (page: PageEntityFragment, locale: str
 
   if (sectionTypes.includes('ComponentSectionsArticles')) {
     await queryClient.prefetchQuery({
+      queryKey: ['ArticleCategories', locale],
+      queryFn: () => client.ArticleCategories({ locale }),
+    })
+    await queryClient.prefetchQuery({
       queryKey: ['Tags', locale],
       queryFn: () => client.Tags({ locale }),
     })
+    await queryClient.prefetchQuery({
+      queryKey: ['AdminGroups'],
+      queryFn: () => client.AdminGroups(),
+    })
+    // TODO remove when pageCategories are removed from strapi
     await queryClient.prefetchQuery({
       queryKey: ['PageCategories', locale],
       queryFn: () => client.PageCategories({ locale }),
