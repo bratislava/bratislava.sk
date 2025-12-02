@@ -7,19 +7,22 @@ import { Breadcrumb } from '@/src/components/common/Breadcrumbs/Breadcrumbs'
 import FileList from '@/src/components/common/FileList/FileList'
 import Gallery from '@/src/components/common/Gallery/Gallery'
 import PageHeader from '@/src/components/common/PageHeader/PageHeader'
+import ShareBlock from '@/src/components/common/ShareBlock/ShareBlock'
 import Markdown from '@/src/components/formatting/Markdown/Markdown'
 import { useGeneralContext } from '@/src/components/providers/GeneralContextProvider'
-import ShareButtons from '@/src/components/sections/ShareButtons_Deprecated'
 import { ArticleEntityFragment } from '@/src/services/graphql'
 import { formatDate } from '@/src/utils/formatDate'
 import { isDefined } from '@/src/utils/isDefined'
 import { getPageBreadcrumbs } from '@/src/utils/pageUtils_Deprecated'
+import { useTranslation } from '@/src/utils/useTranslation'
 
 type Props = {
   article: ArticleEntityFragment
 }
 
 const ArticlePageContent = ({ article }: Props) => {
+  const { t } = useTranslation()
+
   const { general } = useGeneralContext()
   const newsPage = general?.newsPage
 
@@ -61,9 +64,14 @@ const ArticlePageContent = ({ article }: Props) => {
 
             {filteredFiles.length > 0 ? <FileList files={filteredFiles} /> : null}
           </div>
-          {alias ? <AliasInfoMessage alias={alias} variant="article" /> : null}
 
-          <ShareButtons twitterTitle={title} />
+          <div className="flex-col gap-8">
+            <ShareBlock
+              text={t('ArticlePageContent.shareBlock.text')}
+              buttonText={t('ArticlePageContent.shareBlock.buttonText')}
+            />
+            {alias ? <AliasInfoMessage alias={alias} variant="article" /> : null}
+          </div>
         </div>
 
         {/* Empty sidebar */}
