@@ -44,7 +44,7 @@ const Dialog = forwardRef<HTMLElement, Props>(({ children, title, ...props }, re
             </div>
           ) : null}
 
-          <div className="flex grow flex-col overflow-y-scroll p-6">{children}</div>
+          <div className="flex grow flex-col overflow-y-auto p-6">{children}</div>
 
           {/* If we want to implement some fixed footer, it goes here, with "flex shrink-0" */}
 
