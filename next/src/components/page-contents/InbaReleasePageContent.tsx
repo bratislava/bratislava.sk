@@ -19,7 +19,6 @@ import { useGeneralContext } from '@/src/components/providers/GeneralContextProv
 import SearchBar from '@/src/components/sections/SearchSection/SearchBar'
 import SearchResultCard from '@/src/components/sections/SearchSection/SearchResultCard'
 import { SearchResult } from '@/src/components/sections/SearchSection/useQueryBySearchOption'
-import ShareButtons from '@/src/components/sections/ShareButtons_Deprecated'
 import { InbaReleaseEntityFragment } from '@/src/services/graphql'
 import {
   articlesDefaultFilters,
@@ -188,10 +187,6 @@ const InbaReleasePageContent = ({ inbaRelease }: Props) => {
           </div>
         </SectionContainer>
       )}
-
-      <SectionContainer className="pt-10 pb-8 md:pt-18">
-        <ShareButtons twitterTitle={title} />
-      </SectionContainer>
     </>
   )
 }
