@@ -14,6 +14,10 @@
           "slug",
           "adminGroupId",
           "contentManagedBy",
+          "submenuPages.title",
+          "submenuPages.url",
+          "submenuPages.page",
+          "submenuPages.analyticsId",
           "landingPage",
           "articles",
           "pages",
@@ -23,7 +27,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "lrgy8g7e1iaoh1t2pgl2fgbr",
+      "documentId": "l8h1utswymmtvq7v42ev8vao",
       "locale": null
     },
     {
@@ -53,6 +57,10 @@
           "slug",
           "adminGroupId",
           "contentManagedBy",
+          "submenuPages.title",
+          "submenuPages.url",
+          "submenuPages.page",
+          "submenuPages.analyticsId",
           "landingPage",
           "articles",
           "pages",
@@ -62,7 +70,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "zbz7ujpceb80sicyssubqltb",
+      "documentId": "y4ntv02j4r6a7v991ev6vmua",
       "locale": null
     },
     {
@@ -74,6 +82,10 @@
           "slug",
           "adminGroupId",
           "contentManagedBy",
+          "submenuPages.title",
+          "submenuPages.url",
+          "submenuPages.page",
+          "submenuPages.analyticsId",
           "landingPage",
           "articles",
           "pages",
@@ -83,7 +95,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "erx34knslnky22b7gvfoeslm",
+      "documentId": "daf3om07noa9niri8fw4oetv",
       "locale": null
     },
     {
