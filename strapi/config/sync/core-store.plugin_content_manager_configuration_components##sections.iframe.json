@@ -62,30 +62,16 @@
           "sortable": true
         }
       },
-      "allowFullscreen": {
+      "iframeTitle": {
         "edit": {
-          "label": "allowFullscreen",
+          "label": "iframeTitle",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "allowFullscreen",
-          "searchable": true,
-          "sortable": true
-        }
-      },
-      "css": {
-        "edit": {
-          "label": "css",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "css",
+          "label": "iframeTitle",
           "searchable": true,
           "sortable": true
         }
@@ -100,20 +86,6 @@
         },
         "list": {
           "label": "iframeHeight",
-          "searchable": true,
-          "sortable": true
-        }
-      },
-      "fullHeight": {
-        "edit": {
-          "label": "fullHeight",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "fullHeight",
           "searchable": true,
           "sortable": true
         }
@@ -173,8 +145,7 @@
       "list": [
         "id",
         "url",
-        "allowFullscreen",
-        "css"
+        "iframeTitle"
       ],
       "edit": [
         [
@@ -199,17 +170,9 @@
           {
             "name": "iframeHeight",
             "size": 4
-          },
-          {
-            "name": "fullHeight",
-            "size": 4
           }
         ],
         [
-          {
-            "name": "allowFullscreen",
-            "size": 4
-          },
           {
             "name": "hasBorder",
             "size": 4
@@ -223,14 +186,14 @@
         ],
         [
           {
-            "name": "css",
+            "name": "titleLevel",
             "size": 12
           }
         ],
         [
           {
-            "name": "titleLevel",
-            "size": 12
+            "name": "iframeTitle",
+            "size": 6
           }
         ]
       ]
