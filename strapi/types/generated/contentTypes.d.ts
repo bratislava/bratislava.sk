@@ -352,7 +352,7 @@ export interface ApiAdminGroupAdminGroup extends Struct.CollectionTypeSchema {
   attributes: {
     adminGroupId: Schema.Attribute.UID<'title'>
     articles: Schema.Attribute.Relation<'manyToMany', 'api::article.article'>
-    contentManagedBy: Schema.Attribute.String
+    contentManagedBy: Schema.Attribute.String & Schema.Attribute.Required
     createdAt: Schema.Attribute.DateTime
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> & Schema.Attribute.Private
     documents: Schema.Attribute.Relation<'manyToMany', 'api::document.document'>
@@ -364,6 +364,7 @@ export interface ApiAdminGroupAdminGroup extends Struct.CollectionTypeSchema {
     pages: Schema.Attribute.Relation<'manyToMany', 'api::page.page'>
     publishedAt: Schema.Attribute.DateTime
     slug: Schema.Attribute.UID<'title'> & Schema.Attribute.Required
+    submenuPages: Schema.Attribute.Component<'blocks.page-link', true>
     title: Schema.Attribute.String & Schema.Attribute.Required
     updatedAt: Schema.Attribute.DateTime
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> & Schema.Attribute.Private

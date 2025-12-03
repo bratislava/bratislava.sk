@@ -35,8 +35,8 @@ const GeneralPageContent = ({ page }: GeneralPageProps) => {
   return (
     <>
       {/* Starz submenu - TODO make it more generic in future when more organizations need it */}
-      {starzAdminGroup?.landingPage ? (
-        <StarzSubmenu landingPage={starzAdminGroup.landingPage} className="max-lg:hidden" />
+      {starzAdminGroup ? (
+        <StarzSubmenu adminGroup={starzAdminGroup} className="max-lg:hidden" />
       ) : null}
 
       {/* Header */}
@@ -81,7 +81,7 @@ const GeneralPageContent = ({ page }: GeneralPageProps) => {
         </SectionContainer>
       ) : null}
 
-      {starzAdminGroup?.contentManagedBy ? (
+      {starzAdminGroup ? (
         <SectionContainer className="bg-category-200">
           <ContentManagedBy contentManager={starzAdminGroup.contentManagedBy} />
         </SectionContainer>

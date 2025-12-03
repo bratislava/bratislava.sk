@@ -75,6 +75,20 @@
           "sortable": true
         }
       },
+      "submenuPages": {
+        "edit": {
+          "label": "Submenu stránky (musia byť rovnaké ako child pages v landing page)",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "submenuPages",
+          "searchable": false,
+          "sortable": false
+        }
+      },
       "landingPage": {
         "edit": {
           "label": "landingPage",
@@ -218,6 +232,16 @@
       }
     },
     "layouts": {
+      "list": [
+        "id",
+        "title",
+        "slug",
+        "createdAt",
+        "updatedAt",
+        "contentManagedBy",
+        "landingPage",
+        "adminGroupId"
+      ],
       "edit": [
         [
           {
@@ -237,6 +261,12 @@
           {
             "name": "landingPage",
             "size": 6
+          }
+        ],
+        [
+          {
+            "name": "submenuPages",
+            "size": 12
           }
         ],
         [
@@ -269,16 +299,6 @@
             "size": 6
           }
         ]
-      ],
-      "list": [
-        "id",
-        "title",
-        "slug",
-        "createdAt",
-        "updatedAt",
-        "contentManagedBy",
-        "landingPage",
-        "adminGroupId"
       ]
     },
     "uid": "api::admin-group.admin-group"

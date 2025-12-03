@@ -41,7 +41,7 @@ export type AdminGroup = {
   adminGroupId?: Maybe<Scalars['String']['output']>
   articles: Array<Maybe<Article>>
   articles_connection?: Maybe<ArticleRelationResponseCollection>
-  contentManagedBy?: Maybe<Scalars['String']['output']>
+  contentManagedBy: Scalars['String']['output']
   createdAt?: Maybe<Scalars['DateTime']['output']>
   documentId: Scalars['ID']['output']
   documents: Array<Maybe<Document>>
@@ -53,6 +53,7 @@ export type AdminGroup = {
   pages_connection?: Maybe<PageRelationResponseCollection>
   publishedAt?: Maybe<Scalars['DateTime']['output']>
   slug: Scalars['String']['output']
+  submenuPages?: Maybe<Array<Maybe<ComponentBlocksPageLink>>>
   title: Scalars['String']['output']
   updatedAt?: Maybe<Scalars['DateTime']['output']>
 }
@@ -105,6 +106,12 @@ export type AdminGroupPages_ConnectionArgs = {
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
 }
 
+export type AdminGroupSubmenuPagesArgs = {
+  filters?: InputMaybe<ComponentBlocksPageLinkFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
 export type AdminGroupEntity = {
   __typename?: 'AdminGroupEntity'
   attributes?: Maybe<AdminGroup>
@@ -137,6 +144,7 @@ export type AdminGroupFiltersInput = {
   pages?: InputMaybe<PageFiltersInput>
   publishedAt?: InputMaybe<DateTimeFilterInput>
   slug?: InputMaybe<StringFilterInput>
+  submenuPages?: InputMaybe<ComponentBlocksPageLinkFiltersInput>
   title?: InputMaybe<StringFilterInput>
   updatedAt?: InputMaybe<DateTimeFilterInput>
 }
@@ -151,6 +159,7 @@ export type AdminGroupInput = {
   pages?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
   publishedAt?: InputMaybe<Scalars['DateTime']['input']>
   slug?: InputMaybe<Scalars['String']['input']>
+  submenuPages?: InputMaybe<Array<InputMaybe<ComponentBlocksPageLinkInput>>>
   title?: InputMaybe<Scalars['String']['input']>
 }
 
@@ -6721,7 +6730,7 @@ export type AdminGroupEntityFragment = {
   title: string
   slug: string
   adminGroupId?: string | null
-  contentManagedBy?: string | null
+  contentManagedBy: string
   documentId: string
   landingPage?: {
     __typename?: 'Page'
@@ -6751,6 +6760,19 @@ export type AdminGroupEntityFragment = {
       locale?: string | null
     } | null>
   } | null
+  submenuPages?: Array<{
+    __typename?: 'ComponentBlocksPageLink'
+    url?: string | null
+    analyticsId?: string | null
+    label?: string | null
+    page?: {
+      __typename?: 'Page'
+      documentId: string
+      slug?: string | null
+      title: string
+      locale?: string | null
+    } | null
+  } | null> | null
 }
 
 export type AdminGroupsQueryVariables = Exact<{
@@ -6764,7 +6786,7 @@ export type AdminGroupsQuery = {
     title: string
     slug: string
     adminGroupId?: string | null
-    contentManagedBy?: string | null
+    contentManagedBy: string
     documentId: string
     landingPage?: {
       __typename?: 'Page'
@@ -6794,6 +6816,19 @@ export type AdminGroupsQuery = {
         locale?: string | null
       } | null>
     } | null
+    submenuPages?: Array<{
+      __typename?: 'ComponentBlocksPageLink'
+      url?: string | null
+      analyticsId?: string | null
+      label?: string | null
+      page?: {
+        __typename?: 'Page'
+        documentId: string
+        slug?: string | null
+        title: string
+        locale?: string | null
+      } | null
+    } | null> | null
   } | null>
 }
 
@@ -10092,7 +10127,7 @@ export type PageEntityFragment = {
     title: string
     slug: string
     adminGroupId?: string | null
-    contentManagedBy?: string | null
+    contentManagedBy: string
     documentId: string
     landingPage?: {
       __typename?: 'Page'
@@ -10122,6 +10157,19 @@ export type PageEntityFragment = {
         locale?: string | null
       } | null>
     } | null
+    submenuPages?: Array<{
+      __typename?: 'ComponentBlocksPageLink'
+      url?: string | null
+      analyticsId?: string | null
+      label?: string | null
+      page?: {
+        __typename?: 'Page'
+        documentId: string
+        slug?: string | null
+        title: string
+        locale?: string | null
+      } | null
+    } | null> | null
   } | null>
   headerLinks?: Array<{
     __typename?: 'ComponentBlocksCommonLink'
@@ -11283,7 +11331,7 @@ export type PageBySlugQuery = {
       title: string
       slug: string
       adminGroupId?: string | null
-      contentManagedBy?: string | null
+      contentManagedBy: string
       documentId: string
       landingPage?: {
         __typename?: 'Page'
@@ -11313,6 +11361,19 @@ export type PageBySlugQuery = {
           locale?: string | null
         } | null>
       } | null
+      submenuPages?: Array<{
+        __typename?: 'ComponentBlocksPageLink'
+        url?: string | null
+        analyticsId?: string | null
+        label?: string | null
+        page?: {
+          __typename?: 'Page'
+          documentId: string
+          slug?: string | null
+          title: string
+          locale?: string | null
+        } | null
+      } | null> | null
     } | null>
     headerLinks?: Array<{
       __typename?: 'ComponentBlocksCommonLink'
@@ -12503,7 +12564,7 @@ export type Dev_AllPagesQuery = {
       title: string
       slug: string
       adminGroupId?: string | null
-      contentManagedBy?: string | null
+      contentManagedBy: string
       documentId: string
       landingPage?: {
         __typename?: 'Page'
@@ -12533,6 +12594,19 @@ export type Dev_AllPagesQuery = {
           locale?: string | null
         } | null>
       } | null
+      submenuPages?: Array<{
+        __typename?: 'ComponentBlocksPageLink'
+        url?: string | null
+        analyticsId?: string | null
+        label?: string | null
+        page?: {
+          __typename?: 'Page'
+          documentId: string
+          slug?: string | null
+          title: string
+          locale?: string | null
+        } | null
+      } | null> | null
     } | null>
     headerLinks?: Array<{
       __typename?: 'ComponentBlocksCommonLink'
@@ -17164,6 +17238,17 @@ export const PageSubnavigationEntityFragmentDoc = gql`
   }
   ${PageSlugEntityFragmentDoc}
 `
+export const PageLinkFragmentDoc = gql`
+  fragment PageLink on ComponentBlocksPageLink {
+    label: title
+    page {
+      ...PageSlugEntity
+    }
+    url
+    analyticsId
+  }
+  ${PageSlugEntityFragmentDoc}
+`
 export const AdminGroupEntityFragmentDoc = gql`
   fragment AdminGroupEntity on AdminGroup {
     ...AdminGroupDocumentIdEntity
@@ -17177,9 +17262,13 @@ export const AdminGroupEntityFragmentDoc = gql`
         ...PageSubnavigationEntity
       }
     }
+    submenuPages {
+      ...PageLink
+    }
   }
   ${AdminGroupDocumentIdEntityFragmentDoc}
   ${PageSubnavigationEntityFragmentDoc}
+  ${PageLinkFragmentDoc}
 `
 export const EventPageHeaderSectionFragmentDoc = gql`
   fragment EventPageHeaderSection on ComponentHeaderSectionsEvent {
@@ -17334,17 +17423,6 @@ export const NarrowTextSectionFragmentDoc = gql`
     content
     width
   }
-`
-export const PageLinkFragmentDoc = gql`
-  fragment PageLink on ComponentBlocksPageLink {
-    label: title
-    page {
-      ...PageSlugEntity
-    }
-    url
-    analyticsId
-  }
-  ${PageSlugEntityFragmentDoc}
 `
 export const LinksSectionFragmentDoc = gql`
   fragment LinksSection on ComponentSectionsLinks {

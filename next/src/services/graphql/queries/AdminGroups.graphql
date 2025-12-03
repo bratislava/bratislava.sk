@@ -21,6 +21,9 @@ fragment AdminGroupEntity on AdminGroup {
       ...PageSubnavigationEntity
     }
   }
+  submenuPages {
+    ...PageLink
+  }
 }
 
 query AdminGroups($limit: Int = -1) {

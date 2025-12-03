@@ -12,8 +12,11 @@
         "fields": [
           "title",
           "slug",
-          "adminGroupId",
           "contentManagedBy",
+          "submenuPages.title",
+          "submenuPages.url",
+          "submenuPages.page",
+          "submenuPages.analyticsId",
           "landingPage",
           "articles",
           "pages",
@@ -23,7 +26,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "h1lftflcdjsqmhdjzm05jrw4",
+      "documentId": "d8prv0uzm030tzvz5acbqbbg",
       "locale": null
     },
     {
@@ -51,8 +54,11 @@
         "fields": [
           "title",
           "slug",
-          "adminGroupId",
           "contentManagedBy",
+          "submenuPages.title",
+          "submenuPages.url",
+          "submenuPages.page",
+          "submenuPages.analyticsId",
           "landingPage",
           "articles",
           "pages",
@@ -62,7 +68,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "eskpafij1ai6pvb5f1trg7eh",
+      "documentId": "pakha7ih3yevjyoj2kfr7ihd",
       "locale": null
     },
     {
@@ -72,8 +78,11 @@
         "fields": [
           "title",
           "slug",
-          "adminGroupId",
           "contentManagedBy",
+          "submenuPages.title",
+          "submenuPages.url",
+          "submenuPages.page",
+          "submenuPages.analyticsId",
           "landingPage",
           "articles",
           "pages",
@@ -83,7 +92,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "rcpmvh640ui61a09352ha28c",
+      "documentId": "x0j5fyou7lwujsaijen9ohm7",
       "locale": null
     },
     {

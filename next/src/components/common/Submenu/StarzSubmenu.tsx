@@ -10,7 +10,7 @@ import { isDefined } from '@/src/utils/isDefined'
 import { useGetLocalisedPage } from '@/src/utils/useGetLocalisedPage'
 
 type Props = {
-  landingPage: NonNullable<AdminGroupEntityFragment['landingPage']>
+  adminGroup: AdminGroupEntityFragment
   className?: string
 }
 
@@ -21,10 +21,10 @@ type Props = {
  *
  * TODO make it more generic in future when more organizations need it
  */
-const StarzSubmenu = ({ landingPage, className }: Props) => {
-  const localisedLandingPage = useGetLocalisedPage(landingPage)
+const StarzSubmenu = ({ adminGroup, className }: Props) => {
+  const localisedLandingPage = useGetLocalisedPage(adminGroup.landingPage)
 
-  const childPages = localisedLandingPage?.childPages.filter(isDefined) ?? []
+  const submenuPages = adminGroup.submenuPages?.filter(isDefined) ?? []
 
   // Beware of paddings, margins and gaps - they are used to enlarge clickable/touchable area of links, and they are carefully set to fit Figma design together
   return (
@@ -37,11 +37,12 @@ const StarzSubmenu = ({ landingPage, className }: Props) => {
         />
         <div className="my-4 border-l" aria-hidden />
         <div className="-ml-2 flex flex-wrap gap-x-2 py-2">
-          {childPages.map((submenuPage) => (
+          {submenuPages.map((submenuPage, index) => (
             <Button
-              key={submenuPage.documentId}
+              // eslint-disable-next-line react/no-array-index-key
+              key={index}
               variant="link-inverted"
-              {...getLinkProps({ label: submenuPage.title, page: submenuPage })}
+              {...getLinkProps(submenuPage)}
               className="px-2 py-3 font-normal no-underline hover:underline"
               hasLinkIcon={false}
             />
