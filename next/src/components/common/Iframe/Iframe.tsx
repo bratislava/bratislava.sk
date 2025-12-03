@@ -47,7 +47,7 @@ const Iframe = ({
       <IframeResizer
         license="GPLv3"
         title={iframeTitle ?? undefined}
-        ref={iframeRef}
+        forwardRef={iframeRef}
         src={url}
         className={cn('w-full', {
           border: hasBorder,
