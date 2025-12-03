@@ -13,6 +13,8 @@ export const client = getSdk(gql)
 export const listPages = async () => {
   const { pages } = await client.Dev_AllPages({ locale: 'sk', limit: -1 })
 
+  console.log('≥≥≥≥≥≥≥≥≥≥≥≥≥≥≥≥≥≥≥≥≥≥≥≥≥≥≥≥≥≥≥≥≥≥≥≥≥≥≥≥≥≥≥≥≥≥≥≥≥≥≥≥≥≥≥≥≥≥≥≥≥≥≥≥≥≥≥≥≥≥≥≥≥≥≥≥≥≥≥≥≥≥≥')
+
   const filteredPages = pages
     .filter(isDefined)
     // .filter((page) => !page.title?.trim())
@@ -24,10 +26,16 @@ export const listPages = async () => {
     // .filter((page) => !page.slug?.includes('/'))
     .filter((page) => {
       const sections =
-        page.sections?.filter((section) => section?.__typename === 'ComponentSectionsLinks') ?? []
+        page.sections?.filter((section) => section?.__typename === 'ComponentSectionsIframe') ?? []
+
+      sections.forEach((section) => {
+        console.log(
+          `${page.documentId} iframeHeight: ${section.iframeHeight}, allowGeolocation: ${section.allowGeolocation} ${page.slug}`,
+        )
+      })
 
       return sections.some(
-        (section) => section?.__typename === 'ComponentSectionsLinks',
+        (section) => section?.__typename === 'ComponentSectionsIframe',
         // section.width === 'wide',
       )
     })
@@ -35,18 +43,6 @@ export const listPages = async () => {
   console.log('-----------------------------------------------------------------------------------')
   console.log('Number of all pages:', pages.length)
   console.log('Number of filteredPages:', filteredPages.length)
-  console.log(
-    filteredPages.map((page) => {
-      const length = page.sections
-        ?.filter(isDefined)
-        .filter((section) => section.__typename === 'ComponentSectionsVideos')
-        .map((section) =>
-          section.__typename === 'ComponentSectionsVideos' ? section.videos?.length : -1,
-        )
-
-      return `${page.documentId} ${length} ${page.slug}`
-    }),
-  )
 }
 
 // eslint-disable-next-line unicorn/prefer-top-level-await

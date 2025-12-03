@@ -877,18 +877,12 @@ export interface SectionsIframe extends Struct.ComponentSchema {
     displayName: 'Iframe'
   }
   attributes: {
-    allowFullscreen: Schema.Attribute.Boolean &
-      Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<true>
     allowGeolocation: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>
-    css: Schema.Attribute.String
-    fullHeight: Schema.Attribute.Boolean &
-      Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<false>
     hasBorder: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>
     iframeHeight: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<'600px'>
+    iframeTitle: Schema.Attribute.String
     text: Schema.Attribute.Text
     title: Schema.Attribute.String
     titleLevel: Schema.Attribute.Enumeration<['h2', 'h3']> & Schema.Attribute.DefaultTo<'h2'>

@@ -1701,13 +1701,11 @@ input ComponentSectionsHomepageTabsInput {
 }
 
 type ComponentSectionsIframe {
-  allowFullscreen: Boolean!
   allowGeolocation: Boolean
-  css: String
-  fullHeight: Boolean!
   hasBorder: Boolean
   id: ID!
   iframeHeight: String!
+  iframeTitle: String
   text: String
   title: String
   titleLevel: ENUM_COMPONENTSECTIONSIFRAME_TITLELEVEL
@@ -1715,13 +1713,11 @@ type ComponentSectionsIframe {
 }
 
 input ComponentSectionsIframeFiltersInput {
-  allowFullscreen: BooleanFilterInput
   allowGeolocation: BooleanFilterInput
   and: [ComponentSectionsIframeFiltersInput]
-  css: StringFilterInput
-  fullHeight: BooleanFilterInput
   hasBorder: BooleanFilterInput
   iframeHeight: StringFilterInput
+  iframeTitle: StringFilterInput
   not: ComponentSectionsIframeFiltersInput
   or: [ComponentSectionsIframeFiltersInput]
   text: StringFilterInput
@@ -1731,13 +1727,11 @@ input ComponentSectionsIframeFiltersInput {
 }
 
 input ComponentSectionsIframeInput {
-  allowFullscreen: Boolean
   allowGeolocation: Boolean
-  css: String
-  fullHeight: Boolean
   hasBorder: Boolean
   id: ID
   iframeHeight: String
+  iframeTitle: String
   text: String
   title: String
   titleLevel: ENUM_COMPONENTSECTIONSIFRAME_TITLELEVEL

@@ -2212,13 +2212,11 @@ export type ComponentSectionsHomepageTabsInput = {
 
 export type ComponentSectionsIframe = {
   __typename?: 'ComponentSectionsIframe'
-  allowFullscreen: Scalars['Boolean']['output']
   allowGeolocation?: Maybe<Scalars['Boolean']['output']>
-  css?: Maybe<Scalars['String']['output']>
-  fullHeight: Scalars['Boolean']['output']
   hasBorder?: Maybe<Scalars['Boolean']['output']>
   id: Scalars['ID']['output']
   iframeHeight: Scalars['String']['output']
+  iframeTitle?: Maybe<Scalars['String']['output']>
   text?: Maybe<Scalars['String']['output']>
   title?: Maybe<Scalars['String']['output']>
   titleLevel?: Maybe<Enum_Componentsectionsiframe_Titlelevel>
@@ -2226,13 +2224,11 @@ export type ComponentSectionsIframe = {
 }
 
 export type ComponentSectionsIframeFiltersInput = {
-  allowFullscreen?: InputMaybe<BooleanFilterInput>
   allowGeolocation?: InputMaybe<BooleanFilterInput>
   and?: InputMaybe<Array<InputMaybe<ComponentSectionsIframeFiltersInput>>>
-  css?: InputMaybe<StringFilterInput>
-  fullHeight?: InputMaybe<BooleanFilterInput>
   hasBorder?: InputMaybe<BooleanFilterInput>
   iframeHeight?: InputMaybe<StringFilterInput>
+  iframeTitle?: InputMaybe<StringFilterInput>
   not?: InputMaybe<ComponentSectionsIframeFiltersInput>
   or?: InputMaybe<Array<InputMaybe<ComponentSectionsIframeFiltersInput>>>
   text?: InputMaybe<StringFilterInput>
@@ -2242,13 +2238,11 @@ export type ComponentSectionsIframeFiltersInput = {
 }
 
 export type ComponentSectionsIframeInput = {
-  allowFullscreen?: InputMaybe<Scalars['Boolean']['input']>
   allowGeolocation?: InputMaybe<Scalars['Boolean']['input']>
-  css?: InputMaybe<Scalars['String']['input']>
-  fullHeight?: InputMaybe<Scalars['Boolean']['input']>
   hasBorder?: InputMaybe<Scalars['Boolean']['input']>
   id?: InputMaybe<Scalars['ID']['input']>
   iframeHeight?: InputMaybe<Scalars['String']['input']>
+  iframeTitle?: InputMaybe<Scalars['String']['input']>
   text?: InputMaybe<Scalars['String']['input']>
   title?: InputMaybe<Scalars['String']['input']>
   titleLevel?: InputMaybe<Enum_Componentsectionsiframe_Titlelevel>
@@ -10736,11 +10730,9 @@ export type PageEntityFragment = {
         title?: string | null
         text?: string | null
         url: string
+        iframeTitle?: string | null
         iframeHeight: string
-        fullHeight: boolean
         hasBorder?: boolean | null
-        allowFullscreen: boolean
-        css?: string | null
         allowGeolocation?: boolean | null
         titleLevelIframeSection?: Enum_Componentsectionsiframe_Titlelevel | null
       }
@@ -11943,11 +11935,9 @@ export type PageBySlugQuery = {
           title?: string | null
           text?: string | null
           url: string
+          iframeTitle?: string | null
           iframeHeight: string
-          fullHeight: boolean
           hasBorder?: boolean | null
-          allowFullscreen: boolean
-          css?: string | null
           allowGeolocation?: boolean | null
           titleLevelIframeSection?: Enum_Componentsectionsiframe_Titlelevel | null
         }
@@ -13176,11 +13166,9 @@ export type Dev_AllPagesQuery = {
           title?: string | null
           text?: string | null
           url: string
+          iframeTitle?: string | null
           iframeHeight: string
-          fullHeight: boolean
           hasBorder?: boolean | null
-          allowFullscreen: boolean
-          css?: string | null
           allowGeolocation?: boolean | null
           titleLevelIframeSection?: Enum_Componentsectionsiframe_Titlelevel | null
         }
@@ -14552,11 +14540,9 @@ export type IframeSectionFragment = {
   title?: string | null
   text?: string | null
   url: string
+  iframeTitle?: string | null
   iframeHeight: string
-  fullHeight: boolean
   hasBorder?: boolean | null
-  allowFullscreen: boolean
-  css?: string | null
   allowGeolocation?: boolean | null
   titleLevelIframeSection?: Enum_Componentsectionsiframe_Titlelevel | null
 }
@@ -16060,11 +16046,9 @@ type Sections_ComponentSectionsIframe_Fragment = {
   title?: string | null
   text?: string | null
   url: string
+  iframeTitle?: string | null
   iframeHeight: string
-  fullHeight: boolean
   hasBorder?: boolean | null
-  allowFullscreen: boolean
-  css?: string | null
   allowGeolocation?: boolean | null
   titleLevelIframeSection?: Enum_Componentsectionsiframe_Titlelevel | null
 }
@@ -17359,11 +17343,9 @@ export const IframeSectionFragmentDoc = gql`
     title
     text
     url
+    iframeTitle
     iframeHeight
-    fullHeight
     hasBorder
-    allowFullscreen
-    css
     allowGeolocation
     titleLevelIframeSection: titleLevel
   }

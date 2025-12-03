@@ -1,71 +1,60 @@
 import IframeResizer from '@iframe-resizer/react'
-import { useEffect, useRef, useState } from 'react'
+import { useRef } from 'react'
 
-import { SectionTitleLevel } from '@/src/components/cards/getCardTitleLevel'
 import SectionHeader from '@/src/components/layouts/SectionHeader'
+import { IframeSectionFragment } from '@/src/services/graphql'
 import cn from '@/src/utils/cn'
 
-export type IframeProps = {
-  title?: string | null | undefined
-  text?: string | null | undefined
-  url?: string
-  iframeHeight: string
-  fullHeight: boolean
-  hasBorder?: boolean | null
-  allowFullscreen: boolean
-  allowGeolocation?: boolean | null
-  css?: string | null
-  titleLevel?: SectionTitleLevel | null | undefined
-}
+type Props = IframeSectionFragment
 
 const Iframe = ({
   title,
   text,
   url,
+  iframeTitle,
   iframeHeight,
-  fullHeight,
-  allowFullscreen,
   hasBorder = true,
   allowGeolocation = false,
-  css,
-  titleLevel,
-}: IframeProps) => {
-  const ref = useRef<HTMLIFrameElement>(null)
+  titleLevelIframeSection: titleLevel,
+}: Props) => {
+  const iframeRef = useRef<HTMLIFrameElement>(null)
 
-  const [height, setHeight] = useState(iframeHeight)
-
-  useEffect(() => {
-    if (css) {
-      ref.current?.setAttribute('style', css)
-    }
-  }, [ref, css])
-
-  useEffect(() => {
-    if (fullHeight) {
-      const navbarHeight =
-        (document.querySelector('#desktop-navbar')?.getBoundingClientRect().height ?? 0) +
-        (document.querySelector('#mobile-navbar')?.getBoundingClientRect().height ?? 0) +
-        (document.querySelector('#sticky-menu')?.getBoundingClientRect().height ?? 0)
-      setHeight(`${window.innerHeight - navbarHeight}px`)
-    } else {
-      setHeight(iframeHeight)
-    }
-  }, [fullHeight, iframeHeight])
+  // TODO Prepare for "Innovate iframe"
+  // useEffect(() => {
+  //   const handleMessage = (event: any) => {
+  //     console.log('Received message:', event.data)
+  //
+  //     if (event.data && typeof event.data === 'object' && event.data.type === 'setHeight') {
+  //       const newHeight = `${event.data.height}px`
+  //       console.log('Updating iframe height to:', newHeight)
+  //
+  //       if (iframeRef.current) {
+  //         iframeRef.current.style.height = newHeight
+  //       }
+  //     }
+  //   }
+  //
+  //   window.addEventListener('message', handleMessage)
+  //
+  //   return () => {
+  //     window.removeEventListener('message', handleMessage)
+  //   }
+  // }, [])
 
   return (
     <div className="flex flex-col gap-4 lg:gap-6">
       <SectionHeader title={title} titleLevel={titleLevel} text={text} />
       <IframeResizer
         license="GPLv3"
-        title={url}
-        ref={ref}
+        title={iframeTitle ?? undefined}
+        ref={iframeRef}
         src={url}
         className={cn('w-full', {
           border: hasBorder,
         })}
-        height={height}
-        allowFullScreen={allowFullscreen}
-        allow={allowGeolocation ? 'geolocation *' : undefined}
+        style={{ height: iframeHeight }}
+        // See docs: https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Permissions-Policy#iframes
+        allow={`fullscreen; ${allowGeolocation ? 'geolocation *' : ''}`} // TODO consider narrowing geolocation, and specifying other attributes
         // This should prevent iframes to collect cookies. Otherwise, they collect their cookies we don't have consent for.
         // It may not work if the iframe needs some necessary cookies, or it may block some iframe to render at all.
         // But it seems to work for all of our iframes so far.
