@@ -17,23 +17,13 @@
       "default": "https://www.google.com",
       "required": true
     },
-    "allowFullscreen": {
-      "type": "boolean",
-      "required": true,
-      "default": true
-    },
-    "css": {
+    "iframeTitle": {
       "type": "string"
     },
     "iframeHeight": {
       "type": "string",
       "default": "600px",
       "required": true
-    },
-    "fullHeight": {
-      "type": "boolean",
-      "required": true,
-      "default": false
     },
     "hasBorder": {
       "type": "boolean",
