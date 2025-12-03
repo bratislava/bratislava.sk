@@ -81,7 +81,7 @@ const GeneralPageContent = ({ page }: GeneralPageProps) => {
         </SectionContainer>
       ) : null}
 
-      {starzAdminGroup?.contentManagedBy ? (
+      {starzAdminGroup ? (
         <SectionContainer className="bg-category-200">
           <ContentManagedBy contentManager={starzAdminGroup.contentManagedBy} />
         </SectionContainer>
