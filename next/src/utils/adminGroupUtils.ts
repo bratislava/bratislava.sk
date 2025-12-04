@@ -10,12 +10,20 @@ export const CITY_HALL_ADMINGROUP_SLUG = 'bratislava'
 export const useGetCityHallAdminGroup = () => {
   const { t } = useTranslation()
 
-  const CITY_HALL_ADMINGROUP = {
-    title: t('adminGroups.cityHall.title'),
+  const CITY_HALL_ADMINGROUP: AdminGroupEntityFragment = {
+    // TODO documentId is added just to satisfy the type, consider a better solution
+    documentId: CITY_HALL_ADMINGROUP_SLUG,
+    title: t('AdminGroups.cityHall.title'),
     slug: CITY_HALL_ADMINGROUP_SLUG,
   }
 
   return { CITY_HALL_ADMINGROUP }
+}
+
+export const useGetMainAdminGroup = (adminGroups: (AdminGroupEntityFragment | null)[]) => {
+  const { CITY_HALL_ADMINGROUP } = useGetCityHallAdminGroup()
+
+  return adminGroups?.filter(isDefined)[0] ?? CITY_HALL_ADMINGROUP
 }
 
 export const isStarzAdminGroup = (
@@ -24,10 +32,6 @@ export const isStarzAdminGroup = (
   return adminGroup?.slug === 'starz'
 }
 
-export const useGetMainAdminGroup = (adminGroups: (AdminGroupEntityFragment | null)[]) => {
-  const { CITY_HALL_ADMINGROUP } = useGetCityHallAdminGroup()
-
-  const filteredAdminGroups = adminGroups?.filter(isDefined)
-
-  return filteredAdminGroups?.length ? filteredAdminGroups[0] : CITY_HALL_ADMINGROUP
+export const isCityHallAdminGroup = (adminGroup: AdminGroupEntityFragment) => {
+  return adminGroup?.slug === CITY_HALL_ADMINGROUP_SLUG
 }
