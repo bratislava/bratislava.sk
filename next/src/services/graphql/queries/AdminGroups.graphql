@@ -1,25 +1,25 @@
-fragment AdminGroupDocumentIdEntity on AdminGroup {
+fragment AdminGroupSlugEntity on AdminGroup {
   documentId
-}
-
-fragment PageSubnavigationEntity on Page {
-  ...PageSlugEntity
-  childPages {
-    ...PageSlugEntity
-  }
+  slug
+  title
+  adminGroupId
 }
 
 fragment AdminGroupEntity on AdminGroup {
-  ...AdminGroupDocumentIdEntity
-  title
-  slug
-  adminGroupId
+  ...AdminGroupSlugEntity
   contentManagedBy
   landingPage {
     ...PageSubnavigationEntity
     localizations {
       ...PageSubnavigationEntity
     }
+  }
+}
+
+fragment PageSubnavigationEntity on Page {
+  ...PageSlugEntity
+  childPages {
+    ...PageSlugEntity
   }
 }
 

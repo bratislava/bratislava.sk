@@ -41,7 +41,7 @@ fragment ArticlesSection on ComponentSectionsArticles {
     ...TagEntity
   }
   adminGroups {
-    ...AdminGroupDocumentIdEntity
+    ...AdminGroupSlugEntity
   }
   showMoreLink {
     ...CommonLink

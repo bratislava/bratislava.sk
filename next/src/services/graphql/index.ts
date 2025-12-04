@@ -6699,30 +6699,21 @@ export type UsersPermissionsUserRelationResponseCollection = {
   nodes: Array<UsersPermissionsUser>
 }
 
-export type AdminGroupDocumentIdEntityFragment = { __typename?: 'AdminGroup'; documentId: string }
-
-export type PageSubnavigationEntityFragment = {
-  __typename?: 'Page'
+export type AdminGroupSlugEntityFragment = {
+  __typename?: 'AdminGroup'
   documentId: string
-  slug?: string | null
+  slug: string
   title: string
-  locale?: string | null
-  childPages: Array<{
-    __typename?: 'Page'
-    documentId: string
-    slug?: string | null
-    title: string
-    locale?: string | null
-  } | null>
+  adminGroupId?: string | null
 }
 
 export type AdminGroupEntityFragment = {
   __typename?: 'AdminGroup'
-  title: string
-  slug: string
-  adminGroupId?: string | null
   contentManagedBy?: string | null
   documentId: string
+  slug: string
+  title: string
+  adminGroupId?: string | null
   landingPage?: {
     __typename?: 'Page'
     documentId: string
@@ -6753,6 +6744,21 @@ export type AdminGroupEntityFragment = {
   } | null
 }
 
+export type PageSubnavigationEntityFragment = {
+  __typename?: 'Page'
+  documentId: string
+  slug?: string | null
+  title: string
+  locale?: string | null
+  childPages: Array<{
+    __typename?: 'Page'
+    documentId: string
+    slug?: string | null
+    title: string
+    locale?: string | null
+  } | null>
+}
+
 export type AdminGroupsQueryVariables = Exact<{
   limit?: InputMaybe<Scalars['Int']['input']>
 }>
@@ -6761,11 +6767,11 @@ export type AdminGroupsQuery = {
   __typename?: 'Query'
   adminGroups: Array<{
     __typename?: 'AdminGroup'
-    title: string
-    slug: string
-    adminGroupId?: string | null
     contentManagedBy?: string | null
     documentId: string
+    slug: string
+    title: string
+    adminGroupId?: string | null
     landingPage?: {
       __typename?: 'Page'
       documentId: string
@@ -6909,6 +6915,13 @@ export type ArticleEntityFragment = {
       name: string
     } | null
   } | null
+  adminGroups: Array<{
+    __typename?: 'AdminGroup'
+    documentId: string
+    slug: string
+    title: string
+    adminGroupId?: string | null
+  } | null>
   coverMedia?: {
     __typename?: 'UploadFile'
     documentId: string
@@ -6999,6 +7012,13 @@ export type ArticleBySlugQuery = {
         name: string
       } | null
     } | null
+    adminGroups: Array<{
+      __typename?: 'AdminGroup'
+      documentId: string
+      slug: string
+      title: string
+      adminGroupId?: string | null
+    } | null>
     coverMedia?: {
       __typename?: 'UploadFile'
       documentId: string
@@ -7198,6 +7218,13 @@ export type Dev_AllArticlesQuery = {
         name: string
       } | null
     } | null
+    adminGroups: Array<{
+      __typename?: 'AdminGroup'
+      documentId: string
+      slug: string
+      title: string
+      adminGroupId?: string | null
+    } | null>
     coverMedia?: {
       __typename?: 'UploadFile'
       documentId: string
@@ -10089,11 +10116,11 @@ export type PageEntityFragment = {
   locale?: string | null
   adminGroups: Array<{
     __typename?: 'AdminGroup'
-    title: string
-    slug: string
-    adminGroupId?: string | null
     contentManagedBy?: string | null
     documentId: string
+    slug: string
+    title: string
+    adminGroupId?: string | null
     landingPage?: {
       __typename?: 'Page'
       documentId: string
@@ -10301,7 +10328,13 @@ export type PageEntityFragment = {
             color?: Enum_Pagecategory_Color | null
           } | null
         } | null>
-        adminGroups: Array<{ __typename?: 'AdminGroup'; documentId: string } | null>
+        adminGroups: Array<{
+          __typename?: 'AdminGroup'
+          documentId: string
+          slug: string
+          title: string
+          adminGroupId?: string | null
+        } | null>
         showMoreLink?: {
           __typename?: 'ComponentBlocksCommonLink'
           label?: string | null
@@ -11280,11 +11313,11 @@ export type PageBySlugQuery = {
     locale?: string | null
     adminGroups: Array<{
       __typename?: 'AdminGroup'
-      title: string
-      slug: string
-      adminGroupId?: string | null
       contentManagedBy?: string | null
       documentId: string
+      slug: string
+      title: string
+      adminGroupId?: string | null
       landingPage?: {
         __typename?: 'Page'
         documentId: string
@@ -11492,7 +11525,13 @@ export type PageBySlugQuery = {
               color?: Enum_Pagecategory_Color | null
             } | null
           } | null>
-          adminGroups: Array<{ __typename?: 'AdminGroup'; documentId: string } | null>
+          adminGroups: Array<{
+            __typename?: 'AdminGroup'
+            documentId: string
+            slug: string
+            title: string
+            adminGroupId?: string | null
+          } | null>
           showMoreLink?: {
             __typename?: 'ComponentBlocksCommonLink'
             label?: string | null
@@ -12500,11 +12539,11 @@ export type Dev_AllPagesQuery = {
     locale?: string | null
     adminGroups: Array<{
       __typename?: 'AdminGroup'
-      title: string
-      slug: string
-      adminGroupId?: string | null
       contentManagedBy?: string | null
       documentId: string
+      slug: string
+      title: string
+      adminGroupId?: string | null
       landingPage?: {
         __typename?: 'Page'
         documentId: string
@@ -12712,7 +12751,13 @@ export type Dev_AllPagesQuery = {
               color?: Enum_Pagecategory_Color | null
             } | null
           } | null>
-          adminGroups: Array<{ __typename?: 'AdminGroup'; documentId: string } | null>
+          adminGroups: Array<{
+            __typename?: 'AdminGroup'
+            documentId: string
+            slug: string
+            title: string
+            adminGroupId?: string | null
+          } | null>
           showMoreLink?: {
             __typename?: 'ComponentBlocksCommonLink'
             label?: string | null
@@ -14345,7 +14390,13 @@ export type ArticlesSectionFragment = {
       color?: Enum_Pagecategory_Color | null
     } | null
   } | null>
-  adminGroups: Array<{ __typename?: 'AdminGroup'; documentId: string } | null>
+  adminGroups: Array<{
+    __typename?: 'AdminGroup'
+    documentId: string
+    slug: string
+    title: string
+    adminGroupId?: string | null
+  } | null>
   showMoreLink?: {
     __typename?: 'ComponentBlocksCommonLink'
     label?: string | null
@@ -15597,7 +15648,13 @@ type Sections_ComponentSectionsArticles_Fragment = {
       color?: Enum_Pagecategory_Color | null
     } | null
   } | null>
-  adminGroups: Array<{ __typename?: 'AdminGroup'; documentId: string } | null>
+  adminGroups: Array<{
+    __typename?: 'AdminGroup'
+    documentId: string
+    slug: string
+    title: string
+    adminGroupId?: string | null
+  } | null>
   showMoreLink?: {
     __typename?: 'ComponentBlocksCommonLink'
     label?: string | null
@@ -16761,6 +16818,14 @@ export const InbaReleaseCardEntityFragmentDoc = gql`
   ${InbaReleaseSlugEntityFragmentDoc}
   ${UploadImageEntityFragmentDoc}
 `
+export const AdminGroupSlugEntityFragmentDoc = gql`
+  fragment AdminGroupSlugEntity on AdminGroup {
+    documentId
+    slug
+    title
+    adminGroupId
+  }
+`
 export const ArticleEntityFragmentDoc = gql`
   fragment ArticleEntity on Article {
     ...ArticleCardEntity
@@ -16778,12 +16843,16 @@ export const ArticleEntityFragmentDoc = gql`
     inbaRelease {
       ...InbaReleaseCardEntity
     }
+    adminGroups {
+      ...AdminGroupSlugEntity
+    }
   }
   ${ArticleCardEntityFragmentDoc}
   ${ArticleCategoryEntityFragmentDoc}
   ${FileBlockFragmentDoc}
   ${UploadImageEntityFragmentDoc}
   ${InbaReleaseCardEntityFragmentDoc}
+  ${AdminGroupSlugEntityFragmentDoc}
 `
 export const UploadFileFragmentDoc = gql`
   fragment UploadFile on UploadFile {
@@ -17150,11 +17219,6 @@ export const InbaReleaseHomepageInbaCardEntityFragmentDoc = gql`
   }
   ${UploadImageEntityFragmentDoc}
 `
-export const AdminGroupDocumentIdEntityFragmentDoc = gql`
-  fragment AdminGroupDocumentIdEntity on AdminGroup {
-    documentId
-  }
-`
 export const PageSubnavigationEntityFragmentDoc = gql`
   fragment PageSubnavigationEntity on Page {
     ...PageSlugEntity
@@ -17166,10 +17230,7 @@ export const PageSubnavigationEntityFragmentDoc = gql`
 `
 export const AdminGroupEntityFragmentDoc = gql`
   fragment AdminGroupEntity on AdminGroup {
-    ...AdminGroupDocumentIdEntity
-    title
-    slug
-    adminGroupId
+    ...AdminGroupSlugEntity
     contentManagedBy
     landingPage {
       ...PageSubnavigationEntity
@@ -17178,7 +17239,7 @@ export const AdminGroupEntityFragmentDoc = gql`
       }
     }
   }
-  ${AdminGroupDocumentIdEntityFragmentDoc}
+  ${AdminGroupSlugEntityFragmentDoc}
   ${PageSubnavigationEntityFragmentDoc}
 `
 export const EventPageHeaderSectionFragmentDoc = gql`
@@ -17483,7 +17544,7 @@ export const ArticlesSectionFragmentDoc = gql`
       ...TagEntity
     }
     adminGroups {
-      ...AdminGroupDocumentIdEntity
+      ...AdminGroupSlugEntity
     }
     showMoreLink {
       ...CommonLink
@@ -17493,7 +17554,7 @@ export const ArticlesSectionFragmentDoc = gql`
   ${PageCategoryEntityFragmentDoc}
   ${ArticleCategoryEntityFragmentDoc}
   ${TagEntityFragmentDoc}
-  ${AdminGroupDocumentIdEntityFragmentDoc}
+  ${AdminGroupSlugEntityFragmentDoc}
   ${CommonLinkFragmentDoc}
 `
 export const InbaReleasesSectionFragmentDoc = gql`
