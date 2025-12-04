@@ -4,6 +4,7 @@ import { BratislavaLogoBWSvg, StarzLogoSvg } from '@/src/assets/images'
 import Button from '@/src/components/common/Button/Button'
 import HorizontalDivider from '@/src/components/common/Divider/HorizontalDivider'
 import CardImage from '@/src/components/common/Image/CardImage'
+import MLink from '@/src/components/common/MLink/MLink'
 import { useGeneralContext } from '@/src/components/providers/GeneralContextProvider'
 import { ArticleEntityFragment } from '@/src/services/graphql'
 import {
@@ -35,9 +36,12 @@ const ArticleSidebar = ({ article, className }: Props) => {
       <div className="flex flex-col gap-6 lg:gap-8">
         <div className="flex flex-col gap-4">
           <Typography variant="h5">{t('ArticleSidebar.author')}</Typography>
-          <div className="flex items-center gap-4">
+          <MLink
+            variant="underlined"
+            href={`${getLinkProps({ page: general?.newsPage }).href}?author=${authorAdminGroup.slug}`}
+            className="flex items-center gap-4"
+          >
             <div
-              // TODO consider making this element a link to news page with corresponding author selected via query params
               aria-hidden
               className="flex size-10 items-center justify-center rounded-md bg-background-passive-secondary text-content-passive-secondary"
             >
@@ -51,7 +55,7 @@ const ArticleSidebar = ({ article, className }: Props) => {
               }
             </div>
             <Typography variant="p-small">{authorAdminGroup.title}</Typography>
-          </div>
+          </MLink>
         </div>
         {tags.length > 0 ? (
           <>
