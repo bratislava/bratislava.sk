@@ -1,14 +1,17 @@
 import { Typography } from '@bratislava/component-library'
+import Image from 'next/image'
 import * as React from 'react'
-import { useMemo } from 'react'
+import { Fragment, useMemo } from 'react'
 
 import AliasInfoMessage from '@/src/components/common/AliasInfoMessage/AliasInfoMessage'
-import { Breadcrumb } from '@/src/components/common/Breadcrumbs/Breadcrumbs'
+import Breadcrumbs, { Breadcrumb } from '@/src/components/common/Breadcrumbs/Breadcrumbs'
+import HorizontalDivider from '@/src/components/common/Divider/HorizontalDivider'
 import FileList from '@/src/components/common/FileList/FileList'
 import Gallery from '@/src/components/common/Gallery/Gallery'
-import PageHeader from '@/src/components/common/PageHeader/PageHeader'
 import ShareBlock from '@/src/components/common/ShareBlock/ShareBlock'
 import Markdown from '@/src/components/formatting/Markdown/Markdown'
+import SectionContainer from '@/src/components/layouts/SectionContainer'
+import ArticleSidebar from '@/src/components/page-contents/ArticleSidebar'
 import { useGeneralContext } from '@/src/components/providers/GeneralContextProvider'
 import { ArticleEntityFragment } from '@/src/services/graphql'
 import { formatDate } from '@/src/utils/formatDate'
@@ -33,50 +36,97 @@ const ArticlePageContent = ({ article }: Props) => {
     ]
   }, [article.title, newsPage])
 
-  const { title, perex, tags, content, files, gallery, alias, addedAt, coverMedia } = article
+  const { title, perex, content, files, gallery, alias, addedAt, coverMedia } = article
 
-  const filteredTagTitles = tags.filter(isDefined).map((tag) => tag.title)
   const filteredFiles = files?.filter(isDefined) ?? []
   const filteredGalleryImages = gallery.filter(isDefined) ?? []
 
+  const readingTimeMessage = useMemo(() => {
+    // Average reading speed moves between 200-250 wpm
+    const WORDS_PER_MINUTE = 200
+    const wordCount = (content ?? '').trim().split(/\s+/).length
+    const readingTimeInMinutes = Math.ceil(wordCount / WORDS_PER_MINUTE)
+
+    return t('ArticlePageContent.readingTime', { count: readingTimeInMinutes })
+  }, [content, t])
+
   return (
     <>
-      <PageHeader
-        title={title}
-        breadcrumbs={breadcrumbs}
-        subtext={formatDate(addedAt)}
-        tag={filteredTagTitles}
-        imageSrc={coverMedia?.url}
-      />
+      <SectionContainer className="bg-background-passive-primary">
+        <Breadcrumbs breadcrumbs={breadcrumbs} />
+      </SectionContainer>
 
-      <div
-        // TODO some of these classes are duplicated in SectionContainer - ponder what to do with it
-        className="mx-auto flex max-w-(--breakpoint-xl) gap-8 px-4 py-6 lg:px-8 lg:py-12"
-      >
-        <div className="flex w-200 flex-col gap-4">
-          <div className="flex flex-col gap-18">
-            <div className="flex flex-col gap-6 lg:gap-8">
-              {perex ? <Typography variant="p-large">{perex}</Typography> : null}
-              <Markdown content={content} />
+      <SectionContainer className="py-8 lg:py-12">
+        <div className="flex flex-col gap-8 lg:flex-row lg:gap-18">
+          <div className="flex flex-col gap-6 lg:gap-8">
+            <div className="flex flex-col gap-4 lg:gap-6">
+              <Typography variant="h1" data-cy="page-heading">
+                {title}
+              </Typography>
+              <div className="flex flex-wrap gap-x-3 empty:hidden">
+                {[formatDate(addedAt), readingTimeMessage].filter(isDefined).map((item, index) => {
+                  return (
+                    <Fragment key={item}>
+                      {index > 0 && (
+                        <Typography variant="p-tiny" aria-hidden>
+                          •
+                        </Typography>
+                      )}
+                      <Typography variant="p-tiny" className="whitespace-normal">
+                        {item}
+                      </Typography>
+                    </Fragment>
+                  )
+                })}
+              </div>
             </div>
+
+            <HorizontalDivider />
+
+            {perex ? (
+              <Typography variant="p-large" className="font-medium">
+                {perex}
+              </Typography>
+            ) : null}
+
+            {coverMedia?.url ? (
+              <figure className="flex flex-col gap-4">
+                <Image
+                  {...coverMedia}
+                  src={coverMedia.url ?? ''}
+                  width="0"
+                  height="0"
+                  sizes="100vw"
+                  alt={coverMedia.alternativeText ?? ''}
+                  className="h-auto w-full overflow-hidden rounded-xl"
+                />
+                {coverMedia.caption ? (
+                  <figcaption
+                    aria-hidden={coverMedia.caption === coverMedia.alternativeText}
+                    className="text-size-p-small text-content-passive-tertiary italic"
+                  >
+                    {coverMedia.caption}
+                  </figcaption>
+                ) : null}
+              </figure>
+            ) : null}
+
+            <Markdown content={content} />
 
             {filteredGalleryImages.length > 0 ? <Gallery images={filteredGalleryImages} /> : null}
 
             {filteredFiles.length > 0 ? <FileList files={filteredFiles} /> : null}
-          </div>
 
-          <div className="flex-col gap-8">
             <ShareBlock
               text={t('ArticlePageContent.shareBlock.text')}
               buttonText={t('ArticlePageContent.shareBlock.buttonText')}
             />
+
             {alias ? <AliasInfoMessage alias={alias} variant="article" /> : null}
           </div>
+          <ArticleSidebar article={article} className="w-full shrink-0 lg:w-86" />
         </div>
-
-        {/* Empty sidebar */}
-        <div aria-hidden className="grow basis-60 max-lg:hidden" />
-      </div>
+      </SectionContainer>
     </>
   )
 }
