@@ -18,7 +18,7 @@
   "ArticlesFilter.allArticles": "All news",
   "ArticlesFilter.articleFilter": "News filter",
   "ArticlesFilter.subcategories": "Subcategories",
-  "ArticlesFilterGroup.cityHall": "City Hall",
+  "adminGroups.cityHall.title": "City Hall",
   "Brand.ariaLabel": "Home",
   "Brand.capitalCity": "<semibold>Bratislava</semibold> the Capital City of Slovakia",
   "Breadcrumbs.back": "Back",

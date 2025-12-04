@@ -2,10 +2,8 @@ import { useQuery } from '@tanstack/react-query'
 
 import CheckboxGroup from '@/src/components/common/CheckBoxGroup/CheckboxGroup'
 import { client } from '@/src/services/graphql/gql'
-import {
-  ArticlesFilters,
-  useGetCityHallAdminGroup,
-} from '@/src/services/meili/fetchers/articlesFetcher'
+import { ArticlesFilters } from '@/src/services/meili/fetchers/articlesFetcher'
+import { useGetCityHallAdminGroup } from '@/src/utils/adminGroupUtils'
 import cn from '@/src/utils/cn'
 import { isDefined } from '@/src/utils/isDefined'
 import { useLocale } from '@/src/utils/useLocale'

@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query'
 
 import { ArticlesActiveFiltersProps } from '@/src/components/sections/ArticlesSection/ArticlesAll/ArticlesActiveFilters/ArticlesActiveFilters'
 import { client } from '@/src/services/graphql/gql'
-import { useGetCityHallAdminGroup } from '@/src/services/meili/fetchers/articlesFetcher'
+import { useGetCityHallAdminGroup } from '@/src/utils/adminGroupUtils'
 import { isDefined } from '@/src/utils/isDefined'
 import { useLocale } from '@/src/utils/useLocale'
 

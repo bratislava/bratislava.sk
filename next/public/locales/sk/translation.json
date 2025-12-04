@@ -20,7 +20,7 @@
   "ArticlesFilter.allArticles": "Všetky správy",
   "ArticlesFilter.articleFilter": "Filter správ",
   "ArticlesFilter.subcategories": "Podkategórie",
-  "ArticlesFilterGroup.cityHall": "Magistrát",
+  "adminGroups.cityHall.title": "Magistrát",
   "Brand.ariaLabel": "Domov",
   "Brand.capitalCity": "Hlavné mesto SR <semibold>Bratislava</semibold>",
   "Breadcrumbs.back": "Späť",
