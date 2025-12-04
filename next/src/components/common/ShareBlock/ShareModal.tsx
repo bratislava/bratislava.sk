@@ -30,7 +30,8 @@ const ShareModal = ({ triggerButton }: ShareModalProps) => {
   return (
     <DialogTrigger>
       {triggerButton}
-      <Modal modalClassname="grow max-w-200 h-auto">
+      {/* <Modal modalClassname="m-0 self-end rounded-b-none h-fit"> */}
+      <Modal modalClassname="grow lg:max-w-200 lg:h-auto m-0 max-lg:self-end max-lg:rounded-b-none h-fit">
         <Dialog title={t('ShareModal.share')}>
           <div className="flex flex-col gap-8">
             <div className="flex flex-col gap-2">
