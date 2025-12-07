@@ -240,7 +240,6 @@ export type Article = {
   perex?: Maybe<Scalars['String']['output']>
   publishedAt?: Maybe<Scalars['DateTime']['output']>
   slug: Scalars['String']['output']
-  tag?: Maybe<Tag>
   tags: Array<Maybe<Tag>>
   tags_connection?: Maybe<TagRelationResponseCollection>
   title: Scalars['String']['output']
@@ -419,7 +418,6 @@ export type ArticleFiltersInput = {
   perex?: InputMaybe<StringFilterInput>
   publishedAt?: InputMaybe<DateTimeFilterInput>
   slug?: InputMaybe<StringFilterInput>
-  tag?: InputMaybe<TagFiltersInput>
   tags?: InputMaybe<TagFiltersInput>
   title?: InputMaybe<StringFilterInput>
   updatedAt?: InputMaybe<DateTimeFilterInput>
@@ -438,7 +436,6 @@ export type ArticleInput = {
   perex?: InputMaybe<Scalars['String']['input']>
   publishedAt?: InputMaybe<Scalars['DateTime']['input']>
   slug?: InputMaybe<Scalars['String']['input']>
-  tag?: InputMaybe<Scalars['ID']['input']>
   tags?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
   title?: InputMaybe<Scalars['String']['input']>
 }

@@ -76,7 +76,6 @@ const config = {
     entriesQuery: {
       locale: '*',
       populate: [
-        'tag.pageCategory',
         'tags',
         'tags.pageCategory',
         'coverMedia',

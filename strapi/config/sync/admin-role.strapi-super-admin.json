@@ -273,14 +273,13 @@
           "alias",
           "coverMedia",
           "articleCategory",
-          "tag",
+          "tags",
           "addedAt",
           "content",
           "files.title",
           "files.media",
           "gallery",
           "adminGroups",
-          "tags",
           "inbaRelease"
         ],
         "locales": [
@@ -290,7 +289,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "itqxfpyi03p7apdncpeuspzn",
+      "documentId": "s3lyp1q69ynmi2ou1fgs804j",
       "locale": null
     },
     {
@@ -332,14 +331,13 @@
           "alias",
           "coverMedia",
           "articleCategory",
-          "tag",
+          "tags",
           "addedAt",
           "content",
           "files.title",
           "files.media",
           "gallery",
           "adminGroups",
-          "tags",
           "inbaRelease"
         ],
         "locales": [
@@ -349,7 +347,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "qorpzzilr8l9q0kdmnzn6b5x",
+      "documentId": "wo6vp5tlpf83g2tcrafw536p",
       "locale": null
     },
     {
@@ -363,14 +361,13 @@
           "alias",
           "coverMedia",
           "articleCategory",
-          "tag",
+          "tags",
           "addedAt",
           "content",
           "files.title",
           "files.media",
           "gallery",
           "adminGroups",
-          "tags",
           "inbaRelease"
         ],
         "locales": [
@@ -380,7 +377,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "bgmg1i8d9mizrq7s3g2rnu3y",
+      "documentId": "d8td5blm3ow2ojv2t7so0t4z",
       "locale": null
     },
     {
