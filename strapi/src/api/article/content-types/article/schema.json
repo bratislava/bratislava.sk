@@ -70,10 +70,11 @@
       "target": "api::article-category.article-category",
       "inversedBy": "articles"
     },
-    "tag": {
+    "tags": {
       "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::tag.tag"
+      "relation": "manyToMany",
+      "target": "api::tag.tag",
+      "inversedBy": "articles"
     },
     "addedAt": {
       "type": "datetime",
@@ -119,12 +120,6 @@
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::admin-group.admin-group",
-      "inversedBy": "articles"
-    },
-    "tags": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::tag.tag",
       "inversedBy": "articles"
     },
     "inbaRelease": {

@@ -240,7 +240,6 @@ export type Article = {
   perex?: Maybe<Scalars['String']['output']>
   publishedAt?: Maybe<Scalars['DateTime']['output']>
   slug: Scalars['String']['output']
-  tag?: Maybe<Tag>
   tags: Array<Maybe<Tag>>
   tags_connection?: Maybe<TagRelationResponseCollection>
   title: Scalars['String']['output']
@@ -419,7 +418,6 @@ export type ArticleFiltersInput = {
   perex?: InputMaybe<StringFilterInput>
   publishedAt?: InputMaybe<DateTimeFilterInput>
   slug?: InputMaybe<StringFilterInput>
-  tag?: InputMaybe<TagFiltersInput>
   tags?: InputMaybe<TagFiltersInput>
   title?: InputMaybe<StringFilterInput>
   updatedAt?: InputMaybe<DateTimeFilterInput>
@@ -438,7 +436,6 @@ export type ArticleInput = {
   perex?: InputMaybe<Scalars['String']['input']>
   publishedAt?: InputMaybe<Scalars['DateTime']['input']>
   slug?: InputMaybe<Scalars['String']['input']>
-  tag?: InputMaybe<Scalars['ID']['input']>
   tags?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
   title?: InputMaybe<Scalars['String']['input']>
 }
@@ -6777,6 +6774,9 @@ export type PageSubnavigationEntityFragment = {
 
 export type AdminGroupsQueryVariables = Exact<{
   limit?: InputMaybe<Scalars['Int']['input']>
+  sort?: InputMaybe<
+    Array<InputMaybe<Scalars['String']['input']>> | InputMaybe<Scalars['String']['input']>
+  >
 }>
 
 export type AdminGroupsQuery = {
@@ -7091,6 +7091,9 @@ export type ArticlesStaticPathsQuery = {
 
 export type ArticleCategoriesQueryVariables = Exact<{
   locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
+  sort?: InputMaybe<
+    Array<InputMaybe<Scalars['String']['input']>> | InputMaybe<Scalars['String']['input']>
+  >
 }>
 
 export type ArticleCategoriesQuery = {
@@ -16753,6 +16756,9 @@ export type TagEntityFragment = {
 
 export type TagsQueryVariables = Exact<{
   locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
+  sort?: InputMaybe<
+    Array<InputMaybe<Scalars['String']['input']>> | InputMaybe<Scalars['String']['input']>
+  >
 }>
 
 export type TagsQuery = {
@@ -18264,8 +18270,8 @@ export const PageEntityFragmentDoc = gql`
   ${PageParentPagesFragmentDoc}
 `
 export const AdminGroupsDocument = gql`
-  query AdminGroups($limit: Int = -1) {
-    adminGroups(pagination: { limit: $limit }) {
+  query AdminGroups($limit: Int = -1, $sort: [String] = ["title"]) {
+    adminGroups(pagination: { limit: $limit }, sort: $sort) {
       ...AdminGroupEntity
     }
   }
@@ -18288,8 +18294,8 @@ export const ArticlesStaticPathsDocument = gql`
   ${ArticleSlugEntityFragmentDoc}
 `
 export const ArticleCategoriesDocument = gql`
-  query ArticleCategories($locale: I18NLocaleCode) {
-    articleCategories(pagination: { limit: -1 }, locale: $locale) {
+  query ArticleCategories($locale: I18NLocaleCode, $sort: [String] = ["title"]) {
+    articleCategories(pagination: { limit: -1 }, locale: $locale, sort: $sort) {
       ...ArticleCategoryEntity
     }
   }
@@ -18720,8 +18726,8 @@ export const CreateBareRegulationDocument = gql`
   }
 `
 export const TagsDocument = gql`
-  query Tags($locale: I18NLocaleCode) {
-    tags(pagination: { limit: -1 }, locale: $locale) {
+  query Tags($locale: I18NLocaleCode, $sort: [String] = ["title"]) {
+    tags(pagination: { limit: -1 }, locale: $locale, sort: $sort) {
       ...TagEntity
     }
   }

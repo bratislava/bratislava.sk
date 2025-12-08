@@ -26,8 +26,8 @@ fragment PageSubnavigationEntity on Page {
   }
 }
 
-query AdminGroups($limit: Int = -1) {
-  adminGroups(pagination: { limit: $limit }) {
+query AdminGroups($limit: Int = -1, $sort: [String] = ["title"]) {
+  adminGroups(pagination: { limit: $limit }, sort: $sort) {
     ...AdminGroupEntity
   }
 }

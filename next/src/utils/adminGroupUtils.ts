@@ -1,4 +1,4 @@
-import { AdminGroupEntityFragment, Maybe } from '@/src/services/graphql'
+import { AdminGroupSlugEntityFragment, Maybe } from '@/src/services/graphql'
 import { isDefined } from '@/src/utils/isDefined'
 import { useTranslation } from '@/src/utils/useTranslation'
 
@@ -10,7 +10,7 @@ export const CITY_HALL_ADMINGROUP_SLUG = 'bratislava'
 export const useGetCityHallAdminGroup = () => {
   const { t } = useTranslation()
 
-  const CITY_HALL_ADMINGROUP: AdminGroupEntityFragment = {
+  const CITY_HALL_ADMINGROUP: AdminGroupSlugEntityFragment = {
     // TODO documentId is added just to satisfy the type, consider a better solution
     documentId: CITY_HALL_ADMINGROUP_SLUG,
     title: t('AdminGroups.cityHall.title'),
@@ -20,18 +20,18 @@ export const useGetCityHallAdminGroup = () => {
   return { CITY_HALL_ADMINGROUP }
 }
 
-export const useGetMainAdminGroup = (adminGroups: (AdminGroupEntityFragment | null)[]) => {
+export const useGetMainAdminGroup = (adminGroups: (AdminGroupSlugEntityFragment | null)[]) => {
   const { CITY_HALL_ADMINGROUP } = useGetCityHallAdminGroup()
 
   return adminGroups?.filter(isDefined)[0] ?? CITY_HALL_ADMINGROUP
 }
 
 export const isStarzAdminGroup = (
-  adminGroup: Maybe<AdminGroupEntityFragment>,
-): adminGroup is AdminGroupEntityFragment => {
+  adminGroup: Maybe<AdminGroupSlugEntityFragment>,
+): adminGroup is AdminGroupSlugEntityFragment => {
   return adminGroup?.slug === 'starz'
 }
 
-export const isCityHallAdminGroup = (adminGroup: AdminGroupEntityFragment) => {
+export const isCityHallAdminGroup = (adminGroup: AdminGroupSlugEntityFragment) => {
   return adminGroup?.slug === CITY_HALL_ADMINGROUP_SLUG
 }

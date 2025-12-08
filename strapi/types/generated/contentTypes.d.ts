@@ -523,7 +523,6 @@ export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
           localized: true
         }
       }>
-    tag: Schema.Attribute.Relation<'oneToOne', 'api::tag.tag'>
     tags: Schema.Attribute.Relation<'manyToMany', 'api::tag.tag'>
     title: Schema.Attribute.String &
       Schema.Attribute.Required &
