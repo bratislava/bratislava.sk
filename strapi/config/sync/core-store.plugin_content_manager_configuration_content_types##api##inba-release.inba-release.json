@@ -110,8 +110,7 @@
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true,
-          "mainField": "title"
+          "editable": true
         },
         "list": {
           "label": "files",
@@ -217,6 +216,15 @@
       }
     },
     "layouts": {
+      "list": [
+        "id",
+        "coverImage",
+        "title",
+        "updatedAt",
+        "releaseDate",
+        "files",
+        "articles"
+      ],
       "edit": [
         [
           {
@@ -270,15 +278,6 @@
             "size": 12
           }
         ]
-      ],
-      "list": [
-        "id",
-        "coverImage",
-        "title",
-        "updatedAt",
-        "releaseDate",
-        "files",
-        "articles"
       ]
     }
   },

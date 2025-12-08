@@ -41,7 +41,7 @@ export type AdminGroup = {
   adminGroupId?: Maybe<Scalars['String']['output']>
   articles: Array<Maybe<Article>>
   articles_connection?: Maybe<ArticleRelationResponseCollection>
-  contentManagedBy?: Maybe<Scalars['String']['output']>
+  contentManagedBy: Scalars['String']['output']
   createdAt?: Maybe<Scalars['DateTime']['output']>
   documentId: Scalars['ID']['output']
   documents: Array<Maybe<Document>>
@@ -53,6 +53,7 @@ export type AdminGroup = {
   pages_connection?: Maybe<PageRelationResponseCollection>
   publishedAt?: Maybe<Scalars['DateTime']['output']>
   slug: Scalars['String']['output']
+  submenuPages?: Maybe<Array<Maybe<ComponentBlocksPageLink>>>
   title: Scalars['String']['output']
   updatedAt?: Maybe<Scalars['DateTime']['output']>
 }
@@ -105,6 +106,12 @@ export type AdminGroupPages_ConnectionArgs = {
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
 }
 
+export type AdminGroupSubmenuPagesArgs = {
+  filters?: InputMaybe<ComponentBlocksPageLinkFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
 export type AdminGroupEntity = {
   __typename?: 'AdminGroupEntity'
   attributes?: Maybe<AdminGroup>
@@ -137,6 +144,7 @@ export type AdminGroupFiltersInput = {
   pages?: InputMaybe<PageFiltersInput>
   publishedAt?: InputMaybe<DateTimeFilterInput>
   slug?: InputMaybe<StringFilterInput>
+  submenuPages?: InputMaybe<ComponentBlocksPageLinkFiltersInput>
   title?: InputMaybe<StringFilterInput>
   updatedAt?: InputMaybe<DateTimeFilterInput>
 }
@@ -151,6 +159,7 @@ export type AdminGroupInput = {
   pages?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
   publishedAt?: InputMaybe<Scalars['DateTime']['input']>
   slug?: InputMaybe<Scalars['String']['input']>
+  submenuPages?: InputMaybe<Array<InputMaybe<ComponentBlocksPageLinkInput>>>
   title?: InputMaybe<Scalars['String']['input']>
 }
 
@@ -2203,13 +2212,11 @@ export type ComponentSectionsHomepageTabsInput = {
 
 export type ComponentSectionsIframe = {
   __typename?: 'ComponentSectionsIframe'
-  allowFullscreen: Scalars['Boolean']['output']
   allowGeolocation?: Maybe<Scalars['Boolean']['output']>
-  css?: Maybe<Scalars['String']['output']>
-  fullHeight: Scalars['Boolean']['output']
   hasBorder?: Maybe<Scalars['Boolean']['output']>
   id: Scalars['ID']['output']
   iframeHeight: Scalars['String']['output']
+  iframeTitle?: Maybe<Scalars['String']['output']>
   text?: Maybe<Scalars['String']['output']>
   title?: Maybe<Scalars['String']['output']>
   titleLevel?: Maybe<Enum_Componentsectionsiframe_Titlelevel>
@@ -2217,13 +2224,11 @@ export type ComponentSectionsIframe = {
 }
 
 export type ComponentSectionsIframeFiltersInput = {
-  allowFullscreen?: InputMaybe<BooleanFilterInput>
   allowGeolocation?: InputMaybe<BooleanFilterInput>
   and?: InputMaybe<Array<InputMaybe<ComponentSectionsIframeFiltersInput>>>
-  css?: InputMaybe<StringFilterInput>
-  fullHeight?: InputMaybe<BooleanFilterInput>
   hasBorder?: InputMaybe<BooleanFilterInput>
   iframeHeight?: InputMaybe<StringFilterInput>
+  iframeTitle?: InputMaybe<StringFilterInput>
   not?: InputMaybe<ComponentSectionsIframeFiltersInput>
   or?: InputMaybe<Array<InputMaybe<ComponentSectionsIframeFiltersInput>>>
   text?: InputMaybe<StringFilterInput>
@@ -2233,13 +2238,11 @@ export type ComponentSectionsIframeFiltersInput = {
 }
 
 export type ComponentSectionsIframeInput = {
-  allowFullscreen?: InputMaybe<Scalars['Boolean']['input']>
   allowGeolocation?: InputMaybe<Scalars['Boolean']['input']>
-  css?: InputMaybe<Scalars['String']['input']>
-  fullHeight?: InputMaybe<Scalars['Boolean']['input']>
   hasBorder?: InputMaybe<Scalars['Boolean']['input']>
   id?: InputMaybe<Scalars['ID']['input']>
   iframeHeight?: InputMaybe<Scalars['String']['input']>
+  iframeTitle?: InputMaybe<Scalars['String']['input']>
   text?: InputMaybe<Scalars['String']['input']>
   title?: InputMaybe<Scalars['String']['input']>
   titleLevel?: InputMaybe<Enum_Componentsectionsiframe_Titlelevel>
@@ -6709,7 +6712,7 @@ export type AdminGroupSlugEntityFragment = {
 
 export type AdminGroupEntityFragment = {
   __typename?: 'AdminGroup'
-  contentManagedBy?: string | null
+  contentManagedBy: string
   documentId: string
   slug: string
   title: string
@@ -6742,6 +6745,19 @@ export type AdminGroupEntityFragment = {
       locale?: string | null
     } | null>
   } | null
+  submenuPages?: Array<{
+    __typename?: 'ComponentBlocksPageLink'
+    url?: string | null
+    analyticsId?: string | null
+    label?: string | null
+    page?: {
+      __typename?: 'Page'
+      documentId: string
+      slug?: string | null
+      title: string
+      locale?: string | null
+    } | null
+  } | null> | null
 }
 
 export type PageSubnavigationEntityFragment = {
@@ -6767,7 +6783,7 @@ export type AdminGroupsQuery = {
   __typename?: 'Query'
   adminGroups: Array<{
     __typename?: 'AdminGroup'
-    contentManagedBy?: string | null
+    contentManagedBy: string
     documentId: string
     slug: string
     title: string
@@ -6800,6 +6816,19 @@ export type AdminGroupsQuery = {
         locale?: string | null
       } | null>
     } | null
+    submenuPages?: Array<{
+      __typename?: 'ComponentBlocksPageLink'
+      url?: string | null
+      analyticsId?: string | null
+      label?: string | null
+      page?: {
+        __typename?: 'Page'
+        documentId: string
+        slug?: string | null
+        title: string
+        locale?: string | null
+      } | null
+    } | null> | null
   } | null>
 }
 
@@ -10116,7 +10145,7 @@ export type PageEntityFragment = {
   locale?: string | null
   adminGroups: Array<{
     __typename?: 'AdminGroup'
-    contentManagedBy?: string | null
+    contentManagedBy: string
     documentId: string
     slug: string
     title: string
@@ -10149,6 +10178,19 @@ export type PageEntityFragment = {
         locale?: string | null
       } | null>
     } | null
+    submenuPages?: Array<{
+      __typename?: 'ComponentBlocksPageLink'
+      url?: string | null
+      analyticsId?: string | null
+      label?: string | null
+      page?: {
+        __typename?: 'Page'
+        documentId: string
+        slug?: string | null
+        title: string
+        locale?: string | null
+      } | null
+    } | null> | null
   } | null>
   headerLinks?: Array<{
     __typename?: 'ComponentBlocksCommonLink'
@@ -10721,11 +10763,9 @@ export type PageEntityFragment = {
         title?: string | null
         text?: string | null
         url: string
+        iframeTitle?: string | null
         iframeHeight: string
-        fullHeight: boolean
         hasBorder?: boolean | null
-        allowFullscreen: boolean
-        css?: string | null
         allowGeolocation?: boolean | null
         titleLevelIframeSection?: Enum_Componentsectionsiframe_Titlelevel | null
       }
@@ -11313,7 +11353,7 @@ export type PageBySlugQuery = {
     locale?: string | null
     adminGroups: Array<{
       __typename?: 'AdminGroup'
-      contentManagedBy?: string | null
+      contentManagedBy: string
       documentId: string
       slug: string
       title: string
@@ -11346,6 +11386,19 @@ export type PageBySlugQuery = {
           locale?: string | null
         } | null>
       } | null
+      submenuPages?: Array<{
+        __typename?: 'ComponentBlocksPageLink'
+        url?: string | null
+        analyticsId?: string | null
+        label?: string | null
+        page?: {
+          __typename?: 'Page'
+          documentId: string
+          slug?: string | null
+          title: string
+          locale?: string | null
+        } | null
+      } | null> | null
     } | null>
     headerLinks?: Array<{
       __typename?: 'ComponentBlocksCommonLink'
@@ -11921,11 +11974,9 @@ export type PageBySlugQuery = {
           title?: string | null
           text?: string | null
           url: string
+          iframeTitle?: string | null
           iframeHeight: string
-          fullHeight: boolean
           hasBorder?: boolean | null
-          allowFullscreen: boolean
-          css?: string | null
           allowGeolocation?: boolean | null
           titleLevelIframeSection?: Enum_Componentsectionsiframe_Titlelevel | null
         }
@@ -12539,7 +12590,7 @@ export type Dev_AllPagesQuery = {
     locale?: string | null
     adminGroups: Array<{
       __typename?: 'AdminGroup'
-      contentManagedBy?: string | null
+      contentManagedBy: string
       documentId: string
       slug: string
       title: string
@@ -12572,6 +12623,19 @@ export type Dev_AllPagesQuery = {
           locale?: string | null
         } | null>
       } | null
+      submenuPages?: Array<{
+        __typename?: 'ComponentBlocksPageLink'
+        url?: string | null
+        analyticsId?: string | null
+        label?: string | null
+        page?: {
+          __typename?: 'Page'
+          documentId: string
+          slug?: string | null
+          title: string
+          locale?: string | null
+        } | null
+      } | null> | null
     } | null>
     headerLinks?: Array<{
       __typename?: 'ComponentBlocksCommonLink'
@@ -13147,11 +13211,9 @@ export type Dev_AllPagesQuery = {
           title?: string | null
           text?: string | null
           url: string
+          iframeTitle?: string | null
           iframeHeight: string
-          fullHeight: boolean
           hasBorder?: boolean | null
-          allowFullscreen: boolean
-          css?: string | null
           allowGeolocation?: boolean | null
           titleLevelIframeSection?: Enum_Componentsectionsiframe_Titlelevel | null
         }
@@ -14529,11 +14591,9 @@ export type IframeSectionFragment = {
   title?: string | null
   text?: string | null
   url: string
+  iframeTitle?: string | null
   iframeHeight: string
-  fullHeight: boolean
   hasBorder?: boolean | null
-  allowFullscreen: boolean
-  css?: string | null
   allowGeolocation?: boolean | null
   titleLevelIframeSection?: Enum_Componentsectionsiframe_Titlelevel | null
 }
@@ -16043,11 +16103,9 @@ type Sections_ComponentSectionsIframe_Fragment = {
   title?: string | null
   text?: string | null
   url: string
+  iframeTitle?: string | null
   iframeHeight: string
-  fullHeight: boolean
   hasBorder?: boolean | null
-  allowFullscreen: boolean
-  css?: string | null
   allowGeolocation?: boolean | null
   titleLevelIframeSection?: Enum_Componentsectionsiframe_Titlelevel | null
 }
@@ -17228,6 +17286,17 @@ export const PageSubnavigationEntityFragmentDoc = gql`
   }
   ${PageSlugEntityFragmentDoc}
 `
+export const PageLinkFragmentDoc = gql`
+  fragment PageLink on ComponentBlocksPageLink {
+    label: title
+    page {
+      ...PageSlugEntity
+    }
+    url
+    analyticsId
+  }
+  ${PageSlugEntityFragmentDoc}
+`
 export const AdminGroupEntityFragmentDoc = gql`
   fragment AdminGroupEntity on AdminGroup {
     ...AdminGroupSlugEntity
@@ -17238,9 +17307,13 @@ export const AdminGroupEntityFragmentDoc = gql`
         ...PageSubnavigationEntity
       }
     }
+    submenuPages {
+      ...PageLink
+    }
   }
   ${AdminGroupSlugEntityFragmentDoc}
   ${PageSubnavigationEntityFragmentDoc}
+  ${PageLinkFragmentDoc}
 `
 export const EventPageHeaderSectionFragmentDoc = gql`
   fragment EventPageHeaderSection on ComponentHeaderSectionsEvent {
@@ -17331,11 +17404,9 @@ export const IframeSectionFragmentDoc = gql`
     title
     text
     url
+    iframeTitle
     iframeHeight
-    fullHeight
     hasBorder
-    allowFullscreen
-    css
     allowGeolocation
     titleLevelIframeSection: titleLevel
   }
@@ -17395,17 +17466,6 @@ export const NarrowTextSectionFragmentDoc = gql`
     content
     width
   }
-`
-export const PageLinkFragmentDoc = gql`
-  fragment PageLink on ComponentBlocksPageLink {
-    label: title
-    page {
-      ...PageSlugEntity
-    }
-    url
-    analyticsId
-  }
-  ${PageSlugEntityFragmentDoc}
 `
 export const LinksSectionFragmentDoc = gql`
   fragment LinksSection on ComponentSectionsLinks {

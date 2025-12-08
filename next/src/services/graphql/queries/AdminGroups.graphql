@@ -14,6 +14,9 @@ fragment AdminGroupEntity on AdminGroup {
       ...PageSubnavigationEntity
     }
   }
+  submenuPages {
+    ...PageLink
+  }
 }
 
 fragment PageSubnavigationEntity on Page {

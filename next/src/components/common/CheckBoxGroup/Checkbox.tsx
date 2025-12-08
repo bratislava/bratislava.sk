@@ -14,10 +14,16 @@ const Checkbox = ({ children, value, ...restProps }: RACCheckboxProps) => {
       key={value}
       value={value}
       className={({ isHovered, isDisabled }) => {
-        return cn('base-focus-ring flex items-center gap-3 rounded-sm', {
-          'text-content-active-primary-hover': isHovered,
-          'text-content-active-primary-disabled': isDisabled,
-        })
+        return cn(
+          'base-focus-ring flex items-center gap-3 rounded-sm',
+          {
+            'text-content-active-primary-hover': isHovered,
+            'text-content-active-primary-disabled': isDisabled,
+          },
+          // position:relative prevents modal to jump beyond viewport when checkbox is focused
+          // https://github.com/carbon-design-system/carbon/issues/7682
+          'relative',
+        )
       }}
       {...restProps}
     >
