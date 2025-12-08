@@ -7,8 +7,8 @@ fragment TagEntity on Tag {
   }
 }
 
-query Tags($locale: I18NLocaleCode) {
-  tags(pagination: { limit: -1 }, locale: $locale) {
+query Tags($locale: I18NLocaleCode, $sort: [String] = ["title"]) {
+  tags(pagination: { limit: -1 }, locale: $locale, sort: $sort) {
     ...TagEntity
   }
 }

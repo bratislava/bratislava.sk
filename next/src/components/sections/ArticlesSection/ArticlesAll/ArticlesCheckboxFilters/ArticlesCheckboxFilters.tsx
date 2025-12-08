@@ -27,23 +27,21 @@ const ArticlesCheckboxFilters = ({ filters, onFiltersChange, className }: Props)
     queryKey: ['ArticleCategories', locale],
     queryFn: () => client.ArticleCategories({ locale }),
     staleTime: Infinity,
-    select: (res) =>
-      res.articleCategories.filter(isDefined).sort((a, b) => a.title.localeCompare(b.title)),
+    select: (res) => res.articleCategories.filter(isDefined),
   })
 
   const { data: tags } = useQuery({
     queryKey: ['Tags', locale],
     queryFn: () => client.Tags({ locale }),
     staleTime: Infinity,
-    select: (res) => res.tags.filter(isDefined).sort((a, b) => a.title.localeCompare(b.title)),
+    select: (res) => res.tags.filter(isDefined),
   })
 
   const { data: adminGroups } = useQuery({
     queryKey: ['AdminGroups'],
     queryFn: () => client.AdminGroups(),
     staleTime: Infinity,
-    select: (res) =>
-      res.adminGroups.filter(isDefined).sort((a, b) => a.title.localeCompare(b.title)),
+    select: (res) => res.adminGroups.filter(isDefined),
   })
 
   const { CITY_HALL_ADMINGROUP } = useGetCityHallAdminGroup()
