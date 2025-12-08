@@ -7,6 +7,7 @@ import Button from '@/src/components/common/Button/Button'
 import HorizontalDivider from '@/src/components/common/Divider/HorizontalDivider'
 import MLink from '@/src/components/common/MLink/MLink'
 import { useAdminGroupsContext } from '@/src/components/providers/AdminGroupsContextProvider'
+import { isStarzAdminGroup } from '@/src/utils/adminGroupUtils'
 import { getLinkProps } from '@/src/utils/getLinkProps'
 import { isDefined } from '@/src/utils/isDefined'
 import { useGetLocalisedPage } from '@/src/utils/useGetLocalisedPage'
@@ -29,7 +30,7 @@ const MobileBreadcrumbs = ({ breadcrumbs }: BreadcrumbsProps) => {
   const { adminGroups } = useAdminGroupsContext()
 
   // TODO refactor when more adminGroups are implemented
-  const starzAdminGroup = adminGroups.find((adminGroup) => adminGroup.adminGroupId === 'starz')
+  const starzAdminGroup = adminGroups.find((adminGroup) => isStarzAdminGroup(adminGroup))
 
   const localisedStarzLandingPage = useGetLocalisedPage(starzAdminGroup?.landingPage)
 

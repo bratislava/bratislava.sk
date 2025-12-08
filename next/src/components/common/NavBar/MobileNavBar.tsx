@@ -10,6 +10,7 @@ import MLink from '@/src/components/common/MLink/MLink'
 import AlertBanner from '@/src/components/common/NavBar/AlertBanner'
 import { useAdminGroupsContext } from '@/src/components/providers/AdminGroupsContextProvider'
 import { useLocalizations } from '@/src/components/providers/LocalizationsProvider'
+import { isStarzAdminGroup } from '@/src/utils/adminGroupUtils'
 import cn from '@/src/utils/cn'
 import { getCategoryColorLocalStyle } from '@/src/utils/colors'
 import { getLinkProps } from '@/src/utils/getLinkProps'
@@ -39,7 +40,7 @@ const MobileNavBar = ({ className }: MobileNavBarProps) => {
   }, [pathname, setMobileMenuOpen])
 
   // TODO refactor when more adminGroups will be implemented
-  const starzAdminGroup = adminGroups.find((adminGroup) => adminGroup.adminGroupId === 'starz')
+  const starzAdminGroup = adminGroups.find((adminGroup) => isStarzAdminGroup(adminGroup))
 
   const localisedStarzLandingPage = useGetLocalisedPage(starzAdminGroup?.landingPage)
 

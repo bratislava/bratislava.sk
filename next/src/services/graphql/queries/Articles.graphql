@@ -43,6 +43,9 @@ fragment ArticleEntity on Article {
   inbaRelease {
     ...InbaReleaseCardEntity
   }
+  adminGroups {
+    ...AdminGroupSlugEntity
+  }
 }
 
 query ArticleBySlug($slug: String!, $locale: I18NLocaleCode!) {

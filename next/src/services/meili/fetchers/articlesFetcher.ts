@@ -1,5 +1,5 @@
+import { CITY_HALL_ADMINGROUP_SLUG } from '@/src/utils/adminGroupUtils'
 import { isDefined } from '@/src/utils/isDefined'
-import { useTranslation } from '@/src/utils/useTranslation'
 
 import { meiliClient } from '../meiliClient'
 import { ArticleMeili, SearchIndexWrapped } from '../types'
@@ -14,22 +14,6 @@ export type ArticlesFilters = {
   adminGroupDocumentIds?: string[]
   adminGroupSlugs?: string[]
   inbaReleaseSlugs?: string[]
-}
-
-// "City Hall" is a special option that means articles without any assigned admin group
-// It is not present in the admin groups list in strapi, so we add it here manually
-// TODO Consider adding City Hall as a proper admin group
-const CITY_HALL_ADMINGROUP_SLUG = 'bratislava'
-
-export const useGetCityHallAdminGroup = () => {
-  const { t } = useTranslation()
-
-  const CITY_HALL_ADMINGROUP = {
-    title: t('ArticlesFilterGroup.cityHall'),
-    slug: CITY_HALL_ADMINGROUP_SLUG,
-  }
-
-  return { CITY_HALL_ADMINGROUP }
 }
 
 export const articlesDefaultFilters: Required<ArticlesFilters> = {
