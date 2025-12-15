@@ -4,10 +4,9 @@ import Button from '@/src/components/common/Button/Button'
 import StarzLogo from '@/src/components/common/Logos/StarzLogo'
 import SectionContainer from '@/src/components/layouts/SectionContainer'
 import { AdminGroupEntityFragment } from '@/src/services/graphql'
+import { useGetSubmenuByAdminGroup } from '@/src/utils/adminGroupUtils'
 import cn from '@/src/utils/cn'
 import { getLinkProps } from '@/src/utils/getLinkProps'
-import { isDefined } from '@/src/utils/isDefined'
-import { useGetLocalisedPage } from '@/src/utils/useGetLocalisedPage'
 
 type Props = {
   adminGroup: AdminGroupEntityFragment
@@ -22,9 +21,7 @@ type Props = {
  * TODO make it more generic in future when more organizations need it
  */
 const StarzSubmenu = ({ adminGroup, className }: Props) => {
-  const localisedLandingPage = useGetLocalisedPage(adminGroup.landingPage)
-
-  const submenuPages = adminGroup.submenuPages?.filter(isDefined) ?? []
+  const { adminGroupLandingPage, submenuPages } = useGetSubmenuByAdminGroup(adminGroup)
 
   // Beware of paddings, margins and gaps - they are used to enlarge clickable/touchable area of links, and they are carefully set to fit Figma design together
   return (
@@ -32,7 +29,7 @@ const StarzSubmenu = ({ adminGroup, className }: Props) => {
       <div className="flex gap-6">
         <StarzLogo
           variant="white"
-          linkProps={getLinkProps({ page: localisedLandingPage })}
+          linkProps={getLinkProps({ page: adminGroupLandingPage })}
           className="-m-2 self-center p-2"
         />
         <div className="my-4 border-l" aria-hidden />

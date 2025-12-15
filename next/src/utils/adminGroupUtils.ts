@@ -1,5 +1,10 @@
-import { AdminGroupSlugEntityFragment, Maybe } from '@/src/services/graphql'
+import {
+  AdminGroupEntityFragment,
+  AdminGroupSlugEntityFragment,
+  Maybe,
+} from '@/src/services/graphql'
 import { isDefined } from '@/src/utils/isDefined'
+import { useGetLocalisedPage } from '@/src/utils/useGetLocalisedPage'
 import { useTranslation } from '@/src/utils/useTranslation'
 
 // "City Hall" is a special option that means articles without any assigned admin group
@@ -34,4 +39,11 @@ export const isStarzAdminGroup = (
 
 export const isCityHallAdminGroup = (adminGroup: AdminGroupSlugEntityFragment) => {
   return adminGroup?.slug === CITY_HALL_ADMINGROUP_SLUG
+}
+
+export const useGetSubmenuByAdminGroup = (adminGroup: AdminGroupEntityFragment | undefined) => {
+  const localisedLandingPage = useGetLocalisedPage(adminGroup?.landingPage)
+  const submenuPages = adminGroup?.submenuPages?.filter(isDefined) ?? []
+
+  return { adminGroupLandingPage: localisedLandingPage, submenuPages }
 }
