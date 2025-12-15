@@ -30,7 +30,7 @@ const MobileBreadcrumbs = ({ breadcrumbs }: BreadcrumbsProps) => {
 
   // TODO refactor when more adminGroups are implemented
   const starzAdminGroup = adminGroups.find((adminGroup) => isStarzAdminGroup(adminGroup))
-  const showSecondaryMenu = !!starzAdminGroup
+  const showSubmenu = !!starzAdminGroup
 
   const { submenuPages } = useGetSubmenuByAdminGroup(starzAdminGroup)
 
@@ -63,10 +63,10 @@ const MobileBreadcrumbs = ({ breadcrumbs }: BreadcrumbsProps) => {
             <ChevronDownIcon className="size-5 shrink-0 transition-transform group-open:rotate-180" />
           </summary>
           <div>
-            {showSecondaryMenu && (
+            {showSubmenu && (
               <>
                 <div className="flex flex-col gap-4 py-4">
-                  <Typography variant="h5">{t('MobileNavBar.secondaryMenu')}</Typography>
+                  <Typography variant="h5">{t('MobileNavBar.submenu.title')}</Typography>
                   <ol className="flex flex-col gap-0.5">
                     {submenuPages.filter(isDefined).map((page, index) => {
                       const pageLinkProps = getLinkProps(page)

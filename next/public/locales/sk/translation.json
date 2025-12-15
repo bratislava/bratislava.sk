@@ -112,7 +112,7 @@
   "MinimumCalculator.title": "Kalkulačka na životné minimum",
   "MobileNavBar.closeMenu": "Zavrieť menu",
   "MobileNavBar.openMenu": "Otvor menu",
-  "MobileNavBar.secondaryMenu": "Menu",
+  "MobileNavBar.submenu.title": "Menu",
   "MobileNavMenuContent.goBackToMainCategories": "Späť na hlavné kategórie",
   "NavMenu.aria.navMenuLabel": "Navigačné menu",
   "NavMenu.more": "Ďalšie",
