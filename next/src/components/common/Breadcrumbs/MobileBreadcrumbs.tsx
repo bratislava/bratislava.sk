@@ -7,10 +7,9 @@ import Button from '@/src/components/common/Button/Button'
 import HorizontalDivider from '@/src/components/common/Divider/HorizontalDivider'
 import MLink from '@/src/components/common/MLink/MLink'
 import { useAdminGroupsContext } from '@/src/components/providers/AdminGroupsContextProvider'
-import { isStarzAdminGroup } from '@/src/utils/adminGroupUtils'
+import { isStarzAdminGroup, useGetSubmenuByAdminGroup } from '@/src/utils/adminGroupUtils'
 import { getLinkProps } from '@/src/utils/getLinkProps'
 import { isDefined } from '@/src/utils/isDefined'
-import { useGetLocalisedPage } from '@/src/utils/useGetLocalisedPage'
 import { useTranslation } from '@/src/utils/useTranslation'
 
 const goBack = () => {
@@ -31,10 +30,9 @@ const MobileBreadcrumbs = ({ breadcrumbs }: BreadcrumbsProps) => {
 
   // TODO refactor when more adminGroups are implemented
   const starzAdminGroup = adminGroups.find((adminGroup) => isStarzAdminGroup(adminGroup))
-
-  const localisedStarzLandingPage = useGetLocalisedPage(starzAdminGroup?.landingPage)
-
   const showSecondaryMenu = !!starzAdminGroup
+
+  const { submenuPages } = useGetSubmenuByAdminGroup(starzAdminGroup)
 
   return (
     <div className="relative">
@@ -70,25 +68,19 @@ const MobileBreadcrumbs = ({ breadcrumbs }: BreadcrumbsProps) => {
                 <div className="flex flex-col gap-4 py-4">
                   <Typography variant="h5">{t('MobileNavBar.secondaryMenu')}</Typography>
                   <ol className="flex flex-col gap-0.5">
-                    {localisedStarzLandingPage?.childPages
-                      .filter(isDefined)
-                      .map((childPage, index) => {
-                        const childPageLinkProps = getLinkProps({ page: childPage })
+                    {submenuPages.filter(isDefined).map((page, index) => {
+                      const pageLinkProps = getLinkProps(page)
 
-                        return (
-                          // eslint-disable-next-line react/no-array-index-key
-                          <li className="text-size-p-tiny font-medium" key={index}>
-                            <MLink
-                              variant="underlined"
-                              className="flex gap-2"
-                              {...childPageLinkProps}
-                            >
-                              <ArrowRightIcon className="size-5 shrink-0" />
-                              {childPageLinkProps.children}
-                            </MLink>
-                          </li>
-                        )
-                      })}
+                      return (
+                        // eslint-disable-next-line react/no-array-index-key
+                        <li className="text-size-p-tiny font-medium" key={index}>
+                          <MLink variant="underlined" className="flex gap-2" {...pageLinkProps}>
+                            <ArrowRightIcon className="size-5 shrink-0" />
+                            {pageLinkProps.children}
+                          </MLink>
+                        </li>
+                      )
+                    })}
                   </ol>
                 </div>
                 <HorizontalDivider className="border-category-400" />

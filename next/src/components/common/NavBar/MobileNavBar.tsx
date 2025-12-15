@@ -10,11 +10,10 @@ import MLink from '@/src/components/common/MLink/MLink'
 import AlertBanner from '@/src/components/common/NavBar/AlertBanner'
 import { useAdminGroupsContext } from '@/src/components/providers/AdminGroupsContextProvider'
 import { useLocalizations } from '@/src/components/providers/LocalizationsProvider'
-import { isStarzAdminGroup } from '@/src/utils/adminGroupUtils'
+import { isStarzAdminGroup, useGetSubmenuByAdminGroup } from '@/src/utils/adminGroupUtils'
 import cn from '@/src/utils/cn'
 import { getCategoryColorLocalStyle } from '@/src/utils/colors'
 import { getLinkProps } from '@/src/utils/getLinkProps'
-import { useGetLocalisedPage } from '@/src/utils/useGetLocalisedPage'
 import { useTranslation } from '@/src/utils/useTranslation'
 
 import MobileNavMenu from './NavMenu/MobileNavMenu'
@@ -42,7 +41,7 @@ const MobileNavBar = ({ className }: MobileNavBarProps) => {
   // TODO refactor when more adminGroups will be implemented
   const starzAdminGroup = adminGroups.find((adminGroup) => isStarzAdminGroup(adminGroup))
 
-  const localisedStarzLandingPage = useGetLocalisedPage(starzAdminGroup?.landingPage)
+  const { adminGroupLandingPage } = useGetSubmenuByAdminGroup(starzAdminGroup)
 
   return (
     <div className={className}>
@@ -51,10 +50,10 @@ const MobileNavBar = ({ className }: MobileNavBarProps) => {
           <div className="fixed top-0 z-30 flex h-14 w-full items-center justify-between border-b bg-white px-4 text-grey-700">
             <div className="flex gap-4 divide-x py-3">
               <Brand className="-ml-4 px-4" />
-              {starzAdminGroup ? (
+              {adminGroupLandingPage ? (
                 <StarzLogo
                   variant="dark-blue"
-                  linkProps={getLinkProps({ page: localisedStarzLandingPage })}
+                  linkProps={getLinkProps({ page: adminGroupLandingPage })}
                   className="-m-2 h-5.5 shrink-0 p-2"
                 />
               ) : null}
