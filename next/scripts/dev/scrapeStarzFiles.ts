@@ -314,6 +314,10 @@ const normalizeFileName = (fileName: string): string => {
   // Replace all-caps terms with proper case
   const replacements: Array<[string, string]> = [
     ['ZMLUVA O DIELO', 'Zmluva o dielo'],
+    ['ZMLUVA O VYTVORENÍ DIELA', 'Zmluva o vytvorení diela'],
+    ['ZMLUVA O PRIPOJENÍ', 'Zmluva o pripojení'],
+    ['ZMLUVA O POSKYTOVANÍ SLUŽIEB', 'Zmluva o poskytovaní služieb'],
+    ['ZMLUVA O SERVISNÝCH SLUŽBÁCH', 'Zmluva o servisných službách'],
     [
       'ZMLUVA O POSKYTOVANÍ PRÍSTUPU DO SIETE INTERNET',
       'Zmluva o poskytovaní prístupu do siete internet',
@@ -324,6 +328,7 @@ const normalizeFileName = (fileName: string): string => {
       'VYHLÁSENIE VÝSLEDKOV OBCHODNÝCH VEREJNÝCH SÚŤAŽÍ',
       'Vyhlásenie výsledkov obchodných verejných súťaží',
     ],
+    ['VYHLÁSENIE VÝSLEDKOV OVS', 'Vyhlásenie výsledkov obchodných verejných súťaží'],
     [
       'VYHODNOTENIE OPAKOVANÉHO PONUKOVÉHO KONANIA LK MIČURÍN',
       'Vyhodnotenie opakovaného ponukového konania LK Mičurín',
@@ -333,6 +338,10 @@ const normalizeFileName = (fileName: string): string => {
       'Oznámenie o zrušení obchodnej verejnej súťaže',
     ],
     ['VYHLÁSENIE OBCHODNEJ VEREJNEJ SÚŤAŽE', 'Vyhlásenie obchodnej verejnej súťaže'],
+    [
+      'VEREJNÁ SÚŤAŽ NA PRENÁJOM NEBYTOVÝCH PRIESTOROV',
+      'Vyhlásenie obchodnej verejnej súťaže na prenájom nebytových priestorov',
+    ],
     ['VYHLÁSENIE ZÁMERU', 'Vyhlásenie zámeru'],
     ['DODATOK', 'Dodatok'],
   ]
