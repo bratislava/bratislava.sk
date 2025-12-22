@@ -1,3 +1,4 @@
+/* eslint-disable sonarjs/cognitive-complexity,no-restricted-syntax */
 /**
  * Scrapes files from old.starz.sk website and exports to CSV
  *
