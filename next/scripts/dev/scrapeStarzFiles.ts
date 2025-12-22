@@ -230,6 +230,17 @@ const mapToStrapiCategory = (oldCategory: string, parentCategory: string): Strap
 // Escape quotes in CSV
 const escapeCsv = (str: string) => `"${str.replaceAll('"', '""')}"`
 
+// Check if category should be skipped
+const shouldSkipCategory = (category: string): boolean => {
+  const catLower = category.toLowerCase()
+
+  return (
+    catLower.includes('kalendár podujatí - zimný štadión ondreja nepelu') ||
+    catLower.includes('profil verejného obstarávateľa') ||
+    catLower.includes('zimný štadión ondreja nepelu')
+  )
+}
+
 // Clarify old category based on mapping rules
 const clarifyOldCategory = (oldCategory: string, dateOfCreation: string): string => {
   // Extract year from dateOfCreation (format: DD.MM.YYYY)
@@ -436,6 +447,11 @@ const scrapePage = async (
       const categoryMatch = liText.match(/zložka dokumentov:\s*([^\n]+)/i)
       const itemCategory = categoryMatch ? categoryMatch[1]?.trim() || '' : 'Unknown'
 
+      // Skip certain categories
+      if (shouldSkipCategory(itemCategory)) {
+        return
+      }
+
       // Extract file name - get text from bold link
       let fileName = $link.find('strong').text().trim() || $link.text().trim()
       // Remove [PDF, size] pattern
@@ -595,6 +611,11 @@ const scrapePage = async (
           descText = descText.replaceAll(/[\t ]+/g, ' ').trim()
           description = descText
         }
+      }
+
+      // Skip certain categories
+      if (shouldSkipCategory(currentCategory || '') || shouldSkipCategory(parentCategory || '')) {
+        return
       }
 
       // Build full URL
