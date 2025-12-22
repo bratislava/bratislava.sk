@@ -4,6 +4,8 @@
  * Usage:
  * 1. Install dependencies: npm install cheerio @types/cheerio --save-dev
  * 2. Run: npx ts-node scripts/dev/scrapeStarzFiles.ts
+ * 3. Skip validation: npx ts-node scripts/dev/scrapeStarzFiles.ts --skip-validation
+ *    Or set env var: SKIP_VALIDATION=true npx ts-node scripts/dev/scrapeStarzFiles.ts
  *
  * Output: starz_files_export.csv in scripts/dev/
  */
@@ -412,6 +414,8 @@ const scrapePage = async (
       $liClone.find('a').remove()
       let descText = $liClone.text().trim()
 
+      // Remove file format/size pattern like "[PDF, 220 kB]"
+      descText = descText.replaceAll(/\s*\[(pdf|doc|docx|xls|xlsx|zip|rar|txt)[^\]]*]/gi, '').trim()
       // Remove date pattern if present
       descText = descText.replace(/\((?:\d{1,2}\.){2}\d{4}\)/, '').trim()
       // Remove "Zložka dokumentov: ..." part and everything after it
@@ -419,9 +423,11 @@ const scrapePage = async (
       if (categoryIndex !== -1) {
         descText = descText.slice(0, categoryIndex).trim()
       }
-      // Clean up multiple spaces and newlines
+      // Clean up multiple spaces but keep newlines
       if (descText) {
-        description = normalizeFileName(descText.replaceAll(/\n+/g, ' ').replaceAll(/\s+/g, ' '))
+        // Normalize multiple spaces to single space, but preserve newlines
+        descText = descText.replaceAll(/[\t ]+/g, ' ').trim()
+        description = descText
       }
 
       // Build full URL
@@ -518,11 +524,17 @@ const scrapePage = async (
       if (linkIndex !== -1) {
         // Get text after the link
         let descText = parentText.slice(linkIndex + text.length)
+        // Remove file format/size pattern like "[PDF, 220 kB]"
+        descText = descText
+          .replaceAll(/\s*\[(pdf|doc|docx|xls|xlsx|zip|rar|txt)[^\]]*]/gi, '')
+          .trim()
         // Remove date pattern if present
         descText = descText.replace(/\((?:\d{1,2}\.){2}\d{4}\)/, '').trim()
-        // Clean up multiple spaces and newlines
+        // Clean up multiple spaces but keep newlines
         if (descText) {
-          description = normalizeFileName(descText.replaceAll(/\n+/g, ' ').replaceAll(/\s+/g, ' '))
+          // Normalize multiple spaces to single space, but preserve newlines
+          descText = descText.replaceAll(/[\t ]+/g, ' ').trim()
+          description = descText
         }
       }
 
@@ -632,6 +644,12 @@ const scrapePage = async (
 }
 
 const main = async () => {
+  // Check for skip validation flag
+  const skipValidation =
+    process.argv.includes('--skip-validation') ||
+    process.argv.includes('--no-validation') ||
+    process.env.SKIP_VALIDATION === 'true'
+
   const baseUrl =
     'https://old.starz.sk/vismo/zobraz_dok.asp?hledani=1&datum_do=&id_org=600167&datum_od=1%2E1%2E2015&query=&strVlastnik=&kontext=1&archiv=1&submit=Vyh%C4%BEada%C5%A5&tzv=1&pocet=25&stranka=1'
   const allFiles: FileEntry[] = []
@@ -642,6 +660,9 @@ const main = async () => {
   const maxPages = 100
 
   console.log('Starting scrape...')
+  if (skipValidation) {
+    console.log('URL validation: SKIPPED')
+  }
 
   // First pass: collect all files
   while (currentUrl && pageCount < maxPages) {
@@ -681,32 +702,38 @@ const main = async () => {
     }
   }
 
-  console.log(`\nCollected ${allFiles.length} files. Validating URLs...`)
+  // Second pass: validate URLs (if not skipped)
+  let validFiles: FileEntry[]
+  if (skipValidation) {
+    console.log(`\nSkipping URL validation. Using all ${allFiles.length} collected files.`)
+    validFiles = allFiles
+  } else {
+    console.log(`\nCollected ${allFiles.length} files. Validating URLs...`)
 
-  // Second pass: validate URLs
-  const validFiles: FileEntry[] = []
-  for (let i = 0; i < allFiles.length; i += 1) {
-    const file = allFiles[i]
-    process.stdout.write(
-      `\rValidating ${i + 1}/${allFiles.length}: ${file.fileName.slice(0, 50)}...`,
-    )
+    validFiles = []
+    for (let i = 0; i < allFiles.length; i += 1) {
+      const file = allFiles[i]
+      process.stdout.write(
+        `\rValidating ${i + 1}/${allFiles.length}: ${file.fileName.slice(0, 50)}...`,
+      )
 
-    const isValid = await isValidFileUrl(file.fileUrl)
-    if (isValid) {
-      validFiles.push(file)
-    } else {
-      console.log(`\n  ✗ Skipped (HTML or invalid): ${file.fileName}`)
+      const isValid = await isValidFileUrl(file.fileUrl)
+      if (isValid) {
+        validFiles.push(file)
+      } else {
+        console.log(`\n  ✗ Skipped (HTML or invalid): ${file.fileName}`)
+      }
+
+      // Small delay
+      if (i % 10 === 0) {
+        await new Promise((resolve) => {
+          setTimeout(resolve, 200)
+        })
+      }
     }
 
-    // Small delay
-    if (i % 10 === 0) {
-      await new Promise((resolve) => {
-        setTimeout(resolve, 200)
-      })
-    }
+    console.log('\n')
   }
-
-  console.log('\n')
 
   // Write CSV
   const csvHeader =
