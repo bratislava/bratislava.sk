@@ -31,7 +31,7 @@ interface FileEntry {
   fileUrl: string
   dateOfCreation: string
   oldCategory: string
-  parentOldCategory: string
+  clarifiedOldCategory: string
   newCategory: string
   strapiCategoryId: number
   strapiDocumentId: string
@@ -229,6 +229,65 @@ const mapToStrapiCategory = (oldCategory: string, parentCategory: string): Strap
 
 // Escape quotes in CSV
 const escapeCsv = (str: string) => `"${str.replaceAll('"', '""')}"`
+
+// Clarify old category based on mapping rules
+const clarifyOldCategory = (oldCategory: string, dateOfCreation: string): string => {
+  // Extract year from dateOfCreation (format: DD.MM.YYYY)
+  let year = ''
+  if (dateOfCreation) {
+    const dateYearMatch = dateOfCreation.match(/(\d{4})/)
+    if (dateYearMatch) {
+      year = dateYearMatch[1] || ''
+    }
+  }
+
+  // If no year found, use current year as fallback
+  if (!year) {
+    year = new Date().getFullYear().toString()
+  }
+
+  const catLower = oldCategory.toLowerCase().trim()
+
+  // "Prijaté objednávky" -> "Prijaté objednávky YYYY"
+  if (catLower === 'prijaté objednávky' || catLower === 'prijate objednavky') {
+    return `Prijaté objednávky ${year}`
+  }
+
+  // "Objednávky 2017,2018" -> "Objednávky YYYY" (use year from dateOfCreation)
+  if (/objednávky\s+\d{4}[\s,]+\d{4}/i.test(oldCategory)) {
+    return `Objednávky ${year}`
+  }
+
+  // "Prijaté objednávky od 1.10.2016" -> "Prijaté objednávky 2016"
+  const prijateOdMatch = oldCategory.match(/prijaté\s+objednávky\s+od\s+(?:\d{1,2}\.){2}(\d{4})/i)
+  if (prijateOdMatch) {
+    return `Prijaté objednávky ${prijateOdMatch[1]}`
+  }
+
+  // "STARZ od 1.10.2016" -> "Objednávky 2016"
+  const starzOdMatch = oldCategory.match(/starz\s+od\s+(?:\d{1,2}\.){2}(\d{4})/i)
+  if (starzOdMatch) {
+    return `Objednávky ${starzOdMatch[1]}`
+  }
+
+  // "Ekonomický útvar" -> "Objednávky YYYY"
+  if (catLower === 'ekonomický útvar' || catLower === 'ekonomicky utvar') {
+    return `Objednávky ${year}`
+  }
+
+  // "Technický útvar" -> "Objednávky YYYY"
+  if (catLower === 'technický útvar' || catLower === 'technicky utvar') {
+    return `Objednávky ${year}`
+  }
+
+  // "Útvar marketingu a športu" -> "Objednávky YYYY"
+  if (catLower === 'útvar marketingu a športu' || catLower === 'utvar marketingu a sportu') {
+    return `Objednávky ${year}`
+  }
+
+  // Default: return original category
+  return oldCategory
+}
 
 // Normalize file name: trim whitespace, replace multiple spaces, fix specific patterns
 const normalizeFileName = (fileName: string): string => {
@@ -446,7 +505,7 @@ const scrapePage = async (
         fileUrl,
         dateOfCreation,
         oldCategory: itemCategory,
-        parentOldCategory: '',
+        clarifiedOldCategory: clarifyOldCategory(itemCategory, dateOfCreation),
         newCategory: strapiCategory.name,
         strapiCategoryId: strapiCategory.id,
         strapiDocumentId: strapiCategory.documentId,
@@ -554,7 +613,7 @@ const scrapePage = async (
         fileUrl,
         dateOfCreation,
         oldCategory: currentCategory || 'Unknown',
-        parentOldCategory: parentCategory || '',
+        clarifiedOldCategory: clarifyOldCategory(currentCategory || 'Unknown', dateOfCreation),
         newCategory: strapiCategory.name,
         strapiCategoryId: strapiCategory.id,
         strapiDocumentId: strapiCategory.documentId,
@@ -737,11 +796,11 @@ const main = async () => {
 
   // Write CSV
   const csvHeader =
-    'fileName,format,mimeType,fileUrl,dateOfCreation,oldCategory,parentOldCategory,newCategory,id,documentId,description\n'
+    'fileName,format,mimeType,fileUrl,dateOfCreation,oldCategory,clarifiedOldCategory,newCategory,id,documentId,description\n'
   const csvRows = validFiles
     .map(
       (file) =>
-        `${escapeCsv(file.fileName)},${escapeCsv(file.format)},${escapeCsv(file.mimeType)},${escapeCsv(file.fileUrl)},${escapeCsv(file.dateOfCreation)},${escapeCsv(file.oldCategory)},${escapeCsv(file.parentOldCategory)},${escapeCsv(file.newCategory)},${file.strapiCategoryId},${escapeCsv(file.strapiDocumentId)},${escapeCsv(file.description)}`,
+        `${escapeCsv(file.fileName)},${escapeCsv(file.format)},${escapeCsv(file.mimeType)},${escapeCsv(file.fileUrl)},${escapeCsv(file.dateOfCreation)},${escapeCsv(file.oldCategory)},${escapeCsv(file.clarifiedOldCategory)},${escapeCsv(file.newCategory)},${file.strapiCategoryId},${escapeCsv(file.strapiDocumentId)},${escapeCsv(file.description)}`,
     )
     .join('\n')
 
