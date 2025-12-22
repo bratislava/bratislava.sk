@@ -243,7 +243,22 @@ const shouldSkipCategory = (category: string): boolean => {
 }
 
 // Clarify old category based on mapping rules
-const clarifyOldCategory = (oldCategory: string, dateOfCreation: string): string => {
+const clarifyOldCategory = (
+  oldCategory: string,
+  dateOfCreation: string,
+  fileName?: string,
+): string => {
+  // Check if title (fileName or oldCategory) contains obchodná verejná súťaž terms
+  const searchText = `${oldCategory} ${fileName || ''}`.toLowerCase()
+  if (
+    searchText.includes('obchodnej verejnej súťaže') ||
+    searchText.includes('obchodná verejná súťaž') ||
+    searchText.includes('verejná súťaž') ||
+    searchText.includes('obchodných verejných súťaží')
+  ) {
+    return 'Obchodné verejné súťaže'
+  }
+
   // Extract year from dateOfCreation (format: DD.MM.YYYY)
   let year = ''
   if (dateOfCreation) {
@@ -531,7 +546,7 @@ const scrapePage = async (
         fileUrl,
         dateOfCreation,
         oldCategory: itemCategory,
-        clarifiedOldCategory: clarifyOldCategory(itemCategory, dateOfCreation),
+        clarifiedOldCategory: clarifyOldCategory(itemCategory, dateOfCreation, fileName),
         newCategory: strapiCategory.name,
         strapiCategoryId: strapiCategory.id,
         strapiDocumentId: strapiCategory.documentId,
@@ -644,7 +659,11 @@ const scrapePage = async (
         fileUrl,
         dateOfCreation,
         oldCategory: currentCategory || 'Unknown',
-        clarifiedOldCategory: clarifyOldCategory(currentCategory || 'Unknown', dateOfCreation),
+        clarifiedOldCategory: clarifyOldCategory(
+          currentCategory || 'Unknown',
+          dateOfCreation,
+          fileName,
+        ),
         newCategory: strapiCategory.name,
         strapiCategoryId: strapiCategory.id,
         strapiDocumentId: strapiCategory.documentId,
