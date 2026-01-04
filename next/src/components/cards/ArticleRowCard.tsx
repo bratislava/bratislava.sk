@@ -68,7 +68,6 @@ const ArticleRowCard = ({
           {metadata?.length ? (
             <div>
               {metadata.map((metaDataItem, index) => (
-                 
                 <Typography key={index} variant="p-small">
                   {metaDataItem}
                 </Typography>

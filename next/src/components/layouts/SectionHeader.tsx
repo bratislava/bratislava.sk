@@ -38,7 +38,6 @@ const SectionHeader = ({
   excludeFromTableOfContents = false,
   showMoreLink,
   className,
-   
 }: SectionHeaderProps) => {
   if (!title && !text && !showMoreLink) {
     return null
