@@ -32,6 +32,8 @@ export const officialBoardListFetcher = async (filters: OfficialBoardListFilters
       filters.search ? `search=${filters.search}` : '',
       filters.pageSize ? `pageSize=${filters.pageSize.toString()}` : '',
       filters.page ? `page=${filters.page.toString()}` : '',
+      // TODO revisit this
+      // eslint-disable-next-line @typescript-eslint/no-base-to-string
       filters.publicationState ? `publicationState=${filters.publicationState}` : '',
       filters.categoryId ? `categoryId=${filters.categoryId}` : '',
     ]

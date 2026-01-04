@@ -104,7 +104,9 @@ const NavMenuContent = ({
           <div
             className="flex border-b p-8"
             // Together with onCLick in Viewport, it closes the menu on click outside of container area
-            onClick={(event) => event.stopPropagation()}
+            onClick={(event) => {
+              event.stopPropagation()
+            }}
           >
             <NavMenuLink variant="goToCategoryLink" {...seeAllLinkProps} />
           </div>

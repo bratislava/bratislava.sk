@@ -25,7 +25,12 @@ const NavMenuLink = ({ variant, subtext, ariaLabel, ...restLinkProps }: NavMenuL
       return (
         <div className="wrapper-focus-ring flex w-full flex-col gap-2 focus-within:rounded-sm">
           <div className="flex items-center">
-            <NavigationMenu.Link asChild onClick={() => setMobileMenuOpen(false)}>
+            <NavigationMenu.Link
+              asChild
+              onClick={() => {
+                setMobileMenuOpen(false)
+              }}
+            >
               <Button
                 variant="link"
                 className="w-full justify-between py-1 text-size-h5 font-semibold no-underline hover:underline"
@@ -45,7 +50,9 @@ const NavMenuLink = ({ variant, subtext, ariaLabel, ...restLinkProps }: NavMenuL
         <NavigationMenu.Link
           asChild
           aria-label={ariaLabel}
-          onClick={() => setMobileMenuOpen(false)}
+          onClick={() => {
+            setMobileMenuOpen(false)
+          }}
         >
           <Button
             variant="link"
