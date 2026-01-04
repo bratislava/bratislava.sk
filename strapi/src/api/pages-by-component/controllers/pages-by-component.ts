@@ -23,23 +23,30 @@ export default {
   getPagesByComponent: async (ctx: ControllerContext) => {
     try {
       const strapi = ctx.state.strapi
-      const { component } = ctx.query
+      const { component, locale } = ctx.query
+      const pagination = ctx.query.pagination as
+        | { page?: number | string; pageSize?: number | string }
+        | undefined
 
       if (!component || typeof component !== 'string') {
         ctx.badRequest('Component parameter is required')
         return
       }
 
+      const selectedLocale = typeof locale === 'string' ? locale : 'sk'
+      const page = pagination?.page ? Number(pagination.page) : 1
+      const pageSize = pagination?.pageSize ? Number(pagination.pageSize) : 10
+
       const allPages = await strapi.documents('api::page.page').findMany({
-        locale: 'sk',
+        locale: selectedLocale,
         populate: {
           sections: true,
         },
       })
 
       const filteredPages = allPages
-        .filter((page) => {
-          const sections = 'sections' in page ? page.sections : undefined
+        .filter((pageItem) => {
+          const sections = 'sections' in pageItem ? pageItem.sections : undefined
           if (!Array.isArray(sections)) {
             return false
           }
@@ -52,14 +59,28 @@ export default {
             )
           })
         })
-        .map((page) => ({
-          id: page.id,
-          documentId: page.documentId,
-          title: page.title || 'Untitled',
-          locale: page.locale,
+        .map((pageItem) => ({
+          id: pageItem.id,
+          documentId: pageItem.documentId,
+          title: pageItem.title || 'Untitled',
+          locale: pageItem.locale,
         }))
 
-      return { pages: filteredPages }
+      const total = filteredPages.length
+      const pageCount = Math.ceil(total / pageSize)
+      const start = (page - 1) * pageSize
+      const end = start + pageSize
+      const paginatedPages = filteredPages.slice(start, end)
+
+      return {
+        pages: paginatedPages,
+        pagination: {
+          page,
+          pageSize,
+          pageCount,
+          total,
+        },
+      }
     } catch (error) {
       const message = error instanceof Error ? error.message : 'Unknown error'
       ctx.internalServerError(`Failed to fetch pages: ${message}`)
