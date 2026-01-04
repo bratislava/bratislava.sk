@@ -31,7 +31,6 @@ export const registerDocumentServiceMiddlewares = ({ strapi }: { strapi: Core.St
   // TODO refactor to allow more adminGroup values
   const STARZ_ADMINGROUP_ID = 'starz' // adminGroupId of AdminGroup collection in Strapi,
   const STARZ_ROLE_NAME_REGEX = 'starz' // Admin role name in Strapi
-  const STARZ_ARTICLE_TAG_TITLE = 'Šport' // Tag name to be added to starz articles on creation (works out of box on both locales)
 
   strapi.documents.use(async (context, next) => {
     if (
@@ -65,7 +64,7 @@ export const registerDocumentServiceMiddlewares = ({ strapi }: { strapi: Core.St
           strapi,
         })
 
-        // TODO extract this as a function and unify with tags relation assignment
+        // TODO extract this as a function
         if (document.adminGroups && 'connect' in document.adminGroups) {
           // Some value(s) in adminGroups already present
           document.adminGroups = {
@@ -81,46 +80,6 @@ export const registerDocumentServiceMiddlewares = ({ strapi }: { strapi: Core.St
           document.adminGroups = {
             ...document.adminGroups,
             connect: [adminGroupToAssign.documentId],
-          }
-        }
-
-        // Add 'sport' tag if article is created
-        if (context.uid === 'api::article.article') {
-          const article = context.params.data
-          try {
-            const tagToAssign = await strapi.db.query('api::tag.tag').findOne({
-              where: {
-                title: { $eq: STARZ_ARTICLE_TAG_TITLE },
-              },
-            })
-
-            if (!tagToAssign)
-              console.log(`No tag with name ${STARZ_ARTICLE_TAG_TITLE} found in database`)
-
-            // TODO extract this as a function and unify with adminGroups relation assignment
-            if (article.tags && 'connect' in article.tags) {
-              // Some value(s) in tags already present
-              article.tags = {
-                ...article.tags,
-                connect: [
-                  // Take ids of previous tags and add new tag
-                  ...article.tags.connect.map((relationItem) => relationItem.documentId),
-                  tagToAssign.documentId,
-                ],
-              }
-            } else {
-              // No values in tags relation, so we need to establish it
-              article.tags = {
-                ...article.tags,
-                connect: [tagToAssign.documentId],
-              }
-            }
-          } catch (error) {
-            console.log(
-              `Failed to assign tag ${STARZ_ARTICLE_TAG_TITLE}
-                to article with documentId: ${article.documentId}`
-            )
-            console.log(error)
           }
         }
       }

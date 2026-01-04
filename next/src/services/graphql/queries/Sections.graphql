@@ -34,20 +34,18 @@ fragment ArticlesSection on ComponentSectionsArticles {
   category {
     ...PageCategoryEntity
   }
+  articleCategories {
+    ...ArticleCategoryEntity
+  }
   tags {
     ...TagEntity
   }
   adminGroups {
-    ...AdminGroupDocumentIdEntity
+    ...AdminGroupSlugEntity
   }
   showMoreLink {
     ...CommonLink
   }
-}
-
-fragment InbaArticlesListSection on ComponentSectionsInbaArticlesList {
-  title
-  text
 }
 
 fragment InbaReleasesSection on ComponentSectionsInbaReleases {
@@ -90,11 +88,9 @@ fragment IframeSection on ComponentSectionsIframe {
   title
   text
   url
-  iframeWidth
+  iframeTitle
   iframeHeight
-  fullHeight
-  allowFullscreen
-  css
+  hasBorder
   allowGeolocation
   titleLevelIframeSection: titleLevel
 }
@@ -513,15 +509,6 @@ fragment NewsletterSection on ComponentSectionsNewsletter {
   instagramUrl
 }
 
-fragment InbaLatestReleaseSection on ComponentSectionsInbaLatestRelease {
-  articles {
-    ...ArticleCardEntity
-  }
-  allReleasesPage {
-    ...PageSlugEntity
-  }
-}
-
 fragment Sections on PageSectionsDynamicZone {
   __typename
 
@@ -583,10 +570,6 @@ fragment Sections on PageSectionsDynamicZone {
 
   ... on ComponentSectionsArticles {
     ...ArticlesSection
-  }
-
-  ... on ComponentSectionsInbaArticlesList {
-    ...InbaArticlesListSection
   }
 
   ... on ComponentSectionsInbaReleases {
@@ -663,9 +646,7 @@ fragment Sections on PageSectionsDynamicZone {
     ...NewsletterSection
   }
 
-  ... on ComponentSectionsInbaLatestRelease {
-    ...InbaLatestReleaseSection
-  }
+  # ComponentSectionsInbaLatestRelease has no attributes
 }
 
 fragment EventPageHeaderSection on ComponentHeaderSectionsEvent {

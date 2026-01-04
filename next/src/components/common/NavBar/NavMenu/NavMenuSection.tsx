@@ -1,40 +1,33 @@
-import { Typography } from '@bratislava/component-library'
 import React from 'react'
 
+import NavMenuLink from '@/src/components/common/NavBar/NavMenu/NavMenuLink'
+import { MenuSection } from '@/src/components/common/NavBar/NavMenu/navMenuTypes'
 import Pictogram from '@/src/components/common/Pictogram/Pictogram'
-import cn from '@/src/utils/cn'
-
-import NavMenuLink from './NavMenuLink'
-import { MenuSection } from './navMenuTypes'
 
 type NavigationSectionProps = {
   section: MenuSection
-  classNames?: string
 }
 
-const NavMenuSection = ({ section, classNames }: NavigationSectionProps) => {
-  return (
-    <li className={cn('flex gap-2', classNames)}>
-      {section.icon && (
-        <div aria-hidden>
-          <Pictogram iconName={section.icon} className="size-10" />
-        </div>
-      )}
-      <div className="w-full">
-        {section.label && (
-          <Typography variant="h5" as="h3" className="mt-1.5">
-            {section.label}
-          </Typography>
-        )}
+/**
+ * Figma: https://www.figma.com/design/17wbd0MDQcMW9NbXl6UPs8/DS--Component-library?node-id=19079-20827&m=dev
+ */
 
-        <ul className="mt-1.5 flex flex-col">
-          {section.items?.map((menuLink, index) => {
-            return <NavMenuLink key={index} {...menuLink} />
-          })}
-          {section.showMoreLink ? (
-            <NavMenuLink variant="showMoreLink" {...section.showMoreLink} />
-          ) : null}
-        </ul>
+const NavMenuSection = ({ section }: NavigationSectionProps) => {
+  const { icon, label, subtext, showMoreLink } = section
+
+  if (!showMoreLink) return null
+
+  return (
+    <li className="px-4 py-3 lg:px-8 lg:py-4">
+      <div className="relative flex gap-3 lg:gap-4">
+        {icon && (
+          <div aria-hidden>
+            <Pictogram iconName={icon} className="size-8 text-category-700 lg:size-10" />
+          </div>
+        )}
+        <NavMenuLink variant="menuSectionLink" subtext={subtext} {...showMoreLink}>
+          {label}
+        </NavMenuLink>
       </div>
     </li>
   )

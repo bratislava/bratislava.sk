@@ -155,7 +155,10 @@ const Markdown = ({ content, variant = 'default', className }: MarkdownProps) =>
             )
           },
           blockquote: ({ node, ...props }) => (
-            <blockquote className="my-4 border-l-4 border-category-600 py-2 pl-8" {...props} />
+            <blockquote
+              className="my-4 border-l-4 border-content-passive-secondary py-2 pl-8"
+              {...props}
+            />
           ),
           ol: ({ children, node, ...props }) => (
             <ol className="list-decimal pl-8 marker:text-content-secondary" {...props}>

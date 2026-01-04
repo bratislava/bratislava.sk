@@ -62,44 +62,16 @@
           "sortable": true
         }
       },
-      "allowFullscreen": {
+      "iframeTitle": {
         "edit": {
-          "label": "allowFullscreen",
+          "label": "iframeTitle",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "allowFullscreen",
-          "searchable": true,
-          "sortable": true
-        }
-      },
-      "css": {
-        "edit": {
-          "label": "css",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "css",
-          "searchable": true,
-          "sortable": true
-        }
-      },
-      "iframeWidth": {
-        "edit": {
-          "label": "iframeWidth",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "iframeWidth",
+          "label": "iframeTitle",
           "searchable": true,
           "sortable": true
         }
@@ -118,16 +90,16 @@
           "sortable": true
         }
       },
-      "fullHeight": {
+      "hasBorder": {
         "edit": {
-          "label": "fullHeight",
+          "label": "Zobraziť orámovanie (border)",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "fullHeight",
+          "label": "hasBorder",
           "searchable": true,
           "sortable": true
         }
@@ -170,6 +142,11 @@
       }
     },
     "layouts": {
+      "list": [
+        "id",
+        "url",
+        "iframeTitle"
+      ],
       "edit": [
         [
           {
@@ -187,48 +164,38 @@
           {
             "name": "url",
             "size": 12
-          },
-          {
-            "name": "allowFullscreen",
-            "size": 4
-          }
-        ],
-        [
-          {
-            "name": "iframeWidth",
-            "size": 6
-          },
-          {
-            "name": "css",
-            "size": 6
           }
         ],
         [
           {
             "name": "iframeHeight",
-            "size": 6
-          },
+            "size": 4
+          }
+        ],
+        [
           {
-            "name": "fullHeight",
+            "name": "hasBorder",
             "size": 4
           }
         ],
         [
           {
             "name": "allowGeolocation",
-            "size": 6
-          },
+            "size": 4
+          }
+        ],
+        [
           {
             "name": "titleLevel",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "iframeTitle",
             "size": 6
           }
         ]
-      ],
-      "list": [
-        "id",
-        "url",
-        "allowFullscreen",
-        "css"
       ]
     },
     "isComponent": true

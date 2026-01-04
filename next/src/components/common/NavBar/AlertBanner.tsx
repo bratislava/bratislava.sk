@@ -6,7 +6,6 @@ import { useLocalStorage } from 'usehooks-ts'
 
 import Button from '@/src/components/common/Button/Button'
 import Markdown from '@/src/components/formatting/Markdown/Markdown'
-import SectionContainer from '@/src/components/layouts/SectionContainer'
 import { client } from '@/src/services/graphql/gql'
 import cn from '@/src/utils/cn'
 import { useLocale } from '@/src/utils/useLocale'
@@ -50,23 +49,19 @@ const AlertBanner = forwardRef<HTMLDivElement>((props, forwardedRef) => {
         // 'animate-scale-y': showAlert,
       })}
     >
-      <SectionContainer>
-        <div className="flex gap-3 py-3 lg:items-center lg:py-4">
-          <AlertIcon className="shrink-0" />
-          <div className="grow">
-            <Markdown content={text} variant="small" />
-          </div>
-          <Button
-            variant="icon-wrapped-negative-margin"
-            className="h-fit shrink-0"
-            icon={<CrossIcon />}
-            aria-label={t('AlertBanner.aria.closeAlert')}
-            onPress={() => {
-              handleClose()
-            }}
-          />
+      <div className="flex gap-3 px-4 py-3 lg:items-center lg:px-8 lg:py-4">
+        <AlertIcon className="shrink-0" />
+        <div className="grow">
+          <Markdown content={text} variant="small" />
         </div>
-      </SectionContainer>
+        <Button
+          variant="icon-wrapped-negative-margin"
+          className="h-fit shrink-0"
+          icon={<CrossIcon />}
+          aria-label={t('AlertBanner.aria.closeAlert')}
+          onPress={() => handleClose()}
+        />
+      </div>
     </div>
   )
 })

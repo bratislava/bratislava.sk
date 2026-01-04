@@ -10,8 +10,10 @@ export const getParsedMenus = (menu: GeneralQuery['menu'], moreLabel: string): M
       ?.map((menuItem) => {
         if (!menuItem?.page?.slug) return null
 
-        const { label, icon } = menuItem
-        const linkHref = `/${menuItem.page.slug}`
+        const { label, page, icon } = menuItem
+
+        const seeAllLinkProps = page ? getLinkProps({ label, page }) : undefined
+
         const items =
           menuItem.sections
             ?.map((section) => {
@@ -35,6 +37,7 @@ export const getParsedMenus = (menu: GeneralQuery['menu'], moreLabel: string): M
               return {
                 label: sectionLabel,
                 items: sectionItems,
+                subtext: section.subtext,
                 showMoreLink,
                 icon: sectionIcon,
                 colSpan: 1,
@@ -42,7 +45,7 @@ export const getParsedMenus = (menu: GeneralQuery['menu'], moreLabel: string): M
             })
             .filter(isDefined) ?? []
 
-        return { label, items, colCount: 3, linkHref, icon }
+        return { label, items, colCount: 3, seeAllLinkProps, icon }
       })
       .filter(isDefined) ?? []
   )

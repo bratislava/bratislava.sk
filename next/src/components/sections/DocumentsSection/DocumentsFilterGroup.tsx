@@ -5,6 +5,7 @@ import React from 'react'
 import SelectField, { SelectItem } from '@/src/components/common/SelectField/SelectField'
 import { client } from '@/src/services/graphql/gql'
 import { DocumentsFilters } from '@/src/services/meili/fetchers/documentsFetcher'
+import { useGetCityHallAdminGroup } from '@/src/utils/adminGroupUtils'
 import { isDefined } from '@/src/utils/isDefined'
 import { useLocale } from '@/src/utils/useLocale'
 import { useTranslation } from '@/src/utils/useTranslation'
@@ -48,19 +49,14 @@ const DocumentsFilterGroup = ({ filters, onFiltersChange }: Props) => {
         .filter((adminGroup) => adminGroup.slug) ?? [],
   })
 
-  // "City Hall" is a special option that means documents without any assigned admin group
-  // It is not present in the admin groups list in strapi, so we add it here manually
-  const CITY_HALL_SELECT_ITEM = {
-    title: t('DocumentsFilterGroup.cityHall'),
-    slug: t('DocumentsFilterGroup.cityHall'),
-  }
+  const { CITY_HALL_ADMINGROUP } = useGetCityHallAdminGroup()
 
   const adminGroupsSelectItems = [
     {
       title: t('DocumentsFilterGroup.allAdminGroups'),
       slug: 'all',
     },
-    CITY_HALL_SELECT_ITEM,
+    CITY_HALL_ADMINGROUP,
     ...(adminGroups ?? []),
   ]
 
@@ -76,7 +72,7 @@ const DocumentsFilterGroup = ({ filters, onFiltersChange }: Props) => {
   }
 
   const handleAuthorChange = (selectedAdminGroup: SingleSelection['selectedKey']) => {
-    if (selectedAdminGroup === CITY_HALL_SELECT_ITEM.slug) {
+    if (selectedAdminGroup === CITY_HALL_ADMINGROUP.slug) {
       onFiltersChange({
         ...filters,
         adminGroupSlugs: [],
@@ -114,7 +110,7 @@ const DocumentsFilterGroup = ({ filters, onFiltersChange }: Props) => {
         items={adminGroupsSelectItems}
         selectedKey={
           filters.excludeDocumentsWithAssignedAdminGroups
-            ? CITY_HALL_SELECT_ITEM.title
+            ? CITY_HALL_ADMINGROUP.slug
             : (filters.adminGroupSlugs?.[0] ?? null)
         }
         placeholder={t('DocumentsFilterGroup.allAdminGroups')}

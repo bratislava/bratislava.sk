@@ -6,7 +6,7 @@ type AdminGroup {
   adminGroupId: String
   articles(filters: ArticleFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [Article]!
   articles_connection(filters: ArticleFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): ArticleRelationResponseCollection
-  contentManagedBy: String
+  contentManagedBy: String!
   createdAt: DateTime
   documentId: ID!
   documents(filters: DocumentFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [Document]!
@@ -18,6 +18,7 @@ type AdminGroup {
   pages_connection(filters: PageFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): PageRelationResponseCollection
   publishedAt: DateTime
   slug: String!
+  submenuPages(filters: ComponentBlocksPageLinkFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksPageLink]
   title: String!
   updatedAt: DateTime
 }
@@ -51,6 +52,7 @@ input AdminGroupFiltersInput {
   pages: PageFiltersInput
   publishedAt: DateTimeFilterInput
   slug: StringFilterInput
+  submenuPages: ComponentBlocksPageLinkFiltersInput
   title: StringFilterInput
   updatedAt: DateTimeFilterInput
 }
@@ -65,6 +67,7 @@ input AdminGroupInput {
   pages: [ID]
   publishedAt: DateTime
   slug: String
+  submenuPages: [ComponentBlocksPageLinkInput]
   title: String
 }
 
@@ -138,7 +141,6 @@ type Article {
   perex: String
   publishedAt: DateTime
   slug: String!
-  tag: Tag
   tags(filters: TagFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [Tag]!
   tags_connection(filters: TagFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): TagRelationResponseCollection
   title: String!
@@ -231,7 +233,6 @@ input ArticleFiltersInput {
   perex: StringFilterInput
   publishedAt: DateTimeFilterInput
   slug: StringFilterInput
-  tag: TagFiltersInput
   tags: TagFiltersInput
   title: StringFilterInput
   updatedAt: DateTimeFilterInput
@@ -250,7 +251,6 @@ input ArticleInput {
   perex: String
   publishedAt: DateTime
   slug: String
-  tag: ID
   tags: [ID]
   title: String
 }
@@ -1162,6 +1162,8 @@ input ComponentSectionsAccordionInput {
 type ComponentSectionsArticles {
   adminGroups(filters: AdminGroupFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [AdminGroup]!
   adminGroups_connection(filters: AdminGroupFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): AdminGroupRelationResponseCollection
+  articleCategories(filters: ArticleCategoryFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ArticleCategory]!
+  articleCategories_connection(filters: ArticleCategoryFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): ArticleCategoryRelationResponseCollection
   articles(filters: ArticleFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [Article]!
   articles_connection(filters: ArticleFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): ArticleRelationResponseCollection
   category: PageCategory
@@ -1177,6 +1179,7 @@ type ComponentSectionsArticles {
 input ComponentSectionsArticlesFiltersInput {
   adminGroups: AdminGroupFiltersInput
   and: [ComponentSectionsArticlesFiltersInput]
+  articleCategories: ArticleCategoryFiltersInput
   articles: ArticleFiltersInput
   category: PageCategoryFiltersInput
   not: ComponentSectionsArticlesFiltersInput
@@ -1190,6 +1193,7 @@ input ComponentSectionsArticlesFiltersInput {
 
 input ComponentSectionsArticlesInput {
   adminGroups: [ID]
+  articleCategories: [ID]
   articles: [ID]
   category: ID
   id: ID
@@ -1694,13 +1698,11 @@ input ComponentSectionsHomepageTabsInput {
 }
 
 type ComponentSectionsIframe {
-  allowFullscreen: Boolean!
   allowGeolocation: Boolean
-  css: String
-  fullHeight: Boolean!
+  hasBorder: Boolean
   id: ID!
   iframeHeight: String!
-  iframeWidth: ENUM_COMPONENTSECTIONSIFRAME_IFRAMEWIDTH!
+  iframeTitle: String
   text: String
   title: String
   titleLevel: ENUM_COMPONENTSECTIONSIFRAME_TITLELEVEL
@@ -1708,13 +1710,11 @@ type ComponentSectionsIframe {
 }
 
 input ComponentSectionsIframeFiltersInput {
-  allowFullscreen: BooleanFilterInput
   allowGeolocation: BooleanFilterInput
   and: [ComponentSectionsIframeFiltersInput]
-  css: StringFilterInput
-  fullHeight: BooleanFilterInput
+  hasBorder: BooleanFilterInput
   iframeHeight: StringFilterInput
-  iframeWidth: StringFilterInput
+  iframeTitle: StringFilterInput
   not: ComponentSectionsIframeFiltersInput
   or: [ComponentSectionsIframeFiltersInput]
   text: StringFilterInput
@@ -1724,57 +1724,28 @@ input ComponentSectionsIframeFiltersInput {
 }
 
 input ComponentSectionsIframeInput {
-  allowFullscreen: Boolean
   allowGeolocation: Boolean
-  css: String
-  fullHeight: Boolean
+  hasBorder: Boolean
   id: ID
   iframeHeight: String
-  iframeWidth: ENUM_COMPONENTSECTIONSIFRAME_IFRAMEWIDTH
+  iframeTitle: String
   text: String
   title: String
   titleLevel: ENUM_COMPONENTSECTIONSIFRAME_TITLELEVEL
   url: String
 }
 
-type ComponentSectionsInbaArticlesList {
-  id: ID!
-  text: String
-  title: String
-}
-
-input ComponentSectionsInbaArticlesListFiltersInput {
-  and: [ComponentSectionsInbaArticlesListFiltersInput]
-  not: ComponentSectionsInbaArticlesListFiltersInput
-  or: [ComponentSectionsInbaArticlesListFiltersInput]
-  text: StringFilterInput
-  title: StringFilterInput
-}
-
-input ComponentSectionsInbaArticlesListInput {
-  id: ID
-  text: String
-  title: String
-}
-
 type ComponentSectionsInbaLatestRelease {
-  allReleasesPage: Page
-  articles(filters: ArticleFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [Article]!
-  articles_connection(filters: ArticleFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): ArticleRelationResponseCollection
   id: ID!
 }
 
 input ComponentSectionsInbaLatestReleaseFiltersInput {
-  allReleasesPage: PageFiltersInput
   and: [ComponentSectionsInbaLatestReleaseFiltersInput]
-  articles: ArticleFiltersInput
   not: ComponentSectionsInbaLatestReleaseFiltersInput
   or: [ComponentSectionsInbaLatestReleaseFiltersInput]
 }
 
 input ComponentSectionsInbaLatestReleaseInput {
-  allReleasesPage: ID
-  articles: [ID]
   id: ID
 }
 
@@ -2605,11 +2576,6 @@ enum ENUM_COMPONENTSECTIONSGALLERY_TITLELEVEL {
   h3
 }
 
-enum ENUM_COMPONENTSECTIONSIFRAME_IFRAMEWIDTH {
-  container
-  full
-}
-
 enum ENUM_COMPONENTSECTIONSIFRAME_TITLELEVEL {
   h2
   h3
@@ -3017,7 +2983,7 @@ type GeneralRelationResponseCollection {
   nodes: [General!]!
 }
 
-union GenericMorph = AdminGroup | Alert | Article | ArticleCategory | ComponentAccordionItemsFlatText | ComponentAccordionItemsInstitution | ComponentAccordionItemsInstitutionNarrow | ComponentBlocksCardLink | ComponentBlocksColumnsItem | ComponentBlocksCommonLink | ComponentBlocksComparisonCard | ComponentBlocksComparisonItem | ComponentBlocksContactCard | ComponentBlocksContactDirectionsCard | ComponentBlocksContactPersonCard | ComponentBlocksFile | ComponentBlocksFileItem | ComponentBlocksFooterColumn | ComponentBlocksHomepageHighlightsItem | ComponentBlocksInBa | ComponentBlocksNumbersOverviewItem | ComponentBlocksNumericalListItem | ComponentBlocksOpeningHoursAlertMessage | ComponentBlocksOpeningHoursItem | ComponentBlocksPageLink | ComponentBlocksPartner | ComponentBlocksProsAndConsCard | ComponentBlocksStarzLandingPageBanner | ComponentBlocksSubnavigationLink | ComponentBlocksTopServicesItem | ComponentBlocksVideo | ComponentGeneralHeader | ComponentGeneralHeaderLink | ComponentHeaderSectionsEvent | ComponentHeaderSectionsFacility | ComponentMenuMenuItem | ComponentMenuMenuLink | ComponentMenuMenuSection | ComponentSectionsAccordion | ComponentSectionsArticles | ComponentSectionsBanner | ComponentSectionsCalculator | ComponentSectionsColumnedText | ComponentSectionsColumns | ComponentSectionsComparisonSection | ComponentSectionsContactsSection | ComponentSectionsDivider | ComponentSectionsDocuments | ComponentSectionsEvents | ComponentSectionsFacilities | ComponentSectionsFaqCategories | ComponentSectionsFaqs | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsHomepageEvents | ComponentSectionsHomepageHighlights | ComponentSectionsHomepageMayorAndCouncil | ComponentSectionsHomepageTabs | ComponentSectionsIframe | ComponentSectionsInbaArticlesList | ComponentSectionsInbaLatestRelease | ComponentSectionsInbaReleases | ComponentSectionsLinks | ComponentSectionsNarrowText | ComponentSectionsNewsletter | ComponentSectionsNumbersOverview | ComponentSectionsNumericalList | ComponentSectionsOfficialBoard | ComponentSectionsOpeningHours | ComponentSectionsOrganizationalStructure | ComponentSectionsPartners | ComponentSectionsProsAndConsSection | ComponentSectionsRegulations | ComponentSectionsStarzLandingPage | ComponentSectionsSubnavigation | ComponentSectionsTextWithImage | ComponentSectionsTextWithImageOverlapped | ComponentSectionsTootootEvents | ComponentSectionsTopServices | ComponentSectionsVideos | ComponentSidebarsEmptySidebar | ComponentTaxAdministratorsTaxAdministrator | Document | DocumentCategory | Faq | FaqCategory | Footer | General | Homepage | I18NLocale | InbaArticle | InbaRelease | InbaTag | InternalJob | Menu | Page | PageCategory | Redirect | Regulation | ReviewWorkflowsWorkflow | ReviewWorkflowsWorkflowStage | Tag | TaxAdministratorsList | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
+union GenericMorph = AdminGroup | Alert | Article | ArticleCategory | ComponentAccordionItemsFlatText | ComponentAccordionItemsInstitution | ComponentAccordionItemsInstitutionNarrow | ComponentBlocksCardLink | ComponentBlocksColumnsItem | ComponentBlocksCommonLink | ComponentBlocksComparisonCard | ComponentBlocksComparisonItem | ComponentBlocksContactCard | ComponentBlocksContactDirectionsCard | ComponentBlocksContactPersonCard | ComponentBlocksFile | ComponentBlocksFileItem | ComponentBlocksFooterColumn | ComponentBlocksHomepageHighlightsItem | ComponentBlocksInBa | ComponentBlocksNumbersOverviewItem | ComponentBlocksNumericalListItem | ComponentBlocksOpeningHoursAlertMessage | ComponentBlocksOpeningHoursItem | ComponentBlocksPageLink | ComponentBlocksPartner | ComponentBlocksProsAndConsCard | ComponentBlocksStarzLandingPageBanner | ComponentBlocksSubnavigationLink | ComponentBlocksTopServicesItem | ComponentBlocksVideo | ComponentGeneralHeader | ComponentGeneralHeaderLink | ComponentHeaderSectionsEvent | ComponentHeaderSectionsFacility | ComponentMenuMenuItem | ComponentMenuMenuLink | ComponentMenuMenuSection | ComponentSectionsAccordion | ComponentSectionsArticles | ComponentSectionsBanner | ComponentSectionsCalculator | ComponentSectionsColumnedText | ComponentSectionsColumns | ComponentSectionsComparisonSection | ComponentSectionsContactsSection | ComponentSectionsDivider | ComponentSectionsDocuments | ComponentSectionsEvents | ComponentSectionsFacilities | ComponentSectionsFaqCategories | ComponentSectionsFaqs | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsHomepageEvents | ComponentSectionsHomepageHighlights | ComponentSectionsHomepageMayorAndCouncil | ComponentSectionsHomepageTabs | ComponentSectionsIframe | ComponentSectionsInbaLatestRelease | ComponentSectionsInbaReleases | ComponentSectionsLinks | ComponentSectionsNarrowText | ComponentSectionsNewsletter | ComponentSectionsNumbersOverview | ComponentSectionsNumericalList | ComponentSectionsOfficialBoard | ComponentSectionsOpeningHours | ComponentSectionsOrganizationalStructure | ComponentSectionsPartners | ComponentSectionsProsAndConsSection | ComponentSectionsRegulations | ComponentSectionsStarzLandingPage | ComponentSectionsSubnavigation | ComponentSectionsTextWithImage | ComponentSectionsTextWithImageOverlapped | ComponentSectionsTootootEvents | ComponentSectionsTopServices | ComponentSectionsVideos | ComponentSidebarsEmptySidebar | ComponentTaxAdministratorsTaxAdministrator | Document | DocumentCategory | Faq | FaqCategory | Footer | General | Homepage | I18NLocale | InbaArticle | InbaRelease | InbaTag | InternalJob | Menu | Page | PageCategory | Redirect | Regulation | ReviewWorkflowsWorkflow | ReviewWorkflowsWorkflowStage | Tag | TaxAdministratorsList | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
 
 type Homepage {
   createdAt: DateTime
@@ -3169,7 +3135,6 @@ type InbaArticle {
   coverImage: UploadFile
   createdAt: DateTime
   documentId: ID!
-  inbaRelease: InbaRelease
   inbaTag: InbaTag
   locale: String
   localizations(filters: InbaArticleFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [InbaArticle]!
@@ -3202,7 +3167,6 @@ input InbaArticleFiltersInput {
   content: StringFilterInput
   createdAt: DateTimeFilterInput
   documentId: IDFilterInput
-  inbaRelease: InbaReleaseFiltersInput
   inbaTag: InbaTagFiltersInput
   locale: StringFilterInput
   localizations: InbaArticleFiltersInput
@@ -3219,7 +3183,6 @@ input InbaArticleFiltersInput {
 input InbaArticleInput {
   content: String
   coverImage: ID
-  inbaRelease: ID
   inbaTag: ID
   perex: String
   publishedAt: DateTime
@@ -3238,9 +3201,9 @@ type InbaRelease {
   coverImage: UploadFile
   createdAt: DateTime
   documentId: ID!
+  featuredArticles(filters: ArticleFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [Article]!
+  featuredArticles_connection(filters: ArticleFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): ArticleRelationResponseCollection
   files(filters: ComponentBlocksFileFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksFile]
-  inbaArticles(filters: InbaArticleFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [InbaArticle]!
-  inbaArticles_connection(filters: InbaArticleFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): InbaArticleRelationResponseCollection
   perex: String
   publishedAt: DateTime
   rearImage: UploadFile
@@ -3269,8 +3232,8 @@ input InbaReleaseFiltersInput {
   articles: ArticleFiltersInput
   createdAt: DateTimeFilterInput
   documentId: IDFilterInput
+  featuredArticles: ArticleFiltersInput
   files: ComponentBlocksFileFiltersInput
-  inbaArticles: InbaArticleFiltersInput
   not: InbaReleaseFiltersInput
   or: [InbaReleaseFiltersInput]
   perex: StringFilterInput
@@ -3284,8 +3247,8 @@ input InbaReleaseFiltersInput {
 input InbaReleaseInput {
   articles: [ID]
   coverImage: ID
+  featuredArticles: [ID]
   files: [ComponentBlocksFileInput]
-  inbaArticles: [ID]
   perex: String
   publishedAt: DateTime
   rearImage: ID
@@ -4034,7 +3997,7 @@ type PageRelationResponseCollection {
   nodes: [Page!]!
 }
 
-union PageSectionsDynamicZone = ComponentSectionsAccordion | ComponentSectionsArticles | ComponentSectionsBanner | ComponentSectionsCalculator | ComponentSectionsColumnedText | ComponentSectionsColumns | ComponentSectionsComparisonSection | ComponentSectionsContactsSection | ComponentSectionsDivider | ComponentSectionsDocuments | ComponentSectionsEvents | ComponentSectionsFacilities | ComponentSectionsFaqCategories | ComponentSectionsFaqs | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsIframe | ComponentSectionsInbaArticlesList | ComponentSectionsInbaLatestRelease | ComponentSectionsInbaReleases | ComponentSectionsLinks | ComponentSectionsNarrowText | ComponentSectionsNewsletter | ComponentSectionsNumbersOverview | ComponentSectionsNumericalList | ComponentSectionsOfficialBoard | ComponentSectionsOpeningHours | ComponentSectionsOrganizationalStructure | ComponentSectionsPartners | ComponentSectionsProsAndConsSection | ComponentSectionsRegulations | ComponentSectionsStarzLandingPage | ComponentSectionsTextWithImage | ComponentSectionsTextWithImageOverlapped | ComponentSectionsTootootEvents | ComponentSectionsVideos | Error
+union PageSectionsDynamicZone = ComponentSectionsAccordion | ComponentSectionsArticles | ComponentSectionsBanner | ComponentSectionsCalculator | ComponentSectionsColumnedText | ComponentSectionsColumns | ComponentSectionsComparisonSection | ComponentSectionsContactsSection | ComponentSectionsDivider | ComponentSectionsDocuments | ComponentSectionsEvents | ComponentSectionsFacilities | ComponentSectionsFaqCategories | ComponentSectionsFaqs | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsIframe | ComponentSectionsInbaLatestRelease | ComponentSectionsInbaReleases | ComponentSectionsLinks | ComponentSectionsNarrowText | ComponentSectionsNewsletter | ComponentSectionsNumbersOverview | ComponentSectionsNumericalList | ComponentSectionsOfficialBoard | ComponentSectionsOpeningHours | ComponentSectionsOrganizationalStructure | ComponentSectionsPartners | ComponentSectionsProsAndConsSection | ComponentSectionsRegulations | ComponentSectionsStarzLandingPage | ComponentSectionsTextWithImage | ComponentSectionsTextWithImageOverlapped | ComponentSectionsTootootEvents | ComponentSectionsVideos | Error
 
 scalar PageSectionsDynamicZoneInput
 

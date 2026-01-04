@@ -31,10 +31,10 @@
         }
       }
     },
-    "tags": {
+    "articles": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::tag.tag",
+      "target": "api::article.article",
       "conditions": {
         "visible": {
           "!=": [
@@ -46,10 +46,25 @@
         }
       }
     },
-    "articles": {
+    "articleCategories": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::article.article",
+      "target": "api::article-category.article-category",
+      "conditions": {
+        "visible": {
+          "!=": [
+            {
+              "var": "showAll"
+            },
+            true
+          ]
+        }
+      }
+    },
+    "tags": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::tag.tag",
       "conditions": {
         "visible": {
           "!=": [

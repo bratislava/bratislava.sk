@@ -104,19 +104,19 @@
           "sortable": true
         }
       },
-      "tag": {
+      "tags": {
         "edit": {
-          "label": "Tag",
-          "description": "",
+          "label": "Témy",
+          "description": "Vypĺňame maximálne 3 témy.",
           "placeholder": "",
           "visible": true,
           "editable": true,
           "mainField": "title"
         },
         "list": {
-          "label": "tag",
-          "searchable": true,
-          "sortable": true
+          "label": "tags",
+          "searchable": false,
+          "sortable": false
         }
       },
       "addedAt": {
@@ -186,21 +186,6 @@
         },
         "list": {
           "label": "adminGroups",
-          "searchable": false,
-          "sortable": false
-        }
-      },
-      "tags": {
-        "edit": {
-          "label": "Témy",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true,
-          "mainField": "title"
-        },
-        "list": {
-          "label": "tags",
           "searchable": false,
           "sortable": false
         }
@@ -366,10 +351,6 @@
           }
         ],
         [
-          {
-            "name": "tag",
-            "size": 6
-          },
           {
             "name": "inbaRelease",
             "size": 6

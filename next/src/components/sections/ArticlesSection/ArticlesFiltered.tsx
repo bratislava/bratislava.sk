@@ -10,6 +10,7 @@ import { client } from '@/src/services/graphql/gql'
 import {
   articlesDefaultFilters,
   articlesFetcher,
+  ArticlesFilters,
   getArticlesQueryKey,
 } from '@/src/services/meili/fetchers/articlesFetcher'
 import { isDefined } from '@/src/utils/isDefined'
@@ -32,22 +33,27 @@ const ArticlesFiltered = ({ section }: Props) => {
     text,
     articles: articlesFromStrapi,
     category,
+    articleCategories,
     tags,
     adminGroups,
     showMoreLink,
   } = section
 
-  const adminGroupDocumentIds = adminGroups
-    .map((adminGroup) => adminGroup?.documentId)
-
+  const articleCategorySlugs = articleCategories
+    .map((articleCategory) => articleCategory?.slug)
     .filter(isDefined)
 
-  const tagDocumentIds = tags.map((tag) => tag?.documentId).filter(isDefined)
+  const tagSlugs = tags.map((tag) => tag?.slug).filter(isDefined)
 
-  const [filters, setFilters] = useRoutePreservedState({
+  const adminGroupDocumentIds = adminGroups
+    .map((adminGroup) => adminGroup?.documentId)
+    .filter(isDefined)
+
+  const [filters, setFilters] = useRoutePreservedState<ArticlesFilters>({
     ...articlesDefaultFilters,
+    articleCategorySlugs,
     adminGroupDocumentIds,
-    tagDocumentIds,
+    tagSlugs,
     pageSize: 12,
   })
 
@@ -65,12 +71,12 @@ const ArticlesFiltered = ({ section }: Props) => {
     setFilters({
       ...filters,
       adminGroupDocumentIds: [],
-      tagDocumentIds:
+      tagSlugs:
         tagsDataFromCategoryField.tags
           .filter((tag) => {
             return tag?.pageCategory?.documentId === category?.documentId
           })
-          .map((tag) => tag?.documentId ?? '')
+          .map((tag) => tag?.slug ?? '')
           .filter(isDefined) ?? [],
     })
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -81,8 +87,12 @@ const ArticlesFiltered = ({ section }: Props) => {
     queryKey: getArticlesQueryKey(filters, locale),
     queryFn: () => articlesFetcher(filters, locale),
     placeholderData: keepPreviousData,
-    // don't fetch if this section contains only manually selected articles
-    enabled: !!category || tags.length > 0 || adminGroupDocumentIds.length > 0,
+    enabled:
+      // don't fetch if section contains only manually selected articles and no other filters
+      !(
+        articlesFromStrapi.length > 0 &&
+        [category, ...articleCategories, ...tags, ...adminGroups].filter(isDefined).length === 0
+      ),
   })
 
   const articlesToShow = [

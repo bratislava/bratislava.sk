@@ -17,7 +17,7 @@
     "parse-translations": "i18next",
     "update-i18next": "npm install next-i18next@latest react-i18next@latest i18next@latest --save-exact && npm install eslint-plugin-i18next --save-dev --save-exact",
     "update-markdown": "npm install remark-directive@latest remark-directive-rehype@latest remark-gfm@latest remark-supersub@latest",
-    "update-next": "npm install next@latest react@latest react-dom@latest sharp@latest --save-exact && npm install @types/react@latest @types/react-dom@latest eslint-config-next@latest typescript@latest @next/eslint-plugin-next --save-dev --save-exact",
+    "update-next": "npm install next@latest @next/third-parties@latest react@latest react-dom@latest sharp@latest --save-exact && npm install @types/react@latest @types/react-dom@latest eslint-config-next@latest typescript@latest @next/eslint-plugin-next --save-dev --save-exact",
     "update-react-aria": "npm install @internationalized/date@latest @react-stately/utils@latest react-aria@latest react-aria-components@latest react-stately@latest tailwindcss-react-aria-components --save-exact",
     "update-tailwind": "npm install tailwind-merge@latest clsx@latest --save-exact && npm install tailwindcss@latest autoprefixer@latest postcss@latest prettier-plugin-tailwindcss@latest eslint-plugin-tailwindcss@latest --save-dev --save-exact",
     "update-prettier": "npm install prettier@latest eslint-config-prettier@latest --save-dev --save-exact",
@@ -30,7 +30,8 @@
   "dependencies": {
     "@azure/msal-node": "^3.4.0",
     "@bratislava/component-library": "1.0.5",
-    "@bratislava/ginis-sdk": "^1.3.1",
+    "@bratislava/ginis-sdk": "^2.1.0",
+    "@iframe-resizer/react": "5.5.7",
     "@internationalized/date": "3.7.0",
     "@next/third-parties": "15.5.6",
     "@radix-ui/react-navigation-menu": "1.2.5",

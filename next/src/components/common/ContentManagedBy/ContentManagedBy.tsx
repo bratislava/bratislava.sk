@@ -5,7 +5,7 @@ import React from 'react'
 import { InfoIcon } from '@/src/assets/icons'
 
 type Props = {
-  contentManager: string | null | undefined
+  contentManager: string
 }
 
 /**

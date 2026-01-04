@@ -9,9 +9,7 @@ import { AdminGroupsContextProvider } from '@/src/components/providers/AdminGrou
 import { GeneralContextProvider } from '@/src/components/providers/GeneralContextProvider'
 import { ArticleEntityFragment, GeneralQuery } from '@/src/services/graphql'
 import { client } from '@/src/services/graphql/gql'
-import { GlobalCategoryColorProvider } from '@/src/utils/colors'
 import { NOT_FOUND } from '@/src/utils/consts'
-import { isDefined } from '@/src/utils/isDefined'
 
 type PageProps = {
   general: GeneralQuery
@@ -78,18 +76,13 @@ export const getStaticProps: GetStaticProps<PageProps, StaticParams> = async ({
 }
 
 const Page = ({ general, article }: PageProps) => {
-  const { title, perex, tags } = article ?? {}
-
-  // TODO remove style when page categories are removed
-  // TODO type - using tags.find (without '?') produces no error locally, however it introduced some error in production
-  const firstTagColor = tags?.find(isDefined)?.pageCategory?.color
+  const { title, perex } = article ?? {}
 
   return (
     <GeneralContextProvider general={general}>
       <AdminGroupsContextProvider adminGroups={[]}>
         <SeoHead title={title} description={perex} />
 
-        <GlobalCategoryColorProvider color={firstTagColor} />
         <PageLayout>
           <ArticlePageContent article={article} />
         </PageLayout>

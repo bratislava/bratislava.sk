@@ -1,3 +1,4 @@
+import { CITY_HALL_ADMINGROUP_SLUG } from '@/src/utils/adminGroupUtils'
 import { isDefined } from '@/src/utils/isDefined'
 
 import { meiliClient } from '../meiliClient'
@@ -8,26 +9,22 @@ export type ArticlesFilters = {
   search: string
   pageSize: number
   page: number
-  articleCategoryDocumentIds?: string[]
   articleCategorySlugs?: string[]
-  tagDocumentIds?: string[]
   tagSlugs?: string[]
   adminGroupDocumentIds?: string[]
   adminGroupSlugs?: string[]
-  excludeArticlesWithAssignedAdminGroups?: boolean
+  inbaReleaseSlugs?: string[]
 }
 
 export const articlesDefaultFilters: Required<ArticlesFilters> = {
   search: '',
-  pageSize: 6,
+  pageSize: 15,
   page: 1,
-  articleCategoryDocumentIds: [],
   articleCategorySlugs: [],
-  tagDocumentIds: [],
   tagSlugs: [],
   adminGroupDocumentIds: [],
   adminGroupSlugs: [],
-  excludeArticlesWithAssignedAdminGroups: false,
+  inbaReleaseSlugs: [],
 }
 
 export const getArticlesQueryKey = (filters: ArticlesFilters, locale: string) => [
@@ -38,6 +35,13 @@ export const getArticlesQueryKey = (filters: ArticlesFilters, locale: string) =>
 ]
 
 export const articlesFetcher = (filters: ArticlesFilters, locale: string) => {
+  const adminGroupSlugsWithoutCityHall = filters.adminGroupSlugs?.filter(
+    (slug) => slug !== CITY_HALL_ADMINGROUP_SLUG,
+  )
+
+  const showCityHallArticles = filters.adminGroupSlugs?.includes(CITY_HALL_ADMINGROUP_SLUG)
+  const showOnlyCityHallArticles = showCityHallArticles && !adminGroupSlugsWithoutCityHall?.length
+
   return meiliClient
     .index('search_index')
     .search<SearchIndexWrapped<'article', ArticleMeili>>(filters.search, {
@@ -45,25 +49,22 @@ export const articlesFetcher = (filters: ArticlesFilters, locale: string) => {
       filter: [
         'type = "article"',
         `locale = ${locale}`,
-        filters.articleCategoryDocumentIds?.length
-          ? `article.articleCategory.documentId IN [${filters.articleCategoryDocumentIds.join(',')}]`
-          : '',
         filters.articleCategorySlugs?.length
           ? `article.articleCategory.slug IN [${filters.articleCategorySlugs.join(',')}]`
           : '',
-        filters.tagDocumentIds?.length
-          ? `article.tags.documentId IN [${filters.tagDocumentIds.join(',')}]`
-          : '',
         filters.tagSlugs?.length ? `article.tags.slug IN [${filters.tagSlugs.join(',')}]` : '',
+        filters.inbaReleaseSlugs?.length
+          ? `article.inbaRelease.slug IN [${filters.inbaReleaseSlugs.join(',')}]`
+          : '',
         filters.adminGroupDocumentIds?.length
           ? `article.adminGroups.documentId IN [${filters.adminGroupDocumentIds.join(',')}]`
           : '',
-        filters.adminGroupSlugs?.length
-          ? `article.adminGroups.slug IN [${filters.adminGroupSlugs.join(',')}]`
+        adminGroupSlugsWithoutCityHall?.length
+          ? showCityHallArticles
+            ? `(article.adminGroups.slug IN [${adminGroupSlugsWithoutCityHall.join(',')}]) OR article.adminGroups.documentId NOT EXISTS`
+            : `article.adminGroups.slug IN [${adminGroupSlugsWithoutCityHall.join(',')}]`
           : '',
-        filters.excludeArticlesWithAssignedAdminGroups
-          ? 'article.adminGroups.documentId NOT EXISTS'
-          : '',
+        showOnlyCityHallArticles ? 'article.adminGroups.documentId NOT EXISTS' : '',
       ].filter(isDefined),
       sort: ['article.addedAtTimestamp:desc'],
     })

@@ -11,6 +11,10 @@ type NavMenuTriggerProps = {
   menuItem: MenuItem
 }
 
+/**
+ * Figma: https://www.figma.com/design/17wbd0MDQcMW9NbXl6UPs8/DS--Component-library?node-id=16846-33525&m=dev
+ */
+
 const NavMenuTrigger = forwardRef<HTMLButtonElement, NavMenuTriggerProps>(
   ({ menuItem }, forwardedRef) => {
     return (
@@ -28,8 +32,8 @@ const NavMenuTrigger = forwardRef<HTMLButtonElement, NavMenuTriggerProps>(
       >
         <div className="flex size-full items-center gap-2 font-medium">
           <div className="flex grow items-center gap-2">
-            <Pictogram iconName={menuItem.icon} aria-hidden />
-            <Typography variant="p-small" className="whitespace-normal">
+            <Pictogram iconName={menuItem.icon} aria-hidden className="size-8 shrink-0" />
+            <Typography variant="p-small" className="text-left whitespace-normal">
               {menuItem.label}
             </Typography>
           </div>

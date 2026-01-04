@@ -19,36 +19,6 @@
           "sortable": false
         }
       },
-      "articles": {
-        "edit": {
-          "label": "Pripnuté články",
-          "description": "Sekcia vždy zobrazí 3 inba články z najnovšieho vydania. Ak sú v tomto políčku vybrané nejaké články (max 3), zobrazia sa ako prvé. Zvyšné sa doplnia automaticky.",
-          "placeholder": "",
-          "visible": true,
-          "editable": true,
-          "mainField": "title"
-        },
-        "list": {
-          "label": "articles",
-          "searchable": false,
-          "sortable": false
-        }
-      },
-      "allReleasesPage": {
-        "edit": {
-          "label": "Stránka so všetkými vydaniami",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true,
-          "mainField": "title"
-        },
-        "list": {
-          "label": "allReleasesPage",
-          "searchable": true,
-          "sortable": true
-        }
-      },
       "documentId": {
         "edit": {},
         "list": {
@@ -59,21 +29,10 @@
       }
     },
     "layouts": {
-      "edit": [
-        [
-          {
-            "name": "articles",
-            "size": 12
-          }
-        ],
-        [
-          {
-            "name": "allReleasesPage",
-            "size": 12
-          }
-        ]
+      "list": [
+        "id"
       ],
-      "list": ["id", "articles", "allReleasesPage"]
+      "edit": []
     },
     "uid": "sections.inba-latest-release",
     "isComponent": true

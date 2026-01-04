@@ -27,7 +27,12 @@
     },
     "contentManagedBy": {
       "type": "string",
-      "required": false
+      "required": true
+    },
+    "submenuPages": {
+      "type": "component",
+      "component": "blocks.page-link",
+      "repeatable": true
     },
     "landingPage": {
       "type": "relation",

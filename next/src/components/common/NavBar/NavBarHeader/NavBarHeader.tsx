@@ -4,7 +4,6 @@ import Button from '@/src/components/common/Button/Button'
 import Brand from '@/src/components/common/Logos/Brand'
 import MLink from '@/src/components/common/MLink/MLink'
 import SkipToContentButton from '@/src/components/common/SkipToContentButton/SkipToContentButton'
-import SectionContainer from '@/src/components/layouts/SectionContainer'
 import { useGeneralContext } from '@/src/components/providers/GeneralContextProvider'
 import { useLocalizations } from '@/src/components/providers/LocalizationsProvider'
 import cn from '@/src/utils/cn'
@@ -29,8 +28,8 @@ const NavBarHeader = ({ className }: NavBarProps) => {
   const { otherLanguage } = useLocalizations()
 
   return (
-    <SectionContainer
-      className={cn('relative z-31 bg-white', className)}
+    <div
+      className={cn('relative z-31 mx-auto bg-white px-4 lg:px-8', className)}
       style={getCategoryColorLocalStyle({ category: 'main' })}
     >
       <nav className="flex w-full items-center justify-between border-b border-grey-200 py-2">
@@ -81,7 +80,7 @@ const NavBarHeader = ({ className }: NavBarProps) => {
           )}
         </div>
       </nav>
-    </SectionContainer>
+    </div>
   )
 }
 

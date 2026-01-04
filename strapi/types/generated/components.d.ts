@@ -454,7 +454,7 @@ export interface MenuMenuItem extends Struct.ComponentSchema {
     > &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<'mesto_01'>
-    label: Schema.Attribute.Text & Schema.Attribute.Required
+    label: Schema.Attribute.String & Schema.Attribute.Required
     page: Schema.Attribute.Relation<'oneToOne', 'api::page.page'>
     sections: Schema.Attribute.Component<'menu.menu-section', true>
   }
@@ -553,6 +553,10 @@ export interface SectionsArticles extends Struct.ComponentSchema {
   }
   attributes: {
     adminGroups: Schema.Attribute.Relation<'oneToMany', 'api::admin-group.admin-group'>
+    articleCategories: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::article-category.article-category'
+    >
     articles: Schema.Attribute.Relation<'oneToMany', 'api::article.article'>
     category: Schema.Attribute.Relation<'oneToOne', 'api::page-category.page-category'>
     showAll: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>
@@ -873,20 +877,12 @@ export interface SectionsIframe extends Struct.ComponentSchema {
     displayName: 'Iframe'
   }
   attributes: {
-    allowFullscreen: Schema.Attribute.Boolean &
-      Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<true>
     allowGeolocation: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>
-    css: Schema.Attribute.String
-    fullHeight: Schema.Attribute.Boolean &
-      Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<false>
+    hasBorder: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>
     iframeHeight: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<'600px'>
-    iframeWidth: Schema.Attribute.Enumeration<['full', 'container']> &
-      Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<'container'>
+    iframeTitle: Schema.Attribute.String
     text: Schema.Attribute.Text
     title: Schema.Attribute.String
     titleLevel: Schema.Attribute.Enumeration<['h2', 'h3']> & Schema.Attribute.DefaultTo<'h2'>
@@ -896,27 +892,12 @@ export interface SectionsIframe extends Struct.ComponentSchema {
   }
 }
 
-export interface SectionsInbaArticlesList extends Struct.ComponentSchema {
-  collectionName: 'components_sections_inba_articles_lists'
-  info: {
-    description: ''
-    displayName: 'in.ba \u010Dl\u00E1nky'
-  }
-  attributes: {
-    text: Schema.Attribute.Text
-    title: Schema.Attribute.String
-  }
-}
-
 export interface SectionsInbaLatestRelease extends Struct.ComponentSchema {
   collectionName: 'components_sections_inba_latest_releases'
   info: {
     displayName: 'in.ba najnov\u0161ie vydanie'
   }
-  attributes: {
-    allReleasesPage: Schema.Attribute.Relation<'oneToOne', 'api::page.page'>
-    articles: Schema.Attribute.Relation<'oneToMany', 'api::article.article'>
-  }
+  attributes: {}
 }
 
 export interface SectionsInbaReleases extends Struct.ComponentSchema {
@@ -1283,7 +1264,6 @@ declare module '@strapi/strapi' {
       'sections.homepage-mayor-and-council': SectionsHomepageMayorAndCouncil
       'sections.homepage-tabs': SectionsHomepageTabs
       'sections.iframe': SectionsIframe
-      'sections.inba-articles-list': SectionsInbaArticlesList
       'sections.inba-latest-release': SectionsInbaLatestRelease
       'sections.inba-releases': SectionsInbaReleases
       'sections.links': SectionsLinks

@@ -22,9 +22,6 @@ const getAllUsedFilesInMediaLibrary = async () => {
     article?.files?.forEach((file) => ids.push(file?.media?.documentId))
     article?.gallery?.forEach((image) => ids.push(image?.documentId))
   })
-  allFilesQuery.inbaArticles.forEach((article) => {
-    ids.push(article?.coverImage?.documentId)
-  })
   allFilesQuery.inbaReleases.forEach((release) => {
     ids.push(release?.coverImage?.documentId, release?.rearImage?.documentId)
     release?.files?.forEach((file) => ids.push(file?.media?.documentId))

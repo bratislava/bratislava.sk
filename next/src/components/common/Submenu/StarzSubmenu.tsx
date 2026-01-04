@@ -4,13 +4,12 @@ import Button from '@/src/components/common/Button/Button'
 import StarzLogo from '@/src/components/common/Logos/StarzLogo'
 import SectionContainer from '@/src/components/layouts/SectionContainer'
 import { AdminGroupEntityFragment } from '@/src/services/graphql'
+import { useGetSubmenuByAdminGroup } from '@/src/utils/adminGroupUtils'
 import cn from '@/src/utils/cn'
 import { getLinkProps } from '@/src/utils/getLinkProps'
-import { isDefined } from '@/src/utils/isDefined'
-import { useGetLocalisedPage } from '@/src/utils/useGetLocalisedPage'
 
 type Props = {
-  landingPage: NonNullable<AdminGroupEntityFragment['landingPage']>
+  adminGroup: AdminGroupEntityFragment
   className?: string
 }
 
@@ -21,10 +20,8 @@ type Props = {
  *
  * TODO make it more generic in future when more organizations need it
  */
-const StarzSubmenu = ({ landingPage, className }: Props) => {
-  const localisedLandingPage = useGetLocalisedPage(landingPage)
-
-  const childPages = localisedLandingPage?.childPages.filter(isDefined) ?? []
+const StarzSubmenu = ({ adminGroup, className }: Props) => {
+  const { adminGroupLandingPage, submenuPages } = useGetSubmenuByAdminGroup(adminGroup)
 
   // Beware of paddings, margins and gaps - they are used to enlarge clickable/touchable area of links, and they are carefully set to fit Figma design together
   return (
@@ -32,16 +29,17 @@ const StarzSubmenu = ({ landingPage, className }: Props) => {
       <div className="flex gap-6">
         <StarzLogo
           variant="white"
-          linkProps={getLinkProps({ page: localisedLandingPage })}
+          linkProps={getLinkProps({ page: adminGroupLandingPage })}
           className="-m-2 self-center p-2"
         />
         <div className="my-4 border-l" aria-hidden />
         <div className="-ml-2 flex flex-wrap gap-x-2 py-2">
-          {childPages.map((submenuPage) => (
+          {submenuPages.map((submenuPage, index) => (
             <Button
-              key={submenuPage.documentId}
+              // eslint-disable-next-line react/no-array-index-key
+              key={index}
               variant="link-inverted"
-              {...getLinkProps({ label: submenuPage.title, page: submenuPage })}
+              {...getLinkProps(submenuPage)}
               className="px-2 py-3 font-normal no-underline hover:underline"
               hasLinkIcon={false}
             />

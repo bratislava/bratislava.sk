@@ -17,7 +17,6 @@ import FaqsSection from '@/src/components/sections/FaqsSection'
 import FileListSection from '@/src/components/sections/FileListSection'
 import GallerySection from '@/src/components/sections/GallerySection'
 import IframeSection from '@/src/components/sections/IframeSection'
-import InbaArticlesListSection from '@/src/components/sections/InbaArticlesListSection'
 import InbaLatestReleaseSection from '@/src/components/sections/InbaLatestReleaseSection'
 import InbaReleasesSection from '@/src/components/sections/InbaReleasesSection/InbaReleasesSection'
 import LinksSection from '@/src/components/sections/LinksSection'
@@ -80,9 +79,6 @@ const SectionContent = ({ section }: { section: SectionsFragment }) => {
 
     case 'ComponentSectionsArticles':
       return <ArticlesSection section={section} />
-
-    case 'ComponentSectionsInbaArticlesList':
-      return <InbaArticlesListSection section={section} />
 
     case 'ComponentSectionsInbaReleases':
       return <InbaReleasesSection section={section} />
@@ -151,7 +147,7 @@ const SectionContent = ({ section }: { section: SectionsFragment }) => {
       return <NewsletterSection section={section} />
 
     case 'ComponentSectionsInbaLatestRelease':
-      return <InbaLatestReleaseSection section={section} />
+      return <InbaLatestReleaseSection />
 
     default:
       return null

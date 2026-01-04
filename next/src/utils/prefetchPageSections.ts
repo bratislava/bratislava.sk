@@ -4,11 +4,6 @@ import { latestInbaReleaseQueryOptions } from '@/src/components/sections/InbaLat
 import { PageEntityFragment } from '@/src/services/graphql'
 import { client } from '@/src/services/graphql/gql'
 import {
-  getInbaArticlesQueryKey,
-  inbaArticlesDefaultFilters,
-  inbaArticlesFetcher,
-} from '@/src/services/meili/fetchers/inbaArticlesFetcher'
-import {
   getInbaReleasesQueryKey,
   inbaReleasesDefaultFilters,
   inbaReleasesFetcher,
@@ -38,23 +33,21 @@ export const prefetchPageSections = async (page: PageEntityFragment, locale: str
 
   if (sectionTypes.includes('ComponentSectionsArticles')) {
     await queryClient.prefetchQuery({
+      queryKey: ['ArticleCategories', locale],
+      queryFn: () => client.ArticleCategories({ locale }),
+    })
+    await queryClient.prefetchQuery({
       queryKey: ['Tags', locale],
       queryFn: () => client.Tags({ locale }),
     })
     await queryClient.prefetchQuery({
+      queryKey: ['AdminGroups'],
+      queryFn: () => client.AdminGroups(),
+    })
+    // TODO remove when pageCategories are removed from strapi
+    await queryClient.prefetchQuery({
       queryKey: ['PageCategories', locale],
       queryFn: () => client.PageCategories({ locale }),
-    })
-  }
-
-  if (sectionTypes.includes('ComponentSectionsInbaArticlesList')) {
-    await queryClient.prefetchQuery({
-      queryKey: ['InbaTags', locale],
-      queryFn: () => client.InbaTags({ locale }),
-    })
-    await queryClient.prefetchQuery({
-      queryKey: getInbaArticlesQueryKey(inbaArticlesDefaultFilters, locale),
-      queryFn: () => inbaArticlesFetcher(inbaArticlesDefaultFilters, locale),
     })
   }
 

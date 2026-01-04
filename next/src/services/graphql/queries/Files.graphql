@@ -16,11 +16,6 @@ query allFiles($locale: I18NLocaleCode) {
       }
     }
   }
-  inbaArticles(locale: $locale, pagination: { limit: -1 }) {
-    coverImage {
-      ...UploadFile
-    }
-  }
   inbaReleases(pagination: { limit: -1 }) {
     coverImage {
       ...UploadFile

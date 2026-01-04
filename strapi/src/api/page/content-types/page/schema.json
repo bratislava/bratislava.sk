@@ -104,7 +104,15 @@
         }
       },
       "required": true,
-      "enum": ["red", "blue", "green", "yellow", "purple", "brown", "starz"]
+      "enum": [
+        "red",
+        "blue",
+        "green",
+        "yellow",
+        "purple",
+        "brown",
+        "starz"
+      ]
     },
     "pageBackgroundImage": {
       "type": "media",
@@ -115,7 +123,12 @@
       },
       "multiple": false,
       "required": false,
-      "allowedTypes": ["images", "files", "videos", "audios"]
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
     },
     "headerLinks": {
       "type": "component",
@@ -134,7 +147,10 @@
           "localized": true
         }
       },
-      "components": ["header-sections.event", "header-sections.facility"],
+      "components": [
+        "header-sections.event",
+        "header-sections.facility"
+      ],
       "max": 1
     },
     "subnavigation": {
@@ -167,7 +183,6 @@
         "sections.faq-categories",
         "sections.gallery",
         "sections.iframe",
-        "sections.inba-articles-list",
         "sections.inba-latest-release",
         "sections.inba-releases",
         "sections.calculator",
@@ -200,7 +215,9 @@
           "localized": true
         }
       },
-      "components": ["sidebars.empty-sidebar"],
+      "components": [
+        "sidebars.empty-sidebar"
+      ],
       "max": 1
     },
     "parentPage": {

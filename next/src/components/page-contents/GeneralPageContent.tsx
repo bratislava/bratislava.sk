@@ -11,6 +11,7 @@ import RelatedArticlesSection from '@/src/components/sections/RelatedArticlesSec
 import SubnavigationSection from '@/src/components/sections/SubnavigationSection'
 import TableOfContentsSection from '@/src/components/sections/TableOfContentsSection'
 import { PageEntityFragment } from '@/src/services/graphql'
+import { isStarzAdminGroup } from '@/src/utils/adminGroupUtils'
 import cn from '@/src/utils/cn'
 import { isDefined } from '@/src/utils/isDefined'
 import { getPageBreadcrumbs } from '@/src/utils/pageUtils_Deprecated'
@@ -28,15 +29,13 @@ const GeneralPageContent = ({ page }: GeneralPageProps) => {
   const [header] = page.pageHeaderSections ?? []
   const [sidebar] = page.sidebar ?? []
 
-  const starzAdminGroup = page.adminGroups
-    .filter(isDefined)
-    .find((adminGroup) => adminGroup.adminGroupId === 'starz')
+  const starzAdminGroup = page.adminGroups.find((adminGroup) => isStarzAdminGroup(adminGroup))
 
   return (
     <>
       {/* Starz submenu - TODO make it more generic in future when more organizations need it */}
-      {starzAdminGroup?.landingPage ? (
-        <StarzSubmenu landingPage={starzAdminGroup.landingPage} className="max-lg:hidden" />
+      {starzAdminGroup ? (
+        <StarzSubmenu adminGroup={starzAdminGroup} className="max-lg:hidden" />
       ) : null}
 
       {/* Header */}
@@ -81,7 +80,7 @@ const GeneralPageContent = ({ page }: GeneralPageProps) => {
         </SectionContainer>
       ) : null}
 
-      {starzAdminGroup?.contentManagedBy ? (
+      {starzAdminGroup ? (
         <SectionContainer className="bg-category-200">
           <ContentManagedBy contentManager={starzAdminGroup.contentManagedBy} />
         </SectionContainer>

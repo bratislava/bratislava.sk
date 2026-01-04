@@ -1,5 +1,5 @@
 import { Typography } from '@bratislava/component-library'
-import { forwardRef, ReactNode } from 'react'
+import { forwardRef } from 'react'
 import { Dialog as ReactAriaDialog, DialogProps } from 'react-aria-components'
 import { CrossIcon } from 'src/assets/icons'
 
@@ -8,7 +8,7 @@ import { useTranslation } from '@/src/utils/useTranslation'
 
 type TitleProps = { title: string; 'aria-label'?: string } | { title?: never; 'aria-label': string }
 
-type Props = { children: ReactNode } & TitleProps & Omit<DialogProps, 'children' | 'aria-label'>
+type Props = TitleProps & Omit<DialogProps, 'aria-label'>
 
 /*
  * Styling of Dialog to have fixed header and scrollable body is challenging.
@@ -27,7 +27,7 @@ const Dialog = forwardRef<HTMLElement, Props>(({ children, title, ...props }, re
       {({ close }) => (
         <>
           {title ? (
-            <div className="flex shrink-0 items-start justify-between gap-4 border-b px-6 py-4">
+            <div className="flex shrink-0 items-center justify-between gap-4 border-b px-6 py-4">
               {/* TODO use Heading, it renders as h2 so we get nested headings */}
               {/* <Heading slot="title"> */}
               <Typography variant="h5" as="h2">
@@ -44,7 +44,9 @@ const Dialog = forwardRef<HTMLElement, Props>(({ children, title, ...props }, re
             </div>
           ) : null}
 
-          <div className="flex grow flex-col overflow-y-scroll p-6">{children}</div>
+          <div className="flex grow flex-col overflow-y-auto p-6">
+            {typeof children === 'function' ? children({ close }) : children}
+          </div>
 
           {/* If we want to implement some fixed footer, it goes here, with "flex shrink-0" */}
 

@@ -38,36 +38,20 @@ const searchIndexSettings = {
   filterableAttributes: [
     'type',
     'locale',
-    'article.articleCategory.documentId',
     'article.articleCategory.slug',
-    'article.tag.documentId',
-    'article.tag.slug',
-    'article.tags.documentId',
     'article.tags.slug',
-    'article.adminGroups',
     'article.adminGroups.documentId',
     'article.adminGroups.slug',
-    'document.documentCategory.documentId',
+    'article.inbaRelease.slug',
     'document.documentCategory.slug',
-    'document.adminGroups',
     'document.adminGroups.documentId',
     'document.adminGroups.slug',
-    'inba-article.inbaTag.documentId',
-    'inba-article.inbaRelease.documentId',
-    'regulation.category',
   ],
   sortableAttributes: [
     'article.title',
     'article.addedAtTimestamp',
-    'document.publishedAtTimestamp',
     'document.updatedAtTimestamp',
-    'inba-article.title',
-    'inba-article.publishedAtTimestamp',
-    'inba-release.title',
     'inba-release.releaseDate', // releaseDate is not datetime but only date (e.g. 2025-12-07), so we can sort by it directly instead of creating timestamp
-    'vzn.validFrom',
-    'vzn.publishedAt', // TODO is it needed?
-    'vzn.publishedAtTimestamp',
     'regulation.effectiveFromTimestamp',
   ],
   pagination: {
@@ -92,12 +76,12 @@ const config = {
     entriesQuery: {
       locale: '*',
       populate: [
-        'tag.pageCategory',
         'tags',
         'tags.pageCategory',
         'coverMedia',
         'articleCategory',
         'adminGroups',
+        'inbaRelease',
       ],
     },
     settings: searchIndexSettings,
@@ -124,21 +108,6 @@ const config = {
         // use (number) filters.
         publishedAtTimestamp: entry.publishedAt ? new Date(entry.publishedAt).getTime() : undefined,
         updatedAtTimestamp: entry.updatedAt ? new Date(entry.updatedAt).getTime() : undefined,
-      }),
-  },
-  'inba-article': {
-    indexName: 'search_index',
-    entriesQuery: {
-      locale: '*',
-      populate: ['inbaTag', 'coverImage', 'inbaRelease'],
-    },
-    settings: searchIndexSettings,
-    transformEntry: ({ entry }) =>
-      wrapSearchIndexEntry('inba-article', {
-        ...entry,
-        // Meilisearch doesn't support filtering dates as ISO strings, therefore we convert it to UNIX timestamp to
-        // use (number) filters.
-        publishedAtTimestamp: entry.publishedAt ? new Date(entry.publishedAt).getTime() : undefined,
       }),
   },
   'inba-release': {

@@ -1,5 +1,22 @@
-fragment AdminGroupDocumentIdEntity on AdminGroup {
+fragment AdminGroupSlugEntity on AdminGroup {
   documentId
+  slug
+  title
+  adminGroupId
+}
+
+fragment AdminGroupEntity on AdminGroup {
+  ...AdminGroupSlugEntity
+  contentManagedBy
+  landingPage {
+    ...PageSubnavigationEntity
+    localizations {
+      ...PageSubnavigationEntity
+    }
+  }
+  submenuPages {
+    ...PageLink
+  }
 }
 
 fragment PageSubnavigationEntity on Page {
@@ -9,22 +26,8 @@ fragment PageSubnavigationEntity on Page {
   }
 }
 
-fragment AdminGroupEntity on AdminGroup {
-  ...AdminGroupDocumentIdEntity
-  title
-  slug
-  adminGroupId
-  contentManagedBy
-  landingPage {
-    ...PageSubnavigationEntity
-    localizations {
-      ...PageSubnavigationEntity
-    }
-  }
-}
-
-query AdminGroups($limit: Int = -1) {
-  adminGroups(pagination: { limit: $limit }) {
+query AdminGroups($limit: Int = -1, $sort: [String] = ["title"]) {
+  adminGroups(pagination: { limit: $limit }, sort: $sort) {
     ...AdminGroupEntity
   }
 }

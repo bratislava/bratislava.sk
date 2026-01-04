@@ -2,19 +2,31 @@ import { CopyIcon } from 'src/assets/icons'
 import { useCopyToClipboard } from 'usehooks-ts'
 
 import Button from '@/src/components/common/Button/Button'
-import { useTranslation } from '@/src/utils/useTranslation'
 
-const CopyToClipboardButton = ({ copyText }: { copyText: string }) => {
+type Props = {
+  copyText: string
+  children: React.ReactNode
+  ariaLabel?: string
+  className?: string
+}
+
+/**
+ * Figma: https://www.figma.com/design/17wbd0MDQcMW9NbXl6UPs8/DS--Component-library?node-id=19537-24027&m=dev
+ */
+
+const CopyToClipboardButton = ({ copyText, ariaLabel, children, className }: Props) => {
   const [, copy] = useCopyToClipboard()
-  const { t } = useTranslation()
 
   return (
     <Button
-      variant="icon-wrapped"
-      icon={<CopyIcon />}
-      aria-label={t('CopyToClipboardButton.copyToClipboard')}
-      onPress={() => void copy(copyText)}
-    />
+      variant="outline"
+      startIcon={<CopyIcon />}
+      aria-label={ariaLabel}
+      onPress={() => copy(copyText)}
+      className={className}
+    >
+      {children}
+    </Button>
   )
 }
 

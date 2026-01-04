@@ -105,9 +105,7 @@ const OfficialBoardAdditionalFilters = ({
           label={t('OfficialBoard.publicationState')}
           items={publicationStateSelectOptions}
           selectedKey={publicationState}
-          onSelectionChange={(selected) => {
-            setPublicationState(selected as typeof publicationState)
-          }}
+          onSelectionChange={(selected) => setPublicationState(selected as typeof publicationState)}
         >
           {(item) => <SelectItem label={item.title} id={item.id} />}
         </SelectField>

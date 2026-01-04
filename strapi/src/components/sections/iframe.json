@@ -17,32 +17,17 @@
       "default": "https://www.google.com",
       "required": true
     },
-    "allowFullscreen": {
-      "type": "boolean",
-      "required": true,
-      "default": true
-    },
-    "css": {
+    "iframeTitle": {
       "type": "string"
-    },
-    "iframeWidth": {
-      "type": "enumeration",
-      "required": true,
-      "default": "container",
-      "enum": [
-        "full",
-        "container"
-      ]
     },
     "iframeHeight": {
       "type": "string",
       "default": "600px",
       "required": true
     },
-    "fullHeight": {
+    "hasBorder": {
       "type": "boolean",
-      "required": true,
-      "default": false
+      "default": true
     },
     "allowGeolocation": {
       "type": "boolean",
