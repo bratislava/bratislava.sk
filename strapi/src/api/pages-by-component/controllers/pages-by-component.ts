@@ -59,12 +59,17 @@ export default {
             )
           })
         })
-        .map((pageItem) => ({
-          id: pageItem.id,
-          documentId: pageItem.documentId,
-          title: pageItem.title || 'Untitled',
-          locale: pageItem.locale,
-        }))
+        .map((pageItem) => {
+          const slug = 'slug' in pageItem && typeof pageItem.slug === 'string' ? pageItem.slug : ''
+
+          return {
+            id: pageItem.id,
+            documentId: pageItem.documentId,
+            title: pageItem.title || 'Untitled',
+            locale: pageItem.locale,
+            path: slug ? `/${slug}` : '',
+          }
+        })
 
       const total = filteredPages.length
       const pageCount = Math.ceil(total / pageSize)

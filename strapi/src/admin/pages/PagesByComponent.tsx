@@ -22,6 +22,7 @@ interface Page {
   documentId: string
   title: string
   locale?: string
+  path?: string
 }
 
 interface Component {
@@ -128,6 +129,28 @@ const PagesByComponent = () => {
 
   const getContentManagerUrl = (page: Page) =>
     `/content-manager/collection-types/api::page.page/${page.documentId}`
+
+  const getFrontendUrl = (page: Page) => {
+    const pagePath = page.path || ''
+    const hostname = typeof window !== 'undefined' ? window.location.hostname : ''
+
+    if (hostname.includes('localhost')) {
+      return {
+        url: `http://localhost:3000${pagePath}`,
+        label: 'Local FE link',
+      }
+    } else if (hostname.includes('staging')) {
+      return {
+        url: `https://bratislava-next.staging.bratislava.sk${pagePath}`,
+        label: 'Staging FE link',
+      }
+    } else {
+      return {
+        url: `https://bratislava.sk${pagePath}`,
+        label: 'Production FE link',
+      }
+    }
+  }
 
   return (
     <>
@@ -265,7 +288,7 @@ const PagesByComponent = () => {
                 </Flex>
               </Flex>
             </Flex>
-            <Table colCount={2} rowCount={pages.length}>
+            <Table colCount={3} rowCount={pages.length}>
               <Thead>
                 <Tr>
                   <Th>
@@ -274,21 +297,43 @@ const PagesByComponent = () => {
                   <Th>
                     <Typography variant="sigma">Locale</Typography>
                   </Th>
+                  <Th>
+                    <Typography variant="sigma">Frontend Links</Typography>
+                  </Th>
                 </Tr>
               </Thead>
               <Tbody>
-                {pages.map((pageItem) => (
-                  <Tr key={pageItem.documentId}>
-                    <Td>
-                      <Link to={getContentManagerUrl(pageItem)} style={{ textDecoration: 'none' }}>
-                        <Typography variant="omega">{pageItem.title}</Typography>
-                      </Link>
-                    </Td>
-                    <Td>
-                      <Typography variant="omega">{pageItem.locale || 'N/A'}</Typography>
-                    </Td>
-                  </Tr>
-                ))}
+                {pages.map((pageItem) => {
+                  const frontendLink = getFrontendUrl(pageItem)
+
+                  return (
+                    <Tr key={pageItem.documentId}>
+                      <Td>
+                        <Link
+                          to={getContentManagerUrl(pageItem)}
+                          style={{ textDecoration: 'none' }}
+                        >
+                          <Typography variant="omega">{pageItem.title}</Typography>
+                        </Link>
+                      </Td>
+                      <Td>
+                        <Typography variant="omega">{pageItem.locale || 'N/A'}</Typography>
+                      </Td>
+                      <Td>
+                        <a
+                          href={frontendLink.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          style={{ textDecoration: 'none', fontSize: '12px' }}
+                        >
+                          <Typography variant="omega" textColor="primary600">
+                            {frontendLink.label}
+                          </Typography>
+                        </a>
+                      </Td>
+                    </Tr>
+                  )
+                })}
               </Tbody>
             </Table>
           </Box>
