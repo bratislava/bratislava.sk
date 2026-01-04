@@ -1,14 +1,18 @@
-// nodejs utils
-import path from 'path'
-import { fileURLToPath } from 'url'
-
 // "core" eslint setup
-import { FlatCompat } from '@eslint/eslintrc'
 import eslint from '@eslint/js'
 import { defineConfig } from 'eslint/config'
 import tseslint from 'typescript-eslint'
 import prettier from 'eslint-config-prettier'
 import globals from 'globals'
+
+// next.js plugin with flat config support
+import nextPlugin from '@next/eslint-plugin-next'
+
+// react and related plugins
+import react from 'eslint-plugin-react'
+import reactHooks from 'eslint-plugin-react-hooks'
+import importPlugin from 'eslint-plugin-import'
+import jsxA11y from 'eslint-plugin-jsx-a11y'
 
 // additional eslint config
 import security from 'eslint-plugin-security'
@@ -17,13 +21,6 @@ import sonarjs from 'eslint-plugin-sonarjs'
 import simpleImportSort from 'eslint-plugin-simple-import-sort'
 import i18next from 'eslint-plugin-i18next'
 import tanstackQuery from '@tanstack/eslint-plugin-query'
-
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = path.dirname(__filename)
-
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-})
 
 const simpleImportSortConfig = {
   plugins: {
@@ -36,13 +33,16 @@ const simpleImportSortConfig = {
 }
 
 export default defineConfig(
-  // Extend Next.js configs using FlatCompat
-  // Rules that modify Next.js-provided plugins (react, react-hooks, next, import, jsx-a11y) should be included here
-  // NOTE - eslint-plugin-next has some issues with flat config on v15, which only got resolved in v16
-  // somewhat related issues: https://github.com/vercel/next.js/issues/73655 and those linked here: https://github.com/vercel/next.js/pull/83763
-  // until v16, we'll get "The Next.js plugin was not detected in your ESLint configuration." errors during build
-  ...compat.config({
-    extends: ['next', 'next/core-web-vitals', 'next/typescript'],
+  // Next.js flat config (avoids RushStack patch issue with ESLint v9 - described in https://github.com/microsoft/rushstack/issues/5049)
+  nextPlugin.flatConfig.recommended,
+  nextPlugin.flatConfig.coreWebVitals,
+  {
+    plugins: {
+      react,
+      'react-hooks': reactHooks,
+      import: importPlugin,
+      'jsx-a11y': jsxA11y,
+    },
     rules: {
       // React specific rules (overrides for Next.js react plugin)
       'react/function-component-definition': [2, { namedComponents: 'arrow-function' }],
@@ -65,7 +65,7 @@ export default defineConfig(
       'jsx-a11y/anchor-is-valid': 'off',
       'jsx-a11y/img-redundant-alt': 'warn',
     },
-  }),
+  },
   {
     languageOptions: {
       parserOptions: {
