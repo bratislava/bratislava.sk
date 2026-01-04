@@ -49,12 +49,11 @@ const PagesByComponent = () => {
       try {
         const { data } = await get('/api/pages-by-component/components')
         setComponents(data?.components || [])
-      } catch (error: any) {
+      } catch (error: unknown) {
+        const message = error instanceof Error ? error.message : 'Unknown error'
         toggleNotification({
           type: 'danger',
-          message: `Failed to load components: ${
-            error?.response?.data?.error?.message || error?.message || 'Unknown error'
-          }`,
+          message: `Failed to load components: ${message}`,
         })
       }
     }
@@ -76,14 +75,14 @@ const PagesByComponent = () => {
           selectedLocale
         )}&pagination[page]=${pageNum}&pagination[pageSize]=${size}`
       )
-      const fetchedPages = data?.pages || []
-      setPages(fetchedPages)
+      setPages(data?.pages || [])
       setPageCount(data?.pagination?.pageCount || 0)
       setTotal(data?.pagination?.total || 0)
-    } catch (error: any) {
+    } catch (error: unknown) {
+      const message = error instanceof Error ? error.message : 'Unknown error'
       toggleNotification({
         type: 'danger',
-        message: `Failed to fetch pages: ${error?.message || 'Unknown error'}`,
+        message: `Failed to fetch pages: ${message}`,
       })
     } finally {
       setLoading(false)
@@ -94,29 +93,24 @@ const PagesByComponent = () => {
     setSelectedComponent(component)
     setPages([])
     setPage(1)
-
-    if (!component) {
-      return
+    if (component) {
+      await fetchPages(component, 1, pageSize, locale)
     }
-
-    await fetchPages(component, 1, pageSize, locale)
   }
 
   const handlePageChange = async (pageNum: number) => {
-    if (!selectedComponent) {
-      return
+    if (selectedComponent) {
+      setPage(pageNum)
+      await fetchPages(selectedComponent, pageNum, pageSize, locale)
     }
-    setPage(pageNum)
-    await fetchPages(selectedComponent, pageNum, pageSize, locale)
   }
 
   const handlePageSizeChange = async (newPageSize: number) => {
-    if (!selectedComponent) {
-      return
+    if (selectedComponent) {
+      setPageSize(newPageSize)
+      setPage(1)
+      await fetchPages(selectedComponent, 1, newPageSize)
     }
-    setPageSize(newPageSize)
-    setPage(1)
-    await fetchPages(selectedComponent, 1, newPageSize)
   }
 
   const handleLocaleChange = async (newLocale: string) => {
