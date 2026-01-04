@@ -2,26 +2,32 @@
  * pages-by-component controller
  */
 
+import type { Core } from '@strapi/strapi'
+import type { Context } from 'koa'
+
+type ControllerContext = Context & { state: { strapi: Core.Strapi } }
+
 export default {
-  getComponents: async (ctx: any) => {
+  getComponents: async (ctx: ControllerContext) => {
     try {
       const strapi = ctx.state.strapi
       const service = strapi.service('api::pages-by-component.pages-by-component')
       return await service.getComponents(strapi)
-    } catch (error: any) {
-      return ctx.internalServerError(
-        `Failed to fetch components: ${error?.message || 'Unknown error'}`
-      )
+    } catch (error) {
+      const message = error instanceof Error ? error.message : 'Unknown error'
+      ctx.internalServerError(`Failed to fetch components: ${message}`)
+      throw error
     }
   },
 
-  getPagesByComponent: async (ctx: any) => {
+  getPagesByComponent: async (ctx: ControllerContext) => {
     try {
       const strapi = ctx.state.strapi
       const { component } = ctx.query
 
-      if (!component) {
-        return ctx.badRequest('Component parameter is required')
+      if (!component || typeof component !== 'string') {
+        ctx.badRequest('Component parameter is required')
+        return
       }
 
       const allPages = await strapi.documents('api::page.page').findMany({
@@ -31,13 +37,20 @@ export default {
         },
       })
 
-      const filteredPages = (allPages as any[])
+      const filteredPages = allPages
         .filter((page) => {
-          const sections = page.sections || []
+          const sections = 'sections' in page ? page.sections : undefined
           if (!Array.isArray(sections)) {
             return false
           }
-          return sections.some((section: any) => section?.__component === component)
+          return sections.some((section) => {
+            return (
+              section &&
+              typeof section === 'object' &&
+              '__component' in section &&
+              section.__component === component
+            )
+          })
         })
         .map((page) => ({
           id: page.id,
@@ -47,8 +60,10 @@ export default {
         }))
 
       return { pages: filteredPages }
-    } catch (error: any) {
-      return ctx.internalServerError(`Failed to fetch pages: ${error?.message || 'Unknown error'}`)
+    } catch (error) {
+      const message = error instanceof Error ? error.message : 'Unknown error'
+      ctx.internalServerError(`Failed to fetch pages: ${message}`)
+      throw error
     }
   },
 }
