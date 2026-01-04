@@ -11,7 +11,7 @@ export type StarzLogoProps = {
   className?: string
 }
 
-const StarzLogo = ({ linkProps, variant = 'dark-blue', className }: StarzLogoProps) => {
+const StarzLogo = ({ linkProps, variant, className }: StarzLogoProps) => {
   const { children: ariaLabel, href, ...restLinkProps } = linkProps ?? {}
 
   return (

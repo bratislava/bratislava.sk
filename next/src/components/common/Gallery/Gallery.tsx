@@ -21,7 +21,7 @@ export type GalleryProps = {
   images: UploadImageEntityFragment[]
 }
 
-const Gallery = ({ images = [] }: GalleryProps) => {
+const Gallery = ({ images }: GalleryProps) => {
   const { t } = useTranslation()
 
   const { isMobile } = useTailwindBreakpointValue()
