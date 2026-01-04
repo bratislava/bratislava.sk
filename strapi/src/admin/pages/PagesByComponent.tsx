@@ -180,7 +180,7 @@ const PagesByComponent = () => {
       </style>
       <Box padding={8}>
         <Flex direction="column" gap={4}>
-          <Typography variant="alpha">Pages by Component</Typography>
+          <Typography variant="alpha">Pages by section</Typography>
           <Typography variant="omega" textColor="neutral600">
             Find all pages that use a specific component in their sections field
           </Typography>
@@ -260,7 +260,7 @@ const PagesByComponent = () => {
                     onChange={(e) => handlePageSizeChange(Number(e.target.value))}
                     disabled={loading || !selectedComponent}
                   >
-                    {[10, 25, 50, 100, 200, 500].map((size) => (
+                    {[10, 50, 100, 500, 1000].map((size) => (
                       <option key={size} value={size}>
                         {size}
                       </option>
@@ -288,46 +288,91 @@ const PagesByComponent = () => {
                 </Flex>
               </Flex>
             </Flex>
-            <Table colCount={3} rowCount={pages.length}>
+            <Table colCount={4} rowCount={pages.length}>
               <Thead>
                 <Tr>
                   <Th>
                     <Typography variant="sigma">Title</Typography>
                   </Th>
-                  <Th>
+                  <Th style={{ width: '60px', maxWidth: '60px' }}>
                     <Typography variant="sigma">Locale</Typography>
                   </Th>
-                  <Th>
-                    <Typography variant="sigma">Frontend Links</Typography>
+                  <Th
+                    style={{
+                      width: '100px',
+                      maxWidth: '100px',
+                      whiteSpace: 'normal',
+                      wordWrap: 'break-word',
+                    }}
+                  >
+                    <Typography variant="sigma">Strapi edit link</Typography>
+                  </Th>
+                  <Th
+                    style={{
+                      width: '100px',
+                      maxWidth: '100px',
+                      whiteSpace: 'normal',
+                      wordWrap: 'break-word',
+                    }}
+                  >
+                    <Typography variant="sigma">Frontend Link</Typography>
                   </Th>
                 </Tr>
               </Thead>
               <Tbody>
                 {pages.map((pageItem) => {
                   const frontendLink = getFrontendUrl(pageItem)
+                  const contentManagerUrl = getContentManagerUrl(pageItem)
 
                   return (
                     <Tr key={pageItem.documentId}>
                       <Td>
-                        <Link
-                          to={getContentManagerUrl(pageItem)}
-                          style={{ textDecoration: 'none' }}
-                        >
-                          <Typography variant="omega">{pageItem.title}</Typography>
-                        </Link>
+                        <Typography variant="omega">{pageItem.title}</Typography>
                       </Td>
-                      <Td>
+                      <Td style={{ width: '60px', maxWidth: '60px' }}>
                         <Typography variant="omega">{pageItem.locale || 'N/A'}</Typography>
                       </Td>
-                      <Td>
+                      <Td style={{ width: '100px', maxWidth: '100px' }}>
+                        <Link
+                          to={contentManagerUrl}
+                          style={{ textDecoration: 'none', fontSize: '11px' }}
+                        >
+                          <Typography
+                            variant="omega"
+                            textColor="primary600"
+                            style={{
+                              wordBreak: 'break-all',
+                              overflow: 'hidden',
+                              textOverflow: 'ellipsis',
+                              display: '-webkit-box',
+                              WebkitLineClamp: 2,
+                              WebkitBoxOrient: 'vertical',
+                            }}
+                          >
+                            {contentManagerUrl}
+                          </Typography>
+                        </Link>
+                      </Td>
+                      <Td style={{ width: '50px', maxWidth: '50px' }}>
                         <a
                           href={frontendLink.url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          style={{ textDecoration: 'none', fontSize: '12px' }}
+                          style={{ textDecoration: 'none', fontSize: '11px' }}
                         >
-                          <Typography variant="omega" textColor="primary600">
-                            {frontendLink.label}
+                          <Typography
+                            variant="omega"
+                            textColor="primary600"
+                            style={{
+                              wordBreak: 'break-all',
+                              overflow: 'hidden',
+                              textOverflow: 'ellipsis',
+                              display: '-webkit-box',
+                              WebkitLineClamp: 2,
+                              WebkitBoxOrient: 'vertical',
+                            }}
+                          >
+                            {frontendLink.url}
                           </Typography>
                         </a>
                       </Td>
