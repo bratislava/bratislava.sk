@@ -38,7 +38,9 @@ const PaginationWithInput = ({
         <Button
           variant="plain"
           isDisabled={Number(inputValue) < 2}
-          onPress={() => handlePageChange(currentPage - 1)}
+          onPress={() => {
+            handlePageChange(currentPage - 1)
+          }}
           aria-label={t('Pagination.aria.goToPreviousPage')}
           icon={<ArrowLeftIcon />}
           className="rounded-full"
@@ -70,7 +72,9 @@ const PaginationWithInput = ({
         <Button
           variant="plain"
           isDisabled={Number(inputValue) >= totalCount || inputValue.toString() === ''}
-          onPress={() => handlePageChange(currentPage + 1)}
+          onPress={() => {
+            handlePageChange(currentPage + 1)
+          }}
           aria-label={t('Pagination.aria.goToNextPage')}
           icon={<ArrowRightIcon />}
           className="rounded-full"

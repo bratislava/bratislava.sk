@@ -67,7 +67,6 @@ const PageHeaderEvent = ({ title, breadcrumbs, headerLinks, image, header }: Pro
             <div className="flex flex-col gap-2 lg:gap-3">
               {headerLinks.map((button, index) => (
                 <Button
-                  // eslint-disable-next-line react/no-array-index-key
                   key={index}
                   variant={index === 0 ? 'solid' : 'outline'}
                   fullWidth

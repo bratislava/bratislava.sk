@@ -145,9 +145,9 @@ const InbaReleasePageContent = ({ inbaRelease }: Props) => {
               ref={searchRef}
               input={input}
               setInput={setInput}
-              setSearchQuery={(value) =>
+              setSearchQuery={(value) => {
                 setFilters((previousState) => ({ ...previousState, search: value, page: 1 }))
-              }
+              }}
               isLoading={isFetching}
             />
 

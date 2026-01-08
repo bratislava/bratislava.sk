@@ -15,7 +15,7 @@ import { base64Decode } from '@/src/utils/base64'
  * @param req
  * @param res
  */
-// eslint-disable-next-line consistent-return
+
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const { fileId: fileIdParam } = req.query
   const encodedFileId = typeof fileIdParam === 'string' ? fileIdParam : (fileIdParam?.[0] ?? '')
@@ -23,7 +23,9 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const fileId = base64Decode(encodedFileId)
 
   if (!fileId) {
-    return res.status(400).json({ message: 'Missing fileId' })
+    res.status(400).json({ message: 'Missing fileId' })
+
+    return
   }
   const fileIdRegex = /.*#\d+#.*/ // requires # followed by at least one digit followed by another #
   if (!fileIdRegex.test(fileId)) {
@@ -31,14 +33,18 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       `Invalid file ID for GINIS nacistSoubor. Encoded: ${encodedFileId} Decoded: ${fileId}`,
     )
 
-    return res.status(400).json({ message: 'Invalid fileId' })
+    res.status(400).json({ message: 'Invalid fileId' })
+
+    return
   }
 
   try {
     const result = await getOfficialBoardFileBase64Encoded(fileId)
 
     if (!result) {
-      return res.status(404).json({ message: 'File not found' })
+      res.status(404).json({ message: 'File not found' })
+
+      return
     }
 
     const buffer = Buffer.from(result.Data, 'base64')
@@ -50,7 +56,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     // See https://stackoverflow.com/questions/93551/how-to-encode-the-filename-parameter-of-content-disposition-header-in-http
     res.setHeader('Content-Disposition', 'inline')
 
-    return res.send(buffer)
+    res.send(buffer)
   } catch (error) {
     res.status(500).json(error)
   }

@@ -10,6 +10,7 @@ const nextConfig = {
   reactStrictMode: true,
   output: 'standalone',
   images: {
+    qualities: [75, 100],
     remotePatterns: [
       {
         protocol: 'http',
@@ -44,7 +45,7 @@ const nextConfig = {
           destination: `${process.env.NEXT_PUBLIC_STRAPI_URL}/uploads/:file`,
         },
         /**
-         * Rewrites to make the translation of URL work. Based on an approached outlined here:
+         * Rewrites to make the translation of URL work. Based on an approach outlined here:
          * https://stackoverflow.com/questions/68723485/how-to-setup-i18n-translated-url-routes-in-next-js/68731057#68731057
          */
         {
@@ -53,9 +54,6 @@ const nextConfig = {
         },
       ],
     }
-  },
-  serverRuntimeConfig: {
-    strapiUrl: process.env.NEXT_PUBLIC_STRAPI_URL,
   },
   // Always add new redirects at the end of the array with a comment why it is needed
   async redirects() {

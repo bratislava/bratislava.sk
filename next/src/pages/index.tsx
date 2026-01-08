@@ -10,8 +10,10 @@ import HomepageContent from '@/src/components/page-contents/HomepageContent'
 import { AdminGroupsContextProvider } from '@/src/components/providers/AdminGroupsContextProvider'
 import { GeneralContextProvider } from '@/src/components/providers/GeneralContextProvider'
 import { HomepageContextProvider } from '@/src/components/providers/HomepageContextProvider'
-import type { HomepageContext } from '@/src/services/fetchers/homepageContextFetcher'
-import { homepageContextFetcher } from '@/src/services/fetchers/homepageContextFetcher'
+import {
+  type HomepageContext,
+  homepageContextFetcher,
+} from '@/src/services/fetchers/homepageContextFetcher'
 import { GeneralQuery } from '@/src/services/graphql'
 import { client } from '@/src/services/graphql/gql'
 import {

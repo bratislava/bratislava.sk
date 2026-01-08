@@ -30,7 +30,9 @@ const VideoCard = ({ title, speaker, url: untrimmedUrl, cardTitleLevel = 'h3' }:
           <iframe
             src={src}
             title={title ?? t('VideoCard.videoPlayer')}
-            onLoad={() => setLoaded(true)}
+            onLoad={() => {
+              setLoaded(true)
+            }}
             width="100%"
             height="100%"
             className={cn('absolute top-0 left-0 size-full border-0', {

@@ -23,7 +23,6 @@ const OrganizationalStructureAccordion = ({
 
   return (
     <div className="flex flex-col">
-      {/* eslint-disable-next-line jsx-a11y/interactive-supports-focus */}
       <div
         role="button"
         onClick={toggleIsOpen}

@@ -50,7 +50,6 @@ const LinkRowCard = ({
             {metadata?.length ? (
               <div className="flex flex-wrap items-center gap-x-3 text-content-passive-secondary">
                 {metadata.map((item, index) => (
-                  // eslint-disable-next-line react/no-array-index-key
                   <Fragment key={index}>
                     {index > 0 ? (
                       <div

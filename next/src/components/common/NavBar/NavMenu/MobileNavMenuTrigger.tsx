@@ -22,8 +22,12 @@ const NavMenuTrigger = forwardRef<HTMLButtonElement, NavMenuTriggerProps>(
         ref={forwardedRef}
         // To disable "onHover" behaviour, needs to be set also in NavMenuContent
         // https://github.com/radix-ui/primitives/issues/1630#issuecomment-1237106380
-        onPointerMove={(event) => event.preventDefault()}
-        onPointerLeave={(event) => event.preventDefault()}
+        onPointerMove={(event) => {
+          event.preventDefault()
+        }}
+        onPointerLeave={(event) => {
+          event.preventDefault()
+        }}
         className="flex w-full"
       >
         <div className="flex size-full items-center gap-2 font-medium">

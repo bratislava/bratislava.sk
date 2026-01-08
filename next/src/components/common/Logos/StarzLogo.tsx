@@ -11,7 +11,7 @@ export type StarzLogoProps = {
   className?: string
 }
 
-const StarzLogo = ({ linkProps, variant = 'dark-blue', className }: StarzLogoProps) => {
+const StarzLogo = ({ linkProps, variant, className }: StarzLogoProps) => {
   const { children: ariaLabel, href, ...restLinkProps } = linkProps ?? {}
 
   return (
@@ -30,6 +30,7 @@ const StarzLogo = ({ linkProps, variant = 'dark-blue', className }: StarzLogoPro
       )}
     >
       {href ? (
+        // eslint-disable-next-line @typescript-eslint/no-base-to-string
         <MLink href={href} aria-label={ariaLabel?.toString()} {...restLinkProps} stretched>
           <StarzLogoSvg className="size-full" />
         </MLink>

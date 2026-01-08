@@ -57,8 +57,12 @@ const NavMenuContent = ({
     <NavigationMenu.Content
       // To disable "onHover" behaviour, needs to be set also in NavMenuTrigger
       // https://github.com/radix-ui/primitives/issues/1630#issuecomment-1237106380
-      onPointerMove={(event) => event.preventDefault()}
-      onPointerLeave={(event) => event.preventDefault()}
+      onPointerMove={(event) => {
+        event.preventDefault()
+      }}
+      onPointerLeave={(event) => {
+        event.preventDefault()
+      }}
       style={colorStyle}
     >
       <div className="relative z-29 bg-background-passive-base">
@@ -70,9 +74,10 @@ const NavMenuContent = ({
             'grid-cols-4': colCount === 4,
           })}
           // Together with onCLick in Viewport, it closes the menu on click outside of container area
-          onClick={(event) => event.stopPropagation()}
+          onClick={(event) => {
+            event.stopPropagation()
+          }}
         >
-          {/* eslint-disable react/no-array-index-key */}
           {menuCells.map((cell, index) => {
             // Keeping for consistency with mestskakniznica.sk
             if (Array.isArray(cell)) {
@@ -92,7 +97,6 @@ const NavMenuContent = ({
               </NavMenuContentCell>
             )
           })}
-          {/* eslint-enable react/no-array-index-key */}
         </ul>
         <HorizontalDivider />
         {seeAllLinkProps ? (
@@ -100,7 +104,9 @@ const NavMenuContent = ({
           <div
             className="flex border-b p-8"
             // Together with onCLick in Viewport, it closes the menu on click outside of container area
-            onClick={(event) => event.stopPropagation()}
+            onClick={(event) => {
+              event.stopPropagation()
+            }}
           >
             <NavMenuLink variant="goToCategoryLink" {...seeAllLinkProps} />
           </div>

@@ -29,7 +29,7 @@ export const getStaticPaths: GetStaticPaths<StaticParams> = async () => {
     .filter((regulation) => regulation?.slug)
     .map((regulation) => ({
       params: {
-        // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion,@typescript-eslint/no-non-null-assertion
+        // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
         slug: regulation!.slug!,
       },
     }))

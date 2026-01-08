@@ -41,6 +41,8 @@ export const useArticlesFilters = () => {
   const filters = { ...filtersQueryParams, search, page, pageSize: articlesDefaultFilters.pageSize }
 
   const setFilters = (newFilters: ArticlesFilters) => {
+    // TODO check if this is fine
+    // eslint-disable-next-line @typescript-eslint/no-floating-promises
     setFiltersQueryParams(newFilters)
     setSearch(newFilters.search)
     setPage(newFilters.page)

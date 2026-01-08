@@ -15,7 +15,6 @@ export const getParsedMenus = (menu: GeneralQuery['menu'], moreLabel: string): M
         const seeAllLinkProps = page ? getLinkProps({ label, page }) : undefined
 
         const items =
-          // eslint-disable-next-line unicorn/consistent-destructuring
           menuItem.sections
             ?.map((section) => {
               if (!section) return null

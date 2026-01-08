@@ -72,7 +72,6 @@ const MobileBreadcrumbs = ({ breadcrumbs }: BreadcrumbsProps) => {
                       const pageLinkProps = getLinkProps(page)
 
                       return (
-                        // eslint-disable-next-line react/no-array-index-key
                         <li className="text-size-p-tiny font-medium" key={index}>
                           <MLink variant="underlined" className="flex gap-2" {...pageLinkProps}>
                             <ArrowRightIcon className="size-5 shrink-0" />
@@ -88,7 +87,6 @@ const MobileBreadcrumbs = ({ breadcrumbs }: BreadcrumbsProps) => {
             )}
             <ol className="flex flex-col flex-wrap gap-1 py-4">
               {withHomeWithoutCurrent.map((breadcrumb, index) => (
-                // eslint-disable-next-line react/no-array-index-key
                 <li className="text-size-p-tiny font-medium" key={index}>
                   {breadcrumb.path ? (
                     <MLink href={breadcrumb.path} variant="underlined" className="flex gap-1">

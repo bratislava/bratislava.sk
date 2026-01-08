@@ -94,15 +94,13 @@ const Slider = ({ items, autoRotateInterval, className, ...rest }: SliderProps) 
             className="flex flex-row items-center justify-center gap-3"
           >
             {items.map((_, index) => (
-              <li
-                // eslint-disable-next-line react/no-array-index-key
-                key={index}
-                role="tab"
-              >
+              <li key={index} role="tab">
                 <Button
                   variant="unstyled"
                   aria-label={t('slider.aria.goToSlide', { number: index + 1 })}
-                  onPress={() => handleGoToPage(index, activeItemDirection)}
+                  onPress={() => {
+                    handleGoToPage(index, activeItemDirection)
+                  }}
                   className="-m-1 rounded-sm p-1"
                 >
                   {index === activeItemIndex ? <DotSelectedSvg /> : <DotSvg />}

@@ -61,7 +61,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     res.setHeader('Content-Type', 'text/xml')
     res.write(feed.xml())
     res.end()
-  } catch (error) {
+  } catch {
     res.status(500).json({ message: 'Error generating RSS feed' })
   }
 }

@@ -158,7 +158,6 @@ const Sections = ({ sections }: SectionsProps) => {
   return (
     <>
       {sections.map((section, index) => (
-        // eslint-disable-next-line react/no-array-index-key
         <SectionContent key={index} section={section} />
       ))}
     </>
