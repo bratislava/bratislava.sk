@@ -1,23 +1,23 @@
-import { Typography } from '@bratislava/component-library'
-import { keepPreviousData, useQuery } from '@tanstack/react-query'
-import React, { Fragment, useEffect, useRef, useState } from 'react'
-import { useDebounceValue } from 'usehooks-ts'
+import { Typography } from '@bratislava/component-library';
+import { keepPreviousData, useQuery } from '@tanstack/react-query';
+import { Fragment, useEffect, useRef, useState } from 'react';
+import { useDebounceValue } from 'usehooks-ts';
 
-import HorizontalDivider from '@/src/components/common/Divider/HorizontalDivider'
-import Pagination from '@/src/components/common/Pagination/Pagination'
-import SectionHeader from '@/src/components/layouts/SectionHeader'
-import DocumentsFilterGroup from '@/src/components/sections/DocumentsSection/DocumentsFilterGroup'
-import { useDocumentsFilters } from '@/src/components/sections/DocumentsSection/useDocumentsFilters'
-import SearchBar from '@/src/components/sections/SearchSection/SearchBar'
-import SearchResultCard from '@/src/components/sections/SearchSection/SearchResultCard'
-import { DocumentsSectionFragment } from '@/src/services/graphql'
+import HorizontalDivider from '@/src/components/common/Divider/HorizontalDivider';
+import PaginationWithInput from '@/src/components/common/Pagination/PaginationWithInput';
+import SectionHeader from '@/src/components/layouts/SectionHeader';
+import DocumentsFilterGroup from '@/src/components/sections/DocumentsSection/DocumentsFilterGroup';
+import { useDocumentsFilters } from '@/src/components/sections/DocumentsSection/useDocumentsFilters';
+import SearchBar from '@/src/components/sections/SearchSection/SearchBar';
+import SearchResultCard from '@/src/components/sections/SearchSection/SearchResultCard';
+import { DocumentsSectionFragment } from '@/src/services/graphql';
 import {
   documentsFetcher,
   DocumentsFilters,
   getDocumentsQueryKey,
-} from '@/src/services/meili/fetchers/documentsFetcher'
-import { formatDate } from '@/src/utils/formatDate'
-import { useTranslation } from '@/src/utils/useTranslation'
+} from '@/src/services/meili/fetchers/documentsFetcher';
+import { formatDate } from '@/src/utils/formatDate';
+import { useTranslation } from '@/src/utils/useTranslation';
 
 type Props = {
   section: DocumentsSectionFragment
@@ -99,8 +99,7 @@ const DocumentsAllSection = ({ section }: Props) => {
       )}
 
       {data?.estimatedTotalHits ? (
-        // TODO Replace by PaingationWithInput
-        <Pagination
+        <PaginationWithInput
           key={filters.search}
           totalCount={Math.ceil(data.estimatedTotalHits / filters.pageSize)}
           currentPage={filters.page}
