@@ -1,23 +1,23 @@
-import { Typography } from '@bratislava/component-library';
-import { keepPreviousData, useQuery } from '@tanstack/react-query';
-import { Fragment, useEffect, useRef, useState } from 'react';
-import { useDebounceValue } from 'usehooks-ts';
+import { Typography } from '@bratislava/component-library'
+import { keepPreviousData, useQuery } from '@tanstack/react-query'
+import { Fragment, useEffect, useRef, useState } from 'react'
+import { useDebounceValue } from 'usehooks-ts'
 
-import HorizontalDivider from '@/src/components/common/Divider/HorizontalDivider';
-import PaginationWithInput from '@/src/components/common/Pagination/PaginationWithInput';
-import SectionHeader from '@/src/components/layouts/SectionHeader';
-import DocumentsFilterGroup from '@/src/components/sections/DocumentsSection/DocumentsFilterGroup';
-import { useDocumentsFilters } from '@/src/components/sections/DocumentsSection/useDocumentsFilters';
-import SearchBar from '@/src/components/sections/SearchSection/SearchBar';
-import SearchResultCard from '@/src/components/sections/SearchSection/SearchResultCard';
-import { DocumentsSectionFragment } from '@/src/services/graphql';
+import HorizontalDivider from '@/src/components/common/Divider/HorizontalDivider'
+import PaginationWithInput from '@/src/components/common/Pagination/PaginationWithInput'
+import SectionHeader from '@/src/components/layouts/SectionHeader'
+import DocumentsFilterGroup from '@/src/components/sections/DocumentsSection/DocumentsFilterGroup'
+import { useDocumentsFilters } from '@/src/components/sections/DocumentsSection/useDocumentsFilters'
+import SearchBar from '@/src/components/sections/SearchSection/SearchBar'
+import SearchResultCard from '@/src/components/sections/SearchSection/SearchResultCard'
+import { DocumentsSectionFragment } from '@/src/services/graphql'
 import {
   documentsFetcher,
   DocumentsFilters,
   getDocumentsQueryKey,
-} from '@/src/services/meili/fetchers/documentsFetcher';
-import { formatDate } from '@/src/utils/formatDate';
-import { useTranslation } from '@/src/utils/useTranslation';
+} from '@/src/services/meili/fetchers/documentsFetcher'
+import { formatDate } from '@/src/utils/formatDate'
+import { useTranslation } from '@/src/utils/useTranslation'
 
 type Props = {
   section: DocumentsSectionFragment
@@ -56,6 +56,13 @@ const DocumentsAllSection = ({ section }: Props) => {
   useEffect(() => {
     searchRef.current?.scrollIntoView({ behavior: 'smooth' })
   }, [filters.page, filters.pageSize])
+
+  const currentResultsCount = data?.hits.length ?? 0
+  const totalCount = data?.estimatedTotalHits ?? 0
+  const articlesCountMessage = t('ArticlesAll.resultsCountMessage', {
+    count: currentResultsCount,
+    totalCount,
+  })
 
   return (
     <div className="flex flex-col gap-8">
@@ -99,12 +106,19 @@ const DocumentsAllSection = ({ section }: Props) => {
       )}
 
       {data?.estimatedTotalHits ? (
-        <PaginationWithInput
-          key={filters.search}
-          totalCount={Math.ceil(data.estimatedTotalHits / filters.pageSize)}
-          currentPage={filters.page}
-          onPageChange={setPage}
-        />
+        <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+          <Typography variant="p-small" className="w-fit self-center">
+            {articlesCountMessage}
+          </Typography>
+          <div className="w-fit self-center">
+            <PaginationWithInput
+              key={filters.search}
+              totalCount={Math.ceil(data.estimatedTotalHits / filters.pageSize)}
+              currentPage={filters.page}
+              onPageChange={setPage}
+            />
+          </div>
+        </div>
       ) : null}
     </div>
   )
