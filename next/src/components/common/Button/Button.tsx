@@ -164,34 +164,33 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
               // colors - bg, border, content - variant solid (figma: boxed primary)
               'border-action-border-default bg-background-active-primary-default text-white':
                 variant === 'solid',
-              'active:border-action-border-pressed active:bg-action-background-pressed':
-                variant === 'solid' && !isDisabled,
               'hover:border-action-border-hover hover:bg-action-background-hover':
                 variant === 'solid',
+              'active:border-action-border-pressed active:bg-action-background-pressed':
+                variant === 'solid' && !isDisabled,
 
               // colors - bg, border, content - variant solid-inverted (figma: boxed primary inverted)
-              'border-background-active-primary-inverted-default bg-background-active-primary-inverted-default text-content-active-primary-default':
+              'border-background-active-primary-inverted-default bg-background-active-primary-inverted-default text-content-active-primary-default ring-white ring-offset-border-active-primary-default':
+                variant === 'solid-inverted',
+              'hover:border-background-active-primary-inverted-hover hover:bg-background-active-primary-inverted-hover':
                 variant === 'solid-inverted',
               'active:border-background-active-primary-inverted-pressed active:bg-background-active-primary-inverted-pressed':
                 variant === 'solid-inverted' && !isDisabled,
-              'hover:border-background-active-primary-inverted-hover hover:bg-background-active-primary-inverted-hover':
-                variant === 'solid-inverted',
-              'ring-white ring-offset-border-active-primary-default': variant === 'solid-inverted',
 
               // colors - bg, border, content - variant outline (figma: boxed secondary)
               'border-action-border-default bg-transparent text-action-content-default':
                 variant === 'outline',
-              'active:border-action-border-pressed active:text-action-content-pressed':
-                variant === 'outline' && !isDisabled,
               'hover:border-action-border-hover hover:text-action-content-hover':
                 variant === 'outline',
+              'active:border-action-border-pressed active:text-action-content-pressed':
+                variant === 'outline' && !isDisabled,
 
               // colors - bg, border, content - variant plain (figma: plain default)
               'text-action-content-default': variant === 'plain' || variant === 'link',
-              'active:bg-action-soft-background-pressed active:text-action-content-pressed':
-                variant === 'plain' && !isDisabled,
               'hover:bg-action-soft-background-hover hover:text-action-content-hover':
                 variant === 'plain',
+              'active:bg-action-soft-background-pressed active:text-action-content-pressed':
+                variant === 'plain' && !isDisabled,
 
               // colors - bg, border, content - variant negative-solid
               'border-negative-700 bg-negative-700 text-white': variant === 'negative-solid',
@@ -210,10 +209,10 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
               'active:text-action-content-pressed': variant === 'link' && !isDisabled,
 
               // colors - bg, border, content - variant link-inverted
+              'text-content-active-primary-inverted-default': variant === 'link-inverted',
               'hover:text-content-active-primary-inverted-hover': variant === 'link-inverted',
               'active:text-content-active-primary-inverted-pressed':
                 variant === 'link-inverted' && !isDisabled,
-              'text-content-active-primary-inverted-default': variant === 'link-inverted',
 
               // svg icons
               '[&>svg]:h-5 [&>svg]:w-5 [&>svg]:lg:h-6 [&>svg]:lg:w-6': size === 'responsive',
