@@ -165,7 +165,7 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
               'border-action-border-default bg-background-active-primary-default text-white':
                 variant === 'solid',
               'active:border-action-border-pressed active:bg-action-background-pressed':
-                (variant === 'solid' && !isDisabled),
+                variant === 'solid' && !isDisabled,
               'hover:border-action-border-hover hover:bg-action-background-hover':
                 variant === 'solid',
 
@@ -173,7 +173,7 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
               'border-background-active-primary-inverted-default bg-background-active-primary-inverted-default text-content-active-primary-default':
                 variant === 'solid-inverted',
               'active:border-background-active-primary-inverted-pressed active:bg-background-active-primary-inverted-pressed':
-                (variant === 'solid-inverted' && !isDisabled),
+                variant === 'solid-inverted' && !isDisabled,
               'hover:border-background-active-primary-inverted-hover hover:bg-background-active-primary-inverted-hover':
                 variant === 'solid-inverted',
               'ring-white ring-offset-border-active-primary-default': variant === 'solid-inverted',
@@ -182,35 +182,38 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
               'border-action-border-default bg-transparent text-action-content-default':
                 variant === 'outline',
               'active:border-action-border-pressed active:text-action-content-pressed':
-                (variant === 'outline' && !isDisabled),
+                variant === 'outline' && !isDisabled,
               'hover:border-action-border-hover hover:text-action-content-hover':
                 variant === 'outline',
 
               // colors - bg, border, content - variant plain (figma: plain default)
-              'text-action-content-default': variant === 'plain',
+              'text-action-content-default': variant === 'plain' || variant === 'link',
               'active:bg-action-soft-background-pressed active:text-action-content-pressed':
-                (variant === 'plain' && !isDisabled),
+                variant === 'plain' && !isDisabled,
               'hover:bg-action-soft-background-hover hover:text-action-content-hover':
                 variant === 'plain',
 
               // colors - bg, border, content - variant negative-solid
+              'border-negative-700 bg-negative-700 text-white': variant === 'negative-solid',
               'hover:border-negative-600 hover:bg-negative-600': variant === 'negative-solid',
-              'border-negative-700 bg-negative-700 text-white active:border-negative-800 active:bg-negative-800':
-                (variant === 'negative-solid' && !isDisabled),
+              'active:border-negative-800 active:bg-negative-800':
+                variant === 'negative-solid' && !isDisabled,
 
               // colors - bg, border, content - variant negative-plain
+              'text-negative-700': variant === 'negative-plain',
               'hover:bg-negative-100 hover:text-negative-600': variant === 'negative-plain',
-              'text-negative-700 active:bg-negative-200 active:text-negative-800':
-                (variant === 'negative-plain' && !isDisabled),
+              'active:bg-negative-200 active:text-negative-800':
+                variant === 'negative-plain' && !isDisabled,
 
               // colors - bg, border, content - variant link
               'hover:text-action-content-hover': variant === 'link',
-              'text-action-content-default active:text-action-content-pressed': (variant === 'link' && !isDisabled),
+              'active:text-action-content-pressed': variant === 'link' && !isDisabled,
 
               // colors - bg, border, content - variant link-inverted
               'hover:text-content-active-primary-inverted-hover': variant === 'link-inverted',
-              'text-content-active-primary-inverted-default active:text-content-active-primary-inverted-pressed':
-                (variant === 'link-inverted' && !isDisabled),
+              'active:text-content-active-primary-inverted-pressed':
+                variant === 'link-inverted' && !isDisabled,
+              'text-content-active-primary-inverted-default': variant === 'link-inverted',
 
               // svg icons
               '[&>svg]:h-5 [&>svg]:w-5 [&>svg]:lg:h-6 [&>svg]:lg:w-6': size === 'responsive',
