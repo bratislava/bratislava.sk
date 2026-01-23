@@ -1,10 +1,10 @@
 import { Typography } from '@bratislava/component-library'
 import { keepPreviousData, useQuery } from '@tanstack/react-query'
-import React, { Fragment, useEffect, useRef, useState } from 'react'
+import { Fragment, useEffect, useRef, useState } from 'react'
 import { useDebounceValue } from 'usehooks-ts'
 
 import HorizontalDivider from '@/src/components/common/Divider/HorizontalDivider'
-import Pagination from '@/src/components/common/Pagination/Pagination'
+import PaginationWithInput from '@/src/components/common/Pagination/PaginationWithInput'
 import SectionHeader from '@/src/components/layouts/SectionHeader'
 import DocumentsFilterGroup from '@/src/components/sections/DocumentsSection/DocumentsFilterGroup'
 import { useDocumentsFilters } from '@/src/components/sections/DocumentsSection/useDocumentsFilters'
@@ -57,8 +57,15 @@ const DocumentsAllSection = ({ section }: Props) => {
     searchRef.current?.scrollIntoView({ behavior: 'smooth' })
   }, [filters.page, filters.pageSize])
 
+  const currentResultsCount = data?.hits.length ?? 0
+  const totalCount = data?.estimatedTotalHits ?? 0
+  const articlesCountMessage = t('ArticlesAll.resultsCountMessage', {
+    count: currentResultsCount,
+    totalCount,
+  })
+
   return (
-    <div className="flex flex-col gap-8">
+    <div className="flex flex-col gap-6">
       <div className="flex flex-col gap-6">
         <SectionHeader title={title} text={text} titleLevel={titleLevelDocumentsSection} />
         <SearchBar
@@ -99,13 +106,15 @@ const DocumentsAllSection = ({ section }: Props) => {
       )}
 
       {data?.estimatedTotalHits ? (
-        // TODO Replace by PaingationWithInput
-        <Pagination
-          key={filters.search}
-          totalCount={Math.ceil(data.estimatedTotalHits / filters.pageSize)}
-          currentPage={filters.page}
-          onPageChange={setPage}
-        />
+        <div className="flex flex-col items-center gap-4 lg:flex-row lg:justify-between">
+          <Typography variant="p-default">{articlesCountMessage}</Typography>
+          <PaginationWithInput
+            key={filters.search}
+            totalCount={Math.ceil(data.estimatedTotalHits / filters.pageSize)}
+            currentPage={filters.page}
+            onPageChange={setPage}
+          />
+        </div>
       ) : null}
     </div>
   )
