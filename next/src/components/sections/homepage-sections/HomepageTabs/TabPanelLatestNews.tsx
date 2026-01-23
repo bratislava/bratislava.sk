@@ -44,7 +44,7 @@ const TabPanelLatestNews = () => {
             <ArticleCard key={article.slug} {...transformArticleProps(article)} />
           ))}
 
-          <div className="hidden flex-col gap-4 rounded-lg bg-white p-6 lg:flex">
+          <div className="hidden flex-col gap-4 self-start rounded-lg bg-white p-6 lg:flex">
             {latestArticlesFiltered.map((post, index) => {
               const { slug, title, addedAt } = post
 
