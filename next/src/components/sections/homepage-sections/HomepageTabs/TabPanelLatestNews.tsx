@@ -2,7 +2,7 @@ import { Typography } from '@bratislava/component-library'
 import { Fragment } from 'react'
 import { TabPanel } from 'react-aria-components'
 
-import ArticleCardOld from '@/src/components/cards/ArticleCardOld'
+import ArticleCard from '@/src/components/cards/ArticleCard'
 import { transformArticleProps } from '@/src/components/cards/transformArticleProps'
 import Button from '@/src/components/common/Button/Button'
 import ResponsiveCarousel from '@/src/components/common/Carousel/ResponsiveCarousel'
@@ -35,16 +35,16 @@ const TabPanelLatestNews = () => {
       <ResponsiveCarousel
         className="lg:hidden"
         items={allLatestArticles.map((article) => (
-          <ArticleCardOld key={article.slug} {...transformArticleProps(article)} />
+          <ArticleCard key={article.slug} {...transformArticleProps(article)} />
         ))}
       />
       <div className="mt-14 hidden pb-8 lg:block">
         <div className="grid grid-cols-3 gap-x-8">
           {[leftArticle, rightArticle].filter(isDefined).map((article) => (
-            <ArticleCardOld key={article.slug} {...transformArticleProps(article)} />
+            <ArticleCard key={article.slug} {...transformArticleProps(article)} />
           ))}
 
-          <div className="hidden flex-col gap-6 lg:flex">
+          <div className="hidden flex-col gap-4 rounded-lg bg-white p-6 lg:flex">
             {latestArticlesFiltered.map((post, index) => {
               const { slug, title, addedAt } = post
 
@@ -62,7 +62,7 @@ const TabPanelLatestNews = () => {
                       variant="underlineOnHover"
                       className="line-clamp-3"
                     >
-                      <Typography variant="h5" as="h3">
+                      <Typography variant="h6" as="h3">
                         {title}
                       </Typography>
                     </MLink>
