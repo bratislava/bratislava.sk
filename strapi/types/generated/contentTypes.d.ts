@@ -1274,7 +1274,6 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
         'sections.iframe',
         'sections.inba-latest-release',
         'sections.inba-releases',
-        'sections.calculator',
         'sections.contacts-section',
         'sections.newsletter',
         'sections.links',
