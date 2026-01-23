@@ -1,14 +1,13 @@
 {
   "key": "plugin_content_manager_configuration_components::sections.calculator",
   "value": {
-    "uid": "sections.calculator",
     "settings": {
       "bulkable": true,
       "filterable": true,
       "searchable": true,
       "pageSize": 10,
       "mainField": "documentId",
-      "defaultSortBy": "id",
+      "defaultSortBy": "documentId",
       "defaultSortOrder": "ASC"
     },
     "metadatas": {
@@ -95,6 +94,7 @@
         ]
       ]
     },
+    "uid": "sections.calculator",
     "isComponent": true
   },
   "type": "object",
