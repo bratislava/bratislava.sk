@@ -1409,7 +1409,6 @@ export type ComponentSectionsAccordion = {
   flatText?: Maybe<Array<Maybe<ComponentAccordionItemsFlatText>>>
   id: Scalars['ID']['output']
   institutions?: Maybe<Array<Maybe<ComponentAccordionItemsInstitution>>>
-  institutionsNarrow?: Maybe<Array<Maybe<ComponentAccordionItemsInstitutionNarrow>>>
   title?: Maybe<Scalars['String']['output']>
   titleLevel?: Maybe<Enum_Componentsectionsaccordion_Titlelevel>
 }
@@ -1426,17 +1425,10 @@ export type ComponentSectionsAccordionInstitutionsArgs = {
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
 }
 
-export type ComponentSectionsAccordionInstitutionsNarrowArgs = {
-  filters?: InputMaybe<ComponentAccordionItemsInstitutionNarrowFiltersInput>
-  pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
-}
-
 export type ComponentSectionsAccordionFiltersInput = {
   and?: InputMaybe<Array<InputMaybe<ComponentSectionsAccordionFiltersInput>>>
   flatText?: InputMaybe<ComponentAccordionItemsFlatTextFiltersInput>
   institutions?: InputMaybe<ComponentAccordionItemsInstitutionFiltersInput>
-  institutionsNarrow?: InputMaybe<ComponentAccordionItemsInstitutionNarrowFiltersInput>
   not?: InputMaybe<ComponentSectionsAccordionFiltersInput>
   or?: InputMaybe<Array<InputMaybe<ComponentSectionsAccordionFiltersInput>>>
   title?: InputMaybe<StringFilterInput>
@@ -1447,7 +1439,6 @@ export type ComponentSectionsAccordionInput = {
   flatText?: InputMaybe<Array<InputMaybe<ComponentAccordionItemsFlatTextInput>>>
   id?: InputMaybe<Scalars['ID']['input']>
   institutions?: InputMaybe<Array<InputMaybe<ComponentAccordionItemsInstitutionInput>>>
-  institutionsNarrow?: InputMaybe<Array<InputMaybe<ComponentAccordionItemsInstitutionNarrowInput>>>
   title?: InputMaybe<Scalars['String']['input']>
   titleLevel?: InputMaybe<Enum_Componentsectionsaccordion_Titlelevel>
 }
@@ -10298,14 +10289,6 @@ export type PageEntityFragment = {
             }
           } | null> | null
         } | null> | null
-        institutionsNarrow?: Array<{
-          __typename?: 'ComponentAccordionItemsInstitutionNarrow'
-          title?: string | null
-          subtitle?: string | null
-          category?: string | null
-          url?: string | null
-          urlLabel?: string | null
-        } | null> | null
       }
     | {
         __typename: 'ComponentSectionsArticles'
@@ -11505,14 +11488,6 @@ export type PageBySlugQuery = {
                 updatedAt?: any | null
               }
             } | null> | null
-          } | null> | null
-          institutionsNarrow?: Array<{
-            __typename?: 'ComponentAccordionItemsInstitutionNarrow'
-            title?: string | null
-            subtitle?: string | null
-            category?: string | null
-            url?: string | null
-            urlLabel?: string | null
           } | null> | null
         }
       | {
@@ -12742,14 +12717,6 @@ export type Dev_AllPagesQuery = {
                 updatedAt?: any | null
               }
             } | null> | null
-          } | null> | null
-          institutionsNarrow?: Array<{
-            __typename?: 'ComponentAccordionItemsInstitutionNarrow'
-            title?: string | null
-            subtitle?: string | null
-            category?: string | null
-            url?: string | null
-            urlLabel?: string | null
           } | null> | null
         }
       | {
@@ -14820,14 +14787,6 @@ export type AccordionSectionFragment = {
       }
     } | null> | null
   } | null> | null
-  institutionsNarrow?: Array<{
-    __typename?: 'ComponentAccordionItemsInstitutionNarrow'
-    title?: string | null
-    subtitle?: string | null
-    category?: string | null
-    url?: string | null
-    urlLabel?: string | null
-  } | null> | null
 }
 
 export type CalculatorSectionFragment = {
@@ -15634,14 +15593,6 @@ type Sections_ComponentSectionsAccordion_Fragment = {
         updatedAt?: any | null
       }
     } | null> | null
-  } | null> | null
-  institutionsNarrow?: Array<{
-    __typename?: 'ComponentAccordionItemsInstitutionNarrow'
-    title?: string | null
-    subtitle?: string | null
-    category?: string | null
-    url?: string | null
-    urlLabel?: string | null
   } | null> | null
 }
 
@@ -17521,15 +17472,6 @@ export const ComponentAccordionItemsFlatTextFragmentDoc = gql`
   ${PageSlugEntityFragmentDoc}
   ${FileItemBlockFragmentDoc}
 `
-export const ComponentAccordionItemsInstitutionNarrowFragmentDoc = gql`
-  fragment ComponentAccordionItemsInstitutionNarrow on ComponentAccordionItemsInstitutionNarrow {
-    title
-    subtitle
-    category
-    url
-    urlLabel
-  }
-`
 export const AccordionSectionFragmentDoc = gql`
   fragment AccordionSection on ComponentSectionsAccordion {
     title
@@ -17539,14 +17481,10 @@ export const AccordionSectionFragmentDoc = gql`
     flatText(pagination: { limit: -1 }) {
       ...ComponentAccordionItemsFlatText
     }
-    institutionsNarrow(pagination: { limit: -1 }) {
-      ...ComponentAccordionItemsInstitutionNarrow
-    }
     titleLevelAccordionSection: titleLevel
   }
   ${ComponentAccordionItemsInstitutionFragmentDoc}
   ${ComponentAccordionItemsFlatTextFragmentDoc}
-  ${ComponentAccordionItemsInstitutionNarrowFragmentDoc}
 `
 export const CalculatorSectionFragmentDoc = gql`
   fragment CalculatorSection on ComponentSectionsCalculator {
@@ -18269,6 +18207,15 @@ export const PageEntityFragmentDoc = gql`
   ${TagEntityFragmentDoc}
   ${PageParentPagesFragmentDoc}
 `
+export const ComponentAccordionItemsInstitutionNarrowFragmentDoc = gql`
+  fragment ComponentAccordionItemsInstitutionNarrow on ComponentAccordionItemsInstitutionNarrow {
+    title
+    subtitle
+    category
+    url
+    urlLabel
+  }
+`
 export const AdminGroupsDocument = gql`
   query AdminGroups($limit: Int = -1, $sort: [String] = ["title"]) {
     adminGroups(pagination: { limit: $limit }, sort: $sort) {
@@ -18749,12 +18696,15 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     AdminGroups(
       variables?: AdminGroupsQueryVariables,
       requestHeaders?: GraphQLClientRequestHeaders,
+      signal?: RequestInit['signal'],
     ): Promise<AdminGroupsQuery> {
       return withWrapper(
         (wrappedRequestHeaders) =>
-          client.request<AdminGroupsQuery>(AdminGroupsDocument, variables, {
-            ...requestHeaders,
-            ...wrappedRequestHeaders,
+          client.request<AdminGroupsQuery>({
+            document: AdminGroupsDocument,
+            variables,
+            requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders },
+            signal,
           }),
         'AdminGroups',
         'query',
@@ -18764,12 +18714,15 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     ArticleBySlug(
       variables: ArticleBySlugQueryVariables,
       requestHeaders?: GraphQLClientRequestHeaders,
+      signal?: RequestInit['signal'],
     ): Promise<ArticleBySlugQuery> {
       return withWrapper(
         (wrappedRequestHeaders) =>
-          client.request<ArticleBySlugQuery>(ArticleBySlugDocument, variables, {
-            ...requestHeaders,
-            ...wrappedRequestHeaders,
+          client.request<ArticleBySlugQuery>({
+            document: ArticleBySlugDocument,
+            variables,
+            requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders },
+            signal,
           }),
         'ArticleBySlug',
         'query',
@@ -18779,12 +18732,15 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     ArticlesStaticPaths(
       variables: ArticlesStaticPathsQueryVariables,
       requestHeaders?: GraphQLClientRequestHeaders,
+      signal?: RequestInit['signal'],
     ): Promise<ArticlesStaticPathsQuery> {
       return withWrapper(
         (wrappedRequestHeaders) =>
-          client.request<ArticlesStaticPathsQuery>(ArticlesStaticPathsDocument, variables, {
-            ...requestHeaders,
-            ...wrappedRequestHeaders,
+          client.request<ArticlesStaticPathsQuery>({
+            document: ArticlesStaticPathsDocument,
+            variables,
+            requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders },
+            signal,
           }),
         'ArticlesStaticPaths',
         'query',
@@ -18794,12 +18750,15 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     ArticleCategories(
       variables?: ArticleCategoriesQueryVariables,
       requestHeaders?: GraphQLClientRequestHeaders,
+      signal?: RequestInit['signal'],
     ): Promise<ArticleCategoriesQuery> {
       return withWrapper(
         (wrappedRequestHeaders) =>
-          client.request<ArticleCategoriesQuery>(ArticleCategoriesDocument, variables, {
-            ...requestHeaders,
-            ...wrappedRequestHeaders,
+          client.request<ArticleCategoriesQuery>({
+            document: ArticleCategoriesDocument,
+            variables,
+            requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders },
+            signal,
           }),
         'ArticleCategories',
         'query',
@@ -18809,12 +18768,15 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     Articles(
       variables?: ArticlesQueryVariables,
       requestHeaders?: GraphQLClientRequestHeaders,
+      signal?: RequestInit['signal'],
     ): Promise<ArticlesQuery> {
       return withWrapper(
         (wrappedRequestHeaders) =>
-          client.request<ArticlesQuery>(ArticlesDocument, variables, {
-            ...requestHeaders,
-            ...wrappedRequestHeaders,
+          client.request<ArticlesQuery>({
+            document: ArticlesDocument,
+            variables,
+            requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders },
+            signal,
           }),
         'Articles',
         'query',
@@ -18824,12 +18786,15 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     ArticlesRssFeed(
       variables: ArticlesRssFeedQueryVariables,
       requestHeaders?: GraphQLClientRequestHeaders,
+      signal?: RequestInit['signal'],
     ): Promise<ArticlesRssFeedQuery> {
       return withWrapper(
         (wrappedRequestHeaders) =>
-          client.request<ArticlesRssFeedQuery>(ArticlesRssFeedDocument, variables, {
-            ...requestHeaders,
-            ...wrappedRequestHeaders,
+          client.request<ArticlesRssFeedQuery>({
+            document: ArticlesRssFeedDocument,
+            variables,
+            requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders },
+            signal,
           }),
         'ArticlesRssFeed',
         'query',
@@ -18839,12 +18804,15 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     Dev_AllArticles(
       variables?: Dev_AllArticlesQueryVariables,
       requestHeaders?: GraphQLClientRequestHeaders,
+      signal?: RequestInit['signal'],
     ): Promise<Dev_AllArticlesQuery> {
       return withWrapper(
         (wrappedRequestHeaders) =>
-          client.request<Dev_AllArticlesQuery>(Dev_AllArticlesDocument, variables, {
-            ...requestHeaders,
-            ...wrappedRequestHeaders,
+          client.request<Dev_AllArticlesQuery>({
+            document: Dev_AllArticlesDocument,
+            variables,
+            requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders },
+            signal,
           }),
         'Dev_AllArticles',
         'query',
@@ -18854,12 +18822,15 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     DocumentBySlug(
       variables: DocumentBySlugQueryVariables,
       requestHeaders?: GraphQLClientRequestHeaders,
+      signal?: RequestInit['signal'],
     ): Promise<DocumentBySlugQuery> {
       return withWrapper(
         (wrappedRequestHeaders) =>
-          client.request<DocumentBySlugQuery>(DocumentBySlugDocument, variables, {
-            ...requestHeaders,
-            ...wrappedRequestHeaders,
+          client.request<DocumentBySlugQuery>({
+            document: DocumentBySlugDocument,
+            variables,
+            requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders },
+            signal,
           }),
         'DocumentBySlug',
         'query',
@@ -18869,12 +18840,15 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     DocumentCategories(
       variables?: DocumentCategoriesQueryVariables,
       requestHeaders?: GraphQLClientRequestHeaders,
+      signal?: RequestInit['signal'],
     ): Promise<DocumentCategoriesQuery> {
       return withWrapper(
         (wrappedRequestHeaders) =>
-          client.request<DocumentCategoriesQuery>(DocumentCategoriesDocument, variables, {
-            ...requestHeaders,
-            ...wrappedRequestHeaders,
+          client.request<DocumentCategoriesQuery>({
+            document: DocumentCategoriesDocument,
+            variables,
+            requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders },
+            signal,
           }),
         'DocumentCategories',
         'query',
@@ -18884,12 +18858,15 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     allFiles(
       variables?: AllFilesQueryVariables,
       requestHeaders?: GraphQLClientRequestHeaders,
+      signal?: RequestInit['signal'],
     ): Promise<AllFilesQuery> {
       return withWrapper(
         (wrappedRequestHeaders) =>
-          client.request<AllFilesQuery>(AllFilesDocument, variables, {
-            ...requestHeaders,
-            ...wrappedRequestHeaders,
+          client.request<AllFilesQuery>({
+            document: AllFilesDocument,
+            variables,
+            requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders },
+            signal,
           }),
         'allFiles',
         'query',
@@ -18899,12 +18876,15 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     General(
       variables: GeneralQueryVariables,
       requestHeaders?: GraphQLClientRequestHeaders,
+      signal?: RequestInit['signal'],
     ): Promise<GeneralQuery> {
       return withWrapper(
         (wrappedRequestHeaders) =>
-          client.request<GeneralQuery>(GeneralDocument, variables, {
-            ...requestHeaders,
-            ...wrappedRequestHeaders,
+          client.request<GeneralQuery>({
+            document: GeneralDocument,
+            variables,
+            requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders },
+            signal,
           }),
         'General',
         'query',
@@ -18914,12 +18894,15 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     Alert(
       variables: AlertQueryVariables,
       requestHeaders?: GraphQLClientRequestHeaders,
+      signal?: RequestInit['signal'],
     ): Promise<AlertQuery> {
       return withWrapper(
         (wrappedRequestHeaders) =>
-          client.request<AlertQuery>(AlertDocument, variables, {
-            ...requestHeaders,
-            ...wrappedRequestHeaders,
+          client.request<AlertQuery>({
+            document: AlertDocument,
+            variables,
+            requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders },
+            signal,
           }),
         'Alert',
         'query',
@@ -18929,12 +18912,15 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     Homepage(
       variables: HomepageQueryVariables,
       requestHeaders?: GraphQLClientRequestHeaders,
+      signal?: RequestInit['signal'],
     ): Promise<HomepageQuery> {
       return withWrapper(
         (wrappedRequestHeaders) =>
-          client.request<HomepageQuery>(HomepageDocument, variables, {
-            ...requestHeaders,
-            ...wrappedRequestHeaders,
+          client.request<HomepageQuery>({
+            document: HomepageDocument,
+            variables,
+            requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders },
+            signal,
           }),
         'Homepage',
         'query',
@@ -18944,12 +18930,15 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     InbaReleaseBySlug(
       variables: InbaReleaseBySlugQueryVariables,
       requestHeaders?: GraphQLClientRequestHeaders,
+      signal?: RequestInit['signal'],
     ): Promise<InbaReleaseBySlugQuery> {
       return withWrapper(
         (wrappedRequestHeaders) =>
-          client.request<InbaReleaseBySlugQuery>(InbaReleaseBySlugDocument, variables, {
-            ...requestHeaders,
-            ...wrappedRequestHeaders,
+          client.request<InbaReleaseBySlugQuery>({
+            document: InbaReleaseBySlugDocument,
+            variables,
+            requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders },
+            signal,
           }),
         'InbaReleaseBySlug',
         'query',
@@ -18959,12 +18948,15 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     InbaReleasesStaticPaths(
       variables?: InbaReleasesStaticPathsQueryVariables,
       requestHeaders?: GraphQLClientRequestHeaders,
+      signal?: RequestInit['signal'],
     ): Promise<InbaReleasesStaticPathsQuery> {
       return withWrapper(
         (wrappedRequestHeaders) =>
-          client.request<InbaReleasesStaticPathsQuery>(InbaReleasesStaticPathsDocument, variables, {
-            ...requestHeaders,
-            ...wrappedRequestHeaders,
+          client.request<InbaReleasesStaticPathsQuery>({
+            document: InbaReleasesStaticPathsDocument,
+            variables,
+            requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders },
+            signal,
           }),
         'InbaReleasesStaticPaths',
         'query',
@@ -18974,12 +18966,15 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     InbaReleasesRssFeed(
       variables?: InbaReleasesRssFeedQueryVariables,
       requestHeaders?: GraphQLClientRequestHeaders,
+      signal?: RequestInit['signal'],
     ): Promise<InbaReleasesRssFeedQuery> {
       return withWrapper(
         (wrappedRequestHeaders) =>
-          client.request<InbaReleasesRssFeedQuery>(InbaReleasesRssFeedDocument, variables, {
-            ...requestHeaders,
-            ...wrappedRequestHeaders,
+          client.request<InbaReleasesRssFeedQuery>({
+            document: InbaReleasesRssFeedDocument,
+            variables,
+            requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders },
+            signal,
           }),
         'InbaReleasesRssFeed',
         'query',
@@ -18989,14 +18984,16 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     HomepageLatestInbaRelease(
       variables?: HomepageLatestInbaReleaseQueryVariables,
       requestHeaders?: GraphQLClientRequestHeaders,
+      signal?: RequestInit['signal'],
     ): Promise<HomepageLatestInbaReleaseQuery> {
       return withWrapper(
         (wrappedRequestHeaders) =>
-          client.request<HomepageLatestInbaReleaseQuery>(
-            HomepageLatestInbaReleaseDocument,
+          client.request<HomepageLatestInbaReleaseQuery>({
+            document: HomepageLatestInbaReleaseDocument,
             variables,
-            { ...requestHeaders, ...wrappedRequestHeaders },
-          ),
+            requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders },
+            signal,
+          }),
         'HomepageLatestInbaRelease',
         'query',
         variables,
@@ -19005,12 +19002,15 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     LatestInbaRelease(
       variables?: LatestInbaReleaseQueryVariables,
       requestHeaders?: GraphQLClientRequestHeaders,
+      signal?: RequestInit['signal'],
     ): Promise<LatestInbaReleaseQuery> {
       return withWrapper(
         (wrappedRequestHeaders) =>
-          client.request<LatestInbaReleaseQuery>(LatestInbaReleaseDocument, variables, {
-            ...requestHeaders,
-            ...wrappedRequestHeaders,
+          client.request<LatestInbaReleaseQuery>({
+            document: LatestInbaReleaseDocument,
+            variables,
+            requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders },
+            signal,
           }),
         'LatestInbaRelease',
         'query',
@@ -19020,12 +19020,15 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     PageCategories(
       variables?: PageCategoriesQueryVariables,
       requestHeaders?: GraphQLClientRequestHeaders,
+      signal?: RequestInit['signal'],
     ): Promise<PageCategoriesQuery> {
       return withWrapper(
         (wrappedRequestHeaders) =>
-          client.request<PageCategoriesQuery>(PageCategoriesDocument, variables, {
-            ...requestHeaders,
-            ...wrappedRequestHeaders,
+          client.request<PageCategoriesQuery>({
+            document: PageCategoriesDocument,
+            variables,
+            requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders },
+            signal,
           }),
         'PageCategories',
         'query',
@@ -19035,12 +19038,15 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     PagesStaticPaths(
       variables?: PagesStaticPathsQueryVariables,
       requestHeaders?: GraphQLClientRequestHeaders,
+      signal?: RequestInit['signal'],
     ): Promise<PagesStaticPathsQuery> {
       return withWrapper(
         (wrappedRequestHeaders) =>
-          client.request<PagesStaticPathsQuery>(PagesStaticPathsDocument, variables, {
-            ...requestHeaders,
-            ...wrappedRequestHeaders,
+          client.request<PagesStaticPathsQuery>({
+            document: PagesStaticPathsDocument,
+            variables,
+            requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders },
+            signal,
           }),
         'PagesStaticPaths',
         'query',
@@ -19050,12 +19056,15 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     PageBySlug(
       variables: PageBySlugQueryVariables,
       requestHeaders?: GraphQLClientRequestHeaders,
+      signal?: RequestInit['signal'],
     ): Promise<PageBySlugQuery> {
       return withWrapper(
         (wrappedRequestHeaders) =>
-          client.request<PageBySlugQuery>(PageBySlugDocument, variables, {
-            ...requestHeaders,
-            ...wrappedRequestHeaders,
+          client.request<PageBySlugQuery>({
+            document: PageBySlugDocument,
+            variables,
+            requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders },
+            signal,
           }),
         'PageBySlug',
         'query',
@@ -19065,12 +19074,15 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     PageRedirectByAlias(
       variables: PageRedirectByAliasQueryVariables,
       requestHeaders?: GraphQLClientRequestHeaders,
+      signal?: RequestInit['signal'],
     ): Promise<PageRedirectByAliasQuery> {
       return withWrapper(
         (wrappedRequestHeaders) =>
-          client.request<PageRedirectByAliasQuery>(PageRedirectByAliasDocument, variables, {
-            ...requestHeaders,
-            ...wrappedRequestHeaders,
+          client.request<PageRedirectByAliasQuery>({
+            document: PageRedirectByAliasDocument,
+            variables,
+            requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders },
+            signal,
           }),
         'PageRedirectByAlias',
         'query',
@@ -19080,12 +19092,15 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     Dev_AllPages(
       variables?: Dev_AllPagesQueryVariables,
       requestHeaders?: GraphQLClientRequestHeaders,
+      signal?: RequestInit['signal'],
     ): Promise<Dev_AllPagesQuery> {
       return withWrapper(
         (wrappedRequestHeaders) =>
-          client.request<Dev_AllPagesQuery>(Dev_AllPagesDocument, variables, {
-            ...requestHeaders,
-            ...wrappedRequestHeaders,
+          client.request<Dev_AllPagesQuery>({
+            document: Dev_AllPagesDocument,
+            variables,
+            requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders },
+            signal,
           }),
         'Dev_AllPages',
         'query',
@@ -19095,12 +19110,15 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     updatePage(
       variables: UpdatePageMutationVariables,
       requestHeaders?: GraphQLClientRequestHeaders,
+      signal?: RequestInit['signal'],
     ): Promise<UpdatePageMutation> {
       return withWrapper(
         (wrappedRequestHeaders) =>
-          client.request<UpdatePageMutation>(UpdatePageDocument, variables, {
-            ...requestHeaders,
-            ...wrappedRequestHeaders,
+          client.request<UpdatePageMutation>({
+            document: UpdatePageDocument,
+            variables,
+            requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders },
+            signal,
           }),
         'updatePage',
         'mutation',
@@ -19110,12 +19128,15 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     allRegulations(
       variables?: AllRegulationsQueryVariables,
       requestHeaders?: GraphQLClientRequestHeaders,
+      signal?: RequestInit['signal'],
     ): Promise<AllRegulationsQuery> {
       return withWrapper(
         (wrappedRequestHeaders) =>
-          client.request<AllRegulationsQuery>(AllRegulationsDocument, variables, {
-            ...requestHeaders,
-            ...wrappedRequestHeaders,
+          client.request<AllRegulationsQuery>({
+            document: AllRegulationsDocument,
+            variables,
+            requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders },
+            signal,
           }),
         'allRegulations',
         'query',
@@ -19125,12 +19146,15 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     RegulationsStaticPaths(
       variables?: RegulationsStaticPathsQueryVariables,
       requestHeaders?: GraphQLClientRequestHeaders,
+      signal?: RequestInit['signal'],
     ): Promise<RegulationsStaticPathsQuery> {
       return withWrapper(
         (wrappedRequestHeaders) =>
-          client.request<RegulationsStaticPathsQuery>(RegulationsStaticPathsDocument, variables, {
-            ...requestHeaders,
-            ...wrappedRequestHeaders,
+          client.request<RegulationsStaticPathsQuery>({
+            document: RegulationsStaticPathsDocument,
+            variables,
+            requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders },
+            signal,
           }),
         'RegulationsStaticPaths',
         'query',
@@ -19140,12 +19164,15 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     RegulationById(
       variables: RegulationByIdQueryVariables,
       requestHeaders?: GraphQLClientRequestHeaders,
+      signal?: RequestInit['signal'],
     ): Promise<RegulationByIdQuery> {
       return withWrapper(
         (wrappedRequestHeaders) =>
-          client.request<RegulationByIdQuery>(RegulationByIdDocument, variables, {
-            ...requestHeaders,
-            ...wrappedRequestHeaders,
+          client.request<RegulationByIdQuery>({
+            document: RegulationByIdDocument,
+            variables,
+            requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders },
+            signal,
           }),
         'RegulationById',
         'query',
@@ -19155,12 +19182,15 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     RegulationBySlug(
       variables?: RegulationBySlugQueryVariables,
       requestHeaders?: GraphQLClientRequestHeaders,
+      signal?: RequestInit['signal'],
     ): Promise<RegulationBySlugQuery> {
       return withWrapper(
         (wrappedRequestHeaders) =>
-          client.request<RegulationBySlugQuery>(RegulationBySlugDocument, variables, {
-            ...requestHeaders,
-            ...wrappedRequestHeaders,
+          client.request<RegulationBySlugQuery>({
+            document: RegulationBySlugDocument,
+            variables,
+            requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders },
+            signal,
           }),
         'RegulationBySlug',
         'query',
@@ -19170,12 +19200,15 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     RegulationByYear(
       variables?: RegulationByYearQueryVariables,
       requestHeaders?: GraphQLClientRequestHeaders,
+      signal?: RequestInit['signal'],
     ): Promise<RegulationByYearQuery> {
       return withWrapper(
         (wrappedRequestHeaders) =>
-          client.request<RegulationByYearQuery>(RegulationByYearDocument, variables, {
-            ...requestHeaders,
-            ...wrappedRequestHeaders,
+          client.request<RegulationByYearQuery>({
+            document: RegulationByYearDocument,
+            variables,
+            requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders },
+            signal,
           }),
         'RegulationByYear',
         'query',
@@ -19185,14 +19218,16 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     setFullTitleToRegulation(
       variables: SetFullTitleToRegulationMutationVariables,
       requestHeaders?: GraphQLClientRequestHeaders,
+      signal?: RequestInit['signal'],
     ): Promise<SetFullTitleToRegulationMutation> {
       return withWrapper(
         (wrappedRequestHeaders) =>
-          client.request<SetFullTitleToRegulationMutation>(
-            SetFullTitleToRegulationDocument,
+          client.request<SetFullTitleToRegulationMutation>({
+            document: SetFullTitleToRegulationDocument,
             variables,
-            { ...requestHeaders, ...wrappedRequestHeaders },
-          ),
+            requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders },
+            signal,
+          }),
         'setFullTitleToRegulation',
         'mutation',
         variables,
@@ -19201,14 +19236,16 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     setCancellationToRegulation(
       variables: SetCancellationToRegulationMutationVariables,
       requestHeaders?: GraphQLClientRequestHeaders,
+      signal?: RequestInit['signal'],
     ): Promise<SetCancellationToRegulationMutation> {
       return withWrapper(
         (wrappedRequestHeaders) =>
-          client.request<SetCancellationToRegulationMutation>(
-            SetCancellationToRegulationDocument,
+          client.request<SetCancellationToRegulationMutation>({
+            document: SetCancellationToRegulationDocument,
             variables,
-            { ...requestHeaders, ...wrappedRequestHeaders },
-          ),
+            requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders },
+            signal,
+          }),
         'setCancellationToRegulation',
         'mutation',
         variables,
@@ -19217,14 +19254,16 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     setAmendmentsToRegulation(
       variables: SetAmendmentsToRegulationMutationVariables,
       requestHeaders?: GraphQLClientRequestHeaders,
+      signal?: RequestInit['signal'],
     ): Promise<SetAmendmentsToRegulationMutation> {
       return withWrapper(
         (wrappedRequestHeaders) =>
-          client.request<SetAmendmentsToRegulationMutation>(
-            SetAmendmentsToRegulationDocument,
+          client.request<SetAmendmentsToRegulationMutation>({
+            document: SetAmendmentsToRegulationDocument,
             variables,
-            { ...requestHeaders, ...wrappedRequestHeaders },
-          ),
+            requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders },
+            signal,
+          }),
         'setAmendmentsToRegulation',
         'mutation',
         variables,
@@ -19233,12 +19272,15 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     deleteRegulationById(
       variables: DeleteRegulationByIdMutationVariables,
       requestHeaders?: GraphQLClientRequestHeaders,
+      signal?: RequestInit['signal'],
     ): Promise<DeleteRegulationByIdMutation> {
       return withWrapper(
         (wrappedRequestHeaders) =>
-          client.request<DeleteRegulationByIdMutation>(DeleteRegulationByIdDocument, variables, {
-            ...requestHeaders,
-            ...wrappedRequestHeaders,
+          client.request<DeleteRegulationByIdMutation>({
+            document: DeleteRegulationByIdDocument,
+            variables,
+            requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders },
+            signal,
           }),
         'deleteRegulationById',
         'mutation',
@@ -19248,12 +19290,15 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     createBareRegulation(
       variables: CreateBareRegulationMutationVariables,
       requestHeaders?: GraphQLClientRequestHeaders,
+      signal?: RequestInit['signal'],
     ): Promise<CreateBareRegulationMutation> {
       return withWrapper(
         (wrappedRequestHeaders) =>
-          client.request<CreateBareRegulationMutation>(CreateBareRegulationDocument, variables, {
-            ...requestHeaders,
-            ...wrappedRequestHeaders,
+          client.request<CreateBareRegulationMutation>({
+            document: CreateBareRegulationDocument,
+            variables,
+            requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders },
+            signal,
           }),
         'createBareRegulation',
         'mutation',
@@ -19263,12 +19308,15 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     Tags(
       variables?: TagsQueryVariables,
       requestHeaders?: GraphQLClientRequestHeaders,
+      signal?: RequestInit['signal'],
     ): Promise<TagsQuery> {
       return withWrapper(
         (wrappedRequestHeaders) =>
-          client.request<TagsQuery>(TagsDocument, variables, {
-            ...requestHeaders,
-            ...wrappedRequestHeaders,
+          client.request<TagsQuery>({
+            document: TagsDocument,
+            variables,
+            requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders },
+            signal,
           }),
         'Tags',
         'query',

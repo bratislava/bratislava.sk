@@ -196,9 +196,6 @@ fragment AccordionSection on ComponentSectionsAccordion {
   flatText(pagination: { limit: -1 }) {
     ...ComponentAccordionItemsFlatText
   }
-  institutionsNarrow(pagination: { limit: -1 }) {
-    ...ComponentAccordionItemsInstitutionNarrow
-  }
   titleLevelAccordionSection: titleLevel
 }
 
