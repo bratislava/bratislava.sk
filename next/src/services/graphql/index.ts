@@ -548,36 +548,6 @@ export type ComponentAccordionItemsInstitutionInput = {
   urlLabel?: InputMaybe<Scalars['String']['input']>
 }
 
-export type ComponentAccordionItemsInstitutionNarrow = {
-  __typename?: 'ComponentAccordionItemsInstitutionNarrow'
-  category?: Maybe<Scalars['String']['output']>
-  id: Scalars['ID']['output']
-  subtitle?: Maybe<Scalars['String']['output']>
-  title?: Maybe<Scalars['String']['output']>
-  url?: Maybe<Scalars['String']['output']>
-  urlLabel?: Maybe<Scalars['String']['output']>
-}
-
-export type ComponentAccordionItemsInstitutionNarrowFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<ComponentAccordionItemsInstitutionNarrowFiltersInput>>>
-  category?: InputMaybe<StringFilterInput>
-  not?: InputMaybe<ComponentAccordionItemsInstitutionNarrowFiltersInput>
-  or?: InputMaybe<Array<InputMaybe<ComponentAccordionItemsInstitutionNarrowFiltersInput>>>
-  subtitle?: InputMaybe<StringFilterInput>
-  title?: InputMaybe<StringFilterInput>
-  url?: InputMaybe<StringFilterInput>
-  urlLabel?: InputMaybe<StringFilterInput>
-}
-
-export type ComponentAccordionItemsInstitutionNarrowInput = {
-  category?: InputMaybe<Scalars['String']['input']>
-  id?: InputMaybe<Scalars['ID']['input']>
-  subtitle?: InputMaybe<Scalars['String']['input']>
-  title?: InputMaybe<Scalars['String']['input']>
-  url?: InputMaybe<Scalars['String']['input']>
-  urlLabel?: InputMaybe<Scalars['String']['input']>
-}
-
 export type ComponentBlocksCardLink = {
   __typename?: 'ComponentBlocksCardLink'
   analyticsId?: Maybe<Scalars['String']['output']>
@@ -3704,7 +3674,6 @@ export type GenericMorph =
   | ArticleCategory
   | ComponentAccordionItemsFlatText
   | ComponentAccordionItemsInstitution
-  | ComponentAccordionItemsInstitutionNarrow
   | ComponentBlocksCardLink
   | ComponentBlocksColumnsItem
   | ComponentBlocksCommonLink
@@ -14692,15 +14661,6 @@ export type LinksSectionFragment = {
   } | null> | null
 }
 
-export type ComponentAccordionItemsInstitutionNarrowFragment = {
-  __typename?: 'ComponentAccordionItemsInstitutionNarrow'
-  title?: string | null
-  subtitle?: string | null
-  category?: string | null
-  url?: string | null
-  urlLabel?: string | null
-}
-
 export type ComponentAccordionItemsFlatTextFragment = {
   __typename?: 'ComponentAccordionItemsFlatText'
   category?: string | null
@@ -18206,15 +18166,6 @@ export const PageEntityFragmentDoc = gql`
   ${SidebarsFragmentDoc}
   ${TagEntityFragmentDoc}
   ${PageParentPagesFragmentDoc}
-`
-export const ComponentAccordionItemsInstitutionNarrowFragmentDoc = gql`
-  fragment ComponentAccordionItemsInstitutionNarrow on ComponentAccordionItemsInstitutionNarrow {
-    title
-    subtitle
-    category
-    url
-    urlLabel
-  }
 `
 export const AdminGroupsDocument = gql`
   query AdminGroups($limit: Int = -1, $sort: [String] = ["title"]) {
