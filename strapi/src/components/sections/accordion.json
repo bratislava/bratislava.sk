@@ -19,11 +19,6 @@
       "component": "accordion-items.flat-text",
       "repeatable": true
     },
-    "institutionsNarrow": {
-      "type": "component",
-      "component": "accordion-items.institution-narrow",
-      "repeatable": true
-    },
     "titleLevel": {
       "type": "enumeration",
       "default": "h2",

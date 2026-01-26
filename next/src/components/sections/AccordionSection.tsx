@@ -21,13 +21,7 @@ type AccordionSectionProps = {
  */
 
 const AccordionSection = ({ section }: AccordionSectionProps) => {
-  const {
-    title,
-    institutions,
-    flatText,
-    institutionsNarrow,
-    titleLevelAccordionSection: titleLevel,
-  } = section
+  const { title, institutions, flatText, titleLevelAccordionSection: titleLevel } = section
 
   // If no section title is provided, accordions act as h2, otherwise they accommodate to section titleLevel
   const accordionTitleLevel = title ? getCardTitleLevel(titleLevel) : 'h2'
@@ -87,26 +81,6 @@ const AccordionSection = ({ section }: AccordionSectionProps) => {
                   </div>
                 )
               })}
-            </Accordion>
-          ))}
-
-          {groupByCategory(institutionsNarrow?.filter(isPresent) ?? []).map((text, index) => (
-            <Accordion
-              key={`institutionsNarrow-${index}`}
-              title={text.category}
-              accordionTitleLevel={accordionTitleLevel}
-            >
-              <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
-                {text.items.filter(isPresent).map((file, fileIndex) => (
-                  <Institution
-                    key={fileIndex}
-                    title={file.title ?? undefined}
-                    subtitle={file.subtitle ?? undefined}
-                    url={file.url ?? undefined}
-                    urlLabel={file.urlLabel ?? undefined}
-                  />
-                ))}
-              </div>
             </Accordion>
           ))}
         </div>

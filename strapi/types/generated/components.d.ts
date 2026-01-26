@@ -34,21 +34,6 @@ export interface AccordionItemsInstitution extends Struct.ComponentSchema {
   }
 }
 
-export interface AccordionItemsInstitutionNarrow extends Struct.ComponentSchema {
-  collectionName: 'components_sections_institution_narrows'
-  info: {
-    displayName: 'InstitutionNarrow'
-    icon: 'ambulance'
-  }
-  attributes: {
-    category: Schema.Attribute.String
-    subtitle: Schema.Attribute.RichText
-    title: Schema.Attribute.String
-    url: Schema.Attribute.Text
-    urlLabel: Schema.Attribute.String
-  }
-}
-
 export interface BlocksCardLink extends Struct.ComponentSchema {
   collectionName: 'components_blocks_card_links'
   info: {
@@ -539,7 +524,6 @@ export interface SectionsAccordion extends Struct.ComponentSchema {
   attributes: {
     flatText: Schema.Attribute.Component<'accordion-items.flat-text', true>
     institutions: Schema.Attribute.Component<'accordion-items.institution', true>
-    institutionsNarrow: Schema.Attribute.Component<'accordion-items.institution-narrow', true>
     title: Schema.Attribute.String
     titleLevel: Schema.Attribute.Enumeration<['h2', 'h3']> & Schema.Attribute.DefaultTo<'h2'>
   }
@@ -1198,7 +1182,6 @@ declare module '@strapi/strapi' {
     export interface ComponentSchemas {
       'accordion-items.flat-text': AccordionItemsFlatText
       'accordion-items.institution': AccordionItemsInstitution
-      'accordion-items.institution-narrow': AccordionItemsInstitutionNarrow
       'blocks.card-link': BlocksCardLink
       'blocks.columns-item': BlocksColumnsItem
       'blocks.common-link': BlocksCommonLink

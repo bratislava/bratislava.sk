@@ -156,14 +156,6 @@ fragment LinksSection on ComponentSectionsLinks {
   titleLevelLinksSection: titleLevel
 }
 
-fragment ComponentAccordionItemsInstitutionNarrow on ComponentAccordionItemsInstitutionNarrow {
-  title
-  subtitle
-  category
-  url
-  urlLabel
-}
-
 fragment ComponentAccordionItemsFlatText on ComponentAccordionItemsFlatText {
   category
   content
@@ -195,9 +187,6 @@ fragment AccordionSection on ComponentSectionsAccordion {
   }
   flatText(pagination: { limit: -1 }) {
     ...ComponentAccordionItemsFlatText
-  }
-  institutionsNarrow(pagination: { limit: -1 }) {
-    ...ComponentAccordionItemsInstitutionNarrow
   }
   titleLevelAccordionSection: titleLevel
 }

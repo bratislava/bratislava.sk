@@ -548,36 +548,6 @@ export type ComponentAccordionItemsInstitutionInput = {
   urlLabel?: InputMaybe<Scalars['String']['input']>
 }
 
-export type ComponentAccordionItemsInstitutionNarrow = {
-  __typename?: 'ComponentAccordionItemsInstitutionNarrow'
-  category?: Maybe<Scalars['String']['output']>
-  id: Scalars['ID']['output']
-  subtitle?: Maybe<Scalars['String']['output']>
-  title?: Maybe<Scalars['String']['output']>
-  url?: Maybe<Scalars['String']['output']>
-  urlLabel?: Maybe<Scalars['String']['output']>
-}
-
-export type ComponentAccordionItemsInstitutionNarrowFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<ComponentAccordionItemsInstitutionNarrowFiltersInput>>>
-  category?: InputMaybe<StringFilterInput>
-  not?: InputMaybe<ComponentAccordionItemsInstitutionNarrowFiltersInput>
-  or?: InputMaybe<Array<InputMaybe<ComponentAccordionItemsInstitutionNarrowFiltersInput>>>
-  subtitle?: InputMaybe<StringFilterInput>
-  title?: InputMaybe<StringFilterInput>
-  url?: InputMaybe<StringFilterInput>
-  urlLabel?: InputMaybe<StringFilterInput>
-}
-
-export type ComponentAccordionItemsInstitutionNarrowInput = {
-  category?: InputMaybe<Scalars['String']['input']>
-  id?: InputMaybe<Scalars['ID']['input']>
-  subtitle?: InputMaybe<Scalars['String']['input']>
-  title?: InputMaybe<Scalars['String']['input']>
-  url?: InputMaybe<Scalars['String']['input']>
-  urlLabel?: InputMaybe<Scalars['String']['input']>
-}
-
 export type ComponentBlocksCardLink = {
   __typename?: 'ComponentBlocksCardLink'
   analyticsId?: Maybe<Scalars['String']['output']>
@@ -1409,7 +1379,6 @@ export type ComponentSectionsAccordion = {
   flatText?: Maybe<Array<Maybe<ComponentAccordionItemsFlatText>>>
   id: Scalars['ID']['output']
   institutions?: Maybe<Array<Maybe<ComponentAccordionItemsInstitution>>>
-  institutionsNarrow?: Maybe<Array<Maybe<ComponentAccordionItemsInstitutionNarrow>>>
   title?: Maybe<Scalars['String']['output']>
   titleLevel?: Maybe<Enum_Componentsectionsaccordion_Titlelevel>
 }
@@ -1426,17 +1395,10 @@ export type ComponentSectionsAccordionInstitutionsArgs = {
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
 }
 
-export type ComponentSectionsAccordionInstitutionsNarrowArgs = {
-  filters?: InputMaybe<ComponentAccordionItemsInstitutionNarrowFiltersInput>
-  pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
-}
-
 export type ComponentSectionsAccordionFiltersInput = {
   and?: InputMaybe<Array<InputMaybe<ComponentSectionsAccordionFiltersInput>>>
   flatText?: InputMaybe<ComponentAccordionItemsFlatTextFiltersInput>
   institutions?: InputMaybe<ComponentAccordionItemsInstitutionFiltersInput>
-  institutionsNarrow?: InputMaybe<ComponentAccordionItemsInstitutionNarrowFiltersInput>
   not?: InputMaybe<ComponentSectionsAccordionFiltersInput>
   or?: InputMaybe<Array<InputMaybe<ComponentSectionsAccordionFiltersInput>>>
   title?: InputMaybe<StringFilterInput>
@@ -1447,7 +1409,6 @@ export type ComponentSectionsAccordionInput = {
   flatText?: InputMaybe<Array<InputMaybe<ComponentAccordionItemsFlatTextInput>>>
   id?: InputMaybe<Scalars['ID']['input']>
   institutions?: InputMaybe<Array<InputMaybe<ComponentAccordionItemsInstitutionInput>>>
-  institutionsNarrow?: InputMaybe<Array<InputMaybe<ComponentAccordionItemsInstitutionNarrowInput>>>
   title?: InputMaybe<Scalars['String']['input']>
   titleLevel?: InputMaybe<Enum_Componentsectionsaccordion_Titlelevel>
 }
@@ -3689,7 +3650,6 @@ export type GenericMorph =
   | ArticleCategory
   | ComponentAccordionItemsFlatText
   | ComponentAccordionItemsInstitution
-  | ComponentAccordionItemsInstitutionNarrow
   | ComponentBlocksCardLink
   | ComponentBlocksColumnsItem
   | ComponentBlocksCommonLink
@@ -10271,14 +10231,6 @@ export type PageEntityFragment = {
             }
           } | null> | null
         } | null> | null
-        institutionsNarrow?: Array<{
-          __typename?: 'ComponentAccordionItemsInstitutionNarrow'
-          title?: string | null
-          subtitle?: string | null
-          category?: string | null
-          url?: string | null
-          urlLabel?: string | null
-        } | null> | null
       }
     | {
         __typename: 'ComponentSectionsArticles'
@@ -11472,14 +11424,6 @@ export type PageBySlugQuery = {
                 updatedAt?: any | null
               }
             } | null> | null
-          } | null> | null
-          institutionsNarrow?: Array<{
-            __typename?: 'ComponentAccordionItemsInstitutionNarrow'
-            title?: string | null
-            subtitle?: string | null
-            category?: string | null
-            url?: string | null
-            urlLabel?: string | null
           } | null> | null
         }
       | {
@@ -12703,14 +12647,6 @@ export type Dev_AllPagesQuery = {
                 updatedAt?: any | null
               }
             } | null> | null
-          } | null> | null
-          institutionsNarrow?: Array<{
-            __typename?: 'ComponentAccordionItemsInstitutionNarrow'
-            title?: string | null
-            subtitle?: string | null
-            category?: string | null
-            url?: string | null
-            urlLabel?: string | null
           } | null> | null
         }
       | {
@@ -14680,15 +14616,6 @@ export type LinksSectionFragment = {
   } | null> | null
 }
 
-export type ComponentAccordionItemsInstitutionNarrowFragment = {
-  __typename?: 'ComponentAccordionItemsInstitutionNarrow'
-  title?: string | null
-  subtitle?: string | null
-  category?: string | null
-  url?: string | null
-  urlLabel?: string | null
-}
-
 export type ComponentAccordionItemsFlatTextFragment = {
   __typename?: 'ComponentAccordionItemsFlatText'
   category?: string | null
@@ -14774,14 +14701,6 @@ export type AccordionSectionFragment = {
         updatedAt?: any | null
       }
     } | null> | null
-  } | null> | null
-  institutionsNarrow?: Array<{
-    __typename?: 'ComponentAccordionItemsInstitutionNarrow'
-    title?: string | null
-    subtitle?: string | null
-    category?: string | null
-    url?: string | null
-    urlLabel?: string | null
   } | null> | null
 }
 
@@ -15582,14 +15501,6 @@ type Sections_ComponentSectionsAccordion_Fragment = {
         updatedAt?: any | null
       }
     } | null> | null
-  } | null> | null
-  institutionsNarrow?: Array<{
-    __typename?: 'ComponentAccordionItemsInstitutionNarrow'
-    title?: string | null
-    subtitle?: string | null
-    category?: string | null
-    url?: string | null
-    urlLabel?: string | null
   } | null> | null
 }
 
@@ -17461,15 +17372,6 @@ export const ComponentAccordionItemsFlatTextFragmentDoc = gql`
   ${PageSlugEntityFragmentDoc}
   ${FileItemBlockFragmentDoc}
 `
-export const ComponentAccordionItemsInstitutionNarrowFragmentDoc = gql`
-  fragment ComponentAccordionItemsInstitutionNarrow on ComponentAccordionItemsInstitutionNarrow {
-    title
-    subtitle
-    category
-    url
-    urlLabel
-  }
-`
 export const AccordionSectionFragmentDoc = gql`
   fragment AccordionSection on ComponentSectionsAccordion {
     title
@@ -17479,14 +17381,10 @@ export const AccordionSectionFragmentDoc = gql`
     flatText(pagination: { limit: -1 }) {
       ...ComponentAccordionItemsFlatText
     }
-    institutionsNarrow(pagination: { limit: -1 }) {
-      ...ComponentAccordionItemsInstitutionNarrow
-    }
     titleLevelAccordionSection: titleLevel
   }
   ${ComponentAccordionItemsInstitutionFragmentDoc}
   ${ComponentAccordionItemsFlatTextFragmentDoc}
-  ${ComponentAccordionItemsInstitutionNarrowFragmentDoc}
 `
 export const VideoBlockFragmentDoc = gql`
   fragment VideoBlock on ComponentBlocksVideo {
