@@ -1134,7 +1134,6 @@ type ComponentSectionsAccordion {
   flatText(filters: ComponentAccordionItemsFlatTextFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentAccordionItemsFlatText]
   id: ID!
   institutions(filters: ComponentAccordionItemsInstitutionFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentAccordionItemsInstitution]
-  institutionsNarrow(filters: ComponentAccordionItemsInstitutionNarrowFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentAccordionItemsInstitutionNarrow]
   title: String
   titleLevel: ENUM_COMPONENTSECTIONSACCORDION_TITLELEVEL
 }
@@ -1143,7 +1142,6 @@ input ComponentSectionsAccordionFiltersInput {
   and: [ComponentSectionsAccordionFiltersInput]
   flatText: ComponentAccordionItemsFlatTextFiltersInput
   institutions: ComponentAccordionItemsInstitutionFiltersInput
-  institutionsNarrow: ComponentAccordionItemsInstitutionNarrowFiltersInput
   not: ComponentSectionsAccordionFiltersInput
   or: [ComponentSectionsAccordionFiltersInput]
   title: StringFilterInput
@@ -1154,7 +1152,6 @@ input ComponentSectionsAccordionInput {
   flatText: [ComponentAccordionItemsFlatTextInput]
   id: ID
   institutions: [ComponentAccordionItemsInstitutionInput]
-  institutionsNarrow: [ComponentAccordionItemsInstitutionNarrowInput]
   title: String
   titleLevel: ENUM_COMPONENTSECTIONSACCORDION_TITLELEVEL
 }

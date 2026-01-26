@@ -539,7 +539,6 @@ export interface SectionsAccordion extends Struct.ComponentSchema {
   attributes: {
     flatText: Schema.Attribute.Component<'accordion-items.flat-text', true>
     institutions: Schema.Attribute.Component<'accordion-items.institution', true>
-    institutionsNarrow: Schema.Attribute.Component<'accordion-items.institution-narrow', true>
     title: Schema.Attribute.String
     titleLevel: Schema.Attribute.Enumeration<['h2', 'h3']> & Schema.Attribute.DefaultTo<'h2'>
   }
