@@ -191,12 +191,6 @@ fragment AccordionSection on ComponentSectionsAccordion {
   titleLevelAccordionSection: titleLevel
 }
 
-fragment CalculatorSection on ComponentSectionsCalculator {
-  single_adult_value
-  another_adult_value
-  child_value
-}
-
 fragment VideoBlock on ComponentBlocksVideo {
   id
   title
@@ -543,10 +537,6 @@ fragment Sections on PageSectionsDynamicZone {
 
   ... on ComponentSectionsAccordion {
     ...AccordionSection
-  }
-
-  ... on ComponentSectionsCalculator {
-    ...CalculatorSection
   }
 
   ... on ComponentSectionsVideos {

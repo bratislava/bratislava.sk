@@ -573,19 +573,6 @@ export interface SectionsBanner extends Struct.ComponentSchema {
   }
 }
 
-export interface SectionsCalculator extends Struct.ComponentSchema {
-  collectionName: 'components_sections_calculators'
-  info: {
-    description: ''
-    displayName: 'Kalkula\u010Dka \u017Eivotn\u00E9ho minima'
-  }
-  attributes: {
-    another_adult_value: Schema.Attribute.Decimal
-    child_value: Schema.Attribute.Decimal
-    single_adult_value: Schema.Attribute.Decimal
-  }
-}
-
 export interface SectionsColumnedText extends Struct.ComponentSchema {
   collectionName: 'components_sections_columned_texts'
   info: {
@@ -1229,7 +1216,6 @@ declare module '@strapi/strapi' {
       'sections.accordion': SectionsAccordion
       'sections.articles': SectionsArticles
       'sections.banner': SectionsBanner
-      'sections.calculator': SectionsCalculator
       'sections.columned-text': SectionsColumnedText
       'sections.columns': SectionsColumns
       'sections.comparison-section': SectionsComparisonSection

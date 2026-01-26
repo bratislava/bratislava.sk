@@ -1545,30 +1545,6 @@ export type ComponentSectionsBannerInput = {
   variant?: InputMaybe<Enum_Componentsectionsbanner_Variant>
 }
 
-export type ComponentSectionsCalculator = {
-  __typename?: 'ComponentSectionsCalculator'
-  another_adult_value?: Maybe<Scalars['Float']['output']>
-  child_value?: Maybe<Scalars['Float']['output']>
-  id: Scalars['ID']['output']
-  single_adult_value?: Maybe<Scalars['Float']['output']>
-}
-
-export type ComponentSectionsCalculatorFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<ComponentSectionsCalculatorFiltersInput>>>
-  another_adult_value?: InputMaybe<FloatFilterInput>
-  child_value?: InputMaybe<FloatFilterInput>
-  not?: InputMaybe<ComponentSectionsCalculatorFiltersInput>
-  or?: InputMaybe<Array<InputMaybe<ComponentSectionsCalculatorFiltersInput>>>
-  single_adult_value?: InputMaybe<FloatFilterInput>
-}
-
-export type ComponentSectionsCalculatorInput = {
-  another_adult_value?: InputMaybe<Scalars['Float']['input']>
-  child_value?: InputMaybe<Scalars['Float']['input']>
-  id?: InputMaybe<Scalars['ID']['input']>
-  single_adult_value?: InputMaybe<Scalars['Float']['input']>
-}
-
 export type ComponentSectionsColumnedText = {
   __typename?: 'ComponentSectionsColumnedText'
   content?: Maybe<Scalars['String']['output']>
@@ -3708,7 +3684,6 @@ export type GenericMorph =
   | ComponentSectionsAccordion
   | ComponentSectionsArticles
   | ComponentSectionsBanner
-  | ComponentSectionsCalculator
   | ComponentSectionsColumnedText
   | ComponentSectionsColumns
   | ComponentSectionsComparisonSection
@@ -5206,7 +5181,6 @@ export type PageSectionsDynamicZone =
   | ComponentSectionsAccordion
   | ComponentSectionsArticles
   | ComponentSectionsBanner
-  | ComponentSectionsCalculator
   | ComponentSectionsColumnedText
   | ComponentSectionsColumns
   | ComponentSectionsComparisonSection
@@ -7406,7 +7380,6 @@ export type AllFilesQuery = {
           __typename?: 'ComponentSectionsBanner'
           media: { __typename?: 'UploadFile'; documentId: string }
         }
-      | { __typename?: 'ComponentSectionsCalculator' }
       | { __typename?: 'ComponentSectionsColumnedText' }
       | {
           __typename?: 'ComponentSectionsColumns'
@@ -10422,12 +10395,6 @@ export type PageEntityFragment = {
         } | null
       }
     | {
-        __typename: 'ComponentSectionsCalculator'
-        single_adult_value?: number | null
-        another_adult_value?: number | null
-        child_value?: number | null
-      }
-    | {
         __typename: 'ComponentSectionsColumnedText'
         title?: string | null
         content?: string | null
@@ -11620,12 +11587,6 @@ export type PageBySlugQuery = {
               locale?: string | null
             } | null
           } | null
-        }
-      | {
-          __typename: 'ComponentSectionsCalculator'
-          single_adult_value?: number | null
-          another_adult_value?: number | null
-          child_value?: number | null
         }
       | {
           __typename: 'ComponentSectionsColumnedText'
@@ -12849,12 +12810,6 @@ export type Dev_AllPagesQuery = {
               locale?: string | null
             } | null
           } | null
-        }
-      | {
-          __typename: 'ComponentSectionsCalculator'
-          single_adult_value?: number | null
-          another_adult_value?: number | null
-          child_value?: number | null
         }
       | {
           __typename: 'ComponentSectionsColumnedText'
@@ -14749,13 +14704,6 @@ export type AccordionSectionFragment = {
   } | null> | null
 }
 
-export type CalculatorSectionFragment = {
-  __typename?: 'ComponentSectionsCalculator'
-  single_adult_value?: number | null
-  another_adult_value?: number | null
-  child_value?: number | null
-}
-
 export type VideoBlockFragment = {
   __typename?: 'ComponentBlocksVideo'
   id: string
@@ -15720,13 +15668,6 @@ type Sections_ComponentSectionsBanner_Fragment = {
   } | null
 }
 
-type Sections_ComponentSectionsCalculator_Fragment = {
-  __typename: 'ComponentSectionsCalculator'
-  single_adult_value?: number | null
-  another_adult_value?: number | null
-  child_value?: number | null
-}
-
 type Sections_ComponentSectionsColumnedText_Fragment = {
   __typename: 'ComponentSectionsColumnedText'
   title?: string | null
@@ -16557,7 +16498,6 @@ export type SectionsFragment =
   | Sections_ComponentSectionsAccordion_Fragment
   | Sections_ComponentSectionsArticles_Fragment
   | Sections_ComponentSectionsBanner_Fragment
-  | Sections_ComponentSectionsCalculator_Fragment
   | Sections_ComponentSectionsColumnedText_Fragment
   | Sections_ComponentSectionsColumns_Fragment
   | Sections_ComponentSectionsComparisonSection_Fragment
@@ -17446,13 +17386,6 @@ export const AccordionSectionFragmentDoc = gql`
   ${ComponentAccordionItemsInstitutionFragmentDoc}
   ${ComponentAccordionItemsFlatTextFragmentDoc}
 `
-export const CalculatorSectionFragmentDoc = gql`
-  fragment CalculatorSection on ComponentSectionsCalculator {
-    single_adult_value
-    another_adult_value
-    child_value
-  }
-`
 export const VideoBlockFragmentDoc = gql`
   fragment VideoBlock on ComponentBlocksVideo {
     id
@@ -18013,9 +17946,6 @@ export const SectionsFragmentDoc = gql`
     ... on ComponentSectionsAccordion {
       ...AccordionSection
     }
-    ... on ComponentSectionsCalculator {
-      ...CalculatorSection
-    }
     ... on ComponentSectionsVideos {
       ...VideosSection
     }
@@ -18091,7 +18021,6 @@ export const SectionsFragmentDoc = gql`
   ${NarrowTextSectionFragmentDoc}
   ${LinksSectionFragmentDoc}
   ${AccordionSectionFragmentDoc}
-  ${CalculatorSectionFragmentDoc}
   ${VideosSectionFragmentDoc}
   ${NumericalListSectionFragmentDoc}
   ${ArticlesSectionFragmentDoc}

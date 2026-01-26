@@ -42,7 +42,7 @@ const HomepageTabs = ({ className }: HomepageTabsProps) => {
                 <>
                   {label}
                   {isSelected && (
-                    <div className="absolute bottom-0 left-1/2 w-full -translate-x-1/2 border-b-2 border-category-600 md:w-6/12 md:border-b-4" />
+                    <div className="absolute bottom-0 left-1/2 w-full -translate-x-1/2 border-b-2 border-content-active-primary-default md:w-6/12 md:border-b-4" />
                   )}
                 </>
               )}
