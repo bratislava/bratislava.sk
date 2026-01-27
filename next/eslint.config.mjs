@@ -10,22 +10,11 @@ export default [
     rules: {
       'i18next/no-literal-string': 'off',
       'jsx-a11y/anchor-is-valid': 'off',
-      'jsx-a11y/img-redundant-alt': 'warn',
       'no-multi-spaces': 'error',
-      'require-await': 'warn',
-      'sonarjs/deprecation': 'warn',
 
       // TODO good rules, require work to fix and were skipped over in eslint v9 upgrade
       '@typescript-eslint/no-explicit-any': 'off',
-      '@typescript-eslint/no-empty-object-type': 'warn',
-      '@typescript-eslint/switch-exhaustiveness-check': 'warn',
-      'sonarjs/function-return-type': 'warn',
-      'sonarjs/regex-complexity': 'warn',
-      '@typescript-eslint/require-await': 'warn',
-      '@typescript-eslint/no-unsafe-call': 'warn',
-      'sonarjs/no-unsafe-unzip': 'warn',
       '@typescript-eslint/no-unsafe-enum-comparison': 'off',
-      '@typescript-eslint/no-unsafe-member-access': 'warn',
       '@typescript-eslint/no-unsafe-assignment': 'off',
       '@typescript-eslint/no-unsafe-argument': 'off',
       '@typescript-eslint/consistent-type-definitions': 'off',
@@ -38,12 +27,33 @@ export default [
       'security/detect-unsafe-regex': 'off',
       'security/detect-object-injection': 'off',
       'no-implicit-coercion': 'off',
-      'sonarjs/no-redundant-optional': 'warn',
-      '@typescript-eslint/no-unused-vars': 'warn',
-      '@typescript-eslint/no-unnecessary-condition': 'warn',
-      '@typescript-eslint/no-non-null-assertion': 'warn',
-      '@typescript-eslint/no-deprecated': 'warn',
-      '@typescript-eslint/no-unnecessary-type-conversion': 'warn',
+
+      '@typescript-eslint/no-unnecessary-condition': 'warn', // 170 violations
+      '@typescript-eslint/no-unused-vars': 'warn', // 159 violations
+      'sonarjs/no-redundant-optional': 'warn', // 28 violations
+      '@typescript-eslint/no-unsafe-member-access': 'warn', // 16 violations
+      '@typescript-eslint/no-non-null-assertion': 'warn', // 10 violations
+      'require-await': 'warn', // 10 violations
+      'sonarjs/deprecation': 'warn', // 10 violations
+      '@typescript-eslint/no-deprecated': 'warn', // 9 violations
+      '@typescript-eslint/require-await': 'warn', // 5 violations
+      '@typescript-eslint/switch-exhaustiveness-check': 'warn', // 5 violations
+      'react/no-unknown-property': 'warn', // 4 violations
+      'jsx-a11y/click-events-have-key-events': 'warn', // 3 violations
+      'jsx-a11y/no-static-element-interactions': 'warn', // 3 violations
+      'react-hooks/set-state-in-effect': 'warn', // 3 violations
+      'react/prop-types': 'warn', // 3 violations
+      '@typescript-eslint/no-empty-object-type': 'warn', // 2 violations
+      '@typescript-eslint/no-unnecessary-type-conversion': 'warn', // 1 violation
+      'jsx-a11y/interactive-supports-focus': 'warn', // 1 violation
+      'jsx-a11y/no-noninteractive-element-interactions': 'warn', // 1 violation
+      'jsx-a11y/no-noninteractive-tabindex': 'warn', // 1 violation
+      'react-hooks/refs': 'warn', // 1 violation
+      'sonarjs/function-return-type': 'warn', // 1 violation
+      'sonarjs/regex-complexity': 'warn', // 1 violation
+      '@typescript-eslint/no-unsafe-call': 'warn', // 0 violations
+      'jsx-a11y/img-redundant-alt': 'warn', // 0 violations
+      'sonarjs/no-unsafe-unzip': 'warn', // 0 violations
     },
   },
 ]
