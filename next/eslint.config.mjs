@@ -51,9 +51,6 @@ export default [
       'react-hooks/refs': 'warn', // 1 violation
       'sonarjs/function-return-type': 'warn', // 1 violation
       'sonarjs/regex-complexity': 'warn', // 1 violation
-      '@typescript-eslint/no-unsafe-call': 'warn', // 0 violations
-      'jsx-a11y/img-redundant-alt': 'warn', // 0 violations
-      'sonarjs/no-unsafe-unzip': 'warn', // 0 violations
     },
   },
 ]
