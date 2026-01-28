@@ -492,6 +492,15 @@ fragment NewsletterSection on ComponentSectionsNewsletter {
   instagramUrl
 }
 
+fragment ArticlesLandingPageSection on ComponentSectionsArticlesLandingPage {
+  leftArticle {
+    ...ArticleCardEntity
+  }
+  newsPageLink {
+    ...CommonLink
+  }
+}
+
 fragment Sections on PageSectionsDynamicZone {
   __typename
 
@@ -626,6 +635,10 @@ fragment Sections on PageSectionsDynamicZone {
   }
 
   # ComponentSectionsInbaLatestRelease has no attributes
+
+  ... on ComponentSectionsArticlesLandingPage {
+    ...ArticlesLandingPageSection
+  }
 }
 
 fragment EventPageHeaderSection on ComponentHeaderSectionsEvent {
