@@ -46,7 +46,7 @@ const NewsletterSection = ({ section }: Props) => {
     if (email.length === 0) {
       return { isValid: false, error: t('NewsletterSection.error.emailMandatory') }
     }
-    if (!VALID_EMAIL_FORMAT.test(String(email).toLowerCase())) {
+    if (!VALID_EMAIL_FORMAT.test(email.toLowerCase())) {
       return { isValid: false, error: t('NewsletterSection.error.emailIncorrectFormat') }
     }
 
