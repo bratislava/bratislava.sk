@@ -1,0 +1,87 @@
+{
+  "key": "plugin_content_manager_configuration_components::sections.articles-landing-page",
+  "value": {
+    "settings": {
+      "bulkable": true,
+      "filterable": true,
+      "searchable": true,
+      "pageSize": 10,
+      "mainField": "documentId",
+      "defaultSortBy": "documentId",
+      "defaultSortOrder": "ASC"
+    },
+    "metadatas": {
+      "id": {
+        "edit": {},
+        "list": {
+          "label": "id",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "leftArticle": {
+        "edit": {
+          "label": "leftArticle",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "title"
+        },
+        "list": {
+          "label": "leftArticle",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "newsPageLink": {
+        "edit": {
+          "label": "newsPageLink",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "newsPageLink",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "documentId": {
+        "edit": {},
+        "list": {
+          "label": "documentId",
+          "searchable": true,
+          "sortable": true
+        }
+      }
+    },
+    "layouts": {
+      "list": [
+        "id",
+        "leftArticle",
+        "newsPageLink"
+      ],
+      "edit": [
+        [
+          {
+            "name": "leftArticle",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "newsPageLink",
+            "size": 12
+          }
+        ]
+      ]
+    },
+    "uid": "sections.articles-landing-page",
+    "isComponent": true
+  },
+  "type": "object",
+  "environment": null,
+  "tag": null
+}

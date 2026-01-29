@@ -204,7 +204,8 @@
         "sections.text-with-image-overlapped",
         "sections.official-board",
         "sections.videos",
-        "sections.regulations"
+        "sections.regulations",
+        "sections.articles-landing-page"
       ]
     },
     "sidebar": {
