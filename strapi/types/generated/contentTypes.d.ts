@@ -1266,6 +1266,7 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
         'sections.numbers-overview',
         'sections.numerical-list',
         'sections.articles',
+        'sections.articles-landing-page',
         'sections.divider',
         'sections.documents',
         'sections.faqs',
@@ -1294,7 +1295,6 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
         'sections.official-board',
         'sections.videos',
         'sections.regulations',
-        'sections.articles-landing-page',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
