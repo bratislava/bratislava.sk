@@ -6,8 +6,8 @@
       "filterable": true,
       "searchable": true,
       "pageSize": 10,
-      "mainField": "documentId",
-      "defaultSortBy": "documentId",
+      "mainField": "title",
+      "defaultSortBy": "title",
       "defaultSortOrder": "ASC"
     },
     "metadatas": {
@@ -35,7 +35,7 @@
       },
       "text": {
         "edit": {
-          "label": "text",
+          "label": "Text",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -49,7 +49,7 @@
       },
       "leftColumn": {
         "edit": {
-          "label": "Ľavý stĺpec",
+          "label": "Stĺpec vľavo",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -64,7 +64,7 @@
       },
       "rightColumn": {
         "edit": {
-          "label": "Pravý stĺpec",
+          "label": "Stĺpec vpravo",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -113,9 +113,9 @@
       ],
       "list": [
         "id",
-        "leftColumn",
-        "rightColumn",
-        "title"
+        "title",
+        "text",
+        "leftColumn"
       ]
     },
     "uid": "sections.columns-list",
