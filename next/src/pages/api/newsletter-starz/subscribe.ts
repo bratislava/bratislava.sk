@@ -6,7 +6,8 @@ type ResponseData = {
   error?: string
 }
 
-const ECOMAIL_ADD_SUBSCRIBER_URL = 'https://api2.ecomailapp.cz/lists/47/subscribe'
+// Ecomail docs: https://ecomailczv2.docs.apiary.io/#reference/lists/list-subscribe/add-new-subscriber-to-list
+const ECOMAIL_ADD_SUBSCRIBER_URL = 'https://api2.ecomailapp.cz/lists/49/subscribe'
 
 /**
  * Based on City library: https://github.com/bratislava/mestskakniznica.sk/blob/master/next/pages/api/subscribe.ts
