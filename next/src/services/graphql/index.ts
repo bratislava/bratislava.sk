@@ -606,6 +606,26 @@ export type ComponentBlocksColumnsItemInput = {
   title?: InputMaybe<Scalars['String']['input']>
 }
 
+export type ComponentBlocksColumnsListItem = {
+  __typename?: 'ComponentBlocksColumnsListItem'
+  content?: Maybe<Scalars['String']['output']>
+  icon?: Maybe<UploadFile>
+  id: Scalars['ID']['output']
+}
+
+export type ComponentBlocksColumnsListItemFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentBlocksColumnsListItemFiltersInput>>>
+  content?: InputMaybe<StringFilterInput>
+  not?: InputMaybe<ComponentBlocksColumnsListItemFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<ComponentBlocksColumnsListItemFiltersInput>>>
+}
+
+export type ComponentBlocksColumnsListItemInput = {
+  content?: InputMaybe<Scalars['String']['input']>
+  icon?: InputMaybe<Scalars['ID']['input']>
+  id?: InputMaybe<Scalars['ID']['input']>
+}
+
 export type ComponentBlocksCommonLink = {
   __typename?: 'ComponentBlocksCommonLink'
   analyticsId?: Maybe<Scalars['String']['output']>
@@ -1598,6 +1618,45 @@ export type ComponentSectionsColumnsInput = {
   id?: InputMaybe<Scalars['ID']['input']>
   imageVariant?: InputMaybe<Enum_Componentsectionscolumns_Imagevariant>
   responsiveLayout?: InputMaybe<Enum_Componentsectionscolumns_Responsivelayout>
+  text?: InputMaybe<Scalars['String']['input']>
+  title?: InputMaybe<Scalars['String']['input']>
+}
+
+export type ComponentSectionsColumnsList = {
+  __typename?: 'ComponentSectionsColumnsList'
+  id: Scalars['ID']['output']
+  leftColumn?: Maybe<Array<Maybe<ComponentBlocksColumnsListItem>>>
+  rightColumn?: Maybe<Array<Maybe<ComponentBlocksColumnsListItem>>>
+  text?: Maybe<Scalars['String']['output']>
+  title?: Maybe<Scalars['String']['output']>
+}
+
+export type ComponentSectionsColumnsListLeftColumnArgs = {
+  filters?: InputMaybe<ComponentBlocksColumnsListItemFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type ComponentSectionsColumnsListRightColumnArgs = {
+  filters?: InputMaybe<ComponentBlocksColumnsListItemFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type ComponentSectionsColumnsListFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentSectionsColumnsListFiltersInput>>>
+  leftColumn?: InputMaybe<ComponentBlocksColumnsListItemFiltersInput>
+  not?: InputMaybe<ComponentSectionsColumnsListFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<ComponentSectionsColumnsListFiltersInput>>>
+  rightColumn?: InputMaybe<ComponentBlocksColumnsListItemFiltersInput>
+  text?: InputMaybe<StringFilterInput>
+  title?: InputMaybe<StringFilterInput>
+}
+
+export type ComponentSectionsColumnsListInput = {
+  id?: InputMaybe<Scalars['ID']['input']>
+  leftColumn?: InputMaybe<Array<InputMaybe<ComponentBlocksColumnsListItemInput>>>
+  rightColumn?: InputMaybe<Array<InputMaybe<ComponentBlocksColumnsListItemInput>>>
   text?: InputMaybe<Scalars['String']['input']>
   title?: InputMaybe<Scalars['String']['input']>
 }
@@ -3652,6 +3711,7 @@ export type GenericMorph =
   | ComponentAccordionItemsInstitution
   | ComponentBlocksCardLink
   | ComponentBlocksColumnsItem
+  | ComponentBlocksColumnsListItem
   | ComponentBlocksCommonLink
   | ComponentBlocksComparisonCard
   | ComponentBlocksComparisonItem
@@ -3686,6 +3746,7 @@ export type GenericMorph =
   | ComponentSectionsBanner
   | ComponentSectionsColumnedText
   | ComponentSectionsColumns
+  | ComponentSectionsColumnsList
   | ComponentSectionsComparisonSection
   | ComponentSectionsContactsSection
   | ComponentSectionsDivider
@@ -5183,6 +5244,7 @@ export type PageSectionsDynamicZone =
   | ComponentSectionsBanner
   | ComponentSectionsColumnedText
   | ComponentSectionsColumns
+  | ComponentSectionsColumnsList
   | ComponentSectionsComparisonSection
   | ComponentSectionsContactsSection
   | ComponentSectionsDivider
@@ -7388,6 +7450,7 @@ export type AllFilesQuery = {
             image?: { __typename?: 'UploadFile'; documentId: string } | null
           } | null>
         }
+      | { __typename?: 'ComponentSectionsColumnsList' }
       | {
           __typename?: 'ComponentSectionsComparisonSection'
           cards: Array<{
@@ -10422,6 +10485,39 @@ export type PageEntityFragment = {
         } | null>
       }
     | {
+        __typename: 'ComponentSectionsColumnsList'
+        title?: string | null
+        text?: string | null
+        leftColumn?: Array<{
+          __typename?: 'ComponentBlocksColumnsListItem'
+          content?: string | null
+          icon?: {
+            __typename?: 'UploadFile'
+            documentId: string
+            url: string
+            width?: number | null
+            height?: number | null
+            caption?: string | null
+            alternativeText?: string | null
+            name: string
+          } | null
+        } | null> | null
+        rightColumn?: Array<{
+          __typename?: 'ComponentBlocksColumnsListItem'
+          content?: string | null
+          icon?: {
+            __typename?: 'UploadFile'
+            documentId: string
+            url: string
+            width?: number | null
+            height?: number | null
+            caption?: string | null
+            alternativeText?: string | null
+            name: string
+          } | null
+        } | null> | null
+      }
+    | {
         __typename: 'ComponentSectionsComparisonSection'
         title?: string | null
         text?: string | null
@@ -11614,6 +11710,39 @@ export type PageBySlugQuery = {
               name: string
             } | null
           } | null>
+        }
+      | {
+          __typename: 'ComponentSectionsColumnsList'
+          title?: string | null
+          text?: string | null
+          leftColumn?: Array<{
+            __typename?: 'ComponentBlocksColumnsListItem'
+            content?: string | null
+            icon?: {
+              __typename?: 'UploadFile'
+              documentId: string
+              url: string
+              width?: number | null
+              height?: number | null
+              caption?: string | null
+              alternativeText?: string | null
+              name: string
+            } | null
+          } | null> | null
+          rightColumn?: Array<{
+            __typename?: 'ComponentBlocksColumnsListItem'
+            content?: string | null
+            icon?: {
+              __typename?: 'UploadFile'
+              documentId: string
+              url: string
+              width?: number | null
+              height?: number | null
+              caption?: string | null
+              alternativeText?: string | null
+              name: string
+            } | null
+          } | null> | null
         }
       | {
           __typename: 'ComponentSectionsComparisonSection'
@@ -12837,6 +12966,39 @@ export type Dev_AllPagesQuery = {
               name: string
             } | null
           } | null>
+        }
+      | {
+          __typename: 'ComponentSectionsColumnsList'
+          title?: string | null
+          text?: string | null
+          leftColumn?: Array<{
+            __typename?: 'ComponentBlocksColumnsListItem'
+            content?: string | null
+            icon?: {
+              __typename?: 'UploadFile'
+              documentId: string
+              url: string
+              width?: number | null
+              height?: number | null
+              caption?: string | null
+              alternativeText?: string | null
+              name: string
+            } | null
+          } | null> | null
+          rightColumn?: Array<{
+            __typename?: 'ComponentBlocksColumnsListItem'
+            content?: string | null
+            icon?: {
+              __typename?: 'UploadFile'
+              documentId: string
+              url: string
+              width?: number | null
+              height?: number | null
+              caption?: string | null
+              alternativeText?: string | null
+              name: string
+            } | null
+          } | null> | null
         }
       | {
           __typename: 'ComponentSectionsComparisonSection'
@@ -15458,6 +15620,55 @@ export type NewsletterSectionFragment = {
   instagramUrl?: string | null
 }
 
+export type ColumnsListItemFragment = {
+  __typename?: 'ComponentBlocksColumnsListItem'
+  content?: string | null
+  icon?: {
+    __typename?: 'UploadFile'
+    documentId: string
+    url: string
+    width?: number | null
+    height?: number | null
+    caption?: string | null
+    alternativeText?: string | null
+    name: string
+  } | null
+}
+
+export type ColumnsListSectionFragment = {
+  __typename?: 'ComponentSectionsColumnsList'
+  title?: string | null
+  text?: string | null
+  leftColumn?: Array<{
+    __typename?: 'ComponentBlocksColumnsListItem'
+    content?: string | null
+    icon?: {
+      __typename?: 'UploadFile'
+      documentId: string
+      url: string
+      width?: number | null
+      height?: number | null
+      caption?: string | null
+      alternativeText?: string | null
+      name: string
+    } | null
+  } | null> | null
+  rightColumn?: Array<{
+    __typename?: 'ComponentBlocksColumnsListItem'
+    content?: string | null
+    icon?: {
+      __typename?: 'UploadFile'
+      documentId: string
+      url: string
+      width?: number | null
+      height?: number | null
+      caption?: string | null
+      alternativeText?: string | null
+      name: string
+    } | null
+  } | null> | null
+}
+
 type Sections_ComponentSectionsAccordion_Fragment = {
   __typename: 'ComponentSectionsAccordion'
   title?: string | null
@@ -15695,6 +15906,40 @@ type Sections_ComponentSectionsColumns_Fragment = {
       name: string
     } | null
   } | null>
+}
+
+type Sections_ComponentSectionsColumnsList_Fragment = {
+  __typename: 'ComponentSectionsColumnsList'
+  title?: string | null
+  text?: string | null
+  leftColumn?: Array<{
+    __typename?: 'ComponentBlocksColumnsListItem'
+    content?: string | null
+    icon?: {
+      __typename?: 'UploadFile'
+      documentId: string
+      url: string
+      width?: number | null
+      height?: number | null
+      caption?: string | null
+      alternativeText?: string | null
+      name: string
+    } | null
+  } | null> | null
+  rightColumn?: Array<{
+    __typename?: 'ComponentBlocksColumnsListItem'
+    content?: string | null
+    icon?: {
+      __typename?: 'UploadFile'
+      documentId: string
+      url: string
+      width?: number | null
+      height?: number | null
+      caption?: string | null
+      alternativeText?: string | null
+      name: string
+    } | null
+  } | null> | null
 }
 
 type Sections_ComponentSectionsComparisonSection_Fragment = {
@@ -16500,6 +16745,7 @@ export type SectionsFragment =
   | Sections_ComponentSectionsBanner_Fragment
   | Sections_ComponentSectionsColumnedText_Fragment
   | Sections_ComponentSectionsColumns_Fragment
+  | Sections_ComponentSectionsColumnsList_Fragment
   | Sections_ComponentSectionsComparisonSection_Fragment
   | Sections_ComponentSectionsContactsSection_Fragment
   | Sections_ComponentSectionsDivider_Fragment
@@ -17910,6 +18156,28 @@ export const NewsletterSectionFragmentDoc = gql`
     instagramUrl
   }
 `
+export const ColumnsListItemFragmentDoc = gql`
+  fragment ColumnsListItem on ComponentBlocksColumnsListItem {
+    icon {
+      ...UploadImageEntity
+    }
+    content
+  }
+  ${UploadImageEntityFragmentDoc}
+`
+export const ColumnsListSectionFragmentDoc = gql`
+  fragment ColumnsListSection on ComponentSectionsColumnsList {
+    title
+    text
+    leftColumn {
+      ...ColumnsListItem
+    }
+    rightColumn {
+      ...ColumnsListItem
+    }
+  }
+  ${ColumnsListItemFragmentDoc}
+`
 export const SectionsFragmentDoc = gql`
   fragment Sections on PageSectionsDynamicZone {
     __typename
@@ -18009,6 +18277,9 @@ export const SectionsFragmentDoc = gql`
     ... on ComponentSectionsNewsletter {
       ...NewsletterSection
     }
+    ... on ComponentSectionsColumnsList {
+      ...ColumnsListSection
+    }
   }
   ${DividerSectionFragmentDoc}
   ${TextWithImageSectionFragmentDoc}
@@ -18042,6 +18313,7 @@ export const SectionsFragmentDoc = gql`
   ${StarzLandingPageSectionFragmentDoc}
   ${OpeningHoursSectionFragmentDoc}
   ${NewsletterSectionFragmentDoc}
+  ${ColumnsListSectionFragmentDoc}
 `
 export const SidebarsFragmentDoc = gql`
   fragment Sidebars on PageSidebarDynamicZone {

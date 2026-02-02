@@ -1294,6 +1294,7 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
         'sections.official-board',
         'sections.videos',
         'sections.regulations',
+        'sections.columns-list',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{

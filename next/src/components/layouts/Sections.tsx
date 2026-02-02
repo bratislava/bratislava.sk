@@ -35,6 +35,7 @@ import TextWithImageSection from '@/src/components/sections/TextWithImageSection
 import TootootEventsSection from '@/src/components/sections/TootootEventsSection'
 import VideosSection from '@/src/components/sections/VideosSection'
 import { SectionsFragment } from '@/src/services/graphql'
+import ColumnsListSection from '@/src/components/sections/ColumnsListSection'
 
 type SectionsProps = {
   sections: SectionsFragment[]
@@ -144,6 +145,9 @@ const SectionContent = ({ section }: { section: SectionsFragment }) => {
 
     case 'ComponentSectionsInbaLatestRelease':
       return <InbaLatestReleaseSection />
+
+    case 'ComponentSectionsColumnsList':
+      return <ColumnsListSection section={section} />
 
     default:
       return null
