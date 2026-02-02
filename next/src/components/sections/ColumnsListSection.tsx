@@ -8,6 +8,7 @@ import { ColumnsListSectionFragment } from '@/src/services/graphql'
 import cn from '@/src/utils/cn'
 import { generateImageSizes } from '@/src/utils/generateImageSizes'
 import { isDefined } from '@/src/utils/isDefined'
+import StrapiImage from '@/src/components/common/Image/StrapiImage'
 
 type Props = {
   section: ColumnsListSectionFragment
@@ -22,6 +23,8 @@ const ColumnsSection = ({ section }: Props) => {
 
   const filteredLeftColumn = leftColumn?.filter(isDefined) ?? []
   const filteredRightColumn = rightColumn?.filter(isDefined) ?? []
+
+  console.log(filteredLeftColumn)
 
   return (
     <SectionContainer>
@@ -44,17 +47,25 @@ const ColumnsSection = ({ section }: Props) => {
                     filteredLeftColumn.length > 2 && filteredLeftColumn.length % 3 === 2,
                 })}
               >
+                {item.icon && (
+                  <StrapiImage
+                    alt=""
+                    image={item.icon}
+                    sizes={generateImageSizes({
+                      // default: '100vw',
+                      default: '24px',
+                      // Note that this doesn't match the logic above for 100%, but it's okay, because it's just a simple optimization
+                      // sm: filteredLeftColumn.length === 2 ? '50vw' : '33vw',
+                    })}
+                    // pointer-events must be disabled to drag-events work properly in Slider
+                    // className={cn('pointer-events-none', {
+                    //   'object-contain': isCircleBackgroundVariant,
+                    // })}
+                    // fill={isCircleBackgroundVariant}
+                    className="w-[24px]"
+                  />
+                )}
                 {item.content}
-                {/* <ColumnsSectionItem
-                  {...item}
-                  imageVariant={imageVariant}
-                  imageSizes={generateImageSizes({
-                    default: '100vw',
-                    // Note that this doesn't match the logic above for 100%, but it's okay, because it's just a simple optimization
-                    sm: filteredColumns.length === 2 ? '50vw' : '33vw',
-                  })}
-                  className="w-full"
-                /> */}
               </li>
             )
           })}

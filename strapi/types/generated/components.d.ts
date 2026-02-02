@@ -62,17 +62,6 @@ export interface BlocksColumnsItem extends Struct.ComponentSchema {
   }
 }
 
-export interface BlocksColumnsListItem extends Struct.ComponentSchema {
-  collectionName: 'components_blocks_columns_list_items'
-  info: {
-    displayName: 'columns list item'
-  }
-  attributes: {
-    content: Schema.Attribute.Text
-    icon: Schema.Attribute.Media<'images'>
-  }
-}
-
 export interface BlocksCommonLink extends Struct.ComponentSchema {
   collectionName: 'components_blocks_common_links'
   info: {
@@ -562,6 +551,17 @@ export interface SectionsArticles extends Struct.ComponentSchema {
   }
 }
 
+export interface SectionsArticlesLandingPage extends Struct.ComponentSchema {
+  collectionName: 'components_sections_articles_landing_pages'
+  info: {
+    displayName: '\u010Cl\u00E1nky Landing Page'
+  }
+  attributes: {
+    leftArticle: Schema.Attribute.Relation<'oneToOne', 'api::article.article'>
+    newsPageLink: Schema.Attribute.Component<'blocks.common-link', false>
+  }
+}
+
 export interface SectionsBanner extends Struct.ComponentSchema {
   collectionName: 'components_sections_banners'
   info: {
@@ -624,19 +624,6 @@ export interface SectionsColumns extends Struct.ComponentSchema {
     > &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<'columnsSection.responsiveLayout.slider'>
-    text: Schema.Attribute.Text
-    title: Schema.Attribute.String
-  }
-}
-
-export interface SectionsColumnsList extends Struct.ComponentSchema {
-  collectionName: 'components_sections_columns_lists'
-  info: {
-    displayName: 'St\u013Apce so zoznamom'
-  }
-  attributes: {
-    leftColumn: Schema.Attribute.Component<'blocks.columns-list-item', true>
-    rightColumn: Schema.Attribute.Component<'blocks.columns-list-item', true>
     text: Schema.Attribute.Text
     title: Schema.Attribute.String
   }
@@ -1208,7 +1195,6 @@ declare module '@strapi/strapi' {
       'accordion-items.institution': AccordionItemsInstitution
       'blocks.card-link': BlocksCardLink
       'blocks.columns-item': BlocksColumnsItem
-      'blocks.columns-list-item': BlocksColumnsListItem
       'blocks.common-link': BlocksCommonLink
       'blocks.comparison-card': BlocksComparisonCard
       'blocks.comparison-item': BlocksComparisonItem
@@ -1240,10 +1226,10 @@ declare module '@strapi/strapi' {
       'menu.menu-section': MenuMenuSection
       'sections.accordion': SectionsAccordion
       'sections.articles': SectionsArticles
+      'sections.articles-landing-page': SectionsArticlesLandingPage
       'sections.banner': SectionsBanner
       'sections.columned-text': SectionsColumnedText
       'sections.columns': SectionsColumns
-      'sections.columns-list': SectionsColumnsList
       'sections.comparison-section': SectionsComparisonSection
       'sections.contacts-section': SectionsContactsSection
       'sections.divider': SectionsDivider
