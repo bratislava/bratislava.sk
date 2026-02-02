@@ -34,8 +34,7 @@ const ArticlesLandingPageSection = ({ section }: Props) => {
     select: (res) => res.articles.filter(isDefined),
   })
 
-  const leftArticle =
-    section.leftArticle === null && latestArticles ? latestArticles[0] : section.leftArticle
+  const leftArticle = section.leftArticle ?? latestArticles?.[0]
 
   const latestArticlesFiltered =
     latestArticles
@@ -45,11 +44,13 @@ const ArticlesLandingPageSection = ({ section }: Props) => {
 
   return (
     <SectionContainer className="py-6 lg:py-12">
-      <LatestNews
-        leftArticle={leftArticle}
-        otherArticles={latestArticlesFiltered}
-        newsPageLink={newsPageLink}
-      />
+      <div className="flex flex-col gap-y-14">
+        <LatestNews
+          leftArticle={leftArticle}
+          otherArticles={latestArticlesFiltered}
+          newsPageLink={newsPageLink}
+        />
+      </div>
     </SectionContainer>
   )
 }

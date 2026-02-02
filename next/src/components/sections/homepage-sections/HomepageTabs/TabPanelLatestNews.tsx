@@ -8,12 +8,10 @@ const TabPanelLatestNews = () => {
   const { homepage, latestArticles } = useHomepageContext()
   const { tabs } = homepage ?? {}
 
-  const leftArticle =
-    tabs?.leftArticle === null && latestArticles ? latestArticles[0] : tabs?.leftArticle
+  const leftArticle = tabs?.leftArticle ?? latestArticles?.[0]
   const rightArticle =
-    tabs?.rightArticle === null && latestArticles
-      ? latestArticles.filter((article) => article.documentId !== leftArticle?.documentId)[0]
-      : tabs?.rightArticle
+    tabs?.rightArticle ??
+    latestArticles?.filter((article) => article.documentId !== leftArticle?.documentId)[0]
 
   const latestArticlesFiltered =
     latestArticles
@@ -26,7 +24,7 @@ const TabPanelLatestNews = () => {
       .slice(0, 4) ?? []
 
   return (
-    <TabPanel id="LatestNews">
+    <TabPanel id="LatestNews" className="flex flex-col gap-y-14">
       <LatestNews
         leftArticle={leftArticle}
         rightArticle={rightArticle}

@@ -32,11 +32,12 @@ const LatestNews = ({ leftArticle, rightArticle, otherArticles, newsPageLink }: 
     <>
       <ResponsiveCarousel
         className="lg:hidden"
+        hasVerticalPadding={false}
         items={allLatestArticles.map((article) => (
           <ArticleCard key={article.slug} {...transformArticleProps(article)} />
         ))}
       />
-      <div className="mt-14 hidden pb-8 lg:block">
+      <div className="max-lg:hidden">
         <div
           className={cn('grid grid-cols-3 gap-x-8', {
             'grid-cols-2': !rightArticle,
@@ -77,7 +78,7 @@ const LatestNews = ({ leftArticle, rightArticle, otherArticles, newsPageLink }: 
       </div>
       {newsPageLink ? (
         <div className="flex justify-center">
-          <Button variant="outline" hasLinkIcon {...getLinkProps(newsPageLink)} />
+          <Button variant="outline" {...getLinkProps(newsPageLink)} />
         </div>
       ) : null}
     </>
