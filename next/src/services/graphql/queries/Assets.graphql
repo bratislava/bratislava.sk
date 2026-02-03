@@ -35,3 +35,11 @@ query AssetCategories {
     ...AssetCategoryEntity
   }
 }
+
+mutation CreateAsset($data: AssetInput!) {
+  createAsset(data: $data) {
+    documentId
+    title
+    slug
+  }
+}

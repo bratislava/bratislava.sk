@@ -7716,6 +7716,15 @@ export type AssetCategoriesQuery = {
   } | null>
 }
 
+export type CreateAssetMutationVariables = Exact<{
+  data: AssetInput
+}>
+
+export type CreateAssetMutation = {
+  __typename?: 'Mutation'
+  createAsset?: { __typename?: 'Asset'; documentId: string; title: string; slug: string } | null
+}
+
 export type DocumentCategoryEntityFragment = {
   __typename?: 'DocumentCategory'
   documentId: string
@@ -19451,6 +19460,15 @@ export const AssetCategoriesDocument = gql`
   }
   ${AssetCategoryEntityFragmentDoc}
 `
+export const CreateAssetDocument = gql`
+  mutation CreateAsset($data: AssetInput!) {
+    createAsset(data: $data) {
+      documentId
+      title
+      slug
+    }
+  }
+`
 export const DocumentBySlugDocument = gql`
   query DocumentBySlug($slug: String!) {
     documents(filters: { slug: { eq: $slug } }) {
@@ -19999,6 +20017,24 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
           }),
         'AssetCategories',
         'query',
+        variables,
+      )
+    },
+    CreateAsset(
+      variables: CreateAssetMutationVariables,
+      requestHeaders?: GraphQLClientRequestHeaders,
+      signal?: RequestInit['signal'],
+    ): Promise<CreateAssetMutation> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<CreateAssetMutation>({
+            document: CreateAssetDocument,
+            variables,
+            requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders },
+            signal,
+          }),
+        'CreateAsset',
+        'mutation',
         variables,
       )
     },

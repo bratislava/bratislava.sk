@@ -1,4 +1,4 @@
-/* eslint-disable sonarjs/cognitive-complexity,no-restricted-syntax */
+/* eslint-disable sonarjs/cognitive-complexity */
 /**
  * Scrapes files from old.starz.sk website and exports to CSV
  *
@@ -11,12 +11,11 @@
  *
  * Output: starz_files_export.csv in scripts/dev/
  */
-/* eslint-disable no-console, no-await-in-loop, no-plusplus */
+/* eslint-disable no-console */
 import * as fs from 'node:fs'
 import path from 'node:path'
 
 import axios from 'axios'
-// eslint-disable-next-line import/no-extraneous-dependencies -- cheerio needs to be installed: npm install cheerio @types/cheerio --save-dev
 import * as cheerio from 'cheerio'
 
 interface StrapiCategory {
@@ -1026,7 +1025,7 @@ const main = async () => {
     .join('\n')
 
   const csvContent = csvHeader + csvRows
-  const outputPath = path.join(process.cwd(), 'next/scripts/dev/starz_files_export.csv')
+  const outputPath = path.join(process.cwd(), '/next/scripts/dev/starz_files_export.csv')
   const outputDir = path.dirname(outputPath)
 
   // Ensure directory exists
