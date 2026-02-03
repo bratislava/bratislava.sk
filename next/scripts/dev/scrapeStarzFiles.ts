@@ -7,6 +7,7 @@
  * 2. Run: npx ts-node scripts/dev/scrapeStarzFiles.ts
  * 3. Skip validation: npx ts-node scripts/dev/scrapeStarzFiles.ts --skip-validation
  *    Or set env var: SKIP_VALIDATION=true npx ts-node scripts/dev/scrapeStarzFiles.ts
+ * 4. Only year pages: npx ts-node scripts/dev/scrapeStarzFiles.ts --only-year-pages
  *
  * Output: starz_files_export.csv in scripts/dev/
  */
@@ -37,6 +38,7 @@ interface FileEntry {
   strapiCategoryId: number
   strapiDocumentId: string
   description: string
+  isFromAdditionalScraping: boolean
 }
 
 // Strapi categories mapping
@@ -551,6 +553,7 @@ const scrapePage = async (
         strapiCategoryId: strapiCategory.id,
         strapiDocumentId: strapiCategory.documentId,
         description,
+        isFromAdditionalScraping: false,
       }
 
       files.push(entry)
@@ -668,6 +671,7 @@ const scrapePage = async (
         strapiCategoryId: strapiCategory.id,
         strapiDocumentId: strapiCategory.documentId,
         description,
+        isFromAdditionalScraping: false,
       }
 
       files.push(entry)
@@ -752,63 +756,230 @@ const scrapePage = async (
   return { files, nextPageUrl }
 }
 
+// Scrape Objednávky year pages (2019-2025) with monthly file format
+const scrapeObjednavkyYearPages = async (): Promise<FileEntry[]> => {
+  const yearUrls = [
+    'https://old.starz.sk/objednavky%2D2019/ds-1171/archiv=1',
+    'https://old.starz.sk/objednavky%2D2020/ds-1183/archiv=1',
+    'https://old.starz.sk/objednavky%2D2021/ds-1190/archiv=1',
+    'https://old.starz.sk/objednavky%2D2022/ds-1199/archiv=1',
+    'https://old.starz.sk/objednavky%2D2023/ds-1206/archiv=1',
+    'https://old.starz.sk/objednavky%2D2024/ds-1211/archiv=1',
+    'https://old.starz.sk/objednavky%2D2025/ds-1215/archiv=1',
+  ]
+
+  const allFiles: FileEntry[] = []
+  const seenUrls = new Set<string>()
+
+  console.log('\nScraping Objednávky year pages (2019-2025)...')
+
+  for (const yearUrl of yearUrls) {
+    console.log(`\nScraping: ${yearUrl}`)
+
+    try {
+      const response = await axios.get(yearUrl, { timeout: 30_000 })
+      const $ = cheerio.load(response.data)
+
+      // Extract year from URL and create page title
+      const yearMatch = yearUrl.match(/objednavky%2d(\d{4})/i)
+      const year = yearMatch ? yearMatch[1] : ''
+      const pageTitle = `Objednávky ${year}`
+
+      // Find file list items - format: <li><strong><a>filename</a></strong> [PDF, 137 kB]</li>
+      $('li.typsouboru').each((_, element) => {
+        const $li = $(element)
+        const $link = $li.find('a[href]').first()
+        const href = $link.attr('href')
+
+        if (!href) return
+
+        // Get full text content of <li> to extract format and size
+        const liText = $li.text().trim()
+
+        // Check if it's a file link with [PDF, ...] pattern in <li> text
+        const hasFilePattern = /\[(pdf|doc|docx|xls|xlsx|zip|rar|txt)/i.test(liText)
+        if (!hasFilePattern) return
+
+        // Skip HTML links - check href pattern (unless it's a file URL)
+        if (
+          (href.includes('.html') || href.includes('.htm') || /\/ds-\d+/.test(href)) &&
+          !href.includes('/assets/File.ashx') &&
+          !href.includes('/File.ashx')
+        ) {
+          return
+        }
+
+        // Extract file name from <a> tag text (inside <strong>)
+        let fileName = $link.text().trim()
+
+        // Extract format from <li> text [PDF, ...] pattern
+        const formatMatch = liText.match(/\[(pdf|doc|docx|xls|xlsx|zip|rar|txt)/i)
+        const format = formatMatch ? formatMatch[1]?.toLowerCase() || 'pdf' : 'pdf'
+
+        // Skip HTML files
+        if (format === 'html' || format === 'htm') return
+
+        // If no good name, try from URL
+        if (!fileName || fileName.length < 3) {
+          const urlFileName = href.split('/').pop()?.split('?')[0] || ''
+          fileName =
+            urlFileName && /\.(pdf|doc|docx|xls|xlsx|zip|rar|txt)/i.test(urlFileName)
+              ? decodeURIComponent(urlFileName)
+              : 'unknown'
+        }
+
+        // Normalize file name
+        fileName = normalizeFileName(fileName)
+
+        // Extract date from file name (e.g., "Objednávky 1.10.-31.10.2025" -> use end date)
+        let dateOfCreation = ''
+        const dateMatch = fileName.match(/((?:\d{1,2}\.){2}\d{4})/)
+        if (dateMatch) {
+          dateOfCreation = dateMatch[1] || ''
+        } else if (year) {
+          // Use year from URL if no date found
+          dateOfCreation = `31.12.${year}`
+        }
+
+        // Build full URL - handle relative URLs like /assets/File.ashx
+        let fileUrl: string
+        try {
+          if (href.startsWith('http')) {
+            fileUrl = href
+          } else if (href.startsWith('/')) {
+            // Absolute path from domain root
+            const baseUrlObj = new URL(yearUrl)
+            fileUrl = `${baseUrlObj.protocol}//${baseUrlObj.host}${href}`
+          } else {
+            // Relative path
+            fileUrl = new URL(href, yearUrl).toString()
+          }
+        } catch {
+          fileUrl = href
+        }
+
+        // Skip if already seen
+        if (seenUrls.has(fileUrl)) return
+        seenUrls.add(fileUrl)
+
+        // Use page title as category
+        const strapiCategory = mapToStrapiCategory(pageTitle, '')
+        const entry: FileEntry = {
+          fileName,
+          format,
+          mimeType: getMimeType(format),
+          fileUrl,
+          dateOfCreation,
+          oldCategory: pageTitle,
+          clarifiedOldCategory: pageTitle,
+          newCategory: strapiCategory.name,
+          strapiCategoryId: strapiCategory.id,
+          strapiDocumentId: strapiCategory.documentId,
+          description: '',
+          isFromAdditionalScraping: true,
+        }
+
+        allFiles.push(entry)
+        console.log(`  Found: ${fileName} [${format}]`)
+      })
+
+      // Small delay between pages
+      await new Promise((resolve) => setTimeout(resolve, 500))
+    } catch (error) {
+      console.error(`Error scraping ${yearUrl}:`, error)
+    }
+  }
+
+  console.log(`\nAdditional scraping found ${allFiles.length} files`)
+
+  return allFiles
+}
+
 const main = async () => {
-  // Check for skip validation flag
+  // Check for flags
   const skipValidation =
     process.argv.includes('--skip-validation') ||
     process.argv.includes('--no-validation') ||
     process.env.SKIP_VALIDATION === 'true'
+  const onlyYearPages =
+    process.argv.includes('--only-year-pages') || process.env.ONLY_YEAR_PAGES === 'true'
 
-  const baseUrl =
-    'https://old.starz.sk/vismo/zobraz_dok.asp?hledani=1&datum_do=&id_org=600167&datum_od=1%2E1%2E2015&query=&strVlastnik=&kontext=1&archiv=1&submit=Vyh%C4%BEada%C5%A5&tzv=1&pocet=25&stranka=1'
   const allFiles: FileEntry[] = []
   const seenUrls = new Set<string>()
-  let currentUrl: string | null = baseUrl
-  let pageCount = 0
-  // Search results show 2344 total records, 25 per page = ~94 pages
-  const maxPages = 100
 
   console.log('Starting scrape...')
   if (skipValidation) {
     console.log('URL validation: SKIPPED')
   }
+  if (onlyYearPages) {
+    console.log('Mode: ONLY year pages (2019-2025)')
+  }
 
-  // First pass: collect all files
-  while (currentUrl && pageCount < maxPages) {
-    pageCount++
-    console.log(`Page ${pageCount}/${maxPages}`)
+  // Main scraping (skip if only year pages)
+  if (!onlyYearPages) {
+    const baseUrl =
+      'https://old.starz.sk/vismo/zobraz_dok.asp?hledani=1&datum_do=&id_org=600167&datum_od=1%2E1%2E2015&query=&strVlastnik=&kontext=1&archiv=1&submit=Vyh%C4%BEada%C5%A5&tzv=1&pocet=25&stranka=1'
+    let currentUrl: string | null = baseUrl
+    let pageCount = 0
+    // Search results show 2344 total records, 25 per page = ~94 pages
+    const maxPages = 100
 
-    try {
-      const { files, nextPageUrl } = await scrapePage(currentUrl)
+    // First pass: collect all files
+    while (currentUrl && pageCount < maxPages) {
+      pageCount++
+      console.log(`Page ${pageCount}/${maxPages}`)
 
-      // Add files (deduplicate by URL)
-      for (const file of files) {
-        if (!seenUrls.has(file.fileUrl)) {
-          seenUrls.add(file.fileUrl)
-          allFiles.push(file)
-          console.log(`  Found: ${file.fileName}`)
+      try {
+        const { files, nextPageUrl } = await scrapePage(currentUrl)
+
+        // Add files (deduplicate by URL)
+        for (const file of files) {
+          if (!seenUrls.has(file.fileUrl)) {
+            seenUrls.add(file.fileUrl)
+            allFiles.push(file)
+            console.log(`  Found: ${file.fileName}`)
+          }
         }
-      }
 
-      currentUrl = nextPageUrl
+        currentUrl = nextPageUrl
 
-      // Small delay to avoid overwhelming server
-      await new Promise((resolve) => setTimeout(resolve, 500))
-    } catch (error) {
-      console.error(`Error on page ${pageCount}:`, error)
-      // Try to continue with next page
-      if (currentUrl && currentUrl.includes('stranka=')) {
-        const match: RegExpMatchArray | null = currentUrl.match(/stranka=(\d+)/i)
-        if (match && match[1]) {
-          const nextPage: number = Number.parseInt(match[1], 10) + 1
-          currentUrl = currentUrl.replace(/stranka=\d+/i, `stranka=${nextPage}`)
+        // Small delay to avoid overwhelming server
+        await new Promise((resolve) => setTimeout(resolve, 500))
+      } catch (error) {
+        console.error(`Error on page ${pageCount}:`, error)
+        // Try to continue with next page
+        if (currentUrl && currentUrl.includes('stranka=')) {
+          const match: RegExpMatchArray | null = currentUrl.match(/stranka=(\d+)/i)
+          if (match && match[1]) {
+            const nextPage: number = Number.parseInt(match[1], 10) + 1
+            currentUrl = currentUrl.replace(/stranka=\d+/i, `stranka=${nextPage}`)
+          } else {
+            break
+          }
         } else {
           break
         }
-      } else {
-        break
       }
     }
+  }
+
+  // Additional scraping: Objednávky year pages (2019-2025)
+  const additionalFiles = await scrapeObjednavkyYearPages()
+
+  // Merge additional files (deduplicate by URL)
+  for (const file of additionalFiles) {
+    if (!seenUrls.has(file.fileUrl)) {
+      seenUrls.add(file.fileUrl)
+      allFiles.push(file)
+    }
+  }
+
+  if (onlyYearPages) {
+    console.log(`\nTotal files collected: ${allFiles.length} (from year pages only)`)
+  } else {
+    console.log(
+      `\nTotal files collected: ${allFiles.length} (${allFiles.length - additionalFiles.length} from main scrape, ${additionalFiles.length} from additional scrape)`,
+    )
   }
 
   // Second pass: validate URLs (if not skipped)
@@ -846,11 +1017,11 @@ const main = async () => {
 
   // Write CSV
   const csvHeader =
-    'fileName,format,mimeType,fileUrl,dateOfCreation,oldCategory,clarifiedOldCategory,newCategory,id,documentId,description\n'
+    'fileName,format,mimeType,fileUrl,dateOfCreation,oldCategory,clarifiedOldCategory,newCategory,id,documentId,description,isFromAdditionalScraping\n'
   const csvRows = validFiles
     .map(
       (file) =>
-        `${escapeCsv(file.fileName)},${escapeCsv(file.format)},${escapeCsv(file.mimeType)},${escapeCsv(file.fileUrl)},${escapeCsv(file.dateOfCreation)},${escapeCsv(file.oldCategory)},${escapeCsv(file.clarifiedOldCategory)},${escapeCsv(file.newCategory)},${file.strapiCategoryId},${escapeCsv(file.strapiDocumentId)},${escapeCsv(file.description)}`,
+        `${escapeCsv(file.fileName)},${escapeCsv(file.format)},${escapeCsv(file.mimeType)},${escapeCsv(file.fileUrl)},${escapeCsv(file.dateOfCreation)},${escapeCsv(file.oldCategory)},${escapeCsv(file.clarifiedOldCategory)},${escapeCsv(file.newCategory)},${file.strapiCategoryId},${escapeCsv(file.strapiDocumentId)},${escapeCsv(file.description)},${file.isFromAdditionalScraping}`,
     )
     .join('\n')
 
