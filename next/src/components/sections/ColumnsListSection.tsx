@@ -16,7 +16,7 @@ type Props = {
  * Figma: https://www.figma.com/design/17wbd0MDQcMW9NbXl6UPs8/DS--Component-library?node-id=21143-18394&t=MUzJWPA0GjZQj44Y-4
  */
 
-const ColumnsSection = ({ section }: Props) => {
+const ColumnsListSection = ({ section }: Props) => {
   const { title, text, leftColumn, rightColumn } = section
 
   return (
@@ -67,4 +67,4 @@ const ColumnsSection = ({ section }: Props) => {
   )
 }
 
-export default ColumnsSection
+export default ColumnsListSection
