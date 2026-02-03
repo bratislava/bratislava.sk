@@ -1,4 +1,4 @@
-/* eslint-disable no-console */
+/* eslint-disable no-console,no-plusplus,sonarjs/cognitive-complexity */
 /**
  * Imports first file from CSV into Strapi using GraphQL
  *
@@ -16,19 +16,23 @@ import path from 'node:path'
 import axios from 'axios'
 import dotenv from 'dotenv'
 // eslint-disable-next-line import/no-extraneous-dependencies -- form-data needs to be installed: npm install form-data --save-dev
-import FormData from 'form-data'
-import { gql, GraphQLClient } from 'graphql-request'
+import { GraphQLClient } from 'graphql-request'
+
+import { getSdk } from '@/src/services/graphql'
 
 // Load envs
 dotenv.config({ path: '.env.local' })
 
 const strapiBaseUrl = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337'
-const graphqlClient = new GraphQLClient(`${strapiBaseUrl}/graphql`)
+const gql = new GraphQLClient(`${strapiBaseUrl}/graphql`)
+export const client = getSdk(gql)
+
+// const strapiClient = strapi({ baseURL: `${strapiBaseUrl}/api` })
 
 // Set authorization header if API token is available
-if (process.env.STRAPI_API_TOKEN) {
-  graphqlClient.setHeader('Authorization', `Bearer ${process.env.STRAPI_API_TOKEN}`)
-}
+// if (process.env.STRAPI_API_TOKEN) {
+//   gql.setHeader('Authorization', `Bearer ${process.env.STRAPI_API_TOKEN}`)
+// }
 
 interface CsvRow {
   fileName: string
@@ -106,23 +110,22 @@ const uploadToStrapi = async (
 ): Promise<number> => {
   console.log(`Uploading to Strapi: ${fileName}`)
 
+  const fileBlob = new Blob([fileBuffer], { type: mimeType })
+
   const formData = new FormData()
-  // Append file buffer with filename - form-data package accepts (field, value, options)
-  formData.append('files', fileBuffer, {
-    filename: fileName,
-    contentType: mimeType,
-  })
+  // // Append file buffer with filename
+  formData.append('files', fileBlob, fileName)
 
   // Optionally add fileInfo as JSON string (name, alternativeText, caption)
-  // const fileInfo = {
-  //   name: fileName,
-  //   alternativeText: fileName,
-  // }
-  // formData.append('fileInfo', JSON.stringify(fileInfo))
-
-  const headers: Record<string, string> = {
-    ...formData.getHeaders(),
+  const fileInfo = {
+    name: fileName,
+    // alternativeText: fileName,
   }
+  formData.append('fileInfo', JSON.stringify(fileInfo))
+
+  // const headers: Record<string, string> = {
+  //   ...formData.getHeaders(),
+  // }
 
   // // Add API token if available
   // if (process.env.STRAPI_API_TOKEN) {
@@ -131,11 +134,17 @@ const uploadToStrapi = async (
 
   try {
     const response = await axios.post(`${strapiBaseUrl}/api/upload`, formData, {
-      headers,
+      // headers,
       timeout: 60_000,
       maxContentLength: Infinity,
       maxBodyLength: Infinity,
     })
+
+    // const response = await strapiClient.files.upload(fileBlob, {
+    //   fileInfo: {
+    //     name: fileName,
+    //   },
+    // })
 
     // Strapi returns array of uploaded files
     if (!response.data || !Array.isArray(response.data) || response.data.length === 0) {
@@ -159,37 +168,64 @@ const uploadToStrapi = async (
   }
 }
 
-const CREATE_DOCUMENT_MUTATION = gql`
-  mutation createDocument($data: DocumentInput!) {
-    createDocument(data: $data) {
-      documentId
-      title
-    }
-  }
-`
+// const CREATE_DOCUMENT_MUTATION = gql`
+//   mutation createDocument($data: DocumentInput!) {
+//     createDocument(data: $data) {
+//       documentId
+//       title
+//     }
+//   }
+// `
 
 const createDocument = async (row: CsvRow, fileId: number): Promise<void> => {
   console.log(`Creating document: ${row.fileName}`)
 
+  // const documentData = {
+  //   title: row.fileName,
+  //   slug: slugify(row.fileName),
+  //   // files: [fileId.toString()],
+  //   // description: row.description || null,
+  //   // documentCategory: row.documentId || null,
+  //   // adminGroups: ['jo5fdw77stuwdv5uwzcacr1z'],
+  // }
+
   const documentData = {
-    title: row.fileName,
-    files: [fileId.toString()],
-    description: row.description || null,
-    documentCategory: row.documentId || null,
+    title: 'Title',
+    slug: 'title',
+    // files: ['9359'],
   }
 
   const variables = {
-    data: documentData,
+    ...documentData,
   }
 
-  const result = await graphqlClient.request<{
-    createDocument: { documentId: string; title: string }
-  }>(CREATE_DOCUMENT_MUTATION, variables)
+  // const resultReg = await client.createBareRegulation({
+  //   regNumber: '2/1111',
+  //   slug: '112',
+  //   effectiveFrom: '2026-01-09',
+  //   category: Enum_Regulation_Category.Archiv,
+  //   fullTitle: 'full',
+  //   mainDocumentId: '9359',
+  // })
 
-  console.log(`Created document ID: ${result.createDocument.documentId}`)
-  console.log(
-    `Document URL: ${strapiBaseUrl}/admin/content-manager/collection-types/api::document.document/${result.createDocument.documentId}`,
-  )
+  // console.log('createRegulation', resultReg.createRegulation)
+
+  const result = await client.CreateBareDocument({
+    title: 'Title',
+    slug: 'title5',
+    files: ['9359'],
+  })
+
+  if (!result.createDocument) {
+    console.log('Creating document failed')
+
+    return
+  }
+
+  console.log(`Created document ID: ${result.createDocument.title}`)
+  // console.log(
+  //   `Document URL: ${strapiBaseUrl}/admin/content-manager/collection-types/api::document.document/${result.createDocument.documentId}`,
+  // )
 }
 
 const main = async () => {
@@ -197,7 +233,8 @@ const main = async () => {
 
   if (!fs.existsSync(csvPath)) {
     console.error(`CSV file not found: ${csvPath}`)
-    process.exit(1)
+
+    return
   }
 
   console.log(`Reading CSV: ${csvPath}`)
@@ -206,14 +243,16 @@ const main = async () => {
 
   if (lines.length < 2) {
     console.error('CSV file must have at least a header and one data row')
-    process.exit(1)
+
+    return
   }
 
   // Skip header, get first row
   const firstRow = parseCsvRow(lines[1])
   if (!firstRow) {
     console.error('Failed to parse first row')
-    process.exit(1)
+
+    return
   }
 
   console.log('\n=== Processing first file ===')
@@ -224,11 +263,14 @@ const main = async () => {
 
   try {
     // Download file
-    const fileBuffer = await downloadFile(firstRow.fileUrl)
+    // const fileBuffer = await downloadFile(firstRow.fileUrl)
+    //
+    // // Upload to Strapi
+    // const fileId = await uploadToStrapi(fileBuffer, firstRow.fileName, firstRow.mimeType)
+    //
+    // console.log(firstRow, fileId)
 
-    // Upload to Strapi
-    const fileId = await uploadToStrapi(fileBuffer, firstRow.fileName, firstRow.mimeType)
-
+    const fileId = 9359
     // Create document
     await createDocument(firstRow, fileId)
 
@@ -238,8 +280,7 @@ const main = async () => {
     if (axios.isAxiosError(error)) {
       console.error('Response:', error.response?.data)
     }
-    process.exit(1)
   }
 }
 
-main().catch(console.error)
+main()
