@@ -1,0 +1,37 @@
+fragment DocumentCategoryEntity on DocumentCategory {
+  documentId
+  title
+  slug
+}
+
+fragment DocumentSlugEntity on Document {
+  __typename
+  documentId
+  slug
+  title
+}
+
+fragment DocumentEntity on Document {
+  ...DocumentSlugEntity
+  publishedAt
+  updatedAt
+  documentCategory {
+    ...DocumentCategoryEntity
+  }
+  description
+  files {
+    ...UploadFileEntity
+  }
+}
+
+query DocumentBySlug($slug: String!) {
+  documents(filters: { slug: { eq: $slug } }) {
+    ...DocumentEntity
+  }
+}
+
+query DocumentCategories {
+  documentCategories(pagination: { limit: -1 }) {
+    ...DocumentCategoryEntity
+  }
+}

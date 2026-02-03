@@ -27,6 +27,8 @@ const searchIndexSettings = {
     'page.metaDiscription', // yes, it's a typo in the field name
     'article.title',
     'article.perex',
+    'asset.title',
+    'asset.description',
     'document.title',
     'document.description',
     'inba-article.title',
@@ -43,6 +45,9 @@ const searchIndexSettings = {
     'article.adminGroups.documentId',
     'article.adminGroups.slug',
     'article.inbaRelease.slug',
+    'asset.assetCategory.slug',
+    'asset.adminGroups.documentId',
+    'asset.adminGroups.slug',
     'document.documentCategory.slug',
     'document.adminGroups.documentId',
     'document.adminGroups.slug',
@@ -51,6 +56,7 @@ const searchIndexSettings = {
     'article.title',
     'article.addedAtTimestamp',
     'document.updatedAtTimestamp',
+    'asset.updatedAtTimestamp',
     'inba-release.releaseDate', // releaseDate is not datetime but only date (e.g. 2025-12-07), so we can sort by it directly instead of creating timestamp
     'regulation.effectiveFromTimestamp',
   ],
@@ -92,6 +98,22 @@ const config = {
         // use (number) filters.
         addedAtTimestamp: entry.addedAt ? new Date(entry.addedAt).getTime() : undefined,
         updatedAtTimestamp: entry.updated ? new Date(entry.updated).getTime() : undefined,
+      }),
+  },
+  asset: {
+    indexName: 'search_index',
+    entriesQuery: {
+      locale: '*',
+      populate: ['assetCategory', 'adminGroups'],
+    },
+    settings: searchIndexSettings,
+    transformEntry: ({ entry }) =>
+      wrapSearchIndexEntry('asset', {
+        ...entry,
+        // Meilisearch doesn't support filtering dates as ISO strings, therefore we convert it to UNIX timestamp to
+        // use (number) filters.
+        publishedAtTimestamp: entry.publishedAt ? new Date(entry.publishedAt).getTime() : undefined,
+        updatedAtTimestamp: entry.updatedAt ? new Date(entry.updatedAt).getTime() : undefined,
       }),
   },
   document: {

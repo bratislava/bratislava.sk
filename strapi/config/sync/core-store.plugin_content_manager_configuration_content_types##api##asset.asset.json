@@ -1,5 +1,5 @@
 {
-  "key": "plugin_content_manager_configuration_content_types::api::admin-group.admin-group",
+  "key": "plugin_content_manager_configuration_content_types::api::asset.asset",
   "value": {
     "settings": {
       "bulkable": true,
@@ -21,7 +21,7 @@
       },
       "title": {
         "edit": {
-          "label": "title",
+          "label": "Nadpis",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -35,7 +35,7 @@
       },
       "slug": {
         "edit": {
-          "label": "slug",
+          "label": "Slug",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -47,66 +47,37 @@
           "sortable": true
         }
       },
-      "adminGroupId": {
+      "files": {
         "edit": {
-          "label": "adminGroupId",
+          "label": "Súbory",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "adminGroupId",
-          "searchable": true,
-          "sortable": true
+          "label": "files",
+          "searchable": false,
+          "sortable": false
         }
       },
-      "contentManagedBy": {
+      "description": {
         "edit": {
-          "label": "contentManagedBy",
-          "description": "Hodnota poľa sa doplní na prázdne miesto v správe \"Obsah tejto stránky je spravovaný mestskou organizáciou ________\", ktorú používateľ uvidí na spodku stránky.",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "contentManagedBy",
-          "searchable": true,
-          "sortable": true
-        }
-      },
-      "submenuPages": {
-        "edit": {
-          "label": "Submenu stránky (musia byť rovnaké ako child pages v landing page)",
+          "label": "Popis",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "submenuPages",
-          "searchable": false,
-          "sortable": false
-        }
-      },
-      "landingPage": {
-        "edit": {
-          "label": "landingPage",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true,
-          "mainField": "title"
-        },
-        "list": {
-          "label": "landingPage",
+          "label": "description",
           "searchable": true,
           "sortable": true
         }
       },
-      "articles": {
+      "assetCategory": {
         "edit": {
-          "label": "articles",
+          "label": "Kategória",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -114,14 +85,14 @@
           "mainField": "title"
         },
         "list": {
-          "label": "articles",
-          "searchable": false,
-          "sortable": false
+          "label": "assetCategory",
+          "searchable": true,
+          "sortable": true
         }
       },
-      "pages": {
+      "adminGroups": {
         "edit": {
-          "label": "pages",
+          "label": "adminGroups",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -129,52 +100,7 @@
           "mainField": "title"
         },
         "list": {
-          "label": "pages",
-          "searchable": false,
-          "sortable": false
-        }
-      },
-      "faqs": {
-        "edit": {
-          "label": "faqs",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true,
-          "mainField": "title"
-        },
-        "list": {
-          "label": "faqs",
-          "searchable": false,
-          "sortable": false
-        }
-      },
-      "documents": {
-        "edit": {
-          "label": "documents",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true,
-          "mainField": "title"
-        },
-        "list": {
-          "label": "documents",
-          "searchable": false,
-          "sortable": false
-        }
-      },
-      "assets": {
-        "edit": {
-          "label": "assets",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true,
-          "mainField": "title"
-        },
-        "list": {
-          "label": "assets",
+          "label": "adminGroups",
           "searchable": false,
           "sortable": false
         }
@@ -247,80 +173,46 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "title",
-        "slug",
-        "createdAt",
-        "updatedAt",
-        "contentManagedBy",
-        "landingPage",
-        "adminGroupId"
-      ],
       "edit": [
         [
           {
             "name": "title",
-            "size": 6
+            "size": 12
           },
           {
             "name": "slug",
-            "size": 6
-          }
-        ],
-        [
-          {
-            "name": "contentManagedBy",
-            "size": 6
-          },
-          {
-            "name": "landingPage",
-            "size": 6
-          }
-        ],
-        [
-          {
-            "name": "submenuPages",
             "size": 12
           }
         ],
         [
           {
-            "name": "articles",
-            "size": 12
-          }
-        ],
-        [
-          {
-            "name": "pages",
-            "size": 12
-          }
-        ],
-        [
-          {
-            "name": "faqs",
-            "size": 12
-          }
-        ],
-        [
-          {
-            "name": "documents",
-            "size": 12
-          }
-        ],
-        [
-          {
-            "name": "adminGroupId",
+            "name": "files",
             "size": 6
           },
           {
-            "name": "assets",
+            "name": "description",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "assetCategory",
+            "size": 6
+          },
+          {
+            "name": "adminGroups",
             "size": 6
           }
         ]
+      ],
+      "list": [
+        "id",
+        "title",
+        "slug",
+        "createdAt"
       ]
     },
-    "uid": "api::admin-group.admin-group"
+    "uid": "api::asset.asset"
   },
   "type": "object",
   "environment": null,

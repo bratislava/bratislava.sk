@@ -573,6 +573,20 @@ export interface SectionsArticlesLandingPage extends Struct.ComponentSchema {
   }
 }
 
+export interface SectionsAssets extends Struct.ComponentSchema {
+  collectionName: 'components_sections_assets'
+  info: {
+    displayName: 'Assets'
+  }
+  attributes: {
+    assets: Schema.Attribute.Relation<'oneToMany', 'api::asset.asset'>
+    showAll: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>
+    text: Schema.Attribute.Text
+    title: Schema.Attribute.String & Schema.Attribute.DefaultTo<'Dokumenty'>
+    titleLevel: Schema.Attribute.Enumeration<['h2', 'h3']> & Schema.Attribute.DefaultTo<'h2'>
+  }
+}
+
 export interface SectionsBanner extends Struct.ComponentSchema {
   collectionName: 'components_sections_banners'
   info: {
@@ -1252,6 +1266,7 @@ declare module '@strapi/strapi' {
       'sections.accordion': SectionsAccordion
       'sections.articles': SectionsArticles
       'sections.articles-landing-page': SectionsArticlesLandingPage
+      'sections.assets': SectionsAssets
       'sections.banner': SectionsBanner
       'sections.columned-text': SectionsColumnedText
       'sections.columns': SectionsColumns
