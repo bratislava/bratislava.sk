@@ -48,7 +48,7 @@ const ColumnsListSection = ({ section }: Props) => {
                               />
                             </div>
                           ) : null}
-                          <Markdown content={columnItem.content} className="text-size-p-small" />
+                          <Markdown content={columnItem.content} variant="small" />
                         </div>
                       )
                     })
