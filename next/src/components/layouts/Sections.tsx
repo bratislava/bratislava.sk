@@ -5,6 +5,7 @@ import ArticlesLandingPageSection from '@/src/components/sections/ArticlesLandin
 import ArticlesSection from '@/src/components/sections/ArticlesSection/ArticlesSection'
 import BannerSection from '@/src/components/sections/BannerSection'
 import ColumnedTextSection from '@/src/components/sections/ColumnedTextSection'
+import ColumnsListSection from '@/src/components/sections/ColumnsListSection'
 import ColumnsSection from '@/src/components/sections/ColumnsSection'
 import ComparisonSection from '@/src/components/sections/ComparisonSection'
 import ContactsSection from '@/src/components/sections/ContactsSection'
@@ -36,7 +37,6 @@ import TextWithImageSection from '@/src/components/sections/TextWithImageSection
 import TootootEventsSection from '@/src/components/sections/TootootEventsSection'
 import VideosSection from '@/src/components/sections/VideosSection'
 import { SectionsFragment } from '@/src/services/graphql'
-import ColumnsListSection from '@/src/components/sections/ColumnsListSection'
 
 type SectionsProps = {
   sections: SectionsFragment[]
