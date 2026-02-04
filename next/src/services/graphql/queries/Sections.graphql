@@ -492,6 +492,12 @@ fragment NewsletterSection on ComponentSectionsNewsletter {
   instagramUrl
 }
 
+fragment AlertSection on ComponentSectionsAlert {
+  title
+  text
+  alertVariant
+}
+
 fragment Sections on PageSectionsDynamicZone {
   __typename
 
@@ -623,6 +629,10 @@ fragment Sections on PageSectionsDynamicZone {
 
   ... on ComponentSectionsNewsletter {
     ...NewsletterSection
+  }
+
+  ... on ComponentSectionsAlert {
+    ...AlertSection
   }
 
   # ComponentSectionsInbaLatestRelease has no attributes

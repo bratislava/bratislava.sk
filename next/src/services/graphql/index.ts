@@ -1413,6 +1413,30 @@ export type ComponentSectionsAccordionInput = {
   titleLevel?: InputMaybe<Enum_Componentsectionsaccordion_Titlelevel>
 }
 
+export type ComponentSectionsAlert = {
+  __typename?: 'ComponentSectionsAlert'
+  alertVariant?: Maybe<Enum_Componentsectionsalert_Alertvariant>
+  id: Scalars['ID']['output']
+  text?: Maybe<Scalars['String']['output']>
+  title?: Maybe<Scalars['String']['output']>
+}
+
+export type ComponentSectionsAlertFiltersInput = {
+  alertVariant?: InputMaybe<StringFilterInput>
+  and?: InputMaybe<Array<InputMaybe<ComponentSectionsAlertFiltersInput>>>
+  not?: InputMaybe<ComponentSectionsAlertFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<ComponentSectionsAlertFiltersInput>>>
+  text?: InputMaybe<StringFilterInput>
+  title?: InputMaybe<StringFilterInput>
+}
+
+export type ComponentSectionsAlertInput = {
+  alertVariant?: InputMaybe<Enum_Componentsectionsalert_Alertvariant>
+  id?: InputMaybe<Scalars['ID']['input']>
+  text?: InputMaybe<Scalars['String']['input']>
+  title?: InputMaybe<Scalars['String']['input']>
+}
+
 export type ComponentSectionsArticles = {
   __typename?: 'ComponentSectionsArticles'
   adminGroups: Array<Maybe<AdminGroup>>
@@ -3083,6 +3107,13 @@ export enum Enum_Componentsectionsaccordion_Titlelevel {
   H3 = 'h3',
 }
 
+export enum Enum_Componentsectionsalert_Alertvariant {
+  Error = 'error',
+  Info = 'info',
+  Success = 'success',
+  Warning = 'warning',
+}
+
 export enum Enum_Componentsectionsbanner_Contentposition {
   Left = 'left',
   Right = 'right',
@@ -3682,6 +3713,7 @@ export type GenericMorph =
   | ComponentMenuMenuLink
   | ComponentMenuMenuSection
   | ComponentSectionsAccordion
+  | ComponentSectionsAlert
   | ComponentSectionsArticles
   | ComponentSectionsBanner
   | ComponentSectionsColumnedText
@@ -5179,6 +5211,7 @@ export type PageRelationResponseCollection = {
 
 export type PageSectionsDynamicZone =
   | ComponentSectionsAccordion
+  | ComponentSectionsAlert
   | ComponentSectionsArticles
   | ComponentSectionsBanner
   | ComponentSectionsColumnedText
@@ -7375,6 +7408,7 @@ export type AllFilesQuery = {
             } | null> | null
           } | null> | null
         }
+      | { __typename?: 'ComponentSectionsAlert' }
       | { __typename?: 'ComponentSectionsArticles' }
       | {
           __typename?: 'ComponentSectionsBanner'
@@ -10233,6 +10267,12 @@ export type PageEntityFragment = {
         } | null> | null
       }
     | {
+        __typename: 'ComponentSectionsAlert'
+        title?: string | null
+        text?: string | null
+        alertVariant?: Enum_Componentsectionsalert_Alertvariant | null
+      }
+    | {
         __typename: 'ComponentSectionsArticles'
         title?: string | null
         text?: string | null
@@ -11425,6 +11465,12 @@ export type PageBySlugQuery = {
               }
             } | null> | null
           } | null> | null
+        }
+      | {
+          __typename: 'ComponentSectionsAlert'
+          title?: string | null
+          text?: string | null
+          alertVariant?: Enum_Componentsectionsalert_Alertvariant | null
         }
       | {
           __typename: 'ComponentSectionsArticles'
@@ -12648,6 +12694,12 @@ export type Dev_AllPagesQuery = {
               }
             } | null> | null
           } | null> | null
+        }
+      | {
+          __typename: 'ComponentSectionsAlert'
+          title?: string | null
+          text?: string | null
+          alertVariant?: Enum_Componentsectionsalert_Alertvariant | null
         }
       | {
           __typename: 'ComponentSectionsArticles'
@@ -15458,6 +15510,13 @@ export type NewsletterSectionFragment = {
   instagramUrl?: string | null
 }
 
+export type AlertSectionFragment = {
+  __typename?: 'ComponentSectionsAlert'
+  title?: string | null
+  text?: string | null
+  alertVariant?: Enum_Componentsectionsalert_Alertvariant | null
+}
+
 type Sections_ComponentSectionsAccordion_Fragment = {
   __typename: 'ComponentSectionsAccordion'
   title?: string | null
@@ -15502,6 +15561,13 @@ type Sections_ComponentSectionsAccordion_Fragment = {
       }
     } | null> | null
   } | null> | null
+}
+
+type Sections_ComponentSectionsAlert_Fragment = {
+  __typename: 'ComponentSectionsAlert'
+  title?: string | null
+  text?: string | null
+  alertVariant?: Enum_Componentsectionsalert_Alertvariant | null
 }
 
 type Sections_ComponentSectionsArticles_Fragment = {
@@ -16496,6 +16562,7 @@ type Sections_Error_Fragment = { __typename: 'Error' }
 
 export type SectionsFragment =
   | Sections_ComponentSectionsAccordion_Fragment
+  | Sections_ComponentSectionsAlert_Fragment
   | Sections_ComponentSectionsArticles_Fragment
   | Sections_ComponentSectionsBanner_Fragment
   | Sections_ComponentSectionsColumnedText_Fragment
@@ -17910,6 +17977,13 @@ export const NewsletterSectionFragmentDoc = gql`
     instagramUrl
   }
 `
+export const AlertSectionFragmentDoc = gql`
+  fragment AlertSection on ComponentSectionsAlert {
+    title
+    text
+    alertVariant
+  }
+`
 export const SectionsFragmentDoc = gql`
   fragment Sections on PageSectionsDynamicZone {
     __typename
@@ -18009,6 +18083,9 @@ export const SectionsFragmentDoc = gql`
     ... on ComponentSectionsNewsletter {
       ...NewsletterSection
     }
+    ... on ComponentSectionsAlert {
+      ...AlertSection
+    }
   }
   ${DividerSectionFragmentDoc}
   ${TextWithImageSectionFragmentDoc}
@@ -18042,6 +18119,7 @@ export const SectionsFragmentDoc = gql`
   ${StarzLandingPageSectionFragmentDoc}
   ${OpeningHoursSectionFragmentDoc}
   ${NewsletterSectionFragmentDoc}
+  ${AlertSectionFragmentDoc}
 `
 export const SidebarsFragmentDoc = gql`
   fragment Sidebars on PageSidebarDynamicZone {
