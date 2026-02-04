@@ -12,61 +12,30 @@ export const detectVideoPlatform = (url: string) => {
   return null
 }
 
-const parseVideoUrl = (value: string) => {
-  try {
-    return new URL(value)
-  } catch {
-    try {
-      return new URL(`https://${value}`)
-    } catch {
-      return null
-    }
-  }
-}
-
-const getYoutubeId = (url: string) => {
-  const parsedUrl = parseVideoUrl(url)
-  if (!parsedUrl) return null
-
-  const hostname = parsedUrl.hostname.replace(/^www\./, '')
-  if (hostname === 'youtu.be') {
-    return parsedUrl.pathname.split('/').filter(Boolean)[0] ?? null
-  }
-
-  if (!hostname.endsWith('youtube.com')) {
-    return null
-  }
-
-  const videoIdFromQuery = parsedUrl.searchParams.get('v')
-  if (videoIdFromQuery) return videoIdFromQuery
-
-  const pathSegments = parsedUrl.pathname.split('/').filter(Boolean)
-  const knownPrefixes = ['embed', 'v', 'e', 'shorts']
-  const prefixIndex = pathSegments.findIndex((segment) => knownPrefixes.includes(segment))
-
-  return prefixIndex !== -1 ? pathSegments[prefixIndex + 1] ?? null : null
-}
-
-const getVimeoId = (url: string) => {
-  const vimeoRegex = /vimeo\.com\/(?:.*\/)?(\d+)/
-  const vimeoMatch = url.match(vimeoRegex)
-
-  return vimeoMatch ? vimeoMatch[1] : null
-}
-
 // Based on AI suggestions
 export const getVideoId = (platform: string, url: string) => {
-  switch (platform) {
-    case 'youtube':
-      return getYoutubeId(url)
-    case 'vimeo':
-      return getVimeoId(url)
-    case 'facebook':
-      // Facebook videos have different URL patterns, we'll use the full URL
-      return url
-    default:
-      return null
+  if (platform === 'youtube') {
+    // eslint-disable-next-line sonarjs/regex-complexity
+    const youtubeRegex =
+      /(?:youtube\.com\/(?:[^/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[&?]v=)|youtu\.be\/)([^\s"&/?]{11})/
+    const youtubeMatch = url.match(youtubeRegex)
+
+    return youtubeMatch ? youtubeMatch[1] : null
   }
+
+  if (platform === 'vimeo') {
+    const vimeoRegex = /vimeo\.com\/(?:.*\/)?(\d+)/
+    const vimeoMatch = url.match(vimeoRegex)
+
+    return vimeoMatch ? vimeoMatch[1] : null
+  }
+
+  if (platform === 'facebook') {
+    // Facebook videos have different URL patterns, we'll use the full URL
+    return url
+  }
+
+  return null
 }
 
 export const getVideoIframeSrc = (url: string) => {
