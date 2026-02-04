@@ -21,6 +21,7 @@ type Page = {
   title: string
   locale?: string
   path?: string
+  componentData?: string
 }
 
 type Component = {
@@ -119,6 +120,22 @@ const PagesByComponent = () => {
     }
   }
 
+  const copyComponentDataToClipboard = async (componentData: string) => {
+    if (!componentData) return
+    try {
+      await navigator.clipboard.writeText(componentData)
+      toggleNotification({
+        type: 'success',
+        message: 'Component data copied to clipboard',
+      })
+    } catch {
+      toggleNotification({
+        type: 'warning',
+        message: 'Failed to copy to clipboard',
+      })
+    }
+  }
+
   const getContentManagerUrl = (page: Page) =>
     `/content-manager/collection-types/api::page.page/${page.documentId}`
 
@@ -167,6 +184,12 @@ const PagesByComponent = () => {
           }
           .pages-results-container th {
             padding: 8px 12px;
+          }
+          .pages-results-container .component-data-cell {
+            max-width: 120px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
           }
         `}
       </style>
@@ -287,7 +310,7 @@ const PagesByComponent = () => {
                   </Flex>
                 </Flex>
               </Flex>
-              <Table colCount={4} rowCount={pages.length} style={{ marginBottom: '12px' }}>
+              <Table colCount={5} rowCount={pages.length} style={{ marginBottom: '12px' }}>
                 <Thead>
                   <Tr>
                     <Th>
@@ -313,6 +336,9 @@ const PagesByComponent = () => {
                       }}
                     >
                       <Typography variant="sigma">Frontend Link</Typography>
+                    </Th>
+                    <Th style={{ width: '30px' }}>
+                      <Typography variant="sigma">Data</Typography>
                     </Th>
                   </Tr>
                 </Thead>
@@ -372,6 +398,32 @@ const PagesByComponent = () => {
                               {frontendLink.url}
                             </Typography>
                           </a>
+                        </Td>
+                        <Td
+                          className="component-data-cell"
+                          style={{
+                            width: '30px',
+                            maxWidth: '30px',
+                            cursor: pageItem.componentData ? 'pointer' : 'default',
+                          }}
+                          title={pageItem.componentData ? 'Click to copy' : ''}
+                          onClick={() =>
+                            pageItem.componentData &&
+                            copyComponentDataToClipboard(pageItem.componentData)
+                          }
+                          role={pageItem.componentData ? 'button' : undefined}
+                        >
+                          <Typography
+                            variant="omega"
+                            textColor="neutral600"
+                            style={{
+                              overflow: 'hidden',
+                              textOverflow: 'ellipsis',
+                              whiteSpace: 'nowrap',
+                            }}
+                          >
+                            {pageItem.componentData || '—'}
+                          </Typography>
                         </Td>
                       </Tr>
                     )
