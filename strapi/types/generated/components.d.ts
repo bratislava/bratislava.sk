@@ -62,6 +62,17 @@ export interface BlocksColumnsItem extends Struct.ComponentSchema {
   }
 }
 
+export interface BlocksColumnsListItem extends Struct.ComponentSchema {
+  collectionName: 'components_blocks_columns_list_items'
+  info: {
+    displayName: 'columns list item'
+  }
+  attributes: {
+    content: Schema.Attribute.Text
+    icon: Schema.Attribute.Media<'images'>
+  }
+}
+
 export interface BlocksCommonLink extends Struct.ComponentSchema {
   collectionName: 'components_blocks_common_links'
   info: {
@@ -624,6 +635,19 @@ export interface SectionsColumns extends Struct.ComponentSchema {
     > &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<'columnsSection.responsiveLayout.slider'>
+    text: Schema.Attribute.Text
+    title: Schema.Attribute.String
+  }
+}
+
+export interface SectionsColumnsList extends Struct.ComponentSchema {
+  collectionName: 'components_sections_columns_lists'
+  info: {
+    displayName: 'St\u013Apce so zoznamom'
+  }
+  attributes: {
+    leftColumn: Schema.Attribute.Component<'blocks.columns-list-item', true>
+    rightColumn: Schema.Attribute.Component<'blocks.columns-list-item', true>
     text: Schema.Attribute.Text
     title: Schema.Attribute.String
   }
@@ -1195,6 +1219,7 @@ declare module '@strapi/strapi' {
       'accordion-items.institution': AccordionItemsInstitution
       'blocks.card-link': BlocksCardLink
       'blocks.columns-item': BlocksColumnsItem
+      'blocks.columns-list-item': BlocksColumnsListItem
       'blocks.common-link': BlocksCommonLink
       'blocks.comparison-card': BlocksComparisonCard
       'blocks.comparison-item': BlocksComparisonItem
@@ -1230,6 +1255,7 @@ declare module '@strapi/strapi' {
       'sections.banner': SectionsBanner
       'sections.columned-text': SectionsColumnedText
       'sections.columns': SectionsColumns
+      'sections.columns-list': SectionsColumnsList
       'sections.comparison-section': SectionsComparisonSection
       'sections.contacts-section': SectionsContactsSection
       'sections.divider': SectionsDivider

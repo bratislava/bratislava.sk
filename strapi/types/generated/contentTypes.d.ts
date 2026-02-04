@@ -1289,6 +1289,7 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
         'sections.columned-text',
         'sections.starz-landing-page',
         'sections.columns',
+        'sections.columns-list',
         'sections.file-list',
         'sections.text-with-image',
         'sections.text-with-image-overlapped',

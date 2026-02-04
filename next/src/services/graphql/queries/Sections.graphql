@@ -492,6 +492,24 @@ fragment NewsletterSection on ComponentSectionsNewsletter {
   instagramUrl
 }
 
+fragment ColumnsListItem on ComponentBlocksColumnsListItem {
+  icon {
+    ...UploadImageEntity
+  }
+  content
+}
+
+fragment ColumnsListSection on ComponentSectionsColumnsList {
+  title
+  text
+  leftColumn {
+    ...ColumnsListItem
+  }
+  rightColumn {
+    ...ColumnsListItem
+  }
+}
+
 fragment ArticlesLandingPageSection on ComponentSectionsArticlesLandingPage {
   leftArticle {
     ...ArticleCardEntity
@@ -632,6 +650,10 @@ fragment Sections on PageSectionsDynamicZone {
 
   ... on ComponentSectionsNewsletter {
     ...NewsletterSection
+  }
+
+  ... on ComponentSectionsColumnsList {
+    ...ColumnsListSection
   }
 
   # ComponentSectionsInbaLatestRelease has no attributes

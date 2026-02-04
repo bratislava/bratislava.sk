@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_sections_columns_lists",
+  "info": {
+    "displayName": "Stĺpce so zoznamom"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "text": {
+      "type": "text"
+    },
+    "leftColumn": {
+      "type": "component",
+      "component": "blocks.columns-list-item",
+      "repeatable": true
+    },
+    "rightColumn": {
+      "type": "component",
+      "component": "blocks.columns-list-item",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}
