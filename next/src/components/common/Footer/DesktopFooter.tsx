@@ -43,7 +43,6 @@ const DesktopFooter = () => {
           <FooterContacts {...footer} />
           <HorizontalDivider className="col-span-2 lg:hidden" />
           {footer.columns?.filter(isDefined).map((column, index) => (
-            // eslint-disable-next-line react/no-array-index-key
             <div className="flex flex-col gap-3 lg:gap-4" key={index}>
               <Typography variant="h5" as="h2">
                 {column.title}

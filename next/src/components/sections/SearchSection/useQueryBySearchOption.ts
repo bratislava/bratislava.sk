@@ -62,7 +62,6 @@ export const useQueryBySearchOption = ({
 }: {
   optionKey: SearchOption['id']
   filters: SearchFilters
-  // eslint-disable-next-line sonarjs/cognitive-complexity
 }) => {
   const { t } = useTranslation()
   const locale = useLocale()

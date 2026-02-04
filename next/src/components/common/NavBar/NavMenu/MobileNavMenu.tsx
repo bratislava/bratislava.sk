@@ -62,7 +62,6 @@ const MobileNavMenu = () => {
       >
         <NavigationMenu.List className="flex flex-col gap-4">
           {menus.map((menu, index) => (
-            // eslint-disable-next-line react/no-array-index-key
             <MobileNavMenuItem key={index} menu={menu} />
           ))}
 
@@ -70,7 +69,12 @@ const MobileNavMenu = () => {
             <>
               <HorizontalDivider asListItem />
               <li className="my-1 flex justify-center md:justify-start">
-                <NavigationMenu.Link asChild onClick={() => setMobileMenuOpen(false)}>
+                <NavigationMenu.Link
+                  asChild
+                  onClick={() => {
+                    setMobileMenuOpen(false)
+                  }}
+                >
                   <Button
                     size="small"
                     variant="solid"
@@ -87,12 +91,16 @@ const MobileNavMenu = () => {
 
           {linksOnMobile?.map((link, linkIndex) => {
             return (
-              // eslint-disable-next-line react/no-array-index-key
               <li key={linkIndex} className="relative flex items-center gap-2">
                 <div aria-hidden>
                   <Pictogram iconName={link.icon} className="size-8" />
                 </div>
-                <NavigationMenu.Link asChild onClick={() => setMobileMenuOpen(false)}>
+                <NavigationMenu.Link
+                  asChild
+                  onClick={() => {
+                    setMobileMenuOpen(false)
+                  }}
+                >
                   <MLink variant="underlined" stretched {...getLinkProps(link)} />
                 </NavigationMenu.Link>
               </li>

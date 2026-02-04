@@ -57,7 +57,13 @@ const NotFoundPage = ({ general }: PageProps) => {
                   <Button variant="solid" hasLinkIcon={false} fullWidthMobile href="/">
                     {t('NotFound.toTheMainPage')}
                   </Button>
-                  <Button variant="outline" fullWidthMobile onPress={() => router.back()}>
+                  <Button
+                    variant="outline"
+                    fullWidthMobile
+                    onPress={() => {
+                      router.back()
+                    }}
+                  >
                     {t('NotFound.toThePreviousPage')}
                   </Button>
                 </div>

@@ -59,7 +59,9 @@ const AlertBanner = forwardRef<HTMLDivElement>((props, forwardedRef) => {
           className="h-fit shrink-0"
           icon={<CrossIcon />}
           aria-label={t('AlertBanner.aria.closeAlert')}
-          onPress={() => handleClose()}
+          onPress={() => {
+            handleClose()
+          }}
         />
       </div>
     </div>

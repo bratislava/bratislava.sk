@@ -38,7 +38,6 @@ const SectionHeader = ({
   excludeFromTableOfContents = false,
   showMoreLink,
   className,
-  // eslint-disable-next-line sonarjs/cognitive-complexity
 }: SectionHeaderProps) => {
   if (!title && !text && !showMoreLink) {
     return null

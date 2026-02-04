@@ -9,7 +9,7 @@ import NavMenu from './NavMenu/NavMenu'
 
 const NavBar = () => {
   const alertRef = useRef<HTMLDivElement>(null)
-  const { height } = useResizeObserver({ ref: alertRef })
+  const { height } = useResizeObserver({ ref: alertRef as React.RefObject<HTMLElement> })
 
   return (
     <>

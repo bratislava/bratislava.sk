@@ -32,7 +32,7 @@ const Checkbox = ({ children, value, ...restProps }: RACCheckboxProps) => {
           <>
             <div
               className={cn(
-                'flex size-6 shrink-0 items-center justify-center rounded-md border-[0.2rem] border-border-active-primary-default text-content-passive-inverted-primary',
+                'flex size-6 shrink-0 items-center justify-center rounded-md border-[2px] border-border-active-primary-default text-content-passive-inverted-primary',
                 {
                   'border-border-active-primary-hover': isHovered,
                   'bg-background-active-primary-default': isSelected,

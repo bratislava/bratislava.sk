@@ -26,7 +26,6 @@ const DocumentPageHeader = ({ document }: Props) => {
 
   const { title, files, updatedAt } = document
 
-  // eslint-disable-next-line unicorn/no-array-callback-reference
   const filteredFiles = files.filter(isDefined) ?? []
 
   const formattedUpdatedAt = formatDate(updatedAt)
@@ -57,7 +56,6 @@ const DocumentPageHeader = ({ document }: Props) => {
                 <Typography variant="h1">{title}</Typography>
                 <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:gap-3">
                   {metadata.map((item, index) => (
-                    // eslint-disable-next-line react/no-array-index-key
                     <Fragment key={index}>
                       {index > 0 ? (
                         <div

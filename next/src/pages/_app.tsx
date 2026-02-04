@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/inline-script-id */
 import '@/src/styles/globals.css'
 
 import { GoogleTagManager } from '@next/third-parties/google'
@@ -29,7 +28,6 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
     <>
       <Head>
         {/* https://nextjs.org/docs/pages/building-your-application/optimizing/fonts#apply-the-font-in-head */}
-        {/* eslint-disable-next-line react/no-unknown-property */}
         <style jsx global>{`
           body {
             font-family: ${inter.style.fontFamily};

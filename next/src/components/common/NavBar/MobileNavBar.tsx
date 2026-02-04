@@ -82,14 +82,18 @@ const MobileNavBar = ({ className }: MobileNavBarProps) => {
               <Divider />
               {isMobileMenuOpen ? (
                 <Button
-                  onPress={() => setMobileMenuOpen(false)}
+                  onPress={() => {
+                    setMobileMenuOpen(false)
+                  }}
                   className="-mr-4 p-4"
                   aria-label={t('MobileNavBar.closeMenu')}
                   icon={<CrossIcon />}
                 />
               ) : (
                 <Button
-                  onPress={() => setMobileMenuOpen(true)}
+                  onPress={() => {
+                    setMobileMenuOpen(true)
+                  }}
                   className="-mr-4 p-4"
                   aria-label={t('MobileNavBar.openMenu')}
                   data-cy="mobile-menu-button"

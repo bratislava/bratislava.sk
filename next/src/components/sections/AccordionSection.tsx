@@ -21,13 +21,7 @@ type AccordionSectionProps = {
  */
 
 const AccordionSection = ({ section }: AccordionSectionProps) => {
-  const {
-    title,
-    institutions,
-    flatText,
-    institutionsNarrow,
-    titleLevelAccordionSection: titleLevel,
-  } = section
+  const { title, institutions, flatText, titleLevelAccordionSection: titleLevel } = section
 
   // If no section title is provided, accordions act as h2, otherwise they accommodate to section titleLevel
   const accordionTitleLevel = title ? getCardTitleLevel(titleLevel) : 'h2'
@@ -40,7 +34,6 @@ const AccordionSection = ({ section }: AccordionSectionProps) => {
         <div className="flex flex-col gap-4">
           {groupByCategory(institutions?.filter(isPresent) ?? []).map((institution, index) => (
             <Accordion
-              // eslint-disable-next-line react/no-array-index-key
               key={`institution-${index}`}
               title={institution.category}
               accordionTitleLevel={accordionTitleLevel}
@@ -48,7 +41,6 @@ const AccordionSection = ({ section }: AccordionSectionProps) => {
               <div className="flex flex-col gap-4">
                 {institution.items.filter(isPresent).map((file, itemIndex) => (
                   <Institution
-                    // eslint-disable-next-line react/no-array-index-key
                     key={itemIndex}
                     title={file.title ?? undefined}
                     subtitle={file.subtitle ?? undefined}
@@ -65,14 +57,12 @@ const AccordionSection = ({ section }: AccordionSectionProps) => {
 
           {groupByCategory(flatText?.filter(isPresent) ?? []).map((text, index) => (
             <Accordion
-              // eslint-disable-next-line react/no-array-index-key
               key={`flatText-${index}`}
               title={text.category}
               accordionTitleLevel={accordionTitleLevel}
             >
               {text.items.filter(isPresent).map((item, itemIndex) => {
                 return (
-                  // eslint-disable-next-line react/no-array-index-key
                   <div className="flex flex-col gap-4" key={itemIndex}>
                     <Markdown content={item.content} variant="accordion" />
                     {item.fileList?.filter(isDefined).length ? (
@@ -91,29 +81,6 @@ const AccordionSection = ({ section }: AccordionSectionProps) => {
                   </div>
                 )
               })}
-            </Accordion>
-          ))}
-
-          {groupByCategory(institutionsNarrow?.filter(isPresent) ?? []).map((text, index) => (
-            // eslint-disable-next-line react/no-array-index-key
-            <Accordion
-              // eslint-disable-next-line react/no-array-index-key
-              key={`institutionsNarrow-${index}`}
-              title={text.category}
-              accordionTitleLevel={accordionTitleLevel}
-            >
-              <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
-                {text.items.filter(isPresent).map((file, fileIndex) => (
-                  <Institution
-                    // eslint-disable-next-line react/no-array-index-key
-                    key={fileIndex}
-                    title={file.title ?? undefined}
-                    subtitle={file.subtitle ?? undefined}
-                    url={file.url ?? undefined}
-                    urlLabel={file.urlLabel ?? undefined}
-                  />
-                ))}
-              </div>
             </Accordion>
           ))}
         </div>

@@ -22,7 +22,9 @@ const CopyToClipboardButton = ({ copyText, ariaLabel, children, className }: Pro
       variant="outline"
       startIcon={<CopyIcon />}
       aria-label={ariaLabel}
-      onPress={() => copy(copyText)}
+      onPress={() => {
+        void copy(copyText)
+      }}
       className={className}
     >
       {children}

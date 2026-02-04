@@ -9,7 +9,7 @@ type CloseIconProps = {
   onClick: MouseEventHandler<SVGSVGElement> | undefined
 }
 
-const CloseIcon = ({ className, solid = false, onClick, type = 'error' }: CloseIconProps) => {
+const CloseIcon = ({ className, solid = false, onClick, type }: CloseIconProps) => {
   const closeIconStyle = cn('cursor-pointer fill-current', className, {
     'text-white': solid,
     'text-negative-700': type === 'error' && !solid,

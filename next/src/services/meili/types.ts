@@ -15,9 +15,7 @@ import {
  *     article: {...}
  * }
  */
-export type SearchIndexWrapped<T extends string, K extends object> = {
-  [key in T]: K
-} & {
+export type SearchIndexWrapped<T extends string, K extends object> = Record<T, K> & {
   type: T
 }
 

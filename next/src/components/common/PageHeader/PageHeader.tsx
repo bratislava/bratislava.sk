@@ -82,7 +82,6 @@ const PageHeader = ({
               <div className="flex max-w-[640px] flex-col gap-2 md:flex-row lg:gap-3">
                 {headerLinks.map((button, index) => (
                   <Button
-                    // eslint-disable-next-line react/no-array-index-key
                     key={index}
                     variant={index === 0 ? 'solid' : 'outline'}
                     fullWidthMobile

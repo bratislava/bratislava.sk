@@ -21,9 +21,7 @@ export const SocialMediaButton = ({
   const openSharePage = () => {
     const W = 600
     const H = 400
-    // eslint-disable-next-line const-case/uppercase, no-restricted-globals
     const L = screen.width / 2 - W / 2
-    // eslint-disable-next-line const-case/uppercase, no-restricted-globals
     const T = screen.height / 2 - H / 2
 
     window.open(

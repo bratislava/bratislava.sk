@@ -75,7 +75,9 @@ const OfficialBoardAdditionalFilters = ({
       <SelectField
         label={t('OfficialBoard.category')}
         selectedKey={categoryId}
-        onSelectionChange={(selected) => setCategoryId(selected as string | null | 'all')}
+        onSelectionChange={(selected) => {
+          setCategoryId(selected as string | null | 'all')
+        }}
       >
         {/* We use .map instead of dynamic `items` to be able to show number of documents depending on publication state  */}
         {categorySelectOptions.map((item) => {
@@ -103,7 +105,9 @@ const OfficialBoardAdditionalFilters = ({
           label={t('OfficialBoard.publicationState')}
           items={publicationStateSelectOptions}
           selectedKey={publicationState as string}
-          onSelectionChange={(selected) => setPublicationState(selected as typeof publicationState)}
+          onSelectionChange={(selected) => {
+            setPublicationState(selected as typeof publicationState)
+          }}
         >
           {(item) => <SelectItem label={item.title} id={item.id as string} />}
         </SelectField>

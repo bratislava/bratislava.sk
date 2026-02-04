@@ -6,7 +6,8 @@ type ResponseData = {
   error?: string
 }
 
-const ECOMAIL_ADD_SUBSCRIBER_URL = 'https://api2.ecomailapp.cz/lists/47/subscribe'
+// Ecomail docs: https://ecomailczv2.docs.apiary.io/#reference/lists/list-subscribe/add-new-subscriber-to-list
+const ECOMAIL_ADD_SUBSCRIBER_URL = 'https://api2.ecomailapp.cz/lists/49/subscribe'
 
 /**
  * Based on City library: https://github.com/bratislava/mestskakniznica.sk/blob/master/next/pages/api/subscribe.ts
@@ -16,7 +17,9 @@ const Subscribe = async (req: NextApiRequest, res: NextApiResponse<ResponseData>
   const { email } = req.body
 
   if (!email) {
-    return res.status(400).json({ error: 'Newsletter subscription failed: Email is required' })
+    res.status(400).json({ error: 'Newsletter subscription failed: Email is required' })
+
+    return
   }
 
   try {
@@ -41,12 +44,12 @@ const Subscribe = async (req: NextApiRequest, res: NextApiResponse<ResponseData>
 
     // If the email is already subscribed, ecomail sends a successful response, so we don't handle this case differently
 
-    return res.status(201).json({ error: '' })
+    res.status(201).json({ error: '' })
   } catch (error: any) {
     console.log('Newsletter subscription error:')
     console.log(error.message ?? JSON.stringify(error))
 
-    return res.status(500).json({ error: error.message || error })
+    res.status(500).json({ error: error.message || error })
   }
 }
 

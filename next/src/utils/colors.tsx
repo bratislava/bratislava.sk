@@ -78,7 +78,6 @@ export const GlobalCategoryColorProvider = ({ color, category: categoryProp }: P
   const style = cssVariables.map(([key, value]) => `${key}: ${value};`).join('\n')
 
   return (
-    // eslint-disable-next-line react/no-unknown-property
     <style jsx global>
       {`
         :root {

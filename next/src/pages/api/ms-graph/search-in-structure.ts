@@ -25,11 +25,10 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<MSGraphFiltered
     res.status(200).json(users)
   } catch (error) {
     if (axios.isAxiosError(error)) {
-      // @ts-ignore
+      // @ts-expect-error - TODO type
       res.status(parseInt(error.code, 10)).json({ error: error.message })
     }
-    // TODO type
-    // @ts-ignore
+    // @ts-expect-error - TODO type
     res.status(500).json({ error: error.message })
   }
 }

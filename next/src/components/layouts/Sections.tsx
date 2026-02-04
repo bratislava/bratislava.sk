@@ -3,7 +3,6 @@ import * as React from 'react'
 import AccordionSection from '@/src/components/sections/AccordionSection'
 import ArticlesSection from '@/src/components/sections/ArticlesSection/ArticlesSection'
 import BannerSection from '@/src/components/sections/BannerSection'
-import CalculatorSection from '@/src/components/sections/CalculatorSection_Deprecated/CalculatorSection_Deprecated'
 import ColumnedTextSection from '@/src/components/sections/ColumnedTextSection'
 import ColumnsSection from '@/src/components/sections/ColumnsSection'
 import ComparisonSection from '@/src/components/sections/ComparisonSection'
@@ -70,9 +69,6 @@ const SectionContent = ({ section }: { section: SectionsFragment }) => {
 
     case 'ComponentSectionsAccordion':
       return <AccordionSection section={section} />
-
-    case 'ComponentSectionsCalculator':
-      return <CalculatorSection section={section} />
 
     case 'ComponentSectionsVideos':
       return <VideosSection section={section} />
@@ -158,7 +154,6 @@ const Sections = ({ sections }: SectionsProps) => {
   return (
     <>
       {sections.map((section, index) => (
-        // eslint-disable-next-line react/no-array-index-key
         <SectionContent key={index} section={section} />
       ))}
     </>

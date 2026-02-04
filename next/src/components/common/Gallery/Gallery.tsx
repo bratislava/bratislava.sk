@@ -1,7 +1,3 @@
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/interactive-supports-focus */
-
 import { Typography } from '@bratislava/component-library'
 import { useCallback, useState } from 'react'
 import { useOverlayTriggerState } from 'react-stately'
@@ -25,7 +21,7 @@ export type GalleryProps = {
   images: UploadImageEntityFragment[]
 }
 
-const Gallery = ({ images = [] }: GalleryProps) => {
+const Gallery = ({ images }: GalleryProps) => {
   const { t } = useTranslation()
 
   const { isMobile } = useTailwindBreakpointValue()
@@ -63,7 +59,9 @@ const Gallery = ({ images = [] }: GalleryProps) => {
           role="button"
           tabIndex={0}
           aria-label={t('Gallery.aria.openGallery')}
-          onKeyUp={onEnterOrSpaceKeyDown(() => openAtImageIndex(0))}
+          onKeyUp={onEnterOrSpaceKeyDown(() => {
+            openAtImageIndex(0)
+          })}
           className={cn('outline-primary cursor-default outline-offset-2 focus:outline-4')}
         >
           {smallImages.length > 0 && (
@@ -80,7 +78,9 @@ const Gallery = ({ images = [] }: GalleryProps) => {
 
                   return (
                     <div
-                      onClick={() => openAtImageIndex(index)}
+                      onClick={() => {
+                        openAtImageIndex(index)
+                      }}
                       key={image.documentId}
                       className={cn(
                         'relative aspect-square cursor-pointer overflow-hidden rounded-lg',
@@ -100,7 +100,9 @@ const Gallery = ({ images = [] }: GalleryProps) => {
               {/* more images button */}
               {moreImagesCount > 0 && (
                 <div
-                  onClick={() => openAtImageIndex(0)}
+                  onClick={() => {
+                    openAtImageIndex(0)
+                  }}
                   className="relative w-full cursor-pointer overflow-hidden rounded-lg border border-action-content-default pt-[100%]"
                 >
                   <div className="absolute top-0 flex size-full flex-col items-center justify-center gap-0.5 bg-white p-2 text-center">
@@ -118,7 +120,9 @@ const Gallery = ({ images = [] }: GalleryProps) => {
         </div>
       </div>
       <ImageLightBox
-        onClose={() => overlayState.close()}
+        onClose={() => {
+          overlayState.close()
+        }}
         isOpen={overlayState.isOpen}
         images={images}
         initialImageIndex={initialImageIndex}

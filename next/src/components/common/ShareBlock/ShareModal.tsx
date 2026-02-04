@@ -61,7 +61,9 @@ const ShareModal = ({ triggerButton }: ShareModalProps) => {
             <div className="flex flex-col gap-3 lg:flex-row lg:items-end">
               <Input
                 value={inputValue}
-                onChange={(e) => setInputValue(e.target.value)}
+                onChange={(e) => {
+                  setInputValue(e.target.value)
+                }}
                 className="grow"
                 label={t('ShareModal.copyLink')}
                 disabled

@@ -41,14 +41,7 @@ const NavBarHeader = ({ className }: NavBarProps) => {
             ?.filter(isDefined)
             .filter((link) => link.showOnDesktop)
             .map((link, linkIndex) => {
-              return (
-                <MLink
-                  // eslint-disable-next-line react/no-array-index-key
-                  key={linkIndex}
-                  variant="underlined-medium"
-                  {...getLinkProps(link)}
-                />
-              )
+              return <MLink key={linkIndex} variant="underlined-medium" {...getLinkProps(link)} />
             })}
 
           {accountLink ? (

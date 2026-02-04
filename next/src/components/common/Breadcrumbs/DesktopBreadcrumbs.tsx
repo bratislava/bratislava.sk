@@ -27,7 +27,6 @@ const DesktopBreadcrumbs = ({ breadcrumbs }: BreadcrumbsProps) => {
         const isLast = index === breadcrumbs.length - 1
 
         return (
-          // eslint-disable-next-line react/no-array-index-key
           <li className="flex gap-1 text-size-p-tiny font-medium" key={index}>
             <ChevronRightIcon className="size-5 shrink-0" aria-hidden />
             {breadcrumb.path && !isLast ? (

@@ -156,14 +156,6 @@ fragment LinksSection on ComponentSectionsLinks {
   titleLevelLinksSection: titleLevel
 }
 
-fragment ComponentAccordionItemsInstitutionNarrow on ComponentAccordionItemsInstitutionNarrow {
-  title
-  subtitle
-  category
-  url
-  urlLabel
-}
-
 fragment ComponentAccordionItemsFlatText on ComponentAccordionItemsFlatText {
   category
   content
@@ -196,16 +188,7 @@ fragment AccordionSection on ComponentSectionsAccordion {
   flatText(pagination: { limit: -1 }) {
     ...ComponentAccordionItemsFlatText
   }
-  institutionsNarrow(pagination: { limit: -1 }) {
-    ...ComponentAccordionItemsInstitutionNarrow
-  }
   titleLevelAccordionSection: titleLevel
-}
-
-fragment CalculatorSection on ComponentSectionsCalculator {
-  single_adult_value
-  another_adult_value
-  child_value
 }
 
 fragment VideoBlock on ComponentBlocksVideo {
@@ -554,10 +537,6 @@ fragment Sections on PageSectionsDynamicZone {
 
   ... on ComponentSectionsAccordion {
     ...AccordionSection
-  }
-
-  ... on ComponentSectionsCalculator {
-    ...CalculatorSection
   }
 
   ... on ComponentSectionsVideos {

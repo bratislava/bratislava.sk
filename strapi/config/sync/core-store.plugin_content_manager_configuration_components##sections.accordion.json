@@ -62,20 +62,6 @@
           "sortable": false
         }
       },
-      "institutionsNarrow": {
-        "edit": {
-          "label": "institutionsNarrow",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "institutionsNarrow",
-          "searchable": false,
-          "sortable": false
-        }
-      },
       "titleLevel": {
         "edit": {
           "label": "Úroveň nadpisu sekcie",
@@ -122,12 +108,6 @@
         [
           {
             "name": "flatText",
-            "size": 12
-          }
-        ],
-        [
-          {
-            "name": "institutionsNarrow",
             "size": 12
           }
         ],

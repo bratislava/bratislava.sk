@@ -38,7 +38,6 @@ const NavMenu = () => {
       <div className="relative z-30 mx-auto border-b px-4 lg:px-8">
         <NavigationMenu.List className="flex flex-wrap gap-4 py-4">
           {menus.map((menuItem, index) => (
-            // eslint-disable-next-line react/no-array-index-key
             <NavMenuItem key={index} menu={menuItem} />
           ))}
         </NavigationMenu.List>
@@ -47,7 +46,9 @@ const NavMenu = () => {
       {/* Viewport represents popup div with links that appears under menu button */}
       <NavigationMenu.Viewport
         // Together with onCLick in NavMenuContent, it closes the menu on click outside of container area
-        onClick={() => setMenuValue('')}
+        onClick={() => {
+          setMenuValue('')
+        }}
         className="absolute z-29 h-screen w-full"
       />
     </NavigationMenu.Root>

@@ -1,4 +1,4 @@
-import { motion, useReducedMotion, Variant } from 'framer-motion'
+import { Easing, motion, useReducedMotion, Variant } from 'framer-motion'
 import { ReactNode, useMemo, useRef } from 'react'
 import { useResizeDetector } from 'react-resize-detector'
 
@@ -6,7 +6,7 @@ import cn from '@/src/utils/cn'
 
 type AnimateHeightProps = {
   isVisible: boolean
-  ease?: string
+  ease?: Easing
   duration?: number
   children?: ReactNode
   openedVariant?: Variant
@@ -42,8 +42,9 @@ const AnimateHeight = ({
       initial={initialIsVisible.current ? 'opened' : 'closed'}
       animate={isVisible ? 'opened' : 'closed'}
       variants={{
-        opened: { ...openedVariant, height },
-        closed: { ...closedVariant, height: 0 },
+        // TODO when variant is a function this does not work as expected - variant is likely never function, if so rewrite that it's explicit
+        opened: { ...(typeof openedVariant === 'function' ? {} : openedVariant), height },
+        closed: { ...(typeof closedVariant === 'function' ? {} : closedVariant), height: 0 },
       }}
       inherit={false}
       transition={{

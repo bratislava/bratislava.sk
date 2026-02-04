@@ -46,7 +46,6 @@ const OpeningHoursSection = ({ section }: OpeningHoursSectionProps) => {
         <div className="flex flex-col divide-y divide-border-passive-primary rounded-lg border border-border-passive-primary px-4 py-2 text-content-passive-secondary lg:px-6">
           {filteredOpeningHoursItems.map((item, index) => {
             return (
-              // eslint-disable-next-line react/no-array-index-key
               <div key={index} className="flex flex-wrap justify-between gap-1 py-3.5 lg:py-4">
                 <Typography variant="p-small" className="font-semibold">
                   {item.label}

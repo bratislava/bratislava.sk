@@ -91,7 +91,6 @@ const DocumentPageContent = ({ document }: Props) => {
               <Typography variant="h2">{t('DocumentPageContent.detailsTitle')}</Typography>
               <div className="flex flex-col gap-4">
                 {detailItems.map(({ label, value }, index) => (
-                  // eslint-disable-next-line react/no-array-index-key
                   <div className="flex flex-col flex-wrap sm:flex-row sm:gap-x-6" key={index}>
                     <Typography className="basis-1/3">{`${label}:`}</Typography>
                     <Typography>{value}</Typography>

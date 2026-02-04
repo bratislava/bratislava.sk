@@ -35,7 +35,7 @@ export const getStaticPaths: GetStaticPaths<StaticParams> = async () => {
     .filter((inbaRelease) => inbaRelease?.slug)
     .map((inbaRelease) => ({
       params: {
-        // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion,@typescript-eslint/no-non-null-assertion
+        // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
         slug: inbaRelease!.slug!,
       },
     }))
