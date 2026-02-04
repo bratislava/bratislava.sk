@@ -529,6 +529,18 @@ export interface SectionsAccordion extends Struct.ComponentSchema {
   }
 }
 
+export interface SectionsAlert extends Struct.ComponentSchema {
+  collectionName: 'components_sections_alerts'
+  info: {
+    displayName: 'Upozornenie'
+  }
+  attributes: {
+    alertVariant: Schema.Attribute.Enumeration<['info', 'success', 'warning', 'error']>
+    text: Schema.Attribute.Text
+    title: Schema.Attribute.String
+  }
+}
+
 export interface SectionsArticles extends Struct.ComponentSchema {
   collectionName: 'components_sections_articles'
   info: {
@@ -1214,6 +1226,7 @@ declare module '@strapi/strapi' {
       'menu.menu-link': MenuMenuLink
       'menu.menu-section': MenuMenuSection
       'sections.accordion': SectionsAccordion
+      'sections.alert': SectionsAlert
       'sections.articles': SectionsArticles
       'sections.banner': SectionsBanner
       'sections.columned-text': SectionsColumnedText
