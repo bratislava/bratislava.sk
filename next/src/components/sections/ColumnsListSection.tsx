@@ -24,36 +24,31 @@ const ColumnsListSection = ({ section }: Props) => {
       <div className="flex flex-col gap-6 lg:gap-8">
         <SectionHeader title={title} text={text} />
 
-        <div className="grid gap-3 lg:grid-cols-2 lg:gap-8">
+        <div className="grid gap-4 lg:grid-cols-2 lg:gap-8">
           {[leftColumn, rightColumn]
             .filter((column) => column?.length)
             .map((column, columnIndex) => {
               return (
-                // eslint-disable-next-line react/no-array-index-key
                 <div key={columnIndex} className="flex flex-col gap-3 lg:gap-4">
                   {column
                     ?.map((columnItem, columnItemIndex) => {
                       if (!columnItem) {
                         return null
                       }
-
-                      const icon = columnItem.icon
-
                       return (
-                        // eslint-disable-next-line react/no-array-index-key
-                        <div key={columnItemIndex} className="flex gap-4">
-                          {icon ? (
+                        <div key={columnItemIndex} className="flex gap-1.5">
+                          {columnItem.icon ? (
                             <div className="relative size-6 shrink-0">
                               <StrapiImage
-                                image={icon}
+                                image={columnItem.icon}
                                 alt=""
                                 fill
-                                sizes={generateImageSizes({ default: '50vw', lg: '10vw' })}
+                                sizes={generateImageSizes({ default: '20vw', lg: '10vw' })}
                                 className="object-contain"
                               />
                             </div>
                           ) : null}
-                          <Markdown content={columnItem.content} />
+                          <Markdown content={columnItem.content} className="text-size-p-small" />
                         </div>
                       )
                     })
