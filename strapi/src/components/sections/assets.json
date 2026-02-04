@@ -1,0 +1,44 @@
+{
+  "collectionName": "components_sections_assets",
+  "info": {
+    "displayName": "Assets"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "default": "Dokumenty"
+    },
+    "text": {
+      "type": "text"
+    },
+    "showAll": {
+      "type": "boolean",
+      "default": false
+    },
+    "assets": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::asset.asset",
+      "conditions": {
+        "visible": {
+          "!=": [
+            {
+              "var": "showAll"
+            },
+            true
+          ]
+        }
+      }
+    },
+    "titleLevel": {
+      "type": "enumeration",
+      "default": "h2",
+      "enum": [
+        "h2",
+        "h3"
+      ]
+    }
+  },
+  "config": {}
+}

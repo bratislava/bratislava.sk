@@ -1,0 +1,144 @@
+{
+  "key": "plugin_content_manager_configuration_components::sections.assets",
+  "value": {
+    "settings": {
+      "bulkable": true,
+      "filterable": true,
+      "searchable": true,
+      "pageSize": 10,
+      "mainField": "title",
+      "defaultSortBy": "title",
+      "defaultSortOrder": "ASC"
+    },
+    "metadatas": {
+      "id": {
+        "edit": {},
+        "list": {
+          "label": "id",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "title": {
+        "edit": {
+          "label": "Nadpis",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "title",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "text": {
+        "edit": {
+          "label": "Text",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "text",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "showAll": {
+        "edit": {
+          "label": "Zobraziť všetky",
+          "description": "Ak je toto pole TRUE, zobrazia sa všetky Dokumenty spolu s vyhľadávaním. Ak je FALSE, zobrazia sa Dokumenty vybrané vo vedľajšom poli.",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "showAll",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "assets": {
+        "edit": {
+          "label": "Dokumenty",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "title"
+        },
+        "list": {
+          "label": "assets",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "titleLevel": {
+        "edit": {
+          "label": "Úroveň nadpisu sekcie",
+          "description": "Úroveň nadpisu meníme na h3 iba ak je to potrebné sémanticky. Nikdy ju nemeníme len kvôli vizuálnej veľkosti nadpisu.",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "titleLevel",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "documentId": {
+        "edit": {},
+        "list": {
+          "label": "documentId",
+          "searchable": true,
+          "sortable": true
+        }
+      }
+    },
+    "layouts": {
+      "edit": [
+        [
+          {
+            "name": "title",
+            "size": 12
+          },
+          {
+            "name": "text",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "showAll",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "assets",
+            "size": 12
+          },
+          {
+            "name": "titleLevel",
+            "size": 8
+          }
+        ]
+      ],
+      "list": [
+        "id",
+        "title",
+        "text",
+        "showAll"
+      ]
+    },
+    "uid": "sections.assets",
+    "isComponent": true
+  },
+  "type": "object",
+  "environment": null,
+  "tag": null
+}

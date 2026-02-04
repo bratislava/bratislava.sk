@@ -1,0 +1,48 @@
+{
+  "kind": "collectionType",
+  "collectionName": "assets",
+  "info": {
+    "singularName": "asset",
+    "pluralName": "assets",
+    "displayName": "Asset"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title",
+      "required": true
+    },
+    "files": {
+      "type": "media",
+      "multiple": true,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    },
+    "description": {
+      "type": "text"
+    },
+    "assetCategory": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::asset-category.asset-category",
+      "inversedBy": "assets"
+    },
+    "adminGroups": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::admin-group.admin-group",
+      "mappedBy": "assets"
+    }
+  }
+}
