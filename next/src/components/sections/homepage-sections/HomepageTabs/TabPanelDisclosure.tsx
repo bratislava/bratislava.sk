@@ -10,8 +10,8 @@ const TabPanelDisclosure = () => {
   const { t } = useTranslation()
 
   return (
-    <TabPanel id="Disclosure">
-      <CardBase className="mx-auto mt-8 mb-16 flex flex-col gap-1 rounded-xl bg-background-passive-base px-4 py-8 text-center lg:w-fit lg:gap-4 lg:px-24">
+    <TabPanel id="Disclosure" className="flex flex-col gap-14">
+      <CardBase className="flex flex-col gap-1 self-center rounded-xl bg-background-passive-base px-4 py-8 text-center lg:w-fit lg:gap-4 lg:px-24">
         <Typography variant="p-large">{t('HomepageTabs.allInformationOnSite')}</Typography>
 
         <MLink
@@ -20,7 +20,6 @@ const TabPanelDisclosure = () => {
           href="https://zverejnovanie.bratislava.sk"
           stretched
         >
-          {/* eslint-disable-next-line i18next/no-literal-string */}
           <Typography variant="p-large">zverejnovanie.bratislava.sk</Typography>
         </MLink>
       </CardBase>
