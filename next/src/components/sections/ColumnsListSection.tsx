@@ -29,7 +29,7 @@ const ColumnsListSection = ({ section }: Props) => {
             .filter((column) => column?.length)
             .map((column, columnIndex) => {
               return (
-                <div key={columnIndex} className="flex flex-col gap-3 lg:gap-4">
+                <div key={columnIndex} className="flex flex-col gap-4">
                   {column
                     ?.map((columnItem, columnItemIndex) => {
                       if (!columnItem) {
