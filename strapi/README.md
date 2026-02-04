@@ -67,4 +67,4 @@ npx patch-package @strapi/typescript-utils
 
 ## Pages by Component
 
-We add a custom admin page that lists which pages use which section components. This feature uses the custom `pages-by-component` api.
+We add a custom admin page `PagesByComponent.tsx` that lists which pages use which section components. This feature uses a custom api route defined in `api/pages-by-component`.
