@@ -1,12 +1,12 @@
 import React from 'react'
 
+import StrapiImage from '@/src/components/common/Image/StrapiImage'
+import Markdown from '@/src/components/formatting/Markdown/Markdown'
 import SectionContainer from '@/src/components/layouts/SectionContainer'
 import SectionHeader from '@/src/components/layouts/SectionHeader'
 import { ColumnsListSectionFragment } from '@/src/services/graphql'
 import { generateImageSizes } from '@/src/utils/generateImageSizes'
 import { isDefined } from '@/src/utils/isDefined'
-import StrapiImage from '@/src/components/common/Image/StrapiImage'
-import Markdown from '@/src/components/formatting/Markdown/Markdown'
 
 type Props = {
   section: ColumnsListSectionFragment
@@ -35,6 +35,7 @@ const ColumnsListSection = ({ section }: Props) => {
                       if (!columnItem) {
                         return null
                       }
+
                       return (
                         <div key={columnItemIndex} className="flex gap-1.5">
                           {columnItem.icon ? (
