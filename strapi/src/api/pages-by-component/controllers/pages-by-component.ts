@@ -29,7 +29,13 @@ export default {
 
     const allPages = await strapi.documents('api::page.page').findMany({
       locale: selectedLocale,
-      populate: { sections: true },
+      populate: {
+        sections: {
+          on: {
+            [component]: { populate: '*' },
+          },
+        },
+      },
     })
 
     const filteredPages = allPages
@@ -45,12 +51,23 @@ export default {
       })
       .map((pageItem) => {
         const slug = 'slug' in pageItem && typeof pageItem.slug === 'string' ? pageItem.slug : ''
+        const sections = 'sections' in pageItem && Array.isArray(pageItem.sections) ? pageItem.sections : []
+        const matchingSections = sections.filter(
+          (section) =>
+            section &&
+            typeof section === 'object' &&
+            '__component' in section &&
+            section.__component === component
+        )
+        const componentDataJson =
+          matchingSections.length > 0 ? JSON.stringify(matchingSections) : ''
         return {
           id: pageItem.id,
           documentId: pageItem.documentId,
           title: pageItem.title || 'Untitled',
           locale: pageItem.locale,
           path: slug ? `/${slug}` : '',
+          componentData: componentDataJson,
         }
       })
 
