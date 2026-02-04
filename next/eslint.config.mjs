@@ -44,7 +44,6 @@ export default [
       'react-hooks/set-state-in-effect': 'warn', // 3 violations
       'react/prop-types': 'warn', // 3 violations
       '@typescript-eslint/no-empty-object-type': 'warn', // 2 violations
-      '@typescript-eslint/no-unnecessary-type-conversion': 'warn', // 1 violation
       'jsx-a11y/interactive-supports-focus': 'warn', // 1 violation
       'jsx-a11y/no-noninteractive-element-interactions': 'warn', // 1 violation
       'jsx-a11y/no-noninteractive-tabindex': 'warn', // 1 violation

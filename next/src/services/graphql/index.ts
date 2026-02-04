@@ -1527,6 +1527,27 @@ export type ComponentSectionsArticlesInput = {
   title?: InputMaybe<Scalars['String']['input']>
 }
 
+export type ComponentSectionsArticlesLandingPage = {
+  __typename?: 'ComponentSectionsArticlesLandingPage'
+  id: Scalars['ID']['output']
+  leftArticle?: Maybe<Article>
+  newsPageLink?: Maybe<ComponentBlocksCommonLink>
+}
+
+export type ComponentSectionsArticlesLandingPageFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentSectionsArticlesLandingPageFiltersInput>>>
+  leftArticle?: InputMaybe<ArticleFiltersInput>
+  newsPageLink?: InputMaybe<ComponentBlocksCommonLinkFiltersInput>
+  not?: InputMaybe<ComponentSectionsArticlesLandingPageFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<ComponentSectionsArticlesLandingPageFiltersInput>>>
+}
+
+export type ComponentSectionsArticlesLandingPageInput = {
+  id?: InputMaybe<Scalars['ID']['input']>
+  leftArticle?: InputMaybe<Scalars['ID']['input']>
+  newsPageLink?: InputMaybe<ComponentBlocksCommonLinkInput>
+}
+
 export type ComponentSectionsBanner = {
   __typename?: 'ComponentSectionsBanner'
   content?: Maybe<Scalars['String']['output']>
@@ -3743,6 +3764,7 @@ export type GenericMorph =
   | ComponentMenuMenuSection
   | ComponentSectionsAccordion
   | ComponentSectionsArticles
+  | ComponentSectionsArticlesLandingPage
   | ComponentSectionsBanner
   | ComponentSectionsColumnedText
   | ComponentSectionsColumns
@@ -5241,6 +5263,7 @@ export type PageRelationResponseCollection = {
 export type PageSectionsDynamicZone =
   | ComponentSectionsAccordion
   | ComponentSectionsArticles
+  | ComponentSectionsArticlesLandingPage
   | ComponentSectionsBanner
   | ComponentSectionsColumnedText
   | ComponentSectionsColumns
@@ -7438,6 +7461,7 @@ export type AllFilesQuery = {
           } | null> | null
         }
       | { __typename?: 'ComponentSectionsArticles' }
+      | { __typename?: 'ComponentSectionsArticlesLandingPage' }
       | {
           __typename?: 'ComponentSectionsBanner'
           media: { __typename?: 'UploadFile'; documentId: string }
@@ -10390,6 +10414,66 @@ export type PageEntityFragment = {
         } | null
       }
     | {
+        __typename: 'ComponentSectionsArticlesLandingPage'
+        leftArticle?: {
+          __typename: 'Article'
+          perex?: string | null
+          addedAt: any
+          documentId: string
+          slug: string
+          title: string
+          locale?: string | null
+          coverMedia?: {
+            __typename?: 'UploadFile'
+            documentId: string
+            url: string
+            width?: number | null
+            height?: number | null
+            caption?: string | null
+            alternativeText?: string | null
+            name: string
+          } | null
+          articleCategory?: {
+            __typename?: 'ArticleCategory'
+            documentId: string
+            title: string
+            slug: string
+          } | null
+          tags: Array<{
+            __typename?: 'Tag'
+            documentId: string
+            title: string
+            slug: string
+            pageCategory?: {
+              __typename?: 'PageCategory'
+              documentId: string
+              title?: string | null
+              color?: Enum_Pagecategory_Color | null
+            } | null
+          } | null>
+        } | null
+        newsPageLink?: {
+          __typename?: 'ComponentBlocksCommonLink'
+          label?: string | null
+          url?: string | null
+          analyticsId?: string | null
+          page?: {
+            __typename?: 'Page'
+            documentId: string
+            slug?: string | null
+            title: string
+            locale?: string | null
+          } | null
+          article?: {
+            __typename: 'Article'
+            documentId: string
+            slug: string
+            title: string
+            locale?: string | null
+          } | null
+        } | null
+      }
+    | {
         __typename: 'ComponentSectionsBanner'
         content?: string | null
         contentPosition: Enum_Componentsectionsbanner_Contentposition
@@ -11596,6 +11680,66 @@ export type PageBySlugQuery = {
             adminGroupId?: string | null
           } | null>
           showMoreLink?: {
+            __typename?: 'ComponentBlocksCommonLink'
+            label?: string | null
+            url?: string | null
+            analyticsId?: string | null
+            page?: {
+              __typename?: 'Page'
+              documentId: string
+              slug?: string | null
+              title: string
+              locale?: string | null
+            } | null
+            article?: {
+              __typename: 'Article'
+              documentId: string
+              slug: string
+              title: string
+              locale?: string | null
+            } | null
+          } | null
+        }
+      | {
+          __typename: 'ComponentSectionsArticlesLandingPage'
+          leftArticle?: {
+            __typename: 'Article'
+            perex?: string | null
+            addedAt: any
+            documentId: string
+            slug: string
+            title: string
+            locale?: string | null
+            coverMedia?: {
+              __typename?: 'UploadFile'
+              documentId: string
+              url: string
+              width?: number | null
+              height?: number | null
+              caption?: string | null
+              alternativeText?: string | null
+              name: string
+            } | null
+            articleCategory?: {
+              __typename?: 'ArticleCategory'
+              documentId: string
+              title: string
+              slug: string
+            } | null
+            tags: Array<{
+              __typename?: 'Tag'
+              documentId: string
+              title: string
+              slug: string
+              pageCategory?: {
+                __typename?: 'PageCategory'
+                documentId: string
+                title?: string | null
+                color?: Enum_Pagecategory_Color | null
+              } | null
+            } | null>
+          } | null
+          newsPageLink?: {
             __typename?: 'ComponentBlocksCommonLink'
             label?: string | null
             url?: string | null
@@ -12852,6 +12996,66 @@ export type Dev_AllPagesQuery = {
             adminGroupId?: string | null
           } | null>
           showMoreLink?: {
+            __typename?: 'ComponentBlocksCommonLink'
+            label?: string | null
+            url?: string | null
+            analyticsId?: string | null
+            page?: {
+              __typename?: 'Page'
+              documentId: string
+              slug?: string | null
+              title: string
+              locale?: string | null
+            } | null
+            article?: {
+              __typename: 'Article'
+              documentId: string
+              slug: string
+              title: string
+              locale?: string | null
+            } | null
+          } | null
+        }
+      | {
+          __typename: 'ComponentSectionsArticlesLandingPage'
+          leftArticle?: {
+            __typename: 'Article'
+            perex?: string | null
+            addedAt: any
+            documentId: string
+            slug: string
+            title: string
+            locale?: string | null
+            coverMedia?: {
+              __typename?: 'UploadFile'
+              documentId: string
+              url: string
+              width?: number | null
+              height?: number | null
+              caption?: string | null
+              alternativeText?: string | null
+              name: string
+            } | null
+            articleCategory?: {
+              __typename?: 'ArticleCategory'
+              documentId: string
+              title: string
+              slug: string
+            } | null
+            tags: Array<{
+              __typename?: 'Tag'
+              documentId: string
+              title: string
+              slug: string
+              pageCategory?: {
+                __typename?: 'PageCategory'
+                documentId: string
+                title?: string | null
+                color?: Enum_Pagecategory_Color | null
+              } | null
+            } | null>
+          } | null
+          newsPageLink?: {
             __typename?: 'ComponentBlocksCommonLink'
             label?: string | null
             url?: string | null
@@ -14442,6 +14646,67 @@ export type GallerySectionFragment = {
   } | null>
 }
 
+export type ArticlesLandingPageSectionFragment = {
+  __typename?: 'ComponentSectionsArticlesLandingPage'
+  leftArticle?: {
+    __typename: 'Article'
+    perex?: string | null
+    addedAt: any
+    documentId: string
+    slug: string
+    title: string
+    locale?: string | null
+    coverMedia?: {
+      __typename?: 'UploadFile'
+      documentId: string
+      url: string
+      width?: number | null
+      height?: number | null
+      caption?: string | null
+      alternativeText?: string | null
+      name: string
+    } | null
+    articleCategory?: {
+      __typename?: 'ArticleCategory'
+      documentId: string
+      title: string
+      slug: string
+    } | null
+    tags: Array<{
+      __typename?: 'Tag'
+      documentId: string
+      title: string
+      slug: string
+      pageCategory?: {
+        __typename?: 'PageCategory'
+        documentId: string
+        title?: string | null
+        color?: Enum_Pagecategory_Color | null
+      } | null
+    } | null>
+  } | null
+  newsPageLink?: {
+    __typename?: 'ComponentBlocksCommonLink'
+    label?: string | null
+    url?: string | null
+    analyticsId?: string | null
+    page?: {
+      __typename?: 'Page'
+      documentId: string
+      slug?: string | null
+      title: string
+      locale?: string | null
+    } | null
+    article?: {
+      __typename: 'Article'
+      documentId: string
+      slug: string
+      title: string
+      locale?: string | null
+    } | null
+  } | null
+}
+
 export type ArticlesSectionFragment = {
   __typename?: 'ComponentSectionsArticles'
   title?: string | null
@@ -15810,6 +16075,67 @@ type Sections_ComponentSectionsArticles_Fragment = {
   } | null
 }
 
+type Sections_ComponentSectionsArticlesLandingPage_Fragment = {
+  __typename: 'ComponentSectionsArticlesLandingPage'
+  leftArticle?: {
+    __typename: 'Article'
+    perex?: string | null
+    addedAt: any
+    documentId: string
+    slug: string
+    title: string
+    locale?: string | null
+    coverMedia?: {
+      __typename?: 'UploadFile'
+      documentId: string
+      url: string
+      width?: number | null
+      height?: number | null
+      caption?: string | null
+      alternativeText?: string | null
+      name: string
+    } | null
+    articleCategory?: {
+      __typename?: 'ArticleCategory'
+      documentId: string
+      title: string
+      slug: string
+    } | null
+    tags: Array<{
+      __typename?: 'Tag'
+      documentId: string
+      title: string
+      slug: string
+      pageCategory?: {
+        __typename?: 'PageCategory'
+        documentId: string
+        title?: string | null
+        color?: Enum_Pagecategory_Color | null
+      } | null
+    } | null>
+  } | null
+  newsPageLink?: {
+    __typename?: 'ComponentBlocksCommonLink'
+    label?: string | null
+    url?: string | null
+    analyticsId?: string | null
+    page?: {
+      __typename?: 'Page'
+      documentId: string
+      slug?: string | null
+      title: string
+      locale?: string | null
+    } | null
+    article?: {
+      __typename: 'Article'
+      documentId: string
+      slug: string
+      title: string
+      locale?: string | null
+    } | null
+  } | null
+}
+
 type Sections_ComponentSectionsBanner_Fragment = {
   __typename: 'ComponentSectionsBanner'
   content?: string | null
@@ -16742,6 +17068,7 @@ type Sections_Error_Fragment = { __typename: 'Error' }
 export type SectionsFragment =
   | Sections_ComponentSectionsAccordion_Fragment
   | Sections_ComponentSectionsArticles_Fragment
+  | Sections_ComponentSectionsArticlesLandingPage_Fragment
   | Sections_ComponentSectionsBanner_Fragment
   | Sections_ComponentSectionsColumnedText_Fragment
   | Sections_ComponentSectionsColumns_Fragment
@@ -17468,6 +17795,18 @@ export const SubnavigationSectionFragmentDoc = gql`
   }
   ${SubnavigationLinkFragmentDoc}
 `
+export const ArticlesLandingPageSectionFragmentDoc = gql`
+  fragment ArticlesLandingPageSection on ComponentSectionsArticlesLandingPage {
+    leftArticle {
+      ...ArticleCardEntity
+    }
+    newsPageLink {
+      ...CommonLink
+    }
+  }
+  ${ArticleCardEntityFragmentDoc}
+  ${CommonLinkFragmentDoc}
+`
 export const DividerSectionFragmentDoc = gql`
   fragment DividerSection on ComponentSectionsDivider {
     style
@@ -18181,6 +18520,9 @@ export const ColumnsListSectionFragmentDoc = gql`
 export const SectionsFragmentDoc = gql`
   fragment Sections on PageSectionsDynamicZone {
     __typename
+    ... on ComponentSectionsArticlesLandingPage {
+      ...ArticlesLandingPageSection
+    }
     ... on ComponentSectionsDivider {
       ...DividerSection
     }
@@ -18281,6 +18623,7 @@ export const SectionsFragmentDoc = gql`
       ...ColumnsListSection
     }
   }
+  ${ArticlesLandingPageSectionFragmentDoc}
   ${DividerSectionFragmentDoc}
   ${TextWithImageSectionFragmentDoc}
   ${TextWithImageOverlappedSectionFragmentDoc}

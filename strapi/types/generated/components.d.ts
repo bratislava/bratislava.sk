@@ -562,6 +562,17 @@ export interface SectionsArticles extends Struct.ComponentSchema {
   }
 }
 
+export interface SectionsArticlesLandingPage extends Struct.ComponentSchema {
+  collectionName: 'components_sections_articles_landing_pages'
+  info: {
+    displayName: '\u010Cl\u00E1nky Landing Page'
+  }
+  attributes: {
+    leftArticle: Schema.Attribute.Relation<'oneToOne', 'api::article.article'>
+    newsPageLink: Schema.Attribute.Component<'blocks.common-link', false>
+  }
+}
+
 export interface SectionsBanner extends Struct.ComponentSchema {
   collectionName: 'components_sections_banners'
   info: {
@@ -1240,6 +1251,7 @@ declare module '@strapi/strapi' {
       'menu.menu-section': MenuMenuSection
       'sections.accordion': SectionsAccordion
       'sections.articles': SectionsArticles
+      'sections.articles-landing-page': SectionsArticlesLandingPage
       'sections.banner': SectionsBanner
       'sections.columned-text': SectionsColumnedText
       'sections.columns': SectionsColumns

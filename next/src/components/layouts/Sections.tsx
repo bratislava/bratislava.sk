@@ -1,6 +1,7 @@
 import * as React from 'react'
 
 import AccordionSection from '@/src/components/sections/AccordionSection'
+import ArticlesLandingPageSection from '@/src/components/sections/ArticlesLandingPageSection'
 import ArticlesSection from '@/src/components/sections/ArticlesSection/ArticlesSection'
 import BannerSection from '@/src/components/sections/BannerSection'
 import ColumnedTextSection from '@/src/components/sections/ColumnedTextSection'
@@ -148,6 +149,9 @@ const SectionContent = ({ section }: { section: SectionsFragment }) => {
 
     case 'ComponentSectionsColumnsList':
       return <ColumnsListSection section={section} />
+
+    case 'ComponentSectionsArticlesLandingPage':
+      return <ArticlesLandingPageSection section={section} />
 
     default:
       return null
