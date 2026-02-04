@@ -7602,6 +7602,91 @@ export type Dev_AllArticlesQuery = {
   } | null>
 }
 
+export type AssetCategoryEntityFragment = {
+  __typename?: 'AssetCategory'
+  documentId: string
+  title: string
+  slug: string
+}
+
+export type AssetSlugEntityFragment = {
+  __typename: 'Asset'
+  documentId: string
+  slug: string
+  title: string
+}
+
+export type AssetEntityFragment = {
+  __typename: 'Asset'
+  publishedAt?: any | null
+  updatedAt?: any | null
+  description?: string | null
+  documentId: string
+  slug: string
+  title: string
+  assetCategory?: {
+    __typename?: 'AssetCategory'
+    documentId: string
+    title: string
+    slug: string
+  } | null
+  files: Array<{
+    __typename?: 'UploadFile'
+    documentId: string
+    url: string
+    name: string
+    ext?: string | null
+    size: number
+    createdAt?: any | null
+    updatedAt?: any | null
+  } | null>
+}
+
+export type AssetBySlugQueryVariables = Exact<{
+  slug: Scalars['String']['input']
+}>
+
+export type AssetBySlugQuery = {
+  __typename?: 'Query'
+  assets: Array<{
+    __typename: 'Asset'
+    publishedAt?: any | null
+    updatedAt?: any | null
+    description?: string | null
+    documentId: string
+    slug: string
+    title: string
+    assetCategory?: {
+      __typename?: 'AssetCategory'
+      documentId: string
+      title: string
+      slug: string
+    } | null
+    files: Array<{
+      __typename?: 'UploadFile'
+      documentId: string
+      url: string
+      name: string
+      ext?: string | null
+      size: number
+      createdAt?: any | null
+      updatedAt?: any | null
+    } | null>
+  } | null>
+}
+
+export type AssetCategoriesQueryVariables = Exact<{ [key: string]: never }>
+
+export type AssetCategoriesQuery = {
+  __typename?: 'Query'
+  assetCategories: Array<{
+    __typename?: 'AssetCategory'
+    documentId: string
+    title: string
+    slug: string
+  } | null>
+}
+
 export type DocumentCategoryEntityFragment = {
   __typename?: 'DocumentCategory'
   documentId: string
@@ -10715,7 +10800,6 @@ export type PageEntityFragment = {
           } | null
         } | null
       }
-    | { __typename: 'ComponentSectionsAssets' }
     | {
         __typename: 'ComponentSectionsArticlesLandingPage'
         leftArticle?: {
@@ -10776,6 +10860,7 @@ export type PageEntityFragment = {
           } | null
         } | null
       }
+    | { __typename: 'ComponentSectionsAssets' }
     | {
         __typename: 'ComponentSectionsBanner'
         content?: string | null
@@ -14951,67 +15036,6 @@ export type GallerySectionFragment = {
   } | null>
 }
 
-export type ArticlesLandingPageSectionFragment = {
-  __typename?: 'ComponentSectionsArticlesLandingPage'
-  leftArticle?: {
-    __typename: 'Article'
-    perex?: string | null
-    addedAt: any
-    documentId: string
-    slug: string
-    title: string
-    locale?: string | null
-    coverMedia?: {
-      __typename?: 'UploadFile'
-      documentId: string
-      url: string
-      width?: number | null
-      height?: number | null
-      caption?: string | null
-      alternativeText?: string | null
-      name: string
-    } | null
-    articleCategory?: {
-      __typename?: 'ArticleCategory'
-      documentId: string
-      title: string
-      slug: string
-    } | null
-    tags: Array<{
-      __typename?: 'Tag'
-      documentId: string
-      title: string
-      slug: string
-      pageCategory?: {
-        __typename?: 'PageCategory'
-        documentId: string
-        title?: string | null
-        color?: Enum_Pagecategory_Color | null
-      } | null
-    } | null>
-  } | null
-  newsPageLink?: {
-    __typename?: 'ComponentBlocksCommonLink'
-    label?: string | null
-    url?: string | null
-    analyticsId?: string | null
-    page?: {
-      __typename?: 'Page'
-      documentId: string
-      slug?: string | null
-      title: string
-      locale?: string | null
-    } | null
-    article?: {
-      __typename: 'Article'
-      documentId: string
-      slug: string
-      title: string
-      locale?: string | null
-    } | null
-  } | null
-}
-
 export type ArticlesSectionFragment = {
   __typename?: 'ComponentSectionsArticles'
   title?: string | null
@@ -16237,6 +16261,67 @@ export type ColumnsListSectionFragment = {
       name: string
     } | null
   } | null> | null
+}
+
+export type ArticlesLandingPageSectionFragment = {
+  __typename?: 'ComponentSectionsArticlesLandingPage'
+  leftArticle?: {
+    __typename: 'Article'
+    perex?: string | null
+    addedAt: any
+    documentId: string
+    slug: string
+    title: string
+    locale?: string | null
+    coverMedia?: {
+      __typename?: 'UploadFile'
+      documentId: string
+      url: string
+      width?: number | null
+      height?: number | null
+      caption?: string | null
+      alternativeText?: string | null
+      name: string
+    } | null
+    articleCategory?: {
+      __typename?: 'ArticleCategory'
+      documentId: string
+      title: string
+      slug: string
+    } | null
+    tags: Array<{
+      __typename?: 'Tag'
+      documentId: string
+      title: string
+      slug: string
+      pageCategory?: {
+        __typename?: 'PageCategory'
+        documentId: string
+        title?: string | null
+        color?: Enum_Pagecategory_Color | null
+      } | null
+    } | null>
+  } | null
+  newsPageLink?: {
+    __typename?: 'ComponentBlocksCommonLink'
+    label?: string | null
+    url?: string | null
+    analyticsId?: string | null
+    page?: {
+      __typename?: 'Page'
+      documentId: string
+      slug?: string | null
+      title: string
+      locale?: string | null
+    } | null
+    article?: {
+      __typename: 'Article'
+      documentId: string
+      slug: string
+      title: string
+      locale?: string | null
+    } | null
+  } | null
 }
 
 type Sections_ComponentSectionsAccordion_Fragment = {
@@ -17650,6 +17735,38 @@ export const ArticleEntityFragmentDoc = gql`
   ${InbaReleaseCardEntityFragmentDoc}
   ${AdminGroupSlugEntityFragmentDoc}
 `
+export const AssetSlugEntityFragmentDoc = gql`
+  fragment AssetSlugEntity on Asset {
+    __typename
+    documentId
+    slug
+    title
+  }
+`
+export const AssetCategoryEntityFragmentDoc = gql`
+  fragment AssetCategoryEntity on AssetCategory {
+    documentId
+    title
+    slug
+  }
+`
+export const AssetEntityFragmentDoc = gql`
+  fragment AssetEntity on Asset {
+    ...AssetSlugEntity
+    publishedAt
+    updatedAt
+    assetCategory {
+      ...AssetCategoryEntity
+    }
+    description
+    files {
+      ...UploadFileEntity
+    }
+  }
+  ${AssetSlugEntityFragmentDoc}
+  ${AssetCategoryEntityFragmentDoc}
+  ${UploadFileEntityFragmentDoc}
+`
 export const UploadFileFragmentDoc = gql`
   fragment UploadFile on UploadFile {
     documentId
@@ -18102,18 +18219,6 @@ export const SubnavigationSectionFragmentDoc = gql`
     }
   }
   ${SubnavigationLinkFragmentDoc}
-`
-export const ArticlesLandingPageSectionFragmentDoc = gql`
-  fragment ArticlesLandingPageSection on ComponentSectionsArticlesLandingPage {
-    leftArticle {
-      ...ArticleCardEntity
-    }
-    newsPageLink {
-      ...CommonLink
-    }
-  }
-  ${ArticleCardEntityFragmentDoc}
-  ${CommonLinkFragmentDoc}
 `
 export const DividerSectionFragmentDoc = gql`
   fragment DividerSection on ComponentSectionsDivider {
@@ -18825,12 +18930,21 @@ export const ColumnsListSectionFragmentDoc = gql`
   }
   ${ColumnsListItemFragmentDoc}
 `
+export const ArticlesLandingPageSectionFragmentDoc = gql`
+  fragment ArticlesLandingPageSection on ComponentSectionsArticlesLandingPage {
+    leftArticle {
+      ...ArticleCardEntity
+    }
+    newsPageLink {
+      ...CommonLink
+    }
+  }
+  ${ArticleCardEntityFragmentDoc}
+  ${CommonLinkFragmentDoc}
+`
 export const SectionsFragmentDoc = gql`
   fragment Sections on PageSectionsDynamicZone {
     __typename
-    ... on ComponentSectionsArticlesLandingPage {
-      ...ArticlesLandingPageSection
-    }
     ... on ComponentSectionsDivider {
       ...DividerSection
     }
@@ -18930,8 +19044,10 @@ export const SectionsFragmentDoc = gql`
     ... on ComponentSectionsColumnsList {
       ...ColumnsListSection
     }
+    ... on ComponentSectionsArticlesLandingPage {
+      ...ArticlesLandingPageSection
+    }
   }
-  ${ArticlesLandingPageSectionFragmentDoc}
   ${DividerSectionFragmentDoc}
   ${TextWithImageSectionFragmentDoc}
   ${TextWithImageOverlappedSectionFragmentDoc}
@@ -18965,6 +19081,7 @@ export const SectionsFragmentDoc = gql`
   ${OpeningHoursSectionFragmentDoc}
   ${NewsletterSectionFragmentDoc}
   ${ColumnsListSectionFragmentDoc}
+  ${ArticlesLandingPageSectionFragmentDoc}
 `
 export const SidebarsFragmentDoc = gql`
   fragment Sidebars on PageSidebarDynamicZone {
@@ -19110,6 +19227,22 @@ export const Dev_AllArticlesDocument = gql`
     }
   }
   ${ArticleEntityFragmentDoc}
+`
+export const AssetBySlugDocument = gql`
+  query AssetBySlug($slug: String!) {
+    assets(filters: { slug: { eq: $slug } }) {
+      ...AssetEntity
+    }
+  }
+  ${AssetEntityFragmentDoc}
+`
+export const AssetCategoriesDocument = gql`
+  query AssetCategories {
+    assetCategories(pagination: { limit: -1 }) {
+      ...AssetCategoryEntity
+    }
+  }
+  ${AssetCategoryEntityFragmentDoc}
 `
 export const DocumentBySlugDocument = gql`
   query DocumentBySlug($slug: String!) {
@@ -19618,6 +19751,42 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
             signal,
           }),
         'Dev_AllArticles',
+        'query',
+        variables,
+      )
+    },
+    AssetBySlug(
+      variables: AssetBySlugQueryVariables,
+      requestHeaders?: GraphQLClientRequestHeaders,
+      signal?: RequestInit['signal'],
+    ): Promise<AssetBySlugQuery> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<AssetBySlugQuery>({
+            document: AssetBySlugDocument,
+            variables,
+            requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders },
+            signal,
+          }),
+        'AssetBySlug',
+        'query',
+        variables,
+      )
+    },
+    AssetCategories(
+      variables?: AssetCategoriesQueryVariables,
+      requestHeaders?: GraphQLClientRequestHeaders,
+      signal?: RequestInit['signal'],
+    ): Promise<AssetCategoriesQuery> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<AssetCategoriesQuery>({
+            document: AssetCategoriesDocument,
+            variables,
+            requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders },
+            signal,
+          }),
+        'AssetCategories',
         'query',
         variables,
       )
