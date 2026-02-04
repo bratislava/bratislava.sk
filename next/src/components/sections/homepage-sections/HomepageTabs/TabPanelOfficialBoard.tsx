@@ -60,42 +60,40 @@ const TabPanelOfficialBoard = () => {
   const documents = officialBoardData?.slice(0, 4) || []
 
   return (
-    <TabPanel id="OfficialBoard">
-      <div className="mt-8 flex flex-col gap-y-10 lg:mt-14">
-        <ul
-          className="flex flex-col rounded-lg border bg-background-primary py-2"
-          data-cy="official-board-results"
-        >
-          {/* TODO we used basic spinner and text here, but it should be done with nicer design */}
-          {isLoading ? (
-            <li>
-              <LoadingSpinner />
-            </li>
-          ) : isError ? (
-            <li>
-              <Typography variant="p-default">{t('TabPanelOfficialBoard.errorNoData')}</Typography>
-            </li>
-          ) : (
-            documents.map((document, index) => (
-              <Fragment key={document.uniqueId}>
-                {index > 0 ? <HorizontalDivider asListItem className="mx-4 lg:mx-6" /> : null}
-                <li>
-                  <SearchResultCard data={document} />
-                </li>
-              </Fragment>
-            ))
-          )}
-        </ul>
-        {tabs?.officialBoardPageLink ? (
-          <div className="flex justify-center">
-            <Button
-              variant="outline"
-              data-cy="official-board-button"
-              {...getLinkProps(tabs.officialBoardPageLink)}
-            />
-          </div>
-        ) : null}
-      </div>
+    <TabPanel id="OfficialBoard" className="flex flex-col gap-14">
+      <ul
+        className="flex flex-col rounded-lg border bg-background-primary"
+        data-cy="official-board-results"
+      >
+        {/* TODO we used basic spinner and text here, but it should be done with nicer design */}
+        {isLoading ? (
+          <li>
+            <LoadingSpinner />
+          </li>
+        ) : isError ? (
+          <li>
+            <Typography variant="p-default">{t('TabPanelOfficialBoard.errorNoData')}</Typography>
+          </li>
+        ) : (
+          documents.map((document, index) => (
+            <Fragment key={document.uniqueId}>
+              {index > 0 ? <HorizontalDivider asListItem className="mx-4 lg:mx-6" /> : null}
+              <li>
+                <SearchResultCard data={document} />
+              </li>
+            </Fragment>
+          ))
+        )}
+      </ul>
+      {tabs?.officialBoardPageLink ? (
+        <div className="flex justify-center">
+          <Button
+            variant="outline"
+            data-cy="official-board-button"
+            {...getLinkProps(tabs.officialBoardPageLink)}
+          />
+        </div>
+      ) : null}
     </TabPanel>
   )
 }

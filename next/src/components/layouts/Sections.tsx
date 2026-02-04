@@ -1,9 +1,12 @@
 import * as React from 'react'
 
 import AccordionSection from '@/src/components/sections/AccordionSection'
+import AlertSections from '@/src/components/sections/AlertSections'
+import ArticlesLandingPageSection from '@/src/components/sections/ArticlesLandingPageSection'
 import ArticlesSection from '@/src/components/sections/ArticlesSection/ArticlesSection'
 import BannerSection from '@/src/components/sections/BannerSection'
 import ColumnedTextSection from '@/src/components/sections/ColumnedTextSection'
+import ColumnsListSection from '@/src/components/sections/ColumnsListSection'
 import ColumnsSection from '@/src/components/sections/ColumnsSection'
 import ComparisonSection from '@/src/components/sections/ComparisonSection'
 import ContactsSection from '@/src/components/sections/ContactsSection'
@@ -35,7 +38,6 @@ import TextWithImageSection from '@/src/components/sections/TextWithImageSection
 import TootootEventsSection from '@/src/components/sections/TootootEventsSection'
 import VideosSection from '@/src/components/sections/VideosSection'
 import { SectionsFragment } from '@/src/services/graphql'
-import AlertSections from '@/src/components/sections/AlertSections'
 
 type SectionsProps = {
   sections: SectionsFragment[]
@@ -145,6 +147,12 @@ const SectionContent = ({ section }: { section: SectionsFragment }) => {
 
     case 'ComponentSectionsInbaLatestRelease':
       return <InbaLatestReleaseSection />
+
+    case 'ComponentSectionsColumnsList':
+      return <ColumnsListSection section={section} />
+
+    case 'ComponentSectionsArticlesLandingPage':
+      return <ArticlesLandingPageSection section={section} />
 
     case 'ComponentSectionsAlert':
       return <AlertSections section={section} />

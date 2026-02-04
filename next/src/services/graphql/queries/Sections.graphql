@@ -492,6 +492,33 @@ fragment NewsletterSection on ComponentSectionsNewsletter {
   instagramUrl
 }
 
+fragment ColumnsListItem on ComponentBlocksColumnsListItem {
+  icon {
+    ...UploadImageEntity
+  }
+  content
+}
+
+fragment ColumnsListSection on ComponentSectionsColumnsList {
+  title
+  text
+  leftColumn {
+    ...ColumnsListItem
+  }
+  rightColumn {
+    ...ColumnsListItem
+  }
+}
+
+fragment ArticlesLandingPageSection on ComponentSectionsArticlesLandingPage {
+  leftArticle {
+    ...ArticleCardEntity
+  }
+  newsPageLink {
+    ...CommonLink
+  }
+}
+
 fragment AlertSection on ComponentSectionsAlert {
   title
   text
@@ -631,11 +658,19 @@ fragment Sections on PageSectionsDynamicZone {
     ...NewsletterSection
   }
 
-  ... on ComponentSectionsAlert {
-    ...AlertSection
+  ... on ComponentSectionsColumnsList {
+    ...ColumnsListSection
   }
 
   # ComponentSectionsInbaLatestRelease has no attributes
+
+  ... on ComponentSectionsArticlesLandingPage {
+    ...ArticlesLandingPageSection
+  }
+
+  ... on ComponentSectionsAlert {
+    ...AlertSection
+  }
 }
 
 fragment EventPageHeaderSection on ComponentHeaderSectionsEvent {

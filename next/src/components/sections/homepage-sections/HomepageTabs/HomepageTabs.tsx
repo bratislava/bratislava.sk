@@ -25,7 +25,7 @@ const HomepageTabs = ({ className }: HomepageTabsProps) => {
 
   return (
     <div className={className}>
-      <Tabs>
+      <Tabs className="flex flex-col gap-y-14">
         <TabList
           aria-label={t('HomepageTabs.aria.tabListName')}
           // margin and padding added to show full focus ring
