@@ -1,6 +1,6 @@
 import { ChangeEventHandler, KeyboardEventHandler, useEffect, useState } from 'react'
 
-type InputValue = '' | number
+type InputValue = string
 
 const handleKeyDown: KeyboardEventHandler = (event) => {
   if (['e', 'E', '+', '-', '.', ','].includes(event.key)) {
@@ -20,31 +20,33 @@ export const usePaginationWithInput = ({
   handlePageChange: (value: number) => void
 }) => {
   // inputValue is detached from currentPage to allow empty input value without changing currentPage
-  const [inputValue, setInputValue] = useState<InputValue>(currentPage)
+  const [inputValue, setInputValue] = useState<InputValue>(String(currentPage))
 
   useEffect(() => {
-    setInputValue(currentPage)
+    setInputValue(String(currentPage))
   }, [currentPage])
 
   const getValidValue = (incomingValue: HTMLInputElement['value']) => {
-    let result: InputValue
     const incomingNumberValue = Number(incomingValue)
 
     if (incomingValue === '') {
-      result = ''
-    } else if (Number.isNaN(incomingNumberValue)) {
-      result = currentPage
-    } else if (incomingNumberValue > totalCount) {
-      result = totalCount
-    } else if (incomingNumberValue < 1) {
-      result = 1
-    } else {
-      result = Number.isInteger(incomingNumberValue)
-        ? incomingNumberValue
-        : Math.floor(incomingNumberValue)
+      return ''
+    }
+    if (Number.isNaN(incomingNumberValue)) {
+      return String(currentPage)
+    }
+    if (incomingNumberValue > totalCount) {
+      return String(totalCount)
+    }
+    if (incomingNumberValue < 1) {
+      return '1'
     }
 
-    return result
+    const normalizedValue = Number.isInteger(incomingNumberValue)
+      ? incomingNumberValue
+      : Math.floor(incomingNumberValue)
+
+    return String(normalizedValue)
   }
 
   const handleChange: ChangeEventHandler<HTMLInputElement> = (event) => {
@@ -54,8 +56,8 @@ export const usePaginationWithInput = ({
       setInputValue(validValue)
     }
 
-    if (validValue) {
-      handlePageChange(validValue)
+    if (validValue !== '') {
+      handlePageChange(Number(validValue))
     }
   }
 

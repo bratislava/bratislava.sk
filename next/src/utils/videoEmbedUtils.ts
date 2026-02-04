@@ -12,14 +12,45 @@ export const detectVideoPlatform = (url: string) => {
   return null
 }
 
+const parseVideoUrl = (value: string) => {
+  try {
+    return new URL(value)
+  } catch {
+    try {
+      return new URL(`https://${value}`)
+    } catch {
+      return null
+    }
+  }
+}
+
 // Based on AI suggestions
 export const getVideoId = (platform: string, url: string) => {
   if (platform === 'youtube') {
-    const youtubeRegex =
-      /(?:youtube\.com\/(?:[^/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[&?]v=)|youtu\.be\/)([^\s"&/?]{11})/
-    const youtubeMatch = url.match(youtubeRegex)
+    const parsedUrl = parseVideoUrl(url)
+    if (!parsedUrl) return null
 
-    return youtubeMatch ? youtubeMatch[1] : null
+    const hostname = parsedUrl.hostname.replace(/^www\./, '')
+    if (hostname === 'youtu.be') {
+      const [videoId] = parsedUrl.pathname.split('/').filter(Boolean)
+
+      return videoId ?? null
+    }
+
+    if (hostname.endsWith('youtube.com')) {
+      const videoIdFromQuery = parsedUrl.searchParams.get('v')
+      if (videoIdFromQuery) return videoIdFromQuery
+
+      const pathSegments = parsedUrl.pathname.split('/').filter(Boolean)
+      const knownPrefixes = ['embed', 'v', 'e', 'shorts']
+      const prefixIndex = pathSegments.findIndex((segment) => knownPrefixes.includes(segment))
+
+      if (prefixIndex !== -1 && pathSegments[prefixIndex + 1]) {
+        return pathSegments[prefixIndex + 1]
+      }
+    }
+
+    return null
   }
 
   if (platform === 'vimeo') {

@@ -1,5 +1,5 @@
 import { Easing, motion, useReducedMotion, Variant } from 'framer-motion'
-import { ReactNode, useMemo, useRef } from 'react'
+import { ReactNode, useMemo, useState } from 'react'
 import { useResizeDetector } from 'react-resize-detector'
 
 import cn from '@/src/utils/cn'
@@ -23,7 +23,7 @@ const AnimateHeight = ({
   children,
   className,
 }: AnimateHeightProps) => {
-  const initialIsVisible = useRef<boolean>(isVisible)
+  const [initialIsVisible] = useState(isVisible)
 
   const { height, ref } = useResizeDetector()
 
@@ -39,7 +39,7 @@ const AnimateHeight = ({
     <motion.div
       className={cn('overflow-hidden', className)}
       aria-hidden={!isVisible}
-      initial={initialIsVisible.current ? 'opened' : 'closed'}
+      initial={initialIsVisible ? 'opened' : 'closed'}
       animate={isVisible ? 'opened' : 'closed'}
       variants={{
         // TODO when variant is a function this does not work as expected - variant is likely never function, if so rewrite that it's explicit
