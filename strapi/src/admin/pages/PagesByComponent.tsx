@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react'
 import {
   Box,
-  Button,
   Flex,
   Typography,
   Table,
@@ -10,14 +9,13 @@ import {
   Tr,
   Th,
   Td,
-  EmptyStateLayout,
   IconButton,
 } from '@strapi/design-system'
 import { ChevronLeft, ChevronRight } from '@strapi/icons'
 import { useFetchClient, useNotification } from '@strapi/strapi/admin'
 import { Link } from 'react-router-dom'
 
-interface Page {
+type Page = {
   id: number
   documentId: string
   title: string
@@ -25,7 +23,7 @@ interface Page {
   path?: string
 }
 
-interface Component {
+type Component = {
   category: string
   name: string
   displayName: string
@@ -52,8 +50,8 @@ const PagesByComponent = () => {
       } catch (error: unknown) {
         const message = error instanceof Error ? error.message : 'Unknown error'
         toggleNotification({
-          type: 'danger',
-          message: `Failed to load components: ${message}`,
+          type: 'warning',
+          message: `Failed to load components: ${message}. Try refreshing the page.`,
         })
       }
     }
@@ -153,7 +151,7 @@ const PagesByComponent = () => {
           .pages-results-container {
             width: 100%;
           }
-          @media (min-width: 768px) {
+          @media (min-width: 800px) {
             .pages-results-container {
               width: 800px;
             }
@@ -162,10 +160,10 @@ const PagesByComponent = () => {
             font-size: 14px;
           }
           .pages-results-container tbody tr {
-            height: 40px;
+            height: 24px;
           }
           .pages-results-container td {
-            padding: 8px 12px;
+            padding: 6px 8px;
           }
           .pages-results-container th {
             padding: 8px 12px;
@@ -175,207 +173,214 @@ const PagesByComponent = () => {
       <Box padding={8}>
         <Flex direction="column" gap={4}>
           <Typography variant="alpha">Pages by section</Typography>
-          <Typography variant="omega" textColor="neutral600">
-            Find all pages that use a specific component in their sections field
-          </Typography>
-
-          <Flex gap={3} alignItems="flex-end">
-            <Box style={{ flex: 1 }}>
-              <Typography variant="pi" fontWeight="semiBold" marginBottom={2}>
-                Section
-              </Typography>
-              <select
-                style={{
-                  width: '100%',
-                  padding: '8px 12px',
-                  border: '1px solid #dcdce4',
-                  borderRadius: '4px',
-                  fontSize: '14px',
-                  backgroundColor: 'white',
-                }}
-                value={selectedComponent}
-                onChange={(e) => handleComponentChange(e.target.value)}
-                disabled={loading}
-              >
-                <option value="">Choose a component...</option>
-                {components.map((component) => (
-                  <option
-                    key={`${component.category}.${component.name}`}
-                    value={`${component.category}.${component.name}`}
-                  >
-                    {component.displayName}
-                  </option>
-                ))}
-              </select>
-            </Box>
-            <Box style={{ width: '6rem' }}>
-              <Typography variant="pi" fontWeight="semiBold" marginBottom={2}>
-                Locale
-              </Typography>
-              <select
-                style={{
-                  width: '100%',
-                  padding: '8px 12px',
-                  border: '1px solid #dcdce4',
-                  borderRadius: '4px',
-                  fontSize: '14px',
-                  backgroundColor: 'white',
-                }}
-                value={locale}
-                onChange={(e) => handleLocaleChange(e.target.value)}
-                disabled={loading}
-              >
-                <option value="sk">sk</option>
-                <option value="en">en</option>
-              </select>
-            </Box>
+          <Flex direction="column" gap={1}>
+            <Typography variant="omega" textColor="neutral600">
+              Find all pages that use a specific component in their sections field.
+            </Typography>
+            <Typography variant="omega" textColor="neutral600">
+              If not working, try refreshing the page.
+            </Typography>
           </Flex>
-
-          <Box className="pages-results-container">
-            <Flex justifyContent="space-between" alignItems="end" marginBottom={2}>
-              <Typography variant="omega" textColor="neutral600">
-                Showing {Math.min((page - 1) * pageSize + 1, total)} -{' '}
-                {Math.min(page * pageSize, total)} of {total}
-              </Typography>
-              <Flex gap={4} alignItems="center">
-                <Flex gap={1} alignItems="center">
-                  <Typography variant="omega" textColor="neutral600">
-                    Page size:
+          <Flex direction="column" gap={6}>
+            <Box style={{ width: '100%' }}>
+              <Flex gap={3} style={{ width: '100%' }} alignItems="flex-end">
+                <Box style={{ width: '6rem' }}>
+                  <Typography variant="pi" fontWeight="semiBold" marginBottom={2}>
+                    Locale
                   </Typography>
                   <select
                     style={{
-                      padding: '4px 8px',
+                      width: '100%',
+                      padding: '8px 12px',
                       border: '1px solid #dcdce4',
                       borderRadius: '4px',
                       fontSize: '14px',
                       backgroundColor: 'white',
                     }}
-                    value={pageSize}
-                    onChange={(e) => handlePageSizeChange(Number(e.target.value))}
-                    disabled={loading || !selectedComponent}
+                    value={locale}
+                    onChange={(e) => handleLocaleChange(e.target.value)}
+                    disabled={loading}
                   >
-                    {[10, 50, 100, 500, 1000].map((size) => (
-                      <option key={size} value={size}>
-                        {size}
+                    <option value="sk">sk</option>
+                    <option value="en">en</option>
+                  </select>
+                </Box>
+                <Box style={{ flex: 1 }}>
+                  <Typography variant="pi" fontWeight="semiBold" marginBottom={2}>
+                    Section
+                  </Typography>
+                  <select
+                    style={{
+                      width: '100%',
+                      padding: '8px 12px',
+                      border: '1px solid #dcdce4',
+                      borderRadius: '4px',
+                      fontSize: '14px',
+                      backgroundColor: 'white',
+                    }}
+                    value={selectedComponent}
+                    onChange={(e) => handleComponentChange(e.target.value)}
+                    disabled={loading}
+                  >
+                    <option value="">Choose a component...</option>
+                    {components.map((component) => (
+                      <option
+                        key={`${component.category}.${component.name}`}
+                        value={`${component.category}.${component.name}`}
+                      >
+                        {component.displayName}
                       </option>
                     ))}
                   </select>
-                </Flex>
-                <Flex gap={2} alignItems="center">
-                  <IconButton
-                    onClick={() => handlePageChange(page - 1)}
-                    disabled={page === 1 || loading}
-                    label="Previous page"
-                  >
-                    <ChevronLeft />
-                  </IconButton>
-                  <Typography variant="omega">
-                    Page {page} of {pageCount}
-                  </Typography>
-                  <IconButton
-                    onClick={() => handlePageChange(page + 1)}
-                    disabled={page === pageCount || loading}
-                    label="Next page"
-                  >
-                    <ChevronRight />
-                  </IconButton>
+                </Box>
+              </Flex>
+            </Box>
+
+            <Box className="pages-results-container">
+              <Flex justifyContent="space-between" alignItems="baseline" wrap="wrap" gap={4} marginBottom={2}>
+                <Typography variant="omega" textColor="neutral600">
+                  Showing {Math.min((page - 1) * pageSize + 1, total)} -{' '}
+                  {Math.min(page * pageSize, total)} of {total}
+                </Typography>
+                <Flex gap={4} alignItems="center">
+                  <Flex gap={1} alignItems="center">
+                    <Typography variant="omega" textColor="neutral600">
+                      Page size:
+                    </Typography>
+                    <select
+                      style={{
+                        padding: '4px 8px',
+                        border: '1px solid #dcdce4',
+                        borderRadius: '4px',
+                        fontSize: '14px',
+                        backgroundColor: 'white',
+                      }}
+                      value={pageSize}
+                      onChange={(e) => handlePageSizeChange(Number(e.target.value))}
+                      disabled={loading || !selectedComponent}
+                    >
+                      {[10, 50, 100, 500, 1000].map((size) => (
+                        <option key={size} value={size}>
+                          {size}
+                        </option>
+                      ))}
+                    </select>
+                  </Flex>
+                  <Flex gap={2} alignItems="center">
+                    <IconButton
+                      onClick={() => handlePageChange(page - 1)}
+                      disabled={page === 1 || loading}
+                      label="Previous page"
+                    >
+                      <ChevronLeft />
+                    </IconButton>
+                    <Typography variant="omega">
+                      Page {page} of {pageCount}
+                    </Typography>
+                    <IconButton
+                      onClick={() => handlePageChange(page + 1)}
+                      disabled={page === pageCount || loading}
+                      label="Next page"
+                    >
+                      <ChevronRight />
+                    </IconButton>
+                  </Flex>
                 </Flex>
               </Flex>
-            </Flex>
-            <Table colCount={4} rowCount={pages.length}>
-              <Thead>
-                <Tr>
-                  <Th>
-                    <Typography variant="sigma">Title</Typography>
-                  </Th>
-                  <Th style={{ width: '60px', maxWidth: '60px' }}>
-                    <Typography variant="sigma">Locale</Typography>
-                  </Th>
-                  <Th
-                    style={{
-                      width: '100px',
-                      maxWidth: '100px',
-                      whiteSpace: 'normal',
-                      wordWrap: 'break-word',
-                    }}
-                  >
-                    <Typography variant="sigma">Strapi edit link</Typography>
-                  </Th>
-                  <Th
-                    style={{
-                      width: '100px',
-                      maxWidth: '100px',
-                      whiteSpace: 'normal',
-                      wordWrap: 'break-word',
-                    }}
-                  >
-                    <Typography variant="sigma">Frontend Link</Typography>
-                  </Th>
-                </Tr>
-              </Thead>
-              <Tbody>
-                {pages.map((pageItem) => {
-                  const frontendLink = getFrontendUrl(pageItem)
-                  const contentManagerUrl = getContentManagerUrl(pageItem)
+              <Table colCount={4} rowCount={pages.length} style={{ marginBottom: '12px' }}>
+                <Thead>
+                  <Tr>
+                    <Th>
+                      <Typography variant="sigma">Title</Typography>
+                    </Th>
+                    <Th style={{ width: '60px' }}>
+                      <Typography variant="sigma">Locale</Typography>
+                    </Th>
+                    <Th
+                      style={{
+                        width: '100px',
+                        whiteSpace: 'normal',
+                        wordWrap: 'break-word',
+                      }}
+                    >
+                      <Typography variant="sigma">Strapi edit link</Typography>
+                    </Th>
+                    <Th
+                      style={{
+                        width: '100px',
+                        whiteSpace: 'normal',
+                        wordWrap: 'break-word',
+                      }}
+                    >
+                      <Typography variant="sigma">Frontend Link</Typography>
+                    </Th>
+                  </Tr>
+                </Thead>
+                <Tbody>
+                  {pages.map((pageItem) => {
+                    const frontendLink = getFrontendUrl(pageItem)
+                    const contentManagerUrl = getContentManagerUrl(pageItem)
 
-                  return (
-                    <Tr key={pageItem.documentId}>
-                      <Td>
-                        <Typography variant="omega">{pageItem.title}</Typography>
-                      </Td>
-                      <Td style={{ width: '60px', maxWidth: '60px' }}>
-                        <Typography variant="omega">{pageItem.locale || 'N/A'}</Typography>
-                      </Td>
-                      <Td style={{ width: '100px', maxWidth: '100px' }}>
-                        <Link
-                          to={contentManagerUrl}
-                          style={{ textDecoration: 'none', fontSize: '11px' }}
-                        >
-                          <Typography
-                            variant="omega"
-                            textColor="primary600"
-                            style={{
-                              wordBreak: 'break-all',
-                              overflow: 'hidden',
-                              textOverflow: 'ellipsis',
-                              display: '-webkit-box',
-                              WebkitLineClamp: 2,
-                              WebkitBoxOrient: 'vertical',
-                            }}
+                    return (
+                      <Tr key={pageItem.documentId}>
+                        <Td>
+                          <Typography variant="omega">{pageItem.title}</Typography>
+                        </Td>
+                        <Td style={{ width: '60px', maxWidth: '60px' }}>
+                          <Typography variant="omega">{pageItem.locale || 'N/A'}</Typography>
+                        </Td>
+                        <Td style={{ width: '100px', maxWidth: '100px' }}>
+                          <Link
+                            to={contentManagerUrl}
+                            style={{ textDecoration: 'none', fontSize: '11px' }}
                           >
-                            {contentManagerUrl}
-                          </Typography>
-                        </Link>
-                      </Td>
-                      <Td style={{ width: '50px', maxWidth: '50px' }}>
-                        <a
-                          href={frontendLink.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          style={{ textDecoration: 'none', fontSize: '11px' }}
-                        >
-                          <Typography
-                            variant="omega"
-                            textColor="primary600"
-                            style={{
-                              wordBreak: 'break-all',
-                              overflow: 'hidden',
-                              textOverflow: 'ellipsis',
-                              display: '-webkit-box',
-                              WebkitLineClamp: 2,
-                              WebkitBoxOrient: 'vertical',
-                            }}
+                            <Typography
+                              variant="omega"
+                              textColor="primary600"
+                              style={{
+                                wordBreak: 'break-all',
+                                overflow: 'hidden',
+                                textOverflow: 'ellipsis',
+                                display: '-webkit-box',
+                                WebkitLineClamp: 2,
+                                WebkitBoxOrient: 'vertical',
+                              }}
+                            >
+                              {contentManagerUrl}
+                            </Typography>
+                          </Link>
+                        </Td>
+                        <Td style={{ width: '50px', maxWidth: '50px' }}>
+                          <a
+                            href={frontendLink.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            style={{ textDecoration: 'none', fontSize: '11px' }}
                           >
-                            {frontendLink.url}
-                          </Typography>
-                        </a>
-                      </Td>
-                    </Tr>
-                  )
-                })}
-              </Tbody>
-            </Table>
-          </Box>
+                            <Typography
+                              variant="omega"
+                              textColor="primary600"
+                              style={{
+                                wordBreak: 'break-all',
+                                overflow: 'hidden',
+                                textOverflow: 'ellipsis',
+                                display: '-webkit-box',
+                                WebkitLineClamp: 2,
+                                WebkitBoxOrient: 'vertical',
+                              }}
+                            >
+                              {frontendLink.url}
+                            </Typography>
+                          </a>
+                        </Td>
+                      </Tr>
+                    )
+                  })}
+                </Tbody>
+              </Table>
+            </Box>
+          </Flex>
+
         </Flex>
       </Box>
     </>

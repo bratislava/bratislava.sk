@@ -1,5 +1,5 @@
 import type { StrapiApp } from '@strapi/strapi/admin'
-import { Search, File } from '@strapi/icons'
+import { Eye } from '@strapi/icons'
 import InternalJobsRunActions from './extensions/InternalJobsRunActions'
 
 export default {
@@ -107,7 +107,7 @@ export default {
 
     app.addMenuLink({
       to: '/plugins/pages-by-component',
-      icon: File,
+      icon: Eye,
       intlLabel: {
         id: 'pages-by-component.title',
         defaultMessage: 'Pages by Component',
