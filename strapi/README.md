@@ -47,20 +47,24 @@ We use `patch-package` to apply patches to dependencies.
 
 Note: Strapi transpiled files are located in `./node_modules/@strapi/[package-name]`
 
-
 ### @strapi/content-manager
 
 We change Wysiwyg editor image inserting so it inserts also image title (caption), so we can display it on FE.
+
 ```bash
 npx patch-package @strapi/content-manager
 ```
-
 
 ### @strapi/typescript-utils
 
 Patching until this issue is fixed: https://github.com/strapi/strapi/issues/24093
 
 We add `'en'` locale to `.localCompare()` function so properties order in generated files does not depend on the machine's language.
+
 ```bash
 npx patch-package @strapi/typescript-utils
 ```
+
+## Pages by Component
+
+We add a custom admin page `PagesByComponent.tsx` that lists which pages use which section components. This feature uses a custom api route defined in `api/pages-by-component`.
