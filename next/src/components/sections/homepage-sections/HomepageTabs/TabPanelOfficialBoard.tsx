@@ -60,7 +60,7 @@ const TabPanelOfficialBoard = () => {
   const documents = officialBoardData?.slice(0, 4) || []
 
   return (
-    <TabPanel id="OfficialBoard" className="flex flex-col gap-y-14">
+    <TabPanel id="OfficialBoard" className="flex flex-col gap-14">
       <ul
         className="flex flex-col rounded-lg border bg-background-primary"
         data-cy="official-board-results"

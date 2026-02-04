@@ -11,6 +11,10 @@ type Props = {
   section: ArticlesLandingPageSectionFragment
 }
 
+/**
+ * Figma: https://www.figma.com/design/17wbd0MDQcMW9NbXl6UPs8/DS--Component-library?node-id=19274-19792&t=oEQ6SCdzjktLhq9o-4
+ */
+
 const ArticlesLandingPageSection = ({ section }: Props) => {
   const locale = useLocale()
   const { newsPageLink } = section
@@ -44,13 +48,11 @@ const ArticlesLandingPageSection = ({ section }: Props) => {
 
   return (
     <SectionContainer className="py-6 lg:py-12">
-      <div className="flex flex-col gap-y-14">
-        <LatestNews
-          leftArticle={leftArticle}
-          otherArticles={latestArticlesFiltered}
-          newsPageLink={newsPageLink}
-        />
-      </div>
+      <LatestNews
+        leftArticle={leftArticle}
+        otherArticles={latestArticlesFiltered}
+        newsPageLink={newsPageLink}
+      />
     </SectionContainer>
   )
 }

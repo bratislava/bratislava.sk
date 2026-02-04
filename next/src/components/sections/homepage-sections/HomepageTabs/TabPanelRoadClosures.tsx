@@ -13,7 +13,7 @@ const TabPanelRoadClosures = () => {
   const { tabs } = homepage ?? {}
 
   return (
-    <TabPanel id="RoadClosures" className="flex flex-col gap-y-14">
+    <TabPanel id="RoadClosures" className="flex flex-col gap-14">
       <Iframe
         url={`https://static-pages.s3.bratislava.sk/closures-and-restrictions-map/index.html?lang=${locale}`}
         iframeHeight="620px"

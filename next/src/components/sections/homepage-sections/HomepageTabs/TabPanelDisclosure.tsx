@@ -10,7 +10,7 @@ const TabPanelDisclosure = () => {
   const { t } = useTranslation()
 
   return (
-    <TabPanel id="Disclosure" className="flex flex-col gap-y-14">
+    <TabPanel id="Disclosure" className="flex flex-col gap-14">
       <CardBase className="flex flex-col gap-1 self-center rounded-xl bg-background-passive-base px-4 py-8 text-center lg:w-fit lg:gap-4 lg:px-24">
         <Typography variant="p-large">{t('HomepageTabs.allInformationOnSite')}</Typography>
 

@@ -29,7 +29,7 @@ const LatestNews = ({ leftArticle, rightArticle, otherArticles, newsPageLink }: 
     [leftArticle, rightArticle, ...otherArticles].filter(isDefined).slice(0, 6) ?? []
 
   return (
-    <>
+    <div className="flex flex-col gap-y-14">
       <ResponsiveCarousel
         className="lg:hidden"
         hasVerticalPadding={false}
@@ -81,7 +81,7 @@ const LatestNews = ({ leftArticle, rightArticle, otherArticles, newsPageLink }: 
           <Button variant="outline" {...getLinkProps(newsPageLink)} />
         </div>
       ) : null}
-    </>
+    </div>
   )
 }
 
