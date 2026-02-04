@@ -22,7 +22,7 @@ const ImageLightBox = (props: ImageLightBoxProps) => {
 
   const { t } = useTranslation()
 
-  const sliderRef = useRef<HTMLButtonElement | null>(null)
+  const sliderRef = useRef<HTMLDivElement | null>(null)
 
   useEffect(() => {
     if (isOpen) {

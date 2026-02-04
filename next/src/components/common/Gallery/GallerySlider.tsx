@@ -1,5 +1,5 @@
 import { AnimatePresence, motion, PanInfo, Variant } from 'framer-motion'
-import { FC, forwardRef, KeyboardEvent, ReactNode, useCallback, useEffect, useRef, useState } from 'react'
+import { FC, forwardRef, KeyboardEvent, ReactNode, useCallback, useEffect, useState } from 'react'
 
 import { useTranslation } from '@/src/utils/useTranslation'
 
@@ -47,7 +47,7 @@ const swipePower = (offset: number, velocity: number) => {
   return Math.abs(offset) * velocity
 }
 
-const GallerySlider = forwardRef<HTMLButtonElement, SliderProps>(
+const GallerySlider = forwardRef<HTMLDivElement, SliderProps>(
   (
     {
       pages,
@@ -61,12 +61,10 @@ const GallerySlider = forwardRef<HTMLButtonElement, SliderProps>(
   ) => {
     const { t } = useTranslation()
     const [isFocused, setFocused] = useState(false)
-    const containerRef = useRef<HTMLDivElement | null>(null)
 
     const [[page, direction], setPage] = useState([initialPage ?? 0, 0])
     const [isDragging, setDragging] = useState(false)
     const index = page % pages.length
-    const sliderLabel = description ?? t('Gallery.aria.descriptionSlider')
 
     const paginate = useCallback((newDirection: number) => {
       setPage(([currentPage]) => [currentPage + newDirection, newDirection])
@@ -110,30 +108,6 @@ const GallerySlider = forwardRef<HTMLButtonElement, SliderProps>(
       }
     }, [autoSwipeDuration, paginate, isDragging, pages, isFocused])
 
-    useEffect(() => {
-      const node = containerRef.current
-      if (!node) {
-        return () => {}
-      }
-
-      const handleFocusIn = () => {
-        setFocused(true)
-      }
-
-      const handleFocusOut = (event: FocusEvent) => {
-        if (node.contains(event.relatedTarget as Node | null)) return
-        setFocused(false)
-      }
-
-      node.addEventListener('focusin', handleFocusIn)
-      node.addEventListener('focusout', handleFocusOut)
-
-      return () => {
-        node.removeEventListener('focusin', handleFocusIn)
-        node.removeEventListener('focusout', handleFocusOut)
-      }
-    }, [])
-
     const goToPage = useCallback(
       (goToIndex: number) => {
         const newDirection = index < goToIndex ? 1 : -1
@@ -143,7 +117,7 @@ const GallerySlider = forwardRef<HTMLButtonElement, SliderProps>(
     )
 
     const keyUpHandler = useCallback(
-      (e: KeyboardEvent<HTMLButtonElement>) => {
+      (e: KeyboardEvent) => {
         if (!allowKeyboardNavigation) return
         if (e.code === 'ArrowLeft') {
           e.preventDefault()
@@ -163,21 +137,22 @@ const GallerySlider = forwardRef<HTMLButtonElement, SliderProps>(
     )
 
     return (
+      // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
       <div
-        ref={containerRef}
+        // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
+        tabIndex={0}
+        onFocus={() => {
+          setFocused(true)
+        }}
+        onBlur={() => {
+          setFocused(false)
+        }}
+        ref={forwardedRef}
+        onKeyUp={keyUpHandler}
         role="application"
-        aria-label={sliderLabel}
+        aria-label={description ?? t('Gallery.aria.descriptionSlider')}
         className="relative z-0 flex size-full items-center justify-center overflow-hidden"
       >
-        {allowKeyboardNavigation && (
-          <button
-            ref={forwardedRef}
-            type="button"
-            className="sr-only"
-            onKeyUp={keyUpHandler}
-            aria-label={sliderLabel}
-          />
-        )}
         <AnimatePresence initial={false} custom={direction}>
           <motion.div
             className="absolute size-full outline-hidden"
