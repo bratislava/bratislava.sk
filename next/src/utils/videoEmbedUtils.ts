@@ -24,48 +24,49 @@ const parseVideoUrl = (value: string) => {
   }
 }
 
-// Based on AI suggestions
-export const getVideoId = (platform: string, url: string) => {
-  if (platform === 'youtube') {
-    const parsedUrl = parseVideoUrl(url)
-    if (!parsedUrl) return null
+const getYoutubeId = (url: string) => {
+  const parsedUrl = parseVideoUrl(url)
+  if (!parsedUrl) return null
 
-    const hostname = parsedUrl.hostname.replace(/^www\./, '')
-    if (hostname === 'youtu.be') {
-      const [videoId] = parsedUrl.pathname.split('/').filter(Boolean)
+  const hostname = parsedUrl.hostname.replace(/^www\./, '')
+  if (hostname === 'youtu.be') {
+    return parsedUrl.pathname.split('/').filter(Boolean)[0] ?? null
+  }
 
-      return videoId ?? null
-    }
-
-    if (hostname.endsWith('youtube.com')) {
-      const videoIdFromQuery = parsedUrl.searchParams.get('v')
-      if (videoIdFromQuery) return videoIdFromQuery
-
-      const pathSegments = parsedUrl.pathname.split('/').filter(Boolean)
-      const knownPrefixes = ['embed', 'v', 'e', 'shorts']
-      const prefixIndex = pathSegments.findIndex((segment) => knownPrefixes.includes(segment))
-
-      if (prefixIndex !== -1 && pathSegments[prefixIndex + 1]) {
-        return pathSegments[prefixIndex + 1]
-      }
-    }
-
+  if (!hostname.endsWith('youtube.com')) {
     return null
   }
 
-  if (platform === 'vimeo') {
-    const vimeoRegex = /vimeo\.com\/(?:.*\/)?(\d+)/
-    const vimeoMatch = url.match(vimeoRegex)
+  const videoIdFromQuery = parsedUrl.searchParams.get('v')
+  if (videoIdFromQuery) return videoIdFromQuery
 
-    return vimeoMatch ? vimeoMatch[1] : null
+  const pathSegments = parsedUrl.pathname.split('/').filter(Boolean)
+  const knownPrefixes = ['embed', 'v', 'e', 'shorts']
+  const prefixIndex = pathSegments.findIndex((segment) => knownPrefixes.includes(segment))
+
+  return prefixIndex !== -1 ? pathSegments[prefixIndex + 1] ?? null : null
+}
+
+const getVimeoId = (url: string) => {
+  const vimeoRegex = /vimeo\.com\/(?:.*\/)?(\d+)/
+  const vimeoMatch = url.match(vimeoRegex)
+
+  return vimeoMatch ? vimeoMatch[1] : null
+}
+
+// Based on AI suggestions
+export const getVideoId = (platform: string, url: string) => {
+  switch (platform) {
+    case 'youtube':
+      return getYoutubeId(url)
+    case 'vimeo':
+      return getVimeoId(url)
+    case 'facebook':
+      // Facebook videos have different URL patterns, we'll use the full URL
+      return url
+    default:
+      return null
   }
-
-  if (platform === 'facebook') {
-    // Facebook videos have different URL patterns, we'll use the full URL
-    return url
-  }
-
-  return null
 }
 
 export const getVideoIframeSrc = (url: string) => {

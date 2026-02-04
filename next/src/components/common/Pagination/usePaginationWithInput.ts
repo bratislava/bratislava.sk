@@ -1,7 +1,5 @@
 import { ChangeEventHandler, KeyboardEventHandler, useEffect, useState } from 'react'
 
-type InputValue = string
-
 const handleKeyDown: KeyboardEventHandler = (event) => {
   if (['e', 'E', '+', '-', '.', ','].includes(event.key)) {
     // Even if input is of type 'number', these symbols are allowed, so we disallow them here
@@ -20,7 +18,7 @@ export const usePaginationWithInput = ({
   handlePageChange: (value: number) => void
 }) => {
   // inputValue is detached from currentPage to allow empty input value without changing currentPage
-  const [inputValue, setInputValue] = useState<InputValue>(String(currentPage))
+  const [inputValue, setInputValue] = useState<string>(String(currentPage))
 
   useEffect(() => {
     setInputValue(String(currentPage))

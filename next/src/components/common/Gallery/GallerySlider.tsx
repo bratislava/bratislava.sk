@@ -112,7 +112,9 @@ const GallerySlider = forwardRef<HTMLButtonElement, SliderProps>(
 
     useEffect(() => {
       const node = containerRef.current
-      if (!node) return
+      if (!node) {
+        return () => {}
+      }
 
       const handleFocusIn = () => {
         setFocused(true)
