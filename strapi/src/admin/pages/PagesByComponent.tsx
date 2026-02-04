@@ -282,7 +282,7 @@ const PagesByComponent = () => {
                       onChange={(e) => handlePageSizeChange(Number(e.target.value))}
                       disabled={loading || !selectedComponent}
                     >
-                      {[10, 50, 100, 500, 1000].map((size) => (
+                      {[10, 50, 100, 500].map((size) => (
                         <option key={size} value={size}>
                           {size}
                         </option>
