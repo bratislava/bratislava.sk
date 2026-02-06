@@ -5,7 +5,10 @@ import { getCardTitleLevel } from '@/src/components/cards/getCardTitleLevel'
 import AlertMessage from '@/src/components/common/AlertMessage/AlertMessage'
 import SectionContainer from '@/src/components/layouts/SectionContainer'
 import SectionHeader from '@/src/components/layouts/SectionHeader'
-import { OpeningHoursSectionFragment } from '@/src/services/graphql'
+import {
+  Enum_Componentsectionsalert_Alertvariant,
+  OpeningHoursSectionFragment,
+} from '@/src/services/graphql'
 import { isDefined } from '@/src/utils/isDefined'
 import { useTranslation } from '@/src/utils/useTranslation'
 
@@ -39,8 +42,10 @@ const OpeningHoursSection = ({ section }: OpeningHoursSectionProps) => {
             <AlertMessage
               title={t('OpeningHoursSection.banner.title')}
               titleLevel={getCardTitleLevel(titleLevel)}
-              text={alertMessage.text}
-            />
+              variant={Enum_Componentsectionsalert_Alertvariant.Warning}
+            >
+              {alertMessage.text}
+            </AlertMessage>
           ) : null}
         </div>
         <div className="flex flex-col divide-y divide-border-passive-primary rounded-lg border border-border-passive-primary px-4 py-2 text-content-passive-secondary lg:px-6">

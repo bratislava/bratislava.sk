@@ -1602,6 +1602,30 @@ export type ComponentSectionsAccordionInput = {
   titleLevel?: InputMaybe<Enum_Componentsectionsaccordion_Titlelevel>
 }
 
+export type ComponentSectionsAlert = {
+  __typename?: 'ComponentSectionsAlert'
+  alertText: Scalars['String']['output']
+  alertVariant: Enum_Componentsectionsalert_Alertvariant
+  id: Scalars['ID']['output']
+  title?: Maybe<Scalars['String']['output']>
+}
+
+export type ComponentSectionsAlertFiltersInput = {
+  alertText?: InputMaybe<StringFilterInput>
+  alertVariant?: InputMaybe<StringFilterInput>
+  and?: InputMaybe<Array<InputMaybe<ComponentSectionsAlertFiltersInput>>>
+  not?: InputMaybe<ComponentSectionsAlertFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<ComponentSectionsAlertFiltersInput>>>
+  title?: InputMaybe<StringFilterInput>
+}
+
+export type ComponentSectionsAlertInput = {
+  alertText?: InputMaybe<Scalars['String']['input']>
+  alertVariant?: InputMaybe<Enum_Componentsectionsalert_Alertvariant>
+  id?: InputMaybe<Scalars['ID']['input']>
+  title?: InputMaybe<Scalars['String']['input']>
+}
+
 export type ComponentSectionsArticles = {
   __typename?: 'ComponentSectionsArticles'
   adminGroups: Array<Maybe<AdminGroup>>
@@ -3375,6 +3399,13 @@ export enum Enum_Componentsectionsaccordion_Titlelevel {
   H3 = 'h3',
 }
 
+export enum Enum_Componentsectionsalert_Alertvariant {
+  Error = 'error',
+  Info = 'info',
+  Success = 'success',
+  Warning = 'warning',
+}
+
 export enum Enum_Componentsectionsassets_Titlelevel {
   H2 = 'h2',
   H3 = 'h3',
@@ -3982,6 +4013,7 @@ export type GenericMorph =
   | ComponentMenuMenuLink
   | ComponentMenuMenuSection
   | ComponentSectionsAccordion
+  | ComponentSectionsAlert
   | ComponentSectionsArticles
   | ComponentSectionsArticlesLandingPage
   | ComponentSectionsAssets
@@ -5518,6 +5550,7 @@ export type PageRelationResponseCollection = {
 
 export type PageSectionsDynamicZone =
   | ComponentSectionsAccordion
+  | ComponentSectionsAlert
   | ComponentSectionsArticles
   | ComponentSectionsArticlesLandingPage
   | ComponentSectionsAssets
@@ -7846,6 +7879,7 @@ export type AllFilesQuery = {
             } | null> | null
           } | null> | null
         }
+      | { __typename?: 'ComponentSectionsAlert' }
       | { __typename?: 'ComponentSectionsArticles' }
       | { __typename?: 'ComponentSectionsArticlesLandingPage' }
       | { __typename?: 'ComponentSectionsAssets' }
@@ -10707,6 +10741,12 @@ export type PageEntityFragment = {
         } | null> | null
       }
     | {
+        __typename: 'ComponentSectionsAlert'
+        title?: string | null
+        alertText: string
+        alertVariant: Enum_Componentsectionsalert_Alertvariant
+      }
+    | {
         __typename: 'ComponentSectionsArticles'
         title?: string | null
         text?: string | null
@@ -11993,6 +12033,12 @@ export type PageBySlugQuery = {
               }
             } | null> | null
           } | null> | null
+        }
+      | {
+          __typename: 'ComponentSectionsAlert'
+          title?: string | null
+          alertText: string
+          alertVariant: Enum_Componentsectionsalert_Alertvariant
         }
       | {
           __typename: 'ComponentSectionsArticles'
@@ -13310,6 +13356,12 @@ export type Dev_AllPagesQuery = {
               }
             } | null> | null
           } | null> | null
+        }
+      | {
+          __typename: 'ComponentSectionsAlert'
+          title?: string | null
+          alertText: string
+          alertVariant: Enum_Componentsectionsalert_Alertvariant
         }
       | {
           __typename: 'ComponentSectionsArticles'
@@ -16324,6 +16376,13 @@ export type ArticlesLandingPageSectionFragment = {
   } | null
 }
 
+export type AlertSectionFragment = {
+  __typename?: 'ComponentSectionsAlert'
+  title?: string | null
+  alertText: string
+  alertVariant: Enum_Componentsectionsalert_Alertvariant
+}
+
 type Sections_ComponentSectionsAccordion_Fragment = {
   __typename: 'ComponentSectionsAccordion'
   title?: string | null
@@ -16368,6 +16427,13 @@ type Sections_ComponentSectionsAccordion_Fragment = {
       }
     } | null> | null
   } | null> | null
+}
+
+type Sections_ComponentSectionsAlert_Fragment = {
+  __typename: 'ComponentSectionsAlert'
+  title?: string | null
+  alertText: string
+  alertVariant: Enum_Componentsectionsalert_Alertvariant
 }
 
 type Sections_ComponentSectionsArticles_Fragment = {
@@ -17459,6 +17525,7 @@ type Sections_Error_Fragment = { __typename: 'Error' }
 
 export type SectionsFragment =
   | Sections_ComponentSectionsAccordion_Fragment
+  | Sections_ComponentSectionsAlert_Fragment
   | Sections_ComponentSectionsArticles_Fragment
   | Sections_ComponentSectionsArticlesLandingPage_Fragment
   | Sections_ComponentSectionsAssets_Fragment
@@ -18942,6 +19009,13 @@ export const ArticlesLandingPageSectionFragmentDoc = gql`
   ${ArticleCardEntityFragmentDoc}
   ${CommonLinkFragmentDoc}
 `
+export const AlertSectionFragmentDoc = gql`
+  fragment AlertSection on ComponentSectionsAlert {
+    title
+    alertText
+    alertVariant
+  }
+`
 export const SectionsFragmentDoc = gql`
   fragment Sections on PageSectionsDynamicZone {
     __typename
@@ -19047,6 +19121,9 @@ export const SectionsFragmentDoc = gql`
     ... on ComponentSectionsArticlesLandingPage {
       ...ArticlesLandingPageSection
     }
+    ... on ComponentSectionsAlert {
+      ...AlertSection
+    }
   }
   ${DividerSectionFragmentDoc}
   ${TextWithImageSectionFragmentDoc}
@@ -19082,6 +19159,7 @@ export const SectionsFragmentDoc = gql`
   ${NewsletterSectionFragmentDoc}
   ${ColumnsListSectionFragmentDoc}
   ${ArticlesLandingPageSectionFragmentDoc}
+  ${AlertSectionFragmentDoc}
 `
 export const SidebarsFragmentDoc = gql`
   fragment Sidebars on PageSidebarDynamicZone {

@@ -1,4 +1,5 @@
-import Alert from '@/src/components/common/Alert_Deprecated/Alert_Deprecated'
+import AlertMessage from '@/src/components/common/AlertMessage/AlertMessage'
+import { Enum_Componentsectionsalert_Alertvariant } from '@/src/services/graphql'
 
 import Stack from '../Stack'
 import Wrapper from '../Wrapper'
@@ -7,172 +8,50 @@ const AlertShowCase = () => {
   return (
     <Wrapper direction="column" title="Alert">
       <Stack direction="column">
-        <Alert message="Alert text" type="error" />
-        <Alert message="Alert text" type="success" />
-        <Alert message="Alert text" type="info" />
-        <Alert message="Alert text" type="warning" />
+        <AlertMessage variant={Enum_Componentsectionsalert_Alertvariant.Warning}>
+          Alert text
+        </AlertMessage>
+        <AlertMessage variant={Enum_Componentsectionsalert_Alertvariant.Info}>
+          Alert text
+        </AlertMessage>
+        <AlertMessage variant={Enum_Componentsectionsalert_Alertvariant.Success}>
+          Alert text
+        </AlertMessage>
+        <AlertMessage variant={Enum_Componentsectionsalert_Alertvariant.Error}>
+          Alert text
+        </AlertMessage>
       </Stack>
       <Stack direction="column">
-        <Alert message="Alert text" type="error" close={() => {}} />
-        <Alert message="Alert text" type="success" close={() => {}} />
-        <Alert message="Alert text" type="info" close={() => {}} />
-        <Alert message="Alert text" type="warning" close={() => {}} />
+        <AlertMessage title="Warning" variant={Enum_Componentsectionsalert_Alertvariant.Warning}>
+          Alert text
+        </AlertMessage>
+        <AlertMessage title="Info" variant={Enum_Componentsectionsalert_Alertvariant.Info}>
+          Alert text
+        </AlertMessage>
+        <AlertMessage title="Success" variant={Enum_Componentsectionsalert_Alertvariant.Success}>
+          Alert text
+        </AlertMessage>
+        <AlertMessage title="Error" variant={Enum_Componentsectionsalert_Alertvariant.Error}>
+          Alert text
+        </AlertMessage>
       </Stack>
       <Stack direction="column">
-        <Alert message="Alert text" type="error" solid />
-        <Alert message="Alert text" type="success" solid />
-        <Alert message="Alert text" type="info" solid />
-        <Alert message="Alert text" type="warning" solid />
-      </Stack>
-      <Stack direction="column">
-        <Alert message="Alert text" type="error" close={() => {}} solid />
-        <Alert message="Alert text" type="success" close={() => {}} solid />
-        <Alert message="Alert text" type="info" close={() => {}} solid />
-        <Alert message="Alert text" type="warning" close={() => {}} solid />
-      </Stack>
-      <Stack direction="column">
-        <Alert
-          message="Alert text"
-          type="error"
-          variant="message"
-          content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-        />
-        <Alert
-          message="Alert text"
-          type="success"
-          variant="message"
-          content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-        />
-        <Alert
-          message="Alert text"
-          type="info"
-          variant="message"
-          content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-        />
-        <Alert
-          message="Alert text"
-          type="warning"
-          variant="message"
-          content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-        />
-      </Stack>
-      <Stack direction="column">
-        <Alert
-          message="Alert text"
-          solid
-          type="error"
-          variant="message"
-          content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-        />
-        <Alert
-          message="Alert text"
-          solid
-          type="success"
-          variant="message"
-          content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-        />
-        <Alert
-          message="Alert text"
-          solid
-          type="info"
-          variant="message"
-          content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-        />
-        <Alert
-          message="Alert text"
-          solid
-          type="warning"
-          variant="message"
-          content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-        />
-      </Stack>
-      <Stack direction="column">
-        <Alert
-          message="Alert text"
-          type="error"
-          buttons={[
-            { title: 'Button', handler: () => {} },
-            { title: 'Button', handler: () => {} },
-          ]}
-          variant="message"
-          content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-        />
-        <Alert
-          message="Alert text"
-          type="success"
-          buttons={[
-            { title: 'Button', handler: () => {} },
-            { title: 'Button', handler: () => {} },
-          ]}
-          variant="message"
-          content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-        />
-        <Alert
-          message="Alert text"
-          type="info"
-          buttons={[
-            { title: 'Button', handler: () => {} },
-            { title: 'Button', handler: () => {} },
-          ]}
-          variant="message"
-          content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-        />
-        <Alert
-          message="Alert text"
-          type="warning"
-          buttons={[
-            { title: 'Button', handler: () => {} },
-            { title: 'Button', handler: () => {} },
-          ]}
-          variant="message"
-          content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-        />
-      </Stack>
-      <Stack direction="column">
-        <Alert
-          message="Alert text"
-          solid
-          type="error"
-          buttons={[
-            { title: 'Button', handler: () => {} },
-            { title: 'Button', handler: () => {} },
-          ]}
-          variant="message"
-          content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-        />
-        <Alert
-          message="Alert text"
-          solid
-          type="success"
-          buttons={[
-            { title: 'Button', handler: () => {} },
-            { title: 'Button', handler: () => {} },
-          ]}
-          variant="message"
-          content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-        />
-        <Alert
-          message="Alert text"
-          solid
-          type="info"
-          buttons={[
-            { title: 'Button', handler: () => {} },
-            { title: 'Button', handler: () => {} },
-          ]}
-          variant="message"
-          content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-        />
-        <Alert
-          message="Alert text"
-          solid
-          type="warning"
-          buttons={[
-            { title: 'Button', handler: () => {} },
-            { title: 'Button', handler: () => {} },
-          ]}
-          variant="message"
-          content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-        />
+        <AlertMessage variant={Enum_Componentsectionsalert_Alertvariant.Warning}>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+          ut labore et dolore magna aliqua.
+        </AlertMessage>
+        <AlertMessage variant={Enum_Componentsectionsalert_Alertvariant.Info}>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+          ut labore et dolore magna aliqua.
+        </AlertMessage>
+        <AlertMessage variant={Enum_Componentsectionsalert_Alertvariant.Success}>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+          ut labore et dolore magna aliqua.
+        </AlertMessage>
+        <AlertMessage variant={Enum_Componentsectionsalert_Alertvariant.Error}>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+          ut labore et dolore magna aliqua.
+        </AlertMessage>
       </Stack>
     </Wrapper>
   )

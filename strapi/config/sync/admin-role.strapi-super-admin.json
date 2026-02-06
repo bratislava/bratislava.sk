@@ -107,13 +107,8 @@
       "actionParameters": {},
       "subject": "api::alert.alert",
       "properties": {
-        "fields": [
-          "text"
-        ],
-        "locales": [
-          "en",
-          "sk"
-        ]
+        "fields": ["text"],
+        "locales": ["en", "sk"]
       },
       "conditions": [],
       "locale": null
@@ -124,10 +119,7 @@
       "actionParameters": {},
       "subject": "api::alert.alert",
       "properties": {
-        "locales": [
-          "en",
-          "sk"
-        ]
+        "locales": ["en", "sk"]
       },
       "conditions": [],
       "locale": null
@@ -138,10 +130,7 @@
       "actionParameters": {},
       "subject": "api::alert.alert",
       "properties": {
-        "locales": [
-          "en",
-          "sk"
-        ]
+        "locales": ["en", "sk"]
       },
       "conditions": [],
       "locale": null
@@ -152,13 +141,8 @@
       "actionParameters": {},
       "subject": "api::alert.alert",
       "properties": {
-        "fields": [
-          "text"
-        ],
-        "locales": [
-          "en",
-          "sk"
-        ]
+        "fields": ["text"],
+        "locales": ["en", "sk"]
       },
       "conditions": [],
       "locale": null
@@ -169,13 +153,8 @@
       "actionParameters": {},
       "subject": "api::alert.alert",
       "properties": {
-        "fields": [
-          "text"
-        ],
-        "locales": [
-          "en",
-          "sk"
-        ]
+        "fields": ["text"],
+        "locales": ["en", "sk"]
       },
       "conditions": [],
       "locale": null
@@ -186,15 +165,8 @@
       "actionParameters": {},
       "subject": "api::article-category.article-category",
       "properties": {
-        "fields": [
-          "title",
-          "slug",
-          "articles"
-        ],
-        "locales": [
-          "en",
-          "sk"
-        ]
+        "fields": ["title", "slug", "articles"],
+        "locales": ["en", "sk"]
       },
       "conditions": [],
       "locale": null
@@ -205,10 +177,7 @@
       "actionParameters": {},
       "subject": "api::article-category.article-category",
       "properties": {
-        "locales": [
-          "en",
-          "sk"
-        ]
+        "locales": ["en", "sk"]
       },
       "conditions": [],
       "locale": null
@@ -219,10 +188,7 @@
       "actionParameters": {},
       "subject": "api::article-category.article-category",
       "properties": {
-        "locales": [
-          "en",
-          "sk"
-        ]
+        "locales": ["en", "sk"]
       },
       "conditions": [],
       "locale": null
@@ -233,15 +199,8 @@
       "actionParameters": {},
       "subject": "api::article-category.article-category",
       "properties": {
-        "fields": [
-          "title",
-          "slug",
-          "articles"
-        ],
-        "locales": [
-          "en",
-          "sk"
-        ]
+        "fields": ["title", "slug", "articles"],
+        "locales": ["en", "sk"]
       },
       "conditions": [],
       "locale": null
@@ -252,15 +211,8 @@
       "actionParameters": {},
       "subject": "api::article-category.article-category",
       "properties": {
-        "fields": [
-          "title",
-          "slug",
-          "articles"
-        ],
-        "locales": [
-          "en",
-          "sk"
-        ]
+        "fields": ["title", "slug", "articles"],
+        "locales": ["en", "sk"]
       },
       "conditions": [],
       "locale": null
@@ -287,10 +239,7 @@
           "adminGroups",
           "inbaRelease"
         ],
-        "locales": [
-          "en",
-          "sk"
-        ]
+        "locales": ["en", "sk"]
       },
       "conditions": [],
       "locale": null
@@ -301,10 +250,7 @@
       "actionParameters": {},
       "subject": "api::article.article",
       "properties": {
-        "locales": [
-          "en",
-          "sk"
-        ]
+        "locales": ["en", "sk"]
       },
       "conditions": [],
       "locale": null
@@ -315,10 +261,7 @@
       "actionParameters": {},
       "subject": "api::article.article",
       "properties": {
-        "locales": [
-          "en",
-          "sk"
-        ]
+        "locales": ["en", "sk"]
       },
       "conditions": [],
       "locale": null
@@ -345,10 +288,7 @@
           "adminGroups",
           "inbaRelease"
         ],
-        "locales": [
-          "en",
-          "sk"
-        ]
+        "locales": ["en", "sk"]
       },
       "conditions": [],
       "locale": null
@@ -375,10 +315,7 @@
           "adminGroups",
           "inbaRelease"
         ],
-        "locales": [
-          "en",
-          "sk"
-        ]
+        "locales": ["en", "sk"]
       },
       "conditions": [],
       "locale": null
@@ -389,11 +326,7 @@
       "actionParameters": {},
       "subject": "api::asset-category.asset-category",
       "properties": {
-        "fields": [
-          "title",
-          "slug",
-          "assets"
-        ]
+        "fields": ["title", "slug", "assets"]
       },
       "conditions": [],
       "locale": null
@@ -422,11 +355,7 @@
       "actionParameters": {},
       "subject": "api::asset-category.asset-category",
       "properties": {
-        "fields": [
-          "title",
-          "slug",
-          "assets"
-        ]
+        "fields": ["title", "slug", "assets"]
       },
       "conditions": [],
       "locale": null
@@ -437,11 +366,7 @@
       "actionParameters": {},
       "subject": "api::asset-category.asset-category",
       "properties": {
-        "fields": [
-          "title",
-          "slug",
-          "assets"
-        ]
+        "fields": ["title", "slug", "assets"]
       },
       "conditions": [],
       "locale": null
@@ -452,14 +377,7 @@
       "actionParameters": {},
       "subject": "api::asset.asset",
       "properties": {
-        "fields": [
-          "title",
-          "slug",
-          "files",
-          "description",
-          "assetCategory",
-          "adminGroups"
-        ]
+        "fields": ["title", "slug", "files", "description", "assetCategory", "adminGroups"]
       },
       "conditions": [],
       "locale": null
@@ -488,14 +406,7 @@
       "actionParameters": {},
       "subject": "api::asset.asset",
       "properties": {
-        "fields": [
-          "title",
-          "slug",
-          "files",
-          "description",
-          "assetCategory",
-          "adminGroups"
-        ]
+        "fields": ["title", "slug", "files", "description", "assetCategory", "adminGroups"]
       },
       "conditions": [],
       "locale": null
@@ -506,14 +417,7 @@
       "actionParameters": {},
       "subject": "api::asset.asset",
       "properties": {
-        "fields": [
-          "title",
-          "slug",
-          "files",
-          "description",
-          "assetCategory",
-          "adminGroups"
-        ]
+        "fields": ["title", "slug", "files", "description", "assetCategory", "adminGroups"]
       },
       "conditions": [],
       "locale": null
@@ -524,11 +428,7 @@
       "actionParameters": {},
       "subject": "api::document-category.document-category",
       "properties": {
-        "fields": [
-          "title",
-          "slug",
-          "documents"
-        ]
+        "fields": ["title", "slug", "documents"]
       },
       "conditions": [],
       "locale": null
@@ -557,11 +457,7 @@
       "actionParameters": {},
       "subject": "api::document-category.document-category",
       "properties": {
-        "fields": [
-          "title",
-          "slug",
-          "documents"
-        ]
+        "fields": ["title", "slug", "documents"]
       },
       "conditions": [],
       "locale": null
@@ -572,11 +468,7 @@
       "actionParameters": {},
       "subject": "api::document-category.document-category",
       "properties": {
-        "fields": [
-          "title",
-          "slug",
-          "documents"
-        ]
+        "fields": ["title", "slug", "documents"]
       },
       "conditions": [],
       "locale": null
@@ -587,14 +479,7 @@
       "actionParameters": {},
       "subject": "api::document.document",
       "properties": {
-        "fields": [
-          "title",
-          "slug",
-          "files",
-          "description",
-          "documentCategory",
-          "adminGroups"
-        ]
+        "fields": ["title", "slug", "files", "description", "documentCategory", "adminGroups"]
       },
       "conditions": [],
       "locale": null
@@ -623,14 +508,7 @@
       "actionParameters": {},
       "subject": "api::document.document",
       "properties": {
-        "fields": [
-          "title",
-          "slug",
-          "files",
-          "description",
-          "documentCategory",
-          "adminGroups"
-        ]
+        "fields": ["title", "slug", "files", "description", "documentCategory", "adminGroups"]
       },
       "conditions": [],
       "locale": null
@@ -641,14 +519,7 @@
       "actionParameters": {},
       "subject": "api::document.document",
       "properties": {
-        "fields": [
-          "title",
-          "slug",
-          "files",
-          "description",
-          "documentCategory",
-          "adminGroups"
-        ]
+        "fields": ["title", "slug", "files", "description", "documentCategory", "adminGroups"]
       },
       "conditions": [],
       "locale": null
@@ -659,15 +530,8 @@
       "actionParameters": {},
       "subject": "api::faq-category.faq-category",
       "properties": {
-        "fields": [
-          "title",
-          "slug",
-          "faqs"
-        ],
-        "locales": [
-          "en",
-          "sk"
-        ]
+        "fields": ["title", "slug", "faqs"],
+        "locales": ["en", "sk"]
       },
       "conditions": [],
       "locale": null
@@ -678,10 +542,7 @@
       "actionParameters": {},
       "subject": "api::faq-category.faq-category",
       "properties": {
-        "locales": [
-          "en",
-          "sk"
-        ]
+        "locales": ["en", "sk"]
       },
       "conditions": [],
       "locale": null
@@ -692,10 +553,7 @@
       "actionParameters": {},
       "subject": "api::faq-category.faq-category",
       "properties": {
-        "locales": [
-          "en",
-          "sk"
-        ]
+        "locales": ["en", "sk"]
       },
       "conditions": [],
       "locale": null
@@ -706,15 +564,8 @@
       "actionParameters": {},
       "subject": "api::faq-category.faq-category",
       "properties": {
-        "fields": [
-          "title",
-          "slug",
-          "faqs"
-        ],
-        "locales": [
-          "en",
-          "sk"
-        ]
+        "fields": ["title", "slug", "faqs"],
+        "locales": ["en", "sk"]
       },
       "conditions": [],
       "locale": null
@@ -725,15 +576,8 @@
       "actionParameters": {},
       "subject": "api::faq-category.faq-category",
       "properties": {
-        "fields": [
-          "title",
-          "slug",
-          "faqs"
-        ],
-        "locales": [
-          "en",
-          "sk"
-        ]
+        "fields": ["title", "slug", "faqs"],
+        "locales": ["en", "sk"]
       },
       "conditions": [],
       "locale": null
@@ -744,16 +588,8 @@
       "actionParameters": {},
       "subject": "api::faq.faq",
       "properties": {
-        "fields": [
-          "title",
-          "body",
-          "faqCategory",
-          "adminGroups"
-        ],
-        "locales": [
-          "en",
-          "sk"
-        ]
+        "fields": ["title", "body", "faqCategory", "adminGroups"],
+        "locales": ["en", "sk"]
       },
       "conditions": [],
       "locale": null
@@ -764,10 +600,7 @@
       "actionParameters": {},
       "subject": "api::faq.faq",
       "properties": {
-        "locales": [
-          "en",
-          "sk"
-        ]
+        "locales": ["en", "sk"]
       },
       "conditions": [],
       "locale": null
@@ -778,10 +611,7 @@
       "actionParameters": {},
       "subject": "api::faq.faq",
       "properties": {
-        "locales": [
-          "en",
-          "sk"
-        ]
+        "locales": ["en", "sk"]
       },
       "conditions": [],
       "locale": null
@@ -792,16 +622,8 @@
       "actionParameters": {},
       "subject": "api::faq.faq",
       "properties": {
-        "fields": [
-          "title",
-          "body",
-          "faqCategory",
-          "adminGroups"
-        ],
-        "locales": [
-          "en",
-          "sk"
-        ]
+        "fields": ["title", "body", "faqCategory", "adminGroups"],
+        "locales": ["en", "sk"]
       },
       "conditions": [],
       "locale": null
@@ -812,16 +634,8 @@
       "actionParameters": {},
       "subject": "api::faq.faq",
       "properties": {
-        "fields": [
-          "title",
-          "body",
-          "faqCategory",
-          "adminGroups"
-        ],
-        "locales": [
-          "en",
-          "sk"
-        ]
+        "fields": ["title", "body", "faqCategory", "adminGroups"],
+        "locales": ["en", "sk"]
       },
       "conditions": [],
       "locale": null
@@ -856,10 +670,7 @@
           "innovationsLink.analyticsId",
           "contactText"
         ],
-        "locales": [
-          "en",
-          "sk"
-        ]
+        "locales": ["en", "sk"]
       },
       "conditions": [],
       "locale": null
@@ -870,10 +681,7 @@
       "actionParameters": {},
       "subject": "api::footer.footer",
       "properties": {
-        "locales": [
-          "en",
-          "sk"
-        ]
+        "locales": ["en", "sk"]
       },
       "conditions": [],
       "locale": null
@@ -884,10 +692,7 @@
       "actionParameters": {},
       "subject": "api::footer.footer",
       "properties": {
-        "locales": [
-          "en",
-          "sk"
-        ]
+        "locales": ["en", "sk"]
       },
       "conditions": [],
       "locale": null
@@ -922,10 +727,7 @@
           "innovationsLink.analyticsId",
           "contactText"
         ],
-        "locales": [
-          "en",
-          "sk"
-        ]
+        "locales": ["en", "sk"]
       },
       "conditions": [],
       "locale": null
@@ -960,10 +762,7 @@
           "innovationsLink.analyticsId",
           "contactText"
         ],
-        "locales": [
-          "en",
-          "sk"
-        ]
+        "locales": ["en", "sk"]
       },
       "conditions": [],
       "locale": null
@@ -995,10 +794,7 @@
           "inbaReleasesPage",
           "documentsPage"
         ],
-        "locales": [
-          "en",
-          "sk"
-        ]
+        "locales": ["en", "sk"]
       },
       "conditions": [],
       "locale": null
@@ -1009,10 +805,7 @@
       "actionParameters": {},
       "subject": "api::general.general",
       "properties": {
-        "locales": [
-          "en",
-          "sk"
-        ]
+        "locales": ["en", "sk"]
       },
       "conditions": [],
       "locale": null
@@ -1023,10 +816,7 @@
       "actionParameters": {},
       "subject": "api::general.general",
       "properties": {
-        "locales": [
-          "en",
-          "sk"
-        ]
+        "locales": ["en", "sk"]
       },
       "conditions": [],
       "locale": null
@@ -1058,10 +848,7 @@
           "inbaReleasesPage",
           "documentsPage"
         ],
-        "locales": [
-          "en",
-          "sk"
-        ]
+        "locales": ["en", "sk"]
       },
       "conditions": [],
       "locale": null
@@ -1093,10 +880,7 @@
           "inbaReleasesPage",
           "documentsPage"
         ],
-        "locales": [
-          "en",
-          "sk"
-        ]
+        "locales": ["en", "sk"]
       },
       "conditions": [],
       "locale": null
@@ -1172,10 +956,7 @@
           "eventsSection.showMoreLink.url",
           "eventsSection.showMoreLink.analyticsId"
         ],
-        "locales": [
-          "en",
-          "sk"
-        ]
+        "locales": ["en", "sk"]
       },
       "conditions": [],
       "locale": null
@@ -1186,10 +967,7 @@
       "actionParameters": {},
       "subject": "api::homepage.homepage",
       "properties": {
-        "locales": [
-          "en",
-          "sk"
-        ]
+        "locales": ["en", "sk"]
       },
       "conditions": [],
       "locale": null
@@ -1200,10 +978,7 @@
       "actionParameters": {},
       "subject": "api::homepage.homepage",
       "properties": {
-        "locales": [
-          "en",
-          "sk"
-        ]
+        "locales": ["en", "sk"]
       },
       "conditions": [],
       "locale": null
@@ -1279,10 +1054,7 @@
           "eventsSection.showMoreLink.url",
           "eventsSection.showMoreLink.analyticsId"
         ],
-        "locales": [
-          "en",
-          "sk"
-        ]
+        "locales": ["en", "sk"]
       },
       "conditions": [],
       "locale": null
@@ -1358,10 +1130,7 @@
           "eventsSection.showMoreLink.url",
           "eventsSection.showMoreLink.analyticsId"
         ],
-        "locales": [
-          "en",
-          "sk"
-        ]
+        "locales": ["en", "sk"]
       },
       "conditions": [],
       "locale": null
@@ -1372,19 +1141,8 @@
       "actionParameters": {},
       "subject": "api::inba-article.inba-article",
       "properties": {
-        "fields": [
-          "title",
-          "slug",
-          "coverImage",
-          "inbaTag",
-          "perex",
-          "content",
-          "tags"
-        ],
-        "locales": [
-          "en",
-          "sk"
-        ]
+        "fields": ["title", "slug", "coverImage", "inbaTag", "perex", "content", "tags"],
+        "locales": ["en", "sk"]
       },
       "conditions": [],
       "locale": null
@@ -1395,10 +1153,7 @@
       "actionParameters": {},
       "subject": "api::inba-article.inba-article",
       "properties": {
-        "locales": [
-          "en",
-          "sk"
-        ]
+        "locales": ["en", "sk"]
       },
       "conditions": [],
       "locale": null
@@ -1409,10 +1164,7 @@
       "actionParameters": {},
       "subject": "api::inba-article.inba-article",
       "properties": {
-        "locales": [
-          "en",
-          "sk"
-        ]
+        "locales": ["en", "sk"]
       },
       "conditions": [],
       "locale": null
@@ -1423,19 +1175,8 @@
       "actionParameters": {},
       "subject": "api::inba-article.inba-article",
       "properties": {
-        "fields": [
-          "title",
-          "slug",
-          "coverImage",
-          "inbaTag",
-          "perex",
-          "content",
-          "tags"
-        ],
-        "locales": [
-          "en",
-          "sk"
-        ]
+        "fields": ["title", "slug", "coverImage", "inbaTag", "perex", "content", "tags"],
+        "locales": ["en", "sk"]
       },
       "conditions": [],
       "locale": null
@@ -1446,19 +1187,8 @@
       "actionParameters": {},
       "subject": "api::inba-article.inba-article",
       "properties": {
-        "fields": [
-          "title",
-          "slug",
-          "coverImage",
-          "inbaTag",
-          "perex",
-          "content",
-          "tags"
-        ],
-        "locales": [
-          "en",
-          "sk"
-        ]
+        "fields": ["title", "slug", "coverImage", "inbaTag", "perex", "content", "tags"],
+        "locales": ["en", "sk"]
       },
       "conditions": [],
       "locale": null
@@ -1553,14 +1283,8 @@
       "actionParameters": {},
       "subject": "api::inba-tag.inba-tag",
       "properties": {
-        "fields": [
-          "title",
-          "inbaArticles"
-        ],
-        "locales": [
-          "en",
-          "sk"
-        ]
+        "fields": ["title", "inbaArticles"],
+        "locales": ["en", "sk"]
       },
       "conditions": [],
       "locale": null
@@ -1571,10 +1295,7 @@
       "actionParameters": {},
       "subject": "api::inba-tag.inba-tag",
       "properties": {
-        "locales": [
-          "en",
-          "sk"
-        ]
+        "locales": ["en", "sk"]
       },
       "conditions": [],
       "locale": null
@@ -1585,10 +1306,7 @@
       "actionParameters": {},
       "subject": "api::inba-tag.inba-tag",
       "properties": {
-        "locales": [
-          "en",
-          "sk"
-        ]
+        "locales": ["en", "sk"]
       },
       "conditions": [],
       "locale": null
@@ -1599,14 +1317,8 @@
       "actionParameters": {},
       "subject": "api::inba-tag.inba-tag",
       "properties": {
-        "fields": [
-          "title",
-          "inbaArticles"
-        ],
-        "locales": [
-          "en",
-          "sk"
-        ]
+        "fields": ["title", "inbaArticles"],
+        "locales": ["en", "sk"]
       },
       "conditions": [],
       "locale": null
@@ -1617,14 +1329,8 @@
       "actionParameters": {},
       "subject": "api::inba-tag.inba-tag",
       "properties": {
-        "fields": [
-          "title",
-          "inbaArticles"
-        ],
-        "locales": [
-          "en",
-          "sk"
-        ]
+        "fields": ["title", "inbaArticles"],
+        "locales": ["en", "sk"]
       },
       "conditions": [],
       "locale": null
@@ -1635,13 +1341,7 @@
       "actionParameters": {},
       "subject": "api::internal-job.internal-job",
       "properties": {
-        "fields": [
-          "jobType",
-          "relatedDocumentId",
-          "payload",
-          "state",
-          "error"
-        ]
+        "fields": ["jobType", "relatedDocumentId", "payload", "state", "error"]
       },
       "conditions": [],
       "locale": null
@@ -1670,13 +1370,7 @@
       "actionParameters": {},
       "subject": "api::internal-job.internal-job",
       "properties": {
-        "fields": [
-          "jobType",
-          "relatedDocumentId",
-          "payload",
-          "state",
-          "error"
-        ]
+        "fields": ["jobType", "relatedDocumentId", "payload", "state", "error"]
       },
       "conditions": [],
       "locale": null
@@ -1687,13 +1381,7 @@
       "actionParameters": {},
       "subject": "api::internal-job.internal-job",
       "properties": {
-        "fields": [
-          "jobType",
-          "relatedDocumentId",
-          "payload",
-          "state",
-          "error"
-        ]
+        "fields": ["jobType", "relatedDocumentId", "payload", "state", "error"]
       },
       "conditions": [],
       "locale": null
@@ -1717,10 +1405,7 @@
           "menus.sections.links.url",
           "menus.sections.links.analyticsId"
         ],
-        "locales": [
-          "en",
-          "sk"
-        ]
+        "locales": ["en", "sk"]
       },
       "conditions": [],
       "locale": null
@@ -1731,10 +1416,7 @@
       "actionParameters": {},
       "subject": "api::menu.menu",
       "properties": {
-        "locales": [
-          "en",
-          "sk"
-        ]
+        "locales": ["en", "sk"]
       },
       "conditions": [],
       "locale": null
@@ -1745,10 +1427,7 @@
       "actionParameters": {},
       "subject": "api::menu.menu",
       "properties": {
-        "locales": [
-          "en",
-          "sk"
-        ]
+        "locales": ["en", "sk"]
       },
       "conditions": [],
       "locale": null
@@ -1772,10 +1451,7 @@
           "menus.sections.links.url",
           "menus.sections.links.analyticsId"
         ],
-        "locales": [
-          "en",
-          "sk"
-        ]
+        "locales": ["en", "sk"]
       },
       "conditions": [],
       "locale": null
@@ -1799,10 +1475,7 @@
           "menus.sections.links.url",
           "menus.sections.links.analyticsId"
         ],
-        "locales": [
-          "en",
-          "sk"
-        ]
+        "locales": ["en", "sk"]
       },
       "conditions": [],
       "locale": null
@@ -1813,17 +1486,8 @@
       "actionParameters": {},
       "subject": "api::page-category.page-category",
       "properties": {
-        "fields": [
-          "title",
-          "shortTitle",
-          "color",
-          "icon",
-          "pages"
-        ],
-        "locales": [
-          "en",
-          "sk"
-        ]
+        "fields": ["title", "shortTitle", "color", "icon", "pages"],
+        "locales": ["en", "sk"]
       },
       "conditions": [],
       "locale": null
@@ -1834,10 +1498,7 @@
       "actionParameters": {},
       "subject": "api::page-category.page-category",
       "properties": {
-        "locales": [
-          "en",
-          "sk"
-        ]
+        "locales": ["en", "sk"]
       },
       "conditions": [],
       "locale": null
@@ -1848,10 +1509,7 @@
       "actionParameters": {},
       "subject": "api::page-category.page-category",
       "properties": {
-        "locales": [
-          "en",
-          "sk"
-        ]
+        "locales": ["en", "sk"]
       },
       "conditions": [],
       "locale": null
@@ -1862,17 +1520,8 @@
       "actionParameters": {},
       "subject": "api::page-category.page-category",
       "properties": {
-        "fields": [
-          "title",
-          "shortTitle",
-          "color",
-          "icon",
-          "pages"
-        ],
-        "locales": [
-          "en",
-          "sk"
-        ]
+        "fields": ["title", "shortTitle", "color", "icon", "pages"],
+        "locales": ["en", "sk"]
       },
       "conditions": [],
       "locale": null
@@ -1883,17 +1532,8 @@
       "actionParameters": {},
       "subject": "api::page-category.page-category",
       "properties": {
-        "fields": [
-          "title",
-          "shortTitle",
-          "color",
-          "icon",
-          "pages"
-        ],
-        "locales": [
-          "en",
-          "sk"
-        ]
+        "fields": ["title", "shortTitle", "color", "icon", "pages"],
+        "locales": ["en", "sk"]
       },
       "conditions": [],
       "locale": null
@@ -1940,10 +1580,7 @@
           "relatedContents",
           "adminGroups"
         ],
-        "locales": [
-          "en",
-          "sk"
-        ]
+        "locales": ["en", "sk"]
       },
       "conditions": [],
       "locale": null
@@ -1954,10 +1591,7 @@
       "actionParameters": {},
       "subject": "api::page.page",
       "properties": {
-        "locales": [
-          "en",
-          "sk"
-        ]
+        "locales": ["en", "sk"]
       },
       "conditions": [],
       "locale": null
@@ -1968,10 +1602,7 @@
       "actionParameters": {},
       "subject": "api::page.page",
       "properties": {
-        "locales": [
-          "en",
-          "sk"
-        ]
+        "locales": ["en", "sk"]
       },
       "conditions": [],
       "locale": null
@@ -2018,10 +1649,7 @@
           "relatedContents",
           "adminGroups"
         ],
-        "locales": [
-          "en",
-          "sk"
-        ]
+        "locales": ["en", "sk"]
       },
       "conditions": [],
       "locale": null
@@ -2068,10 +1696,7 @@
           "relatedContents",
           "adminGroups"
         ],
-        "locales": [
-          "en",
-          "sk"
-        ]
+        "locales": ["en", "sk"]
       },
       "conditions": [],
       "locale": null
@@ -2082,12 +1707,7 @@
       "actionParameters": {},
       "subject": "api::redirect.redirect",
       "properties": {
-        "fields": [
-          "source",
-          "destination",
-          "permanent",
-          "page"
-        ]
+        "fields": ["source", "destination", "permanent", "page"]
       },
       "conditions": [],
       "locale": null
@@ -2116,12 +1736,7 @@
       "actionParameters": {},
       "subject": "api::redirect.redirect",
       "properties": {
-        "fields": [
-          "source",
-          "destination",
-          "permanent",
-          "page"
-        ]
+        "fields": ["source", "destination", "permanent", "page"]
       },
       "conditions": [],
       "locale": null
@@ -2132,12 +1747,7 @@
       "actionParameters": {},
       "subject": "api::redirect.redirect",
       "properties": {
-        "fields": [
-          "source",
-          "destination",
-          "permanent",
-          "page"
-        ]
+        "fields": ["source", "destination", "permanent", "page"]
       },
       "conditions": [],
       "locale": null
@@ -2241,16 +1851,8 @@
       "actionParameters": {},
       "subject": "api::tag.tag",
       "properties": {
-        "fields": [
-          "title",
-          "slug",
-          "pageCategory",
-          "articles"
-        ],
-        "locales": [
-          "en",
-          "sk"
-        ]
+        "fields": ["title", "slug", "pageCategory", "articles"],
+        "locales": ["en", "sk"]
       },
       "conditions": [],
       "locale": null
@@ -2261,10 +1863,7 @@
       "actionParameters": {},
       "subject": "api::tag.tag",
       "properties": {
-        "locales": [
-          "en",
-          "sk"
-        ]
+        "locales": ["en", "sk"]
       },
       "conditions": [],
       "locale": null
@@ -2275,10 +1874,7 @@
       "actionParameters": {},
       "subject": "api::tag.tag",
       "properties": {
-        "locales": [
-          "en",
-          "sk"
-        ]
+        "locales": ["en", "sk"]
       },
       "conditions": [],
       "locale": null
@@ -2289,16 +1885,8 @@
       "actionParameters": {},
       "subject": "api::tag.tag",
       "properties": {
-        "fields": [
-          "title",
-          "slug",
-          "pageCategory",
-          "articles"
-        ],
-        "locales": [
-          "en",
-          "sk"
-        ]
+        "fields": ["title", "slug", "pageCategory", "articles"],
+        "locales": ["en", "sk"]
       },
       "conditions": [],
       "locale": null
@@ -2309,16 +1897,8 @@
       "actionParameters": {},
       "subject": "api::tag.tag",
       "properties": {
-        "fields": [
-          "title",
-          "slug",
-          "pageCategory",
-          "articles"
-        ],
-        "locales": [
-          "en",
-          "sk"
-        ]
+        "fields": ["title", "slug", "pageCategory", "articles"],
+        "locales": ["en", "sk"]
       },
       "conditions": [],
       "locale": null

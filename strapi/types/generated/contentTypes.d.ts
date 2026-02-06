@@ -1348,6 +1348,7 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
         'sections.file-list',
         'sections.text-with-image',
         'sections.text-with-image-overlapped',
+        'sections.alert',
         'sections.official-board',
         'sections.videos',
         'sections.regulations',

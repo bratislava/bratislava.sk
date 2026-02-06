@@ -1,13 +1,13 @@
 {
-  "key": "plugin_content_manager_configuration_components::sections.articles-landing-page",
+  "key": "plugin_content_manager_configuration_components::sections.alert",
   "value": {
     "settings": {
       "bulkable": true,
       "filterable": true,
       "searchable": true,
       "pageSize": 10,
-      "mainField": "documentId",
-      "defaultSortBy": "documentId",
+      "mainField": "title",
+      "defaultSortBy": "title",
       "defaultSortOrder": "ASC"
     },
     "metadatas": {
@@ -19,34 +19,46 @@
           "sortable": false
         }
       },
-      "leftArticle": {
+      "title": {
         "edit": {
-          "label": "Článok vľavo",
+          "label": "Nadpis",
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true,
-          "mainField": "title"
+          "editable": true
         },
         "list": {
-          "label": "leftArticle",
+          "label": "title",
           "searchable": true,
           "sortable": true
         }
       },
-      "newsPageLink": {
+      "alertText": {
         "edit": {
-          "label": "Odkaz na stránku Aktuality",
+          "label": "Text",
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true,
-          "mainField": "label"
+          "editable": true
         },
         "list": {
-          "label": "newsPageLink",
-          "searchable": false,
-          "sortable": false
+          "label": "alertText",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "alertVariant": {
+        "edit": {
+          "label": "Typ upozornenia",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "alertVariant",
+          "searchable": true,
+          "sortable": true
         }
       },
       "documentId": {
@@ -62,20 +74,24 @@
       "edit": [
         [
           {
-            "name": "leftArticle",
-            "size": 6
+            "name": "title",
+            "size": 12
+          },
+          {
+            "name": "alertText",
+            "size": 12
           }
         ],
         [
           {
-            "name": "newsPageLink",
-            "size": 12
+            "name": "alertVariant",
+            "size": 6
           }
         ]
       ],
-      "list": ["id", "leftArticle", "newsPageLink"]
+      "list": ["id", "alertVariant", "title", "alertText"]
     },
-    "uid": "sections.articles-landing-page",
+    "uid": "sections.alert",
     "isComponent": true
   },
   "type": "object",

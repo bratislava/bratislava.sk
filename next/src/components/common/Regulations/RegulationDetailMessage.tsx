@@ -1,9 +1,12 @@
 import { Typography } from '@bratislava/component-library'
 import React, { Fragment } from 'react'
 
-import Alert from '@/src/components/common/Alert_Deprecated/Alert_Deprecated'
+import AlertMessage from '@/src/components/common/AlertMessage/AlertMessage'
 import MLink from '@/src/components/common/MLink/MLink'
-import { RegulationEntityFragment } from '@/src/services/graphql'
+import {
+  Enum_Componentsectionsalert_Alertvariant,
+  RegulationEntityFragment,
+} from '@/src/services/graphql'
 import { formatDate } from '@/src/utils/formatDate'
 import { getRegulationMetadata } from '@/src/utils/getRegulationMetadata'
 import { isDefined } from '@/src/utils/isDefined'
@@ -40,8 +43,11 @@ const RegulationDetailMessage = ({ regulation }: RegulationDetailMessageProps) =
    */
 
   // The regulation is considered as cancelled if it has a direct cancellation regulation, but also if it is amending any cancelled regulations
-  const alertType = isCancelledDirectly || hasCancelledAmendees ? 'error' : 'success'
-  const alertMessage = isCancelledDirectly || hasCancelledAmendees ? 'Zrušené' : 'Platné'
+  const alertVariant =
+    isCancelledDirectly || hasCancelledAmendees
+      ? Enum_Componentsectionsalert_Alertvariant.Error
+      : Enum_Componentsectionsalert_Alertvariant.Success
+  const alertTitle = isCancelledDirectly || hasCancelledAmendees ? 'Zrušené' : 'Platné'
 
   // TODO translations - use translations after this component is refactored
   const alertContent = isCancelledDirectly ? (
@@ -79,13 +85,9 @@ const RegulationDetailMessage = ({ regulation }: RegulationDetailMessageProps) =
   )
 
   return (
-    <Alert
-      type={alertType}
-      message={alertMessage}
-      variant="message"
-      content={alertContent as any} // workaround so we can include links in Alert content, until new component is designed
-      className="lg:max-w-[584px]" // workaround for width, so it fits to implied grid
-    />
+    <AlertMessage title={alertTitle} variant={alertVariant}>
+      {alertContent}
+    </AlertMessage>
   )
 }
 

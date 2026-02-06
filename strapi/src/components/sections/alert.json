@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_sections_alerts",
+  "info": {
+    "displayName": "Upozornenie"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "alertText": {
+      "type": "text",
+      "required": true
+    },
+    "alertVariant": {
+      "type": "enumeration",
+      "required": true,
+      "default": "warning",
+      "enum": [
+        "warning",
+        "info",
+        "success",
+        "error"
+      ]
+    }
+  },
+  "config": {}
+}

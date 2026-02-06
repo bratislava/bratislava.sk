@@ -148,12 +148,7 @@
           }
         ]
       ],
-      "list": [
-        "id",
-        "title",
-        "slug",
-        "createdAt"
-      ]
+      "list": ["id", "title", "slug", "createdAt"]
     },
     "uid": "api::asset-category.asset-category"
   },

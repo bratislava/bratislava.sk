@@ -519,6 +519,12 @@ fragment ArticlesLandingPageSection on ComponentSectionsArticlesLandingPage {
   }
 }
 
+fragment AlertSection on ComponentSectionsAlert {
+  title
+  alertText
+  alertVariant
+}
+
 fragment Sections on PageSectionsDynamicZone {
   __typename
 
@@ -660,6 +666,10 @@ fragment Sections on PageSectionsDynamicZone {
 
   ... on ComponentSectionsArticlesLandingPage {
     ...ArticlesLandingPageSection
+  }
+
+  ... on ComponentSectionsAlert {
+    ...AlertSection
   }
 }
 

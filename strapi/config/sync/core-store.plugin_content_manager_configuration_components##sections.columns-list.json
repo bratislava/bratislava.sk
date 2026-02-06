@@ -111,12 +111,7 @@
           }
         ]
       ],
-      "list": [
-        "id",
-        "title",
-        "text",
-        "leftColumn"
-      ]
+      "list": ["id", "title", "text", "leftColumn"]
     },
     "uid": "sections.columns-list",
     "isComponent": true
