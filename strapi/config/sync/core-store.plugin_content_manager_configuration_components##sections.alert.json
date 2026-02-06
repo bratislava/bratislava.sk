@@ -74,27 +74,22 @@
       "edit": [
         [
           {
+            "name": "title",
+            "size": 12
+          },
+          {
             "name": "alertText",
             "size": 12
           }
         ],
         [
           {
-            "name": "title",
-            "size": 12
-          },
-          {
             "name": "alertVariant",
             "size": 6
           }
         ]
       ],
-      "list": [
-        "id",
-        "alertVariant",
-        "title",
-        "alertText"
-      ]
+      "list": ["id", "alertVariant", "title", "alertText"]
     },
     "uid": "sections.alert",
     "isComponent": true
