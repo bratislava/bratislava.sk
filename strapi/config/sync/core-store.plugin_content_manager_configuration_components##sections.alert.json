@@ -74,18 +74,18 @@
       "edit": [
         [
           {
-            "name": "title",
-            "size": 6
-          },
-          {
-            "name": "alertVariant",
-            "size": 6
+            "name": "alertText",
+            "size": 12
           }
         ],
         [
           {
-            "name": "alertText",
+            "name": "title",
             "size": 12
+          },
+          {
+            "name": "alertVariant",
+            "size": 6
           }
         ]
       ],
