@@ -2,22 +2,16 @@ import { Typography } from '@bratislava/component-library'
 
 import { AlertIcon, CheckInCircleIcon, ErrorIcon, InfoIcon } from '@/src/assets/icons'
 import { CardTitleLevel } from '@/src/components/cards/getCardTitleLevel'
-import Markdown from '@/src/components/formatting/Markdown/Markdown'
 import { Enum_Componentsectionsalert_Alertvariant } from '@/src/services/graphql'
 import cn from '@/src/utils/cn'
 
 type Props = {
   title?: string
   titleLevel?: CardTitleLevel
-  text?: string
   variant?: Enum_Componentsectionsalert_Alertvariant
   className?: string
   children?: React.ReactNode
 }
-
-/**
- * Figma: https://www.figma.com/design/17wbd0MDQcMW9NbXl6UPs8/DS--Component-library?node-id=16846-12976&m=dev
- */
 
 const ICON_BY_VARIANT: Record<Enum_Componentsectionsalert_Alertvariant, React.ReactElement> = {
   [Enum_Componentsectionsalert_Alertvariant.Error]: (
@@ -34,7 +28,17 @@ const ICON_BY_VARIANT: Record<Enum_Componentsectionsalert_Alertvariant, React.Re
   ),
 }
 
-const AlertMessage = ({ title, titleLevel, text, variant, className, children }: Props) => {
+/**
+ * Figma: https://www.figma.com/design/17wbd0MDQcMW9NbXl6UPs8/DS--Component-library?node-id=16846-12976&m=dev
+ */
+
+const AlertMessage = ({
+  title,
+  titleLevel,
+  variant = Enum_Componentsectionsalert_Alertvariant.Info,
+  className,
+  children,
+}: Props) => {
   const icon = ICON_BY_VARIANT[variant || Enum_Componentsectionsalert_Alertvariant.Info]
 
   return (
@@ -59,7 +63,6 @@ const AlertMessage = ({ title, titleLevel, text, variant, className, children }:
             {title}
           </Typography>
         )}
-        {text ? <Markdown variant="small" content={text} /> : null}
         {children}
       </div>
     </div>

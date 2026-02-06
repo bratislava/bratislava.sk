@@ -43,11 +43,11 @@ const RegulationDetailMessage = ({ regulation }: RegulationDetailMessageProps) =
    */
 
   // The regulation is considered as cancelled if it has a direct cancellation regulation, but also if it is amending any cancelled regulations
-  const alertType =
+  const alertVariant =
     isCancelledDirectly || hasCancelledAmendees
       ? Enum_Componentsectionsalert_Alertvariant.Error
       : Enum_Componentsectionsalert_Alertvariant.Success
-  const alertMessage = isCancelledDirectly || hasCancelledAmendees ? 'Zrušené' : 'Platné'
+  const alertTitle = isCancelledDirectly || hasCancelledAmendees ? 'Zrušené' : 'Platné'
 
   // TODO translations - use translations after this component is refactored
   const alertContent = isCancelledDirectly ? (
@@ -85,7 +85,7 @@ const RegulationDetailMessage = ({ regulation }: RegulationDetailMessageProps) =
   )
 
   return (
-    <AlertMessage title={alertMessage} text="" variant={alertType}>
+    <AlertMessage title={alertTitle} variant={alertVariant}>
       {alertContent}
     </AlertMessage>
   )

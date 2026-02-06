@@ -1,7 +1,7 @@
 import * as React from 'react'
 
 import AccordionSection from '@/src/components/sections/AccordionSection'
-import AlertSections from '@/src/components/sections/AlertSections'
+import AlertSection from '@/src/components/sections/AlertSection'
 import ArticlesLandingPageSection from '@/src/components/sections/ArticlesLandingPageSection'
 import ArticlesSection from '@/src/components/sections/ArticlesSection/ArticlesSection'
 import BannerSection from '@/src/components/sections/BannerSection'
@@ -155,7 +155,7 @@ const SectionContent = ({ section }: { section: SectionsFragment }) => {
       return <ArticlesLandingPageSection section={section} />
 
     case 'ComponentSectionsAlert':
-      return <AlertSections section={section} />
+      return <AlertSection section={section} />
 
     default:
       return null

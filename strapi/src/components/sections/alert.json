@@ -13,10 +13,12 @@
     },
     "alertVariant": {
       "type": "enumeration",
+      "required": true,
+      "default": "warning",
       "enum": [
+        "warning",
         "info",
         "success",
-        "warning",
         "error"
       ]
     }

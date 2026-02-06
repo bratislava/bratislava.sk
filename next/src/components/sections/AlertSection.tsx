@@ -9,7 +9,9 @@ type AlertSectionProps = { section: AlertSectionFragment }
 const AlertSection = ({ section }: AlertSectionProps) => {
   return (
     <SectionContainer>
-      <AlertMessage title={section.title} variant={section.alertVariant} text={section.text} />
+      <AlertMessage title={section.title ?? undefined} variant={section.alertVariant ?? undefined}>
+        {section.text}
+      </AlertMessage>
     </SectionContainer>
   )
 }
