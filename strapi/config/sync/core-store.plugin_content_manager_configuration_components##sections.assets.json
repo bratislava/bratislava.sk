@@ -15,13 +15,13 @@
         "edit": {},
         "list": {
           "label": "id",
-          "searchable": true,
-          "sortable": true
+          "searchable": false,
+          "sortable": false
         }
       },
       "title": {
         "edit": {
-          "label": "title",
+          "label": "Nadpis",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -35,7 +35,7 @@
       },
       "text": {
         "edit": {
-          "label": "text",
+          "label": "Text",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -49,8 +49,8 @@
       },
       "showAll": {
         "edit": {
-          "label": "showAll",
-          "description": "",
+          "label": "Zobraziť všetky",
+          "description": "Ak je toto pole TRUE, zobrazia sa všetky Dokumenty spolu s vyhľadávaním. Ak je FALSE, zobrazia sa Dokumenty vybrané vo vedľajšom poli.",
           "placeholder": "",
           "visible": true,
           "editable": true
@@ -63,7 +63,7 @@
       },
       "assets": {
         "edit": {
-          "label": "assets",
+          "label": "Dokumenty",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -78,8 +78,8 @@
       },
       "titleLevel": {
         "edit": {
-          "label": "titleLevel",
-          "description": "",
+          "label": "Úroveň nadpisu sekcie",
+          "description": "Úroveň nadpisu meníme na h3 iba ak je to potrebné sémanticky. Nikdy ju nemeníme len kvôli vizuálnej veľkosti nadpisu.",
           "placeholder": "",
           "visible": true,
           "editable": true
@@ -100,40 +100,35 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "title",
-        "text",
-        "showAll"
-      ],
       "edit": [
         [
           {
             "name": "title",
-            "size": 6
+            "size": 12
           },
           {
             "name": "text",
-            "size": 6
+            "size": 12
           }
         ],
         [
           {
             "name": "showAll",
-            "size": 4
-          },
-          {
-            "name": "assets",
-            "size": 6
+            "size": 12
           }
         ],
         [
           {
+            "name": "assets",
+            "size": 12
+          },
+          {
             "name": "titleLevel",
-            "size": 6
+            "size": 8
           }
         ]
-      ]
+      ],
+      "list": ["id", "title", "text", "showAll"]
     },
     "uid": "sections.assets",
     "isComponent": true

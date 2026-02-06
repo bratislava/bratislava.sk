@@ -21,7 +21,7 @@
       },
       "title": {
         "edit": {
-          "label": "title",
+          "label": "Nadpis",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -35,7 +35,7 @@
       },
       "slug": {
         "edit": {
-          "label": "slug",
+          "label": "Slug",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -49,7 +49,7 @@
       },
       "assets": {
         "edit": {
-          "label": "assets",
+          "label": "Dokumenty",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -130,30 +130,25 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "title",
-        "slug",
-        "assets"
-      ],
       "edit": [
         [
           {
             "name": "title",
-            "size": 6
+            "size": 12
           },
           {
             "name": "slug",
-            "size": 6
+            "size": 12
           }
         ],
         [
           {
             "name": "assets",
-            "size": 6
+            "size": 12
           }
         ]
-      ]
+      ],
+      "list": ["id", "title", "slug", "createdAt"]
     },
     "uid": "api::asset-category.asset-category"
   },

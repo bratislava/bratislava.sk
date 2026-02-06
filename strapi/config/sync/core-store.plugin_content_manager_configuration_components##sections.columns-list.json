@@ -21,7 +21,7 @@
       },
       "title": {
         "edit": {
-          "label": "title",
+          "label": "Nadpis",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -35,7 +35,7 @@
       },
       "text": {
         "edit": {
-          "label": "text",
+          "label": "Text",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -49,11 +49,12 @@
       },
       "leftColumn": {
         "edit": {
-          "label": "leftColumn",
+          "label": "Stĺpec vľavo",
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true
+          "editable": true,
+          "mainField": "documentId"
         },
         "list": {
           "label": "leftColumn",
@@ -63,11 +64,12 @@
       },
       "rightColumn": {
         "edit": {
-          "label": "rightColumn",
+          "label": "Stĺpec vpravo",
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true
+          "editable": true,
+          "mainField": "documentId"
         },
         "list": {
           "label": "rightColumn",
@@ -85,12 +87,6 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "title",
-        "text",
-        "leftColumn"
-      ],
       "edit": [
         [
           {
@@ -114,7 +110,8 @@
             "size": 12
           }
         ]
-      ]
+      ],
+      "list": ["id", "title", "text", "leftColumn"]
     },
     "uid": "sections.columns-list",
     "isComponent": true
