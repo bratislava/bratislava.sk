@@ -352,6 +352,7 @@ export interface ApiAdminGroupAdminGroup extends Struct.CollectionTypeSchema {
   attributes: {
     adminGroupId: Schema.Attribute.UID<'title'>
     articles: Schema.Attribute.Relation<'manyToMany', 'api::article.article'>
+    assets: Schema.Attribute.Relation<'manyToMany', 'api::asset.asset'>
     contentManagedBy: Schema.Attribute.String & Schema.Attribute.Required
     createdAt: Schema.Attribute.DateTime
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> & Schema.Attribute.Private
@@ -531,6 +532,59 @@ export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
           localized: true
         }
       }>
+    updatedAt: Schema.Attribute.DateTime
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> & Schema.Attribute.Private
+  }
+}
+
+export interface ApiAssetCategoryAssetCategory extends Struct.CollectionTypeSchema {
+  collectionName: 'asset_categories'
+  info: {
+    displayName: 'Asset category'
+    pluralName: 'asset-categories'
+    singularName: 'asset-category'
+  }
+  options: {
+    draftAndPublish: true
+  }
+  attributes: {
+    assets: Schema.Attribute.Relation<'oneToMany', 'api::asset.asset'>
+    createdAt: Schema.Attribute.DateTime
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> & Schema.Attribute.Private
+    locale: Schema.Attribute.String & Schema.Attribute.Private
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::asset-category.asset-category'> &
+      Schema.Attribute.Private
+    publishedAt: Schema.Attribute.DateTime
+    slug: Schema.Attribute.UID<'title'> & Schema.Attribute.Required
+    title: Schema.Attribute.String & Schema.Attribute.Required
+    updatedAt: Schema.Attribute.DateTime
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> & Schema.Attribute.Private
+  }
+}
+
+export interface ApiAssetAsset extends Struct.CollectionTypeSchema {
+  collectionName: 'assets'
+  info: {
+    displayName: 'Asset'
+    pluralName: 'assets'
+    singularName: 'asset'
+  }
+  options: {
+    draftAndPublish: true
+  }
+  attributes: {
+    adminGroups: Schema.Attribute.Relation<'manyToMany', 'api::admin-group.admin-group'>
+    assetCategory: Schema.Attribute.Relation<'manyToOne', 'api::asset-category.asset-category'>
+    createdAt: Schema.Attribute.DateTime
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> & Schema.Attribute.Private
+    description: Schema.Attribute.Text
+    files: Schema.Attribute.Media<'images' | 'files', true> & Schema.Attribute.Required
+    locale: Schema.Attribute.String & Schema.Attribute.Private
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::asset.asset'> &
+      Schema.Attribute.Private
+    publishedAt: Schema.Attribute.DateTime
+    slug: Schema.Attribute.UID<'title'> & Schema.Attribute.Required
+    title: Schema.Attribute.String & Schema.Attribute.Required
     updatedAt: Schema.Attribute.DateTime
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> & Schema.Attribute.Private
   }
@@ -1269,6 +1323,7 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
         'sections.articles-landing-page',
         'sections.divider',
         'sections.documents',
+        'sections.assets',
         'sections.faqs',
         'sections.faq-categories',
         'sections.gallery',
@@ -1932,6 +1987,8 @@ declare module '@strapi/strapi' {
       'api::alert.alert': ApiAlertAlert
       'api::article-category.article-category': ApiArticleCategoryArticleCategory
       'api::article.article': ApiArticleArticle
+      'api::asset-category.asset-category': ApiAssetCategoryAssetCategory
+      'api::asset.asset': ApiAssetAsset
       'api::document-category.document-category': ApiDocumentCategoryDocumentCategory
       'api::document.document': ApiDocumentDocument
       'api::faq-category.faq-category': ApiFaqCategoryFaqCategory

@@ -1,0 +1,37 @@
+fragment AssetCategoryEntity on AssetCategory {
+  documentId
+  title
+  slug
+}
+
+fragment AssetSlugEntity on Asset {
+  __typename
+  documentId
+  slug
+  title
+}
+
+fragment AssetEntity on Asset {
+  ...AssetSlugEntity
+  publishedAt
+  updatedAt
+  assetCategory {
+    ...AssetCategoryEntity
+  }
+  description
+  files {
+    ...UploadFileEntity
+  }
+}
+
+query AssetBySlug($slug: String!) {
+  assets(filters: { slug: { eq: $slug } }) {
+    ...AssetEntity
+  }
+}
+
+query AssetCategories {
+  assetCategories(pagination: { limit: -1 }) {
+    ...AssetCategoryEntity
+  }
+}

@@ -1,5 +1,5 @@
 {
-  "key": "plugin_content_manager_configuration_components::sections.columns-list",
+  "key": "plugin_content_manager_configuration_content_types::api::asset-category.asset-category",
   "value": {
     "settings": {
       "bulkable": true,
@@ -15,8 +15,8 @@
         "edit": {},
         "list": {
           "label": "id",
-          "searchable": false,
-          "sortable": false
+          "searchable": true,
+          "sortable": true
         }
       },
       "title": {
@@ -33,46 +33,91 @@
           "sortable": true
         }
       },
-      "text": {
+      "slug": {
         "edit": {
-          "label": "text",
+          "label": "slug",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "text",
+          "label": "slug",
           "searchable": true,
           "sortable": true
         }
       },
-      "leftColumn": {
+      "assets": {
         "edit": {
-          "label": "leftColumn",
+          "label": "assets",
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true
+          "editable": true,
+          "mainField": "title"
         },
         "list": {
-          "label": "leftColumn",
+          "label": "assets",
           "searchable": false,
           "sortable": false
         }
       },
-      "rightColumn": {
+      "createdAt": {
         "edit": {
-          "label": "rightColumn",
+          "label": "createdAt",
           "description": "",
           "placeholder": "",
-          "visible": true,
+          "visible": false,
           "editable": true
         },
         "list": {
-          "label": "rightColumn",
-          "searchable": false,
-          "sortable": false
+          "label": "createdAt",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "updatedAt": {
+        "edit": {
+          "label": "updatedAt",
+          "description": "",
+          "placeholder": "",
+          "visible": false,
+          "editable": true
+        },
+        "list": {
+          "label": "updatedAt",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "createdBy": {
+        "edit": {
+          "label": "createdBy",
+          "description": "",
+          "placeholder": "",
+          "visible": false,
+          "editable": true,
+          "mainField": "firstname"
+        },
+        "list": {
+          "label": "createdBy",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "updatedBy": {
+        "edit": {
+          "label": "updatedBy",
+          "description": "",
+          "placeholder": "",
+          "visible": false,
+          "editable": true,
+          "mainField": "firstname"
+        },
+        "list": {
+          "label": "updatedBy",
+          "searchable": true,
+          "sortable": true
         }
       },
       "documentId": {
@@ -88,8 +133,8 @@
       "list": [
         "id",
         "title",
-        "text",
-        "leftColumn"
+        "slug",
+        "assets"
       ],
       "edit": [
         [
@@ -98,26 +143,19 @@
             "size": 6
           },
           {
-            "name": "text",
+            "name": "slug",
             "size": 6
           }
         ],
         [
           {
-            "name": "leftColumn",
-            "size": 12
-          }
-        ],
-        [
-          {
-            "name": "rightColumn",
-            "size": 12
+            "name": "assets",
+            "size": 6
           }
         ]
       ]
     },
-    "uid": "sections.columns-list",
-    "isComponent": true
+    "uid": "api::asset-category.asset-category"
   },
   "type": "object",
   "environment": null,

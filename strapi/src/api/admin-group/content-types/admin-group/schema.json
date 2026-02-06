@@ -62,6 +62,12 @@
       "relation": "manyToMany",
       "target": "api::document.document",
       "inversedBy": "adminGroups"
+    },
+    "assets": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::asset.asset",
+      "inversedBy": "adminGroups"
     }
   }
 }

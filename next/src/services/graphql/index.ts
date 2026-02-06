@@ -41,6 +41,8 @@ export type AdminGroup = {
   adminGroupId?: Maybe<Scalars['String']['output']>
   articles: Array<Maybe<Article>>
   articles_connection?: Maybe<ArticleRelationResponseCollection>
+  assets: Array<Maybe<Asset>>
+  assets_connection?: Maybe<AssetRelationResponseCollection>
   contentManagedBy: Scalars['String']['output']
   createdAt?: Maybe<Scalars['DateTime']['output']>
   documentId: Scalars['ID']['output']
@@ -66,6 +68,18 @@ export type AdminGroupArticlesArgs = {
 
 export type AdminGroupArticles_ConnectionArgs = {
   filters?: InputMaybe<ArticleFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type AdminGroupAssetsArgs = {
+  filters?: InputMaybe<AssetFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type AdminGroupAssets_ConnectionArgs = {
+  filters?: InputMaybe<AssetFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
 }
@@ -133,6 +147,7 @@ export type AdminGroupFiltersInput = {
   adminGroupId?: InputMaybe<StringFilterInput>
   and?: InputMaybe<Array<InputMaybe<AdminGroupFiltersInput>>>
   articles?: InputMaybe<ArticleFiltersInput>
+  assets?: InputMaybe<AssetFiltersInput>
   contentManagedBy?: InputMaybe<StringFilterInput>
   createdAt?: InputMaybe<DateTimeFilterInput>
   documentId?: InputMaybe<IdFilterInput>
@@ -152,6 +167,7 @@ export type AdminGroupFiltersInput = {
 export type AdminGroupInput = {
   adminGroupId?: InputMaybe<Scalars['String']['input']>
   articles?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
+  assets?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
   contentManagedBy?: InputMaybe<Scalars['String']['input']>
   documents?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
   faqs?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
@@ -443,6 +459,159 @@ export type ArticleInput = {
 export type ArticleRelationResponseCollection = {
   __typename?: 'ArticleRelationResponseCollection'
   nodes: Array<Article>
+}
+
+export type Asset = {
+  __typename?: 'Asset'
+  adminGroups: Array<Maybe<AdminGroup>>
+  adminGroups_connection?: Maybe<AdminGroupRelationResponseCollection>
+  assetCategory?: Maybe<AssetCategory>
+  createdAt?: Maybe<Scalars['DateTime']['output']>
+  description?: Maybe<Scalars['String']['output']>
+  documentId: Scalars['ID']['output']
+  files: Array<Maybe<UploadFile>>
+  files_connection: UploadFileRelationResponseCollection
+  publishedAt?: Maybe<Scalars['DateTime']['output']>
+  slug: Scalars['String']['output']
+  title: Scalars['String']['output']
+  updatedAt?: Maybe<Scalars['DateTime']['output']>
+}
+
+export type AssetAdminGroupsArgs = {
+  filters?: InputMaybe<AdminGroupFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type AssetAdminGroups_ConnectionArgs = {
+  filters?: InputMaybe<AdminGroupFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type AssetFilesArgs = {
+  filters?: InputMaybe<UploadFileFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type AssetFiles_ConnectionArgs = {
+  filters?: InputMaybe<UploadFileFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type AssetCategory = {
+  __typename?: 'AssetCategory'
+  assets: Array<Maybe<Asset>>
+  assets_connection?: Maybe<AssetRelationResponseCollection>
+  createdAt?: Maybe<Scalars['DateTime']['output']>
+  documentId: Scalars['ID']['output']
+  publishedAt?: Maybe<Scalars['DateTime']['output']>
+  slug: Scalars['String']['output']
+  title: Scalars['String']['output']
+  updatedAt?: Maybe<Scalars['DateTime']['output']>
+}
+
+export type AssetCategoryAssetsArgs = {
+  filters?: InputMaybe<AssetFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type AssetCategoryAssets_ConnectionArgs = {
+  filters?: InputMaybe<AssetFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type AssetCategoryEntity = {
+  __typename?: 'AssetCategoryEntity'
+  attributes?: Maybe<AssetCategory>
+  id?: Maybe<Scalars['ID']['output']>
+}
+
+export type AssetCategoryEntityResponse = {
+  __typename?: 'AssetCategoryEntityResponse'
+  data?: Maybe<AssetCategory>
+}
+
+export type AssetCategoryEntityResponseCollection = {
+  __typename?: 'AssetCategoryEntityResponseCollection'
+  nodes: Array<AssetCategory>
+  pageInfo: Pagination
+}
+
+export type AssetCategoryFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<AssetCategoryFiltersInput>>>
+  assets?: InputMaybe<AssetFiltersInput>
+  createdAt?: InputMaybe<DateTimeFilterInput>
+  documentId?: InputMaybe<IdFilterInput>
+  not?: InputMaybe<AssetCategoryFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<AssetCategoryFiltersInput>>>
+  publishedAt?: InputMaybe<DateTimeFilterInput>
+  slug?: InputMaybe<StringFilterInput>
+  title?: InputMaybe<StringFilterInput>
+  updatedAt?: InputMaybe<DateTimeFilterInput>
+}
+
+export type AssetCategoryInput = {
+  assets?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
+  publishedAt?: InputMaybe<Scalars['DateTime']['input']>
+  slug?: InputMaybe<Scalars['String']['input']>
+  title?: InputMaybe<Scalars['String']['input']>
+}
+
+export type AssetCategoryRelationResponseCollection = {
+  __typename?: 'AssetCategoryRelationResponseCollection'
+  nodes: Array<AssetCategory>
+}
+
+export type AssetEntity = {
+  __typename?: 'AssetEntity'
+  attributes?: Maybe<Asset>
+  id?: Maybe<Scalars['ID']['output']>
+}
+
+export type AssetEntityResponse = {
+  __typename?: 'AssetEntityResponse'
+  data?: Maybe<Asset>
+}
+
+export type AssetEntityResponseCollection = {
+  __typename?: 'AssetEntityResponseCollection'
+  nodes: Array<Asset>
+  pageInfo: Pagination
+}
+
+export type AssetFiltersInput = {
+  adminGroups?: InputMaybe<AdminGroupFiltersInput>
+  and?: InputMaybe<Array<InputMaybe<AssetFiltersInput>>>
+  assetCategory?: InputMaybe<AssetCategoryFiltersInput>
+  createdAt?: InputMaybe<DateTimeFilterInput>
+  description?: InputMaybe<StringFilterInput>
+  documentId?: InputMaybe<IdFilterInput>
+  not?: InputMaybe<AssetFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<AssetFiltersInput>>>
+  publishedAt?: InputMaybe<DateTimeFilterInput>
+  slug?: InputMaybe<StringFilterInput>
+  title?: InputMaybe<StringFilterInput>
+  updatedAt?: InputMaybe<DateTimeFilterInput>
+}
+
+export type AssetInput = {
+  adminGroups?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
+  assetCategory?: InputMaybe<Scalars['ID']['input']>
+  description?: InputMaybe<Scalars['String']['input']>
+  files?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
+  publishedAt?: InputMaybe<Scalars['DateTime']['input']>
+  slug?: InputMaybe<Scalars['String']['input']>
+  title?: InputMaybe<Scalars['String']['input']>
+}
+
+export type AssetRelationResponseCollection = {
+  __typename?: 'AssetRelationResponseCollection'
+  nodes: Array<Asset>
 }
 
 export type BooleanFilterInput = {
@@ -1435,7 +1604,7 @@ export type ComponentSectionsAccordionInput = {
 
 export type ComponentSectionsAlert = {
   __typename?: 'ComponentSectionsAlert'
-  alertVariant?: Maybe<Enum_Componentsectionsalert_Alertvariant>
+  alertVariant: Enum_Componentsectionsalert_Alertvariant
   id: Scalars['ID']['output']
   text?: Maybe<Scalars['String']['output']>
   title?: Maybe<Scalars['String']['output']>
@@ -1570,6 +1739,49 @@ export type ComponentSectionsArticlesLandingPageInput = {
   id?: InputMaybe<Scalars['ID']['input']>
   leftArticle?: InputMaybe<Scalars['ID']['input']>
   newsPageLink?: InputMaybe<ComponentBlocksCommonLinkInput>
+}
+
+export type ComponentSectionsAssets = {
+  __typename?: 'ComponentSectionsAssets'
+  assets: Array<Maybe<Asset>>
+  assets_connection?: Maybe<AssetRelationResponseCollection>
+  id: Scalars['ID']['output']
+  showAll?: Maybe<Scalars['Boolean']['output']>
+  text?: Maybe<Scalars['String']['output']>
+  title?: Maybe<Scalars['String']['output']>
+  titleLevel?: Maybe<Enum_Componentsectionsassets_Titlelevel>
+}
+
+export type ComponentSectionsAssetsAssetsArgs = {
+  filters?: InputMaybe<AssetFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type ComponentSectionsAssetsAssets_ConnectionArgs = {
+  filters?: InputMaybe<AssetFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type ComponentSectionsAssetsFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentSectionsAssetsFiltersInput>>>
+  assets?: InputMaybe<AssetFiltersInput>
+  not?: InputMaybe<ComponentSectionsAssetsFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<ComponentSectionsAssetsFiltersInput>>>
+  showAll?: InputMaybe<BooleanFilterInput>
+  text?: InputMaybe<StringFilterInput>
+  title?: InputMaybe<StringFilterInput>
+  titleLevel?: InputMaybe<StringFilterInput>
+}
+
+export type ComponentSectionsAssetsInput = {
+  assets?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
+  id?: InputMaybe<Scalars['ID']['input']>
+  showAll?: InputMaybe<Scalars['Boolean']['input']>
+  text?: InputMaybe<Scalars['String']['input']>
+  title?: InputMaybe<Scalars['String']['input']>
+  titleLevel?: InputMaybe<Enum_Componentsectionsassets_Titlelevel>
 }
 
 export type ComponentSectionsBanner = {
@@ -3194,6 +3406,11 @@ export enum Enum_Componentsectionsalert_Alertvariant {
   Warning = 'warning',
 }
 
+export enum Enum_Componentsectionsassets_Titlelevel {
+  H2 = 'h2',
+  H3 = 'h3',
+}
+
 export enum Enum_Componentsectionsbanner_Contentposition {
   Left = 'left',
   Right = 'right',
@@ -3759,6 +3976,8 @@ export type GenericMorph =
   | Alert
   | Article
   | ArticleCategory
+  | Asset
+  | AssetCategory
   | ComponentAccordionItemsFlatText
   | ComponentAccordionItemsInstitution
   | ComponentBlocksCardLink
@@ -3797,6 +4016,7 @@ export type GenericMorph =
   | ComponentSectionsAlert
   | ComponentSectionsArticles
   | ComponentSectionsArticlesLandingPage
+  | ComponentSectionsAssets
   | ComponentSectionsBanner
   | ComponentSectionsColumnedText
   | ComponentSectionsColumns
@@ -4489,6 +4709,8 @@ export type Mutation = {
   createAdminGroup?: Maybe<AdminGroup>
   createArticle?: Maybe<Article>
   createArticleCategory?: Maybe<ArticleCategory>
+  createAsset?: Maybe<Asset>
+  createAssetCategory?: Maybe<AssetCategory>
   createDocument?: Maybe<Document>
   createDocumentCategory?: Maybe<DocumentCategory>
   createFaq?: Maybe<Faq>
@@ -4512,6 +4734,8 @@ export type Mutation = {
   deleteAlert?: Maybe<DeleteMutationResponse>
   deleteArticle?: Maybe<DeleteMutationResponse>
   deleteArticleCategory?: Maybe<DeleteMutationResponse>
+  deleteAsset?: Maybe<DeleteMutationResponse>
+  deleteAssetCategory?: Maybe<DeleteMutationResponse>
   deleteDocument?: Maybe<DeleteMutationResponse>
   deleteDocumentCategory?: Maybe<DeleteMutationResponse>
   deleteFaq?: Maybe<DeleteMutationResponse>
@@ -4550,6 +4774,8 @@ export type Mutation = {
   updateAlert?: Maybe<Alert>
   updateArticle?: Maybe<Article>
   updateArticleCategory?: Maybe<ArticleCategory>
+  updateAsset?: Maybe<Asset>
+  updateAssetCategory?: Maybe<AssetCategory>
   updateDocument?: Maybe<Document>
   updateDocumentCategory?: Maybe<DocumentCategory>
   updateFaq?: Maybe<Faq>
@@ -4597,6 +4823,16 @@ export type MutationCreateArticleArgs = {
 export type MutationCreateArticleCategoryArgs = {
   data: ArticleCategoryInput
   locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
+  status?: InputMaybe<PublicationStatus>
+}
+
+export type MutationCreateAssetArgs = {
+  data: AssetInput
+  status?: InputMaybe<PublicationStatus>
+}
+
+export type MutationCreateAssetCategoryArgs = {
+  data: AssetCategoryInput
   status?: InputMaybe<PublicationStatus>
 }
 
@@ -4706,6 +4942,14 @@ export type MutationDeleteArticleArgs = {
 export type MutationDeleteArticleCategoryArgs = {
   documentId: Scalars['ID']['input']
   locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
+}
+
+export type MutationDeleteAssetArgs = {
+  documentId: Scalars['ID']['input']
+}
+
+export type MutationDeleteAssetCategoryArgs = {
+  documentId: Scalars['ID']['input']
 }
 
 export type MutationDeleteDocumentArgs = {
@@ -4848,6 +5092,18 @@ export type MutationUpdateArticleCategoryArgs = {
   data: ArticleCategoryInput
   documentId: Scalars['ID']['input']
   locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
+  status?: InputMaybe<PublicationStatus>
+}
+
+export type MutationUpdateAssetArgs = {
+  data: AssetInput
+  documentId: Scalars['ID']['input']
+  status?: InputMaybe<PublicationStatus>
+}
+
+export type MutationUpdateAssetCategoryArgs = {
+  data: AssetCategoryInput
+  documentId: Scalars['ID']['input']
   status?: InputMaybe<PublicationStatus>
 }
 
@@ -5297,6 +5553,7 @@ export type PageSectionsDynamicZone =
   | ComponentSectionsAlert
   | ComponentSectionsArticles
   | ComponentSectionsArticlesLandingPage
+  | ComponentSectionsAssets
   | ComponentSectionsBanner
   | ComponentSectionsColumnedText
   | ComponentSectionsColumns
@@ -5366,6 +5623,12 @@ export type Query = {
   articleCategory?: Maybe<ArticleCategory>
   articles: Array<Maybe<Article>>
   articles_connection?: Maybe<ArticleEntityResponseCollection>
+  asset?: Maybe<Asset>
+  assetCategories: Array<Maybe<AssetCategory>>
+  assetCategories_connection?: Maybe<AssetCategoryEntityResponseCollection>
+  assetCategory?: Maybe<AssetCategory>
+  assets: Array<Maybe<Asset>>
+  assets_connection?: Maybe<AssetEntityResponseCollection>
   document?: Maybe<Document>
   documentCategories: Array<Maybe<DocumentCategory>>
   documentCategories_connection?: Maybe<DocumentCategoryEntityResponseCollection>
@@ -5494,6 +5757,44 @@ export type QueryArticlesArgs = {
 export type QueryArticles_ConnectionArgs = {
   filters?: InputMaybe<ArticleFiltersInput>
   locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+  status?: InputMaybe<PublicationStatus>
+}
+
+export type QueryAssetArgs = {
+  documentId: Scalars['ID']['input']
+  status?: InputMaybe<PublicationStatus>
+}
+
+export type QueryAssetCategoriesArgs = {
+  filters?: InputMaybe<AssetCategoryFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+  status?: InputMaybe<PublicationStatus>
+}
+
+export type QueryAssetCategories_ConnectionArgs = {
+  filters?: InputMaybe<AssetCategoryFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+  status?: InputMaybe<PublicationStatus>
+}
+
+export type QueryAssetCategoryArgs = {
+  documentId: Scalars['ID']['input']
+  status?: InputMaybe<PublicationStatus>
+}
+
+export type QueryAssetsArgs = {
+  filters?: InputMaybe<AssetFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+  status?: InputMaybe<PublicationStatus>
+}
+
+export type QueryAssets_ConnectionArgs = {
+  filters?: InputMaybe<AssetFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
   status?: InputMaybe<PublicationStatus>
@@ -7334,6 +7635,91 @@ export type Dev_AllArticlesQuery = {
   } | null>
 }
 
+export type AssetCategoryEntityFragment = {
+  __typename?: 'AssetCategory'
+  documentId: string
+  title: string
+  slug: string
+}
+
+export type AssetSlugEntityFragment = {
+  __typename: 'Asset'
+  documentId: string
+  slug: string
+  title: string
+}
+
+export type AssetEntityFragment = {
+  __typename: 'Asset'
+  publishedAt?: any | null
+  updatedAt?: any | null
+  description?: string | null
+  documentId: string
+  slug: string
+  title: string
+  assetCategory?: {
+    __typename?: 'AssetCategory'
+    documentId: string
+    title: string
+    slug: string
+  } | null
+  files: Array<{
+    __typename?: 'UploadFile'
+    documentId: string
+    url: string
+    name: string
+    ext?: string | null
+    size: number
+    createdAt?: any | null
+    updatedAt?: any | null
+  } | null>
+}
+
+export type AssetBySlugQueryVariables = Exact<{
+  slug: Scalars['String']['input']
+}>
+
+export type AssetBySlugQuery = {
+  __typename?: 'Query'
+  assets: Array<{
+    __typename: 'Asset'
+    publishedAt?: any | null
+    updatedAt?: any | null
+    description?: string | null
+    documentId: string
+    slug: string
+    title: string
+    assetCategory?: {
+      __typename?: 'AssetCategory'
+      documentId: string
+      title: string
+      slug: string
+    } | null
+    files: Array<{
+      __typename?: 'UploadFile'
+      documentId: string
+      url: string
+      name: string
+      ext?: string | null
+      size: number
+      createdAt?: any | null
+      updatedAt?: any | null
+    } | null>
+  } | null>
+}
+
+export type AssetCategoriesQueryVariables = Exact<{ [key: string]: never }>
+
+export type AssetCategoriesQuery = {
+  __typename?: 'Query'
+  assetCategories: Array<{
+    __typename?: 'AssetCategory'
+    documentId: string
+    title: string
+    slug: string
+  } | null>
+}
+
 export type DocumentCategoryEntityFragment = {
   __typename?: 'DocumentCategory'
   documentId: string
@@ -7496,6 +7882,7 @@ export type AllFilesQuery = {
       | { __typename?: 'ComponentSectionsAlert' }
       | { __typename?: 'ComponentSectionsArticles' }
       | { __typename?: 'ComponentSectionsArticlesLandingPage' }
+      | { __typename?: 'ComponentSectionsAssets' }
       | {
           __typename?: 'ComponentSectionsBanner'
           media: { __typename?: 'UploadFile'; documentId: string }
@@ -10357,7 +10744,7 @@ export type PageEntityFragment = {
         __typename: 'ComponentSectionsAlert'
         title?: string | null
         text?: string | null
-        alertVariant?: Enum_Componentsectionsalert_Alertvariant | null
+        alertVariant: Enum_Componentsectionsalert_Alertvariant
       }
     | {
         __typename: 'ComponentSectionsArticles'
@@ -10513,6 +10900,7 @@ export type PageEntityFragment = {
           } | null
         } | null
       }
+    | { __typename: 'ComponentSectionsAssets' }
     | {
         __typename: 'ComponentSectionsBanner'
         content?: string | null
@@ -11650,7 +12038,7 @@ export type PageBySlugQuery = {
           __typename: 'ComponentSectionsAlert'
           title?: string | null
           text?: string | null
-          alertVariant?: Enum_Componentsectionsalert_Alertvariant | null
+          alertVariant: Enum_Componentsectionsalert_Alertvariant
         }
       | {
           __typename: 'ComponentSectionsArticles'
@@ -11806,6 +12194,7 @@ export type PageBySlugQuery = {
             } | null
           } | null
         }
+      | { __typename: 'ComponentSectionsAssets' }
       | {
           __typename: 'ComponentSectionsBanner'
           content?: string | null
@@ -12972,7 +13361,7 @@ export type Dev_AllPagesQuery = {
           __typename: 'ComponentSectionsAlert'
           title?: string | null
           text?: string | null
-          alertVariant?: Enum_Componentsectionsalert_Alertvariant | null
+          alertVariant: Enum_Componentsectionsalert_Alertvariant
         }
       | {
           __typename: 'ComponentSectionsArticles'
@@ -13128,6 +13517,7 @@ export type Dev_AllPagesQuery = {
             } | null
           } | null
         }
+      | { __typename: 'ComponentSectionsAssets' }
       | {
           __typename: 'ComponentSectionsBanner'
           content?: string | null
@@ -15990,7 +16380,7 @@ export type AlertSectionFragment = {
   __typename?: 'ComponentSectionsAlert'
   title?: string | null
   text?: string | null
-  alertVariant?: Enum_Componentsectionsalert_Alertvariant | null
+  alertVariant: Enum_Componentsectionsalert_Alertvariant
 }
 
 type Sections_ComponentSectionsAccordion_Fragment = {
@@ -16043,7 +16433,7 @@ type Sections_ComponentSectionsAlert_Fragment = {
   __typename: 'ComponentSectionsAlert'
   title?: string | null
   text?: string | null
-  alertVariant?: Enum_Componentsectionsalert_Alertvariant | null
+  alertVariant: Enum_Componentsectionsalert_Alertvariant
 }
 
 type Sections_ComponentSectionsArticles_Fragment = {
@@ -16201,6 +16591,8 @@ type Sections_ComponentSectionsArticlesLandingPage_Fragment = {
     } | null
   } | null
 }
+
+type Sections_ComponentSectionsAssets_Fragment = { __typename: 'ComponentSectionsAssets' }
 
 type Sections_ComponentSectionsBanner_Fragment = {
   __typename: 'ComponentSectionsBanner'
@@ -17136,6 +17528,7 @@ export type SectionsFragment =
   | Sections_ComponentSectionsAlert_Fragment
   | Sections_ComponentSectionsArticles_Fragment
   | Sections_ComponentSectionsArticlesLandingPage_Fragment
+  | Sections_ComponentSectionsAssets_Fragment
   | Sections_ComponentSectionsBanner_Fragment
   | Sections_ComponentSectionsColumnedText_Fragment
   | Sections_ComponentSectionsColumns_Fragment
@@ -17408,6 +17801,38 @@ export const ArticleEntityFragmentDoc = gql`
   ${UploadImageEntityFragmentDoc}
   ${InbaReleaseCardEntityFragmentDoc}
   ${AdminGroupSlugEntityFragmentDoc}
+`
+export const AssetSlugEntityFragmentDoc = gql`
+  fragment AssetSlugEntity on Asset {
+    __typename
+    documentId
+    slug
+    title
+  }
+`
+export const AssetCategoryEntityFragmentDoc = gql`
+  fragment AssetCategoryEntity on AssetCategory {
+    documentId
+    title
+    slug
+  }
+`
+export const AssetEntityFragmentDoc = gql`
+  fragment AssetEntity on Asset {
+    ...AssetSlugEntity
+    publishedAt
+    updatedAt
+    assetCategory {
+      ...AssetCategoryEntity
+    }
+    description
+    files {
+      ...UploadFileEntity
+    }
+  }
+  ${AssetSlugEntityFragmentDoc}
+  ${AssetCategoryEntityFragmentDoc}
+  ${UploadFileEntityFragmentDoc}
 `
 export const UploadFileFragmentDoc = gql`
   fragment UploadFile on UploadFile {
@@ -18881,6 +19306,22 @@ export const Dev_AllArticlesDocument = gql`
   }
   ${ArticleEntityFragmentDoc}
 `
+export const AssetBySlugDocument = gql`
+  query AssetBySlug($slug: String!) {
+    assets(filters: { slug: { eq: $slug } }) {
+      ...AssetEntity
+    }
+  }
+  ${AssetEntityFragmentDoc}
+`
+export const AssetCategoriesDocument = gql`
+  query AssetCategories {
+    assetCategories(pagination: { limit: -1 }) {
+      ...AssetCategoryEntity
+    }
+  }
+  ${AssetCategoryEntityFragmentDoc}
+`
 export const DocumentBySlugDocument = gql`
   query DocumentBySlug($slug: String!) {
     documents(filters: { slug: { eq: $slug } }) {
@@ -19388,6 +19829,42 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
             signal,
           }),
         'Dev_AllArticles',
+        'query',
+        variables,
+      )
+    },
+    AssetBySlug(
+      variables: AssetBySlugQueryVariables,
+      requestHeaders?: GraphQLClientRequestHeaders,
+      signal?: RequestInit['signal'],
+    ): Promise<AssetBySlugQuery> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<AssetBySlugQuery>({
+            document: AssetBySlugDocument,
+            variables,
+            requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders },
+            signal,
+          }),
+        'AssetBySlug',
+        'query',
+        variables,
+      )
+    },
+    AssetCategories(
+      variables?: AssetCategoriesQueryVariables,
+      requestHeaders?: GraphQLClientRequestHeaders,
+      signal?: RequestInit['signal'],
+    ): Promise<AssetCategoriesQuery> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<AssetCategoriesQuery>({
+            document: AssetCategoriesDocument,
+            variables,
+            requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders },
+            signal,
+          }),
+        'AssetCategories',
         'query',
         variables,
       )

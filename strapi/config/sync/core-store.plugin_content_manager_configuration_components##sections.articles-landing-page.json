@@ -21,7 +21,7 @@
       },
       "leftArticle": {
         "edit": {
-          "label": "Článok vľavo",
+          "label": "leftArticle",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -36,12 +36,11 @@
       },
       "newsPageLink": {
         "edit": {
-          "label": "Odkaz na stránku Aktuality",
+          "label": "newsPageLink",
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true,
-          "mainField": "label"
+          "editable": true
         },
         "list": {
           "label": "newsPageLink",
@@ -59,6 +58,11 @@
       }
     },
     "layouts": {
+      "list": [
+        "id",
+        "leftArticle",
+        "newsPageLink"
+      ],
       "edit": [
         [
           {
@@ -72,11 +76,6 @@
             "size": 12
           }
         ]
-      ],
-      "list": [
-        "id",
-        "leftArticle",
-        "newsPageLink"
       ]
     },
     "uid": "sections.articles-landing-page",

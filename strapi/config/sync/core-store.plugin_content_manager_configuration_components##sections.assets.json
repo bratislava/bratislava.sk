@@ -1,5 +1,5 @@
 {
-  "key": "plugin_content_manager_configuration_components::sections.alert",
+  "key": "plugin_content_manager_configuration_components::sections.assets",
   "value": {
     "settings": {
       "bulkable": true,
@@ -15,8 +15,8 @@
         "edit": {},
         "list": {
           "label": "id",
-          "searchable": false,
-          "sortable": false
+          "searchable": true,
+          "sortable": true
         }
       },
       "title": {
@@ -47,16 +47,45 @@
           "sortable": true
         }
       },
-      "alertVariant": {
+      "showAll": {
         "edit": {
-          "label": "alertVariant",
+          "label": "showAll",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "alertVariant",
+          "label": "showAll",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "assets": {
+        "edit": {
+          "label": "assets",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "title"
+        },
+        "list": {
+          "label": "assets",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "titleLevel": {
+        "edit": {
+          "label": "titleLevel",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "titleLevel",
           "searchable": true,
           "sortable": true
         }
@@ -75,7 +104,7 @@
         "id",
         "title",
         "text",
-        "alertVariant"
+        "showAll"
       ],
       "edit": [
         [
@@ -90,13 +119,23 @@
         ],
         [
           {
-            "name": "alertVariant",
+            "name": "showAll",
+            "size": 4
+          },
+          {
+            "name": "assets",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "titleLevel",
             "size": 6
           }
         ]
       ]
     },
-    "uid": "sections.alert",
+    "uid": "sections.assets",
     "isComponent": true
   },
   "type": "object",
