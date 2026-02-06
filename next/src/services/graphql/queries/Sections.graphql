@@ -521,7 +521,7 @@ fragment ArticlesLandingPageSection on ComponentSectionsArticlesLandingPage {
 
 fragment AlertSection on ComponentSectionsAlert {
   title
-  text
+  alertText
   alertVariant
 }
 

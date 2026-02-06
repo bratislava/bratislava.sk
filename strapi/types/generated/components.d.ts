@@ -546,10 +546,10 @@ export interface SectionsAlert extends Struct.ComponentSchema {
     displayName: 'Upozornenie'
   }
   attributes: {
+    alertText: Schema.Attribute.Text & Schema.Attribute.Required
     alertVariant: Schema.Attribute.Enumeration<['warning', 'info', 'success', 'error']> &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<'warning'>
-    text: Schema.Attribute.Text
     title: Schema.Attribute.String
   }
 }

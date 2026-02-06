@@ -21,7 +21,7 @@
       },
       "title": {
         "edit": {
-          "label": "title",
+          "label": "Nadpis",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -33,23 +33,23 @@
           "sortable": true
         }
       },
-      "text": {
+      "alertText": {
         "edit": {
-          "label": "text",
+          "label": "Text",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "text",
+          "label": "alertText",
           "searchable": true,
           "sortable": true
         }
       },
       "alertVariant": {
         "edit": {
-          "label": "alertVariant",
+          "label": "Typ upozornenia",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -71,12 +71,6 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "title",
-        "text",
-        "alertVariant"
-      ],
       "edit": [
         [
           {
@@ -84,16 +78,22 @@
             "size": 6
           },
           {
-            "name": "text",
+            "name": "alertVariant",
             "size": 6
           }
         ],
         [
           {
-            "name": "alertVariant",
-            "size": 6
+            "name": "alertText",
+            "size": 12
           }
         ]
+      ],
+      "list": [
+        "id",
+        "alertVariant",
+        "title",
+        "alertText"
       ]
     },
     "uid": "sections.alert",

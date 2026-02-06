@@ -8,10 +8,18 @@ const AlertShowCase = () => {
   return (
     <Wrapper direction="column" title="Alert">
       <Stack direction="column">
-        <AlertMessage title="Warning" variant={Enum_Componentsectionsalert_Alertvariant.Warning} />
-        <AlertMessage title="Info" variant={Enum_Componentsectionsalert_Alertvariant.Info} />
-        <AlertMessage title="Success" variant={Enum_Componentsectionsalert_Alertvariant.Success} />
-        <AlertMessage title="Error" variant={Enum_Componentsectionsalert_Alertvariant.Error} />
+        <AlertMessage variant={Enum_Componentsectionsalert_Alertvariant.Warning}>
+          Alert text
+        </AlertMessage>
+        <AlertMessage variant={Enum_Componentsectionsalert_Alertvariant.Info}>
+          Alert text
+        </AlertMessage>
+        <AlertMessage variant={Enum_Componentsectionsalert_Alertvariant.Success}>
+          Alert text
+        </AlertMessage>
+        <AlertMessage variant={Enum_Componentsectionsalert_Alertvariant.Error}>
+          Alert text
+        </AlertMessage>
       </Stack>
       <Stack direction="column">
         <AlertMessage title="Warning" variant={Enum_Componentsectionsalert_Alertvariant.Warning}>

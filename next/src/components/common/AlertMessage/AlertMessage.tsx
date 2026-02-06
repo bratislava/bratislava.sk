@@ -6,11 +6,11 @@ import { Enum_Componentsectionsalert_Alertvariant } from '@/src/services/graphql
 import cn from '@/src/utils/cn'
 
 type Props = {
-  title?: string
+  title?: string | undefined | null
   titleLevel?: CardTitleLevel
   variant?: Enum_Componentsectionsalert_Alertvariant
   className?: string
-  children?: React.ReactNode
+  children: React.ReactNode
 }
 
 const ICON_BY_VARIANT: Record<Enum_Componentsectionsalert_Alertvariant, React.ReactElement> = {
@@ -39,8 +39,6 @@ const AlertMessage = ({
   className,
   children,
 }: Props) => {
-  const icon = ICON_BY_VARIANT[variant || Enum_Componentsectionsalert_Alertvariant.Info]
-
   return (
     <div
       className={cn(
@@ -56,7 +54,7 @@ const AlertMessage = ({
         },
       )}
     >
-      <div className={cn({ 'max-lg:hidden': !!title })}>{icon}</div>
+      <div className={cn({ 'max-lg:hidden': !!title })}>{ICON_BY_VARIANT[variant]}</div>
       <div className="flex flex-col gap-1">
         {title && (
           <Typography variant="h6" as={titleLevel}>

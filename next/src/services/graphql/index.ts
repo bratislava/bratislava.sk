@@ -1604,25 +1604,25 @@ export type ComponentSectionsAccordionInput = {
 
 export type ComponentSectionsAlert = {
   __typename?: 'ComponentSectionsAlert'
+  alertText: Scalars['String']['output']
   alertVariant: Enum_Componentsectionsalert_Alertvariant
   id: Scalars['ID']['output']
-  text?: Maybe<Scalars['String']['output']>
   title?: Maybe<Scalars['String']['output']>
 }
 
 export type ComponentSectionsAlertFiltersInput = {
+  alertText?: InputMaybe<StringFilterInput>
   alertVariant?: InputMaybe<StringFilterInput>
   and?: InputMaybe<Array<InputMaybe<ComponentSectionsAlertFiltersInput>>>
   not?: InputMaybe<ComponentSectionsAlertFiltersInput>
   or?: InputMaybe<Array<InputMaybe<ComponentSectionsAlertFiltersInput>>>
-  text?: InputMaybe<StringFilterInput>
   title?: InputMaybe<StringFilterInput>
 }
 
 export type ComponentSectionsAlertInput = {
+  alertText?: InputMaybe<Scalars['String']['input']>
   alertVariant?: InputMaybe<Enum_Componentsectionsalert_Alertvariant>
   id?: InputMaybe<Scalars['ID']['input']>
-  text?: InputMaybe<Scalars['String']['input']>
   title?: InputMaybe<Scalars['String']['input']>
 }
 
@@ -10743,7 +10743,7 @@ export type PageEntityFragment = {
     | {
         __typename: 'ComponentSectionsAlert'
         title?: string | null
-        text?: string | null
+        alertText: string
         alertVariant: Enum_Componentsectionsalert_Alertvariant
       }
     | {
@@ -12037,7 +12037,7 @@ export type PageBySlugQuery = {
       | {
           __typename: 'ComponentSectionsAlert'
           title?: string | null
-          text?: string | null
+          alertText: string
           alertVariant: Enum_Componentsectionsalert_Alertvariant
         }
       | {
@@ -13360,7 +13360,7 @@ export type Dev_AllPagesQuery = {
       | {
           __typename: 'ComponentSectionsAlert'
           title?: string | null
-          text?: string | null
+          alertText: string
           alertVariant: Enum_Componentsectionsalert_Alertvariant
         }
       | {
@@ -16379,7 +16379,7 @@ export type ArticlesLandingPageSectionFragment = {
 export type AlertSectionFragment = {
   __typename?: 'ComponentSectionsAlert'
   title?: string | null
-  text?: string | null
+  alertText: string
   alertVariant: Enum_Componentsectionsalert_Alertvariant
 }
 
@@ -16432,7 +16432,7 @@ type Sections_ComponentSectionsAccordion_Fragment = {
 type Sections_ComponentSectionsAlert_Fragment = {
   __typename: 'ComponentSectionsAlert'
   title?: string | null
-  text?: string | null
+  alertText: string
   alertVariant: Enum_Componentsectionsalert_Alertvariant
 }
 
@@ -19012,7 +19012,7 @@ export const ArticlesLandingPageSectionFragmentDoc = gql`
 export const AlertSectionFragmentDoc = gql`
   fragment AlertSection on ComponentSectionsAlert {
     title
-    text
+    alertText
     alertVariant
   }
 `

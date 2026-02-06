@@ -8,8 +8,9 @@
     "title": {
       "type": "string"
     },
-    "text": {
-      "type": "text"
+    "alertText": {
+      "type": "text",
+      "required": true
     },
     "alertVariant": {
       "type": "enumeration",

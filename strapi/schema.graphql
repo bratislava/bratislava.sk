@@ -1258,25 +1258,25 @@ input ComponentSectionsAccordionInput {
 }
 
 type ComponentSectionsAlert {
+  alertText: String!
   alertVariant: ENUM_COMPONENTSECTIONSALERT_ALERTVARIANT!
   id: ID!
-  text: String
   title: String
 }
 
 input ComponentSectionsAlertFiltersInput {
+  alertText: StringFilterInput
   alertVariant: StringFilterInput
   and: [ComponentSectionsAlertFiltersInput]
   not: ComponentSectionsAlertFiltersInput
   or: [ComponentSectionsAlertFiltersInput]
-  text: StringFilterInput
   title: StringFilterInput
 }
 
 input ComponentSectionsAlertInput {
+  alertText: String
   alertVariant: ENUM_COMPONENTSECTIONSALERT_ALERTVARIANT
   id: ID
-  text: String
   title: String
 }
 
