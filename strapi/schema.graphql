@@ -1147,7 +1147,7 @@ input ComponentSectionsAccordionInput {
 }
 
 type ComponentSectionsAlert {
-  alertVariant: ENUM_COMPONENTSECTIONSALERT_ALERTVARIANT
+  alertVariant: ENUM_COMPONENTSECTIONSALERT_ALERTVARIANT!
   id: ID!
   text: String
   title: String
