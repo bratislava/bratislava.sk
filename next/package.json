@@ -4,9 +4,9 @@
   "private": true,
   "license": "EUPL-1.2",
   "scripts": {
-    "dev": "next dev --webpack",
-    "develop": "next dev --webpack",
-    "build": "next build --webpack",
+    "dev": "next dev",
+    "develop": "next dev",
+    "build": "next build",
     "start": "next start",
     "typecheck": "tsc",
     "lint": "eslint src",
