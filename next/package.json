@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "next dev",
     "develop": "next dev",
-    "build": "next build",
+    "build": "next build --webpack",
     "start": "next start",
     "typecheck": "tsc",
     "lint": "eslint src",
@@ -33,7 +33,7 @@
     "@bratislava/ginis-sdk": "^2.1.0",
     "@iframe-resizer/react": "5.5.7",
     "@internationalized/date": "3.7.0",
-    "@next/third-parties": "15.5.9",
+    "@next/third-parties": "16.1.6",
     "@radix-ui/react-navigation-menu": "1.2.5",
     "@react-stately/utils": "3.10.5",
     "@sindresorhus/slugify": "^2.2.1",
@@ -50,15 +50,15 @@
     "i18next": "24.2.3",
     "lodash": "4.17.21",
     "meilisearch": "0.30.0",
-    "next": "15.5.9",
+    "next": "16.1.6",
     "next-i18next": "15.4.2",
     "next-plausible": "^3.7.2",
     "nuqs": "^2.7.1",
     "pretty-bytes": "^6.1.0",
-    "react": "19.2.0",
+    "react": "19.2.4",
     "react-aria": "3.38.1",
     "react-aria-components": "1.7.1",
-    "react-dom": "19.2.0",
+    "react-dom": "19.2.4",
     "react-i18next": "15.4.1",
     "react-markdown": "10.1.0",
     "react-resize-detector": "12.0.2",
@@ -89,8 +89,8 @@
     "@tailwindcss/postcss": "^4.1.7",
     "@types/lodash": "4.17.16",
     "@types/node": "20.17.27",
-    "@types/react": "19.2.2",
-    "@types/react-dom": "19.2.2",
+    "@types/react": "19.2.13",
+    "@types/react-dom": "19.2.3",
     "@types/rss": "^0.0.32",
     "@types/xml2js": "^0.4.14",
     "eslint": "^9.39.1",
@@ -112,9 +112,5 @@
   "volta": {
     "node": "20.19.0",
     "npm": "10.8.3"
-  },
-  "overrides": {
-    "@types/react": "19.2.2",
-    "@types/react-dom": "19.2.2"
   }
 }
