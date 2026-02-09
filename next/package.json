@@ -30,7 +30,7 @@
   "dependencies": {
     "@azure/msal-node": "^3.4.0",
     "@bratislava/component-library": "1.0.5",
-    "@bratislava/ginis-sdk": "^2.1.0",
+    "@bratislava/ginis-sdk": "2.1.2",
     "@iframe-resizer/react": "5.5.7",
     "@internationalized/date": "3.7.0",
     "@next/third-parties": "15.5.9",
