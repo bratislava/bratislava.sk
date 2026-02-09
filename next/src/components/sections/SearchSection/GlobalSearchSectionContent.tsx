@@ -1,8 +1,8 @@
 import { Typography } from '@bratislava/component-library'
 import { useIsFetching } from '@tanstack/react-query'
+import { useQueryState } from 'nuqs'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { Selection, TagGroup, TagList } from 'react-aria-components'
-import { StringParam, useQueryParam, withDefault } from 'use-query-params'
 import { useDebounceValue } from 'usehooks-ts'
 
 import Chip from '@/src/components/common/Chip/Chip'
@@ -31,13 +31,13 @@ export type SearchOption = {
 
 type Props =
   | {
-      variant: 'general'
-      searchOption?: never
-    }
+    variant: 'general'
+    searchOption?: never
+  }
   | {
-      variant: 'specific'
-      searchOption: Exclude<SearchOption['id'], 'allResults'>
-    }
+    variant: 'specific'
+    searchOption: Exclude<SearchOption['id'], 'allResults'>
+  }
 
 /**
  * TODO Figma link
@@ -46,7 +46,7 @@ type Props =
 const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
   const { t } = useTranslation()
 
-  const [routerQueryValue] = useQueryParam('keyword', withDefault(StringParam, ''))
+  const [routerQueryValue] = useQueryState('keyword', { defaultValue: '' })
   const [input, setInput] = useState('')
   const [debouncedInput] = useDebounceValue(input, 300)
   const [searchValue, setSearchValue] = useState(debouncedInput)
@@ -80,12 +80,12 @@ const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
     ...(isProductionDeployment() && variant === 'general'
       ? []
       : [
-          {
-            id: 'documents' as const,
-            displayName: t('SearchPage.document'),
-            displayNamePlural: t('SearchPage.documents'),
-          },
-        ]),
+        {
+          id: 'documents' as const,
+          displayName: t('SearchPage.document'),
+          displayNamePlural: t('SearchPage.documents'),
+        },
+      ]),
     {
       id: 'users',
       displayName: t('SearchPage.contact'),
@@ -217,7 +217,7 @@ const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
             selectedKeys={selection}
             onSelectionChange={handleSelection}
           >
-            <TagList className="-m-1.5 scrollbar-hide flex gap-x-2 overflow-auto p-1.5 max-md:negative-x-spacing max-md:flex-nowrap">
+            <TagList className="scrollbar-hide max-md:negative-x-spacing -m-1.5 flex gap-x-2 overflow-auto p-1.5 max-md:flex-nowrap">
               {[defaultSearchOption, ...searchOptions].map((option) => {
                 return (
                   <Chip
@@ -237,7 +237,7 @@ const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
 
         {/* Additional filters, currently only for officialBoard */}
         {selectedKey === 'officialBoard' ? (
-          <div className="flex flex-col gap-4 rounded-md bg-grey-100 p-4">
+          <div className="flex flex-col gap-4 rounded-md bg-gray-100 p-4">
             {/* TODO heading "Doplnkovy filter" as it is in figma */}
             <div>
               <OfficialBoardAdditionalFilters
