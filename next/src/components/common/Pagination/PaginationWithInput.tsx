@@ -71,7 +71,7 @@ const PaginationWithInput = ({
 
         <Button
           variant="plain"
-          isDisabled={Number(inputValue) >= totalCount || inputValue.toString() === ''}
+          isDisabled={Number(inputValue) >= totalCount || inputValue === ''}
           onPress={() => {
             handlePageChange(currentPage + 1)
           }}

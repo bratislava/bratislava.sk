@@ -137,7 +137,9 @@ const GallerySlider = forwardRef<HTMLDivElement, SliderProps>(
     )
 
     return (
+      // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
       <div
+        // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
         tabIndex={0}
         onFocus={() => {
           setFocused(true)

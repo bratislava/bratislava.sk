@@ -25,8 +25,14 @@ const OrganizationalStructureAccordion = ({
     <div className="flex flex-col">
       <div
         role="button"
+        tabIndex={0}
         onClick={toggleIsOpen}
-        onKeyDown={toggleIsOpen}
+        onKeyDown={(event) => {
+          if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault()
+            toggleIsOpen()
+          }
+        }}
         className={cn('lg-gap-x-6 flex cursor-pointer items-start gap-x-3 lg:items-center', {
           'pb-8': !isOpen,
         })}

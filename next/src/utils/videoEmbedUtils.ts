@@ -16,6 +16,7 @@ export const detectVideoPlatform = (url: string) => {
 export const getVideoId = (platform: string, url: string) => {
   if (platform === 'youtube') {
     const youtubeRegex =
+      // eslint-disable-next-line sonarjs/regex-complexity
       /(?:youtube\.com\/(?:[^/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[&?]v=)|youtu\.be\/)([^\s"&/?]{11})/
     const youtubeMatch = url.match(youtubeRegex)
 

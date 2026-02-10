@@ -44,12 +44,6 @@ export default [
       'react-hooks/set-state-in-effect': 'warn', // 3 violations
       'react/prop-types': 'warn', // 3 violations
       '@typescript-eslint/no-empty-object-type': 'warn', // 2 violations
-      'jsx-a11y/interactive-supports-focus': 'warn', // 1 violation
-      'jsx-a11y/no-noninteractive-element-interactions': 'warn', // 1 violation
-      'jsx-a11y/no-noninteractive-tabindex': 'warn', // 1 violation
-      'react-hooks/refs': 'warn', // 1 violation
-      'sonarjs/function-return-type': 'warn', // 1 violation
-      'sonarjs/regex-complexity': 'warn', // 1 violation
     },
   },
 ]

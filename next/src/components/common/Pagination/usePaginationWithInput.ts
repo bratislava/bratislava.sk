@@ -26,6 +26,7 @@ export const usePaginationWithInput = ({
     setInputValue(currentPage)
   }, [currentPage])
 
+  // eslint-disable-next-line sonarjs/function-return-type
   const getValidValue = (incomingValue: HTMLInputElement['value']) => {
     let result: InputValue
     const incomingNumberValue = Number(incomingValue)
