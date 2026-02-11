@@ -1339,7 +1339,7 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
         'sections.events',
         'sections.tootoot-events',
         'sections.comparison-section',
-        'sections.job-offer-list',
+        'sections.job-offers',
         'sections.pros-and-cons-section',
         'sections.facilities',
         'sections.columned-text',

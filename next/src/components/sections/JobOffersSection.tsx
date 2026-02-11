@@ -8,7 +8,7 @@ import Button from '@/src/components/common/Button/Button'
 import HorizontalDivider from '@/src/components/common/Divider/HorizontalDivider'
 import SectionContainer from '@/src/components/layouts/SectionContainer'
 import SectionHeader from '@/src/components/layouts/SectionHeader'
-import { JobOfferListSectionFragment } from '@/src/services/graphql'
+import { JobOffersSectionFragment } from '@/src/services/graphql'
 import { isDefined } from '@/src/utils/isDefined'
 
 const jobOfferMock = [
@@ -62,7 +62,7 @@ const jobOfferMock = [
  * Figma: https://www.figma.com/design/A9aoQH2FGhR1D14wvvk6FW/Mestsk%C3%BD-web--bratislava.sk-?node-id=3331-7668&t=42jF8eIC6pPGhocy-4
  */
 
-type JobOffersSectionProps = { section: JobOfferListSectionFragment }
+type JobOffersSectionProps = { section: JobOffersSectionFragment }
 
 const JobOffersSection = ({ section }: JobOffersSectionProps) => {
   const { title, text, titleLevel } = section

@@ -1,5 +1,5 @@
 {
-  "key": "plugin_content_manager_configuration_components::sections.job-offer-list",
+  "key": "plugin_content_manager_configuration_components::sections.job-offers",
   "value": {
     "settings": {
       "bulkable": true,
@@ -50,7 +50,7 @@
       "titleLevel": {
         "edit": {
           "label": "Úroveň nadpisu sekcie",
-          "description": "Úroveň nadpisu meníme na h3 iba ak je to potrebné sémanticky. Nikdy ju nemeníme len kvôli vizuálnej veľkosti nadpisu.",
+          "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
@@ -78,14 +78,14 @@
             "size": 6
           },
           {
-            "name": "text",
-            "size": 12
+            "name": "titleLevel",
+            "size": 6
           }
         ],
         [
           {
-            "name": "titleLevel",
-            "size": 6
+            "name": "text",
+            "size": 12
           }
         ]
       ],
@@ -96,7 +96,7 @@
         "titleLevel"
       ]
     },
-    "uid": "sections.job-offer-list",
+    "uid": "sections.job-offers",
     "isComponent": true
   },
   "type": "object",

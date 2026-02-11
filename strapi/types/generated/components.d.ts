@@ -947,8 +947,8 @@ export interface SectionsInbaReleases extends Struct.ComponentSchema {
   }
 }
 
-export interface SectionsJobOfferList extends Struct.ComponentSchema {
-  collectionName: 'components_sections_job_offer_lists'
+export interface SectionsJobOffers extends Struct.ComponentSchema {
+  collectionName: 'components_sections_job_offers'
   info: {
     displayName: 'Pracovn\u00E9 poz\u00EDcie'
   }
@@ -1315,7 +1315,7 @@ declare module '@strapi/strapi' {
       'sections.iframe': SectionsIframe
       'sections.inba-latest-release': SectionsInbaLatestRelease
       'sections.inba-releases': SectionsInbaReleases
-      'sections.job-offer-list': SectionsJobOfferList
+      'sections.job-offers': SectionsJobOffers
       'sections.links': SectionsLinks
       'sections.narrow-text': SectionsNarrowText
       'sections.newsletter': SectionsNewsletter

@@ -158,7 +158,7 @@ const SectionContent = ({ section }: { section: SectionsFragment }) => {
     case 'ComponentSectionsAlert':
       return <AlertSection section={section} />
 
-    case 'ComponentSectionsJobOfferList':
+    case 'ComponentSectionsJobOffers':
       return <JobOffersSection section={section} />
 
     default:
