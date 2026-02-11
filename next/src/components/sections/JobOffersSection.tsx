@@ -1,6 +1,5 @@
 import { Typography } from '@bratislava/component-library'
-import { useTranslation } from 'next-i18next'
-import React, { Fragment, useId } from 'react'
+import React, { Fragment } from 'react'
 
 import { ChevronRightIcon } from '@/src/assets/icons'
 import CardBase from '@/src/components/cards/CardBase'
@@ -59,15 +58,14 @@ const jobOfferMock = [
 ]
 
 /**
+ * TODO: add Figma link to Component library
  * Figma: https://www.figma.com/design/A9aoQH2FGhR1D14wvvk6FW/Mestsk%C3%BD-web--bratislava.sk-?node-id=3331-7668&t=42jF8eIC6pPGhocy-4
  */
 
 type JobOffersSectionProps = { section: JobOfferListSectionFragment }
 
 const JobOffersSection = ({ section }: JobOffersSectionProps) => {
-  const { t } = useTranslation()
-  const { title, text, titleLevel = 'h2' } = section
-  const titleId = useId()
+  const { title, text, titleLevel } = section
 
   return (
     <SectionContainer>
@@ -103,8 +101,7 @@ const JobOffersSection = ({ section }: JobOffersSectionProps) => {
 
                     <Button
                       href={jobOffer.url}
-                      aria-labelledby={titleId}
-                      aria-label={`${t('common.showMore')}: ${jobOffer.title}`}
+                      aria-label={jobOffer.title}
                       stretched
                       icon={<ChevronRightIcon />}
                       hasLinkIcon={false}
