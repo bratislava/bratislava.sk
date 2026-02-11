@@ -1,15 +1,10 @@
-import { Typography } from '@bratislava/component-library'
 import React, { Fragment } from 'react'
 
-import { ChevronRightIcon } from '@/src/assets/icons'
-import CardBase from '@/src/components/cards/CardBase'
-import { getCardTitleLevel } from '@/src/components/cards/getCardTitleLevel'
-import Button from '@/src/components/common/Button/Button'
+import JobOfferRowCard from '@/src/components/cards/JobOfferRowCard'
 import HorizontalDivider from '@/src/components/common/Divider/HorizontalDivider'
 import SectionContainer from '@/src/components/layouts/SectionContainer'
 import SectionHeader from '@/src/components/layouts/SectionHeader'
 import { JobOffersSectionFragment } from '@/src/services/graphql'
-import { isDefined } from '@/src/utils/isDefined'
 
 const jobOfferMock = [
   {
@@ -58,14 +53,13 @@ const jobOfferMock = [
 ]
 
 /**
- * TODO: add Figma link to Component library
- * Figma: https://www.figma.com/design/A9aoQH2FGhR1D14wvvk6FW/Mestsk%C3%BD-web--bratislava.sk-?node-id=3331-7668&t=42jF8eIC6pPGhocy-4
+ * Figma: https://www.figma.com/design/17wbd0MDQcMW9NbXl6UPs8/DS--Component-library?node-id=18771-16152&t=7BaHype1nMgzyjER-4
  */
 
 type JobOffersSectionProps = { section: JobOffersSectionFragment }
 
 const JobOffersSection = ({ section }: JobOffersSectionProps) => {
-  const { title, text, titleLevel } = section
+  const { title, text } = section
 
   return (
     <SectionContainer>
@@ -77,37 +71,7 @@ const JobOffersSection = ({ section }: JobOffersSectionProps) => {
               <Fragment key={jobOffer.id}>
                 {index > 0 ? <HorizontalDivider asListItem /> : null}
                 <li className="w-full p-1">
-                  <CardBase
-                    variant="no-border"
-                    className="group flex flex-row px-5 py-3 ring-inset"
-                  >
-                    <div className="flex w-full flex-col gap-3">
-                      <Typography
-                        variant="h5"
-                        as={getCardTitleLevel(titleLevel)}
-                        className="group-hover:underline"
-                      >
-                        {jobOffer.title}
-                      </Typography>
-
-                      <div className="flex gap-2">
-                        <Typography variant="p-small">
-                          {[jobOffer.location, jobOffer.salary || jobOffer.salaryInfo]
-                            .filter(isDefined)
-                            .join(' • ')}
-                        </Typography>
-                      </div>
-                    </div>
-
-                    <Button
-                      href={jobOffer.url}
-                      aria-label={jobOffer.title}
-                      stretched
-                      icon={<ChevronRightIcon />}
-                      hasLinkIcon={false}
-                      className="self-center whitespace-nowrap"
-                    />
-                  </CardBase>
+                  <JobOfferRowCard jobOffer={jobOffer} />
                 </li>
               </Fragment>
             )
