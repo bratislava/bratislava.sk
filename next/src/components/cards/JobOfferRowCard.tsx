@@ -1,27 +1,26 @@
 import { Typography } from '@bratislava/component-library'
-import React from 'react'
+import React, { ElementType } from 'react'
 
 import { ChevronRightIcon } from '@/src/assets/icons'
 import CardBase from '@/src/components/cards/CardBase'
-import { getCardTitleLevel } from '@/src/components/cards/getCardTitleLevel'
+import { CardTitleLevel } from '@/src/components/cards/getCardTitleLevel'
 import MLink from '@/src/components/common/MLink/MLink'
-import { Enum_Componentsectionsjoboffers_Titlelevel } from '@/src/services/graphql'
 import { NalgooJobOffersResponse } from '@/src/services/nalgoo/nalgooJobOffers.fetcher'
 import { isDefined } from '@/src/utils/isDefined'
 
 export type JobOfferRowCardProps = {
   jobOffer: NalgooJobOffersResponse
-  titleLevel?: Enum_Componentsectionsjoboffers_Titlelevel | null | undefined
+  titleLevel?: CardTitleLevel | null
 }
 
 /**
- * Figma: https://www.figma.com/design/17wbd0MDQcMW9NbXl6UPs8/DS--Component-library?node-id=18771-16152&t=7BaHype1nMgzyjER-4
+ * Figma: https://www.figma.com/design/17wbd0MDQcMW9NbXl6UPs8/DS--Component-library?node-id=18771-18707&t=5E79HiatNV1yaVVk-0
  */
 
 const JobOfferRowCard = ({ jobOffer, titleLevel }: JobOfferRowCardProps) => {
   const { title, location, salary, salaryInfo, url } = jobOffer
 
-  // url can be null according to Nalboo API
+  // url can be null according to Nalgoo API
   if (!url) console.error(`Missing URL to job offer - ${title}`)
 
   const employmentForms = jobOffer.employmentForms.map((item) => item.name).join('/')
@@ -36,7 +35,7 @@ const JobOfferRowCard = ({ jobOffer, titleLevel }: JobOfferRowCardProps) => {
           >
             <Typography
               variant="h6"
-              as={getCardTitleLevel(titleLevel)}
+              as={titleLevel as ElementType}
               className="group-hover:underline"
             >
               {title}
@@ -46,7 +45,7 @@ const JobOfferRowCard = ({ jobOffer, titleLevel }: JobOfferRowCardProps) => {
             {[location, employmentForms, salary, salaryInfo].filter(isDefined).join(' • ')}
           </Typography>
         </div>
-        <ChevronRightIcon className="self-center max-lg:invisible" />
+        <ChevronRightIcon className="self-center max-lg:hidden" />
       </div>
     </CardBase>
   )

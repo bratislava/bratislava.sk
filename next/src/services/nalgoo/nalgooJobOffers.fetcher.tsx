@@ -16,11 +16,11 @@ export type NalgooJobOffersResponse = {
   fields: any[]
 }
 
-export const getNalbooJobOffersQueryKey = () => ['NalbooJobOffers']
+export const getNalgooJobOffersQueryKey = () => ['NalgooJobOffers']
 
-// /**
-//  * Documentation: https://doc.echoapi.com/docs/detail/3e0967471402000?target_id=2085ccd97d4002
-//  */
+/**
+ * Documentation: https://doc.echoapi.com/docs/detail/3e0967471402000?target_id=2085ccd97d4002
+ */
 
 export const fetchNalgooJobOffers = async () => {
   const result = await fetch('/api/nalgoo/nalgooJobOffers')
