@@ -28,8 +28,8 @@ const JobOfferRowCard = ({ jobOffer, titleLevel }: JobOfferRowCardProps) => {
 
   return (
     <CardBase variant="no-border" className="group p-4 ring-inset lg:px-6">
-      <div className="flex">
-        <div className="flex w-full flex-col gap-3">
+      <div className="flex gap-4">
+        <div className="flex w-full flex-col gap-1">
           <MLink
             href={url ?? '/mesto-bratislava/sprava-mesta/magistrat/pracovne-prilezitosti'}
             stretched
