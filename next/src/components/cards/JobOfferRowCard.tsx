@@ -10,7 +10,7 @@ import { isDefined } from '@/src/utils/isDefined'
 
 export type JobOfferRowCardProps = {
   jobOffer: NalgooJobOffersResponse
-  titleLevel?: CardTitleLevel | null
+  titleLevel?: CardTitleLevel
 }
 
 /**
