@@ -58,7 +58,11 @@ const LinkRowCard = ({
                       />
                     ) : null}
                     {/* Using break-all because we pass very long urls to metadata */}
-                    <Typography aria-hidden variant="p-small" className="line-clamp-1 break-all">
+                    <Typography
+                      aria-hidden
+                      variant="p-small"
+                      className="line-clamp-2 break-all lg:line-clamp-1"
+                    >
                       {item}
                     </Typography>
                   </Fragment>
