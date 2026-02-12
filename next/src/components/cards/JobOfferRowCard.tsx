@@ -28,24 +28,26 @@ const JobOfferRowCard = ({ jobOffer, titleLevel }: JobOfferRowCardProps) => {
 
   return (
     <CardBase variant="no-border" className="group p-4 ring-inset lg:px-6">
-      <MLink
-        href={url ?? '/mesto-bratislava/sprava-mesta/magistrat/pracovne-prilezitosti'}
-        className="flex"
-      >
+      <div className="flex">
         <div className="flex w-full flex-col gap-3">
-          <Typography
-            variant="h6"
-            as={getCardTitleLevel(titleLevel)}
-            className="group-hover:underline"
+          <MLink
+            href={url ?? '/mesto-bratislava/sprava-mesta/magistrat/pracovne-prilezitosti'}
+            stretched
           >
-            {title}
-          </Typography>
+            <Typography
+              variant="h6"
+              as={getCardTitleLevel(titleLevel)}
+              className="group-hover:underline"
+            >
+              {title}
+            </Typography>
+          </MLink>
           <Typography variant="p-tiny">
             {[location, employmentForms, salary, salaryInfo].filter(isDefined).join(' • ')}
           </Typography>
         </div>
-        <ChevronRightIcon className="self-center whitespace-nowrap max-lg:invisible" />
-      </MLink>
+        <ChevronRightIcon className="self-center max-lg:invisible" />
+      </div>
     </CardBase>
   )
 }
