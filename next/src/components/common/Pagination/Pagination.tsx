@@ -14,7 +14,7 @@ type PaginationProps = {
 
 /**
  * Inspired by Marianum: https://github.com/bratislava/marianum.sk/tree/master/next/components/atoms/Pagination
- * Figma: https://www.figma.com/design/17wbd0MDQcMW9NbXl6UPs8/DS--Component-library?node-id=16917-4511&m=dev
+ * Figma: https://www.figma.com/design/17wbd0MDQcMW9NbXl6UPs8/DS--Component-library?node-id=16917-4511&t=4VqzDlsP5abGtygy-0
  *
  * @param selectedPage
  * @param totalCount
