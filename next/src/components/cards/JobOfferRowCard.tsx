@@ -34,13 +34,13 @@ const JobOfferRowCard = ({ jobOffer, titleLevel }: JobOfferRowCardProps) => {
       >
         <div className="flex w-full flex-col gap-3">
           <Typography
-            variant="h5"
+            variant="h6"
             as={getCardTitleLevel(titleLevel)}
             className="group-hover:underline"
           >
             {title}
           </Typography>
-          <Typography variant="p-small">
+          <Typography variant="p-tiny">
             {[location, employmentForms, salary, salaryInfo].filter(isDefined).join(' • ')}
           </Typography>
         </div>
