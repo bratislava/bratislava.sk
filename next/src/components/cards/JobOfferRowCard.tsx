@@ -1,5 +1,5 @@
 import { Typography } from '@bratislava/component-library'
-import React, { ElementType } from 'react'
+import React from 'react'
 
 import { ChevronRightIcon } from '@/src/assets/icons'
 import CardBase from '@/src/components/cards/CardBase'
@@ -10,14 +10,14 @@ import { isDefined } from '@/src/utils/isDefined'
 
 export type JobOfferRowCardProps = {
   jobOffer: NalgooJobOffersResponse
-  titleLevel?: CardTitleLevel
+  cardTitleLevel?: CardTitleLevel
 }
 
 /**
  * Figma: https://www.figma.com/design/17wbd0MDQcMW9NbXl6UPs8/DS--Component-library?node-id=18771-18707&t=5E79HiatNV1yaVVk-0
  */
 
-const JobOfferRowCard = ({ jobOffer, titleLevel }: JobOfferRowCardProps) => {
+const JobOfferRowCard = ({ jobOffer, cardTitleLevel = 'h3' }: JobOfferRowCardProps) => {
   const { title, location, salary, salaryInfo, url } = jobOffer
 
   // url can be null according to Nalgoo API
@@ -33,11 +33,7 @@ const JobOfferRowCard = ({ jobOffer, titleLevel }: JobOfferRowCardProps) => {
             href={url ?? '/mesto-bratislava/sprava-mesta/magistrat/pracovne-prilezitosti'}
             stretched
           >
-            <Typography
-              variant="h6"
-              as={titleLevel as ElementType}
-              className="group-hover:underline"
-            >
+            <Typography variant="h6" as={cardTitleLevel} className="group-hover:underline">
               {title}
             </Typography>
           </MLink>

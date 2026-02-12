@@ -62,7 +62,7 @@ const JobOffersSection = ({ section }: JobOffersSectionProps) => {
                     {index > 0 ? <HorizontalDivider className="mx-4 lg:mx-6" asListItem /> : null}
                     <li className="w-full">
                       <JobOfferRowCard
-                        titleLevel={getCardTitleLevel(titleLevel)}
+                        cardTitleLevel={getCardTitleLevel(titleLevel)}
                         jobOffer={jobOffer}
                       />
                     </li>
