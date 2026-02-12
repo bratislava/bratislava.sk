@@ -4,7 +4,7 @@ import React from 'react'
 import { ChevronRightIcon } from '@/src/assets/icons'
 import CardBase from '@/src/components/cards/CardBase'
 import { getCardTitleLevel } from '@/src/components/cards/getCardTitleLevel'
-import Button from '@/src/components/common/Button/Button'
+import MLink from '@/src/components/common/MLink/MLink'
 import { Enum_Componentsectionsjoboffers_Titlelevel } from '@/src/services/graphql'
 import { NalgooJobOffersResponse } from '@/src/services/nalgoo/nalgooJobOffers.fetcher'
 import { isDefined } from '@/src/utils/isDefined'
@@ -24,32 +24,28 @@ const JobOfferRowCard = ({ jobOffer, titleLevel }: JobOfferRowCardProps) => {
   // url can be null according to Nalboo API
   if (!url) console.error(`Missing URL to job offer - ${title}`)
 
-  return (
-    <CardBase variant="no-border" className="group flex flex-row px-5 py-3 ring-inset">
-      <div className="flex w-full flex-col gap-3">
-        <Typography
-          variant="h5"
-          as={getCardTitleLevel(titleLevel)}
-          className="group-hover:underline"
-        >
-          {title}
-        </Typography>
+  const employmentForms = jobOffer.employmentForms.map((item) => item.name).join('/')
 
-        <div className="flex gap-2">
+  return (
+    <CardBase variant="no-border" className="group p-4 ring-inset lg:px-6">
+      <MLink
+        href={url ?? '/mesto-bratislava/sprava-mesta/magistrat/pracovne-prilezitosti'}
+        className="flex"
+      >
+        <div className="flex w-full flex-col gap-3">
+          <Typography
+            variant="h5"
+            as={getCardTitleLevel(titleLevel)}
+            className="group-hover:underline"
+          >
+            {title}
+          </Typography>
           <Typography variant="p-small">
-            {[location, salary || salaryInfo].filter(isDefined).join(' • ')}
+            {[location, employmentForms, salary, salaryInfo].filter(isDefined).join(' • ')}
           </Typography>
         </div>
-      </div>
-
-      <Button
-        href={url || '/mesto-bratislava/sprava-mesta/magistrat/pracovne-prilezitosti'}
-        aria-label={title}
-        stretched
-        icon={<ChevronRightIcon />}
-        hasLinkIcon={false}
-        className="self-center whitespace-nowrap"
-      />
+        <ChevronRightIcon className="self-center whitespace-nowrap max-lg:invisible" />
+      </MLink>
     </CardBase>
   )
 }

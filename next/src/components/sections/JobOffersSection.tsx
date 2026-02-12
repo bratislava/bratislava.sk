@@ -35,13 +35,13 @@ const JobOffersSection = ({ section }: JobOffersSectionProps) => {
         <div>{error.message}</div>
       ) : (
         <div className="flex w-full flex-col gap-6">
-          <SectionHeader title={title} text={text} />
-          <ul className="flex flex-col rounded-lg border">
+          <SectionHeader title={title} text={text} titleLevel={titleLevel} />
+          <ul className="flex flex-col rounded-lg border py-2">
             {data.map((jobOffer, index) => {
               return (
                 <Fragment key={jobOffer.id}>
-                  {index > 0 ? <HorizontalDivider asListItem /> : null}
-                  <li className="w-full p-1">
+                  {index > 0 ? <HorizontalDivider className="mx-4 lg:mx-6" asListItem /> : null}
+                  <li className="w-full">
                     <JobOfferRowCard titleLevel={titleLevel} jobOffer={jobOffer} />
                   </li>
                 </Fragment>
