@@ -58,7 +58,7 @@ const LinkRowCard = ({
                       />
                     ) : null}
                     {/* Using break-all because we pass very long urls to metadata */}
-                    <Typography variant="p-small" className="break-all">
+                    <Typography aria-hidden variant="p-small" className="line-clamp-1 break-all">
                       {item}
                     </Typography>
                   </Fragment>
@@ -69,7 +69,7 @@ const LinkRowCard = ({
         </div>
         {/* Screen: desktop */}
         <Button
-          variant="outline"
+          variant="plain"
           href={linkHref}
           aria-labelledby={titleId}
           stretched
