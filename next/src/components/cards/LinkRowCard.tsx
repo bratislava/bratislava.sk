@@ -17,7 +17,7 @@ export type LinkRowCardProps = {
 }
 
 /**
- * TODO Figma link
+ * Figma: https://www.figma.com/design/17wbd0MDQcMW9NbXl6UPs8/DS--Component-library?node-id=19255-38592&t=fPdH6OH0zO4oHjZk-4
  */
 
 const LinkRowCard = ({
@@ -58,7 +58,11 @@ const LinkRowCard = ({
                       />
                     ) : null}
                     {/* Using break-all because we pass very long urls to metadata */}
-                    <Typography variant="p-small" className="break-all">
+                    <Typography
+                      aria-hidden
+                      variant="p-small"
+                      className="line-clamp-2 break-all lg:line-clamp-1"
+                    >
                       {item}
                     </Typography>
                   </Fragment>
@@ -69,7 +73,7 @@ const LinkRowCard = ({
         </div>
         {/* Screen: desktop */}
         <Button
-          variant="outline"
+          variant="plain"
           href={linkHref}
           aria-labelledby={titleId}
           stretched
