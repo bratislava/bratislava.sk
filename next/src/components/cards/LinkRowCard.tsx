@@ -17,7 +17,7 @@ export type LinkRowCardProps = {
 }
 
 /**
- * TODO Figma link
+ * Figma: https://www.figma.com/design/17wbd0MDQcMW9NbXl6UPs8/DS--Component-library?node-id=19255-38592&t=fPdH6OH0zO4oHjZk-4
  */
 
 const LinkRowCard = ({
