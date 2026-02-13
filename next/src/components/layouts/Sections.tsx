@@ -21,6 +21,7 @@ import GallerySection from '@/src/components/sections/GallerySection'
 import IframeSection from '@/src/components/sections/IframeSection'
 import InbaLatestReleaseSection from '@/src/components/sections/InbaLatestReleaseSection'
 import InbaReleasesSection from '@/src/components/sections/InbaReleasesSection/InbaReleasesSection'
+import JobOffersSection from '@/src/components/sections/JobOffersSection'
 import LinksSection from '@/src/components/sections/LinksSection'
 import NarrowTextSection from '@/src/components/sections/NarrowTextSection'
 import NewsletterSection from '@/src/components/sections/NewsletterSection/NewsletterSection'
@@ -156,6 +157,9 @@ const SectionContent = ({ section }: { section: SectionsFragment }) => {
 
     case 'ComponentSectionsAlert':
       return <AlertSection section={section} />
+
+    case 'ComponentSectionsJobOffers':
+      return <JobOffersSection section={section} />
 
     default:
       return null

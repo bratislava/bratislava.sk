@@ -2541,6 +2541,30 @@ export type ComponentSectionsInbaReleasesInput = {
   variant?: InputMaybe<Enum_Componentsectionsinbareleases_Variant>
 }
 
+export type ComponentSectionsJobOffers = {
+  __typename?: 'ComponentSectionsJobOffers'
+  id: Scalars['ID']['output']
+  text?: Maybe<Scalars['String']['output']>
+  title?: Maybe<Scalars['String']['output']>
+  titleLevel?: Maybe<Enum_Componentsectionsjoboffers_Titlelevel>
+}
+
+export type ComponentSectionsJobOffersFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentSectionsJobOffersFiltersInput>>>
+  not?: InputMaybe<ComponentSectionsJobOffersFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<ComponentSectionsJobOffersFiltersInput>>>
+  text?: InputMaybe<StringFilterInput>
+  title?: InputMaybe<StringFilterInput>
+  titleLevel?: InputMaybe<StringFilterInput>
+}
+
+export type ComponentSectionsJobOffersInput = {
+  id?: InputMaybe<Scalars['ID']['input']>
+  text?: InputMaybe<Scalars['String']['input']>
+  title?: InputMaybe<Scalars['String']['input']>
+  titleLevel?: InputMaybe<Enum_Componentsectionsjoboffers_Titlelevel>
+}
+
 export type ComponentSectionsLinks = {
   __typename?: 'ComponentSectionsLinks'
   id: Scalars['ID']['output']
@@ -3499,6 +3523,11 @@ export enum Enum_Componentsectionsinbareleases_Variant {
   Grid = 'grid',
 }
 
+export enum Enum_Componentsectionsjoboffers_Titlelevel {
+  H2 = 'h2',
+  H3 = 'h3',
+}
+
 export enum Enum_Componentsectionslinks_Titlelevel {
   H2 = 'h2',
   H3 = 'h3',
@@ -4038,6 +4067,7 @@ export type GenericMorph =
   | ComponentSectionsIframe
   | ComponentSectionsInbaLatestRelease
   | ComponentSectionsInbaReleases
+  | ComponentSectionsJobOffers
   | ComponentSectionsLinks
   | ComponentSectionsNarrowText
   | ComponentSectionsNewsletter
@@ -5571,6 +5601,7 @@ export type PageSectionsDynamicZone =
   | ComponentSectionsIframe
   | ComponentSectionsInbaLatestRelease
   | ComponentSectionsInbaReleases
+  | ComponentSectionsJobOffers
   | ComponentSectionsLinks
   | ComponentSectionsNarrowText
   | ComponentSectionsNewsletter
@@ -7924,6 +7955,7 @@ export type AllFilesQuery = {
       | { __typename?: 'ComponentSectionsIframe' }
       | { __typename?: 'ComponentSectionsInbaLatestRelease' }
       | { __typename?: 'ComponentSectionsInbaReleases' }
+      | { __typename?: 'ComponentSectionsJobOffers' }
       | { __typename?: 'ComponentSectionsLinks' }
       | { __typename?: 'ComponentSectionsNarrowText' }
       | { __typename?: 'ComponentSectionsNewsletter' }
@@ -11327,6 +11359,12 @@ export type PageEntityFragment = {
         } | null
       }
     | {
+        __typename: 'ComponentSectionsJobOffers'
+        title?: string | null
+        text?: string | null
+        titleLevel?: Enum_Componentsectionsjoboffers_Titlelevel | null
+      }
+    | {
         __typename: 'ComponentSectionsLinks'
         title?: string | null
         titleLevelLinksSection?: Enum_Componentsectionslinks_Titlelevel | null
@@ -12622,6 +12660,12 @@ export type PageBySlugQuery = {
               locale?: string | null
             } | null
           } | null
+        }
+      | {
+          __typename: 'ComponentSectionsJobOffers'
+          title?: string | null
+          text?: string | null
+          titleLevel?: Enum_Componentsectionsjoboffers_Titlelevel | null
         }
       | {
           __typename: 'ComponentSectionsLinks'
@@ -13945,6 +13989,12 @@ export type Dev_AllPagesQuery = {
               locale?: string | null
             } | null
           } | null
+        }
+      | {
+          __typename: 'ComponentSectionsJobOffers'
+          title?: string | null
+          text?: string | null
+          titleLevel?: Enum_Componentsectionsjoboffers_Titlelevel | null
         }
       | {
           __typename: 'ComponentSectionsLinks'
@@ -16383,6 +16433,13 @@ export type AlertSectionFragment = {
   alertVariant: Enum_Componentsectionsalert_Alertvariant
 }
 
+export type JobOffersSectionFragment = {
+  __typename?: 'ComponentSectionsJobOffers'
+  title?: string | null
+  text?: string | null
+  titleLevel?: Enum_Componentsectionsjoboffers_Titlelevel | null
+}
+
 type Sections_ComponentSectionsAccordion_Fragment = {
   __typename: 'ComponentSectionsAccordion'
   title?: string | null
@@ -17025,6 +17082,13 @@ type Sections_ComponentSectionsInbaReleases_Fragment = {
   } | null
 }
 
+type Sections_ComponentSectionsJobOffers_Fragment = {
+  __typename: 'ComponentSectionsJobOffers'
+  title?: string | null
+  text?: string | null
+  titleLevel?: Enum_Componentsectionsjoboffers_Titlelevel | null
+}
+
 type Sections_ComponentSectionsLinks_Fragment = {
   __typename: 'ComponentSectionsLinks'
   title?: string | null
@@ -17546,6 +17610,7 @@ export type SectionsFragment =
   | Sections_ComponentSectionsIframe_Fragment
   | Sections_ComponentSectionsInbaLatestRelease_Fragment
   | Sections_ComponentSectionsInbaReleases_Fragment
+  | Sections_ComponentSectionsJobOffers_Fragment
   | Sections_ComponentSectionsLinks_Fragment
   | Sections_ComponentSectionsNarrowText_Fragment
   | Sections_ComponentSectionsNewsletter_Fragment
@@ -19016,6 +19081,13 @@ export const AlertSectionFragmentDoc = gql`
     alertVariant
   }
 `
+export const JobOffersSectionFragmentDoc = gql`
+  fragment JobOffersSection on ComponentSectionsJobOffers {
+    title
+    text
+    titleLevel
+  }
+`
 export const SectionsFragmentDoc = gql`
   fragment Sections on PageSectionsDynamicZone {
     __typename
@@ -19124,6 +19196,9 @@ export const SectionsFragmentDoc = gql`
     ... on ComponentSectionsAlert {
       ...AlertSection
     }
+    ... on ComponentSectionsJobOffers {
+      ...JobOffersSection
+    }
   }
   ${DividerSectionFragmentDoc}
   ${TextWithImageSectionFragmentDoc}
@@ -19160,6 +19235,7 @@ export const SectionsFragmentDoc = gql`
   ${ColumnsListSectionFragmentDoc}
   ${ArticlesLandingPageSectionFragmentDoc}
   ${AlertSectionFragmentDoc}
+  ${JobOffersSectionFragmentDoc}
 `
 export const SidebarsFragmentDoc = gql`
   fragment Sidebars on PageSidebarDynamicZone {

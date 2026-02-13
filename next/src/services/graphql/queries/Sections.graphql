@@ -525,6 +525,12 @@ fragment AlertSection on ComponentSectionsAlert {
   alertVariant
 }
 
+fragment JobOffersSection on ComponentSectionsJobOffers {
+  title
+  text
+  titleLevel
+}
+
 fragment Sections on PageSectionsDynamicZone {
   __typename
 
@@ -670,6 +676,10 @@ fragment Sections on PageSectionsDynamicZone {
 
   ... on ComponentSectionsAlert {
     ...AlertSection
+  }
+
+  ... on ComponentSectionsJobOffers {
+    ...JobOffersSection
   }
 }
 
