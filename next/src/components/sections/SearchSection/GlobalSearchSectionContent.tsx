@@ -40,7 +40,7 @@ type Props =
     }
 
 /**
- * TODO Figma link
+ *  Figma: https://www.figma.com/design/A9aoQH2FGhR1D14wvvk6FW/Mestsk%C3%BD-web--bratislava.sk-?node-id=1237-7336&t=WoqUgZ518uqgeCxG-4
  */
 
 const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
@@ -135,6 +135,9 @@ const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
   const [publicationState, setPublicationState] = useState<OfficialBoardPublicationState>(
     officialBoardListDefaultFilters.publicationState,
   )
+  const [publicationYear, setPublicationYear] = useState<string | null>(
+    officialBoardListDefaultFilters.publicationYear,
+  )
 
   const [resultsCount, setResultsCount] = useState(
     Object.fromEntries(searchOptions.map((option): [string, number] => [option.id, 0])),
@@ -186,6 +189,7 @@ const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
     // Official board category id
     categoryId: !categoryId || categoryId === 'all' ? undefined : categoryId,
     publicationState: publicationState ?? undefined,
+    publicationYear: publicationYear ?? undefined,
   }
 
   const searchRef = useRef<null | HTMLInputElement>(null)
@@ -245,6 +249,8 @@ const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
                 setCategoryId={setCategoryId}
                 publicationState={publicationState}
                 setPublicationState={setPublicationState}
+                publicationYear={publicationYear}
+                setPublicationYear={setPublicationYear}
               />
             </div>
           </div>
