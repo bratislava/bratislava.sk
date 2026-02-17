@@ -545,7 +545,7 @@ export interface ApiAssetCategoryAssetCategory extends Struct.CollectionTypeSche
     singularName: 'asset-category'
   }
   options: {
-    draftAndPublish: true
+    draftAndPublish: false
   }
   attributes: {
     assets: Schema.Attribute.Relation<'oneToMany', 'api::asset.asset'>

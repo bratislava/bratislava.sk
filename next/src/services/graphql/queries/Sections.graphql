@@ -408,6 +408,16 @@ fragment DocumentsSection on ComponentSectionsDocuments {
   titleLevelDocumentsSection: titleLevel
 }
 
+fragment AssetsSection on ComponentSectionsAssets {
+  title
+  text
+  assets(pagination: { limit: -1 }) {
+    ...AssetEntity
+  }
+  showAll
+  titleLevelAssetsSection: titleLevel
+}
+
 fragment NumbersOverviewItemBlock on ComponentBlocksNumbersOverviewItem {
   id
   number
@@ -638,6 +648,10 @@ fragment Sections on PageSectionsDynamicZone {
 
   ... on ComponentSectionsDocuments {
     ...DocumentsSection
+  }
+
+  ... on ComponentSectionsAssets {
+    ...AssetsSection
   }
 
   ... on ComponentSectionsNumbersOverview {

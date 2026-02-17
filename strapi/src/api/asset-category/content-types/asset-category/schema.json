@@ -7,7 +7,7 @@
     "displayName": "Asset category"
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {

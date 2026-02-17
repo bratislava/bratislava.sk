@@ -1,5 +1,6 @@
 import {
   ArticleEntityFragment,
+  AssetEntityFragment,
   DocumentEntityFragment,
   InbaReleaseEntityFragment,
   Page,
@@ -29,6 +30,8 @@ export type PageMeili = PageEntityFragment & Page['publishedAt']
 export type ArticleMeili = ArticleEntityFragment
 
 export type DocumentMeili = DocumentEntityFragment
+
+export type AssetMeili = AssetEntityFragment
 
 export type InbaReleaseMeili = InbaReleaseEntityFragment
 
