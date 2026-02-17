@@ -3,7 +3,10 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'GET') {
-    return res.status(405).json({ message: 'Method not allowed' })
+    return res.status(405).json({ message: 'Method not allowed', status: 405 })
+  }
+  if (!process.env.NALGOO_API_KEY) {
+    return res.status(400).json({ message: 'Missing Nalgoo API key', status: 400 })
   }
 
   try {
@@ -15,6 +18,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   } catch (error) {
     console.error('Nalgoo API error:', error)
 
-    return res.status(500).json({ message: 'Failed to fetch job offers' })
+    return res.status(500).json({ message: error, status: 500 })
   }
 }

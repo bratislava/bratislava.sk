@@ -1,3 +1,4 @@
+import { Typography } from '@bratislava/component-library'
 import { useQuery } from '@tanstack/react-query'
 import React, { Fragment, useEffect, useState } from 'react'
 
@@ -43,7 +44,7 @@ const JobOffersSection = ({ section }: JobOffersSectionProps) => {
   }, [data, isError])
 
   const paginatedData =
-    data && !isError
+    data?.length && !isError
       ? data.slice(
           (pagination.currentPage - 1) * pagination.pageSize,
           pagination.currentPage * pagination.pageSize,
@@ -94,7 +95,7 @@ const JobOffersSection = ({ section }: JobOffersSectionProps) => {
                 </div>
               </>
             ) : (
-              <>{t('SearchPage.noResults')}</>
+              <Typography>{t('SearchPage.noResults')}</Typography>
             )}
           </>
         )}

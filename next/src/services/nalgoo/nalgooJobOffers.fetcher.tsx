@@ -24,6 +24,9 @@ export const getNalgooJobOffersQueryKey = () => ['NalgooJobOffers']
 
 export const fetchNalgooJobOffers = async () => {
   const result = await fetch('/api/nalgoo/nalgooJobOffers')
+  const data = await result.json()
 
-  return result.json() as Promise<NalgooJobOffersResponse[]>
+  if (!result.ok) throw new Error(`Error ${data.status}: ${data.message}`)
+
+  return data as Promise<NalgooJobOffersResponse[]>
 }
