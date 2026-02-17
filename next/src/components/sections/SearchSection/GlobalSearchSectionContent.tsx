@@ -126,10 +126,6 @@ const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
 
   const [currentPage, setCurrentPage] = useState(1)
 
-  useEffect(() => {
-    setCurrentPage(1)
-  }, [searchValue, selection])
-
   /* OfficialBoard specific filters state */
   const [categoryId, setCategoryId] = useState<string | null>(null)
   const [publicationState, setPublicationState] = useState<OfficialBoardPublicationState>(
@@ -191,6 +187,16 @@ const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
     publicationState: publicationState ?? undefined,
     publicationYear: publicationYear ?? undefined,
   }
+
+  useEffect(() => {
+    setCurrentPage(1)
+  }, [
+    searchValue,
+    selection,
+    searchFilters.categoryId,
+    searchFilters.publicationState,
+    searchFilters.publicationYear,
+  ])
 
   const searchRef = useRef<null | HTMLInputElement>(null)
 
