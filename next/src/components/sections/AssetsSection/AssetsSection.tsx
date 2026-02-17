@@ -89,7 +89,7 @@ const AssetsSection = ({ section }: Props) => {
                             ].filter(isDefined)
                           : [
                               formatDate(updatedAt),
-                            assetCategory?.title,
+                              assetCategory?.title,
                               t('DocumentPageContent.numberOfFiles', {
                                 count: filteredFiles.length,
                               }),

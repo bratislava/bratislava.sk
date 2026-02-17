@@ -42,7 +42,7 @@ const AssetsFilterGroup = ({ filters, onFiltersChange }: Props) => {
     queryKey: ['AdminGroups'],
     queryFn: () => client.AdminGroups(),
     staleTime: Infinity,
-    select: (res) => res.adminGroups .filter(isDefined) ?? [],
+    select: (res) => res.adminGroups.filter(isDefined) ?? [],
   })
 
   const { CITY_HALL_ADMINGROUP } = useGetCityHallAdminGroup()
