@@ -10932,7 +10932,38 @@ export type PageEntityFragment = {
           } | null
         } | null
       }
-    | { __typename: 'ComponentSectionsAssets' }
+    | {
+        __typename: 'ComponentSectionsAssets'
+        title?: string | null
+        text?: string | null
+        showAll?: boolean | null
+        titleLevelAssetsSection?: Enum_Componentsectionsassets_Titlelevel | null
+        assets: Array<{
+          __typename: 'Asset'
+          publishedAt?: any | null
+          updatedAt?: any | null
+          description?: string | null
+          documentId: string
+          slug: string
+          title: string
+          assetCategory?: {
+            __typename?: 'AssetCategory'
+            documentId: string
+            title: string
+            slug: string
+          } | null
+          files: Array<{
+            __typename?: 'UploadFile'
+            documentId: string
+            url: string
+            name: string
+            ext?: string | null
+            size: number
+            createdAt?: any | null
+            updatedAt?: any | null
+          } | null>
+        } | null>
+      }
     | {
         __typename: 'ComponentSectionsBanner'
         content?: string | null
@@ -12232,7 +12263,38 @@ export type PageBySlugQuery = {
             } | null
           } | null
         }
-      | { __typename: 'ComponentSectionsAssets' }
+      | {
+          __typename: 'ComponentSectionsAssets'
+          title?: string | null
+          text?: string | null
+          showAll?: boolean | null
+          titleLevelAssetsSection?: Enum_Componentsectionsassets_Titlelevel | null
+          assets: Array<{
+            __typename: 'Asset'
+            publishedAt?: any | null
+            updatedAt?: any | null
+            description?: string | null
+            documentId: string
+            slug: string
+            title: string
+            assetCategory?: {
+              __typename?: 'AssetCategory'
+              documentId: string
+              title: string
+              slug: string
+            } | null
+            files: Array<{
+              __typename?: 'UploadFile'
+              documentId: string
+              url: string
+              name: string
+              ext?: string | null
+              size: number
+              createdAt?: any | null
+              updatedAt?: any | null
+            } | null>
+          } | null>
+        }
       | {
           __typename: 'ComponentSectionsBanner'
           content?: string | null
@@ -13561,7 +13623,38 @@ export type Dev_AllPagesQuery = {
             } | null
           } | null
         }
-      | { __typename: 'ComponentSectionsAssets' }
+      | {
+          __typename: 'ComponentSectionsAssets'
+          title?: string | null
+          text?: string | null
+          showAll?: boolean | null
+          titleLevelAssetsSection?: Enum_Componentsectionsassets_Titlelevel | null
+          assets: Array<{
+            __typename: 'Asset'
+            publishedAt?: any | null
+            updatedAt?: any | null
+            description?: string | null
+            documentId: string
+            slug: string
+            title: string
+            assetCategory?: {
+              __typename?: 'AssetCategory'
+              documentId: string
+              title: string
+              slug: string
+            } | null
+            files: Array<{
+              __typename?: 'UploadFile'
+              documentId: string
+              url: string
+              name: string
+              ext?: string | null
+              size: number
+              createdAt?: any | null
+              updatedAt?: any | null
+            } | null>
+          } | null>
+        }
       | {
           __typename: 'ComponentSectionsBanner'
           content?: string | null
@@ -16032,6 +16125,39 @@ export type DocumentsSectionFragment = {
   } | null>
 }
 
+export type AssetsSectionFragment = {
+  __typename?: 'ComponentSectionsAssets'
+  title?: string | null
+  text?: string | null
+  showAll?: boolean | null
+  titleLevelAssetsSection?: Enum_Componentsectionsassets_Titlelevel | null
+  assets: Array<{
+    __typename: 'Asset'
+    publishedAt?: any | null
+    updatedAt?: any | null
+    description?: string | null
+    documentId: string
+    slug: string
+    title: string
+    assetCategory?: {
+      __typename?: 'AssetCategory'
+      documentId: string
+      title: string
+      slug: string
+    } | null
+    files: Array<{
+      __typename?: 'UploadFile'
+      documentId: string
+      url: string
+      name: string
+      ext?: string | null
+      size: number
+      createdAt?: any | null
+      updatedAt?: any | null
+    } | null>
+  } | null>
+}
+
 export type NumbersOverviewItemBlockFragment = {
   __typename?: 'ComponentBlocksNumbersOverviewItem'
   id: string
@@ -16649,7 +16775,38 @@ type Sections_ComponentSectionsArticlesLandingPage_Fragment = {
   } | null
 }
 
-type Sections_ComponentSectionsAssets_Fragment = { __typename: 'ComponentSectionsAssets' }
+type Sections_ComponentSectionsAssets_Fragment = {
+  __typename: 'ComponentSectionsAssets'
+  title?: string | null
+  text?: string | null
+  showAll?: boolean | null
+  titleLevelAssetsSection?: Enum_Componentsectionsassets_Titlelevel | null
+  assets: Array<{
+    __typename: 'Asset'
+    publishedAt?: any | null
+    updatedAt?: any | null
+    description?: string | null
+    documentId: string
+    slug: string
+    title: string
+    assetCategory?: {
+      __typename?: 'AssetCategory'
+      documentId: string
+      title: string
+      slug: string
+    } | null
+    files: Array<{
+      __typename?: 'UploadFile'
+      documentId: string
+      url: string
+      name: string
+      ext?: string | null
+      size: number
+      createdAt?: any | null
+      updatedAt?: any | null
+    } | null>
+  } | null>
+}
 
 type Sections_ComponentSectionsBanner_Fragment = {
   __typename: 'ComponentSectionsBanner'
@@ -17867,38 +18024,6 @@ export const ArticleEntityFragmentDoc = gql`
   ${InbaReleaseCardEntityFragmentDoc}
   ${AdminGroupSlugEntityFragmentDoc}
 `
-export const AssetSlugEntityFragmentDoc = gql`
-  fragment AssetSlugEntity on Asset {
-    __typename
-    documentId
-    slug
-    title
-  }
-`
-export const AssetCategoryEntityFragmentDoc = gql`
-  fragment AssetCategoryEntity on AssetCategory {
-    documentId
-    title
-    slug
-  }
-`
-export const AssetEntityFragmentDoc = gql`
-  fragment AssetEntity on Asset {
-    ...AssetSlugEntity
-    publishedAt
-    updatedAt
-    assetCategory {
-      ...AssetCategoryEntity
-    }
-    description
-    files {
-      ...UploadFileEntity
-    }
-  }
-  ${AssetSlugEntityFragmentDoc}
-  ${AssetCategoryEntityFragmentDoc}
-  ${UploadFileEntityFragmentDoc}
-`
 export const UploadFileFragmentDoc = gql`
   fragment UploadFile on UploadFile {
     documentId
@@ -18909,6 +19034,50 @@ export const DocumentsSectionFragmentDoc = gql`
   }
   ${DocumentEntityFragmentDoc}
 `
+export const AssetSlugEntityFragmentDoc = gql`
+  fragment AssetSlugEntity on Asset {
+    __typename
+    documentId
+    slug
+    title
+  }
+`
+export const AssetCategoryEntityFragmentDoc = gql`
+  fragment AssetCategoryEntity on AssetCategory {
+    documentId
+    title
+    slug
+  }
+`
+export const AssetEntityFragmentDoc = gql`
+  fragment AssetEntity on Asset {
+    ...AssetSlugEntity
+    publishedAt
+    updatedAt
+    assetCategory {
+      ...AssetCategoryEntity
+    }
+    description
+    files {
+      ...UploadFileEntity
+    }
+  }
+  ${AssetSlugEntityFragmentDoc}
+  ${AssetCategoryEntityFragmentDoc}
+  ${UploadFileEntityFragmentDoc}
+`
+export const AssetsSectionFragmentDoc = gql`
+  fragment AssetsSection on ComponentSectionsAssets {
+    title
+    text
+    assets(pagination: { limit: -1 }) {
+      ...AssetEntity
+    }
+    showAll
+    titleLevelAssetsSection: titleLevel
+  }
+  ${AssetEntityFragmentDoc}
+`
 export const NumbersOverviewItemBlockFragmentDoc = gql`
   fragment NumbersOverviewItemBlock on ComponentBlocksNumbersOverviewItem {
     id
@@ -19169,6 +19338,9 @@ export const SectionsFragmentDoc = gql`
     ... on ComponentSectionsDocuments {
       ...DocumentsSection
     }
+    ... on ComponentSectionsAssets {
+      ...AssetsSection
+    }
     ... on ComponentSectionsNumbersOverview {
       ...NumbersOverviewSection
     }
@@ -19226,6 +19398,7 @@ export const SectionsFragmentDoc = gql`
   ${TootootEventsSectionFragmentDoc}
   ${PartnersSectionFragmentDoc}
   ${DocumentsSectionFragmentDoc}
+  ${AssetsSectionFragmentDoc}
   ${NumbersOverviewSectionFragmentDoc}
   ${EventsSectionFragmentDoc}
   ${FacilitiesSectionFragmentDoc}

@@ -4,6 +4,7 @@ import AccordionSection from '@/src/components/sections/AccordionSection'
 import AlertSection from '@/src/components/sections/AlertSection'
 import ArticlesLandingPageSection from '@/src/components/sections/ArticlesLandingPageSection'
 import ArticlesSection from '@/src/components/sections/ArticlesSection/ArticlesSection'
+import AssetsSection from '@/src/components/sections/AssetsSection/AssetsSection'
 import BannerSection from '@/src/components/sections/BannerSection'
 import ColumnedTextSection from '@/src/components/sections/ColumnedTextSection'
 import ColumnsListSection from '@/src/components/sections/ColumnsListSection'
@@ -124,6 +125,9 @@ const SectionContent = ({ section }: { section: SectionsFragment }) => {
 
     case 'ComponentSectionsDocuments':
       return <DocumentsSection section={section} />
+
+    case 'ComponentSectionsAssets':
+      return <AssetsSection section={section} />
 
     case 'ComponentSectionsNumericalList':
       return <NumericalListSection section={section} />
