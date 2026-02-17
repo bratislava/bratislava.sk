@@ -60,7 +60,3 @@ The endpoints should call a function, that wraps the data-fetching from the exte
 These functions are grouped usually in `server` subdirectory of a specific service (e.g. `ginis/server`) to indicate that they are called only from server.
 
 Use Next API endpoints only if needed for mentioned reasons. Otherwise, fetch data directly from client.
-
-### Resources
-
-There is one resource that needs to be available in https://bratislava.sk/Img/bratislava4.png, it is used in mails in signature as logo. Therefore please don't erase `public/Img/bratislava4.png`.
