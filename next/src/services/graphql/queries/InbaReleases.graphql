@@ -49,8 +49,8 @@ query InbaReleaseBySlug($slug: String!) {
   }
 }
 
-query InbaReleasesStaticPaths {
-  inbaReleases(sort: "releaseDate:desc") {
+query InbaReleasesStaticPaths($limit: Int = -1) {
+  inbaReleases(sort: "releaseDate:desc", pagination: { limit: $limit }) {
     documentId
     slug
   }

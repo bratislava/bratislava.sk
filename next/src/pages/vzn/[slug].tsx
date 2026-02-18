@@ -23,13 +23,14 @@ type RegulationPageProps = {
 }
 
 export const getStaticPaths: GetStaticPaths<StaticParams> = async () => {
-  const { regulations } = await client.RegulationsStaticPaths()
+  // Prerender only 20 most recently updated regulations
+  const { regulations } = await client.RegulationsStaticPaths({ limit: 20 })
 
   const paths = regulations
     .filter((regulation) => regulation?.slug)
     .map((regulation) => ({
       params: {
-        // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
+        // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion,@typescript-eslint/no-non-null-assertion
         slug: regulation!.slug!,
       },
     }))

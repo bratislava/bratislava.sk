@@ -21,16 +21,18 @@ type StaticParams = {
 }
 
 export const getStaticPaths: GetStaticPaths<StaticParams> = async () => {
+  // Prerender only 30 newest articles, only for sk locale
   const { articles } = await client.ArticlesStaticPaths({ limit: 30, locale: 'sk' })
 
   const paths = articles
     .filter((article) => article?.slug && article?.locale)
     .map((article) => ({
       params: {
-        // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
+        // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion,@typescript-eslint/no-non-null-assertion
         slug: article!.slug!,
       },
 
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       locale: article!.locale!,
     }))
 
