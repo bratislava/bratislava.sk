@@ -2541,6 +2541,30 @@ export type ComponentSectionsInbaReleasesInput = {
   variant?: InputMaybe<Enum_Componentsectionsinbareleases_Variant>
 }
 
+export type ComponentSectionsJobOffers = {
+  __typename?: 'ComponentSectionsJobOffers'
+  id: Scalars['ID']['output']
+  text?: Maybe<Scalars['String']['output']>
+  title?: Maybe<Scalars['String']['output']>
+  titleLevel?: Maybe<Enum_Componentsectionsjoboffers_Titlelevel>
+}
+
+export type ComponentSectionsJobOffersFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentSectionsJobOffersFiltersInput>>>
+  not?: InputMaybe<ComponentSectionsJobOffersFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<ComponentSectionsJobOffersFiltersInput>>>
+  text?: InputMaybe<StringFilterInput>
+  title?: InputMaybe<StringFilterInput>
+  titleLevel?: InputMaybe<StringFilterInput>
+}
+
+export type ComponentSectionsJobOffersInput = {
+  id?: InputMaybe<Scalars['ID']['input']>
+  text?: InputMaybe<Scalars['String']['input']>
+  title?: InputMaybe<Scalars['String']['input']>
+  titleLevel?: InputMaybe<Enum_Componentsectionsjoboffers_Titlelevel>
+}
+
 export type ComponentSectionsLinks = {
   __typename?: 'ComponentSectionsLinks'
   id: Scalars['ID']['output']
@@ -3499,6 +3523,11 @@ export enum Enum_Componentsectionsinbareleases_Variant {
   Grid = 'grid',
 }
 
+export enum Enum_Componentsectionsjoboffers_Titlelevel {
+  H2 = 'h2',
+  H3 = 'h3',
+}
+
 export enum Enum_Componentsectionslinks_Titlelevel {
   H2 = 'h2',
   H3 = 'h3',
@@ -4038,6 +4067,7 @@ export type GenericMorph =
   | ComponentSectionsIframe
   | ComponentSectionsInbaLatestRelease
   | ComponentSectionsInbaReleases
+  | ComponentSectionsJobOffers
   | ComponentSectionsLinks
   | ComponentSectionsNarrowText
   | ComponentSectionsNewsletter
@@ -5571,6 +5601,7 @@ export type PageSectionsDynamicZone =
   | ComponentSectionsIframe
   | ComponentSectionsInbaLatestRelease
   | ComponentSectionsInbaReleases
+  | ComponentSectionsJobOffers
   | ComponentSectionsLinks
   | ComponentSectionsNarrowText
   | ComponentSectionsNewsletter
@@ -7924,6 +7955,7 @@ export type AllFilesQuery = {
       | { __typename?: 'ComponentSectionsIframe' }
       | { __typename?: 'ComponentSectionsInbaLatestRelease' }
       | { __typename?: 'ComponentSectionsInbaReleases' }
+      | { __typename?: 'ComponentSectionsJobOffers' }
       | { __typename?: 'ComponentSectionsLinks' }
       | { __typename?: 'ComponentSectionsNarrowText' }
       | { __typename?: 'ComponentSectionsNewsletter' }
@@ -10280,7 +10312,9 @@ export type InbaReleaseBySlugQuery = {
   } | null>
 }
 
-export type InbaReleasesStaticPathsQueryVariables = Exact<{ [key: string]: never }>
+export type InbaReleasesStaticPathsQueryVariables = Exact<{
+  limit?: InputMaybe<Scalars['Int']['input']>
+}>
 
 export type InbaReleasesStaticPathsQuery = {
   __typename?: 'Query'
@@ -10900,7 +10934,38 @@ export type PageEntityFragment = {
           } | null
         } | null
       }
-    | { __typename: 'ComponentSectionsAssets' }
+    | {
+        __typename: 'ComponentSectionsAssets'
+        title?: string | null
+        text?: string | null
+        showAll?: boolean | null
+        titleLevelAssetsSection?: Enum_Componentsectionsassets_Titlelevel | null
+        assets: Array<{
+          __typename: 'Asset'
+          publishedAt?: any | null
+          updatedAt?: any | null
+          description?: string | null
+          documentId: string
+          slug: string
+          title: string
+          assetCategory?: {
+            __typename?: 'AssetCategory'
+            documentId: string
+            title: string
+            slug: string
+          } | null
+          files: Array<{
+            __typename?: 'UploadFile'
+            documentId: string
+            url: string
+            name: string
+            ext?: string | null
+            size: number
+            createdAt?: any | null
+            updatedAt?: any | null
+          } | null>
+        } | null>
+      }
     | {
         __typename: 'ComponentSectionsBanner'
         content?: string | null
@@ -11325,6 +11390,12 @@ export type PageEntityFragment = {
             locale?: string | null
           } | null
         } | null
+      }
+    | {
+        __typename: 'ComponentSectionsJobOffers'
+        title?: string | null
+        text?: string | null
+        titleLevel?: Enum_Componentsectionsjoboffers_Titlelevel | null
       }
     | {
         __typename: 'ComponentSectionsLinks'
@@ -11855,7 +11926,13 @@ export type PageEntityFragment = {
   } | null
 }
 
-export type PagesStaticPathsQueryVariables = Exact<{ [key: string]: never }>
+export type PagesStaticPathsQueryVariables = Exact<{
+  limit?: InputMaybe<Scalars['Int']['input']>
+  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
+  sort?: InputMaybe<
+    Array<InputMaybe<Scalars['String']['input']>> | InputMaybe<Scalars['String']['input']>
+  >
+}>
 
 export type PagesStaticPathsQuery = {
   __typename?: 'Query'
@@ -12194,7 +12271,38 @@ export type PageBySlugQuery = {
             } | null
           } | null
         }
-      | { __typename: 'ComponentSectionsAssets' }
+      | {
+          __typename: 'ComponentSectionsAssets'
+          title?: string | null
+          text?: string | null
+          showAll?: boolean | null
+          titleLevelAssetsSection?: Enum_Componentsectionsassets_Titlelevel | null
+          assets: Array<{
+            __typename: 'Asset'
+            publishedAt?: any | null
+            updatedAt?: any | null
+            description?: string | null
+            documentId: string
+            slug: string
+            title: string
+            assetCategory?: {
+              __typename?: 'AssetCategory'
+              documentId: string
+              title: string
+              slug: string
+            } | null
+            files: Array<{
+              __typename?: 'UploadFile'
+              documentId: string
+              url: string
+              name: string
+              ext?: string | null
+              size: number
+              createdAt?: any | null
+              updatedAt?: any | null
+            } | null>
+          } | null>
+        }
       | {
           __typename: 'ComponentSectionsBanner'
           content?: string | null
@@ -12622,6 +12730,12 @@ export type PageBySlugQuery = {
               locale?: string | null
             } | null
           } | null
+        }
+      | {
+          __typename: 'ComponentSectionsJobOffers'
+          title?: string | null
+          text?: string | null
+          titleLevel?: Enum_Componentsectionsjoboffers_Titlelevel | null
         }
       | {
           __typename: 'ComponentSectionsLinks'
@@ -13517,7 +13631,38 @@ export type Dev_AllPagesQuery = {
             } | null
           } | null
         }
-      | { __typename: 'ComponentSectionsAssets' }
+      | {
+          __typename: 'ComponentSectionsAssets'
+          title?: string | null
+          text?: string | null
+          showAll?: boolean | null
+          titleLevelAssetsSection?: Enum_Componentsectionsassets_Titlelevel | null
+          assets: Array<{
+            __typename: 'Asset'
+            publishedAt?: any | null
+            updatedAt?: any | null
+            description?: string | null
+            documentId: string
+            slug: string
+            title: string
+            assetCategory?: {
+              __typename?: 'AssetCategory'
+              documentId: string
+              title: string
+              slug: string
+            } | null
+            files: Array<{
+              __typename?: 'UploadFile'
+              documentId: string
+              url: string
+              name: string
+              ext?: string | null
+              size: number
+              createdAt?: any | null
+              updatedAt?: any | null
+            } | null>
+          } | null>
+        }
       | {
           __typename: 'ComponentSectionsBanner'
           content?: string | null
@@ -13945,6 +14090,12 @@ export type Dev_AllPagesQuery = {
               locale?: string | null
             } | null
           } | null
+        }
+      | {
+          __typename: 'ComponentSectionsJobOffers'
+          title?: string | null
+          text?: string | null
+          titleLevel?: Enum_Componentsectionsjoboffers_Titlelevel | null
         }
       | {
           __typename: 'ComponentSectionsLinks'
@@ -14587,7 +14738,9 @@ export type AllRegulationsQuery = {
   } | null>
 }
 
-export type RegulationsStaticPathsQueryVariables = Exact<{ [key: string]: never }>
+export type RegulationsStaticPathsQueryVariables = Exact<{
+  limit?: InputMaybe<Scalars['Int']['input']>
+}>
 
 export type RegulationsStaticPathsQuery = {
   __typename?: 'Query'
@@ -15982,6 +16135,39 @@ export type DocumentsSectionFragment = {
   } | null>
 }
 
+export type AssetsSectionFragment = {
+  __typename?: 'ComponentSectionsAssets'
+  title?: string | null
+  text?: string | null
+  showAll?: boolean | null
+  titleLevelAssetsSection?: Enum_Componentsectionsassets_Titlelevel | null
+  assets: Array<{
+    __typename: 'Asset'
+    publishedAt?: any | null
+    updatedAt?: any | null
+    description?: string | null
+    documentId: string
+    slug: string
+    title: string
+    assetCategory?: {
+      __typename?: 'AssetCategory'
+      documentId: string
+      title: string
+      slug: string
+    } | null
+    files: Array<{
+      __typename?: 'UploadFile'
+      documentId: string
+      url: string
+      name: string
+      ext?: string | null
+      size: number
+      createdAt?: any | null
+      updatedAt?: any | null
+    } | null>
+  } | null>
+}
+
 export type NumbersOverviewItemBlockFragment = {
   __typename?: 'ComponentBlocksNumbersOverviewItem'
   id: string
@@ -16383,6 +16569,13 @@ export type AlertSectionFragment = {
   alertVariant: Enum_Componentsectionsalert_Alertvariant
 }
 
+export type JobOffersSectionFragment = {
+  __typename?: 'ComponentSectionsJobOffers'
+  title?: string | null
+  text?: string | null
+  titleLevel?: Enum_Componentsectionsjoboffers_Titlelevel | null
+}
+
 type Sections_ComponentSectionsAccordion_Fragment = {
   __typename: 'ComponentSectionsAccordion'
   title?: string | null
@@ -16592,7 +16785,38 @@ type Sections_ComponentSectionsArticlesLandingPage_Fragment = {
   } | null
 }
 
-type Sections_ComponentSectionsAssets_Fragment = { __typename: 'ComponentSectionsAssets' }
+type Sections_ComponentSectionsAssets_Fragment = {
+  __typename: 'ComponentSectionsAssets'
+  title?: string | null
+  text?: string | null
+  showAll?: boolean | null
+  titleLevelAssetsSection?: Enum_Componentsectionsassets_Titlelevel | null
+  assets: Array<{
+    __typename: 'Asset'
+    publishedAt?: any | null
+    updatedAt?: any | null
+    description?: string | null
+    documentId: string
+    slug: string
+    title: string
+    assetCategory?: {
+      __typename?: 'AssetCategory'
+      documentId: string
+      title: string
+      slug: string
+    } | null
+    files: Array<{
+      __typename?: 'UploadFile'
+      documentId: string
+      url: string
+      name: string
+      ext?: string | null
+      size: number
+      createdAt?: any | null
+      updatedAt?: any | null
+    } | null>
+  } | null>
+}
 
 type Sections_ComponentSectionsBanner_Fragment = {
   __typename: 'ComponentSectionsBanner'
@@ -17023,6 +17247,13 @@ type Sections_ComponentSectionsInbaReleases_Fragment = {
       locale?: string | null
     } | null
   } | null
+}
+
+type Sections_ComponentSectionsJobOffers_Fragment = {
+  __typename: 'ComponentSectionsJobOffers'
+  title?: string | null
+  text?: string | null
+  titleLevel?: Enum_Componentsectionsjoboffers_Titlelevel | null
 }
 
 type Sections_ComponentSectionsLinks_Fragment = {
@@ -17546,6 +17777,7 @@ export type SectionsFragment =
   | Sections_ComponentSectionsIframe_Fragment
   | Sections_ComponentSectionsInbaLatestRelease_Fragment
   | Sections_ComponentSectionsInbaReleases_Fragment
+  | Sections_ComponentSectionsJobOffers_Fragment
   | Sections_ComponentSectionsLinks_Fragment
   | Sections_ComponentSectionsNarrowText_Fragment
   | Sections_ComponentSectionsNewsletter_Fragment
@@ -17801,38 +18033,6 @@ export const ArticleEntityFragmentDoc = gql`
   ${UploadImageEntityFragmentDoc}
   ${InbaReleaseCardEntityFragmentDoc}
   ${AdminGroupSlugEntityFragmentDoc}
-`
-export const AssetSlugEntityFragmentDoc = gql`
-  fragment AssetSlugEntity on Asset {
-    __typename
-    documentId
-    slug
-    title
-  }
-`
-export const AssetCategoryEntityFragmentDoc = gql`
-  fragment AssetCategoryEntity on AssetCategory {
-    documentId
-    title
-    slug
-  }
-`
-export const AssetEntityFragmentDoc = gql`
-  fragment AssetEntity on Asset {
-    ...AssetSlugEntity
-    publishedAt
-    updatedAt
-    assetCategory {
-      ...AssetCategoryEntity
-    }
-    description
-    files {
-      ...UploadFileEntity
-    }
-  }
-  ${AssetSlugEntityFragmentDoc}
-  ${AssetCategoryEntityFragmentDoc}
-  ${UploadFileEntityFragmentDoc}
 `
 export const UploadFileFragmentDoc = gql`
   fragment UploadFile on UploadFile {
@@ -18844,6 +19044,50 @@ export const DocumentsSectionFragmentDoc = gql`
   }
   ${DocumentEntityFragmentDoc}
 `
+export const AssetSlugEntityFragmentDoc = gql`
+  fragment AssetSlugEntity on Asset {
+    __typename
+    documentId
+    slug
+    title
+  }
+`
+export const AssetCategoryEntityFragmentDoc = gql`
+  fragment AssetCategoryEntity on AssetCategory {
+    documentId
+    title
+    slug
+  }
+`
+export const AssetEntityFragmentDoc = gql`
+  fragment AssetEntity on Asset {
+    ...AssetSlugEntity
+    publishedAt
+    updatedAt
+    assetCategory {
+      ...AssetCategoryEntity
+    }
+    description
+    files {
+      ...UploadFileEntity
+    }
+  }
+  ${AssetSlugEntityFragmentDoc}
+  ${AssetCategoryEntityFragmentDoc}
+  ${UploadFileEntityFragmentDoc}
+`
+export const AssetsSectionFragmentDoc = gql`
+  fragment AssetsSection on ComponentSectionsAssets {
+    title
+    text
+    assets(pagination: { limit: -1 }) {
+      ...AssetEntity
+    }
+    showAll
+    titleLevelAssetsSection: titleLevel
+  }
+  ${AssetEntityFragmentDoc}
+`
 export const NumbersOverviewItemBlockFragmentDoc = gql`
   fragment NumbersOverviewItemBlock on ComponentBlocksNumbersOverviewItem {
     id
@@ -19016,6 +19260,13 @@ export const AlertSectionFragmentDoc = gql`
     alertVariant
   }
 `
+export const JobOffersSectionFragmentDoc = gql`
+  fragment JobOffersSection on ComponentSectionsJobOffers {
+    title
+    text
+    titleLevel
+  }
+`
 export const SectionsFragmentDoc = gql`
   fragment Sections on PageSectionsDynamicZone {
     __typename
@@ -19097,6 +19348,9 @@ export const SectionsFragmentDoc = gql`
     ... on ComponentSectionsDocuments {
       ...DocumentsSection
     }
+    ... on ComponentSectionsAssets {
+      ...AssetsSection
+    }
     ... on ComponentSectionsNumbersOverview {
       ...NumbersOverviewSection
     }
@@ -19123,6 +19377,9 @@ export const SectionsFragmentDoc = gql`
     }
     ... on ComponentSectionsAlert {
       ...AlertSection
+    }
+    ... on ComponentSectionsJobOffers {
+      ...JobOffersSection
     }
   }
   ${DividerSectionFragmentDoc}
@@ -19151,6 +19408,7 @@ export const SectionsFragmentDoc = gql`
   ${TootootEventsSectionFragmentDoc}
   ${PartnersSectionFragmentDoc}
   ${DocumentsSectionFragmentDoc}
+  ${AssetsSectionFragmentDoc}
   ${NumbersOverviewSectionFragmentDoc}
   ${EventsSectionFragmentDoc}
   ${FacilitiesSectionFragmentDoc}
@@ -19160,6 +19418,7 @@ export const SectionsFragmentDoc = gql`
   ${ColumnsListSectionFragmentDoc}
   ${ArticlesLandingPageSectionFragmentDoc}
   ${AlertSectionFragmentDoc}
+  ${JobOffersSectionFragmentDoc}
 `
 export const SidebarsFragmentDoc = gql`
   fragment Sidebars on PageSidebarDynamicZone {
@@ -19495,8 +19754,8 @@ export const InbaReleaseBySlugDocument = gql`
   ${InbaReleaseEntityFragmentDoc}
 `
 export const InbaReleasesStaticPathsDocument = gql`
-  query InbaReleasesStaticPaths {
-    inbaReleases(sort: "releaseDate:desc") {
+  query InbaReleasesStaticPaths($limit: Int = -1) {
+    inbaReleases(sort: "releaseDate:desc", pagination: { limit: $limit }) {
       documentId
       slug
     }
@@ -19535,8 +19794,12 @@ export const PageCategoriesDocument = gql`
   ${PageCategoryEntityFragmentDoc}
 `
 export const PagesStaticPathsDocument = gql`
-  query PagesStaticPaths {
-    pages(pagination: { limit: -1 }) {
+  query PagesStaticPaths(
+    $limit: Int = -1
+    $locale: I18NLocaleCode = "*"
+    $sort: [String] = ["updatedAt:desc"]
+  ) {
+    pages(locale: $locale, sort: $sort, pagination: { limit: $limit }) {
       documentId
       slug
     }
@@ -19597,8 +19860,8 @@ export const AllRegulationsDocument = gql`
   ${RegulationEntityFragmentDoc}
 `
 export const RegulationsStaticPathsDocument = gql`
-  query RegulationsStaticPaths {
-    regulations(sort: "updatedAt:desc", pagination: { limit: 30 }) {
+  query RegulationsStaticPaths($limit: Int = -1) {
+    regulations(sort: "updatedAt:desc", pagination: { limit: $limit }) {
       documentId
       slug
     }

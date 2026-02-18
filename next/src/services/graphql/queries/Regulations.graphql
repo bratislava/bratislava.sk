@@ -4,9 +4,8 @@ query allRegulations {
   }
 }
 
-query RegulationsStaticPaths {
-  # Prerender only 30 most recently updated Regulations
-  regulations(sort: "updatedAt:desc", pagination: { limit: 30 }) {
+query RegulationsStaticPaths($limit: Int = -1) {
+  regulations(sort: "updatedAt:desc", pagination: { limit: $limit }) {
     documentId
     slug
   }

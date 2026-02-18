@@ -201,6 +201,11 @@ const nextConfig = {
         locale: false,
         permanent: true,
       },
+      {
+        source: '/mesto-bratislava/dane-a-poplatky/dan-z-nehnutelnosti/digitalna-platba-dane-z-nehnutelnosti',
+        destination: '/mesto-bratislava/dane-a-poplatky/digitalna-platba-dani-a-poplatkov',
+        permanent: true,
+      }
     ]
   },
   // Docs: https://react-svgr.com/docs/next/

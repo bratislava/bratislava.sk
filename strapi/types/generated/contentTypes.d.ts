@@ -545,7 +545,7 @@ export interface ApiAssetCategoryAssetCategory extends Struct.CollectionTypeSche
     singularName: 'asset-category'
   }
   options: {
-    draftAndPublish: true
+    draftAndPublish: false
   }
   attributes: {
     assets: Schema.Attribute.Relation<'oneToMany', 'api::asset.asset'>
@@ -1339,6 +1339,7 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
         'sections.events',
         'sections.tootoot-events',
         'sections.comparison-section',
+        'sections.job-offers',
         'sections.pros-and-cons-section',
         'sections.facilities',
         'sections.columned-text',

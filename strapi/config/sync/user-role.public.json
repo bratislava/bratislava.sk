@@ -41,6 +41,26 @@
       "locale": null
     },
     {
+      "action": "api::asset-category.asset-category.find",
+      "documentId": "eopbi4i6i7ferfqoax9p5bly",
+      "locale": null
+    },
+    {
+      "action": "api::asset-category.asset-category.findOne",
+      "documentId": "b6geszvegos1cdhiayj0xew9",
+      "locale": null
+    },
+    {
+      "action": "api::asset.asset.find",
+      "documentId": "ciot02gx91t2n50kj3yix3x2",
+      "locale": null
+    },
+    {
+      "action": "api::asset.asset.findOne",
+      "documentId": "pefmfna1o6e36eu9ayaz50yy",
+      "locale": null
+    },
+    {
       "action": "api::document-category.document-category.find",
       "documentId": "r7p2504rofx3fkkyefomgblf",
       "locale": null

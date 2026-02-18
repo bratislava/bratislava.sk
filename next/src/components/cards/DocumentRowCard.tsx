@@ -22,7 +22,7 @@ export type DocumentRowCardProps = {
 /**
  * Based on OLO https://github.com/bratislava/olo.sk/blob/master/next/src/components/cards/FileRowCard.tsx
  *
- * Figma OLO: https://www.figma.com/file/2qF09hDT9QNcpdztVMNAY4/OLO-Web?type=design&node-id=42-2223&mode=dev
+ * Figma: https://www.figma.com/design/17wbd0MDQcMW9NbXl6UPs8/DS--Component-library?node-id=867-2153&m=dev
  */
 
 const DocumentRowCard = ({
@@ -40,7 +40,7 @@ const DocumentRowCard = ({
     <CardBase variant="no-border" className={cn('ring-inset', className)}>
       <div className="flex items-center gap-3 py-4 lg:gap-4">
         <div className="flex grow items-start gap-3 lg:gap-4">
-          <div className="lg:rounded-lg lg:bg-background-passive-secondary lg:p-3 lg:text-content-passive-secondary">
+          <div className="lg:bg-background-passive-secondary lg:text-content-passive-secondary lg:rounded-lg lg:p-3">
             {variant === 'single-file' ? (
               <AttachmentIcon className="size-5 md:size-6" />
             ) : (
@@ -57,7 +57,7 @@ const DocumentRowCard = ({
                   <Fragment key={index}>
                     {index > 0 ? (
                       <div
-                        className="size-1 rounded-full bg-content-passive-secondary"
+                        className="bg-content-passive-secondary size-1 rounded-full"
                         aria-hidden
                       />
                     ) : null}

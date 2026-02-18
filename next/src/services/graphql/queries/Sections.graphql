@@ -408,6 +408,16 @@ fragment DocumentsSection on ComponentSectionsDocuments {
   titleLevelDocumentsSection: titleLevel
 }
 
+fragment AssetsSection on ComponentSectionsAssets {
+  title
+  text
+  assets(pagination: { limit: -1 }) {
+    ...AssetEntity
+  }
+  showAll
+  titleLevelAssetsSection: titleLevel
+}
+
 fragment NumbersOverviewItemBlock on ComponentBlocksNumbersOverviewItem {
   id
   number
@@ -525,6 +535,12 @@ fragment AlertSection on ComponentSectionsAlert {
   alertVariant
 }
 
+fragment JobOffersSection on ComponentSectionsJobOffers {
+  title
+  text
+  titleLevel
+}
+
 fragment Sections on PageSectionsDynamicZone {
   __typename
 
@@ -634,6 +650,10 @@ fragment Sections on PageSectionsDynamicZone {
     ...DocumentsSection
   }
 
+  ... on ComponentSectionsAssets {
+    ...AssetsSection
+  }
+
   ... on ComponentSectionsNumbersOverview {
     ...NumbersOverviewSection
   }
@@ -670,6 +690,10 @@ fragment Sections on PageSectionsDynamicZone {
 
   ... on ComponentSectionsAlert {
     ...AlertSection
+  }
+
+  ... on ComponentSectionsJobOffers {
+    ...JobOffersSection
   }
 }
 

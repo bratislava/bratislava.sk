@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_sections_job_offers",
+  "info": {
+    "displayName": "Pracovné pozície"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "text": {
+      "type": "text"
+    },
+    "titleLevel": {
+      "type": "enumeration",
+      "default": "h2",
+      "enum": [
+        "h2",
+        "h3"
+      ]
+    }
+  },
+  "config": {}
+}

@@ -4,6 +4,7 @@ import AccordionSection from '@/src/components/sections/AccordionSection'
 import AlertSection from '@/src/components/sections/AlertSection'
 import ArticlesLandingPageSection from '@/src/components/sections/ArticlesLandingPageSection'
 import ArticlesSection from '@/src/components/sections/ArticlesSection/ArticlesSection'
+import AssetsSection from '@/src/components/sections/AssetsSection/AssetsSection'
 import BannerSection from '@/src/components/sections/BannerSection'
 import ColumnedTextSection from '@/src/components/sections/ColumnedTextSection'
 import ColumnsListSection from '@/src/components/sections/ColumnsListSection'
@@ -21,6 +22,7 @@ import GallerySection from '@/src/components/sections/GallerySection'
 import IframeSection from '@/src/components/sections/IframeSection'
 import InbaLatestReleaseSection from '@/src/components/sections/InbaLatestReleaseSection'
 import InbaReleasesSection from '@/src/components/sections/InbaReleasesSection/InbaReleasesSection'
+import JobOffersSection from '@/src/components/sections/JobOffersSection'
 import LinksSection from '@/src/components/sections/LinksSection'
 import NarrowTextSection from '@/src/components/sections/NarrowTextSection'
 import NewsletterSection from '@/src/components/sections/NewsletterSection/NewsletterSection'
@@ -124,6 +126,9 @@ const SectionContent = ({ section }: { section: SectionsFragment }) => {
     case 'ComponentSectionsDocuments':
       return <DocumentsSection section={section} />
 
+    case 'ComponentSectionsAssets':
+      return <AssetsSection section={section} />
+
     case 'ComponentSectionsNumericalList':
       return <NumericalListSection section={section} />
 
@@ -156,6 +161,9 @@ const SectionContent = ({ section }: { section: SectionsFragment }) => {
 
     case 'ComponentSectionsAlert':
       return <AlertSection section={section} />
+
+    case 'ComponentSectionsJobOffers':
+      return <JobOffersSection section={section} />
 
     default:
       return null
