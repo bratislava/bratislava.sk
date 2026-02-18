@@ -18,6 +18,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   } catch (error) {
     console.error('Nalgoo API error:', error)
 
-    return res.status(500).json({ message: error, status: 500 })
+    return res.status(500).json({ message: error?.toString(), status: 500 })
   }
 }
