@@ -1,3 +1,4 @@
+import { Typography } from '@bratislava/component-library'
 import { useQuery } from '@tanstack/react-query'
 import React, { Fragment, useEffect, useState } from 'react'
 
@@ -13,6 +14,7 @@ import {
   fetchNalgooJobOffers,
   getNalgooJobOffersQueryKey,
 } from '@/src/services/nalgoo/nalgooJobOffers.fetcher'
+import { useTranslation } from '@/src/utils/useTranslation'
 
 type JobOffersSectionProps = { section: JobOffersSectionFragment }
 
@@ -21,6 +23,7 @@ type JobOffersSectionProps = { section: JobOffersSectionFragment }
  */
 
 const JobOffersSection = ({ section }: JobOffersSectionProps) => {
+  const { t } = useTranslation()
   const { title, text, titleLevel } = section
 
   const { data, isPending, isError, error } = useQuery({
@@ -36,14 +39,17 @@ const JobOffersSection = ({ section }: JobOffersSectionProps) => {
   })
 
   useEffect(() => {
-    if (data?.length)
+    if (data?.length && !isError)
       setPagination((prev) => ({ ...prev, currentPage: 1, totalItems: data.length }))
-  }, [data])
+  }, [data, isError])
 
-  const paginatedData = data?.slice(
-    (pagination.currentPage - 1) * pagination.pageSize,
-    pagination.currentPage * pagination.pageSize,
-  )
+  const paginatedData =
+    data?.length && !isError
+      ? data.slice(
+          (pagination.currentPage - 1) * pagination.pageSize,
+          pagination.currentPage * pagination.pageSize,
+        )
+      : []
 
   return (
     <SectionContainer>
@@ -55,35 +61,42 @@ const JobOffersSection = ({ section }: JobOffersSectionProps) => {
           <div>{error.message}</div>
         ) : (
           <>
-            <ul className="flex flex-col rounded-lg border py-2">
-              {paginatedData?.map((jobOffer, index) => {
-                return (
-                  <Fragment key={jobOffer.id}>
-                    {index > 0 ? <HorizontalDivider className="mx-4 lg:mx-6" asListItem /> : null}
-                    <li className="w-full">
-                      <JobOfferRowCard
-                        cardTitleLevel={getCardTitleLevel(titleLevel)}
-                        jobOffer={jobOffer}
-                      />
-                    </li>
-                  </Fragment>
-                )
-              })}
-            </ul>
-
-            <div className="self-center">
-              <PaginationWithInput
-                currentPage={pagination.currentPage}
-                totalCount={
-                  pagination.totalItems > 0
-                    ? Math.ceil(pagination.totalItems / pagination.pageSize)
-                    : 1
-                }
-                onPageChange={(newPage) => {
-                  setPagination((prev) => ({ ...prev, currentPage: newPage }))
-                }}
-              />
-            </div>
+            {data.length > 0 ? (
+              <>
+                <ul className="flex flex-col rounded-lg border py-2">
+                  {paginatedData.map((jobOffer, index) => {
+                    return (
+                      <Fragment key={jobOffer.id}>
+                        {index > 0 ? (
+                          <HorizontalDivider className="mx-4 lg:mx-6" asListItem />
+                        ) : null}
+                        <li className="w-full">
+                          <JobOfferRowCard
+                            cardTitleLevel={getCardTitleLevel(titleLevel)}
+                            jobOffer={jobOffer}
+                          />
+                        </li>
+                      </Fragment>
+                    )
+                  })}
+                </ul>
+                <div className="self-center">
+                  <PaginationWithInput
+                    currentPage={pagination.currentPage}
+                    totalCount={
+                      pagination.totalItems > 0
+                        ? Math.ceil(pagination.totalItems / pagination.pageSize)
+                        : 1
+                    }
+                    onPageChange={(newPage) => {
+                      setPagination((prev) => ({ ...prev, currentPage: newPage }))
+                    }}
+                  />
+                </div>
+              </>
+            ) : (
+              <Typography>{t('SearchPage.noResults')}</Typography>
+            )}
           </>
         )}
       </div>
