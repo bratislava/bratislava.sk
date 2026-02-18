@@ -21,7 +21,7 @@
   "dependencies": {
     "@strapi/plugin-graphql": "5.18.1",
     "@strapi/plugin-users-permissions": "5.18.1",
-    "@strapi/provider-email-mailgun": "5.18.",
+    "@strapi/provider-email-mailgun": "5.18.1",
     "@strapi/provider-upload-aws-s3": "5.18.1",
     "@strapi/strapi": "5.18.1",
     "patch-package": "^7.0.2",
@@ -29,7 +29,7 @@
     "postinstall-postinstall": "^2.1.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
-    "react-router-dom": "^6.0.0",
+    "react-router-dom": "^6.30.3",
     "strapi-plugin-config-sync": "^3.1.2",
     "strapi-plugin-meilisearch": "0.13.2",
     "styled-components": "^6.0.0"
