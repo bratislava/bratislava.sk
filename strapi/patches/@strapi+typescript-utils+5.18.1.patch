@@ -11,11 +11,3 @@ index 7660d47..d34850c 100644
      .map(([attributeName, attribute]) => {
        return attributeToPropertySignature(schema, attributeName, attribute);
      });
-diff --git a/node_modules/@strapi/typescript-utils/tsconfigs/.tsbuildinfo b/node_modules/@strapi/typescript-utils/tsconfigs/.tsbuildinfo
-new file mode 100644
-index 0000000..305d37e
---- /dev/null
-+++ b/node_modules/@strapi/typescript-utils/tsconfigs/.tsbuildinfo
-@@ -0,0 +1 @@
-+{"version":"5.4.4"}
-\ No newline at end of file
