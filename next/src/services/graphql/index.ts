@@ -10312,7 +10312,9 @@ export type InbaReleaseBySlugQuery = {
   } | null>
 }
 
-export type InbaReleasesStaticPathsQueryVariables = Exact<{ [key: string]: never }>
+export type InbaReleasesStaticPathsQueryVariables = Exact<{
+  limit?: InputMaybe<Scalars['Int']['input']>
+}>
 
 export type InbaReleasesStaticPathsQuery = {
   __typename?: 'Query'
@@ -11924,7 +11926,13 @@ export type PageEntityFragment = {
   } | null
 }
 
-export type PagesStaticPathsQueryVariables = Exact<{ [key: string]: never }>
+export type PagesStaticPathsQueryVariables = Exact<{
+  limit?: InputMaybe<Scalars['Int']['input']>
+  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
+  sort?: InputMaybe<
+    Array<InputMaybe<Scalars['String']['input']>> | InputMaybe<Scalars['String']['input']>
+  >
+}>
 
 export type PagesStaticPathsQuery = {
   __typename?: 'Query'
@@ -14730,7 +14738,9 @@ export type AllRegulationsQuery = {
   } | null>
 }
 
-export type RegulationsStaticPathsQueryVariables = Exact<{ [key: string]: never }>
+export type RegulationsStaticPathsQueryVariables = Exact<{
+  limit?: InputMaybe<Scalars['Int']['input']>
+}>
 
 export type RegulationsStaticPathsQuery = {
   __typename?: 'Query'
@@ -19744,8 +19754,8 @@ export const InbaReleaseBySlugDocument = gql`
   ${InbaReleaseEntityFragmentDoc}
 `
 export const InbaReleasesStaticPathsDocument = gql`
-  query InbaReleasesStaticPaths {
-    inbaReleases(sort: "releaseDate:desc") {
+  query InbaReleasesStaticPaths($limit: Int = -1) {
+    inbaReleases(sort: "releaseDate:desc", pagination: { limit: $limit }) {
       documentId
       slug
     }
@@ -19784,8 +19794,12 @@ export const PageCategoriesDocument = gql`
   ${PageCategoryEntityFragmentDoc}
 `
 export const PagesStaticPathsDocument = gql`
-  query PagesStaticPaths {
-    pages(pagination: { limit: -1 }) {
+  query PagesStaticPaths(
+    $limit: Int = -1
+    $locale: I18NLocaleCode = "*"
+    $sort: [String] = ["updatedAt:desc"]
+  ) {
+    pages(locale: $locale, sort: $sort, pagination: { limit: $limit }) {
       documentId
       slug
     }
@@ -19846,8 +19860,8 @@ export const AllRegulationsDocument = gql`
   ${RegulationEntityFragmentDoc}
 `
 export const RegulationsStaticPathsDocument = gql`
-  query RegulationsStaticPaths {
-    regulations(sort: "updatedAt:desc", pagination: { limit: 30 }) {
+  query RegulationsStaticPaths($limit: Int = -1) {
+    regulations(sort: "updatedAt:desc", pagination: { limit: $limit }) {
       documentId
       slug
     }

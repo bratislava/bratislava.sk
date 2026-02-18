@@ -29,13 +29,14 @@ type StaticParams = {
 }
 
 export const getStaticPaths: GetStaticPaths<StaticParams> = async () => {
-  const { inbaReleases } = await client.InbaReleasesStaticPaths()
+  // Prerender only last 5 releases (that covers whole year)
+  const { inbaReleases } = await client.InbaReleasesStaticPaths({ limit: 5 })
 
   const paths = inbaReleases
     .filter((inbaRelease) => inbaRelease?.slug)
     .map((inbaRelease) => ({
       params: {
-        // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion
+        // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion,@typescript-eslint/no-non-null-assertion
         slug: inbaRelease!.slug!,
       },
     }))

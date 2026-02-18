@@ -8,11 +8,7 @@ import PageLayout from '@/src/components/layouts/PageLayout'
 import GeneralPageContent from '@/src/components/page-contents/GeneralPageContent'
 import { AdminGroupsContextProvider } from '@/src/components/providers/AdminGroupsContextProvider'
 import { GeneralContextProvider } from '@/src/components/providers/GeneralContextProvider'
-import {
-  LanguageCode,
-  Localizations,
-  LocalizationsProvider,
-} from '@/src/components/providers/LocalizationsProvider'
+import { LanguageCode, Localizations, LocalizationsProvider } from '@/src/components/providers/LocalizationsProvider'
 import { GeneralQuery, PageEntityFragment } from '@/src/services/graphql'
 import { client } from '@/src/services/graphql/gql'
 import { GlobalCategoryColorProvider } from '@/src/utils/colors'
@@ -31,8 +27,8 @@ type StaticParams = {
 }
 
 export const getStaticPaths: GetStaticPaths<StaticParams> = async () => {
-  // English pages are not generated.
-  const { pages } = await client.PagesStaticPaths()
+  // Prerender only sk pages and only 300 last updated pages to prevent too long builds that failed on network limitations.
+  const { pages } = await client.PagesStaticPaths({ locale: 'sk', limit: 300 })
 
   const paths = pages
     .filter((page) => page?.slug)
