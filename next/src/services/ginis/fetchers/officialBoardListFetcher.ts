@@ -11,6 +11,7 @@ export type OfficialBoardListFilters = {
   page: number
   categoryId?: string
   publicationState?: OfficialBoardPublicationState
+  publicationYear?: string
 }
 
 export const officialBoardListDefaultFilters = {
@@ -18,6 +19,7 @@ export const officialBoardListDefaultFilters = {
   pageSize: 10,
   page: 1,
   publicationState: 'vyveseno',
+  publicationYear: 'all',
 } satisfies OfficialBoardListFilters
 
 export const getOfficialBoardListQueryKey = (filters: OfficialBoardListFilters) => [
@@ -36,6 +38,7 @@ export const officialBoardListFetcher = async (filters: OfficialBoardListFilters
       // eslint-disable-next-line @typescript-eslint/no-base-to-string
       filters.publicationState ? `publicationState=${filters.publicationState}` : '',
       filters.categoryId ? `categoryId=${filters.categoryId}` : '',
+      filters.publicationYear ? `publicationYear=${filters.publicationYear}` : '',
     ]
       .filter(Boolean)
       .join('&')}`,

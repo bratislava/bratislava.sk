@@ -40,7 +40,7 @@ type Props =
     }
 
 /**
- * TODO Figma link
+ *  Figma: https://www.figma.com/design/A9aoQH2FGhR1D14wvvk6FW/Mestsk%C3%BD-web--bratislava.sk-?node-id=1237-7336&t=WoqUgZ518uqgeCxG-4
  */
 
 const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
@@ -126,14 +126,13 @@ const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
 
   const [currentPage, setCurrentPage] = useState(1)
 
-  useEffect(() => {
-    setCurrentPage(1)
-  }, [searchValue, selection])
-
   /* OfficialBoard specific filters state */
   const [categoryId, setCategoryId] = useState<string | null>(null)
   const [publicationState, setPublicationState] = useState<OfficialBoardPublicationState>(
     officialBoardListDefaultFilters.publicationState,
+  )
+  const [publicationYear, setPublicationYear] = useState<string | null>(
+    officialBoardListDefaultFilters.publicationYear,
   )
 
   const [resultsCount, setResultsCount] = useState(
@@ -186,7 +185,18 @@ const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
     // Official board category id
     categoryId: !categoryId || categoryId === 'all' ? undefined : categoryId,
     publicationState: publicationState ?? undefined,
+    publicationYear: publicationYear ?? undefined,
   }
+
+  useEffect(() => {
+    setCurrentPage(1)
+  }, [
+    searchValue,
+    selection,
+    searchFilters.categoryId,
+    searchFilters.publicationState,
+    searchFilters.publicationYear,
+  ])
 
   const searchRef = useRef<null | HTMLInputElement>(null)
 
@@ -245,6 +255,8 @@ const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
                 setCategoryId={setCategoryId}
                 publicationState={publicationState}
                 setPublicationState={setPublicationState}
+                publicationYear={publicationYear}
+                setPublicationYear={setPublicationYear}
               />
             </div>
           </div>

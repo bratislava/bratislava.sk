@@ -40,3 +40,8 @@ export type OfficialBoardCategoryListResponse = ParsedOfficialBoardCategory[]
 
 // NonNullable removes `undefined` from the type
 export type OfficialBoardPublicationState = NonNullable<UdeSeznamDokumentuRequest['Stav']>
+
+export type PublicationYearOption = {
+  id: string
+  title: string
+}
