@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query'
 import React, { useMemo } from 'react'
 
 import SelectField, { SelectItem } from '@/src/components/common/SelectField/SelectField'
-import { getYearsOptionsForPublicationState } from '@/src/components/sections/OfficialBoardSection/getYearsOptionsForPublicationState'
+import { getYearsOptions } from '@/src/components/sections/OfficialBoardSection/getYearsOptions'
 import {
   getOfficialBoardCategoriesQueryKey,
   officialBoardCategoriesFetcher,
@@ -39,7 +39,7 @@ const OfficialBoardAdditionalFilters = ({
   isLoading,
 }: Props) => {
   const { t } = useTranslation()
-  const yearsOptions = useMemo(() => getYearsOptionsForPublicationState(), [])
+  const yearsOptions = useMemo(() => getYearsOptions(), [])
   const allYearsOptions = () =>
     publicationState === 'vyveseno'
       ? [{ id: 'all', title: t('OfficialBoard.allOptions') }, ...yearsOptions]
@@ -120,7 +120,7 @@ const OfficialBoardAdditionalFilters = ({
       {isProductionDeployment() ? null : (
         <SelectField
           label={t('OfficialBoard.publicationYear')}
-          items={getYearsOptionsForPublicationState()}
+          items={allYearsOptions()}
           isDisabled={isLoading}
           selectedKey={publicationYear as string}
           onSelectionChange={(selected) => {
