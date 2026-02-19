@@ -21,7 +21,6 @@ type SearchResultsProps = {
   onSetResultsCount: (searchOptionId: SearchOption['id'], count: number) => void
   onShowMore?: Dispatch<SetStateAction<Selection>>
   onPageChange?: Dispatch<SetStateAction<number>>
-  onLoadingChange: (isRefetching: boolean) => void
 }
 
 const SearchResults = ({
@@ -31,9 +30,6 @@ const SearchResults = ({
   onSetResultsCount,
   onShowMore,
   onPageChange,
-  // TODO use onLoadingChange to signal loading state to parent component
-
-  onLoadingChange,
 }: SearchResultsProps) => {
   const { t } = useTranslation()
 
@@ -47,10 +43,6 @@ const SearchResults = ({
   useEffect(() => {
     onSetResultsCount(searchOption.id, searchResultsCount ?? 0)
   }, [onSetResultsCount, searchOption.id, searchResultsCount])
-
-  useEffect(() => {
-    onLoadingChange(isRefetching)
-  }, [isRefetching])
 
   if (isRefetching) {
     return <LoadingSpinner />

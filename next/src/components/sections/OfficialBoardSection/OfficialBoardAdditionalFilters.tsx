@@ -22,7 +22,6 @@ type Props = {
   setPublicationState: React.Dispatch<React.SetStateAction<OfficialBoardPublicationState>>
   publicationYear: string | null
   setPublicationYear: (publicationYear: string | null) => void
-  isLoading: boolean
 }
 
 /*
@@ -36,12 +35,12 @@ const OfficialBoardAdditionalFilters = ({
   setPublicationState,
   publicationYear,
   setPublicationYear,
-  isLoading,
 }: Props) => {
   const { t } = useTranslation()
   const yearsOptions = useMemo(() => getYearsOptions(), [])
-  const allYearsOptions = () =>
-    publicationState === 'vyveseno'
+
+  const allYearsOptions = (publicationStateSelected: string) =>
+    publicationStateSelected === 'vyveseno'
       ? [{ id: 'all', title: t('OfficialBoard.allOptions') }, ...yearsOptions]
       : yearsOptions
 
@@ -90,7 +89,6 @@ const OfficialBoardAdditionalFilters = ({
       <SelectField
         label={t('OfficialBoard.category')}
         items={categorySelectOptions}
-        isDisabled={isLoading}
         selectedKey={categoryId}
         onSelectionChange={(selected) => {
           setCategoryId(selected as string | null | 'all')
@@ -104,11 +102,12 @@ const OfficialBoardAdditionalFilters = ({
         <SelectField
           label={t('OfficialBoard.publicationState')}
           items={publicationStateSelectOptions}
-          isDisabled={isLoading}
           selectedKey={publicationState as string}
           onSelectionChange={(selected) => {
             setPublicationState(selected as typeof publicationState)
-            if (selected === 'archived') setPublicationYear(allYearsOptions()[0].id)
+            if (selected === 'sejmuto') {
+              setPublicationYear(allYearsOptions(selected)[0].id)
+            }
           }}
         >
           {(item) => (
@@ -120,14 +119,13 @@ const OfficialBoardAdditionalFilters = ({
       {isProductionDeployment() ? null : (
         <SelectField
           label={t('OfficialBoard.publicationYear')}
-          items={allYearsOptions()}
-          isDisabled={isLoading}
+          items={allYearsOptions(publicationState as string)}
           selectedKey={publicationYear as string}
           onSelectionChange={(selected) => {
             setPublicationYear(selected as string | null)
           }}
         >
-          {(item) => <SelectItem label={item.title} textValue={item.title} id={item.id} />}
+          {(item) => <SelectItem label={item.title} id={item.id} />}
         </SelectField>
       )}
     </div>
