@@ -35,7 +35,7 @@ const SearchResults = ({
 
   const searchQuery = useQueryBySearchOption({ optionKey: searchOption.id, filters })
 
-  const { data, isError, error, isRefetching } = searchQuery
+  const { data, isPending, isError, error } = searchQuery
   const { searchResultsData, searchResultsCount } = data ?? { searchResultsCount: 0 }
 
   const GENERAL_RESULTS_COUNT = 5
@@ -44,7 +44,7 @@ const SearchResults = ({
     onSetResultsCount(searchOption.id, searchResultsCount ?? 0)
   }, [onSetResultsCount, searchOption.id, searchResultsCount])
 
-  if (isRefetching) {
+  if (isPending) {
     return <LoadingSpinner />
   }
 
