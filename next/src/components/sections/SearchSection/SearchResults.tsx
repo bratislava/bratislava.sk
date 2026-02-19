@@ -21,7 +21,7 @@ type SearchResultsProps = {
   onSetResultsCount: (searchOptionId: SearchOption['id'], count: number) => void
   onShowMore?: Dispatch<SetStateAction<Selection>>
   onPageChange?: Dispatch<SetStateAction<number>>
-  onLoadingChange?: Dispatch<SetStateAction<boolean>>
+  onLoadingChange: (isRefetching: boolean) => void
 }
 
 const SearchResults = ({
@@ -39,7 +39,7 @@ const SearchResults = ({
 
   const searchQuery = useQueryBySearchOption({ optionKey: searchOption.id, filters })
 
-  const { data, isPending, isError, error } = searchQuery
+  const { data, isError, error, isRefetching } = searchQuery
   const { searchResultsData, searchResultsCount } = data ?? { searchResultsCount: 0 }
 
   const GENERAL_RESULTS_COUNT = 5
@@ -48,7 +48,11 @@ const SearchResults = ({
     onSetResultsCount(searchOption.id, searchResultsCount ?? 0)
   }, [onSetResultsCount, searchOption.id, searchResultsCount])
 
-  if (isPending) {
+  useEffect(() => {
+    onLoadingChange(isRefetching)
+  }, [isRefetching])
+
+  if (isRefetching) {
     return <LoadingSpinner />
   }
 

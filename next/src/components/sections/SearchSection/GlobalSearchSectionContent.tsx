@@ -50,6 +50,7 @@ const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
   const [input, setInput] = useState('')
   const [debouncedInput] = useDebounceValue(input, 300)
   const [searchValue, setSearchValue] = useState(debouncedInput)
+  const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
     setInput(routerQueryValue)
@@ -257,6 +258,7 @@ const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
                 setPublicationState={setPublicationState}
                 publicationYear={publicationYear}
                 setPublicationYear={setPublicationYear}
+                isLoading={isLoading}
               />
             </div>
           </div>
@@ -283,6 +285,7 @@ const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
                 onSetResultsCount={setResultsCountById}
                 onShowMore={setSelection}
                 key={`allResults-${option.id}`}
+                onLoadingChange={(isRefetching) => setIsLoading(isRefetching)}
               />
             )
           })}
@@ -296,6 +299,7 @@ const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
           onShowMore={setSelection}
           onPageChange={setCurrentPage}
           key={`specificResults-${selectedKey}`}
+          onLoadingChange={(isRefetching) => setIsLoading(isRefetching)}
         />
       )}
     </div>

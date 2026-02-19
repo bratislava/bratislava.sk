@@ -21,12 +21,12 @@ export const getOfficialBoardParsedList = async (options: {
   const publicationStateSanitized =
     publicationState === 'vyveseno' || publicationState === 'sejmuto' ? publicationState : undefined
 
-  const publicationYearFrom = publicationYear
+  const publicationDayFrom = publicationYear
     ? publicationYear === 'all'
       ? `2018-01-01`
       : `${publicationYear}-01-01`
     : undefined
-  const publicationYearTo = publicationYear
+  const publicationDayTo = publicationYear
     ? publicationYear === 'all'
       ? `${new Date().getFullYear().toString()}-12-31`
       : `${publicationYear}-12-31`
@@ -43,8 +43,8 @@ export const getOfficialBoardParsedList = async (options: {
         Stav: publicationStateSanitized,
         'Id-kategorie': categoryId,
         Nazev: searchQueryTrimmed,
-        'Vyveseno-od': publicationYearFrom,
-        'Vyveseno-od-horni-mez': publicationYearTo,
+        'Vyveseno-od': publicationDayFrom,
+        'Vyveseno-od-horni-mez': publicationDayTo,
       })
       documents = response['Seznam-dokumentu']
     } else {
@@ -52,8 +52,8 @@ export const getOfficialBoardParsedList = async (options: {
         Stav: publicationStateSanitized,
         'Id-kategorie': categoryId,
         Nazev: searchQueryTrimmed,
-        'Vyveseno-od': publicationYearFrom,
-        'Vyveseno-od-horni-mez': publicationYearTo,
+        'Vyveseno-od': publicationDayFrom,
+        'Vyveseno-od-horni-mez': publicationDayTo,
       })
       documents = response['Seznam-dokumentu']
     }

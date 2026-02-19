@@ -1,8 +1,8 @@
 import { useQuery } from '@tanstack/react-query'
-import React from 'react'
+import React, { useMemo } from 'react'
 
 import SelectField, { SelectItem } from '@/src/components/common/SelectField/SelectField'
-import { getYears } from '@/src/components/sections/OfficialBoardSection/yearsList'
+import { getYearsOptionsForPublicationState } from '@/src/components/sections/OfficialBoardSection/getYearsOptionsForPublicationState'
 import {
   getOfficialBoardCategoriesQueryKey,
   officialBoardCategoriesFetcher,
@@ -22,6 +22,7 @@ type Props = {
   setPublicationState: React.Dispatch<React.SetStateAction<OfficialBoardPublicationState>>
   publicationYear: string | null
   setPublicationYear: (publicationYear: string | null) => void
+  isLoading: boolean
 }
 
 /*
@@ -35,8 +36,14 @@ const OfficialBoardAdditionalFilters = ({
   setPublicationState,
   publicationYear,
   setPublicationYear,
+  isLoading,
 }: Props) => {
   const { t } = useTranslation()
+  const yearsOptions = useMemo(() => getYearsOptionsForPublicationState(), [])
+  const allYearsOptions = () =>
+    publicationState === 'vyveseno'
+      ? [{ id: 'all', title: t('OfficialBoard.allOptions') }, ...yearsOptions]
+      : yearsOptions
 
   // TODO handle loading and error
   const { data: officialBoardCategories } = useQuery({
@@ -82,15 +89,14 @@ const OfficialBoardAdditionalFilters = ({
     <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
       <SelectField
         label={t('OfficialBoard.category')}
+        items={categorySelectOptions}
+        isDisabled={isLoading}
         selectedKey={categoryId}
         onSelectionChange={(selected) => {
           setCategoryId(selected as string | null | 'all')
         }}
       >
-        {/* We use .map instead of dynamic `items` to be able to show number of documents depending on publication state  */}
-        {categorySelectOptions.map((item) => (
-          <SelectItem key={item.id} id={item.id} textValue={item.title} label={item.title} />
-        ))}
+        {(item) => <SelectItem label={item.title} textValue={item.title} id={item.id} />}
       </SelectField>
 
       {/* TODO remove this check, but for now, we want to test in on staging without being block by accidental release */}
@@ -98,26 +104,30 @@ const OfficialBoardAdditionalFilters = ({
         <SelectField
           label={t('OfficialBoard.publicationState')}
           items={publicationStateSelectOptions}
+          isDisabled={isLoading}
           selectedKey={publicationState as string}
           onSelectionChange={(selected) => {
             setPublicationState(selected as typeof publicationState)
-            setPublicationYear(getYears(selected as typeof publicationState)[0].id)
+            if (selected === 'archived') setPublicationYear(allYearsOptions()[0].id)
           }}
         >
-          {(item) => <SelectItem label={item.title} id={item.id as string} />}
+          {(item) => (
+            <SelectItem label={item.title} textValue={item.title} id={item.id as string} />
+          )}
         </SelectField>
       )}
 
       {isProductionDeployment() ? null : (
         <SelectField
           label={t('OfficialBoard.publicationYear')}
-          items={getYears(publicationState)}
+          items={getYearsOptionsForPublicationState()}
+          isDisabled={isLoading}
           selectedKey={publicationYear as string}
           onSelectionChange={(selected) => {
             setPublicationYear(selected as string | null)
           }}
         >
-          {(item) => <SelectItem label={item.title} id={item.id} />}
+          {(item) => <SelectItem label={item.title} textValue={item.title} id={item.id} />}
         </SelectField>
       )}
     </div>
