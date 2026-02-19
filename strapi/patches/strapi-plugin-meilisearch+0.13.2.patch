@@ -1,5 +1,5 @@
 diff --git a/node_modules/strapi-plugin-meilisearch/dist/server/index.js b/node_modules/strapi-plugin-meilisearch/dist/server/index.js
-index 20af84a..22487bc 100644
+index 20af84a..3e3e0ba 100644
 --- a/node_modules/strapi-plugin-meilisearch/dist/server/index.js
 +++ b/node_modules/strapi-plugin-meilisearch/dist/server/index.js
 @@ -808,22 +808,31 @@ const contentTypeService = ({ strapi: strapi2 }) => ({
