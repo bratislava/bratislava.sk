@@ -125,7 +125,7 @@ const OfficialBoardAdditionalFilters = ({
             setPublicationYear(selected as string | null)
           }}
         >
-          {(item) => <SelectItem label={item.title} id={item.id} />}
+          {(item) => <SelectItem label={item.title} textValue={item.title} id={item.id} />}
         </SelectField>
       )}
     </div>
