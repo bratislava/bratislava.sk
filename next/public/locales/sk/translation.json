@@ -114,6 +114,7 @@
   "NavMenuLink.goToCategory": "Prejsť na celú kategóriu",
   "NewsletterSection.consentCheckboxLabel": "Súhlasím so",
   "NewsletterSection.consentLinkLabel": "spracovaním osobných údajov.",
+  "NewsletterSection.consentLinkLabel.aria": "Spracovanie osobných údajov",
   "NewsletterSection.error.consentRequired": "Pre prihlásenie na odber je potrebný súhlas so spracovaním osobných údajov.",
   "NewsletterSection.error.emailIncorrectFormat": "Zadajte email v správnom formáte,\nnapríklad meno.priezvisko@domena.sk",
   "NewsletterSection.error.mandatoryField": "Pole je povinné.",

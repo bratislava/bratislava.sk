@@ -106,6 +106,7 @@
   "NavMenuLink.goToCategory": "Go to category",
   "NewsletterSection.consentCheckboxLabel": "I agree with",
   "NewsletterSection.consentLinkLabel": "processing of personal data.",
+  "NewsletterSection.consentLinkLabel.aria": "Processing of personal data",
   "NewsletterSection.error.consentRequired": "Consent to processing of personal data is required to subscribe.",
   "NewsletterSection.error.emailIncorrectFormat": "Insert email in correct format,\ne.g. name.surname@domain.com",
   "NewsletterSection.error.mandatoryField": "This field is required.",

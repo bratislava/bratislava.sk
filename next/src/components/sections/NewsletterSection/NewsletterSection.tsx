@@ -219,6 +219,10 @@ const NewsletterSection = ({ section }: Props) => {
               errorMessage={emailErrorMessage}
             />
             <div className="flex gap-1">
+              {/**
+               * Checkbox label and link are separated for accessibility reasons:
+               * https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/label#interactive_content
+               */}
               <Checkbox
                 isSelected={consentChecked}
                 onChange={setConsentChecked}
@@ -229,19 +233,13 @@ const NewsletterSection = ({ section }: Props) => {
               >
                 {t('NewsletterSection.consentCheckboxLabel')}{' '}
               </Checkbox>
-              {privacyPolicyPage ? (
-                <MLink variant="underlined" {...getLinkProps({ page: privacyPolicyPage })}>
-                  {t('NewsletterSection.consentLinkLabel')}
-                </MLink>
-              ) : (
-                <Typography
-                  variant="p-default"
-                  as="span"
-                  className="text-content-passive-secondary"
-                >
-                  {t('NewsletterSection.consentLinkLabel')}
-                </Typography>
-              )}
+              <MLink
+                variant="underlined"
+                aria-label={t('NewsletterSection.consentLinkLabel.aria')}
+                {...getLinkProps({ page: privacyPolicyPage })}
+              >
+                {t('NewsletterSection.consentLinkLabel')}
+              </MLink>
             </div>
             {successMessage ? (
               <Typography variant="p-small" className="text-content-success-default">
