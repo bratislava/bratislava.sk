@@ -1,5 +1,4 @@
 import { Typography } from '@bratislava/component-library'
-import React from 'react'
 
 import {
   FacebookIcon,
@@ -10,14 +9,14 @@ import {
 import Button, { PolymorphicProps } from '@/src/components/common/Button/Button'
 import Checkbox from '@/src/components/common/CheckBoxGroup/Checkbox'
 import Input from '@/src/components/common/Input/Input'
+import MLink from '@/src/components/common/MLink/MLink'
 import SectionContainer from '@/src/components/layouts/SectionContainer'
 import SectionHeader from '@/src/components/layouts/SectionHeader'
 import { useGeneralContext } from '@/src/components/providers/GeneralContextProvider'
+import { useNewsletterSection } from '@/src/components/sections/NewsletterSection/useNewsletterSection'
 import { NewsletterSectionFragment } from '@/src/services/graphql'
-import { useTranslation } from '@/src/utils/useTranslation'
-import MLink from '@/src/components/common/MLink/MLink'
 import { getLinkProps } from '@/src/utils/getLinkProps'
-import { useNewsletterSection } from './useNewsletterSection'
+import { useTranslation } from '@/src/utils/useTranslation'
 
 type Props = {
   section: NewsletterSectionFragment
@@ -170,7 +169,7 @@ const NewsletterSection = ({ section }: Props) => {
               </Typography>
             ) : null}
           </div>
-          <Button variant="solid" onPress={() => void handleSubmit()}>
+          <Button variant="solid" onPress={() => handleSubmit()}>
             {t('NewsletterSection.subscribeButton')}
           </Button>
         </div>
