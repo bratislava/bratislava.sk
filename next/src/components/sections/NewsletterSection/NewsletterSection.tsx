@@ -1,8 +1,5 @@
 import { Typography } from '@bratislava/component-library'
-import { useMutation } from '@tanstack/react-query'
-import axios from 'axios'
-import Link from 'next/link'
-import React, { useRef, useState } from 'react'
+import React from 'react'
 
 import {
   FacebookIcon,
@@ -16,20 +13,14 @@ import Input from '@/src/components/common/Input/Input'
 import SectionContainer from '@/src/components/layouts/SectionContainer'
 import SectionHeader from '@/src/components/layouts/SectionHeader'
 import { useGeneralContext } from '@/src/components/providers/GeneralContextProvider'
-import {
-  Enum_Componentsectionsnewsletter_Newslettertype,
-  NewsletterSectionFragment,
-} from '@/src/services/graphql'
+import { NewsletterSectionFragment } from '@/src/services/graphql'
 import { useTranslation } from '@/src/utils/useTranslation'
 import MLink from '@/src/components/common/MLink/MLink'
 import { getLinkProps } from '@/src/utils/getLinkProps'
+import { useNewsletterSection } from './useNewsletterSection'
 
 type Props = {
   section: NewsletterSectionFragment
-}
-
-const NEWSLETTER_ENDPOINTS_MAP: Record<Enum_Componentsectionsnewsletter_Newslettertype, string> = {
-  starz: '/api/newsletter-starz/subscribe',
 }
 
 /**
@@ -43,105 +34,27 @@ const NewsletterSection = ({ section }: Props) => {
   const { general } = useGeneralContext()
   const privacyPolicyPage = general?.privacyPolicyPage
 
-  const [name, setName] = useState('')
-  const [surname, setSurname] = useState('')
-  const [email, setEmail] = useState('')
-  const [consentChecked, setConsentChecked] = useState(false)
+  const { title, text, socialLinksTitle, facebookUrl, instagramUrl, linkedinUrl, youtubeUrl } =
+    section
 
-  const [errorMessage, setErrorMessage] = useState<string>()
-  const [nameErrorMessage, setNameErrorMessage] = useState<string>()
-  const [surnameErrorMessage, setSurnameErrorMessage] = useState<string>()
-  const [emailErrorMessage, setEmailErrorMessage] = useState<string>()
-
-  const [statusMessage, setStatusMessage] = useState<string>()
-  const [successMessage, setSuccessMessage] = useState<string>()
-
-  const clearMessages = () => {
-    setErrorMessage('')
-    setNameErrorMessage('')
-    setSurnameErrorMessage('')
-    setEmailErrorMessage('')
-    setStatusMessage('')
-    setSuccessMessage('')
-  }
-
+  // TODO proper error handling and form validation
   const {
-    title,
-    text,
-    socialLinksTitle,
-    newsletterType,
-    facebookUrl,
-    instagramUrl,
-    linkedinUrl,
-    youtubeUrl,
-  } = section
-
-  const subscribeToNewsletterMutation = useMutation({
-    mutationFn: (payload: { email: string; name: string; surname: string }) =>
-      axios.post(
-        NEWSLETTER_ENDPOINTS_MAP[newsletterType],
-        {
-          email: payload.email,
-          name: payload.name,
-          surname: payload.surname,
-        },
-        {
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        },
-      ),
-    onSuccess: () => {
-      clearMessages()
-      setSuccessMessage(t('NewsletterSection.success'))
-    },
-    onError: (error) => {
-      // eslint-disable-next-line no-console
-      console.error(error)
-      clearMessages()
-      setErrorMessage(t('NewsletterSection.error.somethingWentWrong'))
-    },
-  })
-
-  const handleSubmit = () => {
-    const VALID_EMAIL_FORMAT = /.*@.*\..*/
-    let isValid = true
-
-    clearMessages()
-
-    if (name.length === 0) {
-      setNameErrorMessage(t('NewsletterSection.error.mandatoryField'))
-      isValid = false
-    }
-    if (surname.length === 0) {
-      setSurnameErrorMessage(t('NewsletterSection.error.mandatoryField'))
-      isValid = false
-    }
-    if (email.length === 0) {
-      setEmailErrorMessage(t('NewsletterSection.error.mandatoryField'))
-      isValid = false
-    }
-    if (!VALID_EMAIL_FORMAT.test(email.toLowerCase())) {
-      setEmailErrorMessage(t('NewsletterSection.error.emailIncorrectFormat'))
-      isValid = false
-    }
-    if (!consentChecked) {
-      setErrorMessage(t('NewsletterSection.error.consentRequired'))
-      isValid = false
-    }
-
-    if (!isValid) {
-      return
-    }
-
-    setStatusMessage(t('NewsletterSection.sending'))
-
-    subscribeToNewsletterMutation.mutate({
-      email,
-      name,
-      surname,
-    })
-  }
+    name,
+    setName,
+    surname,
+    setSurname,
+    email,
+    setEmail,
+    consentChecked,
+    setConsentChecked,
+    errorMessage,
+    nameErrorMessage,
+    surnameErrorMessage,
+    emailErrorMessage,
+    statusMessage,
+    successMessage,
+    handleSubmit,
+  } = useNewsletterSection(section)
 
   const socialMediaButtonsCommonProps = {
     target: '_blank',
