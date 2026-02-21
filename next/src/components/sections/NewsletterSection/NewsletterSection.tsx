@@ -1,6 +1,7 @@
 import { Typography } from '@bratislava/component-library'
 import { useMutation } from '@tanstack/react-query'
 import axios from 'axios'
+import Link from 'next/link'
 import React, { useRef, useState } from 'react'
 
 import {
@@ -10,38 +11,61 @@ import {
   YoutubeIcon,
 } from '@/src/assets/icons-social-media'
 import Button, { PolymorphicProps } from '@/src/components/common/Button/Button'
+import Checkbox from '@/src/components/common/CheckBoxGroup/Checkbox'
 import Input from '@/src/components/common/Input/Input'
 import SectionContainer from '@/src/components/layouts/SectionContainer'
 import SectionHeader from '@/src/components/layouts/SectionHeader'
+import { useGeneralContext } from '@/src/components/providers/GeneralContextProvider'
 import {
   Enum_Componentsectionsnewsletter_Newslettertype,
   NewsletterSectionFragment,
 } from '@/src/services/graphql'
 import { useTranslation } from '@/src/utils/useTranslation'
+import MLink from '@/src/components/common/MLink/MLink'
+import { getLinkProps } from '@/src/utils/getLinkProps'
 
 type Props = {
   section: NewsletterSectionFragment
 }
 
+const NEWSLETTER_ENDPOINTS_MAP: Record<Enum_Componentsectionsnewsletter_Newslettertype, string> = {
+  starz: '/api/newsletter-starz/subscribe',
+}
+
 /**
- * Figma: https://www.figma.com/design/17wbd0MDQcMW9NbXl6UPs8/DS--Component-library?node-id=18641-16591&m=dev
+ * Figma: https://www.figma.com/design/17wbd0MDQcMW9NbXl6UPs8/DS--Component-library?node-id=18641-16591
  * Based on City Gallery: https://github.com/bratislava/gmb.sk/blob/master/next/src/components/molecules/sections/NewsletterSection.tsx
  */
 
 const NewsletterSection = ({ section }: Props) => {
   const { t } = useTranslation()
+
+  const { general } = useGeneralContext()
+  const privacyPolicyPage = general?.privacyPolicyPage
+
+  const [name, setName] = useState('')
+  const [surname, setSurname] = useState('')
   const [email, setEmail] = useState('')
+  const [consentChecked, setConsentChecked] = useState(false)
+
   const [errorMessage, setErrorMessage] = useState<string>()
+  const [nameErrorMessage, setNameErrorMessage] = useState<string>()
+  const [surnameErrorMessage, setSurnameErrorMessage] = useState<string>()
+  const [emailErrorMessage, setEmailErrorMessage] = useState<string>()
+  const [consentErrorMessage, setConsentErrorMessage] = useState<string>()
+
   const [statusMessage, setStatusMessage] = useState<string>()
   const [successMessage, setSuccessMessage] = useState<string>()
 
   const clearMessages = () => {
     setErrorMessage('')
+    setNameErrorMessage('')
+    setSurnameErrorMessage('')
+    setEmailErrorMessage('')
+    setConsentErrorMessage('')
     setStatusMessage('')
     setSuccessMessage('')
   }
-
-  const inputRef = useRef<HTMLInputElement>(null)
 
   const {
     title,
@@ -54,29 +78,14 @@ const NewsletterSection = ({ section }: Props) => {
     youtubeUrl,
   } = section
 
-  const validateForm = () => {
-    const VALID_EMAIL_FORMAT = /.*@.*\..*/
-
-    if (email.length === 0) {
-      return { isValid: false, error: t('NewsletterSection.error.emailMandatory') }
-    }
-    if (!VALID_EMAIL_FORMAT.test(email.toLowerCase())) {
-      return { isValid: false, error: t('NewsletterSection.error.emailIncorrectFormat') }
-    }
-
-    return { isValid: true }
-  }
-
-  const newsletterEndpointsMap: Record<Enum_Componentsectionsnewsletter_Newslettertype, string> = {
-    starz: '/api/newsletter-starz/subscribe',
-  }
-
   const subscribeToNewsletterMutation = useMutation({
-    mutationFn: (emailToSubscribe: string) =>
+    mutationFn: (payload: { email: string; name: string; surname: string }) =>
       axios.post(
-        newsletterEndpointsMap[newsletterType],
+        NEWSLETTER_ENDPOINTS_MAP[newsletterType],
         {
-          email: emailToSubscribe,
+          email: payload.email,
+          name: payload.name,
+          surname: payload.surname,
         },
         {
           headers: {
@@ -96,19 +105,44 @@ const NewsletterSection = ({ section }: Props) => {
     },
   })
 
-  const handleSubmit = async (submittedEmail: string) => {
+  const handleSubmit = () => {
+    const VALID_EMAIL_FORMAT = /.*@.*\..*/
+    let isValid = true
+
     clearMessages()
 
-    if (!validateForm().isValid) {
-      setErrorMessage(validateForm().error)
-      inputRef?.current?.focus()
+    if (name.length === 0) {
+      setNameErrorMessage(t('NewsletterSection.error.mandatoryField'))
+      isValid = false
+    }
+    if (surname.length === 0) {
+      setSurnameErrorMessage(t('NewsletterSection.error.mandatoryField'))
+      isValid = false
+    }
+    if (email.length === 0) {
+      setEmailErrorMessage(t('NewsletterSection.error.mandatoryField'))
+      isValid = false
+    }
+    if (!VALID_EMAIL_FORMAT.test(email.toLowerCase())) {
+      setEmailErrorMessage(t('NewsletterSection.error.emailIncorrectFormat'))
+      isValid = false
+    }
+    if (!consentChecked) {
+      setConsentErrorMessage(t('NewsletterSection.error.consentRequired'))
+      isValid = false
+    }
 
+    if (!isValid) {
       return
     }
 
     setStatusMessage(t('NewsletterSection.sending'))
 
-    subscribeToNewsletterMutation.mutate(submittedEmail)
+    subscribeToNewsletterMutation.mutate({
+      email,
+      name,
+      surname,
+    })
   }
 
   const socialMediaButtonsCommonProps = {
@@ -165,24 +199,60 @@ const NewsletterSection = ({ section }: Props) => {
           </div>
         </div>
         <div className="flex grow flex-col gap-4 lg:min-w-100 lg:gap-6 lg:rounded-lg lg:border lg:p-8">
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-4 lg:gap-6">
+            <div className="grid grid-cols-1 gap-4 lg:grid-cols-2 lg:gap-6">
+              <Input
+                value={name}
+                label={t('NewsletterSection.nameLabel')}
+                onChange={(event) => setName(event.target.value)}
+                errorMessage={nameErrorMessage}
+              />
+              <Input
+                value={surname}
+                label={t('NewsletterSection.surnameLabel')}
+                onChange={(event) => setSurname(event.target.value)}
+                errorMessage={surnameErrorMessage}
+              />
+            </div>
             <Input
-              ref={inputRef}
               value={email}
               label={t('NewsletterSection.inputLabel')}
-              onChange={(event) => {
-                setEmail(event.target.value)
-              }}
-              onKeyDown={(event) => {
-                if (event.key === 'Enter') {
-                  void handleSubmit(email)
-                }
-              }}
-              errorMessage={errorMessage}
+              onChange={(event) => setEmail(event.target.value)}
+              errorMessage={emailErrorMessage}
             />
+            <div className="flex gap-1">
+              <Checkbox
+                isSelected={consentChecked}
+                onChange={setConsentChecked}
+                aria-label={[
+                  t('NewsletterSectsion.consentCheckboxLabel'),
+                  t('NewsletterSection.consentLinkLabel'),
+                ].join(' ')}
+              >
+                {t('NewsletterSection.consentCheckboxLabel')}{' '}
+              </Checkbox>
+              {privacyPolicyPage ? (
+                <MLink variant="underlined" {...getLinkProps({ page: privacyPolicyPage })}>
+                  {t('NewsletterSection.consentLinkLabel')}
+                </MLink>
+              ) : (
+                <Typography
+                  variant="p-default"
+                  as="span"
+                  className="text-content-passive-secondary"
+                >
+                  {t('NewsletterSection.consentLinkLabel')}
+                </Typography>
+              )}
+            </div>
             {successMessage ? (
               <Typography variant="p-small" className="text-content-success-default">
                 {successMessage}
+              </Typography>
+            ) : null}
+            {errorMessage ? (
+              <Typography variant="p-small" className="text-content-error-default">
+                {errorMessage}
               </Typography>
             ) : null}
             {statusMessage ? (
@@ -191,7 +261,7 @@ const NewsletterSection = ({ section }: Props) => {
               </Typography>
             ) : null}
           </div>
-          <Button variant="solid" onPress={() => void handleSubmit(email)}>
+          <Button variant="solid" onPress={() => void handleSubmit()}>
             {t('NewsletterSection.subscribeButton')}
           </Button>
         </div>
