@@ -52,7 +52,6 @@ const NewsletterSection = ({ section }: Props) => {
   const [nameErrorMessage, setNameErrorMessage] = useState<string>()
   const [surnameErrorMessage, setSurnameErrorMessage] = useState<string>()
   const [emailErrorMessage, setEmailErrorMessage] = useState<string>()
-  const [consentErrorMessage, setConsentErrorMessage] = useState<string>()
 
   const [statusMessage, setStatusMessage] = useState<string>()
   const [successMessage, setSuccessMessage] = useState<string>()
@@ -62,7 +61,6 @@ const NewsletterSection = ({ section }: Props) => {
     setNameErrorMessage('')
     setSurnameErrorMessage('')
     setEmailErrorMessage('')
-    setConsentErrorMessage('')
     setStatusMessage('')
     setSuccessMessage('')
   }
@@ -128,7 +126,7 @@ const NewsletterSection = ({ section }: Props) => {
       isValid = false
     }
     if (!consentChecked) {
-      setConsentErrorMessage(t('NewsletterSection.error.consentRequired'))
+      setErrorMessage(t('NewsletterSection.error.consentRequired'))
       isValid = false
     }
 
@@ -225,7 +223,7 @@ const NewsletterSection = ({ section }: Props) => {
                 isSelected={consentChecked}
                 onChange={setConsentChecked}
                 aria-label={[
-                  t('NewsletterSectsion.consentCheckboxLabel'),
+                  t('NewsletterSection.consentCheckboxLabel'),
                   t('NewsletterSection.consentLinkLabel'),
                 ].join(' ')}
               >
