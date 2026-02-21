@@ -83,7 +83,7 @@ export const useNewsletterSection = (section: NewsletterSectionFragment) => {
       setEmailErrorMessage(t('NewsletterSection.error.mandatoryField'))
       isValid = false
     }
-    if (!VALID_EMAIL_FORMAT.test(email.toLowerCase())) {
+    if (email.length > 0 && !VALID_EMAIL_FORMAT.test(email.toLowerCase())) {
       setEmailErrorMessage(t('NewsletterSection.error.emailIncorrectFormat'))
       isValid = false
     }

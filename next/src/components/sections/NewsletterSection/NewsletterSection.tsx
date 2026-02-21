@@ -109,7 +109,7 @@ const NewsletterSection = ({ section }: Props) => {
             </div>
           </div>
         </div>
-        <div className="flex grow flex-col gap-4 lg:min-w-100 lg:gap-6 lg:rounded-lg lg:border lg:p-8">
+        <div className="flex grow flex-col gap-4 max-lg:w-full lg:min-w-100 lg:gap-6 lg:rounded-lg lg:border lg:p-8">
           <div className="flex flex-col gap-4 lg:gap-6">
             <div className="grid grid-cols-1 gap-4 lg:grid-cols-2 lg:gap-6">
               <Input
