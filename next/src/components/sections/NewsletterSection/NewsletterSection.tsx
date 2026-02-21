@@ -3,8 +3,13 @@ import { useMutation } from '@tanstack/react-query'
 import axios from 'axios'
 import React, { useRef, useState } from 'react'
 
-import { FacebookIcon, InstagramIcon } from '@/src/assets/icons-social-media'
-import Button from '@/src/components/common/Button/Button'
+import {
+  FacebookIcon,
+  InstagramIcon,
+  LinkedinIcon,
+  YoutubeIcon,
+} from '@/src/assets/icons-social-media'
+import Button, { PolymorphicProps } from '@/src/components/common/Button/Button'
 import Input from '@/src/components/common/Input/Input'
 import SectionContainer from '@/src/components/layouts/SectionContainer'
 import SectionHeader from '@/src/components/layouts/SectionHeader'
@@ -38,7 +43,16 @@ const NewsletterSection = ({ section }: Props) => {
 
   const inputRef = useRef<HTMLInputElement>(null)
 
-  const { title, text, socialLinksTitle, newsletterType, facebookUrl, instagramUrl } = section
+  const {
+    title,
+    text,
+    socialLinksTitle,
+    newsletterType,
+    facebookUrl,
+    instagramUrl,
+    linkedinUrl,
+    youtubeUrl,
+  } = section
 
   const validateForm = () => {
     const VALID_EMAIL_FORMAT = /.*@.*\..*/
@@ -97,6 +111,14 @@ const NewsletterSection = ({ section }: Props) => {
     subscribeToNewsletterMutation.mutate(submittedEmail)
   }
 
+  const socialMediaButtonsCommonProps = {
+    target: '_blank',
+    rel: 'noreferrer',
+    variant: 'icon-wrapped',
+    hasLinkIcon: false,
+    className: 'size-10 bg-background-passive-primary lg:size-12',
+  } satisfies PolymorphicProps
+
   return (
     <SectionContainer className="lg:py-24">
       <div className="flex flex-col items-start justify-between gap-8 lg:flex-row lg:gap-34">
@@ -112,11 +134,7 @@ const NewsletterSection = ({ section }: Props) => {
                   href={facebookUrl}
                   icon={<FacebookIcon />}
                   aria-label="Facebook"
-                  target="_blank"
-                  variant="icon-wrapped"
-                  rel="noreferrer"
-                  hasLinkIcon={false}
-                  className="size-10 bg-background-passive-primary lg:size-12"
+                  {...socialMediaButtonsCommonProps}
                 />
               ) : null}
               {instagramUrl ? (
@@ -124,11 +142,23 @@ const NewsletterSection = ({ section }: Props) => {
                   href={instagramUrl}
                   icon={<InstagramIcon />}
                   aria-label="Instagram"
-                  target="_blank"
-                  variant="icon-wrapped"
-                  rel="noreferrer"
-                  hasLinkIcon={false}
-                  className="size-10 bg-background-passive-primary lg:size-12"
+                  {...socialMediaButtonsCommonProps}
+                />
+              ) : null}
+              {linkedinUrl ? (
+                <Button
+                  href={linkedinUrl}
+                  icon={<LinkedinIcon />}
+                  aria-label="LinkedIn"
+                  {...socialMediaButtonsCommonProps}
+                />
+              ) : null}
+              {youtubeUrl ? (
+                <Button
+                  href={youtubeUrl}
+                  icon={<YoutubeIcon />}
+                  aria-label="Youtube"
+                  {...socialMediaButtonsCommonProps}
                 />
               ) : null}
             </div>
