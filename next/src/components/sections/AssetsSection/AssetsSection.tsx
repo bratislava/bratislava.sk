@@ -46,14 +46,7 @@ const AssetsSection = ({ section }: Props) => {
         <ul className="flex flex-col rounded-lg border py-2">
           {filteredAssets
             .map((asset, index) => {
-              const {
-                title: assetTitle,
-                files,
-                assetCategory,
-                slug,
-                updatedAt,
-                documentId,
-              } = asset
+              const { title: assetTitle, files, assetCategory, slug, updatedAt, documentId } = asset
 
               const filteredFiles = files.filter(isDefined)
               const isSingleFile = filteredFiles.length === 1
@@ -90,7 +83,7 @@ const AssetsSection = ({ section }: Props) => {
                           : [
                               formatDate(updatedAt),
                               assetCategory?.title,
-                              t('DocumentPageContent.numberOfFiles', {
+                              t('AssetPageContent.numberOfFiles', {
                                 count: filteredFiles.length,
                               }),
                             ].filter(isDefined)
