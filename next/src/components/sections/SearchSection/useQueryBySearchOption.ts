@@ -38,6 +38,7 @@ import { isDefined } from '@/src/utils/isDefined'
 import { useLocale } from '@/src/utils/useLocale'
 import { useRegulationCategoryTranslationMap } from '@/src/utils/useRegulationCategoryTranslationMap'
 import { useTranslation } from '@/src/utils/useTranslation'
+import { assetsFetcher, getAssetsQueryKey } from '@/src/services/meili/fetchers/assetsFetcher'
 
 export type SearchFilters =
   | PagesFilters
@@ -101,6 +102,26 @@ export const useQueryBySearchOption = ({
               isDefined,
             ),
             coverImageSrc: article.coverMedia?.url,
+          }
+        }) ?? []
+
+      return { searchResultsData: formattedData, searchResultsCount: data?.estimatedTotalHits ?? 0 }
+    },
+  })
+
+  const assetsQuery = useQuery({
+    queryKey: getAssetsQueryKey(filters),
+    queryFn: () => assetsFetcher(filters),
+    placeholderData: keepPreviousData,
+    select: (data) => {
+      const formattedData: SearchResult[] =
+        data?.hits?.map((assets) => {
+          return {
+            title: assets.title,
+            uniqueId: assets.slug,
+            linkHref: `/dokumenty/${assets.slug}`,
+            metadata: [assets.assetCategory?.title, formatDate(assets.updatedAt)],
+            customIconName: 'search_result_official_board',
           }
         }) ?? []
 
@@ -227,6 +248,9 @@ export const useQueryBySearchOption = ({
 
     case 'articles':
       return articlesQuery
+
+    case 'assets':
+      return assetsQuery
 
     case 'documents':
       return documentsQuery
