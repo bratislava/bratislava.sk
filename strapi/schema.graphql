@@ -3131,6 +3131,7 @@ type FooterRelationResponseCollection {
 }
 
 type General {
+  assetsPage: Page
   createdAt: DateTime
   documentId: ID!
   documentsPage: Page
@@ -3164,6 +3165,7 @@ type GeneralEntityResponseCollection {
 
 input GeneralFiltersInput {
   and: [GeneralFiltersInput]
+  assetsPage: PageFiltersInput
   createdAt: DateTimeFilterInput
   documentsPage: PageFiltersInput
   header: ComponentGeneralHeaderFiltersInput
@@ -3182,6 +3184,7 @@ input GeneralFiltersInput {
 }
 
 input GeneralInput {
+  assetsPage: ID
   documentsPage: ID
   header: ComponentGeneralHeaderInput
   inbaPage: ID

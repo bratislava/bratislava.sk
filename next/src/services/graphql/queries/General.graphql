@@ -162,6 +162,9 @@ fragment General on General {
   documentsPage {
     ...PageParentPages
   }
+  assetsPage {
+    ...PageParentPages
+  }
 }
 
 fragment Alert on Alert {
