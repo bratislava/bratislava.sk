@@ -26,6 +26,12 @@
     },
     "instagramUrl": {
       "type": "string"
+    },
+    "linkedinUrl": {
+      "type": "string"
+    },
+    "youtubeUrl": {
+      "type": "string"
     }
   },
   "config": {}

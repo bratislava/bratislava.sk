@@ -103,6 +103,34 @@
           "sortable": true
         }
       },
+      "linkedinUrl": {
+        "edit": {
+          "label": "LinkedIn Url",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "linkedinUrl",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "youtubeUrl": {
+        "edit": {
+          "label": "Youtube Url",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "youtubeUrl",
+          "searchable": true,
+          "sortable": true
+        }
+      },
       "documentId": {
         "edit": {},
         "list": {
@@ -113,12 +141,7 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "title",
-        "text",
-        "socialLinksTitle"
-      ],
+      "list": ["id", "title", "text", "socialLinksTitle"],
       "edit": [
         [
           {
@@ -132,7 +155,7 @@
             "size": 12
           }
         ],
-                [
+        [
           {
             "name": "newsletterType",
             "size": 6
@@ -151,6 +174,16 @@
           },
           {
             "name": "instagramUrl",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "linkedinUrl",
+            "size": 6
+          },
+          {
+            "name": "youtubeUrl",
             "size": 6
           }
         ]
