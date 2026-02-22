@@ -590,7 +590,7 @@ export interface SectionsArticlesLandingPage extends Struct.ComponentSchema {
 export interface SectionsAssets extends Struct.ComponentSchema {
   collectionName: 'components_sections_assets'
   info: {
-    displayName: 'Assets'
+    displayName: 'Dokumenty'
   }
   attributes: {
     assets: Schema.Attribute.Relation<'oneToMany', 'api::asset.asset'>
@@ -759,7 +759,7 @@ export interface SectionsDocuments extends Struct.ComponentSchema {
   collectionName: 'components_sections_documents'
   info: {
     description: ''
-    displayName: 'Dokumenty'
+    displayName: 'Dokumenty (OLD)'
   }
   attributes: {
     documents: Schema.Attribute.Relation<'oneToMany', 'api::document.document'>
