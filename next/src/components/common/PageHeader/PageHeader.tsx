@@ -67,7 +67,7 @@ const PageHeader = ({
             ) : null}
 
             {(title || subtext) && (
-              <div className="flex max-w-[640px] flex-col gap-y-1 lg:gap-y-4">
+              <div className="flex max-w-screen-sm flex-col gap-y-1 lg:gap-y-4">
                 {title && (
                   <Typography variant="h1" data-cy="page-heading">
                     {title}
@@ -79,7 +79,7 @@ const PageHeader = ({
 
             {headerLinks?.length ? (
               // wrapping to flex-row earlier (md) to prevent too wide buttons on tablet
-              <div className="flex max-w-[640px] flex-col gap-2 md:flex-row lg:gap-3">
+              <div className="flex max-w-screen-sm flex-col gap-2 md:flex-row lg:gap-3">
                 {headerLinks.map((button, index) => (
                   <Button
                     key={index}

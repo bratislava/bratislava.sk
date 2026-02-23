@@ -84,9 +84,9 @@ export const FooterCopyright = ({ innovationsLink }: FooterFragment) => {
 export const FooterColumnLinks = ({ links }: FooterColumnBlockFragment) => {
   return (
     <>
-      {links
-        ?.filter(isDefined)
-        ?.map((link, index) => <MLink variant="underlined" {...getLinkProps(link)} key={index} />)}
+      {links?.filter(isDefined)?.map((link, index) => (
+        <MLink variant="underlined" {...getLinkProps(link)} key={index} />
+      ))}
     </>
   )
 }

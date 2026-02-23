@@ -78,7 +78,11 @@ fragment PageEntity on Page {
   ...PageParentPages
 }
 
-query PagesStaticPaths($limit: Int = -1, $locale: I18NLocaleCode = "*", $sort: [String] = ["updatedAt:desc"]) {
+query PagesStaticPaths(
+  $limit: Int = -1
+  $locale: I18NLocaleCode = "*"
+  $sort: [String] = ["updatedAt:desc"]
+) {
   pages(locale: $locale, sort: $sort, pagination: { limit: $limit }) {
     documentId
     slug

@@ -162,7 +162,7 @@ const ContactCtaCard = ({ className, contact }: ContactCtaCardProps) => {
                 <iframe
                   title={t('ContactCtaCard.directions.iframeTitle')}
                   src={contact.iframeUrl}
-                  className="h-full w-full border"
+                  className="size-full border"
                   allow="geolocation *"
                   // This should prevent iframes to collect cookies. Otherwise, they collect their cookies we don't have consent for.
                   // It may not work if the iframe needs some necessary cookies, or it may block some iframe to render at all.
