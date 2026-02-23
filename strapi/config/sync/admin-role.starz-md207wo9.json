@@ -191,15 +191,14 @@
           "slug",
           "files",
           "description",
-          "assetCategory",
-          "adminGroups"
+          "assetCategory"
         ]
       },
       "conditions": [
         "plugin::content-manager.document-admin-group-includes-starz"
       ],
       "actionParameters": {},
-      "documentId": "n11cl6gu70n13q1e680ij5qz",
+      "documentId": "hotzk9v4c87tu6sytuebpcrk",
       "locale": null
     },
     {
@@ -253,110 +252,14 @@
           "slug",
           "files",
           "description",
-          "assetCategory",
-          "adminGroups"
+          "assetCategory"
         ]
       },
       "conditions": [
         "plugin::content-manager.document-admin-group-includes-starz"
       ],
       "actionParameters": {},
-      "documentId": "s13j2gn1rmo0plxadvpdldle",
-      "locale": null
-    },
-    {
-      "action": "plugin::content-manager.explorer.read",
-      "subject": "api::document-category.document-category",
-      "properties": {
-        "fields": [
-          "title",
-          "slug",
-          "documents"
-        ]
-      },
-      "conditions": [],
-      "actionParameters": {},
-      "documentId": "denadwhzazvb2ce55vpqenl8",
-      "locale": null
-    },
-    {
-      "action": "plugin::content-manager.explorer.create",
-      "subject": "api::document.document",
-      "properties": {
-        "fields": [
-          "title",
-          "slug",
-          "files",
-          "description",
-          "documentCategory"
-        ]
-      },
-      "conditions": [
-        "plugin::content-manager.document-admin-group-includes-starz"
-      ],
-      "actionParameters": {},
-      "documentId": "ig5krvghumobmz0q7zslcxvj",
-      "locale": null
-    },
-    {
-      "action": "plugin::content-manager.explorer.delete",
-      "subject": "api::document.document",
-      "properties": {},
-      "conditions": [
-        "plugin::content-manager.document-admin-group-includes-starz"
-      ],
-      "actionParameters": {},
-      "documentId": "f21qlo6v0h267yuxbh1dj07e",
-      "locale": null
-    },
-    {
-      "action": "plugin::content-manager.explorer.publish",
-      "subject": "api::document.document",
-      "properties": {},
-      "conditions": [
-        "plugin::content-manager.document-admin-group-includes-starz"
-      ],
-      "actionParameters": {},
-      "documentId": "n28uzbdbar22wrhe6qki2flh",
-      "locale": null
-    },
-    {
-      "action": "plugin::content-manager.explorer.read",
-      "subject": "api::document.document",
-      "properties": {
-        "fields": [
-          "title",
-          "slug",
-          "files",
-          "description",
-          "documentCategory",
-          "adminGroups"
-        ]
-      },
-      "conditions": [
-        "plugin::content-manager.document-admin-group-includes-starz"
-      ],
-      "actionParameters": {},
-      "documentId": "dzi1pexq45t6zzsvytbrzybh",
-      "locale": null
-    },
-    {
-      "action": "plugin::content-manager.explorer.update",
-      "subject": "api::document.document",
-      "properties": {
-        "fields": [
-          "title",
-          "slug",
-          "files",
-          "description",
-          "documentCategory"
-        ]
-      },
-      "conditions": [
-        "plugin::content-manager.document-admin-group-includes-starz"
-      ],
-      "actionParameters": {},
-      "documentId": "vqzrlkhx13pw04oe5gujr9pc",
+      "documentId": "uy9dm9m6t8ppcxp6ay0is5l5",
       "locale": null
     },
     {
