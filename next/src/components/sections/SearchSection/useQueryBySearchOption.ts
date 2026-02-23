@@ -13,6 +13,7 @@ import {
   ArticlesFilters,
   getArticlesQueryKey,
 } from '@/src/services/meili/fetchers/articlesFetcher'
+import { assetsFetcher, getAssetsQueryKey } from '@/src/services/meili/fetchers/assetsFetcher'
 import {
   documentsFetcher,
   getDocumentsQueryKey,
@@ -38,7 +39,6 @@ import { isDefined } from '@/src/utils/isDefined'
 import { useLocale } from '@/src/utils/useLocale'
 import { useRegulationCategoryTranslationMap } from '@/src/utils/useRegulationCategoryTranslationMap'
 import { useTranslation } from '@/src/utils/useTranslation'
-import { assetsFetcher, getAssetsQueryKey } from '@/src/services/meili/fetchers/assetsFetcher'
 
 export type SearchFilters =
   | PagesFilters

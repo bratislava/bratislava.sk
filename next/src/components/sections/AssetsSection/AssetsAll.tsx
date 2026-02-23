@@ -11,7 +11,11 @@ import { useAssetsFilters } from '@/src/components/sections/AssetsSection/useAss
 import SearchBar from '@/src/components/sections/SearchSection/SearchBar'
 import SearchResultCard from '@/src/components/sections/SearchSection/SearchResultCard'
 import { AssetsSectionFragment } from '@/src/services/graphql'
-import { assetsFetcher, AssetsFilters, getAssetsQueryKey } from '@/src/services/meili/fetchers/assetsFetcher'
+import {
+  assetsFetcher,
+  AssetsFilters,
+  getAssetsQueryKey,
+} from '@/src/services/meili/fetchers/assetsFetcher'
 import { formatDate } from '@/src/utils/formatDate'
 import { useTranslation } from '@/src/utils/useTranslation'
 
