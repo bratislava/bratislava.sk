@@ -2077,49 +2077,6 @@ export type ComponentSectionsDividerInput = {
   style?: InputMaybe<Enum_Componentsectionsdivider_Style>
 }
 
-export type ComponentSectionsDocuments = {
-  __typename?: 'ComponentSectionsDocuments'
-  documents: Array<Maybe<Document>>
-  documents_connection?: Maybe<DocumentRelationResponseCollection>
-  id: Scalars['ID']['output']
-  showAll?: Maybe<Scalars['Boolean']['output']>
-  text?: Maybe<Scalars['String']['output']>
-  title?: Maybe<Scalars['String']['output']>
-  titleLevel?: Maybe<Enum_Componentsectionsdocuments_Titlelevel>
-}
-
-export type ComponentSectionsDocumentsDocumentsArgs = {
-  filters?: InputMaybe<DocumentFiltersInput>
-  pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
-}
-
-export type ComponentSectionsDocumentsDocuments_ConnectionArgs = {
-  filters?: InputMaybe<DocumentFiltersInput>
-  pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
-}
-
-export type ComponentSectionsDocumentsFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<ComponentSectionsDocumentsFiltersInput>>>
-  documents?: InputMaybe<DocumentFiltersInput>
-  not?: InputMaybe<ComponentSectionsDocumentsFiltersInput>
-  or?: InputMaybe<Array<InputMaybe<ComponentSectionsDocumentsFiltersInput>>>
-  showAll?: InputMaybe<BooleanFilterInput>
-  text?: InputMaybe<StringFilterInput>
-  title?: InputMaybe<StringFilterInput>
-  titleLevel?: InputMaybe<StringFilterInput>
-}
-
-export type ComponentSectionsDocumentsInput = {
-  documents?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
-  id?: InputMaybe<Scalars['ID']['input']>
-  showAll?: InputMaybe<Scalars['Boolean']['input']>
-  text?: InputMaybe<Scalars['String']['input']>
-  title?: InputMaybe<Scalars['String']['input']>
-  titleLevel?: InputMaybe<Enum_Componentsectionsdocuments_Titlelevel>
-}
-
 export type ComponentSectionsEvents = {
   __typename?: 'ComponentSectionsEvents'
   eventPages: Array<Maybe<Page>>
@@ -3483,11 +3440,6 @@ export enum Enum_Componentsectionsdivider_Style {
   Vzdelavanie = 'vzdelavanie',
 }
 
-export enum Enum_Componentsectionsdocuments_Titlelevel {
-  H2 = 'h2',
-  H3 = 'h3',
-}
-
 export enum Enum_Componentsectionsevents_Titlelevel {
   H2 = 'h2',
   H3 = 'h3',
@@ -4056,7 +4008,6 @@ export type GenericMorph =
   | ComponentSectionsComparisonSection
   | ComponentSectionsContactsSection
   | ComponentSectionsDivider
-  | ComponentSectionsDocuments
   | ComponentSectionsEvents
   | ComponentSectionsFacilities
   | ComponentSectionsFaqCategories
@@ -5594,7 +5545,6 @@ export type PageSectionsDynamicZone =
   | ComponentSectionsComparisonSection
   | ComponentSectionsContactsSection
   | ComponentSectionsDivider
-  | ComponentSectionsDocuments
   | ComponentSectionsEvents
   | ComponentSectionsFacilities
   | ComponentSectionsFaqCategories
@@ -7939,7 +7889,6 @@ export type AllFilesQuery = {
         }
       | { __typename?: 'ComponentSectionsContactsSection' }
       | { __typename?: 'ComponentSectionsDivider' }
-      | { __typename?: 'ComponentSectionsDocuments' }
       | { __typename?: 'ComponentSectionsEvents' }
       | { __typename?: 'ComponentSectionsFacilities' }
       | { __typename?: 'ComponentSectionsFaqCategories' }
@@ -11244,38 +11193,6 @@ export type PageEntityFragment = {
       }
     | { __typename: 'ComponentSectionsDivider'; style?: Enum_Componentsectionsdivider_Style | null }
     | {
-        __typename: 'ComponentSectionsDocuments'
-        title?: string | null
-        text?: string | null
-        showAll?: boolean | null
-        titleLevelDocumentsSection?: Enum_Componentsectionsdocuments_Titlelevel | null
-        documents: Array<{
-          __typename: 'Document'
-          publishedAt?: any | null
-          updatedAt?: any | null
-          description?: string | null
-          documentId: string
-          slug: string
-          title: string
-          documentCategory?: {
-            __typename?: 'DocumentCategory'
-            documentId: string
-            title: string
-            slug: string
-          } | null
-          files: Array<{
-            __typename?: 'UploadFile'
-            documentId: string
-            url: string
-            name: string
-            ext?: string | null
-            size: number
-            createdAt?: any | null
-            updatedAt?: any | null
-          } | null>
-        } | null>
-      }
-    | {
         __typename: 'ComponentSectionsEvents'
         title?: string | null
         text?: string | null
@@ -12582,38 +12499,6 @@ export type PageBySlugQuery = {
       | {
           __typename: 'ComponentSectionsDivider'
           style?: Enum_Componentsectionsdivider_Style | null
-        }
-      | {
-          __typename: 'ComponentSectionsDocuments'
-          title?: string | null
-          text?: string | null
-          showAll?: boolean | null
-          titleLevelDocumentsSection?: Enum_Componentsectionsdocuments_Titlelevel | null
-          documents: Array<{
-            __typename: 'Document'
-            publishedAt?: any | null
-            updatedAt?: any | null
-            description?: string | null
-            documentId: string
-            slug: string
-            title: string
-            documentCategory?: {
-              __typename?: 'DocumentCategory'
-              documentId: string
-              title: string
-              slug: string
-            } | null
-            files: Array<{
-              __typename?: 'UploadFile'
-              documentId: string
-              url: string
-              name: string
-              ext?: string | null
-              size: number
-              createdAt?: any | null
-              updatedAt?: any | null
-            } | null>
-          } | null>
         }
       | {
           __typename: 'ComponentSectionsEvents'
@@ -13942,38 +13827,6 @@ export type Dev_AllPagesQuery = {
       | {
           __typename: 'ComponentSectionsDivider'
           style?: Enum_Componentsectionsdivider_Style | null
-        }
-      | {
-          __typename: 'ComponentSectionsDocuments'
-          title?: string | null
-          text?: string | null
-          showAll?: boolean | null
-          titleLevelDocumentsSection?: Enum_Componentsectionsdocuments_Titlelevel | null
-          documents: Array<{
-            __typename: 'Document'
-            publishedAt?: any | null
-            updatedAt?: any | null
-            description?: string | null
-            documentId: string
-            slug: string
-            title: string
-            documentCategory?: {
-              __typename?: 'DocumentCategory'
-              documentId: string
-              title: string
-              slug: string
-            } | null
-            files: Array<{
-              __typename?: 'UploadFile'
-              documentId: string
-              url: string
-              name: string
-              ext?: string | null
-              size: number
-              createdAt?: any | null
-              updatedAt?: any | null
-            } | null>
-          } | null>
         }
       | {
           __typename: 'ComponentSectionsEvents'
@@ -16175,39 +16028,6 @@ export type PartnersSectionFragment = {
   } | null>
 }
 
-export type DocumentsSectionFragment = {
-  __typename?: 'ComponentSectionsDocuments'
-  title?: string | null
-  text?: string | null
-  showAll?: boolean | null
-  titleLevelDocumentsSection?: Enum_Componentsectionsdocuments_Titlelevel | null
-  documents: Array<{
-    __typename: 'Document'
-    publishedAt?: any | null
-    updatedAt?: any | null
-    description?: string | null
-    documentId: string
-    slug: string
-    title: string
-    documentCategory?: {
-      __typename?: 'DocumentCategory'
-      documentId: string
-      title: string
-      slug: string
-    } | null
-    files: Array<{
-      __typename?: 'UploadFile'
-      documentId: string
-      url: string
-      name: string
-      ext?: string | null
-      size: number
-      createdAt?: any | null
-      updatedAt?: any | null
-    } | null>
-  } | null>
-}
-
 export type AssetsSectionFragment = {
   __typename?: 'ComponentSectionsAssets'
   title?: string | null
@@ -17105,39 +16925,6 @@ type Sections_ComponentSectionsDivider_Fragment = {
   style?: Enum_Componentsectionsdivider_Style | null
 }
 
-type Sections_ComponentSectionsDocuments_Fragment = {
-  __typename: 'ComponentSectionsDocuments'
-  title?: string | null
-  text?: string | null
-  showAll?: boolean | null
-  titleLevelDocumentsSection?: Enum_Componentsectionsdocuments_Titlelevel | null
-  documents: Array<{
-    __typename: 'Document'
-    publishedAt?: any | null
-    updatedAt?: any | null
-    description?: string | null
-    documentId: string
-    slug: string
-    title: string
-    documentCategory?: {
-      __typename?: 'DocumentCategory'
-      documentId: string
-      title: string
-      slug: string
-    } | null
-    files: Array<{
-      __typename?: 'UploadFile'
-      documentId: string
-      url: string
-      name: string
-      ext?: string | null
-      size: number
-      createdAt?: any | null
-      updatedAt?: any | null
-    } | null>
-  } | null>
-}
-
 type Sections_ComponentSectionsEvents_Fragment = {
   __typename: 'ComponentSectionsEvents'
   title?: string | null
@@ -17840,7 +17627,6 @@ export type SectionsFragment =
   | Sections_ComponentSectionsComparisonSection_Fragment
   | Sections_ComponentSectionsContactsSection_Fragment
   | Sections_ComponentSectionsDivider_Fragment
-  | Sections_ComponentSectionsDocuments_Fragment
   | Sections_ComponentSectionsEvents_Fragment
   | Sections_ComponentSectionsFacilities_Fragment
   | Sections_ComponentSectionsFaqCategories_Fragment
@@ -18106,6 +17892,38 @@ export const ArticleEntityFragmentDoc = gql`
   ${UploadImageEntityFragmentDoc}
   ${InbaReleaseCardEntityFragmentDoc}
   ${AdminGroupSlugEntityFragmentDoc}
+`
+export const DocumentSlugEntityFragmentDoc = gql`
+  fragment DocumentSlugEntity on Document {
+    __typename
+    documentId
+    slug
+    title
+  }
+`
+export const DocumentCategoryEntityFragmentDoc = gql`
+  fragment DocumentCategoryEntity on DocumentCategory {
+    documentId
+    title
+    slug
+  }
+`
+export const DocumentEntityFragmentDoc = gql`
+  fragment DocumentEntity on Document {
+    ...DocumentSlugEntity
+    publishedAt
+    updatedAt
+    documentCategory {
+      ...DocumentCategoryEntity
+    }
+    description
+    files {
+      ...UploadFileEntity
+    }
+  }
+  ${DocumentSlugEntityFragmentDoc}
+  ${DocumentCategoryEntityFragmentDoc}
+  ${UploadFileEntityFragmentDoc}
 `
 export const UploadFileFragmentDoc = gql`
   fragment UploadFile on UploadFile {
@@ -19076,50 +18894,6 @@ export const PartnersSectionFragmentDoc = gql`
   }
   ${PartnerBlockFragmentDoc}
 `
-export const DocumentSlugEntityFragmentDoc = gql`
-  fragment DocumentSlugEntity on Document {
-    __typename
-    documentId
-    slug
-    title
-  }
-`
-export const DocumentCategoryEntityFragmentDoc = gql`
-  fragment DocumentCategoryEntity on DocumentCategory {
-    documentId
-    title
-    slug
-  }
-`
-export const DocumentEntityFragmentDoc = gql`
-  fragment DocumentEntity on Document {
-    ...DocumentSlugEntity
-    publishedAt
-    updatedAt
-    documentCategory {
-      ...DocumentCategoryEntity
-    }
-    description
-    files {
-      ...UploadFileEntity
-    }
-  }
-  ${DocumentSlugEntityFragmentDoc}
-  ${DocumentCategoryEntityFragmentDoc}
-  ${UploadFileEntityFragmentDoc}
-`
-export const DocumentsSectionFragmentDoc = gql`
-  fragment DocumentsSection on ComponentSectionsDocuments {
-    title
-    text
-    documents(pagination: { limit: -1 }) {
-      ...DocumentEntity
-    }
-    showAll
-    titleLevelDocumentsSection: titleLevel
-  }
-  ${DocumentEntityFragmentDoc}
-`
 export const AssetSlugEntityFragmentDoc = gql`
   fragment AssetSlugEntity on Asset {
     __typename
@@ -19421,9 +19195,6 @@ export const SectionsFragmentDoc = gql`
     ... on ComponentSectionsPartners {
       ...PartnersSection
     }
-    ... on ComponentSectionsDocuments {
-      ...DocumentsSection
-    }
     ... on ComponentSectionsAssets {
       ...AssetsSection
     }
@@ -19483,7 +19254,6 @@ export const SectionsFragmentDoc = gql`
   ${FaqCategoriesSectionFragmentDoc}
   ${TootootEventsSectionFragmentDoc}
   ${PartnersSectionFragmentDoc}
-  ${DocumentsSectionFragmentDoc}
   ${AssetsSectionFragmentDoc}
   ${NumbersOverviewSectionFragmentDoc}
   ${EventsSectionFragmentDoc}
