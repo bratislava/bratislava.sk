@@ -755,21 +755,6 @@ export interface SectionsDivider extends Struct.ComponentSchema {
   }
 }
 
-export interface SectionsDocuments extends Struct.ComponentSchema {
-  collectionName: 'components_sections_documents'
-  info: {
-    description: ''
-    displayName: 'Dokumenty (OLD)'
-  }
-  attributes: {
-    documents: Schema.Attribute.Relation<'oneToMany', 'api::document.document'>
-    showAll: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>
-    text: Schema.Attribute.Text
-    title: Schema.Attribute.String & Schema.Attribute.DefaultTo<'Dokumenty'>
-    titleLevel: Schema.Attribute.Enumeration<['h2', 'h3']> & Schema.Attribute.DefaultTo<'h2'>
-  }
-}
-
 export interface SectionsEvents extends Struct.ComponentSchema {
   collectionName: 'components_sections_events'
   info: {
@@ -1301,7 +1286,6 @@ declare module '@strapi/strapi' {
       'sections.comparison-section': SectionsComparisonSection
       'sections.contacts-section': SectionsContactsSection
       'sections.divider': SectionsDivider
-      'sections.documents': SectionsDocuments
       'sections.events': SectionsEvents
       'sections.facilities': SectionsFacilities
       'sections.faq-categories': SectionsFaqCategories

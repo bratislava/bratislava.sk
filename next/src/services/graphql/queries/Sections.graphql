@@ -398,16 +398,6 @@ fragment PartnersSection on ComponentSectionsPartners {
   titleLevelPartnersSection: titleLevel
 }
 
-fragment DocumentsSection on ComponentSectionsDocuments {
-  title
-  text
-  documents(pagination: { limit: -1 }) {
-    ...DocumentEntity
-  }
-  showAll
-  titleLevelDocumentsSection: titleLevel
-}
-
 fragment AssetsSection on ComponentSectionsAssets {
   title
   text
@@ -644,10 +634,6 @@ fragment Sections on PageSectionsDynamicZone {
 
   ... on ComponentSectionsPartners {
     ...PartnersSection
-  }
-
-  ... on ComponentSectionsDocuments {
-    ...DocumentsSection
   }
 
   ... on ComponentSectionsAssets {

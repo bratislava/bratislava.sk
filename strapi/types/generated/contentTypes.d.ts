@@ -1323,7 +1323,6 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
         'sections.articles',
         'sections.articles-landing-page',
         'sections.divider',
-        'sections.documents',
         'sections.assets',
         'sections.faqs',
         'sections.faq-categories',
