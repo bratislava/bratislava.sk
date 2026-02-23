@@ -4,7 +4,7 @@
   "info": {
     "singularName": "asset-category",
     "pluralName": "asset-categories",
-    "displayName": "Asset category"
+    "displayName": "Dokumenty - kategórie"
   },
   "options": {
     "draftAndPublish": false

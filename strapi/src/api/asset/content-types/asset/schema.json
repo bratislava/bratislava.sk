@@ -4,7 +4,7 @@
   "info": {
     "singularName": "asset",
     "pluralName": "assets",
-    "displayName": "Asset"
+    "displayName": "Dokumenty"
   },
   "options": {
     "draftAndPublish": true
@@ -24,10 +24,7 @@
       "type": "media",
       "multiple": true,
       "required": true,
-      "allowedTypes": [
-        "images",
-        "files"
-      ]
+      "allowedTypes": ["images", "files"]
     },
     "description": {
       "type": "text"

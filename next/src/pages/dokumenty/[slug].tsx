@@ -4,16 +4,16 @@ import * as React from 'react'
 
 import SeoHead from '@/src/components/common/SeoHead/SeoHead'
 import PageLayout from '@/src/components/layouts/PageLayout'
-import DocumentPageContent from '@/src/components/page-contents/DocumentPageContent'
+import AssetPageContent from '@/src/components/page-contents/AssetPageContent'
 import { AdminGroupsContextProvider } from '@/src/components/providers/AdminGroupsContextProvider'
 import { GeneralContextProvider } from '@/src/components/providers/GeneralContextProvider'
-import { DocumentEntityFragment, GeneralQuery } from '@/src/services/graphql'
+import { AssetEntityFragment, GeneralQuery } from '@/src/services/graphql'
 import { client } from '@/src/services/graphql/gql'
 import { NOT_FOUND } from '@/src/utils/consts'
 
 type PageProps = {
   general: GeneralQuery
-  document: DocumentEntityFragment
+  asset: AssetEntityFragment
 }
 
 type StaticParams = {
@@ -48,35 +48,35 @@ export const getStaticProps: GetStaticProps<PageProps, StaticParams> = async ({
   const slug = params?.slug
 
   // eslint-disable-next-line no-console
-  console.log(`Revalidating document ${locale === 'en' ? '/en' : ''}/dokumenty/${slug}`)
+  console.log(`Revalidating asset ${locale === 'en' ? '/en' : ''}/dokumenty/${slug}`)
 
   if (!slug || !locale) {
     return NOT_FOUND
   }
 
-  const [{ documents }, general, translations] = await Promise.all([
-    client.DocumentBySlug({ slug }),
+  const [{ assets }, general, translations] = await Promise.all([
+    client.AssetBySlug({ slug }),
     client.General({ locale }),
     serverSideTranslations(locale),
   ])
 
-  const document = documents[0]
-  if (!document) {
+  const asset = assets[0]
+  if (!asset) {
     return NOT_FOUND
   }
 
   return {
     props: {
       general,
-      document,
+      asset,
       ...translations,
     },
     revalidate: 10,
   }
 }
 
-const Page = ({ general, document }: PageProps) => {
-  const { title } = document ?? {}
+const Page = ({ general, asset }: PageProps) => {
+  const { title } = asset ?? {}
 
   return (
     <GeneralContextProvider general={general}>
@@ -84,7 +84,7 @@ const Page = ({ general, document }: PageProps) => {
         <SeoHead title={title} />
 
         <PageLayout>
-          <DocumentPageContent document={document} />
+          <AssetPageContent asset={asset} />
         </PageLayout>
       </AdminGroupsContextProvider>
     </GeneralContextProvider>

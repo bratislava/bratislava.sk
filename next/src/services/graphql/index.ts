@@ -3930,6 +3930,7 @@ export type FooterRelationResponseCollection = {
 
 export type General = {
   __typename?: 'General'
+  assetsPage?: Maybe<Page>
   createdAt?: Maybe<Scalars['DateTime']['output']>
   documentId: Scalars['ID']['output']
   documentsPage?: Maybe<Page>
@@ -3966,6 +3967,7 @@ export type GeneralEntityResponseCollection = {
 
 export type GeneralFiltersInput = {
   and?: InputMaybe<Array<InputMaybe<GeneralFiltersInput>>>
+  assetsPage?: InputMaybe<PageFiltersInput>
   createdAt?: InputMaybe<DateTimeFilterInput>
   documentsPage?: InputMaybe<PageFiltersInput>
   header?: InputMaybe<ComponentGeneralHeaderFiltersInput>
@@ -3984,6 +3986,7 @@ export type GeneralFiltersInput = {
 }
 
 export type GeneralInput = {
+  assetsPage?: InputMaybe<Scalars['ID']['input']>
   documentsPage?: InputMaybe<Scalars['ID']['input']>
   header?: InputMaybe<ComponentGeneralHeaderInput>
   inbaPage?: InputMaybe<Scalars['ID']['input']>
@@ -8604,6 +8607,41 @@ export type GeneralFragment = {
       } | null
     } | null
   } | null
+  assetsPage?: {
+    __typename?: 'Page'
+    documentId: string
+    slug?: string | null
+    locale?: string | null
+    title: string
+    parentPage?: {
+      __typename?: 'Page'
+      documentId: string
+      slug?: string | null
+      locale?: string | null
+      title: string
+      parentPage?: {
+        __typename?: 'Page'
+        documentId: string
+        slug?: string | null
+        locale?: string | null
+        title: string
+        parentPage?: {
+          __typename?: 'Page'
+          documentId: string
+          slug?: string | null
+          locale?: string | null
+          title: string
+          parentPage?: {
+            __typename?: 'Page'
+            documentId: string
+            slug?: string | null
+            locale?: string | null
+            title: string
+          } | null
+        } | null
+      } | null
+    } | null
+  } | null
 }
 
 export type AlertFragment = { __typename?: 'Alert'; updatedAt?: any | null; text?: string | null }
@@ -8866,6 +8904,41 @@ export type GeneralQuery = {
       } | null
     } | null
     documentsPage?: {
+      __typename?: 'Page'
+      documentId: string
+      slug?: string | null
+      locale?: string | null
+      title: string
+      parentPage?: {
+        __typename?: 'Page'
+        documentId: string
+        slug?: string | null
+        locale?: string | null
+        title: string
+        parentPage?: {
+          __typename?: 'Page'
+          documentId: string
+          slug?: string | null
+          locale?: string | null
+          title: string
+          parentPage?: {
+            __typename?: 'Page'
+            documentId: string
+            slug?: string | null
+            locale?: string | null
+            title: string
+            parentPage?: {
+              __typename?: 'Page'
+              documentId: string
+              slug?: string | null
+              locale?: string | null
+              title: string
+            } | null
+          } | null
+        } | null
+      } | null
+    } | null
+    assetsPage?: {
       __typename?: 'Page'
       documentId: string
       slug?: string | null
@@ -18204,6 +18277,9 @@ export const GeneralFragmentDoc = gql`
       ...PageParentPages
     }
     documentsPage {
+      ...PageParentPages
+    }
+    assetsPage {
       ...PageParentPages
     }
   }

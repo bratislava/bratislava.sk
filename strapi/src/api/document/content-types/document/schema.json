@@ -4,7 +4,7 @@
   "info": {
     "singularName": "document",
     "pluralName": "documents",
-    "displayName": "Dokumenty",
+    "displayName": "Dokumenty (OLD)",
     "description": ""
   },
   "options": {
@@ -25,10 +25,7 @@
       "type": "media",
       "multiple": true,
       "required": true,
-      "allowedTypes": [
-        "images",
-        "files"
-      ]
+      "allowedTypes": ["images", "files"]
     },
     "description": {
       "type": "text"
