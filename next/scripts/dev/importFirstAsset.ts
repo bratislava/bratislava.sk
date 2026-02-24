@@ -3,7 +3,7 @@
  * Imports the first file from CSV into Strapi using GraphQL
  *
  * Usage:
- * 1. Install dependencies: npm install form-data --save-dev
+ * 1. Install dependencies: npm install filenamify
  * 2. Ensure NEXT_PUBLIC_STRAPI_URL is set in .env.local
  * 3. Run: npx ts-node scripts/dev/importFirstAsset.ts
  *
@@ -27,8 +27,6 @@ dotenv.config({ path: '.env.local' })
 const strapiBaseUrl = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337'
 const gql = new GraphQLClient(`${strapiBaseUrl}/graphql`)
 export const client = getSdk(gql)
-
-// const strapiClient = strapi({ baseURL: `${strapiBaseUrl}/api` })
 
 const slugify = slugifyWithCounter()
 
@@ -152,15 +150,6 @@ const uploadToStrapi = async (
     throw error
   }
 }
-
-// const CREATE_DOCUMENT_MUTATION = gql`
-//   mutation createAsset($data: DocumentInput!) {
-//     createAsset(data: $data) {
-//       documentId
-//       title
-//     }
-//   }
-// `
 
 const createIsoString = (dateString: string, hours: number) => {
   const [day, month, year] = dateString.split('.').map(Number)
