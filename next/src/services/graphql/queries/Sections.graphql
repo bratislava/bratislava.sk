@@ -490,6 +490,8 @@ fragment NewsletterSection on ComponentSectionsNewsletter {
   socialLinksTitle
   facebookUrl
   instagramUrl
+  linkedinUrl
+  youtubeUrl
 }
 
 fragment ColumnsListItem on ComponentBlocksColumnsListItem {

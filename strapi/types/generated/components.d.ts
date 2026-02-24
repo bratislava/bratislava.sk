@@ -976,10 +976,12 @@ export interface SectionsNewsletter extends Struct.ComponentSchema {
   attributes: {
     facebookUrl: Schema.Attribute.String
     instagramUrl: Schema.Attribute.String
+    linkedinUrl: Schema.Attribute.String
     newsletterType: Schema.Attribute.Enumeration<['starz']> & Schema.Attribute.Required
     socialLinksTitle: Schema.Attribute.String
     text: Schema.Attribute.Text
     title: Schema.Attribute.String
+    youtubeUrl: Schema.Attribute.String
   }
 }
 

@@ -14,7 +14,7 @@ const ECOMAIL_ADD_SUBSCRIBER_URL = 'https://api2.ecomailapp.cz/lists/49/subscrib
  */
 
 const Subscribe = async (req: NextApiRequest, res: NextApiResponse<ResponseData>) => {
-  const { email } = req.body
+  const { email, name, surname } = req.body
 
   if (!email) {
     res.status(400).json({ error: 'Newsletter subscription failed: Email is required' })
@@ -32,6 +32,8 @@ const Subscribe = async (req: NextApiRequest, res: NextApiResponse<ResponseData>
       {
         subscriber_data: {
           email,
+          name,
+          surname,
         },
       },
       {

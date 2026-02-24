@@ -1989,32 +1989,38 @@ type ComponentSectionsNewsletter {
   facebookUrl: String
   id: ID!
   instagramUrl: String
+  linkedinUrl: String
   newsletterType: ENUM_COMPONENTSECTIONSNEWSLETTER_NEWSLETTERTYPE!
   socialLinksTitle: String
   text: String
   title: String
+  youtubeUrl: String
 }
 
 input ComponentSectionsNewsletterFiltersInput {
   and: [ComponentSectionsNewsletterFiltersInput]
   facebookUrl: StringFilterInput
   instagramUrl: StringFilterInput
+  linkedinUrl: StringFilterInput
   newsletterType: StringFilterInput
   not: ComponentSectionsNewsletterFiltersInput
   or: [ComponentSectionsNewsletterFiltersInput]
   socialLinksTitle: StringFilterInput
   text: StringFilterInput
   title: StringFilterInput
+  youtubeUrl: StringFilterInput
 }
 
 input ComponentSectionsNewsletterInput {
   facebookUrl: String
   id: ID
   instagramUrl: String
+  linkedinUrl: String
   newsletterType: ENUM_COMPONENTSECTIONSNEWSLETTER_NEWSLETTERTYPE
   socialLinksTitle: String
   text: String
   title: String
+  youtubeUrl: String
 }
 
 type ComponentSectionsNumbersOverview {

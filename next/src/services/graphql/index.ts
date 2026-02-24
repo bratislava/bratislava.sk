@@ -2578,32 +2578,38 @@ export type ComponentSectionsNewsletter = {
   facebookUrl?: Maybe<Scalars['String']['output']>
   id: Scalars['ID']['output']
   instagramUrl?: Maybe<Scalars['String']['output']>
+  linkedinUrl?: Maybe<Scalars['String']['output']>
   newsletterType: Enum_Componentsectionsnewsletter_Newslettertype
   socialLinksTitle?: Maybe<Scalars['String']['output']>
   text?: Maybe<Scalars['String']['output']>
   title?: Maybe<Scalars['String']['output']>
+  youtubeUrl?: Maybe<Scalars['String']['output']>
 }
 
 export type ComponentSectionsNewsletterFiltersInput = {
   and?: InputMaybe<Array<InputMaybe<ComponentSectionsNewsletterFiltersInput>>>
   facebookUrl?: InputMaybe<StringFilterInput>
   instagramUrl?: InputMaybe<StringFilterInput>
+  linkedinUrl?: InputMaybe<StringFilterInput>
   newsletterType?: InputMaybe<StringFilterInput>
   not?: InputMaybe<ComponentSectionsNewsletterFiltersInput>
   or?: InputMaybe<Array<InputMaybe<ComponentSectionsNewsletterFiltersInput>>>
   socialLinksTitle?: InputMaybe<StringFilterInput>
   text?: InputMaybe<StringFilterInput>
   title?: InputMaybe<StringFilterInput>
+  youtubeUrl?: InputMaybe<StringFilterInput>
 }
 
 export type ComponentSectionsNewsletterInput = {
   facebookUrl?: InputMaybe<Scalars['String']['input']>
   id?: InputMaybe<Scalars['ID']['input']>
   instagramUrl?: InputMaybe<Scalars['String']['input']>
+  linkedinUrl?: InputMaybe<Scalars['String']['input']>
   newsletterType?: InputMaybe<Enum_Componentsectionsnewsletter_Newslettertype>
   socialLinksTitle?: InputMaybe<Scalars['String']['input']>
   text?: InputMaybe<Scalars['String']['input']>
   title?: InputMaybe<Scalars['String']['input']>
+  youtubeUrl?: InputMaybe<Scalars['String']['input']>
 }
 
 export type ComponentSectionsNumbersOverview = {
@@ -11418,6 +11424,8 @@ export type PageEntityFragment = {
         socialLinksTitle?: string | null
         facebookUrl?: string | null
         instagramUrl?: string | null
+        linkedinUrl?: string | null
+        youtubeUrl?: string | null
       }
     | {
         __typename: 'ComponentSectionsNumbersOverview'
@@ -12726,6 +12734,8 @@ export type PageBySlugQuery = {
           socialLinksTitle?: string | null
           facebookUrl?: string | null
           instagramUrl?: string | null
+          linkedinUrl?: string | null
+          youtubeUrl?: string | null
         }
       | {
           __typename: 'ComponentSectionsNumbersOverview'
@@ -14054,6 +14064,8 @@ export type Dev_AllPagesQuery = {
           socialLinksTitle?: string | null
           facebookUrl?: string | null
           instagramUrl?: string | null
+          linkedinUrl?: string | null
+          youtubeUrl?: string | null
         }
       | {
           __typename: 'ComponentSectionsNumbersOverview'
@@ -16343,6 +16355,8 @@ export type NewsletterSectionFragment = {
   socialLinksTitle?: string | null
   facebookUrl?: string | null
   instagramUrl?: string | null
+  linkedinUrl?: string | null
+  youtubeUrl?: string | null
 }
 
 export type ColumnsListItemFragment = {
@@ -17149,6 +17163,8 @@ type Sections_ComponentSectionsNewsletter_Fragment = {
   socialLinksTitle?: string | null
   facebookUrl?: string | null
   instagramUrl?: string | null
+  linkedinUrl?: string | null
+  youtubeUrl?: string | null
 }
 
 type Sections_ComponentSectionsNumbersOverview_Fragment = {
@@ -19067,6 +19083,8 @@ export const NewsletterSectionFragmentDoc = gql`
     socialLinksTitle
     facebookUrl
     instagramUrl
+    linkedinUrl
+    youtubeUrl
   }
 `
 export const ColumnsListItemFragmentDoc = gql`
