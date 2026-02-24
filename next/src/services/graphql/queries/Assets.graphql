@@ -35,3 +35,34 @@ query AssetCategories {
     ...AssetCategoryEntity
   }
 }
+
+query Assets($filters: AssetFiltersInput) {
+  assets(filters: $filters, pagination: { limit: -1 }) {
+    documentId
+    slug
+  }
+}
+
+mutation CreateAsset($data: AssetInput!) {
+  createAsset(data: $data) {
+    documentId
+    title
+    slug
+  }
+}
+
+mutation UpdateAsset($documentId: ID!, $data: AssetInput!) {
+  updateAsset(documentId: $documentId, data: $data) {
+    documentId
+    title
+    slug
+    publishedAt
+    customPublishedAt
+  }
+}
+
+mutation DeleteAsset($documentId: ID!) {
+  deleteAsset(documentId: $documentId) {
+    documentId
+  }
+}
