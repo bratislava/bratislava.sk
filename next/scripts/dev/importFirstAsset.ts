@@ -11,10 +11,13 @@
 import * as fs from 'node:fs'
 import path from 'node:path'
 
-import slugify from '@sindresorhus/slugify'
+import { slugifyWithCounter } from '@sindresorhus/slugify'
 import axios from 'axios'
 import dotenv from 'dotenv'
+import filenamify from 'filenamify'
 import { GraphQLClient } from 'graphql-request'
+
+import { isDefined } from '@/src/utils/isDefined'
 
 import { getSdk } from '../../src/services/graphql'
 
@@ -26,6 +29,8 @@ const gql = new GraphQLClient(`${strapiBaseUrl}/graphql`)
 export const client = getSdk(gql)
 
 // const strapiClient = strapi({ baseURL: `${strapiBaseUrl}/api` })
+
+const slugify = slugifyWithCounter()
 
 interface CsvRow {
   fileName: string
@@ -90,7 +95,7 @@ const parseCsvRow = (line: string): CsvRow | null => {
 }
 
 const downloadFile = async (url: string): Promise<Buffer> => {
-  console.log(`Downloading file from: ${url}`)
+  // console.log(`Downloading file from: ${url}`)
   const response = await axios.get(url, { responseType: 'arraybuffer', timeout: 30_000 })
 
   return Buffer.from(response.data)
@@ -98,10 +103,12 @@ const downloadFile = async (url: string): Promise<Buffer> => {
 
 const uploadToStrapi = async (
   fileBuffer: Buffer,
-  fileName: string,
+  fileNameUnpurified: string,
   mimeType: string,
 ): Promise<number> => {
-  console.log(`Uploading to Strapi: ${fileName}`)
+  const fileName = filenamify(fileNameUnpurified, { replacement: '_', maxLength: 255 })
+
+  // console.log(`Uploading to Strapi: ${fileName}`)
 
   const fileBlob = new Blob([fileBuffer], { type: mimeType })
 
@@ -116,15 +123,6 @@ const uploadToStrapi = async (
   }
   formData.append('fileInfo', JSON.stringify(fileInfo))
 
-  // const headers: Record<string, string> = {
-  //   ...formData.getHeaders(),
-  // }
-
-  // // Add API token if available
-  // if (process.env.STRAPI_API_TOKEN) {
-  //   headers.Authorization = `Bearer ${process.env.STRAPI_API_TOKEN}`
-  // }
-
   try {
     const response = await axios.post(`${strapiBaseUrl}/api/upload`, formData, {
       // headers,
@@ -132,12 +130,6 @@ const uploadToStrapi = async (
       maxContentLength: Infinity,
       maxBodyLength: Infinity,
     })
-
-    // const response = await strapiClient.files.upload(fileBlob, {
-    //   fileInfo: {
-    //     name: fileName,
-    //   },
-    // })
 
     // Strapi returns an array of uploaded files
     if (!response.data || !Array.isArray(response.data) || response.data.length === 0) {
@@ -149,7 +141,7 @@ const uploadToStrapi = async (
       throw new Error('Uploaded file missing ID in response')
     }
 
-    console.log(`Uploaded file ID: ${uploadedFile.id}`)
+    // console.log(`Uploaded file ID: ${uploadedFile.id}`)
 
     return uploadedFile.id
   } catch (error) {
@@ -171,23 +163,21 @@ const uploadToStrapi = async (
 // `
 
 const createAsset = async (row: CsvRow, fileId: number): Promise<void> => {
-  console.log(`Creating asset: ${row.fileName}`)
+  // console.log(`Creating asset: ${row.fileName}`)
+
+  const slug = slugify(`starz-${row.fileName}`, {
+    decamelize: false,
+    preserveTrailingDash: true,
+  })
 
   const assetData = {
-    title: row.fileName,
-    slug: slugify(row.fileName),
+    title: `STaRZ - ${row.fileName}`,
+    slug,
     files: [fileId.toString()],
     description: row.description || null,
     assetCategory: row.documentId || null,
     adminGroups: ['jo5fdw77stuwdv5uwzcacr1z'],
   }
-
-  // const assetData = {
-  //   title: 'Title 1',
-  //   slug: 'title-1',
-  //   // files: [fileId.toString()],
-  //   adminGroups: ['jo5fdw77stuwdv5uwzcacr1z'],
-  // }
 
   const data = {
     ...assetData,
@@ -199,11 +189,9 @@ const createAsset = async (row: CsvRow, fileId: number): Promise<void> => {
 
   if (!result.createAsset) {
     console.log('Creating asset failed')
-
-    return
   }
 
-  console.log(`Created asset ID: ${result.createAsset.documentId}`)
+  // console.log(`Created asset ${result.createAsset.documentId} ${slug}`)
   // console.log(
   //   `Document URL: ${strapiBaseUrl}/admin/content-manager/collection-types/api::document.document/${result.createAsset.documentId}`,
   // )
@@ -220,46 +208,53 @@ const main = async () => {
 
   console.log(`Reading CSV: ${csvPath}`)
   const csvContent = fs.readFileSync(csvPath, 'utf8')
-  const lines = csvContent.split('\n').filter((line) => line.trim())
+  const linesWithHeader = csvContent.split('\n').filter((line) => line.trim())
 
-  if (lines.length < 2) {
+  if (linesWithHeader.length < 2) {
     console.error('CSV file must have at least a header and one data row')
 
     return
   }
 
-  // Skip header, get first row
-  const firstRow = parseCsvRow(lines[1])
-  if (!firstRow) {
-    console.error('Failed to parse first row')
+  const lines = linesWithHeader.slice(1, linesWithHeader.length)
 
-    return
+  const rowsUnfiltered = lines.map((line) => parseCsvRow(line))
+  const rowsFiltered = rowsUnfiltered.filter(isDefined)
+
+  if (rowsFiltered.length !== rowsUnfiltered.length) {
+    console.warn(`Filtered out ${rowsUnfiltered.length - rowsFiltered.length} invalid rows`)
+  } else {
+    console.log('No broken rows found', rowsFiltered.length)
   }
 
-  console.log('\n=== Processing first file ===')
-  console.log(`File: ${firstRow.fileName}`)
-  console.log(`URL: ${firstRow.fileUrl}`)
-  console.log(`Category: ${firstRow.newCategory} (ID: ${firstRow.documentId})`)
-  console.log(`Description: ${firstRow.description.slice(0, 100)}...`)
+  let rowsToParse = rowsFiltered.filter((row) => row.isFromAdditionalScraping === 'false')
+  rowsToParse.reverse()
+  rowsToParse = rowsToParse.slice(0, rowsToParse.length)
 
-  try {
-    // Download file
-    // const fileBuffer = await downloadFile(firstRow.fileUrl)
-    // //
-    // // // Upload to Strapi
-    // const fileId = await uploadToStrapi(fileBuffer, firstRow.fileName, firstRow.mimeType)
-    // //
-    // console.log(firstRow, fileId)
+  console.log('rowsToParse:', rowsToParse.length)
 
-    const fileId = 9359
-    // Create asset
-    await createAsset(firstRow, fileId)
+  for (const [i, row] of rowsToParse.entries()) {
+    // console.log(`\n\n=== Processing row ${i} ===`)
 
-    console.log('\n✅ Success!')
-  } catch (error) {
-    console.error('\n❌ Error:', error)
-    if (axios.isAxiosError(error)) {
-      console.error('Response:', error.response?.data)
+    try {
+      // Download file
+      const fileBuffer = await downloadFile(row.fileUrl)
+
+      // Upload to Strapi
+      const fileId = await uploadToStrapi(fileBuffer, row.fileName, row.mimeType)
+
+      // console.log(row, fileId)
+
+      // Create asset
+      await createAsset(row, fileId)
+
+      console.log(`Row ${i} ✅ Success!`)
+    } catch (error) {
+      console.error(`\nRow ${i} ❌ Error:`)
+      console.log(`Row ${i}`, row)
+      if (axios.isAxiosError(error)) {
+        console.error('Response:', error.response?.data)
+      }
     }
   }
 }
