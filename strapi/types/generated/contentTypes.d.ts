@@ -577,6 +577,8 @@ export interface ApiAssetAsset extends Struct.CollectionTypeSchema {
     assetCategory: Schema.Attribute.Relation<'manyToOne', 'api::asset-category.asset-category'>
     createdAt: Schema.Attribute.DateTime
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> & Schema.Attribute.Private
+    customMetadata: Schema.Attribute.JSON
+    customPublishedAt: Schema.Attribute.DateTime
     description: Schema.Attribute.Text
     files: Schema.Attribute.Media<'images' | 'files', true> & Schema.Attribute.Required
     locale: Schema.Attribute.String & Schema.Attribute.Private

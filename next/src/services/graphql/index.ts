@@ -467,6 +467,8 @@ export type Asset = {
   adminGroups_connection?: Maybe<AdminGroupRelationResponseCollection>
   assetCategory?: Maybe<AssetCategory>
   createdAt?: Maybe<Scalars['DateTime']['output']>
+  customMetadata?: Maybe<Scalars['JSON']['output']>
+  customPublishedAt?: Maybe<Scalars['DateTime']['output']>
   description?: Maybe<Scalars['String']['output']>
   documentId: Scalars['ID']['output']
   files: Array<Maybe<UploadFile>>
@@ -589,6 +591,8 @@ export type AssetFiltersInput = {
   and?: InputMaybe<Array<InputMaybe<AssetFiltersInput>>>
   assetCategory?: InputMaybe<AssetCategoryFiltersInput>
   createdAt?: InputMaybe<DateTimeFilterInput>
+  customMetadata?: InputMaybe<JsonFilterInput>
+  customPublishedAt?: InputMaybe<DateTimeFilterInput>
   description?: InputMaybe<StringFilterInput>
   documentId?: InputMaybe<IdFilterInput>
   not?: InputMaybe<AssetFiltersInput>
@@ -602,6 +606,8 @@ export type AssetFiltersInput = {
 export type AssetInput = {
   adminGroups?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
   assetCategory?: InputMaybe<Scalars['ID']['input']>
+  customMetadata?: InputMaybe<Scalars['JSON']['input']>
+  customPublishedAt?: InputMaybe<Scalars['DateTime']['input']>
   description?: InputMaybe<Scalars['String']['input']>
   files?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
   publishedAt?: InputMaybe<Scalars['DateTime']['input']>

@@ -7,8 +7,8 @@
       "searchable": true,
       "pageSize": 10,
       "mainField": "title",
-      "defaultSortBy": "title",
-      "defaultSortOrder": "ASC"
+      "defaultSortBy": "updatedAt",
+      "defaultSortOrder": "DESC"
     },
     "metadatas": {
       "id": {
@@ -105,6 +105,34 @@
           "sortable": false
         }
       },
+      "customPublishedAt": {
+        "edit": {
+          "label": "customPublishedAt",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "customPublishedAt",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "customMetadata": {
+        "edit": {
+          "label": "customMetadata",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "customMetadata",
+          "searchable": false,
+          "sortable": false
+        }
+      },
       "createdAt": {
         "edit": {
           "label": "createdAt",
@@ -173,6 +201,13 @@
       }
     },
     "layouts": {
+      "list": [
+        "id",
+        "title",
+        "slug",
+        "updatedAt",
+        "createdAt"
+      ],
       "edit": [
         [
           {
@@ -203,9 +238,20 @@
             "name": "adminGroups",
             "size": 6
           }
+        ],
+        [
+          {
+            "name": "customPublishedAt",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "customMetadata",
+            "size": 12
+          }
         ]
-      ],
-      "list": ["id", "title", "slug", "createdAt"]
+      ]
     },
     "uid": "api::asset.asset"
   },

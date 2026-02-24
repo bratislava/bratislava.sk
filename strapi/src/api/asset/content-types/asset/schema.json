@@ -24,7 +24,10 @@
       "type": "media",
       "multiple": true,
       "required": true,
-      "allowedTypes": ["images", "files"]
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
     },
     "description": {
       "type": "text"
@@ -40,6 +43,12 @@
       "relation": "manyToMany",
       "target": "api::admin-group.admin-group",
       "mappedBy": "assets"
+    },
+    "customPublishedAt": {
+      "type": "datetime"
+    },
+    "customMetadata": {
+      "type": "json"
     }
   }
 }
