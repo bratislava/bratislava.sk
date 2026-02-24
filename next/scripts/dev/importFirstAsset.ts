@@ -19,7 +19,7 @@ import { GraphQLClient } from 'graphql-request'
 
 import { isDefined } from '@/src/utils/isDefined'
 
-import { getSdk } from '../../src/services/graphql'
+import { AssetInput, getSdk } from '../../src/services/graphql'
 
 // Load envs
 dotenv.config({ path: '.env.local' })
@@ -162,6 +162,15 @@ const uploadToStrapi = async (
 //   }
 // `
 
+const createIsoString = (dateString: string, hours: number) => {
+  const [day, month, year] = dateString.split('.').map(Number)
+  const date = new Date(year, month - 1, day, hours)
+
+  console.log('createIsoString', dateString, date, date.toISOString())
+
+  return date.toISOString()
+}
+
 const createAsset = async (row: CsvRow, fileId: number): Promise<void> => {
   // console.log(`Creating asset: ${row.fileName}`)
 
@@ -170,14 +179,19 @@ const createAsset = async (row: CsvRow, fileId: number): Promise<void> => {
     preserveTrailingDash: true,
   })
 
-  const assetData = {
+  const publishedAt = createIsoString(row.dateOfCreation, 12)
+
+  const assetData: AssetInput = {
     title: `STaRZ - ${row.fileName}`,
     slug,
     files: [fileId.toString()],
     description: row.description || null,
     assetCategory: row.documentId || null,
     adminGroups: ['jo5fdw77stuwdv5uwzcacr1z'],
+    publishedAt,
   }
+
+  console.log('Creating asset - assetData', assetData)
 
   const data = {
     ...assetData,
@@ -189,7 +203,16 @@ const createAsset = async (row: CsvRow, fileId: number): Promise<void> => {
 
   if (!result.createAsset) {
     console.log('Creating asset failed')
+
+    return
   }
+
+  const resultUpdate = await client.UpdateAsset({
+    documentId: result.createAsset.documentId,
+    data: { publishedAt },
+  })
+
+  console.log(resultUpdate.updateAsset)
 
   // console.log(`Created asset ${result.createAsset.documentId} ${slug}`)
   // console.log(
@@ -229,7 +252,8 @@ const main = async () => {
 
   let rowsToParse = rowsFiltered.filter((row) => row.isFromAdditionalScraping === 'false')
   rowsToParse.reverse()
-  rowsToParse = rowsToParse.slice(0, rowsToParse.length)
+  // rowsToParse = rowsToParse.slice(0, rowsToParse.length)
+  rowsToParse = rowsToParse.slice(0, 1)
 
   console.log('rowsToParse:', rowsToParse.length)
 
@@ -254,6 +278,8 @@ const main = async () => {
       console.log(`Row ${i}`, row)
       if (axios.isAxiosError(error)) {
         console.error('Response:', error.response?.data)
+      } else {
+        console.error('NonAxiosError:', error)
       }
     }
   }

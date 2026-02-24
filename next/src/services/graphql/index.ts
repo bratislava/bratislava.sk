@@ -7725,6 +7725,22 @@ export type CreateAssetMutation = {
   createAsset?: { __typename?: 'Asset'; documentId: string; title: string; slug: string } | null
 }
 
+export type UpdateAssetMutationVariables = Exact<{
+  documentId: Scalars['ID']['input']
+  data: AssetInput
+}>
+
+export type UpdateAssetMutation = {
+  __typename?: 'Mutation'
+  updateAsset?: {
+    __typename?: 'Asset'
+    documentId: string
+    title: string
+    slug: string
+    publishedAt?: any | null
+  } | null
+}
+
 export type DocumentCategoryEntityFragment = {
   __typename?: 'DocumentCategory'
   documentId: string
@@ -19469,6 +19485,16 @@ export const CreateAssetDocument = gql`
     }
   }
 `
+export const UpdateAssetDocument = gql`
+  mutation UpdateAsset($documentId: ID!, $data: AssetInput!) {
+    updateAsset(documentId: $documentId, data: $data) {
+      documentId
+      title
+      slug
+      publishedAt
+    }
+  }
+`
 export const DocumentBySlugDocument = gql`
   query DocumentBySlug($slug: String!) {
     documents(filters: { slug: { eq: $slug } }) {
@@ -20034,6 +20060,24 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
             signal,
           }),
         'CreateAsset',
+        'mutation',
+        variables,
+      )
+    },
+    UpdateAsset(
+      variables: UpdateAssetMutationVariables,
+      requestHeaders?: GraphQLClientRequestHeaders,
+      signal?: RequestInit['signal'],
+    ): Promise<UpdateAssetMutation> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<UpdateAssetMutation>({
+            document: UpdateAssetDocument,
+            variables,
+            requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders },
+            signal,
+          }),
+        'UpdateAsset',
         'mutation',
         variables,
       )

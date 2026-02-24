@@ -43,3 +43,12 @@ mutation CreateAsset($data: AssetInput!) {
     slug
   }
 }
+
+mutation UpdateAsset($documentId: ID!, $data: AssetInput!) {
+  updateAsset(documentId: $documentId, data: $data) {
+    documentId
+    title
+    slug
+    publishedAt
+  }
+}
