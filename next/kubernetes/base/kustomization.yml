@@ -5,7 +5,6 @@ resources:
   - redirects/ukrajina.ingress.yml
   - redirects/platbadane.ingress.yml
   - redirects/izba.ingress.yml
-  - redirects/nocnapomoc.ingress.yml
   - redirects/old_aliases.ingress.yml
   - redirects/klima.ingress.yml
   - redirects/camping.ingress.yml
