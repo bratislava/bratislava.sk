@@ -7716,6 +7716,15 @@ export type AssetCategoriesQuery = {
   } | null>
 }
 
+export type AssetsQueryVariables = Exact<{
+  filters?: InputMaybe<AssetFiltersInput>
+}>
+
+export type AssetsQuery = {
+  __typename?: 'Query'
+  assets: Array<{ __typename?: 'Asset'; documentId: string; slug: string } | null>
+}
+
 export type CreateAssetMutationVariables = Exact<{
   data: AssetInput
 }>
@@ -7738,7 +7747,17 @@ export type UpdateAssetMutation = {
     title: string
     slug: string
     publishedAt?: any | null
+    customPublishedAt?: any | null
   } | null
+}
+
+export type DeleteAssetMutationVariables = Exact<{
+  documentId: Scalars['ID']['input']
+}>
+
+export type DeleteAssetMutation = {
+  __typename?: 'Mutation'
+  deleteAsset?: { __typename?: 'DeleteMutationResponse'; documentId: string } | null
 }
 
 export type DocumentCategoryEntityFragment = {
@@ -19476,6 +19495,14 @@ export const AssetCategoriesDocument = gql`
   }
   ${AssetCategoryEntityFragmentDoc}
 `
+export const AssetsDocument = gql`
+  query Assets($filters: AssetFiltersInput) {
+    assets(filters: $filters, pagination: { limit: -1 }) {
+      documentId
+      slug
+    }
+  }
+`
 export const CreateAssetDocument = gql`
   mutation CreateAsset($data: AssetInput!) {
     createAsset(data: $data) {
@@ -19492,6 +19519,14 @@ export const UpdateAssetDocument = gql`
       title
       slug
       publishedAt
+      customPublishedAt
+    }
+  }
+`
+export const DeleteAssetDocument = gql`
+  mutation DeleteAsset($documentId: ID!) {
+    deleteAsset(documentId: $documentId) {
+      documentId
     }
   }
 `
@@ -20046,6 +20081,24 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
         variables,
       )
     },
+    Assets(
+      variables?: AssetsQueryVariables,
+      requestHeaders?: GraphQLClientRequestHeaders,
+      signal?: RequestInit['signal'],
+    ): Promise<AssetsQuery> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<AssetsQuery>({
+            document: AssetsDocument,
+            variables,
+            requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders },
+            signal,
+          }),
+        'Assets',
+        'query',
+        variables,
+      )
+    },
     CreateAsset(
       variables: CreateAssetMutationVariables,
       requestHeaders?: GraphQLClientRequestHeaders,
@@ -20078,6 +20131,24 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
             signal,
           }),
         'UpdateAsset',
+        'mutation',
+        variables,
+      )
+    },
+    DeleteAsset(
+      variables: DeleteAssetMutationVariables,
+      requestHeaders?: GraphQLClientRequestHeaders,
+      signal?: RequestInit['signal'],
+    ): Promise<DeleteAssetMutation> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<DeleteAssetMutation>({
+            document: DeleteAssetDocument,
+            variables,
+            requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders },
+            signal,
+          }),
+        'DeleteAsset',
         'mutation',
         variables,
       )

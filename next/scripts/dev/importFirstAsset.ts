@@ -166,7 +166,7 @@ const createIsoString = (dateString: string, hours: number) => {
   const [day, month, year] = dateString.split('.').map(Number)
   const date = new Date(year, month - 1, day, hours)
 
-  console.log('createIsoString', dateString, date, date.toISOString())
+  // console.log('createIsoString', dateString, date, date.toISOString())
 
   return date.toISOString()
 }
@@ -188,10 +188,12 @@ const createAsset = async (row: CsvRow, fileId: number): Promise<void> => {
     description: row.description || null,
     assetCategory: row.documentId || null,
     adminGroups: ['jo5fdw77stuwdv5uwzcacr1z'],
-    publishedAt,
+    publishedAt, // it's ignored by Strapi :/
+    customPublishedAt: publishedAt,
+    customMetadata: row,
   }
 
-  console.log('Creating asset - assetData', assetData)
+  // console.log('Creating asset - assetData', assetData)
 
   const data = {
     ...assetData,
@@ -203,16 +205,7 @@ const createAsset = async (row: CsvRow, fileId: number): Promise<void> => {
 
   if (!result.createAsset) {
     console.log('Creating asset failed')
-
-    return
   }
-
-  const resultUpdate = await client.UpdateAsset({
-    documentId: result.createAsset.documentId,
-    data: { publishedAt },
-  })
-
-  console.log(resultUpdate.updateAsset)
 
   // console.log(`Created asset ${result.createAsset.documentId} ${slug}`)
   // console.log(
@@ -250,15 +243,23 @@ const main = async () => {
     console.log('No broken rows found', rowsFiltered.length)
   }
 
-  let rowsToParse = rowsFiltered.filter((row) => row.isFromAdditionalScraping === 'false')
-  rowsToParse.reverse()
-  // rowsToParse = rowsToParse.slice(0, rowsToParse.length)
-  rowsToParse = rowsToParse.slice(0, 1)
+  const rowsNotFromAdditional = rowsFiltered.filter(
+    (row) => row.isFromAdditionalScraping === 'false',
+  )
+  rowsNotFromAdditional.reverse()
+  const rowsFromAdditional = rowsFiltered.filter((row) => row.isFromAdditionalScraping === 'true')
+
+  let rowsToParse = [...rowsNotFromAdditional, ...rowsFromAdditional]
+  rowsToParse = rowsToParse.slice(0, rowsToParse.length)
+  // rowsToParse = rowsToParse.slice(0, 10)
 
   console.log('rowsToParse:', rowsToParse.length)
 
   for (const [i, row] of rowsToParse.entries()) {
     // console.log(`\n\n=== Processing row ${i} ===`)
+    // process.stdout.write(`${i + 1}...`)
+    // process.stdout.clearLine(0)
+    // process.stdout.cursorTo(0)
 
     try {
       // Download file
@@ -285,4 +286,27 @@ const main = async () => {
   }
 }
 
+const deleteAllStarzAssets = async () => {
+  const result = await client.Assets({
+    filters: {
+      createdAt: {
+        gte: '2026-02-24T00:00:00.000Z',
+        lt: '2026-02-25T00:00:00.000Z',
+      },
+      slug: {
+        startsWith: 'starz',
+      },
+    },
+  })
+  const starzAssets = result.assets.filter(isDefined)
+  // .filter((asset) => asset.slug.startsWith('starz'))
+  for (const asset of starzAssets) {
+    // console.log('asset found:', asset.slug)
+    const resultDelete = await client.DeleteAsset({ documentId: asset.documentId })
+    console.log(`Deleted: ${resultDelete.deleteAsset?.documentId}`)
+  }
+}
+
 main()
+
+// deleteAllStarzAssets()

@@ -36,6 +36,13 @@ query AssetCategories {
   }
 }
 
+query Assets($filters: AssetFiltersInput) {
+  assets(filters: $filters, pagination: { limit: -1 }) {
+    documentId
+    slug
+  }
+}
+
 mutation CreateAsset($data: AssetInput!) {
   createAsset(data: $data) {
     documentId
@@ -50,5 +57,12 @@ mutation UpdateAsset($documentId: ID!, $data: AssetInput!) {
     title
     slug
     publishedAt
+    customPublishedAt
+  }
+}
+
+mutation DeleteAsset($documentId: ID!) {
+  deleteAsset(documentId: $documentId) {
+    documentId
   }
 }
