@@ -32,12 +32,13 @@ const JobOfferRowCard = ({ jobOffer, cardTitleLevel = 'h3' }: JobOfferRowCardPro
           <MLink
             href={url ?? '/mesto-bratislava/sprava-mesta/magistrat/pracovne-prilezitosti'}
             stretched
+            target="_blank"
           >
             <Typography variant="h6" as={cardTitleLevel} className="group-hover:underline">
               {title}
             </Typography>
           </MLink>
-          <Typography variant="p-tiny">
+          <Typography variant="p-small">
             {[location, employmentForms, salary, salaryInfo].filter(isDefined).join(' • ')}
           </Typography>
         </div>
