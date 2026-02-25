@@ -1,7 +1,6 @@
 import { GetServerSideProps } from 'next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
-import AccordionShowcase from '@/src/components/styleguide/showcases/AccordionShowcase'
 import AlertShowCase from '@/src/components/styleguide/showcases/AlertShowCase'
 import ArticleCardShowcase from '@/src/components/styleguide/showcases/ArticleCardShowcase'
 import BannerShowCase from '@/src/components/styleguide/showcases/BannerShowCase'
@@ -34,7 +33,6 @@ const Styleguide = () => {
       <ButtonShowCase />
       <SpinnerShowCase />
       <AlertShowCase />
-      <AccordionShowcase />
       <DisclosureShowcase />
       <BannerShowCase />
       <TootootEventCardShowcase />
