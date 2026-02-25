@@ -8,6 +8,7 @@ metadata:
   annotations:
     cert-manager.io/cluster-issuer: cloudflare-dns01
     cert-manager.io/issue-temporary-certificate: 'true'
+    nginx.org/client-max-body-size: '100m'
 spec:
   ingressClassName: nginx
   tls:
