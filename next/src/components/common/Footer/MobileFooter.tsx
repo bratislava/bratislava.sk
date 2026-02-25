@@ -1,7 +1,13 @@
+import { Typography } from '@bratislava/component-library'
 import React, { Fragment } from 'react'
 
 import { EuFlagSvg } from '@/src/assets/images'
-import Accordion from '@/src/components/common/Accordion/Accordion'
+import {
+  Disclosure,
+  DisclosureGroup,
+  DisclosureHeader,
+  DisclosurePanel,
+} from '@/src/components/common/Disclosure'
 import HorizontalDivider from '@/src/components/common/Divider/HorizontalDivider'
 import {
   FooterAccessibilityLink,
@@ -37,17 +43,26 @@ const MobileFooter = () => {
           <FooterContacts {...footer} />
         </div>
         <div>
+          <DisclosureGroup className="border-0">
+            {footer.columns?.filter(isDefined).map((column, index) => (
+              <Fragment key={index}>
+                <HorizontalDivider />
+                <Disclosure>
+                  <DisclosureHeader className="px-0 py-6">
+                    <Typography variant="h4" as="h3">
+                      {column.title}
+                    </Typography>
+                  </DisclosureHeader>
+                  <DisclosurePanel className="px-0">
+                    <div className="flex flex-col gap-3">
+                      <FooterColumnLinks {...column} />
+                    </div>
+                  </DisclosurePanel>
+                </Disclosure>
+              </Fragment>
+            ))}
+          </DisclosureGroup>
           <HorizontalDivider />
-          {footer.columns?.filter(isDefined).map((column, index) => (
-            <Fragment key={index}>
-              <Accordion variant="footer" title={column.title}>
-                <div className="flex flex-col gap-3">
-                  <FooterColumnLinks {...column} />
-                </div>
-              </Accordion>
-              <HorizontalDivider />
-            </Fragment>
-          ))}
         </div>
         <div className="flex flex-row items-center justify-between">
           <div className="-my-2 flex gap-2">

@@ -1,7 +1,13 @@
+import { Typography } from '@bratislava/component-library'
 import React from 'react'
 
 import { AccordionTitleLevel } from '@/src/components/cards/getCardTitleLevel'
-import Accordion from '@/src/components/common/Accordion/Accordion'
+import {
+  Disclosure,
+  DisclosureGroup,
+  DisclosureHeader,
+  DisclosurePanel,
+} from '@/src/components/common/Disclosure'
 import Markdown from '@/src/components/formatting/Markdown/Markdown'
 import { FaqEntityFragment } from '@/src/services/graphql'
 import { isDefined } from '@/src/utils/isDefined'
@@ -15,9 +21,18 @@ const FaqsGroup = ({ faqs, accordionTitleLevel }: FaqsGroupProps) => {
   return (
     <div className="flex flex-col gap-4">
       {faqs.filter(isDefined).map((faq, index) => (
-        <Accordion key={index} title={faq.title} accordionTitleLevel={accordionTitleLevel}>
-          <Markdown content={faq.body} variant="small" />
-        </Accordion>
+        <DisclosureGroup allowsMultipleExpanded key={index}>
+          <Disclosure id={`disclosure-faq-${index}`}>
+            <DisclosureHeader>
+              <Typography variant="h4" as={accordionTitleLevel}>
+                {faq.title}
+              </Typography>
+            </DisclosureHeader>
+            <DisclosurePanel>
+              <Markdown content={faq.body} variant="small" />
+            </DisclosurePanel>
+          </Disclosure>
+        </DisclosureGroup>
       ))}
     </div>
   )

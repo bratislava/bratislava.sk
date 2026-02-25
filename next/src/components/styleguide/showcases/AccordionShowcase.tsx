@@ -3,6 +3,7 @@ import React from 'react'
 import Accordion from '@/src/components/common/Accordion/Accordion'
 import Wrapper from '@/src/components/styleguide/Wrapper'
 
+// TODO: remove Accordion component
 const AccordionShowcase = () => {
   return (
     <Wrapper direction="column" title="Accordion">
