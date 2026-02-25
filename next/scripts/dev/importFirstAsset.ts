@@ -104,6 +104,7 @@ const uploadToStrapi = async (
   fileNameUnpurified: string,
   mimeType: string,
 ): Promise<number> => {
+  // Note: Strapi uses their version of filenamify lib: https://github.com/strapi/strapi/blob/79a590a581fd8272fafe5644b39c108a3a192b67/packages/core/upload/server/src/services/upload.ts#L89
   const fileName = filenamify(fileNameUnpurified, { replacement: '_', maxLength: 255 })
 
   // console.log(`Uploading to Strapi: ${fileName}`)
