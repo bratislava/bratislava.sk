@@ -8,7 +8,11 @@ import PageLayout from '@/src/components/layouts/PageLayout'
 import GeneralPageContent from '@/src/components/page-contents/GeneralPageContent'
 import { AdminGroupsContextProvider } from '@/src/components/providers/AdminGroupsContextProvider'
 import { GeneralContextProvider } from '@/src/components/providers/GeneralContextProvider'
-import { LanguageCode, Localizations, LocalizationsProvider } from '@/src/components/providers/LocalizationsProvider'
+import {
+  LanguageCode,
+  Localizations,
+  LocalizationsProvider,
+} from '@/src/components/providers/LocalizationsProvider'
 import { GeneralQuery, PageEntityFragment } from '@/src/services/graphql'
 import { client } from '@/src/services/graphql/gql'
 import { GlobalCategoryColorProvider } from '@/src/utils/colors'

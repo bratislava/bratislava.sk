@@ -40,7 +40,7 @@ const DocumentRowCard = ({
     <CardBase variant="no-border" className={cn('ring-inset', className)}>
       <div className="flex items-center gap-3 py-4 lg:gap-4">
         <div className="flex grow items-start gap-3 lg:gap-4">
-          <div className="lg:bg-background-passive-secondary lg:text-content-passive-secondary lg:rounded-lg lg:p-3">
+          <div className="lg:rounded-lg lg:bg-background-passive-secondary lg:p-3 lg:text-content-passive-secondary">
             {variant === 'single-file' ? (
               <AttachmentIcon className="size-5 md:size-6" />
             ) : (
@@ -57,7 +57,7 @@ const DocumentRowCard = ({
                   <Fragment key={index}>
                     {index > 0 ? (
                       <div
-                        className="bg-content-passive-secondary size-1 rounded-full"
+                        className="size-1 rounded-full bg-content-passive-secondary"
                         aria-hidden
                       />
                     ) : null}

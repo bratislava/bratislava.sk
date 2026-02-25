@@ -37,7 +37,7 @@ const EventCard = ({
         <CardImage
           imgSrc={imageSrc}
           sizes={imageSizes}
-          className="aspect-384/216 max-lg:rounded-lg lg:w-[24rem]"
+          className="aspect-384/216 max-lg:rounded-lg lg:w-96"
         />
 
         <div className="flex grow flex-col justify-between max-lg:gap-4 max-lg:pt-4 lg:px-8 lg:pt-8 lg:pb-6">

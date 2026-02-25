@@ -590,7 +590,7 @@ export interface SectionsArticlesLandingPage extends Struct.ComponentSchema {
 export interface SectionsAssets extends Struct.ComponentSchema {
   collectionName: 'components_sections_assets'
   info: {
-    displayName: 'Assets'
+    displayName: 'Dokumenty'
   }
   attributes: {
     assets: Schema.Attribute.Relation<'oneToMany', 'api::asset.asset'>
@@ -752,21 +752,6 @@ export interface SectionsDivider extends Struct.ComponentSchema {
         'divadlo',
       ]
     >
-  }
-}
-
-export interface SectionsDocuments extends Struct.ComponentSchema {
-  collectionName: 'components_sections_documents'
-  info: {
-    description: ''
-    displayName: 'Dokumenty'
-  }
-  attributes: {
-    documents: Schema.Attribute.Relation<'oneToMany', 'api::document.document'>
-    showAll: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>
-    text: Schema.Attribute.Text
-    title: Schema.Attribute.String & Schema.Attribute.DefaultTo<'Dokumenty'>
-    titleLevel: Schema.Attribute.Enumeration<['h2', 'h3']> & Schema.Attribute.DefaultTo<'h2'>
   }
 }
 
@@ -991,10 +976,12 @@ export interface SectionsNewsletter extends Struct.ComponentSchema {
   attributes: {
     facebookUrl: Schema.Attribute.String
     instagramUrl: Schema.Attribute.String
+    linkedinUrl: Schema.Attribute.String
     newsletterType: Schema.Attribute.Enumeration<['starz']> & Schema.Attribute.Required
     socialLinksTitle: Schema.Attribute.String
     text: Schema.Attribute.Text
     title: Schema.Attribute.String
+    youtubeUrl: Schema.Attribute.String
   }
 }
 
@@ -1301,7 +1288,6 @@ declare module '@strapi/strapi' {
       'sections.comparison-section': SectionsComparisonSection
       'sections.contacts-section': SectionsContactsSection
       'sections.divider': SectionsDivider
-      'sections.documents': SectionsDocuments
       'sections.events': SectionsEvents
       'sections.facilities': SectionsFacilities
       'sections.faq-categories': SectionsFaqCategories

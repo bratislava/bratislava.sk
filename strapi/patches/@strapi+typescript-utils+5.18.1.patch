@@ -4,18 +4,10 @@ index 7660d47..d34850c 100644
 +++ b/node_modules/@strapi/typescript-utils/lib/generators/common/models/schema.js
 @@ -23,7 +23,7 @@ const generateAttributePropertySignature = (schema) => {
    const { attributes } = schema;
-
+ 
    const properties = Object.entries(attributes)
 -    .sort((a, b) => a[0].localeCompare(b[0]))
 +    .sort((a, b) => a[0].localeCompare(b[0], 'en'))
      .map(([attributeName, attribute]) => {
        return attributeToPropertySignature(schema, attributeName, attribute);
      });
-diff --git a/node_modules/@strapi/typescript-utils/tsconfigs/.tsbuildinfo b/node_modules/@strapi/typescript-utils/tsconfigs/.tsbuildinfo
-new file mode 100644
-index 0000000..78ef759
---- /dev/null
-+++ b/node_modules/@strapi/typescript-utils/tsconfigs/.tsbuildinfo
-@@ -0,0 +1 @@
-+{"version":"5.4.4"}
-\ No newline at end of file

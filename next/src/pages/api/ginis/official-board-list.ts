@@ -16,6 +16,7 @@ const handler = async (
     page: pageParam,
     publicationState: publicationStateParam,
     categoryId: categoryIdParam,
+    publicationYear: publicationYearParam,
   } = req.query
 
   // TODO parse query params in cleaner way
@@ -33,13 +34,19 @@ const handler = async (
     typeof publicationStateParam === 'string' ? publicationStateParam : publicationStateParam?.[0]
   const categoryId =
     typeof categoryIdParam === 'string' ? categoryIdParam : (categoryIdParam?.[0] ?? '')
+  const publicationYear = typeof publicationYearParam === 'string' ? publicationYearParam : ''
 
   let result: ParsedOfficialBoardDocument[] = []
 
   try {
     result = shouldMockGinis()
       ? mockedParsedDocuments
-      : await getOfficialBoardParsedList({ searchQuery: search, publicationState, categoryId })
+      : await getOfficialBoardParsedList({
+          searchQuery: search,
+          publicationState,
+          categoryId,
+          publicationYear,
+        })
   } catch (error) {
     // TODO handle error
     // eslint-disable-next-line no-console

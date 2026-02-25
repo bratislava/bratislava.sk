@@ -53,8 +53,7 @@
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true,
-          "mainField": "documentId"
+          "editable": true
         },
         "list": {
           "label": "leftColumn",
@@ -68,8 +67,7 @@
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true,
-          "mainField": "documentId"
+          "editable": true
         },
         "list": {
           "label": "rightColumn",
@@ -87,6 +85,12 @@
       }
     },
     "layouts": {
+      "list": [
+        "id",
+        "title",
+        "text",
+        "leftColumn"
+      ],
       "edit": [
         [
           {
@@ -110,8 +114,7 @@
             "size": 12
           }
         ]
-      ],
-      "list": ["id", "title", "text", "leftColumn"]
+      ]
     },
     "uid": "sections.columns-list",
     "isComponent": true

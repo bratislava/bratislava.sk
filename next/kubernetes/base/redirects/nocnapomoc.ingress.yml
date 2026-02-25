@@ -8,8 +8,13 @@ metadata:
   annotations:
     cert-manager.io/cluster-issuer: cloudflare-dns01
     cert-manager.io/issue-temporary-certificate: 'true'
-    ingress.kubernetes.io/redirect-to: https://${BRATISKA_HOSTNAME}/socialne-sluzby-a-byvanie/socialne-sluzby-a-zariadenia/nocna-pomoc
+    nginx.org/server-snippets: |
+      # Skip redirect for ACME HTTP-01 challenge
+      if ($request_uri !~ "^/.well-known/acme-challenge/") {
+          return 301 https://${BRATISKA_HOSTNAME}/socialne-sluzby-a-byvanie/socialne-sluzby-a-zariadenia/nocna-pomoc;
+      }
 spec:
+  ingressClassName: nginx
   tls:
     - hosts:
         - nocnapomoc.sk

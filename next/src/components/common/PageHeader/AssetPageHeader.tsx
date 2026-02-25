@@ -5,7 +5,7 @@ import { Fragment } from 'react'
 import { DocumentIcon, DownloadIcon } from '@/src/assets/icons'
 import { FolderIcon } from '@/src/assets/material-icons'
 import Button from '@/src/components/common/Button/Button'
-import { DocumentEntityFragment } from '@/src/services/graphql'
+import { AssetEntityFragment } from '@/src/services/graphql'
 import cn from '@/src/utils/cn'
 import { formatDate } from '@/src/utils/formatDate'
 import { formatFileExtension } from '@/src/utils/formatFileExtension'
@@ -13,18 +13,18 @@ import { formatFileSize } from '@/src/utils/formatFileSize'
 import { isDefined } from '@/src/utils/isDefined'
 
 type Props = {
-  document: DocumentEntityFragment
+  asset: AssetEntityFragment
 }
 
 /**
  * Figma OLO: https://www.figma.com/design/2qF09hDT9QNcpdztVMNAY4/OLO-Web?node-id=1946-18524&m=dev
  */
 
-const DocumentPageHeader = ({ document }: Props) => {
+const AssetPageHeader = ({ asset }: Props) => {
   const { t, i18n } = useTranslation()
   const locale = i18n.language
 
-  const { title, files, updatedAt } = document
+  const { title, files, updatedAt } = asset
 
   const filteredFiles = files.filter(isDefined) ?? []
 
@@ -37,10 +37,7 @@ const DocumentPageHeader = ({ document }: Props) => {
   const metadata = (
     isSingleFile
       ? [formattedUpdatedAt, fileExtensionString, fileSizeString]
-      : [
-          formattedUpdatedAt,
-          t('DocumentPageContent.numberOfFiles', { count: filteredFiles.length }),
-        ]
+      : [formattedUpdatedAt, t('AssetPageContent.numberOfFiles', { count: filteredFiles.length })]
   ).filter(isDefined)
 
   return (
@@ -82,7 +79,7 @@ const DocumentPageHeader = ({ document }: Props) => {
                     size: fileSizeString,
                   })}
                 >
-                  {t('DocumentPageContent.downloadButtonLabel')}
+                  {t('AssetPageContent.downloadButtonLabel')}
                 </Button>
               ) : null}
             </div>
@@ -93,4 +90,4 @@ const DocumentPageHeader = ({ document }: Props) => {
   )
 }
 
-export default DocumentPageHeader
+export default AssetPageHeader

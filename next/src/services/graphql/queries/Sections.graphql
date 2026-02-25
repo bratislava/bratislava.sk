@@ -398,16 +398,6 @@ fragment PartnersSection on ComponentSectionsPartners {
   titleLevelPartnersSection: titleLevel
 }
 
-fragment DocumentsSection on ComponentSectionsDocuments {
-  title
-  text
-  documents(pagination: { limit: -1 }) {
-    ...DocumentEntity
-  }
-  showAll
-  titleLevelDocumentsSection: titleLevel
-}
-
 fragment AssetsSection on ComponentSectionsAssets {
   title
   text
@@ -500,6 +490,8 @@ fragment NewsletterSection on ComponentSectionsNewsletter {
   socialLinksTitle
   facebookUrl
   instagramUrl
+  linkedinUrl
+  youtubeUrl
 }
 
 fragment ColumnsListItem on ComponentBlocksColumnsListItem {
@@ -644,10 +636,6 @@ fragment Sections on PageSectionsDynamicZone {
 
   ... on ComponentSectionsPartners {
     ...PartnersSection
-  }
-
-  ... on ComponentSectionsDocuments {
-    ...DocumentsSection
   }
 
   ... on ComponentSectionsAssets {

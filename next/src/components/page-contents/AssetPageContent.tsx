@@ -6,10 +6,10 @@ import { Fragment, useMemo } from 'react'
 import FileRowCard from '@/src/components/cards/FileRowCard'
 import Breadcrumbs, { Breadcrumb } from '@/src/components/common/Breadcrumbs/Breadcrumbs'
 import HorizontalDivider from '@/src/components/common/Divider/HorizontalDivider'
-import DocumentPageHeader from '@/src/components/common/PageHeader/DocumentPageHeader'
+import AssetPageHeader from '@/src/components/common/PageHeader/AssetPageHeader'
 import SectionContainer from '@/src/components/layouts/SectionContainer'
 import { useGeneralContext } from '@/src/components/providers/GeneralContextProvider'
-import { DocumentEntityFragment } from '@/src/services/graphql'
+import { AssetEntityFragment } from '@/src/services/graphql'
 import { formatDate } from '@/src/utils/formatDate'
 import { formatFileExtension } from '@/src/utils/formatFileExtension'
 import { formatFileSize } from '@/src/utils/formatFileSize'
@@ -17,13 +17,13 @@ import { isDefined } from '@/src/utils/isDefined'
 import { getPageBreadcrumbs } from '@/src/utils/pageUtils_Deprecated'
 
 type Props = {
-  document: DocumentEntityFragment
+  asset: AssetEntityFragment
 }
 
 /**
  * Figma OLO: https://www.figma.com/design/2qF09hDT9QNcpdztVMNAY4/OLO-Web?node-id=1748-28960&t=U7rn1Il95Xd9GkCS-0
  */
-const DocumentPageContent = ({ document }: Props) => {
+const AssetPageContent = ({ asset }: Props) => {
   const { t, i18n } = useTranslation()
 
   const { general } = useGeneralContext()
@@ -32,23 +32,23 @@ const DocumentPageContent = ({ document }: Props) => {
   const breadcrumbs = useMemo(() => {
     return [
       ...(documentsPage ? getPageBreadcrumbs(documentsPage) : []),
-      { title: document.title ?? '', path: null } as Breadcrumb,
+      { title: asset.title ?? '', path: null } as Breadcrumb,
     ]
-  }, [document.title, documentsPage])
+  }, [asset.title, documentsPage])
 
-  const { description, files, documentCategory, publishedAt, updatedAt } = document
+  const { description, files, assetCategory, publishedAt, updatedAt } = asset
 
   const detailItems = [
     {
-      label: t('DocumentPageContent.documentCategory'),
-      value: documentCategory?.title,
+      label: t('AssetPageContent.assetCategory'),
+      value: assetCategory?.title,
     },
     {
-      label: t('DocumentPageContent.publishedAt'),
+      label: t('AssetPageContent.publishedAt'),
       value: formatDate(publishedAt),
     },
     {
-      label: t('DocumentPageContent.updatedAt'),
+      label: t('AssetPageContent.updatedAt'),
       value: formatDate(updatedAt),
     },
   ].filter((item) => !!item.value)
@@ -63,7 +63,7 @@ const DocumentPageContent = ({ document }: Props) => {
         </SectionContainer>
       </div>
 
-      <DocumentPageHeader document={document} />
+      <AssetPageHeader asset={asset} />
 
       <SectionContainer className="py-6 lg:py-12">
         <div className="flex max-w-200 flex-col gap-4 lg:gap-8">
@@ -88,7 +88,7 @@ const DocumentPageContent = ({ document }: Props) => {
           ) : null}
           <div className="flex flex-col gap-8 lg:gap-10">
             <div className="flex flex-col gap-4">
-              <Typography variant="h2">{t('DocumentPageContent.detailsTitle')}</Typography>
+              <Typography variant="h2">{t('AssetPageContent.detailsTitle')}</Typography>
               <div className="flex flex-col gap-4">
                 {detailItems.map(({ label, value }, index) => (
                   <div className="flex flex-col flex-wrap sm:flex-row sm:gap-x-6" key={index}>
@@ -102,7 +102,7 @@ const DocumentPageContent = ({ document }: Props) => {
               <>
                 <HorizontalDivider />
                 <div className="flex flex-col gap-4">
-                  <Typography variant="h2">{t('DocumentPageContent.descriptionTitle')}</Typography>
+                  <Typography variant="h2">{t('AssetPageContent.descriptionTitle')}</Typography>
                   <Typography>{description}</Typography>
                 </div>
               </>
@@ -114,4 +114,4 @@ const DocumentPageContent = ({ document }: Props) => {
   )
 }
 
-export default DocumentPageContent
+export default AssetPageContent

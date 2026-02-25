@@ -19,13 +19,15 @@
     "ts:generate-types": "strapi ts:generate-types"
   },
   "dependencies": {
+    "@strapi/admin": "5.18.1",
     "@strapi/plugin-graphql": "5.18.1",
     "@strapi/plugin-users-permissions": "5.18.1",
-    "@strapi/provider-email-mailgun": "5.18.",
+    "@strapi/provider-email-mailgun": "5.18.1",
     "@strapi/provider-upload-aws-s3": "5.18.1",
     "@strapi/strapi": "5.18.1",
+    "@strapi/typescript-utils": "5.18.1",
     "patch-package": "^7.0.2",
-    "pg": "8.11.6",
+    "pg": "^8.18.0",
     "postinstall-postinstall": "^2.1.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
@@ -35,10 +37,10 @@
     "styled-components": "^6.0.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.21.0",
-    "@babel/eslint-parser": "^7.19.1",
-    "eslint": "^8.36.0",
-    "eslint-config-prettier": "^8.6.0",
+    "@babel/core": "^7.26.0",
+    "@babel/eslint-parser": "^7.26.0",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^8.10.0",
     "eslint-scope": "^7.1.1"
   },
   "engines": {

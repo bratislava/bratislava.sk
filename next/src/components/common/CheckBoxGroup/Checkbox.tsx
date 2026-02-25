@@ -5,7 +5,7 @@ import cn from '@/src/utils/cn'
 
 /**
  * Figma: https://www.figma.com/design/17wbd0MDQcMW9NbXl6UPs8/DS--Component-library?node-id=16717-20069&t=nFl2Kvs9pZLewXiT-4
- * Based on RAC library: https://react-spectrum.adobe.com/react-aria/Checkbox.html
+ * Based on RAC library: https://react-aria.adobe.com/Checkbox
  */
 
 const Checkbox = ({ children, value, ...restProps }: RACCheckboxProps) => {

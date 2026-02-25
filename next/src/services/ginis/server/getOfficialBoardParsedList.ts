@@ -8,8 +8,9 @@ export const getOfficialBoardParsedList = async (options: {
   searchQuery?: string
   publicationState?: string
   categoryId?: string
+  publicationYear?: string
 }) => {
-  const { searchQuery, publicationState, categoryId } = options
+  const { searchQuery, publicationState, categoryId, publicationYear } = options
 
   let documents: UdeSeznamDokumentuSeznamDokumentuItem[] = []
 
@@ -19,6 +20,17 @@ export const getOfficialBoardParsedList = async (options: {
   // Stav?: 'vyveseno' | 'sejmuto'
   const publicationStateSanitized =
     publicationState === 'vyveseno' || publicationState === 'sejmuto' ? publicationState : undefined
+
+  const publicationDayFrom = publicationYear
+    ? publicationYear === 'all'
+      ? `2018-01-01`
+      : `${publicationYear}-01-01`
+    : undefined
+  const publicationDayTo = publicationYear
+    ? publicationYear === 'all'
+      ? `${new Date().getFullYear().toString()}-12-31`
+      : `${publicationYear}-12-31`
+    : undefined
 
   try {
     /**
@@ -31,6 +43,8 @@ export const getOfficialBoardParsedList = async (options: {
         Stav: publicationStateSanitized,
         'Id-kategorie': categoryId,
         Nazev: searchQueryTrimmed,
+        'Vyveseno-od': publicationDayFrom,
+        'Vyveseno-od-horni-mez': publicationDayTo,
       })
       documents = response['Seznam-dokumentu']
     } else {
@@ -38,6 +52,8 @@ export const getOfficialBoardParsedList = async (options: {
         Stav: publicationStateSanitized,
         'Id-kategorie': categoryId,
         Nazev: searchQueryTrimmed,
+        'Vyveseno-od': publicationDayFrom,
+        'Vyveseno-od-horni-mez': publicationDayTo,
       })
       documents = response['Seznam-dokumentu']
     }

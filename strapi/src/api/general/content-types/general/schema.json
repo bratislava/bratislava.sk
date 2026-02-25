@@ -17,15 +17,14 @@
   },
   "attributes": {
     "header": {
-      "displayName": "header",
       "type": "component",
-      "repeatable": false,
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "component": "general.header"
+      "component": "general.header",
+      "repeatable": false
     },
     "privacyPolicyPage": {
       "type": "relation",
@@ -58,6 +57,11 @@
       "target": "api::page.page"
     },
     "documentsPage": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::page.page"
+    },
+    "assetsPage": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::page.page"

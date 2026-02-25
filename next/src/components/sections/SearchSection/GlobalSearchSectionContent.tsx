@@ -24,7 +24,15 @@ import { isProductionDeployment } from '@/src/utils/utils'
  */
 
 export type SearchOption = {
-  id: 'allResults' | 'pages' | 'articles' | 'documents' | 'regulations' | 'users' | 'officialBoard'
+  id:
+    | 'allResults'
+    | 'pages'
+    | 'articles'
+    | 'assets'
+    | 'documents'
+    | 'regulations'
+    | 'users'
+    | 'officialBoard'
   displayName?: string
   displayNamePlural: string
 }
@@ -40,7 +48,7 @@ type Props =
     }
 
 /**
- * TODO Figma link
+ *  Figma: https://www.figma.com/design/A9aoQH2FGhR1D14wvvk6FW/Mestsk%C3%BD-web--bratislava.sk-?node-id=1237-7336&t=WoqUgZ518uqgeCxG-4
  */
 
 const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
@@ -76,6 +84,16 @@ const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
       displayName: t('SearchPage.article'),
       displayNamePlural: t('SearchPage.articles'),
     },
+    // Show Assets in global search only if not in prod - TODO remove when ready to use according to OSO
+    ...(isProductionDeployment() && variant === 'general'
+      ? []
+      : [
+          {
+            id: 'assets' as const,
+            displayName: `${t('SearchPage.document')} (Asset)`,
+            displayNamePlural: `${t('SearchPage.documents')} (Assets)`,
+          },
+        ]),
     // Show Documents in global search only if not in prod - TODO remove when ready to use according to OSO
     ...(isProductionDeployment() && variant === 'general'
       ? []
@@ -126,14 +144,13 @@ const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
 
   const [currentPage, setCurrentPage] = useState(1)
 
-  useEffect(() => {
-    setCurrentPage(1)
-  }, [searchValue, selection])
-
   /* OfficialBoard specific filters state */
   const [categoryId, setCategoryId] = useState<string | null>(null)
   const [publicationState, setPublicationState] = useState<OfficialBoardPublicationState>(
     officialBoardListDefaultFilters.publicationState,
+  )
+  const [publicationYear, setPublicationYear] = useState<string | null>(
+    officialBoardListDefaultFilters.publicationYear,
   )
 
   const [resultsCount, setResultsCount] = useState(
@@ -186,7 +203,18 @@ const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
     // Official board category id
     categoryId: !categoryId || categoryId === 'all' ? undefined : categoryId,
     publicationState: publicationState ?? undefined,
+    publicationYear: publicationYear ?? undefined,
   }
+
+  useEffect(() => {
+    setCurrentPage(1)
+  }, [
+    searchValue,
+    selection,
+    searchFilters.categoryId,
+    searchFilters.publicationState,
+    searchFilters.publicationYear,
+  ])
 
   const searchRef = useRef<null | HTMLInputElement>(null)
 
@@ -245,6 +273,8 @@ const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
                 setCategoryId={setCategoryId}
                 publicationState={publicationState}
                 setPublicationState={setPublicationState}
+                publicationYear={publicationYear}
+                setPublicationYear={setPublicationYear}
               />
             </div>
           </div>

@@ -139,6 +139,21 @@
           "sortable": true
         }
       },
+      "assetsPage": {
+        "edit": {
+          "label": "assetsPage",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "title"
+        },
+        "list": {
+          "label": "assetsPage",
+          "searchable": true,
+          "sortable": true
+        }
+      },
       "createdAt": {
         "edit": {
           "label": "createdAt",
@@ -253,6 +268,10 @@
         [
           {
             "name": "privacyPolicyPage",
+            "size": 6
+          },
+          {
+            "name": "assetsPage",
             "size": 6
           }
         ]

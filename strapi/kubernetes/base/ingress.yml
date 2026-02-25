@@ -9,6 +9,7 @@ metadata:
     cert-manager.io/cluster-issuer: cloudflare-dns01
     cert-manager.io/issue-temporary-certificate: 'true'
 spec:
+  ingressClassName: nginx
   tls:
     - hosts:
         - ${BRATISKA_HOSTNAME}

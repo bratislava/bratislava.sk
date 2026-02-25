@@ -540,7 +540,7 @@ export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
 export interface ApiAssetCategoryAssetCategory extends Struct.CollectionTypeSchema {
   collectionName: 'asset_categories'
   info: {
-    displayName: 'Asset category'
+    displayName: 'Dokumenty - kateg\u00F3rie'
     pluralName: 'asset-categories'
     singularName: 'asset-category'
   }
@@ -565,7 +565,7 @@ export interface ApiAssetCategoryAssetCategory extends Struct.CollectionTypeSche
 export interface ApiAssetAsset extends Struct.CollectionTypeSchema {
   collectionName: 'assets'
   info: {
-    displayName: 'Asset'
+    displayName: 'Dokumenty'
     pluralName: 'assets'
     singularName: 'asset'
   }
@@ -577,6 +577,8 @@ export interface ApiAssetAsset extends Struct.CollectionTypeSchema {
     assetCategory: Schema.Attribute.Relation<'manyToOne', 'api::asset-category.asset-category'>
     createdAt: Schema.Attribute.DateTime
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> & Schema.Attribute.Private
+    customMetadata: Schema.Attribute.JSON
+    customPublishedAt: Schema.Attribute.DateTime
     description: Schema.Attribute.Text
     files: Schema.Attribute.Media<'images' | 'files', true> & Schema.Attribute.Required
     locale: Schema.Attribute.String & Schema.Attribute.Private
@@ -594,7 +596,7 @@ export interface ApiDocumentCategoryDocumentCategory extends Struct.CollectionTy
   collectionName: 'document_categories'
   info: {
     description: ''
-    displayName: 'Dokumenty - kateg\u00F3rie'
+    displayName: 'Dokumenty (OLD) - kateg\u00F3rie'
     pluralName: 'document-categories'
     singularName: 'document-category'
   }
@@ -623,7 +625,7 @@ export interface ApiDocumentDocument extends Struct.CollectionTypeSchema {
   collectionName: 'documents'
   info: {
     description: ''
-    displayName: 'Dokumenty'
+    displayName: 'Dokumenty (OLD)'
     pluralName: 'documents'
     singularName: 'document'
   }
@@ -831,6 +833,7 @@ export interface ApiGeneralGeneral extends Struct.SingleTypeSchema {
     }
   }
   attributes: {
+    assetsPage: Schema.Attribute.Relation<'oneToOne', 'api::page.page'>
     createdAt: Schema.Attribute.DateTime
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> & Schema.Attribute.Private
     documentsPage: Schema.Attribute.Relation<'oneToOne', 'api::page.page'>
@@ -1322,7 +1325,6 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
         'sections.articles',
         'sections.articles-landing-page',
         'sections.divider',
-        'sections.documents',
         'sections.assets',
         'sections.faqs',
         'sections.faq-categories',
