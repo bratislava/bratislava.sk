@@ -14,7 +14,7 @@ const DisclosureShowcase = () => {
     <Wrapper direction="column" title="Disclosure">
       <Disclosure className="rounded-xl border border-border-active-default bg-background-passive-base py-2">
         <DisclosureHeader className="p-4 lg:px-6">
-          <Badge label="Badge" backgroundColor={'#FFDCC3'} />
+          <Badge label="Badge" />
           <Typography variant="h5" as="h3" className="text-left">
             Single Disclosure
           </Typography>
@@ -31,7 +31,7 @@ const DisclosureShowcase = () => {
       >
         <Disclosure id="disclosure1">
           <DisclosureHeader className="p-4 lg:px-6">
-            <Badge label="Badge" backgroundColor={'#FFDCC3'} />
+            <Badge label="Badge" />
             <Typography variant="h5" as="h3" className="text-left">
               Disclosure Header 1
             </Typography>
@@ -44,7 +44,7 @@ const DisclosureShowcase = () => {
         <HorizontalDivider aria-hidden className="mx-4 lg:mx-6" />
         <Disclosure id="disclosure2">
           <DisclosureHeader className="p-4 lg:px-6">
-            <Badge label="Badge" backgroundColor={'#FFDCC3'} />
+            <Badge label="Badge" />
             <Typography variant="h5" as="h3" className="text-left">
               Disclosure Header 2
             </Typography>

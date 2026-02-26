@@ -38,87 +38,75 @@ const AccordionSection = ({ section }: AccordionSectionProps) => {
       {/* TODO Correct spacing between SectionHeader and remaining content */}
       <div className="flex flex-col gap-6 lg:gap-8">
         <SectionHeader title={title} titleLevel={titleLevel} />
-        <div className="flex flex-col gap-4">
-          {flatText!.length > 0 && (
-            // TODO: bud parametrizovat varianty alebo vybrat paddingy a border von a vkladat ho dnu cez classname
-            // TODO: remove DisclosureGroup z FAQ
-            // TODO: pridat aj do breadcrums
-            <DisclosureGroup
-              allowsMultipleExpanded
-              className="rounded-xl border border-border-active-default bg-background-passive-base py-2"
-            >
-              {/* TODO: remove groupByCategory */}
-              {groupByCategory(flatText?.filter(isPresent) ?? []).map((text, index) => (
-                <div key={`disclosure-group-${index}`}>
-                  {text.items.filter(isPresent).map((item) => (
-                    <Fragment key={`disclosure-${text.category}-${index}`}>
-                      {index > 0 ? (
-                        <HorizontalDivider aria-hidden className="mx-4 lg:mx-6" />
-                      ) : null}
+        {flatText!.length > 0 && (
+          <DisclosureGroup
+            allowsMultipleExpanded
+            className="rounded-xl border border-border-active-default bg-background-passive-base py-2"
+          >
+            {flatText?.filter(isPresent).map((item, index) => (
+              <Fragment key={`disclosure-${item.category}-${index}`}>
+                {index > 0 ? <HorizontalDivider aria-hidden className="mx-4 lg:mx-6" /> : null}
 
-                      <Disclosure id={`disclosure-${text.category}-${index}`}>
-                        <DisclosureHeader className="p-4 lg:px-6">
-                          <Typography variant="h5" as={disclosureTitleLevel}>
-                            {item?.category}
-                          </Typography>
-                        </DisclosureHeader>
-                        <DisclosurePanel className="px-4 lg:px-6">
-                          <Markdown content={item.content} variant="accordion" />
+                <Disclosure id={`disclosure-${item.category}-${index}`}>
+                  <DisclosureHeader className="p-4 lg:px-6">
+                    <Typography variant="h5" as={disclosureTitleLevel}>
+                      {item?.category}
+                    </Typography>
+                  </DisclosureHeader>
+                  <DisclosurePanel className="px-4 lg:px-6">
+                    <Markdown content={item.content} variant="accordion" />
 
-                          {item.fileList?.filter(isDefined).length ? (
-                            <FileList files={item.fileList.filter(isDefined) ?? []} />
-                          ) : null}
-                          {item.moreLinkUrl || item.moreLinkPage ? (
-                            <Button
-                              variant="link"
-                              {...getLinkProps({
-                                label: item.moreLinkTitle,
-                                url: item.moreLinkUrl,
-                                page: item.moreLinkPage,
-                              })}
-                            />
-                          ) : null}
-                        </DisclosurePanel>
-                      </Disclosure>
-                    </Fragment>
+                    {item.fileList?.filter(isDefined).length ? (
+                      <FileList files={item.fileList.filter(isDefined) ?? []} />
+                    ) : null}
+                    {item.moreLinkUrl || item.moreLinkPage ? (
+                      <Button
+                        variant="link"
+                        {...getLinkProps({
+                          label: item.moreLinkTitle,
+                          url: item.moreLinkUrl,
+                          page: item.moreLinkPage,
+                        })}
+                      />
+                    ) : null}
+                  </DisclosurePanel>
+                </Disclosure>
+              </Fragment>
+            ))}
+          </DisclosureGroup>
+        )}
+
+        {groupByCategory(institutions?.filter(isPresent) ?? []).map((institution, index) => (
+          <DisclosureGroup
+            allowsMultipleExpanded
+            key={`disclosure-${institution.category}-${index}`}
+            className="rounded-xl border border-border-active-default bg-background-passive-base py-2"
+          >
+            <Disclosure id={`disclosure-${institution.category}-${index}`}>
+              <DisclosureHeader className="p-4 lg:px-6">
+                <Typography variant="h5" as={disclosureTitleLevel}>
+                  {institution?.category}
+                </Typography>
+              </DisclosureHeader>
+              <DisclosurePanel className="px-4 lg:px-6">
+                <div className="flex flex-col gap-4">
+                  {institution.items.filter(isPresent).map((file, itemIndex) => (
+                    <Institution
+                      key={itemIndex}
+                      title={file.title ?? undefined}
+                      subtitle={file.subtitle ?? undefined}
+                      content={[file.firstColumn, file.secondColumn, file.thirdColumn]
+                        .filter(Boolean)
+                        .filter(isDefined)}
+                      url={file.url ?? undefined}
+                      urlLabel={file.urlLabel ?? undefined}
+                    />
                   ))}
                 </div>
-              ))}
-            </DisclosureGroup>
-          )}
-
-          {groupByCategory(institutions?.filter(isPresent) ?? []).map((institution, index) => (
-            <DisclosureGroup
-              allowsMultipleExpanded
-              key={`disclosure-${institution.category}-${index}`}
-              className="rounded-xl border border-border-active-default bg-background-passive-base py-2"
-            >
-              <Disclosure id={`disclosure-${institution.category}-${index}`}>
-                <DisclosureHeader className="p-4 lg:px-6">
-                  <Typography variant="h5" as={disclosureTitleLevel}>
-                    {institution?.category}
-                  </Typography>
-                </DisclosureHeader>
-                <DisclosurePanel className="px-4 lg:px-6">
-                  <div className="flex flex-col gap-4">
-                    {institution.items.filter(isPresent).map((file, itemIndex) => (
-                      <Institution
-                        key={itemIndex}
-                        title={file.title ?? undefined}
-                        subtitle={file.subtitle ?? undefined}
-                        content={[file.firstColumn, file.secondColumn, file.thirdColumn]
-                          .filter(Boolean)
-                          .filter(isDefined)}
-                        url={file.url ?? undefined}
-                        urlLabel={file.urlLabel ?? undefined}
-                      />
-                    ))}
-                  </div>
-                </DisclosurePanel>
-              </Disclosure>
-            </DisclosureGroup>
-          ))}
-        </div>
+              </DisclosurePanel>
+            </Disclosure>
+          </DisclosureGroup>
+        ))}
       </div>
     </SectionContainer>
   )
