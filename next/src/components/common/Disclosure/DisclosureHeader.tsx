@@ -25,7 +25,7 @@ const DisclosureHeader = ({ children, ...props }: DisclosureHeaderProps) => {
       <Button
         slot="trigger"
         variant="unstyled"
-        className={cn('w-full p-4 text-left ring-inset lg:px-6', props.className)}
+        className={cn('w-full text-left ring-inset', props.className)}
       >
         <div className="flex w-full justify-between">
           <div className="flex flex-col gap-2">{children}</div>

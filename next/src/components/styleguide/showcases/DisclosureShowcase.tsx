@@ -12,28 +12,44 @@ import Wrapper from '@/src/components/styleguide/Wrapper'
 const DisclosureShowcase = () => {
   return (
     <Wrapper direction="column" title="Disclosure">
-      <DisclosureGroup allowsMultipleExpanded={false}>
+      <Disclosure className="rounded-xl border border-border-active-default bg-background-passive-base py-2">
+        <DisclosureHeader className="p-4 lg:px-6">
+          <Badge label="Badge" backgroundColor={'#FFDCC3'} />
+          <Typography variant="h5" as="h3" className="text-left">
+            Single Disclosure
+          </Typography>
+        </DisclosureHeader>
+        <DisclosurePanel className="px-4 lg:px-6">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+          ut labore et dolore magna aliqua.
+        </DisclosurePanel>
+      </Disclosure>
+
+      <DisclosureGroup
+        allowsMultipleExpanded={false}
+        className="rounded-xl border border-border-active-default bg-background-passive-base py-2"
+      >
         <Disclosure id="disclosure1">
-          <DisclosureHeader>
+          <DisclosureHeader className="p-4 lg:px-6">
             <Badge label="Badge" backgroundColor={'#FFDCC3'} />
             <Typography variant="h5" as="h3" className="text-left">
               Disclosure Header 1
             </Typography>
           </DisclosureHeader>
-          <DisclosurePanel>
+          <DisclosurePanel className="px-4 lg:px-6">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
             incididunt ut labore et dolore magna aliqua.
           </DisclosurePanel>
         </Disclosure>
         <HorizontalDivider aria-hidden className="mx-4 lg:mx-6" />
         <Disclosure id="disclosure2">
-          <DisclosureHeader>
+          <DisclosureHeader className="p-4 lg:px-6">
             <Badge label="Badge" backgroundColor={'#FFDCC3'} />
             <Typography variant="h5" as="h3" className="text-left">
               Disclosure Header 2
             </Typography>
           </DisclosureHeader>
-          <DisclosurePanel>
+          <DisclosurePanel className="px-4 lg:px-6">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
             incididunt ut labore et dolore magna aliqua.
           </DisclosurePanel>

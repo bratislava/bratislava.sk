@@ -19,7 +19,6 @@ const DisclosurePanel = ({ children, ...props }: DisclosurePanelProps) => {
     <RACDisclosurePanel
       {...props}
       className={cn(
-        'px-4 lg:px-6',
         // animation
         'h-(--disclosure-panel-height) overflow-clip motion-safe:transition-[height]',
         props.className,

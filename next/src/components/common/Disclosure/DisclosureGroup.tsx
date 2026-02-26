@@ -4,8 +4,6 @@ import {
   DisclosureGroupProps as RACDisclosureGroupProps,
 } from 'react-aria-components'
 
-import cn from '@/src/utils/cn'
-
 interface DisclosureGroupProps extends RACDisclosureGroupProps {
   children: React.ReactNode
 }
@@ -16,13 +14,7 @@ interface DisclosureGroupProps extends RACDisclosureGroupProps {
 
 const DisclosureGroup = ({ children, ...props }: DisclosureGroupProps) => {
   return (
-    <RACDisclosureGroup
-      className={cn(
-        'rounded-xl border border-border-active-default bg-background-passive-base py-2',
-        props.className,
-      )}
-      {...props}
-    >
+    <RACDisclosureGroup className={props.className} {...props}>
       {children}
     </RACDisclosureGroup>
   )

@@ -40,45 +40,50 @@ const AccordionSection = ({ section }: AccordionSectionProps) => {
         <SectionHeader title={title} titleLevel={titleLevel} />
         <div className="flex flex-col gap-4">
           {flatText!.length > 0 && (
-            <DisclosureGroup allowsMultipleExpanded>
-              <ul>
-                {groupByCategory(flatText?.filter(isPresent) ?? []).map((text, index) => (
-                  <li key={`disclosure-group-${index}`}>
-                    {text.items.filter(isPresent).map((item) => (
-                      <Fragment key={`disclosure-${text.category}-${index}`}>
-                        {index > 0 ? (
-                          <HorizontalDivider aria-hidden className="mx-4 lg:mx-6" />
-                        ) : null}
+            // TODO: bud parametrizovat varianty alebo vybrat paddingy a border von a vkladat ho dnu cez classname
+            // TODO: remove DisclosureGroup z FAQ
+            // TODO: pridat aj do breadcrums
+            <DisclosureGroup
+              allowsMultipleExpanded
+              className="rounded-xl border border-border-active-default bg-background-passive-base py-2"
+            >
+              {/* TODO: remove groupByCategory */}
+              {groupByCategory(flatText?.filter(isPresent) ?? []).map((text, index) => (
+                <div key={`disclosure-group-${index}`}>
+                  {text.items.filter(isPresent).map((item) => (
+                    <Fragment key={`disclosure-${text.category}-${index}`}>
+                      {index > 0 ? (
+                        <HorizontalDivider aria-hidden className="mx-4 lg:mx-6" />
+                      ) : null}
 
-                        <Disclosure id={`disclosure-${text.category}-${index}`}>
-                          <DisclosureHeader>
-                            <Typography variant="h5" as={disclosureTitleLevel}>
-                              {item?.category}
-                            </Typography>
-                          </DisclosureHeader>
-                          <DisclosurePanel>
-                            <Markdown content={item.content} variant="accordion" />
+                      <Disclosure id={`disclosure-${text.category}-${index}`}>
+                        <DisclosureHeader className="p-4 lg:px-6">
+                          <Typography variant="h5" as={disclosureTitleLevel}>
+                            {item?.category}
+                          </Typography>
+                        </DisclosureHeader>
+                        <DisclosurePanel className="px-4 lg:px-6">
+                          <Markdown content={item.content} variant="accordion" />
 
-                            {item.fileList?.filter(isDefined).length ? (
-                              <FileList files={item.fileList.filter(isDefined) ?? []} />
-                            ) : null}
-                            {item.moreLinkUrl || item.moreLinkPage ? (
-                              <Button
-                                variant="link"
-                                {...getLinkProps({
-                                  label: item.moreLinkTitle,
-                                  url: item.moreLinkUrl,
-                                  page: item.moreLinkPage,
-                                })}
-                              />
-                            ) : null}
-                          </DisclosurePanel>
-                        </Disclosure>
-                      </Fragment>
-                    ))}
-                  </li>
-                ))}
-              </ul>
+                          {item.fileList?.filter(isDefined).length ? (
+                            <FileList files={item.fileList.filter(isDefined) ?? []} />
+                          ) : null}
+                          {item.moreLinkUrl || item.moreLinkPage ? (
+                            <Button
+                              variant="link"
+                              {...getLinkProps({
+                                label: item.moreLinkTitle,
+                                url: item.moreLinkUrl,
+                                page: item.moreLinkPage,
+                              })}
+                            />
+                          ) : null}
+                        </DisclosurePanel>
+                      </Disclosure>
+                    </Fragment>
+                  ))}
+                </div>
+              ))}
             </DisclosureGroup>
           )}
 
@@ -86,14 +91,15 @@ const AccordionSection = ({ section }: AccordionSectionProps) => {
             <DisclosureGroup
               allowsMultipleExpanded
               key={`disclosure-${institution.category}-${index}`}
+              className="rounded-xl border border-border-active-default bg-background-passive-base py-2"
             >
               <Disclosure id={`disclosure-${institution.category}-${index}`}>
-                <DisclosureHeader>
+                <DisclosureHeader className="p-4 lg:px-6">
                   <Typography variant="h5" as={disclosureTitleLevel}>
                     {institution?.category}
                   </Typography>
                 </DisclosureHeader>
-                <DisclosurePanel>
+                <DisclosurePanel className="px-4 lg:px-6">
                   <div className="flex flex-col gap-4">
                     {institution.items.filter(isPresent).map((file, itemIndex) => (
                       <Institution

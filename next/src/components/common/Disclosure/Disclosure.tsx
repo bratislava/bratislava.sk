@@ -4,8 +4,6 @@ import {
   DisclosureProps as RACDisclosureProps,
 } from 'react-aria-components'
 
-import cn from '@/src/utils/cn'
-
 interface DisclosureProps extends RACDisclosureProps {
   children: React.ReactNode
 }
@@ -16,7 +14,7 @@ interface DisclosureProps extends RACDisclosureProps {
 
 const Disclosure = ({ children, ...props }: DisclosureProps) => {
   return (
-    <RACDisclosure {...props} className={cn(props.className)}>
+    <RACDisclosure {...props} className={props.className}>
       {children}
     </RACDisclosure>
   )

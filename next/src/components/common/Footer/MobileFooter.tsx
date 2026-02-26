@@ -41,17 +41,17 @@ const MobileFooter = () => {
           <FooterContacts {...footer} />
         </div>
         <div>
-          <DisclosureGroup className="border-0">
+          <DisclosureGroup>
             {footer.columns?.filter(isDefined).map((column, index) => (
               <Fragment key={index}>
                 <HorizontalDivider />
                 <Disclosure>
-                  <DisclosureHeader className="px-0 py-6">
+                  <DisclosureHeader className="py-6">
                     <Typography variant="h4" as="h3">
                       {column.title}
                     </Typography>
                   </DisclosureHeader>
-                  <DisclosurePanel className="px-0">
+                  <DisclosurePanel>
                     <div className="flex flex-col gap-3">
                       <FooterColumnLinks {...column} />
                     </div>
