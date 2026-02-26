@@ -2,12 +2,10 @@ import { Typography } from '@bratislava/component-library'
 import React from 'react'
 
 import Badge from '@/src/components/common/Badge/Badge'
-import {
-  Disclosure,
-  DisclosureGroup,
-  DisclosureHeader,
-  DisclosurePanel,
-} from '@/src/components/common/Disclosure'
+import Disclosure from '@/src/components/common/Disclosure/Disclosure'
+import DisclosureGroup from '@/src/components/common/Disclosure/DisclosureGroup'
+import DisclosureHeader from '@/src/components/common/Disclosure/DisclosureHeader'
+import DisclosurePanel from '@/src/components/common/Disclosure/DisclosurePanel'
 import HorizontalDivider from '@/src/components/common/Divider/HorizontalDivider'
 import Wrapper from '@/src/components/styleguide/Wrapper'
 

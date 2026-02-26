@@ -2,12 +2,10 @@ import { Typography } from '@bratislava/component-library'
 import React, { Fragment } from 'react'
 
 import { EuFlagSvg } from '@/src/assets/images'
-import {
-  Disclosure,
-  DisclosureGroup,
-  DisclosureHeader,
-  DisclosurePanel,
-} from '@/src/components/common/Disclosure'
+import Disclosure from '@/src/components/common/Disclosure/Disclosure'
+import DisclosureGroup from '@/src/components/common/Disclosure/DisclosureGroup'
+import DisclosureHeader from '@/src/components/common/Disclosure/DisclosureHeader'
+import DisclosurePanel from '@/src/components/common/Disclosure/DisclosurePanel'
 import HorizontalDivider from '@/src/components/common/Divider/HorizontalDivider'
 import {
   FooterAccessibilityLink,

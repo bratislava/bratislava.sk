@@ -3,12 +3,10 @@ import { Fragment } from 'react'
 
 import { getCardTitleLevel } from '@/src/components/cards/getCardTitleLevel'
 import Button from '@/src/components/common/Button/Button'
-import {
-  Disclosure,
-  DisclosureGroup,
-  DisclosureHeader,
-  DisclosurePanel,
-} from '@/src/components/common/Disclosure'
+import Disclosure from '@/src/components/common/Disclosure/Disclosure'
+import DisclosureGroup from '@/src/components/common/Disclosure/DisclosureGroup'
+import DisclosureHeader from '@/src/components/common/Disclosure/DisclosureHeader'
+import DisclosurePanel from '@/src/components/common/Disclosure/DisclosurePanel'
 import HorizontalDivider from '@/src/components/common/Divider/HorizontalDivider'
 import FileList from '@/src/components/common/FileList/FileList'
 import Institution from '@/src/components/common/Institution_Deprecated/Institution_Deprecated'
@@ -47,12 +45,12 @@ const AccordionSection = ({ section }: AccordionSectionProps) => {
                 {groupByCategory(flatText?.filter(isPresent) ?? []).map((text, index) => (
                   <li key={`disclosure-group-${index}`}>
                     {text.items.filter(isPresent).map((item) => (
-                      <Fragment key={`disclosure-${title}-${index}`}>
+                      <Fragment key={`disclosure-${text.category}-${index}`}>
                         {index > 0 ? (
                           <HorizontalDivider aria-hidden className="mx-4 lg:mx-6" />
                         ) : null}
 
-                        <Disclosure id={`disclosure-${title}-${index}`}>
+                        <Disclosure id={`disclosure-${text.category}-${index}`}>
                           <DisclosureHeader>
                             <Typography variant="h5" as={disclosureTitleLevel}>
                               {item?.category}
@@ -85,8 +83,11 @@ const AccordionSection = ({ section }: AccordionSectionProps) => {
           )}
 
           {groupByCategory(institutions?.filter(isPresent) ?? []).map((institution, index) => (
-            <DisclosureGroup allowsMultipleExpanded key={`disclosure-${title}-${index}`}>
-              <Disclosure id={`disclosure-${title}-${index}`}>
+            <DisclosureGroup
+              allowsMultipleExpanded
+              key={`disclosure-${institution.category}-${index}`}
+            >
+              <Disclosure id={`disclosure-${institution.category}-${index}`}>
                 <DisclosureHeader>
                   <Typography variant="h5" as={disclosureTitleLevel}>
                     {institution?.category}
