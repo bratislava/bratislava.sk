@@ -5,8 +5,8 @@ import React, { Fragment, useEffect, useState } from 'react'
 import { getCardTitleLevel } from '@/src/components/cards/getCardTitleLevel'
 import JobOfferRowCard from '@/src/components/cards/JobOfferRowCard'
 import HorizontalDivider from '@/src/components/common/Divider/HorizontalDivider'
+import LoadingSpinner from '@/src/components/common/LoadingSpinner/LoadingSpinner'
 import PaginationWithInput from '@/src/components/common/Pagination/PaginationWithInput'
-import Spinner from '@/src/components/common/Spinner/Spinner'
 import SectionContainer from '@/src/components/layouts/SectionContainer'
 import SectionHeader from '@/src/components/layouts/SectionHeader'
 import { JobOffersSectionFragment } from '@/src/services/graphql'
@@ -56,7 +56,7 @@ const JobOffersSection = ({ section }: JobOffersSectionProps) => {
       <div className="flex w-full flex-col gap-6">
         <SectionHeader title={title} text={text} titleLevel={titleLevel} />
         {isPending ? (
-          <Spinner />
+          <LoadingSpinner />
         ) : isError ? (
           <div>{error.message}</div>
         ) : (
@@ -80,19 +80,21 @@ const JobOffersSection = ({ section }: JobOffersSectionProps) => {
                     )
                   })}
                 </ul>
-                <div className="self-center">
-                  <PaginationWithInput
-                    currentPage={pagination.currentPage}
-                    totalCount={
-                      pagination.totalItems > 0
-                        ? Math.ceil(pagination.totalItems / pagination.pageSize)
-                        : 1
-                    }
-                    onPageChange={(newPage) => {
-                      setPagination((prev) => ({ ...prev, currentPage: newPage }))
-                    }}
-                  />
-                </div>
+                {pagination.totalItems > pagination.pageSize && (
+                  <div className="self-center">
+                    <PaginationWithInput
+                      currentPage={pagination.currentPage}
+                      totalCount={
+                        pagination.totalItems > 0
+                          ? Math.ceil(pagination.totalItems / pagination.pageSize)
+                          : 1
+                      }
+                      onPageChange={(newPage) => {
+                        setPagination((prev) => ({ ...prev, currentPage: newPage }))
+                      }}
+                    />
+                  </div>
+                )}
               </>
             ) : (
               <Typography>{t('SearchPage.noResults')}</Typography>
