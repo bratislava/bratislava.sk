@@ -78,6 +78,13 @@ const nextConfig = {
         destination: '/spravy/:path*',
         permanent: true,
       },
+      // E-scooters reporting form redirect - it must remain functional, as it’s linked from QR codes and stickers on scooters
+      {
+        source: '/kolobezky',
+        destination:
+          'https://konto.bratislava.sk/mestske-sluzby/nahlasenie-podnetu-k-elektrickym-kolobezkam',
+        permanent: true,
+      },
       // Rearrange Camping in sitemap, rename from "camping" to "kemping" in slovak
       {
         source: '/vzdelavanie-a-volny-cas/camping/:path*',
