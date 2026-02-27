@@ -1,7 +1,11 @@
+import { Typography } from '@bratislava/component-library'
 import React, { Fragment } from 'react'
 
 import { EuFlagSvg } from '@/src/assets/images'
-import Accordion from '@/src/components/common/Accordion/Accordion'
+import Disclosure from '@/src/components/common/Disclosure/Disclosure'
+import DisclosureGroup from '@/src/components/common/Disclosure/DisclosureGroup'
+import DisclosureHeader from '@/src/components/common/Disclosure/DisclosureHeader'
+import DisclosurePanel from '@/src/components/common/Disclosure/DisclosurePanel'
 import HorizontalDivider from '@/src/components/common/Divider/HorizontalDivider'
 import {
   FooterAccessibilityLink,
@@ -37,17 +41,26 @@ const MobileFooter = () => {
           <FooterContacts {...footer} />
         </div>
         <div>
+          <DisclosureGroup>
+            {footer.columns?.filter(isDefined).map((column, index) => (
+              <Fragment key={index}>
+                <HorizontalDivider />
+                <Disclosure>
+                  <DisclosureHeader className="py-6">
+                    <Typography variant="h4" as="h3">
+                      {column.title}
+                    </Typography>
+                  </DisclosureHeader>
+                  <DisclosurePanel>
+                    <div className="flex flex-col gap-3">
+                      <FooterColumnLinks {...column} />
+                    </div>
+                  </DisclosurePanel>
+                </Disclosure>
+              </Fragment>
+            ))}
+          </DisclosureGroup>
           <HorizontalDivider />
-          {footer.columns?.filter(isDefined).map((column, index) => (
-            <Fragment key={index}>
-              <Accordion variant="footer" title={column.title}>
-                <div className="flex flex-col gap-3">
-                  <FooterColumnLinks {...column} />
-                </div>
-              </Accordion>
-              <HorizontalDivider />
-            </Fragment>
-          ))}
         </div>
         <div className="flex flex-row items-center justify-between">
           <div className="-my-2 flex gap-2">

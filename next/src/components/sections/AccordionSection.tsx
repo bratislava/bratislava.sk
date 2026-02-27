@@ -1,6 +1,13 @@
+import { Typography } from '@bratislava/component-library'
+import { Fragment } from 'react'
+
 import { getCardTitleLevel } from '@/src/components/cards/getCardTitleLevel'
-import Accordion from '@/src/components/common/Accordion/Accordion'
 import Button from '@/src/components/common/Button/Button'
+import Disclosure from '@/src/components/common/Disclosure/Disclosure'
+import DisclosureGroup from '@/src/components/common/Disclosure/DisclosureGroup'
+import DisclosureHeader from '@/src/components/common/Disclosure/DisclosureHeader'
+import DisclosurePanel from '@/src/components/common/Disclosure/DisclosurePanel'
+import HorizontalDivider from '@/src/components/common/Divider/HorizontalDivider'
 import FileList from '@/src/components/common/FileList/FileList'
 import Institution from '@/src/components/common/Institution_Deprecated/Institution_Deprecated'
 import Markdown from '@/src/components/formatting/Markdown/Markdown'
@@ -17,54 +24,38 @@ type AccordionSectionProps = {
 }
 
 /**
- * TODO Figma link
+ *  Figma: https://www.figma.com/design/17wbd0MDQcMW9NbXl6UPs8/DS--Component-library?node-id=16846-14458&t=J5qdpxyzlXhmMPVl-4
  */
 
 const AccordionSection = ({ section }: AccordionSectionProps) => {
   const { title, institutions, flatText, titleLevelAccordionSection: titleLevel } = section
 
   // If no section title is provided, accordions act as h2, otherwise they accommodate to section titleLevel
-  const accordionTitleLevel = title ? getCardTitleLevel(titleLevel) : 'h2'
+  const disclosureTitleLevel = title ? getCardTitleLevel(titleLevel) : 'h2'
 
   return (
     <SectionContainer>
       {/* TODO Correct spacing between SectionHeader and remaining content */}
       <div className="flex flex-col gap-6 lg:gap-8">
         <SectionHeader title={title} titleLevel={titleLevel} />
-        <div className="flex flex-col gap-4">
-          {groupByCategory(institutions?.filter(isPresent) ?? []).map((institution, index) => (
-            <Accordion
-              key={`institution-${index}`}
-              title={institution.category}
-              accordionTitleLevel={accordionTitleLevel}
-            >
-              <div className="flex flex-col gap-4">
-                {institution.items.filter(isPresent).map((file, itemIndex) => (
-                  <Institution
-                    key={itemIndex}
-                    title={file.title ?? undefined}
-                    subtitle={file.subtitle ?? undefined}
-                    content={[file.firstColumn, file.secondColumn, file.thirdColumn]
-                      .filter(Boolean)
-                      .filter(isDefined)}
-                    url={file.url ?? undefined}
-                    urlLabel={file.urlLabel ?? undefined}
-                  />
-                ))}
-              </div>
-            </Accordion>
-          ))}
+        {flatText!.length > 0 && (
+          <DisclosureGroup
+            allowsMultipleExpanded
+            className="rounded-xl border border-border-active-default bg-background-passive-base py-2"
+          >
+            {flatText?.filter(isPresent).map((item, index) => (
+              <Fragment key={`disclosure-${item.category}-${index}`}>
+                {index > 0 ? <HorizontalDivider aria-hidden className="mx-4 lg:mx-6" /> : null}
 
-          {groupByCategory(flatText?.filter(isPresent) ?? []).map((text, index) => (
-            <Accordion
-              key={`flatText-${index}`}
-              title={text.category}
-              accordionTitleLevel={accordionTitleLevel}
-            >
-              {text.items.filter(isPresent).map((item, itemIndex) => {
-                return (
-                  <div className="flex flex-col gap-4" key={itemIndex}>
+                <Disclosure id={`disclosure-${item.category}-${index}`}>
+                  <DisclosureHeader className="p-4 lg:px-6">
+                    <Typography variant="h5" as={disclosureTitleLevel}>
+                      {item?.category}
+                    </Typography>
+                  </DisclosureHeader>
+                  <DisclosurePanel className="px-4 lg:px-6">
                     <Markdown content={item.content} variant="accordion" />
+
                     {item.fileList?.filter(isDefined).length ? (
                       <FileList files={item.fileList.filter(isDefined) ?? []} />
                     ) : null}
@@ -78,12 +69,44 @@ const AccordionSection = ({ section }: AccordionSectionProps) => {
                         })}
                       />
                     ) : null}
-                  </div>
-                )
-              })}
-            </Accordion>
-          ))}
-        </div>
+                  </DisclosurePanel>
+                </Disclosure>
+              </Fragment>
+            ))}
+          </DisclosureGroup>
+        )}
+
+        {groupByCategory(institutions?.filter(isPresent) ?? []).map((institution, index) => (
+          <DisclosureGroup
+            allowsMultipleExpanded
+            key={`disclosure-${institution.category}-${index}`}
+            className="rounded-xl border border-border-active-default bg-background-passive-base py-2"
+          >
+            <Disclosure id={`disclosure-${institution.category}-${index}`}>
+              <DisclosureHeader className="p-4 lg:px-6">
+                <Typography variant="h5" as={disclosureTitleLevel}>
+                  {institution?.category}
+                </Typography>
+              </DisclosureHeader>
+              <DisclosurePanel className="px-4 lg:px-6">
+                <div className="flex flex-col gap-4">
+                  {institution.items.filter(isPresent).map((file, itemIndex) => (
+                    <Institution
+                      key={itemIndex}
+                      title={file.title ?? undefined}
+                      subtitle={file.subtitle ?? undefined}
+                      content={[file.firstColumn, file.secondColumn, file.thirdColumn]
+                        .filter(Boolean)
+                        .filter(isDefined)}
+                      url={file.url ?? undefined}
+                      urlLabel={file.urlLabel ?? undefined}
+                    />
+                  ))}
+                </div>
+              </DisclosurePanel>
+            </Disclosure>
+          </DisclosureGroup>
+        ))}
       </div>
     </SectionContainer>
   )
