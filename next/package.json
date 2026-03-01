@@ -97,7 +97,7 @@
     "prettier-plugin-tailwindcss": "^0.6.11",
     "sass": "^1.62.1",
     "sharp": "0.32.6",
-    "tailwindcss": "^4.1.7",
+    "tailwindcss": "^4.2.1",
     "ts-node": "^10.9.2",
     "tsconfig-paths": "^4.2.0",
     "typescript": "5.8.2"
