@@ -38,7 +38,7 @@
     "@react-stately/utils": "3.11.0",
     "@sindresorhus/slugify": "^2.2.1",
     "@tanstack/react-query": "5.71.1",
-    "axios": "1.13.5",
+    "axios": "1.13.6",
     "clsx": "2.1.1",
     "dotenv": "^17.2.1",
     "focus-trap-react": "^11.0.3",
