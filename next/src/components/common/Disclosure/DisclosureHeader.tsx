@@ -22,11 +22,7 @@ const DisclosureHeader = ({ children, ...props }: DisclosureHeaderProps) => {
 
   return (
     <RACHeading>
-      <Button
-        slot="trigger"
-        variant="unstyled"
-        className={cn('w-full text-left ring-inset', props.className)}
-      >
+      <Button slot="trigger" variant="unstyled" className={cn('w-full text-left', props.className)}>
         <div className="flex w-full justify-between">
           <div className="flex flex-col gap-2">{children}</div>
           <ChevronDownIcon

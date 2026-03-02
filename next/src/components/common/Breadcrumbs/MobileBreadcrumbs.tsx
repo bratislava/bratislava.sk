@@ -61,7 +61,9 @@ const MobileBreadcrumbs = ({ breadcrumbs }: BreadcrumbsProps) => {
       </div>
       {showDetails && (
         <Disclosure>
-          <DisclosureHeader className="absolute top-0 right-0 -mr-4 w-fit p-4"> </DisclosureHeader>
+          <DisclosureHeader className="absolute top-0 right-0 -mr-4 w-fit p-4 ring-inset">
+            {' '}
+          </DisclosureHeader>
           <DisclosurePanel>
             {showSubmenu && (
               <>

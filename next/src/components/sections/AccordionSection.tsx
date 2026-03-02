@@ -48,7 +48,7 @@ const AccordionSection = ({ section }: AccordionSectionProps) => {
                 {index > 0 ? <HorizontalDivider aria-hidden className="mx-4 lg:mx-6" /> : null}
 
                 <Disclosure id={`disclosure-${item.category}-${index}`}>
-                  <DisclosureHeader className="p-4 lg:px-6">
+                  <DisclosureHeader className="p-4 ring-inset lg:px-6">
                     <Typography variant="h5" as={disclosureTitleLevel}>
                       {item?.category}
                     </Typography>
@@ -83,7 +83,7 @@ const AccordionSection = ({ section }: AccordionSectionProps) => {
             className="rounded-xl border border-border-active-default bg-background-passive-base py-2"
           >
             <Disclosure id={`disclosure-${institution.category}-${index}`}>
-              <DisclosureHeader className="p-4 lg:px-6">
+              <DisclosureHeader className="p-4 ring-inset lg:px-6">
                 <Typography variant="h5" as={disclosureTitleLevel}>
                   {institution?.category}
                 </Typography>
