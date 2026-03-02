@@ -1,9 +1,12 @@
 import { Typography } from '@bratislava/component-library'
 import React from 'react'
-import { ArrowRightIcon, ChevronDownIcon, ChevronRightIcon } from 'src/assets/icons'
+import { ArrowRightIcon, ChevronRightIcon } from 'src/assets/icons'
 
 import type { BreadcrumbsProps } from '@/src/components/common/Breadcrumbs/Breadcrumbs'
 import Button from '@/src/components/common/Button/Button'
+import Disclosure from '@/src/components/common/Disclosure/Disclosure'
+import DisclosureHeader from '@/src/components/common/Disclosure/DisclosureHeader'
+import DisclosurePanel from '@/src/components/common/Disclosure/DisclosurePanel'
 import HorizontalDivider from '@/src/components/common/Divider/HorizontalDivider'
 import MLink from '@/src/components/common/MLink/MLink'
 import { useAdminGroupsContext } from '@/src/components/providers/AdminGroupsContextProvider'
@@ -56,13 +59,10 @@ const MobileBreadcrumbs = ({ breadcrumbs }: BreadcrumbsProps) => {
           )}
         </div>
       </div>
-      {/* TODO: Accordion height animation. */}
       {showDetails && (
-        <details className="group">
-          <summary className="absolute top-0 right-0 -mr-4 block cursor-pointer p-4">
-            <ChevronDownIcon className="size-5 shrink-0 transition-transform group-open:rotate-180" />
-          </summary>
-          <div>
+        <Disclosure>
+          <DisclosureHeader className="absolute top-0 right-0 -mr-4 w-fit p-4"> </DisclosureHeader>
+          <DisclosurePanel>
             {showSubmenu && (
               <>
                 <div className="flex flex-col gap-4 py-4">
@@ -102,8 +102,8 @@ const MobileBreadcrumbs = ({ breadcrumbs }: BreadcrumbsProps) => {
                 </li>
               ))}
             </ol>
-          </div>
-        </details>
+          </DisclosurePanel>
+        </Disclosure>
       )}
     </div>
   )
