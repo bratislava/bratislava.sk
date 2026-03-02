@@ -47,7 +47,7 @@ fragment PageEntity on Page {
   alias
   subtext
   pageColor
-  metaDiscription
+  metaDescription
   keywords
   showTableOfContents
   adminGroups {

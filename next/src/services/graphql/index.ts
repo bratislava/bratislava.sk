@@ -5263,7 +5263,6 @@ export type Page = {
   localizations: Array<Maybe<Page>>
   localizations_connection?: Maybe<PageRelationResponseCollection>
   metaDescription?: Maybe<Scalars['String']['output']>
-  metaDiscription?: Maybe<Scalars['String']['output']>
   pageBackgroundImage?: Maybe<UploadFile>
   pageCategory?: Maybe<PageCategory>
   pageColor: Enum_Page_Pagecolor
@@ -5485,7 +5484,6 @@ export type PageFiltersInput = {
   locale?: InputMaybe<StringFilterInput>
   localizations?: InputMaybe<PageFiltersInput>
   metaDescription?: InputMaybe<StringFilterInput>
-  metaDiscription?: InputMaybe<StringFilterInput>
   not?: InputMaybe<PageFiltersInput>
   or?: InputMaybe<Array<InputMaybe<PageFiltersInput>>>
   pageCategory?: InputMaybe<PageCategoryFiltersInput>
@@ -5514,7 +5512,6 @@ export type PageInput = {
   headerLinks?: InputMaybe<Array<InputMaybe<ComponentBlocksCommonLinkInput>>>
   keywords?: InputMaybe<Scalars['String']['input']>
   metaDescription?: InputMaybe<Scalars['String']['input']>
-  metaDiscription?: InputMaybe<Scalars['String']['input']>
   pageBackgroundImage?: InputMaybe<Scalars['ID']['input']>
   pageCategory?: InputMaybe<Scalars['ID']['input']>
   pageColor?: InputMaybe<Enum_Page_Pagecolor>
@@ -10648,7 +10645,7 @@ export type PageEntityFragment = {
   alias?: string | null
   subtext?: string | null
   pageColor: Enum_Page_Pagecolor
-  metaDiscription?: string | null
+  metaDescription?: string | null
   keywords?: string | null
   showTableOfContents?: boolean | null
   documentId: string
@@ -11955,7 +11952,7 @@ export type PageBySlugQuery = {
     alias?: string | null
     subtext?: string | null
     pageColor: Enum_Page_Pagecolor
-    metaDiscription?: string | null
+    metaDescription?: string | null
     keywords?: string | null
     showTableOfContents?: boolean | null
     documentId: string
@@ -13285,7 +13282,7 @@ export type Dev_AllPagesQuery = {
     alias?: string | null
     subtext?: string | null
     pageColor: Enum_Page_Pagecolor
-    metaDiscription?: string | null
+    metaDescription?: string | null
     keywords?: string | null
     showTableOfContents?: boolean | null
     documentId: string
@@ -19303,7 +19300,7 @@ export const PageEntityFragmentDoc = gql`
     alias
     subtext
     pageColor
-    metaDiscription
+    metaDescription
     keywords
     showTableOfContents
     adminGroups {

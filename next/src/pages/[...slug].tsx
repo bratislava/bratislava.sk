@@ -118,7 +118,7 @@ export const getStaticProps: GetStaticProps<PageProps, StaticParams> = async ({
 }
 
 const Page = ({ general, page, dehydratedState }: PageProps) => {
-  const { slug, title, metaDiscription, subtext, keywords, locale, pageColor, adminGroups } = page
+  const { slug, title, metaDescription, subtext, keywords, locale, pageColor, adminGroups } = page
 
   const localization = page.localizations[0]
   const localizations = Object.fromEntries(
@@ -135,7 +135,7 @@ const Page = ({ general, page, dehydratedState }: PageProps) => {
       <GeneralContextProvider general={general}>
         <AdminGroupsContextProvider adminGroups={adminGroups.filter(isDefined)}>
           <LocalizationsProvider localizations={localizations}>
-            <SeoHead title={title} description={metaDiscription ?? subtext} keywords={keywords} />
+            <SeoHead title={title} description={metaDescription ?? subtext} keywords={keywords} />
             <GlobalCategoryColorProvider color={pageColor} />
             <PageLayout>
               <GeneralPageContent page={page} />

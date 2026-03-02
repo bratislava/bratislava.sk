@@ -4028,7 +4028,6 @@ type Page {
   localizations(filters: PageFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [Page]!
   localizations_connection(filters: PageFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): PageRelationResponseCollection
   metaDescription: String
-  metaDiscription: String
   pageBackgroundImage: UploadFile
   pageCategory: PageCategory
   pageColor: ENUM_PAGE_PAGECOLOR!
@@ -4140,7 +4139,6 @@ input PageFiltersInput {
   locale: StringFilterInput
   localizations: PageFiltersInput
   metaDescription: StringFilterInput
-  metaDiscription: StringFilterInput
   not: PageFiltersInput
   or: [PageFiltersInput]
   pageCategory: PageCategoryFiltersInput
@@ -4169,7 +4167,6 @@ input PageInput {
   headerLinks: [ComponentBlocksCommonLinkInput]
   keywords: String
   metaDescription: String
-  metaDiscription: String
   pageBackgroundImage: ID
   pageCategory: ID
   pageColor: ENUM_PAGE_PAGECOLOR

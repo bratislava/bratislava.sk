@@ -90,20 +90,6 @@
           "sortable": true
         }
       },
-      "metaDiscription": {
-        "edit": {
-          "label": "Meta popis",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "metaDiscription",
-          "searchable": true,
-          "sortable": true
-        }
-      },
       "metaDescription": {
         "edit": {
           "label": "metaDescription",
@@ -460,6 +446,15 @@
       }
     },
     "layouts": {
+      "list": [
+        "slug",
+        "title",
+        "parentPage",
+        "updatedAt",
+        "updatedBy",
+        "adminGroups",
+        "subtext"
+      ],
       "edit": [
         [
           {
@@ -498,12 +493,6 @@
         [
           {
             "name": "headerLinks",
-            "size": 12
-          }
-        ],
-        [
-          {
-            "name": "metaDiscription",
             "size": 12
           }
         ],
@@ -607,15 +596,6 @@
             "size": 6
           }
         ]
-      ],
-      "list": [
-        "slug",
-        "title",
-        "parentPage",
-        "updatedAt",
-        "updatedBy",
-        "adminGroups",
-        "subtext"
       ]
     }
   },
