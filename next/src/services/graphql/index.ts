@@ -4062,9 +4062,7 @@ export type GenericMorph =
   | General
   | Homepage
   | I18NLocale
-  | InbaArticle
   | InbaRelease
-  | InbaTag
   | InternalJob
   | Menu
   | Page
@@ -4232,100 +4230,6 @@ export type IdFilterInput = {
   startsWith?: InputMaybe<Scalars['ID']['input']>
 }
 
-export type InbaArticle = {
-  __typename?: 'InbaArticle'
-  content?: Maybe<Scalars['String']['output']>
-  coverImage?: Maybe<UploadFile>
-  createdAt?: Maybe<Scalars['DateTime']['output']>
-  documentId: Scalars['ID']['output']
-  inbaTag?: Maybe<InbaTag>
-  locale?: Maybe<Scalars['String']['output']>
-  localizations: Array<Maybe<InbaArticle>>
-  localizations_connection?: Maybe<InbaArticleRelationResponseCollection>
-  perex?: Maybe<Scalars['String']['output']>
-  publishedAt?: Maybe<Scalars['DateTime']['output']>
-  slug: Scalars['String']['output']
-  tags: Array<Maybe<Tag>>
-  tags_connection?: Maybe<TagRelationResponseCollection>
-  title: Scalars['String']['output']
-  updatedAt?: Maybe<Scalars['DateTime']['output']>
-}
-
-export type InbaArticleLocalizationsArgs = {
-  filters?: InputMaybe<InbaArticleFiltersInput>
-  pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
-}
-
-export type InbaArticleLocalizations_ConnectionArgs = {
-  filters?: InputMaybe<InbaArticleFiltersInput>
-  pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
-}
-
-export type InbaArticleTagsArgs = {
-  filters?: InputMaybe<TagFiltersInput>
-  pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
-}
-
-export type InbaArticleTags_ConnectionArgs = {
-  filters?: InputMaybe<TagFiltersInput>
-  pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
-}
-
-export type InbaArticleEntity = {
-  __typename?: 'InbaArticleEntity'
-  attributes?: Maybe<InbaArticle>
-  id?: Maybe<Scalars['ID']['output']>
-}
-
-export type InbaArticleEntityResponse = {
-  __typename?: 'InbaArticleEntityResponse'
-  data?: Maybe<InbaArticle>
-}
-
-export type InbaArticleEntityResponseCollection = {
-  __typename?: 'InbaArticleEntityResponseCollection'
-  nodes: Array<InbaArticle>
-  pageInfo: Pagination
-}
-
-export type InbaArticleFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<InbaArticleFiltersInput>>>
-  content?: InputMaybe<StringFilterInput>
-  createdAt?: InputMaybe<DateTimeFilterInput>
-  documentId?: InputMaybe<IdFilterInput>
-  inbaTag?: InputMaybe<InbaTagFiltersInput>
-  locale?: InputMaybe<StringFilterInput>
-  localizations?: InputMaybe<InbaArticleFiltersInput>
-  not?: InputMaybe<InbaArticleFiltersInput>
-  or?: InputMaybe<Array<InputMaybe<InbaArticleFiltersInput>>>
-  perex?: InputMaybe<StringFilterInput>
-  publishedAt?: InputMaybe<DateTimeFilterInput>
-  slug?: InputMaybe<StringFilterInput>
-  tags?: InputMaybe<TagFiltersInput>
-  title?: InputMaybe<StringFilterInput>
-  updatedAt?: InputMaybe<DateTimeFilterInput>
-}
-
-export type InbaArticleInput = {
-  content?: InputMaybe<Scalars['String']['input']>
-  coverImage?: InputMaybe<Scalars['ID']['input']>
-  inbaTag?: InputMaybe<Scalars['ID']['input']>
-  perex?: InputMaybe<Scalars['String']['input']>
-  publishedAt?: InputMaybe<Scalars['DateTime']['input']>
-  slug?: InputMaybe<Scalars['String']['input']>
-  tags?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
-  title?: InputMaybe<Scalars['String']['input']>
-}
-
-export type InbaArticleRelationResponseCollection = {
-  __typename?: 'InbaArticleRelationResponseCollection'
-  nodes: Array<InbaArticle>
-}
-
 export type InbaRelease = {
   __typename?: 'InbaRelease'
   articles: Array<Maybe<Article>>
@@ -4425,86 +4329,6 @@ export type InbaReleaseInput = {
 export type InbaReleaseRelationResponseCollection = {
   __typename?: 'InbaReleaseRelationResponseCollection'
   nodes: Array<InbaRelease>
-}
-
-export type InbaTag = {
-  __typename?: 'InbaTag'
-  createdAt?: Maybe<Scalars['DateTime']['output']>
-  documentId: Scalars['ID']['output']
-  inbaArticles: Array<Maybe<InbaArticle>>
-  inbaArticles_connection?: Maybe<InbaArticleRelationResponseCollection>
-  locale?: Maybe<Scalars['String']['output']>
-  localizations: Array<Maybe<InbaTag>>
-  localizations_connection?: Maybe<InbaTagRelationResponseCollection>
-  publishedAt?: Maybe<Scalars['DateTime']['output']>
-  title: Scalars['String']['output']
-  updatedAt?: Maybe<Scalars['DateTime']['output']>
-}
-
-export type InbaTagInbaArticlesArgs = {
-  filters?: InputMaybe<InbaArticleFiltersInput>
-  pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
-}
-
-export type InbaTagInbaArticles_ConnectionArgs = {
-  filters?: InputMaybe<InbaArticleFiltersInput>
-  pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
-}
-
-export type InbaTagLocalizationsArgs = {
-  filters?: InputMaybe<InbaTagFiltersInput>
-  pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
-}
-
-export type InbaTagLocalizations_ConnectionArgs = {
-  filters?: InputMaybe<InbaTagFiltersInput>
-  pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
-}
-
-export type InbaTagEntity = {
-  __typename?: 'InbaTagEntity'
-  attributes?: Maybe<InbaTag>
-  id?: Maybe<Scalars['ID']['output']>
-}
-
-export type InbaTagEntityResponse = {
-  __typename?: 'InbaTagEntityResponse'
-  data?: Maybe<InbaTag>
-}
-
-export type InbaTagEntityResponseCollection = {
-  __typename?: 'InbaTagEntityResponseCollection'
-  nodes: Array<InbaTag>
-  pageInfo: Pagination
-}
-
-export type InbaTagFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<InbaTagFiltersInput>>>
-  createdAt?: InputMaybe<DateTimeFilterInput>
-  documentId?: InputMaybe<IdFilterInput>
-  inbaArticles?: InputMaybe<InbaArticleFiltersInput>
-  locale?: InputMaybe<StringFilterInput>
-  localizations?: InputMaybe<InbaTagFiltersInput>
-  not?: InputMaybe<InbaTagFiltersInput>
-  or?: InputMaybe<Array<InputMaybe<InbaTagFiltersInput>>>
-  publishedAt?: InputMaybe<DateTimeFilterInput>
-  title?: InputMaybe<StringFilterInput>
-  updatedAt?: InputMaybe<DateTimeFilterInput>
-}
-
-export type InbaTagInput = {
-  inbaArticles?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
-  publishedAt?: InputMaybe<Scalars['DateTime']['input']>
-  title?: InputMaybe<Scalars['String']['input']>
-}
-
-export type InbaTagRelationResponseCollection = {
-  __typename?: 'InbaTagRelationResponseCollection'
-  nodes: Array<InbaTag>
 }
 
 export type IntFilterInput = {
@@ -4711,9 +4535,7 @@ export type Mutation = {
   createDocumentCategory?: Maybe<DocumentCategory>
   createFaq?: Maybe<Faq>
   createFaqCategory?: Maybe<FaqCategory>
-  createInbaArticle?: Maybe<InbaArticle>
   createInbaRelease?: Maybe<InbaRelease>
-  createInbaTag?: Maybe<InbaTag>
   createInternalJob?: Maybe<InternalJob>
   createPage?: Maybe<Page>
   createPageCategory?: Maybe<PageCategory>
@@ -4739,9 +4561,7 @@ export type Mutation = {
   deleteFooter?: Maybe<DeleteMutationResponse>
   deleteGeneral?: Maybe<DeleteMutationResponse>
   deleteHomepage?: Maybe<DeleteMutationResponse>
-  deleteInbaArticle?: Maybe<DeleteMutationResponse>
   deleteInbaRelease?: Maybe<DeleteMutationResponse>
-  deleteInbaTag?: Maybe<DeleteMutationResponse>
   deleteInternalJob?: Maybe<DeleteMutationResponse>
   deleteMenu?: Maybe<DeleteMutationResponse>
   deletePage?: Maybe<DeleteMutationResponse>
@@ -4779,9 +4599,7 @@ export type Mutation = {
   updateFooter?: Maybe<Footer>
   updateGeneral?: Maybe<General>
   updateHomepage?: Maybe<Homepage>
-  updateInbaArticle?: Maybe<InbaArticle>
   updateInbaRelease?: Maybe<InbaRelease>
-  updateInbaTag?: Maybe<InbaTag>
   updateInternalJob?: Maybe<InternalJob>
   updateMenu?: Maybe<Menu>
   updatePage?: Maybe<Page>
@@ -4854,20 +4672,8 @@ export type MutationCreateFaqCategoryArgs = {
   status?: InputMaybe<PublicationStatus>
 }
 
-export type MutationCreateInbaArticleArgs = {
-  data: InbaArticleInput
-  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
-  status?: InputMaybe<PublicationStatus>
-}
-
 export type MutationCreateInbaReleaseArgs = {
   data: InbaReleaseInput
-  status?: InputMaybe<PublicationStatus>
-}
-
-export type MutationCreateInbaTagArgs = {
-  data: InbaTagInput
-  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
   status?: InputMaybe<PublicationStatus>
 }
 
@@ -4978,18 +4784,8 @@ export type MutationDeleteHomepageArgs = {
   locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
 }
 
-export type MutationDeleteInbaArticleArgs = {
-  documentId: Scalars['ID']['input']
-  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
-}
-
 export type MutationDeleteInbaReleaseArgs = {
   documentId: Scalars['ID']['input']
-}
-
-export type MutationDeleteInbaTagArgs = {
-  documentId: Scalars['ID']['input']
-  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
 }
 
 export type MutationDeleteInternalJobArgs = {
@@ -5147,23 +4943,9 @@ export type MutationUpdateHomepageArgs = {
   status?: InputMaybe<PublicationStatus>
 }
 
-export type MutationUpdateInbaArticleArgs = {
-  data: InbaArticleInput
-  documentId: Scalars['ID']['input']
-  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
-  status?: InputMaybe<PublicationStatus>
-}
-
 export type MutationUpdateInbaReleaseArgs = {
   data: InbaReleaseInput
   documentId: Scalars['ID']['input']
-  status?: InputMaybe<PublicationStatus>
-}
-
-export type MutationUpdateInbaTagArgs = {
-  data: InbaTagInput
-  documentId: Scalars['ID']['input']
-  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
   status?: InputMaybe<PublicationStatus>
 }
 
@@ -5643,15 +5425,9 @@ export type Query = {
   i18NLocale?: Maybe<I18NLocale>
   i18NLocales: Array<Maybe<I18NLocale>>
   i18NLocales_connection?: Maybe<I18NLocaleEntityResponseCollection>
-  inbaArticle?: Maybe<InbaArticle>
-  inbaArticles: Array<Maybe<InbaArticle>>
-  inbaArticles_connection?: Maybe<InbaArticleEntityResponseCollection>
   inbaRelease?: Maybe<InbaRelease>
   inbaReleases: Array<Maybe<InbaRelease>>
   inbaReleases_connection?: Maybe<InbaReleaseEntityResponseCollection>
-  inbaTag?: Maybe<InbaTag>
-  inbaTags: Array<Maybe<InbaTag>>
-  inbaTags_connection?: Maybe<InbaTagEntityResponseCollection>
   internalJob?: Maybe<InternalJob>
   internalJobs: Array<Maybe<InternalJob>>
   internalJobs_connection?: Maybe<InternalJobEntityResponseCollection>
@@ -5912,28 +5688,6 @@ export type QueryI18NLocales_ConnectionArgs = {
   status?: InputMaybe<PublicationStatus>
 }
 
-export type QueryInbaArticleArgs = {
-  documentId: Scalars['ID']['input']
-  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
-  status?: InputMaybe<PublicationStatus>
-}
-
-export type QueryInbaArticlesArgs = {
-  filters?: InputMaybe<InbaArticleFiltersInput>
-  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
-  pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
-  status?: InputMaybe<PublicationStatus>
-}
-
-export type QueryInbaArticles_ConnectionArgs = {
-  filters?: InputMaybe<InbaArticleFiltersInput>
-  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
-  pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
-  status?: InputMaybe<PublicationStatus>
-}
-
 export type QueryInbaReleaseArgs = {
   documentId: Scalars['ID']['input']
   status?: InputMaybe<PublicationStatus>
@@ -5948,28 +5702,6 @@ export type QueryInbaReleasesArgs = {
 
 export type QueryInbaReleases_ConnectionArgs = {
   filters?: InputMaybe<InbaReleaseFiltersInput>
-  pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
-  status?: InputMaybe<PublicationStatus>
-}
-
-export type QueryInbaTagArgs = {
-  documentId: Scalars['ID']['input']
-  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
-  status?: InputMaybe<PublicationStatus>
-}
-
-export type QueryInbaTagsArgs = {
-  filters?: InputMaybe<InbaTagFiltersInput>
-  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
-  pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
-  status?: InputMaybe<PublicationStatus>
-}
-
-export type QueryInbaTags_ConnectionArgs = {
-  filters?: InputMaybe<InbaTagFiltersInput>
-  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
   status?: InputMaybe<PublicationStatus>
