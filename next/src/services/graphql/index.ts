@@ -7751,6 +7751,22 @@ export type UpdateAssetMutation = {
   } | null
 }
 
+export type UpdateAssetDescriptionMutationVariables = Exact<{
+  documentId: Scalars['ID']['input']
+  description?: InputMaybe<Scalars['String']['input']>
+}>
+
+export type UpdateAssetDescriptionMutation = {
+  __typename?: 'Mutation'
+  updateAsset?: {
+    __typename?: 'Asset'
+    documentId: string
+    title: string
+    slug: string
+    description?: string | null
+  } | null
+}
+
 export type DeleteAssetMutationVariables = Exact<{
   documentId: Scalars['ID']['input']
 }>
@@ -19523,6 +19539,16 @@ export const UpdateAssetDocument = gql`
     }
   }
 `
+export const UpdateAssetDescriptionDocument = gql`
+  mutation UpdateAssetDescription($documentId: ID!, $description: String) {
+    updateAsset(documentId: $documentId, data: { description: $description }) {
+      documentId
+      title
+      slug
+      description
+    }
+  }
+`
 export const DeleteAssetDocument = gql`
   mutation DeleteAsset($documentId: ID!) {
     deleteAsset(documentId: $documentId) {
@@ -20131,6 +20157,24 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
             signal,
           }),
         'UpdateAsset',
+        'mutation',
+        variables,
+      )
+    },
+    UpdateAssetDescription(
+      variables: UpdateAssetDescriptionMutationVariables,
+      requestHeaders?: GraphQLClientRequestHeaders,
+      signal?: RequestInit['signal'],
+    ): Promise<UpdateAssetDescriptionMutation> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<UpdateAssetDescriptionMutation>({
+            document: UpdateAssetDescriptionDocument,
+            variables,
+            requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders },
+            signal,
+          }),
+        'UpdateAssetDescription',
         'mutation',
         variables,
       )

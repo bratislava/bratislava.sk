@@ -61,6 +61,15 @@ mutation UpdateAsset($documentId: ID!, $data: AssetInput!) {
   }
 }
 
+mutation UpdateAssetDescription($documentId: ID!, $description: String) {
+  updateAsset(documentId: $documentId, data: { description: $description }) {
+    documentId
+    title
+    slug
+    description
+  }
+}
+
 mutation DeleteAsset($documentId: ID!) {
   deleteAsset(documentId: $documentId) {
     documentId

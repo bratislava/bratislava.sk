@@ -105,14 +105,19 @@ const uploadToStrapi = async (
   mimeType: string,
 ): Promise<number> => {
   // Note: Strapi uses their version of filenamify lib: https://github.com/strapi/strapi/blob/79a590a581fd8272fafe5644b39c108a3a192b67/packages/core/upload/server/src/services/upload.ts#L89
-  const fileName = filenamify(fileNameUnpurified, { replacement: '_', maxLength: 255 })
+  // Note: We additionally replace all dots by underscores, otherwise strapi takes part after the last dot as file extension...
+  // Other dots are replaced by underscores during the upload process anyway, so we can do it beforehand.
+  const fileName = filenamify(fileNameUnpurified, { replacement: '_', maxLength: 255 }).replaceAll(
+    '.',
+    '_',
+  )
 
   // console.log(`Uploading to Strapi: ${fileName}`)
 
   const fileBlob = new Blob([fileBuffer], { type: mimeType })
 
   const formData = new FormData()
-  // // Append file buffer with filename
+  // Append file buffer with filename
   formData.append('files', fileBlob, fileName)
 
   // Optionally add fileInfo as JSON string (name, alternativeText, caption)
@@ -153,8 +158,17 @@ const uploadToStrapi = async (
 }
 
 const createIsoString = (dateString: string, hours: number) => {
-  const [day, month, year] = dateString.split('.').map(Number)
-  const date = new Date(year, month - 1, day, hours)
+  let date = new Date()
+  // Sorry, I had date in different formats in different tables
+  if (dateString.includes('.')) {
+    const [day, month, year] = dateString.split('.').map(Number)
+    date = new Date(year, month - 1, day, hours)
+  }
+
+  if (dateString.includes('-')) {
+    const [year, month, day] = dateString.split('-').map(Number)
+    date = new Date(year, month - 1, day, hours)
+  }
 
   // console.log('createIsoString', dateString, date, date.toISOString())
 
@@ -164,10 +178,7 @@ const createIsoString = (dateString: string, hours: number) => {
 const createAsset = async (row: CsvRow, fileId: number): Promise<void> => {
   // console.log(`Creating asset: ${row.fileName}`)
 
-  const slug = slugify(`starz-${row.fileName}`, {
-    decamelize: false,
-    preserveTrailingDash: true,
-  })
+  const slug = slugify(`starz-${row.fileName}`)
 
   const publishedAt = createIsoString(row.dateOfCreation, 12)
 
@@ -175,7 +186,7 @@ const createAsset = async (row: CsvRow, fileId: number): Promise<void> => {
     title: `STaRZ - ${row.fileName}`,
     slug,
     files: [fileId.toString()],
-    description: row.description || null,
+    description: row.description.replace(/\\n/g, '\n') || null, // Needed for proper newlines import
     assetCategory: row.documentId || null,
     adminGroups: ['jo5fdw77stuwdv5uwzcacr1z'],
     publishedAt, // it's ignored by Strapi :/
@@ -203,8 +214,40 @@ const createAsset = async (row: CsvRow, fileId: number): Promise<void> => {
   // )
 }
 
+const updateAssetDescription = async (row: CsvRow): Promise<void> => {
+  // console.log(`Updating asset: ${row.fileName}`)
+
+  if (!row.description) {
+    console.log('Skipping')
+
+    return
+  }
+
+  const slug = slugify(`starz-${row.fileName}`, {
+    decamelize: false,
+    preserveTrailingDash: true,
+  })
+
+  const response = await client.AssetBySlug({ slug })
+  const asset = response.assets[0]
+  if (!asset) {
+    throw new Error(`No asset ${slug}`)
+  }
+
+  const result = await client.UpdateAssetDescription({
+    documentId: asset.documentId,
+    description: row.description.replace(/\\n/g, '\n'), // Needed for proper newlines import
+  })
+
+  if (!result.updateAsset) {
+    console.log('Updating asset failed')
+  }
+
+  // console.log(`Updating asset: ${result.updateAsset.description}`)
+}
+
 const main = async () => {
-  const csvPath = path.join(process.cwd(), './scripts/dev/starz_files_export.csv')
+  const csvPath = path.join(process.cwd(), './scripts/dev/starz_files_export-2.csv')
 
   if (!fs.existsSync(csvPath)) {
     console.error(`CSV file not found: ${csvPath}`)
@@ -233,15 +276,13 @@ const main = async () => {
     console.log('No broken rows found', rowsFiltered.length)
   }
 
-  const rowsNotFromAdditional = rowsFiltered.filter(
-    (row) => row.isFromAdditionalScraping === 'false',
-  )
-  rowsNotFromAdditional.reverse()
-  const rowsFromAdditional = rowsFiltered.filter((row) => row.isFromAdditionalScraping === 'true')
-
-  let rowsToParse = [...rowsNotFromAdditional, ...rowsFromAdditional]
+  let rowsToParse = [...rowsFiltered]
   rowsToParse = rowsToParse.slice(0, rowsToParse.length)
-  // rowsToParse = rowsToParse.slice(0, 10)
+  // rowsToParse = rowsToParse.filter(
+  //   (row) =>
+  //     row.fileName === 'Dodatok č. 3 zo dňa 22.1.2016 k zmluve o nájme č. 20/2009 zo dňa 7.5.2009',
+  // )
+  // rowsToParse = rowsToParse.slice(0, 2)
 
   console.log('rowsToParse:', rowsToParse.length)
 
@@ -250,6 +291,21 @@ const main = async () => {
     // process.stdout.write(`${i + 1}...`)
     // process.stdout.clearLine(0)
     // process.stdout.cursorTo(0)
+
+    // Note: updateAsset mutation changes also publishedAt and deletes draft or published version of the document in strapi db... So it's not safe to use now.
+    // try {
+    //   await updateAssetDescription(row)
+    //
+    //   console.log(`Row ${i} ✅ Success!`)
+    // } catch (error) {
+    //   console.error(`\nRow ${i} ❌ Error:`)
+    //   console.log(`Row ${i}`, row)
+    //   if (axios.isAxiosError(error)) {
+    //     console.error('Response:', error.response?.data)
+    //   } else {
+    //     console.error('NonAxiosError:', error)
+    //   }
+    // }
 
     try {
       // Download file
@@ -280,16 +336,29 @@ const deleteAllStarzAssets = async () => {
   const result = await client.Assets({
     filters: {
       createdAt: {
-        gte: '2026-02-24T00:00:00.000Z',
-        lt: '2026-02-25T00:00:00.000Z',
+        gte: '2026-02-27T00:00:00.000Z',
+        lt: '2026-02-28T00:00:00.000Z',
       },
       slug: {
         startsWith: 'starz',
       },
     },
   })
-  const starzAssets = result.assets.filter(isDefined)
+  const starzAssets = result.assets.filter(isDefined).filter(
+    (asset) =>
+      ![
+        'starz-zverovacie-protokoly',
+        'starz-zriadovacia-listina',
+        // 'starz-zmluva-c-253-2018-e-o-poskytnuti-dotacie-na-podporu-rozvoja-sportu-na-rok-2018-z-financnych-prostriedkov-z-uradu-vlady-slovenskej-republiky-na-projekt-detsky-trampolinovy-park-subor-vonkajsich-trampolin-v-areali-zdravia-zlate-piesky',
+        // 'starz-dodatok-c-4-248-2016-s-zo-dna-25-08-2016-k-zmluve-o-spolupraci-zo-dna-30-6-2015-poskytovanie-sportovych-a-rekreacnych-sluzieb-na-plavarni-pasienky-a-sh-harmincova-system-citaciek-kariet-pre-plavaren-pasienky',
+        // 'starz-zmluva-o-medialnom-partnerstve-c-098-2016-m-zo-dna-7-3-2016-poskytnutie-reklamneho-priestoru-pre-starz-pri-kampani-zameranej-na-informovanie-sirokej-verejnosti-o-sportovom-podujati-narodny-beh-devin-bratislava',
+        // 'starz-zmluva-o-dielo-1-predmetom-tejto-zmluvy-je-uskutocnovanie-prac-v-ramci-akcie-obsluzna-komunikacia-na-vodohospodarskej-stavbe-karloveske-rameno-objekt-uprava-nivelety-cyklotrasy-na-obsluznej-komunikacii-karloveske-rameno',
+        // 'starz-zmluva-o-dielo-odstranenie-zavad-z-odbornej-prehliadky-plynoveho-zariadenia-podla-zak-124-06-bozp-vyhl-508-10-z-z-mpsvsr-59-82-subp-zmien-a-doplnkov-zo-dna-17-3-2015-v-plynovej-kotolni-objektu-ubytovna-flora-az-zlate-piesky',
+      ].includes(asset.slug),
+  )
   // .filter((asset) => asset.slug.startsWith('starz'))
+
+  console.log(`To delete ${starzAssets.length} starz assets`)
   for (const asset of starzAssets) {
     // console.log('asset found:', asset.slug)
     const resultDelete = await client.DeleteAsset({ documentId: asset.documentId })
