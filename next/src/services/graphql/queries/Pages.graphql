@@ -26,6 +26,7 @@ fragment PageSlugEntity on Page {
   slug
   title
   locale
+  path
 }
 
 fragment PageCardEntity on Page {
