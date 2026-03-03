@@ -948,67 +948,6 @@ export interface ApiHomepageHomepage extends Struct.SingleTypeSchema {
   }
 }
 
-export interface ApiInbaArticleInbaArticle extends Struct.CollectionTypeSchema {
-  collectionName: 'inba_articles'
-  info: {
-    description: ''
-    displayName: 'in.ba \u010Dl\u00E1nky'
-    pluralName: 'inba-articles'
-    singularName: 'inba-article'
-  }
-  options: {
-    draftAndPublish: true
-  }
-  pluginOptions: {
-    i18n: {
-      localized: true
-    }
-  }
-  attributes: {
-    content: Schema.Attribute.RichText &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true
-        }
-      }>
-    coverImage: Schema.Attribute.Media<'images'> &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: false
-        }
-      }>
-    createdAt: Schema.Attribute.DateTime
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> & Schema.Attribute.Private
-    inbaTag: Schema.Attribute.Relation<'manyToOne', 'api::inba-tag.inba-tag'>
-    locale: Schema.Attribute.String
-    localizations: Schema.Attribute.Relation<'oneToMany', 'api::inba-article.inba-article'>
-    perex: Schema.Attribute.Text &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true
-        }
-      }>
-    publishedAt: Schema.Attribute.DateTime
-    slug: Schema.Attribute.UID<'title'> &
-      Schema.Attribute.Required &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true
-        }
-      }>
-    tags: Schema.Attribute.Relation<'oneToMany', 'api::tag.tag'>
-    title: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true
-        }
-      }>
-    updatedAt: Schema.Attribute.DateTime
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> & Schema.Attribute.Private
-  }
-}
-
 export interface ApiInbaReleaseInbaRelease extends Struct.CollectionTypeSchema {
   collectionName: 'inba_releases'
   info: {
@@ -1036,41 +975,6 @@ export interface ApiInbaReleaseInbaRelease extends Struct.CollectionTypeSchema {
     releaseDate: Schema.Attribute.Date & Schema.Attribute.Required
     slug: Schema.Attribute.UID<'title'> & Schema.Attribute.Required
     title: Schema.Attribute.String & Schema.Attribute.Required
-    updatedAt: Schema.Attribute.DateTime
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> & Schema.Attribute.Private
-  }
-}
-
-export interface ApiInbaTagInbaTag extends Struct.CollectionTypeSchema {
-  collectionName: 'inba_tags'
-  info: {
-    description: ''
-    displayName: 'in.ba tagy'
-    pluralName: 'inba-tags'
-    singularName: 'inba-tag'
-  }
-  options: {
-    draftAndPublish: false
-  }
-  pluginOptions: {
-    i18n: {
-      localized: true
-    }
-  }
-  attributes: {
-    createdAt: Schema.Attribute.DateTime
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> & Schema.Attribute.Private
-    inbaArticles: Schema.Attribute.Relation<'oneToMany', 'api::inba-article.inba-article'>
-    locale: Schema.Attribute.String
-    localizations: Schema.Attribute.Relation<'oneToMany', 'api::inba-tag.inba-tag'>
-    publishedAt: Schema.Attribute.DateTime
-    title: Schema.Attribute.String &
-      Schema.Attribute.Required &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true
-        }
-      }>
     updatedAt: Schema.Attribute.DateTime
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> & Schema.Attribute.Private
   }
@@ -1263,12 +1167,6 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
     locale: Schema.Attribute.String
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::page.page'>
     metaDescription: Schema.Attribute.Text &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true
-        }
-      }>
-    metaDiscription: Schema.Attribute.Text &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true
@@ -1999,9 +1897,7 @@ declare module '@strapi/strapi' {
       'api::footer.footer': ApiFooterFooter
       'api::general.general': ApiGeneralGeneral
       'api::homepage.homepage': ApiHomepageHomepage
-      'api::inba-article.inba-article': ApiInbaArticleInbaArticle
       'api::inba-release.inba-release': ApiInbaReleaseInbaRelease
-      'api::inba-tag.inba-tag': ApiInbaTagInbaTag
       'api::internal-job.internal-job': ApiInternalJobInternalJob
       'api::menu.menu': ApiMenuMenu
       'api::page-category.page-category': ApiPageCategoryPageCategory

@@ -57,14 +57,6 @@
         }
       }
     },
-    "metaDiscription": {
-      "type": "text",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
     "metaDescription": {
       "type": "text",
       "pluginOptions": {

@@ -3177,7 +3177,7 @@ type GeneralRelationResponseCollection {
   nodes: [General!]!
 }
 
-union GenericMorph = AdminGroup | Alert | Article | ArticleCategory | Asset | AssetCategory | ComponentAccordionItemsFlatText | ComponentAccordionItemsInstitution | ComponentBlocksCardLink | ComponentBlocksColumnsItem | ComponentBlocksColumnsListItem | ComponentBlocksCommonLink | ComponentBlocksComparisonCard | ComponentBlocksComparisonItem | ComponentBlocksContactCard | ComponentBlocksContactDirectionsCard | ComponentBlocksContactPersonCard | ComponentBlocksFile | ComponentBlocksFileItem | ComponentBlocksFooterColumn | ComponentBlocksHomepageHighlightsItem | ComponentBlocksInBa | ComponentBlocksNumbersOverviewItem | ComponentBlocksNumericalListItem | ComponentBlocksOpeningHoursAlertMessage | ComponentBlocksOpeningHoursItem | ComponentBlocksPageLink | ComponentBlocksPartner | ComponentBlocksProsAndConsCard | ComponentBlocksStarzLandingPageBanner | ComponentBlocksSubnavigationLink | ComponentBlocksTopServicesItem | ComponentBlocksVideo | ComponentGeneralHeader | ComponentGeneralHeaderLink | ComponentHeaderSectionsEvent | ComponentHeaderSectionsFacility | ComponentMenuMenuItem | ComponentMenuMenuLink | ComponentMenuMenuSection | ComponentSectionsAccordion | ComponentSectionsAlert | ComponentSectionsArticles | ComponentSectionsArticlesLandingPage | ComponentSectionsAssets | ComponentSectionsBanner | ComponentSectionsColumnedText | ComponentSectionsColumns | ComponentSectionsColumnsList | ComponentSectionsComparisonSection | ComponentSectionsContactsSection | ComponentSectionsDivider | ComponentSectionsEvents | ComponentSectionsFacilities | ComponentSectionsFaqCategories | ComponentSectionsFaqs | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsHomepageEvents | ComponentSectionsHomepageHighlights | ComponentSectionsHomepageMayorAndCouncil | ComponentSectionsHomepageTabs | ComponentSectionsIframe | ComponentSectionsInbaLatestRelease | ComponentSectionsInbaReleases | ComponentSectionsJobOffers | ComponentSectionsLinks | ComponentSectionsNarrowText | ComponentSectionsNewsletter | ComponentSectionsNumbersOverview | ComponentSectionsNumericalList | ComponentSectionsOfficialBoard | ComponentSectionsOpeningHours | ComponentSectionsOrganizationalStructure | ComponentSectionsPartners | ComponentSectionsProsAndConsSection | ComponentSectionsRegulations | ComponentSectionsStarzLandingPage | ComponentSectionsSubnavigation | ComponentSectionsTextWithImage | ComponentSectionsTextWithImageOverlapped | ComponentSectionsTootootEvents | ComponentSectionsTopServices | ComponentSectionsVideos | ComponentSidebarsEmptySidebar | ComponentTaxAdministratorsTaxAdministrator | Document | DocumentCategory | Faq | FaqCategory | Footer | General | Homepage | I18NLocale | InbaArticle | InbaRelease | InbaTag | InternalJob | Menu | Page | PageCategory | Redirect | Regulation | ReviewWorkflowsWorkflow | ReviewWorkflowsWorkflowStage | Tag | TaxAdministratorsList | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
+union GenericMorph = AdminGroup | Alert | Article | ArticleCategory | Asset | AssetCategory | ComponentAccordionItemsFlatText | ComponentAccordionItemsInstitution | ComponentBlocksCardLink | ComponentBlocksColumnsItem | ComponentBlocksColumnsListItem | ComponentBlocksCommonLink | ComponentBlocksComparisonCard | ComponentBlocksComparisonItem | ComponentBlocksContactCard | ComponentBlocksContactDirectionsCard | ComponentBlocksContactPersonCard | ComponentBlocksFile | ComponentBlocksFileItem | ComponentBlocksFooterColumn | ComponentBlocksHomepageHighlightsItem | ComponentBlocksInBa | ComponentBlocksNumbersOverviewItem | ComponentBlocksNumericalListItem | ComponentBlocksOpeningHoursAlertMessage | ComponentBlocksOpeningHoursItem | ComponentBlocksPageLink | ComponentBlocksPartner | ComponentBlocksProsAndConsCard | ComponentBlocksStarzLandingPageBanner | ComponentBlocksSubnavigationLink | ComponentBlocksTopServicesItem | ComponentBlocksVideo | ComponentGeneralHeader | ComponentGeneralHeaderLink | ComponentHeaderSectionsEvent | ComponentHeaderSectionsFacility | ComponentMenuMenuItem | ComponentMenuMenuLink | ComponentMenuMenuSection | ComponentSectionsAccordion | ComponentSectionsAlert | ComponentSectionsArticles | ComponentSectionsArticlesLandingPage | ComponentSectionsAssets | ComponentSectionsBanner | ComponentSectionsColumnedText | ComponentSectionsColumns | ComponentSectionsColumnsList | ComponentSectionsComparisonSection | ComponentSectionsContactsSection | ComponentSectionsDivider | ComponentSectionsEvents | ComponentSectionsFacilities | ComponentSectionsFaqCategories | ComponentSectionsFaqs | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsHomepageEvents | ComponentSectionsHomepageHighlights | ComponentSectionsHomepageMayorAndCouncil | ComponentSectionsHomepageTabs | ComponentSectionsIframe | ComponentSectionsInbaLatestRelease | ComponentSectionsInbaReleases | ComponentSectionsJobOffers | ComponentSectionsLinks | ComponentSectionsNarrowText | ComponentSectionsNewsletter | ComponentSectionsNumbersOverview | ComponentSectionsNumericalList | ComponentSectionsOfficialBoard | ComponentSectionsOpeningHours | ComponentSectionsOrganizationalStructure | ComponentSectionsPartners | ComponentSectionsProsAndConsSection | ComponentSectionsRegulations | ComponentSectionsStarzLandingPage | ComponentSectionsSubnavigation | ComponentSectionsTextWithImage | ComponentSectionsTextWithImageOverlapped | ComponentSectionsTootootEvents | ComponentSectionsTopServices | ComponentSectionsVideos | ComponentSidebarsEmptySidebar | ComponentTaxAdministratorsTaxAdministrator | Document | DocumentCategory | Faq | FaqCategory | Footer | General | Homepage | I18NLocale | InbaRelease | InternalJob | Menu | Page | PageCategory | Redirect | Regulation | ReviewWorkflowsWorkflow | ReviewWorkflowsWorkflowStage | Tag | TaxAdministratorsList | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
 
 type Homepage {
   createdAt: DateTime
@@ -3324,71 +3324,6 @@ input IDFilterInput {
   startsWith: ID
 }
 
-type InbaArticle {
-  content: String
-  coverImage: UploadFile
-  createdAt: DateTime
-  documentId: ID!
-  inbaTag: InbaTag
-  locale: String
-  localizations(filters: InbaArticleFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [InbaArticle]!
-  localizations_connection(filters: InbaArticleFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): InbaArticleRelationResponseCollection
-  perex: String
-  publishedAt: DateTime
-  slug: String!
-  tags(filters: TagFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [Tag]!
-  tags_connection(filters: TagFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): TagRelationResponseCollection
-  title: String!
-  updatedAt: DateTime
-}
-
-type InbaArticleEntity {
-  attributes: InbaArticle
-  id: ID
-}
-
-type InbaArticleEntityResponse {
-  data: InbaArticle
-}
-
-type InbaArticleEntityResponseCollection {
-  nodes: [InbaArticle!]!
-  pageInfo: Pagination!
-}
-
-input InbaArticleFiltersInput {
-  and: [InbaArticleFiltersInput]
-  content: StringFilterInput
-  createdAt: DateTimeFilterInput
-  documentId: IDFilterInput
-  inbaTag: InbaTagFiltersInput
-  locale: StringFilterInput
-  localizations: InbaArticleFiltersInput
-  not: InbaArticleFiltersInput
-  or: [InbaArticleFiltersInput]
-  perex: StringFilterInput
-  publishedAt: DateTimeFilterInput
-  slug: StringFilterInput
-  tags: TagFiltersInput
-  title: StringFilterInput
-  updatedAt: DateTimeFilterInput
-}
-
-input InbaArticleInput {
-  content: String
-  coverImage: ID
-  inbaTag: ID
-  perex: String
-  publishedAt: DateTime
-  slug: String
-  tags: [ID]
-  title: String
-}
-
-type InbaArticleRelationResponseCollection {
-  nodes: [InbaArticle!]!
-}
-
 type InbaRelease {
   articles(filters: ArticleFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [Article]!
   articles_connection(filters: ArticleFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): ArticleRelationResponseCollection
@@ -3453,57 +3388,6 @@ input InbaReleaseInput {
 
 type InbaReleaseRelationResponseCollection {
   nodes: [InbaRelease!]!
-}
-
-type InbaTag {
-  createdAt: DateTime
-  documentId: ID!
-  inbaArticles(filters: InbaArticleFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [InbaArticle]!
-  inbaArticles_connection(filters: InbaArticleFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): InbaArticleRelationResponseCollection
-  locale: String
-  localizations(filters: InbaTagFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [InbaTag]!
-  localizations_connection(filters: InbaTagFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): InbaTagRelationResponseCollection
-  publishedAt: DateTime
-  title: String!
-  updatedAt: DateTime
-}
-
-type InbaTagEntity {
-  attributes: InbaTag
-  id: ID
-}
-
-type InbaTagEntityResponse {
-  data: InbaTag
-}
-
-type InbaTagEntityResponseCollection {
-  nodes: [InbaTag!]!
-  pageInfo: Pagination!
-}
-
-input InbaTagFiltersInput {
-  and: [InbaTagFiltersInput]
-  createdAt: DateTimeFilterInput
-  documentId: IDFilterInput
-  inbaArticles: InbaArticleFiltersInput
-  locale: StringFilterInput
-  localizations: InbaTagFiltersInput
-  not: InbaTagFiltersInput
-  or: [InbaTagFiltersInput]
-  publishedAt: DateTimeFilterInput
-  title: StringFilterInput
-  updatedAt: DateTimeFilterInput
-}
-
-input InbaTagInput {
-  inbaArticles: [ID]
-  publishedAt: DateTime
-  title: String
-}
-
-type InbaTagRelationResponseCollection {
-  nodes: [InbaTag!]!
 }
 
 input IntFilterInput {
@@ -3727,21 +3611,7 @@ type Mutation {
     locale: I18NLocaleCode
     status: PublicationStatus = PUBLISHED
   ): FaqCategory
-  createInbaArticle(
-    data: InbaArticleInput!
-
-    """The locale to use for the query"""
-    locale: I18NLocaleCode
-    status: PublicationStatus = PUBLISHED
-  ): InbaArticle
   createInbaRelease(data: InbaReleaseInput!, status: PublicationStatus = PUBLISHED): InbaRelease
-  createInbaTag(
-    data: InbaTagInput!
-
-    """The locale to use for the query"""
-    locale: I18NLocaleCode
-    status: PublicationStatus = PUBLISHED
-  ): InbaTag
   createInternalJob(data: InternalJobInput!, status: PublicationStatus = PUBLISHED): InternalJob
   createPage(
     data: PageInput!
@@ -3819,19 +3689,7 @@ type Mutation {
     """The locale to use for the query"""
     locale: I18NLocaleCode
   ): DeleteMutationResponse
-  deleteInbaArticle(
-    documentId: ID!
-
-    """The locale to use for the query"""
-    locale: I18NLocaleCode
-  ): DeleteMutationResponse
   deleteInbaRelease(documentId: ID!): DeleteMutationResponse
-  deleteInbaTag(
-    documentId: ID!
-
-    """The locale to use for the query"""
-    locale: I18NLocaleCode
-  ): DeleteMutationResponse
   deleteInternalJob(documentId: ID!): DeleteMutationResponse
   deleteMenu(
     """The locale to use for the query"""
@@ -3947,23 +3805,7 @@ type Mutation {
     locale: I18NLocaleCode
     status: PublicationStatus = PUBLISHED
   ): Homepage
-  updateInbaArticle(
-    data: InbaArticleInput!
-    documentId: ID!
-
-    """The locale to use for the query"""
-    locale: I18NLocaleCode
-    status: PublicationStatus = PUBLISHED
-  ): InbaArticle
   updateInbaRelease(data: InbaReleaseInput!, documentId: ID!, status: PublicationStatus = PUBLISHED): InbaRelease
-  updateInbaTag(
-    data: InbaTagInput!
-    documentId: ID!
-
-    """The locale to use for the query"""
-    locale: I18NLocaleCode
-    status: PublicationStatus = PUBLISHED
-  ): InbaTag
   updateInternalJob(data: InternalJobInput!, documentId: ID!, status: PublicationStatus = PUBLISHED): InternalJob
   updateMenu(
     data: MenuInput!
@@ -4028,7 +3870,6 @@ type Page {
   localizations(filters: PageFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [Page]!
   localizations_connection(filters: PageFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): PageRelationResponseCollection
   metaDescription: String
-  metaDiscription: String
   pageBackgroundImage: UploadFile
   pageCategory: PageCategory
   pageColor: ENUM_PAGE_PAGECOLOR!
@@ -4140,7 +3981,6 @@ input PageFiltersInput {
   locale: StringFilterInput
   localizations: PageFiltersInput
   metaDescription: StringFilterInput
-  metaDiscription: StringFilterInput
   not: PageFiltersInput
   or: [PageFiltersInput]
   pageCategory: PageCategoryFiltersInput
@@ -4169,7 +4009,6 @@ input PageInput {
   headerLinks: [ComponentBlocksCommonLinkInput]
   keywords: String
   metaDescription: String
-  metaDiscription: String
   pageBackgroundImage: ID
   pageCategory: ID
   pageColor: ENUM_PAGE_PAGECOLOR
@@ -4363,59 +4202,9 @@ type Query {
   i18NLocale(documentId: ID!, status: PublicationStatus = PUBLISHED): I18NLocale
   i18NLocales(filters: I18NLocaleFiltersInput, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED): [I18NLocale]!
   i18NLocales_connection(filters: I18NLocaleFiltersInput, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED): I18NLocaleEntityResponseCollection
-  inbaArticle(
-    documentId: ID!
-
-    """The locale to use for the query"""
-    locale: I18NLocaleCode
-    status: PublicationStatus = PUBLISHED
-  ): InbaArticle
-  inbaArticles(
-    filters: InbaArticleFiltersInput
-
-    """The locale to use for the query"""
-    locale: I18NLocaleCode
-    pagination: PaginationArg = {}
-    sort: [String] = []
-    status: PublicationStatus = PUBLISHED
-  ): [InbaArticle]!
-  inbaArticles_connection(
-    filters: InbaArticleFiltersInput
-
-    """The locale to use for the query"""
-    locale: I18NLocaleCode
-    pagination: PaginationArg = {}
-    sort: [String] = []
-    status: PublicationStatus = PUBLISHED
-  ): InbaArticleEntityResponseCollection
   inbaRelease(documentId: ID!, status: PublicationStatus = PUBLISHED): InbaRelease
   inbaReleases(filters: InbaReleaseFiltersInput, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED): [InbaRelease]!
   inbaReleases_connection(filters: InbaReleaseFiltersInput, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED): InbaReleaseEntityResponseCollection
-  inbaTag(
-    documentId: ID!
-
-    """The locale to use for the query"""
-    locale: I18NLocaleCode
-    status: PublicationStatus = PUBLISHED
-  ): InbaTag
-  inbaTags(
-    filters: InbaTagFiltersInput
-
-    """The locale to use for the query"""
-    locale: I18NLocaleCode
-    pagination: PaginationArg = {}
-    sort: [String] = []
-    status: PublicationStatus = PUBLISHED
-  ): [InbaTag]!
-  inbaTags_connection(
-    filters: InbaTagFiltersInput
-
-    """The locale to use for the query"""
-    locale: I18NLocaleCode
-    pagination: PaginationArg = {}
-    sort: [String] = []
-    status: PublicationStatus = PUBLISHED
-  ): InbaTagEntityResponseCollection
   internalJob(documentId: ID!, status: PublicationStatus = PUBLISHED): InternalJob
   internalJobs(filters: InternalJobFiltersInput, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED): [InternalJob]!
   internalJobs_connection(filters: InternalJobFiltersInput, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED): InternalJobEntityResponseCollection

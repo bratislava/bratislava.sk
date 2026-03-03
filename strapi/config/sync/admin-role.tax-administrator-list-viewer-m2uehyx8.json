@@ -15,13 +15,13 @@
           "faqs"
         ],
         "locales": [
-          "en",
-          "sk"
+          "sk",
+          "en"
         ]
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "wetdacp2cgwinbtleyumwb05",
+      "documentId": "q6mz635rriaykumqowv83npy",
       "locale": null
     },
     {
@@ -34,13 +34,13 @@
           "faqCategory"
         ],
         "locales": [
-          "en",
-          "sk"
+          "sk",
+          "en"
         ]
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "rpsl2uxzytzu11wxh89s1iyg",
+      "documentId": "oiqrj0bee3zijb0ig330ws0n",
       "locale": null
     },
     {
@@ -60,13 +60,13 @@
           "menus.sections.links.analyticsId"
         ],
         "locales": [
-          "en",
-          "sk"
+          "sk",
+          "en"
         ]
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "fusyokzcb0l1hprm64p43jm0",
+      "documentId": "sqj6xw37c1zfr7lic8s36m1v",
       "locale": null
     },
     {
@@ -75,10 +75,10 @@
       "properties": {
         "fields": [
           "title",
-          "slug",
+          "path",
           "alias",
           "subtext",
-          "metaDiscription",
+          "metaDescription",
           "keywords",
           "pageCategory",
           "pageColor",
@@ -95,13 +95,13 @@
           "relatedContents"
         ],
         "locales": [
-          "en",
-          "sk"
+          "sk",
+          "en"
         ]
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "epm1s9nb80p47y1uthpf3zta",
+      "documentId": "pcu1cclgawag2uhin4zyhuqu",
       "locale": null
     },
     {

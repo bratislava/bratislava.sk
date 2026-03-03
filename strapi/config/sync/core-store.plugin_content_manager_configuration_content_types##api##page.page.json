@@ -36,8 +36,8 @@
       },
       "slug": {
         "edit": {
-          "label": "Cesta (bez lomky na začiatku)",
-          "description": "Dôležité: Ak je pri zmene cesty potrebné zachovať aj funkčnosť starého odkazu a vytvoriť presmerovanie, kontaktujte prosím Oddelenie vývoja inovácií VOPRED.",
+          "label": "Slug",
+          "description": " ",
           "placeholder": "",
           "visible": true,
           "editable": true
@@ -50,8 +50,8 @@
       },
       "path": {
         "edit": {
-          "label": "path",
-          "description": "",
+          "label": "Cesta (bez lomky na začiatku)",
+          "description": "Dôležité: Ak je pri zmene cesty potrebné zachovať aj funkčnosť starého odkazu a vytvoriť presmerovanie, kontaktujte prosím Oddelenie vývoja inovácií VOPRED.",
           "placeholder": "",
           "visible": true,
           "editable": true
@@ -90,23 +90,9 @@
           "sortable": true
         }
       },
-      "metaDiscription": {
-        "edit": {
-          "label": "Meta popis",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "metaDiscription",
-          "searchable": true,
-          "sortable": true
-        }
-      },
       "metaDescription": {
         "edit": {
-          "label": "metaDescription",
+          "label": "Meta Popis",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -195,7 +181,8 @@
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true
+          "editable": true,
+          "mainField": "label"
         },
         "list": {
           "label": "headerLinks",
@@ -223,7 +210,8 @@
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true
+          "editable": true,
+          "mainField": "documentId"
         },
         "list": {
           "label": "subnavigation",
@@ -469,7 +457,7 @@
         ],
         [
           {
-            "name": "slug",
+            "name": "path",
             "size": 12
           }
         ],
@@ -503,7 +491,7 @@
         ],
         [
           {
-            "name": "metaDiscription",
+            "name": "metaDescription",
             "size": 12
           }
         ],
@@ -521,12 +509,6 @@
         ],
         [
           {
-            "name": "pageHeaderSections",
-            "size": 12
-          }
-        ],
-        [
-          {
             "name": "subnavigation",
             "size": 12
           }
@@ -539,19 +521,19 @@
         ],
         [
           {
-            "name": "sections",
-            "size": 12
-          }
-        ],
-        [
-          {
             "name": "childPages",
             "size": 12
           }
         ],
         [
           {
-            "name": "relatedContents",
+            "name": "pageHeaderSections",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "sections",
             "size": 12
           }
         ],
@@ -563,25 +545,11 @@
         ],
         [
           {
-            "name": "alias",
+            "name": "relatedContents",
             "size": 12
           }
         ],
         [
-          {
-            "name": "adminGroups",
-            "size": 6
-          },
-          {
-            "name": "path",
-            "size": 6
-          }
-        ],
-        [
-          {
-            "name": "metaDescription",
-            "size": 6
-          },
           {
             "name": "parent",
             "size": 6
@@ -599,11 +567,29 @@
         ],
         [
           {
+            "name": "alias",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "adminGroups",
+            "size": 6
+          }
+        ],
+        [
+          {
             "name": "redirects",
             "size": 6
           },
           {
             "name": "breadcrumbTitle",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "slug",
             "size": 6
           }
         ]

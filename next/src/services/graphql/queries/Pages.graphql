@@ -26,6 +26,7 @@ fragment PageSlugEntity on Page {
   slug
   title
   locale
+  path
 }
 
 fragment PageCardEntity on Page {
@@ -47,7 +48,7 @@ fragment PageEntity on Page {
   alias
   subtext
   pageColor
-  metaDiscription
+  metaDescription
   keywords
   showTableOfContents
   adminGroups {
