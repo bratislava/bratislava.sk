@@ -1,5 +1,6 @@
 import NextErrorComponent from 'next/error'
 
+// eslint-disable-next-line react/prop-types
 const MyError = ({ statusCode }) => {
   return <NextErrorComponent statusCode={statusCode} />
 }

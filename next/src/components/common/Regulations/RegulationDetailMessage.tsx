@@ -50,6 +50,7 @@ const RegulationDetailMessage = ({ regulation }: RegulationDetailMessageProps) =
   const alertTitle = isCancelledDirectly || hasCancelledAmendees ? 'Zrušené' : 'Platné'
 
   // TODO translations - use translations after this component is refactored
+  /* eslint-disable i18next/no-literal-string */
   const alertContent = isCancelledDirectly ? (
     <Typography variant="p-small" className="whitespace-normal">
       Toto VZN bolo zrušené všeobecne záväzným nariadením{' '}
@@ -83,6 +84,7 @@ const RegulationDetailMessage = ({ regulation }: RegulationDetailMessageProps) =
       <span className="font-medium whitespace-nowrap">{formatDate(effectiveFrom)}</span>.
     </Typography>
   )
+  /* eslint-enable i18next/no-literal-string */
 
   return (
     <AlertMessage title={alertTitle} variant={alertVariant}>

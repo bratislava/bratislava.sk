@@ -14,7 +14,7 @@ const NavMenuContext = createContext<NavMenuContextType>({
   setMobileMenuOpen: () => {},
 })
 
-export const NavMenuContextProvider = ({ children }: PropsWithChildren<{}>) => {
+export const NavMenuContextProvider = ({ children }: PropsWithChildren) => {
   const [menuValue, setMenuValue] = useState<string>('')
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false)
 
