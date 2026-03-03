@@ -80,10 +80,10 @@ export const getStaticProps: GetStaticProps<PageProps, StaticParams> = async ({
   }
 
   // Check if a Page with this alias exists
-  const aliasPageSlug = aliasPages[0]?.slug
-  if (aliasPageSlug) {
+  const aliasPagePath = aliasPages[0]?.path
+  if (aliasPagePath) {
     // Get the full path for the page by its slug
-    redirectPath = `/${aliasPageSlug}`
+    redirectPath = `/${aliasPagePath}`
   }
 
   // Note that alias in pages and articles are unique only within their own content type
@@ -118,12 +118,12 @@ export const getStaticProps: GetStaticProps<PageProps, StaticParams> = async ({
 }
 
 const Page = ({ general, page, dehydratedState }: PageProps) => {
-  const { slug, title, metaDiscription, subtext, keywords, locale, pageColor, adminGroups } = page
+  const { title, metaDescription, subtext, keywords, locale, pageColor, adminGroups, path } = page
 
   const localization = page.localizations[0]
   const localizations = Object.fromEntries(
     [
-      [locale as LanguageCode, `/${slug}`] as const,
+      [locale as LanguageCode, `/${path}`] as const,
       localization
         ? ([localization.locale as LanguageCode, `/${localization.slug}`] as const)
         : null,
@@ -135,7 +135,7 @@ const Page = ({ general, page, dehydratedState }: PageProps) => {
       <GeneralContextProvider general={general}>
         <AdminGroupsContextProvider adminGroups={adminGroups.filter(isDefined)}>
           <LocalizationsProvider localizations={localizations}>
-            <SeoHead title={title} description={metaDiscription ?? subtext} keywords={keywords} />
+            <SeoHead title={title} description={metaDescription ?? subtext} keywords={keywords} />
             <GlobalCategoryColorProvider color={pageColor} />
             <PageLayout>
               <GeneralPageContent page={page} />

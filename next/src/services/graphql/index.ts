@@ -5045,7 +5045,6 @@ export type Page = {
   localizations: Array<Maybe<Page>>
   localizations_connection?: Maybe<PageRelationResponseCollection>
   metaDescription?: Maybe<Scalars['String']['output']>
-  metaDiscription?: Maybe<Scalars['String']['output']>
   pageBackgroundImage?: Maybe<UploadFile>
   pageCategory?: Maybe<PageCategory>
   pageColor: Enum_Page_Pagecolor
@@ -5267,7 +5266,6 @@ export type PageFiltersInput = {
   locale?: InputMaybe<StringFilterInput>
   localizations?: InputMaybe<PageFiltersInput>
   metaDescription?: InputMaybe<StringFilterInput>
-  metaDiscription?: InputMaybe<StringFilterInput>
   not?: InputMaybe<PageFiltersInput>
   or?: InputMaybe<Array<InputMaybe<PageFiltersInput>>>
   pageCategory?: InputMaybe<PageCategoryFiltersInput>
@@ -5296,7 +5294,6 @@ export type PageInput = {
   headerLinks?: InputMaybe<Array<InputMaybe<ComponentBlocksCommonLinkInput>>>
   keywords?: InputMaybe<Scalars['String']['input']>
   metaDescription?: InputMaybe<Scalars['String']['input']>
-  metaDiscription?: InputMaybe<Scalars['String']['input']>
   pageBackgroundImage?: InputMaybe<Scalars['ID']['input']>
   pageCategory?: InputMaybe<Scalars['ID']['input']>
   pageColor?: InputMaybe<Enum_Page_Pagecolor>
@@ -6801,18 +6798,21 @@ export type AdminGroupEntityFragment = {
     slug?: string | null
     title: string
     locale?: string | null
+    path?: string | null
     localizations: Array<{
       __typename?: 'Page'
       documentId: string
       slug?: string | null
       title: string
       locale?: string | null
+      path?: string | null
       childPages: Array<{
         __typename?: 'Page'
         documentId: string
         slug?: string | null
         title: string
         locale?: string | null
+        path?: string | null
       } | null>
     } | null>
     childPages: Array<{
@@ -6821,6 +6821,7 @@ export type AdminGroupEntityFragment = {
       slug?: string | null
       title: string
       locale?: string | null
+      path?: string | null
     } | null>
   } | null
   submenuPages?: Array<{
@@ -6834,6 +6835,7 @@ export type AdminGroupEntityFragment = {
       slug?: string | null
       title: string
       locale?: string | null
+      path?: string | null
     } | null
   } | null> | null
 }
@@ -6844,12 +6846,14 @@ export type PageSubnavigationEntityFragment = {
   slug?: string | null
   title: string
   locale?: string | null
+  path?: string | null
   childPages: Array<{
     __typename?: 'Page'
     documentId: string
     slug?: string | null
     title: string
     locale?: string | null
+    path?: string | null
   } | null>
 }
 
@@ -6875,18 +6879,21 @@ export type AdminGroupsQuery = {
       slug?: string | null
       title: string
       locale?: string | null
+      path?: string | null
       localizations: Array<{
         __typename?: 'Page'
         documentId: string
         slug?: string | null
         title: string
         locale?: string | null
+        path?: string | null
         childPages: Array<{
           __typename?: 'Page'
           documentId: string
           slug?: string | null
           title: string
           locale?: string | null
+          path?: string | null
         } | null>
       } | null>
       childPages: Array<{
@@ -6895,6 +6902,7 @@ export type AdminGroupsQuery = {
         slug?: string | null
         title: string
         locale?: string | null
+        path?: string | null
       } | null>
     } | null
     submenuPages?: Array<{
@@ -6908,6 +6916,7 @@ export type AdminGroupsQuery = {
         slug?: string | null
         title: string
         locale?: string | null
+        path?: string | null
       } | null
     } | null> | null
   } | null>
@@ -7725,6 +7734,7 @@ export type CommonLinkFragment = {
     slug?: string | null
     title: string
     locale?: string | null
+    path?: string | null
   } | null
   article?: {
     __typename: 'Article'
@@ -7757,6 +7767,7 @@ export type CardLinkFragment = {
     slug?: string | null
     title: string
     locale?: string | null
+    path?: string | null
     pageBackgroundImage?: { __typename?: 'UploadFile'; documentId: string; url: string } | null
   } | null
   article?: {
@@ -7809,6 +7820,7 @@ export type PageLinkFragment = {
     slug?: string | null
     title: string
     locale?: string | null
+    path?: string | null
   } | null
 }
 
@@ -7826,6 +7838,7 @@ export type FooterColumnBlockFragment = {
       slug?: string | null
       title: string
       locale?: string | null
+      path?: string | null
     } | null
     article?: {
       __typename: 'Article'
@@ -7859,6 +7872,7 @@ export type FooterFragment = {
         slug?: string | null
         title: string
         locale?: string | null
+        path?: string | null
       } | null
       article?: {
         __typename: 'Article'
@@ -7880,6 +7894,7 @@ export type FooterFragment = {
       slug?: string | null
       title: string
       locale?: string | null
+      path?: string | null
     } | null
     article?: {
       __typename: 'Article'
@@ -7900,6 +7915,7 @@ export type FooterFragment = {
       slug?: string | null
       title: string
       locale?: string | null
+      path?: string | null
     } | null
     article?: {
       __typename: 'Article'
@@ -7923,6 +7939,7 @@ export type MenuLinkFragment = {
     slug?: string | null
     title: string
     locale?: string | null
+    path?: string | null
   } | null
 }
 
@@ -7938,6 +7955,7 @@ export type MenuSectionFragment = {
     slug?: string | null
     title: string
     locale?: string | null
+    path?: string | null
   } | null
   links?: Array<{
     __typename?: 'ComponentMenuMenuLink'
@@ -7951,6 +7969,7 @@ export type MenuSectionFragment = {
       slug?: string | null
       title: string
       locale?: string | null
+      path?: string | null
     } | null
   } | null> | null
 }
@@ -7966,6 +7985,7 @@ export type MenuItemFragment = {
     slug?: string | null
     title: string
     locale?: string | null
+    path?: string | null
   } | null
   sections?: Array<{
     __typename?: 'ComponentMenuMenuSection'
@@ -7979,6 +7999,7 @@ export type MenuItemFragment = {
       slug?: string | null
       title: string
       locale?: string | null
+      path?: string | null
     } | null
     links?: Array<{
       __typename?: 'ComponentMenuMenuLink'
@@ -7992,6 +8013,7 @@ export type MenuItemFragment = {
         slug?: string | null
         title: string
         locale?: string | null
+        path?: string | null
       } | null
     } | null> | null
   } | null> | null
@@ -8011,6 +8033,7 @@ export type HeaderLinkFragment = {
     slug?: string | null
     title: string
     locale?: string | null
+    path?: string | null
   } | null
 }
 
@@ -8032,6 +8055,7 @@ export type GeneralFragment = {
         slug?: string | null
         title: string
         locale?: string | null
+        path?: string | null
       } | null
     } | null> | null
     accountLink?: {
@@ -8045,6 +8069,7 @@ export type GeneralFragment = {
         slug?: string | null
         title: string
         locale?: string | null
+        path?: string | null
       } | null
       article?: {
         __typename: 'Article'
@@ -8363,6 +8388,7 @@ export type GeneralQuery = {
           slug?: string | null
           title: string
           locale?: string | null
+          path?: string | null
         } | null
       } | null> | null
       accountLink?: {
@@ -8376,6 +8402,7 @@ export type GeneralQuery = {
           slug?: string | null
           title: string
           locale?: string | null
+          path?: string | null
         } | null
         article?: {
           __typename: 'Article'
@@ -8680,6 +8707,7 @@ export type GeneralQuery = {
         slug?: string | null
         title: string
         locale?: string | null
+        path?: string | null
       } | null
       sections?: Array<{
         __typename?: 'ComponentMenuMenuSection'
@@ -8693,6 +8721,7 @@ export type GeneralQuery = {
           slug?: string | null
           title: string
           locale?: string | null
+          path?: string | null
         } | null
         links?: Array<{
           __typename?: 'ComponentMenuMenuLink'
@@ -8706,6 +8735,7 @@ export type GeneralQuery = {
             slug?: string | null
             title: string
             locale?: string | null
+            path?: string | null
           } | null
         } | null> | null
       } | null> | null
@@ -8733,6 +8763,7 @@ export type GeneralQuery = {
           slug?: string | null
           title: string
           locale?: string | null
+          path?: string | null
         } | null
         article?: {
           __typename: 'Article'
@@ -8754,6 +8785,7 @@ export type GeneralQuery = {
         slug?: string | null
         title: string
         locale?: string | null
+        path?: string | null
       } | null
       article?: {
         __typename: 'Article'
@@ -8774,6 +8806,7 @@ export type GeneralQuery = {
         slug?: string | null
         title: string
         locale?: string | null
+        path?: string | null
       } | null
       article?: {
         __typename: 'Article'
@@ -8822,6 +8855,7 @@ export type HomepageEntityFragment = {
         slug?: string | null
         title: string
         locale?: string | null
+        path?: string | null
         pageBackgroundImage?: { __typename?: 'UploadFile'; documentId: string; url: string } | null
       } | null
       article?: {
@@ -8960,6 +8994,7 @@ export type HomepageEntityFragment = {
         slug?: string | null
         title: string
         locale?: string | null
+        path?: string | null
       } | null
       article?: {
         __typename: 'Article'
@@ -8980,6 +9015,7 @@ export type HomepageEntityFragment = {
         slug?: string | null
         title: string
         locale?: string | null
+        path?: string | null
       } | null
       article?: {
         __typename: 'Article'
@@ -9000,6 +9036,7 @@ export type HomepageEntityFragment = {
         slug?: string | null
         title: string
         locale?: string | null
+        path?: string | null
       } | null
       article?: {
         __typename: 'Article'
@@ -9025,6 +9062,7 @@ export type HomepageEntityFragment = {
         slug?: string | null
         title: string
         locale?: string | null
+        path?: string | null
       } | null
       article?: {
         __typename: 'Article'
@@ -9045,6 +9083,7 @@ export type HomepageEntityFragment = {
         slug?: string | null
         title: string
         locale?: string | null
+        path?: string | null
       } | null
       article?: {
         __typename: 'Article'
@@ -9070,6 +9109,7 @@ export type HomepageEntityFragment = {
         slug?: string | null
         title: string
         locale?: string | null
+        path?: string | null
       } | null
       article?: {
         __typename: 'Article'
@@ -9097,6 +9137,7 @@ export type HomepageEntityFragment = {
           slug?: string | null
           title: string
           locale?: string | null
+          path?: string | null
         } | null
         article?: {
           __typename: 'Article'
@@ -9123,6 +9164,7 @@ export type HomepageEntityFragment = {
         slug?: string | null
         title: string
         locale?: string | null
+        path?: string | null
       } | null
       article?: {
         __typename: 'Article'
@@ -9167,6 +9209,7 @@ export type HomepageQuery = {
           slug?: string | null
           title: string
           locale?: string | null
+          path?: string | null
           pageBackgroundImage?: {
             __typename?: 'UploadFile'
             documentId: string
@@ -9309,6 +9352,7 @@ export type HomepageQuery = {
           slug?: string | null
           title: string
           locale?: string | null
+          path?: string | null
         } | null
         article?: {
           __typename: 'Article'
@@ -9329,6 +9373,7 @@ export type HomepageQuery = {
           slug?: string | null
           title: string
           locale?: string | null
+          path?: string | null
         } | null
         article?: {
           __typename: 'Article'
@@ -9349,6 +9394,7 @@ export type HomepageQuery = {
           slug?: string | null
           title: string
           locale?: string | null
+          path?: string | null
         } | null
         article?: {
           __typename: 'Article'
@@ -9374,6 +9420,7 @@ export type HomepageQuery = {
           slug?: string | null
           title: string
           locale?: string | null
+          path?: string | null
         } | null
         article?: {
           __typename: 'Article'
@@ -9394,6 +9441,7 @@ export type HomepageQuery = {
           slug?: string | null
           title: string
           locale?: string | null
+          path?: string | null
         } | null
         article?: {
           __typename: 'Article'
@@ -9419,6 +9467,7 @@ export type HomepageQuery = {
           slug?: string | null
           title: string
           locale?: string | null
+          path?: string | null
         } | null
         article?: {
           __typename: 'Article'
@@ -9446,6 +9495,7 @@ export type HomepageQuery = {
             slug?: string | null
             title: string
             locale?: string | null
+            path?: string | null
           } | null
           article?: {
             __typename: 'Article'
@@ -9472,6 +9522,7 @@ export type HomepageQuery = {
           slug?: string | null
           title: string
           locale?: string | null
+          path?: string | null
         } | null
         article?: {
           __typename: 'Article'
@@ -9498,6 +9549,7 @@ export type HomepageHighlightsItemFragment = {
     slug?: string | null
     title: string
     locale?: string | null
+    path?: string | null
     pageBackgroundImage?: { __typename?: 'UploadFile'; documentId: string; url: string } | null
   } | null
   article?: {
@@ -9636,6 +9688,7 @@ export type HomepageTabsFragment = {
       slug?: string | null
       title: string
       locale?: string | null
+      path?: string | null
     } | null
     article?: {
       __typename: 'Article'
@@ -9656,6 +9709,7 @@ export type HomepageTabsFragment = {
       slug?: string | null
       title: string
       locale?: string | null
+      path?: string | null
     } | null
     article?: {
       __typename: 'Article'
@@ -9676,6 +9730,7 @@ export type HomepageTabsFragment = {
       slug?: string | null
       title: string
       locale?: string | null
+      path?: string | null
     } | null
     article?: {
       __typename: 'Article'
@@ -9702,6 +9757,7 @@ export type HomepageMayorAndCouncilSectionFragment = {
       slug?: string | null
       title: string
       locale?: string | null
+      path?: string | null
     } | null
     article?: {
       __typename: 'Article'
@@ -9722,6 +9778,7 @@ export type HomepageMayorAndCouncilSectionFragment = {
       slug?: string | null
       title: string
       locale?: string | null
+      path?: string | null
     } | null
     article?: {
       __typename: 'Article'
@@ -9747,6 +9804,7 @@ export type TopServicesItemFragment = {
       slug?: string | null
       title: string
       locale?: string | null
+      path?: string | null
     } | null
     article?: {
       __typename: 'Article'
@@ -9773,6 +9831,7 @@ export type HomepageInbaFragment = {
       slug?: string | null
       title: string
       locale?: string | null
+      path?: string | null
     } | null
     article?: {
       __typename: 'Article'
@@ -10335,6 +10394,7 @@ export type PageSlugEntityFragment = {
   slug?: string | null
   title: string
   locale?: string | null
+  path?: string | null
 }
 
 export type PageCardEntityFragment = {
@@ -10343,6 +10403,7 @@ export type PageCardEntityFragment = {
   slug?: string | null
   title: string
   locale?: string | null
+  path?: string | null
   pageBackgroundImage?: { __typename?: 'UploadFile'; documentId: string; url: string } | null
 }
 
@@ -10352,6 +10413,7 @@ export type PageCardWithHeadersEntityFragment = {
   slug?: string | null
   title: string
   locale?: string | null
+  path?: string | null
   pageHeaderSections?: Array<
     | { __typename: 'ComponentHeaderSectionsEvent'; date?: any | null; address?: string | null }
     | {
@@ -10380,13 +10442,14 @@ export type PageEntityFragment = {
   alias?: string | null
   subtext?: string | null
   pageColor: Enum_Page_Pagecolor
-  metaDiscription?: string | null
+  metaDescription?: string | null
   keywords?: string | null
   showTableOfContents?: boolean | null
   documentId: string
   slug?: string | null
   title: string
   locale?: string | null
+  path?: string | null
   adminGroups: Array<{
     __typename?: 'AdminGroup'
     contentManagedBy: string
@@ -10400,18 +10463,21 @@ export type PageEntityFragment = {
       slug?: string | null
       title: string
       locale?: string | null
+      path?: string | null
       localizations: Array<{
         __typename?: 'Page'
         documentId: string
         slug?: string | null
         title: string
         locale?: string | null
+        path?: string | null
         childPages: Array<{
           __typename?: 'Page'
           documentId: string
           slug?: string | null
           title: string
           locale?: string | null
+          path?: string | null
         } | null>
       } | null>
       childPages: Array<{
@@ -10420,6 +10486,7 @@ export type PageEntityFragment = {
         slug?: string | null
         title: string
         locale?: string | null
+        path?: string | null
       } | null>
     } | null
     submenuPages?: Array<{
@@ -10433,6 +10500,7 @@ export type PageEntityFragment = {
         slug?: string | null
         title: string
         locale?: string | null
+        path?: string | null
       } | null
     } | null> | null
   } | null>
@@ -10447,6 +10515,7 @@ export type PageEntityFragment = {
       slug?: string | null
       title: string
       locale?: string | null
+      path?: string | null
     } | null
     article?: {
       __typename: 'Article'
@@ -10491,6 +10560,7 @@ export type PageEntityFragment = {
         slug?: string | null
         title: string
         locale?: string | null
+        path?: string | null
       } | null
     } | null> | null
   } | null
@@ -10522,6 +10592,7 @@ export type PageEntityFragment = {
             slug?: string | null
             title: string
             locale?: string | null
+            path?: string | null
           } | null
           fileList?: Array<{
             __typename?: 'ComponentBlocksFileItem'
@@ -10630,6 +10701,7 @@ export type PageEntityFragment = {
             slug?: string | null
             title: string
             locale?: string | null
+            path?: string | null
           } | null
           article?: {
             __typename: 'Article'
@@ -10690,6 +10762,7 @@ export type PageEntityFragment = {
             slug?: string | null
             title: string
             locale?: string | null
+            path?: string | null
           } | null
           article?: {
             __typename: 'Article'
@@ -10750,6 +10823,7 @@ export type PageEntityFragment = {
             slug?: string | null
             title: string
             locale?: string | null
+            path?: string | null
           } | null
           article?: {
             __typename: 'Article'
@@ -10770,6 +10844,7 @@ export type PageEntityFragment = {
             slug?: string | null
             title: string
             locale?: string | null
+            path?: string | null
           } | null
           article?: {
             __typename: 'Article'
@@ -10790,6 +10865,7 @@ export type PageEntityFragment = {
             slug?: string | null
             title: string
             locale?: string | null
+            path?: string | null
           } | null
           article?: {
             __typename: 'Article'
@@ -10947,6 +11023,7 @@ export type PageEntityFragment = {
           slug?: string | null
           title: string
           locale?: string | null
+          path?: string | null
           pageHeaderSections?: Array<
             | {
                 __typename: 'ComponentHeaderSectionsEvent'
@@ -10989,6 +11066,7 @@ export type PageEntityFragment = {
           slug?: string | null
           title: string
           locale?: string | null
+          path?: string | null
           pageHeaderSections?: Array<
             | {
                 __typename: 'ComponentHeaderSectionsEvent'
@@ -11115,6 +11193,7 @@ export type PageEntityFragment = {
             slug?: string | null
             title: string
             locale?: string | null
+            path?: string | null
           } | null
           article?: {
             __typename: 'Article'
@@ -11146,6 +11225,7 @@ export type PageEntityFragment = {
             slug?: string | null
             title: string
             locale?: string | null
+            path?: string | null
           } | null
         } | null> | null
       }
@@ -11180,6 +11260,7 @@ export type PageEntityFragment = {
             slug?: string | null
             title: string
             locale?: string | null
+            path?: string | null
           } | null
           article?: {
             __typename: 'Article'
@@ -11385,6 +11466,7 @@ export type PageEntityFragment = {
               slug?: string | null
               title: string
               locale?: string | null
+              path?: string | null
             } | null
             article?: {
               __typename: 'Article'
@@ -11405,6 +11487,7 @@ export type PageEntityFragment = {
               slug?: string | null
               title: string
               locale?: string | null
+              path?: string | null
             } | null
             article?: {
               __typename: 'Article'
@@ -11425,6 +11508,7 @@ export type PageEntityFragment = {
               slug?: string | null
               title: string
               locale?: string | null
+              path?: string | null
             } | null
             article?: {
               __typename: 'Article'
@@ -11457,6 +11541,7 @@ export type PageEntityFragment = {
             slug?: string | null
             title: string
             locale?: string | null
+            path?: string | null
             pageBackgroundImage?: {
               __typename?: 'UploadFile'
               documentId: string
@@ -11528,6 +11613,7 @@ export type PageEntityFragment = {
             slug?: string | null
             title: string
             locale?: string | null
+            path?: string | null
           } | null
           article?: {
             __typename: 'Article'
@@ -11563,6 +11649,7 @@ export type PageEntityFragment = {
             slug?: string | null
             title: string
             locale?: string | null
+            path?: string | null
           } | null
           article?: {
             __typename: 'Article'
@@ -11588,6 +11675,7 @@ export type PageEntityFragment = {
             slug?: string | null
             title: string
             locale?: string | null
+            path?: string | null
           } | null
           article?: {
             __typename: 'Article'
@@ -11687,13 +11775,14 @@ export type PageBySlugQuery = {
     alias?: string | null
     subtext?: string | null
     pageColor: Enum_Page_Pagecolor
-    metaDiscription?: string | null
+    metaDescription?: string | null
     keywords?: string | null
     showTableOfContents?: boolean | null
     documentId: string
     slug?: string | null
     title: string
     locale?: string | null
+    path?: string | null
     adminGroups: Array<{
       __typename?: 'AdminGroup'
       contentManagedBy: string
@@ -11707,18 +11796,21 @@ export type PageBySlugQuery = {
         slug?: string | null
         title: string
         locale?: string | null
+        path?: string | null
         localizations: Array<{
           __typename?: 'Page'
           documentId: string
           slug?: string | null
           title: string
           locale?: string | null
+          path?: string | null
           childPages: Array<{
             __typename?: 'Page'
             documentId: string
             slug?: string | null
             title: string
             locale?: string | null
+            path?: string | null
           } | null>
         } | null>
         childPages: Array<{
@@ -11727,6 +11819,7 @@ export type PageBySlugQuery = {
           slug?: string | null
           title: string
           locale?: string | null
+          path?: string | null
         } | null>
       } | null
       submenuPages?: Array<{
@@ -11740,6 +11833,7 @@ export type PageBySlugQuery = {
           slug?: string | null
           title: string
           locale?: string | null
+          path?: string | null
         } | null
       } | null> | null
     } | null>
@@ -11754,6 +11848,7 @@ export type PageBySlugQuery = {
         slug?: string | null
         title: string
         locale?: string | null
+        path?: string | null
       } | null
       article?: {
         __typename: 'Article'
@@ -11798,6 +11893,7 @@ export type PageBySlugQuery = {
           slug?: string | null
           title: string
           locale?: string | null
+          path?: string | null
         } | null
       } | null> | null
     } | null
@@ -11829,6 +11925,7 @@ export type PageBySlugQuery = {
               slug?: string | null
               title: string
               locale?: string | null
+              path?: string | null
             } | null
             fileList?: Array<{
               __typename?: 'ComponentBlocksFileItem'
@@ -11937,6 +12034,7 @@ export type PageBySlugQuery = {
               slug?: string | null
               title: string
               locale?: string | null
+              path?: string | null
             } | null
             article?: {
               __typename: 'Article'
@@ -11997,6 +12095,7 @@ export type PageBySlugQuery = {
               slug?: string | null
               title: string
               locale?: string | null
+              path?: string | null
             } | null
             article?: {
               __typename: 'Article'
@@ -12057,6 +12156,7 @@ export type PageBySlugQuery = {
               slug?: string | null
               title: string
               locale?: string | null
+              path?: string | null
             } | null
             article?: {
               __typename: 'Article'
@@ -12077,6 +12177,7 @@ export type PageBySlugQuery = {
               slug?: string | null
               title: string
               locale?: string | null
+              path?: string | null
             } | null
             article?: {
               __typename: 'Article'
@@ -12097,6 +12198,7 @@ export type PageBySlugQuery = {
               slug?: string | null
               title: string
               locale?: string | null
+              path?: string | null
             } | null
             article?: {
               __typename: 'Article'
@@ -12257,6 +12359,7 @@ export type PageBySlugQuery = {
             slug?: string | null
             title: string
             locale?: string | null
+            path?: string | null
             pageHeaderSections?: Array<
               | {
                   __typename: 'ComponentHeaderSectionsEvent'
@@ -12299,6 +12402,7 @@ export type PageBySlugQuery = {
             slug?: string | null
             title: string
             locale?: string | null
+            path?: string | null
             pageHeaderSections?: Array<
               | {
                   __typename: 'ComponentHeaderSectionsEvent'
@@ -12425,6 +12529,7 @@ export type PageBySlugQuery = {
               slug?: string | null
               title: string
               locale?: string | null
+              path?: string | null
             } | null
             article?: {
               __typename: 'Article'
@@ -12456,6 +12561,7 @@ export type PageBySlugQuery = {
               slug?: string | null
               title: string
               locale?: string | null
+              path?: string | null
             } | null
           } | null> | null
         }
@@ -12490,6 +12596,7 @@ export type PageBySlugQuery = {
               slug?: string | null
               title: string
               locale?: string | null
+              path?: string | null
             } | null
             article?: {
               __typename: 'Article'
@@ -12695,6 +12802,7 @@ export type PageBySlugQuery = {
                 slug?: string | null
                 title: string
                 locale?: string | null
+                path?: string | null
               } | null
               article?: {
                 __typename: 'Article'
@@ -12715,6 +12823,7 @@ export type PageBySlugQuery = {
                 slug?: string | null
                 title: string
                 locale?: string | null
+                path?: string | null
               } | null
               article?: {
                 __typename: 'Article'
@@ -12735,6 +12844,7 @@ export type PageBySlugQuery = {
                 slug?: string | null
                 title: string
                 locale?: string | null
+                path?: string | null
               } | null
               article?: {
                 __typename: 'Article'
@@ -12767,6 +12877,7 @@ export type PageBySlugQuery = {
               slug?: string | null
               title: string
               locale?: string | null
+              path?: string | null
               pageBackgroundImage?: {
                 __typename?: 'UploadFile'
                 documentId: string
@@ -12838,6 +12949,7 @@ export type PageBySlugQuery = {
               slug?: string | null
               title: string
               locale?: string | null
+              path?: string | null
             } | null
             article?: {
               __typename: 'Article'
@@ -12873,6 +12985,7 @@ export type PageBySlugQuery = {
               slug?: string | null
               title: string
               locale?: string | null
+              path?: string | null
             } | null
             article?: {
               __typename: 'Article'
@@ -12898,6 +13011,7 @@ export type PageBySlugQuery = {
               slug?: string | null
               title: string
               locale?: string | null
+              path?: string | null
             } | null
             article?: {
               __typename: 'Article'
@@ -12990,6 +13104,7 @@ export type PageRedirectByAliasQuery = {
     slug?: string | null
     title: string
     locale?: string | null
+    path?: string | null
   } | null>
   articles: Array<{
     __typename: 'Article'
@@ -13017,13 +13132,14 @@ export type Dev_AllPagesQuery = {
     alias?: string | null
     subtext?: string | null
     pageColor: Enum_Page_Pagecolor
-    metaDiscription?: string | null
+    metaDescription?: string | null
     keywords?: string | null
     showTableOfContents?: boolean | null
     documentId: string
     slug?: string | null
     title: string
     locale?: string | null
+    path?: string | null
     adminGroups: Array<{
       __typename?: 'AdminGroup'
       contentManagedBy: string
@@ -13037,18 +13153,21 @@ export type Dev_AllPagesQuery = {
         slug?: string | null
         title: string
         locale?: string | null
+        path?: string | null
         localizations: Array<{
           __typename?: 'Page'
           documentId: string
           slug?: string | null
           title: string
           locale?: string | null
+          path?: string | null
           childPages: Array<{
             __typename?: 'Page'
             documentId: string
             slug?: string | null
             title: string
             locale?: string | null
+            path?: string | null
           } | null>
         } | null>
         childPages: Array<{
@@ -13057,6 +13176,7 @@ export type Dev_AllPagesQuery = {
           slug?: string | null
           title: string
           locale?: string | null
+          path?: string | null
         } | null>
       } | null
       submenuPages?: Array<{
@@ -13070,6 +13190,7 @@ export type Dev_AllPagesQuery = {
           slug?: string | null
           title: string
           locale?: string | null
+          path?: string | null
         } | null
       } | null> | null
     } | null>
@@ -13084,6 +13205,7 @@ export type Dev_AllPagesQuery = {
         slug?: string | null
         title: string
         locale?: string | null
+        path?: string | null
       } | null
       article?: {
         __typename: 'Article'
@@ -13128,6 +13250,7 @@ export type Dev_AllPagesQuery = {
           slug?: string | null
           title: string
           locale?: string | null
+          path?: string | null
         } | null
       } | null> | null
     } | null
@@ -13159,6 +13282,7 @@ export type Dev_AllPagesQuery = {
               slug?: string | null
               title: string
               locale?: string | null
+              path?: string | null
             } | null
             fileList?: Array<{
               __typename?: 'ComponentBlocksFileItem'
@@ -13267,6 +13391,7 @@ export type Dev_AllPagesQuery = {
               slug?: string | null
               title: string
               locale?: string | null
+              path?: string | null
             } | null
             article?: {
               __typename: 'Article'
@@ -13327,6 +13452,7 @@ export type Dev_AllPagesQuery = {
               slug?: string | null
               title: string
               locale?: string | null
+              path?: string | null
             } | null
             article?: {
               __typename: 'Article'
@@ -13387,6 +13513,7 @@ export type Dev_AllPagesQuery = {
               slug?: string | null
               title: string
               locale?: string | null
+              path?: string | null
             } | null
             article?: {
               __typename: 'Article'
@@ -13407,6 +13534,7 @@ export type Dev_AllPagesQuery = {
               slug?: string | null
               title: string
               locale?: string | null
+              path?: string | null
             } | null
             article?: {
               __typename: 'Article'
@@ -13427,6 +13555,7 @@ export type Dev_AllPagesQuery = {
               slug?: string | null
               title: string
               locale?: string | null
+              path?: string | null
             } | null
             article?: {
               __typename: 'Article'
@@ -13587,6 +13716,7 @@ export type Dev_AllPagesQuery = {
             slug?: string | null
             title: string
             locale?: string | null
+            path?: string | null
             pageHeaderSections?: Array<
               | {
                   __typename: 'ComponentHeaderSectionsEvent'
@@ -13629,6 +13759,7 @@ export type Dev_AllPagesQuery = {
             slug?: string | null
             title: string
             locale?: string | null
+            path?: string | null
             pageHeaderSections?: Array<
               | {
                   __typename: 'ComponentHeaderSectionsEvent'
@@ -13755,6 +13886,7 @@ export type Dev_AllPagesQuery = {
               slug?: string | null
               title: string
               locale?: string | null
+              path?: string | null
             } | null
             article?: {
               __typename: 'Article'
@@ -13786,6 +13918,7 @@ export type Dev_AllPagesQuery = {
               slug?: string | null
               title: string
               locale?: string | null
+              path?: string | null
             } | null
           } | null> | null
         }
@@ -13820,6 +13953,7 @@ export type Dev_AllPagesQuery = {
               slug?: string | null
               title: string
               locale?: string | null
+              path?: string | null
             } | null
             article?: {
               __typename: 'Article'
@@ -14025,6 +14159,7 @@ export type Dev_AllPagesQuery = {
                 slug?: string | null
                 title: string
                 locale?: string | null
+                path?: string | null
               } | null
               article?: {
                 __typename: 'Article'
@@ -14045,6 +14180,7 @@ export type Dev_AllPagesQuery = {
                 slug?: string | null
                 title: string
                 locale?: string | null
+                path?: string | null
               } | null
               article?: {
                 __typename: 'Article'
@@ -14065,6 +14201,7 @@ export type Dev_AllPagesQuery = {
                 slug?: string | null
                 title: string
                 locale?: string | null
+                path?: string | null
               } | null
               article?: {
                 __typename: 'Article'
@@ -14097,6 +14234,7 @@ export type Dev_AllPagesQuery = {
               slug?: string | null
               title: string
               locale?: string | null
+              path?: string | null
               pageBackgroundImage?: {
                 __typename?: 'UploadFile'
                 documentId: string
@@ -14168,6 +14306,7 @@ export type Dev_AllPagesQuery = {
               slug?: string | null
               title: string
               locale?: string | null
+              path?: string | null
             } | null
             article?: {
               __typename: 'Article'
@@ -14203,6 +14342,7 @@ export type Dev_AllPagesQuery = {
               slug?: string | null
               title: string
               locale?: string | null
+              path?: string | null
             } | null
             article?: {
               __typename: 'Article'
@@ -14228,6 +14368,7 @@ export type Dev_AllPagesQuery = {
               slug?: string | null
               title: string
               locale?: string | null
+              path?: string | null
             } | null
             article?: {
               __typename: 'Article'
@@ -14881,6 +15022,7 @@ export type SubnavigationSectionFragment = {
       slug?: string | null
       title: string
       locale?: string | null
+      path?: string | null
     } | null
   } | null> | null
 }
@@ -14897,6 +15039,7 @@ export type SubnavigationLinkFragment = {
     slug?: string | null
     title: string
     locale?: string | null
+    path?: string | null
   } | null
 }
 
@@ -15001,6 +15144,7 @@ export type ArticlesSectionFragment = {
       slug?: string | null
       title: string
       locale?: string | null
+      path?: string | null
     } | null
     article?: {
       __typename: 'Article'
@@ -15028,6 +15172,7 @@ export type InbaReleasesSectionFragment = {
       slug?: string | null
       title: string
       locale?: string | null
+      path?: string | null
     } | null
     article?: {
       __typename: 'Article'
@@ -15070,6 +15215,7 @@ export type TextWithImageSectionFragment = {
       slug?: string | null
       title: string
       locale?: string | null
+      path?: string | null
     } | null
     article?: {
       __typename: 'Article'
@@ -15106,6 +15252,7 @@ export type TextWithImageOverlappedSectionFragment = {
       slug?: string | null
       title: string
       locale?: string | null
+      path?: string | null
     } | null
     article?: {
       __typename: 'Article'
@@ -15249,6 +15396,7 @@ export type LinksSectionFragment = {
       slug?: string | null
       title: string
       locale?: string | null
+      path?: string | null
     } | null
   } | null> | null
 }
@@ -15265,6 +15413,7 @@ export type ComponentAccordionItemsFlatTextFragment = {
     slug?: string | null
     title: string
     locale?: string | null
+    path?: string | null
   } | null
   fileList?: Array<{
     __typename?: 'ComponentBlocksFileItem'
@@ -15322,6 +15471,7 @@ export type AccordionSectionFragment = {
       slug?: string | null
       title: string
       locale?: string | null
+      path?: string | null
     } | null
     fileList?: Array<{
       __typename?: 'ComponentBlocksFileItem'
@@ -15447,6 +15597,7 @@ export type BannerSectionFragment = {
       slug?: string | null
       title: string
       locale?: string | null
+      path?: string | null
     } | null
     article?: {
       __typename: 'Article'
@@ -15467,6 +15618,7 @@ export type BannerSectionFragment = {
       slug?: string | null
       title: string
       locale?: string | null
+      path?: string | null
     } | null
     article?: {
       __typename: 'Article'
@@ -15487,6 +15639,7 @@ export type BannerSectionFragment = {
       slug?: string | null
       title: string
       locale?: string | null
+      path?: string | null
     } | null
     article?: {
       __typename: 'Article'
@@ -15728,6 +15881,7 @@ export type TootootEventsSectionFragment = {
       slug?: string | null
       title: string
       locale?: string | null
+      path?: string | null
     } | null
     article?: {
       __typename: 'Article'
@@ -15833,6 +15987,7 @@ export type NumbersOverviewSectionFragment = {
       slug?: string | null
       title: string
       locale?: string | null
+      path?: string | null
     } | null
     article?: {
       __typename: 'Article'
@@ -15861,6 +16016,7 @@ export type EventsSectionFragment = {
     slug?: string | null
     title: string
     locale?: string | null
+    path?: string | null
     pageHeaderSections?: Array<
       | { __typename: 'ComponentHeaderSectionsEvent'; date?: any | null; address?: string | null }
       | {
@@ -15896,6 +16052,7 @@ export type FacilitiesSectionFragment = {
     slug?: string | null
     title: string
     locale?: string | null
+    path?: string | null
     pageHeaderSections?: Array<
       | { __typename: 'ComponentHeaderSectionsEvent'; date?: any | null; address?: string | null }
       | {
@@ -15949,6 +16106,7 @@ export type StarzLandingPageSectionFragment = {
         slug?: string | null
         title: string
         locale?: string | null
+        path?: string | null
       } | null
       article?: {
         __typename: 'Article'
@@ -15969,6 +16127,7 @@ export type StarzLandingPageSectionFragment = {
         slug?: string | null
         title: string
         locale?: string | null
+        path?: string | null
       } | null
       article?: {
         __typename: 'Article'
@@ -15989,6 +16148,7 @@ export type StarzLandingPageSectionFragment = {
         slug?: string | null
         title: string
         locale?: string | null
+        path?: string | null
       } | null
       article?: {
         __typename: 'Article'
@@ -16021,6 +16181,7 @@ export type StarzLandingPageSectionFragment = {
       slug?: string | null
       title: string
       locale?: string | null
+      path?: string | null
       pageBackgroundImage?: { __typename?: 'UploadFile'; documentId: string; url: string } | null
     } | null
     article?: {
@@ -16196,6 +16357,7 @@ export type ArticlesLandingPageSectionFragment = {
       slug?: string | null
       title: string
       locale?: string | null
+      path?: string | null
     } | null
     article?: {
       __typename: 'Article'
@@ -16248,6 +16410,7 @@ type Sections_ComponentSectionsAccordion_Fragment = {
       slug?: string | null
       title: string
       locale?: string | null
+      path?: string | null
     } | null
     fileList?: Array<{
       __typename?: 'ComponentBlocksFileItem'
@@ -16358,6 +16521,7 @@ type Sections_ComponentSectionsArticles_Fragment = {
       slug?: string | null
       title: string
       locale?: string | null
+      path?: string | null
     } | null
     article?: {
       __typename: 'Article'
@@ -16419,6 +16583,7 @@ type Sections_ComponentSectionsArticlesLandingPage_Fragment = {
       slug?: string | null
       title: string
       locale?: string | null
+      path?: string | null
     } | null
     article?: {
       __typename: 'Article'
@@ -16481,6 +16646,7 @@ type Sections_ComponentSectionsBanner_Fragment = {
       slug?: string | null
       title: string
       locale?: string | null
+      path?: string | null
     } | null
     article?: {
       __typename: 'Article'
@@ -16501,6 +16667,7 @@ type Sections_ComponentSectionsBanner_Fragment = {
       slug?: string | null
       title: string
       locale?: string | null
+      path?: string | null
     } | null
     article?: {
       __typename: 'Article'
@@ -16521,6 +16688,7 @@ type Sections_ComponentSectionsBanner_Fragment = {
       slug?: string | null
       title: string
       locale?: string | null
+      path?: string | null
     } | null
     article?: {
       __typename: 'Article'
@@ -16688,6 +16856,7 @@ type Sections_ComponentSectionsEvents_Fragment = {
     slug?: string | null
     title: string
     locale?: string | null
+    path?: string | null
     pageHeaderSections?: Array<
       | { __typename: 'ComponentHeaderSectionsEvent'; date?: any | null; address?: string | null }
       | {
@@ -16723,6 +16892,7 @@ type Sections_ComponentSectionsFacilities_Fragment = {
     slug?: string | null
     title: string
     locale?: string | null
+    path?: string | null
     pageHeaderSections?: Array<
       | { __typename: 'ComponentHeaderSectionsEvent'; date?: any | null; address?: string | null }
       | {
@@ -16850,6 +17020,7 @@ type Sections_ComponentSectionsInbaReleases_Fragment = {
       slug?: string | null
       title: string
       locale?: string | null
+      path?: string | null
     } | null
     article?: {
       __typename: 'Article'
@@ -16883,6 +17054,7 @@ type Sections_ComponentSectionsLinks_Fragment = {
       slug?: string | null
       title: string
       locale?: string | null
+      path?: string | null
     } | null
   } | null> | null
 }
@@ -16920,6 +17092,7 @@ type Sections_ComponentSectionsNumbersOverview_Fragment = {
       slug?: string | null
       title: string
       locale?: string | null
+      path?: string | null
     } | null
     article?: {
       __typename: 'Article'
@@ -17138,6 +17311,7 @@ type Sections_ComponentSectionsStarzLandingPage_Fragment = {
         slug?: string | null
         title: string
         locale?: string | null
+        path?: string | null
       } | null
       article?: {
         __typename: 'Article'
@@ -17158,6 +17332,7 @@ type Sections_ComponentSectionsStarzLandingPage_Fragment = {
         slug?: string | null
         title: string
         locale?: string | null
+        path?: string | null
       } | null
       article?: {
         __typename: 'Article'
@@ -17178,6 +17353,7 @@ type Sections_ComponentSectionsStarzLandingPage_Fragment = {
         slug?: string | null
         title: string
         locale?: string | null
+        path?: string | null
       } | null
       article?: {
         __typename: 'Article'
@@ -17210,6 +17386,7 @@ type Sections_ComponentSectionsStarzLandingPage_Fragment = {
       slug?: string | null
       title: string
       locale?: string | null
+      path?: string | null
       pageBackgroundImage?: { __typename?: 'UploadFile'; documentId: string; url: string } | null
     } | null
     article?: {
@@ -17278,6 +17455,7 @@ type Sections_ComponentSectionsTextWithImage_Fragment = {
       slug?: string | null
       title: string
       locale?: string | null
+      path?: string | null
     } | null
     article?: {
       __typename: 'Article'
@@ -17314,6 +17492,7 @@ type Sections_ComponentSectionsTextWithImageOverlapped_Fragment = {
       slug?: string | null
       title: string
       locale?: string | null
+      path?: string | null
     } | null
     article?: {
       __typename: 'Article'
@@ -17340,6 +17519,7 @@ type Sections_ComponentSectionsTootootEvents_Fragment = {
       slug?: string | null
       title: string
       locale?: string | null
+      path?: string | null
     } | null
     article?: {
       __typename: 'Article'
@@ -17690,6 +17870,7 @@ export const PageSlugEntityFragmentDoc = gql`
     slug
     title
     locale
+    path
   }
 `
 export const CommonLinkFragmentDoc = gql`
@@ -19035,7 +19216,7 @@ export const PageEntityFragmentDoc = gql`
     alias
     subtext
     pageColor
-    metaDiscription
+    metaDescription
     keywords
     showTableOfContents
     adminGroups {

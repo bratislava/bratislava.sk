@@ -24,7 +24,7 @@ const searchIndexSettings = {
     'page.title',
     'page.keywords',
     'page.subtext',
-    'page.metaDiscription', // yes, it's a typo in the field name
+    'page.metaDescription',
     'article.title',
     'article.perex',
     'asset.title',

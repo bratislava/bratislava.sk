@@ -404,9 +404,9 @@
       "properties": {
         "fields": [
           "title",
-          "slug",
+          "path",
           "subtext",
-          "metaDiscription",
+          "metaDescription",
           "keywords",
           "showTableOfContents",
           "pageCategory",
@@ -438,7 +438,7 @@
         "plugin::content-manager.document-admin-group-includes-starz"
       ],
       "actionParameters": {},
-      "documentId": "ii3sv9bjhzu3dmzkg2co8ryd",
+      "documentId": "ffi7cvj5s5s5b8d8on1w4wsl",
       "locale": null
     },
     {
@@ -479,10 +479,10 @@
       "properties": {
         "fields": [
           "title",
-          "slug",
+          "path",
           "alias",
           "subtext",
-          "metaDiscription",
+          "metaDescription",
           "keywords",
           "showTableOfContents",
           "pageCategory",
@@ -515,7 +515,7 @@
         "plugin::content-manager.document-admin-group-includes-starz"
       ],
       "actionParameters": {},
-      "documentId": "fwnf0f934xmn3xrimjoqu5io",
+      "documentId": "qljjlge47yi1l9e12trcbbrq",
       "locale": null
     },
     {
@@ -524,9 +524,9 @@
       "properties": {
         "fields": [
           "title",
-          "slug",
+          "path",
           "subtext",
-          "metaDiscription",
+          "metaDescription",
           "keywords",
           "showTableOfContents",
           "pageCategory",
@@ -558,7 +558,7 @@
         "plugin::content-manager.document-admin-group-includes-starz"
       ],
       "actionParameters": {},
-      "documentId": "ijmugvl5db51bjrbi6jolm1v",
+      "documentId": "y5hodvfm2z0i161arklwf9yk",
       "locale": null
     },
     {
