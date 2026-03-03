@@ -1,4 +1,4 @@
-/* eslint-disable no-console */
+/* eslint-disable no-console,i18next/no-literal-string */
 import Tag from '@/src/components/common/Tag/Tag'
 
 import Stack from '../Stack'

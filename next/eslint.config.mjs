@@ -8,7 +8,6 @@ export default [
   // Project-specific rule overrides
   {
     rules: {
-      'i18next/no-literal-string': 'off',
       'jsx-a11y/anchor-is-valid': 'off',
       'no-multi-spaces': 'error',
 
