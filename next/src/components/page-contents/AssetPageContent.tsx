@@ -27,14 +27,14 @@ const AssetPageContent = ({ asset }: Props) => {
   const { t, i18n } = useTranslation()
 
   const { general } = useGeneralContext()
-  const documentsPage = general?.documentsPage
+  const assetsPage = general?.assetsPage
 
   const breadcrumbs = useMemo(() => {
     return [
-      ...(documentsPage ? getPageBreadcrumbs(documentsPage) : []),
-      { title: asset.title ?? '', path: null } as Breadcrumb,
+      ...(assetsPage ? getPageBreadcrumbs(assetsPage) : []),
+      { title: asset.title, path: null } as Breadcrumb,
     ]
-  }, [asset.title, documentsPage])
+  }, [asset.title, assetsPage])
 
   const { description, files, assetCategory, publishedAt, updatedAt } = asset
 

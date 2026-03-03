@@ -122,71 +122,75 @@ const InbaReleasePageContent = ({ inbaRelease }: Props) => {
           </div>
 
           <div
-            // Negative top margin was set so its top edge is aligned with title's top edge
-            className="aspect-inba overflow-hidden rounded-xl border lg:-mt-45"
+            // Negative top margin was set so its top edge is aligned with the title's top edge
+            className="relative aspect-inba overflow-hidden rounded-xl border lg:-mt-45"
           >
-            {coverImage ? <StrapiImage alt="" image={coverImage} /> : <ImagePlaceholder />}
+            {coverImage ? <StrapiImage alt="" image={coverImage} fill /> : <ImagePlaceholder />}
           </div>
         </div>
       </SectionContainer>
 
-      {isError ? (
-        <Typography variant="p-default">{error.message}</Typography>
-      ) : isPending ? (
-        <LoadingSpinner />
-      ) : (
-        <SectionContainer className="pt-10 md:pt-18">
-          <div className="flex flex-col gap-5 lg:gap-6">
-            <Typography variant="h3" as="h2" id="clanky-v-tomto-cisle">
-              {t('InbaRelease.articlesInThisRelease')}
-            </Typography>
+      <SectionContainer className="py-10 md:py-18">
+        <div className="flex flex-col gap-5 lg:gap-6">
+          <Typography variant="h3" as="h2" id="clanky-v-tomto-cisle">
+            {t('InbaRelease.articlesInThisRelease')}
+          </Typography>
 
-            <SearchBar
-              ref={searchRef}
-              input={input}
-              setInput={setInput}
-              setSearchQuery={(value) => {
-                setFilters((previousState) => ({ ...previousState, search: value, page: 1 }))
-              }}
-              isLoading={isFetching}
-            />
+          <SearchBar
+            ref={searchRef}
+            input={input}
+            setInput={setInput}
+            setSearchQuery={(value) => {
+              setFilters((previousState) => ({ ...previousState, search: value, page: 1 }))
+            }}
+            isLoading={isFetching}
+          />
 
-            {data.hits.length > 0 ? (
-              <ul className="flex flex-col rounded-lg border py-2">
-                {data.hits.map((article, index) => {
-                  const cardData: SearchResult = {
-                    title: article.title,
-                    uniqueId: article.slug,
-                    linkHref: getLinkProps({ article }).href,
-                    coverImageSrc: article.coverMedia?.url,
-                    metadata: article.tags.map((tag) => tag?.title).filter(isDefined),
-                  }
+          {isError ? (
+            <Typography variant="p-default">{error.message}</Typography>
+          ) : isPending ? (
+            <LoadingSpinner />
+          ) : (
+            <>
+              {data.hits.length > 0 ? (
+                <ul className="flex flex-col rounded-lg border py-2">
+                  {data.hits.map((article, index) => {
+                    const cardData: SearchResult = {
+                      title: article.title,
+                      uniqueId: article.slug,
+                      linkHref: getLinkProps({ article }).href,
+                      coverImageSrc: article.coverMedia?.url,
+                      metadata: article.tags.map((tag) => tag?.title).filter(isDefined),
+                    }
 
-                  return (
-                    <Fragment key={article.slug}>
-                      {index > 0 ? <HorizontalDivider asListItem className="mx-4 lg:mx-5" /> : null}
-                      <li>
-                        <SearchResultCard data={cardData} />
-                      </li>
-                    </Fragment>
-                  )
-                })}
-              </ul>
-            ) : null}
+                    return (
+                      <Fragment key={article.slug}>
+                        {index > 0 ? (
+                          <HorizontalDivider asListItem className="mx-4 lg:mx-5" />
+                        ) : null}
+                        <li>
+                          <SearchResultCard data={cardData} />
+                        </li>
+                      </Fragment>
+                    )
+                  })}
+                </ul>
+              ) : null}
 
-            {data.estimatedTotalHits ? (
-              <Pagination
-                key={filters.search}
-                totalCount={Math.ceil(data.estimatedTotalHits / filters.pageSize)}
-                currentPage={filters.page}
-                onPageChange={handlePageChange}
-              />
-            ) : (
-              <Typography>{t('SearchPage.noResults')}</Typography>
-            )}
-          </div>
-        </SectionContainer>
-      )}
+              {data.estimatedTotalHits ? (
+                <Pagination
+                  key={filters.search}
+                  totalCount={Math.ceil(data.estimatedTotalHits / filters.pageSize)}
+                  currentPage={filters.page}
+                  onPageChange={handlePageChange}
+                />
+              ) : (
+                <Typography>{t('SearchPage.noResults')}</Typography>
+              )}
+            </>
+          )}
+        </div>
+      </SectionContainer>
     </>
   )
 }

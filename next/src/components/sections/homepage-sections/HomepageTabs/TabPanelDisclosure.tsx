@@ -20,6 +20,7 @@ const TabPanelDisclosure = () => {
           href="https://zverejnovanie.bratislava.sk"
           stretched
         >
+          {/* eslint-disable-next-line i18next/no-literal-string */}
           <Typography variant="p-large">zverejnovanie.bratislava.sk</Typography>
         </MLink>
       </CardBase>

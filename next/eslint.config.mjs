@@ -8,7 +8,6 @@ export default [
   // Project-specific rule overrides
   {
     rules: {
-      'i18next/no-literal-string': 'off',
       'jsx-a11y/anchor-is-valid': 'off',
       'no-multi-spaces': 'error',
 
@@ -42,8 +41,6 @@ export default [
       'jsx-a11y/click-events-have-key-events': 'warn', // 3 violations
       'jsx-a11y/no-static-element-interactions': 'warn', // 3 violations
       'react-hooks/set-state-in-effect': 'warn', // 3 violations
-      'react/prop-types': 'warn', // 3 violations
-      '@typescript-eslint/no-empty-object-type': 'warn', // 2 violations
     },
   },
 ]

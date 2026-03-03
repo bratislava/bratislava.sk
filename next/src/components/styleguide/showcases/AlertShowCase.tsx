@@ -1,3 +1,4 @@
+/* eslint-disable i18next/no-literal-string */
 import AlertMessage from '@/src/components/common/AlertMessage/AlertMessage'
 import { Enum_Componentsectionsalert_Alertvariant } from '@/src/services/graphql'
 

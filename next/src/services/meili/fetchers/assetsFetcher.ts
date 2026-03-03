@@ -15,7 +15,7 @@ export type AssetsFilters = {
 
 export const assetsDefaultFilters: Required<AssetsFilters> = {
   search: '',
-  pageSize: 9,
+  pageSize: 10,
   page: 1,
   assetCategorySlugs: [],
   adminGroupSlugs: [],

@@ -1,8 +1,11 @@
 import { Typography } from '@bratislava/component-library'
 import { Key, Label, Tag, TagGroup, TagGroupProps, TagList } from 'react-aria-components'
 
-import { ChevronDownIcon, CrossIcon, CrossInCircleIcon } from '@/src/assets/icons'
+import { CrossIcon, CrossInCircleIcon } from '@/src/assets/icons'
 import Button from '@/src/components/common/Button/Button'
+import Disclosure from '@/src/components/common/Disclosure/Disclosure'
+import DisclosureHeader from '@/src/components/common/Disclosure/DisclosureHeader'
+import DisclosurePanel from '@/src/components/common/Disclosure/DisclosurePanel'
 import {
   ActiveFiltersTags,
   useActiveFilters,
@@ -141,13 +144,12 @@ const ArticlesActiveFilters = ({
       </TagGroup>
       {/* Screen: mobile */}
       <TagGroup {...tagGroupProps} className="flex flex-col gap-4 lg:hidden">
-        <details className="group">
-          <summary className="flex justify-between">
-            {labelElement}
-            <ChevronDownIcon className="size-5 shrink-0 transition-transform group-open:rotate-180" />
-          </summary>
-          <ArticlesActiveFiltersTagList {...tagListProps} />
-        </details>
+        <Disclosure>
+          <DisclosureHeader>{labelElement}</DisclosureHeader>
+          <DisclosurePanel>
+            <ArticlesActiveFiltersTagList {...tagListProps} />
+          </DisclosurePanel>
+        </Disclosure>
         {totalCountElement}
       </TagGroup>
     </>
