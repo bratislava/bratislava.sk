@@ -181,7 +181,8 @@
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true
+          "editable": true,
+          "mainField": "label"
         },
         "list": {
           "label": "headerLinks",
@@ -209,7 +210,8 @@
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true
+          "editable": true,
+          "mainField": "documentId"
         },
         "list": {
           "label": "subnavigation",
@@ -446,15 +448,6 @@
       }
     },
     "layouts": {
-      "list": [
-        "slug",
-        "title",
-        "parentPage",
-        "updatedAt",
-        "updatedBy",
-        "adminGroups",
-        "subtext"
-      ],
       "edit": [
         [
           {
@@ -486,6 +479,12 @@
         ],
         [
           {
+            "name": "subtext",
+            "size": 12
+          }
+        ],
+        [
+          {
             "name": "headerLinks",
             "size": 12
           }
@@ -493,12 +492,6 @@
         [
           {
             "name": "metaDescription",
-            "size": 12
-          }
-        ],
-        [
-          {
-            "name": "subtext",
             "size": 12
           }
         ],
@@ -600,6 +593,15 @@
             "size": 6
           }
         ]
+      ],
+      "list": [
+        "slug",
+        "title",
+        "parentPage",
+        "updatedAt",
+        "updatedBy",
+        "adminGroups",
+        "subtext"
       ]
     }
   },
