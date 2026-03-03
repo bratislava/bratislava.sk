@@ -38,7 +38,7 @@ const AccordionSection = ({ section }: AccordionSectionProps) => {
       {/* TODO Correct spacing between SectionHeader and remaining content */}
       <div className="flex flex-col gap-6 lg:gap-8">
         <SectionHeader title={title} titleLevel={titleLevel} />
-        {flatText!.length ? (
+        {flatText?.length ? (
           <DisclosureGroup
             allowsMultipleExpanded
             className="rounded-xl border border-border-active-default bg-background-passive-base py-2"
