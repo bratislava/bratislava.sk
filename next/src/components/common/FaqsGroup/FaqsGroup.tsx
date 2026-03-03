@@ -23,7 +23,7 @@ const FaqsGroup = ({ faqs, accordionTitleLevel }: FaqsGroupProps) => {
           key={faq.documentId}
           className="rounded-xl border border-border-active-default bg-background-passive-base py-2"
         >
-          <DisclosureHeader className="p-4 lg:px-6">
+          <DisclosureHeader className="p-4 ring-inset lg:px-6">
             <Typography variant="h4" as={accordionTitleLevel}>
               {faq.title}
             </Typography>

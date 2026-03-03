@@ -9,7 +9,7 @@ import Button from '@/src/components/common/Button/Button'
 import cn from '@/src/utils/cn'
 
 interface DisclosureHeaderProps {
-  children: React.ReactNode
+  children?: React.ReactNode
   className?: string
 }
 
@@ -22,11 +22,7 @@ const DisclosureHeader = ({ children, ...props }: DisclosureHeaderProps) => {
 
   return (
     <RACHeading>
-      <Button
-        slot="trigger"
-        variant="unstyled"
-        className={cn('w-full text-left ring-inset', props.className)}
-      >
+      <Button slot="trigger" variant="unstyled" className={cn('w-full text-left', props.className)}>
         <div className="flex w-full justify-between">
           <div className="flex flex-col gap-2">{children}</div>
           <ChevronDownIcon
