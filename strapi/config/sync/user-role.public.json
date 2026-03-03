@@ -116,16 +116,6 @@
       "locale": null
     },
     {
-      "action": "api::inba-article.inba-article.find",
-      "documentId": "qaibtfrw828zw20ngznn7l6y",
-      "locale": null
-    },
-    {
-      "action": "api::inba-article.inba-article.findOne",
-      "documentId": "spbyks8t5lmzuvd0bj0oud8x",
-      "locale": null
-    },
-    {
       "action": "api::inba-release.inba-release.find",
       "documentId": "iyboawmcz27f8ljqyowwz97z",
       "locale": null
@@ -133,16 +123,6 @@
     {
       "action": "api::inba-release.inba-release.findOne",
       "documentId": "icqwdl08of91s9mxhr99k1gj",
-      "locale": null
-    },
-    {
-      "action": "api::inba-tag.inba-tag.find",
-      "documentId": "o5b3308tga0vbnjxp9pnydh0",
-      "locale": null
-    },
-    {
-      "action": "api::inba-tag.inba-tag.findOne",
-      "documentId": "ipngn70ccevmkbkxjikfw7ep",
       "locale": null
     },
     {
