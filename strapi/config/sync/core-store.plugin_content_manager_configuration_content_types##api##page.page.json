@@ -36,8 +36,8 @@
       },
       "slug": {
         "edit": {
-          "label": "Cesta (bez lomky na začiatku)",
-          "description": "Dôležité: Ak je pri zmene cesty potrebné zachovať aj funkčnosť starého odkazu a vytvoriť presmerovanie, kontaktujte prosím Oddelenie vývoja inovácií VOPRED.",
+          "label": "Slug",
+          "description": " ",
           "placeholder": "",
           "visible": true,
           "editable": true
@@ -50,8 +50,8 @@
       },
       "path": {
         "edit": {
-          "label": "Cesta",
-          "description": "",
+          "label": "Cesta (bez lomky na začiatku)",
+          "description": "Dôležité: Ak je pri zmene cesty potrebné zachovať aj funkčnosť starého odkazu a vytvoriť presmerovanie, kontaktujte prosím Oddelenie vývoja inovácií VOPRED.",
           "placeholder": "",
           "visible": true,
           "editable": true
@@ -181,8 +181,7 @@
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true,
-          "mainField": "label"
+          "editable": true
         },
         "list": {
           "label": "headerLinks",
@@ -210,8 +209,7 @@
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true,
-          "mainField": "documentId"
+          "editable": true
         },
         "list": {
           "label": "subnavigation",
@@ -448,16 +446,19 @@
       }
     },
     "layouts": {
+      "list": [
+        "slug",
+        "title",
+        "parentPage",
+        "updatedAt",
+        "updatedBy",
+        "adminGroups",
+        "subtext"
+      ],
       "edit": [
         [
           {
             "name": "title",
-            "size": 12
-          }
-        ],
-        [
-          {
-            "name": "slug",
             "size": 12
           }
         ],
@@ -592,16 +593,13 @@
             "name": "breadcrumbTitle",
             "size": 6
           }
+        ],
+        [
+          {
+            "name": "slug",
+            "size": 6
+          }
         ]
-      ],
-      "list": [
-        "slug",
-        "title",
-        "parentPage",
-        "updatedAt",
-        "updatedBy",
-        "adminGroups",
-        "subtext"
       ]
     }
   },
