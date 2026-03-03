@@ -41,7 +41,6 @@ export default [
       'jsx-a11y/click-events-have-key-events': 'warn', // 3 violations
       'jsx-a11y/no-static-element-interactions': 'warn', // 3 violations
       'react-hooks/set-state-in-effect': 'warn', // 3 violations
-      '@typescript-eslint/no-empty-object-type': 'warn', // 2 violations
     },
   },
 ]
