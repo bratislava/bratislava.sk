@@ -50,7 +50,7 @@
       },
       "path": {
         "edit": {
-          "label": "path",
+          "label": "Cesta",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -92,7 +92,7 @@
       },
       "metaDescription": {
         "edit": {
-          "label": "metaDescription",
+          "label": "Meta Popis",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -181,7 +181,8 @@
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true
+          "editable": true,
+          "mainField": "label"
         },
         "list": {
           "label": "headerLinks",
@@ -209,7 +210,8 @@
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true
+          "editable": true,
+          "mainField": "documentId"
         },
         "list": {
           "label": "subnavigation",
@@ -446,15 +448,6 @@
       }
     },
     "layouts": {
-      "list": [
-        "slug",
-        "title",
-        "parentPage",
-        "updatedAt",
-        "updatedBy",
-        "adminGroups",
-        "subtext"
-      ],
       "edit": [
         [
           {
@@ -465,6 +458,12 @@
         [
           {
             "name": "slug",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "path",
             "size": 12
           }
         ],
@@ -486,13 +485,19 @@
         ],
         [
           {
-            "name": "subtext",
+            "name": "headerLinks",
             "size": 12
           }
         ],
         [
           {
-            "name": "headerLinks",
+            "name": "metaDescription",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "subtext",
             "size": 12
           }
         ],
@@ -510,12 +515,6 @@
         ],
         [
           {
-            "name": "pageHeaderSections",
-            "size": 12
-          }
-        ],
-        [
-          {
             "name": "subnavigation",
             "size": 12
           }
@@ -528,19 +527,19 @@
         ],
         [
           {
-            "name": "sections",
-            "size": 12
-          }
-        ],
-        [
-          {
             "name": "childPages",
             "size": 12
           }
         ],
         [
           {
-            "name": "relatedContents",
+            "name": "pageHeaderSections",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "sections",
             "size": 12
           }
         ],
@@ -552,25 +551,11 @@
         ],
         [
           {
-            "name": "alias",
+            "name": "relatedContents",
             "size": 12
           }
         ],
         [
-          {
-            "name": "adminGroups",
-            "size": 6
-          },
-          {
-            "name": "path",
-            "size": 6
-          }
-        ],
-        [
-          {
-            "name": "metaDescription",
-            "size": 6
-          },
           {
             "name": "parent",
             "size": 6
@@ -588,6 +573,18 @@
         ],
         [
           {
+            "name": "alias",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "adminGroups",
+            "size": 6
+          }
+        ],
+        [
+          {
             "name": "redirects",
             "size": 6
           },
@@ -596,6 +593,15 @@
             "size": 6
           }
         ]
+      ],
+      "list": [
+        "slug",
+        "title",
+        "parentPage",
+        "updatedAt",
+        "updatedBy",
+        "adminGroups",
+        "subtext"
       ]
     }
   },
