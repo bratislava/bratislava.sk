@@ -9,7 +9,7 @@ import Button from '@/src/components/common/Button/Button'
 import cn from '@/src/utils/cn'
 
 interface DisclosureHeaderProps {
-  children: React.ReactNode
+  children?: React.ReactNode
   className?: string
 }
 

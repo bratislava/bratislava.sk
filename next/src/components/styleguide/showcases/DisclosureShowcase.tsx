@@ -41,7 +41,7 @@ const DisclosureShowcase = () => {
             incididunt ut labore et dolore magna aliqua.
           </DisclosurePanel>
         </Disclosure>
-        <HorizontalDivider aria-hidden className="mx-4 lg:mx-6" />
+        <HorizontalDivider className="mx-4 lg:mx-6" />
         <Disclosure id="disclosure2">
           <DisclosureHeader className="p-4 ring-inset lg:px-6">
             <Badge label="Badge" />
