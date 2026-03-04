@@ -1,4 +1,4 @@
-/* eslint-disable no-console */
+/* eslint-disable no-console,@typescript-eslint/no-unused-vars */
 
 import { SectionsFragment } from '@/src/services/graphql'
 import { client } from '@/src/services/graphql/gql'

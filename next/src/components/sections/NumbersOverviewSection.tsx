@@ -1,5 +1,3 @@
-import React from 'react'
-
 import NumbersOverview from '@/src/components/common/NumbersOverview/NumbersOverview'
 import SectionContainer from '@/src/components/layouts/SectionContainer'
 import { NumbersOverviewSectionFragment } from '@/src/services/graphql'

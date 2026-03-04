@@ -1,5 +1,3 @@
-import React from 'react'
-
 import MayorAndCouncilCard from '@/src/components/cards/MayorAndCouncilCard'
 import SectionHeader from '@/src/components/layouts/SectionHeader'
 import { useHomepageContext } from '@/src/components/providers/HomepageContextProvider'

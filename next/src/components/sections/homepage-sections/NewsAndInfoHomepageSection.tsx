@@ -1,5 +1,3 @@
-import React from 'react'
-
 import HorizontalDivider from '@/src/components/common/Divider/HorizontalDivider'
 import SectionContainer from '@/src/components/layouts/SectionContainer'
 import HighlightsHomepageSection from '@/src/components/sections/homepage-sections/HighlightsHomepageSection'

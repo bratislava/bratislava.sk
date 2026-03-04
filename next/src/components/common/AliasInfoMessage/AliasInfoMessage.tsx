@@ -1,6 +1,5 @@
 import { Typography } from '@bratislava/component-library'
 import { useTranslation } from 'next-i18next'
-import React from 'react'
 
 import MLink from '@/src/components/common/MLink/MLink'
 

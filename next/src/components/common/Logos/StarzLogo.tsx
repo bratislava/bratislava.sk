@@ -1,5 +1,3 @@
-import React from 'react'
-
 import { StarzLogoSvg } from '@/src/assets/images'
 import MLink from '@/src/components/common/MLink/MLink'
 import cn from '@/src/utils/cn'

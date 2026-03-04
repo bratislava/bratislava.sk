@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
-import React, { useMemo } from 'react'
+import { useMemo } from 'react'
 
 import SelectField, { SelectItem } from '@/src/components/common/SelectField/SelectField'
 import { getYearsOptions } from '@/src/components/sections/OfficialBoardSection/getYearsOptions'

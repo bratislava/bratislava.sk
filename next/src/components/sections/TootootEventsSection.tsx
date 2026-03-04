@@ -1,5 +1,4 @@
 import { useQuery } from '@tanstack/react-query'
-import React from 'react'
 
 import TootootEventCard from '@/src/components/cards/TootootEventCard'
 import Button from '@/src/components/common/Button/Button'

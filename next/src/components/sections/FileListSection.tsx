@@ -1,5 +1,3 @@
-import React from 'react'
-
 import FileList from '@/src/components/common/FileList/FileList'
 import SectionContainer from '@/src/components/layouts/SectionContainer'
 import { FileListSectionFragment } from '@/src/services/graphql'

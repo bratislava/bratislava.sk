@@ -1,6 +1,6 @@
 import { Typography } from '@bratislava/component-library'
 import * as NavigationMenu from '@radix-ui/react-navigation-menu'
-import React, { CSSProperties, forwardRef } from 'react'
+import { CSSProperties, forwardRef } from 'react'
 
 import { ChevronDownIcon } from '@/src/assets/icons'
 

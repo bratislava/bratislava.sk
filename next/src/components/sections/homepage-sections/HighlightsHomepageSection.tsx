@@ -1,5 +1,3 @@
-import React from 'react'
-
 import HomepageHighlightCard from '@/src/components/cards/HomepageHighlightCard'
 import ResponsiveCarousel from '@/src/components/common/Carousel/ResponsiveCarousel'
 import SectionHeader from '@/src/components/layouts/SectionHeader'

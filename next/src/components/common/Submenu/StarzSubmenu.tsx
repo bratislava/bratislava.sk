@@ -1,5 +1,3 @@
-import React from 'react'
-
 import Button from '@/src/components/common/Button/Button'
 import StarzLogo from '@/src/components/common/Logos/StarzLogo'
 import SectionContainer from '@/src/components/layouts/SectionContainer'

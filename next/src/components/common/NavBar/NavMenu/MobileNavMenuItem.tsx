@@ -1,5 +1,4 @@
 import * as NavigationMenu from '@radix-ui/react-navigation-menu'
-import React from 'react'
 
 import { getCategoryColorLocalStyle, transformIconToCategory } from '@/src/utils/colors'
 

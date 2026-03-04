@@ -1,5 +1,3 @@
-import React from 'react'
-
 import Button from '@/src/components/common/Button/Button'
 import ImagePlaceholder from '@/src/components/common/Image/ImagePlaceholder'
 import StrapiImage from '@/src/components/common/Image/StrapiImage'

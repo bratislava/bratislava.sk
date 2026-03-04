@@ -1,5 +1,3 @@
-import React from 'react'
-
 import { getCardTitleLevel } from '@/src/components/cards/getCardTitleLevel'
 import FaqsGroup from '@/src/components/common/FaqsGroup/FaqsGroup'
 import SectionContainer from '@/src/components/layouts/SectionContainer'

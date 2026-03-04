@@ -1,5 +1,5 @@
 import { Typography } from '@bratislava/component-library'
-import React, { useId } from 'react'
+import { useId } from 'react'
 
 import CardBase, { CardBaseProps } from '@/src/components/cards/CardBase'
 import CardContent from '@/src/components/cards/CardContent'

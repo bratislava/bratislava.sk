@@ -1,5 +1,5 @@
 import { Typography } from '@bratislava/component-library'
-import React, { Fragment } from 'react'
+import { Fragment } from 'react'
 
 import AlertMessage from '@/src/components/common/AlertMessage/AlertMessage'
 import MLink from '@/src/components/common/MLink/MLink'

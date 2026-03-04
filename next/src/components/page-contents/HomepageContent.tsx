@@ -1,5 +1,3 @@
-import React from 'react'
-
 import Waves from '@/src/components/common/Waves/Waves'
 import { useHomepageContext } from '@/src/components/providers/HomepageContextProvider'
 import InbaHomepageSection from '@/src/components/sections/homepage-sections/InbaHomepageSection'

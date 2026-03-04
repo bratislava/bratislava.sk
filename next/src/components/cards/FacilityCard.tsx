@@ -1,5 +1,5 @@
 import { Typography } from '@bratislava/component-library'
-import React, { useId } from 'react'
+import { useId } from 'react'
 
 import { ArrowRightIcon } from '@/src/assets/icons'
 import CardBase, { CardBaseProps } from '@/src/components/cards/CardBase'
@@ -41,7 +41,11 @@ const FacilityCard = ({
       className={cn('rounded-lg bg-background-passive-base', className)}
       {...rest}
     >
-      <CardImage imgSrc={image?.url} className="aspect-592/272" sizes={imageSizes} />
+      <CardImage
+        imgSrc={image?.url}
+        className={cn('aspect-592/272', imageClassName)}
+        sizes={imageSizes}
+      />
 
       <div className="flex h-full items-center justify-between gap-6 p-4 lg:p-6">
         <MLink {...restLinkProps} stretched>

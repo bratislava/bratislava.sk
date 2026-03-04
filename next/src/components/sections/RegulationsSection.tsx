@@ -1,5 +1,3 @@
-import React from 'react'
-
 import Regulations from '@/src/components/common/Regulations/Regulations'
 import SectionContainer from '@/src/components/layouts/SectionContainer'
 import GlobalSearchSectionContent from '@/src/components/sections/SearchSection/GlobalSearchSectionContent'

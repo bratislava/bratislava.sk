@@ -1,5 +1,3 @@
-import React from 'react'
-
 import InBaCard from '@/src/components/cards/InBaCard'
 import SectionContainer from '@/src/components/layouts/SectionContainer'
 import { useHomepageContext } from '@/src/components/providers/HomepageContextProvider'

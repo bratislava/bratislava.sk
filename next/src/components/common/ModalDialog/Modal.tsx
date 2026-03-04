@@ -1,4 +1,4 @@
-import React, { forwardRef, ReactNode } from 'react'
+import { forwardRef, ReactNode } from 'react'
 import { Modal as RACModal, ModalOverlay, ModalOverlayProps } from 'react-aria-components'
 
 import cn from '@/src/utils/cn'

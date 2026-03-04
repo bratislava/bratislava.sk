@@ -1,5 +1,3 @@
-import React from 'react'
-
 import ContactCtaCard, { ContactCtaCardType } from '@/src/components/cards/ContactCtaCard'
 import SectionHeader from '@/src/components/layouts/SectionHeader'
 import { ContactCardBlockFragment, ContactsSectionFragment } from '@/src/services/graphql'

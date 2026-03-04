@@ -1,6 +1,6 @@
 import { Typography } from '@bratislava/component-library'
 import { useQuery } from '@tanstack/react-query'
-import React, { Fragment, useEffect, useState } from 'react'
+import { Fragment, useEffect, useState } from 'react'
 
 import { getCardTitleLevel } from '@/src/components/cards/getCardTitleLevel'
 import JobOfferRowCard from '@/src/components/cards/JobOfferRowCard'

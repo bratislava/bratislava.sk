@@ -1,5 +1,3 @@
-import React from 'react'
-
 import OrganizationalStructure from '@/src/components/common/OrganizationalStructure_Deprecated/OrganizationalStructure_Deprecated'
 import SectionContainer from '@/src/components/layouts/SectionContainer'
 import { OrganizationalStructureSectionFragment } from '@/src/services/graphql'

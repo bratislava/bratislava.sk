@@ -1,6 +1,5 @@
 import { Typography } from '@bratislava/component-library'
 import * as NavigationMenu from '@radix-ui/react-navigation-menu'
-import React from 'react'
 
 import Button from '@/src/components/common/Button/Button'
 import { useTranslation } from '@/src/utils/useTranslation'

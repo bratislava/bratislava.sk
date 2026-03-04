@@ -14,17 +14,13 @@ type HomePageSearchFieldProps = {
   value: string
   setValue: Dispatch<SetStateAction<string>>
   placeholder?: string
-  inputClassName?: string
   onSearchPressed?: () => void
-  className?: string
 } & DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
 
 const HomePageSearchField = ({
   value,
   setValue,
   onSearchPressed = () => {},
-  className,
-  inputClassName,
   ...rest
 }: HomePageSearchFieldProps) => {
   const { t } = useTranslation()

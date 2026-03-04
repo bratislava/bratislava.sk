@@ -1,5 +1,4 @@
 import { Typography } from '@bratislava/component-library'
-import React from 'react'
 
 import FaqsGroup from '@/src/components/common/FaqsGroup/FaqsGroup'
 import SectionContainer from '@/src/components/layouts/SectionContainer'

@@ -1,6 +1,5 @@
 /* eslint-disable i18next/no-literal-string */
 import { Typography } from '@bratislava/component-library'
-import React from 'react'
 
 import Badge from '@/src/components/common/Badge/Badge'
 import Disclosure from '@/src/components/common/Disclosure/Disclosure'
