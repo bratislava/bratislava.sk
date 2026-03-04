@@ -1,5 +1,3 @@
-import React from 'react'
-
 import SectionContainer from '@/src/components/layouts/SectionContainer'
 import SectionHeader from '@/src/components/layouts/SectionHeader'
 import NumericalListItem from '@/src/components/sections/NumericalListSection_Deprecated/NumericalListItem_Deprecated'

@@ -1,5 +1,5 @@
 import { Typography } from '@bratislava/component-library'
-import React, { Dispatch, Fragment, SetStateAction, useEffect } from 'react'
+import { Dispatch, Fragment, SetStateAction, useEffect } from 'react'
 import { Selection } from 'react-aria-components'
 
 import HorizontalDivider from '@/src/components/common/Divider/HorizontalDivider'

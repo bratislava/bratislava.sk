@@ -1,4 +1,4 @@
-import React, { createContext, PropsWithChildren, useContext, useState } from 'react'
+import { createContext, PropsWithChildren, useContext, useState } from 'react'
 
 type NavMenuContextType = {
   menuValue: string

@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 
 import EventCard from '@/src/components/cards/EventCard'
 import { getCardTitleLevel } from '@/src/components/cards/getCardTitleLevel'

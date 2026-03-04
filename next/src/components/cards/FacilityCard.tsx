@@ -1,5 +1,5 @@
 import { Typography } from '@bratislava/component-library'
-import React, { useId } from 'react'
+import { useId } from 'react'
 
 import { ArrowRightIcon } from '@/src/assets/icons'
 import CardBase, { CardBaseProps } from '@/src/components/cards/CardBase'

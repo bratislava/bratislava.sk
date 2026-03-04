@@ -1,5 +1,5 @@
 import { Typography } from '@bratislava/component-library'
-import React, { ReactNode } from 'react'
+import { ReactNode } from 'react'
 
 import cn from '@/src/utils/cn'
 

@@ -1,7 +1,7 @@
 import { Typography } from '@bratislava/component-library'
 import { keepPreviousData, useQuery } from '@tanstack/react-query'
 import { useTranslation } from 'next-i18next'
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useDebounceValue } from 'usehooks-ts'
 
 import InbaReleaseCard from '@/src/components/cards/InbaReleaseCard'

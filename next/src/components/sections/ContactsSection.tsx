@@ -1,5 +1,3 @@
-import React from 'react'
-
 import Contacts from '@/src/components/common/Contacts/Contacts'
 import SectionContainer from '@/src/components/layouts/SectionContainer'
 import { ContactsSectionFragment } from '@/src/services/graphql'

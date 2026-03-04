@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import { Fragment } from 'react'
 
 import { SectionTitleLevel } from '@/src/components/cards/getCardTitleLevel'
 import LinkRowCard from '@/src/components/cards/LinkRowCard'

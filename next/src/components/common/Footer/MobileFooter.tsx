@@ -1,5 +1,5 @@
 import { Typography } from '@bratislava/component-library'
-import React, { Fragment } from 'react'
+import { Fragment } from 'react'
 
 import { EuFlagSvg } from '@/src/assets/images'
 import Disclosure from '@/src/components/common/Disclosure/Disclosure'

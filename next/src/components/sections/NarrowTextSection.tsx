@@ -1,5 +1,3 @@
-import React from 'react'
-
 import Markdown from '@/src/components/formatting/Markdown/Markdown'
 import SectionContainer from '@/src/components/layouts/SectionContainer'
 import { NarrowTextSectionFragment } from '@/src/services/graphql'

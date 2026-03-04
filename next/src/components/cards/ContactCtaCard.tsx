@@ -1,5 +1,5 @@
 import { Typography } from '@bratislava/component-library'
-import React, { useMemo } from 'react'
+import { useMemo } from 'react'
 
 import {
   AddressIcon,

@@ -1,5 +1,3 @@
-import React from 'react'
-
 import FileRowCard, { FileRowCardProps } from '@/src/components/cards/FileRowCard'
 import { FileBlockFragment, FileItemBlockFragment } from '@/src/services/graphql'
 import { formatDate } from '@/src/utils/formatDate'

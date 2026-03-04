@@ -1,5 +1,4 @@
 import { Typography } from '@bratislava/component-library'
-import React from 'react'
 import Markdown from 'react-markdown'
 
 import StrapiImage from '@/src/components/common/Image/StrapiImage'

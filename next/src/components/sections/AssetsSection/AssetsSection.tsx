@@ -1,5 +1,5 @@
 import { useTranslation } from 'next-i18next'
-import React, { Fragment } from 'react'
+import { Fragment } from 'react'
 
 import DocumentRowCard from '@/src/components/cards/DocumentRowCard'
 import { getCardTitleLevel } from '@/src/components/cards/getCardTitleLevel'

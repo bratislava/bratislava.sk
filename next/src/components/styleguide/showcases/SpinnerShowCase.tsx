@@ -1,5 +1,3 @@
-import React from 'react'
-
 import Spinner from '@/src/components/common/Spinner/Spinner'
 
 import Stack from '../Stack'

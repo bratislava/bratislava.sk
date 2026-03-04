@@ -1,4 +1,3 @@
-import React from 'react'
 import { ChevronRightIcon, HomeIcon } from 'src/assets/icons'
 
 import type { BreadcrumbsProps } from '@/src/components/common/Breadcrumbs/Breadcrumbs'

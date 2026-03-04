@@ -1,6 +1,6 @@
 import { Typography } from '@bratislava/component-library'
 import { useTranslation } from 'next-i18next'
-import React, { Fragment, useId } from 'react'
+import { Fragment, useId } from 'react'
 
 import { LanguageIcon } from '@/src/assets/material-icons'
 import CardBase from '@/src/components/cards/CardBase'

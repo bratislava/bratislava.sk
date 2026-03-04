@@ -1,5 +1,4 @@
 import { Typography } from '@bratislava/component-library'
-import React from 'react'
 import { TabPanel } from 'react-aria-components'
 
 import CardBase from '@/src/components/cards/CardBase'

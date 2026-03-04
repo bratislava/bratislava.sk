@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react'
+import { useMemo } from 'react'
 import { Tab, TabList, Tabs } from 'react-aria-components'
 
 import TabPanelDisclosure from '@/src/components/sections/homepage-sections/HomepageTabs/TabPanelDisclosure'

@@ -1,6 +1,6 @@
 import { Typography } from '@bratislava/component-library'
 import { useTranslation } from 'next-i18next'
-import React, { useCallback, useState } from 'react'
+import { useCallback, useState } from 'react'
 import { useOverlayTriggerState } from 'react-stately'
 
 import { DirectionsIcon } from '@/src/assets/material-icons'

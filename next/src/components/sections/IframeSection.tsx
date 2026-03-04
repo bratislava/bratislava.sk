@@ -1,5 +1,3 @@
-import React from 'react'
-
 import Iframe from '@/src/components/common/Iframe/Iframe'
 import SectionContainer from '@/src/components/layouts/SectionContainer'
 import { IframeSectionFragment } from '@/src/services/graphql'

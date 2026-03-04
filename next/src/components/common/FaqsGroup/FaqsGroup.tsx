@@ -1,5 +1,4 @@
 import { Typography } from '@bratislava/component-library'
-import React from 'react'
 
 import { AccordionTitleLevel } from '@/src/components/cards/getCardTitleLevel'
 import Disclosure from '@/src/components/common/Disclosure/Disclosure'

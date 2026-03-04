@@ -1,5 +1,3 @@
-import React from 'react'
-
 import DesktopBreadcrumbs from '@/src/components/common/Breadcrumbs/DesktopBreadcrumbs'
 import MobileBreadcrumbs from '@/src/components/common/Breadcrumbs/MobileBreadcrumbs'
 

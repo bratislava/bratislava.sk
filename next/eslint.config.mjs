@@ -28,7 +28,7 @@ export default [
       'no-implicit-coercion': 'off',
 
       '@typescript-eslint/no-unnecessary-condition': 'warn', // 170 violations
-      '@typescript-eslint/no-unused-vars': 'warn', // 159 violations
+      // '@typescript-eslint/no-unused-vars': 'warn', // 159 violations
       'sonarjs/no-redundant-optional': 'warn', // 28 violations
       '@typescript-eslint/no-unsafe-member-access': 'warn', // 16 violations
       '@typescript-eslint/no-non-null-assertion': 'warn', // 10 violations

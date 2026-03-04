@@ -1,5 +1,3 @@
-import React from 'react'
-
 import FacilityCard from '@/src/components/cards/FacilityCard'
 import { getCardTitleLevel } from '@/src/components/cards/getCardTitleLevel'
 import SectionContainer from '@/src/components/layouts/SectionContainer'

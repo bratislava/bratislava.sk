@@ -1,4 +1,3 @@
-import React from 'react'
 import { AttachmentIcon, DownloadIcon } from 'src/assets/icons'
 
 import CardBase from '@/src/components/cards/CardBase'

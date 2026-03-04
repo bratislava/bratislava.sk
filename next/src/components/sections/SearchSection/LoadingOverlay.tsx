@@ -1,4 +1,4 @@
-import React, { PropsWithChildren } from 'react'
+import { PropsWithChildren } from 'react'
 
 import LoadingSpinner from '@/src/components/common/LoadingSpinner/LoadingSpinner'
 import cn from '@/src/utils/cn'

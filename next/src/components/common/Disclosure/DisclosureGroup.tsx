@@ -1,4 +1,3 @@
-import React from 'react'
 import {
   DisclosureGroup as RACDisclosureGroup,
   DisclosureGroupProps as RACDisclosureGroupProps,

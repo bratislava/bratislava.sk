@@ -1,6 +1,6 @@
 import { Typography } from '@bratislava/component-library'
 import { useTranslation } from 'next-i18next'
-import React, { Fragment } from 'react'
+import { Fragment } from 'react'
 
 import { ArrowRightIcon, AttachmentIcon, DownloadIcon } from '@/src/assets/icons'
 import { FolderIcon } from '@/src/assets/material-icons'

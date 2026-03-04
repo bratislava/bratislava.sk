@@ -1,5 +1,3 @@
-import React from 'react'
-
 import ColumnedText from '@/src/components/common/ColumnedText/ColumnedText'
 import SectionContainer from '@/src/components/layouts/SectionContainer'
 import { ColumnedTextSectionFragment } from '@/src/services/graphql'

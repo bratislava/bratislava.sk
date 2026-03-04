@@ -1,6 +1,5 @@
 import { Typography } from '@bratislava/component-library'
 import { useTranslation } from 'next-i18next'
-import * as React from 'react'
 import { Fragment, useMemo } from 'react'
 
 import FileRowCard from '@/src/components/cards/FileRowCard'

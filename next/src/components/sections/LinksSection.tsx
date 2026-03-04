@@ -1,5 +1,3 @@
-import React from 'react'
-
 import Links from '@/src/components/common/Links/Links'
 import SectionContainer from '@/src/components/layouts/SectionContainer'
 import { LinksSectionFragment } from '@/src/services/graphql'
