@@ -42,7 +42,7 @@ const ArticleRowCard = ({
     >
       {/* Screen: Desktop */}
       <div className="flex flex-row items-center gap-4 rounded-lg max-lg:hidden">
-        <CardImage imgSrc={imgSrc} className="aspect-140/88 w-35 rounded-lg" />
+        <CardImage imgSrc={imgSrc} className="aspect-140/88 w-35 rounded-lg" sizes={imgSizes} />
 
         <div className="flex flex-col gap-2">
           {metadata?.length ? (
@@ -64,7 +64,7 @@ const ArticleRowCard = ({
       {/* Screen: Mobile */}
       <div className="flex flex-col items-start gap-4 lg:hidden">
         <div className="flex items-center gap-4">
-          <CardImage imgSrc={imgSrc} className="aspect-102/64 w-25.5 rounded-lg" />
+          <CardImage imgSrc={imgSrc} className="aspect-102/64 w-25.5 rounded-lg" sizes={imgSizes} />
           {metadata?.length ? (
             <div>
               {metadata.map((metaDataItem, index) => (

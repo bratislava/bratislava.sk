@@ -43,7 +43,7 @@ const ArticleCard = ({
       )}
       {...rest}
     >
-      <CardImage imgSrc={imgSrc} className="aspect-16/10 rounded-lg" />
+      <CardImage imgSrc={imgSrc} className="aspect-16/10 rounded-lg" sizes={imgSizes} />
 
       <CardContent variant="no-padding" className="grow justify-between">
         <div className="flex flex-col gap-2">

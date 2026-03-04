@@ -32,7 +32,6 @@ const StarzLandingPageSection = ({ section }: StarzLandingPageSectionProps) => {
                 return card ? (
                   <LinkCard
                     key={index}
-                    title={getLinkProps(card).children}
                     text={card.subtext}
                     image={cardImage}
                     imageSizes={imageSizes}

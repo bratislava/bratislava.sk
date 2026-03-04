@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Typography } from '@bratislava/component-library'
 import slugify from '@sindresorhus/slugify'
 import Image from 'next/image'

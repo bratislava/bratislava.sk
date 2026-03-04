@@ -12,20 +12,9 @@ type Props = {
   imgSrc?: string
   imgSizes?: string
   date?: string
-  tag?: string
-  text?: string | null | undefined
 } & CardBaseProps
 
-const InbaReleaseCard = ({
-  imgSrc,
-  imgSizes,
-  date,
-  tag,
-  title,
-  text,
-  linkHref,
-  ...rest
-}: Props) => {
+const InbaReleaseCard = ({ imgSrc, imgSizes, date, title, linkHref, ...rest }: Props) => {
   const { t } = useTranslation()
   const titleId = useId()
 
