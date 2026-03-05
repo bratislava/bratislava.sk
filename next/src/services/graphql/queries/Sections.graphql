@@ -401,10 +401,13 @@ fragment PartnersSection on ComponentSectionsPartners {
 fragment AssetsSection on ComponentSectionsAssets {
   title
   text
+  showAll
   assets(pagination: { limit: -1 }) {
     ...AssetEntity
   }
-  showAll
+  adminGroup {
+    ...AdminGroupSlugEntity
+  }
   titleLevelAssetsSection: titleLevel
 }
 

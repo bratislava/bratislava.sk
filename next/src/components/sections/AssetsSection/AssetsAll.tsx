@@ -30,7 +30,7 @@ type Props = {
 const AssetsAllSection = ({ section }: Props) => {
   const { t } = useTranslation()
 
-  const { title, text, titleLevelAssetsSection: titleLevel } = section
+  const { title, text, titleLevelAssetsSection: titleLevel, adminGroup } = section
 
   const { filters, setFilters, setSearch, setPage } = useAssetsFilters()
 
@@ -76,7 +76,11 @@ const AssetsAllSection = ({ section }: Props) => {
           setSearchQuery={setSearch}
           isLoading={isPending}
         />
-        <AssetsFilterGroup filters={filters} onFiltersChange={handleFiltersChange} />
+        <AssetsFilterGroup
+          filters={filters}
+          onFiltersChange={handleFiltersChange}
+          lockedFilters={adminGroup ? { adminGroupSlugs: [adminGroup.slug] } : undefined}
+        />
       </div>
 
       {data?.hits?.length ? (
