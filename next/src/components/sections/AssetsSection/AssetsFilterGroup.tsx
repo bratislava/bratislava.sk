@@ -12,13 +12,14 @@ import { useTranslation } from '@/src/utils/useTranslation'
 type Props = {
   filters: AssetsFilters
   onFiltersChange: (filters: AssetsFilters) => void
+  lockedFilters?: Partial<Pick<AssetsFilters, 'adminGroupSlugs'>>
 }
 
 /**
  * Figma: https://www.figma.com/design/17wbd0MDQcMW9NbXl6UPs8/DS--Component-library?node-id=16846-35571&m=dev
  */
 
-const AssetsFilterGroup = ({ filters, onFiltersChange }: Props) => {
+const AssetsFilterGroup = ({ filters, onFiltersChange, lockedFilters }: Props) => {
   const { t } = useTranslation()
   const locale = useLocale()
 
@@ -26,7 +27,7 @@ const AssetsFilterGroup = ({ filters, onFiltersChange }: Props) => {
     queryKey: ['AssetCategories', locale],
     queryFn: () => client.AssetCategories(),
     staleTime: Infinity,
-    select: (res) => res.assetCategories.filter(isDefined) ?? [],
+    select: (res) => res.assetCategories.filter(isDefined),
   })
 
   const assetCategoriesSelectItems = [
@@ -41,7 +42,8 @@ const AssetsFilterGroup = ({ filters, onFiltersChange }: Props) => {
     queryKey: ['AdminGroups'],
     queryFn: () => client.AdminGroups(),
     staleTime: Infinity,
-    select: (res) => res.adminGroups.filter(isDefined) ?? [],
+    select: (res) => res.adminGroups.filter(isDefined),
+    enabled: !lockedFilters?.adminGroupSlugs?.length, // Do not query all admin groups if we show only one pre-selected
   })
 
   const { CITY_HALL_ADMINGROUP } = useGetCityHallAdminGroup()
@@ -100,19 +102,22 @@ const AssetsFilterGroup = ({ filters, onFiltersChange }: Props) => {
       >
         {(item) => <SelectItem label={item.title} id={item.slug} />}
       </SelectField>
-      <SelectField
-        label={t('AssetsFilterGroup.adminGroupLabel')}
-        items={adminGroupsSelectItems}
-        selectedKey={
-          filters.excludeAssetsWithAssignedAdminGroups
-            ? CITY_HALL_ADMINGROUP.slug
-            : (filters.adminGroupSlugs?.[0] ?? null)
-        }
-        placeholder={t('AssetsFilterGroup.allAdminGroups')}
-        onSelectionChange={handleAuthorChange}
-      >
-        {(item) => <SelectItem label={item.title} id={item.slug ?? ''} />}
-      </SelectField>
+
+      {!lockedFilters?.adminGroupSlugs?.length ? (
+        <SelectField
+          label={t('AssetsFilterGroup.adminGroupLabel')}
+          items={adminGroupsSelectItems}
+          selectedKey={
+            filters.excludeAssetsWithAssignedAdminGroups
+              ? CITY_HALL_ADMINGROUP.slug
+              : (filters.adminGroupSlugs?.[0] ?? null)
+          }
+          placeholder={t('AssetsFilterGroup.allAdminGroups')}
+          onSelectionChange={handleAuthorChange}
+        >
+          {(item) => <SelectItem label={item.title} id={item.slug ?? ''} />}
+        </SelectField>
+      ) : null}
     </div>
   )
 }

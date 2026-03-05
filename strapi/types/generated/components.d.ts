@@ -593,6 +593,7 @@ export interface SectionsAssets extends Struct.ComponentSchema {
     displayName: 'Dokumenty'
   }
   attributes: {
+    adminGroup: Schema.Attribute.Relation<'oneToOne', 'api::admin-group.admin-group'>
     assets: Schema.Attribute.Relation<'oneToMany', 'api::asset.asset'>
     showAll: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>
     text: Schema.Attribute.Text

@@ -1352,6 +1352,7 @@ input ComponentSectionsArticlesLandingPageInput {
 }
 
 type ComponentSectionsAssets {
+  adminGroup: AdminGroup
   assets(filters: AssetFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [Asset]!
   assets_connection(filters: AssetFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): AssetRelationResponseCollection
   id: ID!
@@ -1362,6 +1363,7 @@ type ComponentSectionsAssets {
 }
 
 input ComponentSectionsAssetsFiltersInput {
+  adminGroup: AdminGroupFiltersInput
   and: [ComponentSectionsAssetsFiltersInput]
   assets: AssetFiltersInput
   not: ComponentSectionsAssetsFiltersInput
@@ -1373,6 +1375,7 @@ input ComponentSectionsAssetsFiltersInput {
 }
 
 input ComponentSectionsAssetsInput {
+  adminGroup: ID
   assets: [ID]
   id: ID
   showAll: Boolean

@@ -31,13 +31,25 @@
         }
       }
     },
+    "adminGroup": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::admin-group.admin-group",
+      "conditions": {
+        "visible": {
+          "==": [
+            {
+              "var": "showAll"
+            },
+            true
+          ]
+        }
+      }
+    },
     "titleLevel": {
       "type": "enumeration",
       "default": "h2",
-      "enum": [
-        "h2",
-        "h3"
-      ]
+      "enum": ["h2", "h3"]
     }
   },
   "config": {}
