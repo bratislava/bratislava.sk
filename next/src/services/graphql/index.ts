@@ -7562,6 +7562,29 @@ export type FaqEntityFragment = {
   body?: string | null
 }
 
+export type FaqCategoriesQueryVariables = Exact<{
+  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
+  sort?: InputMaybe<
+    Array<InputMaybe<Scalars['String']['input']>> | InputMaybe<Scalars['String']['input']>
+  >
+}>
+
+export type FaqCategoriesQuery = {
+  __typename?: 'Query'
+  faqCategories: Array<{
+    __typename?: 'FaqCategory'
+    documentId: string
+    title: string
+    slug: string
+    faqs: Array<{
+      __typename?: 'Faq'
+      documentId: string
+      title: string
+      body?: string | null
+    } | null>
+  } | null>
+}
+
 export type UploadFileFragment = { __typename?: 'UploadFile'; documentId: string }
 
 export type AllFilesQueryVariables = Exact<{
@@ -19380,6 +19403,14 @@ export const DocumentCategoriesDocument = gql`
   }
   ${DocumentCategoryEntityFragmentDoc}
 `
+export const FaqCategoriesDocument = gql`
+  query FaqCategories($locale: I18NLocaleCode, $sort: [String] = ["title"]) {
+    faqCategories(pagination: { limit: -1 }, locale: $locale, sort: $sort) {
+      ...FaqCategoryEntity
+    }
+  }
+  ${FaqCategoryEntityFragmentDoc}
+`
 export const AllFilesDocument = gql`
   query allFiles($locale: I18NLocaleCode) {
     articles(locale: $locale, pagination: { limit: -1 }) {
@@ -19947,6 +19978,24 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
             signal,
           }),
         'DocumentCategories',
+        'query',
+        variables,
+      )
+    },
+    FaqCategories(
+      variables?: FaqCategoriesQueryVariables,
+      requestHeaders?: GraphQLClientRequestHeaders,
+      signal?: RequestInit['signal'],
+    ): Promise<FaqCategoriesQuery> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<FaqCategoriesQuery>({
+            document: FaqCategoriesDocument,
+            variables,
+            requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders },
+            signal,
+          }),
+        'FaqCategories',
         'query',
         variables,
       )

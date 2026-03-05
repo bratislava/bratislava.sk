@@ -11,3 +11,9 @@ fragment FaqEntity on Faq {
   title
   body
 }
+
+query FaqCategories($locale: I18NLocaleCode, $sort: [String] = ["title"]) {
+  faqCategories(pagination: { limit: -1 }, locale: $locale, sort: $sort) {
+    ...FaqCategoryEntity
+  }
+}

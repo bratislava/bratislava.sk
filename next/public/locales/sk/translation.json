@@ -66,6 +66,8 @@
   "ContentManagedBy.copyright": "© {{year}} {{contentManager}}",
   "ContentManagedBy.message": "Obsah tejto stránky je spravovaný mestskou organizáciou {{contentManager}}.",
   "Dialog.aria.close": "Zavrieť vyskakovacie okno",
+  "FaqsSection.selectionOptions.allFaqs": "Všetky otázky",
+  "FaqsSection.selectionOptions.aria": "Kategórie otázok",
   "FileList.aria.downloadFile": "Stiahnuť súbor",
   "FileList.aria.downloadFileAriaLabel": "Stiahnuť súbor {{title}}, formát {{format}}, {{size}}",
   "Footer.copyright": "© {{year}} Hlavné mesto SR Bratislava, vytvorili <innovations>Inovácie mesta Bratislava</innovations>",

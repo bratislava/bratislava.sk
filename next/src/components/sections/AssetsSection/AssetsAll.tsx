@@ -45,7 +45,7 @@ const AssetsAllSection = ({ section }: Props) => {
     setSearch(debouncedInput)
   }, [debouncedInput, setSearch])
 
-  const { data, isPending } = useQuery({
+  const { data, isFetching } = useQuery({
     queryKey: getAssetsQueryKey(filters),
     queryFn: () => assetsFetcher(filters),
     placeholderData: keepPreviousData,
@@ -74,7 +74,7 @@ const AssetsAllSection = ({ section }: Props) => {
           input={input}
           setInput={setInput}
           setSearchQuery={setSearch}
-          isLoading={isPending}
+          isLoading={isFetching}
         />
         <AssetsFilterGroup filters={filters} onFiltersChange={handleFiltersChange} />
       </div>
