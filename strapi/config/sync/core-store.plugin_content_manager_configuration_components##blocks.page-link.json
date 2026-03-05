@@ -55,7 +55,7 @@
           "placeholder": "",
           "visible": true,
           "editable": true,
-          "mainField": "slug"
+          "mainField": "path"
         },
         "list": {
           "label": "page",
@@ -87,12 +87,7 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "title",
-        "url",
-        "page"
-      ],
+      "list": ["id", "title", "url", "page"],
       "edit": [
         [
           {

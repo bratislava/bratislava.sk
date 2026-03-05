@@ -83,7 +83,7 @@
           "placeholder": "",
           "visible": true,
           "editable": true,
-          "mainField": "slug"
+          "mainField": "path"
         },
         "list": {
           "label": "moreLinkPage",
@@ -115,10 +115,7 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "category"
-      ],
+      "list": ["id", "category"],
       "edit": [
         [
           {
