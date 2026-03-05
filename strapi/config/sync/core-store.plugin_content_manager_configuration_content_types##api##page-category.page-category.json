@@ -83,7 +83,7 @@
           "placeholder": "",
           "visible": true,
           "editable": true,
-          "mainField": "slug"
+          "mainField": "path"
         },
         "list": {
           "label": "pages",
@@ -159,12 +159,7 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "title",
-        "shortTitle",
-        "color"
-      ],
+      "list": ["id", "title", "shortTitle", "color"],
       "edit": [
         [
           {

@@ -7,7 +7,7 @@
       "filterable": true,
       "searchable": true,
       "pageSize": 10,
-      "mainField": "slug",
+      "mainField": "path",
       "defaultSortBy": "updatedAt",
       "defaultSortOrder": "DESC"
     },
@@ -254,7 +254,7 @@
           "placeholder": "",
           "visible": true,
           "editable": true,
-          "mainField": "slug"
+          "mainField": "path"
         },
         "list": {
           "label": "parentPage",
@@ -269,7 +269,7 @@
           "placeholder": "",
           "visible": true,
           "editable": true,
-          "mainField": "slug"
+          "mainField": "path"
         },
         "list": {
           "label": "childPages",
@@ -594,15 +594,7 @@
           }
         ]
       ],
-      "list": [
-        "slug",
-        "title",
-        "parentPage",
-        "updatedAt",
-        "updatedBy",
-        "adminGroups",
-        "subtext"
-      ]
+      "list": ["slug", "title", "parentPage", "updatedAt", "updatedBy", "adminGroups", "subtext"]
     }
   },
   "type": "object",

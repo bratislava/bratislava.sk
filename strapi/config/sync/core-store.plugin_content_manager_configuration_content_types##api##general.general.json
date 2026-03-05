@@ -41,7 +41,7 @@
           "placeholder": "",
           "visible": true,
           "editable": true,
-          "mainField": "slug"
+          "mainField": "path"
         },
         "list": {
           "label": "privacyPolicyPage",
@@ -56,7 +56,7 @@
           "placeholder": "",
           "visible": true,
           "editable": true,
-          "mainField": "slug"
+          "mainField": "path"
         },
         "list": {
           "label": "officialBoardPage",
@@ -71,7 +71,7 @@
           "placeholder": "",
           "visible": true,
           "editable": true,
-          "mainField": "slug"
+          "mainField": "path"
         },
         "list": {
           "label": "newsPage",
@@ -86,7 +86,7 @@
           "placeholder": "",
           "visible": true,
           "editable": true,
-          "mainField": "slug"
+          "mainField": "path"
         },
         "list": {
           "label": "vznPage",
@@ -101,7 +101,7 @@
           "placeholder": "",
           "visible": true,
           "editable": true,
-          "mainField": "slug"
+          "mainField": "path"
         },
         "list": {
           "label": "inbaPage",
@@ -116,7 +116,7 @@
           "placeholder": "",
           "visible": true,
           "editable": true,
-          "mainField": "slug"
+          "mainField": "path"
         },
         "list": {
           "label": "inbaReleasesPage",
@@ -222,12 +222,7 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "header",
-        "createdAt",
-        "updatedAt"
-      ],
+      "list": ["id", "header", "createdAt", "updatedAt"],
       "edit": [
         [
           {
