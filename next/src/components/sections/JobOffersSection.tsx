@@ -29,7 +29,6 @@ const JobOffersSection = ({ section }: JobOffersSectionProps) => {
   const { data, isPending, isError, error } = useQuery({
     queryKey: getNalgooJobOffersQueryKey(),
     queryFn: () => fetchNalgooJobOffers(),
-    staleTime: Infinity,
   })
 
   const [pagination, setPagination] = useState({
