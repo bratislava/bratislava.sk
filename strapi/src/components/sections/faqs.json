@@ -12,11 +12,6 @@
     "text": {
       "type": "text"
     },
-    "faqs": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::faq.faq"
-    },
     "titleLevel": {
       "type": "enumeration",
       "default": "h2",
@@ -24,6 +19,41 @@
         "h2",
         "h3"
       ]
+    },
+    "showAll": {
+      "type": "boolean",
+      "required": false,
+      "default": true
+    },
+    "faqCategories": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::faq-category.faq-category",
+      "conditions": {
+        "visible": {
+          "==": [
+            {
+              "var": "showAll"
+            },
+            false
+          ]
+        }
+      }
+    },
+    "faqs": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::faq.faq",
+      "conditions": {
+        "visible": {
+          "==": [
+            {
+              "var": "showAll"
+            },
+            false
+          ]
+        }
+      }
     }
   }
 }

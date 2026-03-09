@@ -2202,12 +2202,27 @@ export type ComponentSectionsFaqCategoriesInput = {
 
 export type ComponentSectionsFaqs = {
   __typename?: 'ComponentSectionsFaqs'
+  faqCategories: Array<Maybe<FaqCategory>>
+  faqCategories_connection?: Maybe<FaqCategoryRelationResponseCollection>
   faqs: Array<Maybe<Faq>>
   faqs_connection?: Maybe<FaqRelationResponseCollection>
   id: Scalars['ID']['output']
+  showAll?: Maybe<Scalars['Boolean']['output']>
   text?: Maybe<Scalars['String']['output']>
   title?: Maybe<Scalars['String']['output']>
   titleLevel?: Maybe<Enum_Componentsectionsfaqs_Titlelevel>
+}
+
+export type ComponentSectionsFaqsFaqCategoriesArgs = {
+  filters?: InputMaybe<FaqCategoryFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type ComponentSectionsFaqsFaqCategories_ConnectionArgs = {
+  filters?: InputMaybe<FaqCategoryFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
 }
 
 export type ComponentSectionsFaqsFaqsArgs = {
@@ -2224,17 +2239,21 @@ export type ComponentSectionsFaqsFaqs_ConnectionArgs = {
 
 export type ComponentSectionsFaqsFiltersInput = {
   and?: InputMaybe<Array<InputMaybe<ComponentSectionsFaqsFiltersInput>>>
+  faqCategories?: InputMaybe<FaqCategoryFiltersInput>
   faqs?: InputMaybe<FaqFiltersInput>
   not?: InputMaybe<ComponentSectionsFaqsFiltersInput>
   or?: InputMaybe<Array<InputMaybe<ComponentSectionsFaqsFiltersInput>>>
+  showAll?: InputMaybe<BooleanFilterInput>
   text?: InputMaybe<StringFilterInput>
   title?: InputMaybe<StringFilterInput>
   titleLevel?: InputMaybe<StringFilterInput>
 }
 
 export type ComponentSectionsFaqsInput = {
+  faqCategories?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
   faqs?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
   id?: InputMaybe<Scalars['ID']['input']>
+  showAll?: InputMaybe<Scalars['Boolean']['input']>
   text?: InputMaybe<Scalars['String']['input']>
   title?: InputMaybe<Scalars['String']['input']>
   titleLevel?: InputMaybe<Enum_Componentsectionsfaqs_Titlelevel>
@@ -11143,12 +11162,25 @@ export type PageEntityFragment = {
         __typename: 'ComponentSectionsFaqs'
         title?: string | null
         text?: string | null
+        showAll?: boolean | null
         titleLevelFaqsSection?: Enum_Componentsectionsfaqs_Titlelevel | null
         faqs: Array<{
           __typename?: 'Faq'
           documentId: string
           title: string
           body?: string | null
+        } | null>
+        faqCategories: Array<{
+          __typename?: 'FaqCategory'
+          documentId: string
+          title: string
+          slug: string
+          faqs: Array<{
+            __typename?: 'Faq'
+            documentId: string
+            title: string
+            body?: string | null
+          } | null>
         } | null>
       }
     | {
@@ -12479,12 +12511,25 @@ export type PageBySlugQuery = {
           __typename: 'ComponentSectionsFaqs'
           title?: string | null
           text?: string | null
+          showAll?: boolean | null
           titleLevelFaqsSection?: Enum_Componentsectionsfaqs_Titlelevel | null
           faqs: Array<{
             __typename?: 'Faq'
             documentId: string
             title: string
             body?: string | null
+          } | null>
+          faqCategories: Array<{
+            __typename?: 'FaqCategory'
+            documentId: string
+            title: string
+            slug: string
+            faqs: Array<{
+              __typename?: 'Faq'
+              documentId: string
+              title: string
+              body?: string | null
+            } | null>
           } | null>
         }
       | {
@@ -13836,12 +13881,25 @@ export type Dev_AllPagesQuery = {
           __typename: 'ComponentSectionsFaqs'
           title?: string | null
           text?: string | null
+          showAll?: boolean | null
           titleLevelFaqsSection?: Enum_Componentsectionsfaqs_Titlelevel | null
           faqs: Array<{
             __typename?: 'Faq'
             documentId: string
             title: string
             body?: string | null
+          } | null>
+          faqCategories: Array<{
+            __typename?: 'FaqCategory'
+            documentId: string
+            title: string
+            slug: string
+            faqs: Array<{
+              __typename?: 'Faq'
+              documentId: string
+              title: string
+              body?: string | null
+            } | null>
           } | null>
         }
       | {
@@ -15861,12 +15919,25 @@ export type FaqsSectionFragment = {
   __typename?: 'ComponentSectionsFaqs'
   title?: string | null
   text?: string | null
+  showAll?: boolean | null
   titleLevelFaqsSection?: Enum_Componentsectionsfaqs_Titlelevel | null
   faqs: Array<{
     __typename?: 'Faq'
     documentId: string
     title: string
     body?: string | null
+  } | null>
+  faqCategories: Array<{
+    __typename?: 'FaqCategory'
+    documentId: string
+    title: string
+    slug: string
+    faqs: Array<{
+      __typename?: 'Faq'
+      documentId: string
+      title: string
+      body?: string | null
+    } | null>
   } | null>
 }
 
@@ -16963,12 +17034,25 @@ type Sections_ComponentSectionsFaqs_Fragment = {
   __typename: 'ComponentSectionsFaqs'
   title?: string | null
   text?: string | null
+  showAll?: boolean | null
   titleLevelFaqsSection?: Enum_Componentsectionsfaqs_Titlelevel | null
   faqs: Array<{
     __typename?: 'Faq'
     documentId: string
     title: string
     body?: string | null
+  } | null>
+  faqCategories: Array<{
+    __typename?: 'FaqCategory'
+    documentId: string
+    title: string
+    slug: string
+    faqs: Array<{
+      __typename?: 'Faq'
+      documentId: string
+      title: string
+      body?: string | null
+    } | null>
   } | null>
 }
 
@@ -18797,17 +18881,6 @@ export const FaqEntityFragmentDoc = gql`
     body
   }
 `
-export const FaqsSectionFragmentDoc = gql`
-  fragment FaqsSection on ComponentSectionsFaqs {
-    title
-    text
-    faqs {
-      ...FaqEntity
-    }
-    titleLevelFaqsSection: titleLevel
-  }
-  ${FaqEntityFragmentDoc}
-`
 export const FaqCategoryEntityFragmentDoc = gql`
   fragment FaqCategoryEntity on FaqCategory {
     documentId
@@ -18818,6 +18891,22 @@ export const FaqCategoryEntityFragmentDoc = gql`
     }
   }
   ${FaqEntityFragmentDoc}
+`
+export const FaqsSectionFragmentDoc = gql`
+  fragment FaqsSection on ComponentSectionsFaqs {
+    title
+    text
+    faqs {
+      ...FaqEntity
+    }
+    faqCategories {
+      ...FaqCategoryEntity
+    }
+    showAll
+    titleLevelFaqsSection: titleLevel
+  }
+  ${FaqEntityFragmentDoc}
+  ${FaqCategoryEntityFragmentDoc}
 `
 export const FaqCategoriesSectionFragmentDoc = gql`
   fragment FaqCategoriesSection on ComponentSectionsFaqCategories {

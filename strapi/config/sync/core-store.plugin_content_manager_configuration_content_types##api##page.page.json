@@ -181,8 +181,7 @@
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true,
-          "mainField": "label"
+          "editable": true
         },
         "list": {
           "label": "headerLinks",
@@ -210,8 +209,7 @@
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true,
-          "mainField": "documentId"
+          "editable": true
         },
         "list": {
           "label": "subnavigation",
@@ -448,6 +446,15 @@
       }
     },
     "layouts": {
+      "list": [
+        "slug",
+        "title",
+        "parentPage",
+        "updatedAt",
+        "updatedBy",
+        "adminGroups",
+        "subtext"
+      ],
       "edit": [
         [
           {
@@ -593,15 +600,6 @@
             "size": 6
           }
         ]
-      ],
-      "list": [
-        "slug",
-        "title",
-        "parentPage",
-        "updatedAt",
-        "updatedBy",
-        "adminGroups",
-        "subtext"
       ]
     }
   },

@@ -36,6 +36,7 @@ const searchIndexSettings = {
     'regulation.regNumber',
     'regulation.titleText',
     'regulation.fullTitle',
+    'faq.title',
   ],
   filterableAttributes: [
     'type',
@@ -51,6 +52,7 @@ const searchIndexSettings = {
     'document.documentCategory.slug',
     'document.adminGroups.documentId',
     'document.adminGroups.slug',
+    'faq.faqCategory.slug',
   ],
   sortableAttributes: [
     'article.title',
@@ -59,6 +61,7 @@ const searchIndexSettings = {
     'asset.updatedAtTimestamp',
     'inba-release.releaseDate', // releaseDate is not datetime but only date (e.g. 2025-12-07), so we can sort by it directly instead of creating timestamp
     'regulation.effectiveFromTimestamp',
+    'faq.publishedAtTimestamp',
   ],
   pagination: {
     // https://docs.meilisearch.com/learn/advanced/known_limitations.html#maximum-number-of-results-per-search
@@ -160,6 +163,21 @@ const config = {
           : undefined,
       })
     },
+  },
+  faq: {
+    indexName: 'search_index',
+    entriesQuery: {
+      locale: '*',
+      populate: ['faqCategory'],
+    },
+    settings: searchIndexSettings,
+    transformEntry: ({ entry }) =>
+      wrapSearchIndexEntry('faq', {
+        ...entry,
+        // Meilisearch doesn't support filtering dates as ISO strings, therefore we convert it to UNIX timestamp to
+        // use (number) filters.
+        publishedAtTimestamp: entry.publishedAt ? new Date(entry.publishedAt).getTime() : undefined,
+      }),
   },
 }
 

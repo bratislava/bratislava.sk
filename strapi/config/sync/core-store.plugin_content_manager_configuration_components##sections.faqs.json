@@ -48,6 +48,49 @@
           "sortable": true
         }
       },
+      "titleLevel": {
+        "edit": {
+          "label": "Úroveň nadpisu sekcie",
+          "description": "Úroveň nadpisu meníme na h3 iba ak je to potrebné sémanticky. Nikdy ju nemeníme len kvôli vizuálnej veľkosti nadpisu.",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "titleLevel",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "showAll": {
+        "edit": {
+          "label": "Zobraziť všetky",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "showAll",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "faqCategories": {
+        "edit": {
+          "label": "faqCategories",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "title"
+        },
+        "list": {
+          "label": "faqCategories",
+          "searchable": false,
+          "sortable": false
+        }
+      },
       "faqs": {
         "edit": {
           "label": "FAQs",
@@ -63,20 +106,6 @@
           "sortable": false
         }
       },
-      "titleLevel": {
-        "edit": {
-          "label": "Úroveň nadpisu sekcie",
-          "description": "Úroveň nadpisu meníme na h3 iba ak je to potrebné sémanticky. Nikdy ju nemeníme len kvôli vizuálnej veľkosti nadpisu.",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "titleLevel",
-          "searchable": true,
-          "sortable": true
-        }
-      },
       "documentId": {
         "edit": {},
         "list": {
@@ -87,6 +116,12 @@
       }
     },
     "layouts": {
+      "list": [
+        "id",
+        "title",
+        "text",
+        "faqs"
+      ],
       "edit": [
         [
           {
@@ -102,18 +137,24 @@
           {
             "name": "faqs",
             "size": 12
-          },
+          }
+        ],
+        [
           {
             "name": "titleLevel",
             "size": 6
+          },
+          {
+            "name": "showAll",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "faqCategories",
+            "size": 6
           }
         ]
-      ],
-      "list": [
-        "id",
-        "title",
-        "text",
-        "faqs"
       ]
     },
     "isComponent": true
