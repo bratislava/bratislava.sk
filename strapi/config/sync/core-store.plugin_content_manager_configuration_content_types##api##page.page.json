@@ -521,12 +521,6 @@
         ],
         [
           {
-            "name": "childPages",
-            "size": 12
-          }
-        ],
-        [
-          {
             "name": "pageHeaderSections",
             "size": 12
           }
@@ -540,6 +534,12 @@
         [
           {
             "name": "parentPage",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "childPages",
             "size": 12
           }
         ],
@@ -594,7 +594,15 @@
           }
         ]
       ],
-      "list": ["slug", "title", "parentPage", "updatedAt", "updatedBy", "adminGroups", "subtext"]
+      "list": [
+        "slug",
+        "title",
+        "parentPage",
+        "updatedAt",
+        "updatedBy",
+        "adminGroups",
+        "subtext"
+      ]
     }
   },
   "type": "object",
