@@ -1,5 +1,3 @@
-import React from 'react'
-
 import AlertMessage from '@/src/components/common/AlertMessage/AlertMessage'
 import SectionContainer from '@/src/components/layouts/SectionContainer'
 import { AlertSectionFragment } from '@/src/services/graphql'

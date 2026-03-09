@@ -1,5 +1,5 @@
 import { Typography } from '@bratislava/component-library'
-import React, { Fragment, ReactNode } from 'react'
+import { Fragment, ReactNode } from 'react'
 
 import FileRowCard from '@/src/components/cards/FileRowCard'
 import HorizontalDivider from '@/src/components/common/Divider/HorizontalDivider'

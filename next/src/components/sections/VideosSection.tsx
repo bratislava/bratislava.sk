@@ -1,5 +1,3 @@
-import React from 'react'
-
 import { getCardTitleLevel } from '@/src/components/cards/getCardTitleLevel'
 import VideoCard from '@/src/components/cards/VideoCard'
 import { AllowedVisibleCount } from '@/src/components/common/Carousel/Carousel'

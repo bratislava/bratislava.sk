@@ -1,6 +1,5 @@
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import * as React from 'react'
 
 import SeoHead from '@/src/components/common/SeoHead/SeoHead'
 import PageLayout from '@/src/components/layouts/PageLayout'

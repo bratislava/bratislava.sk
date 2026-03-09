@@ -1,5 +1,3 @@
-import React from 'react'
-
 import TootootEventCard from '@/src/components/cards/TootootEventCard'
 import Stack from '@/src/components/styleguide/Stack'
 import Wrapper from '@/src/components/styleguide/Wrapper'

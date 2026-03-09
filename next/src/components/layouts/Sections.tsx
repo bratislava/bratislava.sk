@@ -1,5 +1,3 @@
-import * as React from 'react'
-
 import AccordionSection from '@/src/components/sections/AccordionSection'
 import AlertSection from '@/src/components/sections/AlertSection'
 import ArticlesLandingPageSection from '@/src/components/sections/ArticlesLandingPageSection'

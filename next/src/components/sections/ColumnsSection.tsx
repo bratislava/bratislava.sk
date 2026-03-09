@@ -1,5 +1,3 @@
-import React from 'react'
-
 import ColumnsSectionItem from '@/src/components/common/ColumnsSectionItem/ColumnsSectionItem'
 import Slider from '@/src/components/common/Slider/Slider'
 import SectionContainer from '@/src/components/layouts/SectionContainer'

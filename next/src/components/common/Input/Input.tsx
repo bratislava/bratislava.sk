@@ -1,5 +1,5 @@
 import { Typography } from '@bratislava/component-library'
-import React, { forwardRef } from 'react'
+import { forwardRef } from 'react'
 import {
   FieldError as RACFieldError,
   Input as RACInput,

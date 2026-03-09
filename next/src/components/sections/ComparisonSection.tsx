@@ -1,5 +1,4 @@
 import Image from 'next/image'
-import React from 'react'
 import { InfoIcon } from 'src/assets/icons'
 
 import ComparisonCard from '@/src/components/common/ComparisonCard/ComparisonCard'

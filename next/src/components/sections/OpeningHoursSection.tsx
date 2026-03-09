@@ -1,5 +1,4 @@
 import { Typography } from '@bratislava/component-library'
-import React from 'react'
 
 import { getCardTitleLevel } from '@/src/components/cards/getCardTitleLevel'
 import AlertMessage from '@/src/components/common/AlertMessage/AlertMessage'

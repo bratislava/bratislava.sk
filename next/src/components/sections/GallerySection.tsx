@@ -1,5 +1,3 @@
-import React from 'react'
-
 import Gallery from '@/src/components/common/Gallery/Gallery'
 import SectionContainer from '@/src/components/layouts/SectionContainer'
 import SectionHeader from '@/src/components/layouts/SectionHeader'

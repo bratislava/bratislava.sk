@@ -1,5 +1,4 @@
 import { Typography } from '@bratislava/component-library'
-import React from 'react'
 import { ChevronRightIcon } from 'src/assets/icons'
 
 import CardBase from '@/src/components/cards/CardBase'

@@ -1,4 +1,3 @@
-import React from 'react'
 import {
   DisclosurePanel as RACDisclosurePanel,
   DisclosurePanelProps as RACDisclosurePanelProps,

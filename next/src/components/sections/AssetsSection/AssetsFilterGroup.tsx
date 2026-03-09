@@ -1,6 +1,5 @@
 import { SingleSelection } from '@react-types/shared'
 import { useQuery } from '@tanstack/react-query'
-import React from 'react'
 
 import SelectField, { SelectItem } from '@/src/components/common/SelectField/SelectField'
 import { client } from '@/src/services/graphql/gql'

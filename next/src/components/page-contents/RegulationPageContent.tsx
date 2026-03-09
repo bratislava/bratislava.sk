@@ -1,5 +1,5 @@
 import { Typography } from '@bratislava/component-library'
-import React, { Fragment } from 'react'
+import { Fragment } from 'react'
 
 import FileRowCard from '@/src/components/cards/FileRowCard'
 import RegulationRowCard from '@/src/components/cards/RegulationRowCard'

@@ -5,7 +5,6 @@ import {
   parseAbsolute,
   ZonedDateTime,
 } from '@internationalized/date'
-import React from 'react'
 import { useDateFormatter } from 'react-aria'
 
 import { bratislavaTimezone } from '@/src/utils/consts'

@@ -1,5 +1,3 @@
-import React from 'react'
-
 import HomepageHighlightCard from '@/src/components/cards/HomepageHighlightCard'
 import Wrapper from '@/src/components/styleguide/Wrapper'
 import { CommonLinkProps } from '@/src/utils/getLinkProps'

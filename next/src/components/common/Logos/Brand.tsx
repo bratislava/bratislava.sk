@@ -1,5 +1,4 @@
 import { Trans, useTranslation } from 'next-i18next'
-import React from 'react'
 
 import { BratislavaLogoSvg } from '@/src/assets/images'
 import MLink from '@/src/components/common/MLink/MLink'

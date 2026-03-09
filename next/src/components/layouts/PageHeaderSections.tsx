@@ -1,5 +1,3 @@
-import React from 'react'
-
 import { Breadcrumb } from '@/src/components/common/Breadcrumbs/Breadcrumbs'
 import PageHeader from '@/src/components/common/PageHeader/PageHeader'
 import PageHeaderEvent from '@/src/components/sections/headers/PageHeaderEvent'

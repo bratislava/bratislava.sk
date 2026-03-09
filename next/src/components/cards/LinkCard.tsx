@@ -1,5 +1,5 @@
 import { Typography } from '@bratislava/component-library'
-import React, { useId } from 'react'
+import { useId } from 'react'
 
 import CardBase, { CardBaseProps } from '@/src/components/cards/CardBase'
 import { CardTitleLevel } from '@/src/components/cards/getCardTitleLevel'
@@ -10,7 +10,6 @@ import cn from '@/src/utils/cn'
 import { CommonLinkProps } from '@/src/utils/getLinkProps'
 
 export type LinkCardProps = {
-  title: string
   cardTitleLevel?: CardTitleLevel
   image?: StrapiUploadImage | null | undefined
   imageSizes?: string
@@ -24,7 +23,6 @@ export type LinkCardProps = {
  */
 
 const LinkCard = ({
-  title,
   cardTitleLevel = 'h3',
   image,
   imageSizes,
@@ -35,7 +33,7 @@ const LinkCard = ({
 }: LinkCardProps) => {
   const titleId = useId()
 
-  const { children, ...restLinkProps } = linkProps || {}
+  const { children: title, ...restLinkProps } = linkProps ?? {}
 
   return (
     <CardBase

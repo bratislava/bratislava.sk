@@ -1,5 +1,3 @@
-import React from 'react'
-
 import StrapiImage from '@/src/components/common/Image/StrapiImage'
 import Markdown from '@/src/components/formatting/Markdown/Markdown'
 import SectionContainer from '@/src/components/layouts/SectionContainer'

@@ -1,5 +1,3 @@
-import React from 'react'
-
 import LinkCard from '@/src/components/cards/LinkCard'
 import Banner from '@/src/components/common/Banner/Banner'
 import ResponsiveCarousel from '@/src/components/common/Carousel/ResponsiveCarousel'
@@ -34,7 +32,6 @@ const StarzLandingPageSection = ({ section }: StarzLandingPageSectionProps) => {
                 return card ? (
                   <LinkCard
                     key={index}
-                    title={getLinkProps(card).children}
                     text={card.subtext}
                     image={cardImage}
                     imageSizes={imageSizes}

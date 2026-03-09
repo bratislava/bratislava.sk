@@ -1,6 +1,5 @@
 import { Typography } from '@bratislava/component-library'
 import Image from 'next/image'
-import * as React from 'react'
 import { Fragment, useMemo } from 'react'
 
 import AliasInfoMessage from '@/src/components/common/AliasInfoMessage/AliasInfoMessage'

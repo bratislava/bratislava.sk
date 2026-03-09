@@ -1,5 +1,3 @@
-import React from 'react'
-
 import ArticleCard from '@/src/components/cards/ArticleCard'
 import Wrapper from '@/src/components/styleguide/Wrapper'
 import { CommonLinkProps } from '@/src/utils/getLinkProps'

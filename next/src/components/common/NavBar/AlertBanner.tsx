@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query'
 import { useTranslation } from 'next-i18next'
-import React, { forwardRef, useEffect, useState } from 'react'
+import { forwardRef, useEffect, useState } from 'react'
 import { AlertIcon, CrossIcon } from 'src/assets/icons'
 import { useLocalStorage } from 'usehooks-ts'
 

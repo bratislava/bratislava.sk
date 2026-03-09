@@ -11,6 +11,9 @@ updates:
       interval: 'monthly'
       day: 'sunday'
     rebase-strategy: 'disabled'
+    ignore:
+      - dependency-name: "tar"
+        reason: "Blocked by Strapi transitive dependency" # Remove after Strapi upgrade
 
   - package-ecosystem: 'npm' # See documentation for possible values
     directory: '/next' # Location of package manifests

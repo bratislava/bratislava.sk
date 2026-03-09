@@ -1,5 +1,3 @@
-import React from 'react'
-
 import NavMenuLink from '@/src/components/common/NavBar/NavMenu/NavMenuLink'
 import { MenuSection } from '@/src/components/common/NavBar/NavMenu/navMenuTypes'
 import Pictogram from '@/src/components/common/Pictogram/Pictogram'

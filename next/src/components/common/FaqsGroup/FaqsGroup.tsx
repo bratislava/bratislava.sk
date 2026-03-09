@@ -1,5 +1,5 @@
 import { Typography } from '@bratislava/component-library'
-import React, { Fragment } from 'react'
+import { Fragment } from 'react'
 
 import { AccordionTitleLevel } from '@/src/components/cards/getCardTitleLevel'
 import Badge from '@/src/components/common/Badge/Badge'

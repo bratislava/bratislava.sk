@@ -1,5 +1,4 @@
 import { Typography } from '@bratislava/component-library'
-import React from 'react'
 import { ArrowRightIcon, ChevronRightIcon } from 'src/assets/icons'
 
 import type { BreadcrumbsProps } from '@/src/components/common/Breadcrumbs/Breadcrumbs'

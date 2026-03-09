@@ -43,14 +43,13 @@ const InbaReleasesCarousel = ({ section }: Props) => {
             .map((inbaRelease) => {
               if (!inbaRelease) return null
 
-              const { title: inbaReleaseTitle, slug, coverImage, releaseDate, perex } = inbaRelease
+              const { title: inbaReleaseTitle, slug, coverImage, releaseDate } = inbaRelease
 
               return (
                 <InbaReleaseCard
                   key={slug}
                   date={formatDate(releaseDate)}
                   title={inbaReleaseTitle}
-                  text={perex}
                   linkHref={`/inba/vydania/${slug}`}
                   imgSrc={coverImage?.url}
                   imgSizes={generateImageSizes({ default: '100vw', md: '50vw', lg: '25vw' })}

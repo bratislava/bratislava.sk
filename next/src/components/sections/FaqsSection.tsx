@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import { Fragment } from 'react'
 
 import { getCardTitleLevel } from '@/src/components/cards/getCardTitleLevel'
 import DisclosureGroup from '@/src/components/common/Disclosure/DisclosureGroup'

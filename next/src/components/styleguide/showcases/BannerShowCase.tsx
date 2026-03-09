@@ -1,5 +1,3 @@
-import React from 'react'
-
 import Banner from '@/src/components/common/Banner/Banner'
 import { CommonLinkFragment, Enum_Componentsectionsbanner_Variant } from '@/src/services/graphql'
 

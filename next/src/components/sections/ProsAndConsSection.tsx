@@ -1,4 +1,3 @@
-import React from 'react'
 import { CheckIcon, CrossIcon } from 'src/assets/icons'
 
 import ComparisonCard from '@/src/components/common/ComparisonCard/ComparisonCard'

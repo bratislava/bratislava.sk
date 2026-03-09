@@ -1,7 +1,7 @@
 import { Typography } from '@bratislava/component-library'
 import { keepPreviousData, useQuery } from '@tanstack/react-query'
 import { useTranslation } from 'next-i18next'
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useDebounceValue } from 'usehooks-ts'
 
 import InbaReleaseCard from '@/src/components/cards/InbaReleaseCard'
@@ -72,20 +72,13 @@ const InbaReleasesGrid = ({ section }: Props) => {
           {data.hits.length > 0 ? (
             <ul className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
               {data.hits.map((inbaRelease) => {
-                const {
-                  title: inbaReleaseTitle,
-                  slug,
-                  coverImage,
-                  releaseDate,
-                  perex,
-                } = inbaRelease
+                const { title: inbaReleaseTitle, slug, coverImage, releaseDate } = inbaRelease
 
                 return (
                   <li key={slug} className="*:h-full">
                     <InbaReleaseCard
                       date={formatDate(releaseDate)}
                       title={inbaReleaseTitle}
-                      text={perex}
                       linkHref={`/inba/vydania/${slug}`}
                       imgSrc={coverImage?.url}
                       imgSizes={imageSizes}
