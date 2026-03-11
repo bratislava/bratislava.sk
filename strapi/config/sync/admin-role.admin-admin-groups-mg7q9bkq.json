@@ -1360,8 +1360,7 @@
           "title",
           "shortTitle",
           "color",
-          "icon",
-          "pages"
+          "icon"
         ],
         "locales": [
           "sk",
@@ -1409,8 +1408,7 @@
           "title",
           "shortTitle",
           "color",
-          "icon",
-          "pages"
+          "icon"
         ],
         "locales": [
           "sk",
@@ -1430,8 +1428,7 @@
           "title",
           "shortTitle",
           "color",
-          "icon",
-          "pages"
+          "icon"
         ],
         "locales": [
           "sk",
@@ -1455,7 +1452,6 @@
           "metaDescription",
           "keywords",
           "showTableOfContents",
-          "pageCategory",
           "pageColor",
           "pageBackgroundImage",
           "headerLinks.label",
@@ -1526,7 +1522,6 @@
           "metaDescription",
           "keywords",
           "showTableOfContents",
-          "pageCategory",
           "pageColor",
           "pageBackgroundImage",
           "headerLinks.label",
@@ -1569,7 +1564,6 @@
           "metaDescription",
           "keywords",
           "showTableOfContents",
-          "pageCategory",
           "pageColor",
           "pageBackgroundImage",
           "headerLinks.label",

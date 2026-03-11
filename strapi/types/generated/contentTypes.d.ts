@@ -1092,7 +1092,6 @@ export interface ApiPageCategoryPageCategory extends Struct.CollectionTypeSchema
       }>
     locale: Schema.Attribute.String
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::page-category.page-category'>
-    pages: Schema.Attribute.Relation<'oneToMany', 'api::page.page'>
     publishedAt: Schema.Attribute.DateTime
     shortTitle: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{
@@ -1178,7 +1177,6 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
           localized: true
         }
       }>
-    pageCategory: Schema.Attribute.Relation<'manyToOne', 'api::page-category.page-category'>
     pageColor: Schema.Attribute.Enumeration<
       ['red', 'blue', 'green', 'yellow', 'purple', 'brown', 'starz']
     > &
@@ -1187,7 +1185,8 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
         i18n: {
           localized: false
         }
-      }>
+      }> &
+      Schema.Attribute.DefaultTo<'red'>
     pageHeaderSections: Schema.Attribute.DynamicZone<
       ['header-sections.event', 'header-sections.facility']
     > &

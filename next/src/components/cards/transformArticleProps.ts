@@ -2,10 +2,8 @@ import { i18n } from 'next-i18next'
 
 import { ArticleCardProps } from '@/src/components/cards/ArticleCard'
 import { ArticleCardEntityFragment } from '@/src/services/graphql'
-import { getCategoryColorLocalStyle } from '@/src/utils/colors'
 import { formatDate } from '@/src/utils/formatDate'
 import { generateImageSizes } from '@/src/utils/generateImageSizes'
-import { isDefined } from '@/src/utils/isDefined'
 
 export const transformArticleProps = (
   article: NonNullable<ArticleCardEntityFragment>,
@@ -15,11 +13,7 @@ export const transformArticleProps = (
 
   const { withText = true } = options ?? {}
 
-  const { title, slug, coverMedia, addedAt, perex, tags } = article
-
-  // TODO remove style when page categories are removed
-  // TODO type - using tags.find (without '?') produces no error locally, however it introduced some error in production
-  const firstTagColor = tags?.find(isDefined)?.pageCategory?.color
+  const { title, slug, coverMedia, addedAt, perex } = article
 
   const propsToReturn: ArticleCardProps = {
     title,
@@ -28,7 +22,6 @@ export const transformArticleProps = (
     imgSizes: imageSizes,
     date: formatDate(addedAt),
     ...(withText && { text: perex }),
-    style: getCategoryColorLocalStyle({ color: firstTagColor }),
   }
 
   return propsToReturn

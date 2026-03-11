@@ -132,25 +132,10 @@
           "sortable": true
         }
       },
-      "pageCategory": {
-        "edit": {
-          "label": "Kategória",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true,
-          "mainField": "shortTitle"
-        },
-        "list": {
-          "label": "pageCategory",
-          "searchable": true,
-          "sortable": true
-        }
-      },
       "pageColor": {
         "edit": {
           "label": "Farba",
-          "description": "Farba sa musí zhodovať s Kategóriou.",
+          "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
@@ -465,10 +450,6 @@
           {
             "name": "pageBackgroundImage",
             "size": 6
-          },
-          {
-            "name": "pageCategory",
-            "size": 6
           }
         ],
         [
@@ -594,15 +575,7 @@
           }
         ]
       ],
-      "list": [
-        "slug",
-        "title",
-        "parentPage",
-        "updatedAt",
-        "updatedBy",
-        "adminGroups",
-        "subtext"
-      ]
+      "list": ["slug", "title", "parentPage", "updatedAt", "updatedBy", "adminGroups", "subtext"]
     }
   },
   "type": "object",
