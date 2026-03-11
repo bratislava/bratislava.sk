@@ -10,6 +10,9 @@ fragment FaqEntity on Faq {
   documentId
   title
   body
+  faqCategory {
+    title
+  }
 }
 
 query FaqCategories($locale: I18NLocaleCode, $sort: [String] = ["title"]) {

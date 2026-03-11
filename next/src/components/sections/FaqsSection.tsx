@@ -1,8 +1,4 @@
-import { Fragment } from 'react'
-
 import { getCardTitleLevel } from '@/src/components/cards/getCardTitleLevel'
-import DisclosureGroup from '@/src/components/common/Disclosure/DisclosureGroup'
-import HorizontalDivider from '@/src/components/common/Divider/HorizontalDivider'
 import FaqsAll from '@/src/components/common/FaqsAll/FaqsAll'
 import FaqsGroup from '@/src/components/common/FaqsGroup/FaqsGroup'
 import SectionContainer from '@/src/components/layouts/SectionContainer'
@@ -21,8 +17,6 @@ type Props = {
 const FaqsSection = ({ section }: Props) => {
   const { title, text, faqs, faqCategories, titleLevelFaqsSection: titleLevel, showAll } = section
 
-  const filteredFaqs = faqs.filter(isDefined) ?? []
-
   // If no section title is provided, accordions act as h2, otherwise they accommodate to section titleLevel
   const accordionTitleLevel = title ? getCardTitleLevel(titleLevel) : 'h2'
 
@@ -33,24 +27,11 @@ const FaqsSection = ({ section }: Props) => {
         {showAll ? (
           <FaqsAll />
         ) : (
-          <DisclosureGroup className="rounded-xl border border-border-active-default bg-background-passive-base py-2">
-            {faqCategories.length > 0 ? (
-              <Fragment>
-                {faqCategories.map((category, index) => (
-                  <Fragment key={category?.title}>
-                    {index > 0 ? <HorizontalDivider className="mx-4 lg:mx-6" /> : null}
-                    <FaqsGroup
-                      faqs={category?.faqs.filter(isDefined) ?? []}
-                      category={category?.title}
-                      accordionTitleLevel={accordionTitleLevel}
-                    />
-                  </Fragment>
-                ))}
-              </Fragment>
-            ) : (
-              <FaqsGroup faqs={filteredFaqs} accordionTitleLevel={accordionTitleLevel} />
-            )}
-          </DisclosureGroup>
+          <FaqsGroup
+            faqs={faqs.filter(isDefined) ?? []}
+            faqCategories={faqCategories.filter(isDefined) ?? []}
+            accordionTitleLevel={accordionTitleLevel}
+          />
         )}
       </div>
     </SectionContainer>

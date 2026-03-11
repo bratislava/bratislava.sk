@@ -7571,6 +7571,7 @@ export type FaqCategoryEntityFragment = {
     documentId: string
     title: string
     body?: string | null
+    faqCategory?: { __typename?: 'FaqCategory'; title: string } | null
   } | null>
 }
 
@@ -7579,6 +7580,7 @@ export type FaqEntityFragment = {
   documentId: string
   title: string
   body?: string | null
+  faqCategory?: { __typename?: 'FaqCategory'; title: string } | null
 }
 
 export type FaqCategoriesQueryVariables = Exact<{
@@ -7600,6 +7602,7 @@ export type FaqCategoriesQuery = {
       documentId: string
       title: string
       body?: string | null
+      faqCategory?: { __typename?: 'FaqCategory'; title: string } | null
     } | null>
   } | null>
 }
@@ -11155,6 +11158,7 @@ export type PageEntityFragment = {
             documentId: string
             title: string
             body?: string | null
+            faqCategory?: { __typename?: 'FaqCategory'; title: string } | null
           } | null>
         } | null>
       }
@@ -11169,6 +11173,7 @@ export type PageEntityFragment = {
           documentId: string
           title: string
           body?: string | null
+          faqCategory?: { __typename?: 'FaqCategory'; title: string } | null
         } | null>
         faqCategories: Array<{
           __typename?: 'FaqCategory'
@@ -11180,6 +11185,7 @@ export type PageEntityFragment = {
             documentId: string
             title: string
             body?: string | null
+            faqCategory?: { __typename?: 'FaqCategory'; title: string } | null
           } | null>
         } | null>
       }
@@ -12504,6 +12510,7 @@ export type PageBySlugQuery = {
               documentId: string
               title: string
               body?: string | null
+              faqCategory?: { __typename?: 'FaqCategory'; title: string } | null
             } | null>
           } | null>
         }
@@ -12518,6 +12525,7 @@ export type PageBySlugQuery = {
             documentId: string
             title: string
             body?: string | null
+            faqCategory?: { __typename?: 'FaqCategory'; title: string } | null
           } | null>
           faqCategories: Array<{
             __typename?: 'FaqCategory'
@@ -12529,6 +12537,7 @@ export type PageBySlugQuery = {
               documentId: string
               title: string
               body?: string | null
+              faqCategory?: { __typename?: 'FaqCategory'; title: string } | null
             } | null>
           } | null>
         }
@@ -13874,6 +13883,7 @@ export type Dev_AllPagesQuery = {
               documentId: string
               title: string
               body?: string | null
+              faqCategory?: { __typename?: 'FaqCategory'; title: string } | null
             } | null>
           } | null>
         }
@@ -13888,6 +13898,7 @@ export type Dev_AllPagesQuery = {
             documentId: string
             title: string
             body?: string | null
+            faqCategory?: { __typename?: 'FaqCategory'; title: string } | null
           } | null>
           faqCategories: Array<{
             __typename?: 'FaqCategory'
@@ -13899,6 +13910,7 @@ export type Dev_AllPagesQuery = {
               documentId: string
               title: string
               body?: string | null
+              faqCategory?: { __typename?: 'FaqCategory'; title: string } | null
             } | null>
           } | null>
         }
@@ -15926,6 +15938,7 @@ export type FaqsSectionFragment = {
     documentId: string
     title: string
     body?: string | null
+    faqCategory?: { __typename?: 'FaqCategory'; title: string } | null
   } | null>
   faqCategories: Array<{
     __typename?: 'FaqCategory'
@@ -15937,6 +15950,7 @@ export type FaqsSectionFragment = {
       documentId: string
       title: string
       body?: string | null
+      faqCategory?: { __typename?: 'FaqCategory'; title: string } | null
     } | null>
   } | null>
 }
@@ -15956,6 +15970,7 @@ export type FaqCategoriesSectionFragment = {
       documentId: string
       title: string
       body?: string | null
+      faqCategory?: { __typename?: 'FaqCategory'; title: string } | null
     } | null>
   } | null>
 }
@@ -17026,6 +17041,7 @@ type Sections_ComponentSectionsFaqCategories_Fragment = {
       documentId: string
       title: string
       body?: string | null
+      faqCategory?: { __typename?: 'FaqCategory'; title: string } | null
     } | null>
   } | null>
 }
@@ -17041,6 +17057,7 @@ type Sections_ComponentSectionsFaqs_Fragment = {
     documentId: string
     title: string
     body?: string | null
+    faqCategory?: { __typename?: 'FaqCategory'; title: string } | null
   } | null>
   faqCategories: Array<{
     __typename?: 'FaqCategory'
@@ -17052,6 +17069,7 @@ type Sections_ComponentSectionsFaqs_Fragment = {
       documentId: string
       title: string
       body?: string | null
+      faqCategory?: { __typename?: 'FaqCategory'; title: string } | null
     } | null>
   } | null>
 }
@@ -18879,6 +18897,9 @@ export const FaqEntityFragmentDoc = gql`
     documentId
     title
     body
+    faqCategory {
+      title
+    }
   }
 `
 export const FaqCategoryEntityFragmentDoc = gql`
