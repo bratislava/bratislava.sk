@@ -71,7 +71,6 @@ const FaqCategoriesSection = ({ section }: Props) => {
         : null
     })
     .filter(isDefined)
-    .sort((a, b) => a.label.localeCompare(b.label))
 
   // Get category names
   const selectOptions = [defaultSelectionOption, ...options]

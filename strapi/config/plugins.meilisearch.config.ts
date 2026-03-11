@@ -37,6 +37,7 @@ const searchIndexSettings = {
     'regulation.titleText',
     'regulation.fullTitle',
     'faq.title',
+    'faq.body',
   ],
   filterableAttributes: [
     'type',

@@ -6,15 +6,20 @@ import { getMeilisearchPageOptions, unwrapFromSearchIndex } from '../utils'
 
 export type FaqsFilters = {
   search: string
-  page: number
   pageSize: number
-  categorySlugs?: string[]
+  page: number
+  assetCategorySlugs?: string[]
+  adminGroupSlugs?: string[]
+  excludeAssetsWithAssignedAdminGroups?: boolean
 }
 
-export const faqsDefaultFilters: FaqsFilters = {
+export const faqsDefaultFilters: Required<FaqsFilters> = {
   search: '',
+  pageSize: 10,
   page: 1,
-  pageSize: 12,
+  assetCategorySlugs: [],
+  adminGroupSlugs: [],
+  excludeAssetsWithAssignedAdminGroups: false,
 }
 
 export const getMeiliFaqsQueryKey = (filters: FaqsFilters) => ['Search', 'Faqs', filters]
@@ -26,9 +31,9 @@ export const meiliFaqsFetcher = (filters: FaqsFilters) => {
       ...getMeilisearchPageOptions({ page: filters.page, pageSize: filters.pageSize }),
       filter: [
         'type = "faq"',
-        filters.categorySlugs?.length
-          ? filters.categorySlugs.map((categorySlug) => `faq.faqCategory.slug = ${categorySlug}`)
-          : null,
+        filters.assetCategorySlugs?.length
+          ? `asset.assetCategory.slug IN [${filters.assetCategorySlugs.join(',')}]`
+          : '',
       ].filter(isDefined),
     })
     .then(unwrapFromSearchIndex('faq'))

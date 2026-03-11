@@ -78,7 +78,7 @@
       },
       "faqCategories": {
         "edit": {
-          "label": "faqCategories",
+          "label": "FAQs kategórie",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -116,12 +116,6 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "title",
-        "text",
-        "faqs"
-      ],
       "edit": [
         [
           {
@@ -155,6 +149,12 @@
             "size": 6
           }
         ]
+      ],
+      "list": [
+        "id",
+        "title",
+        "text",
+        "faqs"
       ]
     },
     "isComponent": true

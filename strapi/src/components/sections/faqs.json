@@ -23,7 +23,7 @@
     "showAll": {
       "type": "boolean",
       "required": false,
-      "default": true
+      "default": false
     },
     "faqCategories": {
       "type": "relation",

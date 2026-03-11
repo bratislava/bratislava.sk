@@ -56,7 +56,7 @@ const ArticlesAll = ({ section }: Props) => {
     setSearch(debouncedInput)
   }, [debouncedInput, setSearch])
 
-  const { data, isFetching } = useQuery({
+  const { data, isPending } = useQuery({
     queryKey: getArticlesQueryKey(filters, locale),
     queryFn: () => articlesFetcher(filters, locale),
     placeholderData: keepPreviousData,
@@ -78,7 +78,7 @@ const ArticlesAll = ({ section }: Props) => {
           input={input}
           setInput={setInput}
           setSearchQuery={setSearch}
-          isLoading={isFetching}
+          isLoading={isPending}
         />
       </div>
 

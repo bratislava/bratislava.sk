@@ -31,7 +31,7 @@ const FaqsGroup = ({ faqs, accordionTitleLevel, category }: FaqsGroupProps) => {
               </Typography>
             </DisclosureHeader>
             <DisclosurePanel className="px-4 lg:px-6">
-              <Markdown content={faq.body} variant="small" />
+              <Markdown content={faq.body} variant="accordion" />
             </DisclosurePanel>
           </Disclosure>
         </Fragment>
