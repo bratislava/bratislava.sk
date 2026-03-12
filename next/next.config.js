@@ -232,7 +232,14 @@ const nextConfig = {
       {
         source: '/doprava-a-mapy/mapy/strategicka-hlukova-mapa-a-akcne-plany',
         destination:
-          '/zivotne-prostredie-a-vystavba/rozvoj-mesta/environmentalistika-a-technicka-infrastruktura/hluk-a-urbanisticka-akustika-/strategicka-hlukova-mapa-a-akcne-plany',
+          '/zivotne-prostredie-a-vystavba/rozvoj-mesta/environmentalistika-a-technicka-infrastruktura/hluk-a-urbanisticka-akustika/strategicka-hlukova-mapa-a-akcne-plany',
+        permanent: true,
+      },
+      {
+        source:
+          '/zivotne-prostredie-a-vystavba/rozvoj-mesta/environmentalistika-a-technicka-infrastruktura/hluk-a-urbanisticka-akustika-',
+        destination:
+          '/zivotne-prostredie-a-vystavba/rozvoj-mesta/environmentalistika-a-technicka-infrastruktura/hluk-a-urbanisticka-akustika',
         permanent: true,
       },
       {
