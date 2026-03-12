@@ -575,7 +575,15 @@
           }
         ]
       ],
-      "list": ["slug", "title", "parentPage", "updatedAt", "updatedBy", "adminGroups", "subtext"]
+      "list": [
+        "path",
+        "title",
+        "parentPage",
+        "updatedAt",
+        "updatedBy",
+        "adminGroups",
+        "subtext"
+      ]
     }
   },
   "type": "object",
