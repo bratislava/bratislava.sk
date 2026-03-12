@@ -1,4 +1,4 @@
-import { SearchIcon } from 'src/assets/icons'
+import { SearchIcon } from '@/src/assets/icons-old'
 
 import Button from '@/src/components/common/Button/Button'
 import Brand from '@/src/components/common/Logos/Brand'

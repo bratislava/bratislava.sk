@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { useRef } from 'react'
-import { ChevronRightIcon } from 'src/assets/icons'
+import { ChevronRightIcon } from '@/src/assets/icons-old'
 import { useEventListener } from 'usehooks-ts'
 
 import LoadingSpinner from '@/src/components/common/LoadingSpinner/LoadingSpinner'

@@ -1,5 +1,5 @@
 import { Typography } from '@bratislava/component-library'
-import { ArrowRightIcon } from 'src/assets/icons'
+import { ArrowRightIcon } from '@/src/assets/icons-old'
 
 import Button from '@/src/components/common/Button/Button'
 import { useTranslation } from '@/src/utils/useTranslation'

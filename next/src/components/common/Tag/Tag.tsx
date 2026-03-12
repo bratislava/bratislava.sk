@@ -1,4 +1,4 @@
-import { CrossIcon } from 'src/assets/icons'
+import { CrossIcon } from '@/src/assets/icons-old'
 
 import Button from '@/src/components/common/Button/Button'
 import cn from '@/src/utils/cn'

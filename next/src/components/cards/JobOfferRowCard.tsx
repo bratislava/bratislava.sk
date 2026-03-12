@@ -1,6 +1,6 @@
 import { Typography } from '@bratislava/component-library'
 
-import { ChevronRightIcon } from '@/src/assets/icons'
+import { ChevronRightIcon } from '@/src/assets/icons-old'
 import CardBase from '@/src/components/cards/CardBase'
 import { CardTitleLevel } from '@/src/components/cards/getCardTitleLevel'
 import MLink from '@/src/components/common/MLink/MLink'

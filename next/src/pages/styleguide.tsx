@@ -10,6 +10,7 @@ import ColumnsShowcase from '@/src/components/styleguide/showcases/ColumnsShowca
 import ContactsShowcase from '@/src/components/styleguide/showcases/ContactsShowcase'
 import DisclosureShowcase from '@/src/components/styleguide/showcases/DisclosureShowcase'
 import HomepageHorizontalCardShowcase from '@/src/components/styleguide/showcases/HomepageHorizontalCardShowcase'
+import IconShowCase from '@/src/components/styleguide/showcases/IconShowcase'
 import MarkdownShowcase from '@/src/components/styleguide/showcases/MarkdownShowcase'
 import SpinnerShowCase from '@/src/components/styleguide/showcases/SpinnerShowCase'
 import TagShowCase from '@/src/components/styleguide/showcases/TagShowCase'
@@ -32,6 +33,7 @@ const Styleguide = () => {
       <TagShowCase />
       <ButtonShowCase />
       <SpinnerShowCase />
+      <IconShowCase />
       <AlertShowCase />
       <DisclosureShowcase />
       <BannerShowCase />

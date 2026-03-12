@@ -1,4 +1,4 @@
-import { ChevronRightIcon, HomeIcon } from 'src/assets/icons'
+import { ChevronRightIcon, HomeIcon } from '@/src/assets/icons-old'
 
 import type { BreadcrumbsProps } from '@/src/components/common/Breadcrumbs/Breadcrumbs'
 import MLink from '@/src/components/common/MLink/MLink'

@@ -1,7 +1,7 @@
 import { Typography } from '@bratislava/component-library'
 import { Key, Label, Tag, TagGroup, TagGroupProps, TagList } from 'react-aria-components'
 
-import { CrossIcon, CrossInCircleIcon } from '@/src/assets/icons'
+import { CrossIcon, CrossInCircleIcon } from '@/src/assets/icons-old'
 import Button from '@/src/components/common/Button/Button'
 import Disclosure from '@/src/components/common/Disclosure/Disclosure'
 import DisclosureHeader from '@/src/components/common/Disclosure/DisclosureHeader'

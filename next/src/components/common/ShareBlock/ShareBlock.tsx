@@ -1,6 +1,6 @@
 import { Typography } from '@bratislava/component-library'
 
-import { ShareOutlineIcon } from '@/src/assets/icons'
+import { ShareOutlineIcon } from '@/src/assets/icons-old'
 import Button from '@/src/components/common/Button/Button'
 import ShareModal from '@/src/components/common/ShareBlock/ShareModal'
 

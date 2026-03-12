@@ -1,6 +1,6 @@
 import { useTranslation } from 'next-i18next'
 import { useState } from 'react'
-import { ChevronUpIcon } from 'src/assets/icons'
+import { ChevronUpIcon } from '@/src/assets/icons-old'
 import { useEventListener } from 'usehooks-ts'
 
 import Button from '@/src/components/common/Button/Button'

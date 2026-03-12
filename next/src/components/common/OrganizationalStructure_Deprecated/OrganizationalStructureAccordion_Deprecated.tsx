@@ -1,4 +1,4 @@
-import { ChevronDownIcon } from 'src/assets/icons'
+import { ChevronDownIcon } from '@/src/assets/icons-old'
 import { useToggle } from 'usehooks-ts'
 
 import { GetGroupMembersRecursiveResult } from '@/src/services/ms-graph/types'

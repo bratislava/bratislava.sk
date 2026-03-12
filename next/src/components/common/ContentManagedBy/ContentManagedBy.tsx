@@ -1,7 +1,7 @@
 import { Typography } from '@bratislava/component-library'
 import { useTranslation } from 'next-i18next'
 
-import { InfoIcon } from '@/src/assets/icons'
+import { InfoIcon } from '@/src/assets/icons-old'
 
 type Props = {
   contentManager: string

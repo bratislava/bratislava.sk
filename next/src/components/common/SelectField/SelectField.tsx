@@ -13,7 +13,7 @@ import {
   Text,
   ValidationResult,
 } from 'react-aria-components'
-import { CheckInCircleIcon, ChevronDownIcon } from 'src/assets/icons'
+import { CheckInCircleIcon, ChevronDownIcon } from '@/src/assets/icons-old'
 
 import cn from '@/src/utils/cn'
 

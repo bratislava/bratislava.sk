@@ -1,7 +1,7 @@
 import { Typography } from '@bratislava/component-library'
 import { useId } from 'react'
 
-import { ArrowRightIcon } from '@/src/assets/icons'
+import { ArrowRightIcon } from '@/src/assets/icons-old'
 import CardBase, { CardBaseProps } from '@/src/components/cards/CardBase'
 import { CardTitleLevel } from '@/src/components/cards/getCardTitleLevel'
 import CardImage from '@/src/components/common/Image/CardImage'

@@ -1,6 +1,6 @@
 import { Checkbox as RACCheckbox, CheckboxProps as RACCheckboxProps } from 'react-aria-components'
 
-import { CheckIcon } from '@/src/assets/icons'
+import { CheckIcon } from '@/src/assets/icons-old'
 import cn from '@/src/utils/cn'
 
 /**

@@ -2,7 +2,7 @@ import { Typography } from '@bratislava/component-library'
 import { useTranslation } from 'next-i18next'
 import { Fragment } from 'react'
 
-import { ArrowRightIcon, AttachmentIcon, DownloadIcon } from '@/src/assets/icons'
+import { ArrowRightIcon, AttachmentIcon, DownloadIcon } from '@/src/assets/icons-old'
 import { FolderIcon } from '@/src/assets/material-icons'
 import CardBase from '@/src/components/cards/CardBase'
 import { CardTitleLevel } from '@/src/components/cards/getCardTitleLevel'

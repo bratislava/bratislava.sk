@@ -1,5 +1,5 @@
 import { ReactNode } from 'react'
-import { ArrowLeftIcon, ArrowRightIcon } from 'src/assets/icons'
+import { ArrowLeftIcon, ArrowRightIcon } from '@/src/assets/icons-old'
 
 import Button from '@/src/components/common/Button/Button'
 import usePagination from '@/src/components/common/Pagination/usePagination'

@@ -1,4 +1,4 @@
-import { CopyIcon } from 'src/assets/icons'
+import { CopyIcon } from '@/src/assets/icons-old'
 import { useCopyToClipboard } from 'usehooks-ts'
 
 import Button from '@/src/components/common/Button/Button'

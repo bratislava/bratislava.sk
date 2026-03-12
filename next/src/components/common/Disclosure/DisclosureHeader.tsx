@@ -4,7 +4,7 @@ import {
   Heading as RACHeading,
 } from 'react-aria-components'
 
-import { ChevronDownIcon } from '@/src/assets/icons'
+import { ChevronDownIcon } from '@/src/assets/icons-old'
 import Button from '@/src/components/common/Button/Button'
 import cn from '@/src/utils/cn'
 

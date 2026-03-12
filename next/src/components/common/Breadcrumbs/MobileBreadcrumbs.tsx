@@ -1,5 +1,5 @@
 import { Typography } from '@bratislava/component-library'
-import { ArrowRightIcon, ChevronRightIcon } from 'src/assets/icons'
+import { ArrowRightIcon, ChevronRightIcon } from '@/src/assets/icons-old'
 
 import type { BreadcrumbsProps } from '@/src/components/common/Breadcrumbs/Breadcrumbs'
 import Button from '@/src/components/common/Button/Button'

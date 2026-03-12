@@ -1,6 +1,6 @@
 import { Typography } from '@bratislava/component-library'
 
-import { AlertIcon, CheckInCircleIcon, ErrorIcon, InfoIcon } from '@/src/assets/icons'
+import { AlertIcon, CheckInCircleIcon, ErrorIcon, InfoIcon } from '@/src/assets/icons-old'
 import { CardTitleLevel } from '@/src/components/cards/getCardTitleLevel'
 import { Enum_Componentsectionsalert_Alertvariant } from '@/src/services/graphql'
 import cn from '@/src/utils/cn'

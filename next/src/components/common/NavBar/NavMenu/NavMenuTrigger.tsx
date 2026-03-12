@@ -2,7 +2,7 @@ import { Typography } from '@bratislava/component-library'
 import * as NavigationMenu from '@radix-ui/react-navigation-menu'
 import { CSSProperties, forwardRef } from 'react'
 
-import { ChevronDownIcon } from '@/src/assets/icons'
+import { ChevronDownIcon } from '@/src/assets/icons-old'
 
 type NavMenuTriggerProps = {
   label: string

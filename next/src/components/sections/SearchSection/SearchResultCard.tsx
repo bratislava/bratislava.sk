@@ -1,7 +1,7 @@
 import { Typography } from '@bratislava/component-library'
 import Image from 'next/image'
 import { Fragment, ReactNode } from 'react'
-import { ChevronRightIcon } from 'src/assets/icons'
+import { ChevronRightIcon } from '@/src/assets/icons-old'
 
 import ImagePlaceholder from '@/src/components/common/Image/ImagePlaceholder'
 import MLink from '@/src/components/common/MLink/MLink'

@@ -3,7 +3,7 @@ import { keepPreviousData, useQuery } from '@tanstack/react-query'
 import { Fragment, useEffect, useRef, useState } from 'react'
 import { useDebounceValue } from 'usehooks-ts'
 
-import { FilterIcon } from '@/src/assets/icons'
+import { FilterIcon } from '@/src/assets/icons-old'
 import ArticleRowCard from '@/src/components/cards/ArticleRowCard'
 import Button from '@/src/components/common/Button/Button'
 import HorizontalDivider from '@/src/components/common/Divider/HorizontalDivider'

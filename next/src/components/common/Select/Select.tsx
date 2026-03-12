@@ -9,7 +9,7 @@ import Select, {
   Props as ReactSelectProps,
 } from 'react-select'
 
-import { CheckIcon, CheckInCircleIcon, ChevronDownIcon, CrossIcon } from '@/src/assets/icons'
+import { CheckIcon, CheckInCircleIcon, ChevronDownIcon, CrossIcon } from '@/src/assets/icons-old'
 import cn from '@/src/utils/cn'
 
 export type SelectOption = { value: string; label: string }

@@ -2,7 +2,7 @@ import NextLink from 'next/link'
 import { ComponentProps, forwardRef, PropsWithChildren, ReactNode, RefObject } from 'react'
 import { AriaButtonProps } from 'react-aria'
 import { Button as RACButton, ButtonProps as RACButtonProps } from 'react-aria-components'
-import { ArrowDownIcon, ArrowRightIcon, ExportIcon } from 'src/assets/icons'
+import { ArrowDownIcon, ArrowRightIcon, ExportIcon } from '@/src/assets/icons-old'
 
 import MLink, { LinkAnalyticsProps } from '@/src/components/common/MLink/MLink'
 import Spinner from '@/src/components/common/Spinner/Spinner'

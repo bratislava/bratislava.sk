@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { InfoIcon } from 'src/assets/icons'
+import { InfoIcon } from '@/src/assets/icons-old'
 
 import ComparisonCard from '@/src/components/common/ComparisonCard/ComparisonCard'
 import SectionContainer from '@/src/components/layouts/SectionContainer'

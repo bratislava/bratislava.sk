@@ -1,4 +1,5 @@
 // TODO revisit and use standard icons or pictograms
+// TODO remove
 
 export { default as AddressIcon } from './adresa.svg'
 export { default as OpeningHoursIcon } from './clock-wrapped.svg'

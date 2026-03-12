@@ -1,7 +1,7 @@
 import { Typography } from '@bratislava/component-library'
 import { useTranslation } from 'next-i18next'
 
-import { ArrowLeftIcon, ArrowRightIcon } from '@/src/assets/icons'
+import { ArrowLeftIcon, ArrowRightIcon } from '@/src/assets/icons-old'
 import Button from '@/src/components/common/Button/Button'
 import Input from '@/src/components/common/Input/Input'
 import { usePaginationWithInput } from '@/src/components/common/Pagination/usePaginationWithInput'

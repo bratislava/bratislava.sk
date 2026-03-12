@@ -2,7 +2,7 @@ import FocusTrap from 'focus-trap-react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { ReactNode, useEffect, useRef } from 'react'
 import { AriaOverlayProps, OverlayContainer, useModal, useOverlay } from 'react-aria'
-import { CrossIcon } from 'src/assets/icons'
+import { CrossIcon } from '@/src/assets/icons-old'
 import { useIsClient, useScrollLock } from 'usehooks-ts'
 
 import Button from '@/src/components/common/Button/Button'

@@ -1,4 +1,4 @@
-import { CheckIcon, CrossIcon } from 'src/assets/icons'
+import { CheckIcon, CrossIcon } from '@/src/assets/icons-old'
 
 import ComparisonCard from '@/src/components/common/ComparisonCard/ComparisonCard'
 import SectionContainer from '@/src/components/layouts/SectionContainer'

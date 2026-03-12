@@ -1,4 +1,4 @@
-import { AttachmentIcon, DownloadIcon } from 'src/assets/icons'
+import { AttachmentIcon, DownloadIcon } from '@/src/assets/icons-old'
 
 import CardBase from '@/src/components/cards/CardBase'
 import MLink from '@/src/components/common/MLink/MLink'

@@ -1,7 +1,7 @@
 import { Typography } from '@bratislava/component-library'
 import { forwardRef } from 'react'
 import { Dialog as ReactAriaDialog, DialogProps } from 'react-aria-components'
-import { CrossIcon } from 'src/assets/icons'
+import { CrossIcon } from '@/src/assets/icons-old'
 
 import Button from '@/src/components/common/Button/Button'
 import { useTranslation } from '@/src/utils/useTranslation'

@@ -1,6 +1,6 @@
 import * as NavigationMenu from '@radix-ui/react-navigation-menu'
 import { CSSProperties } from 'react'
-import { ChevronLeftIcon } from 'src/assets/icons'
+import { ChevronLeftIcon } from '@/src/assets/icons-old'
 
 import HorizontalDivider from '@/src/components/common/Divider/HorizontalDivider'
 import NavMenuLink from '@/src/components/common/NavBar/NavMenu/NavMenuLink'
