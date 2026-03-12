@@ -595,7 +595,7 @@
         ]
       ],
       "list": [
-        "slug",
+        "path",
         "title",
         "parentPage",
         "updatedAt",
