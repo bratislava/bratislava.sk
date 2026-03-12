@@ -3,10 +3,10 @@ import { keepPreviousData, useQuery } from '@tanstack/react-query'
 import { Fragment, useEffect, useRef, useState } from 'react'
 import { useDebounceValue } from 'usehooks-ts'
 
-import { FilterIcon } from '@/src/assets/icons-old'
 import ArticleRowCard from '@/src/components/cards/ArticleRowCard'
 import Button from '@/src/components/common/Button/Button'
 import HorizontalDivider from '@/src/components/common/Divider/HorizontalDivider'
+import Icon from '@/src/components/common/Icon/Icon'
 import PaginationWithInput from '@/src/components/common/Pagination/PaginationWithInput'
 import SectionHeader from '@/src/components/layouts/SectionHeader'
 import ArticlesActiveFilters from '@/src/components/sections/ArticlesSection/ArticlesAll/ArticlesActiveFilters/ArticlesActiveFilters'
@@ -93,7 +93,7 @@ const ArticlesAll = ({ section }: Props) => {
             filters={filters}
             onFiltersChange={handleFiltersChange}
             triggerButton={
-              <Button variant="outline" startIcon={<FilterIcon />} fullWidth>
+              <Button variant="outline" startIcon={<Icon name="filter" />} fullWidth>
                 {t(`ArticlesCheckboxFiltersModal.title`)}
               </Button>
             }

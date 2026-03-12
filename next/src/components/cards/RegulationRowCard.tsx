@@ -1,7 +1,7 @@
 import { Typography } from '@bratislava/component-library'
-import { ChevronRightIcon } from '@/src/assets/icons-old'
 
 import CardBase from '@/src/components/cards/CardBase'
+import Icon from '@/src/components/common/Icon/Icon'
 import MLink from '@/src/components/common/MLink/MLink'
 import cn from '@/src/utils/cn'
 import { isDefined } from '@/src/utils/isDefined'
@@ -74,7 +74,7 @@ const RegulationRowCard = ({
         <div className="flex shrink-0 items-center justify-center text-grey-700">
           {/* TODO create a proper wrapper for the icon component to handle paddings */}
           <div className="p-1.5 md:p-2.5">
-            <ChevronRightIcon className="size-5" />
+            <Icon name="chevron-right" className="size-5" />
           </div>
         </div>
       </div>

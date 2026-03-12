@@ -1,6 +1,5 @@
-import { AttachmentIcon, DownloadIcon } from '@/src/assets/icons-old'
-
 import CardBase from '@/src/components/cards/CardBase'
+import Icon from '@/src/components/common/Icon/Icon'
 import MLink from '@/src/components/common/MLink/MLink'
 import cn from '@/src/utils/cn'
 import { isDefined } from '@/src/utils/isDefined'
@@ -38,7 +37,7 @@ const FileRowCard = ({
           <div className="md:rounded-lg md:bg-background-tertiary">
             {/* TODO create a proper wrapper for the icon component to handle paddings */}
             <div className="md:p-3">
-              <AttachmentIcon className="size-5 md:size-6" />
+              <Icon name="attachment" className="size-5 md:size-6" />
             </div>
           </div>
           <div className="flex flex-col gap-x-4 gap-y-1 md:w-full">
@@ -67,7 +66,7 @@ const FileRowCard = ({
         <div className="flex shrink-0 items-center justify-center text-grey-700 md:rounded-lg md:border md:border-grey-200">
           {/* TODO create a proper wrapper for the icon component to handle paddings */}
           <div className="p-1.5 md:p-2.5">
-            <DownloadIcon className="size-5" />
+            <Icon name="download" className="size-5" />
           </div>
         </div>
       </div>

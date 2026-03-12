@@ -1,7 +1,7 @@
 import Image from 'next/image'
-import { InfoIcon } from '@/src/assets/icons-old'
 
 import ComparisonCard from '@/src/components/common/ComparisonCard/ComparisonCard'
+import Icon from '@/src/components/common/Icon/Icon'
 import SectionContainer from '@/src/components/layouts/SectionContainer'
 import SectionHeader from '@/src/components/layouts/SectionHeader'
 import { ComparisonSectionFragment } from '@/src/services/graphql'
@@ -40,7 +40,7 @@ const ComparisonSection = ({ section }: ComparisonSectionProps) => {
             return (
               <ComparisonCard
                 key={index}
-                icon={imgUrl ? <Image src={imgUrl} alt="" fill /> : <InfoIcon />}
+                icon={imgUrl ? <Image src={imgUrl} alt="" fill /> : <Icon name="info" />}
                 color="white"
                 title={card.title}
                 items={card.items.filter(isDefined).map((item) => item.label)}

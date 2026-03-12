@@ -1,9 +1,9 @@
 import { Typography } from '@bratislava/component-library'
 import { useId } from 'react'
 
-import { ArrowRightIcon } from '@/src/assets/icons-old'
 import CardBase, { CardBaseProps } from '@/src/components/cards/CardBase'
 import { CardTitleLevel } from '@/src/components/cards/getCardTitleLevel'
+import Icon from '@/src/components/common/Icon/Icon'
 import CardImage from '@/src/components/common/Image/CardImage'
 import { StrapiUploadImage } from '@/src/components/common/Image/StrapiImage'
 import MLink from '@/src/components/common/MLink/MLink'
@@ -58,7 +58,10 @@ const FacilityCard = ({
             {children}
           </Typography>
         </MLink>
-        <ArrowRightIcon className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-background-passive-primary p-2" />
+        <Icon
+          name="arrow-right"
+          className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-background-passive-primary p-2"
+        />
       </div>
     </CardBase>
   )

@@ -1,9 +1,9 @@
 import { Typography } from '@bratislava/component-library'
 import { Dispatch, forwardRef, SetStateAction } from 'react'
 import { Input, Label, SearchField } from 'react-aria-components'
-import { RemoveIcon, SearchIcon } from '@/src/assets/icons-old'
 
 import Button from '@/src/components/common/Button/Button'
+import Icon from '@/src/components/common/Icon/Icon'
 import Spinner from '@/src/components/common/Spinner/Spinner'
 import { useTranslation } from '@/src/utils/useTranslation'
 
@@ -46,7 +46,8 @@ const SearchBar = forwardRef<HTMLInputElement, SearchBarProps>(
             className="base-focus-ring relative w-full rounded-lg border px-15 py-5 pr-23 outline-hidden hover:border-grey-400 focus:border-grey-800"
             data-cy="search-field"
           />
-          <SearchIcon
+          <Icon
+            name="search"
             aria-hidden
             className="pointer-events-none absolute top-[calc(50%-0.75rem)] left-6"
           />
@@ -57,7 +58,7 @@ const SearchBar = forwardRef<HTMLInputElement, SearchBarProps>(
             <Button
               // We don't want responsive sizing, to keep the button well aligned with the input
               size="large"
-              icon={<RemoveIcon />}
+              icon={<Icon name="clear" />}
               variant="icon-wrapped-negative-margin"
               // Keyboard users use Escape to erase the input, they can't focus this button, so empty aria-label is okay
               aria-label=""

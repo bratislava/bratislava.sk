@@ -1,7 +1,7 @@
 import { Typography } from '@bratislava/component-library'
 
-import { ShareOutlineIcon } from '@/src/assets/icons-old'
 import Button from '@/src/components/common/Button/Button'
+import Icon from '@/src/components/common/Icon/Icon'
 import ShareModal from '@/src/components/common/ShareBlock/ShareModal'
 
 export type ShareBlockProps = {
@@ -22,7 +22,11 @@ const ShareBlock = ({ text, buttonText }: ShareBlockProps) => {
       </div>
       <ShareModal
         triggerButton={
-          <Button variant="outline" startIcon={<ShareOutlineIcon />} className="max-lg:w-full">
+          <Button
+            variant="outline"
+            startIcon={<Icon name="share-outline" />}
+            className="max-lg:w-full"
+          >
             {buttonText}
           </Button>
         }

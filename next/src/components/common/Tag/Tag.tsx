@@ -1,6 +1,5 @@
-import { CrossIcon } from '@/src/assets/icons-old'
-
 import Button from '@/src/components/common/Button/Button'
+import Icon from '@/src/components/common/Icon/Icon'
 import cn from '@/src/utils/cn'
 import { useTranslation } from '@/src/utils/useTranslation'
 
@@ -45,7 +44,7 @@ const Tag = ({ text, size = 'small', isColored = false, shorthand, onRemove }: T
       {isRemovable && (
         <Button
           onPress={onRemove}
-          icon={<CrossIcon className={iconClassStyles} />}
+          icon={<Icon name="close" className={iconClassStyles} />}
           aria-label={t('Tag.aria.removeTag', { tag: text })}
           className="p-0"
         />

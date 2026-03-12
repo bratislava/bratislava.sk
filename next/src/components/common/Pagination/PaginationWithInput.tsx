@@ -1,8 +1,8 @@
 import { Typography } from '@bratislava/component-library'
 import { useTranslation } from 'next-i18next'
 
-import { ArrowLeftIcon, ArrowRightIcon } from '@/src/assets/icons-old'
 import Button from '@/src/components/common/Button/Button'
+import Icon from '@/src/components/common/Icon/Icon'
 import Input from '@/src/components/common/Input/Input'
 import { usePaginationWithInput } from '@/src/components/common/Pagination/usePaginationWithInput'
 import cn from '@/src/utils/cn'
@@ -41,7 +41,7 @@ const PaginationWithInput = ({
             handlePageChange(currentPage - 1)
           }}
           aria-label={t('Pagination.aria.goToPreviousPage')}
-          icon={<ArrowLeftIcon />}
+          icon={<Icon name="arrow-left" />}
           className="rounded-full"
         />
 
@@ -75,7 +75,7 @@ const PaginationWithInput = ({
             handlePageChange(currentPage + 1)
           }}
           aria-label={t('Pagination.aria.goToNextPage')}
-          icon={<ArrowRightIcon />}
+          icon={<Icon name="arrow-right" />}
           className="rounded-full"
         />
       </div>

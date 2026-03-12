@@ -1,7 +1,7 @@
 import React, { ReactNode, useRef, useState } from 'react'
-import { ArrowLeftIcon, ArrowRightIcon } from '@/src/assets/icons-old'
 
 import Button from '@/src/components/common/Button/Button'
+import Icon from '@/src/components/common/Icon/Icon'
 import cn from '@/src/utils/cn'
 import { useTranslation } from '@/src/utils/useTranslation'
 
@@ -120,7 +120,7 @@ const Carousel = ({
                   'left-0 -translate-x-1/2 transform',
                   { hidden: isLeftControlHidden },
                 )}
-                icon={<ArrowLeftIcon />}
+                icon={<Icon name="arrow-left" />}
                 aria-label={t('Carousel.aria.previous')}
               />
               <Button
@@ -132,7 +132,7 @@ const Carousel = ({
                   'right-0 translate-x-1/2 transform',
                   { hidden: isRightControlHidden },
                 )}
-                icon={<ArrowRightIcon />}
+                icon={<Icon name="arrow-right" />}
                 aria-label={t('Carousel.aria.next')}
               />
             </>
@@ -145,7 +145,7 @@ const Carousel = ({
                 <Button
                   variant="outline"
                   onPress={handleGoToPrevious}
-                  icon={<ArrowLeftIcon />}
+                  icon={<Icon name="arrow-left" />}
                   aria-label={t('Carousel.aria.previous')}
                   isDisabled={isLeftControlHidden}
                 />
@@ -154,7 +154,7 @@ const Carousel = ({
                 <Button
                   variant="outline"
                   onPress={handleGoToNext}
-                  icon={<ArrowRightIcon />}
+                  icon={<Icon name="arrow-right" />}
                   aria-label={t('Carousel.aria.next')}
                   isDisabled={isRightControlHidden}
                 />

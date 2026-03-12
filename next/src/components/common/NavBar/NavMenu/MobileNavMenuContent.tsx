@@ -1,8 +1,8 @@
 import * as NavigationMenu from '@radix-ui/react-navigation-menu'
 import { CSSProperties } from 'react'
-import { ChevronLeftIcon } from '@/src/assets/icons-old'
 
 import HorizontalDivider from '@/src/components/common/Divider/HorizontalDivider'
+import Icon from '@/src/components/common/Icon/Icon'
 import NavMenuLink from '@/src/components/common/NavBar/NavMenu/NavMenuLink'
 import { useTranslation } from '@/src/utils/useTranslation'
 
@@ -47,7 +47,7 @@ const MobileNavMenuContent = ({ menuItem, colorStyle }: NavMenuContentProps) => 
             }}
             className="-my-2 -ml-4 flex w-full gap-2 px-4 py-2 font-medium underline underline-offset-2"
           >
-            <ChevronLeftIcon aria-hidden />
+            <Icon name="chevron-left" aria-hidden />
             {t('MobileNavMenuContent.goBackToMainCategories')}
           </button>
         </li>

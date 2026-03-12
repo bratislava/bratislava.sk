@@ -1,6 +1,5 @@
-import { CheckIcon, CrossIcon } from '@/src/assets/icons-old'
-
 import ComparisonCard from '@/src/components/common/ComparisonCard/ComparisonCard'
+import Icon from '@/src/components/common/Icon/Icon'
 import SectionContainer from '@/src/components/layouts/SectionContainer'
 import SectionHeader from '@/src/components/layouts/SectionHeader'
 import { ProsAndConsSectionFragment } from '@/src/services/graphql'
@@ -29,7 +28,7 @@ const ProsAndConsSection = ({ section }: ProsAndConsSectionProps) => {
         <ul className="grid gap-3 md:grid-cols-2 lg:gap-8">
           {cons && (
             <ComparisonCard
-              icon={<CrossIcon />}
+              icon={<Icon name="close" />}
               color="red"
               title={cons.title}
               items={cons.items.filter(isDefined).map((item) => item.label)}
@@ -37,7 +36,7 @@ const ProsAndConsSection = ({ section }: ProsAndConsSectionProps) => {
           )}
           {pros && (
             <ComparisonCard
-              icon={<CheckIcon />}
+              icon={<Icon name="check" />}
               color="green"
               title={pros.title}
               items={pros.items.filter(isDefined).map((item) => item.label)}

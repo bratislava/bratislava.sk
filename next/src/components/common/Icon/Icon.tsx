@@ -39,7 +39,7 @@ export const iconNameMap = {
   eye: 'EyeIcon',
   'eye-hide': 'EyeHideIcon',
   filter: 'FilterIcon',
-  'folder-open': 'FolderOpenIcon',
+  folder: 'FolderOpenIcon',
   help: 'HelpIcon',
   home: 'HomeIcon',
   hourglass: 'SandGlassIcon',

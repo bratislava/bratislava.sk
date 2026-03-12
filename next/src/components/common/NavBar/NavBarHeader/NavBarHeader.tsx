@@ -1,6 +1,5 @@
-import { SearchIcon } from '@/src/assets/icons-old'
-
 import Button from '@/src/components/common/Button/Button'
+import Icon from '@/src/components/common/Icon/Icon'
 import Brand from '@/src/components/common/Logos/Brand'
 import MLink from '@/src/components/common/MLink/MLink'
 import SkipToContentButton from '@/src/components/common/SkipToContentButton/SkipToContentButton'
@@ -63,7 +62,7 @@ const NavBarHeader = ({ className }: NavBarProps) => {
             aria-label={t('SearchBar.search')}
             className="-m-4 p-4"
             hasLinkIcon={false}
-            icon={<SearchIcon />}
+            icon={<Icon name="search" />}
           />
 
           <Divider />

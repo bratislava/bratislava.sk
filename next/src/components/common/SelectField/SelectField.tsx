@@ -13,8 +13,8 @@ import {
   Text,
   ValidationResult,
 } from 'react-aria-components'
-import { CheckInCircleIcon, ChevronDownIcon } from '@/src/assets/icons-old'
 
+import Icon from '@/src/components/common/Icon/Icon'
 import cn from '@/src/utils/cn'
 
 // This component was copied from Enforcement project and updated to use newer react-aria-components version
@@ -54,7 +54,7 @@ export const SelectItem = ({ label, description, isDivider = false, ...rest }: S
             {description ? <Text slot="description">{description}</Text> : null}
           </div>
           <div className={cn('shrink-0', { hidden: !isSelected })}>
-            <CheckInCircleIcon />
+            <Icon name="check-circle" />
           </div>
         </>
       )}
@@ -94,7 +94,7 @@ const SelectField = <T extends object>({
       <Button className={style}>
         <SelectValue />
         <span aria-hidden>
-          <ChevronDownIcon />
+          <Icon name="chevron-down" />
         </span>
       </Button>
       {/* TODO style description and error */}

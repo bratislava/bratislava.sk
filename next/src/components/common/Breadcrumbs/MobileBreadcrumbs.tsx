@@ -1,5 +1,4 @@
 import { Typography } from '@bratislava/component-library'
-import { ArrowRightIcon, ChevronRightIcon } from '@/src/assets/icons-old'
 
 import type { BreadcrumbsProps } from '@/src/components/common/Breadcrumbs/Breadcrumbs'
 import Button from '@/src/components/common/Button/Button'
@@ -7,6 +6,7 @@ import Disclosure from '@/src/components/common/Disclosure/Disclosure'
 import DisclosureHeader from '@/src/components/common/Disclosure/DisclosureHeader'
 import DisclosurePanel from '@/src/components/common/Disclosure/DisclosurePanel'
 import HorizontalDivider from '@/src/components/common/Divider/HorizontalDivider'
+import Icon from '@/src/components/common/Icon/Icon'
 import MLink from '@/src/components/common/MLink/MLink'
 import { useAdminGroupsContext } from '@/src/components/providers/AdminGroupsContextProvider'
 import { isStarzAdminGroup, useGetSubmenuByAdminGroup } from '@/src/utils/adminGroupUtils'
@@ -44,7 +44,7 @@ const MobileBreadcrumbs = ({ breadcrumbs }: BreadcrumbsProps) => {
             onPress={goBack}
             variant="link"
             className="shrink-0 py-3 pl-4 text-[14px]"
-            startIcon={<ChevronRightIcon className="shrink-0 rotate-180" />}
+            startIcon={<Icon name="chevron-right" className="shrink-0 rotate-180" />}
           >
             {t('Breadcrumbs.back')}
           </Button>
@@ -73,7 +73,7 @@ const MobileBreadcrumbs = ({ breadcrumbs }: BreadcrumbsProps) => {
                       return (
                         <li className="text-size-p-tiny font-medium" key={index}>
                           <MLink variant="underlined" className="flex gap-2" {...pageLinkProps}>
-                            <ArrowRightIcon className="size-5 shrink-0" />
+                            <Icon name="arrow-right" className="size-5 shrink-0" />
                             {pageLinkProps.children}
                           </MLink>
                         </li>
@@ -89,12 +89,12 @@ const MobileBreadcrumbs = ({ breadcrumbs }: BreadcrumbsProps) => {
                 <li className="text-size-p-tiny font-medium" key={index}>
                   {breadcrumb.path ? (
                     <MLink href={breadcrumb.path} variant="underlined" className="flex gap-1">
-                      <ChevronRightIcon className="size-5 shrink-0 rotate-180" />
+                      <Icon name="chevron-right" className="size-5 shrink-0 rotate-180" />
                       {breadcrumb.title}
                     </MLink>
                   ) : (
                     <div className="flex gap-1">
-                      <ChevronRightIcon className="size-5 shrink-0 rotate-180" />
+                      <Icon name="chevron-right" className="size-5 shrink-0 rotate-180" />
                       {breadcrumb.title}
                     </div>
                   )}

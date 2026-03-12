@@ -1,9 +1,9 @@
 import { Typography } from '@bratislava/component-library'
 import { forwardRef } from 'react'
 import { Dialog as ReactAriaDialog, DialogProps } from 'react-aria-components'
-import { CrossIcon } from '@/src/assets/icons-old'
 
 import Button from '@/src/components/common/Button/Button'
+import Icon from '@/src/components/common/Icon/Icon'
 import { useTranslation } from '@/src/utils/useTranslation'
 
 type TitleProps = { title: string; 'aria-label'?: string } | { title?: never; 'aria-label': string }
@@ -35,7 +35,7 @@ const Dialog = forwardRef<HTMLElement, Props>(({ children, title, ...props }, re
               </Typography>
               {/* </Heading> */}
               <Button
-                icon={<CrossIcon />}
+                icon={<Icon name="close" />}
                 aria-label={t('Dialog.aria.close')}
                 variant="plain"
                 className="-m-2"
@@ -53,7 +53,7 @@ const Dialog = forwardRef<HTMLElement, Props>(({ children, title, ...props }, re
           {/* Render the close button above content, without using z-index, if no Dialog title is provided */}
           {title ? null : (
             <Button
-              icon={<CrossIcon />}
+              icon={<Icon name="close" />}
               aria-label={t('Dialog.aria.close')}
               className="absolute top-6 right-6 -m-2 bg-white hover:bg-grey-100"
               variant="outline"

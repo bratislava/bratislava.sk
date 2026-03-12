@@ -260,7 +260,13 @@ const PagesByComponent = () => {
             </Box>
 
             <Box className="pages-results-container">
-              <Flex justifyContent="space-between" alignItems="baseline" wrap="wrap" gap={4} marginBottom={2}>
+              <Flex
+                justifyContent="space-between"
+                alignItems="baseline"
+                wrap="wrap"
+                gap={4}
+                marginBottom={2}
+              >
                 <Typography variant="omega" textColor="neutral600">
                   Showing {Math.min((page - 1) * pageSize + 1, total)} -{' '}
                   {Math.min(page * pageSize, total)} of {total}
@@ -295,6 +301,7 @@ const PagesByComponent = () => {
                       disabled={page === 1 || loading}
                       label="Previous page"
                     >
+                      {/* TODO: add our custom icons? */}
                       <ChevronLeft />
                     </IconButton>
                     <Typography variant="omega">
@@ -305,6 +312,7 @@ const PagesByComponent = () => {
                       disabled={page === pageCount || loading}
                       label="Next page"
                     >
+                      {/* TODO: add our custom icons? */}
                       <ChevronRight />
                     </IconButton>
                   </Flex>
@@ -432,7 +440,6 @@ const PagesByComponent = () => {
               </Table>
             </Box>
           </Flex>
-
         </Flex>
       </Box>
     </>

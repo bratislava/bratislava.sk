@@ -2,9 +2,8 @@ import { Typography } from '@bratislava/component-library'
 import { useTranslation } from 'next-i18next'
 import { Fragment } from 'react'
 
-import { DocumentIcon, DownloadIcon } from '@/src/assets/icons-old'
-import { FolderIcon } from '@/src/assets/material-icons'
 import Button from '@/src/components/common/Button/Button'
+import Icon from '@/src/components/common/Icon/Icon'
 import { AssetEntityFragment } from '@/src/services/graphql'
 import cn from '@/src/utils/cn'
 import { formatDate } from '@/src/utils/formatDate'
@@ -46,7 +45,7 @@ const AssetPageHeader = ({ asset }: Props) => {
         <div className="py-6 lg:py-8">
           <div className="flex flex-col items-start gap-4 lg:gap-6">
             <div className="rounded-2xl bg-background-passive-base p-4">
-              {isSingleFile ? <DocumentIcon /> : <FolderIcon />}
+              {isSingleFile ? <Icon name="document" /> : <Icon name="folder" />}
             </div>
             <div className="flex flex-col gap-6">
               <div className="flex flex-col gap-1">
@@ -71,7 +70,7 @@ const AssetPageHeader = ({ asset }: Props) => {
                   href={filteredFiles[0].url ?? '#'}
                   target="_blank"
                   hasLinkIcon={false}
-                  startIcon={<DownloadIcon />}
+                  startIcon={<Icon name="download" />}
                   // TODO use common function?
                   aria-label={t('FileList.aria.downloadFileAriaLabel', {
                     title: filteredFiles[0].name,

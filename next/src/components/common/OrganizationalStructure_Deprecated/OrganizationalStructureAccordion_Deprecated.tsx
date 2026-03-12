@@ -1,6 +1,6 @@
-import { ChevronDownIcon } from '@/src/assets/icons-old'
 import { useToggle } from 'usehooks-ts'
 
+import Icon from '@/src/components/common/Icon/Icon'
 import { GetGroupMembersRecursiveResult } from '@/src/services/ms-graph/types'
 import cn from '@/src/utils/cn'
 
@@ -48,7 +48,7 @@ const OrganizationalStructureAccordion = ({
         {/* TODO fix chevron toggles - rotating 180 isn't quite right as the chevron 'jumps' higher - we should use
         different up-down asset */}
         <div className={cn('ml-auto pt-2.5', { 'rotate-180 pt-5': isOpen })}>
-          <ChevronDownIcon className="size-6 lg:size-8" />
+          <Icon name="chevron-down" className="size-6 lg:size-8" />
         </div>
       </div>
 
