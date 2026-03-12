@@ -45,7 +45,6 @@ const FaqsAll = () => {
     searchRef.current?.scrollIntoView({ behavior: 'smooth' })
   }, [filters.page])
 
-  //  MEILISEARCH
   const {
     data,
     isError: isMeiliError,
@@ -57,50 +56,35 @@ const FaqsAll = () => {
     placeholderData: keepPreviousData,
   })
 
-  // FAQ CATEGORIES
-  const {
-    data: faqCategoriesData,
-    isError: isCategoriesError,
-    error: categoriesError,
-  } = useQuery({
+  const { data: faqCategoriesData } = useQuery({
     queryKey: ['FaqCategories', locale],
     queryFn: () => client.FaqCategories({ locale }),
     select: (res) => res.faqCategories.filter(isDefined) ?? [],
+    staleTime: Infinity,
   })
 
-  const options = faqCategoriesData
-    ?.map((category) => {
-      return category?.slug && category.title
-        ? { value: category.slug, label: category.title }
-        : null
-    })
-    .filter(isDefined)
-
-  // Get category names
   const selectOptions = [
     {
-      value: 'all',
-      label: t('FaqsSection.selectionOptions.allFaqs'),
+      slug: 'all',
+      title: t('FaqsSection.selectionOptions.allFaqs'),
     },
-    ...(options ?? []),
+    ...(faqCategoriesData ?? []),
   ]
 
-  // SELECTION
-  const [selection, setSelection] = useState<string>(selectOptions[0].value)
+  const [selection, setSelection] = useState<string>(selectOptions[0].slug)
 
-  // Adjust filters after selection change
   useEffect(() => {
     setFilters((previousState) => ({
       ...previousState,
       page: 1,
-      categorySlugs: selection === 'all' ? undefined : [selection],
+      assetCategorySlugs: selection === 'all' ? [] : [selection],
     }))
   }, [selection, setFilters])
 
-  if (isMeiliError || isCategoriesError) {
+  if (isMeiliError) {
     return (
       <Typography variant="p-default">
-        {t('common.error')}: {categoriesError?.message || meiliError?.message}
+        {t('common.error')}: {meiliError.message}
       </Typography>
     )
   }
@@ -122,10 +106,10 @@ const FaqsAll = () => {
           value={selection}
           items={selectOptions}
           onChange={(value) => setSelection(value as string)}
-          placeholder={t('FaqSectionAll.selectionOptions.aria')}
-          aria-label={t('FaqSectionAll.selectionOptions.aria')}
+          placeholder={t('FaqsSection.selectionOptions.aria')}
+          aria-label={t('FaqsSection.selectionOptions.aria')}
         >
-          {(item) => <SelectItem label={item.label} id={item.value} textValue={item.label} />}
+          {(item) => <SelectItem label={item.title} id={item.slug} textValue={item.title} />}
         </SelectField>
       </div>
 
@@ -137,7 +121,7 @@ const FaqsAll = () => {
                 {index > 0 ? <HorizontalDivider className="mx-4 lg:mx-6" /> : null}
                 <Disclosure id={`disclosure-faq-${faq.documentId}`}>
                   <DisclosureHeader className="p-4 ring-inset lg:px-6">
-                    <Badge label={faq.faqCategory?.title} />
+                    {faq.faqCategory?.title && <Badge label={faq.faqCategory.title} />}
                     <Typography variant="h4">{faq.title}</Typography>
                   </DisclosureHeader>
                   <DisclosurePanel className="px-4 lg:px-6">
@@ -152,7 +136,7 @@ const FaqsAll = () => {
         <Typography>{t('ArticlesAll.noResults')}</Typography>
       )}
 
-      {data?.estimatedTotalHits && data.limit && data.estimatedTotalHits > data.limit ? (
+      {data?.estimatedTotalHits ? (
         <div className="flex justify-center">
           <PaginationWithInput
             key={filters.search}

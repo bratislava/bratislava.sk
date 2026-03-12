@@ -32,7 +32,7 @@ export const meiliFaqsFetcher = (filters: FaqsFilters) => {
       filter: [
         'type = "faq"',
         filters.assetCategorySlugs?.length
-          ? `asset.assetCategory.slug IN [${filters.assetCategorySlugs.join(',')}]`
+          ? `faq.faqCategory.slug IN [${filters.assetCategorySlugs.join(',')}]`
           : '',
       ].filter(isDefined),
     })

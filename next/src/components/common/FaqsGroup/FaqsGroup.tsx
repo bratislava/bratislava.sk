@@ -18,7 +18,7 @@ export type FaqsGroupProps = {
   faqCategories?: FaqCategoryEntityFragment[]
 }
 
-const FaqsGroup = ({ faqs, accordionTitleLevel, faqCategories }: FaqsGroupProps) => {
+const FaqsGroup = ({ faqs, accordionTitleLevel = 'h2', faqCategories }: FaqsGroupProps) => {
   const faqList = faqCategories?.length ? faqCategories.flatMap((category) => category.faqs) : faqs
 
   return (

@@ -88,5 +88,12 @@ export const prefetchPageSections = async (page: PageEntityFragment, locale: str
     queryFn: () => relatedArticlesFetcher(page, locale),
   })
 
+  if (sectionTypes.includes('ComponentSectionsFaqs')) {
+    await queryClient.prefetchQuery({
+      queryKey: ['FaqCategories', locale],
+      queryFn: () => client.FaqCategories({ locale }),
+    })
+  }
+
   return dehydrate(queryClient)
 }
