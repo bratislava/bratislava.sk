@@ -1,6 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
+import { pipeline } from 'stream/promises'
 
-import { getOfficialBoardFileBase64Encoded } from '@/src/services/ginis/server/getOfficialBoardFileBase64Encoded'
+import { getOfficialBoardFileStream } from '@/src/services/ginis/server/getOfficialBoardFileStream'
 import { base64Decode } from '@/src/utils/base64'
 
 /**
@@ -39,15 +40,13 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 
   try {
-    const result = await getOfficialBoardFileBase64Encoded(fileId)
+    const fileStream = await getOfficialBoardFileStream(fileId)
 
-    if (!result) {
+    if (!fileStream) {
       res.status(404).json({ message: 'File not found' })
 
       return
     }
-
-    const buffer = Buffer.from(result.Data, 'base64')
 
     // Set content type to pdf. It's not guaranteed, but we have been told it's always pdf by the admin.
     res.setHeader('Content-Type', 'application/pdf')
@@ -55,9 +54,14 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     // Do not specify filename, because it's already encoded in the URL. Specifying filename has a problem with encoding special characters.
     // See https://stackoverflow.com/questions/93551/how-to-encode-the-filename-parameter-of-content-disposition-header-in-http
     res.setHeader('Content-Disposition', 'inline')
-
-    res.send(buffer)
+    await pipeline(fileStream, res)
   } catch (error) {
+    if (res.headersSent) {
+      res.destroy(error instanceof Error ? error : new Error(String(error)))
+
+      return
+    }
+
     res.status(500).json(error)
   }
 }
