@@ -1645,8 +1645,7 @@
           "title",
           "shortTitle",
           "color",
-          "icon",
-          "pages"
+          "icon"
         ],
         "locales": [
           "sk",
@@ -1655,7 +1654,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "qw7hdaie2xtb6mnwdqhy49oe",
+      "documentId": "xdyukkbcfdnaj5d33qyaullv",
       "locale": null
     },
     {
@@ -1694,8 +1693,7 @@
           "title",
           "shortTitle",
           "color",
-          "icon",
-          "pages"
+          "icon"
         ],
         "locales": [
           "sk",
@@ -1704,7 +1702,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "mc64ed2kxtz8mytfl10vbqnp",
+      "documentId": "twhe2cdd9uz3j2wxmw7btv0z",
       "locale": null
     },
     {
@@ -1715,8 +1713,7 @@
           "title",
           "shortTitle",
           "color",
-          "icon",
-          "pages"
+          "icon"
         ],
         "locales": [
           "sk",
@@ -1725,7 +1722,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "vdinw440xd7umbf2w8x1sgb6",
+      "documentId": "hns6wf9rtr6bkil1igt617z9",
       "locale": null
     },
     {
@@ -1741,7 +1738,6 @@
           "metaDescription",
           "keywords",
           "showTableOfContents",
-          "pageCategory",
           "pageColor",
           "pageBackgroundImage",
           "headerLinks.label",
@@ -1774,7 +1770,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "kr7gxbz0k0czbhq85yzm245k",
+      "documentId": "f5suig3rbx0jfoln5ufuqslw",
       "locale": null
     },
     {
@@ -1818,7 +1814,6 @@
           "metaDescription",
           "keywords",
           "showTableOfContents",
-          "pageCategory",
           "pageColor",
           "pageBackgroundImage",
           "headerLinks.label",
@@ -1851,7 +1846,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "pppj5zryrh4zlrpplz9no3e9",
+      "documentId": "zep460so4bra88ics4b1crn9",
       "locale": null
     },
     {
@@ -1867,7 +1862,6 @@
           "metaDescription",
           "keywords",
           "showTableOfContents",
-          "pageCategory",
           "pageColor",
           "pageBackgroundImage",
           "headerLinks.label",
@@ -1900,7 +1894,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "pse514pjfo8fhgwhmuopurm2",
+      "documentId": "wkn800mbvu5jd0eotvh728b8",
       "locale": null
     },
     {

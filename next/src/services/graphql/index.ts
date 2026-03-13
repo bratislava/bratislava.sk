@@ -5065,7 +5065,6 @@ export type Page = {
   localizations_connection?: Maybe<PageRelationResponseCollection>
   metaDescription?: Maybe<Scalars['String']['output']>
   pageBackgroundImage?: Maybe<UploadFile>
-  pageCategory?: Maybe<PageCategory>
   pageColor: Enum_Page_Pagecolor
   pageHeaderSections?: Maybe<Array<Maybe<PagePageHeaderSectionsDynamicZone>>>
   parent?: Maybe<Page>
@@ -5173,8 +5172,6 @@ export type PageCategory = {
   locale?: Maybe<Scalars['String']['output']>
   localizations: Array<Maybe<PageCategory>>
   localizations_connection?: Maybe<PageCategoryRelationResponseCollection>
-  pages: Array<Maybe<Page>>
-  pages_connection?: Maybe<PageRelationResponseCollection>
   publishedAt?: Maybe<Scalars['DateTime']['output']>
   shortTitle?: Maybe<Scalars['String']['output']>
   title?: Maybe<Scalars['String']['output']>
@@ -5189,18 +5186,6 @@ export type PageCategoryLocalizationsArgs = {
 
 export type PageCategoryLocalizations_ConnectionArgs = {
   filters?: InputMaybe<PageCategoryFiltersInput>
-  pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
-}
-
-export type PageCategoryPagesArgs = {
-  filters?: InputMaybe<PageFiltersInput>
-  pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
-}
-
-export type PageCategoryPages_ConnectionArgs = {
-  filters?: InputMaybe<PageFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
 }
@@ -5232,7 +5217,6 @@ export type PageCategoryFiltersInput = {
   localizations?: InputMaybe<PageCategoryFiltersInput>
   not?: InputMaybe<PageCategoryFiltersInput>
   or?: InputMaybe<Array<InputMaybe<PageCategoryFiltersInput>>>
-  pages?: InputMaybe<PageFiltersInput>
   publishedAt?: InputMaybe<DateTimeFilterInput>
   shortTitle?: InputMaybe<StringFilterInput>
   title?: InputMaybe<StringFilterInput>
@@ -5242,7 +5226,6 @@ export type PageCategoryFiltersInput = {
 export type PageCategoryInput = {
   color?: InputMaybe<Enum_Pagecategory_Color>
   icon?: InputMaybe<Enum_Pagecategory_Icon>
-  pages?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
   publishedAt?: InputMaybe<Scalars['DateTime']['input']>
   shortTitle?: InputMaybe<Scalars['String']['input']>
   title?: InputMaybe<Scalars['String']['input']>
@@ -5287,7 +5270,6 @@ export type PageFiltersInput = {
   metaDescription?: InputMaybe<StringFilterInput>
   not?: InputMaybe<PageFiltersInput>
   or?: InputMaybe<Array<InputMaybe<PageFiltersInput>>>
-  pageCategory?: InputMaybe<PageCategoryFiltersInput>
   pageColor?: InputMaybe<StringFilterInput>
   parent?: InputMaybe<PageFiltersInput>
   parentPage?: InputMaybe<PageFiltersInput>
@@ -5314,7 +5296,6 @@ export type PageInput = {
   keywords?: InputMaybe<Scalars['String']['input']>
   metaDescription?: InputMaybe<Scalars['String']['input']>
   pageBackgroundImage?: InputMaybe<Scalars['ID']['input']>
-  pageCategory?: InputMaybe<Scalars['ID']['input']>
   pageColor?: InputMaybe<Enum_Page_Pagecolor>
   pageHeaderSections?: InputMaybe<Array<Scalars['PagePageHeaderSectionsDynamicZoneInput']['input']>>
   parent?: InputMaybe<Scalars['ID']['input']>

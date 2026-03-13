@@ -76,21 +76,6 @@
           "sortable": true
         }
       },
-      "pages": {
-        "edit": {
-          "label": "pages",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true,
-          "mainField": "path"
-        },
-        "list": {
-          "label": "pages",
-          "searchable": false,
-          "sortable": false
-        }
-      },
       "createdAt": {
         "edit": {
           "label": "createdAt",
@@ -159,7 +144,12 @@
       }
     },
     "layouts": {
-      "list": ["id", "title", "shortTitle", "color"],
+      "list": [
+        "id",
+        "title",
+        "shortTitle",
+        "color"
+      ],
       "edit": [
         [
           {
@@ -178,12 +168,6 @@
           },
           {
             "name": "icon",
-            "size": 6
-          }
-        ],
-        [
-          {
-            "name": "pages",
             "size": 6
           }
         ]

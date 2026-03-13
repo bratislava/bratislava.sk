@@ -3871,7 +3871,6 @@ type Page {
   localizations_connection(filters: PageFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): PageRelationResponseCollection
   metaDescription: String
   pageBackgroundImage: UploadFile
-  pageCategory: PageCategory
   pageColor: ENUM_PAGE_PAGECOLOR!
   pageHeaderSections: [PagePageHeaderSectionsDynamicZone]
   parent: Page
@@ -3900,8 +3899,6 @@ type PageCategory {
   locale: String
   localizations(filters: PageCategoryFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [PageCategory]!
   localizations_connection(filters: PageCategoryFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): PageCategoryRelationResponseCollection
-  pages(filters: PageFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [Page]!
-  pages_connection(filters: PageFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): PageRelationResponseCollection
   publishedAt: DateTime
   shortTitle: String
   title: String
@@ -3932,7 +3929,6 @@ input PageCategoryFiltersInput {
   localizations: PageCategoryFiltersInput
   not: PageCategoryFiltersInput
   or: [PageCategoryFiltersInput]
-  pages: PageFiltersInput
   publishedAt: DateTimeFilterInput
   shortTitle: StringFilterInput
   title: StringFilterInput
@@ -3942,7 +3938,6 @@ input PageCategoryFiltersInput {
 input PageCategoryInput {
   color: ENUM_PAGECATEGORY_COLOR
   icon: ENUM_PAGECATEGORY_ICON
-  pages: [ID]
   publishedAt: DateTime
   shortTitle: String
   title: String
@@ -3983,7 +3978,6 @@ input PageFiltersInput {
   metaDescription: StringFilterInput
   not: PageFiltersInput
   or: [PageFiltersInput]
-  pageCategory: PageCategoryFiltersInput
   pageColor: StringFilterInput
   parent: PageFiltersInput
   parentPage: PageFiltersInput
@@ -4010,7 +4004,6 @@ input PageInput {
   keywords: String
   metaDescription: String
   pageBackgroundImage: ID
-  pageCategory: ID
   pageColor: ENUM_PAGE_PAGECOLOR
   pageHeaderSections: [PagePageHeaderSectionsDynamicZoneInput!]
   parent: ID
