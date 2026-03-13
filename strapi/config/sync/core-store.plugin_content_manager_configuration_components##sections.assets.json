@@ -76,6 +76,21 @@
           "sortable": false
         }
       },
+      "adminGroup": {
+        "edit": {
+          "label": "Admin skupina",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "title"
+        },
+        "list": {
+          "label": "adminGroup",
+          "searchable": true,
+          "sortable": true
+        }
+      },
       "titleLevel": {
         "edit": {
           "label": "Úroveň nadpisu sekcie",
@@ -114,7 +129,11 @@
         [
           {
             "name": "showAll",
-            "size": 12
+            "size": 6
+          },
+          {
+            "name": "adminGroup",
+            "size": 6
           }
         ],
         [

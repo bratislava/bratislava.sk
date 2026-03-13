@@ -1749,6 +1749,7 @@ export type ComponentSectionsArticlesLandingPageInput = {
 
 export type ComponentSectionsAssets = {
   __typename?: 'ComponentSectionsAssets'
+  adminGroup?: Maybe<AdminGroup>
   assets: Array<Maybe<Asset>>
   assets_connection?: Maybe<AssetRelationResponseCollection>
   id: Scalars['ID']['output']
@@ -1771,6 +1772,7 @@ export type ComponentSectionsAssetsAssets_ConnectionArgs = {
 }
 
 export type ComponentSectionsAssetsFiltersInput = {
+  adminGroup?: InputMaybe<AdminGroupFiltersInput>
   and?: InputMaybe<Array<InputMaybe<ComponentSectionsAssetsFiltersInput>>>
   assets?: InputMaybe<AssetFiltersInput>
   not?: InputMaybe<ComponentSectionsAssetsFiltersInput>
@@ -1782,6 +1784,7 @@ export type ComponentSectionsAssetsFiltersInput = {
 }
 
 export type ComponentSectionsAssetsInput = {
+  adminGroup?: InputMaybe<Scalars['ID']['input']>
   assets?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
   id?: InputMaybe<Scalars['ID']['input']>
   showAll?: InputMaybe<Scalars['Boolean']['input']>
@@ -10849,6 +10852,13 @@ export type PageEntityFragment = {
             updatedAt?: any | null
           } | null>
         } | null>
+        adminGroup?: {
+          __typename?: 'AdminGroup'
+          documentId: string
+          slug: string
+          title: string
+          adminGroupId?: string | null
+        } | null
       }
     | {
         __typename: 'ComponentSectionsBanner'
@@ -12198,6 +12208,13 @@ export type PageBySlugQuery = {
               updatedAt?: any | null
             } | null>
           } | null>
+          adminGroup?: {
+            __typename?: 'AdminGroup'
+            documentId: string
+            slug: string
+            title: string
+            adminGroupId?: string | null
+          } | null
         }
       | {
           __typename: 'ComponentSectionsBanner'
@@ -13571,6 +13588,13 @@ export type Dev_AllPagesQuery = {
               updatedAt?: any | null
             } | null>
           } | null>
+          adminGroup?: {
+            __typename?: 'AdminGroup'
+            documentId: string
+            slug: string
+            title: string
+            adminGroupId?: string | null
+          } | null
         }
       | {
           __typename: 'ComponentSectionsBanner'
@@ -16072,6 +16096,13 @@ export type AssetsSectionFragment = {
       updatedAt?: any | null
     } | null>
   } | null>
+  adminGroup?: {
+    __typename?: 'AdminGroup'
+    documentId: string
+    slug: string
+    title: string
+    adminGroupId?: string | null
+  } | null
 }
 
 export type NumbersOverviewItemBlockFragment = {
@@ -16735,6 +16766,13 @@ type Sections_ComponentSectionsAssets_Fragment = {
       updatedAt?: any | null
     } | null>
   } | null>
+  adminGroup?: {
+    __typename?: 'AdminGroup'
+    documentId: string
+    slug: string
+    title: string
+    adminGroupId?: string | null
+  } | null
 }
 
 type Sections_ComponentSectionsBanner_Fragment = {
@@ -18998,13 +19036,17 @@ export const AssetsSectionFragmentDoc = gql`
   fragment AssetsSection on ComponentSectionsAssets {
     title
     text
+    showAll
     assets(pagination: { limit: -1 }) {
       ...AssetEntity
     }
-    showAll
+    adminGroup {
+      ...AdminGroupSlugEntity
+    }
     titleLevelAssetsSection: titleLevel
   }
   ${AssetEntityFragmentDoc}
+  ${AdminGroupSlugEntityFragmentDoc}
 `
 export const NumbersOverviewItemBlockFragmentDoc = gql`
   fragment NumbersOverviewItemBlock on ComponentBlocksNumbersOverviewItem {
