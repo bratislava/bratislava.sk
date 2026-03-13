@@ -446,15 +446,6 @@
       }
     },
     "layouts": {
-      "list": [
-        "slug",
-        "title",
-        "parentPage",
-        "updatedAt",
-        "updatedBy",
-        "adminGroups",
-        "subtext"
-      ],
       "edit": [
         [
           {
@@ -600,7 +591,8 @@
             "size": 6
           }
         ]
-      ]
+      ],
+      "list": ["path", "title", "parentPage", "updatedAt", "updatedBy", "adminGroups", "subtext"]
     }
   },
   "type": "object",

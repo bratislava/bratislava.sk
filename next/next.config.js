@@ -214,6 +214,50 @@ const nextConfig = {
         destination: '/mesto-bratislava/dane-a-poplatky/digitalna-platba-dani-a-poplatkov',
         permanent: true,
       },
+      {
+        source: '/mesto-bratislava/dane-a-poplatky/dan-z-nehnutelnosti/digitalna-platba',
+        destination: '/mesto-bratislava/dane-a-poplatky/digitalna-platba-dani-a-poplatkov',
+        permanent: true,
+      },
+      {
+        source: '/mesto-bratislava/projekty/inovacie-mesta-bratislava',
+        destination: '/konto',
+        permanent: true,
+      },
+      {
+        source: '/bratislavske-konto',
+        destination: '/konto',
+        permanent: true,
+      },
+      {
+        source: '/doprava-a-mapy/mapy/strategicka-hlukova-mapa-a-akcne-plany',
+        destination:
+          '/zivotne-prostredie-a-vystavba/rozvoj-mesta/environmentalistika-a-technicka-infrastruktura/hluk-a-urbanisticka-akustika/strategicka-hlukova-mapa-a-akcne-plany',
+        permanent: true,
+      },
+      {
+        source:
+          '/zivotne-prostredie-a-vystavba/rozvoj-mesta/environmentalistika-a-technicka-infrastruktura/hluk-a-urbanisticka-akustika-',
+        destination:
+          '/zivotne-prostredie-a-vystavba/rozvoj-mesta/environmentalistika-a-technicka-infrastruktura/hluk-a-urbanisticka-akustika',
+        permanent: true,
+      },
+      {
+        source: '/doprava-a-mapy/zdielana-mobilita/bikesharing',
+        destination: '/doprava-a-mapy/zdielana-mobilita',
+        permanent: true,
+      },
+
+      {
+        source: '/doprava-a-mapy/zdielana-mobilita/kolobezky',
+        destination: '/doprava-a-mapy/zdielana-mobilita',
+        permanent: true,
+      },
+      {
+        source: '/kultura-a-komunity/komunity/asistencne-centrum-pre-ludi-s-cudzineckym-povodom',
+        destination: '/kultura-a-komunity/loom-centrum-pre-ludi-s-cudzineckym-povodom',
+        permanent: true,
+      },
     ]
   },
   // Docs: https://react-svgr.com/docs/next/
