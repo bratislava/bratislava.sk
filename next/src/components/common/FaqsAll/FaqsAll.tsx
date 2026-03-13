@@ -77,7 +77,7 @@ const FaqsAll = () => {
     setFilters((previousState) => ({
       ...previousState,
       page: 1,
-      assetCategorySlugs: selection === 'all' ? [] : [selection],
+      faqCategorySlugs: selection === 'all' ? [] : [selection],
     }))
   }, [selection, setFilters])
 

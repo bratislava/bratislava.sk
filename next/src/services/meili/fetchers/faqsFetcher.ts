@@ -8,18 +8,18 @@ export type FaqsFilters = {
   search: string
   pageSize: number
   page: number
-  assetCategorySlugs?: string[]
+  faqCategorySlugs?: string[]
   adminGroupSlugs?: string[]
-  excludeAssetsWithAssignedAdminGroups?: boolean
+  excludeFaqsWithAssignedAdminGroups?: boolean
 }
 
 export const faqsDefaultFilters: Required<FaqsFilters> = {
   search: '',
   pageSize: 10,
   page: 1,
-  assetCategorySlugs: [],
+  faqCategorySlugs: [],
   adminGroupSlugs: [],
-  excludeAssetsWithAssignedAdminGroups: false,
+  excludeFaqsWithAssignedAdminGroups: false,
 }
 
 export const getMeiliFaqsQueryKey = (filters: FaqsFilters) => ['Search', 'Faqs', filters]
@@ -31,8 +31,8 @@ export const meiliFaqsFetcher = (filters: FaqsFilters) => {
       ...getMeilisearchPageOptions({ page: filters.page, pageSize: filters.pageSize }),
       filter: [
         'type = "faq"',
-        filters.assetCategorySlugs?.length
-          ? `faq.faqCategory.slug IN [${filters.assetCategorySlugs.join(',')}]`
+        filters.faqCategorySlugs?.length
+          ? `faq.faqCategory.slug IN [${filters.faqCategorySlugs.join(',')}]`
           : '',
       ].filter(isDefined),
     })
