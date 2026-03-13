@@ -181,8 +181,7 @@
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true,
-          "mainField": "label"
+          "editable": true
         },
         "list": {
           "label": "headerLinks",
@@ -210,8 +209,7 @@
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true,
-          "mainField": "documentId"
+          "editable": true
         },
         "list": {
           "label": "subnavigation",
@@ -594,15 +592,7 @@
           }
         ]
       ],
-      "list": [
-        "path",
-        "title",
-        "parentPage",
-        "updatedAt",
-        "updatedBy",
-        "adminGroups",
-        "subtext"
-      ]
+      "list": ["path", "title", "parentPage", "updatedAt", "updatedBy", "adminGroups", "subtext"]
     }
   },
   "type": "object",

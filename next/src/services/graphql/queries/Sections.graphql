@@ -360,6 +360,10 @@ fragment FaqsSection on ComponentSectionsFaqs {
   faqs {
     ...FaqEntity
   }
+  faqCategories {
+    ...FaqCategoryEntity
+  }
+  showAll
   titleLevelFaqsSection: titleLevel
 }
 
