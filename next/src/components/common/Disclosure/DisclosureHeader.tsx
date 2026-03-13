@@ -4,8 +4,8 @@ import {
   Heading as RACHeading,
 } from 'react-aria-components'
 
-import { ChevronDownIcon } from '@/src/assets/icons'
 import Button from '@/src/components/common/Button/Button'
+import Icon from '@/src/components/common/Icon/Icon'
 import cn from '@/src/utils/cn'
 
 interface DisclosureHeaderProps {
@@ -25,7 +25,8 @@ const DisclosureHeader = ({ children, ...props }: DisclosureHeaderProps) => {
       <Button slot="trigger" variant="unstyled" className={cn('w-full text-left', props.className)}>
         <div className="flex w-full justify-between">
           <div className="flex flex-col gap-2">{children}</div>
-          <ChevronDownIcon
+          <Icon
+            name="chevron-down"
             aria-hidden
             className={cn('shrink-0 self-center transition-transform duration-200 ease-in-out', {
               'rotate-180 transform': isExpanded,

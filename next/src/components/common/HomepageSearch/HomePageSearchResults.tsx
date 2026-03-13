@@ -1,8 +1,8 @@
 import Link from 'next/link'
 import { useRef } from 'react'
-import { ChevronRightIcon } from 'src/assets/icons'
 import { useEventListener } from 'usehooks-ts'
 
+import Icon from '@/src/components/common/Icon/Icon'
 import LoadingSpinner from '@/src/components/common/LoadingSpinner/LoadingSpinner'
 import { HomepageSearchData } from '@/src/services/meili/fetchers/homepageSearchFetcher'
 import { useTranslation } from '@/src/utils/useTranslation'
@@ -56,7 +56,7 @@ const HomePageSearchResults = ({ searchValue, data, isLoading }: HomePageSearchR
         >
           <div className="flex items-center justify-between">
             <div>{title}</div>
-            <ChevronRightIcon className="ml-4 shrink-0" />
+            <Icon name="chevron-right" className="ml-4 shrink-0" />
           </div>
         </Link>
       ))}

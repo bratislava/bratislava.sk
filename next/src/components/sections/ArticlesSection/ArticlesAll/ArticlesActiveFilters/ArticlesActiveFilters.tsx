@@ -1,11 +1,11 @@
 import { Typography } from '@bratislava/component-library'
 import { Key, Label, Tag, TagGroup, TagGroupProps, TagList } from 'react-aria-components'
 
-import { CrossIcon, CrossInCircleIcon } from '@/src/assets/icons'
 import Button from '@/src/components/common/Button/Button'
 import Disclosure from '@/src/components/common/Disclosure/Disclosure'
 import DisclosureHeader from '@/src/components/common/Disclosure/DisclosureHeader'
 import DisclosurePanel from '@/src/components/common/Disclosure/DisclosurePanel'
+import Icon from '@/src/components/common/Icon/Icon'
 import {
   ActiveFiltersTags,
   useActiveFilters,
@@ -56,7 +56,7 @@ const ArticlesActiveFiltersTagList = ({
                 variant="icon-wrapped-negative-margin"
                 size="small"
                 // TODO icon size
-                icon={<CrossIcon />}
+                icon={<Icon name="close" />}
                 stretched
                 aria-label={t('ArticlesActiveFilters.removeFilter', { label })}
                 onPress={handleRemove}
@@ -70,7 +70,7 @@ const ArticlesActiveFiltersTagList = ({
           variant="outline"
           size="small"
           // TODO icon size
-          endIcon={<CrossInCircleIcon />}
+          endIcon={<Icon name="close-circle" />}
           onPress={() => {
             setFilters(articlesDefaultFilters)
           }}

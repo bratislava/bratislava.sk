@@ -3,9 +3,9 @@ import { useTranslation } from 'next-i18next'
 import { useCallback, useState } from 'react'
 import { useOverlayTriggerState } from 'react-stately'
 
-import { DirectionsIcon } from '@/src/assets/material-icons'
 import Button from '@/src/components/common/Button/Button'
 import ImageLightBox from '@/src/components/common/Gallery/ImageLightBox'
+import Icon from '@/src/components/common/Icon/Icon'
 import ImagePlaceholder from '@/src/components/common/Image/ImagePlaceholder'
 import StrapiImage from '@/src/components/common/Image/StrapiImage'
 import PageHeader, { PageHeaderProps } from '@/src/components/common/PageHeader/PageHeader'
@@ -55,7 +55,7 @@ const PageHeaderFacility = ({ title, breadcrumbs, headerLinks, header }: Props) 
                   variant="link"
                   className="gap-1 text-left"
                   hasLinkIcon={false}
-                  endIcon={<DirectionsIcon />}
+                  endIcon={<Icon name="directions" />}
                   href={navigateToLink}
                 >
                   {t('PageHeaderFacility.navigate')}

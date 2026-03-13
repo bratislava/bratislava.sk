@@ -1,9 +1,9 @@
 import { FocusTrap } from 'focus-trap-react'
 import { usePathname } from 'next/navigation'
 import { useEffect } from 'react'
-import { CrossIcon, HamburgerIcon, SearchIcon } from 'src/assets/icons'
 
 import Button from '@/src/components/common/Button/Button'
+import Icon from '@/src/components/common/Icon/Icon'
 import Brand from '@/src/components/common/Logos/Brand'
 import StarzLogo from '@/src/components/common/Logos/StarzLogo'
 import MLink from '@/src/components/common/MLink/MLink'
@@ -77,7 +77,7 @@ const MobileNavBar = ({ className }: MobileNavBarProps) => {
                 aria-label={t('SearchBar.search')}
                 className="p-4"
               >
-                <SearchIcon aria-hidden />
+                <Icon name="search" aria-hidden />
               </MLink>
               <Divider />
               {isMobileMenuOpen ? (
@@ -87,7 +87,7 @@ const MobileNavBar = ({ className }: MobileNavBarProps) => {
                   }}
                   className="-mr-4 p-4"
                   aria-label={t('MobileNavBar.closeMenu')}
-                  icon={<CrossIcon />}
+                  icon={<Icon name="close" />}
                 />
               ) : (
                 <Button
@@ -97,7 +97,7 @@ const MobileNavBar = ({ className }: MobileNavBarProps) => {
                   className="-mr-4 p-4"
                   aria-label={t('MobileNavBar.openMenu')}
                   data-cy="mobile-menu-button"
-                  icon={<HamburgerIcon />}
+                  icon={<Icon name="menu-hamburger" />}
                 />
               )}
             </div>

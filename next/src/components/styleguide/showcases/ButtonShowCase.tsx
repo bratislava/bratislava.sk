@@ -1,7 +1,6 @@
 /* eslint-disable i18next/no-literal-string */
-import { CalendarIcon, EditIcon, SearchIcon } from 'src/assets/icons'
-
 import Button, { PolymorphicProps } from '@/src/components/common/Button/Button'
+import Icon from '@/src/components/common/Icon/Icon'
 
 import Stack from '../Stack'
 import Wrapper from '../Wrapper'
@@ -32,46 +31,65 @@ const ButtonStacks = ({ variantPrefix }: { variantPrefix?: 'negative' }) => {
         <Button variant={solidVariant} size="small" isDisabled>
           Disabled
         </Button>
-        <Button variant={solidVariant} icon={<SearchIcon />} aria-label="Search" />
-        <Button variant={solidVariant} icon={<SearchIcon />} aria-label="Search" size="small" />
-        <Button variant={solidVariant} icon={<SearchIcon />} aria-label="Search" isDisabled />
+        <Button variant={solidVariant} icon={<Icon name="search" />} aria-label="Search" />
         <Button
           variant={solidVariant}
-          icon={<SearchIcon />}
+          icon={<Icon name="search" />}
+          aria-label="Search"
+          size="small"
+        />
+        <Button
+          variant={solidVariant}
+          icon={<Icon name="search" />}
+          aria-label="Search"
+          isDisabled
+        />
+        <Button
+          variant={solidVariant}
+          icon={<Icon name="search" />}
           aria-label="Search"
           size="small"
           isDisabled
         />
-        <Button variant={solidVariant} startIcon={<SearchIcon />}>
+        <Button variant={solidVariant} startIcon={<Icon name="search" />}>
           Button
         </Button>
-        <Button variant={solidVariant} size="small" startIcon={<SearchIcon />}>
+        <Button variant={solidVariant} size="small" startIcon={<Icon name="search" />}>
           Button
         </Button>
-        <Button variant={solidVariant} endIcon={<EditIcon />}>
+        <Button variant={solidVariant} endIcon={<Icon name="edit" />}>
           Button
         </Button>
-        <Button variant={solidVariant} size="small" endIcon={<EditIcon />}>
+        <Button variant={solidVariant} size="small" endIcon={<Icon name="edit" />}>
           Button
         </Button>
-        <Button variant={solidVariant} startIcon={<SearchIcon />} endIcon={<EditIcon />}>
+        <Button
+          variant={solidVariant}
+          startIcon={<Icon name="search" />}
+          endIcon={<Icon name="edit" />}
+        >
           Button
         </Button>
         <Button
           variant={solidVariant}
           size="small"
-          startIcon={<SearchIcon />}
-          endIcon={<EditIcon />}
+          startIcon={<Icon name="search" />}
+          endIcon={<Icon name="edit" />}
         >
           Button
         </Button>
-        <Button variant={solidVariant} startIcon={<SearchIcon />} endIcon={<EditIcon />} isDisabled>
+        <Button
+          variant={solidVariant}
+          startIcon={<Icon name="search" />}
+          endIcon={<Icon name="edit" />}
+          isDisabled
+        >
           Disabled
         </Button>
         <Button
           variant={solidVariant}
-          startIcon={<SearchIcon />}
-          endIcon={<EditIcon />}
+          startIcon={<Icon name="search" />}
+          endIcon={<Icon name="edit" />}
           size="small"
           isDisabled
         >
@@ -93,53 +111,67 @@ const ButtonStacks = ({ variantPrefix }: { variantPrefix?: 'negative' }) => {
           <Button variant={outlineVariant} size="small" isDisabled>
             Disabled
           </Button>
-          <Button variant={outlineVariant} icon={<SearchIcon />} aria-label="Search" />
-          <Button variant={outlineVariant} icon={<SearchIcon />} aria-label="Search" size="small" />
-          <Button variant={outlineVariant} icon={<SearchIcon />} aria-label="Search" isDisabled />
+          <Button variant={outlineVariant} icon={<Icon name="search" />} aria-label="Search" />
           <Button
             variant={outlineVariant}
-            icon={<SearchIcon />}
+            icon={<Icon name="search" />}
+            aria-label="Search"
+            size="small"
+          />
+          <Button
+            variant={outlineVariant}
+            icon={<Icon name="search" />}
+            aria-label="Search"
+            isDisabled
+          />
+          <Button
+            variant={outlineVariant}
+            icon={<Icon name="search" />}
             aria-label="Search"
             size="small"
             isDisabled
           />
           {/* </Stack> */}
           {/* <Stack> */}
-          <Button variant={outlineVariant} startIcon={<SearchIcon />}>
+          <Button variant={outlineVariant} startIcon={<Icon name="search" />}>
             Button
           </Button>
-          <Button variant={outlineVariant} size="small" startIcon={<SearchIcon />}>
+          <Button variant={outlineVariant} size="small" startIcon={<Icon name="search" />}>
             Button
           </Button>
-          <Button variant={outlineVariant} endIcon={<EditIcon />}>
+          <Button variant={outlineVariant} endIcon={<Icon name="edit" />}>
             Button
           </Button>
-          <Button variant={outlineVariant} size="small" endIcon={<EditIcon />}>
-            Button
-          </Button>
-          <Button variant={outlineVariant} startIcon={<SearchIcon />} endIcon={<EditIcon />}>
+          <Button variant={outlineVariant} size="small" endIcon={<Icon name="edit" />}>
             Button
           </Button>
           <Button
             variant={outlineVariant}
-            size="small"
-            startIcon={<SearchIcon />}
-            endIcon={<EditIcon />}
+            startIcon={<Icon name="search" />}
+            endIcon={<Icon name="edit" />}
           >
             Button
           </Button>
           <Button
             variant={outlineVariant}
-            startIcon={<SearchIcon />}
-            endIcon={<EditIcon />}
+            size="small"
+            startIcon={<Icon name="search" />}
+            endIcon={<Icon name="edit" />}
+          >
+            Button
+          </Button>
+          <Button
+            variant={outlineVariant}
+            startIcon={<Icon name="search" />}
+            endIcon={<Icon name="edit" />}
             isDisabled
           >
             Disabled
           </Button>
           <Button
             variant={outlineVariant}
-            startIcon={<SearchIcon />}
-            endIcon={<EditIcon />}
+            startIcon={<Icon name="search" />}
+            endIcon={<Icon name="edit" />}
             size="small"
             isDisabled
           >
@@ -161,48 +193,67 @@ const ButtonStacks = ({ variantPrefix }: { variantPrefix?: 'negative' }) => {
         <Button variant={plainVariant} size="small" isDisabled>
           Disabled
         </Button>
-        <Button variant={plainVariant} icon={<SearchIcon />} aria-label="Search" />
-        <Button variant={plainVariant} icon={<SearchIcon />} aria-label="Search" size="small" />
-        <Button variant={plainVariant} icon={<SearchIcon />} aria-label="Search" isDisabled />
+        <Button variant={plainVariant} icon={<Icon name="search" />} aria-label="Search" />
         <Button
           variant={plainVariant}
-          icon={<SearchIcon />}
+          icon={<Icon name="search" />}
+          aria-label="Search"
+          size="small"
+        />
+        <Button
+          variant={plainVariant}
+          icon={<Icon name="search" />}
+          aria-label="Search"
+          isDisabled
+        />
+        <Button
+          variant={plainVariant}
+          icon={<Icon name="search" />}
           aria-label="Search"
           size="small"
           isDisabled
         />
-        <Button variant={plainVariant} startIcon={<SearchIcon />}>
+        <Button variant={plainVariant} startIcon={<Icon name="search" />}>
           Button
         </Button>
-        <Button variant={plainVariant} size="small" startIcon={<SearchIcon />}>
+        <Button variant={plainVariant} size="small" startIcon={<Icon name="search" />}>
           Button
         </Button>
-        <Button variant={plainVariant} endIcon={<EditIcon />}>
+        <Button variant={plainVariant} endIcon={<Icon name="edit" />}>
           Button
         </Button>
-        <Button variant={plainVariant} size="small" endIcon={<EditIcon />}>
+        <Button variant={plainVariant} size="small" endIcon={<Icon name="edit" />}>
           Button
         </Button>
-        <Button variant={plainVariant} startIcon={<SearchIcon />} endIcon={<EditIcon />}>
+        <Button
+          variant={plainVariant}
+          startIcon={<Icon name="search" />}
+          endIcon={<Icon name="edit" />}
+        >
           Button
         </Button>
 
         <Button
           variant={plainVariant}
           size="small"
-          startIcon={<SearchIcon />}
-          endIcon={<EditIcon />}
+          startIcon={<Icon name="search" />}
+          endIcon={<Icon name="edit" />}
         >
           Button
         </Button>
-        <Button variant={plainVariant} startIcon={<SearchIcon />} endIcon={<EditIcon />} isDisabled>
+        <Button
+          variant={plainVariant}
+          startIcon={<Icon name="search" />}
+          endIcon={<Icon name="edit" />}
+          isDisabled
+        >
           Disabled
         </Button>
         <Button
           variant={plainVariant}
           size="small"
-          startIcon={<SearchIcon />}
-          endIcon={<EditIcon />}
+          startIcon={<Icon name="search" />}
+          endIcon={<Icon name="edit" />}
           isDisabled
         >
           Disabled
@@ -264,8 +315,13 @@ const ButtonShowCase = () => {
         </Button>
       </Stack>
       <Stack>
-        <Button variant="icon-wrapped" icon={<CalendarIcon />} aria-label="Calendar" />
-        <Button variant="icon-wrapped" icon={<CalendarIcon />} aria-label="Calendar" size="small" />
+        <Button variant="icon-wrapped" icon={<Icon name="calendar" />} aria-label="Calendar" />
+        <Button
+          variant="icon-wrapped"
+          icon={<Icon name="calendar" />}
+          aria-label="Calendar"
+          size="small"
+        />
       </Stack>
     </Wrapper>
   )

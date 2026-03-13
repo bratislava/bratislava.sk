@@ -2,11 +2,10 @@ import { Typography } from '@bratislava/component-library'
 import { useTranslation } from 'next-i18next'
 import { Fragment } from 'react'
 
-import { ArrowRightIcon, AttachmentIcon, DownloadIcon } from '@/src/assets/icons'
-import { FolderIcon } from '@/src/assets/material-icons'
 import CardBase from '@/src/components/cards/CardBase'
 import { CardTitleLevel } from '@/src/components/cards/getCardTitleLevel'
 import Button from '@/src/components/common/Button/Button'
+import Icon from '@/src/components/common/Icon/Icon'
 import cn from '@/src/utils/cn'
 
 export type DocumentRowCardProps = {
@@ -42,9 +41,9 @@ const DocumentRowCard = ({
         <div className="flex grow items-start gap-3 lg:gap-4">
           <div className="lg:rounded-lg lg:bg-background-passive-secondary lg:p-3 lg:text-content-passive-secondary">
             {variant === 'single-file' ? (
-              <AttachmentIcon className="size-5 md:size-6" />
+              <Icon name="attachment" className="size-5 md:size-6" />
             ) : (
-              <FolderIcon className="size-5 md:size-6" />
+              <Icon name="folder" className="size-5 md:size-6" />
             )}
           </div>
           <div className="flex grow flex-col gap-1">
@@ -74,9 +73,9 @@ const DocumentRowCard = ({
           href={linkHref}
           stretched
           hasLinkIcon={false}
-          startIcon={variant === 'single-file' ? <DownloadIcon /> : undefined}
+          startIcon={variant === 'single-file' ? <Icon name="download" /> : undefined}
           aria-label={ariaLabel ?? `${t('common.showMore')}: ${title}`}
-          endIcon={variant === 'multiple-files' ? <ArrowRightIcon /> : undefined}
+          endIcon={variant === 'multiple-files' ? <Icon name="arrow-right" /> : undefined}
           className="whitespace-nowrap max-lg:hidden"
         >
           {variant === 'single-file' ? t('common.download') : t('common.show')}
@@ -88,7 +87,7 @@ const DocumentRowCard = ({
           aria-label={ariaLabel ?? `${t('common.showMore')}: ${title}`}
           stretched
           hasLinkIcon={false}
-          icon={variant === 'single-file' ? <DownloadIcon /> : <ArrowRightIcon />}
+          icon={variant === 'single-file' ? <Icon name="download" /> : <Icon name="arrow-right" />}
           className="ml-auto p-1.5 lg:hidden"
         />
       </div>

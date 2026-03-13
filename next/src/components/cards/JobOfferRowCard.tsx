@@ -1,8 +1,8 @@
 import { Typography } from '@bratislava/component-library'
 
-import { ChevronRightIcon } from '@/src/assets/icons'
 import CardBase from '@/src/components/cards/CardBase'
 import { CardTitleLevel } from '@/src/components/cards/getCardTitleLevel'
+import Icon from '@/src/components/common/Icon/Icon'
 import MLink from '@/src/components/common/MLink/MLink'
 import { NalgooJobOffersResponse } from '@/src/services/nalgoo/nalgooJobOffers.fetcher'
 import { isDefined } from '@/src/utils/isDefined'
@@ -41,7 +41,7 @@ const JobOfferRowCard = ({ jobOffer, cardTitleLevel = 'h3' }: JobOfferRowCardPro
             {[location, employmentForms, salary, salaryInfo].filter(isDefined).join(' • ')}
           </Typography>
         </div>
-        <ChevronRightIcon className="self-center max-lg:hidden" />
+        <Icon name="chevron-right" className="self-center max-lg:hidden" />
       </div>
     </CardBase>
   )

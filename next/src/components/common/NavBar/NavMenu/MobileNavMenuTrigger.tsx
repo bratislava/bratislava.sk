@@ -1,8 +1,8 @@
 import { Typography } from '@bratislava/component-library'
 import * as NavigationMenu from '@radix-ui/react-navigation-menu'
 import { forwardRef } from 'react'
-import { ChevronRightIcon } from 'src/assets/icons'
 
+import Icon from '@/src/components/common/Icon/Icon'
 import Pictogram from '@/src/components/common/Pictogram/Pictogram'
 
 import { MenuItem } from './navMenuTypes'
@@ -37,7 +37,7 @@ const NavMenuTrigger = forwardRef<HTMLButtonElement, NavMenuTriggerProps>(
               {menuItem.label}
             </Typography>
           </div>
-          <ChevronRightIcon aria-hidden className="shrink-0" />
+          <Icon name="chevron-right" aria-hidden className="shrink-0" />
         </div>
       </NavigationMenu.Trigger>
     )

@@ -1,10 +1,10 @@
 import { useQuery } from '@tanstack/react-query'
 import { useTranslation } from 'next-i18next'
 import { forwardRef, useEffect, useState } from 'react'
-import { AlertIcon, CrossIcon } from 'src/assets/icons'
 import { useLocalStorage } from 'usehooks-ts'
 
 import Button from '@/src/components/common/Button/Button'
+import Icon from '@/src/components/common/Icon/Icon'
 import Markdown from '@/src/components/formatting/Markdown/Markdown'
 import { client } from '@/src/services/graphql/gql'
 import cn from '@/src/utils/cn'
@@ -50,14 +50,14 @@ const AlertBanner = forwardRef<HTMLDivElement>((props, forwardedRef) => {
       })}
     >
       <div className="flex gap-3 px-4 py-3 lg:items-center lg:px-8 lg:py-4">
-        <AlertIcon className="shrink-0" />
+        <Icon name="warning" className="shrink-0" />
         <div className="grow">
           <Markdown content={text} variant="small" />
         </div>
         <Button
           variant="icon-wrapped-negative-margin"
           className="h-fit shrink-0"
-          icon={<CrossIcon />}
+          icon={<Icon name="close" />}
           aria-label={t('AlertBanner.aria.closeAlert')}
           onPress={() => {
             handleClose()

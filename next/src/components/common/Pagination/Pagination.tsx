@@ -1,7 +1,7 @@
 import { ReactNode } from 'react'
-import { ArrowLeftIcon, ArrowRightIcon } from 'src/assets/icons'
 
 import Button from '@/src/components/common/Button/Button'
+import Icon from '@/src/components/common/Icon/Icon'
 import usePagination from '@/src/components/common/Pagination/usePagination'
 import cn from '@/src/utils/cn'
 import { useTranslation } from '@/src/utils/useTranslation'
@@ -63,11 +63,11 @@ const Pagination = ({ currentPage, totalCount, onPageChange = () => {} }: Pagina
               let icon: ReactNode
               let ariaLabel = ''
               if (type === 'previous') {
-                icon = <ArrowLeftIcon />
+                icon = <Icon name="arrow-left" />
                 ariaLabel = t('Pagination.aria.goToPreviousPage')
               }
               if (type === 'next') {
-                icon = <ArrowRightIcon />
+                icon = <Icon name="arrow-right" />
                 ariaLabel = t('Pagination.aria.goToNextPage')
               }
 
