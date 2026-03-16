@@ -108,7 +108,7 @@ const NewsletterSection = ({ section }: Props) => {
             </div>
           </div>
         </div>
-        <div className="flex grow flex-col gap-4 max-lg:w-full lg:min-w-100 lg:gap-6 lg:rounded-lg lg:border lg:p-8">
+        <div className="flex grow flex-col gap-4 lg:max-w-120 lg:min-w-100 lg:gap-6 lg:rounded-lg lg:border lg:p-8">
           <div className="flex flex-col gap-4 lg:gap-6">
             <div className="grid grid-cols-1 gap-4 lg:grid-cols-2 lg:gap-6">
               <Input
@@ -130,28 +130,33 @@ const NewsletterSection = ({ section }: Props) => {
               onChange={(event) => setEmail(event.target.value)}
               errorMessage={emailErrorMessage}
             />
-            <div className="flex gap-1">
+            <div>
               {/**
                * Checkbox label and link are separated for accessibility reasons:
                * https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/label#interactive_content
                */}
-              <Checkbox
-                isSelected={consentChecked}
-                onChange={setConsentChecked}
-                aria-label={[
-                  t('NewsletterSection.consentCheckboxLabel'),
-                  t('NewsletterSection.consentLinkLabel'),
-                ].join(' ')}
-              >
-                {t('NewsletterSection.consentCheckboxLabel')}{' '}
-              </Checkbox>
-              <MLink
-                variant="underlined"
-                aria-label={t('NewsletterSection.consentLinkLabel.aria')}
-                {...getLinkProps({ page: privacyPolicyPage })}
-              >
-                {t('NewsletterSection.consentLinkLabel')}
-              </MLink>
+              <div className="pl-9">
+                <div className="-ml-9 inline-block">
+                  <Checkbox
+                    isSelected={consentChecked}
+                    onChange={setConsentChecked}
+                    aria-label={[
+                      t('NewsletterSection.consentCheckboxLabel'),
+                      t('NewsletterSection.consentLinkLabel'),
+                    ].join(' ')}
+                  >
+                    <span className="mr-1">{t('NewsletterSection.consentCheckboxLabel')}</span>
+                  </Checkbox>
+                </div>
+                <MLink
+                  variant="underlined"
+                  aria-label={t('NewsletterSection.consentLinkLabel.aria')}
+                  className="inline-block align-top"
+                  {...getLinkProps({ page: privacyPolicyPage })}
+                >
+                  {t('NewsletterSection.consentLinkLabel')}
+                </MLink>
+              </div>
             </div>
             {successMessage ? (
               <Typography variant="p-small" className="text-content-success-default">

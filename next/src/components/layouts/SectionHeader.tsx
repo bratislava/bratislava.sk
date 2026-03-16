@@ -7,6 +7,7 @@ import { TABLE_OF_CONTENTS_HEADING_ATTRIBUTE } from '@/src/components/common/Tab
 import Markdown from '@/src/components/formatting/Markdown/Markdown'
 import { CommonLinkFragment } from '@/src/services/graphql'
 import cn from '@/src/utils/cn'
+import { formatWithNonBreakingHyphen } from '@/src/utils/formatWithNonBreakingHyphen'
 import { getLinkProps } from '@/src/utils/getLinkProps'
 
 type SectionHeaderProps = {
@@ -64,7 +65,7 @@ const SectionHeader = ({
         >
           {title ? (
             <Typography variant={titleLevel ?? 'h2'} id={titleId ?? slugify(title)}>
-              {title}
+              {formatWithNonBreakingHyphen(title)}
             </Typography>
           ) : null}
           {text ? (
