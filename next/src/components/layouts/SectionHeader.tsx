@@ -7,6 +7,7 @@ import { TABLE_OF_CONTENTS_HEADING_ATTRIBUTE } from '@/src/components/common/Tab
 import Markdown from '@/src/components/formatting/Markdown/Markdown'
 import { CommonLinkFragment } from '@/src/services/graphql'
 import cn from '@/src/utils/cn'
+import { formatWithNonBreakingHyphen } from '@/src/utils/formatWithNonBreakingHyphen'
 import { getLinkProps } from '@/src/utils/getLinkProps'
 
 type SectionHeaderProps = {
@@ -41,10 +42,6 @@ const SectionHeader = ({
 }: SectionHeaderProps) => {
   if (!title && !text && !showMoreLink) {
     return null
-  }
-
-  const formatWithNonBreakingHyphen = (titleText: string) => {
-    return titleText.replace(/(\w)-(\w)/g, '$1\u2011$2')
   }
 
   return (

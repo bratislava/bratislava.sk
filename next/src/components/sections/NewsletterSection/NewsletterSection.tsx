@@ -135,26 +135,28 @@ const NewsletterSection = ({ section }: Props) => {
                * Checkbox label and link are separated for accessibility reasons:
                * https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/label#interactive_content
                */}
-              <div className="inline-block">
-                <Checkbox
-                  isSelected={consentChecked}
-                  onChange={setConsentChecked}
-                  aria-label={[
-                    t('NewsletterSection.consentCheckboxLabel'),
-                    t('NewsletterSection.consentLinkLabel'),
-                  ].join(' ')}
+              <div className="pl-9">
+                <div className="-ml-9 inline-block">
+                  <Checkbox
+                    isSelected={consentChecked}
+                    onChange={setConsentChecked}
+                    aria-label={[
+                      t('NewsletterSection.consentCheckboxLabel'),
+                      t('NewsletterSection.consentLinkLabel'),
+                    ].join(' ')}
+                  >
+                    <span className="mr-1">{t('NewsletterSection.consentCheckboxLabel')}</span>
+                  </Checkbox>
+                </div>
+                <MLink
+                  variant="underlined"
+                  aria-label={t('NewsletterSection.consentLinkLabel.aria')}
+                  className="inline-block align-top"
+                  {...getLinkProps({ page: privacyPolicyPage })}
                 >
-                  {t('NewsletterSection.consentCheckboxLabel')}{' '}
-                </Checkbox>
+                  {t('NewsletterSection.consentLinkLabel')}
+                </MLink>
               </div>
-              <MLink
-                variant="underlined"
-                aria-label={t('NewsletterSection.consentLinkLabel.aria')}
-                className="ml-9 inline-block align-top lg:ml-1"
-                {...getLinkProps({ page: privacyPolicyPage })}
-              >
-                {t('NewsletterSection.consentLinkLabel')}
-              </MLink>
             </div>
             {successMessage ? (
               <Typography variant="p-small" className="text-content-success-default">
