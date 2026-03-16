@@ -1,18 +1,7 @@
 import { Typography } from '@bratislava/component-library'
 import { useMemo } from 'react'
 
-import {
-  ClockIcon,
-  EuroIcon,
-  MailIcon,
-  MapIcon,
-  PhoneIcon,
-  PinIcon,
-  ReferentsIcon,
-  SendIcon,
-  ServicesIcon,
-  WebIcon,
-} from '@/src/assets/icons'
+import Icon, { IconProps } from '@/src/components/common/Icon/Icon'
 import MLink from '@/src/components/common/MLink/MLink'
 import {
   ContactCardBlockFragment,
@@ -73,7 +62,7 @@ const ContactCtaCard = ({ className, contact }: ContactCtaCardProps) => {
   const data = useMemo(() => {
     if (contact.type === ContactCtaCardType.Phone) {
       return {
-        icon: PhoneIcon,
+        icon: (props: Omit<IconProps, 'name'>) => <Icon {...props} name="phone" />,
         displayValue: contact.value,
         // Removes whitespaces
         link: `tel:${contact.value.replaceAll(/\s+/g, '')}`,
@@ -81,7 +70,11 @@ const ContactCtaCard = ({ className, contact }: ContactCtaCardProps) => {
     }
 
     if (contact.type === ContactCtaCardType.Email) {
-      return { icon: MailIcon, displayValue: contact.value, link: `mailto:${contact.value}` }
+      return {
+        icon: (props: Omit<IconProps, 'name'>) => <Icon {...props} name="mail" />,
+        displayValue: contact.value,
+        link: `mailto:${contact.value}`,
+      }
     }
 
     if (contact.type === ContactCtaCardType.Web) {
@@ -96,32 +89,51 @@ const ContactCtaCard = ({ className, contact }: ContactCtaCardProps) => {
         // eslint-disable-next-line no-empty
       } catch {}
 
-      return { icon: WebIcon, displayValue, link: contact.value }
+      return {
+        icon: (props: Omit<IconProps, 'name'>) => <Icon {...props} name="web" />,
+        displayValue,
+        link: contact.value,
+      }
     }
 
     if (contact.type === ContactCtaCardType.Address) {
-      return { icon: PinIcon, displayValue: contact.value }
+      return {
+        icon: (props: Omit<IconProps, 'name'>) => <Icon {...props} name="pin" />,
+        displayValue: contact.value,
+      }
     }
 
     if (contact.type === ContactCtaCardType.OpeningHours) {
-      return { icon: ClockIcon, displayValue: contact.value }
+      return {
+        icon: (props: Omit<IconProps, 'name'>) => <Icon {...props} name="clock" />,
+        displayValue: contact.value,
+      }
     }
 
     if (contact.type === ContactCtaCardType.PostalAddress) {
-      return { icon: SendIcon, displayValue: contact.value }
+      return {
+        icon: (props: Omit<IconProps, 'name'>) => <Icon {...props} name="send" />,
+        displayValue: contact.value,
+      }
     }
 
     if (contact.type === ContactCtaCardType.BillingInfo) {
-      return { icon: ServicesIcon, displayValue: contact.value }
+      return {
+        icon: (props: Omit<IconProps, 'name'>) => <Icon {...props} name="city-services" />,
+        displayValue: contact.value,
+      }
     }
 
     if (contact.type === ContactCtaCardType.BankConnection) {
-      return { icon: EuroIcon, displayValue: contact.value }
+      return {
+        icon: (props: Omit<IconProps, 'name'>) => <Icon {...props} name="euro" />,
+        displayValue: contact.value,
+      }
     }
 
     if (contact.type === 'Person') {
       return {
-        icon: ReferentsIcon,
+        icon: (props: Omit<IconProps, 'name'>) => <Icon {...props} name="referents" />,
         displayComponent: (
           <div className="flex flex-col gap-1">
             {contact.email ? (
@@ -142,7 +154,7 @@ const ContactCtaCard = ({ className, contact }: ContactCtaCardProps) => {
 
     if (contact.type === 'Directions') {
       return {
-        icon: MapIcon,
+        icon: (props: Omit<IconProps, 'name'>) => <Icon {...props} name="map" />,
         displayComponent: (
           <div className="flex flex-col gap-4">
             <div className="flex flex-col gap-1">
@@ -184,12 +196,12 @@ const ContactCtaCard = ({ className, contact }: ContactCtaCardProps) => {
     return null
   }
 
-  const Icon = data.icon
+  const IconFromData = data.icon
 
   return (
     <div className={cn('relative flex max-w-180 items-start gap-4', className)}>
       <div className="flex shrink-0 items-center justify-center rounded-full text-gray-700">
-        <Icon className="size-6 lg:size-8" />
+        <IconFromData className="size-6 lg:size-8" />
       </div>
       <div
         // margin and padding added to show full focus ring

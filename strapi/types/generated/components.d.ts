@@ -800,7 +800,9 @@ export interface SectionsFaqs extends Struct.ComponentSchema {
     displayName: 'FAQ'
   }
   attributes: {
+    faqCategories: Schema.Attribute.Relation<'oneToMany', 'api::faq-category.faq-category'>
     faqs: Schema.Attribute.Relation<'oneToMany', 'api::faq.faq'>
+    showAll: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>
     text: Schema.Attribute.Text
     title: Schema.Attribute.String
     titleLevel: Schema.Attribute.Enumeration<['h2', 'h3']> & Schema.Attribute.DefaultTo<'h2'>
