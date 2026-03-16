@@ -1668,9 +1668,12 @@ input ComponentSectionsFaqCategoriesInput {
 }
 
 type ComponentSectionsFaqs {
+  faqCategories(filters: FaqCategoryFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [FaqCategory]!
+  faqCategories_connection(filters: FaqCategoryFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): FaqCategoryRelationResponseCollection
   faqs(filters: FaqFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [Faq]!
   faqs_connection(filters: FaqFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): FaqRelationResponseCollection
   id: ID!
+  showAll: Boolean
   text: String
   title: String
   titleLevel: ENUM_COMPONENTSECTIONSFAQS_TITLELEVEL
@@ -1678,17 +1681,21 @@ type ComponentSectionsFaqs {
 
 input ComponentSectionsFaqsFiltersInput {
   and: [ComponentSectionsFaqsFiltersInput]
+  faqCategories: FaqCategoryFiltersInput
   faqs: FaqFiltersInput
   not: ComponentSectionsFaqsFiltersInput
   or: [ComponentSectionsFaqsFiltersInput]
+  showAll: BooleanFilterInput
   text: StringFilterInput
   title: StringFilterInput
   titleLevel: StringFilterInput
 }
 
 input ComponentSectionsFaqsInput {
+  faqCategories: [ID]
   faqs: [ID]
   id: ID
+  showAll: Boolean
   text: String
   title: String
   titleLevel: ENUM_COMPONENTSECTIONSFAQS_TITLELEVEL
