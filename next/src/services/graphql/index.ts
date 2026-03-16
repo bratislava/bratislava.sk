@@ -2202,12 +2202,27 @@ export type ComponentSectionsFaqCategoriesInput = {
 
 export type ComponentSectionsFaqs = {
   __typename?: 'ComponentSectionsFaqs'
+  faqCategories: Array<Maybe<FaqCategory>>
+  faqCategories_connection?: Maybe<FaqCategoryRelationResponseCollection>
   faqs: Array<Maybe<Faq>>
   faqs_connection?: Maybe<FaqRelationResponseCollection>
   id: Scalars['ID']['output']
+  showAll?: Maybe<Scalars['Boolean']['output']>
   text?: Maybe<Scalars['String']['output']>
   title?: Maybe<Scalars['String']['output']>
   titleLevel?: Maybe<Enum_Componentsectionsfaqs_Titlelevel>
+}
+
+export type ComponentSectionsFaqsFaqCategoriesArgs = {
+  filters?: InputMaybe<FaqCategoryFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type ComponentSectionsFaqsFaqCategories_ConnectionArgs = {
+  filters?: InputMaybe<FaqCategoryFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
 }
 
 export type ComponentSectionsFaqsFaqsArgs = {
@@ -2224,17 +2239,21 @@ export type ComponentSectionsFaqsFaqs_ConnectionArgs = {
 
 export type ComponentSectionsFaqsFiltersInput = {
   and?: InputMaybe<Array<InputMaybe<ComponentSectionsFaqsFiltersInput>>>
+  faqCategories?: InputMaybe<FaqCategoryFiltersInput>
   faqs?: InputMaybe<FaqFiltersInput>
   not?: InputMaybe<ComponentSectionsFaqsFiltersInput>
   or?: InputMaybe<Array<InputMaybe<ComponentSectionsFaqsFiltersInput>>>
+  showAll?: InputMaybe<BooleanFilterInput>
   text?: InputMaybe<StringFilterInput>
   title?: InputMaybe<StringFilterInput>
   titleLevel?: InputMaybe<StringFilterInput>
 }
 
 export type ComponentSectionsFaqsInput = {
+  faqCategories?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
   faqs?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
   id?: InputMaybe<Scalars['ID']['input']>
+  showAll?: InputMaybe<Scalars['Boolean']['input']>
   text?: InputMaybe<Scalars['String']['input']>
   title?: InputMaybe<Scalars['String']['input']>
   titleLevel?: InputMaybe<Enum_Componentsectionsfaqs_Titlelevel>
@@ -5046,7 +5065,6 @@ export type Page = {
   localizations_connection?: Maybe<PageRelationResponseCollection>
   metaDescription?: Maybe<Scalars['String']['output']>
   pageBackgroundImage?: Maybe<UploadFile>
-  pageCategory?: Maybe<PageCategory>
   pageColor: Enum_Page_Pagecolor
   pageHeaderSections?: Maybe<Array<Maybe<PagePageHeaderSectionsDynamicZone>>>
   parent?: Maybe<Page>
@@ -5154,8 +5172,6 @@ export type PageCategory = {
   locale?: Maybe<Scalars['String']['output']>
   localizations: Array<Maybe<PageCategory>>
   localizations_connection?: Maybe<PageCategoryRelationResponseCollection>
-  pages: Array<Maybe<Page>>
-  pages_connection?: Maybe<PageRelationResponseCollection>
   publishedAt?: Maybe<Scalars['DateTime']['output']>
   shortTitle?: Maybe<Scalars['String']['output']>
   title?: Maybe<Scalars['String']['output']>
@@ -5170,18 +5186,6 @@ export type PageCategoryLocalizationsArgs = {
 
 export type PageCategoryLocalizations_ConnectionArgs = {
   filters?: InputMaybe<PageCategoryFiltersInput>
-  pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
-}
-
-export type PageCategoryPagesArgs = {
-  filters?: InputMaybe<PageFiltersInput>
-  pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
-}
-
-export type PageCategoryPages_ConnectionArgs = {
-  filters?: InputMaybe<PageFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
 }
@@ -5213,7 +5217,6 @@ export type PageCategoryFiltersInput = {
   localizations?: InputMaybe<PageCategoryFiltersInput>
   not?: InputMaybe<PageCategoryFiltersInput>
   or?: InputMaybe<Array<InputMaybe<PageCategoryFiltersInput>>>
-  pages?: InputMaybe<PageFiltersInput>
   publishedAt?: InputMaybe<DateTimeFilterInput>
   shortTitle?: InputMaybe<StringFilterInput>
   title?: InputMaybe<StringFilterInput>
@@ -5223,7 +5226,6 @@ export type PageCategoryFiltersInput = {
 export type PageCategoryInput = {
   color?: InputMaybe<Enum_Pagecategory_Color>
   icon?: InputMaybe<Enum_Pagecategory_Icon>
-  pages?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
   publishedAt?: InputMaybe<Scalars['DateTime']['input']>
   shortTitle?: InputMaybe<Scalars['String']['input']>
   title?: InputMaybe<Scalars['String']['input']>
@@ -5268,7 +5270,6 @@ export type PageFiltersInput = {
   metaDescription?: InputMaybe<StringFilterInput>
   not?: InputMaybe<PageFiltersInput>
   or?: InputMaybe<Array<InputMaybe<PageFiltersInput>>>
-  pageCategory?: InputMaybe<PageCategoryFiltersInput>
   pageColor?: InputMaybe<StringFilterInput>
   parent?: InputMaybe<PageFiltersInput>
   parentPage?: InputMaybe<PageFiltersInput>
@@ -5295,7 +5296,6 @@ export type PageInput = {
   keywords?: InputMaybe<Scalars['String']['input']>
   metaDescription?: InputMaybe<Scalars['String']['input']>
   pageBackgroundImage?: InputMaybe<Scalars['ID']['input']>
-  pageCategory?: InputMaybe<Scalars['ID']['input']>
   pageColor?: InputMaybe<Enum_Page_Pagecolor>
   pageHeaderSections?: InputMaybe<Array<Scalars['PagePageHeaderSectionsDynamicZoneInput']['input']>>
   parent?: InputMaybe<Scalars['ID']['input']>
@@ -7552,6 +7552,7 @@ export type FaqCategoryEntityFragment = {
     documentId: string
     title: string
     body?: string | null
+    faqCategory?: { __typename?: 'FaqCategory'; title: string } | null
   } | null>
 }
 
@@ -7560,6 +7561,31 @@ export type FaqEntityFragment = {
   documentId: string
   title: string
   body?: string | null
+  faqCategory?: { __typename?: 'FaqCategory'; title: string } | null
+}
+
+export type FaqCategoriesQueryVariables = Exact<{
+  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
+  sort?: InputMaybe<
+    Array<InputMaybe<Scalars['String']['input']>> | InputMaybe<Scalars['String']['input']>
+  >
+}>
+
+export type FaqCategoriesQuery = {
+  __typename?: 'Query'
+  faqCategories: Array<{
+    __typename?: 'FaqCategory'
+    documentId: string
+    title: string
+    slug: string
+    faqs: Array<{
+      __typename?: 'Faq'
+      documentId: string
+      title: string
+      body?: string | null
+      faqCategory?: { __typename?: 'FaqCategory'; title: string } | null
+    } | null>
+  } | null>
 }
 
 export type UploadFileFragment = { __typename?: 'UploadFile'; documentId: string }
@@ -11113,6 +11139,7 @@ export type PageEntityFragment = {
             documentId: string
             title: string
             body?: string | null
+            faqCategory?: { __typename?: 'FaqCategory'; title: string } | null
           } | null>
         } | null>
       }
@@ -11120,12 +11147,27 @@ export type PageEntityFragment = {
         __typename: 'ComponentSectionsFaqs'
         title?: string | null
         text?: string | null
+        showAll?: boolean | null
         titleLevelFaqsSection?: Enum_Componentsectionsfaqs_Titlelevel | null
         faqs: Array<{
           __typename?: 'Faq'
           documentId: string
           title: string
           body?: string | null
+          faqCategory?: { __typename?: 'FaqCategory'; title: string } | null
+        } | null>
+        faqCategories: Array<{
+          __typename?: 'FaqCategory'
+          documentId: string
+          title: string
+          slug: string
+          faqs: Array<{
+            __typename?: 'Faq'
+            documentId: string
+            title: string
+            body?: string | null
+            faqCategory?: { __typename?: 'FaqCategory'; title: string } | null
+          } | null>
         } | null>
       }
     | {
@@ -12449,6 +12491,7 @@ export type PageBySlugQuery = {
               documentId: string
               title: string
               body?: string | null
+              faqCategory?: { __typename?: 'FaqCategory'; title: string } | null
             } | null>
           } | null>
         }
@@ -12456,12 +12499,27 @@ export type PageBySlugQuery = {
           __typename: 'ComponentSectionsFaqs'
           title?: string | null
           text?: string | null
+          showAll?: boolean | null
           titleLevelFaqsSection?: Enum_Componentsectionsfaqs_Titlelevel | null
           faqs: Array<{
             __typename?: 'Faq'
             documentId: string
             title: string
             body?: string | null
+            faqCategory?: { __typename?: 'FaqCategory'; title: string } | null
+          } | null>
+          faqCategories: Array<{
+            __typename?: 'FaqCategory'
+            documentId: string
+            title: string
+            slug: string
+            faqs: Array<{
+              __typename?: 'Faq'
+              documentId: string
+              title: string
+              body?: string | null
+              faqCategory?: { __typename?: 'FaqCategory'; title: string } | null
+            } | null>
           } | null>
         }
       | {
@@ -13806,6 +13864,7 @@ export type Dev_AllPagesQuery = {
               documentId: string
               title: string
               body?: string | null
+              faqCategory?: { __typename?: 'FaqCategory'; title: string } | null
             } | null>
           } | null>
         }
@@ -13813,12 +13872,27 @@ export type Dev_AllPagesQuery = {
           __typename: 'ComponentSectionsFaqs'
           title?: string | null
           text?: string | null
+          showAll?: boolean | null
           titleLevelFaqsSection?: Enum_Componentsectionsfaqs_Titlelevel | null
           faqs: Array<{
             __typename?: 'Faq'
             documentId: string
             title: string
             body?: string | null
+            faqCategory?: { __typename?: 'FaqCategory'; title: string } | null
+          } | null>
+          faqCategories: Array<{
+            __typename?: 'FaqCategory'
+            documentId: string
+            title: string
+            slug: string
+            faqs: Array<{
+              __typename?: 'Faq'
+              documentId: string
+              title: string
+              body?: string | null
+              faqCategory?: { __typename?: 'FaqCategory'; title: string } | null
+            } | null>
           } | null>
         }
       | {
@@ -15838,12 +15912,27 @@ export type FaqsSectionFragment = {
   __typename?: 'ComponentSectionsFaqs'
   title?: string | null
   text?: string | null
+  showAll?: boolean | null
   titleLevelFaqsSection?: Enum_Componentsectionsfaqs_Titlelevel | null
   faqs: Array<{
     __typename?: 'Faq'
     documentId: string
     title: string
     body?: string | null
+    faqCategory?: { __typename?: 'FaqCategory'; title: string } | null
+  } | null>
+  faqCategories: Array<{
+    __typename?: 'FaqCategory'
+    documentId: string
+    title: string
+    slug: string
+    faqs: Array<{
+      __typename?: 'Faq'
+      documentId: string
+      title: string
+      body?: string | null
+      faqCategory?: { __typename?: 'FaqCategory'; title: string } | null
+    } | null>
   } | null>
 }
 
@@ -15862,6 +15951,7 @@ export type FaqCategoriesSectionFragment = {
       documentId: string
       title: string
       body?: string | null
+      faqCategory?: { __typename?: 'FaqCategory'; title: string } | null
     } | null>
   } | null>
 }
@@ -16932,6 +17022,7 @@ type Sections_ComponentSectionsFaqCategories_Fragment = {
       documentId: string
       title: string
       body?: string | null
+      faqCategory?: { __typename?: 'FaqCategory'; title: string } | null
     } | null>
   } | null>
 }
@@ -16940,12 +17031,27 @@ type Sections_ComponentSectionsFaqs_Fragment = {
   __typename: 'ComponentSectionsFaqs'
   title?: string | null
   text?: string | null
+  showAll?: boolean | null
   titleLevelFaqsSection?: Enum_Componentsectionsfaqs_Titlelevel | null
   faqs: Array<{
     __typename?: 'Faq'
     documentId: string
     title: string
     body?: string | null
+    faqCategory?: { __typename?: 'FaqCategory'; title: string } | null
+  } | null>
+  faqCategories: Array<{
+    __typename?: 'FaqCategory'
+    documentId: string
+    title: string
+    slug: string
+    faqs: Array<{
+      __typename?: 'Faq'
+      documentId: string
+      title: string
+      body?: string | null
+      faqCategory?: { __typename?: 'FaqCategory'; title: string } | null
+    } | null>
   } | null>
 }
 
@@ -18772,18 +18878,10 @@ export const FaqEntityFragmentDoc = gql`
     documentId
     title
     body
-  }
-`
-export const FaqsSectionFragmentDoc = gql`
-  fragment FaqsSection on ComponentSectionsFaqs {
-    title
-    text
-    faqs {
-      ...FaqEntity
+    faqCategory {
+      title
     }
-    titleLevelFaqsSection: titleLevel
   }
-  ${FaqEntityFragmentDoc}
 `
 export const FaqCategoryEntityFragmentDoc = gql`
   fragment FaqCategoryEntity on FaqCategory {
@@ -18795,6 +18893,22 @@ export const FaqCategoryEntityFragmentDoc = gql`
     }
   }
   ${FaqEntityFragmentDoc}
+`
+export const FaqsSectionFragmentDoc = gql`
+  fragment FaqsSection on ComponentSectionsFaqs {
+    title
+    text
+    faqs {
+      ...FaqEntity
+    }
+    faqCategories {
+      ...FaqCategoryEntity
+    }
+    showAll
+    titleLevelFaqsSection: titleLevel
+  }
+  ${FaqEntityFragmentDoc}
+  ${FaqCategoryEntityFragmentDoc}
 `
 export const FaqCategoriesSectionFragmentDoc = gql`
   fragment FaqCategoriesSection on ComponentSectionsFaqCategories {
@@ -19380,6 +19494,14 @@ export const DocumentCategoriesDocument = gql`
   }
   ${DocumentCategoryEntityFragmentDoc}
 `
+export const FaqCategoriesDocument = gql`
+  query FaqCategories($locale: I18NLocaleCode, $sort: [String] = ["title"]) {
+    faqCategories(pagination: { limit: -1 }, locale: $locale, sort: $sort) {
+      ...FaqCategoryEntity
+    }
+  }
+  ${FaqCategoryEntityFragmentDoc}
+`
 export const AllFilesDocument = gql`
   query allFiles($locale: I18NLocaleCode) {
     articles(locale: $locale, pagination: { limit: -1 }) {
@@ -19947,6 +20069,24 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
             signal,
           }),
         'DocumentCategories',
+        'query',
+        variables,
+      )
+    },
+    FaqCategories(
+      variables?: FaqCategoriesQueryVariables,
+      requestHeaders?: GraphQLClientRequestHeaders,
+      signal?: RequestInit['signal'],
+    ): Promise<FaqCategoriesQuery> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<FaqCategoriesQuery>({
+            document: FaqCategoriesDocument,
+            variables,
+            requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders },
+            signal,
+          }),
+        'FaqCategories',
         'query',
         variables,
       )

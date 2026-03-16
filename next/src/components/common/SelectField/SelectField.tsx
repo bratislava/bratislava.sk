@@ -83,10 +83,7 @@ const SelectField = <T extends object>({
   )
 
   return (
-    <Select
-      {...props}
-      className={cn('flex flex-col gap-1', { className: typeof className === 'string' })}
-    >
+    <Select {...props} className={cn('flex flex-col gap-1', className)}>
       <Label className="font-semibold">
         {label}
         {props.isRequired ? <span className="text-negative-700"> *</span> : undefined}

@@ -17,28 +17,28 @@
   },
   "attributes": {
     "title": {
+      "type": "text",
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
-      },
-      "type": "text"
+      }
     },
     "shortTitle": {
+      "type": "string",
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
-      },
-      "type": "string"
+      }
     },
     "color": {
+      "type": "enumeration",
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "type": "enumeration",
       "enum": [
         "red",
         "blue",
@@ -49,12 +49,12 @@
       ]
     },
     "icon": {
+      "type": "enumeration",
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "type": "enumeration",
       "enum": [
         "mesto_01",
         "doprava_mapy_02",
@@ -63,12 +63,6 @@
         "vzdelavanie_05",
         "kultura_06"
       ]
-    },
-    "pages": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::page.page",
-      "mappedBy": "pageCategory"
     }
   }
 }

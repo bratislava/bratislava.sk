@@ -132,25 +132,10 @@
           "sortable": true
         }
       },
-      "pageCategory": {
-        "edit": {
-          "label": "Kategória",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true,
-          "mainField": "shortTitle"
-        },
-        "list": {
-          "label": "pageCategory",
-          "searchable": true,
-          "sortable": true
-        }
-      },
       "pageColor": {
         "edit": {
           "label": "Farba",
-          "description": "Farba sa musí zhodovať s Kategóriou.",
+          "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
@@ -181,8 +166,7 @@
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true,
-          "mainField": "label"
+          "editable": true
         },
         "list": {
           "label": "headerLinks",
@@ -210,8 +194,7 @@
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true,
-          "mainField": "documentId"
+          "editable": true
         },
         "list": {
           "label": "subnavigation",
@@ -465,10 +448,6 @@
           {
             "name": "pageBackgroundImage",
             "size": 6
-          },
-          {
-            "name": "pageCategory",
-            "size": 6
           }
         ],
         [
@@ -594,15 +573,7 @@
           }
         ]
       ],
-      "list": [
-        "slug",
-        "title",
-        "parentPage",
-        "updatedAt",
-        "updatedBy",
-        "adminGroups",
-        "subtext"
-      ]
+      "list": ["path", "title", "parentPage", "updatedAt", "updatedBy", "adminGroups", "subtext"]
     }
   },
   "type": "object",
