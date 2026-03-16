@@ -33,6 +33,7 @@ export const iconNameMap = {
   document: 'DocumentIcon',
   download: 'DownloadIcon',
   edit: 'EditIcon',
+  euro: 'EuroIcon',
   error: 'ErrorIcon',
   export: 'ExportIcon',
   eye: 'EyeIcon',

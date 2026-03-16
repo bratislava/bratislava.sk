@@ -2,17 +2,17 @@ import { Typography } from '@bratislava/component-library'
 import { useMemo } from 'react'
 
 import {
-  AddressIcon,
-  CityServicesIcon,
-  EmailIcon,
+  ClockIcon,
   EuroIcon,
+  MailIcon,
   MapIcon,
-  OpeningHoursIcon,
-  PersonIcon,
   PhoneIcon,
-  PlaneIcon,
+  PinIcon,
+  ReferentsIcon,
+  SendIcon,
+  ServicesIcon,
   WebIcon,
-} from '@/src/assets/icons-contacts'
+} from '@/src/assets/icons'
 import MLink from '@/src/components/common/MLink/MLink'
 import {
   ContactCardBlockFragment,
@@ -81,7 +81,7 @@ const ContactCtaCard = ({ className, contact }: ContactCtaCardProps) => {
     }
 
     if (contact.type === ContactCtaCardType.Email) {
-      return { icon: EmailIcon, displayValue: contact.value, link: `mailto:${contact.value}` }
+      return { icon: MailIcon, displayValue: contact.value, link: `mailto:${contact.value}` }
     }
 
     if (contact.type === ContactCtaCardType.Web) {
@@ -100,19 +100,19 @@ const ContactCtaCard = ({ className, contact }: ContactCtaCardProps) => {
     }
 
     if (contact.type === ContactCtaCardType.Address) {
-      return { icon: AddressIcon, displayValue: contact.value }
+      return { icon: PinIcon, displayValue: contact.value }
     }
 
     if (contact.type === ContactCtaCardType.OpeningHours) {
-      return { icon: OpeningHoursIcon, displayValue: contact.value }
+      return { icon: ClockIcon, displayValue: contact.value }
     }
 
     if (contact.type === ContactCtaCardType.PostalAddress) {
-      return { icon: PlaneIcon, displayValue: contact.value }
+      return { icon: SendIcon, displayValue: contact.value }
     }
 
     if (contact.type === ContactCtaCardType.BillingInfo) {
-      return { icon: CityServicesIcon, displayValue: contact.value }
+      return { icon: ServicesIcon, displayValue: contact.value }
     }
 
     if (contact.type === ContactCtaCardType.BankConnection) {
@@ -121,7 +121,7 @@ const ContactCtaCard = ({ className, contact }: ContactCtaCardProps) => {
 
     if (contact.type === 'Person') {
       return {
-        icon: PersonIcon,
+        icon: ReferentsIcon,
         displayComponent: (
           <div className="flex flex-col gap-1">
             {contact.email ? (
