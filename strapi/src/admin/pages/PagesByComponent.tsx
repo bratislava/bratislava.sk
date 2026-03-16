@@ -301,7 +301,6 @@ const PagesByComponent = () => {
                       disabled={page === 1 || loading}
                       label="Previous page"
                     >
-                      {/* TODO: add our custom icons? */}
                       <ChevronLeft />
                     </IconButton>
                     <Typography variant="omega">
@@ -312,7 +311,6 @@ const PagesByComponent = () => {
                       disabled={page === pageCount || loading}
                       label="Next page"
                     >
-                      {/* TODO: add our custom icons? */}
                       <ChevronRight />
                     </IconButton>
                   </Flex>

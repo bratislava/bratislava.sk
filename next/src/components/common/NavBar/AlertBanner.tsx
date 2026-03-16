@@ -50,7 +50,7 @@ const AlertBanner = forwardRef<HTMLDivElement>((props, forwardedRef) => {
       })}
     >
       <div className="flex gap-3 px-4 py-3 lg:items-center lg:px-8 lg:py-4">
-        <Icon name="warning" className="shrink-0" />
+        <Icon name="warning" />
         <div className="grow">
           <Markdown content={text} variant="small" />
         </div>

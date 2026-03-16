@@ -37,7 +37,7 @@ const NavMenuTrigger = forwardRef<HTMLButtonElement, NavMenuTriggerProps>(
               {menuItem.label}
             </Typography>
           </div>
-          <Icon name="chevron-right" aria-hidden className="shrink-0" />
+          <Icon name="chevron-right" />
         </div>
       </NavigationMenu.Trigger>
     )

@@ -1,4 +1,5 @@
 import * as Icons from '@/src/assets/icons'
+import cn from '@/src/utils/cn'
 
 export const iconNameMap = {
   accessibility: 'AccessibilityIcon',
@@ -92,7 +93,7 @@ export type IconProps = {
 const Icon = ({ name, className }: IconProps) => {
   const IconComponent: IconType = Icons[iconNameMap[name]]
 
-  return <IconComponent className={className} />
+  return <IconComponent aria-hidden className={cn('shrink-0', className)} />
 }
 
 export default Icon
