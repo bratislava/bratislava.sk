@@ -62,7 +62,7 @@ const ContactCtaCard = ({ className, contact }: ContactCtaCardProps) => {
   const data = useMemo(() => {
     if (contact.type === ContactCtaCardType.Phone) {
       return {
-        icon: (props: Omit<IconProps, 'name'>) => <Icon {...props} name="phone" />,
+        icon: (props: Omit<IconProps, 'name'>) => <Icon {...props} name="phone-call" />,
         displayValue: contact.value,
         // Removes whitespaces
         link: `tel:${contact.value.replaceAll(/\s+/g, '')}`,
