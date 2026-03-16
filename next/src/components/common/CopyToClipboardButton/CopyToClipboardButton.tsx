@@ -1,7 +1,7 @@
-import { CopyIcon } from 'src/assets/icons'
 import { useCopyToClipboard } from 'usehooks-ts'
 
 import Button from '@/src/components/common/Button/Button'
+import Icon from '@/src/components/common/Icon/Icon'
 
 type Props = {
   copyText: string
@@ -20,7 +20,7 @@ const CopyToClipboardButton = ({ copyText, ariaLabel, children, className }: Pro
   return (
     <Button
       variant="outline"
-      startIcon={<CopyIcon />}
+      startIcon={<Icon name="copy" />}
       aria-label={ariaLabel}
       onPress={() => {
         void copy(copyText)

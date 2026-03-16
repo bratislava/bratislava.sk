@@ -9,7 +9,7 @@ import Select, {
   Props as ReactSelectProps,
 } from 'react-select'
 
-import { CheckIcon, CheckInCircleIcon, ChevronDownIcon, CrossIcon } from '@/src/assets/icons'
+import Icon from '@/src/components/common/Icon/Icon'
 import cn from '@/src/utils/cn'
 
 export type SelectOption = { value: string; label: string }
@@ -25,7 +25,8 @@ const DropdownIndicator = <
 
   return (
     <components.DropdownIndicator {...props}>
-      <ChevronDownIcon
+      <Icon
+        name="chevron-down"
         className={cn({ 'rotate-180': menuIsOpen, 'text-content-select-disabled': isDisabled })}
       />
     </components.DropdownIndicator>
@@ -41,7 +42,7 @@ const ClearIndicator = <
 ) => {
   return (
     <components.ClearIndicator {...props}>
-      <CrossIcon />
+      <Icon name="close" />
     </components.ClearIndicator>
   )
 }
@@ -49,7 +50,7 @@ const ClearIndicator = <
 const MultiValueRemove = (props: MultiValueRemoveProps) => {
   return (
     <components.MultiValueRemove {...props}>
-      <CrossIcon />
+      <Icon name="close" />
     </components.MultiValueRemove>
   )
 }
@@ -69,7 +70,7 @@ const CustomCheckbox = ({ isSelected }: CustomCheckboxProps) => (
       },
     )}
   >
-    {isSelected && <CheckIcon />}
+    {isSelected && <Icon name="check" />}
   </div>
 )
 
@@ -91,7 +92,7 @@ const CustomOption = <
           {isMulti ? (
             <CustomCheckbox isSelected={isSelected} />
           ) : isSelected ? (
-            <CheckInCircleIcon />
+            <Icon name="check-circle" />
           ) : null}
         </div>
       </components.Option>

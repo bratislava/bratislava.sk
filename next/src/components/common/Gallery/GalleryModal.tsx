@@ -2,10 +2,10 @@ import FocusTrap from 'focus-trap-react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { ReactNode, useEffect, useRef } from 'react'
 import { AriaOverlayProps, OverlayContainer, useModal, useOverlay } from 'react-aria'
-import { CrossIcon } from 'src/assets/icons'
 import { useIsClient, useScrollLock } from 'usehooks-ts'
 
 import Button from '@/src/components/common/Button/Button'
+import Icon from '@/src/components/common/Icon/Icon'
 import cn from '@/src/utils/cn'
 import { useTranslation } from '@/src/utils/useTranslation'
 
@@ -82,7 +82,7 @@ const GalleryModal = (props: ModalProps) => {
                         className="pointer-events-auto fixed top-6 right-6 z-30 rounded-full"
                         aria-label={t('Gallery.aria.closeGallery')}
                         onPress={onClose}
-                        icon={<CrossIcon />}
+                        icon={<Icon name="close" />}
                       />
                     )}
                     {children}

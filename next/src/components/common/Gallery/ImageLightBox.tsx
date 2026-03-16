@@ -1,9 +1,9 @@
 import { useEffect, useRef } from 'react'
-import { ArrowLeftIcon, ArrowRightIcon } from 'src/assets/icons'
 
 import Button from '@/src/components/common/Button/Button'
 import GalleryModal, { ModalProps } from '@/src/components/common/Gallery/GalleryModal'
 import GallerySlider from '@/src/components/common/Gallery/GallerySlider'
+import Icon from '@/src/components/common/Icon/Icon'
 import StrapiImage from '@/src/components/common/Image/StrapiImage'
 import { UploadImageEntityFragment } from '@/src/services/graphql'
 import { useTranslation } from '@/src/utils/useTranslation'
@@ -63,7 +63,7 @@ const ImageLightBox = (props: ImageLightBoxProps) => {
                   className="pointer-events-auto rounded-full"
                   aria-label={t('Gallery.aria.previousImage')}
                   onPress={goToPrevious}
-                  icon={<ArrowLeftIcon />}
+                  icon={<Icon name="arrow-left" />}
                 />
 
                 <Button
@@ -71,7 +71,7 @@ const ImageLightBox = (props: ImageLightBoxProps) => {
                   className="pointer-events-auto rounded-full"
                   aria-label={t('Gallery.aria.nextImage')}
                   onPress={goToNext}
-                  icon={<ArrowRightIcon />}
+                  icon={<Icon name="arrow-right" />}
                 />
               </>
             )}

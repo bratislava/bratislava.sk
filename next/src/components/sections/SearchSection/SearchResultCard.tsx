@@ -1,8 +1,8 @@
 import { Typography } from '@bratislava/component-library'
 import Image from 'next/image'
 import { Fragment, ReactNode } from 'react'
-import { ChevronRightIcon } from 'src/assets/icons'
 
+import Icon from '@/src/components/common/Icon/Icon'
 import ImagePlaceholder from '@/src/components/common/Image/ImagePlaceholder'
 import MLink from '@/src/components/common/MLink/MLink'
 import Pictogram from '@/src/components/common/Pictogram/Pictogram'
@@ -210,7 +210,7 @@ SearchResultCard.Metadata = function ({
 SearchResultCard.Button = function ({ className }: { className?: string }) {
   return (
     <div className={cn('my-auto self-end text-action-content-default', className)}>
-      <ChevronRightIcon />
+      <Icon name="chevron-right" />
     </div>
   )
 }

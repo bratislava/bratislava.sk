@@ -260,7 +260,13 @@ const PagesByComponent = () => {
             </Box>
 
             <Box className="pages-results-container">
-              <Flex justifyContent="space-between" alignItems="baseline" wrap="wrap" gap={4} marginBottom={2}>
+              <Flex
+                justifyContent="space-between"
+                alignItems="baseline"
+                wrap="wrap"
+                gap={4}
+                marginBottom={2}
+              >
                 <Typography variant="omega" textColor="neutral600">
                   Showing {Math.min((page - 1) * pageSize + 1, total)} -{' '}
                   {Math.min(page * pageSize, total)} of {total}
@@ -432,7 +438,6 @@ const PagesByComponent = () => {
               </Table>
             </Box>
           </Flex>
-
         </Flex>
       </Box>
     </>

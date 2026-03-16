@@ -1,6 +1,5 @@
-import { ChevronRightIcon, HomeIcon } from 'src/assets/icons'
-
 import type { BreadcrumbsProps } from '@/src/components/common/Breadcrumbs/Breadcrumbs'
+import Icon from '@/src/components/common/Icon/Icon'
 import MLink from '@/src/components/common/MLink/MLink'
 import { useTranslation } from '@/src/utils/useTranslation'
 
@@ -19,7 +18,7 @@ const DesktopBreadcrumbs = ({ breadcrumbs }: BreadcrumbsProps) => {
           className="shrink-0"
           aria-label={t('Breadcrumbs.homepage')}
         >
-          <HomeIcon className="size-5 shrink-0" />
+          <Icon name="home" className="size-5 shrink-0" />
         </MLink>
       </li>
       {breadcrumbs.map((breadcrumb, index) => {
@@ -27,7 +26,7 @@ const DesktopBreadcrumbs = ({ breadcrumbs }: BreadcrumbsProps) => {
 
         return (
           <li className="flex gap-1 text-size-p-tiny font-medium" key={index}>
-            <ChevronRightIcon className="size-5 shrink-0" aria-hidden />
+            <Icon name="chevron-right" className="size-5 shrink-0" aria-hidden />
             {breadcrumb.path && !isLast ? (
               <MLink href={breadcrumb.path} variant="underlined">
                 {breadcrumb.title}

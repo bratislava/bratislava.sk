@@ -1,9 +1,9 @@
 import { useTranslation } from 'next-i18next'
 import { useState } from 'react'
-import { ChevronUpIcon } from 'src/assets/icons'
 import { useEventListener } from 'usehooks-ts'
 
 import Button from '@/src/components/common/Button/Button'
+import Icon from '@/src/components/common/Icon/Icon'
 
 const handleScrollToTop = () => {
   window.scrollTo({ top: 0, left: 0, behavior: 'smooth' })
@@ -36,7 +36,7 @@ const ScrollToTopButton = () => {
         visible ? 'visible' : 'invisible'
       }`}
       onPress={handleScrollToTop}
-      icon={<ChevronUpIcon />}
+      icon={<Icon name="chevron-up" />}
     />
   )
 }

@@ -1,7 +1,7 @@
 import { Typography } from '@bratislava/component-library'
-import { ArrowRightIcon } from 'src/assets/icons'
 
 import Button from '@/src/components/common/Button/Button'
+import Icon from '@/src/components/common/Icon/Icon'
 import { useTranslation } from '@/src/utils/useTranslation'
 
 type SearchResultsHeaderProps = {
@@ -21,7 +21,7 @@ const SearchResultsHeader = ({ title, showButton, handleShowMore }: SearchResult
       {showButton ? (
         <Button
           variant="link"
-          endIcon={<ArrowRightIcon />}
+          endIcon={<Icon name="arrow-right" />}
           onPress={handleShowMore}
           data-cy="search-section-more-button"
         >

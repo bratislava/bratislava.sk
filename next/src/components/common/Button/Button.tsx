@@ -2,8 +2,8 @@ import NextLink from 'next/link'
 import { ComponentProps, forwardRef, PropsWithChildren, ReactNode, RefObject } from 'react'
 import { AriaButtonProps } from 'react-aria'
 import { Button as RACButton, ButtonProps as RACButtonProps } from 'react-aria-components'
-import { ArrowDownIcon, ArrowRightIcon, ExportIcon } from 'src/assets/icons'
 
+import Icon from '@/src/components/common/Icon/Icon'
 import MLink, { LinkAnalyticsProps } from '@/src/components/common/MLink/MLink'
 import Spinner from '@/src/components/common/Spinner/Spinner'
 import cn from '@/src/utils/cn'
@@ -228,11 +228,11 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
       const isAnchor = rest.href.startsWith('#') && rest.href !== '#'
       const linkIcon = hasLinkIcon ? (
         isExternal ? (
-          <ExportIcon className="shrink-0" />
+          <Icon name="export" />
         ) : isAnchor ? (
-          <ArrowDownIcon className="shrink-0" />
+          <Icon name="arrow-down" />
         ) : (
-          <ArrowRightIcon className="shrink-0" />
+          <Icon name="arrow-right" />
         )
       ) : null
 

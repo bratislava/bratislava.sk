@@ -6,9 +6,9 @@ import {
   KeyboardEvent,
   SetStateAction,
 } from 'react'
-import { SearchIcon } from 'src/assets/icons'
 
 import Button from '@/src/components/common/Button/Button'
+import Icon from '@/src/components/common/Icon/Icon'
 
 type HomePageSearchFieldProps = {
   value: string
@@ -61,7 +61,7 @@ const HomePageSearchField = ({
         onPress={onSearchPressed}
         data-cy="homepage-search-button"
       >
-        <SearchIcon />
+        <Icon name="search" />
       </Button>
     </div>
   )

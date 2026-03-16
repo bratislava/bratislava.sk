@@ -1,7 +1,7 @@
 import { Typography } from '@bratislava/component-library'
 import { useTranslation } from 'next-i18next'
 
-import { InfoIcon } from '@/src/assets/icons'
+import Icon from '@/src/components/common/Icon/Icon'
 
 type Props = {
   contentManager: string
@@ -17,7 +17,7 @@ const ContentManagedBy = ({ contentManager }: Props) => {
   return (
     <div className="flex flex-wrap items-center justify-between gap-4 py-4 max-lg:flex-col max-lg:text-center lg:py-6">
       <div className="flex items-center gap-3">
-        <InfoIcon className="size-6 max-lg:hidden" />
+        <Icon name="info" className="size-6 max-lg:hidden" />
         <Typography variant="p-small">
           {t('ContentManagedBy.message', { contentManager })}
         </Typography>

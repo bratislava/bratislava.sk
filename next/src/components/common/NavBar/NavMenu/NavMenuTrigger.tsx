@@ -2,7 +2,7 @@ import { Typography } from '@bratislava/component-library'
 import * as NavigationMenu from '@radix-ui/react-navigation-menu'
 import { CSSProperties, forwardRef } from 'react'
 
-import { ChevronDownIcon } from '@/src/assets/icons'
+import Icon from '@/src/components/common/Icon/Icon'
 
 type NavMenuTriggerProps = {
   label: string
@@ -35,7 +35,8 @@ const NavMenuTrigger = forwardRef<HTMLButtonElement, NavMenuTriggerProps>(
               {label}
             </Typography>
           </div>
-          <ChevronDownIcon
+          <Icon
+            name="chevron-down"
             // Icon size and margin-top slightly altered so that visually it looks as in figma
             className="mt-0.5 size-4.75 group-data-[state=open]:rotate-180"
           />

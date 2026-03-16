@@ -1,6 +1,6 @@
 import { Checkbox as RACCheckbox, CheckboxProps as RACCheckboxProps } from 'react-aria-components'
 
-import { CheckIcon } from '@/src/assets/icons'
+import Icon from '@/src/components/common/Icon/Icon'
 import cn from '@/src/utils/cn'
 
 /**
@@ -42,7 +42,7 @@ const Checkbox = ({ children, value, ...restProps }: RACCheckboxProps) => {
                 },
               )}
             >
-              {isSelected && <CheckIcon aria-hidden />}
+              {isSelected && <Icon name="check" aria-hidden />}
             </div>
             {children}
           </>
