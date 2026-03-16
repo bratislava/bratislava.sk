@@ -43,6 +43,10 @@ const SectionHeader = ({
     return null
   }
 
+  const formatWithNonBreakingHyphen = (titleText: string) => {
+    return titleText.replace(/(\w)-(\w)/g, '$1\u2011$2')
+  }
+
   return (
     <div
       {...(excludeFromTableOfContents ? undefined : TABLE_OF_CONTENTS_HEADING_ATTRIBUTE)}
@@ -64,7 +68,7 @@ const SectionHeader = ({
         >
           {title ? (
             <Typography variant={titleLevel ?? 'h2'} id={titleId ?? slugify(title)}>
-              {title}
+              {formatWithNonBreakingHyphen(title)}
             </Typography>
           ) : null}
           {text ? (
