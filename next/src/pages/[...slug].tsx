@@ -63,7 +63,7 @@ export const getStaticProps: GetStaticProps<PageProps, StaticParams> = async ({
 
   const [{ pages }, { pages: aliasPages, articles: aliasArticles }, general, translations] =
     await Promise.all([
-      client.PageBySlug({ slug: slugJoined, locale }),
+      client.PageBySlug({ path: slugJoined, locale }),
       client.PageRedirectByAlias({ alias: slugJoined, locale }),
       client.General({ locale }),
       serverSideTranslations(locale),

@@ -30,13 +30,13 @@ export const getPageBreadcrumbs = (page: PageParentPagesFragment) => {
   const breadcrumbs: Breadcrumb[] = [
     {
       title: current?.title ?? '',
-      path: current?.slug ? `/${current.slug}` : null,
+      path: current?.path ? `/${current.path}` : null,
     },
   ]
   while (parentPage) {
     breadcrumbs.push({
       title: parentPage.title ?? '',
-      path: parentPage.slug ? `/${parentPage.slug}` : null,
+      path: parentPage.path ? `/${parentPage.path}` : null,
     })
     parentPage = parentPage.parentPage
   }

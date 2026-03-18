@@ -8112,30 +8112,35 @@ export type GeneralFragment = {
     slug?: string | null
     locale?: string | null
     title: string
+    path?: string | null
     parentPage?: {
       __typename?: 'Page'
       documentId: string
       slug?: string | null
       locale?: string | null
       title: string
+      path?: string | null
       parentPage?: {
         __typename?: 'Page'
         documentId: string
         slug?: string | null
         locale?: string | null
         title: string
+        path?: string | null
         parentPage?: {
           __typename?: 'Page'
           documentId: string
           slug?: string | null
           locale?: string | null
           title: string
+          path?: string | null
           parentPage?: {
             __typename?: 'Page'
             documentId: string
             slug?: string | null
             locale?: string | null
             title: string
+            path?: string | null
           } | null
         } | null
       } | null
@@ -8147,30 +8152,35 @@ export type GeneralFragment = {
     slug?: string | null
     locale?: string | null
     title: string
+    path?: string | null
     parentPage?: {
       __typename?: 'Page'
       documentId: string
       slug?: string | null
       locale?: string | null
       title: string
+      path?: string | null
       parentPage?: {
         __typename?: 'Page'
         documentId: string
         slug?: string | null
         locale?: string | null
         title: string
+        path?: string | null
         parentPage?: {
           __typename?: 'Page'
           documentId: string
           slug?: string | null
           locale?: string | null
           title: string
+          path?: string | null
           parentPage?: {
             __typename?: 'Page'
             documentId: string
             slug?: string | null
             locale?: string | null
             title: string
+            path?: string | null
           } | null
         } | null
       } | null
@@ -8182,30 +8192,35 @@ export type GeneralFragment = {
     slug?: string | null
     locale?: string | null
     title: string
+    path?: string | null
     parentPage?: {
       __typename?: 'Page'
       documentId: string
       slug?: string | null
       locale?: string | null
       title: string
+      path?: string | null
       parentPage?: {
         __typename?: 'Page'
         documentId: string
         slug?: string | null
         locale?: string | null
         title: string
+        path?: string | null
         parentPage?: {
           __typename?: 'Page'
           documentId: string
           slug?: string | null
           locale?: string | null
           title: string
+          path?: string | null
           parentPage?: {
             __typename?: 'Page'
             documentId: string
             slug?: string | null
             locale?: string | null
             title: string
+            path?: string | null
           } | null
         } | null
       } | null
@@ -8217,30 +8232,35 @@ export type GeneralFragment = {
     slug?: string | null
     locale?: string | null
     title: string
+    path?: string | null
     parentPage?: {
       __typename?: 'Page'
       documentId: string
       slug?: string | null
       locale?: string | null
       title: string
+      path?: string | null
       parentPage?: {
         __typename?: 'Page'
         documentId: string
         slug?: string | null
         locale?: string | null
         title: string
+        path?: string | null
         parentPage?: {
           __typename?: 'Page'
           documentId: string
           slug?: string | null
           locale?: string | null
           title: string
+          path?: string | null
           parentPage?: {
             __typename?: 'Page'
             documentId: string
             slug?: string | null
             locale?: string | null
             title: string
+            path?: string | null
           } | null
         } | null
       } | null
@@ -8252,30 +8272,35 @@ export type GeneralFragment = {
     slug?: string | null
     locale?: string | null
     title: string
+    path?: string | null
     parentPage?: {
       __typename?: 'Page'
       documentId: string
       slug?: string | null
       locale?: string | null
       title: string
+      path?: string | null
       parentPage?: {
         __typename?: 'Page'
         documentId: string
         slug?: string | null
         locale?: string | null
         title: string
+        path?: string | null
         parentPage?: {
           __typename?: 'Page'
           documentId: string
           slug?: string | null
           locale?: string | null
           title: string
+          path?: string | null
           parentPage?: {
             __typename?: 'Page'
             documentId: string
             slug?: string | null
             locale?: string | null
             title: string
+            path?: string | null
           } | null
         } | null
       } | null
@@ -8287,30 +8312,35 @@ export type GeneralFragment = {
     slug?: string | null
     locale?: string | null
     title: string
+    path?: string | null
     parentPage?: {
       __typename?: 'Page'
       documentId: string
       slug?: string | null
       locale?: string | null
       title: string
+      path?: string | null
       parentPage?: {
         __typename?: 'Page'
         documentId: string
         slug?: string | null
         locale?: string | null
         title: string
+        path?: string | null
         parentPage?: {
           __typename?: 'Page'
           documentId: string
           slug?: string | null
           locale?: string | null
           title: string
+          path?: string | null
           parentPage?: {
             __typename?: 'Page'
             documentId: string
             slug?: string | null
             locale?: string | null
             title: string
+            path?: string | null
           } | null
         } | null
       } | null
@@ -8322,30 +8352,35 @@ export type GeneralFragment = {
     slug?: string | null
     locale?: string | null
     title: string
+    path?: string | null
     parentPage?: {
       __typename?: 'Page'
       documentId: string
       slug?: string | null
       locale?: string | null
       title: string
+      path?: string | null
       parentPage?: {
         __typename?: 'Page'
         documentId: string
         slug?: string | null
         locale?: string | null
         title: string
+        path?: string | null
         parentPage?: {
           __typename?: 'Page'
           documentId: string
           slug?: string | null
           locale?: string | null
           title: string
+          path?: string | null
           parentPage?: {
             __typename?: 'Page'
             documentId: string
             slug?: string | null
             locale?: string | null
             title: string
+            path?: string | null
           } | null
         } | null
       } | null
@@ -8357,30 +8392,35 @@ export type GeneralFragment = {
     slug?: string | null
     locale?: string | null
     title: string
+    path?: string | null
     parentPage?: {
       __typename?: 'Page'
       documentId: string
       slug?: string | null
       locale?: string | null
       title: string
+      path?: string | null
       parentPage?: {
         __typename?: 'Page'
         documentId: string
         slug?: string | null
         locale?: string | null
         title: string
+        path?: string | null
         parentPage?: {
           __typename?: 'Page'
           documentId: string
           slug?: string | null
           locale?: string | null
           title: string
+          path?: string | null
           parentPage?: {
             __typename?: 'Page'
             documentId: string
             slug?: string | null
             locale?: string | null
             title: string
+            path?: string | null
           } | null
         } | null
       } | null
@@ -8445,30 +8485,35 @@ export type GeneralQuery = {
       slug?: string | null
       locale?: string | null
       title: string
+      path?: string | null
       parentPage?: {
         __typename?: 'Page'
         documentId: string
         slug?: string | null
         locale?: string | null
         title: string
+        path?: string | null
         parentPage?: {
           __typename?: 'Page'
           documentId: string
           slug?: string | null
           locale?: string | null
           title: string
+          path?: string | null
           parentPage?: {
             __typename?: 'Page'
             documentId: string
             slug?: string | null
             locale?: string | null
             title: string
+            path?: string | null
             parentPage?: {
               __typename?: 'Page'
               documentId: string
               slug?: string | null
               locale?: string | null
               title: string
+              path?: string | null
             } | null
           } | null
         } | null
@@ -8480,30 +8525,35 @@ export type GeneralQuery = {
       slug?: string | null
       locale?: string | null
       title: string
+      path?: string | null
       parentPage?: {
         __typename?: 'Page'
         documentId: string
         slug?: string | null
         locale?: string | null
         title: string
+        path?: string | null
         parentPage?: {
           __typename?: 'Page'
           documentId: string
           slug?: string | null
           locale?: string | null
           title: string
+          path?: string | null
           parentPage?: {
             __typename?: 'Page'
             documentId: string
             slug?: string | null
             locale?: string | null
             title: string
+            path?: string | null
             parentPage?: {
               __typename?: 'Page'
               documentId: string
               slug?: string | null
               locale?: string | null
               title: string
+              path?: string | null
             } | null
           } | null
         } | null
@@ -8515,30 +8565,35 @@ export type GeneralQuery = {
       slug?: string | null
       locale?: string | null
       title: string
+      path?: string | null
       parentPage?: {
         __typename?: 'Page'
         documentId: string
         slug?: string | null
         locale?: string | null
         title: string
+        path?: string | null
         parentPage?: {
           __typename?: 'Page'
           documentId: string
           slug?: string | null
           locale?: string | null
           title: string
+          path?: string | null
           parentPage?: {
             __typename?: 'Page'
             documentId: string
             slug?: string | null
             locale?: string | null
             title: string
+            path?: string | null
             parentPage?: {
               __typename?: 'Page'
               documentId: string
               slug?: string | null
               locale?: string | null
               title: string
+              path?: string | null
             } | null
           } | null
         } | null
@@ -8550,30 +8605,35 @@ export type GeneralQuery = {
       slug?: string | null
       locale?: string | null
       title: string
+      path?: string | null
       parentPage?: {
         __typename?: 'Page'
         documentId: string
         slug?: string | null
         locale?: string | null
         title: string
+        path?: string | null
         parentPage?: {
           __typename?: 'Page'
           documentId: string
           slug?: string | null
           locale?: string | null
           title: string
+          path?: string | null
           parentPage?: {
             __typename?: 'Page'
             documentId: string
             slug?: string | null
             locale?: string | null
             title: string
+            path?: string | null
             parentPage?: {
               __typename?: 'Page'
               documentId: string
               slug?: string | null
               locale?: string | null
               title: string
+              path?: string | null
             } | null
           } | null
         } | null
@@ -8585,30 +8645,35 @@ export type GeneralQuery = {
       slug?: string | null
       locale?: string | null
       title: string
+      path?: string | null
       parentPage?: {
         __typename?: 'Page'
         documentId: string
         slug?: string | null
         locale?: string | null
         title: string
+        path?: string | null
         parentPage?: {
           __typename?: 'Page'
           documentId: string
           slug?: string | null
           locale?: string | null
           title: string
+          path?: string | null
           parentPage?: {
             __typename?: 'Page'
             documentId: string
             slug?: string | null
             locale?: string | null
             title: string
+            path?: string | null
             parentPage?: {
               __typename?: 'Page'
               documentId: string
               slug?: string | null
               locale?: string | null
               title: string
+              path?: string | null
             } | null
           } | null
         } | null
@@ -8620,30 +8685,35 @@ export type GeneralQuery = {
       slug?: string | null
       locale?: string | null
       title: string
+      path?: string | null
       parentPage?: {
         __typename?: 'Page'
         documentId: string
         slug?: string | null
         locale?: string | null
         title: string
+        path?: string | null
         parentPage?: {
           __typename?: 'Page'
           documentId: string
           slug?: string | null
           locale?: string | null
           title: string
+          path?: string | null
           parentPage?: {
             __typename?: 'Page'
             documentId: string
             slug?: string | null
             locale?: string | null
             title: string
+            path?: string | null
             parentPage?: {
               __typename?: 'Page'
               documentId: string
               slug?: string | null
               locale?: string | null
               title: string
+              path?: string | null
             } | null
           } | null
         } | null
@@ -8655,30 +8725,35 @@ export type GeneralQuery = {
       slug?: string | null
       locale?: string | null
       title: string
+      path?: string | null
       parentPage?: {
         __typename?: 'Page'
         documentId: string
         slug?: string | null
         locale?: string | null
         title: string
+        path?: string | null
         parentPage?: {
           __typename?: 'Page'
           documentId: string
           slug?: string | null
           locale?: string | null
           title: string
+          path?: string | null
           parentPage?: {
             __typename?: 'Page'
             documentId: string
             slug?: string | null
             locale?: string | null
             title: string
+            path?: string | null
             parentPage?: {
               __typename?: 'Page'
               documentId: string
               slug?: string | null
               locale?: string | null
               title: string
+              path?: string | null
             } | null
           } | null
         } | null
@@ -8690,30 +8765,35 @@ export type GeneralQuery = {
       slug?: string | null
       locale?: string | null
       title: string
+      path?: string | null
       parentPage?: {
         __typename?: 'Page'
         documentId: string
         slug?: string | null
         locale?: string | null
         title: string
+        path?: string | null
         parentPage?: {
           __typename?: 'Page'
           documentId: string
           slug?: string | null
           locale?: string | null
           title: string
+          path?: string | null
           parentPage?: {
             __typename?: 'Page'
             documentId: string
             slug?: string | null
             locale?: string | null
             title: string
+            path?: string | null
             parentPage?: {
               __typename?: 'Page'
               documentId: string
               slug?: string | null
               locale?: string | null
               title: string
+              path?: string | null
             } | null
           } | null
         } | null
@@ -10376,6 +10456,7 @@ export type ParentPageFragment = {
   slug?: string | null
   locale?: string | null
   title: string
+  path?: string | null
 }
 
 export type PageParentPagesFragment = {
@@ -10384,30 +10465,35 @@ export type PageParentPagesFragment = {
   slug?: string | null
   locale?: string | null
   title: string
+  path?: string | null
   parentPage?: {
     __typename?: 'Page'
     documentId: string
     slug?: string | null
     locale?: string | null
     title: string
+    path?: string | null
     parentPage?: {
       __typename?: 'Page'
       documentId: string
       slug?: string | null
       locale?: string | null
       title: string
+      path?: string | null
       parentPage?: {
         __typename?: 'Page'
         documentId: string
         slug?: string | null
         locale?: string | null
         title: string
+        path?: string | null
         parentPage?: {
           __typename?: 'Page'
           documentId: string
           slug?: string | null
           locale?: string | null
           title: string
+          path?: string | null
         } | null
       } | null
     } | null
@@ -11768,24 +11854,28 @@ export type PageEntityFragment = {
     slug?: string | null
     locale?: string | null
     title: string
+    path?: string | null
     parentPage?: {
       __typename?: 'Page'
       documentId: string
       slug?: string | null
       locale?: string | null
       title: string
+      path?: string | null
       parentPage?: {
         __typename?: 'Page'
         documentId: string
         slug?: string | null
         locale?: string | null
         title: string
+        path?: string | null
         parentPage?: {
           __typename?: 'Page'
           documentId: string
           slug?: string | null
           locale?: string | null
           title: string
+          path?: string | null
         } | null
       } | null
     } | null
@@ -11802,11 +11892,16 @@ export type PagesStaticPathsQueryVariables = Exact<{
 
 export type PagesStaticPathsQuery = {
   __typename?: 'Query'
-  pages: Array<{ __typename?: 'Page'; documentId: string; slug?: string | null } | null>
+  pages: Array<{
+    __typename?: 'Page'
+    documentId: string
+    slug?: string | null
+    path?: string | null
+  } | null>
 }
 
 export type PageBySlugQueryVariables = Exact<{
-  slug: Scalars['String']['input']
+  path: Scalars['String']['input']
   locale: Scalars['I18NLocaleCode']['input']
 }>
 
@@ -13124,24 +13219,28 @@ export type PageBySlugQuery = {
       slug?: string | null
       locale?: string | null
       title: string
+      path?: string | null
       parentPage?: {
         __typename?: 'Page'
         documentId: string
         slug?: string | null
         locale?: string | null
         title: string
+        path?: string | null
         parentPage?: {
           __typename?: 'Page'
           documentId: string
           slug?: string | null
           locale?: string | null
           title: string
+          path?: string | null
           parentPage?: {
             __typename?: 'Page'
             documentId: string
             slug?: string | null
             locale?: string | null
             title: string
+            path?: string | null
           } | null
         } | null
       } | null
@@ -14497,24 +14596,28 @@ export type Dev_AllPagesQuery = {
       slug?: string | null
       locale?: string | null
       title: string
+      path?: string | null
       parentPage?: {
         __typename?: 'Page'
         documentId: string
         slug?: string | null
         locale?: string | null
         title: string
+        path?: string | null
         parentPage?: {
           __typename?: 'Page'
           documentId: string
           slug?: string | null
           locale?: string | null
           title: string
+          path?: string | null
           parentPage?: {
             __typename?: 'Page'
             documentId: string
             slug?: string | null
             locale?: string | null
             title: string
+            path?: string | null
           } | null
         } | null
       } | null
@@ -18087,6 +18190,7 @@ export const ParentPageFragmentDoc = gql`
     slug
     locale
     title
+    path
   }
 `
 export const PageParentPagesFragmentDoc = gql`
@@ -19707,12 +19811,13 @@ export const PagesStaticPathsDocument = gql`
     pages(locale: $locale, sort: $sort, pagination: { limit: $limit }) {
       documentId
       slug
+      path
     }
   }
 `
 export const PageBySlugDocument = gql`
-  query PageBySlug($slug: String!, $locale: I18NLocaleCode!) {
-    pages(filters: { slug: { eq: $slug } }, locale: $locale) {
+  query PageBySlug($path: String!, $locale: I18NLocaleCode!) {
+    pages(filters: { path: { eq: $path } }, locale: $locale) {
       ...PageEntity
     }
   }
