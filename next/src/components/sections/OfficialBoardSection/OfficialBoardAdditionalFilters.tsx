@@ -12,7 +12,6 @@ import {
   ParsedOfficialBoardCategory,
 } from '@/src/services/ginis/types'
 import { useTranslation } from '@/src/utils/useTranslation'
-import { isProductionDeployment } from '@/src/utils/utils' // TODO maybe we shouldn't use czech string for values, but parse them in handler or somewhere else?
 
 // TODO maybe we shouldn't use czech string for values, but parse them in handler or somewhere else?
 type Props = {
@@ -97,37 +96,30 @@ const OfficialBoardAdditionalFilters = ({
         {(item) => <SelectItem label={item.title} textValue={item.title} id={item.id} />}
       </SelectField>
 
-      {/* TODO remove this check, but for now, we want to test in on staging without being block by accidental release */}
-      {isProductionDeployment() ? null : (
-        <SelectField
-          label={t('OfficialBoard.publicationState')}
-          items={publicationStateSelectOptions}
-          selectedKey={publicationState as string}
-          onSelectionChange={(selected) => {
-            setPublicationState(selected as typeof publicationState)
-            if (selected === 'sejmuto') {
-              setPublicationYear(allYearsOptions(selected)[0].id)
-            }
-          }}
-        >
-          {(item) => (
-            <SelectItem label={item.title} textValue={item.title} id={item.id as string} />
-          )}
-        </SelectField>
-      )}
+      <SelectField
+        label={t('OfficialBoard.publicationState')}
+        items={publicationStateSelectOptions}
+        selectedKey={publicationState as string}
+        onSelectionChange={(selected) => {
+          setPublicationState(selected as typeof publicationState)
+          if (selected === 'sejmuto') {
+            setPublicationYear(allYearsOptions(selected)[0].id)
+          }
+        }}
+      >
+        {(item) => <SelectItem label={item.title} textValue={item.title} id={item.id as string} />}
+      </SelectField>
 
-      {isProductionDeployment() ? null : (
-        <SelectField
-          label={t('OfficialBoard.publicationYear')}
-          items={allYearsOptions(publicationState as string)}
-          selectedKey={publicationYear as string}
-          onSelectionChange={(selected) => {
-            setPublicationYear(selected as string | null)
-          }}
-        >
-          {(item) => <SelectItem label={item.title} textValue={item.title} id={item.id} />}
-        </SelectField>
-      )}
+      <SelectField
+        label={t('OfficialBoard.publicationYear')}
+        items={allYearsOptions(publicationState as string)}
+        selectedKey={publicationYear as string}
+        onSelectionChange={(selected) => {
+          setPublicationYear(selected as string | null)
+        }}
+      >
+        {(item) => <SelectItem label={item.title} textValue={item.title} id={item.id} />}
+      </SelectField>
     </div>
   )
 }
