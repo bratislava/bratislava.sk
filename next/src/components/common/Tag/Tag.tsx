@@ -20,8 +20,9 @@ const Tag = ({ text, size = 'small', isColored = false, shorthand, onRemove }: T
   const classStyles = cn('flex w-fit items-center justify-center gap-1 rounded-sm text-center', {
     'px-2 py-0 text-size-p-small': size === 'small',
     'px-3 py-0.5 text-size-p-default': size === 'large',
-    'bg-grey-100': isRemovable || !isColored,
-    'text-grey-700': isRemovable || !isColored,
+    'border-1 border-background-passive-secondary bg-background-passive-secondary hover:border-border-active-primary-hover':
+      isRemovable || !isColored,
+    'text-content-active-primary-default': isRemovable || !isColored,
     'bg-category-100': !isRemovable && isColored,
     'text-category-700': !isRemovable && isColored,
   })

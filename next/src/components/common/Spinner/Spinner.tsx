@@ -12,11 +12,14 @@ type SpinnerBase = {
  */
 
 const Spinner = ({ size = 'md', className }: SpinnerBase) => {
-  const style = cn('animate-spin rounded-[50%] border-solid border-grey-700 border-t-grey-300', {
-    'h-5 w-5 border-2 border-t-2': size === 'sm',
-    'h-8 w-8 border-3 border-t-3': size === 'md',
-    'h-12 w-12 border-4 border-t-4': size === 'lg',
-  })
+  const style = cn(
+    'animate-spin rounded-[50%] border-solid border-content-active-primary-default border-t-border-passive-primary',
+    {
+      'h-5 w-5 border-2 border-t-2': size === 'sm',
+      'h-8 w-8 border-3 border-t-3': size === 'md',
+      'h-12 w-12 border-4 border-t-4': size === 'lg',
+    },
+  )
 
   return (
     <div

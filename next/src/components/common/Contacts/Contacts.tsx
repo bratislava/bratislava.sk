@@ -45,7 +45,7 @@ const Contacts = ({ section }: ContactsProps) => {
   ]
 
   return (
-    <div className="flex flex-col gap-6 rounded-xl bg-gray-100 p-4 lg:gap-8 lg:p-8">
+    <div className="flex flex-col gap-6 rounded-xl bg-background-passive-primary p-4 lg:gap-8 lg:p-8">
       <SectionHeader title={title} titleLevel={titleLevel} text={description} asRichtext />
 
       <div className="flex flex-col gap-6 lg:gap-8">

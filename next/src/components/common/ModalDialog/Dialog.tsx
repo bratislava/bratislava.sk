@@ -55,7 +55,7 @@ const Dialog = forwardRef<HTMLElement, Props>(({ children, title, ...props }, re
             <Button
               icon={<Icon name="close" />}
               aria-label={t('Dialog.aria.close')}
-              className="absolute top-6 right-6 -m-2 bg-white hover:bg-grey-100"
+              className="absolute top-6 right-6 -m-2 bg-background-passive-base hover:bg-background-passive-secondary"
               variant="outline"
               size="small"
               onPress={close}

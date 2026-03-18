@@ -105,7 +105,7 @@ const Gallery = ({ images }: GalleryProps) => {
                   }}
                   className="relative w-full cursor-pointer overflow-hidden rounded-lg border border-action-content-default pt-[100%]"
                 >
-                  <div className="absolute top-0 flex size-full flex-col items-center justify-center gap-0.5 bg-white p-2 text-center">
+                  <div className="absolute top-0 flex size-full flex-col items-center justify-center gap-0.5 bg-background-passive-base p-2 text-center">
                     <Typography variant="h2" as="p" className="font-semibold">
                       +{moreImagesCount}
                     </Typography>
