@@ -8,7 +8,7 @@ export const getParsedMenus = (menu: GeneralQuery['menu'], moreLabel: string): M
   return (
     menu?.menus
       ?.map((menuItem) => {
-        if (!menuItem?.page?.slug) return null
+        if (!menuItem?.page?.path) return null
 
         const { label, page, icon } = menuItem
 

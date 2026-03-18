@@ -26,24 +26,22 @@ export const migrateDocuments = async () => {
     )
     .filter(
       (page) =>
-        page.slug &&
+        page.path &&
         !(
-          page.slug.includes('platna-uzemnoplanovacia-dokumentacia') ||
-          page.slug.includes('archivne-pomocky')
+          page.path.includes('platna-uzemnoplanovacia-dokumentacia') ||
+          page.path.includes('archivne-pomocky')
         ),
     )
   console.log(filteredPages.length)
 
-  // eslint-disable-next-line no-restricted-syntax
   for (const page of filteredPages) {
     const fileListSections = (page.sections?.filter(
       (section) => section?.__typename === 'ComponentSectionsFileList',
     ) ?? []) as FileListSectionFragment[]
 
     const counts = fileListSections.map((section) => section.fileList?.length ?? 0)
-    console.log(fileListSections.length, counts, `https://bratislava.sk/${page.slug}`)
+    console.log(fileListSections.length, counts, `https://bratislava.sk/${page.path}`)
 
-    // eslint-disable-next-line no-await-in-loop
     // await client.updatePage({
     //   documentId: page.documentId,
     //   locale,

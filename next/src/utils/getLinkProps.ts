@@ -44,7 +44,7 @@ export const getLinkProps = (
   // Some content types are not in all strapi link fragments, so we have to check if they exist in the object first
   if ('page' in link && link.page) {
     label = link.label ?? link.page.title
-    href = `/${link.page.slug}`
+    href = `/${link.page.path}`
   } else if ('article' in link && link.article) {
     label = link.label ?? link.article.title
     href = `/spravy/${link.article.slug}`

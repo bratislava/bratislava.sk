@@ -30,7 +30,7 @@ export const listPages = async () => {
 
       sections.forEach((section) => {
         console.log(
-          `${page.documentId} iframeHeight: ${section.iframeHeight}, allowGeolocation: ${section.allowGeolocation} ${page.slug}`,
+          `${page.documentId} iframeHeight: ${section.iframeHeight}, allowGeolocation: ${section.allowGeolocation} ${page.path}`,
         )
       })
 
@@ -45,5 +45,4 @@ export const listPages = async () => {
   console.log('Number of filteredPages:', filteredPages.length)
 }
 
-// eslint-disable-next-line unicorn/prefer-top-level-await
 listPages()

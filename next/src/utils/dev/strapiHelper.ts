@@ -99,7 +99,7 @@ export async function listPages() {
           section.__typename === 'ComponentSectionsVideos' ? section.videos?.length : -1,
         )
 
-      return `${page.documentId} ${length} ${page.slug}`
+      return `${page.documentId} ${length} ${page.path}`
     }),
   )
 }
@@ -149,7 +149,7 @@ export async function logAllSectionsByType({
     const strapiEntityLink = `${process.env.NEXT_PUBLIC_STRAPI_URL}/admin/content-manager/collection-types/api::${entityType}.${entityType}/${entity.documentId}`
     const strapiEntityLinkProd = `https://bratislava-strapi.bratislava.sk/admin/content-manager/collection-types/api::${entityType}.${entityType}/${entity.documentId}`
     // const nextEntityLinkProd = `https://bratislava.sk/${entity.attributes?.slug}`
-    const nextEntityLinkProd = `http://localhost:3000/${entity.slug}`
+    const nextEntityLinkProd = `http://localhost:3000/${entity.path}`
 
     const entityLog: { __typename: SectionName; title: string | null | undefined }[] = []
 
