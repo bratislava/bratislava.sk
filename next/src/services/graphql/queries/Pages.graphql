@@ -1,6 +1,5 @@
 fragment ParentPage on Page {
   documentId
-  slug
   locale
   title
   path
@@ -24,7 +23,6 @@ fragment PageParentPages on Page {
 
 fragment PageSlugEntity on Page {
   documentId
-  slug
   title
   locale
   path
@@ -87,12 +85,11 @@ query PagesStaticPaths(
 ) {
   pages(locale: $locale, sort: $sort, pagination: { limit: $limit }) {
     documentId
-    slug
     path
   }
 }
 
-query PageBySlug($path: String!, $locale: I18NLocaleCode!) {
+query PageByPath($path: String!, $locale: I18NLocaleCode!) {
   pages(filters: { path: { eq: $path } }, locale: $locale) {
     ...PageEntity
   }

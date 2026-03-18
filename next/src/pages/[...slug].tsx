@@ -34,10 +34,10 @@ export const getStaticPaths: GetStaticPaths<StaticParams> = async () => {
   const { pages } = await client.PagesStaticPaths({ locale: 'sk', limit: 300 })
 
   const paths = pages
-    .filter((page) => page?.slug)
+    .filter((page) => page?.path)
     .map((page) => ({
       params: {
-        slug: page!.slug!.split('/'),
+        slug: page!.path!.split('/'),
       },
     }))
 
@@ -63,7 +63,7 @@ export const getStaticProps: GetStaticProps<PageProps, StaticParams> = async ({
 
   const [{ pages }, { pages: aliasPages, articles: aliasArticles }, general, translations] =
     await Promise.all([
-      client.PageBySlug({ path: slugJoined, locale }),
+      client.PageByPath({ path: slugJoined, locale }),
       client.PageRedirectByAlias({ alias: slugJoined, locale }),
       client.General({ locale }),
       serverSideTranslations(locale),

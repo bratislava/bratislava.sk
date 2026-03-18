@@ -76,9 +76,9 @@ export const useQueryBySearchOption = ({
         data?.hits.map((page: PageMeili): SearchResult => {
           return {
             title: page.title,
-            uniqueId: page.slug,
-            linkHref: `/${page.slug}`,
-            metadata: [`/${page.slug}`, formatDate(page.publishedAt)],
+            uniqueId: page.path,
+            linkHref: `/${page.path}`,
+            metadata: [`/${page.path}`, formatDate(page.publishedAt)],
             pageColor: page.pageColor,
           }
         }) ?? []
