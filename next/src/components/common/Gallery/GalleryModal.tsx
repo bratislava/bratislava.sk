@@ -64,7 +64,7 @@ const GalleryModal = (props: ModalProps) => {
             <div
               {...underlayProps}
               className={cn(
-                'fixed inset-0 z-50 overflow-x-hidden overflow-y-auto bg-grey-800/60',
+                'fixed inset-0 z-50 overflow-x-hidden overflow-y-auto bg-background-passive-inverted-base/60',
                 underlayClassName,
               )}
             >

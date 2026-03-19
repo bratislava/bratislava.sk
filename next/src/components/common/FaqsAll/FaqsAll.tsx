@@ -68,7 +68,7 @@ const FaqsAll = () => {
       slug: 'all',
       title: t('FaqsSection.selectionOptions.allFaqs'),
     },
-    ...(faqCategoriesData ?? []),
+    ...(faqCategoriesData?.filter((item) => item.faqs.length) ?? []),
   ]
 
   const [selection, setSelection] = useState<string>(selectOptions[0].slug)

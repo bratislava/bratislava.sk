@@ -29,10 +29,10 @@ const NavBarHeader = ({ className }: NavBarProps) => {
 
   return (
     <div
-      className={cn('relative z-31 mx-auto bg-white px-4 lg:px-8', className)}
+      className={cn('relative z-31 mx-auto bg-background-passive-base px-4 lg:px-8', className)}
       style={getCategoryColorLocalStyle({ category: 'main' })}
     >
-      <nav className="flex w-full items-center justify-between border-b border-grey-200 py-2">
+      <nav className="flex w-full items-center justify-between border-b border-border-passive-primary py-2">
         <SkipToContentButton />
         <Brand withTitle />
 

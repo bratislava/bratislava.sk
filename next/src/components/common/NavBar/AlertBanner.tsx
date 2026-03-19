@@ -44,7 +44,7 @@ const AlertBanner = forwardRef<HTMLDivElement>((props, forwardedRef) => {
   return (
     <div
       ref={forwardedRef}
-      className={cn('bg-warning-700 text-white', {
+      className={cn('text-content-passive-inverted bg-background-warning-default', {
         // TODO add some animation
         // 'animate-scale-y': showAlert,
       })}

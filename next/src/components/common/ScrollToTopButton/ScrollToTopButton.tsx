@@ -32,7 +32,7 @@ const ScrollToTopButton = () => {
       aria-label={t('ScrollToTopButton.ariaLabel')}
       id="scrollToTopButton"
       // z-index is here to display over mapbox info-button
-      className={`fixed right-5 bottom-5 z-30 rounded-full border bg-white md:right-10 md:bottom-10 ${
+      className={`fixed right-5 bottom-5 z-30 rounded-full border bg-background-active-primary-inverted-default md:right-10 md:bottom-10 ${
         visible ? 'visible' : 'invisible'
       }`}
       onPress={handleScrollToTop}

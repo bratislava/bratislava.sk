@@ -16,7 +16,7 @@ const WelcomeHomepageSection = () => {
   const [isSearchOpen, setSearchOpen] = useState<boolean>(false)
 
   return (
-    <SectionContainer className="bg-white">
+    <SectionContainer className="bg-background-passive-base">
       <div className="relative flex flex-col gap-y-4 py-8 lg:flex-row lg:items-center lg:py-14">
         <div className="z-1 flex grow flex-col gap-8 lg:absolute">
           <Typography variant="h1">{welcomeHeadline}</Typography>

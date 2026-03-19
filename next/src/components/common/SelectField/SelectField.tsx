@@ -41,9 +41,9 @@ export const SelectItem = ({ label, description, isDivider = false, ...rest }: S
       {...rest}
       className={({ isHovered, isFocusVisible }) =>
         cn('base-focus-ring flex cursor-pointer justify-between px-5 py-3 ring-inset', {
-          'bg-grey-100': isHovered,
+          'bg-background-passive-secondary': isHovered,
           'ring-3 ring-offset-2': isFocusVisible,
-          'after:h-0.5 after:bg-grey-200 after:not-last:block': isDivider,
+          'after:h-0.5 after:bg-background-passive-tertiary after:not-last:block': isDivider,
         })
       }
     >
@@ -74,11 +74,11 @@ const SelectField = <T extends object>({
   const disabled = props.isDisabled
 
   const style = cn(
-    'flex w-full justify-between gap-3 rounded-lg border bg-white px-3 py-2 ring-offset-2 outline-hidden focus:border-grey-800 focus-visible:ring-3 lg:px-4 lg:py-3',
+    'flex w-full justify-between gap-3 rounded-lg border bg-background-passive-base px-3 py-2 ring-offset-2 outline-hidden focus:border-border-active-secondary-pressed focus-visible:ring-3 lg:px-4 lg:py-3',
     {
-      'border-grey-200 hover:border-grey-400': !disabled,
-      'border-negative-700 hover:border-negative-700': errorMessage && !disabled,
-      'pointer-events-none border-grey-300 bg-grey-100': disabled,
+      'border-border-active-default hover:border-border-active-hover': !disabled,
+      'border-border-error hover:border-border-error': errorMessage && !disabled,
+      'pointer-events-none border-border-active-disabled bg-background-passive-secondary': disabled,
     },
   )
 
@@ -99,7 +99,7 @@ const SelectField = <T extends object>({
       <FieldError>{errorMessage}</FieldError>
 
       <Popover
-        className="w-(--trigger-width) overflow-y-auto rounded-md border border-grey-800 bg-white py-2"
+        className="w-(--trigger-width) overflow-y-auto rounded-md border border-border-active-focused bg-background-passive-base py-2"
         shouldFlip={false}
       >
         <ListBox items={items}>{children}</ListBox>

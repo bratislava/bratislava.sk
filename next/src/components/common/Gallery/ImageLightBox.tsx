@@ -50,7 +50,7 @@ const ImageLightBox = (props: ImageLightBoxProps) => {
               sizes="100vw"
             />
             {image.caption !== image.name && image.caption && (
-              <div className="mt-4 bg-white px-2.5 py-0.5">{image.caption}</div>
+              <div className="mt-4 bg-background-passive-base px-2.5 py-0.5">{image.caption}</div>
             )}
           </div>
         ))}

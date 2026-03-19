@@ -44,9 +44,11 @@ const Banner = ({
         // overflow-hidden ensures image not to overlap with rounded corners
         'flex h-full w-full flex-col-reverse overflow-hidden rounded-lg lg:flex-row-reverse @page-wide:rounded-xl',
         {
-          'bg-category-200 text-grey-700': variant === 'color',
-          'bg-grey-800 text-white': variant === 'dark',
-          'border bg-white text-grey-700': variant === 'white_condensed',
+          'bg-category-200 text-content-passive-primary': variant === 'color',
+          'bg-background-passive-inverted-base text-content-passive-inverted-primary':
+            variant === 'dark',
+          'border bg-background-passive-base text-content-passive-primary':
+            variant === 'white_condensed',
           'flex-col lg:flex-row': contentPosition === 'left',
         },
         className,
@@ -80,7 +82,8 @@ const Banner = ({
           {tertiaryLink && (
             <Button
               className={cn('font-semibold no-underline', {
-                'text-white hover:text-white/80 focus:text-white/80': variant === 'dark',
+                'text-content-passive-inverted hover:text-content-passive-inverted/80 focus:text-content-passive-inverted/80':
+                  variant === 'dark',
               })}
               variant="link"
               {...getLinkProps(tertiaryLink)}

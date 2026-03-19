@@ -46,7 +46,7 @@ const LatestNews = ({ leftArticle, rightArticle, otherArticles, newsPageLink }: 
             <ArticleCard key={article.slug} {...transformArticleProps(article)} />
           ))}
 
-          <div className="flex-col gap-4 self-start rounded-lg border border-border-passive-primary bg-white p-6 lg:flex">
+          <div className="flex-col gap-4 self-start rounded-lg border border-border-passive-primary bg-background-passive-base p-6 lg:flex">
             {otherArticles.map((article, index) => {
               const { slug, title, addedAt } = article
 

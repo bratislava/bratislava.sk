@@ -14,17 +14,18 @@ const ComparisonCard = ({ title, items, color, icon }: ComparisonProps) => {
   return (
     <li
       className={cn('relative rounded-lg border', {
-        'border-success-700 bg-success-100': color === 'green',
-        'border-negative-700 bg-negative-100': color === 'red',
-        'border-grey-200 bg-white': color === 'white',
+        'border-border-success bg-background-success-soft-default': color === 'green',
+        'border-border-error bg-background-error-soft-default': color === 'red',
+        'border-border-passive-primary bg-background-passive-base': color === 'white',
       })}
     >
       <div className="flex flex-col p-5 lg:p-8">
         <div
           className={cn('flex h-14 w-14 shrink-0 items-center justify-center rounded-full', {
-            'bg-white text-success-700': color === 'green',
-            'bg-white text-negative-700': color === 'red',
-            'bg-grey-100 text-grey-700': color === 'white',
+            'bg-background-passive-base text-content-success-default': color === 'green',
+            'bg-background-passive-base text-content-error-default': color === 'red',
+            'bg-background-passive-secondary text-content-active-primary-default':
+              color === 'white',
           })}
         >
           {/* This dev sets "boundaries" for custom icon image from Strapi */}
