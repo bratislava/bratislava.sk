@@ -454,6 +454,7 @@
           "title",
           "slug",
           "files",
+          "isAccessible",
           "description",
           "assetCategory",
           "adminGroups",
@@ -463,7 +464,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "jsk2uvlqvo9taxr2vqnjwn48",
+      "documentId": "gaqrgqmlpqw9dc5wizpdokre",
       "locale": null
     },
     {
@@ -492,6 +493,7 @@
           "title",
           "slug",
           "files",
+          "isAccessible",
           "description",
           "assetCategory",
           "adminGroups",
@@ -501,7 +503,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "nr53kq3ixyw9521f6w6b2hwh",
+      "documentId": "nqmpddvl2n11xk0hzmb429xc",
       "locale": null
     },
     {
@@ -512,6 +514,7 @@
           "title",
           "slug",
           "files",
+          "isAccessible",
           "description",
           "assetCategory",
           "adminGroups",
@@ -521,7 +524,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "antv4ixe14hj1c67v3tpjq1j",
+      "documentId": "rnvghumvehq4glkotx2yad5p",
       "locale": null
     },
     {

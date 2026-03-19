@@ -274,6 +274,7 @@ type Asset {
   documentId: ID!
   files(filters: UploadFileFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [UploadFile]!
   files_connection(filters: UploadFileFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UploadFileRelationResponseCollection!
+  isAccessible: Boolean
   publishedAt: DateTime
   slug: String!
   title: String!
@@ -352,6 +353,7 @@ input AssetFiltersInput {
   customPublishedAt: DateTimeFilterInput
   description: StringFilterInput
   documentId: IDFilterInput
+  isAccessible: BooleanFilterInput
   not: AssetFiltersInput
   or: [AssetFiltersInput]
   publishedAt: DateTimeFilterInput
@@ -367,6 +369,7 @@ input AssetInput {
   customPublishedAt: DateTime
   description: String
   files: [ID]
+  isAccessible: Boolean
   publishedAt: DateTime
   slug: String
   title: String

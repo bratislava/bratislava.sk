@@ -24,10 +24,11 @@
       "type": "media",
       "multiple": true,
       "required": true,
-      "allowedTypes": [
-        "images",
-        "files"
-      ]
+      "allowedTypes": ["images", "files"]
+    },
+    "isAccessible": {
+      "type": "boolean",
+      "default": false
     },
     "description": {
       "type": "text"

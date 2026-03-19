@@ -133,6 +133,20 @@
           "sortable": false
         }
       },
+      "isAccessible": {
+        "edit": {
+          "label": "isAccessible",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "isAccessible",
+          "searchable": true,
+          "sortable": true
+        }
+      },
       "createdAt": {
         "edit": {
           "label": "createdAt",
@@ -201,13 +215,6 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "title",
-        "slug",
-        "updatedAt",
-        "createdAt"
-      ],
       "edit": [
         [
           {
@@ -243,6 +250,10 @@
           {
             "name": "customPublishedAt",
             "size": 6
+          },
+          {
+            "name": "isAccessible",
+            "size": 6
           }
         ],
         [
@@ -251,6 +262,14 @@
             "size": 12
           }
         ]
+      ],
+      "list": [
+        "updatedAt",
+        "id",
+        "title",
+        "createdAt",
+        "isAccessible",
+        "slug"
       ]
     },
     "uid": "api::asset.asset"
