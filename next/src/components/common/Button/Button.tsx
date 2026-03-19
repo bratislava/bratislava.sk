@@ -162,7 +162,7 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
               'p-2': size === 'large' && isIconButton && isPlainVariant,
 
               // colors - bg, border, content - variant solid (figma: boxed primary)
-              'border-action-border-default bg-background-active-primary-default text-white':
+              'border-action-border-default bg-background-active-primary-default text-content-active-primary-inverted-default':
                 variant === 'solid',
               'hover:border-action-border-hover hover:bg-action-background-hover':
                 variant === 'solid',
@@ -193,15 +193,18 @@ const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, PolymorphicProp
                 variant === 'plain' && !isDisabled,
 
               // colors - bg, border, content - variant negative-solid
-              'border-negative-700 bg-negative-700 text-white': variant === 'negative-solid',
-              'hover:border-negative-600 hover:bg-negative-600': variant === 'negative-solid',
-              'active:border-negative-800 active:bg-negative-800':
+              'border-background-error-default bg-background-error-default text-content-active-primary-inverted-default':
+                variant === 'negative-solid',
+              'hover:border-background-error-hover hover:bg-background-error-hover':
+                variant === 'negative-solid',
+              'active:border-background-error-pressed active:bg-background-error-pressed':
                 variant === 'negative-solid' && !isDisabled,
 
               // colors - bg, border, content - variant negative-plain
-              'text-negative-700': variant === 'negative-plain',
-              'hover:bg-negative-100 hover:text-negative-600': variant === 'negative-plain',
-              'active:bg-negative-200 active:text-negative-800':
+              'text-background-error-default': variant === 'negative-plain',
+              'hover:bg-background-error-soft-hover hover:text-background-error-hover':
+                variant === 'negative-plain',
+              'active:bg-background-error-soft-pressed active:text-background-error-pressed':
                 variant === 'negative-plain' && !isDisabled,
 
               // colors - bg, border, content - variant link

@@ -13,7 +13,7 @@ const NavBar = () => {
 
   return (
     <>
-      <div className="hidden w-full bg-white lg:block">
+      <div className="hidden w-full bg-background-passive-base lg:block">
         <AlertBanner ref={alertRef} />
         <div className="relative w-full">
           <NavBarHeader />

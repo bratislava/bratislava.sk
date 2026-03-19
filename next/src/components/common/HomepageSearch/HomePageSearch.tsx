@@ -73,7 +73,7 @@ const HomePageSearch = ({ isOpen, setOpen }: HomePageSearchProps) => {
       </div>
       <AnimateHeight isVisible={isOpen} className="absolute top-full z-40 mt-2 w-full md:w-[634px]">
         {searchValue ? (
-          <div className="rounded-lg border bg-white py-2">
+          <div className="rounded-lg border bg-background-passive-base py-2">
             <HomePageSearchResults data={data} isLoading={isPending} searchValue={searchValue} />
           </div>
         ) : null}

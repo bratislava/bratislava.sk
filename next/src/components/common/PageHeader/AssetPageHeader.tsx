@@ -40,7 +40,7 @@ const AssetPageHeader = ({ asset }: Props) => {
   ).filter(isDefined)
 
   return (
-    <div className={cn('relative overflow-x-clip bg-grey-100')}>
+    <div className={cn('relative overflow-x-clip bg-background-passive-secondary')}>
       <div className="relative mx-auto max-w-(--breakpoint-xl) px-4 lg:px-8">
         <div className="py-6 lg:py-8">
           <div className="flex flex-col items-start gap-4 lg:gap-6">

@@ -96,7 +96,6 @@ const ButtonStacks = ({ variantPrefix }: { variantPrefix?: 'negative' }) => {
           Disabled
         </Button>
       </Stack>
-
       {variantPrefix !== 'negative' && (
         <Stack>
           <Button variant={outlineVariant}>
@@ -179,7 +178,6 @@ const ButtonStacks = ({ variantPrefix }: { variantPrefix?: 'negative' }) => {
           </Button>
         </Stack>
       )}
-
       <Stack>
         <Button variant={plainVariant}>
           Button {variantPrefix ? `${variantPrefix}-plain` : 'plain'}
