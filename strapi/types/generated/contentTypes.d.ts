@@ -836,7 +836,6 @@ export interface ApiGeneralGeneral extends Struct.SingleTypeSchema {
     assetsPage: Schema.Attribute.Relation<'oneToOne', 'api::page.page'>
     createdAt: Schema.Attribute.DateTime
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> & Schema.Attribute.Private
-    documentsPage: Schema.Attribute.Relation<'oneToOne', 'api::page.page'>
     header: Schema.Attribute.Component<'general.header', false> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {

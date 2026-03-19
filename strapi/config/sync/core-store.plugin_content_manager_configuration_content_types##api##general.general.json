@@ -124,21 +124,6 @@
           "sortable": true
         }
       },
-      "documentsPage": {
-        "edit": {
-          "label": "documentsPage",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true,
-          "mainField": "title"
-        },
-        "list": {
-          "label": "documentsPage",
-          "searchable": true,
-          "sortable": true
-        }
-      },
       "assetsPage": {
         "edit": {
           "label": "assetsPage",
@@ -222,7 +207,12 @@
       }
     },
     "layouts": {
-      "list": ["id", "header", "createdAt", "updatedAt"],
+      "list": [
+        "id",
+        "header",
+        "createdAt",
+        "updatedAt"
+      ],
       "edit": [
         [
           {
@@ -233,10 +223,6 @@
         [
           {
             "name": "newsPage",
-            "size": 6
-          },
-          {
-            "name": "documentsPage",
             "size": 6
           }
         ],

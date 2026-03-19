@@ -56,11 +56,6 @@
       "relation": "oneToOne",
       "target": "api::page.page"
     },
-    "documentsPage": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::page.page"
-    },
     "assetsPage": {
       "type": "relation",
       "relation": "oneToOne",

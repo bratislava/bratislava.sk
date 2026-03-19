@@ -3118,7 +3118,6 @@ type General {
   assetsPage: Page
   createdAt: DateTime
   documentId: ID!
-  documentsPage: Page
   header: ComponentGeneralHeader
   inbaPage: Page
   inbaReleasesPage: Page
@@ -3151,7 +3150,6 @@ input GeneralFiltersInput {
   and: [GeneralFiltersInput]
   assetsPage: PageFiltersInput
   createdAt: DateTimeFilterInput
-  documentsPage: PageFiltersInput
   header: ComponentGeneralHeaderFiltersInput
   inbaPage: PageFiltersInput
   inbaReleasesPage: PageFiltersInput
@@ -3169,7 +3167,6 @@ input GeneralFiltersInput {
 
 input GeneralInput {
   assetsPage: ID
-  documentsPage: ID
   header: ComponentGeneralHeaderInput
   inbaPage: ID
   inbaReleasesPage: ID
