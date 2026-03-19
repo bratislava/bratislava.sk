@@ -1,9 +1,9 @@
+import { Button } from '@bratislava/component-library'
 import { useQuery } from '@tanstack/react-query'
 import { useTranslation } from 'next-i18next'
 import { forwardRef, useEffect, useState } from 'react'
 import { useLocalStorage } from 'usehooks-ts'
 
-import { Button } from '@bratislava/component-library'
 import Icon from '@/src/components/common/Icon/Icon'
 import Markdown from '@/src/components/formatting/Markdown/Markdown'
 import { client } from '@/src/services/graphql/gql'

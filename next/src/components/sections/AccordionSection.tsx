@@ -1,8 +1,7 @@
-import { Typography } from '@bratislava/component-library'
+import { Button, Typography } from '@bratislava/component-library'
 import { Fragment } from 'react'
 
 import { getCardTitleLevel } from '@/src/components/cards/getCardTitleLevel'
-import { Button } from '@bratislava/component-library'
 import Disclosure from '@/src/components/common/Disclosure/Disclosure'
 import DisclosureGroup from '@/src/components/common/Disclosure/DisclosureGroup'
 import DisclosureHeader from '@/src/components/common/Disclosure/DisclosureHeader'

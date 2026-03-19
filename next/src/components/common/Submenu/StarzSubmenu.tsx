@@ -1,4 +1,5 @@
 import { Button } from '@bratislava/component-library'
+
 import StarzLogo from '@/src/components/common/Logos/StarzLogo'
 import SectionContainer from '@/src/components/layouts/SectionContainer'
 import { AdminGroupEntityFragment } from '@/src/services/graphql'

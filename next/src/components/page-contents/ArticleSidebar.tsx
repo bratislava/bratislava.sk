@@ -1,7 +1,6 @@
-import { Typography } from '@bratislava/component-library'
+import { Button, Typography } from '@bratislava/component-library'
 
 import { BratislavaLogoBWSvg, StarzLogoSvg } from '@/src/assets/images'
-import { Button } from '@bratislava/component-library'
 import HorizontalDivider from '@/src/components/common/Divider/HorizontalDivider'
 import CardImage from '@/src/components/common/Image/CardImage'
 import MLink from '@/src/components/common/MLink/MLink'

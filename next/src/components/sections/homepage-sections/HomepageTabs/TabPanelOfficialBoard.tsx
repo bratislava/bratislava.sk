@@ -1,10 +1,9 @@
-import { Typography } from '@bratislava/component-library'
+import { Button, Typography } from '@bratislava/component-library'
 import { useQuery } from '@tanstack/react-query'
 import { useTranslation } from 'next-i18next'
 import { Fragment } from 'react'
 import { TabPanel } from 'react-aria-components'
 
-import { Button } from '@bratislava/component-library'
 import HorizontalDivider from '@/src/components/common/Divider/HorizontalDivider'
 import LoadingSpinner from '@/src/components/common/LoadingSpinner/LoadingSpinner'
 import { useHomepageContext } from '@/src/components/providers/HomepageContextProvider'

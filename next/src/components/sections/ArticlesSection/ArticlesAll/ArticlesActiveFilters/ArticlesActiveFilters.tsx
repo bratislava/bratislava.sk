@@ -1,7 +1,6 @@
-import { Typography } from '@bratislava/component-library'
+import { Button, Typography } from '@bratislava/component-library'
 import { Key, Label, Tag, TagGroup, TagGroupProps, TagList } from 'react-aria-components'
 
-import { Button } from '@bratislava/component-library'
 import Disclosure from '@/src/components/common/Disclosure/Disclosure'
 import DisclosureHeader from '@/src/components/common/Disclosure/DisclosureHeader'
 import DisclosurePanel from '@/src/components/common/Disclosure/DisclosurePanel'

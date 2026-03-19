@@ -1,7 +1,6 @@
-import { Typography } from '@bratislava/component-library'
+import { Button, Typography } from '@bratislava/component-library'
 import { useId } from 'react'
 
-import { Button } from '@bratislava/component-library'
 import Pictogram from '@/src/components/common/Pictogram/Pictogram'
 import { TopServicesItemFragment } from '@/src/services/graphql'
 import { getLinkProps } from '@/src/utils/getLinkProps'

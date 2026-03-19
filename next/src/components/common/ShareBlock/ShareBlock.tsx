@@ -1,6 +1,5 @@
-import { Typography } from '@bratislava/component-library'
+import { Button, Typography } from '@bratislava/component-library'
 
-import { Button } from '@bratislava/component-library'
 import Icon from '@/src/components/common/Icon/Icon'
 import ShareModal from '@/src/components/common/ShareBlock/ShareModal'
 

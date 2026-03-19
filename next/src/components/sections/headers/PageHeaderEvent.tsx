@@ -1,6 +1,5 @@
-import { Typography } from '@bratislava/component-library'
+import { Button, Typography } from '@bratislava/component-library'
 
-import { Button } from '@bratislava/component-library'
 import ImagePlaceholder from '@/src/components/common/Image/ImagePlaceholder'
 import StrapiImage from '@/src/components/common/Image/StrapiImage'
 import PageHeader, { PageHeaderProps } from '@/src/components/common/PageHeader/PageHeader'

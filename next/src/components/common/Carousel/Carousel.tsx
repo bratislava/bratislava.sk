@@ -1,6 +1,6 @@
+import { Button } from '@bratislava/component-library'
 import React, { ReactNode, useRef, useState } from 'react'
 
-import { Button } from '@bratislava/component-library'
 import Icon from '@/src/components/common/Icon/Icon'
 import cn from '@/src/utils/cn'
 import { useTranslation } from '@/src/utils/useTranslation'

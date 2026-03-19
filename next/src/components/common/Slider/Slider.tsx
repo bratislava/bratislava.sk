@@ -1,9 +1,9 @@
+import { Button } from '@bratislava/component-library'
 import { AriaLabelingProps } from '@react-types/shared'
 import { AnimatePresence, motion, MotionProps, Variant } from 'framer-motion'
 import { useTranslation } from 'next-i18next'
 import { isValidElement, ReactNode } from 'react'
 
-import { Button } from '@bratislava/component-library'
 import cn from '@/src/utils/cn'
 
 import DotSvg from './dot.svg'

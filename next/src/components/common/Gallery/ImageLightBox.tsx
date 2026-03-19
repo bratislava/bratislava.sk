@@ -1,6 +1,6 @@
+import { Button } from '@bratislava/component-library'
 import { useEffect, useRef } from 'react'
 
-import { Button } from '@bratislava/component-library'
 import GalleryModal, { ModalProps } from '@/src/components/common/Gallery/GalleryModal'
 import GallerySlider from '@/src/components/common/Gallery/GallerySlider'
 import Icon from '@/src/components/common/Icon/Icon'

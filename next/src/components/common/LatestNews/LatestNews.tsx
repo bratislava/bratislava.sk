@@ -1,9 +1,8 @@
-import { Typography } from '@bratislava/component-library'
+import { Button, Typography } from '@bratislava/component-library'
 import { Fragment } from 'react'
 
 import ArticleCard from '@/src/components/cards/ArticleCard'
 import { transformArticleProps } from '@/src/components/cards/transformArticleProps'
-import { Button } from '@bratislava/component-library'
 import ResponsiveCarousel from '@/src/components/common/Carousel/ResponsiveCarousel'
 import HorizontalDivider from '@/src/components/common/Divider/HorizontalDivider'
 import MLink from '@/src/components/common/MLink/MLink'
