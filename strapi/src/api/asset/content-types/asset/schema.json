@@ -24,11 +24,10 @@
       "type": "media",
       "multiple": true,
       "required": true,
-      "allowedTypes": ["images", "files"]
-    },
-    "isAccessible": {
-      "type": "boolean",
-      "default": false
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
     },
     "description": {
       "type": "text"
@@ -50,6 +49,10 @@
     },
     "customMetadata": {
       "type": "json"
+    },
+    "isAccessible": {
+      "type": "boolean",
+      "default": false
     }
   }
 }

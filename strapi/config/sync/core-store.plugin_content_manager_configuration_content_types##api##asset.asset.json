@@ -61,6 +61,20 @@
           "sortable": false
         }
       },
+      "isAccessible": {
+        "edit": {
+          "label": "Prístupný",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "isAccessible",
+          "searchable": true,
+          "sortable": true
+        }
+      },
       "description": {
         "edit": {
           "label": "Popis",
@@ -131,20 +145,6 @@
           "label": "customMetadata",
           "searchable": false,
           "sortable": false
-        }
-      },
-      "isAccessible": {
-        "edit": {
-          "label": "isAccessible",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "isAccessible",
-          "searchable": true,
-          "sortable": true
         }
       },
       "createdAt": {
@@ -250,10 +250,6 @@
           {
             "name": "customPublishedAt",
             "size": 6
-          },
-          {
-            "name": "isAccessible",
-            "size": 6
           }
         ],
         [
@@ -261,15 +257,21 @@
             "name": "customMetadata",
             "size": 12
           }
+        ],
+        [
+          {
+            "name": "isAccessible",
+            "size": 6
+          }
         ]
       ],
       "list": [
-        "updatedAt",
         "id",
         "title",
+        "slug",
+        "updatedAt",
         "createdAt",
-        "isAccessible",
-        "slug"
+        "isAccessible"
       ]
     },
     "uid": "api::asset.asset"

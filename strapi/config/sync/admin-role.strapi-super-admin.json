@@ -454,17 +454,17 @@
           "title",
           "slug",
           "files",
-          "isAccessible",
           "description",
           "assetCategory",
           "adminGroups",
           "customPublishedAt",
-          "customMetadata"
+          "customMetadata",
+          "isAccessible"
         ]
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "gaqrgqmlpqw9dc5wizpdokre",
+      "documentId": "uy5igi0rn52p7lryg2js8z4y",
       "locale": null
     },
     {
@@ -493,17 +493,17 @@
           "title",
           "slug",
           "files",
-          "isAccessible",
           "description",
           "assetCategory",
           "adminGroups",
           "customPublishedAt",
-          "customMetadata"
+          "customMetadata",
+          "isAccessible"
         ]
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "nqmpddvl2n11xk0hzmb429xc",
+      "documentId": "h33rvgw77qyhc4yzodqcfvjd",
       "locale": null
     },
     {
@@ -514,17 +514,17 @@
           "title",
           "slug",
           "files",
-          "isAccessible",
           "description",
           "assetCategory",
           "adminGroups",
           "customPublishedAt",
-          "customMetadata"
+          "customMetadata",
+          "isAccessible"
         ]
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "rnvghumvehq4glkotx2yad5p",
+      "documentId": "nlc6xqabkt002st0rkbdbf75",
       "locale": null
     },
     {
