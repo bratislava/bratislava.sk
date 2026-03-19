@@ -4,6 +4,7 @@ import { Fragment, useMemo } from 'react'
 
 import FileRowCard from '@/src/components/cards/FileRowCard'
 import Breadcrumbs, { Breadcrumb } from '@/src/components/common/Breadcrumbs/Breadcrumbs'
+import { getPageBreadcrumbs } from '@/src/components/common/Breadcrumbs/getPageBreadcrumbs'
 import HorizontalDivider from '@/src/components/common/Divider/HorizontalDivider'
 import AssetPageHeader from '@/src/components/common/PageHeader/AssetPageHeader'
 import SectionContainer from '@/src/components/layouts/SectionContainer'
@@ -13,7 +14,6 @@ import { formatDate } from '@/src/utils/formatDate'
 import { formatFileExtension } from '@/src/utils/formatFileExtension'
 import { formatFileSize } from '@/src/utils/formatFileSize'
 import { isDefined } from '@/src/utils/isDefined'
-import { getPageBreadcrumbs } from '@/src/utils/pageUtils_Deprecated'
 
 type Props = {
   asset: AssetEntityFragment
@@ -56,7 +56,7 @@ const AssetPageContent = ({ asset }: Props) => {
 
   return (
     <>
-      <div className="bg-grey-100">
+      <div className="bg-background-passive-secondary">
         <SectionContainer>
           <Breadcrumbs breadcrumbs={breadcrumbs} />
         </SectionContainer>

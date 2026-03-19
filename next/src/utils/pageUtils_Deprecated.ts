@@ -1,9 +1,6 @@
 import groupBy from 'lodash/groupBy'
 import sortBy from 'lodash/sortBy'
 
-import { Breadcrumb } from '@/src/components/common/Breadcrumbs/Breadcrumbs'
-import { PageParentPagesFragment } from '@/src/services/graphql'
-
 // TODO this should be thrown away
 // Page Accordion Items
 export const groupByCategory = <T extends { category?: string | null }>(items: T[]) => {
@@ -18,28 +15,4 @@ export const groupByCategory = <T extends { category?: string | null }>(items: T
     // @ts-ignore
     items: sorted[key] as T[],
   }))
-}
-
-// TODO: Replace with Navikronos.
-export const getPageBreadcrumbs = (page: PageParentPagesFragment) => {
-  const current = page
-  if (!current) {
-    return [] as Breadcrumb[]
-  }
-  let parentPage = current?.parentPage
-  const breadcrumbs: Breadcrumb[] = [
-    {
-      title: current?.title ?? '',
-      path: current?.path ? `/${current.path}` : null,
-    },
-  ]
-  while (parentPage) {
-    breadcrumbs.push({
-      title: parentPage.title ?? '',
-      path: parentPage.path ? `/${parentPage.path}` : null,
-    })
-    parentPage = parentPage.parentPage
-  }
-
-  return breadcrumbs.reverse()
 }
