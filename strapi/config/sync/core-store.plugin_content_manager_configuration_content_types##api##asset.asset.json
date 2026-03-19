@@ -63,8 +63,8 @@
       },
       "isAccessible": {
         "edit": {
-          "label": "Prístupný",
-          "description": "",
+          "label": "Spĺňa štandardy prístupnosti?",
+          "description": "Označuje, či dokument spĺňa štandardy prístupnosti dokumentov. Slúži na filtrovanie v Strapi a nezobrazuje sa na stránke.",
           "placeholder": "",
           "visible": true,
           "editable": true
@@ -265,14 +265,7 @@
           }
         ]
       ],
-      "list": [
-        "id",
-        "title",
-        "slug",
-        "updatedAt",
-        "createdAt",
-        "isAccessible"
-      ]
+      "list": ["id", "title", "slug", "updatedAt", "createdAt", "isAccessible"]
     },
     "uid": "api::asset.asset"
   },
