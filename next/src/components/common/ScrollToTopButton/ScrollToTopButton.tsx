@@ -1,8 +1,8 @@
+import { Button } from '@bratislava/component-library'
 import { useTranslation } from 'next-i18next'
 import { useState } from 'react'
 import { useEventListener } from 'usehooks-ts'
 
-import Button from '@/src/components/common/Button/Button'
 import Icon from '@/src/components/common/Icon/Icon'
 
 const handleScrollToTop = () => {

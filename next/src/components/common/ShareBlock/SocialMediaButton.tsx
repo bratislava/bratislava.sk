@@ -1,10 +1,9 @@
+import { Button, ButtonProps } from '@bratislava/component-library'
 import { PropsWithChildren } from 'react'
-
-import Button, { PolymorphicProps } from '@/src/components/common/Button/Button'
 
 type SocialMediaButtonProps = PropsWithChildren<{
   getSocialLink: (link: string) => string
-  startIcon: PolymorphicProps['startIcon']
+  startIcon: ButtonProps['startIcon']
   className?: string
 }>
 

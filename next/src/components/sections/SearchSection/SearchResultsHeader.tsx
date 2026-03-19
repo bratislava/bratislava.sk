@@ -1,6 +1,5 @@
-import { Typography } from '@bratislava/component-library'
+import { Button, Typography } from '@bratislava/component-library'
 
-import Button from '@/src/components/common/Button/Button'
 import Icon from '@/src/components/common/Icon/Icon'
 import { useTranslation } from '@/src/utils/useTranslation'
 

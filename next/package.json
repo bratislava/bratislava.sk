@@ -29,7 +29,7 @@
   },
   "dependencies": {
     "@azure/msal-node": "^3.4.0",
-    "@bratislava/component-library": "1.0.5",
+    "@bratislava/component-library": "1.1.1",
     "@bratislava/ginis-sdk": "2.2.0",
     "@iframe-resizer/react": "5.5.7",
     "@internationalized/date": "3.11.0",

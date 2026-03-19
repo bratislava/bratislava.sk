@@ -1,8 +1,8 @@
+import { Button } from '@bratislava/component-library'
 import { useTranslation } from 'next-i18next'
 import { ReactNode } from 'react'
 import { DialogTrigger } from 'react-aria-components'
 
-import Button from '@/src/components/common/Button/Button'
 import Dialog from '@/src/components/common/ModalDialog/Dialog'
 import Modal from '@/src/components/common/ModalDialog/Modal'
 import ArticlesCheckboxFilters from '@/src/components/sections/ArticlesSection/ArticlesAll/ArticlesCheckboxFilters/ArticlesCheckboxFilters'

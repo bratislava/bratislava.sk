@@ -1,9 +1,8 @@
-import { Typography } from '@bratislava/component-library'
+import { Button, Typography } from '@bratislava/component-library'
 import { useId } from 'react'
 
 import CardBase from '@/src/components/cards/CardBase'
 import CardContent from '@/src/components/cards/CardContent'
-import Button from '@/src/components/common/Button/Button'
 import { CommonLinkProps } from '@/src/utils/getLinkProps'
 
 type Props = {

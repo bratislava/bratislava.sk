@@ -1,9 +1,8 @@
-import { Typography } from '@bratislava/component-library'
+import { Button, Typography } from '@bratislava/component-library'
 import Image from 'next/image'
 import { PropsWithChildren } from 'react'
 
 import Breadcrumbs, { BreadcrumbsProps } from '@/src/components/common/Breadcrumbs/Breadcrumbs'
-import Button from '@/src/components/common/Button/Button'
 import Waves from '@/src/components/common/Waves/Waves'
 import { CommonLinkFragment } from '@/src/services/graphql'
 import cn from '@/src/utils/cn'

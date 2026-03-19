@@ -1,7 +1,6 @@
-import { Typography } from '@bratislava/component-library'
+import { Button, Typography } from '@bratislava/component-library'
 
 import type { BreadcrumbsProps } from '@/src/components/common/Breadcrumbs/Breadcrumbs'
-import Button from '@/src/components/common/Button/Button'
 import Disclosure from '@/src/components/common/Disclosure/Disclosure'
 import DisclosureHeader from '@/src/components/common/Disclosure/DisclosureHeader'
 import DisclosurePanel from '@/src/components/common/Disclosure/DisclosurePanel'

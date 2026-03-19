@@ -1,5 +1,6 @@
 import '@/src/styles/globals.css'
 
+import { ComponentLibraryProvider } from '@bratislava/component-library'
 import { GoogleTagManager } from '@next/third-parties/google'
 import { AppProps } from 'next/app'
 import { Inter } from 'next/font/google'
@@ -11,6 +12,7 @@ import { NuqsAdapter } from 'nuqs/adapters/next/pages'
 import { OverlayProvider } from 'react-aria'
 import { QueryParamProvider } from 'use-query-params'
 
+import MLink from '@/src/components/common/MLink/MLink'
 import { NavMenuContextProvider } from '@/src/components/common/NavBar/NavMenu/navMenuContext'
 import BAI18nProvider from '@/src/components/providers/BAI18nProvider'
 import BAQueryClientProvider from '@/src/components/providers/BAQueryClientProvider'
@@ -55,10 +57,12 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
               <BAI18nProvider>
                 <OverlayProvider>
                   <NavMenuContextProvider>
-                    {/* This root div is used for locked body when mobile menu ist open, see MobileNavMenu component */}
-                    <div id="root">
-                      <Component {...pageProps} />
-                    </div>
+                    <ComponentLibraryProvider linkComponent={MLink}>
+                      {/* This root div is used for locked body when mobile menu ist open, see MobileNavMenu component */}
+                      <div id="root">
+                        <Component {...pageProps} />
+                      </div>
+                    </ComponentLibraryProvider>
                     <GoogleTagManager
                       gtmId={process.env.NEXT_PUBLIC_GTM_ID ?? ''}
                       auth={process.env.NEXT_PUBLIC_GTM_AUTH ?? ''}

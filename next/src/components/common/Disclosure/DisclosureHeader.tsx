@@ -1,10 +1,10 @@
+import { Button } from '@bratislava/component-library'
 import { useContext } from 'react'
 import {
   DisclosureStateContext as RACDisclosureStateContext,
   Heading as RACHeading,
 } from 'react-aria-components'
 
-import Button from '@/src/components/common/Button/Button'
 import Icon from '@/src/components/common/Icon/Icon'
 import cn from '@/src/utils/cn'
 
