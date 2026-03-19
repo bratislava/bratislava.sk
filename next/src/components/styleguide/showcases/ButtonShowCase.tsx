@@ -2,324 +2,174 @@
 import { Button, ButtonProps } from '@bratislava/component-library'
 
 import Icon from '@/src/components/common/Icon/Icon'
+import cn from '@/src/utils/cn'
 
 import Stack from '../Stack'
 import Wrapper from '../Wrapper'
 
-const ButtonStacks = ({ variantPrefix }: { variantPrefix?: 'negative' }) => {
-  const solidVariant: ButtonProps['variant'] = variantPrefix ? `${variantPrefix}-solid` : 'solid'
+type ButtonVariant = ButtonProps['variant']
 
-  const outlineVariant: ButtonProps['variant'] = 'outline'
+// All button variants from Button.tsx, grouped for display
+const variants: Record<string, ButtonVariant[]> = {
+  basic: [
+    'solid',
+    'outline',
+    'outline-soft',
+    'plain',
+    'solid-inverted',
+    'negative-solid',
+    'negative-plain',
+  ],
+  link: ['link', 'link-inverted'],
+  iconWrapped: ['icon-wrapped', 'icon-wrapped-negative-margin'],
+}
 
-  const plainVariant: ButtonProps['variant'] = variantPrefix ? `${variantPrefix}-plain` : 'plain'
+type ButtonExampleProps = Omit<ButtonProps, 'aria-label'>
 
-  return (
-    <>
-      <Stack>
-        <Button variant={solidVariant}>
-          Button {variantPrefix ? `${variantPrefix}-solid` : 'solid'}
-        </Button>
-        <Button variant={solidVariant} size="small">
-          Button
-        </Button>
-        <Button variant={solidVariant} isDisabled>
-          Disabled
-        </Button>
-        <Button variant={solidVariant} size="small" isDisabled>
-          Disabled
-        </Button>
-        <Button variant={solidVariant} icon={<Icon name="search" />} aria-label="Search" />
-        <Button
-          variant={solidVariant}
-          icon={<Icon name="search" />}
-          aria-label="Search"
-          size="small"
-        />
-        <Button
-          variant={solidVariant}
-          icon={<Icon name="search" />}
-          aria-label="Search"
-          isDisabled
-        />
-        <Button
-          variant={solidVariant}
-          icon={<Icon name="search" />}
-          aria-label="Search"
-          size="small"
-          isDisabled
-        />
-        <Button variant={solidVariant} startIcon={<Icon name="search" />}>
-          Button
-        </Button>
-        <Button variant={solidVariant} size="small" startIcon={<Icon name="search" />}>
-          Button
-        </Button>
-        <Button variant={solidVariant} endIcon={<Icon name="edit" />}>
-          Button
-        </Button>
-        <Button variant={solidVariant} size="small" endIcon={<Icon name="edit" />}>
-          Button
-        </Button>
-        <Button
-          variant={solidVariant}
-          startIcon={<Icon name="search" />}
-          endIcon={<Icon name="edit" />}
-        >
-          Button
-        </Button>
-        <Button
-          variant={solidVariant}
-          size="small"
-          startIcon={<Icon name="search" />}
-          endIcon={<Icon name="edit" />}
-        >
-          Button
-        </Button>
-        <Button
-          variant={solidVariant}
-          startIcon={<Icon name="search" />}
-          endIcon={<Icon name="edit" />}
-          isDisabled
-        >
-          Disabled
-        </Button>
-        <Button
-          variant={solidVariant}
-          startIcon={<Icon name="search" />}
-          endIcon={<Icon name="edit" />}
-          size="small"
-          isDisabled
-        >
-          Disabled
-        </Button>
-      </Stack>
+const basicButtonExamples = {
+  'size-default': [
+    { children: 'Default' },
+    { isDisabled: true, children: 'Disabled' },
+    { icon: true },
+    { startIcon: true, children: 'Start icon' },
+    { endIcon: true, children: 'End icon' },
+    { startIcon: true, endIcon: true, children: 'Both icons' },
+    { isLoading: true, loadingText: 'Loading…' },
+  ],
+  'size-small': [
+    { size: 'small', children: 'Small' },
+    { size: 'small', isDisabled: true, children: 'Small disabled' },
+    { size: 'small', icon: true },
+    { size: 'small', startIcon: true, children: 'Start icon' },
+    { size: 'small', endIcon: true, children: 'End icon' },
+    { size: 'small', startIcon: true, endIcon: true, children: 'Both icons' },
+    { size: 'small', isLoading: true, loadingText: 'Loading…' },
+  ],
+} satisfies Record<string, ButtonExampleProps[]>
 
-      {variantPrefix !== 'negative' && (
-        <Stack>
-          <Button variant={outlineVariant}>
-            Button {variantPrefix ? `${variantPrefix}-outline` : 'outline'}
-          </Button>
-          <Button variant={outlineVariant} size="small">
-            Button
-          </Button>
-          <Button variant={outlineVariant} isDisabled>
-            Disabled
-          </Button>
-          <Button variant={outlineVariant} size="small" isDisabled>
-            Disabled
-          </Button>
-          <Button variant={outlineVariant} icon={<Icon name="search" />} aria-label="Search" />
-          <Button
-            variant={outlineVariant}
-            icon={<Icon name="search" />}
-            aria-label="Search"
-            size="small"
-          />
-          <Button
-            variant={outlineVariant}
-            icon={<Icon name="search" />}
-            aria-label="Search"
-            isDisabled
-          />
-          <Button
-            variant={outlineVariant}
-            icon={<Icon name="search" />}
-            aria-label="Search"
-            size="small"
-            isDisabled
-          />
-          {/* </Stack> */}
-          {/* <Stack> */}
-          <Button variant={outlineVariant} startIcon={<Icon name="search" />}>
-            Button
-          </Button>
-          <Button variant={outlineVariant} size="small" startIcon={<Icon name="search" />}>
-            Button
-          </Button>
-          <Button variant={outlineVariant} endIcon={<Icon name="edit" />}>
-            Button
-          </Button>
-          <Button variant={outlineVariant} size="small" endIcon={<Icon name="edit" />}>
-            Button
-          </Button>
-          <Button
-            variant={outlineVariant}
-            startIcon={<Icon name="search" />}
-            endIcon={<Icon name="edit" />}
-          >
-            Button
-          </Button>
-          <Button
-            variant={outlineVariant}
-            size="small"
-            startIcon={<Icon name="search" />}
-            endIcon={<Icon name="edit" />}
-          >
-            Button
-          </Button>
-          <Button
-            variant={outlineVariant}
-            startIcon={<Icon name="search" />}
-            endIcon={<Icon name="edit" />}
-            isDisabled
-          >
-            Disabled
-          </Button>
-          <Button
-            variant={outlineVariant}
-            startIcon={<Icon name="search" />}
-            endIcon={<Icon name="edit" />}
-            size="small"
-            isDisabled
-          >
-            Disabled
-          </Button>
-        </Stack>
-      )}
-
-      <Stack>
-        <Button variant={plainVariant}>
-          Button {variantPrefix ? `${variantPrefix}-plain` : 'plain'}
-        </Button>
-        <Button variant={plainVariant} size="small">
-          Button
-        </Button>
-        <Button variant={plainVariant} isDisabled>
-          Disabled
-        </Button>
-        <Button variant={plainVariant} size="small" isDisabled>
-          Disabled
-        </Button>
-        <Button variant={plainVariant} icon={<Icon name="search" />} aria-label="Search" />
-        <Button
-          variant={plainVariant}
-          icon={<Icon name="search" />}
-          aria-label="Search"
-          size="small"
-        />
-        <Button
-          variant={plainVariant}
-          icon={<Icon name="search" />}
-          aria-label="Search"
-          isDisabled
-        />
-        <Button
-          variant={plainVariant}
-          icon={<Icon name="search" />}
-          aria-label="Search"
-          size="small"
-          isDisabled
-        />
-        <Button variant={plainVariant} startIcon={<Icon name="search" />}>
-          Button
-        </Button>
-        <Button variant={plainVariant} size="small" startIcon={<Icon name="search" />}>
-          Button
-        </Button>
-        <Button variant={plainVariant} endIcon={<Icon name="edit" />}>
-          Button
-        </Button>
-        <Button variant={plainVariant} size="small" endIcon={<Icon name="edit" />}>
-          Button
-        </Button>
-        <Button
-          variant={plainVariant}
-          startIcon={<Icon name="search" />}
-          endIcon={<Icon name="edit" />}
-        >
-          Button
-        </Button>
-
-        <Button
-          variant={plainVariant}
-          size="small"
-          startIcon={<Icon name="search" />}
-          endIcon={<Icon name="edit" />}
-        >
-          Button
-        </Button>
-        <Button
-          variant={plainVariant}
-          startIcon={<Icon name="search" />}
-          endIcon={<Icon name="edit" />}
-          isDisabled
-        >
-          Disabled
-        </Button>
-        <Button
-          variant={plainVariant}
-          size="small"
-          startIcon={<Icon name="search" />}
-          endIcon={<Icon name="edit" />}
-          isDisabled
-        >
-          Disabled
-        </Button>
-      </Stack>
-    </>
+const StackableButton = ({
+  variant,
+  buttonExample,
+}: {
+  variant: ButtonVariant
+  buttonExample: ButtonExampleProps
+}) => {
+  return buttonExample.icon ? (
+    <Button
+      variant={variant}
+      icon={<Icon name="search" />}
+      aria-label="Search"
+      size={buttonExample.size}
+      isDisabled={buttonExample.isDisabled}
+      isLoading={buttonExample.isLoading}
+    />
+  ) : (
+    <Button
+      variant={variant}
+      size={buttonExample.size}
+      isDisabled={buttonExample.isDisabled}
+      isLoading={buttonExample.isLoading}
+      loadingText={buttonExample.loadingText}
+      startIcon={buttonExample.startIcon ? <Icon name="search" /> : undefined}
+      endIcon={buttonExample.endIcon ? <Icon name="edit" /> : undefined}
+    >
+      {buttonExample.children}
+    </Button>
   )
 }
 
 const ButtonShowCase = () => {
   return (
-    <Wrapper direction="column" title="Button New">
+    <Wrapper direction="column" title="Button">
       <div>
-        For link buttons, you can use `hasLinkIcon` to automatically add endIcon (ArrowRight or
-        ExternalLink icon).
+        Link buttons show an end icon by default (ArrowRight for internal links, Export for external
+        links, ArrowDown for anchors). Use <code>hasLinkIcon=&#123;false&#125;</code> to hide it.
       </div>
       <div>
-        Icon Button should use `icon` and `aria-label` props instead of `children` an cannot be used
-        with `startIcon`, `endIcon`.
+        Icon Button should use <code>icon</code> and <code>aria-label</code> props instead of{' '}
+        <code>children</code> and cannot be used with <code>startIcon</code>, <code>endIcon</code>.
       </div>
       <div>
-        &quot;Naked&quot; icon buttons, e.g. close icons, calendar icon button, should have expanded
-        clickable/touchable area. For this case, we have `icon-wrapped` variant.
+        &quot;Naked&quot; icon buttons (e.g. close, calendar) should have expanded clickable area.
+        Use <code>icon-wrapped</code> or <code>icon-wrapped-negative-margin</code> variants.
       </div>
-      <div>TODO: Loading spinner</div>
-      <ButtonStacks />
-      <ButtonStacks variantPrefix="negative" />
-      <Stack>
-        <Button variant="link" href="#">
-          Link
-        </Button>
-        <Button variant="link" href="#" size="small">
-          Link
-        </Button>
-        <Button variant="link" href="https://bratislava.sk">
-          External link
-        </Button>
-        <Button variant="link" href="https://bratislava.sk" size="small">
-          External link
-        </Button>
-      </Stack>
-      <Stack>
-        <Button variant="solid" href="#">
-          Link
-        </Button>
-        <Button variant="solid" href="#" size="small">
-          Link
-        </Button>
-        <Button variant="solid" href="https://bratislava.sk">
-          External link
-        </Button>
-        <Button variant="solid" href="https://bratislava.sk" size="small">
-          External link
-        </Button>
-      </Stack>
-      <Stack>
-        <Button variant="solid" isLoading>
-          This is loading button
-        </Button>
-      </Stack>
-      <Stack>
-        <Button variant="icon-wrapped" icon={<Icon name="calendar" />} aria-label="Calendar" />
-        <Button
-          variant="icon-wrapped"
-          icon={<Icon name="calendar" />}
-          aria-label="Calendar"
-          size="small"
-        />
-      </Stack>
+
+      {/* Basic variants */}
+      {variants.basic.map((variant) => (
+        <div key={variant}>
+          <strong>variant=&quot;{variant}&quot;</strong>
+          <Stack
+            className={cn({
+              'bg-background-passive-inverted-base': variant === 'solid-inverted',
+            })}
+          >
+            {basicButtonExamples['size-default'].map((buttonExample, index) => (
+              <StackableButton key={index} variant={variant} buttonExample={buttonExample} />
+            ))}
+            <div className="w-full" aria-hidden />
+            {basicButtonExamples['size-small'].map((buttonExample, index) => (
+              <StackableButton key={index} variant={variant} buttonExample={buttonExample} />
+            ))}
+          </Stack>
+        </div>
+      ))}
+
+      {/* Unstyled */}
+      <div>
+        <strong>variant=&quot;unstyled&quot;</strong>
+        <Stack>
+          <Button variant="unstyled">Unstyled</Button>
+          <Button variant="unstyled" size="small">
+            Small
+          </Button>
+          <Button variant="unstyled" isDisabled>
+            Disabled
+          </Button>
+        </Stack>
+      </div>
+
+      {/* Link variants */}
+      {variants.link.map((variant) => (
+        <div key={variant}>
+          <strong>variant=&quot;{variant}&quot;</strong>
+          <Stack>
+            <Button variant={variant} href="#">
+              Link
+            </Button>
+            <Button variant={variant} href="#" size="small">
+              Link small
+            </Button>
+            <Button variant={variant} href="https://bratislava.sk">
+              External link
+            </Button>
+            <Button variant={variant} href="https://bratislava.sk" size="small">
+              External small
+            </Button>
+            <Button variant={variant} href="#anchor">
+              Anchor link
+            </Button>
+            <Button variant={variant} href="#anchor" size="small">
+              Anchor small
+            </Button>
+          </Stack>
+        </div>
+      ))}
+
+      {/* Icon-wrapped variants */}
+      {variants.iconWrapped.map((variant) => (
+        <div key={variant}>
+          <strong>variant=&quot;{variant}&quot;</strong>
+          <Stack>
+            <Button variant={variant} icon={<Icon name="calendar" />} aria-label="Calendar" />
+            <Button
+              variant={variant}
+              icon={<Icon name="calendar" />}
+              aria-label="Calendar"
+              size="small"
+            />
+          </Stack>
+        </div>
+      ))}
     </Wrapper>
   )
 }
