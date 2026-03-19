@@ -4,7 +4,7 @@ import { Fragment, useEffect, useMemo, useRef, useState } from 'react'
 import { useDebounceValue } from 'usehooks-ts'
 
 import { Breadcrumb } from '@/src/components/common/Breadcrumbs/Breadcrumbs'
-import Button from '@/src/components/common/Button/Button'
+import { Button } from '@bratislava/component-library'
 import HorizontalDivider from '@/src/components/common/Divider/HorizontalDivider'
 import FileList from '@/src/components/common/FileList/FileList'
 import ImagePlaceholder from '@/src/components/common/Image/ImagePlaceholder'

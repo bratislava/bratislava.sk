@@ -1,4 +1,4 @@
-import { Typography } from '@bratislava/component-library'
+import { Button, ButtonProps, Typography } from '@bratislava/component-library'
 
 import {
   FacebookIcon,
@@ -6,7 +6,6 @@ import {
   LinkedinIcon,
   YoutubeIcon,
 } from '@/src/assets/icons-social-media'
-import Button, { PolymorphicProps } from '@/src/components/common/Button/Button'
 import Checkbox from '@/src/components/common/CheckBoxGroup/Checkbox'
 import Input from '@/src/components/common/Input/Input'
 import MLink from '@/src/components/common/MLink/MLink'
@@ -61,7 +60,7 @@ const NewsletterSection = ({ section }: Props) => {
     variant: 'icon-wrapped',
     hasLinkIcon: false,
     className: 'size-10 bg-background-passive-primary lg:size-12',
-  } satisfies PolymorphicProps
+  } satisfies ButtonProps
 
   return (
     <SectionContainer className="lg:py-24">

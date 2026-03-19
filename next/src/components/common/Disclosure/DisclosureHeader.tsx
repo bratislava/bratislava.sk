@@ -4,7 +4,7 @@ import {
   Heading as RACHeading,
 } from 'react-aria-components'
 
-import Button from '@/src/components/common/Button/Button'
+import { Button } from '@bratislava/component-library'
 import Icon from '@/src/components/common/Icon/Icon'
 import cn from '@/src/utils/cn'
 

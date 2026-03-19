@@ -2,7 +2,7 @@ import { Typography } from '@bratislava/component-library'
 import slugify from '@sindresorhus/slugify'
 
 import { SectionTitleLevel } from '@/src/components/cards/getCardTitleLevel'
-import Button from '@/src/components/common/Button/Button'
+import { Button } from '@bratislava/component-library'
 import { TABLE_OF_CONTENTS_HEADING_ATTRIBUTE } from '@/src/components/common/TableOfContents/useHeadings'
 import Markdown from '@/src/components/formatting/Markdown/Markdown'
 import { CommonLinkFragment } from '@/src/services/graphql'

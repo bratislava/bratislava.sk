@@ -2,7 +2,7 @@ import { Typography } from '@bratislava/component-library'
 import { useId } from 'react'
 
 import CardBase, { CardBaseProps } from '@/src/components/cards/CardBase'
-import Button from '@/src/components/common/Button/Button'
+import { Button } from '@bratislava/component-library'
 import { CommonLinkProps } from '@/src/utils/getLinkProps'
 
 type Props = {

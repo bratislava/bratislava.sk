@@ -8,7 +8,7 @@ import {
   TiktokIcon,
   YoutubeIcon,
 } from '@/src/assets/icons-social-media'
-import Button from '@/src/components/common/Button/Button'
+import { Button } from '@bratislava/component-library'
 import MLink from '@/src/components/common/MLink/MLink'
 import Markdown from '@/src/components/formatting/Markdown/Markdown'
 import { useLocalizations } from '@/src/components/providers/LocalizationsProvider'

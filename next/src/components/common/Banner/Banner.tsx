@@ -1,7 +1,7 @@
 import { Typography } from '@bratislava/component-library'
 import Image from 'next/image'
 
-import Button from '@/src/components/common/Button/Button'
+import { Button } from '@bratislava/component-library'
 import Markdown from '@/src/components/formatting/Markdown/Markdown'
 import {
   CommonLinkFragment,

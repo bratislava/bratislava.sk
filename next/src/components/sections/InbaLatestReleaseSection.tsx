@@ -4,7 +4,7 @@ import { useTranslation } from 'next-i18next'
 import { Fragment } from 'react'
 
 import ArticleRowCard from '@/src/components/cards/ArticleRowCard'
-import Button from '@/src/components/common/Button/Button'
+import { Button } from '@bratislava/component-library'
 import HorizontalDivider from '@/src/components/common/Divider/HorizontalDivider'
 import CardImage from '@/src/components/common/Image/CardImage'
 import LoadingSpinner from '@/src/components/common/LoadingSpinner/LoadingSpinner'

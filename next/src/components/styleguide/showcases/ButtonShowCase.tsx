@@ -1,20 +1,17 @@
 /* eslint-disable i18next/no-literal-string */
-import Button, { PolymorphicProps } from '@/src/components/common/Button/Button'
+import { Button, ButtonProps } from '@bratislava/component-library'
+
 import Icon from '@/src/components/common/Icon/Icon'
 
 import Stack from '../Stack'
 import Wrapper from '../Wrapper'
 
 const ButtonStacks = ({ variantPrefix }: { variantPrefix?: 'negative' }) => {
-  const solidVariant: PolymorphicProps['variant'] = variantPrefix
-    ? `${variantPrefix}-solid`
-    : 'solid'
+  const solidVariant: ButtonProps['variant'] = variantPrefix ? `${variantPrefix}-solid` : 'solid'
 
-  const outlineVariant: PolymorphicProps['variant'] = 'outline'
+  const outlineVariant: ButtonProps['variant'] = 'outline'
 
-  const plainVariant: PolymorphicProps['variant'] = variantPrefix
-    ? `${variantPrefix}-plain`
-    : 'plain'
+  const plainVariant: ButtonProps['variant'] = variantPrefix ? `${variantPrefix}-plain` : 'plain'
 
   return (
     <>

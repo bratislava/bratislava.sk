@@ -1,6 +1,6 @@
 import { ReactNode } from 'react'
 
-import Button from '@/src/components/common/Button/Button'
+import { Button } from '@bratislava/component-library'
 import Icon from '@/src/components/common/Icon/Icon'
 import usePagination from '@/src/components/common/Pagination/usePagination'
 import cn from '@/src/utils/cn'

@@ -2,7 +2,7 @@ import * as NavigationMenu from '@radix-ui/react-navigation-menu'
 import { useMemo } from 'react'
 import { useEventListener, useScrollLock, useWindowSize } from 'usehooks-ts'
 
-import Button from '@/src/components/common/Button/Button'
+import { Button } from '@bratislava/component-library'
 import HorizontalDivider from '@/src/components/common/Divider/HorizontalDivider'
 import MLink from '@/src/components/common/MLink/MLink'
 import Pictogram from '@/src/components/common/Pictogram/Pictogram'

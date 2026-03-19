@@ -2,7 +2,7 @@ import { Typography } from '@bratislava/component-library'
 import { useTranslation } from 'next-i18next'
 import { Fragment } from 'react'
 
-import Button from '@/src/components/common/Button/Button'
+import { Button } from '@bratislava/component-library'
 import Icon from '@/src/components/common/Icon/Icon'
 import { AssetEntityFragment } from '@/src/services/graphql'
 import cn from '@/src/utils/cn'

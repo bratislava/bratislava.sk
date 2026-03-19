@@ -1,6 +1,6 @@
 import { TabPanel } from 'react-aria-components'
 
-import Button from '@/src/components/common/Button/Button'
+import { Button } from '@bratislava/component-library'
 import Iframe from '@/src/components/common/Iframe/Iframe'
 import { useHomepageContext } from '@/src/components/providers/HomepageContextProvider'
 import { getLinkProps } from '@/src/utils/getLinkProps'

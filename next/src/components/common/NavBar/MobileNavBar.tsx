@@ -2,7 +2,7 @@ import { FocusTrap } from 'focus-trap-react'
 import { usePathname } from 'next/navigation'
 import { useEffect } from 'react'
 
-import Button from '@/src/components/common/Button/Button'
+import { Button } from '@bratislava/component-library'
 import Icon from '@/src/components/common/Icon/Icon'
 import Brand from '@/src/components/common/Logos/Brand'
 import StarzLogo from '@/src/components/common/Logos/StarzLogo'

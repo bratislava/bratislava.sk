@@ -5,7 +5,7 @@ import { Fragment, useId } from 'react'
 import { LanguageIcon } from '@/src/assets/material-icons'
 import CardBase from '@/src/components/cards/CardBase'
 import { CardTitleLevel } from '@/src/components/cards/getCardTitleLevel'
-import Button from '@/src/components/common/Button/Button'
+import { Button } from '@bratislava/component-library'
 import cn from '@/src/utils/cn'
 
 export type LinkRowCardProps = {

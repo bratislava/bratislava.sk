@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { useId } from 'react'
 
 import CardBase from '@/src/components/cards/CardBase'
-import Button from '@/src/components/common/Button/Button'
+import { Button } from '@bratislava/component-library'
 import cn from '@/src/utils/cn'
 import { CommonLinkProps } from '@/src/utils/getLinkProps'
 

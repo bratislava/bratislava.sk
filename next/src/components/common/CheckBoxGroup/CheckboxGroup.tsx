@@ -5,7 +5,7 @@ import {
   Label as RACLabel,
 } from 'react-aria-components'
 
-import Button from '@/src/components/common/Button/Button'
+import { Button } from '@bratislava/component-library'
 import Checkbox from '@/src/components/common/CheckBoxGroup/Checkbox'
 import HorizontalDivider from '@/src/components/common/Divider/HorizontalDivider'
 import { useTranslation } from '@/src/utils/useTranslation'

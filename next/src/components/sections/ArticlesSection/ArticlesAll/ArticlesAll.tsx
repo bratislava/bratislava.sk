@@ -4,7 +4,7 @@ import { Fragment, useEffect, useRef, useState } from 'react'
 import { useDebounceValue } from 'usehooks-ts'
 
 import ArticleRowCard from '@/src/components/cards/ArticleRowCard'
-import Button from '@/src/components/common/Button/Button'
+import { Button } from '@bratislava/component-library'
 import HorizontalDivider from '@/src/components/common/Divider/HorizontalDivider'
 import Icon from '@/src/components/common/Icon/Icon'
 import PaginationWithInput from '@/src/components/common/Pagination/PaginationWithInput'

@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query'
 
 import TootootEventCard from '@/src/components/cards/TootootEventCard'
-import Button from '@/src/components/common/Button/Button'
+import { Button } from '@bratislava/component-library'
 import ResponsiveCarousel from '@/src/components/common/Carousel/ResponsiveCarousel'
 import Spinner from '@/src/components/common/Spinner/Spinner'
 import SectionContainer from '@/src/components/layouts/SectionContainer'

@@ -3,7 +3,7 @@ import { useId } from 'react'
 
 import CardBase from '@/src/components/cards/CardBase'
 import { CardTitleLevel } from '@/src/components/cards/getCardTitleLevel'
-import Button from '@/src/components/common/Button/Button'
+import { Button } from '@bratislava/component-library'
 import CardImage from '@/src/components/common/Image/CardImage'
 import { useTranslation } from '@/src/utils/useTranslation'
 

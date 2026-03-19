@@ -1,4 +1,4 @@
-import Button from '@/src/components/common/Button/Button'
+import { Button } from '@bratislava/component-library'
 import ImagePlaceholder from '@/src/components/common/Image/ImagePlaceholder'
 import StrapiImage from '@/src/components/common/Image/StrapiImage'
 import Markdown from '@/src/components/formatting/Markdown/Markdown'
