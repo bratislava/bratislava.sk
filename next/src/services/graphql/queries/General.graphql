@@ -159,9 +159,6 @@ fragment General on General {
   inbaReleasesPage {
     ...PageParentPages
   }
-  documentsPage {
-    ...PageParentPages
-  }
   assetsPage {
     ...PageParentPages
   }

@@ -3916,7 +3916,6 @@ export type General = {
   assetsPage?: Maybe<Page>
   createdAt?: Maybe<Scalars['DateTime']['output']>
   documentId: Scalars['ID']['output']
-  documentsPage?: Maybe<Page>
   header?: Maybe<ComponentGeneralHeader>
   inbaPage?: Maybe<Page>
   inbaReleasesPage?: Maybe<Page>
@@ -3952,7 +3951,6 @@ export type GeneralFiltersInput = {
   and?: InputMaybe<Array<InputMaybe<GeneralFiltersInput>>>
   assetsPage?: InputMaybe<PageFiltersInput>
   createdAt?: InputMaybe<DateTimeFilterInput>
-  documentsPage?: InputMaybe<PageFiltersInput>
   header?: InputMaybe<ComponentGeneralHeaderFiltersInput>
   inbaPage?: InputMaybe<PageFiltersInput>
   inbaReleasesPage?: InputMaybe<PageFiltersInput>
@@ -3970,7 +3968,6 @@ export type GeneralFiltersInput = {
 
 export type GeneralInput = {
   assetsPage?: InputMaybe<Scalars['ID']['input']>
-  documentsPage?: InputMaybe<Scalars['ID']['input']>
   header?: InputMaybe<ComponentGeneralHeaderInput>
   inbaPage?: InputMaybe<Scalars['ID']['input']>
   inbaReleasesPage?: InputMaybe<Scalars['ID']['input']>
@@ -8288,41 +8285,6 @@ export type GeneralFragment = {
       } | null
     } | null
   } | null
-  documentsPage?: {
-    __typename?: 'Page'
-    documentId: string
-    locale?: string | null
-    title: string
-    path?: string | null
-    parentPage?: {
-      __typename?: 'Page'
-      documentId: string
-      locale?: string | null
-      title: string
-      path?: string | null
-      parentPage?: {
-        __typename?: 'Page'
-        documentId: string
-        locale?: string | null
-        title: string
-        path?: string | null
-        parentPage?: {
-          __typename?: 'Page'
-          documentId: string
-          locale?: string | null
-          title: string
-          path?: string | null
-          parentPage?: {
-            __typename?: 'Page'
-            documentId: string
-            locale?: string | null
-            title: string
-            path?: string | null
-          } | null
-        } | null
-      } | null
-    } | null
-  } | null
   assetsPage?: {
     __typename?: 'Page'
     documentId: string
@@ -8585,41 +8547,6 @@ export type GeneralQuery = {
       } | null
     } | null
     inbaReleasesPage?: {
-      __typename?: 'Page'
-      documentId: string
-      locale?: string | null
-      title: string
-      path?: string | null
-      parentPage?: {
-        __typename?: 'Page'
-        documentId: string
-        locale?: string | null
-        title: string
-        path?: string | null
-        parentPage?: {
-          __typename?: 'Page'
-          documentId: string
-          locale?: string | null
-          title: string
-          path?: string | null
-          parentPage?: {
-            __typename?: 'Page'
-            documentId: string
-            locale?: string | null
-            title: string
-            path?: string | null
-            parentPage?: {
-              __typename?: 'Page'
-              documentId: string
-              locale?: string | null
-              title: string
-              path?: string | null
-            } | null
-          } | null
-        } | null
-      } | null
-    } | null
-    documentsPage?: {
       __typename?: 'Page'
       documentId: string
       locale?: string | null
@@ -17949,9 +17876,6 @@ export const GeneralFragmentDoc = gql`
       ...PageParentPages
     }
     inbaReleasesPage {
-      ...PageParentPages
-    }
-    documentsPage {
       ...PageParentPages
     }
     assetsPage {
