@@ -259,7 +259,11 @@
   --color-content-active-primary-inverted-hover: var(--color-grey-200);
   --color-content-active-primary-inverted-pressed: var(--color-grey-300);
   --color-content-active-primary-inverted-disabled: var(--color-grey-400);
-  /* active secondary and tertiary variants are part of DS but not used currently  */
+
+  --color-content-active-tertiary-default: var(--color-grey-700);
+  --color-content-active-tertiary-hover: var(--color-grey-600);
+  --color-content-active-tertiary-pressed: var(--color-grey-800);
+  --color-content-active-tertiary-disabled: var(--color-grey-500);
 
   /* Old tokens - todo remove */
 

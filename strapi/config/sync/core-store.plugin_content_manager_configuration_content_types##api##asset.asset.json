@@ -61,6 +61,20 @@
           "sortable": false
         }
       },
+      "isAccessible": {
+        "edit": {
+          "label": "Spĺňa štandardy prístupnosti?",
+          "description": "Označuje, či dokument spĺňa štandardy prístupnosti dokumentov. Slúži na filtrovanie v Strapi a nezobrazuje sa na stránke.",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "isAccessible",
+          "searchable": true,
+          "sortable": true
+        }
+      },
       "description": {
         "edit": {
           "label": "Popis",
@@ -201,13 +215,6 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "title",
-        "slug",
-        "updatedAt",
-        "createdAt"
-      ],
       "edit": [
         [
           {
@@ -250,8 +257,15 @@
             "name": "customMetadata",
             "size": 12
           }
+        ],
+        [
+          {
+            "name": "isAccessible",
+            "size": 6
+          }
         ]
-      ]
+      ],
+      "list": ["id", "title", "slug", "updatedAt", "createdAt", "isAccessible"]
     },
     "uid": "api::asset.asset"
   },

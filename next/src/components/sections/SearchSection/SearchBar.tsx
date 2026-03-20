@@ -1,8 +1,7 @@
-import { Typography } from '@bratislava/component-library'
+import { Button, Typography } from '@bratislava/component-library'
 import { Dispatch, forwardRef, SetStateAction } from 'react'
 import { Input, Label, SearchField } from 'react-aria-components'
 
-import Button from '@/src/components/common/Button/Button'
 import Icon from '@/src/components/common/Icon/Icon'
 import Spinner from '@/src/components/common/Spinner/Spinner'
 import { useTranslation } from '@/src/utils/useTranslation'

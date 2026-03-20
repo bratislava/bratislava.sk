@@ -1,6 +1,6 @@
+import { Button } from '@bratislava/component-library'
 import { useCopyToClipboard } from 'usehooks-ts'
 
-import Button from '@/src/components/common/Button/Button'
 import Icon from '@/src/components/common/Icon/Icon'
 
 type Props = {

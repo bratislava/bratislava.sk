@@ -1,7 +1,6 @@
-import { Typography } from '@bratislava/component-library'
+import { Button, Typography } from '@bratislava/component-library'
 import { useTranslation } from 'next-i18next'
 
-import Button from '@/src/components/common/Button/Button'
 import Icon from '@/src/components/common/Icon/Icon'
 import Input from '@/src/components/common/Input/Input'
 import { usePaginationWithInput } from '@/src/components/common/Pagination/usePaginationWithInput'

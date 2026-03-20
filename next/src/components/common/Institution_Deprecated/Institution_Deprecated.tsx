@@ -1,7 +1,6 @@
-import { Typography } from '@bratislava/component-library'
+import { Button, Typography } from '@bratislava/component-library'
 import { useId } from 'react'
 
-import Button from '@/src/components/common/Button/Button'
 import Markdown from '@/src/components/formatting/Markdown/Markdown'
 
 export type InstitutionProps = {

@@ -581,6 +581,7 @@ export interface ApiAssetAsset extends Struct.CollectionTypeSchema {
     customPublishedAt: Schema.Attribute.DateTime
     description: Schema.Attribute.Text
     files: Schema.Attribute.Media<'images' | 'files', true> & Schema.Attribute.Required
+    isAccessible: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>
     locale: Schema.Attribute.String & Schema.Attribute.Private
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::asset.asset'> &
       Schema.Attribute.Private

@@ -1,3 +1,4 @@
+import { Button } from '@bratislava/component-library'
 import { useState } from 'react'
 import {
   CheckboxGroup as RACCheckboxGroup,
@@ -5,7 +6,6 @@ import {
   Label as RACLabel,
 } from 'react-aria-components'
 
-import Button from '@/src/components/common/Button/Button'
 import Checkbox from '@/src/components/common/CheckBoxGroup/Checkbox'
 import HorizontalDivider from '@/src/components/common/Divider/HorizontalDivider'
 import { useTranslation } from '@/src/utils/useTranslation'

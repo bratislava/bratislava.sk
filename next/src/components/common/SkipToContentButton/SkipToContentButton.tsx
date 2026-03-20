@@ -1,4 +1,5 @@
-import Button from '@/src/components/common/Button/Button'
+import { Button } from '@bratislava/component-library'
+
 import { useTranslation } from '@/src/utils/useTranslation'
 
 /* Based on approach here: https://levelup.gitconnected.com/build-an-accessible-skip-to-content-anchor-link-with-react-140903f3bd7e */
