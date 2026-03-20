@@ -56,9 +56,9 @@ const RegulationPageContent = ({ regulation }: RegulationPageContentProps) => {
   const breadcrumbs = useMemo(() => {
     return [
       ...(vznPage ? getPageBreadcrumbs(vznPage) : []),
-      { title: regulationShortTitle, path: null } as Breadcrumb,
+      { title: `VZN ${regNumber}`, path: null } as Breadcrumb,
     ]
-  }, [regulationShortTitle, vznPage])
+  }, [regNumber, vznPage])
 
   return (
     <>
