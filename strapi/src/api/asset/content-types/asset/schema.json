@@ -49,6 +49,10 @@
     },
     "customMetadata": {
       "type": "json"
+    },
+    "isAccessible": {
+      "type": "boolean",
+      "default": false
     }
   }
 }
