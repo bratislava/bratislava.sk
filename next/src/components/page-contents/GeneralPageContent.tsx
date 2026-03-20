@@ -1,6 +1,7 @@
 import { useMemo } from 'react'
 
 import AliasInfoMessage from '@/src/components/common/AliasInfoMessage/AliasInfoMessage'
+import { getPageBreadcrumbs } from '@/src/components/common/Breadcrumbs/getPageBreadcrumbs'
 import ContentManagedBy from '@/src/components/common/ContentManagedBy/ContentManagedBy'
 import StarzSubmenu from '@/src/components/common/Submenu/StarzSubmenu'
 import PageHeaderSections from '@/src/components/layouts/PageHeaderSections'
@@ -14,7 +15,6 @@ import { PageEntityFragment } from '@/src/services/graphql'
 import { isStarzAdminGroup } from '@/src/utils/adminGroupUtils'
 import cn from '@/src/utils/cn'
 import { isDefined } from '@/src/utils/isDefined'
-import { getPageBreadcrumbs } from '@/src/utils/pageUtils_Deprecated'
 
 export type GeneralPageProps = {
   page: PageEntityFragment

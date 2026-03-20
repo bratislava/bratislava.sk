@@ -1,13 +1,15 @@
 import { Typography } from '@bratislava/component-library'
-import { Fragment, ReactNode } from 'react'
+import { Fragment, ReactNode, useMemo } from 'react'
 
 import FileRowCard from '@/src/components/cards/FileRowCard'
+import { Breadcrumb } from '@/src/components/common/Breadcrumbs/Breadcrumbs'
+import { getPageBreadcrumbs } from '@/src/components/common/Breadcrumbs/getPageBreadcrumbs'
 import HorizontalDivider from '@/src/components/common/Divider/HorizontalDivider'
 import PageHeader from '@/src/components/common/PageHeader/PageHeader'
 import SectionContainer from '@/src/components/layouts/SectionContainer'
+import { useGeneralContext } from '@/src/components/providers/GeneralContextProvider'
 import { ParsedOfficialBoardDocumentDetail } from '@/src/services/ginis/types'
 import { formatDate } from '@/src/utils/formatDate'
-import { useLocale } from '@/src/utils/useLocale'
 import { useTranslation } from '@/src/utils/useTranslation'
 
 type OfficialBoardDocumentPageContentProps = {
@@ -16,18 +18,16 @@ type OfficialBoardDocumentPageContentProps = {
 
 const OfficialBoardDocumentPageContent = ({ document }: OfficialBoardDocumentPageContentProps) => {
   const { t } = useTranslation()
-  const locale = useLocale()
 
-  const breadcrumbs = [
-    {
-      title: t('OfficialBoard.officialBoard'),
-      path:
-        locale === 'en'
-          ? '/city-of-bratislava/transparent-city/official-noticeboard'
-          : '/mesto-bratislava/transparentne-mesto/uradna-tabula',
-    },
-    { title: document.title, path: null },
-  ]
+  const { general } = useGeneralContext()
+  const officialBoardPage = general?.officialBoardPage
+
+  const breadcrumbs = useMemo(() => {
+    return [
+      ...(officialBoardPage ? getPageBreadcrumbs(officialBoardPage) : []),
+      { title: document.title, path: null } as Breadcrumb,
+    ]
+  }, [document.title, officialBoardPage])
 
   const dlData: { key: string; title: string; description: ReactNode }[] = [
     {

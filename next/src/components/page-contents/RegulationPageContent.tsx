@@ -1,13 +1,16 @@
 import { Typography } from '@bratislava/component-library'
-import { Fragment } from 'react'
+import { Fragment, useMemo } from 'react'
 
 import FileRowCard from '@/src/components/cards/FileRowCard'
 import RegulationRowCard from '@/src/components/cards/RegulationRowCard'
+import { Breadcrumb } from '@/src/components/common/Breadcrumbs/Breadcrumbs'
+import { getPageBreadcrumbs } from '@/src/components/common/Breadcrumbs/getPageBreadcrumbs'
 import HorizontalDivider from '@/src/components/common/Divider/HorizontalDivider'
 import MLink from '@/src/components/common/MLink/MLink'
 import PageHeader from '@/src/components/common/PageHeader/PageHeader'
 import RegulationDetailMessage from '@/src/components/common/Regulations/RegulationDetailMessage'
 import SectionContainer from '@/src/components/layouts/SectionContainer'
+import { useGeneralContext } from '@/src/components/providers/GeneralContextProvider'
 import { RegulationEntityFragment } from '@/src/services/graphql'
 import { formatDate } from '@/src/utils/formatDate'
 import { formatFileExtension } from '@/src/utils/formatFileExtension'
@@ -26,6 +29,9 @@ const RegulationPageContent = ({ regulation }: RegulationPageContentProps) => {
 
   const { t } = useTranslation()
   const locale = useLocale()
+
+  const { general } = useGeneralContext()
+  const vznPage = general?.vznPage
 
   const translationMap = useRegulationCategoryTranslationMap()
 
@@ -47,16 +53,12 @@ const RegulationPageContent = ({ regulation }: RegulationPageContentProps) => {
       }
     }) ?? []
 
-  const breadcrumbs = [
-    {
-      title: t('Regulation.regulations'),
-      path:
-        locale === 'en'
-          ? '/city-of-bratislava/city-administration/legislation/generally-binding-ordinances'
-          : '/mesto-bratislava/sprava-mesta/legislativa-mesta/vseobecne-zavazne-nariadenia',
-    },
-    { title: `VZN ${regNumber}`, path: null },
-  ]
+  const breadcrumbs = useMemo(() => {
+    return [
+      ...(vznPage ? getPageBreadcrumbs(vznPage) : []),
+      { title: `VZN ${regNumber}`, path: null } as Breadcrumb,
+    ]
+  }, [regNumber, vznPage])
 
   return (
     <>

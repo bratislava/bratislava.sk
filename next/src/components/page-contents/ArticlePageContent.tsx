@@ -4,6 +4,7 @@ import { Fragment, useMemo } from 'react'
 
 import AliasInfoMessage from '@/src/components/common/AliasInfoMessage/AliasInfoMessage'
 import Breadcrumbs, { Breadcrumb } from '@/src/components/common/Breadcrumbs/Breadcrumbs'
+import { getPageBreadcrumbs } from '@/src/components/common/Breadcrumbs/getPageBreadcrumbs'
 import HorizontalDivider from '@/src/components/common/Divider/HorizontalDivider'
 import FileList from '@/src/components/common/FileList/FileList'
 import Gallery from '@/src/components/common/Gallery/Gallery'
@@ -15,7 +16,6 @@ import { useGeneralContext } from '@/src/components/providers/GeneralContextProv
 import { ArticleEntityFragment } from '@/src/services/graphql'
 import { formatDate } from '@/src/utils/formatDate'
 import { isDefined } from '@/src/utils/isDefined'
-import { getPageBreadcrumbs } from '@/src/utils/pageUtils_Deprecated'
 import { useTranslation } from '@/src/utils/useTranslation'
 
 type Props = {

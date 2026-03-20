@@ -55,7 +55,7 @@ SearchResultCard.IconContainer = function ({
   return (
     <div
       className={cn(
-        'hidden h-20 w-20 shrink-0 items-center justify-center self-center rounded-lg bg-grey-100 lg:flex',
+        'hidden h-20 w-20 shrink-0 items-center justify-center self-center rounded-lg bg-background-passive-secondary lg:flex',
         className,
       )}
     >

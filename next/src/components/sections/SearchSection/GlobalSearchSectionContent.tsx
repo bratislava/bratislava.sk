@@ -265,7 +265,7 @@ const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
 
         {/* Additional filters, currently only for officialBoard */}
         {selectedKey === 'officialBoard' ? (
-          <div className="flex flex-col gap-4 rounded-md bg-grey-100 p-4">
+          <div className="flex flex-col gap-4 rounded-md bg-background-passive-secondary p-4">
             {/* TODO heading "Doplnkovy filter" as it is in figma */}
             <div>
               <OfficialBoardAdditionalFilters
