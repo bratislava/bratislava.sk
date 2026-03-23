@@ -18,7 +18,6 @@ const DisclosureGroup = ({
 }: DisclosureGroupProps) => {
   return (
     <RACDisclosureGroup
-      className={props.className}
       allowsMultipleExpanded={allowsMultipleExpanded}
       {...props}
     >
