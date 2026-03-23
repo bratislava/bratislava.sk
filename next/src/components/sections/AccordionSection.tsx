@@ -38,10 +38,7 @@ const AccordionSection = ({ section }: AccordionSectionProps) => {
       <div className="flex flex-col gap-6 lg:gap-8">
         <SectionHeader title={title} titleLevel={titleLevel} />
         {flatText?.length ? (
-          <DisclosureGroup
-            allowsMultipleExpanded
-            className="rounded-xl border border-border-active-default bg-background-passive-base py-2"
-          >
+          <DisclosureGroup className="rounded-xl border border-border-active-default bg-background-passive-base py-2">
             {flatText?.filter(isPresent).map((item, index) => (
               <Fragment key={`disclosure-${item.category}-${index}`}>
                 {index > 0 ? <HorizontalDivider className="mx-4 lg:mx-6" /> : null}
@@ -77,7 +74,6 @@ const AccordionSection = ({ section }: AccordionSectionProps) => {
 
         {groupByCategory(institutions?.filter(isPresent) ?? []).map((institution, index) => (
           <DisclosureGroup
-            allowsMultipleExpanded
             key={`disclosure-${institution.category}-${index}`}
             className="rounded-xl border border-border-active-default bg-background-passive-base py-2"
           >
