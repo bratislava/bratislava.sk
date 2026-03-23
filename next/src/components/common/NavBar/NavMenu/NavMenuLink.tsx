@@ -31,7 +31,7 @@ const NavMenuLink = ({ variant, subtext, ariaLabel, ...restLinkProps }: NavMenuL
             >
               <Button
                 variant="link"
-                className="w-full justify-between py-1 text-size-h5! font-semibold no-underline hover:underline"
+                className="w-full justify-between py-1 font-semibold no-underline hover:underline lg:text-size-h5"
                 size="small"
                 {...restLinkProps}
                 stretched
