@@ -50,6 +50,7 @@ const NavBarHeader = ({ className }: NavBarProps) => {
               variant="outline"
               hasLinkIcon={false}
               data-cy="account-button"
+              className="text-size-button-large"
               {...getLinkProps(accountLink)}
             />
           ) : (
