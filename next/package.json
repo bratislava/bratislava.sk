@@ -49,7 +49,7 @@
     "i18next": "24.2.3",
     "lodash": "4.17.23",
     "meilisearch": "0.30.0",
-    "next": "15.5.12",
+    "next": "16.1.6",
     "next-i18next": "15.4.2",
     "next-plausible": "^3.7.2",
     "next-query-params": "^5.1.0",
