@@ -1,7 +1,6 @@
 const { withPlausibleProxy } = require('next-plausible')
 const i18nextConfig = require('./next-i18next.config.js')
 const svgoConfig = require('./svgo.config.js')
-import { environment } from '@/src/environment'
 
 /**
  * @type {import('next').NextConfig}
@@ -38,12 +37,12 @@ const nextConfig = {
         // Graphql Proxy
         {
           source: '/graphql',
-          destination: `${environment.strapiUrl}/graphql`,
+          destination: `${process.env.NEXT_PUBLIC_STRAPI_URL}/graphql`,
         },
         // Media proxy for getting media from Strapi
         {
           source: '/uploads/:file',
-          destination: `${environment.strapiUrl}/uploads/:file`,
+          destination: `${process.env.NEXT_PUBLIC_STRAPI_URL}/uploads/:file`,
         },
         /**
          * Rewrites to make the translation of URL work. Based on an approach outlined here:
