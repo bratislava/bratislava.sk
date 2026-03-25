@@ -9,15 +9,9 @@ import { isDefined } from '@/src/utils/isDefined'
 
 const urlPrefix = 'https://www.bratislava.sk/uradna-tabula'
 
-const feedUrl = {
-  sk: 'https://www.bratislava.sk/api/official-board-feed',
-  en: 'https://www.bratislava.sk/api/official-board-feed?lang=en',
-}
+const feedUrl = 'https://www.bratislava.sk/api/official-board-feed'
 
-const description = {
-  sk: 'Úradná tabuľa bratislava.sk',
-  en: 'Official board of bratislava.sk',
-}
+const description = 'Úradná tabuľa bratislava.sk'
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   if (process.env.NEXT_PUBLIC_FEATURE_FLAG_RSS_FEED !== 'true') {
@@ -27,21 +21,15 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 
   try {
-    const language = req.query.lang ?? 'sk'
-
-    if (language !== 'sk' && language !== 'en') {
-      throw new Error('Invalid language')
-    }
-
     const results = shouldMockGinis()
       ? mockedParsedDocuments
       : await getOfficialBoardParsedList({ publicationState: 'vyveseno' })
 
     const feed = new Rss({
       title: 'Bratislava.sk',
-      description: description[language],
+      description,
       site_url: 'https://www.bratislava.sk',
-      feed_url: feedUrl[language],
+      feed_url: feedUrl,
     })
 
     results?.filter(isDefined).forEach((boardItem) => {
