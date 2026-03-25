@@ -32,7 +32,7 @@ const NavBarHeader = ({ className }: NavBarProps) => {
       className={cn('relative z-31 mx-auto bg-background-passive-base px-4 lg:px-8', className)}
       style={getCategoryColorLocalStyle({ category: 'main' })}
     >
-      <nav className="flex w-full items-center justify-between border-b border-border-passive-primary py-2">
+      <nav className="border-border-passive-primary flex w-full items-center justify-between border-b py-2">
         <SkipToContentButton />
         <Brand withTitle />
 
@@ -50,6 +50,7 @@ const NavBarHeader = ({ className }: NavBarProps) => {
               variant="outline"
               hasLinkIcon={false}
               data-cy="account-button"
+              className="lg:text-size-button-large"
               {...getLinkProps(accountLink)}
             />
           ) : (
