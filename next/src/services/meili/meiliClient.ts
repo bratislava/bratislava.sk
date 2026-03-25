@@ -8,10 +8,10 @@ export const MEILI_PAGE_SIZE = 10
 console.log(
   'NEXT_PUBLIC_MEILISEARCH_HOST:',
   environment.meilisearchHost,
-  environment.meilisearchApiKey,
+  environment.meilisearchSearchApiKey,
 )
 
 export const meiliClient = new MeiliSearch({
   host: environment.meilisearchHost,
-  apiKey: environment.meilisearchApiKey,
+  apiKey: environment.meilisearchSearchApiKey,
 })

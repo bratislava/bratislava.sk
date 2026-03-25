@@ -1,8 +1,10 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 
+import { environment } from '@/src/environment'
+
 // Copied from bratislava.sk https://github.com/bratislava/bratislava.sk/blob/master/next/pages/api/robots.ts
 const handler = async (_req: NextApiRequest, res: NextApiResponse) => {
-  if (process.env.NEXT_PUBLIC_DEPLOYMENT === 'prod') {
+  if (environment.nextPublicDeployment === 'prod') {
     /* In production, disallow to crawl /api endpoints */
     res.send(
       `

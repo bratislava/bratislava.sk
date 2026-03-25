@@ -12,9 +12,22 @@ function assertEnv<T>(variable: string, value: T) {
 }
 
 export const environment = {
+  nodeEnv: assertEnv('NODE_ENV', process.env.NODE_ENV),
+  ci: assertEnv('CI', process.env.CI),
+  revalidateSecretToken: assertEnv('REVALIDATE_SECRET_TOKEN', process.env.REVALIDATE_SECRET_TOKEN),
+  nextPublicDeployment: assertEnv('NEXT_PUBLIC_DEPLOYMENT', process.env.NEXT_PUBLIC_DEPLOYMENT),
+  nalgooApiKey: assertEnv('NALGOO_API_KEY', process.env.NALGOO_API_KEY),
+  starzEcomailApiKey: assertEnv('STARZ_ECOMAIL_API_KEY', process.env.STARZ_ECOMAIL_API_KEY),
+  ginisHostUde: assertEnv('GINIS_HOST_UDE', process.env.GINIS_HOST_UDE),
+  ginisUsername: assertEnv('GINIS_HOST_UDE', process.env.GINIS_USERNAME),
+  ginisPassword: assertEnv('GINIS_HOST_UDE', process.env.GINIS_PASSWORD),
+  msalScope: assertEnv('MSAL_SCOPE', process.env.MSAL_SCOPE),
+  msalClientId: assertEnv('MSAL_CLIENT_ID', process.env.MSAL_CLIENT_ID),
+  msalTenantId: assertEnv('MSAL_TENANT_ID', process.env.MSAL_TENANT_ID),
+  msalClientSecret: assertEnv('MSAL_CLIENT_SECRET', process.env.MSAL_CLIENT_SECRET),
   deployment: assertEnv('NEXT_PUBLIC_DEPLOYMENT', process.env.NEXT_PUBLIC_DEPLOYMENT),
   strapiUrl: assertEnv('NEXT_PUBLIC_STRAPI_URL', process.env.NEXT_PUBLIC_STRAPI_URL),
-  meilisearchApiKey: assertEnv(
+  meilisearchSearchApiKey: assertEnv(
     'NEXT_PUBLIC_MEILISEARCH_SEARCH_API_KEY',
     process.env.NEXT_PUBLIC_MEILISEARCH_SEARCH_API_KEY,
   ),

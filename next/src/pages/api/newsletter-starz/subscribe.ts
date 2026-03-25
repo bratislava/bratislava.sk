@@ -2,6 +2,8 @@
 import axios from 'axios'
 import { NextApiRequest, NextApiResponse } from 'next'
 
+import { environment } from '@/src/environment'
+
 type ResponseData = {
   error?: string
 }
@@ -23,10 +25,6 @@ const Subscribe = async (req: NextApiRequest, res: NextApiResponse<ResponseData>
   }
 
   try {
-    // TODO better error information, maybe assert all env vars globally
-    if (!process.env.STARZ_ECOMAIL_API_KEY)
-      throw new Error('Missing environment variable STARZ_ECOMAIL_API_KEY')
-
     await axios.post(
       ECOMAIL_ADD_SUBSCRIBER_URL,
       {
@@ -39,7 +37,7 @@ const Subscribe = async (req: NextApiRequest, res: NextApiResponse<ResponseData>
       {
         headers: {
           'Content-Type': 'application/json',
-          key: process.env.STARZ_ECOMAIL_API_KEY,
+          key: environment.starzEcomailApiKey,
         },
       },
     )

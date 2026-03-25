@@ -1,3 +1,4 @@
+import { environment } from '@/src/environment'
 import { msalClient } from '@/src/services/ms-graph/server/msalClient'
 
 /**
@@ -7,6 +8,6 @@ import { msalClient } from '@/src/services/ms-graph/server/msalClient'
 export const getMsalToken = async () => {
   // TODO use environment utility
   return msalClient.acquireTokenByClientCredential({
-    scopes: [process.env.MSAL_SCOPE ?? ''],
+    scopes: [environment.msalScope],
   })
 }
