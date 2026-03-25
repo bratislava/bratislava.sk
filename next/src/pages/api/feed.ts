@@ -1,6 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import Rss from 'rss'
 
+import { environment } from '@/src/environment'
 import { client } from '@/src/services/graphql/gql'
 import { isDefined } from '@/src/utils/isDefined'
 
@@ -18,7 +19,7 @@ const description = {
 }
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
-  if (process.env.NEXT_PUBLIC_FEATURE_FLAG_RSS_FEED !== 'true') {
+  if (environment.featureFlagRssFeed !== 'true') {
     res.status(404)
 
     return
