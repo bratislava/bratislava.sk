@@ -10,8 +10,8 @@ import { isDefined } from '@/src/utils/isDefined'
 const urlPrefix = 'https://www.bratislava.sk/uradna-tabula'
 
 const feedUrl = {
-  sk: 'https://www.bratislava.sk/api/feed',
-  en: 'https://www.bratislava.sk/api/feed?lang=en',
+  sk: 'https://www.bratislava.sk/api/official-board-feed',
+  en: 'https://www.bratislava.sk/api/official-board-feed?lang=en',
 }
 
 const description = {
