@@ -13,6 +13,11 @@ const feedUrl = {
   en: 'https://www.bratislava.sk/api/feed?lang=en',
 }
 const description = {
+  sk: 'Najnovšie články z bratislava.sk',
+  en: 'The latest articles from bratislava.sk',
+}
+
+const title = {
   sk: 'Bratislava.sk - Aktuality a tlačové správy',
   en: 'Bratislava.sk - News and Press Releases',
 }
@@ -34,7 +39,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     const { articles } = await client.ArticlesRssFeed({ locale: language })
 
     const feed = new Rss({
-      title: 'Bratislava.sk',
+      title: title[language],
       description: description[language],
       site_url: 'https://www.bratislava.sk',
       feed_url: feedUrl[language],

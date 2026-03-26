@@ -8,10 +8,9 @@ import { base64Encode } from '@/src/utils/base64'
 import { isDefined } from '@/src/utils/isDefined'
 
 const urlPrefix = 'https://www.bratislava.sk/uradna-tabula'
-
 const feedUrl = 'https://www.bratislava.sk/api/official-board-feed'
-
-const description = 'Bratislava.sk - Úradná tabuľa'
+const description = 'Úradná tabuľa bratislava.sk'
+const title = 'Bratislava.sk - Úradná tabuľa'
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   if (process.env.NEXT_PUBLIC_FEATURE_FLAG_RSS_FEED !== 'true') {
@@ -26,7 +25,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       : await getOfficialBoardParsedList({ publicationState: 'vyveseno' })
 
     const feed = new Rss({
-      title: 'Bratislava.sk',
+      title,
       description,
       site_url: 'https://www.bratislava.sk',
       feed_url: feedUrl,
