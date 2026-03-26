@@ -13,8 +13,8 @@ const feedUrl = {
   en: 'https://www.bratislava.sk/api/feed?lang=en',
 }
 const description = {
-  sk: 'Najnovšie články z bratislava.sk',
-  en: 'The latest articles from bratislava.sk',
+  sk: 'Bratislava.sk - Aktuality a tlačové správy',
+  en: 'Bratislava.sk - News and Press Releases',
 }
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
