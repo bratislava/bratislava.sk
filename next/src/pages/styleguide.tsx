@@ -19,8 +19,22 @@ import TagShowCase from '@/src/components/styleguide/showcases/TagShowCase'
 import TokensShowcase from '@/src/components/styleguide/showcases/TokensShowcase'
 import TootootEventCardShowcase from '@/src/components/styleguide/showcases/TootootEventCardShowcase'
 import StyleGuideWrapper from '@/src/components/styleguide/StyleGuideWrapper'
-import { NOT_FOUND } from '@/src/utils/consts'
+import { NOT_FOUND_SERVERSIDE } from '@/src/utils/consts'
 import { isProductionDeployment } from '@/src/utils/utils'
+
+export const getServerSideProps: GetServerSideProps = async ({ locale }) => {
+  if (!locale || isProductionDeployment()) {
+    return NOT_FOUND_SERVERSIDE
+  }
+
+  const [translations] = await Promise.all([serverSideTranslations(locale)])
+
+  return {
+    props: {
+      ...translations,
+    },
+  }
+}
 
 const showcases = [
   { id: 'tokens', label: 'Tokens', component: <TokensShowcase /> },
@@ -32,7 +46,11 @@ const showcases = [
   { id: 'alert', label: 'Alert', component: <AlertShowCase /> },
   { id: 'disclosure', label: 'Disclosure', component: <DisclosureShowcase /> },
   { id: 'banner', label: 'Banner', component: <BannerShowCase /> },
-  { id: 'tootoot-event-card', label: 'Tootoot Event Card', component: <TootootEventCardShowcase /> },
+  {
+    id: 'tootoot-event-card',
+    label: 'Tootoot Event Card',
+    component: <TootootEventCardShowcase />,
+  },
   { id: 'category-card', label: 'Category Card', component: <CategoryCardShowcase /> },
   { id: 'article-card', label: 'Article Card', component: <ArticleCardShowcase /> },
   {
@@ -59,7 +77,7 @@ const Styleguide = () => {
             <Tab
               key={id}
               id={id}
-              className="selected:border-gray-700 selected:bg-gray-100 selected:font-semibold cursor-pointer rounded-md border border-gray-300 bg-white px-3 py-2 hover:border-gray-500 hover:bg-gray-50"
+              className="cursor-pointer rounded-md border border-gray-300 bg-white px-3 py-2 hover:border-gray-500 hover:bg-gray-50 selected:border-gray-700 selected:bg-gray-100 selected:font-semibold"
             >
               {label}
             </Tab>
@@ -73,20 +91,6 @@ const Styleguide = () => {
       </Tabs>
     </StyleGuideWrapper>
   )
-}
-
-export const getServerSideProps: GetServerSideProps = async ({ locale }) => {
-  if (!locale || isProductionDeployment()) {
-    return NOT_FOUND
-  }
-
-  const [translations] = await Promise.all([serverSideTranslations(locale)])
-
-  return {
-    props: {
-      ...translations,
-    },
-  }
 }
 
 export default Styleguide

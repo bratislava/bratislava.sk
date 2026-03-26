@@ -15,7 +15,7 @@ import {
 import { GeneralQuery, PageEntityFragment } from '@/src/services/graphql'
 import { client } from '@/src/services/graphql/gql'
 import { GlobalCategoryColorProvider } from '@/src/utils/colors'
-import { NOT_FOUND } from '@/src/utils/consts'
+import { NOT_FOUND_STATIC } from '@/src/utils/consts'
 import { isDefined } from '@/src/utils/isDefined'
 import { prefetchPageSections } from '@/src/utils/prefetchPageSections'
 
@@ -58,7 +58,7 @@ export const getStaticProps: GetStaticProps<PageProps, StaticParams> = async ({
   console.log(`Revalidating page ${locale === 'en' ? '/en' : ''}/${slugJoined}`)
 
   if (!slug || !slugJoined || !locale) {
-    return NOT_FOUND
+    return NOT_FOUND_STATIC
   }
 
   const [{ pages }, { pages: aliasPages, articles: aliasArticles }, general, translations] =
@@ -100,7 +100,7 @@ export const getStaticProps: GetStaticProps<PageProps, StaticParams> = async ({
 
   const page = pages[0]
   if (!page) {
-    return NOT_FOUND
+    return NOT_FOUND_STATIC
   }
 
   const dehydratedState = await prefetchPageSections(page, locale)
