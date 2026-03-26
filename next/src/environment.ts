@@ -13,7 +13,6 @@ function assertEnv<T>(variable: string, value: T) {
 
 export const environment = {
   nodeEnv: assertEnv('NODE_ENV', process.env.NODE_ENV),
-  revalidateSecretToken: assertEnv('REVALIDATE_SECRET_TOKEN', process.env.REVALIDATE_SECRET_TOKEN),
   nalgooApiKey: assertEnv('NALGOO_API_KEY', process.env.NALGOO_API_KEY),
   starzEcomailApiKey: assertEnv('STARZ_ECOMAIL_API_KEY', process.env.STARZ_ECOMAIL_API_KEY),
   ginisHostUde: assertEnv('GINIS_HOST_UDE', process.env.GINIS_HOST_UDE),
