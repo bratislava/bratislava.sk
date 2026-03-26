@@ -23,7 +23,7 @@ export const listPages = async () => {
     // .filter((page) => {
     // return page.pageColor !== page.pageCategory?.data?.attributes?.color
     // })
-    // .filter((page) => !page.slug?.includes('/'))
+    // .filter((page) => !page.path?.includes('/'))
     .filter((page) => {
       const sections =
         page.sections?.filter((section) => section?.__typename === 'ComponentSectionsIframe') ?? []

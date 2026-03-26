@@ -124,7 +124,7 @@ const Page = ({ general, page, dehydratedState }: PageProps) => {
     [
       [locale as LanguageCode, `/${path}`] as const,
       localization
-        ? ([localization.locale as LanguageCode, `/${localization.slug}`] as const)
+        ? ([localization.locale as LanguageCode, `/${localization.path}`] as const)
         : null,
     ].filter(isDefined),
   ) as Localizations
