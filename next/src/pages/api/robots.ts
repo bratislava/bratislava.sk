@@ -4,7 +4,7 @@ import { environment } from '@/src/environment'
 
 // Copied from bratislava.sk https://github.com/bratislava/bratislava.sk/blob/master/next/pages/api/robots.ts
 const handler = async (_req: NextApiRequest, res: NextApiResponse) => {
-  if (environment.nextPublicDeployment === 'prod') {
+  if (environment.deployment === 'prod') {
     /* In production, disallow to crawl /api endpoints */
     res.send(
       `

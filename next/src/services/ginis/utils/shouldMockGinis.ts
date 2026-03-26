@@ -7,6 +7,6 @@ export const shouldMockGinis = () => {
   return (
     environment.nodeEnv === 'development' ||
     environment.nodeEnv === 'test' ||
-    environment.ci === 'true'
+    process.env.CI === 'true'
   )
 }
