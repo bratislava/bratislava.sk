@@ -19,7 +19,7 @@ import {
   getTootootEvents,
   getTootootEventsQueryKey,
 } from '@/src/services/tootoot/tootootEvents.fetcher'
-import { NOT_FOUND } from '@/src/utils/consts'
+import { NOT_FOUND_STATIC } from '@/src/utils/consts'
 
 type PageProps = {
   homepageContext: HomepageContext
@@ -32,7 +32,7 @@ export const getStaticProps: GetStaticProps<PageProps> = async ({ locale }) => {
   console.log(`Revalidating homepage ${locale}.`)
 
   if (!locale) {
-    return NOT_FOUND
+    return NOT_FOUND_STATIC
   }
 
   const [homepageContext, general, translations] = await Promise.all([

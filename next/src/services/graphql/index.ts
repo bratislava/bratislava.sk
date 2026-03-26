@@ -473,6 +473,7 @@ export type Asset = {
   documentId: Scalars['ID']['output']
   files: Array<Maybe<UploadFile>>
   files_connection: UploadFileRelationResponseCollection
+  isAccessible?: Maybe<Scalars['Boolean']['output']>
   publishedAt?: Maybe<Scalars['DateTime']['output']>
   slug: Scalars['String']['output']
   title: Scalars['String']['output']
@@ -595,6 +596,7 @@ export type AssetFiltersInput = {
   customPublishedAt?: InputMaybe<DateTimeFilterInput>
   description?: InputMaybe<StringFilterInput>
   documentId?: InputMaybe<IdFilterInput>
+  isAccessible?: InputMaybe<BooleanFilterInput>
   not?: InputMaybe<AssetFiltersInput>
   or?: InputMaybe<Array<InputMaybe<AssetFiltersInput>>>
   publishedAt?: InputMaybe<DateTimeFilterInput>
@@ -610,6 +612,7 @@ export type AssetInput = {
   customPublishedAt?: InputMaybe<Scalars['DateTime']['input']>
   description?: InputMaybe<Scalars['String']['input']>
   files?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
+  isAccessible?: InputMaybe<Scalars['Boolean']['input']>
   publishedAt?: InputMaybe<Scalars['DateTime']['input']>
   slug?: InputMaybe<Scalars['String']['input']>
   title?: InputMaybe<Scalars['String']['input']>
@@ -11584,7 +11587,7 @@ export type PageEntityFragment = {
   sidebar?: Array<
     { __typename: 'ComponentSidebarsEmptySidebar' } | { __typename?: 'Error' } | null
   > | null
-  localizations: Array<{ __typename?: 'Page'; slug?: string | null; locale?: string | null } | null>
+  localizations: Array<{ __typename?: 'Page'; path?: string | null; locale?: string | null } | null>
   relatedContents: Array<{
     __typename?: 'Tag'
     documentId: string
@@ -12912,7 +12915,7 @@ export type PageByPathQuery = {
     > | null
     localizations: Array<{
       __typename?: 'Page'
-      slug?: string | null
+      path?: string | null
       locale?: string | null
     } | null>
     relatedContents: Array<{
@@ -14258,7 +14261,7 @@ export type Dev_AllPagesQuery = {
     > | null
     localizations: Array<{
       __typename?: 'Page'
-      slug?: string | null
+      path?: string | null
       locale?: string | null
     } | null>
     relatedContents: Array<{
@@ -19092,7 +19095,7 @@ export const PageEntityFragmentDoc = gql`
       ...Sidebars
     }
     localizations {
-      slug
+      path
       locale
     }
     relatedContents {

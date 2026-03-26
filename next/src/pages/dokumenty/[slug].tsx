@@ -8,7 +8,7 @@ import { AdminGroupsContextProvider } from '@/src/components/providers/AdminGrou
 import { GeneralContextProvider } from '@/src/components/providers/GeneralContextProvider'
 import { AssetEntityFragment, GeneralQuery } from '@/src/services/graphql'
 import { client } from '@/src/services/graphql/gql'
-import { NOT_FOUND } from '@/src/utils/consts'
+import { NOT_FOUND_STATIC } from '@/src/utils/consts'
 
 type PageProps = {
   general: GeneralQuery
@@ -50,7 +50,7 @@ export const getStaticProps: GetStaticProps<PageProps, StaticParams> = async ({
   console.log(`Revalidating asset ${locale === 'en' ? '/en' : ''}/dokumenty/${slug}`)
 
   if (!slug || !locale) {
-    return NOT_FOUND
+    return NOT_FOUND_STATIC
   }
 
   const [{ assets }, general, translations] = await Promise.all([
@@ -61,7 +61,7 @@ export const getStaticProps: GetStaticProps<PageProps, StaticParams> = async ({
 
   const asset = assets[0]
   if (!asset) {
-    return NOT_FOUND
+    return NOT_FOUND_STATIC
   }
 
   return {

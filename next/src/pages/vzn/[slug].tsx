@@ -10,7 +10,7 @@ import { AdminGroupsContextProvider } from '@/src/components/providers/AdminGrou
 import { GeneralContextProvider } from '@/src/components/providers/GeneralContextProvider'
 import { GeneralQuery, RegulationEntityFragment } from '@/src/services/graphql'
 import { client } from '@/src/services/graphql/gql'
-import { NOT_FOUND } from '@/src/utils/consts'
+import { NOT_FOUND_STATIC } from '@/src/utils/consts'
 
 type StaticParams = ParsedUrlQuery & {
   slug: string
@@ -50,7 +50,7 @@ export const getStaticProps: GetStaticProps<RegulationPageProps, StaticParams> =
   console.log(`Revalidating regulation ${locale === 'en' ? '/en' : ''}/${slug}`)
 
   if (!slug || !locale) {
-    return NOT_FOUND
+    return NOT_FOUND_STATIC
   }
 
   const [{ regulations }, general, translations] = await Promise.all([
@@ -61,7 +61,7 @@ export const getStaticProps: GetStaticProps<RegulationPageProps, StaticParams> =
 
   const regulation = regulations[0]
   if (!regulation) {
-    return NOT_FOUND
+    return NOT_FOUND_STATIC
   }
 
   return {
