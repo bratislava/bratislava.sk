@@ -1,13 +1,14 @@
 import dotenv from 'dotenv'
 import { GraphQLClient } from 'graphql-request'
 
+import { environment } from '@/src/environment'
 import { getSdk } from '@/src/services/graphql'
 import { isDefined } from '@/src/utils/isDefined'
 
 // Load envs
 dotenv.config({ path: '.env.local' })
 
-const gql = new GraphQLClient(`${process.env.NEXT_PUBLIC_STRAPI_URL}/graphql`)
+const gql = new GraphQLClient(`${environment.strapiUrl}/graphql`)
 export const client = getSdk(gql)
 
 // Run for both locales separately
@@ -38,7 +39,6 @@ const getAllUsedFilesInMediaLibrary = async () => {
       }
     })
     page?.sections?.forEach((section) => {
-      // eslint-disable-next-line default-case
       switch (section?.__typename) {
         case 'ComponentSectionsAccordion':
           section?.flatText?.forEach((flatText) => {

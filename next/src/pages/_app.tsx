@@ -16,6 +16,7 @@ import MLink from '@/src/components/common/MLink/MLink'
 import { NavMenuContextProvider } from '@/src/components/common/NavBar/NavMenu/navMenuContext'
 import BAI18nProvider from '@/src/components/providers/BAI18nProvider'
 import BAQueryClientProvider from '@/src/components/providers/BAQueryClientProvider'
+import { environment } from '@/src/environment'
 import { isProductionDeployment } from '@/src/utils/utils'
 
 const inter = Inter({
@@ -64,9 +65,9 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
                       </div>
                     </ComponentLibraryProvider>
                     <GoogleTagManager
-                      gtmId={process.env.NEXT_PUBLIC_GTM_ID ?? ''}
-                      auth={process.env.NEXT_PUBLIC_GTM_AUTH ?? ''}
-                      preview={process.env.NEXT_PUBLIC_GTM_PREVIEW ?? ''}
+                      gtmId={environment.gtmId}
+                      auth={environment.gtmAuth}
+                      preview={environment.gtmPreview}
                     />
                   </NavMenuContextProvider>
                 </OverlayProvider>

@@ -1,9 +1,11 @@
 import { Ginis } from '@bratislava/ginis-sdk'
 
+import { environment } from '@/src/environment'
+
 export const ginis = new Ginis({
   // connect to any subset of services needed, all the urls are optional but requests to services missing urls will fail
   urls: {
-    ude: process.env.GINIS_HOST_UDE ?? '',
+    ude: environment.ginisHostUde,
   },
   // credentials
   username: process.env.GINIS_USERNAME ?? '',
