@@ -2,7 +2,9 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 type Response = { revalidated: boolean } | { message: string } | string
-type RequestPayload = { model: string; entry: { slug: string; locale: string } }
+type RequestPayload =
+  | { model: 'page'; entry: { path: string; locale: string } }
+  | { model: 'article' | 'inba-release'; entry: { slug: string; locale: string } }
 
 const handler = async (req: NextApiRequest, res: NextApiResponse<Response>) => {
   // Check for secret to confirm this is a valid request, NEXT secret is getting from Strapi env variable
@@ -25,7 +27,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<Response>) => {
     }
 
     if (payload?.model === 'page') {
-      const pageUrl = `${localePrefix}/${payload?.entry?.slug}`
+      const pageUrl = `${localePrefix}/${payload?.entry?.path}`
       console.log('api/revalidate:', pageUrl)
       await res.revalidate(pageUrl)
     }
