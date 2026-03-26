@@ -7,7 +7,7 @@ const msalClientConfig = {
     // TODO add environment utility
     clientId: environment.msalClientId,
     authority: `https://login.microsoftonline.com/${environment.msalTenantId}`,
-    clientSecret: environment.msalClientSecret,
+    clientSecret: process.env.MSAL_CLIENT_SECRET,
   },
 }
 

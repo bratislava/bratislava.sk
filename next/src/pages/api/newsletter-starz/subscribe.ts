@@ -2,8 +2,6 @@
 import axios from 'axios'
 import { NextApiRequest, NextApiResponse } from 'next'
 
-import { environment } from '@/src/environment'
-
 type ResponseData = {
   error?: string
 }
@@ -37,7 +35,7 @@ const Subscribe = async (req: NextApiRequest, res: NextApiResponse<ResponseData>
       {
         headers: {
           'Content-Type': 'application/json',
-          key: environment.starzEcomailApiKey,
+          key: process.env.STARZ_ECOMAIL_API_KEY,
         },
       },
     )
