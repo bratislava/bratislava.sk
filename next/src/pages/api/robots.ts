@@ -10,6 +10,9 @@ const handler = async (_req: NextApiRequest, res: NextApiResponse) => {
       `
         User-agent: *
         Disallow: /api/
+
+        # Sitemaps
+        Sitemap: bratislava.sk/sitemap.xml
       `,
     )
 
