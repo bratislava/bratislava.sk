@@ -1,4 +1,4 @@
-const { i18n } = require('@/next.config')
+const { i18n } = require('./next.config')
 const { client } = require('./dist/src/services/graphql/gql')
 
 /** @type {import('next-sitemap').IConfig} */
