@@ -15,7 +15,7 @@ import {
   ArticlesFilters,
   getArticlesQueryKey,
 } from '@/src/services/meili/fetchers/articlesFetcher'
-import { NOT_FOUND } from '@/src/utils/consts'
+import { NOT_FOUND_STATIC } from '@/src/utils/consts'
 
 type PageProps = {
   general: GeneralQuery
@@ -56,7 +56,7 @@ export const getStaticProps: GetStaticProps<PageProps, StaticParams> = async ({
   console.log(`Revalidating inba release ${locale === 'en' ? '/en' : ''}/inba/vydania/${slug}`)
 
   if (!slug || !locale) {
-    return NOT_FOUND
+    return NOT_FOUND_STATIC
   }
 
   const [{ inbaReleases }, general, translations] = await Promise.all([
@@ -67,7 +67,7 @@ export const getStaticProps: GetStaticProps<PageProps, StaticParams> = async ({
 
   const inbaRelease = inbaReleases[0]
   if (!inbaRelease) {
-    return NOT_FOUND
+    return NOT_FOUND_STATIC
   }
 
   // Prefetch data

@@ -51,6 +51,18 @@ export const homepageSearchFetcher = (filters: HomepageSearchFilters, locale: st
         // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
         const dataInner = (hit as any)[type]
 
+        if (type === 'page') {
+          const { title, path } = dataInner
+
+          return {
+            type,
+            title,
+            // TODO: Fix link - get path by some proper function. This one works for now for both locales.
+            link: `/${path}`,
+            data: dataInner,
+          } as HomepageSearchResult
+        }
+
         if (type === 'article') {
           const { title, slug } = dataInner
 

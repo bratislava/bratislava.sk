@@ -1,6 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import Rss from 'rss'
 
+import { environment } from '@/src/environment'
 import { client } from '@/src/services/graphql/gql'
 import { isDefined } from '@/src/utils/isDefined'
 
@@ -17,8 +18,13 @@ const description = {
   en: 'The latest articles from bratislava.sk',
 }
 
+const title = {
+  sk: 'Bratislava.sk - Aktuality a tlačové správy',
+  en: 'Bratislava.sk - News and Press Releases',
+}
+
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
-  if (process.env.NEXT_PUBLIC_FEATURE_FLAG_RSS_FEED !== 'true') {
+  if (environment.featureFlagRssFeed !== 'true') {
     res.status(404)
 
     return
@@ -34,7 +40,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     const { articles } = await client.ArticlesRssFeed({ locale: language })
 
     const feed = new Rss({
-      title: 'Bratislava.sk',
+      title: title[language],
       description: description[language],
       site_url: 'https://www.bratislava.sk',
       feed_url: feedUrl[language],

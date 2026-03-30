@@ -1,12 +1,13 @@
 import dotenv from 'dotenv'
 import { GraphQLClient } from 'graphql-request'
 
+import { environment } from '@/src/environment'
 import { FileListSectionFragment, getSdk } from '@/src/services/graphql'
 import { isDefined } from '@/src/utils/isDefined'
 
 dotenv.config({ path: '.env.local' })
 
-const gql = new GraphQLClient(`${process.env.NEXT_PUBLIC_STRAPI_URL}/graphql`)
+const gql = new GraphQLClient(`${environment.strapiUrl}/graphql`)
 export const client = getSdk(gql)
 
 const locale = 'sk'
@@ -15,7 +16,7 @@ const locale = 'sk'
  * Temporary file to migrate strapi File List section to new Documents
  */
 export const migrateDocuments = async () => {
-  console.log(process.env.NEXT_PUBLIC_STRAPI_URL)
+  console.log(environment.strapiUrl)
 
   const { pages } = await client.Dev_AllPages({ locale, limit: -1 })
 

@@ -17,7 +17,9 @@ export default {
   getPagesByComponent: async (ctx: ControllerContext) => {
     const strapi = ctx.state.strapi
     const { component, locale } = ctx.query
-    const pagination = ctx.query.pagination as { page?: number | string; pageSize?: number | string } | undefined
+    const pagination = ctx.query.pagination as
+      | { page?: number | string; pageSize?: number | string }
+      | undefined
 
     if (!component || typeof component !== 'string') {
       return ctx.badRequest('Component parameter is required')
@@ -40,7 +42,8 @@ export default {
 
     const filteredPages = allPages
       .filter((pageItem) => {
-        const sections = 'sections' in pageItem && Array.isArray(pageItem.sections) ? pageItem.sections : []
+        const sections =
+          'sections' in pageItem && Array.isArray(pageItem.sections) ? pageItem.sections : []
         return sections.some(
           (section) =>
             section &&
@@ -50,8 +53,9 @@ export default {
         )
       })
       .map((pageItem) => {
-        const slug = 'slug' in pageItem && typeof pageItem.slug === 'string' ? pageItem.slug : ''
-        const sections = 'sections' in pageItem && Array.isArray(pageItem.sections) ? pageItem.sections : []
+        const path = 'path' in pageItem && typeof pageItem.path === 'string' ? pageItem.path : ''
+        const sections =
+          'sections' in pageItem && Array.isArray(pageItem.sections) ? pageItem.sections : []
         const matchingSections = sections.filter(
           (section) =>
             section &&
@@ -61,12 +65,13 @@ export default {
         )
         const componentDataJson =
           matchingSections.length > 0 ? JSON.stringify(matchingSections) : ''
+
         return {
           id: pageItem.id,
           documentId: pageItem.documentId,
           title: pageItem.title || 'Untitled',
           locale: pageItem.locale,
-          path: slug ? `/${slug}` : '',
+          path: path ? `/${path}` : '',
           componentData: componentDataJson,
         }
       })

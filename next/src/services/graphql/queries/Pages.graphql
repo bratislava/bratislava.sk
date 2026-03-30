@@ -69,7 +69,7 @@ fragment PageEntity on Page {
     ...Sidebars
   }
   localizations {
-    slug
+    path
     locale
   }
   relatedContents {

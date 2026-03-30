@@ -1,10 +1,12 @@
 import { ConfidentialClientApplication } from '@azure/msal-node'
 
+import { environment } from '@/src/environment'
+
 const msalClientConfig = {
   auth: {
     // TODO add environment utility
-    clientId: process.env.MSAL_CLIENT_ID ?? '',
-    authority: `https://login.microsoftonline.com/${process.env.MSAL_TENANT_ID}`,
+    clientId: environment.msalClientId,
+    authority: `https://login.microsoftonline.com/${environment.msalTenantId}`,
     clientSecret: process.env.MSAL_CLIENT_SECRET,
   },
 }
