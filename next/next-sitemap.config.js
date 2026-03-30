@@ -3,7 +3,7 @@ const i18nextConfig = require('./next-i18next.config.js')
 
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-  siteUrl: process.env.SITE_URL || 'bratislava.sk', // todo fix env variable
+  siteUrl: 'bratislava.sk',
   generateRobotsTxt: false,
   changefreq: 'weekly',
   sitemapSize: 7000,
