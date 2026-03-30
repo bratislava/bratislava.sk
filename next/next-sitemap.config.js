@@ -1,5 +1,5 @@
+const { i18n } = require('@/next.config')
 const { client } = require('./dist/src/services/graphql/gql')
-const i18nextConfig = require('./next-i18next.config.js')
 
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
@@ -8,7 +8,7 @@ module.exports = {
   changefreq: 'weekly',
   sitemapSize: 7000,
   additionalPaths: async (config) => {
-    const { locales } = i18nextConfig.i18n
+    const { locales } = i18n
 
     const fetchArticlePaths = async () => {
       const results = await Promise.all(
