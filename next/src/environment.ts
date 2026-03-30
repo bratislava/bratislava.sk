@@ -13,6 +13,7 @@ function assertEnv<T>(variable: string, value: T) {
 
 export const environment = {
   nodeEnv: assertEnv('NODE_ENV', process.env.NODE_ENV),
+  siteUrl: assertEnv('NEXT_PUBLIC_SITE_URL', process.env.NEXT_PUBLIC_SITE_URL),
   ginisHostUde: assertEnv('GINIS_HOST_UDE', process.env.GINIS_HOST_UDE),
   msalScope: assertEnv('MSAL_SCOPE', process.env.MSAL_SCOPE),
   msalClientId: assertEnv('MSAL_CLIENT_ID', process.env.MSAL_CLIENT_ID),

@@ -3,7 +3,7 @@ const { client } = require('./dist/src/services/graphql/gql')
 
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-  siteUrl: 'bratislava.sk',
+  siteUrl: process.env.NEXT_PUBLIC_SITE_URL,
   generateRobotsTxt: false,
   changefreq: 'weekly',
   sitemapSize: 7000,
