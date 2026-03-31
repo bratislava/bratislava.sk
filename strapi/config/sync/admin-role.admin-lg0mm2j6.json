@@ -257,12 +257,13 @@
           "files",
           "description",
           "assetCategory",
-          "adminGroups"
+          "adminGroups",
+          "isAccessible"
         ]
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "sv69teejf8vb1rqhsr8xdwhm",
+      "documentId": "yr4d8k6o9ovsfrbdjbzp1aq7",
       "locale": null
     },
     {
@@ -293,12 +294,13 @@
           "files",
           "description",
           "assetCategory",
-          "adminGroups"
+          "adminGroups",
+          "isAccessible"
         ]
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "bdn51qe4359daszk2is4k0o0",
+      "documentId": "ycvxns65dynn7wvqwae338zq",
       "locale": null
     },
     {
@@ -311,12 +313,13 @@
           "files",
           "description",
           "assetCategory",
-          "adminGroups"
+          "adminGroups",
+          "isAccessible"
         ]
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "smp8pr1u3mz3uq9q1haoifgt",
+      "documentId": "njh9dw9gpnyqi1s5l0vqi7k3",
       "locale": null
     },
     {
