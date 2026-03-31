@@ -2,7 +2,6 @@ fragment AdminGroupSlugEntity on AdminGroup {
   documentId
   slug
   title
-  adminGroupId
 }
 
 fragment AdminGroupEntity on AdminGroup {

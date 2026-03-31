@@ -22,7 +22,7 @@ export const homepageContextFetcher = async (locale: string): Promise<HomepageCo
       filters: {
         and: [
           // Exclude inba articles and articles with adminGroup
-          { adminGroups: { adminGroupId: { eq: null } } },
+          { adminGroups: { slug: { eq: null } } },
           { articleCategory: { title: { notContains: 'in.ba' } } },
         ],
       },
