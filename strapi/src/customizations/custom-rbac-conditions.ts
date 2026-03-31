@@ -12,7 +12,7 @@ export const customRbacConditions = [
     handler: async () => ({
       adminGroups: {
         $elemMatch: {
-          adminGroupId: { $eq: 'starz' },
+          slug: { $eq: 'starz' },
         },
       },
     }),
