@@ -21,10 +21,6 @@
       "targetField": "title",
       "required": true
     },
-    "adminGroupId": {
-      "type": "uid",
-      "targetField": "title"
-    },
     "contentManagedBy": {
       "type": "string",
       "required": true
