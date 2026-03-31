@@ -2,25 +2,18 @@
 
 import { Core } from '@strapi/strapi'
 
-type AdminGroupId = 'starz'
+type AdminGroupSlug = 'starz'
 
-const getAdminGroup = async ({
-  adminGroupId,
-  strapi,
-}: {
-  adminGroupId: AdminGroupId
-  strapi: Core.Strapi
-}) => {
+const getAdminGroup = async ({ slug, strapi }: { slug: AdminGroupSlug; strapi: Core.Strapi }) => {
   try {
     const adminGroups = await strapi.documents('api::admin-group.admin-group').findMany({
-      filters: { adminGroupId },
+      filters: { slug },
     })
 
     if (adminGroups.length === 0) {
-      console.log(`No adminGroup with adminGroupId=${adminGroupId} found`)
+      console.log(`No adminGroup with slug=${slug} found`)
     }
 
-    // adminGroupId has unique values, so we get at most one result
     return adminGroups[0]
   } catch (error) {
     console.log('Function getAdminGroup failed with error: ', error)
@@ -29,7 +22,7 @@ const getAdminGroup = async ({
 
 export const registerDocumentServiceMiddlewares = ({ strapi }: { strapi: Core.Strapi }) => {
   // TODO refactor to allow more adminGroup values
-  const STARZ_ADMINGROUP_ID = 'starz' // adminGroupId of AdminGroup collection in Strapi,
+  const STARZ_SLUG = 'starz' // slug of AdminGroup collection in Strapi,
   const STARZ_ROLE_NAME_REGEX = 'starz' // Admin role name in Strapi
 
   strapi.documents.use(async (context, next) => {
@@ -37,6 +30,7 @@ export const registerDocumentServiceMiddlewares = ({ strapi }: { strapi: Core.St
       (context.uid === 'api::article.article' ||
         context.uid === 'api::page.page' ||
         context.uid === 'api::document.document' ||
+        context.uid === 'api::asset.asset' ||
         context.uid === 'api::faq.faq') &&
       context.action === 'create'
     ) {
@@ -60,7 +54,7 @@ export const registerDocumentServiceMiddlewares = ({ strapi }: { strapi: Core.St
       ) {
         // Assign adminGroup based on active user
         const adminGroupToAssign = await getAdminGroup({
-          adminGroupId: STARZ_ADMINGROUP_ID,
+          slug: STARZ_SLUG,
           strapi,
         })
 

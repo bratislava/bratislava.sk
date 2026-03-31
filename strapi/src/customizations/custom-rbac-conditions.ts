@@ -2,7 +2,7 @@
 
 export const customRbacConditions = [
   {
-    displayName: 'Document adminGroupId includes starz',
+    displayName: 'Document adminGroups includes starz',
     name: 'document-admin-group-includes-starz',
     // category (string, optional): conditions can be grouped into categories available in the admin panel; if undefined, the condition will appear under the "Default" category,
     plugin: 'content-manager',
@@ -12,7 +12,7 @@ export const customRbacConditions = [
     handler: async () => ({
       adminGroups: {
         $elemMatch: {
-          adminGroupId: { $eq: 'starz' },
+          slug: { $eq: 'starz' },
         },
       },
     }),

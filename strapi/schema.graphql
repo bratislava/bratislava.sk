@@ -3,7 +3,6 @@
 
 
 type AdminGroup {
-  adminGroupId: String
   articles(filters: ArticleFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [Article]!
   articles_connection(filters: ArticleFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): ArticleRelationResponseCollection
   assets(filters: AssetFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [Asset]!
@@ -40,7 +39,6 @@ type AdminGroupEntityResponseCollection {
 }
 
 input AdminGroupFiltersInput {
-  adminGroupId: StringFilterInput
   and: [AdminGroupFiltersInput]
   articles: ArticleFiltersInput
   assets: AssetFiltersInput
@@ -61,7 +59,6 @@ input AdminGroupFiltersInput {
 }
 
 input AdminGroupInput {
-  adminGroupId: String
   articles: [ID]
   assets: [ID]
   contentManagedBy: String
