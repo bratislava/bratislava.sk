@@ -1,5 +1,7 @@
 const { i18n } = require('./next.config')
-const { client } = require('./dist/src/services/graphql/gql')
+const { client } = require('./dist/services/graphql/gql')
+
+//  Documentation: https://www.npmjs.com/package/next-sitemap
 
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
@@ -7,6 +9,7 @@ module.exports = {
   generateRobotsTxt: false,
   changefreq: 'weekly',
   sitemapSize: 7000,
+  // generate paths dynamically from Strapi
   additionalPaths: async (config) => {
     const { locales } = i18n
 
@@ -32,7 +35,7 @@ module.exports = {
       return regulations.map((regulation) => ({ loc: `/vzn/${regulation.slug}` }))
     }
 
-    const fetchOtherPaths = async () => {
+    const fetchPagePaths = async () => {
       const results = await Promise.all(
         locales.map(async (locale) => {
           const { pages } = await client.PagesStaticPaths({ limit: -1, locale })
@@ -48,7 +51,7 @@ module.exports = {
       fetchArticlePaths(),
       fetchInbaReleasePaths(),
       fetchRegulationPaths(),
-      fetchOtherPaths(),
+      fetchPagePaths(),
     ])
     const paths = [...articlePaths, ...inbaReleasePaths, ...regulationPaths, ...otherPaths]
 
