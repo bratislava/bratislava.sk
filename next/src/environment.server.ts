@@ -11,7 +11,9 @@ function assertEnv<T>(variable: string, value: T) {
 
 export const serverEnvironment = {
   msalScope: assertEnv('MSAL_SCOPE', process.env.MSAL_SCOPE),
-  revalidateSecretToken: assertEnv('REVALIDATE_SECRET_TOKEN', process.env.REVALIDATE_SECRET_TOKEN),
   msalClientId: assertEnv('MSAL_CLIENT_ID', process.env.MSAL_CLIENT_ID),
   msalTenantId: assertEnv('MSAL_TENANT_ID', process.env.MSAL_TENANT_ID),
+  ginisHostUde: assertEnv('GINIS_HOST_UDE', process.env.GINIS_HOST_UDE),
+  ginisUsername: assertEnv('GINIS_USERNAME', process.env.GINIS_USERNAME),
+  ginisPassword: assertEnv('GINIS_PASSWORD', process.env.GINIS_PASSWORD),
 }
