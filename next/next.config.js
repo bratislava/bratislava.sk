@@ -230,6 +230,11 @@ const nextConfig = {
         permanent: true,
       },
       {
+        source: '/konto/vyhlasenie-o-spracovani-osobnych-udajov',
+        destination: '/konto',
+        permanent: true,
+      },
+      {
         source: '/doprava-a-mapy/mapy/strategicka-hlukova-mapa-a-akcne-plany',
         destination:
           '/zivotne-prostredie-a-vystavba/rozvoj-mesta/environmentalistika-a-technicka-infrastruktura/hluk-a-urbanisticka-akustika/strategicka-hlukova-mapa-a-akcne-plany',
