@@ -1,6 +1,8 @@
 /* eslint-disable no-console */
 import type { NextApiRequest, NextApiResponse } from 'next'
 
+import { serverEnvironment } from '@/src/environment.server'
+
 type Response = { revalidated: boolean } | { message: string } | string
 type RequestPayload =
   | { model: 'page'; entry: { path: string; locale: string } }
@@ -8,7 +10,7 @@ type RequestPayload =
 
 const handler = async (req: NextApiRequest, res: NextApiResponse<Response>) => {
   // Check for secret to confirm this is a valid request, NEXT secret is getting from Strapi env variable
-  if (req.query.secret !== process.env.REVALIDATE_SECRET_TOKEN) {
+  if (req.query.secret !== serverEnvironment.revalidateSecretToken) {
     res.status(401).json({ message: 'Invalid token' })
 
     return
