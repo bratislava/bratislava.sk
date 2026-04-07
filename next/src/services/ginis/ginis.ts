@@ -8,8 +8,8 @@ export const ginis = new Ginis({
     ude: serverEnvironment.ginisHostUde,
   },
   // credentials
-  username: serverEnvironment.ginisUsername,
-  password: serverEnvironment.ginisPassword,
+  username: process.env.GINIS_USERNAME ?? '',
+  password: process.env.GINIS_PASSWORD ?? '',
   // if debug === true prints all the requests and responses into console
   // warning - these logs WILL include credentials!
   debug: false,
