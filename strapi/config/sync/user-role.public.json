@@ -189,66 +189,6 @@
       "action": "plugin::upload.content-api.findOne",
       "documentId": "f1qbniyk9lk135c13m6sktqt",
       "locale": null
-    },
-    {
-      "action": "plugin::users-permissions.auth.callback",
-      "documentId": "qfkzyi0yfrfcnjrej5ozz2cm",
-      "locale": null
-    },
-    {
-      "action": "plugin::users-permissions.auth.connect",
-      "documentId": "f8nyy3iryo0ut9m4fcx7f0om",
-      "locale": null
-    },
-    {
-      "action": "plugin::users-permissions.auth.emailConfirmation",
-      "documentId": "dhh71d3b36b390scasorwmde",
-      "locale": null
-    },
-    {
-      "action": "plugin::users-permissions.auth.forgotPassword",
-      "documentId": "hg0s6qogjtq75nmwuokmulnd",
-      "locale": null
-    },
-    {
-      "action": "plugin::users-permissions.auth.register",
-      "documentId": "ju0uwome9uu73jyt2ki8czbq",
-      "locale": null
-    },
-    {
-      "action": "plugin::users-permissions.auth.resetPassword",
-      "documentId": "eeh20zsw3jngdvqylw7eq3hq",
-      "locale": null
-    },
-    {
-      "action": "plugin::users-permissions.permissions.getPermissions",
-      "documentId": "yqv3e7vbt7coru671k0kuzo9",
-      "locale": null
-    },
-    {
-      "action": "plugin::users-permissions.role.find",
-      "documentId": "ri4cumhca60vq087fb9ncxg1",
-      "locale": null
-    },
-    {
-      "action": "plugin::users-permissions.role.findOne",
-      "documentId": "h6tnbw6x1d0xszu373r34cam",
-      "locale": null
-    },
-    {
-      "action": "plugin::users-permissions.user.find",
-      "documentId": "ws0g7b14mnca0jibicruaicz",
-      "locale": null
-    },
-    {
-      "action": "plugin::users-permissions.user.findOne",
-      "documentId": "jqh3m0h4p26drajmu0aond2w",
-      "locale": null
-    },
-    {
-      "action": "plugin::users-permissions.user.me",
-      "documentId": "l9hlxqdb36fwxj7q6pkmgsxr",
-      "locale": null
     }
   ]
 }

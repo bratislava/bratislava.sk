@@ -12,7 +12,6 @@
         "fields": [
           "title",
           "slug",
-          "adminGroupId",
           "contentManagedBy",
           "submenuPages.title",
           "submenuPages.url",
@@ -28,7 +27,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "gkgpt21kqzxmkno85tneigp9",
+      "documentId": "fuqwlvte366klmhsf4nrzvnh",
       "locale": null
     },
     {
@@ -56,7 +55,6 @@
         "fields": [
           "title",
           "slug",
-          "adminGroupId",
           "contentManagedBy",
           "submenuPages.title",
           "submenuPages.url",
@@ -72,7 +70,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "ixx16l71xst6ftn0056ilfhb",
+      "documentId": "mhcf7hj1x08b7ig5kmyq3cde",
       "locale": null
     },
     {
@@ -82,7 +80,6 @@
         "fields": [
           "title",
           "slug",
-          "adminGroupId",
           "contentManagedBy",
           "submenuPages.title",
           "submenuPages.url",
@@ -98,7 +95,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "n83n5aajz5sgkvl4rai4mzm2",
+      "documentId": "yguos9lkafjv0ayzr6fvoj5c",
       "locale": null
     },
     {

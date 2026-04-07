@@ -38,7 +38,6 @@ export type Scalars = {
 
 export type AdminGroup = {
   __typename?: 'AdminGroup'
-  adminGroupId?: Maybe<Scalars['String']['output']>
   articles: Array<Maybe<Article>>
   articles_connection?: Maybe<ArticleRelationResponseCollection>
   assets: Array<Maybe<Asset>>
@@ -144,7 +143,6 @@ export type AdminGroupEntityResponseCollection = {
 }
 
 export type AdminGroupFiltersInput = {
-  adminGroupId?: InputMaybe<StringFilterInput>
   and?: InputMaybe<Array<InputMaybe<AdminGroupFiltersInput>>>
   articles?: InputMaybe<ArticleFiltersInput>
   assets?: InputMaybe<AssetFiltersInput>
@@ -165,7 +163,6 @@ export type AdminGroupFiltersInput = {
 }
 
 export type AdminGroupInput = {
-  adminGroupId?: InputMaybe<Scalars['String']['input']>
   articles?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
   assets?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
   contentManagedBy?: InputMaybe<Scalars['String']['input']>
@@ -6782,7 +6779,6 @@ export type AdminGroupSlugEntityFragment = {
   documentId: string
   slug: string
   title: string
-  adminGroupId?: string | null
 }
 
 export type AdminGroupEntityFragment = {
@@ -6791,7 +6787,6 @@ export type AdminGroupEntityFragment = {
   documentId: string
   slug: string
   title: string
-  adminGroupId?: string | null
   landingPage?: {
     __typename?: 'Page'
     documentId: string
@@ -6865,7 +6860,6 @@ export type AdminGroupsQuery = {
     documentId: string
     slug: string
     title: string
-    adminGroupId?: string | null
     landingPage?: {
       __typename?: 'Page'
       documentId: string
@@ -7027,7 +7021,6 @@ export type ArticleEntityFragment = {
     documentId: string
     slug: string
     title: string
-    adminGroupId?: string | null
   } | null>
   coverMedia?: {
     __typename?: 'UploadFile'
@@ -7124,7 +7117,6 @@ export type ArticleBySlugQuery = {
       documentId: string
       slug: string
       title: string
-      adminGroupId?: string | null
     } | null>
     coverMedia?: {
       __typename?: 'UploadFile'
@@ -7333,7 +7325,6 @@ export type Dev_AllArticlesQuery = {
       documentId: string
       slug: string
       title: string
-      adminGroupId?: string | null
     } | null>
     coverMedia?: {
       __typename?: 'UploadFile'
@@ -10346,7 +10337,6 @@ export type PageEntityFragment = {
     documentId: string
     slug: string
     title: string
-    adminGroupId?: string | null
     landingPage?: {
       __typename?: 'Page'
       documentId: string
@@ -10570,7 +10560,6 @@ export type PageEntityFragment = {
           documentId: string
           slug: string
           title: string
-          adminGroupId?: string | null
         } | null>
         showMoreLink?: {
           __typename?: 'ComponentBlocksCommonLink'
@@ -11669,7 +11658,6 @@ export type PageByPathQuery = {
       documentId: string
       slug: string
       title: string
-      adminGroupId?: string | null
       landingPage?: {
         __typename?: 'Page'
         documentId: string
@@ -11893,7 +11881,6 @@ export type PageByPathQuery = {
             documentId: string
             slug: string
             title: string
-            adminGroupId?: string | null
           } | null>
           showMoreLink?: {
             __typename?: 'ComponentBlocksCommonLink'
@@ -13015,7 +13002,6 @@ export type Dev_AllPagesQuery = {
       documentId: string
       slug: string
       title: string
-      adminGroupId?: string | null
       landingPage?: {
         __typename?: 'Page'
         documentId: string
@@ -13239,7 +13225,6 @@ export type Dev_AllPagesQuery = {
             documentId: string
             slug: string
             title: string
-            adminGroupId?: string | null
           } | null>
           showMoreLink?: {
             __typename?: 'ComponentBlocksCommonLink'
@@ -14989,7 +14974,6 @@ export type ArticlesSectionFragment = {
     documentId: string
     slug: string
     title: string
-    adminGroupId?: string | null
   } | null>
   showMoreLink?: {
     __typename?: 'ComponentBlocksCommonLink'
@@ -16362,7 +16346,6 @@ type Sections_ComponentSectionsArticles_Fragment = {
     documentId: string
     slug: string
     title: string
-    adminGroupId?: string | null
   } | null>
   showMoreLink?: {
     __typename?: 'ComponentBlocksCommonLink'
@@ -17649,7 +17632,6 @@ export const AdminGroupSlugEntityFragmentDoc = gql`
     documentId
     slug
     title
-    adminGroupId
   }
 `
 export const ArticleEntityFragmentDoc = gql`
