@@ -350,7 +350,6 @@ export interface ApiAdminGroupAdminGroup extends Struct.CollectionTypeSchema {
     draftAndPublish: false
   }
   attributes: {
-    adminGroupId: Schema.Attribute.UID<'title'>
     articles: Schema.Attribute.Relation<'manyToMany', 'api::article.article'>
     assets: Schema.Attribute.Relation<'manyToMany', 'api::asset.asset'>
     contentManagedBy: Schema.Attribute.String & Schema.Attribute.Required

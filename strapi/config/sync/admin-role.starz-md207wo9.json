@@ -191,14 +191,15 @@
           "slug",
           "files",
           "description",
-          "assetCategory"
+          "assetCategory",
+          "isAccessible"
         ]
       },
       "conditions": [
         "plugin::content-manager.document-admin-group-includes-starz"
       ],
       "actionParameters": {},
-      "documentId": "hotzk9v4c87tu6sytuebpcrk",
+      "documentId": "bd53eck8377xrctox8ruhp9z",
       "locale": null
     },
     {
@@ -233,14 +234,15 @@
           "files",
           "description",
           "assetCategory",
-          "adminGroups"
+          "adminGroups",
+          "isAccessible"
         ]
       },
       "conditions": [
         "plugin::content-manager.document-admin-group-includes-starz"
       ],
       "actionParameters": {},
-      "documentId": "gtt80axu10sc2cvrfchkdxaj",
+      "documentId": "tf5ybjqzkclqd9r932ugawnl",
       "locale": null
     },
     {
@@ -252,14 +254,15 @@
           "slug",
           "files",
           "description",
-          "assetCategory"
+          "assetCategory",
+          "isAccessible"
         ]
       },
       "conditions": [
         "plugin::content-manager.document-admin-group-includes-starz"
       ],
       "actionParameters": {},
-      "documentId": "uy9dm9m6t8ppcxp6ay0is5l5",
+      "documentId": "y5zmuzrxvpxa7ezwhgyy19no",
       "locale": null
     },
     {
