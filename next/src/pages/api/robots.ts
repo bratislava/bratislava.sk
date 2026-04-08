@@ -12,7 +12,7 @@ const handler = async (_req: NextApiRequest, res: NextApiResponse) => {
         Disallow: /api/
 
         # Sitemaps
-        Sitemap: bratislava.sk/sitemap.xml
+        Sitemap: ${process.env.NEXT_PUBLIC_SITE_URL}/sitemap.xml
       `,
     )
 
