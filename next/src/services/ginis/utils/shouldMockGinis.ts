@@ -1,12 +1,12 @@
 // GINIS is accessible only from internal network
 
-import { environment } from '@/src/environment'
+import { serverEnvironment } from '@/src/environment.server'
 
 // if developing from internal network, change here
 export const shouldMockGinis = () => {
   return (
-    environment.nodeEnv === 'development' ||
-    environment.nodeEnv === 'test' ||
+    serverEnvironment.nodeEnv === 'development' ||
+    serverEnvironment.nodeEnv === 'test' ||
     process.env.CI === 'true'
   )
 }
