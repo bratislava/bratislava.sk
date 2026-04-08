@@ -9,15 +9,16 @@ export type OfficialBoardListFilters = {
   search: string
   pageSize: number
   page: number
-  categoryId?: string
-  publicationState?: OfficialBoardPublicationState
-  publicationYear?: string
+  categoryId: string
+  publicationState: OfficialBoardPublicationState
+  publicationYear: string
 }
 
 export const officialBoardListDefaultFilters = {
   search: '',
   pageSize: 10,
   page: 1,
+  categoryId: 'all',
   publicationState: 'vyveseno',
   publicationYear: 'all',
 } satisfies OfficialBoardListFilters

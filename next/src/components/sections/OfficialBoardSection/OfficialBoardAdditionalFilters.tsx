@@ -15,12 +15,12 @@ import { useTranslation } from '@/src/utils/useTranslation'
 
 // TODO maybe we shouldn't use czech string for values, but parse them in handler or somewhere else?
 type Props = {
-  categoryId: string | null
-  setCategoryId: (categoryId: string | null) => void
+  categoryId: string
+  setCategoryId: (categoryId: string) => void
   publicationState: OfficialBoardPublicationState
-  setPublicationState: React.Dispatch<React.SetStateAction<OfficialBoardPublicationState>>
-  publicationYear: string | null
-  setPublicationYear: (publicationYear: string | null) => void
+  setPublicationState: (publicationState: OfficialBoardPublicationState) => void
+  publicationYear: string
+  setPublicationYear: (publicationYear: string) => void
 }
 
 /*
@@ -90,7 +90,7 @@ const OfficialBoardAdditionalFilters = ({
         items={categorySelectOptions}
         selectedKey={categoryId}
         onSelectionChange={(selected) => {
-          setCategoryId(selected as string | null | 'all')
+          setCategoryId(selected as string | 'all')
         }}
       >
         {(item) => <SelectItem label={item.title} textValue={item.title} id={item.id} />}
@@ -113,9 +113,9 @@ const OfficialBoardAdditionalFilters = ({
       <SelectField
         label={t('OfficialBoard.publicationYear')}
         items={allYearsOptions(publicationState as string)}
-        selectedKey={publicationYear as string}
+        selectedKey={publicationYear}
         onSelectionChange={(selected) => {
-          setPublicationYear(selected as string | null)
+          setPublicationYear(selected as string)
         }}
       >
         {(item) => <SelectItem label={item.title} textValue={item.title} id={item.id} />}

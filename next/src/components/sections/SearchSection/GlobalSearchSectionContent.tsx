@@ -11,9 +11,9 @@ import SearchBar from '@/src/components/sections/SearchSection/SearchBar'
 import SearchResults from '@/src/components/sections/SearchSection/SearchResults'
 import { SearchFilters } from '@/src/components/sections/SearchSection/useQueryBySearchOption'
 import { officialBoardListDefaultFilters } from '@/src/services/ginis/fetchers/officialBoardListFetcher'
-import { OfficialBoardPublicationState } from '@/src/services/ginis/types'
 import { getCategoryColorLocalStyle } from '@/src/utils/colors'
 import { useLogSearchQueryToPlausible } from '@/src/utils/useLogSearchQueryToPlausible'
+import { useRoutePreservedState } from '@/src/utils/useRoutePreservedState'
 import { useTranslation } from '@/src/utils/useTranslation'
 import { isProductionDeployment } from '@/src/utils/utils'
 
@@ -94,16 +94,6 @@ const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
             displayNamePlural: `${t('SearchPage.documents')} (Assets)`,
           },
         ]),
-    // Show Documents in global search only if not in prod - TODO remove when ready to use according to OSO
-    ...(isProductionDeployment() && variant === 'general'
-      ? []
-      : [
-          {
-            id: 'documents' as const,
-            displayName: t('SearchPage.document'),
-            displayNamePlural: t('SearchPage.documents'),
-          },
-        ]),
     {
       id: 'users',
       displayName: t('SearchPage.contact'),
@@ -142,15 +132,9 @@ const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
       ? (first as SearchOption['id'])
       : defaultSearchOption.id
 
-  const [currentPage, setCurrentPage] = useState(1)
-
-  /* OfficialBoard specific filters state */
-  const [categoryId, setCategoryId] = useState<string | null>(null)
-  const [publicationState, setPublicationState] = useState<OfficialBoardPublicationState>(
-    officialBoardListDefaultFilters.publicationState,
-  )
-  const [publicationYear, setPublicationYear] = useState<string | null>(
-    officialBoardListDefaultFilters.publicationYear,
+  const [filters, setFilters] = useRoutePreservedState<SearchFilters>(
+    officialBoardListDefaultFilters,
+    // todo
   )
 
   const [resultsCount, setResultsCount] = useState(
@@ -196,31 +180,19 @@ const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
     }
   }
 
-  const searchFilters: SearchFilters = {
-    search: searchValue,
-    page: currentPage,
-    pageSize: 12,
-    // Official board category id
-    categoryId: !categoryId || categoryId === 'all' ? undefined : categoryId,
-    publicationState: publicationState ?? undefined,
-    publicationYear: publicationYear ?? undefined,
-  }
+  const categoryId = 'categoryId' in filters ? filters.categoryId : undefined
+  const publicationState = 'publicationState' in filters ? filters.publicationState : undefined
+  const publicationYear = 'publicationYear' in filters ? filters.publicationYear : undefined
 
   useEffect(() => {
-    setCurrentPage(1)
-  }, [
-    searchValue,
-    selection,
-    searchFilters.categoryId,
-    searchFilters.publicationState,
-    searchFilters.publicationYear,
-  ])
+    setFilters((prevState) => ({ ...prevState, page: 1 }))
+  }, [searchValue, selection, categoryId, publicationState, publicationYear])
 
   const searchRef = useRef<null | HTMLInputElement>(null)
 
   useEffect(() => {
     searchRef.current?.scrollIntoView({ behavior: 'smooth' })
-  }, [searchFilters.page, searchFilters.pageSize])
+  }, [filters.page, filters.pageSize])
 
   const fetchingQueriesCount = useIsFetching({ queryKey: ['Search'] })
 
@@ -268,14 +240,31 @@ const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
           <div className="flex flex-col gap-4 rounded-md bg-background-passive-secondary p-4">
             {/* TODO heading "Doplnkovy filter" as it is in figma */}
             <div>
-              <OfficialBoardAdditionalFilters
-                categoryId={categoryId}
-                setCategoryId={setCategoryId}
-                publicationState={publicationState}
-                setPublicationState={setPublicationState}
-                publicationYear={publicationYear}
-                setPublicationYear={setPublicationYear}
-              />
+              {categoryId && publicationState && publicationYear ? (
+                <OfficialBoardAdditionalFilters
+                  categoryId={categoryId}
+                  setCategoryId={(categoryIdValue) =>
+                    setFilters((prevState) => ({
+                      ...prevState,
+                      categoryId: categoryIdValue,
+                    }))
+                  }
+                  publicationState={publicationState}
+                  setPublicationState={(publicationStateValue) =>
+                    setFilters((prevState) => ({
+                      ...prevState,
+                      publicationState: publicationStateValue,
+                    }))
+                  }
+                  publicationYear={publicationYear}
+                  setPublicationYear={(publicationYearValue) =>
+                    setFilters((prevState) => ({
+                      ...prevState,
+                      publicationYear: publicationYearValue,
+                    }))
+                  }
+                />
+              ) : null}
             </div>
           </div>
         ) : null}
@@ -297,7 +286,7 @@ const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
               <SearchResults
                 variant="allResults"
                 searchOption={option}
-                filters={searchFilters}
+                filters={filters}
                 onSetResultsCount={setResultsCountById}
                 onShowMore={setSelection}
                 key={`allResults-${option.id}`}
@@ -309,10 +298,15 @@ const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
         <SearchResults
           variant="specificResults"
           searchOption={getSearchOptionByKeyValue(selectedKey)}
-          filters={searchFilters}
+          filters={filters}
           onSetResultsCount={setResultsCountById}
           onShowMore={setSelection}
-          onPageChange={setCurrentPage}
+          onPageChange={(page) =>
+            setFilters((prevState) => ({
+              ...prevState,
+              page: typeof page === 'function' ? page(prevState.page) : page,
+            }))
+          }
           key={`specificResults-${selectedKey}`}
         />
       )}
