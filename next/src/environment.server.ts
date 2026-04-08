@@ -14,6 +14,4 @@ export const serverEnvironment = {
   msalClientId: assertEnv('MSAL_CLIENT_ID', process.env.MSAL_CLIENT_ID),
   msalTenantId: assertEnv('MSAL_TENANT_ID', process.env.MSAL_TENANT_ID),
   ginisHostUde: assertEnv('GINIS_HOST_UDE', process.env.GINIS_HOST_UDE),
-  ginisUsername: assertEnv('GINIS_USERNAME', process.env.GINIS_USERNAME),
-  ginisPassword: assertEnv('GINIS_PASSWORD', process.env.GINIS_PASSWORD),
 }
