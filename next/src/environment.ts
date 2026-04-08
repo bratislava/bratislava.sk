@@ -12,7 +12,6 @@ function assertEnv<T>(variable: string, value: T) {
 }
 
 export const environment = {
-  nodeEnv: assertEnv('NODE_ENV', process.env.NODE_ENV),
   siteUrl: assertEnv('NEXT_PUBLIC_SITE_URL', process.env.NEXT_PUBLIC_SITE_URL),
   deployment: assertEnv('NEXT_PUBLIC_DEPLOYMENT', process.env.NEXT_PUBLIC_DEPLOYMENT),
   strapiUrl: assertEnv('NEXT_PUBLIC_STRAPI_URL', process.env.NEXT_PUBLIC_STRAPI_URL),
