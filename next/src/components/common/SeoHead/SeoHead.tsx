@@ -5,7 +5,7 @@ import { UploadImageEntityFragment } from '@/src/services/graphql'
 const TITLE_POSTFIX = 'Mesto Bratislava'
 const META_TITLE_POSTFIX = 'Mesto Bratislava'
 const OG_TITLE_POSTFIX = 'Mesto Bratislava'
-const OG_SITE_NAME = 'Hlavné mesto SR Bratislava'
+const OG_SITE_NAME = 'Hlavné mesto Slovenskej republiky Bratislava'
 
 type SeoHeadProps = {
   title: string | undefined | null
