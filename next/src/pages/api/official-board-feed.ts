@@ -1,6 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import Rss from 'rss'
 
+import { environment } from '@/src/environment'
 import { mockedParsedDocuments } from '@/src/services/ginis/mocks'
 import { getOfficialBoardParsedList } from '@/src/services/ginis/server/getOfficialBoardParsedList'
 import { shouldMockGinis } from '@/src/services/ginis/utils/shouldMockGinis'
@@ -13,7 +14,7 @@ const description = 'Úradná tabuľa bratislava.sk'
 const title = 'Bratislava.sk - Úradná tabuľa'
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
-  if (process.env.NEXT_PUBLIC_FEATURE_FLAG_RSS_FEED !== 'true') {
+  if (environment.featureFlagRssFeed !== 'true') {
     res.status(404)
 
     return

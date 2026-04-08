@@ -47,20 +47,6 @@
           "sortable": true
         }
       },
-      "adminGroupId": {
-        "edit": {
-          "label": "adminGroupId",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "adminGroupId",
-          "searchable": true,
-          "sortable": true
-        }
-      },
       "contentManagedBy": {
         "edit": {
           "label": "contentManagedBy",
@@ -254,8 +240,7 @@
         "createdAt",
         "updatedAt",
         "contentManagedBy",
-        "landingPage",
-        "adminGroupId"
+        "landingPage"
       ],
       "edit": [
         [
@@ -309,10 +294,6 @@
           }
         ],
         [
-          {
-            "name": "adminGroupId",
-            "size": 6
-          },
           {
             "name": "assets",
             "size": 6
