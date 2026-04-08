@@ -29,7 +29,6 @@ export const registerDocumentServiceMiddlewares = ({ strapi }: { strapi: Core.St
     if (
       (context.uid === 'api::article.article' ||
         context.uid === 'api::page.page' ||
-        context.uid === 'api::document.document' ||
         context.uid === 'api::asset.asset' ||
         context.uid === 'api::faq.faq') &&
       context.action === 'create'

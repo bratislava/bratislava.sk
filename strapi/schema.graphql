@@ -10,8 +10,6 @@ type AdminGroup {
   contentManagedBy: String!
   createdAt: DateTime
   documentId: ID!
-  documents(filters: DocumentFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [Document]!
-  documents_connection(filters: DocumentFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): DocumentRelationResponseCollection
   faqs(filters: FaqFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [Faq]!
   faqs_connection(filters: FaqFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): FaqRelationResponseCollection
   landingPage: Page
@@ -45,7 +43,6 @@ input AdminGroupFiltersInput {
   contentManagedBy: StringFilterInput
   createdAt: DateTimeFilterInput
   documentId: IDFilterInput
-  documents: DocumentFiltersInput
   faqs: FaqFiltersInput
   landingPage: PageFiltersInput
   not: AdminGroupFiltersInput
@@ -62,7 +59,6 @@ input AdminGroupInput {
   articles: [ID]
   assets: [ID]
   contentManagedBy: String
-  documents: [ID]
   faqs: [ID]
   landingPage: ID
   pages: [ID]
@@ -2493,113 +2489,6 @@ type DeleteMutationResponse {
   documentId: ID!
 }
 
-type Document {
-  adminGroups(filters: AdminGroupFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [AdminGroup]!
-  adminGroups_connection(filters: AdminGroupFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): AdminGroupRelationResponseCollection
-  createdAt: DateTime
-  description: String
-  documentCategory: DocumentCategory
-  documentId: ID!
-  files(filters: UploadFileFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [UploadFile]!
-  files_connection(filters: UploadFileFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UploadFileRelationResponseCollection!
-  publishedAt: DateTime
-  slug: String!
-  title: String!
-  updatedAt: DateTime
-}
-
-type DocumentCategory {
-  createdAt: DateTime
-  documentId: ID!
-  documents(filters: DocumentFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [Document]!
-  documents_connection(filters: DocumentFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): DocumentRelationResponseCollection
-  publishedAt: DateTime
-  slug: String!
-  title: String!
-  updatedAt: DateTime
-}
-
-type DocumentCategoryEntity {
-  attributes: DocumentCategory
-  id: ID
-}
-
-type DocumentCategoryEntityResponse {
-  data: DocumentCategory
-}
-
-type DocumentCategoryEntityResponseCollection {
-  nodes: [DocumentCategory!]!
-  pageInfo: Pagination!
-}
-
-input DocumentCategoryFiltersInput {
-  and: [DocumentCategoryFiltersInput]
-  createdAt: DateTimeFilterInput
-  documentId: IDFilterInput
-  documents: DocumentFiltersInput
-  not: DocumentCategoryFiltersInput
-  or: [DocumentCategoryFiltersInput]
-  publishedAt: DateTimeFilterInput
-  slug: StringFilterInput
-  title: StringFilterInput
-  updatedAt: DateTimeFilterInput
-}
-
-input DocumentCategoryInput {
-  documents: [ID]
-  publishedAt: DateTime
-  slug: String
-  title: String
-}
-
-type DocumentCategoryRelationResponseCollection {
-  nodes: [DocumentCategory!]!
-}
-
-type DocumentEntity {
-  attributes: Document
-  id: ID
-}
-
-type DocumentEntityResponse {
-  data: Document
-}
-
-type DocumentEntityResponseCollection {
-  nodes: [Document!]!
-  pageInfo: Pagination!
-}
-
-input DocumentFiltersInput {
-  adminGroups: AdminGroupFiltersInput
-  and: [DocumentFiltersInput]
-  createdAt: DateTimeFilterInput
-  description: StringFilterInput
-  documentCategory: DocumentCategoryFiltersInput
-  documentId: IDFilterInput
-  not: DocumentFiltersInput
-  or: [DocumentFiltersInput]
-  publishedAt: DateTimeFilterInput
-  slug: StringFilterInput
-  title: StringFilterInput
-  updatedAt: DateTimeFilterInput
-}
-
-input DocumentInput {
-  adminGroups: [ID]
-  description: String
-  documentCategory: ID
-  files: [ID]
-  publishedAt: DateTime
-  slug: String
-  title: String
-}
-
-type DocumentRelationResponseCollection {
-  nodes: [Document!]!
-}
-
 enum ENUM_COMPONENTBLOCKSSTARZLANDINGPAGEBANNER_CONTENTPOSITION {
   left
   right
@@ -3181,7 +3070,7 @@ type GeneralRelationResponseCollection {
   nodes: [General!]!
 }
 
-union GenericMorph = AdminGroup | Alert | Article | ArticleCategory | Asset | AssetCategory | ComponentAccordionItemsFlatText | ComponentAccordionItemsInstitution | ComponentBlocksCardLink | ComponentBlocksColumnsItem | ComponentBlocksColumnsListItem | ComponentBlocksCommonLink | ComponentBlocksComparisonCard | ComponentBlocksComparisonItem | ComponentBlocksContactCard | ComponentBlocksContactDirectionsCard | ComponentBlocksContactPersonCard | ComponentBlocksFile | ComponentBlocksFileItem | ComponentBlocksFooterColumn | ComponentBlocksHomepageHighlightsItem | ComponentBlocksInBa | ComponentBlocksNumbersOverviewItem | ComponentBlocksNumericalListItem | ComponentBlocksOpeningHoursAlertMessage | ComponentBlocksOpeningHoursItem | ComponentBlocksPageLink | ComponentBlocksPartner | ComponentBlocksProsAndConsCard | ComponentBlocksStarzLandingPageBanner | ComponentBlocksSubnavigationLink | ComponentBlocksTopServicesItem | ComponentBlocksVideo | ComponentGeneralHeader | ComponentGeneralHeaderLink | ComponentHeaderSectionsEvent | ComponentHeaderSectionsFacility | ComponentMenuMenuItem | ComponentMenuMenuLink | ComponentMenuMenuSection | ComponentSectionsAccordion | ComponentSectionsAlert | ComponentSectionsArticles | ComponentSectionsArticlesLandingPage | ComponentSectionsAssets | ComponentSectionsBanner | ComponentSectionsColumnedText | ComponentSectionsColumns | ComponentSectionsColumnsList | ComponentSectionsComparisonSection | ComponentSectionsContactsSection | ComponentSectionsDivider | ComponentSectionsEvents | ComponentSectionsFacilities | ComponentSectionsFaqCategories | ComponentSectionsFaqs | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsHomepageEvents | ComponentSectionsHomepageHighlights | ComponentSectionsHomepageMayorAndCouncil | ComponentSectionsHomepageTabs | ComponentSectionsIframe | ComponentSectionsInbaLatestRelease | ComponentSectionsInbaReleases | ComponentSectionsJobOffers | ComponentSectionsLinks | ComponentSectionsNarrowText | ComponentSectionsNewsletter | ComponentSectionsNumbersOverview | ComponentSectionsNumericalList | ComponentSectionsOfficialBoard | ComponentSectionsOpeningHours | ComponentSectionsOrganizationalStructure | ComponentSectionsPartners | ComponentSectionsProsAndConsSection | ComponentSectionsRegulations | ComponentSectionsStarzLandingPage | ComponentSectionsSubnavigation | ComponentSectionsTextWithImage | ComponentSectionsTextWithImageOverlapped | ComponentSectionsTootootEvents | ComponentSectionsTopServices | ComponentSectionsVideos | ComponentSidebarsEmptySidebar | ComponentTaxAdministratorsTaxAdministrator | Document | DocumentCategory | Faq | FaqCategory | Footer | General | Homepage | I18NLocale | InbaRelease | InternalJob | Menu | Page | PageCategory | Redirect | Regulation | ReviewWorkflowsWorkflow | ReviewWorkflowsWorkflowStage | Tag | TaxAdministratorsList | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
+union GenericMorph = AdminGroup | Alert | Article | ArticleCategory | Asset | AssetCategory | ComponentAccordionItemsFlatText | ComponentAccordionItemsInstitution | ComponentBlocksCardLink | ComponentBlocksColumnsItem | ComponentBlocksColumnsListItem | ComponentBlocksCommonLink | ComponentBlocksComparisonCard | ComponentBlocksComparisonItem | ComponentBlocksContactCard | ComponentBlocksContactDirectionsCard | ComponentBlocksContactPersonCard | ComponentBlocksFile | ComponentBlocksFileItem | ComponentBlocksFooterColumn | ComponentBlocksHomepageHighlightsItem | ComponentBlocksInBa | ComponentBlocksNumbersOverviewItem | ComponentBlocksNumericalListItem | ComponentBlocksOpeningHoursAlertMessage | ComponentBlocksOpeningHoursItem | ComponentBlocksPageLink | ComponentBlocksPartner | ComponentBlocksProsAndConsCard | ComponentBlocksStarzLandingPageBanner | ComponentBlocksSubnavigationLink | ComponentBlocksTopServicesItem | ComponentBlocksVideo | ComponentGeneralHeader | ComponentGeneralHeaderLink | ComponentHeaderSectionsEvent | ComponentHeaderSectionsFacility | ComponentMenuMenuItem | ComponentMenuMenuLink | ComponentMenuMenuSection | ComponentSectionsAccordion | ComponentSectionsAlert | ComponentSectionsArticles | ComponentSectionsArticlesLandingPage | ComponentSectionsAssets | ComponentSectionsBanner | ComponentSectionsColumnedText | ComponentSectionsColumns | ComponentSectionsColumnsList | ComponentSectionsComparisonSection | ComponentSectionsContactsSection | ComponentSectionsDivider | ComponentSectionsEvents | ComponentSectionsFacilities | ComponentSectionsFaqCategories | ComponentSectionsFaqs | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsHomepageEvents | ComponentSectionsHomepageHighlights | ComponentSectionsHomepageMayorAndCouncil | ComponentSectionsHomepageTabs | ComponentSectionsIframe | ComponentSectionsInbaLatestRelease | ComponentSectionsInbaReleases | ComponentSectionsJobOffers | ComponentSectionsLinks | ComponentSectionsNarrowText | ComponentSectionsNewsletter | ComponentSectionsNumbersOverview | ComponentSectionsNumericalList | ComponentSectionsOfficialBoard | ComponentSectionsOpeningHours | ComponentSectionsOrganizationalStructure | ComponentSectionsPartners | ComponentSectionsProsAndConsSection | ComponentSectionsRegulations | ComponentSectionsStarzLandingPage | ComponentSectionsSubnavigation | ComponentSectionsTextWithImage | ComponentSectionsTextWithImageOverlapped | ComponentSectionsTootootEvents | ComponentSectionsTopServices | ComponentSectionsVideos | ComponentSidebarsEmptySidebar | ComponentTaxAdministratorsTaxAdministrator | Faq | FaqCategory | Footer | General | Homepage | I18NLocale | InbaRelease | InternalJob | Menu | Page | PageCategory | Redirect | Regulation | ReviewWorkflowsWorkflow | ReviewWorkflowsWorkflowStage | Tag | TaxAdministratorsList | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
 
 type Homepage {
   createdAt: DateTime
@@ -3599,8 +3488,6 @@ type Mutation {
   ): ArticleCategory
   createAsset(data: AssetInput!, status: PublicationStatus = PUBLISHED): Asset
   createAssetCategory(data: AssetCategoryInput!, status: PublicationStatus = PUBLISHED): AssetCategory
-  createDocument(data: DocumentInput!, status: PublicationStatus = PUBLISHED): Document
-  createDocumentCategory(data: DocumentCategoryInput!, status: PublicationStatus = PUBLISHED): DocumentCategory
   createFaq(
     data: FaqInput!
 
@@ -3667,8 +3554,6 @@ type Mutation {
   ): DeleteMutationResponse
   deleteAsset(documentId: ID!): DeleteMutationResponse
   deleteAssetCategory(documentId: ID!): DeleteMutationResponse
-  deleteDocument(documentId: ID!): DeleteMutationResponse
-  deleteDocumentCategory(documentId: ID!): DeleteMutationResponse
   deleteFaq(
     documentId: ID!
 
@@ -3770,8 +3655,6 @@ type Mutation {
   ): ArticleCategory
   updateAsset(data: AssetInput!, documentId: ID!, status: PublicationStatus = PUBLISHED): Asset
   updateAssetCategory(data: AssetCategoryInput!, documentId: ID!, status: PublicationStatus = PUBLISHED): AssetCategory
-  updateDocument(data: DocumentInput!, documentId: ID!, status: PublicationStatus = PUBLISHED): Document
-  updateDocumentCategory(data: DocumentCategoryInput!, documentId: ID!, status: PublicationStatus = PUBLISHED): DocumentCategory
   updateFaq(
     data: FaqInput!
     documentId: ID!
@@ -4125,12 +4008,6 @@ type Query {
   assetCategory(documentId: ID!, status: PublicationStatus = PUBLISHED): AssetCategory
   assets(filters: AssetFiltersInput, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED): [Asset]!
   assets_connection(filters: AssetFiltersInput, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED): AssetEntityResponseCollection
-  document(documentId: ID!, status: PublicationStatus = PUBLISHED): Document
-  documentCategories(filters: DocumentCategoryFiltersInput, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED): [DocumentCategory]!
-  documentCategories_connection(filters: DocumentCategoryFiltersInput, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED): DocumentCategoryEntityResponseCollection
-  documentCategory(documentId: ID!, status: PublicationStatus = PUBLISHED): DocumentCategory
-  documents(filters: DocumentFiltersInput, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED): [Document]!
-  documents_connection(filters: DocumentFiltersInput, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED): DocumentEntityResponseCollection
   faq(
     documentId: ID!
 

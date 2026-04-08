@@ -355,7 +355,6 @@ export interface ApiAdminGroupAdminGroup extends Struct.CollectionTypeSchema {
     contentManagedBy: Schema.Attribute.String & Schema.Attribute.Required
     createdAt: Schema.Attribute.DateTime
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> & Schema.Attribute.Private
-    documents: Schema.Attribute.Relation<'manyToMany', 'api::document.document'>
     faqs: Schema.Attribute.Relation<'manyToMany', 'api::faq.faq'>
     landingPage: Schema.Attribute.Relation<'oneToOne', 'api::page.page'>
     locale: Schema.Attribute.String & Schema.Attribute.Private
@@ -583,67 +582,6 @@ export interface ApiAssetAsset extends Struct.CollectionTypeSchema {
     isAccessible: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>
     locale: Schema.Attribute.String & Schema.Attribute.Private
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::asset.asset'> &
-      Schema.Attribute.Private
-    publishedAt: Schema.Attribute.DateTime
-    slug: Schema.Attribute.UID<'title'> & Schema.Attribute.Required
-    title: Schema.Attribute.String & Schema.Attribute.Required
-    updatedAt: Schema.Attribute.DateTime
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> & Schema.Attribute.Private
-  }
-}
-
-export interface ApiDocumentCategoryDocumentCategory extends Struct.CollectionTypeSchema {
-  collectionName: 'document_categories'
-  info: {
-    description: ''
-    displayName: 'Dokumenty (OLD) - kateg\u00F3rie'
-    pluralName: 'document-categories'
-    singularName: 'document-category'
-  }
-  options: {
-    draftAndPublish: false
-  }
-  attributes: {
-    createdAt: Schema.Attribute.DateTime
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> & Schema.Attribute.Private
-    documents: Schema.Attribute.Relation<'oneToMany', 'api::document.document'>
-    locale: Schema.Attribute.String & Schema.Attribute.Private
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::document-category.document-category'
-    > &
-      Schema.Attribute.Private
-    publishedAt: Schema.Attribute.DateTime
-    slug: Schema.Attribute.UID<'title'> & Schema.Attribute.Required
-    title: Schema.Attribute.String & Schema.Attribute.Required
-    updatedAt: Schema.Attribute.DateTime
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> & Schema.Attribute.Private
-  }
-}
-
-export interface ApiDocumentDocument extends Struct.CollectionTypeSchema {
-  collectionName: 'documents'
-  info: {
-    description: ''
-    displayName: 'Dokumenty (OLD)'
-    pluralName: 'documents'
-    singularName: 'document'
-  }
-  options: {
-    draftAndPublish: true
-  }
-  attributes: {
-    adminGroups: Schema.Attribute.Relation<'manyToMany', 'api::admin-group.admin-group'>
-    createdAt: Schema.Attribute.DateTime
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> & Schema.Attribute.Private
-    description: Schema.Attribute.Text
-    documentCategory: Schema.Attribute.Relation<
-      'manyToOne',
-      'api::document-category.document-category'
-    >
-    files: Schema.Attribute.Media<'images' | 'files', true> & Schema.Attribute.Required
-    locale: Schema.Attribute.String & Schema.Attribute.Private
-    localizations: Schema.Attribute.Relation<'oneToMany', 'api::document.document'> &
       Schema.Attribute.Private
     publishedAt: Schema.Attribute.DateTime
     slug: Schema.Attribute.UID<'title'> & Schema.Attribute.Required
@@ -1888,8 +1826,6 @@ declare module '@strapi/strapi' {
       'api::article.article': ApiArticleArticle
       'api::asset-category.asset-category': ApiAssetCategoryAssetCategory
       'api::asset.asset': ApiAssetAsset
-      'api::document-category.document-category': ApiDocumentCategoryDocumentCategory
-      'api::document.document': ApiDocumentDocument
       'api::faq-category.faq-category': ApiFaqCategoryFaqCategory
       'api::faq.faq': ApiFaqFaq
       'api::footer.footer': ApiFooterFooter

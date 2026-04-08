@@ -21,13 +21,12 @@
           "articles",
           "pages",
           "faqs",
-          "documents",
           "assets"
         ]
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "fuqwlvte366klmhsf4nrzvnh",
+      "documentId": "p0syw4pybi9ww6eoo40yz87h",
       "locale": null
     },
     {
@@ -64,13 +63,12 @@
           "articles",
           "pages",
           "faqs",
-          "documents",
           "assets"
         ]
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "mhcf7hj1x08b7ig5kmyq3cde",
+      "documentId": "usopt8rzwcdzclg4o85319bi",
       "locale": null
     },
     {
@@ -89,13 +87,12 @@
           "articles",
           "pages",
           "faqs",
-          "documents",
           "assets"
         ]
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "yguos9lkafjv0ayzr6fvoj5c",
+      "documentId": "yhvmkjpn8sllm3750be8xiy9",
       "locale": null
     },
     {
@@ -522,141 +519,6 @@
       "conditions": [],
       "actionParameters": {},
       "documentId": "nlc6xqabkt002st0rkbdbf75",
-      "locale": null
-    },
-    {
-      "action": "plugin::content-manager.explorer.create",
-      "subject": "api::document-category.document-category",
-      "properties": {
-        "fields": [
-          "title",
-          "slug",
-          "documents"
-        ]
-      },
-      "conditions": [],
-      "actionParameters": {},
-      "documentId": "c07dw8z3eaqxh3fk5drv7uy9",
-      "locale": null
-    },
-    {
-      "action": "plugin::content-manager.explorer.delete",
-      "subject": "api::document-category.document-category",
-      "properties": {},
-      "conditions": [],
-      "actionParameters": {},
-      "documentId": "rek4l8jabc0t0nkr1xalebht",
-      "locale": null
-    },
-    {
-      "action": "plugin::content-manager.explorer.publish",
-      "subject": "api::document-category.document-category",
-      "properties": {},
-      "conditions": [],
-      "actionParameters": {},
-      "documentId": "zzbz2n6mgmg546fhzj74htm5",
-      "locale": null
-    },
-    {
-      "action": "plugin::content-manager.explorer.read",
-      "subject": "api::document-category.document-category",
-      "properties": {
-        "fields": [
-          "title",
-          "slug",
-          "documents"
-        ]
-      },
-      "conditions": [],
-      "actionParameters": {},
-      "documentId": "o0117juhb8mzpazx68czqj4l",
-      "locale": null
-    },
-    {
-      "action": "plugin::content-manager.explorer.update",
-      "subject": "api::document-category.document-category",
-      "properties": {
-        "fields": [
-          "title",
-          "slug",
-          "documents"
-        ]
-      },
-      "conditions": [],
-      "actionParameters": {},
-      "documentId": "xl6cwihrjlesmvmjhi6s2aus",
-      "locale": null
-    },
-    {
-      "action": "plugin::content-manager.explorer.create",
-      "subject": "api::document.document",
-      "properties": {
-        "fields": [
-          "title",
-          "slug",
-          "files",
-          "description",
-          "documentCategory",
-          "adminGroups"
-        ]
-      },
-      "conditions": [],
-      "actionParameters": {},
-      "documentId": "aqw8btwqsynlhuxktlwkpwtn",
-      "locale": null
-    },
-    {
-      "action": "plugin::content-manager.explorer.delete",
-      "subject": "api::document.document",
-      "properties": {},
-      "conditions": [],
-      "actionParameters": {},
-      "documentId": "x81cvpxxhl481e28hcm70ha1",
-      "locale": null
-    },
-    {
-      "action": "plugin::content-manager.explorer.publish",
-      "subject": "api::document.document",
-      "properties": {},
-      "conditions": [],
-      "actionParameters": {},
-      "documentId": "fnfcg03l7u1nrj3dnldd6yyn",
-      "locale": null
-    },
-    {
-      "action": "plugin::content-manager.explorer.read",
-      "subject": "api::document.document",
-      "properties": {
-        "fields": [
-          "title",
-          "slug",
-          "files",
-          "description",
-          "documentCategory",
-          "adminGroups"
-        ]
-      },
-      "conditions": [],
-      "actionParameters": {},
-      "documentId": "aw3soroxjk46y1ugkq9q1by5",
-      "locale": null
-    },
-    {
-      "action": "plugin::content-manager.explorer.update",
-      "subject": "api::document.document",
-      "properties": {
-        "fields": [
-          "title",
-          "slug",
-          "files",
-          "description",
-          "documentCategory",
-          "adminGroups"
-        ]
-      },
-      "conditions": [],
-      "actionParameters": {},
-      "documentId": "uwo7slrc5imd8glo9yo80x7n",
       "locale": null
     },
     {
