@@ -15,10 +15,6 @@ import {
 } from '@/src/services/meili/fetchers/articlesFetcher'
 import { assetsFetcher, getAssetsQueryKey } from '@/src/services/meili/fetchers/assetsFetcher'
 import {
-  documentsFetcher,
-  getDocumentsQueryKey,
-} from '@/src/services/meili/fetchers/documentsFetcher'
-import {
   getPagesQueryKey,
   pagesFetcher,
   PagesFilters,
@@ -129,26 +125,6 @@ export const useQueryBySearchOption = ({
     },
   })
 
-  const documentsQuery = useQuery({
-    queryKey: getDocumentsQueryKey(filters),
-    queryFn: () => documentsFetcher(filters),
-    placeholderData: keepPreviousData,
-    select: (data) => {
-      const formattedData: SearchResult[] =
-        data?.hits?.map((document) => {
-          return {
-            title: document.title,
-            uniqueId: document.slug,
-            linkHref: `/dokumenty/${document.slug}`,
-            metadata: [document.documentCategory?.title, formatDate(document.updatedAt)],
-            customIconName: 'search_result_official_board',
-          }
-        }) ?? []
-
-      return { searchResultsData: formattedData, searchResultsCount: data?.estimatedTotalHits ?? 0 }
-    },
-  })
-
   const regulationCategoryTranslationMap = useRegulationCategoryTranslationMap()
 
   const regulationsQuery = useQuery({
@@ -251,9 +227,6 @@ export const useQueryBySearchOption = ({
 
     case 'assets':
       return assetsQuery
-
-    case 'documents':
-      return documentsQuery
 
     case 'users':
       return usersQuery
