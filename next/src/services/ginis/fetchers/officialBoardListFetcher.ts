@@ -5,13 +5,16 @@ import {
   OfficialBoardPublicationState,
 } from '@/src/services/ginis/types'
 
-export type OfficialBoardListFilters = {
-  search: string
-  pageSize: number
-  page: number
+export type OfficialBoardFilters = {
   categoryId: string
   publicationState: OfficialBoardPublicationState
   publicationYear: string
+}
+
+export type OfficialBoardListFilters = OfficialBoardFilters & {
+  search: string
+  pageSize: number
+  page: number
 }
 
 export const officialBoardListDefaultFilters = {
@@ -30,18 +33,16 @@ export const getOfficialBoardListQueryKey = (filters: OfficialBoardListFilters) 
 ]
 
 export const officialBoardListFetcher = async (filters: OfficialBoardListFilters) => {
-  const { search, pageSize, page, publicationState, categoryId, publicationYear } = filters
-
   return axios.get<OfficialBoardListResponse>(
     `/api/ginis/official-board-list?${[
-      search ? `search=${search}` : '',
-      pageSize ? `pageSize=${pageSize.toString()}` : '',
-      page ? `page=${page.toString()}` : '',
+      filters.search ? `search=${filters.search}` : '',
+      filters.pageSize ? `pageSize=${filters.pageSize.toString()}` : '',
+      filters.page ? `page=${filters.page.toString()}` : '',
       // TODO revisit this
       // eslint-disable-next-line @typescript-eslint/no-base-to-string
-      publicationState ? `publicationState=${publicationState}` : '',
-      categoryId ? `categoryId=${categoryId === 'all' ? '' : categoryId}` : '',
-      publicationYear ? `publicationYear=${publicationYear}` : '',
+      filters.publicationState ? `publicationState=${filters.publicationState}` : '',
+      filters.categoryId ? `categoryId=${filters.categoryId}` : '',
+      filters.publicationYear ? `publicationYear=${filters.publicationYear}` : '',
     ]
       .filter(Boolean)
       .join('&')}`,

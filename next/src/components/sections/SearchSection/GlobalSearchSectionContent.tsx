@@ -10,9 +10,11 @@ import OfficialBoardAdditionalFilters from '@/src/components/sections/OfficialBo
 import SearchBar from '@/src/components/sections/SearchSection/SearchBar'
 import SearchResults from '@/src/components/sections/SearchSection/SearchResults'
 import { SearchFilters } from '@/src/components/sections/SearchSection/useQueryBySearchOption'
-import { officialBoardListDefaultFilters } from '@/src/services/ginis/fetchers/officialBoardListFetcher'
+import {
+  OfficialBoardFilters,
+  officialBoardListDefaultFilters,
+} from '@/src/services/ginis/fetchers/officialBoardListFetcher'
 import { getCategoryColorLocalStyle } from '@/src/utils/colors'
-import { isDefined } from '@/src/utils/isDefined'
 import { useLogSearchQueryToPlausible } from '@/src/utils/useLogSearchQueryToPlausible'
 import { useRoutePreservedState } from '@/src/utils/useRoutePreservedState'
 import { useTranslation } from '@/src/utils/useTranslation'
@@ -133,9 +135,14 @@ const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
       ? (first as SearchOption['id'])
       : defaultSearchOption.id
 
-  const [searchFilters, setSearchFilters] = useRoutePreservedState<SearchFilters>(
-    officialBoardListDefaultFilters,
-  )
+  const [currentPage, setCurrentPage] = useState(1)
+
+  const [officialBoardFilters, setOfficialBoardFilters] =
+    useRoutePreservedState<OfficialBoardFilters>({
+      categoryId: officialBoardListDefaultFilters.categoryId,
+      publicationState: officialBoardListDefaultFilters.publicationState,
+      publicationYear: officialBoardListDefaultFilters.publicationYear,
+    })
 
   const [resultsCount, setResultsCount] = useState(
     Object.fromEntries(searchOptions.map((option): [string, number] => [option.id, 0])),
@@ -180,15 +187,28 @@ const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
     }
   }
 
-  const categoryId = 'categoryId' in searchFilters ? searchFilters.categoryId : undefined
-  const publicationState =
-    'publicationState' in searchFilters ? searchFilters.publicationState : undefined
-  const publicationYear =
-    'publicationYear' in searchFilters ? searchFilters.publicationYear : undefined
+  const searchFilters: SearchFilters = {
+    search: searchValue,
+    page: currentPage,
+    pageSize: 12,
+    // Official board category id
+    categoryId:
+      !officialBoardFilters.categoryId || officialBoardFilters.categoryId === 'all'
+        ? undefined
+        : officialBoardFilters.categoryId,
+    publicationState: officialBoardFilters.publicationState ?? undefined,
+    publicationYear: officialBoardFilters.publicationYear ?? undefined,
+  }
 
   useEffect(() => {
-    setSearchFilters((prevState) => ({ ...prevState, page: 1 }))
-  }, [searchValue, selection, categoryId, publicationState, publicationYear])
+    setCurrentPage(1)
+  }, [
+    searchValue,
+    selection,
+    officialBoardFilters.categoryId,
+    officialBoardFilters.publicationState,
+    officialBoardFilters.publicationYear,
+  ])
 
   const searchRef = useRef<null | HTMLInputElement>(null)
 
@@ -242,33 +262,29 @@ const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
           <div className="flex flex-col gap-4 rounded-md bg-background-passive-secondary p-4">
             {/* TODO heading "Doplnkovy filter" as it is in figma */}
             <div>
-              {isDefined(categoryId) &&
-              isDefined(publicationState) &&
-              isDefined(publicationYear) ? (
-                <OfficialBoardAdditionalFilters
-                  categoryId={categoryId}
-                  setCategoryId={(categoryIdValue) =>
-                    setSearchFilters((prevState) => ({
-                      ...prevState,
-                      categoryId: categoryIdValue,
-                    }))
-                  }
-                  publicationState={publicationState}
-                  setPublicationState={(publicationStateValue) =>
-                    setSearchFilters((prevState) => ({
-                      ...prevState,
-                      publicationState: publicationStateValue,
-                    }))
-                  }
-                  publicationYear={publicationYear}
-                  setPublicationYear={(publicationYearValue) =>
-                    setSearchFilters((prevState) => ({
-                      ...prevState,
-                      publicationYear: publicationYearValue,
-                    }))
-                  }
-                />
-              ) : null}
+              <OfficialBoardAdditionalFilters
+                categoryId={officialBoardFilters.categoryId}
+                setCategoryId={(categoryIdValue) =>
+                  setOfficialBoardFilters((prevState) => ({
+                    ...prevState,
+                    categoryId: categoryIdValue,
+                  }))
+                }
+                publicationState={officialBoardFilters.publicationState}
+                setPublicationState={(publicationStateValue) =>
+                  setOfficialBoardFilters((prevState) => ({
+                    ...prevState,
+                    publicationState: publicationStateValue,
+                  }))
+                }
+                publicationYear={officialBoardFilters.publicationYear}
+                setPublicationYear={(publicationYearValue) =>
+                  setOfficialBoardFilters((prevState) => ({
+                    ...prevState,
+                    publicationYear: publicationYearValue,
+                  }))
+                }
+              />
             </div>
           </div>
         ) : null}
@@ -305,12 +321,7 @@ const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
           filters={searchFilters}
           onSetResultsCount={setResultsCountById}
           onShowMore={setSelection}
-          onPageChange={(page) =>
-            setSearchFilters((prevState) => ({
-              ...prevState,
-              page: typeof page === 'function' ? page(prevState.page) : page,
-            }))
-          }
+          onPageChange={setCurrentPage}
           key={`specificResults-${selectedKey}`}
         />
       )}
