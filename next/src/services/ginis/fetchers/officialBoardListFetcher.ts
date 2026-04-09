@@ -6,9 +6,9 @@ import {
 } from '@/src/services/ginis/types'
 
 export type OfficialBoardFilters = {
-  categoryId: string
-  publicationState: OfficialBoardPublicationState
-  publicationYear: string
+  categoryId?: string
+  publicationState?: OfficialBoardPublicationState
+  publicationYear?: string
 }
 
 export type OfficialBoardListFilters = OfficialBoardFilters & {

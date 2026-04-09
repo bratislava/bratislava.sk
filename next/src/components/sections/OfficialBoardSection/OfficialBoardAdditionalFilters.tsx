@@ -90,7 +90,7 @@ const OfficialBoardAdditionalFilters = ({
         items={categorySelectOptions}
         selectedKey={categoryId}
         onSelectionChange={(selected) => {
-          setCategoryId(selected as string | '')
+          setCategoryId(selected as string | 'all')
         }}
       >
         {(item) => <SelectItem label={item.title} textValue={item.title} id={item.id} />}

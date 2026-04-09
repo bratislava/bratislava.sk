@@ -15,6 +15,7 @@ import {
   officialBoardListDefaultFilters,
 } from '@/src/services/ginis/fetchers/officialBoardListFetcher'
 import { getCategoryColorLocalStyle } from '@/src/utils/colors'
+import { isDefined } from '@/src/utils/isDefined'
 import { useLogSearchQueryToPlausible } from '@/src/utils/useLogSearchQueryToPlausible'
 import { useRoutePreservedState } from '@/src/utils/useRoutePreservedState'
 import { useTranslation } from '@/src/utils/useTranslation'
@@ -262,29 +263,33 @@ const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
           <div className="flex flex-col gap-4 rounded-md bg-background-passive-secondary p-4">
             {/* TODO heading "Doplnkovy filter" as it is in figma */}
             <div>
-              <OfficialBoardAdditionalFilters
-                categoryId={officialBoardFilters.categoryId}
-                setCategoryId={(categoryIdValue) =>
-                  setOfficialBoardFilters((prevState) => ({
-                    ...prevState,
-                    categoryId: categoryIdValue,
-                  }))
-                }
-                publicationState={officialBoardFilters.publicationState}
-                setPublicationState={(publicationStateValue) =>
-                  setOfficialBoardFilters((prevState) => ({
-                    ...prevState,
-                    publicationState: publicationStateValue,
-                  }))
-                }
-                publicationYear={officialBoardFilters.publicationYear}
-                setPublicationYear={(publicationYearValue) =>
-                  setOfficialBoardFilters((prevState) => ({
-                    ...prevState,
-                    publicationYear: publicationYearValue,
-                  }))
-                }
-              />
+              {isDefined(officialBoardFilters.categoryId) &&
+              isDefined(officialBoardFilters.publicationState) &&
+              isDefined(officialBoardFilters.publicationYear) ? (
+                <OfficialBoardAdditionalFilters
+                  categoryId={officialBoardFilters.categoryId}
+                  setCategoryId={(categoryIdValue) =>
+                    setOfficialBoardFilters((prevState) => ({
+                      ...prevState,
+                      categoryId: categoryIdValue,
+                    }))
+                  }
+                  publicationState={officialBoardFilters.publicationState}
+                  setPublicationState={(publicationStateValue) =>
+                    setOfficialBoardFilters((prevState) => ({
+                      ...prevState,
+                      publicationState: publicationStateValue,
+                    }))
+                  }
+                  publicationYear={officialBoardFilters.publicationYear}
+                  setPublicationYear={(publicationYearValue) =>
+                    setOfficialBoardFilters((prevState) => ({
+                      ...prevState,
+                      publicationYear: publicationYearValue,
+                    }))
+                  }
+                />
+              ) : null}
             </div>
           </div>
         ) : null}
