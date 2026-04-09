@@ -30,16 +30,18 @@ export const getOfficialBoardListQueryKey = (filters: OfficialBoardListFilters) 
 ]
 
 export const officialBoardListFetcher = async (filters: OfficialBoardListFilters) => {
+  const { search, pageSize, page, publicationState, categoryId, publicationYear } = filters
+
   return axios.get<OfficialBoardListResponse>(
     `/api/ginis/official-board-list?${[
-      filters.search ? `search=${filters.search}` : '',
-      filters.pageSize ? `pageSize=${filters.pageSize.toString()}` : '',
-      filters.page ? `page=${filters.page.toString()}` : '',
+      search ? `search=${search}` : '',
+      pageSize ? `pageSize=${pageSize.toString()}` : '',
+      page ? `page=${page.toString()}` : '',
       // TODO revisit this
       // eslint-disable-next-line @typescript-eslint/no-base-to-string
-      filters.publicationState ? `publicationState=${filters.publicationState}` : '',
-      filters.categoryId ? `categoryId=${filters.categoryId}` : '',
-      filters.publicationYear ? `publicationYear=${filters.publicationYear}` : '',
+      publicationState ? `publicationState=${publicationState}` : '',
+      categoryId ? `categoryId=${categoryId === 'all' ? '' : categoryId}` : '',
+      publicationYear ? `publicationYear=${publicationYear}` : '',
     ]
       .filter(Boolean)
       .join('&')}`,
