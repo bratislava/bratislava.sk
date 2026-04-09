@@ -135,21 +135,6 @@
           "sortable": false
         }
       },
-      "documents": {
-        "edit": {
-          "label": "documents",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true,
-          "mainField": "title"
-        },
-        "list": {
-          "label": "documents",
-          "searchable": false,
-          "sortable": false
-        }
-      },
       "assets": {
         "edit": {
           "label": "assets",
@@ -284,12 +269,6 @@
         [
           {
             "name": "faqs",
-            "size": 12
-          }
-        ],
-        [
-          {
-            "name": "documents",
             "size": 12
           }
         ],
