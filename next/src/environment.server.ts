@@ -10,6 +10,7 @@ function assertEnv<T>(variable: string, value: T) {
 }
 
 export const serverEnvironment = {
+  nodeEnv: assertEnv('NODE_ENV', process.env.NODE_ENV),
   msalScope: assertEnv('MSAL_SCOPE', process.env.MSAL_SCOPE),
   msalClientId: assertEnv('MSAL_CLIENT_ID', process.env.MSAL_CLIENT_ID),
   msalTenantId: assertEnv('MSAL_TENANT_ID', process.env.MSAL_TENANT_ID),

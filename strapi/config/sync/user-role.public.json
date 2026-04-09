@@ -61,26 +61,6 @@
       "locale": null
     },
     {
-      "action": "api::document-category.document-category.find",
-      "documentId": "r7p2504rofx3fkkyefomgblf",
-      "locale": null
-    },
-    {
-      "action": "api::document-category.document-category.findOne",
-      "documentId": "v4cmmfd4p1p9mzvgwz2lo75x",
-      "locale": null
-    },
-    {
-      "action": "api::document.document.find",
-      "documentId": "dxon1ax3lrsy5mjm5ds9xevf",
-      "locale": null
-    },
-    {
-      "action": "api::document.document.findOne",
-      "documentId": "tkoqzw4ejot886h34uabk2ge",
-      "locale": null
-    },
-    {
       "action": "api::faq-category.faq-category.find",
       "documentId": "pbhoblq9n3jjcl64ud1l03xr",
       "locale": null

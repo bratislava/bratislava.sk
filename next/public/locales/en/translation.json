@@ -65,7 +65,7 @@
   "FaqsSection.selectionOptions.aria": "FAQ categories",
   "FileList.aria.downloadFile": "Download file",
   "FileList.aria.downloadFileAriaLabel": "Download file {{title}}, format {{format}}, {{size}}",
-  "Footer.copyright": "© {{year}} Hlavné mesto SR Bratislava",
+  "Footer.copyright": "© {{year}} Hlavné mesto Slovenskej republiky Bratislava",
   "Gallery.aria.closeGallery": "Close image gallery",
   "Gallery.aria.descriptionSlider": "Slider",
   "Gallery.aria.imageLightBoxDescription": "Image gallery. Press left arrow key to go to previous image. Press right arrow key to go to next image. Press Escape key to close image gallery.",

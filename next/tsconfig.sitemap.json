@@ -1,0 +1,15 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "module": "CommonJS",
+    "moduleResolution": "node",
+    "noEmit": false,
+    "emitDeclarationOnly": false,
+    "outDir": "dist",
+    "baseUrl": ".",
+    "paths": {
+      "@/src/*": ["src/*"]
+    }
+  },
+  "include": ["src/services/graphql/gql.ts"]
+}

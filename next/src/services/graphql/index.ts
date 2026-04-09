@@ -45,8 +45,6 @@ export type AdminGroup = {
   contentManagedBy: Scalars['String']['output']
   createdAt?: Maybe<Scalars['DateTime']['output']>
   documentId: Scalars['ID']['output']
-  documents: Array<Maybe<Document>>
-  documents_connection?: Maybe<DocumentRelationResponseCollection>
   faqs: Array<Maybe<Faq>>
   faqs_connection?: Maybe<FaqRelationResponseCollection>
   landingPage?: Maybe<Page>
@@ -79,18 +77,6 @@ export type AdminGroupAssetsArgs = {
 
 export type AdminGroupAssets_ConnectionArgs = {
   filters?: InputMaybe<AssetFiltersInput>
-  pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
-}
-
-export type AdminGroupDocumentsArgs = {
-  filters?: InputMaybe<DocumentFiltersInput>
-  pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
-}
-
-export type AdminGroupDocuments_ConnectionArgs = {
-  filters?: InputMaybe<DocumentFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
 }
@@ -149,7 +135,6 @@ export type AdminGroupFiltersInput = {
   contentManagedBy?: InputMaybe<StringFilterInput>
   createdAt?: InputMaybe<DateTimeFilterInput>
   documentId?: InputMaybe<IdFilterInput>
-  documents?: InputMaybe<DocumentFiltersInput>
   faqs?: InputMaybe<FaqFiltersInput>
   landingPage?: InputMaybe<PageFiltersInput>
   not?: InputMaybe<AdminGroupFiltersInput>
@@ -166,7 +151,6 @@ export type AdminGroupInput = {
   articles?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
   assets?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
   contentManagedBy?: InputMaybe<Scalars['String']['input']>
-  documents?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
   faqs?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
   landingPage?: InputMaybe<Scalars['ID']['input']>
   pages?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
@@ -3174,159 +3158,6 @@ export type DeleteMutationResponse = {
   documentId: Scalars['ID']['output']
 }
 
-export type Document = {
-  __typename?: 'Document'
-  adminGroups: Array<Maybe<AdminGroup>>
-  adminGroups_connection?: Maybe<AdminGroupRelationResponseCollection>
-  createdAt?: Maybe<Scalars['DateTime']['output']>
-  description?: Maybe<Scalars['String']['output']>
-  documentCategory?: Maybe<DocumentCategory>
-  documentId: Scalars['ID']['output']
-  files: Array<Maybe<UploadFile>>
-  files_connection: UploadFileRelationResponseCollection
-  publishedAt?: Maybe<Scalars['DateTime']['output']>
-  slug: Scalars['String']['output']
-  title: Scalars['String']['output']
-  updatedAt?: Maybe<Scalars['DateTime']['output']>
-}
-
-export type DocumentAdminGroupsArgs = {
-  filters?: InputMaybe<AdminGroupFiltersInput>
-  pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
-}
-
-export type DocumentAdminGroups_ConnectionArgs = {
-  filters?: InputMaybe<AdminGroupFiltersInput>
-  pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
-}
-
-export type DocumentFilesArgs = {
-  filters?: InputMaybe<UploadFileFiltersInput>
-  pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
-}
-
-export type DocumentFiles_ConnectionArgs = {
-  filters?: InputMaybe<UploadFileFiltersInput>
-  pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
-}
-
-export type DocumentCategory = {
-  __typename?: 'DocumentCategory'
-  createdAt?: Maybe<Scalars['DateTime']['output']>
-  documentId: Scalars['ID']['output']
-  documents: Array<Maybe<Document>>
-  documents_connection?: Maybe<DocumentRelationResponseCollection>
-  publishedAt?: Maybe<Scalars['DateTime']['output']>
-  slug: Scalars['String']['output']
-  title: Scalars['String']['output']
-  updatedAt?: Maybe<Scalars['DateTime']['output']>
-}
-
-export type DocumentCategoryDocumentsArgs = {
-  filters?: InputMaybe<DocumentFiltersInput>
-  pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
-}
-
-export type DocumentCategoryDocuments_ConnectionArgs = {
-  filters?: InputMaybe<DocumentFiltersInput>
-  pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
-}
-
-export type DocumentCategoryEntity = {
-  __typename?: 'DocumentCategoryEntity'
-  attributes?: Maybe<DocumentCategory>
-  id?: Maybe<Scalars['ID']['output']>
-}
-
-export type DocumentCategoryEntityResponse = {
-  __typename?: 'DocumentCategoryEntityResponse'
-  data?: Maybe<DocumentCategory>
-}
-
-export type DocumentCategoryEntityResponseCollection = {
-  __typename?: 'DocumentCategoryEntityResponseCollection'
-  nodes: Array<DocumentCategory>
-  pageInfo: Pagination
-}
-
-export type DocumentCategoryFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<DocumentCategoryFiltersInput>>>
-  createdAt?: InputMaybe<DateTimeFilterInput>
-  documentId?: InputMaybe<IdFilterInput>
-  documents?: InputMaybe<DocumentFiltersInput>
-  not?: InputMaybe<DocumentCategoryFiltersInput>
-  or?: InputMaybe<Array<InputMaybe<DocumentCategoryFiltersInput>>>
-  publishedAt?: InputMaybe<DateTimeFilterInput>
-  slug?: InputMaybe<StringFilterInput>
-  title?: InputMaybe<StringFilterInput>
-  updatedAt?: InputMaybe<DateTimeFilterInput>
-}
-
-export type DocumentCategoryInput = {
-  documents?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
-  publishedAt?: InputMaybe<Scalars['DateTime']['input']>
-  slug?: InputMaybe<Scalars['String']['input']>
-  title?: InputMaybe<Scalars['String']['input']>
-}
-
-export type DocumentCategoryRelationResponseCollection = {
-  __typename?: 'DocumentCategoryRelationResponseCollection'
-  nodes: Array<DocumentCategory>
-}
-
-export type DocumentEntity = {
-  __typename?: 'DocumentEntity'
-  attributes?: Maybe<Document>
-  id?: Maybe<Scalars['ID']['output']>
-}
-
-export type DocumentEntityResponse = {
-  __typename?: 'DocumentEntityResponse'
-  data?: Maybe<Document>
-}
-
-export type DocumentEntityResponseCollection = {
-  __typename?: 'DocumentEntityResponseCollection'
-  nodes: Array<Document>
-  pageInfo: Pagination
-}
-
-export type DocumentFiltersInput = {
-  adminGroups?: InputMaybe<AdminGroupFiltersInput>
-  and?: InputMaybe<Array<InputMaybe<DocumentFiltersInput>>>
-  createdAt?: InputMaybe<DateTimeFilterInput>
-  description?: InputMaybe<StringFilterInput>
-  documentCategory?: InputMaybe<DocumentCategoryFiltersInput>
-  documentId?: InputMaybe<IdFilterInput>
-  not?: InputMaybe<DocumentFiltersInput>
-  or?: InputMaybe<Array<InputMaybe<DocumentFiltersInput>>>
-  publishedAt?: InputMaybe<DateTimeFilterInput>
-  slug?: InputMaybe<StringFilterInput>
-  title?: InputMaybe<StringFilterInput>
-  updatedAt?: InputMaybe<DateTimeFilterInput>
-}
-
-export type DocumentInput = {
-  adminGroups?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
-  description?: InputMaybe<Scalars['String']['input']>
-  documentCategory?: InputMaybe<Scalars['ID']['input']>
-  files?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
-  publishedAt?: InputMaybe<Scalars['DateTime']['input']>
-  slug?: InputMaybe<Scalars['String']['input']>
-  title?: InputMaybe<Scalars['String']['input']>
-}
-
-export type DocumentRelationResponseCollection = {
-  __typename?: 'DocumentRelationResponseCollection'
-  nodes: Array<Document>
-}
-
 export enum Enum_Componentblocksstarzlandingpagebanner_Contentposition {
   Left = 'left',
   Right = 'right',
@@ -4070,8 +3901,6 @@ export type GenericMorph =
   | ComponentSectionsVideos
   | ComponentSidebarsEmptySidebar
   | ComponentTaxAdministratorsTaxAdministrator
-  | Document
-  | DocumentCategory
   | Faq
   | FaqCategory
   | Footer
@@ -4547,8 +4376,6 @@ export type Mutation = {
   createArticleCategory?: Maybe<ArticleCategory>
   createAsset?: Maybe<Asset>
   createAssetCategory?: Maybe<AssetCategory>
-  createDocument?: Maybe<Document>
-  createDocumentCategory?: Maybe<DocumentCategory>
   createFaq?: Maybe<Faq>
   createFaqCategory?: Maybe<FaqCategory>
   createInbaRelease?: Maybe<InbaRelease>
@@ -4570,8 +4397,6 @@ export type Mutation = {
   deleteArticleCategory?: Maybe<DeleteMutationResponse>
   deleteAsset?: Maybe<DeleteMutationResponse>
   deleteAssetCategory?: Maybe<DeleteMutationResponse>
-  deleteDocument?: Maybe<DeleteMutationResponse>
-  deleteDocumentCategory?: Maybe<DeleteMutationResponse>
   deleteFaq?: Maybe<DeleteMutationResponse>
   deleteFaqCategory?: Maybe<DeleteMutationResponse>
   deleteFooter?: Maybe<DeleteMutationResponse>
@@ -4608,8 +4433,6 @@ export type Mutation = {
   updateArticleCategory?: Maybe<ArticleCategory>
   updateAsset?: Maybe<Asset>
   updateAssetCategory?: Maybe<AssetCategory>
-  updateDocument?: Maybe<Document>
-  updateDocumentCategory?: Maybe<DocumentCategory>
   updateFaq?: Maybe<Faq>
   updateFaqCategory?: Maybe<FaqCategory>
   updateFooter?: Maybe<Footer>
@@ -4663,16 +4486,6 @@ export type MutationCreateAssetArgs = {
 
 export type MutationCreateAssetCategoryArgs = {
   data: AssetCategoryInput
-  status?: InputMaybe<PublicationStatus>
-}
-
-export type MutationCreateDocumentArgs = {
-  data: DocumentInput
-  status?: InputMaybe<PublicationStatus>
-}
-
-export type MutationCreateDocumentCategoryArgs = {
-  data: DocumentCategoryInput
   status?: InputMaybe<PublicationStatus>
 }
 
@@ -4767,14 +4580,6 @@ export type MutationDeleteAssetArgs = {
 }
 
 export type MutationDeleteAssetCategoryArgs = {
-  documentId: Scalars['ID']['input']
-}
-
-export type MutationDeleteDocumentArgs = {
-  documentId: Scalars['ID']['input']
-}
-
-export type MutationDeleteDocumentCategoryArgs = {
   documentId: Scalars['ID']['input']
 }
 
@@ -4911,18 +4716,6 @@ export type MutationUpdateAssetArgs = {
 
 export type MutationUpdateAssetCategoryArgs = {
   data: AssetCategoryInput
-  documentId: Scalars['ID']['input']
-  status?: InputMaybe<PublicationStatus>
-}
-
-export type MutationUpdateDocumentArgs = {
-  data: DocumentInput
-  documentId: Scalars['ID']['input']
-  status?: InputMaybe<PublicationStatus>
-}
-
-export type MutationUpdateDocumentCategoryArgs = {
-  data: DocumentCategoryInput
   documentId: Scalars['ID']['input']
   status?: InputMaybe<PublicationStatus>
 }
@@ -5401,12 +5194,6 @@ export type Query = {
   assetCategory?: Maybe<AssetCategory>
   assets: Array<Maybe<Asset>>
   assets_connection?: Maybe<AssetEntityResponseCollection>
-  document?: Maybe<Document>
-  documentCategories: Array<Maybe<DocumentCategory>>
-  documentCategories_connection?: Maybe<DocumentCategoryEntityResponseCollection>
-  documentCategory?: Maybe<DocumentCategory>
-  documents: Array<Maybe<Document>>
-  documents_connection?: Maybe<DocumentEntityResponseCollection>
   faq?: Maybe<Faq>
   faqCategories: Array<Maybe<FaqCategory>>
   faqCategories_connection?: Maybe<FaqCategoryEntityResponseCollection>
@@ -5561,44 +5348,6 @@ export type QueryAssetsArgs = {
 
 export type QueryAssets_ConnectionArgs = {
   filters?: InputMaybe<AssetFiltersInput>
-  pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
-  status?: InputMaybe<PublicationStatus>
-}
-
-export type QueryDocumentArgs = {
-  documentId: Scalars['ID']['input']
-  status?: InputMaybe<PublicationStatus>
-}
-
-export type QueryDocumentCategoriesArgs = {
-  filters?: InputMaybe<DocumentCategoryFiltersInput>
-  pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
-  status?: InputMaybe<PublicationStatus>
-}
-
-export type QueryDocumentCategories_ConnectionArgs = {
-  filters?: InputMaybe<DocumentCategoryFiltersInput>
-  pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
-  status?: InputMaybe<PublicationStatus>
-}
-
-export type QueryDocumentCategoryArgs = {
-  documentId: Scalars['ID']['input']
-  status?: InputMaybe<PublicationStatus>
-}
-
-export type QueryDocumentsArgs = {
-  filters?: InputMaybe<DocumentFiltersInput>
-  pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
-  status?: InputMaybe<PublicationStatus>
-}
-
-export type QueryDocuments_ConnectionArgs = {
-  filters?: InputMaybe<DocumentFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
   status?: InputMaybe<PublicationStatus>
@@ -7430,91 +7179,6 @@ export type AssetCategoriesQuery = {
   __typename?: 'Query'
   assetCategories: Array<{
     __typename?: 'AssetCategory'
-    documentId: string
-    title: string
-    slug: string
-  } | null>
-}
-
-export type DocumentCategoryEntityFragment = {
-  __typename?: 'DocumentCategory'
-  documentId: string
-  title: string
-  slug: string
-}
-
-export type DocumentSlugEntityFragment = {
-  __typename: 'Document'
-  documentId: string
-  slug: string
-  title: string
-}
-
-export type DocumentEntityFragment = {
-  __typename: 'Document'
-  publishedAt?: any | null
-  updatedAt?: any | null
-  description?: string | null
-  documentId: string
-  slug: string
-  title: string
-  documentCategory?: {
-    __typename?: 'DocumentCategory'
-    documentId: string
-    title: string
-    slug: string
-  } | null
-  files: Array<{
-    __typename?: 'UploadFile'
-    documentId: string
-    url: string
-    name: string
-    ext?: string | null
-    size: number
-    createdAt?: any | null
-    updatedAt?: any | null
-  } | null>
-}
-
-export type DocumentBySlugQueryVariables = Exact<{
-  slug: Scalars['String']['input']
-}>
-
-export type DocumentBySlugQuery = {
-  __typename?: 'Query'
-  documents: Array<{
-    __typename: 'Document'
-    publishedAt?: any | null
-    updatedAt?: any | null
-    description?: string | null
-    documentId: string
-    slug: string
-    title: string
-    documentCategory?: {
-      __typename?: 'DocumentCategory'
-      documentId: string
-      title: string
-      slug: string
-    } | null
-    files: Array<{
-      __typename?: 'UploadFile'
-      documentId: string
-      url: string
-      name: string
-      ext?: string | null
-      size: number
-      createdAt?: any | null
-      updatedAt?: any | null
-    } | null>
-  } | null>
-}
-
-export type DocumentCategoriesQueryVariables = Exact<{ [key: string]: never }>
-
-export type DocumentCategoriesQuery = {
-  __typename?: 'Query'
-  documentCategories: Array<{
-    __typename?: 'DocumentCategory'
     documentId: string
     title: string
     slug: string
@@ -17662,38 +17326,6 @@ export const ArticleEntityFragmentDoc = gql`
   ${InbaReleaseCardEntityFragmentDoc}
   ${AdminGroupSlugEntityFragmentDoc}
 `
-export const DocumentSlugEntityFragmentDoc = gql`
-  fragment DocumentSlugEntity on Document {
-    __typename
-    documentId
-    slug
-    title
-  }
-`
-export const DocumentCategoryEntityFragmentDoc = gql`
-  fragment DocumentCategoryEntity on DocumentCategory {
-    documentId
-    title
-    slug
-  }
-`
-export const DocumentEntityFragmentDoc = gql`
-  fragment DocumentEntity on Document {
-    ...DocumentSlugEntity
-    publishedAt
-    updatedAt
-    documentCategory {
-      ...DocumentCategoryEntity
-    }
-    description
-    files {
-      ...UploadFileEntity
-    }
-  }
-  ${DocumentSlugEntityFragmentDoc}
-  ${DocumentCategoryEntityFragmentDoc}
-  ${UploadFileEntityFragmentDoc}
-`
 export const UploadFileFragmentDoc = gql`
   fragment UploadFile on UploadFile {
     documentId
@@ -19203,22 +18835,6 @@ export const AssetCategoriesDocument = gql`
   }
   ${AssetCategoryEntityFragmentDoc}
 `
-export const DocumentBySlugDocument = gql`
-  query DocumentBySlug($slug: String!) {
-    documents(filters: { slug: { eq: $slug } }) {
-      ...DocumentEntity
-    }
-  }
-  ${DocumentEntityFragmentDoc}
-`
-export const DocumentCategoriesDocument = gql`
-  query DocumentCategories {
-    documentCategories(pagination: { limit: -1 }) {
-      ...DocumentCategoryEntity
-    }
-  }
-  ${DocumentCategoryEntityFragmentDoc}
-`
 export const FaqCategoriesDocument = gql`
   query FaqCategories($locale: I18NLocaleCode, $sort: [String] = ["title"]) {
     faqCategories(pagination: { limit: -1 }, locale: $locale, sort: $sort) {
@@ -19758,42 +19374,6 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
             signal,
           }),
         'AssetCategories',
-        'query',
-        variables,
-      )
-    },
-    DocumentBySlug(
-      variables: DocumentBySlugQueryVariables,
-      requestHeaders?: GraphQLClientRequestHeaders,
-      signal?: RequestInit['signal'],
-    ): Promise<DocumentBySlugQuery> {
-      return withWrapper(
-        (wrappedRequestHeaders) =>
-          client.request<DocumentBySlugQuery>({
-            document: DocumentBySlugDocument,
-            variables,
-            requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders },
-            signal,
-          }),
-        'DocumentBySlug',
-        'query',
-        variables,
-      )
-    },
-    DocumentCategories(
-      variables?: DocumentCategoriesQueryVariables,
-      requestHeaders?: GraphQLClientRequestHeaders,
-      signal?: RequestInit['signal'],
-    ): Promise<DocumentCategoriesQuery> {
-      return withWrapper(
-        (wrappedRequestHeaders) =>
-          client.request<DocumentCategoriesQuery>({
-            document: DocumentCategoriesDocument,
-            variables,
-            requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders },
-            signal,
-          }),
-        'DocumentCategories',
         'query',
         variables,
       )
