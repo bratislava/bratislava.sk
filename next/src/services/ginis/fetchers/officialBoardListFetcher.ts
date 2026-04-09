@@ -5,19 +5,23 @@ import {
   OfficialBoardPublicationState,
 } from '@/src/services/ginis/types'
 
-export type OfficialBoardListFilters = {
-  search: string
-  pageSize: number
-  page: number
+export type OfficialBoardFilters = {
   categoryId?: string
   publicationState?: OfficialBoardPublicationState
   publicationYear?: string
+}
+
+export type OfficialBoardListFilters = OfficialBoardFilters & {
+  search: string
+  pageSize: number
+  page: number
 }
 
 export const officialBoardListDefaultFilters = {
   search: '',
   pageSize: 10,
   page: 1,
+  categoryId: 'all',
   publicationState: 'vyveseno',
   publicationYear: 'all',
 } satisfies OfficialBoardListFilters

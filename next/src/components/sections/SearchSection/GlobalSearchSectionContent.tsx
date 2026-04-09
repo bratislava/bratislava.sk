@@ -10,10 +10,14 @@ import OfficialBoardAdditionalFilters from '@/src/components/sections/OfficialBo
 import SearchBar from '@/src/components/sections/SearchSection/SearchBar'
 import SearchResults from '@/src/components/sections/SearchSection/SearchResults'
 import { SearchFilters } from '@/src/components/sections/SearchSection/useQueryBySearchOption'
-import { officialBoardListDefaultFilters } from '@/src/services/ginis/fetchers/officialBoardListFetcher'
-import { OfficialBoardPublicationState } from '@/src/services/ginis/types'
+import {
+  OfficialBoardFilters,
+  officialBoardListDefaultFilters,
+} from '@/src/services/ginis/fetchers/officialBoardListFetcher'
 import { getCategoryColorLocalStyle } from '@/src/utils/colors'
+import { isDefined } from '@/src/utils/isDefined'
 import { useLogSearchQueryToPlausible } from '@/src/utils/useLogSearchQueryToPlausible'
+import { useRoutePreservedState } from '@/src/utils/useRoutePreservedState'
 import { useTranslation } from '@/src/utils/useTranslation'
 import { isProductionDeployment } from '@/src/utils/utils'
 
@@ -94,16 +98,6 @@ const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
             displayNamePlural: `${t('SearchPage.documents')} (Assets)`,
           },
         ]),
-    // Show Documents in global search only if not in prod - TODO remove when ready to use according to OSO
-    ...(isProductionDeployment() && variant === 'general'
-      ? []
-      : [
-          {
-            id: 'documents' as const,
-            displayName: t('SearchPage.document'),
-            displayNamePlural: t('SearchPage.documents'),
-          },
-        ]),
     {
       id: 'users',
       displayName: t('SearchPage.contact'),
@@ -144,14 +138,12 @@ const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
 
   const [currentPage, setCurrentPage] = useState(1)
 
-  /* OfficialBoard specific filters state */
-  const [categoryId, setCategoryId] = useState<string | null>(null)
-  const [publicationState, setPublicationState] = useState<OfficialBoardPublicationState>(
-    officialBoardListDefaultFilters.publicationState,
-  )
-  const [publicationYear, setPublicationYear] = useState<string | null>(
-    officialBoardListDefaultFilters.publicationYear,
-  )
+  const [officialBoardFilters, setOfficialBoardFilters] =
+    useRoutePreservedState<OfficialBoardFilters>({
+      categoryId: officialBoardListDefaultFilters.categoryId,
+      publicationState: officialBoardListDefaultFilters.publicationState,
+      publicationYear: officialBoardListDefaultFilters.publicationYear,
+    })
 
   const [resultsCount, setResultsCount] = useState(
     Object.fromEntries(searchOptions.map((option): [string, number] => [option.id, 0])),
@@ -201,9 +193,12 @@ const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
     page: currentPage,
     pageSize: 12,
     // Official board category id
-    categoryId: !categoryId || categoryId === 'all' ? undefined : categoryId,
-    publicationState: publicationState ?? undefined,
-    publicationYear: publicationYear ?? undefined,
+    categoryId:
+      !officialBoardFilters.categoryId || officialBoardFilters.categoryId === 'all'
+        ? undefined
+        : officialBoardFilters.categoryId,
+    publicationState: officialBoardFilters.publicationState ?? undefined,
+    publicationYear: officialBoardFilters.publicationYear ?? undefined,
   }
 
   useEffect(() => {
@@ -211,9 +206,9 @@ const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
   }, [
     searchValue,
     selection,
-    searchFilters.categoryId,
-    searchFilters.publicationState,
-    searchFilters.publicationYear,
+    officialBoardFilters.categoryId,
+    officialBoardFilters.publicationState,
+    officialBoardFilters.publicationYear,
   ])
 
   const searchRef = useRef<null | HTMLInputElement>(null)
@@ -268,14 +263,33 @@ const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
           <div className="flex flex-col gap-4 rounded-md bg-background-passive-secondary p-4">
             {/* TODO heading "Doplnkovy filter" as it is in figma */}
             <div>
-              <OfficialBoardAdditionalFilters
-                categoryId={categoryId}
-                setCategoryId={setCategoryId}
-                publicationState={publicationState}
-                setPublicationState={setPublicationState}
-                publicationYear={publicationYear}
-                setPublicationYear={setPublicationYear}
-              />
+              {isDefined(officialBoardFilters.categoryId) &&
+              isDefined(officialBoardFilters.publicationState) &&
+              isDefined(officialBoardFilters.publicationYear) ? (
+                <OfficialBoardAdditionalFilters
+                  categoryId={officialBoardFilters.categoryId}
+                  setCategoryId={(categoryIdValue) =>
+                    setOfficialBoardFilters((prevState) => ({
+                      ...prevState,
+                      categoryId: categoryIdValue,
+                    }))
+                  }
+                  publicationState={officialBoardFilters.publicationState}
+                  setPublicationState={(publicationStateValue) =>
+                    setOfficialBoardFilters((prevState) => ({
+                      ...prevState,
+                      publicationState: publicationStateValue,
+                    }))
+                  }
+                  publicationYear={officialBoardFilters.publicationYear}
+                  setPublicationYear={(publicationYearValue) =>
+                    setOfficialBoardFilters((prevState) => ({
+                      ...prevState,
+                      publicationYear: publicationYearValue,
+                    }))
+                  }
+                />
+              ) : null}
             </div>
           </div>
         ) : null}
