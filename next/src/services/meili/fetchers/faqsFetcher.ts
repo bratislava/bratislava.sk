@@ -29,6 +29,7 @@ export const meiliFaqsFetcher = (filters: FaqsFilters) => {
     .index('search_index')
     .search<SearchIndexWrapped<'faq', any>>(filters.search, {
       ...getMeilisearchPageOptions({ page: filters.page, pageSize: filters.pageSize }),
+      sort: ['faq.faqCategory.title:asc'],
       filter: [
         'type = "faq"',
         filters.faqCategorySlugs?.length
