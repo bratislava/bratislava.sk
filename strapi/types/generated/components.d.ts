@@ -781,18 +781,6 @@ export interface SectionsFacilities extends Struct.ComponentSchema {
   }
 }
 
-export interface SectionsFaqCategories extends Struct.ComponentSchema {
-  collectionName: 'components_sections_faq_categories'
-  info: {
-    displayName: 'FAQ kateg\u00F3rie'
-  }
-  attributes: {
-    faqCategories: Schema.Attribute.Relation<'oneToMany', 'api::faq-category.faq-category'>
-    text: Schema.Attribute.Text
-    title: Schema.Attribute.String
-  }
-}
-
 export interface SectionsFaqs extends Struct.ComponentSchema {
   collectionName: 'components_sections_faqs'
   info: {
@@ -1292,7 +1280,6 @@ declare module '@strapi/strapi' {
       'sections.divider': SectionsDivider
       'sections.events': SectionsEvents
       'sections.facilities': SectionsFacilities
-      'sections.faq-categories': SectionsFaqCategories
       'sections.faqs': SectionsFaqs
       'sections.file-list': SectionsFileList
       'sections.gallery': SectionsGallery
