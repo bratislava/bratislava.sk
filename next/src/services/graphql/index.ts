@@ -2147,43 +2147,6 @@ export type ComponentSectionsFacilitiesInput = {
   titleLevel?: InputMaybe<Enum_Componentsectionsfacilities_Titlelevel>
 }
 
-export type ComponentSectionsFaqCategories = {
-  __typename?: 'ComponentSectionsFaqCategories'
-  faqCategories: Array<Maybe<FaqCategory>>
-  faqCategories_connection?: Maybe<FaqCategoryRelationResponseCollection>
-  id: Scalars['ID']['output']
-  text?: Maybe<Scalars['String']['output']>
-  title?: Maybe<Scalars['String']['output']>
-}
-
-export type ComponentSectionsFaqCategoriesFaqCategoriesArgs = {
-  filters?: InputMaybe<FaqCategoryFiltersInput>
-  pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
-}
-
-export type ComponentSectionsFaqCategoriesFaqCategories_ConnectionArgs = {
-  filters?: InputMaybe<FaqCategoryFiltersInput>
-  pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
-}
-
-export type ComponentSectionsFaqCategoriesFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<ComponentSectionsFaqCategoriesFiltersInput>>>
-  faqCategories?: InputMaybe<FaqCategoryFiltersInput>
-  not?: InputMaybe<ComponentSectionsFaqCategoriesFiltersInput>
-  or?: InputMaybe<Array<InputMaybe<ComponentSectionsFaqCategoriesFiltersInput>>>
-  text?: InputMaybe<StringFilterInput>
-  title?: InputMaybe<StringFilterInput>
-}
-
-export type ComponentSectionsFaqCategoriesInput = {
-  faqCategories?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
-  id?: InputMaybe<Scalars['ID']['input']>
-  text?: InputMaybe<Scalars['String']['input']>
-  title?: InputMaybe<Scalars['String']['input']>
-}
-
 export type ComponentSectionsFaqs = {
   __typename?: 'ComponentSectionsFaqs'
   faqCategories: Array<Maybe<FaqCategory>>
@@ -3869,7 +3832,6 @@ export type GenericMorph =
   | ComponentSectionsDivider
   | ComponentSectionsEvents
   | ComponentSectionsFacilities
-  | ComponentSectionsFaqCategories
   | ComponentSectionsFaqs
   | ComponentSectionsFileList
   | ComponentSectionsGallery
@@ -5128,7 +5090,6 @@ export type PageSectionsDynamicZone =
   | ComponentSectionsDivider
   | ComponentSectionsEvents
   | ComponentSectionsFacilities
-  | ComponentSectionsFaqCategories
   | ComponentSectionsFaqs
   | ComponentSectionsFileList
   | ComponentSectionsGallery
@@ -7313,7 +7274,6 @@ export type AllFilesQuery = {
       | { __typename?: 'ComponentSectionsDivider' }
       | { __typename?: 'ComponentSectionsEvents' }
       | { __typename?: 'ComponentSectionsFacilities' }
-      | { __typename?: 'ComponentSectionsFaqCategories' }
       | { __typename?: 'ComponentSectionsFaqs' }
       | {
           __typename?: 'ComponentSectionsFileList'
@@ -10627,25 +10587,6 @@ export type PageEntityFragment = {
         } | null>
       }
     | {
-        __typename: 'ComponentSectionsFaqCategories'
-        id: string
-        title?: string | null
-        text?: string | null
-        faqCategories: Array<{
-          __typename?: 'FaqCategory'
-          documentId: string
-          title: string
-          slug: string
-          faqs: Array<{
-            __typename?: 'Faq'
-            documentId: string
-            title: string
-            body?: string | null
-            faqCategory?: { __typename?: 'FaqCategory'; title: string } | null
-          } | null>
-        } | null>
-      }
-    | {
         __typename: 'ComponentSectionsFaqs'
         title?: string | null
         text?: string | null
@@ -11948,25 +11889,6 @@ export type PageByPathQuery = {
               documentId: string
               url: string
             } | null
-          } | null>
-        }
-      | {
-          __typename: 'ComponentSectionsFaqCategories'
-          id: string
-          title?: string | null
-          text?: string | null
-          faqCategories: Array<{
-            __typename?: 'FaqCategory'
-            documentId: string
-            title: string
-            slug: string
-            faqs: Array<{
-              __typename?: 'Faq'
-              documentId: string
-              title: string
-              body?: string | null
-              faqCategory?: { __typename?: 'FaqCategory'; title: string } | null
-            } | null>
           } | null>
         }
       | {
@@ -13292,25 +13214,6 @@ export type Dev_AllPagesQuery = {
               documentId: string
               url: string
             } | null
-          } | null>
-        }
-      | {
-          __typename: 'ComponentSectionsFaqCategories'
-          id: string
-          title?: string | null
-          text?: string | null
-          faqCategories: Array<{
-            __typename?: 'FaqCategory'
-            documentId: string
-            title: string
-            slug: string
-            faqs: Array<{
-              __typename?: 'Faq'
-              documentId: string
-              title: string
-              body?: string | null
-              faqCategory?: { __typename?: 'FaqCategory'; title: string } | null
-            } | null>
           } | null>
         }
       | {
@@ -15358,26 +15261,6 @@ export type FaqsSectionFragment = {
   } | null>
 }
 
-export type FaqCategoriesSectionFragment = {
-  __typename?: 'ComponentSectionsFaqCategories'
-  id: string
-  title?: string | null
-  text?: string | null
-  faqCategories: Array<{
-    __typename?: 'FaqCategory'
-    documentId: string
-    title: string
-    slug: string
-    faqs: Array<{
-      __typename?: 'Faq'
-      documentId: string
-      title: string
-      body?: string | null
-      faqCategory?: { __typename?: 'FaqCategory'; title: string } | null
-    } | null>
-  } | null>
-}
-
 export type TootootEventsSectionFragment = {
   __typename?: 'ComponentSectionsTootootEvents'
   title?: string | null
@@ -16411,26 +16294,6 @@ type Sections_ComponentSectionsFacilities_Fragment = {
   } | null>
 }
 
-type Sections_ComponentSectionsFaqCategories_Fragment = {
-  __typename: 'ComponentSectionsFaqCategories'
-  id: string
-  title?: string | null
-  text?: string | null
-  faqCategories: Array<{
-    __typename?: 'FaqCategory'
-    documentId: string
-    title: string
-    slug: string
-    faqs: Array<{
-      __typename?: 'Faq'
-      documentId: string
-      title: string
-      body?: string | null
-      faqCategory?: { __typename?: 'FaqCategory'; title: string } | null
-    } | null>
-  } | null>
-}
-
 type Sections_ComponentSectionsFaqs_Fragment = {
   __typename: 'ComponentSectionsFaqs'
   title?: string | null
@@ -17063,7 +16926,6 @@ export type SectionsFragment =
   | Sections_ComponentSectionsDivider_Fragment
   | Sections_ComponentSectionsEvents_Fragment
   | Sections_ComponentSectionsFacilities_Fragment
-  | Sections_ComponentSectionsFaqCategories_Fragment
   | Sections_ComponentSectionsFaqs_Fragment
   | Sections_ComponentSectionsFileList_Fragment
   | Sections_ComponentSectionsGallery_Fragment
@@ -18267,17 +18129,6 @@ export const FaqsSectionFragmentDoc = gql`
   ${FaqEntityFragmentDoc}
   ${FaqCategoryEntityFragmentDoc}
 `
-export const FaqCategoriesSectionFragmentDoc = gql`
-  fragment FaqCategoriesSection on ComponentSectionsFaqCategories {
-    id
-    title
-    text
-    faqCategories {
-      ...FaqCategoryEntity
-    }
-  }
-  ${FaqCategoryEntityFragmentDoc}
-`
 export const PartnerBlockFragmentDoc = gql`
   fragment PartnerBlock on ComponentBlocksPartner {
     title
@@ -18594,9 +18445,6 @@ export const SectionsFragmentDoc = gql`
     ... on ComponentSectionsFaqs {
       ...FaqsSection
     }
-    ... on ComponentSectionsFaqCategories {
-      ...FaqCategoriesSection
-    }
     ... on ComponentSectionsTootootEvents {
       ...TootootEventsSection
     }
@@ -18659,7 +18507,6 @@ export const SectionsFragmentDoc = gql`
   ${ContactsSectionFragmentDoc}
   ${RegulationsSectionFragmentDoc}
   ${FaqsSectionFragmentDoc}
-  ${FaqCategoriesSectionFragmentDoc}
   ${TootootEventsSectionFragmentDoc}
   ${PartnersSectionFragmentDoc}
   ${AssetsSectionFragmentDoc}

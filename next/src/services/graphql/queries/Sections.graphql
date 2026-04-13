@@ -367,15 +367,6 @@ fragment FaqsSection on ComponentSectionsFaqs {
   titleLevelFaqsSection: titleLevel
 }
 
-fragment FaqCategoriesSection on ComponentSectionsFaqCategories {
-  id
-  title
-  text
-  faqCategories {
-    ...FaqCategoryEntity
-  }
-}
-
 fragment TootootEventsSection on ComponentSectionsTootootEvents {
   title
   text
@@ -628,10 +619,6 @@ fragment Sections on PageSectionsDynamicZone {
 
   ... on ComponentSectionsFaqs {
     ...FaqsSection
-  }
-
-  ... on ComponentSectionsFaqCategories {
-    ...FaqCategoriesSection
   }
 
   ... on ComponentSectionsTootootEvents {
