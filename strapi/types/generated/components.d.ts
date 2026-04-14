@@ -82,6 +82,7 @@ export interface BlocksCommonLink extends Struct.ComponentSchema {
   attributes: {
     analyticsId: Schema.Attribute.String
     article: Schema.Attribute.Relation<'oneToOne', 'api::article.article'>
+    inbaRelease: Schema.Attribute.Relation<'oneToOne', 'api::inba-release.inba-release'>
     label: Schema.Attribute.String
     page: Schema.Attribute.Relation<'oneToOne', 'api::page.page'>
     url: Schema.Attribute.String

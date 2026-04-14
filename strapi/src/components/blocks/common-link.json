@@ -24,6 +24,11 @@
     },
     "analyticsId": {
       "type": "string"
+    },
+    "inbaRelease": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::inba-release.inba-release"
     }
   }
 }

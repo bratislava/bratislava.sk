@@ -92,6 +92,21 @@
           "sortable": true
         }
       },
+      "inbaRelease": {
+        "edit": {
+          "label": "inbaRelease",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "title"
+        },
+        "list": {
+          "label": "inbaRelease",
+          "searchable": true,
+          "sortable": true
+        }
+      },
       "documentId": {
         "edit": {},
         "list": {
@@ -102,7 +117,12 @@
       }
     },
     "layouts": {
-      "list": ["id", "label", "page", "url"],
+      "list": [
+        "id",
+        "label",
+        "page",
+        "url"
+      ],
       "edit": [
         [
           {
@@ -127,6 +147,12 @@
           },
           {
             "name": "analyticsId",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "inbaRelease",
             "size": 6
           }
         ]

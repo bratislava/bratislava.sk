@@ -546,6 +546,7 @@ type ComponentBlocksCommonLink {
   analyticsId: String
   article: Article
   id: ID!
+  inbaRelease: InbaRelease
   label: String
   page: Page
   url: String
@@ -555,6 +556,7 @@ input ComponentBlocksCommonLinkFiltersInput {
   analyticsId: StringFilterInput
   and: [ComponentBlocksCommonLinkFiltersInput]
   article: ArticleFiltersInput
+  inbaRelease: InbaReleaseFiltersInput
   label: StringFilterInput
   not: ComponentBlocksCommonLinkFiltersInput
   or: [ComponentBlocksCommonLinkFiltersInput]
@@ -566,6 +568,7 @@ input ComponentBlocksCommonLinkInput {
   analyticsId: String
   article: ID
   id: ID
+  inbaRelease: ID
   label: String
   page: ID
   url: String
