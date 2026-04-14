@@ -549,6 +549,7 @@ type ComponentBlocksCommonLink {
   inbaRelease: InbaRelease
   label: String
   page: Page
+  regulation: Regulation
   url: String
 }
 
@@ -561,6 +562,7 @@ input ComponentBlocksCommonLinkFiltersInput {
   not: ComponentBlocksCommonLinkFiltersInput
   or: [ComponentBlocksCommonLinkFiltersInput]
   page: PageFiltersInput
+  regulation: RegulationFiltersInput
   url: StringFilterInput
 }
 
@@ -571,6 +573,7 @@ input ComponentBlocksCommonLinkInput {
   inbaRelease: ID
   label: String
   page: ID
+  regulation: ID
   url: String
 }
 

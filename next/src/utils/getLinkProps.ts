@@ -18,18 +18,42 @@ export type CommonLinkProps = {
   analyticsProps?: LinkAnalyticsProps
 }
 
-export const getLinkProps = (
-  link:
-    | CommonLinkFragment
-    | MenuLinkFragment
-    | HeaderLinkFragment
-    | PageLinkFragment
-    | CardLinkFragment
-    | SubnavigationLinkFragment
-    | HomepageHighlightsItemFragment
-    | null
-    | undefined,
-) => {
+type LinkFragment =
+  | CommonLinkFragment
+  | MenuLinkFragment
+  | HeaderLinkFragment
+  | PageLinkFragment
+  | CardLinkFragment
+  | SubnavigationLinkFragment
+  | HomepageHighlightsItemFragment
+  | null
+  | undefined
+
+const getEntityLinkData = (link: NonNullable<LinkFragment>) => {
+  // Some content types are not in all strapi link fragments, so we have to check if they exist in the object first
+  if ('page' in link && link.page) {
+    return { label: link.label ?? link.page.title, href: `/${link.page.path}` }
+  }
+
+  if ('article' in link && link.article) {
+    return { label: link.label ?? link.article.title, href: `/spravy/${link.article.slug}` }
+  }
+
+  if ('inbaRelease' in link && link.inbaRelease) {
+    return {
+      label: link.label ?? link.inbaRelease.slug,
+      href: `/inba/vydania/${link.inbaRelease.slug}`,
+    }
+  }
+
+  if ('regulation' in link && link.regulation) {
+    return { label: link.label ?? link.regulation.slug, href: `/vzn/${link.regulation.slug}` }
+  }
+
+  return null
+}
+
+export const getLinkProps = (link: LinkFragment) => {
   let href = '#'
   let label = link?.label ?? ''
   let target: '_blank' | undefined
@@ -41,17 +65,11 @@ export const getLinkProps = (
     return { children: label, href } // TODO?
   }
 
-  // Some content types are not in all strapi link fragments, so we have to check if they exist in the object first
-  if ('page' in link && link.page) {
-    label = link.label ?? link.page.title
-    href = `/${link.page.path}`
-  } else if ('article' in link && link.article) {
-    label = link.label ?? link.article.title
-    href = `/spravy/${link.article.slug}`
-  } else if ('inbaRelease' in link && link.inbaRelease) {
-    label = link.label ?? link.inbaRelease.slug
-    href = `/inba/vydania/${link.inbaRelease.slug}`
-  } else if (link?.url && !queryParams) {
+  const entityLinkData = getEntityLinkData(link)
+  if (entityLinkData) {
+    label = entityLinkData.label
+    href = entityLinkData.href
+  } else if (link.url && !queryParams) {
     label = link.label ?? link.url
     href = link.url
     target = href.startsWith('http') ? '_blank' : undefined

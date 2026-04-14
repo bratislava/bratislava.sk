@@ -107,6 +107,21 @@
           "sortable": true
         }
       },
+      "regulation": {
+        "edit": {
+          "label": "regulation",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "regNumber"
+        },
+        "list": {
+          "label": "regulation",
+          "searchable": true,
+          "sortable": true
+        }
+      },
       "documentId": {
         "edit": {},
         "list": {
@@ -153,6 +168,10 @@
         [
           {
             "name": "inbaRelease",
+            "size": 6
+          },
+          {
+            "name": "regulation",
             "size": 6
           }
         ]
