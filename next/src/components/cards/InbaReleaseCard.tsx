@@ -3,24 +3,28 @@ import { useId } from 'react'
 
 import CardBase, { CardBaseProps } from '@/src/components/cards/CardBase'
 import CardImage from '@/src/components/common/Image/CardImage'
+import { InbaReleaseEntityFragment } from '@/src/services/graphql'
+import { formatDate } from '@/src/utils/formatDate'
+import { getLinkProps } from '@/src/utils/getLinkProps'
 import { useTranslation } from '@/src/utils/useTranslation'
 
 type Props = {
-  title: string
-  linkHref: string
-  imgSrc?: string
+  inbaRelease: InbaReleaseEntityFragment
   imgSizes?: string
-  date?: string
 } & CardBaseProps
 
-const InbaReleaseCard = ({ imgSrc, imgSizes, date, title, linkHref, ...rest }: Props) => {
+const InbaReleaseCard = ({ inbaRelease, imgSizes, ...rest }: Props) => {
   const { t } = useTranslation()
   const titleId = useId()
 
   return (
     <CardBase variant="no-border" className="rounded-lg" {...rest}>
       <div className="flex grow flex-col justify-between gap-4 lg:gap-6">
-        <CardImage imgSrc={imgSrc} sizes={imgSizes} className="aspect-inba rounded-lg border" />
+        <CardImage
+          imgSrc={inbaRelease.coverImage?.url}
+          sizes={imgSizes}
+          className="aspect-inba rounded-lg border"
+        />
 
         <div className="flex grow flex-col gap-2">
           <Typography
@@ -29,12 +33,19 @@ const InbaReleaseCard = ({ imgSrc, imgSizes, date, title, linkHref, ...rest }: P
             as="h3"
             className="line-clamp-3 group-hover:underline"
           >
-            {title}
+            {inbaRelease.title}
           </Typography>
-          {date ? <Typography variant="p-small">{date}</Typography> : null}
+          {inbaRelease.releaseDate ? (
+            <Typography variant="p-small">{formatDate(inbaRelease.releaseDate)}</Typography>
+          ) : null}
         </div>
 
-        <Button variant="link" href={linkHref} stretched aria-labelledby={titleId}>
+        <Button
+          variant="link"
+          href={getLinkProps({ inbaRelease }).href}
+          stretched
+          aria-labelledby={titleId}
+        >
           {t('InbaRelease.releaseDetail')}
         </Button>
       </div>

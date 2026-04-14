@@ -31,6 +31,9 @@ fragment CommonLink on ComponentBlocksCommonLink {
   article {
     ...ArticleSlugEntity
   }
+  inbaRelease {
+    ...InbaReleaseEntity
+  }
   url
   analyticsId
 }

@@ -790,6 +790,7 @@ export type ComponentBlocksCommonLink = {
   analyticsId?: Maybe<Scalars['String']['output']>
   article?: Maybe<Article>
   id: Scalars['ID']['output']
+  inbaRelease?: Maybe<InbaRelease>
   label?: Maybe<Scalars['String']['output']>
   page?: Maybe<Page>
   url?: Maybe<Scalars['String']['output']>
@@ -799,6 +800,7 @@ export type ComponentBlocksCommonLinkFiltersInput = {
   analyticsId?: InputMaybe<StringFilterInput>
   and?: InputMaybe<Array<InputMaybe<ComponentBlocksCommonLinkFiltersInput>>>
   article?: InputMaybe<ArticleFiltersInput>
+  inbaRelease?: InputMaybe<InbaReleaseFiltersInput>
   label?: InputMaybe<StringFilterInput>
   not?: InputMaybe<ComponentBlocksCommonLinkFiltersInput>
   or?: InputMaybe<Array<InputMaybe<ComponentBlocksCommonLinkFiltersInput>>>
@@ -810,6 +812,7 @@ export type ComponentBlocksCommonLinkInput = {
   analyticsId?: InputMaybe<Scalars['String']['input']>
   article?: InputMaybe<Scalars['ID']['input']>
   id?: InputMaybe<Scalars['ID']['input']>
+  inbaRelease?: InputMaybe<Scalars['ID']['input']>
   label?: InputMaybe<Scalars['String']['input']>
   page?: InputMaybe<Scalars['ID']['input']>
   url?: InputMaybe<Scalars['String']['input']>
@@ -7411,6 +7414,123 @@ export type CommonLinkFragment = {
     title: string
     locale?: string | null
   } | null
+  inbaRelease?: {
+    __typename?: 'InbaRelease'
+    perex?: string | null
+    releaseDate: any
+    documentId: string
+    title: string
+    slug: string
+    rearImage?: {
+      __typename?: 'UploadFile'
+      documentId: string
+      url: string
+      width?: number | null
+      height?: number | null
+      caption?: string | null
+      alternativeText?: string | null
+      name: string
+    } | null
+    files?: Array<{
+      __typename?: 'ComponentBlocksFile'
+      id: string
+      title?: string | null
+      media?: {
+        __typename?: 'UploadFile'
+        documentId: string
+        url: string
+        name: string
+        ext?: string | null
+        size: number
+        createdAt?: any | null
+        updatedAt?: any | null
+      } | null
+    } | null> | null
+    articles: Array<{
+      __typename: 'Article'
+      perex?: string | null
+      addedAt: any
+      documentId: string
+      slug: string
+      title: string
+      locale?: string | null
+      coverMedia?: {
+        __typename?: 'UploadFile'
+        documentId: string
+        url: string
+        width?: number | null
+        height?: number | null
+        caption?: string | null
+        alternativeText?: string | null
+        name: string
+      } | null
+      articleCategory?: {
+        __typename?: 'ArticleCategory'
+        documentId: string
+        title: string
+        slug: string
+      } | null
+      tags: Array<{
+        __typename?: 'Tag'
+        documentId: string
+        title: string
+        slug: string
+        pageCategory?: {
+          __typename?: 'PageCategory'
+          documentId: string
+          title?: string | null
+          color?: Enum_Pagecategory_Color | null
+        } | null
+      } | null>
+    } | null>
+    featuredArticles: Array<{
+      __typename: 'Article'
+      perex?: string | null
+      addedAt: any
+      documentId: string
+      slug: string
+      title: string
+      locale?: string | null
+      coverMedia?: {
+        __typename?: 'UploadFile'
+        documentId: string
+        url: string
+        width?: number | null
+        height?: number | null
+        caption?: string | null
+        alternativeText?: string | null
+        name: string
+      } | null
+      articleCategory?: {
+        __typename?: 'ArticleCategory'
+        documentId: string
+        title: string
+        slug: string
+      } | null
+      tags: Array<{
+        __typename?: 'Tag'
+        documentId: string
+        title: string
+        slug: string
+        pageCategory?: {
+          __typename?: 'PageCategory'
+          documentId: string
+          title?: string | null
+          color?: Enum_Pagecategory_Color | null
+        } | null
+      } | null>
+    } | null>
+    coverImage?: {
+      __typename?: 'UploadFile'
+      documentId: string
+      url: string
+      width?: number | null
+      height?: number | null
+      caption?: string | null
+      alternativeText?: string | null
+      name: string
+    } | null
+  } | null
 }
 
 export type CardLinkFragment = {
@@ -7512,6 +7632,123 @@ export type FooterColumnBlockFragment = {
       title: string
       locale?: string | null
     } | null
+    inbaRelease?: {
+      __typename?: 'InbaRelease'
+      perex?: string | null
+      releaseDate: any
+      documentId: string
+      title: string
+      slug: string
+      rearImage?: {
+        __typename?: 'UploadFile'
+        documentId: string
+        url: string
+        width?: number | null
+        height?: number | null
+        caption?: string | null
+        alternativeText?: string | null
+        name: string
+      } | null
+      files?: Array<{
+        __typename?: 'ComponentBlocksFile'
+        id: string
+        title?: string | null
+        media?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          name: string
+          ext?: string | null
+          size: number
+          createdAt?: any | null
+          updatedAt?: any | null
+        } | null
+      } | null> | null
+      articles: Array<{
+        __typename: 'Article'
+        perex?: string | null
+        addedAt: any
+        documentId: string
+        slug: string
+        title: string
+        locale?: string | null
+        coverMedia?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
+        articleCategory?: {
+          __typename?: 'ArticleCategory'
+          documentId: string
+          title: string
+          slug: string
+        } | null
+        tags: Array<{
+          __typename?: 'Tag'
+          documentId: string
+          title: string
+          slug: string
+          pageCategory?: {
+            __typename?: 'PageCategory'
+            documentId: string
+            title?: string | null
+            color?: Enum_Pagecategory_Color | null
+          } | null
+        } | null>
+      } | null>
+      featuredArticles: Array<{
+        __typename: 'Article'
+        perex?: string | null
+        addedAt: any
+        documentId: string
+        slug: string
+        title: string
+        locale?: string | null
+        coverMedia?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
+        articleCategory?: {
+          __typename?: 'ArticleCategory'
+          documentId: string
+          title: string
+          slug: string
+        } | null
+        tags: Array<{
+          __typename?: 'Tag'
+          documentId: string
+          title: string
+          slug: string
+          pageCategory?: {
+            __typename?: 'PageCategory'
+            documentId: string
+            title?: string | null
+            color?: Enum_Pagecategory_Color | null
+          } | null
+        } | null>
+      } | null>
+      coverImage?: {
+        __typename?: 'UploadFile'
+        documentId: string
+        url: string
+        width?: number | null
+        height?: number | null
+        caption?: string | null
+        alternativeText?: string | null
+        name: string
+      } | null
+    } | null
   } | null> | null
 }
 
@@ -7545,6 +7782,123 @@ export type FooterFragment = {
         title: string
         locale?: string | null
       } | null
+      inbaRelease?: {
+        __typename?: 'InbaRelease'
+        perex?: string | null
+        releaseDate: any
+        documentId: string
+        title: string
+        slug: string
+        rearImage?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
+        files?: Array<{
+          __typename?: 'ComponentBlocksFile'
+          id: string
+          title?: string | null
+          media?: {
+            __typename?: 'UploadFile'
+            documentId: string
+            url: string
+            name: string
+            ext?: string | null
+            size: number
+            createdAt?: any | null
+            updatedAt?: any | null
+          } | null
+        } | null> | null
+        articles: Array<{
+          __typename: 'Article'
+          perex?: string | null
+          addedAt: any
+          documentId: string
+          slug: string
+          title: string
+          locale?: string | null
+          coverMedia?: {
+            __typename?: 'UploadFile'
+            documentId: string
+            url: string
+            width?: number | null
+            height?: number | null
+            caption?: string | null
+            alternativeText?: string | null
+            name: string
+          } | null
+          articleCategory?: {
+            __typename?: 'ArticleCategory'
+            documentId: string
+            title: string
+            slug: string
+          } | null
+          tags: Array<{
+            __typename?: 'Tag'
+            documentId: string
+            title: string
+            slug: string
+            pageCategory?: {
+              __typename?: 'PageCategory'
+              documentId: string
+              title?: string | null
+              color?: Enum_Pagecategory_Color | null
+            } | null
+          } | null>
+        } | null>
+        featuredArticles: Array<{
+          __typename: 'Article'
+          perex?: string | null
+          addedAt: any
+          documentId: string
+          slug: string
+          title: string
+          locale?: string | null
+          coverMedia?: {
+            __typename?: 'UploadFile'
+            documentId: string
+            url: string
+            width?: number | null
+            height?: number | null
+            caption?: string | null
+            alternativeText?: string | null
+            name: string
+          } | null
+          articleCategory?: {
+            __typename?: 'ArticleCategory'
+            documentId: string
+            title: string
+            slug: string
+          } | null
+          tags: Array<{
+            __typename?: 'Tag'
+            documentId: string
+            title: string
+            slug: string
+            pageCategory?: {
+              __typename?: 'PageCategory'
+              documentId: string
+              title?: string | null
+              color?: Enum_Pagecategory_Color | null
+            } | null
+          } | null>
+        } | null>
+        coverImage?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
+      } | null
     } | null> | null
   } | null> | null
   accessibilityPageLink?: {
@@ -7566,6 +7920,123 @@ export type FooterFragment = {
       title: string
       locale?: string | null
     } | null
+    inbaRelease?: {
+      __typename?: 'InbaRelease'
+      perex?: string | null
+      releaseDate: any
+      documentId: string
+      title: string
+      slug: string
+      rearImage?: {
+        __typename?: 'UploadFile'
+        documentId: string
+        url: string
+        width?: number | null
+        height?: number | null
+        caption?: string | null
+        alternativeText?: string | null
+        name: string
+      } | null
+      files?: Array<{
+        __typename?: 'ComponentBlocksFile'
+        id: string
+        title?: string | null
+        media?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          name: string
+          ext?: string | null
+          size: number
+          createdAt?: any | null
+          updatedAt?: any | null
+        } | null
+      } | null> | null
+      articles: Array<{
+        __typename: 'Article'
+        perex?: string | null
+        addedAt: any
+        documentId: string
+        slug: string
+        title: string
+        locale?: string | null
+        coverMedia?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
+        articleCategory?: {
+          __typename?: 'ArticleCategory'
+          documentId: string
+          title: string
+          slug: string
+        } | null
+        tags: Array<{
+          __typename?: 'Tag'
+          documentId: string
+          title: string
+          slug: string
+          pageCategory?: {
+            __typename?: 'PageCategory'
+            documentId: string
+            title?: string | null
+            color?: Enum_Pagecategory_Color | null
+          } | null
+        } | null>
+      } | null>
+      featuredArticles: Array<{
+        __typename: 'Article'
+        perex?: string | null
+        addedAt: any
+        documentId: string
+        slug: string
+        title: string
+        locale?: string | null
+        coverMedia?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
+        articleCategory?: {
+          __typename?: 'ArticleCategory'
+          documentId: string
+          title: string
+          slug: string
+        } | null
+        tags: Array<{
+          __typename?: 'Tag'
+          documentId: string
+          title: string
+          slug: string
+          pageCategory?: {
+            __typename?: 'PageCategory'
+            documentId: string
+            title?: string | null
+            color?: Enum_Pagecategory_Color | null
+          } | null
+        } | null>
+      } | null>
+      coverImage?: {
+        __typename?: 'UploadFile'
+        documentId: string
+        url: string
+        width?: number | null
+        height?: number | null
+        caption?: string | null
+        alternativeText?: string | null
+        name: string
+      } | null
+    } | null
   } | null
   innovationsLink?: {
     __typename?: 'ComponentBlocksCommonLink'
@@ -7585,6 +8056,123 @@ export type FooterFragment = {
       slug: string
       title: string
       locale?: string | null
+    } | null
+    inbaRelease?: {
+      __typename?: 'InbaRelease'
+      perex?: string | null
+      releaseDate: any
+      documentId: string
+      title: string
+      slug: string
+      rearImage?: {
+        __typename?: 'UploadFile'
+        documentId: string
+        url: string
+        width?: number | null
+        height?: number | null
+        caption?: string | null
+        alternativeText?: string | null
+        name: string
+      } | null
+      files?: Array<{
+        __typename?: 'ComponentBlocksFile'
+        id: string
+        title?: string | null
+        media?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          name: string
+          ext?: string | null
+          size: number
+          createdAt?: any | null
+          updatedAt?: any | null
+        } | null
+      } | null> | null
+      articles: Array<{
+        __typename: 'Article'
+        perex?: string | null
+        addedAt: any
+        documentId: string
+        slug: string
+        title: string
+        locale?: string | null
+        coverMedia?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
+        articleCategory?: {
+          __typename?: 'ArticleCategory'
+          documentId: string
+          title: string
+          slug: string
+        } | null
+        tags: Array<{
+          __typename?: 'Tag'
+          documentId: string
+          title: string
+          slug: string
+          pageCategory?: {
+            __typename?: 'PageCategory'
+            documentId: string
+            title?: string | null
+            color?: Enum_Pagecategory_Color | null
+          } | null
+        } | null>
+      } | null>
+      featuredArticles: Array<{
+        __typename: 'Article'
+        perex?: string | null
+        addedAt: any
+        documentId: string
+        slug: string
+        title: string
+        locale?: string | null
+        coverMedia?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
+        articleCategory?: {
+          __typename?: 'ArticleCategory'
+          documentId: string
+          title: string
+          slug: string
+        } | null
+        tags: Array<{
+          __typename?: 'Tag'
+          documentId: string
+          title: string
+          slug: string
+          pageCategory?: {
+            __typename?: 'PageCategory'
+            documentId: string
+            title?: string | null
+            color?: Enum_Pagecategory_Color | null
+          } | null
+        } | null>
+      } | null>
+      coverImage?: {
+        __typename?: 'UploadFile'
+        documentId: string
+        url: string
+        width?: number | null
+        height?: number | null
+        caption?: string | null
+        alternativeText?: string | null
+        name: string
+      } | null
     } | null
   } | null
 }
@@ -7730,6 +8318,123 @@ export type GeneralFragment = {
         slug: string
         title: string
         locale?: string | null
+      } | null
+      inbaRelease?: {
+        __typename?: 'InbaRelease'
+        perex?: string | null
+        releaseDate: any
+        documentId: string
+        title: string
+        slug: string
+        rearImage?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
+        files?: Array<{
+          __typename?: 'ComponentBlocksFile'
+          id: string
+          title?: string | null
+          media?: {
+            __typename?: 'UploadFile'
+            documentId: string
+            url: string
+            name: string
+            ext?: string | null
+            size: number
+            createdAt?: any | null
+            updatedAt?: any | null
+          } | null
+        } | null> | null
+        articles: Array<{
+          __typename: 'Article'
+          perex?: string | null
+          addedAt: any
+          documentId: string
+          slug: string
+          title: string
+          locale?: string | null
+          coverMedia?: {
+            __typename?: 'UploadFile'
+            documentId: string
+            url: string
+            width?: number | null
+            height?: number | null
+            caption?: string | null
+            alternativeText?: string | null
+            name: string
+          } | null
+          articleCategory?: {
+            __typename?: 'ArticleCategory'
+            documentId: string
+            title: string
+            slug: string
+          } | null
+          tags: Array<{
+            __typename?: 'Tag'
+            documentId: string
+            title: string
+            slug: string
+            pageCategory?: {
+              __typename?: 'PageCategory'
+              documentId: string
+              title?: string | null
+              color?: Enum_Pagecategory_Color | null
+            } | null
+          } | null>
+        } | null>
+        featuredArticles: Array<{
+          __typename: 'Article'
+          perex?: string | null
+          addedAt: any
+          documentId: string
+          slug: string
+          title: string
+          locale?: string | null
+          coverMedia?: {
+            __typename?: 'UploadFile'
+            documentId: string
+            url: string
+            width?: number | null
+            height?: number | null
+            caption?: string | null
+            alternativeText?: string | null
+            name: string
+          } | null
+          articleCategory?: {
+            __typename?: 'ArticleCategory'
+            documentId: string
+            title: string
+            slug: string
+          } | null
+          tags: Array<{
+            __typename?: 'Tag'
+            documentId: string
+            title: string
+            slug: string
+            pageCategory?: {
+              __typename?: 'PageCategory'
+              documentId: string
+              title?: string | null
+              color?: Enum_Pagecategory_Color | null
+            } | null
+          } | null>
+        } | null>
+        coverImage?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
       } | null
     } | null
   } | null
@@ -8026,6 +8731,123 @@ export type GeneralQuery = {
           slug: string
           title: string
           locale?: string | null
+        } | null
+        inbaRelease?: {
+          __typename?: 'InbaRelease'
+          perex?: string | null
+          releaseDate: any
+          documentId: string
+          title: string
+          slug: string
+          rearImage?: {
+            __typename?: 'UploadFile'
+            documentId: string
+            url: string
+            width?: number | null
+            height?: number | null
+            caption?: string | null
+            alternativeText?: string | null
+            name: string
+          } | null
+          files?: Array<{
+            __typename?: 'ComponentBlocksFile'
+            id: string
+            title?: string | null
+            media?: {
+              __typename?: 'UploadFile'
+              documentId: string
+              url: string
+              name: string
+              ext?: string | null
+              size: number
+              createdAt?: any | null
+              updatedAt?: any | null
+            } | null
+          } | null> | null
+          articles: Array<{
+            __typename: 'Article'
+            perex?: string | null
+            addedAt: any
+            documentId: string
+            slug: string
+            title: string
+            locale?: string | null
+            coverMedia?: {
+              __typename?: 'UploadFile'
+              documentId: string
+              url: string
+              width?: number | null
+              height?: number | null
+              caption?: string | null
+              alternativeText?: string | null
+              name: string
+            } | null
+            articleCategory?: {
+              __typename?: 'ArticleCategory'
+              documentId: string
+              title: string
+              slug: string
+            } | null
+            tags: Array<{
+              __typename?: 'Tag'
+              documentId: string
+              title: string
+              slug: string
+              pageCategory?: {
+                __typename?: 'PageCategory'
+                documentId: string
+                title?: string | null
+                color?: Enum_Pagecategory_Color | null
+              } | null
+            } | null>
+          } | null>
+          featuredArticles: Array<{
+            __typename: 'Article'
+            perex?: string | null
+            addedAt: any
+            documentId: string
+            slug: string
+            title: string
+            locale?: string | null
+            coverMedia?: {
+              __typename?: 'UploadFile'
+              documentId: string
+              url: string
+              width?: number | null
+              height?: number | null
+              caption?: string | null
+              alternativeText?: string | null
+              name: string
+            } | null
+            articleCategory?: {
+              __typename?: 'ArticleCategory'
+              documentId: string
+              title: string
+              slug: string
+            } | null
+            tags: Array<{
+              __typename?: 'Tag'
+              documentId: string
+              title: string
+              slug: string
+              pageCategory?: {
+                __typename?: 'PageCategory'
+                documentId: string
+                title?: string | null
+                color?: Enum_Pagecategory_Color | null
+              } | null
+            } | null>
+          } | null>
+          coverImage?: {
+            __typename?: 'UploadFile'
+            documentId: string
+            url: string
+            width?: number | null
+            height?: number | null
+            caption?: string | null
+            alternativeText?: string | null
+            name: string
+          } | null
         } | null
       } | null
     } | null
@@ -8349,6 +9171,123 @@ export type GeneralQuery = {
           title: string
           locale?: string | null
         } | null
+        inbaRelease?: {
+          __typename?: 'InbaRelease'
+          perex?: string | null
+          releaseDate: any
+          documentId: string
+          title: string
+          slug: string
+          rearImage?: {
+            __typename?: 'UploadFile'
+            documentId: string
+            url: string
+            width?: number | null
+            height?: number | null
+            caption?: string | null
+            alternativeText?: string | null
+            name: string
+          } | null
+          files?: Array<{
+            __typename?: 'ComponentBlocksFile'
+            id: string
+            title?: string | null
+            media?: {
+              __typename?: 'UploadFile'
+              documentId: string
+              url: string
+              name: string
+              ext?: string | null
+              size: number
+              createdAt?: any | null
+              updatedAt?: any | null
+            } | null
+          } | null> | null
+          articles: Array<{
+            __typename: 'Article'
+            perex?: string | null
+            addedAt: any
+            documentId: string
+            slug: string
+            title: string
+            locale?: string | null
+            coverMedia?: {
+              __typename?: 'UploadFile'
+              documentId: string
+              url: string
+              width?: number | null
+              height?: number | null
+              caption?: string | null
+              alternativeText?: string | null
+              name: string
+            } | null
+            articleCategory?: {
+              __typename?: 'ArticleCategory'
+              documentId: string
+              title: string
+              slug: string
+            } | null
+            tags: Array<{
+              __typename?: 'Tag'
+              documentId: string
+              title: string
+              slug: string
+              pageCategory?: {
+                __typename?: 'PageCategory'
+                documentId: string
+                title?: string | null
+                color?: Enum_Pagecategory_Color | null
+              } | null
+            } | null>
+          } | null>
+          featuredArticles: Array<{
+            __typename: 'Article'
+            perex?: string | null
+            addedAt: any
+            documentId: string
+            slug: string
+            title: string
+            locale?: string | null
+            coverMedia?: {
+              __typename?: 'UploadFile'
+              documentId: string
+              url: string
+              width?: number | null
+              height?: number | null
+              caption?: string | null
+              alternativeText?: string | null
+              name: string
+            } | null
+            articleCategory?: {
+              __typename?: 'ArticleCategory'
+              documentId: string
+              title: string
+              slug: string
+            } | null
+            tags: Array<{
+              __typename?: 'Tag'
+              documentId: string
+              title: string
+              slug: string
+              pageCategory?: {
+                __typename?: 'PageCategory'
+                documentId: string
+                title?: string | null
+                color?: Enum_Pagecategory_Color | null
+              } | null
+            } | null>
+          } | null>
+          coverImage?: {
+            __typename?: 'UploadFile'
+            documentId: string
+            url: string
+            width?: number | null
+            height?: number | null
+            caption?: string | null
+            alternativeText?: string | null
+            name: string
+          } | null
+        } | null
       } | null> | null
     } | null> | null
     accessibilityPageLink?: {
@@ -8370,6 +9309,123 @@ export type GeneralQuery = {
         title: string
         locale?: string | null
       } | null
+      inbaRelease?: {
+        __typename?: 'InbaRelease'
+        perex?: string | null
+        releaseDate: any
+        documentId: string
+        title: string
+        slug: string
+        rearImage?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
+        files?: Array<{
+          __typename?: 'ComponentBlocksFile'
+          id: string
+          title?: string | null
+          media?: {
+            __typename?: 'UploadFile'
+            documentId: string
+            url: string
+            name: string
+            ext?: string | null
+            size: number
+            createdAt?: any | null
+            updatedAt?: any | null
+          } | null
+        } | null> | null
+        articles: Array<{
+          __typename: 'Article'
+          perex?: string | null
+          addedAt: any
+          documentId: string
+          slug: string
+          title: string
+          locale?: string | null
+          coverMedia?: {
+            __typename?: 'UploadFile'
+            documentId: string
+            url: string
+            width?: number | null
+            height?: number | null
+            caption?: string | null
+            alternativeText?: string | null
+            name: string
+          } | null
+          articleCategory?: {
+            __typename?: 'ArticleCategory'
+            documentId: string
+            title: string
+            slug: string
+          } | null
+          tags: Array<{
+            __typename?: 'Tag'
+            documentId: string
+            title: string
+            slug: string
+            pageCategory?: {
+              __typename?: 'PageCategory'
+              documentId: string
+              title?: string | null
+              color?: Enum_Pagecategory_Color | null
+            } | null
+          } | null>
+        } | null>
+        featuredArticles: Array<{
+          __typename: 'Article'
+          perex?: string | null
+          addedAt: any
+          documentId: string
+          slug: string
+          title: string
+          locale?: string | null
+          coverMedia?: {
+            __typename?: 'UploadFile'
+            documentId: string
+            url: string
+            width?: number | null
+            height?: number | null
+            caption?: string | null
+            alternativeText?: string | null
+            name: string
+          } | null
+          articleCategory?: {
+            __typename?: 'ArticleCategory'
+            documentId: string
+            title: string
+            slug: string
+          } | null
+          tags: Array<{
+            __typename?: 'Tag'
+            documentId: string
+            title: string
+            slug: string
+            pageCategory?: {
+              __typename?: 'PageCategory'
+              documentId: string
+              title?: string | null
+              color?: Enum_Pagecategory_Color | null
+            } | null
+          } | null>
+        } | null>
+        coverImage?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
+      } | null
     } | null
     innovationsLink?: {
       __typename?: 'ComponentBlocksCommonLink'
@@ -8389,6 +9445,123 @@ export type GeneralQuery = {
         slug: string
         title: string
         locale?: string | null
+      } | null
+      inbaRelease?: {
+        __typename?: 'InbaRelease'
+        perex?: string | null
+        releaseDate: any
+        documentId: string
+        title: string
+        slug: string
+        rearImage?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
+        files?: Array<{
+          __typename?: 'ComponentBlocksFile'
+          id: string
+          title?: string | null
+          media?: {
+            __typename?: 'UploadFile'
+            documentId: string
+            url: string
+            name: string
+            ext?: string | null
+            size: number
+            createdAt?: any | null
+            updatedAt?: any | null
+          } | null
+        } | null> | null
+        articles: Array<{
+          __typename: 'Article'
+          perex?: string | null
+          addedAt: any
+          documentId: string
+          slug: string
+          title: string
+          locale?: string | null
+          coverMedia?: {
+            __typename?: 'UploadFile'
+            documentId: string
+            url: string
+            width?: number | null
+            height?: number | null
+            caption?: string | null
+            alternativeText?: string | null
+            name: string
+          } | null
+          articleCategory?: {
+            __typename?: 'ArticleCategory'
+            documentId: string
+            title: string
+            slug: string
+          } | null
+          tags: Array<{
+            __typename?: 'Tag'
+            documentId: string
+            title: string
+            slug: string
+            pageCategory?: {
+              __typename?: 'PageCategory'
+              documentId: string
+              title?: string | null
+              color?: Enum_Pagecategory_Color | null
+            } | null
+          } | null>
+        } | null>
+        featuredArticles: Array<{
+          __typename: 'Article'
+          perex?: string | null
+          addedAt: any
+          documentId: string
+          slug: string
+          title: string
+          locale?: string | null
+          coverMedia?: {
+            __typename?: 'UploadFile'
+            documentId: string
+            url: string
+            width?: number | null
+            height?: number | null
+            caption?: string | null
+            alternativeText?: string | null
+            name: string
+          } | null
+          articleCategory?: {
+            __typename?: 'ArticleCategory'
+            documentId: string
+            title: string
+            slug: string
+          } | null
+          tags: Array<{
+            __typename?: 'Tag'
+            documentId: string
+            title: string
+            slug: string
+            pageCategory?: {
+              __typename?: 'PageCategory'
+              documentId: string
+              title?: string | null
+              color?: Enum_Pagecategory_Color | null
+            } | null
+          } | null>
+        } | null>
+        coverImage?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
       } | null
     } | null
   } | null
@@ -8576,6 +9749,123 @@ export type HomepageEntityFragment = {
         title: string
         locale?: string | null
       } | null
+      inbaRelease?: {
+        __typename?: 'InbaRelease'
+        perex?: string | null
+        releaseDate: any
+        documentId: string
+        title: string
+        slug: string
+        rearImage?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
+        files?: Array<{
+          __typename?: 'ComponentBlocksFile'
+          id: string
+          title?: string | null
+          media?: {
+            __typename?: 'UploadFile'
+            documentId: string
+            url: string
+            name: string
+            ext?: string | null
+            size: number
+            createdAt?: any | null
+            updatedAt?: any | null
+          } | null
+        } | null> | null
+        articles: Array<{
+          __typename: 'Article'
+          perex?: string | null
+          addedAt: any
+          documentId: string
+          slug: string
+          title: string
+          locale?: string | null
+          coverMedia?: {
+            __typename?: 'UploadFile'
+            documentId: string
+            url: string
+            width?: number | null
+            height?: number | null
+            caption?: string | null
+            alternativeText?: string | null
+            name: string
+          } | null
+          articleCategory?: {
+            __typename?: 'ArticleCategory'
+            documentId: string
+            title: string
+            slug: string
+          } | null
+          tags: Array<{
+            __typename?: 'Tag'
+            documentId: string
+            title: string
+            slug: string
+            pageCategory?: {
+              __typename?: 'PageCategory'
+              documentId: string
+              title?: string | null
+              color?: Enum_Pagecategory_Color | null
+            } | null
+          } | null>
+        } | null>
+        featuredArticles: Array<{
+          __typename: 'Article'
+          perex?: string | null
+          addedAt: any
+          documentId: string
+          slug: string
+          title: string
+          locale?: string | null
+          coverMedia?: {
+            __typename?: 'UploadFile'
+            documentId: string
+            url: string
+            width?: number | null
+            height?: number | null
+            caption?: string | null
+            alternativeText?: string | null
+            name: string
+          } | null
+          articleCategory?: {
+            __typename?: 'ArticleCategory'
+            documentId: string
+            title: string
+            slug: string
+          } | null
+          tags: Array<{
+            __typename?: 'Tag'
+            documentId: string
+            title: string
+            slug: string
+            pageCategory?: {
+              __typename?: 'PageCategory'
+              documentId: string
+              title?: string | null
+              color?: Enum_Pagecategory_Color | null
+            } | null
+          } | null>
+        } | null>
+        coverImage?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
+      } | null
     } | null
     officialBoardPageLink?: {
       __typename?: 'ComponentBlocksCommonLink'
@@ -8596,6 +9886,123 @@ export type HomepageEntityFragment = {
         title: string
         locale?: string | null
       } | null
+      inbaRelease?: {
+        __typename?: 'InbaRelease'
+        perex?: string | null
+        releaseDate: any
+        documentId: string
+        title: string
+        slug: string
+        rearImage?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
+        files?: Array<{
+          __typename?: 'ComponentBlocksFile'
+          id: string
+          title?: string | null
+          media?: {
+            __typename?: 'UploadFile'
+            documentId: string
+            url: string
+            name: string
+            ext?: string | null
+            size: number
+            createdAt?: any | null
+            updatedAt?: any | null
+          } | null
+        } | null> | null
+        articles: Array<{
+          __typename: 'Article'
+          perex?: string | null
+          addedAt: any
+          documentId: string
+          slug: string
+          title: string
+          locale?: string | null
+          coverMedia?: {
+            __typename?: 'UploadFile'
+            documentId: string
+            url: string
+            width?: number | null
+            height?: number | null
+            caption?: string | null
+            alternativeText?: string | null
+            name: string
+          } | null
+          articleCategory?: {
+            __typename?: 'ArticleCategory'
+            documentId: string
+            title: string
+            slug: string
+          } | null
+          tags: Array<{
+            __typename?: 'Tag'
+            documentId: string
+            title: string
+            slug: string
+            pageCategory?: {
+              __typename?: 'PageCategory'
+              documentId: string
+              title?: string | null
+              color?: Enum_Pagecategory_Color | null
+            } | null
+          } | null>
+        } | null>
+        featuredArticles: Array<{
+          __typename: 'Article'
+          perex?: string | null
+          addedAt: any
+          documentId: string
+          slug: string
+          title: string
+          locale?: string | null
+          coverMedia?: {
+            __typename?: 'UploadFile'
+            documentId: string
+            url: string
+            width?: number | null
+            height?: number | null
+            caption?: string | null
+            alternativeText?: string | null
+            name: string
+          } | null
+          articleCategory?: {
+            __typename?: 'ArticleCategory'
+            documentId: string
+            title: string
+            slug: string
+          } | null
+          tags: Array<{
+            __typename?: 'Tag'
+            documentId: string
+            title: string
+            slug: string
+            pageCategory?: {
+              __typename?: 'PageCategory'
+              documentId: string
+              title?: string | null
+              color?: Enum_Pagecategory_Color | null
+            } | null
+          } | null>
+        } | null>
+        coverImage?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
+      } | null
     } | null
     roadClosuresPageLink?: {
       __typename?: 'ComponentBlocksCommonLink'
@@ -8615,6 +10022,123 @@ export type HomepageEntityFragment = {
         slug: string
         title: string
         locale?: string | null
+      } | null
+      inbaRelease?: {
+        __typename?: 'InbaRelease'
+        perex?: string | null
+        releaseDate: any
+        documentId: string
+        title: string
+        slug: string
+        rearImage?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
+        files?: Array<{
+          __typename?: 'ComponentBlocksFile'
+          id: string
+          title?: string | null
+          media?: {
+            __typename?: 'UploadFile'
+            documentId: string
+            url: string
+            name: string
+            ext?: string | null
+            size: number
+            createdAt?: any | null
+            updatedAt?: any | null
+          } | null
+        } | null> | null
+        articles: Array<{
+          __typename: 'Article'
+          perex?: string | null
+          addedAt: any
+          documentId: string
+          slug: string
+          title: string
+          locale?: string | null
+          coverMedia?: {
+            __typename?: 'UploadFile'
+            documentId: string
+            url: string
+            width?: number | null
+            height?: number | null
+            caption?: string | null
+            alternativeText?: string | null
+            name: string
+          } | null
+          articleCategory?: {
+            __typename?: 'ArticleCategory'
+            documentId: string
+            title: string
+            slug: string
+          } | null
+          tags: Array<{
+            __typename?: 'Tag'
+            documentId: string
+            title: string
+            slug: string
+            pageCategory?: {
+              __typename?: 'PageCategory'
+              documentId: string
+              title?: string | null
+              color?: Enum_Pagecategory_Color | null
+            } | null
+          } | null>
+        } | null>
+        featuredArticles: Array<{
+          __typename: 'Article'
+          perex?: string | null
+          addedAt: any
+          documentId: string
+          slug: string
+          title: string
+          locale?: string | null
+          coverMedia?: {
+            __typename?: 'UploadFile'
+            documentId: string
+            url: string
+            width?: number | null
+            height?: number | null
+            caption?: string | null
+            alternativeText?: string | null
+            name: string
+          } | null
+          articleCategory?: {
+            __typename?: 'ArticleCategory'
+            documentId: string
+            title: string
+            slug: string
+          } | null
+          tags: Array<{
+            __typename?: 'Tag'
+            documentId: string
+            title: string
+            slug: string
+            pageCategory?: {
+              __typename?: 'PageCategory'
+              documentId: string
+              title?: string | null
+              color?: Enum_Pagecategory_Color | null
+            } | null
+          } | null>
+        } | null>
+        coverImage?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
       } | null
     } | null
   } | null
@@ -8641,6 +10165,123 @@ export type HomepageEntityFragment = {
         title: string
         locale?: string | null
       } | null
+      inbaRelease?: {
+        __typename?: 'InbaRelease'
+        perex?: string | null
+        releaseDate: any
+        documentId: string
+        title: string
+        slug: string
+        rearImage?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
+        files?: Array<{
+          __typename?: 'ComponentBlocksFile'
+          id: string
+          title?: string | null
+          media?: {
+            __typename?: 'UploadFile'
+            documentId: string
+            url: string
+            name: string
+            ext?: string | null
+            size: number
+            createdAt?: any | null
+            updatedAt?: any | null
+          } | null
+        } | null> | null
+        articles: Array<{
+          __typename: 'Article'
+          perex?: string | null
+          addedAt: any
+          documentId: string
+          slug: string
+          title: string
+          locale?: string | null
+          coverMedia?: {
+            __typename?: 'UploadFile'
+            documentId: string
+            url: string
+            width?: number | null
+            height?: number | null
+            caption?: string | null
+            alternativeText?: string | null
+            name: string
+          } | null
+          articleCategory?: {
+            __typename?: 'ArticleCategory'
+            documentId: string
+            title: string
+            slug: string
+          } | null
+          tags: Array<{
+            __typename?: 'Tag'
+            documentId: string
+            title: string
+            slug: string
+            pageCategory?: {
+              __typename?: 'PageCategory'
+              documentId: string
+              title?: string | null
+              color?: Enum_Pagecategory_Color | null
+            } | null
+          } | null>
+        } | null>
+        featuredArticles: Array<{
+          __typename: 'Article'
+          perex?: string | null
+          addedAt: any
+          documentId: string
+          slug: string
+          title: string
+          locale?: string | null
+          coverMedia?: {
+            __typename?: 'UploadFile'
+            documentId: string
+            url: string
+            width?: number | null
+            height?: number | null
+            caption?: string | null
+            alternativeText?: string | null
+            name: string
+          } | null
+          articleCategory?: {
+            __typename?: 'ArticleCategory'
+            documentId: string
+            title: string
+            slug: string
+          } | null
+          tags: Array<{
+            __typename?: 'Tag'
+            documentId: string
+            title: string
+            slug: string
+            pageCategory?: {
+              __typename?: 'PageCategory'
+              documentId: string
+              title?: string | null
+              color?: Enum_Pagecategory_Color | null
+            } | null
+          } | null>
+        } | null>
+        coverImage?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
+      } | null
     } | null
     councilCard?: {
       __typename?: 'ComponentBlocksCommonLink'
@@ -8660,6 +10301,123 @@ export type HomepageEntityFragment = {
         slug: string
         title: string
         locale?: string | null
+      } | null
+      inbaRelease?: {
+        __typename?: 'InbaRelease'
+        perex?: string | null
+        releaseDate: any
+        documentId: string
+        title: string
+        slug: string
+        rearImage?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
+        files?: Array<{
+          __typename?: 'ComponentBlocksFile'
+          id: string
+          title?: string | null
+          media?: {
+            __typename?: 'UploadFile'
+            documentId: string
+            url: string
+            name: string
+            ext?: string | null
+            size: number
+            createdAt?: any | null
+            updatedAt?: any | null
+          } | null
+        } | null> | null
+        articles: Array<{
+          __typename: 'Article'
+          perex?: string | null
+          addedAt: any
+          documentId: string
+          slug: string
+          title: string
+          locale?: string | null
+          coverMedia?: {
+            __typename?: 'UploadFile'
+            documentId: string
+            url: string
+            width?: number | null
+            height?: number | null
+            caption?: string | null
+            alternativeText?: string | null
+            name: string
+          } | null
+          articleCategory?: {
+            __typename?: 'ArticleCategory'
+            documentId: string
+            title: string
+            slug: string
+          } | null
+          tags: Array<{
+            __typename?: 'Tag'
+            documentId: string
+            title: string
+            slug: string
+            pageCategory?: {
+              __typename?: 'PageCategory'
+              documentId: string
+              title?: string | null
+              color?: Enum_Pagecategory_Color | null
+            } | null
+          } | null>
+        } | null>
+        featuredArticles: Array<{
+          __typename: 'Article'
+          perex?: string | null
+          addedAt: any
+          documentId: string
+          slug: string
+          title: string
+          locale?: string | null
+          coverMedia?: {
+            __typename?: 'UploadFile'
+            documentId: string
+            url: string
+            width?: number | null
+            height?: number | null
+            caption?: string | null
+            alternativeText?: string | null
+            name: string
+          } | null
+          articleCategory?: {
+            __typename?: 'ArticleCategory'
+            documentId: string
+            title: string
+            slug: string
+          } | null
+          tags: Array<{
+            __typename?: 'Tag'
+            documentId: string
+            title: string
+            slug: string
+            pageCategory?: {
+              __typename?: 'PageCategory'
+              documentId: string
+              title?: string | null
+              color?: Enum_Pagecategory_Color | null
+            } | null
+          } | null>
+        } | null>
+        coverImage?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
       } | null
     } | null
   } | null
@@ -8685,6 +10443,123 @@ export type HomepageEntityFragment = {
         slug: string
         title: string
         locale?: string | null
+      } | null
+      inbaRelease?: {
+        __typename?: 'InbaRelease'
+        perex?: string | null
+        releaseDate: any
+        documentId: string
+        title: string
+        slug: string
+        rearImage?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
+        files?: Array<{
+          __typename?: 'ComponentBlocksFile'
+          id: string
+          title?: string | null
+          media?: {
+            __typename?: 'UploadFile'
+            documentId: string
+            url: string
+            name: string
+            ext?: string | null
+            size: number
+            createdAt?: any | null
+            updatedAt?: any | null
+          } | null
+        } | null> | null
+        articles: Array<{
+          __typename: 'Article'
+          perex?: string | null
+          addedAt: any
+          documentId: string
+          slug: string
+          title: string
+          locale?: string | null
+          coverMedia?: {
+            __typename?: 'UploadFile'
+            documentId: string
+            url: string
+            width?: number | null
+            height?: number | null
+            caption?: string | null
+            alternativeText?: string | null
+            name: string
+          } | null
+          articleCategory?: {
+            __typename?: 'ArticleCategory'
+            documentId: string
+            title: string
+            slug: string
+          } | null
+          tags: Array<{
+            __typename?: 'Tag'
+            documentId: string
+            title: string
+            slug: string
+            pageCategory?: {
+              __typename?: 'PageCategory'
+              documentId: string
+              title?: string | null
+              color?: Enum_Pagecategory_Color | null
+            } | null
+          } | null>
+        } | null>
+        featuredArticles: Array<{
+          __typename: 'Article'
+          perex?: string | null
+          addedAt: any
+          documentId: string
+          slug: string
+          title: string
+          locale?: string | null
+          coverMedia?: {
+            __typename?: 'UploadFile'
+            documentId: string
+            url: string
+            width?: number | null
+            height?: number | null
+            caption?: string | null
+            alternativeText?: string | null
+            name: string
+          } | null
+          articleCategory?: {
+            __typename?: 'ArticleCategory'
+            documentId: string
+            title: string
+            slug: string
+          } | null
+          tags: Array<{
+            __typename?: 'Tag'
+            documentId: string
+            title: string
+            slug: string
+            pageCategory?: {
+              __typename?: 'PageCategory'
+              documentId: string
+              title?: string | null
+              color?: Enum_Pagecategory_Color | null
+            } | null
+          } | null>
+        } | null>
+        coverImage?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
       } | null
     } | null
   } | null
@@ -8713,6 +10588,123 @@ export type HomepageEntityFragment = {
           title: string
           locale?: string | null
         } | null
+        inbaRelease?: {
+          __typename?: 'InbaRelease'
+          perex?: string | null
+          releaseDate: any
+          documentId: string
+          title: string
+          slug: string
+          rearImage?: {
+            __typename?: 'UploadFile'
+            documentId: string
+            url: string
+            width?: number | null
+            height?: number | null
+            caption?: string | null
+            alternativeText?: string | null
+            name: string
+          } | null
+          files?: Array<{
+            __typename?: 'ComponentBlocksFile'
+            id: string
+            title?: string | null
+            media?: {
+              __typename?: 'UploadFile'
+              documentId: string
+              url: string
+              name: string
+              ext?: string | null
+              size: number
+              createdAt?: any | null
+              updatedAt?: any | null
+            } | null
+          } | null> | null
+          articles: Array<{
+            __typename: 'Article'
+            perex?: string | null
+            addedAt: any
+            documentId: string
+            slug: string
+            title: string
+            locale?: string | null
+            coverMedia?: {
+              __typename?: 'UploadFile'
+              documentId: string
+              url: string
+              width?: number | null
+              height?: number | null
+              caption?: string | null
+              alternativeText?: string | null
+              name: string
+            } | null
+            articleCategory?: {
+              __typename?: 'ArticleCategory'
+              documentId: string
+              title: string
+              slug: string
+            } | null
+            tags: Array<{
+              __typename?: 'Tag'
+              documentId: string
+              title: string
+              slug: string
+              pageCategory?: {
+                __typename?: 'PageCategory'
+                documentId: string
+                title?: string | null
+                color?: Enum_Pagecategory_Color | null
+              } | null
+            } | null>
+          } | null>
+          featuredArticles: Array<{
+            __typename: 'Article'
+            perex?: string | null
+            addedAt: any
+            documentId: string
+            slug: string
+            title: string
+            locale?: string | null
+            coverMedia?: {
+              __typename?: 'UploadFile'
+              documentId: string
+              url: string
+              width?: number | null
+              height?: number | null
+              caption?: string | null
+              alternativeText?: string | null
+              name: string
+            } | null
+            articleCategory?: {
+              __typename?: 'ArticleCategory'
+              documentId: string
+              title: string
+              slug: string
+            } | null
+            tags: Array<{
+              __typename?: 'Tag'
+              documentId: string
+              title: string
+              slug: string
+              pageCategory?: {
+                __typename?: 'PageCategory'
+                documentId: string
+                title?: string | null
+                color?: Enum_Pagecategory_Color | null
+              } | null
+            } | null>
+          } | null>
+          coverImage?: {
+            __typename?: 'UploadFile'
+            documentId: string
+            url: string
+            width?: number | null
+            height?: number | null
+            caption?: string | null
+            alternativeText?: string | null
+            name: string
+          } | null
+        } | null
       }
     } | null>
   } | null
@@ -8738,6 +10730,123 @@ export type HomepageEntityFragment = {
         slug: string
         title: string
         locale?: string | null
+      } | null
+      inbaRelease?: {
+        __typename?: 'InbaRelease'
+        perex?: string | null
+        releaseDate: any
+        documentId: string
+        title: string
+        slug: string
+        rearImage?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
+        files?: Array<{
+          __typename?: 'ComponentBlocksFile'
+          id: string
+          title?: string | null
+          media?: {
+            __typename?: 'UploadFile'
+            documentId: string
+            url: string
+            name: string
+            ext?: string | null
+            size: number
+            createdAt?: any | null
+            updatedAt?: any | null
+          } | null
+        } | null> | null
+        articles: Array<{
+          __typename: 'Article'
+          perex?: string | null
+          addedAt: any
+          documentId: string
+          slug: string
+          title: string
+          locale?: string | null
+          coverMedia?: {
+            __typename?: 'UploadFile'
+            documentId: string
+            url: string
+            width?: number | null
+            height?: number | null
+            caption?: string | null
+            alternativeText?: string | null
+            name: string
+          } | null
+          articleCategory?: {
+            __typename?: 'ArticleCategory'
+            documentId: string
+            title: string
+            slug: string
+          } | null
+          tags: Array<{
+            __typename?: 'Tag'
+            documentId: string
+            title: string
+            slug: string
+            pageCategory?: {
+              __typename?: 'PageCategory'
+              documentId: string
+              title?: string | null
+              color?: Enum_Pagecategory_Color | null
+            } | null
+          } | null>
+        } | null>
+        featuredArticles: Array<{
+          __typename: 'Article'
+          perex?: string | null
+          addedAt: any
+          documentId: string
+          slug: string
+          title: string
+          locale?: string | null
+          coverMedia?: {
+            __typename?: 'UploadFile'
+            documentId: string
+            url: string
+            width?: number | null
+            height?: number | null
+            caption?: string | null
+            alternativeText?: string | null
+            name: string
+          } | null
+          articleCategory?: {
+            __typename?: 'ArticleCategory'
+            documentId: string
+            title: string
+            slug: string
+          } | null
+          tags: Array<{
+            __typename?: 'Tag'
+            documentId: string
+            title: string
+            slug: string
+            pageCategory?: {
+              __typename?: 'PageCategory'
+              documentId: string
+              title?: string | null
+              color?: Enum_Pagecategory_Color | null
+            } | null
+          } | null>
+        } | null>
+        coverImage?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
       } | null
     } | null
   } | null
@@ -8925,6 +11034,123 @@ export type HomepageQuery = {
           title: string
           locale?: string | null
         } | null
+        inbaRelease?: {
+          __typename?: 'InbaRelease'
+          perex?: string | null
+          releaseDate: any
+          documentId: string
+          title: string
+          slug: string
+          rearImage?: {
+            __typename?: 'UploadFile'
+            documentId: string
+            url: string
+            width?: number | null
+            height?: number | null
+            caption?: string | null
+            alternativeText?: string | null
+            name: string
+          } | null
+          files?: Array<{
+            __typename?: 'ComponentBlocksFile'
+            id: string
+            title?: string | null
+            media?: {
+              __typename?: 'UploadFile'
+              documentId: string
+              url: string
+              name: string
+              ext?: string | null
+              size: number
+              createdAt?: any | null
+              updatedAt?: any | null
+            } | null
+          } | null> | null
+          articles: Array<{
+            __typename: 'Article'
+            perex?: string | null
+            addedAt: any
+            documentId: string
+            slug: string
+            title: string
+            locale?: string | null
+            coverMedia?: {
+              __typename?: 'UploadFile'
+              documentId: string
+              url: string
+              width?: number | null
+              height?: number | null
+              caption?: string | null
+              alternativeText?: string | null
+              name: string
+            } | null
+            articleCategory?: {
+              __typename?: 'ArticleCategory'
+              documentId: string
+              title: string
+              slug: string
+            } | null
+            tags: Array<{
+              __typename?: 'Tag'
+              documentId: string
+              title: string
+              slug: string
+              pageCategory?: {
+                __typename?: 'PageCategory'
+                documentId: string
+                title?: string | null
+                color?: Enum_Pagecategory_Color | null
+              } | null
+            } | null>
+          } | null>
+          featuredArticles: Array<{
+            __typename: 'Article'
+            perex?: string | null
+            addedAt: any
+            documentId: string
+            slug: string
+            title: string
+            locale?: string | null
+            coverMedia?: {
+              __typename?: 'UploadFile'
+              documentId: string
+              url: string
+              width?: number | null
+              height?: number | null
+              caption?: string | null
+              alternativeText?: string | null
+              name: string
+            } | null
+            articleCategory?: {
+              __typename?: 'ArticleCategory'
+              documentId: string
+              title: string
+              slug: string
+            } | null
+            tags: Array<{
+              __typename?: 'Tag'
+              documentId: string
+              title: string
+              slug: string
+              pageCategory?: {
+                __typename?: 'PageCategory'
+                documentId: string
+                title?: string | null
+                color?: Enum_Pagecategory_Color | null
+              } | null
+            } | null>
+          } | null>
+          coverImage?: {
+            __typename?: 'UploadFile'
+            documentId: string
+            url: string
+            width?: number | null
+            height?: number | null
+            caption?: string | null
+            alternativeText?: string | null
+            name: string
+          } | null
+        } | null
       } | null
       officialBoardPageLink?: {
         __typename?: 'ComponentBlocksCommonLink'
@@ -8945,6 +11171,123 @@ export type HomepageQuery = {
           title: string
           locale?: string | null
         } | null
+        inbaRelease?: {
+          __typename?: 'InbaRelease'
+          perex?: string | null
+          releaseDate: any
+          documentId: string
+          title: string
+          slug: string
+          rearImage?: {
+            __typename?: 'UploadFile'
+            documentId: string
+            url: string
+            width?: number | null
+            height?: number | null
+            caption?: string | null
+            alternativeText?: string | null
+            name: string
+          } | null
+          files?: Array<{
+            __typename?: 'ComponentBlocksFile'
+            id: string
+            title?: string | null
+            media?: {
+              __typename?: 'UploadFile'
+              documentId: string
+              url: string
+              name: string
+              ext?: string | null
+              size: number
+              createdAt?: any | null
+              updatedAt?: any | null
+            } | null
+          } | null> | null
+          articles: Array<{
+            __typename: 'Article'
+            perex?: string | null
+            addedAt: any
+            documentId: string
+            slug: string
+            title: string
+            locale?: string | null
+            coverMedia?: {
+              __typename?: 'UploadFile'
+              documentId: string
+              url: string
+              width?: number | null
+              height?: number | null
+              caption?: string | null
+              alternativeText?: string | null
+              name: string
+            } | null
+            articleCategory?: {
+              __typename?: 'ArticleCategory'
+              documentId: string
+              title: string
+              slug: string
+            } | null
+            tags: Array<{
+              __typename?: 'Tag'
+              documentId: string
+              title: string
+              slug: string
+              pageCategory?: {
+                __typename?: 'PageCategory'
+                documentId: string
+                title?: string | null
+                color?: Enum_Pagecategory_Color | null
+              } | null
+            } | null>
+          } | null>
+          featuredArticles: Array<{
+            __typename: 'Article'
+            perex?: string | null
+            addedAt: any
+            documentId: string
+            slug: string
+            title: string
+            locale?: string | null
+            coverMedia?: {
+              __typename?: 'UploadFile'
+              documentId: string
+              url: string
+              width?: number | null
+              height?: number | null
+              caption?: string | null
+              alternativeText?: string | null
+              name: string
+            } | null
+            articleCategory?: {
+              __typename?: 'ArticleCategory'
+              documentId: string
+              title: string
+              slug: string
+            } | null
+            tags: Array<{
+              __typename?: 'Tag'
+              documentId: string
+              title: string
+              slug: string
+              pageCategory?: {
+                __typename?: 'PageCategory'
+                documentId: string
+                title?: string | null
+                color?: Enum_Pagecategory_Color | null
+              } | null
+            } | null>
+          } | null>
+          coverImage?: {
+            __typename?: 'UploadFile'
+            documentId: string
+            url: string
+            width?: number | null
+            height?: number | null
+            caption?: string | null
+            alternativeText?: string | null
+            name: string
+          } | null
+        } | null
       } | null
       roadClosuresPageLink?: {
         __typename?: 'ComponentBlocksCommonLink'
@@ -8964,6 +11307,123 @@ export type HomepageQuery = {
           slug: string
           title: string
           locale?: string | null
+        } | null
+        inbaRelease?: {
+          __typename?: 'InbaRelease'
+          perex?: string | null
+          releaseDate: any
+          documentId: string
+          title: string
+          slug: string
+          rearImage?: {
+            __typename?: 'UploadFile'
+            documentId: string
+            url: string
+            width?: number | null
+            height?: number | null
+            caption?: string | null
+            alternativeText?: string | null
+            name: string
+          } | null
+          files?: Array<{
+            __typename?: 'ComponentBlocksFile'
+            id: string
+            title?: string | null
+            media?: {
+              __typename?: 'UploadFile'
+              documentId: string
+              url: string
+              name: string
+              ext?: string | null
+              size: number
+              createdAt?: any | null
+              updatedAt?: any | null
+            } | null
+          } | null> | null
+          articles: Array<{
+            __typename: 'Article'
+            perex?: string | null
+            addedAt: any
+            documentId: string
+            slug: string
+            title: string
+            locale?: string | null
+            coverMedia?: {
+              __typename?: 'UploadFile'
+              documentId: string
+              url: string
+              width?: number | null
+              height?: number | null
+              caption?: string | null
+              alternativeText?: string | null
+              name: string
+            } | null
+            articleCategory?: {
+              __typename?: 'ArticleCategory'
+              documentId: string
+              title: string
+              slug: string
+            } | null
+            tags: Array<{
+              __typename?: 'Tag'
+              documentId: string
+              title: string
+              slug: string
+              pageCategory?: {
+                __typename?: 'PageCategory'
+                documentId: string
+                title?: string | null
+                color?: Enum_Pagecategory_Color | null
+              } | null
+            } | null>
+          } | null>
+          featuredArticles: Array<{
+            __typename: 'Article'
+            perex?: string | null
+            addedAt: any
+            documentId: string
+            slug: string
+            title: string
+            locale?: string | null
+            coverMedia?: {
+              __typename?: 'UploadFile'
+              documentId: string
+              url: string
+              width?: number | null
+              height?: number | null
+              caption?: string | null
+              alternativeText?: string | null
+              name: string
+            } | null
+            articleCategory?: {
+              __typename?: 'ArticleCategory'
+              documentId: string
+              title: string
+              slug: string
+            } | null
+            tags: Array<{
+              __typename?: 'Tag'
+              documentId: string
+              title: string
+              slug: string
+              pageCategory?: {
+                __typename?: 'PageCategory'
+                documentId: string
+                title?: string | null
+                color?: Enum_Pagecategory_Color | null
+              } | null
+            } | null>
+          } | null>
+          coverImage?: {
+            __typename?: 'UploadFile'
+            documentId: string
+            url: string
+            width?: number | null
+            height?: number | null
+            caption?: string | null
+            alternativeText?: string | null
+            name: string
+          } | null
         } | null
       } | null
     } | null
@@ -8990,6 +11450,123 @@ export type HomepageQuery = {
           title: string
           locale?: string | null
         } | null
+        inbaRelease?: {
+          __typename?: 'InbaRelease'
+          perex?: string | null
+          releaseDate: any
+          documentId: string
+          title: string
+          slug: string
+          rearImage?: {
+            __typename?: 'UploadFile'
+            documentId: string
+            url: string
+            width?: number | null
+            height?: number | null
+            caption?: string | null
+            alternativeText?: string | null
+            name: string
+          } | null
+          files?: Array<{
+            __typename?: 'ComponentBlocksFile'
+            id: string
+            title?: string | null
+            media?: {
+              __typename?: 'UploadFile'
+              documentId: string
+              url: string
+              name: string
+              ext?: string | null
+              size: number
+              createdAt?: any | null
+              updatedAt?: any | null
+            } | null
+          } | null> | null
+          articles: Array<{
+            __typename: 'Article'
+            perex?: string | null
+            addedAt: any
+            documentId: string
+            slug: string
+            title: string
+            locale?: string | null
+            coverMedia?: {
+              __typename?: 'UploadFile'
+              documentId: string
+              url: string
+              width?: number | null
+              height?: number | null
+              caption?: string | null
+              alternativeText?: string | null
+              name: string
+            } | null
+            articleCategory?: {
+              __typename?: 'ArticleCategory'
+              documentId: string
+              title: string
+              slug: string
+            } | null
+            tags: Array<{
+              __typename?: 'Tag'
+              documentId: string
+              title: string
+              slug: string
+              pageCategory?: {
+                __typename?: 'PageCategory'
+                documentId: string
+                title?: string | null
+                color?: Enum_Pagecategory_Color | null
+              } | null
+            } | null>
+          } | null>
+          featuredArticles: Array<{
+            __typename: 'Article'
+            perex?: string | null
+            addedAt: any
+            documentId: string
+            slug: string
+            title: string
+            locale?: string | null
+            coverMedia?: {
+              __typename?: 'UploadFile'
+              documentId: string
+              url: string
+              width?: number | null
+              height?: number | null
+              caption?: string | null
+              alternativeText?: string | null
+              name: string
+            } | null
+            articleCategory?: {
+              __typename?: 'ArticleCategory'
+              documentId: string
+              title: string
+              slug: string
+            } | null
+            tags: Array<{
+              __typename?: 'Tag'
+              documentId: string
+              title: string
+              slug: string
+              pageCategory?: {
+                __typename?: 'PageCategory'
+                documentId: string
+                title?: string | null
+                color?: Enum_Pagecategory_Color | null
+              } | null
+            } | null>
+          } | null>
+          coverImage?: {
+            __typename?: 'UploadFile'
+            documentId: string
+            url: string
+            width?: number | null
+            height?: number | null
+            caption?: string | null
+            alternativeText?: string | null
+            name: string
+          } | null
+        } | null
       } | null
       councilCard?: {
         __typename?: 'ComponentBlocksCommonLink'
@@ -9009,6 +11586,123 @@ export type HomepageQuery = {
           slug: string
           title: string
           locale?: string | null
+        } | null
+        inbaRelease?: {
+          __typename?: 'InbaRelease'
+          perex?: string | null
+          releaseDate: any
+          documentId: string
+          title: string
+          slug: string
+          rearImage?: {
+            __typename?: 'UploadFile'
+            documentId: string
+            url: string
+            width?: number | null
+            height?: number | null
+            caption?: string | null
+            alternativeText?: string | null
+            name: string
+          } | null
+          files?: Array<{
+            __typename?: 'ComponentBlocksFile'
+            id: string
+            title?: string | null
+            media?: {
+              __typename?: 'UploadFile'
+              documentId: string
+              url: string
+              name: string
+              ext?: string | null
+              size: number
+              createdAt?: any | null
+              updatedAt?: any | null
+            } | null
+          } | null> | null
+          articles: Array<{
+            __typename: 'Article'
+            perex?: string | null
+            addedAt: any
+            documentId: string
+            slug: string
+            title: string
+            locale?: string | null
+            coverMedia?: {
+              __typename?: 'UploadFile'
+              documentId: string
+              url: string
+              width?: number | null
+              height?: number | null
+              caption?: string | null
+              alternativeText?: string | null
+              name: string
+            } | null
+            articleCategory?: {
+              __typename?: 'ArticleCategory'
+              documentId: string
+              title: string
+              slug: string
+            } | null
+            tags: Array<{
+              __typename?: 'Tag'
+              documentId: string
+              title: string
+              slug: string
+              pageCategory?: {
+                __typename?: 'PageCategory'
+                documentId: string
+                title?: string | null
+                color?: Enum_Pagecategory_Color | null
+              } | null
+            } | null>
+          } | null>
+          featuredArticles: Array<{
+            __typename: 'Article'
+            perex?: string | null
+            addedAt: any
+            documentId: string
+            slug: string
+            title: string
+            locale?: string | null
+            coverMedia?: {
+              __typename?: 'UploadFile'
+              documentId: string
+              url: string
+              width?: number | null
+              height?: number | null
+              caption?: string | null
+              alternativeText?: string | null
+              name: string
+            } | null
+            articleCategory?: {
+              __typename?: 'ArticleCategory'
+              documentId: string
+              title: string
+              slug: string
+            } | null
+            tags: Array<{
+              __typename?: 'Tag'
+              documentId: string
+              title: string
+              slug: string
+              pageCategory?: {
+                __typename?: 'PageCategory'
+                documentId: string
+                title?: string | null
+                color?: Enum_Pagecategory_Color | null
+              } | null
+            } | null>
+          } | null>
+          coverImage?: {
+            __typename?: 'UploadFile'
+            documentId: string
+            url: string
+            width?: number | null
+            height?: number | null
+            caption?: string | null
+            alternativeText?: string | null
+            name: string
+          } | null
         } | null
       } | null
     } | null
@@ -9034,6 +11728,123 @@ export type HomepageQuery = {
           slug: string
           title: string
           locale?: string | null
+        } | null
+        inbaRelease?: {
+          __typename?: 'InbaRelease'
+          perex?: string | null
+          releaseDate: any
+          documentId: string
+          title: string
+          slug: string
+          rearImage?: {
+            __typename?: 'UploadFile'
+            documentId: string
+            url: string
+            width?: number | null
+            height?: number | null
+            caption?: string | null
+            alternativeText?: string | null
+            name: string
+          } | null
+          files?: Array<{
+            __typename?: 'ComponentBlocksFile'
+            id: string
+            title?: string | null
+            media?: {
+              __typename?: 'UploadFile'
+              documentId: string
+              url: string
+              name: string
+              ext?: string | null
+              size: number
+              createdAt?: any | null
+              updatedAt?: any | null
+            } | null
+          } | null> | null
+          articles: Array<{
+            __typename: 'Article'
+            perex?: string | null
+            addedAt: any
+            documentId: string
+            slug: string
+            title: string
+            locale?: string | null
+            coverMedia?: {
+              __typename?: 'UploadFile'
+              documentId: string
+              url: string
+              width?: number | null
+              height?: number | null
+              caption?: string | null
+              alternativeText?: string | null
+              name: string
+            } | null
+            articleCategory?: {
+              __typename?: 'ArticleCategory'
+              documentId: string
+              title: string
+              slug: string
+            } | null
+            tags: Array<{
+              __typename?: 'Tag'
+              documentId: string
+              title: string
+              slug: string
+              pageCategory?: {
+                __typename?: 'PageCategory'
+                documentId: string
+                title?: string | null
+                color?: Enum_Pagecategory_Color | null
+              } | null
+            } | null>
+          } | null>
+          featuredArticles: Array<{
+            __typename: 'Article'
+            perex?: string | null
+            addedAt: any
+            documentId: string
+            slug: string
+            title: string
+            locale?: string | null
+            coverMedia?: {
+              __typename?: 'UploadFile'
+              documentId: string
+              url: string
+              width?: number | null
+              height?: number | null
+              caption?: string | null
+              alternativeText?: string | null
+              name: string
+            } | null
+            articleCategory?: {
+              __typename?: 'ArticleCategory'
+              documentId: string
+              title: string
+              slug: string
+            } | null
+            tags: Array<{
+              __typename?: 'Tag'
+              documentId: string
+              title: string
+              slug: string
+              pageCategory?: {
+                __typename?: 'PageCategory'
+                documentId: string
+                title?: string | null
+                color?: Enum_Pagecategory_Color | null
+              } | null
+            } | null>
+          } | null>
+          coverImage?: {
+            __typename?: 'UploadFile'
+            documentId: string
+            url: string
+            width?: number | null
+            height?: number | null
+            caption?: string | null
+            alternativeText?: string | null
+            name: string
+          } | null
         } | null
       } | null
     } | null
@@ -9062,6 +11873,123 @@ export type HomepageQuery = {
             title: string
             locale?: string | null
           } | null
+          inbaRelease?: {
+            __typename?: 'InbaRelease'
+            perex?: string | null
+            releaseDate: any
+            documentId: string
+            title: string
+            slug: string
+            rearImage?: {
+              __typename?: 'UploadFile'
+              documentId: string
+              url: string
+              width?: number | null
+              height?: number | null
+              caption?: string | null
+              alternativeText?: string | null
+              name: string
+            } | null
+            files?: Array<{
+              __typename?: 'ComponentBlocksFile'
+              id: string
+              title?: string | null
+              media?: {
+                __typename?: 'UploadFile'
+                documentId: string
+                url: string
+                name: string
+                ext?: string | null
+                size: number
+                createdAt?: any | null
+                updatedAt?: any | null
+              } | null
+            } | null> | null
+            articles: Array<{
+              __typename: 'Article'
+              perex?: string | null
+              addedAt: any
+              documentId: string
+              slug: string
+              title: string
+              locale?: string | null
+              coverMedia?: {
+                __typename?: 'UploadFile'
+                documentId: string
+                url: string
+                width?: number | null
+                height?: number | null
+                caption?: string | null
+                alternativeText?: string | null
+                name: string
+              } | null
+              articleCategory?: {
+                __typename?: 'ArticleCategory'
+                documentId: string
+                title: string
+                slug: string
+              } | null
+              tags: Array<{
+                __typename?: 'Tag'
+                documentId: string
+                title: string
+                slug: string
+                pageCategory?: {
+                  __typename?: 'PageCategory'
+                  documentId: string
+                  title?: string | null
+                  color?: Enum_Pagecategory_Color | null
+                } | null
+              } | null>
+            } | null>
+            featuredArticles: Array<{
+              __typename: 'Article'
+              perex?: string | null
+              addedAt: any
+              documentId: string
+              slug: string
+              title: string
+              locale?: string | null
+              coverMedia?: {
+                __typename?: 'UploadFile'
+                documentId: string
+                url: string
+                width?: number | null
+                height?: number | null
+                caption?: string | null
+                alternativeText?: string | null
+                name: string
+              } | null
+              articleCategory?: {
+                __typename?: 'ArticleCategory'
+                documentId: string
+                title: string
+                slug: string
+              } | null
+              tags: Array<{
+                __typename?: 'Tag'
+                documentId: string
+                title: string
+                slug: string
+                pageCategory?: {
+                  __typename?: 'PageCategory'
+                  documentId: string
+                  title?: string | null
+                  color?: Enum_Pagecategory_Color | null
+                } | null
+              } | null>
+            } | null>
+            coverImage?: {
+              __typename?: 'UploadFile'
+              documentId: string
+              url: string
+              width?: number | null
+              height?: number | null
+              caption?: string | null
+              alternativeText?: string | null
+              name: string
+            } | null
+          } | null
         }
       } | null>
     } | null
@@ -9087,6 +12015,123 @@ export type HomepageQuery = {
           slug: string
           title: string
           locale?: string | null
+        } | null
+        inbaRelease?: {
+          __typename?: 'InbaRelease'
+          perex?: string | null
+          releaseDate: any
+          documentId: string
+          title: string
+          slug: string
+          rearImage?: {
+            __typename?: 'UploadFile'
+            documentId: string
+            url: string
+            width?: number | null
+            height?: number | null
+            caption?: string | null
+            alternativeText?: string | null
+            name: string
+          } | null
+          files?: Array<{
+            __typename?: 'ComponentBlocksFile'
+            id: string
+            title?: string | null
+            media?: {
+              __typename?: 'UploadFile'
+              documentId: string
+              url: string
+              name: string
+              ext?: string | null
+              size: number
+              createdAt?: any | null
+              updatedAt?: any | null
+            } | null
+          } | null> | null
+          articles: Array<{
+            __typename: 'Article'
+            perex?: string | null
+            addedAt: any
+            documentId: string
+            slug: string
+            title: string
+            locale?: string | null
+            coverMedia?: {
+              __typename?: 'UploadFile'
+              documentId: string
+              url: string
+              width?: number | null
+              height?: number | null
+              caption?: string | null
+              alternativeText?: string | null
+              name: string
+            } | null
+            articleCategory?: {
+              __typename?: 'ArticleCategory'
+              documentId: string
+              title: string
+              slug: string
+            } | null
+            tags: Array<{
+              __typename?: 'Tag'
+              documentId: string
+              title: string
+              slug: string
+              pageCategory?: {
+                __typename?: 'PageCategory'
+                documentId: string
+                title?: string | null
+                color?: Enum_Pagecategory_Color | null
+              } | null
+            } | null>
+          } | null>
+          featuredArticles: Array<{
+            __typename: 'Article'
+            perex?: string | null
+            addedAt: any
+            documentId: string
+            slug: string
+            title: string
+            locale?: string | null
+            coverMedia?: {
+              __typename?: 'UploadFile'
+              documentId: string
+              url: string
+              width?: number | null
+              height?: number | null
+              caption?: string | null
+              alternativeText?: string | null
+              name: string
+            } | null
+            articleCategory?: {
+              __typename?: 'ArticleCategory'
+              documentId: string
+              title: string
+              slug: string
+            } | null
+            tags: Array<{
+              __typename?: 'Tag'
+              documentId: string
+              title: string
+              slug: string
+              pageCategory?: {
+                __typename?: 'PageCategory'
+                documentId: string
+                title?: string | null
+                color?: Enum_Pagecategory_Color | null
+              } | null
+            } | null>
+          } | null>
+          coverImage?: {
+            __typename?: 'UploadFile'
+            documentId: string
+            url: string
+            width?: number | null
+            height?: number | null
+            caption?: string | null
+            alternativeText?: string | null
+            name: string
+          } | null
         } | null
       } | null
     } | null
@@ -9252,6 +12297,123 @@ export type HomepageTabsFragment = {
       title: string
       locale?: string | null
     } | null
+    inbaRelease?: {
+      __typename?: 'InbaRelease'
+      perex?: string | null
+      releaseDate: any
+      documentId: string
+      title: string
+      slug: string
+      rearImage?: {
+        __typename?: 'UploadFile'
+        documentId: string
+        url: string
+        width?: number | null
+        height?: number | null
+        caption?: string | null
+        alternativeText?: string | null
+        name: string
+      } | null
+      files?: Array<{
+        __typename?: 'ComponentBlocksFile'
+        id: string
+        title?: string | null
+        media?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          name: string
+          ext?: string | null
+          size: number
+          createdAt?: any | null
+          updatedAt?: any | null
+        } | null
+      } | null> | null
+      articles: Array<{
+        __typename: 'Article'
+        perex?: string | null
+        addedAt: any
+        documentId: string
+        slug: string
+        title: string
+        locale?: string | null
+        coverMedia?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
+        articleCategory?: {
+          __typename?: 'ArticleCategory'
+          documentId: string
+          title: string
+          slug: string
+        } | null
+        tags: Array<{
+          __typename?: 'Tag'
+          documentId: string
+          title: string
+          slug: string
+          pageCategory?: {
+            __typename?: 'PageCategory'
+            documentId: string
+            title?: string | null
+            color?: Enum_Pagecategory_Color | null
+          } | null
+        } | null>
+      } | null>
+      featuredArticles: Array<{
+        __typename: 'Article'
+        perex?: string | null
+        addedAt: any
+        documentId: string
+        slug: string
+        title: string
+        locale?: string | null
+        coverMedia?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
+        articleCategory?: {
+          __typename?: 'ArticleCategory'
+          documentId: string
+          title: string
+          slug: string
+        } | null
+        tags: Array<{
+          __typename?: 'Tag'
+          documentId: string
+          title: string
+          slug: string
+          pageCategory?: {
+            __typename?: 'PageCategory'
+            documentId: string
+            title?: string | null
+            color?: Enum_Pagecategory_Color | null
+          } | null
+        } | null>
+      } | null>
+      coverImage?: {
+        __typename?: 'UploadFile'
+        documentId: string
+        url: string
+        width?: number | null
+        height?: number | null
+        caption?: string | null
+        alternativeText?: string | null
+        name: string
+      } | null
+    } | null
   } | null
   officialBoardPageLink?: {
     __typename?: 'ComponentBlocksCommonLink'
@@ -9272,6 +12434,123 @@ export type HomepageTabsFragment = {
       title: string
       locale?: string | null
     } | null
+    inbaRelease?: {
+      __typename?: 'InbaRelease'
+      perex?: string | null
+      releaseDate: any
+      documentId: string
+      title: string
+      slug: string
+      rearImage?: {
+        __typename?: 'UploadFile'
+        documentId: string
+        url: string
+        width?: number | null
+        height?: number | null
+        caption?: string | null
+        alternativeText?: string | null
+        name: string
+      } | null
+      files?: Array<{
+        __typename?: 'ComponentBlocksFile'
+        id: string
+        title?: string | null
+        media?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          name: string
+          ext?: string | null
+          size: number
+          createdAt?: any | null
+          updatedAt?: any | null
+        } | null
+      } | null> | null
+      articles: Array<{
+        __typename: 'Article'
+        perex?: string | null
+        addedAt: any
+        documentId: string
+        slug: string
+        title: string
+        locale?: string | null
+        coverMedia?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
+        articleCategory?: {
+          __typename?: 'ArticleCategory'
+          documentId: string
+          title: string
+          slug: string
+        } | null
+        tags: Array<{
+          __typename?: 'Tag'
+          documentId: string
+          title: string
+          slug: string
+          pageCategory?: {
+            __typename?: 'PageCategory'
+            documentId: string
+            title?: string | null
+            color?: Enum_Pagecategory_Color | null
+          } | null
+        } | null>
+      } | null>
+      featuredArticles: Array<{
+        __typename: 'Article'
+        perex?: string | null
+        addedAt: any
+        documentId: string
+        slug: string
+        title: string
+        locale?: string | null
+        coverMedia?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
+        articleCategory?: {
+          __typename?: 'ArticleCategory'
+          documentId: string
+          title: string
+          slug: string
+        } | null
+        tags: Array<{
+          __typename?: 'Tag'
+          documentId: string
+          title: string
+          slug: string
+          pageCategory?: {
+            __typename?: 'PageCategory'
+            documentId: string
+            title?: string | null
+            color?: Enum_Pagecategory_Color | null
+          } | null
+        } | null>
+      } | null>
+      coverImage?: {
+        __typename?: 'UploadFile'
+        documentId: string
+        url: string
+        width?: number | null
+        height?: number | null
+        caption?: string | null
+        alternativeText?: string | null
+        name: string
+      } | null
+    } | null
   } | null
   roadClosuresPageLink?: {
     __typename?: 'ComponentBlocksCommonLink'
@@ -9291,6 +12570,123 @@ export type HomepageTabsFragment = {
       slug: string
       title: string
       locale?: string | null
+    } | null
+    inbaRelease?: {
+      __typename?: 'InbaRelease'
+      perex?: string | null
+      releaseDate: any
+      documentId: string
+      title: string
+      slug: string
+      rearImage?: {
+        __typename?: 'UploadFile'
+        documentId: string
+        url: string
+        width?: number | null
+        height?: number | null
+        caption?: string | null
+        alternativeText?: string | null
+        name: string
+      } | null
+      files?: Array<{
+        __typename?: 'ComponentBlocksFile'
+        id: string
+        title?: string | null
+        media?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          name: string
+          ext?: string | null
+          size: number
+          createdAt?: any | null
+          updatedAt?: any | null
+        } | null
+      } | null> | null
+      articles: Array<{
+        __typename: 'Article'
+        perex?: string | null
+        addedAt: any
+        documentId: string
+        slug: string
+        title: string
+        locale?: string | null
+        coverMedia?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
+        articleCategory?: {
+          __typename?: 'ArticleCategory'
+          documentId: string
+          title: string
+          slug: string
+        } | null
+        tags: Array<{
+          __typename?: 'Tag'
+          documentId: string
+          title: string
+          slug: string
+          pageCategory?: {
+            __typename?: 'PageCategory'
+            documentId: string
+            title?: string | null
+            color?: Enum_Pagecategory_Color | null
+          } | null
+        } | null>
+      } | null>
+      featuredArticles: Array<{
+        __typename: 'Article'
+        perex?: string | null
+        addedAt: any
+        documentId: string
+        slug: string
+        title: string
+        locale?: string | null
+        coverMedia?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
+        articleCategory?: {
+          __typename?: 'ArticleCategory'
+          documentId: string
+          title: string
+          slug: string
+        } | null
+        tags: Array<{
+          __typename?: 'Tag'
+          documentId: string
+          title: string
+          slug: string
+          pageCategory?: {
+            __typename?: 'PageCategory'
+            documentId: string
+            title?: string | null
+            color?: Enum_Pagecategory_Color | null
+          } | null
+        } | null>
+      } | null>
+      coverImage?: {
+        __typename?: 'UploadFile'
+        documentId: string
+        url: string
+        width?: number | null
+        height?: number | null
+        caption?: string | null
+        alternativeText?: string | null
+        name: string
+      } | null
     } | null
   } | null
 }
@@ -9318,6 +12714,123 @@ export type HomepageMayorAndCouncilSectionFragment = {
       title: string
       locale?: string | null
     } | null
+    inbaRelease?: {
+      __typename?: 'InbaRelease'
+      perex?: string | null
+      releaseDate: any
+      documentId: string
+      title: string
+      slug: string
+      rearImage?: {
+        __typename?: 'UploadFile'
+        documentId: string
+        url: string
+        width?: number | null
+        height?: number | null
+        caption?: string | null
+        alternativeText?: string | null
+        name: string
+      } | null
+      files?: Array<{
+        __typename?: 'ComponentBlocksFile'
+        id: string
+        title?: string | null
+        media?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          name: string
+          ext?: string | null
+          size: number
+          createdAt?: any | null
+          updatedAt?: any | null
+        } | null
+      } | null> | null
+      articles: Array<{
+        __typename: 'Article'
+        perex?: string | null
+        addedAt: any
+        documentId: string
+        slug: string
+        title: string
+        locale?: string | null
+        coverMedia?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
+        articleCategory?: {
+          __typename?: 'ArticleCategory'
+          documentId: string
+          title: string
+          slug: string
+        } | null
+        tags: Array<{
+          __typename?: 'Tag'
+          documentId: string
+          title: string
+          slug: string
+          pageCategory?: {
+            __typename?: 'PageCategory'
+            documentId: string
+            title?: string | null
+            color?: Enum_Pagecategory_Color | null
+          } | null
+        } | null>
+      } | null>
+      featuredArticles: Array<{
+        __typename: 'Article'
+        perex?: string | null
+        addedAt: any
+        documentId: string
+        slug: string
+        title: string
+        locale?: string | null
+        coverMedia?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
+        articleCategory?: {
+          __typename?: 'ArticleCategory'
+          documentId: string
+          title: string
+          slug: string
+        } | null
+        tags: Array<{
+          __typename?: 'Tag'
+          documentId: string
+          title: string
+          slug: string
+          pageCategory?: {
+            __typename?: 'PageCategory'
+            documentId: string
+            title?: string | null
+            color?: Enum_Pagecategory_Color | null
+          } | null
+        } | null>
+      } | null>
+      coverImage?: {
+        __typename?: 'UploadFile'
+        documentId: string
+        url: string
+        width?: number | null
+        height?: number | null
+        caption?: string | null
+        alternativeText?: string | null
+        name: string
+      } | null
+    } | null
   } | null
   councilCard?: {
     __typename?: 'ComponentBlocksCommonLink'
@@ -9337,6 +12850,123 @@ export type HomepageMayorAndCouncilSectionFragment = {
       slug: string
       title: string
       locale?: string | null
+    } | null
+    inbaRelease?: {
+      __typename?: 'InbaRelease'
+      perex?: string | null
+      releaseDate: any
+      documentId: string
+      title: string
+      slug: string
+      rearImage?: {
+        __typename?: 'UploadFile'
+        documentId: string
+        url: string
+        width?: number | null
+        height?: number | null
+        caption?: string | null
+        alternativeText?: string | null
+        name: string
+      } | null
+      files?: Array<{
+        __typename?: 'ComponentBlocksFile'
+        id: string
+        title?: string | null
+        media?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          name: string
+          ext?: string | null
+          size: number
+          createdAt?: any | null
+          updatedAt?: any | null
+        } | null
+      } | null> | null
+      articles: Array<{
+        __typename: 'Article'
+        perex?: string | null
+        addedAt: any
+        documentId: string
+        slug: string
+        title: string
+        locale?: string | null
+        coverMedia?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
+        articleCategory?: {
+          __typename?: 'ArticleCategory'
+          documentId: string
+          title: string
+          slug: string
+        } | null
+        tags: Array<{
+          __typename?: 'Tag'
+          documentId: string
+          title: string
+          slug: string
+          pageCategory?: {
+            __typename?: 'PageCategory'
+            documentId: string
+            title?: string | null
+            color?: Enum_Pagecategory_Color | null
+          } | null
+        } | null>
+      } | null>
+      featuredArticles: Array<{
+        __typename: 'Article'
+        perex?: string | null
+        addedAt: any
+        documentId: string
+        slug: string
+        title: string
+        locale?: string | null
+        coverMedia?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
+        articleCategory?: {
+          __typename?: 'ArticleCategory'
+          documentId: string
+          title: string
+          slug: string
+        } | null
+        tags: Array<{
+          __typename?: 'Tag'
+          documentId: string
+          title: string
+          slug: string
+          pageCategory?: {
+            __typename?: 'PageCategory'
+            documentId: string
+            title?: string | null
+            color?: Enum_Pagecategory_Color | null
+          } | null
+        } | null>
+      } | null>
+      coverImage?: {
+        __typename?: 'UploadFile'
+        documentId: string
+        url: string
+        width?: number | null
+        height?: number | null
+        caption?: string | null
+        alternativeText?: string | null
+        name: string
+      } | null
     } | null
   } | null
 }
@@ -9363,6 +12993,123 @@ export type TopServicesItemFragment = {
       title: string
       locale?: string | null
     } | null
+    inbaRelease?: {
+      __typename?: 'InbaRelease'
+      perex?: string | null
+      releaseDate: any
+      documentId: string
+      title: string
+      slug: string
+      rearImage?: {
+        __typename?: 'UploadFile'
+        documentId: string
+        url: string
+        width?: number | null
+        height?: number | null
+        caption?: string | null
+        alternativeText?: string | null
+        name: string
+      } | null
+      files?: Array<{
+        __typename?: 'ComponentBlocksFile'
+        id: string
+        title?: string | null
+        media?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          name: string
+          ext?: string | null
+          size: number
+          createdAt?: any | null
+          updatedAt?: any | null
+        } | null
+      } | null> | null
+      articles: Array<{
+        __typename: 'Article'
+        perex?: string | null
+        addedAt: any
+        documentId: string
+        slug: string
+        title: string
+        locale?: string | null
+        coverMedia?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
+        articleCategory?: {
+          __typename?: 'ArticleCategory'
+          documentId: string
+          title: string
+          slug: string
+        } | null
+        tags: Array<{
+          __typename?: 'Tag'
+          documentId: string
+          title: string
+          slug: string
+          pageCategory?: {
+            __typename?: 'PageCategory'
+            documentId: string
+            title?: string | null
+            color?: Enum_Pagecategory_Color | null
+          } | null
+        } | null>
+      } | null>
+      featuredArticles: Array<{
+        __typename: 'Article'
+        perex?: string | null
+        addedAt: any
+        documentId: string
+        slug: string
+        title: string
+        locale?: string | null
+        coverMedia?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
+        articleCategory?: {
+          __typename?: 'ArticleCategory'
+          documentId: string
+          title: string
+          slug: string
+        } | null
+        tags: Array<{
+          __typename?: 'Tag'
+          documentId: string
+          title: string
+          slug: string
+          pageCategory?: {
+            __typename?: 'PageCategory'
+            documentId: string
+            title?: string | null
+            color?: Enum_Pagecategory_Color | null
+          } | null
+        } | null>
+      } | null>
+      coverImage?: {
+        __typename?: 'UploadFile'
+        documentId: string
+        url: string
+        width?: number | null
+        height?: number | null
+        caption?: string | null
+        alternativeText?: string | null
+        name: string
+      } | null
+    } | null
   }
 }
 
@@ -9388,6 +13135,123 @@ export type HomepageInbaFragment = {
       slug: string
       title: string
       locale?: string | null
+    } | null
+    inbaRelease?: {
+      __typename?: 'InbaRelease'
+      perex?: string | null
+      releaseDate: any
+      documentId: string
+      title: string
+      slug: string
+      rearImage?: {
+        __typename?: 'UploadFile'
+        documentId: string
+        url: string
+        width?: number | null
+        height?: number | null
+        caption?: string | null
+        alternativeText?: string | null
+        name: string
+      } | null
+      files?: Array<{
+        __typename?: 'ComponentBlocksFile'
+        id: string
+        title?: string | null
+        media?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          name: string
+          ext?: string | null
+          size: number
+          createdAt?: any | null
+          updatedAt?: any | null
+        } | null
+      } | null> | null
+      articles: Array<{
+        __typename: 'Article'
+        perex?: string | null
+        addedAt: any
+        documentId: string
+        slug: string
+        title: string
+        locale?: string | null
+        coverMedia?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
+        articleCategory?: {
+          __typename?: 'ArticleCategory'
+          documentId: string
+          title: string
+          slug: string
+        } | null
+        tags: Array<{
+          __typename?: 'Tag'
+          documentId: string
+          title: string
+          slug: string
+          pageCategory?: {
+            __typename?: 'PageCategory'
+            documentId: string
+            title?: string | null
+            color?: Enum_Pagecategory_Color | null
+          } | null
+        } | null>
+      } | null>
+      featuredArticles: Array<{
+        __typename: 'Article'
+        perex?: string | null
+        addedAt: any
+        documentId: string
+        slug: string
+        title: string
+        locale?: string | null
+        coverMedia?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
+        articleCategory?: {
+          __typename?: 'ArticleCategory'
+          documentId: string
+          title: string
+          slug: string
+        } | null
+        tags: Array<{
+          __typename?: 'Tag'
+          documentId: string
+          title: string
+          slug: string
+          pageCategory?: {
+            __typename?: 'PageCategory'
+            documentId: string
+            title?: string | null
+            color?: Enum_Pagecategory_Color | null
+          } | null
+        } | null>
+      } | null>
+      coverImage?: {
+        __typename?: 'UploadFile'
+        documentId: string
+        url: string
+        width?: number | null
+        height?: number | null
+        caption?: string | null
+        alternativeText?: string | null
+        name: string
+      } | null
     } | null
   } | null
 }
@@ -10062,6 +13926,123 @@ export type PageEntityFragment = {
       title: string
       locale?: string | null
     } | null
+    inbaRelease?: {
+      __typename?: 'InbaRelease'
+      perex?: string | null
+      releaseDate: any
+      documentId: string
+      title: string
+      slug: string
+      rearImage?: {
+        __typename?: 'UploadFile'
+        documentId: string
+        url: string
+        width?: number | null
+        height?: number | null
+        caption?: string | null
+        alternativeText?: string | null
+        name: string
+      } | null
+      files?: Array<{
+        __typename?: 'ComponentBlocksFile'
+        id: string
+        title?: string | null
+        media?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          name: string
+          ext?: string | null
+          size: number
+          createdAt?: any | null
+          updatedAt?: any | null
+        } | null
+      } | null> | null
+      articles: Array<{
+        __typename: 'Article'
+        perex?: string | null
+        addedAt: any
+        documentId: string
+        slug: string
+        title: string
+        locale?: string | null
+        coverMedia?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
+        articleCategory?: {
+          __typename?: 'ArticleCategory'
+          documentId: string
+          title: string
+          slug: string
+        } | null
+        tags: Array<{
+          __typename?: 'Tag'
+          documentId: string
+          title: string
+          slug: string
+          pageCategory?: {
+            __typename?: 'PageCategory'
+            documentId: string
+            title?: string | null
+            color?: Enum_Pagecategory_Color | null
+          } | null
+        } | null>
+      } | null>
+      featuredArticles: Array<{
+        __typename: 'Article'
+        perex?: string | null
+        addedAt: any
+        documentId: string
+        slug: string
+        title: string
+        locale?: string | null
+        coverMedia?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
+        articleCategory?: {
+          __typename?: 'ArticleCategory'
+          documentId: string
+          title: string
+          slug: string
+        } | null
+        tags: Array<{
+          __typename?: 'Tag'
+          documentId: string
+          title: string
+          slug: string
+          pageCategory?: {
+            __typename?: 'PageCategory'
+            documentId: string
+            title?: string | null
+            color?: Enum_Pagecategory_Color | null
+          } | null
+        } | null>
+      } | null>
+      coverImage?: {
+        __typename?: 'UploadFile'
+        documentId: string
+        url: string
+        width?: number | null
+        height?: number | null
+        caption?: string | null
+        alternativeText?: string | null
+        name: string
+      } | null
+    } | null
   } | null> | null
   pageHeaderSections?: Array<
     | { __typename: 'ComponentHeaderSectionsEvent'; date?: any | null; address?: string | null }
@@ -10244,6 +14225,123 @@ export type PageEntityFragment = {
             title: string
             locale?: string | null
           } | null
+          inbaRelease?: {
+            __typename?: 'InbaRelease'
+            perex?: string | null
+            releaseDate: any
+            documentId: string
+            title: string
+            slug: string
+            rearImage?: {
+              __typename?: 'UploadFile'
+              documentId: string
+              url: string
+              width?: number | null
+              height?: number | null
+              caption?: string | null
+              alternativeText?: string | null
+              name: string
+            } | null
+            files?: Array<{
+              __typename?: 'ComponentBlocksFile'
+              id: string
+              title?: string | null
+              media?: {
+                __typename?: 'UploadFile'
+                documentId: string
+                url: string
+                name: string
+                ext?: string | null
+                size: number
+                createdAt?: any | null
+                updatedAt?: any | null
+              } | null
+            } | null> | null
+            articles: Array<{
+              __typename: 'Article'
+              perex?: string | null
+              addedAt: any
+              documentId: string
+              slug: string
+              title: string
+              locale?: string | null
+              coverMedia?: {
+                __typename?: 'UploadFile'
+                documentId: string
+                url: string
+                width?: number | null
+                height?: number | null
+                caption?: string | null
+                alternativeText?: string | null
+                name: string
+              } | null
+              articleCategory?: {
+                __typename?: 'ArticleCategory'
+                documentId: string
+                title: string
+                slug: string
+              } | null
+              tags: Array<{
+                __typename?: 'Tag'
+                documentId: string
+                title: string
+                slug: string
+                pageCategory?: {
+                  __typename?: 'PageCategory'
+                  documentId: string
+                  title?: string | null
+                  color?: Enum_Pagecategory_Color | null
+                } | null
+              } | null>
+            } | null>
+            featuredArticles: Array<{
+              __typename: 'Article'
+              perex?: string | null
+              addedAt: any
+              documentId: string
+              slug: string
+              title: string
+              locale?: string | null
+              coverMedia?: {
+                __typename?: 'UploadFile'
+                documentId: string
+                url: string
+                width?: number | null
+                height?: number | null
+                caption?: string | null
+                alternativeText?: string | null
+                name: string
+              } | null
+              articleCategory?: {
+                __typename?: 'ArticleCategory'
+                documentId: string
+                title: string
+                slug: string
+              } | null
+              tags: Array<{
+                __typename?: 'Tag'
+                documentId: string
+                title: string
+                slug: string
+                pageCategory?: {
+                  __typename?: 'PageCategory'
+                  documentId: string
+                  title?: string | null
+                  color?: Enum_Pagecategory_Color | null
+                } | null
+              } | null>
+            } | null>
+            coverImage?: {
+              __typename?: 'UploadFile'
+              documentId: string
+              url: string
+              width?: number | null
+              height?: number | null
+              caption?: string | null
+              alternativeText?: string | null
+              name: string
+            } | null
+          } | null
         } | null
       }
     | {
@@ -10303,6 +14401,123 @@ export type PageEntityFragment = {
             slug: string
             title: string
             locale?: string | null
+          } | null
+          inbaRelease?: {
+            __typename?: 'InbaRelease'
+            perex?: string | null
+            releaseDate: any
+            documentId: string
+            title: string
+            slug: string
+            rearImage?: {
+              __typename?: 'UploadFile'
+              documentId: string
+              url: string
+              width?: number | null
+              height?: number | null
+              caption?: string | null
+              alternativeText?: string | null
+              name: string
+            } | null
+            files?: Array<{
+              __typename?: 'ComponentBlocksFile'
+              id: string
+              title?: string | null
+              media?: {
+                __typename?: 'UploadFile'
+                documentId: string
+                url: string
+                name: string
+                ext?: string | null
+                size: number
+                createdAt?: any | null
+                updatedAt?: any | null
+              } | null
+            } | null> | null
+            articles: Array<{
+              __typename: 'Article'
+              perex?: string | null
+              addedAt: any
+              documentId: string
+              slug: string
+              title: string
+              locale?: string | null
+              coverMedia?: {
+                __typename?: 'UploadFile'
+                documentId: string
+                url: string
+                width?: number | null
+                height?: number | null
+                caption?: string | null
+                alternativeText?: string | null
+                name: string
+              } | null
+              articleCategory?: {
+                __typename?: 'ArticleCategory'
+                documentId: string
+                title: string
+                slug: string
+              } | null
+              tags: Array<{
+                __typename?: 'Tag'
+                documentId: string
+                title: string
+                slug: string
+                pageCategory?: {
+                  __typename?: 'PageCategory'
+                  documentId: string
+                  title?: string | null
+                  color?: Enum_Pagecategory_Color | null
+                } | null
+              } | null>
+            } | null>
+            featuredArticles: Array<{
+              __typename: 'Article'
+              perex?: string | null
+              addedAt: any
+              documentId: string
+              slug: string
+              title: string
+              locale?: string | null
+              coverMedia?: {
+                __typename?: 'UploadFile'
+                documentId: string
+                url: string
+                width?: number | null
+                height?: number | null
+                caption?: string | null
+                alternativeText?: string | null
+                name: string
+              } | null
+              articleCategory?: {
+                __typename?: 'ArticleCategory'
+                documentId: string
+                title: string
+                slug: string
+              } | null
+              tags: Array<{
+                __typename?: 'Tag'
+                documentId: string
+                title: string
+                slug: string
+                pageCategory?: {
+                  __typename?: 'PageCategory'
+                  documentId: string
+                  title?: string | null
+                  color?: Enum_Pagecategory_Color | null
+                } | null
+              } | null>
+            } | null>
+            coverImage?: {
+              __typename?: 'UploadFile'
+              documentId: string
+              url: string
+              width?: number | null
+              height?: number | null
+              caption?: string | null
+              alternativeText?: string | null
+              name: string
+            } | null
           } | null
         } | null
       }
@@ -10364,6 +14579,123 @@ export type PageEntityFragment = {
             title: string
             locale?: string | null
           } | null
+          inbaRelease?: {
+            __typename?: 'InbaRelease'
+            perex?: string | null
+            releaseDate: any
+            documentId: string
+            title: string
+            slug: string
+            rearImage?: {
+              __typename?: 'UploadFile'
+              documentId: string
+              url: string
+              width?: number | null
+              height?: number | null
+              caption?: string | null
+              alternativeText?: string | null
+              name: string
+            } | null
+            files?: Array<{
+              __typename?: 'ComponentBlocksFile'
+              id: string
+              title?: string | null
+              media?: {
+                __typename?: 'UploadFile'
+                documentId: string
+                url: string
+                name: string
+                ext?: string | null
+                size: number
+                createdAt?: any | null
+                updatedAt?: any | null
+              } | null
+            } | null> | null
+            articles: Array<{
+              __typename: 'Article'
+              perex?: string | null
+              addedAt: any
+              documentId: string
+              slug: string
+              title: string
+              locale?: string | null
+              coverMedia?: {
+                __typename?: 'UploadFile'
+                documentId: string
+                url: string
+                width?: number | null
+                height?: number | null
+                caption?: string | null
+                alternativeText?: string | null
+                name: string
+              } | null
+              articleCategory?: {
+                __typename?: 'ArticleCategory'
+                documentId: string
+                title: string
+                slug: string
+              } | null
+              tags: Array<{
+                __typename?: 'Tag'
+                documentId: string
+                title: string
+                slug: string
+                pageCategory?: {
+                  __typename?: 'PageCategory'
+                  documentId: string
+                  title?: string | null
+                  color?: Enum_Pagecategory_Color | null
+                } | null
+              } | null>
+            } | null>
+            featuredArticles: Array<{
+              __typename: 'Article'
+              perex?: string | null
+              addedAt: any
+              documentId: string
+              slug: string
+              title: string
+              locale?: string | null
+              coverMedia?: {
+                __typename?: 'UploadFile'
+                documentId: string
+                url: string
+                width?: number | null
+                height?: number | null
+                caption?: string | null
+                alternativeText?: string | null
+                name: string
+              } | null
+              articleCategory?: {
+                __typename?: 'ArticleCategory'
+                documentId: string
+                title: string
+                slug: string
+              } | null
+              tags: Array<{
+                __typename?: 'Tag'
+                documentId: string
+                title: string
+                slug: string
+                pageCategory?: {
+                  __typename?: 'PageCategory'
+                  documentId: string
+                  title?: string | null
+                  color?: Enum_Pagecategory_Color | null
+                } | null
+              } | null>
+            } | null>
+            coverImage?: {
+              __typename?: 'UploadFile'
+              documentId: string
+              url: string
+              width?: number | null
+              height?: number | null
+              caption?: string | null
+              alternativeText?: string | null
+              name: string
+            } | null
+          } | null
         } | null
         secondaryLink?: {
           __typename?: 'ComponentBlocksCommonLink'
@@ -10384,6 +14716,123 @@ export type PageEntityFragment = {
             title: string
             locale?: string | null
           } | null
+          inbaRelease?: {
+            __typename?: 'InbaRelease'
+            perex?: string | null
+            releaseDate: any
+            documentId: string
+            title: string
+            slug: string
+            rearImage?: {
+              __typename?: 'UploadFile'
+              documentId: string
+              url: string
+              width?: number | null
+              height?: number | null
+              caption?: string | null
+              alternativeText?: string | null
+              name: string
+            } | null
+            files?: Array<{
+              __typename?: 'ComponentBlocksFile'
+              id: string
+              title?: string | null
+              media?: {
+                __typename?: 'UploadFile'
+                documentId: string
+                url: string
+                name: string
+                ext?: string | null
+                size: number
+                createdAt?: any | null
+                updatedAt?: any | null
+              } | null
+            } | null> | null
+            articles: Array<{
+              __typename: 'Article'
+              perex?: string | null
+              addedAt: any
+              documentId: string
+              slug: string
+              title: string
+              locale?: string | null
+              coverMedia?: {
+                __typename?: 'UploadFile'
+                documentId: string
+                url: string
+                width?: number | null
+                height?: number | null
+                caption?: string | null
+                alternativeText?: string | null
+                name: string
+              } | null
+              articleCategory?: {
+                __typename?: 'ArticleCategory'
+                documentId: string
+                title: string
+                slug: string
+              } | null
+              tags: Array<{
+                __typename?: 'Tag'
+                documentId: string
+                title: string
+                slug: string
+                pageCategory?: {
+                  __typename?: 'PageCategory'
+                  documentId: string
+                  title?: string | null
+                  color?: Enum_Pagecategory_Color | null
+                } | null
+              } | null>
+            } | null>
+            featuredArticles: Array<{
+              __typename: 'Article'
+              perex?: string | null
+              addedAt: any
+              documentId: string
+              slug: string
+              title: string
+              locale?: string | null
+              coverMedia?: {
+                __typename?: 'UploadFile'
+                documentId: string
+                url: string
+                width?: number | null
+                height?: number | null
+                caption?: string | null
+                alternativeText?: string | null
+                name: string
+              } | null
+              articleCategory?: {
+                __typename?: 'ArticleCategory'
+                documentId: string
+                title: string
+                slug: string
+              } | null
+              tags: Array<{
+                __typename?: 'Tag'
+                documentId: string
+                title: string
+                slug: string
+                pageCategory?: {
+                  __typename?: 'PageCategory'
+                  documentId: string
+                  title?: string | null
+                  color?: Enum_Pagecategory_Color | null
+                } | null
+              } | null>
+            } | null>
+            coverImage?: {
+              __typename?: 'UploadFile'
+              documentId: string
+              url: string
+              width?: number | null
+              height?: number | null
+              caption?: string | null
+              alternativeText?: string | null
+              name: string
+            } | null
+          } | null
         } | null
         tertiaryLink?: {
           __typename?: 'ComponentBlocksCommonLink'
@@ -10403,6 +14852,123 @@ export type PageEntityFragment = {
             slug: string
             title: string
             locale?: string | null
+          } | null
+          inbaRelease?: {
+            __typename?: 'InbaRelease'
+            perex?: string | null
+            releaseDate: any
+            documentId: string
+            title: string
+            slug: string
+            rearImage?: {
+              __typename?: 'UploadFile'
+              documentId: string
+              url: string
+              width?: number | null
+              height?: number | null
+              caption?: string | null
+              alternativeText?: string | null
+              name: string
+            } | null
+            files?: Array<{
+              __typename?: 'ComponentBlocksFile'
+              id: string
+              title?: string | null
+              media?: {
+                __typename?: 'UploadFile'
+                documentId: string
+                url: string
+                name: string
+                ext?: string | null
+                size: number
+                createdAt?: any | null
+                updatedAt?: any | null
+              } | null
+            } | null> | null
+            articles: Array<{
+              __typename: 'Article'
+              perex?: string | null
+              addedAt: any
+              documentId: string
+              slug: string
+              title: string
+              locale?: string | null
+              coverMedia?: {
+                __typename?: 'UploadFile'
+                documentId: string
+                url: string
+                width?: number | null
+                height?: number | null
+                caption?: string | null
+                alternativeText?: string | null
+                name: string
+              } | null
+              articleCategory?: {
+                __typename?: 'ArticleCategory'
+                documentId: string
+                title: string
+                slug: string
+              } | null
+              tags: Array<{
+                __typename?: 'Tag'
+                documentId: string
+                title: string
+                slug: string
+                pageCategory?: {
+                  __typename?: 'PageCategory'
+                  documentId: string
+                  title?: string | null
+                  color?: Enum_Pagecategory_Color | null
+                } | null
+              } | null>
+            } | null>
+            featuredArticles: Array<{
+              __typename: 'Article'
+              perex?: string | null
+              addedAt: any
+              documentId: string
+              slug: string
+              title: string
+              locale?: string | null
+              coverMedia?: {
+                __typename?: 'UploadFile'
+                documentId: string
+                url: string
+                width?: number | null
+                height?: number | null
+                caption?: string | null
+                alternativeText?: string | null
+                name: string
+              } | null
+              articleCategory?: {
+                __typename?: 'ArticleCategory'
+                documentId: string
+                title: string
+                slug: string
+              } | null
+              tags: Array<{
+                __typename?: 'Tag'
+                documentId: string
+                title: string
+                slug: string
+                pageCategory?: {
+                  __typename?: 'PageCategory'
+                  documentId: string
+                  title?: string | null
+                  color?: Enum_Pagecategory_Color | null
+                } | null
+              } | null>
+            } | null>
+            coverImage?: {
+              __typename?: 'UploadFile'
+              documentId: string
+              url: string
+              width?: number | null
+              height?: number | null
+              caption?: string | null
+              alternativeText?: string | null
+              name: string
+            } | null
           } | null
         } | null
       }
@@ -10745,6 +15311,123 @@ export type PageEntityFragment = {
             title: string
             locale?: string | null
           } | null
+          inbaRelease?: {
+            __typename?: 'InbaRelease'
+            perex?: string | null
+            releaseDate: any
+            documentId: string
+            title: string
+            slug: string
+            rearImage?: {
+              __typename?: 'UploadFile'
+              documentId: string
+              url: string
+              width?: number | null
+              height?: number | null
+              caption?: string | null
+              alternativeText?: string | null
+              name: string
+            } | null
+            files?: Array<{
+              __typename?: 'ComponentBlocksFile'
+              id: string
+              title?: string | null
+              media?: {
+                __typename?: 'UploadFile'
+                documentId: string
+                url: string
+                name: string
+                ext?: string | null
+                size: number
+                createdAt?: any | null
+                updatedAt?: any | null
+              } | null
+            } | null> | null
+            articles: Array<{
+              __typename: 'Article'
+              perex?: string | null
+              addedAt: any
+              documentId: string
+              slug: string
+              title: string
+              locale?: string | null
+              coverMedia?: {
+                __typename?: 'UploadFile'
+                documentId: string
+                url: string
+                width?: number | null
+                height?: number | null
+                caption?: string | null
+                alternativeText?: string | null
+                name: string
+              } | null
+              articleCategory?: {
+                __typename?: 'ArticleCategory'
+                documentId: string
+                title: string
+                slug: string
+              } | null
+              tags: Array<{
+                __typename?: 'Tag'
+                documentId: string
+                title: string
+                slug: string
+                pageCategory?: {
+                  __typename?: 'PageCategory'
+                  documentId: string
+                  title?: string | null
+                  color?: Enum_Pagecategory_Color | null
+                } | null
+              } | null>
+            } | null>
+            featuredArticles: Array<{
+              __typename: 'Article'
+              perex?: string | null
+              addedAt: any
+              documentId: string
+              slug: string
+              title: string
+              locale?: string | null
+              coverMedia?: {
+                __typename?: 'UploadFile'
+                documentId: string
+                url: string
+                width?: number | null
+                height?: number | null
+                caption?: string | null
+                alternativeText?: string | null
+                name: string
+              } | null
+              articleCategory?: {
+                __typename?: 'ArticleCategory'
+                documentId: string
+                title: string
+                slug: string
+              } | null
+              tags: Array<{
+                __typename?: 'Tag'
+                documentId: string
+                title: string
+                slug: string
+                pageCategory?: {
+                  __typename?: 'PageCategory'
+                  documentId: string
+                  title?: string | null
+                  color?: Enum_Pagecategory_Color | null
+                } | null
+              } | null>
+            } | null>
+            coverImage?: {
+              __typename?: 'UploadFile'
+              documentId: string
+              url: string
+              width?: number | null
+              height?: number | null
+              caption?: string | null
+              alternativeText?: string | null
+              name: string
+            } | null
+          } | null
         } | null
       }
     | {
@@ -10809,6 +15492,123 @@ export type PageEntityFragment = {
             slug: string
             title: string
             locale?: string | null
+          } | null
+          inbaRelease?: {
+            __typename?: 'InbaRelease'
+            perex?: string | null
+            releaseDate: any
+            documentId: string
+            title: string
+            slug: string
+            rearImage?: {
+              __typename?: 'UploadFile'
+              documentId: string
+              url: string
+              width?: number | null
+              height?: number | null
+              caption?: string | null
+              alternativeText?: string | null
+              name: string
+            } | null
+            files?: Array<{
+              __typename?: 'ComponentBlocksFile'
+              id: string
+              title?: string | null
+              media?: {
+                __typename?: 'UploadFile'
+                documentId: string
+                url: string
+                name: string
+                ext?: string | null
+                size: number
+                createdAt?: any | null
+                updatedAt?: any | null
+              } | null
+            } | null> | null
+            articles: Array<{
+              __typename: 'Article'
+              perex?: string | null
+              addedAt: any
+              documentId: string
+              slug: string
+              title: string
+              locale?: string | null
+              coverMedia?: {
+                __typename?: 'UploadFile'
+                documentId: string
+                url: string
+                width?: number | null
+                height?: number | null
+                caption?: string | null
+                alternativeText?: string | null
+                name: string
+              } | null
+              articleCategory?: {
+                __typename?: 'ArticleCategory'
+                documentId: string
+                title: string
+                slug: string
+              } | null
+              tags: Array<{
+                __typename?: 'Tag'
+                documentId: string
+                title: string
+                slug: string
+                pageCategory?: {
+                  __typename?: 'PageCategory'
+                  documentId: string
+                  title?: string | null
+                  color?: Enum_Pagecategory_Color | null
+                } | null
+              } | null>
+            } | null>
+            featuredArticles: Array<{
+              __typename: 'Article'
+              perex?: string | null
+              addedAt: any
+              documentId: string
+              slug: string
+              title: string
+              locale?: string | null
+              coverMedia?: {
+                __typename?: 'UploadFile'
+                documentId: string
+                url: string
+                width?: number | null
+                height?: number | null
+                caption?: string | null
+                alternativeText?: string | null
+                name: string
+              } | null
+              articleCategory?: {
+                __typename?: 'ArticleCategory'
+                documentId: string
+                title: string
+                slug: string
+              } | null
+              tags: Array<{
+                __typename?: 'Tag'
+                documentId: string
+                title: string
+                slug: string
+                pageCategory?: {
+                  __typename?: 'PageCategory'
+                  documentId: string
+                  title?: string | null
+                  color?: Enum_Pagecategory_Color | null
+                } | null
+              } | null>
+            } | null>
+            coverImage?: {
+              __typename?: 'UploadFile'
+              documentId: string
+              url: string
+              width?: number | null
+              height?: number | null
+              caption?: string | null
+              alternativeText?: string | null
+              name: string
+            } | null
           } | null
         } | null
         numbersOverviewItems?: Array<{
@@ -11015,6 +15815,123 @@ export type PageEntityFragment = {
               title: string
               locale?: string | null
             } | null
+            inbaRelease?: {
+              __typename?: 'InbaRelease'
+              perex?: string | null
+              releaseDate: any
+              documentId: string
+              title: string
+              slug: string
+              rearImage?: {
+                __typename?: 'UploadFile'
+                documentId: string
+                url: string
+                width?: number | null
+                height?: number | null
+                caption?: string | null
+                alternativeText?: string | null
+                name: string
+              } | null
+              files?: Array<{
+                __typename?: 'ComponentBlocksFile'
+                id: string
+                title?: string | null
+                media?: {
+                  __typename?: 'UploadFile'
+                  documentId: string
+                  url: string
+                  name: string
+                  ext?: string | null
+                  size: number
+                  createdAt?: any | null
+                  updatedAt?: any | null
+                } | null
+              } | null> | null
+              articles: Array<{
+                __typename: 'Article'
+                perex?: string | null
+                addedAt: any
+                documentId: string
+                slug: string
+                title: string
+                locale?: string | null
+                coverMedia?: {
+                  __typename?: 'UploadFile'
+                  documentId: string
+                  url: string
+                  width?: number | null
+                  height?: number | null
+                  caption?: string | null
+                  alternativeText?: string | null
+                  name: string
+                } | null
+                articleCategory?: {
+                  __typename?: 'ArticleCategory'
+                  documentId: string
+                  title: string
+                  slug: string
+                } | null
+                tags: Array<{
+                  __typename?: 'Tag'
+                  documentId: string
+                  title: string
+                  slug: string
+                  pageCategory?: {
+                    __typename?: 'PageCategory'
+                    documentId: string
+                    title?: string | null
+                    color?: Enum_Pagecategory_Color | null
+                  } | null
+                } | null>
+              } | null>
+              featuredArticles: Array<{
+                __typename: 'Article'
+                perex?: string | null
+                addedAt: any
+                documentId: string
+                slug: string
+                title: string
+                locale?: string | null
+                coverMedia?: {
+                  __typename?: 'UploadFile'
+                  documentId: string
+                  url: string
+                  width?: number | null
+                  height?: number | null
+                  caption?: string | null
+                  alternativeText?: string | null
+                  name: string
+                } | null
+                articleCategory?: {
+                  __typename?: 'ArticleCategory'
+                  documentId: string
+                  title: string
+                  slug: string
+                } | null
+                tags: Array<{
+                  __typename?: 'Tag'
+                  documentId: string
+                  title: string
+                  slug: string
+                  pageCategory?: {
+                    __typename?: 'PageCategory'
+                    documentId: string
+                    title?: string | null
+                    color?: Enum_Pagecategory_Color | null
+                  } | null
+                } | null>
+              } | null>
+              coverImage?: {
+                __typename?: 'UploadFile'
+                documentId: string
+                url: string
+                width?: number | null
+                height?: number | null
+                caption?: string | null
+                alternativeText?: string | null
+                name: string
+              } | null
+            } | null
           } | null
           secondaryLink?: {
             __typename?: 'ComponentBlocksCommonLink'
@@ -11035,6 +15952,123 @@ export type PageEntityFragment = {
               title: string
               locale?: string | null
             } | null
+            inbaRelease?: {
+              __typename?: 'InbaRelease'
+              perex?: string | null
+              releaseDate: any
+              documentId: string
+              title: string
+              slug: string
+              rearImage?: {
+                __typename?: 'UploadFile'
+                documentId: string
+                url: string
+                width?: number | null
+                height?: number | null
+                caption?: string | null
+                alternativeText?: string | null
+                name: string
+              } | null
+              files?: Array<{
+                __typename?: 'ComponentBlocksFile'
+                id: string
+                title?: string | null
+                media?: {
+                  __typename?: 'UploadFile'
+                  documentId: string
+                  url: string
+                  name: string
+                  ext?: string | null
+                  size: number
+                  createdAt?: any | null
+                  updatedAt?: any | null
+                } | null
+              } | null> | null
+              articles: Array<{
+                __typename: 'Article'
+                perex?: string | null
+                addedAt: any
+                documentId: string
+                slug: string
+                title: string
+                locale?: string | null
+                coverMedia?: {
+                  __typename?: 'UploadFile'
+                  documentId: string
+                  url: string
+                  width?: number | null
+                  height?: number | null
+                  caption?: string | null
+                  alternativeText?: string | null
+                  name: string
+                } | null
+                articleCategory?: {
+                  __typename?: 'ArticleCategory'
+                  documentId: string
+                  title: string
+                  slug: string
+                } | null
+                tags: Array<{
+                  __typename?: 'Tag'
+                  documentId: string
+                  title: string
+                  slug: string
+                  pageCategory?: {
+                    __typename?: 'PageCategory'
+                    documentId: string
+                    title?: string | null
+                    color?: Enum_Pagecategory_Color | null
+                  } | null
+                } | null>
+              } | null>
+              featuredArticles: Array<{
+                __typename: 'Article'
+                perex?: string | null
+                addedAt: any
+                documentId: string
+                slug: string
+                title: string
+                locale?: string | null
+                coverMedia?: {
+                  __typename?: 'UploadFile'
+                  documentId: string
+                  url: string
+                  width?: number | null
+                  height?: number | null
+                  caption?: string | null
+                  alternativeText?: string | null
+                  name: string
+                } | null
+                articleCategory?: {
+                  __typename?: 'ArticleCategory'
+                  documentId: string
+                  title: string
+                  slug: string
+                } | null
+                tags: Array<{
+                  __typename?: 'Tag'
+                  documentId: string
+                  title: string
+                  slug: string
+                  pageCategory?: {
+                    __typename?: 'PageCategory'
+                    documentId: string
+                    title?: string | null
+                    color?: Enum_Pagecategory_Color | null
+                  } | null
+                } | null>
+              } | null>
+              coverImage?: {
+                __typename?: 'UploadFile'
+                documentId: string
+                url: string
+                width?: number | null
+                height?: number | null
+                caption?: string | null
+                alternativeText?: string | null
+                name: string
+              } | null
+            } | null
           } | null
           tertiaryLink?: {
             __typename?: 'ComponentBlocksCommonLink'
@@ -11054,6 +16088,123 @@ export type PageEntityFragment = {
               slug: string
               title: string
               locale?: string | null
+            } | null
+            inbaRelease?: {
+              __typename?: 'InbaRelease'
+              perex?: string | null
+              releaseDate: any
+              documentId: string
+              title: string
+              slug: string
+              rearImage?: {
+                __typename?: 'UploadFile'
+                documentId: string
+                url: string
+                width?: number | null
+                height?: number | null
+                caption?: string | null
+                alternativeText?: string | null
+                name: string
+              } | null
+              files?: Array<{
+                __typename?: 'ComponentBlocksFile'
+                id: string
+                title?: string | null
+                media?: {
+                  __typename?: 'UploadFile'
+                  documentId: string
+                  url: string
+                  name: string
+                  ext?: string | null
+                  size: number
+                  createdAt?: any | null
+                  updatedAt?: any | null
+                } | null
+              } | null> | null
+              articles: Array<{
+                __typename: 'Article'
+                perex?: string | null
+                addedAt: any
+                documentId: string
+                slug: string
+                title: string
+                locale?: string | null
+                coverMedia?: {
+                  __typename?: 'UploadFile'
+                  documentId: string
+                  url: string
+                  width?: number | null
+                  height?: number | null
+                  caption?: string | null
+                  alternativeText?: string | null
+                  name: string
+                } | null
+                articleCategory?: {
+                  __typename?: 'ArticleCategory'
+                  documentId: string
+                  title: string
+                  slug: string
+                } | null
+                tags: Array<{
+                  __typename?: 'Tag'
+                  documentId: string
+                  title: string
+                  slug: string
+                  pageCategory?: {
+                    __typename?: 'PageCategory'
+                    documentId: string
+                    title?: string | null
+                    color?: Enum_Pagecategory_Color | null
+                  } | null
+                } | null>
+              } | null>
+              featuredArticles: Array<{
+                __typename: 'Article'
+                perex?: string | null
+                addedAt: any
+                documentId: string
+                slug: string
+                title: string
+                locale?: string | null
+                coverMedia?: {
+                  __typename?: 'UploadFile'
+                  documentId: string
+                  url: string
+                  width?: number | null
+                  height?: number | null
+                  caption?: string | null
+                  alternativeText?: string | null
+                  name: string
+                } | null
+                articleCategory?: {
+                  __typename?: 'ArticleCategory'
+                  documentId: string
+                  title: string
+                  slug: string
+                } | null
+                tags: Array<{
+                  __typename?: 'Tag'
+                  documentId: string
+                  title: string
+                  slug: string
+                  pageCategory?: {
+                    __typename?: 'PageCategory'
+                    documentId: string
+                    title?: string | null
+                    color?: Enum_Pagecategory_Color | null
+                  } | null
+                } | null>
+              } | null>
+              coverImage?: {
+                __typename?: 'UploadFile'
+                documentId: string
+                url: string
+                width?: number | null
+                height?: number | null
+                caption?: string | null
+                alternativeText?: string | null
+                name: string
+              } | null
             } | null
           } | null
         }
@@ -11158,6 +16309,123 @@ export type PageEntityFragment = {
             title: string
             locale?: string | null
           } | null
+          inbaRelease?: {
+            __typename?: 'InbaRelease'
+            perex?: string | null
+            releaseDate: any
+            documentId: string
+            title: string
+            slug: string
+            rearImage?: {
+              __typename?: 'UploadFile'
+              documentId: string
+              url: string
+              width?: number | null
+              height?: number | null
+              caption?: string | null
+              alternativeText?: string | null
+              name: string
+            } | null
+            files?: Array<{
+              __typename?: 'ComponentBlocksFile'
+              id: string
+              title?: string | null
+              media?: {
+                __typename?: 'UploadFile'
+                documentId: string
+                url: string
+                name: string
+                ext?: string | null
+                size: number
+                createdAt?: any | null
+                updatedAt?: any | null
+              } | null
+            } | null> | null
+            articles: Array<{
+              __typename: 'Article'
+              perex?: string | null
+              addedAt: any
+              documentId: string
+              slug: string
+              title: string
+              locale?: string | null
+              coverMedia?: {
+                __typename?: 'UploadFile'
+                documentId: string
+                url: string
+                width?: number | null
+                height?: number | null
+                caption?: string | null
+                alternativeText?: string | null
+                name: string
+              } | null
+              articleCategory?: {
+                __typename?: 'ArticleCategory'
+                documentId: string
+                title: string
+                slug: string
+              } | null
+              tags: Array<{
+                __typename?: 'Tag'
+                documentId: string
+                title: string
+                slug: string
+                pageCategory?: {
+                  __typename?: 'PageCategory'
+                  documentId: string
+                  title?: string | null
+                  color?: Enum_Pagecategory_Color | null
+                } | null
+              } | null>
+            } | null>
+            featuredArticles: Array<{
+              __typename: 'Article'
+              perex?: string | null
+              addedAt: any
+              documentId: string
+              slug: string
+              title: string
+              locale?: string | null
+              coverMedia?: {
+                __typename?: 'UploadFile'
+                documentId: string
+                url: string
+                width?: number | null
+                height?: number | null
+                caption?: string | null
+                alternativeText?: string | null
+                name: string
+              } | null
+              articleCategory?: {
+                __typename?: 'ArticleCategory'
+                documentId: string
+                title: string
+                slug: string
+              } | null
+              tags: Array<{
+                __typename?: 'Tag'
+                documentId: string
+                title: string
+                slug: string
+                pageCategory?: {
+                  __typename?: 'PageCategory'
+                  documentId: string
+                  title?: string | null
+                  color?: Enum_Pagecategory_Color | null
+                } | null
+              } | null>
+            } | null>
+            coverImage?: {
+              __typename?: 'UploadFile'
+              documentId: string
+              url: string
+              width?: number | null
+              height?: number | null
+              caption?: string | null
+              alternativeText?: string | null
+              name: string
+            } | null
+          } | null
         } | null> | null
       }
     | {
@@ -11193,6 +16461,123 @@ export type PageEntityFragment = {
             title: string
             locale?: string | null
           } | null
+          inbaRelease?: {
+            __typename?: 'InbaRelease'
+            perex?: string | null
+            releaseDate: any
+            documentId: string
+            title: string
+            slug: string
+            rearImage?: {
+              __typename?: 'UploadFile'
+              documentId: string
+              url: string
+              width?: number | null
+              height?: number | null
+              caption?: string | null
+              alternativeText?: string | null
+              name: string
+            } | null
+            files?: Array<{
+              __typename?: 'ComponentBlocksFile'
+              id: string
+              title?: string | null
+              media?: {
+                __typename?: 'UploadFile'
+                documentId: string
+                url: string
+                name: string
+                ext?: string | null
+                size: number
+                createdAt?: any | null
+                updatedAt?: any | null
+              } | null
+            } | null> | null
+            articles: Array<{
+              __typename: 'Article'
+              perex?: string | null
+              addedAt: any
+              documentId: string
+              slug: string
+              title: string
+              locale?: string | null
+              coverMedia?: {
+                __typename?: 'UploadFile'
+                documentId: string
+                url: string
+                width?: number | null
+                height?: number | null
+                caption?: string | null
+                alternativeText?: string | null
+                name: string
+              } | null
+              articleCategory?: {
+                __typename?: 'ArticleCategory'
+                documentId: string
+                title: string
+                slug: string
+              } | null
+              tags: Array<{
+                __typename?: 'Tag'
+                documentId: string
+                title: string
+                slug: string
+                pageCategory?: {
+                  __typename?: 'PageCategory'
+                  documentId: string
+                  title?: string | null
+                  color?: Enum_Pagecategory_Color | null
+                } | null
+              } | null>
+            } | null>
+            featuredArticles: Array<{
+              __typename: 'Article'
+              perex?: string | null
+              addedAt: any
+              documentId: string
+              slug: string
+              title: string
+              locale?: string | null
+              coverMedia?: {
+                __typename?: 'UploadFile'
+                documentId: string
+                url: string
+                width?: number | null
+                height?: number | null
+                caption?: string | null
+                alternativeText?: string | null
+                name: string
+              } | null
+              articleCategory?: {
+                __typename?: 'ArticleCategory'
+                documentId: string
+                title: string
+                slug: string
+              } | null
+              tags: Array<{
+                __typename?: 'Tag'
+                documentId: string
+                title: string
+                slug: string
+                pageCategory?: {
+                  __typename?: 'PageCategory'
+                  documentId: string
+                  title?: string | null
+                  color?: Enum_Pagecategory_Color | null
+                } | null
+              } | null>
+            } | null>
+            coverImage?: {
+              __typename?: 'UploadFile'
+              documentId: string
+              url: string
+              width?: number | null
+              height?: number | null
+              caption?: string | null
+              alternativeText?: string | null
+              name: string
+            } | null
+          } | null
         } | null> | null
       }
     | {
@@ -11217,6 +16602,123 @@ export type PageEntityFragment = {
             slug: string
             title: string
             locale?: string | null
+          } | null
+          inbaRelease?: {
+            __typename?: 'InbaRelease'
+            perex?: string | null
+            releaseDate: any
+            documentId: string
+            title: string
+            slug: string
+            rearImage?: {
+              __typename?: 'UploadFile'
+              documentId: string
+              url: string
+              width?: number | null
+              height?: number | null
+              caption?: string | null
+              alternativeText?: string | null
+              name: string
+            } | null
+            files?: Array<{
+              __typename?: 'ComponentBlocksFile'
+              id: string
+              title?: string | null
+              media?: {
+                __typename?: 'UploadFile'
+                documentId: string
+                url: string
+                name: string
+                ext?: string | null
+                size: number
+                createdAt?: any | null
+                updatedAt?: any | null
+              } | null
+            } | null> | null
+            articles: Array<{
+              __typename: 'Article'
+              perex?: string | null
+              addedAt: any
+              documentId: string
+              slug: string
+              title: string
+              locale?: string | null
+              coverMedia?: {
+                __typename?: 'UploadFile'
+                documentId: string
+                url: string
+                width?: number | null
+                height?: number | null
+                caption?: string | null
+                alternativeText?: string | null
+                name: string
+              } | null
+              articleCategory?: {
+                __typename?: 'ArticleCategory'
+                documentId: string
+                title: string
+                slug: string
+              } | null
+              tags: Array<{
+                __typename?: 'Tag'
+                documentId: string
+                title: string
+                slug: string
+                pageCategory?: {
+                  __typename?: 'PageCategory'
+                  documentId: string
+                  title?: string | null
+                  color?: Enum_Pagecategory_Color | null
+                } | null
+              } | null>
+            } | null>
+            featuredArticles: Array<{
+              __typename: 'Article'
+              perex?: string | null
+              addedAt: any
+              documentId: string
+              slug: string
+              title: string
+              locale?: string | null
+              coverMedia?: {
+                __typename?: 'UploadFile'
+                documentId: string
+                url: string
+                width?: number | null
+                height?: number | null
+                caption?: string | null
+                alternativeText?: string | null
+                name: string
+              } | null
+              articleCategory?: {
+                __typename?: 'ArticleCategory'
+                documentId: string
+                title: string
+                slug: string
+              } | null
+              tags: Array<{
+                __typename?: 'Tag'
+                documentId: string
+                title: string
+                slug: string
+                pageCategory?: {
+                  __typename?: 'PageCategory'
+                  documentId: string
+                  title?: string | null
+                  color?: Enum_Pagecategory_Color | null
+                } | null
+              } | null>
+            } | null>
+            coverImage?: {
+              __typename?: 'UploadFile'
+              documentId: string
+              url: string
+              width?: number | null
+              height?: number | null
+              caption?: string | null
+              alternativeText?: string | null
+              name: string
+            } | null
           } | null
         } | null
       }
@@ -11382,6 +16884,123 @@ export type PageByPathQuery = {
         slug: string
         title: string
         locale?: string | null
+      } | null
+      inbaRelease?: {
+        __typename?: 'InbaRelease'
+        perex?: string | null
+        releaseDate: any
+        documentId: string
+        title: string
+        slug: string
+        rearImage?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
+        files?: Array<{
+          __typename?: 'ComponentBlocksFile'
+          id: string
+          title?: string | null
+          media?: {
+            __typename?: 'UploadFile'
+            documentId: string
+            url: string
+            name: string
+            ext?: string | null
+            size: number
+            createdAt?: any | null
+            updatedAt?: any | null
+          } | null
+        } | null> | null
+        articles: Array<{
+          __typename: 'Article'
+          perex?: string | null
+          addedAt: any
+          documentId: string
+          slug: string
+          title: string
+          locale?: string | null
+          coverMedia?: {
+            __typename?: 'UploadFile'
+            documentId: string
+            url: string
+            width?: number | null
+            height?: number | null
+            caption?: string | null
+            alternativeText?: string | null
+            name: string
+          } | null
+          articleCategory?: {
+            __typename?: 'ArticleCategory'
+            documentId: string
+            title: string
+            slug: string
+          } | null
+          tags: Array<{
+            __typename?: 'Tag'
+            documentId: string
+            title: string
+            slug: string
+            pageCategory?: {
+              __typename?: 'PageCategory'
+              documentId: string
+              title?: string | null
+              color?: Enum_Pagecategory_Color | null
+            } | null
+          } | null>
+        } | null>
+        featuredArticles: Array<{
+          __typename: 'Article'
+          perex?: string | null
+          addedAt: any
+          documentId: string
+          slug: string
+          title: string
+          locale?: string | null
+          coverMedia?: {
+            __typename?: 'UploadFile'
+            documentId: string
+            url: string
+            width?: number | null
+            height?: number | null
+            caption?: string | null
+            alternativeText?: string | null
+            name: string
+          } | null
+          articleCategory?: {
+            __typename?: 'ArticleCategory'
+            documentId: string
+            title: string
+            slug: string
+          } | null
+          tags: Array<{
+            __typename?: 'Tag'
+            documentId: string
+            title: string
+            slug: string
+            pageCategory?: {
+              __typename?: 'PageCategory'
+              documentId: string
+              title?: string | null
+              color?: Enum_Pagecategory_Color | null
+            } | null
+          } | null>
+        } | null>
+        coverImage?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
       } | null
     } | null> | null
     pageHeaderSections?: Array<
@@ -11565,6 +17184,123 @@ export type PageByPathQuery = {
               title: string
               locale?: string | null
             } | null
+            inbaRelease?: {
+              __typename?: 'InbaRelease'
+              perex?: string | null
+              releaseDate: any
+              documentId: string
+              title: string
+              slug: string
+              rearImage?: {
+                __typename?: 'UploadFile'
+                documentId: string
+                url: string
+                width?: number | null
+                height?: number | null
+                caption?: string | null
+                alternativeText?: string | null
+                name: string
+              } | null
+              files?: Array<{
+                __typename?: 'ComponentBlocksFile'
+                id: string
+                title?: string | null
+                media?: {
+                  __typename?: 'UploadFile'
+                  documentId: string
+                  url: string
+                  name: string
+                  ext?: string | null
+                  size: number
+                  createdAt?: any | null
+                  updatedAt?: any | null
+                } | null
+              } | null> | null
+              articles: Array<{
+                __typename: 'Article'
+                perex?: string | null
+                addedAt: any
+                documentId: string
+                slug: string
+                title: string
+                locale?: string | null
+                coverMedia?: {
+                  __typename?: 'UploadFile'
+                  documentId: string
+                  url: string
+                  width?: number | null
+                  height?: number | null
+                  caption?: string | null
+                  alternativeText?: string | null
+                  name: string
+                } | null
+                articleCategory?: {
+                  __typename?: 'ArticleCategory'
+                  documentId: string
+                  title: string
+                  slug: string
+                } | null
+                tags: Array<{
+                  __typename?: 'Tag'
+                  documentId: string
+                  title: string
+                  slug: string
+                  pageCategory?: {
+                    __typename?: 'PageCategory'
+                    documentId: string
+                    title?: string | null
+                    color?: Enum_Pagecategory_Color | null
+                  } | null
+                } | null>
+              } | null>
+              featuredArticles: Array<{
+                __typename: 'Article'
+                perex?: string | null
+                addedAt: any
+                documentId: string
+                slug: string
+                title: string
+                locale?: string | null
+                coverMedia?: {
+                  __typename?: 'UploadFile'
+                  documentId: string
+                  url: string
+                  width?: number | null
+                  height?: number | null
+                  caption?: string | null
+                  alternativeText?: string | null
+                  name: string
+                } | null
+                articleCategory?: {
+                  __typename?: 'ArticleCategory'
+                  documentId: string
+                  title: string
+                  slug: string
+                } | null
+                tags: Array<{
+                  __typename?: 'Tag'
+                  documentId: string
+                  title: string
+                  slug: string
+                  pageCategory?: {
+                    __typename?: 'PageCategory'
+                    documentId: string
+                    title?: string | null
+                    color?: Enum_Pagecategory_Color | null
+                  } | null
+                } | null>
+              } | null>
+              coverImage?: {
+                __typename?: 'UploadFile'
+                documentId: string
+                url: string
+                width?: number | null
+                height?: number | null
+                caption?: string | null
+                alternativeText?: string | null
+                name: string
+              } | null
+            } | null
           } | null
         }
       | {
@@ -11624,6 +17360,123 @@ export type PageByPathQuery = {
               slug: string
               title: string
               locale?: string | null
+            } | null
+            inbaRelease?: {
+              __typename?: 'InbaRelease'
+              perex?: string | null
+              releaseDate: any
+              documentId: string
+              title: string
+              slug: string
+              rearImage?: {
+                __typename?: 'UploadFile'
+                documentId: string
+                url: string
+                width?: number | null
+                height?: number | null
+                caption?: string | null
+                alternativeText?: string | null
+                name: string
+              } | null
+              files?: Array<{
+                __typename?: 'ComponentBlocksFile'
+                id: string
+                title?: string | null
+                media?: {
+                  __typename?: 'UploadFile'
+                  documentId: string
+                  url: string
+                  name: string
+                  ext?: string | null
+                  size: number
+                  createdAt?: any | null
+                  updatedAt?: any | null
+                } | null
+              } | null> | null
+              articles: Array<{
+                __typename: 'Article'
+                perex?: string | null
+                addedAt: any
+                documentId: string
+                slug: string
+                title: string
+                locale?: string | null
+                coverMedia?: {
+                  __typename?: 'UploadFile'
+                  documentId: string
+                  url: string
+                  width?: number | null
+                  height?: number | null
+                  caption?: string | null
+                  alternativeText?: string | null
+                  name: string
+                } | null
+                articleCategory?: {
+                  __typename?: 'ArticleCategory'
+                  documentId: string
+                  title: string
+                  slug: string
+                } | null
+                tags: Array<{
+                  __typename?: 'Tag'
+                  documentId: string
+                  title: string
+                  slug: string
+                  pageCategory?: {
+                    __typename?: 'PageCategory'
+                    documentId: string
+                    title?: string | null
+                    color?: Enum_Pagecategory_Color | null
+                  } | null
+                } | null>
+              } | null>
+              featuredArticles: Array<{
+                __typename: 'Article'
+                perex?: string | null
+                addedAt: any
+                documentId: string
+                slug: string
+                title: string
+                locale?: string | null
+                coverMedia?: {
+                  __typename?: 'UploadFile'
+                  documentId: string
+                  url: string
+                  width?: number | null
+                  height?: number | null
+                  caption?: string | null
+                  alternativeText?: string | null
+                  name: string
+                } | null
+                articleCategory?: {
+                  __typename?: 'ArticleCategory'
+                  documentId: string
+                  title: string
+                  slug: string
+                } | null
+                tags: Array<{
+                  __typename?: 'Tag'
+                  documentId: string
+                  title: string
+                  slug: string
+                  pageCategory?: {
+                    __typename?: 'PageCategory'
+                    documentId: string
+                    title?: string | null
+                    color?: Enum_Pagecategory_Color | null
+                  } | null
+                } | null>
+              } | null>
+              coverImage?: {
+                __typename?: 'UploadFile'
+                documentId: string
+                url: string
+                width?: number | null
+                height?: number | null
+                caption?: string | null
+                alternativeText?: string | null
+                name: string
+              } | null
             } | null
           } | null
         }
@@ -11685,6 +17538,123 @@ export type PageByPathQuery = {
               title: string
               locale?: string | null
             } | null
+            inbaRelease?: {
+              __typename?: 'InbaRelease'
+              perex?: string | null
+              releaseDate: any
+              documentId: string
+              title: string
+              slug: string
+              rearImage?: {
+                __typename?: 'UploadFile'
+                documentId: string
+                url: string
+                width?: number | null
+                height?: number | null
+                caption?: string | null
+                alternativeText?: string | null
+                name: string
+              } | null
+              files?: Array<{
+                __typename?: 'ComponentBlocksFile'
+                id: string
+                title?: string | null
+                media?: {
+                  __typename?: 'UploadFile'
+                  documentId: string
+                  url: string
+                  name: string
+                  ext?: string | null
+                  size: number
+                  createdAt?: any | null
+                  updatedAt?: any | null
+                } | null
+              } | null> | null
+              articles: Array<{
+                __typename: 'Article'
+                perex?: string | null
+                addedAt: any
+                documentId: string
+                slug: string
+                title: string
+                locale?: string | null
+                coverMedia?: {
+                  __typename?: 'UploadFile'
+                  documentId: string
+                  url: string
+                  width?: number | null
+                  height?: number | null
+                  caption?: string | null
+                  alternativeText?: string | null
+                  name: string
+                } | null
+                articleCategory?: {
+                  __typename?: 'ArticleCategory'
+                  documentId: string
+                  title: string
+                  slug: string
+                } | null
+                tags: Array<{
+                  __typename?: 'Tag'
+                  documentId: string
+                  title: string
+                  slug: string
+                  pageCategory?: {
+                    __typename?: 'PageCategory'
+                    documentId: string
+                    title?: string | null
+                    color?: Enum_Pagecategory_Color | null
+                  } | null
+                } | null>
+              } | null>
+              featuredArticles: Array<{
+                __typename: 'Article'
+                perex?: string | null
+                addedAt: any
+                documentId: string
+                slug: string
+                title: string
+                locale?: string | null
+                coverMedia?: {
+                  __typename?: 'UploadFile'
+                  documentId: string
+                  url: string
+                  width?: number | null
+                  height?: number | null
+                  caption?: string | null
+                  alternativeText?: string | null
+                  name: string
+                } | null
+                articleCategory?: {
+                  __typename?: 'ArticleCategory'
+                  documentId: string
+                  title: string
+                  slug: string
+                } | null
+                tags: Array<{
+                  __typename?: 'Tag'
+                  documentId: string
+                  title: string
+                  slug: string
+                  pageCategory?: {
+                    __typename?: 'PageCategory'
+                    documentId: string
+                    title?: string | null
+                    color?: Enum_Pagecategory_Color | null
+                  } | null
+                } | null>
+              } | null>
+              coverImage?: {
+                __typename?: 'UploadFile'
+                documentId: string
+                url: string
+                width?: number | null
+                height?: number | null
+                caption?: string | null
+                alternativeText?: string | null
+                name: string
+              } | null
+            } | null
           } | null
           secondaryLink?: {
             __typename?: 'ComponentBlocksCommonLink'
@@ -11705,6 +17675,123 @@ export type PageByPathQuery = {
               title: string
               locale?: string | null
             } | null
+            inbaRelease?: {
+              __typename?: 'InbaRelease'
+              perex?: string | null
+              releaseDate: any
+              documentId: string
+              title: string
+              slug: string
+              rearImage?: {
+                __typename?: 'UploadFile'
+                documentId: string
+                url: string
+                width?: number | null
+                height?: number | null
+                caption?: string | null
+                alternativeText?: string | null
+                name: string
+              } | null
+              files?: Array<{
+                __typename?: 'ComponentBlocksFile'
+                id: string
+                title?: string | null
+                media?: {
+                  __typename?: 'UploadFile'
+                  documentId: string
+                  url: string
+                  name: string
+                  ext?: string | null
+                  size: number
+                  createdAt?: any | null
+                  updatedAt?: any | null
+                } | null
+              } | null> | null
+              articles: Array<{
+                __typename: 'Article'
+                perex?: string | null
+                addedAt: any
+                documentId: string
+                slug: string
+                title: string
+                locale?: string | null
+                coverMedia?: {
+                  __typename?: 'UploadFile'
+                  documentId: string
+                  url: string
+                  width?: number | null
+                  height?: number | null
+                  caption?: string | null
+                  alternativeText?: string | null
+                  name: string
+                } | null
+                articleCategory?: {
+                  __typename?: 'ArticleCategory'
+                  documentId: string
+                  title: string
+                  slug: string
+                } | null
+                tags: Array<{
+                  __typename?: 'Tag'
+                  documentId: string
+                  title: string
+                  slug: string
+                  pageCategory?: {
+                    __typename?: 'PageCategory'
+                    documentId: string
+                    title?: string | null
+                    color?: Enum_Pagecategory_Color | null
+                  } | null
+                } | null>
+              } | null>
+              featuredArticles: Array<{
+                __typename: 'Article'
+                perex?: string | null
+                addedAt: any
+                documentId: string
+                slug: string
+                title: string
+                locale?: string | null
+                coverMedia?: {
+                  __typename?: 'UploadFile'
+                  documentId: string
+                  url: string
+                  width?: number | null
+                  height?: number | null
+                  caption?: string | null
+                  alternativeText?: string | null
+                  name: string
+                } | null
+                articleCategory?: {
+                  __typename?: 'ArticleCategory'
+                  documentId: string
+                  title: string
+                  slug: string
+                } | null
+                tags: Array<{
+                  __typename?: 'Tag'
+                  documentId: string
+                  title: string
+                  slug: string
+                  pageCategory?: {
+                    __typename?: 'PageCategory'
+                    documentId: string
+                    title?: string | null
+                    color?: Enum_Pagecategory_Color | null
+                  } | null
+                } | null>
+              } | null>
+              coverImage?: {
+                __typename?: 'UploadFile'
+                documentId: string
+                url: string
+                width?: number | null
+                height?: number | null
+                caption?: string | null
+                alternativeText?: string | null
+                name: string
+              } | null
+            } | null
           } | null
           tertiaryLink?: {
             __typename?: 'ComponentBlocksCommonLink'
@@ -11724,6 +17811,123 @@ export type PageByPathQuery = {
               slug: string
               title: string
               locale?: string | null
+            } | null
+            inbaRelease?: {
+              __typename?: 'InbaRelease'
+              perex?: string | null
+              releaseDate: any
+              documentId: string
+              title: string
+              slug: string
+              rearImage?: {
+                __typename?: 'UploadFile'
+                documentId: string
+                url: string
+                width?: number | null
+                height?: number | null
+                caption?: string | null
+                alternativeText?: string | null
+                name: string
+              } | null
+              files?: Array<{
+                __typename?: 'ComponentBlocksFile'
+                id: string
+                title?: string | null
+                media?: {
+                  __typename?: 'UploadFile'
+                  documentId: string
+                  url: string
+                  name: string
+                  ext?: string | null
+                  size: number
+                  createdAt?: any | null
+                  updatedAt?: any | null
+                } | null
+              } | null> | null
+              articles: Array<{
+                __typename: 'Article'
+                perex?: string | null
+                addedAt: any
+                documentId: string
+                slug: string
+                title: string
+                locale?: string | null
+                coverMedia?: {
+                  __typename?: 'UploadFile'
+                  documentId: string
+                  url: string
+                  width?: number | null
+                  height?: number | null
+                  caption?: string | null
+                  alternativeText?: string | null
+                  name: string
+                } | null
+                articleCategory?: {
+                  __typename?: 'ArticleCategory'
+                  documentId: string
+                  title: string
+                  slug: string
+                } | null
+                tags: Array<{
+                  __typename?: 'Tag'
+                  documentId: string
+                  title: string
+                  slug: string
+                  pageCategory?: {
+                    __typename?: 'PageCategory'
+                    documentId: string
+                    title?: string | null
+                    color?: Enum_Pagecategory_Color | null
+                  } | null
+                } | null>
+              } | null>
+              featuredArticles: Array<{
+                __typename: 'Article'
+                perex?: string | null
+                addedAt: any
+                documentId: string
+                slug: string
+                title: string
+                locale?: string | null
+                coverMedia?: {
+                  __typename?: 'UploadFile'
+                  documentId: string
+                  url: string
+                  width?: number | null
+                  height?: number | null
+                  caption?: string | null
+                  alternativeText?: string | null
+                  name: string
+                } | null
+                articleCategory?: {
+                  __typename?: 'ArticleCategory'
+                  documentId: string
+                  title: string
+                  slug: string
+                } | null
+                tags: Array<{
+                  __typename?: 'Tag'
+                  documentId: string
+                  title: string
+                  slug: string
+                  pageCategory?: {
+                    __typename?: 'PageCategory'
+                    documentId: string
+                    title?: string | null
+                    color?: Enum_Pagecategory_Color | null
+                  } | null
+                } | null>
+              } | null>
+              coverImage?: {
+                __typename?: 'UploadFile'
+                documentId: string
+                url: string
+                width?: number | null
+                height?: number | null
+                caption?: string | null
+                alternativeText?: string | null
+                name: string
+              } | null
             } | null
           } | null
         }
@@ -12069,6 +18273,123 @@ export type PageByPathQuery = {
               title: string
               locale?: string | null
             } | null
+            inbaRelease?: {
+              __typename?: 'InbaRelease'
+              perex?: string | null
+              releaseDate: any
+              documentId: string
+              title: string
+              slug: string
+              rearImage?: {
+                __typename?: 'UploadFile'
+                documentId: string
+                url: string
+                width?: number | null
+                height?: number | null
+                caption?: string | null
+                alternativeText?: string | null
+                name: string
+              } | null
+              files?: Array<{
+                __typename?: 'ComponentBlocksFile'
+                id: string
+                title?: string | null
+                media?: {
+                  __typename?: 'UploadFile'
+                  documentId: string
+                  url: string
+                  name: string
+                  ext?: string | null
+                  size: number
+                  createdAt?: any | null
+                  updatedAt?: any | null
+                } | null
+              } | null> | null
+              articles: Array<{
+                __typename: 'Article'
+                perex?: string | null
+                addedAt: any
+                documentId: string
+                slug: string
+                title: string
+                locale?: string | null
+                coverMedia?: {
+                  __typename?: 'UploadFile'
+                  documentId: string
+                  url: string
+                  width?: number | null
+                  height?: number | null
+                  caption?: string | null
+                  alternativeText?: string | null
+                  name: string
+                } | null
+                articleCategory?: {
+                  __typename?: 'ArticleCategory'
+                  documentId: string
+                  title: string
+                  slug: string
+                } | null
+                tags: Array<{
+                  __typename?: 'Tag'
+                  documentId: string
+                  title: string
+                  slug: string
+                  pageCategory?: {
+                    __typename?: 'PageCategory'
+                    documentId: string
+                    title?: string | null
+                    color?: Enum_Pagecategory_Color | null
+                  } | null
+                } | null>
+              } | null>
+              featuredArticles: Array<{
+                __typename: 'Article'
+                perex?: string | null
+                addedAt: any
+                documentId: string
+                slug: string
+                title: string
+                locale?: string | null
+                coverMedia?: {
+                  __typename?: 'UploadFile'
+                  documentId: string
+                  url: string
+                  width?: number | null
+                  height?: number | null
+                  caption?: string | null
+                  alternativeText?: string | null
+                  name: string
+                } | null
+                articleCategory?: {
+                  __typename?: 'ArticleCategory'
+                  documentId: string
+                  title: string
+                  slug: string
+                } | null
+                tags: Array<{
+                  __typename?: 'Tag'
+                  documentId: string
+                  title: string
+                  slug: string
+                  pageCategory?: {
+                    __typename?: 'PageCategory'
+                    documentId: string
+                    title?: string | null
+                    color?: Enum_Pagecategory_Color | null
+                  } | null
+                } | null>
+              } | null>
+              coverImage?: {
+                __typename?: 'UploadFile'
+                documentId: string
+                url: string
+                width?: number | null
+                height?: number | null
+                caption?: string | null
+                alternativeText?: string | null
+                name: string
+              } | null
+            } | null
           } | null
         }
       | {
@@ -12133,6 +18454,123 @@ export type PageByPathQuery = {
               slug: string
               title: string
               locale?: string | null
+            } | null
+            inbaRelease?: {
+              __typename?: 'InbaRelease'
+              perex?: string | null
+              releaseDate: any
+              documentId: string
+              title: string
+              slug: string
+              rearImage?: {
+                __typename?: 'UploadFile'
+                documentId: string
+                url: string
+                width?: number | null
+                height?: number | null
+                caption?: string | null
+                alternativeText?: string | null
+                name: string
+              } | null
+              files?: Array<{
+                __typename?: 'ComponentBlocksFile'
+                id: string
+                title?: string | null
+                media?: {
+                  __typename?: 'UploadFile'
+                  documentId: string
+                  url: string
+                  name: string
+                  ext?: string | null
+                  size: number
+                  createdAt?: any | null
+                  updatedAt?: any | null
+                } | null
+              } | null> | null
+              articles: Array<{
+                __typename: 'Article'
+                perex?: string | null
+                addedAt: any
+                documentId: string
+                slug: string
+                title: string
+                locale?: string | null
+                coverMedia?: {
+                  __typename?: 'UploadFile'
+                  documentId: string
+                  url: string
+                  width?: number | null
+                  height?: number | null
+                  caption?: string | null
+                  alternativeText?: string | null
+                  name: string
+                } | null
+                articleCategory?: {
+                  __typename?: 'ArticleCategory'
+                  documentId: string
+                  title: string
+                  slug: string
+                } | null
+                tags: Array<{
+                  __typename?: 'Tag'
+                  documentId: string
+                  title: string
+                  slug: string
+                  pageCategory?: {
+                    __typename?: 'PageCategory'
+                    documentId: string
+                    title?: string | null
+                    color?: Enum_Pagecategory_Color | null
+                  } | null
+                } | null>
+              } | null>
+              featuredArticles: Array<{
+                __typename: 'Article'
+                perex?: string | null
+                addedAt: any
+                documentId: string
+                slug: string
+                title: string
+                locale?: string | null
+                coverMedia?: {
+                  __typename?: 'UploadFile'
+                  documentId: string
+                  url: string
+                  width?: number | null
+                  height?: number | null
+                  caption?: string | null
+                  alternativeText?: string | null
+                  name: string
+                } | null
+                articleCategory?: {
+                  __typename?: 'ArticleCategory'
+                  documentId: string
+                  title: string
+                  slug: string
+                } | null
+                tags: Array<{
+                  __typename?: 'Tag'
+                  documentId: string
+                  title: string
+                  slug: string
+                  pageCategory?: {
+                    __typename?: 'PageCategory'
+                    documentId: string
+                    title?: string | null
+                    color?: Enum_Pagecategory_Color | null
+                  } | null
+                } | null>
+              } | null>
+              coverImage?: {
+                __typename?: 'UploadFile'
+                documentId: string
+                url: string
+                width?: number | null
+                height?: number | null
+                caption?: string | null
+                alternativeText?: string | null
+                name: string
+              } | null
             } | null
           } | null
           numbersOverviewItems?: Array<{
@@ -12339,6 +18777,123 @@ export type PageByPathQuery = {
                 title: string
                 locale?: string | null
               } | null
+              inbaRelease?: {
+                __typename?: 'InbaRelease'
+                perex?: string | null
+                releaseDate: any
+                documentId: string
+                title: string
+                slug: string
+                rearImage?: {
+                  __typename?: 'UploadFile'
+                  documentId: string
+                  url: string
+                  width?: number | null
+                  height?: number | null
+                  caption?: string | null
+                  alternativeText?: string | null
+                  name: string
+                } | null
+                files?: Array<{
+                  __typename?: 'ComponentBlocksFile'
+                  id: string
+                  title?: string | null
+                  media?: {
+                    __typename?: 'UploadFile'
+                    documentId: string
+                    url: string
+                    name: string
+                    ext?: string | null
+                    size: number
+                    createdAt?: any | null
+                    updatedAt?: any | null
+                  } | null
+                } | null> | null
+                articles: Array<{
+                  __typename: 'Article'
+                  perex?: string | null
+                  addedAt: any
+                  documentId: string
+                  slug: string
+                  title: string
+                  locale?: string | null
+                  coverMedia?: {
+                    __typename?: 'UploadFile'
+                    documentId: string
+                    url: string
+                    width?: number | null
+                    height?: number | null
+                    caption?: string | null
+                    alternativeText?: string | null
+                    name: string
+                  } | null
+                  articleCategory?: {
+                    __typename?: 'ArticleCategory'
+                    documentId: string
+                    title: string
+                    slug: string
+                  } | null
+                  tags: Array<{
+                    __typename?: 'Tag'
+                    documentId: string
+                    title: string
+                    slug: string
+                    pageCategory?: {
+                      __typename?: 'PageCategory'
+                      documentId: string
+                      title?: string | null
+                      color?: Enum_Pagecategory_Color | null
+                    } | null
+                  } | null>
+                } | null>
+                featuredArticles: Array<{
+                  __typename: 'Article'
+                  perex?: string | null
+                  addedAt: any
+                  documentId: string
+                  slug: string
+                  title: string
+                  locale?: string | null
+                  coverMedia?: {
+                    __typename?: 'UploadFile'
+                    documentId: string
+                    url: string
+                    width?: number | null
+                    height?: number | null
+                    caption?: string | null
+                    alternativeText?: string | null
+                    name: string
+                  } | null
+                  articleCategory?: {
+                    __typename?: 'ArticleCategory'
+                    documentId: string
+                    title: string
+                    slug: string
+                  } | null
+                  tags: Array<{
+                    __typename?: 'Tag'
+                    documentId: string
+                    title: string
+                    slug: string
+                    pageCategory?: {
+                      __typename?: 'PageCategory'
+                      documentId: string
+                      title?: string | null
+                      color?: Enum_Pagecategory_Color | null
+                    } | null
+                  } | null>
+                } | null>
+                coverImage?: {
+                  __typename?: 'UploadFile'
+                  documentId: string
+                  url: string
+                  width?: number | null
+                  height?: number | null
+                  caption?: string | null
+                  alternativeText?: string | null
+                  name: string
+                } | null
+              } | null
             } | null
             secondaryLink?: {
               __typename?: 'ComponentBlocksCommonLink'
@@ -12359,6 +18914,123 @@ export type PageByPathQuery = {
                 title: string
                 locale?: string | null
               } | null
+              inbaRelease?: {
+                __typename?: 'InbaRelease'
+                perex?: string | null
+                releaseDate: any
+                documentId: string
+                title: string
+                slug: string
+                rearImage?: {
+                  __typename?: 'UploadFile'
+                  documentId: string
+                  url: string
+                  width?: number | null
+                  height?: number | null
+                  caption?: string | null
+                  alternativeText?: string | null
+                  name: string
+                } | null
+                files?: Array<{
+                  __typename?: 'ComponentBlocksFile'
+                  id: string
+                  title?: string | null
+                  media?: {
+                    __typename?: 'UploadFile'
+                    documentId: string
+                    url: string
+                    name: string
+                    ext?: string | null
+                    size: number
+                    createdAt?: any | null
+                    updatedAt?: any | null
+                  } | null
+                } | null> | null
+                articles: Array<{
+                  __typename: 'Article'
+                  perex?: string | null
+                  addedAt: any
+                  documentId: string
+                  slug: string
+                  title: string
+                  locale?: string | null
+                  coverMedia?: {
+                    __typename?: 'UploadFile'
+                    documentId: string
+                    url: string
+                    width?: number | null
+                    height?: number | null
+                    caption?: string | null
+                    alternativeText?: string | null
+                    name: string
+                  } | null
+                  articleCategory?: {
+                    __typename?: 'ArticleCategory'
+                    documentId: string
+                    title: string
+                    slug: string
+                  } | null
+                  tags: Array<{
+                    __typename?: 'Tag'
+                    documentId: string
+                    title: string
+                    slug: string
+                    pageCategory?: {
+                      __typename?: 'PageCategory'
+                      documentId: string
+                      title?: string | null
+                      color?: Enum_Pagecategory_Color | null
+                    } | null
+                  } | null>
+                } | null>
+                featuredArticles: Array<{
+                  __typename: 'Article'
+                  perex?: string | null
+                  addedAt: any
+                  documentId: string
+                  slug: string
+                  title: string
+                  locale?: string | null
+                  coverMedia?: {
+                    __typename?: 'UploadFile'
+                    documentId: string
+                    url: string
+                    width?: number | null
+                    height?: number | null
+                    caption?: string | null
+                    alternativeText?: string | null
+                    name: string
+                  } | null
+                  articleCategory?: {
+                    __typename?: 'ArticleCategory'
+                    documentId: string
+                    title: string
+                    slug: string
+                  } | null
+                  tags: Array<{
+                    __typename?: 'Tag'
+                    documentId: string
+                    title: string
+                    slug: string
+                    pageCategory?: {
+                      __typename?: 'PageCategory'
+                      documentId: string
+                      title?: string | null
+                      color?: Enum_Pagecategory_Color | null
+                    } | null
+                  } | null>
+                } | null>
+                coverImage?: {
+                  __typename?: 'UploadFile'
+                  documentId: string
+                  url: string
+                  width?: number | null
+                  height?: number | null
+                  caption?: string | null
+                  alternativeText?: string | null
+                  name: string
+                } | null
+              } | null
             } | null
             tertiaryLink?: {
               __typename?: 'ComponentBlocksCommonLink'
@@ -12378,6 +19050,123 @@ export type PageByPathQuery = {
                 slug: string
                 title: string
                 locale?: string | null
+              } | null
+              inbaRelease?: {
+                __typename?: 'InbaRelease'
+                perex?: string | null
+                releaseDate: any
+                documentId: string
+                title: string
+                slug: string
+                rearImage?: {
+                  __typename?: 'UploadFile'
+                  documentId: string
+                  url: string
+                  width?: number | null
+                  height?: number | null
+                  caption?: string | null
+                  alternativeText?: string | null
+                  name: string
+                } | null
+                files?: Array<{
+                  __typename?: 'ComponentBlocksFile'
+                  id: string
+                  title?: string | null
+                  media?: {
+                    __typename?: 'UploadFile'
+                    documentId: string
+                    url: string
+                    name: string
+                    ext?: string | null
+                    size: number
+                    createdAt?: any | null
+                    updatedAt?: any | null
+                  } | null
+                } | null> | null
+                articles: Array<{
+                  __typename: 'Article'
+                  perex?: string | null
+                  addedAt: any
+                  documentId: string
+                  slug: string
+                  title: string
+                  locale?: string | null
+                  coverMedia?: {
+                    __typename?: 'UploadFile'
+                    documentId: string
+                    url: string
+                    width?: number | null
+                    height?: number | null
+                    caption?: string | null
+                    alternativeText?: string | null
+                    name: string
+                  } | null
+                  articleCategory?: {
+                    __typename?: 'ArticleCategory'
+                    documentId: string
+                    title: string
+                    slug: string
+                  } | null
+                  tags: Array<{
+                    __typename?: 'Tag'
+                    documentId: string
+                    title: string
+                    slug: string
+                    pageCategory?: {
+                      __typename?: 'PageCategory'
+                      documentId: string
+                      title?: string | null
+                      color?: Enum_Pagecategory_Color | null
+                    } | null
+                  } | null>
+                } | null>
+                featuredArticles: Array<{
+                  __typename: 'Article'
+                  perex?: string | null
+                  addedAt: any
+                  documentId: string
+                  slug: string
+                  title: string
+                  locale?: string | null
+                  coverMedia?: {
+                    __typename?: 'UploadFile'
+                    documentId: string
+                    url: string
+                    width?: number | null
+                    height?: number | null
+                    caption?: string | null
+                    alternativeText?: string | null
+                    name: string
+                  } | null
+                  articleCategory?: {
+                    __typename?: 'ArticleCategory'
+                    documentId: string
+                    title: string
+                    slug: string
+                  } | null
+                  tags: Array<{
+                    __typename?: 'Tag'
+                    documentId: string
+                    title: string
+                    slug: string
+                    pageCategory?: {
+                      __typename?: 'PageCategory'
+                      documentId: string
+                      title?: string | null
+                      color?: Enum_Pagecategory_Color | null
+                    } | null
+                  } | null>
+                } | null>
+                coverImage?: {
+                  __typename?: 'UploadFile'
+                  documentId: string
+                  url: string
+                  width?: number | null
+                  height?: number | null
+                  caption?: string | null
+                  alternativeText?: string | null
+                  name: string
+                } | null
               } | null
             } | null
           }
@@ -12482,6 +19271,123 @@ export type PageByPathQuery = {
               title: string
               locale?: string | null
             } | null
+            inbaRelease?: {
+              __typename?: 'InbaRelease'
+              perex?: string | null
+              releaseDate: any
+              documentId: string
+              title: string
+              slug: string
+              rearImage?: {
+                __typename?: 'UploadFile'
+                documentId: string
+                url: string
+                width?: number | null
+                height?: number | null
+                caption?: string | null
+                alternativeText?: string | null
+                name: string
+              } | null
+              files?: Array<{
+                __typename?: 'ComponentBlocksFile'
+                id: string
+                title?: string | null
+                media?: {
+                  __typename?: 'UploadFile'
+                  documentId: string
+                  url: string
+                  name: string
+                  ext?: string | null
+                  size: number
+                  createdAt?: any | null
+                  updatedAt?: any | null
+                } | null
+              } | null> | null
+              articles: Array<{
+                __typename: 'Article'
+                perex?: string | null
+                addedAt: any
+                documentId: string
+                slug: string
+                title: string
+                locale?: string | null
+                coverMedia?: {
+                  __typename?: 'UploadFile'
+                  documentId: string
+                  url: string
+                  width?: number | null
+                  height?: number | null
+                  caption?: string | null
+                  alternativeText?: string | null
+                  name: string
+                } | null
+                articleCategory?: {
+                  __typename?: 'ArticleCategory'
+                  documentId: string
+                  title: string
+                  slug: string
+                } | null
+                tags: Array<{
+                  __typename?: 'Tag'
+                  documentId: string
+                  title: string
+                  slug: string
+                  pageCategory?: {
+                    __typename?: 'PageCategory'
+                    documentId: string
+                    title?: string | null
+                    color?: Enum_Pagecategory_Color | null
+                  } | null
+                } | null>
+              } | null>
+              featuredArticles: Array<{
+                __typename: 'Article'
+                perex?: string | null
+                addedAt: any
+                documentId: string
+                slug: string
+                title: string
+                locale?: string | null
+                coverMedia?: {
+                  __typename?: 'UploadFile'
+                  documentId: string
+                  url: string
+                  width?: number | null
+                  height?: number | null
+                  caption?: string | null
+                  alternativeText?: string | null
+                  name: string
+                } | null
+                articleCategory?: {
+                  __typename?: 'ArticleCategory'
+                  documentId: string
+                  title: string
+                  slug: string
+                } | null
+                tags: Array<{
+                  __typename?: 'Tag'
+                  documentId: string
+                  title: string
+                  slug: string
+                  pageCategory?: {
+                    __typename?: 'PageCategory'
+                    documentId: string
+                    title?: string | null
+                    color?: Enum_Pagecategory_Color | null
+                  } | null
+                } | null>
+              } | null>
+              coverImage?: {
+                __typename?: 'UploadFile'
+                documentId: string
+                url: string
+                width?: number | null
+                height?: number | null
+                caption?: string | null
+                alternativeText?: string | null
+                name: string
+              } | null
+            } | null
           } | null> | null
         }
       | {
@@ -12517,6 +19423,123 @@ export type PageByPathQuery = {
               title: string
               locale?: string | null
             } | null
+            inbaRelease?: {
+              __typename?: 'InbaRelease'
+              perex?: string | null
+              releaseDate: any
+              documentId: string
+              title: string
+              slug: string
+              rearImage?: {
+                __typename?: 'UploadFile'
+                documentId: string
+                url: string
+                width?: number | null
+                height?: number | null
+                caption?: string | null
+                alternativeText?: string | null
+                name: string
+              } | null
+              files?: Array<{
+                __typename?: 'ComponentBlocksFile'
+                id: string
+                title?: string | null
+                media?: {
+                  __typename?: 'UploadFile'
+                  documentId: string
+                  url: string
+                  name: string
+                  ext?: string | null
+                  size: number
+                  createdAt?: any | null
+                  updatedAt?: any | null
+                } | null
+              } | null> | null
+              articles: Array<{
+                __typename: 'Article'
+                perex?: string | null
+                addedAt: any
+                documentId: string
+                slug: string
+                title: string
+                locale?: string | null
+                coverMedia?: {
+                  __typename?: 'UploadFile'
+                  documentId: string
+                  url: string
+                  width?: number | null
+                  height?: number | null
+                  caption?: string | null
+                  alternativeText?: string | null
+                  name: string
+                } | null
+                articleCategory?: {
+                  __typename?: 'ArticleCategory'
+                  documentId: string
+                  title: string
+                  slug: string
+                } | null
+                tags: Array<{
+                  __typename?: 'Tag'
+                  documentId: string
+                  title: string
+                  slug: string
+                  pageCategory?: {
+                    __typename?: 'PageCategory'
+                    documentId: string
+                    title?: string | null
+                    color?: Enum_Pagecategory_Color | null
+                  } | null
+                } | null>
+              } | null>
+              featuredArticles: Array<{
+                __typename: 'Article'
+                perex?: string | null
+                addedAt: any
+                documentId: string
+                slug: string
+                title: string
+                locale?: string | null
+                coverMedia?: {
+                  __typename?: 'UploadFile'
+                  documentId: string
+                  url: string
+                  width?: number | null
+                  height?: number | null
+                  caption?: string | null
+                  alternativeText?: string | null
+                  name: string
+                } | null
+                articleCategory?: {
+                  __typename?: 'ArticleCategory'
+                  documentId: string
+                  title: string
+                  slug: string
+                } | null
+                tags: Array<{
+                  __typename?: 'Tag'
+                  documentId: string
+                  title: string
+                  slug: string
+                  pageCategory?: {
+                    __typename?: 'PageCategory'
+                    documentId: string
+                    title?: string | null
+                    color?: Enum_Pagecategory_Color | null
+                  } | null
+                } | null>
+              } | null>
+              coverImage?: {
+                __typename?: 'UploadFile'
+                documentId: string
+                url: string
+                width?: number | null
+                height?: number | null
+                caption?: string | null
+                alternativeText?: string | null
+                name: string
+              } | null
+            } | null
           } | null> | null
         }
       | {
@@ -12541,6 +19564,123 @@ export type PageByPathQuery = {
               slug: string
               title: string
               locale?: string | null
+            } | null
+            inbaRelease?: {
+              __typename?: 'InbaRelease'
+              perex?: string | null
+              releaseDate: any
+              documentId: string
+              title: string
+              slug: string
+              rearImage?: {
+                __typename?: 'UploadFile'
+                documentId: string
+                url: string
+                width?: number | null
+                height?: number | null
+                caption?: string | null
+                alternativeText?: string | null
+                name: string
+              } | null
+              files?: Array<{
+                __typename?: 'ComponentBlocksFile'
+                id: string
+                title?: string | null
+                media?: {
+                  __typename?: 'UploadFile'
+                  documentId: string
+                  url: string
+                  name: string
+                  ext?: string | null
+                  size: number
+                  createdAt?: any | null
+                  updatedAt?: any | null
+                } | null
+              } | null> | null
+              articles: Array<{
+                __typename: 'Article'
+                perex?: string | null
+                addedAt: any
+                documentId: string
+                slug: string
+                title: string
+                locale?: string | null
+                coverMedia?: {
+                  __typename?: 'UploadFile'
+                  documentId: string
+                  url: string
+                  width?: number | null
+                  height?: number | null
+                  caption?: string | null
+                  alternativeText?: string | null
+                  name: string
+                } | null
+                articleCategory?: {
+                  __typename?: 'ArticleCategory'
+                  documentId: string
+                  title: string
+                  slug: string
+                } | null
+                tags: Array<{
+                  __typename?: 'Tag'
+                  documentId: string
+                  title: string
+                  slug: string
+                  pageCategory?: {
+                    __typename?: 'PageCategory'
+                    documentId: string
+                    title?: string | null
+                    color?: Enum_Pagecategory_Color | null
+                  } | null
+                } | null>
+              } | null>
+              featuredArticles: Array<{
+                __typename: 'Article'
+                perex?: string | null
+                addedAt: any
+                documentId: string
+                slug: string
+                title: string
+                locale?: string | null
+                coverMedia?: {
+                  __typename?: 'UploadFile'
+                  documentId: string
+                  url: string
+                  width?: number | null
+                  height?: number | null
+                  caption?: string | null
+                  alternativeText?: string | null
+                  name: string
+                } | null
+                articleCategory?: {
+                  __typename?: 'ArticleCategory'
+                  documentId: string
+                  title: string
+                  slug: string
+                } | null
+                tags: Array<{
+                  __typename?: 'Tag'
+                  documentId: string
+                  title: string
+                  slug: string
+                  pageCategory?: {
+                    __typename?: 'PageCategory'
+                    documentId: string
+                    title?: string | null
+                    color?: Enum_Pagecategory_Color | null
+                  } | null
+                } | null>
+              } | null>
+              coverImage?: {
+                __typename?: 'UploadFile'
+                documentId: string
+                url: string
+                width?: number | null
+                height?: number | null
+                caption?: string | null
+                alternativeText?: string | null
+                name: string
+              } | null
             } | null
           } | null
         }
@@ -12727,6 +19867,123 @@ export type Dev_AllPagesQuery = {
         title: string
         locale?: string | null
       } | null
+      inbaRelease?: {
+        __typename?: 'InbaRelease'
+        perex?: string | null
+        releaseDate: any
+        documentId: string
+        title: string
+        slug: string
+        rearImage?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
+        files?: Array<{
+          __typename?: 'ComponentBlocksFile'
+          id: string
+          title?: string | null
+          media?: {
+            __typename?: 'UploadFile'
+            documentId: string
+            url: string
+            name: string
+            ext?: string | null
+            size: number
+            createdAt?: any | null
+            updatedAt?: any | null
+          } | null
+        } | null> | null
+        articles: Array<{
+          __typename: 'Article'
+          perex?: string | null
+          addedAt: any
+          documentId: string
+          slug: string
+          title: string
+          locale?: string | null
+          coverMedia?: {
+            __typename?: 'UploadFile'
+            documentId: string
+            url: string
+            width?: number | null
+            height?: number | null
+            caption?: string | null
+            alternativeText?: string | null
+            name: string
+          } | null
+          articleCategory?: {
+            __typename?: 'ArticleCategory'
+            documentId: string
+            title: string
+            slug: string
+          } | null
+          tags: Array<{
+            __typename?: 'Tag'
+            documentId: string
+            title: string
+            slug: string
+            pageCategory?: {
+              __typename?: 'PageCategory'
+              documentId: string
+              title?: string | null
+              color?: Enum_Pagecategory_Color | null
+            } | null
+          } | null>
+        } | null>
+        featuredArticles: Array<{
+          __typename: 'Article'
+          perex?: string | null
+          addedAt: any
+          documentId: string
+          slug: string
+          title: string
+          locale?: string | null
+          coverMedia?: {
+            __typename?: 'UploadFile'
+            documentId: string
+            url: string
+            width?: number | null
+            height?: number | null
+            caption?: string | null
+            alternativeText?: string | null
+            name: string
+          } | null
+          articleCategory?: {
+            __typename?: 'ArticleCategory'
+            documentId: string
+            title: string
+            slug: string
+          } | null
+          tags: Array<{
+            __typename?: 'Tag'
+            documentId: string
+            title: string
+            slug: string
+            pageCategory?: {
+              __typename?: 'PageCategory'
+              documentId: string
+              title?: string | null
+              color?: Enum_Pagecategory_Color | null
+            } | null
+          } | null>
+        } | null>
+        coverImage?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
+      } | null
     } | null> | null
     pageHeaderSections?: Array<
       | { __typename: 'ComponentHeaderSectionsEvent'; date?: any | null; address?: string | null }
@@ -12909,6 +20166,123 @@ export type Dev_AllPagesQuery = {
               title: string
               locale?: string | null
             } | null
+            inbaRelease?: {
+              __typename?: 'InbaRelease'
+              perex?: string | null
+              releaseDate: any
+              documentId: string
+              title: string
+              slug: string
+              rearImage?: {
+                __typename?: 'UploadFile'
+                documentId: string
+                url: string
+                width?: number | null
+                height?: number | null
+                caption?: string | null
+                alternativeText?: string | null
+                name: string
+              } | null
+              files?: Array<{
+                __typename?: 'ComponentBlocksFile'
+                id: string
+                title?: string | null
+                media?: {
+                  __typename?: 'UploadFile'
+                  documentId: string
+                  url: string
+                  name: string
+                  ext?: string | null
+                  size: number
+                  createdAt?: any | null
+                  updatedAt?: any | null
+                } | null
+              } | null> | null
+              articles: Array<{
+                __typename: 'Article'
+                perex?: string | null
+                addedAt: any
+                documentId: string
+                slug: string
+                title: string
+                locale?: string | null
+                coverMedia?: {
+                  __typename?: 'UploadFile'
+                  documentId: string
+                  url: string
+                  width?: number | null
+                  height?: number | null
+                  caption?: string | null
+                  alternativeText?: string | null
+                  name: string
+                } | null
+                articleCategory?: {
+                  __typename?: 'ArticleCategory'
+                  documentId: string
+                  title: string
+                  slug: string
+                } | null
+                tags: Array<{
+                  __typename?: 'Tag'
+                  documentId: string
+                  title: string
+                  slug: string
+                  pageCategory?: {
+                    __typename?: 'PageCategory'
+                    documentId: string
+                    title?: string | null
+                    color?: Enum_Pagecategory_Color | null
+                  } | null
+                } | null>
+              } | null>
+              featuredArticles: Array<{
+                __typename: 'Article'
+                perex?: string | null
+                addedAt: any
+                documentId: string
+                slug: string
+                title: string
+                locale?: string | null
+                coverMedia?: {
+                  __typename?: 'UploadFile'
+                  documentId: string
+                  url: string
+                  width?: number | null
+                  height?: number | null
+                  caption?: string | null
+                  alternativeText?: string | null
+                  name: string
+                } | null
+                articleCategory?: {
+                  __typename?: 'ArticleCategory'
+                  documentId: string
+                  title: string
+                  slug: string
+                } | null
+                tags: Array<{
+                  __typename?: 'Tag'
+                  documentId: string
+                  title: string
+                  slug: string
+                  pageCategory?: {
+                    __typename?: 'PageCategory'
+                    documentId: string
+                    title?: string | null
+                    color?: Enum_Pagecategory_Color | null
+                  } | null
+                } | null>
+              } | null>
+              coverImage?: {
+                __typename?: 'UploadFile'
+                documentId: string
+                url: string
+                width?: number | null
+                height?: number | null
+                caption?: string | null
+                alternativeText?: string | null
+                name: string
+              } | null
+            } | null
           } | null
         }
       | {
@@ -12968,6 +20342,123 @@ export type Dev_AllPagesQuery = {
               slug: string
               title: string
               locale?: string | null
+            } | null
+            inbaRelease?: {
+              __typename?: 'InbaRelease'
+              perex?: string | null
+              releaseDate: any
+              documentId: string
+              title: string
+              slug: string
+              rearImage?: {
+                __typename?: 'UploadFile'
+                documentId: string
+                url: string
+                width?: number | null
+                height?: number | null
+                caption?: string | null
+                alternativeText?: string | null
+                name: string
+              } | null
+              files?: Array<{
+                __typename?: 'ComponentBlocksFile'
+                id: string
+                title?: string | null
+                media?: {
+                  __typename?: 'UploadFile'
+                  documentId: string
+                  url: string
+                  name: string
+                  ext?: string | null
+                  size: number
+                  createdAt?: any | null
+                  updatedAt?: any | null
+                } | null
+              } | null> | null
+              articles: Array<{
+                __typename: 'Article'
+                perex?: string | null
+                addedAt: any
+                documentId: string
+                slug: string
+                title: string
+                locale?: string | null
+                coverMedia?: {
+                  __typename?: 'UploadFile'
+                  documentId: string
+                  url: string
+                  width?: number | null
+                  height?: number | null
+                  caption?: string | null
+                  alternativeText?: string | null
+                  name: string
+                } | null
+                articleCategory?: {
+                  __typename?: 'ArticleCategory'
+                  documentId: string
+                  title: string
+                  slug: string
+                } | null
+                tags: Array<{
+                  __typename?: 'Tag'
+                  documentId: string
+                  title: string
+                  slug: string
+                  pageCategory?: {
+                    __typename?: 'PageCategory'
+                    documentId: string
+                    title?: string | null
+                    color?: Enum_Pagecategory_Color | null
+                  } | null
+                } | null>
+              } | null>
+              featuredArticles: Array<{
+                __typename: 'Article'
+                perex?: string | null
+                addedAt: any
+                documentId: string
+                slug: string
+                title: string
+                locale?: string | null
+                coverMedia?: {
+                  __typename?: 'UploadFile'
+                  documentId: string
+                  url: string
+                  width?: number | null
+                  height?: number | null
+                  caption?: string | null
+                  alternativeText?: string | null
+                  name: string
+                } | null
+                articleCategory?: {
+                  __typename?: 'ArticleCategory'
+                  documentId: string
+                  title: string
+                  slug: string
+                } | null
+                tags: Array<{
+                  __typename?: 'Tag'
+                  documentId: string
+                  title: string
+                  slug: string
+                  pageCategory?: {
+                    __typename?: 'PageCategory'
+                    documentId: string
+                    title?: string | null
+                    color?: Enum_Pagecategory_Color | null
+                  } | null
+                } | null>
+              } | null>
+              coverImage?: {
+                __typename?: 'UploadFile'
+                documentId: string
+                url: string
+                width?: number | null
+                height?: number | null
+                caption?: string | null
+                alternativeText?: string | null
+                name: string
+              } | null
             } | null
           } | null
         }
@@ -13029,6 +20520,123 @@ export type Dev_AllPagesQuery = {
               title: string
               locale?: string | null
             } | null
+            inbaRelease?: {
+              __typename?: 'InbaRelease'
+              perex?: string | null
+              releaseDate: any
+              documentId: string
+              title: string
+              slug: string
+              rearImage?: {
+                __typename?: 'UploadFile'
+                documentId: string
+                url: string
+                width?: number | null
+                height?: number | null
+                caption?: string | null
+                alternativeText?: string | null
+                name: string
+              } | null
+              files?: Array<{
+                __typename?: 'ComponentBlocksFile'
+                id: string
+                title?: string | null
+                media?: {
+                  __typename?: 'UploadFile'
+                  documentId: string
+                  url: string
+                  name: string
+                  ext?: string | null
+                  size: number
+                  createdAt?: any | null
+                  updatedAt?: any | null
+                } | null
+              } | null> | null
+              articles: Array<{
+                __typename: 'Article'
+                perex?: string | null
+                addedAt: any
+                documentId: string
+                slug: string
+                title: string
+                locale?: string | null
+                coverMedia?: {
+                  __typename?: 'UploadFile'
+                  documentId: string
+                  url: string
+                  width?: number | null
+                  height?: number | null
+                  caption?: string | null
+                  alternativeText?: string | null
+                  name: string
+                } | null
+                articleCategory?: {
+                  __typename?: 'ArticleCategory'
+                  documentId: string
+                  title: string
+                  slug: string
+                } | null
+                tags: Array<{
+                  __typename?: 'Tag'
+                  documentId: string
+                  title: string
+                  slug: string
+                  pageCategory?: {
+                    __typename?: 'PageCategory'
+                    documentId: string
+                    title?: string | null
+                    color?: Enum_Pagecategory_Color | null
+                  } | null
+                } | null>
+              } | null>
+              featuredArticles: Array<{
+                __typename: 'Article'
+                perex?: string | null
+                addedAt: any
+                documentId: string
+                slug: string
+                title: string
+                locale?: string | null
+                coverMedia?: {
+                  __typename?: 'UploadFile'
+                  documentId: string
+                  url: string
+                  width?: number | null
+                  height?: number | null
+                  caption?: string | null
+                  alternativeText?: string | null
+                  name: string
+                } | null
+                articleCategory?: {
+                  __typename?: 'ArticleCategory'
+                  documentId: string
+                  title: string
+                  slug: string
+                } | null
+                tags: Array<{
+                  __typename?: 'Tag'
+                  documentId: string
+                  title: string
+                  slug: string
+                  pageCategory?: {
+                    __typename?: 'PageCategory'
+                    documentId: string
+                    title?: string | null
+                    color?: Enum_Pagecategory_Color | null
+                  } | null
+                } | null>
+              } | null>
+              coverImage?: {
+                __typename?: 'UploadFile'
+                documentId: string
+                url: string
+                width?: number | null
+                height?: number | null
+                caption?: string | null
+                alternativeText?: string | null
+                name: string
+              } | null
+            } | null
           } | null
           secondaryLink?: {
             __typename?: 'ComponentBlocksCommonLink'
@@ -13049,6 +20657,123 @@ export type Dev_AllPagesQuery = {
               title: string
               locale?: string | null
             } | null
+            inbaRelease?: {
+              __typename?: 'InbaRelease'
+              perex?: string | null
+              releaseDate: any
+              documentId: string
+              title: string
+              slug: string
+              rearImage?: {
+                __typename?: 'UploadFile'
+                documentId: string
+                url: string
+                width?: number | null
+                height?: number | null
+                caption?: string | null
+                alternativeText?: string | null
+                name: string
+              } | null
+              files?: Array<{
+                __typename?: 'ComponentBlocksFile'
+                id: string
+                title?: string | null
+                media?: {
+                  __typename?: 'UploadFile'
+                  documentId: string
+                  url: string
+                  name: string
+                  ext?: string | null
+                  size: number
+                  createdAt?: any | null
+                  updatedAt?: any | null
+                } | null
+              } | null> | null
+              articles: Array<{
+                __typename: 'Article'
+                perex?: string | null
+                addedAt: any
+                documentId: string
+                slug: string
+                title: string
+                locale?: string | null
+                coverMedia?: {
+                  __typename?: 'UploadFile'
+                  documentId: string
+                  url: string
+                  width?: number | null
+                  height?: number | null
+                  caption?: string | null
+                  alternativeText?: string | null
+                  name: string
+                } | null
+                articleCategory?: {
+                  __typename?: 'ArticleCategory'
+                  documentId: string
+                  title: string
+                  slug: string
+                } | null
+                tags: Array<{
+                  __typename?: 'Tag'
+                  documentId: string
+                  title: string
+                  slug: string
+                  pageCategory?: {
+                    __typename?: 'PageCategory'
+                    documentId: string
+                    title?: string | null
+                    color?: Enum_Pagecategory_Color | null
+                  } | null
+                } | null>
+              } | null>
+              featuredArticles: Array<{
+                __typename: 'Article'
+                perex?: string | null
+                addedAt: any
+                documentId: string
+                slug: string
+                title: string
+                locale?: string | null
+                coverMedia?: {
+                  __typename?: 'UploadFile'
+                  documentId: string
+                  url: string
+                  width?: number | null
+                  height?: number | null
+                  caption?: string | null
+                  alternativeText?: string | null
+                  name: string
+                } | null
+                articleCategory?: {
+                  __typename?: 'ArticleCategory'
+                  documentId: string
+                  title: string
+                  slug: string
+                } | null
+                tags: Array<{
+                  __typename?: 'Tag'
+                  documentId: string
+                  title: string
+                  slug: string
+                  pageCategory?: {
+                    __typename?: 'PageCategory'
+                    documentId: string
+                    title?: string | null
+                    color?: Enum_Pagecategory_Color | null
+                  } | null
+                } | null>
+              } | null>
+              coverImage?: {
+                __typename?: 'UploadFile'
+                documentId: string
+                url: string
+                width?: number | null
+                height?: number | null
+                caption?: string | null
+                alternativeText?: string | null
+                name: string
+              } | null
+            } | null
           } | null
           tertiaryLink?: {
             __typename?: 'ComponentBlocksCommonLink'
@@ -13068,6 +20793,123 @@ export type Dev_AllPagesQuery = {
               slug: string
               title: string
               locale?: string | null
+            } | null
+            inbaRelease?: {
+              __typename?: 'InbaRelease'
+              perex?: string | null
+              releaseDate: any
+              documentId: string
+              title: string
+              slug: string
+              rearImage?: {
+                __typename?: 'UploadFile'
+                documentId: string
+                url: string
+                width?: number | null
+                height?: number | null
+                caption?: string | null
+                alternativeText?: string | null
+                name: string
+              } | null
+              files?: Array<{
+                __typename?: 'ComponentBlocksFile'
+                id: string
+                title?: string | null
+                media?: {
+                  __typename?: 'UploadFile'
+                  documentId: string
+                  url: string
+                  name: string
+                  ext?: string | null
+                  size: number
+                  createdAt?: any | null
+                  updatedAt?: any | null
+                } | null
+              } | null> | null
+              articles: Array<{
+                __typename: 'Article'
+                perex?: string | null
+                addedAt: any
+                documentId: string
+                slug: string
+                title: string
+                locale?: string | null
+                coverMedia?: {
+                  __typename?: 'UploadFile'
+                  documentId: string
+                  url: string
+                  width?: number | null
+                  height?: number | null
+                  caption?: string | null
+                  alternativeText?: string | null
+                  name: string
+                } | null
+                articleCategory?: {
+                  __typename?: 'ArticleCategory'
+                  documentId: string
+                  title: string
+                  slug: string
+                } | null
+                tags: Array<{
+                  __typename?: 'Tag'
+                  documentId: string
+                  title: string
+                  slug: string
+                  pageCategory?: {
+                    __typename?: 'PageCategory'
+                    documentId: string
+                    title?: string | null
+                    color?: Enum_Pagecategory_Color | null
+                  } | null
+                } | null>
+              } | null>
+              featuredArticles: Array<{
+                __typename: 'Article'
+                perex?: string | null
+                addedAt: any
+                documentId: string
+                slug: string
+                title: string
+                locale?: string | null
+                coverMedia?: {
+                  __typename?: 'UploadFile'
+                  documentId: string
+                  url: string
+                  width?: number | null
+                  height?: number | null
+                  caption?: string | null
+                  alternativeText?: string | null
+                  name: string
+                } | null
+                articleCategory?: {
+                  __typename?: 'ArticleCategory'
+                  documentId: string
+                  title: string
+                  slug: string
+                } | null
+                tags: Array<{
+                  __typename?: 'Tag'
+                  documentId: string
+                  title: string
+                  slug: string
+                  pageCategory?: {
+                    __typename?: 'PageCategory'
+                    documentId: string
+                    title?: string | null
+                    color?: Enum_Pagecategory_Color | null
+                  } | null
+                } | null>
+              } | null>
+              coverImage?: {
+                __typename?: 'UploadFile'
+                documentId: string
+                url: string
+                width?: number | null
+                height?: number | null
+                caption?: string | null
+                alternativeText?: string | null
+                name: string
+              } | null
             } | null
           } | null
         }
@@ -13413,6 +21255,123 @@ export type Dev_AllPagesQuery = {
               title: string
               locale?: string | null
             } | null
+            inbaRelease?: {
+              __typename?: 'InbaRelease'
+              perex?: string | null
+              releaseDate: any
+              documentId: string
+              title: string
+              slug: string
+              rearImage?: {
+                __typename?: 'UploadFile'
+                documentId: string
+                url: string
+                width?: number | null
+                height?: number | null
+                caption?: string | null
+                alternativeText?: string | null
+                name: string
+              } | null
+              files?: Array<{
+                __typename?: 'ComponentBlocksFile'
+                id: string
+                title?: string | null
+                media?: {
+                  __typename?: 'UploadFile'
+                  documentId: string
+                  url: string
+                  name: string
+                  ext?: string | null
+                  size: number
+                  createdAt?: any | null
+                  updatedAt?: any | null
+                } | null
+              } | null> | null
+              articles: Array<{
+                __typename: 'Article'
+                perex?: string | null
+                addedAt: any
+                documentId: string
+                slug: string
+                title: string
+                locale?: string | null
+                coverMedia?: {
+                  __typename?: 'UploadFile'
+                  documentId: string
+                  url: string
+                  width?: number | null
+                  height?: number | null
+                  caption?: string | null
+                  alternativeText?: string | null
+                  name: string
+                } | null
+                articleCategory?: {
+                  __typename?: 'ArticleCategory'
+                  documentId: string
+                  title: string
+                  slug: string
+                } | null
+                tags: Array<{
+                  __typename?: 'Tag'
+                  documentId: string
+                  title: string
+                  slug: string
+                  pageCategory?: {
+                    __typename?: 'PageCategory'
+                    documentId: string
+                    title?: string | null
+                    color?: Enum_Pagecategory_Color | null
+                  } | null
+                } | null>
+              } | null>
+              featuredArticles: Array<{
+                __typename: 'Article'
+                perex?: string | null
+                addedAt: any
+                documentId: string
+                slug: string
+                title: string
+                locale?: string | null
+                coverMedia?: {
+                  __typename?: 'UploadFile'
+                  documentId: string
+                  url: string
+                  width?: number | null
+                  height?: number | null
+                  caption?: string | null
+                  alternativeText?: string | null
+                  name: string
+                } | null
+                articleCategory?: {
+                  __typename?: 'ArticleCategory'
+                  documentId: string
+                  title: string
+                  slug: string
+                } | null
+                tags: Array<{
+                  __typename?: 'Tag'
+                  documentId: string
+                  title: string
+                  slug: string
+                  pageCategory?: {
+                    __typename?: 'PageCategory'
+                    documentId: string
+                    title?: string | null
+                    color?: Enum_Pagecategory_Color | null
+                  } | null
+                } | null>
+              } | null>
+              coverImage?: {
+                __typename?: 'UploadFile'
+                documentId: string
+                url: string
+                width?: number | null
+                height?: number | null
+                caption?: string | null
+                alternativeText?: string | null
+                name: string
+              } | null
+            } | null
           } | null
         }
       | {
@@ -13477,6 +21436,123 @@ export type Dev_AllPagesQuery = {
               slug: string
               title: string
               locale?: string | null
+            } | null
+            inbaRelease?: {
+              __typename?: 'InbaRelease'
+              perex?: string | null
+              releaseDate: any
+              documentId: string
+              title: string
+              slug: string
+              rearImage?: {
+                __typename?: 'UploadFile'
+                documentId: string
+                url: string
+                width?: number | null
+                height?: number | null
+                caption?: string | null
+                alternativeText?: string | null
+                name: string
+              } | null
+              files?: Array<{
+                __typename?: 'ComponentBlocksFile'
+                id: string
+                title?: string | null
+                media?: {
+                  __typename?: 'UploadFile'
+                  documentId: string
+                  url: string
+                  name: string
+                  ext?: string | null
+                  size: number
+                  createdAt?: any | null
+                  updatedAt?: any | null
+                } | null
+              } | null> | null
+              articles: Array<{
+                __typename: 'Article'
+                perex?: string | null
+                addedAt: any
+                documentId: string
+                slug: string
+                title: string
+                locale?: string | null
+                coverMedia?: {
+                  __typename?: 'UploadFile'
+                  documentId: string
+                  url: string
+                  width?: number | null
+                  height?: number | null
+                  caption?: string | null
+                  alternativeText?: string | null
+                  name: string
+                } | null
+                articleCategory?: {
+                  __typename?: 'ArticleCategory'
+                  documentId: string
+                  title: string
+                  slug: string
+                } | null
+                tags: Array<{
+                  __typename?: 'Tag'
+                  documentId: string
+                  title: string
+                  slug: string
+                  pageCategory?: {
+                    __typename?: 'PageCategory'
+                    documentId: string
+                    title?: string | null
+                    color?: Enum_Pagecategory_Color | null
+                  } | null
+                } | null>
+              } | null>
+              featuredArticles: Array<{
+                __typename: 'Article'
+                perex?: string | null
+                addedAt: any
+                documentId: string
+                slug: string
+                title: string
+                locale?: string | null
+                coverMedia?: {
+                  __typename?: 'UploadFile'
+                  documentId: string
+                  url: string
+                  width?: number | null
+                  height?: number | null
+                  caption?: string | null
+                  alternativeText?: string | null
+                  name: string
+                } | null
+                articleCategory?: {
+                  __typename?: 'ArticleCategory'
+                  documentId: string
+                  title: string
+                  slug: string
+                } | null
+                tags: Array<{
+                  __typename?: 'Tag'
+                  documentId: string
+                  title: string
+                  slug: string
+                  pageCategory?: {
+                    __typename?: 'PageCategory'
+                    documentId: string
+                    title?: string | null
+                    color?: Enum_Pagecategory_Color | null
+                  } | null
+                } | null>
+              } | null>
+              coverImage?: {
+                __typename?: 'UploadFile'
+                documentId: string
+                url: string
+                width?: number | null
+                height?: number | null
+                caption?: string | null
+                alternativeText?: string | null
+                name: string
+              } | null
             } | null
           } | null
           numbersOverviewItems?: Array<{
@@ -13683,6 +21759,123 @@ export type Dev_AllPagesQuery = {
                 title: string
                 locale?: string | null
               } | null
+              inbaRelease?: {
+                __typename?: 'InbaRelease'
+                perex?: string | null
+                releaseDate: any
+                documentId: string
+                title: string
+                slug: string
+                rearImage?: {
+                  __typename?: 'UploadFile'
+                  documentId: string
+                  url: string
+                  width?: number | null
+                  height?: number | null
+                  caption?: string | null
+                  alternativeText?: string | null
+                  name: string
+                } | null
+                files?: Array<{
+                  __typename?: 'ComponentBlocksFile'
+                  id: string
+                  title?: string | null
+                  media?: {
+                    __typename?: 'UploadFile'
+                    documentId: string
+                    url: string
+                    name: string
+                    ext?: string | null
+                    size: number
+                    createdAt?: any | null
+                    updatedAt?: any | null
+                  } | null
+                } | null> | null
+                articles: Array<{
+                  __typename: 'Article'
+                  perex?: string | null
+                  addedAt: any
+                  documentId: string
+                  slug: string
+                  title: string
+                  locale?: string | null
+                  coverMedia?: {
+                    __typename?: 'UploadFile'
+                    documentId: string
+                    url: string
+                    width?: number | null
+                    height?: number | null
+                    caption?: string | null
+                    alternativeText?: string | null
+                    name: string
+                  } | null
+                  articleCategory?: {
+                    __typename?: 'ArticleCategory'
+                    documentId: string
+                    title: string
+                    slug: string
+                  } | null
+                  tags: Array<{
+                    __typename?: 'Tag'
+                    documentId: string
+                    title: string
+                    slug: string
+                    pageCategory?: {
+                      __typename?: 'PageCategory'
+                      documentId: string
+                      title?: string | null
+                      color?: Enum_Pagecategory_Color | null
+                    } | null
+                  } | null>
+                } | null>
+                featuredArticles: Array<{
+                  __typename: 'Article'
+                  perex?: string | null
+                  addedAt: any
+                  documentId: string
+                  slug: string
+                  title: string
+                  locale?: string | null
+                  coverMedia?: {
+                    __typename?: 'UploadFile'
+                    documentId: string
+                    url: string
+                    width?: number | null
+                    height?: number | null
+                    caption?: string | null
+                    alternativeText?: string | null
+                    name: string
+                  } | null
+                  articleCategory?: {
+                    __typename?: 'ArticleCategory'
+                    documentId: string
+                    title: string
+                    slug: string
+                  } | null
+                  tags: Array<{
+                    __typename?: 'Tag'
+                    documentId: string
+                    title: string
+                    slug: string
+                    pageCategory?: {
+                      __typename?: 'PageCategory'
+                      documentId: string
+                      title?: string | null
+                      color?: Enum_Pagecategory_Color | null
+                    } | null
+                  } | null>
+                } | null>
+                coverImage?: {
+                  __typename?: 'UploadFile'
+                  documentId: string
+                  url: string
+                  width?: number | null
+                  height?: number | null
+                  caption?: string | null
+                  alternativeText?: string | null
+                  name: string
+                } | null
+              } | null
             } | null
             secondaryLink?: {
               __typename?: 'ComponentBlocksCommonLink'
@@ -13703,6 +21896,123 @@ export type Dev_AllPagesQuery = {
                 title: string
                 locale?: string | null
               } | null
+              inbaRelease?: {
+                __typename?: 'InbaRelease'
+                perex?: string | null
+                releaseDate: any
+                documentId: string
+                title: string
+                slug: string
+                rearImage?: {
+                  __typename?: 'UploadFile'
+                  documentId: string
+                  url: string
+                  width?: number | null
+                  height?: number | null
+                  caption?: string | null
+                  alternativeText?: string | null
+                  name: string
+                } | null
+                files?: Array<{
+                  __typename?: 'ComponentBlocksFile'
+                  id: string
+                  title?: string | null
+                  media?: {
+                    __typename?: 'UploadFile'
+                    documentId: string
+                    url: string
+                    name: string
+                    ext?: string | null
+                    size: number
+                    createdAt?: any | null
+                    updatedAt?: any | null
+                  } | null
+                } | null> | null
+                articles: Array<{
+                  __typename: 'Article'
+                  perex?: string | null
+                  addedAt: any
+                  documentId: string
+                  slug: string
+                  title: string
+                  locale?: string | null
+                  coverMedia?: {
+                    __typename?: 'UploadFile'
+                    documentId: string
+                    url: string
+                    width?: number | null
+                    height?: number | null
+                    caption?: string | null
+                    alternativeText?: string | null
+                    name: string
+                  } | null
+                  articleCategory?: {
+                    __typename?: 'ArticleCategory'
+                    documentId: string
+                    title: string
+                    slug: string
+                  } | null
+                  tags: Array<{
+                    __typename?: 'Tag'
+                    documentId: string
+                    title: string
+                    slug: string
+                    pageCategory?: {
+                      __typename?: 'PageCategory'
+                      documentId: string
+                      title?: string | null
+                      color?: Enum_Pagecategory_Color | null
+                    } | null
+                  } | null>
+                } | null>
+                featuredArticles: Array<{
+                  __typename: 'Article'
+                  perex?: string | null
+                  addedAt: any
+                  documentId: string
+                  slug: string
+                  title: string
+                  locale?: string | null
+                  coverMedia?: {
+                    __typename?: 'UploadFile'
+                    documentId: string
+                    url: string
+                    width?: number | null
+                    height?: number | null
+                    caption?: string | null
+                    alternativeText?: string | null
+                    name: string
+                  } | null
+                  articleCategory?: {
+                    __typename?: 'ArticleCategory'
+                    documentId: string
+                    title: string
+                    slug: string
+                  } | null
+                  tags: Array<{
+                    __typename?: 'Tag'
+                    documentId: string
+                    title: string
+                    slug: string
+                    pageCategory?: {
+                      __typename?: 'PageCategory'
+                      documentId: string
+                      title?: string | null
+                      color?: Enum_Pagecategory_Color | null
+                    } | null
+                  } | null>
+                } | null>
+                coverImage?: {
+                  __typename?: 'UploadFile'
+                  documentId: string
+                  url: string
+                  width?: number | null
+                  height?: number | null
+                  caption?: string | null
+                  alternativeText?: string | null
+                  name: string
+                } | null
+              } | null
             } | null
             tertiaryLink?: {
               __typename?: 'ComponentBlocksCommonLink'
@@ -13722,6 +22032,123 @@ export type Dev_AllPagesQuery = {
                 slug: string
                 title: string
                 locale?: string | null
+              } | null
+              inbaRelease?: {
+                __typename?: 'InbaRelease'
+                perex?: string | null
+                releaseDate: any
+                documentId: string
+                title: string
+                slug: string
+                rearImage?: {
+                  __typename?: 'UploadFile'
+                  documentId: string
+                  url: string
+                  width?: number | null
+                  height?: number | null
+                  caption?: string | null
+                  alternativeText?: string | null
+                  name: string
+                } | null
+                files?: Array<{
+                  __typename?: 'ComponentBlocksFile'
+                  id: string
+                  title?: string | null
+                  media?: {
+                    __typename?: 'UploadFile'
+                    documentId: string
+                    url: string
+                    name: string
+                    ext?: string | null
+                    size: number
+                    createdAt?: any | null
+                    updatedAt?: any | null
+                  } | null
+                } | null> | null
+                articles: Array<{
+                  __typename: 'Article'
+                  perex?: string | null
+                  addedAt: any
+                  documentId: string
+                  slug: string
+                  title: string
+                  locale?: string | null
+                  coverMedia?: {
+                    __typename?: 'UploadFile'
+                    documentId: string
+                    url: string
+                    width?: number | null
+                    height?: number | null
+                    caption?: string | null
+                    alternativeText?: string | null
+                    name: string
+                  } | null
+                  articleCategory?: {
+                    __typename?: 'ArticleCategory'
+                    documentId: string
+                    title: string
+                    slug: string
+                  } | null
+                  tags: Array<{
+                    __typename?: 'Tag'
+                    documentId: string
+                    title: string
+                    slug: string
+                    pageCategory?: {
+                      __typename?: 'PageCategory'
+                      documentId: string
+                      title?: string | null
+                      color?: Enum_Pagecategory_Color | null
+                    } | null
+                  } | null>
+                } | null>
+                featuredArticles: Array<{
+                  __typename: 'Article'
+                  perex?: string | null
+                  addedAt: any
+                  documentId: string
+                  slug: string
+                  title: string
+                  locale?: string | null
+                  coverMedia?: {
+                    __typename?: 'UploadFile'
+                    documentId: string
+                    url: string
+                    width?: number | null
+                    height?: number | null
+                    caption?: string | null
+                    alternativeText?: string | null
+                    name: string
+                  } | null
+                  articleCategory?: {
+                    __typename?: 'ArticleCategory'
+                    documentId: string
+                    title: string
+                    slug: string
+                  } | null
+                  tags: Array<{
+                    __typename?: 'Tag'
+                    documentId: string
+                    title: string
+                    slug: string
+                    pageCategory?: {
+                      __typename?: 'PageCategory'
+                      documentId: string
+                      title?: string | null
+                      color?: Enum_Pagecategory_Color | null
+                    } | null
+                  } | null>
+                } | null>
+                coverImage?: {
+                  __typename?: 'UploadFile'
+                  documentId: string
+                  url: string
+                  width?: number | null
+                  height?: number | null
+                  caption?: string | null
+                  alternativeText?: string | null
+                  name: string
+                } | null
               } | null
             } | null
           }
@@ -13826,6 +22253,123 @@ export type Dev_AllPagesQuery = {
               title: string
               locale?: string | null
             } | null
+            inbaRelease?: {
+              __typename?: 'InbaRelease'
+              perex?: string | null
+              releaseDate: any
+              documentId: string
+              title: string
+              slug: string
+              rearImage?: {
+                __typename?: 'UploadFile'
+                documentId: string
+                url: string
+                width?: number | null
+                height?: number | null
+                caption?: string | null
+                alternativeText?: string | null
+                name: string
+              } | null
+              files?: Array<{
+                __typename?: 'ComponentBlocksFile'
+                id: string
+                title?: string | null
+                media?: {
+                  __typename?: 'UploadFile'
+                  documentId: string
+                  url: string
+                  name: string
+                  ext?: string | null
+                  size: number
+                  createdAt?: any | null
+                  updatedAt?: any | null
+                } | null
+              } | null> | null
+              articles: Array<{
+                __typename: 'Article'
+                perex?: string | null
+                addedAt: any
+                documentId: string
+                slug: string
+                title: string
+                locale?: string | null
+                coverMedia?: {
+                  __typename?: 'UploadFile'
+                  documentId: string
+                  url: string
+                  width?: number | null
+                  height?: number | null
+                  caption?: string | null
+                  alternativeText?: string | null
+                  name: string
+                } | null
+                articleCategory?: {
+                  __typename?: 'ArticleCategory'
+                  documentId: string
+                  title: string
+                  slug: string
+                } | null
+                tags: Array<{
+                  __typename?: 'Tag'
+                  documentId: string
+                  title: string
+                  slug: string
+                  pageCategory?: {
+                    __typename?: 'PageCategory'
+                    documentId: string
+                    title?: string | null
+                    color?: Enum_Pagecategory_Color | null
+                  } | null
+                } | null>
+              } | null>
+              featuredArticles: Array<{
+                __typename: 'Article'
+                perex?: string | null
+                addedAt: any
+                documentId: string
+                slug: string
+                title: string
+                locale?: string | null
+                coverMedia?: {
+                  __typename?: 'UploadFile'
+                  documentId: string
+                  url: string
+                  width?: number | null
+                  height?: number | null
+                  caption?: string | null
+                  alternativeText?: string | null
+                  name: string
+                } | null
+                articleCategory?: {
+                  __typename?: 'ArticleCategory'
+                  documentId: string
+                  title: string
+                  slug: string
+                } | null
+                tags: Array<{
+                  __typename?: 'Tag'
+                  documentId: string
+                  title: string
+                  slug: string
+                  pageCategory?: {
+                    __typename?: 'PageCategory'
+                    documentId: string
+                    title?: string | null
+                    color?: Enum_Pagecategory_Color | null
+                  } | null
+                } | null>
+              } | null>
+              coverImage?: {
+                __typename?: 'UploadFile'
+                documentId: string
+                url: string
+                width?: number | null
+                height?: number | null
+                caption?: string | null
+                alternativeText?: string | null
+                name: string
+              } | null
+            } | null
           } | null> | null
         }
       | {
@@ -13861,6 +22405,123 @@ export type Dev_AllPagesQuery = {
               title: string
               locale?: string | null
             } | null
+            inbaRelease?: {
+              __typename?: 'InbaRelease'
+              perex?: string | null
+              releaseDate: any
+              documentId: string
+              title: string
+              slug: string
+              rearImage?: {
+                __typename?: 'UploadFile'
+                documentId: string
+                url: string
+                width?: number | null
+                height?: number | null
+                caption?: string | null
+                alternativeText?: string | null
+                name: string
+              } | null
+              files?: Array<{
+                __typename?: 'ComponentBlocksFile'
+                id: string
+                title?: string | null
+                media?: {
+                  __typename?: 'UploadFile'
+                  documentId: string
+                  url: string
+                  name: string
+                  ext?: string | null
+                  size: number
+                  createdAt?: any | null
+                  updatedAt?: any | null
+                } | null
+              } | null> | null
+              articles: Array<{
+                __typename: 'Article'
+                perex?: string | null
+                addedAt: any
+                documentId: string
+                slug: string
+                title: string
+                locale?: string | null
+                coverMedia?: {
+                  __typename?: 'UploadFile'
+                  documentId: string
+                  url: string
+                  width?: number | null
+                  height?: number | null
+                  caption?: string | null
+                  alternativeText?: string | null
+                  name: string
+                } | null
+                articleCategory?: {
+                  __typename?: 'ArticleCategory'
+                  documentId: string
+                  title: string
+                  slug: string
+                } | null
+                tags: Array<{
+                  __typename?: 'Tag'
+                  documentId: string
+                  title: string
+                  slug: string
+                  pageCategory?: {
+                    __typename?: 'PageCategory'
+                    documentId: string
+                    title?: string | null
+                    color?: Enum_Pagecategory_Color | null
+                  } | null
+                } | null>
+              } | null>
+              featuredArticles: Array<{
+                __typename: 'Article'
+                perex?: string | null
+                addedAt: any
+                documentId: string
+                slug: string
+                title: string
+                locale?: string | null
+                coverMedia?: {
+                  __typename?: 'UploadFile'
+                  documentId: string
+                  url: string
+                  width?: number | null
+                  height?: number | null
+                  caption?: string | null
+                  alternativeText?: string | null
+                  name: string
+                } | null
+                articleCategory?: {
+                  __typename?: 'ArticleCategory'
+                  documentId: string
+                  title: string
+                  slug: string
+                } | null
+                tags: Array<{
+                  __typename?: 'Tag'
+                  documentId: string
+                  title: string
+                  slug: string
+                  pageCategory?: {
+                    __typename?: 'PageCategory'
+                    documentId: string
+                    title?: string | null
+                    color?: Enum_Pagecategory_Color | null
+                  } | null
+                } | null>
+              } | null>
+              coverImage?: {
+                __typename?: 'UploadFile'
+                documentId: string
+                url: string
+                width?: number | null
+                height?: number | null
+                caption?: string | null
+                alternativeText?: string | null
+                name: string
+              } | null
+            } | null
           } | null> | null
         }
       | {
@@ -13885,6 +22546,123 @@ export type Dev_AllPagesQuery = {
               slug: string
               title: string
               locale?: string | null
+            } | null
+            inbaRelease?: {
+              __typename?: 'InbaRelease'
+              perex?: string | null
+              releaseDate: any
+              documentId: string
+              title: string
+              slug: string
+              rearImage?: {
+                __typename?: 'UploadFile'
+                documentId: string
+                url: string
+                width?: number | null
+                height?: number | null
+                caption?: string | null
+                alternativeText?: string | null
+                name: string
+              } | null
+              files?: Array<{
+                __typename?: 'ComponentBlocksFile'
+                id: string
+                title?: string | null
+                media?: {
+                  __typename?: 'UploadFile'
+                  documentId: string
+                  url: string
+                  name: string
+                  ext?: string | null
+                  size: number
+                  createdAt?: any | null
+                  updatedAt?: any | null
+                } | null
+              } | null> | null
+              articles: Array<{
+                __typename: 'Article'
+                perex?: string | null
+                addedAt: any
+                documentId: string
+                slug: string
+                title: string
+                locale?: string | null
+                coverMedia?: {
+                  __typename?: 'UploadFile'
+                  documentId: string
+                  url: string
+                  width?: number | null
+                  height?: number | null
+                  caption?: string | null
+                  alternativeText?: string | null
+                  name: string
+                } | null
+                articleCategory?: {
+                  __typename?: 'ArticleCategory'
+                  documentId: string
+                  title: string
+                  slug: string
+                } | null
+                tags: Array<{
+                  __typename?: 'Tag'
+                  documentId: string
+                  title: string
+                  slug: string
+                  pageCategory?: {
+                    __typename?: 'PageCategory'
+                    documentId: string
+                    title?: string | null
+                    color?: Enum_Pagecategory_Color | null
+                  } | null
+                } | null>
+              } | null>
+              featuredArticles: Array<{
+                __typename: 'Article'
+                perex?: string | null
+                addedAt: any
+                documentId: string
+                slug: string
+                title: string
+                locale?: string | null
+                coverMedia?: {
+                  __typename?: 'UploadFile'
+                  documentId: string
+                  url: string
+                  width?: number | null
+                  height?: number | null
+                  caption?: string | null
+                  alternativeText?: string | null
+                  name: string
+                } | null
+                articleCategory?: {
+                  __typename?: 'ArticleCategory'
+                  documentId: string
+                  title: string
+                  slug: string
+                } | null
+                tags: Array<{
+                  __typename?: 'Tag'
+                  documentId: string
+                  title: string
+                  slug: string
+                  pageCategory?: {
+                    __typename?: 'PageCategory'
+                    documentId: string
+                    title?: string | null
+                    color?: Enum_Pagecategory_Color | null
+                  } | null
+                } | null>
+              } | null>
+              coverImage?: {
+                __typename?: 'UploadFile'
+                documentId: string
+                url: string
+                width?: number | null
+                height?: number | null
+                caption?: string | null
+                alternativeText?: string | null
+                name: string
+              } | null
             } | null
           } | null
         }
@@ -14658,6 +23436,123 @@ export type ArticlesSectionFragment = {
       title: string
       locale?: string | null
     } | null
+    inbaRelease?: {
+      __typename?: 'InbaRelease'
+      perex?: string | null
+      releaseDate: any
+      documentId: string
+      title: string
+      slug: string
+      rearImage?: {
+        __typename?: 'UploadFile'
+        documentId: string
+        url: string
+        width?: number | null
+        height?: number | null
+        caption?: string | null
+        alternativeText?: string | null
+        name: string
+      } | null
+      files?: Array<{
+        __typename?: 'ComponentBlocksFile'
+        id: string
+        title?: string | null
+        media?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          name: string
+          ext?: string | null
+          size: number
+          createdAt?: any | null
+          updatedAt?: any | null
+        } | null
+      } | null> | null
+      articles: Array<{
+        __typename: 'Article'
+        perex?: string | null
+        addedAt: any
+        documentId: string
+        slug: string
+        title: string
+        locale?: string | null
+        coverMedia?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
+        articleCategory?: {
+          __typename?: 'ArticleCategory'
+          documentId: string
+          title: string
+          slug: string
+        } | null
+        tags: Array<{
+          __typename?: 'Tag'
+          documentId: string
+          title: string
+          slug: string
+          pageCategory?: {
+            __typename?: 'PageCategory'
+            documentId: string
+            title?: string | null
+            color?: Enum_Pagecategory_Color | null
+          } | null
+        } | null>
+      } | null>
+      featuredArticles: Array<{
+        __typename: 'Article'
+        perex?: string | null
+        addedAt: any
+        documentId: string
+        slug: string
+        title: string
+        locale?: string | null
+        coverMedia?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
+        articleCategory?: {
+          __typename?: 'ArticleCategory'
+          documentId: string
+          title: string
+          slug: string
+        } | null
+        tags: Array<{
+          __typename?: 'Tag'
+          documentId: string
+          title: string
+          slug: string
+          pageCategory?: {
+            __typename?: 'PageCategory'
+            documentId: string
+            title?: string | null
+            color?: Enum_Pagecategory_Color | null
+          } | null
+        } | null>
+      } | null>
+      coverImage?: {
+        __typename?: 'UploadFile'
+        documentId: string
+        url: string
+        width?: number | null
+        height?: number | null
+        caption?: string | null
+        alternativeText?: string | null
+        name: string
+      } | null
+    } | null
   } | null
 }
 
@@ -14684,6 +23579,123 @@ export type InbaReleasesSectionFragment = {
       slug: string
       title: string
       locale?: string | null
+    } | null
+    inbaRelease?: {
+      __typename?: 'InbaRelease'
+      perex?: string | null
+      releaseDate: any
+      documentId: string
+      title: string
+      slug: string
+      rearImage?: {
+        __typename?: 'UploadFile'
+        documentId: string
+        url: string
+        width?: number | null
+        height?: number | null
+        caption?: string | null
+        alternativeText?: string | null
+        name: string
+      } | null
+      files?: Array<{
+        __typename?: 'ComponentBlocksFile'
+        id: string
+        title?: string | null
+        media?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          name: string
+          ext?: string | null
+          size: number
+          createdAt?: any | null
+          updatedAt?: any | null
+        } | null
+      } | null> | null
+      articles: Array<{
+        __typename: 'Article'
+        perex?: string | null
+        addedAt: any
+        documentId: string
+        slug: string
+        title: string
+        locale?: string | null
+        coverMedia?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
+        articleCategory?: {
+          __typename?: 'ArticleCategory'
+          documentId: string
+          title: string
+          slug: string
+        } | null
+        tags: Array<{
+          __typename?: 'Tag'
+          documentId: string
+          title: string
+          slug: string
+          pageCategory?: {
+            __typename?: 'PageCategory'
+            documentId: string
+            title?: string | null
+            color?: Enum_Pagecategory_Color | null
+          } | null
+        } | null>
+      } | null>
+      featuredArticles: Array<{
+        __typename: 'Article'
+        perex?: string | null
+        addedAt: any
+        documentId: string
+        slug: string
+        title: string
+        locale?: string | null
+        coverMedia?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
+        articleCategory?: {
+          __typename?: 'ArticleCategory'
+          documentId: string
+          title: string
+          slug: string
+        } | null
+        tags: Array<{
+          __typename?: 'Tag'
+          documentId: string
+          title: string
+          slug: string
+          pageCategory?: {
+            __typename?: 'PageCategory'
+            documentId: string
+            title?: string | null
+            color?: Enum_Pagecategory_Color | null
+          } | null
+        } | null>
+      } | null>
+      coverImage?: {
+        __typename?: 'UploadFile'
+        documentId: string
+        url: string
+        width?: number | null
+        height?: number | null
+        caption?: string | null
+        alternativeText?: string | null
+        name: string
+      } | null
     } | null
   } | null
 }
@@ -14727,6 +23739,123 @@ export type TextWithImageSectionFragment = {
       title: string
       locale?: string | null
     } | null
+    inbaRelease?: {
+      __typename?: 'InbaRelease'
+      perex?: string | null
+      releaseDate: any
+      documentId: string
+      title: string
+      slug: string
+      rearImage?: {
+        __typename?: 'UploadFile'
+        documentId: string
+        url: string
+        width?: number | null
+        height?: number | null
+        caption?: string | null
+        alternativeText?: string | null
+        name: string
+      } | null
+      files?: Array<{
+        __typename?: 'ComponentBlocksFile'
+        id: string
+        title?: string | null
+        media?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          name: string
+          ext?: string | null
+          size: number
+          createdAt?: any | null
+          updatedAt?: any | null
+        } | null
+      } | null> | null
+      articles: Array<{
+        __typename: 'Article'
+        perex?: string | null
+        addedAt: any
+        documentId: string
+        slug: string
+        title: string
+        locale?: string | null
+        coverMedia?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
+        articleCategory?: {
+          __typename?: 'ArticleCategory'
+          documentId: string
+          title: string
+          slug: string
+        } | null
+        tags: Array<{
+          __typename?: 'Tag'
+          documentId: string
+          title: string
+          slug: string
+          pageCategory?: {
+            __typename?: 'PageCategory'
+            documentId: string
+            title?: string | null
+            color?: Enum_Pagecategory_Color | null
+          } | null
+        } | null>
+      } | null>
+      featuredArticles: Array<{
+        __typename: 'Article'
+        perex?: string | null
+        addedAt: any
+        documentId: string
+        slug: string
+        title: string
+        locale?: string | null
+        coverMedia?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
+        articleCategory?: {
+          __typename?: 'ArticleCategory'
+          documentId: string
+          title: string
+          slug: string
+        } | null
+        tags: Array<{
+          __typename?: 'Tag'
+          documentId: string
+          title: string
+          slug: string
+          pageCategory?: {
+            __typename?: 'PageCategory'
+            documentId: string
+            title?: string | null
+            color?: Enum_Pagecategory_Color | null
+          } | null
+        } | null>
+      } | null>
+      coverImage?: {
+        __typename?: 'UploadFile'
+        documentId: string
+        url: string
+        width?: number | null
+        height?: number | null
+        caption?: string | null
+        alternativeText?: string | null
+        name: string
+      } | null
+    } | null
   } | null> | null
 }
 
@@ -14762,6 +23891,123 @@ export type TextWithImageOverlappedSectionFragment = {
       slug: string
       title: string
       locale?: string | null
+    } | null
+    inbaRelease?: {
+      __typename?: 'InbaRelease'
+      perex?: string | null
+      releaseDate: any
+      documentId: string
+      title: string
+      slug: string
+      rearImage?: {
+        __typename?: 'UploadFile'
+        documentId: string
+        url: string
+        width?: number | null
+        height?: number | null
+        caption?: string | null
+        alternativeText?: string | null
+        name: string
+      } | null
+      files?: Array<{
+        __typename?: 'ComponentBlocksFile'
+        id: string
+        title?: string | null
+        media?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          name: string
+          ext?: string | null
+          size: number
+          createdAt?: any | null
+          updatedAt?: any | null
+        } | null
+      } | null> | null
+      articles: Array<{
+        __typename: 'Article'
+        perex?: string | null
+        addedAt: any
+        documentId: string
+        slug: string
+        title: string
+        locale?: string | null
+        coverMedia?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
+        articleCategory?: {
+          __typename?: 'ArticleCategory'
+          documentId: string
+          title: string
+          slug: string
+        } | null
+        tags: Array<{
+          __typename?: 'Tag'
+          documentId: string
+          title: string
+          slug: string
+          pageCategory?: {
+            __typename?: 'PageCategory'
+            documentId: string
+            title?: string | null
+            color?: Enum_Pagecategory_Color | null
+          } | null
+        } | null>
+      } | null>
+      featuredArticles: Array<{
+        __typename: 'Article'
+        perex?: string | null
+        addedAt: any
+        documentId: string
+        slug: string
+        title: string
+        locale?: string | null
+        coverMedia?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
+        articleCategory?: {
+          __typename?: 'ArticleCategory'
+          documentId: string
+          title: string
+          slug: string
+        } | null
+        tags: Array<{
+          __typename?: 'Tag'
+          documentId: string
+          title: string
+          slug: string
+          pageCategory?: {
+            __typename?: 'PageCategory'
+            documentId: string
+            title?: string | null
+            color?: Enum_Pagecategory_Color | null
+          } | null
+        } | null>
+      } | null>
+      coverImage?: {
+        __typename?: 'UploadFile'
+        documentId: string
+        url: string
+        width?: number | null
+        height?: number | null
+        caption?: string | null
+        alternativeText?: string | null
+        name: string
+      } | null
     } | null
   } | null> | null
 }
@@ -15104,6 +24350,123 @@ export type BannerSectionFragment = {
       title: string
       locale?: string | null
     } | null
+    inbaRelease?: {
+      __typename?: 'InbaRelease'
+      perex?: string | null
+      releaseDate: any
+      documentId: string
+      title: string
+      slug: string
+      rearImage?: {
+        __typename?: 'UploadFile'
+        documentId: string
+        url: string
+        width?: number | null
+        height?: number | null
+        caption?: string | null
+        alternativeText?: string | null
+        name: string
+      } | null
+      files?: Array<{
+        __typename?: 'ComponentBlocksFile'
+        id: string
+        title?: string | null
+        media?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          name: string
+          ext?: string | null
+          size: number
+          createdAt?: any | null
+          updatedAt?: any | null
+        } | null
+      } | null> | null
+      articles: Array<{
+        __typename: 'Article'
+        perex?: string | null
+        addedAt: any
+        documentId: string
+        slug: string
+        title: string
+        locale?: string | null
+        coverMedia?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
+        articleCategory?: {
+          __typename?: 'ArticleCategory'
+          documentId: string
+          title: string
+          slug: string
+        } | null
+        tags: Array<{
+          __typename?: 'Tag'
+          documentId: string
+          title: string
+          slug: string
+          pageCategory?: {
+            __typename?: 'PageCategory'
+            documentId: string
+            title?: string | null
+            color?: Enum_Pagecategory_Color | null
+          } | null
+        } | null>
+      } | null>
+      featuredArticles: Array<{
+        __typename: 'Article'
+        perex?: string | null
+        addedAt: any
+        documentId: string
+        slug: string
+        title: string
+        locale?: string | null
+        coverMedia?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
+        articleCategory?: {
+          __typename?: 'ArticleCategory'
+          documentId: string
+          title: string
+          slug: string
+        } | null
+        tags: Array<{
+          __typename?: 'Tag'
+          documentId: string
+          title: string
+          slug: string
+          pageCategory?: {
+            __typename?: 'PageCategory'
+            documentId: string
+            title?: string | null
+            color?: Enum_Pagecategory_Color | null
+          } | null
+        } | null>
+      } | null>
+      coverImage?: {
+        __typename?: 'UploadFile'
+        documentId: string
+        url: string
+        width?: number | null
+        height?: number | null
+        caption?: string | null
+        alternativeText?: string | null
+        name: string
+      } | null
+    } | null
   } | null
   secondaryLink?: {
     __typename?: 'ComponentBlocksCommonLink'
@@ -15124,6 +24487,123 @@ export type BannerSectionFragment = {
       title: string
       locale?: string | null
     } | null
+    inbaRelease?: {
+      __typename?: 'InbaRelease'
+      perex?: string | null
+      releaseDate: any
+      documentId: string
+      title: string
+      slug: string
+      rearImage?: {
+        __typename?: 'UploadFile'
+        documentId: string
+        url: string
+        width?: number | null
+        height?: number | null
+        caption?: string | null
+        alternativeText?: string | null
+        name: string
+      } | null
+      files?: Array<{
+        __typename?: 'ComponentBlocksFile'
+        id: string
+        title?: string | null
+        media?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          name: string
+          ext?: string | null
+          size: number
+          createdAt?: any | null
+          updatedAt?: any | null
+        } | null
+      } | null> | null
+      articles: Array<{
+        __typename: 'Article'
+        perex?: string | null
+        addedAt: any
+        documentId: string
+        slug: string
+        title: string
+        locale?: string | null
+        coverMedia?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
+        articleCategory?: {
+          __typename?: 'ArticleCategory'
+          documentId: string
+          title: string
+          slug: string
+        } | null
+        tags: Array<{
+          __typename?: 'Tag'
+          documentId: string
+          title: string
+          slug: string
+          pageCategory?: {
+            __typename?: 'PageCategory'
+            documentId: string
+            title?: string | null
+            color?: Enum_Pagecategory_Color | null
+          } | null
+        } | null>
+      } | null>
+      featuredArticles: Array<{
+        __typename: 'Article'
+        perex?: string | null
+        addedAt: any
+        documentId: string
+        slug: string
+        title: string
+        locale?: string | null
+        coverMedia?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
+        articleCategory?: {
+          __typename?: 'ArticleCategory'
+          documentId: string
+          title: string
+          slug: string
+        } | null
+        tags: Array<{
+          __typename?: 'Tag'
+          documentId: string
+          title: string
+          slug: string
+          pageCategory?: {
+            __typename?: 'PageCategory'
+            documentId: string
+            title?: string | null
+            color?: Enum_Pagecategory_Color | null
+          } | null
+        } | null>
+      } | null>
+      coverImage?: {
+        __typename?: 'UploadFile'
+        documentId: string
+        url: string
+        width?: number | null
+        height?: number | null
+        caption?: string | null
+        alternativeText?: string | null
+        name: string
+      } | null
+    } | null
   } | null
   tertiaryLink?: {
     __typename?: 'ComponentBlocksCommonLink'
@@ -15143,6 +24623,123 @@ export type BannerSectionFragment = {
       slug: string
       title: string
       locale?: string | null
+    } | null
+    inbaRelease?: {
+      __typename?: 'InbaRelease'
+      perex?: string | null
+      releaseDate: any
+      documentId: string
+      title: string
+      slug: string
+      rearImage?: {
+        __typename?: 'UploadFile'
+        documentId: string
+        url: string
+        width?: number | null
+        height?: number | null
+        caption?: string | null
+        alternativeText?: string | null
+        name: string
+      } | null
+      files?: Array<{
+        __typename?: 'ComponentBlocksFile'
+        id: string
+        title?: string | null
+        media?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          name: string
+          ext?: string | null
+          size: number
+          createdAt?: any | null
+          updatedAt?: any | null
+        } | null
+      } | null> | null
+      articles: Array<{
+        __typename: 'Article'
+        perex?: string | null
+        addedAt: any
+        documentId: string
+        slug: string
+        title: string
+        locale?: string | null
+        coverMedia?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
+        articleCategory?: {
+          __typename?: 'ArticleCategory'
+          documentId: string
+          title: string
+          slug: string
+        } | null
+        tags: Array<{
+          __typename?: 'Tag'
+          documentId: string
+          title: string
+          slug: string
+          pageCategory?: {
+            __typename?: 'PageCategory'
+            documentId: string
+            title?: string | null
+            color?: Enum_Pagecategory_Color | null
+          } | null
+        } | null>
+      } | null>
+      featuredArticles: Array<{
+        __typename: 'Article'
+        perex?: string | null
+        addedAt: any
+        documentId: string
+        slug: string
+        title: string
+        locale?: string | null
+        coverMedia?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
+        articleCategory?: {
+          __typename?: 'ArticleCategory'
+          documentId: string
+          title: string
+          slug: string
+        } | null
+        tags: Array<{
+          __typename?: 'Tag'
+          documentId: string
+          title: string
+          slug: string
+          pageCategory?: {
+            __typename?: 'PageCategory'
+            documentId: string
+            title?: string | null
+            color?: Enum_Pagecategory_Color | null
+          } | null
+        } | null>
+      } | null>
+      coverImage?: {
+        __typename?: 'UploadFile'
+        documentId: string
+        url: string
+        width?: number | null
+        height?: number | null
+        caption?: string | null
+        alternativeText?: string | null
+        name: string
+      } | null
     } | null
   } | null
 }
@@ -15401,6 +24998,123 @@ export type TootootEventsSectionFragment = {
       title: string
       locale?: string | null
     } | null
+    inbaRelease?: {
+      __typename?: 'InbaRelease'
+      perex?: string | null
+      releaseDate: any
+      documentId: string
+      title: string
+      slug: string
+      rearImage?: {
+        __typename?: 'UploadFile'
+        documentId: string
+        url: string
+        width?: number | null
+        height?: number | null
+        caption?: string | null
+        alternativeText?: string | null
+        name: string
+      } | null
+      files?: Array<{
+        __typename?: 'ComponentBlocksFile'
+        id: string
+        title?: string | null
+        media?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          name: string
+          ext?: string | null
+          size: number
+          createdAt?: any | null
+          updatedAt?: any | null
+        } | null
+      } | null> | null
+      articles: Array<{
+        __typename: 'Article'
+        perex?: string | null
+        addedAt: any
+        documentId: string
+        slug: string
+        title: string
+        locale?: string | null
+        coverMedia?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
+        articleCategory?: {
+          __typename?: 'ArticleCategory'
+          documentId: string
+          title: string
+          slug: string
+        } | null
+        tags: Array<{
+          __typename?: 'Tag'
+          documentId: string
+          title: string
+          slug: string
+          pageCategory?: {
+            __typename?: 'PageCategory'
+            documentId: string
+            title?: string | null
+            color?: Enum_Pagecategory_Color | null
+          } | null
+        } | null>
+      } | null>
+      featuredArticles: Array<{
+        __typename: 'Article'
+        perex?: string | null
+        addedAt: any
+        documentId: string
+        slug: string
+        title: string
+        locale?: string | null
+        coverMedia?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
+        articleCategory?: {
+          __typename?: 'ArticleCategory'
+          documentId: string
+          title: string
+          slug: string
+        } | null
+        tags: Array<{
+          __typename?: 'Tag'
+          documentId: string
+          title: string
+          slug: string
+          pageCategory?: {
+            __typename?: 'PageCategory'
+            documentId: string
+            title?: string | null
+            color?: Enum_Pagecategory_Color | null
+          } | null
+        } | null>
+      } | null>
+      coverImage?: {
+        __typename?: 'UploadFile'
+        documentId: string
+        url: string
+        width?: number | null
+        height?: number | null
+        caption?: string | null
+        alternativeText?: string | null
+        name: string
+      } | null
+    } | null
   } | null
 }
 
@@ -15505,6 +25219,123 @@ export type NumbersOverviewSectionFragment = {
       slug: string
       title: string
       locale?: string | null
+    } | null
+    inbaRelease?: {
+      __typename?: 'InbaRelease'
+      perex?: string | null
+      releaseDate: any
+      documentId: string
+      title: string
+      slug: string
+      rearImage?: {
+        __typename?: 'UploadFile'
+        documentId: string
+        url: string
+        width?: number | null
+        height?: number | null
+        caption?: string | null
+        alternativeText?: string | null
+        name: string
+      } | null
+      files?: Array<{
+        __typename?: 'ComponentBlocksFile'
+        id: string
+        title?: string | null
+        media?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          name: string
+          ext?: string | null
+          size: number
+          createdAt?: any | null
+          updatedAt?: any | null
+        } | null
+      } | null> | null
+      articles: Array<{
+        __typename: 'Article'
+        perex?: string | null
+        addedAt: any
+        documentId: string
+        slug: string
+        title: string
+        locale?: string | null
+        coverMedia?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
+        articleCategory?: {
+          __typename?: 'ArticleCategory'
+          documentId: string
+          title: string
+          slug: string
+        } | null
+        tags: Array<{
+          __typename?: 'Tag'
+          documentId: string
+          title: string
+          slug: string
+          pageCategory?: {
+            __typename?: 'PageCategory'
+            documentId: string
+            title?: string | null
+            color?: Enum_Pagecategory_Color | null
+          } | null
+        } | null>
+      } | null>
+      featuredArticles: Array<{
+        __typename: 'Article'
+        perex?: string | null
+        addedAt: any
+        documentId: string
+        slug: string
+        title: string
+        locale?: string | null
+        coverMedia?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
+        articleCategory?: {
+          __typename?: 'ArticleCategory'
+          documentId: string
+          title: string
+          slug: string
+        } | null
+        tags: Array<{
+          __typename?: 'Tag'
+          documentId: string
+          title: string
+          slug: string
+          pageCategory?: {
+            __typename?: 'PageCategory'
+            documentId: string
+            title?: string | null
+            color?: Enum_Pagecategory_Color | null
+          } | null
+        } | null>
+      } | null>
+      coverImage?: {
+        __typename?: 'UploadFile'
+        documentId: string
+        url: string
+        width?: number | null
+        height?: number | null
+        caption?: string | null
+        alternativeText?: string | null
+        name: string
+      } | null
     } | null
   } | null
   numbersOverviewItems?: Array<{
@@ -15622,6 +25453,123 @@ export type StarzLandingPageSectionFragment = {
         title: string
         locale?: string | null
       } | null
+      inbaRelease?: {
+        __typename?: 'InbaRelease'
+        perex?: string | null
+        releaseDate: any
+        documentId: string
+        title: string
+        slug: string
+        rearImage?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
+        files?: Array<{
+          __typename?: 'ComponentBlocksFile'
+          id: string
+          title?: string | null
+          media?: {
+            __typename?: 'UploadFile'
+            documentId: string
+            url: string
+            name: string
+            ext?: string | null
+            size: number
+            createdAt?: any | null
+            updatedAt?: any | null
+          } | null
+        } | null> | null
+        articles: Array<{
+          __typename: 'Article'
+          perex?: string | null
+          addedAt: any
+          documentId: string
+          slug: string
+          title: string
+          locale?: string | null
+          coverMedia?: {
+            __typename?: 'UploadFile'
+            documentId: string
+            url: string
+            width?: number | null
+            height?: number | null
+            caption?: string | null
+            alternativeText?: string | null
+            name: string
+          } | null
+          articleCategory?: {
+            __typename?: 'ArticleCategory'
+            documentId: string
+            title: string
+            slug: string
+          } | null
+          tags: Array<{
+            __typename?: 'Tag'
+            documentId: string
+            title: string
+            slug: string
+            pageCategory?: {
+              __typename?: 'PageCategory'
+              documentId: string
+              title?: string | null
+              color?: Enum_Pagecategory_Color | null
+            } | null
+          } | null>
+        } | null>
+        featuredArticles: Array<{
+          __typename: 'Article'
+          perex?: string | null
+          addedAt: any
+          documentId: string
+          slug: string
+          title: string
+          locale?: string | null
+          coverMedia?: {
+            __typename?: 'UploadFile'
+            documentId: string
+            url: string
+            width?: number | null
+            height?: number | null
+            caption?: string | null
+            alternativeText?: string | null
+            name: string
+          } | null
+          articleCategory?: {
+            __typename?: 'ArticleCategory'
+            documentId: string
+            title: string
+            slug: string
+          } | null
+          tags: Array<{
+            __typename?: 'Tag'
+            documentId: string
+            title: string
+            slug: string
+            pageCategory?: {
+              __typename?: 'PageCategory'
+              documentId: string
+              title?: string | null
+              color?: Enum_Pagecategory_Color | null
+            } | null
+          } | null>
+        } | null>
+        coverImage?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
+      } | null
     } | null
     secondaryLink?: {
       __typename?: 'ComponentBlocksCommonLink'
@@ -15642,6 +25590,123 @@ export type StarzLandingPageSectionFragment = {
         title: string
         locale?: string | null
       } | null
+      inbaRelease?: {
+        __typename?: 'InbaRelease'
+        perex?: string | null
+        releaseDate: any
+        documentId: string
+        title: string
+        slug: string
+        rearImage?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
+        files?: Array<{
+          __typename?: 'ComponentBlocksFile'
+          id: string
+          title?: string | null
+          media?: {
+            __typename?: 'UploadFile'
+            documentId: string
+            url: string
+            name: string
+            ext?: string | null
+            size: number
+            createdAt?: any | null
+            updatedAt?: any | null
+          } | null
+        } | null> | null
+        articles: Array<{
+          __typename: 'Article'
+          perex?: string | null
+          addedAt: any
+          documentId: string
+          slug: string
+          title: string
+          locale?: string | null
+          coverMedia?: {
+            __typename?: 'UploadFile'
+            documentId: string
+            url: string
+            width?: number | null
+            height?: number | null
+            caption?: string | null
+            alternativeText?: string | null
+            name: string
+          } | null
+          articleCategory?: {
+            __typename?: 'ArticleCategory'
+            documentId: string
+            title: string
+            slug: string
+          } | null
+          tags: Array<{
+            __typename?: 'Tag'
+            documentId: string
+            title: string
+            slug: string
+            pageCategory?: {
+              __typename?: 'PageCategory'
+              documentId: string
+              title?: string | null
+              color?: Enum_Pagecategory_Color | null
+            } | null
+          } | null>
+        } | null>
+        featuredArticles: Array<{
+          __typename: 'Article'
+          perex?: string | null
+          addedAt: any
+          documentId: string
+          slug: string
+          title: string
+          locale?: string | null
+          coverMedia?: {
+            __typename?: 'UploadFile'
+            documentId: string
+            url: string
+            width?: number | null
+            height?: number | null
+            caption?: string | null
+            alternativeText?: string | null
+            name: string
+          } | null
+          articleCategory?: {
+            __typename?: 'ArticleCategory'
+            documentId: string
+            title: string
+            slug: string
+          } | null
+          tags: Array<{
+            __typename?: 'Tag'
+            documentId: string
+            title: string
+            slug: string
+            pageCategory?: {
+              __typename?: 'PageCategory'
+              documentId: string
+              title?: string | null
+              color?: Enum_Pagecategory_Color | null
+            } | null
+          } | null>
+        } | null>
+        coverImage?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
+      } | null
     } | null
     tertiaryLink?: {
       __typename?: 'ComponentBlocksCommonLink'
@@ -15661,6 +25726,123 @@ export type StarzLandingPageSectionFragment = {
         slug: string
         title: string
         locale?: string | null
+      } | null
+      inbaRelease?: {
+        __typename?: 'InbaRelease'
+        perex?: string | null
+        releaseDate: any
+        documentId: string
+        title: string
+        slug: string
+        rearImage?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
+        files?: Array<{
+          __typename?: 'ComponentBlocksFile'
+          id: string
+          title?: string | null
+          media?: {
+            __typename?: 'UploadFile'
+            documentId: string
+            url: string
+            name: string
+            ext?: string | null
+            size: number
+            createdAt?: any | null
+            updatedAt?: any | null
+          } | null
+        } | null> | null
+        articles: Array<{
+          __typename: 'Article'
+          perex?: string | null
+          addedAt: any
+          documentId: string
+          slug: string
+          title: string
+          locale?: string | null
+          coverMedia?: {
+            __typename?: 'UploadFile'
+            documentId: string
+            url: string
+            width?: number | null
+            height?: number | null
+            caption?: string | null
+            alternativeText?: string | null
+            name: string
+          } | null
+          articleCategory?: {
+            __typename?: 'ArticleCategory'
+            documentId: string
+            title: string
+            slug: string
+          } | null
+          tags: Array<{
+            __typename?: 'Tag'
+            documentId: string
+            title: string
+            slug: string
+            pageCategory?: {
+              __typename?: 'PageCategory'
+              documentId: string
+              title?: string | null
+              color?: Enum_Pagecategory_Color | null
+            } | null
+          } | null>
+        } | null>
+        featuredArticles: Array<{
+          __typename: 'Article'
+          perex?: string | null
+          addedAt: any
+          documentId: string
+          slug: string
+          title: string
+          locale?: string | null
+          coverMedia?: {
+            __typename?: 'UploadFile'
+            documentId: string
+            url: string
+            width?: number | null
+            height?: number | null
+            caption?: string | null
+            alternativeText?: string | null
+            name: string
+          } | null
+          articleCategory?: {
+            __typename?: 'ArticleCategory'
+            documentId: string
+            title: string
+            slug: string
+          } | null
+          tags: Array<{
+            __typename?: 'Tag'
+            documentId: string
+            title: string
+            slug: string
+            pageCategory?: {
+              __typename?: 'PageCategory'
+              documentId: string
+              title?: string | null
+              color?: Enum_Pagecategory_Color | null
+            } | null
+          } | null>
+        } | null>
+        coverImage?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
       } | null
     } | null
   }
@@ -15869,6 +26051,123 @@ export type ArticlesLandingPageSectionFragment = {
       title: string
       locale?: string | null
     } | null
+    inbaRelease?: {
+      __typename?: 'InbaRelease'
+      perex?: string | null
+      releaseDate: any
+      documentId: string
+      title: string
+      slug: string
+      rearImage?: {
+        __typename?: 'UploadFile'
+        documentId: string
+        url: string
+        width?: number | null
+        height?: number | null
+        caption?: string | null
+        alternativeText?: string | null
+        name: string
+      } | null
+      files?: Array<{
+        __typename?: 'ComponentBlocksFile'
+        id: string
+        title?: string | null
+        media?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          name: string
+          ext?: string | null
+          size: number
+          createdAt?: any | null
+          updatedAt?: any | null
+        } | null
+      } | null> | null
+      articles: Array<{
+        __typename: 'Article'
+        perex?: string | null
+        addedAt: any
+        documentId: string
+        slug: string
+        title: string
+        locale?: string | null
+        coverMedia?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
+        articleCategory?: {
+          __typename?: 'ArticleCategory'
+          documentId: string
+          title: string
+          slug: string
+        } | null
+        tags: Array<{
+          __typename?: 'Tag'
+          documentId: string
+          title: string
+          slug: string
+          pageCategory?: {
+            __typename?: 'PageCategory'
+            documentId: string
+            title?: string | null
+            color?: Enum_Pagecategory_Color | null
+          } | null
+        } | null>
+      } | null>
+      featuredArticles: Array<{
+        __typename: 'Article'
+        perex?: string | null
+        addedAt: any
+        documentId: string
+        slug: string
+        title: string
+        locale?: string | null
+        coverMedia?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
+        articleCategory?: {
+          __typename?: 'ArticleCategory'
+          documentId: string
+          title: string
+          slug: string
+        } | null
+        tags: Array<{
+          __typename?: 'Tag'
+          documentId: string
+          title: string
+          slug: string
+          pageCategory?: {
+            __typename?: 'PageCategory'
+            documentId: string
+            title?: string | null
+            color?: Enum_Pagecategory_Color | null
+          } | null
+        } | null>
+      } | null>
+      coverImage?: {
+        __typename?: 'UploadFile'
+        documentId: string
+        url: string
+        width?: number | null
+        height?: number | null
+        caption?: string | null
+        alternativeText?: string | null
+        name: string
+      } | null
+    } | null
   } | null
 }
 
@@ -16030,6 +26329,123 @@ type Sections_ComponentSectionsArticles_Fragment = {
       title: string
       locale?: string | null
     } | null
+    inbaRelease?: {
+      __typename?: 'InbaRelease'
+      perex?: string | null
+      releaseDate: any
+      documentId: string
+      title: string
+      slug: string
+      rearImage?: {
+        __typename?: 'UploadFile'
+        documentId: string
+        url: string
+        width?: number | null
+        height?: number | null
+        caption?: string | null
+        alternativeText?: string | null
+        name: string
+      } | null
+      files?: Array<{
+        __typename?: 'ComponentBlocksFile'
+        id: string
+        title?: string | null
+        media?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          name: string
+          ext?: string | null
+          size: number
+          createdAt?: any | null
+          updatedAt?: any | null
+        } | null
+      } | null> | null
+      articles: Array<{
+        __typename: 'Article'
+        perex?: string | null
+        addedAt: any
+        documentId: string
+        slug: string
+        title: string
+        locale?: string | null
+        coverMedia?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
+        articleCategory?: {
+          __typename?: 'ArticleCategory'
+          documentId: string
+          title: string
+          slug: string
+        } | null
+        tags: Array<{
+          __typename?: 'Tag'
+          documentId: string
+          title: string
+          slug: string
+          pageCategory?: {
+            __typename?: 'PageCategory'
+            documentId: string
+            title?: string | null
+            color?: Enum_Pagecategory_Color | null
+          } | null
+        } | null>
+      } | null>
+      featuredArticles: Array<{
+        __typename: 'Article'
+        perex?: string | null
+        addedAt: any
+        documentId: string
+        slug: string
+        title: string
+        locale?: string | null
+        coverMedia?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
+        articleCategory?: {
+          __typename?: 'ArticleCategory'
+          documentId: string
+          title: string
+          slug: string
+        } | null
+        tags: Array<{
+          __typename?: 'Tag'
+          documentId: string
+          title: string
+          slug: string
+          pageCategory?: {
+            __typename?: 'PageCategory'
+            documentId: string
+            title?: string | null
+            color?: Enum_Pagecategory_Color | null
+          } | null
+        } | null>
+      } | null>
+      coverImage?: {
+        __typename?: 'UploadFile'
+        documentId: string
+        url: string
+        width?: number | null
+        height?: number | null
+        caption?: string | null
+        alternativeText?: string | null
+        name: string
+      } | null
+    } | null
   } | null
 }
 
@@ -16090,6 +26506,123 @@ type Sections_ComponentSectionsArticlesLandingPage_Fragment = {
       slug: string
       title: string
       locale?: string | null
+    } | null
+    inbaRelease?: {
+      __typename?: 'InbaRelease'
+      perex?: string | null
+      releaseDate: any
+      documentId: string
+      title: string
+      slug: string
+      rearImage?: {
+        __typename?: 'UploadFile'
+        documentId: string
+        url: string
+        width?: number | null
+        height?: number | null
+        caption?: string | null
+        alternativeText?: string | null
+        name: string
+      } | null
+      files?: Array<{
+        __typename?: 'ComponentBlocksFile'
+        id: string
+        title?: string | null
+        media?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          name: string
+          ext?: string | null
+          size: number
+          createdAt?: any | null
+          updatedAt?: any | null
+        } | null
+      } | null> | null
+      articles: Array<{
+        __typename: 'Article'
+        perex?: string | null
+        addedAt: any
+        documentId: string
+        slug: string
+        title: string
+        locale?: string | null
+        coverMedia?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
+        articleCategory?: {
+          __typename?: 'ArticleCategory'
+          documentId: string
+          title: string
+          slug: string
+        } | null
+        tags: Array<{
+          __typename?: 'Tag'
+          documentId: string
+          title: string
+          slug: string
+          pageCategory?: {
+            __typename?: 'PageCategory'
+            documentId: string
+            title?: string | null
+            color?: Enum_Pagecategory_Color | null
+          } | null
+        } | null>
+      } | null>
+      featuredArticles: Array<{
+        __typename: 'Article'
+        perex?: string | null
+        addedAt: any
+        documentId: string
+        slug: string
+        title: string
+        locale?: string | null
+        coverMedia?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
+        articleCategory?: {
+          __typename?: 'ArticleCategory'
+          documentId: string
+          title: string
+          slug: string
+        } | null
+        tags: Array<{
+          __typename?: 'Tag'
+          documentId: string
+          title: string
+          slug: string
+          pageCategory?: {
+            __typename?: 'PageCategory'
+            documentId: string
+            title?: string | null
+            color?: Enum_Pagecategory_Color | null
+          } | null
+        } | null>
+      } | null>
+      coverImage?: {
+        __typename?: 'UploadFile'
+        documentId: string
+        url: string
+        width?: number | null
+        height?: number | null
+        caption?: string | null
+        alternativeText?: string | null
+        name: string
+      } | null
     } | null
   } | null
 }
@@ -16153,6 +26686,123 @@ type Sections_ComponentSectionsBanner_Fragment = {
       title: string
       locale?: string | null
     } | null
+    inbaRelease?: {
+      __typename?: 'InbaRelease'
+      perex?: string | null
+      releaseDate: any
+      documentId: string
+      title: string
+      slug: string
+      rearImage?: {
+        __typename?: 'UploadFile'
+        documentId: string
+        url: string
+        width?: number | null
+        height?: number | null
+        caption?: string | null
+        alternativeText?: string | null
+        name: string
+      } | null
+      files?: Array<{
+        __typename?: 'ComponentBlocksFile'
+        id: string
+        title?: string | null
+        media?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          name: string
+          ext?: string | null
+          size: number
+          createdAt?: any | null
+          updatedAt?: any | null
+        } | null
+      } | null> | null
+      articles: Array<{
+        __typename: 'Article'
+        perex?: string | null
+        addedAt: any
+        documentId: string
+        slug: string
+        title: string
+        locale?: string | null
+        coverMedia?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
+        articleCategory?: {
+          __typename?: 'ArticleCategory'
+          documentId: string
+          title: string
+          slug: string
+        } | null
+        tags: Array<{
+          __typename?: 'Tag'
+          documentId: string
+          title: string
+          slug: string
+          pageCategory?: {
+            __typename?: 'PageCategory'
+            documentId: string
+            title?: string | null
+            color?: Enum_Pagecategory_Color | null
+          } | null
+        } | null>
+      } | null>
+      featuredArticles: Array<{
+        __typename: 'Article'
+        perex?: string | null
+        addedAt: any
+        documentId: string
+        slug: string
+        title: string
+        locale?: string | null
+        coverMedia?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
+        articleCategory?: {
+          __typename?: 'ArticleCategory'
+          documentId: string
+          title: string
+          slug: string
+        } | null
+        tags: Array<{
+          __typename?: 'Tag'
+          documentId: string
+          title: string
+          slug: string
+          pageCategory?: {
+            __typename?: 'PageCategory'
+            documentId: string
+            title?: string | null
+            color?: Enum_Pagecategory_Color | null
+          } | null
+        } | null>
+      } | null>
+      coverImage?: {
+        __typename?: 'UploadFile'
+        documentId: string
+        url: string
+        width?: number | null
+        height?: number | null
+        caption?: string | null
+        alternativeText?: string | null
+        name: string
+      } | null
+    } | null
   } | null
   secondaryLink?: {
     __typename?: 'ComponentBlocksCommonLink'
@@ -16173,6 +26823,123 @@ type Sections_ComponentSectionsBanner_Fragment = {
       title: string
       locale?: string | null
     } | null
+    inbaRelease?: {
+      __typename?: 'InbaRelease'
+      perex?: string | null
+      releaseDate: any
+      documentId: string
+      title: string
+      slug: string
+      rearImage?: {
+        __typename?: 'UploadFile'
+        documentId: string
+        url: string
+        width?: number | null
+        height?: number | null
+        caption?: string | null
+        alternativeText?: string | null
+        name: string
+      } | null
+      files?: Array<{
+        __typename?: 'ComponentBlocksFile'
+        id: string
+        title?: string | null
+        media?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          name: string
+          ext?: string | null
+          size: number
+          createdAt?: any | null
+          updatedAt?: any | null
+        } | null
+      } | null> | null
+      articles: Array<{
+        __typename: 'Article'
+        perex?: string | null
+        addedAt: any
+        documentId: string
+        slug: string
+        title: string
+        locale?: string | null
+        coverMedia?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
+        articleCategory?: {
+          __typename?: 'ArticleCategory'
+          documentId: string
+          title: string
+          slug: string
+        } | null
+        tags: Array<{
+          __typename?: 'Tag'
+          documentId: string
+          title: string
+          slug: string
+          pageCategory?: {
+            __typename?: 'PageCategory'
+            documentId: string
+            title?: string | null
+            color?: Enum_Pagecategory_Color | null
+          } | null
+        } | null>
+      } | null>
+      featuredArticles: Array<{
+        __typename: 'Article'
+        perex?: string | null
+        addedAt: any
+        documentId: string
+        slug: string
+        title: string
+        locale?: string | null
+        coverMedia?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
+        articleCategory?: {
+          __typename?: 'ArticleCategory'
+          documentId: string
+          title: string
+          slug: string
+        } | null
+        tags: Array<{
+          __typename?: 'Tag'
+          documentId: string
+          title: string
+          slug: string
+          pageCategory?: {
+            __typename?: 'PageCategory'
+            documentId: string
+            title?: string | null
+            color?: Enum_Pagecategory_Color | null
+          } | null
+        } | null>
+      } | null>
+      coverImage?: {
+        __typename?: 'UploadFile'
+        documentId: string
+        url: string
+        width?: number | null
+        height?: number | null
+        caption?: string | null
+        alternativeText?: string | null
+        name: string
+      } | null
+    } | null
   } | null
   tertiaryLink?: {
     __typename?: 'ComponentBlocksCommonLink'
@@ -16192,6 +26959,123 @@ type Sections_ComponentSectionsBanner_Fragment = {
       slug: string
       title: string
       locale?: string | null
+    } | null
+    inbaRelease?: {
+      __typename?: 'InbaRelease'
+      perex?: string | null
+      releaseDate: any
+      documentId: string
+      title: string
+      slug: string
+      rearImage?: {
+        __typename?: 'UploadFile'
+        documentId: string
+        url: string
+        width?: number | null
+        height?: number | null
+        caption?: string | null
+        alternativeText?: string | null
+        name: string
+      } | null
+      files?: Array<{
+        __typename?: 'ComponentBlocksFile'
+        id: string
+        title?: string | null
+        media?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          name: string
+          ext?: string | null
+          size: number
+          createdAt?: any | null
+          updatedAt?: any | null
+        } | null
+      } | null> | null
+      articles: Array<{
+        __typename: 'Article'
+        perex?: string | null
+        addedAt: any
+        documentId: string
+        slug: string
+        title: string
+        locale?: string | null
+        coverMedia?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
+        articleCategory?: {
+          __typename?: 'ArticleCategory'
+          documentId: string
+          title: string
+          slug: string
+        } | null
+        tags: Array<{
+          __typename?: 'Tag'
+          documentId: string
+          title: string
+          slug: string
+          pageCategory?: {
+            __typename?: 'PageCategory'
+            documentId: string
+            title?: string | null
+            color?: Enum_Pagecategory_Color | null
+          } | null
+        } | null>
+      } | null>
+      featuredArticles: Array<{
+        __typename: 'Article'
+        perex?: string | null
+        addedAt: any
+        documentId: string
+        slug: string
+        title: string
+        locale?: string | null
+        coverMedia?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
+        articleCategory?: {
+          __typename?: 'ArticleCategory'
+          documentId: string
+          title: string
+          slug: string
+        } | null
+        tags: Array<{
+          __typename?: 'Tag'
+          documentId: string
+          title: string
+          slug: string
+          pageCategory?: {
+            __typename?: 'PageCategory'
+            documentId: string
+            title?: string | null
+            color?: Enum_Pagecategory_Color | null
+          } | null
+        } | null>
+      } | null>
+      coverImage?: {
+        __typename?: 'UploadFile'
+        documentId: string
+        url: string
+        width?: number | null
+        height?: number | null
+        caption?: string | null
+        alternativeText?: string | null
+        name: string
+      } | null
     } | null
   } | null
 }
@@ -16538,6 +27422,123 @@ type Sections_ComponentSectionsInbaReleases_Fragment = {
       title: string
       locale?: string | null
     } | null
+    inbaRelease?: {
+      __typename?: 'InbaRelease'
+      perex?: string | null
+      releaseDate: any
+      documentId: string
+      title: string
+      slug: string
+      rearImage?: {
+        __typename?: 'UploadFile'
+        documentId: string
+        url: string
+        width?: number | null
+        height?: number | null
+        caption?: string | null
+        alternativeText?: string | null
+        name: string
+      } | null
+      files?: Array<{
+        __typename?: 'ComponentBlocksFile'
+        id: string
+        title?: string | null
+        media?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          name: string
+          ext?: string | null
+          size: number
+          createdAt?: any | null
+          updatedAt?: any | null
+        } | null
+      } | null> | null
+      articles: Array<{
+        __typename: 'Article'
+        perex?: string | null
+        addedAt: any
+        documentId: string
+        slug: string
+        title: string
+        locale?: string | null
+        coverMedia?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
+        articleCategory?: {
+          __typename?: 'ArticleCategory'
+          documentId: string
+          title: string
+          slug: string
+        } | null
+        tags: Array<{
+          __typename?: 'Tag'
+          documentId: string
+          title: string
+          slug: string
+          pageCategory?: {
+            __typename?: 'PageCategory'
+            documentId: string
+            title?: string | null
+            color?: Enum_Pagecategory_Color | null
+          } | null
+        } | null>
+      } | null>
+      featuredArticles: Array<{
+        __typename: 'Article'
+        perex?: string | null
+        addedAt: any
+        documentId: string
+        slug: string
+        title: string
+        locale?: string | null
+        coverMedia?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
+        articleCategory?: {
+          __typename?: 'ArticleCategory'
+          documentId: string
+          title: string
+          slug: string
+        } | null
+        tags: Array<{
+          __typename?: 'Tag'
+          documentId: string
+          title: string
+          slug: string
+          pageCategory?: {
+            __typename?: 'PageCategory'
+            documentId: string
+            title?: string | null
+            color?: Enum_Pagecategory_Color | null
+          } | null
+        } | null>
+      } | null>
+      coverImage?: {
+        __typename?: 'UploadFile'
+        documentId: string
+        url: string
+        width?: number | null
+        height?: number | null
+        caption?: string | null
+        alternativeText?: string | null
+        name: string
+      } | null
+    } | null
   } | null
 }
 
@@ -16607,6 +27608,123 @@ type Sections_ComponentSectionsNumbersOverview_Fragment = {
       slug: string
       title: string
       locale?: string | null
+    } | null
+    inbaRelease?: {
+      __typename?: 'InbaRelease'
+      perex?: string | null
+      releaseDate: any
+      documentId: string
+      title: string
+      slug: string
+      rearImage?: {
+        __typename?: 'UploadFile'
+        documentId: string
+        url: string
+        width?: number | null
+        height?: number | null
+        caption?: string | null
+        alternativeText?: string | null
+        name: string
+      } | null
+      files?: Array<{
+        __typename?: 'ComponentBlocksFile'
+        id: string
+        title?: string | null
+        media?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          name: string
+          ext?: string | null
+          size: number
+          createdAt?: any | null
+          updatedAt?: any | null
+        } | null
+      } | null> | null
+      articles: Array<{
+        __typename: 'Article'
+        perex?: string | null
+        addedAt: any
+        documentId: string
+        slug: string
+        title: string
+        locale?: string | null
+        coverMedia?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
+        articleCategory?: {
+          __typename?: 'ArticleCategory'
+          documentId: string
+          title: string
+          slug: string
+        } | null
+        tags: Array<{
+          __typename?: 'Tag'
+          documentId: string
+          title: string
+          slug: string
+          pageCategory?: {
+            __typename?: 'PageCategory'
+            documentId: string
+            title?: string | null
+            color?: Enum_Pagecategory_Color | null
+          } | null
+        } | null>
+      } | null>
+      featuredArticles: Array<{
+        __typename: 'Article'
+        perex?: string | null
+        addedAt: any
+        documentId: string
+        slug: string
+        title: string
+        locale?: string | null
+        coverMedia?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
+        articleCategory?: {
+          __typename?: 'ArticleCategory'
+          documentId: string
+          title: string
+          slug: string
+        } | null
+        tags: Array<{
+          __typename?: 'Tag'
+          documentId: string
+          title: string
+          slug: string
+          pageCategory?: {
+            __typename?: 'PageCategory'
+            documentId: string
+            title?: string | null
+            color?: Enum_Pagecategory_Color | null
+          } | null
+        } | null>
+      } | null>
+      coverImage?: {
+        __typename?: 'UploadFile'
+        documentId: string
+        url: string
+        width?: number | null
+        height?: number | null
+        caption?: string | null
+        alternativeText?: string | null
+        name: string
+      } | null
     } | null
   } | null
   numbersOverviewItems?: Array<{
@@ -16826,6 +27944,123 @@ type Sections_ComponentSectionsStarzLandingPage_Fragment = {
         title: string
         locale?: string | null
       } | null
+      inbaRelease?: {
+        __typename?: 'InbaRelease'
+        perex?: string | null
+        releaseDate: any
+        documentId: string
+        title: string
+        slug: string
+        rearImage?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
+        files?: Array<{
+          __typename?: 'ComponentBlocksFile'
+          id: string
+          title?: string | null
+          media?: {
+            __typename?: 'UploadFile'
+            documentId: string
+            url: string
+            name: string
+            ext?: string | null
+            size: number
+            createdAt?: any | null
+            updatedAt?: any | null
+          } | null
+        } | null> | null
+        articles: Array<{
+          __typename: 'Article'
+          perex?: string | null
+          addedAt: any
+          documentId: string
+          slug: string
+          title: string
+          locale?: string | null
+          coverMedia?: {
+            __typename?: 'UploadFile'
+            documentId: string
+            url: string
+            width?: number | null
+            height?: number | null
+            caption?: string | null
+            alternativeText?: string | null
+            name: string
+          } | null
+          articleCategory?: {
+            __typename?: 'ArticleCategory'
+            documentId: string
+            title: string
+            slug: string
+          } | null
+          tags: Array<{
+            __typename?: 'Tag'
+            documentId: string
+            title: string
+            slug: string
+            pageCategory?: {
+              __typename?: 'PageCategory'
+              documentId: string
+              title?: string | null
+              color?: Enum_Pagecategory_Color | null
+            } | null
+          } | null>
+        } | null>
+        featuredArticles: Array<{
+          __typename: 'Article'
+          perex?: string | null
+          addedAt: any
+          documentId: string
+          slug: string
+          title: string
+          locale?: string | null
+          coverMedia?: {
+            __typename?: 'UploadFile'
+            documentId: string
+            url: string
+            width?: number | null
+            height?: number | null
+            caption?: string | null
+            alternativeText?: string | null
+            name: string
+          } | null
+          articleCategory?: {
+            __typename?: 'ArticleCategory'
+            documentId: string
+            title: string
+            slug: string
+          } | null
+          tags: Array<{
+            __typename?: 'Tag'
+            documentId: string
+            title: string
+            slug: string
+            pageCategory?: {
+              __typename?: 'PageCategory'
+              documentId: string
+              title?: string | null
+              color?: Enum_Pagecategory_Color | null
+            } | null
+          } | null>
+        } | null>
+        coverImage?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
+      } | null
     } | null
     secondaryLink?: {
       __typename?: 'ComponentBlocksCommonLink'
@@ -16846,6 +28081,123 @@ type Sections_ComponentSectionsStarzLandingPage_Fragment = {
         title: string
         locale?: string | null
       } | null
+      inbaRelease?: {
+        __typename?: 'InbaRelease'
+        perex?: string | null
+        releaseDate: any
+        documentId: string
+        title: string
+        slug: string
+        rearImage?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
+        files?: Array<{
+          __typename?: 'ComponentBlocksFile'
+          id: string
+          title?: string | null
+          media?: {
+            __typename?: 'UploadFile'
+            documentId: string
+            url: string
+            name: string
+            ext?: string | null
+            size: number
+            createdAt?: any | null
+            updatedAt?: any | null
+          } | null
+        } | null> | null
+        articles: Array<{
+          __typename: 'Article'
+          perex?: string | null
+          addedAt: any
+          documentId: string
+          slug: string
+          title: string
+          locale?: string | null
+          coverMedia?: {
+            __typename?: 'UploadFile'
+            documentId: string
+            url: string
+            width?: number | null
+            height?: number | null
+            caption?: string | null
+            alternativeText?: string | null
+            name: string
+          } | null
+          articleCategory?: {
+            __typename?: 'ArticleCategory'
+            documentId: string
+            title: string
+            slug: string
+          } | null
+          tags: Array<{
+            __typename?: 'Tag'
+            documentId: string
+            title: string
+            slug: string
+            pageCategory?: {
+              __typename?: 'PageCategory'
+              documentId: string
+              title?: string | null
+              color?: Enum_Pagecategory_Color | null
+            } | null
+          } | null>
+        } | null>
+        featuredArticles: Array<{
+          __typename: 'Article'
+          perex?: string | null
+          addedAt: any
+          documentId: string
+          slug: string
+          title: string
+          locale?: string | null
+          coverMedia?: {
+            __typename?: 'UploadFile'
+            documentId: string
+            url: string
+            width?: number | null
+            height?: number | null
+            caption?: string | null
+            alternativeText?: string | null
+            name: string
+          } | null
+          articleCategory?: {
+            __typename?: 'ArticleCategory'
+            documentId: string
+            title: string
+            slug: string
+          } | null
+          tags: Array<{
+            __typename?: 'Tag'
+            documentId: string
+            title: string
+            slug: string
+            pageCategory?: {
+              __typename?: 'PageCategory'
+              documentId: string
+              title?: string | null
+              color?: Enum_Pagecategory_Color | null
+            } | null
+          } | null>
+        } | null>
+        coverImage?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
+      } | null
     } | null
     tertiaryLink?: {
       __typename?: 'ComponentBlocksCommonLink'
@@ -16865,6 +28217,123 @@ type Sections_ComponentSectionsStarzLandingPage_Fragment = {
         slug: string
         title: string
         locale?: string | null
+      } | null
+      inbaRelease?: {
+        __typename?: 'InbaRelease'
+        perex?: string | null
+        releaseDate: any
+        documentId: string
+        title: string
+        slug: string
+        rearImage?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
+        files?: Array<{
+          __typename?: 'ComponentBlocksFile'
+          id: string
+          title?: string | null
+          media?: {
+            __typename?: 'UploadFile'
+            documentId: string
+            url: string
+            name: string
+            ext?: string | null
+            size: number
+            createdAt?: any | null
+            updatedAt?: any | null
+          } | null
+        } | null> | null
+        articles: Array<{
+          __typename: 'Article'
+          perex?: string | null
+          addedAt: any
+          documentId: string
+          slug: string
+          title: string
+          locale?: string | null
+          coverMedia?: {
+            __typename?: 'UploadFile'
+            documentId: string
+            url: string
+            width?: number | null
+            height?: number | null
+            caption?: string | null
+            alternativeText?: string | null
+            name: string
+          } | null
+          articleCategory?: {
+            __typename?: 'ArticleCategory'
+            documentId: string
+            title: string
+            slug: string
+          } | null
+          tags: Array<{
+            __typename?: 'Tag'
+            documentId: string
+            title: string
+            slug: string
+            pageCategory?: {
+              __typename?: 'PageCategory'
+              documentId: string
+              title?: string | null
+              color?: Enum_Pagecategory_Color | null
+            } | null
+          } | null>
+        } | null>
+        featuredArticles: Array<{
+          __typename: 'Article'
+          perex?: string | null
+          addedAt: any
+          documentId: string
+          slug: string
+          title: string
+          locale?: string | null
+          coverMedia?: {
+            __typename?: 'UploadFile'
+            documentId: string
+            url: string
+            width?: number | null
+            height?: number | null
+            caption?: string | null
+            alternativeText?: string | null
+            name: string
+          } | null
+          articleCategory?: {
+            __typename?: 'ArticleCategory'
+            documentId: string
+            title: string
+            slug: string
+          } | null
+          tags: Array<{
+            __typename?: 'Tag'
+            documentId: string
+            title: string
+            slug: string
+            pageCategory?: {
+              __typename?: 'PageCategory'
+              documentId: string
+              title?: string | null
+              color?: Enum_Pagecategory_Color | null
+            } | null
+          } | null>
+        } | null>
+        coverImage?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
       } | null
     } | null
   }
@@ -16966,6 +28435,123 @@ type Sections_ComponentSectionsTextWithImage_Fragment = {
       title: string
       locale?: string | null
     } | null
+    inbaRelease?: {
+      __typename?: 'InbaRelease'
+      perex?: string | null
+      releaseDate: any
+      documentId: string
+      title: string
+      slug: string
+      rearImage?: {
+        __typename?: 'UploadFile'
+        documentId: string
+        url: string
+        width?: number | null
+        height?: number | null
+        caption?: string | null
+        alternativeText?: string | null
+        name: string
+      } | null
+      files?: Array<{
+        __typename?: 'ComponentBlocksFile'
+        id: string
+        title?: string | null
+        media?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          name: string
+          ext?: string | null
+          size: number
+          createdAt?: any | null
+          updatedAt?: any | null
+        } | null
+      } | null> | null
+      articles: Array<{
+        __typename: 'Article'
+        perex?: string | null
+        addedAt: any
+        documentId: string
+        slug: string
+        title: string
+        locale?: string | null
+        coverMedia?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
+        articleCategory?: {
+          __typename?: 'ArticleCategory'
+          documentId: string
+          title: string
+          slug: string
+        } | null
+        tags: Array<{
+          __typename?: 'Tag'
+          documentId: string
+          title: string
+          slug: string
+          pageCategory?: {
+            __typename?: 'PageCategory'
+            documentId: string
+            title?: string | null
+            color?: Enum_Pagecategory_Color | null
+          } | null
+        } | null>
+      } | null>
+      featuredArticles: Array<{
+        __typename: 'Article'
+        perex?: string | null
+        addedAt: any
+        documentId: string
+        slug: string
+        title: string
+        locale?: string | null
+        coverMedia?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
+        articleCategory?: {
+          __typename?: 'ArticleCategory'
+          documentId: string
+          title: string
+          slug: string
+        } | null
+        tags: Array<{
+          __typename?: 'Tag'
+          documentId: string
+          title: string
+          slug: string
+          pageCategory?: {
+            __typename?: 'PageCategory'
+            documentId: string
+            title?: string | null
+            color?: Enum_Pagecategory_Color | null
+          } | null
+        } | null>
+      } | null>
+      coverImage?: {
+        __typename?: 'UploadFile'
+        documentId: string
+        url: string
+        width?: number | null
+        height?: number | null
+        caption?: string | null
+        alternativeText?: string | null
+        name: string
+      } | null
+    } | null
   } | null> | null
 }
 
@@ -17002,6 +28588,123 @@ type Sections_ComponentSectionsTextWithImageOverlapped_Fragment = {
       title: string
       locale?: string | null
     } | null
+    inbaRelease?: {
+      __typename?: 'InbaRelease'
+      perex?: string | null
+      releaseDate: any
+      documentId: string
+      title: string
+      slug: string
+      rearImage?: {
+        __typename?: 'UploadFile'
+        documentId: string
+        url: string
+        width?: number | null
+        height?: number | null
+        caption?: string | null
+        alternativeText?: string | null
+        name: string
+      } | null
+      files?: Array<{
+        __typename?: 'ComponentBlocksFile'
+        id: string
+        title?: string | null
+        media?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          name: string
+          ext?: string | null
+          size: number
+          createdAt?: any | null
+          updatedAt?: any | null
+        } | null
+      } | null> | null
+      articles: Array<{
+        __typename: 'Article'
+        perex?: string | null
+        addedAt: any
+        documentId: string
+        slug: string
+        title: string
+        locale?: string | null
+        coverMedia?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
+        articleCategory?: {
+          __typename?: 'ArticleCategory'
+          documentId: string
+          title: string
+          slug: string
+        } | null
+        tags: Array<{
+          __typename?: 'Tag'
+          documentId: string
+          title: string
+          slug: string
+          pageCategory?: {
+            __typename?: 'PageCategory'
+            documentId: string
+            title?: string | null
+            color?: Enum_Pagecategory_Color | null
+          } | null
+        } | null>
+      } | null>
+      featuredArticles: Array<{
+        __typename: 'Article'
+        perex?: string | null
+        addedAt: any
+        documentId: string
+        slug: string
+        title: string
+        locale?: string | null
+        coverMedia?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
+        articleCategory?: {
+          __typename?: 'ArticleCategory'
+          documentId: string
+          title: string
+          slug: string
+        } | null
+        tags: Array<{
+          __typename?: 'Tag'
+          documentId: string
+          title: string
+          slug: string
+          pageCategory?: {
+            __typename?: 'PageCategory'
+            documentId: string
+            title?: string | null
+            color?: Enum_Pagecategory_Color | null
+          } | null
+        } | null>
+      } | null>
+      coverImage?: {
+        __typename?: 'UploadFile'
+        documentId: string
+        url: string
+        width?: number | null
+        height?: number | null
+        caption?: string | null
+        alternativeText?: string | null
+        name: string
+      } | null
+    } | null
   } | null> | null
 }
 
@@ -17027,6 +28730,123 @@ type Sections_ComponentSectionsTootootEvents_Fragment = {
       slug: string
       title: string
       locale?: string | null
+    } | null
+    inbaRelease?: {
+      __typename?: 'InbaRelease'
+      perex?: string | null
+      releaseDate: any
+      documentId: string
+      title: string
+      slug: string
+      rearImage?: {
+        __typename?: 'UploadFile'
+        documentId: string
+        url: string
+        width?: number | null
+        height?: number | null
+        caption?: string | null
+        alternativeText?: string | null
+        name: string
+      } | null
+      files?: Array<{
+        __typename?: 'ComponentBlocksFile'
+        id: string
+        title?: string | null
+        media?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          name: string
+          ext?: string | null
+          size: number
+          createdAt?: any | null
+          updatedAt?: any | null
+        } | null
+      } | null> | null
+      articles: Array<{
+        __typename: 'Article'
+        perex?: string | null
+        addedAt: any
+        documentId: string
+        slug: string
+        title: string
+        locale?: string | null
+        coverMedia?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
+        articleCategory?: {
+          __typename?: 'ArticleCategory'
+          documentId: string
+          title: string
+          slug: string
+        } | null
+        tags: Array<{
+          __typename?: 'Tag'
+          documentId: string
+          title: string
+          slug: string
+          pageCategory?: {
+            __typename?: 'PageCategory'
+            documentId: string
+            title?: string | null
+            color?: Enum_Pagecategory_Color | null
+          } | null
+        } | null>
+      } | null>
+      featuredArticles: Array<{
+        __typename: 'Article'
+        perex?: string | null
+        addedAt: any
+        documentId: string
+        slug: string
+        title: string
+        locale?: string | null
+        coverMedia?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          width?: number | null
+          height?: number | null
+          caption?: string | null
+          alternativeText?: string | null
+          name: string
+        } | null
+        articleCategory?: {
+          __typename?: 'ArticleCategory'
+          documentId: string
+          title: string
+          slug: string
+        } | null
+        tags: Array<{
+          __typename?: 'Tag'
+          documentId: string
+          title: string
+          slug: string
+          pageCategory?: {
+            __typename?: 'PageCategory'
+            documentId: string
+            title?: string | null
+            color?: Enum_Pagecategory_Color | null
+          } | null
+        } | null>
+      } | null>
+      coverImage?: {
+        __typename?: 'UploadFile'
+        documentId: string
+        url: string
+        width?: number | null
+        height?: number | null
+        caption?: string | null
+        alternativeText?: string | null
+        name: string
+      } | null
     } | null
   } | null
 }
@@ -17339,6 +29159,31 @@ export const PageSlugEntityFragmentDoc = gql`
     path
   }
 `
+export const InbaReleaseEntityFragmentDoc = gql`
+  fragment InbaReleaseEntity on InbaRelease {
+    ...InbaReleaseCardEntity
+    rearImage {
+      ...UploadImageEntity
+    }
+    files {
+      id
+      title
+      media {
+        ...UploadFileEntity
+      }
+    }
+    articles {
+      ...ArticleCardEntity
+    }
+    featuredArticles {
+      ...ArticleCardEntity
+    }
+  }
+  ${InbaReleaseCardEntityFragmentDoc}
+  ${UploadImageEntityFragmentDoc}
+  ${UploadFileEntityFragmentDoc}
+  ${ArticleCardEntityFragmentDoc}
+`
 export const CommonLinkFragmentDoc = gql`
   fragment CommonLink on ComponentBlocksCommonLink {
     label
@@ -17348,11 +29193,15 @@ export const CommonLinkFragmentDoc = gql`
     article {
       ...ArticleSlugEntity
     }
+    inbaRelease {
+      ...InbaReleaseEntity
+    }
     url
     analyticsId
   }
   ${PageSlugEntityFragmentDoc}
   ${ArticleSlugEntityFragmentDoc}
+  ${InbaReleaseEntityFragmentDoc}
 `
 export const FooterColumnBlockFragmentDoc = gql`
   fragment FooterColumnBlock on ComponentBlocksFooterColumn {
@@ -17653,31 +29502,6 @@ export const HomepageEntityFragmentDoc = gql`
   ${TootootEventsSectionFragmentDoc}
   ${TopServicesItemFragmentDoc}
   ${HomepageInbaFragmentDoc}
-`
-export const InbaReleaseEntityFragmentDoc = gql`
-  fragment InbaReleaseEntity on InbaRelease {
-    ...InbaReleaseCardEntity
-    rearImage {
-      ...UploadImageEntity
-    }
-    files {
-      id
-      title
-      media {
-        ...UploadFileEntity
-      }
-    }
-    articles {
-      ...ArticleCardEntity
-    }
-    featuredArticles {
-      ...ArticleCardEntity
-    }
-  }
-  ${InbaReleaseCardEntityFragmentDoc}
-  ${UploadImageEntityFragmentDoc}
-  ${UploadFileEntityFragmentDoc}
-  ${ArticleCardEntityFragmentDoc}
 `
 export const InbaReleaseHomepageInbaCardEntityFragmentDoc = gql`
   fragment InbaReleaseHomepageInbaCardEntity on InbaRelease {

@@ -48,6 +48,9 @@ export const getLinkProps = (
   } else if ('article' in link && link.article) {
     label = link.label ?? link.article.title
     href = `/spravy/${link.article.slug}`
+  } else if ('inbaRelease' in link && link.inbaRelease) {
+    label = link.label ?? link.inbaRelease.slug
+    href = `/inba/vydania/${link.inbaRelease.slug}`
   } else if (link?.url && !queryParams) {
     label = link.label ?? link.url
     href = link.url
