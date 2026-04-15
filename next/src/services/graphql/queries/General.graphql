@@ -37,6 +37,9 @@ fragment CommonLink on ComponentBlocksCommonLink {
   regulation {
     ...RegulationSlugEntity
   }
+  asset {
+    ...AssetSlugEntity
+  }
   url
   analyticsId
 }

@@ -116,7 +116,7 @@ export const useQueryBySearchOption = ({
           return {
             title: assets.title,
             uniqueId: assets.slug,
-            linkHref: `/dokumenty/${assets.slug}`,
+            linkHref: getLinkProps({ asset: assets }).href,
             metadata: [assets.assetCategory?.title, formatDate(assets.updatedAt)],
             customIconName: 'search_result_official_board',
           }

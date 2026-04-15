@@ -789,6 +789,7 @@ export type ComponentBlocksCommonLink = {
   __typename?: 'ComponentBlocksCommonLink'
   analyticsId?: Maybe<Scalars['String']['output']>
   article?: Maybe<Article>
+  asset?: Maybe<Asset>
   id: Scalars['ID']['output']
   inbaRelease?: Maybe<InbaRelease>
   label?: Maybe<Scalars['String']['output']>
@@ -801,6 +802,7 @@ export type ComponentBlocksCommonLinkFiltersInput = {
   analyticsId?: InputMaybe<StringFilterInput>
   and?: InputMaybe<Array<InputMaybe<ComponentBlocksCommonLinkFiltersInput>>>
   article?: InputMaybe<ArticleFiltersInput>
+  asset?: InputMaybe<AssetFiltersInput>
   inbaRelease?: InputMaybe<InbaReleaseFiltersInput>
   label?: InputMaybe<StringFilterInput>
   not?: InputMaybe<ComponentBlocksCommonLinkFiltersInput>
@@ -813,6 +815,7 @@ export type ComponentBlocksCommonLinkFiltersInput = {
 export type ComponentBlocksCommonLinkInput = {
   analyticsId?: InputMaybe<Scalars['String']['input']>
   article?: InputMaybe<Scalars['ID']['input']>
+  asset?: InputMaybe<Scalars['ID']['input']>
   id?: InputMaybe<Scalars['ID']['input']>
   inbaRelease?: InputMaybe<Scalars['ID']['input']>
   label?: InputMaybe<Scalars['String']['input']>
@@ -7429,6 +7432,7 @@ export type CommonLinkFragment = {
     slug: string
     titleText?: string | null
   } | null
+  asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
 }
 
 export type CardLinkFragment = {
@@ -7542,6 +7546,7 @@ export type FooterColumnBlockFragment = {
       slug: string
       titleText?: string | null
     } | null
+    asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
   } | null> | null
 }
 
@@ -7587,6 +7592,7 @@ export type FooterFragment = {
         slug: string
         titleText?: string | null
       } | null
+      asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
     } | null> | null
   } | null> | null
   accessibilityPageLink?: {
@@ -7620,6 +7626,7 @@ export type FooterFragment = {
       slug: string
       titleText?: string | null
     } | null
+    asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
   } | null
   innovationsLink?: {
     __typename?: 'ComponentBlocksCommonLink'
@@ -7652,6 +7659,7 @@ export type FooterFragment = {
       slug: string
       titleText?: string | null
     } | null
+    asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
   } | null
 }
 
@@ -7809,6 +7817,7 @@ export type GeneralFragment = {
         slug: string
         titleText?: string | null
       } | null
+      asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
     } | null
   } | null
   newsPage?: {
@@ -8117,6 +8126,7 @@ export type GeneralQuery = {
           slug: string
           titleText?: string | null
         } | null
+        asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
       } | null
     } | null
     newsPage?: {
@@ -8451,6 +8461,7 @@ export type GeneralQuery = {
           slug: string
           titleText?: string | null
         } | null
+        asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
       } | null> | null
     } | null> | null
     accessibilityPageLink?: {
@@ -8484,6 +8495,7 @@ export type GeneralQuery = {
         slug: string
         titleText?: string | null
       } | null
+      asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
     } | null
     innovationsLink?: {
       __typename?: 'ComponentBlocksCommonLink'
@@ -8516,6 +8528,7 @@ export type GeneralQuery = {
         slug: string
         titleText?: string | null
       } | null
+      asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
     } | null
   } | null
   alert?: { __typename?: 'Alert'; updatedAt?: any | null; text?: string | null } | null
@@ -8714,6 +8727,7 @@ export type HomepageEntityFragment = {
         slug: string
         titleText?: string | null
       } | null
+      asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
     } | null
     officialBoardPageLink?: {
       __typename?: 'ComponentBlocksCommonLink'
@@ -8746,6 +8760,7 @@ export type HomepageEntityFragment = {
         slug: string
         titleText?: string | null
       } | null
+      asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
     } | null
     roadClosuresPageLink?: {
       __typename?: 'ComponentBlocksCommonLink'
@@ -8778,6 +8793,7 @@ export type HomepageEntityFragment = {
         slug: string
         titleText?: string | null
       } | null
+      asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
     } | null
   } | null
   mayorAndCouncil?: {
@@ -8815,6 +8831,7 @@ export type HomepageEntityFragment = {
         slug: string
         titleText?: string | null
       } | null
+      asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
     } | null
     councilCard?: {
       __typename?: 'ComponentBlocksCommonLink'
@@ -8847,6 +8864,7 @@ export type HomepageEntityFragment = {
         slug: string
         titleText?: string | null
       } | null
+      asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
     } | null
   } | null
   eventsSection?: {
@@ -8884,6 +8902,7 @@ export type HomepageEntityFragment = {
         slug: string
         titleText?: string | null
       } | null
+      asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
     } | null
   } | null
   topServices?: {
@@ -8923,6 +8942,7 @@ export type HomepageEntityFragment = {
           slug: string
           titleText?: string | null
         } | null
+        asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
       }
     } | null>
   } | null
@@ -8961,6 +8981,7 @@ export type HomepageEntityFragment = {
         slug: string
         titleText?: string | null
       } | null
+      asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
     } | null
   } | null
 }
@@ -9159,6 +9180,7 @@ export type HomepageQuery = {
           slug: string
           titleText?: string | null
         } | null
+        asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
       } | null
       officialBoardPageLink?: {
         __typename?: 'ComponentBlocksCommonLink'
@@ -9191,6 +9213,7 @@ export type HomepageQuery = {
           slug: string
           titleText?: string | null
         } | null
+        asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
       } | null
       roadClosuresPageLink?: {
         __typename?: 'ComponentBlocksCommonLink'
@@ -9223,6 +9246,7 @@ export type HomepageQuery = {
           slug: string
           titleText?: string | null
         } | null
+        asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
       } | null
     } | null
     mayorAndCouncil?: {
@@ -9260,6 +9284,7 @@ export type HomepageQuery = {
           slug: string
           titleText?: string | null
         } | null
+        asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
       } | null
       councilCard?: {
         __typename?: 'ComponentBlocksCommonLink'
@@ -9292,6 +9317,7 @@ export type HomepageQuery = {
           slug: string
           titleText?: string | null
         } | null
+        asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
       } | null
     } | null
     eventsSection?: {
@@ -9329,6 +9355,7 @@ export type HomepageQuery = {
           slug: string
           titleText?: string | null
         } | null
+        asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
       } | null
     } | null
     topServices?: {
@@ -9368,6 +9395,7 @@ export type HomepageQuery = {
             slug: string
             titleText?: string | null
           } | null
+          asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
         }
       } | null>
     } | null
@@ -9406,6 +9434,7 @@ export type HomepageQuery = {
           slug: string
           titleText?: string | null
         } | null
+        asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
       } | null
     } | null
   } | null
@@ -9582,6 +9611,7 @@ export type HomepageTabsFragment = {
       slug: string
       titleText?: string | null
     } | null
+    asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
   } | null
   officialBoardPageLink?: {
     __typename?: 'ComponentBlocksCommonLink'
@@ -9614,6 +9644,7 @@ export type HomepageTabsFragment = {
       slug: string
       titleText?: string | null
     } | null
+    asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
   } | null
   roadClosuresPageLink?: {
     __typename?: 'ComponentBlocksCommonLink'
@@ -9646,6 +9677,7 @@ export type HomepageTabsFragment = {
       slug: string
       titleText?: string | null
     } | null
+    asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
   } | null
 }
 
@@ -9684,6 +9716,7 @@ export type HomepageMayorAndCouncilSectionFragment = {
       slug: string
       titleText?: string | null
     } | null
+    asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
   } | null
   councilCard?: {
     __typename?: 'ComponentBlocksCommonLink'
@@ -9716,6 +9749,7 @@ export type HomepageMayorAndCouncilSectionFragment = {
       slug: string
       titleText?: string | null
     } | null
+    asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
   } | null
 }
 
@@ -9753,6 +9787,7 @@ export type TopServicesItemFragment = {
       slug: string
       titleText?: string | null
     } | null
+    asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
   }
 }
 
@@ -9791,6 +9826,7 @@ export type HomepageInbaFragment = {
       slug: string
       titleText?: string | null
     } | null
+    asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
   } | null
 }
 
@@ -10476,6 +10512,7 @@ export type PageEntityFragment = {
       slug: string
       titleText?: string | null
     } | null
+    asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
   } | null> | null
   pageHeaderSections?: Array<
     | { __typename: 'ComponentHeaderSectionsEvent'; date?: any | null; address?: string | null }
@@ -10670,6 +10707,7 @@ export type PageEntityFragment = {
             slug: string
             titleText?: string | null
           } | null
+          asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
         } | null
       }
     | {
@@ -10742,6 +10780,7 @@ export type PageEntityFragment = {
             slug: string
             titleText?: string | null
           } | null
+          asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
         } | null
       }
     | {
@@ -10814,6 +10853,7 @@ export type PageEntityFragment = {
             slug: string
             titleText?: string | null
           } | null
+          asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
         } | null
         secondaryLink?: {
           __typename?: 'ComponentBlocksCommonLink'
@@ -10846,6 +10886,7 @@ export type PageEntityFragment = {
             slug: string
             titleText?: string | null
           } | null
+          asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
         } | null
         tertiaryLink?: {
           __typename?: 'ComponentBlocksCommonLink'
@@ -10878,6 +10919,7 @@ export type PageEntityFragment = {
             slug: string
             titleText?: string | null
           } | null
+          asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
         } | null
       }
     | {
@@ -11231,6 +11273,7 @@ export type PageEntityFragment = {
             slug: string
             titleText?: string | null
           } | null
+          asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
         } | null
       }
     | {
@@ -11308,6 +11351,7 @@ export type PageEntityFragment = {
             slug: string
             titleText?: string | null
           } | null
+          asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
         } | null
         numbersOverviewItems?: Array<{
           __typename?: 'ComponentBlocksNumbersOverviewItem'
@@ -11525,6 +11569,7 @@ export type PageEntityFragment = {
               slug: string
               titleText?: string | null
             } | null
+            asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
           } | null
           secondaryLink?: {
             __typename?: 'ComponentBlocksCommonLink'
@@ -11557,6 +11602,7 @@ export type PageEntityFragment = {
               slug: string
               titleText?: string | null
             } | null
+            asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
           } | null
           tertiaryLink?: {
             __typename?: 'ComponentBlocksCommonLink'
@@ -11589,6 +11635,7 @@ export type PageEntityFragment = {
               slug: string
               titleText?: string | null
             } | null
+            asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
           } | null
         }
         cardLinks?: Array<{
@@ -11704,6 +11751,7 @@ export type PageEntityFragment = {
             slug: string
             titleText?: string | null
           } | null
+          asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
         } | null> | null
       }
     | {
@@ -11751,6 +11799,7 @@ export type PageEntityFragment = {
             slug: string
             titleText?: string | null
           } | null
+          asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
         } | null> | null
       }
     | {
@@ -11788,6 +11837,7 @@ export type PageEntityFragment = {
             slug: string
             titleText?: string | null
           } | null
+          asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
         } | null
       }
     | {
@@ -11965,6 +12015,7 @@ export type PageByPathQuery = {
         slug: string
         titleText?: string | null
       } | null
+      asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
     } | null> | null
     pageHeaderSections?: Array<
       | { __typename: 'ComponentHeaderSectionsEvent'; date?: any | null; address?: string | null }
@@ -12159,6 +12210,7 @@ export type PageByPathQuery = {
               slug: string
               titleText?: string | null
             } | null
+            asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
           } | null
         }
       | {
@@ -12231,6 +12283,7 @@ export type PageByPathQuery = {
               slug: string
               titleText?: string | null
             } | null
+            asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
           } | null
         }
       | {
@@ -12303,6 +12356,7 @@ export type PageByPathQuery = {
               slug: string
               titleText?: string | null
             } | null
+            asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
           } | null
           secondaryLink?: {
             __typename?: 'ComponentBlocksCommonLink'
@@ -12335,6 +12389,7 @@ export type PageByPathQuery = {
               slug: string
               titleText?: string | null
             } | null
+            asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
           } | null
           tertiaryLink?: {
             __typename?: 'ComponentBlocksCommonLink'
@@ -12367,6 +12422,7 @@ export type PageByPathQuery = {
               slug: string
               titleText?: string | null
             } | null
+            asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
           } | null
         }
       | {
@@ -12723,6 +12779,7 @@ export type PageByPathQuery = {
               slug: string
               titleText?: string | null
             } | null
+            asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
           } | null
         }
       | {
@@ -12800,6 +12857,7 @@ export type PageByPathQuery = {
               slug: string
               titleText?: string | null
             } | null
+            asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
           } | null
           numbersOverviewItems?: Array<{
             __typename?: 'ComponentBlocksNumbersOverviewItem'
@@ -13017,6 +13075,12 @@ export type PageByPathQuery = {
                 slug: string
                 titleText?: string | null
               } | null
+              asset?: {
+                __typename: 'Asset'
+                documentId: string
+                slug: string
+                title: string
+              } | null
             } | null
             secondaryLink?: {
               __typename?: 'ComponentBlocksCommonLink'
@@ -13049,6 +13113,12 @@ export type PageByPathQuery = {
                 slug: string
                 titleText?: string | null
               } | null
+              asset?: {
+                __typename: 'Asset'
+                documentId: string
+                slug: string
+                title: string
+              } | null
             } | null
             tertiaryLink?: {
               __typename?: 'ComponentBlocksCommonLink'
@@ -13080,6 +13150,12 @@ export type PageByPathQuery = {
                 documentId: string
                 slug: string
                 titleText?: string | null
+              } | null
+              asset?: {
+                __typename: 'Asset'
+                documentId: string
+                slug: string
+                title: string
               } | null
             } | null
           }
@@ -13196,6 +13272,7 @@ export type PageByPathQuery = {
               slug: string
               titleText?: string | null
             } | null
+            asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
           } | null> | null
         }
       | {
@@ -13243,6 +13320,7 @@ export type PageByPathQuery = {
               slug: string
               titleText?: string | null
             } | null
+            asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
           } | null> | null
         }
       | {
@@ -13280,6 +13358,7 @@ export type PageByPathQuery = {
               slug: string
               titleText?: string | null
             } | null
+            asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
           } | null
         }
       | {
@@ -13477,6 +13556,7 @@ export type Dev_AllPagesQuery = {
         slug: string
         titleText?: string | null
       } | null
+      asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
     } | null> | null
     pageHeaderSections?: Array<
       | { __typename: 'ComponentHeaderSectionsEvent'; date?: any | null; address?: string | null }
@@ -13671,6 +13751,7 @@ export type Dev_AllPagesQuery = {
               slug: string
               titleText?: string | null
             } | null
+            asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
           } | null
         }
       | {
@@ -13743,6 +13824,7 @@ export type Dev_AllPagesQuery = {
               slug: string
               titleText?: string | null
             } | null
+            asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
           } | null
         }
       | {
@@ -13815,6 +13897,7 @@ export type Dev_AllPagesQuery = {
               slug: string
               titleText?: string | null
             } | null
+            asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
           } | null
           secondaryLink?: {
             __typename?: 'ComponentBlocksCommonLink'
@@ -13847,6 +13930,7 @@ export type Dev_AllPagesQuery = {
               slug: string
               titleText?: string | null
             } | null
+            asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
           } | null
           tertiaryLink?: {
             __typename?: 'ComponentBlocksCommonLink'
@@ -13879,6 +13963,7 @@ export type Dev_AllPagesQuery = {
               slug: string
               titleText?: string | null
             } | null
+            asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
           } | null
         }
       | {
@@ -14235,6 +14320,7 @@ export type Dev_AllPagesQuery = {
               slug: string
               titleText?: string | null
             } | null
+            asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
           } | null
         }
       | {
@@ -14312,6 +14398,7 @@ export type Dev_AllPagesQuery = {
               slug: string
               titleText?: string | null
             } | null
+            asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
           } | null
           numbersOverviewItems?: Array<{
             __typename?: 'ComponentBlocksNumbersOverviewItem'
@@ -14529,6 +14616,12 @@ export type Dev_AllPagesQuery = {
                 slug: string
                 titleText?: string | null
               } | null
+              asset?: {
+                __typename: 'Asset'
+                documentId: string
+                slug: string
+                title: string
+              } | null
             } | null
             secondaryLink?: {
               __typename?: 'ComponentBlocksCommonLink'
@@ -14561,6 +14654,12 @@ export type Dev_AllPagesQuery = {
                 slug: string
                 titleText?: string | null
               } | null
+              asset?: {
+                __typename: 'Asset'
+                documentId: string
+                slug: string
+                title: string
+              } | null
             } | null
             tertiaryLink?: {
               __typename?: 'ComponentBlocksCommonLink'
@@ -14592,6 +14691,12 @@ export type Dev_AllPagesQuery = {
                 documentId: string
                 slug: string
                 titleText?: string | null
+              } | null
+              asset?: {
+                __typename: 'Asset'
+                documentId: string
+                slug: string
+                title: string
               } | null
             } | null
           }
@@ -14708,6 +14813,7 @@ export type Dev_AllPagesQuery = {
               slug: string
               titleText?: string | null
             } | null
+            asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
           } | null> | null
         }
       | {
@@ -14755,6 +14861,7 @@ export type Dev_AllPagesQuery = {
               slug: string
               titleText?: string | null
             } | null
+            asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
           } | null> | null
         }
       | {
@@ -14792,6 +14899,7 @@ export type Dev_AllPagesQuery = {
               slug: string
               titleText?: string | null
             } | null
+            asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
           } | null
         }
       | {
@@ -15583,6 +15691,7 @@ export type ArticlesSectionFragment = {
       slug: string
       titleText?: string | null
     } | null
+    asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
   } | null
 }
 
@@ -15622,6 +15731,7 @@ export type InbaReleasesSectionFragment = {
       slug: string
       titleText?: string | null
     } | null
+    asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
   } | null
 }
 
@@ -15676,6 +15786,7 @@ export type TextWithImageSectionFragment = {
       slug: string
       titleText?: string | null
     } | null
+    asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
   } | null> | null
 }
 
@@ -15724,6 +15835,7 @@ export type TextWithImageOverlappedSectionFragment = {
       slug: string
       titleText?: string | null
     } | null
+    asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
   } | null> | null
 }
 
@@ -16077,6 +16189,7 @@ export type BannerSectionFragment = {
       slug: string
       titleText?: string | null
     } | null
+    asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
   } | null
   secondaryLink?: {
     __typename?: 'ComponentBlocksCommonLink'
@@ -16109,6 +16222,7 @@ export type BannerSectionFragment = {
       slug: string
       titleText?: string | null
     } | null
+    asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
   } | null
   tertiaryLink?: {
     __typename?: 'ComponentBlocksCommonLink'
@@ -16141,6 +16255,7 @@ export type BannerSectionFragment = {
       slug: string
       titleText?: string | null
     } | null
+    asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
   } | null
 }
 
@@ -16410,6 +16525,7 @@ export type TootootEventsSectionFragment = {
       slug: string
       titleText?: string | null
     } | null
+    asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
   } | null
 }
 
@@ -16527,6 +16643,7 @@ export type NumbersOverviewSectionFragment = {
       slug: string
       titleText?: string | null
     } | null
+    asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
   } | null
   numbersOverviewItems?: Array<{
     __typename?: 'ComponentBlocksNumbersOverviewItem'
@@ -16655,6 +16772,7 @@ export type StarzLandingPageSectionFragment = {
         slug: string
         titleText?: string | null
       } | null
+      asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
     } | null
     secondaryLink?: {
       __typename?: 'ComponentBlocksCommonLink'
@@ -16687,6 +16805,7 @@ export type StarzLandingPageSectionFragment = {
         slug: string
         titleText?: string | null
       } | null
+      asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
     } | null
     tertiaryLink?: {
       __typename?: 'ComponentBlocksCommonLink'
@@ -16719,6 +16838,7 @@ export type StarzLandingPageSectionFragment = {
         slug: string
         titleText?: string | null
       } | null
+      asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
     } | null
   }
   cardLinks?: Array<{
@@ -16938,6 +17058,7 @@ export type ArticlesLandingPageSectionFragment = {
       slug: string
       titleText?: string | null
     } | null
+    asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
   } | null
 }
 
@@ -17111,6 +17232,7 @@ type Sections_ComponentSectionsArticles_Fragment = {
       slug: string
       titleText?: string | null
     } | null
+    asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
   } | null
 }
 
@@ -17184,6 +17306,7 @@ type Sections_ComponentSectionsArticlesLandingPage_Fragment = {
       slug: string
       titleText?: string | null
     } | null
+    asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
   } | null
 }
 
@@ -17258,6 +17381,7 @@ type Sections_ComponentSectionsBanner_Fragment = {
       slug: string
       titleText?: string | null
     } | null
+    asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
   } | null
   secondaryLink?: {
     __typename?: 'ComponentBlocksCommonLink'
@@ -17290,6 +17414,7 @@ type Sections_ComponentSectionsBanner_Fragment = {
       slug: string
       titleText?: string | null
     } | null
+    asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
   } | null
   tertiaryLink?: {
     __typename?: 'ComponentBlocksCommonLink'
@@ -17322,6 +17447,7 @@ type Sections_ComponentSectionsBanner_Fragment = {
       slug: string
       titleText?: string | null
     } | null
+    asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
   } | null
 }
 
@@ -17679,6 +17805,7 @@ type Sections_ComponentSectionsInbaReleases_Fragment = {
       slug: string
       titleText?: string | null
     } | null
+    asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
   } | null
 }
 
@@ -17761,6 +17888,7 @@ type Sections_ComponentSectionsNumbersOverview_Fragment = {
       slug: string
       titleText?: string | null
     } | null
+    asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
   } | null
   numbersOverviewItems?: Array<{
     __typename?: 'ComponentBlocksNumbersOverviewItem'
@@ -17991,6 +18119,7 @@ type Sections_ComponentSectionsStarzLandingPage_Fragment = {
         slug: string
         titleText?: string | null
       } | null
+      asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
     } | null
     secondaryLink?: {
       __typename?: 'ComponentBlocksCommonLink'
@@ -18023,6 +18152,7 @@ type Sections_ComponentSectionsStarzLandingPage_Fragment = {
         slug: string
         titleText?: string | null
       } | null
+      asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
     } | null
     tertiaryLink?: {
       __typename?: 'ComponentBlocksCommonLink'
@@ -18055,6 +18185,7 @@ type Sections_ComponentSectionsStarzLandingPage_Fragment = {
         slug: string
         titleText?: string | null
       } | null
+      asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
     } | null
   }
   cardLinks?: Array<{
@@ -18167,6 +18298,7 @@ type Sections_ComponentSectionsTextWithImage_Fragment = {
       slug: string
       titleText?: string | null
     } | null
+    asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
   } | null> | null
 }
 
@@ -18215,6 +18347,7 @@ type Sections_ComponentSectionsTextWithImageOverlapped_Fragment = {
       slug: string
       titleText?: string | null
     } | null
+    asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
   } | null> | null
 }
 
@@ -18253,6 +18386,7 @@ type Sections_ComponentSectionsTootootEvents_Fragment = {
       slug: string
       titleText?: string | null
     } | null
+    asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
   } | null
 }
 
@@ -18571,6 +18705,14 @@ export const RegulationSlugEntityFragmentDoc = gql`
     titleText
   }
 `
+export const AssetSlugEntityFragmentDoc = gql`
+  fragment AssetSlugEntity on Asset {
+    __typename
+    documentId
+    slug
+    title
+  }
+`
 export const CommonLinkFragmentDoc = gql`
   fragment CommonLink on ComponentBlocksCommonLink {
     label
@@ -18586,6 +18728,9 @@ export const CommonLinkFragmentDoc = gql`
     regulation {
       ...RegulationSlugEntity
     }
+    asset {
+      ...AssetSlugEntity
+    }
     url
     analyticsId
   }
@@ -18593,6 +18738,7 @@ export const CommonLinkFragmentDoc = gql`
   ${ArticleSlugEntityFragmentDoc}
   ${InbaReleaseSlugEntityFragmentDoc}
   ${RegulationSlugEntityFragmentDoc}
+  ${AssetSlugEntityFragmentDoc}
 `
 export const FooterColumnBlockFragmentDoc = gql`
   fragment FooterColumnBlock on ComponentBlocksFooterColumn {
@@ -19538,14 +19684,6 @@ export const PartnersSectionFragmentDoc = gql`
     titleLevelPartnersSection: titleLevel
   }
   ${PartnerBlockFragmentDoc}
-`
-export const AssetSlugEntityFragmentDoc = gql`
-  fragment AssetSlugEntity on Asset {
-    __typename
-    documentId
-    slug
-    title
-  }
 `
 export const AssetCategoryEntityFragmentDoc = gql`
   fragment AssetCategoryEntity on AssetCategory {

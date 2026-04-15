@@ -11,6 +11,7 @@ import { AssetsSectionFragment } from '@/src/services/graphql'
 import { formatDate } from '@/src/utils/formatDate'
 import { formatFileExtension } from '@/src/utils/formatFileExtension'
 import { formatFileSize } from '@/src/utils/formatFileSize'
+import { getLinkProps } from '@/src/utils/getLinkProps'
 import { isDefined } from '@/src/utils/isDefined'
 import { useLocale } from '@/src/utils/useLocale'
 
@@ -46,7 +47,7 @@ const AssetsSection = ({ section }: Props) => {
         <ul className="flex flex-col rounded-lg border py-2">
           {filteredAssets
             .map((asset, index) => {
-              const { title: assetTitle, files, assetCategory, slug, updatedAt, documentId } = asset
+              const { title: assetTitle, files, assetCategory, updatedAt, documentId } = asset
 
               const filteredFiles = files.filter(isDefined)
               const isSingleFile = filteredFiles.length === 1
@@ -58,7 +59,7 @@ const AssetsSection = ({ section }: Props) => {
                   {index > 0 ? <HorizontalDivider asListItem className="mx-4 lg:mx-6" /> : null}
                   <li className="w-full">
                     <DocumentRowCard
-                      linkHref={isSingleFile ? (url ?? '#') : `/dokumenty/${slug}`}
+                      linkHref={isSingleFile ? (url ?? '#') : getLinkProps({ asset }).href}
                       title={assetTitle}
                       cardTitleLevel={getCardTitleLevel(titleLevel)}
                       variant={isSingleFile ? 'single-file' : 'multiple-files'}

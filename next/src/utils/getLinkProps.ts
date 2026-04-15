@@ -50,6 +50,10 @@ const getEntityLinkData = (link: NonNullable<LinkFragment>) => {
     return { label: link.label ?? link.regulation.slug, href: `/vzn/${link.regulation.slug}` }
   }
 
+  if ('asset' in link && link.asset) {
+    return { label: link.label ?? link.asset.slug, href: `/dokumenty/${link.asset.slug}` }
+  }
+
   return null
 }
 
