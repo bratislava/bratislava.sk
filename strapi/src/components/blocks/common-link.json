@@ -34,6 +34,11 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::regulation.regulation"
+    },
+    "asset": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::asset.asset"
     }
   }
 }

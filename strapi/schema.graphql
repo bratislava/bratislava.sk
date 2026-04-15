@@ -545,6 +545,7 @@ input ComponentBlocksColumnsListItemInput {
 type ComponentBlocksCommonLink {
   analyticsId: String
   article: Article
+  asset: Asset
   id: ID!
   inbaRelease: InbaRelease
   label: String
@@ -557,6 +558,7 @@ input ComponentBlocksCommonLinkFiltersInput {
   analyticsId: StringFilterInput
   and: [ComponentBlocksCommonLinkFiltersInput]
   article: ArticleFiltersInput
+  asset: AssetFiltersInput
   inbaRelease: InbaReleaseFiltersInput
   label: StringFilterInput
   not: ComponentBlocksCommonLinkFiltersInput
@@ -569,6 +571,7 @@ input ComponentBlocksCommonLinkFiltersInput {
 input ComponentBlocksCommonLinkInput {
   analyticsId: String
   article: ID
+  asset: ID
   id: ID
   inbaRelease: ID
   label: String

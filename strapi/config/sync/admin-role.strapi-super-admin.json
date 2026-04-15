@@ -712,6 +712,7 @@
           "columns.links.analyticsId",
           "columns.links.inbaRelease",
           "columns.links.regulation",
+          "columns.links.asset",
           "accessibilityPageLink.label",
           "accessibilityPageLink.page",
           "accessibilityPageLink.article",
@@ -719,6 +720,7 @@
           "accessibilityPageLink.analyticsId",
           "accessibilityPageLink.inbaRelease",
           "accessibilityPageLink.regulation",
+          "accessibilityPageLink.asset",
           "innovationsLink.label",
           "innovationsLink.page",
           "innovationsLink.article",
@@ -726,6 +728,7 @@
           "innovationsLink.analyticsId",
           "innovationsLink.inbaRelease",
           "innovationsLink.regulation",
+          "innovationsLink.asset",
           "contactText"
         ],
         "locales": [
@@ -735,7 +738,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "bjz41jadjdwn22645757hrl2",
+      "documentId": "gmfz8z84z59jhdp0n2rm1tpc",
       "locale": null
     },
     {
@@ -784,6 +787,7 @@
           "columns.links.analyticsId",
           "columns.links.inbaRelease",
           "columns.links.regulation",
+          "columns.links.asset",
           "accessibilityPageLink.label",
           "accessibilityPageLink.page",
           "accessibilityPageLink.article",
@@ -791,6 +795,7 @@
           "accessibilityPageLink.analyticsId",
           "accessibilityPageLink.inbaRelease",
           "accessibilityPageLink.regulation",
+          "accessibilityPageLink.asset",
           "innovationsLink.label",
           "innovationsLink.page",
           "innovationsLink.article",
@@ -798,6 +803,7 @@
           "innovationsLink.analyticsId",
           "innovationsLink.inbaRelease",
           "innovationsLink.regulation",
+          "innovationsLink.asset",
           "contactText"
         ],
         "locales": [
@@ -807,7 +813,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "k9dw1a00wot7zkjdcznn1ojs",
+      "documentId": "scc5s4b7ptbmdxkkkrzem21v",
       "locale": null
     },
     {
@@ -828,6 +834,7 @@
           "columns.links.analyticsId",
           "columns.links.inbaRelease",
           "columns.links.regulation",
+          "columns.links.asset",
           "accessibilityPageLink.label",
           "accessibilityPageLink.page",
           "accessibilityPageLink.article",
@@ -835,6 +842,7 @@
           "accessibilityPageLink.analyticsId",
           "accessibilityPageLink.inbaRelease",
           "accessibilityPageLink.regulation",
+          "accessibilityPageLink.asset",
           "innovationsLink.label",
           "innovationsLink.page",
           "innovationsLink.article",
@@ -842,6 +850,7 @@
           "innovationsLink.analyticsId",
           "innovationsLink.inbaRelease",
           "innovationsLink.regulation",
+          "innovationsLink.asset",
           "contactText"
         ],
         "locales": [
@@ -851,7 +860,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "jsvdvvdou3w5jgt8vjmbihpi",
+      "documentId": "yqd5q8kxpkfptder6kx7rpi6",
       "locale": null
     },
     {
@@ -873,6 +882,7 @@
           "header.accountLink.analyticsId",
           "header.accountLink.inbaRelease",
           "header.accountLink.regulation",
+          "header.accountLink.asset",
           "privacyPolicyPage",
           "officialBoardPage",
           "newsPage",
@@ -888,7 +898,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "ze7hya48u8fi8b69m0izuyi0",
+      "documentId": "qb01i74ta99tgpf76ysepyt5",
       "locale": null
     },
     {
@@ -938,6 +948,7 @@
           "header.accountLink.analyticsId",
           "header.accountLink.inbaRelease",
           "header.accountLink.regulation",
+          "header.accountLink.asset",
           "privacyPolicyPage",
           "officialBoardPage",
           "newsPage",
@@ -953,7 +964,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "nadb2j3wwpod6pbhkbhja1vz",
+      "documentId": "thbytziibetqhpj6gk7qz23b",
       "locale": null
     },
     {
@@ -975,6 +986,7 @@
           "header.accountLink.analyticsId",
           "header.accountLink.inbaRelease",
           "header.accountLink.regulation",
+          "header.accountLink.asset",
           "privacyPolicyPage",
           "officialBoardPage",
           "newsPage",
@@ -990,7 +1002,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "uktgvz36alqwjk89budyyi38",
+      "documentId": "a82bbkgf6gqrh7ndiireystq",
       "locale": null
     },
     {
@@ -1020,6 +1032,7 @@
           "tabs.newsPageLink.analyticsId",
           "tabs.newsPageLink.inbaRelease",
           "tabs.newsPageLink.regulation",
+          "tabs.newsPageLink.asset",
           "tabs.officialBoardPageLink.label",
           "tabs.officialBoardPageLink.page",
           "tabs.officialBoardPageLink.article",
@@ -1027,6 +1040,7 @@
           "tabs.officialBoardPageLink.analyticsId",
           "tabs.officialBoardPageLink.inbaRelease",
           "tabs.officialBoardPageLink.regulation",
+          "tabs.officialBoardPageLink.asset",
           "tabs.roadClosuresPageLink.label",
           "tabs.roadClosuresPageLink.page",
           "tabs.roadClosuresPageLink.article",
@@ -1034,6 +1048,7 @@
           "tabs.roadClosuresPageLink.analyticsId",
           "tabs.roadClosuresPageLink.inbaRelease",
           "tabs.roadClosuresPageLink.regulation",
+          "tabs.roadClosuresPageLink.asset",
           "mayorAndCouncil.title",
           "mayorAndCouncil.text",
           "mayorAndCouncil.mayorCard.label",
@@ -1043,6 +1058,7 @@
           "mayorAndCouncil.mayorCard.analyticsId",
           "mayorAndCouncil.mayorCard.inbaRelease",
           "mayorAndCouncil.mayorCard.regulation",
+          "mayorAndCouncil.mayorCard.asset",
           "mayorAndCouncil.councilCard.label",
           "mayorAndCouncil.councilCard.page",
           "mayorAndCouncil.councilCard.article",
@@ -1050,6 +1066,7 @@
           "mayorAndCouncil.councilCard.analyticsId",
           "mayorAndCouncil.councilCard.inbaRelease",
           "mayorAndCouncil.councilCard.regulation",
+          "mayorAndCouncil.councilCard.asset",
           "topServices.title",
           "topServices.services.icon",
           "topServices.services.link.label",
@@ -1059,6 +1076,7 @@
           "topServices.services.link.analyticsId",
           "topServices.services.link.inbaRelease",
           "topServices.services.link.regulation",
+          "topServices.services.link.asset",
           "inba.title",
           "inba.content",
           "inba.showMoreLink.label",
@@ -1068,6 +1086,7 @@
           "inba.showMoreLink.analyticsId",
           "inba.showMoreLink.inbaRelease",
           "inba.showMoreLink.regulation",
+          "inba.showMoreLink.asset",
           "eventsSection.title",
           "eventsSection.text",
           "eventsSection.showMoreLink.label",
@@ -1076,7 +1095,8 @@
           "eventsSection.showMoreLink.url",
           "eventsSection.showMoreLink.analyticsId",
           "eventsSection.showMoreLink.inbaRelease",
-          "eventsSection.showMoreLink.regulation"
+          "eventsSection.showMoreLink.regulation",
+          "eventsSection.showMoreLink.asset"
         ],
         "locales": [
           "sk",
@@ -1085,7 +1105,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "c2d5lgbw7zgr39toqzzjgly5",
+      "documentId": "copulxdofcm03teexaolxrqv",
       "locale": null
     },
     {
@@ -1143,6 +1163,7 @@
           "tabs.newsPageLink.analyticsId",
           "tabs.newsPageLink.inbaRelease",
           "tabs.newsPageLink.regulation",
+          "tabs.newsPageLink.asset",
           "tabs.officialBoardPageLink.label",
           "tabs.officialBoardPageLink.page",
           "tabs.officialBoardPageLink.article",
@@ -1150,6 +1171,7 @@
           "tabs.officialBoardPageLink.analyticsId",
           "tabs.officialBoardPageLink.inbaRelease",
           "tabs.officialBoardPageLink.regulation",
+          "tabs.officialBoardPageLink.asset",
           "tabs.roadClosuresPageLink.label",
           "tabs.roadClosuresPageLink.page",
           "tabs.roadClosuresPageLink.article",
@@ -1157,6 +1179,7 @@
           "tabs.roadClosuresPageLink.analyticsId",
           "tabs.roadClosuresPageLink.inbaRelease",
           "tabs.roadClosuresPageLink.regulation",
+          "tabs.roadClosuresPageLink.asset",
           "mayorAndCouncil.title",
           "mayorAndCouncil.text",
           "mayorAndCouncil.mayorCard.label",
@@ -1166,6 +1189,7 @@
           "mayorAndCouncil.mayorCard.analyticsId",
           "mayorAndCouncil.mayorCard.inbaRelease",
           "mayorAndCouncil.mayorCard.regulation",
+          "mayorAndCouncil.mayorCard.asset",
           "mayorAndCouncil.councilCard.label",
           "mayorAndCouncil.councilCard.page",
           "mayorAndCouncil.councilCard.article",
@@ -1173,6 +1197,7 @@
           "mayorAndCouncil.councilCard.analyticsId",
           "mayorAndCouncil.councilCard.inbaRelease",
           "mayorAndCouncil.councilCard.regulation",
+          "mayorAndCouncil.councilCard.asset",
           "topServices.title",
           "topServices.services.icon",
           "topServices.services.link.label",
@@ -1182,6 +1207,7 @@
           "topServices.services.link.analyticsId",
           "topServices.services.link.inbaRelease",
           "topServices.services.link.regulation",
+          "topServices.services.link.asset",
           "inba.title",
           "inba.content",
           "inba.showMoreLink.label",
@@ -1191,6 +1217,7 @@
           "inba.showMoreLink.analyticsId",
           "inba.showMoreLink.inbaRelease",
           "inba.showMoreLink.regulation",
+          "inba.showMoreLink.asset",
           "eventsSection.title",
           "eventsSection.text",
           "eventsSection.showMoreLink.label",
@@ -1199,7 +1226,8 @@
           "eventsSection.showMoreLink.url",
           "eventsSection.showMoreLink.analyticsId",
           "eventsSection.showMoreLink.inbaRelease",
-          "eventsSection.showMoreLink.regulation"
+          "eventsSection.showMoreLink.regulation",
+          "eventsSection.showMoreLink.asset"
         ],
         "locales": [
           "sk",
@@ -1208,7 +1236,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "phz518dwgr663cn9q2jvmdg5",
+      "documentId": "lk4ubzzr1n092km640mfjiry",
       "locale": null
     },
     {
@@ -1238,6 +1266,7 @@
           "tabs.newsPageLink.analyticsId",
           "tabs.newsPageLink.inbaRelease",
           "tabs.newsPageLink.regulation",
+          "tabs.newsPageLink.asset",
           "tabs.officialBoardPageLink.label",
           "tabs.officialBoardPageLink.page",
           "tabs.officialBoardPageLink.article",
@@ -1245,6 +1274,7 @@
           "tabs.officialBoardPageLink.analyticsId",
           "tabs.officialBoardPageLink.inbaRelease",
           "tabs.officialBoardPageLink.regulation",
+          "tabs.officialBoardPageLink.asset",
           "tabs.roadClosuresPageLink.label",
           "tabs.roadClosuresPageLink.page",
           "tabs.roadClosuresPageLink.article",
@@ -1252,6 +1282,7 @@
           "tabs.roadClosuresPageLink.analyticsId",
           "tabs.roadClosuresPageLink.inbaRelease",
           "tabs.roadClosuresPageLink.regulation",
+          "tabs.roadClosuresPageLink.asset",
           "mayorAndCouncil.title",
           "mayorAndCouncil.text",
           "mayorAndCouncil.mayorCard.label",
@@ -1261,6 +1292,7 @@
           "mayorAndCouncil.mayorCard.analyticsId",
           "mayorAndCouncil.mayorCard.inbaRelease",
           "mayorAndCouncil.mayorCard.regulation",
+          "mayorAndCouncil.mayorCard.asset",
           "mayorAndCouncil.councilCard.label",
           "mayorAndCouncil.councilCard.page",
           "mayorAndCouncil.councilCard.article",
@@ -1268,6 +1300,7 @@
           "mayorAndCouncil.councilCard.analyticsId",
           "mayorAndCouncil.councilCard.inbaRelease",
           "mayorAndCouncil.councilCard.regulation",
+          "mayorAndCouncil.councilCard.asset",
           "topServices.title",
           "topServices.services.icon",
           "topServices.services.link.label",
@@ -1277,6 +1310,7 @@
           "topServices.services.link.analyticsId",
           "topServices.services.link.inbaRelease",
           "topServices.services.link.regulation",
+          "topServices.services.link.asset",
           "inba.title",
           "inba.content",
           "inba.showMoreLink.label",
@@ -1286,6 +1320,7 @@
           "inba.showMoreLink.analyticsId",
           "inba.showMoreLink.inbaRelease",
           "inba.showMoreLink.regulation",
+          "inba.showMoreLink.asset",
           "eventsSection.title",
           "eventsSection.text",
           "eventsSection.showMoreLink.label",
@@ -1294,7 +1329,8 @@
           "eventsSection.showMoreLink.url",
           "eventsSection.showMoreLink.analyticsId",
           "eventsSection.showMoreLink.inbaRelease",
-          "eventsSection.showMoreLink.regulation"
+          "eventsSection.showMoreLink.regulation",
+          "eventsSection.showMoreLink.asset"
         ],
         "locales": [
           "sk",
@@ -1303,7 +1339,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "bcqmqn6pqmb6eaulr6acfpp6",
+      "documentId": "x98mt8uojo1fnhp2yt92thm9",
       "locale": null
     },
     {
@@ -1678,6 +1714,7 @@
           "headerLinks.analyticsId",
           "headerLinks.inbaRelease",
           "headerLinks.regulation",
+          "headerLinks.asset",
           "pageHeaderSections",
           "subnavigation.links.label",
           "subnavigation.links.subtext",
@@ -1703,7 +1740,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "tgj0ieit1sq4c7v3bgb1lm5r",
+      "documentId": "i8xpvcoxs50a2wuoex4qm4f5",
       "locale": null
     },
     {
@@ -1756,6 +1793,7 @@
           "headerLinks.analyticsId",
           "headerLinks.inbaRelease",
           "headerLinks.regulation",
+          "headerLinks.asset",
           "pageHeaderSections",
           "subnavigation.links.label",
           "subnavigation.links.subtext",
@@ -1781,7 +1819,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "hxlzzhg26sgxm7omasovvibp",
+      "documentId": "pnsex7bhlib1u7uk3vinewxc",
       "locale": null
     },
     {
@@ -1806,6 +1844,7 @@
           "headerLinks.analyticsId",
           "headerLinks.inbaRelease",
           "headerLinks.regulation",
+          "headerLinks.asset",
           "pageHeaderSections",
           "subnavigation.links.label",
           "subnavigation.links.subtext",
@@ -1831,7 +1870,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "meh5tbbo2biac48pruj3zco8",
+      "documentId": "ys05zkmpl82mhqrg63tu5uia",
       "locale": null
     },
     {

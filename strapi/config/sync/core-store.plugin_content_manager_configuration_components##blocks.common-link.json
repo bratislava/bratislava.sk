@@ -122,6 +122,21 @@
           "sortable": true
         }
       },
+      "asset": {
+        "edit": {
+          "label": "asset",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "title"
+        },
+        "list": {
+          "label": "asset",
+          "searchable": true,
+          "sortable": true
+        }
+      },
       "documentId": {
         "edit": {},
         "list": {
@@ -172,6 +187,12 @@
           },
           {
             "name": "regulation",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "asset",
             "size": 6
           }
         ]
