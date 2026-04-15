@@ -252,7 +252,6 @@ const nextConfig = {
         destination: '/doprava-a-mapy/zdielana-mobilita',
         permanent: true,
       },
-
       {
         source: '/doprava-a-mapy/zdielana-mobilita/kolobezky',
         destination: '/doprava-a-mapy/zdielana-mobilita',
@@ -261,6 +260,11 @@ const nextConfig = {
       {
         source: '/kultura-a-komunity/komunity/asistencne-centrum-pre-ludi-s-cudzineckym-povodom',
         destination: '/kultura-a-komunity/loom-centrum-pre-ludi-s-cudzineckym-povodom',
+        permanent: true,
+      },
+      {
+        source: '/doprava-a-mapy/:path*',
+        destination: '/doprava-a-komunikacie/:path*',
         permanent: true,
       },
     ]

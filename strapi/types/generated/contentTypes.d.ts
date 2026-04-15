@@ -1161,7 +1161,6 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
         'sections.divider',
         'sections.assets',
         'sections.faqs',
-        'sections.faq-categories',
         'sections.gallery',
         'sections.iframe',
         'sections.inba-latest-release',
