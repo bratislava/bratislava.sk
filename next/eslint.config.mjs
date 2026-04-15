@@ -1,9 +1,20 @@
 import { createNextConfig } from '@bratislava/eslint-config-next'
+import { dirname } from 'path'
+import { fileURLToPath } from 'url'
 
 export default [
   ...createNextConfig({
     ignores: ['graphql/**', 'src/services/graphql/**'],
   }),
+
+  // Tailwind v4 settings
+  {
+    settings: {
+      tailwindcss: {
+        config: dirname(fileURLToPath(import.meta.url)) + '/src/styles/globals.css',
+      },
+    },
+  },
 
   // Project-specific rule overrides
   {
