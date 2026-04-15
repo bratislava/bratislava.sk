@@ -31,6 +31,7 @@ import {
 } from '@/src/services/ms-graph/fetchers/msGraphSearch.fetcher'
 import { base64Encode } from '@/src/utils/base64'
 import { formatDate } from '@/src/utils/formatDate'
+import { getLinkProps } from '@/src/utils/getLinkProps'
 import { isDefined } from '@/src/utils/isDefined'
 import { useLocale } from '@/src/utils/useLocale'
 import { useRegulationCategoryTranslationMap } from '@/src/utils/useRegulationCategoryTranslationMap'
@@ -93,7 +94,7 @@ export const useQueryBySearchOption = ({
           return {
             title: article.title,
             uniqueId: article.slug,
-            linkHref: `/spravy/${article.slug}`,
+            linkHref: getLinkProps({ article }).href,
             metadata: [article.articleCategory?.title, formatDate(article.addedAt)].filter(
               isDefined,
             ),
@@ -162,7 +163,7 @@ export const useQueryBySearchOption = ({
           return {
             title: `VZN ${regulation.regNumber} ${regulation.titleText ?? ''}`,
             uniqueId: regulation.slug,
-            linkHref: `/vzn/${regulation.slug}`,
+            linkHref: getLinkProps({ regulation }).href,
             metadata: [categoryDisplayName, effectivityMessage],
             customIconName: `regulation_${regulation.category ?? 'ostatne'}`,
           }

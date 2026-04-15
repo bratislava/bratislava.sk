@@ -1,5 +1,7 @@
 import { SearchResponse } from 'meilisearch'
 
+import { getLinkProps } from '@/src/utils/getLinkProps'
+
 import { meiliClient } from '../meiliClient'
 import { MixedResults } from '../types'
 import { getMeilisearchPageOptions } from '../utils'
@@ -52,37 +54,34 @@ export const homepageSearchFetcher = (filters: HomepageSearchFilters, locale: st
         const dataInner = (hit as any)[type]
 
         if (type === 'page') {
-          const { title, path } = dataInner
+          const { title } = dataInner
 
           return {
             type,
             title,
-            // TODO: Fix link - get path by some proper function. This one works for now for both locales.
-            link: `/${path}`,
+            link: getLinkProps({ page: dataInner }).href,
             data: dataInner,
           } as HomepageSearchResult
         }
 
         if (type === 'article') {
-          const { title, slug } = dataInner
+          const { title } = dataInner
 
           return {
             type,
             title,
-            // TODO: Fix link - get slug by some proper function. This one works for now for both locales.
-            link: `/spravy/${slug}`,
+            link: getLinkProps({ article: dataInner }).href,
             data: dataInner,
           } as HomepageSearchResult
         }
 
         if (type === 'regulation') {
-          const { regNumber, titleText, fullTitle, slug } = dataInner
+          const { regNumber, titleText, fullTitle } = dataInner
 
           return {
             type,
             title: `VZN ${regNumber} ${titleText ?? fullTitle}`,
-            // TODO: Fix link - get slug by some proper function. This one works for now for both locales.
-            link: `/vzn/${slug}`,
+            link: getLinkProps({ regulation: dataInner }).href,
             data: dataInner,
           } as HomepageSearchResult
         }
