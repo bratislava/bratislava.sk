@@ -63,6 +63,7 @@ const searchIndexSettings = {
     'inba-release.releaseDate', // releaseDate is not datetime but only date (e.g. 2025-12-07), so we can sort by it directly instead of creating timestamp
     'regulation.effectiveFromTimestamp',
     'faq.publishedAtTimestamp',
+    'faq.faqCategory.title',
   ],
   pagination: {
     // https://docs.meilisearch.com/learn/advanced/known_limitations.html#maximum-number-of-results-per-search
