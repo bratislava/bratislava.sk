@@ -5,6 +5,7 @@ import HorizontalDivider from '@/src/components/common/Divider/HorizontalDivider
 import SectionHeader from '@/src/components/layouts/SectionHeader'
 import { RegulationEntityFragment } from '@/src/services/graphql'
 import cn from '@/src/utils/cn'
+import { getLinkProps } from '@/src/utils/getLinkProps'
 import { getRegulationMetadata } from '@/src/utils/getRegulationMetadata'
 import { isDefined } from '@/src/utils/isDefined'
 import { useTranslation } from '@/src/utils/useTranslation'
@@ -48,7 +49,7 @@ const Regulations = ({ className, regulations }: Props) => {
                       isFullTextRegulation={regulation.isFullTextRegulation}
                       // isAmendee={regulation.amending.length > 0}
                       // isCancelled={!!effectiveUntil}
-                      path={`/vzn/${regulation.slug}`}
+                      path={getLinkProps({ regulation }).href}
                       className="px-4 lg:px-6"
                     />
                   ) : (
@@ -58,7 +59,7 @@ const Regulations = ({ className, regulations }: Props) => {
                       isFullTextRegulation={regulation.isFullTextRegulation}
                       isAmendee={regulation.amending.length > 0}
                       isCancelled={!!effectiveUntil}
-                      path={`/vzn/${regulation.slug}`}
+                      path={getLinkProps({ regulation }).href}
                       className="px-4 lg:px-6"
                     />
                   )}

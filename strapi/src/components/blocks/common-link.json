@@ -24,6 +24,21 @@
     },
     "analyticsId": {
       "type": "string"
+    },
+    "inbaRelease": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::inba-release.inba-release"
+    },
+    "regulation": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::regulation.regulation"
+    },
+    "asset": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::asset.asset"
     }
   }
 }

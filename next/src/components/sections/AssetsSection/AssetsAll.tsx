@@ -17,6 +17,7 @@ import {
   getAssetsQueryKey,
 } from '@/src/services/meili/fetchers/assetsFetcher'
 import { formatDate } from '@/src/utils/formatDate'
+import { getLinkProps } from '@/src/utils/getLinkProps'
 import { useTranslation } from '@/src/utils/useTranslation'
 
 type Props = {
@@ -89,7 +90,7 @@ const AssetsAllSection = ({ section }: Props) => {
                   <SearchResultCard
                     data={{
                       title: asset.title,
-                      linkHref: `/dokumenty/${asset.slug}`,
+                      linkHref: getLinkProps({ asset }).href,
                       metadata: [asset.assetCategory?.title, formatDate(asset.updatedAt)],
                       customIconName: 'search_result_official_board',
                     }}

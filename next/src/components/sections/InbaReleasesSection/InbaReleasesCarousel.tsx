@@ -11,7 +11,6 @@ import {
   inbaReleasesDefaultFilters,
   inbaReleasesFetcher,
 } from '@/src/services/meili/fetchers/inbaReleasesFetcher'
-import { formatDate } from '@/src/utils/formatDate'
 import { generateImageSizes } from '@/src/utils/generateImageSizes'
 import { isDefined } from '@/src/utils/isDefined'
 
@@ -43,16 +42,11 @@ const InbaReleasesCarousel = ({ section }: Props) => {
             .map((inbaRelease) => {
               if (!inbaRelease) return null
 
-              const { title: inbaReleaseTitle, slug, coverImage, releaseDate } = inbaRelease
-
               return (
                 <InbaReleaseCard
-                  key={slug}
-                  date={formatDate(releaseDate)}
-                  title={inbaReleaseTitle}
-                  linkHref={`/inba/vydania/${slug}`}
-                  imgSrc={coverImage?.url}
+                  key={inbaRelease.slug}
                   imgSizes={generateImageSizes({ default: '100vw', md: '50vw', lg: '25vw' })}
+                  inbaRelease={inbaRelease}
                 />
               )
             })
