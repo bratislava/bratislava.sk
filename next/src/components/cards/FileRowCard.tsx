@@ -56,14 +56,14 @@ const FileRowCard = ({
               {title}
             </MLink>
             {(uploadDate || format || size) && (
-              <span className="text-size-p-tiny text-grey-700 md:line-clamp-1">
+              <span className="text-size-p-tiny text-content-passive-secondary md:line-clamp-1">
                 {/* TODO words should be separated by a dot with 12px gap, this is a simplified solution. */}
                 {[uploadDate, format, size].filter(isDefined).join(' • ')}
               </span>
             )}
           </div>
         </div>
-        <div className="flex shrink-0 items-center justify-center text-grey-700 md:rounded-lg md:border md:border-grey-200">
+        <div className="flex shrink-0 items-center justify-center text-content-passive-secondary md:rounded-lg md:border md:border-border-passive-primary">
           {/* TODO create a proper wrapper for the icon component to handle paddings */}
           <div className="p-1.5 md:p-2.5">
             <Icon name="download" className="size-5" />

@@ -19,7 +19,11 @@ const LoadingSpinner = ({ className, size = 'default', text }: LoadingSpinnerPro
       })}
     />
 
-    {text && <p className="w-52 text-h3 font-medium text-category-600">{text}</p>}
+    {text && (
+      <>
+        <p className="w-52 text-h3 font-medium text-category-600">{text}</p>
+      </>
+    )}
   </div>
 )
 

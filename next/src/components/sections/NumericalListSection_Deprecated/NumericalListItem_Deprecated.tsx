@@ -29,7 +29,7 @@ const NumericalListItem = ({ index, text, variant }: NumericalListItemProps) => 
       >
         <div
           className={cn(
-            'z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-category-600 text-size-h5 font-semibold text-white',
+            'z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-category-600 text-size-h5 font-semibold text-content-passive-inverted-primary',
           )}
         >
           {index + 1}

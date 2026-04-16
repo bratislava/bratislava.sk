@@ -86,7 +86,7 @@ const SelectField = <T extends object>({
     <Select {...props} className={cn('flex flex-col gap-1', className)}>
       <Label className="font-semibold">
         {label}
-        {props.isRequired ? <span className="text-negative-700"> *</span> : undefined}
+        {props.isRequired ? <span className="text-content-error-default"> *</span> : undefined}
       </Label>
       <Button className={style}>
         <SelectValue />

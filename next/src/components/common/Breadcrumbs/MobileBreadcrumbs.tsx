@@ -47,7 +47,7 @@ const MobileBreadcrumbs = ({ breadcrumbs }: BreadcrumbsProps) => {
           >
             {t('Breadcrumbs.back')}
           </Button>
-          <div className="h-4 w-px bg-grey-300" />
+          <div className="h-4 w-px bg-background-passive-tertiary" />
           {last?.path ? (
             <MLink href={last.path} variant="underlined" aria-hidden className="truncate py-3 pr-4">
               {last.title}
