@@ -1,5 +1,5 @@
 import { createNextConfig } from '@bratislava/eslint-config-next'
-import { dirname } from 'path'
+import { dirname, join } from 'path'
 import { fileURLToPath } from 'url'
 
 export default [
@@ -11,7 +11,7 @@ export default [
   {
     settings: {
       tailwindcss: {
-        config: dirname(fileURLToPath(import.meta.url)) + '/src/styles/globals.css',
+        config: join(dirname(fileURLToPath(import.meta.url)), 'src/styles/globals.css'),
       },
     },
   },
