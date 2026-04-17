@@ -6,7 +6,7 @@ import MayorAndCouncilHomepageSection from '@/src/components/sections/homepage-s
 
 const NewsAndInfoHomepageSection = () => {
   return (
-    <SectionContainer className="bg-grey-50 pb-14">
+    <SectionContainer className="bg-background-passive-primary pb-14">
       <HighlightsHomepageSection />
       <HomepageTabs className="lg:mt-10" />
       <HorizontalDivider className="mt-8 lg:mt-18" />

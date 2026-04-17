@@ -61,7 +61,7 @@ const TabPanelOfficialBoard = () => {
   return (
     <TabPanel id="OfficialBoard" className="flex flex-col gap-14">
       <ul
-        className="flex flex-col rounded-lg border bg-background-primary"
+        className="flex flex-col rounded-lg border bg-background-passive-base"
         data-cy="official-board-results"
       >
         {/* TODO we used basic spinner and text here, but it should be done with nicer design */}

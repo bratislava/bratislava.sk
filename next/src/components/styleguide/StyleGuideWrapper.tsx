@@ -45,8 +45,8 @@ const StyleGuideWrapper = ({ children }: StyleGuideWrapperProps) => {
         key={key}
         type="button"
         className={cn('m-2 h-14 w-40 rounded-lg border border-category-700 p-2 transition', {
-          'bg-category-700 text-white': active,
-          'bg-category-200 text-black': !active,
+          'bg-category-700 text-content-passive-inverted-primary': active,
+          'bg-category-200 text-content-passive-primary': !active,
         })}
         style={colorStyle}
         onClick={() => {
@@ -61,7 +61,7 @@ const StyleGuideWrapper = ({ children }: StyleGuideWrapperProps) => {
   return (
     <main>
       <GlobalCategoryColorProvider category={activeBrandCategory} />
-      <div className="min-h-screen bg-[#E5E5E5]">
+      <div className="min-h-screen bg-background-passive-tertiary">
         <div className="mx-auto max-w-(--breakpoint-xl) px-4 pb-64 md:px-8 md:pt-12">
           <h1 className="mb-10 text-center text-h1 underline">Style Guide</h1>
           <div className="mb-10">
