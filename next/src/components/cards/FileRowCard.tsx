@@ -34,7 +34,7 @@ const FileRowCard = ({
     <CardBase className={cn('ring-inset', className)} variant="no-border">
       <div className="flex flex-row items-start justify-between gap-x-4 py-4 pr-2.5 pl-4 md:px-6 lg:items-center">
         <div className="flex flex-row justify-between gap-x-2 md:items-center md:gap-x-4">
-          <div className="md:rounded-lg md:bg-background-tertiary">
+          <div className="md:rounded-lg md:bg-background-passive-secondary">
             {/* TODO create a proper wrapper for the icon component to handle paddings */}
             <div className="md:p-3">
               <Icon name="attachment" className="size-5 md:size-6" />
