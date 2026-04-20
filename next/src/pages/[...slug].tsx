@@ -70,9 +70,14 @@ export const getStaticProps: GetStaticProps<PageProps, StaticParams> = async ({
       serverSideTranslations(locale),
     ])
 
+  let redirectPath = ''
+
   // Check if an Article with this alias exists
-  // Get the full path for the article
-  let redirectPath = getLinkProps({ article: aliasArticles[0] }).href
+  const aliasArticleSlug = aliasArticles[0]?.slug
+  if (aliasArticleSlug) {
+    // Get the full path for the article
+    redirectPath = getLinkProps({ article: aliasArticles[0] }).href
+  }
 
   // Check if a Page with this alias exists
   const aliasPagePath = aliasPages[0]?.path
