@@ -198,7 +198,7 @@ SearchResultCard.Metadata = function ({
   return (
     <div
       className={cn(
-        'flex flex-col flex-wrap items-stretch gap-x-3 gap-y-1 text-grey-700 lg:flex-row',
+        'flex flex-col flex-wrap items-stretch gap-x-3 gap-y-1 text-content-passive-secondary lg:flex-row',
         className,
       )}
     >
@@ -209,7 +209,7 @@ SearchResultCard.Metadata = function ({
 
 SearchResultCard.Button = function ({ className }: { className?: string }) {
   return (
-    <div className={cn('my-auto self-end text-action-content-default', className)}>
+    <div className={cn('my-auto self-end text-content-passive-secondary', className)}>
       <Icon name="chevron-right" />
     </div>
   )

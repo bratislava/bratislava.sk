@@ -11,7 +11,7 @@ type WrapperProps = {
 
 const Wrapper = ({ title, children, direction = 'row', noBorder }: WrapperProps) => {
   const wrapperClassNames = cn(
-    'mb-10 flex flex-col border border-t border-r-0 border-b-0 border-l-0 border-solid border-grey-800 pt-10',
+    'mb-10 flex flex-col border border-t border-r-0 border-b-0 border-l-0 border-solid border-border-active-primary-pressed pt-10',
     {
       'border-t-0': noBorder,
     },

@@ -103,7 +103,7 @@ const Gallery = ({ images }: GalleryProps) => {
                   onClick={() => {
                     openAtImageIndex(0)
                   }}
-                  className="relative w-full cursor-pointer overflow-hidden rounded-lg border border-action-content-default pt-[100%]"
+                  className="relative w-full cursor-pointer overflow-hidden rounded-lg border border-border-active-primary-default pt-[100%]"
                 >
                   <div className="absolute top-0 flex size-full flex-col items-center justify-center gap-0.5 bg-background-passive-base p-2 text-center">
                     <Typography variant="h2" as="p" className="font-semibold">

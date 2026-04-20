@@ -36,7 +36,7 @@ const VideoCard = ({ title, speaker, url: untrimmedUrl, cardTitleLevel = 'h3' }:
             width="100%"
             height="100%"
             className={cn('absolute top-0 left-0 size-full border-0', {
-              'animate-pulse bg-grey-300': !isLoaded,
+              'animate-pulse bg-background-passive-tertiary': !isLoaded,
             })}
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowFullScreen

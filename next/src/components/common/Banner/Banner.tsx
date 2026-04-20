@@ -72,7 +72,8 @@ const Banner = ({
           {secondaryLink && (
             <Button
               className={cn({
-                'text-white hover:text-white/80 focus:text-white/80': variant === 'dark',
+                'text-content-passive-inverted-primary hover:text-content-passive-inverted-primary/80 focus:text-content-passive-inverted-primary/80':
+                  variant === 'dark',
               })}
               variant="outline"
               fullWidthMobile
