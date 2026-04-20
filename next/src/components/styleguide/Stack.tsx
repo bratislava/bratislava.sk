@@ -8,7 +8,7 @@ type StackProps = {
 
 const Stack = ({ direction = 'row', children, className }: StackProps) => {
   const classNameStyles = cn(
-    'flex flex-wrap gap-2 rounded-lg border border-dashed border-grey-800 p-4',
+    'flex flex-wrap gap-2 rounded-lg border border-dashed border-border-active-primary-pressed p-4',
     {
       'flex-col items-center': direction === 'column',
       'items-end': direction === 'row',

@@ -147,7 +147,7 @@ const Markdown = ({ content, variant = 'default', className }: MarkdownProps) =>
                 {title ? (
                   <figcaption
                     aria-hidden={title === alt}
-                    className="text-center text-size-p-small text-content-passive-tertiary"
+                    className="text-size-p-small text-content-passive-tertiary text-center"
                   >
                     {title}
                   </figcaption>
@@ -157,17 +157,17 @@ const Markdown = ({ content, variant = 'default', className }: MarkdownProps) =>
           },
           blockquote: ({ node, ...props }) => (
             <blockquote
-              className="my-4 border-l-4 border-content-passive-secondary py-2 pl-8"
+              className="border-content-passive-secondary my-4 border-l-4 py-2 pl-8"
               {...props}
             />
           ),
           ol: ({ children, node, ...props }) => (
-            <ol className="list-decimal pl-8 marker:text-content-secondary" {...props}>
+            <ol className="marker:text-content-passive-secondary list-decimal pl-8" {...props}>
               {children}
             </ol>
           ),
           ul: ({ children, node, ...props }) => (
-            <ul className="list-disc pl-8 marker:text-content-secondary" {...props}>
+            <ul className="marker:text-content-passive-secondary list-disc pl-8" {...props}>
               {children}
             </ul>
           ),
@@ -192,13 +192,13 @@ const Markdown = ({ content, variant = 'default', className }: MarkdownProps) =>
             </tr>
           ),
           td: ({ children, node, ...props }) => (
-            <td className="px-5 py-1 not-first:border-l" {...props}>
+            <td className="not-first:border-l px-5 py-1" {...props}>
               {children}
             </td>
           ),
           th: ({ children, node, ...props }) => (
             <th
-              className="bg-background-secondary px-5 py-1 font-bold not-first:border-l"
+              className="bg-background-passive-primary not-first:border-l px-5 py-1 font-bold"
               {...props}
             >
               {children}

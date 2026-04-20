@@ -65,13 +65,13 @@ const RegulationRowCard = ({
             )}
           </div>
           {metadata?.length ? (
-            <span className="text-size-p-small text-grey-700">
+            <span className="text-size-p-small text-content-passive-secondary">
               {metadata.filter(isDefined).join(' • ')}
             </span>
           ) : null}
         </div>
         {/* TODO styling (hover...) */}
-        <div className="flex shrink-0 items-center justify-center text-grey-700">
+        <div className="flex shrink-0 items-center justify-center text-content-passive-secondary">
           {/* TODO create a proper wrapper for the icon component to handle paddings */}
           <div className="p-1.5 md:p-2.5">
             <Icon name="chevron-right" className="size-5" />

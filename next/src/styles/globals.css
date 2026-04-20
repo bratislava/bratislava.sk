@@ -4,7 +4,7 @@
 @plugin 'tailwindcss-react-aria-components';
 @plugin 'tailwindcss-animate';
 
-@source "../../node_modules/@bratislava/component-library/dist";
+@source '../../node_modules/@bratislava/component-library/dist';
 
 /* Docs: https://tailwindcss.com/docs/functions-and-directives */
 
@@ -264,42 +264,6 @@
   --color-content-active-tertiary-hover: var(--color-grey-600);
   --color-content-active-tertiary-pressed: var(--color-grey-800);
   --color-content-active-tertiary-disabled: var(--color-grey-500);
-
-  /* Old tokens - todo remove */
-
-  --color-background-primary: var(--color-grey-0);
-  --color-background-secondary: var(--color-grey-50);
-  --color-background-tertiary: var(--color-grey-100);
-  --color-background-primary-inverted: var(--color-grey-800);
-  --color-background-disabled: var(--color-grey-100);
-
-  --color-border-default: var(--color-grey-200);
-  --color-border-hover: var(--color-grey-300);
-  --color-border-dark: var(--color-grey-600); /* TODO what is this? */
-
-  --color-content-primary: var(--color-grey-800);
-  --color-content-secondary: var(--color-grey-700);
-  --color-content-tertiary: var(--color-grey-600);
-  --color-content-primary-inverted: var(--color-grey-0);
-  --color-content-secondary-inverted: var(--color-grey-200);
-  --color-content-tertiary-inverted: var(--color-grey-400);
-  --color-content-disabled: var(--color-grey-500);
-
-  --color-content-link-default: var(--color-grey-700);
-  --color-content-link-hover: var(--color-grey-600);
-  --color-content-link-pressed: var(--color-grey-800);
-
-  --color-action-content-default: var(--color-grey-700);
-  --color-action-content-hover: var(--color-grey-600);
-  --color-action-content-pressed: var(--color-grey-800);
-  --color-action-background-default: var(--color-grey-700);
-  --color-action-background-hover: var(--color-grey-600);
-  --color-action-background-pressed: var(--color-grey-800);
-  --color-action-soft-background-hover: var(--color-grey-100);
-  --color-action-soft-background-pressed: var(--color-grey-200);
-  --color-action-border-default: var(--color-grey-700);
-  --color-action-border-hover: var(--color-grey-600);
-  --color-action-border-pressed: var(--color-grey-800);
 
   /* Shadows */
 
@@ -738,7 +702,7 @@
 
   .base-input {
     @apply box-border inline-block h-14 appearance-none rounded-[10] border-3 px-6 py-0 font-medium text-font;
-    @apply border-white bg-white hover:border-category-600 focus:border-category-600 focus:outline-none;
+    @apply border-border-active-primary-inverted-default bg-background-passive-base hover:border-category-600 focus:border-category-600 focus:outline-none;
   }
 
   .base-input--with-error {
