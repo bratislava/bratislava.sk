@@ -39,19 +39,22 @@ const getEntityLinkData = (link: NonNullable<LinkFragment>) => {
     return { label: link.label ?? link.article.title, href: `/spravy/${link.article.slug}` }
   }
 
-  if ('inbaRelease' in link && link.inbaRelease) {
-    return {
-      label: link.label ?? link.inbaRelease.slug,
-      href: `/inba/vydania/${link.inbaRelease.slug}`,
-    }
+  if ('asset' in link && link.asset) {
+    return { label: link.label ?? link.asset.title, href: `/dokumenty/${link.asset.slug}` }
   }
 
   if ('regulation' in link && link.regulation) {
-    return { label: link.label ?? link.regulation.slug, href: `/vzn/${link.regulation.slug}` }
+    return {
+      label: link.label ?? link.regulation.titleText ?? `VZN ${link.regulation.slug}`,
+      href: `/vzn/${link.regulation.slug}`,
+    }
   }
 
-  if ('asset' in link && link.asset) {
-    return { label: link.label ?? link.asset.slug, href: `/dokumenty/${link.asset.slug}` }
+  if ('inbaRelease' in link && link.inbaRelease) {
+    return {
+      label: link.label ?? link.inbaRelease.title,
+      href: `/inba/vydania/${link.inbaRelease.slug}`,
+    }
   }
 
   return null

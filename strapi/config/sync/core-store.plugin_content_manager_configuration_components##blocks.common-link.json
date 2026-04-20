@@ -94,7 +94,7 @@
       },
       "inbaRelease": {
         "edit": {
-          "label": "inbaRelease",
+          "label": "inba vydanie",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -109,7 +109,7 @@
       },
       "regulation": {
         "edit": {
-          "label": "regulation",
+          "label": "Všeobecne záväzné nariadenia",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -124,7 +124,7 @@
       },
       "asset": {
         "edit": {
-          "label": "asset",
+          "label": "Dokument",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -147,12 +147,6 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "label",
-        "page",
-        "url"
-      ],
       "edit": [
         [
           {
@@ -172,17 +166,7 @@
         ],
         [
           {
-            "name": "url",
-            "size": 6
-          },
-          {
-            "name": "analyticsId",
-            "size": 6
-          }
-        ],
-        [
-          {
-            "name": "inbaRelease",
+            "name": "asset",
             "size": 6
           },
           {
@@ -192,10 +176,28 @@
         ],
         [
           {
-            "name": "asset",
+            "name": "inbaRelease",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "url",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "analyticsId",
             "size": 6
           }
         ]
+      ],
+      "list": [
+        "id",
+        "label",
+        "page",
+        "url"
       ]
     },
     "isComponent": true
