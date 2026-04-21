@@ -16,6 +16,7 @@ import { GeneralQuery, PageEntityFragment } from '@/src/services/graphql'
 import { client } from '@/src/services/graphql/gql'
 import { GlobalCategoryColorProvider } from '@/src/utils/colors'
 import { NOT_FOUND_STATIC } from '@/src/utils/consts'
+import { getLinkProps } from '@/src/utils/getLinkProps'
 import { isDefined } from '@/src/utils/isDefined'
 import { prefetchPageSections } from '@/src/utils/prefetchPageSections'
 
@@ -75,7 +76,7 @@ export const getStaticProps: GetStaticProps<PageProps, StaticParams> = async ({
   const aliasArticleSlug = aliasArticles[0]?.slug
   if (aliasArticleSlug) {
     // Get the full path for the article
-    redirectPath = `/spravy/${aliasArticleSlug}`
+    redirectPath = getLinkProps({ article: aliasArticles[0] }).href
   }
 
   // Check if a Page with this alias exists

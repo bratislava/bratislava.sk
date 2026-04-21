@@ -48,7 +48,7 @@ const LatestNews = ({ leftArticle, rightArticle, otherArticles, newsPageLink }: 
 
           <div className="flex-col gap-4 self-start rounded-lg border border-border-passive-primary bg-background-passive-base p-6 lg:flex">
             {otherArticles.map((article, index) => {
-              const { slug, title, addedAt } = article
+              const { title, addedAt } = article
 
               return (
                 <Fragment key={index}>
@@ -59,7 +59,7 @@ const LatestNews = ({ leftArticle, rightArticle, otherArticles, newsPageLink }: 
                   >
                     <Typography variant="p-small">{formatDate(addedAt)}</Typography>
                     <MLink
-                      href={`/spravy/${slug}`}
+                      href={getLinkProps({ article }).href}
                       stretched
                       variant="underlineOnHover"
                       className="line-clamp-3"

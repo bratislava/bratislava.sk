@@ -417,6 +417,9 @@
           "headerLinks.article",
           "headerLinks.url",
           "headerLinks.analyticsId",
+          "headerLinks.inbaRelease",
+          "headerLinks.regulation",
+          "headerLinks.asset",
           "pageHeaderSections",
           "subnavigation.links.label",
           "subnavigation.links.subtext",
@@ -438,7 +441,7 @@
         "plugin::content-manager.document-admin-group-includes-starz"
       ],
       "actionParameters": {},
-      "documentId": "ffi7cvj5s5s5b8d8on1w4wsl",
+      "documentId": "cfb9mqefe8fzk2gvp4q6t8kc",
       "locale": null
     },
     {
@@ -492,6 +495,9 @@
           "headerLinks.article",
           "headerLinks.url",
           "headerLinks.analyticsId",
+          "headerLinks.inbaRelease",
+          "headerLinks.regulation",
+          "headerLinks.asset",
           "pageHeaderSections",
           "subnavigation.links.label",
           "subnavigation.links.subtext",
@@ -514,7 +520,7 @@
         "plugin::content-manager.document-admin-group-includes-starz"
       ],
       "actionParameters": {},
-      "documentId": "qljjlge47yi1l9e12trcbbrq",
+      "documentId": "bsm7slmbu7lsas9zjeldu87g",
       "locale": null
     },
     {
@@ -535,6 +541,9 @@
           "headerLinks.article",
           "headerLinks.url",
           "headerLinks.analyticsId",
+          "headerLinks.inbaRelease",
+          "headerLinks.regulation",
+          "headerLinks.asset",
           "pageHeaderSections",
           "subnavigation.links.label",
           "subnavigation.links.subtext",
@@ -556,7 +565,7 @@
         "plugin::content-manager.document-admin-group-includes-starz"
       ],
       "actionParameters": {},
-      "documentId": "y5hodvfm2z0i161arklwf9yk",
+      "documentId": "bg2qe7rykwavb1cbm62cmvn2",
       "locale": null
     },
     {

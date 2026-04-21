@@ -82,11 +82,15 @@ mutation createBareRegulation(
   }
 }
 
-fragment RegulationEntity on Regulation {
+fragment RegulationSlugEntity on Regulation {
   documentId
-  regNumber
   slug
   titleText
+}
+
+fragment RegulationEntity on Regulation {
+  ...RegulationSlugEntity
+  regNumber
   fullTitle
   effectiveFrom
   category

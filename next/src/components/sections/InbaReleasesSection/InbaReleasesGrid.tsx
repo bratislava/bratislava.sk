@@ -15,10 +15,7 @@ import {
   inbaReleasesDefaultFilters,
   inbaReleasesFetcher,
 } from '@/src/services/meili/fetchers/inbaReleasesFetcher'
-import { formatDate } from '@/src/utils/formatDate'
 import { generateImageSizes } from '@/src/utils/generateImageSizes'
-
-const imageSizes = generateImageSizes({ default: '100vw', md: '50vw', lg: '25vw' })
 
 type Props = { section: InbaReleasesSectionFragment }
 
@@ -72,16 +69,11 @@ const InbaReleasesGrid = ({ section }: Props) => {
           {data.hits.length > 0 ? (
             <ul className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
               {data.hits.map((inbaRelease) => {
-                const { title: inbaReleaseTitle, slug, coverImage, releaseDate } = inbaRelease
-
                 return (
-                  <li key={slug} className="*:h-full">
+                  <li key={inbaRelease.slug} className="*:h-full">
                     <InbaReleaseCard
-                      date={formatDate(releaseDate)}
-                      title={inbaReleaseTitle}
-                      linkHref={`/inba/vydania/${slug}`}
-                      imgSrc={coverImage?.url}
-                      imgSizes={imageSizes}
+                      imgSizes={generateImageSizes({ default: '100vw', md: '50vw', lg: '25vw' })}
+                      inbaRelease={inbaRelease}
                     />
                   </li>
                 )

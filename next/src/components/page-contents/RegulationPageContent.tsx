@@ -15,6 +15,7 @@ import { RegulationEntityFragment } from '@/src/services/graphql'
 import { formatDate } from '@/src/utils/formatDate'
 import { formatFileExtension } from '@/src/utils/formatFileExtension'
 import { formatFileSize } from '@/src/utils/formatFileSize'
+import { getLinkProps } from '@/src/utils/getLinkProps'
 import { isDefined } from '@/src/utils/isDefined'
 import { useLocale } from '@/src/utils/useLocale'
 import { useRegulationCategoryTranslationMap } from '@/src/utils/useRegulationCategoryTranslationMap'
@@ -149,7 +150,7 @@ const RegulationPageContent = ({ regulation }: RegulationPageContentProps) => {
                               })
                             : null,
                         ].filter(isDefined)}
-                        path={`/vzn/${amendment.slug}`}
+                        path={getLinkProps({ regulation: amendment }).href}
                         className="px-4 lg:px-6"
                       />
                     </li>
@@ -171,7 +172,10 @@ const RegulationPageContent = ({ regulation }: RegulationPageContentProps) => {
                     {t('Regulation.thisRegulationAmends')}{' '}
                     {amending.map((amendedRegulation, index) => (
                       <Fragment key={amendedRegulation.documentId}>
-                        <MLink href={`/vzn/${amendedRegulation.slug}`} variant="underlined-medium">
+                        <MLink
+                          href={getLinkProps({ regulation: amendedRegulation }).href}
+                          variant="underlined-medium"
+                        >
                           {`VZN ${amendedRegulation.regNumber}`}
                         </MLink>
                         {index < amending.length - 1 ? ', ' : '.'}
@@ -189,7 +193,7 @@ const RegulationPageContent = ({ regulation }: RegulationPageContentProps) => {
                     {cancelling.map((cancelledRegulation, index) => (
                       <Fragment key={cancelledRegulation.documentId}>
                         <MLink
-                          href={`/vzn/${cancelledRegulation.slug}`}
+                          href={getLinkProps({ regulation: cancelledRegulation }).href}
                           variant="underlined-medium"
                         >
                           {`VZN ${cancelledRegulation.regNumber}`}
