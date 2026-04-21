@@ -40,4 +40,12 @@ declare module '*.webp' {
   export default src
 }
 
+declare global {
+  interface Window {
+    Cookiebot?: {
+      renew?: () => void
+    }
+  }
+}
+
 declare module 'react-simple-snackbar'
