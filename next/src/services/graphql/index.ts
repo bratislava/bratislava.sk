@@ -789,9 +789,12 @@ export type ComponentBlocksCommonLink = {
   __typename?: 'ComponentBlocksCommonLink'
   analyticsId?: Maybe<Scalars['String']['output']>
   article?: Maybe<Article>
+  asset?: Maybe<Asset>
   id: Scalars['ID']['output']
+  inbaRelease?: Maybe<InbaRelease>
   label?: Maybe<Scalars['String']['output']>
   page?: Maybe<Page>
+  regulation?: Maybe<Regulation>
   url?: Maybe<Scalars['String']['output']>
 }
 
@@ -799,19 +802,25 @@ export type ComponentBlocksCommonLinkFiltersInput = {
   analyticsId?: InputMaybe<StringFilterInput>
   and?: InputMaybe<Array<InputMaybe<ComponentBlocksCommonLinkFiltersInput>>>
   article?: InputMaybe<ArticleFiltersInput>
+  asset?: InputMaybe<AssetFiltersInput>
+  inbaRelease?: InputMaybe<InbaReleaseFiltersInput>
   label?: InputMaybe<StringFilterInput>
   not?: InputMaybe<ComponentBlocksCommonLinkFiltersInput>
   or?: InputMaybe<Array<InputMaybe<ComponentBlocksCommonLinkFiltersInput>>>
   page?: InputMaybe<PageFiltersInput>
+  regulation?: InputMaybe<RegulationFiltersInput>
   url?: InputMaybe<StringFilterInput>
 }
 
 export type ComponentBlocksCommonLinkInput = {
   analyticsId?: InputMaybe<Scalars['String']['input']>
   article?: InputMaybe<Scalars['ID']['input']>
+  asset?: InputMaybe<Scalars['ID']['input']>
   id?: InputMaybe<Scalars['ID']['input']>
+  inbaRelease?: InputMaybe<Scalars['ID']['input']>
   label?: InputMaybe<Scalars['String']['input']>
   page?: InputMaybe<Scalars['ID']['input']>
+  regulation?: InputMaybe<Scalars['ID']['input']>
   url?: InputMaybe<Scalars['String']['input']>
 }
 
@@ -7371,6 +7380,19 @@ export type CommonLinkFragment = {
     title: string
     locale?: string | null
   } | null
+  inbaRelease?: {
+    __typename?: 'InbaRelease'
+    documentId: string
+    title: string
+    slug: string
+  } | null
+  regulation?: {
+    __typename?: 'Regulation'
+    documentId: string
+    slug: string
+    titleText?: string | null
+  } | null
+  asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
 }
 
 export type CardLinkFragment = {
@@ -7472,6 +7494,19 @@ export type FooterColumnBlockFragment = {
       title: string
       locale?: string | null
     } | null
+    inbaRelease?: {
+      __typename?: 'InbaRelease'
+      documentId: string
+      title: string
+      slug: string
+    } | null
+    regulation?: {
+      __typename?: 'Regulation'
+      documentId: string
+      slug: string
+      titleText?: string | null
+    } | null
+    asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
   } | null> | null
 }
 
@@ -7505,6 +7540,19 @@ export type FooterFragment = {
         title: string
         locale?: string | null
       } | null
+      inbaRelease?: {
+        __typename?: 'InbaRelease'
+        documentId: string
+        title: string
+        slug: string
+      } | null
+      regulation?: {
+        __typename?: 'Regulation'
+        documentId: string
+        slug: string
+        titleText?: string | null
+      } | null
+      asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
     } | null> | null
   } | null> | null
   accessibilityPageLink?: {
@@ -7526,6 +7574,19 @@ export type FooterFragment = {
       title: string
       locale?: string | null
     } | null
+    inbaRelease?: {
+      __typename?: 'InbaRelease'
+      documentId: string
+      title: string
+      slug: string
+    } | null
+    regulation?: {
+      __typename?: 'Regulation'
+      documentId: string
+      slug: string
+      titleText?: string | null
+    } | null
+    asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
   } | null
   innovationsLink?: {
     __typename?: 'ComponentBlocksCommonLink'
@@ -7546,6 +7607,19 @@ export type FooterFragment = {
       title: string
       locale?: string | null
     } | null
+    inbaRelease?: {
+      __typename?: 'InbaRelease'
+      documentId: string
+      title: string
+      slug: string
+    } | null
+    regulation?: {
+      __typename?: 'Regulation'
+      documentId: string
+      slug: string
+      titleText?: string | null
+    } | null
+    asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
   } | null
 }
 
@@ -7691,6 +7765,19 @@ export type GeneralFragment = {
         title: string
         locale?: string | null
       } | null
+      inbaRelease?: {
+        __typename?: 'InbaRelease'
+        documentId: string
+        title: string
+        slug: string
+      } | null
+      regulation?: {
+        __typename?: 'Regulation'
+        documentId: string
+        slug: string
+        titleText?: string | null
+      } | null
+      asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
     } | null
   } | null
   newsPage?: {
@@ -7987,6 +8074,19 @@ export type GeneralQuery = {
           title: string
           locale?: string | null
         } | null
+        inbaRelease?: {
+          __typename?: 'InbaRelease'
+          documentId: string
+          title: string
+          slug: string
+        } | null
+        regulation?: {
+          __typename?: 'Regulation'
+          documentId: string
+          slug: string
+          titleText?: string | null
+        } | null
+        asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
       } | null
     } | null
     newsPage?: {
@@ -8309,6 +8409,19 @@ export type GeneralQuery = {
           title: string
           locale?: string | null
         } | null
+        inbaRelease?: {
+          __typename?: 'InbaRelease'
+          documentId: string
+          title: string
+          slug: string
+        } | null
+        regulation?: {
+          __typename?: 'Regulation'
+          documentId: string
+          slug: string
+          titleText?: string | null
+        } | null
+        asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
       } | null> | null
     } | null> | null
     accessibilityPageLink?: {
@@ -8330,6 +8443,19 @@ export type GeneralQuery = {
         title: string
         locale?: string | null
       } | null
+      inbaRelease?: {
+        __typename?: 'InbaRelease'
+        documentId: string
+        title: string
+        slug: string
+      } | null
+      regulation?: {
+        __typename?: 'Regulation'
+        documentId: string
+        slug: string
+        titleText?: string | null
+      } | null
+      asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
     } | null
     innovationsLink?: {
       __typename?: 'ComponentBlocksCommonLink'
@@ -8350,6 +8476,19 @@ export type GeneralQuery = {
         title: string
         locale?: string | null
       } | null
+      inbaRelease?: {
+        __typename?: 'InbaRelease'
+        documentId: string
+        title: string
+        slug: string
+      } | null
+      regulation?: {
+        __typename?: 'Regulation'
+        documentId: string
+        slug: string
+        titleText?: string | null
+      } | null
+      asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
     } | null
   } | null
   alert?: { __typename?: 'Alert'; updatedAt?: any | null; text?: string | null } | null
@@ -8536,6 +8675,19 @@ export type HomepageEntityFragment = {
         title: string
         locale?: string | null
       } | null
+      inbaRelease?: {
+        __typename?: 'InbaRelease'
+        documentId: string
+        title: string
+        slug: string
+      } | null
+      regulation?: {
+        __typename?: 'Regulation'
+        documentId: string
+        slug: string
+        titleText?: string | null
+      } | null
+      asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
     } | null
     officialBoardPageLink?: {
       __typename?: 'ComponentBlocksCommonLink'
@@ -8556,6 +8708,19 @@ export type HomepageEntityFragment = {
         title: string
         locale?: string | null
       } | null
+      inbaRelease?: {
+        __typename?: 'InbaRelease'
+        documentId: string
+        title: string
+        slug: string
+      } | null
+      regulation?: {
+        __typename?: 'Regulation'
+        documentId: string
+        slug: string
+        titleText?: string | null
+      } | null
+      asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
     } | null
     roadClosuresPageLink?: {
       __typename?: 'ComponentBlocksCommonLink'
@@ -8576,6 +8741,19 @@ export type HomepageEntityFragment = {
         title: string
         locale?: string | null
       } | null
+      inbaRelease?: {
+        __typename?: 'InbaRelease'
+        documentId: string
+        title: string
+        slug: string
+      } | null
+      regulation?: {
+        __typename?: 'Regulation'
+        documentId: string
+        slug: string
+        titleText?: string | null
+      } | null
+      asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
     } | null
   } | null
   mayorAndCouncil?: {
@@ -8601,6 +8779,19 @@ export type HomepageEntityFragment = {
         title: string
         locale?: string | null
       } | null
+      inbaRelease?: {
+        __typename?: 'InbaRelease'
+        documentId: string
+        title: string
+        slug: string
+      } | null
+      regulation?: {
+        __typename?: 'Regulation'
+        documentId: string
+        slug: string
+        titleText?: string | null
+      } | null
+      asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
     } | null
     councilCard?: {
       __typename?: 'ComponentBlocksCommonLink'
@@ -8621,6 +8812,19 @@ export type HomepageEntityFragment = {
         title: string
         locale?: string | null
       } | null
+      inbaRelease?: {
+        __typename?: 'InbaRelease'
+        documentId: string
+        title: string
+        slug: string
+      } | null
+      regulation?: {
+        __typename?: 'Regulation'
+        documentId: string
+        slug: string
+        titleText?: string | null
+      } | null
+      asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
     } | null
   } | null
   eventsSection?: {
@@ -8646,6 +8850,19 @@ export type HomepageEntityFragment = {
         title: string
         locale?: string | null
       } | null
+      inbaRelease?: {
+        __typename?: 'InbaRelease'
+        documentId: string
+        title: string
+        slug: string
+      } | null
+      regulation?: {
+        __typename?: 'Regulation'
+        documentId: string
+        slug: string
+        titleText?: string | null
+      } | null
+      asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
     } | null
   } | null
   topServices?: {
@@ -8673,6 +8890,19 @@ export type HomepageEntityFragment = {
           title: string
           locale?: string | null
         } | null
+        inbaRelease?: {
+          __typename?: 'InbaRelease'
+          documentId: string
+          title: string
+          slug: string
+        } | null
+        regulation?: {
+          __typename?: 'Regulation'
+          documentId: string
+          slug: string
+          titleText?: string | null
+        } | null
+        asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
       }
     } | null>
   } | null
@@ -8699,6 +8929,19 @@ export type HomepageEntityFragment = {
         title: string
         locale?: string | null
       } | null
+      inbaRelease?: {
+        __typename?: 'InbaRelease'
+        documentId: string
+        title: string
+        slug: string
+      } | null
+      regulation?: {
+        __typename?: 'Regulation'
+        documentId: string
+        slug: string
+        titleText?: string | null
+      } | null
+      asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
     } | null
   } | null
 }
@@ -8885,6 +9128,19 @@ export type HomepageQuery = {
           title: string
           locale?: string | null
         } | null
+        inbaRelease?: {
+          __typename?: 'InbaRelease'
+          documentId: string
+          title: string
+          slug: string
+        } | null
+        regulation?: {
+          __typename?: 'Regulation'
+          documentId: string
+          slug: string
+          titleText?: string | null
+        } | null
+        asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
       } | null
       officialBoardPageLink?: {
         __typename?: 'ComponentBlocksCommonLink'
@@ -8905,6 +9161,19 @@ export type HomepageQuery = {
           title: string
           locale?: string | null
         } | null
+        inbaRelease?: {
+          __typename?: 'InbaRelease'
+          documentId: string
+          title: string
+          slug: string
+        } | null
+        regulation?: {
+          __typename?: 'Regulation'
+          documentId: string
+          slug: string
+          titleText?: string | null
+        } | null
+        asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
       } | null
       roadClosuresPageLink?: {
         __typename?: 'ComponentBlocksCommonLink'
@@ -8925,6 +9194,19 @@ export type HomepageQuery = {
           title: string
           locale?: string | null
         } | null
+        inbaRelease?: {
+          __typename?: 'InbaRelease'
+          documentId: string
+          title: string
+          slug: string
+        } | null
+        regulation?: {
+          __typename?: 'Regulation'
+          documentId: string
+          slug: string
+          titleText?: string | null
+        } | null
+        asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
       } | null
     } | null
     mayorAndCouncil?: {
@@ -8950,6 +9232,19 @@ export type HomepageQuery = {
           title: string
           locale?: string | null
         } | null
+        inbaRelease?: {
+          __typename?: 'InbaRelease'
+          documentId: string
+          title: string
+          slug: string
+        } | null
+        regulation?: {
+          __typename?: 'Regulation'
+          documentId: string
+          slug: string
+          titleText?: string | null
+        } | null
+        asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
       } | null
       councilCard?: {
         __typename?: 'ComponentBlocksCommonLink'
@@ -8970,6 +9265,19 @@ export type HomepageQuery = {
           title: string
           locale?: string | null
         } | null
+        inbaRelease?: {
+          __typename?: 'InbaRelease'
+          documentId: string
+          title: string
+          slug: string
+        } | null
+        regulation?: {
+          __typename?: 'Regulation'
+          documentId: string
+          slug: string
+          titleText?: string | null
+        } | null
+        asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
       } | null
     } | null
     eventsSection?: {
@@ -8995,6 +9303,19 @@ export type HomepageQuery = {
           title: string
           locale?: string | null
         } | null
+        inbaRelease?: {
+          __typename?: 'InbaRelease'
+          documentId: string
+          title: string
+          slug: string
+        } | null
+        regulation?: {
+          __typename?: 'Regulation'
+          documentId: string
+          slug: string
+          titleText?: string | null
+        } | null
+        asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
       } | null
     } | null
     topServices?: {
@@ -9022,6 +9343,19 @@ export type HomepageQuery = {
             title: string
             locale?: string | null
           } | null
+          inbaRelease?: {
+            __typename?: 'InbaRelease'
+            documentId: string
+            title: string
+            slug: string
+          } | null
+          regulation?: {
+            __typename?: 'Regulation'
+            documentId: string
+            slug: string
+            titleText?: string | null
+          } | null
+          asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
         }
       } | null>
     } | null
@@ -9048,6 +9382,19 @@ export type HomepageQuery = {
           title: string
           locale?: string | null
         } | null
+        inbaRelease?: {
+          __typename?: 'InbaRelease'
+          documentId: string
+          title: string
+          slug: string
+        } | null
+        regulation?: {
+          __typename?: 'Regulation'
+          documentId: string
+          slug: string
+          titleText?: string | null
+        } | null
+        asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
       } | null
     } | null
   } | null
@@ -9212,6 +9559,19 @@ export type HomepageTabsFragment = {
       title: string
       locale?: string | null
     } | null
+    inbaRelease?: {
+      __typename?: 'InbaRelease'
+      documentId: string
+      title: string
+      slug: string
+    } | null
+    regulation?: {
+      __typename?: 'Regulation'
+      documentId: string
+      slug: string
+      titleText?: string | null
+    } | null
+    asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
   } | null
   officialBoardPageLink?: {
     __typename?: 'ComponentBlocksCommonLink'
@@ -9232,6 +9592,19 @@ export type HomepageTabsFragment = {
       title: string
       locale?: string | null
     } | null
+    inbaRelease?: {
+      __typename?: 'InbaRelease'
+      documentId: string
+      title: string
+      slug: string
+    } | null
+    regulation?: {
+      __typename?: 'Regulation'
+      documentId: string
+      slug: string
+      titleText?: string | null
+    } | null
+    asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
   } | null
   roadClosuresPageLink?: {
     __typename?: 'ComponentBlocksCommonLink'
@@ -9252,6 +9625,19 @@ export type HomepageTabsFragment = {
       title: string
       locale?: string | null
     } | null
+    inbaRelease?: {
+      __typename?: 'InbaRelease'
+      documentId: string
+      title: string
+      slug: string
+    } | null
+    regulation?: {
+      __typename?: 'Regulation'
+      documentId: string
+      slug: string
+      titleText?: string | null
+    } | null
+    asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
   } | null
 }
 
@@ -9278,6 +9664,19 @@ export type HomepageMayorAndCouncilSectionFragment = {
       title: string
       locale?: string | null
     } | null
+    inbaRelease?: {
+      __typename?: 'InbaRelease'
+      documentId: string
+      title: string
+      slug: string
+    } | null
+    regulation?: {
+      __typename?: 'Regulation'
+      documentId: string
+      slug: string
+      titleText?: string | null
+    } | null
+    asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
   } | null
   councilCard?: {
     __typename?: 'ComponentBlocksCommonLink'
@@ -9298,6 +9697,19 @@ export type HomepageMayorAndCouncilSectionFragment = {
       title: string
       locale?: string | null
     } | null
+    inbaRelease?: {
+      __typename?: 'InbaRelease'
+      documentId: string
+      title: string
+      slug: string
+    } | null
+    regulation?: {
+      __typename?: 'Regulation'
+      documentId: string
+      slug: string
+      titleText?: string | null
+    } | null
+    asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
   } | null
 }
 
@@ -9323,6 +9735,19 @@ export type TopServicesItemFragment = {
       title: string
       locale?: string | null
     } | null
+    inbaRelease?: {
+      __typename?: 'InbaRelease'
+      documentId: string
+      title: string
+      slug: string
+    } | null
+    regulation?: {
+      __typename?: 'Regulation'
+      documentId: string
+      slug: string
+      titleText?: string | null
+    } | null
+    asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
   }
 }
 
@@ -9349,6 +9774,19 @@ export type HomepageInbaFragment = {
       title: string
       locale?: string | null
     } | null
+    inbaRelease?: {
+      __typename?: 'InbaRelease'
+      documentId: string
+      title: string
+      slug: string
+    } | null
+    regulation?: {
+      __typename?: 'Regulation'
+      documentId: string
+      slug: string
+      titleText?: string | null
+    } | null
+    asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
   } | null
 }
 
@@ -10022,6 +10460,19 @@ export type PageEntityFragment = {
       title: string
       locale?: string | null
     } | null
+    inbaRelease?: {
+      __typename?: 'InbaRelease'
+      documentId: string
+      title: string
+      slug: string
+    } | null
+    regulation?: {
+      __typename?: 'Regulation'
+      documentId: string
+      slug: string
+      titleText?: string | null
+    } | null
+    asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
   } | null> | null
   pageHeaderSections?: Array<
     | { __typename: 'ComponentHeaderSectionsEvent'; date?: any | null; address?: string | null }
@@ -10204,6 +10655,19 @@ export type PageEntityFragment = {
             title: string
             locale?: string | null
           } | null
+          inbaRelease?: {
+            __typename?: 'InbaRelease'
+            documentId: string
+            title: string
+            slug: string
+          } | null
+          regulation?: {
+            __typename?: 'Regulation'
+            documentId: string
+            slug: string
+            titleText?: string | null
+          } | null
+          asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
         } | null
       }
     | {
@@ -10264,6 +10728,19 @@ export type PageEntityFragment = {
             title: string
             locale?: string | null
           } | null
+          inbaRelease?: {
+            __typename?: 'InbaRelease'
+            documentId: string
+            title: string
+            slug: string
+          } | null
+          regulation?: {
+            __typename?: 'Regulation'
+            documentId: string
+            slug: string
+            titleText?: string | null
+          } | null
+          asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
         } | null
       }
     | {
@@ -10324,6 +10801,19 @@ export type PageEntityFragment = {
             title: string
             locale?: string | null
           } | null
+          inbaRelease?: {
+            __typename?: 'InbaRelease'
+            documentId: string
+            title: string
+            slug: string
+          } | null
+          regulation?: {
+            __typename?: 'Regulation'
+            documentId: string
+            slug: string
+            titleText?: string | null
+          } | null
+          asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
         } | null
         secondaryLink?: {
           __typename?: 'ComponentBlocksCommonLink'
@@ -10344,6 +10834,19 @@ export type PageEntityFragment = {
             title: string
             locale?: string | null
           } | null
+          inbaRelease?: {
+            __typename?: 'InbaRelease'
+            documentId: string
+            title: string
+            slug: string
+          } | null
+          regulation?: {
+            __typename?: 'Regulation'
+            documentId: string
+            slug: string
+            titleText?: string | null
+          } | null
+          asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
         } | null
         tertiaryLink?: {
           __typename?: 'ComponentBlocksCommonLink'
@@ -10364,6 +10867,19 @@ export type PageEntityFragment = {
             title: string
             locale?: string | null
           } | null
+          inbaRelease?: {
+            __typename?: 'InbaRelease'
+            documentId: string
+            title: string
+            slug: string
+          } | null
+          regulation?: {
+            __typename?: 'Regulation'
+            documentId: string
+            slug: string
+            titleText?: string | null
+          } | null
+          asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
         } | null
       }
     | {
@@ -10686,6 +11202,19 @@ export type PageEntityFragment = {
             title: string
             locale?: string | null
           } | null
+          inbaRelease?: {
+            __typename?: 'InbaRelease'
+            documentId: string
+            title: string
+            slug: string
+          } | null
+          regulation?: {
+            __typename?: 'Regulation'
+            documentId: string
+            slug: string
+            titleText?: string | null
+          } | null
+          asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
         } | null
       }
     | {
@@ -10751,6 +11280,19 @@ export type PageEntityFragment = {
             title: string
             locale?: string | null
           } | null
+          inbaRelease?: {
+            __typename?: 'InbaRelease'
+            documentId: string
+            title: string
+            slug: string
+          } | null
+          regulation?: {
+            __typename?: 'Regulation'
+            documentId: string
+            slug: string
+            titleText?: string | null
+          } | null
+          asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
         } | null
         numbersOverviewItems?: Array<{
           __typename?: 'ComponentBlocksNumbersOverviewItem'
@@ -10830,14 +11372,14 @@ export type PageEntityFragment = {
         showAll?: boolean | null
         regulations: Array<{
           __typename?: 'Regulation'
-          documentId: string
           regNumber: string
-          slug: string
-          titleText?: string | null
           fullTitle: string
           effectiveFrom: any
           category: Enum_Regulation_Category
           isFullTextRegulation: boolean
+          documentId: string
+          slug: string
+          titleText?: string | null
           mainDocument: {
             __typename?: 'UploadFile'
             documentId: string
@@ -10956,6 +11498,19 @@ export type PageEntityFragment = {
               title: string
               locale?: string | null
             } | null
+            inbaRelease?: {
+              __typename?: 'InbaRelease'
+              documentId: string
+              title: string
+              slug: string
+            } | null
+            regulation?: {
+              __typename?: 'Regulation'
+              documentId: string
+              slug: string
+              titleText?: string | null
+            } | null
+            asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
           } | null
           secondaryLink?: {
             __typename?: 'ComponentBlocksCommonLink'
@@ -10976,6 +11531,19 @@ export type PageEntityFragment = {
               title: string
               locale?: string | null
             } | null
+            inbaRelease?: {
+              __typename?: 'InbaRelease'
+              documentId: string
+              title: string
+              slug: string
+            } | null
+            regulation?: {
+              __typename?: 'Regulation'
+              documentId: string
+              slug: string
+              titleText?: string | null
+            } | null
+            asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
           } | null
           tertiaryLink?: {
             __typename?: 'ComponentBlocksCommonLink'
@@ -10996,6 +11564,19 @@ export type PageEntityFragment = {
               title: string
               locale?: string | null
             } | null
+            inbaRelease?: {
+              __typename?: 'InbaRelease'
+              documentId: string
+              title: string
+              slug: string
+            } | null
+            regulation?: {
+              __typename?: 'Regulation'
+              documentId: string
+              slug: string
+              titleText?: string | null
+            } | null
+            asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
           } | null
         }
         cardLinks?: Array<{
@@ -11099,6 +11680,19 @@ export type PageEntityFragment = {
             title: string
             locale?: string | null
           } | null
+          inbaRelease?: {
+            __typename?: 'InbaRelease'
+            documentId: string
+            title: string
+            slug: string
+          } | null
+          regulation?: {
+            __typename?: 'Regulation'
+            documentId: string
+            slug: string
+            titleText?: string | null
+          } | null
+          asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
         } | null> | null
       }
     | {
@@ -11134,6 +11728,19 @@ export type PageEntityFragment = {
             title: string
             locale?: string | null
           } | null
+          inbaRelease?: {
+            __typename?: 'InbaRelease'
+            documentId: string
+            title: string
+            slug: string
+          } | null
+          regulation?: {
+            __typename?: 'Regulation'
+            documentId: string
+            slug: string
+            titleText?: string | null
+          } | null
+          asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
         } | null> | null
       }
     | {
@@ -11159,6 +11766,19 @@ export type PageEntityFragment = {
             title: string
             locale?: string | null
           } | null
+          inbaRelease?: {
+            __typename?: 'InbaRelease'
+            documentId: string
+            title: string
+            slug: string
+          } | null
+          regulation?: {
+            __typename?: 'Regulation'
+            documentId: string
+            slug: string
+            titleText?: string | null
+          } | null
+          asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
         } | null
       }
     | {
@@ -11324,6 +11944,19 @@ export type PageByPathQuery = {
         title: string
         locale?: string | null
       } | null
+      inbaRelease?: {
+        __typename?: 'InbaRelease'
+        documentId: string
+        title: string
+        slug: string
+      } | null
+      regulation?: {
+        __typename?: 'Regulation'
+        documentId: string
+        slug: string
+        titleText?: string | null
+      } | null
+      asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
     } | null> | null
     pageHeaderSections?: Array<
       | { __typename: 'ComponentHeaderSectionsEvent'; date?: any | null; address?: string | null }
@@ -11506,6 +12139,19 @@ export type PageByPathQuery = {
               title: string
               locale?: string | null
             } | null
+            inbaRelease?: {
+              __typename?: 'InbaRelease'
+              documentId: string
+              title: string
+              slug: string
+            } | null
+            regulation?: {
+              __typename?: 'Regulation'
+              documentId: string
+              slug: string
+              titleText?: string | null
+            } | null
+            asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
           } | null
         }
       | {
@@ -11566,6 +12212,19 @@ export type PageByPathQuery = {
               title: string
               locale?: string | null
             } | null
+            inbaRelease?: {
+              __typename?: 'InbaRelease'
+              documentId: string
+              title: string
+              slug: string
+            } | null
+            regulation?: {
+              __typename?: 'Regulation'
+              documentId: string
+              slug: string
+              titleText?: string | null
+            } | null
+            asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
           } | null
         }
       | {
@@ -11626,6 +12285,19 @@ export type PageByPathQuery = {
               title: string
               locale?: string | null
             } | null
+            inbaRelease?: {
+              __typename?: 'InbaRelease'
+              documentId: string
+              title: string
+              slug: string
+            } | null
+            regulation?: {
+              __typename?: 'Regulation'
+              documentId: string
+              slug: string
+              titleText?: string | null
+            } | null
+            asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
           } | null
           secondaryLink?: {
             __typename?: 'ComponentBlocksCommonLink'
@@ -11646,6 +12318,19 @@ export type PageByPathQuery = {
               title: string
               locale?: string | null
             } | null
+            inbaRelease?: {
+              __typename?: 'InbaRelease'
+              documentId: string
+              title: string
+              slug: string
+            } | null
+            regulation?: {
+              __typename?: 'Regulation'
+              documentId: string
+              slug: string
+              titleText?: string | null
+            } | null
+            asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
           } | null
           tertiaryLink?: {
             __typename?: 'ComponentBlocksCommonLink'
@@ -11666,6 +12351,19 @@ export type PageByPathQuery = {
               title: string
               locale?: string | null
             } | null
+            inbaRelease?: {
+              __typename?: 'InbaRelease'
+              documentId: string
+              title: string
+              slug: string
+            } | null
+            regulation?: {
+              __typename?: 'Regulation'
+              documentId: string
+              slug: string
+              titleText?: string | null
+            } | null
+            asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
           } | null
         }
       | {
@@ -11991,6 +12689,19 @@ export type PageByPathQuery = {
               title: string
               locale?: string | null
             } | null
+            inbaRelease?: {
+              __typename?: 'InbaRelease'
+              documentId: string
+              title: string
+              slug: string
+            } | null
+            regulation?: {
+              __typename?: 'Regulation'
+              documentId: string
+              slug: string
+              titleText?: string | null
+            } | null
+            asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
           } | null
         }
       | {
@@ -12056,6 +12767,19 @@ export type PageByPathQuery = {
               title: string
               locale?: string | null
             } | null
+            inbaRelease?: {
+              __typename?: 'InbaRelease'
+              documentId: string
+              title: string
+              slug: string
+            } | null
+            regulation?: {
+              __typename?: 'Regulation'
+              documentId: string
+              slug: string
+              titleText?: string | null
+            } | null
+            asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
           } | null
           numbersOverviewItems?: Array<{
             __typename?: 'ComponentBlocksNumbersOverviewItem'
@@ -12135,14 +12859,14 @@ export type PageByPathQuery = {
           showAll?: boolean | null
           regulations: Array<{
             __typename?: 'Regulation'
-            documentId: string
             regNumber: string
-            slug: string
-            titleText?: string | null
             fullTitle: string
             effectiveFrom: any
             category: Enum_Regulation_Category
             isFullTextRegulation: boolean
+            documentId: string
+            slug: string
+            titleText?: string | null
             mainDocument: {
               __typename?: 'UploadFile'
               documentId: string
@@ -12261,6 +12985,24 @@ export type PageByPathQuery = {
                 title: string
                 locale?: string | null
               } | null
+              inbaRelease?: {
+                __typename?: 'InbaRelease'
+                documentId: string
+                title: string
+                slug: string
+              } | null
+              regulation?: {
+                __typename?: 'Regulation'
+                documentId: string
+                slug: string
+                titleText?: string | null
+              } | null
+              asset?: {
+                __typename: 'Asset'
+                documentId: string
+                slug: string
+                title: string
+              } | null
             } | null
             secondaryLink?: {
               __typename?: 'ComponentBlocksCommonLink'
@@ -12281,6 +13023,24 @@ export type PageByPathQuery = {
                 title: string
                 locale?: string | null
               } | null
+              inbaRelease?: {
+                __typename?: 'InbaRelease'
+                documentId: string
+                title: string
+                slug: string
+              } | null
+              regulation?: {
+                __typename?: 'Regulation'
+                documentId: string
+                slug: string
+                titleText?: string | null
+              } | null
+              asset?: {
+                __typename: 'Asset'
+                documentId: string
+                slug: string
+                title: string
+              } | null
             } | null
             tertiaryLink?: {
               __typename?: 'ComponentBlocksCommonLink'
@@ -12300,6 +13060,24 @@ export type PageByPathQuery = {
                 slug: string
                 title: string
                 locale?: string | null
+              } | null
+              inbaRelease?: {
+                __typename?: 'InbaRelease'
+                documentId: string
+                title: string
+                slug: string
+              } | null
+              regulation?: {
+                __typename?: 'Regulation'
+                documentId: string
+                slug: string
+                titleText?: string | null
+              } | null
+              asset?: {
+                __typename: 'Asset'
+                documentId: string
+                slug: string
+                title: string
               } | null
             } | null
           }
@@ -12404,6 +13182,19 @@ export type PageByPathQuery = {
               title: string
               locale?: string | null
             } | null
+            inbaRelease?: {
+              __typename?: 'InbaRelease'
+              documentId: string
+              title: string
+              slug: string
+            } | null
+            regulation?: {
+              __typename?: 'Regulation'
+              documentId: string
+              slug: string
+              titleText?: string | null
+            } | null
+            asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
           } | null> | null
         }
       | {
@@ -12439,6 +13230,19 @@ export type PageByPathQuery = {
               title: string
               locale?: string | null
             } | null
+            inbaRelease?: {
+              __typename?: 'InbaRelease'
+              documentId: string
+              title: string
+              slug: string
+            } | null
+            regulation?: {
+              __typename?: 'Regulation'
+              documentId: string
+              slug: string
+              titleText?: string | null
+            } | null
+            asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
           } | null> | null
         }
       | {
@@ -12464,6 +13268,19 @@ export type PageByPathQuery = {
               title: string
               locale?: string | null
             } | null
+            inbaRelease?: {
+              __typename?: 'InbaRelease'
+              documentId: string
+              title: string
+              slug: string
+            } | null
+            regulation?: {
+              __typename?: 'Regulation'
+              documentId: string
+              slug: string
+              titleText?: string | null
+            } | null
+            asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
           } | null
         }
       | {
@@ -12649,6 +13466,19 @@ export type Dev_AllPagesQuery = {
         title: string
         locale?: string | null
       } | null
+      inbaRelease?: {
+        __typename?: 'InbaRelease'
+        documentId: string
+        title: string
+        slug: string
+      } | null
+      regulation?: {
+        __typename?: 'Regulation'
+        documentId: string
+        slug: string
+        titleText?: string | null
+      } | null
+      asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
     } | null> | null
     pageHeaderSections?: Array<
       | { __typename: 'ComponentHeaderSectionsEvent'; date?: any | null; address?: string | null }
@@ -12831,6 +13661,19 @@ export type Dev_AllPagesQuery = {
               title: string
               locale?: string | null
             } | null
+            inbaRelease?: {
+              __typename?: 'InbaRelease'
+              documentId: string
+              title: string
+              slug: string
+            } | null
+            regulation?: {
+              __typename?: 'Regulation'
+              documentId: string
+              slug: string
+              titleText?: string | null
+            } | null
+            asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
           } | null
         }
       | {
@@ -12891,6 +13734,19 @@ export type Dev_AllPagesQuery = {
               title: string
               locale?: string | null
             } | null
+            inbaRelease?: {
+              __typename?: 'InbaRelease'
+              documentId: string
+              title: string
+              slug: string
+            } | null
+            regulation?: {
+              __typename?: 'Regulation'
+              documentId: string
+              slug: string
+              titleText?: string | null
+            } | null
+            asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
           } | null
         }
       | {
@@ -12951,6 +13807,19 @@ export type Dev_AllPagesQuery = {
               title: string
               locale?: string | null
             } | null
+            inbaRelease?: {
+              __typename?: 'InbaRelease'
+              documentId: string
+              title: string
+              slug: string
+            } | null
+            regulation?: {
+              __typename?: 'Regulation'
+              documentId: string
+              slug: string
+              titleText?: string | null
+            } | null
+            asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
           } | null
           secondaryLink?: {
             __typename?: 'ComponentBlocksCommonLink'
@@ -12971,6 +13840,19 @@ export type Dev_AllPagesQuery = {
               title: string
               locale?: string | null
             } | null
+            inbaRelease?: {
+              __typename?: 'InbaRelease'
+              documentId: string
+              title: string
+              slug: string
+            } | null
+            regulation?: {
+              __typename?: 'Regulation'
+              documentId: string
+              slug: string
+              titleText?: string | null
+            } | null
+            asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
           } | null
           tertiaryLink?: {
             __typename?: 'ComponentBlocksCommonLink'
@@ -12991,6 +13873,19 @@ export type Dev_AllPagesQuery = {
               title: string
               locale?: string | null
             } | null
+            inbaRelease?: {
+              __typename?: 'InbaRelease'
+              documentId: string
+              title: string
+              slug: string
+            } | null
+            regulation?: {
+              __typename?: 'Regulation'
+              documentId: string
+              slug: string
+              titleText?: string | null
+            } | null
+            asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
           } | null
         }
       | {
@@ -13316,6 +14211,19 @@ export type Dev_AllPagesQuery = {
               title: string
               locale?: string | null
             } | null
+            inbaRelease?: {
+              __typename?: 'InbaRelease'
+              documentId: string
+              title: string
+              slug: string
+            } | null
+            regulation?: {
+              __typename?: 'Regulation'
+              documentId: string
+              slug: string
+              titleText?: string | null
+            } | null
+            asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
           } | null
         }
       | {
@@ -13381,6 +14289,19 @@ export type Dev_AllPagesQuery = {
               title: string
               locale?: string | null
             } | null
+            inbaRelease?: {
+              __typename?: 'InbaRelease'
+              documentId: string
+              title: string
+              slug: string
+            } | null
+            regulation?: {
+              __typename?: 'Regulation'
+              documentId: string
+              slug: string
+              titleText?: string | null
+            } | null
+            asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
           } | null
           numbersOverviewItems?: Array<{
             __typename?: 'ComponentBlocksNumbersOverviewItem'
@@ -13460,14 +14381,14 @@ export type Dev_AllPagesQuery = {
           showAll?: boolean | null
           regulations: Array<{
             __typename?: 'Regulation'
-            documentId: string
             regNumber: string
-            slug: string
-            titleText?: string | null
             fullTitle: string
             effectiveFrom: any
             category: Enum_Regulation_Category
             isFullTextRegulation: boolean
+            documentId: string
+            slug: string
+            titleText?: string | null
             mainDocument: {
               __typename?: 'UploadFile'
               documentId: string
@@ -13586,6 +14507,24 @@ export type Dev_AllPagesQuery = {
                 title: string
                 locale?: string | null
               } | null
+              inbaRelease?: {
+                __typename?: 'InbaRelease'
+                documentId: string
+                title: string
+                slug: string
+              } | null
+              regulation?: {
+                __typename?: 'Regulation'
+                documentId: string
+                slug: string
+                titleText?: string | null
+              } | null
+              asset?: {
+                __typename: 'Asset'
+                documentId: string
+                slug: string
+                title: string
+              } | null
             } | null
             secondaryLink?: {
               __typename?: 'ComponentBlocksCommonLink'
@@ -13606,6 +14545,24 @@ export type Dev_AllPagesQuery = {
                 title: string
                 locale?: string | null
               } | null
+              inbaRelease?: {
+                __typename?: 'InbaRelease'
+                documentId: string
+                title: string
+                slug: string
+              } | null
+              regulation?: {
+                __typename?: 'Regulation'
+                documentId: string
+                slug: string
+                titleText?: string | null
+              } | null
+              asset?: {
+                __typename: 'Asset'
+                documentId: string
+                slug: string
+                title: string
+              } | null
             } | null
             tertiaryLink?: {
               __typename?: 'ComponentBlocksCommonLink'
@@ -13625,6 +14582,24 @@ export type Dev_AllPagesQuery = {
                 slug: string
                 title: string
                 locale?: string | null
+              } | null
+              inbaRelease?: {
+                __typename?: 'InbaRelease'
+                documentId: string
+                title: string
+                slug: string
+              } | null
+              regulation?: {
+                __typename?: 'Regulation'
+                documentId: string
+                slug: string
+                titleText?: string | null
+              } | null
+              asset?: {
+                __typename: 'Asset'
+                documentId: string
+                slug: string
+                title: string
               } | null
             } | null
           }
@@ -13729,6 +14704,19 @@ export type Dev_AllPagesQuery = {
               title: string
               locale?: string | null
             } | null
+            inbaRelease?: {
+              __typename?: 'InbaRelease'
+              documentId: string
+              title: string
+              slug: string
+            } | null
+            regulation?: {
+              __typename?: 'Regulation'
+              documentId: string
+              slug: string
+              titleText?: string | null
+            } | null
+            asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
           } | null> | null
         }
       | {
@@ -13764,6 +14752,19 @@ export type Dev_AllPagesQuery = {
               title: string
               locale?: string | null
             } | null
+            inbaRelease?: {
+              __typename?: 'InbaRelease'
+              documentId: string
+              title: string
+              slug: string
+            } | null
+            regulation?: {
+              __typename?: 'Regulation'
+              documentId: string
+              slug: string
+              titleText?: string | null
+            } | null
+            asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
           } | null> | null
         }
       | {
@@ -13789,6 +14790,19 @@ export type Dev_AllPagesQuery = {
               title: string
               locale?: string | null
             } | null
+            inbaRelease?: {
+              __typename?: 'InbaRelease'
+              documentId: string
+              title: string
+              slug: string
+            } | null
+            regulation?: {
+              __typename?: 'Regulation'
+              documentId: string
+              slug: string
+              titleText?: string | null
+            } | null
+            asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
           } | null
         }
       | {
@@ -13877,14 +14891,14 @@ export type AllRegulationsQuery = {
   __typename?: 'Query'
   regulations: Array<{
     __typename?: 'Regulation'
-    documentId: string
     regNumber: string
-    slug: string
-    titleText?: string | null
     fullTitle: string
     effectiveFrom: any
     category: Enum_Regulation_Category
     isFullTextRegulation: boolean
+    documentId: string
+    slug: string
+    titleText?: string | null
     mainDocument: {
       __typename?: 'UploadFile'
       documentId: string
@@ -13984,14 +14998,14 @@ export type RegulationByIdQuery = {
   __typename?: 'Query'
   regulation?: {
     __typename?: 'Regulation'
-    documentId: string
     regNumber: string
-    slug: string
-    titleText?: string | null
     fullTitle: string
     effectiveFrom: any
     category: Enum_Regulation_Category
     isFullTextRegulation: boolean
+    documentId: string
+    slug: string
+    titleText?: string | null
     mainDocument: {
       __typename?: 'UploadFile'
       documentId: string
@@ -14082,14 +15096,14 @@ export type RegulationBySlugQuery = {
   __typename?: 'Query'
   regulations: Array<{
     __typename?: 'Regulation'
-    documentId: string
     regNumber: string
-    slug: string
-    titleText?: string | null
     fullTitle: string
     effectiveFrom: any
     category: Enum_Regulation_Category
     isFullTextRegulation: boolean
+    documentId: string
+    slug: string
+    titleText?: string | null
     mainDocument: {
       __typename?: 'UploadFile'
       documentId: string
@@ -14180,14 +15194,14 @@ export type RegulationByYearQuery = {
   __typename?: 'Query'
   regulations: Array<{
     __typename?: 'Regulation'
-    documentId: string
     regNumber: string
-    slug: string
-    titleText?: string | null
     fullTitle: string
     effectiveFrom: any
     category: Enum_Regulation_Category
     isFullTextRegulation: boolean
+    documentId: string
+    slug: string
+    titleText?: string | null
     mainDocument: {
       __typename?: 'UploadFile'
       documentId: string
@@ -14328,16 +15342,23 @@ export type CreateBareRegulationMutation = {
   createRegulation?: { __typename?: 'Regulation'; documentId: string; regNumber: string } | null
 }
 
-export type RegulationEntityFragment = {
+export type RegulationSlugEntityFragment = {
   __typename?: 'Regulation'
   documentId: string
-  regNumber: string
   slug: string
   titleText?: string | null
+}
+
+export type RegulationEntityFragment = {
+  __typename?: 'Regulation'
+  regNumber: string
   fullTitle: string
   effectiveFrom: any
   category: Enum_Regulation_Category
   isFullTextRegulation: boolean
+  documentId: string
+  slug: string
+  titleText?: string | null
   mainDocument: {
     __typename?: 'UploadFile'
     documentId: string
@@ -14561,6 +15582,19 @@ export type ArticlesSectionFragment = {
       title: string
       locale?: string | null
     } | null
+    inbaRelease?: {
+      __typename?: 'InbaRelease'
+      documentId: string
+      title: string
+      slug: string
+    } | null
+    regulation?: {
+      __typename?: 'Regulation'
+      documentId: string
+      slug: string
+      titleText?: string | null
+    } | null
+    asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
   } | null
 }
 
@@ -14588,6 +15622,19 @@ export type InbaReleasesSectionFragment = {
       title: string
       locale?: string | null
     } | null
+    inbaRelease?: {
+      __typename?: 'InbaRelease'
+      documentId: string
+      title: string
+      slug: string
+    } | null
+    regulation?: {
+      __typename?: 'Regulation'
+      documentId: string
+      slug: string
+      titleText?: string | null
+    } | null
+    asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
   } | null
 }
 
@@ -14630,6 +15677,19 @@ export type TextWithImageSectionFragment = {
       title: string
       locale?: string | null
     } | null
+    inbaRelease?: {
+      __typename?: 'InbaRelease'
+      documentId: string
+      title: string
+      slug: string
+    } | null
+    regulation?: {
+      __typename?: 'Regulation'
+      documentId: string
+      slug: string
+      titleText?: string | null
+    } | null
+    asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
   } | null> | null
 }
 
@@ -14666,6 +15726,19 @@ export type TextWithImageOverlappedSectionFragment = {
       title: string
       locale?: string | null
     } | null
+    inbaRelease?: {
+      __typename?: 'InbaRelease'
+      documentId: string
+      title: string
+      slug: string
+    } | null
+    regulation?: {
+      __typename?: 'Regulation'
+      documentId: string
+      slug: string
+      titleText?: string | null
+    } | null
+    asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
   } | null> | null
 }
 
@@ -15007,6 +16080,19 @@ export type BannerSectionFragment = {
       title: string
       locale?: string | null
     } | null
+    inbaRelease?: {
+      __typename?: 'InbaRelease'
+      documentId: string
+      title: string
+      slug: string
+    } | null
+    regulation?: {
+      __typename?: 'Regulation'
+      documentId: string
+      slug: string
+      titleText?: string | null
+    } | null
+    asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
   } | null
   secondaryLink?: {
     __typename?: 'ComponentBlocksCommonLink'
@@ -15027,6 +16113,19 @@ export type BannerSectionFragment = {
       title: string
       locale?: string | null
     } | null
+    inbaRelease?: {
+      __typename?: 'InbaRelease'
+      documentId: string
+      title: string
+      slug: string
+    } | null
+    regulation?: {
+      __typename?: 'Regulation'
+      documentId: string
+      slug: string
+      titleText?: string | null
+    } | null
+    asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
   } | null
   tertiaryLink?: {
     __typename?: 'ComponentBlocksCommonLink'
@@ -15047,6 +16146,19 @@ export type BannerSectionFragment = {
       title: string
       locale?: string | null
     } | null
+    inbaRelease?: {
+      __typename?: 'InbaRelease'
+      documentId: string
+      title: string
+      slug: string
+    } | null
+    regulation?: {
+      __typename?: 'Regulation'
+      documentId: string
+      slug: string
+      titleText?: string | null
+    } | null
+    asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
   } | null
 }
 
@@ -15143,14 +16255,14 @@ export type RegulationsSectionFragment = {
   showAll?: boolean | null
   regulations: Array<{
     __typename?: 'Regulation'
-    documentId: string
     regNumber: string
-    slug: string
-    titleText?: string | null
     fullTitle: string
     effectiveFrom: any
     category: Enum_Regulation_Category
     isFullTextRegulation: boolean
+    documentId: string
+    slug: string
+    titleText?: string | null
     mainDocument: {
       __typename?: 'UploadFile'
       documentId: string
@@ -15284,6 +16396,19 @@ export type TootootEventsSectionFragment = {
       title: string
       locale?: string | null
     } | null
+    inbaRelease?: {
+      __typename?: 'InbaRelease'
+      documentId: string
+      title: string
+      slug: string
+    } | null
+    regulation?: {
+      __typename?: 'Regulation'
+      documentId: string
+      slug: string
+      titleText?: string | null
+    } | null
+    asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
   } | null
 }
 
@@ -15389,6 +16514,19 @@ export type NumbersOverviewSectionFragment = {
       title: string
       locale?: string | null
     } | null
+    inbaRelease?: {
+      __typename?: 'InbaRelease'
+      documentId: string
+      title: string
+      slug: string
+    } | null
+    regulation?: {
+      __typename?: 'Regulation'
+      documentId: string
+      slug: string
+      titleText?: string | null
+    } | null
+    asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
   } | null
   numbersOverviewItems?: Array<{
     __typename?: 'ComponentBlocksNumbersOverviewItem'
@@ -15505,6 +16643,19 @@ export type StarzLandingPageSectionFragment = {
         title: string
         locale?: string | null
       } | null
+      inbaRelease?: {
+        __typename?: 'InbaRelease'
+        documentId: string
+        title: string
+        slug: string
+      } | null
+      regulation?: {
+        __typename?: 'Regulation'
+        documentId: string
+        slug: string
+        titleText?: string | null
+      } | null
+      asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
     } | null
     secondaryLink?: {
       __typename?: 'ComponentBlocksCommonLink'
@@ -15525,6 +16676,19 @@ export type StarzLandingPageSectionFragment = {
         title: string
         locale?: string | null
       } | null
+      inbaRelease?: {
+        __typename?: 'InbaRelease'
+        documentId: string
+        title: string
+        slug: string
+      } | null
+      regulation?: {
+        __typename?: 'Regulation'
+        documentId: string
+        slug: string
+        titleText?: string | null
+      } | null
+      asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
     } | null
     tertiaryLink?: {
       __typename?: 'ComponentBlocksCommonLink'
@@ -15545,6 +16709,19 @@ export type StarzLandingPageSectionFragment = {
         title: string
         locale?: string | null
       } | null
+      inbaRelease?: {
+        __typename?: 'InbaRelease'
+        documentId: string
+        title: string
+        slug: string
+      } | null
+      regulation?: {
+        __typename?: 'Regulation'
+        documentId: string
+        slug: string
+        titleText?: string | null
+      } | null
+      asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
     } | null
   }
   cardLinks?: Array<{
@@ -15752,6 +16929,19 @@ export type ArticlesLandingPageSectionFragment = {
       title: string
       locale?: string | null
     } | null
+    inbaRelease?: {
+      __typename?: 'InbaRelease'
+      documentId: string
+      title: string
+      slug: string
+    } | null
+    regulation?: {
+      __typename?: 'Regulation'
+      documentId: string
+      slug: string
+      titleText?: string | null
+    } | null
+    asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
   } | null
 }
 
@@ -15913,6 +17103,19 @@ type Sections_ComponentSectionsArticles_Fragment = {
       title: string
       locale?: string | null
     } | null
+    inbaRelease?: {
+      __typename?: 'InbaRelease'
+      documentId: string
+      title: string
+      slug: string
+    } | null
+    regulation?: {
+      __typename?: 'Regulation'
+      documentId: string
+      slug: string
+      titleText?: string | null
+    } | null
+    asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
   } | null
 }
 
@@ -15974,6 +17177,19 @@ type Sections_ComponentSectionsArticlesLandingPage_Fragment = {
       title: string
       locale?: string | null
     } | null
+    inbaRelease?: {
+      __typename?: 'InbaRelease'
+      documentId: string
+      title: string
+      slug: string
+    } | null
+    regulation?: {
+      __typename?: 'Regulation'
+      documentId: string
+      slug: string
+      titleText?: string | null
+    } | null
+    asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
   } | null
 }
 
@@ -16036,6 +17252,19 @@ type Sections_ComponentSectionsBanner_Fragment = {
       title: string
       locale?: string | null
     } | null
+    inbaRelease?: {
+      __typename?: 'InbaRelease'
+      documentId: string
+      title: string
+      slug: string
+    } | null
+    regulation?: {
+      __typename?: 'Regulation'
+      documentId: string
+      slug: string
+      titleText?: string | null
+    } | null
+    asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
   } | null
   secondaryLink?: {
     __typename?: 'ComponentBlocksCommonLink'
@@ -16056,6 +17285,19 @@ type Sections_ComponentSectionsBanner_Fragment = {
       title: string
       locale?: string | null
     } | null
+    inbaRelease?: {
+      __typename?: 'InbaRelease'
+      documentId: string
+      title: string
+      slug: string
+    } | null
+    regulation?: {
+      __typename?: 'Regulation'
+      documentId: string
+      slug: string
+      titleText?: string | null
+    } | null
+    asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
   } | null
   tertiaryLink?: {
     __typename?: 'ComponentBlocksCommonLink'
@@ -16076,6 +17318,19 @@ type Sections_ComponentSectionsBanner_Fragment = {
       title: string
       locale?: string | null
     } | null
+    inbaRelease?: {
+      __typename?: 'InbaRelease'
+      documentId: string
+      title: string
+      slug: string
+    } | null
+    regulation?: {
+      __typename?: 'Regulation'
+      documentId: string
+      slug: string
+      titleText?: string | null
+    } | null
+    asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
   } | null
 }
 
@@ -16401,6 +17656,19 @@ type Sections_ComponentSectionsInbaReleases_Fragment = {
       title: string
       locale?: string | null
     } | null
+    inbaRelease?: {
+      __typename?: 'InbaRelease'
+      documentId: string
+      title: string
+      slug: string
+    } | null
+    regulation?: {
+      __typename?: 'Regulation'
+      documentId: string
+      slug: string
+      titleText?: string | null
+    } | null
+    asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
   } | null
 }
 
@@ -16471,6 +17739,19 @@ type Sections_ComponentSectionsNumbersOverview_Fragment = {
       title: string
       locale?: string | null
     } | null
+    inbaRelease?: {
+      __typename?: 'InbaRelease'
+      documentId: string
+      title: string
+      slug: string
+    } | null
+    regulation?: {
+      __typename?: 'Regulation'
+      documentId: string
+      slug: string
+      titleText?: string | null
+    } | null
+    asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
   } | null
   numbersOverviewItems?: Array<{
     __typename?: 'ComponentBlocksNumbersOverviewItem'
@@ -16562,14 +17843,14 @@ type Sections_ComponentSectionsRegulations_Fragment = {
   showAll?: boolean | null
   regulations: Array<{
     __typename?: 'Regulation'
-    documentId: string
     regNumber: string
-    slug: string
-    titleText?: string | null
     fullTitle: string
     effectiveFrom: any
     category: Enum_Regulation_Category
     isFullTextRegulation: boolean
+    documentId: string
+    slug: string
+    titleText?: string | null
     mainDocument: {
       __typename?: 'UploadFile'
       documentId: string
@@ -16689,6 +17970,19 @@ type Sections_ComponentSectionsStarzLandingPage_Fragment = {
         title: string
         locale?: string | null
       } | null
+      inbaRelease?: {
+        __typename?: 'InbaRelease'
+        documentId: string
+        title: string
+        slug: string
+      } | null
+      regulation?: {
+        __typename?: 'Regulation'
+        documentId: string
+        slug: string
+        titleText?: string | null
+      } | null
+      asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
     } | null
     secondaryLink?: {
       __typename?: 'ComponentBlocksCommonLink'
@@ -16709,6 +18003,19 @@ type Sections_ComponentSectionsStarzLandingPage_Fragment = {
         title: string
         locale?: string | null
       } | null
+      inbaRelease?: {
+        __typename?: 'InbaRelease'
+        documentId: string
+        title: string
+        slug: string
+      } | null
+      regulation?: {
+        __typename?: 'Regulation'
+        documentId: string
+        slug: string
+        titleText?: string | null
+      } | null
+      asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
     } | null
     tertiaryLink?: {
       __typename?: 'ComponentBlocksCommonLink'
@@ -16729,6 +18036,19 @@ type Sections_ComponentSectionsStarzLandingPage_Fragment = {
         title: string
         locale?: string | null
       } | null
+      inbaRelease?: {
+        __typename?: 'InbaRelease'
+        documentId: string
+        title: string
+        slug: string
+      } | null
+      regulation?: {
+        __typename?: 'Regulation'
+        documentId: string
+        slug: string
+        titleText?: string | null
+      } | null
+      asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
     } | null
   }
   cardLinks?: Array<{
@@ -16829,6 +18149,19 @@ type Sections_ComponentSectionsTextWithImage_Fragment = {
       title: string
       locale?: string | null
     } | null
+    inbaRelease?: {
+      __typename?: 'InbaRelease'
+      documentId: string
+      title: string
+      slug: string
+    } | null
+    regulation?: {
+      __typename?: 'Regulation'
+      documentId: string
+      slug: string
+      titleText?: string | null
+    } | null
+    asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
   } | null> | null
 }
 
@@ -16865,6 +18198,19 @@ type Sections_ComponentSectionsTextWithImageOverlapped_Fragment = {
       title: string
       locale?: string | null
     } | null
+    inbaRelease?: {
+      __typename?: 'InbaRelease'
+      documentId: string
+      title: string
+      slug: string
+    } | null
+    regulation?: {
+      __typename?: 'Regulation'
+      documentId: string
+      slug: string
+      titleText?: string | null
+    } | null
+    asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
   } | null> | null
 }
 
@@ -16891,6 +18237,19 @@ type Sections_ComponentSectionsTootootEvents_Fragment = {
       title: string
       locale?: string | null
     } | null
+    inbaRelease?: {
+      __typename?: 'InbaRelease'
+      documentId: string
+      title: string
+      slug: string
+    } | null
+    regulation?: {
+      __typename?: 'Regulation'
+      documentId: string
+      slug: string
+      titleText?: string | null
+    } | null
+    asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
   } | null
 }
 
@@ -17201,6 +18560,21 @@ export const PageSlugEntityFragmentDoc = gql`
     path
   }
 `
+export const RegulationSlugEntityFragmentDoc = gql`
+  fragment RegulationSlugEntity on Regulation {
+    documentId
+    slug
+    titleText
+  }
+`
+export const AssetSlugEntityFragmentDoc = gql`
+  fragment AssetSlugEntity on Asset {
+    __typename
+    documentId
+    slug
+    title
+  }
+`
 export const CommonLinkFragmentDoc = gql`
   fragment CommonLink on ComponentBlocksCommonLink {
     label
@@ -17210,11 +18584,23 @@ export const CommonLinkFragmentDoc = gql`
     article {
       ...ArticleSlugEntity
     }
+    inbaRelease {
+      ...InbaReleaseSlugEntity
+    }
+    regulation {
+      ...RegulationSlugEntity
+    }
+    asset {
+      ...AssetSlugEntity
+    }
     url
     analyticsId
   }
   ${PageSlugEntityFragmentDoc}
   ${ArticleSlugEntityFragmentDoc}
+  ${InbaReleaseSlugEntityFragmentDoc}
+  ${RegulationSlugEntityFragmentDoc}
+  ${AssetSlugEntityFragmentDoc}
 `
 export const FooterColumnBlockFragmentDoc = gql`
   fragment FooterColumnBlock on ComponentBlocksFooterColumn {
@@ -18021,10 +19407,8 @@ export const ContactsSectionFragmentDoc = gql`
 `
 export const RegulationEntityFragmentDoc = gql`
   fragment RegulationEntity on Regulation {
-    documentId
+    ...RegulationSlugEntity
     regNumber
-    slug
-    titleText
     fullTitle
     effectiveFrom
     category
@@ -18081,6 +19465,7 @@ export const RegulationEntityFragmentDoc = gql`
       effectiveFrom
     }
   }
+  ${RegulationSlugEntityFragmentDoc}
   ${UploadFileEntityFragmentDoc}
 `
 export const RegulationsSectionFragmentDoc = gql`
@@ -18150,14 +19535,6 @@ export const PartnersSectionFragmentDoc = gql`
     titleLevelPartnersSection: titleLevel
   }
   ${PartnerBlockFragmentDoc}
-`
-export const AssetSlugEntityFragmentDoc = gql`
-  fragment AssetSlugEntity on Asset {
-    __typename
-    documentId
-    slug
-    title
-  }
 `
 export const AssetCategoryEntityFragmentDoc = gql`
   fragment AssetCategoryEntity on AssetCategory {

@@ -24,15 +24,7 @@ import { isProductionDeployment } from '@/src/utils/utils'
  */
 
 export type SearchOption = {
-  id:
-    | 'allResults'
-    | 'pages'
-    | 'articles'
-    | 'assets'
-    | 'documents'
-    | 'regulations'
-    | 'users'
-    | 'officialBoard'
+  id: 'allResults' | 'pages' | 'articles' | 'assets' | 'regulations' | 'users' | 'officialBoard'
   displayName?: string
   displayNamePlural: string
 }
@@ -90,16 +82,6 @@ const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
       : [
           {
             id: 'assets' as const,
-            displayName: `${t('SearchPage.document')} (Asset)`,
-            displayNamePlural: `${t('SearchPage.documents')} (Assets)`,
-          },
-        ]),
-    // Show Documents in global search only if not in prod - TODO remove when ready to use according to OSO
-    ...(isProductionDeployment() && variant === 'general'
-      ? []
-      : [
-          {
-            id: 'documents' as const,
             displayName: t('SearchPage.document'),
             displayNamePlural: t('SearchPage.documents'),
           },

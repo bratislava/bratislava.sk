@@ -4,6 +4,7 @@ import { ArticleCardProps } from '@/src/components/cards/ArticleCard'
 import { ArticleCardEntityFragment } from '@/src/services/graphql'
 import { formatDate } from '@/src/utils/formatDate'
 import { generateImageSizes } from '@/src/utils/generateImageSizes'
+import { getLinkProps } from '@/src/utils/getLinkProps'
 
 export const transformArticleProps = (
   article: NonNullable<ArticleCardEntityFragment>,
@@ -13,11 +14,11 @@ export const transformArticleProps = (
 
   const { withText = true } = options ?? {}
 
-  const { title, slug, coverMedia, addedAt, perex } = article
+  const { title, coverMedia, addedAt, perex } = article
 
   const propsToReturn: ArticleCardProps = {
     title,
-    linkProps: { children: i18n?.t('readMore'), href: `/spravy/${slug}` },
+    linkProps: { children: i18n?.t('readMore'), href: getLinkProps({ article }).href },
     imgSrc: coverMedia?.url,
     imgSizes: imageSizes,
     date: formatDate(addedAt),

@@ -92,6 +92,51 @@
           "sortable": true
         }
       },
+      "inbaRelease": {
+        "edit": {
+          "label": "inba vydanie",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "title"
+        },
+        "list": {
+          "label": "inbaRelease",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "regulation": {
+        "edit": {
+          "label": "Všeobecne záväzné nariadenie",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "regNumber"
+        },
+        "list": {
+          "label": "regulation",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "asset": {
+        "edit": {
+          "label": "Dokument",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "title"
+        },
+        "list": {
+          "label": "asset",
+          "searchable": true,
+          "sortable": true
+        }
+      },
       "documentId": {
         "edit": {},
         "list": {
@@ -102,7 +147,6 @@
       }
     },
     "layouts": {
-      "list": ["id", "label", "page", "url"],
       "edit": [
         [
           {
@@ -122,14 +166,38 @@
         ],
         [
           {
-            "name": "url",
+            "name": "asset",
             "size": 6
           },
+          {
+            "name": "regulation",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "inbaRelease",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "url",
+            "size": 12
+          }
+        ],
+        [
           {
             "name": "analyticsId",
             "size": 6
           }
         ]
+      ],
+      "list": [
+        "id",
+        "label",
+        "page",
+        "url"
       ]
     },
     "isComponent": true
