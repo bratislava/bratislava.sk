@@ -3,6 +3,7 @@ import NextLink from 'next/link'
 import { usePlausible } from 'next-plausible'
 import { ComponentProps, forwardRef } from 'react'
 
+import { LanguageCode } from '@/src/components/providers/LocalizationsProvider'
 import cn from '@/src/utils/cn'
 
 export type LinkAnalyticsProps = { id: string }
@@ -10,6 +11,7 @@ export type LinkAnalyticsProps = { id: string }
 export type LinkProps = Omit<ComponentProps<typeof NextLink>, 'as' | 'passHref'> & {
   variant?: 'unstyled' | 'underlineOnHover' | 'underlined' | 'underlined-medium'
   analyticsProps?: LinkAnalyticsProps
+  locale?: LanguageCode
   /**
    * Similar to this:
    * https://getbootstrap.com/docs/4.3/utilities/stretched-link/
@@ -19,7 +21,7 @@ export type LinkProps = Omit<ComponentProps<typeof NextLink>, 'as' | 'passHref'>
 
 const MLink = forwardRef<HTMLAnchorElement, LinkProps>(
   (
-    { href, children, className, variant = 'unstyled', stretched, analyticsProps, ...rest },
+    { href, children, className, variant = 'unstyled', stretched, analyticsProps, locale, ...rest },
     ref,
   ) => {
     const plausible = usePlausible()
@@ -43,6 +45,7 @@ const MLink = forwardRef<HTMLAnchorElement, LinkProps>(
         href={href}
         passHref
         ref={ref}
+        lang={locale as string}
         {...rest}
         className={styles}
         onClick={() => {
