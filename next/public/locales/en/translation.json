@@ -93,6 +93,7 @@
   "InbaRelease.releasedOn": "Published on {{date}}",
   "InbaRelease.toDownload": "Downloads",
   "LinkRowCard.goToWeb": "Go to website",
+  "Link.openInNewTab": "Open in new tab",
   "links.searchLink": "/search",
   "MobileNavBar.closeMenu": "Close the menu",
   "MobileNavBar.openMenu": "Open menu",

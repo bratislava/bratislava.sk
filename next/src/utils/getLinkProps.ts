@@ -1,4 +1,5 @@
-import { ReactNode } from 'react'
+import { i18n } from 'next-i18next'
+import { createElement, Fragment, ReactNode } from 'react'
 
 import { LinkAnalyticsProps } from '@/src/components/common/MLink/MLink'
 import {
@@ -31,7 +32,7 @@ export const getLinkProps = (
     | undefined,
 ) => {
   let href = '#'
-  let label = link?.label ?? ''
+  let label: ReactNode = link?.label ?? ''
   let target: '_blank' | undefined
 
   // To allow setting url query parameters from strapi we use the url field if it starts with '?'
@@ -48,15 +49,29 @@ export const getLinkProps = (
   } else if ('article' in link && link.article) {
     label = link.label ?? link.article.title
     href = `/spravy/${link.article.slug}`
-  } else if (link?.url && !queryParams) {
-    label = link.label ?? link.url
+  } else if (link.url && !queryParams) {
+    target = link.url.startsWith('http') ? '_blank' : undefined
+    const urlLabel = link.label ?? link.url
+    label = target
+      ? createElement(
+          Fragment,
+          null,
+          urlLabel,
+          ' ',
+          // Screen reader only text for the open in new tab icon
+          createElement(
+            'span',
+            { className: 'sr-only' },
+            `- ${i18n?.t('Link.openInNewTab') ?? ''}`,
+          ),
+        )
+      : urlLabel
     href = link.url
-    target = href.startsWith('http') ? '_blank' : undefined
   }
 
   if (queryParams) href = `${href}${queryParams}`
 
-  const analyticsProps: LinkAnalyticsProps | undefined = link?.analyticsId
+  const analyticsProps: LinkAnalyticsProps | undefined = link.analyticsId
     ? { id: link.analyticsId }
     : undefined
 
