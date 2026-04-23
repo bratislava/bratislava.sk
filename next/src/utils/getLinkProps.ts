@@ -90,7 +90,7 @@ export const getLinkProps = (link: LinkFragment) => {
           createElement(
             'span',
             { className: 'sr-only' },
-            `- ${i18n?.t('Link.openInNewTab') ?? ''}`,
+            `- ${i18n?.t('getLinkProps.openInNewTab') ?? ''}`,
           ),
         )
       : urlLabel
