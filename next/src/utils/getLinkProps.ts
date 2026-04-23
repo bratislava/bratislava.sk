@@ -81,9 +81,8 @@ export const getLinkProps = (link: LinkFragment) => {
     ariaLabel = entityLinkData.label
   } else if (link.url && !queryParams) {
     target = link.url.startsWith('http') ? '_blank' : undefined
-    const urlLabel = link.label ?? link.url
     label = link.label ?? link.url
-    ariaLabel = target ? `${urlLabel} - ${i18n?.t('getLinkProps.openInNewTab') ?? ''}` : undefined
+    ariaLabel = target ? `${label} - ${i18n?.t('getLinkProps.openInNewTab') ?? ''}` : undefined
     href = link.url
   }
 
