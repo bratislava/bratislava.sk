@@ -1,5 +1,5 @@
 import { i18n } from 'next-i18next'
-import { createElement, Fragment, ReactNode } from 'react'
+import { ReactNode } from 'react'
 
 import { LinkAnalyticsProps } from '@/src/components/common/MLink/MLink'
 import {
@@ -63,8 +63,9 @@ const getEntityLinkData = (link: NonNullable<LinkFragment>) => {
 
 export const getLinkProps = (link: LinkFragment) => {
   let href = '#'
-  let label: ReactNode = link?.label ?? ''
+  let label = link?.label ?? ''
   let target: '_blank' | undefined
+  let ariaLabel: string | undefined
 
   // To allow setting url query parameters from strapi we use the url field if it starts with '?'
   const queryParams = link?.url?.startsWith('?') ? link.url : ''
@@ -77,23 +78,12 @@ export const getLinkProps = (link: LinkFragment) => {
   if (entityLinkData) {
     label = entityLinkData.label
     href = entityLinkData.href
+    ariaLabel = entityLinkData.label
   } else if (link.url && !queryParams) {
     target = link.url.startsWith('http') ? '_blank' : undefined
     const urlLabel = link.label ?? link.url
-    label = target
-      ? createElement(
-          Fragment,
-          null,
-          urlLabel,
-          ' ',
-          // Screen reader only text for the open in new tab icon
-          createElement(
-            'span',
-            { className: 'sr-only' },
-            `- ${i18n?.t('getLinkProps.openInNewTab') ?? ''}`,
-          ),
-        )
-      : urlLabel
+    label = link.label ?? link.url
+    ariaLabel = target ? `${urlLabel} - ${i18n?.t('getLinkProps.openInNewTab') ?? ''}` : undefined
     href = link.url
   }
 
@@ -103,5 +93,5 @@ export const getLinkProps = (link: LinkFragment) => {
     ? { id: link.analyticsId }
     : undefined
 
-  return { children: label, href, target, analyticsProps }
+  return { children: label, href, target, analyticsProps, 'aria-label': ariaLabel }
 }
