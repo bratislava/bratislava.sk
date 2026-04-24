@@ -1,3 +1,4 @@
+import { i18n } from 'next-i18next'
 import { ReactNode } from 'react'
 
 import { LinkAnalyticsProps } from '@/src/components/common/MLink/MLink'
@@ -64,6 +65,7 @@ export const getLinkProps = (link: LinkFragment) => {
   let href = '#'
   let label = link?.label ?? ''
   let target: '_blank' | undefined
+  let ariaLabel: string | undefined
 
   // To allow setting url query parameters from strapi we use the url field if it starts with '?'
   const queryParams = link?.url?.startsWith('?') ? link.url : ''
@@ -76,17 +78,19 @@ export const getLinkProps = (link: LinkFragment) => {
   if (entityLinkData) {
     label = entityLinkData.label
     href = entityLinkData.href
+    ariaLabel = entityLinkData.label
   } else if (link.url && !queryParams) {
+    target = link.url.startsWith('http') ? '_blank' : undefined
     label = link.label ?? link.url
+    ariaLabel = target ? `${label} - ${i18n?.t('getLinkProps.openInNewTab') ?? ''}` : undefined
     href = link.url
-    target = href.startsWith('http') ? '_blank' : undefined
   }
 
   if (queryParams) href = `${href}${queryParams}`
 
-  const analyticsProps: LinkAnalyticsProps | undefined = link?.analyticsId
+  const analyticsProps: LinkAnalyticsProps | undefined = link.analyticsId
     ? { id: link.analyticsId }
     : undefined
 
-  return { children: label, href, target, analyticsProps }
+  return { children: label, href, target, analyticsProps, 'aria-label': ariaLabel }
 }
