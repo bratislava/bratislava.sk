@@ -10,6 +10,10 @@ import { client } from '@/src/services/graphql/gql'
 import cn from '@/src/utils/cn'
 import { useLocale } from '@/src/utils/useLocale'
 
+/**
+ * Figma: https://www.figma.com/design/17wbd0MDQcMW9NbXl6UPs8/DS--Component-library?node-id=16846-12978
+ */
+
 const AlertBanner = forwardRef<HTMLDivElement>((props, forwardedRef) => {
   const { t } = useTranslation()
   const locale = useLocale()
@@ -44,7 +48,7 @@ const AlertBanner = forwardRef<HTMLDivElement>((props, forwardedRef) => {
   return (
     <div
       ref={forwardedRef}
-      className={cn('text-content-passive-inverted bg-background-warning-default', {
+      className={cn('bg-background-warning-default text-content-passive-inverted-primary', {
         // TODO add some animation
         // 'animate-scale-y': showAlert,
       })}
