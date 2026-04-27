@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
 
+import { useLocale } from '@/src/utils/useLocale'
+
 export type Heading = {
   text: string
   id: string
@@ -17,6 +19,8 @@ export const TABLE_OF_CONTENTS_HEADING_ATTRIBUTE = {
  */
 
 const useHeadings = () => {
+  const locale = useLocale()
+
   const [headings, setHeadings] = useState<Heading[]>([])
 
   const updateHeadings = () => {
@@ -36,7 +40,7 @@ const useHeadings = () => {
 
   useEffect(() => {
     updateHeadings()
-  }, [])
+  }, [locale])
 
   return headings
 }
