@@ -1,3 +1,4 @@
+import { i18n } from 'next-i18next'
 import { ReactNode } from 'react'
 
 import { LinkAnalyticsProps } from '@/src/components/common/MLink/MLink'
@@ -32,21 +33,21 @@ type LinkFragment =
 const getEntityLinkData = (link: NonNullable<LinkFragment>) => {
   // Some content types are not in all strapi link fragments, so we have to check if they exist in the object first
   if ('page' in link && link.page) {
-    return { label: link.label ?? link.page.title, href: `/${link.page.path}` }
+    return { href: `/${link.page.path}`, label: link.label ?? link.page.title }
   }
 
   if ('article' in link && link.article) {
-    return { label: link.label ?? link.article.title, href: `/spravy/${link.article.slug}` }
+    return { href: `/spravy/${link.article.slug}`, label: link.label ?? link.article.title }
   }
 
   if ('asset' in link && link.asset) {
-    return { label: link.label ?? link.asset.title, href: `/dokumenty/${link.asset.slug}` }
+    return { href: `/dokumenty/${link.asset.slug}`, label: link.label ?? link.asset.title }
   }
 
   if ('regulation' in link && link.regulation) {
     return {
-      label: link.label ?? link.regulation.titleText ?? `VZN ${link.regulation.slug}`,
       href: `/vzn/${link.regulation.slug}`,
+      label: link.label ?? link.regulation.titleText ?? `VZN ${link.regulation.slug}`,
     }
   }
 
@@ -63,6 +64,7 @@ const getEntityLinkData = (link: NonNullable<LinkFragment>) => {
 export const getLinkProps = (link: LinkFragment) => {
   let href = '#'
   let label = link?.label ?? ''
+  let ariaLabel: string | undefined
   let target: '_blank' | undefined
 
   // To allow setting url query parameters from strapi we use the url field if it starts with '?'
@@ -74,19 +76,22 @@ export const getLinkProps = (link: LinkFragment) => {
 
   const entityLinkData = getEntityLinkData(link)
   if (entityLinkData) {
-    label = entityLinkData.label
     href = entityLinkData.href
+    label = entityLinkData.label
+    ariaLabel = entityLinkData.label
   } else if (link.url && !queryParams) {
-    label = link.label ?? link.url
+    const isExternal = link.url.startsWith('http')
     href = link.url
-    target = href.startsWith('http') ? '_blank' : undefined
+    label = link.label ?? link.url
+    ariaLabel = isExternal ? `${label} - ${i18n?.t('getLinkProps.openInNewTab') ?? ''}` : undefined
+    target = isExternal ? '_blank' : undefined
   }
 
   if (queryParams) href = `${href}${queryParams}`
 
-  const analyticsProps: LinkAnalyticsProps | undefined = link?.analyticsId
+  const analyticsProps: LinkAnalyticsProps | undefined = link.analyticsId
     ? { id: link.analyticsId }
     : undefined
 
-  return { children: label, href, target, analyticsProps }
+  return { href, children: label, 'aria-label': ariaLabel, target, analyticsProps }
 }

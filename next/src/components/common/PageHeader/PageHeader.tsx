@@ -52,7 +52,6 @@ const PageHeader = ({
           />
         </div>
       )}
-
       <div className="mx-auto max-w-(--breakpoint-xl) px-4 lg:px-8">
         <div className="flex flex-col">
           <Breadcrumbs breadcrumbs={breadcrumbs} />
@@ -106,7 +105,6 @@ const PageHeader = ({
           />
         </div>
       ) : null}
-
       {/*
         Implemented by white "top" waves to cover up the image.
         On desktop, it must be positioned 'relative', to add space to the whole header and to cover the image positioned 'absolute' on the right.

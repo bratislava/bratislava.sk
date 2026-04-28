@@ -74,6 +74,7 @@
   "Gallery.aria.previousImage": "Previous image",
   "Gallery.morePhotos_one": "photo",
   "Gallery.morePhotos_other": "photos",
+  "getLinkProps.openInNewTab": "Open in new tab",
   "Homepage.title": "Home",
   "HomepageSearchResults.allResults": "All results",
   "HomepageSearchResults.sorryNoResultsFound": "Sorry, we couldn't find what you are looking for.",
