@@ -1,13 +1,15 @@
 import { useQuery } from '@tanstack/react-query'
+import { Fragment } from 'react'
 
+import DisclosureGroup from '@/src/components/common/Disclosure/DisclosureGroup'
+import HorizontalDivider from '@/src/components/common/Divider/HorizontalDivider'
 import LoadingSpinner from '@/src/components/common/LoadingSpinner/LoadingSpinner'
+import OrganizationalStructureDisclosure from '@/src/components/common/OrganizationalStructure_Deprecated/OrganizationalStructureDisclosure_Deprecated'
 import SectionHeader from '@/src/components/layouts/SectionHeader'
 import {
   getMsGraphStructureQueryKey,
   msGraphStructureFetcher,
 } from '@/src/services/ms-graph/fetchers/msGraphStructure.fetcher'
-
-import OrganizationalStructureTopLevelAccordion from './OrganizationalStructureTopLevelAccordion_Deprecated'
 
 export type OrganizationalStructureProps = {
   title?: string | null
@@ -34,13 +36,19 @@ const OrganizationalStructure = ({ title }: OrganizationalStructureProps) => {
   }
 
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col">
       <SectionHeader title={title} />
-
       <div className="flex flex-col" data-cy="organizational-structure-container">
-        {data.groups.map((group) => (
-          <OrganizationalStructureTopLevelAccordion group={group} key={group.id} />
-        ))}
+        <DisclosureGroup className="rounded-xl border border-border-active-default bg-background-passive-base py-2">
+          {data.groups.map((group, index) => {
+            return (
+              <Fragment key={group.id}>
+                {index > 0 ? <HorizontalDivider className="mx-4 lg:mx-6" /> : null}
+                <OrganizationalStructureDisclosure group={group} headerVariant="h5" />
+              </Fragment>
+            )
+          })}
+        </DisclosureGroup>
       </div>
     </div>
   )
