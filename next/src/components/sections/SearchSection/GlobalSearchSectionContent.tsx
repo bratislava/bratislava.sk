@@ -1,11 +1,14 @@
-import { Typography } from '@bratislava/component-library'
+import { Button, Typography } from '@bratislava/component-library'
 import { useIsFetching } from '@tanstack/react-query'
+import router from 'next/router'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { Selection, TagGroup, TagList } from 'react-aria-components'
 import { StringParam, useQueryParam, withDefault } from 'use-query-params'
 import { useDebounceValue } from 'usehooks-ts'
 
 import Chip from '@/src/components/common/Chip/Chip'
+import Icon from '@/src/components/common/Icon/Icon'
+import { useGeneralContext } from '@/src/components/providers/GeneralContextProvider'
 import SearchBar from '@/src/components/sections/SearchSection/SearchBar'
 import SearchResults from '@/src/components/sections/SearchSection/SearchResults'
 import { SearchFilters } from '@/src/components/sections/SearchSection/useQueryBySearchOption'
@@ -43,6 +46,7 @@ type Props =
 
 const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
   const { t } = useTranslation()
+  const { general } = useGeneralContext()
 
   const [routerQueryValue] = useQueryParam('keyword', withDefault(StringParam, ''))
   const [input, setInput] = useState('')
@@ -167,6 +171,10 @@ const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
     }
   }
 
+  const handleShowMoreOfficialBoard = () => {
+    router.push(general?.officialBoardPage?.path ?? '')
+  }
+
   const searchFilters: SearchFilters = {
     search: searchValue,
     page: currentPage,
@@ -234,6 +242,17 @@ const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
             count: getResultsCountById(selectedKey) ?? 0,
           })}
         </Typography>
+      ) : null}
+
+      {selectedKey === 'officialBoard' && general?.officialBoardPage ? (
+        <Button
+          variant="link"
+          endIcon={<Icon name="arrow-right" />}
+          onPress={handleShowMoreOfficialBoard}
+          data-cy="search-section-more-button"
+        >
+          {general?.officialBoardPage?.title}
+        </Button>
       ) : null}
 
       {selectedKey === 'allResults' ? (
