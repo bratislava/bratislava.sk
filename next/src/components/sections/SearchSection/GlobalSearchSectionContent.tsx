@@ -1,4 +1,4 @@
-import { Button, Typography } from '@bratislava/component-library'
+import { Typography } from '@bratislava/component-library'
 import { useIsFetching } from '@tanstack/react-query'
 import router from 'next/router'
 import { useCallback, useEffect, useRef, useState } from 'react'
@@ -8,12 +8,14 @@ import { useDebounceValue } from 'usehooks-ts'
 
 import Chip from '@/src/components/common/Chip/Chip'
 import Icon from '@/src/components/common/Icon/Icon'
+import MLink from '@/src/components/common/MLink/MLink'
 import { useGeneralContext } from '@/src/components/providers/GeneralContextProvider'
 import SearchBar from '@/src/components/sections/SearchSection/SearchBar'
 import SearchResults from '@/src/components/sections/SearchSection/SearchResults'
 import { SearchFilters } from '@/src/components/sections/SearchSection/useQueryBySearchOption'
 import { officialBoardListDefaultFilters } from '@/src/services/ginis/fetchers/officialBoardListFetcher'
 import { getCategoryColorLocalStyle } from '@/src/utils/colors'
+import { getLinkProps } from '@/src/utils/getLinkProps'
 import { useLogSearchQueryToPlausible } from '@/src/utils/useLogSearchQueryToPlausible'
 import { useTranslation } from '@/src/utils/useTranslation'
 import { isProductionDeployment } from '@/src/utils/utils'
@@ -171,10 +173,6 @@ const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
     }
   }
 
-  const handleShowMoreOfficialBoard = () => {
-    router.push(general?.officialBoardPage?.path ?? '')
-  }
-
   const searchFilters: SearchFilters = {
     search: searchValue,
     page: currentPage,
@@ -245,14 +243,14 @@ const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
       ) : null}
 
       {selectedKey === 'officialBoard' && general?.officialBoardPage ? (
-        <Button
-          variant="link"
-          endIcon={<Icon name="arrow-right" />}
-          onPress={handleShowMoreOfficialBoard}
-          data-cy="search-section-more-button"
+        <MLink
+          variant="underlined-medium"
+          className="flex w-fit gap-1"
+          {...getLinkProps({ page: general.officialBoardPage })}
         >
-          {general?.officialBoardPage?.title}
-        </Button>
+          <Typography variant="p-small">{general.officialBoardPage.title}</Typography>
+          <Icon name="arrow-right" />
+        </MLink>
       ) : null}
 
       {selectedKey === 'allResults' ? (

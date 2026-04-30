@@ -65,7 +65,6 @@ const OfficialBoardSection = () => {
         />
 
         <div className="flex flex-col gap-4 rounded-md bg-background-passive-secondary p-4">
-          {/* TODO heading "Doplnkovy filter" as it is in figma */}
           <div>
             <OfficialBoardAdditionalFilters
               categoryId={categoryId}
