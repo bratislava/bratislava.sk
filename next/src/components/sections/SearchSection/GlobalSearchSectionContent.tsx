@@ -1,6 +1,5 @@
 import { Typography } from '@bratislava/component-library'
 import { useIsFetching } from '@tanstack/react-query'
-import router from 'next/router'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { Selection, TagGroup, TagList } from 'react-aria-components'
 import { StringParam, useQueryParam, withDefault } from 'use-query-params'
