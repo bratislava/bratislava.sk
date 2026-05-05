@@ -25,7 +25,11 @@ const OrganizationalStructureAccordionCard = ({
           className,
         )}
       >
-        <Typography variant="h5" className="pb-2" data-cy="structure-accordion-card-name">
+        <Typography
+          variant="p-default"
+          className="pb-2 font-semibold"
+          data-cy="structure-accordion-card-name"
+        >
           {displayName}
         </Typography>
         <Typography variant="p-default" className="pb-6" data-cy="structure-accordion-card-job">
