@@ -22,12 +22,4 @@ export default ({ env }) => ({
       },
     },
   },
-  graphql: {
-    config: {
-      playgroundAlways: true,
-      apolloServer: {
-        introspection: true,
-      },
-    },
-  },
 })

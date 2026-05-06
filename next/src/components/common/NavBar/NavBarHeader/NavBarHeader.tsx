@@ -32,7 +32,7 @@ const NavBarHeader = ({ className }: NavBarProps) => {
       className={cn('relative z-31 mx-auto bg-background-passive-base px-4 lg:px-8', className)}
       style={getCategoryColorLocalStyle({ category: 'main' })}
     >
-      <nav className="border-border-passive-primary flex w-full items-center justify-between border-b py-2">
+      <nav className="flex w-full items-center justify-between border-b border-border-passive-primary py-2">
         <SkipToContentButton />
         <Brand withTitle />
 
@@ -75,6 +75,7 @@ const NavBarHeader = ({ className }: NavBarProps) => {
               href={otherLanguage.path}
               locale={otherLanguage.locale}
               data-cy="change-language-button"
+              lang={otherLanguage.locale}
             >
               {otherLanguage.longName}
             </MLink>
