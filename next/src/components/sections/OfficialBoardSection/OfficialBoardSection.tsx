@@ -9,7 +9,6 @@ import { useOfficialBoardFilters } from '@/src/components/sections/OfficialBoard
 import SearchBar from '@/src/components/sections/SearchSection/SearchBar'
 import SearchResults from '@/src/components/sections/SearchSection/SearchResults'
 import { SearchFilters } from '@/src/components/sections/SearchSection/useQueryBySearchOption'
-import { OfficialBoardPublicationState } from '@/src/services/ginis/types'
 import { useTranslation } from '@/src/utils/useTranslation'
 
 const OfficialBoardSection = () => {
@@ -69,19 +68,19 @@ const OfficialBoardSection = () => {
             <OfficialBoardAdditionalFilters
               categoryId={categoryId}
               setCategoryId={(categoryIdValue) =>
-                setFilters({ ...filters, categoryId: categoryIdValue ?? undefined })
+                setFilters({ categoryId: categoryIdValue ?? undefined })
               }
               publicationState={publicationState}
-              setPublicationState={(publicationStateValue) =>
-                setFilters({
-                  ...filters,
-                  publicationState:
-                    (publicationStateValue as OfficialBoardPublicationState) ?? undefined,
-                })
-              }
+              setPublicationState={(valueOrUpdater) => {
+                const nextPublicationState =
+                  typeof valueOrUpdater === 'function'
+                    ? valueOrUpdater(publicationState)
+                    : valueOrUpdater
+                setFilters({ publicationState: nextPublicationState })
+              }}
               publicationYear={publicationYear}
               setPublicationYear={(publicationYearValue) =>
-                setFilters({ ...filters, publicationYear: publicationYearValue ?? undefined })
+                setFilters({ publicationYear: publicationYearValue ?? undefined })
               }
             />
           </div>
