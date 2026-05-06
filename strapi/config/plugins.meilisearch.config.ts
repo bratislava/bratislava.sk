@@ -71,6 +71,7 @@ const searchIndexSettings = {
   },
 }
 
+// Complex fields have to be populated manually in the entriesQuery.
 const config = {
   host: process.env.MEILISEARCH_HOST,
   apiKey: process.env.MEILISEARCH_ADMIN_API_KEY,

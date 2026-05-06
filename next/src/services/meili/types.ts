@@ -1,6 +1,7 @@
 import {
   ArticleEntityFragment,
   AssetEntityFragment,
+  FaqEntityFragment,
   InbaReleaseEntityFragment,
   Page,
   PageEntityFragment,
@@ -33,3 +34,5 @@ export type AssetMeili = AssetEntityFragment
 export type InbaReleaseMeili = InbaReleaseEntityFragment
 
 export type RegulationMeili = RegulationEntityFragment
+
+export type FaqMeili = FaqEntityFragment
