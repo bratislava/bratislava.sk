@@ -14,20 +14,6 @@ export type OfficialBoardListFilters = {
   publicationYear?: string
 }
 
-/** Values accepted by GINIS `Stav` for list filtering (see getOfficialBoardParsedList). */
-export const OFFICIAL_BOARD_PUBLICATION_STATES = [
-  'vyveseno',
-  'sejmuto',
-] as const satisfies readonly OfficialBoardPublicationState[]
-
-export type OfficialBoardPublicationStateInUrl = (typeof OFFICIAL_BOARD_PUBLICATION_STATES)[number]
-
-export function toOfficialBoardPublicationStateInUrl(
-  value: OfficialBoardPublicationState | undefined | null,
-): OfficialBoardPublicationStateInUrl {
-  return value === 'vyveseno' || value === 'sejmuto' ? value : 'vyveseno'
-}
-
 export const officialBoardListDefaultFilters = {
   search: '',
   pageSize: 10,

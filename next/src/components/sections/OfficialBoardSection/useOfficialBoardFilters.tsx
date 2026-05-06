@@ -2,11 +2,18 @@ import { parseAsString, parseAsStringLiteral, useQueryStates } from 'nuqs'
 import { useState } from 'react'
 
 import {
-  OFFICIAL_BOARD_PUBLICATION_STATES,
   officialBoardListDefaultFilters,
   OfficialBoardListFilters,
-  OfficialBoardPublicationStateInUrl,
 } from '@/src/services/ginis/fetchers/officialBoardListFetcher'
+import { OfficialBoardPublicationState } from '@/src/services/ginis/types'
+
+export type OfficialBoardPublicationStateInUrl = (typeof OFFICIAL_BOARD_PUBLICATION_STATES)[number]
+
+/** Values accepted by GINIS `Stav` for list filtering (see getOfficialBoardParsedList). */
+export const OFFICIAL_BOARD_PUBLICATION_STATES = [
+  'vyveseno',
+  'sejmuto',
+] as const satisfies readonly OfficialBoardPublicationState[]
 
 export const useOfficialBoardFilters = () => {
   const [filtersQueryParams, setFiltersQueryParams] = useQueryStates(
@@ -35,18 +42,6 @@ export const useOfficialBoardFilters = () => {
     page,
     pageSize: officialBoardListDefaultFilters.pageSize,
   }
-
-  // const setFilters = (newFilters: Partial<OfficialBoardListFilters>) => {
-  //   console.log(newFilters)
-  //   void setFiltersQueryParams({
-  //     categoryId: newFilters.categoryId ?? '',
-  //     publicationState: toOfficialBoardPublicationStateInUrl(newFilters.publicationState),
-  //     publicationYear:
-  //       newFilters.publicationYear ?? officialBoardListDefaultFilters.publicationYear,
-  //   })
-  //   setSearch(newFilters.search)
-  //   setPage(newFilters.page)
-  // }
 
   const setFilters = (newFilters: Partial<OfficialBoardListFilters>) => {
     const toUrlPublicationState = (

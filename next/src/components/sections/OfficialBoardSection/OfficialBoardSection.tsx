@@ -8,7 +8,6 @@ import OfficialBoardAdditionalFilters from '@/src/components/sections/OfficialBo
 import { useOfficialBoardFilters } from '@/src/components/sections/OfficialBoardSection/useOfficialBoardFilters'
 import SearchBar from '@/src/components/sections/SearchSection/SearchBar'
 import SearchResults from '@/src/components/sections/SearchSection/SearchResults'
-import { SearchFilters } from '@/src/components/sections/SearchSection/useQueryBySearchOption'
 import { useTranslation } from '@/src/utils/useTranslation'
 
 /**
@@ -31,29 +30,15 @@ const OfficialBoardSection = () => {
     setSearch(debouncedInput)
   }, [debouncedInput, setSearch])
 
-  const searchFilters: SearchFilters = {
-    search: filters.search,
-    page: filters.page,
-    pageSize: 12,
-    categoryId: !categoryId || categoryId === 'all' ? undefined : categoryId,
-    publicationState: publicationState ?? undefined,
-    publicationYear: publicationYear ?? undefined,
-  }
-
   useEffect(() => {
     setPage(1)
-  }, [
-    searchFilters.search,
-    searchFilters.categoryId,
-    searchFilters.publicationState,
-    searchFilters.publicationYear,
-  ])
+  }, [filters.search, filters.categoryId, filters.publicationState, filters.publicationYear])
 
   const searchRef = useRef<null | HTMLInputElement>(null)
 
   useEffect(() => {
     searchRef.current?.scrollIntoView({ behavior: 'smooth' })
-  }, [searchFilters.page, searchFilters.pageSize])
+  }, [filters.page, filters.pageSize])
 
   const fetchingQueriesCount = useIsFetching({ queryKey: ['Search'] })
 
