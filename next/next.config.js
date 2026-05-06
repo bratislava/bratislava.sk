@@ -231,7 +231,7 @@ const nextConfig = {
       },
       {
         source: '/konto/vyhlasenie-o-spracovani-osobnych-udajov',
-        destination: '/konto',
+        destination: '/dokumenty/podmienky-ochrany-sukromia-pre-bratislavske-konto',
         permanent: true,
       },
       {
