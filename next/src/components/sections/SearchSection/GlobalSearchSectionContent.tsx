@@ -231,7 +231,7 @@ const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
         ) : null}
       </div>
 
-      {getResultsCountById(selectedKey) > 0 ? (
+      {selectedKey === 'officialBoard' && general?.officialBoardPage ? (
         <div className="flex flex-col gap-8 lg:flex-row lg:justify-between">
           {getResultsCountById(selectedKey) > 0 ? (
             <Typography variant="p-small">
@@ -241,16 +241,13 @@ const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
               })}
             </Typography>
           ) : null}
-
-          {selectedKey === 'officialBoard' && general?.officialBoardPage ? (
-            <Button
-              variant="link"
-              endIcon={<Icon name="arrow-right" />}
-              {...getLinkProps({ page: general.officialBoardPage })}
-            >
-              <Typography variant="p-small">{general.officialBoardPage.title}</Typography>
-            </Button>
-          ) : null}
+          <Button
+            variant="link"
+            endIcon={<Icon name="arrow-right" />}
+            {...getLinkProps({ page: general.officialBoardPage })}
+          >
+            <Typography variant="p-small">{general.officialBoardPage.title}</Typography>
+          </Button>
         </div>
       ) : null}
 

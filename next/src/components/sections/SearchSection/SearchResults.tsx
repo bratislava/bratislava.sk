@@ -54,7 +54,7 @@ const SearchResults = ({
 
   return (
     <div
-      className="flex flex-col gap-2"
+      className="flex flex-col gap-8"
       data-cy={`search-section-${searchOption.displayNamePlural.replaceAll(' ', '-')}`}
     >
       <div className="flex flex-col gap-4">

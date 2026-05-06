@@ -44,7 +44,7 @@ export const useOfficialBoardFilters = () => {
   }
 
   const setFilters = (newFilters: Partial<OfficialBoardListFilters>) => {
-    const toUrlPublicationState = (
+    const toOfficialBoardPublicationStateInUrl = (
       value: NonNullable<OfficialBoardListFilters['publicationState']>,
     ): OfficialBoardPublicationStateInUrl =>
       value === 'vyveseno' || value === 'sejmuto' ? value : 'vyveseno'
@@ -53,7 +53,7 @@ export const useOfficialBoardFilters = () => {
       categoryId: newFilters.categoryId ?? prevQuery.categoryId,
       publicationState:
         newFilters.publicationState !== undefined
-          ? toUrlPublicationState(newFilters.publicationState)
+          ? toOfficialBoardPublicationStateInUrl(newFilters.publicationState)
           : prevQuery.publicationState,
       publicationYear: newFilters.publicationYear ?? prevQuery.publicationYear,
     }))
