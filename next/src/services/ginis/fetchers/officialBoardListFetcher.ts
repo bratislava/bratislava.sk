@@ -15,7 +15,10 @@ export type OfficialBoardListFilters = {
 }
 
 /** Values accepted by GINIS `Stav` for list filtering (see getOfficialBoardParsedList). */
-export const OFFICIAL_BOARD_PUBLICATION_STATES = ['vyveseno', 'sejmuto'] as const satisfies readonly OfficialBoardPublicationState[]
+export const OFFICIAL_BOARD_PUBLICATION_STATES = [
+  'vyveseno',
+  'sejmuto',
+] as const satisfies readonly OfficialBoardPublicationState[]
 
 export type OfficialBoardPublicationStateInUrl = (typeof OFFICIAL_BOARD_PUBLICATION_STATES)[number]
 
@@ -29,6 +32,7 @@ export const officialBoardListDefaultFilters = {
   search: '',
   pageSize: 10,
   page: 1,
+  categoryId: 'all',
   publicationState: 'vyveseno',
   publicationYear: 'all',
 } satisfies OfficialBoardListFilters
@@ -48,7 +52,11 @@ export const officialBoardListFetcher = async (filters: OfficialBoardListFilters
       // TODO revisit this
       // eslint-disable-next-line @typescript-eslint/no-base-to-string
       filters.publicationState ? `publicationState=${filters.publicationState}` : '',
-      filters.categoryId ? `categoryId=${filters.categoryId}` : '',
+      filters.categoryId
+        ? filters.categoryId === 'all'
+          ? ''
+          : `categoryId=${filters.categoryId}`
+        : '',
       filters.publicationYear ? `publicationYear=${filters.publicationYear}` : '',
     ]
       .filter(Boolean)

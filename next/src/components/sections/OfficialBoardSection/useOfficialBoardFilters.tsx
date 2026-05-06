@@ -11,7 +11,7 @@ import {
 export const useOfficialBoardFilters = () => {
   const [filtersQueryParams, setFiltersQueryParams] = useQueryStates(
     {
-      categoryId: parseAsString.withDefault(''),
+      categoryId: parseAsString.withDefault(officialBoardListDefaultFilters.categoryId),
       publicationState: parseAsStringLiteral(OFFICIAL_BOARD_PUBLICATION_STATES).withDefault(
         'vyveseno',
       ),
