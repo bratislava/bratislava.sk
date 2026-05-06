@@ -54,7 +54,7 @@ const OfficialBoardSection = () => {
 
   return (
     <SectionContainer>
-      <div className="flex w-full flex-col gap-y-8">
+      <div className="flex w-full flex-col gap-8">
         <SearchBar
           ref={searchRef}
           placeholder={t('SearchPage.enterKeyword')}

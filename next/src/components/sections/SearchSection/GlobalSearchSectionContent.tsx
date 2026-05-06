@@ -1,4 +1,4 @@
-import { Typography } from '@bratislava/component-library'
+import { Button, Typography } from '@bratislava/component-library'
 import { useIsFetching } from '@tanstack/react-query'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { Selection, TagGroup, TagList } from 'react-aria-components'
@@ -7,7 +7,6 @@ import { useDebounceValue } from 'usehooks-ts'
 
 import Chip from '@/src/components/common/Chip/Chip'
 import Icon from '@/src/components/common/Icon/Icon'
-import MLink from '@/src/components/common/MLink/MLink'
 import { useGeneralContext } from '@/src/components/providers/GeneralContextProvider'
 import SearchBar from '@/src/components/sections/SearchSection/SearchBar'
 import SearchResults from '@/src/components/sections/SearchSection/SearchResults'
@@ -233,23 +232,26 @@ const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
       </div>
 
       {getResultsCountById(selectedKey) > 0 ? (
-        <Typography variant="p-small">
-          {t('SearchPage.showingResults', {
-            // `?? 0` is here only for i18next-parser, otherwise, it doesn't create plurals
-            count: getResultsCountById(selectedKey) ?? 0,
-          })}
-        </Typography>
-      ) : null}
+        <div className="flex flex-col gap-8 lg:flex-row lg:justify-between">
+          {getResultsCountById(selectedKey) > 0 ? (
+            <Typography variant="p-small">
+              {t('SearchPage.showingResults', {
+                // `?? 0` is here only for i18next-parser, otherwise, it doesn't create plurals
+                count: getResultsCountById(selectedKey) ?? 0,
+              })}
+            </Typography>
+          ) : null}
 
-      {selectedKey === 'officialBoard' && general?.officialBoardPage ? (
-        <MLink
-          variant="underlined-medium"
-          className="flex w-fit gap-1"
-          {...getLinkProps({ page: general.officialBoardPage })}
-        >
-          <Typography variant="p-small">{general.officialBoardPage.title}</Typography>
-          <Icon name="arrow-right" />
-        </MLink>
+          {selectedKey === 'officialBoard' && general?.officialBoardPage ? (
+            <Button
+              variant="link"
+              endIcon={<Icon name="arrow-right" />}
+              {...getLinkProps({ page: general.officialBoardPage })}
+            >
+              <Typography variant="p-small">{general.officialBoardPage.title}</Typography>
+            </Button>
+          ) : null}
+        </div>
       ) : null}
 
       {selectedKey === 'allResults' ? (

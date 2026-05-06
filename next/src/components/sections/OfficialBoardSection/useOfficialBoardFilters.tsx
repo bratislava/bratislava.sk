@@ -12,7 +12,9 @@ export const useOfficialBoardFilters = () => {
   const [filtersQueryParams, setFiltersQueryParams] = useQueryStates(
     {
       categoryId: parseAsString.withDefault(''),
-      publicationState: parseAsStringLiteral(OFFICIAL_BOARD_PUBLICATION_STATES).withDefault('vyveseno'),
+      publicationState: parseAsStringLiteral(OFFICIAL_BOARD_PUBLICATION_STATES).withDefault(
+        'vyveseno',
+      ),
       publicationYear: parseAsString.withDefault(officialBoardListDefaultFilters.publicationYear),
     },
     {
@@ -38,7 +40,8 @@ export const useOfficialBoardFilters = () => {
     void setFiltersQueryParams({
       categoryId: newFilters.categoryId ?? '',
       publicationState: toOfficialBoardPublicationStateInUrl(newFilters.publicationState),
-      publicationYear: newFilters.publicationYear ?? officialBoardListDefaultFilters.publicationYear,
+      publicationYear:
+        newFilters.publicationYear ?? officialBoardListDefaultFilters.publicationYear,
     })
     setSearch(newFilters.search)
     setPage(newFilters.page)
