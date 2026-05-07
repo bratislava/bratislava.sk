@@ -1,4 +1,4 @@
-import { Typography } from '@bratislava/component-library'
+import { Button, Typography } from '@bratislava/component-library'
 import { useIsFetching } from '@tanstack/react-query'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { Selection, TagGroup, TagList } from 'react-aria-components'
@@ -6,13 +6,13 @@ import { StringParam, useQueryParam, withDefault } from 'use-query-params'
 import { useDebounceValue } from 'usehooks-ts'
 
 import Chip from '@/src/components/common/Chip/Chip'
-import OfficialBoardAdditionalFilters from '@/src/components/sections/OfficialBoardSection/OfficialBoardAdditionalFilters'
+import { useGeneralContext } from '@/src/components/providers/GeneralContextProvider'
 import SearchBar from '@/src/components/sections/SearchSection/SearchBar'
 import SearchResults from '@/src/components/sections/SearchSection/SearchResults'
 import { SearchFilters } from '@/src/components/sections/SearchSection/useQueryBySearchOption'
 import { officialBoardListDefaultFilters } from '@/src/services/ginis/fetchers/officialBoardListFetcher'
-import { OfficialBoardPublicationState } from '@/src/services/ginis/types'
 import { getCategoryColorLocalStyle } from '@/src/utils/colors'
+import { getLinkProps } from '@/src/utils/getLinkProps'
 import { useLogSearchQueryToPlausible } from '@/src/utils/useLogSearchQueryToPlausible'
 import { useTranslation } from '@/src/utils/useTranslation'
 import { isProductionDeployment } from '@/src/utils/utils'
@@ -45,6 +45,7 @@ type Props =
 
 const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
   const { t } = useTranslation()
+  const { general } = useGeneralContext()
 
   const [routerQueryValue] = useQueryParam('keyword', withDefault(StringParam, ''))
   const [input, setInput] = useState('')
@@ -126,15 +127,6 @@ const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
 
   const [currentPage, setCurrentPage] = useState(1)
 
-  /* OfficialBoard specific filters state */
-  const [categoryId, setCategoryId] = useState<string | null>(null)
-  const [publicationState, setPublicationState] = useState<OfficialBoardPublicationState>(
-    officialBoardListDefaultFilters.publicationState,
-  )
-  const [publicationYear, setPublicationYear] = useState<string | null>(
-    officialBoardListDefaultFilters.publicationYear,
-  )
-
   const [resultsCount, setResultsCount] = useState(
     Object.fromEntries(searchOptions.map((option): [string, number] => [option.id, 0])),
   )
@@ -182,21 +174,13 @@ const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
     search: searchValue,
     page: currentPage,
     pageSize: 12,
-    // Official board category id
-    categoryId: !categoryId || categoryId === 'all' ? undefined : categoryId,
-    publicationState: publicationState ?? undefined,
-    publicationYear: publicationYear ?? undefined,
+    // Official board publication state is always 'vyveseno'
+    publicationState: officialBoardListDefaultFilters.publicationState,
   }
 
   useEffect(() => {
     setCurrentPage(1)
-  }, [
-    searchValue,
-    selection,
-    searchFilters.categoryId,
-    searchFilters.publicationState,
-    searchFilters.publicationYear,
-  ])
+  }, [searchValue, selection])
 
   const searchRef = useRef<null | HTMLInputElement>(null)
 
@@ -244,32 +228,22 @@ const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
             </TagList>
           </TagGroup>
         ) : null}
-
-        {/* Additional filters, currently only for officialBoard */}
-        {selectedKey === 'officialBoard' ? (
-          <div className="flex flex-col gap-4 rounded-md bg-background-passive-secondary p-4">
-            {/* TODO heading "Doplnkovy filter" as it is in figma */}
-            <div>
-              <OfficialBoardAdditionalFilters
-                categoryId={categoryId}
-                setCategoryId={setCategoryId}
-                publicationState={publicationState}
-                setPublicationState={setPublicationState}
-                publicationYear={publicationYear}
-                setPublicationYear={setPublicationYear}
-              />
-            </div>
-          </div>
-        ) : null}
       </div>
 
-      {getResultsCountById(selectedKey) > 0 ? (
-        <Typography variant="p-small">
-          {t('SearchPage.showingResults', {
-            // `?? 0` is here only for i18next-parser, otherwise, it doesn't create plurals
-            count: getResultsCountById(selectedKey) ?? 0,
-          })}
-        </Typography>
+      {selectedKey === 'officialBoard' && general?.officialBoardPage ? (
+        <div className="flex flex-col gap-8 lg:flex-row lg:justify-between">
+          {getResultsCountById(selectedKey) > 0 ? (
+            <Typography variant="p-small">
+              {t('SearchPage.showingResults', {
+                // `?? 0` is here only for i18next-parser, otherwise, it doesn't create plurals
+                count: getResultsCountById(selectedKey) ?? 0,
+              })}
+            </Typography>
+          ) : null}
+          <Button variant="link" {...getLinkProps({ page: general.officialBoardPage })}>
+            <Typography variant="p-small">{general.officialBoardPage.title}</Typography>
+          </Button>
+        </div>
       ) : null}
 
       {selectedKey === 'allResults' ? (

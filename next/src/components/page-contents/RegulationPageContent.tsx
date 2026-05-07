@@ -70,7 +70,7 @@ const RegulationPageContent = ({ regulation }: RegulationPageContentProps) => {
         breadcrumbs={breadcrumbs}
       />
       <SectionContainer className="my-8">
-        <div className="mb-8 flex flex-col gap-y-8">
+        <div className="mb-8 flex flex-col gap-8">
           <RegulationDetailMessage regulation={regulation} />
           <div className="flex flex-row flex-wrap gap-6">
             <div className="flex grow basis-full flex-col gap-4">

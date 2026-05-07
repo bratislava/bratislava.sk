@@ -18,6 +18,7 @@ export const officialBoardListDefaultFilters = {
   search: '',
   pageSize: 10,
   page: 1,
+  categoryId: 'all',
   publicationState: 'vyveseno',
   publicationYear: 'all',
 } satisfies OfficialBoardListFilters
@@ -37,7 +38,11 @@ export const officialBoardListFetcher = async (filters: OfficialBoardListFilters
       // TODO revisit this
       // eslint-disable-next-line @typescript-eslint/no-base-to-string
       filters.publicationState ? `publicationState=${filters.publicationState}` : '',
-      filters.categoryId ? `categoryId=${filters.categoryId}` : '',
+      filters.categoryId
+        ? filters.categoryId === 'all'
+          ? ''
+          : `categoryId=${filters.categoryId}`
+        : '',
       filters.publicationYear ? `publicationYear=${filters.publicationYear}` : '',
     ]
       .filter(Boolean)
