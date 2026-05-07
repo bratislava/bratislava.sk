@@ -6,7 +6,6 @@ import { StringParam, useQueryParam, withDefault } from 'use-query-params'
 import { useDebounceValue } from 'usehooks-ts'
 
 import Chip from '@/src/components/common/Chip/Chip'
-import Icon from '@/src/components/common/Icon/Icon'
 import { useGeneralContext } from '@/src/components/providers/GeneralContextProvider'
 import SearchBar from '@/src/components/sections/SearchSection/SearchBar'
 import SearchResults from '@/src/components/sections/SearchSection/SearchResults'
@@ -241,11 +240,7 @@ const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
               })}
             </Typography>
           ) : null}
-          <Button
-            variant="link"
-            endIcon={<Icon name="arrow-right" />}
-            {...getLinkProps({ page: general.officialBoardPage })}
-          >
+          <Button variant="link" {...getLinkProps({ page: general.officialBoardPage })}>
             <Typography variant="p-small">{general.officialBoardPage.title}</Typography>
           </Button>
         </div>

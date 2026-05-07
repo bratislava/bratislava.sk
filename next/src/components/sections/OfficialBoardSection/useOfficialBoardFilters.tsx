@@ -15,12 +15,16 @@ export const OFFICIAL_BOARD_PUBLICATION_STATES = [
   'sejmuto',
 ] as const satisfies readonly OfficialBoardPublicationState[]
 
+const toOfficialBoardPublicationStateInUrl = (
+  value: OfficialBoardPublicationState | undefined,
+): OfficialBoardPublicationStateInUrl => (value === 'vyveseno' || value === 'sejmuto' ? value : 'vyveseno')
+
 export const useOfficialBoardFilters = () => {
   const [filtersQueryParams, setFiltersQueryParams] = useQueryStates(
     {
       categoryId: parseAsString.withDefault(officialBoardListDefaultFilters.categoryId),
       publicationState: parseAsStringLiteral(OFFICIAL_BOARD_PUBLICATION_STATES).withDefault(
-        'vyveseno',
+        toOfficialBoardPublicationStateInUrl(officialBoardListDefaultFilters.publicationState),
       ),
       publicationYear: parseAsString.withDefault(officialBoardListDefaultFilters.publicationYear),
     },
@@ -44,11 +48,6 @@ export const useOfficialBoardFilters = () => {
   }
 
   const setFilters = (newFilters: Partial<OfficialBoardListFilters>) => {
-    const toOfficialBoardPublicationStateInUrl = (
-      value: NonNullable<OfficialBoardListFilters['publicationState']>,
-    ): OfficialBoardPublicationStateInUrl =>
-      value === 'vyveseno' || value === 'sejmuto' ? value : 'vyveseno'
-
     void setFiltersQueryParams((prevQuery) => ({
       categoryId: newFilters.categoryId ?? prevQuery.categoryId,
       publicationState:
