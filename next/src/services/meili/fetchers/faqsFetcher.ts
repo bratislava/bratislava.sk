@@ -1,7 +1,7 @@
 import { isDefined } from '@/src/utils/isDefined'
 
 import { meiliClient } from '../meiliClient'
-import { SearchIndexWrapped } from '../types'
+import { FaqMeili, SearchIndexWrapped } from '../types'
 import { getMeilisearchPageOptions, unwrapFromSearchIndex } from '../utils'
 
 export type FaqsFilters = {
@@ -27,7 +27,7 @@ export const getMeiliFaqsQueryKey = (filters: FaqsFilters) => ['Search', 'Faqs',
 export const meiliFaqsFetcher = (filters: FaqsFilters) => {
   return meiliClient
     .index('search_index')
-    .search<SearchIndexWrapped<'faq', any>>(filters.search, {
+    .search<SearchIndexWrapped<'faq', FaqMeili>>(filters.search, {
       ...getMeilisearchPageOptions({ page: filters.page, pageSize: filters.pageSize }),
       sort: ['faq.faqCategory.title:asc'],
       filter: [
