@@ -59,9 +59,9 @@ const Gallery = ({ images }: GalleryProps) => {
           role="button"
           tabIndex={0}
           aria-label={t('Gallery.aria.openGallery')}
-          onKeyUp={onEnterOrSpaceKeyDown(() => {
-            openAtImageIndex(0)
-          })}
+          onClick={() => openAtImageIndex(0)}
+          onKeyDown={onEnterOrSpaceKeyDown(() => openAtImageIndex(0))}
+          aria-haspopup="dialog"
           className={cn('outline-primary cursor-default outline-offset-2 focus:outline-4')}
         >
           {smallImages.length > 0 && (
