@@ -1,6 +1,5 @@
 import type { StrapiApp } from '@strapi/strapi/admin'
 import { Eye } from '@strapi/icons'
-import InternalJobsRunActions from './extensions/InternalJobsRunActions'
 
 export default {
   config: {
@@ -100,11 +99,6 @@ export default {
     },
   },
   bootstrap(app: StrapiApp) {
-    app.getPlugin('content-manager').injectComponent('listView', 'actions', {
-      name: 'InternalJobsRunAction',
-      Component: InternalJobsRunActions,
-    })
-
     app.addMenuLink({
       to: '/plugins/pages-by-component',
       icon: Eye,
