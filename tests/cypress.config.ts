@@ -8,7 +8,7 @@ export default defineConfig({
       config.chromeWebSecurity = false
       config.video = false
       config.baseUrl = 'https://bratislava.sk'
-      // Testing against locahost
+      // Testing against localhost
       // config.baseUrl = 'http://localhost:3000'
 
       config.env = {
