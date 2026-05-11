@@ -25,8 +25,8 @@ spec:
           imagePullPolicy: IfNotPresent
           resources:
             limits:
-              cpu: 900m
-              memory: 8Gi
+              cpu: ${STRAPI_CPU_LIMITS}
+              memory: ${STRAPI_MEMORY_LIMITS}
             requests:
               cpu: ${STRAPI_CPU_REQUESTS}
               memory: ${STRAPI_MEMORY_REQUESTS}
