@@ -12,6 +12,7 @@ import cn from '@/src/utils/cn'
 
 type Props = RACInputProps & {
   helptext?: string
+  isRequired?: boolean
   errorMessage?: string
 } & (
     | {
@@ -29,12 +30,17 @@ type Props = RACInputProps & {
  */
 
 const Input = forwardRef<HTMLInputElement, Props>(
-  ({ label, helptext, errorMessage, className, ...restProps }, ref) => {
+  ({ label, helptext, isRequired = false, errorMessage, className, ...restProps }, ref) => {
     return (
       <RACTextField isInvalid={!!errorMessage} className={cn('flex flex-col gap-2', className)}>
         {label ? (
-          <RACLabel>
+          <RACLabel className="flex">
             <Typography variant="h6">{label}</Typography>
+            {isRequired ? (
+              <Typography variant="p-small" as="span" className="ml-0.5 text-content-error-default">
+                *
+              </Typography>
+            ) : null}
           </RACLabel>
         ) : null}
         {helptext ? <Typography variant="p-small">{helptext}</Typography> : null}

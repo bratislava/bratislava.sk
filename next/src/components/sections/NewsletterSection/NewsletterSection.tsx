@@ -1,4 +1,5 @@
 import { Button, ButtonProps, Typography } from '@bratislava/component-library'
+import { FormProvider } from 'react-hook-form'
 
 import {
   FacebookIcon,
@@ -6,16 +7,11 @@ import {
   LinkedinIcon,
   YoutubeIcon,
 } from '@/src/assets/icons-social-media'
-import Checkbox from '@/src/components/common/CheckBoxGroup/Checkbox'
-import Input from '@/src/components/common/Input/Input'
-import MLink from '@/src/components/common/MLink/MLink'
 import SectionContainer from '@/src/components/layouts/SectionContainer'
 import SectionHeader from '@/src/components/layouts/SectionHeader'
-import { useGeneralContext } from '@/src/components/providers/GeneralContextProvider'
-import { useNewsletterSection } from '@/src/components/sections/NewsletterSection/useNewsletterSection'
+import Newsletter from '@/src/components/sections/NewsletterSection/Newsletter'
+import { useNewsletter } from '@/src/components/sections/NewsletterSection/useNewsletter'
 import { NewsletterSectionFragment } from '@/src/services/graphql'
-import { getLinkProps } from '@/src/utils/getLinkProps'
-import { useTranslation } from '@/src/utils/useTranslation'
 
 type Props = {
   section: NewsletterSectionFragment
@@ -23,36 +19,22 @@ type Props = {
 
 /**
  * Figma: https://www.figma.com/design/17wbd0MDQcMW9NbXl6UPs8/DS--Component-library?node-id=18641-16591
- * Based on City Gallery: https://github.com/bratislava/gmb.sk/blob/master/next/src/components/molecules/sections/NewsletterSection.tsx
  */
 
 const NewsletterSection = ({ section }: Props) => {
-  const { t } = useTranslation()
-
-  const { general } = useGeneralContext()
-  const privacyPolicyPage = general?.privacyPolicyPage
-
-  const { title, text, socialLinksTitle, facebookUrl, instagramUrl, linkedinUrl, youtubeUrl } =
-    section
-
-  // TODO proper error handling and form validation
   const {
-    name,
-    setName,
-    surname,
-    setSurname,
-    email,
-    setEmail,
-    consentChecked,
-    setConsentChecked,
-    errorMessage,
-    nameErrorMessage,
-    surnameErrorMessage,
-    emailErrorMessage,
-    statusMessage,
-    successMessage,
-    handleSubmit,
-  } = useNewsletterSection(section)
+    title,
+    text,
+    newsletterType,
+    socialLinksTitle,
+    facebookUrl,
+    instagramUrl,
+    linkedinUrl,
+    youtubeUrl,
+  } = section
+
+  const { methods, handleSubmit, isSubscribeSuccessful, responseMessage, isSubscribePending } =
+    useNewsletter({ newsletterType })
 
   const socialMediaButtonsCommonProps = {
     target: '_blank',
@@ -63,122 +45,60 @@ const NewsletterSection = ({ section }: Props) => {
   } satisfies ButtonProps
 
   return (
-    <SectionContainer className="lg:py-24">
-      <div className="flex flex-col items-start justify-between gap-8 lg:flex-row lg:gap-34">
-        <div className="flex flex-col gap-6 lg:gap-10">
-          <SectionHeader title={title} text={text} />
-          <div className="flex flex-col gap-4">
-            <Typography variant="h5" as="p" className="font-semibold">
-              {socialLinksTitle}
-            </Typography>
-            <div className="flex flex-wrap gap-3">
-              {facebookUrl ? (
-                <Button
-                  href={facebookUrl}
-                  icon={<FacebookIcon />}
-                  aria-label="Facebook"
-                  {...socialMediaButtonsCommonProps}
-                />
-              ) : null}
-              {instagramUrl ? (
-                <Button
-                  href={instagramUrl}
-                  icon={<InstagramIcon />}
-                  aria-label="Instagram"
-                  {...socialMediaButtonsCommonProps}
-                />
-              ) : null}
-              {linkedinUrl ? (
-                <Button
-                  href={linkedinUrl}
-                  icon={<LinkedinIcon />}
-                  aria-label="LinkedIn"
-                  {...socialMediaButtonsCommonProps}
-                />
-              ) : null}
-              {youtubeUrl ? (
-                <Button
-                  href={youtubeUrl}
-                  icon={<YoutubeIcon />}
-                  aria-label="Youtube"
-                  {...socialMediaButtonsCommonProps}
-                />
-              ) : null}
-            </div>
-          </div>
-        </div>
-        <div className="flex grow flex-col gap-4 lg:max-w-120 lg:min-w-100 lg:gap-6 lg:rounded-lg lg:border lg:p-8">
-          <div className="flex flex-col gap-4 lg:gap-6">
-            <div className="grid grid-cols-1 gap-4 lg:grid-cols-2 lg:gap-6">
-              <Input
-                value={name}
-                label={t('NewsletterSection.nameLabel')}
-                onChange={(event) => setName(event.target.value)}
-                errorMessage={nameErrorMessage}
-              />
-              <Input
-                value={surname}
-                label={t('NewsletterSection.surnameLabel')}
-                onChange={(event) => setSurname(event.target.value)}
-                errorMessage={surnameErrorMessage}
-              />
-            </div>
-            <Input
-              value={email}
-              label={t('NewsletterSection.inputLabel')}
-              onChange={(event) => setEmail(event.target.value)}
-              errorMessage={emailErrorMessage}
-            />
-            <div>
-              {/**
-               * Checkbox label and link are separated for accessibility reasons:
-               * https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/label#interactive_content
-               */}
-              <div className="pl-9">
-                <div className="-ml-9 inline-block">
-                  <Checkbox
-                    isSelected={consentChecked}
-                    onChange={setConsentChecked}
-                    aria-label={[
-                      t('NewsletterSection.consentCheckboxLabel'),
-                      t('NewsletterSection.consentLinkLabel'),
-                    ].join(' ')}
-                  >
-                    <span className="mr-1">{t('NewsletterSection.consentCheckboxLabel')}</span>
-                  </Checkbox>
-                </div>
-                <MLink
-                  variant="underlined"
-                  aria-label={t('NewsletterSection.consentLinkLabel.aria')}
-                  className="inline-block align-top"
-                  {...getLinkProps({ page: privacyPolicyPage })}
-                >
-                  {t('NewsletterSection.consentLinkLabel')}
-                </MLink>
+    <FormProvider {...methods}>
+      <SectionContainer className="py-6 lg:py-24">
+        <div className="lg:gap-34 flex flex-col items-start justify-between gap-8 lg:flex-row">
+          <div className="flex flex-col gap-6 lg:gap-10">
+            <SectionHeader title={title} text={text} />
+            <div className="flex flex-col gap-4">
+              <Typography variant="h5" as="p" className="font-semibold">
+                {socialLinksTitle}
+              </Typography>
+              <div className="flex flex-wrap gap-3">
+                {facebookUrl ? (
+                  <Button
+                    href={facebookUrl}
+                    icon={<FacebookIcon />}
+                    aria-label="Facebook"
+                    {...socialMediaButtonsCommonProps}
+                  />
+                ) : null}
+                {instagramUrl ? (
+                  <Button
+                    href={instagramUrl}
+                    icon={<InstagramIcon />}
+                    aria-label="Instagram"
+                    {...socialMediaButtonsCommonProps}
+                  />
+                ) : null}
+                {linkedinUrl ? (
+                  <Button
+                    href={linkedinUrl}
+                    icon={<LinkedinIcon />}
+                    aria-label="LinkedIn"
+                    {...socialMediaButtonsCommonProps}
+                  />
+                ) : null}
+                {youtubeUrl ? (
+                  <Button
+                    href={youtubeUrl}
+                    icon={<YoutubeIcon />}
+                    aria-label="Youtube"
+                    {...socialMediaButtonsCommonProps}
+                  />
+                ) : null}
               </div>
             </div>
-            {successMessage ? (
-              <Typography variant="p-small" className="text-content-success-default">
-                {successMessage}
-              </Typography>
-            ) : null}
-            {errorMessage ? (
-              <Typography variant="p-small" className="text-content-error-default">
-                {errorMessage}
-              </Typography>
-            ) : null}
-            {statusMessage ? (
-              <Typography variant="p-small" className="text-content-info-default">
-                {statusMessage}
-              </Typography>
-            ) : null}
           </div>
-          <Button variant="solid" onPress={() => handleSubmit()}>
-            {t('NewsletterSection.subscribeButton')}
-          </Button>
+          <Newsletter
+            onSubmit={handleSubmit}
+            responseMessage={responseMessage}
+            isSubscribeSuccessful={isSubscribeSuccessful}
+            isSubscribePending={isSubscribePending}
+          />
         </div>
-      </div>
-    </SectionContainer>
+      </SectionContainer>
+    </FormProvider>
   )
 }
 
