@@ -127,7 +127,10 @@ const Newsletter = ({
           />
 
           {responseMessage && (
-            <Typography variant="p-default"
+            <Typography
+              variant="p-default"
+              // role="status" helps screen readers see that this message changed after form submission
+              role="status"
               className={cn({
                 'text-content-success-default': isSubscribeSuccessful,
                 'text-content-error-default': !isSubscribeSuccessful,
