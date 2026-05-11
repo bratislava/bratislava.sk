@@ -41,8 +41,11 @@ const OrganizationalStructure = ({ title, titleLevel }: OrganizationalStructureP
   return (
     <div className="flex flex-col">
       <SectionHeader title={title} />
-      <div className="flex flex-col" data-cy="organizational-structure-container">
-        <DisclosureGroup className="rounded-xl border border-border-active-default bg-background-passive-base py-2">
+      <div className="flex flex-col">
+        <DisclosureGroup
+          className="rounded-xl border border-border-active-default bg-background-passive-base py-2"
+          data-cy="organizational-structure-container"
+        >
           {data.groups.map((group, index) => {
             return (
               <Fragment key={group.id}>
