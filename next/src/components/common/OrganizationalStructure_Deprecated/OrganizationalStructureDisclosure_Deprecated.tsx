@@ -14,6 +14,28 @@ type OrganizationalStructureContentProps = {
   headerVariant: TypographyProps['variant']
 }
 
+type TypographyVariant = NonNullable<TypographyProps['variant']>
+
+const NESTED_ORG_STRUCTURE_HEADER_VARIANT: Partial<
+  Record<TypographyVariant, TypographyVariant>
+> = {
+  h2: 'h3',
+  h3: 'h4',
+  h4: 'h5',
+  h5: 'h6',
+  h6: 'p-small',
+}
+
+function nestedOrganizationalHeaderVariant(
+  variant: TypographyProps['variant'],
+): TypographyProps['variant'] {
+  if (variant == null) {
+    return 'p-small'
+  }
+
+  return NESTED_ORG_STRUCTURE_HEADER_VARIANT[variant] ?? 'p-small'
+}
+
 const OrganizationalStructureDisclosure = ({
   group,
   headerVariant,
@@ -33,7 +55,7 @@ const OrganizationalStructureDisclosure = ({
                   {index > 0 ? <HorizontalDivider className="mx-4 lg:mx-6" /> : null}
                   <OrganizationalStructureDisclosure
                     group={subgroup}
-                    headerVariant={headerVariant === 'h5' ? 'h6' : 'p-small'}
+                    headerVariant={nestedOrganizationalHeaderVariant(headerVariant)}
                   />
                 </Fragment>
               ))}

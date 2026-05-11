@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query'
 import { Fragment } from 'react'
 
+import { getCardTitleLevel } from '@/src/components/cards/getCardTitleLevel'
 import DisclosureGroup from '@/src/components/common/Disclosure/DisclosureGroup'
 import HorizontalDivider from '@/src/components/common/Divider/HorizontalDivider'
 import LoadingSpinner from '@/src/components/common/LoadingSpinner/LoadingSpinner'
@@ -20,7 +21,7 @@ export type OrganizationalStructureProps = {
  */
 
 // TODO add search
-const OrganizationalStructure = ({ title }: OrganizationalStructureProps) => {
+const OrganizationalStructure = ({ title, titleLevel }: OrganizationalStructureProps) => {
   const { data, isPending, isError, error } = useQuery({
     queryKey: getMsGraphStructureQueryKey(),
     queryFn: () => msGraphStructureFetcher(),
@@ -35,6 +36,8 @@ const OrganizationalStructure = ({ title }: OrganizationalStructureProps) => {
     return <div className="whitespace-pre">{JSON.stringify(error, null, 2)}</div>
   }
 
+  const disclosureTitleLevel = title ? getCardTitleLevel(titleLevel) : 'h2'
+
   return (
     <div className="flex flex-col">
       <SectionHeader title={title} />
@@ -44,7 +47,10 @@ const OrganizationalStructure = ({ title }: OrganizationalStructureProps) => {
             return (
               <Fragment key={group.id}>
                 {index > 0 ? <HorizontalDivider className="mx-4 lg:mx-6" /> : null}
-                <OrganizationalStructureDisclosure group={group} headerVariant="h5" />
+                <OrganizationalStructureDisclosure
+                  group={group}
+                  headerVariant={disclosureTitleLevel}
+                />
               </Fragment>
             )
           })}

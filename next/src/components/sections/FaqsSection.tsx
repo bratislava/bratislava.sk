@@ -25,7 +25,7 @@ const FaqsSection = ({ section }: Props) => {
       <div className="flex flex-col gap-6 lg:gap-12">
         <SectionHeader title={title} titleLevel={titleLevel} text={text} />
         {showAll ? (
-          <FaqsAll />
+          <FaqsAll accordionTitleLevel={accordionTitleLevel} />
         ) : (
           <FaqsGroup
             faqs={faqs.filter(isDefined) ?? []}

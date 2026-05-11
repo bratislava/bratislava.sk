@@ -1,9 +1,6 @@
 import { Button } from '@bratislava/component-library'
 import { useContext } from 'react'
-import {
-  DisclosureStateContext as RACDisclosureStateContext,
-  Heading as RACHeading,
-} from 'react-aria-components'
+import { DisclosureStateContext as RACDisclosureStateContext } from 'react-aria-components'
 
 import Icon from '@/src/components/common/Icon/Icon'
 import cn from '@/src/utils/cn'
@@ -21,7 +18,7 @@ const DisclosureHeader = ({ children, ...props }: DisclosureHeaderProps) => {
   const { isExpanded } = useContext(RACDisclosureStateContext)!
 
   return (
-    <RACHeading>
+    <div>
       <Button slot="trigger" variant="unstyled" className={cn('w-full text-left', props.className)}>
         <div className="flex w-full justify-between">
           <div className="flex flex-col gap-2">{children}</div>
@@ -34,7 +31,7 @@ const DisclosureHeader = ({ children, ...props }: DisclosureHeaderProps) => {
           />
         </div>
       </Button>
-    </RACHeading>
+    </div>
   )
 }
 
