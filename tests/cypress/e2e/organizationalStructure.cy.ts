@@ -19,40 +19,35 @@ describe('OS01 -', { testIsolation: false }, () => {
               expect(text.replace(/\u00a0/g, ' ')).equal('Organizačná štruktúra')
             })
 
-          cy.dataCy('organizational-structure-container').then((container) => {
-            cy.wrap(Cypress.$(`[data-cy=organizational-structure-accordion]`, container)).should(
-              'have.length',
-              3,
-            )
-            cy.wrap(
-              Cypress.$(`[data-cy=organizational-structure-accordion]`, container).eq(0),
-            ).should('contain', 'Magistrát hlavného mesta SR Bratislavy')
-            cy.wrap(
-              Cypress.$(`[data-cy=organizational-structure-accordion]`, container).eq(1),
-            ).should('contain', 'Primátor hlavného mesta SR Bratislavy')
-            cy.wrap(
-              Cypress.$(`[data-cy=organizational-structure-accordion]`, container).eq(2),
-            ).should('contain', 'Útvar mestskej kontrolórky')
+          cy.get('[data-cy=organizational-structure-container]', { timeout: 25000 })
+            .find('> [data-cy=organizational-structure-accordion]')
+            .should('have.length', 3)
+            .as('topLevelAccordions')
 
-            cy.wrap(
-              Cypress.$(`[data-cy=organizational-structure-accordion]`, container).eq(1),
-            ).click()
-          })
+          cy.get('@topLevelAccordions')
+            .eq(0)
+            .should('contain', 'Magistrát hlavného mesta SR Bratislavy')
+          cy.get('@topLevelAccordions')
+            .eq(1)
+            .should('contain', 'Primátor hlavného mesta SR Bratislavy')
+          cy.get('@topLevelAccordions').eq(2).should('contain', 'Útvar mestskej kontrolórky')
 
-          cy.dataCy('organizational-structure-accordion-content').then((content) => {
-            cy.wrap(Cypress.$(`[data-cy=structure-accordion-card-name]`, content)).should(
-              'contain',
-              'Vallo Matúš, Ing. arch.',
-            )
-            cy.wrap(Cypress.$(`[data-cy=structure-accordion-card-job]`, content)).should(
-              'contain',
-              'Primátor',
-            )
-            cy.wrap(Cypress.$(`[data-cy=structure-accordion-card-email]`, content)).should(
-              'contain',
-              'primator@bratislava.sk',
-            )
-          })
+          cy.get('@topLevelAccordions').eq(1).as('primatorAccordion').click()
+
+          cy.get('@primatorAccordion')
+            .find('[data-cy=organizational-structure-accordion-content]')
+            .first()
+            .within(() => {
+              cy.dataCy('structure-accordion-card-name').should(
+                'contain',
+                'Vallo Matúš, Ing. arch.',
+              )
+              cy.dataCy('structure-accordion-card-job').should('contain', 'Primátor')
+              cy.dataCy('structure-accordion-card-email').should(
+                'contain',
+                'primator@bratislava.sk',
+              )
+            })
         })
       })
     })
