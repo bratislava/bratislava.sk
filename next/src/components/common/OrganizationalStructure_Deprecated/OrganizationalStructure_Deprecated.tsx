@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query'
 import { Fragment } from 'react'
 
-import { getCardTitleLevel } from '@/src/components/cards/getCardTitleLevel'
+import { getCardTitleLevel, SectionTitleLevel } from '@/src/components/cards/getCardTitleLevel'
 import DisclosureGroup from '@/src/components/common/Disclosure/DisclosureGroup'
 import HorizontalDivider from '@/src/components/common/Divider/HorizontalDivider'
 import LoadingSpinner from '@/src/components/common/LoadingSpinner/LoadingSpinner'
@@ -14,6 +14,7 @@ import {
 
 export type OrganizationalStructureProps = {
   title?: string | null
+  titleLevel?: SectionTitleLevel | null | undefined
 }
 
 /**
