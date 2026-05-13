@@ -18,20 +18,18 @@ const DisclosureHeader = ({ children, ...props }: DisclosureHeaderProps) => {
   const { isExpanded } = useContext(RACDisclosureStateContext)!
 
   return (
-    <div>
-      <Button slot="trigger" variant="unstyled" className={cn('w-full text-left', props.className)}>
-        <div className="flex w-full justify-between">
-          <div className="flex flex-col gap-2">{children}</div>
-          <Icon
-            name="chevron-down"
-            aria-hidden
-            className={cn('shrink-0 self-center transition-transform duration-200 ease-in-out', {
-              'rotate-180 transform': isExpanded,
-            })}
-          />
-        </div>
-      </Button>
-    </div>
+    <Button slot="trigger" variant="unstyled" className={cn('w-full text-left', props.className)}>
+      <div className="flex w-full justify-between">
+        <div className="flex flex-col gap-2">{children}</div>
+        <Icon
+          name="chevron-down"
+          aria-hidden
+          className={cn('shrink-0 self-center transition-transform duration-200 ease-in-out', {
+            'rotate-180 transform': isExpanded,
+          })}
+        />
+      </div>
+    </Button>
   )
 }
 

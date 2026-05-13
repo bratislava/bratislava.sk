@@ -8,6 +8,7 @@ import DisclosurePanel from '@/src/components/common/Disclosure/DisclosurePanel'
 import HorizontalDivider from '@/src/components/common/Divider/HorizontalDivider'
 import OrganizationalStructureAccordionCards from '@/src/components/common/OrganizationalStructure_Deprecated/OrganizationalStructureAccordionCards_Deprecated'
 import { GetGroupMembersRecursiveResult } from '@/src/services/ms-graph/types'
+import { isDefined } from '@/src/utils/isDefined'
 
 type OrganizationalStructureContentProps = {
   group: GetGroupMembersRecursiveResult
@@ -16,9 +17,7 @@ type OrganizationalStructureContentProps = {
 
 type TypographyVariant = NonNullable<TypographyProps['variant']>
 
-const NESTED_ORG_STRUCTURE_HEADER_VARIANT: Partial<
-  Record<TypographyVariant, TypographyVariant>
-> = {
+const NESTED_ORG_STRUCTURE_HEADER_VARIANT: Partial<Record<TypographyVariant, TypographyVariant>> = {
   h2: 'h3',
   h3: 'h4',
   h4: 'h5',
@@ -29,7 +28,7 @@ const NESTED_ORG_STRUCTURE_HEADER_VARIANT: Partial<
 function nestedOrganizationalHeaderVariant(
   variant: TypographyProps['variant'],
 ): TypographyProps['variant'] {
-  if (variant == null) {
+  if (!isDefined(variant)) {
     return 'p-small'
   }
 

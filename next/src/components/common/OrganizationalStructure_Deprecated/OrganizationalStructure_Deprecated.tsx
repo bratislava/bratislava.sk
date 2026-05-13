@@ -37,29 +37,27 @@ const OrganizationalStructure = ({ title, titleLevel }: OrganizationalStructureP
     return <div className="whitespace-pre">{JSON.stringify(error, null, 2)}</div>
   }
 
-  const disclosureTitleLevel = title ? getCardTitleLevel(titleLevel) : 'h2'
+  const accordionTitleLevel = title ? getCardTitleLevel(titleLevel) : 'h2'
 
   return (
     <div className="flex flex-col">
-      <SectionHeader title={title} />
-      <div className="flex flex-col">
-        <DisclosureGroup
-          className="rounded-xl border border-border-active-default bg-background-passive-base py-2"
-          data-cy="organizational-structure-container"
-        >
-          {data.groups.map((group, index) => {
-            return (
-              <Fragment key={group.id}>
-                {index > 0 ? <HorizontalDivider className="mx-4 lg:mx-6" /> : null}
-                <OrganizationalStructureDisclosure
-                  group={group}
-                  headerVariant={disclosureTitleLevel}
-                />
-              </Fragment>
-            )
-          })}
-        </DisclosureGroup>
-      </div>
+      <SectionHeader title={title} titleLevel={titleLevel} />
+      <DisclosureGroup
+        className="rounded-xl border border-border-active-default bg-background-passive-base py-2"
+        data-cy="organizational-structure-container"
+      >
+        {data.groups.map((group, index) => {
+          return (
+            <Fragment key={group.id}>
+              {index > 0 ? <HorizontalDivider className="mx-4 lg:mx-6" /> : null}
+              <OrganizationalStructureDisclosure
+                group={group}
+                headerVariant={accordionTitleLevel}
+              />
+            </Fragment>
+          )
+        })}
+      </DisclosureGroup>
     </div>
   )
 }
