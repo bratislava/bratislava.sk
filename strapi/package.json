@@ -19,7 +19,7 @@
     "ts:generate-types": "strapi ts:generate-types"
   },
   "dependencies": {
-    "@strapi/admin": "5.18.1",
+    "@strapi/admin": "5.33.3",
     "@strapi/plugin-graphql": "5.18.1",
     "@strapi/plugin-users-permissions": "5.18.1",
     "@strapi/provider-email-mailgun": "5.18.1",
