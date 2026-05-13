@@ -39,6 +39,8 @@ import Crane48pxIcon from '@/src/assets/pictograms-menu/48px/crane_48px.svg'
 import Culture48pxIcon from '@/src/assets/pictograms-menu/48px/culture_48px.svg'
 import CultureAndPanteon48pxFilledIcon from '@/src/assets/pictograms-menu/48px/cultureAndPanteon_48px_filled.svg'
 import CultureAndPanteon48pxStrokeIcon from '@/src/assets/pictograms-menu/48px/cultureAndPanteon_48px_stroke.svg'
+import Data48pxIcon from '@/src/assets/pictograms-menu/48px/data_48px.svg'
+import DataCity48pxIcon from '@/src/assets/pictograms-menu/48px/dataCity_48px.svg'
 import EducationAndLeisure48pxFilledIcon from '@/src/assets/pictograms-menu/48px/educationAndLeisure_48px_filled.svg'
 import EducationAndLeisure48pxStrokeIcon from '@/src/assets/pictograms-menu/48px/educationAndLeisure_48px_stroke.svg'
 import Fee48pxIcon from '@/src/assets/pictograms-menu/48px/fee_48px.svg'
@@ -46,6 +48,7 @@ import Hand48pxIcon from '@/src/assets/pictograms-menu/48px/hand_48px.svg'
 import Heart48pxIcon from '@/src/assets/pictograms-menu/48px/heart_48px.svg'
 import House48pxFilledIcon from '@/src/assets/pictograms-menu/48px/house_48px_filled.svg'
 import House48pxStrokeIcon from '@/src/assets/pictograms-menu/48px/house_48px_stroke.svg'
+import Innovations48pxIcon from '@/src/assets/pictograms-menu/48px/innovations_48px.svg'
 import LensWithEye48pxIcon from '@/src/assets/pictograms-menu/48px/lensWithEye_48px.svg'
 import LightBulbOff48pxIcon from '@/src/assets/pictograms-menu/48px/lightBulbOff_48px.svg'
 import LockedChest48pxIcon from '@/src/assets/pictograms-menu/48px/lockedChest_48px.svg'
@@ -177,6 +180,9 @@ export const ICON_URL_MAP: IconUrlMap = {
     sluzby_06: Stage48pxIcon,
     koncepcia_06: Culture48pxIcon,
     komunity_06: Community48pxIcon,
+    data_01: DataCity48pxIcon,
+    data_02: Data48pxIcon,
+    inovacie_01: Innovations48pxIcon,
     // Mobile menu links
     kontakt: Phone48pxIcon,
     // Top Services
