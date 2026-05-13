@@ -221,42 +221,6 @@
       "target": "api::page.page",
       "mappedBy": "parentPage"
     },
-    "parent": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::page.page",
-      "inversedBy": "children"
-    },
-    "children": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::page.page",
-      "mappedBy": "parent"
-    },
-    "fullPath": {
-      "type": "string",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "required": false,
-      "unique": true
-    },
-    "redirects": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::redirect.redirect",
-      "mappedBy": "page"
-    },
-    "breadcrumbTitle": {
-      "type": "string",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      }
-    },
     "relatedContents": {
       "type": "relation",
       "relation": "oneToMany",

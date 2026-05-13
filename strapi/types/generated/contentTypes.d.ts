@@ -917,36 +917,6 @@ export interface ApiInbaReleaseInbaRelease extends Struct.CollectionTypeSchema {
   }
 }
 
-export interface ApiInternalJobInternalJob extends Struct.CollectionTypeSchema {
-  collectionName: 'internal_jobs'
-  info: {
-    displayName: 'Internal Job'
-    pluralName: 'internal-jobs'
-    singularName: 'internal-job'
-  }
-  options: {
-    draftAndPublish: true
-  }
-  attributes: {
-    createdAt: Schema.Attribute.DateTime
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> & Schema.Attribute.Private
-    error: Schema.Attribute.String
-    jobType: Schema.Attribute.Enumeration<['RECALCULATE_FULLPATH', 'CREATE_REDIRECT']> &
-      Schema.Attribute.Required
-    locale: Schema.Attribute.String & Schema.Attribute.Private
-    localizations: Schema.Attribute.Relation<'oneToMany', 'api::internal-job.internal-job'> &
-      Schema.Attribute.Private
-    payload: Schema.Attribute.JSON & Schema.Attribute.Required
-    publishedAt: Schema.Attribute.DateTime
-    relatedDocumentId: Schema.Attribute.String
-    state: Schema.Attribute.Enumeration<['pending', 'completed', 'failed']> &
-      Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<'pending'>
-    updatedAt: Schema.Attribute.DateTime
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> & Schema.Attribute.Private
-  }
-}
-
 export interface ApiMenuMenu extends Struct.SingleTypeSchema {
   collectionName: 'menus'
   info: {
@@ -1071,23 +1041,9 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
           localized: true
         }
       }>
-    breadcrumbTitle: Schema.Attribute.String &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true
-        }
-      }>
     childPages: Schema.Attribute.Relation<'oneToMany', 'api::page.page'>
-    children: Schema.Attribute.Relation<'oneToMany', 'api::page.page'>
     createdAt: Schema.Attribute.DateTime
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> & Schema.Attribute.Private
-    fullPath: Schema.Attribute.String &
-      Schema.Attribute.Unique &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true
-        }
-      }>
     headerLinks: Schema.Attribute.Component<'blocks.common-link', true> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
@@ -1138,7 +1094,6 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
         },
         number
       >
-    parent: Schema.Attribute.Relation<'manyToOne', 'api::page.page'>
     parentPage: Schema.Attribute.Relation<'manyToOne', 'api::page.page'>
     path: Schema.Attribute.String &
       Schema.Attribute.SetPluginOptions<{
@@ -1147,7 +1102,6 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
         }
       }>
     publishedAt: Schema.Attribute.DateTime
-    redirects: Schema.Attribute.Relation<'oneToMany', 'api::redirect.redirect'>
     relatedContents: Schema.Attribute.Relation<'oneToMany', 'api::tag.tag'>
     sections: Schema.Attribute.DynamicZone<
       [
@@ -1239,32 +1193,6 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
           localized: true
         }
       }>
-    updatedAt: Schema.Attribute.DateTime
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> & Schema.Attribute.Private
-  }
-}
-
-export interface ApiRedirectRedirect extends Struct.CollectionTypeSchema {
-  collectionName: 'redirects'
-  info: {
-    displayName: 'Redirect'
-    pluralName: 'redirects'
-    singularName: 'redirect'
-  }
-  options: {
-    draftAndPublish: true
-  }
-  attributes: {
-    createdAt: Schema.Attribute.DateTime
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> & Schema.Attribute.Private
-    destination: Schema.Attribute.String & Schema.Attribute.Required
-    locale: Schema.Attribute.String & Schema.Attribute.Private
-    localizations: Schema.Attribute.Relation<'oneToMany', 'api::redirect.redirect'> &
-      Schema.Attribute.Private
-    page: Schema.Attribute.Relation<'manyToOne', 'api::page.page'>
-    permanent: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>
-    publishedAt: Schema.Attribute.DateTime
-    source: Schema.Attribute.String & Schema.Attribute.Required
     updatedAt: Schema.Attribute.DateTime
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> & Schema.Attribute.Private
   }
@@ -1831,11 +1759,9 @@ declare module '@strapi/strapi' {
       'api::general.general': ApiGeneralGeneral
       'api::homepage.homepage': ApiHomepageHomepage
       'api::inba-release.inba-release': ApiInbaReleaseInbaRelease
-      'api::internal-job.internal-job': ApiInternalJobInternalJob
       'api::menu.menu': ApiMenuMenu
       'api::page-category.page-category': ApiPageCategoryPageCategory
       'api::page.page': ApiPagePage
-      'api::redirect.redirect': ApiRedirectRedirect
       'api::regulation.regulation': ApiRegulationRegulation
       'api::tag.tag': ApiTagTag
       'api::tax-administrators-list.tax-administrators-list': ApiTaxAdministratorsListTaxAdministratorsList
