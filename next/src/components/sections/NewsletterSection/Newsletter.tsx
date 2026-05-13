@@ -51,7 +51,6 @@ const NewsletterTextField = ({
             type={type}
             isRequired={isRequired}
             label={label}
-            aria-label={label}
             className={className}
             errorMessage={typeof message === 'string' ? message : undefined}
             {...field}
@@ -114,7 +113,7 @@ const Newsletter = ({
                     >
                       {t('Newsletter.consent.privacyPageLink.label')}
                     </MLink>
-                    <span className="pl-1 text-content-error-default">*</span>
+                    <span className="text-content-error-default pl-1">*</span>
                   </Typography>
                 </div>
                 {!!errors.acceptTerms && (
@@ -126,7 +125,7 @@ const Newsletter = ({
             )}
           />
 
-          {responseMessage && (
+          {responseMessage ? (
             <Typography
               variant="p-default"
               // role="status" helps screen readers see that this message changed after form submission
@@ -138,7 +137,7 @@ const Newsletter = ({
             >
               {responseMessage}
             </Typography>
-          )}
+          ) : null}
 
           <Button
             variant="solid"

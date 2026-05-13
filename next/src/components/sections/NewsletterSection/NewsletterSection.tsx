@@ -45,60 +45,60 @@ const NewsletterSection = ({ section }: Props) => {
   } satisfies ButtonProps
 
   return (
-    <FormProvider {...methods}>
-      <SectionContainer className="py-6 lg:py-24">
-        <div className="lg:gap-34 flex flex-col items-start justify-between gap-8 lg:flex-row">
-          <div className="flex flex-col gap-6 lg:gap-10">
-            <SectionHeader title={title} text={text} />
-            <div className="flex flex-col gap-4">
-              <Typography variant="h5" as="p" className="font-semibold">
-                {socialLinksTitle}
-              </Typography>
-              <div className="flex flex-wrap gap-3">
-                {facebookUrl ? (
-                  <Button
-                    href={facebookUrl}
-                    icon={<FacebookIcon />}
-                    aria-label="Facebook"
-                    {...socialMediaButtonsCommonProps}
-                  />
-                ) : null}
-                {instagramUrl ? (
-                  <Button
-                    href={instagramUrl}
-                    icon={<InstagramIcon />}
-                    aria-label="Instagram"
-                    {...socialMediaButtonsCommonProps}
-                  />
-                ) : null}
-                {linkedinUrl ? (
-                  <Button
-                    href={linkedinUrl}
-                    icon={<LinkedinIcon />}
-                    aria-label="LinkedIn"
-                    {...socialMediaButtonsCommonProps}
-                  />
-                ) : null}
-                {youtubeUrl ? (
-                  <Button
-                    href={youtubeUrl}
-                    icon={<YoutubeIcon />}
-                    aria-label="Youtube"
-                    {...socialMediaButtonsCommonProps}
-                  />
-                ) : null}
-              </div>
+    <SectionContainer className="py-6 lg:py-24">
+      <div className="flex flex-col items-start justify-between gap-8 lg:flex-row lg:gap-34">
+        <div className="flex flex-col gap-6 lg:gap-10">
+          <SectionHeader title={title} text={text} />
+          <div className="flex flex-col gap-4">
+            <Typography variant="h5" as="p" className="font-semibold">
+              {socialLinksTitle}
+            </Typography>
+            <div className="flex flex-wrap gap-3">
+              {facebookUrl ? (
+                <Button
+                  href={facebookUrl}
+                  icon={<FacebookIcon />}
+                  aria-label="Facebook"
+                  {...socialMediaButtonsCommonProps}
+                />
+              ) : null}
+              {instagramUrl ? (
+                <Button
+                  href={instagramUrl}
+                  icon={<InstagramIcon />}
+                  aria-label="Instagram"
+                  {...socialMediaButtonsCommonProps}
+                />
+              ) : null}
+              {linkedinUrl ? (
+                <Button
+                  href={linkedinUrl}
+                  icon={<LinkedinIcon />}
+                  aria-label="LinkedIn"
+                  {...socialMediaButtonsCommonProps}
+                />
+              ) : null}
+              {youtubeUrl ? (
+                <Button
+                  href={youtubeUrl}
+                  icon={<YoutubeIcon />}
+                  aria-label="Youtube"
+                  {...socialMediaButtonsCommonProps}
+                />
+              ) : null}
             </div>
           </div>
+        </div>
+        <FormProvider {...methods}>
           <Newsletter
             onSubmit={handleSubmit}
             responseMessage={responseMessage}
             isSubscribeSuccessful={isSubscribeSuccessful}
             isSubscribePending={isSubscribePending}
           />
-        </div>
-      </SectionContainer>
-    </FormProvider>
+        </FormProvider>
+      </div>
+    </SectionContainer>
   )
 }
 

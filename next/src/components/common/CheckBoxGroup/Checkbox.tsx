@@ -38,7 +38,6 @@ const Checkbox = ({ children, value, ...restProps }: RACCheckboxProps) => {
                   'bg-background-active-primary-default': isSelected,
                   'bg-background-active-primary-hover': isSelected && isHovered,
                   'border-border-active-primary-disabled': isDisabled,
-                  // DEBUG:
                   'border-border-error': isInvalid && !isDisabled,
                   'bg-background-active-primary-disabled': isSelected && isDisabled,
                 },

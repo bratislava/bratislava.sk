@@ -35,7 +35,9 @@ const Input = forwardRef<HTMLInputElement, Props>(
       <RACTextField isInvalid={!!errorMessage} className={cn('flex flex-col gap-2', className)}>
         {label ? (
           <RACLabel className="flex">
-            <Typography variant="h6">{label}</Typography>
+            <Typography variant="h6" as="p">
+              {label}
+            </Typography>
             {isRequired ? (
               <Typography variant="p-small" as="span" className="ml-0.5 text-content-error-default">
                 *
