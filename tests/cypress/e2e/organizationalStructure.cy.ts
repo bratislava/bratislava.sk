@@ -19,7 +19,7 @@ describe('OS01 -', { testIsolation: false }, () => {
               expect(text.replace(/\u00a0/g, ' ')).equal('Organizačná štruktúra')
             })
 
-          cy.get('[data-cy=organizational-structure-container]', { timeout: 25000 })
+          cy.dataCy('organizational-structure-container')
             .find('> [data-cy=organizational-structure-accordion]')
             .should('have.length', 3)
             .as('topLevelAccordions')
