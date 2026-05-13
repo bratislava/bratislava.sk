@@ -69,6 +69,7 @@
   "Dialog.aria.close": "Zavrieť vyskakovacie okno",
   "FaqsSection.selectionOptions.allFaqs": "Všetky otázky",
   "FaqsSection.selectionOptions.aria": "Kategórie otázok",
+  "FieldHeader.optional": "(Nepovinné)",
   "FileList.aria.downloadFile": "Stiahnuť súbor",
   "FileList.aria.downloadFileAriaLabel": "Stiahnuť súbor {{title}}, formát {{format}}, {{size}}",
   "Footer.copyright": "© {{year}} Hlavné mesto Slovenskej republiky Bratislava, vytvorili <innovations>Inovácie mesta Bratislava</innovations>",

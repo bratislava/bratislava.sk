@@ -4,8 +4,8 @@ import React, { useId } from 'react'
 import { Controller, useFormContext, useFormState } from 'react-hook-form'
 
 import Checkbox from '@/src/components/common/CheckBoxGroup/Checkbox'
-import Input from '@/src/components/common/Input/Input'
 import MLink from '@/src/components/common/MLink/MLink'
+import TextField from '@/src/components/fields/TextField'
 import { useGeneralContext } from '@/src/components/providers/GeneralContextProvider'
 import cn from '@/src/utils/cn'
 import { getLinkProps } from '@/src/utils/getLinkProps'
@@ -46,11 +46,12 @@ const NewsletterTextField = ({
         const message = errors[name]?.message
 
         return (
-          <Input
+          <TextField
             id={`newsletter-${name}`}
             type={type}
             isRequired={isRequired}
             label={label}
+            labelSize='h6'
             className={className}
             errorMessage={typeof message === 'string' ? message : undefined}
             {...field}
@@ -113,7 +114,6 @@ const Newsletter = ({
                     >
                       {t('Newsletter.consent.privacyPageLink.label')}
                     </MLink>
-                    <span className="text-content-error-default pl-1">*</span>
                   </Typography>
                 </div>
                 {!!errors.acceptTerms && (

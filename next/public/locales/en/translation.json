@@ -63,6 +63,7 @@
   "Dialog.aria.close": "Close dialog",
   "FaqsSection.selectionOptions.allFaqs": "All questions",
   "FaqsSection.selectionOptions.aria": "FAQ categories",
+  "FieldHeader.optional": "(Optional)",
   "FileList.aria.downloadFile": "Download file",
   "FileList.aria.downloadFileAriaLabel": "Download file {{title}}, format {{format}}, {{size}}",
   "Footer.copyright": "© {{year}} Hlavné mesto Slovenskej republiky Bratislava",
