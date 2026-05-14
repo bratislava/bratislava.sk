@@ -1,4 +1,4 @@
-import { Typography } from '@bratislava/component-library'
+import { Button, Typography } from '@bratislava/component-library'
 import { useCallback, useState } from 'react'
 import { useOverlayTriggerState } from 'react-stately'
 
@@ -54,71 +54,63 @@ const Gallery = ({ images }: GalleryProps) => {
 
   return (
     <>
-      <div className="wrapper-focus-ring relative flex w-full flex-col rounded-lg">
+      {smallImages.length > 0 && (
         <div
-          role="button"
-          tabIndex={0}
-          aria-label={t('Gallery.aria.openGallery')}
-          onClick={() => openAtImageIndex(0)}
-          onKeyDown={onEnterOrSpaceKeyDown(() => openAtImageIndex(0))}
-          aria-haspopup="dialog"
-          className={cn('outline-primary cursor-default outline-offset-2 focus:outline-4')}
+          className={cn('grid grid-cols-2 gap-2 md:gap-8', {
+            'md:grid-cols-2': imageCount === 1 || imageCount === 2,
+            'md:grid-cols-3': imageCount === 3,
+            'md:grid-cols-4': imageCount > 3,
+          })}
         >
-          {smallImages.length > 0 && (
-            <div
-              className={cn('grid grid-cols-2 gap-2 md:gap-8', {
-                'md:grid-cols-2': imageCount === 1 || imageCount === 2,
-                'md:grid-cols-3': imageCount === 3,
-                'md:grid-cols-4': imageCount > 3,
-              })}
-            >
-              {smallImages
-                .map((image, index) => {
-                  if (!image) return null
+          {smallImages
+            .map((image, index) => {
+              if (!image) return null
 
-                  return (
-                    <div
-                      onClick={() => {
-                        openAtImageIndex(index)
-                      }}
-                      key={image.documentId}
-                      className={cn(
-                        'relative aspect-square cursor-pointer overflow-hidden rounded-lg',
-                        {
-                          'md:aspect-592/400': imageCount === 1 || imageCount === 2,
-                          'md:aspect-384/272': imageCount === 3,
-                          'col-span-2 aspect-288/140': isMobile && imageCount === 3 && index === 0,
-                        },
-                      )}
-                    >
-                      <StrapiImage image={image} fill className="absolute top-0 object-cover" />
-                    </div>
-                  )
-                })
-                .filter(isDefined)}
-
-              {/* more images button */}
-              {moreImagesCount > 0 && (
-                <div
+              return (
+                <Button
+                  key={image.documentId}
+                  aria-label={t('Gallery.aria.openGallery')}
+                  aria-haspopup="dialog"
                   onClick={() => {
-                    openAtImageIndex(0)
+                    openAtImageIndex(index)
                   }}
-                  className="relative w-full cursor-pointer overflow-hidden rounded-lg border border-border-active-primary-default pt-[100%]"
+                  onKeyDown={onEnterOrSpaceKeyDown(() => openAtImageIndex(index))}
+                  className={cn(
+                    'relative aspect-square w-full cursor-pointer overflow-hidden',
+                    'rounded-lg outline-offset-4 focus:outline-4',
+                    {
+                      'md:aspect-592/400': imageCount === 1 || imageCount === 2,
+                      'md:aspect-384/272': imageCount === 3,
+                      'col-span-2 aspect-288/140': isMobile && imageCount === 3 && index === 0,
+                    },
+                  )}
                 >
-                  <div className="absolute top-0 flex size-full flex-col items-center justify-center gap-0.5 bg-background-passive-base p-2 text-center">
-                    <Typography variant="h2" as="p" className="font-semibold">
-                      +{moreImagesCount}
-                    </Typography>
-                    <Typography variant="p-large" className="max-md:hidden">
-                      {t('Gallery.morePhotos', { count: moreImagesCount })}
-                    </Typography>
-                  </div>
-                </div>
-              )}
+                  <StrapiImage image={image} fill className="absolute top-0 object-cover" />
+                </Button>
+              )
+            })
+            .filter(isDefined)}
+
+          {/* more images button */}
+          {moreImagesCount > 0 && (
+            <div
+              onClick={() => {
+                openAtImageIndex(0)
+              }}
+              className="relative w-full cursor-pointer overflow-hidden rounded-lg border border-border-active-primary-default pt-[100%]"
+            >
+              <div className="absolute top-0 flex size-full flex-col items-center justify-center gap-0.5 bg-background-passive-base p-2 text-center">
+                <Typography variant="h2" as="p" className="font-semibold">
+                  +{moreImagesCount}
+                </Typography>
+                <Typography variant="p-large" className="max-md:hidden">
+                  {t('Gallery.morePhotos', { count: moreImagesCount })}
+                </Typography>
+              </div>
             </div>
           )}
         </div>
-      </div>
+      )}
       <ImageLightBox
         onClose={() => {
           overlayState.close()
