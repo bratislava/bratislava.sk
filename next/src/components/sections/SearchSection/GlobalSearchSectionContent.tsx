@@ -9,6 +9,7 @@ import Chip from '@/src/components/common/Chip/Chip'
 import { useGeneralContext } from '@/src/components/providers/GeneralContextProvider'
 import SearchBar from '@/src/components/sections/SearchSection/SearchBar'
 import SearchResults from '@/src/components/sections/SearchSection/SearchResults'
+import SearchResultsCount from '@/src/components/sections/SearchSection/SearchResultsCount'
 import { SearchFilters } from '@/src/components/sections/SearchSection/useQueryBySearchOption'
 import { officialBoardListDefaultFilters } from '@/src/services/ginis/fetchers/officialBoardListFetcher'
 import { getCategoryColorLocalStyle } from '@/src/utils/colors'
@@ -230,21 +231,24 @@ const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
         ) : null}
       </div>
 
-      {selectedKey === 'officialBoard' && general?.officialBoardPage ? (
-        <div className="flex flex-col gap-8 lg:flex-row lg:justify-between">
-          {getResultsCountById(selectedKey) > 0 ? (
-            <Typography variant="p-small">
-              {t('SearchPage.showingResults', {
-                // `?? 0` is here only for i18next-parser, otherwise, it doesn't create plurals
-                count: getResultsCountById(selectedKey) ?? 0,
-              })}
-            </Typography>
-          ) : null}
-          <Button variant="link" {...getLinkProps({ page: general.officialBoardPage })}>
-            <Typography variant="p-small">{general.officialBoardPage.title}</Typography>
-          </Button>
-        </div>
-      ) : null}
+      <div className="flex flex-col gap-8 lg:flex-row lg:justify-between">
+        {selectedKey === 'users' && !searchValue ? (
+          /** Contacts show only for non-empty search query
+           * - TODO keep this also during the first loading
+           * - TODO IS PENDING, but handle contacts separately */
+          <Typography variant="p-small">{t('SearchPage.enterSearchQuery')}</Typography>
+        ) : (
+          <SearchResultsCount count={getResultsCountById(selectedKey)} />
+        )}
+        {
+          // TODO add links to more content type pages
+          selectedKey === 'officialBoard' && general?.officialBoardPage ? (
+            <Button variant="link" {...getLinkProps({ page: general.officialBoardPage })}>
+              <Typography variant="p-small">{general.officialBoardPage.title}</Typography>
+            </Button>
+          ) : null
+        }
+      </div>
 
       {selectedKey === 'allResults' ? (
         <div className="flex flex-col gap-8">

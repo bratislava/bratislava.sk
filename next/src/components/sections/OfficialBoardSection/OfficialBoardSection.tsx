@@ -1,4 +1,3 @@
-import { Typography } from '@bratislava/component-library'
 import { useIsFetching } from '@tanstack/react-query'
 import { useEffect, useRef, useState } from 'react'
 import { useDebounceValue } from 'usehooks-ts'
@@ -8,6 +7,7 @@ import OfficialBoardAdditionalFilters from '@/src/components/sections/OfficialBo
 import { useOfficialBoardFilters } from '@/src/components/sections/OfficialBoardSection/useOfficialBoardFilters'
 import SearchBar from '@/src/components/sections/SearchSection/SearchBar'
 import SearchResults from '@/src/components/sections/SearchSection/SearchResults'
+import SearchResultsCount from '@/src/components/sections/SearchSection/SearchResultsCount'
 import { OfficialBoardPublicationState } from '@/src/services/ginis/types'
 import { useTranslation } from '@/src/utils/useTranslation'
 
@@ -55,7 +55,7 @@ const OfficialBoardSection = () => {
           isLoading={fetchingQueriesCount > 0}
         />
 
-        <div className="rounded-md bg-background-passive-secondary p-4">
+        <div className="bg-background-passive-secondary rounded-md p-4">
           <OfficialBoardAdditionalFilters
             categoryId={categoryId}
             setCategoryId={(categoryIdValue) =>
@@ -76,14 +76,7 @@ const OfficialBoardSection = () => {
           />
         </div>
 
-        {resultsCount > 0 ? (
-          <Typography variant="p-small">
-            {t('SearchPage.showingResults', {
-              // `?? 0` is here only for i18next-parser, otherwise, it doesn't create plurals
-              count: resultsCount ?? 0,
-            })}
-          </Typography>
-        ) : null}
+        <SearchResultsCount count={resultsCount} />
 
         <SearchResults
           variant="specificResults"
