@@ -51,7 +51,6 @@ const NewsletterTextField = ({
             type={type}
             isRequired={isRequired}
             label={label}
-            labelSize='h6'
             className={className}
             errorMessage={typeof message === 'string' ? message : undefined}
             {...field}

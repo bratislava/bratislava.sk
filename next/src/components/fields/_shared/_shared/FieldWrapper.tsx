@@ -16,7 +16,6 @@ const labelSizeStyles = {
   h3: '*:text-size-h3-r lg:*:text-size-h3',
   h4: '*:text-size-h4-r lg:*:text-size-h4',
   h5: '*:text-size-h5-r lg:*:text-size-h5',
-  h6: '*:text-size-h6-r lg:*:text-size-h6',
 }
 
 type FieldWrapperProps = {
@@ -69,7 +68,7 @@ const FieldWrapper = ({
             </Typography>
           ) : null}
           {showAsterisk ? (
-            <Typography as="span" className="ml-0.5 font-semibold text-content-error-default">
+            <Typography as="span" className="text-content-error-default ml-0.5 font-semibold">
               *
             </Typography>
           ) : null}

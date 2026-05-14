@@ -63,7 +63,7 @@ const ShareModal = ({ triggerButton }: ShareModalProps) => {
                 value={inputValue}
                 className="grow"
                 label={t('ShareModal.copyLink')}
-                labelSize="h6"
+                displayOptionalLabel={false}
                 isDisabled
               />
               <CopyToClipboardButton
