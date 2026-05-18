@@ -7,9 +7,12 @@ export default defineConfig({
     setupNodeEvents(on, config) {
       config.chromeWebSecurity = false
       config.video = false
-      config.baseUrl = "https://bratislava.sk"
-      
+      config.baseUrl = 'https://bratislava.sk'
+      // Testing against localhost
+      // config.baseUrl = 'http://localhost:3000'
+
       config.env = {
+        ...config.env,
         devices: {
           desktop: ['all', 'desktop'].includes(config.env.DEVICE),
           mobile: ['all', 'mobile'].includes(config.env.DEVICE),
