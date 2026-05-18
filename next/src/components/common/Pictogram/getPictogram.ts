@@ -151,6 +151,8 @@ export const ICON_URL_MAP: IconUrlMap = {
     dane_01: Fee48pxIcon,
     projekty_01: LightBulbOff48pxIcon,
     partnerstva_01: Coordination48pxIcon,
+    inovacie_01: Innovations48pxIcon,
+    data_01: DataCity48pxIcon,
     mhd_02: Tram48pxIcon,
     cyklo_02: Bike48pxIcon,
     mapy_02: Map48pxIcon,
@@ -158,6 +160,7 @@ export const ICON_URL_MAP: IconUrlMap = {
     doprava_02: Trolleybus48pxIcon,
     parkovanie_02: Parking48pxIcon,
     zdielana_mobilita_02: Sharing48pxIcon,
+    data_02: Data48pxIcon,
     zivotne_prostredie_03: PlantInHand48pxIcon,
     zelen_03: Tree48pxIcon,
     vystavba_a_nehnutelnosti_03: Accommodation48pxIcon,
@@ -179,10 +182,7 @@ export const ICON_URL_MAP: IconUrlMap = {
     dedicstvo_06: LockedChest48pxIcon,
     sluzby_06: Stage48pxIcon,
     koncepcia_06: Culture48pxIcon,
-    komunity_06: Community48pxIcon,
-    data_01: DataCity48pxIcon,
-    data_02: Data48pxIcon,
-    inovacie_01: Innovations48pxIcon,
+    komunity_06: Community48pxIcon,    
     // Mobile menu links
     kontakt: Phone48pxIcon,
     // Top Services
