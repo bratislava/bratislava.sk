@@ -5,10 +5,10 @@ import { DialogTrigger } from 'react-aria-components'
 
 import { FacebookIcon, InstagramIcon, LinkedinIcon } from '@/src/assets/icons-social-media'
 import CopyToClipboardButton from '@/src/components/common/CopyToClipboardButton/CopyToClipboardButton'
-import Input from '@/src/components/common/Input/Input'
 import Dialog from '@/src/components/common/ModalDialog/Dialog'
 import Modal from '@/src/components/common/ModalDialog/Modal'
 import SocialMediaButton from '@/src/components/common/ShareBlock/SocialMediaButton'
+import TextField from '@/src/components/fields/TextField'
 
 type ShareModalProps = {
   triggerButton: ReactNode
@@ -22,7 +22,7 @@ type ShareModalProps = {
 const ShareModal = ({ triggerButton }: ShareModalProps) => {
   const { t } = useTranslation()
 
-  const [inputValue, setInputValue] = useState(
+  const [inputValue] = useState(
     // inspired by https://stackoverflow.com/a/65200178
     typeof window === 'undefined' ? '' : window.location.href,
   )
@@ -59,14 +59,12 @@ const ShareModal = ({ triggerButton }: ShareModalProps) => {
               </div>
             </div>
             <div className="flex flex-col gap-3 lg:flex-row lg:items-end">
-              <Input
+              <TextField
                 value={inputValue}
-                onChange={(e) => {
-                  setInputValue(e.target.value)
-                }}
                 className="grow"
                 label={t('ShareModal.copyLink')}
-                disabled
+                displayOptionalLabel={false}
+                isDisabled
               />
               <CopyToClipboardButton
                 copyText={inputValue}
