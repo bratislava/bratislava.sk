@@ -93,7 +93,7 @@ const Gallery = ({ images }: GalleryProps) => {
 
           {/* more images button */}
           {moreImagesCount > 0 && (
-            <div
+            <Button
               onClick={() => {
                 openAtImageIndex(0)
               }}
@@ -107,7 +107,7 @@ const Gallery = ({ images }: GalleryProps) => {
                   {t('Gallery.morePhotos', { count: moreImagesCount })}
                 </Typography>
               </div>
-            </div>
+            </Button>
           )}
         </div>
       )}
