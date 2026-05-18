@@ -2520,10 +2520,13 @@ enum ENUM_COMPONENTMENUMENUSECTION_ICON {
   covid_06
   cyklo_02
   dane_01
+  data_01
+  data_02
   dedicstvo_06
   deti_a_mladez_05
   doprava_02
   dotacie_05
+  inovacie_01
   kalendar_06
   klima_03
   komunity_06
