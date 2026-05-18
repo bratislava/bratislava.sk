@@ -25,9 +25,9 @@ const NESTED_ORG_STRUCTURE_HEADER_VARIANT: Partial<Record<TypographyVariant, Typ
   h6: 'p-small',
 }
 
-function nestedOrganizationalHeaderVariant(
+const getNestedOrganizationalHeaderVariant = (
   variant: TypographyProps['variant'],
-): TypographyProps['variant'] {
+): TypographyProps['variant'] => {
   if (!isDefined(variant)) {
     return 'p-small'
   }
@@ -54,7 +54,7 @@ const OrganizationalStructureDisclosure = ({
                   {index > 0 ? <HorizontalDivider className="mx-4 lg:mx-6" /> : null}
                   <OrganizationalStructureDisclosure
                     group={subgroup}
-                    headerVariant={nestedOrganizationalHeaderVariant(headerVariant)}
+                    headerVariant={getNestedOrganizationalHeaderVariant(headerVariant)}
                   />
                 </Fragment>
               ))}
