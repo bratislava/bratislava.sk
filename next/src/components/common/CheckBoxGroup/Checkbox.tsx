@@ -27,7 +27,7 @@ const Checkbox = ({ children, value, ...restProps }: RACCheckboxProps) => {
       }}
       {...restProps}
     >
-      {({ isSelected, isHovered, isDisabled }) => {
+      {({ isSelected, isHovered, isInvalid, isDisabled }) => {
         return (
           <>
             <div
@@ -38,6 +38,7 @@ const Checkbox = ({ children, value, ...restProps }: RACCheckboxProps) => {
                   'bg-background-active-primary-default': isSelected,
                   'bg-background-active-primary-hover': isSelected && isHovered,
                   'border-border-active-primary-disabled': isDisabled,
+                  'border-border-error': isInvalid && !isDisabled,
                   'bg-background-active-primary-disabled': isSelected && isDisabled,
                 },
               )}

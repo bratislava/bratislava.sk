@@ -1,6 +1,7 @@
-import { ChangeEventHandler, KeyboardEventHandler, useEffect, useState } from 'react'
+import { KeyboardEventHandler, useEffect, useState } from 'react'
+import { NumberFieldProps } from 'react-aria-components'
 
-type InputValue = '' | number
+type InputValue = NumberFieldProps['value']
 
 const handleKeyDown: KeyboardEventHandler = (event) => {
   if (['e', 'E', '+', '-', '.', ','].includes(event.key)) {
@@ -26,30 +27,24 @@ export const usePaginationWithInput = ({
     setInputValue(currentPage)
   }, [currentPage])
 
-  // eslint-disable-next-line sonarjs/function-return-type
-  const getValidValue = (incomingValue: HTMLInputElement['value']) => {
-    let result: InputValue
-    const incomingNumberValue = Number(incomingValue)
+  const getValidValue = (incomingValue: InputValue): number => {
+    let result
 
-    if (incomingValue === '') {
-      result = ''
-    } else if (Number.isNaN(incomingNumberValue)) {
+    if (!incomingValue) {
       result = currentPage
-    } else if (incomingNumberValue > totalCount) {
+    } else if (incomingValue > totalCount) {
       result = totalCount
-    } else if (incomingNumberValue < 1) {
+    } else if (incomingValue < 1) {
       result = 1
     } else {
-      result = Number.isInteger(incomingNumberValue)
-        ? incomingNumberValue
-        : Math.floor(incomingNumberValue)
+      result = Number.isInteger(incomingValue) ? incomingValue : Math.floor(incomingValue)
     }
 
     return result
   }
 
-  const handleChange: ChangeEventHandler<HTMLInputElement> = (event) => {
-    const validValue = getValidValue(event.currentTarget.value)
+  const handleChange = (value: number) => {
+    const validValue = getValidValue(value)
 
     if (validValue !== inputValue) {
       setInputValue(validValue)

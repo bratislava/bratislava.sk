@@ -2,8 +2,8 @@ import { Button, Typography } from '@bratislava/component-library'
 import { useTranslation } from 'next-i18next'
 
 import Icon from '@/src/components/common/Icon/Icon'
-import Input from '@/src/components/common/Input/Input'
 import { usePaginationWithInput } from '@/src/components/common/Pagination/usePaginationWithInput'
+import NumberField from '@/src/components/fields/NumberField'
 import cn from '@/src/utils/cn'
 
 type PaginationWithInputProps = {
@@ -35,7 +35,7 @@ const PaginationWithInput = ({
       <div className={cn('flex items-center justify-start gap-4')}>
         <Button
           variant="plain"
-          isDisabled={Number(inputValue) < 2}
+          isDisabled={!inputValue || inputValue < 2}
           onPress={() => {
             handlePageChange(currentPage - 1)
           }}
@@ -45,14 +45,13 @@ const PaginationWithInput = ({
         />
 
         <div className="flex items-center justify-center gap-2">
-          <Input
-            type="number"
+          <NumberField
             aria-label={t('Pagination.aria.goToPage', { page: inputValue })}
             value={inputValue}
             onChange={handleChange}
             onKeyDown={handleKeyDown}
+            displayOptionalLabel={false}
             className={cn(
-              'items-center justify-center',
               // Set input width to fit three digits
               // TODO consider setting input width dynamically according to number of pages
               '[&_input]:w-16 [&_input]:text-center',
@@ -69,7 +68,7 @@ const PaginationWithInput = ({
 
         <Button
           variant="plain"
-          isDisabled={Number(inputValue) >= totalCount || inputValue === ''}
+          isDisabled={!inputValue || inputValue >= totalCount}
           onPress={() => {
             handlePageChange(currentPage + 1)
           }}
