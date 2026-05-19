@@ -6,7 +6,6 @@ import StrapiImage from '@/src/components/common/Image/StrapiImage'
 import { UploadImageEntityFragment } from '@/src/services/graphql'
 import cn from '@/src/utils/cn'
 import { isDefined } from '@/src/utils/isDefined'
-import { onEnterOrSpaceKeyDown } from '@/src/utils/onEnterOrSpaceKeyDown'
 import { useTailwindBreakpointValue } from '@/src/utils/useTailwindBreakpointValue'
 import { useTranslation } from '@/src/utils/useTranslation'
 
@@ -71,10 +70,9 @@ const Gallery = ({ images }: GalleryProps) => {
                   key={image.documentId}
                   aria-label={t('Gallery.aria.openGallery')}
                   aria-haspopup="dialog"
-                  onClick={() => {
+                  onPress={() => {
                     openAtImageIndex(index)
                   }}
-                  onKeyDown={onEnterOrSpaceKeyDown(() => openAtImageIndex(index))}
                   className={cn(
                     'relative aspect-square w-full cursor-pointer overflow-hidden',
                     'rounded-lg outline-offset-4 focus:outline-4',
@@ -94,7 +92,9 @@ const Gallery = ({ images }: GalleryProps) => {
           {/* more images button */}
           {moreImagesCount > 0 && (
             <Button
-              onClick={() => {
+              aria-label={t('Gallery.aria.openGallery')}
+              aria-haspopup="dialog"
+              onPress={() => {
                 openAtImageIndex(0)
               }}
               className="relative w-full cursor-pointer overflow-hidden rounded-lg border border-border-active-primary-default pt-[100%]"
