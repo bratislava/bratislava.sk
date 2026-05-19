@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query'
 import { Fragment } from 'react'
 
+import { getCardTitleLevel, SectionTitleLevel } from '@/src/components/cards/getCardTitleLevel'
 import DisclosureGroup from '@/src/components/common/Disclosure/DisclosureGroup'
 import HorizontalDivider from '@/src/components/common/Divider/HorizontalDivider'
 import LoadingSpinner from '@/src/components/common/LoadingSpinner/LoadingSpinner'
@@ -13,6 +14,7 @@ import {
 
 export type OrganizationalStructureProps = {
   title?: string | null
+  titleLevel?: SectionTitleLevel | null | undefined
 }
 
 /**
@@ -20,7 +22,7 @@ export type OrganizationalStructureProps = {
  */
 
 // TODO add search
-const OrganizationalStructure = ({ title }: OrganizationalStructureProps) => {
+const OrganizationalStructure = ({ title, titleLevel }: OrganizationalStructureProps) => {
   const { data, isPending, isError, error } = useQuery({
     queryKey: getMsGraphStructureQueryKey(),
     queryFn: () => msGraphStructureFetcher(),
@@ -35,21 +37,27 @@ const OrganizationalStructure = ({ title }: OrganizationalStructureProps) => {
     return <div className="whitespace-pre">{JSON.stringify(error, null, 2)}</div>
   }
 
+  const accordionTitleLevel = title ? getCardTitleLevel(titleLevel) : 'h2'
+
   return (
     <div className="flex flex-col">
-      <SectionHeader title={title} />
-      <div className="flex flex-col" data-cy="organizational-structure-container">
-        <DisclosureGroup className="rounded-xl border border-border-active-default bg-background-passive-base py-2">
-          {data.groups.map((group, index) => {
-            return (
-              <Fragment key={group.id}>
-                {index > 0 ? <HorizontalDivider className="mx-4 lg:mx-6" /> : null}
-                <OrganizationalStructureDisclosure group={group} headerVariant="h5" />
-              </Fragment>
-            )
-          })}
-        </DisclosureGroup>
-      </div>
+      <SectionHeader title={title} titleLevel={titleLevel} />
+      <DisclosureGroup
+        className="rounded-xl border border-border-active-default bg-background-passive-base py-2"
+        data-cy="organizational-structure-container"
+      >
+        {data.groups.map((group, index) => {
+          return (
+            <Fragment key={group.id}>
+              {index > 0 ? <HorizontalDivider className="mx-4 lg:mx-6" /> : null}
+              <OrganizationalStructureDisclosure
+                group={group}
+                headerVariant={accordionTitleLevel}
+              />
+            </Fragment>
+          )
+        })}
+      </DisclosureGroup>
     </div>
   )
 }

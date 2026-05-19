@@ -3176,10 +3176,13 @@ export enum Enum_Componentmenumenusection_Icon {
   Covid_06 = 'covid_06',
   Cyklo_02 = 'cyklo_02',
   Dane_01 = 'dane_01',
+  Data_01 = 'data_01',
+  Data_02 = 'data_02',
   Dedicstvo_06 = 'dedicstvo_06',
   DetiAMladez_05 = 'deti_a_mladez_05',
   Doprava_02 = 'doprava_02',
   Dotacie_05 = 'dotacie_05',
+  Innovations_01 = 'inovacie_01',
   Kalendar_06 = 'kalendar_06',
   Klima_03 = 'klima_03',
   Komunity_06 = 'komunity_06',
@@ -3375,17 +3378,6 @@ export enum Enum_Componentsectionstextwithimage_Imageposition {
 export enum Enum_Componentsectionsvideos_Titlelevel {
   H2 = 'h2',
   H3 = 'h3',
-}
-
-export enum Enum_Internaljob_Jobtype {
-  CreateRedirect = 'CREATE_REDIRECT',
-  RecalculateFullpath = 'RECALCULATE_FULLPATH',
-}
-
-export enum Enum_Internaljob_State {
-  Completed = 'completed',
-  Failed = 'failed',
-  Pending = 'pending',
 }
 
 export enum Enum_Pagecategory_Color {
@@ -3879,11 +3871,9 @@ export type GenericMorph =
   | Homepage
   | I18NLocale
   | InbaRelease
-  | InternalJob
   | Menu
   | Page
   | PageCategory
-  | Redirect
   | Regulation
   | ReviewWorkflowsWorkflow
   | ReviewWorkflowsWorkflowStage
@@ -4172,65 +4162,6 @@ export type IntFilterInput = {
   startsWith?: InputMaybe<Scalars['Int']['input']>
 }
 
-export type InternalJob = {
-  __typename?: 'InternalJob'
-  createdAt?: Maybe<Scalars['DateTime']['output']>
-  documentId: Scalars['ID']['output']
-  error?: Maybe<Scalars['String']['output']>
-  jobType: Enum_Internaljob_Jobtype
-  payload: Scalars['JSON']['output']
-  publishedAt?: Maybe<Scalars['DateTime']['output']>
-  relatedDocumentId?: Maybe<Scalars['String']['output']>
-  state: Enum_Internaljob_State
-  updatedAt?: Maybe<Scalars['DateTime']['output']>
-}
-
-export type InternalJobEntity = {
-  __typename?: 'InternalJobEntity'
-  attributes?: Maybe<InternalJob>
-  id?: Maybe<Scalars['ID']['output']>
-}
-
-export type InternalJobEntityResponse = {
-  __typename?: 'InternalJobEntityResponse'
-  data?: Maybe<InternalJob>
-}
-
-export type InternalJobEntityResponseCollection = {
-  __typename?: 'InternalJobEntityResponseCollection'
-  nodes: Array<InternalJob>
-  pageInfo: Pagination
-}
-
-export type InternalJobFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<InternalJobFiltersInput>>>
-  createdAt?: InputMaybe<DateTimeFilterInput>
-  documentId?: InputMaybe<IdFilterInput>
-  error?: InputMaybe<StringFilterInput>
-  jobType?: InputMaybe<StringFilterInput>
-  not?: InputMaybe<InternalJobFiltersInput>
-  or?: InputMaybe<Array<InputMaybe<InternalJobFiltersInput>>>
-  payload?: InputMaybe<JsonFilterInput>
-  publishedAt?: InputMaybe<DateTimeFilterInput>
-  relatedDocumentId?: InputMaybe<StringFilterInput>
-  state?: InputMaybe<StringFilterInput>
-  updatedAt?: InputMaybe<DateTimeFilterInput>
-}
-
-export type InternalJobInput = {
-  error?: InputMaybe<Scalars['String']['input']>
-  jobType?: InputMaybe<Enum_Internaljob_Jobtype>
-  payload?: InputMaybe<Scalars['JSON']['input']>
-  publishedAt?: InputMaybe<Scalars['DateTime']['input']>
-  relatedDocumentId?: InputMaybe<Scalars['String']['input']>
-  state?: InputMaybe<Enum_Internaljob_State>
-}
-
-export type InternalJobRelationResponseCollection = {
-  __typename?: 'InternalJobRelationResponseCollection'
-  nodes: Array<InternalJob>
-}
-
 export type JsonFilterInput = {
   and?: InputMaybe<Array<InputMaybe<Scalars['JSON']['input']>>>
   between?: InputMaybe<Array<InputMaybe<Scalars['JSON']['input']>>>
@@ -4350,10 +4281,8 @@ export type Mutation = {
   createFaq?: Maybe<Faq>
   createFaqCategory?: Maybe<FaqCategory>
   createInbaRelease?: Maybe<InbaRelease>
-  createInternalJob?: Maybe<InternalJob>
   createPage?: Maybe<Page>
   createPageCategory?: Maybe<PageCategory>
-  createRedirect?: Maybe<Redirect>
   createRegulation?: Maybe<Regulation>
   createReviewWorkflowsWorkflow?: Maybe<ReviewWorkflowsWorkflow>
   createReviewWorkflowsWorkflowStage?: Maybe<ReviewWorkflowsWorkflowStage>
@@ -4374,11 +4303,9 @@ export type Mutation = {
   deleteGeneral?: Maybe<DeleteMutationResponse>
   deleteHomepage?: Maybe<DeleteMutationResponse>
   deleteInbaRelease?: Maybe<DeleteMutationResponse>
-  deleteInternalJob?: Maybe<DeleteMutationResponse>
   deleteMenu?: Maybe<DeleteMutationResponse>
   deletePage?: Maybe<DeleteMutationResponse>
   deletePageCategory?: Maybe<DeleteMutationResponse>
-  deleteRedirect?: Maybe<DeleteMutationResponse>
   deleteRegulation?: Maybe<DeleteMutationResponse>
   deleteReviewWorkflowsWorkflow?: Maybe<DeleteMutationResponse>
   deleteReviewWorkflowsWorkflowStage?: Maybe<DeleteMutationResponse>
@@ -4410,11 +4337,9 @@ export type Mutation = {
   updateGeneral?: Maybe<General>
   updateHomepage?: Maybe<Homepage>
   updateInbaRelease?: Maybe<InbaRelease>
-  updateInternalJob?: Maybe<InternalJob>
   updateMenu?: Maybe<Menu>
   updatePage?: Maybe<Page>
   updatePageCategory?: Maybe<PageCategory>
-  updateRedirect?: Maybe<Redirect>
   updateRegulation?: Maybe<Regulation>
   updateReviewWorkflowsWorkflow?: Maybe<ReviewWorkflowsWorkflow>
   updateReviewWorkflowsWorkflowStage?: Maybe<ReviewWorkflowsWorkflowStage>
@@ -4477,11 +4402,6 @@ export type MutationCreateInbaReleaseArgs = {
   status?: InputMaybe<PublicationStatus>
 }
 
-export type MutationCreateInternalJobArgs = {
-  data: InternalJobInput
-  status?: InputMaybe<PublicationStatus>
-}
-
 export type MutationCreatePageArgs = {
   data: PageInput
   locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
@@ -4491,11 +4411,6 @@ export type MutationCreatePageArgs = {
 export type MutationCreatePageCategoryArgs = {
   data: PageCategoryInput
   locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
-  status?: InputMaybe<PublicationStatus>
-}
-
-export type MutationCreateRedirectArgs = {
-  data: RedirectInput
   status?: InputMaybe<PublicationStatus>
 }
 
@@ -4580,10 +4495,6 @@ export type MutationDeleteInbaReleaseArgs = {
   documentId: Scalars['ID']['input']
 }
 
-export type MutationDeleteInternalJobArgs = {
-  documentId: Scalars['ID']['input']
-}
-
 export type MutationDeleteMenuArgs = {
   locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
 }
@@ -4596,10 +4507,6 @@ export type MutationDeletePageArgs = {
 export type MutationDeletePageCategoryArgs = {
   documentId: Scalars['ID']['input']
   locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
-}
-
-export type MutationDeleteRedirectArgs = {
-  documentId: Scalars['ID']['input']
 }
 
 export type MutationDeleteRegulationArgs = {
@@ -4729,12 +4636,6 @@ export type MutationUpdateInbaReleaseArgs = {
   status?: InputMaybe<PublicationStatus>
 }
 
-export type MutationUpdateInternalJobArgs = {
-  data: InternalJobInput
-  documentId: Scalars['ID']['input']
-  status?: InputMaybe<PublicationStatus>
-}
-
 export type MutationUpdateMenuArgs = {
   data: MenuInput
   locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
@@ -4752,12 +4653,6 @@ export type MutationUpdatePageCategoryArgs = {
   data: PageCategoryInput
   documentId: Scalars['ID']['input']
   locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
-  status?: InputMaybe<PublicationStatus>
-}
-
-export type MutationUpdateRedirectArgs = {
-  data: RedirectInput
-  documentId: Scalars['ID']['input']
   status?: InputMaybe<PublicationStatus>
 }
 
@@ -4811,14 +4706,10 @@ export type Page = {
   adminGroups: Array<Maybe<AdminGroup>>
   adminGroups_connection?: Maybe<AdminGroupRelationResponseCollection>
   alias?: Maybe<Scalars['String']['output']>
-  breadcrumbTitle?: Maybe<Scalars['String']['output']>
   childPages: Array<Maybe<Page>>
   childPages_connection?: Maybe<PageRelationResponseCollection>
-  children: Array<Maybe<Page>>
-  children_connection?: Maybe<PageRelationResponseCollection>
   createdAt?: Maybe<Scalars['DateTime']['output']>
   documentId: Scalars['ID']['output']
-  fullPath?: Maybe<Scalars['String']['output']>
   headerLinks?: Maybe<Array<Maybe<ComponentBlocksCommonLink>>>
   keywords?: Maybe<Scalars['String']['output']>
   locale?: Maybe<Scalars['String']['output']>
@@ -4828,12 +4719,9 @@ export type Page = {
   pageBackgroundImage?: Maybe<UploadFile>
   pageColor: Enum_Page_Pagecolor
   pageHeaderSections?: Maybe<Array<Maybe<PagePageHeaderSectionsDynamicZone>>>
-  parent?: Maybe<Page>
   parentPage?: Maybe<Page>
   path?: Maybe<Scalars['String']['output']>
   publishedAt?: Maybe<Scalars['DateTime']['output']>
-  redirects: Array<Maybe<Redirect>>
-  redirects_connection?: Maybe<RedirectRelationResponseCollection>
   relatedContents: Array<Maybe<Tag>>
   relatedContents_connection?: Maybe<TagRelationResponseCollection>
   sections?: Maybe<Array<Maybe<PageSectionsDynamicZone>>>
@@ -4870,18 +4758,6 @@ export type PageChildPages_ConnectionArgs = {
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
 }
 
-export type PageChildrenArgs = {
-  filters?: InputMaybe<PageFiltersInput>
-  pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
-}
-
-export type PageChildren_ConnectionArgs = {
-  filters?: InputMaybe<PageFiltersInput>
-  pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
-}
-
 export type PageHeaderLinksArgs = {
   filters?: InputMaybe<ComponentBlocksCommonLinkFiltersInput>
   pagination?: InputMaybe<PaginationArg>
@@ -4896,18 +4772,6 @@ export type PageLocalizationsArgs = {
 
 export type PageLocalizations_ConnectionArgs = {
   filters?: InputMaybe<PageFiltersInput>
-  pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
-}
-
-export type PageRedirectsArgs = {
-  filters?: InputMaybe<RedirectFiltersInput>
-  pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
-}
-
-export type PageRedirects_ConnectionArgs = {
-  filters?: InputMaybe<RedirectFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
 }
@@ -5018,12 +4882,9 @@ export type PageFiltersInput = {
   adminGroups?: InputMaybe<AdminGroupFiltersInput>
   alias?: InputMaybe<StringFilterInput>
   and?: InputMaybe<Array<InputMaybe<PageFiltersInput>>>
-  breadcrumbTitle?: InputMaybe<StringFilterInput>
   childPages?: InputMaybe<PageFiltersInput>
-  children?: InputMaybe<PageFiltersInput>
   createdAt?: InputMaybe<DateTimeFilterInput>
   documentId?: InputMaybe<IdFilterInput>
-  fullPath?: InputMaybe<StringFilterInput>
   headerLinks?: InputMaybe<ComponentBlocksCommonLinkFiltersInput>
   keywords?: InputMaybe<StringFilterInput>
   locale?: InputMaybe<StringFilterInput>
@@ -5032,11 +4893,9 @@ export type PageFiltersInput = {
   not?: InputMaybe<PageFiltersInput>
   or?: InputMaybe<Array<InputMaybe<PageFiltersInput>>>
   pageColor?: InputMaybe<StringFilterInput>
-  parent?: InputMaybe<PageFiltersInput>
   parentPage?: InputMaybe<PageFiltersInput>
   path?: InputMaybe<StringFilterInput>
   publishedAt?: InputMaybe<DateTimeFilterInput>
-  redirects?: InputMaybe<RedirectFiltersInput>
   relatedContents?: InputMaybe<TagFiltersInput>
   showTableOfContents?: InputMaybe<BooleanFilterInput>
   slug?: InputMaybe<StringFilterInput>
@@ -5049,21 +4908,16 @@ export type PageFiltersInput = {
 export type PageInput = {
   adminGroups?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
   alias?: InputMaybe<Scalars['String']['input']>
-  breadcrumbTitle?: InputMaybe<Scalars['String']['input']>
   childPages?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
-  children?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
-  fullPath?: InputMaybe<Scalars['String']['input']>
   headerLinks?: InputMaybe<Array<InputMaybe<ComponentBlocksCommonLinkInput>>>
   keywords?: InputMaybe<Scalars['String']['input']>
   metaDescription?: InputMaybe<Scalars['String']['input']>
   pageBackgroundImage?: InputMaybe<Scalars['ID']['input']>
   pageColor?: InputMaybe<Enum_Page_Pagecolor>
   pageHeaderSections?: InputMaybe<Array<Scalars['PagePageHeaderSectionsDynamicZoneInput']['input']>>
-  parent?: InputMaybe<Scalars['ID']['input']>
   parentPage?: InputMaybe<Scalars['ID']['input']>
   path?: InputMaybe<Scalars['String']['input']>
   publishedAt?: InputMaybe<Scalars['DateTime']['input']>
-  redirects?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
   relatedContents?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
   sections?: InputMaybe<Array<Scalars['PageSectionsDynamicZoneInput']['input']>>
   showTableOfContents?: InputMaybe<Scalars['Boolean']['input']>
@@ -5179,9 +5033,6 @@ export type Query = {
   inbaRelease?: Maybe<InbaRelease>
   inbaReleases: Array<Maybe<InbaRelease>>
   inbaReleases_connection?: Maybe<InbaReleaseEntityResponseCollection>
-  internalJob?: Maybe<InternalJob>
-  internalJobs: Array<Maybe<InternalJob>>
-  internalJobs_connection?: Maybe<InternalJobEntityResponseCollection>
   me?: Maybe<UsersPermissionsMe>
   menu?: Maybe<Menu>
   page?: Maybe<Page>
@@ -5190,9 +5041,6 @@ export type Query = {
   pageCategory?: Maybe<PageCategory>
   pages: Array<Maybe<Page>>
   pages_connection?: Maybe<PageEntityResponseCollection>
-  redirect?: Maybe<Redirect>
-  redirects: Array<Maybe<Redirect>>
-  redirects_connection?: Maybe<RedirectEntityResponseCollection>
   regulation?: Maybe<Regulation>
   regulations: Array<Maybe<Regulation>>
   regulations_connection?: Maybe<RegulationEntityResponseCollection>
@@ -5420,25 +5268,6 @@ export type QueryInbaReleases_ConnectionArgs = {
   status?: InputMaybe<PublicationStatus>
 }
 
-export type QueryInternalJobArgs = {
-  documentId: Scalars['ID']['input']
-  status?: InputMaybe<PublicationStatus>
-}
-
-export type QueryInternalJobsArgs = {
-  filters?: InputMaybe<InternalJobFiltersInput>
-  pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
-  status?: InputMaybe<PublicationStatus>
-}
-
-export type QueryInternalJobs_ConnectionArgs = {
-  filters?: InputMaybe<InternalJobFiltersInput>
-  pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
-  status?: InputMaybe<PublicationStatus>
-}
-
 export type QueryMenuArgs = {
   locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
   status?: InputMaybe<PublicationStatus>
@@ -5483,25 +5312,6 @@ export type QueryPagesArgs = {
 export type QueryPages_ConnectionArgs = {
   filters?: InputMaybe<PageFiltersInput>
   locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
-  pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
-  status?: InputMaybe<PublicationStatus>
-}
-
-export type QueryRedirectArgs = {
-  documentId: Scalars['ID']['input']
-  status?: InputMaybe<PublicationStatus>
-}
-
-export type QueryRedirectsArgs = {
-  filters?: InputMaybe<RedirectFiltersInput>
-  pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
-  status?: InputMaybe<PublicationStatus>
-}
-
-export type QueryRedirects_ConnectionArgs = {
-  filters?: InputMaybe<RedirectFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
   status?: InputMaybe<PublicationStatus>
@@ -5645,62 +5455,6 @@ export type QueryUsersPermissionsUsers_ConnectionArgs = {
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
   status?: InputMaybe<PublicationStatus>
-}
-
-export type Redirect = {
-  __typename?: 'Redirect'
-  createdAt?: Maybe<Scalars['DateTime']['output']>
-  destination: Scalars['String']['output']
-  documentId: Scalars['ID']['output']
-  page?: Maybe<Page>
-  permanent?: Maybe<Scalars['Boolean']['output']>
-  publishedAt?: Maybe<Scalars['DateTime']['output']>
-  source: Scalars['String']['output']
-  updatedAt?: Maybe<Scalars['DateTime']['output']>
-}
-
-export type RedirectEntity = {
-  __typename?: 'RedirectEntity'
-  attributes?: Maybe<Redirect>
-  id?: Maybe<Scalars['ID']['output']>
-}
-
-export type RedirectEntityResponse = {
-  __typename?: 'RedirectEntityResponse'
-  data?: Maybe<Redirect>
-}
-
-export type RedirectEntityResponseCollection = {
-  __typename?: 'RedirectEntityResponseCollection'
-  nodes: Array<Redirect>
-  pageInfo: Pagination
-}
-
-export type RedirectFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<RedirectFiltersInput>>>
-  createdAt?: InputMaybe<DateTimeFilterInput>
-  destination?: InputMaybe<StringFilterInput>
-  documentId?: InputMaybe<IdFilterInput>
-  not?: InputMaybe<RedirectFiltersInput>
-  or?: InputMaybe<Array<InputMaybe<RedirectFiltersInput>>>
-  page?: InputMaybe<PageFiltersInput>
-  permanent?: InputMaybe<BooleanFilterInput>
-  publishedAt?: InputMaybe<DateTimeFilterInput>
-  source?: InputMaybe<StringFilterInput>
-  updatedAt?: InputMaybe<DateTimeFilterInput>
-}
-
-export type RedirectInput = {
-  destination?: InputMaybe<Scalars['String']['input']>
-  page?: InputMaybe<Scalars['ID']['input']>
-  permanent?: InputMaybe<Scalars['Boolean']['input']>
-  publishedAt?: InputMaybe<Scalars['DateTime']['input']>
-  source?: InputMaybe<Scalars['String']['input']>
-}
-
-export type RedirectRelationResponseCollection = {
-  __typename?: 'RedirectRelationResponseCollection'
-  nodes: Array<Redirect>
 }
 
 export type Regulation = {

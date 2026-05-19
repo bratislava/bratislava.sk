@@ -12,7 +12,6 @@ import {
   SearchFilters,
   useQueryBySearchOption,
 } from '@/src/components/sections/SearchSection/useQueryBySearchOption'
-import { useTranslation } from '@/src/utils/useTranslation'
 
 type SearchResultsProps = {
   filters: SearchFilters
@@ -31,8 +30,6 @@ const SearchResults = ({
   onShowMore,
   onPageChange,
 }: SearchResultsProps) => {
-  const { t } = useTranslation()
-
   const searchQuery = useQueryBySearchOption({ optionKey: searchOption.id, filters })
 
   const { data, isPending, isError, error } = searchQuery
@@ -91,16 +88,7 @@ const SearchResults = ({
                 )
               })}
           </ul>
-        ) : filters.search ? (
-          <div data-cy="no-search-results">
-            <Typography variant="p-small">{t('SearchPage.noResults')}</Typography>
-          </div>
-        ) : (
-          /* Contacts show only for non-empty search query */
-          // TODO keep this also during the first loading
-          // TODO IS PENDING, but handle contacts separately
-          <Typography variant="p-small">{t('SearchPage.enterSearchQuery')}</Typography>
-        )}
+        ) : null}
 
         {variant === 'specificResults' && onPageChange ? (
           <div>

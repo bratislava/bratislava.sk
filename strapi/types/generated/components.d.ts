@@ -518,6 +518,9 @@ export interface MenuMenuSection extends Struct.ComponentSchema {
         'koncepcia_06',
         'komunity_06',
         'covid_06',
+        'data_01',
+        'data_02',
+        'inovacie_01',
       ]
     > &
       Schema.Attribute.Required &

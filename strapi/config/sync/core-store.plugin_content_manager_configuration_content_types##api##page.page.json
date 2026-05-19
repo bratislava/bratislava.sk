@@ -260,79 +260,6 @@
           "sortable": false
         }
       },
-      "parent": {
-        "edit": {
-          "label": "parent",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true,
-          "mainField": "title"
-        },
-        "list": {
-          "label": "parent",
-          "searchable": true,
-          "sortable": true
-        }
-      },
-      "children": {
-        "edit": {
-          "label": "children",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true,
-          "mainField": "title"
-        },
-        "list": {
-          "label": "children",
-          "searchable": false,
-          "sortable": false
-        }
-      },
-      "fullPath": {
-        "edit": {
-          "label": "fullPath",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "fullPath",
-          "searchable": true,
-          "sortable": true
-        }
-      },
-      "redirects": {
-        "edit": {
-          "label": "redirects",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true,
-          "mainField": "source"
-        },
-        "list": {
-          "label": "redirects",
-          "searchable": false,
-          "sortable": false
-        }
-      },
-      "breadcrumbTitle": {
-        "edit": {
-          "label": "breadcrumbTitle",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "breadcrumbTitle",
-          "searchable": true,
-          "sortable": true
-        }
-      },
       "relatedContents": {
         "edit": {
           "label": "Súvisiaci obsah",
@@ -530,22 +457,6 @@
         ],
         [
           {
-            "name": "parent",
-            "size": 6
-          }
-        ],
-        [
-          {
-            "name": "children",
-            "size": 6
-          },
-          {
-            "name": "fullPath",
-            "size": 6
-          }
-        ],
-        [
-          {
             "name": "alias",
             "size": 12
           }
@@ -553,16 +464,6 @@
         [
           {
             "name": "adminGroups",
-            "size": 6
-          }
-        ],
-        [
-          {
-            "name": "redirects",
-            "size": 6
-          },
-          {
-            "name": "breadcrumbTitle",
             "size": 6
           }
         ],

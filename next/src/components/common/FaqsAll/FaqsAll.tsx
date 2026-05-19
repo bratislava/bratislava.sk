@@ -3,6 +3,7 @@ import { keepPreviousData, useQuery } from '@tanstack/react-query'
 import { Fragment, useEffect, useRef, useState } from 'react'
 import { useDebounceValue } from 'usehooks-ts'
 
+import { AccordionTitleLevel } from '@/src/components/cards/getCardTitleLevel'
 import Badge from '@/src/components/common/Badge/Badge'
 import Disclosure from '@/src/components/common/Disclosure/Disclosure'
 import DisclosureGroup from '@/src/components/common/Disclosure/DisclosureGroup'
@@ -27,7 +28,7 @@ import { useTranslation } from '@/src/utils/useTranslation'
  * TODO Figma link
  */
 
-const FaqsAll = () => {
+const FaqsAll = ({ accordionTitleLevel = 'h2' }: { accordionTitleLevel?: AccordionTitleLevel }) => {
   const { t } = useTranslation()
   const locale = useLocale()
 
@@ -122,7 +123,9 @@ const FaqsAll = () => {
                 <Disclosure id={`disclosure-faq-${faq.documentId}`}>
                   <DisclosureHeader className="p-4 ring-inset lg:px-6">
                     {faq.faqCategory?.title && <Badge label={faq.faqCategory.title} />}
-                    <Typography variant="h4">{faq.title}</Typography>
+                    <Typography variant="h4" as={accordionTitleLevel}>
+                      {faq.title}
+                    </Typography>
                   </DisclosureHeader>
                   <DisclosurePanel className="px-4 lg:px-6">
                     <Markdown content={faq.body} variant="small" />

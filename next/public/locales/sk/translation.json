@@ -185,7 +185,7 @@
   "Regulation.validity.valid": "Platné",
   "RelatedArticlesSection.relatedArticles": "Súvisiace články",
   "ScrollToTopButton.ariaLabel": "Vrátiť sa na začiatok stránky",
-  "SearchBar.search": "Hľadať",
+  "SearchBar.search": "Hľadať (výsledky sa automaticky zobrazia po zadaní hľadaného výrazu)",
   "SearchPage.allResults": "Všetky výsledky",
   "SearchPage.article": "Článok",
   "SearchPage.articles": "Články",
