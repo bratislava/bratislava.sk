@@ -89,7 +89,7 @@ const SelectField = <T extends object>({
         {props.isRequired ? <span className="text-content-error-default"> *</span> : undefined}
       </Label>
       <Button className={style}>
-        <SelectValue />
+        <SelectValue className={'text-left'} />
         <span aria-hidden>
           <Icon name="chevron-down" />
         </span>
