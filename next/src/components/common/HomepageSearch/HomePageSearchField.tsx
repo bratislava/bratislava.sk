@@ -41,7 +41,7 @@ const HomePageSearchField = ({
       <input
         id="homepage-search-field"
         type="text"
-        className="base-focus-ring h-12 w-full rounded-l-lg border border-r-0 px-4 text-font outline-hidden lg:h-14"
+        className="h-12 w-full rounded-l-lg border border-r-0 px-4 text-font base-focus-ring outline-hidden lg:h-14"
         onChange={(e) => {
           setValue(e.target.value)
         }}

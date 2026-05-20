@@ -77,7 +77,7 @@ const Styleguide = () => {
             <Tab
               key={id}
               id={id}
-              className="border-active-default cursor-pointer rounded-md border bg-background-passive-base px-3 py-2 hover:border-border-active-tertiary-inverted-hover hover:bg-background-active-primary-soft-hover selected:border-border-active-focused selected:bg-background-active-primary-soft-hover selected:font-semibold"
+              className="cursor-pointer rounded-md border border-border-active-default bg-background-passive-base px-3 py-2 hover:border-border-active-tertiary-inverted-hover hover:bg-background-active-primary-soft-hover selected:border-border-active-focused selected:bg-background-active-primary-soft-hover selected:font-semibold"
             >
               {label}
             </Tab>

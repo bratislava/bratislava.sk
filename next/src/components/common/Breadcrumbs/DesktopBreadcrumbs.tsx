@@ -11,7 +11,7 @@ const DesktopBreadcrumbs = ({ breadcrumbs }: BreadcrumbsProps) => {
 
   return (
     <ol className="flex flex-wrap items-center gap-x-1 gap-y-1.5 py-3 lg:py-6">
-      <li className="wrapper-focus-ring rounded-xs">
+      <li className="rounded-xs wrapper-focus-ring">
         <MLink
           href="/"
           variant="underlined"

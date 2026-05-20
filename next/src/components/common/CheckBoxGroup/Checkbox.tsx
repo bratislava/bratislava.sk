@@ -15,7 +15,7 @@ const Checkbox = ({ children, value, ...restProps }: RACCheckboxProps) => {
       value={value}
       className={({ isHovered, isDisabled }) => {
         return cn(
-          'base-focus-ring flex items-center gap-3 rounded-sm',
+          'flex items-center gap-3 rounded-sm base-focus-ring',
           {
             'text-content-active-primary-hover': isHovered,
             'text-content-active-primary-disabled': isDisabled,

@@ -40,7 +40,7 @@ export const SelectItem = ({ label, description, isDivider = false, ...rest }: S
     <ListBoxItem
       {...rest}
       className={({ isHovered, isFocusVisible }) =>
-        cn('base-focus-ring flex cursor-pointer justify-between px-5 py-3 ring-inset', {
+        cn('flex cursor-pointer justify-between px-5 py-3 base-focus-ring ring-inset', {
           'bg-background-passive-secondary': isHovered,
           'ring-3 ring-offset-2': isFocusVisible,
           'after:h-0.5 after:bg-background-passive-tertiary after:not-last:block': isDivider,
