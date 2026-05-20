@@ -150,8 +150,8 @@ const SelectField = <
           }),
         valueContainer: ({ isDisabled }) =>
           // If there's a long value in select, it stretches the parent element instead of wrapping the text.
-          // `[container-type:inline-size]` fixes this for some reason.
-          cn('[container-type:inline-size] gap-x-2 gap-y-1 px-3 py-2 lg:px-4 lg:py-3', {
+          // `@container` sets `container-type:inline-size` which fixes this for some reason.
+          cn('@container gap-x-2 gap-y-1 px-3 py-2 lg:px-4 lg:py-3', {
             // if rounded is not applied, the background overflows to the "control"
             'bg-background-select-disabled text-content-select-disabled rounded-l-lg': isDisabled,
           }),

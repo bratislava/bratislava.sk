@@ -21,7 +21,7 @@ const ComparisonCard = ({ title, items, color, icon }: ComparisonProps) => {
     >
       <div className="flex flex-col p-5 lg:p-8">
         <div
-          className={cn('flex h-14 w-14 shrink-0 items-center justify-center rounded-full', {
+          className={cn('flex size-14 shrink-0 items-center justify-center rounded-full', {
             'bg-background-passive-base text-content-success-default': color === 'green',
             'bg-background-passive-base text-content-error-default': color === 'red',
             'bg-background-passive-secondary text-content-active-primary-default':

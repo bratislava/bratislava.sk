@@ -55,7 +55,7 @@ const OfficialBoardSection = () => {
           isLoading={fetchingQueriesCount > 0}
         />
 
-        <div className="bg-background-passive-secondary rounded-md p-4">
+        <div className="rounded-md bg-background-passive-secondary p-4">
           <OfficialBoardAdditionalFilters
             categoryId={categoryId}
             setCategoryId={(categoryIdValue) =>

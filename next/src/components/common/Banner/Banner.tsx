@@ -42,7 +42,7 @@ const Banner = ({
     <div
       className={cn(
         // overflow-hidden ensures image not to overlap with rounded corners
-        'flex h-full w-full flex-col-reverse overflow-hidden rounded-lg lg:flex-row-reverse @page-wide:rounded-xl',
+        'flex size-full flex-col-reverse overflow-hidden rounded-lg lg:flex-row-reverse @page-wide:rounded-xl',
         {
           'bg-category-200 text-content-passive-primary': variant === 'color',
           'bg-background-passive-inverted-base text-content-passive-inverted-primary':
@@ -56,7 +56,7 @@ const Banner = ({
     >
       <div
         className={cn(
-          'flex h-full w-full flex-col gap-4 p-4 lg:w-1/2 lg:gap-6 @min-page-wide:p-12',
+          'flex size-full flex-col gap-4 p-4 lg:w-1/2 lg:gap-6 @min-page-wide:p-12',
         )}
       >
         <div className="flex flex-col items-start gap-3">

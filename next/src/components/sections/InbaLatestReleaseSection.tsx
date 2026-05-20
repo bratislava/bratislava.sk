@@ -70,7 +70,7 @@ const InbaLatestReleaseSection = () => {
           <CardImage
             imgSrc={latestInbaRelease.coverImage?.url}
             sizes={imageSizes}
-            className="aspect-inba w-full max-w-140 rounded-md border lg:w-[22rem] lg:rounded-lg"
+            className="aspect-inba w-full max-w-140 rounded-md border lg:w-88 lg:rounded-lg"
           />
           <div className="flex w-full flex-col gap-4 lg:gap-8">
             <SectionHeader title={t('InbaLatestReleaseSection.latestRelease')} />

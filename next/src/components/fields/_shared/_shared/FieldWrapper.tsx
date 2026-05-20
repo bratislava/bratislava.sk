@@ -68,7 +68,7 @@ const FieldWrapper = ({
             </Typography>
           ) : null}
           {showAsterisk ? (
-            <Typography as="span" className="text-content-error-default ml-0.5 font-semibold">
+            <Typography as="span" className="ml-0.5 font-semibold text-content-error-default">
               *
             </Typography>
           ) : null}

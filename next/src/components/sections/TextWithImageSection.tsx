@@ -68,7 +68,7 @@ const TextWithImageSection = ({ section }: TextWithImageSectionProps) => {
 
   return (
     <SectionContainer>
-      <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:gap-[8.5rem]">
+      <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:gap-34">
         {imagePosition === 'left' ? (
           <>
             {ImageContent}
