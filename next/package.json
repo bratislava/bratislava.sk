@@ -75,7 +75,7 @@
     "remark-unwrap-images": "4.0.0",
     "rss": "1.2.2",
     "tailwind-merge": "3.5.0",
-    "tailwind-scrollbar-hide": "1.1.7",
+    "tailwind-scrollbar-hide": "4.0.0",
     "tailwindcss-animate": "1.0.7",
     "tailwindcss-react-aria-components": "2.0.0",
     "use-query-params": "2.2.1",
@@ -83,7 +83,7 @@
     "yup": "0.32.11"
   },
   "devDependencies": {
-    "@bratislava/eslint-config-next": "0.7.0",
+    "@bratislava/eslint-config-next": "0.14.0",
     "@graphql-codegen/cli": "5.0.5",
     "@graphql-codegen/typescript": "4.1.5",
     "@graphql-codegen/typescript-graphql-request": "6.2.0",
