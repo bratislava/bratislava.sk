@@ -1,8 +1,6 @@
 {
-  "eslint.workingDirectories": [
-    "./next"
-  ],
-  "typescript.tsdk": "./next/node_modules/typescript/lib",
+  "eslint.workingDirectories": ["./next"],
+  "js/ts.tsdk.path": "./next/node_modules/typescript/lib",
   "files.exclude": {
     "**/.git": true,
     "**/.svn": true,

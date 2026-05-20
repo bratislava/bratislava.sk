@@ -14,6 +14,6 @@
       "sideBar.border": "#e8877e",
     },
     "peacock.color": "#E05F53",
-    "typescript.tsdk": "./next/node_modules/typescript/lib",
+    "js/ts.tsdk.path": "./next/node_modules/typescript/lib",
   },
 }
