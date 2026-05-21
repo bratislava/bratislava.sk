@@ -1,4 +1,4 @@
-import { Button, Typography } from '@bratislava/component-library'
+import { Typography } from '@bratislava/component-library'
 import { useIsFetching } from '@tanstack/react-query'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { Selection, TagGroup, TagList } from 'react-aria-components'
@@ -6,14 +6,13 @@ import { StringParam, useQueryParam, withDefault } from 'use-query-params'
 import { useDebounceValue } from 'usehooks-ts'
 
 import Chip from '@/src/components/common/Chip/Chip'
-import { useGeneralContext } from '@/src/components/providers/GeneralContextProvider'
 import SearchBar from '@/src/components/sections/SearchSection/SearchBar'
+import SearchPageLink from '@/src/components/sections/SearchSection/SearchPageLink'
 import SearchResults from '@/src/components/sections/SearchSection/SearchResults'
 import SearchResultsCount from '@/src/components/sections/SearchSection/SearchResultsCount'
 import { SearchFilters } from '@/src/components/sections/SearchSection/useQueryBySearchOption'
 import { officialBoardListDefaultFilters } from '@/src/services/ginis/fetchers/officialBoardListFetcher'
 import { getCategoryColorLocalStyle } from '@/src/utils/colors'
-import { getLinkProps } from '@/src/utils/getLinkProps'
 import { useLogSearchQueryToPlausible } from '@/src/utils/useLogSearchQueryToPlausible'
 import { useTranslation } from '@/src/utils/useTranslation'
 import { isProductionDeployment } from '@/src/utils/utils'
@@ -46,7 +45,6 @@ type Props =
 
 const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
   const { t } = useTranslation()
-  const { general } = useGeneralContext()
 
   const [routerQueryValue] = useQueryParam('keyword', withDefault(StringParam, ''))
   const [input, setInput] = useState('')
@@ -240,14 +238,7 @@ const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
         ) : (
           <SearchResultsCount count={getResultsCountById(selectedKey)} />
         )}
-        {
-          // TODO add links to more content type pages
-          selectedKey === 'officialBoard' && general?.officialBoardPage ? (
-            <Button variant="link" {...getLinkProps({ page: general.officialBoardPage })}>
-              <Typography variant="p-small">{general.officialBoardPage.title}</Typography>
-            </Button>
-          ) : null
-        }
+        <SearchPageLink searchOption={selectedKey} />
       </div>
 
       {selectedKey === 'allResults' ? (
