@@ -1,10 +1,11 @@
 import { Button, Typography } from '@bratislava/component-library'
 
 import { useGeneralContext } from '@/src/components/providers/GeneralContextProvider'
+import { SearchOption } from '@/src/components/sections/SearchSection/GlobalSearchSectionContent'
 import { getLinkProps } from '@/src/utils/getLinkProps'
 
 type Props = {
-  searchOption: string
+  searchOption: SearchOption['id']
 }
 
 const SearchPageLink = ({ searchOption }: Props) => {
