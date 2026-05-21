@@ -58,8 +58,8 @@ const GeneralPageContent = ({ page }: GeneralPageProps) => {
         <div
           className={cn(
             'w-full',
-            '[&_[data-section-container-outer]]:not-first:pt-10',
-            '[&_[data-section-container-outer]]:not-first:lg:pt-18',
+            '**:data-section-container-outer:not-first:pt-10',
+            '**:data-section-container-outer:not-first:lg:pt-18',
             {
               'lg:max-w-[50rem] [&_[data-section-container-inner]]:px-0 [&_[data-section-container-inner]]:lg:px-0':
                 !!sidebar,
@@ -71,7 +71,7 @@ const GeneralPageContent = ({ page }: GeneralPageProps) => {
           <Sections sections={filteredSections} />
           <RelatedArticlesSection page={page} />
         </div>
-        {sidebar ? <Sidebars sidebar={sidebar} className="max-w-[50rem] grow basis-72" /> : null}
+        {sidebar ? <Sidebars sidebar={sidebar} className="max-w-200 grow basis-72" /> : null}
       </div>
 
       {page.alias ? (

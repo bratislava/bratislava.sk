@@ -116,7 +116,7 @@ const Carousel = ({
                 excludeFromTabOrder
                 onPress={handleGoToPrevious}
                 className={cn(
-                  'absolute top-0 bottom-0 z-10 my-auto h-12 w-12 rounded-full',
+                  'absolute inset-y-0 z-10 my-auto size-12 rounded-full',
                   'left-0 -translate-x-1/2 transform',
                   { hidden: isLeftControlHidden },
                 )}
@@ -128,7 +128,7 @@ const Carousel = ({
                 excludeFromTabOrder
                 onPress={handleGoToNext}
                 className={cn(
-                  'absolute top-0 bottom-0 z-10 my-auto h-12 w-12 rounded-full',
+                  'absolute inset-y-0 z-10 my-auto size-12 rounded-full',
                   'right-0 translate-x-1/2 transform',
                   { hidden: isRightControlHidden },
                 )}

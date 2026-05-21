@@ -55,7 +55,7 @@ const LatestNews = ({ leftArticle, rightArticle, otherArticles, newsPageLink }: 
                   {index > 0 && <HorizontalDivider />}
                   <div
                     // margin and padding serve to display focus ring better
-                    className="wrapper-focus-ring relative -m-1 flex flex-col gap-2 rounded-sm p-1"
+                    className="relative -m-1 flex flex-col gap-2 rounded-sm p-1 wrapper-focus-ring"
                   >
                     <Typography variant="p-small">{formatDate(addedAt)}</Typography>
                     <MLink

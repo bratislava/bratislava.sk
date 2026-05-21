@@ -23,7 +23,7 @@ const NavMenuTrigger = forwardRef<HTMLButtonElement, NavMenuTriggerProps>(
           event.preventDefault()
         }}
         style={colorStyle}
-        className="base-focus-ring group size-full items-center rounded-xs hover:font-semibold data-[state=open]:font-semibold"
+        className="group size-full items-center rounded-xs base-focus-ring hover:font-semibold data-[state=open]:font-semibold"
       >
         <div className="-m-2 flex items-center gap-1 p-2">
           <div className="relative">

@@ -87,7 +87,7 @@ const ArticleSidebar = ({ article, className }: Props) => {
         {inbaRelease ? (
           <>
             <HorizontalDivider />
-            <div className="wrapper-focus-ring relative flex items-center gap-6 rounded-sm">
+            <div className="relative flex items-center gap-6 rounded-sm wrapper-focus-ring">
               <CardImage
                 imgSrc={inbaRelease.coverImage?.url}
                 sizes={generateImageSizes({ default: '50vw', lg: '10vw' })}

@@ -27,7 +27,7 @@ const NumbersOverview = ({ section }: NumbersOverviewProps) => {
               key={numbersOverviewItem.id}
               className="flex min-w-0 flex-col items-center gap-2 lg:items-start"
             >
-              <Typography className="text-[2.5rem] leading-[3rem] font-extralight break-all lg:text-[3.5rem] lg:leading-[4rem]">
+              <Typography className="text-size-h1 font-extralight break-all lg:text-size-h1-hero">
                 {numbersOverviewItem.number}
               </Typography>
               <Typography variant="p-small">{numbersOverviewItem.text}</Typography>

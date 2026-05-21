@@ -54,7 +54,7 @@ const PartnersSection = ({ section }: Props) => {
             return (
               <div
                 key={index}
-                className={cn('wrapper-focus-ring relative grow rounded-sm', {
+                className={cn('relative grow rounded-sm wrapper-focus-ring', {
                   'aspect-4/3': logoRatio === 'ratio_4_3',
                   'aspect-4/1': logoRatio === 'ratio_4_1',
                 })}

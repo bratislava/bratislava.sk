@@ -95,7 +95,7 @@ const PageHeader = ({
       </div>
 
       {imageSrc ? (
-        <div className="relative aspect-2/1 md:hidden">
+        <div className="relative aspect-tootoot md:hidden">
           <Image
             src={imageSrc}
             alt=""

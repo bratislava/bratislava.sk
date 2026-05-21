@@ -91,7 +91,7 @@ const TokensShowcase = () => {
             <div key={tokenClassName} className={cn('flex items-center gap-4')}>
               <div
                 className={cn(
-                  'flex h-6 w-6 items-center justify-center rounded-full font-bold',
+                  'flex size-6 items-center justify-center rounded-full font-bold',
                   { 'border-3': tokenClassName.startsWith('border') },
                   tokenClassName,
                 )}

@@ -4,10 +4,19 @@ export default [
   ...createNextConfig({
     ignores: ['graphql/**', 'src/services/graphql/**'],
   }),
-
+  // https://github.com/bratislava/eslint-config/blob/b17b3028c67e639cf5cef183817f9087d6281d7e/packages/next/README.md#tailwind-css
+  {
+    settings: {
+      'better-tailwindcss': {
+        entryPoint: './src/styles/globals.css',
+        callees: ['cx', 'classnames', 'clsx', 'cn', 'twMerge', 'tw'],
+      },
+    },
+  },
   // Project-specific rule overrides
   {
     rules: {
+      'better-tailwindcss/enforce-consistent-line-wrapping': 'off',
       'jsx-a11y/anchor-is-valid': 'off',
       'no-multi-spaces': 'error',
 

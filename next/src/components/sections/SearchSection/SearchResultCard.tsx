@@ -20,7 +20,7 @@ type SearchResultCardProps = {
 
 const SearchResultCard = ({ data }: SearchResultCardProps) => {
   return (
-    <div className="wrapper-focus-ring px-5 ring-inset lg:px-6">
+    <div className="px-5 wrapper-focus-ring ring-inset lg:px-6">
       <div
         className="group relative flex flex-row items-stretch gap-4 overflow-hidden py-4"
         data-cy="search-result-card"
@@ -55,7 +55,7 @@ SearchResultCard.IconContainer = function ({
   return (
     <div
       className={cn(
-        'hidden h-20 w-20 shrink-0 items-center justify-center self-center rounded-lg bg-background-passive-secondary lg:flex',
+        'hidden size-20 shrink-0 items-center justify-center self-center rounded-lg bg-background-passive-secondary lg:flex',
         className,
       )}
     >
@@ -94,7 +94,7 @@ SearchResultCard.ImageFromPageColor = function ({
     <div
       style={colorStyle}
       className={cn(
-        'relative hidden h-20 w-20 shrink-0 items-center justify-center self-center overflow-hidden rounded-lg bg-category-100 lg:flex',
+        'relative hidden size-20 shrink-0 items-center justify-center self-center overflow-hidden rounded-lg bg-category-100 lg:flex',
         className,
       )}
     >
@@ -113,7 +113,7 @@ SearchResultCard.ImageFromUrl = function ({
   return (
     <div
       className={cn(
-        'relative hidden h-20 w-20 shrink-0 items-center justify-center self-center overflow-hidden rounded-lg bg-category-200 lg:flex',
+        'relative hidden size-20 shrink-0 items-center justify-center self-center overflow-hidden rounded-lg bg-category-200 lg:flex',
         className,
       )}
     >

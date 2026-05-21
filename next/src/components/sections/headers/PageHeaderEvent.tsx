@@ -37,7 +37,7 @@ const PageHeaderEvent = ({ title, breadcrumbs, headerLinks, image, header }: Pro
   return (
     <PageHeader breadcrumbs={breadcrumbs}>
       <div className="flex w-full flex-col overflow-hidden rounded-2xl bg-background-passive-base lg:flex-row">
-        <div className="flex flex-col justify-between gap-6 p-4 lg:w-[26rem] lg:gap-40 lg:p-6">
+        <div className="flex flex-col justify-between gap-6 p-4 lg:w-104 lg:gap-40 lg:p-6">
           <div className="flex flex-col items-start gap-6 lg:gap-8">
             {date ? (
               <>

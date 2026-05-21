@@ -44,7 +44,7 @@ const ArticlesActiveFiltersTagList = ({
 
           return (
             <Tag
-              className="base-focus-ring relative flex w-fit items-center gap-2 rounded-lg border border-background-passive-secondary bg-background-passive-secondary px-3 py-2 text-content-active-primary-default hover:border-border-active-primary-hover hover:text-content-active-primary-hover"
+              className="relative flex w-fit items-center gap-2 rounded-lg border border-background-passive-secondary bg-background-passive-secondary px-3 py-2 text-content-active-primary-default base-focus-ring hover:border-border-active-primary-hover hover:text-content-active-primary-hover"
               id={slug}
             >
               <Typography variant="p-small" className="font-medium">

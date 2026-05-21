@@ -26,22 +26,22 @@
     "@strapi/provider-upload-aws-s3": "5.18.1",
     "@strapi/strapi": "5.18.1",
     "@strapi/typescript-utils": "5.18.1",
-    "patch-package": "^7.0.2",
-    "pg": "^8.18.0",
-    "postinstall-postinstall": "^2.1.0",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0",
-    "react-router-dom": "^6.0.0",
-    "strapi-plugin-config-sync": "^3.1.2",
+    "patch-package": "7.0.2",
+    "pg": "8.18.0",
+    "postinstall-postinstall": "2.1.0",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "react-router-dom": "6.29.0",
+    "strapi-plugin-config-sync": "3.2.0",
     "strapi-plugin-meilisearch": "0.13.2",
-    "styled-components": "^6.0.0"
+    "styled-components": "6.1.14"
   },
   "devDependencies": {
-    "@babel/core": "^7.26.0",
-    "@babel/eslint-parser": "^7.26.0",
-    "eslint": "^8.57.0",
-    "eslint-config-prettier": "^8.10.0",
-    "eslint-scope": "^7.1.1"
+    "@babel/core": "7.26.0",
+    "@babel/eslint-parser": "7.28.6",
+    "eslint": "8.57.0",
+    "eslint-config-prettier": "8.10.0",
+    "eslint-scope": "7.1.1"
   },
   "engines": {
     "node": ">=20.19.x",

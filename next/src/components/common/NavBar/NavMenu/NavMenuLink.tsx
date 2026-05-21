@@ -21,7 +21,7 @@ const NavMenuLink = ({ variant, subtext, ariaLabel, ...restLinkProps }: NavMenuL
   switch (variant) {
     case 'menuSectionLink':
       return (
-        <div className="wrapper-focus-ring flex w-full flex-col gap-2 focus-within:rounded-sm">
+        <div className="flex w-full flex-col gap-2 wrapper-focus-ring focus-within:rounded-sm">
           <div className="flex items-center">
             <NavigationMenu.Link
               asChild

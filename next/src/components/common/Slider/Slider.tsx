@@ -68,9 +68,9 @@ const Slider = ({ items, autoRotateInterval, className, ...rest }: SliderProps) 
   }
 
   return (
-    <div className={cn('-mx-4 overflow-x-hidden px-4', className)}>
+    <div className={cn('negative-x-spacing overflow-x-hidden', className)}>
       <div role="tabpanel" className="flex flex-col items-center justify-center gap-6" {...rest}>
-        <div className={cn('flex h-full w-full flex-col')}>
+        <div className={cn('flex size-full flex-col')}>
           <AnimatePresence initial={false} mode="wait">
             {isValidElement(items[activeItemIndex]) ? (
               <motion.div
