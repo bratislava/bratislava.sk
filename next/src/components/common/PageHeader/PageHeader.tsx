@@ -30,7 +30,7 @@ const PageHeader = ({
   imageSrc,
   tag,
   className,
-  hasWaves = true,
+  hasWaves,
   children,
 }: PropsWithChildren<PageHeaderProps>) => {
   return (
