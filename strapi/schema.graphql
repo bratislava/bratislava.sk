@@ -3664,6 +3664,7 @@ type Page {
   childPages_connection(filters: PageFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): PageRelationResponseCollection
   createdAt: DateTime
   documentId: ID!
+  hasWaves: Boolean
   headerLinks(filters: ComponentBlocksCommonLinkFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksCommonLink]
   keywords: String
   locale: String
@@ -3765,6 +3766,7 @@ input PageFiltersInput {
   childPages: PageFiltersInput
   createdAt: DateTimeFilterInput
   documentId: IDFilterInput
+  hasWaves: BooleanFilterInput
   headerLinks: ComponentBlocksCommonLinkFiltersInput
   keywords: StringFilterInput
   locale: StringFilterInput
@@ -3789,6 +3791,7 @@ input PageInput {
   adminGroups: [ID]
   alias: String
   childPages: [ID]
+  hasWaves: Boolean
   headerLinks: [ComponentBlocksCommonLinkInput]
   keywords: String
   metaDescription: String

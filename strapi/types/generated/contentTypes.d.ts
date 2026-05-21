@@ -1044,6 +1044,13 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
     childPages: Schema.Attribute.Relation<'oneToMany', 'api::page.page'>
     createdAt: Schema.Attribute.DateTime
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> & Schema.Attribute.Private
+    hasWaves: Schema.Attribute.Boolean &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true
+        }
+      }> &
+      Schema.Attribute.DefaultTo<true>
     headerLinks: Schema.Attribute.Component<'blocks.common-link', true> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {

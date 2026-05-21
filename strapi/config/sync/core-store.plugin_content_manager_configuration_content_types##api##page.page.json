@@ -166,7 +166,8 @@
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true
+          "editable": true,
+          "mainField": "label"
         },
         "list": {
           "label": "headerLinks",
@@ -194,7 +195,8 @@
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true
+          "editable": true,
+          "mainField": "documentId"
         },
         "list": {
           "label": "subnavigation",
@@ -288,6 +290,20 @@
           "label": "adminGroups",
           "searchable": false,
           "sortable": false
+        }
+      },
+      "hasWaves": {
+        "edit": {
+          "label": "hasWaves",
+          "description": "description",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "hasWaves",
+          "searchable": true,
+          "sortable": true
         }
       },
       "createdAt": {
@@ -471,10 +487,22 @@
           {
             "name": "slug",
             "size": 6
+          },
+          {
+            "name": "hasWaves",
+            "size": 4
           }
         ]
       ],
-      "list": ["path", "title", "parentPage", "updatedAt", "updatedBy", "adminGroups", "subtext"]
+      "list": [
+        "path",
+        "title",
+        "parentPage",
+        "updatedAt",
+        "updatedBy",
+        "adminGroups",
+        "subtext"
+      ]
     }
   },
   "type": "object",
