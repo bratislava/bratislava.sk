@@ -6,9 +6,8 @@ import { StringParam, useQueryParam, withDefault } from 'use-query-params'
 import { useDebounceValue } from 'usehooks-ts'
 
 import Chip from '@/src/components/common/Chip/Chip'
-import SearchPageLink from '@/src/components/common/Links/SearchPageLink'
-import { useGeneralContext } from '@/src/components/providers/GeneralContextProvider'
 import SearchBar from '@/src/components/sections/SearchSection/SearchBar'
+import SearchPageLink from '@/src/components/sections/SearchSection/SearchPageLink'
 import SearchResults from '@/src/components/sections/SearchSection/SearchResults'
 import SearchResultsCount from '@/src/components/sections/SearchSection/SearchResultsCount'
 import { SearchFilters } from '@/src/components/sections/SearchSection/useQueryBySearchOption'
@@ -46,7 +45,6 @@ type Props =
 
 const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
   const { t } = useTranslation()
-  const { general } = useGeneralContext()
 
   const [routerQueryValue] = useQueryParam('keyword', withDefault(StringParam, ''))
   const [input, setInput] = useState('')
@@ -240,7 +238,7 @@ const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
         ) : (
           <SearchResultsCount count={getResultsCountById(selectedKey)} />
         )}
-        <SearchPageLink searchPage={selectedKey} />
+        <SearchPageLink searchOption={selectedKey} />
       </div>
 
       {selectedKey === 'allResults' ? (

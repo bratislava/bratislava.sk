@@ -4,15 +4,15 @@ import { useGeneralContext } from '@/src/components/providers/GeneralContextProv
 import { getLinkProps } from '@/src/utils/getLinkProps'
 
 type Props = {
-  searchPage: string
+  searchOption: string
 }
 
-const SearchPageLink = ({ searchPage }: Props) => {
+const SearchPageLink = ({ searchOption }: Props) => {
   const { general } = useGeneralContext()
 
   let page
 
-  switch (searchPage) {
+  switch (searchOption) {
     case 'officialBoard':
       page = general?.officialBoardPage
       break
