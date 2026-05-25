@@ -15,6 +15,7 @@ export type ColorCategory =
   | 'culture'
   | 'grey'
   | 'starz-secondary'
+  | 'passive-secondary'
 
 type PageColor = Enum_Page_Pagecolor | Enum_Pagecategory_Color
 
@@ -26,6 +27,7 @@ const colorCategoryMap = {
   purple: 'education',
   brown: 'culture',
   starz: 'starz-secondary',
+  grey: 'passive-secondary',
 } satisfies Record<PageColor, ColorCategory>
 
 const iconCategoryMap = {

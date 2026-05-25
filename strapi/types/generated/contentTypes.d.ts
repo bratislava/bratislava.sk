@@ -1078,7 +1078,7 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
         }
       }>
     pageColor: Schema.Attribute.Enumeration<
-      ['red', 'blue', 'green', 'yellow', 'purple', 'brown', 'starz']
+      ['red', 'blue', 'green', 'yellow', 'purple', 'brown', 'starz', 'grey']
     > &
       Schema.Attribute.Required &
       Schema.Attribute.SetPluginOptions<{

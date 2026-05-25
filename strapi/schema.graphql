@@ -2746,6 +2746,7 @@ enum ENUM_PAGE_PAGECOLOR {
   blue
   brown
   green
+  grey
   purple
   red
   starz
