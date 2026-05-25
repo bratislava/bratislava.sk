@@ -292,8 +292,8 @@
       },
       "hasWaves": {
         "edit": {
-          "label": "hasWaves",
-          "description": "description",
+          "label": "Zobraziť vlny",
+          "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
