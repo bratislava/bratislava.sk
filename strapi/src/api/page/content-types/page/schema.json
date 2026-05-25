@@ -231,6 +231,15 @@
       "relation": "manyToMany",
       "target": "api::admin-group.admin-group",
       "inversedBy": "pages"
+    },
+    "hasWaves": {
+      "type": "boolean",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "default": true
     }
   }
 }

@@ -290,6 +290,20 @@
           "sortable": false
         }
       },
+      "hasWaves": {
+        "edit": {
+          "label": "Zobraziť vlny",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "hasWaves",
+          "searchable": true,
+          "sortable": true
+        }
+      },
       "createdAt": {
         "edit": {
           "label": "createdAt",
@@ -358,6 +372,7 @@
       }
     },
     "layouts": {
+      "list": ["path", "title", "parentPage", "updatedAt", "updatedBy", "adminGroups", "subtext"],
       "edit": [
         [
           {
@@ -471,10 +486,13 @@
           {
             "name": "slug",
             "size": 6
+          },
+          {
+            "name": "hasWaves",
+            "size": 4
           }
         ]
-      ],
-      "list": ["path", "title", "parentPage", "updatedAt", "updatedBy", "adminGroups", "subtext"]
+      ]
     }
   },
   "type": "object",

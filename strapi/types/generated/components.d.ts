@@ -487,6 +487,8 @@ export interface MenuMenuSection extends Struct.ComponentSchema {
         'dane_01',
         'projekty_01',
         'partnerstva_01',
+        'inovacie_01',
+        'data_01',
         'mhd_02',
         'cyklo_02',
         'mapy_02',
@@ -494,6 +496,7 @@ export interface MenuMenuSection extends Struct.ComponentSchema {
         'doprava_02',
         'parkovanie_02',
         'zdielana_mobilita_02',
+        'data_02',
         'zivotne_prostredie_03',
         'zelen_03',
         'vystavba_a_nehnutelnosti_03',
@@ -518,9 +521,6 @@ export interface MenuMenuSection extends Struct.ComponentSchema {
         'koncepcia_06',
         'komunity_06',
         'covid_06',
-        'data_01',
-        'data_02',
-        'inovacie_01',
       ]
     > &
       Schema.Attribute.Required &

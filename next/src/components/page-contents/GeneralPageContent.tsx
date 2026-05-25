@@ -46,6 +46,7 @@ const GeneralPageContent = ({ page }: GeneralPageProps) => {
         breadcrumbs={breadcrumbs}
         headerLinks={page.headerLinks?.filter(isDefined)}
         pageBackgroundImage={page.pageBackgroundImage}
+        hasWaves={isDefined(page.hasWaves) ? page.hasWaves : true}
       />
 
       {/* Sections & Sidebar */}
