@@ -16,7 +16,7 @@ export type PageHeaderProps = {
   tag?: string | null
   className?: string | null
   imageSrc?: string | null
-  hasWaves?: boolean
+  hasWaves?: boolean | null
 } & BreadcrumbsProps
 
 /**

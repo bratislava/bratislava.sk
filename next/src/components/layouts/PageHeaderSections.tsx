@@ -7,7 +7,7 @@ import { isDefined } from '@/src/utils/isDefined'
 
 type Props = Pick<
   PageEntityFragment,
-  'title' | 'subtext' | 'headerLinks' | 'pageBackgroundImage'
+  'title' | 'subtext' | 'headerLinks' | 'pageBackgroundImage' | 'hasWaves'
 > & {
   breadcrumbs: Breadcrumb[]
   header: PageHeaderSectionsFragment | null | undefined
@@ -18,6 +18,7 @@ const PageHeaderSections = ({
   subtext,
   headerLinks,
   pageBackgroundImage,
+  hasWaves,
   breadcrumbs,
   header,
 }: Props) => {
@@ -53,6 +54,7 @@ const PageHeaderSections = ({
           breadcrumbs={breadcrumbs}
           headerLinks={filteredHeaderLinks}
           imageSrc={pageBackgroundImage?.url}
+          hasWaves={hasWaves}
         />
       )
   }

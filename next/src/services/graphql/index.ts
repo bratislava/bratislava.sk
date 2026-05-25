@@ -3182,7 +3182,7 @@ export enum Enum_Componentmenumenusection_Icon {
   DetiAMladez_05 = 'deti_a_mladez_05',
   Doprava_02 = 'doprava_02',
   Dotacie_05 = 'dotacie_05',
-  Innovations_01 = 'inovacie_01',
+  Inovacie_01 = 'inovacie_01',
   Kalendar_06 = 'kalendar_06',
   Klima_03 = 'klima_03',
   Komunity_06 = 'komunity_06',
@@ -4710,6 +4710,7 @@ export type Page = {
   childPages_connection?: Maybe<PageRelationResponseCollection>
   createdAt?: Maybe<Scalars['DateTime']['output']>
   documentId: Scalars['ID']['output']
+  hasWaves?: Maybe<Scalars['Boolean']['output']>
   headerLinks?: Maybe<Array<Maybe<ComponentBlocksCommonLink>>>
   keywords?: Maybe<Scalars['String']['output']>
   locale?: Maybe<Scalars['String']['output']>
@@ -4885,6 +4886,7 @@ export type PageFiltersInput = {
   childPages?: InputMaybe<PageFiltersInput>
   createdAt?: InputMaybe<DateTimeFilterInput>
   documentId?: InputMaybe<IdFilterInput>
+  hasWaves?: InputMaybe<BooleanFilterInput>
   headerLinks?: InputMaybe<ComponentBlocksCommonLinkFiltersInput>
   keywords?: InputMaybe<StringFilterInput>
   locale?: InputMaybe<StringFilterInput>
@@ -4909,6 +4911,7 @@ export type PageInput = {
   adminGroups?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
   alias?: InputMaybe<Scalars['String']['input']>
   childPages?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
+  hasWaves?: InputMaybe<Scalars['Boolean']['input']>
   headerLinks?: InputMaybe<Array<InputMaybe<ComponentBlocksCommonLinkInput>>>
   keywords?: InputMaybe<Scalars['String']['input']>
   metaDescription?: InputMaybe<Scalars['String']['input']>
@@ -10143,6 +10146,7 @@ export type PageEntityFragment = {
   metaDescription?: string | null
   keywords?: string | null
   showTableOfContents?: boolean | null
+  hasWaves?: boolean | null
   documentId: string
   title: string
   locale?: string | null
@@ -11627,6 +11631,7 @@ export type PageByPathQuery = {
     metaDescription?: string | null
     keywords?: string | null
     showTableOfContents?: boolean | null
+    hasWaves?: boolean | null
     documentId: string
     title: string
     locale?: string | null
@@ -13149,6 +13154,7 @@ export type Dev_AllPagesQuery = {
     metaDescription?: string | null
     keywords?: string | null
     showTableOfContents?: boolean | null
+    hasWaves?: boolean | null
     documentId: string
     title: string
     locale?: string | null
@@ -19694,6 +19700,7 @@ export const PageEntityFragmentDoc = gql`
       ...TagEntity
     }
     ...PageParentPages
+    hasWaves
   }
   ${PageCardEntityFragmentDoc}
   ${AdminGroupEntityFragmentDoc}
