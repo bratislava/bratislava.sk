@@ -3407,6 +3407,7 @@ export enum Enum_Page_Pagecolor {
   Red = 'red',
   Starz = 'starz',
   Yellow = 'yellow',
+  Grey = 'grey',
 }
 
 export enum Enum_Regulation_Category {
