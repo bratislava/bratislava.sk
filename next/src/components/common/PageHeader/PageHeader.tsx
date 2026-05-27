@@ -4,7 +4,7 @@ import { PropsWithChildren } from 'react'
 
 import Breadcrumbs, { BreadcrumbsProps } from '@/src/components/common/Breadcrumbs/Breadcrumbs'
 import Waves from '@/src/components/common/Waves/Waves'
-import { CommonLinkFragment } from '@/src/services/graphql'
+import { CommonLinkFragment, Enum_Page_Pagecolor } from '@/src/services/graphql'
 import cn from '@/src/utils/cn'
 import { generateImageSizes } from '@/src/utils/generateImageSizes'
 import { getLinkProps } from '@/src/utils/getLinkProps'
@@ -17,6 +17,7 @@ export type PageHeaderProps = {
   className?: string | null
   imageSrc?: string | null
   hasWaves?: boolean | null
+  color?: Enum_Page_Pagecolor | null
 } & BreadcrumbsProps
 
 /**
@@ -32,9 +33,16 @@ const PageHeader = ({
   className,
   hasWaves = true,
   children,
+  color,
 }: PropsWithChildren<PageHeaderProps>) => {
   return (
-    <div className={cn('relative overflow-x-clip bg-category-200', className)}>
+    <div
+      className={cn(
+        'relative overflow-x-clip bg-category-200',
+        color === Enum_Page_Pagecolor.Grey && 'bg-category-100',
+        className,
+      )}
+    >
       {imageSrc && (
         <div className="absolute top-0 right-0 hidden h-full w-[350px] md:block lg:w-[500px] xl:w-[750px]">
           <Image

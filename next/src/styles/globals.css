@@ -104,16 +104,6 @@
   --color-starz-secondary-300: rgb(179, 210, 233); /*#B3D2E9*/
   --color-starz-secondary-200: rgb(204, 225, 240); /*#CCE1F0*/
   --color-starz-secondary-100: rgb(230, 240, 248); /*#E6F0F8*/
-
-  --color-passive-secondary-800: rgb(51, 51, 51); /*#333333*/
-  --color-passive-secondary-700: rgb(92, 92, 92); /*#5C5C5C*/
-  --color-passive-secondary-600: rgb(133, 133, 133); /*#858585*/
-  --color-passive-secondary-500: rgb(173, 173, 173); /*#ADADAD*/
-  --color-passive-secondary-400: rgb(194, 194, 194); /*#C2C2C2*/
-  --color-passive-secondary-300: rgb(214, 214, 214); /*#D6D6D6*/
-  --color-passive-secondary-200: rgb(235, 235, 235); /*#EBEBEB*/
-  --color-passive-secondary-100: rgb(245, 245, 245); /*#F5F5F5*/
-  --color-passive-secondary-0: rgb(255, 255, 255); /*#fff*/
 }
 
 @theme {

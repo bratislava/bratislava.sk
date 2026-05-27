@@ -47,6 +47,7 @@ const GeneralPageContent = ({ page }: GeneralPageProps) => {
         headerLinks={page.headerLinks?.filter(isDefined)}
         pageBackgroundImage={page.pageBackgroundImage}
         hasWaves={isDefined(page.hasWaves) ? page.hasWaves : true}
+        pageColor={page.pageColor}
       />
 
       {/* Sections & Sidebar */}

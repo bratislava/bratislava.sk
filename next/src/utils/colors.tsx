@@ -13,7 +13,7 @@ export type ColorCategory =
   | 'social'
   | 'education'
   | 'culture'
-  | 'passive-secondary'
+  | 'grey'
   | 'starz-secondary'
 
 type PageColor = Enum_Page_Pagecolor | Enum_Pagecategory_Color
@@ -25,7 +25,7 @@ const colorCategoryMap = {
   yellow: 'social',
   purple: 'education',
   brown: 'culture',
-  grey: 'passive-secondary',
+  grey: 'grey',
   starz: 'starz-secondary',
 } satisfies Record<PageColor, ColorCategory>
 
@@ -51,7 +51,6 @@ const generateCssVariables = (category: ColorCategory) => {
     category === 'social' || category === 'culture'
       ? 'var(--color-grey-700)'
       : 'var(--color-grey-0)'
-  console.log('category', category)
 
   return [
     ...[100, 200, 300, 400, 500, 600, 700, 800].map(
