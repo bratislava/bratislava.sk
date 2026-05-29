@@ -3387,6 +3387,7 @@ export enum Enum_Pagecategory_Color {
   Purple = 'purple',
   Red = 'red',
   Yellow = 'yellow',
+  Grey = 'grey',
 }
 
 export enum Enum_Pagecategory_Icon {
@@ -3406,6 +3407,7 @@ export enum Enum_Page_Pagecolor {
   Red = 'red',
   Starz = 'starz',
   Yellow = 'yellow',
+  Grey = 'grey',
 }
 
 export enum Enum_Regulation_Category {

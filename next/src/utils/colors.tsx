@@ -25,6 +25,7 @@ const colorCategoryMap = {
   yellow: 'social',
   purple: 'education',
   brown: 'culture',
+  grey: 'grey',
   starz: 'starz-secondary',
 } satisfies Record<PageColor, ColorCategory>
 

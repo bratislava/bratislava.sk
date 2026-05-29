@@ -23,6 +23,7 @@ export const getIconByPageColor = (pageColor: Enum_Pagecategory_Color) => {
     yellow: { default: PageYellowIcon, small: PageYellowIconSmall },
     purple: { default: PagePurpleIcon, small: PagePurpleIconSmall },
     brown: { default: PageBrownIcon, small: PageBrownIconSmall },
+    grey: { default: PageRedIcon, small: PageRedIconSmall }, // TODO: Add grey icon
   }
 
   return icons[pageColor] ?? icons.red

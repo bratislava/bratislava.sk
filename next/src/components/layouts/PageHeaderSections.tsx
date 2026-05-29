@@ -2,7 +2,11 @@ import { Breadcrumb } from '@/src/components/common/Breadcrumbs/Breadcrumbs'
 import PageHeader from '@/src/components/common/PageHeader/PageHeader'
 import PageHeaderEvent from '@/src/components/sections/headers/PageHeaderEvent'
 import PageHeaderFacility from '@/src/components/sections/headers/PageHeaderFacility'
-import { PageEntityFragment, PageHeaderSectionsFragment } from '@/src/services/graphql'
+import {
+  Enum_Page_Pagecolor,
+  PageEntityFragment,
+  PageHeaderSectionsFragment,
+} from '@/src/services/graphql'
 import { isDefined } from '@/src/utils/isDefined'
 
 type Props = Pick<
@@ -11,6 +15,7 @@ type Props = Pick<
 > & {
   breadcrumbs: Breadcrumb[]
   header: PageHeaderSectionsFragment | null | undefined
+  pageColor?: Enum_Page_Pagecolor | null | undefined
 }
 
 const PageHeaderSections = ({
@@ -21,6 +26,7 @@ const PageHeaderSections = ({
   hasWaves,
   breadcrumbs,
   header,
+  pageColor,
 }: Props) => {
   const filteredHeaderLinks = headerLinks?.filter(isDefined) ?? []
 
@@ -55,6 +61,7 @@ const PageHeaderSections = ({
           headerLinks={filteredHeaderLinks}
           imageSrc={pageBackgroundImage?.url}
           hasWaves={hasWaves}
+          color={pageColor}
         />
       )
   }
