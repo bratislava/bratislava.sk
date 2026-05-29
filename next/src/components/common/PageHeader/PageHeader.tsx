@@ -39,7 +39,7 @@ const PageHeader = ({
     <div
       className={cn(
         'relative overflow-x-clip bg-category-200',
-        color === Enum_Page_Pagecolor.Grey && 'bg-category-100',
+        { 'bg-background-passive-secondary': color === Enum_Page_Pagecolor.Grey },
         className,
       )}
     >
