@@ -45,7 +45,7 @@
     "dotenv": "17.2.1",
     "focus-trap-react": "11.0.3",
     "framer-motion": "12.38.0",
-    "graphql": "16.10.0",
+    "graphql": "16.14.0",
     "graphql-request": "6.1.0",
     "graphql-tag": "2.12.6",
     "i18next": "24.2.3",
