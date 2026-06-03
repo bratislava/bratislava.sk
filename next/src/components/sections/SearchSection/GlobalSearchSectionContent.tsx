@@ -24,7 +24,15 @@ import { isProductionDeployment } from '@/src/utils/utils'
  */
 
 export type SearchOption = {
-  id: 'allResults' | 'pages' | 'articles' | 'assets' | 'regulations' | 'users' | 'officialBoard'
+  id:
+    | 'allResults'
+    | 'pages'
+    | 'articles'
+    | 'assets'
+    | 'urbanStudies'
+    | 'regulations'
+    | 'users'
+    | 'officialBoard'
   displayName?: string
   displayNamePlural: string
 }
@@ -84,6 +92,16 @@ const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
             id: 'assets' as const,
             displayName: t('SearchPage.document'),
             displayNamePlural: t('SearchPage.documents'),
+          },
+        ]),
+    // Show Urban Studies in global search only if not in prod - WIP content type
+    ...(isProductionDeployment() && variant === 'general'
+      ? []
+      : [
+          {
+            id: 'urbanStudies' as const,
+            displayName: t('SearchPage.urbanStudy'),
+            displayNamePlural: t('SearchPage.urbanStudies'),
           },
         ]),
     {

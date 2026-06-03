@@ -24,6 +24,10 @@ import {
   RegulationFilters,
   regulationsFetcher,
 } from '@/src/services/meili/fetchers/regulationsFetcher'
+import {
+  getUrbanStudiesQueryKey,
+  urbanStudiesFetcher,
+} from '@/src/services/meili/fetchers/urbanStudiesFetcher'
 import { PageMeili } from '@/src/services/meili/types'
 import {
   getMsGraphSearchQueryKey,
@@ -118,6 +122,26 @@ export const useQueryBySearchOption = ({
             uniqueId: assets.slug,
             linkHref: getLinkProps({ asset: assets }).href,
             metadata: [assets.assetCategory?.title, formatDate(assets.updatedAt)],
+            customIconName: 'search_result_official_board',
+          }
+        }) ?? []
+
+      return { searchResultsData: formattedData, searchResultsCount: data?.estimatedTotalHits ?? 0 }
+    },
+  })
+
+  const urbanStudiesQuery = useQuery({
+    queryKey: getUrbanStudiesQueryKey(filters),
+    queryFn: () => urbanStudiesFetcher(filters),
+    placeholderData: keepPreviousData,
+    select: (data) => {
+      const formattedData: SearchResult[] =
+        data?.hits?.map((urbanStudy) => {
+          return {
+            title: urbanStudy.title,
+            uniqueId: urbanStudy.slug,
+            linkHref: `/uzemne-studie/${urbanStudy.slug}`,
+            metadata: [urbanStudy.year, formatDate(urbanStudy.updatedAt)].filter(isDefined),
             customIconName: 'search_result_official_board',
           }
         }) ?? []
@@ -228,6 +252,9 @@ export const useQueryBySearchOption = ({
 
     case 'assets':
       return assetsQuery
+
+    case 'urbanStudies':
+      return urbanStudiesQuery
 
     case 'users':
       return usersQuery

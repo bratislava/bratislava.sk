@@ -6,6 +6,7 @@ import {
   Page,
   PageEntityFragment,
   RegulationEntityFragment,
+  UrbanStudyEntityFragment,
 } from '../graphql'
 
 /**
@@ -30,6 +31,8 @@ export type PageMeili = PageEntityFragment & Page['publishedAt']
 export type ArticleMeili = ArticleEntityFragment
 
 export type AssetMeili = AssetEntityFragment
+
+export type UrbanStudyMeili = UrbanStudyEntityFragment
 
 export type InbaReleaseMeili = InbaReleaseEntityFragment
 
