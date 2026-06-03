@@ -3387,7 +3387,6 @@ export enum Enum_Pagecategory_Color {
   Purple = 'purple',
   Red = 'red',
   Yellow = 'yellow',
-  Grey = 'grey',
 }
 
 export enum Enum_Pagecategory_Icon {
@@ -3403,11 +3402,11 @@ export enum Enum_Page_Pagecolor {
   Blue = 'blue',
   Brown = 'brown',
   Green = 'green',
+  Grey = 'grey',
   Purple = 'purple',
   Red = 'red',
   Starz = 'starz',
   Yellow = 'yellow',
-  Grey = 'grey',
 }
 
 export enum Enum_Regulation_Category {
@@ -3882,6 +3881,7 @@ export type GenericMorph =
   | Tag
   | TaxAdministratorsList
   | UploadFile
+  | UrbanStudy
   | UsersPermissionsPermission
   | UsersPermissionsRole
   | UsersPermissionsUser
@@ -4289,6 +4289,7 @@ export type Mutation = {
   createReviewWorkflowsWorkflow?: Maybe<ReviewWorkflowsWorkflow>
   createReviewWorkflowsWorkflowStage?: Maybe<ReviewWorkflowsWorkflowStage>
   createTag?: Maybe<Tag>
+  createUrbanStudy?: Maybe<UrbanStudy>
   /** Create a new role */
   createUsersPermissionsRole?: Maybe<UsersPermissionsCreateRolePayload>
   /** Create a new user */
@@ -4314,6 +4315,7 @@ export type Mutation = {
   deleteTag?: Maybe<DeleteMutationResponse>
   deleteTaxAdministratorsList?: Maybe<DeleteMutationResponse>
   deleteUploadFile?: Maybe<UploadFile>
+  deleteUrbanStudy?: Maybe<DeleteMutationResponse>
   /** Delete an existing role */
   deleteUsersPermissionsRole?: Maybe<UsersPermissionsDeleteRolePayload>
   /** Delete an existing user */
@@ -4348,6 +4350,7 @@ export type Mutation = {
   updateTag?: Maybe<Tag>
   updateTaxAdministratorsList?: Maybe<TaxAdministratorsList>
   updateUploadFile: UploadFile
+  updateUrbanStudy?: Maybe<UrbanStudy>
   /** Update an existing role */
   updateUsersPermissionsRole?: Maybe<UsersPermissionsUpdateRolePayload>
   /** Update an existing user */
@@ -4434,6 +4437,11 @@ export type MutationCreateReviewWorkflowsWorkflowStageArgs = {
 export type MutationCreateTagArgs = {
   data: TagInput
   locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
+  status?: InputMaybe<PublicationStatus>
+}
+
+export type MutationCreateUrbanStudyArgs = {
+  data: UrbanStudyInput
   status?: InputMaybe<PublicationStatus>
 }
 
@@ -4530,6 +4538,10 @@ export type MutationDeleteTagArgs = {
 
 export type MutationDeleteUploadFileArgs = {
   id: Scalars['ID']['input']
+}
+
+export type MutationDeleteUrbanStudyArgs = {
+  documentId: Scalars['ID']['input']
 }
 
 export type MutationDeleteUsersPermissionsRoleArgs = {
@@ -4691,6 +4703,12 @@ export type MutationUpdateTaxAdministratorsListArgs = {
 export type MutationUpdateUploadFileArgs = {
   id: Scalars['ID']['input']
   info?: InputMaybe<FileInfoInput>
+}
+
+export type MutationUpdateUrbanStudyArgs = {
+  data: UrbanStudyInput
+  documentId: Scalars['ID']['input']
+  status?: InputMaybe<PublicationStatus>
 }
 
 export type MutationUpdateUsersPermissionsRoleArgs = {
@@ -5062,6 +5080,9 @@ export type Query = {
   uploadFile?: Maybe<UploadFile>
   uploadFiles: Array<Maybe<UploadFile>>
   uploadFiles_connection?: Maybe<UploadFileEntityResponseCollection>
+  urbanStudies: Array<Maybe<UrbanStudy>>
+  urbanStudies_connection?: Maybe<UrbanStudyEntityResponseCollection>
+  urbanStudy?: Maybe<UrbanStudy>
   usersPermissionsRole?: Maybe<UsersPermissionsRole>
   usersPermissionsRoles: Array<Maybe<UsersPermissionsRole>>
   usersPermissionsRoles_connection?: Maybe<UsersPermissionsRoleEntityResponseCollection>
@@ -5424,6 +5445,25 @@ export type QueryUploadFiles_ConnectionArgs = {
   status?: InputMaybe<PublicationStatus>
 }
 
+export type QueryUrbanStudiesArgs = {
+  filters?: InputMaybe<UrbanStudyFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+  status?: InputMaybe<PublicationStatus>
+}
+
+export type QueryUrbanStudies_ConnectionArgs = {
+  filters?: InputMaybe<UrbanStudyFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+  status?: InputMaybe<PublicationStatus>
+}
+
+export type QueryUrbanStudyArgs = {
+  documentId: Scalars['ID']['input']
+  status?: InputMaybe<PublicationStatus>
+}
+
 export type QueryUsersPermissionsRoleArgs = {
   documentId: Scalars['ID']['input']
   status?: InputMaybe<PublicationStatus>
@@ -5485,6 +5525,8 @@ export type Regulation = {
   slug: Scalars['String']['output']
   titleText?: Maybe<Scalars['String']['output']>
   updatedAt?: Maybe<Scalars['DateTime']['output']>
+  urbanStudies: Array<Maybe<UrbanStudy>>
+  urbanStudies_connection?: Maybe<UrbanStudyRelationResponseCollection>
 }
 
 export type RegulationAmendingArgs = {
@@ -5535,6 +5577,18 @@ export type RegulationCancelling_ConnectionArgs = {
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
 }
 
+export type RegulationUrbanStudiesArgs = {
+  filters?: InputMaybe<UrbanStudyFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type RegulationUrbanStudies_ConnectionArgs = {
+  filters?: InputMaybe<UrbanStudyFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
 export type RegulationEntity = {
   __typename?: 'RegulationEntity'
   attributes?: Maybe<Regulation>
@@ -5571,6 +5625,7 @@ export type RegulationFiltersInput = {
   slug?: InputMaybe<StringFilterInput>
   titleText?: InputMaybe<StringFilterInput>
   updatedAt?: InputMaybe<DateTimeFilterInput>
+  urbanStudies?: InputMaybe<UrbanStudyFiltersInput>
 }
 
 export type RegulationInput = {
@@ -5588,6 +5643,7 @@ export type RegulationInput = {
   regNumber?: InputMaybe<Scalars['String']['input']>
   slug?: InputMaybe<Scalars['String']['input']>
   titleText?: InputMaybe<Scalars['String']['input']>
+  urbanStudies?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
 }
 
 export type RegulationRelationResponseCollection = {
@@ -5995,6 +6051,171 @@ export type UploadFileInput = {
 export type UploadFileRelationResponseCollection = {
   __typename?: 'UploadFileRelationResponseCollection'
   nodes: Array<UploadFile>
+}
+
+export type UrbanStudy = {
+  __typename?: 'UrbanStudy'
+  approvalText?: Maybe<Scalars['String']['output']>
+  attachmentFiles: Array<Maybe<UploadFile>>
+  attachmentFiles_connection?: Maybe<UploadFileRelationResponseCollection>
+  body?: Maybe<Scalars['String']['output']>
+  briefFiles: Array<Maybe<UploadFile>>
+  briefFiles_connection?: Maybe<UploadFileRelationResponseCollection>
+  commentsEvaluationFiles: Array<Maybe<UploadFile>>
+  commentsEvaluationFiles_connection?: Maybe<UploadFileRelationResponseCollection>
+  createdAt?: Maybe<Scalars['DateTime']['output']>
+  customPublishedAt?: Maybe<Scalars['DateTime']['output']>
+  documentId: Scalars['ID']['output']
+  graphicPartFiles: Array<Maybe<UploadFile>>
+  graphicPartFiles_connection?: Maybe<UploadFileRelationResponseCollection>
+  links?: Maybe<Array<Maybe<ComponentBlocksCommonLink>>>
+  preparedBy?: Maybe<Scalars['String']['output']>
+  publishedAt?: Maybe<Scalars['DateTime']['output']>
+  regulations: Array<Maybe<Regulation>>
+  regulations_connection?: Maybe<RegulationRelationResponseCollection>
+  slug: Scalars['String']['output']
+  title: Scalars['String']['output']
+  updatedAt?: Maybe<Scalars['DateTime']['output']>
+  writtenPartFiles: Array<Maybe<UploadFile>>
+  writtenPartFiles_connection?: Maybe<UploadFileRelationResponseCollection>
+  year?: Maybe<Scalars['String']['output']>
+}
+
+export type UrbanStudyAttachmentFilesArgs = {
+  filters?: InputMaybe<UploadFileFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type UrbanStudyAttachmentFiles_ConnectionArgs = {
+  filters?: InputMaybe<UploadFileFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type UrbanStudyBriefFilesArgs = {
+  filters?: InputMaybe<UploadFileFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type UrbanStudyBriefFiles_ConnectionArgs = {
+  filters?: InputMaybe<UploadFileFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type UrbanStudyCommentsEvaluationFilesArgs = {
+  filters?: InputMaybe<UploadFileFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type UrbanStudyCommentsEvaluationFiles_ConnectionArgs = {
+  filters?: InputMaybe<UploadFileFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type UrbanStudyGraphicPartFilesArgs = {
+  filters?: InputMaybe<UploadFileFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type UrbanStudyGraphicPartFiles_ConnectionArgs = {
+  filters?: InputMaybe<UploadFileFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type UrbanStudyLinksArgs = {
+  filters?: InputMaybe<ComponentBlocksCommonLinkFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type UrbanStudyRegulationsArgs = {
+  filters?: InputMaybe<RegulationFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type UrbanStudyRegulations_ConnectionArgs = {
+  filters?: InputMaybe<RegulationFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type UrbanStudyWrittenPartFilesArgs = {
+  filters?: InputMaybe<UploadFileFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type UrbanStudyWrittenPartFiles_ConnectionArgs = {
+  filters?: InputMaybe<UploadFileFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type UrbanStudyEntity = {
+  __typename?: 'UrbanStudyEntity'
+  attributes?: Maybe<UrbanStudy>
+  id?: Maybe<Scalars['ID']['output']>
+}
+
+export type UrbanStudyEntityResponse = {
+  __typename?: 'UrbanStudyEntityResponse'
+  data?: Maybe<UrbanStudy>
+}
+
+export type UrbanStudyEntityResponseCollection = {
+  __typename?: 'UrbanStudyEntityResponseCollection'
+  nodes: Array<UrbanStudy>
+  pageInfo: Pagination
+}
+
+export type UrbanStudyFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<UrbanStudyFiltersInput>>>
+  approvalText?: InputMaybe<StringFilterInput>
+  body?: InputMaybe<StringFilterInput>
+  createdAt?: InputMaybe<DateTimeFilterInput>
+  customPublishedAt?: InputMaybe<DateTimeFilterInput>
+  documentId?: InputMaybe<IdFilterInput>
+  links?: InputMaybe<ComponentBlocksCommonLinkFiltersInput>
+  not?: InputMaybe<UrbanStudyFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<UrbanStudyFiltersInput>>>
+  preparedBy?: InputMaybe<StringFilterInput>
+  publishedAt?: InputMaybe<DateTimeFilterInput>
+  regulations?: InputMaybe<RegulationFiltersInput>
+  slug?: InputMaybe<StringFilterInput>
+  title?: InputMaybe<StringFilterInput>
+  updatedAt?: InputMaybe<DateTimeFilterInput>
+  year?: InputMaybe<StringFilterInput>
+}
+
+export type UrbanStudyInput = {
+  approvalText?: InputMaybe<Scalars['String']['input']>
+  attachmentFiles?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
+  body?: InputMaybe<Scalars['String']['input']>
+  briefFiles?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
+  commentsEvaluationFiles?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
+  customPublishedAt?: InputMaybe<Scalars['DateTime']['input']>
+  graphicPartFiles?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
+  links?: InputMaybe<Array<InputMaybe<ComponentBlocksCommonLinkInput>>>
+  preparedBy?: InputMaybe<Scalars['String']['input']>
+  publishedAt?: InputMaybe<Scalars['DateTime']['input']>
+  regulations?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
+  slug?: InputMaybe<Scalars['String']['input']>
+  title?: InputMaybe<Scalars['String']['input']>
+  writtenPartFiles?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
+  year?: InputMaybe<Scalars['String']['input']>
+}
+
+export type UrbanStudyRelationResponseCollection = {
+  __typename?: 'UrbanStudyRelationResponseCollection'
+  nodes: Array<UrbanStudy>
 }
 
 export type UsersPermissionsCreateRolePayload = {
@@ -18169,6 +18390,210 @@ export type TagsQuery = {
   } | null>
 }
 
+export type UrbanStudySlugEntityFragment = {
+  __typename: 'UrbanStudy'
+  documentId: string
+  slug: string
+  title: string
+}
+
+export type UrbanStudyEntityFragment = {
+  __typename: 'UrbanStudy'
+  publishedAt?: any | null
+  updatedAt?: any | null
+  year?: string | null
+  body?: string | null
+  preparedBy?: string | null
+  documentId: string
+  slug: string
+  title: string
+  briefFiles: Array<{
+    __typename?: 'UploadFile'
+    documentId: string
+    url: string
+    name: string
+    ext?: string | null
+    size: number
+    createdAt?: any | null
+    updatedAt?: any | null
+  } | null>
+  commentsEvaluationFiles: Array<{
+    __typename?: 'UploadFile'
+    documentId: string
+    url: string
+    name: string
+    ext?: string | null
+    size: number
+    createdAt?: any | null
+    updatedAt?: any | null
+  } | null>
+  writtenPartFiles: Array<{
+    __typename?: 'UploadFile'
+    documentId: string
+    url: string
+    name: string
+    ext?: string | null
+    size: number
+    createdAt?: any | null
+    updatedAt?: any | null
+  } | null>
+  graphicPartFiles: Array<{
+    __typename?: 'UploadFile'
+    documentId: string
+    url: string
+    name: string
+    ext?: string | null
+    size: number
+    createdAt?: any | null
+    updatedAt?: any | null
+  } | null>
+  attachmentFiles: Array<{
+    __typename?: 'UploadFile'
+    documentId: string
+    url: string
+    name: string
+    ext?: string | null
+    size: number
+    createdAt?: any | null
+    updatedAt?: any | null
+  } | null>
+  links?: Array<{
+    __typename?: 'ComponentBlocksCommonLink'
+    label?: string | null
+    url?: string | null
+    analyticsId?: string | null
+    page?: {
+      __typename?: 'Page'
+      documentId: string
+      title: string
+      locale?: string | null
+      path?: string | null
+    } | null
+    article?: {
+      __typename: 'Article'
+      documentId: string
+      slug: string
+      title: string
+      locale?: string | null
+    } | null
+    inbaRelease?: {
+      __typename?: 'InbaRelease'
+      documentId: string
+      title: string
+      slug: string
+    } | null
+    regulation?: {
+      __typename?: 'Regulation'
+      documentId: string
+      slug: string
+      titleText?: string | null
+    } | null
+    asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
+  } | null> | null
+}
+
+export type UrbanStudyBySlugQueryVariables = Exact<{
+  slug: Scalars['String']['input']
+}>
+
+export type UrbanStudyBySlugQuery = {
+  __typename?: 'Query'
+  urbanStudies: Array<{
+    __typename: 'UrbanStudy'
+    publishedAt?: any | null
+    updatedAt?: any | null
+    year?: string | null
+    body?: string | null
+    preparedBy?: string | null
+    documentId: string
+    slug: string
+    title: string
+    briefFiles: Array<{
+      __typename?: 'UploadFile'
+      documentId: string
+      url: string
+      name: string
+      ext?: string | null
+      size: number
+      createdAt?: any | null
+      updatedAt?: any | null
+    } | null>
+    commentsEvaluationFiles: Array<{
+      __typename?: 'UploadFile'
+      documentId: string
+      url: string
+      name: string
+      ext?: string | null
+      size: number
+      createdAt?: any | null
+      updatedAt?: any | null
+    } | null>
+    writtenPartFiles: Array<{
+      __typename?: 'UploadFile'
+      documentId: string
+      url: string
+      name: string
+      ext?: string | null
+      size: number
+      createdAt?: any | null
+      updatedAt?: any | null
+    } | null>
+    graphicPartFiles: Array<{
+      __typename?: 'UploadFile'
+      documentId: string
+      url: string
+      name: string
+      ext?: string | null
+      size: number
+      createdAt?: any | null
+      updatedAt?: any | null
+    } | null>
+    attachmentFiles: Array<{
+      __typename?: 'UploadFile'
+      documentId: string
+      url: string
+      name: string
+      ext?: string | null
+      size: number
+      createdAt?: any | null
+      updatedAt?: any | null
+    } | null>
+    links?: Array<{
+      __typename?: 'ComponentBlocksCommonLink'
+      label?: string | null
+      url?: string | null
+      analyticsId?: string | null
+      page?: {
+        __typename?: 'Page'
+        documentId: string
+        title: string
+        locale?: string | null
+        path?: string | null
+      } | null
+      article?: {
+        __typename: 'Article'
+        documentId: string
+        slug: string
+        title: string
+        locale?: string | null
+      } | null
+      inbaRelease?: {
+        __typename?: 'InbaRelease'
+        documentId: string
+        title: string
+        slug: string
+      } | null
+      regulation?: {
+        __typename?: 'Regulation'
+        documentId: string
+        slug: string
+        titleText?: string | null
+      } | null
+      asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
+    } | null> | null
+  } | null>
+}
+
 export const ArticleSlugEntityFragmentDoc = gql`
   fragment ArticleSlugEntity on Article {
     __typename
@@ -19714,6 +20139,45 @@ export const PageEntityFragmentDoc = gql`
   ${TagEntityFragmentDoc}
   ${PageParentPagesFragmentDoc}
 `
+export const UrbanStudySlugEntityFragmentDoc = gql`
+  fragment UrbanStudySlugEntity on UrbanStudy {
+    __typename
+    documentId
+    slug
+    title
+  }
+`
+export const UrbanStudyEntityFragmentDoc = gql`
+  fragment UrbanStudyEntity on UrbanStudy {
+    ...UrbanStudySlugEntity
+    publishedAt
+    updatedAt
+    year
+    body
+    preparedBy
+    briefFiles {
+      ...UploadFileEntity
+    }
+    commentsEvaluationFiles {
+      ...UploadFileEntity
+    }
+    writtenPartFiles {
+      ...UploadFileEntity
+    }
+    graphicPartFiles {
+      ...UploadFileEntity
+    }
+    attachmentFiles {
+      ...UploadFileEntity
+    }
+    links {
+      ...CommonLink
+    }
+  }
+  ${UrbanStudySlugEntityFragmentDoc}
+  ${UploadFileEntityFragmentDoc}
+  ${CommonLinkFragmentDoc}
+`
 export const AdminGroupsDocument = gql`
   query AdminGroups($limit: Int = -1, $sort: [String] = ["title"]) {
     adminGroups(pagination: { limit: $limit }, sort: $sort) {
@@ -20190,6 +20654,14 @@ export const TagsDocument = gql`
   }
   ${TagEntityFragmentDoc}
 `
+export const UrbanStudyBySlugDocument = gql`
+  query UrbanStudyBySlug($slug: String!) {
+    urbanStudies(filters: { slug: { eq: $slug } }) {
+      ...UrbanStudyEntity
+    }
+  }
+  ${UrbanStudyEntityFragmentDoc}
+`
 
 export type SdkFunctionWrapper = <T>(
   action: (requestHeaders?: Record<string, string>) => Promise<T>,
@@ -20206,15 +20678,12 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     AdminGroups(
       variables?: AdminGroupsQueryVariables,
       requestHeaders?: GraphQLClientRequestHeaders,
-      signal?: RequestInit['signal'],
     ): Promise<AdminGroupsQuery> {
       return withWrapper(
         (wrappedRequestHeaders) =>
-          client.request<AdminGroupsQuery>({
-            document: AdminGroupsDocument,
-            variables,
-            requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders },
-            signal,
+          client.request<AdminGroupsQuery>(AdminGroupsDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
           }),
         'AdminGroups',
         'query',
@@ -20224,15 +20693,12 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     ArticleBySlug(
       variables: ArticleBySlugQueryVariables,
       requestHeaders?: GraphQLClientRequestHeaders,
-      signal?: RequestInit['signal'],
     ): Promise<ArticleBySlugQuery> {
       return withWrapper(
         (wrappedRequestHeaders) =>
-          client.request<ArticleBySlugQuery>({
-            document: ArticleBySlugDocument,
-            variables,
-            requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders },
-            signal,
+          client.request<ArticleBySlugQuery>(ArticleBySlugDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
           }),
         'ArticleBySlug',
         'query',
@@ -20242,15 +20708,12 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     ArticlesStaticPaths(
       variables: ArticlesStaticPathsQueryVariables,
       requestHeaders?: GraphQLClientRequestHeaders,
-      signal?: RequestInit['signal'],
     ): Promise<ArticlesStaticPathsQuery> {
       return withWrapper(
         (wrappedRequestHeaders) =>
-          client.request<ArticlesStaticPathsQuery>({
-            document: ArticlesStaticPathsDocument,
-            variables,
-            requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders },
-            signal,
+          client.request<ArticlesStaticPathsQuery>(ArticlesStaticPathsDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
           }),
         'ArticlesStaticPaths',
         'query',
@@ -20260,15 +20723,12 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     ArticleCategories(
       variables?: ArticleCategoriesQueryVariables,
       requestHeaders?: GraphQLClientRequestHeaders,
-      signal?: RequestInit['signal'],
     ): Promise<ArticleCategoriesQuery> {
       return withWrapper(
         (wrappedRequestHeaders) =>
-          client.request<ArticleCategoriesQuery>({
-            document: ArticleCategoriesDocument,
-            variables,
-            requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders },
-            signal,
+          client.request<ArticleCategoriesQuery>(ArticleCategoriesDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
           }),
         'ArticleCategories',
         'query',
@@ -20278,15 +20738,12 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     Articles(
       variables?: ArticlesQueryVariables,
       requestHeaders?: GraphQLClientRequestHeaders,
-      signal?: RequestInit['signal'],
     ): Promise<ArticlesQuery> {
       return withWrapper(
         (wrappedRequestHeaders) =>
-          client.request<ArticlesQuery>({
-            document: ArticlesDocument,
-            variables,
-            requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders },
-            signal,
+          client.request<ArticlesQuery>(ArticlesDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
           }),
         'Articles',
         'query',
@@ -20296,15 +20753,12 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     ArticlesRssFeed(
       variables: ArticlesRssFeedQueryVariables,
       requestHeaders?: GraphQLClientRequestHeaders,
-      signal?: RequestInit['signal'],
     ): Promise<ArticlesRssFeedQuery> {
       return withWrapper(
         (wrappedRequestHeaders) =>
-          client.request<ArticlesRssFeedQuery>({
-            document: ArticlesRssFeedDocument,
-            variables,
-            requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders },
-            signal,
+          client.request<ArticlesRssFeedQuery>(ArticlesRssFeedDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
           }),
         'ArticlesRssFeed',
         'query',
@@ -20314,15 +20768,12 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     Dev_AllArticles(
       variables?: Dev_AllArticlesQueryVariables,
       requestHeaders?: GraphQLClientRequestHeaders,
-      signal?: RequestInit['signal'],
     ): Promise<Dev_AllArticlesQuery> {
       return withWrapper(
         (wrappedRequestHeaders) =>
-          client.request<Dev_AllArticlesQuery>({
-            document: Dev_AllArticlesDocument,
-            variables,
-            requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders },
-            signal,
+          client.request<Dev_AllArticlesQuery>(Dev_AllArticlesDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
           }),
         'Dev_AllArticles',
         'query',
@@ -20332,15 +20783,12 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     AssetBySlug(
       variables: AssetBySlugQueryVariables,
       requestHeaders?: GraphQLClientRequestHeaders,
-      signal?: RequestInit['signal'],
     ): Promise<AssetBySlugQuery> {
       return withWrapper(
         (wrappedRequestHeaders) =>
-          client.request<AssetBySlugQuery>({
-            document: AssetBySlugDocument,
-            variables,
-            requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders },
-            signal,
+          client.request<AssetBySlugQuery>(AssetBySlugDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
           }),
         'AssetBySlug',
         'query',
@@ -20350,15 +20798,12 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     AssetCategories(
       variables?: AssetCategoriesQueryVariables,
       requestHeaders?: GraphQLClientRequestHeaders,
-      signal?: RequestInit['signal'],
     ): Promise<AssetCategoriesQuery> {
       return withWrapper(
         (wrappedRequestHeaders) =>
-          client.request<AssetCategoriesQuery>({
-            document: AssetCategoriesDocument,
-            variables,
-            requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders },
-            signal,
+          client.request<AssetCategoriesQuery>(AssetCategoriesDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
           }),
         'AssetCategories',
         'query',
@@ -20368,15 +20813,12 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     FaqCategories(
       variables?: FaqCategoriesQueryVariables,
       requestHeaders?: GraphQLClientRequestHeaders,
-      signal?: RequestInit['signal'],
     ): Promise<FaqCategoriesQuery> {
       return withWrapper(
         (wrappedRequestHeaders) =>
-          client.request<FaqCategoriesQuery>({
-            document: FaqCategoriesDocument,
-            variables,
-            requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders },
-            signal,
+          client.request<FaqCategoriesQuery>(FaqCategoriesDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
           }),
         'FaqCategories',
         'query',
@@ -20386,15 +20828,12 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     allFiles(
       variables?: AllFilesQueryVariables,
       requestHeaders?: GraphQLClientRequestHeaders,
-      signal?: RequestInit['signal'],
     ): Promise<AllFilesQuery> {
       return withWrapper(
         (wrappedRequestHeaders) =>
-          client.request<AllFilesQuery>({
-            document: AllFilesDocument,
-            variables,
-            requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders },
-            signal,
+          client.request<AllFilesQuery>(AllFilesDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
           }),
         'allFiles',
         'query',
@@ -20404,15 +20843,12 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     General(
       variables: GeneralQueryVariables,
       requestHeaders?: GraphQLClientRequestHeaders,
-      signal?: RequestInit['signal'],
     ): Promise<GeneralQuery> {
       return withWrapper(
         (wrappedRequestHeaders) =>
-          client.request<GeneralQuery>({
-            document: GeneralDocument,
-            variables,
-            requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders },
-            signal,
+          client.request<GeneralQuery>(GeneralDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
           }),
         'General',
         'query',
@@ -20422,15 +20858,12 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     Alert(
       variables: AlertQueryVariables,
       requestHeaders?: GraphQLClientRequestHeaders,
-      signal?: RequestInit['signal'],
     ): Promise<AlertQuery> {
       return withWrapper(
         (wrappedRequestHeaders) =>
-          client.request<AlertQuery>({
-            document: AlertDocument,
-            variables,
-            requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders },
-            signal,
+          client.request<AlertQuery>(AlertDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
           }),
         'Alert',
         'query',
@@ -20440,15 +20873,12 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     Homepage(
       variables: HomepageQueryVariables,
       requestHeaders?: GraphQLClientRequestHeaders,
-      signal?: RequestInit['signal'],
     ): Promise<HomepageQuery> {
       return withWrapper(
         (wrappedRequestHeaders) =>
-          client.request<HomepageQuery>({
-            document: HomepageDocument,
-            variables,
-            requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders },
-            signal,
+          client.request<HomepageQuery>(HomepageDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
           }),
         'Homepage',
         'query',
@@ -20458,15 +20888,12 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     InbaReleaseBySlug(
       variables: InbaReleaseBySlugQueryVariables,
       requestHeaders?: GraphQLClientRequestHeaders,
-      signal?: RequestInit['signal'],
     ): Promise<InbaReleaseBySlugQuery> {
       return withWrapper(
         (wrappedRequestHeaders) =>
-          client.request<InbaReleaseBySlugQuery>({
-            document: InbaReleaseBySlugDocument,
-            variables,
-            requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders },
-            signal,
+          client.request<InbaReleaseBySlugQuery>(InbaReleaseBySlugDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
           }),
         'InbaReleaseBySlug',
         'query',
@@ -20476,15 +20903,12 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     InbaReleasesStaticPaths(
       variables?: InbaReleasesStaticPathsQueryVariables,
       requestHeaders?: GraphQLClientRequestHeaders,
-      signal?: RequestInit['signal'],
     ): Promise<InbaReleasesStaticPathsQuery> {
       return withWrapper(
         (wrappedRequestHeaders) =>
-          client.request<InbaReleasesStaticPathsQuery>({
-            document: InbaReleasesStaticPathsDocument,
-            variables,
-            requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders },
-            signal,
+          client.request<InbaReleasesStaticPathsQuery>(InbaReleasesStaticPathsDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
           }),
         'InbaReleasesStaticPaths',
         'query',
@@ -20494,15 +20918,12 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     InbaReleasesRssFeed(
       variables?: InbaReleasesRssFeedQueryVariables,
       requestHeaders?: GraphQLClientRequestHeaders,
-      signal?: RequestInit['signal'],
     ): Promise<InbaReleasesRssFeedQuery> {
       return withWrapper(
         (wrappedRequestHeaders) =>
-          client.request<InbaReleasesRssFeedQuery>({
-            document: InbaReleasesRssFeedDocument,
-            variables,
-            requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders },
-            signal,
+          client.request<InbaReleasesRssFeedQuery>(InbaReleasesRssFeedDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
           }),
         'InbaReleasesRssFeed',
         'query',
@@ -20512,16 +20933,14 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     HomepageLatestInbaRelease(
       variables?: HomepageLatestInbaReleaseQueryVariables,
       requestHeaders?: GraphQLClientRequestHeaders,
-      signal?: RequestInit['signal'],
     ): Promise<HomepageLatestInbaReleaseQuery> {
       return withWrapper(
         (wrappedRequestHeaders) =>
-          client.request<HomepageLatestInbaReleaseQuery>({
-            document: HomepageLatestInbaReleaseDocument,
+          client.request<HomepageLatestInbaReleaseQuery>(
+            HomepageLatestInbaReleaseDocument,
             variables,
-            requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders },
-            signal,
-          }),
+            { ...requestHeaders, ...wrappedRequestHeaders },
+          ),
         'HomepageLatestInbaRelease',
         'query',
         variables,
@@ -20530,15 +20949,12 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     LatestInbaRelease(
       variables?: LatestInbaReleaseQueryVariables,
       requestHeaders?: GraphQLClientRequestHeaders,
-      signal?: RequestInit['signal'],
     ): Promise<LatestInbaReleaseQuery> {
       return withWrapper(
         (wrappedRequestHeaders) =>
-          client.request<LatestInbaReleaseQuery>({
-            document: LatestInbaReleaseDocument,
-            variables,
-            requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders },
-            signal,
+          client.request<LatestInbaReleaseQuery>(LatestInbaReleaseDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
           }),
         'LatestInbaRelease',
         'query',
@@ -20548,15 +20964,12 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     PageCategories(
       variables?: PageCategoriesQueryVariables,
       requestHeaders?: GraphQLClientRequestHeaders,
-      signal?: RequestInit['signal'],
     ): Promise<PageCategoriesQuery> {
       return withWrapper(
         (wrappedRequestHeaders) =>
-          client.request<PageCategoriesQuery>({
-            document: PageCategoriesDocument,
-            variables,
-            requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders },
-            signal,
+          client.request<PageCategoriesQuery>(PageCategoriesDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
           }),
         'PageCategories',
         'query',
@@ -20566,15 +20979,12 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     PagesStaticPaths(
       variables?: PagesStaticPathsQueryVariables,
       requestHeaders?: GraphQLClientRequestHeaders,
-      signal?: RequestInit['signal'],
     ): Promise<PagesStaticPathsQuery> {
       return withWrapper(
         (wrappedRequestHeaders) =>
-          client.request<PagesStaticPathsQuery>({
-            document: PagesStaticPathsDocument,
-            variables,
-            requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders },
-            signal,
+          client.request<PagesStaticPathsQuery>(PagesStaticPathsDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
           }),
         'PagesStaticPaths',
         'query',
@@ -20584,15 +20994,12 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     PageByPath(
       variables: PageByPathQueryVariables,
       requestHeaders?: GraphQLClientRequestHeaders,
-      signal?: RequestInit['signal'],
     ): Promise<PageByPathQuery> {
       return withWrapper(
         (wrappedRequestHeaders) =>
-          client.request<PageByPathQuery>({
-            document: PageByPathDocument,
-            variables,
-            requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders },
-            signal,
+          client.request<PageByPathQuery>(PageByPathDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
           }),
         'PageByPath',
         'query',
@@ -20602,15 +21009,12 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     PageRedirectByAlias(
       variables: PageRedirectByAliasQueryVariables,
       requestHeaders?: GraphQLClientRequestHeaders,
-      signal?: RequestInit['signal'],
     ): Promise<PageRedirectByAliasQuery> {
       return withWrapper(
         (wrappedRequestHeaders) =>
-          client.request<PageRedirectByAliasQuery>({
-            document: PageRedirectByAliasDocument,
-            variables,
-            requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders },
-            signal,
+          client.request<PageRedirectByAliasQuery>(PageRedirectByAliasDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
           }),
         'PageRedirectByAlias',
         'query',
@@ -20620,15 +21024,12 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     Dev_AllPages(
       variables?: Dev_AllPagesQueryVariables,
       requestHeaders?: GraphQLClientRequestHeaders,
-      signal?: RequestInit['signal'],
     ): Promise<Dev_AllPagesQuery> {
       return withWrapper(
         (wrappedRequestHeaders) =>
-          client.request<Dev_AllPagesQuery>({
-            document: Dev_AllPagesDocument,
-            variables,
-            requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders },
-            signal,
+          client.request<Dev_AllPagesQuery>(Dev_AllPagesDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
           }),
         'Dev_AllPages',
         'query',
@@ -20638,15 +21039,12 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     updatePage(
       variables: UpdatePageMutationVariables,
       requestHeaders?: GraphQLClientRequestHeaders,
-      signal?: RequestInit['signal'],
     ): Promise<UpdatePageMutation> {
       return withWrapper(
         (wrappedRequestHeaders) =>
-          client.request<UpdatePageMutation>({
-            document: UpdatePageDocument,
-            variables,
-            requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders },
-            signal,
+          client.request<UpdatePageMutation>(UpdatePageDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
           }),
         'updatePage',
         'mutation',
@@ -20656,15 +21054,12 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     allRegulations(
       variables?: AllRegulationsQueryVariables,
       requestHeaders?: GraphQLClientRequestHeaders,
-      signal?: RequestInit['signal'],
     ): Promise<AllRegulationsQuery> {
       return withWrapper(
         (wrappedRequestHeaders) =>
-          client.request<AllRegulationsQuery>({
-            document: AllRegulationsDocument,
-            variables,
-            requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders },
-            signal,
+          client.request<AllRegulationsQuery>(AllRegulationsDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
           }),
         'allRegulations',
         'query',
@@ -20674,15 +21069,12 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     RegulationsStaticPaths(
       variables?: RegulationsStaticPathsQueryVariables,
       requestHeaders?: GraphQLClientRequestHeaders,
-      signal?: RequestInit['signal'],
     ): Promise<RegulationsStaticPathsQuery> {
       return withWrapper(
         (wrappedRequestHeaders) =>
-          client.request<RegulationsStaticPathsQuery>({
-            document: RegulationsStaticPathsDocument,
-            variables,
-            requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders },
-            signal,
+          client.request<RegulationsStaticPathsQuery>(RegulationsStaticPathsDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
           }),
         'RegulationsStaticPaths',
         'query',
@@ -20692,15 +21084,12 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     RegulationById(
       variables: RegulationByIdQueryVariables,
       requestHeaders?: GraphQLClientRequestHeaders,
-      signal?: RequestInit['signal'],
     ): Promise<RegulationByIdQuery> {
       return withWrapper(
         (wrappedRequestHeaders) =>
-          client.request<RegulationByIdQuery>({
-            document: RegulationByIdDocument,
-            variables,
-            requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders },
-            signal,
+          client.request<RegulationByIdQuery>(RegulationByIdDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
           }),
         'RegulationById',
         'query',
@@ -20710,15 +21099,12 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     RegulationBySlug(
       variables?: RegulationBySlugQueryVariables,
       requestHeaders?: GraphQLClientRequestHeaders,
-      signal?: RequestInit['signal'],
     ): Promise<RegulationBySlugQuery> {
       return withWrapper(
         (wrappedRequestHeaders) =>
-          client.request<RegulationBySlugQuery>({
-            document: RegulationBySlugDocument,
-            variables,
-            requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders },
-            signal,
+          client.request<RegulationBySlugQuery>(RegulationBySlugDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
           }),
         'RegulationBySlug',
         'query',
@@ -20728,15 +21114,12 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     RegulationByYear(
       variables?: RegulationByYearQueryVariables,
       requestHeaders?: GraphQLClientRequestHeaders,
-      signal?: RequestInit['signal'],
     ): Promise<RegulationByYearQuery> {
       return withWrapper(
         (wrappedRequestHeaders) =>
-          client.request<RegulationByYearQuery>({
-            document: RegulationByYearDocument,
-            variables,
-            requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders },
-            signal,
+          client.request<RegulationByYearQuery>(RegulationByYearDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
           }),
         'RegulationByYear',
         'query',
@@ -20746,16 +21129,14 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     setFullTitleToRegulation(
       variables: SetFullTitleToRegulationMutationVariables,
       requestHeaders?: GraphQLClientRequestHeaders,
-      signal?: RequestInit['signal'],
     ): Promise<SetFullTitleToRegulationMutation> {
       return withWrapper(
         (wrappedRequestHeaders) =>
-          client.request<SetFullTitleToRegulationMutation>({
-            document: SetFullTitleToRegulationDocument,
+          client.request<SetFullTitleToRegulationMutation>(
+            SetFullTitleToRegulationDocument,
             variables,
-            requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders },
-            signal,
-          }),
+            { ...requestHeaders, ...wrappedRequestHeaders },
+          ),
         'setFullTitleToRegulation',
         'mutation',
         variables,
@@ -20764,16 +21145,14 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     setCancellationToRegulation(
       variables: SetCancellationToRegulationMutationVariables,
       requestHeaders?: GraphQLClientRequestHeaders,
-      signal?: RequestInit['signal'],
     ): Promise<SetCancellationToRegulationMutation> {
       return withWrapper(
         (wrappedRequestHeaders) =>
-          client.request<SetCancellationToRegulationMutation>({
-            document: SetCancellationToRegulationDocument,
+          client.request<SetCancellationToRegulationMutation>(
+            SetCancellationToRegulationDocument,
             variables,
-            requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders },
-            signal,
-          }),
+            { ...requestHeaders, ...wrappedRequestHeaders },
+          ),
         'setCancellationToRegulation',
         'mutation',
         variables,
@@ -20782,16 +21161,14 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     setAmendmentsToRegulation(
       variables: SetAmendmentsToRegulationMutationVariables,
       requestHeaders?: GraphQLClientRequestHeaders,
-      signal?: RequestInit['signal'],
     ): Promise<SetAmendmentsToRegulationMutation> {
       return withWrapper(
         (wrappedRequestHeaders) =>
-          client.request<SetAmendmentsToRegulationMutation>({
-            document: SetAmendmentsToRegulationDocument,
+          client.request<SetAmendmentsToRegulationMutation>(
+            SetAmendmentsToRegulationDocument,
             variables,
-            requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders },
-            signal,
-          }),
+            { ...requestHeaders, ...wrappedRequestHeaders },
+          ),
         'setAmendmentsToRegulation',
         'mutation',
         variables,
@@ -20800,15 +21177,12 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     deleteRegulationById(
       variables: DeleteRegulationByIdMutationVariables,
       requestHeaders?: GraphQLClientRequestHeaders,
-      signal?: RequestInit['signal'],
     ): Promise<DeleteRegulationByIdMutation> {
       return withWrapper(
         (wrappedRequestHeaders) =>
-          client.request<DeleteRegulationByIdMutation>({
-            document: DeleteRegulationByIdDocument,
-            variables,
-            requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders },
-            signal,
+          client.request<DeleteRegulationByIdMutation>(DeleteRegulationByIdDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
           }),
         'deleteRegulationById',
         'mutation',
@@ -20818,15 +21192,12 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     createBareRegulation(
       variables: CreateBareRegulationMutationVariables,
       requestHeaders?: GraphQLClientRequestHeaders,
-      signal?: RequestInit['signal'],
     ): Promise<CreateBareRegulationMutation> {
       return withWrapper(
         (wrappedRequestHeaders) =>
-          client.request<CreateBareRegulationMutation>({
-            document: CreateBareRegulationDocument,
-            variables,
-            requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders },
-            signal,
+          client.request<CreateBareRegulationMutation>(CreateBareRegulationDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
           }),
         'createBareRegulation',
         'mutation',
@@ -20836,17 +21207,29 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     Tags(
       variables?: TagsQueryVariables,
       requestHeaders?: GraphQLClientRequestHeaders,
-      signal?: RequestInit['signal'],
     ): Promise<TagsQuery> {
       return withWrapper(
         (wrappedRequestHeaders) =>
-          client.request<TagsQuery>({
-            document: TagsDocument,
-            variables,
-            requestHeaders: { ...requestHeaders, ...wrappedRequestHeaders },
-            signal,
+          client.request<TagsQuery>(TagsDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
           }),
         'Tags',
+        'query',
+        variables,
+      )
+    },
+    UrbanStudyBySlug(
+      variables: UrbanStudyBySlugQueryVariables,
+      requestHeaders?: GraphQLClientRequestHeaders,
+    ): Promise<UrbanStudyBySlugQuery> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<UrbanStudyBySlugQuery>(UrbanStudyBySlugDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
+          }),
+        'UrbanStudyBySlug',
         'query',
         variables,
       )

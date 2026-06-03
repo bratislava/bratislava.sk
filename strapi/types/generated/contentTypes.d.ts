@@ -1253,6 +1253,7 @@ export interface ApiRegulationRegulation extends Struct.CollectionTypeSchema {
     titleText: Schema.Attribute.String
     updatedAt: Schema.Attribute.DateTime
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> & Schema.Attribute.Private
+    urbanStudies: Schema.Attribute.Relation<'manyToMany', 'api::urban-study.urban-study'>
   }
 }
 
@@ -1324,6 +1325,43 @@ export interface ApiTaxAdministratorsListTaxAdministratorsList extends Struct.Si
       Schema.Attribute.Required
     updatedAt: Schema.Attribute.DateTime
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> & Schema.Attribute.Private
+  }
+}
+
+export interface ApiUrbanStudyUrbanStudy extends Struct.CollectionTypeSchema {
+  collectionName: 'urban_studies'
+  info: {
+    displayName: 'WIP Urban Studies'
+    pluralName: 'urban-studies'
+    singularName: 'urban-study'
+  }
+  options: {
+    draftAndPublish: true
+  }
+  attributes: {
+    approvalText: Schema.Attribute.RichText
+    attachmentFiles: Schema.Attribute.Media<'images' | 'files', true>
+    body: Schema.Attribute.RichText
+    briefFiles: Schema.Attribute.Media<'images' | 'files', true>
+    commentsEvaluationFiles: Schema.Attribute.Media<'images' | 'files', true>
+    createdAt: Schema.Attribute.DateTime
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> & Schema.Attribute.Private
+    customPublishedAt: Schema.Attribute.DateTime
+    graphicPartFiles: Schema.Attribute.Media<'images' | 'files', true>
+    links: Schema.Attribute.Component<'blocks.common-link', true>
+    locale: Schema.Attribute.String & Schema.Attribute.Private
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::urban-study.urban-study'> &
+      Schema.Attribute.Private
+    preparedBy: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'Hlavn\u00E9 mesto Slovenskej republiky Bratislava'>
+    publishedAt: Schema.Attribute.DateTime
+    regulations: Schema.Attribute.Relation<'manyToMany', 'api::regulation.regulation'>
+    slug: Schema.Attribute.UID<'title'> & Schema.Attribute.Required
+    title: Schema.Attribute.String & Schema.Attribute.Required
+    updatedAt: Schema.Attribute.DateTime
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> & Schema.Attribute.Private
+    writtenPartFiles: Schema.Attribute.Media<'images' | 'files', true>
+    year: Schema.Attribute.String
   }
 }
 
@@ -1772,6 +1810,7 @@ declare module '@strapi/strapi' {
       'api::regulation.regulation': ApiRegulationRegulation
       'api::tag.tag': ApiTagTag
       'api::tax-administrators-list.tax-administrators-list': ApiTaxAdministratorsListTaxAdministratorsList
+      'api::urban-study.urban-study': ApiUrbanStudyUrbanStudy
       'plugin::content-releases.release': PluginContentReleasesRelease
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction
       'plugin::i18n.locale': PluginI18NLocale

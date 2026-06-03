@@ -1,0 +1,39 @@
+fragment UrbanStudySlugEntity on UrbanStudy {
+  __typename
+  documentId
+  slug
+  title
+}
+
+fragment UrbanStudyEntity on UrbanStudy {
+  ...UrbanStudySlugEntity
+  publishedAt
+  updatedAt
+  year
+  body
+  preparedBy
+  briefFiles {
+    ...UploadFileEntity
+  }
+  commentsEvaluationFiles {
+    ...UploadFileEntity
+  }
+  writtenPartFiles {
+    ...UploadFileEntity
+  }
+  graphicPartFiles {
+    ...UploadFileEntity
+  }
+  attachmentFiles {
+    ...UploadFileEntity
+  }
+  links {
+    ...CommonLink
+  }
+}
+
+query UrbanStudyBySlug($slug: String!) {
+  urbanStudies(filters: { slug: { eq: $slug } }) {
+    ...UrbanStudyEntity
+  }
+}

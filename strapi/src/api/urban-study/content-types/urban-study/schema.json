@@ -1,0 +1,91 @@
+{
+  "kind": "collectionType",
+  "collectionName": "urban_studies",
+  "info": {
+    "singularName": "urban-study",
+    "pluralName": "urban-studies",
+    "displayName": "WIP Urban Studies"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title",
+      "required": true
+    },
+    "year": {
+      "type": "string"
+    },
+    "customPublishedAt": {
+      "type": "datetime"
+    },
+    "body": {
+      "type": "richtext"
+    },
+    "briefFiles": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    },
+    "commentsEvaluationFiles": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    },
+    "writtenPartFiles": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    },
+    "graphicPartFiles": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    },
+    "attachmentFiles": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    },
+    "preparedBy": {
+      "type": "string",
+      "default": "Hlavné mesto Slovenskej republiky Bratislava"
+    },
+    "regulations": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::regulation.regulation",
+      "mappedBy": "urbanStudies"
+    },
+    "approvalText": {
+      "type": "richtext"
+    },
+    "links": {
+      "type": "component",
+      "component": "blocks.common-link",
+      "repeatable": true
+    }
+  }
+}

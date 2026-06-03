@@ -20,8 +20,8 @@
     },
     "slug": {
       "type": "uid",
-      "required": true,
-      "targetField": "regNumber"
+      "targetField": "regNumber",
+      "required": true
     },
     "titleText": {
       "type": "string"
@@ -36,6 +36,7 @@
     },
     "category": {
       "type": "enumeration",
+      "required": true,
       "enum": [
         "daneAPoplatky",
         "pomenovanieUlic",
@@ -45,8 +46,7 @@
         "socialnaPomocASkolstvo",
         "ostatne",
         "archiv"
-      ],
-      "required": true
+      ]
     },
     "isFullTextRegulation": {
       "type": "boolean",
@@ -57,13 +57,23 @@
       "type": "media",
       "multiple": false,
       "required": true,
-      "allowedTypes": ["images", "files", "videos", "audios"]
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
     },
     "attachments": {
       "type": "media",
       "multiple": true,
       "required": false,
-      "allowedTypes": ["images", "files", "videos", "audios"]
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
     },
     "amendments": {
       "type": "relation",
@@ -88,6 +98,12 @@
       "relation": "oneToMany",
       "target": "api::regulation.regulation",
       "mappedBy": "cancellation"
+    },
+    "urbanStudies": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::urban-study.urban-study",
+      "inversedBy": "regulations"
     }
   }
 }
