@@ -18,6 +18,7 @@ import { formatDate } from '@/src/utils/formatDate'
 import { formatFileExtension } from '@/src/utils/formatFileExtension'
 import { formatFileSize } from '@/src/utils/formatFileSize'
 import { isDefined } from '@/src/utils/isDefined'
+import { useUrbanStudyTypeTranslationMap } from '@/src/utils/useUrbanStudyTypeTranslationMap'
 
 type Props = {
   urbanStudy: UrbanStudyEntityFragment
@@ -52,8 +53,10 @@ const UrbanStudyPageContent = ({ urbanStudy }: Props) => {
     links,
   } = urbanStudy
 
-  // urbanStudyType enum values are i18n keys (e.g. "urbanStudyType.urbanistickaStudia").
-  const urbanStudyTypeLabel = urbanStudyType ? t(urbanStudyType) : undefined
+  const urbanStudyTypeTranslationMap = useUrbanStudyTypeTranslationMap()
+  const urbanStudyTypeLabel = urbanStudyType
+    ? urbanStudyTypeTranslationMap[urbanStudyType]
+    : undefined
 
   const fileGroups = [
     { label: t('UrbanStudyPageContent.briefFiles'), files: briefFiles },
