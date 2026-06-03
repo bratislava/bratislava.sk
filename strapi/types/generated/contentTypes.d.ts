@@ -1339,6 +1339,7 @@ export interface ApiUrbanStudyUrbanStudy extends Struct.CollectionTypeSchema {
     draftAndPublish: true
   }
   attributes: {
+    analyticalPartFiles: Schema.Attribute.Media<'images' | 'files', true>
     approvalText: Schema.Attribute.RichText
     attachmentFiles: Schema.Attribute.Media<'images' | 'files', true>
     body: Schema.Attribute.RichText
@@ -1352,6 +1353,8 @@ export interface ApiUrbanStudyUrbanStudy extends Struct.CollectionTypeSchema {
     locale: Schema.Attribute.String & Schema.Attribute.Private
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::urban-study.urban-study'> &
       Schema.Attribute.Private
+    orderedBy: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'Hlavn\u00E9 mesto Slovenskej republiky Bratislava'>
     preparedBy: Schema.Attribute.String &
       Schema.Attribute.DefaultTo<'Hlavn\u00E9 mesto Slovenskej republiky Bratislava'>
     publishedAt: Schema.Attribute.DateTime
@@ -1360,6 +1363,19 @@ export interface ApiUrbanStudyUrbanStudy extends Struct.CollectionTypeSchema {
     title: Schema.Attribute.String & Schema.Attribute.Required
     updatedAt: Schema.Attribute.DateTime
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> & Schema.Attribute.Private
+    urbanStudyType: Schema.Attribute.Enumeration<
+      [
+        'urbanStudyType.urbanistickaStudia',
+        'urbanStudyType.odvetvovaStudia',
+        'urbanStudyType.uzemnyGenerel',
+        'urbanStudyType.uzemnyPlan',
+        'urbanStudyType.uzemnyPlanZony',
+        'urbanStudyType.uzemnyPlanZmenyADoplnky',
+        'urbanStudyType.iny',
+      ]
+    > &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'urbanStudyType.urbanistickaStudia'>
     writtenPartFiles: Schema.Attribute.Media<'images' | 'files', true>
     year: Schema.Attribute.String
   }

@@ -26,7 +26,32 @@
     "customPublishedAt": {
       "type": "datetime"
     },
+    "urbanStudyType": {
+      "type": "enumeration",
+      "required": true,
+      "default": "urbanStudyType.urbanistickaStudia",
+      "enum": [
+        "urbanStudyType.urbanistickaStudia",
+        "urbanStudyType.odvetvovaStudia",
+        "urbanStudyType.uzemnyGenerel",
+        "urbanStudyType.uzemnyPlan",
+        "urbanStudyType.uzemnyPlanZony",
+        "urbanStudyType.uzemnyPlanZmenyADoplnky",
+        "urbanStudyType.iny"
+      ]
+    },
+    "orderedBy": {
+      "type": "string",
+      "default": "Hlavné mesto Slovenskej republiky Bratislava"
+    },
+    "preparedBy": {
+      "type": "string",
+      "default": "Hlavné mesto Slovenskej republiky Bratislava"
+    },
     "body": {
+      "type": "richtext"
+    },
+    "approvalText": {
       "type": "richtext"
     },
     "briefFiles": {
@@ -38,6 +63,14 @@
       ]
     },
     "commentsEvaluationFiles": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    },
+    "analyticalPartFiles": {
       "type": "media",
       "multiple": true,
       "allowedTypes": [
@@ -69,18 +102,11 @@
         "files"
       ]
     },
-    "preparedBy": {
-      "type": "string",
-      "default": "Hlavné mesto Slovenskej republiky Bratislava"
-    },
     "regulations": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::regulation.regulation",
       "mappedBy": "urbanStudies"
-    },
-    "approvalText": {
-      "type": "richtext"
     },
     "links": {
       "type": "component",

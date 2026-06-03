@@ -2764,6 +2764,16 @@ enum ENUM_REGULATION_CATEGORY {
   uzemnePlanovanie
 }
 
+enum ENUM_URBANSTUDY_URBANSTUDYTYPE {
+  urbanStudyType_iny
+  urbanStudyType_odvetvovaStudia
+  urbanStudyType_urbanistickaStudia
+  urbanStudyType_uzemnyGenerel
+  urbanStudyType_uzemnyPlan
+  urbanStudyType_uzemnyPlanZmenyADoplnky
+  urbanStudyType_uzemnyPlanZony
+}
+
 type Error {
   code: String!
   message: String
@@ -4513,6 +4523,8 @@ type UploadFileRelationResponseCollection {
 }
 
 type UrbanStudy {
+  analyticalPartFiles(filters: UploadFileFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [UploadFile]!
+  analyticalPartFiles_connection(filters: UploadFileFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UploadFileRelationResponseCollection
   approvalText: String
   attachmentFiles(filters: UploadFileFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [UploadFile]!
   attachmentFiles_connection(filters: UploadFileFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UploadFileRelationResponseCollection
@@ -4527,6 +4539,7 @@ type UrbanStudy {
   graphicPartFiles(filters: UploadFileFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [UploadFile]!
   graphicPartFiles_connection(filters: UploadFileFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UploadFileRelationResponseCollection
   links(filters: ComponentBlocksCommonLinkFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksCommonLink]
+  orderedBy: String
   preparedBy: String
   publishedAt: DateTime
   regulations(filters: RegulationFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [Regulation]!
@@ -4534,6 +4547,7 @@ type UrbanStudy {
   slug: String!
   title: String!
   updatedAt: DateTime
+  urbanStudyType: ENUM_URBANSTUDY_URBANSTUDYTYPE!
   writtenPartFiles(filters: UploadFileFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [UploadFile]!
   writtenPartFiles_connection(filters: UploadFileFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UploadFileRelationResponseCollection
   year: String
@@ -4563,16 +4577,19 @@ input UrbanStudyFiltersInput {
   links: ComponentBlocksCommonLinkFiltersInput
   not: UrbanStudyFiltersInput
   or: [UrbanStudyFiltersInput]
+  orderedBy: StringFilterInput
   preparedBy: StringFilterInput
   publishedAt: DateTimeFilterInput
   regulations: RegulationFiltersInput
   slug: StringFilterInput
   title: StringFilterInput
   updatedAt: DateTimeFilterInput
+  urbanStudyType: StringFilterInput
   year: StringFilterInput
 }
 
 input UrbanStudyInput {
+  analyticalPartFiles: [ID]
   approvalText: String
   attachmentFiles: [ID]
   body: String
@@ -4581,11 +4598,13 @@ input UrbanStudyInput {
   customPublishedAt: DateTime
   graphicPartFiles: [ID]
   links: [ComponentBlocksCommonLinkInput]
+  orderedBy: String
   preparedBy: String
   publishedAt: DateTime
   regulations: [ID]
   slug: String
   title: String
+  urbanStudyType: ENUM_URBANSTUDY_URBANSTUDYTYPE
   writtenPartFiles: [ID]
   year: String
 }

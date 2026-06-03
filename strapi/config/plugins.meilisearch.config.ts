@@ -31,6 +31,7 @@ const searchIndexSettings = {
     'asset.description',
     'urban-study.title',
     'urban-study.body',
+    'urban-study.approvalText',
     'urban-study.year',
     'document.title',
     'document.description',

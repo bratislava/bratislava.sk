@@ -7,6 +7,7 @@ import FileRowCard from '@/src/components/cards/FileRowCard'
 import HorizontalDivider from '@/src/components/common/Divider/HorizontalDivider'
 import Icon from '@/src/components/common/Icon/Icon'
 import Links from '@/src/components/common/Links/Links'
+import Regulations from '@/src/components/common/Regulations/Regulations'
 import TableOfContents from '@/src/components/common/TableOfContents/TableOfContents'
 import { TABLE_OF_CONTENTS_HEADING_ATTRIBUTE } from '@/src/components/common/TableOfContents/useHeadings'
 import Markdown from '@/src/components/formatting/Markdown/Markdown'
@@ -25,7 +26,7 @@ type Props = {
 /**
  * Detail page for Urban Studies. Inspired by AssetPageContent (route /dokumenty/[slug]).
  * No Figma design available - layout mirrors the Assets detail page, extended with
- * a section per file group, a richtext body and related links.
+ * a section per file group, richtext body/approval text, related regulations and links.
  */
 const UrbanStudyPageContent = ({ urbanStudy }: Props) => {
   const { t, i18n } = useTranslation()
@@ -34,21 +35,30 @@ const UrbanStudyPageContent = ({ urbanStudy }: Props) => {
   const {
     title,
     year,
-    body,
+    urbanStudyType,
+    orderedBy,
     preparedBy,
+    body,
+    approvalText,
     publishedAt,
     updatedAt,
     briefFiles,
     commentsEvaluationFiles,
+    analyticalPartFiles,
     writtenPartFiles,
     graphicPartFiles,
     attachmentFiles,
+    regulations,
     links,
   } = urbanStudy
+
+  // urbanStudyType enum values are i18n keys (e.g. "urbanStudyType.urbanistickaStudia").
+  const urbanStudyTypeLabel = urbanStudyType ? t(urbanStudyType) : undefined
 
   const fileGroups = [
     { label: t('UrbanStudyPageContent.briefFiles'), files: briefFiles },
     { label: t('UrbanStudyPageContent.commentsEvaluationFiles'), files: commentsEvaluationFiles },
+    { label: t('UrbanStudyPageContent.analyticalPartFiles'), files: analyticalPartFiles },
     { label: t('UrbanStudyPageContent.writtenPartFiles'), files: writtenPartFiles },
     { label: t('UrbanStudyPageContent.graphicPartFiles'), files: graphicPartFiles },
     { label: t('UrbanStudyPageContent.attachmentFiles'), files: attachmentFiles },
@@ -57,15 +67,18 @@ const UrbanStudyPageContent = ({ urbanStudy }: Props) => {
     .filter((group) => group.files.length > 0)
 
   const detailItems = [
+    { label: t('UrbanStudyPageContent.type'), value: urbanStudyTypeLabel },
     { label: t('UrbanStudyPageContent.year'), value: year },
+    { label: t('UrbanStudyPageContent.orderedBy'), value: orderedBy },
     { label: t('UrbanStudyPageContent.preparedBy'), value: preparedBy },
     { label: t('UrbanStudyPageContent.publishedAt'), value: formatDate(publishedAt) },
     { label: t('UrbanStudyPageContent.updatedAt'), value: formatDate(updatedAt) },
   ].filter((item) => !!item.value)
 
+  const filteredRegulations = regulations?.filter(isDefined) ?? []
   const filteredLinks = links?.filter(isDefined) ?? []
 
-  const metadata = [year, formatDate(updatedAt)].filter(isDefined)
+  const metadata = [urbanStudyTypeLabel, year, formatDate(updatedAt)].filter(isDefined)
 
   return (
     <>
@@ -136,6 +149,18 @@ const UrbanStudyPageContent = ({ urbanStudy }: Props) => {
               </div>
             ))}
 
+            {approvalText ? (
+              <>
+                <HorizontalDivider />
+                <div className="flex flex-col gap-4">
+                  <Typography variant="h2" id={slugify(t('UrbanStudyPageContent.approvalTitle'))}>
+                    {t('UrbanStudyPageContent.approvalTitle')}
+                  </Typography>
+                  <Markdown content={approvalText} />
+                </div>
+              </>
+            ) : null}
+
             {detailItems.length > 0 ? (
               <>
                 <HorizontalDivider />
@@ -152,6 +177,13 @@ const UrbanStudyPageContent = ({ urbanStudy }: Props) => {
                     ))}
                   </div>
                 </div>
+              </>
+            ) : null}
+
+            {filteredRegulations.length > 0 ? (
+              <>
+                <HorizontalDivider />
+                <Regulations regulations={filteredRegulations} />
               </>
             ) : null}
 

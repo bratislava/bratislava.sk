@@ -10,12 +10,18 @@ fragment UrbanStudyEntity on UrbanStudy {
   publishedAt
   updatedAt
   year
-  body
+  urbanStudyType
+  orderedBy
   preparedBy
+  body
+  approvalText
   briefFiles {
     ...UploadFileEntity
   }
   commentsEvaluationFiles {
+    ...UploadFileEntity
+  }
+  analyticalPartFiles {
     ...UploadFileEntity
   }
   writtenPartFiles {
@@ -26,6 +32,9 @@ fragment UrbanStudyEntity on UrbanStudy {
   }
   attachmentFiles {
     ...UploadFileEntity
+  }
+  regulations {
+    ...RegulationEntity
   }
   links {
     ...CommonLink

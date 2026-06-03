@@ -3420,6 +3420,16 @@ export enum Enum_Regulation_Category {
   UzemnePlanovanie = 'uzemnePlanovanie',
 }
 
+export enum Enum_Urbanstudy_Urbanstudytype {
+  UrbanStudyTypeIny = 'urbanStudyType_iny',
+  UrbanStudyTypeOdvetvovaStudia = 'urbanStudyType_odvetvovaStudia',
+  UrbanStudyTypeUrbanistickaStudia = 'urbanStudyType_urbanistickaStudia',
+  UrbanStudyTypeUzemnyGenerel = 'urbanStudyType_uzemnyGenerel',
+  UrbanStudyTypeUzemnyPlan = 'urbanStudyType_uzemnyPlan',
+  UrbanStudyTypeUzemnyPlanZmenyADoplnky = 'urbanStudyType_uzemnyPlanZmenyADoplnky',
+  UrbanStudyTypeUzemnyPlanZony = 'urbanStudyType_uzemnyPlanZony',
+}
+
 export type Error = {
   __typename?: 'Error'
   code: Scalars['String']['output']
@@ -6055,6 +6065,8 @@ export type UploadFileRelationResponseCollection = {
 
 export type UrbanStudy = {
   __typename?: 'UrbanStudy'
+  analyticalPartFiles: Array<Maybe<UploadFile>>
+  analyticalPartFiles_connection?: Maybe<UploadFileRelationResponseCollection>
   approvalText?: Maybe<Scalars['String']['output']>
   attachmentFiles: Array<Maybe<UploadFile>>
   attachmentFiles_connection?: Maybe<UploadFileRelationResponseCollection>
@@ -6069,6 +6081,7 @@ export type UrbanStudy = {
   graphicPartFiles: Array<Maybe<UploadFile>>
   graphicPartFiles_connection?: Maybe<UploadFileRelationResponseCollection>
   links?: Maybe<Array<Maybe<ComponentBlocksCommonLink>>>
+  orderedBy?: Maybe<Scalars['String']['output']>
   preparedBy?: Maybe<Scalars['String']['output']>
   publishedAt?: Maybe<Scalars['DateTime']['output']>
   regulations: Array<Maybe<Regulation>>
@@ -6076,9 +6089,22 @@ export type UrbanStudy = {
   slug: Scalars['String']['output']
   title: Scalars['String']['output']
   updatedAt?: Maybe<Scalars['DateTime']['output']>
+  urbanStudyType: Enum_Urbanstudy_Urbanstudytype
   writtenPartFiles: Array<Maybe<UploadFile>>
   writtenPartFiles_connection?: Maybe<UploadFileRelationResponseCollection>
   year?: Maybe<Scalars['String']['output']>
+}
+
+export type UrbanStudyAnalyticalPartFilesArgs = {
+  filters?: InputMaybe<UploadFileFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type UrbanStudyAnalyticalPartFiles_ConnectionArgs = {
+  filters?: InputMaybe<UploadFileFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
 }
 
 export type UrbanStudyAttachmentFilesArgs = {
@@ -6186,16 +6212,19 @@ export type UrbanStudyFiltersInput = {
   links?: InputMaybe<ComponentBlocksCommonLinkFiltersInput>
   not?: InputMaybe<UrbanStudyFiltersInput>
   or?: InputMaybe<Array<InputMaybe<UrbanStudyFiltersInput>>>
+  orderedBy?: InputMaybe<StringFilterInput>
   preparedBy?: InputMaybe<StringFilterInput>
   publishedAt?: InputMaybe<DateTimeFilterInput>
   regulations?: InputMaybe<RegulationFiltersInput>
   slug?: InputMaybe<StringFilterInput>
   title?: InputMaybe<StringFilterInput>
   updatedAt?: InputMaybe<DateTimeFilterInput>
+  urbanStudyType?: InputMaybe<StringFilterInput>
   year?: InputMaybe<StringFilterInput>
 }
 
 export type UrbanStudyInput = {
+  analyticalPartFiles?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
   approvalText?: InputMaybe<Scalars['String']['input']>
   attachmentFiles?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
   body?: InputMaybe<Scalars['String']['input']>
@@ -6204,11 +6233,13 @@ export type UrbanStudyInput = {
   customPublishedAt?: InputMaybe<Scalars['DateTime']['input']>
   graphicPartFiles?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
   links?: InputMaybe<Array<InputMaybe<ComponentBlocksCommonLinkInput>>>
+  orderedBy?: InputMaybe<Scalars['String']['input']>
   preparedBy?: InputMaybe<Scalars['String']['input']>
   publishedAt?: InputMaybe<Scalars['DateTime']['input']>
   regulations?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
   slug?: InputMaybe<Scalars['String']['input']>
   title?: InputMaybe<Scalars['String']['input']>
+  urbanStudyType?: InputMaybe<Enum_Urbanstudy_Urbanstudytype>
   writtenPartFiles?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
   year?: InputMaybe<Scalars['String']['input']>
 }
@@ -18402,8 +18433,11 @@ export type UrbanStudyEntityFragment = {
   publishedAt?: any | null
   updatedAt?: any | null
   year?: string | null
-  body?: string | null
+  urbanStudyType: Enum_Urbanstudy_Urbanstudytype
+  orderedBy?: string | null
   preparedBy?: string | null
+  body?: string | null
+  approvalText?: string | null
   documentId: string
   slug: string
   title: string
@@ -18418,6 +18452,16 @@ export type UrbanStudyEntityFragment = {
     updatedAt?: any | null
   } | null>
   commentsEvaluationFiles: Array<{
+    __typename?: 'UploadFile'
+    documentId: string
+    url: string
+    name: string
+    ext?: string | null
+    size: number
+    createdAt?: any | null
+    updatedAt?: any | null
+  } | null>
+  analyticalPartFiles: Array<{
     __typename?: 'UploadFile'
     documentId: string
     url: string
@@ -18456,6 +18500,96 @@ export type UrbanStudyEntityFragment = {
     size: number
     createdAt?: any | null
     updatedAt?: any | null
+  } | null>
+  regulations: Array<{
+    __typename?: 'Regulation'
+    regNumber: string
+    fullTitle: string
+    effectiveFrom: any
+    category: Enum_Regulation_Category
+    isFullTextRegulation: boolean
+    documentId: string
+    slug: string
+    titleText?: string | null
+    mainDocument: {
+      __typename?: 'UploadFile'
+      documentId: string
+      url: string
+      name: string
+      ext?: string | null
+      size: number
+      createdAt?: any | null
+      updatedAt?: any | null
+    }
+    attachments: Array<{
+      __typename?: 'UploadFile'
+      documentId: string
+      url: string
+      name: string
+      ext?: string | null
+      size: number
+      createdAt?: any | null
+      updatedAt?: any | null
+    } | null>
+    amendments: Array<{
+      __typename?: 'Regulation'
+      documentId: string
+      regNumber: string
+      slug: string
+      effectiveFrom: any
+      isFullTextRegulation: boolean
+      attachments: Array<{
+        __typename?: 'UploadFile'
+        documentId: string
+        url: string
+        name: string
+        ext?: string | null
+        size: number
+        createdAt?: any | null
+        updatedAt?: any | null
+      } | null>
+    } | null>
+    amending: Array<{
+      __typename?: 'Regulation'
+      documentId: string
+      regNumber: string
+      slug: string
+      effectiveFrom: any
+      cancellation?: {
+        __typename?: 'Regulation'
+        documentId: string
+        regNumber: string
+        slug: string
+        effectiveFrom: any
+      } | null
+      amending: Array<{
+        __typename?: 'Regulation'
+        documentId: string
+        regNumber: string
+        slug: string
+        cancellation?: {
+          __typename?: 'Regulation'
+          documentId: string
+          regNumber: string
+          slug: string
+          effectiveFrom: any
+        } | null
+      } | null>
+    } | null>
+    cancellation?: {
+      __typename?: 'Regulation'
+      documentId: string
+      regNumber: string
+      slug: string
+      effectiveFrom: any
+    } | null
+    cancelling: Array<{
+      __typename?: 'Regulation'
+      documentId: string
+      regNumber: string
+      slug: string
+      effectiveFrom: any
+    } | null>
   } | null>
   links?: Array<{
     __typename?: 'ComponentBlocksCommonLink'
@@ -18503,8 +18637,11 @@ export type UrbanStudyBySlugQuery = {
     publishedAt?: any | null
     updatedAt?: any | null
     year?: string | null
-    body?: string | null
+    urbanStudyType: Enum_Urbanstudy_Urbanstudytype
+    orderedBy?: string | null
     preparedBy?: string | null
+    body?: string | null
+    approvalText?: string | null
     documentId: string
     slug: string
     title: string
@@ -18519,6 +18656,16 @@ export type UrbanStudyBySlugQuery = {
       updatedAt?: any | null
     } | null>
     commentsEvaluationFiles: Array<{
+      __typename?: 'UploadFile'
+      documentId: string
+      url: string
+      name: string
+      ext?: string | null
+      size: number
+      createdAt?: any | null
+      updatedAt?: any | null
+    } | null>
+    analyticalPartFiles: Array<{
       __typename?: 'UploadFile'
       documentId: string
       url: string
@@ -18557,6 +18704,96 @@ export type UrbanStudyBySlugQuery = {
       size: number
       createdAt?: any | null
       updatedAt?: any | null
+    } | null>
+    regulations: Array<{
+      __typename?: 'Regulation'
+      regNumber: string
+      fullTitle: string
+      effectiveFrom: any
+      category: Enum_Regulation_Category
+      isFullTextRegulation: boolean
+      documentId: string
+      slug: string
+      titleText?: string | null
+      mainDocument: {
+        __typename?: 'UploadFile'
+        documentId: string
+        url: string
+        name: string
+        ext?: string | null
+        size: number
+        createdAt?: any | null
+        updatedAt?: any | null
+      }
+      attachments: Array<{
+        __typename?: 'UploadFile'
+        documentId: string
+        url: string
+        name: string
+        ext?: string | null
+        size: number
+        createdAt?: any | null
+        updatedAt?: any | null
+      } | null>
+      amendments: Array<{
+        __typename?: 'Regulation'
+        documentId: string
+        regNumber: string
+        slug: string
+        effectiveFrom: any
+        isFullTextRegulation: boolean
+        attachments: Array<{
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          name: string
+          ext?: string | null
+          size: number
+          createdAt?: any | null
+          updatedAt?: any | null
+        } | null>
+      } | null>
+      amending: Array<{
+        __typename?: 'Regulation'
+        documentId: string
+        regNumber: string
+        slug: string
+        effectiveFrom: any
+        cancellation?: {
+          __typename?: 'Regulation'
+          documentId: string
+          regNumber: string
+          slug: string
+          effectiveFrom: any
+        } | null
+        amending: Array<{
+          __typename?: 'Regulation'
+          documentId: string
+          regNumber: string
+          slug: string
+          cancellation?: {
+            __typename?: 'Regulation'
+            documentId: string
+            regNumber: string
+            slug: string
+            effectiveFrom: any
+          } | null
+        } | null>
+      } | null>
+      cancellation?: {
+        __typename?: 'Regulation'
+        documentId: string
+        regNumber: string
+        slug: string
+        effectiveFrom: any
+      } | null
+      cancelling: Array<{
+        __typename?: 'Regulation'
+        documentId: string
+        regNumber: string
+        slug: string
+        effectiveFrom: any
+      } | null>
     } | null>
     links?: Array<{
       __typename?: 'ComponentBlocksCommonLink'
@@ -20153,12 +20390,18 @@ export const UrbanStudyEntityFragmentDoc = gql`
     publishedAt
     updatedAt
     year
-    body
+    urbanStudyType
+    orderedBy
     preparedBy
+    body
+    approvalText
     briefFiles {
       ...UploadFileEntity
     }
     commentsEvaluationFiles {
+      ...UploadFileEntity
+    }
+    analyticalPartFiles {
       ...UploadFileEntity
     }
     writtenPartFiles {
@@ -20170,12 +20413,16 @@ export const UrbanStudyEntityFragmentDoc = gql`
     attachmentFiles {
       ...UploadFileEntity
     }
+    regulations {
+      ...RegulationEntity
+    }
     links {
       ...CommonLink
     }
   }
   ${UrbanStudySlugEntityFragmentDoc}
   ${UploadFileEntityFragmentDoc}
+  ${RegulationEntityFragmentDoc}
   ${CommonLinkFragmentDoc}
 `
 export const AdminGroupsDocument = gql`
