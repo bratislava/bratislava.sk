@@ -7,6 +7,7 @@ import FileRowCard from '@/src/components/cards/FileRowCard'
 import HorizontalDivider from '@/src/components/common/Divider/HorizontalDivider'
 import Icon from '@/src/components/common/Icon/Icon'
 import Links from '@/src/components/common/Links/Links'
+import Pictogram from '@/src/components/common/Pictogram/Pictogram'
 import Regulations from '@/src/components/common/Regulations/Regulations'
 import TableOfContents from '@/src/components/common/TableOfContents/TableOfContents'
 import { TABLE_OF_CONTENTS_HEADING_ATTRIBUTE } from '@/src/components/common/TableOfContents/useHeadings'
@@ -37,6 +38,7 @@ const UrbanStudyPageContent = ({ urbanStudy }: Props) => {
     title,
     year,
     urbanStudyType,
+    pictogram,
     orderedBy,
     preparedBy,
     body,
@@ -90,9 +92,11 @@ const UrbanStudyPageContent = ({ urbanStudy }: Props) => {
         <div className="relative mx-auto max-w-(--breakpoint-xl) px-4 lg:px-8">
           <div className="py-6 lg:py-8">
             <div className="flex flex-col items-start gap-4 lg:gap-6">
-              <div className="rounded-2xl bg-background-passive-base p-4">
+              {pictogram ? (
+                <Pictogram iconName={pictogram} className="size-6 lg:size-10" />
+              ) : (
                 <Icon name="folder" />
-              </div>
+              )}
               <div className="flex flex-col gap-1">
                 <Typography variant="h1">{title}</Typography>
                 <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:gap-3">

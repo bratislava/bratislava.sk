@@ -11,6 +11,7 @@ fragment UrbanStudyEntity on UrbanStudy {
   updatedAt
   year
   urbanStudyType
+  pictogram
   orderedBy
   preparedBy
   body

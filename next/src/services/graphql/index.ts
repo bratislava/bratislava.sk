@@ -3420,6 +3420,48 @@ export enum Enum_Regulation_Category {
   UzemnePlanovanie = 'uzemnePlanovanie',
 }
 
+export enum Enum_Urbanstudy_Pictogram {
+  Aktivity_04 = 'aktivity_04',
+  Byvanie_04 = 'byvanie_04',
+  Covid_06 = 'covid_06',
+  Cyklo_02 = 'cyklo_02',
+  Dane_01 = 'dane_01',
+  Data_01 = 'data_01',
+  Data_02 = 'data_02',
+  Dedicstvo_06 = 'dedicstvo_06',
+  DetiAMladez_05 = 'deti_a_mladez_05',
+  Doprava_02 = 'doprava_02',
+  Dotacie_05 = 'dotacie_05',
+  Inovacie_01 = 'inovacie_01',
+  Kalendar_06 = 'kalendar_06',
+  Klima_03 = 'klima_03',
+  Komunity_06 = 'komunity_06',
+  Koncepcia_06 = 'koncepcia_06',
+  Mapy_02 = 'mapy_02',
+  Mhd_02 = 'mhd_02',
+  Ocenovanie_05 = 'ocenovanie_05',
+  Organizacie_06 = 'organizacie_06',
+  Parkovanie_02 = 'parkovanie_02',
+  Partnerstva_01 = 'partnerstva_01',
+  Pomoc_04 = 'pomoc_04',
+  Projekty_01 = 'projekty_01',
+  RozvojMesta_03 = 'rozvoj_mesta_03',
+  Skolstvo_05 = 'skolstvo_05',
+  Sluzby_04 = 'sluzby_04',
+  Sluzby_06 = 'sluzby_06',
+  Sport_05 = 'sport_05',
+  SpravaAUdrzba_02 = 'sprava_a_udrzba_02',
+  SpravaMesta_01 = 'sprava_mesta_01',
+  TransparentneMesto_01 = 'transparentne_mesto_01',
+  UzemnyPlan_03 = 'uzemny_plan_03',
+  VerejneOsvetlenie_03 = 'verejne_osvetlenie_03',
+  VystavbaANehnutelnosti_03 = 'vystavba_a_nehnutelnosti_03',
+  Zariadenia_04 = 'zariadenia_04',
+  ZdielanaMobilita_02 = 'zdielana_mobilita_02',
+  Zelen_03 = 'zelen_03',
+  ZivotneProstredie_03 = 'zivotne_prostredie_03',
+}
+
 export enum Enum_Urbanstudy_Urbanstudytype {
   UrbanStudyTypeIny = 'urbanStudyType_iny',
   UrbanStudyTypeOdvetvovaStudia = 'urbanStudyType_odvetvovaStudia',
@@ -6082,6 +6124,7 @@ export type UrbanStudy = {
   graphicPartFiles_connection?: Maybe<UploadFileRelationResponseCollection>
   links?: Maybe<Array<Maybe<ComponentBlocksCommonLink>>>
   orderedBy?: Maybe<Scalars['String']['output']>
+  pictogram?: Maybe<Enum_Urbanstudy_Pictogram>
   preparedBy?: Maybe<Scalars['String']['output']>
   publishedAt?: Maybe<Scalars['DateTime']['output']>
   regulations: Array<Maybe<Regulation>>
@@ -6213,6 +6256,7 @@ export type UrbanStudyFiltersInput = {
   not?: InputMaybe<UrbanStudyFiltersInput>
   or?: InputMaybe<Array<InputMaybe<UrbanStudyFiltersInput>>>
   orderedBy?: InputMaybe<StringFilterInput>
+  pictogram?: InputMaybe<StringFilterInput>
   preparedBy?: InputMaybe<StringFilterInput>
   publishedAt?: InputMaybe<DateTimeFilterInput>
   regulations?: InputMaybe<RegulationFiltersInput>
@@ -6234,6 +6278,7 @@ export type UrbanStudyInput = {
   graphicPartFiles?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
   links?: InputMaybe<Array<InputMaybe<ComponentBlocksCommonLinkInput>>>
   orderedBy?: InputMaybe<Scalars['String']['input']>
+  pictogram?: InputMaybe<Enum_Urbanstudy_Pictogram>
   preparedBy?: InputMaybe<Scalars['String']['input']>
   publishedAt?: InputMaybe<Scalars['DateTime']['input']>
   regulations?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
@@ -18434,6 +18479,7 @@ export type UrbanStudyEntityFragment = {
   updatedAt?: any | null
   year?: string | null
   urbanStudyType: Enum_Urbanstudy_Urbanstudytype
+  pictogram?: Enum_Urbanstudy_Pictogram | null
   orderedBy?: string | null
   preparedBy?: string | null
   body?: string | null
@@ -18638,6 +18684,7 @@ export type UrbanStudyBySlugQuery = {
     updatedAt?: any | null
     year?: string | null
     urbanStudyType: Enum_Urbanstudy_Urbanstudytype
+    pictogram?: Enum_Urbanstudy_Pictogram | null
     orderedBy?: string | null
     preparedBy?: string | null
     body?: string | null
@@ -20391,6 +20438,7 @@ export const UrbanStudyEntityFragmentDoc = gql`
     updatedAt
     year
     urbanStudyType
+    pictogram
     orderedBy
     preparedBy
     body
