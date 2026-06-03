@@ -128,7 +128,21 @@ const UrbanStudyPageContent = ({ urbanStudy }: Props) => {
             {...TABLE_OF_CONTENTS_HEADING_ATTRIBUTE}
             className="flex w-full max-w-200 flex-col gap-8 lg:gap-10"
           >
-            {body ? <Markdown content={body} /> : null}
+            {body ? (
+              <>
+                <Markdown content={body} />
+                <HorizontalDivider />
+              </>
+            ) : null}
+
+            {approvalText ? (
+              <>
+                <div className="flex flex-col gap-4">
+                  <Markdown content={approvalText} />
+                </div>
+                <HorizontalDivider />
+              </>
+            ) : null}
 
             {fileGroups.map((group) => (
               <div className="flex flex-col gap-4" key={group.label}>
@@ -155,18 +169,6 @@ const UrbanStudyPageContent = ({ urbanStudy }: Props) => {
                 </ul>
               </div>
             ))}
-
-            {approvalText ? (
-              <>
-                <HorizontalDivider />
-                <div className="flex flex-col gap-4">
-                  <Typography variant="h2" id={slugify(t('UrbanStudyPageContent.approvalTitle'))}>
-                    {t('UrbanStudyPageContent.approvalTitle')}
-                  </Typography>
-                  <Markdown content={approvalText} />
-                </div>
-              </>
-            ) : null}
 
             {detailItems.length > 0 ? (
               <>
