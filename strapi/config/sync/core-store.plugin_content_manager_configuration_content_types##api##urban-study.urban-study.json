@@ -1,15 +1,14 @@
 {
-  "key": "plugin_content_manager_configuration_content_types::api::regulation.regulation",
+  "key": "plugin_content_manager_configuration_content_types::api::urban-study.urban-study",
   "value": {
-    "uid": "api::regulation.regulation",
     "settings": {
       "bulkable": true,
       "filterable": true,
       "searchable": true,
       "pageSize": 10,
-      "mainField": "regNumber",
-      "defaultSortBy": "effectiveFrom",
-      "defaultSortOrder": "DESC"
+      "mainField": "title",
+      "defaultSortBy": "title",
+      "defaultSortOrder": "ASC"
     },
     "metadatas": {
       "id": {
@@ -20,24 +19,24 @@
           "sortable": true
         }
       },
-      "regNumber": {
+      "title": {
         "edit": {
-          "label": "Číslo VZN",
-          "description": "V tvare \"číslo/rok\", napr. 2/2012",
+          "label": "title",
+          "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "regNumber",
+          "label": "title",
           "searchable": true,
           "sortable": true
         }
       },
       "slug": {
         "edit": {
-          "label": "Slug",
-          "description": "Rovnaké ako Číslo VZN ale so spojovníkom (napr. 2-2012) na základe čoho sa vygeneruje adresa pre stránku VZN (napr. bratislava.sk/vzn/2-2012)",
+          "label": "slug",
+          "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
@@ -48,175 +47,227 @@
           "sortable": true
         }
       },
-      "titleText": {
+      "year": {
         "edit": {
-          "label": "Názov",
-          "description": "Tento názov bude zobrazený vedľa čísla VZN",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "titleText",
-          "searchable": true,
-          "sortable": true
-        }
-      },
-      "fullTitle": {
-        "edit": {
-          "label": "Plný názov",
-          "description": "Kompletný oficiálny názov VZN. Zatiaľ ho nikde nezobrazujeme.",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "fullTitle",
-          "searchable": true,
-          "sortable": true
-        }
-      },
-      "effectiveFrom": {
-        "edit": {
-          "label": "Dátum účinnosti",
+          "label": "year",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "effectiveFrom",
+          "label": "year",
           "searchable": true,
           "sortable": true
         }
       },
-      "category": {
+      "customPublishedAt": {
         "edit": {
-          "label": "Kategória",
+          "label": "customPublishedAt",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "category",
+          "label": "customPublishedAt",
           "searchable": true,
           "sortable": true
         }
       },
-      "isFullTextRegulation": {
+      "pictogram": {
         "edit": {
-          "label": "Je typu Úplné znenie",
+          "label": "pictogram",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "isFullTextRegulation",
+          "label": "pictogram",
           "searchable": true,
           "sortable": true
         }
       },
-      "mainDocument": {
+      "urbanStudyType": {
         "edit": {
-          "label": "Hlavný dokument",
+          "label": "urbanStudyType",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "mainDocument",
+          "label": "urbanStudyType",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "orderedBy": {
+        "edit": {
+          "label": "orderedBy",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "orderedBy",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "preparedBy": {
+        "edit": {
+          "label": "preparedBy",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "preparedBy",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "body": {
+        "edit": {
+          "label": "body",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "body",
           "searchable": false,
           "sortable": false
         }
       },
-      "attachments": {
+      "approvalText": {
         "edit": {
-          "label": "Prílohy",
+          "label": "approvalText",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "attachments",
+          "label": "approvalText",
           "searchable": false,
           "sortable": false
         }
       },
-      "amendments": {
+      "briefFiles": {
         "edit": {
-          "label": "Doplňujúce VZN",
-          "description": "Všetky VZN, ktoré doplňujú toto VZN",
+          "label": "briefFiles",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "briefFiles",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "commentsEvaluationFiles": {
+        "edit": {
+          "label": "commentsEvaluationFiles",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "commentsEvaluationFiles",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "analyticalPartFiles": {
+        "edit": {
+          "label": "analyticalPartFiles",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "analyticalPartFiles",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "writtenPartFiles": {
+        "edit": {
+          "label": "writtenPartFiles",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "writtenPartFiles",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "graphicPartFiles": {
+        "edit": {
+          "label": "graphicPartFiles",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "graphicPartFiles",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "attachmentFiles": {
+        "edit": {
+          "label": "attachmentFiles",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "attachmentFiles",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "regulations": {
+        "edit": {
+          "label": "regulations",
+          "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true,
           "mainField": "regNumber"
         },
         "list": {
-          "label": "amendments",
+          "label": "regulations",
           "searchable": false,
           "sortable": false
         }
       },
-      "amending": {
+      "links": {
         "edit": {
-          "label": "Toto VZN dopĺňa",
-          "description": "Všetky VZN, ktoré sú doplnené týmto VZN",
-          "placeholder": "",
-          "visible": true,
-          "editable": true,
-          "mainField": "regNumber"
-        },
-        "list": {
-          "label": "amending",
-          "searchable": false,
-          "sortable": false
-        }
-      },
-      "cancellation": {
-        "edit": {
-          "label": "Zrušujúce VZN",
-          "description": "VZN, ktorým bolo zrušené toto VZN",
-          "placeholder": "",
-          "visible": true,
-          "editable": true,
-          "mainField": "regNumber"
-        },
-        "list": {
-          "label": "cancellation",
-          "searchable": true,
-          "sortable": true
-        }
-      },
-      "cancelling": {
-        "edit": {
-          "label": "Toto VZN zrušuje",
-          "description": "Všetky VZN, ktoré sú zrušené týmto VZN",
-          "placeholder": "",
-          "visible": true,
-          "editable": true,
-          "mainField": "regNumber"
-        },
-        "list": {
-          "label": "cancelling",
-          "searchable": false,
-          "sortable": false
-        }
-      },
-      "urbanStudies": {
-        "edit": {
-          "label": "urbanStudies",
+          "label": "links",
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true,
-          "mainField": "title"
+          "editable": true
         },
         "list": {
-          "label": "urbanStudies",
+          "label": "links",
           "searchable": false,
           "sortable": false
         }
@@ -291,85 +342,108 @@
     "layouts": {
       "list": [
         "id",
-        "effectiveFrom",
-        "regNumber",
-        "titleText"
+        "title",
+        "slug",
+        "year"
       ],
       "edit": [
         [
           {
-            "name": "regNumber",
-            "size": 6
+            "name": "title",
+            "size": 12
           },
           {
             "name": "slug",
-            "size": 6
-          }
-        ],
-        [
-          {
-            "name": "titleText",
-            "size": 6
-          },
-          {
-            "name": "fullTitle",
-            "size": 6
-          }
-        ],
-        [
-          {
-            "name": "effectiveFrom",
-            "size": 4
-          },
-          {
-            "name": "isFullTextRegulation",
-            "size": 4
-          },
-          {
-            "name": "category",
-            "size": 4
-          }
-        ],
-        [
-          {
-            "name": "mainDocument",
-            "size": 6
-          }
-        ],
-        [
-          {
-            "name": "attachments",
             "size": 12
           }
         ],
         [
           {
-            "name": "amendments",
+            "name": "year",
             "size": 6
           },
           {
-            "name": "amending",
+            "name": "urbanStudyType",
             "size": 6
           }
         ],
         [
           {
-            "name": "cancellation",
+            "name": "body",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "approvalText",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "briefFiles",
             "size": 6
           },
           {
-            "name": "cancelling",
+            "name": "commentsEvaluationFiles",
             "size": 6
           }
         ],
         [
           {
-            "name": "urbanStudies",
+            "name": "writtenPartFiles",
+            "size": 6
+          },
+          {
+            "name": "graphicPartFiles",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "attachmentFiles",
+            "size": 6
+          },
+          {
+            "name": "customPublishedAt",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "analyticalPartFiles",
+            "size": 6
+          },
+          {
+            "name": "orderedBy",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "preparedBy",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "links",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "regulations",
+            "size": 6
+          },
+          {
+            "name": "pictogram",
             "size": 6
           }
         ]
       ]
-    }
+    },
+    "uid": "api::urban-study.urban-study"
   },
   "type": "object",
   "environment": null,

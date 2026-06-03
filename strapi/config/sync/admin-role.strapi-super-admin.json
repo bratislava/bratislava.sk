@@ -1809,12 +1809,13 @@
           "amendments",
           "amending",
           "cancellation",
-          "cancelling"
+          "cancelling",
+          "urbanStudies"
         ]
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "gbrnbtkfkeu8j88v00606dfc",
+      "documentId": "ectktgjwjggcpi91q19h0uqm",
       "locale": null
     },
     {
@@ -1852,12 +1853,13 @@
           "amendments",
           "amending",
           "cancellation",
-          "cancelling"
+          "cancelling",
+          "urbanStudies"
         ]
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "kxrpil2jydgv383w2a6iw0l4",
+      "documentId": "k8p1exrs3706miexpvrjc7eh",
       "locale": null
     },
     {
@@ -1877,12 +1879,13 @@
           "amendments",
           "amending",
           "cancellation",
-          "cancelling"
+          "cancelling",
+          "urbanStudies"
         ]
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "sgtqe9a3rl34y20rvta5khij",
+      "documentId": "jy6xd9fv8t7gkypng58kizvs",
       "locale": null
     },
     {
@@ -2040,6 +2043,135 @@
       "conditions": [],
       "actionParameters": {},
       "documentId": "nyaslf75jj6bz943azfpip8t",
+      "locale": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "api::urban-study.urban-study",
+      "properties": {
+        "fields": [
+          "title",
+          "slug",
+          "year",
+          "customPublishedAt",
+          "pictogram",
+          "urbanStudyType",
+          "orderedBy",
+          "preparedBy",
+          "body",
+          "approvalText",
+          "briefFiles",
+          "commentsEvaluationFiles",
+          "analyticalPartFiles",
+          "writtenPartFiles",
+          "graphicPartFiles",
+          "attachmentFiles",
+          "regulations",
+          "links.label",
+          "links.page",
+          "links.article",
+          "links.url",
+          "links.analyticsId",
+          "links.inbaRelease",
+          "links.regulation",
+          "links.asset"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": {},
+      "documentId": "rlqgvhrem19iljfp06cgtq2p",
+      "locale": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "subject": "api::urban-study.urban-study",
+      "properties": {},
+      "conditions": [],
+      "actionParameters": {},
+      "documentId": "zfl94rur2uv86ol016ncb8y2",
+      "locale": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.publish",
+      "subject": "api::urban-study.urban-study",
+      "properties": {},
+      "conditions": [],
+      "actionParameters": {},
+      "documentId": "sikq8odcwqfncxwixjt6c3ed",
+      "locale": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::urban-study.urban-study",
+      "properties": {
+        "fields": [
+          "title",
+          "slug",
+          "year",
+          "customPublishedAt",
+          "pictogram",
+          "urbanStudyType",
+          "orderedBy",
+          "preparedBy",
+          "body",
+          "approvalText",
+          "briefFiles",
+          "commentsEvaluationFiles",
+          "analyticalPartFiles",
+          "writtenPartFiles",
+          "graphicPartFiles",
+          "attachmentFiles",
+          "regulations",
+          "links.label",
+          "links.page",
+          "links.article",
+          "links.url",
+          "links.analyticsId",
+          "links.inbaRelease",
+          "links.regulation",
+          "links.asset"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": {},
+      "documentId": "pnr58v11fuoolvbmrh0zsryb",
+      "locale": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::urban-study.urban-study",
+      "properties": {
+        "fields": [
+          "title",
+          "slug",
+          "year",
+          "customPublishedAt",
+          "pictogram",
+          "urbanStudyType",
+          "orderedBy",
+          "preparedBy",
+          "body",
+          "approvalText",
+          "briefFiles",
+          "commentsEvaluationFiles",
+          "analyticalPartFiles",
+          "writtenPartFiles",
+          "graphicPartFiles",
+          "attachmentFiles",
+          "regulations",
+          "links.label",
+          "links.page",
+          "links.article",
+          "links.url",
+          "links.analyticsId",
+          "links.inbaRelease",
+          "links.regulation",
+          "links.asset"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": {},
+      "documentId": "ydi3srrhz42b6aqad1wifgkr",
       "locale": null
     },
     {
