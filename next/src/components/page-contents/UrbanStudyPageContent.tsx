@@ -99,10 +99,15 @@ const UrbanStudyPageContent = ({ urbanStudy }: Props) => {
       </div>
 
       <SectionContainer className="py-6 lg:py-12">
-        <div className="flex max-w-200 flex-col gap-8 lg:gap-10">
-          <TableOfContents />
+        <div className="flex flex-col gap-8 lg:flex-row lg:items-start lg:gap-12">
+          <aside className="w-full lg:sticky lg:top-12 lg:order-last lg:w-80 lg:shrink-0">
+            <TableOfContents />
+          </aside>
 
-          <div {...TABLE_OF_CONTENTS_HEADING_ATTRIBUTE} className="flex flex-col gap-8 lg:gap-10">
+          <div
+            {...TABLE_OF_CONTENTS_HEADING_ATTRIBUTE}
+            className="flex w-full max-w-200 flex-col gap-8 lg:gap-10"
+          >
             {body ? <Markdown content={body} /> : null}
 
             {fileGroups.map((group) => (
