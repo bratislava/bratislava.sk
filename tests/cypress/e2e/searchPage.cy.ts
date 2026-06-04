@@ -40,7 +40,7 @@ describe('S01 - ', { testIsolation: false }, () => {
               .should('exist')
           })
           cy.dataCy('search-section-Kontakty').scrollIntoView().should('be.visible')
-          cy.dataCy('enter-search-query').should('contain', 'Zadajte hľadaný výrazz')
+          cy.dataCy('enter-search-query').should('contain', 'Zadajte hľadaný výraz')
 
           cy.dataCy('search-section-VZN').scrollIntoView().should('be.visible')
           cy.dataCy('search-section-VZN').then((section) => {
