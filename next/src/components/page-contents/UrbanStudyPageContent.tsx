@@ -5,6 +5,7 @@ import { Fragment } from 'react'
 
 import FileRowCard from '@/src/components/cards/FileRowCard'
 import HorizontalDivider from '@/src/components/common/Divider/HorizontalDivider'
+import FileList from '@/src/components/common/FileList/FileList'
 import Icon from '@/src/components/common/Icon/Icon'
 import Links from '@/src/components/common/Links/Links'
 import Pictogram from '@/src/components/common/Pictogram/Pictogram'
@@ -51,6 +52,7 @@ const UrbanStudyPageContent = ({ urbanStudy }: Props) => {
     writtenPartFiles,
     graphicPartFiles,
     attachmentFiles,
+    fileSections,
     regulations,
     links,
   } = urbanStudy
@@ -80,6 +82,7 @@ const UrbanStudyPageContent = ({ urbanStudy }: Props) => {
     { label: t('UrbanStudyPageContent.updatedAt'), value: formatDate(updatedAt) },
   ].filter((item) => !!item.value)
 
+  const filteredFileSections = fileSections?.filter(isDefined) ?? []
   const filteredRegulations = regulations?.filter(isDefined) ?? []
   const filteredLinks = links?.filter(isDefined) ?? []
 
@@ -134,6 +137,17 @@ const UrbanStudyPageContent = ({ urbanStudy }: Props) => {
                 <HorizontalDivider />
               </>
             ) : null}
+
+            {filteredFileSections.map((fileSection, index) => (
+              <FileList
+                // eslint-disable-next-line react/no-array-index-key
+                key={index}
+                title={fileSection.title}
+                text={fileSection.text}
+                files={fileSection.fileList?.filter(isDefined) ?? []}
+                titleLevel={fileSection.titleLevelFileListSection}
+              />
+            ))}
 
             {approvalText ? (
               <>

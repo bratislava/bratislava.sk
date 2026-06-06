@@ -4578,6 +4578,7 @@ type UrbanStudy {
   createdAt: DateTime
   customPublishedAt: DateTime
   documentId: ID!
+  fileSections(filters: ComponentSectionsFileListFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentSectionsFileList]
   graphicPartFiles(filters: UploadFileFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [UploadFile]!
   graphicPartFiles_connection(filters: UploadFileFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UploadFileRelationResponseCollection
   links(filters: ComponentBlocksCommonLinkFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksCommonLink]
@@ -4617,6 +4618,7 @@ input UrbanStudyFiltersInput {
   createdAt: DateTimeFilterInput
   customPublishedAt: DateTimeFilterInput
   documentId: IDFilterInput
+  fileSections: ComponentSectionsFileListFiltersInput
   links: ComponentBlocksCommonLinkFiltersInput
   not: UrbanStudyFiltersInput
   or: [UrbanStudyFiltersInput]
@@ -4640,6 +4642,7 @@ input UrbanStudyInput {
   briefFiles: [ID]
   commentsEvaluationFiles: [ID]
   customPublishedAt: DateTime
+  fileSections: [ComponentSectionsFileListInput]
   graphicPartFiles: [ID]
   links: [ComponentBlocksCommonLinkInput]
   orderedBy: String

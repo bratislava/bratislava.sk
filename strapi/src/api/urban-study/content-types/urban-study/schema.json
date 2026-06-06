@@ -152,6 +152,11 @@
       "target": "api::regulation.regulation",
       "mappedBy": "urbanStudies"
     },
+    "fileSections": {
+      "type": "component",
+      "component": "sections.file-list",
+      "repeatable": true
+    },
     "links": {
       "type": "component",
       "component": "blocks.common-link",

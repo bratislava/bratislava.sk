@@ -6120,6 +6120,7 @@ export type UrbanStudy = {
   createdAt?: Maybe<Scalars['DateTime']['output']>
   customPublishedAt?: Maybe<Scalars['DateTime']['output']>
   documentId: Scalars['ID']['output']
+  fileSections?: Maybe<Array<Maybe<ComponentSectionsFileList>>>
   graphicPartFiles: Array<Maybe<UploadFile>>
   graphicPartFiles_connection?: Maybe<UploadFileRelationResponseCollection>
   links?: Maybe<Array<Maybe<ComponentBlocksCommonLink>>>
@@ -6182,6 +6183,12 @@ export type UrbanStudyCommentsEvaluationFilesArgs = {
 
 export type UrbanStudyCommentsEvaluationFiles_ConnectionArgs = {
   filters?: InputMaybe<UploadFileFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type UrbanStudyFileSectionsArgs = {
+  filters?: InputMaybe<ComponentSectionsFileListFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
 }
@@ -6252,6 +6259,7 @@ export type UrbanStudyFiltersInput = {
   createdAt?: InputMaybe<DateTimeFilterInput>
   customPublishedAt?: InputMaybe<DateTimeFilterInput>
   documentId?: InputMaybe<IdFilterInput>
+  fileSections?: InputMaybe<ComponentSectionsFileListFiltersInput>
   links?: InputMaybe<ComponentBlocksCommonLinkFiltersInput>
   not?: InputMaybe<UrbanStudyFiltersInput>
   or?: InputMaybe<Array<InputMaybe<UrbanStudyFiltersInput>>>
@@ -6275,6 +6283,7 @@ export type UrbanStudyInput = {
   briefFiles?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
   commentsEvaluationFiles?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
   customPublishedAt?: InputMaybe<Scalars['DateTime']['input']>
+  fileSections?: InputMaybe<Array<InputMaybe<ComponentSectionsFileListInput>>>
   graphicPartFiles?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
   links?: InputMaybe<Array<InputMaybe<ComponentBlocksCommonLinkInput>>>
   orderedBy?: InputMaybe<Scalars['String']['input']>
@@ -18547,6 +18556,27 @@ export type UrbanStudyEntityFragment = {
     createdAt?: any | null
     updatedAt?: any | null
   } | null>
+  fileSections?: Array<{
+    __typename?: 'ComponentSectionsFileList'
+    title?: string | null
+    text?: string | null
+    titleLevelFileListSection?: Enum_Componentsectionsfilelist_Titlelevel | null
+    fileList?: Array<{
+      __typename?: 'ComponentBlocksFile'
+      id: string
+      title?: string | null
+      media?: {
+        __typename?: 'UploadFile'
+        documentId: string
+        url: string
+        name: string
+        ext?: string | null
+        size: number
+        createdAt?: any | null
+        updatedAt?: any | null
+      } | null
+    } | null> | null
+  } | null> | null
   regulations: Array<{
     __typename?: 'Regulation'
     regNumber: string
@@ -18752,6 +18782,27 @@ export type UrbanStudyBySlugQuery = {
       createdAt?: any | null
       updatedAt?: any | null
     } | null>
+    fileSections?: Array<{
+      __typename?: 'ComponentSectionsFileList'
+      title?: string | null
+      text?: string | null
+      titleLevelFileListSection?: Enum_Componentsectionsfilelist_Titlelevel | null
+      fileList?: Array<{
+        __typename?: 'ComponentBlocksFile'
+        id: string
+        title?: string | null
+        media?: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          name: string
+          ext?: string | null
+          size: number
+          createdAt?: any | null
+          updatedAt?: any | null
+        } | null
+      } | null> | null
+    } | null> | null
     regulations: Array<{
       __typename?: 'Regulation'
       regNumber: string
@@ -20461,6 +20512,9 @@ export const UrbanStudyEntityFragmentDoc = gql`
     attachmentFiles {
       ...UploadFileEntity
     }
+    fileSections {
+      ...FileListSection
+    }
     regulations {
       ...RegulationEntity
     }
@@ -20470,6 +20524,7 @@ export const UrbanStudyEntityFragmentDoc = gql`
   }
   ${UrbanStudySlugEntityFragmentDoc}
   ${UploadFileEntityFragmentDoc}
+  ${FileListSectionFragmentDoc}
   ${RegulationEntityFragmentDoc}
   ${CommonLinkFragmentDoc}
 `
