@@ -101,6 +101,12 @@
         ],
         [
           {
+            "name": "text",
+            "size": 12
+          }
+        ],
+        [
+          {
             "name": "fileList",
             "size": 12
           }
