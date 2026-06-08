@@ -29,6 +29,10 @@ const searchIndexSettings = {
     'article.perex',
     'asset.title',
     'asset.description',
+    'urban-study.title',
+    'urban-study.body',
+    'urban-study.approvalText',
+    'urban-study.year',
     'document.title',
     'document.description',
     'inba-article.title',
@@ -60,6 +64,8 @@ const searchIndexSettings = {
     'article.addedAtTimestamp',
     'document.updatedAtTimestamp',
     'asset.updatedAtTimestamp',
+    'urban-study.updatedAtTimestamp',
+    'urban-study.customPublishedAtTimestamp',
     'inba-release.releaseDate', // releaseDate is not datetime but only date (e.g. 2025-12-07), so we can sort by it directly instead of creating timestamp
     'regulation.effectiveFromTimestamp',
     'faq.publishedAtTimestamp',
@@ -120,6 +126,24 @@ const config = {
         // use (number) filters.
         publishedAtTimestamp: entry.publishedAt ? new Date(entry.publishedAt).getTime() : undefined,
         updatedAtTimestamp: entry.updatedAt ? new Date(entry.updatedAt).getTime() : undefined,
+      }),
+  },
+  'urban-study': {
+    indexName: 'search_index',
+    entriesQuery: {
+      locale: '*',
+    },
+    settings: searchIndexSettings,
+    transformEntry: ({ entry }) =>
+      wrapSearchIndexEntry('urban-study', {
+        ...entry,
+        // Meilisearch doesn't support filtering dates as ISO strings, therefore we convert it to UNIX timestamp to
+        // use (number) filters.
+        publishedAtTimestamp: entry.publishedAt ? new Date(entry.publishedAt).getTime() : undefined,
+        updatedAtTimestamp: entry.updatedAt ? new Date(entry.updatedAt).getTime() : undefined,
+        customPublishedAtTimestamp: entry.customPublishedAt
+          ? new Date(entry.customPublishedAt).getTime()
+          : undefined,
       }),
   },
   document: {

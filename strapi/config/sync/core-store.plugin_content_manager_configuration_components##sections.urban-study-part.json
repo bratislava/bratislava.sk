@@ -1,7 +1,6 @@
 {
-  "key": "plugin_content_manager_configuration_components::sections.file-list",
+  "key": "plugin_content_manager_configuration_components::sections.urban-study-part",
   "value": {
-    "uid": "sections.file-list",
     "settings": {
       "bulkable": true,
       "filterable": true,
@@ -48,32 +47,19 @@
           "sortable": true
         }
       },
-      "fileList": {
+      "items": {
         "edit": {
           "label": "Súbory",
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true
+          "editable": true,
+          "mainField": "title"
         },
         "list": {
-          "label": "fileList",
+          "label": "items",
           "searchable": false,
           "sortable": false
-        }
-      },
-      "titleLevel": {
-        "edit": {
-          "label": "Úroveň nadpisu sekcie",
-          "description": "Úroveň nadpisu meníme na h3 iba ak je to potrebné sémanticky. Nikdy ju nemeníme len kvôli vizuálnej veľkosti nadpisu.",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "titleLevel",
-          "searchable": true,
-          "sortable": true
         }
       },
       "documentId": {
@@ -86,20 +72,12 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "title",
-        "text",
-        "documentId"
-      ],
       "edit": [
         [
           {
             "name": "title",
             "size": 12
-          }
-        ],
-        [
+          },
           {
             "name": "text",
             "size": 12
@@ -107,18 +85,19 @@
         ],
         [
           {
-            "name": "fileList",
+            "name": "items",
             "size": 12
           }
-        ],
-        [
-          {
-            "name": "titleLevel",
-            "size": 6
-          }
         ]
+      ],
+      "list": [
+        "id",
+        "title",
+        "text",
+        "items"
       ]
     },
+    "uid": "sections.urban-study-part",
     "isComponent": true
   },
   "type": "object",

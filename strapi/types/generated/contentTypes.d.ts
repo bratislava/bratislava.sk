@@ -790,6 +790,7 @@ export interface ApiGeneralGeneral extends Struct.SingleTypeSchema {
     publishedAt: Schema.Attribute.DateTime
     updatedAt: Schema.Attribute.DateTime
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> & Schema.Attribute.Private
+    urbanStudiesPage: Schema.Attribute.Relation<'oneToOne', 'api::page.page'>
     vznPage: Schema.Attribute.Relation<'oneToOne', 'api::page.page'>
   }
 }
@@ -1149,6 +1150,7 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
         'sections.official-board',
         'sections.videos',
         'sections.regulations',
+        'sections.urban-studies',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -1253,6 +1255,7 @@ export interface ApiRegulationRegulation extends Struct.CollectionTypeSchema {
     titleText: Schema.Attribute.String
     updatedAt: Schema.Attribute.DateTime
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> & Schema.Attribute.Private
+    urbanStudies: Schema.Attribute.Relation<'manyToMany', 'api::urban-study.urban-study'>
   }
 }
 
@@ -1324,6 +1327,54 @@ export interface ApiTaxAdministratorsListTaxAdministratorsList extends Struct.Si
       Schema.Attribute.Required
     updatedAt: Schema.Attribute.DateTime
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> & Schema.Attribute.Private
+  }
+}
+
+export interface ApiUrbanStudyUrbanStudy extends Struct.CollectionTypeSchema {
+  collectionName: 'urban_studies'
+  info: {
+    displayName: 'WIP \u00DAzemn\u00E9 \u0161t\u00FAdie'
+    pluralName: 'urban-studies'
+    singularName: 'urban-study'
+  }
+  options: {
+    draftAndPublish: true
+  }
+  attributes: {
+    approvalText: Schema.Attribute.RichText
+    body: Schema.Attribute.RichText
+    createdAt: Schema.Attribute.DateTime
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> & Schema.Attribute.Private
+    customPublishedAt: Schema.Attribute.DateTime
+    links: Schema.Attribute.Component<'blocks.common-link', true>
+    locale: Schema.Attribute.String & Schema.Attribute.Private
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::urban-study.urban-study'> &
+      Schema.Attribute.Private
+    preparedBy: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'Hlavn\u00E9 mesto Slovenskej republiky Bratislava'>
+    procuredBy: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'Hlavn\u00E9 mesto Slovenskej republiky Bratislava'>
+    publishedAt: Schema.Attribute.DateTime
+    regulations: Schema.Attribute.Relation<'manyToMany', 'api::regulation.regulation'>
+    slug: Schema.Attribute.UID<'title'> & Schema.Attribute.Required
+    title: Schema.Attribute.String & Schema.Attribute.Required
+    updatedAt: Schema.Attribute.DateTime
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> & Schema.Attribute.Private
+    urbanStudyParts: Schema.Attribute.Component<'sections.urban-study-part', true>
+    urbanStudyType: Schema.Attribute.Enumeration<
+      [
+        'urbanStudyType.urbanistickaStudia',
+        'urbanStudyType.odvetvovaStudia',
+        'urbanStudyType.uzemnyGenerel',
+        'urbanStudyType.uzemnyPlan',
+        'urbanStudyType.uzemnyPlanZony',
+        'urbanStudyType.uzemnyPlanZmenyADoplnky',
+        'urbanStudyType.iny',
+      ]
+    > &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'urbanStudyType.urbanistickaStudia'>
+    year: Schema.Attribute.String
   }
 }
 
@@ -1772,6 +1823,7 @@ declare module '@strapi/strapi' {
       'api::regulation.regulation': ApiRegulationRegulation
       'api::tag.tag': ApiTagTag
       'api::tax-administrators-list.tax-administrators-list': ApiTaxAdministratorsListTaxAdministratorsList
+      'api::urban-study.urban-study': ApiUrbanStudyUrbanStudy
       'plugin::content-releases.release': PluginContentReleasesRelease
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction
       'plugin::i18n.locale': PluginI18NLocale

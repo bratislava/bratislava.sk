@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_blocks_urban_study_part_items",
+  "info": {
+    "displayName": "urban study part item"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "media": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    }
+  },
+  "config": {}
+}

@@ -889,7 +889,8 @@
           "vznPage",
           "inbaPage",
           "inbaReleasesPage",
-          "assetsPage"
+          "assetsPage",
+          "urbanStudiesPage"
         ],
         "locales": [
           "sk",
@@ -898,7 +899,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "nrmx9d66kveg7s332u3ut7dl",
+      "documentId": "eeh88yzknmaihnla73i24kvm",
       "locale": null
     },
     {
@@ -955,7 +956,8 @@
           "vznPage",
           "inbaPage",
           "inbaReleasesPage",
-          "assetsPage"
+          "assetsPage",
+          "urbanStudiesPage"
         ],
         "locales": [
           "sk",
@@ -964,7 +966,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "yli1l9aa7qp866o1sfhry6yd",
+      "documentId": "fnk31ti65lvnfe21owibtbok",
       "locale": null
     },
     {
@@ -993,7 +995,8 @@
           "vznPage",
           "inbaPage",
           "inbaReleasesPage",
-          "assetsPage"
+          "assetsPage",
+          "urbanStudiesPage"
         ],
         "locales": [
           "sk",
@@ -1002,7 +1005,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "kugyh62kfyjmx0o6v7vrl2fo",
+      "documentId": "eeyzsdvgp354250106e6jfq5",
       "locale": null
     },
     {
@@ -1809,12 +1812,13 @@
           "amendments",
           "amending",
           "cancellation",
-          "cancelling"
+          "cancelling",
+          "urbanStudies"
         ]
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "gbrnbtkfkeu8j88v00606dfc",
+      "documentId": "ectktgjwjggcpi91q19h0uqm",
       "locale": null
     },
     {
@@ -1852,12 +1856,13 @@
           "amendments",
           "amending",
           "cancellation",
-          "cancelling"
+          "cancelling",
+          "urbanStudies"
         ]
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "kxrpil2jydgv383w2a6iw0l4",
+      "documentId": "k8p1exrs3706miexpvrjc7eh",
       "locale": null
     },
     {
@@ -1877,12 +1882,13 @@
           "amendments",
           "amending",
           "cancellation",
-          "cancelling"
+          "cancelling",
+          "urbanStudies"
         ]
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "sgtqe9a3rl34y20rvta5khij",
+      "documentId": "jy6xd9fv8t7gkypng58kizvs",
       "locale": null
     },
     {
@@ -2040,6 +2046,126 @@
       "conditions": [],
       "actionParameters": {},
       "documentId": "nyaslf75jj6bz943azfpip8t",
+      "locale": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "api::urban-study.urban-study",
+      "properties": {
+        "fields": [
+          "title",
+          "slug",
+          "year",
+          "customPublishedAt",
+          "urbanStudyType",
+          "procuredBy",
+          "preparedBy",
+          "body",
+          "approvalText",
+          "regulations",
+          "urbanStudyParts.title",
+          "urbanStudyParts.text",
+          "urbanStudyParts.items.title",
+          "urbanStudyParts.items.media",
+          "links.label",
+          "links.page",
+          "links.article",
+          "links.url",
+          "links.analyticsId",
+          "links.inbaRelease",
+          "links.regulation",
+          "links.asset"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": {},
+      "documentId": "m9csomh8qjjpy69t5zy6e67x",
+      "locale": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "subject": "api::urban-study.urban-study",
+      "properties": {},
+      "conditions": [],
+      "actionParameters": {},
+      "documentId": "zfl94rur2uv86ol016ncb8y2",
+      "locale": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.publish",
+      "subject": "api::urban-study.urban-study",
+      "properties": {},
+      "conditions": [],
+      "actionParameters": {},
+      "documentId": "sikq8odcwqfncxwixjt6c3ed",
+      "locale": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::urban-study.urban-study",
+      "properties": {
+        "fields": [
+          "title",
+          "slug",
+          "year",
+          "customPublishedAt",
+          "urbanStudyType",
+          "procuredBy",
+          "preparedBy",
+          "body",
+          "approvalText",
+          "regulations",
+          "urbanStudyParts.title",
+          "urbanStudyParts.text",
+          "urbanStudyParts.items.title",
+          "urbanStudyParts.items.media",
+          "links.label",
+          "links.page",
+          "links.article",
+          "links.url",
+          "links.analyticsId",
+          "links.inbaRelease",
+          "links.regulation",
+          "links.asset"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": {},
+      "documentId": "uqd675jxl7cvz5hrzl7boz2t",
+      "locale": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::urban-study.urban-study",
+      "properties": {
+        "fields": [
+          "title",
+          "slug",
+          "year",
+          "customPublishedAt",
+          "urbanStudyType",
+          "procuredBy",
+          "preparedBy",
+          "body",
+          "approvalText",
+          "regulations",
+          "urbanStudyParts.title",
+          "urbanStudyParts.text",
+          "urbanStudyParts.items.title",
+          "urbanStudyParts.items.media",
+          "links.label",
+          "links.page",
+          "links.article",
+          "links.url",
+          "links.analyticsId",
+          "links.inbaRelease",
+          "links.regulation",
+          "links.asset"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": {},
+      "documentId": "amj9lzj1z9pt9igtl1j8v73s",
       "locale": null
     },
     {

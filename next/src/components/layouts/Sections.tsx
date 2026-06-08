@@ -34,6 +34,7 @@ import StarzLandingPageSection from '@/src/components/sections/StarzLandingPageS
 import TextWithImageOverlappedSection from '@/src/components/sections/TextWithImageOverlappedSection'
 import TextWithImageSection from '@/src/components/sections/TextWithImageSection'
 import TootootEventsSection from '@/src/components/sections/TootootEventsSection'
+import UrbanStudiesSection from '@/src/components/sections/UrbanStudiesSection/UrbanStudiesSection'
 import VideosSection from '@/src/components/sections/VideosSection'
 import { SectionsFragment } from '@/src/services/graphql'
 
@@ -118,6 +119,9 @@ const SectionContent = ({ section }: { section: SectionsFragment }) => {
 
     case 'ComponentSectionsAssets':
       return <AssetsSection section={section} />
+
+    case 'ComponentSectionsUrbanStudies':
+      return <UrbanStudiesSection section={section} />
 
     case 'ComponentSectionsNumericalList':
       return <NumericalListSection section={section} />

@@ -74,6 +74,7 @@ import Travel48pxFilledIcon from '@/src/assets/pictograms-menu/48px/travel_48px_
 import Travel48pxStrokeIcon from '@/src/assets/pictograms-menu/48px/travel_48px_stroke.svg'
 import Tree48pxIcon from '@/src/assets/pictograms-menu/48px/tree_48px.svg'
 import Trolleybus48pxIcon from '@/src/assets/pictograms-menu/48px/trolleybus_48px.svg'
+import UrbanStudy48pxIcon from '@/src/assets/pictograms-menu/48px/urbanStudy_48px.svg'
 import Accommodation64pxIcon from '@/src/assets/pictograms-menu/64px/accommodation_64px.svg'
 import Bike64pxIcon from '@/src/assets/pictograms-menu/64px/bike_64px.svg'
 import Calendar64pxIcon from '@/src/assets/pictograms-menu/64px/calendar_64px.svg'
@@ -164,6 +165,7 @@ export const ICON_URL_MAP: IconUrlMap = {
     zivotne_prostredie_03: PlantInHand48pxIcon,
     zelen_03: Tree48pxIcon,
     vystavba_a_nehnutelnosti_03: Accommodation48pxIcon,
+    uzemny_plan_03: UrbanStudy48pxIcon,
     rozvoj_mesta_03: Crane48pxIcon,
     verejne_osvetlenie_03: StreetLampOn48pxIcon,
     klima_03: Clima48pxIcon,
@@ -183,6 +185,8 @@ export const ICON_URL_MAP: IconUrlMap = {
     sluzby_06: Stage48pxIcon,
     koncepcia_06: Culture48pxIcon,
     komunity_06: Community48pxIcon,    
+    // Urban studies
+    urban_study: UrbanStudy48pxIcon,
     // Mobile menu links
     kontakt: Phone48pxIcon,
     // Top Services

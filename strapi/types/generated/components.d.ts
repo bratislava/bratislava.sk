@@ -364,6 +364,17 @@ export interface BlocksTopServicesItem extends Struct.ComponentSchema {
   }
 }
 
+export interface BlocksUrbanStudyPartItem extends Struct.ComponentSchema {
+  collectionName: 'components_blocks_urban_study_part_items'
+  info: {
+    displayName: 'urban study part item'
+  }
+  attributes: {
+    media: Schema.Attribute.Media<'images' | 'files'> & Schema.Attribute.Required
+    title: Schema.Attribute.String
+  }
+}
+
 export interface BlocksVideo extends Struct.ComponentSchema {
   collectionName: 'components_blocks_videos'
   info: {
@@ -1198,6 +1209,32 @@ export interface SectionsTopServices extends Struct.ComponentSchema {
   }
 }
 
+export interface SectionsUrbanStudies extends Struct.ComponentSchema {
+  collectionName: 'components_sections_urban_studies'
+  info: {
+    displayName: '\u00DAzemn\u00E9 \u0161t\u00FAdie [WIP]'
+  }
+  attributes: {
+    showAll: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>
+    text: Schema.Attribute.Text
+    title: Schema.Attribute.String
+    titleLevel: Schema.Attribute.Enumeration<['h2', 'h3']> & Schema.Attribute.DefaultTo<'h2'>
+    urbanStudies: Schema.Attribute.Relation<'oneToMany', 'api::urban-study.urban-study'>
+  }
+}
+
+export interface SectionsUrbanStudyPart extends Struct.ComponentSchema {
+  collectionName: 'components_sections_urban_study_parts'
+  info: {
+    displayName: 'urban study part'
+  }
+  attributes: {
+    items: Schema.Attribute.Component<'blocks.urban-study-part-item', true>
+    text: Schema.Attribute.Text
+    title: Schema.Attribute.String
+  }
+}
+
 export interface SectionsVideos extends Struct.ComponentSchema {
   collectionName: 'components_sections_videos'
   info: {
@@ -1264,6 +1301,7 @@ declare module '@strapi/strapi' {
       'blocks.starz-landing-page-banner': BlocksStarzLandingPageBanner
       'blocks.subnavigation-link': BlocksSubnavigationLink
       'blocks.top-services-item': BlocksTopServicesItem
+      'blocks.urban-study-part-item': BlocksUrbanStudyPartItem
       'blocks.video': BlocksVideo
       'general.header': GeneralHeader
       'general.header-link': GeneralHeaderLink
@@ -1314,6 +1352,8 @@ declare module '@strapi/strapi' {
       'sections.text-with-image-overlapped': SectionsTextWithImageOverlapped
       'sections.tootoot-events': SectionsTootootEvents
       'sections.top-services': SectionsTopServices
+      'sections.urban-studies': SectionsUrbanStudies
+      'sections.urban-study-part': SectionsUrbanStudyPart
       'sections.videos': SectionsVideos
       'sidebars.empty-sidebar': SidebarsEmptySidebar
       'tax-administrators.tax-administrator': TaxAdministratorsTaxAdministrator

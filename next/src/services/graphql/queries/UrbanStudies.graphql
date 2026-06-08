@@ -1,0 +1,56 @@
+fragment UrbanStudyPartItem on ComponentBlocksUrbanStudyPartItem {
+  id
+  title
+  media {
+    ...UploadFileEntity
+  }
+}
+
+fragment UrbanStudyPart on ComponentSectionsUrbanStudyPart {
+  title
+  text
+  items(pagination: { limit: -1 }) {
+    ...UrbanStudyPartItem
+  }
+}
+
+fragment UrbanStudySlugEntity on UrbanStudy {
+  __typename
+  documentId
+  slug
+  title
+}
+
+fragment UrbanStudyEntity on UrbanStudy {
+  ...UrbanStudySlugEntity
+  publishedAt
+  updatedAt
+  year
+  urbanStudyType
+  procuredBy
+  preparedBy
+  body
+  approvalText
+  urbanStudyParts {
+    ...UrbanStudyPart
+  }
+  regulations {
+    ...RegulationEntity
+  }
+  links {
+    ...CommonLink
+  }
+}
+
+query UrbanStudyBySlug($slug: String!) {
+  urbanStudies(filters: { slug: { eq: $slug } }) {
+    ...UrbanStudyEntity
+  }
+}
+
+query UrbanStudiesStaticPaths($limit: Int = -1) {
+  urbanStudies(pagination: { limit: $limit }) {
+    documentId
+    slug
+  }
+}

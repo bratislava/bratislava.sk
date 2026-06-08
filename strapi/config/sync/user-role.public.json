@@ -156,6 +156,16 @@
       "locale": null
     },
     {
+      "action": "api::urban-study.urban-study.find",
+      "documentId": "o6s6vsik4ubzv0xbf0ytmtlp",
+      "locale": null
+    },
+    {
+      "action": "api::urban-study.urban-study.findOne",
+      "documentId": "vgznwk5xcujyilnvkng97m84",
+      "locale": null
+    },
+    {
       "action": "plugin::i18n.locales.listLocales",
       "documentId": "swakk90q1r3nn3r2fw5q02e1",
       "locale": null

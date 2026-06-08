@@ -206,6 +206,21 @@
           "sortable": false
         }
       },
+      "urbanStudies": {
+        "edit": {
+          "label": "urbanStudies",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "title"
+        },
+        "list": {
+          "label": "urbanStudies",
+          "searchable": false,
+          "sortable": false
+        }
+      },
       "createdAt": {
         "edit": {
           "label": "createdAt",
@@ -344,6 +359,12 @@
           },
           {
             "name": "cancelling",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "urbanStudies",
             "size": 6
           }
         ]

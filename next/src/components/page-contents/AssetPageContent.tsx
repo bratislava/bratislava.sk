@@ -5,6 +5,7 @@ import { Fragment, useMemo } from 'react'
 import FileRowCard from '@/src/components/cards/FileRowCard'
 import Breadcrumbs, { Breadcrumb } from '@/src/components/common/Breadcrumbs/Breadcrumbs'
 import { getPageBreadcrumbs } from '@/src/components/common/Breadcrumbs/getPageBreadcrumbs'
+import DescriptionList from '@/src/components/common/DescriptionList/DescriptionList'
 import HorizontalDivider from '@/src/components/common/Divider/HorizontalDivider'
 import AssetPageHeader from '@/src/components/common/PageHeader/AssetPageHeader'
 import SectionContainer from '@/src/components/layouts/SectionContainer'
@@ -88,14 +89,7 @@ const AssetPageContent = ({ asset }: Props) => {
           <div className="flex flex-col gap-8 lg:gap-10">
             <div className="flex flex-col gap-4">
               <Typography variant="h2">{t('AssetPageContent.detailsTitle')}</Typography>
-              <div className="flex flex-col gap-4">
-                {detailItems.map(({ label, value }, index) => (
-                  <div className="flex flex-col flex-wrap sm:flex-row sm:gap-x-6" key={index}>
-                    <Typography className="basis-1/3">{`${label}:`}</Typography>
-                    <Typography>{value}</Typography>
-                  </div>
-                ))}
-              </div>
+              <DescriptionList items={detailItems} />
             </div>
             {description ? (
               <>

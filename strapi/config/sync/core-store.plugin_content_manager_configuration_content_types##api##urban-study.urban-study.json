@@ -1,15 +1,14 @@
 {
-  "key": "plugin_content_manager_configuration_content_types::api::general.general",
+  "key": "plugin_content_manager_configuration_content_types::api::urban-study.urban-study",
   "value": {
-    "uid": "api::general.general",
     "settings": {
       "bulkable": true,
       "filterable": true,
       "searchable": true,
       "pageSize": 10,
-      "mainField": "id",
-      "defaultSortBy": "id",
-      "defaultSortOrder": "ASC"
+      "mainField": "title",
+      "defaultSortBy": "updatedAt",
+      "defaultSortOrder": "DESC"
     },
     "metadatas": {
       "id": {
@@ -20,113 +19,150 @@
           "sortable": true
         }
       },
-      "header": {
+      "title": {
         "edit": {
-          "label": "Odkazy v hlavičke a mobilnom menu",
+          "label": "Nadpis",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "header",
+          "label": "title",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "slug": {
+        "edit": {
+          "label": "Slug",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "slug",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "year": {
+        "edit": {
+          "label": "Rok",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "year",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "customPublishedAt": {
+        "edit": {
+          "label": "customPublishedAt",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "customPublishedAt",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "urbanStudyType": {
+        "edit": {
+          "label": "Typ",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "urbanStudyType",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "procuredBy": {
+        "edit": {
+          "label": "Obstarávateľ",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "procuredBy",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "preparedBy": {
+        "edit": {
+          "label": "Spracovateľ",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "preparedBy",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "body": {
+        "edit": {
+          "label": "Popis",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "body",
           "searchable": false,
           "sortable": false
         }
       },
-      "privacyPolicyPage": {
+      "approvalText": {
         "edit": {
-          "label": "privacyPolicyPage",
+          "label": "Text schválenia/prijatia uznesením MZ",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "approvalText",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "regulations": {
+        "edit": {
+          "label": "Súvisiace všeobecne záväzné nariadenia",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true,
-          "mainField": "path"
+          "mainField": "regNumber"
         },
         "list": {
-          "label": "privacyPolicyPage",
-          "searchable": true,
-          "sortable": true
+          "label": "regulations",
+          "searchable": false,
+          "sortable": false
         }
       },
-      "officialBoardPage": {
+      "urbanStudyParts": {
         "edit": {
-          "label": "officialBoardPage",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true,
-          "mainField": "path"
-        },
-        "list": {
-          "label": "officialBoardPage",
-          "searchable": true,
-          "sortable": true
-        }
-      },
-      "newsPage": {
-        "edit": {
-          "label": "newsPage",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true,
-          "mainField": "path"
-        },
-        "list": {
-          "label": "newsPage",
-          "searchable": true,
-          "sortable": true
-        }
-      },
-      "vznPage": {
-        "edit": {
-          "label": "vznPage",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true,
-          "mainField": "path"
-        },
-        "list": {
-          "label": "vznPage",
-          "searchable": true,
-          "sortable": true
-        }
-      },
-      "inbaPage": {
-        "edit": {
-          "label": "inbaPage",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true,
-          "mainField": "path"
-        },
-        "list": {
-          "label": "inbaPage",
-          "searchable": true,
-          "sortable": true
-        }
-      },
-      "inbaReleasesPage": {
-        "edit": {
-          "label": "inbaReleasesPage",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true,
-          "mainField": "path"
-        },
-        "list": {
-          "label": "inbaReleasesPage",
-          "searchable": true,
-          "sortable": true
-        }
-      },
-      "assetsPage": {
-        "edit": {
-          "label": "assetsPage",
+          "label": "Časti",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -134,24 +170,24 @@
           "mainField": "title"
         },
         "list": {
-          "label": "assetsPage",
-          "searchable": true,
-          "sortable": true
+          "label": "urbanStudyParts",
+          "searchable": false,
+          "sortable": false
         }
       },
-      "urbanStudiesPage": {
+      "links": {
         "edit": {
-          "label": "urbanStudiesPage",
+          "label": "Súvisiace odkazy",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true,
-          "mainField": "title"
+          "mainField": "label"
         },
         "list": {
-          "label": "urbanStudiesPage",
-          "searchable": true,
-          "sortable": true
+          "label": "links",
+          "searchable": false,
+          "sortable": false
         }
       },
       "createdAt": {
@@ -222,63 +258,86 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "header",
-        "createdAt",
-        "updatedAt"
-      ],
       "edit": [
         [
           {
-            "name": "header",
+            "name": "title",
+            "size": 12
+          },
+          {
+            "name": "slug",
             "size": 12
           }
         ],
         [
           {
-            "name": "newsPage",
-            "size": 6
-          }
-        ],
-        [
-          {
-            "name": "vznPage",
+            "name": "year",
             "size": 6
           },
           {
-            "name": "officialBoardPage",
+            "name": "urbanStudyType",
             "size": 6
           }
         ],
         [
           {
-            "name": "inbaPage",
-            "size": 6
-          },
+            "name": "body",
+            "size": 12
+          }
+        ],
+        [
           {
-            "name": "inbaReleasesPage",
+            "name": "approvalText",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "customPublishedAt",
             "size": 6
           }
         ],
         [
           {
-            "name": "privacyPolicyPage",
-            "size": 6
-          },
-          {
-            "name": "assetsPage",
-            "size": 6
+            "name": "procuredBy",
+            "size": 12
           }
         ],
         [
           {
-            "name": "urbanStudiesPage",
-            "size": 6
+            "name": "preparedBy",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "urbanStudyParts",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "regulations",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "links",
+            "size": 12
           }
         ]
+      ],
+      "list": [
+        "id",
+        "title",
+        "slug",
+        "year",
+        "updatedAt",
+        "urbanStudyType"
       ]
-    }
+    },
+    "uid": "api::urban-study.urban-study"
   },
   "type": "object",
   "environment": null,

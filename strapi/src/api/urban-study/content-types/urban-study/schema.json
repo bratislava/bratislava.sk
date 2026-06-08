@@ -1,0 +1,74 @@
+{
+  "kind": "collectionType",
+  "collectionName": "urban_studies",
+  "info": {
+    "singularName": "urban-study",
+    "pluralName": "urban-studies",
+    "displayName": "WIP Územné štúdie"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title",
+      "required": true
+    },
+    "year": {
+      "type": "string"
+    },
+    "customPublishedAt": {
+      "type": "datetime"
+    },
+    "urbanStudyType": {
+      "type": "enumeration",
+      "required": true,
+      "default": "urbanStudyType.urbanistickaStudia",
+      "enum": [
+        "urbanStudyType.urbanistickaStudia",
+        "urbanStudyType.odvetvovaStudia",
+        "urbanStudyType.uzemnyGenerel",
+        "urbanStudyType.uzemnyPlan",
+        "urbanStudyType.uzemnyPlanZony",
+        "urbanStudyType.uzemnyPlanZmenyADoplnky",
+        "urbanStudyType.iny"
+      ]
+    },
+    "procuredBy": {
+      "type": "string",
+      "default": "Hlavné mesto Slovenskej republiky Bratislava"
+    },
+    "preparedBy": {
+      "type": "string",
+      "default": "Hlavné mesto Slovenskej republiky Bratislava"
+    },
+    "body": {
+      "type": "richtext"
+    },
+    "approvalText": {
+      "type": "richtext"
+    },
+    "regulations": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::regulation.regulation",
+      "mappedBy": "urbanStudies"
+    },
+    "urbanStudyParts": {
+      "type": "component",
+      "component": "sections.urban-study-part",
+      "repeatable": true
+    },
+    "links": {
+      "type": "component",
+      "component": "blocks.common-link",
+      "repeatable": true
+    }
+  }
+}

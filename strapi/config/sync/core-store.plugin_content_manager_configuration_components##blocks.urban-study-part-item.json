@@ -1,7 +1,6 @@
 {
-  "key": "plugin_content_manager_configuration_components::sections.file-list",
+  "key": "plugin_content_manager_configuration_components::blocks.urban-study-part-item",
   "value": {
-    "uid": "sections.file-list",
     "settings": {
       "bulkable": true,
       "filterable": true,
@@ -34,46 +33,18 @@
           "sortable": true
         }
       },
-      "text": {
+      "media": {
         "edit": {
-          "label": "Text",
+          "label": "Súbor",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "text",
-          "searchable": true,
-          "sortable": true
-        }
-      },
-      "fileList": {
-        "edit": {
-          "label": "Súbory",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "fileList",
+          "label": "media",
           "searchable": false,
           "sortable": false
-        }
-      },
-      "titleLevel": {
-        "edit": {
-          "label": "Úroveň nadpisu sekcie",
-          "description": "Úroveň nadpisu meníme na h3 iba ak je to potrebné sémanticky. Nikdy ju nemeníme len kvôli vizuálnej veľkosti nadpisu.",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "titleLevel",
-          "searchable": true,
-          "sortable": true
         }
       },
       "documentId": {
@@ -86,39 +57,25 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "title",
-        "text",
-        "documentId"
-      ],
       "edit": [
         [
           {
             "name": "title",
             "size": 12
-          }
-        ],
-        [
+          },
           {
-            "name": "text",
-            "size": 12
-          }
-        ],
-        [
-          {
-            "name": "fileList",
-            "size": 12
-          }
-        ],
-        [
-          {
-            "name": "titleLevel",
+            "name": "media",
             "size": 6
           }
         ]
+      ],
+      "list": [
+        "id",
+        "title",
+        "media"
       ]
     },
+    "uid": "blocks.urban-study-part-item",
     "isComponent": true
   },
   "type": "object",

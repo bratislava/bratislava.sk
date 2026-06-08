@@ -1040,6 +1040,25 @@ input ComponentBlocksTopServicesItemInput {
   link: ComponentBlocksCommonLinkInput
 }
 
+type ComponentBlocksUrbanStudyPartItem {
+  id: ID!
+  media: UploadFile!
+  title: String
+}
+
+input ComponentBlocksUrbanStudyPartItemFiltersInput {
+  and: [ComponentBlocksUrbanStudyPartItemFiltersInput]
+  not: ComponentBlocksUrbanStudyPartItemFiltersInput
+  or: [ComponentBlocksUrbanStudyPartItemFiltersInput]
+  title: StringFilterInput
+}
+
+input ComponentBlocksUrbanStudyPartItemInput {
+  id: ID
+  media: ID
+  title: String
+}
+
 type ComponentBlocksVideo {
   id: ID!
   speaker: String
@@ -2341,6 +2360,59 @@ input ComponentSectionsTopServicesInput {
   title: String
 }
 
+type ComponentSectionsUrbanStudies {
+  id: ID!
+  showAll: Boolean
+  text: String
+  title: String
+  titleLevel: ENUM_COMPONENTSECTIONSURBANSTUDIES_TITLELEVEL
+  urbanStudies(filters: UrbanStudyFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [UrbanStudy]!
+  urbanStudies_connection(filters: UrbanStudyFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UrbanStudyRelationResponseCollection
+}
+
+input ComponentSectionsUrbanStudiesFiltersInput {
+  and: [ComponentSectionsUrbanStudiesFiltersInput]
+  not: ComponentSectionsUrbanStudiesFiltersInput
+  or: [ComponentSectionsUrbanStudiesFiltersInput]
+  showAll: BooleanFilterInput
+  text: StringFilterInput
+  title: StringFilterInput
+  titleLevel: StringFilterInput
+  urbanStudies: UrbanStudyFiltersInput
+}
+
+input ComponentSectionsUrbanStudiesInput {
+  id: ID
+  showAll: Boolean
+  text: String
+  title: String
+  titleLevel: ENUM_COMPONENTSECTIONSURBANSTUDIES_TITLELEVEL
+  urbanStudies: [ID]
+}
+
+type ComponentSectionsUrbanStudyPart {
+  id: ID!
+  items(filters: ComponentBlocksUrbanStudyPartItemFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksUrbanStudyPartItem]
+  text: String
+  title: String
+}
+
+input ComponentSectionsUrbanStudyPartFiltersInput {
+  and: [ComponentSectionsUrbanStudyPartFiltersInput]
+  items: ComponentBlocksUrbanStudyPartItemFiltersInput
+  not: ComponentSectionsUrbanStudyPartFiltersInput
+  or: [ComponentSectionsUrbanStudyPartFiltersInput]
+  text: StringFilterInput
+  title: StringFilterInput
+}
+
+input ComponentSectionsUrbanStudyPartInput {
+  id: ID
+  items: [ComponentBlocksUrbanStudyPartItemInput]
+  text: String
+  title: String
+}
+
 type ComponentSectionsVideos {
   id: ID!
   subtitle: String
@@ -2719,6 +2791,11 @@ enum ENUM_COMPONENTSECTIONSTEXTWITHIMAGE_IMAGEPOSITION {
   right
 }
 
+enum ENUM_COMPONENTSECTIONSURBANSTUDIES_TITLELEVEL {
+  h2
+  h3
+}
+
 enum ENUM_COMPONENTSECTIONSVIDEOS_TITLELEVEL {
   h2
   h3
@@ -2762,6 +2839,16 @@ enum ENUM_REGULATION_CATEGORY {
   poriadokACistota
   socialnaPomocASkolstvo
   uzemnePlanovanie
+}
+
+enum ENUM_URBANSTUDY_URBANSTUDYTYPE {
+  urbanStudyType_iny
+  urbanStudyType_odvetvovaStudia
+  urbanStudyType_urbanistickaStudia
+  urbanStudyType_uzemnyGenerel
+  urbanStudyType_uzemnyPlan
+  urbanStudyType_uzemnyPlanZmenyADoplnky
+  urbanStudyType_uzemnyPlanZony
 }
 
 type Error {
@@ -2996,6 +3083,7 @@ type General {
   privacyPolicyPage: Page
   publishedAt: DateTime
   updatedAt: DateTime
+  urbanStudiesPage: Page
   vznPage: Page
 }
 
@@ -3029,6 +3117,7 @@ input GeneralFiltersInput {
   privacyPolicyPage: PageFiltersInput
   publishedAt: DateTimeFilterInput
   updatedAt: DateTimeFilterInput
+  urbanStudiesPage: PageFiltersInput
   vznPage: PageFiltersInput
 }
 
@@ -3041,6 +3130,7 @@ input GeneralInput {
   officialBoardPage: ID
   privacyPolicyPage: ID
   publishedAt: DateTime
+  urbanStudiesPage: ID
   vznPage: ID
 }
 
@@ -3048,7 +3138,7 @@ type GeneralRelationResponseCollection {
   nodes: [General!]!
 }
 
-union GenericMorph = AdminGroup | Alert | Article | ArticleCategory | Asset | AssetCategory | ComponentAccordionItemsFlatText | ComponentAccordionItemsInstitution | ComponentBlocksCardLink | ComponentBlocksColumnsItem | ComponentBlocksColumnsListItem | ComponentBlocksCommonLink | ComponentBlocksComparisonCard | ComponentBlocksComparisonItem | ComponentBlocksContactCard | ComponentBlocksContactDirectionsCard | ComponentBlocksContactPersonCard | ComponentBlocksFile | ComponentBlocksFileItem | ComponentBlocksFooterColumn | ComponentBlocksHomepageHighlightsItem | ComponentBlocksInBa | ComponentBlocksNumbersOverviewItem | ComponentBlocksNumericalListItem | ComponentBlocksOpeningHoursAlertMessage | ComponentBlocksOpeningHoursItem | ComponentBlocksPageLink | ComponentBlocksPartner | ComponentBlocksProsAndConsCard | ComponentBlocksStarzLandingPageBanner | ComponentBlocksSubnavigationLink | ComponentBlocksTopServicesItem | ComponentBlocksVideo | ComponentGeneralHeader | ComponentGeneralHeaderLink | ComponentHeaderSectionsEvent | ComponentHeaderSectionsFacility | ComponentMenuMenuItem | ComponentMenuMenuLink | ComponentMenuMenuSection | ComponentSectionsAccordion | ComponentSectionsAlert | ComponentSectionsArticles | ComponentSectionsArticlesLandingPage | ComponentSectionsAssets | ComponentSectionsBanner | ComponentSectionsColumnedText | ComponentSectionsColumns | ComponentSectionsColumnsList | ComponentSectionsComparisonSection | ComponentSectionsContactsSection | ComponentSectionsDivider | ComponentSectionsEvents | ComponentSectionsFacilities | ComponentSectionsFaqs | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsHomepageEvents | ComponentSectionsHomepageHighlights | ComponentSectionsHomepageMayorAndCouncil | ComponentSectionsHomepageTabs | ComponentSectionsIframe | ComponentSectionsInbaLatestRelease | ComponentSectionsInbaReleases | ComponentSectionsJobOffers | ComponentSectionsLinks | ComponentSectionsNarrowText | ComponentSectionsNewsletter | ComponentSectionsNumbersOverview | ComponentSectionsNumericalList | ComponentSectionsOfficialBoard | ComponentSectionsOpeningHours | ComponentSectionsOrganizationalStructure | ComponentSectionsPartners | ComponentSectionsProsAndConsSection | ComponentSectionsRegulations | ComponentSectionsStarzLandingPage | ComponentSectionsSubnavigation | ComponentSectionsTextWithImage | ComponentSectionsTextWithImageOverlapped | ComponentSectionsTootootEvents | ComponentSectionsTopServices | ComponentSectionsVideos | ComponentSidebarsEmptySidebar | ComponentTaxAdministratorsTaxAdministrator | Faq | FaqCategory | Footer | General | Homepage | I18NLocale | InbaRelease | Menu | Page | PageCategory | Regulation | ReviewWorkflowsWorkflow | ReviewWorkflowsWorkflowStage | Tag | TaxAdministratorsList | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
+union GenericMorph = AdminGroup | Alert | Article | ArticleCategory | Asset | AssetCategory | ComponentAccordionItemsFlatText | ComponentAccordionItemsInstitution | ComponentBlocksCardLink | ComponentBlocksColumnsItem | ComponentBlocksColumnsListItem | ComponentBlocksCommonLink | ComponentBlocksComparisonCard | ComponentBlocksComparisonItem | ComponentBlocksContactCard | ComponentBlocksContactDirectionsCard | ComponentBlocksContactPersonCard | ComponentBlocksFile | ComponentBlocksFileItem | ComponentBlocksFooterColumn | ComponentBlocksHomepageHighlightsItem | ComponentBlocksInBa | ComponentBlocksNumbersOverviewItem | ComponentBlocksNumericalListItem | ComponentBlocksOpeningHoursAlertMessage | ComponentBlocksOpeningHoursItem | ComponentBlocksPageLink | ComponentBlocksPartner | ComponentBlocksProsAndConsCard | ComponentBlocksStarzLandingPageBanner | ComponentBlocksSubnavigationLink | ComponentBlocksTopServicesItem | ComponentBlocksUrbanStudyPartItem | ComponentBlocksVideo | ComponentGeneralHeader | ComponentGeneralHeaderLink | ComponentHeaderSectionsEvent | ComponentHeaderSectionsFacility | ComponentMenuMenuItem | ComponentMenuMenuLink | ComponentMenuMenuSection | ComponentSectionsAccordion | ComponentSectionsAlert | ComponentSectionsArticles | ComponentSectionsArticlesLandingPage | ComponentSectionsAssets | ComponentSectionsBanner | ComponentSectionsColumnedText | ComponentSectionsColumns | ComponentSectionsColumnsList | ComponentSectionsComparisonSection | ComponentSectionsContactsSection | ComponentSectionsDivider | ComponentSectionsEvents | ComponentSectionsFacilities | ComponentSectionsFaqs | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsHomepageEvents | ComponentSectionsHomepageHighlights | ComponentSectionsHomepageMayorAndCouncil | ComponentSectionsHomepageTabs | ComponentSectionsIframe | ComponentSectionsInbaLatestRelease | ComponentSectionsInbaReleases | ComponentSectionsJobOffers | ComponentSectionsLinks | ComponentSectionsNarrowText | ComponentSectionsNewsletter | ComponentSectionsNumbersOverview | ComponentSectionsNumericalList | ComponentSectionsOfficialBoard | ComponentSectionsOpeningHours | ComponentSectionsOrganizationalStructure | ComponentSectionsPartners | ComponentSectionsProsAndConsSection | ComponentSectionsRegulations | ComponentSectionsStarzLandingPage | ComponentSectionsSubnavigation | ComponentSectionsTextWithImage | ComponentSectionsTextWithImageOverlapped | ComponentSectionsTootootEvents | ComponentSectionsTopServices | ComponentSectionsUrbanStudies | ComponentSectionsUrbanStudyPart | ComponentSectionsVideos | ComponentSidebarsEmptySidebar | ComponentTaxAdministratorsTaxAdministrator | Faq | FaqCategory | Footer | General | Homepage | I18NLocale | InbaRelease | Menu | Page | PageCategory | Regulation | ReviewWorkflowsWorkflow | ReviewWorkflowsWorkflowStage | Tag | TaxAdministratorsList | UploadFile | UrbanStudy | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
 
 type Homepage {
   createdAt: DateTime
@@ -3451,6 +3541,7 @@ type Mutation {
     locale: I18NLocaleCode
     status: PublicationStatus = PUBLISHED
   ): Tag
+  createUrbanStudy(data: UrbanStudyInput!, status: PublicationStatus = PUBLISHED): UrbanStudy
 
   """Create a new role"""
   createUsersPermissionsRole(data: UsersPermissionsRoleInput!): UsersPermissionsCreateRolePayload
@@ -3528,6 +3619,7 @@ type Mutation {
   ): DeleteMutationResponse
   deleteTaxAdministratorsList: DeleteMutationResponse
   deleteUploadFile(id: ID!): UploadFile
+  deleteUrbanStudy(documentId: ID!): DeleteMutationResponse
 
   """Delete an existing role"""
   deleteUsersPermissionsRole(id: ID!): UsersPermissionsDeleteRolePayload
@@ -3649,6 +3741,7 @@ type Mutation {
   ): Tag
   updateTaxAdministratorsList(data: TaxAdministratorsListInput!, status: PublicationStatus = PUBLISHED): TaxAdministratorsList
   updateUploadFile(id: ID!, info: FileInfoInput): UploadFile!
+  updateUrbanStudy(data: UrbanStudyInput!, documentId: ID!, status: PublicationStatus = PUBLISHED): UrbanStudy
 
   """Update an existing role"""
   updateUsersPermissionsRole(data: UsersPermissionsRoleInput!, id: ID!): UsersPermissionsUpdateRolePayload
@@ -3820,7 +3913,7 @@ type PageRelationResponseCollection {
   nodes: [Page!]!
 }
 
-union PageSectionsDynamicZone = ComponentSectionsAccordion | ComponentSectionsAlert | ComponentSectionsArticles | ComponentSectionsArticlesLandingPage | ComponentSectionsAssets | ComponentSectionsBanner | ComponentSectionsColumnedText | ComponentSectionsColumns | ComponentSectionsColumnsList | ComponentSectionsComparisonSection | ComponentSectionsContactsSection | ComponentSectionsDivider | ComponentSectionsEvents | ComponentSectionsFacilities | ComponentSectionsFaqs | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsIframe | ComponentSectionsInbaLatestRelease | ComponentSectionsInbaReleases | ComponentSectionsJobOffers | ComponentSectionsLinks | ComponentSectionsNarrowText | ComponentSectionsNewsletter | ComponentSectionsNumbersOverview | ComponentSectionsNumericalList | ComponentSectionsOfficialBoard | ComponentSectionsOpeningHours | ComponentSectionsOrganizationalStructure | ComponentSectionsPartners | ComponentSectionsProsAndConsSection | ComponentSectionsRegulations | ComponentSectionsStarzLandingPage | ComponentSectionsTextWithImage | ComponentSectionsTextWithImageOverlapped | ComponentSectionsTootootEvents | ComponentSectionsVideos | Error
+union PageSectionsDynamicZone = ComponentSectionsAccordion | ComponentSectionsAlert | ComponentSectionsArticles | ComponentSectionsArticlesLandingPage | ComponentSectionsAssets | ComponentSectionsBanner | ComponentSectionsColumnedText | ComponentSectionsColumns | ComponentSectionsColumnsList | ComponentSectionsComparisonSection | ComponentSectionsContactsSection | ComponentSectionsDivider | ComponentSectionsEvents | ComponentSectionsFacilities | ComponentSectionsFaqs | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsIframe | ComponentSectionsInbaLatestRelease | ComponentSectionsInbaReleases | ComponentSectionsJobOffers | ComponentSectionsLinks | ComponentSectionsNarrowText | ComponentSectionsNewsletter | ComponentSectionsNumbersOverview | ComponentSectionsNumericalList | ComponentSectionsOfficialBoard | ComponentSectionsOpeningHours | ComponentSectionsOrganizationalStructure | ComponentSectionsPartners | ComponentSectionsProsAndConsSection | ComponentSectionsRegulations | ComponentSectionsStarzLandingPage | ComponentSectionsTextWithImage | ComponentSectionsTextWithImageOverlapped | ComponentSectionsTootootEvents | ComponentSectionsUrbanStudies | ComponentSectionsVideos | Error
 
 scalar PageSectionsDynamicZoneInput
 
@@ -4077,6 +4170,9 @@ type Query {
   uploadFile(documentId: ID!, status: PublicationStatus = PUBLISHED): UploadFile
   uploadFiles(filters: UploadFileFiltersInput, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED): [UploadFile]!
   uploadFiles_connection(filters: UploadFileFiltersInput, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED): UploadFileEntityResponseCollection
+  urbanStudies(filters: UrbanStudyFiltersInput, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED): [UrbanStudy]!
+  urbanStudies_connection(filters: UrbanStudyFiltersInput, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED): UrbanStudyEntityResponseCollection
+  urbanStudy(documentId: ID!, status: PublicationStatus = PUBLISHED): UrbanStudy
   usersPermissionsRole(documentId: ID!, status: PublicationStatus = PUBLISHED): UsersPermissionsRole
   usersPermissionsRoles(filters: UsersPermissionsRoleFiltersInput, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED): [UsersPermissionsRole]!
   usersPermissionsRoles_connection(filters: UsersPermissionsRoleFiltersInput, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED): UsersPermissionsRoleEntityResponseCollection
@@ -4107,6 +4203,8 @@ type Regulation {
   slug: String!
   titleText: String
   updatedAt: DateTime
+  urbanStudies(filters: UrbanStudyFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [UrbanStudy]!
+  urbanStudies_connection(filters: UrbanStudyFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UrbanStudyRelationResponseCollection
 }
 
 type RegulationEntity {
@@ -4142,6 +4240,7 @@ input RegulationFiltersInput {
   slug: StringFilterInput
   titleText: StringFilterInput
   updatedAt: DateTimeFilterInput
+  urbanStudies: UrbanStudyFiltersInput
 }
 
 input RegulationInput {
@@ -4159,6 +4258,7 @@ input RegulationInput {
   regNumber: String
   slug: String
   titleText: String
+  urbanStudies: [ID]
 }
 
 type RegulationRelationResponseCollection {
@@ -4500,6 +4600,82 @@ input UploadFileInput {
 
 type UploadFileRelationResponseCollection {
   nodes: [UploadFile!]!
+}
+
+type UrbanStudy {
+  approvalText: String
+  body: String
+  createdAt: DateTime
+  customPublishedAt: DateTime
+  documentId: ID!
+  links(filters: ComponentBlocksCommonLinkFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksCommonLink]
+  preparedBy: String
+  procuredBy: String
+  publishedAt: DateTime
+  regulations(filters: RegulationFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [Regulation]!
+  regulations_connection(filters: RegulationFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): RegulationRelationResponseCollection
+  slug: String!
+  title: String!
+  updatedAt: DateTime
+  urbanStudyParts(filters: ComponentSectionsUrbanStudyPartFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentSectionsUrbanStudyPart]
+  urbanStudyType: ENUM_URBANSTUDY_URBANSTUDYTYPE!
+  year: String
+}
+
+type UrbanStudyEntity {
+  attributes: UrbanStudy
+  id: ID
+}
+
+type UrbanStudyEntityResponse {
+  data: UrbanStudy
+}
+
+type UrbanStudyEntityResponseCollection {
+  nodes: [UrbanStudy!]!
+  pageInfo: Pagination!
+}
+
+input UrbanStudyFiltersInput {
+  and: [UrbanStudyFiltersInput]
+  approvalText: StringFilterInput
+  body: StringFilterInput
+  createdAt: DateTimeFilterInput
+  customPublishedAt: DateTimeFilterInput
+  documentId: IDFilterInput
+  links: ComponentBlocksCommonLinkFiltersInput
+  not: UrbanStudyFiltersInput
+  or: [UrbanStudyFiltersInput]
+  preparedBy: StringFilterInput
+  procuredBy: StringFilterInput
+  publishedAt: DateTimeFilterInput
+  regulations: RegulationFiltersInput
+  slug: StringFilterInput
+  title: StringFilterInput
+  updatedAt: DateTimeFilterInput
+  urbanStudyParts: ComponentSectionsUrbanStudyPartFiltersInput
+  urbanStudyType: StringFilterInput
+  year: StringFilterInput
+}
+
+input UrbanStudyInput {
+  approvalText: String
+  body: String
+  customPublishedAt: DateTime
+  links: [ComponentBlocksCommonLinkInput]
+  preparedBy: String
+  procuredBy: String
+  publishedAt: DateTime
+  regulations: [ID]
+  slug: String
+  title: String
+  urbanStudyParts: [ComponentSectionsUrbanStudyPartInput]
+  urbanStudyType: ENUM_URBANSTUDY_URBANSTUDYTYPE
+  year: String
+}
+
+type UrbanStudyRelationResponseCollection {
+  nodes: [UrbanStudy!]!
 }
 
 type UsersPermissionsCreateRolePayload {

@@ -195,7 +195,8 @@
         "sections.alert",
         "sections.official-board",
         "sections.videos",
-        "sections.regulations"
+        "sections.regulations",
+        "sections.urban-studies"
       ]
     },
     "sidebar": {

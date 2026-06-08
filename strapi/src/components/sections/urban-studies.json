@@ -1,0 +1,43 @@
+{
+  "collectionName": "components_sections_urban_studies",
+  "info": {
+    "displayName": "Územné štúdie [WIP]"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "text": {
+      "type": "text"
+    },
+    "showAll": {
+      "type": "boolean",
+      "default": false
+    },
+    "urbanStudies": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::urban-study.urban-study",
+      "conditions": {
+        "visible": {
+          "!=": [
+            {
+              "var": "showAll"
+            },
+            true
+          ]
+        }
+      }
+    },
+    "titleLevel": {
+      "type": "enumeration",
+      "default": "h2",
+      "enum": [
+        "h2",
+        "h3"
+      ]
+    }
+  },
+  "config": {}
+}

@@ -1,7 +1,6 @@
 {
-  "key": "plugin_content_manager_configuration_components::sections.file-list",
+  "key": "plugin_content_manager_configuration_components::sections.urban-studies",
   "value": {
-    "uid": "sections.file-list",
     "settings": {
       "bulkable": true,
       "filterable": true,
@@ -48,16 +47,31 @@
           "sortable": true
         }
       },
-      "fileList": {
+      "showAll": {
         "edit": {
-          "label": "Súbory",
+          "label": "Zobraziť všetky",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "fileList",
+          "label": "showAll",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "urbanStudies": {
+        "edit": {
+          "label": "Územné štúdie",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "title"
+        },
+        "list": {
+          "label": "urbanStudies",
           "searchable": false,
           "sortable": false
         }
@@ -86,20 +100,12 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "title",
-        "text",
-        "documentId"
-      ],
       "edit": [
         [
           {
             "name": "title",
             "size": 12
-          }
-        ],
-        [
+          },
           {
             "name": "text",
             "size": 12
@@ -107,7 +113,11 @@
         ],
         [
           {
-            "name": "fileList",
+            "name": "showAll",
+            "size": 4
+          },
+          {
+            "name": "urbanStudies",
             "size": 12
           }
         ],
@@ -117,8 +127,15 @@
             "size": 6
           }
         ]
+      ],
+      "list": [
+        "id",
+        "title",
+        "text",
+        "showAll"
       ]
     },
+    "uid": "sections.urban-studies",
     "isComponent": true
   },
   "type": "object",

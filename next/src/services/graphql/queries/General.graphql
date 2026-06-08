@@ -171,6 +171,9 @@ fragment General on General {
   assetsPage {
     ...PageParentPages
   }
+  urbanStudiesPage {
+    ...PageParentPages
+  }
 }
 
 fragment Alert on Alert {

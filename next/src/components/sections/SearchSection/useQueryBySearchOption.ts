@@ -24,6 +24,10 @@ import {
   RegulationFilters,
   regulationsFetcher,
 } from '@/src/services/meili/fetchers/regulationsFetcher'
+import {
+  getUrbanStudiesQueryKey,
+  urbanStudiesFetcher,
+} from '@/src/services/meili/fetchers/urbanStudiesFetcher'
 import { PageMeili } from '@/src/services/meili/types'
 import {
   getMsGraphSearchQueryKey,
@@ -36,6 +40,7 @@ import { isDefined } from '@/src/utils/isDefined'
 import { useLocale } from '@/src/utils/useLocale'
 import { useRegulationCategoryTranslationMap } from '@/src/utils/useRegulationCategoryTranslationMap'
 import { useTranslation } from '@/src/utils/useTranslation'
+import { useUrbanStudyTypeLabel } from '@/src/utils/useUrbanStudyTypeTranslationMap'
 
 export type SearchFilters =
   | PagesFilters
@@ -63,6 +68,7 @@ export const useQueryBySearchOption = ({
 }) => {
   const { t } = useTranslation()
   const locale = useLocale()
+  const getUrbanStudyTypeLabel = useUrbanStudyTypeLabel()
 
   const pagesQuery = useQuery({
     queryKey: getPagesQueryKey(filters, locale),
@@ -119,6 +125,28 @@ export const useQueryBySearchOption = ({
             linkHref: getLinkProps({ asset: assets }).href,
             metadata: [assets.assetCategory?.title, formatDate(assets.updatedAt)],
             customIconName: 'search_result_official_board',
+          }
+        }) ?? []
+
+      return { searchResultsData: formattedData, searchResultsCount: data?.estimatedTotalHits ?? 0 }
+    },
+  })
+
+  const urbanStudiesQuery = useQuery({
+    queryKey: getUrbanStudiesQueryKey(filters),
+    queryFn: () => urbanStudiesFetcher(filters),
+    placeholderData: keepPreviousData,
+    select: (data) => {
+      const formattedData: SearchResult[] =
+        data?.hits?.map((urbanStudy) => {
+          return {
+            title: urbanStudy.title,
+            uniqueId: urbanStudy.slug,
+            linkHref: `/uzemne-studie/${urbanStudy.slug}`,
+            metadata: [getUrbanStudyTypeLabel(urbanStudy.urbanStudyType), urbanStudy.year].filter(
+              isDefined,
+            ),
+            customIconName: 'urban_study',
           }
         }) ?? []
 
@@ -228,6 +256,9 @@ export const useQueryBySearchOption = ({
 
     case 'assets':
       return assetsQuery
+
+    case 'urbanStudies':
+      return urbanStudiesQuery
 
     case 'users':
       return usersQuery
