@@ -7,8 +7,8 @@
       "searchable": true,
       "pageSize": 10,
       "mainField": "title",
-      "defaultSortBy": "title",
-      "defaultSortOrder": "ASC"
+      "defaultSortBy": "updatedAt",
+      "defaultSortOrder": "DESC"
     },
     "metadatas": {
       "id": {
@@ -21,7 +21,7 @@
       },
       "title": {
         "edit": {
-          "label": "title",
+          "label": "Nadpis",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -35,7 +35,7 @@
       },
       "slug": {
         "edit": {
-          "label": "slug",
+          "label": "Slug",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -49,7 +49,7 @@
       },
       "year": {
         "edit": {
-          "label": "year",
+          "label": "Rok",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -75,23 +75,9 @@
           "sortable": true
         }
       },
-      "pictogram": {
-        "edit": {
-          "label": "pictogram",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "pictogram",
-          "searchable": true,
-          "sortable": true
-        }
-      },
       "urbanStudyType": {
         "edit": {
-          "label": "urbanStudyType",
+          "label": "Typ",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -103,23 +89,23 @@
           "sortable": true
         }
       },
-      "orderedBy": {
+      "procuredBy": {
         "edit": {
-          "label": "orderedBy",
+          "label": "Obstarávateľ",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "orderedBy",
+          "label": "procuredBy",
           "searchable": true,
           "sortable": true
         }
       },
       "preparedBy": {
         "edit": {
-          "label": "preparedBy",
+          "label": "Spracovateľ",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -133,7 +119,7 @@
       },
       "body": {
         "edit": {
-          "label": "body",
+          "label": "Popis",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -147,7 +133,7 @@
       },
       "approvalText": {
         "edit": {
-          "label": "approvalText",
+          "label": "Text schválenia/prijatia uznesením MZ",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -155,97 +141,13 @@
         },
         "list": {
           "label": "approvalText",
-          "searchable": false,
-          "sortable": false
-        }
-      },
-      "briefFiles": {
-        "edit": {
-          "label": "briefFiles",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "briefFiles",
-          "searchable": false,
-          "sortable": false
-        }
-      },
-      "commentsEvaluationFiles": {
-        "edit": {
-          "label": "commentsEvaluationFiles",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "commentsEvaluationFiles",
-          "searchable": false,
-          "sortable": false
-        }
-      },
-      "analyticalPartFiles": {
-        "edit": {
-          "label": "analyticalPartFiles",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "analyticalPartFiles",
-          "searchable": false,
-          "sortable": false
-        }
-      },
-      "writtenPartFiles": {
-        "edit": {
-          "label": "writtenPartFiles",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "writtenPartFiles",
-          "searchable": false,
-          "sortable": false
-        }
-      },
-      "graphicPartFiles": {
-        "edit": {
-          "label": "graphicPartFiles",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "graphicPartFiles",
-          "searchable": false,
-          "sortable": false
-        }
-      },
-      "attachmentFiles": {
-        "edit": {
-          "label": "attachmentFiles",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "attachmentFiles",
           "searchable": false,
           "sortable": false
         }
       },
       "regulations": {
         "edit": {
-          "label": "regulations",
+          "label": "Súvisiace všeobecne záväzné nariadenia",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -258,13 +160,29 @@
           "sortable": false
         }
       },
-      "links": {
+      "urbanStudyParts": {
         "edit": {
-          "label": "links",
+          "label": "Časti",
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true
+          "editable": true,
+          "mainField": "title"
+        },
+        "list": {
+          "label": "urbanStudyParts",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "links": {
+        "edit": {
+          "label": "Súvisiace odkazy",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "label"
         },
         "list": {
           "label": "links",
@@ -340,12 +258,6 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "title",
-        "slug",
-        "year"
-      ],
       "edit": [
         [
           {
@@ -381,41 +293,13 @@
         ],
         [
           {
-            "name": "briefFiles",
-            "size": 6
-          },
-          {
-            "name": "commentsEvaluationFiles",
-            "size": 6
-          }
-        ],
-        [
-          {
-            "name": "writtenPartFiles",
-            "size": 6
-          },
-          {
-            "name": "graphicPartFiles",
-            "size": 6
-          }
-        ],
-        [
-          {
-            "name": "attachmentFiles",
-            "size": 6
-          },
-          {
             "name": "customPublishedAt",
             "size": 6
           }
         ],
         [
           {
-            "name": "analyticalPartFiles",
-            "size": 6
-          },
-          {
-            "name": "orderedBy",
+            "name": "procuredBy",
             "size": 12
           }
         ],
@@ -427,20 +311,30 @@
         ],
         [
           {
-            "name": "links",
+            "name": "urbanStudyParts",
             "size": 12
           }
         ],
         [
           {
             "name": "regulations",
-            "size": 6
-          },
+            "size": 12
+          }
+        ],
+        [
           {
-            "name": "pictogram",
-            "size": 6
+            "name": "links",
+            "size": 12
           }
         ]
+      ],
+      "list": [
+        "id",
+        "title",
+        "slug",
+        "year",
+        "updatedAt",
+        "urbanStudyType"
       ]
     },
     "uid": "api::urban-study.urban-study"

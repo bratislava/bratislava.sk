@@ -889,7 +889,8 @@
           "vznPage",
           "inbaPage",
           "inbaReleasesPage",
-          "assetsPage"
+          "assetsPage",
+          "urbanStudiesPage"
         ],
         "locales": [
           "sk",
@@ -898,7 +899,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "nrmx9d66kveg7s332u3ut7dl",
+      "documentId": "eeh88yzknmaihnla73i24kvm",
       "locale": null
     },
     {
@@ -955,7 +956,8 @@
           "vznPage",
           "inbaPage",
           "inbaReleasesPage",
-          "assetsPage"
+          "assetsPage",
+          "urbanStudiesPage"
         ],
         "locales": [
           "sk",
@@ -964,7 +966,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "yli1l9aa7qp866o1sfhry6yd",
+      "documentId": "fnk31ti65lvnfe21owibtbok",
       "locale": null
     },
     {
@@ -993,7 +995,8 @@
           "vznPage",
           "inbaPage",
           "inbaReleasesPage",
-          "assetsPage"
+          "assetsPage",
+          "urbanStudiesPage"
         ],
         "locales": [
           "sk",
@@ -1002,7 +1005,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "kugyh62kfyjmx0o6v7vrl2fo",
+      "documentId": "eeyzsdvgp354250106e6jfq5",
       "locale": null
     },
     {
@@ -2054,19 +2057,16 @@
           "slug",
           "year",
           "customPublishedAt",
-          "pictogram",
           "urbanStudyType",
-          "orderedBy",
+          "procuredBy",
           "preparedBy",
           "body",
           "approvalText",
-          "briefFiles",
-          "commentsEvaluationFiles",
-          "analyticalPartFiles",
-          "writtenPartFiles",
-          "graphicPartFiles",
-          "attachmentFiles",
           "regulations",
+          "urbanStudyParts.title",
+          "urbanStudyParts.text",
+          "urbanStudyParts.items.title",
+          "urbanStudyParts.items.media",
           "links.label",
           "links.page",
           "links.article",
@@ -2079,7 +2079,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "rlqgvhrem19iljfp06cgtq2p",
+      "documentId": "m9csomh8qjjpy69t5zy6e67x",
       "locale": null
     },
     {
@@ -2109,19 +2109,16 @@
           "slug",
           "year",
           "customPublishedAt",
-          "pictogram",
           "urbanStudyType",
-          "orderedBy",
+          "procuredBy",
           "preparedBy",
           "body",
           "approvalText",
-          "briefFiles",
-          "commentsEvaluationFiles",
-          "analyticalPartFiles",
-          "writtenPartFiles",
-          "graphicPartFiles",
-          "attachmentFiles",
           "regulations",
+          "urbanStudyParts.title",
+          "urbanStudyParts.text",
+          "urbanStudyParts.items.title",
+          "urbanStudyParts.items.media",
           "links.label",
           "links.page",
           "links.article",
@@ -2134,7 +2131,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "pnr58v11fuoolvbmrh0zsryb",
+      "documentId": "uqd675jxl7cvz5hrzl7boz2t",
       "locale": null
     },
     {
@@ -2146,19 +2143,16 @@
           "slug",
           "year",
           "customPublishedAt",
-          "pictogram",
           "urbanStudyType",
-          "orderedBy",
+          "procuredBy",
           "preparedBy",
           "body",
           "approvalText",
-          "briefFiles",
-          "commentsEvaluationFiles",
-          "analyticalPartFiles",
-          "writtenPartFiles",
-          "graphicPartFiles",
-          "attachmentFiles",
           "regulations",
+          "urbanStudyParts.title",
+          "urbanStudyParts.text",
+          "urbanStudyParts.items.title",
+          "urbanStudyParts.items.media",
           "links.label",
           "links.page",
           "links.article",
@@ -2171,7 +2165,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "ydi3srrhz42b6aqad1wifgkr",
+      "documentId": "amj9lzj1z9pt9igtl1j8v73s",
       "locale": null
     },
     {

@@ -139,6 +139,21 @@
           "sortable": true
         }
       },
+      "urbanStudiesPage": {
+        "edit": {
+          "label": "urbanStudiesPage",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "title"
+        },
+        "list": {
+          "label": "urbanStudiesPage",
+          "searchable": true,
+          "sortable": true
+        }
+      },
       "createdAt": {
         "edit": {
           "label": "createdAt",
@@ -253,6 +268,12 @@
           },
           {
             "name": "assetsPage",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "urbanStudiesPage",
             "size": 6
           }
         ]
