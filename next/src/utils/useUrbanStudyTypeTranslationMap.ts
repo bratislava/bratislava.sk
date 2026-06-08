@@ -13,7 +13,9 @@ export const useUrbanStudyTypeTranslationMap = () => {
     ),
     [Enum_Urbanstudy_Urbanstudytype.UrbanStudyTypeUzemnyGenerel]: t('urbanStudyType.uzemnyGenerel'),
     [Enum_Urbanstudy_Urbanstudytype.UrbanStudyTypeUzemnyPlan]: t('urbanStudyType.uzemnyPlan'),
-    [Enum_Urbanstudy_Urbanstudytype.UrbanStudyTypeUzemnyPlanZony]: t('urbanStudyType.uzemnyPlanZony'),
+    [Enum_Urbanstudy_Urbanstudytype.UrbanStudyTypeUzemnyPlanZony]: t(
+      'urbanStudyType.uzemnyPlanZony',
+    ),
     [Enum_Urbanstudy_Urbanstudytype.UrbanStudyTypeUzemnyPlanZmenyADoplnky]: t(
       'urbanStudyType.uzemnyPlanZmenyADoplnky',
     ),

@@ -55,10 +55,9 @@ const UrbanStudiesSection = ({ section }: Props) => {
                     cardTitleLevel={getCardTitleLevel(titleLevel)}
                     linkHref={`/uzemne-studie/${slug}`}
                     className="px-4 lg:px-6"
-                    metadata={[
-                      urbanStudyTypeTranslationMap[urbanStudyType],
-                      year,
-                    ].filter(isDefined)}
+                    metadata={[urbanStudyTypeTranslationMap[urbanStudyType], year].filter(
+                      isDefined,
+                    )}
                   />
                 </li>
               </Fragment>

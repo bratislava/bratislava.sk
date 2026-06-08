@@ -184,7 +184,7 @@ export const ICON_URL_MAP: IconUrlMap = {
     dedicstvo_06: LockedChest48pxIcon,
     sluzby_06: Stage48pxIcon,
     koncepcia_06: Culture48pxIcon,
-    komunity_06: Community48pxIcon,    
+    komunity_06: Community48pxIcon,
     // Urban studies
     urban_study: UrbanStudy48pxIcon,
     // Mobile menu links
