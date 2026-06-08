@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_sections_urban_study_parts",
+  "info": {
+    "displayName": "urban study part"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "text": {
+      "type": "text"
+    },
+    "items": {
+      "type": "component",
+      "component": "blocks.urban-study-part-item",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}

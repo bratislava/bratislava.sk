@@ -375,6 +375,17 @@ export interface BlocksUrbanItem extends Struct.ComponentSchema {
   }
 }
 
+export interface BlocksUrbanStudyPartItem extends Struct.ComponentSchema {
+  collectionName: 'components_blocks_urban_study_part_items'
+  info: {
+    displayName: 'urban study part item'
+  }
+  attributes: {
+    media: Schema.Attribute.Media<'images' | 'files'>
+    title: Schema.Attribute.String
+  }
+}
+
 export interface BlocksVideo extends Struct.ComponentSchema {
   collectionName: 'components_blocks_videos'
   info: {
@@ -1235,6 +1246,18 @@ export interface SectionsUrbanStudies extends Struct.ComponentSchema {
   }
 }
 
+export interface SectionsUrbanStudyPart extends Struct.ComponentSchema {
+  collectionName: 'components_sections_urban_study_parts'
+  info: {
+    displayName: 'urban study part'
+  }
+  attributes: {
+    items: Schema.Attribute.Component<'blocks.urban-study-part-item', true>
+    text: Schema.Attribute.Text
+    title: Schema.Attribute.String
+  }
+}
+
 export interface SectionsVideos extends Struct.ComponentSchema {
   collectionName: 'components_sections_videos'
   info: {
@@ -1302,6 +1325,7 @@ declare module '@strapi/strapi' {
       'blocks.subnavigation-link': BlocksSubnavigationLink
       'blocks.top-services-item': BlocksTopServicesItem
       'blocks.urban-item': BlocksUrbanItem
+      'blocks.urban-study-part-item': BlocksUrbanStudyPartItem
       'blocks.video': BlocksVideo
       'general.header': GeneralHeader
       'general.header-link': GeneralHeaderLink
@@ -1354,6 +1378,7 @@ declare module '@strapi/strapi' {
       'sections.top-services': SectionsTopServices
       'sections.urban-inner-section': SectionsUrbanInnerSection
       'sections.urban-studies': SectionsUrbanStudies
+      'sections.urban-study-part': SectionsUrbanStudyPart
       'sections.videos': SectionsVideos
       'sidebars.empty-sidebar': SidebarsEmptySidebar
       'tax-administrators.tax-administrator': TaxAdministratorsTaxAdministrator

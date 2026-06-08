@@ -4,7 +4,7 @@
   "info": {
     "singularName": "urban-study",
     "pluralName": "urban-studies",
-    "displayName": "WIP Urban Studies"
+    "displayName": "[WIP] Územné štúdie"
   },
   "options": {
     "draftAndPublish": true
@@ -63,6 +63,11 @@
     "urbanStudyItemsSections": {
       "type": "component",
       "component": "sections.urban-inner-section",
+      "repeatable": true
+    },
+    "urbanStudyParts": {
+      "type": "component",
+      "component": "sections.urban-study-part",
       "repeatable": true
     },
     "links": {

@@ -1333,7 +1333,7 @@ export interface ApiTaxAdministratorsListTaxAdministratorsList extends Struct.Si
 export interface ApiUrbanStudyUrbanStudy extends Struct.CollectionTypeSchema {
   collectionName: 'urban_studies'
   info: {
-    displayName: 'WIP Urban Studies'
+    displayName: '[WIP] \u00DAzemn\u00E9 \u0161t\u00FAdie'
     pluralName: 'urban-studies'
     singularName: 'urban-study'
   }
@@ -1361,6 +1361,7 @@ export interface ApiUrbanStudyUrbanStudy extends Struct.CollectionTypeSchema {
     updatedAt: Schema.Attribute.DateTime
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> & Schema.Attribute.Private
     urbanStudyItemsSections: Schema.Attribute.Component<'sections.urban-inner-section', true>
+    urbanStudyParts: Schema.Attribute.Component<'sections.urban-study-part', true>
     urbanStudyType: Schema.Attribute.Enumeration<
       [
         'urbanStudyType.urbanistickaStudia',
