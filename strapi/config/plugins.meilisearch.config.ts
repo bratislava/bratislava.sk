@@ -65,6 +65,7 @@ const searchIndexSettings = {
     'document.updatedAtTimestamp',
     'asset.updatedAtTimestamp',
     'urban-study.updatedAtTimestamp',
+    'urban-study.customPublishedAtTimestamp',
     'inba-release.releaseDate', // releaseDate is not datetime but only date (e.g. 2025-12-07), so we can sort by it directly instead of creating timestamp
     'regulation.effectiveFromTimestamp',
     'faq.publishedAtTimestamp',
@@ -140,6 +141,9 @@ const config = {
         // use (number) filters.
         publishedAtTimestamp: entry.publishedAt ? new Date(entry.publishedAt).getTime() : undefined,
         updatedAtTimestamp: entry.updatedAt ? new Date(entry.updatedAt).getTime() : undefined,
+        customPublishedAtTimestamp: entry.customPublishedAt
+          ? new Date(entry.customPublishedAt).getTime()
+          : undefined,
       }),
   },
   document: {

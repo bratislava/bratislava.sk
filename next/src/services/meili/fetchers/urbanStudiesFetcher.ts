@@ -26,7 +26,7 @@ export const urbanStudiesFetcher = (filters: UrbanStudiesFilters) => {
     .search<SearchIndexWrapped<'urban-study', UrbanStudyMeili>>(filters.search, {
       ...getMeilisearchPageOptions({ page: filters.page, pageSize: filters.pageSize }),
       filter: ['type = "urban-study"'],
-      sort: ['urban-study.updatedAtTimestamp:desc'],
+      sort: ['urban-study.customPublishedAtTimestamp:desc'],
     })
     .then(unwrapFromSearchIndex('urban-study'))
 }
