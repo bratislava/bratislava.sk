@@ -1348,7 +1348,6 @@ export interface ApiUrbanStudyUrbanStudy extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> & Schema.Attribute.Private
     customPublishedAt: Schema.Attribute.DateTime
-    fileSections: Schema.Attribute.Component<'sections.file-list', true>
     graphicPartFiles: Schema.Attribute.Media<'images' | 'files', true>
     links: Schema.Attribute.Component<'blocks.common-link', true>
     locale: Schema.Attribute.String & Schema.Attribute.Private
@@ -1407,6 +1406,7 @@ export interface ApiUrbanStudyUrbanStudy extends Struct.CollectionTypeSchema {
     title: Schema.Attribute.String & Schema.Attribute.Required
     updatedAt: Schema.Attribute.DateTime
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> & Schema.Attribute.Private
+    urbanStudyItemsSections: Schema.Attribute.Component<'sections.urban-inner-section', true>
     urbanStudyType: Schema.Attribute.Enumeration<
       [
         'urbanStudyType.urbanistickaStudia',

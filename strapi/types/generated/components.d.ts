@@ -364,6 +364,17 @@ export interface BlocksTopServicesItem extends Struct.ComponentSchema {
   }
 }
 
+export interface BlocksUrbanItem extends Struct.ComponentSchema {
+  collectionName: 'components_blocks_urban_items'
+  info: {
+    displayName: 'urban item'
+  }
+  attributes: {
+    media: Schema.Attribute.Media<'images' | 'files'>
+    title: Schema.Attribute.String
+  }
+}
+
 export interface BlocksVideo extends Struct.ComponentSchema {
   collectionName: 'components_blocks_videos'
   info: {
@@ -1198,6 +1209,18 @@ export interface SectionsTopServices extends Struct.ComponentSchema {
   }
 }
 
+export interface SectionsUrbanInnerSection extends Struct.ComponentSchema {
+  collectionName: 'components_sections_urban_inner_sections'
+  info: {
+    displayName: 'urban study items'
+  }
+  attributes: {
+    items: Schema.Attribute.Component<'blocks.urban-item', true>
+    text: Schema.Attribute.Text
+    title: Schema.Attribute.String
+  }
+}
+
 export interface SectionsVideos extends Struct.ComponentSchema {
   collectionName: 'components_sections_videos'
   info: {
@@ -1264,6 +1287,7 @@ declare module '@strapi/strapi' {
       'blocks.starz-landing-page-banner': BlocksStarzLandingPageBanner
       'blocks.subnavigation-link': BlocksSubnavigationLink
       'blocks.top-services-item': BlocksTopServicesItem
+      'blocks.urban-item': BlocksUrbanItem
       'blocks.video': BlocksVideo
       'general.header': GeneralHeader
       'general.header-link': GeneralHeaderLink
@@ -1314,6 +1338,7 @@ declare module '@strapi/strapi' {
       'sections.text-with-image-overlapped': SectionsTextWithImageOverlapped
       'sections.tootoot-events': SectionsTootootEvents
       'sections.top-services': SectionsTopServices
+      'sections.urban-inner-section': SectionsUrbanInnerSection
       'sections.videos': SectionsVideos
       'sidebars.empty-sidebar': SidebarsEmptySidebar
       'tax-administrators.tax-administrator': TaxAdministratorsTaxAdministrator

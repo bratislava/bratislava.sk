@@ -1,3 +1,19 @@
+fragment UrbanStudyItem on ComponentBlocksUrbanItem {
+  id
+  title
+  media {
+    ...UploadFileEntity
+  }
+}
+
+fragment UrbanStudyItemsSection on ComponentSectionsUrbanInnerSection {
+  title
+  text
+  items(pagination: { limit: -1 }) {
+    ...UrbanStudyItem
+  }
+}
+
 fragment UrbanStudySlugEntity on UrbanStudy {
   __typename
   documentId
@@ -34,8 +50,8 @@ fragment UrbanStudyEntity on UrbanStudy {
   attachmentFiles {
     ...UploadFileEntity
   }
-  fileSections {
-    ...FileListSection
+  urbanStudyItemsSections {
+    ...UrbanStudyItemsSection
   }
   regulations {
     ...RegulationEntity

@@ -1322,6 +1322,26 @@ export type ComponentBlocksTopServicesItemInput = {
   link?: InputMaybe<ComponentBlocksCommonLinkInput>
 }
 
+export type ComponentBlocksUrbanItem = {
+  __typename?: 'ComponentBlocksUrbanItem'
+  id: Scalars['ID']['output']
+  media?: Maybe<UploadFile>
+  title?: Maybe<Scalars['String']['output']>
+}
+
+export type ComponentBlocksUrbanItemFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentBlocksUrbanItemFiltersInput>>>
+  not?: InputMaybe<ComponentBlocksUrbanItemFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<ComponentBlocksUrbanItemFiltersInput>>>
+  title?: InputMaybe<StringFilterInput>
+}
+
+export type ComponentBlocksUrbanItemInput = {
+  id?: InputMaybe<Scalars['ID']['input']>
+  media?: InputMaybe<Scalars['ID']['input']>
+  title?: InputMaybe<Scalars['String']['input']>
+}
+
 export type ComponentBlocksVideo = {
   __typename?: 'ComponentBlocksVideo'
   id: Scalars['ID']['output']
@@ -2997,6 +3017,36 @@ export type ComponentSectionsTopServicesInput = {
   title?: InputMaybe<Scalars['String']['input']>
 }
 
+export type ComponentSectionsUrbanInnerSection = {
+  __typename?: 'ComponentSectionsUrbanInnerSection'
+  id: Scalars['ID']['output']
+  items?: Maybe<Array<Maybe<ComponentBlocksUrbanItem>>>
+  text?: Maybe<Scalars['String']['output']>
+  title?: Maybe<Scalars['String']['output']>
+}
+
+export type ComponentSectionsUrbanInnerSectionItemsArgs = {
+  filters?: InputMaybe<ComponentBlocksUrbanItemFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type ComponentSectionsUrbanInnerSectionFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentSectionsUrbanInnerSectionFiltersInput>>>
+  items?: InputMaybe<ComponentBlocksUrbanItemFiltersInput>
+  not?: InputMaybe<ComponentSectionsUrbanInnerSectionFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<ComponentSectionsUrbanInnerSectionFiltersInput>>>
+  text?: InputMaybe<StringFilterInput>
+  title?: InputMaybe<StringFilterInput>
+}
+
+export type ComponentSectionsUrbanInnerSectionInput = {
+  id?: InputMaybe<Scalars['ID']['input']>
+  items?: InputMaybe<Array<InputMaybe<ComponentBlocksUrbanItemInput>>>
+  text?: InputMaybe<Scalars['String']['input']>
+  title?: InputMaybe<Scalars['String']['input']>
+}
+
 export type ComponentSectionsVideos = {
   __typename?: 'ComponentSectionsVideos'
   id: Scalars['ID']['output']
@@ -3864,6 +3914,7 @@ export type GenericMorph =
   | ComponentBlocksStarzLandingPageBanner
   | ComponentBlocksSubnavigationLink
   | ComponentBlocksTopServicesItem
+  | ComponentBlocksUrbanItem
   | ComponentBlocksVideo
   | ComponentGeneralHeader
   | ComponentGeneralHeaderLink
@@ -3914,6 +3965,7 @@ export type GenericMorph =
   | ComponentSectionsTextWithImageOverlapped
   | ComponentSectionsTootootEvents
   | ComponentSectionsTopServices
+  | ComponentSectionsUrbanInnerSection
   | ComponentSectionsVideos
   | ComponentSidebarsEmptySidebar
   | ComponentTaxAdministratorsTaxAdministrator
@@ -6120,7 +6172,6 @@ export type UrbanStudy = {
   createdAt?: Maybe<Scalars['DateTime']['output']>
   customPublishedAt?: Maybe<Scalars['DateTime']['output']>
   documentId: Scalars['ID']['output']
-  fileSections?: Maybe<Array<Maybe<ComponentSectionsFileList>>>
   graphicPartFiles: Array<Maybe<UploadFile>>
   graphicPartFiles_connection?: Maybe<UploadFileRelationResponseCollection>
   links?: Maybe<Array<Maybe<ComponentBlocksCommonLink>>>
@@ -6133,6 +6184,7 @@ export type UrbanStudy = {
   slug: Scalars['String']['output']
   title: Scalars['String']['output']
   updatedAt?: Maybe<Scalars['DateTime']['output']>
+  urbanStudyItemsSections?: Maybe<Array<Maybe<ComponentSectionsUrbanInnerSection>>>
   urbanStudyType: Enum_Urbanstudy_Urbanstudytype
   writtenPartFiles: Array<Maybe<UploadFile>>
   writtenPartFiles_connection?: Maybe<UploadFileRelationResponseCollection>
@@ -6187,12 +6239,6 @@ export type UrbanStudyCommentsEvaluationFiles_ConnectionArgs = {
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
 }
 
-export type UrbanStudyFileSectionsArgs = {
-  filters?: InputMaybe<ComponentSectionsFileListFiltersInput>
-  pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
-}
-
 export type UrbanStudyGraphicPartFilesArgs = {
   filters?: InputMaybe<UploadFileFiltersInput>
   pagination?: InputMaybe<PaginationArg>
@@ -6219,6 +6265,12 @@ export type UrbanStudyRegulationsArgs = {
 
 export type UrbanStudyRegulations_ConnectionArgs = {
   filters?: InputMaybe<RegulationFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type UrbanStudyUrbanStudyItemsSectionsArgs = {
+  filters?: InputMaybe<ComponentSectionsUrbanInnerSectionFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
 }
@@ -6259,7 +6311,6 @@ export type UrbanStudyFiltersInput = {
   createdAt?: InputMaybe<DateTimeFilterInput>
   customPublishedAt?: InputMaybe<DateTimeFilterInput>
   documentId?: InputMaybe<IdFilterInput>
-  fileSections?: InputMaybe<ComponentSectionsFileListFiltersInput>
   links?: InputMaybe<ComponentBlocksCommonLinkFiltersInput>
   not?: InputMaybe<UrbanStudyFiltersInput>
   or?: InputMaybe<Array<InputMaybe<UrbanStudyFiltersInput>>>
@@ -6271,6 +6322,7 @@ export type UrbanStudyFiltersInput = {
   slug?: InputMaybe<StringFilterInput>
   title?: InputMaybe<StringFilterInput>
   updatedAt?: InputMaybe<DateTimeFilterInput>
+  urbanStudyItemsSections?: InputMaybe<ComponentSectionsUrbanInnerSectionFiltersInput>
   urbanStudyType?: InputMaybe<StringFilterInput>
   year?: InputMaybe<StringFilterInput>
 }
@@ -6283,7 +6335,6 @@ export type UrbanStudyInput = {
   briefFiles?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
   commentsEvaluationFiles?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
   customPublishedAt?: InputMaybe<Scalars['DateTime']['input']>
-  fileSections?: InputMaybe<Array<InputMaybe<ComponentSectionsFileListInput>>>
   graphicPartFiles?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
   links?: InputMaybe<Array<InputMaybe<ComponentBlocksCommonLinkInput>>>
   orderedBy?: InputMaybe<Scalars['String']['input']>
@@ -6293,6 +6344,7 @@ export type UrbanStudyInput = {
   regulations?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
   slug?: InputMaybe<Scalars['String']['input']>
   title?: InputMaybe<Scalars['String']['input']>
+  urbanStudyItemsSections?: InputMaybe<Array<InputMaybe<ComponentSectionsUrbanInnerSectionInput>>>
   urbanStudyType?: InputMaybe<Enum_Urbanstudy_Urbanstudytype>
   writtenPartFiles?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
   year?: InputMaybe<Scalars['String']['input']>
@@ -18475,6 +18527,43 @@ export type TagsQuery = {
   } | null>
 }
 
+export type UrbanStudyItemFragment = {
+  __typename?: 'ComponentBlocksUrbanItem'
+  id: string
+  title?: string | null
+  media?: {
+    __typename?: 'UploadFile'
+    documentId: string
+    url: string
+    name: string
+    ext?: string | null
+    size: number
+    createdAt?: any | null
+    updatedAt?: any | null
+  } | null
+}
+
+export type UrbanStudyItemsSectionFragment = {
+  __typename?: 'ComponentSectionsUrbanInnerSection'
+  title?: string | null
+  text?: string | null
+  items?: Array<{
+    __typename?: 'ComponentBlocksUrbanItem'
+    id: string
+    title?: string | null
+    media?: {
+      __typename?: 'UploadFile'
+      documentId: string
+      url: string
+      name: string
+      ext?: string | null
+      size: number
+      createdAt?: any | null
+      updatedAt?: any | null
+    } | null
+  } | null> | null
+}
+
 export type UrbanStudySlugEntityFragment = {
   __typename: 'UrbanStudy'
   documentId: string
@@ -18556,13 +18645,12 @@ export type UrbanStudyEntityFragment = {
     createdAt?: any | null
     updatedAt?: any | null
   } | null>
-  fileSections?: Array<{
-    __typename?: 'ComponentSectionsFileList'
+  urbanStudyItemsSections?: Array<{
+    __typename?: 'ComponentSectionsUrbanInnerSection'
     title?: string | null
     text?: string | null
-    titleLevelFileListSection?: Enum_Componentsectionsfilelist_Titlelevel | null
-    fileList?: Array<{
-      __typename?: 'ComponentBlocksFile'
+    items?: Array<{
+      __typename?: 'ComponentBlocksUrbanItem'
       id: string
       title?: string | null
       media?: {
@@ -18782,13 +18870,12 @@ export type UrbanStudyBySlugQuery = {
       createdAt?: any | null
       updatedAt?: any | null
     } | null>
-    fileSections?: Array<{
-      __typename?: 'ComponentSectionsFileList'
+    urbanStudyItemsSections?: Array<{
+      __typename?: 'ComponentSectionsUrbanInnerSection'
       title?: string | null
       text?: string | null
-      titleLevelFileListSection?: Enum_Componentsectionsfilelist_Titlelevel | null
-      fileList?: Array<{
-        __typename?: 'ComponentBlocksFile'
+      items?: Array<{
+        __typename?: 'ComponentBlocksUrbanItem'
         id: string
         title?: string | null
         media?: {
@@ -20482,6 +20569,26 @@ export const UrbanStudySlugEntityFragmentDoc = gql`
     title
   }
 `
+export const UrbanStudyItemFragmentDoc = gql`
+  fragment UrbanStudyItem on ComponentBlocksUrbanItem {
+    id
+    title
+    media {
+      ...UploadFileEntity
+    }
+  }
+  ${UploadFileEntityFragmentDoc}
+`
+export const UrbanStudyItemsSectionFragmentDoc = gql`
+  fragment UrbanStudyItemsSection on ComponentSectionsUrbanInnerSection {
+    title
+    text
+    items(pagination: { limit: -1 }) {
+      ...UrbanStudyItem
+    }
+  }
+  ${UrbanStudyItemFragmentDoc}
+`
 export const UrbanStudyEntityFragmentDoc = gql`
   fragment UrbanStudyEntity on UrbanStudy {
     ...UrbanStudySlugEntity
@@ -20512,8 +20619,8 @@ export const UrbanStudyEntityFragmentDoc = gql`
     attachmentFiles {
       ...UploadFileEntity
     }
-    fileSections {
-      ...FileListSection
+    urbanStudyItemsSections {
+      ...UrbanStudyItemsSection
     }
     regulations {
       ...RegulationEntity
@@ -20524,7 +20631,7 @@ export const UrbanStudyEntityFragmentDoc = gql`
   }
   ${UrbanStudySlugEntityFragmentDoc}
   ${UploadFileEntityFragmentDoc}
-  ${FileListSectionFragmentDoc}
+  ${UrbanStudyItemsSectionFragmentDoc}
   ${RegulationEntityFragmentDoc}
   ${CommonLinkFragmentDoc}
 `

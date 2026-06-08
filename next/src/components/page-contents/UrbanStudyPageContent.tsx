@@ -14,7 +14,11 @@ import TableOfContents from '@/src/components/common/TableOfContents/TableOfCont
 import { TABLE_OF_CONTENTS_HEADING_ATTRIBUTE } from '@/src/components/common/TableOfContents/useHeadings'
 import Markdown from '@/src/components/formatting/Markdown/Markdown'
 import SectionContainer from '@/src/components/layouts/SectionContainer'
-import { LinksSectionFragment, UrbanStudyEntityFragment } from '@/src/services/graphql'
+import {
+  FileBlockFragment,
+  LinksSectionFragment,
+  UrbanStudyEntityFragment,
+} from '@/src/services/graphql'
 import cn from '@/src/utils/cn'
 import { formatDate } from '@/src/utils/formatDate'
 import { formatFileExtension } from '@/src/utils/formatFileExtension'
@@ -52,7 +56,7 @@ const UrbanStudyPageContent = ({ urbanStudy }: Props) => {
     writtenPartFiles,
     graphicPartFiles,
     attachmentFiles,
-    fileSections,
+    urbanStudyItemsSections,
     regulations,
     links,
   } = urbanStudy
@@ -82,7 +86,7 @@ const UrbanStudyPageContent = ({ urbanStudy }: Props) => {
     { label: t('UrbanStudyPageContent.updatedAt'), value: formatDate(updatedAt) },
   ].filter((item) => !!item.value)
 
-  const filteredFileSections = fileSections?.filter(isDefined) ?? []
+  const filteredItemsSections = urbanStudyItemsSections?.filter(isDefined) ?? []
   const filteredRegulations = regulations?.filter(isDefined) ?? []
   const filteredLinks = links?.filter(isDefined) ?? []
 
@@ -138,14 +142,15 @@ const UrbanStudyPageContent = ({ urbanStudy }: Props) => {
               </>
             ) : null}
 
-            {filteredFileSections.map((fileSection, index) => (
+            {filteredItemsSections.map((itemsSection, index) => (
               <FileList
                 // eslint-disable-next-line react/no-array-index-key
                 key={index}
-                title={fileSection.title}
-                text={fileSection.text}
-                files={fileSection.fileList?.filter(isDefined) ?? []}
-                titleLevel={fileSection.titleLevelFileListSection}
+                title={itemsSection.title}
+                text={itemsSection.text}
+                // UrbanStudyItem (blocks.urban-item) is structurally compatible with
+                // FileBlock (blocks.file) expected by FileList.
+                files={(itemsSection.items?.filter(isDefined) ?? []) as FileBlockFragment[]}
               />
             ))}
 
