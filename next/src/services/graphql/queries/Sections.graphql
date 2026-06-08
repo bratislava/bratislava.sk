@@ -403,6 +403,23 @@ fragment AssetsSection on ComponentSectionsAssets {
   titleLevelAssetsSection: titleLevel
 }
 
+fragment UrbanStudyCardEntity on UrbanStudy {
+  ...UrbanStudySlugEntity
+  urbanStudyType
+  year
+  updatedAt
+}
+
+fragment UrbanStudiesSection on ComponentSectionsUrbanStudies {
+  title
+  text
+  urbanStudies(pagination: { limit: -1 }) {
+    ...UrbanStudyCardEntity
+  }
+  showAll
+  titleLevelUrbanStudiesSection: titleLevel
+}
+
 fragment NumbersOverviewItemBlock on ComponentBlocksNumbersOverviewItem {
   id
   number
@@ -631,6 +648,10 @@ fragment Sections on PageSectionsDynamicZone {
 
   ... on ComponentSectionsAssets {
     ...AssetsSection
+  }
+
+  ... on ComponentSectionsUrbanStudies {
+    ...UrbanStudiesSection
   }
 
   ... on ComponentSectionsNumbersOverview {
