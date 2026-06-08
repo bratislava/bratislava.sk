@@ -6,6 +6,7 @@ import { Fragment, useMemo } from 'react'
 import DocumentRowCard from '@/src/components/cards/DocumentRowCard'
 import Breadcrumbs, { Breadcrumb } from '@/src/components/common/Breadcrumbs/Breadcrumbs'
 import { getPageBreadcrumbs } from '@/src/components/common/Breadcrumbs/getPageBreadcrumbs'
+import DescriptionList from '@/src/components/common/DescriptionList/DescriptionList'
 import HorizontalDivider from '@/src/components/common/Divider/HorizontalDivider'
 import Links from '@/src/components/common/Links/Links'
 import Pictogram from '@/src/components/common/Pictogram/Pictogram'
@@ -18,7 +19,6 @@ import SectionHeader from '@/src/components/layouts/SectionHeader'
 import { useGeneralContext } from '@/src/components/providers/GeneralContextProvider'
 import { LinksSectionFragment, UrbanStudyEntityFragment } from '@/src/services/graphql'
 import cn from '@/src/utils/cn'
-import { formatDate } from '@/src/utils/formatDate'
 import { formatFileExtension } from '@/src/utils/formatFileExtension'
 import { formatFileSize } from '@/src/utils/formatFileSize'
 import { isDefined } from '@/src/utils/isDefined'
@@ -75,7 +75,7 @@ const UrbanStudyPageContent = ({ urbanStudy }: Props) => {
   const filteredRegulations = regulations?.filter(isDefined) ?? []
   const filteredLinks = links?.filter(isDefined) ?? []
 
-  const metadata = [urbanStudyTypeLabel, year, formatDate(updatedAt)].filter(isDefined)
+  const metadata = [urbanStudyTypeLabel, year].filter(isDefined)
 
   return (
     <>
@@ -174,14 +174,7 @@ const UrbanStudyPageContent = ({ urbanStudy }: Props) => {
                 <Typography variant="h2" id={slugify(t('UrbanStudyPageContent.detailsTitle'))}>
                   {t('UrbanStudyPageContent.detailsTitle')}
                 </Typography>
-                <div className="flex flex-col gap-4">
-                  {detailItems.map(({ label, value }, index) => (
-                    <div className="flex flex-col flex-wrap sm:flex-row sm:gap-x-6" key={index}>
-                      <Typography className="basis-1/3">{`${label}:`}</Typography>
-                      <Typography>{value}</Typography>
-                    </div>
-                  ))}
-                </div>
+                <DescriptionList items={detailItems} />
               </div>
             ) : null}
 

@@ -1,9 +1,12 @@
 import { Typography } from '@bratislava/component-library'
-import { Fragment, ReactNode, useMemo } from 'react'
+import { Fragment, useMemo } from 'react'
 
 import FileRowCard from '@/src/components/cards/FileRowCard'
 import { Breadcrumb } from '@/src/components/common/Breadcrumbs/Breadcrumbs'
 import { getPageBreadcrumbs } from '@/src/components/common/Breadcrumbs/getPageBreadcrumbs'
+import DescriptionList, {
+  DescriptionListItem,
+} from '@/src/components/common/DescriptionList/DescriptionList'
 import HorizontalDivider from '@/src/components/common/Divider/HorizontalDivider'
 import PageHeader from '@/src/components/common/PageHeader/PageHeader'
 import SectionContainer from '@/src/components/layouts/SectionContainer'
@@ -29,26 +32,26 @@ const OfficialBoardDocumentPageContent = ({ document }: OfficialBoardDocumentPag
     ]
   }, [document.title, officialBoardPage])
 
-  const dlData: { key: string; title: string; description: ReactNode }[] = [
+  const dlData: DescriptionListItem[] = [
     {
       key: 'description',
-      title: t('OfficialBoard.description'),
-      description: document.description,
+      label: t('OfficialBoard.description'),
+      value: document.description,
     },
     {
       key: 'category',
-      title: t('OfficialBoard.category'),
-      description: document.categoryName,
+      label: t('OfficialBoard.category'),
+      value: document.categoryName,
     },
     {
       key: 'publishedFrom',
-      title: t('OfficialBoard.publishedFrom'),
-      description: formatDate(document.publishedFrom),
+      label: t('OfficialBoard.publishedFrom'),
+      value: formatDate(document.publishedFrom),
     },
     {
       key: 'publishedTo',
-      title: t('OfficialBoard.publishedTo'),
-      description: formatDate(document.publishedTo),
+      label: t('OfficialBoard.publishedTo'),
+      value: formatDate(document.publishedTo),
     },
   ]
 
@@ -92,16 +95,7 @@ const OfficialBoardDocumentPageContent = ({ document }: OfficialBoardDocumentPag
             <Typography variant="h4" as="h2">
               {t('OfficialBoard.details')}
             </Typography>
-            <dl className="-mt-1 lg:-mt-3">
-              {dlData.map((dItem) => (
-                <Fragment key={dItem.key}>
-                  <dt className="mt-1 font-semibold after:content-[':'] lg:float-left lg:clear-left lg:mt-3 lg:w-40">
-                    {dItem.title}
-                  </dt>
-                  <dd className="mt-1 lg:mt-3 lg:ml-44">{dItem.description}</dd>
-                </Fragment>
-              ))}
-            </dl>
+            <DescriptionList items={dlData} />
           </div>
         </div>
       </SectionContainer>
