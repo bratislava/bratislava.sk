@@ -4,7 +4,7 @@
   "info": {
     "singularName": "urban-study",
     "pluralName": "urban-studies",
-    "displayName": "[WIP] Územné štúdie"
+    "displayName": "WIP Územné štúdie"
   },
   "options": {
     "draftAndPublish": true
@@ -59,11 +59,6 @@
       "relation": "manyToMany",
       "target": "api::regulation.regulation",
       "mappedBy": "urbanStudies"
-    },
-    "urbanStudyItemsSections": {
-      "type": "component",
-      "component": "sections.urban-inner-section",
-      "repeatable": true
     },
     "urbanStudyParts": {
       "type": "component",

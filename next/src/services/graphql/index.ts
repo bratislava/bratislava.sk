@@ -1350,26 +1350,6 @@ export type ComponentBlocksTopServicesItemInput = {
   link?: InputMaybe<ComponentBlocksCommonLinkInput>;
 };
 
-export type ComponentBlocksUrbanItem = {
-  __typename?: 'ComponentBlocksUrbanItem';
-  id: Scalars['ID']['output'];
-  media?: Maybe<UploadFile>;
-  title?: Maybe<Scalars['String']['output']>;
-};
-
-export type ComponentBlocksUrbanItemFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<ComponentBlocksUrbanItemFiltersInput>>>;
-  not?: InputMaybe<ComponentBlocksUrbanItemFiltersInput>;
-  or?: InputMaybe<Array<InputMaybe<ComponentBlocksUrbanItemFiltersInput>>>;
-  title?: InputMaybe<StringFilterInput>;
-};
-
-export type ComponentBlocksUrbanItemInput = {
-  id?: InputMaybe<Scalars['ID']['input']>;
-  media?: InputMaybe<Scalars['ID']['input']>;
-  title?: InputMaybe<Scalars['String']['input']>;
-};
-
 export type ComponentBlocksUrbanStudyPartItem = {
   __typename?: 'ComponentBlocksUrbanStudyPartItem';
   id: Scalars['ID']['output'];
@@ -3119,37 +3099,6 @@ export type ComponentSectionsTopServicesInput = {
   title?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type ComponentSectionsUrbanInnerSection = {
-  __typename?: 'ComponentSectionsUrbanInnerSection';
-  id: Scalars['ID']['output'];
-  items?: Maybe<Array<Maybe<ComponentBlocksUrbanItem>>>;
-  text?: Maybe<Scalars['String']['output']>;
-  title?: Maybe<Scalars['String']['output']>;
-};
-
-
-export type ComponentSectionsUrbanInnerSectionItemsArgs = {
-  filters?: InputMaybe<ComponentBlocksUrbanItemFiltersInput>;
-  pagination?: InputMaybe<PaginationArg>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-};
-
-export type ComponentSectionsUrbanInnerSectionFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<ComponentSectionsUrbanInnerSectionFiltersInput>>>;
-  items?: InputMaybe<ComponentBlocksUrbanItemFiltersInput>;
-  not?: InputMaybe<ComponentSectionsUrbanInnerSectionFiltersInput>;
-  or?: InputMaybe<Array<InputMaybe<ComponentSectionsUrbanInnerSectionFiltersInput>>>;
-  text?: InputMaybe<StringFilterInput>;
-  title?: InputMaybe<StringFilterInput>;
-};
-
-export type ComponentSectionsUrbanInnerSectionInput = {
-  id?: InputMaybe<Scalars['ID']['input']>;
-  items?: InputMaybe<Array<InputMaybe<ComponentBlocksUrbanItemInput>>>;
-  text?: InputMaybe<Scalars['String']['input']>;
-  title?: InputMaybe<Scalars['String']['input']>;
-};
-
 export type ComponentSectionsUrbanStudies = {
   __typename?: 'ComponentSectionsUrbanStudies';
   id: Scalars['ID']['output'];
@@ -4036,7 +3985,7 @@ export type GeneralRelationResponseCollection = {
   nodes: Array<General>;
 };
 
-export type GenericMorph = AdminGroup | Alert | Article | ArticleCategory | Asset | AssetCategory | ComponentAccordionItemsFlatText | ComponentAccordionItemsInstitution | ComponentBlocksCardLink | ComponentBlocksColumnsItem | ComponentBlocksColumnsListItem | ComponentBlocksCommonLink | ComponentBlocksComparisonCard | ComponentBlocksComparisonItem | ComponentBlocksContactCard | ComponentBlocksContactDirectionsCard | ComponentBlocksContactPersonCard | ComponentBlocksFile | ComponentBlocksFileItem | ComponentBlocksFooterColumn | ComponentBlocksHomepageHighlightsItem | ComponentBlocksInBa | ComponentBlocksNumbersOverviewItem | ComponentBlocksNumericalListItem | ComponentBlocksOpeningHoursAlertMessage | ComponentBlocksOpeningHoursItem | ComponentBlocksPageLink | ComponentBlocksPartner | ComponentBlocksProsAndConsCard | ComponentBlocksStarzLandingPageBanner | ComponentBlocksSubnavigationLink | ComponentBlocksTopServicesItem | ComponentBlocksUrbanItem | ComponentBlocksUrbanStudyPartItem | ComponentBlocksVideo | ComponentGeneralHeader | ComponentGeneralHeaderLink | ComponentHeaderSectionsEvent | ComponentHeaderSectionsFacility | ComponentMenuMenuItem | ComponentMenuMenuLink | ComponentMenuMenuSection | ComponentSectionsAccordion | ComponentSectionsAlert | ComponentSectionsArticles | ComponentSectionsArticlesLandingPage | ComponentSectionsAssets | ComponentSectionsBanner | ComponentSectionsColumnedText | ComponentSectionsColumns | ComponentSectionsColumnsList | ComponentSectionsComparisonSection | ComponentSectionsContactsSection | ComponentSectionsDivider | ComponentSectionsEvents | ComponentSectionsFacilities | ComponentSectionsFaqs | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsHomepageEvents | ComponentSectionsHomepageHighlights | ComponentSectionsHomepageMayorAndCouncil | ComponentSectionsHomepageTabs | ComponentSectionsIframe | ComponentSectionsInbaLatestRelease | ComponentSectionsInbaReleases | ComponentSectionsJobOffers | ComponentSectionsLinks | ComponentSectionsNarrowText | ComponentSectionsNewsletter | ComponentSectionsNumbersOverview | ComponentSectionsNumericalList | ComponentSectionsOfficialBoard | ComponentSectionsOpeningHours | ComponentSectionsOrganizationalStructure | ComponentSectionsPartners | ComponentSectionsProsAndConsSection | ComponentSectionsRegulations | ComponentSectionsStarzLandingPage | ComponentSectionsSubnavigation | ComponentSectionsTextWithImage | ComponentSectionsTextWithImageOverlapped | ComponentSectionsTootootEvents | ComponentSectionsTopServices | ComponentSectionsUrbanInnerSection | ComponentSectionsUrbanStudies | ComponentSectionsUrbanStudyPart | ComponentSectionsVideos | ComponentSidebarsEmptySidebar | ComponentTaxAdministratorsTaxAdministrator | Faq | FaqCategory | Footer | General | Homepage | I18NLocale | InbaRelease | Menu | Page | PageCategory | Regulation | ReviewWorkflowsWorkflow | ReviewWorkflowsWorkflowStage | Tag | TaxAdministratorsList | UploadFile | UrbanStudy | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
+export type GenericMorph = AdminGroup | Alert | Article | ArticleCategory | Asset | AssetCategory | ComponentAccordionItemsFlatText | ComponentAccordionItemsInstitution | ComponentBlocksCardLink | ComponentBlocksColumnsItem | ComponentBlocksColumnsListItem | ComponentBlocksCommonLink | ComponentBlocksComparisonCard | ComponentBlocksComparisonItem | ComponentBlocksContactCard | ComponentBlocksContactDirectionsCard | ComponentBlocksContactPersonCard | ComponentBlocksFile | ComponentBlocksFileItem | ComponentBlocksFooterColumn | ComponentBlocksHomepageHighlightsItem | ComponentBlocksInBa | ComponentBlocksNumbersOverviewItem | ComponentBlocksNumericalListItem | ComponentBlocksOpeningHoursAlertMessage | ComponentBlocksOpeningHoursItem | ComponentBlocksPageLink | ComponentBlocksPartner | ComponentBlocksProsAndConsCard | ComponentBlocksStarzLandingPageBanner | ComponentBlocksSubnavigationLink | ComponentBlocksTopServicesItem | ComponentBlocksUrbanStudyPartItem | ComponentBlocksVideo | ComponentGeneralHeader | ComponentGeneralHeaderLink | ComponentHeaderSectionsEvent | ComponentHeaderSectionsFacility | ComponentMenuMenuItem | ComponentMenuMenuLink | ComponentMenuMenuSection | ComponentSectionsAccordion | ComponentSectionsAlert | ComponentSectionsArticles | ComponentSectionsArticlesLandingPage | ComponentSectionsAssets | ComponentSectionsBanner | ComponentSectionsColumnedText | ComponentSectionsColumns | ComponentSectionsColumnsList | ComponentSectionsComparisonSection | ComponentSectionsContactsSection | ComponentSectionsDivider | ComponentSectionsEvents | ComponentSectionsFacilities | ComponentSectionsFaqs | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsHomepageEvents | ComponentSectionsHomepageHighlights | ComponentSectionsHomepageMayorAndCouncil | ComponentSectionsHomepageTabs | ComponentSectionsIframe | ComponentSectionsInbaLatestRelease | ComponentSectionsInbaReleases | ComponentSectionsJobOffers | ComponentSectionsLinks | ComponentSectionsNarrowText | ComponentSectionsNewsletter | ComponentSectionsNumbersOverview | ComponentSectionsNumericalList | ComponentSectionsOfficialBoard | ComponentSectionsOpeningHours | ComponentSectionsOrganizationalStructure | ComponentSectionsPartners | ComponentSectionsProsAndConsSection | ComponentSectionsRegulations | ComponentSectionsStarzLandingPage | ComponentSectionsSubnavigation | ComponentSectionsTextWithImage | ComponentSectionsTextWithImageOverlapped | ComponentSectionsTootootEvents | ComponentSectionsTopServices | ComponentSectionsUrbanStudies | ComponentSectionsUrbanStudyPart | ComponentSectionsVideos | ComponentSidebarsEmptySidebar | ComponentTaxAdministratorsTaxAdministrator | Faq | FaqCategory | Footer | General | Homepage | I18NLocale | InbaRelease | Menu | Page | PageCategory | Regulation | ReviewWorkflowsWorkflow | ReviewWorkflowsWorkflowStage | Tag | TaxAdministratorsList | UploadFile | UrbanStudy | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
 
 export type Homepage = {
   __typename?: 'Homepage';
@@ -6347,7 +6296,6 @@ export type UrbanStudy = {
   slug: Scalars['String']['output'];
   title: Scalars['String']['output'];
   updatedAt?: Maybe<Scalars['DateTime']['output']>;
-  urbanStudyItemsSections?: Maybe<Array<Maybe<ComponentSectionsUrbanInnerSection>>>;
   urbanStudyParts?: Maybe<Array<Maybe<ComponentSectionsUrbanStudyPart>>>;
   urbanStudyType: Enum_Urbanstudy_Urbanstudytype;
   year?: Maybe<Scalars['String']['output']>;
@@ -6370,13 +6318,6 @@ export type UrbanStudyRegulationsArgs = {
 
 export type UrbanStudyRegulations_ConnectionArgs = {
   filters?: InputMaybe<RegulationFiltersInput>;
-  pagination?: InputMaybe<PaginationArg>;
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-};
-
-
-export type UrbanStudyUrbanStudyItemsSectionsArgs = {
-  filters?: InputMaybe<ComponentSectionsUrbanInnerSectionFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
@@ -6422,7 +6363,6 @@ export type UrbanStudyFiltersInput = {
   slug?: InputMaybe<StringFilterInput>;
   title?: InputMaybe<StringFilterInput>;
   updatedAt?: InputMaybe<DateTimeFilterInput>;
-  urbanStudyItemsSections?: InputMaybe<ComponentSectionsUrbanInnerSectionFiltersInput>;
   urbanStudyParts?: InputMaybe<ComponentSectionsUrbanStudyPartFiltersInput>;
   urbanStudyType?: InputMaybe<StringFilterInput>;
   year?: InputMaybe<StringFilterInput>;
@@ -6439,7 +6379,6 @@ export type UrbanStudyInput = {
   regulations?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
   slug?: InputMaybe<Scalars['String']['input']>;
   title?: InputMaybe<Scalars['String']['input']>;
-  urbanStudyItemsSections?: InputMaybe<Array<InputMaybe<ComponentSectionsUrbanInnerSectionInput>>>;
   urbanStudyParts?: InputMaybe<Array<InputMaybe<ComponentSectionsUrbanStudyPartInput>>>;
   urbanStudyType?: InputMaybe<Enum_Urbanstudy_Urbanstudytype>;
   year?: InputMaybe<Scalars['String']['input']>;
