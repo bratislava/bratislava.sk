@@ -1221,6 +1221,20 @@ export interface SectionsUrbanInnerSection extends Struct.ComponentSchema {
   }
 }
 
+export interface SectionsUrbanStudies extends Struct.ComponentSchema {
+  collectionName: 'components_sections_urban_studies'
+  info: {
+    displayName: '\u00DAzemn\u00E9 \u0161t\u00FAdie [WIP]'
+  }
+  attributes: {
+    showAll: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>
+    text: Schema.Attribute.Text
+    title: Schema.Attribute.String
+    titleLevel: Schema.Attribute.Enumeration<['h2', 'h3']> & Schema.Attribute.DefaultTo<'h2'>
+    urbanStudies: Schema.Attribute.Relation<'oneToMany', 'api::urban-study.urban-study'>
+  }
+}
+
 export interface SectionsVideos extends Struct.ComponentSchema {
   collectionName: 'components_sections_videos'
   info: {
@@ -1339,6 +1353,7 @@ declare module '@strapi/strapi' {
       'sections.tootoot-events': SectionsTootootEvents
       'sections.top-services': SectionsTopServices
       'sections.urban-inner-section': SectionsUrbanInnerSection
+      'sections.urban-studies': SectionsUrbanStudies
       'sections.videos': SectionsVideos
       'sidebars.empty-sidebar': SidebarsEmptySidebar
       'tax-administrators.tax-administrator': TaxAdministratorsTaxAdministrator
