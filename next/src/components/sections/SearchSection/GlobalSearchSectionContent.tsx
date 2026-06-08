@@ -234,7 +234,7 @@ const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
           /** Contacts show only for non-empty search query
            * - TODO keep this also during the first loading
            * - TODO IS PENDING, but handle contacts separately */
-          <Typography variant="p-small">{t('SearchPage.enterSearchQuery')}</Typography>
+          <Typography variant="p-small" data-cy="enter-search-query">{t('SearchPage.enterSearchQuery')}</Typography>
         ) : (
           <SearchResultsCount count={getResultsCountById(selectedKey)} />
         )}
