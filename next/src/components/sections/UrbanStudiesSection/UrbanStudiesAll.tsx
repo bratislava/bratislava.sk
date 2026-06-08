@@ -98,7 +98,7 @@ const UrbanStudiesAll = ({ section }: Props) => {
                         urbanStudy.year,
                         formatDate(urbanStudy.updatedAt),
                       ].filter(isDefined),
-                      customIconName: 'search_result_official_board',
+                      customIconName: 'urban_study',
                     }}
                   />
                 </li>

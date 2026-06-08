@@ -142,7 +142,7 @@ export const useQueryBySearchOption = ({
             uniqueId: urbanStudy.slug,
             linkHref: `/uzemne-studie/${urbanStudy.slug}`,
             metadata: [urbanStudy.year, formatDate(urbanStudy.updatedAt)].filter(isDefined),
-            customIconName: 'search_result_official_board',
+            customIconName: 'urban_study',
           }
         }) ?? []
 
