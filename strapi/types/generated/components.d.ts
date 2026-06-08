@@ -370,7 +370,7 @@ export interface BlocksUrbanStudyPartItem extends Struct.ComponentSchema {
     displayName: 'urban study part item'
   }
   attributes: {
-    media: Schema.Attribute.Media<'images' | 'files'>
+    media: Schema.Attribute.Media<'images' | 'files'> & Schema.Attribute.Required
     title: Schema.Attribute.String
   }
 }
