@@ -790,6 +790,7 @@ export interface ApiGeneralGeneral extends Struct.SingleTypeSchema {
     publishedAt: Schema.Attribute.DateTime
     updatedAt: Schema.Attribute.DateTime
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> & Schema.Attribute.Private
+    urbanStudiesPage: Schema.Attribute.Relation<'oneToOne', 'api::page.page'>
     vznPage: Schema.Attribute.Relation<'oneToOne', 'api::page.page'>
   }
 }

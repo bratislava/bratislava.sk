@@ -1,8 +1,10 @@
 import { Typography } from '@bratislava/component-library'
 import slugify from '@sindresorhus/slugify'
 import { useTranslation } from 'next-i18next'
-import { Fragment } from 'react'
+import { Fragment, useMemo } from 'react'
 
+import Breadcrumbs, { Breadcrumb } from '@/src/components/common/Breadcrumbs/Breadcrumbs'
+import { getPageBreadcrumbs } from '@/src/components/common/Breadcrumbs/getPageBreadcrumbs'
 import FileList from '@/src/components/common/FileList/FileList'
 import Links from '@/src/components/common/Links/Links'
 import Pictogram from '@/src/components/common/Pictogram/Pictogram'
@@ -11,6 +13,7 @@ import TableOfContents from '@/src/components/common/TableOfContents/TableOfCont
 import { TABLE_OF_CONTENTS_HEADING_ATTRIBUTE } from '@/src/components/common/TableOfContents/useHeadings'
 import Markdown from '@/src/components/formatting/Markdown/Markdown'
 import SectionContainer from '@/src/components/layouts/SectionContainer'
+import { useGeneralContext } from '@/src/components/providers/GeneralContextProvider'
 import { FileBlockFragment, LinksSectionFragment, UrbanStudyEntityFragment, } from '@/src/services/graphql'
 import cn from '@/src/utils/cn'
 import { formatDate } from '@/src/utils/formatDate'
@@ -49,6 +52,16 @@ const UrbanStudyPageContent = ({ urbanStudy }: Props) => {
     ? urbanStudyTypeTranslationMap[urbanStudyType]
     : undefined
 
+  const { general } = useGeneralContext()
+  const urbanStudiesPage = general?.urbanStudiesPage
+
+  const breadcrumbs = useMemo(() => {
+    return [
+      ...(urbanStudiesPage ? getPageBreadcrumbs(urbanStudiesPage) : []),
+      { title, path: null } as Breadcrumb,
+    ]
+  }, [title, urbanStudiesPage])
+
   const detailItems = [
     { label: t('UrbanStudyPageContent.type'), value: urbanStudyTypeLabel },
     { label: t('UrbanStudyPageContent.year'), value: year },
@@ -66,6 +79,12 @@ const UrbanStudyPageContent = ({ urbanStudy }: Props) => {
 
   return (
     <>
+      <div className="bg-background-passive-secondary">
+        <SectionContainer>
+          <Breadcrumbs breadcrumbs={breadcrumbs} />
+        </SectionContainer>
+      </div>
+
       {/* Header */}
       <div className={cn('relative overflow-x-clip bg-background-passive-secondary')}>
         <div className="relative mx-auto max-w-(--breakpoint-xl) px-4 lg:px-8">

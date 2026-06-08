@@ -60,6 +60,11 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::page.page"
+    },
+    "urbanStudiesPage": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::page.page"
     }
   }
 }

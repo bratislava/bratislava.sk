@@ -3083,6 +3083,7 @@ type General {
   privacyPolicyPage: Page
   publishedAt: DateTime
   updatedAt: DateTime
+  urbanStudiesPage: Page
   vznPage: Page
 }
 
@@ -3116,6 +3117,7 @@ input GeneralFiltersInput {
   privacyPolicyPage: PageFiltersInput
   publishedAt: DateTimeFilterInput
   updatedAt: DateTimeFilterInput
+  urbanStudiesPage: PageFiltersInput
   vznPage: PageFiltersInput
 }
 
@@ -3128,6 +3130,7 @@ input GeneralInput {
   officialBoardPage: ID
   privacyPolicyPage: ID
   publishedAt: DateTime
+  urbanStudiesPage: ID
   vznPage: ID
 }
 
