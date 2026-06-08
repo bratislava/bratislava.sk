@@ -3,9 +3,10 @@ import slugify from '@sindresorhus/slugify'
 import { useTranslation } from 'next-i18next'
 import { Fragment, useMemo } from 'react'
 
+import DocumentRowCard from '@/src/components/cards/DocumentRowCard'
 import Breadcrumbs, { Breadcrumb } from '@/src/components/common/Breadcrumbs/Breadcrumbs'
 import { getPageBreadcrumbs } from '@/src/components/common/Breadcrumbs/getPageBreadcrumbs'
-import FileList from '@/src/components/common/FileList/FileList'
+import HorizontalDivider from '@/src/components/common/Divider/HorizontalDivider'
 import Links from '@/src/components/common/Links/Links'
 import Pictogram from '@/src/components/common/Pictogram/Pictogram'
 import Regulations from '@/src/components/common/Regulations/Regulations'
@@ -13,11 +14,15 @@ import TableOfContents from '@/src/components/common/TableOfContents/TableOfCont
 import { TABLE_OF_CONTENTS_HEADING_ATTRIBUTE } from '@/src/components/common/TableOfContents/useHeadings'
 import Markdown from '@/src/components/formatting/Markdown/Markdown'
 import SectionContainer from '@/src/components/layouts/SectionContainer'
+import SectionHeader from '@/src/components/layouts/SectionHeader'
 import { useGeneralContext } from '@/src/components/providers/GeneralContextProvider'
-import { FileBlockFragment, LinksSectionFragment, UrbanStudyEntityFragment, } from '@/src/services/graphql'
+import { LinksSectionFragment, UrbanStudyEntityFragment } from '@/src/services/graphql'
 import cn from '@/src/utils/cn'
 import { formatDate } from '@/src/utils/formatDate'
+import { formatFileExtension } from '@/src/utils/formatFileExtension'
+import { formatFileSize } from '@/src/utils/formatFileSize'
 import { isDefined } from '@/src/utils/isDefined'
+import { useLocale } from '@/src/utils/useLocale'
 import { useUrbanStudyTypeLabel } from '@/src/utils/useUrbanStudyTypeTranslationMap'
 
 type Props = {
@@ -26,11 +31,11 @@ type Props = {
 
 /**
  * Detail page for Urban Studies. Inspired by AssetPageContent (route /dokumenty/[slug]).
- * No Figma design available - layout mirrors the Assets detail page, extended with
- * file item sections, richtext body/approval text, related regulations and links.
+ * No Figma design available.
  */
 const UrbanStudyPageContent = ({ urbanStudy }: Props) => {
   const { t } = useTranslation()
+  const locale = useLocale()
 
   const {
     title,
@@ -120,17 +125,43 @@ const UrbanStudyPageContent = ({ urbanStudy }: Props) => {
           >
             {body ? <Markdown content={body} /> : null}
 
-            {filteredParts.map((part, index) => (
-              <FileList
+            {filteredParts.map((part, partIndex) => {
+              const partItems = part.items?.filter(isDefined) ?? []
+
+              return (
                 // eslint-disable-next-line react/no-array-index-key
-                key={index}
-                title={part.title}
-                text={part.text}
-                // UrbanStudyPartItem (blocks.urban-study-part-item) is structurally compatible
-                // with FileBlock (blocks.file) expected by FileList.
-                files={(part.items?.filter(isDefined) ?? []) as FileBlockFragment[]}
-              />
-            ))}
+                <div className="flex flex-col gap-4 lg:gap-6" key={partIndex}>
+                  <SectionHeader title={part.title} text={part.text} />
+
+                  {/* TODO We should deduplicate usage of DocumentRowCard by some more generic FE section component*/}
+                  <ul className="flex flex-col rounded-lg border py-2">
+                    {partItems.map((item, index) => {
+                      const { media, title: itemTitle } = item
+
+                      return (
+                        <Fragment key={item.id}>
+                          {index > 0 ? (
+                            <HorizontalDivider asListItem className="mx-4 lg:mx-6" />
+                          ) : null}
+                          <li className="w-full">
+                            <DocumentRowCard
+                              variant="single-file"
+                              title={itemTitle ?? media.name}
+                              linkHref={media.url}
+                              className="px-4 lg:px-6"
+                              metadata={[
+                                formatFileExtension(media.ext),
+                                formatFileSize(media.size, locale),
+                              ].filter(isDefined)}
+                            />
+                          </li>
+                        </Fragment>
+                      )
+                    })}
+                  </ul>
+                </div>
+              )
+            })}
 
             {approvalText ? (
               <div className="flex flex-col gap-4">
