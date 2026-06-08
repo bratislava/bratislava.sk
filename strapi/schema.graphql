@@ -3935,250 +3935,318 @@ input PaginationArg {
   start: Int
 }
 
+enum PublicationFilter {
+  HAS_PUBLISHED_VERSION
+  HAS_PUBLISHED_VERSION_DOCUMENT
+  MODIFIED
+  NEVER_PUBLISHED
+  NEVER_PUBLISHED_DOCUMENT
+  PUBLISHED_WITHOUT_DRAFT
+  PUBLISHED_WITH_DRAFT
+  UNMODIFIED
+}
+
 enum PublicationStatus {
   DRAFT
   PUBLISHED
 }
 
 type Query {
-  adminGroup(documentId: ID!, status: PublicationStatus = PUBLISHED): AdminGroup
-  adminGroups(filters: AdminGroupFiltersInput, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED): [AdminGroup]!
-  adminGroups_connection(filters: AdminGroupFiltersInput, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED): AdminGroupEntityResponseCollection
+  adminGroup(documentId: ID!, hasPublishedVersion: Boolean, publicationFilter: PublicationFilter, status: PublicationStatus = PUBLISHED): AdminGroup
+  adminGroups(filters: AdminGroupFiltersInput, hasPublishedVersion: Boolean, pagination: PaginationArg = {}, publicationFilter: PublicationFilter, sort: [String] = [], status: PublicationStatus = PUBLISHED): [AdminGroup]!
+  adminGroups_connection(filters: AdminGroupFiltersInput, hasPublishedVersion: Boolean, pagination: PaginationArg = {}, publicationFilter: PublicationFilter, sort: [String] = [], status: PublicationStatus = PUBLISHED): AdminGroupEntityResponseCollection
   alert(
+    hasPublishedVersion: Boolean
+
     """The locale to use for the query"""
     locale: I18NLocaleCode
+    publicationFilter: PublicationFilter
     status: PublicationStatus = PUBLISHED
   ): Alert
   article(
     documentId: ID!
+    hasPublishedVersion: Boolean
 
     """The locale to use for the query"""
     locale: I18NLocaleCode
+    publicationFilter: PublicationFilter
     status: PublicationStatus = PUBLISHED
   ): Article
   articleCategories(
     filters: ArticleCategoryFiltersInput
+    hasPublishedVersion: Boolean
 
     """The locale to use for the query"""
     locale: I18NLocaleCode
     pagination: PaginationArg = {}
+    publicationFilter: PublicationFilter
     sort: [String] = []
     status: PublicationStatus = PUBLISHED
   ): [ArticleCategory]!
   articleCategories_connection(
     filters: ArticleCategoryFiltersInput
+    hasPublishedVersion: Boolean
 
     """The locale to use for the query"""
     locale: I18NLocaleCode
     pagination: PaginationArg = {}
+    publicationFilter: PublicationFilter
     sort: [String] = []
     status: PublicationStatus = PUBLISHED
   ): ArticleCategoryEntityResponseCollection
   articleCategory(
     documentId: ID!
+    hasPublishedVersion: Boolean
 
     """The locale to use for the query"""
     locale: I18NLocaleCode
+    publicationFilter: PublicationFilter
     status: PublicationStatus = PUBLISHED
   ): ArticleCategory
   articles(
     filters: ArticleFiltersInput
+    hasPublishedVersion: Boolean
 
     """The locale to use for the query"""
     locale: I18NLocaleCode
     pagination: PaginationArg = {}
+    publicationFilter: PublicationFilter
     sort: [String] = []
     status: PublicationStatus = PUBLISHED
   ): [Article]!
   articles_connection(
     filters: ArticleFiltersInput
+    hasPublishedVersion: Boolean
 
     """The locale to use for the query"""
     locale: I18NLocaleCode
     pagination: PaginationArg = {}
+    publicationFilter: PublicationFilter
     sort: [String] = []
     status: PublicationStatus = PUBLISHED
   ): ArticleEntityResponseCollection
-  asset(documentId: ID!, status: PublicationStatus = PUBLISHED): Asset
-  assetCategories(filters: AssetCategoryFiltersInput, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED): [AssetCategory]!
-  assetCategories_connection(filters: AssetCategoryFiltersInput, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED): AssetCategoryEntityResponseCollection
-  assetCategory(documentId: ID!, status: PublicationStatus = PUBLISHED): AssetCategory
-  assets(filters: AssetFiltersInput, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED): [Asset]!
-  assets_connection(filters: AssetFiltersInput, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED): AssetEntityResponseCollection
+  asset(documentId: ID!, hasPublishedVersion: Boolean, publicationFilter: PublicationFilter, status: PublicationStatus = PUBLISHED): Asset
+  assetCategories(filters: AssetCategoryFiltersInput, hasPublishedVersion: Boolean, pagination: PaginationArg = {}, publicationFilter: PublicationFilter, sort: [String] = [], status: PublicationStatus = PUBLISHED): [AssetCategory]!
+  assetCategories_connection(filters: AssetCategoryFiltersInput, hasPublishedVersion: Boolean, pagination: PaginationArg = {}, publicationFilter: PublicationFilter, sort: [String] = [], status: PublicationStatus = PUBLISHED): AssetCategoryEntityResponseCollection
+  assetCategory(documentId: ID!, hasPublishedVersion: Boolean, publicationFilter: PublicationFilter, status: PublicationStatus = PUBLISHED): AssetCategory
+  assets(filters: AssetFiltersInput, hasPublishedVersion: Boolean, pagination: PaginationArg = {}, publicationFilter: PublicationFilter, sort: [String] = [], status: PublicationStatus = PUBLISHED): [Asset]!
+  assets_connection(filters: AssetFiltersInput, hasPublishedVersion: Boolean, pagination: PaginationArg = {}, publicationFilter: PublicationFilter, sort: [String] = [], status: PublicationStatus = PUBLISHED): AssetEntityResponseCollection
   faq(
     documentId: ID!
+    hasPublishedVersion: Boolean
 
     """The locale to use for the query"""
     locale: I18NLocaleCode
+    publicationFilter: PublicationFilter
     status: PublicationStatus = PUBLISHED
   ): Faq
   faqCategories(
     filters: FaqCategoryFiltersInput
+    hasPublishedVersion: Boolean
 
     """The locale to use for the query"""
     locale: I18NLocaleCode
     pagination: PaginationArg = {}
+    publicationFilter: PublicationFilter
     sort: [String] = []
     status: PublicationStatus = PUBLISHED
   ): [FaqCategory]!
   faqCategories_connection(
     filters: FaqCategoryFiltersInput
+    hasPublishedVersion: Boolean
 
     """The locale to use for the query"""
     locale: I18NLocaleCode
     pagination: PaginationArg = {}
+    publicationFilter: PublicationFilter
     sort: [String] = []
     status: PublicationStatus = PUBLISHED
   ): FaqCategoryEntityResponseCollection
   faqCategory(
     documentId: ID!
+    hasPublishedVersion: Boolean
 
     """The locale to use for the query"""
     locale: I18NLocaleCode
+    publicationFilter: PublicationFilter
     status: PublicationStatus = PUBLISHED
   ): FaqCategory
   faqs(
     filters: FaqFiltersInput
+    hasPublishedVersion: Boolean
 
     """The locale to use for the query"""
     locale: I18NLocaleCode
     pagination: PaginationArg = {}
+    publicationFilter: PublicationFilter
     sort: [String] = []
     status: PublicationStatus = PUBLISHED
   ): [Faq]!
   faqs_connection(
     filters: FaqFiltersInput
+    hasPublishedVersion: Boolean
 
     """The locale to use for the query"""
     locale: I18NLocaleCode
     pagination: PaginationArg = {}
+    publicationFilter: PublicationFilter
     sort: [String] = []
     status: PublicationStatus = PUBLISHED
   ): FaqEntityResponseCollection
   footer(
+    hasPublishedVersion: Boolean
+
     """The locale to use for the query"""
     locale: I18NLocaleCode
+    publicationFilter: PublicationFilter
     status: PublicationStatus = PUBLISHED
   ): Footer
   general(
+    hasPublishedVersion: Boolean
+
     """The locale to use for the query"""
     locale: I18NLocaleCode
+    publicationFilter: PublicationFilter
     status: PublicationStatus = PUBLISHED
   ): General
   homepage(
+    hasPublishedVersion: Boolean
+
     """The locale to use for the query"""
     locale: I18NLocaleCode
+    publicationFilter: PublicationFilter
     status: PublicationStatus = PUBLISHED
   ): Homepage
-  i18NLocale(documentId: ID!, status: PublicationStatus = PUBLISHED): I18NLocale
-  i18NLocales(filters: I18NLocaleFiltersInput, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED): [I18NLocale]!
-  i18NLocales_connection(filters: I18NLocaleFiltersInput, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED): I18NLocaleEntityResponseCollection
-  inbaRelease(documentId: ID!, status: PublicationStatus = PUBLISHED): InbaRelease
-  inbaReleases(filters: InbaReleaseFiltersInput, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED): [InbaRelease]!
-  inbaReleases_connection(filters: InbaReleaseFiltersInput, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED): InbaReleaseEntityResponseCollection
+  i18NLocale(documentId: ID!, hasPublishedVersion: Boolean, publicationFilter: PublicationFilter, status: PublicationStatus = PUBLISHED): I18NLocale
+  i18NLocales(filters: I18NLocaleFiltersInput, hasPublishedVersion: Boolean, pagination: PaginationArg = {}, publicationFilter: PublicationFilter, sort: [String] = [], status: PublicationStatus = PUBLISHED): [I18NLocale]!
+  i18NLocales_connection(filters: I18NLocaleFiltersInput, hasPublishedVersion: Boolean, pagination: PaginationArg = {}, publicationFilter: PublicationFilter, sort: [String] = [], status: PublicationStatus = PUBLISHED): I18NLocaleEntityResponseCollection
+  inbaRelease(documentId: ID!, hasPublishedVersion: Boolean, publicationFilter: PublicationFilter, status: PublicationStatus = PUBLISHED): InbaRelease
+  inbaReleases(filters: InbaReleaseFiltersInput, hasPublishedVersion: Boolean, pagination: PaginationArg = {}, publicationFilter: PublicationFilter, sort: [String] = [], status: PublicationStatus = PUBLISHED): [InbaRelease]!
+  inbaReleases_connection(filters: InbaReleaseFiltersInput, hasPublishedVersion: Boolean, pagination: PaginationArg = {}, publicationFilter: PublicationFilter, sort: [String] = [], status: PublicationStatus = PUBLISHED): InbaReleaseEntityResponseCollection
   me: UsersPermissionsMe
   menu(
+    hasPublishedVersion: Boolean
+
     """The locale to use for the query"""
     locale: I18NLocaleCode
+    publicationFilter: PublicationFilter
     status: PublicationStatus = PUBLISHED
   ): Menu
   page(
     documentId: ID!
+    hasPublishedVersion: Boolean
 
     """The locale to use for the query"""
     locale: I18NLocaleCode
+    publicationFilter: PublicationFilter
     status: PublicationStatus = PUBLISHED
   ): Page
   pageCategories(
     filters: PageCategoryFiltersInput
+    hasPublishedVersion: Boolean
 
     """The locale to use for the query"""
     locale: I18NLocaleCode
     pagination: PaginationArg = {}
+    publicationFilter: PublicationFilter
     sort: [String] = []
     status: PublicationStatus = PUBLISHED
   ): [PageCategory]!
   pageCategories_connection(
     filters: PageCategoryFiltersInput
+    hasPublishedVersion: Boolean
 
     """The locale to use for the query"""
     locale: I18NLocaleCode
     pagination: PaginationArg = {}
+    publicationFilter: PublicationFilter
     sort: [String] = []
     status: PublicationStatus = PUBLISHED
   ): PageCategoryEntityResponseCollection
   pageCategory(
     documentId: ID!
+    hasPublishedVersion: Boolean
 
     """The locale to use for the query"""
     locale: I18NLocaleCode
+    publicationFilter: PublicationFilter
     status: PublicationStatus = PUBLISHED
   ): PageCategory
   pages(
     filters: PageFiltersInput
+    hasPublishedVersion: Boolean
 
     """The locale to use for the query"""
     locale: I18NLocaleCode
     pagination: PaginationArg = {}
+    publicationFilter: PublicationFilter
     sort: [String] = []
     status: PublicationStatus = PUBLISHED
   ): [Page]!
   pages_connection(
     filters: PageFiltersInput
+    hasPublishedVersion: Boolean
 
     """The locale to use for the query"""
     locale: I18NLocaleCode
     pagination: PaginationArg = {}
+    publicationFilter: PublicationFilter
     sort: [String] = []
     status: PublicationStatus = PUBLISHED
   ): PageEntityResponseCollection
-  regulation(documentId: ID!, status: PublicationStatus = PUBLISHED): Regulation
-  regulations(filters: RegulationFiltersInput, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED): [Regulation]!
-  regulations_connection(filters: RegulationFiltersInput, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED): RegulationEntityResponseCollection
-  reviewWorkflowsWorkflow(documentId: ID!, status: PublicationStatus = PUBLISHED): ReviewWorkflowsWorkflow
-  reviewWorkflowsWorkflowStage(documentId: ID!, status: PublicationStatus = PUBLISHED): ReviewWorkflowsWorkflowStage
-  reviewWorkflowsWorkflowStages(filters: ReviewWorkflowsWorkflowStageFiltersInput, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED): [ReviewWorkflowsWorkflowStage]!
-  reviewWorkflowsWorkflowStages_connection(filters: ReviewWorkflowsWorkflowStageFiltersInput, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED): ReviewWorkflowsWorkflowStageEntityResponseCollection
-  reviewWorkflowsWorkflows(filters: ReviewWorkflowsWorkflowFiltersInput, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED): [ReviewWorkflowsWorkflow]!
-  reviewWorkflowsWorkflows_connection(filters: ReviewWorkflowsWorkflowFiltersInput, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED): ReviewWorkflowsWorkflowEntityResponseCollection
+  regulation(documentId: ID!, hasPublishedVersion: Boolean, publicationFilter: PublicationFilter, status: PublicationStatus = PUBLISHED): Regulation
+  regulations(filters: RegulationFiltersInput, hasPublishedVersion: Boolean, pagination: PaginationArg = {}, publicationFilter: PublicationFilter, sort: [String] = [], status: PublicationStatus = PUBLISHED): [Regulation]!
+  regulations_connection(filters: RegulationFiltersInput, hasPublishedVersion: Boolean, pagination: PaginationArg = {}, publicationFilter: PublicationFilter, sort: [String] = [], status: PublicationStatus = PUBLISHED): RegulationEntityResponseCollection
+  reviewWorkflowsWorkflow(documentId: ID!, hasPublishedVersion: Boolean, publicationFilter: PublicationFilter, status: PublicationStatus = PUBLISHED): ReviewWorkflowsWorkflow
+  reviewWorkflowsWorkflowStage(documentId: ID!, hasPublishedVersion: Boolean, publicationFilter: PublicationFilter, status: PublicationStatus = PUBLISHED): ReviewWorkflowsWorkflowStage
+  reviewWorkflowsWorkflowStages(filters: ReviewWorkflowsWorkflowStageFiltersInput, hasPublishedVersion: Boolean, pagination: PaginationArg = {}, publicationFilter: PublicationFilter, sort: [String] = [], status: PublicationStatus = PUBLISHED): [ReviewWorkflowsWorkflowStage]!
+  reviewWorkflowsWorkflowStages_connection(filters: ReviewWorkflowsWorkflowStageFiltersInput, hasPublishedVersion: Boolean, pagination: PaginationArg = {}, publicationFilter: PublicationFilter, sort: [String] = [], status: PublicationStatus = PUBLISHED): ReviewWorkflowsWorkflowStageEntityResponseCollection
+  reviewWorkflowsWorkflows(filters: ReviewWorkflowsWorkflowFiltersInput, hasPublishedVersion: Boolean, pagination: PaginationArg = {}, publicationFilter: PublicationFilter, sort: [String] = [], status: PublicationStatus = PUBLISHED): [ReviewWorkflowsWorkflow]!
+  reviewWorkflowsWorkflows_connection(filters: ReviewWorkflowsWorkflowFiltersInput, hasPublishedVersion: Boolean, pagination: PaginationArg = {}, publicationFilter: PublicationFilter, sort: [String] = [], status: PublicationStatus = PUBLISHED): ReviewWorkflowsWorkflowEntityResponseCollection
   tag(
     documentId: ID!
+    hasPublishedVersion: Boolean
 
     """The locale to use for the query"""
     locale: I18NLocaleCode
+    publicationFilter: PublicationFilter
     status: PublicationStatus = PUBLISHED
   ): Tag
   tags(
     filters: TagFiltersInput
+    hasPublishedVersion: Boolean
 
     """The locale to use for the query"""
     locale: I18NLocaleCode
     pagination: PaginationArg = {}
+    publicationFilter: PublicationFilter
     sort: [String] = []
     status: PublicationStatus = PUBLISHED
   ): [Tag]!
   tags_connection(
     filters: TagFiltersInput
+    hasPublishedVersion: Boolean
 
     """The locale to use for the query"""
     locale: I18NLocaleCode
     pagination: PaginationArg = {}
+    publicationFilter: PublicationFilter
     sort: [String] = []
     status: PublicationStatus = PUBLISHED
   ): TagEntityResponseCollection
-  taxAdministratorsList(status: PublicationStatus = PUBLISHED): TaxAdministratorsList
-  uploadFile(documentId: ID!, status: PublicationStatus = PUBLISHED): UploadFile
-  uploadFiles(filters: UploadFileFiltersInput, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED): [UploadFile]!
-  uploadFiles_connection(filters: UploadFileFiltersInput, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED): UploadFileEntityResponseCollection
-  urbanStudies(filters: UrbanStudyFiltersInput, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED): [UrbanStudy]!
-  urbanStudies_connection(filters: UrbanStudyFiltersInput, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED): UrbanStudyEntityResponseCollection
-  urbanStudy(documentId: ID!, status: PublicationStatus = PUBLISHED): UrbanStudy
-  usersPermissionsRole(documentId: ID!, status: PublicationStatus = PUBLISHED): UsersPermissionsRole
-  usersPermissionsRoles(filters: UsersPermissionsRoleFiltersInput, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED): [UsersPermissionsRole]!
-  usersPermissionsRoles_connection(filters: UsersPermissionsRoleFiltersInput, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED): UsersPermissionsRoleEntityResponseCollection
-  usersPermissionsUser(documentId: ID!, status: PublicationStatus = PUBLISHED): UsersPermissionsUser
-  usersPermissionsUsers(filters: UsersPermissionsUserFiltersInput, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED): [UsersPermissionsUser]!
-  usersPermissionsUsers_connection(filters: UsersPermissionsUserFiltersInput, pagination: PaginationArg = {}, sort: [String] = [], status: PublicationStatus = PUBLISHED): UsersPermissionsUserEntityResponseCollection
+  taxAdministratorsList(hasPublishedVersion: Boolean, publicationFilter: PublicationFilter, status: PublicationStatus = PUBLISHED): TaxAdministratorsList
+  uploadFile(documentId: ID!, hasPublishedVersion: Boolean, publicationFilter: PublicationFilter, status: PublicationStatus = PUBLISHED): UploadFile
+  uploadFiles(filters: UploadFileFiltersInput, hasPublishedVersion: Boolean, pagination: PaginationArg = {}, publicationFilter: PublicationFilter, sort: [String] = [], status: PublicationStatus = PUBLISHED): [UploadFile]!
+  uploadFiles_connection(filters: UploadFileFiltersInput, hasPublishedVersion: Boolean, pagination: PaginationArg = {}, publicationFilter: PublicationFilter, sort: [String] = [], status: PublicationStatus = PUBLISHED): UploadFileEntityResponseCollection
+  urbanStudies(filters: UrbanStudyFiltersInput, hasPublishedVersion: Boolean, pagination: PaginationArg = {}, publicationFilter: PublicationFilter, sort: [String] = [], status: PublicationStatus = PUBLISHED): [UrbanStudy]!
+  urbanStudies_connection(filters: UrbanStudyFiltersInput, hasPublishedVersion: Boolean, pagination: PaginationArg = {}, publicationFilter: PublicationFilter, sort: [String] = [], status: PublicationStatus = PUBLISHED): UrbanStudyEntityResponseCollection
+  urbanStudy(documentId: ID!, hasPublishedVersion: Boolean, publicationFilter: PublicationFilter, status: PublicationStatus = PUBLISHED): UrbanStudy
+  usersPermissionsRole(documentId: ID!, hasPublishedVersion: Boolean, publicationFilter: PublicationFilter, status: PublicationStatus = PUBLISHED): UsersPermissionsRole
+  usersPermissionsRoles(filters: UsersPermissionsRoleFiltersInput, hasPublishedVersion: Boolean, pagination: PaginationArg = {}, publicationFilter: PublicationFilter, sort: [String] = [], status: PublicationStatus = PUBLISHED): [UsersPermissionsRole]!
+  usersPermissionsRoles_connection(filters: UsersPermissionsRoleFiltersInput, hasPublishedVersion: Boolean, pagination: PaginationArg = {}, publicationFilter: PublicationFilter, sort: [String] = [], status: PublicationStatus = PUBLISHED): UsersPermissionsRoleEntityResponseCollection
+  usersPermissionsUser(documentId: ID!, hasPublishedVersion: Boolean, publicationFilter: PublicationFilter, status: PublicationStatus = PUBLISHED): UsersPermissionsUser
+  usersPermissionsUsers(filters: UsersPermissionsUserFiltersInput, hasPublishedVersion: Boolean, pagination: PaginationArg = {}, publicationFilter: PublicationFilter, sort: [String] = [], status: PublicationStatus = PUBLISHED): [UsersPermissionsUser]!
+  usersPermissionsUsers_connection(filters: UsersPermissionsUserFiltersInput, hasPublishedVersion: Boolean, pagination: PaginationArg = {}, publicationFilter: PublicationFilter, sort: [String] = [], status: PublicationStatus = PUBLISHED): UsersPermissionsUserEntityResponseCollection
 }
 
 type Regulation {
@@ -4526,6 +4594,7 @@ type UploadFile {
   createdAt: DateTime
   documentId: ID!
   ext: String
+  focalPoint: JSON
   formats: JSON
   hash: String!
   height: Int
@@ -4563,6 +4632,7 @@ input UploadFileFiltersInput {
   createdAt: DateTimeFilterInput
   documentId: IDFilterInput
   ext: StringFilterInput
+  focalPoint: JSONFilterInput
   formats: JSONFilterInput
   hash: StringFilterInput
   height: IntFilterInput
@@ -4584,6 +4654,7 @@ input UploadFileInput {
   alternativeText: String
   caption: String
   ext: String
+  focalPoint: JSON
   formats: JSON
   hash: String
   height: Int

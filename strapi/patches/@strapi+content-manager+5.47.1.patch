@@ -1,8 +1,8 @@
 diff --git a/node_modules/@strapi/content-manager/dist/admin/pages/EditView/components/FormInputs/Wysiwyg/Field.mjs b/node_modules/@strapi/content-manager/dist/admin/pages/EditView/components/FormInputs/Wysiwyg/Field.mjs
-index 88c6e88..0e50319 100644
+index 887e12b..c622941 100644
 --- a/node_modules/@strapi/content-manager/dist/admin/pages/EditView/components/FormInputs/Wysiwyg/Field.mjs
 +++ b/node_modules/@strapi/content-manager/dist/admin/pages/EditView/components/FormInputs/Wysiwyg/Field.mjs
-@@ -28,7 +28,8 @@ const Wysiwyg = /*#__PURE__*/ React.forwardRef(({ hint, disabled, label, name, p
+@@ -29,7 +29,8 @@ const Wysiwyg = /*#__PURE__*/ React.forwardRef(({ hint, disabled, label, name, p
          const formattedFiles = files.map((f)=>({
                  alt: f.alternativeText || f.name,
                  url: prefixFileUrlWithBackendUrl(f.url),
@@ -13,10 +13,10 @@ index 88c6e88..0e50319 100644
          insertFile(editorRef, formattedFiles);
          setMediaLibVisible(false);
 diff --git a/node_modules/@strapi/content-manager/dist/admin/pages/EditView/components/FormInputs/Wysiwyg/utils/utils.mjs b/node_modules/@strapi/content-manager/dist/admin/pages/EditView/components/FormInputs/Wysiwyg/utils/utils.mjs
-index 4f76601..939d23b 100644
+index 69826e8..43fd868 100644
 --- a/node_modules/@strapi/content-manager/dist/admin/pages/EditView/components/FormInputs/Wysiwyg/utils/utils.mjs
 +++ b/node_modules/@strapi/content-manager/dist/admin/pages/EditView/components/FormInputs/Wysiwyg/utils/utils.mjs
-@@ -231,7 +231,7 @@ const insertFile = (editor, files)=>{
+@@ -233,7 +233,7 @@ const insertFile = (editor, files)=>{
              editor.current.replaceSelection('\n');
          }
          if (file.mime.includes('image')) {
