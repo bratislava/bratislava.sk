@@ -2806,48 +2806,6 @@ enum ENUM_REGULATION_CATEGORY {
   uzemnePlanovanie
 }
 
-enum ENUM_URBANSTUDY_PICTOGRAM {
-  aktivity_04
-  byvanie_04
-  covid_06
-  cyklo_02
-  dane_01
-  data_01
-  data_02
-  dedicstvo_06
-  deti_a_mladez_05
-  doprava_02
-  dotacie_05
-  inovacie_01
-  kalendar_06
-  klima_03
-  komunity_06
-  koncepcia_06
-  mapy_02
-  mhd_02
-  ocenovanie_05
-  organizacie_06
-  parkovanie_02
-  partnerstva_01
-  pomoc_04
-  projekty_01
-  rozvoj_mesta_03
-  skolstvo_05
-  sluzby_04
-  sluzby_06
-  sport_05
-  sprava_a_udrzba_02
-  sprava_mesta_01
-  transparentne_mesto_01
-  uzemny_plan_03
-  verejne_osvetlenie_03
-  vystavba_a_nehnutelnosti_03
-  zariadenia_04
-  zdielana_mobilita_02
-  zelen_03
-  zivotne_prostredie_03
-}
-
 enum ENUM_URBANSTUDY_URBANSTUDYTYPE {
   urbanStudyType_iny
   urbanStudyType_odvetvovaStudia
@@ -4607,25 +4565,14 @@ type UploadFileRelationResponseCollection {
 }
 
 type UrbanStudy {
-  analyticalPartFiles(filters: UploadFileFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [UploadFile]!
-  analyticalPartFiles_connection(filters: UploadFileFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UploadFileRelationResponseCollection
   approvalText: String
-  attachmentFiles(filters: UploadFileFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [UploadFile]!
-  attachmentFiles_connection(filters: UploadFileFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UploadFileRelationResponseCollection
   body: String
-  briefFiles(filters: UploadFileFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [UploadFile]!
-  briefFiles_connection(filters: UploadFileFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UploadFileRelationResponseCollection
-  commentsEvaluationFiles(filters: UploadFileFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [UploadFile]!
-  commentsEvaluationFiles_connection(filters: UploadFileFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UploadFileRelationResponseCollection
   createdAt: DateTime
   customPublishedAt: DateTime
   documentId: ID!
-  graphicPartFiles(filters: UploadFileFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [UploadFile]!
-  graphicPartFiles_connection(filters: UploadFileFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UploadFileRelationResponseCollection
   links(filters: ComponentBlocksCommonLinkFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksCommonLink]
-  orderedBy: String
-  pictogram: ENUM_URBANSTUDY_PICTOGRAM
   preparedBy: String
+  procuredBy: String
   publishedAt: DateTime
   regulations(filters: RegulationFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [Regulation]!
   regulations_connection(filters: RegulationFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): RegulationRelationResponseCollection
@@ -4634,8 +4581,6 @@ type UrbanStudy {
   updatedAt: DateTime
   urbanStudyItemsSections(filters: ComponentSectionsUrbanInnerSectionFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentSectionsUrbanInnerSection]
   urbanStudyType: ENUM_URBANSTUDY_URBANSTUDYTYPE!
-  writtenPartFiles(filters: UploadFileFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [UploadFile]!
-  writtenPartFiles_connection(filters: UploadFileFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UploadFileRelationResponseCollection
   year: String
 }
 
@@ -4663,9 +4608,8 @@ input UrbanStudyFiltersInput {
   links: ComponentBlocksCommonLinkFiltersInput
   not: UrbanStudyFiltersInput
   or: [UrbanStudyFiltersInput]
-  orderedBy: StringFilterInput
-  pictogram: StringFilterInput
   preparedBy: StringFilterInput
+  procuredBy: StringFilterInput
   publishedAt: DateTimeFilterInput
   regulations: RegulationFiltersInput
   slug: StringFilterInput
@@ -4677,25 +4621,18 @@ input UrbanStudyFiltersInput {
 }
 
 input UrbanStudyInput {
-  analyticalPartFiles: [ID]
   approvalText: String
-  attachmentFiles: [ID]
   body: String
-  briefFiles: [ID]
-  commentsEvaluationFiles: [ID]
   customPublishedAt: DateTime
-  graphicPartFiles: [ID]
   links: [ComponentBlocksCommonLinkInput]
-  orderedBy: String
-  pictogram: ENUM_URBANSTUDY_PICTOGRAM
   preparedBy: String
+  procuredBy: String
   publishedAt: DateTime
   regulations: [ID]
   slug: String
   title: String
   urbanStudyItemsSections: [ComponentSectionsUrbanInnerSectionInput]
   urbanStudyType: ENUM_URBANSTUDY_URBANSTUDYTYPE
-  writtenPartFiles: [ID]
   year: String
 }
 

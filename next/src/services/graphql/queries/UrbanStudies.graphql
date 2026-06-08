@@ -27,29 +27,10 @@ fragment UrbanStudyEntity on UrbanStudy {
   updatedAt
   year
   urbanStudyType
-  pictogram
-  orderedBy
+  procuredBy
   preparedBy
   body
   approvalText
-  briefFiles {
-    ...UploadFileEntity
-  }
-  commentsEvaluationFiles {
-    ...UploadFileEntity
-  }
-  analyticalPartFiles {
-    ...UploadFileEntity
-  }
-  writtenPartFiles {
-    ...UploadFileEntity
-  }
-  graphicPartFiles {
-    ...UploadFileEntity
-  }
-  attachmentFiles {
-    ...UploadFileEntity
-  }
   urbanStudyItemsSections {
     ...UrbanStudyItemsSection
   }

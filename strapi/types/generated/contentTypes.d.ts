@@ -1339,66 +1339,18 @@ export interface ApiUrbanStudyUrbanStudy extends Struct.CollectionTypeSchema {
     draftAndPublish: true
   }
   attributes: {
-    analyticalPartFiles: Schema.Attribute.Media<'images' | 'files', true>
     approvalText: Schema.Attribute.RichText
-    attachmentFiles: Schema.Attribute.Media<'images' | 'files', true>
     body: Schema.Attribute.RichText
-    briefFiles: Schema.Attribute.Media<'images' | 'files', true>
-    commentsEvaluationFiles: Schema.Attribute.Media<'images' | 'files', true>
     createdAt: Schema.Attribute.DateTime
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> & Schema.Attribute.Private
     customPublishedAt: Schema.Attribute.DateTime
-    graphicPartFiles: Schema.Attribute.Media<'images' | 'files', true>
     links: Schema.Attribute.Component<'blocks.common-link', true>
     locale: Schema.Attribute.String & Schema.Attribute.Private
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::urban-study.urban-study'> &
       Schema.Attribute.Private
-    orderedBy: Schema.Attribute.String &
-      Schema.Attribute.DefaultTo<'Hlavn\u00E9 mesto Slovenskej republiky Bratislava'>
-    pictogram: Schema.Attribute.Enumeration<
-      [
-        'sprava_mesta_01',
-        'transparentne_mesto_01',
-        'dane_01',
-        'projekty_01',
-        'partnerstva_01',
-        'inovacie_01',
-        'data_01',
-        'mhd_02',
-        'cyklo_02',
-        'mapy_02',
-        'sprava_a_udrzba_02',
-        'doprava_02',
-        'parkovanie_02',
-        'zdielana_mobilita_02',
-        'data_02',
-        'zivotne_prostredie_03',
-        'zelen_03',
-        'vystavba_a_nehnutelnosti_03',
-        'uzemny_plan_03',
-        'rozvoj_mesta_03',
-        'verejne_osvetlenie_03',
-        'klima_03',
-        'byvanie_04',
-        'sluzby_04',
-        'zariadenia_04',
-        'pomoc_04',
-        'aktivity_04',
-        'skolstvo_05',
-        'sport_05',
-        'deti_a_mladez_05',
-        'ocenovanie_05',
-        'dotacie_05',
-        'kalendar_06',
-        'organizacie_06',
-        'dedicstvo_06',
-        'sluzby_06',
-        'koncepcia_06',
-        'komunity_06',
-        'covid_06',
-      ]
-    >
     preparedBy: Schema.Attribute.String &
+      Schema.Attribute.DefaultTo<'Hlavn\u00E9 mesto Slovenskej republiky Bratislava'>
+    procuredBy: Schema.Attribute.String &
       Schema.Attribute.DefaultTo<'Hlavn\u00E9 mesto Slovenskej republiky Bratislava'>
     publishedAt: Schema.Attribute.DateTime
     regulations: Schema.Attribute.Relation<'manyToMany', 'api::regulation.regulation'>
@@ -1420,7 +1372,6 @@ export interface ApiUrbanStudyUrbanStudy extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<'urbanStudyType.urbanistickaStudia'>
-    writtenPartFiles: Schema.Attribute.Media<'images' | 'files', true>
     year: Schema.Attribute.String
   }
 }
