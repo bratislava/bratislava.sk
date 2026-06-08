@@ -1,4 +1,4 @@
-fragment UrbanStudyItem on ComponentBlocksUrbanItem {
+fragment UrbanStudyPartItem on ComponentBlocksUrbanStudyPartItem {
   id
   title
   media {
@@ -6,11 +6,11 @@ fragment UrbanStudyItem on ComponentBlocksUrbanItem {
   }
 }
 
-fragment UrbanStudyItemsSection on ComponentSectionsUrbanInnerSection {
+fragment UrbanStudyPart on ComponentSectionsUrbanStudyPart {
   title
   text
   items(pagination: { limit: -1 }) {
-    ...UrbanStudyItem
+    ...UrbanStudyPartItem
   }
 }
 
@@ -31,8 +31,8 @@ fragment UrbanStudyEntity on UrbanStudy {
   preparedBy
   body
   approvalText
-  urbanStudyItemsSections {
-    ...UrbanStudyItemsSection
+  urbanStudyParts {
+    ...UrbanStudyPart
   }
   regulations {
     ...RegulationEntity

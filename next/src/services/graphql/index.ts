@@ -1370,6 +1370,26 @@ export type ComponentBlocksUrbanItemInput = {
   title?: InputMaybe<Scalars['String']['input']>;
 };
 
+export type ComponentBlocksUrbanStudyPartItem = {
+  __typename?: 'ComponentBlocksUrbanStudyPartItem';
+  id: Scalars['ID']['output'];
+  media?: Maybe<UploadFile>;
+  title?: Maybe<Scalars['String']['output']>;
+};
+
+export type ComponentBlocksUrbanStudyPartItemFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentBlocksUrbanStudyPartItemFiltersInput>>>;
+  not?: InputMaybe<ComponentBlocksUrbanStudyPartItemFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<ComponentBlocksUrbanStudyPartItemFiltersInput>>>;
+  title?: InputMaybe<StringFilterInput>;
+};
+
+export type ComponentBlocksUrbanStudyPartItemInput = {
+  id?: InputMaybe<Scalars['ID']['input']>;
+  media?: InputMaybe<Scalars['ID']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
+};
+
 export type ComponentBlocksVideo = {
   __typename?: 'ComponentBlocksVideo';
   id: Scalars['ID']['output'];
@@ -3175,6 +3195,37 @@ export type ComponentSectionsUrbanStudiesInput = {
   urbanStudies?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>;
 };
 
+export type ComponentSectionsUrbanStudyPart = {
+  __typename?: 'ComponentSectionsUrbanStudyPart';
+  id: Scalars['ID']['output'];
+  items?: Maybe<Array<Maybe<ComponentBlocksUrbanStudyPartItem>>>;
+  text?: Maybe<Scalars['String']['output']>;
+  title?: Maybe<Scalars['String']['output']>;
+};
+
+
+export type ComponentSectionsUrbanStudyPartItemsArgs = {
+  filters?: InputMaybe<ComponentBlocksUrbanStudyPartItemFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type ComponentSectionsUrbanStudyPartFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentSectionsUrbanStudyPartFiltersInput>>>;
+  items?: InputMaybe<ComponentBlocksUrbanStudyPartItemFiltersInput>;
+  not?: InputMaybe<ComponentSectionsUrbanStudyPartFiltersInput>;
+  or?: InputMaybe<Array<InputMaybe<ComponentSectionsUrbanStudyPartFiltersInput>>>;
+  text?: InputMaybe<StringFilterInput>;
+  title?: InputMaybe<StringFilterInput>;
+};
+
+export type ComponentSectionsUrbanStudyPartInput = {
+  id?: InputMaybe<Scalars['ID']['input']>;
+  items?: InputMaybe<Array<InputMaybe<ComponentBlocksUrbanStudyPartItemInput>>>;
+  text?: InputMaybe<Scalars['String']['input']>;
+  title?: InputMaybe<Scalars['String']['input']>;
+};
+
 export type ComponentSectionsVideos = {
   __typename?: 'ComponentSectionsVideos';
   id: Scalars['ID']['output'];
@@ -3985,7 +4036,7 @@ export type GeneralRelationResponseCollection = {
   nodes: Array<General>;
 };
 
-export type GenericMorph = AdminGroup | Alert | Article | ArticleCategory | Asset | AssetCategory | ComponentAccordionItemsFlatText | ComponentAccordionItemsInstitution | ComponentBlocksCardLink | ComponentBlocksColumnsItem | ComponentBlocksColumnsListItem | ComponentBlocksCommonLink | ComponentBlocksComparisonCard | ComponentBlocksComparisonItem | ComponentBlocksContactCard | ComponentBlocksContactDirectionsCard | ComponentBlocksContactPersonCard | ComponentBlocksFile | ComponentBlocksFileItem | ComponentBlocksFooterColumn | ComponentBlocksHomepageHighlightsItem | ComponentBlocksInBa | ComponentBlocksNumbersOverviewItem | ComponentBlocksNumericalListItem | ComponentBlocksOpeningHoursAlertMessage | ComponentBlocksOpeningHoursItem | ComponentBlocksPageLink | ComponentBlocksPartner | ComponentBlocksProsAndConsCard | ComponentBlocksStarzLandingPageBanner | ComponentBlocksSubnavigationLink | ComponentBlocksTopServicesItem | ComponentBlocksUrbanItem | ComponentBlocksVideo | ComponentGeneralHeader | ComponentGeneralHeaderLink | ComponentHeaderSectionsEvent | ComponentHeaderSectionsFacility | ComponentMenuMenuItem | ComponentMenuMenuLink | ComponentMenuMenuSection | ComponentSectionsAccordion | ComponentSectionsAlert | ComponentSectionsArticles | ComponentSectionsArticlesLandingPage | ComponentSectionsAssets | ComponentSectionsBanner | ComponentSectionsColumnedText | ComponentSectionsColumns | ComponentSectionsColumnsList | ComponentSectionsComparisonSection | ComponentSectionsContactsSection | ComponentSectionsDivider | ComponentSectionsEvents | ComponentSectionsFacilities | ComponentSectionsFaqs | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsHomepageEvents | ComponentSectionsHomepageHighlights | ComponentSectionsHomepageMayorAndCouncil | ComponentSectionsHomepageTabs | ComponentSectionsIframe | ComponentSectionsInbaLatestRelease | ComponentSectionsInbaReleases | ComponentSectionsJobOffers | ComponentSectionsLinks | ComponentSectionsNarrowText | ComponentSectionsNewsletter | ComponentSectionsNumbersOverview | ComponentSectionsNumericalList | ComponentSectionsOfficialBoard | ComponentSectionsOpeningHours | ComponentSectionsOrganizationalStructure | ComponentSectionsPartners | ComponentSectionsProsAndConsSection | ComponentSectionsRegulations | ComponentSectionsStarzLandingPage | ComponentSectionsSubnavigation | ComponentSectionsTextWithImage | ComponentSectionsTextWithImageOverlapped | ComponentSectionsTootootEvents | ComponentSectionsTopServices | ComponentSectionsUrbanInnerSection | ComponentSectionsUrbanStudies | ComponentSectionsVideos | ComponentSidebarsEmptySidebar | ComponentTaxAdministratorsTaxAdministrator | Faq | FaqCategory | Footer | General | Homepage | I18NLocale | InbaRelease | Menu | Page | PageCategory | Regulation | ReviewWorkflowsWorkflow | ReviewWorkflowsWorkflowStage | Tag | TaxAdministratorsList | UploadFile | UrbanStudy | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
+export type GenericMorph = AdminGroup | Alert | Article | ArticleCategory | Asset | AssetCategory | ComponentAccordionItemsFlatText | ComponentAccordionItemsInstitution | ComponentBlocksCardLink | ComponentBlocksColumnsItem | ComponentBlocksColumnsListItem | ComponentBlocksCommonLink | ComponentBlocksComparisonCard | ComponentBlocksComparisonItem | ComponentBlocksContactCard | ComponentBlocksContactDirectionsCard | ComponentBlocksContactPersonCard | ComponentBlocksFile | ComponentBlocksFileItem | ComponentBlocksFooterColumn | ComponentBlocksHomepageHighlightsItem | ComponentBlocksInBa | ComponentBlocksNumbersOverviewItem | ComponentBlocksNumericalListItem | ComponentBlocksOpeningHoursAlertMessage | ComponentBlocksOpeningHoursItem | ComponentBlocksPageLink | ComponentBlocksPartner | ComponentBlocksProsAndConsCard | ComponentBlocksStarzLandingPageBanner | ComponentBlocksSubnavigationLink | ComponentBlocksTopServicesItem | ComponentBlocksUrbanItem | ComponentBlocksUrbanStudyPartItem | ComponentBlocksVideo | ComponentGeneralHeader | ComponentGeneralHeaderLink | ComponentHeaderSectionsEvent | ComponentHeaderSectionsFacility | ComponentMenuMenuItem | ComponentMenuMenuLink | ComponentMenuMenuSection | ComponentSectionsAccordion | ComponentSectionsAlert | ComponentSectionsArticles | ComponentSectionsArticlesLandingPage | ComponentSectionsAssets | ComponentSectionsBanner | ComponentSectionsColumnedText | ComponentSectionsColumns | ComponentSectionsColumnsList | ComponentSectionsComparisonSection | ComponentSectionsContactsSection | ComponentSectionsDivider | ComponentSectionsEvents | ComponentSectionsFacilities | ComponentSectionsFaqs | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsHomepageEvents | ComponentSectionsHomepageHighlights | ComponentSectionsHomepageMayorAndCouncil | ComponentSectionsHomepageTabs | ComponentSectionsIframe | ComponentSectionsInbaLatestRelease | ComponentSectionsInbaReleases | ComponentSectionsJobOffers | ComponentSectionsLinks | ComponentSectionsNarrowText | ComponentSectionsNewsletter | ComponentSectionsNumbersOverview | ComponentSectionsNumericalList | ComponentSectionsOfficialBoard | ComponentSectionsOpeningHours | ComponentSectionsOrganizationalStructure | ComponentSectionsPartners | ComponentSectionsProsAndConsSection | ComponentSectionsRegulations | ComponentSectionsStarzLandingPage | ComponentSectionsSubnavigation | ComponentSectionsTextWithImage | ComponentSectionsTextWithImageOverlapped | ComponentSectionsTootootEvents | ComponentSectionsTopServices | ComponentSectionsUrbanInnerSection | ComponentSectionsUrbanStudies | ComponentSectionsUrbanStudyPart | ComponentSectionsVideos | ComponentSidebarsEmptySidebar | ComponentTaxAdministratorsTaxAdministrator | Faq | FaqCategory | Footer | General | Homepage | I18NLocale | InbaRelease | Menu | Page | PageCategory | Regulation | ReviewWorkflowsWorkflow | ReviewWorkflowsWorkflowStage | Tag | TaxAdministratorsList | UploadFile | UrbanStudy | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser;
 
 export type Homepage = {
   __typename?: 'Homepage';
@@ -6297,6 +6348,7 @@ export type UrbanStudy = {
   title: Scalars['String']['output'];
   updatedAt?: Maybe<Scalars['DateTime']['output']>;
   urbanStudyItemsSections?: Maybe<Array<Maybe<ComponentSectionsUrbanInnerSection>>>;
+  urbanStudyParts?: Maybe<Array<Maybe<ComponentSectionsUrbanStudyPart>>>;
   urbanStudyType: Enum_Urbanstudy_Urbanstudytype;
   year?: Maybe<Scalars['String']['output']>;
 };
@@ -6325,6 +6377,13 @@ export type UrbanStudyRegulations_ConnectionArgs = {
 
 export type UrbanStudyUrbanStudyItemsSectionsArgs = {
   filters?: InputMaybe<ComponentSectionsUrbanInnerSectionFiltersInput>;
+  pagination?: InputMaybe<PaginationArg>;
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+
+export type UrbanStudyUrbanStudyPartsArgs = {
+  filters?: InputMaybe<ComponentSectionsUrbanStudyPartFiltersInput>;
   pagination?: InputMaybe<PaginationArg>;
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
@@ -6364,6 +6423,7 @@ export type UrbanStudyFiltersInput = {
   title?: InputMaybe<StringFilterInput>;
   updatedAt?: InputMaybe<DateTimeFilterInput>;
   urbanStudyItemsSections?: InputMaybe<ComponentSectionsUrbanInnerSectionFiltersInput>;
+  urbanStudyParts?: InputMaybe<ComponentSectionsUrbanStudyPartFiltersInput>;
   urbanStudyType?: InputMaybe<StringFilterInput>;
   year?: InputMaybe<StringFilterInput>;
 };
@@ -6380,6 +6440,7 @@ export type UrbanStudyInput = {
   slug?: InputMaybe<Scalars['String']['input']>;
   title?: InputMaybe<Scalars['String']['input']>;
   urbanStudyItemsSections?: InputMaybe<Array<InputMaybe<ComponentSectionsUrbanInnerSectionInput>>>;
+  urbanStudyParts?: InputMaybe<Array<InputMaybe<ComponentSectionsUrbanStudyPartInput>>>;
   urbanStudyType?: InputMaybe<Enum_Urbanstudy_Urbanstudytype>;
   year?: InputMaybe<Scalars['String']['input']>;
 };
@@ -7227,20 +7288,20 @@ export type TagsQueryVariables = Exact<{
 
 export type TagsQuery = { __typename?: 'Query', tags: Array<{ __typename?: 'Tag', documentId: string, title: string, slug: string, pageCategory?: { __typename?: 'PageCategory', documentId: string, title?: string | null, color?: Enum_Pagecategory_Color | null } | null } | null> };
 
-export type UrbanStudyItemFragment = { __typename?: 'ComponentBlocksUrbanItem', id: string, title?: string | null, media?: { __typename?: 'UploadFile', documentId: string, url: string, name: string, ext?: string | null, size: number, createdAt?: any | null, updatedAt?: any | null } | null };
+export type UrbanStudyPartItemFragment = { __typename?: 'ComponentBlocksUrbanStudyPartItem', id: string, title?: string | null, media?: { __typename?: 'UploadFile', documentId: string, url: string, name: string, ext?: string | null, size: number, createdAt?: any | null, updatedAt?: any | null } | null };
 
-export type UrbanStudyItemsSectionFragment = { __typename?: 'ComponentSectionsUrbanInnerSection', title?: string | null, text?: string | null, items?: Array<{ __typename?: 'ComponentBlocksUrbanItem', id: string, title?: string | null, media?: { __typename?: 'UploadFile', documentId: string, url: string, name: string, ext?: string | null, size: number, createdAt?: any | null, updatedAt?: any | null } | null } | null> | null };
+export type UrbanStudyPartFragment = { __typename?: 'ComponentSectionsUrbanStudyPart', title?: string | null, text?: string | null, items?: Array<{ __typename?: 'ComponentBlocksUrbanStudyPartItem', id: string, title?: string | null, media?: { __typename?: 'UploadFile', documentId: string, url: string, name: string, ext?: string | null, size: number, createdAt?: any | null, updatedAt?: any | null } | null } | null> | null };
 
 export type UrbanStudySlugEntityFragment = { __typename: 'UrbanStudy', documentId: string, slug: string, title: string };
 
-export type UrbanStudyEntityFragment = { __typename: 'UrbanStudy', publishedAt?: any | null, updatedAt?: any | null, year?: string | null, urbanStudyType: Enum_Urbanstudy_Urbanstudytype, procuredBy?: string | null, preparedBy?: string | null, body?: string | null, approvalText?: string | null, documentId: string, slug: string, title: string, urbanStudyItemsSections?: Array<{ __typename?: 'ComponentSectionsUrbanInnerSection', title?: string | null, text?: string | null, items?: Array<{ __typename?: 'ComponentBlocksUrbanItem', id: string, title?: string | null, media?: { __typename?: 'UploadFile', documentId: string, url: string, name: string, ext?: string | null, size: number, createdAt?: any | null, updatedAt?: any | null } | null } | null> | null } | null> | null, regulations: Array<{ __typename?: 'Regulation', regNumber: string, fullTitle: string, effectiveFrom: any, category: Enum_Regulation_Category, isFullTextRegulation: boolean, documentId: string, slug: string, titleText?: string | null, mainDocument: { __typename?: 'UploadFile', documentId: string, url: string, name: string, ext?: string | null, size: number, createdAt?: any | null, updatedAt?: any | null }, attachments: Array<{ __typename?: 'UploadFile', documentId: string, url: string, name: string, ext?: string | null, size: number, createdAt?: any | null, updatedAt?: any | null } | null>, amendments: Array<{ __typename?: 'Regulation', documentId: string, regNumber: string, slug: string, effectiveFrom: any, isFullTextRegulation: boolean, attachments: Array<{ __typename?: 'UploadFile', documentId: string, url: string, name: string, ext?: string | null, size: number, createdAt?: any | null, updatedAt?: any | null } | null> } | null>, amending: Array<{ __typename?: 'Regulation', documentId: string, regNumber: string, slug: string, effectiveFrom: any, cancellation?: { __typename?: 'Regulation', documentId: string, regNumber: string, slug: string, effectiveFrom: any } | null, amending: Array<{ __typename?: 'Regulation', documentId: string, regNumber: string, slug: string, cancellation?: { __typename?: 'Regulation', documentId: string, regNumber: string, slug: string, effectiveFrom: any } | null } | null> } | null>, cancellation?: { __typename?: 'Regulation', documentId: string, regNumber: string, slug: string, effectiveFrom: any } | null, cancelling: Array<{ __typename?: 'Regulation', documentId: string, regNumber: string, slug: string, effectiveFrom: any } | null> } | null>, links?: Array<{ __typename?: 'ComponentBlocksCommonLink', label?: string | null, url?: string | null, analyticsId?: string | null, page?: { __typename?: 'Page', documentId: string, title: string, locale?: string | null, path?: string | null } | null, article?: { __typename: 'Article', documentId: string, slug: string, title: string, locale?: string | null } | null, inbaRelease?: { __typename?: 'InbaRelease', documentId: string, title: string, slug: string } | null, regulation?: { __typename?: 'Regulation', documentId: string, slug: string, titleText?: string | null } | null, asset?: { __typename: 'Asset', documentId: string, slug: string, title: string } | null } | null> | null };
+export type UrbanStudyEntityFragment = { __typename: 'UrbanStudy', publishedAt?: any | null, updatedAt?: any | null, year?: string | null, urbanStudyType: Enum_Urbanstudy_Urbanstudytype, procuredBy?: string | null, preparedBy?: string | null, body?: string | null, approvalText?: string | null, documentId: string, slug: string, title: string, urbanStudyParts?: Array<{ __typename?: 'ComponentSectionsUrbanStudyPart', title?: string | null, text?: string | null, items?: Array<{ __typename?: 'ComponentBlocksUrbanStudyPartItem', id: string, title?: string | null, media?: { __typename?: 'UploadFile', documentId: string, url: string, name: string, ext?: string | null, size: number, createdAt?: any | null, updatedAt?: any | null } | null } | null> | null } | null> | null, regulations: Array<{ __typename?: 'Regulation', regNumber: string, fullTitle: string, effectiveFrom: any, category: Enum_Regulation_Category, isFullTextRegulation: boolean, documentId: string, slug: string, titleText?: string | null, mainDocument: { __typename?: 'UploadFile', documentId: string, url: string, name: string, ext?: string | null, size: number, createdAt?: any | null, updatedAt?: any | null }, attachments: Array<{ __typename?: 'UploadFile', documentId: string, url: string, name: string, ext?: string | null, size: number, createdAt?: any | null, updatedAt?: any | null } | null>, amendments: Array<{ __typename?: 'Regulation', documentId: string, regNumber: string, slug: string, effectiveFrom: any, isFullTextRegulation: boolean, attachments: Array<{ __typename?: 'UploadFile', documentId: string, url: string, name: string, ext?: string | null, size: number, createdAt?: any | null, updatedAt?: any | null } | null> } | null>, amending: Array<{ __typename?: 'Regulation', documentId: string, regNumber: string, slug: string, effectiveFrom: any, cancellation?: { __typename?: 'Regulation', documentId: string, regNumber: string, slug: string, effectiveFrom: any } | null, amending: Array<{ __typename?: 'Regulation', documentId: string, regNumber: string, slug: string, cancellation?: { __typename?: 'Regulation', documentId: string, regNumber: string, slug: string, effectiveFrom: any } | null } | null> } | null>, cancellation?: { __typename?: 'Regulation', documentId: string, regNumber: string, slug: string, effectiveFrom: any } | null, cancelling: Array<{ __typename?: 'Regulation', documentId: string, regNumber: string, slug: string, effectiveFrom: any } | null> } | null>, links?: Array<{ __typename?: 'ComponentBlocksCommonLink', label?: string | null, url?: string | null, analyticsId?: string | null, page?: { __typename?: 'Page', documentId: string, title: string, locale?: string | null, path?: string | null } | null, article?: { __typename: 'Article', documentId: string, slug: string, title: string, locale?: string | null } | null, inbaRelease?: { __typename?: 'InbaRelease', documentId: string, title: string, slug: string } | null, regulation?: { __typename?: 'Regulation', documentId: string, slug: string, titleText?: string | null } | null, asset?: { __typename: 'Asset', documentId: string, slug: string, title: string } | null } | null> | null };
 
 export type UrbanStudyBySlugQueryVariables = Exact<{
   slug: Scalars['String']['input'];
 }>;
 
 
-export type UrbanStudyBySlugQuery = { __typename?: 'Query', urbanStudies: Array<{ __typename: 'UrbanStudy', publishedAt?: any | null, updatedAt?: any | null, year?: string | null, urbanStudyType: Enum_Urbanstudy_Urbanstudytype, procuredBy?: string | null, preparedBy?: string | null, body?: string | null, approvalText?: string | null, documentId: string, slug: string, title: string, urbanStudyItemsSections?: Array<{ __typename?: 'ComponentSectionsUrbanInnerSection', title?: string | null, text?: string | null, items?: Array<{ __typename?: 'ComponentBlocksUrbanItem', id: string, title?: string | null, media?: { __typename?: 'UploadFile', documentId: string, url: string, name: string, ext?: string | null, size: number, createdAt?: any | null, updatedAt?: any | null } | null } | null> | null } | null> | null, regulations: Array<{ __typename?: 'Regulation', regNumber: string, fullTitle: string, effectiveFrom: any, category: Enum_Regulation_Category, isFullTextRegulation: boolean, documentId: string, slug: string, titleText?: string | null, mainDocument: { __typename?: 'UploadFile', documentId: string, url: string, name: string, ext?: string | null, size: number, createdAt?: any | null, updatedAt?: any | null }, attachments: Array<{ __typename?: 'UploadFile', documentId: string, url: string, name: string, ext?: string | null, size: number, createdAt?: any | null, updatedAt?: any | null } | null>, amendments: Array<{ __typename?: 'Regulation', documentId: string, regNumber: string, slug: string, effectiveFrom: any, isFullTextRegulation: boolean, attachments: Array<{ __typename?: 'UploadFile', documentId: string, url: string, name: string, ext?: string | null, size: number, createdAt?: any | null, updatedAt?: any | null } | null> } | null>, amending: Array<{ __typename?: 'Regulation', documentId: string, regNumber: string, slug: string, effectiveFrom: any, cancellation?: { __typename?: 'Regulation', documentId: string, regNumber: string, slug: string, effectiveFrom: any } | null, amending: Array<{ __typename?: 'Regulation', documentId: string, regNumber: string, slug: string, cancellation?: { __typename?: 'Regulation', documentId: string, regNumber: string, slug: string, effectiveFrom: any } | null } | null> } | null>, cancellation?: { __typename?: 'Regulation', documentId: string, regNumber: string, slug: string, effectiveFrom: any } | null, cancelling: Array<{ __typename?: 'Regulation', documentId: string, regNumber: string, slug: string, effectiveFrom: any } | null> } | null>, links?: Array<{ __typename?: 'ComponentBlocksCommonLink', label?: string | null, url?: string | null, analyticsId?: string | null, page?: { __typename?: 'Page', documentId: string, title: string, locale?: string | null, path?: string | null } | null, article?: { __typename: 'Article', documentId: string, slug: string, title: string, locale?: string | null } | null, inbaRelease?: { __typename?: 'InbaRelease', documentId: string, title: string, slug: string } | null, regulation?: { __typename?: 'Regulation', documentId: string, slug: string, titleText?: string | null } | null, asset?: { __typename: 'Asset', documentId: string, slug: string, title: string } | null } | null> | null } | null> };
+export type UrbanStudyBySlugQuery = { __typename?: 'Query', urbanStudies: Array<{ __typename: 'UrbanStudy', publishedAt?: any | null, updatedAt?: any | null, year?: string | null, urbanStudyType: Enum_Urbanstudy_Urbanstudytype, procuredBy?: string | null, preparedBy?: string | null, body?: string | null, approvalText?: string | null, documentId: string, slug: string, title: string, urbanStudyParts?: Array<{ __typename?: 'ComponentSectionsUrbanStudyPart', title?: string | null, text?: string | null, items?: Array<{ __typename?: 'ComponentBlocksUrbanStudyPartItem', id: string, title?: string | null, media?: { __typename?: 'UploadFile', documentId: string, url: string, name: string, ext?: string | null, size: number, createdAt?: any | null, updatedAt?: any | null } | null } | null> | null } | null> | null, regulations: Array<{ __typename?: 'Regulation', regNumber: string, fullTitle: string, effectiveFrom: any, category: Enum_Regulation_Category, isFullTextRegulation: boolean, documentId: string, slug: string, titleText?: string | null, mainDocument: { __typename?: 'UploadFile', documentId: string, url: string, name: string, ext?: string | null, size: number, createdAt?: any | null, updatedAt?: any | null }, attachments: Array<{ __typename?: 'UploadFile', documentId: string, url: string, name: string, ext?: string | null, size: number, createdAt?: any | null, updatedAt?: any | null } | null>, amendments: Array<{ __typename?: 'Regulation', documentId: string, regNumber: string, slug: string, effectiveFrom: any, isFullTextRegulation: boolean, attachments: Array<{ __typename?: 'UploadFile', documentId: string, url: string, name: string, ext?: string | null, size: number, createdAt?: any | null, updatedAt?: any | null } | null> } | null>, amending: Array<{ __typename?: 'Regulation', documentId: string, regNumber: string, slug: string, effectiveFrom: any, cancellation?: { __typename?: 'Regulation', documentId: string, regNumber: string, slug: string, effectiveFrom: any } | null, amending: Array<{ __typename?: 'Regulation', documentId: string, regNumber: string, slug: string, cancellation?: { __typename?: 'Regulation', documentId: string, regNumber: string, slug: string, effectiveFrom: any } | null } | null> } | null>, cancellation?: { __typename?: 'Regulation', documentId: string, regNumber: string, slug: string, effectiveFrom: any } | null, cancelling: Array<{ __typename?: 'Regulation', documentId: string, regNumber: string, slug: string, effectiveFrom: any } | null> } | null>, links?: Array<{ __typename?: 'ComponentBlocksCommonLink', label?: string | null, url?: string | null, analyticsId?: string | null, page?: { __typename?: 'Page', documentId: string, title: string, locale?: string | null, path?: string | null } | null, article?: { __typename: 'Article', documentId: string, slug: string, title: string, locale?: string | null } | null, inbaRelease?: { __typename?: 'InbaRelease', documentId: string, title: string, slug: string } | null, regulation?: { __typename?: 'Regulation', documentId: string, slug: string, titleText?: string | null } | null, asset?: { __typename: 'Asset', documentId: string, slug: string, title: string } | null } | null> | null } | null> };
 
 export const ArticleSlugEntityFragmentDoc = gql`
     fragment ArticleSlugEntity on Article {
@@ -8752,8 +8813,8 @@ ${SectionsFragmentDoc}
 ${SidebarsFragmentDoc}
 ${TagEntityFragmentDoc}
 ${PageParentPagesFragmentDoc}`;
-export const UrbanStudyItemFragmentDoc = gql`
-    fragment UrbanStudyItem on ComponentBlocksUrbanItem {
+export const UrbanStudyPartItemFragmentDoc = gql`
+    fragment UrbanStudyPartItem on ComponentBlocksUrbanStudyPartItem {
   id
   title
   media {
@@ -8761,15 +8822,15 @@ export const UrbanStudyItemFragmentDoc = gql`
   }
 }
     ${UploadFileEntityFragmentDoc}`;
-export const UrbanStudyItemsSectionFragmentDoc = gql`
-    fragment UrbanStudyItemsSection on ComponentSectionsUrbanInnerSection {
+export const UrbanStudyPartFragmentDoc = gql`
+    fragment UrbanStudyPart on ComponentSectionsUrbanStudyPart {
   title
   text
   items(pagination: {limit: -1}) {
-    ...UrbanStudyItem
+    ...UrbanStudyPartItem
   }
 }
-    ${UrbanStudyItemFragmentDoc}`;
+    ${UrbanStudyPartItemFragmentDoc}`;
 export const UrbanStudyEntityFragmentDoc = gql`
     fragment UrbanStudyEntity on UrbanStudy {
   ...UrbanStudySlugEntity
@@ -8781,8 +8842,8 @@ export const UrbanStudyEntityFragmentDoc = gql`
   preparedBy
   body
   approvalText
-  urbanStudyItemsSections {
-    ...UrbanStudyItemsSection
+  urbanStudyParts {
+    ...UrbanStudyPart
   }
   regulations {
     ...RegulationEntity
@@ -8792,7 +8853,7 @@ export const UrbanStudyEntityFragmentDoc = gql`
   }
 }
     ${UrbanStudySlugEntityFragmentDoc}
-${UrbanStudyItemsSectionFragmentDoc}
+${UrbanStudyPartFragmentDoc}
 ${RegulationEntityFragmentDoc}
 ${CommonLinkFragmentDoc}`;
 export const AdminGroupsDocument = gql`

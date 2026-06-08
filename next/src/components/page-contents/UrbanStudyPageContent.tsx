@@ -42,7 +42,7 @@ const UrbanStudyPageContent = ({ urbanStudy }: Props) => {
     approvalText,
     publishedAt,
     updatedAt,
-    urbanStudyItemsSections,
+    urbanStudyParts,
     regulations,
     links,
   } = urbanStudy
@@ -71,7 +71,7 @@ const UrbanStudyPageContent = ({ urbanStudy }: Props) => {
     { label: t('UrbanStudyPageContent.updatedAt'), value: formatDate(updatedAt) },
   ].filter((item) => !!item.value)
 
-  const filteredItemsSections = urbanStudyItemsSections?.filter(isDefined) ?? []
+  const filteredParts = urbanStudyParts?.filter(isDefined) ?? []
   const filteredRegulations = regulations?.filter(isDefined) ?? []
   const filteredLinks = links?.filter(isDefined) ?? []
 
@@ -126,15 +126,15 @@ const UrbanStudyPageContent = ({ urbanStudy }: Props) => {
           >
             {body ? <Markdown content={body} /> : null}
 
-            {filteredItemsSections.map((itemsSection, index) => (
+            {filteredParts.map((part, index) => (
               <FileList
                 // eslint-disable-next-line react/no-array-index-key
                 key={index}
-                title={itemsSection.title}
-                text={itemsSection.text}
-                // UrbanStudyItem (blocks.urban-item) is structurally compatible with
-                // FileBlock (blocks.file) expected by FileList.
-                files={(itemsSection.items?.filter(isDefined) ?? []) as FileBlockFragment[]}
+                title={part.title}
+                text={part.text}
+                // UrbanStudyPartItem (blocks.urban-study-part-item) is structurally compatible
+                // with FileBlock (blocks.file) expected by FileList.
+                files={(part.items?.filter(isDefined) ?? []) as FileBlockFragment[]}
               />
             ))}
 
