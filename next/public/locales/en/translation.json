@@ -30,6 +30,7 @@
   "AssetPageContent.numberOfFiles_other": "{{count}} files",
   "AssetPageContent.publishedAt": "Created",
   "AssetPageContent.updatedAt": "Updated",
+  "UrbanStudyPageContent.descriptionTitle": "Description",
   "UrbanStudyPageContent.detailsTitle": "Details",
   "UrbanStudyPageContent.linksTitle": "Related links",
   "UrbanStudyPageContent.preparedBy": "Prepared by",
