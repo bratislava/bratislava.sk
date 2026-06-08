@@ -20,7 +20,21 @@ type StaticParams = {
 }
 
 export const getStaticPaths: GetStaticPaths<StaticParams> = async () => {
-  return { paths: [], fallback: 'blocking' }
+  const { urbanStudies } = await client.UrbanStudiesStaticPaths({ limit: -1 })
+
+  const paths = urbanStudies
+    .filter((urbanStudy) => urbanStudy?.slug)
+    .map((urbanStudy) => ({
+      params: {
+        // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-assertion,@typescript-eslint/no-non-null-assertion
+        slug: urbanStudy!.slug!,
+      },
+    }))
+
+  // eslint-disable-next-line no-console
+  console.log(`GENERATED STATIC PATHS FOR ${paths.length} SLUGS - URBAN STUDIES`)
+
+  return { paths, fallback: 'blocking' }
 }
 
 export const getStaticProps: GetStaticProps<PageProps, StaticParams> = async ({

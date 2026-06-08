@@ -47,3 +47,10 @@ query UrbanStudyBySlug($slug: String!) {
     ...UrbanStudyEntity
   }
 }
+
+query UrbanStudiesStaticPaths($limit: Int = -1) {
+  urbanStudies(pagination: { limit: $limit }) {
+    documentId
+    slug
+  }
+}

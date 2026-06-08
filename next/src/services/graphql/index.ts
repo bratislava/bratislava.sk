@@ -7242,6 +7242,13 @@ export type UrbanStudyBySlugQueryVariables = Exact<{
 
 export type UrbanStudyBySlugQuery = { __typename?: 'Query', urbanStudies: Array<{ __typename: 'UrbanStudy', publishedAt?: any | null, updatedAt?: any | null, year?: string | null, urbanStudyType: Enum_Urbanstudy_Urbanstudytype, procuredBy?: string | null, preparedBy?: string | null, body?: string | null, approvalText?: string | null, documentId: string, slug: string, title: string, urbanStudyParts?: Array<{ __typename?: 'ComponentSectionsUrbanStudyPart', title?: string | null, text?: string | null, items?: Array<{ __typename?: 'ComponentBlocksUrbanStudyPartItem', id: string, title?: string | null, media: { __typename?: 'UploadFile', documentId: string, url: string, name: string, ext?: string | null, size: number, createdAt?: any | null, updatedAt?: any | null } } | null> | null } | null> | null, regulations: Array<{ __typename?: 'Regulation', regNumber: string, fullTitle: string, effectiveFrom: any, category: Enum_Regulation_Category, isFullTextRegulation: boolean, documentId: string, slug: string, titleText?: string | null, mainDocument: { __typename?: 'UploadFile', documentId: string, url: string, name: string, ext?: string | null, size: number, createdAt?: any | null, updatedAt?: any | null }, attachments: Array<{ __typename?: 'UploadFile', documentId: string, url: string, name: string, ext?: string | null, size: number, createdAt?: any | null, updatedAt?: any | null } | null>, amendments: Array<{ __typename?: 'Regulation', documentId: string, regNumber: string, slug: string, effectiveFrom: any, isFullTextRegulation: boolean, attachments: Array<{ __typename?: 'UploadFile', documentId: string, url: string, name: string, ext?: string | null, size: number, createdAt?: any | null, updatedAt?: any | null } | null> } | null>, amending: Array<{ __typename?: 'Regulation', documentId: string, regNumber: string, slug: string, effectiveFrom: any, cancellation?: { __typename?: 'Regulation', documentId: string, regNumber: string, slug: string, effectiveFrom: any } | null, amending: Array<{ __typename?: 'Regulation', documentId: string, regNumber: string, slug: string, cancellation?: { __typename?: 'Regulation', documentId: string, regNumber: string, slug: string, effectiveFrom: any } | null } | null> } | null>, cancellation?: { __typename?: 'Regulation', documentId: string, regNumber: string, slug: string, effectiveFrom: any } | null, cancelling: Array<{ __typename?: 'Regulation', documentId: string, regNumber: string, slug: string, effectiveFrom: any } | null> } | null>, links?: Array<{ __typename?: 'ComponentBlocksCommonLink', label?: string | null, url?: string | null, analyticsId?: string | null, page?: { __typename?: 'Page', documentId: string, title: string, locale?: string | null, path?: string | null } | null, article?: { __typename: 'Article', documentId: string, slug: string, title: string, locale?: string | null } | null, inbaRelease?: { __typename?: 'InbaRelease', documentId: string, title: string, slug: string } | null, regulation?: { __typename?: 'Regulation', documentId: string, slug: string, titleText?: string | null } | null, asset?: { __typename: 'Asset', documentId: string, slug: string, title: string } | null } | null> | null } | null> };
 
+export type UrbanStudiesStaticPathsQueryVariables = Exact<{
+  limit?: InputMaybe<Scalars['Int']['input']>;
+}>;
+
+
+export type UrbanStudiesStaticPathsQuery = { __typename?: 'Query', urbanStudies: Array<{ __typename?: 'UrbanStudy', documentId: string, slug: string } | null> };
+
 export const ArticleSlugEntityFragmentDoc = gql`
     fragment ArticleSlugEntity on Article {
   __typename
@@ -9213,6 +9220,14 @@ export const UrbanStudyBySlugDocument = gql`
   }
 }
     ${UrbanStudyEntityFragmentDoc}`;
+export const UrbanStudiesStaticPathsDocument = gql`
+    query UrbanStudiesStaticPaths($limit: Int = -1) {
+  urbanStudies(pagination: {limit: $limit}) {
+    documentId
+    slug
+  }
+}
+    `;
 
 export type SdkFunctionWrapper = <T>(action: (requestHeaders?:Record<string, string>) => Promise<T>, operationName: string, operationType?: string, variables?: any) => Promise<T>;
 
@@ -9331,6 +9346,9 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     },
     UrbanStudyBySlug(variables: UrbanStudyBySlugQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<UrbanStudyBySlugQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<UrbanStudyBySlugQuery>(UrbanStudyBySlugDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'UrbanStudyBySlug', 'query', variables);
+    },
+    UrbanStudiesStaticPaths(variables?: UrbanStudiesStaticPathsQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<UrbanStudiesStaticPathsQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<UrbanStudiesStaticPathsQuery>(UrbanStudiesStaticPathsDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'UrbanStudiesStaticPaths', 'query', variables);
     }
   };
 }
