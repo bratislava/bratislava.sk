@@ -7,7 +7,6 @@ import SectionContainer from '@/src/components/layouts/SectionContainer'
 import SectionHeader from '@/src/components/layouts/SectionHeader'
 import UrbanStudiesAll from '@/src/components/sections/UrbanStudiesSection/UrbanStudiesAll'
 import { UrbanStudiesSectionFragment } from '@/src/services/graphql'
-import { formatDate } from '@/src/utils/formatDate'
 import { isDefined } from '@/src/utils/isDefined'
 import { useUrbanStudyTypeTranslationMap } from '@/src/utils/useUrbanStudyTypeTranslationMap'
 
@@ -18,6 +17,8 @@ type Props = {
 /**
  * Renders a list of related urban studies (or a searchable list of all of them when showAll is set).
  * Mirrors AssetsSection (ComponentSectionsAssets).
+ *
+ * TODO Implement FE component or variant for urban studies, now using DocumentRowCard
  */
 const UrbanStudiesSection = ({ section }: Props) => {
   const { title, text, urbanStudies, showAll, titleLevelUrbanStudiesSection: titleLevel } = section
@@ -41,23 +42,22 @@ const UrbanStudiesSection = ({ section }: Props) => {
 
         <ul className="flex flex-col rounded-lg border py-2">
           {filteredUrbanStudies.map((urbanStudy, index) => {
-            const { documentId, slug, title: studyTitle, urbanStudyType, year, updatedAt } =
-              urbanStudy
+            const { documentId, slug, title: urbanStudyTitle, urbanStudyType, year } = urbanStudy
 
             return (
               <Fragment key={documentId}>
                 {index > 0 ? <HorizontalDivider asListItem className="mx-4 lg:mx-6" /> : null}
                 <li className="w-full">
+                  {/* TODO Implement FE component or variant for urban studies, now using DocumentRowCard */}
                   <DocumentRowCard
                     variant="multiple-files"
-                    title={studyTitle}
+                    title={urbanStudyTitle}
                     cardTitleLevel={getCardTitleLevel(titleLevel)}
                     linkHref={`/uzemne-studie/${slug}`}
                     className="px-4 lg:px-6"
                     metadata={[
-                      urbanStudyType ? urbanStudyTypeTranslationMap[urbanStudyType] : undefined,
+                      urbanStudyTypeTranslationMap[urbanStudyType],
                       year,
-                      formatDate(updatedAt),
                     ].filter(isDefined)}
                   />
                 </li>

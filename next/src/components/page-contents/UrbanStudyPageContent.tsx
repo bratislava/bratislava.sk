@@ -18,7 +18,7 @@ import { FileBlockFragment, LinksSectionFragment, UrbanStudyEntityFragment, } fr
 import cn from '@/src/utils/cn'
 import { formatDate } from '@/src/utils/formatDate'
 import { isDefined } from '@/src/utils/isDefined'
-import { useUrbanStudyTypeTranslationMap } from '@/src/utils/useUrbanStudyTypeTranslationMap'
+import { useUrbanStudyTypeLabel } from '@/src/utils/useUrbanStudyTypeTranslationMap'
 
 type Props = {
   urbanStudy: UrbanStudyEntityFragment
@@ -40,17 +40,14 @@ const UrbanStudyPageContent = ({ urbanStudy }: Props) => {
     preparedBy,
     body,
     approvalText,
-    publishedAt,
     updatedAt,
     urbanStudyParts,
     regulations,
     links,
   } = urbanStudy
 
-  const urbanStudyTypeTranslationMap = useUrbanStudyTypeTranslationMap()
-  const urbanStudyTypeLabel = urbanStudyType
-    ? urbanStudyTypeTranslationMap[urbanStudyType]
-    : undefined
+  const getUrbanStudyTypeLabel = useUrbanStudyTypeLabel()
+  const urbanStudyTypeLabel = getUrbanStudyTypeLabel(urbanStudyType)
 
   const { general } = useGeneralContext()
   const urbanStudiesPage = general?.urbanStudiesPage
@@ -67,8 +64,6 @@ const UrbanStudyPageContent = ({ urbanStudy }: Props) => {
     { label: t('UrbanStudyPageContent.year'), value: year },
     { label: t('UrbanStudyPageContent.procuredBy'), value: procuredBy },
     { label: t('UrbanStudyPageContent.preparedBy'), value: preparedBy },
-    { label: t('UrbanStudyPageContent.publishedAt'), value: formatDate(publishedAt) },
-    { label: t('UrbanStudyPageContent.updatedAt'), value: formatDate(updatedAt) },
   ].filter((item) => !!item.value)
 
   const filteredParts = urbanStudyParts?.filter(isDefined) ?? []
@@ -85,7 +80,6 @@ const UrbanStudyPageContent = ({ urbanStudy }: Props) => {
         </SectionContainer>
       </div>
 
-      {/* Header */}
       <div className={cn('relative overflow-x-clip bg-background-passive-secondary')}>
         <div className="relative mx-auto max-w-(--breakpoint-xl) px-4 lg:px-8">
           <div className="py-6 lg:py-8">
@@ -167,6 +161,7 @@ const UrbanStudyPageContent = ({ urbanStudy }: Props) => {
             {filteredLinks.length > 0 ? (
               <Links
                 title={t('UrbanStudyPageContent.linksTitle')}
+                // TODO fix types
                 // Urban study links use the CommonLink fragment, which is structurally compatible
                 // with getLinkProps used inside Links (typed for PageLink).
                 pageLinks={links as LinksSectionFragment['pageLinks']}

@@ -14,10 +14,9 @@ import {
   urbanStudiesDefaultFilters,
   urbanStudiesFetcher,
 } from '@/src/services/meili/fetchers/urbanStudiesFetcher'
-import { formatDate } from '@/src/utils/formatDate'
 import { isDefined } from '@/src/utils/isDefined'
 import { useTranslation } from '@/src/utils/useTranslation'
-import { useUrbanStudyTypeTranslationMap } from '@/src/utils/useUrbanStudyTypeTranslationMap'
+import { useUrbanStudyTypeLabel } from '@/src/utils/useUrbanStudyTypeTranslationMap'
 
 type Props = {
   section: UrbanStudiesSectionFragment
@@ -32,7 +31,7 @@ const UrbanStudiesAll = ({ section }: Props) => {
 
   const { title, text, titleLevelUrbanStudiesSection: titleLevel } = section
 
-  const urbanStudyTypeTranslationMap = useUrbanStudyTypeTranslationMap()
+  const getUrbanStudyTypeLabel = useUrbanStudyTypeLabel()
 
   const [input, setInput] = useState('')
   const [debouncedInput] = useDebounceValue(input, 300)
@@ -92,11 +91,8 @@ const UrbanStudiesAll = ({ section }: Props) => {
                       title: urbanStudy.title,
                       linkHref: `/uzemne-studie/${urbanStudy.slug}`,
                       metadata: [
-                        urbanStudy.urbanStudyType
-                          ? urbanStudyTypeTranslationMap[urbanStudy.urbanStudyType]
-                          : undefined,
+                        getUrbanStudyTypeLabel(urbanStudy.urbanStudyType),
                         urbanStudy.year,
-                        formatDate(urbanStudy.updatedAt),
                       ].filter(isDefined),
                       customIconName: 'urban_study',
                     }}
