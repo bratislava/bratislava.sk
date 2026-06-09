@@ -26,7 +26,7 @@
     "@strapi/provider-upload-aws-s3": "5.47.1",
     "@strapi/strapi": "5.47.1",
     "@strapi/typescript-utils": "5.47.1",
-    "patch-package": "7.0.2",
+    "patch-package": "8.0.1",
     "pg": "8.21.0",
     "react": "18.3.1",
     "react-dom": "18.3.1",
