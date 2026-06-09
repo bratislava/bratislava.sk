@@ -47,7 +47,7 @@ const MobileFooter = () => {
                 <HorizontalDivider />
                 <Disclosure>
                   <DisclosureHeader className="py-6">
-                    <Typography variant="h4" as="h3">
+                    <Typography variant="h5" as="h3">
                       {column.title}
                     </Typography>
                   </DisclosureHeader>
@@ -76,9 +76,7 @@ const MobileFooter = () => {
           <FooterAccessibilityLink {...footer} />
         </div>
         <HorizontalDivider />
-        <div className="text-center text-size-p-default">
-          <FooterCopyright {...footer} />
-        </div>
+        <FooterCopyright {...footer} />
       </footer>
     </SectionContainer>
   )

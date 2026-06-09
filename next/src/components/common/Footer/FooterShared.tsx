@@ -70,22 +70,24 @@ export const FooterAccessibilityLink = ({ accessibilityPageLink }: FooterFragmen
 
 export const FooterCopyright = ({ innovationsLink }: FooterFragment) => {
   return (
-    <Trans
-      i18nKey="Footer.copyright"
-      components={{
-        innovations: <MLink variant="underlined" {...getLinkProps(innovationsLink)} />,
-      }}
-      values={{ year: new Date().getFullYear() }}
-    />
+    <Typography variant="p-small" className="lg:text-center">
+      <Trans
+        i18nKey="Footer.copyright"
+        components={{
+          innovations: <MLink variant="underlined" {...getLinkProps(innovationsLink)} />,
+        }}
+        values={{ year: new Date().getFullYear() }}
+      />
+    </Typography>
   )
 }
 
 export const FooterColumnLinks = ({ links }: FooterColumnBlockFragment) => {
   return (
     <>
-      {links?.filter(isDefined)?.map((link, index) => (
-        <MLink variant="underlined" {...getLinkProps(link)} key={index} />
-      ))}
+      {links
+        ?.filter(isDefined)
+        ?.map((link, index) => <MLink variant="underlined" {...getLinkProps(link)} key={index} />)}
     </>
   )
 }
