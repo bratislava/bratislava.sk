@@ -30,15 +30,23 @@ export type MarkdownProps = {
  */
 
 const Markdown = ({ content, variant = 'default', className }: MarkdownProps) => {
+  const variantMap = {
+    default: 'p-default',
+    small: 'p-small',
+    large: 'p-large',
+    accordion: 'p-default',
+  } as const
+
   return (
     <div
       {...TABLE_OF_CONTENTS_HEADING_ATTRIBUTE}
       className={cn(
         'markdown',
         {
-          'text-size-p-large': variant === 'large',
-          'text-size-p-default': variant === 'default' || variant === 'accordion',
-          'text-size-p-small': variant === 'small',
+          'text-size-p-large-r lg:text-size-p-large': variant === 'large',
+          'text-size-p-default-r lg:text-size-p-default':
+            variant === 'default' || variant === 'accordion',
+          'text-size-p-small-r lg:text-size-p-small': variant === 'small',
         },
         className,
       )}
@@ -92,13 +100,6 @@ const Markdown = ({ content, variant = 'default', className }: MarkdownProps) =>
             </Typography>
           ),
           p: ({ children, node, ...props }) => {
-            const variantMap = {
-              default: 'p-default',
-              small: 'p-small',
-              large: 'p-large',
-              accordion: 'p-default',
-            } as const
-
             return (
               <Typography variant={variantMap[variant]} {...props}>
                 {children}
@@ -193,7 +194,9 @@ const Markdown = ({ content, variant = 'default', className }: MarkdownProps) =>
           ),
           td: ({ children, node, ...props }) => (
             <td className="px-5 py-1 not-first:border-l" {...props}>
-              {children}
+              <Typography variant={variantMap[variant]} as="span">
+                {children}
+              </Typography>
             </td>
           ),
           th: ({ children, node, ...props }) => (
