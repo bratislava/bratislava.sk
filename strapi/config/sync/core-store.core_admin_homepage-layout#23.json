@@ -1,0 +1,32 @@
+{
+  "key": "core_admin_homepage-layout:23",
+  "value": {
+    "version": 1,
+    "widgets": [
+      {
+        "uid": "plugin::content-manager.last-edited-entries",
+        "width": 6
+      },
+      {
+        "uid": "plugin::content-manager.last-published-entries",
+        "width": 6
+      },
+      {
+        "uid": "plugin::admin.profile-info",
+        "width": 6
+      },
+      {
+        "uid": "plugin::content-manager.chart-entries",
+        "width": 6
+      },
+      {
+        "uid": "plugin::admin.key-statistics",
+        "width": 12
+      }
+    ],
+    "updatedAt": "2026-06-09T09:10:59.648Z"
+  },
+  "type": "object",
+  "environment": null,
+  "tag": null
+}
