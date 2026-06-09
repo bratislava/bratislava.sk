@@ -65,6 +65,14 @@ We add `'en'` locale to `.localCompare()` function so properties order in genera
 npx patch-package @strapi/typescript-utils
 ```
 
+### @strapi/database
+
+Fixes repeatable component / dynamic zone ordering in GraphQL responses. The GraphQL component field resolver injects an empty `orderBy: []` into the populate query. In `getJoinTableOrderBy` (`query/helpers/populate/apply.js`) the check `if (populateValue.orderBy || ...)` treats that empty array as truthy, so the join-table `order` column is dropped and components fall back to natural primary-key (`id`) order instead of the order set in the admin. REST is unaffected. The patch treats an empty array as "no explicit sort".
+
+```bash
+npx patch-package @strapi/database
+```
+
 ## Pages by Component
 
 We add a custom admin page `PagesByComponent.tsx` that lists which pages use which section components. This feature uses a custom api route defined in `api/pages-by-component`.
