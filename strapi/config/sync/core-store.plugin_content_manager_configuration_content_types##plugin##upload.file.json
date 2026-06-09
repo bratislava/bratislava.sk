@@ -62,6 +62,20 @@
           "sortable": true
         }
       },
+      "focalPoint": {
+        "edit": {
+          "label": "focalPoint",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "focalPoint",
+          "searchable": false,
+          "sortable": false
+        }
+      },
       "width": {
         "edit": {
           "label": "width",
@@ -408,6 +422,12 @@
           {
             "name": "folder",
             "size": 6
+          }
+        ],
+        [
+          {
+            "name": "focalPoint",
+            "size": 12
           }
         ]
       ]
