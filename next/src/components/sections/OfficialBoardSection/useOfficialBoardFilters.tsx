@@ -17,7 +17,8 @@ export const OFFICIAL_BOARD_PUBLICATION_STATES = [
 
 const toOfficialBoardPublicationStateInUrl = (
   value: OfficialBoardPublicationState | undefined,
-): OfficialBoardPublicationStateInUrl => (value === 'vyveseno' || value === 'sejmuto' ? value : 'vyveseno')
+): OfficialBoardPublicationStateInUrl =>
+  value === 'vyveseno' || value === 'sejmuto' ? value : 'vyveseno'
 
 export const useOfficialBoardFilters = () => {
   const [filtersQueryParams, setFiltersQueryParams] = useQueryStates(

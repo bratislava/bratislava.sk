@@ -98,7 +98,7 @@
     "eslint": "9.39.1",
     "i18next-parser": "9.0.0",
     "postcss": "8.5.10",
-    "prettier": "3.5.3",
+    "prettier": "3.8.3",
     "prettier-plugin-tailwindcss": "0.8.0",
     "sass": "1.62.1",
     "sharp": "0.32.6",

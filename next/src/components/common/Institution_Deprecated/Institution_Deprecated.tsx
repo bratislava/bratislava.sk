@@ -15,7 +15,7 @@ const Institution = ({ title, subtitle, content, url, urlLabel }: InstitutionPro
   const titleId = useId()
 
   return (
-    <div className="bg-background-passive-base relative h-full rounded-lg border p-8">
+    <div className="relative h-full rounded-lg border bg-background-passive-base p-8">
       <div className="flex flex-col">
         <Typography variant="h5" as="h4" id={titleId} className="text-h5">
           {title}

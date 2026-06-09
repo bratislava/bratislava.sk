@@ -55,9 +55,7 @@ const Banner = ({
       )}
     >
       <div
-        className={cn(
-          'flex size-full flex-col gap-4 p-4 lg:w-1/2 lg:gap-6 @min-page-wide:p-12',
-        )}
+        className={cn('flex size-full flex-col gap-4 p-4 lg:w-1/2 lg:gap-6 @min-page-wide:p-12')}
       >
         <div className="flex flex-col items-start gap-3">
           <Typography as="h2" variant={variant === 'white_condensed' ? 'h4' : 'h2'}>
