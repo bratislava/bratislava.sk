@@ -40,7 +40,6 @@ describe('S01 - ', { testIsolation: false }, () => {
               .should('exist')
           })
           cy.dataCy('search-section-Kontakty').scrollIntoView().should('be.visible')
-          cy.dataCy('enter-search-query').should('contain', 'Zadajte hľadaný výraz')
 
           cy.dataCy('search-section-VZN').scrollIntoView().should('be.visible')
           cy.dataCy('search-section-VZN').then((section) => {
@@ -55,6 +54,10 @@ describe('S01 - ', { testIsolation: false }, () => {
               .find('[data-cy=search-result-card]')
               .should('exist')
           })
+
+          // Contacts prompt shows only on users tab with empty query
+          cy.dataCy('users-tab').click()
+          cy.dataCy('enter-search-query').should('contain', 'Zadajte hľadaný výraz')
         })
 
         it('2. Checking search results - pages.', () => {
