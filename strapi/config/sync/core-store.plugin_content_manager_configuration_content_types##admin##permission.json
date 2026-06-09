@@ -105,6 +105,21 @@
           "sortable": true
         }
       },
+      "apiToken": {
+        "edit": {
+          "label": "apiToken",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "name"
+        },
+        "list": {
+          "label": "apiToken",
+          "searchable": true,
+          "sortable": true
+        }
+      },
       "createdAt": {
         "edit": {
           "label": "createdAt",
@@ -212,6 +227,12 @@
           {
             "name": "actionParameters",
             "size": 12
+          }
+        ],
+        [
+          {
+            "name": "apiToken",
+            "size": 6
           }
         ]
       ]
