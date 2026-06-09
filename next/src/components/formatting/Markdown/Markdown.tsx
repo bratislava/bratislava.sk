@@ -193,19 +193,24 @@ const Markdown = ({ content, variant = 'default', className }: MarkdownProps) =>
             </tr>
           ),
           td: ({ children, node, ...props }) => (
-            <td className="px-5 py-1 not-first:border-l" {...props}>
-              <Typography variant={variantMap[variant]} as="span">
-                {children}
-              </Typography>
-            </td>
+            <Typography
+              variant={variantMap[variant]}
+              as="td"
+              className="px-5 py-1 not-first:border-l"
+              {...props}
+            >
+              {children}
+            </Typography>
           ),
           th: ({ children, node, ...props }) => (
-            <th
+            <Typography
+              variant={variantMap[variant]}
+              as="th"
               className="bg-background-passive-primary px-5 py-1 font-bold not-first:border-l"
               {...props}
             >
               {children}
-            </th>
+            </Typography>
           ),
         }}
       >
