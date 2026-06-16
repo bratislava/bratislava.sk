@@ -10,7 +10,7 @@ const wrapSearchIndexEntry = (type, data) => {
 
   return {
     type,
-    id: data.id, // must be present to work correctly
+    documentId: data.documentId, // must be present to work correctly
     locale: data.locale,
     // [type] is used instead of "data", to avoid  naming clashes of filterable / sortable / searchable attributes
     [type]: newData,
