@@ -1,6 +1,6 @@
 import { Typography } from '@bratislava/component-library'
 import { useQuery } from '@tanstack/react-query'
-import { Fragment, useEffect, useMemo, useState } from 'react'
+import { Fragment, useMemo, useState } from 'react'
 
 import { getCardTitleLevel } from '@/src/components/cards/getCardTitleLevel'
 import JobOfferRowCard from '@/src/components/cards/JobOfferRowCard'
@@ -52,16 +52,12 @@ const JobOffersSection = ({ section }: JobOffersSectionProps) => {
   const [pagination, setPagination] = useState({
     currentPage: 1,
     pageSize: 12,
-    totalItems: 0,
   })
 
-  useEffect(() => {
-    if (processedData.length && !isError)
-      setPagination((prev) => ({ ...prev, currentPage: 1, totalItems: processedData.length }))
-  }, [processedData, isError])
+  const totalItems = isError ? 0 : processedData.length
 
   const paginatedData =
-    processedData.length && !isError
+    totalItems > 0
       ? processedData.slice(
           (pagination.currentPage - 1) * pagination.pageSize,
           pagination.currentPage * pagination.pageSize,
@@ -97,14 +93,12 @@ const JobOffersSection = ({ section }: JobOffersSectionProps) => {
                     )
                   })}
                 </ul>
-                {pagination.totalItems > pagination.pageSize && (
+                {totalItems > pagination.pageSize && (
                   <div className="self-center">
                     <PaginationWithInput
                       currentPage={pagination.currentPage}
                       totalCount={
-                        pagination.totalItems > 0
-                          ? Math.ceil(pagination.totalItems / pagination.pageSize)
-                          : 1
+                        totalItems > 0 ? Math.ceil(totalItems / pagination.pageSize) : 1
                       }
                       onPageChange={(newPage) => {
                         setPagination((prev) => ({ ...prev, currentPage: newPage }))
