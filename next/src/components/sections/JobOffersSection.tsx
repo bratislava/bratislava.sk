@@ -1,6 +1,6 @@
 import { Typography } from '@bratislava/component-library'
 import { useQuery } from '@tanstack/react-query'
-import { Fragment, useEffect, useState } from 'react'
+import { Fragment, useEffect, useMemo, useState } from 'react'
 
 import { getCardTitleLevel } from '@/src/components/cards/getCardTitleLevel'
 import JobOfferRowCard from '@/src/components/cards/JobOfferRowCard'
@@ -31,6 +31,24 @@ const JobOffersSection = ({ section }: JobOffersSectionProps) => {
     queryFn: () => fetchNalgooJobOffers(),
   })
 
+  const processedData = useMemo(() => {
+    if (!data?.length) return []
+
+    // Reverse the order to match how job offers are displayed on nalgoo homepage
+    // Trim all values, because nalgoo data often contain redundant spaces
+    return [...data].reverse().map((jobOffer) => ({
+      ...jobOffer,
+      title: jobOffer.title.trim(),
+      location: jobOffer.location?.trim() ?? null,
+      salary: jobOffer.salary?.trim() ?? null,
+      salaryInfo: jobOffer.salaryInfo.trim(),
+      employmentForms: jobOffer.employmentForms.map((item) => ({
+        ...item,
+        name: item.name.trim(),
+      })),
+    }))
+  }, [data])
+
   const [pagination, setPagination] = useState({
     currentPage: 1,
     pageSize: 12,
@@ -38,13 +56,13 @@ const JobOffersSection = ({ section }: JobOffersSectionProps) => {
   })
 
   useEffect(() => {
-    if (data?.length && !isError)
-      setPagination((prev) => ({ ...prev, currentPage: 1, totalItems: data.length }))
-  }, [data, isError])
+    if (processedData.length && !isError)
+      setPagination((prev) => ({ ...prev, currentPage: 1, totalItems: processedData.length }))
+  }, [processedData, isError])
 
   const paginatedData =
-    data?.length && !isError
-      ? data.slice(
+    processedData.length && !isError
+      ? processedData.slice(
           (pagination.currentPage - 1) * pagination.pageSize,
           pagination.currentPage * pagination.pageSize,
         )
@@ -60,7 +78,7 @@ const JobOffersSection = ({ section }: JobOffersSectionProps) => {
           <div>{error.message}</div>
         ) : (
           <>
-            {data.length > 0 ? (
+            {processedData.length > 0 ? (
               <>
                 <ul className="flex flex-col rounded-lg border py-2">
                   {paginatedData.map((jobOffer, index) => {
