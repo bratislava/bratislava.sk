@@ -12,6 +12,7 @@ import { NuqsAdapter } from 'nuqs/adapters/next/pages'
 import { OverlayProvider } from 'react-aria'
 import { QueryParamProvider } from 'use-query-params'
 
+import GTranslateSwitcher from '@/src/components/common/GTranslate/GTranslateSwitcher'
 import MLink from '@/src/components/common/MLink/MLink'
 import { NavMenuContextProvider } from '@/src/components/common/NavBar/NavMenu/navMenuContext'
 import BAI18nProvider from '@/src/components/providers/BAI18nProvider'
@@ -63,6 +64,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
                       <div id="root">
                         <Component {...pageProps} />
                       </div>
+                      <GTranslateSwitcher />
                     </ComponentLibraryProvider>
                     <GoogleTagManager
                       gtmId={environment.gtmId}

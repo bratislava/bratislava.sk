@@ -34,4 +34,5 @@ export const environment = {
     'NEXT_PUBLIC_FEATURE_FLAG_RSS_FEED',
     process.env.NEXT_PUBLIC_FEATURE_FLAG_RSS_FEED,
   ),
+  featureFlagGTranslate: process.env.NEXT_PUBLIC_FEATURE_FLAG_GTRANSLATE,
 }
