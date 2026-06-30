@@ -299,11 +299,13 @@ const nextConfig = {
       {
         source: '/doprava-a-komunikacie/cyklodoprava/:path*',
         destination: '/doprava-a-komunikacie/cyklodoprava',
+        permanent: false,
       },
       {
         source: '/en/transport-and-maps/cycling/:path*',
         destination: '/en/transport-and-maps/cycling',
         locale: false,
+        permanent: false,
       },
     ]
   },
