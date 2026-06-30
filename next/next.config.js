@@ -203,6 +203,13 @@ const nextConfig = {
         permanent: true,
       },
       {
+        source:
+          '/mesto-bratislava/projekty/eu-projekty/program-slovensko/nizkoprahova-socialna-sluzba-fortunacik',
+        destination:
+          '/mesto-bratislava/projekty/eu-projekty/program-slovensko/nizkoprahova-socialna-sluzba-pre-deti-a-rodinu-fokus',
+        permanent: true,
+      },
+      {
         source: '/en/social-services-and-housing/social-services-and-facilities/fortunacik',
         destination: '/en/social-services-and-housing/social-services-and-facilities/fokus',
         locale: false,
@@ -265,6 +272,39 @@ const nextConfig = {
       {
         source: '/doprava-a-mapy/:path*',
         destination: '/doprava-a-komunikacie/:path*',
+        permanent: true,
+      },
+      {
+        source: '/mesto-bratislava/datovy-portal-Bratislavy',
+        destination: '/mesto-bratislava/transparentne-mesto/datovy-portal-bratislavy',
+        permanent: true,
+      },
+      {
+        source: '/en/city-of-bratislava/data-portal',
+        destination: '/en/city-of-bratislava/transparent-city/data-portal',
+        locale: false,
+        permanent: true,
+      },
+      {
+        source: '/doprava-a-komunikacie/mapy',
+        destination: '/mesto-bratislava/transparentne-mesto/datovy-portal-bratislavy',
+        permanent: true,
+      },
+      {
+        source: '/en/transport-and-maps/maps',
+        destination: '/en/city-of-bratislava/transparent-city/data-portal',
+        locale: false,
+        permanent: true,
+      },
+      {
+        source: '/doprava-a-komunikacie/cyklodoprava/:path*',
+        destination: '/doprava-a-komunikacie/cyklodoprava',
+        permanent: true,
+      },
+      {
+        source: '/en/transport-and-maps/cycling/:path*',
+        destination: '/en/transport-and-maps/cycling',
+        locale: false,
         permanent: true,
       },
     ]
