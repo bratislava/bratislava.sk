@@ -43,7 +43,7 @@
     "axios": "1.16.1",
     "clsx": "2.1.1",
     "dotenv": "17.2.1",
-    "focus-trap-react": "11.0.3",
+    "focus-trap-react": "12.0.2",
     "framer-motion": "12.38.0",
     "graphql": "16.10.0",
     "graphql-request": "6.1.0",
