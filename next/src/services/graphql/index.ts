@@ -1623,26 +1623,35 @@ export type ComponentSectionsAccordionInput = {
 
 export type ComponentSectionsAlert = {
   __typename?: 'ComponentSectionsAlert'
+  alertLinks?: Maybe<Array<Maybe<ComponentBlocksCommonLink>>>
   alertText: Scalars['String']['output']
+  alertTitle?: Maybe<Scalars['String']['output']>
   alertVariant: Enum_Componentsectionsalert_Alertvariant
   id: Scalars['ID']['output']
-  title?: Maybe<Scalars['String']['output']>
+}
+
+export type ComponentSectionsAlertAlertLinksArgs = {
+  filters?: InputMaybe<ComponentBlocksCommonLinkFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
 }
 
 export type ComponentSectionsAlertFiltersInput = {
+  alertLinks?: InputMaybe<ComponentBlocksCommonLinkFiltersInput>
   alertText?: InputMaybe<StringFilterInput>
+  alertTitle?: InputMaybe<StringFilterInput>
   alertVariant?: InputMaybe<StringFilterInput>
   and?: InputMaybe<Array<InputMaybe<ComponentSectionsAlertFiltersInput>>>
   not?: InputMaybe<ComponentSectionsAlertFiltersInput>
   or?: InputMaybe<Array<InputMaybe<ComponentSectionsAlertFiltersInput>>>
-  title?: InputMaybe<StringFilterInput>
 }
 
 export type ComponentSectionsAlertInput = {
+  alertLinks?: InputMaybe<Array<InputMaybe<ComponentBlocksCommonLinkInput>>>
   alertText?: InputMaybe<Scalars['String']['input']>
+  alertTitle?: InputMaybe<Scalars['String']['input']>
   alertVariant?: InputMaybe<Enum_Componentsectionsalert_Alertvariant>
   id?: InputMaybe<Scalars['ID']['input']>
-  title?: InputMaybe<Scalars['String']['input']>
 }
 
 export type ComponentSectionsArticles = {
@@ -10807,9 +10816,42 @@ export type PageEntityFragment = {
       }
     | {
         __typename: 'ComponentSectionsAlert'
-        title?: string | null
+        alertTitle?: string | null
         alertText: string
         alertVariant: Enum_Componentsectionsalert_Alertvariant
+        alertLinks?: Array<{
+          __typename?: 'ComponentBlocksCommonLink'
+          label?: string | null
+          url?: string | null
+          analyticsId?: string | null
+          page?: {
+            __typename?: 'Page'
+            documentId: string
+            title: string
+            locale?: string | null
+            path?: string | null
+          } | null
+          article?: {
+            __typename: 'Article'
+            documentId: string
+            slug: string
+            title: string
+            locale?: string | null
+          } | null
+          inbaRelease?: {
+            __typename?: 'InbaRelease'
+            documentId: string
+            title: string
+            slug: string
+          } | null
+          regulation?: {
+            __typename?: 'Regulation'
+            documentId: string
+            slug: string
+            titleText?: string | null
+          } | null
+          asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
+        } | null> | null
       }
     | {
         __typename: 'ComponentSectionsArticles'
@@ -12308,9 +12350,42 @@ export type PageByPathQuery = {
         }
       | {
           __typename: 'ComponentSectionsAlert'
-          title?: string | null
+          alertTitle?: string | null
           alertText: string
           alertVariant: Enum_Componentsectionsalert_Alertvariant
+          alertLinks?: Array<{
+            __typename?: 'ComponentBlocksCommonLink'
+            label?: string | null
+            url?: string | null
+            analyticsId?: string | null
+            page?: {
+              __typename?: 'Page'
+              documentId: string
+              title: string
+              locale?: string | null
+              path?: string | null
+            } | null
+            article?: {
+              __typename: 'Article'
+              documentId: string
+              slug: string
+              title: string
+              locale?: string | null
+            } | null
+            inbaRelease?: {
+              __typename?: 'InbaRelease'
+              documentId: string
+              title: string
+              slug: string
+            } | null
+            regulation?: {
+              __typename?: 'Regulation'
+              documentId: string
+              slug: string
+              titleText?: string | null
+            } | null
+            asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
+          } | null> | null
         }
       | {
           __typename: 'ComponentSectionsArticles'
@@ -13847,9 +13922,42 @@ export type Dev_AllPagesQuery = {
         }
       | {
           __typename: 'ComponentSectionsAlert'
-          title?: string | null
+          alertTitle?: string | null
           alertText: string
           alertVariant: Enum_Componentsectionsalert_Alertvariant
+          alertLinks?: Array<{
+            __typename?: 'ComponentBlocksCommonLink'
+            label?: string | null
+            url?: string | null
+            analyticsId?: string | null
+            page?: {
+              __typename?: 'Page'
+              documentId: string
+              title: string
+              locale?: string | null
+              path?: string | null
+            } | null
+            article?: {
+              __typename: 'Article'
+              documentId: string
+              slug: string
+              title: string
+              locale?: string | null
+            } | null
+            inbaRelease?: {
+              __typename?: 'InbaRelease'
+              documentId: string
+              title: string
+              slug: string
+            } | null
+            regulation?: {
+              __typename?: 'Regulation'
+              documentId: string
+              slug: string
+              titleText?: string | null
+            } | null
+            asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
+          } | null> | null
         }
       | {
           __typename: 'ComponentSectionsArticles'
@@ -17271,9 +17379,42 @@ export type ArticlesLandingPageSectionFragment = {
 
 export type AlertSectionFragment = {
   __typename?: 'ComponentSectionsAlert'
-  title?: string | null
+  alertTitle?: string | null
   alertText: string
   alertVariant: Enum_Componentsectionsalert_Alertvariant
+  alertLinks?: Array<{
+    __typename?: 'ComponentBlocksCommonLink'
+    label?: string | null
+    url?: string | null
+    analyticsId?: string | null
+    page?: {
+      __typename?: 'Page'
+      documentId: string
+      title: string
+      locale?: string | null
+      path?: string | null
+    } | null
+    article?: {
+      __typename: 'Article'
+      documentId: string
+      slug: string
+      title: string
+      locale?: string | null
+    } | null
+    inbaRelease?: {
+      __typename?: 'InbaRelease'
+      documentId: string
+      title: string
+      slug: string
+    } | null
+    regulation?: {
+      __typename?: 'Regulation'
+      documentId: string
+      slug: string
+      titleText?: string | null
+    } | null
+    asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
+  } | null> | null
 }
 
 export type JobOffersSectionFragment = {
@@ -17331,9 +17472,42 @@ type Sections_ComponentSectionsAccordion_Fragment = {
 
 type Sections_ComponentSectionsAlert_Fragment = {
   __typename: 'ComponentSectionsAlert'
-  title?: string | null
+  alertTitle?: string | null
   alertText: string
   alertVariant: Enum_Componentsectionsalert_Alertvariant
+  alertLinks?: Array<{
+    __typename?: 'ComponentBlocksCommonLink'
+    label?: string | null
+    url?: string | null
+    analyticsId?: string | null
+    page?: {
+      __typename?: 'Page'
+      documentId: string
+      title: string
+      locale?: string | null
+      path?: string | null
+    } | null
+    article?: {
+      __typename: 'Article'
+      documentId: string
+      slug: string
+      title: string
+      locale?: string | null
+    } | null
+    inbaRelease?: {
+      __typename?: 'InbaRelease'
+      documentId: string
+      title: string
+      slug: string
+    } | null
+    regulation?: {
+      __typename?: 'Regulation'
+      documentId: string
+      slug: string
+      titleText?: string | null
+    } | null
+    asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
+  } | null> | null
 }
 
 type Sections_ComponentSectionsArticles_Fragment = {
@@ -20491,10 +20665,14 @@ export const ArticlesLandingPageSectionFragmentDoc = gql`
 `
 export const AlertSectionFragmentDoc = gql`
   fragment AlertSection on ComponentSectionsAlert {
-    title
+    alertTitle
     alertText
     alertVariant
+    alertLinks {
+      ...CommonLink
+    }
   }
+  ${CommonLinkFragmentDoc}
 `
 export const JobOffersSectionFragmentDoc = gql`
   fragment JobOffersSection on ComponentSectionsJobOffers {

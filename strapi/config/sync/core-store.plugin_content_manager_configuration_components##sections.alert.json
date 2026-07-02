@@ -6,9 +6,10 @@
       "filterable": true,
       "searchable": true,
       "pageSize": 10,
-      "mainField": "title",
-      "defaultSortBy": "title",
-      "defaultSortOrder": "ASC"
+      "mainField": "documentId",
+      "defaultSortBy": "documentId",
+      "defaultSortOrder": "ASC",
+      "relationOpenMode": "modal"
     },
     "metadatas": {
       "id": {
@@ -19,7 +20,7 @@
           "sortable": false
         }
       },
-      "title": {
+      "alertTitle": {
         "edit": {
           "label": "Nadpis",
           "description": "",
@@ -28,7 +29,7 @@
           "editable": true
         },
         "list": {
-          "label": "title",
+          "label": "alertTitle",
           "searchable": true,
           "sortable": true
         }
@@ -61,6 +62,21 @@
           "sortable": true
         }
       },
+      "alertLinks": {
+        "edit": {
+          "label": "Odkazy",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "label"
+        },
+        "list": {
+          "label": "alertLinks",
+          "searchable": false,
+          "sortable": false
+        }
+      },
       "documentId": {
         "edit": {},
         "list": {
@@ -74,9 +90,11 @@
       "edit": [
         [
           {
-            "name": "title",
+            "name": "alertTitle",
             "size": 12
-          },
+          }
+        ],
+        [
           {
             "name": "alertText",
             "size": 12
@@ -87,9 +105,15 @@
             "name": "alertVariant",
             "size": 6
           }
+        ],
+        [
+          {
+            "name": "alertLinks",
+            "size": 12
+          }
         ]
       ],
-      "list": ["id", "alertVariant", "title", "alertText"]
+      "list": ["id", "alertVariant", "alertText", "alertTitle"]
     },
     "uid": "sections.alert",
     "isComponent": true
