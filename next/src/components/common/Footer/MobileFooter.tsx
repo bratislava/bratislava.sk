@@ -2,6 +2,7 @@ import { Typography } from '@bratislava/component-library'
 import { Fragment } from 'react'
 
 import { EuFlagSvg } from '@/src/assets/images'
+import CookieConsentLink from '@/src/components/common/CookieConsentLink/CookieConsentLink'
 import Disclosure from '@/src/components/common/Disclosure/Disclosure'
 import DisclosureGroup from '@/src/components/common/Disclosure/DisclosureGroup'
 import DisclosureHeader from '@/src/components/common/Disclosure/DisclosureHeader'
@@ -73,6 +74,7 @@ const MobileFooter = () => {
         </div>
         <HorizontalDivider />
         <div className="flex gap-4">
+          <CookieConsentLink />
           <FooterAccessibilityLink {...footer} />
         </div>
         <HorizontalDivider />
