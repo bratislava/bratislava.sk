@@ -11,9 +11,13 @@ type Props = {
 } & Omit<ModalOverlayProps, 'children' | 'className' | 'style'>
 
 /**
- * From docs: A modal is an overlay element which blocks interaction with elements outside it.
- * Note: Modal only provides the overlay itself. It should be combined with Dialog to create fully accessible modal dialogs. Other overlays such as menus may also be placed in a modal overlay.
+ * A modal is an overlay element which blocks interaction with elements outside it.
  *
+ * Docs: https://react-spectrum.adobe.com/react-aria/Modal.html
+ *
+ * This component only provides the overlay. It must be combined with a `Dialog` to create a fully
+ * accessible modal dialog. Overlay props such as `isDismissable`, `isOpen` and `onOpenChange`
+ * belong on the `ModalOverlay`, never on the inner `Modal`.
  */
 const Modal = forwardRef<HTMLDivElement, Props>(
   (
