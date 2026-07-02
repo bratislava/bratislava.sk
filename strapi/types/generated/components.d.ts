@@ -563,11 +563,18 @@ export interface SectionsAlert extends Struct.ComponentSchema {
     displayName: 'Upozornenie'
   }
   attributes: {
+    alertLinks: Schema.Attribute.Component<'blocks.common-link', true> &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 2
+        },
+        number
+      >
     alertText: Schema.Attribute.Text & Schema.Attribute.Required
+    alertTitle: Schema.Attribute.String
     alertVariant: Schema.Attribute.Enumeration<['warning', 'info', 'success', 'error']> &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<'warning'>
-    title: Schema.Attribute.String
   }
 }
 

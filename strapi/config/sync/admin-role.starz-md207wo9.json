@@ -430,7 +430,8 @@
           "sidebar",
           "parentPage",
           "childPages",
-          "relatedContents"
+          "relatedContents",
+          "hasWaves"
         ],
         "locales": [
           "sk",
@@ -441,7 +442,7 @@
         "plugin::content-manager.document-admin-group-includes-starz"
       ],
       "actionParameters": {},
-      "documentId": "cfb9mqefe8fzk2gvp4q6t8kc",
+      "documentId": "h8oth4lo43y765b5ronaavpf",
       "locale": null
     },
     {
@@ -509,7 +510,8 @@
           "parentPage",
           "childPages",
           "relatedContents",
-          "adminGroups"
+          "adminGroups",
+          "hasWaves"
         ],
         "locales": [
           "sk",
@@ -520,7 +522,7 @@
         "plugin::content-manager.document-admin-group-includes-starz"
       ],
       "actionParameters": {},
-      "documentId": "bsm7slmbu7lsas9zjeldu87g",
+      "documentId": "cfisz5t8ymw5jy7fub7xja5h",
       "locale": null
     },
     {
@@ -554,7 +556,8 @@
           "sidebar",
           "parentPage",
           "childPages",
-          "relatedContents"
+          "relatedContents",
+          "hasWaves"
         ],
         "locales": [
           "sk",
@@ -565,7 +568,7 @@
         "plugin::content-manager.document-admin-group-includes-starz"
       ],
       "actionParameters": {},
-      "documentId": "bg2qe7rykwavb1cbm62cmvn2",
+      "documentId": "x2tfnjc5534m0rk92x12pw77",
       "locale": null
     },
     {
