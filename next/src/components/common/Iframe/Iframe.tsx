@@ -41,6 +41,12 @@ const Iframe = ({
   //   }
   // }, [])
 
+  const allowDownloadsWhitelist = [
+    'https://bloomberg-cities-dashboard-eu-eb6aebd069f7.herokuapp.com/',
+  ]
+
+  const allowDownloads = allowDownloadsWhitelist.some((allowedUrl) => url.startsWith(allowedUrl))
+
   return (
     <div className="flex flex-col gap-4 lg:gap-6">
       <SectionHeader title={title} titleLevel={titleLevel} text={text} />
@@ -59,7 +65,7 @@ const Iframe = ({
         // It may not work if the iframe needs some necessary cookies, or it may block some iframe to render at all.
         // But it seems to work for all of our iframes so far.
         // https://stackoverflow.com/questions/44837450/recommended-method-to-prevent-any-content-inside-iframe-from-setting-cookies
-        sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-forms"
+        sandbox={`allow-scripts allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-forms ${allowDownloads ? 'allow-downloads' : ''}`}
       />
     </div>
   )
