@@ -534,9 +534,12 @@ fragment ArticlesLandingPageSection on ComponentSectionsArticlesLandingPage {
 }
 
 fragment AlertSection on ComponentSectionsAlert {
-  title
+  alertTitle
   alertText
   alertVariant
+  alertLinks {
+    ...CommonLink
+  }
 }
 
 fragment JobOffersSection on ComponentSectionsJobOffers {

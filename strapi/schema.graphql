@@ -1288,26 +1288,29 @@ input ComponentSectionsAccordionInput {
 }
 
 type ComponentSectionsAlert {
+  alertLinks(filters: ComponentBlocksCommonLinkFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksCommonLink]
   alertText: String!
+  alertTitle: String
   alertVariant: ENUM_COMPONENTSECTIONSALERT_ALERTVARIANT!
   id: ID!
-  title: String
 }
 
 input ComponentSectionsAlertFiltersInput {
+  alertLinks: ComponentBlocksCommonLinkFiltersInput
   alertText: StringFilterInput
+  alertTitle: StringFilterInput
   alertVariant: StringFilterInput
   and: [ComponentSectionsAlertFiltersInput]
   not: ComponentSectionsAlertFiltersInput
   or: [ComponentSectionsAlertFiltersInput]
-  title: StringFilterInput
 }
 
 input ComponentSectionsAlertInput {
+  alertLinks: [ComponentBlocksCommonLinkInput]
   alertText: String
+  alertTitle: String
   alertVariant: ENUM_COMPONENTSECTIONSALERT_ALERTVARIANT
   id: ID
-  title: String
 }
 
 type ComponentSectionsArticles {

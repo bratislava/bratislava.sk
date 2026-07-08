@@ -1,14 +1,19 @@
-import { Typography } from '@bratislava/component-library'
+import { Button, Typography } from '@bratislava/component-library'
 
 import { CardTitleLevel } from '@/src/components/cards/getCardTitleLevel'
 import Icon from '@/src/components/common/Icon/Icon'
-import { Enum_Componentsectionsalert_Alertvariant } from '@/src/services/graphql'
+import {
+  CommonLinkFragment,
+  Enum_Componentsectionsalert_Alertvariant,
+} from '@/src/services/graphql'
 import cn from '@/src/utils/cn'
+import { getLinkProps } from '@/src/utils/getLinkProps'
 
 type Props = {
   title?: string | undefined | null
   titleLevel?: CardTitleLevel
   variant?: Enum_Componentsectionsalert_Alertvariant
+  links?: CommonLinkFragment[]
   className?: string
   children: React.ReactNode
 }
@@ -37,6 +42,7 @@ const AlertMessage = ({
   titleLevel,
   variant = Enum_Componentsectionsalert_Alertvariant.Info,
   className,
+  links,
   children,
 }: Props) => {
   return (
@@ -55,13 +61,22 @@ const AlertMessage = ({
       )}
     >
       <div className={cn({ 'max-lg:hidden': !!title })}>{ICON_BY_VARIANT[variant]}</div>
-      <div className="flex flex-col gap-1">
-        {title && (
-          <Typography variant="h6" as={titleLevel}>
-            {title}
-          </Typography>
-        )}
-        {children}
+      <div className="flex flex-col gap-3 lg:gap-4">
+        <div className="flex flex-col gap-1">
+          {title && (
+            <Typography variant="h6" as={titleLevel}>
+              {title}
+            </Typography>
+          )}
+          {children}
+        </div>
+        {links?.length ? (
+          <div className="flex flex-wrap gap-2 lg:gap-5">
+            {links.map((link, index) => (
+              <Button variant="link" {...getLinkProps(link)} key={index} />
+            ))}
+          </div>
+        ) : null}
       </div>
     </div>
   )
