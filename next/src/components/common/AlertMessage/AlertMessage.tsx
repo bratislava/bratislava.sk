@@ -70,13 +70,13 @@ const AlertMessage = ({
           )}
           {children}
         </div>
-        {links?.length && (
+        {links?.length ? (
           <div className="flex flex-wrap gap-2 lg:gap-5">
             {links.map((link, index) => (
-              <Button variant="link" hasLinkIcon={false} {...getLinkProps(link)} key={index} />
+              <Button variant="link" {...getLinkProps(link)} key={index} />
             ))}
           </div>
-        )}
+        ) : null}
       </div>
     </div>
   )
