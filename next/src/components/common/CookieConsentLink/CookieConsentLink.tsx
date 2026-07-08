@@ -1,10 +1,11 @@
 import { Button, Typography } from '@bratislava/component-library'
 import { useTranslation } from 'next-i18next'
 import { useState } from 'react'
+import { useIsClient } from 'usehooks-ts'
 
+import Icon from '@/src/components/common/Icon/Icon'
 import Dialog from '@/src/components/common/ModalDialog/Dialog'
 import Modal from '@/src/components/common/ModalDialog/Modal'
-import { isBrowser } from '@/src/utils/utils'
 
 /**
  * Based on Konto: https://github.com/bratislava/konto.bratislava.sk/blob/ac31f2bc2db8863268e6e2d1ac1ea06631bc40e9/next/src/components/segments/CookieConsentLink/CookieConsentLink.tsx
@@ -30,9 +31,10 @@ import { isBrowser } from '@/src/utils/utils'
 const CookieConsentLink = () => {
   const { t } = useTranslation()
   const [isMissingModalOpen, setIsMissingModalOpen] = useState(false)
+  const isClient = useIsClient()
 
   const showCookiebotConsentBanner = () => {
-    if (!isBrowser()) {
+    if (!isClient) {
       return
     }
 
@@ -57,8 +59,11 @@ const CookieConsentLink = () => {
         modalClassname="h-fit"
       >
         <Dialog title={t('CookieConsentLink.missingScriptModal.title')}>
-          <div className="flex w-full flex-col gap-5 lg:gap-6">
-            <Typography variant="p-small">
+          <div className="flex w-full flex-col items-center gap-5 lg:gap-6">
+            <div className="rounded-full bg-background-warning-soft-default p-4">
+              <Icon name="warning" className="size-6 text-content-warning-default" />
+            </div>
+            <Typography variant="p-small" className="text-center">
               {t('CookieConsentLink.missingScriptModal.description')}
             </Typography>
             <Button fullWidth variant="solid" onPress={() => setIsMissingModalOpen(false)}>

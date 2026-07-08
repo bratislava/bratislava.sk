@@ -8,5 +8,3 @@ export const isPresent = <U>(a: U | null | undefined): a is U => {
 export const isProductionDeployment = () => environment.deployment === 'prod'
 
 export const isServer = () => typeof window === 'undefined'
-
-export const isBrowser = () => !isServer()
