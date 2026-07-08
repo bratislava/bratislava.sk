@@ -1,6 +1,7 @@
 import { Typography } from '@bratislava/component-library'
 
 import { EuFlagSvg } from '@/src/assets/images'
+import CookieConsentLink from '@/src/components/common/CookieConsentLink/CookieConsentLink'
 import HorizontalDivider from '@/src/components/common/Divider/HorizontalDivider'
 import {
   FooterAccessibilityLink,
@@ -56,6 +57,7 @@ const DesktopFooter = () => {
         <HorizontalDivider />
         <div className="flex flex-col gap-y-6 lg:flex-row lg:justify-between">
           <div className="flex justify-center gap-6 lg:justify-normal">
+            <CookieConsentLink />
             <FooterAccessibilityLink {...footer} />
           </div>
           <div className="flex justify-center gap-4 lg:justify-normal">

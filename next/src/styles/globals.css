@@ -738,7 +738,7 @@
 @utility wrapper-focus-ring {
   @apply ring-border-active-primary-default ring-offset-3 outline-none;
   @apply focus-within:[&:has(:focus-visible)]:ring-3 focus-within:[&:has(:focus-visible)]:transition-shadow;
-  @apply [&_*]:focus-visible:ring-0 [&_*]:focus-visible:ring-offset-0 [&_*]:focus-visible:outline-none;
+  @apply **:focus-visible:ring-0! **:focus-visible:ring-offset-0! **:focus-visible:outline-none!;
 }
 
 /* NATIVE STYLE OVERRIDES */
