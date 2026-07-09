@@ -214,7 +214,6 @@ export interface BlocksIframe extends Struct.ComponentSchema {
   }
   attributes: {
     allowGeolocation: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>
-    hasBorder: Schema.Attribute.Boolean
     iframeHeight: Schema.Attribute.String
     iframeTitle: Schema.Attribute.String
     label: Schema.Attribute.String & Schema.Attribute.Required

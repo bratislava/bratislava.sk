@@ -76,20 +76,6 @@
           "sortable": true
         }
       },
-      "hasBorder": {
-        "edit": {
-          "label": "Zobraziť orámovanie (border)",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "hasBorder",
-          "searchable": true,
-          "sortable": true
-        }
-      },
       "allowGeolocation": {
         "edit": {
           "label": "Povoliť geolokáciu",
@@ -114,6 +100,12 @@
       }
     },
     "layouts": {
+      "list": [
+        "id",
+        "url",
+        "iframeTitle",
+        "iframeHeight"
+      ],
       "edit": [
         [
           {
@@ -141,18 +133,11 @@
         ],
         [
           {
-            "name": "hasBorder",
-            "size": 6
-          }
-        ],
-        [
-          {
             "name": "allowGeolocation",
             "size": 6
           }
         ]
-      ],
-      "list": ["id", "url", "iframeTitle", "iframeHeight"]
+      ]
     },
     "uid": "blocks.iframe",
     "isComponent": true

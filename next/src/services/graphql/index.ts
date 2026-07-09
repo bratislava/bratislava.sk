@@ -1057,7 +1057,6 @@ export type ComponentBlocksHomepageHighlightsItemInput = {
 export type ComponentBlocksIframe = {
   __typename?: 'ComponentBlocksIframe'
   allowGeolocation?: Maybe<Scalars['Boolean']['output']>
-  hasBorder?: Maybe<Scalars['Boolean']['output']>
   id: Scalars['ID']['output']
   iframeHeight?: Maybe<Scalars['String']['output']>
   iframeTitle?: Maybe<Scalars['String']['output']>
@@ -1068,7 +1067,6 @@ export type ComponentBlocksIframe = {
 export type ComponentBlocksIframeFiltersInput = {
   allowGeolocation?: InputMaybe<BooleanFilterInput>
   and?: InputMaybe<Array<InputMaybe<ComponentBlocksIframeFiltersInput>>>
-  hasBorder?: InputMaybe<BooleanFilterInput>
   iframeHeight?: InputMaybe<StringFilterInput>
   iframeTitle?: InputMaybe<StringFilterInput>
   label?: InputMaybe<StringFilterInput>
@@ -1079,7 +1077,6 @@ export type ComponentBlocksIframeFiltersInput = {
 
 export type ComponentBlocksIframeInput = {
   allowGeolocation?: InputMaybe<Scalars['Boolean']['input']>
-  hasBorder?: InputMaybe<Scalars['Boolean']['input']>
   id?: InputMaybe<Scalars['ID']['input']>
   iframeHeight?: InputMaybe<Scalars['String']['input']>
   iframeTitle?: InputMaybe<Scalars['String']['input']>
@@ -11557,7 +11554,6 @@ export type PageEntityFragment = {
           url: string
           iframeHeight?: string | null
           iframeTitle?: string | null
-          hasBorder?: boolean | null
           allowGeolocation?: boolean | null
         } | null> | null
       }
@@ -13111,7 +13107,6 @@ export type PageByPathQuery = {
             url: string
             iframeHeight?: string | null
             iframeTitle?: string | null
-            hasBorder?: boolean | null
             allowGeolocation?: boolean | null
           } | null> | null
         }
@@ -14700,7 +14695,6 @@ export type Dev_AllPagesQuery = {
             url: string
             iframeHeight?: string | null
             iframeTitle?: string | null
-            hasBorder?: boolean | null
             allowGeolocation?: boolean | null
           } | null> | null
         }
@@ -17566,7 +17560,6 @@ export type IframeTabsSectionFragment = {
     url: string
     iframeHeight?: string | null
     iframeTitle?: string | null
-    hasBorder?: boolean | null
     allowGeolocation?: boolean | null
   } | null> | null
 }
@@ -18286,7 +18279,6 @@ type Sections_ComponentSectionsIframeTabs_Fragment = {
     url: string
     iframeHeight?: string | null
     iframeTitle?: string | null
-    hasBorder?: boolean | null
     allowGeolocation?: boolean | null
   } | null> | null
 }
@@ -20858,7 +20850,6 @@ export const IframeTabsSectionFragmentDoc = gql`
       url
       iframeHeight
       iframeTitle
-      hasBorder
       allowGeolocation
     }
     titleLevelIframeTabsSection: titleLevel

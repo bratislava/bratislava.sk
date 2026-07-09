@@ -43,9 +43,9 @@ const IframeTabsSection = ({ section }: Props) => {
     }
   }
 
-  const selectedTab = tabs.find((tab) => tab.slug === selectedTabSlug) ?? tabs[0]
+  const selectedIframe = tabs.find((tab) => tab.slug === selectedTabSlug) ?? tabs[0]
 
-  const resolvedIframeHeight = iframesHeight ?? selectedTab.iframeHeight ?? DEFAULT_IFRAME_HEIGHT
+  const resolvedIframeHeight = iframesHeight ?? selectedIframe.iframeHeight ?? DEFAULT_IFRAME_HEIGHT
 
   return (
     <SectionContainer>
@@ -58,7 +58,7 @@ const IframeTabsSection = ({ section }: Props) => {
               aria-label={title ?? t('IframeTabsSection.tagGroup.aria')}
               selectionMode="single"
               disallowEmptySelection
-              selectedKeys={[selectedTab.slug]}
+              selectedKeys={[selectedIframe.slug]}
               onSelectionChange={handleSelection}
             >
               <TagList className="flex flex-wrap gap-2 lg:gap-3">
@@ -77,12 +77,12 @@ const IframeTabsSection = ({ section }: Props) => {
             <div className="flex flex-col">
               <HorizontalDivider />
               <Iframe
-                key={selectedTab.id}
-                url={selectedTab.url}
-                iframeTitle={selectedTab.iframeTitle}
+                key={selectedIframe.id}
+                url={selectedIframe.url}
                 iframeHeight={resolvedIframeHeight}
-                hasBorder={selectedTab.hasBorder ?? true}
-                allowGeolocation={selectedTab.allowGeolocation ?? false}
+                iframeTitle={selectedIframe.iframeTitle}
+                hasBorder={false}
+                allowGeolocation={selectedIframe.allowGeolocation}
               />
             </div>
           </div>

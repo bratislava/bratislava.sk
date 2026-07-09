@@ -20,9 +20,6 @@
     "iframeHeight": {
       "type": "string"
     },
-    "hasBorder": {
-      "type": "boolean"
-    },
     "allowGeolocation": {
       "type": "boolean",
       "default": false

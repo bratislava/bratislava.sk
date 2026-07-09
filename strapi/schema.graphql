@@ -791,7 +791,6 @@ input ComponentBlocksHomepageHighlightsItemInput {
 
 type ComponentBlocksIframe {
   allowGeolocation: Boolean
-  hasBorder: Boolean
   id: ID!
   iframeHeight: String
   iframeTitle: String
@@ -802,7 +801,6 @@ type ComponentBlocksIframe {
 input ComponentBlocksIframeFiltersInput {
   allowGeolocation: BooleanFilterInput
   and: [ComponentBlocksIframeFiltersInput]
-  hasBorder: BooleanFilterInput
   iframeHeight: StringFilterInput
   iframeTitle: StringFilterInput
   label: StringFilterInput
@@ -813,7 +811,6 @@ input ComponentBlocksIframeFiltersInput {
 
 input ComponentBlocksIframeInput {
   allowGeolocation: Boolean
-  hasBorder: Boolean
   id: ID
   iframeHeight: String
   iframeTitle: String

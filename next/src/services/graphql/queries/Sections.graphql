@@ -558,7 +558,6 @@ fragment IframeTabsSection on ComponentSectionsIframeTabs {
     url
     iframeHeight
     iframeTitle
-    hasBorder
     allowGeolocation
   }
   titleLevelIframeTabsSection: titleLevel
