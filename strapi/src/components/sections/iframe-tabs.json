@@ -17,7 +17,9 @@
     "iframes": {
       "type": "component",
       "component": "blocks.iframe",
-      "repeatable": true
+      "repeatable": true,
+      "required": true,
+      "min": 1
     },
     "titleLevel": {
       "type": "enumeration",

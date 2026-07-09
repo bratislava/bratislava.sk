@@ -2499,7 +2499,7 @@ export type ComponentSectionsIframeInput = {
 export type ComponentSectionsIframeTabs = {
   __typename?: 'ComponentSectionsIframeTabs'
   id: Scalars['ID']['output']
-  iframes?: Maybe<Array<Maybe<ComponentBlocksIframe>>>
+  iframes: Array<Maybe<ComponentBlocksIframe>>
   iframesHeight?: Maybe<Scalars['String']['output']>
   text?: Maybe<Scalars['String']['output']>
   title?: Maybe<Scalars['String']['output']>
@@ -11547,7 +11547,7 @@ export type PageEntityFragment = {
         text?: string | null
         iframesHeight?: string | null
         titleLevelIframeTabsSection?: Enum_Componentsectionsiframetabs_Titlelevel | null
-        iframes?: Array<{
+        iframes: Array<{
           __typename?: 'ComponentBlocksIframe'
           id: string
           label: string
@@ -11555,7 +11555,7 @@ export type PageEntityFragment = {
           iframeHeight?: string | null
           iframeTitle?: string | null
           allowGeolocation?: boolean | null
-        } | null> | null
+        } | null>
       }
     | { __typename: 'ComponentSectionsInbaLatestRelease' }
     | {
@@ -13100,7 +13100,7 @@ export type PageByPathQuery = {
           text?: string | null
           iframesHeight?: string | null
           titleLevelIframeTabsSection?: Enum_Componentsectionsiframetabs_Titlelevel | null
-          iframes?: Array<{
+          iframes: Array<{
             __typename?: 'ComponentBlocksIframe'
             id: string
             label: string
@@ -13108,7 +13108,7 @@ export type PageByPathQuery = {
             iframeHeight?: string | null
             iframeTitle?: string | null
             allowGeolocation?: boolean | null
-          } | null> | null
+          } | null>
         }
       | { __typename: 'ComponentSectionsInbaLatestRelease' }
       | {
@@ -14688,7 +14688,7 @@ export type Dev_AllPagesQuery = {
           text?: string | null
           iframesHeight?: string | null
           titleLevelIframeTabsSection?: Enum_Componentsectionsiframetabs_Titlelevel | null
-          iframes?: Array<{
+          iframes: Array<{
             __typename?: 'ComponentBlocksIframe'
             id: string
             label: string
@@ -14696,7 +14696,7 @@ export type Dev_AllPagesQuery = {
             iframeHeight?: string | null
             iframeTitle?: string | null
             allowGeolocation?: boolean | null
-          } | null> | null
+          } | null>
         }
       | { __typename: 'ComponentSectionsInbaLatestRelease' }
       | {
@@ -17553,7 +17553,7 @@ export type IframeTabsSectionFragment = {
   text?: string | null
   iframesHeight?: string | null
   titleLevelIframeTabsSection?: Enum_Componentsectionsiframetabs_Titlelevel | null
-  iframes?: Array<{
+  iframes: Array<{
     __typename?: 'ComponentBlocksIframe'
     id: string
     label: string
@@ -17561,7 +17561,7 @@ export type IframeTabsSectionFragment = {
     iframeHeight?: string | null
     iframeTitle?: string | null
     allowGeolocation?: boolean | null
-  } | null> | null
+  } | null>
 }
 
 type Sections_ComponentSectionsAccordion_Fragment = {
@@ -18272,7 +18272,7 @@ type Sections_ComponentSectionsIframeTabs_Fragment = {
   text?: string | null
   iframesHeight?: string | null
   titleLevelIframeTabsSection?: Enum_Componentsectionsiframetabs_Titlelevel | null
-  iframes?: Array<{
+  iframes: Array<{
     __typename?: 'ComponentBlocksIframe'
     id: string
     label: string
@@ -18280,7 +18280,7 @@ type Sections_ComponentSectionsIframeTabs_Fragment = {
     iframeHeight?: string | null
     iframeTitle?: string | null
     allowGeolocation?: boolean | null
-  } | null> | null
+  } | null>
 }
 
 type Sections_ComponentSectionsInbaLatestRelease_Fragment = {

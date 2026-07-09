@@ -947,7 +947,14 @@ export interface SectionsIframeTabs extends Struct.ComponentSchema {
     displayName: 'Iframes Innovate'
   }
   attributes: {
-    iframes: Schema.Attribute.Component<'blocks.iframe', true>
+    iframes: Schema.Attribute.Component<'blocks.iframe', true> &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 1
+        },
+        number
+      >
     iframesHeight: Schema.Attribute.String
     text: Schema.Attribute.Text
     title: Schema.Attribute.String

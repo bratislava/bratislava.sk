@@ -39,26 +39,27 @@ const IframeTabsSection = ({ section }: Props) => {
     // Only accept a change that keeps a single selected tab, otherwise keep the current one.
     if (newSelection !== 'all' && newSelection.size === 1) {
       const [next] = newSelection
-      void setSelectedTabSlug(next as string)
+      void setSelectedTabSlug(next.toString())
     }
   }
 
-  const selectedIframe = tabs.find((tab) => tab.slug === selectedTabSlug) ?? tabs[0]
+  const selectedIframe = tabs.find((tab) => tab.slug === selectedTabSlug) ?? tabs.at(0)
 
-  const resolvedIframeHeight = iframesHeight ?? selectedIframe.iframeHeight ?? DEFAULT_IFRAME_HEIGHT
+  const resolvedIframeHeight =
+    iframesHeight ?? selectedIframe?.iframeHeight ?? DEFAULT_IFRAME_HEIGHT
 
   return (
     <SectionContainer>
       <div className="flex flex-col gap-4 lg:gap-6">
         <SectionHeader title={title} text={text} titleLevel={titleLevel} />
 
-        {tabs.length > 1 ? (
+        {tabs.length ? (
           <div className="flex flex-col gap-4 lg:gap-6">
             <TagGroup
               aria-label={title ?? t('IframeTabsSection.tagGroup.aria')}
               selectionMode="single"
               disallowEmptySelection
-              selectedKeys={[selectedIframe.slug]}
+              selectedKeys={[selectedIframe?.slug ?? '']}
               onSelectionChange={handleSelection}
             >
               <TagList className="flex flex-wrap gap-2 lg:gap-3">
@@ -74,17 +75,19 @@ const IframeTabsSection = ({ section }: Props) => {
               </TagList>
             </TagGroup>
 
-            <div className="flex flex-col">
-              <HorizontalDivider />
-              <Iframe
-                key={selectedIframe.id}
-                url={selectedIframe.url}
-                iframeHeight={resolvedIframeHeight}
-                iframeTitle={selectedIframe.iframeTitle}
-                hasBorder={false}
-                allowGeolocation={selectedIframe.allowGeolocation}
-              />
-            </div>
+            {selectedIframe ? (
+              <div className="flex flex-col">
+                <HorizontalDivider />
+                <Iframe
+                  key={selectedIframe.id}
+                  url={selectedIframe.url}
+                  iframeHeight={resolvedIframeHeight}
+                  iframeTitle={selectedIframe.iframeTitle}
+                  hasBorder={false}
+                  allowGeolocation={selectedIframe.allowGeolocation}
+                />
+              </div>
+            ) : null}
           </div>
         ) : null}
       </div>

@@ -1926,7 +1926,7 @@ input ComponentSectionsIframeInput {
 
 type ComponentSectionsIframeTabs {
   id: ID!
-  iframes(filters: ComponentBlocksIframeFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksIframe]
+  iframes(filters: ComponentBlocksIframeFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksIframe]!
   iframesHeight: String
   text: String
   title: String
