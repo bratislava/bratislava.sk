@@ -16,6 +16,7 @@ import FaqsSection from '@/src/components/sections/FaqsSection'
 import FileListSection from '@/src/components/sections/FileListSection'
 import GallerySection from '@/src/components/sections/GallerySection'
 import IframeSection from '@/src/components/sections/IframeSection'
+import IframeTabsSection from '@/src/components/sections/IframeTabsSection'
 import InbaLatestReleaseSection from '@/src/components/sections/InbaLatestReleaseSection'
 import InbaReleasesSection from '@/src/components/sections/InbaReleasesSection/InbaReleasesSection'
 import JobOffersSection from '@/src/components/sections/JobOffersSection'
@@ -158,6 +159,9 @@ const SectionContent = ({ section }: { section: SectionsFragment }) => {
 
     case 'ComponentSectionsJobOffers':
       return <JobOffersSection section={section} />
+
+    case 'ComponentSectionsIframeTabs':
+      return <IframeTabsSection section={section} />
 
     default:
       return null
