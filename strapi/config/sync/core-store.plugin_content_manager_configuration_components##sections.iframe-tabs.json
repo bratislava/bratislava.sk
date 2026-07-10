@@ -1,13 +1,13 @@
 {
-  "key": "plugin_content_manager_configuration_components::sections.alert",
+  "key": "plugin_content_manager_configuration_components::sections.iframe-tabs",
   "value": {
     "settings": {
       "bulkable": true,
       "filterable": true,
       "searchable": true,
       "pageSize": 10,
-      "mainField": "documentId",
-      "defaultSortBy": "documentId",
+      "mainField": "title",
+      "defaultSortBy": "title",
       "defaultSortOrder": "ASC",
       "relationOpenMode": "modal"
     },
@@ -20,7 +20,7 @@
           "sortable": false
         }
       },
-      "alertTitle": {
+      "title": {
         "edit": {
           "label": "Nadpis",
           "description": "",
@@ -29,12 +29,12 @@
           "editable": true
         },
         "list": {
-          "label": "alertTitle",
+          "label": "title",
           "searchable": true,
           "sortable": true
         }
       },
-      "alertText": {
+      "text": {
         "edit": {
           "label": "Text",
           "description": "",
@@ -43,37 +43,51 @@
           "editable": true
         },
         "list": {
-          "label": "alertText",
+          "label": "text",
           "searchable": true,
           "sortable": true
         }
       },
-      "alertVariant": {
+      "iframesHeight": {
         "edit": {
-          "label": "Typ upozornenia",
+          "label": "Jednotná výška iframov",
+          "description": "Ak je vyplnené, všetky iframy budú mať danú výšku bez ohľadu na to, akú výšku majú zadanú jednotlivo.",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "iframesHeight",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "iframes": {
+        "edit": {
+          "label": "Taby",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "alertVariant",
-          "searchable": true,
-          "sortable": true
-        }
-      },
-      "alertLinks": {
-        "edit": {
-          "label": "Odkazy",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "alertLinks",
+          "label": "iframes",
           "searchable": false,
           "sortable": false
+        }
+      },
+      "titleLevel": {
+        "edit": {
+          "label": "Úroveň nadpisu sekcie",
+          "description": "Úroveň nadpisu meníme na h3 iba ak je to potrebné sémanticky. Nikdy ju nemeníme len kvôli vizuálnej veľkosti nadpisu.",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "titleLevel",
+          "searchable": true,
+          "sortable": true
         }
       },
       "documentId": {
@@ -86,40 +100,41 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "alertVariant",
-        "alertText",
-        "alertTitle"
-      ],
+      "list": ["id", "title", "text", "iframesHeight"],
       "edit": [
         [
           {
-            "name": "alertTitle",
+            "name": "title",
             "size": 12
           }
         ],
         [
           {
-            "name": "alertText",
+            "name": "text",
             "size": 12
           }
         ],
         [
           {
-            "name": "alertVariant",
+            "name": "iframesHeight",
             "size": 6
           }
         ],
         [
           {
-            "name": "alertLinks",
+            "name": "iframes",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "titleLevel",
             "size": 12
           }
         ]
       ]
     },
-    "uid": "sections.alert",
+    "uid": "sections.iframe-tabs",
     "isComponent": true
   },
   "type": "object",

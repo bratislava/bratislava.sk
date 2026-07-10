@@ -1,13 +1,13 @@
 {
-  "key": "plugin_content_manager_configuration_components::sections.alert",
+  "key": "plugin_content_manager_configuration_components::blocks.iframe",
   "value": {
     "settings": {
       "bulkable": true,
       "filterable": true,
       "searchable": true,
       "pageSize": 10,
-      "mainField": "documentId",
-      "defaultSortBy": "documentId",
+      "mainField": "label",
+      "defaultSortBy": "url",
       "defaultSortOrder": "ASC",
       "relationOpenMode": "modal"
     },
@@ -20,60 +20,74 @@
           "sortable": false
         }
       },
-      "alertTitle": {
+      "label": {
         "edit": {
-          "label": "Nadpis",
+          "label": "Názov tabu",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "alertTitle",
+          "label": "label",
           "searchable": true,
           "sortable": true
         }
       },
-      "alertText": {
+      "url": {
         "edit": {
-          "label": "Text",
+          "label": "Url",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "alertText",
+          "label": "url",
           "searchable": true,
           "sortable": true
         }
       },
-      "alertVariant": {
+      "iframeTitle": {
         "edit": {
-          "label": "Typ upozornenia",
+          "label": "Názov iframu (kvôli prístupnosti)",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "alertVariant",
+          "label": "iframeTitle",
           "searchable": true,
           "sortable": true
         }
       },
-      "alertLinks": {
+      "iframeHeight": {
         "edit": {
-          "label": "Odkazy",
+          "label": "Výška iframu",
+          "description": null,
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "iframeHeight",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "allowGeolocation": {
+        "edit": {
+          "label": "Povoliť geolokáciu",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "alertLinks",
-          "searchable": false,
-          "sortable": false
+          "label": "allowGeolocation",
+          "searchable": true,
+          "sortable": true
         }
       },
       "documentId": {
@@ -88,38 +102,44 @@
     "layouts": {
       "list": [
         "id",
-        "alertVariant",
-        "alertText",
-        "alertTitle"
+        "url",
+        "iframeTitle",
+        "iframeHeight"
       ],
       "edit": [
         [
           {
-            "name": "alertTitle",
+            "name": "label",
             "size": 12
           }
         ],
         [
           {
-            "name": "alertText",
+            "name": "url",
             "size": 12
           }
         ],
         [
           {
-            "name": "alertVariant",
+            "name": "iframeHeight",
             "size": 6
           }
         ],
         [
           {
-            "name": "alertLinks",
-            "size": 12
+            "name": "iframeTitle",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "allowGeolocation",
+            "size": 6
           }
         ]
       ]
     },
-    "uid": "sections.alert",
+    "uid": "blocks.iframe",
     "isComponent": true
   },
   "type": "object",

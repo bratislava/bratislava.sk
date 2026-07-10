@@ -9,7 +9,8 @@
       "pageSize": 10,
       "mainField": "url",
       "defaultSortBy": "url",
-      "defaultSortOrder": "ASC"
+      "defaultSortOrder": "ASC",
+      "relationOpenMode": "modal"
     },
     "metadatas": {
       "id": {
@@ -64,7 +65,7 @@
       },
       "iframeTitle": {
         "edit": {
-          "label": "iframeTitle",
+          "label": "Názov iframu (kvôli prístupnosti)",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -78,7 +79,7 @@
       },
       "iframeHeight": {
         "edit": {
-          "label": "iframeHeight",
+          "label": "Výška iframu",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -106,7 +107,7 @@
       },
       "allowGeolocation": {
         "edit": {
-          "label": "allowGeolocation",
+          "label": "Povoliť geolokáciu",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -142,11 +143,6 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "url",
-        "iframeTitle"
-      ],
       "edit": [
         [
           {
@@ -169,25 +165,7 @@
         [
           {
             "name": "iframeHeight",
-            "size": 4
-          }
-        ],
-        [
-          {
-            "name": "hasBorder",
-            "size": 4
-          }
-        ],
-        [
-          {
-            "name": "allowGeolocation",
-            "size": 4
-          }
-        ],
-        [
-          {
-            "name": "titleLevel",
-            "size": 12
+            "size": 6
           }
         ],
         [
@@ -195,8 +173,27 @@
             "name": "iframeTitle",
             "size": 6
           }
+        ],
+        [
+          {
+            "name": "hasBorder",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "allowGeolocation",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "titleLevel",
+            "size": 12
+          }
         ]
-      ]
+      ],
+      "list": ["id", "url", "iframeTitle", "titleLevel"]
     },
     "isComponent": true
   },

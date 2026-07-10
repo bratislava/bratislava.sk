@@ -1054,6 +1054,36 @@ export type ComponentBlocksHomepageHighlightsItemInput = {
   url?: InputMaybe<Scalars['String']['input']>
 }
 
+export type ComponentBlocksIframe = {
+  __typename?: 'ComponentBlocksIframe'
+  allowGeolocation?: Maybe<Scalars['Boolean']['output']>
+  id: Scalars['ID']['output']
+  iframeHeight?: Maybe<Scalars['String']['output']>
+  iframeTitle?: Maybe<Scalars['String']['output']>
+  label: Scalars['String']['output']
+  url: Scalars['String']['output']
+}
+
+export type ComponentBlocksIframeFiltersInput = {
+  allowGeolocation?: InputMaybe<BooleanFilterInput>
+  and?: InputMaybe<Array<InputMaybe<ComponentBlocksIframeFiltersInput>>>
+  iframeHeight?: InputMaybe<StringFilterInput>
+  iframeTitle?: InputMaybe<StringFilterInput>
+  label?: InputMaybe<StringFilterInput>
+  not?: InputMaybe<ComponentBlocksIframeFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<ComponentBlocksIframeFiltersInput>>>
+  url?: InputMaybe<StringFilterInput>
+}
+
+export type ComponentBlocksIframeInput = {
+  allowGeolocation?: InputMaybe<Scalars['Boolean']['input']>
+  id?: InputMaybe<Scalars['ID']['input']>
+  iframeHeight?: InputMaybe<Scalars['String']['input']>
+  iframeTitle?: InputMaybe<Scalars['String']['input']>
+  label?: InputMaybe<Scalars['String']['input']>
+  url?: InputMaybe<Scalars['String']['input']>
+}
+
 export type ComponentBlocksInBa = {
   __typename?: 'ComponentBlocksInBa'
   content?: Maybe<Scalars['String']['output']>
@@ -2466,6 +2496,42 @@ export type ComponentSectionsIframeInput = {
   url?: InputMaybe<Scalars['String']['input']>
 }
 
+export type ComponentSectionsIframeTabs = {
+  __typename?: 'ComponentSectionsIframeTabs'
+  id: Scalars['ID']['output']
+  iframes: Array<Maybe<ComponentBlocksIframe>>
+  iframesHeight?: Maybe<Scalars['String']['output']>
+  text?: Maybe<Scalars['String']['output']>
+  title?: Maybe<Scalars['String']['output']>
+  titleLevel?: Maybe<Enum_Componentsectionsiframetabs_Titlelevel>
+}
+
+export type ComponentSectionsIframeTabsIframesArgs = {
+  filters?: InputMaybe<ComponentBlocksIframeFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type ComponentSectionsIframeTabsFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentSectionsIframeTabsFiltersInput>>>
+  iframes?: InputMaybe<ComponentBlocksIframeFiltersInput>
+  iframesHeight?: InputMaybe<StringFilterInput>
+  not?: InputMaybe<ComponentSectionsIframeTabsFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<ComponentSectionsIframeTabsFiltersInput>>>
+  text?: InputMaybe<StringFilterInput>
+  title?: InputMaybe<StringFilterInput>
+  titleLevel?: InputMaybe<StringFilterInput>
+}
+
+export type ComponentSectionsIframeTabsInput = {
+  id?: InputMaybe<Scalars['ID']['input']>
+  iframes?: InputMaybe<Array<InputMaybe<ComponentBlocksIframeInput>>>
+  iframesHeight?: InputMaybe<Scalars['String']['input']>
+  text?: InputMaybe<Scalars['String']['input']>
+  title?: InputMaybe<Scalars['String']['input']>
+  titleLevel?: InputMaybe<Enum_Componentsectionsiframetabs_Titlelevel>
+}
+
 export type ComponentSectionsInbaLatestRelease = {
   __typename?: 'ComponentSectionsInbaLatestRelease'
   id: Scalars['ID']['output']
@@ -3404,6 +3470,11 @@ export enum Enum_Componentsectionsgallery_Titlelevel {
   H3 = 'h3',
 }
 
+export enum Enum_Componentsectionsiframetabs_Titlelevel {
+  H2 = 'h2',
+  H3 = 'h3',
+}
+
 export enum Enum_Componentsectionsiframe_Titlelevel {
   H2 = 'h2',
   H3 = 'h3',
@@ -3921,6 +3992,7 @@ export type GenericMorph =
   | ComponentBlocksFileItem
   | ComponentBlocksFooterColumn
   | ComponentBlocksHomepageHighlightsItem
+  | ComponentBlocksIframe
   | ComponentBlocksInBa
   | ComponentBlocksNumbersOverviewItem
   | ComponentBlocksNumericalListItem
@@ -3963,6 +4035,7 @@ export type GenericMorph =
   | ComponentSectionsHomepageMayorAndCouncil
   | ComponentSectionsHomepageTabs
   | ComponentSectionsIframe
+  | ComponentSectionsIframeTabs
   | ComponentSectionsInbaLatestRelease
   | ComponentSectionsInbaReleases
   | ComponentSectionsJobOffers
@@ -5103,6 +5176,7 @@ export type PageSectionsDynamicZone =
   | ComponentSectionsFileList
   | ComponentSectionsGallery
   | ComponentSectionsIframe
+  | ComponentSectionsIframeTabs
   | ComponentSectionsInbaLatestRelease
   | ComponentSectionsInbaReleases
   | ComponentSectionsJobOffers
@@ -7480,6 +7554,7 @@ export type AllFilesQuery = {
           medias: Array<{ __typename?: 'UploadFile'; documentId: string } | null>
         }
       | { __typename?: 'ComponentSectionsIframe' }
+      | { __typename?: 'ComponentSectionsIframeTabs' }
       | { __typename?: 'ComponentSectionsInbaLatestRelease' }
       | { __typename?: 'ComponentSectionsInbaReleases' }
       | { __typename?: 'ComponentSectionsJobOffers' }
@@ -11466,6 +11541,22 @@ export type PageEntityFragment = {
         allowGeolocation?: boolean | null
         titleLevelIframeSection?: Enum_Componentsectionsiframe_Titlelevel | null
       }
+    | {
+        __typename: 'ComponentSectionsIframeTabs'
+        title?: string | null
+        text?: string | null
+        iframesHeight?: string | null
+        titleLevelIframeTabsSection?: Enum_Componentsectionsiframetabs_Titlelevel | null
+        iframes: Array<{
+          __typename?: 'ComponentBlocksIframe'
+          id: string
+          label: string
+          url: string
+          iframeHeight?: string | null
+          iframeTitle?: string | null
+          allowGeolocation?: boolean | null
+        } | null>
+      }
     | { __typename: 'ComponentSectionsInbaLatestRelease' }
     | {
         __typename: 'ComponentSectionsInbaReleases'
@@ -13002,6 +13093,22 @@ export type PageByPathQuery = {
           hasBorder?: boolean | null
           allowGeolocation?: boolean | null
           titleLevelIframeSection?: Enum_Componentsectionsiframe_Titlelevel | null
+        }
+      | {
+          __typename: 'ComponentSectionsIframeTabs'
+          title?: string | null
+          text?: string | null
+          iframesHeight?: string | null
+          titleLevelIframeTabsSection?: Enum_Componentsectionsiframetabs_Titlelevel | null
+          iframes: Array<{
+            __typename?: 'ComponentBlocksIframe'
+            id: string
+            label: string
+            url: string
+            iframeHeight?: string | null
+            iframeTitle?: string | null
+            allowGeolocation?: boolean | null
+          } | null>
         }
       | { __typename: 'ComponentSectionsInbaLatestRelease' }
       | {
@@ -14574,6 +14681,22 @@ export type Dev_AllPagesQuery = {
           hasBorder?: boolean | null
           allowGeolocation?: boolean | null
           titleLevelIframeSection?: Enum_Componentsectionsiframe_Titlelevel | null
+        }
+      | {
+          __typename: 'ComponentSectionsIframeTabs'
+          title?: string | null
+          text?: string | null
+          iframesHeight?: string | null
+          titleLevelIframeTabsSection?: Enum_Componentsectionsiframetabs_Titlelevel | null
+          iframes: Array<{
+            __typename?: 'ComponentBlocksIframe'
+            id: string
+            label: string
+            url: string
+            iframeHeight?: string | null
+            iframeTitle?: string | null
+            allowGeolocation?: boolean | null
+          } | null>
         }
       | { __typename: 'ComponentSectionsInbaLatestRelease' }
       | {
@@ -17424,6 +17547,23 @@ export type JobOffersSectionFragment = {
   titleLevel?: Enum_Componentsectionsjoboffers_Titlelevel | null
 }
 
+export type IframeTabsSectionFragment = {
+  __typename?: 'ComponentSectionsIframeTabs'
+  title?: string | null
+  text?: string | null
+  iframesHeight?: string | null
+  titleLevelIframeTabsSection?: Enum_Componentsectionsiframetabs_Titlelevel | null
+  iframes: Array<{
+    __typename?: 'ComponentBlocksIframe'
+    id: string
+    label: string
+    url: string
+    iframeHeight?: string | null
+    iframeTitle?: string | null
+    allowGeolocation?: boolean | null
+  } | null>
+}
+
 type Sections_ComponentSectionsAccordion_Fragment = {
   __typename: 'ComponentSectionsAccordion'
   title?: string | null
@@ -18126,6 +18266,23 @@ type Sections_ComponentSectionsIframe_Fragment = {
   titleLevelIframeSection?: Enum_Componentsectionsiframe_Titlelevel | null
 }
 
+type Sections_ComponentSectionsIframeTabs_Fragment = {
+  __typename: 'ComponentSectionsIframeTabs'
+  title?: string | null
+  text?: string | null
+  iframesHeight?: string | null
+  titleLevelIframeTabsSection?: Enum_Componentsectionsiframetabs_Titlelevel | null
+  iframes: Array<{
+    __typename?: 'ComponentBlocksIframe'
+    id: string
+    label: string
+    url: string
+    iframeHeight?: string | null
+    iframeTitle?: string | null
+    allowGeolocation?: boolean | null
+  } | null>
+}
+
 type Sections_ComponentSectionsInbaLatestRelease_Fragment = {
   __typename: 'ComponentSectionsInbaLatestRelease'
 }
@@ -18804,6 +18961,7 @@ export type SectionsFragment =
   | Sections_ComponentSectionsFileList_Fragment
   | Sections_ComponentSectionsGallery_Fragment
   | Sections_ComponentSectionsIframe_Fragment
+  | Sections_ComponentSectionsIframeTabs_Fragment
   | Sections_ComponentSectionsInbaLatestRelease_Fragment
   | Sections_ComponentSectionsInbaReleases_Fragment
   | Sections_ComponentSectionsJobOffers_Fragment
@@ -20681,6 +20839,22 @@ export const JobOffersSectionFragmentDoc = gql`
     titleLevel
   }
 `
+export const IframeTabsSectionFragmentDoc = gql`
+  fragment IframeTabsSection on ComponentSectionsIframeTabs {
+    title
+    text
+    iframesHeight
+    iframes {
+      id
+      label
+      url
+      iframeHeight
+      iframeTitle
+      allowGeolocation
+    }
+    titleLevelIframeTabsSection: titleLevel
+  }
+`
 export const SectionsFragmentDoc = gql`
   fragment Sections on PageSectionsDynamicZone {
     __typename
@@ -20792,6 +20966,9 @@ export const SectionsFragmentDoc = gql`
     ... on ComponentSectionsJobOffers {
       ...JobOffersSection
     }
+    ... on ComponentSectionsIframeTabs {
+      ...IframeTabsSection
+    }
   }
   ${DividerSectionFragmentDoc}
   ${TextWithImageSectionFragmentDoc}
@@ -20829,6 +21006,7 @@ export const SectionsFragmentDoc = gql`
   ${ArticlesLandingPageSectionFragmentDoc}
   ${AlertSectionFragmentDoc}
   ${JobOffersSectionFragmentDoc}
+  ${IframeTabsSectionFragmentDoc}
 `
 export const SidebarsFragmentDoc = gql`
   fragment Sidebars on PageSidebarDynamicZone {

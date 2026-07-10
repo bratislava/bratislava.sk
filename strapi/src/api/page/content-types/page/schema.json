@@ -91,16 +91,7 @@
       },
       "required": true,
       "default": "red",
-      "enum": [
-        "red",
-        "blue",
-        "green",
-        "yellow",
-        "purple",
-        "brown",
-        "starz",
-        "grey"
-      ]
+      "enum": ["red", "blue", "green", "yellow", "purple", "brown", "starz", "grey"]
     },
     "pageBackgroundImage": {
       "type": "media",
@@ -111,12 +102,7 @@
       },
       "multiple": false,
       "required": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
+      "allowedTypes": ["images", "files", "videos", "audios"]
     },
     "headerLinks": {
       "type": "component",
@@ -135,10 +121,7 @@
           "localized": true
         }
       },
-      "components": [
-        "header-sections.event",
-        "header-sections.facility"
-      ],
+      "components": ["header-sections.event", "header-sections.facility"],
       "max": 1
     },
     "subnavigation": {
@@ -171,6 +154,7 @@
         "sections.faqs",
         "sections.gallery",
         "sections.iframe",
+        "sections.iframe-tabs",
         "sections.inba-latest-release",
         "sections.inba-releases",
         "sections.contacts-section",
@@ -206,9 +190,7 @@
           "localized": true
         }
       },
-      "components": [
-        "sidebars.empty-sidebar"
-      ],
+      "components": ["sidebars.empty-sidebar"],
       "max": 1
     },
     "parentPage": {

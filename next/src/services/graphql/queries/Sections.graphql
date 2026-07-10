@@ -548,6 +548,21 @@ fragment JobOffersSection on ComponentSectionsJobOffers {
   titleLevel
 }
 
+fragment IframeTabsSection on ComponentSectionsIframeTabs {
+  title
+  text
+  iframesHeight
+  iframes {
+    id
+    label
+    url
+    iframeHeight
+    iframeTitle
+    allowGeolocation
+  }
+  titleLevelIframeTabsSection: titleLevel
+}
+
 fragment Sections on PageSectionsDynamicZone {
   __typename
 
@@ -697,6 +712,10 @@ fragment Sections on PageSectionsDynamicZone {
 
   ... on ComponentSectionsJobOffers {
     ...JobOffersSection
+  }
+
+  ... on ComponentSectionsIframeTabs {
+    ...IframeTabsSection
   }
 }
 

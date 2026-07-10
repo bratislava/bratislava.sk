@@ -1,0 +1,34 @@
+{
+  "collectionName": "components_sections_iframe_tabs",
+  "info": {
+    "displayName": "Iframes Innovate"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "text": {
+      "type": "text"
+    },
+    "iframesHeight": {
+      "type": "string"
+    },
+    "iframes": {
+      "type": "component",
+      "component": "blocks.iframe",
+      "repeatable": true,
+      "required": true,
+      "min": 1
+    },
+    "titleLevel": {
+      "type": "enumeration",
+      "default": "h2",
+      "enum": [
+        "h2",
+        "h3"
+      ]
+    }
+  },
+  "config": {}
+}

@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_blocks_iframes",
+  "info": {
+    "displayName": "iframe"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string",
+      "required": true
+    },
+    "url": {
+      "type": "string",
+      "default": "https://www.google.com",
+      "required": true
+    },
+    "iframeTitle": {
+      "type": "string"
+    },
+    "iframeHeight": {
+      "type": "string"
+    },
+    "allowGeolocation": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "config": {}
+}

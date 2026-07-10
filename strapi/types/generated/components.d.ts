@@ -207,6 +207,22 @@ export interface BlocksHomepageHighlightsItem extends Struct.ComponentSchema {
   }
 }
 
+export interface BlocksIframe extends Struct.ComponentSchema {
+  collectionName: 'components_blocks_iframes'
+  info: {
+    displayName: 'iframe'
+  }
+  attributes: {
+    allowGeolocation: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>
+    iframeHeight: Schema.Attribute.String
+    iframeTitle: Schema.Attribute.String
+    label: Schema.Attribute.String & Schema.Attribute.Required
+    url: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'https://www.google.com'>
+  }
+}
+
 export interface BlocksInBa extends Struct.ComponentSchema {
   collectionName: 'components_blocks_in_bas'
   info: {
@@ -925,6 +941,27 @@ export interface SectionsIframe extends Struct.ComponentSchema {
   }
 }
 
+export interface SectionsIframeTabs extends Struct.ComponentSchema {
+  collectionName: 'components_sections_iframe_tabs'
+  info: {
+    displayName: 'Iframes Innovate'
+  }
+  attributes: {
+    iframes: Schema.Attribute.Component<'blocks.iframe', true> &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetMinMax<
+        {
+          min: 1
+        },
+        number
+      >
+    iframesHeight: Schema.Attribute.String
+    text: Schema.Attribute.Text
+    title: Schema.Attribute.String
+    titleLevel: Schema.Attribute.Enumeration<['h2', 'h3']> & Schema.Attribute.DefaultTo<'h2'>
+  }
+}
+
 export interface SectionsInbaLatestRelease extends Struct.ComponentSchema {
   collectionName: 'components_sections_inba_latest_releases'
   info: {
@@ -1297,6 +1334,7 @@ declare module '@strapi/strapi' {
       'blocks.file-item': BlocksFileItem
       'blocks.footer-column': BlocksFooterColumn
       'blocks.homepage-highlights-item': BlocksHomepageHighlightsItem
+      'blocks.iframe': BlocksIframe
       'blocks.in-ba': BlocksInBa
       'blocks.numbers-overview-item': BlocksNumbersOverviewItem
       'blocks.numerical-list-item': BlocksNumericalListItem
@@ -1339,6 +1377,7 @@ declare module '@strapi/strapi' {
       'sections.homepage-mayor-and-council': SectionsHomepageMayorAndCouncil
       'sections.homepage-tabs': SectionsHomepageTabs
       'sections.iframe': SectionsIframe
+      'sections.iframe-tabs': SectionsIframeTabs
       'sections.inba-latest-release': SectionsInbaLatestRelease
       'sections.inba-releases': SectionsInbaReleases
       'sections.job-offers': SectionsJobOffers
