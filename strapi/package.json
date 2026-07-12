@@ -36,7 +36,7 @@
     "styled-components": "6.3.12"
   },
   "devDependencies": {
-    "@babel/core": "7.26.0",
+    "@babel/core": "7.29.6",
     "@babel/eslint-parser": "7.28.6",
     "eslint": "8.57.0",
     "eslint-config-prettier": "8.10.0",
