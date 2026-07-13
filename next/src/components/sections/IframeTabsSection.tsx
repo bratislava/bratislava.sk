@@ -1,13 +1,14 @@
+import { Typography } from '@bratislava/component-library'
 import slugify from '@sindresorhus/slugify'
 import { parseAsString, useQueryState } from 'nuqs'
-import { Selection, TagGroup, TagList } from 'react-aria-components'
+import { Key, Tab, TabList, TabPanel, Tabs } from 'react-aria-components'
 
-import Chip from '@/src/components/common/Chip/Chip'
 import HorizontalDivider from '@/src/components/common/Divider/HorizontalDivider'
 import Iframe from '@/src/components/common/Iframe/Iframe'
 import SectionContainer from '@/src/components/layouts/SectionContainer'
 import SectionHeader from '@/src/components/layouts/SectionHeader'
 import { IframeTabsSectionFragment } from '@/src/services/graphql'
+import cn from '@/src/utils/cn'
 import { getCategoryColorLocalStyle } from '@/src/utils/colors'
 import { isDefined } from '@/src/utils/isDefined'
 import { useTranslation } from '@/src/utils/useTranslation'
@@ -25,7 +26,7 @@ const IframeTabsSection = ({ section }: Props) => {
   const { title, text, iframesHeight, iframes, titleLevelIframeTabsSection: titleLevel } = section
 
   // Add slugs to tabs based on label, so url query params are readable
-  const tabs = (iframes?.filter(isDefined) ?? []).map((iframe) => ({
+  const tabs = iframes.filter(isDefined).map((iframe) => ({
     ...iframe,
     slug: slugify(iframe.label),
   }))
@@ -35,18 +36,14 @@ const IframeTabsSection = ({ section }: Props) => {
     parseAsString.withDefault(tabs[0]?.slug ?? ''),
   )
 
-  const handleSelection = (newSelection: Selection) => {
-    // Only accept a change that keeps a single selected tab, otherwise keep the current one.
-    if (newSelection !== 'all' && newSelection.size === 1) {
-      const [next] = newSelection
-      void setSelectedTabSlug(next.toString())
-    }
+  // Fall back to the first tab when the query param doesn't match any known tab.
+  const selectedTab = tabs.find((tab) => tab.slug === selectedTabSlug) ?? tabs.at(0)
+
+  const handleSelectionChange = (key: Key) => {
+    void setSelectedTabSlug(key.toString())
   }
 
-  const selectedIframe = tabs.find((tab) => tab.slug === selectedTabSlug) ?? tabs.at(0)
-
-  const resolvedIframeHeight =
-    iframesHeight ?? selectedIframe?.iframeHeight ?? DEFAULT_IFRAME_HEIGHT
+  const resolvedIframeHeight = iframesHeight ?? selectedTab?.iframeHeight ?? DEFAULT_IFRAME_HEIGHT
 
   return (
     <SectionContainer>
@@ -54,41 +51,46 @@ const IframeTabsSection = ({ section }: Props) => {
         <SectionHeader title={title} text={text} titleLevel={titleLevel} />
 
         {tabs.length ? (
-          <div className="flex flex-col gap-4 lg:gap-6">
-            <TagGroup
-              aria-label={title ?? t('IframeTabsSection.tagGroup.aria')}
-              selectionMode="single"
-              disallowEmptySelection
-              selectedKeys={[selectedIframe?.slug ?? '']}
-              onSelectionChange={handleSelection}
+          <Tabs
+            selectedKey={selectedTab?.slug}
+            onSelectionChange={handleSelectionChange}
+            className="flex flex-col gap-4 lg:gap-6"
+          >
+            <TabList
+              aria-label={t('IframeTabsSection.tabList.aria')}
+              className="flex flex-wrap gap-2 lg:gap-3"
             >
-              <TagList className="flex flex-wrap gap-2 lg:gap-3">
-                {tabs.map((tab) => (
-                  <Chip
-                    key={tab.id}
-                    id={tab.slug}
-                    style={getCategoryColorLocalStyle({ category: 'grey' })}
-                  >
-                    {tab.label}
-                  </Chip>
-                ))}
-              </TagList>
-            </TagGroup>
+              {tabs.map((tab) => (
+                <Tab
+                  key={tab.id}
+                  id={tab.slug}
+                  style={getCategoryColorLocalStyle({ category: 'grey' })}
+                  className={cn(
+                    'base-focus-ring',
+                    'flex shrink-0 cursor-pointer items-center rounded-lg border px-3 py-1.5 lg:px-4 lg:py-2.5',
+                    'bg-background-passive-base text-content-passive-secondary',
+                    'hover:border-border-active-hover',
+                    'selected:border-background-active-primary-pressed selected:bg-background-active-primary-pressed selected:text-content-active-primary-inverted-default',
+                  )}
+                >
+                  <Typography variant="p-small">{tab.label}</Typography>
+                </Tab>
+              ))}
+            </TabList>
 
-            {selectedIframe ? (
-              <div className="flex flex-col">
+            {tabs.map((tab) => (
+              <TabPanel key={tab.id} id={tab.slug} className="flex flex-col">
                 <HorizontalDivider />
                 <Iframe
-                  key={selectedIframe.id}
-                  url={selectedIframe.url}
+                  url={tab.url}
                   iframeHeight={resolvedIframeHeight}
-                  iframeTitle={selectedIframe.iframeTitle}
+                  iframeTitle={tab.iframeTitle}
                   hasBorder={false}
-                  allowGeolocation={selectedIframe.allowGeolocation}
+                  allowGeolocation={tab.allowGeolocation}
                 />
-              </div>
-            ) : null}
-          </div>
+              </TabPanel>
+            ))}
+          </Tabs>
         ) : null}
       </div>
     </SectionContainer>
