@@ -89,7 +89,7 @@
   "HomepageTabs.tabs.LatestNews": "Latest News",
   "HomepageTabs.tabs.OfficialBoard": "Official noticeboard",
   "HomepageTabs.tabs.RoadClosures": "Road closures",
-  "IframeTabsSection.tagGroup.aria": "Iframe tabs",
+  "IframeTabsSection.tabList.aria": "Iframe tabs",
   "InbaLatestReleaseSection.allReleases": "All releases",
   "InbaLatestReleaseSection.latestRelease": "Latest release",
   "InbaLatestReleaseSection.notFound": "No release found",
