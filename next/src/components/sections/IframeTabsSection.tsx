@@ -79,7 +79,15 @@ const IframeTabsSection = ({ section }: Props) => {
             </TabList>
 
             {tabs.map((tab) => (
-              <TabPanel key={tab.id} id={tab.slug} className="flex flex-col">
+              <TabPanel
+                key={tab.id}
+                id={tab.slug}
+                // Force mount all tabs, so all iframes are loaded when mounted, and stay mounted and loaded on tab change.
+                // According to docs, tabs must be styled (hidden) manually, when using shouldForceMount
+                // https://react-aria.adobe.com/Tabs#tabpanel
+                shouldForceMount
+                className={cn('flex flex-col', { hidden: tab.slug !== selectedTab?.slug })}
+              >
                 <HorizontalDivider />
                 <Iframe
                   url={tab.url}

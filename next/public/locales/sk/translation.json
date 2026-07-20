@@ -97,7 +97,6 @@
   "HomepageTabs.tabs.LatestNews": "Aktuality",
   "HomepageTabs.tabs.OfficialBoard": "Úradná tabuľa",
   "HomepageTabs.tabs.RoadClosures": "Rozkopávky",
-  "IframeTabsSection.status.showingContent": "Zobrazuje sa obsah: {{label}}",
   "IframeTabsSection.tabList.aria": "Záložky iframe",
   "InbaLatestReleaseSection.allReleases": "Všetky vydania",
   "InbaLatestReleaseSection.latestRelease": "Najnovšie vydanie",
