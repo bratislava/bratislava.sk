@@ -65,8 +65,6 @@ PGPASSWORD=<local_password> pg_restore --clean --no-owner \
   -h localhost -p 5432 -U <local_user> -d <local_db> strapi-staging.dump
 ```
 
-> **Note:** `strapi-cnpg` is shared — only ever dump the `bratislava` database, and never write to another web's database. Treat **production** dumps as sensitive.
-
 ## Build
 
 Build your admin panel. [Learn more](https://docs.strapi.io/developer-docs/latest/developer-resources/cli/CLI.html#strapi-build)
