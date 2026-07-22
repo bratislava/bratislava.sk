@@ -40,7 +40,7 @@ kubectl --context staging get secret strapi-cnpg-bratislava-credentials -n stand
 kubectl --context staging get secret strapi-cnpg-bratislava-credentials -n standalone -o jsonpath='{.data.DATABASE_PASSWORD}' | base64 -d; echo
 ```
 
-> Prefer a GUI? In a tool such as [OpenLens](https://github.com/MuhammedKalkan/OpenLens) (or Lens) pick the cluster/context, open **Config → Secrets** in the `standalone` namespace, find `strapi-cnpg-bratislava-credentials` and reveal `DATABASE_USERNAME` / `DATABASE_NAME` / `DATABASE_PASSWORD`.
+> Prefer a GUI? In a tool such as [FreeLens](https://github.com/freelensapp/freelens) (or Lens) pick the cluster/context, open **Config → Secrets** in the `standalone` namespace, find `strapi-cnpg-bratislava-credentials` and reveal `DATABASE_USERNAME` / `DATABASE_NAME` / `DATABASE_PASSWORD`.
 
 ### 3. Connect
 
