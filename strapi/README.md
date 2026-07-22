@@ -11,6 +11,55 @@ cp .env.example .env.local
 
 You need postgres running locally (with correct credentials & database available). The easiest way to get a postgres db with the right credentials up&running is via `docker-compose.yml` file. Check the readme in the root of this repo.
 
+## Connecting to the deployed database (staging / dev / prod)
+
+The deployed Strapi stores its data in an on-cluster [CloudNativePG (CNPG)](https://cloudnative-pg.io/) Postgres. Unlike a per-app DB, this uses a **shared** CNPG cluster `strapi-cnpg` in the `standalone` namespace that hosts one database per Bratislava Strapi backend (`bratislava`, `city-foundation`, `city-gallery`, `city-library`, `general`, `marianum`, `olo`). This repo's database is **`bratislava`**.
+
+The three clusters (`development`, `staging`, `production`) are laid out identically, so the steps below are the same for every environment — you only switch the kube context. Examples use **staging**.
+
+### 1. Log in to the cluster
+
+Kube context / login is handled by the [`k8-helpers`](https://github.com/bratislava/k8-helpers) aliases:
+
+```bash
+k8stage   # staging   (use k8dev / k8prod for the other clusters)
+```
+
+### 2. Read the database credentials
+
+Each web's credentials live in a `strapi-cnpg-<web>-credentials` secret in the `standalone` namespace — for this repo, `strapi-cnpg-bratislava-credentials`:
+
+```bash
+NS=standalone
+kubectl get secret strapi-cnpg-bratislava-credentials -n $NS -o jsonpath='{.data.DATABASE_USERNAME}' | base64 -d; echo
+kubectl get secret strapi-cnpg-bratislava-credentials -n $NS -o jsonpath='{.data.DATABASE_NAME}'     | base64 -d; echo
+kubectl get secret strapi-cnpg-bratislava-credentials -n $NS -o jsonpath='{.data.DATABASE_PASSWORD}' | base64 -d; echo
+```
+
+### 3. Connect
+
+Port-forward the shared cluster's read-write service to a local port. Use **5433** so it doesn't clash with the local docker Postgres on 5432:
+
+```bash
+kubectl port-forward -n standalone svc/strapi-cnpg-rw 5433:5432
+# then, in another shell (user / db / password from step 2):
+PGPASSWORD=<password> psql -h localhost -p 5433 -U <user> -d <db>
+```
+
+### 4. Dump it and restore locally
+
+```bash
+# dump (custom format) while the port-forward from step 3 is running
+PGPASSWORD=<password> pg_dump -h localhost -p 5433 -U <user> -d <db> -Fc -f strapi-staging.dump
+
+# start a local Postgres (see root readme): docker compose up postgres
+# restore into it (creds/db from your .env.local, default port 5432)
+PGPASSWORD=<local_password> pg_restore --clean --no-owner \
+  -h localhost -p 5432 -U <local_user> -d <local_db> strapi-staging.dump
+```
+
+> **Note:** `strapi-cnpg` is shared — only ever dump the `bratislava` database, and never write to another web's database. Treat **production** dumps as sensitive.
+
 ## Build
 
 Build your admin panel. [Learn more](https://docs.strapi.io/developer-docs/latest/developer-resources/cli/CLI.html#strapi-build)
