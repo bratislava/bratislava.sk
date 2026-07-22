@@ -34,11 +34,10 @@ Every `kubectl` command below passes `--context` explicitly, so it doesn't matte
 Each web's credentials live in a `strapi-cnpg-<web>-credentials` secret in the `standalone` namespace — for this repo, `strapi-cnpg-bratislava-credentials`:
 
 ```bash
-CTX=staging   # or development / production
-NS=standalone
-kubectl --context $CTX get secret strapi-cnpg-bratislava-credentials -n $NS -o jsonpath='{.data.DATABASE_USERNAME}' | base64 -d; echo
-kubectl --context $CTX get secret strapi-cnpg-bratislava-credentials -n $NS -o jsonpath='{.data.DATABASE_NAME}'     | base64 -d; echo
-kubectl --context $CTX get secret strapi-cnpg-bratislava-credentials -n $NS -o jsonpath='{.data.DATABASE_PASSWORD}' | base64 -d; echo
+# staging shown; swap --context for development / production
+kubectl --context staging get secret strapi-cnpg-bratislava-credentials -n standalone -o jsonpath='{.data.DATABASE_USERNAME}' | base64 -d; echo
+kubectl --context staging get secret strapi-cnpg-bratislava-credentials -n standalone -o jsonpath='{.data.DATABASE_NAME}'     | base64 -d; echo
+kubectl --context staging get secret strapi-cnpg-bratislava-credentials -n standalone -o jsonpath='{.data.DATABASE_PASSWORD}' | base64 -d; echo
 ```
 
 > Prefer a GUI? In a tool such as [OpenLens](https://github.com/MuhammedKalkan/OpenLens) (or Lens) pick the cluster/context, open **Config → Secrets** in the `standalone` namespace, find `strapi-cnpg-bratislava-credentials` and reveal `DATABASE_USERNAME` / `DATABASE_NAME` / `DATABASE_PASSWORD`.
