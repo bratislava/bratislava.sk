@@ -41,6 +41,8 @@ kubectl --context $CTX get secret strapi-cnpg-bratislava-credentials -n $NS -o j
 kubectl --context $CTX get secret strapi-cnpg-bratislava-credentials -n $NS -o jsonpath='{.data.DATABASE_PASSWORD}' | base64 -d; echo
 ```
 
+> Prefer a GUI? In a tool such as [OpenLens](https://github.com/MuhammedKalkan/OpenLens) (or Lens) pick the cluster/context, open **Config → Secrets** in the `standalone` namespace, find `strapi-cnpg-bratislava-credentials` and reveal `DATABASE_USERNAME` / `DATABASE_NAME` / `DATABASE_PASSWORD`.
+
 ### 3. Connect
 
 Port-forward the shared cluster's read-write service to a local port. Use **5433** so it doesn't clash with the local docker Postgres on 5432:
