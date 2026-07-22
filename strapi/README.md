@@ -19,21 +19,26 @@ The three clusters (`development`, `staging`, `production`) are laid out identic
 
 ### 1. Log in to the cluster
 
-Kube context / login is handled by the [`k8-helpers`](https://github.com/bratislava/k8-helpers) aliases:
+Login is handled by the [`k8-helpers`](https://github.com/bratislava/k8-helpers) aliases — either log in to everything at once with `k8all`, or to a single cluster with `k8dev` / `k8stage` / `k8prod`:
 
 ```bash
-k8stage   # staging   (use k8dev / k8prod for the other clusters)
+k8all     # authenticate to all clusters at once (development / staging / production / ...)
+# or a single one:
+k8stage   # staging   (k8dev / k8prod for the others)
 ```
+
+Every `kubectl` command below passes `--context` explicitly, so it doesn't matter which context is currently active — you just need to be logged in. The context name is the environment: `development`, `staging`, or `production`. Examples use `staging`.
 
 ### 2. Read the database credentials
 
 Each web's credentials live in a `strapi-cnpg-<web>-credentials` secret in the `standalone` namespace — for this repo, `strapi-cnpg-bratislava-credentials`:
 
 ```bash
+CTX=staging   # or development / production
 NS=standalone
-kubectl get secret strapi-cnpg-bratislava-credentials -n $NS -o jsonpath='{.data.DATABASE_USERNAME}' | base64 -d; echo
-kubectl get secret strapi-cnpg-bratislava-credentials -n $NS -o jsonpath='{.data.DATABASE_NAME}'     | base64 -d; echo
-kubectl get secret strapi-cnpg-bratislava-credentials -n $NS -o jsonpath='{.data.DATABASE_PASSWORD}' | base64 -d; echo
+kubectl --context $CTX get secret strapi-cnpg-bratislava-credentials -n $NS -o jsonpath='{.data.DATABASE_USERNAME}' | base64 -d; echo
+kubectl --context $CTX get secret strapi-cnpg-bratislava-credentials -n $NS -o jsonpath='{.data.DATABASE_NAME}'     | base64 -d; echo
+kubectl --context $CTX get secret strapi-cnpg-bratislava-credentials -n $NS -o jsonpath='{.data.DATABASE_PASSWORD}' | base64 -d; echo
 ```
 
 ### 3. Connect
@@ -41,7 +46,7 @@ kubectl get secret strapi-cnpg-bratislava-credentials -n $NS -o jsonpath='{.data
 Port-forward the shared cluster's read-write service to a local port. Use **5433** so it doesn't clash with the local docker Postgres on 5432:
 
 ```bash
-kubectl port-forward -n standalone svc/strapi-cnpg-rw 5433:5432
+kubectl --context staging port-forward -n standalone svc/strapi-cnpg-rw 5433:5432
 # then, in another shell (user / db / password from step 2):
 PGPASSWORD=<password> psql -h localhost -p 5433 -U <user> -d <db>
 ```
