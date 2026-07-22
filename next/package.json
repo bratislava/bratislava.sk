@@ -31,7 +31,7 @@
   "dependencies": {
     "@azure/msal-node": "3.4.0",
     "@bratislava/component-library": "1.1.1",
-    "@bratislava/ginis-sdk": "2.2.0",
+    "@bratislava/ginis-sdk": "2.2.1",
     "@hookform/resolvers": "2.8.5",
     "@iframe-resizer/react": "5.5.7",
     "@internationalized/date": "3.12.1",
