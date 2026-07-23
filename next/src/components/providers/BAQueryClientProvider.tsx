@@ -8,7 +8,17 @@ import { PropsWithChildren, useState } from 'react'
  * @constructor
  */
 const BAQueryClientProvider = ({ children }: PropsWithChildren) => {
-  const [queryClient] = useState(() => new QueryClient())
+  const [queryClient] = useState(
+    () =>
+      new QueryClient({
+        defaultOptions: {
+          queries: {
+            // Increase staleTime to limit request load on strapi
+            staleTime: 60 * 1000,
+          },
+        },
+      }),
+  )
 
   return <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
 }
