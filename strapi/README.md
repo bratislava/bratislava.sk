@@ -11,6 +11,59 @@ cp .env.example .env.local
 
 You need postgres running locally (with correct credentials & database available). The easiest way to get a postgres db with the right credentials up&running is via `docker-compose.yml` file. Check the readme in the root of this repo.
 
+## Connecting to the deployed database (staging / dev / prod)
+
+The deployed Strapi stores its data in an on-cluster [CloudNativePG (CNPG)](https://cloudnative-pg.io/) Postgres. Unlike a per-app DB, this uses a **shared** CNPG cluster `strapi-cnpg` in the `standalone` namespace that hosts one database per Bratislava Strapi backend (`bratislava`, `city-foundation`, `city-gallery`, `city-library`, `general`, `marianum`, `olo`). This repo's database is **`bratislava`**.
+
+The three clusters (`development`, `staging`, `production`) are laid out identically, so the steps below are the same for every environment — you only switch the kube context. Examples use **staging**.
+
+### 1. Log in to the cluster
+
+Login is handled by the [`k8-helpers`](https://github.com/bratislava/k8-helpers) aliases — either log in to everything at once with `k8all`, or to a single cluster with `k8dev` / `k8stage` / `k8prod`:
+
+```bash
+k8all     # authenticate to all clusters at once (development / staging / production / ...)
+# or a single one:
+k8stage   # staging   (k8dev / k8prod for the others)
+```
+
+Every `kubectl` command below passes `--context` explicitly, so it doesn't matter which context is currently active — you just need to be logged in. The context name is the environment: `development`, `staging`, or `production`. Examples use `staging`.
+
+### 2. Read the database credentials
+
+Each web's credentials live in a `strapi-cnpg-<web>-credentials` secret in the `standalone` namespace — for this repo, `strapi-cnpg-bratislava-credentials`:
+
+```bash
+# staging shown; swap --context for development / production
+kubectl --context staging get secret strapi-cnpg-bratislava-credentials -n standalone -o jsonpath='{.data.DATABASE_USERNAME}' | base64 -d; echo
+kubectl --context staging get secret strapi-cnpg-bratislava-credentials -n standalone -o jsonpath='{.data.DATABASE_NAME}'     | base64 -d; echo
+kubectl --context staging get secret strapi-cnpg-bratislava-credentials -n standalone -o jsonpath='{.data.DATABASE_PASSWORD}' | base64 -d; echo
+```
+
+> Prefer a GUI? In a tool such as [FreeLens](https://github.com/freelensapp/freelens) (or Lens) pick the cluster/context, open **Config → Secrets** in the `standalone` namespace, find `strapi-cnpg-bratislava-credentials` and reveal `DATABASE_USERNAME` / `DATABASE_NAME` / `DATABASE_PASSWORD`.
+
+### 3. Connect
+
+Port-forward the shared cluster's read-write service to a local port. Use **5433** so it doesn't clash with the local docker Postgres on 5432:
+
+```bash
+kubectl --context staging port-forward -n standalone svc/strapi-cnpg-rw 5433:5432
+# then, in another shell (user / db / password from step 2):
+PGPASSWORD=<password> psql -h localhost -p 5433 -U <user> -d <db>
+```
+
+### 4. Dump it and restore locally
+
+```bash
+# dump (custom format) while the port-forward from step 3 is running
+PGPASSWORD=<password> pg_dump -h localhost -p 5433 -U <user> -d <db> -Fc -f strapi-staging.dump
+
+# start a local Postgres (see root readme): docker compose up postgres
+# restore into it (creds/db from your .env.local, default port 5432)
+PGPASSWORD=<local_password> pg_restore --clean --no-owner \
+  -h localhost -p 5432 -U <local_user> -d <local_db> strapi-staging.dump
+```
+
 ## Build
 
 Build your admin panel. [Learn more](https://docs.strapi.io/developer-docs/latest/developer-resources/cli/CLI.html#strapi-build)
