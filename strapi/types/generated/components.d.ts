@@ -1317,7 +1317,7 @@ export interface TaxAdministratorsTaxAdministrator extends Struct.ComponentSchem
 }
 
 declare module '@strapi/strapi' {
-  export module Public {
+  export namespace Public {
     export interface ComponentSchemas {
       'accordion-items.flat-text': AccordionItemsFlatText
       'accordion-items.institution': AccordionItemsInstitution

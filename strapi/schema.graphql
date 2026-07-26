@@ -61,6 +61,7 @@ input AdminGroupInput {
   contentManagedBy: String
   faqs: [ID]
   landingPage: ID
+  locale: String
   pages: [ID]
   publishedAt: DateTime
   slug: String
@@ -314,6 +315,7 @@ input AssetCategoryFiltersInput {
 
 input AssetCategoryInput {
   assets: [ID]
+  locale: String
   publishedAt: DateTime
   slug: String
   title: String
@@ -363,6 +365,7 @@ input AssetInput {
   description: String
   files: [ID]
   isAccessible: Boolean
+  locale: String
   publishedAt: DateTime
   slug: String
   title: String
@@ -3318,6 +3321,7 @@ input I18NLocaleFiltersInput {
 
 input I18NLocaleInput {
   code: String
+  locale: String
   name: String
   publishedAt: DateTime
 }
@@ -3405,6 +3409,7 @@ input InbaReleaseInput {
   coverImage: ID
   featuredArticles: [ID]
   files: [ComponentBlocksFileInput]
+  locale: String
   perex: String
   publishedAt: DateTime
   rearImage: ID
@@ -4387,6 +4392,7 @@ input RegulationInput {
   effectiveFrom: Date
   fullTitle: String
   isFullTextRegulation: Boolean
+  locale: String
   mainDocument: ID
   publishedAt: DateTime
   regNumber: String
@@ -4445,6 +4451,7 @@ input ReviewWorkflowsWorkflowFiltersInput {
 
 input ReviewWorkflowsWorkflowInput {
   contentTypes: JSON
+  locale: String
   name: String
   publishedAt: DateTime
   stageRequiredToPublish: ID
@@ -4494,6 +4501,7 @@ input ReviewWorkflowsWorkflowStageFiltersInput {
 
 input ReviewWorkflowsWorkflowStageInput {
   color: String
+  locale: String
   name: String
   publishedAt: DateTime
   workflow: ID
@@ -4618,6 +4626,7 @@ input TaxAdministratorsListFiltersInput {
 }
 
 input TaxAdministratorsListInput {
+  locale: String
   publishedAt: DateTime
   taxAdministrators: [ComponentTaxAdministratorsTaxAdministratorInput]
 }
@@ -4721,9 +4730,11 @@ input UploadFileInput {
   caption: String
   ext: String
   focalPoint: JSON
+  folderPath: String
   formats: JSON
   hash: String
   height: Int
+  locale: String
   mime: String
   name: String
   previewUrl: String
@@ -4800,6 +4811,7 @@ input UrbanStudyInput {
   body: String
   customPublishedAt: DateTime
   links: [ComponentBlocksCommonLinkInput]
+  locale: String
   preparedBy: String
   procuredBy: String
   publishedAt: DateTime
@@ -4892,6 +4904,7 @@ input UsersPermissionsPermissionFiltersInput {
 
 input UsersPermissionsPermissionInput {
   action: String
+  locale: String
   publishedAt: DateTime
   role: ID
 }
@@ -4951,6 +4964,7 @@ input UsersPermissionsRoleFiltersInput {
 
 input UsersPermissionsRoleInput {
   description: String
+  locale: String
   name: String
   permissions: [ID]
   publishedAt: DateTime
@@ -5011,11 +5025,14 @@ input UsersPermissionsUserFiltersInput {
 
 input UsersPermissionsUserInput {
   blocked: Boolean
+  confirmationToken: String
   confirmed: Boolean
   email: String
+  locale: String
   password: String
   provider: String
   publishedAt: DateTime
+  resetPasswordToken: String
   role: ID
   username: String
 }

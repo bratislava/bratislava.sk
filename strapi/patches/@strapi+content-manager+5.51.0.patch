@@ -1,11 +1,11 @@
 diff --git a/node_modules/@strapi/content-manager/dist/admin/pages/EditView/components/FormInputs/Wysiwyg/Field.mjs b/node_modules/@strapi/content-manager/dist/admin/pages/EditView/components/FormInputs/Wysiwyg/Field.mjs
-index 887e12b..c622941 100644
+index 42a4985..cef59d9 100644
 --- a/node_modules/@strapi/content-manager/dist/admin/pages/EditView/components/FormInputs/Wysiwyg/Field.mjs
 +++ b/node_modules/@strapi/content-manager/dist/admin/pages/EditView/components/FormInputs/Wysiwyg/Field.mjs
 @@ -29,7 +29,8 @@ const Wysiwyg = /*#__PURE__*/ React.forwardRef(({ hint, disabled, label, name, p
          const formattedFiles = files.map((f)=>({
                  alt: f.alternativeText || f.name,
-                 url: prefixFileUrlWithBackendUrl(f.url),
+                 url: prefixFileUrlWithBackendUrl(f.url) ?? f.url,
 -                mime: f.mime
 +                mime: f.mime,
 +                caption: f.caption || f.name
