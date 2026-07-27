@@ -33,7 +33,7 @@
     "react-router-dom": "6.30.4",
     "strapi-plugin-config-sync": "3.2.0",
     "strapi-plugin-meilisearch": "0.16.5",
-    "styled-components": "6.3.12"
+    "styled-components": "6.4.4"
   },
   "devDependencies": {
     "@babel/core": "7.26.0",
