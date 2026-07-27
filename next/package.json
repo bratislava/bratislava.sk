@@ -98,7 +98,7 @@
     "@types/rss": "0.0.32",
     "eslint": "9.39.1",
     "i18next-parser": "9.4.0",
-    "postcss": "8.5.10",
+    "postcss": "8.5.18",
     "prettier": "3.8.3",
     "prettier-plugin-tailwindcss": "0.8.0",
     "sass": "1.62.1",
