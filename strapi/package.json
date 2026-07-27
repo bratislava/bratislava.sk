@@ -43,23 +43,14 @@
     "eslint-scope": "7.1.1"
   },
   "engines": {
-    "node": ">=24.18.x",
-    "npm": ">=11.16.x"
+    "node": ">=24.16.x",
+    "npm": ">=11.13.x"
   },
   "volta": {
-    "node": "24.18.0",
-    "npm": "11.16.0"
+    "node": "24.16.0",
+    "npm": "11.13.0"
   },
   "strapi": {
     "uuid": "61130046-63b5-40a0-a617-713763ba3913"
-  },
-  "allowScripts": {
-    "@apollo/protobufjs@1.2.8": true,
-    "@swc/core@1.15.46": true,
-    "core-js-pure@3.49.0": true,
-    "esbuild@0.20.2": true,
-    "esbuild@0.28.1": true,
-    "esbuild@0.21.5": true,
-    "sharp@0.34.5": true
   }
 }
