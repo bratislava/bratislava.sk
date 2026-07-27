@@ -52,5 +52,14 @@
   },
   "strapi": {
     "uuid": "61130046-63b5-40a0-a617-713763ba3913"
+  },
+  "allowScripts": {
+    "@apollo/protobufjs@1.2.8": true,
+    "@swc/core@1.15.46": true,
+    "core-js-pure@3.49.0": true,
+    "esbuild@0.20.2": true,
+    "esbuild@0.28.1": true,
+    "esbuild@0.21.5": true,
+    "sharp@0.34.5": true
   }
 }
