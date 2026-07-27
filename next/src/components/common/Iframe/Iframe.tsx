@@ -47,7 +47,7 @@ const Iframe = ({
 
   const allowDownloads = allowDownloadsWhitelist.some((allowedUrl) => url.startsWith(allowedUrl))
 
-  const sanitizedUrl = url.trim()
+  const trimmedUrl = url.trim()
 
   return (
     <div className="flex flex-col gap-4 lg:gap-6">
@@ -56,7 +56,7 @@ const Iframe = ({
         license="GPLv3"
         title={iframeTitle ?? undefined}
         forwardRef={iframeRef}
-        src={sanitizedUrl}
+        src={trimmedUrl}
         className={cn('w-full', {
           border: hasBorder,
         })}
