@@ -8,8 +8,8 @@ import cn from '@/src/utils/cn'
 import { getLinkProps } from '@/src/utils/getLinkProps'
 import { getRegulationMetadata } from '@/src/utils/getRegulationMetadata'
 import { isDefined } from '@/src/utils/isDefined'
+import { isProductionDeployment } from '@/src/utils/isProductionDeployment'
 import { useTranslation } from '@/src/utils/useTranslation'
-import { isProductionDeployment } from '@/src/utils/utils'
 
 type Props = {
   className?: string

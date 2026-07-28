@@ -13,9 +13,9 @@ import SearchResultsCount from '@/src/components/sections/SearchSection/SearchRe
 import { SearchFilters } from '@/src/components/sections/SearchSection/useQueryBySearchOption'
 import { officialBoardListDefaultFilters } from '@/src/services/ginis/fetchers/officialBoardListFetcher'
 import { getCategoryColorLocalStyle } from '@/src/utils/colors'
+import { isProductionDeployment } from '@/src/utils/isProductionDeployment'
 import { useLogSearchQueryToPlausible } from '@/src/utils/useLogSearchQueryToPlausible'
 import { useTranslation } from '@/src/utils/useTranslation'
-import { isProductionDeployment } from '@/src/utils/utils'
 
 /*
  * RAC library recommends Selection as type for selection state, which is of type `'all' | Set`.

@@ -18,7 +18,7 @@ import { NavMenuContextProvider } from '@/src/components/common/NavBar/NavMenu/n
 import BAI18nProvider from '@/src/components/providers/BAI18nProvider'
 import BAQueryClientProvider from '@/src/components/providers/BAQueryClientProvider'
 import { environment } from '@/src/environment'
-import { isProductionDeployment } from '@/src/utils/utils'
+import { isProductionDeployment } from '@/src/utils/isProductionDeployment'
 
 const inter = Inter({
   variable: '--inter-font',

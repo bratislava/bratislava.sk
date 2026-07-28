@@ -20,7 +20,7 @@ import TokensShowcase from '@/src/components/styleguide/showcases/TokensShowcase
 import TootootEventCardShowcase from '@/src/components/styleguide/showcases/TootootEventCardShowcase'
 import StyleGuideWrapper from '@/src/components/styleguide/StyleGuideWrapper'
 import { NOT_FOUND_SERVERSIDE } from '@/src/utils/consts'
-import { isProductionDeployment } from '@/src/utils/utils'
+import { isProductionDeployment } from '@/src/utils/isProductionDeployment'
 
 export const getServerSideProps: GetServerSideProps = async ({ locale }) => {
   if (!locale || isProductionDeployment()) {
