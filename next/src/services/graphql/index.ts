@@ -153,6 +153,7 @@ export type AdminGroupInput = {
   contentManagedBy?: InputMaybe<Scalars['String']['input']>
   faqs?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
   landingPage?: InputMaybe<Scalars['ID']['input']>
+  locale?: InputMaybe<Scalars['String']['input']>
   pages?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
   publishedAt?: InputMaybe<Scalars['DateTime']['input']>
   slug?: InputMaybe<Scalars['String']['input']>
@@ -541,6 +542,7 @@ export type AssetCategoryFiltersInput = {
 
 export type AssetCategoryInput = {
   assets?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
+  locale?: InputMaybe<Scalars['String']['input']>
   publishedAt?: InputMaybe<Scalars['DateTime']['input']>
   slug?: InputMaybe<Scalars['String']['input']>
   title?: InputMaybe<Scalars['String']['input']>
@@ -594,6 +596,7 @@ export type AssetInput = {
   description?: InputMaybe<Scalars['String']['input']>
   files?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
   isAccessible?: InputMaybe<Scalars['Boolean']['input']>
+  locale?: InputMaybe<Scalars['String']['input']>
   publishedAt?: InputMaybe<Scalars['DateTime']['input']>
   slug?: InputMaybe<Scalars['String']['input']>
   title?: InputMaybe<Scalars['String']['input']>
@@ -4200,6 +4203,7 @@ export type I18NLocaleFiltersInput = {
 
 export type I18NLocaleInput = {
   code?: InputMaybe<Scalars['String']['input']>
+  locale?: InputMaybe<Scalars['String']['input']>
   name?: InputMaybe<Scalars['String']['input']>
   publishedAt?: InputMaybe<Scalars['DateTime']['input']>
 }
@@ -4322,6 +4326,7 @@ export type InbaReleaseInput = {
   coverImage?: InputMaybe<Scalars['ID']['input']>
   featuredArticles?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
   files?: InputMaybe<Array<InputMaybe<ComponentBlocksFileInput>>>
+  locale?: InputMaybe<Scalars['String']['input']>
   perex?: InputMaybe<Scalars['String']['input']>
   publishedAt?: InputMaybe<Scalars['DateTime']['input']>
   rearImage?: InputMaybe<Scalars['ID']['input']>
@@ -5973,6 +5978,7 @@ export type RegulationInput = {
   effectiveFrom?: InputMaybe<Scalars['Date']['input']>
   fullTitle?: InputMaybe<Scalars['String']['input']>
   isFullTextRegulation?: InputMaybe<Scalars['Boolean']['input']>
+  locale?: InputMaybe<Scalars['String']['input']>
   mainDocument?: InputMaybe<Scalars['ID']['input']>
   publishedAt?: InputMaybe<Scalars['DateTime']['input']>
   regNumber?: InputMaybe<Scalars['String']['input']>
@@ -6049,6 +6055,7 @@ export type ReviewWorkflowsWorkflowFiltersInput = {
 
 export type ReviewWorkflowsWorkflowInput = {
   contentTypes?: InputMaybe<Scalars['JSON']['input']>
+  locale?: InputMaybe<Scalars['String']['input']>
   name?: InputMaybe<Scalars['String']['input']>
   publishedAt?: InputMaybe<Scalars['DateTime']['input']>
   stageRequiredToPublish?: InputMaybe<Scalars['ID']['input']>
@@ -6103,6 +6110,7 @@ export type ReviewWorkflowsWorkflowStageFiltersInput = {
 
 export type ReviewWorkflowsWorkflowStageInput = {
   color?: InputMaybe<Scalars['String']['input']>
+  locale?: InputMaybe<Scalars['String']['input']>
   name?: InputMaybe<Scalars['String']['input']>
   publishedAt?: InputMaybe<Scalars['DateTime']['input']>
   workflow?: InputMaybe<Scalars['ID']['input']>
@@ -6267,6 +6275,7 @@ export type TaxAdministratorsListFiltersInput = {
 }
 
 export type TaxAdministratorsListInput = {
+  locale?: InputMaybe<Scalars['String']['input']>
   publishedAt?: InputMaybe<Scalars['DateTime']['input']>
   taxAdministrators?: InputMaybe<Array<InputMaybe<ComponentTaxAdministratorsTaxAdministratorInput>>>
 }
@@ -6372,9 +6381,11 @@ export type UploadFileInput = {
   caption?: InputMaybe<Scalars['String']['input']>
   ext?: InputMaybe<Scalars['String']['input']>
   focalPoint?: InputMaybe<Scalars['JSON']['input']>
+  folderPath?: InputMaybe<Scalars['String']['input']>
   formats?: InputMaybe<Scalars['JSON']['input']>
   hash?: InputMaybe<Scalars['String']['input']>
   height?: InputMaybe<Scalars['Int']['input']>
+  locale?: InputMaybe<Scalars['String']['input']>
   mime?: InputMaybe<Scalars['String']['input']>
   name?: InputMaybe<Scalars['String']['input']>
   previewUrl?: InputMaybe<Scalars['String']['input']>
@@ -6480,6 +6491,7 @@ export type UrbanStudyInput = {
   body?: InputMaybe<Scalars['String']['input']>
   customPublishedAt?: InputMaybe<Scalars['DateTime']['input']>
   links?: InputMaybe<Array<InputMaybe<ComponentBlocksCommonLinkInput>>>
+  locale?: InputMaybe<Scalars['String']['input']>
   preparedBy?: InputMaybe<Scalars['String']['input']>
   procuredBy?: InputMaybe<Scalars['String']['input']>
   publishedAt?: InputMaybe<Scalars['DateTime']['input']>
@@ -6583,6 +6595,7 @@ export type UsersPermissionsPermissionFiltersInput = {
 
 export type UsersPermissionsPermissionInput = {
   action?: InputMaybe<Scalars['String']['input']>
+  locale?: InputMaybe<Scalars['String']['input']>
   publishedAt?: InputMaybe<Scalars['DateTime']['input']>
   role?: InputMaybe<Scalars['ID']['input']>
 }
@@ -6671,6 +6684,7 @@ export type UsersPermissionsRoleFiltersInput = {
 
 export type UsersPermissionsRoleInput = {
   description?: InputMaybe<Scalars['String']['input']>
+  locale?: InputMaybe<Scalars['String']['input']>
   name?: InputMaybe<Scalars['String']['input']>
   permissions?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
   publishedAt?: InputMaybe<Scalars['DateTime']['input']>
@@ -6737,11 +6751,14 @@ export type UsersPermissionsUserFiltersInput = {
 
 export type UsersPermissionsUserInput = {
   blocked?: InputMaybe<Scalars['Boolean']['input']>
+  confirmationToken?: InputMaybe<Scalars['String']['input']>
   confirmed?: InputMaybe<Scalars['Boolean']['input']>
   email?: InputMaybe<Scalars['String']['input']>
+  locale?: InputMaybe<Scalars['String']['input']>
   password?: InputMaybe<Scalars['String']['input']>
   provider?: InputMaybe<Scalars['String']['input']>
   publishedAt?: InputMaybe<Scalars['DateTime']['input']>
+  resetPasswordToken?: InputMaybe<Scalars['String']['input']>
   role?: InputMaybe<Scalars['ID']['input']>
   username?: InputMaybe<Scalars['String']['input']>
 }
@@ -15413,102 +15430,6 @@ export type UpdatePageMutation = {
   updatePage?: { __typename?: 'Page'; documentId: string } | null
 }
 
-export type AllRegulationsQueryVariables = Exact<{ [key: string]: never }>
-
-export type AllRegulationsQuery = {
-  __typename?: 'Query'
-  regulations: Array<{
-    __typename?: 'Regulation'
-    regNumber: string
-    fullTitle: string
-    effectiveFrom: any
-    category: Enum_Regulation_Category
-    isFullTextRegulation: boolean
-    documentId: string
-    slug: string
-    titleText?: string | null
-    mainDocument: {
-      __typename?: 'UploadFile'
-      documentId: string
-      url: string
-      name: string
-      ext?: string | null
-      size: number
-      createdAt?: any | null
-      updatedAt?: any | null
-    }
-    attachments: Array<{
-      __typename?: 'UploadFile'
-      documentId: string
-      url: string
-      name: string
-      ext?: string | null
-      size: number
-      createdAt?: any | null
-      updatedAt?: any | null
-    } | null>
-    amendments: Array<{
-      __typename?: 'Regulation'
-      documentId: string
-      regNumber: string
-      slug: string
-      effectiveFrom: any
-      isFullTextRegulation: boolean
-      attachments: Array<{
-        __typename?: 'UploadFile'
-        documentId: string
-        url: string
-        name: string
-        ext?: string | null
-        size: number
-        createdAt?: any | null
-        updatedAt?: any | null
-      } | null>
-    } | null>
-    amending: Array<{
-      __typename?: 'Regulation'
-      documentId: string
-      regNumber: string
-      slug: string
-      effectiveFrom: any
-      cancellation?: {
-        __typename?: 'Regulation'
-        documentId: string
-        regNumber: string
-        slug: string
-        effectiveFrom: any
-      } | null
-      amending: Array<{
-        __typename?: 'Regulation'
-        documentId: string
-        regNumber: string
-        slug: string
-        cancellation?: {
-          __typename?: 'Regulation'
-          documentId: string
-          regNumber: string
-          slug: string
-          effectiveFrom: any
-        } | null
-      } | null>
-    } | null>
-    cancellation?: {
-      __typename?: 'Regulation'
-      documentId: string
-      regNumber: string
-      slug: string
-      effectiveFrom: any
-    } | null
-    cancelling: Array<{
-      __typename?: 'Regulation'
-      documentId: string
-      regNumber: string
-      slug: string
-      effectiveFrom: any
-    } | null>
-  } | null>
-}
-
 export type RegulationsStaticPathsQueryVariables = Exact<{
   limit?: InputMaybe<Scalars['Int']['input']>
 }>
@@ -15516,104 +15437,6 @@ export type RegulationsStaticPathsQueryVariables = Exact<{
 export type RegulationsStaticPathsQuery = {
   __typename?: 'Query'
   regulations: Array<{ __typename?: 'Regulation'; documentId: string; slug: string } | null>
-}
-
-export type RegulationByIdQueryVariables = Exact<{
-  id: Scalars['ID']['input']
-}>
-
-export type RegulationByIdQuery = {
-  __typename?: 'Query'
-  regulation?: {
-    __typename?: 'Regulation'
-    regNumber: string
-    fullTitle: string
-    effectiveFrom: any
-    category: Enum_Regulation_Category
-    isFullTextRegulation: boolean
-    documentId: string
-    slug: string
-    titleText?: string | null
-    mainDocument: {
-      __typename?: 'UploadFile'
-      documentId: string
-      url: string
-      name: string
-      ext?: string | null
-      size: number
-      createdAt?: any | null
-      updatedAt?: any | null
-    }
-    attachments: Array<{
-      __typename?: 'UploadFile'
-      documentId: string
-      url: string
-      name: string
-      ext?: string | null
-      size: number
-      createdAt?: any | null
-      updatedAt?: any | null
-    } | null>
-    amendments: Array<{
-      __typename?: 'Regulation'
-      documentId: string
-      regNumber: string
-      slug: string
-      effectiveFrom: any
-      isFullTextRegulation: boolean
-      attachments: Array<{
-        __typename?: 'UploadFile'
-        documentId: string
-        url: string
-        name: string
-        ext?: string | null
-        size: number
-        createdAt?: any | null
-        updatedAt?: any | null
-      } | null>
-    } | null>
-    amending: Array<{
-      __typename?: 'Regulation'
-      documentId: string
-      regNumber: string
-      slug: string
-      effectiveFrom: any
-      cancellation?: {
-        __typename?: 'Regulation'
-        documentId: string
-        regNumber: string
-        slug: string
-        effectiveFrom: any
-      } | null
-      amending: Array<{
-        __typename?: 'Regulation'
-        documentId: string
-        regNumber: string
-        slug: string
-        cancellation?: {
-          __typename?: 'Regulation'
-          documentId: string
-          regNumber: string
-          slug: string
-          effectiveFrom: any
-        } | null
-      } | null>
-    } | null>
-    cancellation?: {
-      __typename?: 'Regulation'
-      documentId: string
-      regNumber: string
-      slug: string
-      effectiveFrom: any
-    } | null
-    cancelling: Array<{
-      __typename?: 'Regulation'
-      documentId: string
-      regNumber: string
-      slug: string
-      effectiveFrom: any
-    } | null>
-  } | null
 }
 
 export type RegulationBySlugQueryVariables = Exact<{
@@ -15712,162 +15535,6 @@ export type RegulationBySlugQuery = {
       effectiveFrom: any
     } | null>
   } | null>
-}
-
-export type RegulationByYearQueryVariables = Exact<{
-  year?: InputMaybe<Scalars['String']['input']>
-}>
-
-export type RegulationByYearQuery = {
-  __typename?: 'Query'
-  regulations: Array<{
-    __typename?: 'Regulation'
-    regNumber: string
-    fullTitle: string
-    effectiveFrom: any
-    category: Enum_Regulation_Category
-    isFullTextRegulation: boolean
-    documentId: string
-    slug: string
-    titleText?: string | null
-    mainDocument: {
-      __typename?: 'UploadFile'
-      documentId: string
-      url: string
-      name: string
-      ext?: string | null
-      size: number
-      createdAt?: any | null
-      updatedAt?: any | null
-    }
-    attachments: Array<{
-      __typename?: 'UploadFile'
-      documentId: string
-      url: string
-      name: string
-      ext?: string | null
-      size: number
-      createdAt?: any | null
-      updatedAt?: any | null
-    } | null>
-    amendments: Array<{
-      __typename?: 'Regulation'
-      documentId: string
-      regNumber: string
-      slug: string
-      effectiveFrom: any
-      isFullTextRegulation: boolean
-      attachments: Array<{
-        __typename?: 'UploadFile'
-        documentId: string
-        url: string
-        name: string
-        ext?: string | null
-        size: number
-        createdAt?: any | null
-        updatedAt?: any | null
-      } | null>
-    } | null>
-    amending: Array<{
-      __typename?: 'Regulation'
-      documentId: string
-      regNumber: string
-      slug: string
-      effectiveFrom: any
-      cancellation?: {
-        __typename?: 'Regulation'
-        documentId: string
-        regNumber: string
-        slug: string
-        effectiveFrom: any
-      } | null
-      amending: Array<{
-        __typename?: 'Regulation'
-        documentId: string
-        regNumber: string
-        slug: string
-        cancellation?: {
-          __typename?: 'Regulation'
-          documentId: string
-          regNumber: string
-          slug: string
-          effectiveFrom: any
-        } | null
-      } | null>
-    } | null>
-    cancellation?: {
-      __typename?: 'Regulation'
-      documentId: string
-      regNumber: string
-      slug: string
-      effectiveFrom: any
-    } | null
-    cancelling: Array<{
-      __typename?: 'Regulation'
-      documentId: string
-      regNumber: string
-      slug: string
-      effectiveFrom: any
-    } | null>
-  } | null>
-}
-
-export type SetFullTitleToRegulationMutationVariables = Exact<{
-  regulationId: Scalars['ID']['input']
-  fullTitle?: InputMaybe<Scalars['String']['input']>
-}>
-
-export type SetFullTitleToRegulationMutation = {
-  __typename?: 'Mutation'
-  updateRegulation?: { __typename?: 'Regulation'; documentId: string } | null
-}
-
-export type SetCancellationToRegulationMutationVariables = Exact<{
-  regulationId: Scalars['ID']['input']
-  cancellationId: Scalars['ID']['input']
-}>
-
-export type SetCancellationToRegulationMutation = {
-  __typename?: 'Mutation'
-  updateRegulation?: { __typename?: 'Regulation'; documentId: string } | null
-}
-
-export type SetAmendmentsToRegulationMutationVariables = Exact<{
-  regulationId: Scalars['ID']['input']
-  amendmentsIds?: InputMaybe<Array<Scalars['ID']['input']> | Scalars['ID']['input']>
-}>
-
-export type SetAmendmentsToRegulationMutation = {
-  __typename?: 'Mutation'
-  updateRegulation?: { __typename?: 'Regulation'; documentId: string } | null
-}
-
-export type DeleteRegulationByIdMutationVariables = Exact<{
-  id: Scalars['ID']['input']
-}>
-
-export type DeleteRegulationByIdMutation = {
-  __typename?: 'Mutation'
-  deleteRegulation?: { __typename?: 'DeleteMutationResponse'; documentId: string } | null
-}
-
-export type CreateBareRegulationMutationVariables = Exact<{
-  regNumber: Scalars['String']['input']
-  slug: Scalars['String']['input']
-  titleText?: InputMaybe<Scalars['String']['input']>
-  fullTitle?: InputMaybe<Scalars['String']['input']>
-  effectiveFrom: Scalars['Date']['input']
-  category?: InputMaybe<Enum_Regulation_Category>
-  isFullTextRegulation?: InputMaybe<Scalars['Boolean']['input']>
-  mainDocumentId?: InputMaybe<Scalars['ID']['input']>
-  attachmentsIds?: InputMaybe<
-    Array<InputMaybe<Scalars['ID']['input']>> | InputMaybe<Scalars['ID']['input']>
-  >
-}>
-
-export type CreateBareRegulationMutation = {
-  __typename?: 'Mutation'
-  createRegulation?: { __typename?: 'Regulation'; documentId: string; regNumber: string } | null
 }
 
 export type RegulationSlugEntityFragment = {
@@ -21478,14 +21145,6 @@ export const UpdatePageDocument = gql`
     }
   }
 `
-export const AllRegulationsDocument = gql`
-  query allRegulations {
-    regulations(pagination: { limit: -1 }) {
-      ...RegulationEntity
-    }
-  }
-  ${RegulationEntityFragmentDoc}
-`
 export const RegulationsStaticPathsDocument = gql`
   query RegulationsStaticPaths($limit: Int = -1) {
     regulations(sort: "updatedAt:desc", pagination: { limit: $limit }) {
@@ -21494,14 +21153,6 @@ export const RegulationsStaticPathsDocument = gql`
     }
   }
 `
-export const RegulationByIdDocument = gql`
-  query RegulationById($id: ID!) {
-    regulation(documentId: $id) {
-      ...RegulationEntity
-    }
-  }
-  ${RegulationEntityFragmentDoc}
-`
 export const RegulationBySlugDocument = gql`
   query RegulationBySlug($slug: String) {
     regulations(filters: { slug: { eq: $slug } }) {
@@ -21509,72 +21160,6 @@ export const RegulationBySlugDocument = gql`
     }
   }
   ${RegulationEntityFragmentDoc}
-`
-export const RegulationByYearDocument = gql`
-  query RegulationByYear($year: String) {
-    regulations(filters: { slug: { endsWith: $year } }) {
-      ...RegulationEntity
-    }
-  }
-  ${RegulationEntityFragmentDoc}
-`
-export const SetFullTitleToRegulationDocument = gql`
-  mutation setFullTitleToRegulation($regulationId: ID!, $fullTitle: String) {
-    updateRegulation(documentId: $regulationId, data: { fullTitle: $fullTitle }) {
-      documentId
-    }
-  }
-`
-export const SetCancellationToRegulationDocument = gql`
-  mutation setCancellationToRegulation($regulationId: ID!, $cancellationId: ID!) {
-    updateRegulation(documentId: $regulationId, data: { cancellation: $cancellationId }) {
-      documentId
-    }
-  }
-`
-export const SetAmendmentsToRegulationDocument = gql`
-  mutation setAmendmentsToRegulation($regulationId: ID!, $amendmentsIds: [ID!]) {
-    updateRegulation(documentId: $regulationId, data: { amendments: $amendmentsIds }) {
-      documentId
-    }
-  }
-`
-export const DeleteRegulationByIdDocument = gql`
-  mutation deleteRegulationById($id: ID!) {
-    deleteRegulation(documentId: $id) {
-      documentId
-    }
-  }
-`
-export const CreateBareRegulationDocument = gql`
-  mutation createBareRegulation(
-    $regNumber: String!
-    $slug: String!
-    $titleText: String
-    $fullTitle: String
-    $effectiveFrom: Date!
-    $category: ENUM_REGULATION_CATEGORY
-    $isFullTextRegulation: Boolean
-    $mainDocumentId: ID
-    $attachmentsIds: [ID]
-  ) {
-    createRegulation(
-      data: {
-        regNumber: $regNumber
-        slug: $slug
-        titleText: $titleText
-        fullTitle: $fullTitle
-        effectiveFrom: $effectiveFrom
-        category: $category
-        isFullTextRegulation: $isFullTextRegulation
-        mainDocument: $mainDocumentId
-        attachments: $attachmentsIds
-      }
-    ) {
-      documentId
-      regNumber
-    }
-  }
 `
 export const TagsDocument = gql`
   query Tags($locale: I18NLocaleCode, $sort: [String] = ["title"]) {
@@ -21989,21 +21574,6 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
         variables,
       )
     },
-    allRegulations(
-      variables?: AllRegulationsQueryVariables,
-      requestHeaders?: GraphQLClientRequestHeaders,
-    ): Promise<AllRegulationsQuery> {
-      return withWrapper(
-        (wrappedRequestHeaders) =>
-          client.request<AllRegulationsQuery>(AllRegulationsDocument, variables, {
-            ...requestHeaders,
-            ...wrappedRequestHeaders,
-          }),
-        'allRegulations',
-        'query',
-        variables,
-      )
-    },
     RegulationsStaticPaths(
       variables?: RegulationsStaticPathsQueryVariables,
       requestHeaders?: GraphQLClientRequestHeaders,
@@ -22015,21 +21585,6 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
             ...wrappedRequestHeaders,
           }),
         'RegulationsStaticPaths',
-        'query',
-        variables,
-      )
-    },
-    RegulationById(
-      variables: RegulationByIdQueryVariables,
-      requestHeaders?: GraphQLClientRequestHeaders,
-    ): Promise<RegulationByIdQuery> {
-      return withWrapper(
-        (wrappedRequestHeaders) =>
-          client.request<RegulationByIdQuery>(RegulationByIdDocument, variables, {
-            ...requestHeaders,
-            ...wrappedRequestHeaders,
-          }),
-        'RegulationById',
         'query',
         variables,
       )
@@ -22046,99 +21601,6 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
           }),
         'RegulationBySlug',
         'query',
-        variables,
-      )
-    },
-    RegulationByYear(
-      variables?: RegulationByYearQueryVariables,
-      requestHeaders?: GraphQLClientRequestHeaders,
-    ): Promise<RegulationByYearQuery> {
-      return withWrapper(
-        (wrappedRequestHeaders) =>
-          client.request<RegulationByYearQuery>(RegulationByYearDocument, variables, {
-            ...requestHeaders,
-            ...wrappedRequestHeaders,
-          }),
-        'RegulationByYear',
-        'query',
-        variables,
-      )
-    },
-    setFullTitleToRegulation(
-      variables: SetFullTitleToRegulationMutationVariables,
-      requestHeaders?: GraphQLClientRequestHeaders,
-    ): Promise<SetFullTitleToRegulationMutation> {
-      return withWrapper(
-        (wrappedRequestHeaders) =>
-          client.request<SetFullTitleToRegulationMutation>(
-            SetFullTitleToRegulationDocument,
-            variables,
-            { ...requestHeaders, ...wrappedRequestHeaders },
-          ),
-        'setFullTitleToRegulation',
-        'mutation',
-        variables,
-      )
-    },
-    setCancellationToRegulation(
-      variables: SetCancellationToRegulationMutationVariables,
-      requestHeaders?: GraphQLClientRequestHeaders,
-    ): Promise<SetCancellationToRegulationMutation> {
-      return withWrapper(
-        (wrappedRequestHeaders) =>
-          client.request<SetCancellationToRegulationMutation>(
-            SetCancellationToRegulationDocument,
-            variables,
-            { ...requestHeaders, ...wrappedRequestHeaders },
-          ),
-        'setCancellationToRegulation',
-        'mutation',
-        variables,
-      )
-    },
-    setAmendmentsToRegulation(
-      variables: SetAmendmentsToRegulationMutationVariables,
-      requestHeaders?: GraphQLClientRequestHeaders,
-    ): Promise<SetAmendmentsToRegulationMutation> {
-      return withWrapper(
-        (wrappedRequestHeaders) =>
-          client.request<SetAmendmentsToRegulationMutation>(
-            SetAmendmentsToRegulationDocument,
-            variables,
-            { ...requestHeaders, ...wrappedRequestHeaders },
-          ),
-        'setAmendmentsToRegulation',
-        'mutation',
-        variables,
-      )
-    },
-    deleteRegulationById(
-      variables: DeleteRegulationByIdMutationVariables,
-      requestHeaders?: GraphQLClientRequestHeaders,
-    ): Promise<DeleteRegulationByIdMutation> {
-      return withWrapper(
-        (wrappedRequestHeaders) =>
-          client.request<DeleteRegulationByIdMutation>(DeleteRegulationByIdDocument, variables, {
-            ...requestHeaders,
-            ...wrappedRequestHeaders,
-          }),
-        'deleteRegulationById',
-        'mutation',
-        variables,
-      )
-    },
-    createBareRegulation(
-      variables: CreateBareRegulationMutationVariables,
-      requestHeaders?: GraphQLClientRequestHeaders,
-    ): Promise<CreateBareRegulationMutation> {
-      return withWrapper(
-        (wrappedRequestHeaders) =>
-          client.request<CreateBareRegulationMutation>(CreateBareRegulationDocument, variables, {
-            ...requestHeaders,
-            ...wrappedRequestHeaders,
-          }),
-        'createBareRegulation',
-        'mutation',
         variables,
       )
     },
