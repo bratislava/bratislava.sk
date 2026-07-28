@@ -14,8 +14,8 @@ import SectionContainer from '@/src/components/layouts/SectionContainer'
 import SectionHeader from '@/src/components/layouts/SectionHeader'
 import { AccordionSectionFragment } from '@/src/services/graphql'
 import { getLinkProps } from '@/src/utils/getLinkProps'
+import { groupInstitutionsByCategory } from '@/src/utils/groupInstitutionsByCategory_deprecated'
 import { isDefined } from '@/src/utils/isDefined'
-import { groupByCategory } from '@/src/utils/pageUtils_Deprecated'
 
 type AccordionSectionProps = {
   section: AccordionSectionFragment
@@ -71,7 +71,7 @@ const AccordionSection = ({ section }: AccordionSectionProps) => {
           </DisclosureGroup>
         ) : null}
 
-        {groupByCategory(institutions?.filter(isDefined) ?? []).map((institution, index) => (
+        {groupInstitutionsByCategory(institutions?.filter(isDefined) ?? []).map((institution, index) => (
           <DisclosureGroup
             key={`disclosure-${institution.category}-${index}`}
             className="rounded-xl border border-border-active-default bg-background-passive-base py-2"
