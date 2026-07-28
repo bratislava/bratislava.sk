@@ -53,7 +53,6 @@
     "next": "15.5.18",
     "next-i18next": "15.4.2",
     "next-plausible": "3.12.4",
-    "next-query-params": "5.1.0",
     "next-sitemap": "4.2.3",
     "nuqs": "2.7.1",
     "pretty-bytes": "7.1.0",
@@ -76,7 +75,6 @@
     "tailwind-scrollbar-hide": "4.0.0",
     "tailwindcss-animate": "1.0.7",
     "tailwindcss-react-aria-components": "2.0.0",
-    "use-query-params": "2.2.1",
     "usehooks-ts": "3.1.1",
     "yup": "0.32.11"
   },
