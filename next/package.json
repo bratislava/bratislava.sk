@@ -25,7 +25,6 @@
     "update-graphql": "npm install graphql@latest graphql-request@latest graphql-tag@latest --save-exact && npm install @graphql-codegen/cli@latest @graphql-codegen/typescript@latest @graphql-codegen/typescript-operations@latest @graphql-codegen/typescript-graphql-request@latest --save-dev --save-exact",
     "update-radix": "npm install @radix-ui/react-navigation-menu@latest --save-exact",
     "update-react-query": "npm install @tanstack/react-query@latest --save-exact",
-    "update-mapbox": "npm install react-map-gl@latest mapbox-gl@latest --save-exact",
     "update-typescript": "npm install typescript@latest --save-dev --save-exact"
   },
   "dependencies": {

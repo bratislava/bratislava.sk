@@ -23,10 +23,6 @@ export const environment = {
     'NEXT_PUBLIC_MEILISEARCH_HOST',
     process.env.NEXT_PUBLIC_MEILISEARCH_HOST,
   ),
-  mapboxAccessToken: assertEnv(
-    'NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN',
-    process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN,
-  ),
   gtmId: assertEnv('NEXT_PUBLIC_GTM_ID', process.env.NEXT_PUBLIC_GTM_ID),
   gtmAuth: assertEnv('NEXT_PUBLIC_GTM_AUTH', process.env.NEXT_PUBLIC_GTM_AUTH),
   gtmPreview: assertEnv('NEXT_PUBLIC_GTM_PREVIEW', process.env.NEXT_PUBLIC_GTM_PREVIEW),
