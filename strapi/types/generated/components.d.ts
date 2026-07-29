@@ -633,8 +633,8 @@ export interface SectionsAssets extends Struct.ComponentSchema {
     displayName: 'Dokumenty'
   }
   attributes: {
+    allowCollapsingDocuments: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>
     assets: Schema.Attribute.Relation<'oneToMany', 'api::asset.asset'>
-    showAll: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>
     text: Schema.Attribute.Text
     title: Schema.Attribute.String & Schema.Attribute.DefaultTo<'Dokumenty'>
     titleLevel: Schema.Attribute.Enumeration<['h2', 'h3']> & Schema.Attribute.DefaultTo<'h2'>
@@ -1317,7 +1317,7 @@ export interface TaxAdministratorsTaxAdministrator extends Struct.ComponentSchem
 }
 
 declare module '@strapi/strapi' {
-  export namespace Public {
+  export module Public {
     export interface ComponentSchemas {
       'accordion-items.flat-text': AccordionItemsFlatText
       'accordion-items.institution': AccordionItemsInstitution

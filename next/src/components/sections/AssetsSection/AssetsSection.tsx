@@ -8,7 +8,6 @@ import HorizontalDivider from '@/src/components/common/Divider/HorizontalDivider
 import Icon from '@/src/components/common/Icon/Icon'
 import SectionContainer from '@/src/components/layouts/SectionContainer'
 import SectionHeader from '@/src/components/layouts/SectionHeader'
-import AssetsAll from '@/src/components/sections/AssetsSection/AssetsAll'
 import { AssetsSectionFragment } from '@/src/services/graphql'
 import { formatDate } from '@/src/utils/formatDate'
 import { formatFileExtension } from '@/src/utils/formatFileExtension'
@@ -33,15 +32,13 @@ const AssetsSection = ({ section }: Props) => {
   const [showAllDocuments, setShowAllDocuments] = useState(false)
   const listId = useId()
 
-  const { title, text, assets, showAll, titleLevelAssetsSection: titleLevel } = section
-
-  if (showAll) {
-    return (
-      <SectionContainer>
-        <AssetsAll section={section} />
-      </SectionContainer>
-    )
-  }
+  const {
+    title,
+    text,
+    assets,
+    allowCollapsingDocuments,
+    titleLevelAssetsSection: titleLevel,
+  } = section
 
   const filteredAssets = assets.filter(isDefined)
 
@@ -53,7 +50,12 @@ const AssetsSection = ({ section }: Props) => {
         <div className="flex flex-col rounded-lg border py-2">
           <ul id={listId}>
             {filteredAssets
-              .slice(0, showAllDocuments ? filteredAssets.length : AMOUNT_OF_ASSETS_TO_SHOW)
+              .slice(
+                0,
+                showAllDocuments || !allowCollapsingDocuments
+                  ? filteredAssets.length
+                  : AMOUNT_OF_ASSETS_TO_SHOW,
+              )
               .map((asset, index) => {
                 const { title: assetTitle, files, assetCategory, updatedAt, documentId } = asset
 
@@ -106,7 +108,7 @@ const AssetsSection = ({ section }: Props) => {
               .filter(isDefined)}
           </ul>
 
-          {filteredAssets.length > AMOUNT_OF_ASSETS_TO_SHOW && (
+          {allowCollapsingDocuments && filteredAssets.length > AMOUNT_OF_ASSETS_TO_SHOW && (
             <>
               <HorizontalDivider className="mx-6" />
 

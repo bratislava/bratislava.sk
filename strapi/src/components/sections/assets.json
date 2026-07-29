@@ -12,10 +12,6 @@
     "text": {
       "type": "text"
     },
-    "showAll": {
-      "type": "boolean",
-      "default": false
-    },
     "assets": {
       "type": "relation",
       "relation": "oneToMany",
@@ -34,10 +30,11 @@
     "titleLevel": {
       "type": "enumeration",
       "default": "h2",
-      "enum": [
-        "h2",
-        "h3"
-      ]
+      "enum": ["h2", "h3"]
+    },
+    "allowCollapsingDocuments": {
+      "type": "boolean",
+      "default": true
     }
   },
   "config": {}
