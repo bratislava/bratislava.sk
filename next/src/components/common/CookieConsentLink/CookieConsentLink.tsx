@@ -49,7 +49,12 @@ const CookieConsentLink = () => {
 
   return (
     <>
-      <Button variant="link" className="font-normal" onPress={showCookiebotConsentBanner}>
+      <Button
+        variant="link"
+        size="large"
+        className="font-normal"
+        onPress={showCookiebotConsentBanner}
+      >
         {t('CookieConsentLink.label')}
       </Button>
       <Modal

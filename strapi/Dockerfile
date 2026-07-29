@@ -1,4 +1,4 @@
-FROM node:20.19-alpine AS base
+FROM node:24.16-alpine AS base
 
 FROM base AS install
 RUN apk update \
@@ -18,6 +18,9 @@ COPY patches ./patches
 # Or leave empty (do not add anything) if you don't have any custom plugins (most likely ./plugins directory)
 
 ENV NPM_CONFIG_CACHE=/build/.cache/npm
+# Use sharp's packaged alpine binaries to avoid build fail: 
+# https://github.com/lovell/sharp/issues/4498
+ENV SHARP_IGNORE_GLOBAL_LIBVIPS=1
 RUN --mount=type=cache,target=/build/.cache/npm \
     npm clean-install --include=dev
 

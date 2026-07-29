@@ -50,7 +50,7 @@ const UrbanStudiesSection = ({ section }: Props) => {
                 <li className="w-full">
                   {/* TODO Implement FE component or variant for urban studies, now using DocumentRowCard */}
                   <DocumentRowCard
-                    variant="multiple-files"
+                    variant="urban-study"
                     title={urbanStudyTitle}
                     cardTitleLevel={getCardTitleLevel(titleLevel)}
                     linkHref={`/uzemne-studie/${slug}`}

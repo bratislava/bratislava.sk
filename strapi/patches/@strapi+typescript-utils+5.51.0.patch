@@ -1,0 +1,13 @@
+diff --git a/node_modules/@strapi/typescript-utils/dist/generators/common/models/schema.js b/node_modules/@strapi/typescript-utils/dist/generators/common/models/schema.js
+index 92d8a6e..3215496 100644
+--- a/node_modules/@strapi/typescript-utils/dist/generators/common/models/schema.js
++++ b/node_modules/@strapi/typescript-utils/dist/generators/common/models/schema.js
+@@ -31,7 +31,7 @@ const { factory } = ts__namespace;
+  * Generate a property signature for the schema's `attributes` field
+  */ const generateAttributePropertySignature = (schema)=>{
+     const { attributes: attributes$1 } = schema;
+-    const properties = Object.entries(attributes$1).sort((a, b)=>a[0].localeCompare(b[0])).map(([attributeName, attribute])=>{
++    const properties = Object.entries(attributes$1).sort((a, b)=>a[0].localeCompare(b[0], 'en')).map(([attributeName, attribute])=>{
+         return attributes.attributeToPropertySignature(schema, attributeName, attribute);
+     });
+     return factory.createPropertySignature(undefined, factory.createIdentifier('attributes'), undefined, factory.createTypeLiteralNode(properties));
