@@ -64,7 +64,8 @@ const AssetsSection = ({ section }: Props) => {
 
                 return (
                   <Fragment key={documentId}>
-                    {index > 0 ? <HorizontalDivider asListItem className="mx-4 lg:mx-6" /> : null}
+                    {index > 0 && <HorizontalDivider asListItem className="mx-4 lg:mx-6" />}
+
                     <li className="w-full">
                       <DocumentRowCard
                         linkHref={isSingleFile ? (url ?? '#') : getLinkProps({ asset }).href}

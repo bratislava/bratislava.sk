@@ -65,6 +65,8 @@
   "CookieConsentLink.missingScriptModal.description": "The most common cause is a browser extension that blocks the required script (so-called \"ad blocker\") – try disabling it for this site and reload the page.",
   "CookieConsentLink.missingScriptModal.title": "Failed to load cookie settings",
   "Dialog.aria.close": "Close dialog",
+  "DocumentsSection.documents.showLess": "Show less",
+  "DocumentsSection.documents.showMore": "Show more ({{count}})",
   "FaqsSection.selectionOptions.allFaqs": "All questions",
   "FaqsSection.selectionOptions.aria": "FAQ categories",
   "FieldHeader.optional": "(Optional)",
