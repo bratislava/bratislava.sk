@@ -1586,6 +1586,7 @@ type ComponentSectionsAssets {
     sort: [String] = []
   ): AssetRelationResponseCollection
   id: ID!
+  showAll: Boolean
   text: String
   title: String
   titleLevel: ENUM_COMPONENTSECTIONSASSETS_TITLELEVEL
@@ -1597,6 +1598,7 @@ input ComponentSectionsAssetsFiltersInput {
   assets: AssetFiltersInput
   not: ComponentSectionsAssetsFiltersInput
   or: [ComponentSectionsAssetsFiltersInput]
+  showAll: BooleanFilterInput
   text: StringFilterInput
   title: StringFilterInput
   titleLevel: StringFilterInput
@@ -1606,6 +1608,7 @@ input ComponentSectionsAssetsInput {
   allowCollapsingDocuments: Boolean
   assets: [ID]
   id: ID
+  showAll: Boolean
   text: String
   title: String
   titleLevel: ENUM_COMPONENTSECTIONSASSETS_TITLELEVEL

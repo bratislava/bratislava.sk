@@ -8,6 +8,7 @@ import HorizontalDivider from '@/src/components/common/Divider/HorizontalDivider
 import Icon from '@/src/components/common/Icon/Icon'
 import SectionContainer from '@/src/components/layouts/SectionContainer'
 import SectionHeader from '@/src/components/layouts/SectionHeader'
+import AssetsAll from '@/src/components/sections/AssetsSection/AssetsAll'
 import { AssetsSectionFragment } from '@/src/services/graphql'
 import { formatDate } from '@/src/utils/formatDate'
 import { formatFileExtension } from '@/src/utils/formatFileExtension'
@@ -20,7 +21,7 @@ type Props = {
   section: AssetsSectionFragment
 }
 
-const AMOUNT_OF_ASSETS_TO_SHOW = 5
+const COLLAPSE_LIMIT = 5
 
 /**
  * Figma: https://www.figma.com/design/17wbd0MDQcMW9NbXl6UPs8/DS--Component-library?node-id=16920-16879&t=NS3WUvx90JDmQIlG-0
@@ -29,18 +30,31 @@ const AMOUNT_OF_ASSETS_TO_SHOW = 5
 const AssetsSection = ({ section }: Props) => {
   const { t } = useTranslation()
   const locale = useLocale()
-  const [showAllDocuments, setShowAllDocuments] = useState(false)
+  const [isCollapsed, setIsCollapsed] = useState(false)
   const listId = useId()
 
   const {
     title,
     text,
     assets,
+    showAll,
     allowCollapsingDocuments,
     titleLevelAssetsSection: titleLevel,
   } = section
 
+  if (showAll) {
+    return (
+      <SectionContainer>
+        <AssetsAll section={section} />
+      </SectionContainer>
+    )
+  }
+
   const filteredAssets = assets.filter(isDefined)
+  const assetsToShow = filteredAssets.slice(
+    0,
+    isCollapsed || !allowCollapsingDocuments ? filteredAssets.length : COLLAPSE_LIMIT,
+  )
 
   return (
     <SectionContainer>
@@ -49,13 +63,7 @@ const AssetsSection = ({ section }: Props) => {
 
         <div className="flex flex-col rounded-lg border py-2">
           <ul id={listId}>
-            {filteredAssets
-              .slice(
-                0,
-                showAllDocuments || !allowCollapsingDocuments
-                  ? filteredAssets.length
-                  : AMOUNT_OF_ASSETS_TO_SHOW,
-              )
+            {assetsToShow
               .map((asset, index) => {
                 const { title: assetTitle, files, assetCategory, updatedAt, documentId } = asset
 
@@ -108,7 +116,7 @@ const AssetsSection = ({ section }: Props) => {
               .filter(isDefined)}
           </ul>
 
-          {allowCollapsingDocuments && filteredAssets.length > AMOUNT_OF_ASSETS_TO_SHOW && (
+          {allowCollapsingDocuments && filteredAssets.length > COLLAPSE_LIMIT && (
             <>
               <HorizontalDivider className="mx-6" />
 
@@ -117,12 +125,12 @@ const AssetsSection = ({ section }: Props) => {
                   fullWidth
                   className="mx-6 py-2"
                   variant="plain"
-                  onClick={() => setShowAllDocuments(!showAllDocuments)}
-                  endIcon={<Icon name={showAllDocuments ? 'chevron-up' : 'chevron-down'} />}
-                  aria-expanded={showAllDocuments}
+                  onClick={() => setIsCollapsed(!isCollapsed)}
+                  endIcon={<Icon name={isCollapsed ? 'chevron-up' : 'chevron-down'} />}
+                  aria-expanded={isCollapsed}
                   aria-controls={listId}
                 >
-                  {showAllDocuments
+                  {isCollapsed
                     ? t('DocumentsSection.documents.showLess')
                     : t('DocumentsSection.documents.showMore', {
                         count: filteredAssets.length,

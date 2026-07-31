@@ -12,6 +12,10 @@
     "text": {
       "type": "text"
     },
+    "showAll": {
+      "type": "boolean",
+      "default": false
+    },
     "assets": {
       "type": "relation",
       "relation": "oneToMany",

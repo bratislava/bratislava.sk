@@ -1805,6 +1805,7 @@ export type ComponentSectionsAssets = {
   assets: Array<Maybe<Asset>>
   assets_connection?: Maybe<AssetRelationResponseCollection>
   id: Scalars['ID']['output']
+  showAll?: Maybe<Scalars['Boolean']['output']>
   text?: Maybe<Scalars['String']['output']>
   title?: Maybe<Scalars['String']['output']>
   titleLevel?: Maybe<Enum_Componentsectionsassets_Titlelevel>
@@ -1828,6 +1829,7 @@ export type ComponentSectionsAssetsFiltersInput = {
   assets?: InputMaybe<AssetFiltersInput>
   not?: InputMaybe<ComponentSectionsAssetsFiltersInput>
   or?: InputMaybe<Array<InputMaybe<ComponentSectionsAssetsFiltersInput>>>
+  showAll?: InputMaybe<BooleanFilterInput>
   text?: InputMaybe<StringFilterInput>
   title?: InputMaybe<StringFilterInput>
   titleLevel?: InputMaybe<StringFilterInput>
@@ -1837,6 +1839,7 @@ export type ComponentSectionsAssetsInput = {
   allowCollapsingDocuments?: InputMaybe<Scalars['Boolean']['input']>
   assets?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
   id?: InputMaybe<Scalars['ID']['input']>
+  showAll?: InputMaybe<Scalars['Boolean']['input']>
   text?: InputMaybe<Scalars['String']['input']>
   title?: InputMaybe<Scalars['String']['input']>
   titleLevel?: InputMaybe<Enum_Componentsectionsassets_Titlelevel>
@@ -11111,6 +11114,7 @@ export type PageEntityFragment = {
         __typename: 'ComponentSectionsAssets'
         title?: string | null
         text?: string | null
+        showAll?: boolean | null
         allowCollapsingDocuments?: boolean | null
         titleLevelAssetsSection?: Enum_Componentsectionsassets_Titlelevel | null
         assets: Array<{
@@ -12661,6 +12665,7 @@ export type PageByPathQuery = {
           __typename: 'ComponentSectionsAssets'
           title?: string | null
           text?: string | null
+          showAll?: boolean | null
           allowCollapsingDocuments?: boolean | null
           titleLevelAssetsSection?: Enum_Componentsectionsassets_Titlelevel | null
           assets: Array<{
@@ -14249,6 +14254,7 @@ export type Dev_AllPagesQuery = {
           __typename: 'ComponentSectionsAssets'
           title?: string | null
           text?: string | null
+          showAll?: boolean | null
           allowCollapsingDocuments?: boolean | null
           titleLevelAssetsSection?: Enum_Componentsectionsassets_Titlelevel | null
           assets: Array<{
@@ -16983,6 +16989,7 @@ export type AssetsSectionFragment = {
   __typename?: 'ComponentSectionsAssets'
   title?: string | null
   text?: string | null
+  showAll?: boolean | null
   allowCollapsingDocuments?: boolean | null
   titleLevelAssetsSection?: Enum_Componentsectionsassets_Titlelevel | null
   assets: Array<{
@@ -17835,6 +17842,7 @@ type Sections_ComponentSectionsAssets_Fragment = {
   __typename: 'ComponentSectionsAssets'
   title?: string | null
   text?: string | null
+  showAll?: boolean | null
   allowCollapsingDocuments?: boolean | null
   titleLevelAssetsSection?: Enum_Componentsectionsassets_Titlelevel | null
   assets: Array<{
@@ -20620,6 +20628,7 @@ export const AssetsSectionFragmentDoc = gql`
     assets(pagination: { limit: -1 }) {
       ...AssetEntity
     }
+    showAll
     allowCollapsingDocuments
     titleLevelAssetsSection: titleLevel
   }

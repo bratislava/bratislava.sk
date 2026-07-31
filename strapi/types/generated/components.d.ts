@@ -371,7 +371,7 @@ export interface BlocksTopServicesItem extends Struct.ComponentSchema {
         'organizacna_struktura',
         'uradne_hodiny',
         'pracovne_prilezitosti',
-        'prenajom_priestorov',
+        'prenajom_priestorov'
       ]
     > &
       Schema.Attribute.Required &
@@ -475,7 +475,7 @@ export interface MenuMenuItem extends Struct.ComponentSchema {
         'zp_vystavba_03',
         'socialna_pomoc_04',
         'vzdelavanie_05',
-        'kultura_06',
+        'kultura_06'
       ]
     > &
       Schema.Attribute.Required &
@@ -547,7 +547,7 @@ export interface MenuMenuSection extends Struct.ComponentSchema {
         'sluzby_06',
         'koncepcia_06',
         'komunity_06',
-        'covid_06',
+        'covid_06'
       ]
     > &
       Schema.Attribute.Required &
@@ -635,6 +635,7 @@ export interface SectionsAssets extends Struct.ComponentSchema {
   attributes: {
     allowCollapsingDocuments: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>
     assets: Schema.Attribute.Relation<'oneToMany', 'api::asset.asset'>
+    showAll: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>
     text: Schema.Attribute.Text
     title: Schema.Attribute.String & Schema.Attribute.DefaultTo<'Dokumenty'>
     titleLevel: Schema.Attribute.Enumeration<['h2', 'h3']> & Schema.Attribute.DefaultTo<'h2'>
@@ -693,7 +694,7 @@ export interface SectionsColumns extends Struct.ComponentSchema {
     imageVariant: Schema.Attribute.Enumeration<
       [
         'columnsSection.imageVariant.withCircleBackground',
-        'columnsSection.imageVariant.imageOriginalSize',
+        'columnsSection.imageVariant.imageOriginalSize'
       ]
     > &
       Schema.Attribute.Required &
@@ -789,7 +790,7 @@ export interface SectionsDivider extends Struct.ComponentSchema {
         'budovy_04_full_width',
         'vzdelavanie',
         'skola',
-        'divadlo',
+        'divadlo'
       ]
     >
   }
@@ -1317,7 +1318,7 @@ export interface TaxAdministratorsTaxAdministrator extends Struct.ComponentSchem
 }
 
 declare module '@strapi/strapi' {
-  export module Public {
+  export namespace Public {
     export interface ComponentSchemas {
       'accordion-items.flat-text': AccordionItemsFlatText
       'accordion-items.institution': AccordionItemsInstitution
