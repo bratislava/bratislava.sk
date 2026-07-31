@@ -96,6 +96,9 @@ export const getStaticProps: GetStaticProps<PageProps, StaticParams> = async ({
         destination: locale === 'sk' ? redirectPath : `/${locale}/${redirectPath}`,
         permanent: false,
       },
+      // Without `revalidate`, Next caches the redirect for a year (`s-maxage=31536000`) and never
+      // re-runs this function, so changing or removing the alias in Strapi wouldn't take effect.
+      revalidate: 10,
     }
   }
 
