@@ -21,7 +21,7 @@ type Props = {
   section: AssetsSectionFragment
 }
 
-const COLLAPSE_LIMIT = 5
+const COLLAPSE_THRESHOLD = 5
 
 /**
  * Figma: https://www.figma.com/design/17wbd0MDQcMW9NbXl6UPs8/DS--Component-library?node-id=16920-16879&t=NS3WUvx90JDmQIlG-0
@@ -53,7 +53,7 @@ const AssetsSection = ({ section }: Props) => {
   const filteredAssets = assets.filter(isDefined)
   const assetsToShow = filteredAssets.slice(
     0,
-    isCollapsed || !allowCollapsingDocuments ? filteredAssets.length : COLLAPSE_LIMIT,
+    isCollapsed || !allowCollapsingDocuments ? filteredAssets.length : COLLAPSE_THRESHOLD,
   )
 
   return (
@@ -116,7 +116,7 @@ const AssetsSection = ({ section }: Props) => {
               .filter(isDefined)}
           </ul>
 
-          {allowCollapsingDocuments && filteredAssets.length > COLLAPSE_LIMIT && (
+          {allowCollapsingDocuments && filteredAssets.length > COLLAPSE_THRESHOLD && (
             <>
               <HorizontalDivider className="mx-6" />
 
