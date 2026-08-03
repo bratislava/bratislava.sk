@@ -37,6 +37,10 @@ const Markdown = ({ content, variant = 'default', className }: MarkdownProps) =>
     accordion: 'p-default',
   } as const
 
+  if (!content) {
+    return null
+  }
+
   return (
     <div
       {...TABLE_OF_CONTENTS_HEADING_ATTRIBUTE}
@@ -214,7 +218,7 @@ const Markdown = ({ content, variant = 'default', className }: MarkdownProps) =>
           ),
         }}
       >
-        {content ?? ''}
+        {content}
       </ReactMarkdown>
     </div>
   )
