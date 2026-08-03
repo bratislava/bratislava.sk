@@ -92,8 +92,8 @@
       },
       "allowCollapsingDocuments": {
         "edit": {
-          "label": "Povoliť skladanie dokumentov",
-          "description": "Ak je dokumentov viac ako 5, zobrazí sa tlačidlo pre zbalenie dokumentov. Ak je skladanie dokumentov vypnuté, všetky dokumenty sa zobrazia naraz.",
+          "label": "Povoliť zbalenie dokumentov",
+          "description": "Ak je dokumentov viac ako 5, zobrazí sa tlačidlo pre zbalenie dokumentov. Ak je zbalenie dokumentov vypnuté, všetky dokumenty sa zobrazia naraz.",
           "placeholder": "",
           "visible": true,
           "editable": true
