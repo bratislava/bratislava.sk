@@ -90,6 +90,20 @@
           "sortable": true
         }
       },
+      "allowCollapsingDocuments": {
+        "edit": {
+          "label": "Povoliť zbalenie dokumentov",
+          "description": "Ak je dokumentov viac ako 5, zobrazí sa tlačidlo pre zbalenie dokumentov. Ak je zbalenie dokumentov vypnuté, všetky dokumenty sa zobrazia naraz.",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "allowCollapsingDocuments",
+          "searchable": true,
+          "sortable": true
+        }
+      },
       "documentId": {
         "edit": {},
         "list": {
@@ -100,6 +114,7 @@
       }
     },
     "layouts": {
+      "list": ["id", "title", "text", "showAll", "allowCollapsingDocuments"],
       "edit": [
         [
           {
@@ -119,16 +134,21 @@
         ],
         [
           {
-            "name": "assets",
-            "size": 12
+            "name": "allowCollapsingDocuments",
+            "size": 4
           },
-          {
-            "name": "titleLevel",
-            "size": 8
-          }
+          [
+            {
+              "name": "assets",
+              "size": 12
+            },
+            {
+              "name": "titleLevel",
+              "size": 8
+            }
+          ]
         ]
-      ],
-      "list": ["id", "title", "text", "showAll"]
+      ]
     },
     "uid": "sections.assets",
     "isComponent": true

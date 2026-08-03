@@ -37,16 +37,15 @@ const DocumentRowCard = ({
   const { t } = useTranslation()
 
   return (
-    <CardBase variant="no-border" className={cn('ring-inset', className)}>
+    <CardBase variant="no-border" className={cn('rounded-xl ring-inset', className)}>
       <div className="flex items-center gap-3 py-4 lg:gap-4">
         <div className="flex grow items-start gap-3 lg:gap-4">
           <div className="lg:rounded-lg lg:bg-background-passive-secondary lg:p-3 lg:text-content-passive-secondary">
             {variant === 'single-file' ? (
               <Icon name="attachment" className="size-5 md:size-6" />
             ) : variant === 'urban-study' ? (
-                <Pictogram iconName="urban_study" className="size-6 md:size-8" />
-              ):
-                (
+              <Pictogram iconName="urban_study" className="size-6 md:size-8" />
+            ) : (
               <Icon name="folder" className="size-5 md:size-6" />
             )}
           </div>

@@ -400,6 +400,7 @@ fragment AssetsSection on ComponentSectionsAssets {
     ...AssetEntity
   }
   showAll
+  allowCollapsingDocuments
   titleLevelAssetsSection: titleLevel
 }
 
