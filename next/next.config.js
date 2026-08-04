@@ -307,6 +307,11 @@ const nextConfig = {
         locale: false,
         permanent: false,
       },
+      {
+        source: '/ochlad-sa',
+        destination: '/ochladsa',
+        permanent: true,
+      },
     ]
   },
   // Docs: https://react-svgr.com/docs/next/
