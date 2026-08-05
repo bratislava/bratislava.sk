@@ -10,7 +10,7 @@ Each sub-project contains README which should get you up and running. More docum
 
 🏡 `/next` bratislava.sk Nextjs web app
 
-🗄️ `/strapi` Strapi CMS server for bratislava.sk
+🗄️ `/strapi` Strapi CMS server for bratislava.sk — for connecting to / dumping the deployed database, see [`strapi/README.md`](./strapi/README.md#connecting-to-the-deployed-database-staging--dev--prod)
 
 📝 `/docs` contain the mapping between React and Strapi components - to be replaced by a styleguide in the future
 
