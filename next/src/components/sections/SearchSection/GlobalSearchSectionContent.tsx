@@ -1,8 +1,8 @@
 import { Typography } from '@bratislava/component-library'
 import { useIsFetching } from '@tanstack/react-query'
+import { parseAsString, useQueryState } from 'nuqs'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { Selection, TagGroup, TagList } from 'react-aria-components'
-import { StringParam, useQueryParam, withDefault } from 'use-query-params'
 import { useDebounceValue } from 'usehooks-ts'
 
 import Chip from '@/src/components/common/Chip/Chip'
@@ -13,9 +13,9 @@ import SearchResultsCount from '@/src/components/sections/SearchSection/SearchRe
 import { SearchFilters } from '@/src/components/sections/SearchSection/useQueryBySearchOption'
 import { officialBoardListDefaultFilters } from '@/src/services/ginis/fetchers/officialBoardListFetcher'
 import { getCategoryColorLocalStyle } from '@/src/utils/colors'
+import { isProductionDeployment } from '@/src/utils/isProductionDeployment'
 import { useLogSearchQueryToPlausible } from '@/src/utils/useLogSearchQueryToPlausible'
 import { useTranslation } from '@/src/utils/useTranslation'
-import { isProductionDeployment } from '@/src/utils/utils'
 
 /*
  * RAC library recommends Selection as type for selection state, which is of type `'all' | Set`.
@@ -54,7 +54,7 @@ type Props =
 const GlobalSearchSectionContent = ({ variant, searchOption }: Props) => {
   const { t } = useTranslation()
 
-  const [routerQueryValue] = useQueryParam('keyword', withDefault(StringParam, ''))
+  const [routerQueryValue] = useQueryState('keyword', parseAsString.withDefault(''))
   const [input, setInput] = useState('')
   const [debouncedInput] = useDebounceValue(input, 300)
   const [searchValue, setSearchValue] = useState(debouncedInput)

@@ -14,9 +14,8 @@ import SectionContainer from '@/src/components/layouts/SectionContainer'
 import SectionHeader from '@/src/components/layouts/SectionHeader'
 import { AccordionSectionFragment } from '@/src/services/graphql'
 import { getLinkProps } from '@/src/utils/getLinkProps'
+import { groupInstitutionsByCategory } from '@/src/utils/groupInstitutionsByCategory_deprecated'
 import { isDefined } from '@/src/utils/isDefined'
-import { groupByCategory } from '@/src/utils/pageUtils_Deprecated'
-import { isPresent } from '@/src/utils/utils'
 
 type AccordionSectionProps = {
   section: AccordionSectionFragment
@@ -39,7 +38,7 @@ const AccordionSection = ({ section }: AccordionSectionProps) => {
         <SectionHeader title={title} titleLevel={titleLevel} />
         {flatText?.length ? (
           <DisclosureGroup className="rounded-xl border border-border-active-default bg-background-passive-base py-2">
-            {flatText?.filter(isPresent).map((item, index) => (
+            {flatText?.filter(isDefined).map((item, index) => (
               <Fragment key={`disclosure-${item.category}-${index}`}>
                 {index > 0 ? <HorizontalDivider className="mx-4 lg:mx-6" /> : null}
 
@@ -72,7 +71,7 @@ const AccordionSection = ({ section }: AccordionSectionProps) => {
           </DisclosureGroup>
         ) : null}
 
-        {groupByCategory(institutions?.filter(isPresent) ?? []).map((institution, index) => (
+        {groupInstitutionsByCategory(institutions?.filter(isDefined) ?? []).map((institution, index) => (
           <DisclosureGroup
             key={`disclosure-${institution.category}-${index}`}
             className="rounded-xl border border-border-active-default bg-background-passive-base py-2"
@@ -85,7 +84,7 @@ const AccordionSection = ({ section }: AccordionSectionProps) => {
               </DisclosureHeader>
               <DisclosurePanel className="px-4 lg:px-6">
                 <div className="flex flex-col gap-4">
-                  {institution.items.filter(isPresent).map((file, itemIndex) => (
+                  {institution.items.filter(isDefined).map((file, itemIndex) => (
                     <Institution
                       key={itemIndex}
                       title={file.title ?? undefined}

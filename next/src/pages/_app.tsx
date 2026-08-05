@@ -7,10 +7,8 @@ import { Inter } from 'next/font/google'
 import Head from 'next/head'
 import { appWithTranslation } from 'next-i18next'
 import PlausibleProvider from 'next-plausible'
-import { NextAdapter } from 'next-query-params'
 import { NuqsAdapter } from 'nuqs/adapters/next/pages'
 import { OverlayProvider } from 'react-aria'
-import { QueryParamProvider } from 'use-query-params'
 
 import GTranslateSwitcher from '@/src/components/common/GTranslate/GTranslateSwitcher'
 import MLink from '@/src/components/common/MLink/MLink'
@@ -18,7 +16,7 @@ import { NavMenuContextProvider } from '@/src/components/common/NavBar/NavMenu/n
 import BAI18nProvider from '@/src/components/providers/BAI18nProvider'
 import BAQueryClientProvider from '@/src/components/providers/BAQueryClientProvider'
 import { environment } from '@/src/environment'
-import { isProductionDeployment } from '@/src/utils/utils'
+import { isProductionDeployment } from '@/src/utils/isProductionDeployment'
 
 const inter = Inter({
   variable: '--inter-font',
@@ -54,28 +52,26 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
         // trackLocalhost
       >
         <BAQueryClientProvider>
-          <QueryParamProvider adapter={NextAdapter}>
-            <NuqsAdapter>
-              <BAI18nProvider>
-                <OverlayProvider>
-                  <NavMenuContextProvider>
-                    <ComponentLibraryProvider linkComponent={MLink}>
-                      {/* This root div is used for locked body when mobile menu ist open, see MobileNavMenu component */}
-                      <div id="root">
-                        <Component {...pageProps} />
-                      </div>
-                      <GTranslateSwitcher />
-                    </ComponentLibraryProvider>
-                    <GoogleTagManager
-                      gtmId={environment.gtmId}
-                      auth={environment.gtmAuth}
-                      preview={environment.gtmPreview}
-                    />
-                  </NavMenuContextProvider>
-                </OverlayProvider>
-              </BAI18nProvider>
-            </NuqsAdapter>
-          </QueryParamProvider>
+          <NuqsAdapter>
+            <BAI18nProvider>
+              <OverlayProvider>
+                <NavMenuContextProvider>
+                  <ComponentLibraryProvider linkComponent={MLink}>
+                    {/* This root div is used for locked body when mobile menu ist open, see MobileNavMenu component */}
+                    <div id="root">
+                      <Component {...pageProps} />
+                    </div>
+                    <GTranslateSwitcher />
+                  </ComponentLibraryProvider>
+                  <GoogleTagManager
+                    gtmId={environment.gtmId}
+                    auth={environment.gtmAuth}
+                    preview={environment.gtmPreview}
+                  />
+                </NavMenuContextProvider>
+              </OverlayProvider>
+            </BAI18nProvider>
+          </NuqsAdapter>
         </BAQueryClientProvider>
       </PlausibleProvider>
     </>

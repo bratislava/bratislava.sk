@@ -1,9 +1,3 @@
-query allRegulations {
-  regulations(pagination: { limit: -1 }) {
-    ...RegulationEntity
-  }
-}
-
 query RegulationsStaticPaths($limit: Int = -1) {
   regulations(sort: "updatedAt:desc", pagination: { limit: $limit }) {
     documentId
@@ -11,74 +5,9 @@ query RegulationsStaticPaths($limit: Int = -1) {
   }
 }
 
-query RegulationById($id: ID!) {
-  regulation(documentId: $id) {
-    ...RegulationEntity
-  }
-}
-
 query RegulationBySlug($slug: String) {
   regulations(filters: { slug: { eq: $slug } }) {
     ...RegulationEntity
-  }
-}
-
-query RegulationByYear($year: String) {
-  regulations(filters: { slug: { endsWith: $year } }) {
-    ...RegulationEntity
-  }
-}
-
-mutation setFullTitleToRegulation($regulationId: ID!, $fullTitle: String) {
-  updateRegulation(documentId: $regulationId, data: { fullTitle: $fullTitle }) {
-    documentId
-  }
-}
-
-mutation setCancellationToRegulation($regulationId: ID!, $cancellationId: ID!) {
-  updateRegulation(documentId: $regulationId, data: { cancellation: $cancellationId }) {
-    documentId
-  }
-}
-
-mutation setAmendmentsToRegulation($regulationId: ID!, $amendmentsIds: [ID!]) {
-  updateRegulation(documentId: $regulationId, data: { amendments: $amendmentsIds }) {
-    documentId
-  }
-}
-
-mutation deleteRegulationById($id: ID!) {
-  deleteRegulation(documentId: $id) {
-    documentId
-  }
-}
-
-mutation createBareRegulation(
-  $regNumber: String!
-  $slug: String!
-  $titleText: String
-  $fullTitle: String
-  $effectiveFrom: Date!
-  $category: ENUM_REGULATION_CATEGORY
-  $isFullTextRegulation: Boolean
-  $mainDocumentId: ID
-  $attachmentsIds: [ID]
-) {
-  createRegulation(
-    data: {
-      regNumber: $regNumber
-      slug: $slug
-      titleText: $titleText
-      fullTitle: $fullTitle
-      effectiveFrom: $effectiveFrom
-      category: $category
-      isFullTextRegulation: $isFullTextRegulation
-      mainDocument: $mainDocumentId
-      attachments: $attachmentsIds
-    }
-  ) {
-    documentId
-    regNumber
   }
 }
 

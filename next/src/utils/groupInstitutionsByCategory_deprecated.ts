@@ -3,7 +3,7 @@ import sortBy from 'lodash/sortBy'
 
 // TODO this should be thrown away
 // Page Accordion Items
-export const groupByCategory = <T extends { category?: string | null }>(items: T[]) => {
+export const groupInstitutionsByCategory = <T extends { category?: string | null }>(items: T[]) => {
   const grouped = groupBy(items, (item) => item?.category)
   const sorted = sortBy(grouped, (group) => items.indexOf(group[0]))
 
