@@ -104,6 +104,20 @@
           "sortable": true
         }
       },
+      "resetPasswordTokenExpiresAt": {
+        "edit": {
+          "label": "resetPasswordTokenExpiresAt",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "resetPasswordTokenExpiresAt",
+          "searchable": true,
+          "sortable": true
+        }
+      },
       "registrationToken": {
         "edit": {
           "label": "registrationToken",
@@ -314,6 +328,12 @@
           },
           {
             "name": "apiTokens",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "resetPasswordTokenExpiresAt",
             "size": 6
           }
         ]

@@ -6,6 +6,160 @@
   "locale": null,
   "permissions": [
     {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "admin::api-token",
+      "properties": {
+        "fields": [
+          "name",
+          "description",
+          "kind",
+          "type",
+          "accessKey",
+          "encryptedKey",
+          "lastUsedAt",
+          "permissions",
+          "adminPermissions",
+          "adminUserOwner",
+          "expiresAt",
+          "lifespan"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": {},
+      "documentId": "ufgiwkkolhcgnz4ec90d14tv",
+      "locale": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "admin::api-token-permission",
+      "properties": {
+        "fields": [
+          "action",
+          "token"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": {},
+      "documentId": "j6rtsx0vkz250nzjzs41h5jq",
+      "locale": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "admin::permission",
+      "properties": {
+        "fields": [
+          "action",
+          "actionParameters",
+          "subject",
+          "properties",
+          "conditions",
+          "role",
+          "apiToken"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": {},
+      "documentId": "heo61awedmys1m4df988d6cp",
+      "locale": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "admin::role",
+      "properties": {
+        "fields": [
+          "name",
+          "code",
+          "description",
+          "users",
+          "permissions"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": {},
+      "documentId": "bx0gc5yhmr4ltuol2kq8aray",
+      "locale": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "admin::session",
+      "properties": {
+        "fields": [
+          "userId",
+          "sessionId",
+          "childId",
+          "deviceId",
+          "origin",
+          "expiresAt",
+          "absoluteExpiresAt",
+          "status",
+          "type",
+          "metadata"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": {},
+      "documentId": "x4blde5bmhiyclrtkubgaym2",
+      "locale": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "admin::transfer-token",
+      "properties": {
+        "fields": [
+          "name",
+          "description",
+          "accessKey",
+          "lastUsedAt",
+          "permissions",
+          "expiresAt",
+          "lifespan"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": {},
+      "documentId": "agnyi1av2xr6d4ehhg8up7v1",
+      "locale": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "admin::transfer-token-permission",
+      "properties": {
+        "fields": [
+          "action",
+          "token"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": {},
+      "documentId": "joo59vmwk46mryl71e80ju01",
+      "locale": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "admin::user",
+      "properties": {
+        "fields": [
+          "firstname",
+          "lastname",
+          "username",
+          "email",
+          "password",
+          "resetPasswordToken",
+          "resetPasswordTokenExpiresAt",
+          "registrationToken",
+          "isActive",
+          "roles",
+          "apiTokens",
+          "blocked",
+          "preferedLanguage"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": {},
+      "documentId": "rx1bj8olpph8y21iiedo6p92",
+      "locale": null
+    },
+    {
       "action": "plugin::content-manager.explorer.create",
       "subject": "api::admin-group.admin-group",
       "properties": {
@@ -2079,7 +2233,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "m9csomh8qjjpy69t5zy6e67x",
+      "documentId": "pghu481xfwb0j0rkj9xkbckf",
       "locale": null
     },
     {
@@ -2131,7 +2285,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "uqd675jxl7cvz5hrzl7boz2t",
+      "documentId": "d6uo1ihzw20mxzfgyik4p5ok",
       "locale": null
     },
     {
@@ -2165,7 +2319,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "amj9lzj1z9pt9igtl1j8v73s",
+      "documentId": "pe1ic4txqm3t0yif387sy57s",
       "locale": null
     },
     {
@@ -2499,6 +2653,166 @@
       "conditions": [],
       "actionParameters": {},
       "documentId": "exkl6g65uvdqim8rg5q461x7",
+      "locale": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "plugin::content-releases.release",
+      "properties": {
+        "fields": [
+          "name",
+          "releasedAt",
+          "scheduledAt",
+          "timezone",
+          "status",
+          "actions"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": {},
+      "documentId": "ytnq9i9a4ib4egh952e6vyj1",
+      "locale": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "plugin::content-releases.release-action",
+      "properties": {
+        "fields": [
+          "type",
+          "contentType",
+          "entryDocumentId",
+          "release",
+          "isEntryValid"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": {},
+      "documentId": "gqbpry63vsiww89v6gd4kf9g",
+      "locale": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "plugin::i18n.locale",
+      "properties": {
+        "fields": [
+          "name",
+          "code"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": {},
+      "documentId": "simhv3ofptu49ujk4kbspuza",
+      "locale": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "plugin::review-workflows.workflow",
+      "properties": {
+        "fields": [
+          "name",
+          "stages",
+          "stageRequiredToPublish",
+          "contentTypes"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": {},
+      "documentId": "oemgni6omq2zfecta0coilkz",
+      "locale": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "plugin::review-workflows.workflow-stage",
+      "properties": {
+        "fields": [
+          "name",
+          "color",
+          "workflow",
+          "permissions"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": {},
+      "documentId": "o7yqb4rvqlju347xd2lrlgn9",
+      "locale": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "plugin::upload.file",
+      "properties": {
+        "fields": [
+          "name",
+          "alternativeText",
+          "caption",
+          "focalPoint",
+          "width",
+          "height",
+          "formats",
+          "hash",
+          "ext",
+          "mime",
+          "size",
+          "url",
+          "previewUrl",
+          "provider",
+          "provider_metadata",
+          "related",
+          "folder",
+          "folderPath"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": {},
+      "documentId": "f3r55hqlznbxh8mf1kndxnln",
+      "locale": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "plugin::upload.folder",
+      "properties": {
+        "fields": [
+          "name",
+          "pathId",
+          "parent",
+          "children",
+          "files",
+          "path"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": {},
+      "documentId": "v9lmrka94wvoa5yhul85vb6u",
+      "locale": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "plugin::users-permissions.permission",
+      "properties": {
+        "fields": [
+          "action",
+          "role"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": {},
+      "documentId": "rrpyxhgm16nlwcakxou16l0s",
+      "locale": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "plugin::users-permissions.role",
+      "properties": {
+        "fields": [
+          "name",
+          "description",
+          "type",
+          "permissions",
+          "users"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": {},
+      "documentId": "jmfsivplbj377289y8w8rqxr",
       "locale": null
     },
     {
