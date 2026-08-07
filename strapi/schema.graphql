@@ -4843,7 +4843,8 @@ type UrbanStudyState {
   createdAt: DateTime
   documentId: ID!
   publishedAt: DateTime
-  title: String
+  slug: String!
+  title: String!
   updatedAt: DateTime
 }
 
@@ -4868,6 +4869,7 @@ input UrbanStudyStateFiltersInput {
   not: UrbanStudyStateFiltersInput
   or: [UrbanStudyStateFiltersInput]
   publishedAt: DateTimeFilterInput
+  slug: StringFilterInput
   title: StringFilterInput
   updatedAt: DateTimeFilterInput
 }
@@ -4875,6 +4877,7 @@ input UrbanStudyStateFiltersInput {
 input UrbanStudyStateInput {
   locale: String
   publishedAt: DateTime
+  slug: String
   title: String
 }
 
