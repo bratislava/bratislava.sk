@@ -61,7 +61,7 @@
       "relation": "oneToOne",
       "target": "api::urban-study-state.urban-study-state"
     },
-    "urban_study_category": {
+    "urbanStudyCategory": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::urban-study-category.urban-study-category"
