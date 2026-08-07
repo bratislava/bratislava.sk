@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "urban_study_states",
+  "info": {
+    "singularName": "urban-study-state",
+    "pluralName": "urban-study-states",
+    "displayName": "Stav územnej štúdie"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    }
+  }
+}
