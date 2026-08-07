@@ -1389,12 +1389,12 @@ export interface ApiTaxAdministratorsListTaxAdministratorsList extends Struct.Si
 export interface ApiUrbanStudyStateUrbanStudyState extends Struct.CollectionTypeSchema {
   collectionName: 'urban_study_states'
   info: {
-    displayName: 'Stav \u00FAzemnej \u0161t\u00FAdie'
+    displayName: '\u00DAzemn\u00E9 \u0161t\u00FAdie - stavy'
     pluralName: 'urban-study-states'
     singularName: 'urban-study-state'
   }
   options: {
-    draftAndPublish: true
+    draftAndPublish: false
   }
   attributes: {
     createdAt: Schema.Attribute.DateTime
