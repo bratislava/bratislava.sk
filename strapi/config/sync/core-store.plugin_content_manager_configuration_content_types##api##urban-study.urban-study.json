@@ -188,6 +188,21 @@
           "sortable": false
         }
       },
+      "urbanStudyState": {
+        "edit": {
+          "label": "urbanStudyState",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "title"
+        },
+        "list": {
+          "label": "urbanStudyState",
+          "searchable": true,
+          "sortable": true
+        }
+      },
       "createdAt": {
         "edit": {
           "label": "createdAt",
@@ -331,6 +346,12 @@
           {
             "name": "links",
             "size": 12
+          }
+        ],
+        [
+          {
+            "name": "urbanStudyState",
+            "size": 6
           }
         ]
       ]
