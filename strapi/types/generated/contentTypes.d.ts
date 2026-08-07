@@ -1442,11 +1442,11 @@ export interface ApiUrbanStudyUrbanStudy extends Struct.CollectionTypeSchema {
     title: Schema.Attribute.String & Schema.Attribute.Required
     updatedAt: Schema.Attribute.DateTime
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> & Schema.Attribute.Private
-    urban_study_state: Schema.Attribute.Relation<
+    urbanStudyParts: Schema.Attribute.Component<'sections.urban-study-part', true>
+    urbanStudyState: Schema.Attribute.Relation<
       'oneToOne',
       'api::urban-study-state.urban-study-state'
     >
-    urbanStudyParts: Schema.Attribute.Component<'sections.urban-study-part', true>
     urbanStudyType: Schema.Attribute.Enumeration<
       [
         'urbanStudyType.urbanistickaStudia',
