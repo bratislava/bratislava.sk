@@ -75,20 +75,6 @@
           "sortable": true
         }
       },
-      "urbanStudyType": {
-        "edit": {
-          "label": "Typ",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "urbanStudyType",
-          "searchable": true,
-          "sortable": true
-        }
-      },
       "procuredBy": {
         "edit": {
           "label": "Obstarávateľ",
@@ -203,6 +189,21 @@
           "sortable": true
         }
       },
+      "urbanStudyCategory": {
+        "edit": {
+          "label": "urbanStudyCategory",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "title"
+        },
+        "list": {
+          "label": "urbanStudyCategory",
+          "searchable": true,
+          "sortable": true
+        }
+      },
       "createdAt": {
         "edit": {
           "label": "createdAt",
@@ -276,8 +277,7 @@
         "title",
         "slug",
         "year",
-        "updatedAt",
-        "urbanStudyType"
+        "updatedAt"
       ],
       "edit": [
         [
@@ -293,10 +293,6 @@
         [
           {
             "name": "year",
-            "size": 6
-          },
-          {
-            "name": "urbanStudyType",
             "size": 6
           }
         ],
@@ -351,6 +347,10 @@
         [
           {
             "name": "urbanStudyState",
+            "size": 6
+          },
+          {
+            "name": "urbanStudyCategory",
             "size": 6
           }
         ]

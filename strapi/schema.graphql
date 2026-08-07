@@ -4770,9 +4770,9 @@ type UrbanStudy {
   slug: String!
   title: String!
   updatedAt: DateTime
+  urbanStudyCategory: UrbanStudyCategory
   urbanStudyParts(filters: ComponentSectionsUrbanStudyPartFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentSectionsUrbanStudyPart]
   urbanStudyState: UrbanStudyState
-  urban_study_category: UrbanStudyCategory
   year: String
 }
 
@@ -4780,8 +4780,11 @@ type UrbanStudyCategory {
   createdAt: DateTime
   documentId: ID!
   publishedAt: DateTime
-  title: String
+  slug: String!
+  title: String!
   updatedAt: DateTime
+  wip_uzemne_studies(filters: UrbanStudyFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [UrbanStudy]!
+  wip_uzemne_studies_connection(filters: UrbanStudyFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UrbanStudyRelationResponseCollection
 }
 
 type UrbanStudyCategoryEntity {
@@ -4805,14 +4808,18 @@ input UrbanStudyCategoryFiltersInput {
   not: UrbanStudyCategoryFiltersInput
   or: [UrbanStudyCategoryFiltersInput]
   publishedAt: DateTimeFilterInput
+  slug: StringFilterInput
   title: StringFilterInput
   updatedAt: DateTimeFilterInput
+  wip_uzemne_studies: UrbanStudyFiltersInput
 }
 
 input UrbanStudyCategoryInput {
   locale: String
   publishedAt: DateTime
+  slug: String
   title: String
+  wip_uzemne_studies: [ID]
 }
 
 type UrbanStudyCategoryRelationResponseCollection {
@@ -4850,9 +4857,9 @@ input UrbanStudyFiltersInput {
   slug: StringFilterInput
   title: StringFilterInput
   updatedAt: DateTimeFilterInput
+  urbanStudyCategory: UrbanStudyCategoryFiltersInput
   urbanStudyParts: ComponentSectionsUrbanStudyPartFiltersInput
   urbanStudyState: UrbanStudyStateFiltersInput
-  urban_study_category: UrbanStudyCategoryFiltersInput
   year: StringFilterInput
 }
 
@@ -4868,9 +4875,9 @@ input UrbanStudyInput {
   regulations: [ID]
   slug: String
   title: String
+  urbanStudyCategory: ID
   urbanStudyParts: [ComponentSectionsUrbanStudyPartInput]
   urbanStudyState: ID
-  urban_study_category: ID
   year: String
 }
 

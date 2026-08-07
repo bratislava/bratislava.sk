@@ -19,6 +19,12 @@
       "type": "uid",
       "targetField": "title",
       "required": true
+    },
+    "wip_uzemne_studies": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::urban-study.urban-study",
+      "mappedBy": "urbanStudyCategory"
     }
   }
 }

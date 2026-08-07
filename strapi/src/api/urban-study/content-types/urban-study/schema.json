@@ -63,8 +63,9 @@
     },
     "urbanStudyCategory": {
       "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::urban-study-category.urban-study-category"
+      "relation": "manyToOne",
+      "target": "api::urban-study-category.urban-study-category",
+      "inversedBy": "wip_uzemne_studies"
     }
   }
 }

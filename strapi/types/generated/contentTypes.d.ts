@@ -1389,12 +1389,12 @@ export interface ApiTaxAdministratorsListTaxAdministratorsList extends Struct.Si
 export interface ApiUrbanStudyCategoryUrbanStudyCategory extends Struct.CollectionTypeSchema {
   collectionName: 'urban_study_categories'
   info: {
-    displayName: 'Kateg\u00F3ria \u00FAzemnej \u0161t\u00FAdie'
+    displayName: '\u00DAzemn\u00E9 \u0161t\u00FAdie - kateg\u00F3rie'
     pluralName: 'urban-study-categories'
     singularName: 'urban-study-category'
   }
   options: {
-    draftAndPublish: true
+    draftAndPublish: false
   }
   attributes: {
     createdAt: Schema.Attribute.DateTime
@@ -1406,9 +1406,11 @@ export interface ApiUrbanStudyCategoryUrbanStudyCategory extends Struct.Collecti
     > &
       Schema.Attribute.Private
     publishedAt: Schema.Attribute.DateTime
-    title: Schema.Attribute.String
+    slug: Schema.Attribute.UID<'title'> & Schema.Attribute.Required
+    title: Schema.Attribute.String & Schema.Attribute.Required
     updatedAt: Schema.Attribute.DateTime
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> & Schema.Attribute.Private
+    wip_uzemne_studies: Schema.Attribute.Relation<'oneToMany', 'api::urban-study.urban-study'>
   }
 }
 
@@ -1469,8 +1471,8 @@ export interface ApiUrbanStudyUrbanStudy extends Struct.CollectionTypeSchema {
     title: Schema.Attribute.String & Schema.Attribute.Required
     updatedAt: Schema.Attribute.DateTime
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> & Schema.Attribute.Private
-    urban_study_category: Schema.Attribute.Relation<
-      'oneToOne',
+    urbanStudyCategory: Schema.Attribute.Relation<
+      'manyToOne',
       'api::urban-study-category.urban-study-category'
     >
     urbanStudyParts: Schema.Attribute.Component<'sections.urban-study-part', true>
