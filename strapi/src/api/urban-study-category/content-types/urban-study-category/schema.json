@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "urban_study_categories",
+  "info": {
+    "singularName": "urban-study-category",
+    "pluralName": "urban-study-categories",
+    "displayName": "Kategória územnej štúdie"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    }
+  }
+}

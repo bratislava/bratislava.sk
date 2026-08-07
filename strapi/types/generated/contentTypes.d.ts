@@ -1386,6 +1386,32 @@ export interface ApiTaxAdministratorsListTaxAdministratorsList extends Struct.Si
   }
 }
 
+export interface ApiUrbanStudyCategoryUrbanStudyCategory extends Struct.CollectionTypeSchema {
+  collectionName: 'urban_study_categories'
+  info: {
+    displayName: 'Kateg\u00F3ria \u00FAzemnej \u0161t\u00FAdie'
+    pluralName: 'urban-study-categories'
+    singularName: 'urban-study-category'
+  }
+  options: {
+    draftAndPublish: true
+  }
+  attributes: {
+    createdAt: Schema.Attribute.DateTime
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> & Schema.Attribute.Private
+    locale: Schema.Attribute.String & Schema.Attribute.Private
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::urban-study-category.urban-study-category'
+    > &
+      Schema.Attribute.Private
+    publishedAt: Schema.Attribute.DateTime
+    title: Schema.Attribute.String
+    updatedAt: Schema.Attribute.DateTime
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> & Schema.Attribute.Private
+  }
+}
+
 export interface ApiUrbanStudyStateUrbanStudyState extends Struct.CollectionTypeSchema {
   collectionName: 'urban_study_states'
   info: {
@@ -1442,24 +1468,15 @@ export interface ApiUrbanStudyUrbanStudy extends Struct.CollectionTypeSchema {
     title: Schema.Attribute.String & Schema.Attribute.Required
     updatedAt: Schema.Attribute.DateTime
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> & Schema.Attribute.Private
+    urban_study_category: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::urban-study-category.urban-study-category'
+    >
     urban_study_state: Schema.Attribute.Relation<
       'oneToOne',
       'api::urban-study-state.urban-study-state'
     >
     urbanStudyParts: Schema.Attribute.Component<'sections.urban-study-part', true>
-    urbanStudyType: Schema.Attribute.Enumeration<
-      [
-        'urbanStudyType.urbanistickaStudia',
-        'urbanStudyType.odvetvovaStudia',
-        'urbanStudyType.uzemnyGenerel',
-        'urbanStudyType.uzemnyPlan',
-        'urbanStudyType.uzemnyPlanZony',
-        'urbanStudyType.uzemnyPlanZmenyADoplnky',
-        'urbanStudyType.iny',
-      ]
-    > &
-      Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<'urbanStudyType.urbanistickaStudia'>
     year: Schema.Attribute.String
   }
 }
@@ -1911,6 +1928,7 @@ declare module '@strapi/strapi' {
       'api::regulation.regulation': ApiRegulationRegulation
       'api::tag.tag': ApiTagTag
       'api::tax-administrators-list.tax-administrators-list': ApiTaxAdministratorsListTaxAdministratorsList
+      'api::urban-study-category.urban-study-category': ApiUrbanStudyCategoryUrbanStudyCategory
       'api::urban-study-state.urban-study-state': ApiUrbanStudyStateUrbanStudyState
       'api::urban-study.urban-study': ApiUrbanStudyUrbanStudy
       'plugin::content-releases.release': PluginContentReleasesRelease

@@ -26,20 +26,6 @@
     "customPublishedAt": {
       "type": "datetime"
     },
-    "urbanStudyType": {
-      "type": "enumeration",
-      "required": true,
-      "default": "urbanStudyType.urbanistickaStudia",
-      "enum": [
-        "urbanStudyType.urbanistickaStudia",
-        "urbanStudyType.odvetvovaStudia",
-        "urbanStudyType.uzemnyGenerel",
-        "urbanStudyType.uzemnyPlan",
-        "urbanStudyType.uzemnyPlanZony",
-        "urbanStudyType.uzemnyPlanZmenyADoplnky",
-        "urbanStudyType.iny"
-      ]
-    },
     "procuredBy": {
       "type": "string",
       "default": "Hlavné mesto Slovenskej republiky Bratislava"
@@ -74,6 +60,11 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::urban-study-state.urban-study-state"
+    },
+    "urban_study_category": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::urban-study-category.urban-study-category"
     }
   }
 }
