@@ -4771,8 +4771,8 @@ type UrbanStudy {
   title: String!
   updatedAt: DateTime
   urbanStudyParts(filters: ComponentSectionsUrbanStudyPartFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentSectionsUrbanStudyPart]
+  urbanStudyState: UrbanStudyState
   urban_study_category: UrbanStudyCategory
-  urban_study_state: UrbanStudyState
   year: String
 }
 
@@ -4851,8 +4851,8 @@ input UrbanStudyFiltersInput {
   title: StringFilterInput
   updatedAt: DateTimeFilterInput
   urbanStudyParts: ComponentSectionsUrbanStudyPartFiltersInput
+  urbanStudyState: UrbanStudyStateFiltersInput
   urban_study_category: UrbanStudyCategoryFiltersInput
-  urban_study_state: UrbanStudyStateFiltersInput
   year: StringFilterInput
 }
 
@@ -4869,8 +4869,8 @@ input UrbanStudyInput {
   slug: String
   title: String
   urbanStudyParts: [ComponentSectionsUrbanStudyPartInput]
+  urbanStudyState: ID
   urban_study_category: ID
-  urban_study_state: ID
   year: String
 }
 

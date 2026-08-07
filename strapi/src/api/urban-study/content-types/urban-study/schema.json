@@ -56,7 +56,7 @@
       "component": "blocks.common-link",
       "repeatable": true
     },
-    "urban_study_state": {
+    "urbanStudyState": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::urban-study-state.urban-study-state"

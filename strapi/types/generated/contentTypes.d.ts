@@ -1415,12 +1415,12 @@ export interface ApiUrbanStudyCategoryUrbanStudyCategory extends Struct.Collecti
 export interface ApiUrbanStudyStateUrbanStudyState extends Struct.CollectionTypeSchema {
   collectionName: 'urban_study_states'
   info: {
-    displayName: 'Stav \u00FAzemnej \u0161t\u00FAdie'
+    displayName: '\u00DAzemn\u00E9 \u0161t\u00FAdie - stavy'
     pluralName: 'urban-study-states'
     singularName: 'urban-study-state'
   }
   options: {
-    draftAndPublish: true
+    draftAndPublish: false
   }
   attributes: {
     createdAt: Schema.Attribute.DateTime
@@ -1472,11 +1472,11 @@ export interface ApiUrbanStudyUrbanStudy extends Struct.CollectionTypeSchema {
       'oneToOne',
       'api::urban-study-category.urban-study-category'
     >
-    urban_study_state: Schema.Attribute.Relation<
+    urbanStudyParts: Schema.Attribute.Component<'sections.urban-study-part', true>
+    urbanStudyState: Schema.Attribute.Relation<
       'oneToOne',
       'api::urban-study-state.urban-study-state'
     >
-    urbanStudyParts: Schema.Attribute.Component<'sections.urban-study-part', true>
     year: Schema.Attribute.String
   }
 }
