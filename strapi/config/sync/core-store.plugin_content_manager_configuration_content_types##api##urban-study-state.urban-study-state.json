@@ -6,10 +6,10 @@
       "filterable": true,
       "searchable": true,
       "pageSize": 10,
-      "relationOpenMode": "modal",
       "mainField": "title",
       "defaultSortBy": "title",
-      "defaultSortOrder": "ASC"
+      "defaultSortOrder": "ASC",
+      "relationOpenMode": "modal"
     },
     "metadatas": {
       "id": {
@@ -22,7 +22,7 @@
       },
       "title": {
         "edit": {
-          "label": "title",
+          "label": "Nadpis",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -36,7 +36,7 @@
       },
       "slug": {
         "edit": {
-          "label": "slug",
+          "label": "Slug",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -46,6 +46,21 @@
           "label": "slug",
           "searchable": true,
           "sortable": true
+        }
+      },
+      "urbanStudies": {
+        "edit": {
+          "label": "Územné štúdie",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "title"
+        },
+        "list": {
+          "label": "urbanStudies",
+          "searchable": false,
+          "sortable": false
         }
       },
       "createdAt": {
@@ -116,23 +131,29 @@
       }
     },
     "layouts": {
+      "edit": [
+        [
+          {
+            "name": "title",
+            "size": 12
+          },
+          {
+            "name": "slug",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "urbanStudies",
+            "size": 12
+          }
+        ]
+      ],
       "list": [
         "id",
         "title",
         "slug",
         "createdAt"
-      ],
-      "edit": [
-        [
-          {
-            "name": "title",
-            "size": 6
-          },
-          {
-            "name": "slug",
-            "size": 6
-          }
-        ]
       ]
     },
     "uid": "api::urban-study-state.urban-study-state"
