@@ -8,7 +8,6 @@ import SectionHeader from '@/src/components/layouts/SectionHeader'
 import UrbanStudiesAll from '@/src/components/sections/UrbanStudiesSection/UrbanStudiesAll'
 import { UrbanStudiesSectionFragment } from '@/src/services/graphql'
 import { isDefined } from '@/src/utils/isDefined'
-import { useUrbanStudyTypeTranslationMap } from '@/src/utils/useUrbanStudyTypeTranslationMap'
 
 type Props = {
   section: UrbanStudiesSectionFragment
@@ -22,8 +21,6 @@ type Props = {
  */
 const UrbanStudiesSection = ({ section }: Props) => {
   const { title, text, urbanStudies, showAll, titleLevelUrbanStudiesSection: titleLevel } = section
-
-  const urbanStudyTypeTranslationMap = useUrbanStudyTypeTranslationMap()
 
   if (showAll) {
     return (
@@ -42,7 +39,7 @@ const UrbanStudiesSection = ({ section }: Props) => {
 
         <ul className="flex flex-col rounded-lg border py-2">
           {filteredUrbanStudies.map((urbanStudy, index) => {
-            const { documentId, slug, title: urbanStudyTitle, urbanStudyType, year } = urbanStudy
+            const { documentId, slug, title: urbanStudyTitle, urbanStudyCategory, year } = urbanStudy
 
             return (
               <Fragment key={documentId}>
@@ -55,7 +52,7 @@ const UrbanStudiesSection = ({ section }: Props) => {
                     cardTitleLevel={getCardTitleLevel(titleLevel)}
                     linkHref={`/uzemne-studie/${slug}`}
                     className="px-4 lg:px-6"
-                    metadata={[urbanStudyTypeTranslationMap[urbanStudyType], year].filter(
+                    metadata={[urbanStudyCategory?.title, year].filter(
                       isDefined,
                     )}
                   />

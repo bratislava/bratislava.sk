@@ -23,7 +23,6 @@ import { formatFileExtension } from '@/src/utils/formatFileExtension'
 import { formatFileSize } from '@/src/utils/formatFileSize'
 import { isDefined } from '@/src/utils/isDefined'
 import { useLocale } from '@/src/utils/useLocale'
-import { useUrbanStudyTypeLabel } from '@/src/utils/useUrbanStudyTypeTranslationMap'
 
 type Props = {
   urbanStudy: UrbanStudyEntityFragment
@@ -40,7 +39,7 @@ const UrbanStudyPageContent = ({ urbanStudy }: Props) => {
   const {
     title,
     year,
-    urbanStudyType,
+    urbanStudyCategory,
     procuredBy,
     preparedBy,
     body,
@@ -50,8 +49,7 @@ const UrbanStudyPageContent = ({ urbanStudy }: Props) => {
     links,
   } = urbanStudy
 
-  const getUrbanStudyTypeLabel = useUrbanStudyTypeLabel()
-  const urbanStudyTypeLabel = getUrbanStudyTypeLabel(urbanStudyType)
+  const urbanStudyTypeLabel = urbanStudyCategory?.title
 
   const { general } = useGeneralContext()
   const urbanStudiesPage = general?.urbanStudiesPage
@@ -71,7 +69,8 @@ const UrbanStudyPageContent = ({ urbanStudy }: Props) => {
   ].filter((item) => !!item.value)
 
   const filteredParts = urbanStudyParts?.filter(isDefined) ?? []
-  const filteredRegulations = regulations?.filter(isDefined) ?? []
+  
+  const filteredRegulations = regulations.filter(isDefined)
   const filteredLinks = links?.filter(isDefined) ?? []
 
   const metadata = [urbanStudyTypeLabel, year].filter(isDefined)
@@ -83,7 +82,6 @@ const UrbanStudyPageContent = ({ urbanStudy }: Props) => {
           <Breadcrumbs breadcrumbs={breadcrumbs} />
         </SectionContainer>
       </div>
-
       <div className={cn('relative overflow-x-clip bg-background-passive-secondary')}>
         <div className="relative mx-auto max-w-(--breakpoint-xl) px-4 lg:px-8">
           <div className="py-6 lg:py-8">
@@ -111,7 +109,6 @@ const UrbanStudyPageContent = ({ urbanStudy }: Props) => {
           </div>
         </div>
       </div>
-
       <SectionContainer className="py-6 lg:py-12">
         <div className="flex flex-col gap-8 lg:flex-row lg:items-start lg:gap-12">
           <aside className="w-full lg:sticky lg:top-12 lg:order-last lg:w-80 lg:shrink-0">
@@ -153,7 +150,6 @@ const UrbanStudyPageContent = ({ urbanStudy }: Props) => {
                 // eslint-disable-next-line react/no-array-index-key
                 <div className="flex flex-col gap-4 lg:gap-6" key={partIndex}>
                   <SectionHeader title={part.title} text={part.text} />
-
                   {/* TODO We should deduplicate usage of DocumentRowCard by some more generic FE section component*/}
                   <ul className="flex flex-col rounded-lg border py-2">
                     {partItems.map((item, index) => {
@@ -181,7 +177,7 @@ const UrbanStudyPageContent = ({ urbanStudy }: Props) => {
                     })}
                   </ul>
                 </div>
-              )
+              );
             })}
 
             {detailItems.length > 0 ? (
@@ -210,7 +206,7 @@ const UrbanStudyPageContent = ({ urbanStudy }: Props) => {
         </div>
       </SectionContainer>
     </>
-  )
+  );
 }
 
 export default UrbanStudyPageContent

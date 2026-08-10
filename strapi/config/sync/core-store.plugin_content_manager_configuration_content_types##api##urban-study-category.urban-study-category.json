@@ -6,10 +6,10 @@
       "filterable": true,
       "searchable": true,
       "pageSize": 10,
-      "relationOpenMode": "modal",
       "mainField": "title",
       "defaultSortBy": "title",
-      "defaultSortOrder": "ASC"
+      "defaultSortOrder": "ASC",
+      "relationOpenMode": "modal"
     },
     "metadatas": {
       "id": {
@@ -22,7 +22,7 @@
       },
       "title": {
         "edit": {
-          "label": "title",
+          "label": "Nadpis",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -36,7 +36,7 @@
       },
       "slug": {
         "edit": {
-          "label": "slug",
+          "label": "Slug",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -50,7 +50,7 @@
       },
       "wip_uzemne_studies": {
         "edit": {
-          "label": "wip_uzemne_studies",
+          "label": "Územné štúdie",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -131,29 +131,29 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "title",
-        "slug",
-        "wip_uzemne_studies"
-      ],
       "edit": [
         [
           {
             "name": "title",
-            "size": 6
+            "size": 12
           },
           {
             "name": "slug",
-            "size": 6
+            "size": 12
           }
         ],
         [
           {
             "name": "wip_uzemne_studies",
-            "size": 6
+            "size": 12
           }
         ]
+      ],
+      "list": [
+        "id",
+        "title",
+        "slug",
+        "wip_uzemne_studies"
       ]
     },
     "uid": "api::urban-study-category.urban-study-category"

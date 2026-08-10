@@ -16,7 +16,6 @@ import {
 } from '@/src/services/meili/fetchers/urbanStudiesFetcher'
 import { isDefined } from '@/src/utils/isDefined'
 import { useTranslation } from '@/src/utils/useTranslation'
-import { useUrbanStudyTypeLabel } from '@/src/utils/useUrbanStudyTypeTranslationMap'
 
 type Props = {
   section: UrbanStudiesSectionFragment
@@ -30,8 +29,6 @@ const UrbanStudiesAll = ({ section }: Props) => {
   const { t } = useTranslation()
 
   const { title, text, titleLevelUrbanStudiesSection: titleLevel } = section
-
-  const getUrbanStudyTypeLabel = useUrbanStudyTypeLabel()
 
   const [input, setInput] = useState('')
   const [debouncedInput] = useDebounceValue(input, 300)
@@ -77,7 +74,6 @@ const UrbanStudiesAll = ({ section }: Props) => {
           isLoading={isPending}
         />
       </div>
-
       {data?.hits?.length ? (
         <ul className="flex flex-col rounded-lg border py-2" data-cy="search-results">
           {data.hits.map((urbanStudy, index) => {
@@ -91,7 +87,7 @@ const UrbanStudiesAll = ({ section }: Props) => {
                       title: urbanStudy.title,
                       linkHref: `/uzemne-studie/${urbanStudy.slug}`,
                       metadata: [
-                        getUrbanStudyTypeLabel(urbanStudy.urbanStudyType),
+                        urbanStudy.urbanStudyCategory?.title,
                         urbanStudy.year,
                       ].filter(isDefined),
                       customIconName: 'urban_study',
@@ -99,7 +95,7 @@ const UrbanStudiesAll = ({ section }: Props) => {
                   />
                 </li>
               </Fragment>
-            )
+            );
           })}
         </ul>
       ) : filters.search ? (
@@ -107,7 +103,6 @@ const UrbanStudiesAll = ({ section }: Props) => {
       ) : (
         <Typography variant="p-small">{t('SearchPage.enterSearchQuery')}</Typography>
       )}
-
       {data?.estimatedTotalHits ? (
         <div className="flex flex-col items-center gap-4 lg:flex-row lg:justify-between">
           <Typography variant="p-default">{resultsCountMessage}</Typography>
@@ -120,7 +115,7 @@ const UrbanStudiesAll = ({ section }: Props) => {
         </div>
       ) : null}
     </div>
-  )
+  );
 }
 
 export default UrbanStudiesAll
