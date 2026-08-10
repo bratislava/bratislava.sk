@@ -6543,17 +6543,17 @@ export type UrbanStudyCategory = {
   slug: Scalars['String']['output']
   title: Scalars['String']['output']
   updatedAt?: Maybe<Scalars['DateTime']['output']>
-  wip_uzemne_studies: Array<Maybe<UrbanStudy>>
-  wip_uzemne_studies_connection?: Maybe<UrbanStudyRelationResponseCollection>
+  urbanStudies: Array<Maybe<UrbanStudy>>
+  urbanStudies_connection?: Maybe<UrbanStudyRelationResponseCollection>
 }
 
-export type UrbanStudyCategoryWip_Uzemne_StudiesArgs = {
+export type UrbanStudyCategoryUrbanStudiesArgs = {
   filters?: InputMaybe<UrbanStudyFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
 }
 
-export type UrbanStudyCategoryWip_Uzemne_Studies_ConnectionArgs = {
+export type UrbanStudyCategoryUrbanStudies_ConnectionArgs = {
   filters?: InputMaybe<UrbanStudyFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
@@ -6586,7 +6586,7 @@ export type UrbanStudyCategoryFiltersInput = {
   slug?: InputMaybe<StringFilterInput>
   title?: InputMaybe<StringFilterInput>
   updatedAt?: InputMaybe<DateTimeFilterInput>
-  wip_uzemne_studies?: InputMaybe<UrbanStudyFiltersInput>
+  urbanStudies?: InputMaybe<UrbanStudyFiltersInput>
 }
 
 export type UrbanStudyCategoryInput = {
@@ -6594,7 +6594,7 @@ export type UrbanStudyCategoryInput = {
   publishedAt?: InputMaybe<Scalars['DateTime']['input']>
   slug?: InputMaybe<Scalars['String']['input']>
   title?: InputMaybe<Scalars['String']['input']>
-  wip_uzemne_studies?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
+  urbanStudies?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
 }
 
 export type UrbanStudyCategoryRelationResponseCollection = {
@@ -6673,6 +6673,20 @@ export type UrbanStudyState = {
   slug: Scalars['String']['output']
   title: Scalars['String']['output']
   updatedAt?: Maybe<Scalars['DateTime']['output']>
+  urbanStudies: Array<Maybe<UrbanStudy>>
+  urbanStudies_connection?: Maybe<UrbanStudyRelationResponseCollection>
+}
+
+export type UrbanStudyStateUrbanStudiesArgs = {
+  filters?: InputMaybe<UrbanStudyFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type UrbanStudyStateUrbanStudies_ConnectionArgs = {
+  filters?: InputMaybe<UrbanStudyFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
 }
 
 export type UrbanStudyStateEntity = {
@@ -6702,6 +6716,7 @@ export type UrbanStudyStateFiltersInput = {
   slug?: InputMaybe<StringFilterInput>
   title?: InputMaybe<StringFilterInput>
   updatedAt?: InputMaybe<DateTimeFilterInput>
+  urbanStudies?: InputMaybe<UrbanStudyFiltersInput>
 }
 
 export type UrbanStudyStateInput = {
@@ -6709,6 +6724,7 @@ export type UrbanStudyStateInput = {
   publishedAt?: InputMaybe<Scalars['DateTime']['input']>
   slug?: InputMaybe<Scalars['String']['input']>
   title?: InputMaybe<Scalars['String']['input']>
+  urbanStudies?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
 }
 
 export type UrbanStudyStateRelationResponseCollection = {

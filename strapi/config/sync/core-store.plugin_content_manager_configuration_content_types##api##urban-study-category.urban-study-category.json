@@ -50,7 +50,7 @@
       },
       "urbanStudies": {
         "edit": {
-          "label": "urbanStudies",
+          "label": "Územné štúdie",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -131,12 +131,6 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "title",
-        "slug",
-        "urbanStudies"
-      ],
       "edit": [
         [
           {
@@ -151,9 +145,15 @@
         [
           {
             "name": "urbanStudies",
-            "size": 6
+            "size": 12
           }
         ]
+      ],
+      "list": [
+        "id",
+        "title",
+        "slug",
+        "urbanStudies"
       ]
     },
     "uid": "api::urban-study-category.urban-study-category"
