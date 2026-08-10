@@ -19,6 +19,12 @@
       "type": "uid",
       "targetField": "title",
       "required": true
+    },
+    "urbanStudies": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::urban-study.urban-study",
+      "mappedBy": "urbanStudyState"
     }
   }
 }

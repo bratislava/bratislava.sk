@@ -23,7 +23,6 @@ import { formatFileExtension } from '@/src/utils/formatFileExtension'
 import { formatFileSize } from '@/src/utils/formatFileSize'
 import { isDefined } from '@/src/utils/isDefined'
 import { useLocale } from '@/src/utils/useLocale'
-import { useUrbanStudyTypeLabel } from '@/src/utils/useUrbanStudyTypeTranslationMap'
 
 type Props = {
   urbanStudy: UrbanStudyEntityFragment
@@ -40,7 +39,7 @@ const UrbanStudyPageContent = ({ urbanStudy }: Props) => {
   const {
     title,
     year,
-    urbanStudyType,
+    urbanStudyCategory,
     procuredBy,
     preparedBy,
     body,
@@ -50,8 +49,7 @@ const UrbanStudyPageContent = ({ urbanStudy }: Props) => {
     links,
   } = urbanStudy
 
-  const getUrbanStudyTypeLabel = useUrbanStudyTypeLabel()
-  const urbanStudyTypeLabel = getUrbanStudyTypeLabel(urbanStudyType)
+  const urbanStudyTypeLabel = urbanStudyCategory?.title
 
   const { general } = useGeneralContext()
   const urbanStudiesPage = general?.urbanStudiesPage
@@ -71,7 +69,7 @@ const UrbanStudyPageContent = ({ urbanStudy }: Props) => {
   ].filter((item) => !!item.value)
 
   const filteredParts = urbanStudyParts?.filter(isDefined) ?? []
-  const filteredRegulations = regulations?.filter(isDefined) ?? []
+  const filteredRegulations = regulations.filter(isDefined)
   const filteredLinks = links?.filter(isDefined) ?? []
 
   const metadata = [urbanStudyTypeLabel, year].filter(isDefined)

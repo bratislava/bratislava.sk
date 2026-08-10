@@ -1410,7 +1410,7 @@ export interface ApiUrbanStudyCategoryUrbanStudyCategory extends Struct.Collecti
     title: Schema.Attribute.String & Schema.Attribute.Required
     updatedAt: Schema.Attribute.DateTime
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> & Schema.Attribute.Private
-    wip_uzemne_studies: Schema.Attribute.Relation<'oneToMany', 'api::urban-study.urban-study'>
+    urbanStudies: Schema.Attribute.Relation<'oneToMany', 'api::urban-study.urban-study'>
   }
 }
 
@@ -1438,6 +1438,7 @@ export interface ApiUrbanStudyStateUrbanStudyState extends Struct.CollectionType
     title: Schema.Attribute.String & Schema.Attribute.Required
     updatedAt: Schema.Attribute.DateTime
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> & Schema.Attribute.Private
+    urbanStudies: Schema.Attribute.Relation<'oneToMany', 'api::urban-study.urban-study'>
   }
 }
 

@@ -48,6 +48,21 @@
           "sortable": true
         }
       },
+      "urbanStudies": {
+        "edit": {
+          "label": "Územné štúdie",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "title"
+        },
+        "list": {
+          "label": "urbanStudies",
+          "searchable": false,
+          "sortable": false
+        }
+      },
       "createdAt": {
         "edit": {
           "label": "createdAt",
@@ -116,12 +131,6 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "title",
-        "slug",
-        "createdAt"
-      ],
       "edit": [
         [
           {
@@ -132,7 +141,19 @@
             "name": "slug",
             "size": 12
           }
+        ],
+        [
+          {
+            "name": "urbanStudies",
+            "size": 12
+          }
         ]
+      ],
+      "list": [
+        "id",
+        "title",
+        "slug",
+        "createdAt"
       ]
     },
     "uid": "api::urban-study-state.urban-study-state"

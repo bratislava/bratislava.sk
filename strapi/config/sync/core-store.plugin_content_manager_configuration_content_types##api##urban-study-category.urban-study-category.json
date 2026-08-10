@@ -48,9 +48,9 @@
           "sortable": true
         }
       },
-      "wip_uzemne_studies": {
+      "urbanStudies": {
         "edit": {
-          "label": "wip_uzemne_studies",
+          "label": "urbanStudies",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -58,7 +58,7 @@
           "mainField": "title"
         },
         "list": {
-          "label": "wip_uzemne_studies",
+          "label": "urbanStudies",
           "searchable": false,
           "sortable": false
         }
@@ -135,7 +135,7 @@
         "id",
         "title",
         "slug",
-        "wip_uzemne_studies"
+        "urbanStudies"
       ],
       "edit": [
         [
@@ -150,7 +150,7 @@
         ],
         [
           {
-            "name": "wip_uzemne_studies",
+            "name": "urbanStudies",
             "size": 6
           }
         ]

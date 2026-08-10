@@ -40,7 +40,6 @@ import { isDefined } from '@/src/utils/isDefined'
 import { useLocale } from '@/src/utils/useLocale'
 import { useRegulationCategoryTranslationMap } from '@/src/utils/useRegulationCategoryTranslationMap'
 import { useTranslation } from '@/src/utils/useTranslation'
-import { useUrbanStudyTypeLabel } from '@/src/utils/useUrbanStudyTypeTranslationMap'
 
 export type SearchFilters =
   | PagesFilters
@@ -68,7 +67,6 @@ export const useQueryBySearchOption = ({
 }) => {
   const { t } = useTranslation()
   const locale = useLocale()
-  const getUrbanStudyTypeLabel = useUrbanStudyTypeLabel()
 
   const pagesQuery = useQuery({
     queryKey: getPagesQueryKey(filters, locale),
@@ -143,7 +141,7 @@ export const useQueryBySearchOption = ({
             title: urbanStudy.title,
             uniqueId: urbanStudy.slug,
             linkHref: `/uzemne-studie/${urbanStudy.slug}`,
-            metadata: [getUrbanStudyTypeLabel(urbanStudy.urbanStudyType), urbanStudy.year].filter(
+            metadata: [urbanStudy.urbanStudyCategory?.title, urbanStudy.year].filter(
               isDefined,
             ),
             customIconName: 'urban_study',

@@ -406,7 +406,9 @@ fragment AssetsSection on ComponentSectionsAssets {
 
 fragment UrbanStudyCardEntity on UrbanStudy {
   ...UrbanStudySlugEntity
-  urbanStudyType
+  urbanStudyCategory {
+    ...UrbanStudyCategoryEntity
+  }
   year
   updatedAt
 }
