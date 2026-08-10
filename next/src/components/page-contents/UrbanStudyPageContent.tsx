@@ -49,7 +49,7 @@ const UrbanStudyPageContent = ({ urbanStudy }: Props) => {
     links,
   } = urbanStudy
 
-  const urbanStudyTypeLabel = urbanStudyCategory?.title
+  const urbanStudyCategoryLabel = urbanStudyCategory?.title
 
   const { general } = useGeneralContext()
   const urbanStudiesPage = general?.urbanStudiesPage
@@ -62,7 +62,7 @@ const UrbanStudyPageContent = ({ urbanStudy }: Props) => {
   }, [title, urbanStudiesPage])
 
   const detailItems = [
-    { label: t('UrbanStudyPageContent.type'), value: urbanStudyTypeLabel },
+    { label: t('UrbanStudyPageContent.type'), value: urbanStudyCategoryLabel },
     { label: t('UrbanStudyPageContent.year'), value: year },
     { label: t('UrbanStudyPageContent.procuredBy'), value: procuredBy },
     { label: t('UrbanStudyPageContent.preparedBy'), value: preparedBy },
@@ -72,7 +72,7 @@ const UrbanStudyPageContent = ({ urbanStudy }: Props) => {
   const filteredRegulations = regulations.filter(isDefined)
   const filteredLinks = links?.filter(isDefined) ?? []
 
-  const metadata = [urbanStudyTypeLabel, year].filter(isDefined)
+  const metadata = [urbanStudyCategoryLabel, year].filter(isDefined)
 
   return (
     <>
@@ -81,7 +81,6 @@ const UrbanStudyPageContent = ({ urbanStudy }: Props) => {
           <Breadcrumbs breadcrumbs={breadcrumbs} />
         </SectionContainer>
       </div>
-
       <div className={cn('relative overflow-x-clip bg-background-passive-secondary')}>
         <div className="relative mx-auto max-w-(--breakpoint-xl) px-4 lg:px-8">
           <div className="py-6 lg:py-8">
@@ -109,7 +108,6 @@ const UrbanStudyPageContent = ({ urbanStudy }: Props) => {
           </div>
         </div>
       </div>
-
       <SectionContainer className="py-6 lg:py-12">
         <div className="flex flex-col gap-8 lg:flex-row lg:items-start lg:gap-12">
           <aside className="w-full lg:sticky lg:top-12 lg:order-last lg:w-80 lg:shrink-0">
@@ -151,7 +149,6 @@ const UrbanStudyPageContent = ({ urbanStudy }: Props) => {
                 // eslint-disable-next-line react/no-array-index-key
                 <div className="flex flex-col gap-4 lg:gap-6" key={partIndex}>
                   <SectionHeader title={part.title} text={part.text} />
-
                   {/* TODO We should deduplicate usage of DocumentRowCard by some more generic FE section component*/}
                   <ul className="flex flex-col rounded-lg border py-2">
                     {partItems.map((item, index) => {
@@ -179,7 +176,7 @@ const UrbanStudyPageContent = ({ urbanStudy }: Props) => {
                     })}
                   </ul>
                 </div>
-              )
+              );
             })}
 
             {detailItems.length > 0 ? (
@@ -208,7 +205,7 @@ const UrbanStudyPageContent = ({ urbanStudy }: Props) => {
         </div>
       </SectionContainer>
     </>
-  )
+  );
 }
 
 export default UrbanStudyPageContent
