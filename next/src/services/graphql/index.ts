@@ -3100,8 +3100,10 @@ export type ComponentSectionsTopServicesInput = {
 
 export type ComponentSectionsUrbanStudies = {
   __typename?: 'ComponentSectionsUrbanStudies'
+  category?: Maybe<UrbanStudyCategory>
   id: Scalars['ID']['output']
   showAll?: Maybe<Scalars['Boolean']['output']>
+  state?: Maybe<UrbanStudyState>
   text?: Maybe<Scalars['String']['output']>
   title?: Maybe<Scalars['String']['output']>
   titleLevel?: Maybe<Enum_Componentsectionsurbanstudies_Titlelevel>
@@ -3123,9 +3125,11 @@ export type ComponentSectionsUrbanStudiesUrbanStudies_ConnectionArgs = {
 
 export type ComponentSectionsUrbanStudiesFiltersInput = {
   and?: InputMaybe<Array<InputMaybe<ComponentSectionsUrbanStudiesFiltersInput>>>
+  category?: InputMaybe<UrbanStudyCategoryFiltersInput>
   not?: InputMaybe<ComponentSectionsUrbanStudiesFiltersInput>
   or?: InputMaybe<Array<InputMaybe<ComponentSectionsUrbanStudiesFiltersInput>>>
   showAll?: InputMaybe<BooleanFilterInput>
+  state?: InputMaybe<UrbanStudyStateFiltersInput>
   text?: InputMaybe<StringFilterInput>
   title?: InputMaybe<StringFilterInput>
   titleLevel?: InputMaybe<StringFilterInput>
@@ -3133,8 +3137,10 @@ export type ComponentSectionsUrbanStudiesFiltersInput = {
 }
 
 export type ComponentSectionsUrbanStudiesInput = {
+  category?: InputMaybe<Scalars['ID']['input']>
   id?: InputMaybe<Scalars['ID']['input']>
   showAll?: InputMaybe<Scalars['Boolean']['input']>
+  state?: InputMaybe<Scalars['ID']['input']>
   text?: InputMaybe<Scalars['String']['input']>
   title?: InputMaybe<Scalars['String']['input']>
   titleLevel?: InputMaybe<Enum_Componentsectionsurbanstudies_Titlelevel>
