@@ -74,6 +74,7 @@ const UrbanStudiesAll = ({ section }: Props) => {
           isLoading={isPending}
         />
       </div>
+
       {data?.hits?.length ? (
         <ul className="flex flex-col rounded-lg border py-2" data-cy="search-results">
           {data.hits.map((urbanStudy, index) => {
@@ -95,7 +96,7 @@ const UrbanStudiesAll = ({ section }: Props) => {
                   />
                 </li>
               </Fragment>
-            );
+            )
           })}
         </ul>
       ) : filters.search ? (
@@ -103,6 +104,7 @@ const UrbanStudiesAll = ({ section }: Props) => {
       ) : (
         <Typography variant="p-small">{t('SearchPage.enterSearchQuery')}</Typography>
       )}
+
       {data?.estimatedTotalHits ? (
         <div className="flex flex-col items-center gap-4 lg:flex-row lg:justify-between">
           <Typography variant="p-default">{resultsCountMessage}</Typography>
@@ -115,7 +117,7 @@ const UrbanStudiesAll = ({ section }: Props) => {
         </div>
       ) : null}
     </div>
-  );
+  )
 }
 
 export default UrbanStudiesAll
