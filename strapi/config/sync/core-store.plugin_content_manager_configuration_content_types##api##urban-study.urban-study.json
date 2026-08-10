@@ -8,7 +8,8 @@
       "pageSize": 10,
       "mainField": "title",
       "defaultSortBy": "updatedAt",
-      "defaultSortOrder": "DESC"
+      "defaultSortOrder": "DESC",
+      "relationOpenMode": "modal"
     },
     "metadatas": {
       "id": {
@@ -166,7 +167,8 @@
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true
+          "editable": true,
+          "mainField": "title"
         },
         "list": {
           "label": "urbanStudyParts",
@@ -180,12 +182,28 @@
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true
+          "editable": true,
+          "mainField": "label"
         },
         "list": {
           "label": "links",
           "searchable": false,
           "sortable": false
+        }
+      },
+      "urbanStudyState": {
+        "edit": {
+          "label": "Stav",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "title"
+        },
+        "list": {
+          "label": "urbanStudyState",
+          "searchable": true,
+          "sortable": true
         }
       },
       "createdAt": {
@@ -256,14 +274,6 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "title",
-        "slug",
-        "year",
-        "updatedAt",
-        "urbanStudyType"
-      ],
       "edit": [
         [
           {
@@ -282,6 +292,12 @@
           },
           {
             "name": "urbanStudyType",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "urbanStudyState",
             "size": 6
           }
         ],
@@ -311,19 +327,13 @@
         ],
         [
           {
-            "name": "preparedBy",
-            "size": 12
-          }
-        ],
-        [
-          {
             "name": "urbanStudyParts",
             "size": 12
           }
         ],
         [
           {
-            "name": "regulations",
+            "name": "preparedBy",
             "size": 12
           }
         ],
@@ -332,7 +342,21 @@
             "name": "links",
             "size": 12
           }
+        ],
+        [
+          {
+            "name": "regulations",
+            "size": 12
+          }
         ]
+      ],
+      "list": [
+        "id",
+        "title",
+        "slug",
+        "year",
+        "updatedAt",
+        "urbanStudyType"
       ]
     },
     "uid": "api::urban-study.urban-study"

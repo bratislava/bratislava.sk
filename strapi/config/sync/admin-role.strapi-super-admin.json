@@ -26,7 +26,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "ufgiwkkolhcgnz4ec90d14tv",
+      "documentId": "a0hl2ri2d1sghbsugu6i5y57",
       "locale": null
     },
     {
@@ -40,7 +40,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "j6rtsx0vkz250nzjzs41h5jq",
+      "documentId": "x5za8q76h4kqb82h5h9sch8a",
       "locale": null
     },
     {
@@ -59,7 +59,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "heo61awedmys1m4df988d6cp",
+      "documentId": "v3inanry8dvcvip3vfviyiqx",
       "locale": null
     },
     {
@@ -76,7 +76,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "bx0gc5yhmr4ltuol2kq8aray",
+      "documentId": "jjr5bbno7k7iicryailric9o",
       "locale": null
     },
     {
@@ -98,7 +98,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "x4blde5bmhiyclrtkubgaym2",
+      "documentId": "mpki2ngaupyxwk5hzbc2hsoj",
       "locale": null
     },
     {
@@ -117,7 +117,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "agnyi1av2xr6d4ehhg8up7v1",
+      "documentId": "dfo7namr4lsemdhlda99r0lx",
       "locale": null
     },
     {
@@ -131,7 +131,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "joo59vmwk46mryl71e80ju01",
+      "documentId": "sagsr3pf6hr9aofo3hfpzhah",
       "locale": null
     },
     {
@@ -156,7 +156,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "rx1bj8olpph8y21iiedo6p92",
+      "documentId": "age0ogf47t14b0yvjla12g4c",
       "locale": null
     },
     {
@@ -2204,6 +2204,69 @@
     },
     {
       "action": "plugin::content-manager.explorer.create",
+      "subject": "api::urban-study-state.urban-study-state",
+      "properties": {
+        "fields": [
+          "title",
+          "slug",
+          "urbanStudies"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": {},
+      "documentId": "fnkosq018dqysuj44ktatyst",
+      "locale": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "subject": "api::urban-study-state.urban-study-state",
+      "properties": {},
+      "conditions": [],
+      "actionParameters": {},
+      "documentId": "o38snmzi5pxxg0vhu5w5ixra",
+      "locale": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.publish",
+      "subject": "api::urban-study-state.urban-study-state",
+      "properties": {},
+      "conditions": [],
+      "actionParameters": {},
+      "documentId": "tzhajnhwabzvsvmb3fiv3u2h",
+      "locale": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::urban-study-state.urban-study-state",
+      "properties": {
+        "fields": [
+          "title",
+          "slug",
+          "urbanStudies"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": {},
+      "documentId": "uixg3q3gkgymxezrar2imtjh",
+      "locale": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::urban-study-state.urban-study-state",
+      "properties": {
+        "fields": [
+          "title",
+          "slug",
+          "urbanStudies"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": {},
+      "documentId": "wkaqowqm2g93bf4z81h7si53",
+      "locale": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
       "subject": "api::urban-study.urban-study",
       "properties": {
         "fields": [
@@ -2212,6 +2275,7 @@
           "year",
           "customPublishedAt",
           "urbanStudyType",
+          "urbanStudyState",
           "procuredBy",
           "preparedBy",
           "body",
@@ -2233,7 +2297,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "pghu481xfwb0j0rkj9xkbckf",
+      "documentId": "uetpfcafx2dvxy771wyp7lat",
       "locale": null
     },
     {
@@ -2264,6 +2328,7 @@
           "year",
           "customPublishedAt",
           "urbanStudyType",
+          "urbanStudyState",
           "procuredBy",
           "preparedBy",
           "body",
@@ -2285,7 +2350,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "d6uo1ihzw20mxzfgyik4p5ok",
+      "documentId": "b4hq3tjiybzqfyd1441s6eaw",
       "locale": null
     },
     {
@@ -2298,6 +2363,7 @@
           "year",
           "customPublishedAt",
           "urbanStudyType",
+          "urbanStudyState",
           "procuredBy",
           "preparedBy",
           "body",
@@ -2319,7 +2385,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "pe1ic4txqm3t0yif387sy57s",
+      "documentId": "mev16pglytt3a6rqcrwunyky",
       "locale": null
     },
     {
@@ -2670,7 +2736,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "ytnq9i9a4ib4egh952e6vyj1",
+      "documentId": "c7f9xqtu5yvizvufgfgujdo1",
       "locale": null
     },
     {
@@ -2687,7 +2753,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "gqbpry63vsiww89v6gd4kf9g",
+      "documentId": "omqigeap6p1ta1y7nznrfq5u",
       "locale": null
     },
     {
@@ -2701,7 +2767,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "simhv3ofptu49ujk4kbspuza",
+      "documentId": "kjus5a8sxqcsrd65laf53th4",
       "locale": null
     },
     {
@@ -2717,7 +2783,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "oemgni6omq2zfecta0coilkz",
+      "documentId": "m9qlugqa3kx75h83opdvwj2h",
       "locale": null
     },
     {
@@ -2733,7 +2799,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "o7yqb4rvqlju347xd2lrlgn9",
+      "documentId": "fcapuv4iymv4gtg5ic3531li",
       "locale": null
     },
     {
@@ -2763,7 +2829,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "f3r55hqlznbxh8mf1kndxnln",
+      "documentId": "mlth7qn0vjb88s30ftmkl1rx",
       "locale": null
     },
     {
@@ -2781,7 +2847,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "v9lmrka94wvoa5yhul85vb6u",
+      "documentId": "yb5v5s2pciudp6v3yqidtxpc",
       "locale": null
     },
     {
@@ -2795,7 +2861,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "rrpyxhgm16nlwcakxou16l0s",
+      "documentId": "ms24acyy9obx7jrutangt6gh",
       "locale": null
     },
     {
@@ -2812,7 +2878,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "jmfsivplbj377289y8w8rqxr",
+      "documentId": "jluv6v08ynebuoj8tnqbapri",
       "locale": null
     },
     {

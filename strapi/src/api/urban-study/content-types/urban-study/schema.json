@@ -40,6 +40,12 @@
         "urbanStudyType.iny"
       ]
     },
+    "urbanStudyState": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::urban-study-state.urban-study-state",
+      "inversedBy": "urbanStudies"
+    },
     "procuredBy": {
       "type": "string",
       "default": "Hlavné mesto Slovenskej republiky Bratislava"

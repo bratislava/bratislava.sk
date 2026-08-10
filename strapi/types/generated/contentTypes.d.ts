@@ -1386,6 +1386,34 @@ export interface ApiTaxAdministratorsListTaxAdministratorsList extends Struct.Si
   }
 }
 
+export interface ApiUrbanStudyStateUrbanStudyState extends Struct.CollectionTypeSchema {
+  collectionName: 'urban_study_states'
+  info: {
+    displayName: '\u00DAzemn\u00E9 \u0161t\u00FAdie - stavy'
+    pluralName: 'urban-study-states'
+    singularName: 'urban-study-state'
+  }
+  options: {
+    draftAndPublish: false
+  }
+  attributes: {
+    createdAt: Schema.Attribute.DateTime
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> & Schema.Attribute.Private
+    locale: Schema.Attribute.String & Schema.Attribute.Private
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::urban-study-state.urban-study-state'
+    > &
+      Schema.Attribute.Private
+    publishedAt: Schema.Attribute.DateTime
+    slug: Schema.Attribute.UID<'title'> & Schema.Attribute.Required
+    title: Schema.Attribute.String & Schema.Attribute.Required
+    updatedAt: Schema.Attribute.DateTime
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> & Schema.Attribute.Private
+    urbanStudies: Schema.Attribute.Relation<'oneToMany', 'api::urban-study.urban-study'>
+  }
+}
+
 export interface ApiUrbanStudyUrbanStudy extends Struct.CollectionTypeSchema {
   collectionName: 'urban_studies'
   info: {
@@ -1417,6 +1445,10 @@ export interface ApiUrbanStudyUrbanStudy extends Struct.CollectionTypeSchema {
     updatedAt: Schema.Attribute.DateTime
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> & Schema.Attribute.Private
     urbanStudyParts: Schema.Attribute.Component<'sections.urban-study-part', true>
+    urbanStudyState: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::urban-study-state.urban-study-state'
+    >
     urbanStudyType: Schema.Attribute.Enumeration<
       [
         'urbanStudyType.urbanistickaStudia',
@@ -1881,6 +1913,7 @@ declare module '@strapi/strapi' {
       'api::regulation.regulation': ApiRegulationRegulation
       'api::tag.tag': ApiTagTag
       'api::tax-administrators-list.tax-administrators-list': ApiTaxAdministratorsListTaxAdministratorsList
+      'api::urban-study-state.urban-study-state': ApiUrbanStudyStateUrbanStudyState
       'api::urban-study.urban-study': ApiUrbanStudyUrbanStudy
       'plugin::content-releases.release': PluginContentReleasesRelease
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction
