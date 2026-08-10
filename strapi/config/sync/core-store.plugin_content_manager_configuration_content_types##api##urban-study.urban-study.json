@@ -8,7 +8,8 @@
       "pageSize": 10,
       "mainField": "title",
       "defaultSortBy": "updatedAt",
-      "defaultSortOrder": "DESC"
+      "defaultSortOrder": "DESC",
+      "relationOpenMode": "modal"
     },
     "metadatas": {
       "id": {
@@ -176,7 +177,7 @@
       },
       "urbanStudyState": {
         "edit": {
-          "label": "urbanStudyState",
+          "label": "Stav",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -191,7 +192,7 @@
       },
       "urbanStudyCategory": {
         "edit": {
-          "label": "urbanStudyCategory",
+          "label": "Kategória",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -304,6 +305,16 @@
         ],
         [
           {
+            "name": "urbanStudyCategory",
+            "size": 6
+          },
+          {
+            "name": "urbanStudyState",
+            "size": 6
+          }
+        ],
+        [
+          {
             "name": "approvalText",
             "size": 12
           }
@@ -322,19 +333,13 @@
         ],
         [
           {
-            "name": "preparedBy",
-            "size": 12
-          }
-        ],
-        [
-          {
             "name": "urbanStudyParts",
             "size": 12
           }
         ],
         [
           {
-            "name": "regulations",
+            "name": "preparedBy",
             "size": 12
           }
         ],
@@ -346,12 +351,8 @@
         ],
         [
           {
-            "name": "urbanStudyState",
-            "size": 6
-          },
-          {
-            "name": "urbanStudyCategory",
-            "size": 6
+            "name": "regulations",
+            "size": 12
           }
         ]
       ]

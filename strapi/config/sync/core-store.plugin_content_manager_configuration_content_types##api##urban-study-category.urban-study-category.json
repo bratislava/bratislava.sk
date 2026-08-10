@@ -6,10 +6,10 @@
       "filterable": true,
       "searchable": true,
       "pageSize": 10,
-      "relationOpenMode": "modal",
       "mainField": "title",
       "defaultSortBy": "title",
-      "defaultSortOrder": "ASC"
+      "defaultSortOrder": "ASC",
+      "relationOpenMode": "modal"
     },
     "metadatas": {
       "id": {
@@ -22,7 +22,7 @@
       },
       "title": {
         "edit": {
-          "label": "title",
+          "label": "Nadpis",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -36,7 +36,7 @@
       },
       "slug": {
         "edit": {
-          "label": "slug",
+          "label": "Slug",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -141,11 +141,11 @@
         [
           {
             "name": "title",
-            "size": 6
+            "size": 12
           },
           {
             "name": "slug",
-            "size": 6
+            "size": 12
           }
         ],
         [
