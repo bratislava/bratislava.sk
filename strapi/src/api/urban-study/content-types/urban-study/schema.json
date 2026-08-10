@@ -65,7 +65,7 @@
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::urban-study-category.urban-study-category",
-      "inversedBy": "wip_uzemne_studies"
+      "inversedBy": "urbanStudies"
     }
   }
 }

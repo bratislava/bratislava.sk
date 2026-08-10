@@ -20,7 +20,7 @@
       "targetField": "title",
       "required": true
     },
-    "wip_uzemne_studies": {
+    "urbanStudies": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::urban-study.urban-study",
