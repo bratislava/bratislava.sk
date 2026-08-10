@@ -294,18 +294,18 @@
         ],
         [
           {
-            "name": "body",
-            "size": 12
-          }
-        ],
-        [
-          {
             "name": "urbanStudyCategory",
             "size": 6
           },
           {
             "name": "urbanStudyState",
             "size": 6
+          }
+        ],
+        [
+          {
+            "name": "body",
+            "size": 12
           }
         ],
         [
@@ -328,25 +328,25 @@
         ],
         [
           {
-            "name": "urbanStudyParts",
-            "size": 12
-          }
-        ],
-        [
-          {
             "name": "preparedBy",
             "size": 12
           }
         ],
         [
           {
-            "name": "links",
+            "name": "urbanStudyParts",
             "size": 12
           }
         ],
         [
           {
             "name": "regulations",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "links",
             "size": 12
           }
         ]
