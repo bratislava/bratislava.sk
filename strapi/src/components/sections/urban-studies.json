@@ -30,6 +30,36 @@
         }
       }
     },
+    "category": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::urban-study-category.urban-study-category",
+      "conditions": {
+        "visible": {
+          "!=": [
+            {
+              "var": "showAll"
+            },
+            true
+          ]
+        }
+      }
+    },
+    "state": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::urban-study-state.urban-study-state",
+      "conditions": {
+        "visible": {
+          "!=": [
+            {
+              "var": "showAll"
+            },
+            true
+          ]
+        }
+      }
+    },
     "titleLevel": {
       "type": "enumeration",
       "default": "h2",
