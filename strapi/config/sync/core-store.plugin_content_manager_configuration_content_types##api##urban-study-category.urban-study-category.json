@@ -48,9 +48,9 @@
           "sortable": true
         }
       },
-      "wip_uzemne_studies": {
+      "urbanStudies": {
         "edit": {
-          "label": "Územné štúdie",
+          "label": "urbanStudies",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -58,7 +58,7 @@
           "mainField": "title"
         },
         "list": {
-          "label": "wip_uzemne_studies",
+          "label": "urbanStudies",
           "searchable": false,
           "sortable": false
         }
@@ -131,6 +131,12 @@
       }
     },
     "layouts": {
+      "list": [
+        "id",
+        "title",
+        "slug",
+        "urbanStudies"
+      ],
       "edit": [
         [
           {
@@ -144,16 +150,10 @@
         ],
         [
           {
-            "name": "wip_uzemne_studies",
-            "size": 12
+            "name": "urbanStudies",
+            "size": 6
           }
         ]
-      ],
-      "list": [
-        "id",
-        "title",
-        "slug",
-        "wip_uzemne_studies"
       ]
     },
     "uid": "api::urban-study-category.urban-study-category"

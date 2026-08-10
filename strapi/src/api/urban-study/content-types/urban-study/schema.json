@@ -23,6 +23,17 @@
     "year": {
       "type": "string"
     },
+    "urbanStudyState": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::urban-study-state.urban-study-state"
+    },
+    "urbanStudyCategory": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::urban-study-category.urban-study-category",
+      "inversedBy": "urbanStudies"
+    },
     "customPublishedAt": {
       "type": "datetime"
     },
@@ -55,17 +66,6 @@
       "type": "component",
       "component": "blocks.common-link",
       "repeatable": true
-    },
-    "urbanStudyState": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::urban-study-state.urban-study-state"
-    },
-    "urbanStudyCategory": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::urban-study-category.urban-study-category",
-      "inversedBy": "urbanStudies"
     }
   }
 }
