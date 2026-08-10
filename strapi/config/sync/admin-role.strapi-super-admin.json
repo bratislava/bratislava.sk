@@ -2204,6 +2204,69 @@
     },
     {
       "action": "plugin::content-manager.explorer.create",
+      "subject": "api::urban-study-category.urban-study-category",
+      "properties": {
+        "fields": [
+          "title",
+          "slug",
+          "urbanStudies"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": {},
+      "documentId": "nelsufgrs9okzvubqtucfh4c",
+      "locale": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "subject": "api::urban-study-category.urban-study-category",
+      "properties": {},
+      "conditions": [],
+      "actionParameters": {},
+      "documentId": "hkx1zxhm1snor6p816chyed2",
+      "locale": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.publish",
+      "subject": "api::urban-study-category.urban-study-category",
+      "properties": {},
+      "conditions": [],
+      "actionParameters": {},
+      "documentId": "x3r6k7iq10rdokusctrhqr90",
+      "locale": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::urban-study-category.urban-study-category",
+      "properties": {
+        "fields": [
+          "title",
+          "slug",
+          "urbanStudies"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": {},
+      "documentId": "y3eczvlip6rnxjgeto0ol7zq",
+      "locale": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::urban-study-category.urban-study-category",
+      "properties": {
+        "fields": [
+          "title",
+          "slug",
+          "urbanStudies"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": {},
+      "documentId": "xveipackubt2thisoozbldrr",
+      "locale": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
       "subject": "api::urban-study-state.urban-study-state",
       "properties": {
         "fields": [
@@ -2214,7 +2277,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "fnkosq018dqysuj44ktatyst",
+      "documentId": "o9r64t5swbu0i5iv3n4kr2wb",
       "locale": null
     },
     {
@@ -2247,7 +2310,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "uixg3q3gkgymxezrar2imtjh",
+      "documentId": "hnqbe5e1dsx1nanqiwrmnxta",
       "locale": null
     },
     {
@@ -2262,7 +2325,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "wkaqowqm2g93bf4z81h7si53",
+      "documentId": "y8i24z8yuz2vzr4adjbc20ek",
       "locale": null
     },
     {
@@ -2273,9 +2336,9 @@
           "title",
           "slug",
           "year",
-          "customPublishedAt",
-          "urbanStudyType",
           "urbanStudyState",
+          "urbanStudyCategory",
+          "customPublishedAt",
           "procuredBy",
           "preparedBy",
           "body",
@@ -2297,7 +2360,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "uetpfcafx2dvxy771wyp7lat",
+      "documentId": "ikfut0thgotwohf0n13k5ldy",
       "locale": null
     },
     {
@@ -2326,9 +2389,9 @@
           "title",
           "slug",
           "year",
-          "customPublishedAt",
-          "urbanStudyType",
           "urbanStudyState",
+          "urbanStudyCategory",
+          "customPublishedAt",
           "procuredBy",
           "preparedBy",
           "body",
@@ -2350,7 +2413,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "b4hq3tjiybzqfyd1441s6eaw",
+      "documentId": "u8ljobq261v6vl22o4q3u7g9",
       "locale": null
     },
     {
@@ -2361,9 +2424,9 @@
           "title",
           "slug",
           "year",
-          "customPublishedAt",
-          "urbanStudyType",
           "urbanStudyState",
+          "urbanStudyCategory",
+          "customPublishedAt",
           "procuredBy",
           "preparedBy",
           "body",
@@ -2385,7 +2448,7 @@
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "mev16pglytt3a6rqcrwunyky",
+      "documentId": "j4gsnrlo83sau7atvxa61ghe",
       "locale": null
     },
     {

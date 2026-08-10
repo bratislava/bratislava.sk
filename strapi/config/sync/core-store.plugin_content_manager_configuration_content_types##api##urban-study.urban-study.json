@@ -62,6 +62,36 @@
           "sortable": true
         }
       },
+      "urbanStudyState": {
+        "edit": {
+          "label": "Stav",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "title"
+        },
+        "list": {
+          "label": "urbanStudyState",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "urbanStudyCategory": {
+        "edit": {
+          "label": "Kategória",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "title"
+        },
+        "list": {
+          "label": "urbanStudyCategory",
+          "searchable": true,
+          "sortable": true
+        }
+      },
       "customPublishedAt": {
         "edit": {
           "label": "customPublishedAt",
@@ -72,20 +102,6 @@
         },
         "list": {
           "label": "customPublishedAt",
-          "searchable": true,
-          "sortable": true
-        }
-      },
-      "urbanStudyType": {
-        "edit": {
-          "label": "Typ",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "urbanStudyType",
           "searchable": true,
           "sortable": true
         }
@@ -191,21 +207,6 @@
           "sortable": false
         }
       },
-      "urbanStudyState": {
-        "edit": {
-          "label": "Stav",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true,
-          "mainField": "title"
-        },
-        "list": {
-          "label": "urbanStudyState",
-          "searchable": true,
-          "sortable": true
-        }
-      },
       "createdAt": {
         "edit": {
           "label": "createdAt",
@@ -289,13 +290,13 @@
           {
             "name": "year",
             "size": 6
-          },
-          {
-            "name": "urbanStudyType",
-            "size": 6
           }
         ],
         [
+          {
+            "name": "urbanStudyCategory",
+            "size": 6
+          },
           {
             "name": "urbanStudyState",
             "size": 6
@@ -327,25 +328,25 @@
         ],
         [
           {
-            "name": "urbanStudyParts",
-            "size": 12
-          }
-        ],
-        [
-          {
             "name": "preparedBy",
             "size": 12
           }
         ],
         [
           {
-            "name": "links",
+            "name": "urbanStudyParts",
             "size": 12
           }
         ],
         [
           {
             "name": "regulations",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "links",
             "size": 12
           }
         ]
@@ -355,8 +356,7 @@
         "title",
         "slug",
         "year",
-        "updatedAt",
-        "urbanStudyType"
+        "updatedAt"
       ]
     },
     "uid": "api::urban-study.urban-study"

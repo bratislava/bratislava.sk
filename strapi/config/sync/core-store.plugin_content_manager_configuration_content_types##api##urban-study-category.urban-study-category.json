@@ -1,5 +1,5 @@
 {
-  "key": "plugin_content_manager_configuration_content_types::api::urban-study-state.urban-study-state",
+  "key": "plugin_content_manager_configuration_content_types::api::urban-study-category.urban-study-category",
   "value": {
     "settings": {
       "bulkable": true,
@@ -153,10 +153,10 @@
         "id",
         "title",
         "slug",
-        "createdAt"
+        "urbanStudies"
       ]
     },
-    "uid": "api::urban-study-state.urban-study-state"
+    "uid": "api::urban-study-category.urban-study-category"
   },
   "type": "object",
   "environment": null,
