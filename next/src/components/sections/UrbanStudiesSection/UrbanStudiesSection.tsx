@@ -20,7 +20,15 @@ type Props = {
  * TODO Implement FE component or variant for urban studies, now using DocumentRowCard
  */
 const UrbanStudiesSection = ({ section }: Props) => {
-  const { title, text, urbanStudies, showAll, titleLevelUrbanStudiesSection: titleLevel } = section
+  const {
+    title,
+    text,
+    urbanStudies,
+    showAll,
+    titleLevelUrbanStudiesSection: titleLevel,
+    categoryUrbanStudiesSection: category,
+    stateUrbanStudiesSection: state,
+  } = section
 
   if (showAll) {
     return (
@@ -30,7 +38,10 @@ const UrbanStudiesSection = ({ section }: Props) => {
     )
   }
 
-  const filteredUrbanStudies = urbanStudies.filter(isDefined)
+  const filteredUrbanStudies = urbanStudies
+    .filter(isDefined)
+    .filter((urbanStudy) => !category || urbanStudy.urbanStudyCategory?.title === category?.title)
+    .filter((urbanStudy) => !state || urbanStudy.urbanStudyState?.title === state?.title)
 
   return (
     <SectionContainer>

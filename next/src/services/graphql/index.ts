@@ -12428,7 +12428,25 @@ export type PageEntityFragment = {
             slug: string
             title: string
           } | null
+          urbanStudyState?: {
+            __typename?: 'UrbanStudyState'
+            documentId: string
+            slug: string
+            title: string
+          } | null
         } | null>
+        categoryUrbanStudiesSection?: {
+          __typename?: 'UrbanStudyCategory'
+          documentId: string
+          slug: string
+          title: string
+        } | null
+        stateUrbanStudiesSection?: {
+          __typename?: 'UrbanStudyState'
+          documentId: string
+          slug: string
+          title: string
+        } | null
       }
     | {
         __typename: 'ComponentSectionsVideos'
@@ -14002,7 +14020,25 @@ export type PageByPathQuery = {
               slug: string
               title: string
             } | null
+            urbanStudyState?: {
+              __typename?: 'UrbanStudyState'
+              documentId: string
+              slug: string
+              title: string
+            } | null
           } | null>
+          categoryUrbanStudiesSection?: {
+            __typename?: 'UrbanStudyCategory'
+            documentId: string
+            slug: string
+            title: string
+          } | null
+          stateUrbanStudiesSection?: {
+            __typename?: 'UrbanStudyState'
+            documentId: string
+            slug: string
+            title: string
+          } | null
         }
       | {
           __typename: 'ComponentSectionsVideos'
@@ -15596,7 +15632,25 @@ export type Dev_AllPagesQuery = {
               slug: string
               title: string
             } | null
+            urbanStudyState?: {
+              __typename?: 'UrbanStudyState'
+              documentId: string
+              slug: string
+              title: string
+            } | null
           } | null>
+          categoryUrbanStudiesSection?: {
+            __typename?: 'UrbanStudyCategory'
+            documentId: string
+            slug: string
+            title: string
+          } | null
+          stateUrbanStudiesSection?: {
+            __typename?: 'UrbanStudyState'
+            documentId: string
+            slug: string
+            title: string
+          } | null
         }
       | {
           __typename: 'ComponentSectionsVideos'
@@ -16941,6 +16995,12 @@ export type UrbanStudyCardEntityFragment = {
     slug: string
     title: string
   } | null
+  urbanStudyState?: {
+    __typename?: 'UrbanStudyState'
+    documentId: string
+    slug: string
+    title: string
+  } | null
 }
 
 export type UrbanStudiesSectionFragment = {
@@ -16962,7 +17022,25 @@ export type UrbanStudiesSectionFragment = {
       slug: string
       title: string
     } | null
+    urbanStudyState?: {
+      __typename?: 'UrbanStudyState'
+      documentId: string
+      slug: string
+      title: string
+    } | null
   } | null>
+  categoryUrbanStudiesSection?: {
+    __typename?: 'UrbanStudyCategory'
+    documentId: string
+    slug: string
+    title: string
+  } | null
+  stateUrbanStudiesSection?: {
+    __typename?: 'UrbanStudyState'
+    documentId: string
+    slug: string
+    title: string
+  } | null
 }
 
 export type NumbersOverviewItemBlockFragment = {
@@ -18854,7 +18932,25 @@ type Sections_ComponentSectionsUrbanStudies_Fragment = {
       slug: string
       title: string
     } | null
+    urbanStudyState?: {
+      __typename?: 'UrbanStudyState'
+      documentId: string
+      slug: string
+      title: string
+    } | null
   } | null>
+  categoryUrbanStudiesSection?: {
+    __typename?: 'UrbanStudyCategory'
+    documentId: string
+    slug: string
+    title: string
+  } | null
+  stateUrbanStudiesSection?: {
+    __typename?: 'UrbanStudyState'
+    documentId: string
+    slug: string
+    title: string
+  } | null
 }
 
 type Sections_ComponentSectionsVideos_Fragment = {
@@ -19052,6 +19148,13 @@ export type UrbanStudyPartFragment = {
 
 export type UrbanStudyCategoryEntityFragment = {
   __typename?: 'UrbanStudyCategory'
+  documentId: string
+  slug: string
+  title: string
+}
+
+export type UrbanStudyStateEntityFragment = {
+  __typename?: 'UrbanStudyState'
   documentId: string
   slug: string
   title: string
@@ -20590,17 +20693,28 @@ export const UrbanStudyCategoryEntityFragmentDoc = gql`
     title
   }
 `
+export const UrbanStudyStateEntityFragmentDoc = gql`
+  fragment UrbanStudyStateEntity on UrbanStudyState {
+    documentId
+    slug
+    title
+  }
+`
 export const UrbanStudyCardEntityFragmentDoc = gql`
   fragment UrbanStudyCardEntity on UrbanStudy {
     ...UrbanStudySlugEntity
     urbanStudyCategory {
       ...UrbanStudyCategoryEntity
     }
+    urbanStudyState {
+      ...UrbanStudyStateEntity
+    }
     year
     updatedAt
   }
   ${UrbanStudySlugEntityFragmentDoc}
   ${UrbanStudyCategoryEntityFragmentDoc}
+  ${UrbanStudyStateEntityFragmentDoc}
 `
 export const UrbanStudiesSectionFragmentDoc = gql`
   fragment UrbanStudiesSection on ComponentSectionsUrbanStudies {
@@ -20610,9 +20724,17 @@ export const UrbanStudiesSectionFragmentDoc = gql`
       ...UrbanStudyCardEntity
     }
     showAll
+    categoryUrbanStudiesSection: category {
+      ...UrbanStudyCategoryEntity
+    }
+    stateUrbanStudiesSection: state {
+      ...UrbanStudyStateEntity
+    }
     titleLevelUrbanStudiesSection: titleLevel
   }
   ${UrbanStudyCardEntityFragmentDoc}
+  ${UrbanStudyCategoryEntityFragmentDoc}
+  ${UrbanStudyStateEntityFragmentDoc}
 `
 export const NumbersOverviewItemBlockFragmentDoc = gql`
   fragment NumbersOverviewItemBlock on ComponentBlocksNumbersOverviewItem {
