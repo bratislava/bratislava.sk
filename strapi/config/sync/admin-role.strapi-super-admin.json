@@ -2208,12 +2208,13 @@
       "properties": {
         "fields": [
           "title",
-          "slug"
+          "slug",
+          "urbanStudies"
         ]
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "exloptvmn6f0at5nev55jbnt",
+      "documentId": "fnkosq018dqysuj44ktatyst",
       "locale": null
     },
     {
@@ -2240,12 +2241,13 @@
       "properties": {
         "fields": [
           "title",
-          "slug"
+          "slug",
+          "urbanStudies"
         ]
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "qh5loykjgtn417hk0tm351jp",
+      "documentId": "uixg3q3gkgymxezrar2imtjh",
       "locale": null
     },
     {
@@ -2254,12 +2256,13 @@
       "properties": {
         "fields": [
           "title",
-          "slug"
+          "slug",
+          "urbanStudies"
         ]
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "pkzc91aub0cesynqw45vq6qu",
+      "documentId": "wkaqowqm2g93bf4z81h7si53",
       "locale": null
     },
     {
@@ -2272,6 +2275,7 @@
           "year",
           "customPublishedAt",
           "urbanStudyType",
+          "urbanStudyState",
           "procuredBy",
           "preparedBy",
           "body",
@@ -2288,13 +2292,12 @@
           "links.analyticsId",
           "links.inbaRelease",
           "links.regulation",
-          "links.asset",
-          "urbanStudyState"
+          "links.asset"
         ]
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "a5jmqngg5i7iq1vb2t6la13g",
+      "documentId": "uetpfcafx2dvxy771wyp7lat",
       "locale": null
     },
     {
@@ -2325,6 +2328,7 @@
           "year",
           "customPublishedAt",
           "urbanStudyType",
+          "urbanStudyState",
           "procuredBy",
           "preparedBy",
           "body",
@@ -2341,13 +2345,12 @@
           "links.analyticsId",
           "links.inbaRelease",
           "links.regulation",
-          "links.asset",
-          "urbanStudyState"
+          "links.asset"
         ]
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "a7jadq5vr8fx8q65kkr4ewj1",
+      "documentId": "b4hq3tjiybzqfyd1441s6eaw",
       "locale": null
     },
     {
@@ -2360,6 +2363,7 @@
           "year",
           "customPublishedAt",
           "urbanStudyType",
+          "urbanStudyState",
           "procuredBy",
           "preparedBy",
           "body",
@@ -2376,13 +2380,12 @@
           "links.analyticsId",
           "links.inbaRelease",
           "links.regulation",
-          "links.asset",
-          "urbanStudyState"
+          "links.asset"
         ]
       },
       "conditions": [],
       "actionParameters": {},
-      "documentId": "wtp1v62oz550m9249tpvu07x",
+      "documentId": "mev16pglytt3a6rqcrwunyky",
       "locale": null
     },
     {

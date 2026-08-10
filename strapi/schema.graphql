@@ -4846,6 +4846,8 @@ type UrbanStudyState {
   slug: String!
   title: String!
   updatedAt: DateTime
+  urbanStudies(filters: UrbanStudyFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [UrbanStudy]!
+  urbanStudies_connection(filters: UrbanStudyFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UrbanStudyRelationResponseCollection
 }
 
 type UrbanStudyStateEntity {
@@ -4872,6 +4874,7 @@ input UrbanStudyStateFiltersInput {
   slug: StringFilterInput
   title: StringFilterInput
   updatedAt: DateTimeFilterInput
+  urbanStudies: UrbanStudyFiltersInput
 }
 
 input UrbanStudyStateInput {
@@ -4879,6 +4882,7 @@ input UrbanStudyStateInput {
   publishedAt: DateTime
   slug: String
   title: String
+  urbanStudies: [ID]
 }
 
 type UrbanStudyStateRelationResponseCollection {
