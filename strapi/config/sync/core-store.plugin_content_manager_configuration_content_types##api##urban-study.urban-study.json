@@ -62,6 +62,36 @@
           "sortable": true
         }
       },
+      "urbanStudyState": {
+        "edit": {
+          "label": "Stav",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "title"
+        },
+        "list": {
+          "label": "urbanStudyState",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "urbanStudyCategory": {
+        "edit": {
+          "label": "Kategória",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "title"
+        },
+        "list": {
+          "label": "urbanStudyCategory",
+          "searchable": true,
+          "sortable": true
+        }
+      },
       "customPublishedAt": {
         "edit": {
           "label": "customPublishedAt",
@@ -153,7 +183,8 @@
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true
+          "editable": true,
+          "mainField": "title"
         },
         "list": {
           "label": "urbanStudyParts",
@@ -167,7 +198,8 @@
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true
+          "editable": true,
+          "mainField": "label"
         },
         "list": {
           "label": "links",
@@ -243,13 +275,6 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "title",
-        "slug",
-        "year",
-        "updatedAt"
-      ],
       "edit": [
         [
           {
@@ -325,6 +350,13 @@
             "size": 12
           }
         ]
+      ],
+      "list": [
+        "id",
+        "title",
+        "slug",
+        "year",
+        "updatedAt"
       ]
     },
     "uid": "api::urban-study.urban-study"
