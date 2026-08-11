@@ -2428,7 +2428,8 @@ input ComponentSectionsTopServicesInput {
 }
 
 type ComponentSectionsUrbanStudies {
-  category: UrbanStudyCategory
+  categories(filters: UrbanStudyCategoryFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [UrbanStudyCategory]!
+  categories_connection(filters: UrbanStudyCategoryFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UrbanStudyCategoryRelationResponseCollection
   id: ID!
   showAll: Boolean
   state: UrbanStudyState
@@ -2441,7 +2442,7 @@ type ComponentSectionsUrbanStudies {
 
 input ComponentSectionsUrbanStudiesFiltersInput {
   and: [ComponentSectionsUrbanStudiesFiltersInput]
-  category: UrbanStudyCategoryFiltersInput
+  categories: UrbanStudyCategoryFiltersInput
   not: ComponentSectionsUrbanStudiesFiltersInput
   or: [ComponentSectionsUrbanStudiesFiltersInput]
   showAll: BooleanFilterInput
@@ -2453,7 +2454,7 @@ input ComponentSectionsUrbanStudiesFiltersInput {
 }
 
 input ComponentSectionsUrbanStudiesInput {
-  category: ID
+  categories: [ID]
   id: ID
   showAll: Boolean
   state: ID
@@ -4776,8 +4777,7 @@ type UrbanStudy {
   slug: String!
   title: String!
   updatedAt: DateTime
-  urbanStudyCategories(filters: UrbanStudyCategoryFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [UrbanStudyCategory]!
-  urbanStudyCategories_connection(filters: UrbanStudyCategoryFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UrbanStudyCategoryRelationResponseCollection
+  urbanStudyCategory: UrbanStudyCategory
   urbanStudyParts(filters: ComponentSectionsUrbanStudyPartFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentSectionsUrbanStudyPart]
   urbanStudyState: UrbanStudyState
   year: String
@@ -4864,7 +4864,7 @@ input UrbanStudyFiltersInput {
   slug: StringFilterInput
   title: StringFilterInput
   updatedAt: DateTimeFilterInput
-  urbanStudyCategories: UrbanStudyCategoryFiltersInput
+  urbanStudyCategory: UrbanStudyCategoryFiltersInput
   urbanStudyParts: ComponentSectionsUrbanStudyPartFiltersInput
   urbanStudyState: UrbanStudyStateFiltersInput
   year: StringFilterInput
@@ -4882,7 +4882,7 @@ input UrbanStudyInput {
   regulations: [ID]
   slug: String
   title: String
-  urbanStudyCategories: [ID]
+  urbanStudyCategory: ID
   urbanStudyParts: [ComponentSectionsUrbanStudyPartInput]
   urbanStudyState: ID
   year: String

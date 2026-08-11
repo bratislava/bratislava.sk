@@ -49,8 +49,6 @@ const UrbanStudyPageContent = ({ urbanStudy }: Props) => {
     links,
   } = urbanStudy
 
-  const urbanStudyCategoryLabel = urbanStudyCategory?.title
-
   const { general } = useGeneralContext()
   const urbanStudiesPage = general?.urbanStudiesPage
 
@@ -62,7 +60,7 @@ const UrbanStudyPageContent = ({ urbanStudy }: Props) => {
   }, [title, urbanStudiesPage])
 
   const detailItems = [
-    { label: t('UrbanStudyPageContent.type'), value: urbanStudyCategoryLabel },
+    { label: t('UrbanStudyPageContent.type'), value: urbanStudyCategory?.title },
     { label: t('UrbanStudyPageContent.year'), value: year },
     { label: t('UrbanStudyPageContent.procuredBy'), value: procuredBy },
     { label: t('UrbanStudyPageContent.preparedBy'), value: preparedBy },
@@ -72,7 +70,7 @@ const UrbanStudyPageContent = ({ urbanStudy }: Props) => {
   const filteredRegulations = regulations.filter(isDefined)
   const filteredLinks = links?.filter(isDefined) ?? []
 
-  const metadata = [urbanStudyCategoryLabel, year].filter(isDefined)
+  const metadata = [urbanStudyCategory?.title, year].filter(isDefined)
 
   return (
     <>
@@ -176,7 +174,7 @@ const UrbanStudyPageContent = ({ urbanStudy }: Props) => {
                     })}
                   </ul>
                 </div>
-              );
+              )
             })}
 
             {detailItems.length > 0 ? (
@@ -205,7 +203,7 @@ const UrbanStudyPageContent = ({ urbanStudy }: Props) => {
         </div>
       </SectionContainer>
     </>
-  );
+  )
 }
 
 export default UrbanStudyPageContent

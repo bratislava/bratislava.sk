@@ -30,9 +30,9 @@
         }
       }
     },
-    "category": {
+    "categories": {
       "type": "relation",
-      "relation": "oneToOne",
+      "relation": "oneToMany",
       "target": "api::urban-study-category.urban-study-category",
       "conditions": {
         "visible": {

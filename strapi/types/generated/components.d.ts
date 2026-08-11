@@ -1260,8 +1260,8 @@ export interface SectionsUrbanStudies extends Struct.ComponentSchema {
     displayName: '\u00DAzemn\u00E9 \u0161t\u00FAdie [WIP]'
   }
   attributes: {
-    category: Schema.Attribute.Relation<
-      'oneToOne',
+    categories: Schema.Attribute.Relation<
+      'oneToMany',
       'api::urban-study-category.urban-study-category'
     >
     showAll: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>

@@ -75,7 +75,6 @@ const UrbanStudiesAll = ({ section }: Props) => {
           isLoading={isPending}
         />
       </div>
-
       {data?.hits?.length ? (
         <ul className="flex flex-col rounded-lg border py-2" data-cy="search-results">
           {data.hits.map((urbanStudy, index) => {
@@ -88,10 +87,9 @@ const UrbanStudiesAll = ({ section }: Props) => {
                     data={{
                       title: urbanStudy.title,
                       linkHref: `/uzemne-studie/${urbanStudy.slug}`,
-                      metadata: [
-                        urbanStudy.urbanStudyCategory?.title,
-                        urbanStudy.year,
-                      ].filter(isDefined),
+                      metadata: [urbanStudy.urbanStudyCategory?.title, urbanStudy.year].filter(
+                        isDefined,
+                      ),
                       customIconName: 'urban_study',
                     }}
                   />
@@ -105,7 +103,6 @@ const UrbanStudiesAll = ({ section }: Props) => {
       ) : (
         <Typography variant="p-small">{t('SearchPage.enterSearchQuery')}</Typography>
       )}
-
       {data?.estimatedTotalHits ? (
         <div className="flex flex-col items-center gap-4 lg:flex-row lg:justify-between">
           <Typography variant="p-default">{resultsCountMessage}</Typography>

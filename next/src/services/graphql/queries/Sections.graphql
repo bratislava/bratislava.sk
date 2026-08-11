@@ -406,7 +406,7 @@ fragment AssetsSection on ComponentSectionsAssets {
 
 fragment UrbanStudyCardEntity on UrbanStudy {
   ...UrbanStudySlugEntity
-  urbanStudyCategories {
+  urbanStudyCategory {
     ...UrbanStudyCategoryEntity
   }
   urbanStudyState {
@@ -423,7 +423,7 @@ fragment UrbanStudiesSection on ComponentSectionsUrbanStudies {
     ...UrbanStudyCardEntity
   }
   showAll
-  categoryUrbanStudiesSection: category {
+  categories {
     ...UrbanStudyCategoryEntity
   }
   stateUrbanStudiesSection: state {

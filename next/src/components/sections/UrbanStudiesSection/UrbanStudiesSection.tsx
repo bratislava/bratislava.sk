@@ -8,9 +8,12 @@ import SectionContainer from '@/src/components/layouts/SectionContainer'
 import SectionHeader from '@/src/components/layouts/SectionHeader'
 import UrbanStudiesAll from '@/src/components/sections/UrbanStudiesSection/UrbanStudiesAll'
 import { UrbanStudiesSectionFragment } from '@/src/services/graphql'
-import { getUrbanStudiesQueryKey, urbanStudiesDefaultFilters, urbanStudiesFetcher, UrbanStudiesFilters } from '@/src/services/meili/fetchers/urbanStudiesFetcher'
+import {
+  getUrbanStudiesQueryKey,
+  urbanStudiesDefaultFilters,
+  urbanStudiesFetcher,
+} from '@/src/services/meili/fetchers/urbanStudiesFetcher'
 import { isDefined } from '@/src/utils/isDefined'
-import { useRoutePreservedState } from '@/src/utils/useRoutePreservedState'
 
 type Props = {
   section: UrbanStudiesSectionFragment
@@ -29,39 +32,45 @@ const UrbanStudiesSection = ({ section }: Props) => {
     urbanStudies: urbanStudiesFromStrapi,
     showAll,
     titleLevelUrbanStudiesSection: titleLevel,
-    categoryUrbanStudiesSection: category,
+    categories,
     stateUrbanStudiesSection: state,
   } = section
+  const categorySlugs = categories.filter(isDefined).map((category) => category.slug)
 
-  const [filters, setFilters] = useRoutePreservedState<UrbanStudiesFilters>({
-      ...urbanStudiesDefaultFilters,
-      state: state ? [state.slug] : [],
-      categories: category ? [category.slug] : [],
-    })
+  const filters = {
+    ...urbanStudiesDefaultFilters,
+    state: state ? [state.slug] : [],
+    categories: categorySlugs,
+  }
 
-    const { data } = useQuery({
-      queryKey: getUrbanStudiesQueryKey(filters),
-      queryFn: () => urbanStudiesFetcher(filters),
-      placeholderData: keepPreviousData,
-      enabled:
+  const { data } = useQuery({
+    queryKey: getUrbanStudiesQueryKey(filters),
+    queryFn: () => urbanStudiesFetcher(filters),
+    placeholderData: keepPreviousData,
+    enabled:
       // don't fetch if section contains only manually selected urban studies and no other filters
       !(
         urbanStudiesFromStrapi.length > 0 &&
-        [...[category], state].filter(isDefined).length === 0
+        [...categorySlugs, state].filter(isDefined).length === 0
       ),
-    })
+  })
 
-    if (showAll) {
-      return (
-        <SectionContainer>
-          <UrbanStudiesAll section={section} />
-        </SectionContainer>
-      )
-
-    }
+  if (showAll) {
+    return (
+      <SectionContainer>
+        <UrbanStudiesAll section={section} />
+      </SectionContainer>
+    )
+  }
   const urbanStudiesToShow = [
     ...urbanStudiesFromStrapi.filter(isDefined),
-    ...(data?.hits.filter((urbanStudyFromMeili) => urbanStudiesFromStrapi.every((urbanStudyFromStrapi) => urbanStudyFromStrapi?.documentId !== urbanStudyFromMeili.documentId)) ?? [])]
+    ...(data?.hits.filter((urbanStudyFromMeili) =>
+      urbanStudiesFromStrapi.every(
+        (urbanStudyFromStrapi) =>
+          urbanStudyFromStrapi?.documentId !== urbanStudyFromMeili.documentId,
+      ),
+    ) ?? []),
+  ]
 
   return (
     <SectionContainer>
@@ -70,11 +79,18 @@ const UrbanStudiesSection = ({ section }: Props) => {
 
         <ul className="flex flex-col rounded-lg border py-2">
           {urbanStudiesToShow.map((urbanStudy, index) => {
-            const { documentId, slug, title: urbanStudyTitle, urbanStudyCategory, year } = urbanStudy
+            const {
+              documentId,
+              slug,
+              title: urbanStudyTitle,
+              urbanStudyCategory,
+              year,
+            } = urbanStudy
 
             return (
               <Fragment key={documentId}>
-                {index > 0 ? <HorizontalDivider asListItem className="mx-4 lg:mx-6" /> : null}
+                {index > 0 && <HorizontalDivider asListItem className="mx-4 lg:mx-6" />}
+
                 <li className="w-full">
                   {/* TODO Implement FE component or variant for urban studies, now using DocumentRowCard */}
                   <DocumentRowCard
@@ -83,9 +99,7 @@ const UrbanStudiesSection = ({ section }: Props) => {
                     cardTitleLevel={getCardTitleLevel(titleLevel)}
                     linkHref={`/uzemne-studie/${slug}`}
                     className="px-4 lg:px-6"
-                    metadata={[urbanStudyCategory?.title, year].filter(
-                      isDefined,
-                    )}
+                    metadata={[urbanStudyCategory?.title, year].filter(isDefined)}
                   />
                 </li>
               </Fragment>

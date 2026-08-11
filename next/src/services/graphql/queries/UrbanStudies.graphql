@@ -38,7 +38,7 @@ fragment UrbanStudyEntity on UrbanStudy {
   publishedAt
   updatedAt
   year
-  urbanStudyCategories {
+  urbanStudyCategory {
     ...UrbanStudyCategoryEntity
   }
   procuredBy
