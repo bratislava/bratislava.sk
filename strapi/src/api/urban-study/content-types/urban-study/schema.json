@@ -28,9 +28,9 @@
       "relation": "oneToOne",
       "target": "api::urban-study-state.urban-study-state"
     },
-    "urbanStudyCategory": {
+    "urbanStudyCategories": {
       "type": "relation",
-      "relation": "manyToOne",
+      "relation": "manyToMany",
       "target": "api::urban-study-category.urban-study-category",
       "inversedBy": "urbanStudies"
     },

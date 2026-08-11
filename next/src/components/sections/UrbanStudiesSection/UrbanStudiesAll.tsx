@@ -65,6 +65,7 @@ const UrbanStudiesAll = ({ section }: Props) => {
     <div className="flex flex-col gap-6">
       <div className="flex flex-col gap-6">
         <SectionHeader title={title} text={text} titleLevel={titleLevel} />
+
         <SearchBar
           ref={searchRef}
           placeholder={t('SearchPage.enterKeyword')}

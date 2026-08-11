@@ -22,9 +22,9 @@
     },
     "urbanStudies": {
       "type": "relation",
-      "relation": "oneToMany",
+      "relation": "manyToMany",
       "target": "api::urban-study.urban-study",
-      "mappedBy": "urbanStudyCategory"
+      "mappedBy": "urbanStudyCategories"
     }
   }
 }

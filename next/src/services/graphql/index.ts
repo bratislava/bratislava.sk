@@ -6511,7 +6511,8 @@ export type UrbanStudy = {
   slug: Scalars['String']['output']
   title: Scalars['String']['output']
   updatedAt?: Maybe<Scalars['DateTime']['output']>
-  urbanStudyCategory?: Maybe<UrbanStudyCategory>
+  urbanStudyCategories: Array<Maybe<UrbanStudyCategory>>
+  urbanStudyCategories_connection?: Maybe<UrbanStudyCategoryRelationResponseCollection>
   urbanStudyParts?: Maybe<Array<Maybe<ComponentSectionsUrbanStudyPart>>>
   urbanStudyState?: Maybe<UrbanStudyState>
   year?: Maybe<Scalars['String']['output']>
@@ -6531,6 +6532,18 @@ export type UrbanStudyRegulationsArgs = {
 
 export type UrbanStudyRegulations_ConnectionArgs = {
   filters?: InputMaybe<RegulationFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type UrbanStudyUrbanStudyCategoriesArgs = {
+  filters?: InputMaybe<UrbanStudyCategoryFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type UrbanStudyUrbanStudyCategories_ConnectionArgs = {
+  filters?: InputMaybe<UrbanStudyCategoryFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
 }
@@ -6642,7 +6655,7 @@ export type UrbanStudyFiltersInput = {
   slug?: InputMaybe<StringFilterInput>
   title?: InputMaybe<StringFilterInput>
   updatedAt?: InputMaybe<DateTimeFilterInput>
-  urbanStudyCategory?: InputMaybe<UrbanStudyCategoryFiltersInput>
+  urbanStudyCategories?: InputMaybe<UrbanStudyCategoryFiltersInput>
   urbanStudyParts?: InputMaybe<ComponentSectionsUrbanStudyPartFiltersInput>
   urbanStudyState?: InputMaybe<UrbanStudyStateFiltersInput>
   year?: InputMaybe<StringFilterInput>
@@ -6660,7 +6673,7 @@ export type UrbanStudyInput = {
   regulations?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
   slug?: InputMaybe<Scalars['String']['input']>
   title?: InputMaybe<Scalars['String']['input']>
-  urbanStudyCategory?: InputMaybe<Scalars['ID']['input']>
+  urbanStudyCategories?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
   urbanStudyParts?: InputMaybe<Array<InputMaybe<ComponentSectionsUrbanStudyPartInput>>>
   urbanStudyState?: InputMaybe<Scalars['ID']['input']>
   year?: InputMaybe<Scalars['String']['input']>
@@ -12422,12 +12435,12 @@ export type PageEntityFragment = {
           documentId: string
           slug: string
           title: string
-          urbanStudyCategory?: {
+          urbanStudyCategories: Array<{
             __typename?: 'UrbanStudyCategory'
             documentId: string
             slug: string
             title: string
-          } | null
+          } | null>
           urbanStudyState?: {
             __typename?: 'UrbanStudyState'
             documentId: string
@@ -14014,12 +14027,12 @@ export type PageByPathQuery = {
             documentId: string
             slug: string
             title: string
-            urbanStudyCategory?: {
+            urbanStudyCategories: Array<{
               __typename?: 'UrbanStudyCategory'
               documentId: string
               slug: string
               title: string
-            } | null
+            } | null>
             urbanStudyState?: {
               __typename?: 'UrbanStudyState'
               documentId: string
@@ -15626,12 +15639,12 @@ export type Dev_AllPagesQuery = {
             documentId: string
             slug: string
             title: string
-            urbanStudyCategory?: {
+            urbanStudyCategories: Array<{
               __typename?: 'UrbanStudyCategory'
               documentId: string
               slug: string
               title: string
-            } | null
+            } | null>
             urbanStudyState?: {
               __typename?: 'UrbanStudyState'
               documentId: string
@@ -16989,12 +17002,12 @@ export type UrbanStudyCardEntityFragment = {
   documentId: string
   slug: string
   title: string
-  urbanStudyCategory?: {
+  urbanStudyCategories: Array<{
     __typename?: 'UrbanStudyCategory'
     documentId: string
     slug: string
     title: string
-  } | null
+  } | null>
   urbanStudyState?: {
     __typename?: 'UrbanStudyState'
     documentId: string
@@ -17016,12 +17029,12 @@ export type UrbanStudiesSectionFragment = {
     documentId: string
     slug: string
     title: string
-    urbanStudyCategory?: {
+    urbanStudyCategories: Array<{
       __typename?: 'UrbanStudyCategory'
       documentId: string
       slug: string
       title: string
-    } | null
+    } | null>
     urbanStudyState?: {
       __typename?: 'UrbanStudyState'
       documentId: string
@@ -18926,12 +18939,12 @@ type Sections_ComponentSectionsUrbanStudies_Fragment = {
     documentId: string
     slug: string
     title: string
-    urbanStudyCategory?: {
+    urbanStudyCategories: Array<{
       __typename?: 'UrbanStudyCategory'
       documentId: string
       slug: string
       title: string
-    } | null
+    } | null>
     urbanStudyState?: {
       __typename?: 'UrbanStudyState'
       documentId: string
@@ -19179,12 +19192,12 @@ export type UrbanStudyEntityFragment = {
   documentId: string
   slug: string
   title: string
-  urbanStudyCategory?: {
+  urbanStudyCategories: Array<{
     __typename?: 'UrbanStudyCategory'
     documentId: string
     slug: string
     title: string
-  } | null
+  } | null>
   urbanStudyParts?: Array<{
     __typename?: 'ComponentSectionsUrbanStudyPart'
     title?: string | null
@@ -19348,12 +19361,12 @@ export type UrbanStudyBySlugQuery = {
     documentId: string
     slug: string
     title: string
-    urbanStudyCategory?: {
+    urbanStudyCategories: Array<{
       __typename?: 'UrbanStudyCategory'
       documentId: string
       slug: string
       title: string
-    } | null
+    } | null>
     urbanStudyParts?: Array<{
       __typename?: 'ComponentSectionsUrbanStudyPart'
       title?: string | null
@@ -20703,7 +20716,7 @@ export const UrbanStudyStateEntityFragmentDoc = gql`
 export const UrbanStudyCardEntityFragmentDoc = gql`
   fragment UrbanStudyCardEntity on UrbanStudy {
     ...UrbanStudySlugEntity
-    urbanStudyCategory {
+    urbanStudyCategories {
       ...UrbanStudyCategoryEntity
     }
     urbanStudyState {
@@ -21170,7 +21183,7 @@ export const UrbanStudyEntityFragmentDoc = gql`
     publishedAt
     updatedAt
     year
-    urbanStudyCategory {
+    urbanStudyCategories {
       ...UrbanStudyCategoryEntity
     }
     procuredBy

@@ -6,12 +6,16 @@ export type UrbanStudiesFilters = {
   search: string
   pageSize: number
   page: number
+  state?: string[]
+  categories?: string[]
 }
 
 export const urbanStudiesDefaultFilters: Required<UrbanStudiesFilters> = {
   search: '',
   pageSize: 10,
   page: 1,
+  state: [],
+  categories: [],
 }
 
 export const getUrbanStudiesQueryKey = (filters: UrbanStudiesFilters) => [
@@ -25,7 +29,10 @@ export const urbanStudiesFetcher = (filters: UrbanStudiesFilters) => {
     .index('search_index')
     .search<SearchIndexWrapped<'urban-study', UrbanStudyMeili>>(filters.search, {
       ...getMeilisearchPageOptions({ page: filters.page, pageSize: filters.pageSize }),
-      filter: ['type = "urban-study"'],
+      filter: ['type = "urban-study"',
+        ...(filters.state?.length ? [`urban-study.state.slug IN [${filters.state.join(',')}]`] : []),
+        ...(filters.categories?.length ? [`urban-study.category.slug IN [${filters.categories.join(',')}]`] : []),
+      ],
       sort: ['urban-study.customPublishedAtTimestamp:desc'],
     })
     .then(unwrapFromSearchIndex('urban-study'))

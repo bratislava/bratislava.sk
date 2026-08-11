@@ -4776,7 +4776,8 @@ type UrbanStudy {
   slug: String!
   title: String!
   updatedAt: DateTime
-  urbanStudyCategory: UrbanStudyCategory
+  urbanStudyCategories(filters: UrbanStudyCategoryFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [UrbanStudyCategory]!
+  urbanStudyCategories_connection(filters: UrbanStudyCategoryFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UrbanStudyCategoryRelationResponseCollection
   urbanStudyParts(filters: ComponentSectionsUrbanStudyPartFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentSectionsUrbanStudyPart]
   urbanStudyState: UrbanStudyState
   year: String
@@ -4863,7 +4864,7 @@ input UrbanStudyFiltersInput {
   slug: StringFilterInput
   title: StringFilterInput
   updatedAt: DateTimeFilterInput
-  urbanStudyCategory: UrbanStudyCategoryFiltersInput
+  urbanStudyCategories: UrbanStudyCategoryFiltersInput
   urbanStudyParts: ComponentSectionsUrbanStudyPartFiltersInput
   urbanStudyState: UrbanStudyStateFiltersInput
   year: StringFilterInput
@@ -4881,7 +4882,7 @@ input UrbanStudyInput {
   regulations: [ID]
   slug: String
   title: String
-  urbanStudyCategory: ID
+  urbanStudyCategories: [ID]
   urbanStudyParts: [ComponentSectionsUrbanStudyPartInput]
   urbanStudyState: ID
   year: String
