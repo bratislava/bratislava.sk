@@ -87,7 +87,7 @@
     "@tailwindcss/postcss": "4.1.7",
     "@types/cookiebot-sdk": "2.43.5",
     "@types/lodash": "4.17.16",
-    "@types/node": "20.17.27",
+    "@types/node": "24.13.3",
     "@types/react": "19.2.2",
     "@types/react-dom": "19.2.2",
     "@types/rss": "0.0.32",
@@ -97,7 +97,7 @@
     "prettier": "3.8.3",
     "prettier-plugin-tailwindcss": "0.8.0",
     "sass": "1.62.1",
-    "sharp": "0.32.6",
+    "sharp": "0.35.3",
     "tailwindcss": "4.2.2",
     "ts-node": "10.9.2",
     "tsc-alias": "1.8.10",
@@ -105,12 +105,12 @@
     "typescript": "5.8.2"
   },
   "engines": {
-    "node": ">=20.19.x",
-    "npm": ">=10.8.x"
+    "node": ">=24.16.x",
+    "npm": ">=11.13.x"
   },
   "volta": {
-    "node": "20.19.0",
-    "npm": "10.8.3"
+    "node": "24.16.0",
+    "npm": "11.13.0"
   },
   "overrides": {
     "@types/react": "19.2.2",
