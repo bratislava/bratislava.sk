@@ -53,6 +53,7 @@ const UrbanStudiesSection = ({ section }: Props) => {
         urbanStudiesFromStrapi.length > 0 &&
         [...categorySlugs, state].filter(isDefined).length === 0
       ),
+    select: (response) => response.hits,
   })
 
   if (showAll) {
@@ -64,7 +65,7 @@ const UrbanStudiesSection = ({ section }: Props) => {
   }
   const urbanStudiesToShow = [
     ...urbanStudiesFromStrapi.filter(isDefined),
-    ...(data?.hits.filter((urbanStudyFromMeili) =>
+    ...(data?.filter((urbanStudyFromMeili) =>
       urbanStudiesFromStrapi.every(
         (urbanStudyFromStrapi) =>
           urbanStudyFromStrapi?.documentId !== urbanStudyFromMeili.documentId,

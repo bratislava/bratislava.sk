@@ -75,6 +75,7 @@ const UrbanStudiesAll = ({ section }: Props) => {
           isLoading={isPending}
         />
       </div>
+
       {data?.hits?.length ? (
         <ul className="flex flex-col rounded-lg border py-2" data-cy="search-results">
           {data.hits.map((urbanStudy, index) => {

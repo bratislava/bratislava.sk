@@ -77,6 +77,20 @@
           "sortable": false
         }
       },
+      "titleLevel": {
+        "edit": {
+          "label": "Úroveň nadpisu sekcie",
+          "description": "Úroveň nadpisu meníme na h3 iba ak je to potrebné sémanticky. Nikdy ju nemeníme len kvôli vizuálnej veľkosti nadpisu.",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "titleLevel",
+          "searchable": true,
+          "sortable": true
+        }
+      },
       "categories": {
         "edit": {
           "label": "Kategórie",
@@ -103,20 +117,6 @@
         },
         "list": {
           "label": "state",
-          "searchable": true,
-          "sortable": true
-        }
-      },
-      "titleLevel": {
-        "edit": {
-          "label": "Úroveň nadpisu sekcie",
-          "description": "Úroveň nadpisu meníme na h3 iba ak je to potrebné sémanticky. Nikdy ju nemeníme len kvôli vizuálnej veľkosti nadpisu.",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "titleLevel",
           "searchable": true,
           "sortable": true
         }
@@ -148,16 +148,16 @@
             "size": 12
           },
           {
-            "name": "categories",
-            "size": 6
+            "name": "urbanStudies",
+            "size": 12
           },
           {
             "name": "state",
             "size": 6
           },
           {
-            "name": "urbanStudies",
-            "size": 12
+            "name": "categories",
+            "size": 6
           }
         ],
         [
@@ -167,12 +167,7 @@
           }
         ]
       ],
-      "list": [
-        "id",
-        "title",
-        "text",
-        "showAll"
-      ]
+      "list": ["id", "title", "text", "showAll"]
     },
     "uid": "sections.urban-studies",
     "isComponent": true
