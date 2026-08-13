@@ -38,7 +38,10 @@ export const useNewsletter = ({ newsletterType }: Props) => {
       .trim()
       .required(t('Newsletter.email.error.required'))
       .email(t('Newsletter.email.error.invalidFormat')),
-    acceptTerms: yup.boolean().isTrue(),
+    acceptTerms: yup
+      .boolean()
+      .required()
+      .test('isAccepted', t('Newsletter.consent.error'), (value) => value),
   })
 
   const methods = useForm<NewsletterFormValues>({

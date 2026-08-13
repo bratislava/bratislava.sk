@@ -108,7 +108,7 @@ const Newsletter = ({
                     {t('Newsletter.consent')}
                     <MLink
                       variant="underlined"
-                      href={getLinkProps({ page: privacyPolicyPage })}
+                      href={getLinkProps({ page: privacyPolicyPage }).href}
                       target="_blank"
                     >
                       {t('Newsletter.consent.privacyPageLink.label')}
