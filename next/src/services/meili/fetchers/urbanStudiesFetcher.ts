@@ -29,9 +29,14 @@ export const urbanStudiesFetcher = (filters: UrbanStudiesFilters) => {
     .index('search_index')
     .search<SearchIndexWrapped<'urban-study', UrbanStudyMeili>>(filters.search, {
       ...getMeilisearchPageOptions({ page: filters.page, pageSize: filters.pageSize }),
-      filter: ['type = "urban-study"',
-        ...(filters.state?.length ? [`urban-study.state.slug IN [${filters.state.join(',')}]`] : []),
-        ...(filters.categories?.length ? [`urban-study.category.slug IN [${filters.categories.join(',')}]`] : []),
+      filter: [
+        'type = "urban-study"',
+        ...(filters.state?.length
+          ? [`urban-study.urbanStudyState.slug IN [${filters.state.join(',')}]`]
+          : []),
+        ...(filters.categories?.length
+          ? [`urban-study.urbanStudyCategory.slug IN [${filters.categories.join(',')}]`]
+          : []),
       ],
       sort: ['urban-study.customPublishedAtTimestamp:desc'],
     })
