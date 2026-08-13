@@ -66,7 +66,7 @@
   "CookieConsentLink.missingScriptModal.title": "Failed to load cookie settings",
   "Dialog.aria.close": "Close dialog",
   "DocumentsSection.documents.showLess": "Show less",
-  "DocumentsSection.documents.showMore": "Show more ({{count}})",
+  "DocumentsSection.documents.showMore": "Show more ({{documentsCount}})",
   "FaqsSection.selectionOptions.allFaqs": "All questions",
   "FaqsSection.selectionOptions.aria": "FAQ categories",
   "FieldHeader.optional": "(Optional)",

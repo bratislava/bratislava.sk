@@ -1,6 +1,6 @@
 import { Button } from '@bratislava/component-library'
 import { useQuery } from '@tanstack/react-query'
-import { useTranslation } from 'next-i18next'
+import { useTranslation } from 'next-i18next/pages'
 import { forwardRef, useEffect, useState } from 'react'
 import { useLocalStorage } from 'usehooks-ts'
 

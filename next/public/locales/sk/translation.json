@@ -72,7 +72,7 @@
   "CookieConsentLink.missingScriptModal.title": "Nastavenia cookies sa nepodarilo načítať",
   "Dialog.aria.close": "Zavrieť vyskakovacie okno",
   "DocumentsSection.documents.showLess": "Zobraziť menej",
-  "DocumentsSection.documents.showMore": "Zobraziť viac ({{count}})",
+  "DocumentsSection.documents.showMore": "Zobraziť viac ({{documentsCount}})",
   "FaqsSection.selectionOptions.allFaqs": "Všetky otázky",
   "FaqsSection.selectionOptions.aria": "Kategórie otázok",
   "FieldHeader.optional": "(Nepovinné)",
