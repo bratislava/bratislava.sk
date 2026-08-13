@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "target": "es6",
-    "jsx": "preserve",
+    "jsx": "react-jsx",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "esModuleInterop": true,

@@ -1,15 +1,18 @@
-const { withPlausibleProxy } = require('next-plausible')
-const i18nextConfig = require('./next-i18next.config.js')
-const svgoConfig = require('./svgo.config.js')
+import type { NextConfig } from 'next'
+import { withPlausibleProxy } from 'next-plausible'
 
-/**
- * @type {import('next').NextConfig}
- */
-const nextConfig = {
-  i18n: i18nextConfig.i18n,
+import i18nextConfig from './next-i18next.config'
+import svgoConfig from './svgo.config'
+
+const nextConfig: NextConfig = {
+  // Cast needed because next-i18next.config.js is plain JS: TS widens its `localeDetection: false`
+  // to `boolean`, while Next's I18NConfig accepts only the literal `false`.
+  i18n: i18nextConfig.i18n as NextConfig['i18n'],
   reactStrictMode: true,
   output: 'standalone',
+  // K8s S3 resolves to local IPs (10.10.x.x), which the Next 16 image loader blocks by default
   images: {
+    dangerouslyAllowLocalIP: true,
     qualities: [75, 100],
     remotePatterns: [
       {
@@ -314,38 +317,31 @@ const nextConfig = {
       },
     ]
   },
-  // Docs: https://react-svgr.com/docs/next/
-  webpack(config) {
-    // Grab the existing rule that handles SVG imports
-    const fileLoaderRule = config.module.rules.find((rule) => rule.test?.test?.('.svg'))
-
-    config.module.rules.push(
-      // Reapply the existing rule, but only for svg imports ending in ?url
-      {
-        ...fileLoaderRule,
-        test: /\.svg$/i,
-        resourceQuery: /url/, // *.svg?url
+  /**
+   * Turbopack is the default bundler in Next 16, so the former `webpack()` SVG rule no longer applies.
+   * All *.svg imports become React components via @svgr/webpack. We have no `*.svg?url` imports, so
+   * unlike the sibling repos no separate url/resourceQuery rule is needed.
+   * Docs: https://react-svgr.com/docs/next/
+   */
+  turbopack: {
+    rules: {
+      '*.svg': {
+        loaders: [{ loader: '@svgr/webpack', options: { svgoConfig } }],
+        as: '*.js',
       },
-      // Convert all other *.svg imports to React components
-      {
-        test: /\.svg$/i,
-        issuer: fileLoaderRule.issuer,
-        resourceQuery: { not: [...fileLoaderRule.resourceQuery.not, /url/] }, // exclude if *.svg?url
-        use: {
-          loader: '@svgr/webpack',
-          options: { svgoConfig },
-        },
-      },
-    )
-
-    // Modify the file loader rule to ignore *.svg, since we have it handled now.
-    fileLoaderRule.exclude = /\.svg$/i
-
-    return config
+    },
+  },
+  // Turbopack on Node 24 needs require.mjs traced explicitly, otherwise it is missing from standalone output
+  outputFileTracingIncludes: {
+    '/**': ['./node_modules/**/require.mjs'],
+  },
+  // Suppress browser console logs being mirrored into the terminal
+  logging: {
+    browserToTerminal: false,
   },
 }
 
 // https://github.com/4lejandrito/next-plausible#proxy-the-analytics-script
-module.exports = withPlausibleProxy()({
+export default withPlausibleProxy()({
   ...nextConfig,
 })

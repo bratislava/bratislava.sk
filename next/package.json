@@ -34,7 +34,7 @@
     "@hookform/resolvers": "5.4.0",
     "@iframe-resizer/react": "5.5.9",
     "@internationalized/date": "3.12.2",
-    "@next/third-parties": "15.5.12",
+    "@next/third-parties": "16.3.0",
     "@radix-ui/react-navigation-menu": "1.2.22",
     "@sindresorhus/slugify": "2.2.1",
     "@tanstack/react-query": "5.101.4",
@@ -49,16 +49,16 @@
     "i18next": "26.3.1",
     "lodash": "4.18.1",
     "meilisearch": "0.30.0",
-    "next": "15.5.18",
+    "next": "16.3.0",
     "next-i18next": "16.0.7",
-    "next-plausible": "3.12.4",
+    "next-plausible": "3.12.5",
     "next-sitemap": "4.2.3",
-    "nuqs": "2.7.1",
+    "nuqs": "2.9.5",
     "pretty-bytes": "7.1.1",
-    "react": "19.2.0",
+    "react": "19.2.8",
     "react-aria": "3.49.0",
     "react-aria-components": "1.18.0",
-    "react-dom": "19.2.0",
+    "react-dom": "19.2.8",
     "react-hook-form": "7.84.0",
     "react-i18next": "17.0.8",
     "react-markdown": "10.1.0",
@@ -88,8 +88,8 @@
     "@types/cookiebot-sdk": "2.43.5",
     "@types/lodash": "4.17.25",
     "@types/node": "24.13.3",
-    "@types/react": "19.2.2",
-    "@types/react-dom": "19.2.2",
+    "@types/react": "19.2.18",
+    "@types/react-dom": "19.2.4",
     "@types/rss": "0.0.32",
     "eslint": "9.39.1",
     "i18next-cli": "1.61.0",
@@ -113,7 +113,7 @@
     "npm": "11.13.0"
   },
   "overrides": {
-    "@types/react": "19.2.2",
-    "@types/react-dom": "19.2.2"
+    "@types/react": "19.2.18",
+    "@types/react-dom": "19.2.4"
   }
 }
