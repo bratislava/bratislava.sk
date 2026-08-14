@@ -7,7 +7,7 @@ export default defineConfig({
   extract: {
     input: 'src/**/*.{tsx,ts}',
     output: 'public/locales/{{language}}/{{namespace}}.json',
-    defaultNS: 'translation', // Changed to match the namespace used by i18next-cli,
+    defaultNS: i18nextConfig.defaultNS[0],
     keySeparator: false,
     functions: ['t', '*.t'],
     transComponents: ['Trans'],

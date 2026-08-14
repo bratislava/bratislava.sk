@@ -7,6 +7,6 @@ module.exports = {
     locales: ['sk', 'en'], // This should be in sync with i18next.config.ts
     localeDetection: false,
   },
-  defaultNS: ['translation'], // This should be in sync with i18next.config.ts
+  defaultNS: ['translation'], // Changed to match the namespace used by i18next-cli
   reloadOnPrerender: process.env.NODE_ENV === 'development',
 }
