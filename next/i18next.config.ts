@@ -1,12 +1,13 @@
 import { defineConfig } from 'i18next-cli'
+import i18nextConfig from './next-i18next.config'
 
 // Docs: https://github.com/i18next/i18next-cli
 export default defineConfig({
-  locales: ['sk', 'en'], // This should be in sync with next-i18next.config.js
+  locales: i18nextConfig.i18n.locales,
   extract: {
     input: 'src/**/*.{tsx,ts}',
     output: 'public/locales/{{language}}/{{namespace}}.json',
-    defaultNS: 'translation', // This should be in sync with next-i18next.config.js
+    defaultNS: i18nextConfig.defaultNS[0],
     keySeparator: false,
     functions: ['t', '*.t'],
     transComponents: ['Trans'],
