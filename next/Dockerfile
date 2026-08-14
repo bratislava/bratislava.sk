@@ -1,4 +1,4 @@
-FROM node:20.19-alpine AS base
+FROM node:24.16-alpine AS base
 ENV NEXT_TELEMETRY_DISABLED=1
 
 FROM base AS install
@@ -39,4 +39,10 @@ COPY --chown=node:node .env.*.local ./
 COPY --chown=node:node --from=build /build/.next/standalone ./
 COPY --chown=node:node --from=build /build/public ./public
 COPY --chown=node:node --from=build /build/.next/static ./.next/static
+# sharp and its native binaries must be copied manually for standalone output to work
+# see https://github.com/vercel/next.js/discussions/40125
+# sharp >=0.33 distributes native binaries via separate @img/* packages
+COPY --chown=node:node --from=build /build/node_modules/sharp ./node_modules/sharp
+COPY --chown=node:node --from=build /build/node_modules/@img ./node_modules/@img
+ENV NEXT_SHARP_PATH=/home/node/app/node_modules/sharp
 CMD [ "node", "server.js" ]

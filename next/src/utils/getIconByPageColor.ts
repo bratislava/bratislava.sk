@@ -11,8 +11,7 @@ import {
   PageRedIconSmall,
   PageYellowIcon,
   PageYellowIconSmall,
-} from 'src/assets/pictograms-search-results'
-
+} from '@/src/assets/pictograms-search-results'
 import { Enum_Pagecategory_Color } from '@/src/services/graphql'
 
 export const getIconByPageColor = (pageColor: Enum_Pagecategory_Color) => {
@@ -26,5 +25,5 @@ export const getIconByPageColor = (pageColor: Enum_Pagecategory_Color) => {
     grey: { default: PageRedIcon, small: PageRedIconSmall }, // TODO: Add grey icon
   }
 
-  return icons[pageColor] ?? icons.red
+  return pageColor in icons ? icons[pageColor] : icons.red
 }

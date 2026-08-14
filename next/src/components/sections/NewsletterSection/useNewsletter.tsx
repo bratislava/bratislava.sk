@@ -1,7 +1,7 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useMutation } from '@tanstack/react-query'
 import axios from 'axios'
-import { useTranslation } from 'next-i18next'
+import { useTranslation } from 'next-i18next/pages'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import * as yup from 'yup'
@@ -38,7 +38,10 @@ export const useNewsletter = ({ newsletterType }: Props) => {
       .trim()
       .required(t('Newsletter.email.error.required'))
       .email(t('Newsletter.email.error.invalidFormat')),
-    acceptTerms: yup.boolean().isTrue(),
+    acceptTerms: yup
+      .boolean()
+      .required()
+      .test('isAccepted', t('Newsletter.consent.error'), (value) => value),
   })
 
   const methods = useForm<NewsletterFormValues>({

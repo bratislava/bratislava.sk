@@ -1,7 +1,7 @@
 import { Button } from '@bratislava/component-library'
 import { AriaLabelingProps } from '@react-types/shared'
 import { AnimatePresence, motion, MotionProps, Variant } from 'framer-motion'
-import { useTranslation } from 'next-i18next'
+import { useTranslation } from 'next-i18next/pages'
 import { isValidElement, ReactNode } from 'react'
 
 import cn from '@/src/utils/cn'

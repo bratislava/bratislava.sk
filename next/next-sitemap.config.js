@@ -1,4 +1,6 @@
-const { i18n } = require('./next.config')
+// Note: read from next-i18next.config.js (the source of truth that next.config.ts itself imports) —
+// next.config is TypeScript since Next 16 and cannot be require()d from this CommonJS config.
+const { i18n } = require('./next-i18next.config')
 const { client } = require('./dist/services/graphql/gql')
 
 //  Documentation: https://www.npmjs.com/package/next-sitemap

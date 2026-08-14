@@ -1,5 +1,5 @@
 import { Button } from '@bratislava/component-library'
-import { useTranslation } from 'next-i18next'
+import { useTranslation } from 'next-i18next/pages'
 import { Fragment, useId, useState } from 'react'
 
 import DocumentRowCard from '@/src/components/cards/DocumentRowCard'
@@ -133,7 +133,8 @@ const AssetsSection = ({ section }: Props) => {
                   {isCollapsed
                     ? t('DocumentsSection.documents.showLess')
                     : t('DocumentsSection.documents.showMore', {
-                        count: filteredAssets.length,
+                        // use documentsCount instead of count to avoid automatic pluralization
+                        documentsCount: filteredAssets.length,
                       })}
                 </Button>
               </div>
