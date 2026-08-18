@@ -1,3 +1,5 @@
+import { isDefined } from '@/src/utils/isDefined'
+
 import { meiliClient } from '../meiliClient'
 import { SearchIndexWrapped, UrbanStudyMeili } from '../types'
 import { getMeilisearchPageOptions, unwrapFromSearchIndex } from '../utils'
@@ -6,15 +8,15 @@ export type UrbanStudiesFilters = {
   search: string
   pageSize: number
   page: number
-  state?: string[]
+  state?: string
   categories?: string[]
 }
 
-export const urbanStudiesDefaultFilters: Required<UrbanStudiesFilters> = {
+export const urbanStudiesDefaultFilters: UrbanStudiesFilters = {
   search: '',
   pageSize: 10,
   page: 1,
-  state: [],
+  state: undefined,
   categories: [],
 }
 
@@ -31,13 +33,11 @@ export const urbanStudiesFetcher = (filters: UrbanStudiesFilters) => {
       ...getMeilisearchPageOptions({ page: filters.page, pageSize: filters.pageSize }),
       filter: [
         'type = "urban-study"',
-        ...(filters.state?.length
-          ? [`urban-study.urbanStudyState.slug IN [${filters.state.join(',')}]`]
-          : []),
-        ...(filters.categories?.length
+        filters.state ? [`urban-study.urbanStudyState.slug = ${filters.state}`] : null,
+        filters.categories?.length
           ? [`urban-study.urbanStudyCategory.slug IN [${filters.categories.join(',')}]`]
-          : []),
-      ],
+          : null,
+      ].filter(isDefined),
       sort: ['urban-study.customPublishedAtTimestamp:desc'],
     })
     .then(unwrapFromSearchIndex('urban-study'))

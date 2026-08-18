@@ -39,7 +39,7 @@ const UrbanStudiesSection = ({ section }: Props) => {
 
   const filters = {
     ...urbanStudiesDefaultFilters,
-    state: state ? [state.slug] : [],
+    state: state?.slug,
     categories: categorySlugs,
   }
 

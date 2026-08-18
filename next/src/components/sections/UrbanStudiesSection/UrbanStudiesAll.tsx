@@ -104,6 +104,7 @@ const UrbanStudiesAll = ({ section }: Props) => {
       ) : (
         <Typography variant="p-small">{t('SearchPage.enterSearchQuery')}</Typography>
       )}
+
       {data?.estimatedTotalHits ? (
         <div className="flex flex-col items-center gap-4 lg:flex-row lg:justify-between">
           <Typography variant="p-default">{resultsCountMessage}</Typography>
