@@ -37,10 +37,11 @@ export interface AccordionItemsInstitution extends Struct.ComponentSchema {
 export interface BlocksCard extends Struct.ComponentSchema {
   collectionName: 'components_blocks_cards'
   info: {
-    displayName: 'card'
+    displayName: 'Card'
   }
   attributes: {
     buttonText: Schema.Attribute.Text
+    page: Schema.Attribute.Relation<'oneToOne', 'api::page.page'>
     subtext: Schema.Attribute.Text
     title: Schema.Attribute.String & Schema.Attribute.Required
   }
@@ -679,7 +680,7 @@ export interface SectionsBanner extends Struct.ComponentSchema {
 export interface SectionsCardsSection extends Struct.ComponentSchema {
   collectionName: 'components_sections_cards_sections'
   info: {
-    displayName: 'cards section'
+    displayName: 'Cards section'
   }
   attributes: {
     cards: Schema.Attribute.Component<'blocks.card', true>

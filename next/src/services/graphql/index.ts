@@ -714,6 +714,7 @@ export type ComponentBlocksCard = {
   __typename?: 'ComponentBlocksCard'
   buttonText?: Maybe<Scalars['String']['output']>
   id: Scalars['ID']['output']
+  page?: Maybe<Page>
   subtext?: Maybe<Scalars['String']['output']>
   title: Scalars['String']['output']
 }
@@ -723,6 +724,7 @@ export type ComponentBlocksCardFiltersInput = {
   buttonText?: InputMaybe<StringFilterInput>
   not?: InputMaybe<ComponentBlocksCardFiltersInput>
   or?: InputMaybe<Array<InputMaybe<ComponentBlocksCardFiltersInput>>>
+  page?: InputMaybe<PageFiltersInput>
   subtext?: InputMaybe<StringFilterInput>
   title?: InputMaybe<StringFilterInput>
 }
@@ -730,6 +732,7 @@ export type ComponentBlocksCardFiltersInput = {
 export type ComponentBlocksCardInput = {
   buttonText?: InputMaybe<Scalars['String']['input']>
   id?: InputMaybe<Scalars['ID']['input']>
+  page?: InputMaybe<Scalars['ID']['input']>
   subtext?: InputMaybe<Scalars['String']['input']>
   title?: InputMaybe<Scalars['String']['input']>
 }
@@ -5259,6 +5262,7 @@ export type PageSectionsDynamicZone =
   | ComponentSectionsArticlesLandingPage
   | ComponentSectionsAssets
   | ComponentSectionsBanner
+  | ComponentSectionsCardsSection
   | ComponentSectionsColumnedText
   | ComponentSectionsColumns
   | ComponentSectionsColumnsList
@@ -7821,6 +7825,7 @@ export type AllFilesQuery = {
           __typename?: 'ComponentSectionsBanner'
           media: { __typename?: 'UploadFile'; documentId: string }
         }
+      | { __typename?: 'ComponentSectionsCardsSection' }
       | { __typename?: 'ComponentSectionsColumnedText' }
       | {
           __typename?: 'ComponentSectionsColumns'
@@ -11548,6 +11553,30 @@ export type PageEntityFragment = {
         } | null
       }
     | {
+        __typename: 'ComponentSectionsCardsSection'
+        description?: string | null
+        showThumbnails?: boolean | null
+        titleCardsSection: string
+        cardsCardsSection?: Array<{
+          __typename?: 'ComponentBlocksCard'
+          title: string
+          subtext?: string | null
+          buttonText?: string | null
+          page?: {
+            __typename?: 'Page'
+            documentId: string
+            title: string
+            locale?: string | null
+            path?: string | null
+            pageBackgroundImage?: {
+              __typename?: 'UploadFile'
+              documentId: string
+              url: string
+            } | null
+          } | null
+        } | null> | null
+      }
+    | {
         __typename: 'ComponentSectionsColumnedText'
         title?: string | null
         content?: string | null
@@ -13102,6 +13131,30 @@ export type PageByPathQuery = {
             } | null
             asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
           } | null
+        }
+      | {
+          __typename: 'ComponentSectionsCardsSection'
+          description?: string | null
+          showThumbnails?: boolean | null
+          titleCardsSection: string
+          cardsCardsSection?: Array<{
+            __typename?: 'ComponentBlocksCard'
+            title: string
+            subtext?: string | null
+            buttonText?: string | null
+            page?: {
+              __typename?: 'Page'
+              documentId: string
+              title: string
+              locale?: string | null
+              path?: string | null
+              pageBackgroundImage?: {
+                __typename?: 'UploadFile'
+                documentId: string
+                url: string
+              } | null
+            } | null
+          } | null> | null
         }
       | {
           __typename: 'ComponentSectionsColumnedText'
@@ -14696,6 +14749,30 @@ export type Dev_AllPagesQuery = {
             } | null
             asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
           } | null
+        }
+      | {
+          __typename: 'ComponentSectionsCardsSection'
+          description?: string | null
+          showThumbnails?: boolean | null
+          titleCardsSection: string
+          cardsCardsSection?: Array<{
+            __typename?: 'ComponentBlocksCard'
+            title: string
+            subtext?: string | null
+            buttonText?: string | null
+            page?: {
+              __typename?: 'Page'
+              documentId: string
+              title: string
+              locale?: string | null
+              path?: string | null
+              pageBackgroundImage?: {
+                __typename?: 'UploadFile'
+                documentId: string
+                url: string
+              } | null
+            } | null
+          } | null> | null
         }
       | {
           __typename: 'ComponentSectionsColumnedText'
@@ -16981,6 +17058,42 @@ export type AssetsSectionFragment = {
   } | null>
 }
 
+export type CardEntityFragment = {
+  __typename?: 'ComponentBlocksCard'
+  title: string
+  subtext?: string | null
+  buttonText?: string | null
+  page?: {
+    __typename?: 'Page'
+    documentId: string
+    title: string
+    locale?: string | null
+    path?: string | null
+    pageBackgroundImage?: { __typename?: 'UploadFile'; documentId: string; url: string } | null
+  } | null
+}
+
+export type CardsSectionFragment = {
+  __typename?: 'ComponentSectionsCardsSection'
+  description?: string | null
+  showThumbnails?: boolean | null
+  titleCardsSection: string
+  cardsCardsSection?: Array<{
+    __typename?: 'ComponentBlocksCard'
+    title: string
+    subtext?: string | null
+    buttonText?: string | null
+    page?: {
+      __typename?: 'Page'
+      documentId: string
+      title: string
+      locale?: string | null
+      path?: string | null
+      pageBackgroundImage?: { __typename?: 'UploadFile'; documentId: string; url: string } | null
+    } | null
+  } | null> | null
+}
+
 export type UrbanStudyCardEntityFragment = {
   __typename: 'UrbanStudy'
   year?: string | null
@@ -17950,6 +18063,27 @@ type Sections_ComponentSectionsBanner_Fragment = {
     } | null
     asset?: { __typename: 'Asset'; documentId: string; slug: string; title: string } | null
   } | null
+}
+
+type Sections_ComponentSectionsCardsSection_Fragment = {
+  __typename: 'ComponentSectionsCardsSection'
+  description?: string | null
+  showThumbnails?: boolean | null
+  titleCardsSection: string
+  cardsCardsSection?: Array<{
+    __typename?: 'ComponentBlocksCard'
+    title: string
+    subtext?: string | null
+    buttonText?: string | null
+    page?: {
+      __typename?: 'Page'
+      documentId: string
+      title: string
+      locale?: string | null
+      path?: string | null
+      pageBackgroundImage?: { __typename?: 'UploadFile'; documentId: string; url: string } | null
+    } | null
+  } | null> | null
 }
 
 type Sections_ComponentSectionsColumnedText_Fragment = {
@@ -18934,6 +19068,7 @@ export type SectionsFragment =
   | Sections_ComponentSectionsArticlesLandingPage_Fragment
   | Sections_ComponentSectionsAssets_Fragment
   | Sections_ComponentSectionsBanner_Fragment
+  | Sections_ComponentSectionsCardsSection_Fragment
   | Sections_ComponentSectionsColumnedText_Fragment
   | Sections_ComponentSectionsColumns_Fragment
   | Sections_ComponentSectionsColumnsList_Fragment
@@ -20868,6 +21003,28 @@ export const IframeTabsSectionFragmentDoc = gql`
     titleLevelIframeTabsSection: titleLevel
   }
 `
+export const CardEntityFragmentDoc = gql`
+  fragment CardEntity on ComponentBlocksCard {
+    title
+    subtext
+    buttonText
+    page {
+      ...PageCardEntity
+    }
+  }
+  ${PageCardEntityFragmentDoc}
+`
+export const CardsSectionFragmentDoc = gql`
+  fragment CardsSection on ComponentSectionsCardsSection {
+    titleCardsSection: title
+    description
+    cardsCardsSection: cards(pagination: { limit: -1 }) {
+      ...CardEntity
+    }
+    showThumbnails
+  }
+  ${CardEntityFragmentDoc}
+`
 export const SectionsFragmentDoc = gql`
   fragment Sections on PageSectionsDynamicZone {
     __typename
@@ -20982,6 +21139,9 @@ export const SectionsFragmentDoc = gql`
     ... on ComponentSectionsIframeTabs {
       ...IframeTabsSection
     }
+    ... on ComponentSectionsCardsSection {
+      ...CardsSection
+    }
   }
   ${DividerSectionFragmentDoc}
   ${TextWithImageSectionFragmentDoc}
@@ -21020,6 +21180,7 @@ export const SectionsFragmentDoc = gql`
   ${AlertSectionFragmentDoc}
   ${JobOffersSectionFragmentDoc}
   ${IframeTabsSectionFragmentDoc}
+  ${CardsSectionFragmentDoc}
 `
 export const SidebarsFragmentDoc = gql`
   fragment Sidebars on PageSidebarDynamicZone {

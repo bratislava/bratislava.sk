@@ -1207,6 +1207,7 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
         'sections.videos',
         'sections.regulations',
         'sections.urban-studies',
+        'sections.cards-section',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{

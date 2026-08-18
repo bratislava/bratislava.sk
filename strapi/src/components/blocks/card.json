@@ -14,6 +14,11 @@
     },
     "buttonText": {
       "type": "text"
+    },
+    "page": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::page.page"
     }
   },
   "config": {}

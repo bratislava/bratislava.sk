@@ -16,8 +16,8 @@
         "edit": {},
         "list": {
           "label": "id",
-          "searchable": true,
-          "sortable": true
+          "searchable": false,
+          "sortable": false
         }
       },
       "title": {
@@ -62,6 +62,21 @@
           "sortable": true
         }
       },
+      "page": {
+        "edit": {
+          "label": "page",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "title"
+        },
+        "list": {
+          "label": "page",
+          "searchable": true,
+          "sortable": true
+        }
+      },
       "documentId": {
         "edit": {},
         "list": {
@@ -92,6 +107,10 @@
         [
           {
             "name": "buttonText",
+            "size": 6
+          },
+          {
+            "name": "page",
             "size": 6
           }
         ]
