@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_blocks_cards",
+  "info": {
+    "displayName": "Card"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "subtext": {
+      "type": "text"
+    },
+    "buttonText": {
+      "type": "text"
+    }
+  },
+  "config": {}
+}

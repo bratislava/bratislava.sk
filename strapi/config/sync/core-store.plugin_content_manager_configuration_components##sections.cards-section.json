@@ -1,28 +1,28 @@
 {
-  "key": "plugin_content_manager_configuration_components::sections.urban-studies",
+  "key": "plugin_content_manager_configuration_components::sections.cards-section",
   "value": {
     "settings": {
       "bulkable": true,
       "filterable": true,
       "searchable": true,
       "pageSize": 10,
+      "relationOpenMode": "modal",
       "mainField": "title",
       "defaultSortBy": "title",
-      "defaultSortOrder": "ASC",
-      "relationOpenMode": "modal"
+      "defaultSortOrder": "ASC"
     },
     "metadatas": {
       "id": {
         "edit": {},
         "list": {
           "label": "id",
-          "searchable": false,
-          "sortable": false
+          "searchable": true,
+          "sortable": true
         }
       },
       "title": {
         "edit": {
-          "label": "Nadpis",
+          "label": "title",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -34,59 +34,44 @@
           "sortable": true
         }
       },
-      "text": {
+      "description": {
         "edit": {
-          "label": "Text",
+          "label": "description",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "text",
+          "label": "description",
           "searchable": true,
           "sortable": true
         }
       },
-      "showAll": {
+      "cards": {
         "edit": {
-          "label": "Zobraziť všetky",
+          "label": "cards",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "showAll",
-          "searchable": true,
-          "sortable": true
-        }
-      },
-      "urbanStudies": {
-        "edit": {
-          "label": "Územné štúdie",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true,
-          "mainField": "title"
-        },
-        "list": {
-          "label": "urbanStudies",
+          "label": "cards",
           "searchable": false,
           "sortable": false
         }
       },
-      "titleLevel": {
+      "showThumbnails": {
         "edit": {
-          "label": "Úroveň nadpisu sekcie",
-          "description": "Úroveň nadpisu meníme na h3 iba ak je to potrebné sémanticky. Nikdy ju nemeníme len kvôli vizuálnej veľkosti nadpisu.",
+          "label": "showThumbnails",
+          "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "titleLevel",
+          "label": "showThumbnails",
           "searchable": true,
           "sortable": true
         }
@@ -104,39 +89,35 @@
       "list": [
         "id",
         "title",
-        "text",
-        "showAll"
+        "description",
+        "cards"
       ],
       "edit": [
         [
           {
             "name": "title",
-            "size": 12
+            "size": 6
           },
           {
-            "name": "text",
+            "name": "description",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "cards",
             "size": 12
           }
         ],
         [
           {
-            "name": "showAll",
-            "size": 12
-          },
-          {
-            "name": "urbanStudies",
-            "size": 12
-          }
-        ],
-        [
-          {
-            "name": "titleLevel",
-            "size": 12
+            "name": "showThumbnails",
+            "size": 4
           }
         ]
       ]
     },
-    "uid": "sections.urban-studies",
+    "uid": "sections.cards-section",
     "isComponent": true
   },
   "type": "object",

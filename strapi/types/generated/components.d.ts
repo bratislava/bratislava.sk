@@ -34,6 +34,18 @@ export interface AccordionItemsInstitution extends Struct.ComponentSchema {
   }
 }
 
+export interface BlocksCard extends Struct.ComponentSchema {
+  collectionName: 'components_blocks_cards'
+  info: {
+    displayName: 'card'
+  }
+  attributes: {
+    buttonText: Schema.Attribute.Text
+    subtext: Schema.Attribute.Text
+    title: Schema.Attribute.String & Schema.Attribute.Required
+  }
+}
+
 export interface BlocksCardLink extends Struct.ComponentSchema {
   collectionName: 'components_blocks_card_links'
   info: {
@@ -661,6 +673,19 @@ export interface SectionsBanner extends Struct.ComponentSchema {
     variant: Schema.Attribute.Enumeration<['color', 'dark', 'white_condensed']> &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<'color'>
+  }
+}
+
+export interface SectionsCardsSection extends Struct.ComponentSchema {
+  collectionName: 'components_sections_cards_sections'
+  info: {
+    displayName: 'cards section'
+  }
+  attributes: {
+    cards: Schema.Attribute.Component<'blocks.card', true>
+    description: Schema.Attribute.Text
+    showThumbnails: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>
+    title: Schema.Attribute.String & Schema.Attribute.Required
   }
 }
 
@@ -1322,6 +1347,7 @@ declare module '@strapi/strapi' {
     export interface ComponentSchemas {
       'accordion-items.flat-text': AccordionItemsFlatText
       'accordion-items.institution': AccordionItemsInstitution
+      'blocks.card': BlocksCard
       'blocks.card-link': BlocksCardLink
       'blocks.columns-item': BlocksColumnsItem
       'blocks.columns-list-item': BlocksColumnsListItem
@@ -1362,6 +1388,7 @@ declare module '@strapi/strapi' {
       'sections.articles-landing-page': SectionsArticlesLandingPage
       'sections.assets': SectionsAssets
       'sections.banner': SectionsBanner
+      'sections.cards-section': SectionsCardsSection
       'sections.columned-text': SectionsColumnedText
       'sections.columns': SectionsColumns
       'sections.columns-list': SectionsColumnsList

@@ -710,6 +710,30 @@ export type ComponentAccordionItemsInstitutionInput = {
   urlLabel?: InputMaybe<Scalars['String']['input']>
 }
 
+export type ComponentBlocksCard = {
+  __typename?: 'ComponentBlocksCard'
+  buttonText?: Maybe<Scalars['String']['output']>
+  id: Scalars['ID']['output']
+  subtext?: Maybe<Scalars['String']['output']>
+  title: Scalars['String']['output']
+}
+
+export type ComponentBlocksCardFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentBlocksCardFiltersInput>>>
+  buttonText?: InputMaybe<StringFilterInput>
+  not?: InputMaybe<ComponentBlocksCardFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<ComponentBlocksCardFiltersInput>>>
+  subtext?: InputMaybe<StringFilterInput>
+  title?: InputMaybe<StringFilterInput>
+}
+
+export type ComponentBlocksCardInput = {
+  buttonText?: InputMaybe<Scalars['String']['input']>
+  id?: InputMaybe<Scalars['ID']['input']>
+  subtext?: InputMaybe<Scalars['String']['input']>
+  title?: InputMaybe<Scalars['String']['input']>
+}
+
 export type ComponentBlocksCardLink = {
   __typename?: 'ComponentBlocksCardLink'
   analyticsId?: Maybe<Scalars['String']['output']>
@@ -1884,6 +1908,39 @@ export type ComponentSectionsBannerInput = {
   tertiaryLink?: InputMaybe<ComponentBlocksCommonLinkInput>
   title?: InputMaybe<Scalars['String']['input']>
   variant?: InputMaybe<Enum_Componentsectionsbanner_Variant>
+}
+
+export type ComponentSectionsCardsSection = {
+  __typename?: 'ComponentSectionsCardsSection'
+  cards?: Maybe<Array<Maybe<ComponentBlocksCard>>>
+  description?: Maybe<Scalars['String']['output']>
+  id: Scalars['ID']['output']
+  showThumbnails?: Maybe<Scalars['Boolean']['output']>
+  title: Scalars['String']['output']
+}
+
+export type ComponentSectionsCardsSectionCardsArgs = {
+  filters?: InputMaybe<ComponentBlocksCardFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type ComponentSectionsCardsSectionFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentSectionsCardsSectionFiltersInput>>>
+  cards?: InputMaybe<ComponentBlocksCardFiltersInput>
+  description?: InputMaybe<StringFilterInput>
+  not?: InputMaybe<ComponentSectionsCardsSectionFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<ComponentSectionsCardsSectionFiltersInput>>>
+  showThumbnails?: InputMaybe<BooleanFilterInput>
+  title?: InputMaybe<StringFilterInput>
+}
+
+export type ComponentSectionsCardsSectionInput = {
+  cards?: InputMaybe<Array<InputMaybe<ComponentBlocksCardInput>>>
+  description?: InputMaybe<Scalars['String']['input']>
+  id?: InputMaybe<Scalars['ID']['input']>
+  showThumbnails?: InputMaybe<Scalars['Boolean']['input']>
+  title?: InputMaybe<Scalars['String']['input']>
 }
 
 export type ComponentSectionsColumnedText = {
@@ -3975,6 +4032,7 @@ export type GenericMorph =
   | AssetCategory
   | ComponentAccordionItemsFlatText
   | ComponentAccordionItemsInstitution
+  | ComponentBlocksCard
   | ComponentBlocksCardLink
   | ComponentBlocksColumnsItem
   | ComponentBlocksColumnsListItem
@@ -4015,6 +4073,7 @@ export type GenericMorph =
   | ComponentSectionsArticlesLandingPage
   | ComponentSectionsAssets
   | ComponentSectionsBanner
+  | ComponentSectionsCardsSection
   | ComponentSectionsColumnedText
   | ComponentSectionsColumns
   | ComponentSectionsColumnsList

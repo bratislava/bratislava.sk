@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_sections_cards_sections",
+  "info": {
+    "displayName": "Cards section"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text"
+    },
+    "cards": {
+      "type": "component",
+      "component": "blocks.card",
+      "repeatable": true
+    },
+    "showThumbnails": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "config": {}
+}
