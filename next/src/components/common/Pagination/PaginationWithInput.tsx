@@ -1,5 +1,5 @@
 import { Button, Typography } from '@bratislava/component-library'
-import { useTranslation } from 'next-i18next'
+import { useTranslation } from 'next-i18next/pages'
 
 import Icon from '@/src/components/common/Icon/Icon'
 import { usePaginationWithInput } from '@/src/components/common/Pagination/usePaginationWithInput'

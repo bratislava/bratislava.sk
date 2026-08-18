@@ -1,4 +1,4 @@
-import { i18n } from 'next-i18next'
+import { i18n } from 'next-i18next/pages'
 
 import { ArticleCardProps } from '@/src/components/cards/ArticleCard'
 import { ArticleCardEntityFragment } from '@/src/services/graphql'

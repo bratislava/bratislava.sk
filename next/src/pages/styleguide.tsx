@@ -1,5 +1,5 @@
 import { GetServerSideProps } from 'next'
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { serverSideTranslations } from 'next-i18next/pages/serverSideTranslations'
 import { ReactElement, useState } from 'react'
 import { Key, Tab, TabList, TabPanel, Tabs } from 'react-aria-components'
 

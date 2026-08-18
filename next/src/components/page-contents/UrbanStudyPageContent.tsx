@@ -1,6 +1,6 @@
 import { Typography } from '@bratislava/component-library'
 import slugify from '@sindresorhus/slugify'
-import { useTranslation } from 'next-i18next'
+import { useTranslation } from 'next-i18next/pages'
 import { Fragment, useMemo } from 'react'
 
 import DocumentRowCard from '@/src/components/cards/DocumentRowCard'

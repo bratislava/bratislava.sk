@@ -1,5 +1,5 @@
 import { Button, Typography } from '@bratislava/component-library'
-import { useTranslation } from 'next-i18next'
+import { useTranslation } from 'next-i18next/pages'
 
 import HorizontalDivider from '@/src/components/common/Divider/HorizontalDivider'
 import useHeadings from '@/src/components/common/TableOfContents/useHeadings'

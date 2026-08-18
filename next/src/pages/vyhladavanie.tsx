@@ -1,5 +1,5 @@
 import { GetStaticProps } from 'next'
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { serverSideTranslations } from 'next-i18next/pages/serverSideTranslations'
 
 import PageHeader from '@/src/components/common/PageHeader/PageHeader'
 import SeoHead from '@/src/components/common/SeoHead/SeoHead'
