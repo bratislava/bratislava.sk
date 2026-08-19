@@ -60,6 +60,15 @@ query ArticlesStaticPaths($limit: Int = -1, $locale: I18NLocaleCode!) {
   }
 }
 
+query ArticlesStaticPathsWithLocalizations($limit: Int = -1, $locale: I18NLocaleCode!) {
+  articles(locale: $locale, sort: "addedAt:desc", pagination: { limit: $limit }) {
+    ...ArticleSlugEntity
+    localizations {
+      ...ArticleSlugEntity
+    }
+  }
+}
+
 query ArticleCategories($locale: I18NLocaleCode, $sort: [String] = ["title"]) {
   articleCategories(pagination: { limit: -1 }, locale: $locale, sort: $sort) {
     ...ArticleCategoryEntity

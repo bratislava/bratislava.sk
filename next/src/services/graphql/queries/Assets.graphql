@@ -24,6 +24,13 @@ fragment AssetEntity on Asset {
   }
 }
 
+query AssetsStaticPaths($limit: Int = -1) {
+  assets(sort: "updatedAt:desc", pagination: { limit: $limit }) {
+    documentId
+    slug
+  }
+}
+
 query AssetBySlug($slug: String!) {
   assets(filters: { slug: { eq: $slug } }) {
     ...AssetEntity
