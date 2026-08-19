@@ -1,5 +1,5 @@
 {
-  "key": "plugin_content_manager_configuration_components::blocks.card",
+  "key": "plugin_content_manager_configuration_components::blocks.page-cards-item",
   "value": {
     "settings": {
       "bulkable": true,
@@ -116,7 +116,7 @@
         ]
       ]
     },
-    "uid": "blocks.card",
+    "uid": "blocks.page-cards-item",
     "isComponent": true
   },
   "type": "object",

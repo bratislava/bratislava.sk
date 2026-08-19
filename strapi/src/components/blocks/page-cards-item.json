@@ -1,13 +1,13 @@
 {
-  "collectionName": "components_blocks_cards",
+  "collectionName": "components_blocks_page_cards_item",
   "info": {
-    "displayName": "Card"
+    "displayName": "page cards item"
   },
   "options": {},
   "attributes": {
     "title": {
       "type": "string",
-      "required": true
+      "required": false
     },
     "subtext": {
       "type": "text"

@@ -1,5 +1,5 @@
 {
-  "key": "plugin_content_manager_configuration_components::sections.cards-section",
+  "key": "plugin_content_manager_configuration_components::sections.page-cards",
   "value": {
     "settings": {
       "bulkable": true,
@@ -117,7 +117,7 @@
         ]
       ]
     },
-    "uid": "sections.cards-section",
+    "uid": "sections.page-cards",
     "isComponent": true
   },
   "type": "object",
