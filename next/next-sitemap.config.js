@@ -3,30 +3,77 @@
 const { i18n } = require('./next-i18next.config')
 const { client } = require('./dist/services/graphql/gql')
 
-//  Documentation: https://www.npmjs.com/package/next-sitemap
+//  Documentation: https://github.com/iamvishnusankar/next-sitemap
+
+const { defaultLocale, locales } = i18n
+
+/** Locale path prefix — the default locale is served without a prefix. */
+const localePrefix = (locale) => (locale === defaultLocale ? '' : `/${locale}`)
+
+/**
+ * Builds `alternateRefs` for a localised entity: the entity itself plus all its Strapi localizations.
+ * `getPath` returns the locale-less path (e.g. `/spravy/my-article`) for one localization.
+ */
+const getAlternateRefs = ({ siteUrl, entity, getPath }) => {
+  const baseUrl = siteUrl.replace(/\/$/, '')
+
+  return [entity, ...(entity.localizations ?? [])]
+    .filter((localization) => localization?.locale && getPath(localization))
+    .map((localization) => ({
+      href: `${baseUrl}${localePrefix(localization.locale)}${getPath(localization)}`,
+      hreflang: localization.locale,
+      // Without this, next-sitemap treats `href` as a per-language site root and appends `loc` to it.
+      hrefIsAbsolute: true,
+    }))
+}
 
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
   siteUrl: process.env.NEXT_PUBLIC_SITE_URL,
   generateRobotsTxt: false,
   changefreq: 'weekly',
-  sitemapSize: 7000,
   // generate paths dynamically from Strapi
   additionalPaths: async (config) => {
-    const { locales } = i18n
+    const { siteUrl } = config
 
     const fetchArticlePaths = async () => {
       const results = await Promise.all(
         locales.map(async (locale) => {
-          const { articles } = await client.Articles({ limit: -1, locale })
+          const { articles } = await client.ArticlesStaticPathsWithLocalizations({
+            limit: -1,
+            locale,
+          })
           return articles.map((article) => ({
-            loc: `${locale !== 'sk' ? `/${locale}` : ''}/spravy/${article.slug}`,
+            loc: `${localePrefix(locale)}/spravy/${article.slug}`,
+            alternateRefs: getAlternateRefs({
+              siteUrl,
+              entity: article,
+              getPath: ({ slug }) => `/spravy/${slug}`,
+            }),
           }))
         }),
       )
       return results.flat()
     }
 
+    const fetchPagePaths = async () => {
+      const results = await Promise.all(
+        locales.map(async (locale) => {
+          const { pages } = await client.PagesStaticPathsWithLocalizations({ limit: -1, locale })
+          return pages.map((page) => ({
+            loc: `${localePrefix(locale)}/${page.path}`,
+            alternateRefs: getAlternateRefs({
+              siteUrl,
+              entity: page,
+              getPath: ({ path }) => `/${path}`,
+            }),
+          }))
+        }),
+      )
+      return results.flat()
+    }
+
+    // Content types below are not localised in Strapi, so they have no alternate refs.
     const fetchInbaReleasePaths = async () => {
       const { inbaReleases } = await client.InbaReleasesStaticPaths({ limit: -1 })
       return inbaReleases.map((release) => ({ loc: `/inba/vydania/${release.slug}` }))
@@ -37,32 +84,32 @@ module.exports = {
       return regulations.map((regulation) => ({ loc: `/vzn/${regulation.slug}` }))
     }
 
-    const fetchPagePaths = async () => {
-      const results = await Promise.all(
-        locales.map(async (locale) => {
-          const { pages } = await client.PagesStaticPaths({ limit: -1, locale })
-          return pages.map((page) => ({
-            loc: `${locale !== 'sk' ? `/${locale}` : ''}/${page.path}`,
-          }))
-        }),
-      )
-      return results.flat()
+    const fetchAssetPaths = async () => {
+      const { assets } = await client.AssetsStaticPaths({ limit: -1 })
+      return assets.map((asset) => ({ loc: `/dokumenty/${asset.slug}` }))
     }
 
-    const [articlePaths, inbaReleasePaths, regulationPaths, otherPaths] = await Promise.all([
+    const fetchUrbanStudyPaths = async () => {
+      const { urbanStudies } = await client.UrbanStudiesStaticPaths({ limit: -1 })
+      return urbanStudies.map((urbanStudy) => ({ loc: `/uzemne-studie/${urbanStudy.slug}` }))
+    }
+
+    const pathGroups = await Promise.all([
       fetchArticlePaths(),
+      fetchPagePaths(),
       fetchInbaReleasePaths(),
       fetchRegulationPaths(),
-      fetchPagePaths(),
+      fetchAssetPaths(),
+      fetchUrbanStudyPaths(),
     ])
-    const paths = [...articlePaths, ...inbaReleasePaths, ...regulationPaths, ...otherPaths]
+    const paths = pathGroups.flat()
 
     return paths.map((path) => ({
       loc: path.loc,
       changefreq: config.changefreq,
       priority: config.priority,
       lastmod: config.autoLastmod ? new Date().toISOString() : undefined,
-      alternateRefs: config.alternateRefs ?? [],
+      alternateRefs: path.alternateRefs ?? [],
     }))
   },
 }
