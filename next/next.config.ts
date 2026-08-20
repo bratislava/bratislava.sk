@@ -5,6 +5,8 @@ import i18nextConfig from './next-i18next.config'
 import svgoConfig from './svgo.config'
 
 const nextConfig: NextConfig = {
+  // Cast needed because next-i18next.config.js is plain JS: TS widens its `localeDetection: false`
+  // to `boolean`, while Next's I18NConfig accepts only the literal `false`.
   i18n: i18nextConfig.i18n as NextConfig['i18n'],
   reactStrictMode: true,
   images: {
