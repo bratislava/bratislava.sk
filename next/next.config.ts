@@ -9,9 +9,13 @@ const nextConfig: NextConfig = {
   // to `boolean`, while Next's I18NConfig accepts only the literal `false`.
   i18n: i18nextConfig.i18n as NextConfig['i18n'],
   reactStrictMode: true,
-  output: 'standalone',
-  // K8s S3 resolves to local IPs (10.10.x.x), which the Next 16 image loader blocks by default
   images: {
+    // After upgrading to Next.js 16, image loading from local IP addresses is blocked.
+    // In our Kubernetes setup, S3 resolves to a local IP range (10.10.x.x),
+    // which causes images to fail loading.
+    // To work around this, we temporarily allow local IPs.
+    // TODO Revisit this setting and implement a safer long-term solution.
+    // Docs: https://nextjs.org/docs/pages/api-reference/components/image#dangerouslyallowlocalip
     dangerouslyAllowLocalIP: true,
     qualities: [75, 100],
     remotePatterns: [
@@ -33,6 +37,36 @@ const nextConfig: NextConfig = {
         pathname: '/api/event/*/images/*/*/*/(AUTO|WIDTH|HEIGHT|MINSIDE)',
       },
     ],
+  },
+  output: 'standalone',
+  outputFileTracingIncludes: {
+    '/**': [
+      // Workaround: Turbopack file tracer misses `module-sync` exports condition files (e.g. require.mjs)
+      // on Node.js >= 22.10. Will be fixed when Next.js bumps @vercel/nft to >= 0.30.0.
+      // https://github.com/vercel/next.js/issues/90567
+      './node_modules/**/require.mjs',
+      // tells Next to force-copy the config file into the standalone bundle for all routes, so the runtime require finds it at /home/node/app/next-i18next.config.js
+      './next-i18next.config.js',
+    ],
+  },
+  turbopack: {
+    rules: {
+      '*.svg': {
+        loaders: [
+          {
+            loader: '@svgr/webpack',
+            options: {
+              svgoConfig: { svgoConfig },
+            },
+          },
+        ],
+        as: '*.js',
+      },
+    },
+  },
+  logging: {
+    // disable browser logs in terminals
+    browserToTerminal: false,
   },
   async rewrites() {
     return {
@@ -316,28 +350,6 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
     ]
-  },
-  /**
-   * Turbopack is the default bundler in Next 16, so the former `webpack()` SVG rule no longer applies.
-   * All *.svg imports become React components via @svgr/webpack. We have no `*.svg?url` imports, so
-   * unlike the sibling repos no separate url/resourceQuery rule is needed.
-   * Docs: https://react-svgr.com/docs/next/
-   */
-  turbopack: {
-    rules: {
-      '*.svg': {
-        loaders: [{ loader: '@svgr/webpack', options: { svgoConfig } }],
-        as: '*.js',
-      },
-    },
-  },
-  // Turbopack on Node 24 needs require.mjs traced explicitly, otherwise it is missing from standalone output
-  outputFileTracingIncludes: {
-    '/**': ['./node_modules/**/require.mjs'],
-  },
-  // Suppress browser console logs being mirrored into the terminal
-  logging: {
-    browserToTerminal: false,
   },
 }
 
