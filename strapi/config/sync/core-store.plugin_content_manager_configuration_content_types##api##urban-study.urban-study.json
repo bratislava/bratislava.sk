@@ -294,11 +294,11 @@
         ],
         [
           {
-            "name": "urbanStudyCategory",
+            "name": "urbanStudyState",
             "size": 6
           },
           {
-            "name": "urbanStudyState",
+            "name": "urbanStudyCategory",
             "size": 6
           }
         ],

@@ -77,23 +77,9 @@
           "sortable": false
         }
       },
-      "titleLevel": {
+      "categories": {
         "edit": {
-          "label": "Úroveň nadpisu sekcie",
-          "description": "Úroveň nadpisu meníme na h3 iba ak je to potrebné sémanticky. Nikdy ju nemeníme len kvôli vizuálnej veľkosti nadpisu.",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "titleLevel",
-          "searchable": true,
-          "sortable": true
-        }
-      },
-      "category": {
-        "edit": {
-          "label": "Kategória",
+          "label": "Kategórie",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -101,9 +87,9 @@
           "mainField": "title"
         },
         "list": {
-          "label": "category",
-          "searchable": true,
-          "sortable": true
+          "label": "categories",
+          "searchable": false,
+          "sortable": false
         }
       },
       "state": {
@@ -117,6 +103,20 @@
         },
         "list": {
           "label": "state",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "titleLevel": {
+        "edit": {
+          "label": "Úroveň nadpisu sekcie",
+          "description": "Úroveň nadpisu meníme na h3 iba ak je to potrebné sémanticky. Nikdy ju nemeníme len kvôli vizuálnej veľkosti nadpisu.",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "titleLevel",
           "searchable": true,
           "sortable": true
         }
@@ -136,7 +136,15 @@
           {
             "name": "title",
             "size": 12
-          },
+          }
+        ],
+        [
+          {
+            "name": "titleLevel",
+            "size": 12
+          }
+        ],
+        [
           {
             "name": "text",
             "size": 12
@@ -153,28 +161,15 @@
           },
           {
             "name": "state",
-            "size": 12
-          }
-        ],
-        [
+            "size": 6
+          },
           {
-            "name": "category",
-            "size": 12
-          }
-        ],
-        [
-          {
-            "name": "titleLevel",
-            "size": 12
+            "name": "categories",
+            "size": 6
           }
         ]
       ],
-      "list": [
-        "id",
-        "title",
-        "text",
-        "showAll"
-      ]
+      "list": ["id", "title", "text", "showAll"]
     },
     "uid": "sections.urban-studies",
     "isComponent": true

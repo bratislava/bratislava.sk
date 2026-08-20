@@ -65,6 +65,7 @@ const UrbanStudiesAll = ({ section }: Props) => {
     <div className="flex flex-col gap-6">
       <div className="flex flex-col gap-6">
         <SectionHeader title={title} text={text} titleLevel={titleLevel} />
+
         <SearchBar
           ref={searchRef}
           placeholder={t('SearchPage.enterKeyword')}
@@ -87,10 +88,9 @@ const UrbanStudiesAll = ({ section }: Props) => {
                     data={{
                       title: urbanStudy.title,
                       linkHref: `/uzemne-studie/${urbanStudy.slug}`,
-                      metadata: [
-                        urbanStudy.urbanStudyCategory?.title,
-                        urbanStudy.year,
-                      ].filter(isDefined),
+                      metadata: [urbanStudy.urbanStudyCategory?.title, urbanStudy.year].filter(
+                        isDefined,
+                      ),
                       customIconName: 'urban_study',
                     }}
                   />

@@ -1800,6 +1800,255 @@
       "locale": null
     },
     {
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "api::urban-study-category.urban-study-category",
+      "properties": {
+        "fields": [
+          "title",
+          "slug",
+          "urbanStudies"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": {},
+      "documentId": "jdiucb364633ev0b3qizynwf",
+      "locale": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "subject": "api::urban-study-category.urban-study-category",
+      "properties": {},
+      "conditions": [],
+      "actionParameters": {},
+      "documentId": "o8ebhn285fe4w5qb0bvyluqz",
+      "locale": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.publish",
+      "subject": "api::urban-study-category.urban-study-category",
+      "properties": {},
+      "conditions": [],
+      "actionParameters": {},
+      "documentId": "y5n50hqiskbvm8du1b1rxcv3",
+      "locale": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::urban-study-category.urban-study-category",
+      "properties": {
+        "fields": [
+          "title",
+          "slug",
+          "urbanStudies"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": {},
+      "documentId": "v359d2af791c0jbi5cjus6a0",
+      "locale": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::urban-study-category.urban-study-category",
+      "properties": {
+        "fields": [
+          "title",
+          "slug",
+          "urbanStudies"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": {},
+      "documentId": "a0g7kr4v0nisbz0vmj7ppqg8",
+      "locale": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "api::urban-study-state.urban-study-state",
+      "properties": {
+        "fields": [
+          "title",
+          "slug",
+          "urbanStudies"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": {},
+      "documentId": "xkfulji31vf5n12ni0tnol3y",
+      "locale": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "subject": "api::urban-study-state.urban-study-state",
+      "properties": {},
+      "conditions": [],
+      "actionParameters": {},
+      "documentId": "incjw43b6y9d6wdbzl3t4w3u",
+      "locale": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.publish",
+      "subject": "api::urban-study-state.urban-study-state",
+      "properties": {},
+      "conditions": [],
+      "actionParameters": {},
+      "documentId": "q2sh6r6yv9g2sfp9rj5v8o23",
+      "locale": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::urban-study-state.urban-study-state",
+      "properties": {
+        "fields": [
+          "title",
+          "slug",
+          "urbanStudies"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": {},
+      "documentId": "zm93uc2c8g21vvpoq1omsyok",
+      "locale": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::urban-study-state.urban-study-state",
+      "properties": {
+        "fields": [
+          "title",
+          "slug",
+          "urbanStudies"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": {},
+      "documentId": "n4stn73crlljyolrrerpgidj",
+      "locale": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.create",
+      "subject": "api::urban-study.urban-study",
+      "properties": {
+        "fields": [
+          "title",
+          "slug",
+          "year",
+          "urbanStudyState",
+          "urbanStudyCategory",
+          "customPublishedAt",
+          "procuredBy",
+          "preparedBy",
+          "body",
+          "approvalText",
+          "regulations",
+          "urbanStudyParts.title",
+          "urbanStudyParts.text",
+          "urbanStudyParts.items.title",
+          "urbanStudyParts.items.media",
+          "links.label",
+          "links.page",
+          "links.article",
+          "links.url",
+          "links.analyticsId",
+          "links.inbaRelease",
+          "links.regulation",
+          "links.asset"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": {},
+      "documentId": "xbs9cs4vlxmlcaray7icydg8",
+      "locale": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.delete",
+      "subject": "api::urban-study.urban-study",
+      "properties": {},
+      "conditions": [],
+      "actionParameters": {},
+      "documentId": "m7a5wy8o9xal5jrpasr4rvfc",
+      "locale": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.publish",
+      "subject": "api::urban-study.urban-study",
+      "properties": {},
+      "conditions": [],
+      "actionParameters": {},
+      "documentId": "ej4jrb2zmdv3vaen877rco5l",
+      "locale": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.read",
+      "subject": "api::urban-study.urban-study",
+      "properties": {
+        "fields": [
+          "title",
+          "slug",
+          "year",
+          "urbanStudyState",
+          "urbanStudyCategory",
+          "customPublishedAt",
+          "procuredBy",
+          "preparedBy",
+          "body",
+          "approvalText",
+          "regulations",
+          "urbanStudyParts.title",
+          "urbanStudyParts.text",
+          "urbanStudyParts.items.title",
+          "urbanStudyParts.items.media",
+          "links.label",
+          "links.page",
+          "links.article",
+          "links.url",
+          "links.analyticsId",
+          "links.inbaRelease",
+          "links.regulation",
+          "links.asset"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": {},
+      "documentId": "q9gmzb11j2k8n7pqmgi1qmhs",
+      "locale": null
+    },
+    {
+      "action": "plugin::content-manager.explorer.update",
+      "subject": "api::urban-study.urban-study",
+      "properties": {
+        "fields": [
+          "title",
+          "slug",
+          "year",
+          "urbanStudyState",
+          "urbanStudyCategory",
+          "customPublishedAt",
+          "procuredBy",
+          "preparedBy",
+          "body",
+          "approvalText",
+          "regulations",
+          "urbanStudyParts.title",
+          "urbanStudyParts.text",
+          "urbanStudyParts.items.title",
+          "urbanStudyParts.items.media",
+          "links.label",
+          "links.page",
+          "links.article",
+          "links.url",
+          "links.analyticsId",
+          "links.inbaRelease",
+          "links.regulation",
+          "links.asset"
+        ]
+      },
+      "conditions": [],
+      "actionParameters": {},
+      "documentId": "cwo1e3kxhsatr5kjz9v6c17z",
+      "locale": null
+    },
+    {
       "action": "plugin::content-manager.collection-types.configure-view",
       "subject": null,
       "properties": {},

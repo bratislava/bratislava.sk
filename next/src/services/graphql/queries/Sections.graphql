@@ -409,6 +409,9 @@ fragment UrbanStudyCardEntity on UrbanStudy {
   urbanStudyCategory {
     ...UrbanStudyCategoryEntity
   }
+  urbanStudyState {
+    ...UrbanStudyStateEntity
+  }
   year
   updatedAt
 }
@@ -420,6 +423,12 @@ fragment UrbanStudiesSection on ComponentSectionsUrbanStudies {
     ...UrbanStudyCardEntity
   }
   showAll
+  categories {
+    ...UrbanStudyCategoryEntity
+  }
+  stateUrbanStudiesSection: state {
+    ...UrbanStudyStateEntity
+  }
   titleLevelUrbanStudiesSection: titleLevel
 }
 

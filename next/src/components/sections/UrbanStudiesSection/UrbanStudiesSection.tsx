@@ -1,3 +1,4 @@
+import { keepPreviousData, useQuery } from '@tanstack/react-query'
 import { Fragment } from 'react'
 
 import DocumentRowCard from '@/src/components/cards/DocumentRowCard'
@@ -7,6 +8,11 @@ import SectionContainer from '@/src/components/layouts/SectionContainer'
 import SectionHeader from '@/src/components/layouts/SectionHeader'
 import UrbanStudiesAll from '@/src/components/sections/UrbanStudiesSection/UrbanStudiesAll'
 import { UrbanStudiesSectionFragment } from '@/src/services/graphql'
+import {
+  getUrbanStudiesQueryKey,
+  urbanStudiesDefaultFilters,
+  urbanStudiesFetcher,
+} from '@/src/services/meili/fetchers/urbanStudiesFetcher'
 import { isDefined } from '@/src/utils/isDefined'
 
 type Props = {
@@ -20,7 +26,35 @@ type Props = {
  * TODO Implement FE component or variant for urban studies, now using DocumentRowCard
  */
 const UrbanStudiesSection = ({ section }: Props) => {
-  const { title, text, urbanStudies, showAll, titleLevelUrbanStudiesSection: titleLevel } = section
+  const {
+    title,
+    text,
+    urbanStudies: urbanStudiesFromStrapi,
+    showAll,
+    titleLevelUrbanStudiesSection: titleLevel,
+    categories,
+    stateUrbanStudiesSection: state,
+  } = section
+  const categorySlugs = categories.filter(isDefined).map((category) => category.slug)
+
+  const filters = {
+    ...urbanStudiesDefaultFilters,
+    state: state?.slug,
+    categories: categorySlugs,
+  }
+
+  const { data } = useQuery({
+    queryKey: getUrbanStudiesQueryKey(filters),
+    queryFn: () => urbanStudiesFetcher(filters),
+    placeholderData: keepPreviousData,
+    enabled:
+      // don't fetch if section contains only manually selected urban studies and no other filters
+      !(
+        urbanStudiesFromStrapi.length > 0 &&
+        [...categorySlugs, state].filter(isDefined).length === 0
+      ),
+    select: (response) => response.hits,
+  })
 
   if (showAll) {
     return (
@@ -29,8 +63,15 @@ const UrbanStudiesSection = ({ section }: Props) => {
       </SectionContainer>
     )
   }
-
-  const filteredUrbanStudies = urbanStudies.filter(isDefined)
+  const urbanStudiesToShow = [
+    ...urbanStudiesFromStrapi.filter(isDefined),
+    ...(data?.filter((urbanStudyFromMeili) =>
+      urbanStudiesFromStrapi.every(
+        (urbanStudyFromStrapi) =>
+          urbanStudyFromStrapi?.documentId !== urbanStudyFromMeili.documentId,
+      ),
+    ) ?? []),
+  ]
 
   return (
     <SectionContainer>
@@ -38,12 +79,19 @@ const UrbanStudiesSection = ({ section }: Props) => {
         <SectionHeader title={title} titleLevel={titleLevel} text={text} />
 
         <ul className="flex flex-col rounded-lg border py-2">
-          {filteredUrbanStudies.map((urbanStudy, index) => {
-            const { documentId, slug, title: urbanStudyTitle, urbanStudyCategory, year } = urbanStudy
+          {urbanStudiesToShow.map((urbanStudy, index) => {
+            const {
+              documentId,
+              slug,
+              title: urbanStudyTitle,
+              urbanStudyCategory,
+              year,
+            } = urbanStudy
 
             return (
               <Fragment key={documentId}>
-                {index > 0 ? <HorizontalDivider asListItem className="mx-4 lg:mx-6" /> : null}
+                {index > 0 && <HorizontalDivider asListItem className="mx-4 lg:mx-6" />}
+
                 <li className="w-full">
                   {/* TODO Implement FE component or variant for urban studies, now using DocumentRowCard */}
                   <DocumentRowCard
@@ -52,9 +100,7 @@ const UrbanStudiesSection = ({ section }: Props) => {
                     cardTitleLevel={getCardTitleLevel(titleLevel)}
                     linkHref={`/uzemne-studie/${slug}`}
                     className="px-4 lg:px-6"
-                    metadata={[urbanStudyCategory?.title, year].filter(
-                      isDefined,
-                    )}
+                    metadata={[urbanStudyCategory?.title, year].filter(isDefined)}
                   />
                 </li>
               </Fragment>

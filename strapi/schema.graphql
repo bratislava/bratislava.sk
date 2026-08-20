@@ -2428,8 +2428,11 @@ input ComponentSectionsTopServicesInput {
 }
 
 type ComponentSectionsUrbanStudies {
+  categories(filters: UrbanStudyCategoryFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [UrbanStudyCategory]!
+  categories_connection(filters: UrbanStudyCategoryFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): UrbanStudyCategoryRelationResponseCollection
   id: ID!
   showAll: Boolean
+  state: UrbanStudyState
   text: String
   title: String
   titleLevel: ENUM_COMPONENTSECTIONSURBANSTUDIES_TITLELEVEL
@@ -2439,9 +2442,11 @@ type ComponentSectionsUrbanStudies {
 
 input ComponentSectionsUrbanStudiesFiltersInput {
   and: [ComponentSectionsUrbanStudiesFiltersInput]
+  categories: UrbanStudyCategoryFiltersInput
   not: ComponentSectionsUrbanStudiesFiltersInput
   or: [ComponentSectionsUrbanStudiesFiltersInput]
   showAll: BooleanFilterInput
+  state: UrbanStudyStateFiltersInput
   text: StringFilterInput
   title: StringFilterInput
   titleLevel: StringFilterInput
@@ -2449,8 +2454,10 @@ input ComponentSectionsUrbanStudiesFiltersInput {
 }
 
 input ComponentSectionsUrbanStudiesInput {
+  categories: [ID]
   id: ID
   showAll: Boolean
+  state: ID
   text: String
   title: String
   titleLevel: ENUM_COMPONENTSECTIONSURBANSTUDIES_TITLELEVEL
