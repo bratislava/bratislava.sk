@@ -77,20 +77,6 @@
           "sortable": false
         }
       },
-      "titleLevel": {
-        "edit": {
-          "label": "Úroveň nadpisu sekcie",
-          "description": "Úroveň nadpisu meníme na h3 iba ak je to potrebné sémanticky. Nikdy ju nemeníme len kvôli vizuálnej veľkosti nadpisu.",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "titleLevel",
-          "searchable": true,
-          "sortable": true
-        }
-      },
       "categories": {
         "edit": {
           "label": "Kategórie",
@@ -121,6 +107,20 @@
           "sortable": true
         }
       },
+      "titleLevel": {
+        "edit": {
+          "label": "Úroveň nadpisu sekcie",
+          "description": "Úroveň nadpisu meníme na h3 iba ak je to potrebné sémanticky. Nikdy ju nemeníme len kvôli vizuálnej veľkosti nadpisu.",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "titleLevel",
+          "searchable": true,
+          "sortable": true
+        }
+      },
       "documentId": {
         "edit": {},
         "list": {
@@ -136,7 +136,15 @@
           {
             "name": "title",
             "size": 12
-          },
+          }
+        ],
+        [
+          {
+            "name": "titleLevel",
+            "size": 12
+          }
+        ],
+        [
           {
             "name": "text",
             "size": 12
@@ -158,12 +166,6 @@
           {
             "name": "categories",
             "size": 6
-          }
-        ],
-        [
-          {
-            "name": "titleLevel",
-            "size": 12
           }
         ]
       ],
