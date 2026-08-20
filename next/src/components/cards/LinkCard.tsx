@@ -12,8 +12,10 @@ export type LinkCardProps = {
   cardTitleLevel?: CardTitleLevel
   image?: StrapiUploadImage | null | undefined
   imageSizes?: string
+  imageClassName?: string
   text?: string | null | undefined
   linkProps?: CommonLinkProps
+  showImage?: boolean
 } & CardBaseProps
 
 /**
@@ -25,9 +27,11 @@ const LinkCard = ({
   cardTitleLevel = 'h3',
   image,
   imageSizes,
+  imageClassName,
   text,
   linkProps,
   className,
+  showImage = true,
   ...rest
 }: LinkCardProps) => {
   const titleId = useId()
@@ -40,11 +44,13 @@ const LinkCard = ({
       className={cn('h-full bg-background-passive-base', className)}
       {...rest}
     >
-      <CardImage
-        imgSrc={image?.url}
-        className="aspect-272/162 lg:aspect-384/158"
-        sizes={imageSizes}
-      />
+      {showImage && (
+        <CardImage
+          imgSrc={image?.url}
+          className={imageClassName ?? 'aspect-272/162 lg:aspect-384/158'}
+          sizes={imageSizes}
+        />
+      )}
 
       <div className="flex grow flex-col justify-between gap-4 p-4">
         <div className="flex flex-col gap-2">
@@ -61,6 +67,7 @@ const LinkCard = ({
             {text ? <Typography variant="p-small">{text}</Typography> : null}
           </div>
         </div>
+
         {linkProps ? (
           <div className="flex justify-end">
             <Button
