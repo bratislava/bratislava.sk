@@ -7440,6 +7440,29 @@ export type ArticlesStaticPathsQuery = {
   } | null>
 }
 
+export type ArticlesStaticPathsWithLocalizationsQueryVariables = Exact<{
+  limit?: InputMaybe<Scalars['Int']['input']>
+  locale: Scalars['I18NLocaleCode']['input']
+}>
+
+export type ArticlesStaticPathsWithLocalizationsQuery = {
+  __typename?: 'Query'
+  articles: Array<{
+    __typename: 'Article'
+    documentId: string
+    slug: string
+    title: string
+    locale?: string | null
+    localizations: Array<{
+      __typename: 'Article'
+      documentId: string
+      slug: string
+      title: string
+      locale?: string | null
+    } | null>
+  } | null>
+}
+
 export type ArticleCategoriesQueryVariables = Exact<{
   locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
   sort?: InputMaybe<
@@ -7670,6 +7693,15 @@ export type AssetEntityFragment = {
     createdAt?: any | null
     updatedAt?: any | null
   } | null>
+}
+
+export type AssetsStaticPathsQueryVariables = Exact<{
+  limit?: InputMaybe<Scalars['Int']['input']>
+}>
+
+export type AssetsStaticPathsQuery = {
+  __typename?: 'Query'
+  assets: Array<{ __typename?: 'Asset'; documentId: string; slug: string } | null>
 }
 
 export type AssetBySlugQueryVariables = Exact<{
@@ -12587,6 +12619,30 @@ export type PagesStaticPathsQueryVariables = Exact<{
 export type PagesStaticPathsQuery = {
   __typename?: 'Query'
   pages: Array<{ __typename?: 'Page'; documentId: string; path?: string | null } | null>
+}
+
+export type PagesStaticPathsWithLocalizationsQueryVariables = Exact<{
+  limit?: InputMaybe<Scalars['Int']['input']>
+  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
+  sort?: InputMaybe<
+    Array<InputMaybe<Scalars['String']['input']>> | InputMaybe<Scalars['String']['input']>
+  >
+}>
+
+export type PagesStaticPathsWithLocalizationsQuery = {
+  __typename?: 'Query'
+  pages: Array<{
+    __typename?: 'Page'
+    documentId: string
+    path?: string | null
+    locale?: string | null
+    localizations: Array<{
+      __typename?: 'Page'
+      documentId: string
+      path?: string | null
+      locale?: string | null
+    } | null>
+  } | null>
 }
 
 export type PageByPathQueryVariables = Exact<{
@@ -21309,6 +21365,17 @@ export const ArticlesStaticPathsDocument = gql`
   }
   ${ArticleSlugEntityFragmentDoc}
 `
+export const ArticlesStaticPathsWithLocalizationsDocument = gql`
+  query ArticlesStaticPathsWithLocalizations($limit: Int = -1, $locale: I18NLocaleCode!) {
+    articles(locale: $locale, sort: "addedAt:desc", pagination: { limit: $limit }) {
+      ...ArticleSlugEntity
+      localizations {
+        ...ArticleSlugEntity
+      }
+    }
+  }
+  ${ArticleSlugEntityFragmentDoc}
+`
 export const ArticleCategoriesDocument = gql`
   query ArticleCategories($locale: I18NLocaleCode, $sort: [String] = ["title"]) {
     articleCategories(pagination: { limit: -1 }, locale: $locale, sort: $sort) {
@@ -21376,6 +21443,14 @@ export const Dev_AllArticlesDocument = gql`
     }
   }
   ${ArticleEntityFragmentDoc}
+`
+export const AssetsStaticPathsDocument = gql`
+  query AssetsStaticPaths($limit: Int = -1) {
+    assets(sort: "updatedAt:desc", pagination: { limit: $limit }) {
+      documentId
+      slug
+    }
+  }
 `
 export const AssetBySlugDocument = gql`
   query AssetBySlug($slug: String!) {
@@ -21609,6 +21684,24 @@ export const PagesStaticPathsDocument = gql`
     }
   }
 `
+export const PagesStaticPathsWithLocalizationsDocument = gql`
+  query PagesStaticPathsWithLocalizations(
+    $limit: Int = -1
+    $locale: I18NLocaleCode = "*"
+    $sort: [String] = ["updatedAt:desc"]
+  ) {
+    pages(locale: $locale, sort: $sort, pagination: { limit: $limit }) {
+      documentId
+      path
+      locale
+      localizations {
+        documentId
+        path
+        locale
+      }
+    }
+  }
+`
 export const PageByPathDocument = gql`
   query PageByPath($path: String!, $locale: I18NLocaleCode!) {
     pages(filters: { path: { eq: $path } }, locale: $locale) {
@@ -21753,6 +21846,22 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
         variables,
       )
     },
+    ArticlesStaticPathsWithLocalizations(
+      variables: ArticlesStaticPathsWithLocalizationsQueryVariables,
+      requestHeaders?: GraphQLClientRequestHeaders,
+    ): Promise<ArticlesStaticPathsWithLocalizationsQuery> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<ArticlesStaticPathsWithLocalizationsQuery>(
+            ArticlesStaticPathsWithLocalizationsDocument,
+            variables,
+            { ...requestHeaders, ...wrappedRequestHeaders },
+          ),
+        'ArticlesStaticPathsWithLocalizations',
+        'query',
+        variables,
+      )
+    },
     ArticleCategories(
       variables?: ArticleCategoriesQueryVariables,
       requestHeaders?: GraphQLClientRequestHeaders,
@@ -21809,6 +21918,21 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
             ...wrappedRequestHeaders,
           }),
         'Dev_AllArticles',
+        'query',
+        variables,
+      )
+    },
+    AssetsStaticPaths(
+      variables?: AssetsStaticPathsQueryVariables,
+      requestHeaders?: GraphQLClientRequestHeaders,
+    ): Promise<AssetsStaticPathsQuery> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<AssetsStaticPathsQuery>(AssetsStaticPathsDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
+          }),
+        'AssetsStaticPaths',
         'query',
         variables,
       )
@@ -22020,6 +22144,22 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
             ...wrappedRequestHeaders,
           }),
         'PagesStaticPaths',
+        'query',
+        variables,
+      )
+    },
+    PagesStaticPathsWithLocalizations(
+      variables?: PagesStaticPathsWithLocalizationsQueryVariables,
+      requestHeaders?: GraphQLClientRequestHeaders,
+    ): Promise<PagesStaticPathsWithLocalizationsQuery> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<PagesStaticPathsWithLocalizationsQuery>(
+            PagesStaticPathsWithLocalizationsDocument,
+            variables,
+            { ...requestHeaders, ...wrappedRequestHeaders },
+          ),
+        'PagesStaticPathsWithLocalizations',
         'query',
         variables,
       )
