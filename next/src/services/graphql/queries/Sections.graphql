@@ -404,7 +404,7 @@ fragment AssetsSection on ComponentSectionsAssets {
   titleLevelAssetsSection: titleLevel
 }
 
-fragment CardEntity on ComponentBlocksCard {
+fragment PageCardsItemBlock on ComponentBlocksPageCardsItem {
   title
   subtext
   buttonText
@@ -413,11 +413,11 @@ fragment CardEntity on ComponentBlocksCard {
   }
 }
 
-fragment CardsSection on ComponentSectionsCardsSection {
-  titleCardsSection: title
+fragment PageCardsSection on ComponentSectionsPageCards {
+  titlePageCardsSection: title
   description
-  cardsCardsSection: cards(pagination: { limit: -1 }) {
-    ...CardEntity
+  cardsPageCardsSection: cards(pagination: { limit: -1 }) {
+    ...PageCardsItemBlock
   }
   showThumbnails
 }
@@ -739,8 +739,8 @@ fragment Sections on PageSectionsDynamicZone {
     ...IframeTabsSection
   }
 
-  ... on ComponentSectionsCardsSection {
-    ...CardsSection
+  ... on ComponentSectionsPageCards {
+    ...PageCardsSection
   }
 }
 

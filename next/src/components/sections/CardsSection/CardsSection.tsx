@@ -1,18 +1,18 @@
 import SectionContainer from '@/src/components/layouts/SectionContainer'
 import SectionHeader from '@/src/components/layouts/SectionHeader'
 import CardItem from '@/src/components/sections/CardsSection/CardItem'
-import { CardsSectionFragment } from '@/src/services/graphql'
+import { PageCardsSectionFragment } from '@/src/services/graphql'
 import { isDefined } from '@/src/utils/isDefined'
 
 type Props = {
-  section: CardsSectionFragment
+  section: PageCardsSectionFragment
 }
 
 const CardsSection = ({ section }: Props) => {
   const {
-    titleCardsSection: title,
+    titlePageCardsSection: title,
     description,
-    cardsCardsSection: cards,
+    cardsPageCardsSection: cards,
     showThumbnails,
   } = section
 

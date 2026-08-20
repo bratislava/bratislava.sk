@@ -710,33 +710,6 @@ export type ComponentAccordionItemsInstitutionInput = {
   urlLabel?: InputMaybe<Scalars['String']['input']>
 }
 
-export type ComponentBlocksCard = {
-  __typename?: 'ComponentBlocksCard'
-  buttonText?: Maybe<Scalars['String']['output']>
-  id: Scalars['ID']['output']
-  page?: Maybe<Page>
-  subtext?: Maybe<Scalars['String']['output']>
-  title: Scalars['String']['output']
-}
-
-export type ComponentBlocksCardFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<ComponentBlocksCardFiltersInput>>>
-  buttonText?: InputMaybe<StringFilterInput>
-  not?: InputMaybe<ComponentBlocksCardFiltersInput>
-  or?: InputMaybe<Array<InputMaybe<ComponentBlocksCardFiltersInput>>>
-  page?: InputMaybe<PageFiltersInput>
-  subtext?: InputMaybe<StringFilterInput>
-  title?: InputMaybe<StringFilterInput>
-}
-
-export type ComponentBlocksCardInput = {
-  buttonText?: InputMaybe<Scalars['String']['input']>
-  id?: InputMaybe<Scalars['ID']['input']>
-  page?: InputMaybe<Scalars['ID']['input']>
-  subtext?: InputMaybe<Scalars['String']['input']>
-  title?: InputMaybe<Scalars['String']['input']>
-}
-
 export type ComponentBlocksCardLink = {
   __typename?: 'ComponentBlocksCardLink'
   analyticsId?: Maybe<Scalars['String']['output']>
@@ -1214,6 +1187,33 @@ export type ComponentBlocksOpeningHoursItemInput = {
   id?: InputMaybe<Scalars['ID']['input']>
   label?: InputMaybe<Scalars['String']['input']>
   value?: InputMaybe<Scalars['String']['input']>
+}
+
+export type ComponentBlocksPageCardsItem = {
+  __typename?: 'ComponentBlocksPageCardsItem'
+  buttonText?: Maybe<Scalars['String']['output']>
+  id: Scalars['ID']['output']
+  page?: Maybe<Page>
+  subtext?: Maybe<Scalars['String']['output']>
+  title?: Maybe<Scalars['String']['output']>
+}
+
+export type ComponentBlocksPageCardsItemFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentBlocksPageCardsItemFiltersInput>>>
+  buttonText?: InputMaybe<StringFilterInput>
+  not?: InputMaybe<ComponentBlocksPageCardsItemFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<ComponentBlocksPageCardsItemFiltersInput>>>
+  page?: InputMaybe<PageFiltersInput>
+  subtext?: InputMaybe<StringFilterInput>
+  title?: InputMaybe<StringFilterInput>
+}
+
+export type ComponentBlocksPageCardsItemInput = {
+  buttonText?: InputMaybe<Scalars['String']['input']>
+  id?: InputMaybe<Scalars['ID']['input']>
+  page?: InputMaybe<Scalars['ID']['input']>
+  subtext?: InputMaybe<Scalars['String']['input']>
+  title?: InputMaybe<Scalars['String']['input']>
 }
 
 export type ComponentBlocksPageLink = {
@@ -1911,39 +1911,6 @@ export type ComponentSectionsBannerInput = {
   tertiaryLink?: InputMaybe<ComponentBlocksCommonLinkInput>
   title?: InputMaybe<Scalars['String']['input']>
   variant?: InputMaybe<Enum_Componentsectionsbanner_Variant>
-}
-
-export type ComponentSectionsCardsSection = {
-  __typename?: 'ComponentSectionsCardsSection'
-  cards?: Maybe<Array<Maybe<ComponentBlocksCard>>>
-  description?: Maybe<Scalars['String']['output']>
-  id: Scalars['ID']['output']
-  showThumbnails?: Maybe<Scalars['Boolean']['output']>
-  title: Scalars['String']['output']
-}
-
-export type ComponentSectionsCardsSectionCardsArgs = {
-  filters?: InputMaybe<ComponentBlocksCardFiltersInput>
-  pagination?: InputMaybe<PaginationArg>
-  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
-}
-
-export type ComponentSectionsCardsSectionFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<ComponentSectionsCardsSectionFiltersInput>>>
-  cards?: InputMaybe<ComponentBlocksCardFiltersInput>
-  description?: InputMaybe<StringFilterInput>
-  not?: InputMaybe<ComponentSectionsCardsSectionFiltersInput>
-  or?: InputMaybe<Array<InputMaybe<ComponentSectionsCardsSectionFiltersInput>>>
-  showThumbnails?: InputMaybe<BooleanFilterInput>
-  title?: InputMaybe<StringFilterInput>
-}
-
-export type ComponentSectionsCardsSectionInput = {
-  cards?: InputMaybe<Array<InputMaybe<ComponentBlocksCardInput>>>
-  description?: InputMaybe<Scalars['String']['input']>
-  id?: InputMaybe<Scalars['ID']['input']>
-  showThumbnails?: InputMaybe<Scalars['Boolean']['input']>
-  title?: InputMaybe<Scalars['String']['input']>
 }
 
 export type ComponentSectionsColumnedText = {
@@ -2886,6 +2853,39 @@ export type ComponentSectionsOrganizationalStructureFiltersInput = {
 
 export type ComponentSectionsOrganizationalStructureInput = {
   id?: InputMaybe<Scalars['ID']['input']>
+  title?: InputMaybe<Scalars['String']['input']>
+}
+
+export type ComponentSectionsPageCards = {
+  __typename?: 'ComponentSectionsPageCards'
+  cards?: Maybe<Array<Maybe<ComponentBlocksPageCardsItem>>>
+  description?: Maybe<Scalars['String']['output']>
+  id: Scalars['ID']['output']
+  showThumbnails?: Maybe<Scalars['Boolean']['output']>
+  title?: Maybe<Scalars['String']['output']>
+}
+
+export type ComponentSectionsPageCardsCardsArgs = {
+  filters?: InputMaybe<ComponentBlocksPageCardsItemFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type ComponentSectionsPageCardsFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentSectionsPageCardsFiltersInput>>>
+  cards?: InputMaybe<ComponentBlocksPageCardsItemFiltersInput>
+  description?: InputMaybe<StringFilterInput>
+  not?: InputMaybe<ComponentSectionsPageCardsFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<ComponentSectionsPageCardsFiltersInput>>>
+  showThumbnails?: InputMaybe<BooleanFilterInput>
+  title?: InputMaybe<StringFilterInput>
+}
+
+export type ComponentSectionsPageCardsInput = {
+  cards?: InputMaybe<Array<InputMaybe<ComponentBlocksPageCardsItemInput>>>
+  description?: InputMaybe<Scalars['String']['input']>
+  id?: InputMaybe<Scalars['ID']['input']>
+  showThumbnails?: InputMaybe<Scalars['Boolean']['input']>
   title?: InputMaybe<Scalars['String']['input']>
 }
 
@@ -4035,7 +4035,6 @@ export type GenericMorph =
   | AssetCategory
   | ComponentAccordionItemsFlatText
   | ComponentAccordionItemsInstitution
-  | ComponentBlocksCard
   | ComponentBlocksCardLink
   | ComponentBlocksColumnsItem
   | ComponentBlocksColumnsListItem
@@ -4055,6 +4054,7 @@ export type GenericMorph =
   | ComponentBlocksNumericalListItem
   | ComponentBlocksOpeningHoursAlertMessage
   | ComponentBlocksOpeningHoursItem
+  | ComponentBlocksPageCardsItem
   | ComponentBlocksPageLink
   | ComponentBlocksPartner
   | ComponentBlocksProsAndConsCard
@@ -4076,7 +4076,6 @@ export type GenericMorph =
   | ComponentSectionsArticlesLandingPage
   | ComponentSectionsAssets
   | ComponentSectionsBanner
-  | ComponentSectionsCardsSection
   | ComponentSectionsColumnedText
   | ComponentSectionsColumns
   | ComponentSectionsColumnsList
@@ -4105,6 +4104,7 @@ export type GenericMorph =
   | ComponentSectionsOfficialBoard
   | ComponentSectionsOpeningHours
   | ComponentSectionsOrganizationalStructure
+  | ComponentSectionsPageCards
   | ComponentSectionsPartners
   | ComponentSectionsProsAndConsSection
   | ComponentSectionsRegulations
@@ -5262,7 +5262,6 @@ export type PageSectionsDynamicZone =
   | ComponentSectionsArticlesLandingPage
   | ComponentSectionsAssets
   | ComponentSectionsBanner
-  | ComponentSectionsCardsSection
   | ComponentSectionsColumnedText
   | ComponentSectionsColumns
   | ComponentSectionsColumnsList
@@ -5287,6 +5286,7 @@ export type PageSectionsDynamicZone =
   | ComponentSectionsOfficialBoard
   | ComponentSectionsOpeningHours
   | ComponentSectionsOrganizationalStructure
+  | ComponentSectionsPageCards
   | ComponentSectionsPartners
   | ComponentSectionsProsAndConsSection
   | ComponentSectionsRegulations
@@ -7825,7 +7825,6 @@ export type AllFilesQuery = {
           __typename?: 'ComponentSectionsBanner'
           media: { __typename?: 'UploadFile'; documentId: string }
         }
-      | { __typename?: 'ComponentSectionsCardsSection' }
       | { __typename?: 'ComponentSectionsColumnedText' }
       | {
           __typename?: 'ComponentSectionsColumns'
@@ -7871,6 +7870,7 @@ export type AllFilesQuery = {
       | { __typename?: 'ComponentSectionsOfficialBoard' }
       | { __typename?: 'ComponentSectionsOpeningHours' }
       | { __typename?: 'ComponentSectionsOrganizationalStructure' }
+      | { __typename?: 'ComponentSectionsPageCards' }
       | {
           __typename?: 'ComponentSectionsPartners'
           partners: Array<{
@@ -11553,30 +11553,6 @@ export type PageEntityFragment = {
         } | null
       }
     | {
-        __typename: 'ComponentSectionsCardsSection'
-        description?: string | null
-        showThumbnails?: boolean | null
-        titleCardsSection: string
-        cardsCardsSection?: Array<{
-          __typename?: 'ComponentBlocksCard'
-          title: string
-          subtext?: string | null
-          buttonText?: string | null
-          page?: {
-            __typename?: 'Page'
-            documentId: string
-            title: string
-            locale?: string | null
-            path?: string | null
-            pageBackgroundImage?: {
-              __typename?: 'UploadFile'
-              documentId: string
-              url: string
-            } | null
-          } | null
-        } | null> | null
-      }
-    | {
         __typename: 'ComponentSectionsColumnedText'
         title?: string | null
         content?: string | null
@@ -12039,6 +12015,30 @@ export type PageEntityFragment = {
         } | null
       }
     | { __typename: 'ComponentSectionsOrganizationalStructure'; title?: string | null }
+    | {
+        __typename: 'ComponentSectionsPageCards'
+        description?: string | null
+        showThumbnails?: boolean | null
+        titlePageCardsSection?: string | null
+        cardsPageCardsSection?: Array<{
+          __typename?: 'ComponentBlocksPageCardsItem'
+          title?: string | null
+          subtext?: string | null
+          buttonText?: string | null
+          page?: {
+            __typename?: 'Page'
+            documentId: string
+            title: string
+            locale?: string | null
+            path?: string | null
+            pageBackgroundImage?: {
+              __typename?: 'UploadFile'
+              documentId: string
+              url: string
+            } | null
+          } | null
+        } | null> | null
+      }
     | {
         __typename: 'ComponentSectionsPartners'
         title?: string | null
@@ -13133,30 +13133,6 @@ export type PageByPathQuery = {
           } | null
         }
       | {
-          __typename: 'ComponentSectionsCardsSection'
-          description?: string | null
-          showThumbnails?: boolean | null
-          titleCardsSection: string
-          cardsCardsSection?: Array<{
-            __typename?: 'ComponentBlocksCard'
-            title: string
-            subtext?: string | null
-            buttonText?: string | null
-            page?: {
-              __typename?: 'Page'
-              documentId: string
-              title: string
-              locale?: string | null
-              path?: string | null
-              pageBackgroundImage?: {
-                __typename?: 'UploadFile'
-                documentId: string
-                url: string
-              } | null
-            } | null
-          } | null> | null
-        }
-      | {
           __typename: 'ComponentSectionsColumnedText'
           title?: string | null
           content?: string | null
@@ -13622,6 +13598,30 @@ export type PageByPathQuery = {
           } | null
         }
       | { __typename: 'ComponentSectionsOrganizationalStructure'; title?: string | null }
+      | {
+          __typename: 'ComponentSectionsPageCards'
+          description?: string | null
+          showThumbnails?: boolean | null
+          titlePageCardsSection?: string | null
+          cardsPageCardsSection?: Array<{
+            __typename?: 'ComponentBlocksPageCardsItem'
+            title?: string | null
+            subtext?: string | null
+            buttonText?: string | null
+            page?: {
+              __typename?: 'Page'
+              documentId: string
+              title: string
+              locale?: string | null
+              path?: string | null
+              pageBackgroundImage?: {
+                __typename?: 'UploadFile'
+                documentId: string
+                url: string
+              } | null
+            } | null
+          } | null> | null
+        }
       | {
           __typename: 'ComponentSectionsPartners'
           title?: string | null
@@ -14751,30 +14751,6 @@ export type Dev_AllPagesQuery = {
           } | null
         }
       | {
-          __typename: 'ComponentSectionsCardsSection'
-          description?: string | null
-          showThumbnails?: boolean | null
-          titleCardsSection: string
-          cardsCardsSection?: Array<{
-            __typename?: 'ComponentBlocksCard'
-            title: string
-            subtext?: string | null
-            buttonText?: string | null
-            page?: {
-              __typename?: 'Page'
-              documentId: string
-              title: string
-              locale?: string | null
-              path?: string | null
-              pageBackgroundImage?: {
-                __typename?: 'UploadFile'
-                documentId: string
-                url: string
-              } | null
-            } | null
-          } | null> | null
-        }
-      | {
           __typename: 'ComponentSectionsColumnedText'
           title?: string | null
           content?: string | null
@@ -15240,6 +15216,30 @@ export type Dev_AllPagesQuery = {
           } | null
         }
       | { __typename: 'ComponentSectionsOrganizationalStructure'; title?: string | null }
+      | {
+          __typename: 'ComponentSectionsPageCards'
+          description?: string | null
+          showThumbnails?: boolean | null
+          titlePageCardsSection?: string | null
+          cardsPageCardsSection?: Array<{
+            __typename?: 'ComponentBlocksPageCardsItem'
+            title?: string | null
+            subtext?: string | null
+            buttonText?: string | null
+            page?: {
+              __typename?: 'Page'
+              documentId: string
+              title: string
+              locale?: string | null
+              path?: string | null
+              pageBackgroundImage?: {
+                __typename?: 'UploadFile'
+                documentId: string
+                url: string
+              } | null
+            } | null
+          } | null> | null
+        }
       | {
           __typename: 'ComponentSectionsPartners'
           title?: string | null
@@ -17058,9 +17058,9 @@ export type AssetsSectionFragment = {
   } | null>
 }
 
-export type CardEntityFragment = {
-  __typename?: 'ComponentBlocksCard'
-  title: string
+export type PageCardsItemBlockFragment = {
+  __typename?: 'ComponentBlocksPageCardsItem'
+  title?: string | null
   subtext?: string | null
   buttonText?: string | null
   page?: {
@@ -17073,14 +17073,14 @@ export type CardEntityFragment = {
   } | null
 }
 
-export type CardsSectionFragment = {
-  __typename?: 'ComponentSectionsCardsSection'
+export type PageCardsSectionFragment = {
+  __typename?: 'ComponentSectionsPageCards'
   description?: string | null
   showThumbnails?: boolean | null
-  titleCardsSection: string
-  cardsCardsSection?: Array<{
-    __typename?: 'ComponentBlocksCard'
-    title: string
+  titlePageCardsSection?: string | null
+  cardsPageCardsSection?: Array<{
+    __typename?: 'ComponentBlocksPageCardsItem'
+    title?: string | null
     subtext?: string | null
     buttonText?: string | null
     page?: {
@@ -18065,27 +18065,6 @@ type Sections_ComponentSectionsBanner_Fragment = {
   } | null
 }
 
-type Sections_ComponentSectionsCardsSection_Fragment = {
-  __typename: 'ComponentSectionsCardsSection'
-  description?: string | null
-  showThumbnails?: boolean | null
-  titleCardsSection: string
-  cardsCardsSection?: Array<{
-    __typename?: 'ComponentBlocksCard'
-    title: string
-    subtext?: string | null
-    buttonText?: string | null
-    page?: {
-      __typename?: 'Page'
-      documentId: string
-      title: string
-      locale?: string | null
-      path?: string | null
-      pageBackgroundImage?: { __typename?: 'UploadFile'; documentId: string; url: string } | null
-    } | null
-  } | null> | null
-}
-
 type Sections_ComponentSectionsColumnedText_Fragment = {
   __typename: 'ComponentSectionsColumnedText'
   title?: string | null
@@ -18565,6 +18544,27 @@ type Sections_ComponentSectionsOpeningHours_Fragment = {
 type Sections_ComponentSectionsOrganizationalStructure_Fragment = {
   __typename: 'ComponentSectionsOrganizationalStructure'
   title?: string | null
+}
+
+type Sections_ComponentSectionsPageCards_Fragment = {
+  __typename: 'ComponentSectionsPageCards'
+  description?: string | null
+  showThumbnails?: boolean | null
+  titlePageCardsSection?: string | null
+  cardsPageCardsSection?: Array<{
+    __typename?: 'ComponentBlocksPageCardsItem'
+    title?: string | null
+    subtext?: string | null
+    buttonText?: string | null
+    page?: {
+      __typename?: 'Page'
+      documentId: string
+      title: string
+      locale?: string | null
+      path?: string | null
+      pageBackgroundImage?: { __typename?: 'UploadFile'; documentId: string; url: string } | null
+    } | null
+  } | null> | null
 }
 
 type Sections_ComponentSectionsPartners_Fragment = {
@@ -19068,7 +19068,6 @@ export type SectionsFragment =
   | Sections_ComponentSectionsArticlesLandingPage_Fragment
   | Sections_ComponentSectionsAssets_Fragment
   | Sections_ComponentSectionsBanner_Fragment
-  | Sections_ComponentSectionsCardsSection_Fragment
   | Sections_ComponentSectionsColumnedText_Fragment
   | Sections_ComponentSectionsColumns_Fragment
   | Sections_ComponentSectionsColumnsList_Fragment
@@ -19093,6 +19092,7 @@ export type SectionsFragment =
   | Sections_ComponentSectionsOfficialBoard_Fragment
   | Sections_ComponentSectionsOpeningHours_Fragment
   | Sections_ComponentSectionsOrganizationalStructure_Fragment
+  | Sections_ComponentSectionsPageCards_Fragment
   | Sections_ComponentSectionsPartners_Fragment
   | Sections_ComponentSectionsProsAndConsSection_Fragment
   | Sections_ComponentSectionsRegulations_Fragment
@@ -21003,8 +21003,8 @@ export const IframeTabsSectionFragmentDoc = gql`
     titleLevelIframeTabsSection: titleLevel
   }
 `
-export const CardEntityFragmentDoc = gql`
-  fragment CardEntity on ComponentBlocksCard {
+export const PageCardsItemBlockFragmentDoc = gql`
+  fragment PageCardsItemBlock on ComponentBlocksPageCardsItem {
     title
     subtext
     buttonText
@@ -21014,16 +21014,16 @@ export const CardEntityFragmentDoc = gql`
   }
   ${PageCardEntityFragmentDoc}
 `
-export const CardsSectionFragmentDoc = gql`
-  fragment CardsSection on ComponentSectionsCardsSection {
-    titleCardsSection: title
+export const PageCardsSectionFragmentDoc = gql`
+  fragment PageCardsSection on ComponentSectionsPageCards {
+    titlePageCardsSection: title
     description
-    cardsCardsSection: cards(pagination: { limit: -1 }) {
-      ...CardEntity
+    cardsPageCardsSection: cards(pagination: { limit: -1 }) {
+      ...PageCardsItemBlock
     }
     showThumbnails
   }
-  ${CardEntityFragmentDoc}
+  ${PageCardsItemBlockFragmentDoc}
 `
 export const SectionsFragmentDoc = gql`
   fragment Sections on PageSectionsDynamicZone {
@@ -21139,8 +21139,8 @@ export const SectionsFragmentDoc = gql`
     ... on ComponentSectionsIframeTabs {
       ...IframeTabsSection
     }
-    ... on ComponentSectionsCardsSection {
-      ...CardsSection
+    ... on ComponentSectionsPageCards {
+      ...PageCardsSection
     }
   }
   ${DividerSectionFragmentDoc}
@@ -21180,7 +21180,7 @@ export const SectionsFragmentDoc = gql`
   ${AlertSectionFragmentDoc}
   ${JobOffersSectionFragmentDoc}
   ${IframeTabsSectionFragmentDoc}
-  ${CardsSectionFragmentDoc}
+  ${PageCardsSectionFragmentDoc}
 `
 export const SidebarsFragmentDoc = gql`
   fragment Sidebars on PageSidebarDynamicZone {

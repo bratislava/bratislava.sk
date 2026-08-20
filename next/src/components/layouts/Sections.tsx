@@ -164,7 +164,7 @@ const SectionContent = ({ section }: { section: SectionsFragment }) => {
     case 'ComponentSectionsIframeTabs':
       return <IframeTabsSection section={section} />
 
-    case 'ComponentSectionsCardsSection':
+    case 'ComponentSectionsPageCards':
       return <CardsSection section={section} />
 
     default:
