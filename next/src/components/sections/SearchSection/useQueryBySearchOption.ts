@@ -141,9 +141,7 @@ export const useQueryBySearchOption = ({
             title: urbanStudy.title,
             uniqueId: urbanStudy.slug,
             linkHref: `/uzemne-studie/${urbanStudy.slug}`,
-            metadata: [urbanStudy.urbanStudyCategory?.title, urbanStudy.year].filter(
-              isDefined,
-            ),
+            metadata: [urbanStudy.urbanStudyCategory?.title, urbanStudy.year].filter(isDefined),
             customIconName: 'urban_study',
           }
         }) ?? []

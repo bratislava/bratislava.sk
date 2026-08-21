@@ -33,13 +33,13 @@ export const assetsFetcher = (filters: AssetsFilters) => {
         'type = "asset"',
         filters.assetCategorySlugs?.length
           ? `asset.assetCategory.slug IN [${filters.assetCategorySlugs.join(',')}]`
-          : '',
+          : null,
         filters.adminGroupSlugs?.length
           ? `asset.adminGroups.slug IN [${filters.adminGroupSlugs.join(',')}]`
-          : '',
+          : null,
         filters.excludeAssetsWithAssignedAdminGroups
           ? 'asset.adminGroups.documentId NOT EXISTS'
-          : '',
+          : null,
       ].filter(isDefined),
       sort: ['asset.updatedAtTimestamp:desc'],
     })

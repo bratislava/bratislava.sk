@@ -51,20 +51,20 @@ export const articlesFetcher = (filters: ArticlesFilters, locale: string) => {
         `locale = ${locale}`,
         filters.articleCategorySlugs?.length
           ? `article.articleCategory.slug IN [${filters.articleCategorySlugs.join(',')}]`
-          : '',
-        filters.tagSlugs?.length ? `article.tags.slug IN [${filters.tagSlugs.join(',')}]` : '',
+          : null,
+        filters.tagSlugs?.length ? `article.tags.slug IN [${filters.tagSlugs.join(',')}]` : null,
         filters.inbaReleaseSlugs?.length
           ? `article.inbaRelease.slug IN [${filters.inbaReleaseSlugs.join(',')}]`
-          : '',
+          : null,
         filters.adminGroupDocumentIds?.length
           ? `article.adminGroups.documentId IN [${filters.adminGroupDocumentIds.join(',')}]`
-          : '',
+          : null,
         adminGroupSlugsWithoutCityHall?.length
           ? showCityHallArticles
             ? `(article.adminGroups.slug IN [${adminGroupSlugsWithoutCityHall.join(',')}]) OR article.adminGroups.documentId NOT EXISTS`
             : `article.adminGroups.slug IN [${adminGroupSlugsWithoutCityHall.join(',')}]`
-          : '',
-        showOnlyCityHallArticles ? 'article.adminGroups.documentId NOT EXISTS' : '',
+          : null,
+        showOnlyCityHallArticles ? 'article.adminGroups.documentId NOT EXISTS' : null,
       ].filter(isDefined),
       sort: ['article.addedAtTimestamp:desc'],
     })

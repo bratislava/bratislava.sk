@@ -20,6 +20,12 @@ fragment UrbanStudyCategoryEntity on UrbanStudyCategory {
   title
 }
 
+fragment UrbanStudyStateEntity on UrbanStudyState {
+  documentId
+  slug
+  title
+}
+
 fragment UrbanStudySlugEntity on UrbanStudy {
   __typename
   documentId

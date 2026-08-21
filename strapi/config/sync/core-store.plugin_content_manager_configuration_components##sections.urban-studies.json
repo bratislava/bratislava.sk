@@ -77,6 +77,36 @@
           "sortable": false
         }
       },
+      "categories": {
+        "edit": {
+          "label": "Kategórie",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "title"
+        },
+        "list": {
+          "label": "categories",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "state": {
+        "edit": {
+          "label": "Stav",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "title"
+        },
+        "list": {
+          "label": "state",
+          "searchable": true,
+          "sortable": true
+        }
+      },
       "titleLevel": {
         "edit": {
           "label": "Úroveň nadpisu sekcie",
@@ -101,18 +131,21 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "title",
-        "text",
-        "showAll"
-      ],
+      "list": ["id", "title", "text", "showAll"],
       "edit": [
         [
           {
             "name": "title",
             "size": 12
-          },
+          }
+        ],
+        [
+          {
+            "name": "titleLevel",
+            "size": 12
+          }
+        ],
+        [
           {
             "name": "text",
             "size": 12
@@ -126,15 +159,18 @@
           {
             "name": "urbanStudies",
             "size": 12
-          }
-        ],
-        [
+          },
           {
-            "name": "titleLevel",
-            "size": 12
+            "name": "state",
+            "size": 6
+          },
+          {
+            "name": "categories",
+            "size": 6
           }
         ]
-      ]
+      ],
+      "list": ["id", "title", "text", "showAll"]
     },
     "uid": "sections.urban-studies",
     "isComponent": true
