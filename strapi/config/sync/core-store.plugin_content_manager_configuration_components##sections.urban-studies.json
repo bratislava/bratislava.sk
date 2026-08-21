@@ -131,7 +131,6 @@
       }
     },
     "layouts": {
-      "list": ["id", "title", "text", "showAll"],
       "edit": [
         [
           {

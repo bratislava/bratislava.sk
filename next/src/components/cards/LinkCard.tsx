@@ -10,10 +10,10 @@ import { CommonLinkProps } from '@/src/utils/getLinkProps'
 
 export type LinkCardProps = {
   cardTitleLevel?: CardTitleLevel
-  image?: StrapiUploadImage | null | undefined
+  image?: StrapiUploadImage | null
   imageSizes?: string
   imageClassName?: string
-  text?: string | null | undefined
+  text?: string | null
   linkProps?: CommonLinkProps
   showImage?: boolean
   buttonText?: string | null
@@ -66,11 +66,11 @@ const LinkCard = ({
               {title}
             </Typography>
 
-            {text ? <Typography variant="p-small">{text}</Typography> : null}
+            {text && <Typography variant="p-small">{text}</Typography>}
           </div>
         </div>
 
-        {linkProps ? (
+        {linkProps && (
           <div className={cn('flex justify-end', { 'justify-between': buttonText })}>
             {buttonText && (
               <Typography variant="p-small" className="text-start underline">
@@ -86,7 +86,7 @@ const LinkCard = ({
               className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-background-passive-secondary p-1.5"
             />
           </div>
-        ) : null}
+        )}
       </div>
     </CardBase>
   )

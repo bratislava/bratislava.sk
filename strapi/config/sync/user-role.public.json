@@ -156,31 +156,6 @@
       "locale": null
     },
     {
-      "action": "api::urban-study-category.urban-study-category.delete",
-      "documentId": "fvyujmfad2ry86b8bnddajiy",
-      "locale": null
-    },
-    {
-      "action": "api::urban-study-category.urban-study-category.find",
-      "documentId": "hg1epzkzbh351ejfhasso59r",
-      "locale": null
-    },
-    {
-      "action": "api::urban-study-category.urban-study-category.findOne",
-      "documentId": "gayhp9beap1as5qnt83hxkeh",
-      "locale": null
-    },
-    {
-      "action": "api::urban-study-state.urban-study-state.find",
-      "documentId": "ygf4r7zezdwrrgyj27qw2wcm",
-      "locale": null
-    },
-    {
-      "action": "api::urban-study-state.urban-study-state.findOne",
-      "documentId": "pn3xzefwiscl01iqkmcvd8qt",
-      "locale": null
-    },
-    {
       "action": "api::urban-study.urban-study.find",
       "documentId": "o6s6vsik4ubzv0xbf0ytmtlp",
       "locale": null
