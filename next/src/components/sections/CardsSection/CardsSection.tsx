@@ -23,7 +23,7 @@ const CardsSection = ({ section }: Props) => {
       <div className="flex flex-col gap-12">
         <SectionHeader title={title} text={description} />
 
-        <div className="flex flex-row gap-8">
+        <div className="flex flex-col gap-8 overflow-x-auto sm:flex-row">
           {cardsFiltered.map((card) => (
             <CardItem key={card.title} card={card} showThumbnails={!!showThumbnails} />
           ))}
