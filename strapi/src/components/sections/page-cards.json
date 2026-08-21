@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_sections_page_cards",
+  "info": {
+    "displayName": "Odkazy (karty)"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": false
+    },
+    "description": {
+      "type": "text"
+    },
+    "cards": {
+      "type": "component",
+      "component": "blocks.page-cards-item",
+      "repeatable": true
+    },
+    "showThumbnails": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "config": {}
+}

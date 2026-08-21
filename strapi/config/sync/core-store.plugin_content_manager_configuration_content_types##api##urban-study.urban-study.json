@@ -351,13 +351,7 @@
           }
         ]
       ],
-      "list": [
-        "id",
-        "title",
-        "slug",
-        "year",
-        "updatedAt"
-      ]
+      "list": ["id", "title", "slug", "year", "updatedAt"]
     },
     "uid": "api::urban-study.urban-study"
   },

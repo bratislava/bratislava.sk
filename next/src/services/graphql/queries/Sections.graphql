@@ -404,6 +404,24 @@ fragment AssetsSection on ComponentSectionsAssets {
   titleLevelAssetsSection: titleLevel
 }
 
+fragment PageCardsItemBlock on ComponentBlocksPageCardsItem {
+  title
+  subtext
+  buttonText
+  page {
+    ...PageCardEntity
+  }
+}
+
+fragment PageCardsSection on ComponentSectionsPageCards {
+  titlePageCardsSection: title
+  description
+  cardsPageCardsSection: cards(pagination: { limit: -1 }) {
+    ...PageCardsItemBlock
+  }
+  showThumbnails
+}
+
 fragment UrbanStudyCardEntity on UrbanStudy {
   ...UrbanStudySlugEntity
   urbanStudyCategory {
@@ -728,6 +746,10 @@ fragment Sections on PageSectionsDynamicZone {
 
   ... on ComponentSectionsIframeTabs {
     ...IframeTabsSection
+  }
+
+  ... on ComponentSectionsPageCards {
+    ...PageCardsSection
   }
 }
 

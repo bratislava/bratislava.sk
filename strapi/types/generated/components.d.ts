@@ -280,6 +280,19 @@ export interface BlocksOpeningHoursItem extends Struct.ComponentSchema {
   }
 }
 
+export interface BlocksPageCardsItem extends Struct.ComponentSchema {
+  collectionName: 'components_blocks_page_cards_item'
+  info: {
+    displayName: 'page cards item'
+  }
+  attributes: {
+    buttonText: Schema.Attribute.Text
+    page: Schema.Attribute.Relation<'oneToOne', 'api::page.page'>
+    subtext: Schema.Attribute.Text
+    title: Schema.Attribute.String
+  }
+}
+
 export interface BlocksPageLink extends Struct.ComponentSchema {
   collectionName: 'components_blocks_page_links'
   info: {
@@ -999,7 +1012,7 @@ export interface SectionsJobOffers extends Struct.ComponentSchema {
 export interface SectionsLinks extends Struct.ComponentSchema {
   collectionName: 'components_sections_links'
   info: {
-    displayName: 'Odkazy'
+    displayName: 'Odkazy (riadky)'
   }
   attributes: {
     pageLinks: Schema.Attribute.Component<'blocks.page-link', true>
@@ -1108,6 +1121,19 @@ export interface SectionsOrganizationalStructure extends Struct.ComponentSchema 
     icon: 'address-book'
   }
   attributes: {
+    title: Schema.Attribute.String
+  }
+}
+
+export interface SectionsPageCards extends Struct.ComponentSchema {
+  collectionName: 'components_sections_page_cards'
+  info: {
+    displayName: 'Odkazy (karty)'
+  }
+  attributes: {
+    cards: Schema.Attribute.Component<'blocks.page-cards-item', true>
+    description: Schema.Attribute.Text
+    showThumbnails: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>
     title: Schema.Attribute.String
   }
 }
@@ -1346,6 +1372,7 @@ declare module '@strapi/strapi' {
       'blocks.numerical-list-item': BlocksNumericalListItem
       'blocks.opening-hours-alert-message': BlocksOpeningHoursAlertMessage
       'blocks.opening-hours-item': BlocksOpeningHoursItem
+      'blocks.page-cards-item': BlocksPageCardsItem
       'blocks.page-link': BlocksPageLink
       'blocks.partner': BlocksPartner
       'blocks.pros-and-cons-card': BlocksProsAndConsCard
@@ -1395,6 +1422,7 @@ declare module '@strapi/strapi' {
       'sections.official-board': SectionsOfficialBoard
       'sections.opening-hours': SectionsOpeningHours
       'sections.organizational-structure': SectionsOrganizationalStructure
+      'sections.page-cards': SectionsPageCards
       'sections.partners': SectionsPartners
       'sections.pros-and-cons-section': SectionsProsAndConsSection
       'sections.regulations': SectionsRegulations
