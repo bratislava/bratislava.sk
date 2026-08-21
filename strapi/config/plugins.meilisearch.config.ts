@@ -17,6 +17,139 @@ const wrapSearchIndexEntry = (type, data) => {
   }
 }
 
+/**
+ * Template used by Meilisearch conversational search (chat completions) to render a document for the LLM.
+ * Liquid syntax, `doc` is the document as stored in the shared index (see wrapSearchIndexEntry).
+ * Types with a dash in the name must be accessed with the bracket notation.
+ * Every field must be wrapped in an `if`, Meilisearch renders the template strictly and a single missing (not just
+ * empty) field makes the whole document unusable for the chat - it is then silently skipped.
+ */
+const chatDocumentTemplate = `{{ doc.type }} ({{ doc.locale }})
+{%- case doc.type -%}
+{%- when 'page' -%}
+{% if doc.page.title %}
+Title: {{ doc.page.title }}
+{%- endif -%}
+{% if doc.page.subtext %}
+Subtext: {{ doc.page.subtext }}
+{%- endif -%}
+{% if doc.page.metaDescription %}
+Meta description: {{ doc.page.metaDescription }}
+{%- endif -%}
+{% if doc.page.keywords %}
+Keywords: {{ doc.page.keywords }}
+{%- endif -%}
+{% if doc.page.path %}
+Path: {{ doc.page.path }}
+{%- endif -%}
+{%- when 'article' -%}
+{% if doc.article.title %}
+Title: {{ doc.article.title }}
+{%- endif -%}
+{% if doc.article.perex %}
+Perex: {{ doc.article.perex }}
+{%- endif -%}
+{% if doc.article.articleCategory.title %}
+Category: {{ doc.article.articleCategory.title }}
+{%- endif -%}
+{% if doc.article.addedAt %}
+Published: {{ doc.article.addedAt }}
+{%- endif -%}
+{% if doc.article.slug %}
+Slug: {{ doc.article.slug }}
+{%- endif -%}
+{%- when 'asset' -%}
+{% if doc.asset.title %}
+Title: {{ doc.asset.title }}
+{%- endif -%}
+{% if doc.asset.description %}
+Description: {{ doc.asset.description }}
+{%- endif -%}
+{% if doc.asset.assetCategory.title %}
+Category: {{ doc.asset.assetCategory.title }}
+{%- endif -%}
+{% if doc.asset.slug %}
+Slug: {{ doc.asset.slug }}
+{%- endif -%}
+{%- when 'urban-study' -%}
+{% if doc["urban-study"].title %}
+Title: {{ doc["urban-study"].title }}
+{%- endif -%}
+{% if doc["urban-study"].year %}
+Year: {{ doc["urban-study"].year }}
+{%- endif -%}
+{% if doc["urban-study"].procuredBy %}
+Procured by: {{ doc["urban-study"].procuredBy }}
+{%- endif -%}
+{% if doc["urban-study"].preparedBy %}
+Prepared by: {{ doc["urban-study"].preparedBy }}
+{%- endif -%}
+{% if doc["urban-study"].approvalText %}
+Approval: {{ doc["urban-study"].approvalText }}
+{%- endif -%}
+{% if doc["urban-study"].body %}
+Body: {{ doc["urban-study"].body }}
+{%- endif -%}
+{% if doc["urban-study"].slug %}
+Slug: {{ doc["urban-study"].slug }}
+{%- endif -%}
+{%- when 'document' -%}
+{% if doc.document.title %}
+Title: {{ doc.document.title }}
+{%- endif -%}
+{% if doc.document.description %}
+Description: {{ doc.document.description }}
+{%- endif -%}
+{% if doc.document.documentCategory.title %}
+Category: {{ doc.document.documentCategory.title }}
+{%- endif -%}
+{% if doc.document.slug %}
+Slug: {{ doc.document.slug }}
+{%- endif -%}
+{%- when 'inba-release' -%}
+{% if doc["inba-release"].title %}
+Title: {{ doc["inba-release"].title }}
+{%- endif -%}
+{% if doc["inba-release"].perex %}
+Perex: {{ doc["inba-release"].perex }}
+{%- endif -%}
+{% if doc["inba-release"].releaseDate %}
+Release date: {{ doc["inba-release"].releaseDate }}
+{%- endif -%}
+{% if doc["inba-release"].slug %}
+Slug: {{ doc["inba-release"].slug }}
+{%- endif -%}
+{%- when 'regulation' -%}
+{% if doc.regulation.regNumber %}
+Number: {{ doc.regulation.regNumber }}
+{%- endif -%}
+{% if doc.regulation.titleText %}
+Title: {{ doc.regulation.titleText }}
+{%- endif -%}
+{% if doc.regulation.fullTitle %}
+Full title: {{ doc.regulation.fullTitle }}
+{%- endif -%}
+{% if doc.regulation.effectiveFrom %}
+Effective from: {{ doc.regulation.effectiveFrom }}
+{%- endif -%}
+{% if doc.regulation.category %}
+Category: {{ doc.regulation.category }}
+{%- endif -%}
+{% if doc.regulation.slug %}
+Slug: {{ doc.regulation.slug }}
+{%- endif -%}
+{%- when 'faq' -%}
+{% if doc.faq.title %}
+Question: {{ doc.faq.title }}
+{%- endif -%}
+{% if doc.faq.body %}
+Answer: {{ doc.faq.body }}
+{%- endif -%}
+{% if doc.faq.faqCategory.title %}
+Category: {{ doc.faq.faqCategory.title }}
+{%- endif -%}
+{%- endcase -%}`
+
 // Because a bug in Meilisearch shared index, only the last added entity's settings are used and the old ones are overwritten
 // instead of merging. Therefore, for all entities we must provide shared settings.
 const searchIndexSettings = {
@@ -76,6 +209,23 @@ const searchIndexSettings = {
   pagination: {
     // https://docs.meilisearch.com/learn/advanced/known_limitations.html#maximum-number-of-results-per-search
     maxTotalHits: 100000,
+  },
+  // Settings for conversational search (chat completions). Requires the `chatCompletions` experimental feature and a
+  // configured chat workspace (LLM provider) on the Meilisearch instance - neither can be set from Strapi.
+  // https://www.meilisearch.com/docs/reference/api/settings#chat
+  chat: {
+    // Used by the LLM to decide whether this index is relevant for the question.
+    description:
+      'Content of the official website of the city of Bratislava (bratislava.sk), in Slovak (locale "sk") and English (locale "en"). Contains city pages, news articles, official documents and assets, urban studies, city regulations (VZN), Inba magazine releases and FAQs. Use it to answer questions about city services, offices, official documents and city life in Bratislava. Documents of the type asset, regulation and inba-release have no locale field, so never filter by locale alone - either omit the locale filter completely or write it as "(locale = sk OR locale NOT EXISTS)". Most of the content is in Slovak, so search with Slovak keywords even when the question is in English.',
+    documentTemplate: chatDocumentTemplate,
+    // Default is 400 bytes which truncates longer documents (e.g. urban studies or FAQ answers).
+    documentTemplateMaxBytes: 4000,
+    searchParameters: {
+      limit: 20,
+      // The LLM sends whole natural language questions as the query, "last" / "all" then return nothing for most of
+      // them. "frequency" drops the most common words first, which is what works for such queries.
+      matchingStrategy: 'frequency',
+    },
   },
 }
 
