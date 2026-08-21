@@ -15,7 +15,7 @@ const CardItem = ({
   return (
     <LinkCard
       text={subtext}
-      className="min-h-28 w-62 shrink-0 rounded-lg"
+      className="h-auto min-h-28 w-62 shrink-0 rounded-lg"
       image={thumbnail}
       showImage={showThumbnails}
       imageClassName="aspect-280/158"
