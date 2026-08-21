@@ -16,6 +16,7 @@ export type LinkCardProps = {
   text?: string | null | undefined
   linkProps?: CommonLinkProps
   showImage?: boolean
+  buttonText?: string | null
 } & CardBaseProps
 
 /**
@@ -32,6 +33,7 @@ const LinkCard = ({
   linkProps,
   className,
   showImage = true,
+  buttonText,
   ...rest
 }: LinkCardProps) => {
   const titleId = useId()
@@ -69,7 +71,13 @@ const LinkCard = ({
         </div>
 
         {linkProps ? (
-          <div className="flex justify-end">
+          <div className={cn('flex justify-end', { 'justify-between': buttonText })}>
+            {buttonText && (
+              <Typography variant="p-small" className="text-start underline">
+                {buttonText}
+              </Typography>
+            )}
+
             <Button
               variant="icon-wrapped"
               stretched
