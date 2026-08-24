@@ -4,7 +4,6 @@ import ArticlesLandingPageSection from '@/src/components/sections/ArticlesLandin
 import ArticlesSection from '@/src/components/sections/ArticlesSection/ArticlesSection'
 import AssetsSection from '@/src/components/sections/AssetsSection/AssetsSection'
 import BannerSection from '@/src/components/sections/BannerSection'
-import CardsSection from '@/src/components/sections/CardsSection/CardsSection'
 import ColumnedTextSection from '@/src/components/sections/ColumnedTextSection'
 import ColumnsListSection from '@/src/components/sections/ColumnsListSection'
 import ColumnsSection from '@/src/components/sections/ColumnsSection'
@@ -29,6 +28,7 @@ import NumericalListSection from '@/src/components/sections/NumericalListSection
 import OfficialBoardSection from '@/src/components/sections/OfficialBoardSection/OfficialBoardSection'
 import OpeningHoursSection from '@/src/components/sections/OpeningHoursSection'
 import OrganizationalStructureSection from '@/src/components/sections/OrganizationalStructureSection'
+import PageCardsSection from '@/src/components/sections/PageCardsSection/PageCardsSection'
 import PartnersSection from '@/src/components/sections/PartnersSection'
 import ProsAndConsSection from '@/src/components/sections/ProsAndConsSection'
 import RegulationsSection from '@/src/components/sections/RegulationsSection'
@@ -165,7 +165,7 @@ const SectionContent = ({ section }: { section: SectionsFragment }) => {
       return <IframeTabsSection section={section} />
 
     case 'ComponentSectionsPageCards':
-      return <CardsSection section={section} />
+      return <PageCardsSection section={section} />
 
     default:
       return null

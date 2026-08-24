@@ -6,10 +6,10 @@
       "filterable": true,
       "searchable": true,
       "pageSize": 10,
-      "relationOpenMode": "modal",
       "mainField": "title",
       "defaultSortBy": "title",
-      "defaultSortOrder": "ASC"
+      "defaultSortOrder": "ASC",
+      "relationOpenMode": "modal"
     },
     "metadatas": {
       "id": {
@@ -22,7 +22,7 @@
       },
       "title": {
         "edit": {
-          "label": "title",
+          "label": "Názov",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -36,7 +36,7 @@
       },
       "description": {
         "edit": {
-          "label": "description",
+          "label": "Text",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -50,11 +50,12 @@
       },
       "cards": {
         "edit": {
-          "label": "cards",
+          "label": "Stránky",
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true
+          "editable": true,
+          "mainField": "title"
         },
         "list": {
           "label": "cards",
@@ -64,7 +65,7 @@
       },
       "showThumbnails": {
         "edit": {
-          "label": "showThumbnails",
+          "label": "Zobraziť thumbnaily",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -86,21 +87,19 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "title",
-        "description",
-        "cards"
-      ],
       "edit": [
         [
           {
             "name": "title",
-            "size": 6
+            "size": 12
           },
           {
             "name": "description",
-            "size": 6
+            "size": 12
+          },
+          {
+            "name": "showThumbnails",
+            "size": 12
           }
         ],
         [
@@ -108,13 +107,13 @@
             "name": "cards",
             "size": 12
           }
-        ],
-        [
-          {
-            "name": "showThumbnails",
-            "size": 4
-          }
         ]
+      ],
+      "list": [
+        "id",
+        "title",
+        "description",
+        "cards"
       ]
     },
     "uid": "sections.page-cards",

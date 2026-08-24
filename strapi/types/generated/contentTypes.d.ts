@@ -1185,6 +1185,7 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
         'sections.inba-releases',
         'sections.contacts-section',
         'sections.newsletter',
+        'sections.page-cards',
         'sections.links',
         'sections.organizational-structure',
         'sections.opening-hours',
@@ -1207,7 +1208,6 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
         'sections.videos',
         'sections.regulations',
         'sections.urban-studies',
-        'sections.page-cards',
       ]
     > &
       Schema.Attribute.SetPluginOptions<{

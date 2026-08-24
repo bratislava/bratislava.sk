@@ -6,10 +6,10 @@
       "filterable": true,
       "searchable": true,
       "pageSize": 10,
-      "relationOpenMode": "modal",
       "mainField": "title",
       "defaultSortBy": "title",
-      "defaultSortOrder": "ASC"
+      "defaultSortOrder": "ASC",
+      "relationOpenMode": "modal"
     },
     "metadatas": {
       "id": {
@@ -22,7 +22,7 @@
       },
       "title": {
         "edit": {
-          "label": "title",
+          "label": "Názov",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -36,7 +36,7 @@
       },
       "subtext": {
         "edit": {
-          "label": "subtext",
+          "label": "Text",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -50,7 +50,7 @@
       },
       "buttonText": {
         "edit": {
-          "label": "buttonText",
+          "label": "Text tlačidla",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -64,7 +64,7 @@
       },
       "page": {
         "edit": {
-          "label": "page",
+          "label": "Stránka",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -87,33 +87,33 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "title",
-        "subtext",
-        "buttonText"
-      ],
       "edit": [
         [
           {
             "name": "title",
-            "size": 6
+            "size": 12
           },
           {
             "name": "subtext",
-            "size": 6
+            "size": 12
           }
         ],
         [
           {
             "name": "buttonText",
-            "size": 6
+            "size": 12
           },
           {
             "name": "page",
-            "size": 6
+            "size": 12
           }
         ]
+      ],
+      "list": [
+        "id",
+        "title",
+        "subtext",
+        "buttonText"
       ]
     },
     "uid": "blocks.page-cards-item",
