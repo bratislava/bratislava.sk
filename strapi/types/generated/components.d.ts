@@ -371,7 +371,7 @@ export interface BlocksTopServicesItem extends Struct.ComponentSchema {
         'organizacna_struktura',
         'uradne_hodiny',
         'pracovne_prilezitosti',
-        'prenajom_priestorov'
+        'prenajom_priestorov',
       ]
     > &
       Schema.Attribute.Required &
@@ -475,7 +475,7 @@ export interface MenuMenuItem extends Struct.ComponentSchema {
         'zp_vystavba_03',
         'socialna_pomoc_04',
         'vzdelavanie_05',
-        'kultura_06'
+        'kultura_06',
       ]
     > &
       Schema.Attribute.Required &
@@ -547,7 +547,7 @@ export interface MenuMenuSection extends Struct.ComponentSchema {
         'sluzby_06',
         'koncepcia_06',
         'komunity_06',
-        'covid_06'
+        'covid_06',
       ]
     > &
       Schema.Attribute.Required &
@@ -694,7 +694,7 @@ export interface SectionsColumns extends Struct.ComponentSchema {
     imageVariant: Schema.Attribute.Enumeration<
       [
         'columnsSection.imageVariant.withCircleBackground',
-        'columnsSection.imageVariant.imageOriginalSize'
+        'columnsSection.imageVariant.imageOriginalSize',
       ]
     > &
       Schema.Attribute.Required &
@@ -790,7 +790,7 @@ export interface SectionsDivider extends Struct.ComponentSchema {
         'budovy_04_full_width',
         'vzdelavanie',
         'skola',
-        'divadlo'
+        'divadlo',
       ]
     >
   }
@@ -1260,7 +1260,12 @@ export interface SectionsUrbanStudies extends Struct.ComponentSchema {
     displayName: '\u00DAzemn\u00E9 \u0161t\u00FAdie [WIP]'
   }
   attributes: {
+    categories: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::urban-study-category.urban-study-category'
+    >
     showAll: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>
+    state: Schema.Attribute.Relation<'oneToOne', 'api::urban-study-state.urban-study-state'>
     text: Schema.Attribute.Text
     title: Schema.Attribute.String
     titleLevel: Schema.Attribute.Enumeration<['h2', 'h3']> & Schema.Attribute.DefaultTo<'h2'>

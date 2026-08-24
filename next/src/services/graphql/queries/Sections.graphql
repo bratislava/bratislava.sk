@@ -406,7 +406,12 @@ fragment AssetsSection on ComponentSectionsAssets {
 
 fragment UrbanStudyCardEntity on UrbanStudy {
   ...UrbanStudySlugEntity
-  urbanStudyType
+  urbanStudyCategory {
+    ...UrbanStudyCategoryEntity
+  }
+  urbanStudyState {
+    ...UrbanStudyStateEntity
+  }
   year
   updatedAt
 }
@@ -418,6 +423,12 @@ fragment UrbanStudiesSection on ComponentSectionsUrbanStudies {
     ...UrbanStudyCardEntity
   }
   showAll
+  categories {
+    ...UrbanStudyCategoryEntity
+  }
+  stateUrbanStudiesSection: state {
+    ...UrbanStudyStateEntity
+  }
   titleLevelUrbanStudiesSection: titleLevel
 }
 

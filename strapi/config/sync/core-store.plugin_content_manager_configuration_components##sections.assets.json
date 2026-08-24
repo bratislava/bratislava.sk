@@ -8,7 +8,8 @@
       "pageSize": 10,
       "mainField": "title",
       "defaultSortBy": "title",
-      "defaultSortOrder": "ASC"
+      "defaultSortOrder": "ASC",
+      "relationOpenMode": "modal"
     },
     "metadatas": {
       "id": {
@@ -114,12 +115,15 @@
       }
     },
     "layouts": {
-      "list": ["id", "title", "text", "showAll", "allowCollapsingDocuments"],
       "edit": [
         [
           {
             "name": "title",
             "size": 12
+          },
+          {
+            "name": "titleLevel",
+            "size": 6
           },
           {
             "name": "text",
@@ -129,25 +133,28 @@
         [
           {
             "name": "showAll",
-            "size": 12
+            "size": 6
           }
         ],
         [
           {
             "name": "allowCollapsingDocuments",
-            "size": 4
-          },
-          [
-            {
-              "name": "assets",
-              "size": 12
-            },
-            {
-              "name": "titleLevel",
-              "size": 8
-            }
-          ]
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "assets",
+            "size": 12
+          }
         ]
+      ],
+      "list": [
+        "id",
+        "title",
+        "text",
+        "showAll",
+        "allowCollapsingDocuments"
       ]
     },
     "uid": "sections.assets",

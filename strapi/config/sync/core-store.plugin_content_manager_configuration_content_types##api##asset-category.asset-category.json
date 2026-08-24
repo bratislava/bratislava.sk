@@ -8,7 +8,8 @@
       "pageSize": 10,
       "mainField": "title",
       "defaultSortBy": "title",
-      "defaultSortOrder": "ASC"
+      "defaultSortOrder": "ASC",
+      "relationOpenMode": "modal"
     },
     "metadatas": {
       "id": {
@@ -21,7 +22,7 @@
       },
       "title": {
         "edit": {
-          "label": "Nadpis",
+          "label": "Názov",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -148,7 +149,12 @@
           }
         ]
       ],
-      "list": ["id", "title", "slug", "createdAt"]
+      "list": [
+        "id",
+        "title",
+        "slug",
+        "createdAt"
+      ]
     },
     "uid": "api::asset-category.asset-category"
   },

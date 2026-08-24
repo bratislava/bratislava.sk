@@ -1,5 +1,5 @@
 import { Button, Typography } from '@bratislava/component-library'
-import { Trans } from 'next-i18next'
+import { Trans } from 'next-i18next/pages'
 
 import {
   FacebookIcon,
@@ -85,9 +85,9 @@ export const FooterCopyright = ({ innovationsLink }: FooterFragment) => {
 export const FooterColumnLinks = ({ links }: FooterColumnBlockFragment) => {
   return (
     <>
-      {links
-        ?.filter(isDefined)
-        ?.map((link, index) => <MLink variant="underlined" {...getLinkProps(link)} key={index} />)}
+      {links?.filter(isDefined)?.map((link, index) => (
+        <MLink variant="underlined" {...getLinkProps(link)} key={index} />
+      ))}
     </>
   )
 }

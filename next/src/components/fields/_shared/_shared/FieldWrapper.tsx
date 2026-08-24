@@ -1,5 +1,5 @@
 import { Typography } from '@bratislava/component-library'
-import { useTranslation } from 'next-i18next'
+import { useTranslation } from 'next-i18next/pages'
 import { ReactNode } from 'react'
 import {
   FieldError as RACFieldError,

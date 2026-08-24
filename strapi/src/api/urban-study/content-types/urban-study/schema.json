@@ -23,22 +23,19 @@
     "year": {
       "type": "string"
     },
+    "urbanStudyState": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::urban-study-state.urban-study-state"
+    },
+    "urbanStudyCategory": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::urban-study-category.urban-study-category",
+      "inversedBy": "urbanStudies"
+    },
     "customPublishedAt": {
       "type": "datetime"
-    },
-    "urbanStudyType": {
-      "type": "enumeration",
-      "required": true,
-      "default": "urbanStudyType.urbanistickaStudia",
-      "enum": [
-        "urbanStudyType.urbanistickaStudia",
-        "urbanStudyType.odvetvovaStudia",
-        "urbanStudyType.uzemnyGenerel",
-        "urbanStudyType.uzemnyPlan",
-        "urbanStudyType.uzemnyPlanZony",
-        "urbanStudyType.uzemnyPlanZmenyADoplnky",
-        "urbanStudyType.iny"
-      ]
     },
     "procuredBy": {
       "type": "string",

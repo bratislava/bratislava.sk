@@ -1,4 +1,4 @@
-import { useTranslation } from 'next-i18next'
+import { useTranslation } from 'next-i18next/pages'
 
 import SubnavigationCard from '@/src/components/cards/SubnavigationCard'
 import HorizontalDivider from '@/src/components/common/Divider/HorizontalDivider'

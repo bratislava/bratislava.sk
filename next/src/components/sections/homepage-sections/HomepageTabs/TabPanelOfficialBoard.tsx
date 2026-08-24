@@ -1,6 +1,6 @@
 import { Button, Typography } from '@bratislava/component-library'
 import { useQuery } from '@tanstack/react-query'
-import { useTranslation } from 'next-i18next'
+import { useTranslation } from 'next-i18next/pages'
 import { Fragment } from 'react'
 import { TabPanel } from 'react-aria-components'
 

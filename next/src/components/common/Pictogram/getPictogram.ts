@@ -1,30 +1,3 @@
-import {
-  Regulation_Archiv48pxIcon,
-  Regulation_DaneAPoplatky48pxIcon,
-  Regulation_Hospodarenie48pxIcon,
-  Regulation_Ostatne48pxIcon,
-  Regulation_PomenovanieUlic48pxIcon,
-  Regulation_PoriadokACistota48pxIcon,
-  Regulation_SocialnaPomocASkolstvo48pxIcon,
-  Regulation_UzemnePlanovanie48pxIcon,
-} from 'src/assets/pictograms-regulation-categories'
-import {
-  SearchResults_Contacts48pxIcon,
-  SearchResults_Document48pxIcon,
-} from 'src/assets/pictograms-search-results'
-import {
-  TopServices_BratislavskeKontoIcon,
-  TopServices_DaneAPoplatkyIcon,
-  TopServices_KampaneAProjektyIcon,
-  TopServices_NahlaseniePodnetov,
-  TopServices_OrganizacnaStruktura,
-  TopServices_ParkyAZahrady,
-  TopServices_PracovnePrilezitosti,
-  TopServices_PrenajomPriestorov,
-  TopServices_TuristomVHlavnomMeste,
-  TopServices_UradneHodinyIcon,
-} from 'src/assets/pictograms-top-services'
-
 import Accommodation48pxIcon from '@/src/assets/pictograms-menu/48px/accommodation_48px.svg'
 import Bike48pxIcon from '@/src/assets/pictograms-menu/48px/bike_48px.svg'
 import Calendar48pxIcon from '@/src/assets/pictograms-menu/48px/calendar_48px.svg'
@@ -119,6 +92,32 @@ import Travel64pxFilledIcon from '@/src/assets/pictograms-menu/64px/travel_64px_
 import Travel64pxStrokeIcon from '@/src/assets/pictograms-menu/64px/travel_64px_stroke.svg'
 import Tree64pxIcon from '@/src/assets/pictograms-menu/64px/tree_64px.svg'
 import Trolleybus64pxIcon from '@/src/assets/pictograms-menu/64px/trolleybus_64px.svg'
+import {
+  Regulation_Archiv48pxIcon,
+  Regulation_DaneAPoplatky48pxIcon,
+  Regulation_Hospodarenie48pxIcon,
+  Regulation_Ostatne48pxIcon,
+  Regulation_PomenovanieUlic48pxIcon,
+  Regulation_PoriadokACistota48pxIcon,
+  Regulation_SocialnaPomocASkolstvo48pxIcon,
+  Regulation_UzemnePlanovanie48pxIcon,
+} from '@/src/assets/pictograms-regulation-categories'
+import {
+  SearchResults_Contacts48pxIcon,
+  SearchResults_Document48pxIcon,
+} from '@/src/assets/pictograms-search-results'
+import {
+  TopServices_BratislavskeKontoIcon,
+  TopServices_DaneAPoplatkyIcon,
+  TopServices_KampaneAProjektyIcon,
+  TopServices_NahlaseniePodnetov,
+  TopServices_OrganizacnaStruktura,
+  TopServices_ParkyAZahrady,
+  TopServices_PracovnePrilezitosti,
+  TopServices_PrenajomPriestorov,
+  TopServices_TuristomVHlavnomMeste,
+  TopServices_UradneHodinyIcon,
+} from '@/src/assets/pictograms-top-services'
 
 // The type of any icon is fine.
 type IconComponent = typeof Accommodation48pxIcon

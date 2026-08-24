@@ -16,7 +16,6 @@ import {
 } from '@/src/services/meili/fetchers/urbanStudiesFetcher'
 import { isDefined } from '@/src/utils/isDefined'
 import { useTranslation } from '@/src/utils/useTranslation'
-import { useUrbanStudyTypeLabel } from '@/src/utils/useUrbanStudyTypeTranslationMap'
 
 type Props = {
   section: UrbanStudiesSectionFragment
@@ -30,8 +29,6 @@ const UrbanStudiesAll = ({ section }: Props) => {
   const { t } = useTranslation()
 
   const { title, text, titleLevelUrbanStudiesSection: titleLevel } = section
-
-  const getUrbanStudyTypeLabel = useUrbanStudyTypeLabel()
 
   const [input, setInput] = useState('')
   const [debouncedInput] = useDebounceValue(input, 300)
@@ -68,6 +65,7 @@ const UrbanStudiesAll = ({ section }: Props) => {
     <div className="flex flex-col gap-6">
       <div className="flex flex-col gap-6">
         <SectionHeader title={title} text={text} titleLevel={titleLevel} />
+
         <SearchBar
           ref={searchRef}
           placeholder={t('SearchPage.enterKeyword')}
@@ -90,10 +88,9 @@ const UrbanStudiesAll = ({ section }: Props) => {
                     data={{
                       title: urbanStudy.title,
                       linkHref: `/uzemne-studie/${urbanStudy.slug}`,
-                      metadata: [
-                        getUrbanStudyTypeLabel(urbanStudy.urbanStudyType),
-                        urbanStudy.year,
-                      ].filter(isDefined),
+                      metadata: [urbanStudy.urbanStudyCategory?.title, urbanStudy.year].filter(
+                        isDefined,
+                      ),
                       customIconName: 'urban_study',
                     }}
                   />

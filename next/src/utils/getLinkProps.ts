@@ -1,4 +1,4 @@
-import { i18n } from 'next-i18next'
+import { i18n } from 'next-i18next/pages'
 import { ReactNode } from 'react'
 
 import { LinkAnalyticsProps } from '@/src/components/common/MLink/MLink'
@@ -30,7 +30,7 @@ type LinkFragment =
   | null
   | undefined
 
-const getEntityLinkData = (link: NonNullable<LinkFragment>) => {
+const getStrapiEntityLinkProps = (link: NonNullable<LinkFragment>) => {
   // Some content types are not in all strapi link fragments, so we have to check if they exist in the object first
   if ('page' in link && link.page) {
     return { href: `/${link.page.path}`, label: link.label ?? link.page.title }
@@ -62,6 +62,8 @@ const getEntityLinkData = (link: NonNullable<LinkFragment>) => {
 }
 
 export const getLinkProps = (link: LinkFragment) => {
+  const { t } = i18n ?? {}
+
   let href = '#'
   let label = link?.label ?? ''
   let ariaLabel: string | undefined
@@ -74,16 +76,17 @@ export const getLinkProps = (link: LinkFragment) => {
     return { children: label, href } // TODO?
   }
 
-  const entityLinkData = getEntityLinkData(link)
-  if (entityLinkData) {
-    href = entityLinkData.href
-    label = entityLinkData.label
-    ariaLabel = entityLinkData.label
+  const strapiEntityLinkProps = getStrapiEntityLinkProps(link)
+
+  if (strapiEntityLinkProps) {
+    href = strapiEntityLinkProps.href
+    label = strapiEntityLinkProps.label
+    ariaLabel = strapiEntityLinkProps.label
   } else if (link.url && !queryParams) {
     const isExternal = link.url.startsWith('http')
     href = link.url
     label = link.label ?? link.url
-    ariaLabel = isExternal ? `${label} - ${i18n?.t('getLinkProps.openInNewTab') ?? ''}` : undefined
+    ariaLabel = isExternal ? `${label} - ${t ? t('getLinkProps.openInNewTab') : ''}` : undefined
     target = isExternal ? '_blank' : undefined
   }
 

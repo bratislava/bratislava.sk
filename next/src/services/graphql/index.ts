@@ -3100,13 +3100,28 @@ export type ComponentSectionsTopServicesInput = {
 
 export type ComponentSectionsUrbanStudies = {
   __typename?: 'ComponentSectionsUrbanStudies'
+  categories: Array<Maybe<UrbanStudyCategory>>
+  categories_connection?: Maybe<UrbanStudyCategoryRelationResponseCollection>
   id: Scalars['ID']['output']
   showAll?: Maybe<Scalars['Boolean']['output']>
+  state?: Maybe<UrbanStudyState>
   text?: Maybe<Scalars['String']['output']>
   title?: Maybe<Scalars['String']['output']>
   titleLevel?: Maybe<Enum_Componentsectionsurbanstudies_Titlelevel>
   urbanStudies: Array<Maybe<UrbanStudy>>
   urbanStudies_connection?: Maybe<UrbanStudyRelationResponseCollection>
+}
+
+export type ComponentSectionsUrbanStudiesCategoriesArgs = {
+  filters?: InputMaybe<UrbanStudyCategoryFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type ComponentSectionsUrbanStudiesCategories_ConnectionArgs = {
+  filters?: InputMaybe<UrbanStudyCategoryFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
 }
 
 export type ComponentSectionsUrbanStudiesUrbanStudiesArgs = {
@@ -3123,9 +3138,11 @@ export type ComponentSectionsUrbanStudiesUrbanStudies_ConnectionArgs = {
 
 export type ComponentSectionsUrbanStudiesFiltersInput = {
   and?: InputMaybe<Array<InputMaybe<ComponentSectionsUrbanStudiesFiltersInput>>>
+  categories?: InputMaybe<UrbanStudyCategoryFiltersInput>
   not?: InputMaybe<ComponentSectionsUrbanStudiesFiltersInput>
   or?: InputMaybe<Array<InputMaybe<ComponentSectionsUrbanStudiesFiltersInput>>>
   showAll?: InputMaybe<BooleanFilterInput>
+  state?: InputMaybe<UrbanStudyStateFiltersInput>
   text?: InputMaybe<StringFilterInput>
   title?: InputMaybe<StringFilterInput>
   titleLevel?: InputMaybe<StringFilterInput>
@@ -3133,8 +3150,10 @@ export type ComponentSectionsUrbanStudiesFiltersInput = {
 }
 
 export type ComponentSectionsUrbanStudiesInput = {
+  categories?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
   id?: InputMaybe<Scalars['ID']['input']>
   showAll?: InputMaybe<Scalars['Boolean']['input']>
+  state?: InputMaybe<Scalars['ID']['input']>
   text?: InputMaybe<Scalars['String']['input']>
   title?: InputMaybe<Scalars['String']['input']>
   titleLevel?: InputMaybe<Enum_Componentsectionsurbanstudies_Titlelevel>
@@ -3602,16 +3621,6 @@ export enum Enum_Regulation_Category {
   PoriadokACistota = 'poriadokACistota',
   SocialnaPomocASkolstvo = 'socialnaPomocASkolstvo',
   UzemnePlanovanie = 'uzemnePlanovanie',
-}
-
-export enum Enum_Urbanstudy_Urbanstudytype {
-  UrbanStudyTypeIny = 'urbanStudyType_iny',
-  UrbanStudyTypeOdvetvovaStudia = 'urbanStudyType_odvetvovaStudia',
-  UrbanStudyTypeUrbanistickaStudia = 'urbanStudyType_urbanistickaStudia',
-  UrbanStudyTypeUzemnyGenerel = 'urbanStudyType_uzemnyGenerel',
-  UrbanStudyTypeUzemnyPlan = 'urbanStudyType_uzemnyPlan',
-  UrbanStudyTypeUzemnyPlanZmenyADoplnky = 'urbanStudyType_uzemnyPlanZmenyADoplnky',
-  UrbanStudyTypeUzemnyPlanZony = 'urbanStudyType_uzemnyPlanZony',
 }
 
 export type Error = {
@@ -4084,6 +4093,8 @@ export type GenericMorph =
   | TaxAdministratorsList
   | UploadFile
   | UrbanStudy
+  | UrbanStudyCategory
+  | UrbanStudyState
   | UsersPermissionsPermission
   | UsersPermissionsRole
   | UsersPermissionsUser
@@ -4494,6 +4505,8 @@ export type Mutation = {
   createReviewWorkflowsWorkflowStage?: Maybe<ReviewWorkflowsWorkflowStage>
   createTag?: Maybe<Tag>
   createUrbanStudy?: Maybe<UrbanStudy>
+  createUrbanStudyCategory?: Maybe<UrbanStudyCategory>
+  createUrbanStudyState?: Maybe<UrbanStudyState>
   /** Create a new role */
   createUsersPermissionsRole?: Maybe<UsersPermissionsCreateRolePayload>
   /** Create a new user */
@@ -4520,6 +4533,8 @@ export type Mutation = {
   deleteTaxAdministratorsList?: Maybe<DeleteMutationResponse>
   deleteUploadFile?: Maybe<UploadFile>
   deleteUrbanStudy?: Maybe<DeleteMutationResponse>
+  deleteUrbanStudyCategory?: Maybe<DeleteMutationResponse>
+  deleteUrbanStudyState?: Maybe<DeleteMutationResponse>
   /** Delete an existing role */
   deleteUsersPermissionsRole?: Maybe<UsersPermissionsDeleteRolePayload>
   /** Delete an existing user */
@@ -4555,6 +4570,8 @@ export type Mutation = {
   updateTaxAdministratorsList?: Maybe<TaxAdministratorsList>
   updateUploadFile: UploadFile
   updateUrbanStudy?: Maybe<UrbanStudy>
+  updateUrbanStudyCategory?: Maybe<UrbanStudyCategory>
+  updateUrbanStudyState?: Maybe<UrbanStudyState>
   /** Update an existing role */
   updateUsersPermissionsRole?: Maybe<UsersPermissionsUpdateRolePayload>
   /** Update an existing user */
@@ -4646,6 +4663,16 @@ export type MutationCreateTagArgs = {
 
 export type MutationCreateUrbanStudyArgs = {
   data: UrbanStudyInput
+  status?: InputMaybe<PublicationStatus>
+}
+
+export type MutationCreateUrbanStudyCategoryArgs = {
+  data: UrbanStudyCategoryInput
+  status?: InputMaybe<PublicationStatus>
+}
+
+export type MutationCreateUrbanStudyStateArgs = {
+  data: UrbanStudyStateInput
   status?: InputMaybe<PublicationStatus>
 }
 
@@ -4745,6 +4772,14 @@ export type MutationDeleteUploadFileArgs = {
 }
 
 export type MutationDeleteUrbanStudyArgs = {
+  documentId: Scalars['ID']['input']
+}
+
+export type MutationDeleteUrbanStudyCategoryArgs = {
+  documentId: Scalars['ID']['input']
+}
+
+export type MutationDeleteUrbanStudyStateArgs = {
   documentId: Scalars['ID']['input']
 }
 
@@ -4911,6 +4946,18 @@ export type MutationUpdateUploadFileArgs = {
 
 export type MutationUpdateUrbanStudyArgs = {
   data: UrbanStudyInput
+  documentId: Scalars['ID']['input']
+  status?: InputMaybe<PublicationStatus>
+}
+
+export type MutationUpdateUrbanStudyCategoryArgs = {
+  data: UrbanStudyCategoryInput
+  documentId: Scalars['ID']['input']
+  status?: InputMaybe<PublicationStatus>
+}
+
+export type MutationUpdateUrbanStudyStateArgs = {
+  data: UrbanStudyStateInput
   documentId: Scalars['ID']['input']
   status?: InputMaybe<PublicationStatus>
 }
@@ -5300,6 +5347,12 @@ export type Query = {
   urbanStudies: Array<Maybe<UrbanStudy>>
   urbanStudies_connection?: Maybe<UrbanStudyEntityResponseCollection>
   urbanStudy?: Maybe<UrbanStudy>
+  urbanStudyCategories: Array<Maybe<UrbanStudyCategory>>
+  urbanStudyCategories_connection?: Maybe<UrbanStudyCategoryEntityResponseCollection>
+  urbanStudyCategory?: Maybe<UrbanStudyCategory>
+  urbanStudyState?: Maybe<UrbanStudyState>
+  urbanStudyStates: Array<Maybe<UrbanStudyState>>
+  urbanStudyStates_connection?: Maybe<UrbanStudyStateEntityResponseCollection>
   usersPermissionsRole?: Maybe<UsersPermissionsRole>
   usersPermissionsRoles: Array<Maybe<UsersPermissionsRole>>
   usersPermissionsRoles_connection?: Maybe<UsersPermissionsRoleEntityResponseCollection>
@@ -5792,6 +5845,56 @@ export type QueryUrbanStudyArgs = {
   documentId: Scalars['ID']['input']
   hasPublishedVersion?: InputMaybe<Scalars['Boolean']['input']>
   publicationFilter?: InputMaybe<PublicationFilter>
+  status?: InputMaybe<PublicationStatus>
+}
+
+export type QueryUrbanStudyCategoriesArgs = {
+  filters?: InputMaybe<UrbanStudyCategoryFiltersInput>
+  hasPublishedVersion?: InputMaybe<Scalars['Boolean']['input']>
+  pagination?: InputMaybe<PaginationArg>
+  publicationFilter?: InputMaybe<PublicationFilter>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+  status?: InputMaybe<PublicationStatus>
+}
+
+export type QueryUrbanStudyCategories_ConnectionArgs = {
+  filters?: InputMaybe<UrbanStudyCategoryFiltersInput>
+  hasPublishedVersion?: InputMaybe<Scalars['Boolean']['input']>
+  pagination?: InputMaybe<PaginationArg>
+  publicationFilter?: InputMaybe<PublicationFilter>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+  status?: InputMaybe<PublicationStatus>
+}
+
+export type QueryUrbanStudyCategoryArgs = {
+  documentId: Scalars['ID']['input']
+  hasPublishedVersion?: InputMaybe<Scalars['Boolean']['input']>
+  publicationFilter?: InputMaybe<PublicationFilter>
+  status?: InputMaybe<PublicationStatus>
+}
+
+export type QueryUrbanStudyStateArgs = {
+  documentId: Scalars['ID']['input']
+  hasPublishedVersion?: InputMaybe<Scalars['Boolean']['input']>
+  publicationFilter?: InputMaybe<PublicationFilter>
+  status?: InputMaybe<PublicationStatus>
+}
+
+export type QueryUrbanStudyStatesArgs = {
+  filters?: InputMaybe<UrbanStudyStateFiltersInput>
+  hasPublishedVersion?: InputMaybe<Scalars['Boolean']['input']>
+  pagination?: InputMaybe<PaginationArg>
+  publicationFilter?: InputMaybe<PublicationFilter>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+  status?: InputMaybe<PublicationStatus>
+}
+
+export type QueryUrbanStudyStates_ConnectionArgs = {
+  filters?: InputMaybe<UrbanStudyStateFiltersInput>
+  hasPublishedVersion?: InputMaybe<Scalars['Boolean']['input']>
+  pagination?: InputMaybe<PaginationArg>
+  publicationFilter?: InputMaybe<PublicationFilter>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
   status?: InputMaybe<PublicationStatus>
 }
 
@@ -6421,8 +6524,9 @@ export type UrbanStudy = {
   slug: Scalars['String']['output']
   title: Scalars['String']['output']
   updatedAt?: Maybe<Scalars['DateTime']['output']>
+  urbanStudyCategory?: Maybe<UrbanStudyCategory>
   urbanStudyParts?: Maybe<Array<Maybe<ComponentSectionsUrbanStudyPart>>>
-  urbanStudyType: Enum_Urbanstudy_Urbanstudytype
+  urbanStudyState?: Maybe<UrbanStudyState>
   year?: Maybe<Scalars['String']['output']>
 }
 
@@ -6448,6 +6552,73 @@ export type UrbanStudyUrbanStudyPartsArgs = {
   filters?: InputMaybe<ComponentSectionsUrbanStudyPartFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type UrbanStudyCategory = {
+  __typename?: 'UrbanStudyCategory'
+  createdAt?: Maybe<Scalars['DateTime']['output']>
+  documentId: Scalars['ID']['output']
+  publishedAt?: Maybe<Scalars['DateTime']['output']>
+  slug: Scalars['String']['output']
+  title: Scalars['String']['output']
+  updatedAt?: Maybe<Scalars['DateTime']['output']>
+  urbanStudies: Array<Maybe<UrbanStudy>>
+  urbanStudies_connection?: Maybe<UrbanStudyRelationResponseCollection>
+}
+
+export type UrbanStudyCategoryUrbanStudiesArgs = {
+  filters?: InputMaybe<UrbanStudyFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type UrbanStudyCategoryUrbanStudies_ConnectionArgs = {
+  filters?: InputMaybe<UrbanStudyFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type UrbanStudyCategoryEntity = {
+  __typename?: 'UrbanStudyCategoryEntity'
+  attributes?: Maybe<UrbanStudyCategory>
+  id?: Maybe<Scalars['ID']['output']>
+}
+
+export type UrbanStudyCategoryEntityResponse = {
+  __typename?: 'UrbanStudyCategoryEntityResponse'
+  data?: Maybe<UrbanStudyCategory>
+}
+
+export type UrbanStudyCategoryEntityResponseCollection = {
+  __typename?: 'UrbanStudyCategoryEntityResponseCollection'
+  nodes: Array<UrbanStudyCategory>
+  pageInfo: Pagination
+}
+
+export type UrbanStudyCategoryFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<UrbanStudyCategoryFiltersInput>>>
+  createdAt?: InputMaybe<DateTimeFilterInput>
+  documentId?: InputMaybe<IdFilterInput>
+  not?: InputMaybe<UrbanStudyCategoryFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<UrbanStudyCategoryFiltersInput>>>
+  publishedAt?: InputMaybe<DateTimeFilterInput>
+  slug?: InputMaybe<StringFilterInput>
+  title?: InputMaybe<StringFilterInput>
+  updatedAt?: InputMaybe<DateTimeFilterInput>
+  urbanStudies?: InputMaybe<UrbanStudyFiltersInput>
+}
+
+export type UrbanStudyCategoryInput = {
+  locale?: InputMaybe<Scalars['String']['input']>
+  publishedAt?: InputMaybe<Scalars['DateTime']['input']>
+  slug?: InputMaybe<Scalars['String']['input']>
+  title?: InputMaybe<Scalars['String']['input']>
+  urbanStudies?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
+}
+
+export type UrbanStudyCategoryRelationResponseCollection = {
+  __typename?: 'UrbanStudyCategoryRelationResponseCollection'
+  nodes: Array<UrbanStudyCategory>
 }
 
 export type UrbanStudyEntity = {
@@ -6484,8 +6655,9 @@ export type UrbanStudyFiltersInput = {
   slug?: InputMaybe<StringFilterInput>
   title?: InputMaybe<StringFilterInput>
   updatedAt?: InputMaybe<DateTimeFilterInput>
+  urbanStudyCategory?: InputMaybe<UrbanStudyCategoryFiltersInput>
   urbanStudyParts?: InputMaybe<ComponentSectionsUrbanStudyPartFiltersInput>
-  urbanStudyType?: InputMaybe<StringFilterInput>
+  urbanStudyState?: InputMaybe<UrbanStudyStateFiltersInput>
   year?: InputMaybe<StringFilterInput>
 }
 
@@ -6501,14 +6673,82 @@ export type UrbanStudyInput = {
   regulations?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
   slug?: InputMaybe<Scalars['String']['input']>
   title?: InputMaybe<Scalars['String']['input']>
+  urbanStudyCategory?: InputMaybe<Scalars['ID']['input']>
   urbanStudyParts?: InputMaybe<Array<InputMaybe<ComponentSectionsUrbanStudyPartInput>>>
-  urbanStudyType?: InputMaybe<Enum_Urbanstudy_Urbanstudytype>
+  urbanStudyState?: InputMaybe<Scalars['ID']['input']>
   year?: InputMaybe<Scalars['String']['input']>
 }
 
 export type UrbanStudyRelationResponseCollection = {
   __typename?: 'UrbanStudyRelationResponseCollection'
   nodes: Array<UrbanStudy>
+}
+
+export type UrbanStudyState = {
+  __typename?: 'UrbanStudyState'
+  createdAt?: Maybe<Scalars['DateTime']['output']>
+  documentId: Scalars['ID']['output']
+  publishedAt?: Maybe<Scalars['DateTime']['output']>
+  slug: Scalars['String']['output']
+  title: Scalars['String']['output']
+  updatedAt?: Maybe<Scalars['DateTime']['output']>
+  urbanStudies: Array<Maybe<UrbanStudy>>
+  urbanStudies_connection?: Maybe<UrbanStudyRelationResponseCollection>
+}
+
+export type UrbanStudyStateUrbanStudiesArgs = {
+  filters?: InputMaybe<UrbanStudyFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type UrbanStudyStateUrbanStudies_ConnectionArgs = {
+  filters?: InputMaybe<UrbanStudyFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type UrbanStudyStateEntity = {
+  __typename?: 'UrbanStudyStateEntity'
+  attributes?: Maybe<UrbanStudyState>
+  id?: Maybe<Scalars['ID']['output']>
+}
+
+export type UrbanStudyStateEntityResponse = {
+  __typename?: 'UrbanStudyStateEntityResponse'
+  data?: Maybe<UrbanStudyState>
+}
+
+export type UrbanStudyStateEntityResponseCollection = {
+  __typename?: 'UrbanStudyStateEntityResponseCollection'
+  nodes: Array<UrbanStudyState>
+  pageInfo: Pagination
+}
+
+export type UrbanStudyStateFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<UrbanStudyStateFiltersInput>>>
+  createdAt?: InputMaybe<DateTimeFilterInput>
+  documentId?: InputMaybe<IdFilterInput>
+  not?: InputMaybe<UrbanStudyStateFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<UrbanStudyStateFiltersInput>>>
+  publishedAt?: InputMaybe<DateTimeFilterInput>
+  slug?: InputMaybe<StringFilterInput>
+  title?: InputMaybe<StringFilterInput>
+  updatedAt?: InputMaybe<DateTimeFilterInput>
+  urbanStudies?: InputMaybe<UrbanStudyFiltersInput>
+}
+
+export type UrbanStudyStateInput = {
+  locale?: InputMaybe<Scalars['String']['input']>
+  publishedAt?: InputMaybe<Scalars['DateTime']['input']>
+  slug?: InputMaybe<Scalars['String']['input']>
+  title?: InputMaybe<Scalars['String']['input']>
+  urbanStudies?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
+}
+
+export type UrbanStudyStateRelationResponseCollection = {
+  __typename?: 'UrbanStudyStateRelationResponseCollection'
+  nodes: Array<UrbanStudyState>
 }
 
 export type UsersPermissionsCreateRolePayload = {
@@ -7156,6 +7396,29 @@ export type ArticlesStaticPathsQuery = {
   } | null>
 }
 
+export type ArticlesStaticPathsWithLocalizationsQueryVariables = Exact<{
+  limit?: InputMaybe<Scalars['Int']['input']>
+  locale: Scalars['I18NLocaleCode']['input']
+}>
+
+export type ArticlesStaticPathsWithLocalizationsQuery = {
+  __typename?: 'Query'
+  articles: Array<{
+    __typename: 'Article'
+    documentId: string
+    slug: string
+    title: string
+    locale?: string | null
+    localizations: Array<{
+      __typename: 'Article'
+      documentId: string
+      slug: string
+      title: string
+      locale?: string | null
+    } | null>
+  } | null>
+}
+
 export type ArticleCategoriesQueryVariables = Exact<{
   locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
   sort?: InputMaybe<
@@ -7386,6 +7649,15 @@ export type AssetEntityFragment = {
     createdAt?: any | null
     updatedAt?: any | null
   } | null>
+}
+
+export type AssetsStaticPathsQueryVariables = Exact<{
+  limit?: InputMaybe<Scalars['Int']['input']>
+}>
+
+export type AssetsStaticPathsQuery = {
+  __typename?: 'Query'
+  assets: Array<{ __typename?: 'Asset'; documentId: string; slug: string } | null>
 }
 
 export type AssetBySlugQueryVariables = Exact<{
@@ -12190,13 +12462,36 @@ export type PageEntityFragment = {
         titleLevelUrbanStudiesSection?: Enum_Componentsectionsurbanstudies_Titlelevel | null
         urbanStudies: Array<{
           __typename: 'UrbanStudy'
-          urbanStudyType: Enum_Urbanstudy_Urbanstudytype
           year?: string | null
           updatedAt?: any | null
           documentId: string
           slug: string
           title: string
+          urbanStudyCategory?: {
+            __typename?: 'UrbanStudyCategory'
+            documentId: string
+            slug: string
+            title: string
+          } | null
+          urbanStudyState?: {
+            __typename?: 'UrbanStudyState'
+            documentId: string
+            slug: string
+            title: string
+          } | null
         } | null>
+        categories: Array<{
+          __typename?: 'UrbanStudyCategory'
+          documentId: string
+          slug: string
+          title: string
+        } | null>
+        stateUrbanStudiesSection?: {
+          __typename?: 'UrbanStudyState'
+          documentId: string
+          slug: string
+          title: string
+        } | null
       }
     | {
         __typename: 'ComponentSectionsVideos'
@@ -12273,6 +12568,30 @@ export type PagesStaticPathsQueryVariables = Exact<{
 export type PagesStaticPathsQuery = {
   __typename?: 'Query'
   pages: Array<{ __typename?: 'Page'; documentId: string; path?: string | null } | null>
+}
+
+export type PagesStaticPathsWithLocalizationsQueryVariables = Exact<{
+  limit?: InputMaybe<Scalars['Int']['input']>
+  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
+  sort?: InputMaybe<
+    Array<InputMaybe<Scalars['String']['input']>> | InputMaybe<Scalars['String']['input']>
+  >
+}>
+
+export type PagesStaticPathsWithLocalizationsQuery = {
+  __typename?: 'Query'
+  pages: Array<{
+    __typename?: 'Page'
+    documentId: string
+    path?: string | null
+    locale?: string | null
+    localizations: Array<{
+      __typename?: 'Page'
+      documentId: string
+      path?: string | null
+      locale?: string | null
+    } | null>
+  } | null>
 }
 
 export type PageByPathQueryVariables = Exact<{
@@ -13759,13 +14078,36 @@ export type PageByPathQuery = {
           titleLevelUrbanStudiesSection?: Enum_Componentsectionsurbanstudies_Titlelevel | null
           urbanStudies: Array<{
             __typename: 'UrbanStudy'
-            urbanStudyType: Enum_Urbanstudy_Urbanstudytype
             year?: string | null
             updatedAt?: any | null
             documentId: string
             slug: string
             title: string
+            urbanStudyCategory?: {
+              __typename?: 'UrbanStudyCategory'
+              documentId: string
+              slug: string
+              title: string
+            } | null
+            urbanStudyState?: {
+              __typename?: 'UrbanStudyState'
+              documentId: string
+              slug: string
+              title: string
+            } | null
           } | null>
+          categories: Array<{
+            __typename?: 'UrbanStudyCategory'
+            documentId: string
+            slug: string
+            title: string
+          } | null>
+          stateUrbanStudiesSection?: {
+            __typename?: 'UrbanStudyState'
+            documentId: string
+            slug: string
+            title: string
+          } | null
         }
       | {
           __typename: 'ComponentSectionsVideos'
@@ -15348,13 +15690,36 @@ export type Dev_AllPagesQuery = {
           titleLevelUrbanStudiesSection?: Enum_Componentsectionsurbanstudies_Titlelevel | null
           urbanStudies: Array<{
             __typename: 'UrbanStudy'
-            urbanStudyType: Enum_Urbanstudy_Urbanstudytype
             year?: string | null
             updatedAt?: any | null
             documentId: string
             slug: string
             title: string
+            urbanStudyCategory?: {
+              __typename?: 'UrbanStudyCategory'
+              documentId: string
+              slug: string
+              title: string
+            } | null
+            urbanStudyState?: {
+              __typename?: 'UrbanStudyState'
+              documentId: string
+              slug: string
+              title: string
+            } | null
           } | null>
+          categories: Array<{
+            __typename?: 'UrbanStudyCategory'
+            documentId: string
+            slug: string
+            title: string
+          } | null>
+          stateUrbanStudiesSection?: {
+            __typename?: 'UrbanStudyState'
+            documentId: string
+            slug: string
+            title: string
+          } | null
         }
       | {
           __typename: 'ComponentSectionsVideos'
@@ -16688,12 +17053,23 @@ export type AssetsSectionFragment = {
 
 export type UrbanStudyCardEntityFragment = {
   __typename: 'UrbanStudy'
-  urbanStudyType: Enum_Urbanstudy_Urbanstudytype
   year?: string | null
   updatedAt?: any | null
   documentId: string
   slug: string
   title: string
+  urbanStudyCategory?: {
+    __typename?: 'UrbanStudyCategory'
+    documentId: string
+    slug: string
+    title: string
+  } | null
+  urbanStudyState?: {
+    __typename?: 'UrbanStudyState'
+    documentId: string
+    slug: string
+    title: string
+  } | null
 }
 
 export type UrbanStudiesSectionFragment = {
@@ -16704,13 +17080,36 @@ export type UrbanStudiesSectionFragment = {
   titleLevelUrbanStudiesSection?: Enum_Componentsectionsurbanstudies_Titlelevel | null
   urbanStudies: Array<{
     __typename: 'UrbanStudy'
-    urbanStudyType: Enum_Urbanstudy_Urbanstudytype
     year?: string | null
     updatedAt?: any | null
     documentId: string
     slug: string
     title: string
+    urbanStudyCategory?: {
+      __typename?: 'UrbanStudyCategory'
+      documentId: string
+      slug: string
+      title: string
+    } | null
+    urbanStudyState?: {
+      __typename?: 'UrbanStudyState'
+      documentId: string
+      slug: string
+      title: string
+    } | null
   } | null>
+  categories: Array<{
+    __typename?: 'UrbanStudyCategory'
+    documentId: string
+    slug: string
+    title: string
+  } | null>
+  stateUrbanStudiesSection?: {
+    __typename?: 'UrbanStudyState'
+    documentId: string
+    slug: string
+    title: string
+  } | null
 }
 
 export type NumbersOverviewItemBlockFragment = {
@@ -18591,13 +18990,36 @@ type Sections_ComponentSectionsUrbanStudies_Fragment = {
   titleLevelUrbanStudiesSection?: Enum_Componentsectionsurbanstudies_Titlelevel | null
   urbanStudies: Array<{
     __typename: 'UrbanStudy'
-    urbanStudyType: Enum_Urbanstudy_Urbanstudytype
     year?: string | null
     updatedAt?: any | null
     documentId: string
     slug: string
     title: string
+    urbanStudyCategory?: {
+      __typename?: 'UrbanStudyCategory'
+      documentId: string
+      slug: string
+      title: string
+    } | null
+    urbanStudyState?: {
+      __typename?: 'UrbanStudyState'
+      documentId: string
+      slug: string
+      title: string
+    } | null
   } | null>
+  categories: Array<{
+    __typename?: 'UrbanStudyCategory'
+    documentId: string
+    slug: string
+    title: string
+  } | null>
+  stateUrbanStudiesSection?: {
+    __typename?: 'UrbanStudyState'
+    documentId: string
+    slug: string
+    title: string
+  } | null
 }
 
 type Sections_ComponentSectionsVideos_Fragment = {
@@ -18793,6 +19215,20 @@ export type UrbanStudyPartFragment = {
   } | null> | null
 }
 
+export type UrbanStudyCategoryEntityFragment = {
+  __typename?: 'UrbanStudyCategory'
+  documentId: string
+  slug: string
+  title: string
+}
+
+export type UrbanStudyStateEntityFragment = {
+  __typename?: 'UrbanStudyState'
+  documentId: string
+  slug: string
+  title: string
+}
+
 export type UrbanStudySlugEntityFragment = {
   __typename: 'UrbanStudy'
   documentId: string
@@ -18805,7 +19241,6 @@ export type UrbanStudyEntityFragment = {
   publishedAt?: any | null
   updatedAt?: any | null
   year?: string | null
-  urbanStudyType: Enum_Urbanstudy_Urbanstudytype
   procuredBy?: string | null
   preparedBy?: string | null
   body?: string | null
@@ -18813,6 +19248,12 @@ export type UrbanStudyEntityFragment = {
   documentId: string
   slug: string
   title: string
+  urbanStudyCategory?: {
+    __typename?: 'UrbanStudyCategory'
+    documentId: string
+    slug: string
+    title: string
+  } | null
   urbanStudyParts?: Array<{
     __typename?: 'ComponentSectionsUrbanStudyPart'
     title?: string | null
@@ -18969,7 +19410,6 @@ export type UrbanStudyBySlugQuery = {
     publishedAt?: any | null
     updatedAt?: any | null
     year?: string | null
-    urbanStudyType: Enum_Urbanstudy_Urbanstudytype
     procuredBy?: string | null
     preparedBy?: string | null
     body?: string | null
@@ -18977,6 +19417,12 @@ export type UrbanStudyBySlugQuery = {
     documentId: string
     slug: string
     title: string
+    urbanStudyCategory?: {
+      __typename?: 'UrbanStudyCategory'
+      documentId: string
+      slug: string
+      title: string
+    } | null
     urbanStudyParts?: Array<{
       __typename?: 'ComponentSectionsUrbanStudyPart'
       title?: string | null
@@ -20309,14 +20755,35 @@ export const UrbanStudySlugEntityFragmentDoc = gql`
     title
   }
 `
+export const UrbanStudyCategoryEntityFragmentDoc = gql`
+  fragment UrbanStudyCategoryEntity on UrbanStudyCategory {
+    documentId
+    slug
+    title
+  }
+`
+export const UrbanStudyStateEntityFragmentDoc = gql`
+  fragment UrbanStudyStateEntity on UrbanStudyState {
+    documentId
+    slug
+    title
+  }
+`
 export const UrbanStudyCardEntityFragmentDoc = gql`
   fragment UrbanStudyCardEntity on UrbanStudy {
     ...UrbanStudySlugEntity
-    urbanStudyType
+    urbanStudyCategory {
+      ...UrbanStudyCategoryEntity
+    }
+    urbanStudyState {
+      ...UrbanStudyStateEntity
+    }
     year
     updatedAt
   }
   ${UrbanStudySlugEntityFragmentDoc}
+  ${UrbanStudyCategoryEntityFragmentDoc}
+  ${UrbanStudyStateEntityFragmentDoc}
 `
 export const UrbanStudiesSectionFragmentDoc = gql`
   fragment UrbanStudiesSection on ComponentSectionsUrbanStudies {
@@ -20326,9 +20793,17 @@ export const UrbanStudiesSectionFragmentDoc = gql`
       ...UrbanStudyCardEntity
     }
     showAll
+    categories {
+      ...UrbanStudyCategoryEntity
+    }
+    stateUrbanStudiesSection: state {
+      ...UrbanStudyStateEntity
+    }
     titleLevelUrbanStudiesSection: titleLevel
   }
   ${UrbanStudyCardEntityFragmentDoc}
+  ${UrbanStudyCategoryEntityFragmentDoc}
+  ${UrbanStudyStateEntityFragmentDoc}
 `
 export const NumbersOverviewItemBlockFragmentDoc = gql`
   fragment NumbersOverviewItemBlock on ComponentBlocksNumbersOverviewItem {
@@ -20764,7 +21239,9 @@ export const UrbanStudyEntityFragmentDoc = gql`
     publishedAt
     updatedAt
     year
-    urbanStudyType
+    urbanStudyCategory {
+      ...UrbanStudyCategoryEntity
+    }
     procuredBy
     preparedBy
     body
@@ -20780,6 +21257,7 @@ export const UrbanStudyEntityFragmentDoc = gql`
     }
   }
   ${UrbanStudySlugEntityFragmentDoc}
+  ${UrbanStudyCategoryEntityFragmentDoc}
   ${UrbanStudyPartFragmentDoc}
   ${RegulationEntityFragmentDoc}
   ${CommonLinkFragmentDoc}
@@ -20804,6 +21282,17 @@ export const ArticlesStaticPathsDocument = gql`
   query ArticlesStaticPaths($limit: Int = -1, $locale: I18NLocaleCode!) {
     articles(locale: $locale, sort: "addedAt:desc", pagination: { limit: $limit }) {
       ...ArticleSlugEntity
+    }
+  }
+  ${ArticleSlugEntityFragmentDoc}
+`
+export const ArticlesStaticPathsWithLocalizationsDocument = gql`
+  query ArticlesStaticPathsWithLocalizations($limit: Int = -1, $locale: I18NLocaleCode!) {
+    articles(locale: $locale, sort: "addedAt:desc", pagination: { limit: $limit }) {
+      ...ArticleSlugEntity
+      localizations {
+        ...ArticleSlugEntity
+      }
     }
   }
   ${ArticleSlugEntityFragmentDoc}
@@ -20875,6 +21364,14 @@ export const Dev_AllArticlesDocument = gql`
     }
   }
   ${ArticleEntityFragmentDoc}
+`
+export const AssetsStaticPathsDocument = gql`
+  query AssetsStaticPaths($limit: Int = -1) {
+    assets(sort: "updatedAt:desc", pagination: { limit: $limit }) {
+      documentId
+      slug
+    }
+  }
 `
 export const AssetBySlugDocument = gql`
   query AssetBySlug($slug: String!) {
@@ -21108,6 +21605,24 @@ export const PagesStaticPathsDocument = gql`
     }
   }
 `
+export const PagesStaticPathsWithLocalizationsDocument = gql`
+  query PagesStaticPathsWithLocalizations(
+    $limit: Int = -1
+    $locale: I18NLocaleCode = "*"
+    $sort: [String] = ["updatedAt:desc"]
+  ) {
+    pages(locale: $locale, sort: $sort, pagination: { limit: $limit }) {
+      documentId
+      path
+      locale
+      localizations {
+        documentId
+        path
+        locale
+      }
+    }
+  }
+`
 export const PageByPathDocument = gql`
   query PageByPath($path: String!, $locale: I18NLocaleCode!) {
     pages(filters: { path: { eq: $path } }, locale: $locale) {
@@ -21252,6 +21767,22 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
         variables,
       )
     },
+    ArticlesStaticPathsWithLocalizations(
+      variables: ArticlesStaticPathsWithLocalizationsQueryVariables,
+      requestHeaders?: GraphQLClientRequestHeaders,
+    ): Promise<ArticlesStaticPathsWithLocalizationsQuery> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<ArticlesStaticPathsWithLocalizationsQuery>(
+            ArticlesStaticPathsWithLocalizationsDocument,
+            variables,
+            { ...requestHeaders, ...wrappedRequestHeaders },
+          ),
+        'ArticlesStaticPathsWithLocalizations',
+        'query',
+        variables,
+      )
+    },
     ArticleCategories(
       variables?: ArticleCategoriesQueryVariables,
       requestHeaders?: GraphQLClientRequestHeaders,
@@ -21308,6 +21839,21 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
             ...wrappedRequestHeaders,
           }),
         'Dev_AllArticles',
+        'query',
+        variables,
+      )
+    },
+    AssetsStaticPaths(
+      variables?: AssetsStaticPathsQueryVariables,
+      requestHeaders?: GraphQLClientRequestHeaders,
+    ): Promise<AssetsStaticPathsQuery> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<AssetsStaticPathsQuery>(AssetsStaticPathsDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
+          }),
+        'AssetsStaticPaths',
         'query',
         variables,
       )
@@ -21519,6 +22065,22 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
             ...wrappedRequestHeaders,
           }),
         'PagesStaticPaths',
+        'query',
+        variables,
+      )
+    },
+    PagesStaticPathsWithLocalizations(
+      variables?: PagesStaticPathsWithLocalizationsQueryVariables,
+      requestHeaders?: GraphQLClientRequestHeaders,
+    ): Promise<PagesStaticPathsWithLocalizationsQuery> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<PagesStaticPathsWithLocalizationsQuery>(
+            PagesStaticPathsWithLocalizationsDocument,
+            variables,
+            { ...requestHeaders, ...wrappedRequestHeaders },
+          ),
+        'PagesStaticPathsWithLocalizations',
         'query',
         variables,
       )

@@ -1,15 +1,22 @@
-const { withPlausibleProxy } = require('next-plausible')
-const i18nextConfig = require('./next-i18next.config.js')
-const svgoConfig = require('./svgo.config.js')
+import type { NextConfig } from 'next'
+import { withPlausibleProxy } from 'next-plausible'
 
-/**
- * @type {import('next').NextConfig}
- */
-const nextConfig = {
-  i18n: i18nextConfig.i18n,
+import i18nextConfig from './next-i18next.config'
+import svgoConfig from './svgo.config'
+
+const nextConfig: NextConfig = {
+  // Cast needed because next-i18next.config.js is plain JS: TS widens its `localeDetection: false`
+  // to `boolean`, while Next's I18NConfig accepts only the literal `false`.
+  i18n: i18nextConfig.i18n as NextConfig['i18n'],
   reactStrictMode: true,
-  output: 'standalone',
   images: {
+    // After upgrading to Next.js 16, image loading from local IP addresses is blocked.
+    // In our Kubernetes setup, S3 resolves to a local IP range (10.10.x.x),
+    // which causes images to fail loading.
+    // To work around this, we temporarily allow local IPs.
+    // TODO Revisit this setting and implement a safer long-term solution.
+    // Docs: https://nextjs.org/docs/pages/api-reference/components/image#dangerouslyallowlocalip
+    dangerouslyAllowLocalIP: true,
     qualities: [75, 100],
     remotePatterns: [
       {
@@ -30,6 +37,36 @@ const nextConfig = {
         pathname: '/api/event/*/images/*/*/*/(AUTO|WIDTH|HEIGHT|MINSIDE)',
       },
     ],
+  },
+  output: 'standalone',
+  outputFileTracingIncludes: {
+    '/**': [
+      // Workaround: Turbopack file tracer misses `module-sync` exports condition files (e.g. require.mjs)
+      // on Node.js >= 22.10. Will be fixed when Next.js bumps @vercel/nft to >= 0.30.0.
+      // https://github.com/vercel/next.js/issues/90567
+      './node_modules/**/require.mjs',
+      // tells Next to force-copy the config file into the standalone bundle for all routes, so the runtime require finds it at /home/node/app/next-i18next.config.js
+      './next-i18next.config.js',
+    ],
+  },
+  turbopack: {
+    rules: {
+      '*.svg': {
+        loaders: [
+          {
+            loader: '@svgr/webpack',
+            options: {
+              svgoConfig: { svgoConfig },
+            },
+          },
+        ],
+        as: '*.js',
+      },
+    },
+  },
+  logging: {
+    // disable browser logs in terminals
+    browserToTerminal: false,
   },
   async rewrites() {
     return {
@@ -314,38 +351,9 @@ const nextConfig = {
       },
     ]
   },
-  // Docs: https://react-svgr.com/docs/next/
-  webpack(config) {
-    // Grab the existing rule that handles SVG imports
-    const fileLoaderRule = config.module.rules.find((rule) => rule.test?.test?.('.svg'))
-
-    config.module.rules.push(
-      // Reapply the existing rule, but only for svg imports ending in ?url
-      {
-        ...fileLoaderRule,
-        test: /\.svg$/i,
-        resourceQuery: /url/, // *.svg?url
-      },
-      // Convert all other *.svg imports to React components
-      {
-        test: /\.svg$/i,
-        issuer: fileLoaderRule.issuer,
-        resourceQuery: { not: [...fileLoaderRule.resourceQuery.not, /url/] }, // exclude if *.svg?url
-        use: {
-          loader: '@svgr/webpack',
-          options: { svgoConfig },
-        },
-      },
-    )
-
-    // Modify the file loader rule to ignore *.svg, since we have it handled now.
-    fileLoaderRule.exclude = /\.svg$/i
-
-    return config
-  },
 }
 
 // https://github.com/4lejandrito/next-plausible#proxy-the-analytics-script
-module.exports = withPlausibleProxy()({
+export default withPlausibleProxy()({
   ...nextConfig,
 })

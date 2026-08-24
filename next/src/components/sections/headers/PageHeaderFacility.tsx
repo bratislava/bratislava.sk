@@ -1,5 +1,5 @@
 import { Button, Typography } from '@bratislava/component-library'
-import { useTranslation } from 'next-i18next'
+import { useTranslation } from 'next-i18next/pages'
 import { useCallback, useState } from 'react'
 import { useOverlayTriggerState } from 'react-stately'
 

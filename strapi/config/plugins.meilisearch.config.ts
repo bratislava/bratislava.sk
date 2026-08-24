@@ -57,6 +57,8 @@ const searchIndexSettings = {
     'document.documentCategory.slug',
     'document.adminGroups.documentId',
     'document.adminGroups.slug',
+    'urban-study.urbanStudyState.slug',
+    'urban-study.urbanStudyCategory.slug',
     'faq.faqCategory.slug',
   ],
   sortableAttributes: [
@@ -132,6 +134,7 @@ const config = {
     indexName: 'search_index',
     entriesQuery: {
       locale: '*',
+      populate: ['urbanStudyCategory', 'urbanStudyState'],
     },
     settings: searchIndexSettings,
     transformEntry: ({ entry }) =>

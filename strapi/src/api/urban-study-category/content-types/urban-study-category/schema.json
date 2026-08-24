@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "urban_study_categories",
+  "info": {
+    "singularName": "urban-study-category",
+    "pluralName": "urban-study-categories",
+    "displayName": "Územné štúdie - kategórie"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title",
+      "required": true
+    },
+    "urbanStudies": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::urban-study.urban-study",
+      "mappedBy": "urbanStudyCategory"
+    }
+  }
+}

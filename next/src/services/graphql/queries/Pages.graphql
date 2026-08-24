@@ -90,6 +90,23 @@ query PagesStaticPaths(
   }
 }
 
+query PagesStaticPathsWithLocalizations(
+  $limit: Int = -1
+  $locale: I18NLocaleCode = "*"
+  $sort: [String] = ["updatedAt:desc"]
+) {
+  pages(locale: $locale, sort: $sort, pagination: { limit: $limit }) {
+    documentId
+    path
+    locale
+    localizations {
+      documentId
+      path
+      locale
+    }
+  }
+}
+
 query PageByPath($path: String!, $locale: I18NLocaleCode!) {
   pages(filters: { path: { eq: $path } }, locale: $locale) {
     ...PageEntity

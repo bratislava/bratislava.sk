@@ -14,6 +14,18 @@ fragment UrbanStudyPart on ComponentSectionsUrbanStudyPart {
   }
 }
 
+fragment UrbanStudyCategoryEntity on UrbanStudyCategory {
+  documentId
+  slug
+  title
+}
+
+fragment UrbanStudyStateEntity on UrbanStudyState {
+  documentId
+  slug
+  title
+}
+
 fragment UrbanStudySlugEntity on UrbanStudy {
   __typename
   documentId
@@ -26,7 +38,9 @@ fragment UrbanStudyEntity on UrbanStudy {
   publishedAt
   updatedAt
   year
-  urbanStudyType
+  urbanStudyCategory {
+    ...UrbanStudyCategoryEntity
+  }
   procuredBy
   preparedBy
   body
