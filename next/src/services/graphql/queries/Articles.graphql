@@ -130,3 +130,23 @@ query Dev_AllArticles(
     ...ArticleEntity
   }
 }
+
+# Used by the /api/content-inventory endpoint.
+fragment ArticleInventoryEntity on Article {
+  ...ArticleSlugEntity
+  perex
+  addedAt
+  updatedAt
+  articleCategory {
+    ...ArticleCategoryEntity
+  }
+  tags {
+    ...TagEntity
+  }
+}
+
+query ArticlesInventory($limit: Int = -1, $locale: I18NLocaleCode = "*") {
+  articles(locale: $locale, sort: "updatedAt:desc", pagination: { limit: $limit }) {
+    ...ArticleInventoryEntity
+  }
+}

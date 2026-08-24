@@ -17,6 +17,14 @@ fragment RegulationSlugEntity on Regulation {
   titleText
 }
 
+# The shape a regulation is referenced by from another regulation (amendments, cancellations).
+fragment RegulationRelationEntity on Regulation {
+  documentId
+  regNumber
+  slug
+  effectiveFrom
+}
+
 fragment RegulationEntity on Regulation {
   ...RegulationSlugEntity
   regNumber
@@ -31,48 +39,53 @@ fragment RegulationEntity on Regulation {
     ...UploadFileEntity
   }
   amendments {
-    documentId
-    regNumber
-    slug
-    effectiveFrom
+    ...RegulationRelationEntity
     isFullTextRegulation
     attachments {
       ...UploadFileEntity
     }
   }
   amending {
-    documentId
-    regNumber
-    slug
-    effectiveFrom
+    ...RegulationRelationEntity
     cancellation {
-      documentId
-      regNumber
-      slug
-      effectiveFrom
+      ...RegulationRelationEntity
     }
     amending {
-      documentId
-      regNumber
-      slug
+      ...RegulationRelationEntity
       cancellation {
-        documentId
-        regNumber
-        slug
-        effectiveFrom
+        ...RegulationRelationEntity
       }
     }
   }
   cancellation {
-    documentId
-    regNumber
-    slug
-    effectiveFrom
+    ...RegulationRelationEntity
   }
   cancelling {
-    documentId
-    regNumber
-    slug
-    effectiveFrom
+    ...RegulationRelationEntity
+  }
+}
+
+# Used by the /api/content-inventory endpoint. `cancellation` is the regulation cancelling this one, `amending` are
+# the regulations this one amends - a cancelled amendee cancels this one too, see getRegulationMetadata.ts.
+fragment RegulationInventoryEntity on Regulation {
+  ...RegulationSlugEntity
+  ...RegulationRelationEntity
+  fullTitle
+  category
+  updatedAt
+  publishedAt
+  cancellation {
+    ...RegulationRelationEntity
+  }
+  amending {
+    cancellation {
+      ...RegulationRelationEntity
+    }
+  }
+}
+
+query RegulationsInventory($limit: Int = -1) {
+  regulations(sort: "updatedAt:desc", pagination: { limit: $limit }) {
+    ...RegulationInventoryEntity
   }
 }

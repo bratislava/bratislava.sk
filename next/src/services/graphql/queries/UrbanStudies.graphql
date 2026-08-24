@@ -68,3 +68,24 @@ query UrbanStudiesStaticPaths($limit: Int = -1) {
     slug
   }
 }
+
+# Used by the /api/content-inventory endpoint.
+fragment UrbanStudyInventoryEntity on UrbanStudy {
+  ...UrbanStudySlugEntity
+  updatedAt
+  publishedAt
+  customPublishedAt
+  year
+  urbanStudyCategory {
+    ...UrbanStudyCategoryEntity
+  }
+  urbanStudyState {
+    ...UrbanStudyStateEntity
+  }
+}
+
+query UrbanStudiesInventory($limit: Int = -1) {
+  urbanStudies(sort: "updatedAt:desc", pagination: { limit: $limit }) {
+    ...UrbanStudyInventoryEntity
+  }
+}

@@ -42,3 +42,21 @@ query AssetCategories {
     ...AssetCategoryEntity
   }
 }
+
+# Used by the /api/content-inventory endpoint.
+fragment AssetInventoryEntity on Asset {
+  ...AssetSlugEntity
+  updatedAt
+  publishedAt
+  customPublishedAt
+  description
+  assetCategory {
+    ...AssetCategoryEntity
+  }
+}
+
+query AssetsInventory($limit: Int = -1) {
+  assets(sort: "updatedAt:desc", pagination: { limit: $limit }) {
+    ...AssetInventoryEntity
+  }
+}
