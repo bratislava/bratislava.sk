@@ -16,19 +16,13 @@
       "type": "media",
       "multiple": false,
       "required": true,
-      "allowedTypes": [
-        "images",
-        "files"
-      ]
+      "allowedTypes": ["images", "files"]
     },
     "variant": {
       "type": "enumeration",
       "required": true,
       "default": "banner",
-      "enum": [
-        "banner",
-        "image"
-      ]
+      "enum": ["banner", "image"]
     },
     "contentPosition": {
       "type": "enumeration",
@@ -44,10 +38,7 @@
       },
       "required": true,
       "default": "left",
-      "enum": [
-        "left",
-        "right"
-      ]
+      "enum": ["left", "right"]
     },
     "colorVariant": {
       "type": "enumeration",
@@ -61,11 +52,7 @@
           ]
         }
       },
-      "enum": [
-        "color",
-        "dark",
-        "white_condensed"
-      ]
+      "enum": ["color", "dark", "white_condensed"]
     },
     "primaryLink": {
       "type": "component",

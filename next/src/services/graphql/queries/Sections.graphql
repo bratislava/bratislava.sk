@@ -490,6 +490,31 @@ fragment StarzLandingPageSection on ComponentSectionsStarzLandingPage {
   }
 }
 
+fragment CityServiceLandingPageSection on ComponentSectionsCityServiceLandingPage {
+  cityServiceLandingPageBanner: banner {
+    title
+    content
+    contentPosition
+    variant
+    colorVariant
+    media {
+      ...UploadImageEntity
+    }
+    primaryLink {
+      ...CommonLink
+    }
+    secondaryLink {
+      ...CommonLink
+    }
+    tertiaryLink {
+      ...CommonLink
+    }
+  }
+  cardLinks {
+    ...CardLink
+  }
+}
+
 fragment OpeningHoursSection on ComponentSectionsOpeningHours {
   title
   text
@@ -694,6 +719,10 @@ fragment Sections on PageSectionsDynamicZone {
 
   ... on ComponentSectionsFacilities {
     ...FacilitiesSection
+  }
+
+  ... on ComponentSectionsCityServiceLandingPage {
+    ...CityServiceLandingPageSection
   }
 
   ... on ComponentSectionsStarzLandingPage {

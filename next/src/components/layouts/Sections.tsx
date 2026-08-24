@@ -4,6 +4,7 @@ import ArticlesLandingPageSection from '@/src/components/sections/ArticlesLandin
 import ArticlesSection from '@/src/components/sections/ArticlesSection/ArticlesSection'
 import AssetsSection from '@/src/components/sections/AssetsSection/AssetsSection'
 import BannerSection from '@/src/components/sections/BannerSection'
+import CityServiceLandingPageSection from '@/src/components/sections/CityServiceLandingPageSection'
 import ColumnedTextSection from '@/src/components/sections/ColumnedTextSection'
 import ColumnsListSection from '@/src/components/sections/ColumnsListSection'
 import ColumnsSection from '@/src/components/sections/ColumnsSection'
@@ -138,6 +139,9 @@ const SectionContent = ({ section }: { section: SectionsFragment }) => {
 
     case 'ComponentSectionsStarzLandingPage':
       return <StarzLandingPageSection section={section} />
+
+    case 'ComponentSectionsCityServiceLandingPage':
+      return <CityServiceLandingPageSection section={section} />
 
     case 'ComponentSectionsOpeningHours':
       return <OpeningHoursSection section={section} />
