@@ -15,4 +15,9 @@ export const serverEnvironment = {
   msalClientId: assertEnv('MSAL_CLIENT_ID', process.env.MSAL_CLIENT_ID),
   msalTenantId: assertEnv('MSAL_TENANT_ID', process.env.MSAL_TENANT_ID),
   ginisHostUde: assertEnv('GINIS_HOST_UDE', process.env.GINIS_HOST_UDE),
+  // Meilisearch conversational search, used only by the /chat page. Not asserted on purpose - when it is missing, the
+  // chat api route returns 503 instead of breaking the whole app.
+  meilisearchChatApiKey: process.env.MEILISEARCH_CHAT_API_KEY,
+  meilisearchChatWorkspace: process.env.MEILISEARCH_CHAT_WORKSPACE,
+  meilisearchChatModel: process.env.MEILISEARCH_CHAT_MODEL,
 }
