@@ -30,5 +30,12 @@ export const environment = {
     'NEXT_PUBLIC_FEATURE_FLAG_RSS_FEED',
     process.env.NEXT_PUBLIC_FEATURE_FLAG_RSS_FEED,
   ),
-  featureFlagGTranslate: process.env.NEXT_PUBLIC_FEATURE_FLAG_GTRANSLATE,
+  featureFlagGTranslate: assertEnv(
+    'NEXT_PUBLIC_FEATURE_FLAG_GTRANSLATE',
+    process.env.NEXT_PUBLIC_FEATURE_FLAG_GTRANSLATE,
+  ),
+  featureFlagCookieConsentGate: assertEnv(
+    'NEXT_PUBLIC_FEATURE_FLAG_COOKIE_CONSENT_GATE',
+    process.env.NEXT_PUBLIC_FEATURE_FLAG_COOKIE_CONSENT_GATE,
+  ),
 }

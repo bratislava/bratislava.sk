@@ -1,9 +1,11 @@
 import IframeResizer from '@iframe-resizer/react'
 import { useRef } from 'react'
 
+import CookieConsentGate from '@/src/components/common/CookieConsentGate/CookieConsentGate'
 import SectionHeader from '@/src/components/layouts/SectionHeader'
 import { IframeSectionFragment } from '@/src/services/graphql'
 import cn from '@/src/utils/cn'
+import { isCookieConsentNeededForUrl } from '@/src/utils/cookies/cookiePolicy'
 
 type Props = IframeSectionFragment
 
@@ -49,26 +51,39 @@ const Iframe = ({
 
   const trimmedUrl = url.trim()
 
+  const iframe = (
+    <IframeResizer
+      license="GPLv3"
+      title={iframeTitle ?? undefined}
+      forwardRef={iframeRef}
+      src={trimmedUrl}
+      className={cn('w-full', {
+        border: hasBorder,
+      })}
+      style={{ height: iframeHeight }}
+      // See docs: https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Permissions-Policy#iframes
+      allow={`fullscreen; ${allowGeolocation ? 'geolocation *' : ''}`} // TODO consider narrowing geolocation, and specifying other attributes
+      // Hardening only - this does not stop the iframe collecting cookies, so it is
+      // not what keeps us consent-compliant - we use CookieConsentGate for that.
+      // Omitting allow-same-origin puts the frame in an opaque origin, which blocks its
+      // JavaScript from reaching document.cookie and localStorage, but most
+      // third-party cookies arrive as HttpOnly Set-Cookie response headers that
+      // JavaScript never touches and sandbox has no say over.
+      // https://stackoverflow.com/questions/44837450/recommended-method-to-prevent-any-content-inside-iframe-from-setting-cookies
+      sandbox={`allow-scripts allow-popups allow-forms ${allowDownloads ? 'allow-downloads' : ''}`}
+    />
+  )
+
   return (
     <div className="flex flex-col gap-4 lg:gap-6">
       <SectionHeader title={title} titleLevel={titleLevel} text={text} />
-      <IframeResizer
-        license="GPLv3"
-        title={iframeTitle ?? undefined}
-        forwardRef={iframeRef}
-        src={trimmedUrl}
-        className={cn('w-full', {
-          border: hasBorder,
-        })}
-        style={{ height: iframeHeight }}
-        // See docs: https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Permissions-Policy#iframes
-        allow={`fullscreen; ${allowGeolocation ? 'geolocation *' : ''}`} // TODO consider narrowing geolocation, and specifying other attributes
-        // This should prevent iframes to collect cookies. Otherwise, they collect their cookies we don't have consent for.
-        // It may not work if the iframe needs some necessary cookies, or it may block some iframe to render at all.
-        // But it seems to work for all of our iframes so far.
-        // https://stackoverflow.com/questions/44837450/recommended-method-to-prevent-any-content-inside-iframe-from-setting-cookies
-        sandbox={`allow-scripts allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-forms ${allowDownloads ? 'allow-downloads' : ''}`}
-      />
+      {isCookieConsentNeededForUrl(trimmedUrl) ? (
+        <CookieConsentGate contentUrl={trimmedUrl} style={{ minHeight: iframeHeight }}>
+          {iframe}
+        </CookieConsentGate>
+      ) : (
+        iframe
+      )}
     </div>
   )
 }
