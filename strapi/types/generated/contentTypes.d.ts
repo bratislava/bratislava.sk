@@ -1197,6 +1197,7 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
         'sections.facilities',
         'sections.columned-text',
         'sections.starz-landing-page',
+        'sections.city-service-landing-page',
         'sections.columns',
         'sections.columns-list',
         'sections.file-list',

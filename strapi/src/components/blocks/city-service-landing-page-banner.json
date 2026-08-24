@@ -1,0 +1,117 @@
+{
+  "collectionName": "components_blocks_city-service_landing_page_banners",
+  "info": {
+    "displayName": "Landing Page banner mestskej služby"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "content": {
+      "type": "string"
+    },
+    "media": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    },
+    "variant": {
+      "type": "enumeration",
+      "required": true,
+      "default": "banner",
+      "enum": [
+        "banner",
+        "image"
+      ]
+    },
+    "contentPosition": {
+      "type": "enumeration",
+      "conditions": {
+        "visible": {
+          "==": [
+            {
+              "var": "variant"
+            },
+            "banner"
+          ]
+        }
+      },
+      "required": true,
+      "default": "left",
+      "enum": [
+        "left",
+        "right"
+      ]
+    },
+    "colorVariant": {
+      "type": "enumeration",
+      "conditions": {
+        "visible": {
+          "==": [
+            {
+              "var": "variant"
+            },
+            "banner"
+          ]
+        }
+      },
+      "enum": [
+        "color",
+        "dark",
+        "white_condensed"
+      ]
+    },
+    "primaryLink": {
+      "type": "component",
+      "conditions": {
+        "visible": {
+          "==": [
+            {
+              "var": "variant"
+            },
+            "banner"
+          ]
+        }
+      },
+      "component": "blocks.common-link",
+      "repeatable": false
+    },
+    "secondaryLink": {
+      "type": "component",
+      "conditions": {
+        "visible": {
+          "==": [
+            {
+              "var": "variant"
+            },
+            "banner"
+          ]
+        }
+      },
+      "component": "blocks.common-link",
+      "repeatable": false
+    },
+    "tertiaryLink": {
+      "type": "component",
+      "conditions": {
+        "visible": {
+          "==": [
+            {
+              "var": "variant"
+            },
+            "banner"
+          ]
+        }
+      },
+      "component": "blocks.common-link",
+      "repeatable": false
+    }
+  },
+  "config": {}
+}

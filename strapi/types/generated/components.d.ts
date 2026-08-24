@@ -50,6 +50,28 @@ export interface BlocksCardLink extends Struct.ComponentSchema {
   }
 }
 
+export interface BlocksCityServiceLandingPageBanner extends Struct.ComponentSchema {
+  collectionName: 'components_blocks_city-service_landing_page_banners'
+  info: {
+    displayName: 'Landing Page banner mestskej slu\u017Eby'
+  }
+  attributes: {
+    colorVariant: Schema.Attribute.Enumeration<['color', 'dark', 'white_condensed']>
+    content: Schema.Attribute.String
+    contentPosition: Schema.Attribute.Enumeration<['left', 'right']> &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'left'>
+    media: Schema.Attribute.Media<'images' | 'files'> & Schema.Attribute.Required
+    primaryLink: Schema.Attribute.Component<'blocks.common-link', false>
+    secondaryLink: Schema.Attribute.Component<'blocks.common-link', false>
+    tertiaryLink: Schema.Attribute.Component<'blocks.common-link', false>
+    title: Schema.Attribute.String & Schema.Attribute.Required
+    variant: Schema.Attribute.Enumeration<['banner', 'image']> &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'banner'>
+  }
+}
+
 export interface BlocksColumnsItem extends Struct.ComponentSchema {
   collectionName: 'components_blocks_columns_items'
   info: {
@@ -661,6 +683,18 @@ export interface SectionsBanner extends Struct.ComponentSchema {
     variant: Schema.Attribute.Enumeration<['color', 'dark', 'white_condensed']> &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<'color'>
+  }
+}
+
+export interface SectionsCityServiceLandingPage extends Struct.ComponentSchema {
+  collectionName: 'components_sections_city_service_landing_pages'
+  info: {
+    displayName: 'Landing Page mestskej organiz\u00E1cie'
+  }
+  attributes: {
+    banner: Schema.Attribute.Component<'blocks.city-service-landing-page-banner', false> &
+      Schema.Attribute.Required
+    cardLinks: Schema.Attribute.Component<'blocks.card-link', true>
   }
 }
 
@@ -1328,6 +1362,7 @@ declare module '@strapi/strapi' {
       'accordion-items.flat-text': AccordionItemsFlatText
       'accordion-items.institution': AccordionItemsInstitution
       'blocks.card-link': BlocksCardLink
+      'blocks.city-service-landing-page-banner': BlocksCityServiceLandingPageBanner
       'blocks.columns-item': BlocksColumnsItem
       'blocks.columns-list-item': BlocksColumnsListItem
       'blocks.common-link': BlocksCommonLink
@@ -1367,6 +1402,7 @@ declare module '@strapi/strapi' {
       'sections.articles-landing-page': SectionsArticlesLandingPage
       'sections.assets': SectionsAssets
       'sections.banner': SectionsBanner
+      'sections.city-service-landing-page': SectionsCityServiceLandingPage
       'sections.columned-text': SectionsColumnedText
       'sections.columns': SectionsColumns
       'sections.columns-list': SectionsColumnsList
