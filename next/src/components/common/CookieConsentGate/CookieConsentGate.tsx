@@ -40,7 +40,7 @@ type Props = {
 
 const getHostnameFromUrl = (url: string) => {
   try {
-    return new URL(url).hostname.replace(/^www\./, '')
+    return new URL(url).hostname
   } catch {
     return url // (in case URL parsing fails)
   }
