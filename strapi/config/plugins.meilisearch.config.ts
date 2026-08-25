@@ -33,9 +33,6 @@ const searchIndexSettings = {
     'urban-study.body',
     'urban-study.approvalText',
     'urban-study.year',
-    'document.title',
-    'document.description',
-    'inba-article.title',
     'inba-release.title',
     'regulation.regNumber',
     'regulation.titleText',
@@ -54,9 +51,6 @@ const searchIndexSettings = {
     'asset.assetCategory.slug',
     'asset.adminGroups.documentId',
     'asset.adminGroups.slug',
-    'document.documentCategory.slug',
-    'document.adminGroups.documentId',
-    'document.adminGroups.slug',
     'urban-study.urbanStudyState.slug',
     'urban-study.urbanStudyCategory.slug',
     'regulation.regulationCategory.slug',
@@ -65,7 +59,6 @@ const searchIndexSettings = {
   sortableAttributes: [
     'article.title',
     'article.addedAtTimestamp',
-    'document.updatedAtTimestamp',
     'asset.updatedAtTimestamp',
     'urban-study.updatedAtTimestamp',
     'urban-study.customPublishedAtTimestamp',
@@ -112,7 +105,7 @@ const config = {
         // Meilisearch doesn't support filtering dates as ISO strings, therefore we convert it to UNIX timestamp to
         // use (number) filters.
         addedAtTimestamp: entry.addedAt ? new Date(entry.addedAt).getTime() : undefined,
-        updatedAtTimestamp: entry.updated ? new Date(entry.updated).getTime() : undefined,
+        updatedAtTimestamp: entry.updatedAt ? new Date(entry.updatedAt).getTime() : undefined,
       }),
   },
   asset: {
@@ -148,22 +141,6 @@ const config = {
         customPublishedAtTimestamp: entry.customPublishedAt
           ? new Date(entry.customPublishedAt).getTime()
           : undefined,
-      }),
-  },
-  document: {
-    indexName: 'search_index',
-    entriesQuery: {
-      locale: '*',
-      populate: ['documentCategory', 'adminGroups'],
-    },
-    settings: searchIndexSettings,
-    transformEntry: ({ entry }) =>
-      wrapSearchIndexEntry('document', {
-        ...entry,
-        // Meilisearch doesn't support filtering dates as ISO strings, therefore we convert it to UNIX timestamp to
-        // use (number) filters.
-        publishedAtTimestamp: entry.publishedAt ? new Date(entry.publishedAt).getTime() : undefined,
-        updatedAtTimestamp: entry.updatedAt ? new Date(entry.updatedAt).getTime() : undefined,
       }),
   },
   'inba-release': {
