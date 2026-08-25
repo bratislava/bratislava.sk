@@ -1,6 +1,7 @@
 import { Typography } from '@bratislava/component-library'
 import { useMemo } from 'react'
 
+import CookieConsentGate from '@/src/components/common/CookieConsentGate/CookieConsentGate'
 import Icon, { IconProps } from '@/src/components/common/Icon/Icon'
 import MLink from '@/src/components/common/MLink/MLink'
 import {
@@ -171,17 +172,17 @@ const ContactCtaCard = ({ className, contact }: ContactCtaCardProps) => {
             </div>
             {contact.iframeUrl ? (
               <div className="aspect-video">
-                <iframe
-                  title={t('ContactCtaCard.directions.iframeTitle')}
-                  src={contact.iframeUrl}
-                  className="size-full border"
-                  allow="geolocation *"
-                  // This should prevent iframes to collect cookies. Otherwise, they collect their cookies we don't have consent for.
-                  // It may not work if the iframe needs some necessary cookies, or it may block some iframe to render at all.
-                  // But it seems to work for all of our iframes so far.
-                  // https://stackoverflow.com/questions/44837450/recommended-method-to-prevent-any-content-inside-iframe-from-setting-cookies
-                  sandbox="allow-scripts allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-forms"
-                />
+                <CookieConsentGate contentUrl={contact.iframeUrl} className="h-full">
+                  <iframe
+                    title={t('ContactCtaCard.directions.iframeTitle')}
+                    src={contact.iframeUrl}
+                    className="size-full border"
+                    allow="geolocation *"
+                    // https://stackoverflow.com/questions/44837450/recommended-method-to-prevent-any-content-inside-iframe-from-setting-cookies
+
+                    sandbox="allow-scripts allow-popups allow-forms"
+                  />
+                </CookieConsentGate>
               </div>
             ) : null}
           </div>

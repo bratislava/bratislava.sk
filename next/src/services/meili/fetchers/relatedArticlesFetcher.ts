@@ -1,18 +1,19 @@
 import { PageEntityFragment } from '@/src/services/graphql'
 import {
+  ArticlesFilters,
   articlesDefaultFilters,
   articlesFetcher,
   getArticlesQueryKey,
 } from '@/src/services/meili/fetchers/articlesFetcher'
 import { isDefined } from '@/src/utils/isDefined'
 
-const extractTags = (page: PageEntityFragment) => {
-  return page.relatedContents?.map((tag) => tag?.documentId).filter(isDefined) ?? []
+const extractTagSlugs = (page: PageEntityFragment) => {
+  return page.relatedContents?.map((tag) => tag?.slug).filter(isDefined) ?? []
 }
 
-const relatedArticlesFilters = (page: PageEntityFragment) => ({
+const relatedArticlesFilters = (page: PageEntityFragment): ArticlesFilters => ({
   ...articlesDefaultFilters,
-  tagDocumentIds: extractTags(page),
+  tagSlugs: extractTagSlugs(page),
   pageSize: 9,
 })
 
@@ -20,9 +21,9 @@ export const getRelatedArticlesQueryKey = (page: PageEntityFragment, locale: str
   getArticlesQueryKey(relatedArticlesFilters(page), locale)
 
 export const relatedArticlesFetcher = (page: PageEntityFragment, locale: string) => {
-  const extractedTags = extractTags(page)
+  const extractedTagSlugs = extractTagSlugs(page)
 
-  if (extractedTags.length === 0) {
+  if (extractedTagSlugs.length === 0) {
     return Promise.resolve(null)
   }
 

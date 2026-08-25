@@ -156,11 +156,6 @@
       "locale": null
     },
     {
-      "action": "api::urban-study-category.urban-study-category.delete",
-      "documentId": "fvyujmfad2ry86b8bnddajiy",
-      "locale": null
-    },
-    {
       "action": "api::urban-study-category.urban-study-category.find",
       "documentId": "hg1epzkzbh351ejfhasso59r",
       "locale": null

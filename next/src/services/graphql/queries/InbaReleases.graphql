@@ -73,3 +73,18 @@ query LatestInbaRelease {
     ...InbaReleaseEntity
   }
 }
+
+# Used by the /api/content-inventory endpoint.
+fragment InbaReleaseInventoryEntity on InbaRelease {
+  ...InbaReleaseSlugEntity
+  perex
+  releaseDate
+  updatedAt
+  publishedAt
+}
+
+query InbaReleasesInventory($limit: Int = -1) {
+  inbaReleases(sort: "updatedAt:desc", pagination: { limit: $limit }) {
+    ...InbaReleaseInventoryEntity
+  }
+}
