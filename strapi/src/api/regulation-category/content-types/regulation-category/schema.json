@@ -1,0 +1,44 @@
+{
+  "kind": "collectionType",
+  "collectionName": "regulation_categories",
+  "info": {
+    "singularName": "regulation-category",
+    "pluralName": "regulation-categories",
+    "displayName": "Všeobecne záväzné nariadenia - kategórie"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title",
+      "required": true
+    },
+    "pictogram": {
+      "type": "enumeration",
+      "required": true,
+      "enum": [
+        "archiv",
+        "daneAPoplatky",
+        "hospodarenie",
+        "ostatne",
+        "pomenovanieUlic",
+        "poriadokACistota",
+        "socialnaPomocASkolstvo",
+        "uzemnePlanovanie"
+      ]
+    },
+    "regulations": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::regulation.regulation",
+      "mappedBy": "regulationCategory"
+    }
+  }
+}

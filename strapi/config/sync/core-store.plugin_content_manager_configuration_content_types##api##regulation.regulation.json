@@ -8,8 +8,9 @@
       "searchable": true,
       "pageSize": 10,
       "mainField": "regNumber",
-      "defaultSortBy": "effectiveFrom",
-      "defaultSortOrder": "DESC"
+      "defaultSortBy": "updatedAt",
+      "defaultSortOrder": "DESC",
+      "relationOpenMode": "modal"
     },
     "metadatas": {
       "id": {
@@ -92,7 +93,7 @@
       },
       "category": {
         "edit": {
-          "label": "Kategória",
+          "label": "Kategória (stará)",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -100,6 +101,21 @@
         },
         "list": {
           "label": "category",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "regulationCategory": {
+        "edit": {
+          "label": "Kategória",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "title"
+        },
+        "list": {
+          "label": "regulationCategory",
           "searchable": true,
           "sortable": true
         }
@@ -208,7 +224,7 @@
       },
       "urbanStudies": {
         "edit": {
-          "label": "urbanStudies",
+          "label": "Urbanistické štúdie nadväzujúce na toto nariadenie",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -289,12 +305,6 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "effectiveFrom",
-        "regNumber",
-        "titleText"
-      ],
       "edit": [
         [
           {
@@ -334,6 +344,10 @@
           {
             "name": "mainDocument",
             "size": 6
+          },
+          {
+            "name": "regulationCategory",
+            "size": 6
           }
         ],
         [
@@ -368,6 +382,14 @@
             "size": 6
           }
         ]
+      ],
+      "list": [
+        "regNumber",
+        "titleText",
+        "updatedAt",
+        "fullTitle",
+        "category",
+        "regulationCategory"
       ]
     }
   },
