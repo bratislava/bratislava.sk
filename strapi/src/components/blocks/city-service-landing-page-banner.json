@@ -18,11 +18,25 @@
       "required": true,
       "allowedTypes": ["images", "files"]
     },
-    "variant": {
+    "bannerVariant": {
       "type": "enumeration",
       "required": true,
-      "default": "banner",
-      "enum": ["banner", "image"]
+      "enum": ["image", "banner"]
+    },
+    "variant": {
+      "type": "enumeration",
+      "conditions": {
+        "visible": {
+          "==": [
+            {
+              "var": "bannerVariant"
+            },
+            "banner"
+          ]
+        }
+      },
+      "required": false,
+      "enum": ["color", "dark", "white_condensed"]
     },
     "contentPosition": {
       "type": "enumeration",
@@ -30,7 +44,7 @@
         "visible": {
           "==": [
             {
-              "var": "variant"
+              "var": "bannerVariant"
             },
             "banner"
           ]
@@ -40,27 +54,13 @@
       "default": "left",
       "enum": ["left", "right"]
     },
-    "colorVariant": {
-      "type": "enumeration",
-      "conditions": {
-        "visible": {
-          "==": [
-            {
-              "var": "variant"
-            },
-            "banner"
-          ]
-        }
-      },
-      "enum": ["color", "dark", "white_condensed"]
-    },
     "primaryLink": {
       "type": "component",
       "conditions": {
         "visible": {
           "==": [
             {
-              "var": "variant"
+              "var": "bannerVariant"
             },
             "banner"
           ]
@@ -75,7 +75,7 @@
         "visible": {
           "==": [
             {
-              "var": "variant"
+              "var": "bannerVariant"
             },
             "banner"
           ]
@@ -90,7 +90,7 @@
         "visible": {
           "==": [
             {
-              "var": "variant"
+              "var": "bannerVariant"
             },
             "banner"
           ]

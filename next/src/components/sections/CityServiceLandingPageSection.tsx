@@ -12,17 +12,17 @@ import { isDefined } from '@/src/utils/isDefined'
 type CityServiceLandingPageSectionProps = { section: CityServiceLandingPageSectionFragment }
 
 const CityServiceLandingPageSection = ({ section }: CityServiceLandingPageSectionProps) => {
-  const { media, variant, colorVariant, ...restBannerProps } = section.cityServiceLandingPageBanner
+  const { media, variant, bannerVariant, ...restBannerProps } = section.cityServiceLandingPageBanner
 
   const filteredCardLinks = section.cardLinks?.filter(isDefined) ?? []
 
   return (
     <SectionContainer className="py-6 lg:py-12">
       <div className="flex flex-col gap-6 lg:gap-8">
-        {variant === 'banner' ? (
-          <Banner imagePath={media.url} variant={colorVariant} {...restBannerProps} />
+        {bannerVariant === 'banner' ? (
+          <Banner imagePath={media.url} variant={variant} {...restBannerProps} />
         ) : (
-          <div className="relative h-147 w-full rounded-xl">
+          <div className="relative h-147 w-full overflow-hidden rounded-xl">
             <Image
               src={media.url}
               className="object-cover"

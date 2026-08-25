@@ -505,7 +505,7 @@ input ComponentBlocksCardLinkInput {
 }
 
 type ComponentBlocksCityServiceLandingPageBanner {
-  colorVariant: ENUM_COMPONENTBLOCKSCITYSERVICELANDINGPAGEBANNER_COLORVARIANT
+  bannerVariant: ENUM_COMPONENTBLOCKSCITYSERVICELANDINGPAGEBANNER_BANNERVARIANT!
   content: String
   contentPosition: ENUM_COMPONENTBLOCKSCITYSERVICELANDINGPAGEBANNER_CONTENTPOSITION!
   id: ID!
@@ -514,12 +514,12 @@ type ComponentBlocksCityServiceLandingPageBanner {
   secondaryLink: ComponentBlocksCommonLink
   tertiaryLink: ComponentBlocksCommonLink
   title: String!
-  variant: ENUM_COMPONENTBLOCKSCITYSERVICELANDINGPAGEBANNER_VARIANT!
+  variant: ENUM_COMPONENTBLOCKSCITYSERVICELANDINGPAGEBANNER_VARIANT
 }
 
 input ComponentBlocksCityServiceLandingPageBannerFiltersInput {
   and: [ComponentBlocksCityServiceLandingPageBannerFiltersInput]
-  colorVariant: StringFilterInput
+  bannerVariant: StringFilterInput
   content: StringFilterInput
   contentPosition: StringFilterInput
   not: ComponentBlocksCityServiceLandingPageBannerFiltersInput
@@ -532,7 +532,7 @@ input ComponentBlocksCityServiceLandingPageBannerFiltersInput {
 }
 
 input ComponentBlocksCityServiceLandingPageBannerInput {
-  colorVariant: ENUM_COMPONENTBLOCKSCITYSERVICELANDINGPAGEBANNER_COLORVARIANT
+  bannerVariant: ENUM_COMPONENTBLOCKSCITYSERVICELANDINGPAGEBANNER_BANNERVARIANT
   content: String
   contentPosition: ENUM_COMPONENTBLOCKSCITYSERVICELANDINGPAGEBANNER_CONTENTPOSITION
   id: ID
@@ -2680,10 +2680,9 @@ type DeleteMutationResponse {
   documentId: ID!
 }
 
-enum ENUM_COMPONENTBLOCKSCITYSERVICELANDINGPAGEBANNER_COLORVARIANT {
-  color
-  dark
-  white_condensed
+enum ENUM_COMPONENTBLOCKSCITYSERVICELANDINGPAGEBANNER_BANNERVARIANT {
+  banner
+  image
 }
 
 enum ENUM_COMPONENTBLOCKSCITYSERVICELANDINGPAGEBANNER_CONTENTPOSITION {
@@ -2692,8 +2691,9 @@ enum ENUM_COMPONENTBLOCKSCITYSERVICELANDINGPAGEBANNER_CONTENTPOSITION {
 }
 
 enum ENUM_COMPONENTBLOCKSCITYSERVICELANDINGPAGEBANNER_VARIANT {
-  banner
-  image
+  color
+  dark
+  white_condensed
 }
 
 enum ENUM_COMPONENTBLOCKSSTARZLANDINGPAGEBANNER_CONTENTPOSITION {

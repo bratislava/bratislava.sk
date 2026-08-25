@@ -495,8 +495,8 @@ fragment CityServiceLandingPageSection on ComponentSectionsCityServiceLandingPag
     title
     content
     contentPosition
+    bannerVariant
     variant
-    colorVariant
     media {
       ...UploadImageEntity
     }

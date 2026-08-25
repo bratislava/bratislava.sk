@@ -56,7 +56,7 @@ export interface BlocksCityServiceLandingPageBanner extends Struct.ComponentSche
     displayName: 'Landing Page banner mestskej slu\u017Eby'
   }
   attributes: {
-    colorVariant: Schema.Attribute.Enumeration<['color', 'dark', 'white_condensed']>
+    bannerVariant: Schema.Attribute.Enumeration<['image', 'banner']> & Schema.Attribute.Required
     content: Schema.Attribute.String
     contentPosition: Schema.Attribute.Enumeration<['left', 'right']> &
       Schema.Attribute.Required &
@@ -66,9 +66,7 @@ export interface BlocksCityServiceLandingPageBanner extends Struct.ComponentSche
     secondaryLink: Schema.Attribute.Component<'blocks.common-link', false>
     tertiaryLink: Schema.Attribute.Component<'blocks.common-link', false>
     title: Schema.Attribute.String & Schema.Attribute.Required
-    variant: Schema.Attribute.Enumeration<['banner', 'image']> &
-      Schema.Attribute.Required &
-      Schema.Attribute.DefaultTo<'banner'>
+    variant: Schema.Attribute.Enumeration<['color', 'dark', 'white_condensed']>
   }
 }
 

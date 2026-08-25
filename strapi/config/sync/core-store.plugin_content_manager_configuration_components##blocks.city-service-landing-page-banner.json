@@ -62,9 +62,23 @@
           "sortable": false
         }
       },
-      "variant": {
+      "bannerVariant": {
         "edit": {
           "label": "Typ banneru",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "bannerVariant",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "variant": {
+        "edit": {
+          "label": "Farba",
           "description": "",
           "placeholder": "",
           "visible": true,
@@ -90,27 +104,14 @@
           "sortable": true
         }
       },
-      "colorVariant": {
-        "edit": {
-          "label": "Farba",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "colorVariant",
-          "searchable": true,
-          "sortable": true
-        }
-      },
       "primaryLink": {
         "edit": {
           "label": "primaryLink",
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true
+          "editable": true,
+          "mainField": "label"
         },
         "list": {
           "label": "primaryLink",
@@ -124,7 +125,8 @@
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true
+          "editable": true,
+          "mainField": "label"
         },
         "list": {
           "label": "secondaryLink",
@@ -138,7 +140,8 @@
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true
+          "editable": true,
+          "mainField": "label"
         },
         "list": {
           "label": "tertiaryLink",
@@ -156,12 +159,6 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "title",
-        "content",
-        "primaryLink"
-      ],
       "edit": [
         [
           {
@@ -169,7 +166,7 @@
             "size": 6
           },
           {
-            "name": "variant",
+            "name": "bannerVariant",
             "size": 6
           }
         ],
@@ -189,7 +186,7 @@
             "size": 6
           },
           {
-            "name": "colorVariant",
+            "name": "variant",
             "size": 6
           }
         ],
@@ -211,7 +208,8 @@
             "size": 12
           }
         ]
-      ]
+      ],
+      "list": ["id", "title", "content", "primaryLink"]
     },
     "uid": "blocks.city-service-landing-page-banner",
     "isComponent": true
