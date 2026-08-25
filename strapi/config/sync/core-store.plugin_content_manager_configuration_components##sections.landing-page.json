@@ -57,7 +57,11 @@
       }
     },
     "layouts": {
-      "list": ["id", "banner", "cardLinks"],
+      "list": [
+        "id",
+        "banner",
+        "cardLinks"
+      ],
       "edit": [
         [
           {

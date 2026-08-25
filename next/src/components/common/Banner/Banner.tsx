@@ -16,11 +16,10 @@ type BannerProps = {
   title: string
   content?: string | null
   contentPosition?: 'left' | 'right'
-  variant?:
+  variant:
     | Enum_Componentsectionsbanner_Variant
     | Enum_Componentblocksstarzlandingpagebanner_Variant
     | Enum_Componentblockslandingpagebanner_Variant
-    | null
   imagePath?: string
   primaryLink?: CommonLinkFragment | null
   secondaryLink?: CommonLinkFragment | null
@@ -36,7 +35,7 @@ const Banner = ({
   title,
   content,
   contentPosition = 'left',
-  variant = Enum_Componentsectionsbanner_Variant.WhiteCondensed,
+  variant,
   imagePath = '',
   primaryLink,
   secondaryLink,

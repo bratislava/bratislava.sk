@@ -1021,9 +1021,12 @@ export interface SectionsLandingPage extends Struct.ComponentSchema {
     displayName: 'Landing Page'
   }
   attributes: {
-    banner: Schema.Attribute.Component<'blocks.landing-page-banner', false> &
-      Schema.Attribute.Required
+    banner: Schema.Attribute.Component<'blocks.landing-page-banner', false>
     cardLinks: Schema.Attribute.Component<'blocks.card-link', true>
+    image: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>
+    variant: Schema.Attribute.Enumeration<['banner', 'image']> &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'banner'>
   }
 }
 

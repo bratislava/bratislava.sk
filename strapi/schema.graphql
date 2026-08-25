@@ -2060,9 +2060,11 @@ input ComponentSectionsJobOffersInput {
 }
 
 type ComponentSectionsLandingPage {
-  banner: ComponentBlocksLandingPageBanner!
+  banner: ComponentBlocksLandingPageBanner
   cardLinks(filters: ComponentBlocksCardLinkFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksCardLink]
   id: ID!
+  image: UploadFile
+  variant: ENUM_COMPONENTSECTIONSLANDINGPAGE_VARIANT!
 }
 
 input ComponentSectionsLandingPageFiltersInput {
@@ -2071,12 +2073,15 @@ input ComponentSectionsLandingPageFiltersInput {
   cardLinks: ComponentBlocksCardLinkFiltersInput
   not: ComponentSectionsLandingPageFiltersInput
   or: [ComponentSectionsLandingPageFiltersInput]
+  variant: StringFilterInput
 }
 
 input ComponentSectionsLandingPageInput {
   banner: ComponentBlocksLandingPageBannerInput
   cardLinks: [ComponentBlocksCardLinkInput]
   id: ID
+  image: ID
+  variant: ENUM_COMPONENTSECTIONSLANDINGPAGE_VARIANT
 }
 
 type ComponentSectionsLinks {
@@ -2878,6 +2883,11 @@ enum ENUM_COMPONENTSECTIONSINBARELEASES_VARIANT {
 enum ENUM_COMPONENTSECTIONSJOBOFFERS_TITLELEVEL {
   h2
   h3
+}
+
+enum ENUM_COMPONENTSECTIONSLANDINGPAGE_VARIANT {
+  banner
+  image
 }
 
 enum ENUM_COMPONENTSECTIONSLINKS_TITLELEVEL {

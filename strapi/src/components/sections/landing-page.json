@@ -5,11 +5,50 @@
   },
   "options": {},
   "attributes": {
+    "variant": {
+      "type": "enumeration",
+      "required": true,
+      "default": "banner",
+      "enum": [
+        "banner",
+        "image"
+      ]
+    },
     "banner": {
       "type": "component",
+      "conditions": {
+        "visible": {
+          "==": [
+            {
+              "var": "variant"
+            },
+            "banner"
+          ]
+        }
+      },
       "component": "blocks.landing-page-banner",
       "repeatable": false,
-      "required": true
+      "required": false
+    },
+    "image": {
+      "type": "media",
+      "conditions": {
+        "visible": {
+          "==": [
+            {
+              "var": "variant"
+            },
+            "image"
+          ]
+        }
+      },
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
     },
     "cardLinks": {
       "type": "component",

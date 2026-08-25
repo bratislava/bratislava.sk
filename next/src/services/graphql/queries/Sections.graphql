@@ -491,11 +491,11 @@ fragment StarzLandingPageSection on ComponentSectionsStarzLandingPage {
 }
 
 fragment LandingPageSection on ComponentSectionsLandingPage {
+  landingPageVariant: variant
   landingPageBanner: banner {
     title
     content
     contentPosition
-    bannerVariant
     variant
     media {
       ...UploadImageEntity
@@ -509,6 +509,9 @@ fragment LandingPageSection on ComponentSectionsLandingPage {
     tertiaryLink {
       ...CommonLink
     }
+  }
+  landingPageImage: image {
+    ...UploadImageEntity
   }
   cardLinks {
     ...CardLink
