@@ -183,8 +183,7 @@
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true,
-          "mainField": "title"
+          "editable": true
         },
         "list": {
           "label": "urbanStudyParts",
@@ -198,8 +197,7 @@
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true,
-          "mainField": "label"
+          "editable": true
         },
         "list": {
           "label": "links",
@@ -275,6 +273,13 @@
       }
     },
     "layouts": {
+      "list": [
+        "id",
+        "title",
+        "slug",
+        "year",
+        "updatedAt"
+      ],
       "edit": [
         [
           {
@@ -350,13 +355,6 @@
             "size": 12
           }
         ]
-      ],
-      "list": [
-        "id",
-        "title",
-        "slug",
-        "year",
-        "updatedAt"
       ]
     },
     "uid": "api::urban-study.urban-study"

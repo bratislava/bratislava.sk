@@ -1,3 +1,10 @@
+fragment RegulationCategoryEntity on RegulationCategory {
+  documentId
+  title
+  slug
+  pictogram
+}
+
 query RegulationsStaticPaths($limit: Int = -1) {
   regulations(sort: "updatedAt:desc", pagination: { limit: $limit }) {
     documentId
@@ -31,6 +38,9 @@ fragment RegulationEntity on Regulation {
   fullTitle
   effectiveFrom
   category
+  regulationCategory {
+    ...RegulationCategoryEntity
+  }
   isFullTextRegulation
   mainDocument {
     ...UploadFileEntity
@@ -72,6 +82,9 @@ fragment RegulationInventoryEntity on Regulation {
   ...RegulationRelationEntity
   fullTitle
   category
+  regulationCategory {
+    ...RegulationCategoryEntity
+  }
   updatedAt
   publishedAt
   cancellation {

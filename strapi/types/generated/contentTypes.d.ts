@@ -649,7 +649,7 @@ export interface ApiAssetAsset extends Struct.CollectionTypeSchema {
 export interface ApiFaqCategoryFaqCategory extends Struct.CollectionTypeSchema {
   collectionName: 'faq_categories'
   info: {
-    displayName: 'FAQs kateg\u00F3rie'
+    displayName: 'FAQs - kateg\u00F3rie'
     pluralName: 'faq-categories'
     singularName: 'faq-category'
   }
@@ -1263,6 +1263,47 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
   }
 }
 
+export interface ApiRegulationCategoryRegulationCategory extends Struct.CollectionTypeSchema {
+  collectionName: 'regulation_categories'
+  info: {
+    displayName: 'V\u0161eobecne z\u00E1v\u00E4zn\u00E9 nariadenia - kateg\u00F3rie'
+    pluralName: 'regulation-categories'
+    singularName: 'regulation-category'
+  }
+  options: {
+    draftAndPublish: false
+  }
+  attributes: {
+    createdAt: Schema.Attribute.DateTime
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> & Schema.Attribute.Private
+    locale: Schema.Attribute.String & Schema.Attribute.Private
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::regulation-category.regulation-category'
+    > &
+      Schema.Attribute.Private
+    pictogram: Schema.Attribute.Enumeration<
+      [
+        'archiv',
+        'daneAPoplatky',
+        'hospodarenie',
+        'ostatne',
+        'pomenovanieUlic',
+        'poriadokACistota',
+        'socialnaPomocASkolstvo',
+        'uzemnePlanovanie',
+      ]
+    > &
+      Schema.Attribute.Required
+    publishedAt: Schema.Attribute.DateTime
+    regulations: Schema.Attribute.Relation<'oneToMany', 'api::regulation.regulation'>
+    slug: Schema.Attribute.UID<'title'> & Schema.Attribute.Required
+    title: Schema.Attribute.String & Schema.Attribute.Required
+    updatedAt: Schema.Attribute.DateTime
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> & Schema.Attribute.Private
+  }
+}
+
 export interface ApiRegulationRegulation extends Struct.CollectionTypeSchema {
   collectionName: 'regulations'
   info: {
@@ -1307,6 +1348,10 @@ export interface ApiRegulationRegulation extends Struct.CollectionTypeSchema {
       Schema.Attribute.Required
     publishedAt: Schema.Attribute.DateTime
     regNumber: Schema.Attribute.String & Schema.Attribute.Required & Schema.Attribute.Unique
+    regulationCategory: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::regulation-category.regulation-category'
+    >
     slug: Schema.Attribute.UID<'regNumber'> & Schema.Attribute.Required
     titleText: Schema.Attribute.String
     updatedAt: Schema.Attribute.DateTime
@@ -1445,7 +1490,7 @@ export interface ApiUrbanStudyStateUrbanStudyState extends Struct.CollectionType
 export interface ApiUrbanStudyUrbanStudy extends Struct.CollectionTypeSchema {
   collectionName: 'urban_studies'
   info: {
-    displayName: 'WIP \u00DAzemn\u00E9 \u0161t\u00FAdie'
+    displayName: '\u00DAzemn\u00E9 \u0161t\u00FAdie'
     pluralName: 'urban-studies'
     singularName: 'urban-study'
   }
@@ -1929,6 +1974,7 @@ declare module '@strapi/strapi' {
       'api::menu.menu': ApiMenuMenu
       'api::page-category.page-category': ApiPageCategoryPageCategory
       'api::page.page': ApiPagePage
+      'api::regulation-category.regulation-category': ApiRegulationCategoryRegulationCategory
       'api::regulation.regulation': ApiRegulationRegulation
       'api::tag.tag': ApiTagTag
       'api::tax-administrators-list.tax-administrators-list': ApiTaxAdministratorsListTaxAdministratorsList

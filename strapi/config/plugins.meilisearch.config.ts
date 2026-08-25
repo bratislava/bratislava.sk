@@ -59,6 +59,7 @@ const searchIndexSettings = {
     'document.adminGroups.slug',
     'urban-study.urbanStudyState.slug',
     'urban-study.urbanStudyCategory.slug',
+    'regulation.regulationCategory.slug',
     'faq.faqCategory.slug',
   ],
   sortableAttributes: [
@@ -180,7 +181,7 @@ const config = {
     indexName: 'search_index',
     entriesQuery: {
       locale: '*',
-      populate: ['amending', 'amending.cancellation', 'cancellation'],
+      populate: ['amending', 'amending.cancellation', 'cancellation', 'regulationCategory'],
     },
     settings: searchIndexSettings,
     transformEntry: ({ entry }) => {

@@ -48,6 +48,12 @@
         "archiv"
       ]
     },
+    "regulationCategory": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::regulation-category.regulation-category",
+      "inversedBy": "regulations"
+    },
     "isFullTextRegulation": {
       "type": "boolean",
       "required": true,
