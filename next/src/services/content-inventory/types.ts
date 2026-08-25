@@ -19,13 +19,6 @@ export type InventoryFile = {
   url: string
   /** The title the editor gave the file where the content type allows one, otherwise the uploaded file name. */
   title: string
-  /** Without the leading dot, missing for uploads that have no extension. */
-  ext?: string
-  /** In kilobytes, the unit Strapi stores. */
-  size: number
-  /** When the file was uploaded, not when it was attached to this entry. */
-  addedAt: string | null
-  modifiedAt: string | null
 }
 
 /**

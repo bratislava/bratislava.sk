@@ -46,10 +46,6 @@ const getFile = (file: UploadFileEntityFragment, title?: string | null): Invento
   id: file.documentId,
   url: file.url,
   title: getFirstNonEmpty(title, file.name) ?? file.name,
-  ext: file.ext?.replace(/^\./, '') ?? undefined,
-  size: file.size,
-  addedAt: getIsoDate(file.createdAt),
-  modifiedAt: getIsoDate(file.updatedAt),
 })
 
 /** For content types that link uploads directly. Drops the nulls the api allows in every relation. */
@@ -272,10 +268,7 @@ const buildRegulations = async (): Promise<InventoryEntry[]> => {
         modifiedAt: regulation.updatedAt,
         // The main document first, the same order the page lists them in. Files of the amendments belong to their own
         // entries, so they are not repeated here.
-        files: [
-          getFile(regulation.mainDocument, `VZN ${regulation.regNumber}`),
-          ...getFiles(regulation.attachments),
-        ],
+        files: [getFile(regulation.mainDocument), ...getFiles(regulation.attachments)],
       }),
       regulation: {
         regNumber: regulation.regNumber,
