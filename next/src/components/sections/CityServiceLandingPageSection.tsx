@@ -18,11 +18,11 @@ const CityServiceLandingPageSection = ({ section }: CityServiceLandingPageSectio
 
   return (
     <SectionContainer className="py-6 lg:py-12">
-      <div className="flex h-147 flex-col gap-6 lg:gap-8">
+      <div className="flex flex-col gap-6 lg:gap-8">
         {variant === 'banner' ? (
           <Banner imagePath={media.url} variant={colorVariant} {...restBannerProps} />
         ) : (
-          <div className="relative h-304 w-157 overflow-hidden rounded-lg">
+          <div className="relative h-147 w-full rounded-xl">
             <Image
               src={media.url}
               className="object-cover"
