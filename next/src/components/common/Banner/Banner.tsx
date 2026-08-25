@@ -73,6 +73,7 @@ const Banner = ({
         <div className="flex flex-col flex-wrap gap-2 empty:hidden lg:flex-row lg:items-center lg:gap-4">
           {/* TODO styling of white buttons */}
           {primaryLink && <Button variant="solid" fullWidthMobile {...getLinkProps(primaryLink)} />}
+
           {secondaryLink && (
             <Button
               className={cn({
@@ -84,6 +85,7 @@ const Banner = ({
               {...getLinkProps(secondaryLink)}
             />
           )}
+
           {tertiaryLink && (
             <Button
               className={cn('font-semibold no-underline', {
