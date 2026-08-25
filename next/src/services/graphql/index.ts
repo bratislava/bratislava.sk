@@ -745,27 +745,27 @@ export type ComponentBlocksCardLinkInput = {
   url?: InputMaybe<Scalars['String']['input']>
 }
 
-export type ComponentBlocksCityServiceLandingPageBanner = {
-  __typename?: 'ComponentBlocksCityServiceLandingPageBanner'
-  bannerVariant: Enum_Componentblockscityservicelandingpagebanner_Bannervariant
+export type ComponentBlocksLandingPageBanner = {
+  __typename?: 'ComponentBlocksLandingPageBanner'
+  bannerVariant: Enum_Componentblockslandingpagebanner_Bannervariant
   content?: Maybe<Scalars['String']['output']>
-  contentPosition: Enum_Componentblockscityservicelandingpagebanner_Contentposition
+  contentPosition: Enum_Componentblockslandingpagebanner_Contentposition
   id: Scalars['ID']['output']
   media: UploadFile
   primaryLink?: Maybe<ComponentBlocksCommonLink>
   secondaryLink?: Maybe<ComponentBlocksCommonLink>
   tertiaryLink?: Maybe<ComponentBlocksCommonLink>
   title: Scalars['String']['output']
-  variant?: Maybe<Enum_Componentblockscityservicelandingpagebanner_Variant>
+  variant?: Maybe<Enum_Componentblockslandingpagebanner_Variant>
 }
 
-export type ComponentBlocksCityServiceLandingPageBannerFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<ComponentBlocksCityServiceLandingPageBannerFiltersInput>>>
+export type ComponentBlocksLandingPageBannerFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentBlocksLandingPageBannerFiltersInput>>>
   bannerVariant?: InputMaybe<StringFilterInput>
   content?: InputMaybe<StringFilterInput>
   contentPosition?: InputMaybe<StringFilterInput>
-  not?: InputMaybe<ComponentBlocksCityServiceLandingPageBannerFiltersInput>
-  or?: InputMaybe<Array<InputMaybe<ComponentBlocksCityServiceLandingPageBannerFiltersInput>>>
+  not?: InputMaybe<ComponentBlocksLandingPageBannerFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<ComponentBlocksLandingPageBannerFiltersInput>>>
   primaryLink?: InputMaybe<ComponentBlocksCommonLinkFiltersInput>
   secondaryLink?: InputMaybe<ComponentBlocksCommonLinkFiltersInput>
   tertiaryLink?: InputMaybe<ComponentBlocksCommonLinkFiltersInput>
@@ -773,17 +773,17 @@ export type ComponentBlocksCityServiceLandingPageBannerFiltersInput = {
   variant?: InputMaybe<StringFilterInput>
 }
 
-export type ComponentBlocksCityServiceLandingPageBannerInput = {
-  bannerVariant?: InputMaybe<Enum_Componentblockscityservicelandingpagebanner_Bannervariant>
+export type ComponentBlocksLandingPageBannerInput = {
+  bannerVariant?: InputMaybe<Enum_Componentblockslandingpagebanner_Bannervariant>
   content?: InputMaybe<Scalars['String']['input']>
-  contentPosition?: InputMaybe<Enum_Componentblockscityservicelandingpagebanner_Contentposition>
+  contentPosition?: InputMaybe<Enum_Componentblockslandingpagebanner_Contentposition>
   id?: InputMaybe<Scalars['ID']['input']>
   media?: InputMaybe<Scalars['ID']['input']>
   primaryLink?: InputMaybe<ComponentBlocksCommonLinkInput>
   secondaryLink?: InputMaybe<ComponentBlocksCommonLinkInput>
   tertiaryLink?: InputMaybe<ComponentBlocksCommonLinkInput>
   title?: InputMaybe<Scalars['String']['input']>
-  variant?: InputMaybe<Enum_Componentblockscityservicelandingpagebanner_Variant>
+  variant?: InputMaybe<Enum_Componentblockslandingpagebanner_Variant>
 }
 
 export type ComponentBlocksColumnsItem = {
@@ -1927,29 +1927,29 @@ export type ComponentSectionsBannerInput = {
   variant?: InputMaybe<Enum_Componentsectionsbanner_Variant>
 }
 
-export type ComponentSectionsCityServiceLandingPage = {
-  __typename?: 'ComponentSectionsCityServiceLandingPage'
-  banner: ComponentBlocksCityServiceLandingPageBanner
+export type ComponentSectionsLandingPage = {
+  __typename?: 'ComponentSectionsLandingPage'
+  banner: ComponentBlocksLandingPageBanner
   cardLinks?: Maybe<Array<Maybe<ComponentBlocksCardLink>>>
   id: Scalars['ID']['output']
 }
 
-export type ComponentSectionsCityServiceLandingPageCardLinksArgs = {
+export type ComponentSectionsLandingPageCardLinksArgs = {
   filters?: InputMaybe<ComponentBlocksCardLinkFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
 }
 
-export type ComponentSectionsCityServiceLandingPageFiltersInput = {
-  and?: InputMaybe<Array<InputMaybe<ComponentSectionsCityServiceLandingPageFiltersInput>>>
-  banner?: InputMaybe<ComponentBlocksCityServiceLandingPageBannerFiltersInput>
+export type ComponentSectionsLandingPageFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentSectionsLandingPageFiltersInput>>>
+  banner?: InputMaybe<ComponentBlocksLandingPageBannerFiltersInput>
   cardLinks?: InputMaybe<ComponentBlocksCardLinkFiltersInput>
-  not?: InputMaybe<ComponentSectionsCityServiceLandingPageFiltersInput>
-  or?: InputMaybe<Array<InputMaybe<ComponentSectionsCityServiceLandingPageFiltersInput>>>
+  not?: InputMaybe<ComponentSectionsLandingPageFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<ComponentSectionsLandingPageFiltersInput>>>
 }
 
-export type ComponentSectionsCityServiceLandingPageInput = {
-  banner?: InputMaybe<ComponentBlocksCityServiceLandingPageBannerInput>
+export type ComponentSectionsLandingPageInput = {
+  banner?: InputMaybe<ComponentBlocksLandingPageBannerInput>
   cardLinks?: InputMaybe<Array<InputMaybe<ComponentBlocksCardLinkInput>>>
   id?: InputMaybe<Scalars['ID']['input']>
 }
@@ -3391,17 +3391,17 @@ export type DeleteMutationResponse = {
   documentId: Scalars['ID']['output']
 }
 
-export enum Enum_Componentblockscityservicelandingpagebanner_Bannervariant {
+export enum Enum_Componentblockslandingpagebanner_Bannervariant {
   Banner = 'banner',
   Image = 'image',
 }
 
-export enum Enum_Componentblockscityservicelandingpagebanner_Contentposition {
+export enum Enum_Componentblockslandingpagebanner_Contentposition {
   Left = 'left',
   Right = 'right',
 }
 
-export enum Enum_Componentblockscityservicelandingpagebanner_Variant {
+export enum Enum_Componentblockslandingpagebanner_Variant {
   Color = 'color',
   Dark = 'dark',
   WhiteCondensed = 'white_condensed',
@@ -4079,7 +4079,7 @@ export type GenericMorph =
   | ComponentAccordionItemsFlatText
   | ComponentAccordionItemsInstitution
   | ComponentBlocksCardLink
-  | ComponentBlocksCityServiceLandingPageBanner
+  | ComponentBlocksLandingPageBanner
   | ComponentBlocksColumnsItem
   | ComponentBlocksColumnsListItem
   | ComponentBlocksCommonLink
@@ -4119,7 +4119,7 @@ export type GenericMorph =
   | ComponentSectionsArticlesLandingPage
   | ComponentSectionsAssets
   | ComponentSectionsBanner
-  | ComponentSectionsCityServiceLandingPage
+  | ComponentSectionsLandingPage
   | ComponentSectionsColumnedText
   | ComponentSectionsColumns
   | ComponentSectionsColumnsList
@@ -5305,7 +5305,7 @@ export type PageSectionsDynamicZone =
   | ComponentSectionsArticlesLandingPage
   | ComponentSectionsAssets
   | ComponentSectionsBanner
-  | ComponentSectionsCityServiceLandingPage
+  | ComponentSectionsLandingPage
   | ComponentSectionsColumnedText
   | ComponentSectionsColumns
   | ComponentSectionsColumnsList
@@ -8007,7 +8007,7 @@ export type AllFilesQuery = {
           __typename?: 'ComponentSectionsBanner'
           media: { __typename?: 'UploadFile'; documentId: string }
         }
-      | { __typename?: 'ComponentSectionsCityServiceLandingPage' }
+      | { __typename?: 'ComponentSectionsLandingPage' }
       | { __typename?: 'ComponentSectionsColumnedText' }
       | {
           __typename?: 'ComponentSectionsColumns'
@@ -11764,14 +11764,14 @@ export type PageEntityFragment = {
         } | null
       }
     | {
-        __typename: 'ComponentSectionsCityServiceLandingPage'
-        cityServiceLandingPageBanner: {
-          __typename?: 'ComponentBlocksCityServiceLandingPageBanner'
+        __typename: 'ComponentSectionsLandingPage'
+        landingPageBanner: {
+          __typename?: 'ComponentBlocksLandingPageBanner'
           title: string
           content?: string | null
-          contentPosition: Enum_Componentblockscityservicelandingpagebanner_Contentposition
-          bannerVariant: Enum_Componentblockscityservicelandingpagebanner_Bannervariant
-          variant?: Enum_Componentblockscityservicelandingpagebanner_Variant | null
+          contentPosition: Enum_Componentblockslandingpagebanner_Contentposition
+          bannerVariant: Enum_Componentblockslandingpagebanner_Bannervariant
+          variant?: Enum_Componentblockslandingpagebanner_Variant | null
           media: {
             __typename?: 'UploadFile'
             documentId: string
@@ -13549,14 +13549,14 @@ export type PageByPathQuery = {
           } | null
         }
       | {
-          __typename: 'ComponentSectionsCityServiceLandingPage'
-          cityServiceLandingPageBanner: {
-            __typename?: 'ComponentBlocksCityServiceLandingPageBanner'
+          __typename: 'ComponentSectionsLandingPage'
+          landingPageBanner: {
+            __typename?: 'ComponentBlocksLandingPageBanner'
             title: string
             content?: string | null
-            contentPosition: Enum_Componentblockscityservicelandingpagebanner_Contentposition
-            bannerVariant: Enum_Componentblockscityservicelandingpagebanner_Bannervariant
-            variant?: Enum_Componentblockscityservicelandingpagebanner_Variant | null
+            contentPosition: Enum_Componentblockslandingpagebanner_Contentposition
+            bannerVariant: Enum_Componentblockslandingpagebanner_Bannervariant
+            variant?: Enum_Componentblockslandingpagebanner_Variant | null
             media: {
               __typename?: 'UploadFile'
               documentId: string
@@ -15363,14 +15363,14 @@ export type Dev_AllPagesQuery = {
           } | null
         }
       | {
-          __typename: 'ComponentSectionsCityServiceLandingPage'
-          cityServiceLandingPageBanner: {
-            __typename?: 'ComponentBlocksCityServiceLandingPageBanner'
+          __typename: 'ComponentSectionsLandingPage'
+          landingPageBanner: {
+            __typename?: 'ComponentBlocksLandingPageBanner'
             title: string
             content?: string | null
-            contentPosition: Enum_Componentblockscityservicelandingpagebanner_Contentposition
-            bannerVariant: Enum_Componentblockscityservicelandingpagebanner_Bannervariant
-            variant?: Enum_Componentblockscityservicelandingpagebanner_Variant | null
+            contentPosition: Enum_Componentblockslandingpagebanner_Contentposition
+            bannerVariant: Enum_Componentblockslandingpagebanner_Bannervariant
+            variant?: Enum_Componentblockslandingpagebanner_Variant | null
             media: {
               __typename?: 'UploadFile'
               documentId: string
@@ -18343,15 +18343,15 @@ export type StarzLandingPageSectionFragment = {
   } | null> | null
 }
 
-export type CityServiceLandingPageSectionFragment = {
-  __typename?: 'ComponentSectionsCityServiceLandingPage'
-  cityServiceLandingPageBanner: {
-    __typename?: 'ComponentBlocksCityServiceLandingPageBanner'
+export type LandingPageSectionFragment = {
+  __typename?: 'ComponentSectionsLandingPage'
+  landingPageBanner: {
+    __typename?: 'ComponentBlocksLandingPageBanner'
     title: string
     content?: string | null
-    contentPosition: Enum_Componentblockscityservicelandingpagebanner_Contentposition
-    bannerVariant: Enum_Componentblockscityservicelandingpagebanner_Bannervariant
-    variant?: Enum_Componentblockscityservicelandingpagebanner_Variant | null
+    contentPosition: Enum_Componentblockslandingpagebanner_Contentposition
+    bannerVariant: Enum_Componentblockslandingpagebanner_Bannervariant
+    variant?: Enum_Componentblockslandingpagebanner_Variant | null
     media: {
       __typename?: 'UploadFile'
       documentId: string
@@ -19156,15 +19156,15 @@ type Sections_ComponentSectionsBanner_Fragment = {
   } | null
 }
 
-type Sections_ComponentSectionsCityServiceLandingPage_Fragment = {
-  __typename: 'ComponentSectionsCityServiceLandingPage'
-  cityServiceLandingPageBanner: {
-    __typename?: 'ComponentBlocksCityServiceLandingPageBanner'
+type Sections_ComponentSectionsLandingPage_Fragment = {
+  __typename: 'ComponentSectionsLandingPage'
+  landingPageBanner: {
+    __typename?: 'ComponentBlocksLandingPageBanner'
     title: string
     content?: string | null
-    contentPosition: Enum_Componentblockscityservicelandingpagebanner_Contentposition
-    bannerVariant: Enum_Componentblockscityservicelandingpagebanner_Bannervariant
-    variant?: Enum_Componentblockscityservicelandingpagebanner_Variant | null
+    contentPosition: Enum_Componentblockslandingpagebanner_Contentposition
+    bannerVariant: Enum_Componentblockslandingpagebanner_Bannervariant
+    variant?: Enum_Componentblockslandingpagebanner_Variant | null
     media: {
       __typename?: 'UploadFile'
       documentId: string
@@ -20340,7 +20340,7 @@ export type SectionsFragment =
   | Sections_ComponentSectionsArticlesLandingPage_Fragment
   | Sections_ComponentSectionsAssets_Fragment
   | Sections_ComponentSectionsBanner_Fragment
-  | Sections_ComponentSectionsCityServiceLandingPage_Fragment
+  | Sections_ComponentSectionsLandingPage_Fragment
   | Sections_ComponentSectionsColumnedText_Fragment
   | Sections_ComponentSectionsColumns_Fragment
   | Sections_ComponentSectionsColumnsList_Fragment
@@ -22258,9 +22258,9 @@ export const CardLinkFragmentDoc = gql`
   ${PageCardEntityFragmentDoc}
   ${ArticleCardEntityFragmentDoc}
 `
-export const CityServiceLandingPageSectionFragmentDoc = gql`
-  fragment CityServiceLandingPageSection on ComponentSectionsCityServiceLandingPage {
-    cityServiceLandingPageBanner: banner {
+export const LandingPageSectionFragmentDoc = gql`
+  fragment LandingPageSection on ComponentSectionsLandingPage {
+    landingPageBanner: banner {
       title
       content
       contentPosition
@@ -22505,8 +22505,8 @@ export const SectionsFragmentDoc = gql`
     ... on ComponentSectionsFacilities {
       ...FacilitiesSection
     }
-    ... on ComponentSectionsCityServiceLandingPage {
-      ...CityServiceLandingPageSection
+    ... on ComponentSectionsLandingPage {
+      ...LandingPageSection
     }
     ... on ComponentSectionsStarzLandingPage {
       ...StarzLandingPageSection
@@ -22562,7 +22562,7 @@ export const SectionsFragmentDoc = gql`
   ${NumbersOverviewSectionFragmentDoc}
   ${EventsSectionFragmentDoc}
   ${FacilitiesSectionFragmentDoc}
-  ${CityServiceLandingPageSectionFragmentDoc}
+  ${LandingPageSectionFragmentDoc}
   ${StarzLandingPageSectionFragmentDoc}
   ${OpeningHoursSectionFragmentDoc}
   ${NewsletterSectionFragmentDoc}

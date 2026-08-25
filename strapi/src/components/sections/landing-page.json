@@ -1,13 +1,13 @@
 {
-  "collectionName": "components_sections_city_service_landing_pages",
+  "collectionName": "components_sections_landing_pages",
   "info": {
-    "displayName": "Landing Page mestskej organizácie"
+    "displayName": "Landing Page"
   },
   "options": {},
   "attributes": {
     "banner": {
       "type": "component",
-      "component": "blocks.city-service-landing-page-banner",
+      "component": "blocks.landing-page-banner",
       "repeatable": false,
       "required": true
     },

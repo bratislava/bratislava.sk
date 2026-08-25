@@ -490,8 +490,8 @@ fragment StarzLandingPageSection on ComponentSectionsStarzLandingPage {
   }
 }
 
-fragment CityServiceLandingPageSection on ComponentSectionsCityServiceLandingPage {
-  cityServiceLandingPageBanner: banner {
+fragment LandingPageSection on ComponentSectionsLandingPage {
+  landingPageBanner: banner {
     title
     content
     contentPosition
@@ -721,8 +721,8 @@ fragment Sections on PageSectionsDynamicZone {
     ...FacilitiesSection
   }
 
-  ... on ComponentSectionsCityServiceLandingPage {
-    ...CityServiceLandingPageSection
+  ... on ComponentSectionsLandingPage {
+    ...LandingPageSection
   }
 
   ... on ComponentSectionsStarzLandingPage {

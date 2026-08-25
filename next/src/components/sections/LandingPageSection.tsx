@@ -4,15 +4,15 @@ import LinkCard from '@/src/components/cards/LinkCard'
 import Banner from '@/src/components/common/Banner/Banner'
 import ResponsiveCarousel from '@/src/components/common/Carousel/ResponsiveCarousel'
 import SectionContainer from '@/src/components/layouts/SectionContainer'
-import { CityServiceLandingPageSectionFragment } from '@/src/services/graphql'
+import { LandingPageSectionFragment } from '@/src/services/graphql'
 import { generateImageSizes } from '@/src/utils/generateImageSizes'
 import { getLinkProps } from '@/src/utils/getLinkProps'
 import { isDefined } from '@/src/utils/isDefined'
 
-type CityServiceLandingPageSectionProps = { section: CityServiceLandingPageSectionFragment }
+type LandingPageSectionProps = { section: LandingPageSectionFragment }
 
-const CityServiceLandingPageSection = ({ section }: CityServiceLandingPageSectionProps) => {
-  const { media, variant, bannerVariant, ...restBannerProps } = section.cityServiceLandingPageBanner
+const LandingPageSection = ({ section }: LandingPageSectionProps) => {
+  const { media, variant, bannerVariant, ...restBannerProps } = section.landingPageBanner
 
   const filteredCardLinks = section.cardLinks?.filter(isDefined) ?? []
 
@@ -64,4 +64,4 @@ const CityServiceLandingPageSection = ({ section }: CityServiceLandingPageSectio
   )
 }
 
-export default CityServiceLandingPageSection
+export default LandingPageSection

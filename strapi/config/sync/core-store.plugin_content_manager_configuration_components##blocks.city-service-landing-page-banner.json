@@ -1,5 +1,5 @@
 {
-  "key": "plugin_content_manager_configuration_components::blocks.city-service-landing-page-banner",
+  "key": "plugin_content_manager_configuration_components::blocks.landing-page-banner",
   "value": {
     "settings": {
       "bulkable": true,
@@ -211,7 +211,7 @@
       ],
       "list": ["id", "title", "content", "primaryLink"]
     },
-    "uid": "blocks.city-service-landing-page-banner",
+    "uid": "blocks.landing-page-banner",
     "isComponent": true
   },
   "type": "object",

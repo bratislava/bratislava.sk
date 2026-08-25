@@ -4,7 +4,7 @@ import Image from 'next/image'
 import Markdown from '@/src/components/formatting/Markdown/Markdown'
 import {
   CommonLinkFragment,
-  Enum_Componentblockscityservicelandingpagebanner_Variant,
+  Enum_Componentblockslandingpagebanner_Variant,
   Enum_Componentblocksstarzlandingpagebanner_Variant,
   Enum_Componentsectionsbanner_Variant,
 } from '@/src/services/graphql'
@@ -19,7 +19,7 @@ type BannerProps = {
   variant?:
     | Enum_Componentsectionsbanner_Variant
     | Enum_Componentblocksstarzlandingpagebanner_Variant
-    | Enum_Componentblockscityservicelandingpagebanner_Variant
+    | Enum_Componentblockslandingpagebanner_Variant
     | null
   imagePath?: string
   primaryLink?: CommonLinkFragment | null

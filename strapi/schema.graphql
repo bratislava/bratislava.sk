@@ -504,46 +504,6 @@ input ComponentBlocksCardLinkInput {
   url: String
 }
 
-type ComponentBlocksCityServiceLandingPageBanner {
-  bannerVariant: ENUM_COMPONENTBLOCKSCITYSERVICELANDINGPAGEBANNER_BANNERVARIANT!
-  content: String
-  contentPosition: ENUM_COMPONENTBLOCKSCITYSERVICELANDINGPAGEBANNER_CONTENTPOSITION!
-  id: ID!
-  media: UploadFile!
-  primaryLink: ComponentBlocksCommonLink
-  secondaryLink: ComponentBlocksCommonLink
-  tertiaryLink: ComponentBlocksCommonLink
-  title: String!
-  variant: ENUM_COMPONENTBLOCKSCITYSERVICELANDINGPAGEBANNER_VARIANT
-}
-
-input ComponentBlocksCityServiceLandingPageBannerFiltersInput {
-  and: [ComponentBlocksCityServiceLandingPageBannerFiltersInput]
-  bannerVariant: StringFilterInput
-  content: StringFilterInput
-  contentPosition: StringFilterInput
-  not: ComponentBlocksCityServiceLandingPageBannerFiltersInput
-  or: [ComponentBlocksCityServiceLandingPageBannerFiltersInput]
-  primaryLink: ComponentBlocksCommonLinkFiltersInput
-  secondaryLink: ComponentBlocksCommonLinkFiltersInput
-  tertiaryLink: ComponentBlocksCommonLinkFiltersInput
-  title: StringFilterInput
-  variant: StringFilterInput
-}
-
-input ComponentBlocksCityServiceLandingPageBannerInput {
-  bannerVariant: ENUM_COMPONENTBLOCKSCITYSERVICELANDINGPAGEBANNER_BANNERVARIANT
-  content: String
-  contentPosition: ENUM_COMPONENTBLOCKSCITYSERVICELANDINGPAGEBANNER_CONTENTPOSITION
-  id: ID
-  media: ID
-  primaryLink: ComponentBlocksCommonLinkInput
-  secondaryLink: ComponentBlocksCommonLinkInput
-  tertiaryLink: ComponentBlocksCommonLinkInput
-  title: String
-  variant: ENUM_COMPONENTBLOCKSCITYSERVICELANDINGPAGEBANNER_VARIANT
-}
-
 type ComponentBlocksColumnsItem {
   id: ID!
   image: UploadFile
@@ -882,6 +842,43 @@ input ComponentBlocksInBaInput {
   id: ID
   showMoreLink: ComponentBlocksCommonLinkInput
   title: String
+}
+
+type ComponentBlocksLandingPageBanner {
+  content: String
+  contentPosition: ENUM_COMPONENTBLOCKSLANDINGPAGEBANNER_CONTENTPOSITION!
+  id: ID!
+  media: UploadFile!
+  primaryLink: ComponentBlocksCommonLink
+  secondaryLink: ComponentBlocksCommonLink
+  tertiaryLink: ComponentBlocksCommonLink
+  title: String!
+  variant: ENUM_COMPONENTBLOCKSLANDINGPAGEBANNER_VARIANT
+}
+
+input ComponentBlocksLandingPageBannerFiltersInput {
+  and: [ComponentBlocksLandingPageBannerFiltersInput]
+  content: StringFilterInput
+  contentPosition: StringFilterInput
+  not: ComponentBlocksLandingPageBannerFiltersInput
+  or: [ComponentBlocksLandingPageBannerFiltersInput]
+  primaryLink: ComponentBlocksCommonLinkFiltersInput
+  secondaryLink: ComponentBlocksCommonLinkFiltersInput
+  tertiaryLink: ComponentBlocksCommonLinkFiltersInput
+  title: StringFilterInput
+  variant: StringFilterInput
+}
+
+input ComponentBlocksLandingPageBannerInput {
+  content: String
+  contentPosition: ENUM_COMPONENTBLOCKSLANDINGPAGEBANNER_CONTENTPOSITION
+  id: ID
+  media: ID
+  primaryLink: ComponentBlocksCommonLinkInput
+  secondaryLink: ComponentBlocksCommonLinkInput
+  tertiaryLink: ComponentBlocksCommonLinkInput
+  title: String
+  variant: ENUM_COMPONENTBLOCKSLANDINGPAGEBANNER_VARIANT
 }
 
 type ComponentBlocksNumbersOverviewItem {
@@ -1520,26 +1517,6 @@ input ComponentSectionsBannerInput {
   variant: ENUM_COMPONENTSECTIONSBANNER_VARIANT
 }
 
-type ComponentSectionsCityServiceLandingPage {
-  banner: ComponentBlocksCityServiceLandingPageBanner!
-  cardLinks(filters: ComponentBlocksCardLinkFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksCardLink]
-  id: ID!
-}
-
-input ComponentSectionsCityServiceLandingPageFiltersInput {
-  and: [ComponentSectionsCityServiceLandingPageFiltersInput]
-  banner: ComponentBlocksCityServiceLandingPageBannerFiltersInput
-  cardLinks: ComponentBlocksCardLinkFiltersInput
-  not: ComponentSectionsCityServiceLandingPageFiltersInput
-  or: [ComponentSectionsCityServiceLandingPageFiltersInput]
-}
-
-input ComponentSectionsCityServiceLandingPageInput {
-  banner: ComponentBlocksCityServiceLandingPageBannerInput
-  cardLinks: [ComponentBlocksCardLinkInput]
-  id: ID
-}
-
 type ComponentSectionsColumnedText {
   content: String
   id: ID!
@@ -2080,6 +2057,26 @@ input ComponentSectionsJobOffersInput {
   text: String
   title: String
   titleLevel: ENUM_COMPONENTSECTIONSJOBOFFERS_TITLELEVEL
+}
+
+type ComponentSectionsLandingPage {
+  banner: ComponentBlocksLandingPageBanner!
+  cardLinks(filters: ComponentBlocksCardLinkFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [ComponentBlocksCardLink]
+  id: ID!
+}
+
+input ComponentSectionsLandingPageFiltersInput {
+  and: [ComponentSectionsLandingPageFiltersInput]
+  banner: ComponentBlocksLandingPageBannerFiltersInput
+  cardLinks: ComponentBlocksCardLinkFiltersInput
+  not: ComponentSectionsLandingPageFiltersInput
+  or: [ComponentSectionsLandingPageFiltersInput]
+}
+
+input ComponentSectionsLandingPageInput {
+  banner: ComponentBlocksLandingPageBannerInput
+  cardLinks: [ComponentBlocksCardLinkInput]
+  id: ID
 }
 
 type ComponentSectionsLinks {
@@ -2680,17 +2677,12 @@ type DeleteMutationResponse {
   documentId: ID!
 }
 
-enum ENUM_COMPONENTBLOCKSCITYSERVICELANDINGPAGEBANNER_BANNERVARIANT {
-  banner
-  image
-}
-
-enum ENUM_COMPONENTBLOCKSCITYSERVICELANDINGPAGEBANNER_CONTENTPOSITION {
+enum ENUM_COMPONENTBLOCKSLANDINGPAGEBANNER_CONTENTPOSITION {
   left
   right
 }
 
-enum ENUM_COMPONENTBLOCKSCITYSERVICELANDINGPAGEBANNER_VARIANT {
+enum ENUM_COMPONENTBLOCKSLANDINGPAGEBANNER_VARIANT {
   color
   dark
   white_condensed
@@ -3283,7 +3275,7 @@ type GeneralRelationResponseCollection {
   nodes: [General!]!
 }
 
-union GenericMorph = AdminGroup | Alert | Article | ArticleCategory | Asset | AssetCategory | ComponentAccordionItemsFlatText | ComponentAccordionItemsInstitution | ComponentBlocksCardLink | ComponentBlocksCityServiceLandingPageBanner | ComponentBlocksColumnsItem | ComponentBlocksColumnsListItem | ComponentBlocksCommonLink | ComponentBlocksComparisonCard | ComponentBlocksComparisonItem | ComponentBlocksContactCard | ComponentBlocksContactDirectionsCard | ComponentBlocksContactPersonCard | ComponentBlocksFile | ComponentBlocksFileItem | ComponentBlocksFooterColumn | ComponentBlocksHomepageHighlightsItem | ComponentBlocksIframe | ComponentBlocksInBa | ComponentBlocksNumbersOverviewItem | ComponentBlocksNumericalListItem | ComponentBlocksOpeningHoursAlertMessage | ComponentBlocksOpeningHoursItem | ComponentBlocksPageLink | ComponentBlocksPartner | ComponentBlocksProsAndConsCard | ComponentBlocksStarzLandingPageBanner | ComponentBlocksSubnavigationLink | ComponentBlocksTopServicesItem | ComponentBlocksUrbanStudyPartItem | ComponentBlocksVideo | ComponentGeneralHeader | ComponentGeneralHeaderLink | ComponentHeaderSectionsEvent | ComponentHeaderSectionsFacility | ComponentMenuMenuItem | ComponentMenuMenuLink | ComponentMenuMenuSection | ComponentSectionsAccordion | ComponentSectionsAlert | ComponentSectionsArticles | ComponentSectionsArticlesLandingPage | ComponentSectionsAssets | ComponentSectionsBanner | ComponentSectionsCityServiceLandingPage | ComponentSectionsColumnedText | ComponentSectionsColumns | ComponentSectionsColumnsList | ComponentSectionsComparisonSection | ComponentSectionsContactsSection | ComponentSectionsDivider | ComponentSectionsEvents | ComponentSectionsFacilities | ComponentSectionsFaqs | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsHomepageEvents | ComponentSectionsHomepageHighlights | ComponentSectionsHomepageMayorAndCouncil | ComponentSectionsHomepageTabs | ComponentSectionsIframe | ComponentSectionsIframeTabs | ComponentSectionsInbaLatestRelease | ComponentSectionsInbaReleases | ComponentSectionsJobOffers | ComponentSectionsLinks | ComponentSectionsNarrowText | ComponentSectionsNewsletter | ComponentSectionsNumbersOverview | ComponentSectionsNumericalList | ComponentSectionsOfficialBoard | ComponentSectionsOpeningHours | ComponentSectionsOrganizationalStructure | ComponentSectionsPartners | ComponentSectionsProsAndConsSection | ComponentSectionsRegulations | ComponentSectionsStarzLandingPage | ComponentSectionsSubnavigation | ComponentSectionsTextWithImage | ComponentSectionsTextWithImageOverlapped | ComponentSectionsTootootEvents | ComponentSectionsTopServices | ComponentSectionsUrbanStudies | ComponentSectionsUrbanStudyPart | ComponentSectionsVideos | ComponentSidebarsEmptySidebar | ComponentTaxAdministratorsTaxAdministrator | Faq | FaqCategory | Footer | General | Homepage | I18NLocale | InbaRelease | Menu | Page | PageCategory | Regulation | ReviewWorkflowsWorkflow | ReviewWorkflowsWorkflowStage | Tag | TaxAdministratorsList | UploadFile | UrbanStudy | UrbanStudyCategory | UrbanStudyState | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
+union GenericMorph = AdminGroup | Alert | Article | ArticleCategory | Asset | AssetCategory | ComponentAccordionItemsFlatText | ComponentAccordionItemsInstitution | ComponentBlocksCardLink | ComponentBlocksColumnsItem | ComponentBlocksColumnsListItem | ComponentBlocksCommonLink | ComponentBlocksComparisonCard | ComponentBlocksComparisonItem | ComponentBlocksContactCard | ComponentBlocksContactDirectionsCard | ComponentBlocksContactPersonCard | ComponentBlocksFile | ComponentBlocksFileItem | ComponentBlocksFooterColumn | ComponentBlocksHomepageHighlightsItem | ComponentBlocksIframe | ComponentBlocksInBa | ComponentBlocksLandingPageBanner | ComponentBlocksNumbersOverviewItem | ComponentBlocksNumericalListItem | ComponentBlocksOpeningHoursAlertMessage | ComponentBlocksOpeningHoursItem | ComponentBlocksPageLink | ComponentBlocksPartner | ComponentBlocksProsAndConsCard | ComponentBlocksStarzLandingPageBanner | ComponentBlocksSubnavigationLink | ComponentBlocksTopServicesItem | ComponentBlocksUrbanStudyPartItem | ComponentBlocksVideo | ComponentGeneralHeader | ComponentGeneralHeaderLink | ComponentHeaderSectionsEvent | ComponentHeaderSectionsFacility | ComponentMenuMenuItem | ComponentMenuMenuLink | ComponentMenuMenuSection | ComponentSectionsAccordion | ComponentSectionsAlert | ComponentSectionsArticles | ComponentSectionsArticlesLandingPage | ComponentSectionsAssets | ComponentSectionsBanner | ComponentSectionsColumnedText | ComponentSectionsColumns | ComponentSectionsColumnsList | ComponentSectionsComparisonSection | ComponentSectionsContactsSection | ComponentSectionsDivider | ComponentSectionsEvents | ComponentSectionsFacilities | ComponentSectionsFaqs | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsHomepageEvents | ComponentSectionsHomepageHighlights | ComponentSectionsHomepageMayorAndCouncil | ComponentSectionsHomepageTabs | ComponentSectionsIframe | ComponentSectionsIframeTabs | ComponentSectionsInbaLatestRelease | ComponentSectionsInbaReleases | ComponentSectionsJobOffers | ComponentSectionsLandingPage | ComponentSectionsLinks | ComponentSectionsNarrowText | ComponentSectionsNewsletter | ComponentSectionsNumbersOverview | ComponentSectionsNumericalList | ComponentSectionsOfficialBoard | ComponentSectionsOpeningHours | ComponentSectionsOrganizationalStructure | ComponentSectionsPartners | ComponentSectionsProsAndConsSection | ComponentSectionsRegulations | ComponentSectionsStarzLandingPage | ComponentSectionsSubnavigation | ComponentSectionsTextWithImage | ComponentSectionsTextWithImageOverlapped | ComponentSectionsTootootEvents | ComponentSectionsTopServices | ComponentSectionsUrbanStudies | ComponentSectionsUrbanStudyPart | ComponentSectionsVideos | ComponentSidebarsEmptySidebar | ComponentTaxAdministratorsTaxAdministrator | Faq | FaqCategory | Footer | General | Homepage | I18NLocale | InbaRelease | Menu | Page | PageCategory | Regulation | ReviewWorkflowsWorkflow | ReviewWorkflowsWorkflowStage | Tag | TaxAdministratorsList | UploadFile | UrbanStudy | UrbanStudyCategory | UrbanStudyState | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
 
 type Homepage {
   createdAt: DateTime
@@ -4066,7 +4058,7 @@ type PageRelationResponseCollection {
   nodes: [Page!]!
 }
 
-union PageSectionsDynamicZone = ComponentSectionsAccordion | ComponentSectionsAlert | ComponentSectionsArticles | ComponentSectionsArticlesLandingPage | ComponentSectionsAssets | ComponentSectionsBanner | ComponentSectionsCityServiceLandingPage | ComponentSectionsColumnedText | ComponentSectionsColumns | ComponentSectionsColumnsList | ComponentSectionsComparisonSection | ComponentSectionsContactsSection | ComponentSectionsDivider | ComponentSectionsEvents | ComponentSectionsFacilities | ComponentSectionsFaqs | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsIframe | ComponentSectionsIframeTabs | ComponentSectionsInbaLatestRelease | ComponentSectionsInbaReleases | ComponentSectionsJobOffers | ComponentSectionsLinks | ComponentSectionsNarrowText | ComponentSectionsNewsletter | ComponentSectionsNumbersOverview | ComponentSectionsNumericalList | ComponentSectionsOfficialBoard | ComponentSectionsOpeningHours | ComponentSectionsOrganizationalStructure | ComponentSectionsPartners | ComponentSectionsProsAndConsSection | ComponentSectionsRegulations | ComponentSectionsStarzLandingPage | ComponentSectionsTextWithImage | ComponentSectionsTextWithImageOverlapped | ComponentSectionsTootootEvents | ComponentSectionsUrbanStudies | ComponentSectionsVideos | Error
+union PageSectionsDynamicZone = ComponentSectionsAccordion | ComponentSectionsAlert | ComponentSectionsArticles | ComponentSectionsArticlesLandingPage | ComponentSectionsAssets | ComponentSectionsBanner | ComponentSectionsColumnedText | ComponentSectionsColumns | ComponentSectionsColumnsList | ComponentSectionsComparisonSection | ComponentSectionsContactsSection | ComponentSectionsDivider | ComponentSectionsEvents | ComponentSectionsFacilities | ComponentSectionsFaqs | ComponentSectionsFileList | ComponentSectionsGallery | ComponentSectionsIframe | ComponentSectionsIframeTabs | ComponentSectionsInbaLatestRelease | ComponentSectionsInbaReleases | ComponentSectionsJobOffers | ComponentSectionsLandingPage | ComponentSectionsLinks | ComponentSectionsNarrowText | ComponentSectionsNewsletter | ComponentSectionsNumbersOverview | ComponentSectionsNumericalList | ComponentSectionsOfficialBoard | ComponentSectionsOpeningHours | ComponentSectionsOrganizationalStructure | ComponentSectionsPartners | ComponentSectionsProsAndConsSection | ComponentSectionsRegulations | ComponentSectionsStarzLandingPage | ComponentSectionsTextWithImage | ComponentSectionsTextWithImageOverlapped | ComponentSectionsTootootEvents | ComponentSectionsUrbanStudies | ComponentSectionsVideos | Error
 
 scalar PageSectionsDynamicZoneInput
 

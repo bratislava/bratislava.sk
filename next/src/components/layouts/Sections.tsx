@@ -4,7 +4,6 @@ import ArticlesLandingPageSection from '@/src/components/sections/ArticlesLandin
 import ArticlesSection from '@/src/components/sections/ArticlesSection/ArticlesSection'
 import AssetsSection from '@/src/components/sections/AssetsSection/AssetsSection'
 import BannerSection from '@/src/components/sections/BannerSection'
-import CityServiceLandingPageSection from '@/src/components/sections/CityServiceLandingPageSection'
 import ColumnedTextSection from '@/src/components/sections/ColumnedTextSection'
 import ColumnsListSection from '@/src/components/sections/ColumnsListSection'
 import ColumnsSection from '@/src/components/sections/ColumnsSection'
@@ -21,6 +20,7 @@ import IframeTabsSection from '@/src/components/sections/IframeTabsSection'
 import InbaLatestReleaseSection from '@/src/components/sections/InbaLatestReleaseSection'
 import InbaReleasesSection from '@/src/components/sections/InbaReleasesSection/InbaReleasesSection'
 import JobOffersSection from '@/src/components/sections/JobOffersSection'
+import LandingPageSection from '@/src/components/sections/LandingPageSection'
 import LinksSection from '@/src/components/sections/LinksSection'
 import NarrowTextSection from '@/src/components/sections/NarrowTextSection'
 import NewsletterSection from '@/src/components/sections/NewsletterSection/NewsletterSection'
@@ -140,9 +140,6 @@ const SectionContent = ({ section }: { section: SectionsFragment }) => {
     case 'ComponentSectionsStarzLandingPage':
       return <StarzLandingPageSection section={section} />
 
-    case 'ComponentSectionsCityServiceLandingPage':
-      return <CityServiceLandingPageSection section={section} />
-
     case 'ComponentSectionsOpeningHours':
       return <OpeningHoursSection section={section} />
 
@@ -166,6 +163,9 @@ const SectionContent = ({ section }: { section: SectionsFragment }) => {
 
     case 'ComponentSectionsIframeTabs':
       return <IframeTabsSection section={section} />
+
+    case 'ComponentSectionsLandingPage':
+      return <LandingPageSection section={section} />
 
     default:
       return null
