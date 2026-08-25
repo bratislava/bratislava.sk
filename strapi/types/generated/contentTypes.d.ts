@@ -649,7 +649,7 @@ export interface ApiAssetAsset extends Struct.CollectionTypeSchema {
 export interface ApiFaqCategoryFaqCategory extends Struct.CollectionTypeSchema {
   collectionName: 'faq_categories'
   info: {
-    displayName: 'FAQs kateg\u00F3rie'
+    displayName: 'FAQs - kateg\u00F3rie'
     pluralName: 'faq-categories'
     singularName: 'faq-category'
   }
@@ -1490,7 +1490,7 @@ export interface ApiUrbanStudyStateUrbanStudyState extends Struct.CollectionType
 export interface ApiUrbanStudyUrbanStudy extends Struct.CollectionTypeSchema {
   collectionName: 'urban_studies'
   info: {
-    displayName: 'WIP \u00DAzemn\u00E9 \u0161t\u00FAdie'
+    displayName: '\u00DAzemn\u00E9 \u0161t\u00FAdie'
     pluralName: 'urban-studies'
     singularName: 'urban-study'
   }
