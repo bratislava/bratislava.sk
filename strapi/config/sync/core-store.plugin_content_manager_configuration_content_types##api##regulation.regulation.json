@@ -38,7 +38,7 @@
       "slug": {
         "edit": {
           "label": "Slug",
-          "description": "Rovnaké ako Číslo VZN ale so spojovníkom (napr. 2-2012) na základe čoho sa vygeneruje adresa pre stránku VZN (napr. bratislava.sk/vzn/2-2012)",
+          "description": "Rovnaké ako Číslo VZN ale so spojovníkom (napr. 2-2012), používa sa v url.",
           "placeholder": "",
           "visible": true,
           "editable": true
@@ -51,8 +51,8 @@
       },
       "titleText": {
         "edit": {
-          "label": "Názov",
-          "description": "Tento názov bude zobrazený vedľa čísla VZN",
+          "label": "o čom… / ktorým sa…",
+          "description": "Tento text sa zobrazuje vedľa čísla VZN, a používa sa pri skrátených názvoch, ktoré sa skladajú zo skratky VZN, Čísla VZN a tohto textu.",
           "placeholder": "",
           "visible": true,
           "editable": true
@@ -66,7 +66,7 @@
       "fullTitle": {
         "edit": {
           "label": "Plný názov",
-          "description": "Kompletný oficiálny názov VZN. Zatiaľ ho nikde nezobrazujeme.",
+          "description": "Kompletný oficiálny názov VZN. Používa sa vo vyhľadávaní, SEO, a v dátach pre AI chatbota.",
           "placeholder": "",
           "visible": true,
           "editable": true
@@ -319,30 +319,10 @@
         [
           {
             "name": "titleText",
-            "size": 6
+            "size": 12
           },
           {
             "name": "fullTitle",
-            "size": 6
-          }
-        ],
-        [
-          {
-            "name": "effectiveFrom",
-            "size": 4
-          },
-          {
-            "name": "isFullTextRegulation",
-            "size": 4
-          },
-          {
-            "name": "category",
-            "size": 4
-          }
-        ],
-        [
-          {
-            "name": "mainDocument",
             "size": 6
           },
           {
@@ -352,8 +332,22 @@
         ],
         [
           {
+            "name": "effectiveFrom",
+            "size": 6
+          },
+          {
+            "name": "isFullTextRegulation",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "mainDocument",
+            "size": 6
+          },
+          {
             "name": "attachments",
-            "size": 12
+            "size": 6
           }
         ],
         [

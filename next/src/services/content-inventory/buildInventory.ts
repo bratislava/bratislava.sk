@@ -123,8 +123,8 @@ const buildRegulations = async (): Promise<InventoryEntry[]> => {
       ...getBase('regulation', {
         ...regulation,
         path: `/vzn/${regulation.slug}`,
-        title: getFirstNonEmpty(regulation.titleText, regulation.fullTitle) ?? regulation.regNumber,
-        summary: getFirstNonEmpty(regulation.fullTitle),
+        title: `VZN ${regulation.regNumber} ${regulation.titleText}`,
+        summary: regulation.fullTitle,
         addedAt: regulation.publishedAt,
         modifiedAt: regulation.updatedAt,
       }),
