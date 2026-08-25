@@ -95,6 +95,12 @@ fragment RegulationInventoryEntity on Regulation {
       ...RegulationRelationEntity
     }
   }
+  mainDocument {
+    ...UploadFileEntity
+  }
+  attachments {
+    ...UploadFileEntity
+  }
 }
 
 query RegulationsInventory($limit: Int = -1) {

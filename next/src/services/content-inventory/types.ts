@@ -11,6 +11,23 @@ export type InventoryType = (typeof inventoryTypes)[number]
 
 export type InventoryCategory = { title: string; slug: string }
 
+/** A file attached to an entry - what a visitor can download from its page. */
+export type InventoryFile = {
+  /** Strapi documentId of the upload, stable across the entries that reuse the same file. */
+  id: string
+  /** Absolute, as served to visitors. */
+  url: string
+  /** The title the editor gave the file where the content type allows one, otherwise the uploaded file name. */
+  title: string
+  /** Without the leading dot, missing for uploads that have no extension. */
+  ext?: string
+  /** In kilobytes, the unit Strapi stores. */
+  size: number
+  /** When the file was uploaded, not when it was attached to this entry. */
+  addedAt: string | null
+  modifiedAt: string | null
+}
+
 /**
  * Fields shared by every content type. Anything type specific lives under the `[type]` key of the entry, the same way
  * documents are wrapped in the shared Meilisearch index.
@@ -34,6 +51,11 @@ export type InventoryEntryBase = {
   addedAt: string | null
   /** When the last change was published. */
   modifiedAt: string | null
+  /**
+   * Files a visitor can download from the entry's page, in the order they are rendered. Empty for content that has
+   * none.
+   */
+  files: InventoryFile[]
 }
 
 export type PageInventoryData = {

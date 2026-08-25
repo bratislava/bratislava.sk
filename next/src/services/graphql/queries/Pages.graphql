@@ -154,6 +154,22 @@ fragment PageInventoryEntity on Page {
   subtext
   metaDescription
   keywords
+  # Only the sections that can carry downloadable files - the rest of the dynamic zone is not needed here.
+  sections {
+    __typename
+    ... on ComponentSectionsFileList {
+      fileList(pagination: { limit: -1 }) {
+        ...FileBlock
+      }
+    }
+    ... on ComponentSectionsAccordion {
+      flatText(pagination: { limit: -1 }) {
+        fileList {
+          ...FileItemBlock
+        }
+      }
+    }
+  }
 }
 
 query PagesInventory($limit: Int = -1, $locale: I18NLocaleCode = "*") {

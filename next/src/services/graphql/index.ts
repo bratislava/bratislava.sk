@@ -7769,6 +7769,21 @@ export type ArticleInventoryEntityFragment = {
       color?: Enum_Pagecategory_Color | null
     } | null
   } | null>
+  files?: Array<{
+    __typename?: 'ComponentBlocksFile'
+    id: string
+    title?: string | null
+    media?: {
+      __typename?: 'UploadFile'
+      documentId: string
+      url: string
+      name: string
+      ext?: string | null
+      size: number
+      createdAt?: any | null
+      updatedAt?: any | null
+    } | null
+  } | null> | null
 }
 
 export type ArticlesInventoryQueryVariables = Exact<{
@@ -7805,6 +7820,21 @@ export type ArticlesInventoryQuery = {
         color?: Enum_Pagecategory_Color | null
       } | null
     } | null>
+    files?: Array<{
+      __typename?: 'ComponentBlocksFile'
+      id: string
+      title?: string | null
+      media?: {
+        __typename?: 'UploadFile'
+        documentId: string
+        url: string
+        name: string
+        ext?: string | null
+        size: number
+        createdAt?: any | null
+        updatedAt?: any | null
+      } | null
+    } | null> | null
   } | null>
 }
 
@@ -7917,6 +7947,16 @@ export type AssetInventoryEntityFragment = {
     title: string
     slug: string
   } | null
+  files: Array<{
+    __typename?: 'UploadFile'
+    documentId: string
+    url: string
+    name: string
+    ext?: string | null
+    size: number
+    createdAt?: any | null
+    updatedAt?: any | null
+  } | null>
 }
 
 export type AssetsInventoryQueryVariables = Exact<{
@@ -7940,6 +7980,16 @@ export type AssetsInventoryQuery = {
       title: string
       slug: string
     } | null
+    files: Array<{
+      __typename?: 'UploadFile'
+      documentId: string
+      url: string
+      name: string
+      ext?: string | null
+      size: number
+      createdAt?: any | null
+      updatedAt?: any | null
+    } | null>
   } | null>
 }
 
@@ -11139,6 +11189,21 @@ export type InbaReleaseInventoryEntityFragment = {
   documentId: string
   title: string
   slug: string
+  files?: Array<{
+    __typename?: 'ComponentBlocksFile'
+    id: string
+    title?: string | null
+    media?: {
+      __typename?: 'UploadFile'
+      documentId: string
+      url: string
+      name: string
+      ext?: string | null
+      size: number
+      createdAt?: any | null
+      updatedAt?: any | null
+    } | null
+  } | null> | null
 }
 
 export type InbaReleasesInventoryQueryVariables = Exact<{
@@ -11156,6 +11221,21 @@ export type InbaReleasesInventoryQuery = {
     documentId: string
     title: string
     slug: string
+    files?: Array<{
+      __typename?: 'ComponentBlocksFile'
+      id: string
+      title?: string | null
+      media?: {
+        __typename?: 'UploadFile'
+        documentId: string
+        url: string
+        name: string
+        ext?: string | null
+        size: number
+        createdAt?: any | null
+        updatedAt?: any | null
+      } | null
+    } | null> | null
   } | null>
 }
 
@@ -16103,6 +16183,86 @@ export type PageInventoryEntityFragment = {
   title: string
   locale?: string | null
   path?: string | null
+  sections?: Array<
+    | {
+        __typename: 'ComponentSectionsAccordion'
+        flatText?: Array<{
+          __typename?: 'ComponentAccordionItemsFlatText'
+          fileList?: Array<{
+            __typename?: 'ComponentBlocksFileItem'
+            id: string
+            title?: string | null
+            media: {
+              __typename?: 'UploadFile'
+              documentId: string
+              url: string
+              name: string
+              ext?: string | null
+              size: number
+              createdAt?: any | null
+              updatedAt?: any | null
+            }
+          } | null> | null
+        } | null> | null
+      }
+    | { __typename: 'ComponentSectionsAlert' }
+    | { __typename: 'ComponentSectionsArticles' }
+    | { __typename: 'ComponentSectionsArticlesLandingPage' }
+    | { __typename: 'ComponentSectionsAssets' }
+    | { __typename: 'ComponentSectionsBanner' }
+    | { __typename: 'ComponentSectionsColumnedText' }
+    | { __typename: 'ComponentSectionsColumns' }
+    | { __typename: 'ComponentSectionsColumnsList' }
+    | { __typename: 'ComponentSectionsComparisonSection' }
+    | { __typename: 'ComponentSectionsContactsSection' }
+    | { __typename: 'ComponentSectionsDivider' }
+    | { __typename: 'ComponentSectionsEvents' }
+    | { __typename: 'ComponentSectionsFacilities' }
+    | { __typename: 'ComponentSectionsFaqs' }
+    | {
+        __typename: 'ComponentSectionsFileList'
+        fileList?: Array<{
+          __typename?: 'ComponentBlocksFile'
+          id: string
+          title?: string | null
+          media?: {
+            __typename?: 'UploadFile'
+            documentId: string
+            url: string
+            name: string
+            ext?: string | null
+            size: number
+            createdAt?: any | null
+            updatedAt?: any | null
+          } | null
+        } | null> | null
+      }
+    | { __typename: 'ComponentSectionsGallery' }
+    | { __typename: 'ComponentSectionsIframe' }
+    | { __typename: 'ComponentSectionsIframeTabs' }
+    | { __typename: 'ComponentSectionsInbaLatestRelease' }
+    | { __typename: 'ComponentSectionsInbaReleases' }
+    | { __typename: 'ComponentSectionsJobOffers' }
+    | { __typename: 'ComponentSectionsLinks' }
+    | { __typename: 'ComponentSectionsNarrowText' }
+    | { __typename: 'ComponentSectionsNewsletter' }
+    | { __typename: 'ComponentSectionsNumbersOverview' }
+    | { __typename: 'ComponentSectionsNumericalList' }
+    | { __typename: 'ComponentSectionsOfficialBoard' }
+    | { __typename: 'ComponentSectionsOpeningHours' }
+    | { __typename: 'ComponentSectionsOrganizationalStructure' }
+    | { __typename: 'ComponentSectionsPartners' }
+    | { __typename: 'ComponentSectionsProsAndConsSection' }
+    | { __typename: 'ComponentSectionsRegulations' }
+    | { __typename: 'ComponentSectionsStarzLandingPage' }
+    | { __typename: 'ComponentSectionsTextWithImage' }
+    | { __typename: 'ComponentSectionsTextWithImageOverlapped' }
+    | { __typename: 'ComponentSectionsTootootEvents' }
+    | { __typename: 'ComponentSectionsUrbanStudies' }
+    | { __typename: 'ComponentSectionsVideos' }
+    | { __typename: 'Error' }
+    | null
+  > | null
 }
 
 export type PagesInventoryQueryVariables = Exact<{
@@ -16123,6 +16283,86 @@ export type PagesInventoryQuery = {
     title: string
     locale?: string | null
     path?: string | null
+    sections?: Array<
+      | {
+          __typename: 'ComponentSectionsAccordion'
+          flatText?: Array<{
+            __typename?: 'ComponentAccordionItemsFlatText'
+            fileList?: Array<{
+              __typename?: 'ComponentBlocksFileItem'
+              id: string
+              title?: string | null
+              media: {
+                __typename?: 'UploadFile'
+                documentId: string
+                url: string
+                name: string
+                ext?: string | null
+                size: number
+                createdAt?: any | null
+                updatedAt?: any | null
+              }
+            } | null> | null
+          } | null> | null
+        }
+      | { __typename: 'ComponentSectionsAlert' }
+      | { __typename: 'ComponentSectionsArticles' }
+      | { __typename: 'ComponentSectionsArticlesLandingPage' }
+      | { __typename: 'ComponentSectionsAssets' }
+      | { __typename: 'ComponentSectionsBanner' }
+      | { __typename: 'ComponentSectionsColumnedText' }
+      | { __typename: 'ComponentSectionsColumns' }
+      | { __typename: 'ComponentSectionsColumnsList' }
+      | { __typename: 'ComponentSectionsComparisonSection' }
+      | { __typename: 'ComponentSectionsContactsSection' }
+      | { __typename: 'ComponentSectionsDivider' }
+      | { __typename: 'ComponentSectionsEvents' }
+      | { __typename: 'ComponentSectionsFacilities' }
+      | { __typename: 'ComponentSectionsFaqs' }
+      | {
+          __typename: 'ComponentSectionsFileList'
+          fileList?: Array<{
+            __typename?: 'ComponentBlocksFile'
+            id: string
+            title?: string | null
+            media?: {
+              __typename?: 'UploadFile'
+              documentId: string
+              url: string
+              name: string
+              ext?: string | null
+              size: number
+              createdAt?: any | null
+              updatedAt?: any | null
+            } | null
+          } | null> | null
+        }
+      | { __typename: 'ComponentSectionsGallery' }
+      | { __typename: 'ComponentSectionsIframe' }
+      | { __typename: 'ComponentSectionsIframeTabs' }
+      | { __typename: 'ComponentSectionsInbaLatestRelease' }
+      | { __typename: 'ComponentSectionsInbaReleases' }
+      | { __typename: 'ComponentSectionsJobOffers' }
+      | { __typename: 'ComponentSectionsLinks' }
+      | { __typename: 'ComponentSectionsNarrowText' }
+      | { __typename: 'ComponentSectionsNewsletter' }
+      | { __typename: 'ComponentSectionsNumbersOverview' }
+      | { __typename: 'ComponentSectionsNumericalList' }
+      | { __typename: 'ComponentSectionsOfficialBoard' }
+      | { __typename: 'ComponentSectionsOpeningHours' }
+      | { __typename: 'ComponentSectionsOrganizationalStructure' }
+      | { __typename: 'ComponentSectionsPartners' }
+      | { __typename: 'ComponentSectionsProsAndConsSection' }
+      | { __typename: 'ComponentSectionsRegulations' }
+      | { __typename: 'ComponentSectionsStarzLandingPage' }
+      | { __typename: 'ComponentSectionsTextWithImage' }
+      | { __typename: 'ComponentSectionsTextWithImageOverlapped' }
+      | { __typename: 'ComponentSectionsTootootEvents' }
+      | { __typename: 'ComponentSectionsUrbanStudies' }
+      | { __typename: 'ComponentSectionsVideos' }
+      | { __typename: 'Error' }
+      | null
+    > | null
   } | null>
 }
 
@@ -16398,6 +16638,26 @@ export type RegulationInventoryEntityFragment = {
       effectiveFrom: any
     } | null
   } | null>
+  mainDocument: {
+    __typename?: 'UploadFile'
+    documentId: string
+    url: string
+    name: string
+    ext?: string | null
+    size: number
+    createdAt?: any | null
+    updatedAt?: any | null
+  }
+  attachments: Array<{
+    __typename?: 'UploadFile'
+    documentId: string
+    url: string
+    name: string
+    ext?: string | null
+    size: number
+    createdAt?: any | null
+    updatedAt?: any | null
+  } | null>
 }
 
 export type RegulationsInventoryQueryVariables = Exact<{
@@ -16440,6 +16700,26 @@ export type RegulationsInventoryQuery = {
         slug: string
         effectiveFrom: any
       } | null
+    } | null>
+    mainDocument: {
+      __typename?: 'UploadFile'
+      documentId: string
+      url: string
+      name: string
+      ext?: string | null
+      size: number
+      createdAt?: any | null
+      updatedAt?: any | null
+    }
+    attachments: Array<{
+      __typename?: 'UploadFile'
+      documentId: string
+      url: string
+      name: string
+      ext?: string | null
+      size: number
+      createdAt?: any | null
+      updatedAt?: any | null
     } | null>
   } | null>
 }
@@ -20069,6 +20349,24 @@ export type UrbanStudyInventoryEntityFragment = {
     slug: string
     title: string
   } | null
+  urbanStudyParts?: Array<{
+    __typename?: 'ComponentSectionsUrbanStudyPart'
+    items?: Array<{
+      __typename?: 'ComponentBlocksUrbanStudyPartItem'
+      id: string
+      title?: string | null
+      media: {
+        __typename?: 'UploadFile'
+        documentId: string
+        url: string
+        name: string
+        ext?: string | null
+        size: number
+        createdAt?: any | null
+        updatedAt?: any | null
+      }
+    } | null> | null
+  } | null> | null
 }
 
 export type UrbanStudiesInventoryQueryVariables = Exact<{
@@ -20098,6 +20396,24 @@ export type UrbanStudiesInventoryQuery = {
       slug: string
       title: string
     } | null
+    urbanStudyParts?: Array<{
+      __typename?: 'ComponentSectionsUrbanStudyPart'
+      items?: Array<{
+        __typename?: 'ComponentBlocksUrbanStudyPartItem'
+        id: string
+        title?: string | null
+        media: {
+          __typename?: 'UploadFile'
+          documentId: string
+          url: string
+          name: string
+          ext?: string | null
+          size: number
+          createdAt?: any | null
+          updatedAt?: any | null
+        }
+      } | null> | null
+    } | null> | null
   } | null>
 }
 
@@ -20253,10 +20569,14 @@ export const ArticleInventoryEntityFragmentDoc = gql`
     tags {
       ...TagEntity
     }
+    files {
+      ...FileBlock
+    }
   }
   ${ArticleSlugEntityFragmentDoc}
   ${ArticleCategoryEntityFragmentDoc}
   ${TagEntityFragmentDoc}
+  ${FileBlockFragmentDoc}
 `
 export const AssetSlugEntityFragmentDoc = gql`
   fragment AssetSlugEntity on Asset {
@@ -20283,9 +20603,13 @@ export const AssetInventoryEntityFragmentDoc = gql`
     assetCategory {
       ...AssetCategoryEntity
     }
+    files {
+      ...UploadFileEntity
+    }
   }
   ${AssetSlugEntityFragmentDoc}
   ${AssetCategoryEntityFragmentDoc}
+  ${UploadFileEntityFragmentDoc}
 `
 export const UploadFileFragmentDoc = gql`
   fragment UploadFile on UploadFile {
@@ -20644,11 +20968,7 @@ export const InbaReleaseEntityFragmentDoc = gql`
       ...UploadImageEntity
     }
     files {
-      id
-      title
-      media {
-        ...UploadFileEntity
-      }
+      ...FileBlock
     }
     articles {
       ...ArticleCardEntity
@@ -20659,7 +20979,7 @@ export const InbaReleaseEntityFragmentDoc = gql`
   }
   ${InbaReleaseCardEntityFragmentDoc}
   ${UploadImageEntityFragmentDoc}
-  ${UploadFileEntityFragmentDoc}
+  ${FileBlockFragmentDoc}
   ${ArticleCardEntityFragmentDoc}
 `
 export const InbaReleaseHomepageInbaCardEntityFragmentDoc = gql`
@@ -20681,8 +21001,12 @@ export const InbaReleaseInventoryEntityFragmentDoc = gql`
     releaseDate
     updatedAt
     publishedAt
+    files {
+      ...FileBlock
+    }
   }
   ${InbaReleaseSlugEntityFragmentDoc}
+  ${FileBlockFragmentDoc}
 `
 export const PageSubnavigationEntityFragmentDoc = gql`
   fragment PageSubnavigationEntity on Page {
@@ -21786,8 +22110,25 @@ export const PageInventoryEntityFragmentDoc = gql`
     subtext
     metaDescription
     keywords
+    sections {
+      __typename
+      ... on ComponentSectionsFileList {
+        fileList(pagination: { limit: -1 }) {
+          ...FileBlock
+        }
+      }
+      ... on ComponentSectionsAccordion {
+        flatText(pagination: { limit: -1 }) {
+          fileList {
+            ...FileItemBlock
+          }
+        }
+      }
+    }
   }
   ${PageSlugEntityFragmentDoc}
+  ${FileBlockFragmentDoc}
+  ${FileItemBlockFragmentDoc}
 `
 export const RegulationInventoryEntityFragmentDoc = gql`
   fragment RegulationInventoryEntity on Regulation {
@@ -21808,10 +22149,17 @@ export const RegulationInventoryEntityFragmentDoc = gql`
         ...RegulationRelationEntity
       }
     }
+    mainDocument {
+      ...UploadFileEntity
+    }
+    attachments {
+      ...UploadFileEntity
+    }
   }
   ${RegulationSlugEntityFragmentDoc}
   ${RegulationRelationEntityFragmentDoc}
   ${RegulationCategoryEntityFragmentDoc}
+  ${UploadFileEntityFragmentDoc}
 `
 export const UrbanStudyPartItemFragmentDoc = gql`
   fragment UrbanStudyPartItem on ComponentBlocksUrbanStudyPartItem {
@@ -21875,10 +22223,16 @@ export const UrbanStudyInventoryEntityFragmentDoc = gql`
     urbanStudyState {
       ...UrbanStudyStateEntity
     }
+    urbanStudyParts {
+      items(pagination: { limit: -1 }) {
+        ...UrbanStudyPartItem
+      }
+    }
   }
   ${UrbanStudySlugEntityFragmentDoc}
   ${UrbanStudyCategoryEntityFragmentDoc}
   ${UrbanStudyStateEntityFragmentDoc}
+  ${UrbanStudyPartItemFragmentDoc}
 `
 export const AdminGroupsDocument = gql`
   query AdminGroups($limit: Int = -1, $sort: [String] = ["title"]) {

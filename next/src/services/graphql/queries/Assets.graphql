@@ -53,6 +53,9 @@ fragment AssetInventoryEntity on Asset {
   assetCategory {
     ...AssetCategoryEntity
   }
+  files {
+    ...UploadFileEntity
+  }
 }
 
 query AssetsInventory($limit: Int = -1) {

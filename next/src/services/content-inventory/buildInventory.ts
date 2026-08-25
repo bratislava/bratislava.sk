@@ -1,8 +1,21 @@
 import { environment } from '@/src/environment'
+import {
+  FileBlockFragment,
+  FileItemBlockFragment,
+  PageInventoryEntityFragment,
+  UploadFileEntityFragment,
+  UrbanStudyPartItemFragment,
+} from '@/src/services/graphql'
 import { client } from '@/src/services/graphql/gql'
 import { isDefined } from '@/src/utils/isDefined'
 
-import { InventoryCategory, InventoryEntry, InventoryEntryBase, InventoryType } from './types'
+import {
+  InventoryCategory,
+  InventoryEntry,
+  InventoryEntryBase,
+  InventoryFile,
+  InventoryType,
+} from './types'
 
 // TODO: The paths are hardcoded the same way as in getLinkProps and next-sitemap.config.js, extract them once.
 const getUrl = (path: string, locale = 'sk') =>
@@ -26,6 +39,34 @@ const getIsoDate = (value: unknown) => {
 const getTypeData = <T extends object>(data: T) =>
   Object.values(data).some(isDefined) ? data : undefined
 
+/** Maps a Strapi upload to the shared file shape. `title` falls back to the file name, the same way FileRowCard does. */
+const getFile = (file: UploadFileEntityFragment, title?: string | null): InventoryFile => ({
+  id: file.documentId,
+  url: file.url,
+  title: getFirstNonEmpty(title, file.name) ?? file.name,
+  ext: file.ext?.replace(/^\./, '') ?? undefined,
+  size: file.size,
+  addedAt: getIsoDate(file.createdAt),
+  modifiedAt: getIsoDate(file.updatedAt),
+})
+
+/** For content types that link uploads directly. Drops the nulls the api allows in every relation. */
+const getFiles = (files: (UploadFileEntityFragment | null)[]): InventoryFile[] =>
+  files.filter(isDefined).map((file) => getFile(file))
+
+/** Every block that wraps an upload with an editor title - blocks.file, accordion file items, urban study parts. */
+type FileBlock = FileBlockFragment | FileItemBlockFragment | UrbanStudyPartItemFragment
+
+/**
+ * For content types that attach uploads through a block adding an editor title. The block's own id is not exposed - the
+ * identity of the file is the upload it points to, so entries reusing one upload share the same `id`.
+ */
+const getBlockFiles = (blocks: (FileBlock | null)[] | null | undefined): InventoryFile[] =>
+  (blocks ?? [])
+    .filter(isDefined)
+    .map((block) => (block.media ? getFile(block.media, block.title) : null))
+    .filter(isDefined)
+
 const getCategory = (
   category: InventoryCategory | null | undefined,
 ): InventoryCategory | undefined =>
@@ -45,6 +86,7 @@ const getBase = <TType extends InventoryType>(
     summary?: string
     addedAt?: unknown
     modifiedAt?: unknown
+    files?: InventoryFile[]
   },
 ): InventoryEntryBase & { type: TType } => ({
   id: `${type}:${entry.documentId}:${entry.locale ?? 'sk'}`,
@@ -56,7 +98,28 @@ const getBase = <TType extends InventoryType>(
   summary: entry.summary,
   addedAt: getIsoDate(entry.addedAt),
   modifiedAt: getIsoDate(entry.modifiedAt),
+  files: entry.files ?? [],
 })
+
+/**
+ * Pages carry their files in the sections dynamic zone, so the file list sections and the file lists nested in
+ * accordion items are flattened into one list, in the order they appear on the page. The other sections are selected
+ * by their `__typename` alone.
+ */
+const getPageFiles = (sections: PageInventoryEntityFragment['sections']): InventoryFile[] =>
+  getBlockFiles(
+    (sections ?? []).filter(isDefined).flatMap<FileBlock | null>((section) => {
+      if (section.__typename === 'ComponentSectionsFileList') {
+        return section.fileList ?? []
+      }
+
+      if (section.__typename === 'ComponentSectionsAccordion') {
+        return (section.flatText ?? []).filter(isDefined).flatMap((item) => item.fileList ?? [])
+      }
+
+      return []
+    }),
+  )
 
 const buildPages = async (): Promise<InventoryEntry[]> => {
   const { pages } = await client.PagesInventory()
@@ -68,6 +131,7 @@ const buildPages = async (): Promise<InventoryEntry[]> => {
       summary: getFirstNonEmpty(page.subtext, page.metaDescription),
       addedAt: page.publishedAt,
       modifiedAt: page.updatedAt,
+      files: getPageFiles(page.sections),
     }),
     page: getTypeData({
       metaDescription: page.metaDescription ?? undefined,
@@ -86,6 +150,7 @@ const buildArticles = async (): Promise<InventoryEntry[]> => {
       summary: getFirstNonEmpty(article.perex),
       addedAt: article.addedAt,
       modifiedAt: article.updatedAt,
+      files: getBlockFiles(article.files),
     }),
     article: {
       category: getCategory(article.articleCategory),
@@ -104,6 +169,7 @@ const buildAssets = async (): Promise<InventoryEntry[]> => {
       summary: getFirstNonEmpty(asset.description),
       addedAt: asset.customPublishedAt ?? asset.publishedAt,
       modifiedAt: asset.updatedAt,
+      files: getFiles(asset.files),
     }),
     asset: getTypeData({ category: getCategory(asset.assetCategory) }),
   }))
@@ -127,6 +193,12 @@ const buildRegulations = async (): Promise<InventoryEntry[]> => {
         summary: getFirstNonEmpty(regulation.fullTitle),
         addedAt: regulation.publishedAt,
         modifiedAt: regulation.updatedAt,
+        // The main document first, the same order the page lists them in. Files of the amendments belong to their own
+        // entries, so they are not repeated here.
+        files: [
+          getFile(regulation.mainDocument, `VZN ${regulation.regNumber}`),
+          ...getFiles(regulation.attachments),
+        ],
       }),
       regulation: {
         regNumber: regulation.regNumber,
@@ -157,6 +229,7 @@ const buildInbaReleases = async (): Promise<InventoryEntry[]> => {
       summary: getFirstNonEmpty(inbaRelease.perex),
       addedAt: inbaRelease.releaseDate ?? inbaRelease.publishedAt,
       modifiedAt: inbaRelease.updatedAt,
+      files: getBlockFiles(inbaRelease.files),
     }),
   )
 }
@@ -170,6 +243,10 @@ const buildUrbanStudies = async (): Promise<InventoryEntry[]> => {
       path: `/uzemne-studie/${urbanStudy.slug}`,
       addedAt: urbanStudy.customPublishedAt ?? urbanStudy.publishedAt,
       modifiedAt: urbanStudy.updatedAt,
+      // The parts only group the files on the page, so the inventory flattens them into one list.
+      files: getBlockFiles(
+        urbanStudy.urbanStudyParts?.filter(isDefined).flatMap((part) => part.items ?? []),
+      ),
     }),
     'urban-study': getTypeData({
       year: urbanStudy.year ?? undefined,
