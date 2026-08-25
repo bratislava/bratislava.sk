@@ -58,6 +58,8 @@ FROM app-base AS prod
 COPY --chown=node:node --from=build /build/app/favicon.ico /build/package.json /build/app/tsconfig.json ./
 COPY --chown=node:node --from=build /build/node_modules ./node_modules
 COPY --chown=node:node --from=build /build/app/config ./config
+# Database migrations are read from `<cwd>/database/migrations` at startup, they are not part of the build output
+COPY --chown=node:node --from=build /build/app/database ./database
 COPY --chown=node:node --from=build /build/app/public ./public
 COPY --chown=node:node --from=build /build/app/dist ./dist
 CMD [ "strapi", "start" ]
