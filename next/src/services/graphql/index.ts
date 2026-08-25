@@ -7698,6 +7698,72 @@ export type Dev_AllArticlesQuery = {
   } | null>
 }
 
+export type ArticleInventoryEntityFragment = {
+  __typename: 'Article'
+  perex?: string | null
+  addedAt: any
+  updatedAt?: any | null
+  documentId: string
+  slug: string
+  title: string
+  locale?: string | null
+  articleCategory?: {
+    __typename?: 'ArticleCategory'
+    documentId: string
+    title: string
+    slug: string
+  } | null
+  tags: Array<{
+    __typename?: 'Tag'
+    documentId: string
+    title: string
+    slug: string
+    pageCategory?: {
+      __typename?: 'PageCategory'
+      documentId: string
+      title?: string | null
+      color?: Enum_Pagecategory_Color | null
+    } | null
+  } | null>
+}
+
+export type ArticlesInventoryQueryVariables = Exact<{
+  limit?: InputMaybe<Scalars['Int']['input']>
+  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
+}>
+
+export type ArticlesInventoryQuery = {
+  __typename?: 'Query'
+  articles: Array<{
+    __typename: 'Article'
+    perex?: string | null
+    addedAt: any
+    updatedAt?: any | null
+    documentId: string
+    slug: string
+    title: string
+    locale?: string | null
+    articleCategory?: {
+      __typename?: 'ArticleCategory'
+      documentId: string
+      title: string
+      slug: string
+    } | null
+    tags: Array<{
+      __typename?: 'Tag'
+      documentId: string
+      title: string
+      slug: string
+      pageCategory?: {
+        __typename?: 'PageCategory'
+        documentId: string
+        title?: string | null
+        color?: Enum_Pagecategory_Color | null
+      } | null
+    } | null>
+  } | null>
+}
+
 export type AssetCategoryEntityFragment = {
   __typename?: 'AssetCategory'
   documentId: string
@@ -7789,6 +7855,47 @@ export type AssetCategoriesQuery = {
     documentId: string
     title: string
     slug: string
+  } | null>
+}
+
+export type AssetInventoryEntityFragment = {
+  __typename: 'Asset'
+  updatedAt?: any | null
+  publishedAt?: any | null
+  customPublishedAt?: any | null
+  description?: string | null
+  documentId: string
+  slug: string
+  title: string
+  assetCategory?: {
+    __typename?: 'AssetCategory'
+    documentId: string
+    title: string
+    slug: string
+  } | null
+}
+
+export type AssetsInventoryQueryVariables = Exact<{
+  limit?: InputMaybe<Scalars['Int']['input']>
+}>
+
+export type AssetsInventoryQuery = {
+  __typename?: 'Query'
+  assets: Array<{
+    __typename: 'Asset'
+    updatedAt?: any | null
+    publishedAt?: any | null
+    customPublishedAt?: any | null
+    description?: string | null
+    documentId: string
+    slug: string
+    title: string
+    assetCategory?: {
+      __typename?: 'AssetCategory'
+      documentId: string
+      title: string
+      slug: string
+    } | null
   } | null>
 }
 
@@ -10980,6 +11087,35 @@ export type LatestInbaReleaseQuery = {
   } | null>
 }
 
+export type InbaReleaseInventoryEntityFragment = {
+  __typename?: 'InbaRelease'
+  perex?: string | null
+  releaseDate: any
+  updatedAt?: any | null
+  publishedAt?: any | null
+  documentId: string
+  title: string
+  slug: string
+}
+
+export type InbaReleasesInventoryQueryVariables = Exact<{
+  limit?: InputMaybe<Scalars['Int']['input']>
+}>
+
+export type InbaReleasesInventoryQuery = {
+  __typename?: 'Query'
+  inbaReleases: Array<{
+    __typename?: 'InbaRelease'
+    perex?: string | null
+    releaseDate: any
+    updatedAt?: any | null
+    publishedAt?: any | null
+    documentId: string
+    title: string
+    slug: string
+  } | null>
+}
+
 export type PageCategoryEntityFragment = {
   __typename?: 'PageCategory'
   documentId: string
@@ -12349,11 +12485,11 @@ export type PageEntityFragment = {
           } | null>
           amendments: Array<{
             __typename?: 'Regulation'
+            isFullTextRegulation: boolean
             documentId: string
             regNumber: string
             slug: string
             effectiveFrom: any
-            isFullTextRegulation: boolean
             attachments: Array<{
               __typename?: 'UploadFile'
               documentId: string
@@ -12383,6 +12519,7 @@ export type PageEntityFragment = {
               documentId: string
               regNumber: string
               slug: string
+              effectiveFrom: any
               cancellation?: {
                 __typename?: 'Regulation'
                 documentId: string
@@ -14151,11 +14288,11 @@ export type PageByPathQuery = {
             } | null>
             amendments: Array<{
               __typename?: 'Regulation'
+              isFullTextRegulation: boolean
               documentId: string
               regNumber: string
               slug: string
               effectiveFrom: any
-              isFullTextRegulation: boolean
               attachments: Array<{
                 __typename?: 'UploadFile'
                 documentId: string
@@ -14185,6 +14322,7 @@ export type PageByPathQuery = {
                 documentId: string
                 regNumber: string
                 slug: string
+                effectiveFrom: any
                 cancellation?: {
                   __typename?: 'Regulation'
                   documentId: string
@@ -15964,11 +16102,11 @@ export type Dev_AllPagesQuery = {
             } | null>
             amendments: Array<{
               __typename?: 'Regulation'
+              isFullTextRegulation: boolean
               documentId: string
               regNumber: string
               slug: string
               effectiveFrom: any
-              isFullTextRegulation: boolean
               attachments: Array<{
                 __typename?: 'UploadFile'
                 documentId: string
@@ -15998,6 +16136,7 @@ export type Dev_AllPagesQuery = {
                 documentId: string
                 regNumber: string
                 slug: string
+                effectiveFrom: any
                 cancellation?: {
                   __typename?: 'Regulation'
                   documentId: string
@@ -16477,6 +16616,40 @@ export type UpdatePageMutation = {
   updatePage?: { __typename?: 'Page'; documentId: string } | null
 }
 
+export type PageInventoryEntityFragment = {
+  __typename?: 'Page'
+  updatedAt?: any | null
+  publishedAt?: any | null
+  subtext?: string | null
+  metaDescription?: string | null
+  keywords?: string | null
+  documentId: string
+  title: string
+  locale?: string | null
+  path?: string | null
+}
+
+export type PagesInventoryQueryVariables = Exact<{
+  limit?: InputMaybe<Scalars['Int']['input']>
+  locale?: InputMaybe<Scalars['I18NLocaleCode']['input']>
+}>
+
+export type PagesInventoryQuery = {
+  __typename?: 'Query'
+  pages: Array<{
+    __typename?: 'Page'
+    updatedAt?: any | null
+    publishedAt?: any | null
+    subtext?: string | null
+    metaDescription?: string | null
+    keywords?: string | null
+    documentId: string
+    title: string
+    locale?: string | null
+    path?: string | null
+  } | null>
+}
+
 export type RegulationsStaticPathsQueryVariables = Exact<{
   limit?: InputMaybe<Scalars['Int']['input']>
 }>
@@ -16524,11 +16697,11 @@ export type RegulationBySlugQuery = {
     } | null>
     amendments: Array<{
       __typename?: 'Regulation'
+      isFullTextRegulation: boolean
       documentId: string
       regNumber: string
       slug: string
       effectiveFrom: any
-      isFullTextRegulation: boolean
       attachments: Array<{
         __typename?: 'UploadFile'
         documentId: string
@@ -16558,6 +16731,7 @@ export type RegulationBySlugQuery = {
         documentId: string
         regNumber: string
         slug: string
+        effectiveFrom: any
         cancellation?: {
           __typename?: 'Regulation'
           documentId: string
@@ -16589,6 +16763,14 @@ export type RegulationSlugEntityFragment = {
   documentId: string
   slug: string
   titleText?: string | null
+}
+
+export type RegulationRelationEntityFragment = {
+  __typename?: 'Regulation'
+  documentId: string
+  regNumber: string
+  slug: string
+  effectiveFrom: any
 }
 
 export type RegulationEntityFragment = {
@@ -16623,11 +16805,11 @@ export type RegulationEntityFragment = {
   } | null>
   amendments: Array<{
     __typename?: 'Regulation'
+    isFullTextRegulation: boolean
     documentId: string
     regNumber: string
     slug: string
     effectiveFrom: any
-    isFullTextRegulation: boolean
     attachments: Array<{
       __typename?: 'UploadFile'
       documentId: string
@@ -16657,6 +16839,7 @@ export type RegulationEntityFragment = {
       documentId: string
       regNumber: string
       slug: string
+      effectiveFrom: any
       cancellation?: {
         __typename?: 'Regulation'
         documentId: string
@@ -16679,6 +16862,73 @@ export type RegulationEntityFragment = {
     regNumber: string
     slug: string
     effectiveFrom: any
+  } | null>
+}
+
+export type RegulationInventoryEntityFragment = {
+  __typename?: 'Regulation'
+  fullTitle: string
+  category: Enum_Regulation_Category
+  updatedAt?: any | null
+  publishedAt?: any | null
+  documentId: string
+  slug: string
+  titleText?: string | null
+  regNumber: string
+  effectiveFrom: any
+  cancellation?: {
+    __typename?: 'Regulation'
+    documentId: string
+    regNumber: string
+    slug: string
+    effectiveFrom: any
+  } | null
+  amending: Array<{
+    __typename?: 'Regulation'
+    cancellation?: {
+      __typename?: 'Regulation'
+      documentId: string
+      regNumber: string
+      slug: string
+      effectiveFrom: any
+    } | null
+  } | null>
+}
+
+export type RegulationsInventoryQueryVariables = Exact<{
+  limit?: InputMaybe<Scalars['Int']['input']>
+}>
+
+export type RegulationsInventoryQuery = {
+  __typename?: 'Query'
+  regulations: Array<{
+    __typename?: 'Regulation'
+    fullTitle: string
+    category: Enum_Regulation_Category
+    updatedAt?: any | null
+    publishedAt?: any | null
+    documentId: string
+    slug: string
+    titleText?: string | null
+    regNumber: string
+    effectiveFrom: any
+    cancellation?: {
+      __typename?: 'Regulation'
+      documentId: string
+      regNumber: string
+      slug: string
+      effectiveFrom: any
+    } | null
+    amending: Array<{
+      __typename?: 'Regulation'
+      cancellation?: {
+        __typename?: 'Regulation'
+        documentId: string
+        regNumber: string
+        slug: string
+        effectiveFrom: any
+      } | null
+    } | null>
   } | null>
 }
 
@@ -17527,11 +17777,11 @@ export type RegulationsSectionFragment = {
     } | null>
     amendments: Array<{
       __typename?: 'Regulation'
+      isFullTextRegulation: boolean
       documentId: string
       regNumber: string
       slug: string
       effectiveFrom: any
-      isFullTextRegulation: boolean
       attachments: Array<{
         __typename?: 'UploadFile'
         documentId: string
@@ -17561,6 +17811,7 @@ export type RegulationsSectionFragment = {
         documentId: string
         regNumber: string
         slug: string
+        effectiveFrom: any
         cancellation?: {
           __typename?: 'Regulation'
           documentId: string
@@ -19644,11 +19895,11 @@ type Sections_ComponentSectionsRegulations_Fragment = {
     } | null>
     amendments: Array<{
       __typename?: 'Regulation'
+      isFullTextRegulation: boolean
       documentId: string
       regNumber: string
       slug: string
       effectiveFrom: any
-      isFullTextRegulation: boolean
       attachments: Array<{
         __typename?: 'UploadFile'
         documentId: string
@@ -19678,6 +19929,7 @@ type Sections_ComponentSectionsRegulations_Fragment = {
         documentId: string
         regNumber: string
         slug: string
+        effectiveFrom: any
         cancellation?: {
           __typename?: 'Regulation'
           documentId: string
@@ -20349,11 +20601,11 @@ export type UrbanStudyEntityFragment = {
     } | null>
     amendments: Array<{
       __typename?: 'Regulation'
+      isFullTextRegulation: boolean
       documentId: string
       regNumber: string
       slug: string
       effectiveFrom: any
-      isFullTextRegulation: boolean
       attachments: Array<{
         __typename?: 'UploadFile'
         documentId: string
@@ -20383,6 +20635,7 @@ export type UrbanStudyEntityFragment = {
         documentId: string
         regNumber: string
         slug: string
+        effectiveFrom: any
         cancellation?: {
           __typename?: 'Regulation'
           documentId: string
@@ -20518,11 +20771,11 @@ export type UrbanStudyBySlugQuery = {
       } | null>
       amendments: Array<{
         __typename?: 'Regulation'
+        isFullTextRegulation: boolean
         documentId: string
         regNumber: string
         slug: string
         effectiveFrom: any
-        isFullTextRegulation: boolean
         attachments: Array<{
           __typename?: 'UploadFile'
           documentId: string
@@ -20552,6 +20805,7 @@ export type UrbanStudyBySlugQuery = {
           documentId: string
           regNumber: string
           slug: string
+          effectiveFrom: any
           cancellation?: {
             __typename?: 'Regulation'
             documentId: string
@@ -20619,6 +20873,59 @@ export type UrbanStudiesStaticPathsQueryVariables = Exact<{
 export type UrbanStudiesStaticPathsQuery = {
   __typename?: 'Query'
   urbanStudies: Array<{ __typename?: 'UrbanStudy'; documentId: string; slug: string } | null>
+}
+
+export type UrbanStudyInventoryEntityFragment = {
+  __typename: 'UrbanStudy'
+  updatedAt?: any | null
+  publishedAt?: any | null
+  customPublishedAt?: any | null
+  year?: string | null
+  documentId: string
+  slug: string
+  title: string
+  urbanStudyCategory?: {
+    __typename?: 'UrbanStudyCategory'
+    documentId: string
+    slug: string
+    title: string
+  } | null
+  urbanStudyState?: {
+    __typename?: 'UrbanStudyState'
+    documentId: string
+    slug: string
+    title: string
+  } | null
+}
+
+export type UrbanStudiesInventoryQueryVariables = Exact<{
+  limit?: InputMaybe<Scalars['Int']['input']>
+}>
+
+export type UrbanStudiesInventoryQuery = {
+  __typename?: 'Query'
+  urbanStudies: Array<{
+    __typename: 'UrbanStudy'
+    updatedAt?: any | null
+    publishedAt?: any | null
+    customPublishedAt?: any | null
+    year?: string | null
+    documentId: string
+    slug: string
+    title: string
+    urbanStudyCategory?: {
+      __typename?: 'UrbanStudyCategory'
+      documentId: string
+      slug: string
+      title: string
+    } | null
+    urbanStudyState?: {
+      __typename?: 'UrbanStudyState'
+      documentId: string
+      slug: string
+      title: string
+    } | null
+  } | null>
 }
 
 export const ArticleSlugEntityFragmentDoc = gql`
@@ -20761,6 +21068,52 @@ export const ArticleEntityFragmentDoc = gql`
   ${InbaReleaseCardEntityFragmentDoc}
   ${AdminGroupSlugEntityFragmentDoc}
 `
+export const ArticleInventoryEntityFragmentDoc = gql`
+  fragment ArticleInventoryEntity on Article {
+    ...ArticleSlugEntity
+    perex
+    addedAt
+    updatedAt
+    articleCategory {
+      ...ArticleCategoryEntity
+    }
+    tags {
+      ...TagEntity
+    }
+  }
+  ${ArticleSlugEntityFragmentDoc}
+  ${ArticleCategoryEntityFragmentDoc}
+  ${TagEntityFragmentDoc}
+`
+export const AssetSlugEntityFragmentDoc = gql`
+  fragment AssetSlugEntity on Asset {
+    __typename
+    documentId
+    slug
+    title
+  }
+`
+export const AssetCategoryEntityFragmentDoc = gql`
+  fragment AssetCategoryEntity on AssetCategory {
+    documentId
+    title
+    slug
+  }
+`
+export const AssetInventoryEntityFragmentDoc = gql`
+  fragment AssetInventoryEntity on Asset {
+    ...AssetSlugEntity
+    updatedAt
+    publishedAt
+    customPublishedAt
+    description
+    assetCategory {
+      ...AssetCategoryEntity
+    }
+  }
+  ${AssetSlugEntityFragmentDoc}
+  ${AssetCategoryEntityFragmentDoc}
+`
 export const UploadFileFragmentDoc = gql`
   fragment UploadFile on UploadFile {
     documentId
@@ -20779,14 +21132,6 @@ export const RegulationSlugEntityFragmentDoc = gql`
     documentId
     slug
     titleText
-  }
-`
-export const AssetSlugEntityFragmentDoc = gql`
-  fragment AssetSlugEntity on Asset {
-    __typename
-    documentId
-    slug
-    title
   }
 `
 export const CommonLinkFragmentDoc = gql`
@@ -21155,6 +21500,16 @@ export const InbaReleaseHomepageInbaCardEntityFragmentDoc = gql`
     }
   }
   ${UploadImageEntityFragmentDoc}
+`
+export const InbaReleaseInventoryEntityFragmentDoc = gql`
+  fragment InbaReleaseInventoryEntity on InbaRelease {
+    ...InbaReleaseSlugEntity
+    perex
+    releaseDate
+    updatedAt
+    publishedAt
+  }
+  ${InbaReleaseSlugEntityFragmentDoc}
 `
 export const PageSubnavigationEntityFragmentDoc = gql`
   fragment PageSubnavigationEntity on Page {
@@ -21622,6 +21977,14 @@ export const ContactsSectionFragmentDoc = gql`
   ${ContactPersonCardBlockFragmentDoc}
   ${ContactDirectionsCardBlockFragmentDoc}
 `
+export const RegulationRelationEntityFragmentDoc = gql`
+  fragment RegulationRelationEntity on Regulation {
+    documentId
+    regNumber
+    slug
+    effectiveFrom
+  }
+`
 export const RegulationEntityFragmentDoc = gql`
   fragment RegulationEntity on Regulation {
     ...RegulationSlugEntity
@@ -21637,53 +22000,34 @@ export const RegulationEntityFragmentDoc = gql`
       ...UploadFileEntity
     }
     amendments {
-      documentId
-      regNumber
-      slug
-      effectiveFrom
+      ...RegulationRelationEntity
       isFullTextRegulation
       attachments {
         ...UploadFileEntity
       }
     }
     amending {
-      documentId
-      regNumber
-      slug
-      effectiveFrom
+      ...RegulationRelationEntity
       cancellation {
-        documentId
-        regNumber
-        slug
-        effectiveFrom
+        ...RegulationRelationEntity
       }
       amending {
-        documentId
-        regNumber
-        slug
+        ...RegulationRelationEntity
         cancellation {
-          documentId
-          regNumber
-          slug
-          effectiveFrom
+          ...RegulationRelationEntity
         }
       }
     }
     cancellation {
-      documentId
-      regNumber
-      slug
-      effectiveFrom
+      ...RegulationRelationEntity
     }
     cancelling {
-      documentId
-      regNumber
-      slug
-      effectiveFrom
+      ...RegulationRelationEntity
     }
   }
   ${RegulationSlugEntityFragmentDoc}
   ${UploadFileEntityFragmentDoc}
+  ${RegulationRelationEntityFragmentDoc}
 `
 export const RegulationsSectionFragmentDoc = gql`
   fragment RegulationsSection on ComponentSectionsRegulations {
@@ -21752,13 +22096,6 @@ export const PartnersSectionFragmentDoc = gql`
     titleLevelPartnersSection: titleLevel
   }
   ${PartnerBlockFragmentDoc}
-`
-export const AssetCategoryEntityFragmentDoc = gql`
-  fragment AssetCategoryEntity on AssetCategory {
-    documentId
-    title
-    slug
-  }
 `
 export const AssetEntityFragmentDoc = gql`
   fragment AssetEntity on Asset {
@@ -22289,6 +22626,37 @@ export const PageEntityFragmentDoc = gql`
   ${TagEntityFragmentDoc}
   ${PageParentPagesFragmentDoc}
 `
+export const PageInventoryEntityFragmentDoc = gql`
+  fragment PageInventoryEntity on Page {
+    ...PageSlugEntity
+    updatedAt
+    publishedAt
+    subtext
+    metaDescription
+    keywords
+  }
+  ${PageSlugEntityFragmentDoc}
+`
+export const RegulationInventoryEntityFragmentDoc = gql`
+  fragment RegulationInventoryEntity on Regulation {
+    ...RegulationSlugEntity
+    ...RegulationRelationEntity
+    fullTitle
+    category
+    updatedAt
+    publishedAt
+    cancellation {
+      ...RegulationRelationEntity
+    }
+    amending {
+      cancellation {
+        ...RegulationRelationEntity
+      }
+    }
+  }
+  ${RegulationSlugEntityFragmentDoc}
+  ${RegulationRelationEntityFragmentDoc}
+`
 export const UrbanStudyPartItemFragmentDoc = gql`
   fragment UrbanStudyPartItem on ComponentBlocksUrbanStudyPartItem {
     id
@@ -22337,6 +22705,24 @@ export const UrbanStudyEntityFragmentDoc = gql`
   ${UrbanStudyPartFragmentDoc}
   ${RegulationEntityFragmentDoc}
   ${CommonLinkFragmentDoc}
+`
+export const UrbanStudyInventoryEntityFragmentDoc = gql`
+  fragment UrbanStudyInventoryEntity on UrbanStudy {
+    ...UrbanStudySlugEntity
+    updatedAt
+    publishedAt
+    customPublishedAt
+    year
+    urbanStudyCategory {
+      ...UrbanStudyCategoryEntity
+    }
+    urbanStudyState {
+      ...UrbanStudyStateEntity
+    }
+  }
+  ${UrbanStudySlugEntityFragmentDoc}
+  ${UrbanStudyCategoryEntityFragmentDoc}
+  ${UrbanStudyStateEntityFragmentDoc}
 `
 export const AdminGroupsDocument = gql`
   query AdminGroups($limit: Int = -1, $sort: [String] = ["title"]) {
@@ -22441,6 +22827,14 @@ export const Dev_AllArticlesDocument = gql`
   }
   ${ArticleEntityFragmentDoc}
 `
+export const ArticlesInventoryDocument = gql`
+  query ArticlesInventory($limit: Int = -1, $locale: I18NLocaleCode = "*") {
+    articles(locale: $locale, sort: "updatedAt:desc", pagination: { limit: $limit }) {
+      ...ArticleInventoryEntity
+    }
+  }
+  ${ArticleInventoryEntityFragmentDoc}
+`
 export const AssetsStaticPathsDocument = gql`
   query AssetsStaticPaths($limit: Int = -1) {
     assets(sort: "updatedAt:desc", pagination: { limit: $limit }) {
@@ -22464,6 +22858,14 @@ export const AssetCategoriesDocument = gql`
     }
   }
   ${AssetCategoryEntityFragmentDoc}
+`
+export const AssetsInventoryDocument = gql`
+  query AssetsInventory($limit: Int = -1) {
+    assets(sort: "updatedAt:desc", pagination: { limit: $limit }) {
+      ...AssetInventoryEntity
+    }
+  }
+  ${AssetInventoryEntityFragmentDoc}
 `
 export const FaqCategoriesDocument = gql`
   query FaqCategories($locale: I18NLocaleCode, $sort: [String] = ["title"]) {
@@ -22661,6 +23063,14 @@ export const LatestInbaReleaseDocument = gql`
   }
   ${InbaReleaseEntityFragmentDoc}
 `
+export const InbaReleasesInventoryDocument = gql`
+  query InbaReleasesInventory($limit: Int = -1) {
+    inbaReleases(sort: "updatedAt:desc", pagination: { limit: $limit }) {
+      ...InbaReleaseInventoryEntity
+    }
+  }
+  ${InbaReleaseInventoryEntityFragmentDoc}
+`
 export const PageCategoriesDocument = gql`
   query PageCategories($locale: I18NLocaleCode) {
     pageCategories(pagination: { limit: -1 }, locale: $locale) {
@@ -22745,6 +23155,14 @@ export const UpdatePageDocument = gql`
     }
   }
 `
+export const PagesInventoryDocument = gql`
+  query PagesInventory($limit: Int = -1, $locale: I18NLocaleCode = "*") {
+    pages(locale: $locale, sort: "updatedAt:desc", pagination: { limit: $limit }) {
+      ...PageInventoryEntity
+    }
+  }
+  ${PageInventoryEntityFragmentDoc}
+`
 export const RegulationsStaticPathsDocument = gql`
   query RegulationsStaticPaths($limit: Int = -1) {
     regulations(sort: "updatedAt:desc", pagination: { limit: $limit }) {
@@ -22760,6 +23178,14 @@ export const RegulationBySlugDocument = gql`
     }
   }
   ${RegulationEntityFragmentDoc}
+`
+export const RegulationsInventoryDocument = gql`
+  query RegulationsInventory($limit: Int = -1) {
+    regulations(sort: "updatedAt:desc", pagination: { limit: $limit }) {
+      ...RegulationInventoryEntity
+    }
+  }
+  ${RegulationInventoryEntityFragmentDoc}
 `
 export const TagsDocument = gql`
   query Tags($locale: I18NLocaleCode, $sort: [String] = ["title"]) {
@@ -22784,6 +23210,14 @@ export const UrbanStudiesStaticPathsDocument = gql`
       slug
     }
   }
+`
+export const UrbanStudiesInventoryDocument = gql`
+  query UrbanStudiesInventory($limit: Int = -1) {
+    urbanStudies(sort: "updatedAt:desc", pagination: { limit: $limit }) {
+      ...UrbanStudyInventoryEntity
+    }
+  }
+  ${UrbanStudyInventoryEntityFragmentDoc}
 `
 
 export type SdkFunctionWrapper = <T>(
@@ -22919,6 +23353,21 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
         variables,
       )
     },
+    ArticlesInventory(
+      variables?: ArticlesInventoryQueryVariables,
+      requestHeaders?: GraphQLClientRequestHeaders,
+    ): Promise<ArticlesInventoryQuery> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<ArticlesInventoryQuery>(ArticlesInventoryDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
+          }),
+        'ArticlesInventory',
+        'query',
+        variables,
+      )
+    },
     AssetsStaticPaths(
       variables?: AssetsStaticPathsQueryVariables,
       requestHeaders?: GraphQLClientRequestHeaders,
@@ -22960,6 +23409,21 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
             ...wrappedRequestHeaders,
           }),
         'AssetCategories',
+        'query',
+        variables,
+      )
+    },
+    AssetsInventory(
+      variables?: AssetsInventoryQueryVariables,
+      requestHeaders?: GraphQLClientRequestHeaders,
+    ): Promise<AssetsInventoryQuery> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<AssetsInventoryQuery>(AssetsInventoryDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
+          }),
+        'AssetsInventory',
         'query',
         variables,
       )
@@ -23115,6 +23579,21 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
         variables,
       )
     },
+    InbaReleasesInventory(
+      variables?: InbaReleasesInventoryQueryVariables,
+      requestHeaders?: GraphQLClientRequestHeaders,
+    ): Promise<InbaReleasesInventoryQuery> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<InbaReleasesInventoryQuery>(InbaReleasesInventoryDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
+          }),
+        'InbaReleasesInventory',
+        'query',
+        variables,
+      )
+    },
     PageCategories(
       variables?: PageCategoriesQueryVariables,
       requestHeaders?: GraphQLClientRequestHeaders,
@@ -23221,6 +23700,21 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
         variables,
       )
     },
+    PagesInventory(
+      variables?: PagesInventoryQueryVariables,
+      requestHeaders?: GraphQLClientRequestHeaders,
+    ): Promise<PagesInventoryQuery> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<PagesInventoryQuery>(PagesInventoryDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
+          }),
+        'PagesInventory',
+        'query',
+        variables,
+      )
+    },
     RegulationsStaticPaths(
       variables?: RegulationsStaticPathsQueryVariables,
       requestHeaders?: GraphQLClientRequestHeaders,
@@ -23247,6 +23741,21 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
             ...wrappedRequestHeaders,
           }),
         'RegulationBySlug',
+        'query',
+        variables,
+      )
+    },
+    RegulationsInventory(
+      variables?: RegulationsInventoryQueryVariables,
+      requestHeaders?: GraphQLClientRequestHeaders,
+    ): Promise<RegulationsInventoryQuery> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<RegulationsInventoryQuery>(RegulationsInventoryDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
+          }),
+        'RegulationsInventory',
         'query',
         variables,
       )
@@ -23292,6 +23801,21 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
             ...wrappedRequestHeaders,
           }),
         'UrbanStudiesStaticPaths',
+        'query',
+        variables,
+      )
+    },
+    UrbanStudiesInventory(
+      variables?: UrbanStudiesInventoryQueryVariables,
+      requestHeaders?: GraphQLClientRequestHeaders,
+    ): Promise<UrbanStudiesInventoryQuery> {
+      return withWrapper(
+        (wrappedRequestHeaders) =>
+          client.request<UrbanStudiesInventoryQuery>(UrbanStudiesInventoryDocument, variables, {
+            ...requestHeaders,
+            ...wrappedRequestHeaders,
+          }),
+        'UrbanStudiesInventory',
         'query',
         variables,
       )

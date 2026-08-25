@@ -145,3 +145,19 @@ mutation updatePage($documentId: ID!, $locale: I18NLocaleCode, $pageInput: PageI
     documentId
   }
 }
+
+# Used by the /api/content-inventory endpoint.
+fragment PageInventoryEntity on Page {
+  ...PageSlugEntity
+  updatedAt
+  publishedAt
+  subtext
+  metaDescription
+  keywords
+}
+
+query PagesInventory($limit: Int = -1, $locale: I18NLocaleCode = "*") {
+  pages(locale: $locale, sort: "updatedAt:desc", pagination: { limit: $limit }) {
+    ...PageInventoryEntity
+  }
+}
