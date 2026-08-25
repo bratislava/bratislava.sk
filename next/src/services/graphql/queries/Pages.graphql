@@ -154,9 +154,19 @@ fragment PageInventoryEntity on Page {
   subtext
   metaDescription
   keywords
-  # Only the sections that can carry downloadable files - the rest of the dynamic zone is not needed here.
+  # Only the sections that carry files or link other content - the rest of the dynamic zone is not needed here.
   sections {
     __typename
+    ... on ComponentSectionsAssets {
+      assets(pagination: { limit: -1 }) {
+        ...AssetSlugEntity
+      }
+    }
+    ... on ComponentSectionsRegulations {
+      regulations(pagination: { limit: -1 }) {
+        ...RegulationRelationEntity
+      }
+    }
     ... on ComponentSectionsFileList {
       fileList(pagination: { limit: -1 }) {
         ...FileBlock

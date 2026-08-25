@@ -80,6 +80,9 @@ fragment InbaReleaseInventoryEntity on InbaRelease {
   files {
     ...FileBlock
   }
+  articles(pagination: { limit: -1 }) {
+    ...ArticleSlugEntity
+  }
 }
 
 query InbaReleasesInventory($limit: Int = -1) {

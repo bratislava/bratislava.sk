@@ -58,14 +58,28 @@ export type InventoryEntryBase = {
   files: InventoryFile[]
 }
 
+/** A reference from one entry to another entry of this inventory. */
+export type InventoryLink = {
+  /** The `id` of the linked entry, so it can be looked up without parsing the url. */
+  id: string
+  title: string
+  url: string
+}
+
 export type PageInventoryData = {
   metaDescription?: string
   keywords?: string
+  /** Assets the page links through its document sections, in the order they are rendered. */
+  assets?: InventoryLink[]
+  /** Regulations the page links through its regulation sections. */
+  regulations?: InventoryLink[]
 }
 
 export type ArticleInventoryData = {
   category?: InventoryCategory
   tags: { title: string; slug: string }[]
+  /** The inba release the article was published in, for the articles that come from one. */
+  inbaRelease?: InventoryLink
 }
 
 export type AssetInventoryData = {
@@ -75,27 +89,45 @@ export type AssetInventoryData = {
 export type RegulationInventoryData = {
   regNumber: string
   category?: InventoryCategory
+  /** How the regulation relates to the other ones. Omitted for a regulation that stands on its own. */
+  regRelations?: {
+    /** Regulations that amend this one. */
+    amendments?: InventoryLink[]
+    /** Regulations this one amends. */
+    amending?: InventoryLink[]
+    /** The regulation cancelling this one, either directly or through an amendee that got cancelled. */
+    cancelledBy?: InventoryLink
+    /** Regulations this one cancels. */
+    cancelling?: InventoryLink[]
+  }
   validity: {
     isValid: boolean
     effectiveFrom: string | null
+    /** When the cancellation took effect, whether this regulation was cancelled directly or through an amendee. */
     effectiveUntil: string | null
-    cancelledBy: { regNumber: string; url: string } | null
   }
+}
+
+export type InbaReleaseInventoryData = {
+  /** Articles published in the release. */
+  articles?: InventoryLink[]
 }
 
 export type UrbanStudyInventoryData = {
   year?: string
   category?: InventoryCategory
   state?: InventoryCategory
+  /** Regulations the study is tied to. */
+  regulations?: InventoryLink[]
 }
 
-/** Each content type carries only its own data - `inba-release` has none beyond the shared fields. */
+/** Each content type carries only its own data, under the key named after the type. */
 export type InventoryEntry =
   | (InventoryEntryBase & { type: 'page'; page?: PageInventoryData })
   | (InventoryEntryBase & { type: 'article'; article?: ArticleInventoryData })
   | (InventoryEntryBase & { type: 'asset'; asset?: AssetInventoryData })
   | (InventoryEntryBase & { type: 'regulation'; regulation: RegulationInventoryData })
-  | (InventoryEntryBase & { type: 'inba-release' })
+  | (InventoryEntryBase & { type: 'inba-release'; 'inba-release'?: InbaReleaseInventoryData })
   | (InventoryEntryBase & { type: 'urban-study'; 'urban-study'?: UrbanStudyInventoryData })
 
 /** Reduced entry returned for `?fields=url`, meant for cheap diffing (including detecting removals). */

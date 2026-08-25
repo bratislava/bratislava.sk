@@ -1,5 +1,6 @@
 import { environment } from '@/src/environment'
 import {
+  AssetSlugEntityFragment,
   FileBlockFragment,
   FileItemBlockFragment,
   PageInventoryEntityFragment,
@@ -14,6 +15,7 @@ import {
   InventoryEntry,
   InventoryEntryBase,
   InventoryFile,
+  InventoryLink,
   InventoryType,
 } from './types'
 
@@ -72,6 +74,10 @@ const getCategory = (
 ): InventoryCategory | undefined =>
   category ? { title: category.title, slug: category.slug } : undefined
 
+/** Entries are keyed by type, documentId and locale - content that exists only once in Strapi is keyed as `sk`. */
+const getEntryId = (type: InventoryType, documentId: string, locale?: string | null) =>
+  `${type}:${documentId}:${locale ?? 'sk'}`
+
 /**
  * The part of an entry that is the same for every content type. `addedAt` unifies the various "published" dates - each
  * content type passes in its own one (addedAt, customPublishedAt, releaseDate), falling back to Strapi's publishedAt.
@@ -89,7 +95,7 @@ const getBase = <TType extends InventoryType>(
     files?: InventoryFile[]
   },
 ): InventoryEntryBase & { type: TType } => ({
-  id: `${type}:${entry.documentId}:${entry.locale ?? 'sk'}`,
+  id: getEntryId(type, entry.documentId, entry.locale),
   type,
   url: getUrl(entry.path, entry.locale ?? 'sk'),
   locale: entry.locale ?? 'sk',
@@ -121,6 +127,68 @@ const getPageFiles = (sections: PageInventoryEntityFragment['sections']): Invent
     }),
   )
 
+/** Links to the article entries of the inventory - articles are localized, so the locale is part of their id and url. */
+const getArticleLinks = (
+  articles: ({ documentId: string; slug: string; title: string; locale?: string | null } | null)[],
+): InventoryLink[] | undefined => {
+  const links = articles.filter(isDefined).map((article) => ({
+    id: getEntryId('article', article.documentId, article.locale),
+    title: article.title,
+    url: getUrl(`/spravy/${article.slug}`, article.locale ?? 'sk'),
+  }))
+
+  return links.length > 0 ? links : undefined
+}
+
+type RegulationLink = { documentId: string; slug: string; regNumber: string }
+
+/** A regulation is linked by its number - `fullTitle` is the legal wording and belongs to its own entry. */
+const getRegulationLink = (regulation: RegulationLink): InventoryLink => ({
+  id: getEntryId('regulation', regulation.documentId),
+  title: regulation.regNumber,
+  url: getUrl(`/vzn/${regulation.slug}`),
+})
+
+const getRegulationLinks = (
+  regulations: (RegulationLink | null)[],
+): InventoryLink[] | undefined => {
+  const links = regulations.filter(isDefined).map((regulation) => getRegulationLink(regulation))
+
+  return links.length > 0 ? links : undefined
+}
+
+/**
+ * Assets a page links through its document sections, in the order the sections are rendered. Undefined instead of an
+ * empty list, so that pages linking nothing do not carry an empty key.
+ */
+const getPageAssets = (
+  sections: PageInventoryEntityFragment['sections'],
+): InventoryLink[] | undefined => {
+  const assets = (sections ?? [])
+    .filter(isDefined)
+    .flatMap<AssetSlugEntityFragment | null>((section) =>
+      section.__typename === 'ComponentSectionsAssets' ? section.assets : [],
+    )
+    .filter(isDefined)
+    .map((asset) => ({
+      id: getEntryId('asset', asset.documentId),
+      title: asset.title,
+      url: getUrl(`/dokumenty/${asset.slug}`),
+    }))
+
+  return assets.length > 0 ? assets : undefined
+}
+
+/** Regulations a page links through its regulation sections, the same way `getPageAssets` collects the assets. */
+const getPageRegulations = (sections: PageInventoryEntityFragment['sections']) =>
+  getRegulationLinks(
+    (sections ?? [])
+      .filter(isDefined)
+      .flatMap((section) =>
+        section.__typename === 'ComponentSectionsRegulations' ? section.regulations : [],
+      ),
+  )
+
 const buildPages = async (): Promise<InventoryEntry[]> => {
   const { pages } = await client.PagesInventory()
 
@@ -136,6 +204,8 @@ const buildPages = async (): Promise<InventoryEntry[]> => {
     page: getTypeData({
       metaDescription: page.metaDescription ?? undefined,
       keywords: page.keywords ?? undefined,
+      assets: getPageAssets(page.sections),
+      regulations: getPageRegulations(page.sections),
     }),
   }))
 }
@@ -154,6 +224,13 @@ const buildArticles = async (): Promise<InventoryEntry[]> => {
     }),
     article: {
       category: getCategory(article.articleCategory),
+      inbaRelease: article.inbaRelease
+        ? {
+            id: getEntryId('inba-release', article.inbaRelease.documentId),
+            title: article.inbaRelease.title,
+            url: getUrl(`/inba/vydania/${article.inbaRelease.slug}`),
+          }
+        : undefined,
       tags: article.tags.filter(isDefined).map(({ title, slug }) => ({ title, slug })),
     },
   }))
@@ -203,16 +280,17 @@ const buildRegulations = async (): Promise<InventoryEntry[]> => {
       regulation: {
         regNumber: regulation.regNumber,
         category: getCategory(regulation.regulationCategory),
+        regRelations: getTypeData({
+          amendments: getRegulationLinks(regulation.amendments),
+          amending: getRegulationLinks(regulation.amending),
+          // The same cancellation the validity is derived from - directly, or inherited from a cancelled amendee.
+          cancelledBy: cancellation ? getRegulationLink(cancellation) : undefined,
+          cancelling: getRegulationLinks(regulation.cancelling),
+        }),
         validity: {
           isValid: !cancellation,
           effectiveFrom: getIsoDate(regulation.effectiveFrom),
           effectiveUntil: getIsoDate(cancellation?.effectiveFrom),
-          cancelledBy: cancellation
-            ? {
-                regNumber: cancellation.regNumber,
-                url: getUrl(`/vzn/${cancellation.slug}`),
-              }
-            : null,
         },
       },
     }
@@ -222,8 +300,8 @@ const buildRegulations = async (): Promise<InventoryEntry[]> => {
 const buildInbaReleases = async (): Promise<InventoryEntry[]> => {
   const { inbaReleases } = await client.InbaReleasesInventory()
 
-  return inbaReleases.filter(isDefined).map((inbaRelease) =>
-    getBase('inba-release', {
+  return inbaReleases.filter(isDefined).map((inbaRelease) => ({
+    ...getBase('inba-release', {
       ...inbaRelease,
       path: `/inba/vydania/${inbaRelease.slug}`,
       summary: getFirstNonEmpty(inbaRelease.perex),
@@ -231,7 +309,8 @@ const buildInbaReleases = async (): Promise<InventoryEntry[]> => {
       modifiedAt: inbaRelease.updatedAt,
       files: getBlockFiles(inbaRelease.files),
     }),
-  )
+    'inba-release': getTypeData({ articles: getArticleLinks(inbaRelease.articles) }),
+  }))
 }
 
 const buildUrbanStudies = async (): Promise<InventoryEntry[]> => {
@@ -252,6 +331,7 @@ const buildUrbanStudies = async (): Promise<InventoryEntry[]> => {
       year: urbanStudy.year ?? undefined,
       category: getCategory(urbanStudy.urbanStudyCategory),
       state: getCategory(urbanStudy.urbanStudyState),
+      regulations: getRegulationLinks(urbanStudy.regulations),
     }),
   }))
 }

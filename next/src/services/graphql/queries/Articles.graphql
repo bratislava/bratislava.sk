@@ -146,6 +146,9 @@ fragment ArticleInventoryEntity on Article {
   files {
     ...FileBlock
   }
+  inbaRelease {
+    ...InbaReleaseSlugEntity
+  }
 }
 
 query ArticlesInventory($limit: Int = -1, $locale: I18NLocaleCode = "*") {

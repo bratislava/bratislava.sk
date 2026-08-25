@@ -90,10 +90,17 @@ fragment RegulationInventoryEntity on Regulation {
   cancellation {
     ...RegulationRelationEntity
   }
-  amending {
+  amending(pagination: { limit: -1 }) {
+    ...RegulationRelationEntity
     cancellation {
       ...RegulationRelationEntity
     }
+  }
+  amendments(pagination: { limit: -1 }) {
+    ...RegulationRelationEntity
+  }
+  cancelling(pagination: { limit: -1 }) {
+    ...RegulationRelationEntity
   }
   mainDocument {
     ...UploadFileEntity

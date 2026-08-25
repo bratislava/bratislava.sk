@@ -7784,6 +7784,12 @@ export type ArticleInventoryEntityFragment = {
       updatedAt?: any | null
     } | null
   } | null> | null
+  inbaRelease?: {
+    __typename?: 'InbaRelease'
+    documentId: string
+    title: string
+    slug: string
+  } | null
 }
 
 export type ArticlesInventoryQueryVariables = Exact<{
@@ -7835,6 +7841,12 @@ export type ArticlesInventoryQuery = {
         updatedAt?: any | null
       } | null
     } | null> | null
+    inbaRelease?: {
+      __typename?: 'InbaRelease'
+      documentId: string
+      title: string
+      slug: string
+    } | null
   } | null>
 }
 
@@ -11204,6 +11216,13 @@ export type InbaReleaseInventoryEntityFragment = {
       updatedAt?: any | null
     } | null
   } | null> | null
+  articles: Array<{
+    __typename: 'Article'
+    documentId: string
+    slug: string
+    title: string
+    locale?: string | null
+  } | null>
 }
 
 export type InbaReleasesInventoryQueryVariables = Exact<{
@@ -11236,6 +11255,13 @@ export type InbaReleasesInventoryQuery = {
         updatedAt?: any | null
       } | null
     } | null> | null
+    articles: Array<{
+      __typename: 'Article'
+      documentId: string
+      slug: string
+      title: string
+      locale?: string | null
+    } | null>
   } | null>
 }
 
@@ -16208,7 +16234,15 @@ export type PageInventoryEntityFragment = {
     | { __typename: 'ComponentSectionsAlert' }
     | { __typename: 'ComponentSectionsArticles' }
     | { __typename: 'ComponentSectionsArticlesLandingPage' }
-    | { __typename: 'ComponentSectionsAssets' }
+    | {
+        __typename: 'ComponentSectionsAssets'
+        assets: Array<{
+          __typename: 'Asset'
+          documentId: string
+          slug: string
+          title: string
+        } | null>
+      }
     | { __typename: 'ComponentSectionsBanner' }
     | { __typename: 'ComponentSectionsColumnedText' }
     | { __typename: 'ComponentSectionsColumns' }
@@ -16253,7 +16287,16 @@ export type PageInventoryEntityFragment = {
     | { __typename: 'ComponentSectionsOrganizationalStructure' }
     | { __typename: 'ComponentSectionsPartners' }
     | { __typename: 'ComponentSectionsProsAndConsSection' }
-    | { __typename: 'ComponentSectionsRegulations' }
+    | {
+        __typename: 'ComponentSectionsRegulations'
+        regulations: Array<{
+          __typename?: 'Regulation'
+          documentId: string
+          regNumber: string
+          slug: string
+          effectiveFrom: any
+        } | null>
+      }
     | { __typename: 'ComponentSectionsStarzLandingPage' }
     | { __typename: 'ComponentSectionsTextWithImage' }
     | { __typename: 'ComponentSectionsTextWithImageOverlapped' }
@@ -16308,7 +16351,15 @@ export type PagesInventoryQuery = {
       | { __typename: 'ComponentSectionsAlert' }
       | { __typename: 'ComponentSectionsArticles' }
       | { __typename: 'ComponentSectionsArticlesLandingPage' }
-      | { __typename: 'ComponentSectionsAssets' }
+      | {
+          __typename: 'ComponentSectionsAssets'
+          assets: Array<{
+            __typename: 'Asset'
+            documentId: string
+            slug: string
+            title: string
+          } | null>
+        }
       | { __typename: 'ComponentSectionsBanner' }
       | { __typename: 'ComponentSectionsColumnedText' }
       | { __typename: 'ComponentSectionsColumns' }
@@ -16353,7 +16404,16 @@ export type PagesInventoryQuery = {
       | { __typename: 'ComponentSectionsOrganizationalStructure' }
       | { __typename: 'ComponentSectionsPartners' }
       | { __typename: 'ComponentSectionsProsAndConsSection' }
-      | { __typename: 'ComponentSectionsRegulations' }
+      | {
+          __typename: 'ComponentSectionsRegulations'
+          regulations: Array<{
+            __typename?: 'Regulation'
+            documentId: string
+            regNumber: string
+            slug: string
+            effectiveFrom: any
+          } | null>
+        }
       | { __typename: 'ComponentSectionsStarzLandingPage' }
       | { __typename: 'ComponentSectionsTextWithImage' }
       | { __typename: 'ComponentSectionsTextWithImageOverlapped' }
@@ -16630,6 +16690,10 @@ export type RegulationInventoryEntityFragment = {
   } | null
   amending: Array<{
     __typename?: 'Regulation'
+    documentId: string
+    regNumber: string
+    slug: string
+    effectiveFrom: any
     cancellation?: {
       __typename?: 'Regulation'
       documentId: string
@@ -16637,6 +16701,20 @@ export type RegulationInventoryEntityFragment = {
       slug: string
       effectiveFrom: any
     } | null
+  } | null>
+  amendments: Array<{
+    __typename?: 'Regulation'
+    documentId: string
+    regNumber: string
+    slug: string
+    effectiveFrom: any
+  } | null>
+  cancelling: Array<{
+    __typename?: 'Regulation'
+    documentId: string
+    regNumber: string
+    slug: string
+    effectiveFrom: any
   } | null>
   mainDocument: {
     __typename?: 'UploadFile'
@@ -16693,6 +16771,10 @@ export type RegulationsInventoryQuery = {
     } | null
     amending: Array<{
       __typename?: 'Regulation'
+      documentId: string
+      regNumber: string
+      slug: string
+      effectiveFrom: any
       cancellation?: {
         __typename?: 'Regulation'
         documentId: string
@@ -16700,6 +16782,20 @@ export type RegulationsInventoryQuery = {
         slug: string
         effectiveFrom: any
       } | null
+    } | null>
+    amendments: Array<{
+      __typename?: 'Regulation'
+      documentId: string
+      regNumber: string
+      slug: string
+      effectiveFrom: any
+    } | null>
+    cancelling: Array<{
+      __typename?: 'Regulation'
+      documentId: string
+      regNumber: string
+      slug: string
+      effectiveFrom: any
     } | null>
     mainDocument: {
       __typename?: 'UploadFile'
@@ -20367,6 +20463,13 @@ export type UrbanStudyInventoryEntityFragment = {
       }
     } | null> | null
   } | null> | null
+  regulations: Array<{
+    __typename?: 'Regulation'
+    documentId: string
+    regNumber: string
+    slug: string
+    effectiveFrom: any
+  } | null>
 }
 
 export type UrbanStudiesInventoryQueryVariables = Exact<{
@@ -20414,6 +20517,13 @@ export type UrbanStudiesInventoryQuery = {
         }
       } | null> | null
     } | null> | null
+    regulations: Array<{
+      __typename?: 'Regulation'
+      documentId: string
+      regNumber: string
+      slug: string
+      effectiveFrom: any
+    } | null>
   } | null>
 }
 
@@ -20572,11 +20682,15 @@ export const ArticleInventoryEntityFragmentDoc = gql`
     files {
       ...FileBlock
     }
+    inbaRelease {
+      ...InbaReleaseSlugEntity
+    }
   }
   ${ArticleSlugEntityFragmentDoc}
   ${ArticleCategoryEntityFragmentDoc}
   ${TagEntityFragmentDoc}
   ${FileBlockFragmentDoc}
+  ${InbaReleaseSlugEntityFragmentDoc}
 `
 export const AssetSlugEntityFragmentDoc = gql`
   fragment AssetSlugEntity on Asset {
@@ -21004,9 +21118,13 @@ export const InbaReleaseInventoryEntityFragmentDoc = gql`
     files {
       ...FileBlock
     }
+    articles(pagination: { limit: -1 }) {
+      ...ArticleSlugEntity
+    }
   }
   ${InbaReleaseSlugEntityFragmentDoc}
   ${FileBlockFragmentDoc}
+  ${ArticleSlugEntityFragmentDoc}
 `
 export const PageSubnavigationEntityFragmentDoc = gql`
   fragment PageSubnavigationEntity on Page {
@@ -22112,6 +22230,16 @@ export const PageInventoryEntityFragmentDoc = gql`
     keywords
     sections {
       __typename
+      ... on ComponentSectionsAssets {
+        assets(pagination: { limit: -1 }) {
+          ...AssetSlugEntity
+        }
+      }
+      ... on ComponentSectionsRegulations {
+        regulations(pagination: { limit: -1 }) {
+          ...RegulationRelationEntity
+        }
+      }
       ... on ComponentSectionsFileList {
         fileList(pagination: { limit: -1 }) {
           ...FileBlock
@@ -22127,6 +22255,8 @@ export const PageInventoryEntityFragmentDoc = gql`
     }
   }
   ${PageSlugEntityFragmentDoc}
+  ${AssetSlugEntityFragmentDoc}
+  ${RegulationRelationEntityFragmentDoc}
   ${FileBlockFragmentDoc}
   ${FileItemBlockFragmentDoc}
 `
@@ -22144,10 +22274,17 @@ export const RegulationInventoryEntityFragmentDoc = gql`
     cancellation {
       ...RegulationRelationEntity
     }
-    amending {
+    amending(pagination: { limit: -1 }) {
+      ...RegulationRelationEntity
       cancellation {
         ...RegulationRelationEntity
       }
+    }
+    amendments(pagination: { limit: -1 }) {
+      ...RegulationRelationEntity
+    }
+    cancelling(pagination: { limit: -1 }) {
+      ...RegulationRelationEntity
     }
     mainDocument {
       ...UploadFileEntity
@@ -22228,11 +22365,15 @@ export const UrbanStudyInventoryEntityFragmentDoc = gql`
         ...UrbanStudyPartItem
       }
     }
+    regulations(pagination: { limit: -1 }) {
+      ...RegulationRelationEntity
+    }
   }
   ${UrbanStudySlugEntityFragmentDoc}
   ${UrbanStudyCategoryEntityFragmentDoc}
   ${UrbanStudyStateEntityFragmentDoc}
   ${UrbanStudyPartItemFragmentDoc}
+  ${RegulationRelationEntityFragmentDoc}
 `
 export const AdminGroupsDocument = gql`
   query AdminGroups($limit: Int = -1, $sort: [String] = ["title"]) {
