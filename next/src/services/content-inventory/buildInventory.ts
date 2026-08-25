@@ -130,7 +130,7 @@ const buildRegulations = async (): Promise<InventoryEntry[]> => {
       }),
       regulation: {
         regNumber: regulation.regNumber,
-        category: regulation.category,
+        category: getCategory(regulation.regulationCategory),
         validity: {
           isValid: !cancellation,
           effectiveFrom: getIsoDate(regulation.effectiveFrom),

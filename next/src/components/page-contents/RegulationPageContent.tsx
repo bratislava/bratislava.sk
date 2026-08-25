@@ -18,7 +18,6 @@ import { formatFileSize } from '@/src/utils/formatFileSize'
 import { getLinkProps } from '@/src/utils/getLinkProps'
 import { isDefined } from '@/src/utils/isDefined'
 import { useLocale } from '@/src/utils/useLocale'
-import { useRegulationCategoryTranslationMap } from '@/src/utils/useRegulationCategoryTranslationMap'
 import { useTranslation } from '@/src/utils/useTranslation'
 
 type RegulationPageContentProps = {
@@ -34,9 +33,7 @@ const RegulationPageContent = ({ regulation }: RegulationPageContentProps) => {
   const { general } = useGeneralContext()
   const vznPage = general?.vznPage
 
-  const translationMap = useRegulationCategoryTranslationMap()
-
-  const { mainDocument, attachments, regNumber, category, titleText } = regulation
+  const { mainDocument, attachments, regNumber, regulationCategory, titleText } = regulation
 
   const amendments = regulation.amendments
     .filter((amendment) => isDefined(amendment))
@@ -65,7 +62,7 @@ const RegulationPageContent = ({ regulation }: RegulationPageContentProps) => {
     <>
       <PageHeader
         title={regulationShortTitle}
-        tag={translationMap[category ?? 'ostatne']}
+        tag={regulationCategory?.title}
         subtext={titleText}
         breadcrumbs={breadcrumbs}
       />
