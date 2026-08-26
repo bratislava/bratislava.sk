@@ -3672,6 +3672,17 @@ export enum Enum_Page_Pagecolor {
   Yellow = 'yellow',
 }
 
+export enum Enum_Regulationcategory_Pictogram {
+  Archiv = 'archiv',
+  DaneAPoplatky = 'daneAPoplatky',
+  Hospodarenie = 'hospodarenie',
+  Ostatne = 'ostatne',
+  PomenovanieUlic = 'pomenovanieUlic',
+  PoriadokACistota = 'poriadokACistota',
+  SocialnaPomocASkolstvo = 'socialnaPomocASkolstvo',
+  UzemnePlanovanie = 'uzemnePlanovanie',
+}
+
 export enum Enum_Regulation_Category {
   Archiv = 'archiv',
   DaneAPoplatky = 'daneAPoplatky',
@@ -4149,6 +4160,7 @@ export type GenericMorph =
   | Page
   | PageCategory
   | Regulation
+  | RegulationCategory
   | ReviewWorkflowsWorkflow
   | ReviewWorkflowsWorkflowStage
   | Tag
@@ -4563,6 +4575,7 @@ export type Mutation = {
   createPage?: Maybe<Page>
   createPageCategory?: Maybe<PageCategory>
   createRegulation?: Maybe<Regulation>
+  createRegulationCategory?: Maybe<RegulationCategory>
   createReviewWorkflowsWorkflow?: Maybe<ReviewWorkflowsWorkflow>
   createReviewWorkflowsWorkflowStage?: Maybe<ReviewWorkflowsWorkflowStage>
   createTag?: Maybe<Tag>
@@ -4589,6 +4602,7 @@ export type Mutation = {
   deletePage?: Maybe<DeleteMutationResponse>
   deletePageCategory?: Maybe<DeleteMutationResponse>
   deleteRegulation?: Maybe<DeleteMutationResponse>
+  deleteRegulationCategory?: Maybe<DeleteMutationResponse>
   deleteReviewWorkflowsWorkflow?: Maybe<DeleteMutationResponse>
   deleteReviewWorkflowsWorkflowStage?: Maybe<DeleteMutationResponse>
   deleteTag?: Maybe<DeleteMutationResponse>
@@ -4626,6 +4640,7 @@ export type Mutation = {
   updatePage?: Maybe<Page>
   updatePageCategory?: Maybe<PageCategory>
   updateRegulation?: Maybe<Regulation>
+  updateRegulationCategory?: Maybe<RegulationCategory>
   updateReviewWorkflowsWorkflow?: Maybe<ReviewWorkflowsWorkflow>
   updateReviewWorkflowsWorkflowStage?: Maybe<ReviewWorkflowsWorkflowStage>
   updateTag?: Maybe<Tag>
@@ -4704,6 +4719,11 @@ export type MutationCreatePageCategoryArgs = {
 
 export type MutationCreateRegulationArgs = {
   data: RegulationInput
+  status?: InputMaybe<PublicationStatus>
+}
+
+export type MutationCreateRegulationCategoryArgs = {
+  data: RegulationCategoryInput
   status?: InputMaybe<PublicationStatus>
 }
 
@@ -4813,6 +4833,10 @@ export type MutationDeletePageCategoryArgs = {
 }
 
 export type MutationDeleteRegulationArgs = {
+  documentId: Scalars['ID']['input']
+}
+
+export type MutationDeleteRegulationCategoryArgs = {
   documentId: Scalars['ID']['input']
 }
 
@@ -4973,6 +4997,12 @@ export type MutationUpdatePageCategoryArgs = {
 
 export type MutationUpdateRegulationArgs = {
   data: RegulationInput
+  documentId: Scalars['ID']['input']
+  status?: InputMaybe<PublicationStatus>
+}
+
+export type MutationUpdateRegulationCategoryArgs = {
+  data: RegulationCategoryInput
   documentId: Scalars['ID']['input']
   status?: InputMaybe<PublicationStatus>
 }
@@ -5392,6 +5422,9 @@ export type Query = {
   pages: Array<Maybe<Page>>
   pages_connection?: Maybe<PageEntityResponseCollection>
   regulation?: Maybe<Regulation>
+  regulationCategories: Array<Maybe<RegulationCategory>>
+  regulationCategories_connection?: Maybe<RegulationCategoryEntityResponseCollection>
+  regulationCategory?: Maybe<RegulationCategory>
   regulations: Array<Maybe<Regulation>>
   regulations_connection?: Maybe<RegulationEntityResponseCollection>
   reviewWorkflowsWorkflow?: Maybe<ReviewWorkflowsWorkflow>
@@ -5759,6 +5792,31 @@ export type QueryRegulationArgs = {
   status?: InputMaybe<PublicationStatus>
 }
 
+export type QueryRegulationCategoriesArgs = {
+  filters?: InputMaybe<RegulationCategoryFiltersInput>
+  hasPublishedVersion?: InputMaybe<Scalars['Boolean']['input']>
+  pagination?: InputMaybe<PaginationArg>
+  publicationFilter?: InputMaybe<PublicationFilter>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+  status?: InputMaybe<PublicationStatus>
+}
+
+export type QueryRegulationCategories_ConnectionArgs = {
+  filters?: InputMaybe<RegulationCategoryFiltersInput>
+  hasPublishedVersion?: InputMaybe<Scalars['Boolean']['input']>
+  pagination?: InputMaybe<PaginationArg>
+  publicationFilter?: InputMaybe<PublicationFilter>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+  status?: InputMaybe<PublicationStatus>
+}
+
+export type QueryRegulationCategoryArgs = {
+  documentId: Scalars['ID']['input']
+  hasPublishedVersion?: InputMaybe<Scalars['Boolean']['input']>
+  publicationFilter?: InputMaybe<PublicationFilter>
+  status?: InputMaybe<PublicationStatus>
+}
+
 export type QueryRegulationsArgs = {
   filters?: InputMaybe<RegulationFiltersInput>
   hasPublishedVersion?: InputMaybe<Scalars['Boolean']['input']>
@@ -6022,7 +6080,7 @@ export type Regulation = {
   cancellation?: Maybe<Regulation>
   cancelling: Array<Maybe<Regulation>>
   cancelling_connection?: Maybe<RegulationRelationResponseCollection>
-  category: Enum_Regulation_Category
+  category?: Maybe<Enum_Regulation_Category>
   createdAt?: Maybe<Scalars['DateTime']['output']>
   documentId: Scalars['ID']['output']
   effectiveFrom: Scalars['Date']['output']
@@ -6031,6 +6089,7 @@ export type Regulation = {
   mainDocument: UploadFile
   publishedAt?: Maybe<Scalars['DateTime']['output']>
   regNumber: Scalars['String']['output']
+  regulationCategory?: Maybe<RegulationCategory>
   slug: Scalars['String']['output']
   titleText?: Maybe<Scalars['String']['output']>
   updatedAt?: Maybe<Scalars['DateTime']['output']>
@@ -6098,6 +6157,76 @@ export type RegulationUrbanStudies_ConnectionArgs = {
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
 }
 
+export type RegulationCategory = {
+  __typename?: 'RegulationCategory'
+  createdAt?: Maybe<Scalars['DateTime']['output']>
+  documentId: Scalars['ID']['output']
+  pictogram: Enum_Regulationcategory_Pictogram
+  publishedAt?: Maybe<Scalars['DateTime']['output']>
+  regulations: Array<Maybe<Regulation>>
+  regulations_connection?: Maybe<RegulationRelationResponseCollection>
+  slug: Scalars['String']['output']
+  title: Scalars['String']['output']
+  updatedAt?: Maybe<Scalars['DateTime']['output']>
+}
+
+export type RegulationCategoryRegulationsArgs = {
+  filters?: InputMaybe<RegulationFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type RegulationCategoryRegulations_ConnectionArgs = {
+  filters?: InputMaybe<RegulationFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type RegulationCategoryEntity = {
+  __typename?: 'RegulationCategoryEntity'
+  attributes?: Maybe<RegulationCategory>
+  id?: Maybe<Scalars['ID']['output']>
+}
+
+export type RegulationCategoryEntityResponse = {
+  __typename?: 'RegulationCategoryEntityResponse'
+  data?: Maybe<RegulationCategory>
+}
+
+export type RegulationCategoryEntityResponseCollection = {
+  __typename?: 'RegulationCategoryEntityResponseCollection'
+  nodes: Array<RegulationCategory>
+  pageInfo: Pagination
+}
+
+export type RegulationCategoryFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<RegulationCategoryFiltersInput>>>
+  createdAt?: InputMaybe<DateTimeFilterInput>
+  documentId?: InputMaybe<IdFilterInput>
+  not?: InputMaybe<RegulationCategoryFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<RegulationCategoryFiltersInput>>>
+  pictogram?: InputMaybe<StringFilterInput>
+  publishedAt?: InputMaybe<DateTimeFilterInput>
+  regulations?: InputMaybe<RegulationFiltersInput>
+  slug?: InputMaybe<StringFilterInput>
+  title?: InputMaybe<StringFilterInput>
+  updatedAt?: InputMaybe<DateTimeFilterInput>
+}
+
+export type RegulationCategoryInput = {
+  locale?: InputMaybe<Scalars['String']['input']>
+  pictogram?: InputMaybe<Enum_Regulationcategory_Pictogram>
+  publishedAt?: InputMaybe<Scalars['DateTime']['input']>
+  regulations?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
+  slug?: InputMaybe<Scalars['String']['input']>
+  title?: InputMaybe<Scalars['String']['input']>
+}
+
+export type RegulationCategoryRelationResponseCollection = {
+  __typename?: 'RegulationCategoryRelationResponseCollection'
+  nodes: Array<RegulationCategory>
+}
+
 export type RegulationEntity = {
   __typename?: 'RegulationEntity'
   attributes?: Maybe<Regulation>
@@ -6131,6 +6260,7 @@ export type RegulationFiltersInput = {
   or?: InputMaybe<Array<InputMaybe<RegulationFiltersInput>>>
   publishedAt?: InputMaybe<DateTimeFilterInput>
   regNumber?: InputMaybe<StringFilterInput>
+  regulationCategory?: InputMaybe<RegulationCategoryFiltersInput>
   slug?: InputMaybe<StringFilterInput>
   titleText?: InputMaybe<StringFilterInput>
   updatedAt?: InputMaybe<DateTimeFilterInput>
@@ -6151,6 +6281,7 @@ export type RegulationInput = {
   mainDocument?: InputMaybe<Scalars['ID']['input']>
   publishedAt?: InputMaybe<Scalars['DateTime']['input']>
   regNumber?: InputMaybe<Scalars['String']['input']>
+  regulationCategory?: InputMaybe<Scalars['ID']['input']>
   slug?: InputMaybe<Scalars['String']['input']>
   titleText?: InputMaybe<Scalars['String']['input']>
   urbanStudies?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
@@ -12272,11 +12403,17 @@ export type PageEntityFragment = {
           regNumber: string
           fullTitle: string
           effectiveFrom: any
-          category: Enum_Regulation_Category
           isFullTextRegulation: boolean
           documentId: string
           slug: string
           titleText?: string | null
+          regulationCategory?: {
+            __typename?: 'RegulationCategory'
+            documentId: string
+            title: string
+            slug: string
+            pictogram: Enum_Regulationcategory_Pictogram
+          } | null
           mainDocument: {
             __typename?: 'UploadFile'
             documentId: string
@@ -13898,11 +14035,17 @@ export type PageByPathQuery = {
             regNumber: string
             fullTitle: string
             effectiveFrom: any
-            category: Enum_Regulation_Category
             isFullTextRegulation: boolean
             documentId: string
             slug: string
             titleText?: string | null
+            regulationCategory?: {
+              __typename?: 'RegulationCategory'
+              documentId: string
+              title: string
+              slug: string
+              pictogram: Enum_Regulationcategory_Pictogram
+            } | null
             mainDocument: {
               __typename?: 'UploadFile'
               documentId: string
@@ -15535,11 +15678,17 @@ export type Dev_AllPagesQuery = {
             regNumber: string
             fullTitle: string
             effectiveFrom: any
-            category: Enum_Regulation_Category
             isFullTextRegulation: boolean
             documentId: string
             slug: string
             titleText?: string | null
+            regulationCategory?: {
+              __typename?: 'RegulationCategory'
+              documentId: string
+              title: string
+              slug: string
+              pictogram: Enum_Regulationcategory_Pictogram
+            } | null
             mainDocument: {
               __typename?: 'UploadFile'
               documentId: string
@@ -16110,6 +16259,14 @@ export type PagesInventoryQuery = {
   } | null>
 }
 
+export type RegulationCategoryEntityFragment = {
+  __typename?: 'RegulationCategory'
+  documentId: string
+  title: string
+  slug: string
+  pictogram: Enum_Regulationcategory_Pictogram
+}
+
 export type RegulationsStaticPathsQueryVariables = Exact<{
   limit?: InputMaybe<Scalars['Int']['input']>
 }>
@@ -16130,11 +16287,17 @@ export type RegulationBySlugQuery = {
     regNumber: string
     fullTitle: string
     effectiveFrom: any
-    category: Enum_Regulation_Category
     isFullTextRegulation: boolean
     documentId: string
     slug: string
     titleText?: string | null
+    regulationCategory?: {
+      __typename?: 'RegulationCategory'
+      documentId: string
+      title: string
+      slug: string
+      pictogram: Enum_Regulationcategory_Pictogram
+    } | null
     mainDocument: {
       __typename?: 'UploadFile'
       documentId: string
@@ -16238,11 +16401,17 @@ export type RegulationEntityFragment = {
   regNumber: string
   fullTitle: string
   effectiveFrom: any
-  category: Enum_Regulation_Category
   isFullTextRegulation: boolean
   documentId: string
   slug: string
   titleText?: string | null
+  regulationCategory?: {
+    __typename?: 'RegulationCategory'
+    documentId: string
+    title: string
+    slug: string
+    pictogram: Enum_Regulationcategory_Pictogram
+  } | null
   mainDocument: {
     __typename?: 'UploadFile'
     documentId: string
@@ -16328,7 +16497,7 @@ export type RegulationEntityFragment = {
 export type RegulationInventoryEntityFragment = {
   __typename?: 'Regulation'
   fullTitle: string
-  category: Enum_Regulation_Category
+  category?: Enum_Regulation_Category | null
   updatedAt?: any | null
   publishedAt?: any | null
   documentId: string
@@ -16336,6 +16505,13 @@ export type RegulationInventoryEntityFragment = {
   titleText?: string | null
   regNumber: string
   effectiveFrom: any
+  regulationCategory?: {
+    __typename?: 'RegulationCategory'
+    documentId: string
+    title: string
+    slug: string
+    pictogram: Enum_Regulationcategory_Pictogram
+  } | null
   cancellation?: {
     __typename?: 'Regulation'
     documentId: string
@@ -16364,7 +16540,7 @@ export type RegulationsInventoryQuery = {
   regulations: Array<{
     __typename?: 'Regulation'
     fullTitle: string
-    category: Enum_Regulation_Category
+    category?: Enum_Regulation_Category | null
     updatedAt?: any | null
     publishedAt?: any | null
     documentId: string
@@ -16372,6 +16548,13 @@ export type RegulationsInventoryQuery = {
     titleText?: string | null
     regNumber: string
     effectiveFrom: any
+    regulationCategory?: {
+      __typename?: 'RegulationCategory'
+      documentId: string
+      title: string
+      slug: string
+      pictogram: Enum_Regulationcategory_Pictogram
+    } | null
     cancellation?: {
       __typename?: 'Regulation'
       documentId: string
@@ -17210,11 +17393,17 @@ export type RegulationsSectionFragment = {
     regNumber: string
     fullTitle: string
     effectiveFrom: any
-    category: Enum_Regulation_Category
     isFullTextRegulation: boolean
     documentId: string
     slug: string
     titleText?: string | null
+    regulationCategory?: {
+      __typename?: 'RegulationCategory'
+      documentId: string
+      title: string
+      slug: string
+      pictogram: Enum_Regulationcategory_Pictogram
+    } | null
     mainDocument: {
       __typename?: 'UploadFile'
       documentId: string
@@ -19019,11 +19208,17 @@ type Sections_ComponentSectionsRegulations_Fragment = {
     regNumber: string
     fullTitle: string
     effectiveFrom: any
-    category: Enum_Regulation_Category
     isFullTextRegulation: boolean
     documentId: string
     slug: string
     titleText?: string | null
+    regulationCategory?: {
+      __typename?: 'RegulationCategory'
+      documentId: string
+      title: string
+      slug: string
+      pictogram: Enum_Regulationcategory_Pictogram
+    } | null
     mainDocument: {
       __typename?: 'UploadFile'
       documentId: string
@@ -19725,11 +19920,17 @@ export type UrbanStudyEntityFragment = {
     regNumber: string
     fullTitle: string
     effectiveFrom: any
-    category: Enum_Regulation_Category
     isFullTextRegulation: boolean
     documentId: string
     slug: string
     titleText?: string | null
+    regulationCategory?: {
+      __typename?: 'RegulationCategory'
+      documentId: string
+      title: string
+      slug: string
+      pictogram: Enum_Regulationcategory_Pictogram
+    } | null
     mainDocument: {
       __typename?: 'UploadFile'
       documentId: string
@@ -19895,11 +20096,17 @@ export type UrbanStudyBySlugQuery = {
       regNumber: string
       fullTitle: string
       effectiveFrom: any
-      category: Enum_Regulation_Category
       isFullTextRegulation: boolean
       documentId: string
       slug: string
       titleText?: string | null
+      regulationCategory?: {
+        __typename?: 'RegulationCategory'
+        documentId: string
+        title: string
+        slug: string
+        pictogram: Enum_Regulationcategory_Pictogram
+      } | null
       mainDocument: {
         __typename?: 'UploadFile'
         documentId: string
@@ -21128,6 +21335,14 @@ export const ContactsSectionFragmentDoc = gql`
   ${ContactPersonCardBlockFragmentDoc}
   ${ContactDirectionsCardBlockFragmentDoc}
 `
+export const RegulationCategoryEntityFragmentDoc = gql`
+  fragment RegulationCategoryEntity on RegulationCategory {
+    documentId
+    title
+    slug
+    pictogram
+  }
+`
 export const RegulationRelationEntityFragmentDoc = gql`
   fragment RegulationRelationEntity on Regulation {
     documentId
@@ -21142,7 +21357,9 @@ export const RegulationEntityFragmentDoc = gql`
     regNumber
     fullTitle
     effectiveFrom
-    category
+    regulationCategory {
+      ...RegulationCategoryEntity
+    }
     isFullTextRegulation
     mainDocument {
       ...UploadFileEntity
@@ -21177,6 +21394,7 @@ export const RegulationEntityFragmentDoc = gql`
     }
   }
   ${RegulationSlugEntityFragmentDoc}
+  ${RegulationCategoryEntityFragmentDoc}
   ${UploadFileEntityFragmentDoc}
   ${RegulationRelationEntityFragmentDoc}
 `
@@ -21787,6 +22005,9 @@ export const RegulationInventoryEntityFragmentDoc = gql`
     ...RegulationRelationEntity
     fullTitle
     category
+    regulationCategory {
+      ...RegulationCategoryEntity
+    }
     updatedAt
     publishedAt
     cancellation {
@@ -21800,6 +22021,7 @@ export const RegulationInventoryEntityFragmentDoc = gql`
   }
   ${RegulationSlugEntityFragmentDoc}
   ${RegulationRelationEntityFragmentDoc}
+  ${RegulationCategoryEntityFragmentDoc}
 `
 export const UrbanStudyPartItemFragmentDoc = gql`
   fragment UrbanStudyPartItem on ComponentBlocksUrbanStudyPartItem {

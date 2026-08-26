@@ -83,8 +83,8 @@ const RegulationPage = ({ general, regulation }: RegulationPageProps) => {
     <GeneralContextProvider general={general}>
       <AdminGroupsContextProvider adminGroups={[]}>
         <SeoHead
-          title={`VZN ${regulation.regNumber}`}
-          description={`Všeobecné záväzné nariadenie ${regulation.fullTitle}`}
+          title={`VZN ${regulation.regNumber} ${regulation.titleText}`}
+          description={regulation.fullTitle}
         />
 
         <PageLayout>

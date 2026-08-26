@@ -38,7 +38,6 @@ import { formatDate } from '@/src/utils/formatDate'
 import { getLinkProps } from '@/src/utils/getLinkProps'
 import { isDefined } from '@/src/utils/isDefined'
 import { useLocale } from '@/src/utils/useLocale'
-import { useRegulationCategoryTranslationMap } from '@/src/utils/useRegulationCategoryTranslationMap'
 import { useTranslation } from '@/src/utils/useTranslation'
 
 export type SearchFilters =
@@ -150,8 +149,6 @@ export const useQueryBySearchOption = ({
     },
   })
 
-  const regulationCategoryTranslationMap = useRegulationCategoryTranslationMap()
-
   const regulationsQuery = useQuery({
     queryKey: getRegulationsQueryKey(filters),
     queryFn: () => regulationsFetcher(filters),
@@ -159,9 +156,7 @@ export const useQueryBySearchOption = ({
     select: (data) => {
       const formattedData: SearchResult[] =
         data?.hits?.map((regulation) => {
-          const categoryDisplayName = isDefined(regulation.category)
-            ? regulationCategoryTranslationMap[regulation.category]
-            : null
+          const categoryDisplayName = regulation.regulationCategory?.title ?? null
 
           // we want to see, whether this regulation is amending any cancelled regulations, because in that case, this regulation is also cancelled
           const cancelledAmendees =
@@ -189,7 +184,7 @@ export const useQueryBySearchOption = ({
             uniqueId: regulation.slug,
             linkHref: getLinkProps({ regulation }).href,
             metadata: [categoryDisplayName, effectivityMessage],
-            customIconName: `regulation_${regulation.category ?? 'ostatne'}`,
+            customIconName: `regulation_${regulation.regulationCategory?.pictogram ?? 'ostatne'}`,
           }
         }) ?? []
 
