@@ -46,13 +46,13 @@ const LinkCard = ({
       className={cn('h-full bg-background-passive-base', className)}
       {...rest}
     >
-      {showImage && (
+      {showImage ? (
         <CardImage
           imgSrc={image?.url}
-          className={imageClassName ?? 'aspect-272/162 lg:aspect-384/158'}
+          className={cn(imageClassName, { 'aspect-272/162 lg:aspect-384/158': !imageClassName })}
           sizes={imageSizes}
         />
-      )}
+      ) : null}
 
       <div className="flex grow flex-col justify-between gap-4 p-4">
         <div className="flex flex-col gap-2">
@@ -66,17 +66,17 @@ const LinkCard = ({
               {title}
             </Typography>
 
-            {text && <Typography variant="p-small">{text}</Typography>}
+            {text ? <Typography variant="p-small">{text}</Typography> : null}
           </div>
         </div>
 
-        {linkProps && (
+        {linkProps ? (
           <div className={cn('flex justify-end', { 'justify-between': buttonText })}>
-            {buttonText && (
+            {buttonText ? (
               <Typography variant="p-small" className="text-start underline">
                 {buttonText}
               </Typography>
-            )}
+            ) : null}
 
             <Button
               variant="icon-wrapped"
@@ -86,7 +86,7 @@ const LinkCard = ({
               className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-background-passive-secondary p-1.5"
             />
           </div>
-        )}
+        ) : null}
       </div>
     </CardBase>
   )
