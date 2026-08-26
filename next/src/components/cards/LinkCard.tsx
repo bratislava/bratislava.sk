@@ -56,18 +56,16 @@ const LinkCard = ({
 
       <div className="flex grow flex-col justify-between gap-4 p-4">
         <div className="flex flex-col gap-2">
-          <div className="flex flex-col gap-2">
-            <Typography
-              id={titleId}
-              as={cardTitleLevel}
-              variant="h5"
-              className={cn({ 'group-hover:underline': linkProps })}
-            >
-              {title}
-            </Typography>
+          <Typography
+            id={titleId}
+            as={cardTitleLevel}
+            variant="h5"
+            className={cn({ 'group-hover:underline': linkProps })}
+          >
+            {title}
+          </Typography>
 
-            {text ? <Typography variant="p-small">{text}</Typography> : null}
-          </div>
+          {text ? <Typography variant="p-small">{text}</Typography> : null}
         </div>
 
         {linkProps ? (

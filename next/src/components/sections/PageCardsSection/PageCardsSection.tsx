@@ -2,7 +2,7 @@ import LinkCard from '@/src/components/cards/LinkCard'
 import SectionContainer from '@/src/components/layouts/SectionContainer'
 import SectionHeader from '@/src/components/layouts/SectionHeader'
 import { PageCardsSectionFragment } from '@/src/services/graphql'
-import { getPageCardsItemProps } from '@/src/utils/getLinkProps'
+import { getLinkProps, getPageCardsItemProps } from '@/src/utils/getLinkProps'
 import { isDefined } from '@/src/utils/isDefined'
 
 type Props = {
@@ -38,7 +38,7 @@ const PageCardsSection = ({ section }: Props) => {
               showImage={!!showThumbnails}
               imageClassName="aspect-280/158"
               buttonText={card.buttonText}
-              linkProps={getPageCardsItemProps(card)}
+              linkProps={getLinkProps({ page: card.page })}
             />
           ))}
         </div>

@@ -62,12 +62,6 @@ const getStrapiEntityLinkProps = (link: NonNullable<LinkFragment>) => {
   return null
 }
 
-export const getPageCardsItemProps = (pageCardsItem: PageCardsItemBlockFragment) => {
-  const page = pageCardsItem.page
-
-  return { children: pageCardsItem.title ?? page?.title, href: page?.path ?? '#' }
-}
-
 export const getLinkProps = (link: LinkFragment) => {
   const { t } = i18n ?? {}
 
