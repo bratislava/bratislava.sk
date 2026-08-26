@@ -4359,7 +4359,7 @@ type Regulation {
   cancellation: Regulation
   cancelling(filters: RegulationFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): [Regulation]!
   cancelling_connection(filters: RegulationFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): RegulationRelationResponseCollection
-  category: ENUM_REGULATION_CATEGORY!
+  category: ENUM_REGULATION_CATEGORY
   createdAt: DateTime
   documentId: ID!
   effectiveFrom: Date!

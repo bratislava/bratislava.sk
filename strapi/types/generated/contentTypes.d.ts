@@ -1332,8 +1332,7 @@ export interface ApiRegulationRegulation extends Struct.CollectionTypeSchema {
         'ostatne',
         'archiv',
       ]
-    > &
-      Schema.Attribute.Required
+    >
     createdAt: Schema.Attribute.DateTime
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> & Schema.Attribute.Private
     effectiveFrom: Schema.Attribute.Date & Schema.Attribute.Required

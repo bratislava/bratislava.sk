@@ -6017,7 +6017,7 @@ export type Regulation = {
   cancellation?: Maybe<Regulation>
   cancelling: Array<Maybe<Regulation>>
   cancelling_connection?: Maybe<RegulationRelationResponseCollection>
-  category: Enum_Regulation_Category
+  category?: Maybe<Enum_Regulation_Category>
   createdAt?: Maybe<Scalars['DateTime']['output']>
   documentId: Scalars['ID']['output']
   effectiveFrom: Scalars['Date']['output']
@@ -12315,7 +12315,6 @@ export type PageEntityFragment = {
           regNumber: string
           fullTitle: string
           effectiveFrom: any
-          category: Enum_Regulation_Category
           isFullTextRegulation: boolean
           documentId: string
           slug: string
@@ -13924,7 +13923,6 @@ export type PageByPathQuery = {
             regNumber: string
             fullTitle: string
             effectiveFrom: any
-            category: Enum_Regulation_Category
             isFullTextRegulation: boolean
             documentId: string
             slug: string
@@ -15544,7 +15542,6 @@ export type Dev_AllPagesQuery = {
             regNumber: string
             fullTitle: string
             effectiveFrom: any
-            category: Enum_Regulation_Category
             isFullTextRegulation: boolean
             documentId: string
             slug: string
@@ -16154,7 +16151,6 @@ export type RegulationBySlugQuery = {
     regNumber: string
     fullTitle: string
     effectiveFrom: any
-    category: Enum_Regulation_Category
     isFullTextRegulation: boolean
     documentId: string
     slug: string
@@ -16269,7 +16265,6 @@ export type RegulationEntityFragment = {
   regNumber: string
   fullTitle: string
   effectiveFrom: any
-  category: Enum_Regulation_Category
   isFullTextRegulation: boolean
   documentId: string
   slug: string
@@ -16366,7 +16361,7 @@ export type RegulationEntityFragment = {
 export type RegulationInventoryEntityFragment = {
   __typename?: 'Regulation'
   fullTitle: string
-  category: Enum_Regulation_Category
+  category?: Enum_Regulation_Category | null
   updatedAt?: any | null
   publishedAt?: any | null
   documentId: string
@@ -16409,7 +16404,7 @@ export type RegulationsInventoryQuery = {
   regulations: Array<{
     __typename?: 'Regulation'
     fullTitle: string
-    category: Enum_Regulation_Category
+    category?: Enum_Regulation_Category | null
     updatedAt?: any | null
     publishedAt?: any | null
     documentId: string
@@ -17262,7 +17257,6 @@ export type RegulationsSectionFragment = {
     regNumber: string
     fullTitle: string
     effectiveFrom: any
-    category: Enum_Regulation_Category
     isFullTextRegulation: boolean
     documentId: string
     slug: string
@@ -19021,7 +19015,6 @@ type Sections_ComponentSectionsRegulations_Fragment = {
     regNumber: string
     fullTitle: string
     effectiveFrom: any
-    category: Enum_Regulation_Category
     isFullTextRegulation: boolean
     documentId: string
     slug: string
@@ -19733,7 +19726,6 @@ export type UrbanStudyEntityFragment = {
     regNumber: string
     fullTitle: string
     effectiveFrom: any
-    category: Enum_Regulation_Category
     isFullTextRegulation: boolean
     documentId: string
     slug: string
@@ -19910,7 +19902,6 @@ export type UrbanStudyBySlugQuery = {
       regNumber: string
       fullTitle: string
       effectiveFrom: any
-      category: Enum_Regulation_Category
       isFullTextRegulation: boolean
       documentId: string
       slug: string
@@ -21172,7 +21163,6 @@ export const RegulationEntityFragmentDoc = gql`
     regNumber
     fullTitle
     effectiveFrom
-    category
     regulationCategory {
       ...RegulationCategoryEntity
     }
