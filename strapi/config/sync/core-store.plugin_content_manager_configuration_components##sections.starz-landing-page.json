@@ -8,7 +8,8 @@
       "pageSize": 10,
       "mainField": "documentId",
       "defaultSortBy": "documentId",
-      "defaultSortOrder": "ASC"
+      "defaultSortOrder": "ASC",
+      "relationOpenMode": "modal"
     },
     "metadatas": {
       "id": {
@@ -21,11 +22,12 @@
       },
       "banner": {
         "edit": {
-          "label": "banner",
+          "label": "Banner",
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true
+          "editable": true,
+          "mainField": "title"
         },
         "list": {
           "label": "banner",
@@ -35,11 +37,12 @@
       },
       "cardLinks": {
         "edit": {
-          "label": "cardLinks",
+          "label": "Odkazy",
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true
+          "editable": true,
+          "mainField": "label"
         },
         "list": {
           "label": "cardLinks",
@@ -57,11 +60,6 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "banner",
-        "cardLinks"
-      ],
       "edit": [
         [
           {
@@ -75,6 +73,11 @@
             "size": 12
           }
         ]
+      ],
+      "list": [
+        "id",
+        "banner",
+        "cardLinks"
       ]
     },
     "uid": "sections.starz-landing-page",

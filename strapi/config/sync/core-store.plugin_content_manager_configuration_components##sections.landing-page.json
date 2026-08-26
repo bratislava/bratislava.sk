@@ -8,7 +8,8 @@
       "pageSize": 10,
       "mainField": "documentId",
       "defaultSortBy": "documentId",
-      "defaultSortOrder": "ASC"
+      "defaultSortOrder": "ASC",
+      "relationOpenMode": "modal"
     },
     "metadatas": {
       "id": {
@@ -19,13 +20,28 @@
           "sortable": false
         }
       },
-      "banner": {
+      "variant": {
         "edit": {
-          "label": "banner",
+          "label": "Variant",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
+        },
+        "list": {
+          "label": "variant",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "banner": {
+        "edit": {
+          "label": "Banner",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "title"
         },
         "list": {
           "label": "banner",
@@ -33,13 +49,28 @@
           "sortable": false
         }
       },
-      "cardLinks": {
+      "image": {
         "edit": {
-          "label": "cardLinks",
+          "label": "Obrázok",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
+        },
+        "list": {
+          "label": "image",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "cardLinks": {
+        "edit": {
+          "label": "Odkazy",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true,
+          "mainField": "label"
         },
         "list": {
           "label": "cardLinks",
@@ -57,11 +88,6 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "banner",
-        "cardLinks"
-      ],
       "edit": [
         [
           {
@@ -74,7 +100,25 @@
             "name": "cardLinks",
             "size": 12
           }
+        ],
+        [
+          {
+            "name": "variant",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "image",
+            "size": 12
+          }
         ]
+      ],
+      "list": [
+        "id",
+        "banner",
+        "cardLinks",
+        "variant"
       ]
     },
     "uid": "sections.landing-page",
