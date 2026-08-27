@@ -52,8 +52,7 @@ export type AssetInventoryData = {
 
 export type RegulationInventoryData = {
   regNumber: string
-  /** Strapi enum key, e.g. `pomenovanieUlic` - unlike other types this is not a relation, so it has no title. */
-  category: string
+  category?: InventoryCategory
   validity: {
     isValid: boolean
     effectiveFrom: string | null

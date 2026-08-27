@@ -76,11 +76,11 @@ export const homepageSearchFetcher = (filters: HomepageSearchFilters, locale: st
         }
 
         if (type === 'regulation') {
-          const { regNumber, titleText, fullTitle } = dataInner
+          const { regNumber, titleText } = dataInner
 
           return {
             type,
-            title: `VZN ${regNumber} ${titleText ?? fullTitle}`,
+            title: `VZN ${regNumber} ${titleText}`,
             link: getLinkProps({ regulation: dataInner }).href,
             data: dataInner,
           } as HomepageSearchResult

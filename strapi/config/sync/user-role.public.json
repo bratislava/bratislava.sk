@@ -131,6 +131,16 @@
       "locale": null
     },
     {
+      "action": "api::regulation-category.regulation-category.find",
+      "documentId": "jr7ipdakyz1thamcbhyys1di",
+      "locale": null
+    },
+    {
+      "action": "api::regulation-category.regulation-category.findOne",
+      "documentId": "teesl0ubsx7igalqxgl291fr",
+      "locale": null
+    },
+    {
       "action": "api::regulation.regulation.find",
       "documentId": "rpr7wk56n33jqy1egd6faeyq",
       "locale": null
@@ -153,11 +163,6 @@
     {
       "action": "api::tax-administrators-list.tax-administrators-list.find",
       "documentId": "feqk6dvqcqu3uneuqwezxs2s",
-      "locale": null
-    },
-    {
-      "action": "api::urban-study-category.urban-study-category.delete",
-      "documentId": "fvyujmfad2ry86b8bnddajiy",
       "locale": null
     },
     {
