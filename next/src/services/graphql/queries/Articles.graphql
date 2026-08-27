@@ -137,6 +137,9 @@ fragment ArticleInventoryEntity on Article {
   perex
   addedAt
   updatedAt
+  adminGroups {
+    ...AdminGroupSlugEntity
+  }
   articleCategory {
     ...ArticleCategoryEntity
   }

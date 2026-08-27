@@ -7751,6 +7751,12 @@ export type ArticleInventoryEntityFragment = {
   slug: string
   title: string
   locale?: string | null
+  adminGroups: Array<{
+    __typename?: 'AdminGroup'
+    documentId: string
+    slug: string
+    title: string
+  } | null>
   articleCategory?: {
     __typename?: 'ArticleCategory'
     documentId: string
@@ -7808,6 +7814,12 @@ export type ArticlesInventoryQuery = {
     slug: string
     title: string
     locale?: string | null
+    adminGroups: Array<{
+      __typename?: 'AdminGroup'
+      documentId: string
+      slug: string
+      title: string
+    } | null>
     articleCategory?: {
       __typename?: 'ArticleCategory'
       documentId: string
@@ -7953,6 +7965,12 @@ export type AssetInventoryEntityFragment = {
   documentId: string
   slug: string
   title: string
+  adminGroups: Array<{
+    __typename?: 'AdminGroup'
+    documentId: string
+    slug: string
+    title: string
+  } | null>
   assetCategory?: {
     __typename?: 'AssetCategory'
     documentId: string
@@ -7986,6 +8004,12 @@ export type AssetsInventoryQuery = {
     documentId: string
     slug: string
     title: string
+    adminGroups: Array<{
+      __typename?: 'AdminGroup'
+      documentId: string
+      slug: string
+      title: string
+    } | null>
     assetCategory?: {
       __typename?: 'AssetCategory'
       documentId: string
@@ -16209,6 +16233,12 @@ export type PageInventoryEntityFragment = {
   title: string
   locale?: string | null
   path?: string | null
+  adminGroups: Array<{
+    __typename?: 'AdminGroup'
+    documentId: string
+    slug: string
+    title: string
+  } | null>
   sections?: Array<
     | {
         __typename: 'ComponentSectionsAccordion'
@@ -16388,6 +16418,12 @@ export type PagesInventoryQuery = {
     title: string
     locale?: string | null
     path?: string | null
+    adminGroups: Array<{
+      __typename?: 'AdminGroup'
+      documentId: string
+      slug: string
+      title: string
+    } | null>
     sections?: Array<
       | {
           __typename: 'ComponentSectionsAccordion'
@@ -20797,6 +20833,9 @@ export const ArticleInventoryEntityFragmentDoc = gql`
     perex
     addedAt
     updatedAt
+    adminGroups {
+      ...AdminGroupSlugEntity
+    }
     articleCategory {
       ...ArticleCategoryEntity
     }
@@ -20811,6 +20850,7 @@ export const ArticleInventoryEntityFragmentDoc = gql`
     }
   }
   ${ArticleSlugEntityFragmentDoc}
+  ${AdminGroupSlugEntityFragmentDoc}
   ${ArticleCategoryEntityFragmentDoc}
   ${TagEntityFragmentDoc}
   ${FileBlockFragmentDoc}
@@ -20838,6 +20878,9 @@ export const AssetInventoryEntityFragmentDoc = gql`
     publishedAt
     customPublishedAt
     description
+    adminGroups {
+      ...AdminGroupSlugEntity
+    }
     assetCategory {
       ...AssetCategoryEntity
     }
@@ -20846,6 +20889,7 @@ export const AssetInventoryEntityFragmentDoc = gql`
     }
   }
   ${AssetSlugEntityFragmentDoc}
+  ${AdminGroupSlugEntityFragmentDoc}
   ${AssetCategoryEntityFragmentDoc}
   ${UploadFileEntityFragmentDoc}
 `
@@ -22352,6 +22396,9 @@ export const PageInventoryEntityFragmentDoc = gql`
     subtext
     metaDescription
     keywords
+    adminGroups {
+      ...AdminGroupSlugEntity
+    }
     sections {
       __typename
       ... on ComponentSectionsAssets {
@@ -22382,6 +22429,7 @@ export const PageInventoryEntityFragmentDoc = gql`
     }
   }
   ${PageSlugEntityFragmentDoc}
+  ${AdminGroupSlugEntityFragmentDoc}
   ${AssetSlugEntityFragmentDoc}
   ${RegulationRelationEntityFragmentDoc}
   ${FileBlockFragmentDoc}

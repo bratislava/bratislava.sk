@@ -19,6 +19,7 @@ import {
   InventoryEntryBase,
   InventoryFile,
   InventoryLink,
+  InventoryOwner,
   InventoryType,
 } from './types'
 
@@ -73,6 +74,18 @@ const getCategory = (
 ): InventoryCategory | undefined =>
   category ? { title: category.title, slug: category.slug } : undefined
 
+/**
+ * An entry has at most one owner, even though Strapi models admin groups as a many to many relation - the extra groups
+ * are an editing permission, not a second owner, so only the first one is carried.
+ */
+const getOwner = (
+  adminGroups: (InventoryOwner | null)[] | null | undefined,
+): InventoryOwner | undefined => {
+  const adminGroup = (adminGroups ?? []).filter(isDefined).at(0)
+
+  return adminGroup ? { title: adminGroup.title, slug: adminGroup.slug } : undefined
+}
+
 /** Entries are keyed by type, documentId and locale - content that exists only once in Strapi is keyed as `sk`. */
 const getEntryId = (type: InventoryType, documentId: string, locale?: string | null) =>
   `${type}:${documentId}:${locale ?? 'sk'}`
@@ -89,6 +102,7 @@ const getBase = <TType extends InventoryType>(
     locale?: string | null
     title: string
     summary?: string
+    owner?: InventoryOwner
     addedAt?: unknown
     modifiedAt?: unknown
     files?: InventoryFile[]
@@ -101,6 +115,7 @@ const getBase = <TType extends InventoryType>(
   isLocalized: isDefined(entry.locale),
   title: entry.title,
   summary: entry.summary,
+  owner: entry.owner,
   addedAt: getIsoDate(entry.addedAt),
   modifiedAt: getIsoDate(entry.modifiedAt),
   files: entry.files ?? [],
@@ -271,6 +286,7 @@ const buildPages = async (): Promise<InventoryEntry[]> => {
       ...page,
       path: `/${page.path}`,
       summary: getFirstNonEmpty(page.subtext, page.metaDescription),
+      owner: getOwner(page.adminGroups),
       addedAt: page.publishedAt,
       modifiedAt: page.updatedAt,
       files: getPageFiles(page.sections),
@@ -293,6 +309,7 @@ const buildArticles = async (): Promise<InventoryEntry[]> => {
       ...article,
       path: `/spravy/${article.slug}`,
       summary: getFirstNonEmpty(article.perex),
+      owner: getOwner(article.adminGroups),
       addedAt: article.addedAt,
       modifiedAt: article.updatedAt,
       files: getBlockFiles(article.files),
@@ -319,6 +336,7 @@ const buildAssets = async (): Promise<InventoryEntry[]> => {
       ...asset,
       path: `/dokumenty/${asset.slug}`,
       summary: getFirstNonEmpty(asset.description),
+      owner: getOwner(asset.adminGroups),
       addedAt: asset.customPublishedAt ?? asset.publishedAt,
       modifiedAt: asset.updatedAt,
       files: getFiles(asset.files),

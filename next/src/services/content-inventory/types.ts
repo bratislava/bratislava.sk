@@ -11,6 +11,9 @@ export type InventoryType = (typeof inventoryTypes)[number]
 
 export type InventoryCategory = { title: string; slug: string }
 
+/** The organisation an entry's content belongs to, taken from its admin group. */
+export type InventoryOwner = { title: string; slug: string }
+
 /** A file attached to an entry - what a visitor can download from its page. */
 export type InventoryFile = {
   /** Strapi documentId of the upload, stable across the entries that reuse the same file. */
@@ -36,6 +39,11 @@ export type InventoryEntryBase = {
   title: string
   /** First non-empty of perex / subtext / description. */
   summary?: string
+  /**
+   * Who the content belongs to, from the entry's admin group. Absent for content that has no admin group, which is
+   * most of the website - the city itself is not modelled as one.
+   */
+  owner?: InventoryOwner
   /**
    * When the content was added, i.e. first published. Editors can override the publication date on some content types,
    * so this is the first non-empty of the type's own date (addedAt, customPublishedAt, releaseDate) and Strapi's
