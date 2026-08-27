@@ -4,6 +4,7 @@ Versions of the `/api/content-inventory` response, as returned in its `version` 
 
 ## 3
 
+- Add the `municipal-service` type, listing the services of the city account (konto.bratislava.sk), with `municipal-service.categories` and `municipal-service.contacts`, the latter shaped the same way `page.contacts` is - their `url` points to the city account, not to this website
 - Add the `official-board` type, listing the documents currently posted on the official board, with `official-board.category`, `official-board.numberOfFiles` and `official-board.publishedUntil` - the board's list carries no files, so `files` stays empty
 
 ## 2

@@ -7,6 +7,7 @@ export const inventoryTypes = [
   'inba-release',
   'urban-study',
   'official-board',
+  'municipal-service',
 ] as const
 
 export type InventoryType = (typeof inventoryTypes)[number]
@@ -46,7 +47,7 @@ export type InventoryEntryBase = {
   url: string | null
   /** `sk` or `en`. Content that is not localised is listed as `sk`. */
   locale: string
-  /** False for content types that exist only once (asset, regulation, inba-release, urban-study, official-board). */
+  /** False for every content type but page and article - the rest exists only once, in Slovak. */
   isLocalized: boolean
   /** As shown to a visitor. */
   title: string
@@ -225,6 +226,17 @@ export type OfficialBoardInventoryData = {
   publishedUntil?: string
 }
 
+/**
+ * Municipal services come from the city account (konto.bratislava.sk) and its own Strapi, so they carry that site's
+ * taxonomies instead of this website's ones.
+ */
+export type MunicipalServiceInventoryData = {
+  /** The categories the service is filed under on the city account - most services have exactly one. */
+  categories?: InventoryCategory[]
+  /** The service's contacts sections, the same shape a page of this website carries them in. */
+  contacts?: InventoryContactsSection[]
+}
+
 /** Each content type carries only its own data, under the key named after the type. */
 export type InventoryEntry =
   | (InventoryEntryBase & { type: 'page'; page?: PageInventoryData })
@@ -234,6 +246,10 @@ export type InventoryEntry =
   | (InventoryEntryBase & { type: 'inba-release'; 'inba-release'?: InbaReleaseInventoryData })
   | (InventoryEntryBase & { type: 'urban-study'; 'urban-study'?: UrbanStudyInventoryData })
   | (InventoryEntryBase & { type: 'official-board'; 'official-board': OfficialBoardInventoryData })
+  | (InventoryEntryBase & {
+      type: 'municipal-service'
+      'municipal-service'?: MunicipalServiceInventoryData
+    })
 
 /** Reduced entry returned for `?fields=url`, meant for cheap diffing (including detecting removals). */
 export type InventoryUrlEntry = Pick<InventoryEntryBase, 'id' | 'url' | 'modifiedAt'>

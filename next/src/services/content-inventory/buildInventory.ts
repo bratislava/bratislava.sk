@@ -1,9 +1,12 @@
 import { environment } from '@/src/environment'
+import { serverEnvironment } from '@/src/environment.server'
+import { getMunicipalServices } from '@/src/services/city-account/getMunicipalServices'
 import { mockedParsedDocuments } from '@/src/services/ginis/mocks'
 import { getOfficialBoardParsedList } from '@/src/services/ginis/server/getOfficialBoardParsedList'
 import { shouldMockGinis } from '@/src/services/ginis/utils/shouldMockGinis'
 import {
   AssetSlugEntityFragment,
+  ContactsSectionFragment,
   FileBlockFragment,
   FileItemBlockFragment,
   PageInventoryEntityFragment,
@@ -25,11 +28,12 @@ import {
   InventoryLink,
   InventoryOwner,
   InventoryType,
+  MunicipalServiceInventoryData,
 } from './types'
 
 // TODO: The paths are hardcoded the same way as in getLinkProps and next-sitemap.config.js, extract them once.
-const getUrl = (path: string, locale = 'sk') =>
-  `${environment.siteUrl.replace(/\/$/, '')}${locale === 'en' ? '/en' : ''}${path}`
+const getUrl = (path: string, locale = 'sk', siteUrl = environment.siteUrl) =>
+  `${siteUrl.replace(/\/$/, '')}${locale === 'en' ? '/en' : ''}${path}`
 
 const getFirstNonEmpty = (...values: (string | null | undefined)[]) =>
   values.find((value) => isDefined(value) && value.trim().length > 0) ?? undefined
@@ -103,6 +107,8 @@ const getBase = <TType extends InventoryType>(
   entry: {
     documentId: string
     path: string
+    /** Only for content hosted elsewhere, i.e. the city account - everything else lives on this website. */
+    siteUrl?: string
     locale?: string | null
     title: string
     summary?: string
@@ -114,7 +120,7 @@ const getBase = <TType extends InventoryType>(
 ): InventoryEntryBase & { type: TType } => ({
   id: getEntryId(type, entry.documentId, entry.locale),
   type,
-  url: getUrl(entry.path, entry.locale ?? 'sk'),
+  url: getUrl(entry.path, entry.locale ?? 'sk', entry.siteUrl),
   locale: entry.locale ?? 'sk',
   isLocalized: isDefined(entry.locale),
   title: entry.title,
@@ -212,9 +218,14 @@ const contactCardTypes = {
   bankConnectionContacts: 'bankConnection',
 } as const satisfies Record<string, InventoryContactType>
 
-type ContactsSection = Extract<
-  NonNullable<NonNullable<PageInventoryEntityFragment['sections']>[number]>,
-  { __typename: 'ComponentSectionsContactsSection' }
+/**
+ * The city account uses the same contacts section as this website, so the mapping is written against the generated
+ * fragment without the fields that identify it as this Strapi's - the city account's rest api names its own
+ * differently, and the mapping reads neither.
+ */
+type ContactsSection = Omit<
+  ContactsSectionFragment,
+  '__typename' | 'id' | 'titleLevelContactsSection'
 >
 
 /** The person and directions cards carry their own fields, so they are mapped separately from the simple ones. */
@@ -250,17 +261,14 @@ const getSectionContacts = (section: ContactsSection): InventoryContact[] => [
 ]
 
 /**
- * The contacts sections of a page, in the order they are rendered. The cards are kept grouped by their section - a page
- * listing several people or departments carries one section each, and its title is what the cards belong to.
+ * The contacts sections of an entry, in the order they are rendered. The cards are kept grouped by their section - a
+ * page listing several people or departments carries one section each, and its title is what the cards belong to.
  */
-const getPageContacts = (
-  sections: PageInventoryEntityFragment['sections'],
+const getContactsSections = (
+  sections: (ContactsSection | null)[],
 ): InventoryContactsSection[] | undefined => {
-  const contactsSections = (sections ?? [])
+  const contactsSections = sections
     .filter(isDefined)
-    .flatMap((section) =>
-      section.__typename === 'ComponentSectionsContactsSection' ? [section] : [],
-    )
     .map((section) => ({
       title: getFirstNonEmpty(section.title),
       subtext: getFirstNonEmpty(section.description),
@@ -271,6 +279,16 @@ const getPageContacts = (
 
   return contactsSections.length > 0 ? contactsSections : undefined
 }
+
+/** Picks the contacts sections out of a page's dynamic zone, the same way the assets and regulations are picked. */
+const getPageContacts = (sections: PageInventoryEntityFragment['sections']) =>
+  getContactsSections(
+    (sections ?? [])
+      .filter(isDefined)
+      .flatMap((section) =>
+        section.__typename === 'ComponentSectionsContactsSection' ? [section] : [],
+      ),
+  )
 
 /** Regulations a page links through its regulation sections, the same way `getPageAssets` collects the assets. */
 const getPageRegulations = (sections: PageInventoryEntityFragment['sections']) =>
@@ -465,21 +483,63 @@ const buildOfficialBoard = async (): Promise<InventoryEntry[]> => {
   }))
 }
 
+/** The categories of a municipal service are plain title and slug pairs, the way this website's ones are. */
+const getMunicipalServiceCategories = (
+  categories: { title: string; slug: string }[] | null | undefined,
+): InventoryCategory[] | undefined => {
+  const mapped = (categories ?? []).map(({ title, slug }) => ({ title, slug }))
+
+  return mapped.length > 0 ? mapped : undefined
+}
+
+/**
+ * Municipal services are the city account's content, not this website's - each of them has its own page there, which is
+ * what the entry's url points to.
+ */
+const buildMunicipalServices = async (): Promise<InventoryEntry[]> => {
+  const services = await getMunicipalServices()
+
+  return services.map((service) => ({
+    ...getBase('municipal-service', {
+      documentId: service.documentId,
+      path: `/mestske-sluzby/${service.slug}`,
+      siteUrl: serverEnvironment.cityAccountUrl,
+      title: service.title,
+      summary: getFirstNonEmpty(service.description),
+      addedAt: service.publishedAt,
+      modifiedAt: service.updatedAt,
+    }),
+    'municipal-service': getTypeData<MunicipalServiceInventoryData>({
+      categories: getMunicipalServiceCategories(service.categories),
+      contacts: getContactsSections(service.sections ?? []),
+    }),
+  }))
+}
+
 /**
  * Builds the inventory of everything on the website that has its own url. Published content only - the Strapi GraphQL
  * api returns published documents by default.
  */
 export const buildInventory = async (): Promise<InventoryEntry[]> => {
-  const [pages, articles, assets, regulations, inbaReleases, urbanStudies, officialBoard] =
-    await Promise.all([
-      buildPages(),
-      buildArticles(),
-      buildAssets(),
-      buildRegulations(),
-      buildInbaReleases(),
-      buildUrbanStudies(),
-      buildOfficialBoard(),
-    ])
+  const [
+    pages,
+    articles,
+    assets,
+    regulations,
+    inbaReleases,
+    urbanStudies,
+    officialBoard,
+    municipalServices,
+  ] = await Promise.all([
+    buildPages(),
+    buildArticles(),
+    buildAssets(),
+    buildRegulations(),
+    buildInbaReleases(),
+    buildUrbanStudies(),
+    buildOfficialBoard(),
+    buildMunicipalServices(),
+  ])
 
   return [
     ...pages,
@@ -489,5 +549,6 @@ export const buildInventory = async (): Promise<InventoryEntry[]> => {
     ...inbaReleases,
     ...urbanStudies,
     ...officialBoard,
+    ...municipalServices,
   ].sort((a, b) => (b.modifiedAt ?? '').localeCompare(a.modifiedAt ?? ''))
 }
