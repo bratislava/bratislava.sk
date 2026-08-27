@@ -4,6 +4,7 @@ import Image from 'next/image'
 import Markdown from '@/src/components/formatting/Markdown/Markdown'
 import {
   CommonLinkFragment,
+  Enum_Componentblockslandingpagebanner_Variant,
   Enum_Componentblocksstarzlandingpagebanner_Variant,
   Enum_Componentsectionsbanner_Variant,
 } from '@/src/services/graphql'
@@ -15,7 +16,10 @@ type BannerProps = {
   title: string
   content?: string | null
   contentPosition?: 'left' | 'right'
-  variant: Enum_Componentsectionsbanner_Variant | Enum_Componentblocksstarzlandingpagebanner_Variant
+  variant:
+    | Enum_Componentsectionsbanner_Variant
+    | Enum_Componentblocksstarzlandingpagebanner_Variant
+    | Enum_Componentblockslandingpagebanner_Variant
   imagePath?: string
   primaryLink?: CommonLinkFragment | null
   secondaryLink?: CommonLinkFragment | null
@@ -64,9 +68,11 @@ const Banner = ({
 
           {content && <Markdown content={content} />}
         </div>
+
         <div className="flex flex-col flex-wrap gap-2 empty:hidden lg:flex-row lg:items-center lg:gap-4">
           {/* TODO styling of white buttons */}
           {primaryLink && <Button variant="solid" fullWidthMobile {...getLinkProps(primaryLink)} />}
+
           {secondaryLink && (
             <Button
               className={cn({
@@ -78,6 +84,7 @@ const Banner = ({
               {...getLinkProps(secondaryLink)}
             />
           )}
+
           {tertiaryLink && (
             <Button
               className={cn('font-semibold no-underline', {
@@ -90,6 +97,7 @@ const Banner = ({
           )}
         </div>
       </div>
+
       <div
         className={`relative flex w-full lg:h-auto lg:w-1/2 ${
           variant === 'white_condensed' ? 'h-[180px]' : 'h-[234px]'

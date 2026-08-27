@@ -237,6 +237,25 @@ export interface BlocksInBa extends Struct.ComponentSchema {
   }
 }
 
+export interface BlocksLandingPageBanner extends Struct.ComponentSchema {
+  collectionName: 'components_blocks_landing_page_banners'
+  info: {
+    displayName: 'Landing Page banner'
+  }
+  attributes: {
+    content: Schema.Attribute.String
+    contentPosition: Schema.Attribute.Enumeration<['left', 'right']> &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'left'>
+    media: Schema.Attribute.Media<'images' | 'files'> & Schema.Attribute.Required
+    primaryLink: Schema.Attribute.Component<'blocks.common-link', false>
+    secondaryLink: Schema.Attribute.Component<'blocks.common-link', false>
+    tertiaryLink: Schema.Attribute.Component<'blocks.common-link', false>
+    title: Schema.Attribute.String & Schema.Attribute.Required
+    variant: Schema.Attribute.Enumeration<['color', 'dark', 'white_condensed']>
+  }
+}
+
 export interface BlocksNumbersOverviewItem extends Struct.ComponentSchema {
   collectionName: 'components_blocks_numbers_overview_items'
   info: {
@@ -996,6 +1015,27 @@ export interface SectionsJobOffers extends Struct.ComponentSchema {
   }
 }
 
+export interface SectionsLandingPage extends Struct.ComponentSchema {
+  collectionName: 'components_sections_landing_pages'
+  info: {
+    displayName: 'Landing Page'
+  }
+  attributes: {
+    banner: Schema.Attribute.Component<'blocks.landing-page-banner', false>
+    cardLinks: Schema.Attribute.Component<'blocks.card-link', true> &
+      Schema.Attribute.SetMinMax<
+        {
+          max: 3
+        },
+        number
+      >
+    image: Schema.Attribute.Media<'images'>
+    variant: Schema.Attribute.Enumeration<['banner', 'image']> &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'banner'>
+  }
+}
+
 export interface SectionsLinks extends Struct.ComponentSchema {
   collectionName: 'components_sections_links'
   info: {
@@ -1342,6 +1382,7 @@ declare module '@strapi/strapi' {
       'blocks.homepage-highlights-item': BlocksHomepageHighlightsItem
       'blocks.iframe': BlocksIframe
       'blocks.in-ba': BlocksInBa
+      'blocks.landing-page-banner': BlocksLandingPageBanner
       'blocks.numbers-overview-item': BlocksNumbersOverviewItem
       'blocks.numerical-list-item': BlocksNumericalListItem
       'blocks.opening-hours-alert-message': BlocksOpeningHoursAlertMessage
@@ -1387,6 +1428,7 @@ declare module '@strapi/strapi' {
       'sections.inba-latest-release': SectionsInbaLatestRelease
       'sections.inba-releases': SectionsInbaReleases
       'sections.job-offers': SectionsJobOffers
+      'sections.landing-page': SectionsLandingPage
       'sections.links': SectionsLinks
       'sections.narrow-text': SectionsNarrowText
       'sections.newsletter': SectionsNewsletter

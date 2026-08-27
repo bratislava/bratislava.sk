@@ -1,5 +1,5 @@
 {
-  "key": "plugin_content_manager_configuration_components::sections.starz-landing-page",
+  "key": "plugin_content_manager_configuration_components::sections.landing-page",
   "value": {
     "settings": {
       "bulkable": true,
@@ -20,6 +20,20 @@
           "sortable": false
         }
       },
+      "variant": {
+        "edit": {
+          "label": "Variant",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "variant",
+          "searchable": true,
+          "sortable": true
+        }
+      },
       "banner": {
         "edit": {
           "label": "Banner",
@@ -31,6 +45,20 @@
         },
         "list": {
           "label": "banner",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "image": {
+        "edit": {
+          "label": "Obrázok",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "image",
           "searchable": false,
           "sortable": false
         }
@@ -63,7 +91,19 @@
       "edit": [
         [
           {
+            "name": "variant",
+            "size": 12
+          }
+        ],
+        [
+          {
             "name": "banner",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "image",
             "size": 12
           }
         ],
@@ -77,10 +117,11 @@
       "list": [
         "id",
         "banner",
-        "cardLinks"
+        "cardLinks",
+        "variant"
       ]
     },
-    "uid": "sections.starz-landing-page",
+    "uid": "sections.landing-page",
     "isComponent": true
   },
   "type": "object",

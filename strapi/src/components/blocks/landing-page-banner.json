@@ -1,0 +1,59 @@
+{
+  "collectionName": "components_blocks_landing_page_banners",
+  "info": {
+    "displayName": "Landing Page banner"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "content": {
+      "type": "string"
+    },
+    "media": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    },
+    "variant": {
+      "type": "enumeration",
+      "required": false,
+      "enum": [
+        "color",
+        "dark",
+        "white_condensed"
+      ]
+    },
+    "contentPosition": {
+      "type": "enumeration",
+      "required": true,
+      "default": "left",
+      "enum": [
+        "left",
+        "right"
+      ]
+    },
+    "primaryLink": {
+      "type": "component",
+      "component": "blocks.common-link",
+      "repeatable": false
+    },
+    "secondaryLink": {
+      "type": "component",
+      "component": "blocks.common-link",
+      "repeatable": false
+    },
+    "tertiaryLink": {
+      "type": "component",
+      "component": "blocks.common-link",
+      "repeatable": false
+    }
+  },
+  "config": {}
+}
