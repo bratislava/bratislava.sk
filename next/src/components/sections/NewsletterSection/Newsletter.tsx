@@ -78,7 +78,7 @@ const Newsletter = ({
   const privacyPolicyPage = general?.privacyPolicyPage
 
   return (
-    <div className="min-w-122 lg:max-w-122 lg:rounded-lg lg:border lg:p-8">
+    <div className="lg:max-w-122 lg:min-w-122 lg:rounded-lg lg:border lg:p-8">
       <form onSubmit={onSubmit}>
         <div className="flex flex-col gap-6 lg:gap-8">
           <div className="flex flex-col gap-4 lg:grid lg:grid-cols-2 lg:gap-6">
