@@ -90,6 +90,12 @@
       "edit": [
         [
           {
+            "name": "page",
+            "size": 12
+          }
+        ],
+        [
+          {
             "name": "title",
             "size": 12
           },
@@ -100,21 +106,12 @@
         ],
         [
           {
-            "name": "page",
-            "size": 12
-          },
-          {
             "name": "buttonText",
             "size": 12
           }
         ]
       ],
-      "list": [
-        "id",
-        "title",
-        "subtext",
-        "buttonText"
-      ]
+      "list": ["id", "title", "subtext", "buttonText"]
     },
     "uid": "blocks.page-cards-item",
     "isComponent": true
