@@ -49,7 +49,7 @@ const LinkCard = ({
       {showImage ? (
         <CardImage
           imgSrc={image?.url}
-          className={cn(imageClassName, { 'aspect-272/162 lg:aspect-384/158': !imageClassName })}
+          className={cn('aspect-272/162 lg:aspect-384/158', imageClassName)}
           sizes={imageSizes}
         />
       ) : null}
