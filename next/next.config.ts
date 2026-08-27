@@ -55,9 +55,7 @@ const nextConfig: NextConfig = {
         loaders: [
           {
             loader: '@svgr/webpack',
-            options: {
-              svgoConfig: { svgoConfig },
-            },
+            options: { svgoConfig },
           },
         ],
         as: '*.js',
