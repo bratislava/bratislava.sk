@@ -1,6 +1,6 @@
 export type SectionTitleLevel = 'h2' | 'h3'
 
-export type CardTitleLevel = 'h3' | 'h4' | 'h5'
+export type CardTitleLevel = 'h3' | 'h4'
 
 export type AccordionTitleLevel = 'h2' | 'h3' | 'h4'
 
