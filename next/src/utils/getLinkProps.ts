@@ -8,7 +8,6 @@ import {
   HeaderLinkFragment,
   HomepageHighlightsItemFragment,
   MenuLinkFragment,
-  PageCardsItemBlockFragment,
   PageLinkFragment,
   SubnavigationLinkFragment,
 } from '@/src/services/graphql'

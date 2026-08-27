@@ -1,8 +1,8 @@
 import { PageEntityFragment } from '@/src/services/graphql'
 import {
-  ArticlesFilters,
   articlesDefaultFilters,
   articlesFetcher,
+  ArticlesFilters,
   getArticlesQueryKey,
 } from '@/src/services/meili/fetchers/articlesFetcher'
 import { isDefined } from '@/src/utils/isDefined'
