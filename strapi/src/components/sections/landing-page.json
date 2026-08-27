@@ -44,16 +44,14 @@
       },
       "multiple": false,
       "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
+        "images"
       ]
     },
     "cardLinks": {
       "type": "component",
       "component": "blocks.card-link",
-      "repeatable": true
+      "repeatable": true,
+      "max": 3
     }
   },
   "config": {}

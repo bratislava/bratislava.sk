@@ -8,9 +8,9 @@ import { generateImageSizes } from '@/src/utils/generateImageSizes'
 import { getLinkProps } from '@/src/utils/getLinkProps'
 import { isDefined } from '@/src/utils/isDefined'
 
-type LandingPageSectionProps = { section: LandingPageSectionFragment }
+type Props = { section: LandingPageSectionFragment }
 
-const LandingPageSection = ({ section }: LandingPageSectionProps) => {
+const LandingPageSection = ({ section }: Props) => {
   const { landingPageBanner, landingPageVariant, landingPageImage } = section
   const bannerColorVariant = landingPageBanner?.variant
 
@@ -19,21 +19,15 @@ const LandingPageSection = ({ section }: LandingPageSectionProps) => {
   return (
     <SectionContainer className="py-6 lg:py-12">
       <div className="flex flex-col gap-6 lg:gap-8">
-        {landingPageVariant === 'banner' && landingPageBanner && bannerColorVariant ? (
+        {landingPageVariant === 'banner' && landingPageBanner ? (
           <Banner
             {...landingPageBanner}
             imagePath={landingPageBanner.media.url}
             variant={bannerColorVariant}
           />
         ) : landingPageImage ? (
-          <div className="relative h-147 w-full overflow-hidden rounded-xl">
-            <StrapiImage
-              alt=""
-              image={landingPageImage}
-              sizes="100vw"
-              className="object-cover"
-              fill
-            />
+          <div className="relative aspect-304/147 w-full overflow-hidden rounded-xl">
+            <StrapiImage image={landingPageImage} sizes="100vw" className="object-cover" fill />
           </div>
         ) : null}
 

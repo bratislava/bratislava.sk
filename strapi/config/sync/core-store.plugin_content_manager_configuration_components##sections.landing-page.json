@@ -91,25 +91,25 @@
       "edit": [
         [
           {
-            "name": "banner",
-            "size": 12
-          }
-        ],
-        [
-          {
-            "name": "cardLinks",
-            "size": 12
-          }
-        ],
-        [
-          {
             "name": "variant",
             "size": 12
           }
         ],
         [
           {
+            "name": "banner",
+            "size": 12
+          }
+        ],
+        [
+          {
             "name": "image",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "cardLinks",
             "size": 12
           }
         ]
