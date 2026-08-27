@@ -1,5 +1,4 @@
 import { RegulationEntityFragment } from '@/src/services/graphql'
-import { formatDate } from '@/src/utils/formatDate'
 import { isDefined } from '@/src/utils/isDefined'
 
 export function getRegulationMetadata(regulation: NonNullable<RegulationEntityFragment>) {
@@ -12,9 +11,8 @@ export function getRegulationMetadata(regulation: NonNullable<RegulationEntityFr
   const isCancelled = isCancelledDirectly || hasCancelledAmendees
 
   const effectiveFrom = regulation.effectiveFrom
-  const effectiveUntil = formatDate(
-    regulation.cancellation?.effectiveFrom ?? cancelledAmendees[0]?.cancellation?.effectiveFrom,
-  )
+  const effectiveUntil =
+    regulation.cancellation?.effectiveFrom ?? cancelledAmendees[0]?.cancellation?.effectiveFrom
 
   const isAmendee = !!regulation.amending?.length
 
